@@ -15,54 +15,41 @@ msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-07-20 22:54-0500\n"
-"PO-Revision-Date: 2018-05-16 07:08+0100\n"
+"PO-Revision-Date: 2025-07-07 21:01+0200\n"
 "Last-Translator: Adrian Chaves <adrian@chaves.io>\n"
 "Language-Team: Galician <kde-i18n-doc@kde.org>\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"com>\n"
-"com>\n"
-"com>\n"
-"com>\n"
-"com>\n"
-"com>\n"
-"com>\n"
-"com>\n"
-"com>\n"
-"com>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 2.0\n"
+"X-Generator: Poedit 3.6\n"
 
 #. [ai]: id=ai_default_rca
 #: data/ai/ais/ai_default_rca.cfg:9
 msgid "Multiplayer_AI^Default AI (RCA)"
-msgstr ""
+msgstr "Multiplayer_AI^IA predeterminada (RCA)"
 
 #. [ai]: id=ai_default_rca_1_14
 #: data/ai/ais/ai_default_rca_1_14.cfg:9
 msgid "Multiplayer_AI^Old Default AI (1.14 version)"
-msgstr ""
+msgstr "Multiplayer_AI^Antiga IA predeterminada (versión 1.14)"
 
 #. [ai]: id=experimental_ai
 #: data/ai/ais/ai_experimental.cfg:11
-#, fuzzy
-#| msgid "Multiplayer Alerts"
 msgid "Multiplayer_AI^Experimental AI"
-msgstr "Alertas de varios xogadores"
+msgstr "Multiplayer_AI^IA experimental"
 
 #. [ai]: id=idle_ai
 #: data/ai/ais/idle_ai.cfg:4
-#, fuzzy
-#| msgid "Multiplayer Alerts"
 msgid "Multiplayer_AI^Dev AI: Idle AI"
-msgstr "Alertas de varios xogadores"
+msgstr "Multiplayer_AI^Dev AI: IA inactiva"
 
 #. [ai]: id=ai_default_rca_alternate_recruiting
 #: data/ai/dev/ai_default_rca_alternate_recruiting.cfg:10
 msgid "Multiplayer_AI^Dev AI: Default AI (RCA) with Alternate Recruiting"
 msgstr ""
+"Multiplayer_AI^Dev AI: IA predeterminada (RCA) con recrutamento alternativo"
 
 #. [terrain_type]: id=farmer-fence  # AI-animal-proof fences from first scenario
 #. [terrain_type]: id=fence
@@ -178,10 +165,8 @@ msgstr "Braña"
 
 #. [terrain_type]: id=sea_kelp
 #: data/core/terrain.cfg:135
-#, fuzzy
-#| msgid "Palm Forest"
 msgid "Kelp Forest"
-msgstr "Bosque de palmeiras"
+msgstr "Bosque de Kelp"
 
 #. [terrain_type]: id=swamp_water_reed
 #: data/core/terrain.cfg:150
@@ -283,7 +268,7 @@ msgstr "Lousado gris claro"
 #. [terrain_type]: id=road_desert
 #: data/core/terrain.cfg:274
 msgid "Gravel"
-msgstr ""
+msgstr "Grava"
 
 #. [terrain_type]: id=stone_path
 #: data/core/terrain.cfg:284
@@ -292,10 +277,8 @@ msgstr "Lousado con herba"
 
 #. [terrain_type]: id=road_icy
 #: data/core/terrain.cfg:294
-#, fuzzy
-#| msgid "Clean Gray Cobbles"
 msgid "Icy Cobbles"
-msgstr "Lousado gris claro"
+msgstr "Icy Cobbles"
 
 #. [terrain_type]: id=ice
 #: data/core/terrain.cfg:307
@@ -319,19 +302,14 @@ msgstr "Area do deserto"
 
 #. [terrain_type]: id=desert
 #: data/core/terrain.cfg:334
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Deserts'</italic> have a somewhat different composition "
-#| "than small sand pits or beaches, however for gameplay purposes they are "
-#| "identical. See <ref>dst='terrain_sand' text='sand'</ref>."
 msgid ""
 "<italic>text='Deserts'</italic> have a somewhat different composition than "
 "small sand pits or beaches, however for gameplay purposes they are "
 "identical. See <ref>dst='..terrain_sand' text='sand'</ref>."
 msgstr ""
-"Os <italic>text='desertos'</italic> teñen unha composición algo diferente á "
-"das fosas de area e das praias pero, a efectos do xogo, todas son iguais. "
-"Consulta a información sobre a <ref>dst='terrain_sand' text='area'</ref>."
+"<italic>text='Desertos'</italic> teñen unha composición algo diferente á dos "
+"pequenos areais ou praias, pero para fins de xogo son idénticos. Vexa<ref> "
+"dst='..terrain_sand' text='area'</ref> ."
 
 #. [terrain_type]: id=sand_beach
 #. [terrain_type]: id=sand
@@ -405,10 +383,8 @@ msgstr "Pedras"
 
 #. [terrain_type]: id=snowbits_small
 #: data/core/terrain.cfg:418
-#, fuzzy
-#| msgid "Snow"
 msgid "Snowbits"
-msgstr "Neve"
+msgstr "Bocadillos de neve"
 
 #. [terrain_type]: id=mushrooms_small
 #: data/core/terrain.cfg:427
@@ -457,22 +433,18 @@ msgstr "Braseiro aceso"
 
 #. [terrain_type]: id=fence_iron
 #: data/core/terrain.cfg:522
-#, fuzzy
-#| msgid "Fence"
 msgid "Iron Fence"
-msgstr "Valo"
+msgstr "Cerca de ferro"
 
 #. [terrain_type]: id=fence_palisade
 #: data/core/terrain.cfg:532
 msgid "Palisade"
-msgstr ""
+msgstr "Empalizada"
 
 #. [terrain_type]: id=fence_palisade
 #: data/core/terrain.cfg:533
-#, fuzzy
-#| msgid "Wooden Bridge"
 msgid "Wooden Palisade"
-msgstr "Ponte de madeira"
+msgstr "Palizada de madeira"
 
 #. [terrain_type]: id=sand_drifts
 #: data/core/terrain.cfg:542
@@ -492,7 +464,7 @@ msgstr "Auga con lirios en flor"
 #. [terrain_type]: id=seashells
 #: data/core/terrain.cfg:571
 msgid "Seashells"
-msgstr ""
+msgstr "Cunchas mariñas"
 
 #. [terrain_type]: id=detritus_trash
 #: data/core/terrain.cfg:582
@@ -506,10 +478,8 @@ msgstr "Restos"
 
 #. [terrain_type]: id=wall_windows
 #: data/core/terrain.cfg:601
-#, fuzzy
-#| msgid "Close Window"
 msgid "Window"
-msgstr "Pechar a xanela"
+msgstr "Xanela"
 
 #. [terrain_type]: id=great_tree
 #. [terrain_type]: id=great_tree_snowy
@@ -523,10 +493,8 @@ msgstr "Árbore grande"
 
 #. [terrain_type]: id=great_tree_snowy
 #: data/core/terrain.cfg:627
-#, fuzzy
-#| msgid "Great Tree"
 msgid "Snowy Great Tree"
-msgstr "Árbore grande"
+msgstr "Gran árbore nevada"
 
 #. [terrain_type]: id=great_tree_dead
 #: data/core/terrain.cfg:639
@@ -535,10 +503,8 @@ msgstr "Árbore grande morta"
 
 #. [terrain_type]: id=great_tree_dead_oak
 #: data/core/terrain.cfg:651
-#, fuzzy
-#| msgid "Dead Great Tree"
 msgid "Dead Great Oak Tree"
-msgstr "Árbore grande morta"
+msgstr "Gran carballo morto"
 
 #. [terrain_type]: id=tropical_forest
 #. [terrain_type]: id=rainforest
@@ -726,10 +692,8 @@ msgstr "Chan de pedra básico"
 
 #. [terrain_type]: id=ancient_stone_floor
 #: data/core/terrain.cfg:947
-#, fuzzy
-#| msgid "Stone Floor"
 msgid "Ancient Stone Floor"
-msgstr "Chan de pedra"
+msgstr "Chan de pedra antigo"
 
 #. [terrain_type]: id=rug_floor
 #. [terrain_type]: id=rug2_floor
@@ -824,10 +788,8 @@ msgstr "Colonia de cogomelos"
 
 #. [terrain_type]: id=fungus_grove_old
 #: data/core/terrain.cfg:1062
-#, fuzzy
-#| msgid "Lit Mushroom Grove"
 msgid "Non-mixed Mushroom Grove"
-msgstr "Colonia de cogomelos alumada"
+msgstr "Colonia de cogomelos non mesturados"
 
 #. [terrain_type]: id=fungus_grove_old
 #. [terrain_type]: id=fungus_beam_old
@@ -843,6 +805,14 @@ msgid ""
 "fungus are wanted, ‘Tb’ is a mushroom base terrain, which can be used with "
 "or without ‘^Tf’ on top."
 msgstr ""
+"editor^As superposicións '^Uf' e '^Ufi' están obsoletas porque, aínda que os "
+"gráficos mostran unha superposición con outro terreo debaixo, as "
+"estatísticas de movemento e defensa son un terreo puramente fungoso, "
+"ignorando o terreo subxacente. Os substitutos recomendados son '^Tf' e "
+"'^Tfi' que teñen o mesmo aspecto pero teñen as estatísticas que corresponden "
+"aos gráficos. Para os hexágonos nos que se queren as estatísticas de fungos "
+"puramente, 'Tb' é un terreo base de fungos, que se pode usar con ou sen "
+"'^Tf' enriba."
 
 #. [terrain_type]: id=fungus_grove_old
 #. [terrain_type]: id=fungus_beam_old
@@ -856,13 +826,16 @@ msgid ""
 "defense and movement costs are purely based on the unit’s stats for "
 "<italic>text='Fungus'</italic>."
 msgstr ""
+"Os contos de ananos describen diferentes tipos de cogomelos; nalgúns tipos a "
+"dificultade de camiñar polo chan esponxoso non ten relación co chan debaixo, "
+"mesmo cando o chan debaixo aínda é visible. Os custos de defensa e movemento "
+"deste terreo baséanse exclusivamente nas estatísticas da unidade<italic> "
+"text='Fungo'</italic> ."
 
 #. [terrain_type]: id=fungus_beam_old
 #: data/core/terrain.cfg:1081
-#, fuzzy
-#| msgid "Lit Mushroom Grove"
 msgid "Lit Non-mixed Mushroom Grove"
-msgstr "Colonia de cogomelos alumada"
+msgstr "Colonia de cogomelos alumada non mesturados"
 
 #. [terrain_type]: id=fungus_beam
 #: data/core/terrain.cfg:1113
@@ -872,7 +845,7 @@ msgstr "Colonia de cogomelos alumada"
 #. [terrain_type]: id=fungus_floor
 #: data/core/terrain.cfg:1125 data/core/terrain.cfg:1126
 msgid "Mycelium"
-msgstr ""
+msgstr "Micelio"
 
 #. [terrain_type]: id=rocky_cave
 #. [terrain_type]: id=earthy_rocky_cave
@@ -884,20 +857,6 @@ msgstr "Cova rochosa"
 #. [terrain_type]: id=rocky_cave
 #. [terrain_type]: id=earthy_rocky_cave
 #: data/core/terrain.cfg:1141 data/core/terrain.cfg:1157
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Rockbound cave'</italic> terrain is formed by the action of "
-#| "water and wind, carrying erosive particles that carve the rock. It "
-#| "resembles a scraggy underground cavern which shoulders defense, but is "
-#| "hard for most units to traverse. Only settlers of caves, such as dwarves "
-#| "and trolls, are fully capable of navigating such topography.\n"
-#| "\n"
-#| "Most units have about 50% defense in rocky caves, whereas cavalry are "
-#| "limited to 40%. Dwarves, by dint of their small size, enjoy 60% defense "
-#| "in rockbound caves.\n"
-#| "\n"
-#| "Occasionally caves are <ref>dst='terrain_illuminated_cave' "
-#| "text='illuminated'</ref>."
 msgid ""
 "<italic>text='Rockbound cave'</italic> terrain is formed by the action of "
 "water and wind, carrying erosive particles that carve the rock. It resembles "
@@ -921,15 +880,13 @@ msgstr ""
 "mentres que a cabalería está limitada ao 40%. Os ananos, grazas ao seu "
 "pequeno tamaño, gozan dun 60% de defensa en covas rochosas.\n"
 "\n"
-"Ás veces as covas están <ref>dst=terrain_illuminated_cave text=iluminadas</"
-"ref>."
+"Ás veces as covas están <italic>dst=terrain_illuminated_cave "
+"text='iluminadas'</italic>."
 
 #. [terrain_type]: id=earthy_rocky_cave
 #: data/core/terrain.cfg:1152
-#, fuzzy
-#| msgid "Rockbound Cave"
 msgid "Earthy Rockbound Cave"
-msgstr "Cova rochosa"
+msgstr "Cova rochosa terrosa"
 
 #. [terrain_type]: id=mine_rails
 #. [terrain_type]: id=mine_railsdiag1
@@ -942,29 +899,27 @@ msgstr "Raís de mina"
 #. [terrain_type]: id=high_border
 #: data/core/terrain.cfg:1214
 msgid "Bluff"
-msgstr ""
+msgstr "Bluff"
 
 #. [terrain_type]: id=high_canyon
 #: data/core/terrain.cfg:1224
 msgid "Gulch"
-msgstr ""
+msgstr "Gulch"
 
 #. [terrain_type]: id=high_canyon_obst
 #: data/core/terrain.cfg:1235
-#, fuzzy
-#| msgid "Unwalkable Overlay"
 msgid "Unwalkable Ravine"
-msgstr "Revestimento intransitábel"
+msgstr "Canón intransitábel"
 
 #. [terrain_type]: id=high_border_woods
 #: data/core/terrain.cfg:1249
 msgid "Wooded Bluffs"
-msgstr ""
+msgstr "Acantilados boscosos"
 
 #. [terrain_type]: id=high_canyon_woods
 #: data/core/terrain.cfg:1259
 msgid "Wooded Gulch"
-msgstr ""
+msgstr "Quebrada boscosa"
 
 #. [terrain_type]: id=canyon
 #. [terrain_type]: id=chasm_earthy
@@ -1072,22 +1027,18 @@ msgstr "Parede de cova terrosa natural"
 
 #. [terrain_type]: id=cavewall_damaged
 #: data/core/terrain.cfg:1423
-#, fuzzy
-#| msgid "Natural Cave Wall"
 msgid "Damaged Cave Wall"
-msgstr "Parede de cova natural"
+msgstr "Parede de cova danada"
 
 #. [terrain_type]: id=wall_hedge
 #: data/core/terrain.cfg:1433
 msgid "Thick Hedges"
-msgstr ""
+msgstr "Sebes grosas"
 
 #. [terrain_type]: id=wall_hedge
 #: data/core/terrain.cfg:1434
-#, fuzzy
-#| msgid "Hewn Cave Wall"
 msgid "Hedges Wall"
-msgstr "Parede de cova cavada"
+msgstr "Muro de sebes"
 
 #. [terrain_type]: id=wall_stone
 #. [terrain_type]: id=wall_stone_lit
@@ -1127,52 +1078,38 @@ msgstr "Muro de pedra limpo"
 
 #. [terrain_type]: id=wall_stone_ancient
 #: data/core/terrain.cfg:1519
-#, fuzzy
-#| msgid "Lit Stone Wall"
 msgid "Ancient Stone Wall"
-msgstr "Muro de pedra alumado"
+msgstr "Muro de pedra antigo"
 
 #. [terrain_type]: id=wall_stone_tomb
 #: data/core/terrain.cfg:1529
-#, fuzzy
-#| msgid "Cave Wall"
 msgid "Catacombs Wall"
-msgstr "Parede de cova"
+msgstr "Muro das catacumbas"
 
 #. [terrain_type]: id=wall_stone_tomb
 #: data/core/terrain.cfg:1530
-#, fuzzy
-#| msgid "Clean Stone Wall"
 msgid "Catacombs Stone Wall"
-msgstr "Muro de pedra limpo"
+msgstr "Muro de pedra das catacumbas"
 
 #. [terrain_type]: id=wall_stone_overgrown
 #: data/core/terrain.cfg:1540
-#, fuzzy
-#| msgid "Overgrown Cobbles"
 msgid "Overgrown Wall"
-msgstr "Lousado con herba"
+msgstr "Muro con vexetación"
 
 #. [terrain_type]: id=wall_stone_overgrown
 #: data/core/terrain.cfg:1541
-#, fuzzy
-#| msgid "Clean Stone Wall"
 msgid "Overgrown Stone Wall"
-msgstr "Muro de pedra limpo"
+msgstr "Muro de pedra con vexetación"
 
 #. [terrain_type]: id=wall_stone_damaged
 #: data/core/terrain.cfg:1552
-#, fuzzy
-#| msgid "Stone Wall"
 msgid "Damaged Stone Wall"
-msgstr "Muro de pedra"
+msgstr "Muro de pedra danado"
 
 #. [terrain_type]: id=wall_stone_ruins
 #: data/core/terrain.cfg:1562
-#, fuzzy
-#| msgid "Mine Wall"
 msgid "Ruined Wall"
-msgstr "Parede de mina"
+msgstr "Muro en ruínas"
 
 #. [terrain_type]: id=portal_gate_rusty_sw
 #. [terrain_type]: id=portal_gate_rusty_se
@@ -1401,10 +1338,8 @@ msgstr "Vila dos draconiáns"
 
 #. [terrain_type]: id=drake_snow_village
 #: data/core/terrain.cfg:2051
-#, fuzzy
-#| msgid "Drake Village"
 msgid "Snowy Drake Village"
-msgstr "Vila dos draconiáns"
+msgstr "Vila dos draconiáns nevada"
 
 #. [terrain_type]: id=underground_village
 #: data/core/terrain.cfg:2066
@@ -1466,11 +1401,11 @@ msgid ""
 msgstr ""
 "As <italic>text='vilas somerxidas'</italic> son o fogar dos sirénidos e dos "
 "nagas. Se ben se trata do medio natural para as criaturas acuáticas, as "
-"terrestres teñen grandes dificultades para percorrer e defender estas "
-"aldeas. Non obstante, como en calquera outra aldea, as instalacións están "
-"dispoñíbeis para todas as criaturas, o que permite que as unidades poidan "
-"sandar as súas feridas. Calquera unidade situada nunha aldea pode sandar ata "
-"oito puntos de vida por rolda, ou ser curada do envelenamento.\n"
+"terrestres teñen grandes dificultades para percorrer e defender estas vilas. "
+"Non obstante, como en calquera outra vila, as instalacións están dispoñíbeis "
+"para todas as criaturas, o que permite que as unidades poidan sandar as súas "
+"feridas. Calquera unidade situada nunha vila pode sandar ata oito puntos de "
+"vida por rolda, ou ser curada do envelenamento.\n"
 "\n"
 "Os sirénidos e mailos nagas teñen un 60% de defensa nas vilas somerxidas, "
 "mentres que as unidades terrestres teñen normalmente pouca defensa nelas."
@@ -1559,17 +1494,13 @@ msgstr "Castelo dos elfos en ruínas"
 
 #. [terrain_type]: id=elven_castle_winter
 #: data/core/terrain.cfg:2314
-#, fuzzy
-#| msgid "Elven Castle"
 msgid "Winter Elven Castle"
-msgstr "Castelo dos elfos"
+msgstr "Castelo élfico invernal"
 
 #. [terrain_type]: id=dwarven_castle
 #: data/core/terrain.cfg:2326
-#, fuzzy
-#| msgid "Dwarven Castle"
 msgid "Dwarven Underground Castle"
-msgstr "Castelo dos ananos"
+msgstr "Castelo dos ananos subterráneo"
 
 #. [terrain_type]: id=dwarven_castle2
 #: data/core/terrain.cfg:2338
@@ -1578,17 +1509,13 @@ msgstr "Castelo dos ananos"
 
 #. [terrain_type]: id=dwarven_castle_ruin
 #: data/core/terrain.cfg:2350
-#, fuzzy
-#| msgid "Dwarven Castle"
 msgid "Dwarven Castle Ruins"
-msgstr "Castelo dos ananos"
+msgstr "Castelo dos ananos en ruinas"
 
 #. [terrain_type]: id=dwarven_castle_winter
 #: data/core/terrain.cfg:2362
-#, fuzzy
-#| msgid "Dwarven Castle"
 msgid "Winter Dwarven Castle"
-msgstr "Castelo dos ananos"
+msgstr "Castelo dos ananos invernal"
 
 #. [terrain_type]: id=ruin
 #. [terrain_type]: id=sunkenruin
@@ -1721,17 +1648,13 @@ msgstr "Torre dos elfos en ruínas"
 
 #. [terrain_type]: id=elven_keep_winter
 #: data/core/terrain.cfg:2606
-#, fuzzy
-#| msgid "Elven Keep Ruin"
 msgid "Winter Elven Keep"
-msgstr "Torre dos elfos en ruínas"
+msgstr "Torre dos elfos invernal"
 
 #. [terrain_type]: id=dwarven_keep
 #: data/core/terrain.cfg:2619
-#, fuzzy
-#| msgid "Dwarven Castle Keep"
 msgid "Dwarven Underground Keep"
-msgstr "Torre de castelo dos ananos"
+msgstr "Torre subterránea dos ananos"
 
 #. [terrain_type]: id=dwarven_keep2
 #: data/core/terrain.cfg:2632
@@ -1740,17 +1663,13 @@ msgstr "Torre de castelo dos ananos"
 
 #. [terrain_type]: id=dwarven_keep_ruin
 #: data/core/terrain.cfg:2645
-#, fuzzy
-#| msgid "Dwarven Castle Keep"
 msgid "Dwarven Ruin Keep"
-msgstr "Torre de castelo dos ananos"
+msgstr "Torre dos ananos en ruinas"
 
 #. [terrain_type]: id=dwarven_keep_winter
 #: data/core/terrain.cfg:2658
-#, fuzzy
-#| msgid "Dwarven Castle Keep"
 msgid "Winter Dwarven Keep"
-msgstr "Torre de castelo dos ananos"
+msgstr "Torre dos ananos invernal"
 
 #. [terrain_type]: id=ruined_keep
 #. [terrain_type]: id=sunken_keep
@@ -1906,10 +1825,8 @@ msgstr "Ponte de pedra"
 #. [terrain_type]: id=snow_stone_bridgediag2
 #: data/core/terrain.cfg:2930 data/core/terrain.cfg:2942
 #: data/core/terrain.cfg:2955
-#, fuzzy
-#| msgid "Basic Stone Bridge"
 msgid "Snowy Stone Bridge"
-msgstr "Ponte de pedra"
+msgstr "Ponte de pedra nevada"
 
 #. [terrain_type]: id=bridgechasm
 #. [terrain_type]: id=bridgechasmdiag1
@@ -1946,22 +1863,22 @@ msgstr "Ponte de táboas"
 #. [terrain_type]: id=mark_high
 #: data/core/terrain.cfg:3140
 msgid "Marker High"
-msgstr ""
+msgstr "Marcador Alto"
 
 #. [terrain_type]: id=mark_high2
 #: data/core/terrain.cfg:3150
 msgid "Marker High 2"
-msgstr ""
+msgstr "Marcador alto 2"
 
 #. [terrain_type]: id=mark_low
 #: data/core/terrain.cfg:3160
 msgid "Marker Low"
-msgstr ""
+msgstr "Marcador baixo"
 
 #. [terrain_type]: id=mark_low2
 #: data/core/terrain.cfg:3170
 msgid "Marker Low 2"
-msgstr ""
+msgstr "Marcador baixo 2"
 
 #. [terrain_type]: id=off_map
 #: data/core/terrain.cfg:3182
@@ -1976,7 +1893,7 @@ msgstr "Bordo falso de mapa"
 #. [terrain_type]: id=overlay_artplaceholder
 #: data/core/terrain.cfg:3202
 msgid "Art Placeholder"
-msgstr ""
+msgstr "Marcador de posición de arte"
 
 #. [terrain_type]: id=shroud
 #. [toggle_button]: id=shroud
@@ -2007,18 +1924,6 @@ msgstr "Cogomelos"
 
 #. [terrain_type]: id=fungus
 #: data/core/terrain.cfg:3255
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Mushroom groves'</italic> are vast underground forests of "
-#| "giant mushrooms,\n"
-#| "which thrive in the damp darkness. Most units have trouble negotiating "
-#| "the spongy floor of smaller fungi, but they have plenty of cover behind "
-#| "the larger stalks. Mounted units, however, become completely mired and "
-#| "lack proper freedom of movement in combat. Undead units have a natural "
-#| "affinity for decay and function quite well in mushroom forests.\n"
-#| "\n"
-#| "Most units receive 50% to 60% defense in mushroom groves, whereas cavalry "
-#| "receive only 20%."
 msgid ""
 "<italic>text='Mushroom groves'</italic> are vast underground forests of "
 "giant mushrooms, which thrive in the damp darkness. Most units have trouble "
@@ -2044,24 +1949,6 @@ msgstr ""
 
 #. [terrain_type]: id=cave
 #: data/core/terrain.cfg:3266
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Cave'</italic> terrain represents any underground cavern "
-#| "with enough room for a unit to pass.\n"
-#| "Most units are wholly unfamiliar with the terrain, and thus are both "
-#| "slowed down and hindered in defense. Dwarves and trolls, who make their "
-#| "homes in caves, both have a relatively easy time navigating this terrain, "
-#| "especially dwarves, who by dint of their small size can navigate many "
-#| "obstacles that other races cannot. Occasionally caves are "
-#| "<ref>dst='terrain_illuminated_cave' text='illuminated'</ref>.\n"
-#| "\n"
-#| "Rare patches of the underground world are illuminated by light from the "
-#| "surface shining down into the gloomy darkness. This provides an attack "
-#| "bonus for lawful units and removes the attack bonus from chaotic units. "
-#| "In all other regards this terrain is functionally identical to normal "
-#| "cave terrains.\n"
-#| "\n"
-#| "Most units receive 20 to 40% defense in caves, whereas dwarves have 50%."
 msgid ""
 "<italic>text='Cave'</italic> terrain represents any underground cavern with "
 "enough room for a unit to pass.\n"
@@ -2087,8 +1974,8 @@ msgstr ""
 "ananos e mailos trolles, que habitan en covas, desenvólvense relativamente "
 "ben neste tipo de terreo, en especial os ananos, que grazas ao seu reducido "
 "tamaño son capaces de superar moitos obstáculos que outras especies non "
-"poderían. Ás veces as covas poden estar <ref>dst='terrain_illuminated_cave' "
-"text='iluminadas'</ref>.\n"
+"poderían. Ás veces as covas poden estar <italic>text='illuminadas'</"
+"italic>.\n"
 "\n"
 "É pouca a frecuencia coa que no mundo subterráneo se ven zonas bañadas con "
 "luz da superficie. Estas zonas fornecen ás unidades legais unha bonificación "
@@ -2120,17 +2007,6 @@ msgstr ""
 
 #. [terrain_type]: id=hills
 #: data/core/terrain.cfg:3310
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Hills'</italic> represent any reasonably rough terrain,\n"
-#| "with enough dips and rises in the ground to provide some cover. Hills are "
-#| "difficult for most troops to navigate. Dwarves, trolls, and orcs have "
-#| "enough familiarity with the terrain that they can pass through it without "
-#| "being slowed down. Cavalry have enough trouble navigating the terrain "
-#| "that any defensive aid lent by cover is negated.\n"
-#| "\n"
-#| "Most units have about 50% defense in hills, whereas cavalry are limited "
-#| "to 40%. Dwarves enjoy 60% defense in hills."
 msgid ""
 "<italic>text='Hills'</italic> represent any reasonably rough terrain, with "
 "enough dips and rises in the ground to provide some cover. Hills are "
@@ -2225,19 +2101,6 @@ msgstr ""
 
 #. [terrain_type]: id=mountains
 #: data/core/terrain.cfg:3366
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Mountains'</italic> are steep enough that units often have "
-#| "to climb over obstacles to move.\n"
-#| "By this nature, they provide a considerable defensive bonus for most "
-#| "troops, but they also severely impede any passage through them. Most "
-#| "cavalry simply cannot enter mountainous terrain; however, elvish cavalry "
-#| "is an exception to this, as are the goblin wolf riders. Both dwarves and "
-#| "trolls are native to mountainous terrain, and have a very easy time "
-#| "getting around.\n"
-#| "\n"
-#| "Most units receive about 60% defense in mountains, whereas Dwarves enjoy "
-#| "70%."
 msgid ""
 "<italic>text='Mountains'</italic> are steep enough that units often have to "
 "climb over obstacles to move.\n"
@@ -2255,10 +2118,13 @@ msgstr ""
 "As <italic>text='montañas'</italic> son tan esgrevias que as unidades a "
 "miúdo teñen que gabear por obstáculos para moverse. Pola súa natureza, "
 "proporcionan unha importante bonificación defensiva a case todas as tropas, "
-"pero tamén limitan bastante o seu avance. A cabalería rara vez pode "
-"atravesar os terreos montañosos, coas excepcións da cabalería dos elfos e os "
-"trasnos montados en lobo. Os ananos e mailos trolles están afeitos aos "
-"terreos montañosos, polo que se desenvolven moi ben neles.\n"
+"pero tamén limitan bastante o seu avance. As unidades cargadas con armaduras "
+"pesadas, coma a cabalería e as tropas de infantería pesada do Noroeste,rara "
+"vez pode atravesar os terreos montañosos, As razas acuáticas e criaturas "
+"como os sirénidos teñen corpos pisciformes que tamén lles impiden subir "
+"pendentes escarpadas. Os nagas son unha excepción debido aos seus fortes "
+"brazos e ás súas escamas resistentes. Tanto os ananos como os troles son "
+"nativos do terreo montañoso e teñen facilidade para cruzalo.\n"
 "\n"
 "Case todas as unidades reciben arredor dun 60% de defensa nas montañas, "
 "mentres que os ananos gozan dun 70%."
@@ -2449,10 +2315,8 @@ msgstr ""
 #: data/core/terrain.cfg:3476 data/core/terrain.cfg:3487
 #: data/core/terrain.cfg:3498 data/core/terrain.cfg:3509
 #: data/core/terrain.cfg:3520
-#, fuzzy
-#| msgid "Game data:"
 msgid "Deprecated"
-msgstr "Datos do xogo:"
+msgstr "Obsoleto"
 
 #. [button]: id=search
 #: data/gui/macros/_initial.cfg:363
@@ -2462,13 +2326,12 @@ msgstr "Busca"
 
 #. [label]: id=no_options_notice
 #: data/gui/macros/custom_options_tree.cfg:26
-#, fuzzy
-#| msgid "Configure settings for the selected custom modifications."
 msgid ""
 "There are no custom options available for the selected era, game, or "
 "modification."
 msgstr ""
-"Configurar as opcións para as modificacións personalizadas seleccionadas."
+"Non hai opcións personalizadas dispoñibles para a era, o xogo ou a "
+"modificación seleccionados."
 
 #. [button]: id=reset_option_values
 #. [button]: id=revert_to_defaults
@@ -2489,17 +2352,13 @@ msgstr "Valores predeterminados"
 #. [widget]: id=tab_label
 #: data/gui/macros/player_list_panel.cfg:22
 #: data/gui/themes/default/dialogs/mp_match_history.cfg:388
-#, fuzzy
-#| msgid "Players:"
 msgid "Players"
-msgstr "Xogadores:"
+msgstr "Xogadores"
 
 #. [settings]
 #: data/gui/themes/celes/_main.cfg:25 data/gui/themes/default/_main.cfg:23
-#, fuzzy
-#| msgid " (Press '$hotkey' for more information)"
 msgid " (Press ‘$hotkey’ for more information)"
-msgstr " (prema «$hotkey» para máis información)"
+msgstr " (prema ‘$hotkey’ para máis información)"
 
 #. [button]: id=previous_tip
 #. [button]: id=previous_page
@@ -2513,7 +2372,7 @@ msgstr "Anterior"
 #: data/gui/themes/celes/dialogs/title_screen.cfg:166
 #: data/gui/themes/default/dialogs/title_screen.cfg:195
 msgid "Show previous tip of the day"
-msgstr "Mostrar o consello anterior."
+msgstr "Mostrar o consello anterior"
 
 #. [button]: id=next_tip
 #. [button]: id=next_page
@@ -2527,37 +2386,31 @@ msgstr "Seguinte"
 #: data/gui/themes/celes/dialogs/title_screen.cfg:180
 #: data/gui/themes/default/dialogs/title_screen.cfg:210
 msgid "Show next tip of the day"
-msgstr "Mostrar o seguinte consello."
+msgstr "Mostrar o seguinte consello"
 
 #. [button]: id=toggle_tip_panel
 #: data/gui/themes/celes/dialogs/title_screen.cfg:215
-#, fuzzy
-#| msgid "Next Tip of the Day"
 msgid "Tip of the Day"
-msgstr "Seguinte consello"
+msgstr "Consello do día"
 
 #. [button]: id=toggle_tip_panel
 #. [toggle_button]: id=show_tips
 #: data/gui/themes/celes/dialogs/title_screen.cfg:216
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:223
-#, fuzzy
-#| msgid "Show next tip of the day"
 msgid "Show tip of the day"
-msgstr "Mostrar o seguinte consello."
+msgstr "Mostrar consello do día"
 
 #. [button]: id=about
 #: data/gui/themes/celes/dialogs/title_screen.cfg:229
 #: data/gui/themes/default/dialogs/title_screen.cfg:472
 msgid "About"
-msgstr ""
+msgstr "Sobre"
 
 #. [button]: id=about
 #: data/gui/themes/celes/dialogs/title_screen.cfg:230
 #: data/gui/themes/default/dialogs/title_screen.cfg:473
-#, fuzzy
-#| msgid "The Battle for Wesnoth"
 msgid "General information about Battle for Wesnoth"
-msgstr "A batalla polo Noroeste"
+msgstr "Información xeral sobre A batalla polo Noroeste"
 
 #. [button]: id=language
 #. [label]
@@ -2574,7 +2427,7 @@ msgstr "Lingua"
 #: data/gui/themes/celes/dialogs/title_screen.cfg:244
 #: data/gui/themes/default/dialogs/title_screen.cfg:495
 msgid "Change the language"
-msgstr "Cambiar de lingua."
+msgstr "Cambiar de lingua"
 
 #. [grid]
 #: data/gui/themes/celes/dialogs/title_screen.cfg:286
@@ -2586,7 +2439,7 @@ msgstr "Campañas"
 #: data/gui/themes/celes/dialogs/title_screen.cfg:286
 #: data/gui/themes/default/dialogs/title_screen.cfg:256
 msgid "Start a new single player campaign"
-msgstr "Comezar unha campaña ou escenario para un só xogador."
+msgstr "Comezar unha campaña ou escenario para un só xogador"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
@@ -2608,7 +2461,7 @@ msgid ""
 "the AI"
 msgstr ""
 "Xogar con outros xogadores (no mesmo computador ou en rede) ou nun escenario "
-"coa intelixencia artificial."
+"coa intelixencia artificial"
 
 #. [grid]
 #. [button]: id=load_movetype
@@ -2624,7 +2477,7 @@ msgstr "Cargar"
 #: data/gui/themes/celes/dialogs/title_screen.cfg:288
 #: data/gui/themes/default/dialogs/title_screen.cfg:258
 msgid "Load a saved game"
-msgstr "Cargar unha partida previamente gardada."
+msgstr "Cargar unha partida previamente gardada"
 
 #. [grid]
 #: data/gui/themes/celes/dialogs/title_screen.cfg:292
@@ -2637,7 +2490,7 @@ msgstr "Complementos"
 #: data/gui/themes/default/dialogs/title_screen.cfg:259
 msgid "Download usermade campaigns, eras, or map packs"
 msgstr ""
-"Descargar campañas, eras ou paquetes de mapas feitos por outros usuarios."
+"Descargar campañas, eras ou paquetes de mapas feitos por outros usuarios"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
@@ -2646,18 +2499,14 @@ msgstr ""
 #: data/gui/themes/default/dialogs/achievements_dialog.cfg:80
 #: data/gui/themes/default/dialogs/title_screen.cfg:260
 #: src/hotkey/hotkey_command.cpp:97
-#, fuzzy
-#| msgid "Advancements"
 msgid "Achievements"
-msgstr "Avances"
+msgstr "Logros"
 
 #. [grid]
 #: data/gui/themes/celes/dialogs/title_screen.cfg:293
 #: data/gui/themes/default/dialogs/title_screen.cfg:260
-#, fuzzy
-#| msgid "Each Team"
 msgid "View achievements"
-msgstr "Cada equipo"
+msgstr "Ver logros"
 
 #. [grid]
 #: data/gui/themes/celes/dialogs/title_screen.cfg:294
@@ -2669,7 +2518,7 @@ msgstr "Editor de mapas"
 #: data/gui/themes/celes/dialogs/title_screen.cfg:294
 #: data/gui/themes/default/dialogs/title_screen.cfg:261
 msgid "Start the map editor"
-msgstr "Iniciar o editor de mapas."
+msgstr "Iniciar o editor de mapas"
 
 #. [grid]
 #. [tab]
@@ -2677,21 +2526,19 @@ msgstr "Iniciar o editor de mapas."
 #: data/gui/themes/default/dialogs/game_version.cfg:903
 #: data/gui/themes/default/dialogs/title_screen.cfg:262
 msgid "Community"
-msgstr ""
+msgstr "Comunidade"
 
 #. [grid]
 #: data/gui/themes/celes/dialogs/title_screen.cfg:295
 #: data/gui/themes/default/dialogs/title_screen.cfg:262
-#, fuzzy
-#| msgid "The Battle for Wesnoth"
 msgid "Places to talk about Wesnoth"
-msgstr "A batalla polo Noroeste"
+msgstr "Lugares para falar sobre O Noroeste"
 
 #. [grid]
 #: data/gui/themes/celes/dialogs/title_screen.cfg:296
 #: data/gui/themes/default/dialogs/title_screen.cfg:263
 msgid "Configure the game’s settings"
-msgstr "Configurar as opcións do xogo."
+msgstr "Configurar as opcións do xogo"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
@@ -2716,10 +2563,8 @@ msgstr "Axuda"
 
 #. [grid]
 #: data/gui/themes/celes/dialogs/title_screen.cfg:297
-#, fuzzy
-#| msgid "Quit the game"
 msgid "Visit the in-game help"
-msgstr "Saír do xogo."
+msgstr "Visita a axuda do xogo"
 
 #. [grid]
 #. [button]: id=cancel
@@ -2735,7 +2580,7 @@ msgstr "Saír"
 #: data/gui/themes/celes/dialogs/title_screen.cfg:298
 #: data/gui/themes/default/dialogs/title_screen.cfg:264
 msgid "Quit the game"
-msgstr "Saír do xogo."
+msgstr "Saír do xogo"
 
 #. [draw]
 #: data/gui/themes/celes/widgets/button_success.cfg:196
@@ -2753,7 +2598,7 @@ msgstr "Copiar"
 #. The heavy checkmark character is available in the DejaVu Sans font, but not in the default Lato font
 #: data/gui/themes/celes/widgets/button_success.cfg:269
 msgid "page^<b><span font_family='DejaVu Sans'>✔</span> Copied</b>"
-msgstr ""
+msgstr "páxina^<b><span font_family='DejaVu Sans'>✔</span> Copiada</b>"
 
 #. [button]: id=click_dismiss
 #. [button]: id=ok
@@ -2789,14 +2634,12 @@ msgstr "Pechar"
 #. [label]
 #: data/gui/themes/default/dialogs/addon_auth.cfg:41
 msgid "Authenticate"
-msgstr ""
+msgstr "Autenticarse"
 
 #. [label]
 #: data/gui/themes/default/dialogs/addon_auth.cfg:65
-#, fuzzy
-#| msgid "Rename Unit"
 msgid "Username:"
-msgstr "Cambiarlle o nome á unidade"
+msgstr "Nome de usuario:"
 
 #. [label]
 #. [grid]
@@ -2946,10 +2789,8 @@ msgstr "Conectarse"
 
 #. [label]
 #: data/gui/themes/default/dialogs/addon_license_prompt.cfg:39
-#, fuzzy
-#| msgid "addons_order^Type ($order)"
 msgid "addons_server^Terms"
-msgstr "Tipo ($order)"
+msgstr "Termos"
 
 #. [label]: id=message
 #: data/gui/themes/default/dialogs/addon_license_prompt.cfg:53
@@ -2957,19 +2798,21 @@ msgid ""
 "Before uploading content to this server, you must accept the following "
 "distribution terms by choosing “I Agree”."
 msgstr ""
+"Antes de cargar contido neste servidor, debes aceptar os seguintes termos de "
+"distribución seleccionando \"Acepto\"."
 
 #. [button]: id=ok
 #: data/gui/themes/default/dialogs/addon_license_prompt.cfg:102
 msgid "I Agree"
-msgstr ""
+msgstr "Estou de acordo"
 
 #: data/gui/themes/default/dialogs/addon_manager.cfg:9
 msgid "Traffic between the game and server is not secure"
-msgstr ""
+msgstr "O tráfico entre o xogo e o servidor non é seguro"
 
 #: data/gui/themes/default/dialogs/addon_manager.cfg:13
 msgid "Traffic between the game and server is encrypted"
-msgstr ""
+msgstr "O tráfico entre o xogo e o servidor está cifrado"
 
 #. [label]
 #. [grid]
@@ -3023,10 +2866,8 @@ msgstr "Versión:"
 
 #. [menu_button]: id=version_filter
 #: data/gui/themes/default/dialogs/addon_manager.cfg:471
-#, fuzzy
-#| msgid "Delete add-on from server"
 msgid "Select the add-on version"
-msgstr "Eliminar o complemento do servidor."
+msgstr "Selecciona a versión do complemento"
 
 #. [label]
 #: data/gui/themes/default/dialogs/addon_manager.cfg:489
@@ -3035,10 +2876,8 @@ msgstr "Sitio web:"
 
 #. [label]
 #: data/gui/themes/default/dialogs/addon_manager.cfg:521
-#, fuzzy
-#| msgid "ID:"
 msgid "Id:"
-msgstr "Identificador:"
+msgstr "Id:"
 
 #. [button]: id=install
 #. [button]: id=single_install
@@ -3107,10 +2946,8 @@ msgstr "ningunha."
 
 #. [text_box]: id=filter
 #: data/gui/themes/default/dialogs/addon_manager.cfg:770
-#, fuzzy
-#| msgid "Filters on addon description, version, type or author."
 msgid "Filters on addon description, version, type or author"
-msgstr "Filtra pola descrición, a versión, o tipo ou o autor do complemento."
+msgstr "Filtros por descrición, versión, tipo ou autor do complemento"
 
 #. [label]
 #: data/gui/themes/default/dialogs/addon_manager.cfg:791
@@ -3122,7 +2959,7 @@ msgstr "Estado:"
 #: data/gui/themes/default/dialogs/addon_manager.cfg:844
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:209
 msgid "Tags:"
-msgstr ""
+msgstr "Etiquetas:"
 
 #. [label]
 #: data/gui/themes/default/dialogs/addon_manager.cfg:895
@@ -3140,8 +2977,6 @@ msgstr "Xestor de complementos"
 #: data/gui/themes/default/dialogs/addon_manager.cfg:1099
 #: src/gui/dialogs/addon/manager.cpp:569 src/gui/dialogs/addon/manager.cpp:836
 #: src/gui/dialogs/addon/manager.cpp:933
-#, fuzzy
-#| msgid "Addon Details"
 msgid "Add-on Details"
 msgstr "Detalles do complemento"
 
@@ -3159,7 +2994,7 @@ msgstr "Actualizalos todos"
 #: data/gui/themes/default/dialogs/addon_server_info.cfg:41
 #: data/gui/themes/default/dialogs/mp_match_history.cfg:375
 msgid "Info"
-msgstr ""
+msgstr "Información"
 
 #. [button]: id=cancel
 #: data/gui/themes/default/dialogs/addon_manager.cfg:1148
@@ -3170,36 +3005,32 @@ msgstr "Saír"
 #. [button]: id=downloads_by_version
 #: data/gui/themes/default/dialogs/addon_server_info.cfg:59
 msgid "Add-on download count by version"
-msgstr ""
+msgstr "Número de descargas de complementos por versión"
 
 #. [button]: id=addon_count_by_forum_auth
 #: data/gui/themes/default/dialogs/addon_server_info.cfg:77
 msgid "Count of add-ons using forum_auth"
-msgstr ""
+msgstr "Número de complementos que usan forum_auth"
 
 #. [button]: id=admin_delete_addon
 #: data/gui/themes/default/dialogs/addon_server_info.cfg:95
-#, fuzzy
-#| msgid "Delete add-on from server"
 msgid "Delete selected add-on (admin)"
-msgstr "Eliminar o complemento do servidor."
+msgstr "Eliminar o complemento seleccionado (administrador)"
 
 #. [button]: id=admin_hide_addon
 #: data/gui/themes/default/dialogs/addon_server_info.cfg:113
-#, fuzzy
-#| msgid "Delete add-on from server"
 msgid "Hide selected add-on (admin)"
-msgstr "Eliminar o complemento do servidor."
+msgstr "Ocultar o complemento seleccionado (administrador)"
 
 #. [button]: id=admin_unhide_addon
 #: data/gui/themes/default/dialogs/addon_server_info.cfg:131
 msgid "Unhide add-on by ID (admin)"
-msgstr ""
+msgstr "Mostrar complemento por ID (administrador)"
 
 #. [button]: id=admin_list_hidden
 #: data/gui/themes/default/dialogs/addon_server_info.cfg:149
 msgid "List hidden add-ons (admin)"
-msgstr ""
+msgstr "Listar complementos ocultos (administrador)"
 
 #. [scroll_label]
 #: data/gui/themes/default/dialogs/addon_uninstall_list.cfg:68
@@ -3278,6 +3109,11 @@ msgid ""
 "multiplayer maps, additional media and various other content! Be sure to "
 "give it a try!"
 msgstr ""
+"Ademais das campañas principais, O Noroeste tamén ten unha lista cada vez "
+"maior de contido adicional creado por outros xogadores dispoñible a través "
+"do servidor de complementos, incluíndo, entre outros, máis campañas para un "
+"só xogador e multixogador, mapas multixogador, contido multimedia adicional "
+"e varios outros contidos! Non deixes de probalo!"
 
 #. [label]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:208
@@ -3287,6 +3123,10 @@ msgid ""
 "package manager, there’s probably a separate package to install the complete "
 "game data."
 msgstr ""
+"Wesnoth normalmente inclúe máis de 15 campañas principais, mesmo antes de "
+"instalar calquera desde o servidor de complementos. Se instalaches o xogo a "
+"través dun xestor de paquetes, probablemente haxa un paquete separado para "
+"instalar os datos completos do xogo."
 
 #. [toggle_button]: id=sort_name
 #. [toggle_button]: id=sort_0
@@ -3311,10 +3151,8 @@ msgstr ""
 
 #. [toggle_button]: id=sort_time
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:260
-#, fuzzy
-#| msgid "Time limit:"
 msgid "Timeline"
-msgstr "Límite de tempo:"
+msgstr "Liña de tempo"
 
 #. [toggle_button]: id=sort_time
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:261
@@ -3325,61 +3163,58 @@ msgstr ""
 #. [multimenu_button]: id=filter_completion
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:271
 msgid "Filter by campaign completion status"
-msgstr ""
+msgstr "Filtrar por estado de finalización da campaña"
 
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:274
 msgid "Not Completed"
-msgstr ""
+msgstr "Non completado"
 
 #. [option]
 #. campaigns which the player hasn't beaten, rather than campaigns which the author hasn't finished writing
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:276
 msgid "Show campaigns not completed by player"
-msgstr ""
+msgstr "Mostrar campañas non completadas polo xogador"
 
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:280
 msgid "Completed: Bronze"
-msgstr ""
+msgstr "Completado: Bronce"
 
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:281
 msgid "Show campaigns completed at easiest difficulty"
-msgstr ""
+msgstr "Mostrar campañas completadas na dificultade máis doada"
 
-# Non o vin no contexto.
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:285
-#, fuzzy
-#| msgid "Computer Player"
 msgid "Completed: Silver"
-msgstr "Computador"
+msgstr "Completado: Prata"
 
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:286
 msgid "Show campaigns completed at intermediate difficulties"
-msgstr ""
+msgstr "Mostrar campañas completadas en dificultades intermedias"
 
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:290
 msgid "Completed: Gold"
-msgstr ""
+msgstr "Completado: Ouro"
 
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:291
 msgid "Show campaigns completed at hardest difficulty"
-msgstr ""
+msgstr "Mostrar campañas completadas na dificultade máis alta"
 
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:295
 msgid "Completed: All"
-msgstr ""
+msgstr "Completado: Todo"
 
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:296
 msgid "Show completed campaigns"
-msgstr ""
+msgstr "Mostrar campañas completadas"
 
 #. [label]
 #. [label]: id=mods_header
@@ -3391,14 +3226,12 @@ msgstr "Modificacións:"
 #. [label]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:372
 msgid "Combat:"
-msgstr ""
+msgstr "Combate:"
 
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:387
-#, fuzzy
-#| msgid "Default"
 msgid "Default RNG"
-msgstr "Predeterminado"
+msgstr "Xerador aleatorio predeterminado (RNG)"
 
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:388
@@ -3408,11 +3241,17 @@ msgid ""
 "Example: if you strike twice with 50% accuracy, you’re most likely to hit "
 "once and miss once, but might also hit twice or miss twice."
 msgstr ""
+"Aleatoriedade pura e imparcial; o xeito no que se pretende xogar ao Reino do "
+"Noroeste.\n"
+"\n"
+"Exemplo: se golpeas dúas veces cunha precisión do 50%, o máis probable é que "
+"acertes unha vez e falles unha, pero tamén podes acertar dúas veces ou "
+"fallar dúas veces."
 
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:393
 msgid "Predictable RNG"
-msgstr ""
+msgstr "RNG previsible"
 
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:394
@@ -3423,11 +3262,17 @@ msgid ""
 "Example: you strike twice and get lucky, hitting both strikes. You then load "
 "an earlier save and make the same attack again. Both strikes will still hit."
 msgstr ""
+"Idéntico ao RNG predeterminado, agás que cargar unha partida gardada non "
+"cambiará o resultado dun ataque.\n"
+"\n"
+"Exemplo: golpeas dúas veces e tes sorte, acertando ambos os golpes. Despois "
+"cargas unha partida gardada anterior e realizas o mesmo ataque de novo. "
+"Ambos golpes seguirán acertando."
 
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:399
 msgid "Reduced RNG"
-msgstr ""
+msgstr "RNG reducido"
 
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:400
@@ -3438,30 +3283,31 @@ msgid ""
 "Example: if you strike three times with 50% accuracy, you will always hit at "
 "least once and miss at least once."
 msgstr ""
+"Os acertos e os erros son moito máis consistentes. Isto tende a facilitar a "
+"planificación dos enfrontamentos a pequena escala.\n"
+"\n"
+"Exemplo: se golpeas tres veces cun 50% de precisión, sempre acertarás polo "
+"menos unha vez e fallarás polo menos unha vez."
 
 #. [label]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:417
-#, fuzzy
-#| msgid "Difficulty: "
 msgid "Difficulty:"
-msgstr "Dificultade: "
+msgstr "Dificultade:"
 
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:431
 msgid "Easy"
-msgstr ""
+msgstr "Fácil"
 
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:434
-#, fuzzy
-#| msgid "Normal Rug"
 msgid "Normal"
-msgstr "Alfombra normal"
+msgstr "Normal"
 
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:437
 msgid "Hard"
-msgstr ""
+msgstr "Difícil"
 
 # Aparece encabezando a lista de campañas, convidando ao usuario a xogar unha.
 #
@@ -3477,10 +3323,8 @@ msgstr "Xogar unha campaña ou escenario"
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:558
 #: data/gui/themes/default/dialogs/campaign_difficulty.cfg:221
 #: src/gui/dialogs/campaign_selection.cpp:77
-#, fuzzy
-#| msgid "Play"
 msgid "game^Play"
-msgstr "Reproducir"
+msgstr "Xogar"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
@@ -3495,10 +3339,8 @@ msgstr "Dificultade"
 
 #. [scroll_label]: id=message
 #: data/gui/themes/default/dialogs/campaign_difficulty.cfg:73
-#, fuzzy
-#| msgid "Select difficulty level:"
 msgid "Select difficulty:"
-msgstr "Escolle o nivel de dificultade:"
+msgstr "Escolle a dificultade:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -3590,22 +3432,18 @@ msgstr "Buscar"
 #: data/gui/themes/default/dialogs/game_cache_options.cfg:127
 #: data/gui/themes/default/dialogs/game_version.cfg:65
 msgid "Browse this location using a file manager"
-msgstr "Buscar neste lugar cun xestor de ficheiros."
+msgstr "Buscar neste lugar cun xestor de ficheiros"
 
 #. [button]: id=preview_
 #: data/gui/themes/default/dialogs/custom_tod.cfg:90
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:98
-#, fuzzy
-#| msgid "Previous page"
 msgid "Preview image"
-msgstr "Páxina anterior"
+msgstr "Previsualizar imaxe"
 
 #. [button]: id=preview_
 #: data/gui/themes/default/dialogs/custom_tod.cfg:108
-#, fuzzy
-#| msgid "Play Sound:"
 msgid "Play sound"
-msgstr "Reproducir un son:"
+msgstr "Reproducir son"
 
 #. [label]
 #: data/gui/themes/default/dialogs/custom_tod.cfg:186
@@ -3697,7 +3535,7 @@ msgstr "Eliminar o momento"
 #. [button]: id=preview_color
 #: data/gui/themes/default/dialogs/custom_tod.cfg:498
 msgid "Preview color changes on map"
-msgstr ""
+msgstr "Vista previa dos cambios de cor no mapa"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -3768,10 +3606,8 @@ msgstr "Só para o equipo."
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_choose_addon.cfg:47
-#, fuzzy
-#| msgid "Addon Details"
 msgid "Add-on Selection"
-msgstr "Detalles do complemento"
+msgstr "Selección de complementos"
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_choose_addon.cfg:64
@@ -3780,18 +3616,19 @@ msgid ""
 "New Add-on option is chosen, its ID can be changed via the Change Add-on ID "
 "option."
 msgstr ""
+"Escolle un complemento para asociar coa sesión actual do editor. Se se "
+"escolle a opción \"Novo complemento\", a súa ID pode ser cambiada a través "
+"da opción \"Cambiar ID do complemento."
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_choose_addon.cfg:162
-#, fuzzy
-#| msgid "Show ally orb"
 msgid "Show all"
-msgstr "Mostrar as esferas dos aliados."
+msgstr "Mostrar todo"
 
 #. [toggle_button]: id=show_all
 #: data/gui/themes/default/dialogs/editor_choose_addon.cfg:174
 msgid "Whether to show all installed add-ons or only your add-ons"
-msgstr ""
+msgstr "Se mostrar todos os complementos instalados ou só os teus complementos"
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_label.cfg:106
@@ -3826,36 +3663,34 @@ msgstr "Visíbel no manto"
 #. [label]: id=title
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:84
 msgid "Add-on Publishing Setup"
-msgstr ""
+msgstr "Configuración de publicación do complemento"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:150
 msgid "The name of the add-on displayed in-game."
-msgstr ""
+msgstr "O nome do complemento mostrado no xogo."
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:150
 msgid "Title:"
-msgstr ""
+msgstr "Título:"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:151
 msgid "The description of the add-on to display in the add-ons manager."
-msgstr ""
+msgstr "A descrición do complemento que se mostrará no xestor de complementos."
 
 #. [label]: id=icon_label
 #. [grid]: id=grid_atk
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:162
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:661
 msgid "Icon:"
-msgstr ""
+msgstr "Ícona:"
 
 #. [button]: id=select_icon
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:182
-#, fuzzy
-#| msgid "Select None"
 msgid "Select an icon file"
-msgstr "Non seleccionar nada"
+msgstr "Selecciona un ficheiro de ícona"
 
 #. [text_box]: id=icon
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:195
@@ -3863,6 +3698,8 @@ msgid ""
 "The path to the icon image to display in the add-ons manager. Must be an "
 "image from mainline."
 msgstr ""
+"A ruta á imaxe do icono que se mostrará no xestor de complementos. Debe ser "
+"unha imaxe da liña principal."
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:206
@@ -3875,11 +3712,13 @@ msgid ""
 "The author of this add-on. If forum authentication is used, this is your "
 "forum username."
 msgstr ""
+"O autor deste complemento. Se se usa a autenticación no foro, este será o "
+"teu nome de usuario no foro."
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:207
 msgid "The add-on’s current version. This should be of the form X.Y.Z."
-msgstr ""
+msgstr "A versión actual do complemento. Isto debe estar no formato X.Y.Z."
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:208
@@ -3888,11 +3727,14 @@ msgid ""
 "depends on. The add-on ID is the folder name in your operating system’s file "
 "manager, not the add-on’s name."
 msgstr ""
+"Unha lista delimitada por vírgulas das IDs de calquera outro complemento do "
+"que dependa este complemento. A ID do complemento é o nome da carpeta no "
+"xestor de arquivos do teu sistema operativo, non o nome do complemento."
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:211
 msgid "Forum thread:"
-msgstr ""
+msgstr "Fío do foro:"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:211
@@ -3900,21 +3742,23 @@ msgid ""
 "The numeric topic ID of a thread on the Wesnoth forums where players can "
 "post feedback."
 msgstr ""
+"A ID numérica do tema dun fío no foro de Wesnoth onde os xogadores poden "
+"publicar comentarios."
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:212
 msgid "Forum URL"
-msgstr ""
+msgstr "URL do foro"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:212
 msgid "The full URL of your feedback thread on the forums."
-msgstr ""
+msgstr "A URL completa do teu fío de comentarios nos foros."
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:213
 msgid "Forum Authentication:"
-msgstr ""
+msgstr "Autenticación no foro:"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:213
@@ -3922,6 +3766,9 @@ msgid ""
 "Whether to use your forum username and password when uploading or to store "
 "your password and email address in the add-on’s _server.pbl."
 msgstr ""
+"Se utilizar o teu nome de usuario e contrasinal do foro ao cargar ou se "
+"almacenar a túa contrasinal e dirección de correo electrónico no arquivo "
+"_server.pbl do complemento."
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:214
@@ -3929,13 +3776,14 @@ msgid ""
 "Comma delimited list of forum usernames of other people who are allowed to "
 "upload updates for this add-on or delete this add-on."
 msgstr ""
+"Lista delimitada por vírgulas dos nomes de usuario do foro doutras persoas "
+"que teñen permiso para cargar actualizacións para este complemento ou "
+"eliminalo."
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:214
-#, fuzzy
-#| msgid "Author:"
 msgid "Primary Authors:"
-msgstr "Autor:"
+msgstr "Autores principais:"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:215
@@ -3943,22 +3791,26 @@ msgid ""
 "Comma delimited list of forum usernames of other people who are allowed to "
 "upload updates for this add-on."
 msgstr ""
+"Lista delimitada por vírgulas dos nomes de usuario do foro doutras persoas "
+"que teñen permiso para cargar actualizacións para este complemento."
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:215
 msgid "Secondary Authors:"
-msgstr ""
+msgstr "Autores secundarios:"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:216
 msgid ""
 "An email address you can be contacted at in case of issues with your add-on."
 msgstr ""
+"Unha dirección de correo electrónico na que se che pode contactar en caso de "
+"problemas co teu complemento."
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:216
 msgid "Email:"
-msgstr ""
+msgstr "Correo electrónico:"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:217
@@ -3966,27 +3818,25 @@ msgid ""
 "The add-on’s current password. Using forum authentication is recommended "
 "instead since this password is not stored securely."
 msgstr ""
+"A contrasinal actual do complemento. Recoméndase utilizar a autenticación no "
+"foro, xa que esta contrasinal non se almacena de forma segura."
 
 #. [label]: id=translations_title
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:275
 msgid "Title"
-msgstr ""
+msgstr "Título"
 
 #. [label]: id=translations_description
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:292
-#, fuzzy
-#| msgid "Description:"
 msgid "Description"
-msgstr "Descrición:"
+msgstr "Descrición"
 
 #. [button]: id=translations_add
 #. [button]: id=server_add
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:407
 #: data/gui/themes/default/dialogs/mp_connect.cfg:270
-#, fuzzy
-#| msgid "Address"
 msgid "Add"
-msgstr "Enderezo"
+msgstr "Engadir"
 
 #. [button]: id=translations_delete
 #. [button]: id=delete_file
@@ -4002,7 +3852,7 @@ msgstr "Eliminar"
 #. [button]: id=validate
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:452
 msgid "Validate"
-msgstr ""
+msgstr "Validar"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
@@ -4016,25 +3866,19 @@ msgstr "Gardar"
 
 #. [label]: id=title
 #: data/gui/themes/default/dialogs/editor_edit_pbl_translation.cfg:69
-#, fuzzy
-#| msgid "Translations:"
 msgid "Translation"
-msgstr "Traducións:"
+msgstr "Tradución"
 
 # recordatorio de contrasinal
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_pbl_translation.cfg:84
-#, fuzzy
-#| msgid "Password Required"
 msgid "* Required"
-msgstr "Requírese contrasinal"
+msgstr "Requírido"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl_translation.cfg:97
-#, fuzzy
-#| msgid "Language"
 msgid "* Language:"
-msgstr "Lingua"
+msgstr "* Lingua:"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl_translation.cfg:97
@@ -4042,21 +3886,23 @@ msgid ""
 "The POSIX locale name of the translation, such as sv (Swedish) or zh_CN "
 "(Simplified Chinese)."
 msgstr ""
+"O nome da localización POSIX da tradución, como sv (sueco) ou zh_CN (chinés "
+"simplificado)."
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl_translation.cfg:98
 msgid "* Title:"
-msgstr ""
+msgstr "* Título:"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl_translation.cfg:98
 msgid "The translation of the add-on’s title."
-msgstr ""
+msgstr "A tradución do título do complemento."
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl_translation.cfg:99
 msgid "The translation of the add-on’s description."
-msgstr ""
+msgstr "A tradución da descrición do complemento."
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
@@ -4114,10 +3960,8 @@ msgstr "Nome do equipo:"
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_side.cfg:164
-#, fuzzy
-#| msgid "Recruits:"
 msgid "Recruit list:"
-msgstr "Recrutas:"
+msgstr "Lista de recrutas:"
 
 #. [toggle_button]: id=no_leader
 #: data/gui/themes/default/dialogs/editor_edit_side.cfg:218
@@ -4203,24 +4047,22 @@ msgstr "Nada"
 #. [button]: id=load_unit_type
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:174
 msgid "Load Unit Type"
-msgstr ""
+msgstr "Cargar tipo de unidade"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:208
-#, fuzzy
-#| msgid "Image:"
 msgid "Unit Image:"
-msgstr "Imaxe:"
+msgstr "Imaxe da unidade:"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:210
 msgid "Portrait:"
-msgstr ""
+msgstr "Retrato:"
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:221
 msgid "Level:"
-msgstr ""
+msgstr "Nivel:"
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:246
@@ -4231,62 +4073,48 @@ msgstr "Xénero:"
 
 #. [row]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:254
-#, fuzzy
-#| msgid "Random"
 msgid "gender^Male"
-msgstr "Aleatorio"
+msgstr "Masculino"
 
 #. [row]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:255
-#, fuzzy
-#| msgid "Female"
 msgid "gender^Female"
 msgstr "Feminino"
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:270
-#, fuzzy
-#| msgid "Advance Unit"
 msgid "Advances to:"
-msgstr "Avanzar a unidade"
+msgstr "Avanzar a:"
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:296
-#, fuzzy
-#| msgid "Race"
 msgid "Race:"
-msgstr "Especie"
+msgstr "Especie:"
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:349
 msgid "Alignment:"
-msgstr ""
+msgstr "Aliñamento:"
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:375
-#, fuzzy
-#| msgid "HP: "
 msgid "HP:"
-msgstr "Vida: "
+msgstr "Vida:"
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:405
-#, fuzzy
-#| msgid "XP: "
 msgid "XP:"
-msgstr "Exp.: "
+msgstr "Exp.:"
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:435
 msgid "Cost:"
-msgstr ""
+msgstr "Custo:"
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:465
-#, fuzzy
-#| msgid "Movement Costs:"
 msgid "Movement:"
-msgstr "Custos de movemento:"
+msgstr "Movemento:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
@@ -4299,70 +4127,58 @@ msgstr "Ataques"
 
 #. [button]: id=atk_new
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:589
-#, fuzzy
-#| msgid "Attack"
 msgid "New Attack"
-msgstr "Atacar"
+msgstr "Novo ataque"
 
 #. [button]: id=atk_delete
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:602
-#, fuzzy
-#| msgid "Select/Move/Attack"
 msgid "Delete Attack"
-msgstr "Seleccionar, mover ou atacar"
+msgstr "Eliminar ataque"
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:672
 msgid "Range:"
-msgstr ""
+msgstr "Rango:"
 
 #. [option]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:686
 msgid "range^Melee"
-msgstr ""
+msgstr "Corpo a corpo"
 
 #. [option]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:690
 msgid "range^Ranged"
-msgstr ""
+msgstr "A distancia"
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:731
-#, fuzzy
-#| msgid "Damage"
 msgid "Damage:"
-msgstr "Dano"
+msgstr "Dano:"
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:758
 msgid "Hits:"
-msgstr ""
+msgstr "Golpes"
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:786
 msgid "Specials:"
-msgstr ""
+msgstr "Especiais: "
 
 #. [grid]: id=grid_adv
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:828
-#, fuzzy
-#| msgid "Profile"
 msgid "Small Profile"
-msgstr "Perfil"
+msgstr "Perfil pequeno"
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:839
-#, fuzzy
-#| msgid "Abilities"
 msgid "Abilities:"
-msgstr "Habilidades"
+msgstr "Habilidades:"
 
 #. [label]: id=movetype_label
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:865
-#, fuzzy
-#| msgid "Contents"
 msgid "Movetype:"
-msgstr "Contido"
+msgstr "Tipo de movemento:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=movement_costs_label
@@ -4373,38 +4189,28 @@ msgstr "Custos de movemento:"
 
 #. [label]: id=defense_label
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:961
-#, fuzzy
-#| msgid "Defender"
 msgid "Defense:"
-msgstr "Defensor"
+msgstr "Defensa:"
 
 #. [label]: id=resistance_label
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:1014
-#, fuzzy
-#| msgid "Resistances: "
 msgid "Resistances:"
-msgstr "Resistencias: "
+msgstr "Resistencias:"
 
 #. [label]: id=usage_label
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:1067
-#, fuzzy
-#| msgid "Image:"
 msgid "AI Usage:"
-msgstr "Imaxe:"
+msgstr "Uso da IA:"
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:1170
-#, fuzzy
-#| msgid "Quit Editor"
 msgid "Unit Type Editor"
-msgstr "Saír do editor"
+msgstr "Editor de tipos de unidade"
 
 #. [tab]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:1192
-#, fuzzy
-#| msgid "Game Stats"
 msgid "Main Stats"
-msgstr "Estatísticas da partida"
+msgstr "Estatísticas principais"
 
 #. [tab]
 #. [widget]: id=label
@@ -4416,7 +4222,7 @@ msgstr "Avanzado"
 #. [tab]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:1213
 msgid "WML View"
-msgstr ""
+msgstr "Vista WML"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -4538,7 +4344,7 @@ msgstr "Lugares"
 #. [button]: id=add_bookmark
 #: data/gui/themes/default/dialogs/file_dialog.cfg:280
 msgid "Bookmarks the current folder"
-msgstr "Engade o cartafol actual aos marcadores."
+msgstr "Engade o cartafol actual aos marcadores"
 
 #. [button]: id=remove_bookmark
 #: data/gui/themes/default/dialogs/file_dialog.cfg:292
@@ -4548,12 +4354,12 @@ msgstr "Retira o marcador actual."
 #. [button]: id=open_ext
 #: data/gui/themes/default/dialogs/file_dialog.cfg:319
 msgid "Open External"
-msgstr ""
+msgstr "Abrir externo"
 
 #. [button]: id=open_ext
 #: data/gui/themes/default/dialogs/file_dialog.cfg:320
 msgid "Open selected using platform’s default applications"
-msgstr ""
+msgstr "Abrir a selección usando as aplicacións predeterminadas da plataforma"
 
 #. [button]: id=new_dir
 #. [label]: id=title
@@ -4650,7 +4456,7 @@ msgstr "Limpar"
 #. [button]: id=clean
 #: data/gui/themes/default/dialogs/game_cache_options.cfg:195
 msgid "Clear stale and unused cache files"
-msgstr "Limpar os ficheiros vellos e innecesarios da caché."
+msgstr "Limpar os ficheiros vellos e innecesarios da caché"
 
 #. [button]: id=purge
 #: data/gui/themes/default/dialogs/game_cache_options.cfg:207
@@ -4701,7 +4507,7 @@ msgstr "Abrir o cartafol de partidas"
 #. [menu_button]: id=dirList
 #: data/gui/themes/default/dialogs/game_load.cfg:361
 msgid "Show saves from a different version of Wesnoth"
-msgstr ""
+msgstr "Mostrar gardados dunha versión diferente de Wesnoth"
 
 #. [toggle_button]: id=change_difficulty
 #: data/gui/themes/default/dialogs/game_load.cfg:537
@@ -4881,33 +4687,35 @@ msgstr "Ir"
 #. [label]
 #: data/gui/themes/default/dialogs/game_version.cfg:122
 msgid "<span font_family='DejaVu Sans'>✦</span> <b>Version:</b>"
-msgstr ""
+msgstr "<span font_family='DejaVu Sans'>✦</span> <b>Versión:</b>"
 
 #. [label]
 #: data/gui/themes/default/dialogs/game_version.cfg:150
 msgid "<span font_family='DejaVu Sans'>✦</span> <b>Running on:</b>"
-msgstr ""
+msgstr "<span font_family='DejaVu Sans'>✦</span> <b>Executándose en:</b>"
 
 #. [label]
 #: data/gui/themes/default/dialogs/game_version.cfg:179
 msgid "<span font_family='DejaVu Sans'>✦</span> <b>Architecture:</b>"
-msgstr ""
+msgstr "<span font_family='DejaVu Sans'>✦</span> <b>Arquitectura:</b>"
 
 #. [label]
 #: data/gui/themes/default/dialogs/game_version.cfg:207
 msgid "<span font_family='DejaVu Sans'>✦</span> <b>Homepage:</b>"
-msgstr ""
+msgstr "<span font_family='DejaVu Sans'>✦</span> <b>Páxina de inicio:</b>"
 
 #. [label]
 #: data/gui/themes/default/dialogs/game_version.cfg:239
 msgid "<span font_family='DejaVu Sans'>✦</span> <b>Wiki:</b>"
-msgstr ""
+msgstr "<span font_family='DejaVu Sans'>✦</span> <b>Wiki:</b>"
 
 #. [label]
 #: data/gui/themes/default/dialogs/game_version.cfg:279
 msgid ""
 "<i><span font_family='DejaVu Sans'>➤</span> Copy a full report here:</i>"
 msgstr ""
+"<i><span font_family='DejaVu Sans'>➤</span> Copiar un informe completo aquí:"
+"</i>"
 
 #. [label]
 #: data/gui/themes/default/dialogs/game_version.cfg:299
@@ -4915,22 +4723,24 @@ msgid ""
 "<i><span font_family='DejaVu Sans'>➤</span> Report an issue or request a "
 "feature:</i>"
 msgstr ""
+"<i><span font_family='DejaVu Sans'>➤</span> Informar dun problema ou "
+"solicitar unha funcionalidade:</i>"
 
 #. [button]: id=issue
 #: data/gui/themes/default/dialogs/game_version.cfg:312
 msgid "Report Issue"
-msgstr ""
+msgstr "Informar dun problema"
 
 #. [label]
 #: data/gui/themes/default/dialogs/game_version.cfg:321
 msgid "<i><span font_family='DejaVu Sans'>➤</span> View Game Manual:</i>"
-msgstr ""
+msgstr "<i><span font_family='DejaVu Sans'>➤</span> Ver o manual do xogo:</i>"
 
 #. [button]: id=view_manual
 #. button to open the game manual in the platform's browser.
 #: data/gui/themes/default/dialogs/game_version.cfg:334
 msgid "View Manual"
-msgstr ""
+msgstr "Ver manual"
 
 #. [label]
 #: data/gui/themes/default/dialogs/game_version.cfg:342
@@ -4938,14 +4748,14 @@ msgid ""
 "<i><span font_family='DejaVu Sans'>➤</span> Re-open the version migrator "
 "dialog:</i>"
 msgstr ""
+"<i><span font_family='DejaVu Sans'>➤</span> Volva abrir o diálogo de "
+"migración de versións:</i>"
 
 #. [button]: id=run_migrator
 #. button to open the version migration dialog manually to re-migrate add-ons and the preferences file
 #: data/gui/themes/default/dialogs/game_version.cfg:355
-#, fuzzy
-#| msgid "Crater"
 msgid "Migrate"
-msgstr "Cráter"
+msgstr "Migrar"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/game_version.cfg:392
@@ -4975,32 +4785,26 @@ msgstr "Caché:"
 #. [grid]
 #: data/gui/themes/default/dialogs/game_version.cfg:402
 msgid "Logs:"
-msgstr ""
+msgstr "Rexistros:"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/game_version.cfg:404
-#, fuzzy
-#| msgid "Screenshot"
 msgid "Screenshots:"
-msgstr "Facer unha captura do xogo"
+msgstr "Capturasdo xogo:"
 
 #. [button]: id=open_stderr
 #: data/gui/themes/default/dialogs/game_version.cfg:438
-#, fuzzy
-#| msgid "Open Log File"
 msgid "Log File"
-msgstr "Abrir o ficheiro do historial"
+msgstr "Ficheiro do historial"
 
 #. [button]: id=open_stderr
 #: data/gui/themes/default/dialogs/game_version.cfg:439
-#, fuzzy
-#| msgid "Opens the log file, which may contain useful debug information"
 msgid ""
 "Opens the log file pertaining to the current session, which may contain "
 "useful debug information"
 msgstr ""
-"Abre o ficheiro do historial, que podería conter información de depuración "
-"útil."
+"Abre o ficheiro do historial relativo á sesión actual, que pode conter "
+"información útil para a depuración"
 
 #. [label]
 #: data/gui/themes/default/dialogs/game_version.cfg:469
@@ -5029,42 +4833,44 @@ msgstr ""
 #. this is on a button that opens the Wesnoth forums webpage
 #: data/gui/themes/default/dialogs/game_version.cfg:653
 msgid "Forums"
-msgstr ""
+msgstr "Foros"
 
 #. [button]: id=discord
 #. this is on a button that opens the Wesnoth Discord server webpage
 #: data/gui/themes/default/dialogs/game_version.cfg:672
 msgid "Discord"
-msgstr ""
+msgstr "Discord"
 
 #. [button]: id=irc
 #. this is on a button that opens the Wesnoth IRC webpage. IRC is an acronym for Internet Relay Chat
 #: data/gui/themes/default/dialogs/game_version.cfg:691
 msgid "IRC"
-msgstr ""
+msgstr "IRC"
 
 #. [button]: id=steam
 #. this is on a button that opens the Wesnoth Steam forums webpage
 #: data/gui/themes/default/dialogs/game_version.cfg:710
 msgid "Steam"
-msgstr ""
+msgstr "Steam"
 
 #. [button]: id=reddit
 #. this is on a button that opens the Wesnoth Reddit webpage
 #: data/gui/themes/default/dialogs/game_version.cfg:729
 msgid "Reddit"
-msgstr ""
+msgstr "Reddit"
 
 #. [button]: id=donate
 #. this is on a button that opens the Wesnoth SPI webpage for sending donations
 #: data/gui/themes/default/dialogs/game_version.cfg:748
 msgid "Donate"
-msgstr ""
+msgstr "Doar"
 
 #. [label]: id=description
 #: data/gui/themes/default/dialogs/game_version.cfg:844
 msgid "An open source, turn-based strategy game with a high fantasy theme."
 msgstr ""
+"Un xogo de estratexia por roldas de código aberto con temática de gran "
+"fantasía."
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [tab]
@@ -5102,12 +4908,12 @@ msgstr "Autores"
 #. [button]: id=license
 #: data/gui/themes/default/dialogs/game_version.cfg:972
 msgid "License"
-msgstr ""
+msgstr "Licenza"
 
 #. [label]
 #: data/gui/themes/default/dialogs/gamestate_inspector.cfg:16
 msgid "inspector tree item^•"
-msgstr ""
+msgstr "elemento da árbore do inspector^•"
 
 #. [label]
 #: data/gui/themes/default/dialogs/gamestate_inspector.cfg:94
@@ -5179,15 +4985,13 @@ msgstr "Mostrar as etiquetas."
 
 #. [toggle_button]: id=contents
 #: data/gui/themes/default/dialogs/help_browser.cfg:125
-#, fuzzy
-#| msgid "Show Credits"
 msgid "Show Topics"
-msgstr "Mostrar a lista dos autores"
+msgstr "Mostrar temas"
 
 #. [text_box]: id=filter_box
 #: data/gui/themes/default/dialogs/help_browser.cfg:163
 msgid "Search help topic names"
-msgstr ""
+msgstr "Buscar temas de axuda por nome"
 
 #. [label]
 #: data/gui/themes/default/dialogs/hotkey_bind.cfg:35
@@ -5206,6 +5010,9 @@ msgid ""
 "including translation. Translations may drift behind or even become "
 "abandoned."
 msgstr ""
+"<i>A batalla por Wesnoth</i> depende de voluntarios para o desenvolvemento, "
+"incluída a tradución. As traducións poden quedar atrás ou incluso quedar "
+"abandonadas."
 
 #. [label]
 #. Beneath the label widget displaying this text there is a widget displaying
@@ -5216,6 +5023,9 @@ msgid ""
 "interface and in-game help only. More complete stats, including details for "
 "each campaign, are available at the following page:"
 msgstr ""
+"<b>Nota:</b> As porcentaxes de tradución que se mostran só aplícanse á "
+"interface principal do xogo e á axuda do xogo. Na seguinte páxina están "
+"dispoñibles estatísticas máis completas, incluíndo detalles de cada campaña:"
 
 #. [label]
 #. Beneath the label widget displaying this text there is a widget displaying
@@ -5225,11 +5035,13 @@ msgid ""
 "If you are interested in translating the game yourself, please follow the "
 "link below for more information:"
 msgstr ""
+"Se estás interesado en traducir o xogo por ti mesmo, siga a seguinte ligazón "
+"para obter máis información:"
 
 #. [toggle_button]: id=show_all
 #: data/gui/themes/default/dialogs/language_selection.cfg:276
 msgid "Show in-progress or abandoned translations"
-msgstr ""
+msgstr "Mostra traducións en curso ou abandonadas"
 
 #. [label]: id=status
 #: data/gui/themes/default/dialogs/loadscreen.cfg:183
@@ -5238,17 +5050,15 @@ msgstr "Cargando…"
 
 #. [widget]: id=tab_label
 #: data/gui/themes/default/dialogs/lobby_main.cfg:75
-#, fuzzy
-#| msgid "General"
 msgid "General Lobby"
-msgstr "Xeral"
+msgstr "Sala de espera Xeral"
 
 #. [widget]: id=tab_label
 #. Games which were created by a bot, there's discussion about the meaning and
 #. possibly better names in https://github.com/wesnoth/wesnoth/issues/8148
 #: data/gui/themes/default/dialogs/lobby_main.cfg:88
 msgid "Matchmaking"
-msgstr ""
+msgstr "Emparellamento"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [widget]: id=tab_label
@@ -5288,7 +5098,7 @@ msgstr "Postos vacantes"
 #. [toggle_button]: id=filter_vacant_slots
 #: data/gui/themes/default/dialogs/lobby_main.cfg:478
 msgid "Only show games with vacant slots"
-msgstr ""
+msgstr "Amosar só os xogos con prazas libres"
 
 # Aparece en dous lugares:
 # 1. Nunha caixa para marcar na interface da sala de espera para partidas con varios xogadores, onde debería acabar en punto.
@@ -5305,20 +5115,18 @@ msgstr "Amigos"
 #. [toggle_button]: id=filter_with_friends
 #: data/gui/themes/default/dialogs/lobby_main.cfg:491
 msgid "Only show games with friends"
-msgstr ""
+msgstr "Amosar só os xogos con amigos"
 
 # Non o vin no contexto.
 #. [toggle_button]: id=filter_with_ignored
 #: data/gui/themes/default/dialogs/lobby_main.cfg:503
-#, fuzzy
-#| msgid "Choose Player"
 msgid "Blocked players"
-msgstr "Escoller un xogador"
+msgstr "Bloquear xogadores"
 
 #. [toggle_button]: id=filter_with_ignored
 #: data/gui/themes/default/dialogs/lobby_main.cfg:504
 msgid "Show games that include players you have blocked"
-msgstr ""
+msgstr "Amosar xogos que inclúan xogadores que bloqueaches"
 
 # Aparece na nova interface da sala de espera para partidas con varios xogadores.
 #
@@ -5360,10 +5168,8 @@ msgstr "Observar"
 #. [widget]: id=tab_label
 #: data/gui/themes/default/dialogs/lobby_main.cfg:588
 #: data/gui/themes/default/dialogs/server_info.cfg:168
-#, fuzzy
-#| msgid "Advancements"
 msgid "Announcements"
-msgstr "Avances"
+msgstr "Anuncios"
 
 #. [button]: id=view_profile
 #. [button]: id=type_profile
@@ -5380,7 +5186,7 @@ msgstr "Perfil"
 #: data/gui/themes/default/dialogs/lobby_main.cfg:662
 #: data/gui/themes/default/dialogs/mp_match_history.cfg:299
 msgid "Match History"
-msgstr ""
+msgstr "Historial de partidos"
 
 #. [button]: id=quit
 #: data/gui/themes/default/dialogs/lobby_main.cfg:679
@@ -5401,7 +5207,7 @@ msgstr "Repeticións rápidas"
 #. [option]
 #: data/gui/themes/default/dialogs/lobby_main.cfg:704
 msgid "Skip quickly to the active turn when observing"
-msgstr "Saltar rapidamente á quenda activa ao observar."
+msgstr "Saltar rapidamente á rolda activa ao observar"
 
 #. [option]
 #: data/gui/themes/default/dialogs/lobby_main.cfg:708
@@ -5411,19 +5217,17 @@ msgstr "Entrar sen ver"
 #. [option]
 #: data/gui/themes/default/dialogs/lobby_main.cfg:709
 msgid "Do not show the map until given control of a side"
-msgstr "Non ver o mapa ata obter control dun bando."
+msgstr "Non ver o mapa ata obter control dun bando"
 
 #. [button]: id=join_queue
 #: data/gui/themes/default/dialogs/lobby_main.cfg:728
 msgid "Join Queue"
-msgstr ""
+msgstr "Unirse á cola"
 
 #. [button]: id=leave_queue
 #: data/gui/themes/default/dialogs/lobby_main.cfg:738
-#, fuzzy
-#| msgid "Leave"
 msgid "Leave Queue"
-msgstr "Marchar"
+msgstr "Saír da cola"
 
 # Aparece na nova interface da sala de espera para partidas con varios xogadores.
 #. [label]
@@ -5494,10 +5298,8 @@ msgstr "Expulsar"
 
 #. [button]: id=stopgame
 #: data/gui/themes/default/dialogs/lobby_player_info.cfg:272
-#, fuzzy
-#| msgid "Load Game"
 msgid "Stop Game"
-msgstr "Cargar unha partida"
+msgstr "Deter partida"
 
 #: data/gui/themes/default/dialogs/logging.cfg:20
 msgid "Debug level logging: maximum information"
@@ -5526,35 +5328,33 @@ msgstr "Opcións de rexistro"
 
 #. [label]
 #: data/gui/themes/default/dialogs/logging.cfg:192
-#, fuzzy
-#| msgid "Log Cabin"
 msgid "Log Domain"
-msgstr "Cabana de madeira"
+msgstr "Dominio do rexistro"
 
 #. [row]
 #: data/gui/themes/default/dialogs/logging.cfg:196
 msgid "log_level^Debug"
-msgstr ""
+msgstr "nivel_de_rexistro^Depuración"
 
 #. [row]
 #: data/gui/themes/default/dialogs/logging.cfg:197
 msgid "log_level^Info"
-msgstr ""
+msgstr "nivel_de_rexistro^Información"
 
 #. [row]
 #: data/gui/themes/default/dialogs/logging.cfg:198
 msgid "log_level^Warning"
-msgstr ""
+msgstr "nivel_de_rexistro^Aviso"
 
 #. [row]
 #: data/gui/themes/default/dialogs/logging.cfg:199
 msgid "log_level^Error"
-msgstr ""
+msgstr "nivel_de_rexistro^Erro"
 
 #. [row]
 #: data/gui/themes/default/dialogs/logging.cfg:200
 msgid "log_level^None"
-msgstr ""
+msgstr "nivel_de_rexistro^Ningún"
 
 #. [button]: id=clear
 #: data/gui/themes/default/dialogs/lua_interpreter.cfg:117
@@ -5569,7 +5369,7 @@ msgstr "Limpar a zona do rexistro."
 #. [label]
 #: data/gui/themes/default/dialogs/migrate_version_selection.cfg:40
 msgid "Data Migration"
-msgstr ""
+msgstr "Migración de datos"
 
 #. [label]
 #: data/gui/themes/default/dialogs/migrate_version_selection.cfg:53
@@ -5577,6 +5377,8 @@ msgid ""
 "Choose which version of Wesnoth to import your data from.\n"
 "Some settings will not take effect until Wesnoth is restarted."
 msgstr ""
+"Escolle que versión de Wesnoth usar para importar os teus datos.\n"
+"Algunhas configuracións non terán efecto até que Wesnoth se reinicie."
 
 #. [button]: id=cancel
 #: data/gui/themes/default/dialogs/migrate_version_selection.cfg:127
@@ -5620,133 +5422,111 @@ msgstr "Na sala de espera"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/mp_alerts_options.cfg:184
-#, fuzzy
-#| msgid "Player joins:"
 msgid "Player joins"
-msgstr "Uniuse un xogador:"
+msgstr "Uniuse un xogador"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/mp_alerts_options.cfg:184
 msgid "When a player joins the lobby or game"
-msgstr "Cando un xogador se une á sala de espera ou á partida."
+msgstr "Cando un xogador se une á sala de espera ou á partida"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/mp_alerts_options.cfg:185
-#, fuzzy
-#| msgid "Player leaves:"
 msgid "Player leaves"
-msgstr "Un xogador marchou:"
+msgstr "Un xogador marchou"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/mp_alerts_options.cfg:185
 msgid "When a player leaves the lobby or game"
-msgstr "Cando un xogador marcha da sala de espera ou da partida."
+msgstr "Cando un xogador marcha da sala de espera ou da partida"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/mp_alerts_options.cfg:186
 msgid "When a whisper is received"
-msgstr "Cando se recibe unha mensaxe privada."
+msgstr "Cando se recibe unha mensaxe privada"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
 #: data/gui/themes/default/dialogs/mp_alerts_options.cfg:186
 #: src/gui/dialogs/multiplayer/mp_report.cpp:47
-#, fuzzy
-#| msgid "Whisper:"
 msgid "Whisper"
-msgstr "Mensaxe privada:"
+msgstr "Mensaxe privada"
 
 # Aparece na nova interface da sala de espera para partidas con varios xogadores.
 #. [grid]
 #: data/gui/themes/default/dialogs/mp_alerts_options.cfg:187
-#, fuzzy
-#| msgid "Friend message:"
 msgid "Friend message"
-msgstr "Mensaxe dun amigo:"
+msgstr "Mensaxe dun amigo"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/mp_alerts_options.cfg:187
 msgid "When a message from a friend is received"
-msgstr "Cando se recibe unha mensaxe dun amigo."
+msgstr "Cando se recibe unha mensaxe dun amigo"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/mp_alerts_options.cfg:188
-#, fuzzy
-#| msgid "Public message:"
 msgid "Public message"
-msgstr "Mensaxe pública:"
+msgstr "Mensaxe pública"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/mp_alerts_options.cfg:188
 msgid "When a public message is received"
-msgstr "Cando se recibe unha mensaxe pública."
+msgstr "Cando se recibe unha mensaxe pública"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/mp_alerts_options.cfg:189
-#, fuzzy
-#| msgid "Server message:"
 msgid "Server message"
-msgstr "Mensaxe do servidor:"
+msgstr "Mensaxe do servidor"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/mp_alerts_options.cfg:189
 msgid "When a server message is received"
-msgstr "Cando se recibe unha mensaxe do servidor."
+msgstr "Cando se recibe unha mensaxe do servidor"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/mp_alerts_options.cfg:190
-#, fuzzy
-#| msgid "Ready to start:"
 msgid "Ready to start"
-msgstr "Listo para comezar:"
+msgstr "Listo para comezar"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/mp_alerts_options.cfg:190
 msgid "When the game you are hosting is ready to start"
-msgstr "Cando a partida da que vostede é o anfitrión está lista para comezar."
+msgstr "Cando a partida da que vostede é o anfitrión está lista para comezar"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/mp_alerts_options.cfg:191
-#, fuzzy
-#| msgid "Game has begun:"
 msgid "Game has begun"
-msgstr "Comezou a partida:"
+msgstr "Comezou a partida"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/mp_alerts_options.cfg:191
 msgid "When the host (not you) has started the game"
-msgstr "Cando o anfitrión inicia a partida (e vostede non é o anfitrión)."
+msgstr "Cando o anfitrión inicia a partida (e vostede non é o anfitrión)"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/mp_alerts_options.cfg:192
-#, fuzzy
-#| msgid "Turn changed:"
 msgid "Turn changed"
-msgstr "Cambiou a quenda:"
+msgstr "Cambiou a rolda"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/mp_alerts_options.cfg:192
 msgid "When a new turn has begun"
-msgstr "Cando comeza a súa quenda."
+msgstr "Cando comeza a súa rolda"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/mp_alerts_options.cfg:193
-#, fuzzy
-#| msgid "Game data:"
 msgid "Game created"
-msgstr "Datos do xogo:"
+msgstr "Xogo creado"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/mp_alerts_options.cfg:193
-#, fuzzy
-#| msgid "When a new turn has begun"
 msgid "When a new game has been created"
-msgstr "Cando comeza a súa quenda."
+msgstr "Cando se crea un xogo novo"
 
 #. [button]: id=revert_to_defaults
 #: data/gui/themes/default/dialogs/mp_alerts_options.cfg:228
 msgid "Reset all options to their default values"
-msgstr "Restabelecer os valores predeterminados de todas as opcións."
+msgstr "Restabelecer os valores predeterminados de todas as opcións"
 
 #. [label]: id=nick_title
 #: data/gui/themes/default/dialogs/mp_change_control.cfg:75
@@ -5760,17 +5540,13 @@ msgstr "Cambiar o control"
 
 #. [label]
 #: data/gui/themes/default/dialogs/mp_connect.cfg:71
-#, fuzzy
-#| msgid "Log on to the official Wesnoth multiplayer server"
 msgid "Choose or enter the address of a multiplayer server."
-msgstr "Conectarse ao servidor oficial de partidas con varios xogadores."
+msgstr "Escolle ou introduce o enderezo dun servidor multixogador."
 
 #. [label]
 #: data/gui/themes/default/dialogs/mp_connect.cfg:101
-#, fuzzy
-#| msgid "Address"
 msgid "Address:"
-msgstr "Enderezo"
+msgstr "Enderezo:"
 
 #. [label]: id=address
 #: data/gui/themes/default/dialogs/mp_connect.cfg:176
@@ -5789,53 +5565,51 @@ msgstr "Reparto aleatorio de faccións:"
 
 #. [label]
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:145
-#, fuzzy
-#| msgid "Allow for mirror matchups when random factions are chosen."
 msgid "Allow for mirror matchups when random factions are chosen"
 msgstr ""
-"Modo de repartición de faccións cando se seleccionan faccións aleatorias."
+"Modo de repartición de faccións cando se seleccionan faccións aleatorias"
 
 #. [option]
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:166
 msgid "Independent"
-msgstr ""
+msgstr "Independente"
 
 #. [option]
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:167
 msgid "Independent: Random factions assigned independently"
-msgstr "Indepentente: repartir as faccións de maneira independente."
+msgstr "Indepentente: repartir as faccións de maneira independente"
 
 #. [option]
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:171
 msgid "No Mirror"
-msgstr ""
+msgstr "Sen espello"
 
 #. [option]
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:172
 msgid "No Mirror: No two players will get the same faction"
-msgstr "Non repetir: a cada xogador se lle asignará unha facción distinta."
+msgstr "Non repetir: a cada xogador se lle asignará unha facción distinta"
 
 #. [option]
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:176
 msgid "No Ally Mirror"
-msgstr ""
+msgstr "Sen espello aliado"
 
 #. [option]
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:177
 msgid "No Ally Mirror: No two allied players will get the same faction"
 msgstr ""
 "Non repetir aliados: a cada xogador dun mesmo bando se lle asignará unha "
-"facción distinta."
+"facción distinta"
 
 #. [toggle_button]: id=use_map_settings
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:319
 msgid "Use Map Settings"
-msgstr "Usar a configuración do mapa."
+msgstr "Usar a configuración do mapa"
 
 #. [toggle_button]: id=use_map_settings
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:320
 msgid "Use scenario specific settings"
-msgstr "Usar a configuración específica do escenario."
+msgstr "Usar a configuración específica do escenario"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:336
@@ -5855,7 +5629,7 @@ msgstr "ilimitado"
 #. [grid]
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:340
 msgid "The amount of income each village yields per turn"
-msgstr "A cantidade de ingresos que cada vila fornece por rolda."
+msgstr "A cantidade de ingresos que cada vila fornece por rolda"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:340
@@ -5865,7 +5639,7 @@ msgstr "Ouro por vila"
 #. [grid]
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:342
 msgid "The number of unit levels each village can support"
-msgstr "O número de niveis de unidades que permite cada vila."
+msgstr "O número de niveis de unidades que permite cada vila"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:342
@@ -5880,7 +5654,7 @@ msgstr "Modificador da experiencia"
 #. [grid]
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:344
 msgid "The amount of experience a unit needs to advance"
-msgstr "A cantidade de experiencia que cada unidade necesita para avanzar."
+msgstr "A cantidade de experiencia que cada unidade necesita para avanzar"
 
 # Haberá que poñerlle punto ao final en canto se lle poda poñer tamén ao «Manto do descoñecido» (Shroud).
 #. [toggle_button]: id=fog
@@ -5893,12 +5667,12 @@ msgstr "Néboa da guerra"
 msgid "Enemy units cannot be seen unless they are in range of your units"
 msgstr ""
 "As unidades inimigas non poden verse a menos que estén ao alcance das túas "
-"unidades."
+"unidades"
 
 #. [toggle_button]: id=shroud
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:391
 msgid "The map is unknown until your units explore it"
-msgstr "O mapa non se coñece ata que as unidades o exploran."
+msgstr "O mapa non se coñece ata que as unidades o exploran"
 
 # Haberá que poñerlle punto ao final en canto se lle poda poñer tamén ao «Manto do descoñecido» (Shroud).
 #. [toggle_button]: id=random_start_time
@@ -5910,17 +5684,17 @@ msgstr "Momento do día inicial aleatorio"
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:408
 msgid "Randomize the starting time of day"
 msgstr ""
-"Seleccionar de maneira aleatoria o momento do día no que comeza a partida."
+"Seleccionar de maneira aleatoria o momento do día no que comeza a partida"
 
 #. [toggle_button]: id=time_limit
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:444
 msgid "Time Limit"
-msgstr "Usar límites de tempo personalizados."
+msgstr "Usar límites de tempo personalizados"
 
 #. [toggle_button]: id=time_limit
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:445
 msgid "Enable custom time limits"
-msgstr "Activar o uso de tempos límite personalizados."
+msgstr "Activar o uso de tempos límite personalizados"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:482
@@ -5930,12 +5704,12 @@ msgstr "Límite inicial"
 #. [grid]
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:482
 msgid "Longest time allowed for first turn (seconds)"
-msgstr "Tempo máximo permitido para a primeira quenda, en segundos."
+msgstr "Tempo máximo permitido para a primeira rolda, en segundos."
 
 #. [grid]
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:484
 msgid "Time for general tasks each turn (seconds)"
-msgstr "Tempo para tarefas xerais cada quenda, en segundos."
+msgstr "Tempo para tarefas xerais cada rolda, en segundos."
 
 #. [grid]
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:484
@@ -5960,7 +5734,7 @@ msgstr "Bonificación por acción"
 #. [grid]
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:488
 msgid "Time for each attack, recruit, and capture"
-msgstr "Tempo para cada ataque, recrutamento e captura."
+msgstr "Tempo para cada ataque, recrutamento e captura"
 
 #. [widget]: id=tab_label
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:577
@@ -5983,7 +5757,7 @@ msgstr "Todo"
 #. [label]
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:866
 msgid "Random map options: "
-msgstr "Opcións de mapa aleatorio:"
+msgstr "Opcións de mapa aleatorio: "
 
 #. [button]: id=random_map_regenerate
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:887
@@ -5992,38 +5766,36 @@ msgstr "Xerar de novo"
 
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:960
 msgid "Assign sides to players at random"
-msgstr "Escoller os bandos dos xogadores de xeito aleatorio."
+msgstr "Escoller os bandos dos xogadores de xeito aleatorio"
 
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:960
 msgid "Shuffle Sides"
-msgstr "Bandos aleatorios."
+msgstr "Bandos aleatorios"
 
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:964
 msgid "Allow users who are not playing to watch the game"
-msgstr "Permitir que usuarios que non participen poidan ver a partida."
+msgstr "Permitir que usuarios que non participen poidan ver a partida"
 
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:964
 msgid "Observers"
-msgstr "Permitir observadores."
+msgstr "Observadores"
 
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:968
 msgid "Strict Synchronization"
-msgstr "Sincronización estrita."
+msgstr "Sincronización estrita"
 
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:968
 msgid "Stricter checks for out-of-sync errors"
 msgstr ""
-"Realizar comprobacións estritas cando se produzan erros de desincronización."
+"Realizar comprobacións estritas cando se produzan erros de desincronización"
 
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:972
-#, fuzzy
-#| msgid "Save Replay"
 msgid "Private Replay"
-msgstr "Gardar a repetición"
+msgstr "Repetición privada"
 
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:972
 msgid "Whether the replay will be publicly available"
-msgstr ""
+msgstr "Se a repetición estará dispoñible públicamente"
 
 #. [label]
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:988
@@ -6032,13 +5804,9 @@ msgstr "Nome da partida:"
 
 #. [text_box]: id=game_password
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:1035
-#, fuzzy
-#| msgid ""
-#| "Set the password that people wanting to join your game as players must "
-#| "enter."
 msgid ""
 "Set the password that people wanting to join your game as players must enter"
-msgstr "Establecer o contrasinal que debe saber quen queira unirse á partida."
+msgstr "Establecer o contrasinal que debe saber quen queira unirse á partida"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -6060,8 +5828,6 @@ msgstr "Partidas gardadas"
 
 #. [row]
 #: data/gui/themes/default/dialogs/mp_faction_select.cfg:210
-#, fuzzy
-#| msgid "Random"
 msgid "gender^Random"
 msgstr "Aleatorio"
 
@@ -6086,10 +5852,8 @@ msgstr "Recrutamentos"
 
 #. [label]
 #: data/gui/themes/default/dialogs/mp_faction_select.cfg:338
-#, fuzzy
-#| msgid "Choose Your Faction"
 msgid "Choose Your Leader"
-msgstr "Selecciona a túa facción"
+msgstr "Selecciona o teu lider"
 
 #. [label]
 #: data/gui/themes/default/dialogs/mp_host_game_prompt.cfg:40
@@ -6111,15 +5875,13 @@ msgstr ""
 #: data/gui/themes/default/dialogs/mp_join_game.cfg:71
 #: data/gui/themes/default/dialogs/mp_staging.cfg:70
 msgid "Select the faction and leader for this side"
-msgstr "Seleccionar a facción e o líder deste bando."
+msgstr "Seleccionar a facción e o líder deste bando"
 
 #. [label]
 #: data/gui/themes/default/dialogs/mp_join_game.cfg:155
 #: data/gui/themes/default/dialogs/mp_staging.cfg:157
-#, fuzzy
-#| msgid "Action"
 msgid "Faction:"
-msgstr "Acción"
+msgstr "Facción:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=status_label
@@ -6164,10 +5926,8 @@ msgstr "Usuario:"
 
 #. [button]: id=replay_download
 #: data/gui/themes/default/dialogs/mp_match_history.cfg:159
-#, fuzzy
-#| msgid "Downloads"
 msgid "Download"
-msgstr "Descargas"
+msgstr "Descarga"
 
 # Úsase para referirse a «modificacións» seleccionadas na pantalla de selección dunha campaña para unha partida dun só xogador.
 #. [label]: id=players
@@ -6186,10 +5946,8 @@ msgstr "Modificacións"
 
 #. [label]
 #: data/gui/themes/default/dialogs/mp_match_history.cfg:450
-#, fuzzy
-#| msgid "Players:"
 msgid "Player:"
-msgstr "Xogadores:"
+msgstr "Xogador:"
 
 #. [text_box]: id=search_player
 #. [text_box]: id=search_game_name
@@ -6198,21 +5956,17 @@ msgstr "Xogadores:"
 #: data/gui/themes/default/dialogs/mp_match_history.cfg:506
 #: data/gui/themes/default/dialogs/mp_match_history.cfg:530
 msgid "Asterisks match all characters"
-msgstr ""
+msgstr "Os asteriscos coinciden con todos os caracteres"
 
 #. [label]
 #: data/gui/themes/default/dialogs/mp_match_history.cfg:474
-#, fuzzy
-#| msgid "Contents"
 msgid "Content Type:"
-msgstr "Contido"
+msgstr "Tipo de contido:"
 
 #. [label]
 #: data/gui/themes/default/dialogs/mp_match_history.cfg:494
-#, fuzzy
-#| msgid "Team name:"
 msgid "Game name:"
-msgstr "Nome do equipo:"
+msgstr "Nome da partida:"
 
 #. [label]
 #: data/gui/themes/default/dialogs/mp_method_selection.cfg:137
@@ -6231,52 +5985,53 @@ msgstr "Rexistrarse"
 #. [column]
 #: data/gui/themes/default/dialogs/mp_method_selection.cfg:252
 msgid "Log on to the official Wesnoth multiplayer server"
-msgstr "Conectarse ao servidor oficial de partidas con varios xogadores."
+msgstr "Conectarse ao servidor oficial de partidas con varios xogadores"
 
 #. [widget]: id=name
 #: data/gui/themes/default/dialogs/mp_method_selection.cfg:261
 #, fuzzy
-#| msgid "Join Official Server"
 msgid ""
 "Join\n"
 "Official Server"
-msgstr "Conectarse ao servidor oficial"
+msgstr ""
+"Únirse\n"
+"Servidor oficial"
 
 # Mensaxe de axuda da segunda opción do menú de «Varios xogadores», «Conectarse a outro servidor».
 #. [column]
 #: data/gui/themes/default/dialogs/mp_method_selection.cfg:272
 msgid "Join a different server"
-msgstr "Conectarse a un servidor distinto do oficial."
+msgstr "Conectarse a un servidor distinto do oficial"
 
 # Opción que aparece segunda no menú de «Varios xogadores». Vai xusto despois de «Conectarse ao servidor oficial», de aí que se empregue a palabra «outro» na tradución.
 #. [widget]: id=name
 #: data/gui/themes/default/dialogs/mp_method_selection.cfg:281
-#, fuzzy
-#| msgid "Connect to Server"
 msgid ""
 "Connect to\n"
 "Server"
-msgstr "Conectarse a outro servidor"
+msgstr ""
+"Conectarse a\n"
+"outro servidor"
 
 #. [column]
 #: data/gui/themes/default/dialogs/mp_method_selection.cfg:292
 msgid "Host a game using a dedicated server"
-msgstr "Aloxar unha partida usando un servidor dedicado."
+msgstr "Aloxar unha partida usando un servidor dedicado"
 
 #. [widget]: id=name
 #: data/gui/themes/default/dialogs/mp_method_selection.cfg:301
-#, fuzzy
-#| msgid "Host Networked Game"
 msgid ""
 "Host Networked\n"
 "Game"
-msgstr "Aloxar unha partida"
+msgstr ""
+"Aloxar unha\n"
+"partida"
 
 # Axuda que aparece ao deixar o rato sobre o menú «Escenario → Partida local».
 #. [column]
 #: data/gui/themes/default/dialogs/mp_method_selection.cfg:312
 msgid "Play a multiplayer game with the AI or humans sharing the same machine"
-msgstr "Xogar unha partida de varios xogadores nun mesmo computador."
+msgstr "Xogar unha partida de varios xogadores nun mesmo computador"
 
 #. [widget]: id=name
 #: data/gui/themes/default/dialogs/mp_method_selection.cfg:321
@@ -6286,55 +6041,47 @@ msgstr "Partida local"
 #. [label]
 #: data/gui/themes/default/dialogs/mp_report.cfg:50
 msgid "* Player being reported:"
-msgstr ""
+msgstr "* Xogador denunciado:"
 
 #. [label]
 #: data/gui/themes/default/dialogs/mp_report.cfg:82
 msgid "* Reason for report:"
-msgstr ""
+msgstr "* Motivo da denuncia:"
 
 #. [label]
 #: data/gui/themes/default/dialogs/mp_report.cfg:114
 msgid "Location of occurrence:"
-msgstr ""
+msgstr "Lugar de aparición:"
 
 #. [label]
 #: data/gui/themes/default/dialogs/mp_report.cfg:146
-#, fuzzy
-#| msgid "Additional dialogs:"
 msgid "Additional information:"
-msgstr "Diálogos adicionais:"
+msgstr "Información adicional:"
 
 #. [label]
 #: data/gui/themes/default/dialogs/mp_report.cfg:191
 msgid "* required fields"
-msgstr ""
+msgstr "*campos obrigatorios"
 
 #. [menu_button]: id=controller
 #: data/gui/themes/default/dialogs/mp_staging.cfg:253
-#, fuzzy
-#| msgid "Change the side's controller"
 msgid "Change the side’s controller"
-msgstr "Cambiar o controlador do bando."
+msgstr "Cambiar o controlador do bando"
 
 #. [menu_button]: id=ai_controller
 #: data/gui/themes/default/dialogs/mp_staging.cfg:269
-#, fuzzy
-#| msgid "Change the AI side's behaviour"
 msgid "Change the AI side’s behaviour"
-msgstr "Cambiar o comportamento do bando da intelixencia artificial."
+msgstr "Cambiar o comportamento do bando da IA"
 
 #. [menu_button]: id=side_team
 #: data/gui/themes/default/dialogs/mp_staging.cfg:296
 msgid "Which team this side belongs to"
-msgstr "O equipo ao que pertence este bando."
+msgstr "O equipo ao que pertence este bando"
 
 #. [menu_button]: id=side_color
 #: data/gui/themes/default/dialogs/mp_staging.cfg:312
-#, fuzzy
-#| msgid "The team color"
 msgid "This side’s color"
-msgstr "A cor do bando."
+msgstr "A cor do bando"
 
 #. [button]: id=ok
 #: data/gui/themes/default/dialogs/mp_staging.cfg:433
@@ -6344,7 +6091,7 @@ msgstr "Listo"
 #. [text]
 #: data/gui/themes/default/dialogs/outro.cfg:49
 msgid "Press ESC to skip"
-msgstr ""
+msgstr "Preme ESC para saltar"
 
 #. [widget]: id=label
 #: data/gui/themes/default/dialogs/preferences.cfg:311
@@ -6359,7 +6106,7 @@ msgstr "Pantalla"
 #. [button]: id=about
 #: data/gui/themes/default/dialogs/preferences.cfg:419
 msgid "Display the game version and build information"
-msgstr "Mostrar a versión do xogo e a información da construción."
+msgstr "Mostrar a versión do xogo e a información da construción"
 
 # Configuración → Xeral.
 #. [label]
@@ -6370,36 +6117,36 @@ msgstr "Velocidade de desprazamento:"
 #. [slider]: id=scroll_speed
 #: data/gui/themes/default/dialogs/preferences/01_general.cfg:36
 msgid "Change the speed of scrolling around the map"
-msgstr "Cambiar a velocidade do desprazamento polo mapa."
+msgstr "Cambiar a velocidade do desprazamento polo mapa"
 
 # Configuración → Xeral.
 # Acurtada para adaptarse mellor á interface.
 #. [toggle_button]: id=skip_ai_moves
 #: data/gui/themes/default/dialogs/preferences/01_general.cfg:54
 msgid "Skip AI moves"
-msgstr "Saltar o movemento da intelixencia artificial."
+msgstr "Saltar o movemento da intelixencia artificial"
 
 #. [toggle_button]: id=skip_ai_moves
 #: data/gui/themes/default/dialogs/preferences/01_general.cfg:55
 msgid "Do not animate AI units moving"
-msgstr "Non animar o movemento das unidades da intelixencia artificial."
+msgstr "Non animar o movemento das unidades da intelixencia artificial"
 
 # Configuración → Xeral.
 # Acurtada para adaptarse mellor á interface.
 #. [toggle_button]: id=turbo_toggle
 #: data/gui/themes/default/dialogs/preferences/01_general.cfg:68
 msgid "Accelerated speed"
-msgstr "Acelerar."
+msgstr "Acelerar"
 
 #. [toggle_button]: id=turbo_toggle
 #: data/gui/themes/default/dialogs/preferences/01_general.cfg:69
 msgid "Make units move and fight faster"
-msgstr "Facer que as unidades se movan e loiten máis rápido."
+msgstr "Facer que as unidades se movan e loiten máis rápido"
 
 #. [column]
 #: data/gui/themes/default/dialogs/preferences/01_general.cfg:79
 msgid "Acceleration factor:"
-msgstr ""
+msgstr "Factor de aceleración:"
 
 #. [column]
 #: data/gui/themes/default/dialogs/preferences/01_general.cfg:84
@@ -6407,16 +6154,19 @@ msgid ""
 "Speed at which unit moves and animations play when ‘Accelerated speed’ is "
 "enabled or when Shift is held down in-game"
 msgstr ""
+"Velocidade á que se move a unidade e se reproducen as animacións cando a "
+"\"Velocidade acelerada\" está activada ou cando se mantén premida a tecla "
+"Maiús no xogo"
 
 #. [toggle_button]: id=disable_auto_moves
 #: data/gui/themes/default/dialogs/preferences/01_general.cfg:100
 msgid "Disable automatic moves"
-msgstr "Desactivar os movementos automáticos."
+msgstr "Desactivar os movementos automáticos"
 
 #. [toggle_button]: id=disable_auto_moves
 #: data/gui/themes/default/dialogs/preferences/01_general.cfg:101
 msgid "Do not allow automatic movements at the beginning of a turn"
-msgstr "Non permitir movementos automáticos ao comezo dunha quenda."
+msgstr "Non permitir movementos automáticos ao comezo dunha rolda"
 
 #. [toggle_button]: id=show_turn_dialog
 #: data/gui/themes/default/dialogs/preferences/01_general.cfg:114
@@ -6428,57 +6178,57 @@ msgstr ""
 #, fuzzy
 #| msgid "Display a dialog at the beginning of your turn"
 msgid "Display a prompt at the beginning of your turn"
-msgstr "Mostrar un diálogo ao comezo de cada quenda propia."
+msgstr "Mostrar un diálogo ao comezo de cada rolda propia"
 
 # Configuración → Xeral.
 #. [toggle_button]: id=whiteboard_on_start
 #: data/gui/themes/default/dialogs/preferences/01_general.cfg:128
 msgid "Enable planning mode on start"
-msgstr "Activar o modo de planificación ao comezar."
+msgstr "Activar o modo de planificación ao comezar"
 
 #. [toggle_button]: id=whiteboard_on_start
 #: data/gui/themes/default/dialogs/preferences/01_general.cfg:129
 msgid "Activates Planning Mode on game start"
-msgstr "Activar o modo de planificación ao comezo de cada partida."
+msgstr "Activar o modo de planificación ao comezo de cada partida"
 
 #. [toggle_button]: id=whiteboard_hide_allies
 #: data/gui/themes/default/dialogs/preferences/01_general.cfg:142
 msgid "Hide allies’ plans by default"
-msgstr "Agochar os plans dos aliados de maneira predeterminada."
+msgstr "Agochar os plans dos aliados de maneira predeterminada"
 
 #. [toggle_button]: id=whiteboard_hide_allies
 #: data/gui/themes/default/dialogs/preferences/01_general.cfg:143
 msgid "Hide allies’ Planning Mode plans in multiplayer games"
 msgstr ""
 "Ocultar os plans dos aliados no modo de planificación nas partidas de varios "
-"xogadores."
+"xogadores"
 
 #. [toggle_button]: id=interrupt_move_when_ally_sighted
 #: data/gui/themes/default/dialogs/preferences/01_general.cfg:156
 msgid "Interrupt move when an ally is sighted"
-msgstr "Interromper o movemento ao avistar un aliado."
+msgstr "Interromper o movemento ao avistar un aliado"
 
 #. [toggle_button]: id=interrupt_move_when_ally_sighted
 #: data/gui/themes/default/dialogs/preferences/01_general.cfg:157
 msgid "Sighting an allied unit interrupts your unit’s movement"
-msgstr "Interromper o movemento das unidades propias ao avistar aliados."
+msgstr "Interromper o movemento das unidades propias ao avistar aliados"
 
 #. [toggle_button]: id=save_replays
 #: data/gui/themes/default/dialogs/preferences/01_general.cfg:172
 msgid "Save replays at the end of scenarios"
-msgstr "Gardar as repeticións ao final dos escenarios."
+msgstr "Gardar as repeticións ao final dos escenarios"
 
 #. [toggle_button]: id=save_replays
 #: data/gui/themes/default/dialogs/preferences/01_general.cfg:173
 msgid "Save replays of games on victory in all modes and defeat in multiplayer"
 msgstr ""
 "Gardar a repetición das partidas ao gañar unha partida individual, e sempre "
-"ao xogar contra varios xogadores."
+"ao xogar contra varios xogadores"
 
 #. [toggle_button]: id=delete_saves
 #: data/gui/themes/default/dialogs/preferences/01_general.cfg:186
 msgid "Delete auto-saves at the end of scenarios"
-msgstr "Eliminar as partidas gardadas automaticamente ao final dos escenarios."
+msgstr "Eliminar as partidas gardadas automaticamente ao final dos escenarios"
 
 # Configuración → Xeral.
 # A súa lonxitude está limitada polo ancho fixo do cadro en que se amosa. O de «en ditas ocasións» utilizouse para aforrar texto, dado que esta acción é para os casos enunciados na cadea anterior, que tamén aparece antes desta no menú de configuración.
@@ -6488,7 +6238,7 @@ msgid ""
 "Delete previous auto-saves on victory in all modes and defeat in multiplayer"
 msgstr ""
 "Eliminar as partidas gardadas automaticamente ao gañar unha partida "
-"individual, e sempre ao xogar contra varios xogadores."
+"individual, e sempre ao xogar contra varios xogadores"
 
 #. [column]
 #: data/gui/themes/default/dialogs/preferences/01_general.cfg:197
@@ -6504,7 +6254,7 @@ msgstr "∞"
 #: data/gui/themes/default/dialogs/preferences/01_general.cfg:202
 msgid "Set maximum number of automatic saves to be retained"
 msgstr ""
-"Definir a cantidade máxima de partidas gardadas automaticamente a conservar."
+"Definir a cantidade máxima de partidas gardadas automaticamente a conservar"
 
 #. [button]: id=cachemg
 #: data/gui/themes/default/dialogs/preferences/01_general.cfg:218
@@ -6514,7 +6264,7 @@ msgstr "Caché"
 #. [button]: id=cachemg
 #: data/gui/themes/default/dialogs/preferences/01_general.cfg:219
 msgid "Manage the game WML cache"
-msgstr "Xestionar a caché WML do xogo."
+msgstr "Xestionar a caché WML do xogo"
 
 #. [label]
 #: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:25
@@ -6523,10 +6273,8 @@ msgstr "Filtro:"
 
 #. [text_box]: id=filter
 #: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:50
-#, fuzzy
-#| msgid "Clears \"$hotkey_description|'s\" bindings"
 msgid "Filters on hotkey description"
-msgstr "Limpar os atallos de «$hotkey_description|»"
+msgstr "Filtros na descrición das teclas de atallo"
 
 #. [toggle_button]: id=sort_0
 #: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:98
@@ -6550,7 +6298,7 @@ msgstr "P"
 #. [toggle_button]: id=sort_2
 #: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:127
 msgid "Available in game"
-msgstr "Dispoñíbel nas partidas."
+msgstr "Dispoñíbel nas partidas"
 
 # De «editor».
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
@@ -6564,7 +6312,7 @@ msgstr "E"
 #. [toggle_button]: id=sort_3
 #: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:142
 msgid "Available in editor"
-msgstr "Dispoñíbel no editor."
+msgstr "Dispoñíbel no editor"
 
 # De «partida».
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
@@ -6572,8 +6320,6 @@ msgstr "Dispoñíbel no editor."
 #. Translate M as the initial letter for Main Menu
 #: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:156
 #: src/gui/dialogs/preferences_dialog.cpp:881
-#, fuzzy
-#| msgid "game_hotkeys^G"
 msgid "mainmenu_hotkeys^M"
 msgstr "P"
 
@@ -6595,19 +6341,17 @@ msgstr "Eliminar o atallo"
 #. [label]
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:15
 msgid "Window size:"
-msgstr ""
+msgstr "Tamaño da xanela:"
 
 #. [label]: id=help_text
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:39
 msgid "Pixel scale multiplier:"
-msgstr ""
+msgstr "Multiplicador de escala de píxeles:"
 
 #. [menu_button]: id=resolution_set
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:73
-#, fuzzy
-#| msgid "Change the buffer size"
 msgid "Change the game window size"
-msgstr "Cambiar o tamaño do búfer."
+msgstr "Cambiar o tamaño da xanela"
 
 #. [slider]: id=pixel_scale_slider
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:87
@@ -6615,31 +6359,35 @@ msgid ""
 "Set the global pixel scale multiplier. A pixel scale multiplier of 2 will "
 "make everything look twice as large."
 msgstr ""
+"Establece o multiplicador de escala global de píxeles. Un multiplicador de "
+"escala de píxeles de 2 fará que todo pareza o dobre."
 
 #. [toggle_button]: id=fullscreen
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:102
 msgid "Full screen"
-msgstr "Pantalla completa."
+msgstr "Pantalla completa"
 
 #. [toggle_button]: id=fullscreen
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:103
 msgid "Toggle between fullscreen and window mode"
-msgstr "Alternar entre pantalla completa e modo de xanela."
+msgstr "Alternar entre pantalla completa e modo de xanela"
 
 #. [toggle_button]: id=auto_pixel_scale
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:114
 msgid "pixel_scale_multiplier^Automatic scale"
-msgstr ""
+msgstr "pixel_scale_multiplier^Escala automática"
 
 #. [toggle_button]: id=auto_pixel_scale
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:115
 msgid "Choose pixel scale multiplier automatically based on current resolution"
 msgstr ""
+"Escolle o multiplicador de escala de píxeles automaticamente en función da "
+"resolución actual"
 
 #. [toggle_button]: id=vsync
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:129
 msgid "VSync"
-msgstr ""
+msgstr "Sincronización Vertical"
 
 #. [toggle_button]: id=vsync
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:130
@@ -6647,13 +6395,13 @@ msgid ""
 "Reduces tearing by synchronizing rendering with the screen refresh rate "
 "(requires restart to take effect)"
 msgstr ""
+"Reduce o rasgado sincronizando a renderización coa taxa de actualización da "
+"pantalla (require reiniciar para que teña efecto)"
 
 #. [label]
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:152
-#, fuzzy
-#| msgid "Change the in-game theme"
 msgid "In-game theme:"
-msgstr "Cambiar o tema das partidas."
+msgstr "Tema do xogo:"
 
 #. [menu_button]: id=choose_theme
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:165
@@ -6661,11 +6409,13 @@ msgid ""
 "Change the in-game interface theme. Additional themes may be provided by "
 "community-made add-ons"
 msgstr ""
+"Cambia o tema da interface do xogo. Os complementos feitos pola comunidade "
+"poden proporcionar temas adicionais"
 
 #. [label]
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:176
 msgid "UI theme:"
-msgstr ""
+msgstr "Tema da interface:"
 
 #. [menu_button]: id=choose_gui2_theme
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:192
@@ -6673,6 +6423,8 @@ msgid ""
 "Change the UI (GUI2) theme. Additional themes may be provided by community-"
 "made add-ons"
 msgstr ""
+"Cambia o tema da interface de usuario (GUI2). Os complementos feitos pola "
+"comunidade poden proporcionar temas adicionais"
 
 #. [button]: id=apply
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:201
@@ -6681,27 +6433,25 @@ msgstr "Aplicar"
 
 #. [toggle_button]: id=show_tips
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:224
-#, fuzzy
-#| msgid "Show next tip of the day"
 msgid "Show gameplay tips on the main menu"
-msgstr "Mostrar o seguinte consello."
+msgstr "Mostrar consellos de xogo no menú principal"
 
 #. [toggle_button]: id=show_floating_labels
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:236
 msgid "Combat damage indicators"
-msgstr ""
+msgstr "Indicadores de danos de combate"
 
 #. [toggle_button]: id=show_floating_labels
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:237
-#, fuzzy
-#| msgid "Show damage and healing amounts above a unit"
 msgid "Show amount of damage inflicted or healed as fading labels above units"
-msgstr "Mostrar as cantidades de dano e sandación sobre as unidades."
+msgstr ""
+"Mostrar as cantidades de dano e sandación como etiquetas que esvaecen sobre "
+"as unidades"
 
 #. [toggle_button]: id=show_ellipses
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:250
 msgid "Team color indicators"
-msgstr ""
+msgstr "Indicadores de cor do equipo"
 
 #. [toggle_button]: id=show_ellipses
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:251
@@ -6709,36 +6459,36 @@ msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
 msgstr ""
-"Mostrar un círculo ao pé de cada unidade da cor do bando ao que pertence."
+"Mostrar un círculo ao pé de cada unidade da cor do bando ao que pertence"
 
 #. [toggle_button]: id=show_grid
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:264
 msgid "Grid overlay"
-msgstr ""
+msgstr "Superposición de cuadrícula"
 
 #. [toggle_button]: id=show_grid
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:265
 msgid "Overlay a grid over the map"
-msgstr "Superpoñer unha grade sobre o mapa."
+msgstr "Superpoñer unha grade sobre o mapa"
 
 # Accesible dende:
 # «Configuración → Visualización».
 #. [toggle_button]: id=animate_terrains
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:300
 msgid "Animate map"
-msgstr "Mostrar as animacións do mapa."
+msgstr "Mostrar as animacións do mapa"
 
 #. [toggle_button]: id=animate_terrains
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:301
 msgid "Display animated terrain graphics"
-msgstr "Mostrar imaxes animadas para o terreo."
+msgstr "Mostrar imaxes animadas para o terreo"
 
 # Accesible dende:
 # «Configuración → Visualización».
 #. [toggle_button]: id=animate_water
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:314
 msgid "Animate water"
-msgstr "Mostrar as animacións da auga."
+msgstr "Mostrar as animacións da auga"
 
 #. [toggle_button]: id=animate_water
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:315
@@ -6747,28 +6497,24 @@ msgstr "Mostrar imaxes animadas para a auga (pode empeorar o rendemento)."
 
 #. [toggle_button]: id=animate_units_standing
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:330
-#, fuzzy
-#| msgid "Show unit standing animations"
 msgid "Unit standing animations"
-msgstr "Mostrar as animacións das unidades quedas."
+msgstr "Animacións das unidades quedas"
 
 #. [toggle_button]: id=animate_units_standing
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:331
 msgid "Continuously animate standing units on the battlefield"
-msgstr "Animar continuamente as unidades quedas do campo de batalla."
+msgstr "Animar continuamente as unidades quedas do campo de batalla"
 
 #. [toggle_button]: id=animate_units_idle
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:349
-#, fuzzy
-#| msgid "Show unit idle animations"
 msgid "Unit idle animations"
-msgstr "Mostrar as animacións das unidades que non estean facendo nada."
+msgstr "Animacións das unidades que non estean facendo nada"
 
 #. [toggle_button]: id=animate_units_idle
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:350
 msgid "Play short random animations for idle units"
 msgstr ""
-"Mostrar pequenas animacións ao chou nas unidades que non estean a facer nada."
+"Mostrar pequenas animacións ao chou nas unidades que non estean a facer nada"
 
 #. [label]
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:373
@@ -6779,7 +6525,7 @@ msgstr "Frecuencia:"
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:389
 msgid "Set the frequency of unit idle animations"
 msgstr ""
-"Definir a frecuencia das animacións das unidades que non estean a facer nada."
+"Definir a frecuencia das animacións das unidades que non estean a facer nada"
 
 #. [label]
 #: data/gui/themes/default/dialogs/preferences/04_sound.cfg:38
@@ -6789,67 +6535,67 @@ msgstr "Volume:"
 #. [toggle_button]: id=sound_toggle_stop_music_in_background
 #: data/gui/themes/default/dialogs/preferences/04_sound.cfg:80
 msgid "Pause music on focus loss"
-msgstr "Deter a música ao perder o foco."
+msgstr "Deter a música ao perder o foco"
 
 #. [toggle_button]: id=sound_toggle_stop_music_in_background
 #: data/gui/themes/default/dialogs/preferences/04_sound.cfg:81
 msgid "Pause the music when you switch to any other window"
-msgstr "Deter a música cando cambie a outra xanela."
+msgstr "Deter a música cando cambie a outra xanela"
 
 #. [column]
 #: data/gui/themes/default/dialogs/preferences/04_sound.cfg:96
 msgid "Sound effects"
-msgstr "Efectos de son."
+msgstr "Efectos de son"
 
 #. [column]
 #: data/gui/themes/default/dialogs/preferences/04_sound.cfg:96
 msgid "Sound effects on/off"
-msgstr "Activar ou desactivar os efectos de son."
+msgstr "Activar ou desactivar os efectos de son"
 
 #. [column]
 #: data/gui/themes/default/dialogs/preferences/04_sound.cfg:97
 msgid "Change the sound effects volume"
-msgstr "Cambiar o volume dos efectos de son."
+msgstr "Cambiar o volume dos efectos de son"
 
 #. [column]
 #: data/gui/themes/default/dialogs/preferences/04_sound.cfg:109
 msgid "Music"
-msgstr "Música."
+msgstr "Música"
 
 #. [column]
 #: data/gui/themes/default/dialogs/preferences/04_sound.cfg:109
 msgid "Music on/off"
-msgstr "Activar o desactivar a música."
+msgstr "Activar o desactivar a música"
 
 #. [column]
 #: data/gui/themes/default/dialogs/preferences/04_sound.cfg:110
 msgid "Change the music volume"
-msgstr "Cambiar o volume da música."
+msgstr "Cambiar o volume da música"
 
 #. [column]
 #: data/gui/themes/default/dialogs/preferences/04_sound.cfg:123
 msgid "Play a bell sound at the beginning of your turn"
-msgstr "Reproducir un son de campá ao comezo de cada quenda propia."
+msgstr "Reproducir un son de campá ao comezo de cada rolda propia"
 
 #. [column]
 #: data/gui/themes/default/dialogs/preferences/04_sound.cfg:123
 msgid "Turn bell"
-msgstr "Activar a campá."
+msgstr "Activar a campá"
 
 #. [column]
 #: data/gui/themes/default/dialogs/preferences/04_sound.cfg:124
 msgid "Change the bell volume"
-msgstr "Cambiar o volume da campá."
+msgstr "Cambiar o volume da campá"
 
 #. [column]
 #: data/gui/themes/default/dialogs/preferences/04_sound.cfg:135
 msgid "Turn menu and button sounds on/off"
-msgstr "Activar ou desactivar os sons dos menús e botóns."
+msgstr "Activar ou desactivar os sons dos menús e botóns"
 
 #. [column]
 #: data/gui/themes/default/dialogs/preferences/04_sound.cfg:135
 msgid "User interface sounds"
-msgstr "Sons da interface."
+msgstr "Sons da interface"
 
 #. [column]
 #: data/gui/themes/default/dialogs/preferences/04_sound.cfg:136
@@ -6865,17 +6611,17 @@ msgstr "Liñas de conversa:"
 #. [slider]: id=chat_lines
 #: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:36
 msgid "Set the number of chat lines shown"
-msgstr "Definir o número de liñas de conversa para mostrar."
+msgstr "Definir o número de liñas de conversa para mostrar"
 
 #. [toggle_button]: id=chat_timestamps
 #: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:52
 msgid "Chat timestamping"
-msgstr "Hora nas mensaxes."
+msgstr "Hora nas mensaxes"
 
 #. [toggle_button]: id=chat_timestamps
 #: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:53
 msgid "Add a timestamp to chat messages"
-msgstr "Engadir á hora ás mensaxes nas conversas."
+msgstr "Engadir á hora ás mensaxes nas conversas"
 
 #. [toggle_button]: id=remember_password
 #: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:69
@@ -6885,7 +6631,7 @@ msgstr "Desmárquese para eliminar o contrasinal gardado (ao saír)."
 #. [toggle_button]: id=lobby_whisper_friends_only
 #: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:84
 msgid "Accept whispers from friends only"
-msgstr "Só aceptar mensaxes privadas de amigos."
+msgstr "Só aceptar mensaxes privadas de amigos"
 
 #. [toggle_button]: id=lobby_whisper_friends_only
 #: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:85
@@ -6896,32 +6642,32 @@ msgstr ""
 #. [toggle_button]: id=lobby_joins_none
 #: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:101
 msgid "Do not show lobby joins"
-msgstr "Non avisar de quen entra na sala de espera."
+msgstr "Non avisar de quen entra na sala de espera"
 
 #. [toggle_button]: id=lobby_joins_none
 #: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:102
 msgid "Do not show messages about players joining the multiplayer lobby"
-msgstr "Non avisar cando se incorporen novos xogadores á sala de espera."
+msgstr "Non avisar cando se incorporen novos xogadores á sala de espera"
 
 #. [toggle_button]: id=lobby_joins_friends
 #: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:116
 msgid "Show lobby joins of friends only"
-msgstr "Avisar só cando entren os amigos na sala de espera."
+msgstr "Avisar só cando entren os amigos na sala de espera"
 
 #. [toggle_button]: id=lobby_joins_friends
 #: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:117
 msgid "Show messages about your friends joining the multiplayer lobby"
-msgstr "Avisar cando se incorporen os teus amigos á sala de espera."
+msgstr "Avisar cando se incorporen os teus amigos á sala de espera"
 
 #. [toggle_button]: id=lobby_joins_all
 #: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:131
 msgid "Show all lobby joins"
-msgstr "Avisar de quen entra na sala de espera."
+msgstr "Avisar de quen entra na sala de espera"
 
 #. [toggle_button]: id=lobby_joins_all
 #: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:132
 msgid "Show messages about all players joining the multiplayer lobby"
-msgstr "Avisar cando se incorporen novos xogadores á sala de espera."
+msgstr "Avisar cando se incorporen novos xogadores á sala de espera"
 
 #. [button]: id=mp_alerts
 #: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:149
@@ -6932,7 +6678,7 @@ msgstr "Alertas"
 #: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:150
 msgid "Configure multiplayer notification settings"
 msgstr ""
-"Configurar as opcións das notificacións durante partidas de varios xogadores."
+"Configurar as opcións das notificacións durante partidas de varios xogadores"
 
 #. [button]: id=mp_wesnothd
 #: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:162
@@ -6945,33 +6691,25 @@ msgstr "Executábel do servidor"
 msgid "Find and set path to MP server to host LAN games"
 msgstr ""
 "Buscar e definir a ruta ao servidor de partidas con varios xogadores para "
-"aloxar partidas na rede local."
+"aloxar partidas na rede local"
 
 #. [button]: id=add_friend
 #: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:264
-#, fuzzy
-#| msgid ""
-#| "Add this username to your friends list (add optional notes, e.g., "
-#| "'player_name notes on friend')"
 msgid ""
 "Add this username to your friends list (add optional notes, e.g., "
 "‘player_name notes on friend’)"
 msgstr ""
-"Engadir este nome de usuario á lista de amigos (opcionalmente, engade unha "
-"nota, como «notas sobre o amigo»)."
+"Engadir este nome de usuario á lista de amigos (engade notas opcionais, por "
+"exemplo, ‘player_name notas sobre o amigo’)."
 
 #. [button]: id=add_ignored
 #: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:277
-#, fuzzy
-#| msgid ""
-#| "Add this username to your ignore list (add optional reason, e.g., "
-#| "'player_name reason ignored')"
 msgid ""
 "Add this username to your ignore list (add optional reason, e.g., "
 "‘player_name reason ignored’)"
 msgstr ""
-"Engadir este nome de usuario á lista de ignorados (opcionalmente, engade un "
-"motivo, como «ignorado por isto»)."
+"Engadir este nome de usuario á lista de ignorados (engade unha razón "
+"opcional, por exemplo, ‘player_name motivo ignorado’)."
 
 #. [button]: id=remove
 #: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:290
@@ -6980,37 +6718,33 @@ msgstr "Quitar o usuario da lista."
 
 #. [label]: id=no_friends_notice
 #: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:311
-#, fuzzy
-#| msgid "You have not befriended or ignored any other players."
 msgid "You have not befriended or blocked any other players."
-msgstr "Non te fixeches amigo ou ignoraches a ningún xogador."
+msgstr "Non te fixeches amigo ou bloqueaches a ningún xogador."
 
 #. [label]
 #: data/gui/themes/default/dialogs/reachmap_options.cfg:101
-#, fuzzy
-#| msgid "Random map options: "
 msgid "Reach Map Options"
-msgstr "Opcións de mapa aleatorio:"
+msgstr "Acceder ás opcións do mapa"
 
 #. [label]
 #: data/gui/themes/default/dialogs/reachmap_options.cfg:112
 msgid "Highlight Color"
-msgstr ""
+msgstr "Cor de resaltado"
 
 #. [label]
 #: data/gui/themes/default/dialogs/reachmap_options.cfg:130
 msgid "Enemy Highlight Color"
-msgstr ""
+msgstr "Cor de resaltado do inimigo"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/reachmap_options.cfg:142
 msgid "Border Opacity:"
-msgstr ""
+msgstr "Opacidade do bordo:"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/reachmap_options.cfg:144
 msgid "Tint Opacity:"
-msgstr ""
+msgstr "Opacidade do ton:"
 
 #. [button]: id=open
 #: data/gui/themes/default/dialogs/screenshot_notification.cfg:49
@@ -7025,24 +6759,22 @@ msgstr "Abrir o ficheiro cun programa externo"
 #. [button]: id=browse_dir
 #: data/gui/themes/default/dialogs/screenshot_notification.cfg:187
 msgid "Browse the screenshots folder using a file manager"
-msgstr "Explorar o cartafol de capturas cun cun xestor de ficheiros."
+msgstr "Explorar o cartafol de capturas cun cun xestor de ficheiros"
 
 #. [label]
 #: data/gui/themes/default/dialogs/select_orb_colors.cfg:140
 msgid "Choose Orb/Minimap Colors"
-msgstr "Escoller as cores das esferas e dos minimapas"
+msgstr "Escoller as cores das orbes e dos minimapas"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/select_orb_colors.cfg:144
 msgid "Show unmoved orb"
-msgstr "Mostrar as esferas das unidades que non se moveron."
+msgstr "Mostrar as orbes das unidades que non se moveron"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/select_orb_colors.cfg:147
-#, fuzzy
-#| msgid "Show partial moved orb"
 msgid "Show partially moved orb"
-msgstr "Mostrar as esferas das unidades que poden moverse máis."
+msgstr "Amosar a orbe parcialmente movida"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/select_orb_colors.cfg:148
@@ -7050,26 +6782,30 @@ msgid ""
 "If a unit can move but can’t attack, show a two-color orb with the colors "
 "for partially and fully moved."
 msgstr ""
+"Se unha unidade pode moverse pero non pode atacar, móstrase unha orbe de "
+"dúas cores coas cores para moverse parcial e totalmente."
 
 #. [grid]
 #: data/gui/themes/default/dialogs/select_orb_colors.cfg:148
 msgid "Use a two-color orb for disengaged units"
-msgstr ""
+msgstr "Usa un orbe de dúas cores para as unidades desenganchadas"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/select_orb_colors.cfg:150
 msgid "Show moved orb"
-msgstr "Mostrar as esferas das unidades movidas."
+msgstr "Mostrar as orbes das unidades movidas"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/select_orb_colors.cfg:153
 msgid "Show ally orb"
-msgstr "Mostrar as esferas dos aliados."
+msgstr "Mostrar as orbes dos aliados"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/select_orb_colors.cfg:154
 msgid "During ally’s turn, use a two-color orb to show movement"
 msgstr ""
+"Durante a rolda do aliado, usa unha orbe de dúas cores para mostrar o "
+"movemento"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/select_orb_colors.cfg:154
@@ -7078,18 +6814,19 @@ msgid ""
 "ally orb color, and the other half shows whether the unit is unmoved, "
 "partially moved or fully moved."
 msgstr ""
+"Durante os turnos dos teus aliados, as súas unidades teñen un orbe de dúas "
+"cores. Unha metade é a cor do orbe aliado, e a outra metade mostra se a "
+"unidade está inmóbil, se move parcialmente ou se move completamente."
 
 #. [grid]
 #: data/gui/themes/default/dialogs/select_orb_colors.cfg:156
 msgid "Show enemy orb"
-msgstr "Mostrar as esferas dos inimigos."
+msgstr "Mostrar as orbes dos inimigos"
 
 #. [label]: id=asdf
 #: data/gui/themes/default/dialogs/server_info.cfg:79
-#, fuzzy
-#| msgid "Map Information"
 msgid "Server Information"
-msgstr "Información do mapa"
+msgstr "Información do servidor"
 
 #. [label]
 #: data/gui/themes/default/dialogs/sp_options_configure.cfg:44
@@ -7129,16 +6866,22 @@ msgid ""
 "The sum (or difference) of the two numbers in parentheses is the actual "
 "number of hitpoints inflicted/taken."
 msgstr ""
+"diálogo de estatísticas^Diferenza entre o resultado real e o esperado, como "
+"porcentaxe.\n"
+"O primeiro número entre parénteses é o número esperado de hitpoints "
+"inflixidos/tomados.\n"
+"A suma (ou diferenza) dos dous números entre parénteses é o número real de "
+"hitpoints inflixidos/tomados."
 
 #. [column]
 #: data/gui/themes/default/dialogs/statistics_dialog.cfg:561
 msgid "stats dialog^Ratio of actual to expected"
-msgstr ""
+msgstr "diálogo de estatísticas^Proporción entre real e esperado"
 
 #. [column]
 #: data/gui/themes/default/dialogs/statistics_dialog.cfg:576
 msgid "Hits"
-msgstr ""
+msgstr "Éxitos"
 
 #. [column]
 #: data/gui/themes/default/dialogs/statistics_dialog.cfg:579
@@ -7154,6 +6897,13 @@ msgid ""
 "Green values indicate this side fared better than expected.\n"
 "Red values indicate this side fared worse than expected."
 msgstr ""
+"diálogo de estatísticas^A probabilidade <i>a priori</i> de inflixir/tomar "
+"como máximo estes golpes, en porcentaxe. Intuitivamente, esta é unha medida "
+"de como a aleatoriedade afectou a este lado. Os valores entre 0 e 50 suxiren "
+"que o número de accesos foi menor do esperado. Os valores entre 50 e 100 "
+"suxiren que o número de accesos foi superior ao esperado. Os valores verdes "
+"indican que este lado foi mellor do esperado. Os valores vermellos indican "
+"que este lado foi peor do esperado."
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
@@ -7180,7 +6930,7 @@ msgstr "Agardando…"
 #. [label]: id=lblMessage
 #: data/gui/themes/default/dialogs/synced_choice_wait.cfg:60
 msgid "Waiting for remote input"
-msgstr "Agardando por datos de entrada remotos."
+msgstr "Agardando por datos de entrada remotos"
 
 #. [button]: id=btn_quit_game
 #: data/gui/themes/default/dialogs/synced_choice_wait.cfg:96
@@ -7241,7 +6991,7 @@ msgstr "Escoller o tema"
 #. [button]: id=help
 #: data/gui/themes/default/dialogs/title_screen.cfg:179
 msgid "Show Battle for Wesnoth help"
-msgstr "Mostrar a axuda de A batalla polo Noroeste."
+msgstr "Mostrar a axuda de A batalla polo Noroeste"
 
 #. [label]
 #: data/gui/themes/default/dialogs/unit_advance.cfg:99
@@ -7275,7 +7025,7 @@ msgstr "Atacar ao inimigo"
 #: data/gui/themes/default/dialogs/units_dialog.cfg:24
 #: data/gui/themes/default/dialogs/units_dialog.cfg:574
 msgid "★"
-msgstr ""
+msgstr "★"
 
 #. [toggle_button]: id=unit_details
 #. [toggle_button]: id=sort_4
@@ -7321,6 +7071,8 @@ msgstr "Trazos"
 #: data/gui/themes/default/dialogs/units_dialog.cfg:405
 msgid "Search for unit name, unit type name, unit level, or trait"
 msgstr ""
+"Busca o nome da unidade, o nome do tipo de unidade, o nivel de unidade ou o "
+"trazo"
 
 #. [button]: id=dismiss
 #: data/gui/themes/default/dialogs/units_dialog.cfg:550
@@ -7329,15 +7081,13 @@ msgstr "Despedir"
 
 #. [button]: id=rename
 #: data/gui/themes/default/dialogs/units_dialog.cfg:561
-#, fuzzy
-#| msgid "Rename Unit"
 msgid "Rename"
-msgstr "Cambiarlle o nome á unidade"
+msgstr "Cambiarlle o nome"
 
 #. [button]: id=mark_favorite
 #: data/gui/themes/default/dialogs/units_dialog.cfg:575
 msgid "Mark/unmark the selected unit as favorite"
-msgstr ""
+msgstr "Marcar/desmarcar a unidade seleccionada como favorita"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -7379,7 +7129,7 @@ msgstr "Descargas"
 #. The heavy checkmark character is available in the DejaVu Sans font, but not in the default Lato font
 #: data/gui/themes/default/widgets/button_success.cfg:250
 msgid "page^<span font_family='DejaVu Sans'>✔</span> Copied"
-msgstr ""
+msgstr "páxina^<span font_family='DejaVu Sans'>✔</span> Copiouse"
 
 #. [image]: id=pending_messages
 #: data/gui/themes/default/widgets/chatbox.cfg:40
@@ -7404,7 +7154,7 @@ msgstr "Infraestrutura de notificacións de Cocoa"
 
 #: src/build_info.cpp:346 src/desktop/version.cpp:129
 msgid "cpu_architecture^<unknown>"
-msgstr ""
+msgstr "arquitectura_cpu^<unknown>"
 
 #: src/desktop/paths.cpp:96
 msgid "filesystem_path_system^Volumes"
@@ -7423,10 +7173,8 @@ msgid "filesystem_path_game^User data"
 msgstr "Datos do usuario"
 
 #: src/desktop/paths.cpp:222
-#, fuzzy
-#| msgid "filesystem_path_game^Game data"
 msgid "filesystem_path_game^Editor maps"
-msgstr "Datos do xogo"
+msgstr "Editor de mapas"
 
 #: src/desktop/paths.cpp:235
 msgid "filesystem_path_system^Home"
@@ -7495,22 +7243,16 @@ msgid "disjunct end^$prefix, or $last"
 msgstr "$prefix ou $last"
 
 #: src/gui/core/canvas.cpp:258
-#, fuzzy
-#| msgid "Image doesn't fit on canvas."
 msgid "Image doesn’t fit on canvas."
-msgstr "A imaxe non colle no lenzo."
+msgstr "A imaxe non encaixa no lenzo."
 
 #: src/gui/core/widget_definition.cpp:29
-#, fuzzy
-#| msgid "No state or draw section defined."
 msgid "No draw section defined for state."
-msgstr "Non se definiu ningunha sección de debuxo ou de estado."
+msgstr "Non se definiu ningunha sección de debuxo para o estado."
 
 #: src/gui/core/widget_definition.cpp:67 src/gui/core/window_builder.cpp:113
-#, fuzzy
-#| msgid "No resolution defined."
 msgid "No resolution defined for "
-msgstr "Non se definiu ningunha resolución."
+msgstr "Non se definiu ningunha resolución para "
 
 #: src/gui/core/window_builder.cpp:147 src/gui/widgets/addon_list.cpp:428
 #: src/gui/widgets/multi_page.cpp:181 src/gui/widgets/panel.cpp:131
@@ -7520,26 +7262,24 @@ msgid "No grid defined."
 msgstr "Non se definiu ningunha grade."
 
 #: src/gui/core/window_builder.cpp:201
-#, fuzzy
-#| msgid "A row must have a column."
 msgid "Grid ‘$grid’ row $row must have at least one column."
-msgstr "Unha fila debe ter unha columna."
+msgstr "A fila $row da grade '$grid' debe ter polo menos unha columna."
 
 #: src/gui/core/window_builder.cpp:213
 msgid ""
 "Grid ‘$grid’ row $row has a differing number of columns ($found found, "
 "$expected expected)"
 msgstr ""
+"A fila '$grid' da grade $row ten un número diferente de columnas ($found "
+"atopado,$expected agardado)"
 
 #: src/gui/dialogs/achievements_dialog.cpp:97
 msgid "$title ($count/$total)"
 msgstr ""
 
 #: src/gui/dialogs/achievements_dialog.cpp:138
-#, fuzzy
-#| msgid "$completed KiB/$total KiB"
 msgid "Completed $count/$total"
-msgstr "$completed KiB/$total KiB"
+msgstr "Completado $count/$total"
 
 #: src/gui/dialogs/addon/addon_server_info.cpp:95
 #: src/gui/dialogs/addon/addon_server_info.cpp:120
@@ -7559,10 +7299,8 @@ msgstr "Resposta"
 #: src/gui/dialogs/addon/addon_server_info.cpp:115
 #: src/gui/dialogs/addon/addon_server_info.cpp:143
 #: src/gui/dialogs/addon/addon_server_info.cpp:167
-#, fuzzy
-#| msgid "Password Required"
 msgid "Password not provided"
-msgstr "Requírese contrasinal"
+msgstr "Non se proporcionou o contrasinal"
 
 #: src/gui/dialogs/addon/manager.cpp:145
 msgid "addons_view^All Add-ons"
@@ -7625,10 +7363,8 @@ msgid "addons_of_type^Cores"
 msgstr "Núcleos"
 
 #: src/gui/dialogs/addon/manager.cpp:163
-#, fuzzy
-#| msgid "addons_of_type^Cores"
 msgid "addons_of_type^Themes"
-msgstr "Núcleos"
+msgstr "Temas"
 
 #: src/gui/dialogs/addon/manager.cpp:164
 msgid "addons_of_type^Resources"
@@ -7663,49 +7399,44 @@ msgid "addons_order^Type ($order)"
 msgstr "Tipo ($order)"
 
 #: src/gui/dialogs/addon/manager.cpp:186
-#, fuzzy
-#| msgid "addons_order^Last updated ($order)"
 msgid "addons_order^Last updated ($datelike_order)"
-msgstr "Última actualización ($order)"
+msgstr "Última actualización ($datelike_order)"
 
 #: src/gui/dialogs/addon/manager.cpp:189
-#, fuzzy
-#| msgid "addons_order^First uploaded ($order)"
 msgid "addons_order^First uploaded ($datelike_order)"
-msgstr "Envío inicial ($order)"
+msgstr "Envío inicial ($datelike_order)"
 
 #: src/gui/dialogs/addon/manager.cpp:207
 msgid "addon_tag^Cooperative"
-msgstr ""
+msgstr "addon_tag^Cooperativa"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
 #: src/gui/dialogs/addon/manager.cpp:209
 msgid "addon_tag^All human players are on the same team, versus the AI"
 msgstr ""
+"addon_tag^Todos os xogadores humanos están no mesmo equipo, fronte á IA"
 
 #: src/gui/dialogs/addon/manager.cpp:210
 msgid "addon_tag^Cosmetic"
-msgstr ""
+msgstr "addon_tag^Cosmético"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
 #: src/gui/dialogs/addon/manager.cpp:212
 msgid "addon_tag^These make the game look different, without changing gameplay"
-msgstr ""
+msgstr "addon_tag^Estes fan que o xogo pareza diferente, sen cambiar o xogo"
 
 #: src/gui/dialogs/addon/manager.cpp:213
-#, fuzzy
-#| msgid "Difficulty"
 msgid "addon_tag^Difficulty"
 msgstr "Dificultade"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
 #: src/gui/dialogs/addon/manager.cpp:215
 msgid "addon_tag^Can make campaigns easier or harder"
-msgstr ""
+msgstr "addon_tag^Pode facer as campañas máis fáciles ou máis difíciles"
 
 #: src/gui/dialogs/addon/manager.cpp:216
 msgid "addon_tag^RNG"
-msgstr ""
+msgstr "addon_tag^RNG"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
 #: src/gui/dialogs/addon/manager.cpp:218
@@ -7713,24 +7444,26 @@ msgid ""
 "addon_tag^Modify the randomness in the combat mechanics, or remove it "
 "entirely"
 msgstr ""
+"addon_tag^Modifica a aleatoriedade na mecánica de combate ou elimínaa por "
+"completo"
 
 #: src/gui/dialogs/addon/manager.cpp:219
 msgid "addon_tag^Survival"
-msgstr ""
+msgstr "addon_tag^Supervivencia"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
 #: src/gui/dialogs/addon/manager.cpp:221
 msgid "addon_tag^Fight against waves of enemies"
-msgstr ""
+msgstr "addon_tag^Loita contra ondas de inimigos"
 
 #: src/gui/dialogs/addon/manager.cpp:222
 msgid "addon_tag^Terraforming"
-msgstr ""
+msgstr "addon_tag^Terraformación"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
 #: src/gui/dialogs/addon/manager.cpp:224
 msgid "addon_tag^Players can change the terrain"
-msgstr ""
+msgstr "addon_tag^Os xogadores poden cambiar o terreo"
 
 #: src/gui/dialogs/addon/manager.cpp:248 src/gui/widgets/addon_list.cpp:102
 msgid "addon_state^Not installed"
@@ -7793,26 +7526,22 @@ msgid "addon_state^Unknown"
 msgstr "Descoñecido"
 
 #: src/gui/dialogs/addon/manager.cpp:454
-#, fuzzy
-#| msgid "sort^Ascending"
 msgid "ascending"
-msgstr "Ascendente"
+msgstr "ascendente"
 
 #. TRANSLATORS: Sorting order of dates, oldest first
 #: src/gui/dialogs/addon/manager.cpp:456
 msgid "oldest to newest"
-msgstr ""
+msgstr "do máis antigo ao máis novo"
 
 #: src/gui/dialogs/addon/manager.cpp:459
-#, fuzzy
-#| msgid "sort^Descending"
 msgid "descending"
-msgstr "Descendente"
+msgstr "descendente"
 
 #. TRANSLATORS: Sorting order of dates, newest first
 #: src/gui/dialogs/addon/manager.cpp:461
 msgid "newest to oldest"
-msgstr ""
+msgstr "do máis novo ao máis antigo"
 
 #: src/gui/dialogs/addon/manager.cpp:566
 msgid "addons^Back to List"
@@ -7857,6 +7586,7 @@ msgstr ""
 #: src/gui/dialogs/addon/manager.cpp:983
 msgid "The passphrase attribute cannot be present when forum_auth is used."
 msgstr ""
+"O atributo de contrasinal non pode estar presente cando se usa forum_auth."
 
 #: src/gui/dialogs/addon/manager.cpp:988
 msgid "Invalid icon path. Make sure the path points to a valid image."
@@ -7866,7 +7596,7 @@ msgstr ""
 
 #: src/gui/dialogs/addon/manager.cpp:994
 msgid "The add-on was rejected by the server:"
-msgstr ""
+msgstr "O servidor rexeitou o complemento:"
 
 #: src/gui/dialogs/addon/manager.cpp:1021
 msgid ""
@@ -7885,13 +7615,13 @@ msgstr "Quere desinstalar «$addon|»?"
 #. Format reference: https://www.boost.org/doc/libs/1_85_0/doc/html/date_time/date_time_io.html#date_time.format_flags
 #: src/gui/dialogs/addon/manager.cpp:1086
 msgid "%B %d %Y, %I:%M %p"
-msgstr ""
+msgstr "%B %d %Y, %I:%M %p"
 
 #. TRANSLATORS: Month + day of month + year + 24-hour time, eg 'November 02 2021, 13:59'. Format for your locale.
 #. Format reference: https://www.boost.org/doc/libs/1_85_0/doc/html/date_time/date_time_io.html#date_time.format_flags
 #: src/gui/dialogs/addon/manager.cpp:1089
 msgid "%B %d %Y, %H:%M"
-msgstr ""
+msgstr "%B %d %Y, %H:%M"
 
 #: src/gui/dialogs/addon/manager.cpp:1144
 msgid "url^None"
@@ -7907,38 +7637,28 @@ msgid "Defender resistance vs"
 msgstr "Resistencia do defensor contra"
 
 #: src/gui/dialogs/attack_predictions.cpp:201
-#, fuzzy
-#| msgid "Attacker vulnerability vs"
 msgid "Defender vulnerability vs"
-msgstr "Vulnerabilidade do atacante contra"
+msgstr "Vulnerabilidade do defensor contra"
 
 #: src/gui/dialogs/attack_predictions.cpp:205
-#, fuzzy
-#| msgid "Defender resistance vs"
 msgid "Attacker resistance vs"
-msgstr "Resistencia do defensor contra"
+msgstr "Resistencia do atacante contra"
 
 #: src/gui/dialogs/attack_predictions.cpp:207
 msgid "Attacker vulnerability vs"
 msgstr "Vulnerabilidade do atacante contra"
 
 #: src/gui/dialogs/campaign_selection.cpp:77
-#, fuzzy
-#| msgid "Add-ons"
 msgid "game^Get Add-ons"
-msgstr "Complementos"
+msgstr "Obter complementos"
 
 #: src/gui/dialogs/campaign_selection.cpp:394
-#, fuzzy
-#| msgid "Campaigns"
 msgid "More campaigns..."
-msgstr "Campañas"
+msgstr "Máis Campañas..."
 
 #: src/gui/dialogs/campaign_selection.cpp:408
-#, fuzzy
-#| msgid "Campaigns"
 msgid "Missing Campaigns"
-msgstr "Campañas"
+msgstr "Campañas desaparecidas"
 
 #: src/gui/dialogs/campaign_selection.cpp:442
 #: src/gui/dialogs/multiplayer/lobby.cpp:435
@@ -7980,10 +7700,8 @@ msgstr ""
 # Non o vin no contexto.
 #: src/gui/dialogs/editor/custom_tod.cpp:171
 #: src/gui/dialogs/editor/edit_unit.cpp:307
-#, fuzzy
-#| msgid "Choose Player"
 msgid "Choose File"
-msgstr "Escoller un xogador"
+msgstr "Escolle ficheiro"
 
 #: src/gui/dialogs/editor/custom_tod.cpp:182
 #: src/gui/dialogs/editor/edit_unit.cpp:318
@@ -7991,44 +7709,36 @@ msgid ""
 "This file is outside Wesnoth’s data dirs. Do you wish to copy it into your "
 "add-on?"
 msgstr ""
+"Este ficheiro está fóra dos directorios de datos do Reino do Noroeste. "
+"Queres copialo no teu complemento?"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:178
-#, fuzzy
-#| msgid "Cores"
 msgid "Core"
-msgstr "Núcleos"
+msgstr "Núcleo"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:179
 msgid "Campaign"
 msgstr "Campaña"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:180
-#, fuzzy
-#| msgid "Campaign"
 msgid "Hybrid Campaign"
-msgstr "Campaña"
+msgstr "Campaña híbrida"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:181
-#, fuzzy
-#| msgid "Multiplayer Campaigns"
 msgid "Multiplayer Campaign"
-msgstr "Campañas para varios xogadores"
+msgstr "Campañas multixogador"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:182
 msgid "Scenario"
 msgstr "Escenario"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:183
-#, fuzzy
-#| msgid "Multiplayer Alerts"
 msgid "Multiplayer Scenario"
-msgstr "Alertas de varios xogadores"
+msgstr "Escenario multixogador"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:184
-#, fuzzy
-#| msgid "Action"
 msgid "Faction"
-msgstr "Acción"
+msgstr "Facción"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:185
 #: src/gui/dialogs/multiplayer/lobby.cpp:423
@@ -8037,103 +7747,87 @@ msgstr "Era"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:186
 msgid "Map Pack"
-msgstr ""
+msgstr "Paquete de mapas"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:187
-#, fuzzy
-#| msgid "Modifications"
 msgid "Modification"
-msgstr "Modificacións"
+msgstr "Modificación"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:188
 msgid "Media"
-msgstr ""
+msgstr "Multimedia"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:189
 msgid "Theme"
 msgstr "Tema"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:190
-#, fuzzy
-#| msgid "Other Games"
 msgid "Other"
-msgstr "Outras partidas"
+msgstr "Outras"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:196
-#, fuzzy
-#| msgid "Properties"
 msgid "Cooperative"
-msgstr "Propiedades"
+msgstr "Cooperativo"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:197
 msgid "Cosmetic"
-msgstr ""
+msgstr "Cosmético"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:199
 msgid "RNG"
-msgstr ""
+msgstr "RNG"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:200
 msgid "Survival"
-msgstr ""
+msgstr "Supervivencia"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:201
-#, fuzzy
-#| msgid "Map Information"
 msgid "Terraforming"
-msgstr "Información do mapa"
+msgstr "Terra-formación"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:402
 msgid "The icon’s file size is too large"
-msgstr ""
+msgstr "O tamaño do ficheiro da icona é demasiado grande"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:404
 msgid "No validation errors"
-msgstr ""
+msgstr "Non hai erros de validación"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:404
 msgid "Success"
-msgstr ""
+msgstr "Éxito"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:434
-#, fuzzy
-#| msgid "Choose weapon:"
 msgid "Choose an icon"
-msgstr "Escoller unha arma:"
+msgstr "Escolle unha ícona"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:190
 msgid "scout"
-msgstr ""
+msgstr "explorador"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:191
-#, fuzzy
-#| msgid "Right"
 msgid "fighter"
-msgstr "Dereita"
+msgstr "Loitador"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:192
-#, fuzzy
-#| msgid "Search"
 msgid "archer"
-msgstr "Busca"
+msgstr "Arqueiro"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:193
 msgid "mixed fighter"
-msgstr ""
+msgstr "loitador mixto"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:194
 msgid "healer"
-msgstr ""
+msgstr "curandeiro/a"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:1029
-#, fuzzy
-#| msgid "Save already exists. Do you want to overwrite it?"
 msgid "Unsaved changes will be lost. Do you want to leave?"
-msgstr "Xa hai unha partida gardada con ese nome. Queres substituíla?"
+msgstr "Os cambios non gardados perderanse. Queres saír?"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:1048
 msgid "Unit type saved."
-msgstr ""
+msgstr "Tipo de unidade gardado."
 
 #: src/gui/dialogs/editor/generator_settings.cpp:38
 #, fuzzy
@@ -8176,12 +7870,8 @@ msgid "Open"
 msgstr "Abrir"
 
 #: src/gui/dialogs/file_dialog.cpp:313
-#, fuzzy
-#| msgid "Opening links is not supported, contact your packager"
 msgid "Opening files is not supported, contact your packager"
-msgstr ""
-"A funcionalidade de abrir ligazóns non está dispoñíbel, contacte co "
-"empaquetador."
+msgstr "Non se admite abrir ficheiros. Ponte en contacto co teu empaquetador"
 
 #: src/gui/dialogs/file_dialog.cpp:370
 msgid "The file already exists. Do you wish to overwrite it?"
@@ -8264,37 +7954,29 @@ msgid "The game data cache could not be purged."
 msgstr "Non foi posíbel baleirar a caché de datos do xogo."
 
 #: src/gui/dialogs/game_load.cpp:72
-#, fuzzy
-#| msgid "Saved Games"
 msgid "No Saved Games"
-msgstr "Partidas gardadas"
+msgstr "Sen partidas gardadas"
 
 #: src/gui/dialogs/game_load.cpp:72
-#, fuzzy
-#| msgid "There are no alternative video modes available"
 msgid "There are no saved games to load."
-msgstr "Non hai modos de vídeo alternativos dispoñíbeis."
+msgstr "Non hai partidas gardadas para cargar."
 
 #: src/gui/dialogs/game_load.cpp:143
 msgid "game_version^Current Version"
-msgstr ""
+msgstr "game_version^Versión actual"
 
 #: src/gui/dialogs/game_load.cpp:147
-#, fuzzy
-#| msgid "Version $version"
 msgid "game_version^Wesnoth $version"
-msgstr "Versión  $version"
+msgstr "O Noroeste versión $version"
 
 #. TRANSLATORS: "reserve" refers to units on the recall list
 #: src/gui/dialogs/game_load.cpp:233
 msgid "$active active, $reserve reserve"
-msgstr ""
+msgstr "$activo activo, $reserva reserva"
 
 #: src/gui/dialogs/game_load.cpp:288
-#, fuzzy
-#| msgid "The selected game has no sides!"
 msgid "The selected file is corrupt: "
-msgstr "A partida seleccionada non ten bandos!"
+msgstr "A partida seleccionada está corrupta: "
 
 #: src/gui/dialogs/game_load.cpp:328
 msgid "(Invalid)"
@@ -8318,7 +8000,7 @@ msgstr "Repetición"
 
 #: src/gui/dialogs/game_load.cpp:385
 msgid "Turn"
-msgstr "Rolda:"
+msgstr "Rolda"
 
 #: src/gui/dialogs/game_load.cpp:387
 msgid "Scenario start"
@@ -8333,10 +8015,8 @@ msgid "Version: "
 msgstr "Versión: "
 
 #: src/gui/dialogs/game_load.cpp:434
-#, fuzzy
-#| msgid "Modifications:"
 msgid "Modifications: "
-msgstr "Modificacións:"
+msgstr "Modificacións: "
 
 #: src/gui/dialogs/game_stats.cpp:63
 msgid "controller^AI"
@@ -8347,10 +8027,8 @@ msgid "controller^Idle"
 msgstr "Ocioso"
 
 #: src/gui/dialogs/game_stats.cpp:63
-#, fuzzy
-#| msgid "controller^None"
 msgid "controller^Reserved"
-msgstr "Ninguén"
+msgstr "Reservado"
 
 #: src/gui/dialogs/game_stats.cpp:102 src/gui/dialogs/label_settings.cpp:73
 msgid "Unknown"
@@ -8371,7 +8049,7 @@ msgstr "si"
 msgid "Opening links is not supported, contact your packager"
 msgstr ""
 "A funcionalidade de abrir ligazóns non está dispoñíbel, contacte co "
-"empaquetador."
+"empaquetador"
 
 #: src/gui/dialogs/label_settings.cpp:51
 msgid "Team Labels"
@@ -8448,49 +8126,49 @@ msgstr "Conectando ao servidor…"
 
 #: src/gui/dialogs/loading_screen.cpp:63
 msgid "Logging in"
-msgstr "Accedendo…"
+msgstr "Accedendo"
 
 #: src/gui/dialogs/loading_screen.cpp:64
 msgid "Waiting for server"
-msgstr "Agardando polo servidor…"
+msgstr "Agardando polo servidor"
 
 #: src/gui/dialogs/loading_screen.cpp:65
 msgid "Connecting to redirected server"
-msgstr "Conectando ao servidor da redirección…"
+msgstr "Conectando ao servidor da redirección"
 
 #: src/gui/dialogs/loading_screen.cpp:66
 msgid "Waiting for next scenario"
-msgstr "Agardando polo seguinte escenario…"
+msgstr "Agardando polo seguinte escenario"
 
 #: src/gui/dialogs/loading_screen.cpp:67
 msgid "Getting game data"
-msgstr "Obtendo os datos da partida…"
+msgstr "Obtendo os datos da partida"
 
 #: src/gui/dialogs/loading_screen.cpp:68
 msgid "Downloading lobby data"
-msgstr "Descargando os datos da sala de espera…"
+msgstr "Descargando os datos da sala de espera"
 
 #: src/gui/dialogs/lua_interpreter.cpp:628
 msgid "The lua console can only be used in debug mode! (Run ‘:debug’ first)"
 msgstr ""
+"A consola lua só se pode usar no modo de depuración! (Executar ':debug' "
+"primeiro)"
 
 #: src/gui/dialogs/lua_interpreter.cpp:629
-#, fuzzy
-#| msgid "Lua Console"
 msgid "lua console"
-msgstr "Consola de Lua"
+msgstr "consola de Lua"
 
 #: src/gui/dialogs/migrate_version_selection.cpp:47
-#, fuzzy
-#| msgid "No era information found."
 msgid "No Other Version Found"
-msgstr "Non se atopou información sobre a era."
+msgstr "Non se atopou outra versión"
 
 #: src/gui/dialogs/migrate_version_selection.cpp:47
 msgid ""
 "This would import settings from a previous version of Wesnoth, but no other "
 "version was found on this device"
 msgstr ""
+"Isto importaría os axustes dunha versión anterior do Reino do Noroeste, pero "
+"non se atopou ningunha outra versión neste dispositivo."
 
 #: src/gui/dialogs/multiplayer/faction_select.cpp:200
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:498
@@ -8502,31 +8180,22 @@ msgid "Do you really want to log out?"
 msgstr "Seguro que quere desconectarse?"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:174
-#, fuzzy
-#| msgid "Incompatible User-made Content."
 msgid "Incompatible User-made Content"
-msgstr "Contido incompatíbel feito por usuarios."
+msgstr "Contido incompatíbel feito por usuarios"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:175
-#, fuzzy
-#| msgid ""
-#| "This game cannot be joined because the host has out-of-date add-ons that "
-#| "are incompatible with your version. You might wish to suggest that the "
-#| "host's add-ons be updated."
 msgid ""
 "This game cannot be joined because the host has out-of-date add-ons that are "
 "incompatible with your version. You might wish to suggest that the host’s "
 "add-ons be updated."
 msgstr ""
 "Non te podes unir a esta partida porque o anfitrión ten complementos "
-"obsoletos que son incompatíbeis coa túa versión. Considera recomendar ao "
-"anfitrión actualizalos."
+"desactualizados que son incompatibles coa túa versión. Pode que queiras "
+"suxerir que se actualicen os complementos do anfitrión."
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:190
-#, fuzzy
-#| msgid "Missing User-made Content."
 msgid "Missing User-made Content"
-msgstr "Falta contido feito por usuarios."
+msgstr "Falta contido feito por usuarios"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:191
 msgid ""
@@ -8541,7 +8210,7 @@ msgstr ""
 # Aparece na nova interface da sala de espera para partidas con varios xogadores.
 #: src/gui/dialogs/multiplayer/lobby.cpp:368
 msgid "Games: showing $num_shown out of $num_total"
-msgstr "Listando $num_shown partidas dun total de $num_total|."
+msgstr "Listando $num_shown partidas dun total de $num_total"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:390
 msgid "$game_name (Era: $era_name)"
@@ -8588,32 +8257,29 @@ msgid "Observers not allowed"
 msgstr "Non se permiten os observadores"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:641
-#, fuzzy
-#| msgid "Lobby"
 msgid "lobby"
-msgstr "Sala de espera"
+msgstr "sala de espera"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:966
 msgid ""
 "This game doesn’t allow observers. Observe using moderator rights anyway?"
 msgstr ""
+"Este xogo non permite observadores. Queres observar usando dereitos de "
+"moderador de todos os xeitos?"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:977
-#, fuzzy
-#| msgid ""
-#| "Something is wrong with the addon version check database supporting the "
-#| "multiplayer lobby. Please report this at http://bugs.wesnoth.org."
 msgid ""
 "Something is wrong with the addon version check database supporting the "
 "multiplayer lobby. Please report this at https://bugs.wesnoth.org."
 msgstr ""
-"Hai algún problema coa base de datos de comprobación das versións de "
-"complementos que usa a sala de espera. Pode informar do problema en https://"
-"bugs.wesnoth.org."
+"Algo vai mal coa base de datos de comprobación de versións de complementos "
+"que admite a sala de multixogador. Informe diso en https://bugs.wesnoth.org."
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:996
 msgid "This game is password protected. Join using moderator rights anyway?"
 msgstr ""
+"Este xogo está protexido por contrasinal. Únete usando os dereitos de "
+"moderador de todos os xeitos?"
 
 #: src/gui/dialogs/multiplayer/mp_alerts_options.cpp:119
 msgid ""
@@ -8621,17 +8287,15 @@ msgid ""
 "contact your package manager"
 msgstr ""
 "Esta construción de A batalla polo Noroeste non permite o uso de "
-"notificacións de escritorio, contacte co xestor dos seus paquetes."
+"notificacións de escritorio, contacte co xestor dos seus paquetes"
 
 #: src/gui/dialogs/multiplayer/mp_change_control.cpp:78
 msgid "Side $side"
 msgstr "Bando $side"
 
 #: src/gui/dialogs/multiplayer/mp_connect.cpp:183
-#, fuzzy
-#| msgid "Server:"
 msgid "Add Server"
-msgstr "Servidor:"
+msgstr "Engadir servidor"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:122
 msgid "Scenarios"
@@ -8676,7 +8340,7 @@ msgstr "Non hai eras dispoñíbeis para esta partida."
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:814
 msgid "number of players^$min to $max"
-msgstr ""
+msgstr "número de xogadores^$min a $max"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:951
 msgid "The selected game has no sides!"
@@ -8684,10 +8348,8 @@ msgstr "A partida seleccionada non ten bandos!"
 
 #. TRANSLATORS: This sentence will be followed by some details of the error, most likely the "Map could not be loaded" message from create_engine.cpp
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:958
-#, fuzzy
-#| msgid "The selected game has no sides!"
 msgid "The selected game cannot be created."
-msgstr "A partida seleccionada non ten bandos!"
+msgstr "A partida seleccionada non se pode crear."
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:1031
 msgid "Choose Starting Scenario"
@@ -8721,18 +8383,14 @@ msgstr "baleiro"
 
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:258
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:105
-#, fuzzy
-#| msgid "Quit game"
 msgid "this game"
-msgstr "Saír da partida"
+msgstr "esta partida"
 
 #: src/gui/dialogs/multiplayer/mp_report.cpp:46
 msgid "Lobby"
 msgstr "Sala de espera"
 
 #: src/gui/dialogs/multiplayer/mp_report.cpp:48
-#, fuzzy
-#| msgid "Games"
 msgid "Game"
 msgstr "Partidas"
 
@@ -8743,10 +8401,8 @@ msgid "Hotkey(s): $bindings"
 msgstr "Configuración dos atallos"
 
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:308
-#, fuzzy
-#| msgid "(Invalid)"
 msgid "Invalid Color"
-msgstr "(Incorrecto)"
+msgstr "Cor non válida"
 
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:515
 msgid "Waiting for players to choose factions..."
@@ -8769,21 +8425,21 @@ msgstr "(ignorado)"
 #: src/gui/dialogs/preferences_dialog.cpp:257
 #: src/gui/dialogs/preferences_dialog.cpp:314
 msgid "No username specified"
-msgstr "Non se indicou un nome de usuario."
+msgstr "Non se indicou un nome de usuario"
 
 # Mensaxe que aparece nunha xanela ao intentar introducir un nome de usuario incorrecto (por exemplo, un baleiro) na lista de amigos e ignorados, accesible dende «Configuración → Varios xogadores → Lista de amigos».
 #: src/gui/dialogs/preferences_dialog.cpp:272
 msgid "Invalid username"
-msgstr "O nome de usuario non é válido."
+msgstr "O nome de usuario non é válido"
 
 #: src/gui/dialogs/preferences_dialog.cpp:319
 msgid "Not on friends or ignore lists"
-msgstr "Nin amigo nin ignorado."
+msgstr "Nin amigo nin ignorado"
 
 #: src/gui/dialogs/preferences_dialog.cpp:925
 #: src/gui/dialogs/preferences_dialog.cpp:989
 msgid "No hotkey selected"
-msgstr ""
+msgstr "Non se seleccionou ningunha tecla de acceso rápido"
 
 #: src/gui/dialogs/preferences_dialog.cpp:953
 msgid ""
@@ -8816,23 +8472,21 @@ msgstr ""
 "Probe a gardar a captura como PNG."
 
 #: src/gui/dialogs/statistics_dialog.cpp:78
-#, fuzzy
-#| msgid "Scenarios"
 msgid "All Scenarios"
-msgstr "Escenarios"
+msgstr "Todos os escenarios"
 
 #: src/gui/dialogs/statistics_dialog.cpp:174
 #: src/gui/dialogs/statistics_dialog.cpp:334
 msgid "This Turn"
-msgstr "Esta quenda"
+msgstr "Esta rolda"
 
 #: src/gui/dialogs/statistics_dialog.cpp:210
 msgid "Actual hit rates, by chance to hit:"
-msgstr ""
+msgstr "Taxas de acertos reais, por casualidade:"
 
 #: src/gui/dialogs/statistics_dialog.cpp:212
 msgid "(no attacks have taken place yet)"
-msgstr ""
+msgstr "(aínda non houbo ataques)"
 
 #: src/gui/dialogs/statistics_dialog.cpp:321
 msgid ""
@@ -8843,10 +8497,14 @@ msgid ""
 "The sum (or difference) of the two numbers in parentheses is the actual "
 "number of hits inflicted/taken."
 msgstr ""
+"diálogo de estatísticas^Diferenza entre o resultado real e o esperado, como "
+"porcentaxe.\n"
+"O primeiro número entre parénteses é o número esperado de acertos inflixidos/"
+"tomados.\n"
+"A suma (ou diferenza) dos dous números entre parénteses é o número real de "
+"acertos inflixidos/tomados."
 
 #: src/gui/dialogs/statistics_dialog.cpp:365
-#, fuzzy
-#| msgid "Recruits"
 msgid "stats^Recruits"
 msgstr "Recrutamentos"
 
@@ -8878,7 +8536,7 @@ msgstr "Recibido"
 
 #: src/gui/dialogs/statistics_dialog.cpp:452
 msgid "$count|× $name"
-msgstr ""
+msgstr "$conto|× $nome"
 
 #: src/gui/dialogs/title_screen.cpp:116 src/hotkey/hotkey_command.cpp:98
 msgid "Screenshot"
@@ -8889,20 +8547,16 @@ msgid "Version $version"
 msgstr "Versión  $version"
 
 #: src/gui/dialogs/title_screen.cpp:468 src/hotkey/hotkey_command.cpp:311
-#, fuzzy
-#| msgid "Choose Starting Scenario"
 msgid "Choose Test Scenario"
-msgstr "Seleccionar o escenario inicial"
+msgstr "Escolle o escenario de proba"
 
 #: src/gui/dialogs/units_dialog.cpp:239 src/hotkey/hotkey_command.cpp:103
 msgid "Rename Unit"
 msgstr "Cambiarlle o nome á unidade"
 
 #: src/gui/dialogs/units_dialog.cpp:272
-#, fuzzy
-#| msgid "This unit is loyal and requires no upkeep."
 msgid "This unit requires no upkeep."
-msgstr "A unidade é leal e non require mantemento."
+msgstr "A unidade non require mantemento."
 
 #: src/gui/dialogs/units_dialog.cpp:273 src/gui/dialogs/units_dialog.cpp:278
 #: src/gui/dialogs/units_dialog.cpp:283
@@ -8928,13 +8582,11 @@ msgstr "Despedir a unidade"
 
 #: src/gui/dialogs/units_dialog.cpp:432
 msgid "unit_variation^Default Variation"
-msgstr ""
+msgstr "unit_variation^Variación predeterminada"
 
 #: src/gui/dialogs/units_dialog.cpp:468
-#, fuzzy
-#| msgid "Delete Unit"
 msgid "Create Unit"
-msgstr "Eliminar a unidade"
+msgstr "Crear unidade"
 
 #: src/gui/dialogs/units_dialog.cpp:539
 msgid "Recruit Unit"
@@ -8961,10 +8613,12 @@ msgid ""
 "This unit cannot be recalled because you will not have enough gold at this "
 "point in your plan."
 msgstr ""
+"Non se pode recordar esta unidade porque non terás ouro suficiente neste "
+"momento do teu plan."
 
 #: src/gui/dialogs/units_dialog.cpp:834
 msgid "This unit cannot be recalled because you do not have enough gold."
-msgstr ""
+msgstr "Non se pode recordar esta unidade porque non tes ouro suficiente."
 
 #: src/gui/gui.cpp:133
 msgid "No default gui defined."
@@ -8988,12 +8642,12 @@ msgstr "Publicado, obsoleto no servidor"
 
 #: src/gui/widgets/addon_list.cpp:291
 msgid "Delete add-on from server"
-msgstr "Eliminar o complemento do servidor."
+msgstr "Eliminar o complemento do servidor"
 
 #. TRANSLATORS: This is the new chat text indicator
 #: src/gui/widgets/chatbox.cpp:95
 msgid "NEW"
-msgstr ""
+msgstr "NOVO"
 
 #: src/gui/widgets/chatbox.cpp:298
 msgid "whisper to $receiver"
@@ -9001,40 +8655,29 @@ msgstr "bisbarlle a $receiver"
 
 #: src/gui/widgets/chatbox.cpp:382
 msgid "Joined <i>$name</i>"
-msgstr ""
+msgstr "Uniuse <i>a $name</i>"
 
 #: src/gui/widgets/chatbox.cpp:388
-#, fuzzy
-#| msgid ""
-#| "Whisper session with <i>“$name”</i> started. If you do not want to "
-#| "receive messages from this user, type <i>/ignore $name</i>\n"
 msgid ""
 "Started private message with <i>$name</i>. If you do not want to receive "
 "messages from this player, type <i>/ignore $name</i>"
 msgstr ""
-"Iniciouse unha conversa privada con «$name|». Se non queres recibir mensaxes "
-"deste usuario, executa a orde «/ignore $name».\n"
+"Iniciouse unha conversa privada con <i>$name</i>. Se non queres recibir "
+"mensaxes deste usuario, executa a orde <i>/ignore $name</i>"
 
 #: src/gui/widgets/helper.cpp:148
-#, fuzzy
-#| msgid "Mandatory widget '$id' hasn't been defined."
 msgid "Mandatory widget ‘$id’ hasn't been defined."
-msgstr "Non se definiu o trebello obrigatorio «$id|»."
+msgstr "Non se definiu o trebello obrigatorio ‘$id’."
 
 #: src/gui/widgets/label.cpp:137 src/gui/widgets/multiline_text.cpp:429
-#, fuzzy
-#| msgid "Copied link!"
 msgid "Open link?"
-msgstr "Copiouse a ligazón."
+msgstr "Abrir ligazón?"
 
 #: src/gui/widgets/label.cpp:162
 msgid "Copied link!"
-msgstr "Copiouse a ligazón."
+msgstr "Copiouse a ligazón!"
 
 #: src/gui/widgets/listbox.cpp:695 src/gui/widgets/multi_page.cpp:224
-#, fuzzy
-#| msgid ""
-#| "'list_data' must have the same number of columns as the 'list_definition'."
 msgid ""
 "‘list_data’ must have the same number of columns as the ‘list_definition’."
 msgstr ""
@@ -9046,28 +8689,24 @@ msgid "No list defined."
 msgstr "Non se definiu ningunha lista."
 
 #: src/gui/widgets/listbox.cpp:735
-#, fuzzy
-#| msgid "A 'list_definition' should contain one row."
 msgid "A ‘list_definition’ should contain one row."
-msgstr "Toda «list_definition» (definición de lista) debería conter unha fila."
+msgstr "A «list_definition» (definición de lista) debería conter unha fila."
 
 #: src/gui/widgets/multi_page.cpp:200
 msgid "No page defined."
 msgstr "Non se definiu ningunha páxina."
 
 #: src/gui/widgets/multiline_text.cpp:434
-#, fuzzy
-#| msgid "Opening links is not supported, contact your packager"
 msgid ""
 "Opening links is not supported, contact your packager. Link URL has been "
 "copied to the clipboard."
 msgstr ""
-"A funcionalidade de abrir ligazóns non está dispoñíbel, contacte co "
-"empaquetador."
+"A apertura de ligazóns non está soportada, contacta coa persoa "
+"empaquetadora. A URL da ligazón foi copiada ao portapapeis."
 
 #: src/gui/widgets/multimenu_button.cpp:171
 msgid "multimenu^All Selected"
-msgstr "Seleccionáronse todas."
+msgstr "Seleccionáronse todas"
 
 #. TRANSLATORS: In a drop-down menu that's a list of toggle-boxes, this becomes part
 #. of the text on the button when many of the boxes are selected. The text becomes
@@ -9082,7 +8721,7 @@ msgstr[1] "$excess máis"
 #: src/gui/widgets/multimenu_button.cpp:181
 #: src/gui/widgets/multimenu_button.cpp:233
 msgid "multimenu^None Selected"
-msgstr "Non se seleccionou ningunha."
+msgstr "Non se seleccionou ningunha"
 
 #: src/gui/widgets/pane.cpp:360
 msgid "Need at least 1 parallel item."
@@ -9098,8 +8737,6 @@ msgid "No widget defined."
 msgstr "Non se definiu ningún trebello."
 
 #: src/gui/widgets/slider.cpp:356
-#, fuzzy
-#| msgid "The number of value_labels and values don't match."
 msgid "The number of value_labels and values don’t match."
 msgstr ""
 "Os números de «value_labels» (etiquetas de valores) e «values» (valores) non "
@@ -9114,20 +8751,18 @@ msgid "Found a widget with a helptip and without a tooltip."
 msgstr "Atopouse un trebello con axuda pero sen explicación."
 
 #: src/gui/widgets/tab_container.cpp:140
-#, fuzzy
-#| msgid "No nodes defined for a tree view."
 msgid "No grid defined for tab container control"
-msgstr "Non se definiu ningún nodo para unha vista de árbore."
+msgstr "Non se definiu ningunha grade para o control do contedor de lapelas"
 
 #: src/gui/widgets/tree_view.cpp:287
 msgid "No nodes defined for a tree view."
 msgstr "Non se definiu ningún nodo para unha vista de árbore."
 
 #: src/gui/widgets/tree_view.cpp:317
-#, fuzzy
-#| msgid "[node]id 'root' is reserved for the implementation."
 msgid "[node]id ‘root’ is reserved for the implementation."
-msgstr "O [node]id (identificador do nodo) «root» está reservado."
+msgstr ""
+"O [node]id (identificador do nodo) «root» está reservado para a "
+"implementación."
 
 #: src/gui/widgets/tree_view_node.cpp:57
 msgid "Unknown builder id for tree view node."
@@ -9144,17 +8779,17 @@ msgstr "(Ata. / Def.)"
 
 #: src/gui/widgets/unit_preview_pane.cpp:222
 msgid "Remaining: $left/$max"
-msgstr ""
+msgstr "Restante: $left/$max"
 
 #: src/gui/widgets/unit_preview_pane.cpp:225
 msgid "This unit can attack multiple times per turn."
-msgstr ""
+msgstr "Esta unidade pode atacar varias veces por rolda."
 
 #: src/gui/widgets/unit_preview_pane.cpp:277
 msgid "uses $num attack"
 msgid_plural "uses $num attacks"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "usa o ataque $num"
+msgstr[1] "usa os ataques $num"
 
 #: src/gui/widgets/unit_preview_pane.cpp:320
 #: src/gui/widgets/unit_preview_pane.cpp:351
@@ -9194,14 +8829,10 @@ msgid "Abilities"
 msgstr "Habilidades"
 
 #: src/gui/widgets/window.cpp:288
-#, fuzzy
-#| msgid "Linked '$id' group has multiple definitions."
 msgid "Linked ‘$id’ group has multiple definitions."
 msgstr "O grupo ligado «$id|» ten múltiples definicións."
 
 #: src/gui/widgets/window.cpp:887
-#, fuzzy
-#| msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgid "Click dismiss needs a ‘click_dismiss’ or ‘ok’ button."
 msgstr ""
 "Para premer «Rexeitar» fai falla un botón «click_dismiss» (premer rexeitar) "
@@ -9209,10 +8840,8 @@ msgstr ""
 
 #: src/gui/widgets/window.cpp:912 src/gui/widgets/window.cpp:949
 #: src/tests/gui/test_gui2.cpp:739
-#, fuzzy
-#| msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgid "Failed to show a dialog, which doesn’t fit on the screen."
-msgstr "Non foi posíbel mostrar un dos diálogos, non collía na pantalla."
+msgstr "Non se puido amosar o diálogo, xa que non encaixa na pantalla."
 
 #: src/hotkey/hotkey_command.cpp:52
 msgid "Saved Games"
@@ -9300,14 +8929,16 @@ msgid "Select/Move/Attack"
 msgstr "Seleccionar, mover ou atacar"
 
 #: src/hotkey/hotkey_command.cpp:84
+#, fuzzy
+#| msgid "Touch"
 msgid "Touch Hex"
-msgstr ""
+msgstr "Tocar"
 
 # Accesible dende:
 # «Configuración → Visualización».
 #: src/hotkey/hotkey_command.cpp:85
 msgid "Animate Map"
-msgstr "Mostrar as animacións do mapa."
+msgstr "Mostrar as animacións do mapa"
 
 #: src/hotkey/hotkey_command.cpp:86
 msgid "Next Unit"
@@ -9323,13 +8954,11 @@ msgstr "Manter a posición"
 
 #: src/hotkey/hotkey_command.cpp:89
 msgid "End Unit Turn"
-msgstr "Rematar a quenda da unidade"
+msgstr "Rematar a rolda da unidade"
 
 #: src/hotkey/hotkey_command.cpp:90
-#, fuzzy
-#| msgid "Scroll Left"
 msgid "Scroll to Leader"
-msgstr "Mover á esquerda"
+msgstr "Desplazar al líder"
 
 #: src/hotkey/hotkey_command.cpp:91
 msgid "Undo"
@@ -9362,20 +8991,16 @@ msgstr "Facer unha captura do mapa"
 # Configuración → Xeral.
 # Acurtada para adaptarse mellor á interface.
 #: src/hotkey/hotkey_command.cpp:100
-#, fuzzy
-#| msgid "Accelerated speed"
 msgid "Toggle Accelerated Speed"
-msgstr "Acelerar."
+msgstr "Alternar acelerar"
 
 #: src/hotkey/hotkey_command.cpp:101
 msgid "Terrain Description"
 msgstr "Descrición do terreo"
 
 #: src/hotkey/hotkey_command.cpp:102
-#, fuzzy
-#| msgid "Unit Description"
 msgid "Unit Type Description"
-msgstr "Descrición da unidade"
+msgstr "Descrición do tipo de unidade"
 
 #: src/hotkey/hotkey_command.cpp:104
 msgid "Delete Unit"
@@ -9391,10 +9016,8 @@ msgid "Save Map"
 msgstr "Gardar o mapa"
 
 #: src/hotkey/hotkey_command.cpp:110
-#, fuzzy
-#| msgid "Loading..."
 msgid "Load Turn..."
-msgstr "Cargando…"
+msgstr "Cargando rolda…"
 
 #: src/hotkey/hotkey_command.cpp:112
 msgid "Repeat Recruit"
@@ -9406,7 +9029,7 @@ msgstr "Mostrar ou ocultar as etiquetas"
 
 #: src/hotkey/hotkey_command.cpp:115
 msgid "End Turn"
-msgstr "Rematar a quenda"
+msgstr "Rematar a rolda"
 
 #: src/hotkey/hotkey_command.cpp:117
 msgid "Toggle Ellipses"
@@ -9418,7 +9041,7 @@ msgstr "Activar a grade"
 
 #: src/hotkey/hotkey_command.cpp:119
 msgid "Mouse Scrolling"
-msgstr "Desprazamento co rato."
+msgstr "Desprazamento co rato"
 
 #: src/hotkey/hotkey_command.cpp:120
 msgid "Status Table"
@@ -9445,16 +9068,12 @@ msgid "Kill Unit (Debug!)"
 msgstr "Matar a unidade (depuración!)"
 
 #: src/hotkey/hotkey_command.cpp:126
-#, fuzzy
-#| msgid "Create Unit (Debug!)"
 msgid "Teleport Unit (Debug!)"
-msgstr "Crear unha unidade (depuración!)"
+msgstr "Teletransportar unidade (Depuración!)"
 
 #: src/hotkey/hotkey_command.cpp:128
-#, fuzzy
-#| msgid "Scenario Objectives"
 msgid "Objectives"
-msgstr "Obxectivos do escenario"
+msgstr "Obxectivos"
 
 #: src/hotkey/hotkey_command.cpp:131
 msgid "Pause Network Game"
@@ -9465,10 +9084,8 @@ msgid "Continue Network Game"
 msgstr "Continuar a partida en rede"
 
 #: src/hotkey/hotkey_command.cpp:134
-#, fuzzy
-#| msgid "Quit to Main Menu"
 msgid "Quit to Menu"
-msgstr "Saír ao menú principal"
+msgstr "Saír ao menú"
 
 #: src/hotkey/hotkey_command.cpp:135
 msgid "Set Team Label"
@@ -9515,22 +9132,16 @@ msgid "Next Move"
 msgstr "Seguinte movemento"
 
 #: src/hotkey/hotkey_command.cpp:147
-#, fuzzy
-#| msgid "Full Map"
 msgid "View: Full Map"
-msgstr "Mapa completo"
+msgstr "Vista: Mapa completo"
 
 #: src/hotkey/hotkey_command.cpp:148
-#, fuzzy
-#| msgid "Each Team"
 msgid "View: Each Team"
-msgstr "Cada equipo"
+msgstr "Vista: Cada equipo"
 
 #: src/hotkey/hotkey_command.cpp:149
-#, fuzzy
-#| msgid "Human Team"
 msgid "View: Human Team"
-msgstr "Equipo dos humanos"
+msgstr "Vista: Equipo humano"
 
 #: src/hotkey/hotkey_command.cpp:150
 msgid "Skip Animation"
@@ -9596,10 +9207,8 @@ msgid "Assign Local Time"
 msgstr "Asignar a hora local"
 
 #: src/hotkey/hotkey_command.cpp:178
-#, fuzzy
-#| msgid "Next Unit"
 msgid "New Unit Type"
-msgstr "Seguinte unidade"
+msgstr "Novo tipo de unidade"
 
 #: src/hotkey/hotkey_command.cpp:180
 msgid "Time Schedule Editor"
@@ -9614,10 +9223,8 @@ msgid "New Scenario"
 msgstr "Novo escenario"
 
 #: src/hotkey/hotkey_command.cpp:184
-#, fuzzy
-#| msgid "Edit Scenario"
 msgid "Load Map/Scenario"
-msgstr "Editar o escenario"
+msgstr "Cargar mapa/escenario"
 
 # Aparece no editor de mapas, menú «Ficheiro».
 #: src/hotkey/hotkey_command.cpp:186
@@ -9625,10 +9232,8 @@ msgid "Save Map As"
 msgstr "Gardar o mapa como"
 
 #: src/hotkey/hotkey_command.cpp:187
-#, fuzzy
-#| msgid "Choose Starting Scenario"
 msgid "Convert To Scenario"
-msgstr "Seleccionar o escenario inicial"
+msgstr "Converter en escenario"
 
 #: src/hotkey/hotkey_command.cpp:188
 msgid "Save Scenario As"
@@ -9752,11 +9357,10 @@ msgid "Item Tool"
 msgstr "Ferramenta de elementos"
 
 #: src/hotkey/hotkey_command.cpp:210
-#, fuzzy
-#| msgid "Left mouse button sets or drags a label, right clears."
 msgid "Left mouse button sets a new item. Right click removes item."
 msgstr ""
-"O botón principal establece ou arrastra a etiqueta, o secundario elimínaa."
+"O botón esquerdo do rato define un novo elemento. O clic dereito elimina o "
+"elemento."
 
 #: src/hotkey/hotkey_command.cpp:211
 msgid ""
@@ -9795,10 +9399,8 @@ msgid "Loyal"
 msgstr "Leal"
 
 #: src/hotkey/hotkey_command.cpp:220
-#, fuzzy
-#| msgid "Map Information"
 msgid "Show Tool Information"
-msgstr "Información do mapa"
+msgstr "Mostrar información da ferramenta"
 
 #: src/hotkey/hotkey_command.cpp:222
 msgid "Toggle Minimap Unit Coding"
@@ -9943,11 +9545,11 @@ msgstr "Actualizar automaticamente as transicións dos terreos"
 
 #: src/hotkey/hotkey_command.cpp:264
 msgid "Auto-update Terrain Transitions: No"
-msgstr "Actualizar automaticamente as transicións dos terreos: non."
+msgstr "Actualizar automaticamente as transicións dos terreos: non"
 
 #: src/hotkey/hotkey_command.cpp:265
 msgid "Auto-update Terrain Transitions: Partial"
-msgstr "Actualizar automaticamente as transicións dos terreos: parcialmente."
+msgstr "Actualizar automaticamente as transicións dos terreos: parcialmente"
 
 #: src/hotkey/hotkey_command.cpp:267
 msgid "Refresh Image Cache"
@@ -9983,25 +9585,19 @@ msgstr "Engadir unha zona nova"
 
 #: src/hotkey/hotkey_command.cpp:277
 msgid "Add-on Publishing Editor"
-msgstr ""
+msgstr "Editor de publicacións complementarias"
 
 #: src/hotkey/hotkey_command.cpp:278
-#, fuzzy
-#| msgid "Manage Add-ons"
 msgid "Change Add-on ID"
-msgstr "Xestionar os complementos"
+msgstr "Cambiar ID do complemento"
 
 #: src/hotkey/hotkey_command.cpp:279
-#, fuzzy
-#| msgid "Delete add-on from server"
 msgid "Select active Add-on"
-msgstr "Eliminar o complemento do servidor."
+msgstr "Seleccionar complemento activo"
 
 #: src/hotkey/hotkey_command.cpp:280
-#, fuzzy
-#| msgid "Open saves folder"
 msgid "Open Add-on folder"
-msgstr "Abrir o cartafol de partidas"
+msgstr "Abrir cartafol de complementos"
 
 #: src/hotkey/hotkey_command.cpp:283
 msgid "Edit Side"
@@ -10020,10 +9616,8 @@ msgid "Update Shroud Now"
 msgstr "Actualizar o manto do descoñecido"
 
 #: src/hotkey/hotkey_command.cpp:288
-#, fuzzy
-#| msgid "Continue Move"
 msgid "Continue Interrupted Move"
-msgstr "Continuar o movemento"
+msgstr "Continuar movemento interrompido"
 
 #: src/hotkey/hotkey_command.cpp:289
 msgid "Find Label or Unit"
@@ -10039,17 +9633,15 @@ msgstr "Escribirlle unha mensaxe a todo o mundo"
 
 #: src/hotkey/hotkey_command.cpp:293
 msgid "Help about save-loading"
-msgstr ""
+msgstr "Axuda para gardar a carga"
 
 #: src/hotkey/hotkey_command.cpp:293
 msgid "Hint: save-loading is unnecessary"
-msgstr ""
+msgstr "Consello: gardar a carga é innecesaria"
 
 #: src/hotkey/hotkey_command.cpp:295
-#, fuzzy
-#| msgid "Enter User Command"
 msgid "Enter Command"
-msgstr "Escribir unha orde"
+msgstr "Introduza o comando"
 
 #: src/hotkey/hotkey_command.cpp:296
 msgid "Custom Command"
@@ -10060,20 +9652,16 @@ msgid "Run Formula"
 msgstr "Executar o código Formula"
 
 #: src/hotkey/hotkey_command.cpp:298
-#, fuzzy
-#| msgid "Player Chat"
 msgid "Clear Chat"
-msgstr "Conversa de xogadores"
+msgstr "Borrar o chat"
 
 #: src/hotkey/hotkey_command.cpp:300
 msgid "Change Language"
 msgstr "Cambiar de lingua"
 
 #: src/hotkey/hotkey_command.cpp:301
-#, fuzzy
-#| msgid "Starting game"
 msgid "Start Game (MP)"
-msgstr "Iniciando a partida"
+msgstr "Comezar partida (M.Xog.)"
 
 #: src/hotkey/hotkey_command.cpp:302
 msgid "Refresh WML"
@@ -10162,76 +9750,81 @@ msgid "When reporting the bug please include the following error message :"
 msgstr "Ao informar do erro inclúa a seguinte mensaxe de erro:"
 
 #: src/wml_exception.cpp:89
-#, fuzzy
-#| msgid ""
-#| "In section '[$section|]' where '$primary_key| = $primary_value' the "
-#| "mandatory key '$key|' isn't set."
 msgid ""
 "In section ‘[$section|]’ where ‘$primary_key|’ = ‘$primary_value’ the "
 "mandatory key ‘$key|’ isn’t set."
 msgstr ""
-"Non se definiu a clave obrigatoria «$key|» na sección «[$section|]» onde "
-"«$primary_key| = $primary_value»."
+"Na sección ‘[$section|]’ onde ‘$primary_key|’ = ‘$primary_value’, a clave "
+"obrigatoria ‘$key|’ non está establecida."
 
 #: src/wml_exception.cpp:92
-#, fuzzy
-#| msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgid "In section ‘[$section|]’ the mandatory key ‘$key|’ isn’t set."
-msgstr "Non se definiu a clave obrigatoria «$key|» na sección «[$section|]»."
+msgstr ""
+"Na sección ‘[$section|]’ non está establecida a clave obrigatoria ‘$key|’."
 
 #: src/wml_exception.cpp:104
-#, fuzzy
-#| msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgid "In section ‘[$section|]’ the mandatory subtag ‘[$tag|]’ is missing."
-msgstr "Non se definiu a clave obrigatoria «$key|» na sección «[$section|]»."
+msgstr "Na sección ‘[$section|]’ falta a subetiqueta obrigatoria ‘[$tag|]’."
 
 # Configuración → Xeral.
 #~ msgid "Turn dialog"
-#~ msgstr "Diálogo da quenda."
+#~ msgstr "Diálogo da rolda"
+
+#~ msgid "<span color='#00dcff' size='small'>please enter a filename</span>"
+#~ msgstr ""
+#~ "<span color='#00dcff' size='small'>Insire un nome de ficheiro</span>"
+
+#~ msgid ""
+#~ "<span color='red'><span face='DejaVuSans'>✘</span> <span "
+#~ "size='small'>wrong extension, use $extensions</span></span>"
+#~ msgstr ""
+#~ "<span color='red'><span face='DejaVuSans'>✘</span> <span "
+#~ "size='small'>extensión incorrecta, use $extensions</span></span>"
+
+#~ msgid ""
+#~ "<span color='red'><span face='DejaVuSans'>✘</span> <span "
+#~ "size='small'>whitespace is not allowed in filename</span></span>"
+#~ msgstr ""
+#~ "<span color='red'><span face='DejaVuSans'>✘</span> <span size='small'>Non "
+#~ "se permiten espazos en branco no nome do ficheiro</span></span>"
+
+#~ msgid "Rocky Sands"
+#~ msgstr "Areas Rochosas"
+
+#~ msgid "Sands"
+#~ msgstr "Areas"
+
+# Non o vin no contexto.
+#~ msgid "Connected Players"
+#~ msgstr "Xogadores conectados"
+
+#~ msgid "Reloading alters future combat outcomes"
+#~ msgstr "A recarga altera os resultados do combate futuro"
+
+#~ msgid "Combat outcomes remain constant when reloading"
+#~ msgstr "Os resultados do combate permanecen constantes ao recargar"
+
+#~ msgid "Biased RNG (experimental)"
+#~ msgstr "RNG sesgado (experimental)"
+
+#~ msgid ""
+#~ "Combat outcomes are more in line with displayed probabilities and "
+#~ "unaffected by reloading"
+#~ msgstr ""
+#~ "Os resultados do combate están máis acordes coas probabilidades mostradas "
+#~ "e non se ven afectados pola recarga"
+
+#~ msgid "Add-on ID"
+#~ msgstr "ID do complemento"
+
+#~ msgid "Configuration:"
+#~ msgstr "Configuración:"
+
+#~ msgid "Copy the full report to clipboard"
+#~ msgstr "Copiar o informe completo no portapapeis"
 
 #~ msgid "Battle For Wesnoth Help"
 #~ msgstr "Axuda de A batalla polo Noroeste"
-
-#, fuzzy
-#~| msgid "Show next tip of the day"
-#~ msgid "Hide tip of the day"
-#~ msgstr "Mostrar o seguinte consello."
-
-#~ msgid "Race"
-#~ msgstr "Especie"
-
-#~ msgid "Limit FPS"
-#~ msgstr "Limitar os FPS"
-
-#, fuzzy
-#~| msgid ""
-#~| "Disabling this increases CPU usage to 100% but may slightly improve "
-#~| "performance at high resolutions"
-#~ msgid ""
-#~ "Disabling this increases CPU usage, but may slightly improve performance "
-#~ "(requires restart to take effect)"
-#~ msgstr ""
-#~ "Desactivar isto aumenta o uso de CPU ao 100% pero podería aumentar "
-#~ "lixeiramente o rendemento en grandes resolucións"
-
-# Non o vin no contexto.
-#, fuzzy
-#~| msgid "Choose Player"
-#~ msgid "Connected Players"
-#~ msgstr "Escoller un xogador"
-
-#, fuzzy
-#~| msgid "The text contains invalid markup: "
-#~ msgid "The text contains invalid Pango markup: "
-#~ msgstr "O texto contén etiquetas incorrectas: "
-
-#~ msgid "Text has a font size of 0."
-#~ msgstr "O tamaño da letra do texto é 0."
-
-#~ msgid "Clipboard support not found, contact your packager"
-#~ msgstr ""
-#~ "A compatibilidade co portapapeis non está dispoñíbel, contacte co "
-#~ "empaquetador."
 
 #~ msgid "<b>Faction:</b>"
 #~ msgstr "<b>Facción:</b>"
@@ -10239,47 +9832,97 @@ msgstr "Non se definiu a clave obrigatoria «$key|» na sección «[$section|]»
 #~ msgid "<b>Gender:</b>"
 #~ msgstr "<b>Xénero:</b>"
 
-#, fuzzy
-#~| msgid "page^Copy"
-#~ msgid "page^✔ Copied"
-#~ msgstr "Copiar"
+#~ msgid "Limit FPS"
+#~ msgstr "Limitar os FPS"
 
-#, fuzzy
-#~| msgid "Status"
-#~ msgid "Stats"
-#~ msgstr "Estado"
+#~ msgid ""
+#~ "Disabling this increases CPU usage, but may slightly improve performance "
+#~ "(requires restart to take effect)"
+#~ msgstr ""
+#~ "Desactivar isto aumenta o uso de CPU, pero pode mellorar lixeiramente o "
+#~ "rendemento (require reiniciar para que teña efecto)"
 
-#~ msgid "Configuration:"
-#~ msgstr "Configuración:"
+#~ msgid "View the credits"
+#~ msgstr "Ver creditos"
 
 #~ msgid "filesystem_path_game^User preferences"
 #~ msgstr "Preferencias do usuario"
 
-# Aparece no editor de mapas, menú «Ficheiro».
-#~ msgid "Load Map"
-#~ msgstr "Cargar un mapa"
+#~ msgid "--userdata-dir=<relative path that doesn't start with a period>"
+#~ msgstr "--userdata-dir=<ruta relativa que non comeza cun punto>"
 
-#~ msgid "Copy the full report to clipboard"
-#~ msgstr "Copiar o informe completo no portapapeis."
+#~ msgid ""
+#~ "Use an absolute path, or a relative path that starts with a period and a "
+#~ "backslash"
+#~ msgstr ""
+#~ "Use un camiño absoluto ou un camiño relativo que comece cun punto e unha "
+#~ "barra invertida"
 
-#~ msgid "View the credits"
-#~ msgstr "Ver a lista de persoas que colaboraron no desenvolvemento do xogo."
+#~ msgid "--userdata-dir=<relative path>"
+#~ msgstr "--userdata-dir=<relative path>"
+
+#~ msgid ""
+#~ "Use absolute paths. Relative paths are deprecated because they are "
+#~ "interpreted relative to $HOME"
+#~ msgstr ""
+#~ "Usa camiños absolutos. As rutas relativas están obsoletas porque se "
+#~ "interpretan en relación a $HOME"
+
+#~ msgid "The text contains invalid Pango markup: "
+#~ msgstr "O texto contén etiquetas Pango incorrectas: "
+
+#~ msgid "timespan^expired"
+#~ msgstr "intervalo de tempo^caducado"
+
+#~ msgid "timespan^$num year"
+#~ msgid_plural "timespan^$num years"
+#~ msgstr[0] "período de tempo^$num ano"
+#~ msgstr[1] "período de tempo^$num anos"
+
+#~ msgid "timespan^$num month"
+#~ msgid_plural "timespan^$num months"
+#~ msgstr[0] "intervalo de tempo^$num mes"
+#~ msgstr[1] "intervalo de tempo^$num meses"
+
+#~ msgid "timespan^$num week"
+#~ msgid_plural "timespan^$num weeks"
+#~ msgstr[0] "intervalo de tempo^$num semana"
+#~ msgstr[1] "intervalo de tempo^$num semanas"
+
+#~ msgid "timespan^$num day"
+#~ msgid_plural "timespan^$num days"
+#~ msgstr[0] "intervalo de tempo^$num día"
+#~ msgstr[1] "intervalo de tempo^$num días"
+
+#~ msgid "timespan^$num hour"
+#~ msgid_plural "timespan^$num hours"
+#~ msgstr[0] "intervalo de tempo^$num hora"
+#~ msgstr[1] "intervalo de tempo^$num horas"
+
+#~ msgid "timespan^$num minute"
+#~ msgid_plural "timespan^$num minutes"
+#~ msgstr[0] "intervalo de tempo^$num minuto"
+#~ msgstr[1] "intervalo de tempo^$num minutos"
+
+#~ msgid "timespan^$num second"
+#~ msgid_plural "timespan^$num seconds"
+#~ msgstr[0] "intervalo de tempo^$num segundo"
+#~ msgstr[1] "intervalo de tempo^$num segundos"
+
+#~ msgid "Text has a font size of 0."
+#~ msgstr "O tamaño da letra do texto é 0."
+
+#~ msgid "Clipboard support not found, contact your packager"
+#~ msgstr ""
+#~ "A compatibilidade co portapapeis non está dispoñíbel, contacte co "
+#~ "empaquetador"
 
 #~ msgid "Running on $os"
 #~ msgstr "Executándose en $os"
 
-#, fuzzy
-#~| msgid "Beach Sands"
-#~ msgid "Rocky Sands"
-#~ msgstr "Area de praia"
-
-#~ msgid "Sands"
-#~ msgstr "Areas"
-
-#, fuzzy
-#~| msgid "Add-ons"
-#~ msgid "Add-on ID"
-#~ msgstr "Complementos"
+# Aparece no editor de mapas, menú «Ficheiro».
+#~ msgid "Load Map"
+#~ msgstr "Cargar un mapa"
 
 #~ msgid "Choose your preferred language:"
 #~ msgstr "Escolle a lingua que prefiras:"
