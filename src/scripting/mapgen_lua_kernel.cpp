@@ -307,7 +307,7 @@ void mapgen_lua_kernel::run_generator(const char * prog, const config & generato
 	protected_call(1, 1, std::bind(&lua_kernel_base::throw_exception, this, std::placeholders::_1, std::placeholders::_2));
 }
 
-void mapgen_lua_kernel::user_config(const char * prog, config & generator)
+void mapgen_lua_kernel::user_config(const char* prog, config& generator)
 {
 	run_generator(prog, generator);
 	if(!lua_isnoneornil(mState, -1) && !luaW_toconfig(mState, -1, generator)) {

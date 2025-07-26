@@ -96,7 +96,7 @@ if wesnoth.kernel_type() ~= "Application Lua Kernel" then
 			return code
 		end
 	end
-	
+
 	wesnoth.map.replace = {
 		both = wesnoth.map.replace_both,
 		base = wesnoth.map.replace_base,
