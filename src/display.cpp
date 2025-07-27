@@ -240,7 +240,7 @@ display::~display()
 
 void display::set_theme(const std::string& new_theme)
 {
-	theme_ = theme{theme::get_theme_config(new_theme), video::game_canvas()};
+	theme_.reset(theme::get_theme_config(new_theme), video::game_canvas());
 	builder_->set_draw_border(theme_.border().show_border);
 	menu_buttons_.clear();
 	action_buttons_.clear();
