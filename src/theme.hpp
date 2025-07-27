@@ -248,6 +248,7 @@ public:
 	theme& operator=(const theme&) = delete;
 	theme& operator=(theme&&) noexcept = default;
 
+	void reset(std::shared_ptr<config> cfg, const rect& screen);
 	bool set_resolution(const rect& screen);
 	void modify(const config &cfg);
 

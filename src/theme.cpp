@@ -611,6 +611,7 @@ theme::theme(std::shared_ptr<config> cfg, const rect& screen)
 	, labels_()
 	, menus_()
 	, actions_()
+	, sliders_()
 	, context_()
 	, status_()
 	, main_map_()
@@ -624,6 +625,14 @@ theme::theme(std::shared_ptr<config> cfg, const rect& screen)
 {
 	set_resolution(screen);
 }
+
+
+void theme::reset(std::shared_ptr<config> cfg, const rect& screen)
+{
+	cfg_ = std::move(cfg);
+	set_resolution(screen);
+}
+
 
 bool theme::set_resolution(const rect& screen)
 {
@@ -680,6 +689,11 @@ bool theme::set_resolution(const rect& screen)
 	menus_.clear();
 	actions_.clear();
 	sliders_.clear();
+
+	main_map_ = object();
+	mini_map_ = object();
+	unit_image_ = object();
+	palette_ = object();
 
 	add_object(cur_spec_width_, cur_spec_height_, *current);
 
