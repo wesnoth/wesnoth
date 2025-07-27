@@ -314,7 +314,9 @@ void menu_handler::recruit(int side_num, const map_location& last_hex)
 
 	auto dlg = units_dialog::build_recruit_dialog(recruit_list, err_msgs_map, current_team);
 	dlg->set_selected_index(selected_index);
-	dlg->show();
+	if (!dlg->show() && !dlg->is_selected()) {
+		return;
+	}
 
 	const unit_type* type = recruit_list[dlg->get_selected_index()];
 	last_recruit = type->id();
@@ -725,7 +727,10 @@ type_gender_variation choose_unit()
 	}
 
 	auto info = type_gender_variation(nullptr, unit_race::NUM_GENDERS, "");
-	create_dlg->show();
+	if (!create_dlg->show() && !create_dlg->is_selected()) {
+		return info;
+	}
+
 	const unit_type* ut = types_list[create_dlg->get_selected_index()];
 	last_created_unit = ut->id();
 	last_gender = create_dlg->gender();
@@ -776,7 +781,6 @@ void menu_handler::create_unit(mouse_handler& mousehandler)
 
 	// Let the user select the kind of unit to create.
 	if(const auto& [type, gender, variation] = choose_unit(); type != nullptr) {
-		// Make it so.
 		create_and_place(destination, *type, gender, variation);
 	}
 }

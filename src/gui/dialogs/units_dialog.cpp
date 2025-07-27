@@ -367,9 +367,7 @@ void units_dialog::post_show()
 		sort_last.reset();
 	}
 
-	if(get_retval() == retval::OK) {
-		selected_index_ = list.get_selected_row();
-	}
+	selected_index_ = get_retval() == retval::OK ? list.get_selected_row() : -1;
 }
 
 void units_dialog::filter_text_changed(const std::string& text)
