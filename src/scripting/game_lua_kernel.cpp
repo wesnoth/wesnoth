@@ -1404,7 +1404,7 @@ GAME_CONFIG_GETTER("theme", std::string, game_lua_kernel) {
 GAME_CONFIG_SETTER("theme", std::string, game_lua_kernel) {
 	game_config_glk_tag k2{k.ref};
 	k2.gamedata().set_theme(value);
-	k2.disp()->set_theme(value);
+	k2.pc().update_theme();
 }
 
 using traits_map = std::map<std::string, config>;
