@@ -21,6 +21,7 @@ jobs:
       
       - name: Verify fastlane metadata
         uses: ashutoshgngwr/validate-fastlane-supply-metadata@v2
+        
 
       - name: Restore Wesnoth dependencies cache
         id: restore-deps-cache
