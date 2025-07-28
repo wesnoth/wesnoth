@@ -1181,7 +1181,6 @@ void preferences_dialog::handle_theme_select()
 
 	const auto selection = theme_list.get_value();
 	const auto& theme = themes_.at(selection);
-	auto* display = display::get_singleton();
 
 	prefs::get().set_theme(theme.id);
 	
