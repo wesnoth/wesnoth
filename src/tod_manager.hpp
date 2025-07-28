@@ -41,7 +41,8 @@ public:
 		handles random_start_time, should be called before the game starts.
 	*/
 	void resolve_random(randomness::rng& r);
-	int get_current_time(const map_location& loc = map_location::null_location()) const;
+	int get_current_time() const { return currentTime_; }
+	int get_current_time(const map_location& loc) const;
 
 	void set_current_time(int time);
 	void set_current_time(int time, int area_index);
@@ -149,7 +150,8 @@ public:
 
 	bool has_time_area() const {return !areas_.empty();}
 
-	const std::vector<time_of_day>& times(const map_location& loc = map_location::null_location()) const;
+	const std::vector<time_of_day>& times() const { return times_; }
+	const std::vector<time_of_day>& times(const map_location& loc) const;
 
 	const std::vector<time_of_day>& times(int index) const {
 		assert(index < static_cast<int>(areas_.size()));

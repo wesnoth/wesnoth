@@ -165,12 +165,10 @@ int tod_manager::get_current_area_time(int index) const
 
 int tod_manager::get_current_time(const map_location& loc) const
 {
-	if(loc != map_location::null_location()) {
-		for(auto i = areas_.rbegin(), i_end = areas_.rend();
-			i != i_end; ++i) {
-			if(i->hexes.find(loc) != i->hexes.end()) {
-				return i->currentTime;
-			}
+	for(auto i = areas_.rbegin(), i_end = areas_.rend();
+		i != i_end; ++i) {
+		if(i->hexes.find(loc) != i->hexes.end()) {
+			return i->currentTime;
 		}
 	}
 
@@ -179,12 +177,10 @@ int tod_manager::get_current_time(const map_location& loc) const
 
 const std::vector<time_of_day>& tod_manager::times(const map_location& loc) const
 {
-	if(loc != map_location::null_location()) {
-		for(auto i = areas_.rbegin(), i_end = areas_.rend();
-			i != i_end; ++i) {
-			if(i->hexes.find(loc) != i->hexes.end() && !i->times.empty())
-				return i->times;
-		}
+	for(auto i = areas_.rbegin(), i_end = areas_.rend();
+		i != i_end; ++i) {
+		if(i->hexes.find(loc) != i->hexes.end() && !i->times.empty())
+			return i->times;
 	}
 
 	return times_;
