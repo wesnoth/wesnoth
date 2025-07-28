@@ -339,7 +339,7 @@ void undo_list::redo()
 	temp.swap(redos_);
 	synced_context::run(commandname, data, spectator);
 	if(!resources::recorder->at_end()) {
-    spectator.error(_("Unhandled choices while redoing"));
+		spectator.error(_("Unhandled choices while redoing"));
 		resources::recorder->set_to_end();
 	}
 	temp.swap(redos_);
