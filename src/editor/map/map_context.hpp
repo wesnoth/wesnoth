@@ -278,8 +278,6 @@ public:
 	void set_everything_changed();
 	bool everything_changed() const;
 
-	void set_labels(display& disp);
-
 	void clear_starting_position_labels(display& disp);
 
 	void set_starting_position_labels(display& disp);
