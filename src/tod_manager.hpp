@@ -240,20 +240,11 @@ private:
 	void set_new_current_times(const int new_current_turn_number);
 
 	struct area_time_of_day {
-		area_time_of_day() :
-			xsrc(),
-			ysrc(),
-			id(),
-			times(),
-			hexes(),
-			currentTime(0)
-		{}
-
 		std::string xsrc, ysrc;
 		std::string id;
 		std::vector<time_of_day> times;
 		std::set<map_location> hexes;
-		int currentTime;
+		int currentTime{0};
 	};
 
 	void set_current_time(int time, area_time_of_day& area);
