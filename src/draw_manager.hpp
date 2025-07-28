@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2007 - 2024
+	Copyright (C) 2007 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -15,6 +15,8 @@
 #pragma once
 
 #include "sdl/rect.hpp"
+
+#include <chrono>
 
 namespace gui2 { class top_level_drawable; }
 
@@ -121,7 +123,7 @@ void sparkle();
  *
  * This will usually be determined by the active monitor's refresh rate.
  */
-int get_frame_length();
+std::chrono::milliseconds get_frame_length();
 
 /** Register a top-level drawable.
  *

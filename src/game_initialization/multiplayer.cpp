@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2007 - 2024
+	Copyright (C) 2007 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -19,6 +19,7 @@
 #include "commandline_options.hpp"
 #include "connect_engine.hpp"
 #include "events.hpp"
+#include "formula/format_timespan.hpp"
 #include "formula/string_utils.hpp"
 #include "game_config_manager.hpp"
 #include "game_initialization/playcampaign.hpp"
@@ -101,7 +102,19 @@ private:
 		session_metadata(const config& cfg)
 			: is_moderator(cfg["is_moderator"].to_bool(false))
 			, profile_url_prefix(cfg["profile_url_prefix"].str())
+			, queues()
 		{
+			if(cfg.has_child("queues")) {
+				for(const config& queue : cfg.mandatory_child("queues").child_range("queue")) {
+					queue_info info;
+					info.id = queue["id"].to_int();
+					info.scenario_id = queue["scenario_id"].str();
+					info.display_name = queue["display_name"].str();
+					info.players_required = queue["players_required"].to_int();
+					info.current_players = utils::split_set(queue["current_players"].str());
+					queues.emplace_back(info);
+				}
+			}
 		}
 
 		/** Whether you are logged in as a server moderator. */
@@ -109,19 +122,24 @@ private:
 
 		/** The external URL prefix for player profiles (empty if the server doesn't have an attached database). */
 		std::string profile_url_prefix;
+
+		/** The list of server-side queues */
+		std::vector<queue_info> queues;
 	};
 
 	/** Opens a new server connection and prompts the client for login credentials, if necessary. */
-	std::unique_ptr<wesnothd_connection> open_connection(std::string host);
+	std::unique_ptr<wesnothd_connection> open_connection(const std::string& host);
 
 	/** Opens the MP lobby. */
 	bool enter_lobby_mode();
 
-	/** Opens the MP Create screen for hosts to configure a new game. */
-	void enter_create_mode();
+	/**
+	 * Opens the MP Create screen for hosts to configure a new game.
+	 */
+	void enter_create_mode(utils::optional<config> preset = utils::nullopt, int queue_id = 0);
 
 	/** Opens the MP Staging screen for hosts to wait for players. */
-	void enter_staging_mode();
+	void enter_staging_mode(queue_type::type queue_type, int queue_id = 0);
 
 	/** Opens the MP Join Game screen for non-host players and observers. */
 	void enter_wait_mode(int game_id, bool observe);
@@ -150,8 +168,12 @@ public:
 	{
 		return session_info;
 	}
+	session_metadata& get_session_info()
+	{
+		return session_info;
+	}
 
-	auto add_network_handler(decltype(process_handlers)::value_type func)
+	auto add_network_handler(const decltype(process_handlers)::value_type& func)
 	{
 		return [this, iter = process_handlers.insert(process_handlers.end(), func)]() { process_handlers.erase(iter); };
 	}
@@ -215,7 +237,7 @@ mp_manager::mp_manager(const utils::optional<std::string> host)
 	manager = this;
 }
 
-std::unique_ptr<wesnothd_connection> mp_manager::open_connection(std::string host)
+std::unique_ptr<wesnothd_connection> mp_manager::open_connection(const std::string& host)
 {
 	DBG_MP << "opening connection";
 
@@ -295,11 +317,9 @@ std::unique_ptr<wesnothd_connection> mp_manager::open_connection(std::string hos
 		}
 
 		if(data.has_child("version")) {
-			config res;
-			config& cfg = res.add_child("version");
-			cfg["version"] = game_config::wesnoth_version.str();
-			cfg["client_source"] = game_config::dist_channel_id();
-			conn->send_data(res);
+			std::string version = game_config::wesnoth_version;
+			std::string channel = game_config::dist_channel_id();
+			conn->send_data(config{"version", config{"version", version, "client_source", channel}});
 		}
 
 		if(const auto error = data.optional_child("error")) {
@@ -315,11 +335,7 @@ std::unique_ptr<wesnothd_connection> mp_manager::open_connection(std::string hos
 		while(true) {
 			std::string login = prefs::get().login();
 
-			config response;
-			config& sp = response.add_child("login");
-			sp["username"] = login;
-
-			conn->send_data(response);
+			conn->send_data(config{"login", config{"username", login}});
 			conn->wait_and_receive_data(data);
 
 			gui2::dialogs::loading_screen::progress(loading_stage::login_response);
@@ -371,10 +387,8 @@ std::unique_ptr<wesnothd_connection> mp_manager::open_connection(std::string hos
 					// 2) TLS encryption is not enabled, in which case the server should not be requesting a password in the first place
 					// 3) This is being used for local testing/development, so using an insecure connection is enabled manually
 
-					sp["password"] = password;
-
 					// Once again send our request...
-					conn->send_data(response);
+					conn->send_data(config{"login", config{"username", login, "password", password}});
 					conn->wait_and_receive_data(data);
 
 					gui2::dialogs::loading_screen::progress(loading_stage::login_response);
@@ -396,7 +410,8 @@ std::unique_ptr<wesnothd_connection> mp_manager::open_connection(std::string hos
 
 				const auto extra_data = error->optional_child("data");
 				if(extra_data) {
-					i18n_symbols["duration"] = utils::format_timespan((*extra_data)["duration"].to_time_t());
+					using namespace std::chrono_literals;
+					i18n_symbols["duration"] = utils::format_timespan(chrono::parse_duration((*extra_data)["duration"], 0s));
 				}
 
 				const std::string ec = (*error)["error_code"];
@@ -418,6 +433,12 @@ std::unique_ptr<wesnothd_connection> mp_manager::open_connection(std::string hos
 				} else if(ec == MP_NAME_UNREGISTERED_ERROR) {
 					error_message = VGETTEXT("The nickname ‘$nick’ is not registered on this server.", i18n_symbols)
 							+ _(" This server disallows unregistered nicknames.");
+				} else if(ec == MP_SERVER_IP_BAN_ERROR) {
+					if(extra_data) {
+						error_message = VGETTEXT("Your IP address is banned on this server for $duration|.", i18n_symbols);
+					} else {
+						error_message = _("Your IP address is banned on this server.");
+					}
 				} else if(ec == MP_NAME_AUTH_BAN_USER_ERROR) {
 					if(extra_data) {
 						error_message = VGETTEXT("The nickname ‘$nick’ is banned on this server’s forums for $duration|.", i18n_symbols);
@@ -502,7 +523,7 @@ void mp_manager::run_lobby_loop()
 
 		lobby_info.refresh_installed_addons_cache();
 
-		connection->send_data(config("refresh_lobby"));
+		connection->send_data(config{"refresh_lobby"});
 	}
 }
 
@@ -528,14 +549,22 @@ bool mp_manager::enter_lobby_mode()
 
 		int dlg_retval = 0;
 		int dlg_joined_game_id = 0;
+		std::string preset_scenario = "";
+		config server_preset;
+		int queue_id = 0;
 		{
 			gui2::dialogs::mp_lobby dlg(lobby_info, *connection, dlg_joined_game_id);
 			dlg.show();
 			dlg_retval = dlg.get_retval();
+			server_preset = dlg.queue_game_server_preset();
+			queue_id = dlg.queue_id();
 		}
 
 		try {
 			switch(dlg_retval) {
+			case gui2::dialogs::mp_lobby::CREATE_PRESET:
+				enter_create_mode(utils::make_optional(server_preset), queue_id);
+				break;
 			case gui2::dialogs::mp_lobby::CREATE:
 				enter_create_mode();
 				break;
@@ -557,25 +586,30 @@ bool mp_manager::enter_lobby_mode()
 			}
 
 			// Update lobby content
-			connection->send_data(config("refresh_lobby"));
+			connection->send_data(config{"refresh_lobby"});
 		}
 	}
 
 	return true;
 }
 
-void mp_manager::enter_create_mode()
+void mp_manager::enter_create_mode(utils::optional<config> preset, int queue_id)
 {
 	DBG_MP << "entering create mode";
 
-	if(gui2::dialogs::mp_create_game::execute(state, connection == nullptr)) {
-		enter_staging_mode();
+	// if this is using pre-determined settings and the settings came from the server, use those
+	// else look for them locally
+	if(preset) {
+		gui2::dialogs::mp_create_game::quick_mp_setup(state, preset.value());
+		enter_staging_mode(queue_id >= 0 ? queue_type::type::server_preset : queue_type::type::normal, queue_id);
+	} else if(gui2::dialogs::mp_create_game::execute(state, connection == nullptr)) {
+		enter_staging_mode(queue_type::type::normal);
 	} else if(connection) {
-		connection->send_data(config("refresh_lobby"));
+		connection->send_data(config{"refresh_lobby"});
 	}
 }
 
-void mp_manager::enter_staging_mode()
+void mp_manager::enter_staging_mode(queue_type::type queue_type, int queue_id)
 {
 	DBG_MP << "entering connect mode";
 
@@ -586,6 +620,8 @@ void mp_manager::enter_staging_mode()
 		metadata = std::make_unique<mp_game_metadata>(*connection);
 		metadata->connected_players.insert(prefs::get().login());
 		metadata->is_host = true;
+		metadata->queue_type = queue_type::get_string(queue_type);
+		metadata->queue_id = queue_id;
 	}
 
 	bool dlg_ok = false;
@@ -601,7 +637,7 @@ void mp_manager::enter_staging_mode()
 	}
 
 	if(connection) {
-		connection->send_data(config("leave_game"));
+		connection->send_data(config{"leave_game"});
 	}
 }
 
@@ -629,7 +665,7 @@ void mp_manager::enter_wait_mode(int game_id, bool observe)
 		gui2::dialogs::mp_join_game dlg(state, *connection, true, observe);
 
 		if(!dlg.fetch_game_config()) {
-			connection->send_data(config("leave_game"));
+			connection->send_data(config{"leave_game"});
 			return;
 		}
 
@@ -642,7 +678,7 @@ void mp_manager::enter_wait_mode(int game_id, bool observe)
 		controller.play_game();
 	}
 
-	connection->send_data(config("leave_game"));
+	connection->send_data(config{"leave_game"});
 }
 
 bool mp_manager::post_scenario_staging(ng::connect_engine& engine)
@@ -655,7 +691,7 @@ bool mp_manager::post_scenario_wait(bool observe)
 	gui2::dialogs::mp_join_game dlg(state, *connection, false, observe);
 
 	if(!dlg.fetch_game_config()) {
-		connection->send_data(config("leave_game"));
+		connection->send_data(config{"leave_game"});
 		return false;
 	}
 
@@ -817,6 +853,15 @@ std::string get_profile_link(int user_id)
 	return "";
 }
 
+std::vector<queue_info>& get_server_queues()
+{
+	static std::vector<queue_info> queues;
+	if(manager) {
+		return manager->get_session_info().queues;
+	}
+	return queues;
+}
+
 void send_to_server(const config& data)
 {
 	if(manager && manager->connection) {
@@ -824,7 +869,7 @@ void send_to_server(const config& data)
 	}
 }
 
-network_registrar::network_registrar(handler func)
+network_registrar::network_registrar(const handler& func)
 {
 	if(manager /*&& manager->connection*/) {
 		remove_handler = manager->add_network_handler(func);

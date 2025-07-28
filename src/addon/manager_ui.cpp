@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by Iris Morelle <shadowm2006@gmail.com>
 	Copyright (C) 2003 - 2008 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -55,7 +55,7 @@ bool get_addons_list(addons_client& client, addons_list& list)
 	list.clear();
 
 	config cfg;
-	client.request_addons_list(cfg);
+	client.request_addons_list(cfg, prefs::get().addon_icons());
 
 	read_addons_list(cfg, list);
 

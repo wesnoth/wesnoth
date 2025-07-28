@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -18,11 +18,16 @@
  * Support functions for dealing with units.
  */
 
+#include "actions/create.hpp"
+#include "formula/string_utils.hpp"
+#include "resources.hpp"
 #include "units/unit.hpp"
 #include "units/helper.hpp"
 #include "units/types.hpp"
 #include "play_controller.hpp"
 #include "serialization/markup.hpp"
+#include "utils/general.hpp"
+#include "whiteboard/manager.hpp"
 
 namespace unit_helper {
 
@@ -88,4 +93,119 @@ std::string unit_level_tooltip(const unit_type &type)
 	return unit_level_tooltip(type.level(), type.advances_to(), mod_advancements);
 }
 
+std::string maybe_inactive(const std::string& str, bool active)
+{
+	return (active ? str : markup::span_color(font::INACTIVE_COLOR, str));
 }
+
+std::string format_cost_string(int unit_recall_cost, bool active)
+{
+	std::stringstream str;
+	if (active) {
+		str << markup::img("themes/gold.png") << ' ' << unit_recall_cost;
+	} else {
+		str << markup::img("themes/gold.png~GS()") << ' '
+			<< maybe_inactive(std::to_string(unit_recall_cost), false);
+	}
+	return str.str();
+}
+
+std::string format_cost_string(int unit_recall_cost, const int team_recall_cost)
+{
+	if(unit_recall_cost < 0) {
+		unit_recall_cost = team_recall_cost;
+	}
+
+	std::stringstream str;
+	str << markup::img("themes/gold.png") << ' ';
+
+	if(unit_recall_cost > team_recall_cost) {
+		str << markup::span_color(font::BAD_COLOR, unit_recall_cost);
+	} else if(unit_recall_cost < team_recall_cost) {
+		str << markup::span_color(font::GOOD_COLOR, unit_recall_cost);
+	} else {
+		// Default: show cost in white font color.
+		// Should handle the unit cost = team cost case.
+		str << unit_recall_cost;
+	}
+
+	return str.str();
+}
+
+std::string format_level_string(const int level, bool recallable)
+{
+	if(!recallable) {
+		// Same logic as when recallable, but always in inactive_color.
+		return markup::span_color(font::INACTIVE_COLOR,
+			(level < 2 ? std::to_string(level) : markup::bold(level)));
+	} else if(level < 1) {
+		return markup::span_color(font::INACTIVE_COLOR, level);
+	} else if(level == 1) {
+		return std::to_string(level);
+	} else if(level == 2) {
+		return markup::bold(level);
+	} else if(level == 3) {
+		return markup::span_color(color_t(0xe2, 0xb7, 0x76), markup::bold(level));
+	} else {
+		return markup::span_color(color_t(0xdd, 0x66, 0x00), markup::bold(level));
+	}
+}
+
+std::string format_movement_string(const int moves_left, const int moves_max, bool active)
+{
+	if (!active) {
+		return markup::span_color(font::GRAY_COLOR, moves_left, "/", moves_max);
+	} else if(moves_left == 0) {
+		return markup::span_color(font::BAD_COLOR, moves_left, "/", moves_max);
+	} else if(moves_left > moves_max) {
+		return markup::span_color(font::YELLOW_COLOR, moves_left, "/", moves_max);
+	} else {
+		return markup::span_color(font::GOOD_COLOR, moves_left, "/", moves_max);
+	}
+}
+
+int planned_gold_spent(int side_number)
+{
+	wb::future_map future; // FIXME: why not future_map_if_active?
+	auto wb = resources::controller->get_whiteboard();
+	return wb ? wb->get_spent_gold_for(side_number) : 0;
+}
+
+std::string check_recruit_purse(int unit_cost, int current_purse, int investments)
+{
+	if(unit_cost > (current_purse - investments)) {
+		return investments > 0
+			// TRANSLATORS: "plan" refers to Planning Mode
+			? _("At this point in your plan, you will not have enough gold to recruit this unit.")
+			: _("You do not have enough gold to recruit this unit.");
+		}
+
+	return "";
+}
+
+std::string check_recruit_list(
+	const std::string& type, int side_number, const map_location& target_hex)
+{
+	const unit_type* u_type = unit_types.find(type);
+	if(!u_type || utils::contains(actions::get_recruits(side_number, target_hex), type)) {
+		return "";
+	}
+
+	utils::string_map symbols{{ "unit_type", u_type->type_name() }};
+	return VGETTEXT("The $unit_type is not available to recruit.", symbols);
+}
+
+std::tuple<std::string, map_location, map_location> validate_recruit_target(
+	const std::string& type, int side_number, const map_location& target_hex)
+{
+	// start planned unit map scope if in planning mode
+	wb::future_map_if_active future;
+
+	map_location recruit_to = target_hex;
+	map_location recruit_from; // Populated below
+
+	std::string msg = actions::find_recruit_location(side_number, recruit_to, recruit_from, type);
+	return std::tuple(msg, recruit_to, recruit_from);
+}
+
+} // unit_helper

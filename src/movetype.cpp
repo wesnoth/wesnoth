@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2024
+	Copyright (C) 2014 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -448,10 +448,11 @@ movetype::terrain_info::terrain_info(const terrain_info & that,
 
 movetype::terrain_info::terrain_info(terrain_info && that,
 	const terrain_info * fallback) :
+	unique_data_(std::move(that.unique_data_)),
+	shared_data_(std::move(that.shared_data_)),
 	fallback_(fallback)
 {
 	assert(fallback ? !! that.fallback_ : ! that.fallback_);
-	swap_data(that);
 }
 
 /**
@@ -839,7 +840,7 @@ movetype::movetype(movetype && that) :
 	jamming_(std::move(that.jamming_), &vision_),
 	defense_(std::move(that.defense_)),
 	resist_(std::move(that.resist_)),
-	flying_(std::move(that.flying_)),
+	flying_(that.flying_),
 	special_notes_(std::move(that.special_notes_))
 {
 }

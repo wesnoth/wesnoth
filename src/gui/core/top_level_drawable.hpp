@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2007 - 2024
+	Copyright (C) 2007 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -57,8 +57,8 @@ protected:
 	// These make sure the TLD is registered.
 	top_level_drawable(const top_level_drawable&);
 	top_level_drawable& operator=(const top_level_drawable&);
-	top_level_drawable(top_level_drawable&&);
-	top_level_drawable& operator=(top_level_drawable&&);
+	top_level_drawable(top_level_drawable&&) noexcept;
+	top_level_drawable& operator=(top_level_drawable&&) noexcept;
 
 public:
 	/**

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -79,7 +79,7 @@ public:
 	 */
 	void expand_mp_events();
 	/** helper for expand_mp_events(); */
-	void load_non_scenario(const std::string& type, const std::string& id, size_t pos);
+	void load_non_scenario(const std::string& type, const std::string& id, std::size_t pos);
 	/**
 	 * adds values of [option]s into [carryover_sides_start][variables] so that they are applied in the next level.
 	 * Note that since [variabels] are persistent we only use this once at the beginning

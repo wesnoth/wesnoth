@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2012 - 2024
+	Copyright (C) 2012 - 2025
 	by Fabian Mueller <fabianmueller5@gmx.de>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -27,8 +27,7 @@ namespace editor {
 class editor_toolkit {
 
 public:
-	editor_toolkit(editor_display& gui, const CKey& key,
-			const game_config_view& game_config, context_manager& c_manager);
+	editor_toolkit(editor_display& gui, const game_config_view& game_config, context_manager& c_manager);
 
 	~editor_toolkit();
 
@@ -74,7 +73,7 @@ public:
 	/** Cycle to the next brush. */
 	void cycle_brush();
 
-	void set_brush(std::string id);
+	void set_brush(const std::string& id);
 
 	bool is_active_brush(std::string id) const { return brush_->id() == id; }
 
@@ -84,7 +83,7 @@ private:
 
 	editor_display& gui_;
 
-	const CKey& key_;
+	CKey key_;
 
 	std::unique_ptr<palette_manager> palette_manager_;
 

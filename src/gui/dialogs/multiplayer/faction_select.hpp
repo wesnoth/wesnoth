@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2024
+	Copyright (C) 2009 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -55,7 +55,7 @@ private:
 
 	void profile_button_callback();
 
-	void on_gender_select(const std::string val);
+	void on_gender_select(const std::string& val);
 
 	void update_leader_image();
 };

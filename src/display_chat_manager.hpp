@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2024
+	Copyright (C) 2014 - 2025
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -18,7 +18,7 @@
 #include "chat_events.hpp"
 
 #include <cstdint>
-#include <ctime>
+#include <chrono>
 #include <set>
 #include <string>
 #include <vector>
@@ -37,7 +37,7 @@ public:
 	void remove_whisperer(const std::string& nick) { whisperers_.erase(nick); }
 	const std::set<std::string>& whisperers() const { return whisperers_; }
 
-	void add_chat_message(const std::time_t& time, const std::string& speaker,
+	void add_chat_message(const std::chrono::system_clock::time_point& time, const std::string& speaker,
 		int side, const std::string& msg, events::chat_handler::MESSAGE_TYPE type, bool bell);
 	void clear_chat_messages() { prune_chat_messages(true); }
 
@@ -52,7 +52,7 @@ private:
 
 		int speaker_handle;
 		int handle;
-		uint32_t created_at;
+		std::chrono::steady_clock::time_point created_at;
 	};
 
 	void prune_chat_messages(bool remove_all=false);

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2023 - 2024
+	Copyright (C) 2023 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -16,12 +16,8 @@
 
 #include "gui/dialogs/modal_dialog.hpp"
 
-namespace gui2
+namespace gui2::dialogs
 {
-
-namespace dialogs
-{
-
 /**
  * @ingroup GUIWindowDefinitionWML
  *
@@ -32,8 +28,8 @@ class gui_test_dialog : public modal_dialog
 public:
 	gui_test_dialog();
 
-	/** The execute function. See @ref modal_dialog for more information. */
-	DEFINE_SIMPLE_EXECUTE_WRAPPER(gui_test_dialog)
+	/** The display function. See @ref modal_dialog for more information. */
+	DEFINE_SIMPLE_DISPLAY_WRAPPER(gui_test_dialog)
 
 private:
 	virtual void pre_show() override;
@@ -42,5 +38,4 @@ private:
 	virtual const std::string& window_id() const override;
 };
 
-} // namespace dialogs
-} // namespace gui2
+} // namespace gui2::dialogs

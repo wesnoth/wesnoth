@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -16,6 +16,7 @@
 
 #include "gui/dialogs/achievements_dialog.hpp"
 
+#include "formula/string_utils.hpp"
 #include "game_config_manager.hpp"
 #include "gettext.hpp"
 #include "gui/widgets/drawing.hpp"
@@ -39,7 +40,6 @@ REGISTER_DIALOG(achievements_dialog)
 
 achievements_dialog::achievements_dialog()
 	: modal_dialog(window_id())
-	, achieve_()
 	, last_selected_(prefs::get().selected_achievement_group())
 	, achievements_box_(nullptr)
 	, content_names_(nullptr)
@@ -53,11 +53,9 @@ void achievements_dialog::pre_show()
 	connect_signal_notify_modified(*content_names_, std::bind(&achievements_dialog::set_achievements_row, this));
 
 	achievements_box_ = find_widget<listbox>("achievements_list", false, true);
-
-	std::vector<achievement_group> groups = game_config_manager::get()->get_achievements();
 	int selected = 0;
 
-	for(const auto& list : groups) {
+	for(const auto& list : game_config_manager::get()->get_achievements()) {
 		// only display the achievements for the first dropdown option on first showing the dialog
 		if(list.content_for_ == last_selected_ || last_selected_ == "") {
 			selected = content_list.size();
@@ -93,48 +91,54 @@ void achievements_dialog::set_achievements_row()
 			continue;
 		}
 
-		widget_data row;
-		widget_item item;
+		const bool in_progress = ach.max_progress_ != 0 && ach.current_progress_ != -1;
+		const auto in_progress_name = !in_progress
+			? ach.name_
+			: t_string(VGETTEXT("$title ($count/$total)", {{
+				{"title", ach.name_},
+				{"count", std::to_string(ach.current_progress_)},
+				{"total", std::to_string(ach.max_progress_)}
+			}}));
 
-		item["label"] = !ach.achieved_ ? ach.icon_ : ach.icon_completed_;
-		row.emplace("icon", item);
+		grid& newrow = achievements_box_->add_row(widget_data{
+			{ "icon", {
+				{ "label", ach.achieved_
+					? ach.icon_completed_
+					: ach.icon_
+				}
+			}},
+			{ "name", {
+				{ "label", ach.achieved_
+					? ach.name_completed_
+					: in_progress_name
+				}
+			}},
+			{ "description", {
+				{ "label", ach.achieved_
+					? t_string(markup::span_color("green", ach.description_completed_))
+					: ach.description_
+				}
+			}}
+		});
 
-		if(!ach.achieved_) {
-			t_string name = ach.name_;
-			if(ach.max_progress_ != 0 && ach.current_progress_ != -1) {
-				name += (formatter() << " (" << ach.current_progress_ << "/" << ach.max_progress_).str();
-			}
-			item["label"] = name;
-		} else {
-			item["label"] = ach.name_completed_;
-			item["definition"] = "gold_large";
-		}
-		row.emplace("name", item);
-
-		if(!ach.achieved_) {
-			item["label"] = ach.description_;
-		} else {
-			item["label"] = markup::span_color("green", ach.description_completed_);
-		}
-		row.emplace("description", item);
-
-		grid& newrow = achievements_box_->add_row(row);
-		progress_bar* achievement_progress = static_cast<progress_bar*>(newrow.find("achievement_progress", false));
-		if(ach.max_progress_ != 0 && ach.current_progress_ != -1) {
-			achievement_progress->set_percentage((ach.current_progress_/double(ach.max_progress_))*100);
+		auto achievement_progress = static_cast<progress_bar*>(newrow.find("achievement_progress", false));
+		if(in_progress) {
+			achievement_progress->set_percentage((ach.current_progress_ / double(ach.max_progress_)) * 100);
 		} else {
 			achievement_progress->set_visible(gui2::widget::visibility::invisible);
 		}
 
-		label* name = static_cast<label*>(newrow.find("name", false));
-		canvas& canvas = name->get_canvas(0);
-		canvas.set_variable("achieved", wfl::variant(ach.achieved_));
+		auto name = static_cast<styled_widget*>(newrow.find("name", false));
+		name->get_canvas(0).set_variable("achieved", wfl::variant(ach.achieved_));
 
 		set_sub_achievements(newrow, ach);
 	}
 
-	label* achieved_label = find_widget<label>("achievement_count", false, true);
-	achieved_label->set_label(_("Completed")+" "+std::to_string(achieved_count)+"/"+std::to_string(list.achievements_.size()));
+	auto& achieved_label = find_widget<label>("achievement_count");
+	achieved_label.set_label(VGETTEXT("Completed $count/$total", {
+		{"count", std::to_string(achieved_count)} ,
+		{"total", std::to_string(list.achievements_.size())}
+	}));
 }
 
 void achievements_dialog::set_sub_achievements(grid& newrow, const achievement& ach)
@@ -144,14 +148,11 @@ void achievements_dialog::set_sub_achievements(grid& newrow, const achievement& 
 	// set any sub achievements
 	for(const sub_achievement& sub_ach : ach.sub_achievements_)
 	{
-		if(i == sub_achievements_limit)
-		{
+		if(i == sub_achievements_limit) {
 			ERR_CONFIG << "Too many sub achievements";
 			break;
-		}
-		else
-		{
-			drawing* img = static_cast<drawing*>(newrow.find("sub_icon"+std::to_string(i), false));
+		} else {
+			drawing* img = static_cast<drawing*>(newrow.find("sub_icon" + std::to_string(i), false));
 			img->set_label(sub_ach.achieved_ ? sub_ach.icon_completed_ : sub_ach.icon_);
 			img->set_tooltip(sub_ach.description_);
 		}
@@ -161,7 +162,7 @@ void achievements_dialog::set_sub_achievements(grid& newrow, const achievement& 
 	// if an achievement hasn't defined the maximum possible sub-achievements, hide the [image]s for the rest
 	for(; i < sub_achievements_limit; i++)
 	{
-		static_cast<drawing*>(newrow.find("sub_icon"+std::to_string(i), false))->set_visible(visibility::invisible);
+		newrow.find("sub_icon" + std::to_string(i), false)->set_visible(visibility::invisible);
 	}
 }
 

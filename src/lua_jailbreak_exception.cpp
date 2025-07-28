@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2011 - 2024
+	Copyright (C) 2011 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -16,9 +16,6 @@
 #include "lua_jailbreak_exception.hpp"
 
 #include <cassert>
-
-int lua_jailbreak_exception::jail_depth = 0;
-lua_jailbreak_exception *lua_jailbreak_exception::jailbreak_exception = nullptr;
 
 void lua_jailbreak_exception::store() const noexcept
 {

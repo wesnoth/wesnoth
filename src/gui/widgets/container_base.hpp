@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -43,7 +43,7 @@ public:
 	 *
 	 * @returns                   The client rect.
 	 */
-	virtual SDL_Rect get_client_rect() const;
+	virtual rect get_client_rect() const;
 
 	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
 
@@ -100,7 +100,7 @@ public:
 	virtual void set_origin(const point& origin) override;
 
 	/** See @ref widget::set_visible_rectangle. */
-	virtual void set_visible_rectangle(const SDL_Rect& rectangle) override;
+	virtual void set_visible_rectangle(const rect& rectangle) override;
 
 	/** See @ref widget::impl_draw_children. */
 	virtual void impl_draw_children() override;
@@ -119,11 +119,10 @@ public:
 								   const bool must_be_active) const override;
 
 	/** See @ref widget::find. */
-	widget* find(const std::string& id, const bool must_be_active) override;
+	widget* find(const std::string_view id, const bool must_be_active) override;
 
 	/** See @ref widget::find. */
-	const widget* find(const std::string& id,
-						const bool must_be_active) const override;
+	const widget* find(const std::string_view id, const bool must_be_active) const override;
 
 	/** See @ref styled_widget::set_active. */
 	virtual void set_active(const bool active) override;

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2024
+	Copyright (C) 2010 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -35,7 +35,7 @@ using hp_probability_vector = std::vector<std::pair<int, double>>;
 class attack_predictions : public modal_dialog
 {
 public:
-	attack_predictions(battle_context& bc, unit_const_ptr attacker, unit_const_ptr defender);
+	attack_predictions(battle_context& bc, unit_const_ptr attacker, unit_const_ptr defender, const int leadership_bonus = 0);
 
 	DEFINE_SIMPLE_DISPLAY_WRAPPER(attack_predictions)
 
@@ -58,7 +58,7 @@ private:
 		unit_const_ptr unit_;
 	};
 
-	void set_data(const combatant_data& attacker, const combatant_data& defender);
+	void set_data(const combatant_data& attacker, const combatant_data& defender, int leadership_bonus = 0);
 
 	hp_probability_vector get_hitpoint_probabilities(const std::vector<double>& hp_dist) const;
 
@@ -70,6 +70,8 @@ private:
 
 	combatant_data attacker_data_;
 	combatant_data defender_data_;
+
+	const int leadership_bonus_;
 };
 
 } // namespace dialogs

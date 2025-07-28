@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2024
+	Copyright (C) 2009 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -56,27 +56,23 @@ void core_selection::pre_show()
 	for(const auto & core : cores_)
 	{
 		/*** Add list item ***/
-		widget_item list_item;
-		widget_data list_item_item;
-
-		list_item["label"] = core["image"];
-		list_item_item.emplace("image", list_item);
-
-		list_item["label"] = core["name"];
-		list_item_item.emplace("name", list_item);
-
-		grid* grid = &list.add_row(list_item_item);
+		grid* grid = &list.add_row(widget_data{
+			{ "image", {
+				{ "label", core["image"] }
+			}},
+			{ "name", {
+				{ "label", core["name"] }
+			}}
+		});
 		assert(grid);
 
 		/*** Add detail item ***/
-		widget_item detail_item;
-		widget_data detail_page;
-
-		detail_item["label"] = core["description"];
-		detail_item["use_markup"] = "true";
-		detail_page.emplace("description", detail_item);
-
-		pages.add_page(detail_page);
+		pages.add_page({
+			{ "description", {
+				{ "label", core["description"] },
+				{ "use_markup", "true" }
+			}}
+		});
 	}
 	list.select_row(choice_, true);
 

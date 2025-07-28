@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2011 - 2024
+	Copyright (C) 2011 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -41,7 +41,7 @@ class tooltip : public modeless_dialog
 {
 public:
 	tooltip(const std::string& window_id, const t_string& message,
-			const point& mouse, const SDL_Rect& source_rect)
+			const point& mouse, const rect& source_rect)
 		: modeless_dialog(window_id)
 	{
 		find_widget<styled_widget>("label").set_label(message);
@@ -64,7 +64,7 @@ static std::unique_ptr<tooltip> tip;
 void show(const std::string& window_id,
 		  const t_string& message,
 		  const point& mouse,
-		  const SDL_Rect& source_rect)
+		  const rect& source_rect)
 {
 	/*
 	 * For now allow invalid tip names, might turn them to invalid wml messages

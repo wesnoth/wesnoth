@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2024
+	Copyright (C) 2009 - 2025
 	by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -27,8 +27,8 @@ namespace lua_units {
 	std::string register_attacks_metatables(lua_State* L);
 }
 
-void luaW_pushweapon(lua_State* L, attack_ptr weapon);
-void luaW_pushweapon(lua_State* L, const_attack_ptr weapon);
+void luaW_pushweapon(lua_State* L, const attack_ptr& weapon);
+void luaW_pushweapon(lua_State* L, const const_attack_ptr& weapon);
 const_attack_ptr luaW_toweapon(lua_State* L, int idx);
 attack_type& luaW_checkweapon(lua_State* L, int idx);
 int intf_create_attack(lua_State* L);

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2023 - 2024
+	Copyright (C) 2023 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -16,12 +16,8 @@
 
 #include "gui/dialogs/modal_dialog.hpp"
 
-namespace gui2
+namespace gui2::dialogs
 {
-
-namespace dialogs
-{
-
 class editor_edit_pbl_translation : public modal_dialog
 {
 public:
@@ -41,5 +37,4 @@ private:
 	std::string& description_;
 };
 
-} // namespace dialogs
-} // namespace gui2
+} // namespace gui2::dialogs

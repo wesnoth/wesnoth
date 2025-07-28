@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2018 - 2024
+	Copyright (C) 2018 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -28,7 +28,7 @@
  * @a pred2 a slow predicate (used after cachecheck).
  */
 template<typename FPred1, typename FPred2>
-void get_tiles_radius(std::set<map_location>&& locs, size_t radius, std::set<map_location>& result, const FPred1& pred1, const FPred2& pred2)
+void get_tiles_radius(std::set<map_location>&& locs, std::size_t radius, std::set<map_location>& result, const FPred1& pred1, const FPred2& pred2)
 {
 	typedef std::set<map_location> location_set;
 	location_set must_visit, filtered_out;

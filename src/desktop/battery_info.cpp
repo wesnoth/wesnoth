@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2018 - 2024
+	Copyright (C) 2018 - 2025
 	by Martin Hrubý <hrubymar10@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -27,6 +27,11 @@
 #include "desktop/dbus_features.hpp"
 #endif
 
+#ifdef __ANDROID__
+#include <SDL2/SDL_system.h> // For SDL Android functions
+#include <jni.h>
+#endif
+
 namespace desktop {
 namespace battery_info {
 
@@ -38,6 +43,8 @@ bool does_device_have_battery()
 	return desktop::battery_info::apple::does_device_have_battery();
 #elif defined(HAVE_LIBDBUS)
 	return dbus::does_device_have_battery();
+#elif defined(__ANDROID__)
+	return true;
 #else
 	return false;
 #endif
@@ -51,6 +58,13 @@ double get_battery_percentage()
 	return desktop::battery_info::apple::get_battery_percentage();
 #elif defined(HAVE_LIBDBUS)
 	return dbus::get_battery_percentage();
+#elif defined(__ANDROID__)
+	// call the helper method WesnothActivity.getBatteryPercentage() using JNI
+	JNIEnv* env = reinterpret_cast<JNIEnv*>(SDL_AndroidGetJNIEnv());
+	jobject wesnoth_instance = reinterpret_cast<jobject>(SDL_AndroidGetActivity());
+	jclass wesnoth_activity(env->GetObjectClass(wesnoth_instance));
+	jmethodID percentage = env->GetMethodID(wesnoth_activity, "getBatteryPercentage", "()D");
+	return env->CallDoubleMethod(wesnoth_instance, percentage);
 #else
 	return -1;
 #endif

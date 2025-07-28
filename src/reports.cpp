@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -20,15 +20,18 @@
 #include "color.hpp"
 #include "desktop/battery_info.hpp"
 #include "font/pango/escape.hpp"
+#include "font/standard_colors.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
 #include "gettext.hpp"
+#include "help/help.hpp"
 #include "language.hpp"
 #include "map/map.hpp"
 #include "mouse_events.hpp"
 #include "pathfind/pathfind.hpp"
 #include "picture.hpp"
 #include "preferences/preferences.hpp"
+#include "serialization/chrono.hpp"
 #include "serialization/markup.hpp"
 #include "team.hpp"
 #include "terrain/movement.hpp"
@@ -39,9 +42,13 @@
 #include "units/unit_alignments.hpp"
 #include "whiteboard/manager.hpp"
 
-#include <ctime>
-#include <iomanip>
 #include <boost/format.hpp>
+#include <iomanip>
+#include <utility>
+
+#ifdef __cpp_lib_format
+#include <format>
+#endif
 
 static void add_text(config &report, const std::string &text,
 	const std::string &tooltip, const std::string &help = "")
@@ -83,7 +90,7 @@ static void add_status(config &r,
 	const std::string& path, char const *desc1, char const *desc2)
 {
 	std::ostringstream s;
-	s << translation::gettext(desc1) << translation::gettext(desc2);
+	s << translation::gettext(desc1) << " " << translation::gettext(desc2);
 	add_image(r, path, s.str());
 }
 
@@ -113,7 +120,7 @@ static static_report_generators static_generators;
 
 struct report_generator_helper
 {
-	report_generator_helper(const char *name, reports::generator_function g)
+	report_generator_helper(const char *name, const reports::generator_function& g)
 	{
 		static_generators.insert(static_report_generators::value_type(name, g));
 	}
@@ -163,10 +170,10 @@ static config unit_name(const unit *u)
 	 * The name needs to be escaped, it might be set by the user and using
 	 * markup. Also names often contain a forbidden single quote.
 	 */
-	const std::string& name = font::escape_text(u->name());
+	const std::string& name = font::escape_text(u->name().str());
 	std::ostringstream str, tooltip;
 	str << markup::bold(name);
-	tooltip << _("Name: ") << markup::bold(name);
+	tooltip << _("Name:") << " " << markup::bold(name);
 	return text_report(str.str(), tooltip.str());
 }
 
@@ -183,19 +190,19 @@ REPORT_GENERATOR(selected_unit_name, rc)
 
 static config unit_type(const unit* u)
 {
-	if (!u) return config();
-	std::string has_variations_prefix = (u->type().show_variations_in_help() ? ".." : "");
-	std::ostringstream str, tooltip;
-	str << u->type_name();
-	tooltip << _("Type: ") << markup::bold(u->type_name()) << "\n"
-		<< u->unit_description();
+	if(!u) return config();
+
+	std::ostringstream tooltip;
+	tooltip << _("Type:") << " " << markup::bold(u->type_name()) << "\n"
+	        << u->unit_description();
 	if(const auto& notes = u->unit_special_notes(); !notes.empty()) {
 		tooltip << "\n\n" << _("Special Notes:") << '\n';
 		for(const auto& note : notes) {
 			tooltip << font::unicode_bullet << " " << note << '\n';
 		}
 	}
-	return text_report(str.str(), tooltip.str(), has_variations_prefix + "unit_" + u->type_id());
+
+	return text_report(u->type_name(), tooltip.str(), help::get_unit_type_help_id(u->type()));
 }
 REPORT_GENERATOR(unit_type, rc)
 {
@@ -213,7 +220,7 @@ static config unit_race(const unit* u)
 	if (!u) return config();
 	std::ostringstream str, tooltip;
 	str << u->race()->name(u->gender());
-	tooltip << _("Race: ") << markup::bold(u->race()->name(u->gender()));
+	tooltip << _("Race:") << " " << markup::bold(u->race()->name(u->gender()));
 	return text_report(str.str(), tooltip.str(), "..race_" + u->race()->id());
 }
 REPORT_GENERATOR(unit_race, rc)
@@ -310,7 +317,7 @@ static config unit_traits(const unit* u)
 		std::ostringstream str, tooltip;
 		str << traits[i];
 		if (i != nb - 1 ) str << ", ";
-		tooltip << _("Trait: ") << markup::bold(traits[i]) << "\n"
+		tooltip << _("Trait:") << " " << markup::bold(traits[i]) << "\n"
 			<< descriptions[i];
 		add_text(res, str.str(), tooltip.str(), "traits_" + trait_ids[i]);
 	}
@@ -333,27 +340,27 @@ static config unit_status(const reports::context& rc, const unit* u)
 	config res;
 	map_location displayed_unit_hex = rc.screen().displayed_unit_hex();
 	if (rc.map().on_board(displayed_unit_hex) && u->invisible(displayed_unit_hex)) {
-		add_status(res, "misc/invisible.png", N_("invisible: "),
+		add_status(res, "misc/invisible.png", N_("invisible:"),
 			N_("This unit is invisible. It cannot be seen or attacked by enemy units."));
 	}
 	if (u->get_state(unit::STATE_SLOWED)) {
-		add_status(res, "misc/slowed.png", N_("slowed: "),
+		add_status(res, "misc/slowed.png", N_("slowed:"),
 			N_("This unit has been slowed. It will only deal half its normal damage when attacking and its movement cost is doubled."));
 	}
 	if (u->get_state(unit::STATE_POISONED)) {
-		add_status(res, "misc/poisoned.png", N_("poisoned: "),
+		add_status(res, "misc/poisoned.png", N_("poisoned:"),
 			N_("This unit is poisoned. It will lose 8 HP every turn until it can seek a cure to the poison in a village or from a friendly unit with the ‘cures’ ability.\n\nUnits cannot be killed by poison alone. The poison will not reduce it below 1 HP."));
 	}
 	if (u->get_state(unit::STATE_PETRIFIED)) {
-		add_status(res, "misc/petrified.png", N_("petrified: "),
+		add_status(res, "misc/petrified.png", N_("petrified:"),
 			N_("This unit has been petrified. It may not move or attack."));
 	}
 	if (u->get_state(unit::STATE_UNHEALABLE)) {
-		add_status(res, "misc/unhealable.png", N_("unhealable: "),
+		add_status(res, "misc/unhealable.png", N_("unhealable:"),
 			N_("This unit is unhealable. It cannot be healed by healers or villages and doesn’t benefit from resting."));
 	}
 	if (u->get_state(unit::STATE_INVULNERABLE)) {
-		add_status(res, "misc/invulnerable.png", N_("invulnerable: "),
+		add_status(res, "misc/invulnerable.png", N_("invulnerable:"),
 			N_("This unit is invulnerable. It cannot be harmed by any attack."));
 	}
 	return res;
@@ -384,7 +391,7 @@ static config unit_alignment(const reports::context& rc, const unit* u, const ma
 
 	str << align << " (" << span_color(color, utils::signed_percent(cm)) << ")";
 
-	tooltip << _("Alignment: ") << markup::bold(align) << "\n"
+	tooltip << _("Alignment:") << " " << markup::bold(align) << "\n"
 		<< string_table[align_id + "_description"];
 
 	return text_report(str.str(), tooltip.str(), "time_of_day");
@@ -424,14 +431,14 @@ static config unit_abilities(const unit* u, const map_location& loc)
 		if(active[i]) {
 			str << display_name;
 		} else {
-			str << span_color(font::inactive_ability_color, display_name);
+			str << span_color(font::INACTIVE_COLOR, display_name);
 		}
 
 		if(i + 1 != abilities_size) {
 			str << ", ";
 		}
 
-		tooltip << _("Ability: ") << markup::bold(display_name);
+		tooltip << _("Ability:") << " " << markup::bold(display_name);
 		if(!active[i]) {
 			tooltip << markup::italic(_(" (inactive)"));
 		}
@@ -497,7 +504,7 @@ static config unit_hp(const reports::context& rc, const unit* u)
 		resistances_table.push_back(line.str());
 	}
 
-	tooltip << _("Resistances: ");
+	tooltip << _("Resistances:") << " ";
 	if (att_def_diff)
 		tooltip << _("(Att / Def)");
 	tooltip << '\n';
@@ -528,7 +535,7 @@ static config unit_xp(const unit* u)
 	}
 
 	int exp_mod = unit_experience_accelerator::get_acceleration();
-	tooltip << _("Experience Modifier: ") << exp_mod << '%';
+	tooltip << _("Experience Modifier:") << " " << exp_mod << '%';
 	return text_report(str.str(), tooltip.str());
 }
 REPORT_GENERATOR(unit_xp, rc)
@@ -578,7 +585,7 @@ static config unit_defense(const reports::context& rc, const unit* u, const map_
 	int def = 100 - u->defense_modifier(terrain);
 	color_t color = game_config::red_to_green(def);
 	str << span_color(color, def, '%');
-	tooltip << _("Terrain: ") << markup::bold(map.get_terrain_info(terrain).description()) << "\n";
+	tooltip << _("Terrain:") << " " << markup::bold(map.get_terrain_info(terrain).description()) << "\n";
 
 	const t_translation::ter_list &underlyings = map.underlying_def_terrain(terrain);
 	if (underlyings.size() != 1 || underlyings.front() != terrain)
@@ -600,7 +607,7 @@ static config unit_defense(const reports::context& rc, const unit* u, const map_
 		}
 	}
 
-	tooltip << markup::bold(_("Defense: ")) << span_color(color, def, '%');
+	tooltip << markup::bold(_("Defense:")) << " " << span_color(color, def, '%');
 	const std::string has_variations_prefix = (u->type().show_variations_in_help() ? ".." : "");
 	return text_report(str.str(), tooltip.str(), has_variations_prefix + "unit_" + u->type_id());
 }
@@ -777,7 +784,7 @@ static int attack_info(const reports::context& rc, const attack_type &at, config
 	{
 		auto ctx = at.specials_context(u.shared_from_this(), hex, u.side() == rc.screen().playing_team().side());
 		int base_damage = at.damage();
-		int specials_damage = at.modified_damage();
+		double specials_damage = at.modified_damage();
 		int damage_multiplier = 100;
 		const_attack_ptr weapon  = at.shared_from_this();
 		unit_alignments::type attack_alignment = weapon->alignment().value_or(u.alignment());
@@ -802,74 +809,75 @@ static int attack_info(const reports::context& rc, const attack_type &at, config
 		unsigned num_attacks = swarm_blows(min_attacks, max_attacks, cur_hp, max_hp);
 
 		color_t dmg_color = font::weapon_color;
-		if ( damage > specials_damage ) {
+		if (damage > std::round(specials_damage)) {
 			dmg_color = font::good_dmg_color;
-		} else if ( damage < specials_damage ) {
+		} else if (damage < std::round(specials_damage)) {
 			dmg_color = font::bad_dmg_color;
 		}
 
 		str << span_color(dmg_color, "  ", damage)
 			<< span_color(font::weapon_color, font::weapon_numbers_sep, num_attacks, ' ', at.name())
 			<< "\n";
-		tooltip << _("Weapon: ") << markup::bold(at.name()) << "\n"
-				<< _("Damage: ") << markup::bold(damage) << "\n";
+		tooltip << _("Weapon:") << " " << markup::bold(at.name()) << "\n"
+				<< _("Damage:") << " " << markup::bold(damage) << "\n";
 
 		if ( tod_bonus || leader_bonus || slowed || specials_damage != base_damage )
 		{
-			tooltip << '\t' << _("Base damage: ") << base_damage << '\n';
+			tooltip << '\t' << _("Base damage:") << " " << base_damage << '\n';
 			if ( specials_damage != base_damage ) {
-				tooltip << '\t' << _("With specials: ") << specials_damage << '\n';
+				tooltip << '\t' << _("With specials:") << " " << specials_damage << '\n';
 			}
 			if (tod_bonus) {
-				tooltip << '\t' << _("Time of day: ")
+				tooltip << '\t' << _("Time of day:") << " "
 						<< utils::signed_percent(tod_bonus) << '\n';
 			}
 			if (leader_bonus) {
-				tooltip << '\t' << _("Leadership: ")
+				tooltip << '\t' << _("Leadership:") << " "
 						<< utils::signed_percent(leader_bonus) << '\n';
 			}
 			if (slowed) {
-				tooltip << '\t' << _("Slowed: ") << "/ 2" << '\n';
+				tooltip << '\t' << _("Slowed:") << " " << "/ 2" << '\n';
 			}
 		}
 
-		tooltip << _("Attacks: ") << markup::bold(num_attacks) << "\n";
+		tooltip << _("Attacks:") << " " << markup::bold(num_attacks) << "\n";
 		if ( max_attacks != min_attacks  &&  cur_hp != max_hp ) {
 			if ( max_attacks < min_attacks ) {
 				// "Reverse swarm"
-				tooltip << '\t' << _("Max swarm bonus: ") << (min_attacks-max_attacks) << '\n';
-				tooltip << '\t' << _("Swarm: ") << "* "<< (100 - cur_hp*100/max_hp) << "%\n";
-				tooltip << '\t' << _("Base attacks: ") << '+' << base_attacks << '\n';
+				tooltip << '\t' << _("Max swarm bonus:") << " " << (min_attacks-max_attacks) << '\n';
+				tooltip << '\t' << _("Swarm:") << " " << "* "<< (100 - cur_hp*100/max_hp) << "%\n";
+				tooltip << '\t' << _("Base attacks:") << " " << '+' << base_attacks << '\n';
 				// The specials line will not necessarily match up with how the
 				// specials are calculated, but for an unusual case, simple brevity
 				// trumps complexities.
 				if ( max_attacks != base_attacks ) {
 					int attack_diff = static_cast<int>(max_attacks) - static_cast<int>(base_attacks);
-					tooltip << '\t' << _("Specials: ") << utils::signed_value(attack_diff) << '\n';
+					tooltip << '\t' << _("Specials:") << " " << utils::signed_value(attack_diff) << '\n';
 				}
 			}
 			else {
 				// Regular swarm
-				tooltip << '\t' << _("Base attacks: ") << base_attacks << '\n';
+				tooltip << '\t' << _("Base attacks:") << " " << base_attacks << '\n';
 				if ( max_attacks != base_attacks ) {
-					tooltip << '\t' << _("With specials: ") << max_attacks << '\n';
+					tooltip << '\t' << _("With specials:") << " " << max_attacks << '\n';
 				}
 				if ( min_attacks != 0 ) {
-					tooltip << '\t' << _("Subject to swarm: ") << (max_attacks-min_attacks) << '\n';
+					tooltip << '\t' << _("Subject to swarm:") << " " << (max_attacks-min_attacks) << '\n';
 				}
-				tooltip << '\t' << _("Swarm: ") << "* "<< (cur_hp*100/max_hp) << "%\n";
+				tooltip << '\t' << _("Swarm:") << " " << "* "<< (cur_hp*100/max_hp) << "%\n";
 			}
 		}
 		else if ( num_attacks != base_attacks ) {
-			tooltip << '\t' << _("Base attacks: ") << base_attacks << '\n';
-			tooltip << '\t' << _("With specials: ") << num_attacks << '\n';
+			tooltip << '\t' << _("Base attacks:") << " " << base_attacks << '\n';
+			tooltip << '\t' << _("With specials:") << " " << num_attacks << '\n';
 		}
 
 		const string_with_tooltip damage_and_num_attacks {flush(str), flush(tooltip)};
 
 		std::string range = string_table["range_" + at.range()];
-		std::string type = at.damage_type().first;
-		std::set<std::string> alt_types = at.alternative_damage_types();
+		std::pair<std::string, std::set<std::string>> all_damage_types = at.damage_types();
+		std::string type = all_damage_types.first;
+		std::set<std::string> alt_types = all_damage_types.second;
 		std::string lang_type = string_table["type_" + type];
 		for(auto alt_t : alt_types){
 			lang_type += ", " + string_table["type_" + alt_t];
@@ -894,9 +902,9 @@ static int attack_info(const reports::context& rc, const attack_type &at, config
 				<< "\n";
 		}
 
-		tooltip << _("Weapon range: ") << markup::bold(range) << "\n"
-				<< _("Damage type: ")  << markup::bold(lang_type) << "\n"
-				<< _("Damage versus: ") << '\n';
+		tooltip << _("Weapon range:") << " " << markup::bold(range) << "\n"
+				<< _("Damage type:") << " "  << markup::bold(lang_type) << "\n"
+				<< _("Damage versus:") << " " << '\n';
 
 		// Show this weapon damage and resistance against all the different units.
 		// We want weak resistances (= good damage) first.
@@ -916,7 +924,8 @@ static int attack_info(const reports::context& rc, const attack_type &at, config
 				continue;
 			bool new_type = seen_types.insert(enemy.type_id()).second;
 			if (new_type) {
-				int resistance = enemy.resistance_against(at, false, loc);
+				auto ctx = at.specials_context(u.shared_from_this(), enemy.shared_from_this(), hex, loc, u.side() == rc.screen().playing_team().side(), nullptr);
+				int resistance = enemy.resistance_against(at, false, loc, nullptr);
 				resistances[resistance].insert(enemy.type_name());
 			}
 		}
@@ -963,7 +972,7 @@ static int attack_info(const reports::context& rc, const attack_type &at, config
 
 			str << "  " << align << " (" << span_color(color, utils::signed_percent(tod_bonus)) << ")" << "\n";
 
-			tooltip << _("Alignment: ") << markup::bold(align) << "\n"
+			tooltip << _("Alignment:") << " " << markup::bold(align) << "\n"
 				<< string_table[align_id + "_description" ] + "\n";
 
 			add_text(res, flush(str), flush(tooltip));
@@ -973,15 +982,7 @@ static int attack_info(const reports::context& rc, const attack_type &at, config
 		if (!accuracy_parry.empty())
 		{
 			str << span_color(font::weapon_details_color, "  ", accuracy_parry) << "\n";
-			int accuracy = at.accuracy();
-			if (accuracy) {
-				tooltip << _("Accuracy:") << markup::bold(utils::signed_percent(accuracy)) << "\n";
-			}
-			int parry = at.parry();
-			if (parry) {
-				tooltip << _("Parry:") << markup::bold(utils::signed_percent(parry)) << "\n";
-			}
-			add_text(res, flush(str), flush(tooltip));
+			add_text(res, flush(str), at.accuracy_parry_tooltip());
 		}
 	}
 
@@ -989,7 +990,7 @@ static int attack_info(const reports::context& rc, const attack_type &at, config
 		//If we have a second unit, do the 2-unit specials_context
 		bool attacking = (u.side() == rc.screen().playing_team().side());
 		auto ctx = (sec_u == nullptr) ? at.specials_context_for_listing(attacking) :
-						at.specials_context(u.shared_from_this(), sec_u->shared_from_this(), hex, sec_u->get_location(), attacking, sec_u_weapon);
+						at.specials_context(u.shared_from_this(), sec_u->shared_from_this(), hex, sec_u->get_location(), attacking, std::move(sec_u_weapon));
 
 		boost::dynamic_bitset<> active;
 		const std::vector<std::pair<t_string, t_string>> &specials = at.special_tooltips(&active);
@@ -1000,11 +1001,51 @@ static int attack_info(const reports::context& rc, const attack_type &at, config
 			const t_string &name = specials[i].first;
 			const t_string &description = specials[i].second;
 			const color_t &details_color =
-				active[i] ? font::weapon_details_color : font::inactive_details_color;
+				active[i] ? font::weapon_details_color : font::INACTIVE_COLOR;
 
 			str << span_color(details_color, "  ", "  ", name) << '\n';
 			std::string help_page = "weaponspecial_" + name.base_str();
-			tooltip << _("Weapon special: ") << markup::bold(name);
+			tooltip << _("Weapon special:") << " " << markup::bold(name);
+			if (!active[i]) {
+				tooltip << markup::italic(_(" (inactive)"));
+			}
+			tooltip << '\n' << description;
+
+			add_text(res, flush(str), flush(tooltip), help_page);
+		}
+
+		if(!specials.empty()) {
+			// Add some padding so the end of the specials list
+			// isn't too close vertically to the attack icons of
+			// the next attack. Also for symmetry with the padding
+			// above the list of specials (below the attack icon line).
+			const std::string spacer = "misc/blank.png~CROP(0, 0, 1, 5)";
+			add_image(res, spacer, "");
+			add_text(res, "\n", "");
+		}
+	}
+
+	// 'abilities' version of special_tooltips is below.
+	{
+		//If we have a second unit, do the 2-unit specials_context
+		bool attacking = (u.side() == rc.screen().playing_team().side());
+		auto ctx = (sec_u == nullptr)
+	? at.specials_context(u.shared_from_this(), hex, attacking)
+	: at.specials_context(u.shared_from_this(), sec_u->shared_from_this(), hex, sec_u->get_location(), attacking, std::move(sec_u_weapon));
+
+		boost::dynamic_bitset<> active;
+		const std::vector<std::pair<t_string, t_string>>& specials = at.abilities_special_tooltips(&active);
+		const std::size_t specials_size = specials.size();
+		for ( std::size_t i = 0; i != specials_size; ++i )
+		{
+			// Aliases for readability:
+			const auto& [name, description] = specials[i];
+			const color_t& details_color =
+				active[i] ? font::weapon_details_color : font::INACTIVE_COLOR;
+
+			str << span_color(details_color, "  ", "  ", name) << '\n';
+			const std::string help_page = "weaponspecial_" + name.base_str();
+			tooltip << _("Weapon special:") << " " << markup::bold(name);
 			if (!active[i]) {
 				tooltip << markup::italic(_(" (inactive)"));
 			}
@@ -1046,7 +1087,7 @@ static std::string format_hp(unsigned hp)
 	return res.str();
 }
 
-static config unit_weapons(const reports::context& rc, unit_const_ptr attacker, const map_location &attacker_pos, const unit *defender, bool show_attacker)
+static config unit_weapons(const reports::context& rc, const unit_const_ptr& attacker, const map_location &attacker_pos, const unit *defender, bool show_attacker)
 {
 	if (!attacker || !defender) return config();
 
@@ -1098,8 +1139,8 @@ static config unit_weapons(const reports::context& rc, unit_const_ptr attacker, 
 			}
 		} else {
 			str << span_color(font::weapon_color, weapon_name) << "\n";
-			tooltip << _("Weapon: ") << markup::bold(weapon_name) << "\n"
-					<< _("Damage: ") << markup::bold("0") << "\n";
+			tooltip << _("Weapon:") << " " << markup::bold(weapon_name) << "\n"
+					<< _("Damage:") << " " << markup::bold("0") << "\n";
 		}
 
 		color_t chance_color = game_config::red_to_green(chance_to_hit);
@@ -1110,7 +1151,7 @@ static config unit_weapons(const reports::context& rc, unit_const_ptr attacker, 
 				font::unicode_en_dash, num_blows, " (", span_color(chance_color, chance_to_hit, "%"), ")")
 			<< "\n";
 
-		tooltip << _("Weapon: ") << markup::bold(weapon_name) << "\n"
+		tooltip << _("Weapon:") << " " << markup::bold(weapon_name) << "\n"
 				<< _("Total damage") << markup::bold(total_damage) << "\n";
 
 		// Create the hitpoints distribution.
@@ -1133,12 +1174,12 @@ static config unit_weapons(const reports::context& rc, unit_const_ptr attacker, 
 		std::sort(prob_hp_vector.begin(), prob_hp_vector.end());
 
 		//TODO fendrin -- make that dynamically
-		size_t max_hp_distrib_rows_ = 10;
+		std::size_t max_hp_distrib_rows_ = 10;
 
 		// We store a few of the highest probability hitpoint values.
-		size_t nb_elem = std::min<size_t>(max_hp_distrib_rows_, prob_hp_vector.size());
+		std::size_t nb_elem = std::min<std::size_t>(max_hp_distrib_rows_, prob_hp_vector.size());
 
-		for(size_t i = prob_hp_vector.size() - nb_elem; i <prob_hp_vector.size(); i++) {
+		for(std::size_t i = prob_hp_vector.size() - nb_elem; i <prob_hp_vector.size(); i++) {
 			hp_prob_vector.emplace_back(prob_hp_vector[i].second, prob_hp_vector[i].first);
 		}
 
@@ -1165,9 +1206,9 @@ static config unit_weapons(const reports::context& rc, unit_const_ptr attacker, 
  * Display the attacks of the displayed unit against the unit passed as argument.
  * 'hex' is the location the attacker will be at during combat.
  */
-static config unit_weapons(const reports::context& rc, const unit *u, const map_location &hex)
+static config unit_weapons(const reports::context& rc, const unit* u, const map_location& hex)
 {
-	config res = config();
+	config res;
 	if ((u != nullptr) && (!u->attacks().empty())) {
 		const std::string attack_headline = _n("Attack", "Attacks", u->attacks().size());
 
@@ -1183,7 +1224,7 @@ static config unit_weapons(const reports::context& rc, const unit *u, const map_
 				_("This unit can attack multiple times per turn."));
 		}
 
-		for (const attack_type &at : u->attacks())
+		for (const attack_type& at : u->attacks())
 		{
 			attack_info(rc, at, res, *u, hex);
 		}
@@ -1324,12 +1365,12 @@ static config time_of_day_at(const reports::context& rc, const map_location& mou
 		liminal_color = (l > 0) ? "#0f0" : "#f00";
 	}
 	tooltip << _("Time of day:") << " " << markup::bold(tod.name) << "\n"
-			<< _("Lawful units: ")
+			<< _("Lawful units:") << " "
 			<< markup::span_color(lawful_color, utils::signed_percent(b))  << "\n"
-			<< _("Neutral units: ") << utils::signed_percent(0)  << '\n'
-			<< _("Chaotic units: ")
+			<< _("Neutral units:") << " " << utils::signed_percent(0)  << '\n'
+			<< _("Chaotic units:") << " "
 			<< markup::span_color(chaotic_color, utils::signed_percent(-b))  << "\n"
-			<< _("Liminal units: ")
+			<< _("Liminal units:") << " "
 			<< markup::span_color(liminal_color, utils::signed_percent(l))  << "\n";
 
 	std::string tod_image = tod.image;
@@ -1378,12 +1419,12 @@ static config unit_box_at(const reports::context& rc, const map_location& mouseo
 		liminal_color = (bonus_lim > 0) ? "green" : "red";
 	}
 	tooltip << local_tod.name << '\n'
-		<< _("Lawful units: ")
+		<< _("Lawful units:") << " "
 		<< markup::span_color(lawful_color, utils::signed_percent(bonus))  << "\n"
-		<< _("Neutral units: ") << utils::signed_percent(0)  << '\n'
-		<< _("Chaotic units: ")
+		<< _("Neutral units:") << " " << utils::signed_percent(0)  << '\n'
+		<< _("Chaotic units:") << " "
 		<< markup::span_color(chaotic_color, utils::signed_percent(-bonus))  << "\n"
-		<< _("Liminal units: ")
+		<< _("Liminal units:") << " "
 		<< markup::span_color(liminal_color, utils::signed_percent(bonus_lim))  << "\n";
 
 	std::string local_tod_image  = "themes/classic/" + local_tod.image;
@@ -1746,15 +1787,12 @@ REPORT_GENERATOR(report_clock, /*rc*/)
 	config report;
 	add_image(report, game_config::images::time_icon, "");
 
-	std::ostringstream ss;
-
 	const char* format = prefs::get().use_twelve_hour_clock_format()
 		? "%I:%M %p"
 		: "%H:%M";
 
-	std::time_t t = std::time(nullptr);
-	ss << std::put_time(std::localtime(&t), format);
-	add_text(report, ss.str(), _("Clock"));
+	const auto now = std::chrono::system_clock::now();
+	add_text(report, chrono::format_local_timestamp(now, format), _("Clock"));
 
 	return report;
 }
@@ -1772,30 +1810,35 @@ REPORT_GENERATOR(battery, /*rc*/)
 
 REPORT_GENERATOR(report_countdown, rc)
 {
+	using namespace std::chrono_literals;
 	const team& viewing_team = rc.screen().viewing_team();
-	int min, sec;
-	if (viewing_team.countdown_time() == 0) {
+	if (viewing_team.countdown_time() == 0ms) {
 		return report_report_clock(rc);
 	}
 
 	std::ostringstream time_str, formatted_time_str;
 
+	using std::chrono::duration_cast;
+#ifdef __cpp_lib_format
+	auto sec = duration_cast<std::chrono::seconds>(viewing_team.countdown_time());
+	time_str << std::format("{:%M:%S}", sec);
+#else
+	auto fmt = [](const auto& duration) -> std::string {
+		return formatter{} << std::setw(2) << std::setfill('0') << duration.count();
+	};
+
 	// Create the time string
-	sec = viewing_team.countdown_time() / 1000;
-	min = sec / 60;
-	time_str << min << ':';
-	sec = sec % 60;
-	if (sec < 10) {
-		time_str << '0';
-	}
-	time_str << sec;
+	auto sec = duration_cast<std::chrono::seconds>(viewing_team.countdown_time());
+	auto min = duration_cast<std::chrono::minutes>(sec);
+	time_str << fmt(min) << ':' << fmt(sec - min);
+#endif
 
 	// Colorize the time string
 	if (!rc.screen().viewing_team_is_playing()) {
 		formatted_time_str << span_color(font::GRAY_COLOR, time_str.str());
-	} else if (sec < 60) {
+	} else if (sec < 60s) {
 		formatted_time_str << span_color("#c80000", time_str.str());
-	} else if (sec < 120) {
+	} else if (sec < 120s) {
 		formatted_time_str << span_color("#c8c800", time_str.str());
 	} else {
 		formatted_time_str << time_str.str();

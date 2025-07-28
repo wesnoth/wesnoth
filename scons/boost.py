@@ -4,6 +4,7 @@ from os.path import join, dirname, basename, normpath
 import sys
 from glob import glob
 import re
+from SCons.Script import *
 
 def find_boost(env):
     prefixes = [env["prefix"], "C:\\Boost"]
@@ -50,10 +51,11 @@ def find_boost(env):
 
 def CheckBoost(context, boost_lib, require_version = None, header_only = False):
     env = context.env
+    header_only_str = " (header-only)" if header_only else ""
     if require_version:
-        context.Message("Checking for Boost %s library version >= %s... " % (boost_lib, require_version))
+        context.Message("Checking for Boost %s library%s version >= %s... " % (boost_lib, header_only_str, require_version))
     else:
-        context.Message("Checking for Boost %s library... " % boost_lib)
+        context.Message("Checking for Boost %s library%s... " % (boost_lib, header_only_str))
 
     if not env.get("boostdir", "") and not env.get("boostlibdir", ""):
         find_boost(env)
@@ -69,7 +71,9 @@ def CheckBoost(context, boost_lib, require_version = None, header_only = False):
                       "random" : "random/random_number_generator.hpp",
                       "system" : "system/error_code.hpp",
                       "context" : "context/continuation.hpp",
+                      "charconv" : "charconv.hpp",
                       "coroutine" : "coroutine/coroutine.hpp",
+                      "process" : "process/shell.hpp",
                       "graph" : "graph/graph_traits.hpp" }
 
     header_name = boost_headers.get(boost_lib, boost_lib + ".hpp")
@@ -82,7 +86,7 @@ def CheckBoost(context, boost_lib, require_version = None, header_only = False):
             env.AppendUnique(CPPPATH = [boostdir], LIBPATH = [boostlibdir])
     if not header_only:
         env.PrependUnique(LIBS = [libname])
-    if boost_lib == "thread" and env["PLATFORM"] == "posix":
+    if (boost_lib == "thread" or boost_lib == "asio") and env["PLATFORM"] == "posix":
         env.AppendUnique(CCFLAGS = ["-pthread"], LINKFLAGS = ["-pthread"])
 
     test_program = """
@@ -233,4 +237,48 @@ def CheckBoostLocaleBackends(context, backends):
 
     return False
 
-config_checks = { "CheckBoost" : CheckBoost, "CheckBoostIostreamsGZip" : CheckBoostIostreamsGZip, "CheckBoostIostreamsBZip2" : CheckBoostIostreamsBZip2, "CheckBoostLocaleBackends" : CheckBoostLocaleBackends }
+
+def CheckBoostCharconv(context):
+
+    test_program_std = """
+        #include <charconv>
+        #include <array>
+
+        int main()
+        {
+            double num = 6.6;
+            std::array<char, 50> buffer;
+            std::to_chars(buffer.data(), buffer.data() + buffer.size(), num);
+            return 0;
+        }
+        \n"""
+
+    test_program_quadmath = """
+        #include <quadmath.h>
+
+        int main()
+        {
+            __float128 f = -2.0Q;
+            f = fabsq(f);
+
+           return 0;
+        }"""
+
+    has_boost_charconv = CheckBoost(context, "charconv")
+    if has_boost_charconv:
+        # we dont really use quadmath, but it seems like boost
+        # creates a dependency on it anyways if quadmath is available.
+        if context.TryCompile(test_program_quadmath, ".c"):
+            context.env.PrependUnique(LIBS = ["quadmath"])
+        return True
+
+    else:
+        # boost charconv is better than std::charconv on most compilers
+        # so only look for std::charconv if boost charconv is not available.
+        context.Message("Checking std::charconv ... ")
+
+        has_std_charconv =  context.TryLink(test_program_std, ".cpp")
+        context.Result(has_std_charconv)
+        return has_std_charconv
+
+config_checks = { "CheckBoost" : CheckBoost, "CheckBoostCharconv" : CheckBoostCharconv, "CheckBoostIostreamsGZip" : CheckBoostIostreamsGZip, "CheckBoostIostreamsBZip2" : CheckBoostIostreamsBZip2, "CheckBoostLocaleBackends" : CheckBoostLocaleBackends }

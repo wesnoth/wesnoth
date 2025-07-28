@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2013 - 2024
+	Copyright (C) 2013 - 2025
 	by Andrius Silinskas <silinskas.andrius@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -105,6 +105,9 @@ bool game_config_manager::init_game_config(FORCE_RELOAD_CONFIG force_reload)
 	game_config::scoped_preproc_define test("TEST", cmdline_opts_.test.has_value());
 	game_config::scoped_preproc_define mptest("MP_TEST", cmdline_opts_.mptest);
 	game_config::scoped_preproc_define editor("EDITOR", cmdline_opts_.editor.has_value());
+#ifdef __ANDROID__
+	game_config::scoped_preproc_define android("ANDROID", true);
+#endif
 	game_config::scoped_preproc_define title_screen("TITLE_SCREEN",
 		!cmdline_opts_.multiplayer && !cmdline_opts_.test && !cmdline_opts_.editor);
 
@@ -756,7 +759,7 @@ void game_config_manager::load_game_config_for_create(bool is_mp, bool is_test)
 	}
 }
 
-void game_config_manager::set_enabled_addon(std::set<std::string> addon_ids)
+void game_config_manager::set_enabled_addon(const std::set<std::string>& addon_ids)
 {
 	auto& vec = game_config_view_.data();
 	vec.clear();

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -129,7 +129,7 @@ std::string find_recall_location(const int side, map_location& recall_location, 
  * @param recruit_location the hex field being part of the castle the player wants to recruit on or from.
  * @return a set of units that can be recruited either by the leader on @a recruit_location or by leaders on keeps connected by castle tiles to @a recruit_location.
  */
-const std::set<std::string> get_recruits(int side, const map_location &recruit_location);
+std::set<std::string> get_recruits(int side, const map_location &recruit_location);
 
 /**
  * Gets the recallable units for a side, restricted by that side's leaders' personal abilities to recall on or from a specific hex field.
@@ -158,7 +158,7 @@ typedef std::tuple<bool /*event modified*/, int /*previous village owner side*/,
  * @param wml_triggered whether this was triggered via WML.
  * @returns true if an event (or fog clearing) has mutated the game state.
  */
-place_recruit_result place_recruit(unit_ptr u, const map_location &recruit_location, const map_location& recruited_from,
+place_recruit_result place_recruit(const unit_ptr& u, const map_location &recruit_location, const map_location& recruited_from,
 	int cost, bool is_recall, map_location::direction facing = map_location::direction::indeterminate, bool show = false, bool fire_event = true, bool full_movement = false, bool wml_triggered = false);
 
 /**
@@ -169,7 +169,7 @@ place_recruit_result place_recruit(unit_ptr u, const map_location &recruit_locat
  * statistics, and (unless @a is_ai) updating the undo stack.
  */
 void recruit_unit(const unit_type & u_type, int side_num, const map_location & loc,
-                  const map_location & from, bool show=true, bool use_undo=true);
+                  const map_location & from);
 
 /**
  * Recalls the unit with the indicated ID for the provided team.
@@ -184,12 +184,9 @@ void recruit_unit(const unit_type & u_type, int side_num, const map_location & l
  * @param loc the location it was recalled onto.
  * @param from the location it was recalled from.
  * @param facing the desired facing for the unit, map_location::direction::indeterminate to determine facing automatically.
- * @param show
- * @param use_undo if it's possible to undo the recall.
  * @returns false if the recall could not be found in the team's recall list.
  */
 bool recall_unit(const std::string & id, team & current_team,
                  const map_location & loc, const map_location & from,
-                 map_location::direction facing = map_location::direction::indeterminate,
-                 bool show=true, bool use_undo=true);
+                 map_location::direction facing = map_location::direction::indeterminate);
 }//namespace actions

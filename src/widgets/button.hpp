@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -32,7 +32,7 @@ public:
 	enum SPACE_CONSUMPTION { DEFAULT_SPACE, MINIMUM_SPACE };
 
 	button(const std::string& label, TYPE type=TYPE_PRESS,
-	       std::string button_image="", SPACE_CONSUMPTION spacing=DEFAULT_SPACE,
+	       const std::string& button_image="", SPACE_CONSUMPTION spacing=DEFAULT_SPACE,
 	       const bool auto_join=true, std::string overlay_image="", int font_size = -1);
 
 
@@ -73,7 +73,7 @@ private:
 		touchedImage_, disabledImage_, pressedDisabledImage_,
 		overlayImage_, overlayPressedImage_, overlayPressedDisabledImage_, overlayDisabledImage_,
 		overlayActiveImage_;
-	SDL_Rect textRect_;
+	rect textRect_;
 
 	enum STATE { UNINIT, NORMAL, ACTIVE, PRESSED, PRESSED_ACTIVE, TOUCHED_NORMAL, TOUCHED_PRESSED };
 	STATE state_;

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2024
+	Copyright (C) 2016 - 2025
 	by Charles Dang <exodia339gmail.com>
 	Copyright (C) 2011, 2015 by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -111,6 +111,7 @@ private:
 
 	int last_selected_item_;
 	unsigned current_gui_theme_;
+	bool is_reload_needed_;
 
 	std::vector<double> accl_speeds_;
 

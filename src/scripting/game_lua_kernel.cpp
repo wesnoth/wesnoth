@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2024
+	Copyright (C) 2009 - 2025
 	by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -27,29 +27,31 @@
 #include "scripting/game_lua_kernel.hpp"
 
 #include "actions/attack.hpp"           // for battle_context_unit_stats, etc
-#include "actions/advancement.hpp"           // for advance_unit_at, etc
-#include "actions/move.hpp"		// for clear_shroud
-#include "actions/vision.hpp"		// for clear_shroud and create_jamming_map
+#include "actions/advancement.hpp"      // for advance_unit_at, etc
+#include "actions/move.hpp"             // for clear_shroud
+#include "actions/vision.hpp"           // for clear_shroud and create_jamming_map
+#include "actions/undo.hpp"             // for clear_shroud and create_jamming_map
+#include "actions/undo_action.hpp"      // for clear_shroud and create_jamming_map
 #include "ai/composite/ai.hpp"          // for ai_composite
 #include "ai/composite/component.hpp"   // for component, etc
 #include "ai/composite/contexts.hpp"    // for ai_context
-#include "ai/lua/engine_lua.hpp"  // for engine_lua
-#include "ai/composite/rca.hpp"  // for candidate_action
-#include "ai/composite/stage.hpp"  // for stage
+#include "ai/lua/engine_lua.hpp"        // for engine_lua
+#include "ai/composite/rca.hpp"         // for candidate_action
+#include "ai/composite/stage.hpp"       // for stage
 #include "ai/configuration.hpp"         // for configuration
 #include "ai/lua/core.hpp"              // for lua_ai_context, etc
 #include "ai/manager.hpp"               // for manager, holder
 #include "attack_prediction.hpp"        // for combatant
 #include "chat_events.hpp"              // for chat_handler, etc
 #include "config.hpp"                   // for config, etc
-#include "display_chat_manager.hpp"	// for clear_chat_messages
+#include "display_chat_manager.hpp"     // for clear_chat_messages
 #include "floating_label.hpp"
 #include "formatter.hpp"
 #include "game_board.hpp"               // for game_board
 #include "game_classification.hpp"      // for game_classification, etc
 #include "game_config.hpp"              // for debug, base_income, etc
 #include "game_config_manager.hpp"      // for game_config_manager
-#include "game_data.hpp"               // for game_data, etc
+#include "game_data.hpp"                // for game_data, etc
 #include "game_display.hpp"             // for game_display
 #include "game_errors.hpp"              // for game_error
 #include "game_events/conditional_wml.hpp"  // for conditional_passed
@@ -57,9 +59,9 @@
 #include "game_events/handlers.hpp"
 #include "game_events/manager_impl.hpp" // for pending_event_handler
 #include "game_events/pump.hpp"         // for queued_event
-#include "preferences/preferences.hpp"         // for encountered_units
+#include "preferences/preferences.hpp"  // for encountered_units
 #include "log.hpp"                      // for LOG_STREAM, logger, etc
-#include "map/map.hpp"                      // for gamemap
+#include "map/map.hpp"                  // for gamemap
 #include "map/label.hpp"
 #include "map/location.hpp"             // for map_location
 #include "mouse_events.hpp"             // for mouse_handler
@@ -79,7 +81,7 @@
 #include "scripting/lua_unit_attacks.hpp"
 #include "scripting/lua_common.hpp"
 #include "scripting/lua_cpp_function.hpp"
-#include "scripting/lua_gui2.hpp"	// for show_gamestate_inspector
+#include "scripting/lua_gui2.hpp"	    // for show_gamestate_inspector
 #include "scripting/lua_pathfind_cost_calculator.hpp"
 #include "scripting/lua_race.hpp"
 #include "scripting/lua_team.hpp"
@@ -87,25 +89,26 @@
 #include "scripting/lua_unit_type.hpp"
 #include "scripting/push_check.hpp"
 #include "synced_commands.hpp"
-#include "color.hpp"                // for surface
+#include "color.hpp"                    // for surface
 #include "side_filter.hpp"              // for side_filter
 #include "sound.hpp"                    // for commit_music_changes, etc
 #include "synced_context.hpp"           // for synced_context, etc
 #include "synced_user_choice.hpp"
 #include "team.hpp"                     // for team, village_owner
-#include "terrain/terrain.hpp"                  // for terrain_type
+#include "terrain/terrain.hpp"          // for terrain_type
 #include "terrain/filter.hpp"           // for terrain_filter
 #include "terrain/translation.hpp"      // for read_terrain_code, etc
 #include "time_of_day.hpp"              // for time_of_day
 #include "tod_manager.hpp"              // for tod_manager
 #include "tstring.hpp"                  // for t_string, operator+
-#include "units/unit.hpp"                     // for unit
+#include "units/unit.hpp"                 // for unit
 #include "units/animation_component.hpp"  // for unit_animation_component
 #include "units/udisplay.hpp"
 #include "units/filter.hpp"
-#include "units/map.hpp"  // for unit_map, etc
-#include "units/ptr.hpp"                 // for unit_const_ptr, unit_ptr
-#include "units/types.hpp"    // for unit_type_data, unit_types, etc
+#include "units/map.hpp"                // for unit_map, etc
+#include "units/ptr.hpp"                // for unit_const_ptr, unit_ptr
+#include "units/types.hpp"              // for unit_type_data, unit_types, etc
+#include "utils/general.hpp"
 #include "utils/scope_exit.hpp"
 #include "variable.hpp"                 // for vconfig, etc
 #include "variable_info.hpp"
@@ -113,19 +116,18 @@
 #include "whiteboard/manager.hpp"       // for whiteboard
 #include "deprecation.hpp"
 
-#include <functional>               // for bind_t, bind
+#include <functional>                   // for bind_t, bind
 #include <array>
 #include <cassert>                      // for assert
 #include <cstring>                      // for strcmp
 #include <iterator>                     // for distance, advance
 #include <map>                          // for map, map<>::value_type, etc
-#include <new>                          // for operator new
 #include <set>                          // for set
 #include <sstream>                      // for operator<<, basic_ostream, etc
+#include <thread>
 #include <utility>                      // for pair
 #include <algorithm>
 #include <vector>                       // for vector, etc
-#include <SDL2/SDL_timer.h>                  // for SDL_GetTicks
 
 #ifdef DEBUG_LUA
 #include "scripting/debug_lua.hpp"
@@ -191,8 +193,8 @@ void game_lua_kernel::log_error(char const * msg, char const * context)
 void game_lua_kernel::lua_chat(const std::string& caption, const std::string& msg)
 {
 	if (game_display_) {
-		game_display_->get_chat_manager().add_chat_message(std::time(nullptr), caption, 0, msg,
-			events::chat_handler::MESSAGE_PUBLIC, false);
+		game_display_->get_chat_manager().add_chat_message(
+			std::chrono::system_clock::now(), caption, 0, msg, events::chat_handler::MESSAGE_PUBLIC, false);
 	}
 }
 
@@ -376,7 +378,7 @@ int game_lua_kernel::impl_run_animation(lua_State* L)
 	}
 	events::command_disabler command_disabler;
 	unit_animator& anim = *static_cast<unit_animator*>(luaL_checkudata(L, 1, animatorKey));
-	play_controller_.play_slice(false);
+	play_controller_.play_slice();
 	anim.start_animations();
 	anim.wait_for_end();
 	anim.set_all_standing();
@@ -1003,9 +1005,7 @@ SCHEDULE_GETTER("time_of_day", std::string) {
 
 SCHEDULE_SETTER("time_of_day", std::string) {
 	const auto& times = sched.area_index < 0 ? sched.tod_man().times() : sched.tod_man().times(sched.area_index);
-	auto iter = std::find_if(times.begin(), times.end(), [&value](const time_of_day& tod) {
-		return tod.id == value;
-	});
+	auto iter = utils::ranges::find(times, value, &time_of_day::id);
 	if(iter == times.end()) {
 		std::ostringstream err;
 		err << "invalid time of day ID for ";
@@ -1123,6 +1123,30 @@ int game_lua_kernel::impl_get_terrain_info(lua_State *L)
 	lua_setfield(L, -2, "keep");
 	lua_pushinteger(L, info.gives_healing());
 	lua_setfield(L, -2, "healing");
+
+	// movement alias
+	lua_newtable(L);
+	int idx = 1;
+	for (const auto& terrain : info.mvt_type()) {
+		const terrain_type& base = board().map().tdata()->get_terrain_info(terrain);
+		if (!base.id().empty()) {
+			lua_pushstring(L, t_translation::write_terrain_code(base.number()).c_str());
+			lua_rawseti(L, -2, idx++);
+		}
+	}
+	lua_setfield(L, -2, "mvt_alias");
+
+	// defense alias
+	lua_newtable(L);
+	idx = 1;
+	for (const auto& terrain : info.def_type()) {
+		const terrain_type& base = board().map().tdata()->get_terrain_info(terrain);
+		if (!base.id().empty()) {
+			lua_pushstring(L, t_translation::write_terrain_code(base.number()).c_str());
+			lua_rawseti(L, -2, idx++);
+		}
+	}
+	lua_setfield(L, -2, "def_alias");
 
 	return 1;
 }
@@ -1470,7 +1494,7 @@ static int impl_mp_settings_get(lua_State* L)
 	if(lua_type(L, 2) == LUA_TNUMBER) {
 		// Simulates a WML table with one [options] child and a variable number of [addon] children
 		// TODO: Deprecate this -> mp_settings.options and mp_settings.addons
-		size_t i = luaL_checkinteger(L, 2);
+		std::size_t i = luaL_checkinteger(L, 2);
 		if(i == 1) {
 			lua_createtable(L, 2, 0);
 			lua_pushstring(L, "options");
@@ -1507,10 +1531,10 @@ static int impl_mp_settings_get(lua_State* L)
 		return_string_attrib("side_users", utils::join_map(settings.side_users));
 		return_int_attrib("experience_modifier", settings.xp_modifier);
 		return_bool_attrib("mp_countdown", settings.mp_countdown);
-		return_int_attrib("mp_countdown_init_time", settings.mp_countdown_init_time);
-		return_int_attrib("mp_countdown_turn_bonus", settings.mp_countdown_turn_bonus);
-		return_int_attrib("mp_countdown_reservoir_bonus", settings.mp_countdown_reservoir_time);
-		return_int_attrib("mp_countdown_action_bonus", settings.mp_countdown_action_bonus);
+		return_int_attrib("mp_countdown_init_time", settings.mp_countdown_init_time.count());
+		return_int_attrib("mp_countdown_turn_bonus", settings.mp_countdown_turn_bonus.count());
+		return_int_attrib("mp_countdown_reservoir_bonus", settings.mp_countdown_reservoir_time.count());
+		return_int_attrib("mp_countdown_action_bonus", settings.mp_countdown_action_bonus.count());
 		return_int_attrib("mp_num_turns", settings.num_turns);
 		return_int_attrib("mp_village_gold", settings.village_gold);
 		return_int_attrib("mp_village_support", settings.village_support);
@@ -1686,11 +1710,11 @@ SCENARIO_SETTER("end_text", t_string) {
 }
 
 SCENARIO_GETTER("end_text_duration", int) {
-	return k.cls().end_text_duration;
+	return k.cls().end_text_duration.count();
 }
 
 SCENARIO_SETTER("end_text_duration", int) {
-	k.cls().end_text_duration = value;
+	k.cls().end_text_duration = std::chrono::milliseconds{value};
 }
 
 SCENARIO_VALID("campaign") {
@@ -1879,6 +1903,10 @@ CURRENT_GETTER("map", lua_index_raw) {
 CURRENT_GETTER("schedule", lua_index_raw) {
 	k.push_schedule(L);
 	return lua_index_raw(L);
+}
+
+CURRENT_GETTER("user_is_replaying", bool) {
+	return k.pc().is_replay();
 }
 
 CURRENT_GETTER("event_context", config) {
@@ -2498,7 +2526,7 @@ static int impl_floating_label_getmethod(lua_State* L)
 int game_lua_kernel::intf_remove_floating_label(lua_State* L)
 {
 	int* handle = luaW_check_floating_label(L, 1);
-	int fade = luaL_optinteger(L, 2, -1);
+	std::chrono::milliseconds fade{luaL_optinteger(L, 2, -1)};
 	if(*handle != 0) {
 		// Passing -1 as the second argument means it uses the fade time that was set when the label was created
 		font::remove_floating_label(*handle, fade);
@@ -2517,8 +2545,10 @@ int game_lua_kernel::intf_move_floating_label(lua_State* L)
 }
 
 /**
- * Arg 1: text - string
- * Arg 2: options table
+ * Create a new floating label or replace an existing one.
+ * Arg 1: label handle to be replaced (optional). If unspecified, a new floating label is created.
+ * Arg 2: text - string
+ * Arg 3: options table
  * - size: font size
  * - max_width: max width for word wrapping
  * - color: font color
@@ -2533,7 +2563,19 @@ int game_lua_kernel::intf_move_floating_label(lua_State* L)
  */
 int game_lua_kernel::intf_set_floating_label(lua_State* L, bool spawn)
 {
-	t_string text = luaW_checktstring(L, 1);
+	int idx = 1;
+	int* handle = nullptr;
+	if(spawn) {
+		// Creating a new label, allocate a new handle
+		handle = new(L)int();
+	} else {
+		// First argument is the label handle
+		handle = luaW_check_floating_label(L, idx);
+		idx++;
+	}
+	int handle_idx = lua_gettop(L);
+
+	t_string text = luaW_checktstring(L, idx);
 	int size = font::SIZE_SMALL;
 	int width = 0;
 	double width_ratio = 0;
@@ -2544,11 +2586,11 @@ int game_lua_kernel::intf_set_floating_label(lua_State* L, bool spawn)
 	// everything needed to read in a pair of coordinates.
 	// Depending on the chosen alignment, it may be relative to centre, an edge centre, or a corner.
 	map_location loc{0, 0, wml_loc()};
-	if(lua_istable(L, 2)) {
-		if(luaW_tableget(L, 2, "size")) {
+	if(lua_istable(L, idx+1)) {
+		if(luaW_tableget(L, idx+1, "size")) {
 			size = luaL_checkinteger(L, -1);
 		}
-		if(luaW_tableget(L, 2, "max_width")) {
+		if(luaW_tableget(L, idx+1, "max_width")) {
 			int found_number;
 			width = lua_tointegerx(L, -1, &found_number);
 			if(!found_number) {
@@ -2564,7 +2606,7 @@ int game_lua_kernel::intf_set_floating_label(lua_State* L, bool spawn)
 
 			}
 		}
-		if(luaW_tableget(L, 2, "color")) {
+		if(luaW_tableget(L, idx+1, "color")) {
 			if(lua_isstring(L, -1)) {
 				color = color_t::from_hex_string(lua_tostring(L, -1));
 			} else {
@@ -2585,7 +2627,7 @@ int game_lua_kernel::intf_set_floating_label(lua_State* L, bool spawn)
 				}
 			}
 		}
-		if(luaW_tableget(L, 2, "bgcolor")) {
+		if(luaW_tableget(L, idx+1, "bgcolor")) {
 			if(lua_isstring(L, -1)) {
 				bgcolor = color_t::from_hex_string(lua_tostring(L, -1));
 			} else {
@@ -2606,11 +2648,11 @@ int game_lua_kernel::intf_set_floating_label(lua_State* L, bool spawn)
 				}
 				bgcolor.a = ALPHA_OPAQUE;
 			}
-			if(luaW_tableget(L, 2, "bgalpha")) {
+			if(luaW_tableget(L, idx+1, "bgalpha")) {
 				bgcolor.a = luaL_checkinteger(L, -1);
 			}
 		}
-		if(luaW_tableget(L, 2, "duration")) {
+		if(luaW_tableget(L, idx+1, "duration")) {
 			int found_number;
 			lifetime = lua_tointegerx(L, -1, &found_number);
 			if(!found_number) {
@@ -2622,37 +2664,27 @@ int game_lua_kernel::intf_set_floating_label(lua_State* L, bool spawn)
 				}
 			}
 		}
-		if(luaW_tableget(L, 2, "fade_time")) {
+		if(luaW_tableget(L, idx+1, "fade_time")) {
 			fadeout = lua_tointeger(L, -1);
 		}
-		if(luaW_tableget(L, 2, "location")) {
+		if(luaW_tableget(L, idx+1, "location")) {
 			loc = luaW_checklocation(L, -1);
 		}
-		if(luaW_tableget(L, 2, "halign")) {
+		if(luaW_tableget(L, idx+1, "halign")) {
 			static const char* options[] = {"left", "center", "right"};
 			alignment = font::ALIGN(luaL_checkoption(L, -1, nullptr, options));
 		}
-		if(luaW_tableget(L, 2, "valign")) {
+		if(luaW_tableget(L, idx+1, "valign")) {
 			static const char* options[] = {"top", "center", "bottom"};
 			vertical_alignment = font::ALIGN(luaL_checkoption(L, -1, nullptr, options));
 		}
 	}
 
-	int* handle = nullptr;
-	if(spawn) {
-		// Creating a new label, allocate a new handle
-		handle = new(L)int();
-	} else {
-		// First argument is the label handle
-		handle = luaW_check_floating_label(L, 1);
-	}
-	int handle_idx = lua_gettop(L);
-
 	if(*handle != 0) {
 		font::remove_floating_label(*handle);
 	}
 
-	SDL_Rect rect = game_display_->map_outside_area();
+	const rect rect = game_display_->map_outside_area();
 	if(width_ratio > 0) {
 		width = static_cast<int>(std::round(rect.w * width_ratio));
 	}
@@ -2660,23 +2692,12 @@ int game_lua_kernel::intf_set_floating_label(lua_State* L, bool spawn)
 	switch(alignment) {
 		case font::ALIGN::LEFT_ALIGN:
 			x = rect.x + loc.wml_x();
-			if(width > 0) {
-				rect.w = std::min(rect.w, width);
-			}
 			break;
 		case font::ALIGN::CENTER_ALIGN:
 			x = rect.x + rect.w / 2 + loc.wml_x();
-			if(width > 0) {
-				rect.w = std::min(rect.w, width);
-				rect.x = x - rect.w / 2;
-			}
 			break;
 		case font::ALIGN::RIGHT_ALIGN:
 			x = rect.x + rect.w - loc.wml_x();
-			if(width > 0) {
-				rect.x = (rect.x + rect.w) - std::min(rect.w, width);
-				rect.w = std::min(rect.w, width);
-			}
 			break;
 	}
 	switch(vertical_alignment) {
@@ -2695,14 +2716,22 @@ int game_lua_kernel::intf_set_floating_label(lua_State* L, bool spawn)
 			break;
 	}
 
+	using std::chrono::milliseconds;
 	font::floating_label flabel(text);
 	flabel.set_font_size(size);
 	flabel.set_color(color);
 	flabel.set_bg_color(bgcolor);
 	flabel.set_alignment(alignment);
 	flabel.set_position(x, y);
-	flabel.set_lifetime(lifetime, fadeout);
+	flabel.set_lifetime(milliseconds{lifetime}, milliseconds{fadeout});
 	flabel.set_clip_rect(rect);
+
+	// Adjust fallback width (map area) to avoid text escaping when location != 0
+	if(width > 0) {
+		flabel.set_width(std::min(width, rect.w - loc.wml_x()));
+	} else {
+		flabel.set_width(rect.w - loc.wml_x());
+	}
 
 	*handle = font::add_floating_label(flabel);
 	lua_settop(L, handle_idx);
@@ -2768,6 +2797,7 @@ int game_lua_kernel::intf_put_unit(lua_State *L)
 		put_unit_helper(loc);
 		u.put_map(loc);
 		u.get_shared()->anim_comp().set_standing();
+		u->anim_comp().reset_affect_adjacent(units());
 	} else if(!lua_isnoneornil(L, 1)) {
 		const vconfig* vcfg = nullptr;
 		config cfg = luaW_checkconfig(L, 1, vcfg);
@@ -2783,6 +2813,7 @@ int game_lua_kernel::intf_put_unit(lua_State *L)
 		put_unit_helper(loc);
 		u->set_location(loc);
 		units().insert(u);
+		u->anim_comp().reset_affect_adjacent(units());
 	}
 
 	// Fire event if using the deprecated version or if the final argument is not false
@@ -2811,6 +2842,7 @@ int game_lua_kernel::intf_erase_unit(lua_State *L)
 			if (!map().on_board(loc)) {
 				return luaL_argerror(L, 1, "invalid location");
 			}
+			u->anim_comp().reset_affect_adjacent(units());
 		} else if (int side = u.on_recall_list()) {
 			team &t = board().get_team(side);
 			// Should it use underlying ID instead?
@@ -2873,6 +2905,7 @@ int game_lua_kernel::intf_put_recall_unit(lua_State *L)
 			units().erase(u->get_location());
 			resources::whiteboard->on_kill_unit();
 			u->anim_comp().clear_haloes();
+			u->anim_comp().reset_affect_adjacent(units());
 		}
 		lu->lua_unit::~lua_unit();
 		new(lu) lua_unit(side, uid);
@@ -2897,6 +2930,7 @@ int game_lua_kernel::intf_extract_unit(lua_State *L)
 		u = units().extract(u->get_location());
 		assert(u);
 		u->anim_comp().clear_haloes();
+		u->anim_comp().reset_affect_adjacent(units());
 	} else if (int side = lu->on_recall_list()) {
 		team &t = board().get_team(side);
 		unit_ptr v = u->clone();
@@ -2929,6 +2963,9 @@ int game_lua_kernel::intf_find_vacant_tile(lua_State *L)
 			const vconfig* vcfg = nullptr;
 			config cfg = luaW_checkconfig(L, 2, vcfg);
 			u = unit::create(cfg, false, vcfg);
+			if (u->get_location().valid()) {
+				u->anim_comp().reset_affect_adjacent(units());
+			}
 		}
 	}
 
@@ -2962,6 +2999,25 @@ int game_lua_kernel::intf_float_label(lua_State *L)
 	return 0;
 }
 
+namespace
+{
+	const unit_map& get_unit_map()
+	{
+		// Used if we're in the game, including during the construction of the display_context
+		if(resources::gameboard) {
+			return resources::gameboard->units();
+		}
+
+		// If we get here, we're in the scenario editor
+		assert(display::get_singleton());
+		return display::get_singleton()->context().units();
+	}
+	void reset_affect_adjacent(const unit& unit)
+	{
+		unit.anim_comp().reset_affect_adjacent(get_unit_map());
+	}
+}
+
 /**
  * Creates a unit from its WML description.
  * - Arg 1: WML table.
@@ -2973,6 +3029,9 @@ static int intf_create_unit(lua_State *L)
 	config cfg = luaW_checkconfig(L, 1, vcfg);
 	unit_ptr u  = unit::create(cfg, true, vcfg);
 	luaW_pushunit(L, u);
+	if (u->get_location().valid()) {
+		reset_affect_adjacent(*u);
+	}
 	return 1;
 }
 
@@ -3132,6 +3191,9 @@ static int intf_transform_unit(lua_State *L)
 		utp = &utp->get_variation(m2);
 	}
 	u.advance_to(*utp);
+	if (u.get_location().valid()) {
+		reset_affect_adjacent(u);
+	}
 
 	return 0;
 }
@@ -3564,7 +3626,7 @@ int game_lua_kernel::intf_select_unit(lua_State *L)
 {
 	events::command_disabler command_disabler;
 	if(lua_isnoneornil(L, 1)) {
-		play_controller_.get_mouse_handler_base().select_hex(map_location::null_location(), false, false, false);
+		play_controller_.get_mouse_handler_base().select_hex(map_location::null_location(), false, false, false, true);
 		return 0;
 	}
 	const map_location loc = luaW_checklocation(L, 1);
@@ -4211,10 +4273,10 @@ int game_lua_kernel::intf_add_undo_actions(lua_State *L)
 {
 	config cfg;
 	if(luaW_toconfig(L, 1, cfg)) {
-		synced_context::add_undo_commands(cfg, get_event_info());
+		game_state_.undo_stack_->add_custom<actions::undo_event>(cfg, get_event_info());
 	} else {
 		luaW_toconfig(L, 2, cfg);
-		synced_context::add_undo_commands(save_wml_event(1), cfg, get_event_info());
+		game_state_.undo_stack_->add_custom<actions::undo_event>(save_wml_event(1), cfg, get_event_info());
 	}
 	return 0;
 }
@@ -4317,7 +4379,7 @@ int game_lua_kernel::cfun_undoable_event(lua_State* L)
 	lua_pushvalue(L, lua_upvalueindex(1));
 	lua_push(L, 1);
 	luaW_pcall(L, 1, 0);
-	synced_context::add_undo_commands(lua_upvalueindex(2), get_event_info());
+	game_state_.undo_stack_->add_custom<actions::undo_event>(lua_upvalueindex(2), config(), get_event_info());
 	return 0;
 }
 
@@ -4411,7 +4473,7 @@ int game_lua_kernel::intf_screen_fade(lua_State *L)
 			return luaW_type_error(L, 1, "array of 4 integers");
 		}
 		color_t fade{vec[0], vec[1], vec[2], vec[3]};
-		game_display_->fade_to(fade, luaL_checkinteger(L, 2));
+		game_display_->fade_to(fade, std::chrono::milliseconds{luaL_checkinteger(L, 2)});
 	}
 	return 0;
 }
@@ -4428,19 +4490,20 @@ int game_lua_kernel::intf_delay(lua_State *L)
 		return 0;
 	}
 	events::command_disabler command_disabler;
-	lua_Integer delay = luaL_checkinteger(L, 1);
-	if(delay == 0) {
-		play_controller_.play_slice(false);
+	using namespace std::chrono_literals;
+	std::chrono::milliseconds delay{luaL_checkinteger(L, 1)};
+	if(delay == 0ms) {
+		play_controller_.play_slice();
 		return 0;
 	}
 	if(luaW_toboolean(L, 2) && game_display_ && game_display_->turbo_speed() > 0) {
 		delay /= game_display_->turbo_speed();
 	}
-	const unsigned final = SDL_GetTicks() + delay;
+	const auto end_time = std::chrono::steady_clock::now() + delay;
 	do {
-		play_controller_.play_slice(false);
-		SDL_Delay(10);
-	} while (static_cast<int>(final - SDL_GetTicks()) > 0);
+		play_controller_.play_slice();
+		std::this_thread::sleep_for(10ms);
+	} while (std::chrono::steady_clock::now() < end_time);
 	return 0;
 }
 
@@ -4492,7 +4555,7 @@ int game_lua_kernel::intf_get_label(lua_State* L)
 				break;
 			// Side number - get label belonging to that side's team
 			case LUA_TNUMBER:
-				if(size_t n = luaL_checkinteger(L, 2); n > 0 && n <= teams().size()) {
+				if(std::size_t n = luaL_checkinteger(L, 2); n > 0 && n <= teams().size()) {
 					label = screen.labels().get_label(loc, teams().at(n - 1).team_name());
 				}
 				break;
@@ -4621,13 +4684,7 @@ static void push_component(lua_State *L, ai::component* c, const std::string &ct
 		lua_rawset(L, -3);
 	}
 
-
-	std::vector<std::string> c_types = c->get_children_types();
-
-	for (std::vector<std::string>::const_iterator t = c_types.begin(); t != c_types.end(); ++t)
-	{
-		std::vector<ai::component*> children = c->get_children(*t);
-		std::string type = *t;
+	for(const std::string& type : c->get_children_types()) {
 		if (type == "aspect" || type == "goal" || type == "engine")
 		{
 			continue;
@@ -4636,10 +4693,9 @@ static void push_component(lua_State *L, ai::component* c, const std::string &ct
 		lua_pushstring(L, type.c_str());
 		lua_createtable(L, 0, 0); // this table will be on top of the stack during recursive calls
 
-		for (std::vector<ai::component*>::const_iterator i = children.begin(); i != children.end(); ++i)
-		{
-			lua_pushstring(L, (*i)->get_name().c_str());
-			push_component(L, *i, type);
+		for(ai::component* child : c->get_children(type)) {
+			lua_pushstring(L, child->get_name().c_str());
+			push_component(L, child, type);
 			lua_rawset(L, -3);
 
 			//if (type == "candidate_action")
@@ -4651,8 +4707,6 @@ static void push_component(lua_State *L, ai::component* c, const std::string &ct
 
 		lua_rawset(L, -3); // setting the child table
 	}
-
-
 }
 
 /**
@@ -4676,13 +4730,10 @@ static int intf_debug_ai(lua_State *L)
 	ai::component* c = ai::manager::get_singleton().get_active_ai_holder_for_side_dbg(side).get_component(nullptr, "");
 
 	// Bad, but works
-	std::vector<ai::component*> engines = c->get_children("engine");
 	ai::engine_lua* lua_engine = nullptr;
-	for (std::vector<ai::component*>::const_iterator i = engines.begin(); i != engines.end(); ++i)
-	{
-		if ((*i)->get_name() == "lua")
-		{
-			lua_engine = dynamic_cast<ai::engine_lua *>(*i);
+	for(ai::component* engine : c->get_children("engine")) {
+		if(engine->get_name() == "lua") {
+			lua_engine = dynamic_cast<ai::engine_lua*>(engine);
 		}
 	}
 
@@ -4858,11 +4909,9 @@ int game_lua_kernel::intf_replace_schedule(lua_State * L)
 
 int game_lua_kernel::intf_scroll(lua_State * L)
 {
-	int x = luaL_checkinteger(L, 1);
-	int y = luaL_checkinteger(L, 2);
-
 	if (game_display_) {
-		game_display_->scroll(x, y, true);
+		point scroll_to(luaL_checkinteger(L, 1), luaL_checkinteger(L, 2));
+		game_display_->scroll(scroll_to, true);
 
 		lua_remove(L, 1);
 		lua_remove(L, 1);
@@ -4899,7 +4948,7 @@ namespace {
 /**
  * Executes its upvalue as a theme item generator.
  */
-int game_lua_kernel::impl_theme_item(lua_State *L, std::string m)
+int game_lua_kernel::impl_theme_item(lua_State *L, const std::string& m)
 {
 	reports::context temp_context = reports::context(board(), *game_display_, tod_man(), play_controller_.get_whiteboard(), play_controller_.get_mouse_handler_base());
 	luaW_pushconfig(L, reports_.generate_report(m.c_str(), temp_context , true));
@@ -5237,11 +5286,11 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 		{ "get_era",                  &intf_get_era                  },
 		{ "get_resource",             &intf_get_resource             },
 		{ "modify_ai",                &intf_modify_ai_old            },
-		{ "cancel_action",             &dispatch<&game_lua_kernel::intf_cancel_action              >        },
-		{ "log_replay",                &dispatch<&game_lua_kernel::intf_log_replay                 >        },
-		{ "log",                       &dispatch<&game_lua_kernel::intf_log                        >        },
-		{ "redraw",                    &dispatch<&game_lua_kernel::intf_redraw                     >        },
-		{ "simulate_combat",           &dispatch<&game_lua_kernel::intf_simulate_combat            >        },
+		{ "cancel_action",            &dispatch<&game_lua_kernel::intf_cancel_action              >        },
+		{ "log_replay",               &dispatch<&game_lua_kernel::intf_log_replay                 >        },
+		{ "log",                      &dispatch<&game_lua_kernel::intf_log                        >        },
+		{ "redraw",                   &dispatch<&game_lua_kernel::intf_redraw                     >        },
+		{ "simulate_combat",          &dispatch<&game_lua_kernel::intf_simulate_combat            >        },
 		{ nullptr, nullptr }
 	};lua_getglobal(L, "wesnoth");
 	if (!lua_istable(L,-1)) {
@@ -5254,6 +5303,10 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 	lua_getglobal(L, "gui");
 	lua_pushcfunction(L, &dispatch<&game_lua_kernel::intf_gamestate_inspector>);
 	lua_setfield(L, -2, "show_inspector");
+	lua_pushcfunction(L, &lua_gui2::intf_show_recruit_dialog);
+	lua_setfield(L, -2, "show_recruit_dialog");
+	lua_pushcfunction(L, &lua_gui2::intf_show_recall_dialog);
+	lua_setfield(L, -2, "show_recall_dialog");
 	lua_pop(L, 1);
 
 	if(play_controller_.get_classification().is_test()) {
@@ -5286,10 +5339,10 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 	// Create the unit_types table
 	cmd_log_ << lua_unit_type::register_table(L);
 
-	// Create the unit_types table
+	// Create the terrainmap metatables
 	cmd_log_ << lua_terrainmap::register_metatables(L);
 
-	// Create the unit_types table
+	// Create the terrain_types table
 	cmd_log_ << "Adding terrain_types table...\n";
 	lua_getglobal(L, "wesnoth");
 	lua_newuserdatauv(L, 0, 0);

@@ -863,6 +863,7 @@ end
 ---@param avoid_map? location_set If given, the hexes in avoid_map are excluded
 ---@return terrain_hex?
 function ai_helper.get_closest_location(hex, location_filter, unit, avoid_map)
+    hex = wesnoth.map.get(hex)
     -- Find the maximum distance from 'hex' that's possible on the map
     local max_distance = 0
     local map = wesnoth.current.map

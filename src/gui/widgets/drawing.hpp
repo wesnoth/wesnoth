@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2024
+	Copyright (C) 2010 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -38,12 +38,12 @@ public:
 
 	void set_drawing_data(const ::config& cfg)
 	{
-		get_drawing_canvas().set_cfg(cfg);
+		get_drawing_canvas().set_shapes(cfg);
 	}
 
 	void append_drawing_data(const ::config& cfg)
 	{
-		get_drawing_canvas().append_cfg(cfg);
+		get_drawing_canvas().append_shapes(cfg);
 	}
 
 	/***** ***** ***** ***** layout functions ***** ***** ***** *****/

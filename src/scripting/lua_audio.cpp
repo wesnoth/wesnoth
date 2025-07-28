@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2017 - 2024
+	Copyright (C) 2017 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -15,14 +15,15 @@
 #include "lua_audio.hpp"
 
 #include "log.hpp"
+#include "preferences/preferences.hpp"
+#include "resources.hpp"
 #include "scripting/lua_common.hpp"
 #include "scripting/push_check.hpp"
 #include "sound.hpp"
 #include "sound_music_track.hpp"
-#include "preferences/preferences.hpp"
-#include "resources.hpp"
 #include "soundsource.hpp"
 #include <set>
+#include <utility>
 
 static lg::log_domain log_audio("audio");
 #define DBG_AUDIO LOG_STREAM(debug, log_audio)
@@ -35,11 +36,7 @@ static const char* Source = "sound source";
 class lua_music_track {
 	std::shared_ptr<sound::music_track> track;
 public:
-	explicit lua_music_track(int i) : track(sound::get_track(i)) {}
-	explicit lua_music_track(std::shared_ptr<sound::music_track> new_track) : track(new_track) {}
-	bool valid() const {
-		return track && track->valid();
-	}
+	explicit lua_music_track(std::shared_ptr<sound::music_track>&& new_track) : track(std::move(new_track)) {}
 	sound::music_track& operator*() {
 		return *track;
 	}
@@ -54,16 +51,15 @@ public:
 	}
 };
 
-static lua_music_track* push_track(lua_State* L, int i) {
-	lua_music_track* trk = new(L) lua_music_track(i);
-	luaL_setmetatable(L, Track);
-	return trk;
-}
-
-static lua_music_track* push_track(lua_State* L, std::shared_ptr<sound::music_track> new_track) {
-	lua_music_track* trk = new(L) lua_music_track(new_track);
-	luaL_setmetatable(L, Track);
-	return trk;
+static lua_music_track* push_track(lua_State* L, std::shared_ptr<sound::music_track>&& new_track) {
+	if(new_track) {
+		lua_music_track* trk = new(L) lua_music_track(std::move(new_track));
+		luaL_setmetatable(L, Track);
+		return trk;
+	} else {
+		lua_pushnil(L);
+		return nullptr;
+	}
 }
 
 static lua_music_track* get_track(lua_State* L, int i) {
@@ -111,7 +107,7 @@ static int impl_track_collect(lua_State* L)
 
 static int impl_music_get(lua_State* L) {
 	if(lua_isnumber(L, 2)) {
-		push_track(L, lua_tointeger(L, 2) - 1);
+		push_track(L, sound::get_track(lua_tointeger(L, 2) - 1));
 		return 1;
 	}
 	const char* m = luaL_checkstring(L, 2);
@@ -271,16 +267,12 @@ static int impl_track_get(lua_State* L) {
 		return luaL_error(L, "Error: Attempted to access an invalid music track.\n");
 	}
 	const char* m = luaL_checkstring(L, 2);
-	return_bool_attrib("valid", track->valid());
-	if(!track->valid()) {
-		return luaL_error(L, "Tried to access member of track that is no longer valid.");
-	}
 	return_bool_attrib("append", (*track)->append());
 	return_bool_attrib("shuffle", (*track)->shuffle());
 	return_bool_attrib("immediate", (*track)->immediate());
 	return_bool_attrib("once", (*track)->play_once());
-	return_int_attrib("ms_before", (*track)->ms_before());
-	return_int_attrib("ms_after", (*track)->ms_after());
+	return_int_attrib("ms_before", (*track)->ms_before().count());
+	return_int_attrib("ms_after", (*track)->ms_after().count());
 	return_string_attrib("name", (*track)->id());
 	return_string_attrib("title", (*track)->title());
 
@@ -299,14 +291,14 @@ static int impl_track_get(lua_State* L) {
 
 static int impl_track_set(lua_State* L) {
 	lua_music_track* track = get_track(L, 1);
-	if(track == nullptr || !track->valid()) {
+	if(track == nullptr) {
 		return luaL_error(L, "Error: Attempted to access an invalid music track.\n");
 	}
 	const char* m = luaL_checkstring(L, 2);
 	modify_bool_attrib("shuffle", (*track)->set_shuffle(value));
 	modify_bool_attrib("once", (*track)->set_play_once(value));
-	modify_int_attrib("ms_before", (*track)->set_ms_before(value));
-	modify_int_attrib("ms_after", (*track)->set_ms_after(value));
+	modify_int_attrib("ms_before", (*track)->set_ms_before(std::chrono::milliseconds{value}));
+	modify_int_attrib("ms_after", (*track)->set_ms_after(std::chrono::milliseconds{value}));
 	modify_string_attrib("title", (*track)->set_title(value));
 	return 0;
 }
@@ -320,17 +312,9 @@ static int impl_track_eq(lua_State* L) {
 		lua_pushboolean(L, false);
 		return 1;
 	}
-	if(!a->valid() && !b->valid()) {
-		lua_pushboolean(L, true);
-		return 1;
-	}
-	if(a->valid() && b->valid()) {
-		lua_music_track& lhs = *a;
-		lua_music_track& rhs = *b;
-		lua_pushboolean(L, lhs->id() == rhs->id() && lhs->shuffle() == rhs->shuffle() && lhs->play_once() == rhs->play_once() && lhs->ms_before() == rhs->ms_before() && lhs->ms_after() == rhs->ms_after());
-		return 1;
-	}
-	lua_pushboolean(L, false);
+	lua_music_track& lhs = *a;
+	lua_music_track& rhs = *b;
+	lua_pushboolean(L, lhs->id() == rhs->id() && lhs->shuffle() == rhs->shuffle() && lhs->play_once() == rhs->play_once() && lhs->ms_before() == rhs->ms_before() && lhs->ms_after() == rhs->ms_after());
 	return 1;
 }
 
@@ -387,7 +371,7 @@ static int impl_source_get(lua_State* L) {
 	const char* m = luaL_checkstring(L, 2);
 	return_string_attrib("id", src->id());
 	return_vector_string_attrib("sounds", utils::split(src->files()));
-	return_int_attrib("delay", src->minimum_delay());
+	return_int_attrib("delay", src->minimum_delay().count());
 	return_int_attrib("chance", src->chance());
 	return_int_attrib("loop", src->loops());
 	return_int_attrib("range", src->full_range());
@@ -411,7 +395,7 @@ static int impl_source_get(lua_State* L) {
 static int impl_source_set(lua_State* L) {
 	lua_sound_source& src = get_source(L, 1);
 	const char* m = luaL_checkstring(L, 2);
-	modify_int_attrib("delay", src->set_minimum_delay(value));
+	modify_int_attrib("delay", src->set_minimum_delay(std::chrono::milliseconds{value}));
 	modify_int_attrib("chance", src->set_chance(value));
 	modify_int_attrib("loop", src->set_loops(value));
 	modify_int_attrib("range", src->set_full_range(value));

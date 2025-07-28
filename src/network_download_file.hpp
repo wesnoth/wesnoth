@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -24,5 +24,6 @@ namespace network
 	 * @param url The URL of the file to download.
 	 * @param local_path The path on the local machine to store the file at.
 	 */
-    void download(const std::string& url, const std::string& local_path);
+	void gui_download(const std::string& url, const std::string& local_path);
+	bool download(const std::string& url, const std::string& local_path);
 }

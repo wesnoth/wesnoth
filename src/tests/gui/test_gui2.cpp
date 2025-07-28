@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2024
+	Copyright (C) 2009 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -34,6 +34,7 @@
 #include "gettext.hpp"
 #include "gui/core/layout_exception.hpp"
 #include "gui/dialogs/addon/addon_auth.hpp"
+#include "gui/dialogs/addon/addon_server_info.hpp"
 #include "gui/dialogs/addon/connect.hpp"
 #include "gui/dialogs/addon/install_dependencies.hpp"
 #include "gui/dialogs/addon/license_prompt.hpp"
@@ -101,6 +102,7 @@
 #include "gui/dialogs/prompt.hpp"
 #include "gui/dialogs/screenshot_notification.hpp"
 #include "gui/dialogs/select_orb_colors.hpp"
+#include "gui/dialogs/reachmap_options.hpp"
 #include "gui/dialogs/simple_item_selector.hpp"
 #include "gui/dialogs/sp_options_configure.hpp"
 #include "gui/dialogs/statistics_dialog.hpp"
@@ -113,10 +115,7 @@
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/dialogs/unit_advance.hpp"
 #include "gui/dialogs/unit_attack.hpp"
-#include "gui/dialogs/unit_create.hpp"
-#include "gui/dialogs/unit_list.hpp"
-#include "gui/dialogs/unit_recall.hpp"
-#include "gui/dialogs/unit_recruit.hpp"
+#include "gui/dialogs/units_dialog.hpp"
 #include "gui/dialogs/wml_error.hpp"
 #include "gui/dialogs/wml_message.hpp"
 #include "gui/widgets/settings.hpp"
@@ -250,10 +249,6 @@ namespace {
 		bool interact = false;
 		for(int i = 0; i < 2; ++i) {
 			for(const resolution& resolution : resolutions) {
-				// debug clock doesn't work at 800x600
-				if(resolution.first == 800 && resolution.second == 600) {
-					continue;
-				}
 				test_utils::get_fake_display(resolution.first, resolution.second);
 
 				dialog_tester<T> ctor;
@@ -341,7 +336,6 @@ namespace {
 const resolution_list& get_gui_resolutions()
 {
 	static resolution_list result {
-		{800,  600},
 		{1024, 768},
 		{1280, 1024},
 		{1680, 1050},
@@ -589,6 +583,10 @@ BOOST_AUTO_TEST_CASE(modal_dialog_test_select_orb_colors)
 {
 	test<select_orb_colors>();
 }
+BOOST_AUTO_TEST_CASE(modal_dialog_test_reachmap_options)
+{
+	test<reachmap_options>();
+}
 BOOST_AUTO_TEST_CASE(modal_dialog_test_statistics_dialog)
 {
 	test<statistics_dialog>();
@@ -604,10 +602,6 @@ BOOST_AUTO_TEST_CASE(modal_dialog_test_theme_list)
 BOOST_AUTO_TEST_CASE(modal_dialog_test_transient_message)
 {
 	test<transient_message>();
-}
-BOOST_AUTO_TEST_CASE(modal_dialog_test_unit_create)
-{
-	test<unit_create>();
 }
 BOOST_AUTO_TEST_CASE(modal_dialog_test_wml_error)
 {
@@ -628,6 +622,10 @@ BOOST_AUTO_TEST_CASE(modal_dialog_test_wml_message_double)
 BOOST_AUTO_TEST_CASE(modal_dialog_test_achievements_dialog)
 {
 	test<achievements_dialog>();
+}
+BOOST_AUTO_TEST_CASE(modal_dialog_test_addon_server_info)
+{
+	test<addon_server_info>();
 }
 BOOST_AUTO_TEST_CASE(modal_dialog_test_mp_match_history_dialog)
 {
@@ -686,9 +684,7 @@ BOOST_AUTO_TEST_CASE(test_last)
 		"synched_choice_wait",
 		"drop_down_menu",
 		"preferences_dialog",
-		"unit_recruit",
-		"unit_recall",
-		"unit_list",
+		"units_dialog",
 		"unit_advance",
 		"mp_host_game_prompt",
 		"mp_create_game",
@@ -710,6 +706,7 @@ BOOST_AUTO_TEST_CASE(test_last)
 		"campaign_selection",// segfault with LTO
 		"game_load",// segfault after disabling the above tests
 		"file_progress",
+		"fps_report", // needs something to report...
 	};
 	filesystem::delete_file(test_gui2_fixture::widgets_file);
 
@@ -750,6 +747,18 @@ BOOST_AUTO_TEST_CASE(test_make_test_fake)
 BOOST_AUTO_TEST_SUITE_END()
 
 namespace {
+
+template<>
+struct dialog_tester<addon_server_info>
+{
+	std::string s = "";
+	bool b = false;
+	addon_server_info* create()
+	{
+		addons_client client("localhost:15999");
+		return new addon_server_info(client, s, b);
+	}
+};
 
 template<>
 struct dialog_tester<addon_auth>
@@ -1095,7 +1104,7 @@ struct dialog_tester<gui2::dialogs::migrate_version_selection>
 };
 
 class fake_chat_handler : public events::chat_handler {
-	void add_chat_message(const std::time_t&,
+	void add_chat_message(const std::chrono::system_clock::time_point&,
 		const std::string&, int, const std::string&,
 		MESSAGE_TYPE) {}
 	void send_chat_message(const std::string&, bool) {}
@@ -1369,11 +1378,12 @@ struct dialog_tester<faction_select>
 {
 	config era_cfg, side_cfg;
 	std::vector<const config*> eras;
+	ng::era_metadata era;
 	ng::flg_manager flg;
 	std::string color;
 	dialog_tester()
-		: era_cfg(), side_cfg(), eras(1, &era_cfg) // TODO: Add an actual era definition
-		, flg(eras, side_cfg, false, false, false)
+		: era_cfg(), side_cfg(), eras(1, &era_cfg), era(era_cfg) // TODO: Add an actual era definition
+		, flg(era, eras, side_cfg, false, false, false)
 		, color("teal")
 	{}
 	faction_select* create() {
@@ -1398,12 +1408,10 @@ struct dialog_tester<sp_options_configure>
 {
 	saved_game state;
 	ng::create_engine create_eng;
-	ng::configure_engine config_eng;
-	dialog_tester() : create_eng(state)
-		, config_eng(create_eng.get_state()) {}
+	dialog_tester() : create_eng(state) {}
 	sp_options_configure* create()
 	{
-		return new sp_options_configure(create_eng, config_eng);
+		return new sp_options_configure(create_eng);
 	}
 };
 

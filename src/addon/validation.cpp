@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by Iris Morelle <shadowm2006@gmail.com>
 	Copyright (C) 2003 - 2008 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -69,6 +69,10 @@ bool addon_filename_legal(const std::string& name)
 	// This is allowed to change in the future. Do not remove this wrapper.
 	// I will hunt you down if you do.
 	return filesystem::is_legal_user_file_name(name, false);
+}
+
+bool addon_icon_too_large(const std::string& icon) {
+	return icon.size() > max_icon_size;
 }
 
 namespace {
@@ -500,6 +504,10 @@ std::string addon_check_status_desc(unsigned int code)
 		{
 			ADDON_CHECK_STATUS::AUTH_TYPE_MISMATCH,
 			N_("The add-on’s forum_auth attribute does not match what was previously uploaded.")
+		},
+		{
+			ADDON_CHECK_STATUS::ICON_TOO_LARGE,
+			N_("The add-on’s icon’s file size is too large.")
 		},
 
 		//

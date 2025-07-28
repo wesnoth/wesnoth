@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -22,11 +22,14 @@
 #include "game_display.hpp"
 #include "log.hpp"
 #include "pathutils.hpp"
+#include "serialization/unicode.hpp"
 
 #include <boost/algorithm/string.hpp>
 #include <boost/math/constants/constants.hpp>
 #include <cctype>
+#include <chrono>
 #include <deque>
+#include <utility>
 
 using namespace boost::math::constants;
 
@@ -237,7 +240,9 @@ namespace
 {
 void display_float(const map_location& location, const std::string& text)
 {
-	game_display::get_singleton()->float_label(location, text, color_t(255, 0, 0));
+	if(auto gd = game_display::get_singleton()) {
+		gd->float_label(location, text, color_t(255, 0, 0));
+	}
 }
 } // end anon namespace
 
@@ -245,7 +250,7 @@ DEFINE_WFL_FUNCTION(debug_float, 2, 3)
 {
 	const args_list& arguments = args();
 	const variant var0 = arguments[0]->evaluate(variables, fdb);
-	const variant var1 = arguments[1]->evaluate(variables, fdb);
+	variant var1 = arguments[1]->evaluate(variables, fdb);
 
 	const map_location location = var0.convert_to<location_callable>()->loc();
 	std::string text;
@@ -264,36 +269,25 @@ DEFINE_WFL_FUNCTION(debug_float, 2, 3)
 
 DEFINE_WFL_FUNCTION(debug_print, 1, 2)
 {
-	const variant var1 = args()[0]->evaluate(variables, fdb);
+	std::string speaker = "WFL";
+	int i_value = 0;
 
-	std::string str1, str2;
-
-	if(args().size() == 1) {
-		str1 = var1.to_debug_string(true);
-
-		LOG_SF << str1;
-
-		if(game_config::debug && game_display::get_singleton()) {
-			game_display::get_singleton()->get_chat_manager().add_chat_message(
-				std::time(nullptr), "WFL", 0, str1, events::chat_handler::MESSAGE_PUBLIC, false);
-		}
-
-		return var1;
-	} else {
-		str1 = var1.string_cast();
-
-		const variant var2 = args()[1]->evaluate(variables, fdb);
-		str2 = var2.to_debug_string(true);
-
-		LOG_SF << str1 << ": " << str2;
-
-		if(game_config::debug && game_display::get_singleton()) {
-			game_display::get_singleton()->get_chat_manager().add_chat_message(
-				std::time(nullptr), str1, 0, str2, events::chat_handler::MESSAGE_PUBLIC, false);
-		}
-
-		return var2;
+	if(args().size() == 2) {
+		speaker = args()[0]->evaluate(variables, fdb).string_cast();
+		i_value = 1;
 	}
+
+	variant value = args()[i_value]->evaluate(variables, fdb);
+	const std::string str = value.to_debug_string(true);
+
+	LOG_SF << speaker << ": " << str;
+
+	if(game_config::debug && game_display::get_singleton()) {
+		game_display::get_singleton()->get_chat_manager().add_chat_message(
+			std::chrono::system_clock::now(), speaker, 0, str, events::chat_handler::MESSAGE_PUBLIC, false);
+	}
+
+	return value;
 }
 
 DEFINE_WFL_FUNCTION(debug_profile, 1, 2)
@@ -307,22 +301,30 @@ DEFINE_WFL_FUNCTION(debug_profile, 1, 2)
 	}
 
 	const variant value = args()[i_value]->evaluate(variables, fdb);
-	long run_time = 0;
+	const int run_count = 1000;
+	std::chrono::steady_clock::duration run_time;
 
-	for(int i = 1; i < 1000; i++) {
-		const long start = SDL_GetTicks();
+	for(int i = 0; i < run_count; i++) {
+		const auto start = std::chrono::steady_clock::now();
 		args()[i_value]->evaluate(variables, fdb);
-		run_time += SDL_GetTicks() - start;
+		run_time += std::chrono::steady_clock::now() - start;
 	}
 
+	// Average execution time over all runs
+	auto average_ms = std::chrono::duration_cast<std::chrono::milliseconds>(run_time / run_count);
+
 	std::ostringstream str;
-	str << "Evaluated in " << (run_time / 1000.0) << " ms on average";
+#ifdef __cpp_lib_format
+	str << "Evaluated in " << average_ms << " on average";
+#else
+	str << "Evaluated in " << average_ms.count() << " ms on average";
+#endif
 
 	LOG_SF << speaker << ": " << str.str();
 
 	if(game_config::debug && game_display::get_singleton()) {
 		game_display::get_singleton()->get_chat_manager().add_chat_message(
-			std::time(nullptr), speaker, 0, str.str(), events::chat_handler::MESSAGE_PUBLIC, false);
+			std::chrono::system_clock::now(), speaker, 0, str.str(), events::chat_handler::MESSAGE_PUBLIC, false);
 	}
 
 	return value;
@@ -494,6 +496,13 @@ DEFINE_WFL_FUNCTION(insert, 3, 3)
 DEFINE_WFL_FUNCTION(length, 1, 1)
 {
 	return variant(args()[0]->evaluate(variables, fdb).as_string().length());
+}
+
+DEFINE_WFL_FUNCTION(byte_index, 2, 2)
+{
+	return variant(utf8::index(
+		args()[0]->evaluate(variables, fdb).as_string(),
+		args()[1]->evaluate(variables, fdb).as_int()));
 }
 
 DEFINE_WFL_FUNCTION(concatenate, 1, -1)
@@ -1075,7 +1084,7 @@ DEFINE_WFL_FUNCTION(zip, 1, -1)
 DEFINE_WFL_FUNCTION(reduce, 2, 3)
 {
 	const variant items = args()[0]->evaluate(variables, fdb);
-	const variant initial = args().size() == 2 ? variant() : args()[1]->evaluate(variables, fdb);
+	variant initial = args().size() == 2 ? variant() : args()[1]->evaluate(variables, fdb);
 
 	if(items.num_elements() == 0) {
 		return initial;
@@ -1309,6 +1318,36 @@ DEFINE_WFL_FUNCTION(distance_between, 2, 2)
 	return variant(distance_between(loc1, loc2));
 }
 
+DEFINE_WFL_FUNCTION(nearest_loc, 2, 2)
+{
+	const map_location loc = args()[0]
+		->evaluate(variables, add_debug_info(fdb, 0, "nearest_loc:location"))
+		.convert_to<location_callable>()
+		->loc();
+
+	const std::vector<variant> locations = args()[1]
+		->evaluate(variables, add_debug_info(fdb, 1, "nearest_loc:locations"))
+		.as_list();
+
+#ifdef __cpp_lib_ranges
+	auto nearest = std::ranges::min_element(locations, {},
+		[&](const variant& cmp) { return distance_between(loc, cmp.convert_to<location_callable>()->loc()); });
+#else
+	auto nearest = std::min_element(locations.begin(), locations.end(), [&](const variant& cmp1, const variant& cmp2) {
+		return std::less{}(
+			distance_between(loc, cmp1.convert_to<location_callable>()->loc()),
+			distance_between(loc, cmp2.convert_to<location_callable>()->loc())
+		);
+	});
+#endif
+
+	if(nearest != locations.end()) {
+		return variant(std::make_shared<location_callable>(nearest->convert_to<location_callable>()->loc()));
+	} else {
+		return variant();
+	}
+}
+
 DEFINE_WFL_FUNCTION(adjacent_locs, 1, 1)
 {
 	const map_location loc = args()[0]
@@ -1478,8 +1517,8 @@ formula_function_expression::formula_function_expression(const std::string& name
 		const_formula_ptr precondition,
 		const std::vector<std::string>& arg_names)
 	: function_expression(name, args, arg_names.size(), arg_names.size())
-	, formula_(formula)
-	, precondition_(precondition)
+	, formula_(std::move(formula))
+	, precondition_(std::move(precondition))
 	, arg_names_(arg_names)
 	, star_arg_(-1)
 {
@@ -1499,7 +1538,7 @@ variant formula_function_expression::execute(const formula_callable& variables, 
 
 	DBG_NG << indent << "executing '" << formula_->str() << "'";
 
-	const int begin_time = SDL_GetTicks();
+	const auto begin_time = std::chrono::steady_clock::now();
 	map_formula_callable callable;
 
 	for(std::size_t n = 0; n != arg_names_.size(); ++n) {
@@ -1523,8 +1562,8 @@ variant formula_function_expression::execute(const formula_callable& variables, 
 
 	variant res = formula_->evaluate(callable, fdb);
 
-	const int taken = SDL_GetTicks() - begin_time;
-	DBG_NG << indent << "returning: " << taken;
+	const auto taken = std::chrono::steady_clock::now() - begin_time;
+	DBG_NG << indent << "returning: " << taken.count();
 
 	indent.resize(indent.size() - 2);
 
@@ -1537,14 +1576,14 @@ function_expression_ptr user_formula_function::generate_function_expression(
 	return std::make_shared<formula_function_expression>(name_, args, formula_, precondition_, args_);
 }
 
-function_symbol_table::function_symbol_table(std::shared_ptr<function_symbol_table> parent)
+function_symbol_table::function_symbol_table(const std::shared_ptr<function_symbol_table>& parent)
 	: parent(parent ? parent : get_builtins())
 {
 }
 
 void function_symbol_table::add_function(const std::string& name, formula_function_ptr&& fcn)
 {
-	custom_formulas_.emplace(name, std::move(fcn));
+	custom_formulas_.insert_or_assign(name, std::move(fcn));
 }
 
 expression_ptr function_symbol_table::create_function(
@@ -1624,6 +1663,7 @@ std::shared_ptr<function_symbol_table> function_symbol_table::get_builtins()
 		DECLARE_WFL_FUNCTION(pair);
 		DECLARE_WFL_FUNCTION(loc);
 		DECLARE_WFL_FUNCTION(distance_between);
+		DECLARE_WFL_FUNCTION(nearest_loc);
 		DECLARE_WFL_FUNCTION(adjacent_locs);
 		DECLARE_WFL_FUNCTION(locations_in_radius);
 		DECLARE_WFL_FUNCTION(are_adjacent);
@@ -1641,6 +1681,7 @@ std::shared_ptr<function_symbol_table> function_symbol_table::get_builtins()
 		DECLARE_WFL_FUNCTION(starts_with);
 		DECLARE_WFL_FUNCTION(ends_with);
 		DECLARE_WFL_FUNCTION(length);
+		DECLARE_WFL_FUNCTION(byte_index);
 		DECLARE_WFL_FUNCTION(concatenate);
 		DECLARE_WFL_FUNCTION(sin);
 		DECLARE_WFL_FUNCTION(cos);
@@ -1665,7 +1706,7 @@ std::shared_ptr<function_symbol_table> function_symbol_table::get_builtins()
 	return std::shared_ptr<function_symbol_table>(&functions_table, [](function_symbol_table*) {});
 }
 
-action_function_symbol_table::action_function_symbol_table(std::shared_ptr<function_symbol_table> parent)
+action_function_symbol_table::action_function_symbol_table(const std::shared_ptr<function_symbol_table>& parent)
 	: function_symbol_table(parent)
 {
 	using namespace actions;

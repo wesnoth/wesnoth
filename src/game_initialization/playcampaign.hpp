@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2005 - 2024
+	Copyright (C) 2005 - 2025
 	by Philippe Plantier <ayin@anathas.org>
 	Copyright (C) 2003 - 2005 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -16,6 +16,7 @@
 
 #pragma once
 
+#include "queue_type.hpp"
 #include "game_end_exceptions.hpp"
 
 #include <set>
@@ -33,6 +34,7 @@ struct mp_game_metadata
 		, skip_replay(false)
 		, skip_replay_blindfolded(false)
 		, connection(wdc)
+		, queue_type(queue_type::normal)
 	{
 	}
 
@@ -43,6 +45,8 @@ struct mp_game_metadata
 	bool skip_replay;
 	bool skip_replay_blindfolded;
 	wesnothd_connection& connection;
+	std::string queue_type;
+	int queue_id;
 };
 
 class campaign_controller

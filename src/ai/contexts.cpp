@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2024
+	Copyright (C) 2009 - 2025
 	by Yurii Chernyi <terraninfo@terraninfo.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -50,7 +50,6 @@
 #include "units/unit.hpp"                  // for unit
 #include "units/unit_alignments.hpp"
 #include "units/map.hpp"  // for unit_map::iterator_base, etc
-#include "formula/variant.hpp"                  // for variant
 
 #include <algorithm>                    // for find, count, max, fill_n
 #include <cmath>                       // for sqrt
@@ -316,7 +315,7 @@ void readonly_context_impl::log_message(const std::string& msg)
 {
 	if(game_config::debug) {
 		game_display::get_singleton()->get_chat_manager().add_chat_message(
-			std::time(nullptr), "ai", get_side(), msg, events::chat_handler::MESSAGE_PUBLIC, false);
+			std::chrono::system_clock::now(), "ai", get_side(), msg, events::chat_handler::MESSAGE_PUBLIC, false);
 	}
 }
 
@@ -467,9 +466,8 @@ const defensive_position& readonly_context_impl::best_defensive_position(const m
 	pos.vulnerability = 10000.0;
 	pos.support = 0.0;
 
-	typedef move_map::const_iterator Itor;
-	const std::pair<Itor,Itor> itors = srcdst.equal_range(loc);
-	for(Itor i = itors.first; i != itors.second; ++i) {
+	auto itors = srcdst.equal_range(loc);
+	for(auto i = itors.first; i != itors.second; ++i) {
 		const int defense = itor->defense_modifier(resources::gameboard->map().get_terrain(i->second));
 		if(defense > pos.chance_to_hit) {
 			continue;
@@ -538,15 +536,6 @@ const attacks_vector& readonly_context_impl::get_attacks() const
 	}
 	static attacks_vector av;
 	return av;
-}
-
-const wfl::variant& readonly_context_impl::get_attacks_as_variant() const
-{
-	if (attacks_) {
-		return attacks_->get_variant();
-	}
-	static wfl::variant v;
-	return v;
 }
 
 const terrain_filter& readonly_context_impl::get_avoid() const
@@ -984,8 +973,7 @@ const map_location& readonly_context_impl::nearest_keep(const map_location& loc)
 double readonly_context_impl::power_projection(const map_location& loc, const move_map& dstsrc) const
 {
 	map_location used_locs[6];
-	int ratings[6];
-	std::fill_n(ratings, 0, 6);
+	int ratings[6]{};
 	int num_used_locs = 0;
 
 	const auto locs = get_adjacent_tiles(loc);
@@ -1011,9 +999,7 @@ double readonly_context_impl::power_projection(const map_location& loc, const mo
 
 		const t_translation::terrain_code terrain = map_[locs[i]];
 
-		typedef move_map::const_iterator Itor;
-		typedef std::pair<Itor,Itor> Range;
-		Range its = dstsrc.equal_range(locs[i]);
+		auto its = dstsrc.equal_range(locs[i]);
 
 		map_location* const beg_used = used_locs;
 		map_location* end_used = used_locs + num_used_locs;
@@ -1021,7 +1007,7 @@ double readonly_context_impl::power_projection(const map_location& loc, const mo
 		int best_rating = 0;
 		map_location best_unit;
 
-		for(Itor it = its.first; it != its.second; ++it) {
+		for(auto it = its.first; it != its.second; ++it) {
 			const unit_map::const_iterator u = units_.find(it->second);
 
 			// Unit might have been killed, and no longer exist

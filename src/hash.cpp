@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by Thomas Baumhauer <thomas.baumhauer@NOSPAMgmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -44,8 +44,7 @@ const std::string hash_prefix = "$H$";
 
 template<std::size_t len>
 std::string encode_hash(const std::array<uint8_t, len>& bytes) {
-	utils::byte_string_view view{bytes.data(), len};
-	return crypt64::encode(view);
+	return crypt64::encode(bytes);
 }
 
 template<std::size_t len>
@@ -70,7 +69,7 @@ md5::md5(const std::string& input) {
 	assert(utils::md5::DIGEST_SIZE == md5_digest_len);
 
 	// MD5_Init
-	EVP_DigestInit_ex(mdctx, EVP_md5(), NULL);
+	EVP_DigestInit_ex(mdctx, EVP_md5(), nullptr);
 
 	// MD5_Update
 	EVP_DigestUpdate(mdctx, input.c_str(), input.size());

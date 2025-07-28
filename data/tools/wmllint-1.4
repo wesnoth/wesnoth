@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# encoding: utf-8
 #
 # wmllint -- check WML for conformance to the most recent dialect
 #
@@ -73,7 +74,7 @@
 # Note that this will also disable stack-based validation on the span
 # of lines they enclose.
 
-import sys, os, re, getopt, string, copy, difflib, time, codecs
+import sys, os, re, getopt, string, copy, difflib, time
 from wesnoth.wmltools3 import *
 from wesnoth.wmliterator3 import *
 
@@ -1651,7 +1652,7 @@ def is_map(filename):
     if "map" in os.path.dirname(filename) or filename.endswith(".map"):
         return True
     try:
-        with codecs.open(filename, "r", "utf8") as fp:
+        with open(filename, "r", encoding="utf8") as fp:
             lines = fp.readlines()
         has_map_content = False
         for i, line in enumerate(lines):
@@ -1695,7 +1696,7 @@ def translator(filename, mapxforms, textxform, versions):
     mfile = []
     map_only = not filename.endswith(".cfg")
     terminator = "\n"
-    with codecs.open(filename, "r", "utf8") as content:
+    with open(filename, "r", encoding="utf8") as content:
         lines = content.readlines()
     for line in lines:
         if line.endswith("\n"):
@@ -2252,8 +2253,8 @@ if __name__ == '__main__':
                 if os.path.exists(backup):
                     fromdate = time.ctime(os.stat(backup).st_mtime)
                     todate = time.ctime(os.stat(fn).st_mtime)
-                    with codecs.open(backup, 'U', "utf8") as fromlines, \
-                         codecs.open(fn, 'U', "utf8") as tolines:
+                    with open(backup, 'r', encoding="utf8") as fromlines, \
+                         open(fn, 'r', encoding="utf8") as tolines:
                         diff = difflib.unified_diff(fromlines.readlines(),
                                                     tolines.readlines(),
                                                     backup, fn, fromdate,
@@ -2269,7 +2270,7 @@ if __name__ == '__main__':
                             if sys.platform == 'win32' and os.path.exists(backup):
                                 os.remove(backup)
                             os.rename(fn, backup)
-                            with codecs.open(fn, "w", "utf8") as ofp:
+                            with open(fn, "w", encoding="utf8") as ofp:
                                 ofp.write(changed)
                 except maptransform_error as e:
                     print("wmllint: " + e.message, file=sys.stderr)

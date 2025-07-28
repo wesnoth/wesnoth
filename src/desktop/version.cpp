@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2015 - 2024
+	Copyright (C) 2015 - 2025
 	by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -55,6 +55,10 @@
 
 #include <windows.h>
 
+#endif
+
+#ifdef __ANDROID__
+#include <SDL2/SDL_system.h>
 #endif
 
 static lg::log_domain log_desktop("desktop");
@@ -394,6 +398,10 @@ std::string os_version()
 	version += ")";
 
 	return base + " " + version + " " + windows_runtime_arch();
+
+#elif defined(__ANDROID__)
+
+	return formatter() << "Android (API level " << SDL_GetAndroidSDKVersion() << ")";
 
 #else
 

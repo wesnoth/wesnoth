@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2024
+	Copyright (C) 2016 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -47,10 +47,10 @@ public:
 	explicit unit_preview_pane(const implementation::builder_unit_preview_pane& builder);
 
 	/** Displays the stats of a specified unit type */
-	void set_displayed_type(const unit_type& type);
+	void set_display_data(const unit_type& type);
 
 	/** Displays the stats of a specific unit */
-	void set_displayed_unit(const unit& u);
+	void set_display_data(const unit& u);
 
 	/** Sets the facing of the unit image */
 	void set_image_mods(const std::string& mods);
@@ -71,7 +71,7 @@ protected:
 	/**
 	 * Initializes the internal sub-widget pointers.
 	 * Should be called when building the window, so the pointers
-	 * are initialized when set_displayed_type() is called.
+	 * are initialized when set_display_data() is called.
 	 */
 	void finalize_setup();
 
@@ -94,7 +94,11 @@ private:
 	std::string image_mods_;
 
 	template<typename T> // This is only a template to avoid including units/attack.hpp
-	void print_attack_details(T attacks, tree_view_node& parent_node);
+	void print_attack_details(
+		T attacks,
+		const int attacks_left,
+		const int max_attacks,
+		tree_view_node& parent_node);
 
 	enum state_t {
 		ENABLED
@@ -135,15 +139,13 @@ namespace implementation
 
 struct builder_unit_preview_pane : public builder_styled_widget
 {
-public:
 	explicit builder_unit_preview_pane(const config& cfg);
 
 	using builder_styled_widget::build;
 
 	virtual std::unique_ptr<widget> build() const override;
 
-private:
-	const std::string image_mods_;
+	std::string image_mods;
 };
 
 } // namespace implementation

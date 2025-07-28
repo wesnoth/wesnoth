@@ -14,11 +14,14 @@ body:
         Note that the mainline campaigns are now using correct typography, including sexed quotes and en and em
         dashes. These will appear as three byte sequences if you are not using a viewer that supports UTF-8.
 
-  - type: input
+  - type: checkboxes
     id: language
     attributes:
       label: Language
-      description: What language does the typo appear in?
+      description: Translations are NOT handled on this tracker. See https://wiki.wesnoth.org/WesnothTranslations for more info.
+      options:
+        - label: I agree to not open issues about translations and instead contact the respective translation team instead.
+          required: true
 
   - type: input
     id: location

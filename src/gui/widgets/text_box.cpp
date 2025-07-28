@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -363,7 +363,7 @@ void text_box::signal_handler_left_button_down(const event::ui_event event,
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
-	get_window()->keyboard_capture(this);
+	get_window()->capture_and_show_keyboard(this);
 	get_window()->mouse_capture();
 
 	handle_mouse_selection(get_mouse_position(), true);

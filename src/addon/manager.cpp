@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by Iris Morelle <shadowm2006@gmail.com>
 	Copyright (C) 2003 - 2008 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -20,6 +20,7 @@
 #include "log.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/schema_validator.hpp"
+#include "utils/general.hpp"
 #include "game_version.hpp"
 #include "wml_exception.hpp"
 
@@ -69,16 +70,14 @@ bool have_addon_pbl_info(const std::string& addon_name)
 
 config get_addon_pbl_info(const std::string& addon_name, bool do_validate)
 {
-	config cfg;
 	const std::string& pbl_path = get_pbl_file_path(addon_name);
 	try {
-		filesystem::scoped_istream stream = filesystem::istream_file(pbl_path);
 		std::unique_ptr<schema_validation::schema_validator> validator;
 		if(do_validate) {
 			validator = std::make_unique<schema_validation::schema_validator>(filesystem::get_wml_location("schema/pbl.cfg").value());
 			validator->set_create_exceptions(true);
 		}
-		read(cfg, *stream, validator.get());
+		return io::read(*filesystem::istream_file(pbl_path), validator.get());
 	} catch(const config::error& e) {
 		throw invalid_pbl_exception(pbl_path, e.message);
 	} catch(wml_exception& e) {
@@ -88,14 +87,11 @@ config get_addon_pbl_info(const std::string& addon_name, bool do_validate)
 		e.show();
 		throw invalid_pbl_exception(pbl_path, msg);
 	}
-
-	return cfg;
 }
 
 void set_addon_pbl_info(const std::string& addon_name, const config& cfg)
 {
-	filesystem::scoped_ostream stream = filesystem::ostream_file(get_pbl_file_path(addon_name));
-	write(*stream, cfg);
+	io::write(*filesystem::ostream_file(get_pbl_file_path(addon_name)), cfg);
 }
 
 bool have_addon_install_info(const std::string& addon_name)
@@ -111,8 +107,7 @@ void get_addon_install_info(const std::string& addon_name, config& cfg)
 		// The parser's read() API would normally do this at the start. This
 		// is a safeguard in case read() throws later
 		cfg.clear();
-		config envelope;
-		read(envelope, *stream);
+		config envelope = io::read(*stream);
 		if(auto info = envelope.optional_child("info")) {
 			cfg = std::move(*info);
 		}
@@ -137,7 +132,7 @@ void write_addon_install_info(const std::string& addon_name, const config& cfg)
 
 	config envelope;
 	envelope.add_child("info", cfg);
-	write(*out, envelope);
+	io::write(*out, envelope);
 }
 
 bool remove_local_addon(const std::string& addon)
@@ -231,8 +226,7 @@ static std::string strip_cr(std::string str, bool strip)
 {
 	if(!strip)
 		return str;
-	std::string::iterator new_end = std::remove_if(str.begin(), str.end(), IsCR);
-	str.erase(new_end, str.end());
+	utils::erase_if(str, IsCR);
 	return str;
 }
 
@@ -306,7 +300,7 @@ static void unarchive_file(const std::string& path, const config& cfg)
 	filesystem::write_file(path + '/' + cfg["name"].str(), unencode_binary(cfg["contents"]));
 }
 
-static void unarchive_dir(const std::string& path, const config& cfg, std::function<void()> file_callback = {})
+static void unarchive_dir(const std::string& path, const config& cfg, const std::function<void()>& file_callback = {})
 {
 	std::string dir;
 	if (cfg["name"].empty())

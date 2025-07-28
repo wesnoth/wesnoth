@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -170,9 +170,6 @@ private:
 	/** The text to display in the menu for this item. */
 	t_string description_;
 
-	/** Whether or not this event says it makes use of the last selected unit. */
-	bool needs_select_;
-
 	/**
 	 * A condition that must hold in order for this menu item to be visible.
 	 * (An empty condition always holds.)
@@ -209,6 +206,9 @@ private:
 
 	/** If true, keep this menu item in later scenarios. */
 	bool persistent_;
+
+	/** Whether or not this event says it makes use of the last selected unit. */
+	bool needs_select_;
 };
 
 } // end namespace game_events

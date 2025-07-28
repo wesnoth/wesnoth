@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -23,12 +23,8 @@
 
 class map_generator;
 
-namespace gui2
+namespace gui2::dialogs
 {
-
-namespace dialogs
-{
-
 class editor_generate_map : public modal_dialog
 {
 public:
@@ -69,5 +65,4 @@ private:
 	std::string random_seed_;
 };
 
-} // namespace dialogs
-} // namespace gui2
+} // namespace gui2::dialogs

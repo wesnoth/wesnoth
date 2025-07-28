@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -87,7 +87,7 @@ private:
 		touchedDownImage_, touchedUpImage_, touchedBothImage_;
 	//	disabledImage_, pressedDownDisabledImage_, pressedUpDisabledImage_, pressedBothDisabledImage_;
 
-	SDL_Rect textRect_;
+	rect textRect_;
 
 	enum STATE { UNINIT,
 		NORMAL, ACTIVE,

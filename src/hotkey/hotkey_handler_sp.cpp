@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2024
+	Copyright (C) 2014 - 2025
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -148,7 +148,7 @@ void playsingle_controller::hotkey_handler::whiteboard_toggle() {
 	whiteboard_manager_->set_active(!whiteboard_manager_->is_active());
 
 	if (whiteboard_manager_->is_active()) {
-		std::string hk = hotkey::get_names(hotkey::hotkey_command::get_command_by_command(hotkey::HOTKEY_WB_TOGGLE).id);
+		std::string hk = hotkey::get_names(hotkey::get_hotkey_command(hotkey::HOTKEY_WB_TOGGLE).id);
 		utils::string_map symbols;
 		symbols["hotkey"] = hk;
 
@@ -184,7 +184,7 @@ void playsingle_controller::hotkey_handler::whiteboard_bump_down_action()
 
 void playsingle_controller::hotkey_handler::whiteboard_suppose_dead()
 {
-	unit* curr_unit;
+	const unit* curr_unit;
 	map_location loc;
 	{ wb::future_map future; //start planned unit map scope
 		curr_unit = &*menu_handler_.current_unit();
@@ -193,11 +193,11 @@ void playsingle_controller::hotkey_handler::whiteboard_suppose_dead()
 	whiteboard_manager_->save_suppose_dead(*curr_unit,loc);
 }
 
-hotkey::ACTION_STATE playsingle_controller::hotkey_handler::get_action_state(const hotkey::ui_command& cmd) const
+hotkey::action_state playsingle_controller::hotkey_handler::get_action_state(const hotkey::ui_command& cmd) const
 {
 	switch(cmd.hotkey_command) {
 	case hotkey::HOTKEY_WB_TOGGLE:
-		return whiteboard_manager_->is_active() ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
+		return hotkey::on_if(whiteboard_manager_->is_active());
 	default:
 		return play_controller::hotkey_handler::get_action_state(cmd);
 	}
@@ -319,7 +319,7 @@ void playsingle_controller::hotkey_handler::load_autosave(const std::string& fil
 	if(!start_replay) {
 		play_controller::hotkey_handler::load_autosave(filename);
 	}
-	auto invalid_save_file = [this, filename](std::string msg){
+	auto invalid_save_file = [this, filename](const std::string& msg){
 		if(playsingle_controller_.is_networked_mp()) {
 			gui2::show_error_message(msg);
 		} else {

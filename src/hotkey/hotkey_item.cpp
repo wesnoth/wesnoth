@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -18,12 +18,14 @@
 #include "hotkey/hotkey_item.hpp"
 
 #include "config.hpp"
+#include "events.hpp"
 #include "game_config_view.hpp"
 #include "hotkey/hotkey_command.hpp"
 #include "key.hpp"
 #include "log.hpp"
 #include "sdl/input.hpp" // for sdl::get_mods
 #include "serialization/unicode.hpp"
+#include "utils/general.hpp"
 
 #include <boost/algorithm/string.hpp>
 
@@ -45,7 +47,7 @@ game_config_view default_hotkey_cfg_;
 const int TOUCH_MOUSE_INDEX = 255;
 }; // namespace
 
-const std::string hotkey_base::get_name() const
+std::string hotkey_base::get_name() const
 {
 	std::string ret = "";
 
@@ -80,7 +82,7 @@ const std::string hotkey_base::get_name() const
 	return ret += get_name_helper();
 }
 
-bool hotkey_base::bindings_equal(hotkey_ptr other)
+bool hotkey_base::bindings_equal(const hotkey_ptr& other)
 {
 	if(other == nullptr) {
 		return false;
@@ -155,6 +157,7 @@ hotkey_ptr create_hotkey(const std::string& id, const SDL_Event& event)
 		auto mouse = std::make_shared<hotkey_mouse>();
 		base = std::dynamic_pointer_cast<hotkey_base>(mouse);
 		mouse->set_button(event.button.button);
+		mouse->set_clicks(event.button.clicks);
 		break;
 	}
 
@@ -178,10 +181,15 @@ hotkey_ptr load_from_config(const config& cfg)
 	if(!mouse_cfg.empty()) {
 		auto mouse = std::make_shared<hotkey_mouse>();
 		base = std::dynamic_pointer_cast<hotkey_base>(mouse);
+
 		if(mouse_cfg.to_int() == TOUCH_MOUSE_INDEX) {
 			mouse->set_button(TOUCH_MOUSE_INDEX);
 		} else {
 			mouse->set_button(cfg["button"].to_int());
+		}
+
+		if(!cfg["click"].empty()) {
+			mouse->set_clicks(cfg["click"].to_int(1));
 		}
 	}
 
@@ -223,8 +231,13 @@ hotkey_ptr load_from_config(const config& cfg)
 
 bool hotkey_mouse::matches_helper(const SDL_Event& event) const
 {
-	if(event.type != SDL_MOUSEBUTTONUP && event.type != SDL_MOUSEBUTTONDOWN && event.type != SDL_FINGERDOWN
-		&& event.type != SDL_FINGERUP) {
+	switch(event.type) {
+	case SDL_MOUSEBUTTONUP:
+	case SDL_MOUSEBUTTONDOWN:
+	case SDL_FINGERDOWN:
+	case SDL_FINGERUP:
+		break; // Continue with validation
+	default:
 		return false;
 	}
 
@@ -233,8 +246,8 @@ bool hotkey_mouse::matches_helper(const SDL_Event& event) const
 		return false;
 	}
 
-	if(event.button.which == SDL_TOUCH_MOUSEID) {
-		return button_ == TOUCH_MOUSE_INDEX;
+	if(events::is_touch(event.button)) {
+		return button_ == TOUCH_MOUSE_INDEX && clicks_ == event.button.clicks;
 	}
 
 	return event.button.button == button_;
@@ -242,7 +255,35 @@ bool hotkey_mouse::matches_helper(const SDL_Event& event) const
 
 const std::string hotkey_mouse::get_name_helper() const
 {
-	return "mouse " + std::to_string(button_);
+	std::stringstream hotkey_name;
+	switch(button_) {
+	case SDL_BUTTON_LEFT:
+		hotkey_name << "left mouse";
+		break;
+	case SDL_BUTTON_RIGHT:
+		hotkey_name << "right mouse";
+		break;
+	case SDL_BUTTON_MIDDLE:
+		hotkey_name << "middle mouse";
+		break;
+	case SDL_BUTTON_X1:
+		hotkey_name << "mouse back";
+		break;
+	case SDL_BUTTON_X2:
+		hotkey_name << "mouse forward";
+		break;
+	case TOUCH_MOUSE_INDEX:
+		hotkey_name << "touch";
+		break;
+	default:
+		hotkey_name << "mouse " + std::to_string(button_);
+	}
+
+	if(clicks_ > 1) {
+		hotkey_name << " (clicks: " << clicks_ << ")";
+	}
+
+	return hotkey_name.str();
 }
 
 void hotkey_mouse::save_helper(config& item) const
@@ -322,13 +363,6 @@ bool hotkey_keyboard::bindings_equal_helper(hotkey_ptr other) const
 	}
 
 	return text_ == other_k->text_;
-}
-
-void del_hotkey(hotkey_ptr item)
-{
-	if(!hotkeys_.empty()) {
-		hotkeys_.erase(std::remove(hotkeys_.begin(), hotkeys_.end(), item));
-	}
 }
 
 void add_hotkey(hotkey_ptr item)

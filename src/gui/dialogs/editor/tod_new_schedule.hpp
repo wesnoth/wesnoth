@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2023 - 2024
+	Copyright (C) 2023 - 2025
 	by Subhraman Sarkar (babaissarkar) <suvrax@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -17,12 +17,8 @@
 
 #include "gui/dialogs/modal_dialog.hpp"
 
-namespace gui2
+namespace gui2::dialogs
 {
-
-namespace dialogs
-{
-
 /**
  * Dialog that takes new schedule ID and name from the player.
  * custom_tod.cpp is the main editor window for time schedules.
@@ -49,6 +45,4 @@ private:
 	void button_state_change();
 };
 
-
-} // namespace dialogs
-} // namespace gui2
+} // namespace gui2::dialogs

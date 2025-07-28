@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2012 - 2024
+	Copyright (C) 2012 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -69,7 +69,7 @@ struct viewport_implementation
 
 	template <class W>
 	static utils::const_clone_ptr<widget, W>
-	find(W viewport, const std::string& id, const bool must_be_active)
+	find(W viewport, const std::string_view id, const bool must_be_active)
 	{
 		if(viewport->widget::find(id, must_be_active)) {
 			return viewport;
@@ -131,13 +131,12 @@ const widget* viewport::find_at(const point& coordinate,
 	return viewport_implementation::find_at(this, coordinate, must_be_active);
 }
 
-widget* viewport::find(const std::string& id, const bool must_be_active)
+widget* viewport::find(const std::string_view id, const bool must_be_active)
 {
 	return viewport_implementation::find(this, id, must_be_active);
 }
 
-const widget* viewport::find(const std::string& id, const bool must_be_active)
-		const
+const widget* viewport::find(const std::string_view id, const bool must_be_active) const
 {
 	return viewport_implementation::find(this, id, must_be_active);
 }

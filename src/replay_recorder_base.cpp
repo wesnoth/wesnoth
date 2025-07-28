@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2017 - 2024
+	Copyright (C) 2017 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -150,7 +150,7 @@ bool replay_recorder_base::is_ancestor(const config& other_replay) const
 	if(other_commands.size() > commands_.size()) {
 		return false;
 	}
-	for(size_t index = 0; index < other_commands.size(); ++index) {
+	for(std::size_t index = 0; index < other_commands.size(); ++index) {
 		if(commands_[index] != other_commands[index]) {
 			return false;
 		}

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2011 - 2024
+	Copyright (C) 2011 - 2025
 	by Sytyi Nick <nsytyi@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -21,6 +21,7 @@
 #include "serialization/schema/type.hpp"
 #include "serialization/string_utils.hpp"
 #include "utils/back_edge_detector.hpp"
+#include "utils/general.hpp"
 #include "wml_exception.hpp"
 #include <boost/graph/adjacency_list.hpp>
 #include <tuple>
@@ -277,7 +278,7 @@ bool schema_validator::read_config_file(const std::string& filename)
 		}
 		preproc_map preproc(game_config::config_cache::instance().get_preproc_map());
 		filesystem::scoped_istream stream = preprocess_file(filename, &preproc);
-		read(cfg, *stream, validator.get());
+		cfg = io::read(*stream, validator.get());
 	} catch(const config::error& e) {
 		ERR_VL << "Failed to read file " << filename << ":\n" << e.what();
 		return false;
@@ -316,13 +317,13 @@ void schema_validator::detect_link_cycles(const std::string& filename) {
 
 	boost::depth_first_search(link_graph,
 		boost::visitor(utils::back_edge_detector([&](const link_graph_t::edge_descriptor edge) {
-			const auto source = std::find_if(link_map.begin(), link_map.end(),
-				[&](const auto& link) { return link.second == boost::source(edge, link_graph); });
+			const auto source = utils::ranges::find(link_map, boost::source(edge, link_graph),
+				[](const auto& link) { return link.second; });
 
 			assert(source != link_map.end());
 
-			const auto target = std::find_if(link_map.begin(), link_map.end(),
-				[&](const auto& link) { return link.second == boost::target(edge, link_graph); });
+			const auto target = utils::ranges::find(link_map, boost::target(edge, link_graph),
+				[](const auto& link) { return link.second; });
 
 			assert(target != link_map.end());
 
@@ -591,13 +592,13 @@ void schema_validator::detect_derivation_cycles()
 {
 	boost::depth_first_search(derivation_graph_,
 		boost::visitor(utils::back_edge_detector([&](const derivation_graph_t::edge_descriptor edge) {
-			const auto source = std::find_if(derivation_map_.begin(), derivation_map_.end(),
-				[&](const auto& derivation) { return derivation.second == boost::source(edge, derivation_graph_); });
+			const auto source = utils::ranges::find(derivation_map_, boost::source(edge, derivation_graph_),
+				[](const auto& derivation) { return derivation.second; });
 
 			assert(source != derivation_map_.end());
 
-			const auto target = std::find_if(derivation_map_.begin(), derivation_map_.end(),
-				[&](const auto& derivation) { return derivation.second == boost::target(edge, derivation_graph_); });
+			const auto target = utils::ranges::find(derivation_map_, boost::target(edge, derivation_graph_),
+				[](const auto& derivation) { return derivation.second; });
 
 			assert(target != derivation_map_.end());
 
@@ -834,7 +835,7 @@ void schema_self_validator::validate(const config& cfg, const std::string& name,
 		using namespace std::placeholders;
 		std::vector<reference> missing_types = referenced_types_, missing_tags = referenced_tag_paths_;
 		// Remove all the known types
-		missing_types.erase(std::remove_if(missing_types.begin(), missing_types.end(), std::bind(&reference::match, std::placeholders::_1, std::cref(defined_types_))), missing_types.end());
+		utils::erase_if(missing_types, [this](const reference& ref) { return ref.match(defined_types_); });
 		// Remove all the known tags. This is more complicated since links behave similar to a symbolic link.
 		// In other words, the presence of links means there may be more than one way to refer to a given tag.
 		// But that's not all! It's possible to refer to a tag through a derived tag even if it's actually defined in the base tag.
@@ -946,12 +947,12 @@ bool schema_self_validator::reference::operator<(const reference& other) const
 	return std::tie(file_, line_) < std::tie(other.file_, other.line_);
 }
 
-bool schema_self_validator::reference::match(const std::set<std::string>& with)
+bool schema_self_validator::reference::match(const std::set<std::string>& with) const
 {
 	return with.count(value_) > 0;
 }
 
-bool schema_self_validator::reference::can_find(const wml_tag& root, const config& cfg)
+bool schema_self_validator::reference::can_find(const wml_tag& root, const config& cfg) const
 {
 	// The problem is that the schema being validated is that of the schema!!!
 	return root.find_tag(value_, root, cfg) != nullptr;

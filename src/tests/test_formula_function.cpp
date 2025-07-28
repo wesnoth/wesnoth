@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2024
+	Copyright (C) 2010 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -120,6 +120,11 @@ BOOST_AUTO_TEST_CASE(test_formula_function_length)
 	BOOST_CHECK_EQUAL(
 			  formula("length('hello world')").evaluate().as_int()
 			, 11);
+}
+
+BOOST_AUTO_TEST_CASE(test_formula_function_byte_index)
+{
+	BOOST_CHECK_EQUAL(formula("byte_index('À partir du niveau un', 1").evaluate().as_int(), 2);
 }
 
 BOOST_AUTO_TEST_CASE(test_formula_function_concatenate)

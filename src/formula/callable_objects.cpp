@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2024
+	Copyright (C) 2014 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -21,7 +21,6 @@
 #include "display_context.hpp"
 #include "team.hpp"
 #include "units/attack_type.hpp"
-#include "units/formula_manager.hpp"
 #include "units/unit.hpp"
 #include "units/types.hpp"
 #include "log.hpp"
@@ -87,8 +86,10 @@ variant attack_type_callable::get_value(const std::string& key) const
 		return variant(att_->id());
 	} else if(key == "description") {
 		return variant(att_->name());
-	} else if(key == "type") {
+	} else if(key == "base_type") {
 		return variant(att_->type());
+	} else if(key == "type") {
+		return variant(att_->effective_damage_type().first);
 	} else if(key == "icon") {
 		return variant(att_->icon());
 	} else if(key == "range") {
@@ -133,6 +134,7 @@ void attack_type_callable::get_inputs(formula_input_vector& inputs) const
 {
 	add_input(inputs, "name");
 	add_input(inputs, "type");
+	add_input(inputs, "base_type");
 	add_input(inputs, "description");
 	add_input(inputs, "icon");
 	add_input(inputs, "range");
@@ -348,12 +350,6 @@ variant unit_callable::get_value(const std::string& key) const
 		return variant(u_.is_fearless());
 	} else if(key == "healthy") {
 		return variant(u_.is_healthy());
-	} else if(key == "vars") {
-		if(u_.formula_manager().formula_vars()) {
-			return variant(u_.formula_manager().formula_vars());
-		}
-
-		return variant();
 	} else if(key == "wml_vars") {
 		return variant(std::make_shared<config_callable>(u_.variables()));
 	} else if(key == "n"      || key == "s"       || key == "ne"      || key == "se"      || key == "nw" || key == "sw" ||

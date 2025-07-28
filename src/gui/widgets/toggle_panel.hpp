@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -70,7 +70,7 @@ public:
 	 * panel_definition we need to override this function and do about the
 	 * same, look at a way to 'fix' that.
 	 */
-	virtual SDL_Rect get_client_rect() const override;
+	virtual rect get_client_rect() const override;
 
 	/**
 	 * See @ref container_base::border_space.

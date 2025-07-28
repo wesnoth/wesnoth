@@ -37,7 +37,7 @@ Then run this command:
 ```
 and
 ```
-.\b2 -sZLIB_SOURCE=..\zlib-1.3.1 -sBZIP2_SOURCE=..\bzip2-1.0.8 -j2 --with-test --toolset=gcc --layout=system link=shared variant=release address-model=64
+.\b2 -sZLIB_SOURCE=..\zlib-1.3.1 -sBZIP2_SOURCE=..\bzip2-1.0.8 -j2 --with-test --with-process --toolset=gcc --layout=system link=shared variant=release address-model=64
 ```
 Depending on your boost version, you may need to replace `..\` with the absolute paths to zlib and bzip.
 If you have multiple versions of gcc, add `--toolset=gcc-X.Y.Z` with **X.Y.Z** being the target version number.
@@ -49,7 +49,7 @@ Run this command for generate `bcp.exe`
 ```
 Create `include` in same path what `boost_...` and run this command:
 ```
-dist\bin\bcp.exe algorithm asio assign bimap core coroutine container date_time dynamic_bitset exception filesystem graph iostreams iterator locale math mpl multi_array multi_index program_options process ptr_container random range regex serialization system spirit test logic boost\nondet_random.hpp boost\fusion\include\define_struct.hpp boost\scope_exit.hpp boost/typeof/incr_registration_group.hpp ..\include
+dist\bin\bcp.exe algorithm asio assign bimap core coroutine container date_time dynamic_bitset exception filesystem graph iostreams iterator locale math mpl multi_array multi_index process program_options ptr_container random range regex serialization system spirit test logic boost\nondet_random.hpp boost\fusion\include\define_struct.hpp boost\scope_exit.hpp boost/typeof/incr_registration_group.hpp ..\include
 ```
 
 Replace the outdated files in 'cb/lib' with those from 'boost_.../stage/lib' and those in 'cb/include/boost' with  the ones in 'boost_.../boost'.

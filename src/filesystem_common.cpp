@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2017 - 2024
+	Copyright (C) 2017 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -17,8 +17,10 @@
 
 #include "config.hpp"
 #include "log.hpp"
+#include "serialization/chrono.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
+#include "utils/general.hpp"
 
 #include <boost/algorithm/string.hpp>
 
@@ -102,24 +104,20 @@ bool is_legal_user_file_name(const std::string& name, bool allow_whitespace)
 
 void blacklist_pattern_list::remove_blacklisted_files_and_dirs(std::vector<std::string>& files, std::vector<std::string>& directories) const
 {
-	files.erase(
-		std::remove_if(files.begin(), files.end(), [this](const std::string& name) { return match_file(name); }),
-		files.end());
-	directories.erase(
-		std::remove_if(directories.begin(), directories.end(), [this](const std::string& name) { return match_dir(name); }),
-		directories.end());
+	utils::erase_if(files, [this](const std::string& name) { return match_file(name); });
+	utils::erase_if(directories, [this](const std::string& name) { return match_dir(name); });
 }
 
 bool blacklist_pattern_list::match_file(const std::string& name) const
 {
 	return std::any_of(file_patterns_.begin(), file_patterns_.end(),
-					   std::bind(&utils::wildcard_string_match, std::ref(name), std::placeholders::_1));
+		[&name](const std::string& pattern) { return utils::wildcard_string_match(name, pattern); });
 }
 
 bool blacklist_pattern_list::match_dir(const std::string& name) const
 {
 	return std::any_of(directory_patterns_.begin(), directory_patterns_.end(),
-					   std::bind(&utils::wildcard_string_match, std::ref(name), std::placeholders::_1));
+		[&name](const std::string& pattern) { return utils::wildcard_string_match(name, pattern); });
 }
 
 std::string autodetect_game_data_dir(std::string exe_dir)
@@ -225,7 +223,7 @@ std::string get_legacy_editor_dir()
 std::string get_current_editor_dir(const std::string& addon_id)
 {
 	if(addon_id == "mainline") {
-		return get_dir(game_config::path) + "/data/multiplayer";
+		return game_config::path + "/data/multiplayer";
 	} else {
 		return get_addons_dir() + "/" + addon_id;
 	}
@@ -233,7 +231,7 @@ std::string get_current_editor_dir(const std::string& addon_id)
 
 std::string get_core_images_dir()
 {
-	return get_dir(game_config::path + "/data/core/images");
+	return game_config::path + "/data/core/images";
 }
 
 std::string get_intl_dir()
@@ -267,14 +265,10 @@ bool looks_like_pbl(const std::string& file)
 	return utils::wildcard_string_match(utf8::lowercase(file), "*.pbl");
 }
 
-file_tree_checksum::file_tree_checksum()
-	: nfiles(0), sum_size(0), modified(0)
-{}
-
-file_tree_checksum::file_tree_checksum(const config& cfg) :
-	nfiles	(cfg["nfiles"].to_size_t()),
-	sum_size(cfg["size"].to_size_t()),
-	modified(cfg["modified"].to_time_t())
+file_tree_checksum::file_tree_checksum(const config& cfg)
+	: nfiles(cfg["nfiles"].to_size_t())
+	, sum_size(cfg["size"].to_size_t())
+	, modified(chrono::parse_timestamp(cfg["modified"]))
 {
 }
 
@@ -282,7 +276,7 @@ void file_tree_checksum::write(config& cfg) const
 {
 	cfg["nfiles"] = nfiles;
 	cfg["size"] = sum_size;
-	cfg["modified"] = modified;
+	cfg["modified"] = chrono::serialize_timestamp(modified);
 }
 
 bool file_tree_checksum::operator==(const file_tree_checksum &rhs) const
@@ -344,7 +338,7 @@ const file_tree_checksum& data_tree_checksum(bool reset)
 {
 	static file_tree_checksum checksum;
 	if (reset)
-		checksum.reset();
+		checksum = file_tree_checksum{};
 	if(checksum.nfiles == 0) {
 		get_file_tree_checksum_internal("data/",checksum);
 		get_file_tree_checksum_internal(get_user_data_dir() + "/data/",checksum);

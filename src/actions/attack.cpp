@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -19,6 +19,8 @@
  */
 
 #include "actions/attack.hpp"
+
+#include <utility>
 
 #include "actions/advancement.hpp"
 #include "actions/vision.hpp"
@@ -77,7 +79,7 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 		bool attacking,
 		nonempty_unit_const_ptr oppp,
 		const map_location& opp_loc,
-		const_attack_ptr opp_weapon)
+		const const_attack_ptr& opp_weapon)
 	: weapon(nullptr)
 	, attack_num(u_attack_num)
 	, is_attacker(attacking)
@@ -166,13 +168,7 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 	}
 
 	// Compute chance to hit.
-	signed int cth = opp.defense_modifier(resources::gameboard->map().get_terrain(opp_loc)) + weapon->accuracy()
-		- (opp_weapon ? opp_weapon->parry() : 0);
-
-	cth = std::clamp(cth, 0, 100);
-
-	cth = weapon->composite_value(weapon->get_specials_and_abilities("chance_to_hit"), cth);
-
+	signed int cth = weapon->modified_chance_to_hit(opp.defense_modifier(resources::gameboard->map().get_terrain(opp_loc)));
 
 	if(opp.get_state("invulnerable")) {
 		cth = 0;
@@ -181,7 +177,7 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 	chance_to_hit = std::clamp(cth, 0, 100);
 
 	// Compute base damage done with the weapon.
-	int base_damage = weapon->modified_damage();
+	double base_damage = weapon->modified_damage();
 
 	// Get the damage multiplier applied to the base damage of the weapon.
 	int damage_multiplier = 100;
@@ -229,10 +225,10 @@ battle_context_unit_stats::battle_context_unit_stats(const unit_type* u_type,
 		const_attack_ptr att_weapon,
 		bool attacking,
 		const unit_type* opp_type,
-		const_attack_ptr opp_weapon,
+		const const_attack_ptr& opp_weapon,
 		unsigned int opp_terrain_defense,
 		int lawful_bonus)
-	: weapon(att_weapon)
+	: weapon(std::move(att_weapon))
 	, attack_num(-2) // This is and stays invalid. Always use weapon when using this constructor.
 	, is_attacker(attacking)
 	, is_poisoned(false)
@@ -308,14 +304,11 @@ battle_context_unit_stats::battle_context_unit_stats(const unit_type* u_type,
 		}
 	}
 
-	signed int cth = 100 - opp_terrain_defense + weapon->accuracy() - (opp_weapon ? opp_weapon->parry() : 0);
-	cth = std::clamp(cth, 0, 100);
-
-	cth = weapon->composite_value(weapon->get_specials("chance_to_hit"), cth);
+	signed int cth = weapon->modified_chance_to_hit(100 - opp_terrain_defense, true);
 
 	chance_to_hit = std::clamp(cth, 0, 100);
 
-	int base_damage = weapon->modified_damage();
+	double base_damage = weapon->modified_damage();
 	int damage_multiplier = 100;
 	unit_alignments::type alignment = weapon->alignment().value_or(u_type->alignment());
 	damage_multiplier
@@ -358,8 +351,8 @@ battle_context::battle_context(
 	, attacker_combatant_()
 	, defender_combatant_()
 {
-	size_t a_wep_uindex = static_cast<size_t>(a_wep_index);
-	size_t d_wep_uindex = static_cast<size_t>(d_wep_index);
+	std::size_t a_wep_uindex = static_cast<std::size_t>(a_wep_index);
+	std::size_t d_wep_uindex = static_cast<std::size_t>(d_wep_index);
 
 	const_attack_ptr a_wep(a_wep_uindex < attacker->attacks().size() ? attacker->attacks()[a_wep_index].shared_from_this() : nullptr);
 	const_attack_ptr d_wep(d_wep_uindex < defender->attacks().size() ? defender->attacks()[d_wep_index].shared_from_this() : nullptr);
@@ -523,7 +516,7 @@ bool battle_context::better_combat(const combatant& us_a,
 }
 
 battle_context battle_context::choose_attacker_weapon(nonempty_unit_const_ptr attacker,
-		nonempty_unit_const_ptr defender,
+		const nonempty_unit_const_ptr& defender,
 		const map_location& attacker_loc,
 		const map_location& defender_loc,
 		double harm_weight,
@@ -533,7 +526,7 @@ battle_context battle_context::choose_attacker_weapon(nonempty_unit_const_ptr at
 	std::vector<battle_context> choices;
 
 	// What options does attacker have?
-	for(size_t i = 0; i < attacker->attacks().size(); ++i) {
+	for(std::size_t i = 0; i < attacker->attacks().size(); ++i) {
 		const attack_type& att = attacker->attacks()[i];
 
 		if(att.attack_weight() <= 0) {
@@ -590,7 +583,7 @@ battle_context battle_context::choose_defender_weapon(nonempty_unit_const_ptr at
 	std::vector<battle_context> choices;
 
 	// What options does defender have?
-	for(size_t i = 0; i < defender->attacks().size(); ++i) {
+	for(std::size_t i = 0; i < defender->attacks().size(); ++i) {
 		const attack_type& def = defender->attacks()[i];
 		if(def.range() != att.range() || def.defense_weight() <= 0) {
 			//no need to calculate the battle_context here.
@@ -670,7 +663,7 @@ battle_context battle_context::choose_defender_weapon(nonempty_unit_const_ptr at
 
 namespace
 {
-void refresh_weapon_index(int& weap_index, const std::string& weap_id, attack_itors attacks)
+void refresh_weapon_index(int& weap_index, const std::string& weap_id, const attack_itors& attacks)
 {
 	// No attacks to choose from.
 	if(attacks.empty()) {
@@ -1078,6 +1071,10 @@ bool attack::perform_hit(bool attacker_turn, statistics_attack_context& stats)
 						   << '\n';
 
 				extra_hit_sounds.push_back(game_config::sounds::status::petrified);
+			}
+		} else {
+			if(prefs::get().show_attack_miss_indicator()) {
+				float_text << _("attack^miss");
 			}
 		}
 
@@ -1590,7 +1587,7 @@ void attack_unit_and_advance(const map_location& attacker,
 
 int under_leadership(const unit &u, const map_location& loc, const_attack_ptr weapon, const_attack_ptr opp_weapon)
 {
-	unit_ability_list abil = u.get_abilities_weapons("leadership", loc, weapon, opp_weapon);
+	unit_ability_list abil = u.get_abilities_weapons("leadership", loc, std::move(weapon), std::move(opp_weapon));
 	unit_abilities::effect leader_effect(abil, 0, nullptr, unit_abilities::EFFECT_CUMULABLE);
 	return leader_effect.get_composite_value();
 }

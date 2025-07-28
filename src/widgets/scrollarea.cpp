@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2004 - 2024
+	Copyright (C) 2004 - 2025
 	by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -42,9 +42,9 @@ sdl_handler_vector scrollarea::handler_members()
 	return h;
 }
 
-void scrollarea::update_location(const SDL_Rect& rect)
+void scrollarea::update_location(const rect& rect)
 {
-	SDL_Rect r = rect;
+	::rect r = rect;
 	shown_scrollbar_ = has_scrollbar();
 	if (shown_scrollbar_) {
 		int w = r.w - scrollbar_.width();
@@ -153,9 +153,7 @@ void scrollarea::handle_event(const SDL_Event& event)
 
 	if (event.type == SDL_MOUSEWHEEL) {
 		const SDL_MouseWheelEvent &ev = event.wheel;
-		int x, y;
-		sdl::get_mouse_state(&x, &y);
-		if (inner_location().contains(x, y)) {
+		if (inner_location().contains(sdl::get_mouse_location())) {
 			if (ev.y > 0) {
 				scrollbar_.scroll_up();
 			} else if (ev.y < 0) {

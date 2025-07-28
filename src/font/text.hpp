@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -35,10 +35,9 @@
 
 struct point;
 
-namespace font {
-
-/** Flush the rendered text cache. */
-void flush_texture_cache();
+namespace font
+{
+class attribute_list;
 
 // add background color and also font markup.
 
@@ -104,7 +103,7 @@ private:
 	 * drawing-space. This function has only been made private to preserve
 	 * the drawing-space encapsulation.
 	 */
-	texture render_texture(const SDL_Rect& viewport);
+	texture render_texture(const rect& viewport);
 
 	/**
 	 * Returns the rendered text.
@@ -118,7 +117,7 @@ private:
 	 * width and height will be at least viewport.w and viewport.h (although
 	 * they may be larger).
 	 */
-	surface render_surface(const SDL_Rect& viewport);
+	surface render_surface(const rect& viewport);
 
 public:
 	/** Returns the size of the text, in drawing coordinates. */
@@ -160,22 +159,35 @@ public:
 	int get_max_glyph_height() const;
 
 	/**
+	 * Given a character index and optionally the starting line,
+	 * returns the corresponding byte index.
+	 * @param offset              The character index of the cursor position.
+	 *                            Can be bigger than the line, in which case it
+	 *                            spills over to the next line and so on.
+	 * @param line                The line from which the offset counting should start.
+	 *
+	 * @returns                   The corresponding byte index.
+	 */
+	unsigned get_byte_index(const unsigned offset, const unsigned line = 0) const;
+
+	/**
 	 * Gets the location for the cursor, in drawing coordinates.
 	 *
-	 * @param column              The column character index of the cursor.
-	 * @param line                The line character index of the cursor.
+	 * @param offset              The character index of the cursor position.
+	 *                            Can be bigger than the line, in which case it
+	 *                            spills over to the next line and so on.
+	 * @param line                The line from which the offset counting should start.
 	 *
 	 * @returns                   The position of the top of the cursor. It the
 	 *                            requested location is out of range 0,0 is
 	 *                            returned.
 	 */
-	point get_cursor_position(
-		const unsigned column, const unsigned line = 0) const;
+	point get_cursor_position(const unsigned offset, const unsigned line = 0) const;
 
 	/**
 	 * Gets the location for the cursor, in drawing coordinates.
 	 *
-	 * @param offset              The column byte index of the cursor.
+	 * @param offset              The byte index corresponding to the cursor position.
 	 *
 	 * @returns                   The position of the top of the cursor. It the
 	 *                            requested location is out of range 0,0 is
@@ -199,10 +211,10 @@ public:
 	 * @param delimiters
 	 *
 	 * @returns                   The token containing position, and none of the
-	 * 			      delimiter characters. If position is out of bounds,
-	 *			      it returns the empty string.
+	 *                            delimiter characters. If position is out of bounds,
+	 *                            it returns the empty string.
 	 */
-	std::string get_token(const point & position, const char * delimiters = " \n\r\t") const;
+	std::string get_token(const point& position, std::string_view delimiters = " \n\r\t") const;
 
 	/**
 	 * Checks if position points to a character in a link in the text, returns it
@@ -211,7 +223,7 @@ public:
 	 *
 	 * @returns                   The link if one is found, the empty string otherwise.
 	 */
-	std::string get_link(const point & position) const;
+	std::string get_link(const point& position) const;
 
 	/**
 	 * Gets the column of line of the character at the position.
@@ -224,7 +236,19 @@ public:
 	 */
 	point get_column_line(const point& position) const;
 
-	int xy_to_index(const point& position) const;
+	/**
+	 * Wrapper function around `pango_layout_xy_to_index`.
+	 *
+	 * @param position            The pixel position in the text area.
+	 *
+	 * @returns                   A tuple of the format `{index, trailing, inside_bounds}`
+	 *                            where `index` and `trailing` are as described in
+	 *                            <a href='https://docs.gtk.org/Pango/method.Layout.xy_to_index.html'>Pango documention</a>
+	 *                            for `pango_layout_xy_to_index`, and `inside_bounds`
+	 *                            is `true` if the given position is inside the pango layout,
+	 *                            and `false` otherwise.
+	 */
+	std::tuple<int, int, bool> xy_to_index(const point& position) const;
 
 	/**
 	 * Retrieves a list of strings with contents for each rendered line.
@@ -248,13 +272,18 @@ public:
 
 	/**
 	 * Given a byte index, find out at which line the corresponding character
-	 * is located.
+	 * is located. Wrapper for `pango_layout_index_to_line_x`.
 	 *
 	 * @param offset   the byte index
 	 *
-	 * @returns        the line number corresponding to the given index
+	 * @param trailing which edge the counting starts from
+	 *                 true: trailing edge, false: leading edge.
+	 *
+	 * @returns        a pair of the form `{line, xpos}`
+	 *                 where `line` is the line number corresponding to the given index
+	 *                 and `xpos` is the resulting x position.
 	 */
-	int get_line_num_from_offset(const unsigned offset);
+	std::pair<int, int> index_to_line_x(const unsigned offset, const bool trailing = 0) const;
 
 	/**
 	 * Get number of lines in the text.
@@ -262,7 +291,9 @@ public:
 	 * @returns                   The number of lines in the text.
 	 *
 	 */
-	unsigned get_lines_count() const { return pango_layout_get_line_count(layout_.get()); };
+	unsigned get_lines_count() const {
+		return pango_layout_get_line_count(layout_.get());
+	};
 
 	/**
 	 * Gets the length of the text in bytes.
@@ -318,74 +349,14 @@ public:
 
 	pango_text& set_add_outline(bool do_add);
 
-	// The following add attribute methods are thin wrappers around the corresponding pango
-	// add attribute methods. For more details, refer to the Pango docs.
+	pango_text& set_line_spacing(float line_spacing)
+	{
+		pango_layout_set_line_spacing(layout_.get(), line_spacing);
+		return *this;
+	}
 
-	/**
-	 * Add pango font weight attribute to a specific portion of text. This changes the font weight
-	 * of the corresponding part of the text.
-	 * @param start_offset        Byte index of the cursor where font weight change starts
- 	 * @param end_offset          Byte index of the cursor where font weight change ends
- 	 * @param weight              Pango font weight
-	 */
-	void add_attribute_weight(const unsigned start_offset, const unsigned end_offset, PangoWeight weight);
-
-	/**
-	 * Add pango font style attribute to a specific portion of text, used to set italic/oblique text
-	 * @param start_offset        Byte index of the cursor where font style change starts
- 	 * @param end_offset          Byte index of the cursor where font style change ends
- 	 * @param style               Pango font style (normal/italic/oblique)
-	 */
-	void add_attribute_style(const unsigned start_offset, const unsigned end_offset, PangoStyle style);
-
-	/**
-	 * Add pango underline attribute to a specific portion of text. This adds an underline to the
-	 * corresponding part of the text.
-	 * @param start_offset        Byte index of the cursor where underline starts
- 	 * @param end_offset          Byte index of the cursor where underline change ends
- 	 * @param underline           Pango underline style
-	 */
-	void add_attribute_underline(const unsigned start_offset, const unsigned end_offset, PangoUnderline underline);
-
-	/**
-	 * Add pango fg color attribute to a specific portion of text. This changes the foreground
-	 * color of the corresponding part of the text.
-	 * @param start_offset        Byte index of the cursor where color change starts
- 	 * @param end_offset          Byte index of the cursor where color change ends
- 	 * @param color               Foreground color
-	 */
-	void add_attribute_fg_color(const unsigned start_offset, const unsigned end_offset, const color_t& color);
-
-	/**
-	 * Mark a specific portion of text for highlighting. Used for selection box.
-	 * BGColor is set in set_text(), this just marks the area to be colored.
-	 * Markup not used because the user may enter their own markup or special characters
-	 * @param start_offset        Byte index of the cursor where selection/highlight starts
- 	 * @param end_offset          Byte index of the cursor where selection/highlight ends
- 	 * @param color               Highlight/Background color
-	 */
-	void add_attribute_bg_color(const unsigned start_offset, const unsigned end_offset, const color_t& color);
-
-	/**
-	 * Add pango font size attribute to a specific portion of text. This changes the font size
-	 * of the corresponding part of the text.
-	 * @param start_offset        Byte index of the cursor where size change starts
- 	 * @param end_offset          Byte index of the cursor where size change ends
- 	 * @param size                Font size
-	 */
-	void add_attribute_size(const unsigned start_offset, const unsigned end_offset, int size);
-
-	/**
-	 * Add pango font family attribute to a specific portion of text. This changes
-	 * the font family of the corresponding part of the text.
-	 * @param start_offset        Byte index of the cursor where size change starts
- 	 * @param end_offset          Byte index of the cursor where size change ends
- 	 * @param family              The font family
-	 */
-	void add_attribute_font_family(const unsigned start_offset, const unsigned end_offset, std::string family);
-
-	/** Clears all attributes from the global attribute list */
-	void clear_attribute_list();
+	void clear_attributes();
+	void apply_attributes(const font::attribute_list& attrs);
 
 private:
 
@@ -484,16 +455,6 @@ private:
 	/** Length of the text. */
 	mutable std::size_t length_;
 
-	unsigned attribute_start_offset_;
-	unsigned attribute_end_offset_;
-	color_t	highlight_color_;
-
-	/**
-	 * Global pango attribute list. All attributes in this list
-	 * will be applied one by one to the text
-	 */
-	PangoAttrList* global_attribute_list_;
-
 	/** The pixel scale, used to render high-DPI text. */
 	int pixel_scale_;
 
@@ -525,13 +486,13 @@ private:
 	 * @param viewport The area to draw, which can be a subset of the text. This
 	 * rectangle's coordinates use render-space's scale.
 	 */
-	surface create_surface(const SDL_Rect& viewport);
+	surface create_surface(const rect& viewport);
 
 	/**
 	 * This is part of create_surface(viewport). The separation is a legacy
 	 * from workarounds to the size limits of cairo_surface_t.
 	 */
-	void render(PangoLayout& layout, const SDL_Rect& viewport, const unsigned stride);
+	void render(PangoLayout& layout, const rect& viewport);
 
 	/**
 	 * Buffer to store the image on.
@@ -602,7 +563,7 @@ pango_text& get_text_renderer();
  *                                font. More specifically, the result is the sum of the maximum
  *                                ascent and descent lengths.
  */
-int get_max_height(unsigned size, font::family_class fclass = font::FONT_SANS_SERIF, pango_text::FONT_STYLE style = pango_text::STYLE_NORMAL);
+int get_max_height(unsigned size, font::family_class fclass = font::family_class::sans_serif, pango_text::FONT_STYLE style = pango_text::STYLE_NORMAL);
 
 /* Returns the default line spacing factor
  * For now hardcoded here */

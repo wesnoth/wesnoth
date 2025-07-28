@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -27,6 +27,7 @@
 #include "deprecation.hpp"
 #include "game_version.hpp"
 #include "serialization/string_utils.hpp"
+#include "utils/general.hpp"
 
 #include <algorithm>
 #include <cstring>
@@ -111,14 +112,14 @@ config& config::operator=(const config& cfg)
 	return *this;
 }
 
-config::config(config&& cfg)
+config::config(config&& cfg) noexcept
 	: values_(std::move(cfg.values_))
 	, children_(std::move(cfg.children_))
 	, ordered_children(std::move(cfg.ordered_children))
 {
 }
 
-config& config::operator=(config&& cfg)
+config& config::operator=(config&& cfg) noexcept
 {
 	clear();
 	swap(cfg);
@@ -170,21 +171,6 @@ void config::append_children(const config& cfg)
 	}
 }
 
-void config::append_children(config&& cfg)
-{
-	if(children_.empty()) {
-		//optimisation
-		children_ = std::move(cfg.children_);
-		ordered_children = std::move(cfg.ordered_children);
-		cfg.clear_all_children();
-		return;
-	}
-	for(const auto [child_key, child_value] : cfg.all_children_view()) {
-		add_child(child_key, std::move(child_value));
-	}
-	cfg.clear_all_children();
-}
-
 void config::append_attributes(const config& cfg)
 {
 	for(const auto& [key, value] : cfg.values_) {
@@ -209,7 +195,18 @@ void config::append(const config& cfg)
 
 void config::append(config&& cfg)
 {
-	append_children(std::move(cfg));
+	if(children_.empty()) {
+		//optimisation
+		children_ = std::move(cfg.children_);
+		ordered_children = std::move(cfg.ordered_children);
+		cfg.clear_all_children();
+	}
+	else {
+		for(const auto [child_key, child_value] : cfg.all_children_view()) {
+			add_child(child_key, std::move(child_value));
+		}
+		cfg.clear_all_children();
+	}
 
 	if(values_.empty()) {
 		//optimisation.
@@ -498,10 +495,10 @@ config& config::add_child_at(config_key_type key, const config& val, std::size_t
 	return *v[index];
 }
 
-size_t config::find_total_first_of(config_key_type key, size_t start)
+std::size_t config::find_total_first_of(config_key_type key, std::size_t start)
 {
 	assert(start <= ordered_children.size());
-	const size_t npos = static_cast<size_t>(-1);
+	const std::size_t npos = static_cast<std::size_t>(-1);
 
 	auto pos = std::find_if(ordered_begin() + start, ordered_end(), [&](const config::any_child& can){ return can.key == key; });
 
@@ -509,7 +506,7 @@ size_t config::find_total_first_of(config_key_type key, size_t start)
 		return npos;
 	}
 
-	return static_cast<size_t>(pos - ordered_begin());
+	return static_cast<std::size_t>(pos - ordered_begin());
 }
 
 config& config::add_child_at_total(config_key_type key, const config &val, std::size_t pos)
@@ -573,10 +570,7 @@ void config::clear_children_impl(config_key_type key)
 	if(i == children_.end())
 		return;
 
-	ordered_children.erase(
-		std::remove_if(ordered_children.begin(), ordered_children.end(), remove_ordered(i)),
-		ordered_children.end());
-
+	utils::erase_if(ordered_children, remove_ordered{i});
 	children_.erase(i);
 }
 
@@ -587,9 +581,7 @@ void config::splice_children(config& src, config_key_type key)
 		return;
 	}
 
-	src.ordered_children.erase(
-		std::remove_if(src.ordered_children.begin(), src.ordered_children.end(), remove_ordered(i_src)),
-		src.ordered_children.end());
+	utils::erase_if(src.ordered_children, remove_ordered{i_src});
 
 	auto i_dst = map_get(children_, key);
 	child_list& dst = i_dst->second;
@@ -655,7 +647,7 @@ void config::remove_child(config_key_type key, std::size_t index)
 	remove_child(i, index);
 }
 
-void config::remove_children(config_key_type key, std::function<bool(const config&)> p)
+void config::remove_children(config_key_type key, const std::function<bool(const config&)>& p)
 {
 	child_map::iterator pos = children_.find(key);
 	if(pos == children_.end()) {
@@ -790,17 +782,11 @@ optional_config config::find_child(config_key_type key, const std::string& name,
 	const child_map::iterator i = children_.find(key);
 	if(i == children_.end()) {
 		DBG_CF << "Key ‘" << name << "’ value ‘" << value << "’ pair not found as child of key ‘" << key << "’.";
-
-
 		return utils::nullopt;
 	}
 
-	const child_list::iterator j = std::find_if(i->second.begin(), i->second.end(),
-		[&](const std::unique_ptr<config>& pcfg) {
-			const config& cfg = *pcfg;
-			return cfg[name] == value;
-		}
-	);
+	const child_list::iterator j = utils::ranges::find(i->second, value,
+		[&](const std::unique_ptr<config>& pcfg) { return (*pcfg)[name]; });
 
 	if(j != i->second.end()) {
 		return **j;

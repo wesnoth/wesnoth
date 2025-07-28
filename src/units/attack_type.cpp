@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -30,6 +30,7 @@
 #include "lexical_cast.hpp"
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
+#include "serialization/markup.hpp"
 #include "gettext.hpp"
 #include "utils/math.hpp"
 
@@ -59,7 +60,7 @@ attack_type::attack_type(const config& cfg)
 	, range_(cfg["range"])
 	, min_range_(cfg["min_range"].to_int(1))
 	, max_range_(cfg["max_range"].to_int(1))
-	, alignment_str_(cfg["alignment"].str())
+	, alignment_(unit_alignments::get_enum(cfg["alignment"].str()))
 	, damage_(cfg["damage"].to_int())
 	, num_attacks_(cfg["number"].to_int())
 	, attack_weight_(cfg["attack_weight"].to_double(1.0))
@@ -82,15 +83,6 @@ attack_type::attack_type(const config& cfg)
 	}
 }
 
-std::string attack_type::alignment_str() const
-{
-	if (alignment()){
-		return unit_alignments::get_string(*alignment());
-	}
-	//if not alignment() fallback to unit alignment or return empty string if not available.
-	return (self_ ? unit_alignments::get_string(self_->alignment()) : "");
-}
-
 std::string attack_type::accuracy_parry_description() const
 {
 	if(accuracy_ == 0 && parry_ == 0) {
@@ -105,6 +97,23 @@ std::string attack_type::accuracy_parry_description() const
 	}
 
 	return s.str();
+}
+
+std::string attack_type::accuracy_parry_tooltip() const
+{
+	if(accuracy_ == 0 && parry_ == 0) {
+		return "";
+	}
+
+	std::stringstream tooltip;
+	if (accuracy_) {
+		tooltip << _("Accuracy:") << " " << markup::bold(utils::signed_percent(accuracy_)) << "\n";
+	}
+	if (parry_) {
+		tooltip << _("Parry:") << " " << markup::bold(utils::signed_percent(parry_));
+	}
+
+	return tooltip.str();
 }
 
 /**
@@ -125,12 +134,7 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 	const std::set<std::string> filter_alignment = utils::split_set(filter["alignment"].str());
 	const std::set<std::string> filter_name = utils::split_set(filter["name"].str());
 	const std::set<std::string> filter_type = utils::split_set(filter["type"].str());
-	const std::vector<std::string> filter_special = utils::split(filter["special"]);
-	const std::vector<std::string> filter_special_id = utils::split(filter["special_id"]);
-	const std::vector<std::string> filter_special_type = utils::split(filter["special_type"]);
-	const std::vector<std::string> filter_special_active = utils::split(filter["special_active"]);
-	const std::vector<std::string> filter_special_id_active = utils::split(filter["special_id_active"]);
-	const std::vector<std::string> filter_special_type_active = utils::split(filter["special_type_active"]);
+	const std::set<std::string> filter_base_type = utils::split_set(filter["base_type"].str());
 	const std::string filter_formula = filter["formula"];
 
 	if (!filter_min_range.empty() && !in_ranges(attack.min_range(), utils::parse_ranges_int(filter_min_range)))
@@ -177,85 +181,39 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 			}
 		} else {
 			//if the type is different from "damage_type" then damage_type() can be called for safe checking.
-			std::pair<std::string, std::string> damage_type = attack.damage_type();
-			if (filter_type.count(damage_type.first) == 0 && filter_type.count(damage_type.second) == 0){
+			if (filter_type.count(attack.effective_damage_type().first) == 0){
 				return false;
 			}
 		}
 	}
 
-	if(!filter_special.empty()) {
+	if ( !filter_base_type.empty() && filter_base_type.count(attack.type()) == 0 )
+		return false;
+
+	if(filter.has_attribute("special")) {
 		deprecated_message("special=", DEP_LEVEL::PREEMPTIVE, {1, 17, 0}, "Please use special_id or special_type instead");
-		bool found = false;
-		for(auto& special : filter_special) {
-			if(attack.has_special(special, true)) {
-				found = true;
-				break;
-			}
-		}
-		if(!found) {
-			return false;
-		}
 	}
-	if(!filter_special_id.empty()) {
-		bool found = false;
-		for(auto& special : filter_special_id) {
-			if(attack.has_special(special, true, true, false)) {
-				found = true;
-				break;
-			}
-		}
-		if(!found) {
+
+	if(filter.has_attribute("special") || filter.has_attribute("special_id") || filter.has_attribute("special_type")) {
+		if(!attack.has_filter_special_or_ability(filter, true)) {
 			return false;
 		}
 	}
 
-	if(!filter_special_active.empty()) {
+	if(filter.has_attribute("special_active")) {
 		deprecated_message("special_active=", DEP_LEVEL::PREEMPTIVE, {1, 17, 0}, "Please use special_id_active or special_type_active instead");
-		bool found = false;
-		for(auto& special : filter_special_active) {
-			if(attack.has_special(special, false)) {
-				found = true;
-				break;
-			}
-		}
-		if(!found) {
+	}
+
+	if(filter.has_attribute("special_active") || filter.has_attribute("special_id_active") || filter.has_attribute("special_type_active")) {
+		if(!attack.has_filter_special_or_ability(filter)) {
 			return false;
 		}
 	}
-	if(!filter_special_id_active.empty()) {
-		bool found = false;
-		for(auto& special : filter_special_id_active) {
-			if(attack.has_special_or_ability(special, true, false)) {
-				found = true;
-				break;
-			}
-		}
-		if(!found) {
-			return false;
-		}
-	}
-	if(!filter_special_type.empty()) {
-		bool found = false;
-		for(auto& special : filter_special_type) {
-			if(attack.has_special(special, true, false)) {
-				found = true;
-				break;
-			}
-		}
-		if(!found) {
-			return false;
-		}
-	}
-	if(!filter_special_type_active.empty()) {
-		bool found = false;
-		for(auto& special : filter_special_type_active) {
-			if(attack.has_special_or_ability(special, false)) {
-				found = true;
-				break;
-			}
-		}
-		if(!found) {
+
+	//children filter_special are checked later,
+	//but only when the function doesn't return earlier
+	if(auto sub_filter_special = filter.optional_child("filter_special")) {
+		if(!attack.has_special_or_ability_with_filter(*sub_filter_special)) {
 			return false;
 		}
 	}
@@ -263,7 +221,8 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 	if (!filter_formula.empty()) {
 		try {
 			const wfl::attack_type_callable callable(attack);
-			const wfl::formula form(filter_formula, new wfl::gamestate_function_symbol_table);
+			wfl::gamestate_function_symbol_table symbols;
+			const wfl::formula form(filter_formula, &symbols);
 			if(!form.evaluate(callable).as_bool()) {
 				return false;
 			}
@@ -306,6 +265,18 @@ bool attack_type::matches_filter(const config& filter, const std::string& check_
 	return matches;
 }
 
+void attack_type::remove_special_by_filter(const config& filter)
+{
+	config::all_children_iterator i = specials_.ordered_begin();
+	while (i != specials_.ordered_end()) {
+		if(special_matches_filter(i->cfg, i->key, filter)) {
+			i = specials_.erase(i);
+		} else {
+			++i;
+		}
+	}
+}
+
 /**
  * Modifies *this using the specifications in @a cfg, but only if *this matches
  * @a cfg viewed as a filter.
@@ -330,6 +301,7 @@ bool attack_type::apply_modification(const config& cfg)
 	const std::string& set_min_range = cfg["set_min_range"];
 	const std::string& increase_max_range = cfg["increase_max_range"];
 	const std::string& set_max_range = cfg["set_max_range"];
+	auto remove_specials = cfg.optional_child("remove_specials");
 	const std::string& increase_damage = cfg["increase_damage"];
 	const std::string& set_damage = cfg["set_damage"];
 	const std::string& increase_attacks = cfg["increase_attacks"];
@@ -364,7 +336,7 @@ bool attack_type::apply_modification(const config& cfg)
 	}
 
 	if(set_attack_alignment.empty() == false) {
-		alignment_str_ = set_attack_alignment;
+		alignment_ = unit_alignments::get_enum(set_attack_alignment);
 	}
 
 	if(set_icon.empty() == false) {
@@ -413,6 +385,10 @@ bool attack_type::apply_modification(const config& cfg)
 
 	if(increase_max_range.empty() == false) {
 		max_range_ = utils::apply_modifier(max_range_, increase_max_range);
+	}
+
+	if(remove_specials) {
+		remove_special_by_filter(*remove_specials);
 	}
 
 	if(set_damage.empty() == false) {
@@ -671,7 +647,7 @@ attack_type::recursion_guard::recursion_guard(const attack_type& weapon, const c
 	parent->open_queries_.emplace_back(&special);
 }
 
-attack_type::recursion_guard::recursion_guard(attack_type::recursion_guard&& other)
+attack_type::recursion_guard::recursion_guard(attack_type::recursion_guard&& other) noexcept
 {
 	std::swap(parent, other.parent);
 }
@@ -680,7 +656,7 @@ attack_type::recursion_guard::operator bool() const {
 	return bool(parent);
 }
 
-attack_type::recursion_guard& attack_type::recursion_guard::operator=(attack_type::recursion_guard&& other)
+attack_type::recursion_guard& attack_type::recursion_guard::operator=(attack_type::recursion_guard&& other) noexcept
 {
 	// This is only intended to move ownership to a longer-living variable. Assigning to an instance that
 	// already has a parent implies that the caller is going to recurse and needs a recursion allocation,
@@ -710,7 +686,7 @@ void attack_type::write(config& cfg) const
 	cfg["range"] = range_;
 	cfg["min_range"] = min_range_;
 	cfg["max_range"] = max_range_;
-	cfg["alignment"] = alignment_str_;
+	cfg["alignment"] = alignment_str();
 	cfg["damage"] = damage_;
 	cfg["number"] = num_attacks_;
 	cfg["attack_weight"] = attack_weight_;

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -20,7 +20,7 @@
 
 #pragma once
 
-#include <ctime>
+#include <chrono>
 #include <cstdint>
 #include <fstream>
 #include <iosfwd>
@@ -153,6 +153,8 @@ std::string get_credentials_file();
 std::string get_default_prefs_file();
 std::string get_save_index_file();
 std::string get_lua_history_file();
+/** location of the game manual file correponding to the given locale (default: en) */
+utils::optional<std::string> get_game_manual_file(const std::string& locale_code = "en");
 /**
  * parent directory for everything that should be synced between systems.
  * implemented due to limitations of Steam's AutoCloud (non-SDK) syncing, but will also simplify things if it's ever added for any other platforms.
@@ -272,7 +274,7 @@ bool is_directory(const std::string& fname);
 bool file_exists(const std::string& name);
 
 /** Get the modification time of a file. */
-std::time_t file_modified_time(const std::string& fname);
+std::chrono::system_clock::time_point file_modified_time(const std::string& fname);
 
 /** Returns true if the file ends with the mapfile extension. */
 bool is_map(const std::string& filename);
@@ -307,13 +309,12 @@ bool is_legal_user_file_name(const std::string& name, bool allow_whitespace = tr
 
 struct file_tree_checksum
 {
-	file_tree_checksum();
+	file_tree_checksum() = default;
 	explicit file_tree_checksum(const config& cfg);
 	void write(config& cfg) const;
-	void reset() {nfiles = 0;modified = 0;sum_size=0;}
 	// @todo make variables private!
-	std::size_t nfiles, sum_size;
-	std::time_t modified;
+	std::size_t nfiles{}, sum_size{};
+	std::chrono::system_clock::time_point modified{};
 	bool operator==(const file_tree_checksum &rhs) const;
 	bool operator!=(const file_tree_checksum &rhs) const
 	{ return !operator==(rhs); }
@@ -377,9 +378,9 @@ std::string normalize_path(const std::string& path,
 						   bool resolve_dot_entries = false);
 
 /** Helper function to convert absolute path to wesnoth relative path */
-bool to_asset_path(std::string& abs_path,
-                   std::string addon_id,
-                   std::string asset_type);
+utils::optional<std::string> to_asset_path(const std::string& abs_path,
+                                           const std::string& addon_id,
+                                           const std::string& asset_type);
 
 /**
  * Sanitizes a path to remove references to the user's name.
@@ -501,6 +502,7 @@ std::string get_program_invocation(const std::string &program_name);
  * Returns the localized version of the given filename, if it exists.
  */
 utils::optional<std::string> get_localized_path(const std::string& file, const std::string& suff = "");
+utils::optional<std::string> get_localized_path(const utils::optional<std::string>& base_path);
 
 /**
  * Returns the add-on ID from a path.

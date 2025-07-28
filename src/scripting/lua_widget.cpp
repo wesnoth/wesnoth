@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2024
+	Copyright (C) 2009 - 2025
 	by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -18,6 +18,7 @@
 
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/multi_page.hpp"
+#include "gui/widgets/stacked_widget.hpp"
 #include "gui/widgets/tree_view.hpp"
 #include "gui/widgets/tree_view_node.hpp"
 #include "gui/widgets/widget.hpp"
@@ -194,6 +195,8 @@ static int impl_widget_length(lua_State* L)
 		lua_pushinteger(L, list->get_item_count());
 	} else if(gui2::multi_page* multi_page = dynamic_cast<gui2::multi_page*>(&w)) {
 		lua_pushinteger(L, multi_page->get_page_count());
+	} else if(gui2::stacked_widget* stacked_widget = dynamic_cast<gui2::stacked_widget*>(&w)) {
+		lua_pushinteger(L, stacked_widget->get_layer_count());
 	} else if(gui2::tree_view* tree_view = dynamic_cast<gui2::tree_view*>(&w)) {
 		lua_pushinteger(L, tree_view->get_root_node().count_children());
 	} else if(gui2::tree_view_node* tree_view_node = dynamic_cast<gui2::tree_view_node*>(&w)) {

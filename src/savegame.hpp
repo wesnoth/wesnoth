@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by Jörg Hinrichs, David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -77,7 +77,7 @@ struct load_game_metadata
 };
 
 /**
-* Exception used to signal that the user has decided to abortt a game,
+* Exception used to signal that the user has decided to abort a game,
 * and to load another game instead.
 */
 class load_game_exception final
@@ -86,7 +86,7 @@ class load_game_exception final
 public:
 	explicit load_game_exception(load_game_metadata&& data)
 		: lua_jailbreak_exception()
-		, data_(data)
+		, data_(std::move(data))
 	{
 		this->store();
 	}

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -69,6 +69,7 @@ mp_join_game::mp_join_game(saved_game& state, wesnothd_connection& connection, c
 	, flg_dialog_(nullptr)
 {
 	set_show_even_without_video(true);
+	set_allow_plugin_skip(false);
 }
 
 mp_join_game::~mp_join_game()
@@ -86,7 +87,7 @@ bool mp_join_game::fetch_game_config()
 {
 	// Ask for the next scenario data, if applicable
 	if(!first_scenario_) {
-		mp::send_to_server(config("load_next_scenario"));
+		mp::send_to_server(config{"load_next_scenario"});
 	}
 
 	bool has_scenario_and_controllers = false;
@@ -214,7 +215,8 @@ static std::string generate_user_description(const config& side)
 
 	const std::string controller_type = side["controller"].str();
 	const std::string reservation = side["current_player"].str();
-	const std::string owner = side["player_id"].str();
+	// Making this string const means it can't be automatically moved when returned from this method
+	std::string owner = side["player_id"].str();
 
 	if(controller_type == side_controller::ai) {
 		return _("Computer Player");
@@ -311,7 +313,8 @@ bool mp_join_game::show_flg_select(int side_num, bool first_time)
 		const bool use_map_settings = level_.mandatory_child("multiplayer")["mp_use_map_settings"].to_bool();
 		const saved_game_mode::type saved_game = saved_game_mode::get_enum(level_.mandatory_child("multiplayer")["savegame"].str()).value_or(saved_game_mode::type::no);
 
-		ng::flg_manager flg(era_factions, *side_choice, lock_settings, use_map_settings, saved_game == saved_game_mode::type::midgame);
+		const auto era_info = ng::era_metadata(*era);
+		ng::flg_manager flg(era_info, era_factions, *side_choice, lock_settings, use_map_settings, saved_game == saved_game_mode::type::midgame);
 
 		{
 			gui2::dialogs::faction_select flg_dialog(flg, color, side_num);
@@ -322,8 +325,7 @@ bool mp_join_game::show_flg_select(int side_num, bool first_time)
 			}
 		}
 
-		config faction;
-		config& change = faction.add_child("change_faction");
+		config change;
 		change["change_faction"] = true;
 		change["name"] = prefs::get().login();
 		change["faction"] = flg.current_faction()["id"];
@@ -332,7 +334,7 @@ bool mp_join_game::show_flg_select(int side_num, bool first_time)
 		// TODO: the host cannot yet handle this and always uses the first side owned by that player.
 		change["side_num"] = side_num;
 
-		mp::send_to_server(faction);
+		mp::send_to_server(config{"change_faction", std::move(change)});
 	}
 
 	return true;
@@ -385,8 +387,10 @@ void mp_join_game::generate_side_list()
 		data.emplace("side_number", item);
 
 		std::string leader_image = ng::random_enemy_picture;
-		std::string leader_type = side["type"];
-		std::string leader_gender = side["gender"];
+
+		const config& leader = side.child_or_empty("leader");
+		std::string leader_type = leader["type"];
+		std::string leader_gender = leader["gender"];
 		std::string leader_name;
 
 		// If there is a unit which can recruit, use it as a leader.
@@ -486,9 +490,7 @@ void mp_join_game::generate_side_list()
 void mp_join_game::close_faction_select_dialog_if_open()
 {
 	if(flg_dialog_) {
-		if(window* w = flg_dialog_->get_window()) {
-			w->set_retval(retval::CANCEL);
-		}
+		flg_dialog_->set_retval(retval::CANCEL);
 	}
 }
 
@@ -577,14 +579,10 @@ void mp_join_game::post_show()
 	}
 
 	if(get_retval() == retval::OK) {
-
 		mp::level_to_gamestate(level_, state_);
-
 		mp::ui_alerts::game_has_begun();
-	} else if(observe_game_) {
-		mp::send_to_server(config("observer_quit", config { "name", prefs::get().login() }));
 	} else {
-		mp::send_to_server(config("leave_game"));
+		mp::send_to_server(config{"leave_game"});
 	}
 }
 

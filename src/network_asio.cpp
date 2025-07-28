@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2011 - 2024
+	Copyright (C) 2011 - 2025
 	by Sergey Popov <loonycyborg@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -37,7 +37,7 @@ static lg::log_domain log_network("network");
 
 namespace
 {
-std::deque<boost::asio::const_buffer> split_buffer(boost::asio::streambuf::const_buffers_type source_buffer)
+std::deque<boost::asio::const_buffer> split_buffer(const boost::asio::streambuf::const_buffers_type& source_buffer)
 {
 	const unsigned int chunk_size = 4096;
 
@@ -103,7 +103,7 @@ connection::~connection()
 	}
 }
 
-void connection::handle_resolve(const boost::system::error_code& ec, results_type results)
+void connection::handle_resolve(const boost::system::error_code& ec, const results_type& results)
 {
 	if(ec) {
 		throw system_error(ec);
@@ -235,7 +235,7 @@ void connection::transfer(const config& request, config& response)
 	write_buf_.reset(new boost::asio::streambuf);
 	read_buf_.reset(new boost::asio::streambuf);
 	std::ostream os(write_buf_.get());
-	write_gz(os, request);
+	io::write_gz(os, request);
 
 	bytes_to_write_ = write_buf_->size() + 4;
 	bytes_written_ = 0;
@@ -344,6 +344,6 @@ void connection::handle_read(const boost::system::error_code& ec, std::size_t by
 	}
 
 	std::istream is(read_buf_.get());
-	read_gz(response, is);
+	response = io::read_gz(is);
 }
 }

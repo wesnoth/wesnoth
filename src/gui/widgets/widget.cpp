@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2007 - 2024
+	Copyright (C) 2007 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -360,16 +360,16 @@ void widget::set_linked_group(const std::string& linked_group)
 
 /***** ***** ***** ***** Drawing functions. ***** ***** ***** *****/
 
-SDL_Rect widget::calculate_blitting_rectangle() const
+rect widget::calculate_blitting_rectangle() const
 {
 	return get_rectangle();
 }
 
-SDL_Rect widget::calculate_clipping_rectangle() const
+rect widget::calculate_clipping_rectangle() const
 {
 	switch(get_drawing_action()) {
 	case redraw_action::none:
-		return sdl::empty_rect;
+		return {};
 	case redraw_action::partly:
 		return clipping_rectangle_;
 	case redraw_action::full:
@@ -442,13 +442,13 @@ bool widget::draw_foreground()
 	return impl_draw_foreground();
 }
 
-SDL_Rect widget::get_dirty_rectangle() const
+rect widget::get_dirty_rectangle() const
 {
 	return redraw_action_ == redraw_action::full ? get_rectangle()
 												  : clipping_rectangle_;
 }
 
-void widget::set_visible_rectangle(const SDL_Rect& rectangle)
+void widget::set_visible_rectangle(const rect& rectangle)
 {
 	clipping_rectangle_ = get_rectangle().intersect(rectangle);
 
@@ -557,13 +557,12 @@ const widget* widget::find_at(const point& coordinate,
 	return is_at(coordinate, must_be_active) ? this : nullptr;
 }
 
-widget* widget::find(const std::string& id, const bool /*must_be_active*/)
+widget* widget::find(const std::string_view id, const bool /*must_be_active*/)
 {
 	return id_ == id ? this : nullptr;
 }
 
-const widget* widget::find(const std::string& id,
-							 const bool /*must_be_active*/) const
+const widget* widget::find(const std::string_view id, const bool /*must_be_active*/) const
 {
 	return id_ == id ? this : nullptr;
 }

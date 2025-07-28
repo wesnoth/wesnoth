@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -69,7 +69,7 @@ public:
 	locator(const std::string& filename, const map_location& loc, int center_x, int center_y, const std::string& modifications = "");
 
 	locator& operator=(const locator& a) = default;
-	locator& operator=(locator&&) = default;
+	locator& operator=(locator&&) noexcept = default;
 
 	/** Returns a copy of this locator with the given IPF */
 	locator clone(const std::string& mods) const;
@@ -102,7 +102,7 @@ private:
 	int center_y_ = 0;
 
 public:
-	friend struct std::hash<locator>;
+	friend std::size_t hash_value(const locator&);
 };
 
 // write a readable representation of a locator, mostly for debugging
@@ -120,14 +120,23 @@ std::ostream& operator<<(std::ostream&, const locator&);
  *  7-12: convex half-corners 1
  * 13-19: convex half-corners 2
  */
-typedef std::basic_string<signed char> light_string;
+struct light_adjust
+{
+	light_adjust(int op, int r, int g, int b);
 
-/**
- * Returns the light_string for one light operation.
- *
- * See light_string for more information.
- */
-light_string get_light_string(int op, int r, int g, int b);
+	int8_t l;
+	int8_t r;
+	int8_t g;
+	int8_t b;
+
+#ifdef __cpp_impl_three_way_comparison
+	auto operator<=>(const light_adjust&) const = default;
+#else
+	// TODO C++20: default these (╯°□°)╯︵ ┻━┻
+	bool operator==(const light_adjust& o) const;
+	bool operator!=(const light_adjust& o) const { return !operator==(o); }
+#endif
+};
 
 /**
  * Purges all image caches.
@@ -214,8 +223,8 @@ texture get_texture(const image::locator& i_locator, scale_quality quality,
  * @param i_locator            Image path.
  * @param ls                   Light map to apply to the image.
  */
-surface get_lighted_image(const image::locator& i_locator, const light_string& ls);
-texture get_lighted_texture(const image::locator& i_locator, const light_string& ls);
+surface get_lighted_image(const image::locator& i_locator, const std::vector<light_adjust>& ls);
+texture get_lighted_texture(const image::locator& i_locator, const std::vector<light_adjust>& ls);
 
 /**
  * Retrieves the standard hexagonal tile mask.
@@ -269,4 +278,4 @@ enum class save_result
 save_result save_image(const locator& i_locator, const std::string& outfile);
 save_result save_image(const surface& surf, const std::string& outfile);
 
-}
+} // namespace image

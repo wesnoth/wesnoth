@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -166,8 +166,9 @@ struct builder_toggle_button : public builder_styled_widget
 
 	virtual std::unique_ptr<widget> build() const override;
 
+	std::string icon_name;
+
 private:
-	std::string icon_name_;
 	std::string retval_id_;
 	int retval_;
 };

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2024
+	Copyright (C) 2009 - 2025
 	by Yurii Chernyi <terraninfo@terraninfo.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -61,11 +61,11 @@ public:
 
 	virtual ~base_property_handler() {}
 
-	virtual component* handle_get(const path_element &child) = 0;
+	virtual component* handle_get(const path_element &child) const = 0;
 	virtual bool handle_change(const path_element &child, config cfg) = 0;
 	virtual bool handle_add(const path_element &child, const config &cfg) = 0;
 	virtual bool handle_delete(const path_element &child) = 0;
-	virtual std::vector< component* > handle_get_children() = 0;
+	virtual std::vector<component*> handle_get_children() const = 0;
 };
 
 typedef std::shared_ptr< base_property_handler > property_handler_ptr;
@@ -76,10 +76,11 @@ public:
 	typedef std::shared_ptr<T> ptr;
 	typedef std::vector< std::shared_ptr<T>> ptr_vector;
 
-	vector_property_handler(const std::string &property, ptr_vector &values, std::function<void(ptr_vector&, const config&)> &construction_factory)
+	template<typename Factory>
+	vector_property_handler(const std::string &property, ptr_vector &values, Factory&& construction_factory)
 		: factory_(construction_factory), property_(property), values_(values){}
 
-	component* handle_get(const path_element &child)
+	component* handle_get(const path_element &child) const
 	{
 		typename ptr_vector::iterator i = std::find_if(values_.begin(),values_.end(),path_element_matches<ptr>(child));
 		if (i!=values_.end()){
@@ -129,7 +130,7 @@ public:
 		return false;
 	}
 
-	std::vector<component*> handle_get_children()
+	std::vector<component*> handle_get_children() const
 	{
 		std::vector<component*> children;
 		for (ptr v : values_) {
@@ -171,13 +172,14 @@ class facets_property_handler : public vector_property_handler<T> {
 	typedef typename vector_property_handler<T>::ptr_vector ptr_vector;
 public:
 
-	facets_property_handler(const std::string &property, ptr_vector &values, ptr& def, std::function<void(ptr_vector&, const config&)> &construction_factory)
+	template<typename Factory>
+	facets_property_handler(const std::string &property, ptr_vector &values, ptr& def, Factory&& construction_factory)
 		: vector_property_handler<T>(property, values, construction_factory)
 		, default_(def)
 	{
 	}
 
-	component* handle_get(const path_element &child)
+	component* handle_get(const path_element &child) const
 	{
 		// special case - 'get the default facet'
 		if (child.id == "default_facet") {
@@ -198,7 +200,7 @@ public:
 		return vector_property_handler<T>::handle_change(child, cfg);
 	}
 
-	std::vector<component*> handle_get_children()
+	std::vector<component*> handle_get_children() const
 	{
 		std::vector<component*> children = vector_property_handler<T>::handle_get_children();
 		children.push_back(default_.get());
@@ -215,12 +217,13 @@ public:
 	typedef std::shared_ptr<T> ptr;
 	typedef std::map< std::string, ptr > aspect_map;
 
-	aspect_property_handler(const std::string &property, aspect_map &aspects, std::function<void(aspect_map&, const config&, std::string)> &construction_factory)
+	template<typename Factory>
+	aspect_property_handler(const std::string &property, aspect_map &aspects, Factory&& construction_factory)
 		: property_(property), aspects_(aspects), factory_(construction_factory)
 	{
 	}
 
-	component* handle_get(const path_element &child)
+	component* handle_get(const path_element &child) const
 	{
 		typename aspect_map::const_iterator a = aspects_.find(child.id);
 		if (a!=aspects_.end()){
@@ -260,7 +263,7 @@ public:
 		return false;
 	}
 
-	std::vector<component*> handle_get_children()
+	std::vector<component*> handle_get_children() const
 	{
 		std::vector<component*> children;
 		for (typename aspect_map::value_type a : aspects_) {
@@ -277,28 +280,28 @@ private:
 
 };
 
-template<typename X>
+template<typename X, typename Factory>
 static inline void register_vector_property(property_handler_map& property_handlers, const std::string& property,
-	std::vector<std::shared_ptr<X>>& values, std::function<void(std::vector<std::shared_ptr<X>>&, const config&)> construction_factory)
+	std::vector<std::shared_ptr<X>>& values, Factory&& construction_factory)
 {
 	property_handlers.emplace(property,
-		std::make_shared<vector_property_handler<X>>(property, values, construction_factory));
+		std::make_shared<vector_property_handler<X>>(property, values, std::move(construction_factory)));
 }
 
-template<typename X>
+template<typename X, typename Factory>
 static inline void register_facets_property(property_handler_map& property_handlers, const std::string& property,
-	std::vector<std::shared_ptr<X>>& values, std::shared_ptr<X>& def, std::function<void(std::vector<std::shared_ptr<X>>&, const config&)> construction_factory)
+	std::vector<std::shared_ptr<X>>& values, std::shared_ptr<X>& def, Factory&& construction_factory)
 {
 	property_handlers.emplace(property,
-		std::make_shared<facets_property_handler<X>>(property, values, def, construction_factory));
+		std::make_shared<facets_property_handler<X>>(property, values, def, std::move(construction_factory)));
 }
 
-template<typename X>
+template<typename X, typename Factory>
 static inline void register_aspect_property(property_handler_map& property_handlers, const std::string& property,
-	std::map<std::string, std::shared_ptr<X>>& aspects, std::function<void(std::map<std::string, std::shared_ptr<X>>&, const config&, std::string)> construction_factory)
+	std::map<std::string, std::shared_ptr<X>>& aspects, Factory&& construction_factory)
 {
 	property_handlers.emplace(property,
-		std::make_shared<aspect_property_handler<X>>(property, aspects, construction_factory));
+		std::make_shared<aspect_property_handler<X>>(property, aspects, std::move(construction_factory)));
 }
 
 } //of namespace ai

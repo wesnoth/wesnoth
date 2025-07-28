@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2017 - 2024
+	Copyright (C) 2017 - 2025
 	by Charles Dang <exodia339@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -44,12 +44,13 @@ public:
 
 private:
 	std::string initial_topic_;
+	std::string current_topic_;
 	const help::section& toplevel_;
 
 	std::map<std::string, int> parsed_pages_;
 
 	std::vector<std::string> history_;
-	unsigned history_pos_;
+	std::size_t history_pos_;
 
 	virtual const std::string& window_id() const override;
 
@@ -58,7 +59,8 @@ private:
 	void on_topic_select();
 	void on_history_navigate(bool backwards);
 
-	void add_topics_for_section(const help::section& parent_section, tree_view_node& parent_node);
+	void update_list(const std::string&);
+	bool add_topics_for_section(const help::section& parent_section, tree_view_node& parent_node, const std::string& filter_text = "");
 	tree_view_node& add_topic(const std::string& topic_id, const std::string& topic_title,
 			bool expands, tree_view_node& parent);
 	void show_topic(std::string topic_id, bool add_to_history = true);

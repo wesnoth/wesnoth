@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2024
+	Copyright (C) 2014 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -16,6 +16,7 @@
 #include "sdl/point.hpp"
 #include "sdl/rect.hpp"
 
+#include <cmath>
 #include <algorithm>
 #include <ostream>
 
@@ -52,7 +53,7 @@ bool rect::empty() const
 
 bool rect::contains(int x, int y) const
 {
-	SDL_Point p{x, y};
+	point p{x, y};
 	return SDL_PointInRect(&p, this) != SDL_FALSE;
 }
 
@@ -61,7 +62,7 @@ bool rect::contains(const point& point) const
 	return SDL_PointInRect(&point, this) != SDL_FALSE;
 }
 
-bool rect::contains(const SDL_Rect& r) const
+bool rect::contains(const rect& r) const
 {
 	if(this->x > r.x) return false;
 	if(this->y > r.y) return false;
@@ -70,25 +71,25 @@ bool rect::contains(const SDL_Rect& r) const
 	return true;
 }
 
-bool rect::overlaps(const SDL_Rect& r) const
+bool rect::overlaps(const rect& r) const
 {
 	return SDL_HasIntersection(this, &r);
 }
 
-rect rect::minimal_cover(const SDL_Rect& other) const
+rect rect::minimal_cover(const rect& other) const
 {
 	rect result;
 	SDL_UnionRect(this, &other, &result);
 	return result;
 }
 
-rect& rect::expand_to_cover(const SDL_Rect& other)
+rect& rect::expand_to_cover(const rect& other)
 {
 	SDL_UnionRect(this, &other, this);
 	return *this;
 }
 
-rect rect::intersect(const SDL_Rect& other) const
+rect rect::intersect(const rect& other) const
 {
 	rect result;
 	if(!SDL_IntersectRect(this, &other, &result)) {
@@ -97,7 +98,7 @@ rect rect::intersect(const SDL_Rect& other) const
 	return result;
 }
 
-void rect::clip(const SDL_Rect& other)
+void rect::clip(const rect& other)
 {
 	*this = this->intersect(other);
 }
@@ -124,16 +125,9 @@ rect rect::shifted_by(const point& other) const
 point rect::point_at(double x, double y) const
 {
 	return {
-		static_cast<int>(this->x + this->w * std::clamp(x, 0.0, 1.0)),
-		static_cast<int>(this->y + this->h * std::clamp(y, 0.0, 1.0))
+		static_cast<int>(this->x + std::round(this->w * std::clamp(x, 0.0, 1.0))),
+		static_cast<int>(this->y + std::round(this->h * std::clamp(y, 0.0, 1.0)))
 	};
-}
-
-rect rect::subrect(const SDL_FPoint& tl, const SDL_FPoint& br) const
-{
-	point p1 = point_at(tl.x, tl.y);
-	point p2 = point_at(br.x, br.y);
-	return { p1, p2 - p1 };
 }
 
 std::ostream& operator<<(std::ostream& s, const rect& r)

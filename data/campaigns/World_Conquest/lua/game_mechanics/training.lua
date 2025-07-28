@@ -85,20 +85,23 @@ function training.has_max_training(side_num, trainer, amount)
 	return training.available(side_num, trainer) == 0
 end
 
-function training.list_available(side_num, among, amount)
-	local av = among or wc2_utils.range(#training.get_list())
+function training.list_available(side_num, amount)
+	local av = wc2_utils.range(#training.get_list())
 	local res = {}
 	for i,v in ipairs(av) do
 		local j = tonumber(v)
-		if training.available(side_num, j, amount) then
-			table.insert(res, j)
+		local trainer = training.get_trainer(j)
+		if trainer and (trainer.manual_invest == nil or trainer.manual_invest == true) then
+			if training.available(side_num, j, amount) then
+				table.insert(res, j)
+			end
 		end
 	end
 	return res
 end
 
-function training.find_available(side_num, among, amount)
-	local possible_traintypes = training.list_available(side_num, among, amount)
+function training.find_available(side_num, amount)
+	local possible_traintypes = training.list_available(side_num, amount)
 	if #possible_traintypes == 0 then
 		return
 	else
@@ -192,15 +195,9 @@ end
 
 function training.pick_bonus(side_num)
 	local amount = training.bonus_calculate_amount(side_num)
-	-- dark training reduced chances
-	local traintype_index = training.find_available(side_num, {1,2,3,4,5,6,2,3,4,5,6,2,3,4,5,6}, amount)
+	local traintype_index = training.find_available(side_num, amount)
 	if traintype_index == nil then
 		return nil
-	end
-
-	--dark training increased level.
-	if traintype_index == 1 then
-		amount = math.min(training.trainings_left(side_num, traintype_index), math.max(amount, wc2_scenario.scenario_num() - 1))
 	end
 	return traintype_index, amount
 end
@@ -254,9 +251,8 @@ end
 function wesnoth.wml_actions.wc2_give_random_training(cfg)
 	local side_num = cfg.side
 	local amount = cfg.amount or 1
-	local among = cfg.among and stringx.split(cfg.among or "")
 	for i = 1, amount do
-		local traintype = training.find_available(side_num, among)
+		local traintype = training.find_available(side_num)
 		if traintype == nil then error("wc2_give_random_training: everything alerady maxed") end
 		training.inc_level(side_num, traintype, 1)
 	end

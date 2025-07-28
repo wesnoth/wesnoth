@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2005 - 2024
+	Copyright (C) 2005 - 2025
 	by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -1747,6 +1747,31 @@ filesystem::scoped_istream preprocess_file(const std::string& fname, preproc_map
 	return filesystem::scoped_istream(new preprocessor_scope_helper(fname, defines));
 }
 
+std::string preprocess_string(const std::string& contents, preproc_map* defines, const std::string& textdomain)
+{
+	log_scope("preprocessing string " + contents.substr(0, 10) + " ...");
+
+	std::unique_ptr<preprocessor_streambuf> buf;
+	std::unique_ptr<preproc_map> local_defines;
+
+	//
+	// If no defines were provided, we create a new local preproc_map and assign
+	// it to defines temporarily. In this case, the map will be deleted once this
+	// object is destroyed and defines will still be subsequently null.
+	//
+	if(!defines) {
+		local_defines.reset(new preproc_map);
+		defines = local_defines.get();
+	}
+
+	buf.reset(new preprocessor_streambuf(defines));
+
+	// Begin processing.
+	buf->add_preprocessor<preprocessor_data>(
+		std::unique_ptr<std::istream>(new std::istringstream(contents)), "<string>", "", 1, game_config::path, textdomain, nullptr);
+	return formatter() << buf.get();
+}
+
 void preprocess_resource(const std::string& res_name,
 		preproc_map* defines_map,
 		bool write_cfg,
@@ -1795,10 +1820,8 @@ void preprocess_resource(const std::string& res_name,
 	LOG_PREPROC << "processing finished";
 
 	if(write_cfg || write_plain_cfg) {
-		config cfg;
 		std::string streamContent = ss.str();
-
-		read(cfg, streamContent);
+		config cfg = io::read(streamContent);
 
 		const std::string preproc_res_name = parent_directory + "/" + filesystem::base_name(res_name);
 
@@ -1807,9 +1830,7 @@ void preprocess_resource(const std::string& res_name,
 			LOG_PREPROC << "writing cfg file: " << preproc_res_name;
 
 			filesystem::create_directory_if_missing_recursive(filesystem::directory_name(preproc_res_name));
-			filesystem::scoped_ostream outStream(filesystem::ostream_file(preproc_res_name));
-
-			write(*outStream, cfg);
+			io::write(*filesystem::ostream_file(preproc_res_name), cfg);
 		}
 
 		// Write the plain cfg file

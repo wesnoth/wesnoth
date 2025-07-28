@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -77,7 +77,7 @@ public:
 	void write_events(config& cfg, bool include_nonserializable=false) const;
 
 	using event_func_t = std::function<void(game_events::manager&, handler_ptr&)>;
-	void execute_on_events(const std::string& event_id, event_func_t func);
+	void execute_on_events(const std::string& event_id, const event_func_t& func);
 
 	bool is_event_running() const;
 

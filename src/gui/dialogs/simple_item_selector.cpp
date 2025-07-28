@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2024
+	Copyright (C) 2010 - 2025
 	by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -47,15 +47,8 @@ void simple_item_selector::pre_show()
 	listbox& list = find_widget<listbox>("listbox");
 	keyboard_capture(&list);
 
-	for(const auto & it : items_)
-	{
-		widget_data data;
-		widget_item column;
-
-		column["label"] = it;
-		data.emplace("item", column);
-
-		list.add_row(data);
+	for(const auto& it : items_) {
+		list.add_row(widget_data{{ "item", {{ "label", it }}}});
 	}
 
 	if(index_ != -1 && static_cast<unsigned>(index_) < list.get_item_count()) {

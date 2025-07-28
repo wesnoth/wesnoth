@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2024
+	Copyright (C) 2009 - 2025
 	by Eugen Jiresch
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -26,6 +26,7 @@
 #include "units/abilities.hpp"
 #include "units/unit.hpp"
 #include "units/unit_alignments.hpp"
+#include "utils/general.hpp"
 
 #include <algorithm>
 #include <iterator>
@@ -79,7 +80,7 @@ void tod_manager::resolve_random(randomness::rng& r)
 	}
 
 	// Remove non-positive times
-	output.erase(std::remove_if(output.begin(), output.end(), [](int time) { return time <= 0; }), output.end());
+	utils::erase_if(output, [](int time) { return time <= 0; });
 
 	if(!output.empty()) {
 		int chosen = output[r.next_random() % output.size()];
@@ -92,7 +93,7 @@ void tod_manager::resolve_random(randomness::rng& r)
 	random_tod_ = false;
 }
 
-config tod_manager::to_config(std::string textdomain) const
+config tod_manager::to_config(const std::string& textdomain) const
 {
 	config cfg;
 	cfg["turn_at"] = turn_;
@@ -164,12 +165,10 @@ int tod_manager::get_current_area_time(int index) const
 
 int tod_manager::get_current_time(const map_location& loc) const
 {
-	if(loc != map_location::null_location()) {
-		for(auto i = areas_.rbegin(), i_end = areas_.rend();
-			i != i_end; ++i) {
-			if(i->hexes.find(loc) != i->hexes.end()) {
-				return i->currentTime;
-			}
+	for(auto i = areas_.rbegin(), i_end = areas_.rend();
+		i != i_end; ++i) {
+		if(i->hexes.find(loc) != i->hexes.end()) {
+			return i->currentTime;
 		}
 	}
 
@@ -178,12 +177,10 @@ int tod_manager::get_current_time(const map_location& loc) const
 
 const std::vector<time_of_day>& tod_manager::times(const map_location& loc) const
 {
-	if(loc != map_location::null_location()) {
-		for(auto i = areas_.rbegin(), i_end = areas_.rend();
-			i != i_end; ++i) {
-			if(i->hexes.find(loc) != i->hexes.end() && !i->times.empty())
-				return i->times;
-		}
+	for(auto i = areas_.rbegin(), i_end = areas_.rend();
+		i != i_end; ++i) {
+		if(i->hexes.find(loc) != i->hexes.end() && !i->times.empty())
+			return i->times;
 	}
 
 	return times_;

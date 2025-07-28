@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2023 - 2024
+	Copyright (C) 2023 - 2025
 	by Subhraman Sarkar (babaissarkar) <suvrax@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -58,7 +58,7 @@ void tod_new_schedule::button_state_change() {
 		find_widget<button>("ok").set_active(true);
 	}
 
-	get_window()->queue_redraw();
+	queue_redraw();
 }
 
 void tod_new_schedule::post_show()

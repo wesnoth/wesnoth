@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -43,7 +43,7 @@ REGISTER_WIDGET(slider)
 
 slider::slider(const implementation::builder_slider& builder)
 	: slider_base(builder, type())
-	, best_slider_length_(0)
+	, best_slider_length_(builder.best_slider_length)
 	, minimum_value_(0)
 	, step_size_(1)
 	, minimum_value_label_()
@@ -246,7 +246,6 @@ void slider::set_value_labels(const std::vector<t_string>& value_labels)
 	set_value_labels(std::bind(&default_value_label_generator, value_labels, std::placeholders::_1, std::placeholders::_2));
 }
 
-
 void slider::set_value_range(int min_value, int max_value)
 {
 	// Settng both at once instead of having multiple functions set_min(),
@@ -268,9 +267,11 @@ void slider::set_value_range(int min_value, int max_value)
 	slider_set_item_last(diff / step_size_);
 	set_value(old_value);
 
+	// set_value won't fire this since the actual slider value hasn't changed
+	fire(event::NOTIFY_MODIFIED, *this, nullptr);
+
 	assert(min_value == get_minimum_value());
 	assert(max_value == get_maximum_value());
-
 }
 
 void slider::set_step_size(int step_size)
@@ -321,7 +322,7 @@ namespace implementation
 {
 builder_slider::builder_slider(const config& cfg)
 	: implementation::builder_styled_widget(cfg)
-	, best_slider_length_(cfg["best_slider_length"].to_unsigned())
+	, best_slider_length(cfg["best_slider_length"].to_unsigned())
 	, minimum_value_(cfg["minimum_value"].to_int())
 	, maximum_value_(cfg["maximum_value"].to_int())
 	, step_size_(cfg["step_size"].to_int(1))
@@ -344,7 +345,6 @@ std::unique_ptr<widget> builder_slider::build() const
 {
 	auto widget = std::make_unique<slider>(*this);
 
-	widget->set_best_slider_length(best_slider_length_);
 	widget->set_value_range(minimum_value_, maximum_value_);
 	widget->set_step_size(step_size_);
 	widget->set_value(value_);

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2024
+	Copyright (C) 2016 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -48,12 +48,6 @@ public:
 
 	/** Sets the add-ons to show. */
 	void set_addons(const addons_list& addons);
-
-	/** Sets up a callback that will be called when the player selects an add-on. */
-	void set_modified_signal_handler(const std::function<void()>& callback)
-	{
-		connect_signal_notify_modified(get_listbox(), std::bind(callback));
-	}
 
 	/** Returns the selected add-on. */
 	const addon_info* get_selected_addon() const;
@@ -109,7 +103,7 @@ public:
 		get_listbox().set_row_shown(shown);
 	}
 
-	void set_addon_order(addon_sort_func func);
+	void set_addon_order(const addon_sort_func& func);
 
 	/**
 	 * Changes the color of an add-on state string (installed, outdated, etc.) according to the state itself.
@@ -210,16 +204,14 @@ namespace implementation
 
 struct builder_addon_list : public builder_styled_widget
 {
-public:
 	explicit builder_addon_list(const config& cfg);
 
 	using builder_styled_widget::build;
 
 	virtual std::unique_ptr<widget> build() const override;
 
-private:
-	widget::visibility install_status_visibility_;
-	widget::visibility install_buttons_visibility_;
+	widget::visibility install_status_visibility;
+	widget::visibility install_buttons_visibility;
 };
 }
 }

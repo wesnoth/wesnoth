@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2024
+	Copyright (C) 2009 - 2025
 	by Tomasz Sniatowski <kailoran@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -61,9 +61,13 @@ public:
 		QUIT,
 		JOIN,
 		OBSERVE,
-		CREATE,
-		RELOAD_CONFIG
+		CREATE, /** player clicked the Create button */
+		RELOAD_CONFIG,
+		CREATE_PRESET
 	};
+
+	const config queue_game_server_preset() const { return queue_game_server_preset_; }
+	int queue_id() const { return queue_id_; }
 
 private:
 	void update_selected_game();
@@ -96,22 +100,25 @@ private:
 	 */
 	void enter_game(const mp::game_info& game, JOIN_MODE mode);
 
-	/** Entry wrapper for @ref enter_game, where game is located by index. */
-	void enter_game_by_index(const int index, JOIN_MODE mode);
-
 	/** Entry wrapper for @ref enter_game, where game is located by game id. */
 	void enter_game_by_id(const int game_id, JOIN_MODE mode);
 
+	void delete_preset(const int game_id);
+
 	/** Enter game by index, where index is the selected game listbox row. */
 	void enter_selected_game(JOIN_MODE mode);
-
-	void show_help_callback();
 
 	void show_preferences_button_callback();
 
 	void show_server_info();
 
 	void open_profile_url();
+
+	void join_queue();
+
+	void leave_queue();
+
+	void update_queue_list();
 
 	void open_match_history();
 
@@ -126,8 +133,6 @@ private:
 	void user_dialog_callback(const mp::user_info* info);
 
 	void skip_replay_changed_callback();
-
-	bool exit_hook(window& window);
 
 	static bool logout_prompt();
 
@@ -148,6 +153,7 @@ private:
 	field_bool* filter_slots_;
 	field_bool* filter_invert_;
 	bool filter_auto_hosted_;
+	bool filter_game_presets_;
 
 	text_box* filter_text_;
 
@@ -159,7 +165,7 @@ private:
 
 	bool gamelist_dirty_;
 
-	unsigned last_lobby_update_;
+	std::chrono::steady_clock::time_point last_lobby_update_;
 
 	bool gamelist_diff_update_;
 
@@ -175,6 +181,9 @@ private:
 	bool delay_gamelist_update_;
 
 	int& joined_game_id_;
+
+	config queue_game_server_preset_;
+	int queue_id_;
 
 	friend struct lobby_delay_gamelist_update_guard;
 

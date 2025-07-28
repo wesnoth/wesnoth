@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2024
+	Copyright (C) 2014 - 2025
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -17,7 +17,11 @@
 
 #pragma once
 
+#include "display.hpp"
+#include "game_board.hpp"
 #include "halo.hpp"
+#include "map/map.hpp"
+
 #include "units/animation.hpp" //Note: only needed for enum
 
 class config;
@@ -34,32 +38,36 @@ public:
 		STATE_ANIM};      /** normal anims */
 
 	/** Default construct a unit animation component corresponding to a unit. */
-	unit_animation_component(unit & my_unit) :
-		u_(my_unit),
-		anim_(nullptr),
-		animations_(),
-		state_(STATE_STANDING),
-		next_idling_(0),
-		frame_begin_time_(0),
-		draw_bars_(false),
-		refreshing_(false),
-		unit_halo_(),
-		abil_halos_(),
-		abil_halos_ref_() {}
+	unit_animation_component(unit& my_unit)
+		: u_(my_unit)
+		, anim_(nullptr)
+		, animations_()
+		, state_(STATE_STANDING)
+		, next_idling_()
+		, frame_begin_time_(0)
+		, draw_bars_(false)
+		, refreshing_(false)
+		, unit_halo_()
+		, abil_halos_()
+		, abil_halos_ref_()
+	{
+	}
 
 	/** Copy construct a unit animation component, for use when copy constructing a unit. */
-	unit_animation_component(unit & my_unit, const unit_animation_component & o) :
-		u_(my_unit),
-		anim_(nullptr),
-		animations_(o.animations_),
-		state_(o.state_),
-		next_idling_(0),
-		frame_begin_time_(o.frame_begin_time_),
-		draw_bars_(o.draw_bars_),
-		refreshing_(o.refreshing_),
-		unit_halo_(),
-		abil_halos_(),
-		abil_halos_ref_() {}
+	unit_animation_component(unit& my_unit, const unit_animation_component& o)
+		: u_(my_unit)
+		, anim_(nullptr)
+		, animations_(o.animations_)
+		, state_(o.state_)
+		, next_idling_()
+		, frame_begin_time_(o.frame_begin_time_)
+		, draw_bars_(o.draw_bars_)
+		, refreshing_(o.refreshing_)
+		, unit_halo_()
+		, abil_halos_()
+		, abil_halos_ref_()
+	{
+	}
 
 	/** Chooses an appropriate animation from the list of known animations. */
 	const unit_animation* choose_animation(
@@ -67,7 +75,7 @@ public:
 			const map_location& second_loc = map_location::null_location(),
 			const int damage=0,
 			const strike_result::type hit_type = strike_result::type::invalid,
-			const_attack_ptr attack=nullptr,const_attack_ptr second_attack = nullptr,
+			const const_attack_ptr& attack=nullptr,const const_attack_ptr& second_attack = nullptr,
 			int swing_num =0);
 
 	/** Sets the animation state to standing. */
@@ -86,7 +94,7 @@ public:
 	void set_selecting();
 
 	/** Begin an animation. */
-	void start_animation (int start_time, const unit_animation *animation,
+	void start_animation(const std::chrono::milliseconds& start_time, const unit_animation *animation,
 		bool with_bars,  const std::string &text = "",
 		color_t text_color = {}, STATE state = STATE_ANIM);
 
@@ -101,6 +109,11 @@ public:
 
 	/** Resets the animations list after the unit is advanced. */
 	void reset_after_advance(const unit_type * newtype = nullptr);
+
+	/** Refresh map around unit if has ability with [affect_adjacent/distant] tag */
+	void reset_affect_adjacent(const unit_map& units);
+
+	void reset_affect_adjacent(const display & disp) {reset_affect_adjacent(disp.context().units());}
 
 	/** Adds an animation described by a config. Uses an internal cache to avoid redoing work. */
 	void apply_new_animation_effect(const config & effect);
@@ -126,9 +139,9 @@ private:
 	STATE state_;
 
 	/** time for next idle animation */
-	int next_idling_;
+	std::chrono::steady_clock::time_point next_idling_;
 	/** time for the frame to begin */
-	int frame_begin_time_;
+	std::chrono::milliseconds frame_begin_time_;
 
 	/** bool indicating whether to draw bars with the unit */
 	bool draw_bars_;

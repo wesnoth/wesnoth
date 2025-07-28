@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -39,13 +39,13 @@ public:
 	typedef t_translation::ter_map terrain_map;
 
 
-	height_map generate_height_map(size_t width, size_t height,
-			size_t iterations, size_t hill_size,
-			size_t island_size, size_t island_off_center);
+	height_map generate_height_map(std::size_t width, std::size_t height,
+			std::size_t iterations, std::size_t hill_size,
+			std::size_t island_size, std::size_t island_off_center);
 
-	height_map generate_height_map(size_t width, size_t height,
-			size_t iterations, size_t hill_size,
-			size_t island_size, size_t center_x, size_t center_y);
+	height_map generate_height_map(std::size_t width, std::size_t height,
+			std::size_t iterations, std::size_t hill_size,
+			std::size_t island_size, std::size_t center_x, std::size_t center_y);
 
 private:
 

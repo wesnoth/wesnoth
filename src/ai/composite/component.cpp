@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2024
+	Copyright (C) 2009 - 2025
 	by Yurii Chernyi <terraninfo@terraninfo.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -58,10 +58,10 @@ static lg::log_domain log_ai_component("ai/component");
 [/modify_ai]
 */
 
-component* component::get_child(const path_element &child)
+component* component::get_child(const path_element &child) const
 {
-	std::map<std::string, property_handler_ptr>::iterator i = property_handlers_.find(child.property);
-	if (i!=property_handlers_.end()) {
+	auto i = property_handlers_.find(child.property);
+	if(i != property_handlers_.end()) {
 		return i->second->handle_get(child);
 	}
 	return nullptr;
@@ -69,8 +69,8 @@ component* component::get_child(const path_element &child)
 
 bool component::add_child(const path_element &child, const config &cfg)
 {
-	std::map<std::string, property_handler_ptr>::iterator i = property_handlers_.find(child.property);
-	if (i!=property_handlers_.end()) {
+	auto i = property_handlers_.find(child.property);
+	if(i != property_handlers_.end()) {
 		return i->second->handle_add(child,cfg);
 	}
 	return false;
@@ -78,8 +78,8 @@ bool component::add_child(const path_element &child, const config &cfg)
 
 bool component::change_child(const path_element &child, const config &cfg)
 {
-	std::map<std::string, property_handler_ptr>::iterator i = property_handlers_.find(child.property);
-	if (i!=property_handlers_.end()) {
+	auto i = property_handlers_.find(child.property);
+	if(i != property_handlers_.end()) {
 		return i->second->handle_change(child,cfg);
 	}
 	return false;
@@ -87,28 +87,28 @@ bool component::change_child(const path_element &child, const config &cfg)
 
 bool component::delete_child(const path_element &child)
 {
-	std::map<std::string, property_handler_ptr>::iterator i = property_handlers_.find(child.property);
-	if (i!=property_handlers_.end()) {
+	auto i = property_handlers_.find(child.property);
+	if(i != property_handlers_.end()) {
 		return i->second->handle_delete(child);
 	}
 	return false;
 }
 
-std::vector<component*> component::get_children(const std::string &type)
+std::vector<component*> component::get_children(const std::string &type) const
 {
-	property_handler_map::iterator i = property_handlers_.find(type);
-	if (i!=property_handlers_.end()) {
+	auto i = property_handlers_.find(type);
+	if(i != property_handlers_.end()) {
 		return i->second->handle_get_children();
 	}
 
 	return std::vector<component*>();
 }
 
-std::vector<std::string> component::get_children_types()
+std::vector<std::string> component::get_children_types() const
 {
 	std::vector<std::string> types;
-	for (property_handler_map::value_type &ph : property_handlers_) {
-		types.push_back(ph.first);
+	for(const auto& [type, handler] : property_handlers_) {
+		types.push_back(type);
 	}
 	return types;
 }

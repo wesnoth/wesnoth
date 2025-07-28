@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2007 - 2024
+	Copyright (C) 2007 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -21,7 +21,10 @@
 #pragma once
 
 #include <string>
+
 #include "game_classification.hpp"
+#include "game_initialization/create_engine.hpp"
+#include "game_initialization/random_faction_mode.hpp"
 
 /**
  * Contains the general settings which have a default.
@@ -79,4 +82,27 @@ namespace settings {
 	 */
 	int get_xp_modifier(const std::string& value);
 
+	//
+	// mp_parameter defaults
+	//
+	void set_default_values(ng::create_engine& create);
+	bool force_lock_settings(ng::create_engine& create);
+
+	std::string game_name_default();
+	int num_turns_default(ng::create_engine& create);
+	int village_gold_default(ng::create_engine& create);
+	int village_support_default(ng::create_engine& create);
+	int xp_modifier_default(ng::create_engine& create);
+	std::chrono::seconds mp_countdown_init_time_default();
+	std::chrono::seconds mp_countdown_reservoir_time_default();
+	std::chrono::seconds mp_countdown_turn_bonus_default();
+	std::chrono::seconds mp_countdown_action_bonus_default();
+	bool mp_countdown_default();
+	bool use_map_settings_default(ng::create_engine& create);
+	bool random_start_time_default(ng::create_engine& create);
+	bool fog_game_default(ng::create_engine& create);
+	bool shroud_game_default(ng::create_engine& create);
+	bool allow_observers_default();
+	bool shuffle_sides_default();
+	random_faction_mode::type random_faction_mode_default();
 } // namespace settings

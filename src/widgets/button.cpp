@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -30,6 +30,7 @@
 #include "wml_separators.hpp"
 
 #include <boost/algorithm/string/predicate.hpp>
+#include <utility>
 
 static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
@@ -39,7 +40,7 @@ namespace gui {
 const int default_font_size = font::SIZE_BUTTON;
 
 button::button(const std::string& label, button::TYPE type,
-               std::string button_image_name, SPACE_CONSUMPTION spacing,
+               const std::string& button_image_name, SPACE_CONSUMPTION spacing,
                const bool auto_join, std::string overlay_image, int font_size)
 	: widget(auto_join), type_(type),
 	  label_text_(label),
@@ -48,7 +49,7 @@ button::button(const std::string& label, button::TYPE type,
 	  overlayImage_(nullptr), overlayPressedImage_(nullptr), overlayActiveImage_(nullptr),
 	  state_(NORMAL), pressed_(false),
 	  spacing_(spacing), base_height_(0), base_width_(0),
-	  button_image_name_(), button_overlay_image_name_(overlay_image),
+	  button_image_name_(), button_overlay_image_name_(std::move(overlay_image)),
 	  button_image_path_suffix_(),
 	  font_size_(font_size <= 0 ? (type != TYPE_CHECK && type != TYPE_RADIO ? default_font_size : font::SIZE_SMALL) : font_size),
 	  horizontal_padding_(font_size_),
@@ -201,7 +202,7 @@ button::~button()
 void button::calculate_size()
 {
 	if (type_ == TYPE_IMAGE){
-		SDL_Rect loc_image = location();
+		rect loc_image = location();
 		loc_image.h = image_.h();
 		loc_image.w = image_.w();
 		set_location(loc_image);
@@ -209,7 +210,7 @@ void button::calculate_size()
 	}
 
 	if (type_ != TYPE_IMAGE){
-		textRect_ = font::pango_draw_text(false, sdl::empty_rect, font_size_, font::BUTTON_COLOR, label_text_, 0, 0);
+		textRect_ = font::pango_draw_text(false, {}, font_size_, font::TITLE_COLOR, label_text_, 0, 0);
 	}
 
 	// TODO: There's a weird text clipping bug, allowing the code below to run fixes it.
@@ -308,8 +309,8 @@ void button::draw_contents()
 		break;
 	}
 
-	SDL_Rect loc = location();
-	SDL_Rect clipArea = loc;
+	rect loc = location();
+	rect clipArea = loc;
 	const int texty = loc.y + loc.h / 2 - textRect_.h / 2 + offset;
 	int textx;
 
@@ -320,7 +321,7 @@ void button::draw_contents()
 		textx = loc.x + image.w() + checkbox_horizontal_padding_ / 2;
 	}
 
-	color_t button_color = font::BUTTON_COLOR;
+	color_t button_color = font::TITLE_COLOR;
 
 	if (!enabled()) {
 		if (state_ == PRESSED || state_ == PRESSED_ACTIVE)
@@ -330,7 +331,7 @@ void button::draw_contents()
 		button_color = font::GRAY_COLOR;
 	}
 
-	SDL_Rect dest = loc;
+	rect dest = loc;
 	if(type_ != TYPE_PRESS && type_ != TYPE_TURBO) {
 		// Scale other button types to match the base image?
 		dest.w = image_.w();

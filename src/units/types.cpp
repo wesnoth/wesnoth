@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -29,7 +29,6 @@
 #include "units/animation.hpp"
 #include "units/unit.hpp"
 
-#include "gui/auxiliary/typed_formula.hpp"
 #include "gui/dialogs/loading_screen.hpp"
 
 #include <boost/range/algorithm_ext/erase.hpp>
@@ -50,58 +49,9 @@ static lg::log_domain log_unit("unit");
 
 /* ** unit_type ** */
 
-unit_type::unit_type(const unit_type& o)
-	: cfg_(o.cfg_)
-	, id_(o.id_)
-	, debug_id_(o.debug_id_)
-	, parent_id_(o.parent_id_)
-	, base_unit_id_(o.base_unit_id_)
-	, type_name_(o.type_name_)
-	, description_(o.description_)
-	, hitpoints_(o.hitpoints_)
-	, hp_bar_scaling_(o.hp_bar_scaling_)
-	, xp_bar_scaling_(o.xp_bar_scaling_)
-	, level_(o.level_)
-	, recall_cost_(o.recall_cost_)
-	, movement_(o.movement_)
-	, vision_(o.vision_)
-	, jamming_(o.jamming_)
-	, max_attacks_(o.max_attacks_)
-	, cost_(o.cost_)
-	, usage_(o.usage_)
-	, undead_variation_(o.undead_variation_)
-	, image_(o.image_)
-	, icon_(o.icon_)
-	, small_profile_(o.small_profile_)
-	, profile_(o.profile_)
-	, flag_rgb_(o.flag_rgb_)
-	, num_traits_(o.num_traits_)
-	, variations_(o.variations_)
-	, default_variation_(o.default_variation_)
-	, variation_name_(o.variation_name_)
-	, race_(o.race_)
-	, abilities_(o.abilities_)
-	, adv_abilities_(o.adv_abilities_)
-	, zoc_(o.zoc_)
-	, hide_help_(o.hide_help_)
-	, do_not_list_(o.do_not_list_)
-	, advances_to_(o.advances_to_)
-	, experience_needed_(o.experience_needed_)
-	, alignment_(o.alignment_)
-	, movement_type_(o.movement_type_)
-	, possible_traits_(o.possible_traits_)
-	, genders_(o.genders_)
-	, animations_(o.animations_)
-	, build_status_(o.build_status_)
-{
-	gender_types_[0].reset(gender_types_[0] != nullptr ? new unit_type(*o.gender_types_[0]) : nullptr);
-	gender_types_[1].reset(gender_types_[1] != nullptr ? new unit_type(*o.gender_types_[1]) : nullptr);
-}
-
-unit_type::unit_type(defaut_ctor_t, const config& cfg, const std::string & parent_id)
+unit_type::unit_type(default_ctor_t, const config& cfg, const std::string & parent_id)
 	: cfg_(nullptr)
 	, built_cfg_()
-	, has_cfg_build_()
 	, id_(cfg.has_attribute("id") ? cfg["id"].str() : parent_id)
 	, debug_id_()
 	, parent_id_(!parent_id.empty() ? parent_id : id_)
@@ -137,6 +87,7 @@ unit_type::unit_type(defaut_ctor_t, const config& cfg, const std::string & paren
 	, hide_help_(false)
 	, do_not_list_()
 	, advances_to_()
+	, advancements_(cfg.child_range("advancement"))
 	, experience_needed_(0)
 	, alignment_(unit_alignments::type::neutral)
 	, movement_type_()
@@ -152,19 +103,18 @@ unit_type::unit_type(defaut_ctor_t, const config& cfg, const std::string & paren
 	check_id(id_);
 	check_id(parent_id_);
 }
+
 unit_type::unit_type(const config& cfg, const std::string & parent_id)
-	: unit_type(defaut_ctor_t(), cfg, parent_id)
+	: unit_type(default_ctor_t(), cfg, parent_id)
 {
 	cfg_ = &cfg;
-
 }
 
 unit_type::unit_type(config&& cfg, const std::string & parent_id)
-	: unit_type(defaut_ctor_t(), cfg, parent_id)
+	: unit_type(default_ctor_t(), cfg, parent_id)
 {
 	built_cfg_ = std::make_unique<config>(std::move(cfg));
 }
-
 
 unit_type::~unit_type()
 {
@@ -301,7 +251,14 @@ void unit_type::build_help_index(
 
 	if(auto abil_cfg = cfg.optional_child("abilities")) {
 		for(const auto [key, cfg] : abil_cfg->all_children_view()) {
-			abilities_.emplace_back(cfg);
+			config subst_cfg(cfg);
+			subst_cfg["name"] = unit_abilities::substitute_variables(cfg["name"], key, cfg);
+			subst_cfg["female_name"] = unit_abilities::substitute_variables(cfg["female_name"], key, cfg);
+			subst_cfg["description"] = unit_abilities::substitute_variables(cfg["description"], key, cfg);
+			subst_cfg["name_inactive"] = unit_abilities::substitute_variables(cfg["name_inactive"], key, cfg);
+			subst_cfg["female_name_inactive"] = unit_abilities::substitute_variables(cfg["female_name_inactive"], key, cfg);
+			subst_cfg["description_inactive"] = unit_abilities::substitute_variables(cfg["description_inactive"], key, cfg);
+			abilities_.emplace_back(subst_cfg);
 		}
 	}
 
@@ -450,7 +407,7 @@ void unit_type::build(BUILD_STATUS status,
 	}
 }
 
-const unit_type& unit_type::get_gender_unit_type(std::string gender) const
+const unit_type& unit_type::get_gender_unit_type(const std::string& gender) const
 {
 	if(gender == unit_race::s_female) {
 		return get_gender_unit_type(unit_race::FEMALE);
@@ -504,7 +461,7 @@ static void append_special_note(std::vector<t_string>& notes, const t_string& ne
 	notes.push_back(new_note);
 }
 
-std::vector<t_string> combine_special_notes(const std::vector<t_string> direct, const config& abilities, const_attack_itors attacks, const movetype& mt)
+std::vector<t_string> combine_special_notes(const std::vector<t_string>& direct, const config& abilities, const const_attack_itors& attacks, const movetype& mt)
 {
 	std::vector<t_string> notes;
 	for(const auto& note : direct) {
@@ -941,7 +898,7 @@ void patch_movetype(movetype& mt,
 		// before the formula is evaluated.
 		std::list<config> config_copies;
 
-		gui2::typed_formula<int> formula(formula_str, default_val);
+		auto formula = wfl::formula(formula_str);
 		wfl::map_formula_callable original;
 
 		// These three need to follow movetype's fallback system, where values for
@@ -977,8 +934,12 @@ void patch_movetype(movetype& mt,
 			}
 		}
 
-		LOG_CONFIG << " formula=" << formula_str << ", resolves to " << formula(original);
-		temp_cfg[new_key] = formula(original);
+		try {
+			temp_cfg[new_key] = formula.evaluate(original).as_int(default_val);
+		} catch(const wfl::formula_error&) {
+			ERR_CF << "Error evaluating movetype formula: " << formula_str;
+			return;
+		}
 	}
 	mt.merge(temp_cfg, type_to_patch, true);
 }
@@ -1395,19 +1356,34 @@ void unit_type::apply_scenario_fix(const config& cfg)
 		}
 	}
 
+	if(cfg.has_child("advancement")) {
+		advancements_ = cfg.child_range("advancement");
+	}
+
 	// apply recursively to subtypes.
 	for(int gender = 0; gender <= 1; ++gender) {
 		if(!gender_types_[gender]) {
 			continue;
 		}
 		gender_types_[gender]->apply_scenario_fix(cfg);
+		std::string gender_str = gender == 0 ? "male" : "female";
+		if(cfg.has_child(gender_str)) {
+			auto gender_cfg = cfg.optional_child(gender_str);
+			if(gender_cfg){
+				gender_types_[gender]->apply_scenario_fix(*gender_cfg);
+			}
+		}
 	}
 
 	if(get_cfg().has_child("variation")) {
 		// Make sure the variations are created.
 		unit_types.build_unit_type(*this, VARIATIONS);
-		for(auto& v : variations_) {
-			v.second.apply_scenario_fix(cfg);
+		for (auto& cv : cfg.child_range("variation")){
+			for(auto& v : variations_) {
+				if(v.first == cv["variation_id"]){
+					v.second.apply_scenario_fix(cv);
+				}
+			}
 		}
 	}
 }
@@ -1444,6 +1420,7 @@ void unit_type::remove_scenario_fixes()
 	for(auto& v : variations_) {
 		v.second.remove_scenario_fixes();
 	}
+	advancements_ = get_cfg().child_range("advancement");
 }
 
 void unit_type_data::remove_scenario_fixes()
@@ -1460,6 +1437,10 @@ void unit_type::check_id(std::string& id)
 	// We don't allow leading whitepaces.
 	if(id[0] == ' ') {
 		throw error("Found unit type id with a leading whitespace \"" + id + "\"");
+	}
+
+	if(id == "random" || id == "null") {
+		throw error("Found unit type using a 'random' or 'null' as an id");
 	}
 
 	bool gave_warning = false;

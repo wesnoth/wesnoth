@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -22,7 +22,6 @@
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/text_box.hpp"
-#include "gui/widgets/window.hpp"
 #include "preferences/preferences.hpp"
 
 namespace gui2::dialogs
@@ -30,20 +29,20 @@ namespace gui2::dialogs
 
 REGISTER_DIALOG(mp_method_selection)
 
+/** Link to the wesnoth forum account registration page */
 static const std::string forum_registration_url = "https://forums.wesnoth.org/ucp.php?mode=register";
 
 void mp_method_selection::pre_show()
 {
-	user_name_ = prefs::get().login();
-
 	text_box* user_widget = find_widget<text_box>("user_name", false, true);
-	user_widget->set_value(user_name_);
+	user_widget->set_value(prefs::get().login());
 	user_widget->set_maximum_length(mp::max_login_size);
 
-	keyboard_capture(user_widget);
-
 	listbox* list = find_widget<listbox>("method_list", false, true);
-	add_to_keyboard_chain(list);
+	list->select_row(prefs::get().mp_connect_type());
+
+	add_to_tab_order(list);
+	add_to_tab_order(user_widget);
 
 	connect_signal_mouse_left_click(find_widget<button>("register"),
 		std::bind(&desktop::open_object, forum_registration_url));
@@ -51,16 +50,18 @@ void mp_method_selection::pre_show()
 
 void mp_method_selection::post_show()
 {
-	if(get_retval() == retval::OK) {
-		listbox& list = find_widget<listbox>("method_list");
-		choice_ = static_cast<choice>(list.get_selected_row());
+	prefs::get().set_mp_connect_type(find_widget<listbox>("method_list").get_selected_row());
 
+	if(get_retval() == retval::OK) {
 		text_box& user_widget = find_widget<text_box>("user_name");
 		user_widget.save_to_history();
-
-		user_name_ = user_widget.get_value();
-		prefs::get().set_login(user_name_);
+		prefs::get().set_login(user_widget.get_value());
 	}
+}
+
+mp_method_selection::choice mp_method_selection::get_choice() const
+{
+	return static_cast<choice>(prefs::get().mp_connect_type());
 }
 
 } // namespace dialogs

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2011 - 2024
+	Copyright (C) 2011 - 2025
 	by Sergey Popov <loonycyborg@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -18,7 +18,6 @@
 #include "events.hpp"
 #include "gui/dialogs/modal_dialog.hpp"
 #include "network_asio.hpp"
-#include "utils/optional_reference.hpp"
 
 namespace gui2::dialogs
 {
@@ -51,14 +50,14 @@ private:
 	{
 	public:
 		connection_data*& connection_;
-		virtual void process(events::pump_info&);
+		virtual void process();
 
 		pump_monitor(connection_data*& connection)
-			: connection_(connection), window_()
+			: connection_(connection), window_(nullptr)
 		{
 		}
 
-		utils::optional_reference<window> window_;
+		window* window_;
 	} pump_monitor_;
 
 public:

@@ -56,6 +56,10 @@
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
+            argument = "--plugin=&quot;$(PROJECT_DIR)/../../data/test/plugin/start-campaign.lua&quot;"
+            isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
             argument = "--data-dir=&quot;$(PROJECT_DIR)/../..&quot;"
             isEnabled = "NO">
          </CommandLineArgument>

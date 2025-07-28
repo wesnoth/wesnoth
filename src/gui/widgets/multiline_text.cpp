@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2023 - 2024
+	Copyright (C) 2023 - 2025
 	by Subhraman Sarkar (babaissarkar) <suvrax@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -44,12 +44,14 @@ REGISTER_WIDGET(multiline_text)
 multiline_text::multiline_text(const implementation::builder_multiline_text& builder)
 	: text_box_base(builder, type())
 	, history_()
-	, max_input_length_(0)
+	, max_input_length_(builder.max_input_length)
 	, text_x_offset_(0)
 	, text_y_offset_(0)
 	, text_height_(0)
 	, dragging_(false)
 	, link_aware_(builder.link_aware)
+	, hint_text_(builder.hint_text)
+	, hint_image_(builder.hint_image)
 {
 	set_wants_mouse_left_double_click();
 
@@ -247,7 +249,7 @@ void multiline_text::update_offsets()
 	const auto conf = cast_config_to<multiline_text_definition>();
 	assert(conf);
 
-	text_height_ = font::get_max_height(get_text_font_size(), get_font_family());
+	text_height_ = font::get_max_height(get_text_font_size(), conf->text_font_family);
 
 	wfl::map_formula_callable variables;
 	variables.add("height", wfl::variant(get_height()));
@@ -413,7 +415,7 @@ void multiline_text::signal_handler_left_button_down(const event::ui_event event
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
-	get_window()->keyboard_capture(this);
+	get_window()->capture_and_show_keyboard(this);
 	get_window()->mouse_capture();
 
 	point mouse_pos = get_mouse_position();
@@ -510,9 +512,6 @@ std::unique_ptr<widget> builder_multiline_text::build() const
 	if(!history.empty()) {
 		widget->set_history(history);
 	}
-
-	widget->set_max_input_length(max_input_length);
-	widget->set_hint_data(hint_text, hint_image);
 
 	DBG_GUI_G << "Window builder: placed text box '" << id
 			  << "' with definition '" << definition << "'.";

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2007 - 2024
+	Copyright (C) 2007 - 2025
 	by Karol Nowak <grywacz@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -32,6 +32,7 @@
 
 #include <SDL2/SDL.h>
 
+#include "events.hpp"
 #include "filesystem.hpp"
 #include "game_config.hpp"
 #include "game_errors.hpp"
@@ -63,6 +64,7 @@ struct wesnoth_global_fixture {
 	{
 		using namespace boost::unit_test;
 		using namespace std::literals;
+		events::set_main_thread();
 		boost::filesystem::path file("boost_test_result.xml");
 		for(int i = 1; i < framework::master_test_suite().argc; i++) {
 			if(framework::master_test_suite().argv[i - 1] == "--output_file"s) {

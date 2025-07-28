@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -15,7 +15,6 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
-
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 
 #include "gui/widgets/debug.hpp"
@@ -26,6 +25,7 @@
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/scrollbar_container.hpp"
 #include "gui/widgets/window.hpp"
+#include "serialization/chrono.hpp"
 #include "serialization/string_utils.hpp"
 
 #include <fstream>
@@ -82,8 +82,8 @@ std::string get_base_filename()
 {
 	std::ostringstream ss;
 
-	std::time_t t = std::time(nullptr);
-	ss << std::put_time(std::localtime(&t), "%Y%m%d_%H%M%S");
+	const auto now = std::chrono::system_clock::now();
+	ss << chrono::format_local_timestamp(now, "%Y%m%d_%H%M%S");
 
 	static unsigned counter = 0;
 	++counter;

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2024
+	Copyright (C) 2009 - 2025
 	by Yurii Chernyi <terraninfo@terraninfo.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -61,30 +61,17 @@ void ai_composite::on_create()
 		add_stage(cfg_element);
 	}
 
-	config cfg;
-	cfg["engine"] = "fai";
-	engine_ptr e_ptr = get_engine_by_cfg(cfg);
-	if (e_ptr) {
-		e_ptr->set_ai_context(this);
-	}
+	register_vector_property(property_handlers(), "engine", get_engines(),
+		[this](auto&&... args) { create_engine(args...); });
 
-	std::function<void(std::vector<engine_ptr>&, const config&)> factory_engines =
-		std::bind(&ai::ai_composite::create_engine, *this, std::placeholders::_1, std::placeholders::_2);
+	register_vector_property(property_handlers(), "goal", get_goals(),
+		[this](auto&&... args) { create_goal(args...); });
 
-	std::function<void(std::vector<goal_ptr>&, const config&)> factory_goals =
-		std::bind(&ai::ai_composite::create_goal, *this, std::placeholders::_1, std::placeholders::_2);
+	register_vector_property(property_handlers(), "stage", stages_,
+		[this](auto&&... args) { create_stage(args...); });
 
-	std::function<void(std::vector<stage_ptr>&, const config&)> factory_stages =
-		std::bind(&ai::ai_composite::create_stage, *this, std::placeholders::_1, std::placeholders::_2);
-
-	std::function<void(std::map<std::string,aspect_ptr>&, const config&, std::string)> factory_aspects =
-		std::bind(&ai::ai_composite::replace_aspect,*this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3);
-
-	register_vector_property(property_handlers(),"engine",get_engines(), factory_engines);
-	register_vector_property(property_handlers(),"goal",get_goals(), factory_goals);
-	register_vector_property(property_handlers(),"stage",stages_, factory_stages);
-	register_aspect_property(property_handlers(),"aspect",get_aspects(), factory_aspects);
-
+	register_aspect_property(property_handlers(), "aspect", get_aspects(),
+		[this](auto&&... args) { replace_aspect(args...); });
 }
 
 void ai_composite::create_stage(std::vector<stage_ptr> &stages, const config &cfg)
@@ -102,7 +89,7 @@ void ai_composite::create_engine(std::vector<engine_ptr> &engines, const config 
 	engine::parse_engine_from_config(*this,cfg,std::back_inserter(engines));
 }
 
-void ai_composite::replace_aspect(std::map<std::string,aspect_ptr> &aspects, const config &cfg, std::string id)
+void ai_composite::replace_aspect(std::map<std::string,aspect_ptr> &aspects, const config &cfg, const std::string& id)
 {
 	std::vector<aspect_ptr> temp_aspects;
 	engine::parse_aspect_from_config(*this,cfg,id,std::back_inserter(temp_aspects));
@@ -157,18 +144,6 @@ std::string ai_composite::get_name() const
 std::string ai_composite::get_engine() const
 {
 	return cfg_["engine"];
-}
-
-std::string ai_composite::evaluate(const std::string& str)
-{
-	config cfg;
-	cfg["engine"] = "fai";
-	engine_ptr e_ptr = get_engine_by_cfg(cfg);
-	if (!e_ptr) {
-		// This should be unreachable, but not entirely sure...
-		return "engine not found for evaluate command";
-	}
-	return e_ptr->evaluate(str);
 }
 
 void ai_composite::new_turn()

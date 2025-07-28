@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -135,9 +135,9 @@ std::vector<uint8_t> generic_decode_le(std::string_view in, const std::vector<in
 	return out;
 }
 
-std::string generic_encode_be(utils::byte_string_view in, const std::string& itoa_map, bool pad)
+std::string generic_encode_be(utils::byte_view in, const std::string& itoa_map, bool pad)
 {
-	const int in_len = in.length();
+	const int in_len = in.size();
 	const int groups = (in_len + 2) / 3;
 	const int out_len = groups * 4;
 
@@ -168,9 +168,9 @@ std::string generic_encode_be(utils::byte_string_view in, const std::string& ito
 	return out;
 
 }
-std::string generic_encode_le(utils::byte_string_view in, const std::string& itoa_map, bool pad)
+std::string generic_encode_le(utils::byte_view in, const std::string& itoa_map, bool pad)
 {
-	const int in_len = in.length();
+	const int in_len = in.size();
 	const int groups = (in_len + 2) / 3;
 	const int out_len = groups * 4;
 
@@ -222,7 +222,7 @@ std::vector<uint8_t> decode(std::string_view in)
 {
 	return generic_decode_be(in, base64_atoi_map());
 }
-std::string encode(utils::byte_string_view bytes)
+std::string encode(utils::byte_view bytes)
 {
 	return generic_encode_be(bytes, base64_itoa_map, true);
 }
@@ -232,7 +232,7 @@ std::vector<uint8_t> decode(std::string_view in)
 {
 	return generic_decode_le(in, crypt64_atoi_map());
 }
-std::string encode(utils::byte_string_view bytes)
+std::string encode(utils::byte_view bytes)
 {
 	return generic_encode_le(bytes, crypt64_itoa_map, false);
 }

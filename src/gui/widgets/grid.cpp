@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -605,7 +605,7 @@ void grid::set_origin(const point& origin)
 	}
 }
 
-void grid::set_visible_rectangle(const SDL_Rect& rectangle)
+void grid::set_visible_rectangle(const rect& rectangle)
 {
 	// Inherited.
 	widget::set_visible_rectangle(rectangle);
@@ -642,13 +642,12 @@ const widget* grid::find_at(const point& coordinate,
 			*this, coordinate, must_be_active);
 }
 
-widget* grid::find(const std::string& id, const bool must_be_active)
+widget* grid::find(const std::string_view id, const bool must_be_active)
 {
 	return grid_implementation::find<widget>(*this, id, must_be_active);
 }
 
-const widget* grid::find(const std::string& id, const bool must_be_active)
-		const
+const widget* grid::find(const std::string_view id, const bool must_be_active) const
 {
 	return grid_implementation::find<const widget>(*this, id, must_be_active);
 }
@@ -724,7 +723,7 @@ void grid::set_rows_cols(const unsigned rows, const unsigned cols)
 	cols_ = cols;
 	row_grow_factor_.resize(rows);
 	col_grow_factor_.resize(cols);
-	children_.resize(static_cast<size_t>(rows_) * cols_);
+	children_.resize(static_cast<std::size_t>(rows_) * cols_);
 }
 
 point grid::child::get_best_size() const

@@ -333,29 +333,35 @@ BlendResult preProcessCorners(const Kernel_4x4& ker, const xbrz::ScalerCfg& cfg)
 #pragma clang diagnostic ignored "-Wunused-function"
 #endif
 
-#define DEF_GETTER(x) template <RotationDegree rotDeg> uint32_t inline get_##x(const Kernel_3x3& ker) { return ker.x; }
+#define DEF_GETTER(x) template <RotationDegree rotDeg> uint32_t inline get_##x(const Kernel_4x4& ker) { return ker.x; }
 //we cannot and NEED NOT write "ker.##x" since ## concatenates preprocessor tokens but "." is not a token
 DEF_GETTER(a) DEF_GETTER(b) DEF_GETTER(c)
 DEF_GETTER(d) DEF_GETTER(e) DEF_GETTER(f)
 DEF_GETTER(g) DEF_GETTER(h) DEF_GETTER(i)
 #undef DEF_GETTER
 
-#define DEF_GETTER(x, y) template <> inline uint32_t get_##x<ROT_90>(const Kernel_3x3& ker) { return ker.y; }
-DEF_GETTER(a, g) DEF_GETTER(b, d) DEF_GETTER(c, a)
-DEF_GETTER(d, h) DEF_GETTER(e, e) DEF_GETTER(f, b)
-DEF_GETTER(g, i) DEF_GETTER(h, f) DEF_GETTER(i, c)
+#define DEF_GETTER(x, y) template <> inline uint32_t get_##x<ROT_0>(const Kernel_4x4& ker) { return ker.y; }
+//DEF_GETTER(a, a) DEF_GETTER(b, b) DEF_GETTER(c, c)
+DEF_GETTER(d, e) DEF_GETTER(e, f) DEF_GETTER(f, g)
+DEF_GETTER(g, i) DEF_GETTER(h, j) DEF_GETTER(i, k)
 #undef DEF_GETTER
 
-#define DEF_GETTER(x, y) template <> inline uint32_t get_##x<ROT_180>(const Kernel_3x3& ker) { return ker.y; }
-DEF_GETTER(a, i) DEF_GETTER(b, h) DEF_GETTER(c, g)
-DEF_GETTER(d, f) DEF_GETTER(e, e) DEF_GETTER(f, d)
+#define DEF_GETTER(x, y) template <> inline uint32_t get_##x<ROT_90>(const Kernel_4x4& ker) { return ker.y; }
+//DEF_GETTER(a, i) DEF_GETTER(b, e) DEF_GETTER(c, a)
+DEF_GETTER(d, j) DEF_GETTER(e, f) DEF_GETTER(f, b)
+DEF_GETTER(g, k) DEF_GETTER(h, g) DEF_GETTER(i, c)
+#undef DEF_GETTER
+
+#define DEF_GETTER(x, y) template <> inline uint32_t get_##x<ROT_180>(const Kernel_4x4& ker) { return ker.y; }
+//DEF_GETTER(a, k) DEF_GETTER(b, j) DEF_GETTER(c, i)
+DEF_GETTER(d, g) DEF_GETTER(e, f) DEF_GETTER(f, e)
 DEF_GETTER(g, c) DEF_GETTER(h, b) DEF_GETTER(i, a)
 #undef DEF_GETTER
 
-#define DEF_GETTER(x, y) template <> inline uint32_t get_##x<ROT_270>(const Kernel_3x3& ker) { return ker.y; }
-DEF_GETTER(a, c) DEF_GETTER(b, f) DEF_GETTER(c, i)
-DEF_GETTER(d, b) DEF_GETTER(e, e) DEF_GETTER(f, h)
-DEF_GETTER(g, a) DEF_GETTER(h, d) DEF_GETTER(i, g)
+#define DEF_GETTER(x, y) template <> inline uint32_t get_##x<ROT_270>(const Kernel_4x4& ker) { return ker.y; }
+//DEF_GETTER(a, c) DEF_GETTER(b, g) DEF_GETTER(c, k)
+DEF_GETTER(d, b) DEF_GETTER(e, f) DEF_GETTER(f, j)
+DEF_GETTER(g, a) DEF_GETTER(h, e) DEF_GETTER(i, i)
 #undef DEF_GETTER
 
 #ifdef __APPLE__
@@ -397,7 +403,7 @@ template <> inline unsigned char rotateBlendInfo<ROT_270>(unsigned char b) { ret
 */
 template <class Scaler, class ColorDistance, RotationDegree rotDeg>
 FORCE_INLINE //perf: quite worth it!
-void blendPixel(const Kernel_3x3& ker,
+void blendPixel(const Kernel_4x4& ker,
                 uint32_t* target, int trgWidth,
                 unsigned char blendInfo, //result of preprocessing all four corners of pixel "e"
                 const xbrz::ScalerCfg& cfg)
@@ -719,11 +725,10 @@ void scaleImage(const uint32_t* src, uint32_t* trg, int srcWidth, int srcHeight,
             //blend all four corners of current pixel
             if (blendingNeeded(blend_xy))
             {
-                const auto& ker3 = reinterpret_cast<const Kernel_3x3&>(ker4); //"The Things We Do for Perf"
-                blendPixel<Scaler, ColorDistance, ROT_0  >(ker3, out, trgWidth, blend_xy, cfg);
-                blendPixel<Scaler, ColorDistance, ROT_90 >(ker3, out, trgWidth, blend_xy, cfg);
-                blendPixel<Scaler, ColorDistance, ROT_180>(ker3, out, trgWidth, blend_xy, cfg);
-                blendPixel<Scaler, ColorDistance, ROT_270>(ker3, out, trgWidth, blend_xy, cfg);
+                blendPixel<Scaler, ColorDistance, ROT_0  >(ker4, out, trgWidth, blend_xy, cfg);
+                blendPixel<Scaler, ColorDistance, ROT_90 >(ker4, out, trgWidth, blend_xy, cfg);
+                blendPixel<Scaler, ColorDistance, ROT_180>(ker4, out, trgWidth, blend_xy, cfg);
+                blendPixel<Scaler, ColorDistance, ROT_270>(ker4, out, trgWidth, blend_xy, cfg);
             }
         }
     }

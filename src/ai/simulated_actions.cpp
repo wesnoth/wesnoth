@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2024
+	Copyright (C) 2014 - 2025
 	by Guorui Xi <kevin.xgr@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 

@@ -105,7 +105,7 @@
 #
 # sets the warning level.
 
-import sys, os, time, re, argparse, hashlib, glob, codecs
+import sys, os, time, re, argparse, hashlib, glob
 from wesnoth.wmltools3 import *
 from wesnoth import version
 
@@ -384,7 +384,7 @@ class CrossRefLister(CrossRef):
                 outstr += "<code class='noframe'>" + displayname + "</code></h2>\n"
                 filenamelist.append(displayname)
                 hdr = []
-                with codecs.open(filename, "r", "utf8") as dfp:
+                with open(filename, "r", encoding="utf8") as dfp:
                     for line in dfp:
                         line = line.lstrip()
                         if line and line.startswith("#textdomain"):

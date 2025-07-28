@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -31,8 +31,8 @@
 #include "tstring.hpp"
 #include "utils/variant.hpp"
 
+#include <chrono>
 #include <climits>
-#include <ctime>
 #include <iosfwd>
 #include <string>
 #include <vector>
@@ -127,6 +127,21 @@ public:
 	config_attribute_value& operator=(const std::string_view &v);
 	config_attribute_value& operator=(const t_string &v);
 
+	//TODO: should this be a normal constructor?
+	template<typename T>
+	static config_attribute_value create(const T val)
+	{
+		config_attribute_value res;
+		res = val;
+		return res;
+	}
+
+	template<typename... Args>
+	config_attribute_value& operator=(const std::chrono::duration<Args...>& v)
+	{
+		return this->operator=(v.count());
+	}
+
 	/** Calls @ref operator=(const std::string&) if @a v is not empty. */
 	void write_if_not_empty(const std::string& v);
 	void write_if_not_empty(const t_string& v);
@@ -137,7 +152,6 @@ public:
 	long long to_long_long(long long def = 0) const;
 	unsigned to_unsigned(unsigned def = 0) const;
 	std::size_t to_size_t(std::size_t def = 0) const;
-	std::time_t to_time_t(std::time_t def = 0) const;
 	double to_double(double def = 0.) const;
 	std::string str(const std::string& fallback = "") const;
 	t_string t_str() const;

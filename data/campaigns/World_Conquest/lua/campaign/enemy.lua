@@ -197,10 +197,8 @@ function enemy.do_training(cfg, group_id, loc)
 	local tr = cfg.trained or 0
 	local dif = wml.variables["wc2_difficulty.enemy_trained"] or 0
 	if tr ~= 0 and dif >= tr then
-		--enemy can only get Melee, Ranger, Health or Movement
 		wesnoth.wml_actions.wc2_give_random_training {
 			side = cfg.side,
-			among="2,3,4,6"
 		}
 	end
 end

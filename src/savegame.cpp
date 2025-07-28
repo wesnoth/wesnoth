@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by Jörg Hinrichs, David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -38,7 +38,9 @@
 #include "save_index.hpp"
 #include "saved_game.hpp"
 #include "serialization/binary_or_text.hpp"
+#include "serialization/chrono.hpp"
 #include "serialization/utf8_exception.hpp"
+#include "utils/optimer.hpp"
 #include "video.hpp" // only for faked
 
 #include <iomanip>
@@ -428,7 +430,7 @@ bool savegame::check_overwrite()
 bool savegame::check_filename(const std::string& filename)
 {
 	if(filesystem::is_compressed_file(filename)) {
-		gui2::show_error_message(_("Save names should not end on ‘.gz’ or ‘.bz2’. Please remove the extension."));
+		gui2::show_error_message(_("Save names should not end with ‘.gz’ or ‘.bz2’. Please remove the extension."));
 		return false;
 	} else if(!filesystem::is_legal_user_file_name(filename)) {
 		// This message is not all-inclusive. This is on purpose. Few people
@@ -452,8 +454,9 @@ void savegame::before_save()
 bool savegame::save_game(const std::string& filename)
 {
 	try {
-		uint32_t start, end;
-		start = SDL_GetTicks();
+		utils::optional<const utils::ms_optimer> timer([this](const auto& timer) {
+			LOG_SAVE << "Milliseconds to save " << filename_ << ": " << timer;
+		});
 
 		if(filename_.empty()) {
 			filename_ = filename;
@@ -476,8 +479,8 @@ bool savegame::save_game(const std::string& filename)
 		// the came campaign, for example).
 		save_index_manager_->rebuild(filename_);
 
-		end = SDL_GetTicks();
-		LOG_SAVE << "Milliseconds to save " << filename_ << ": " << end - start;
+		// Log time before showing the confirmation
+		timer.reset();
 
 		if(show_confirmation_) {
 			gui2::show_transient_message(_("Saved"), _("The game has been saved."));
@@ -570,10 +573,7 @@ replay_savegame::replay_savegame(saved_game& gamestate, const compression::forma
 
 std::string replay_savegame::create_initial_filename(unsigned int) const
 {
-	time_t t = std::time(nullptr);
-	tm tm = *std::localtime(&t);
-	auto time = std::put_time(&tm, "%Y%m%d-%H%M%S");
-
+	auto time = chrono::format_local_timestamp(std::chrono::system_clock::now(), "%Y%m%d-%H%M%S");
 	// TRANSLATORS: This string is used as part of a filename, as in, "HttT-The Elves Besieged replay.gz"
 	return formatter() << gamestate().classification().label << " " << _("replay") << " " << time;
 }

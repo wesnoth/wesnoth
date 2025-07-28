@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -77,7 +77,7 @@ struct time_of_day
 			&& sounds == o.sounds;
 	}
 
-	void write(config& cfg, std::string textdomain = "") const;
+	void write(config& cfg, const std::string& textdomain = "") const;
 
 	/** The % bonus lawful units receive. Chaotics receive -lawful_bonus. */
 	int lawful_bonus;

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>, Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -15,6 +15,7 @@
 
 #pragma once
 
+#include <chrono>
 #include <string>
 #include <memory>
 
@@ -28,19 +29,20 @@ namespace sound {
 class music_track
 {
 public:
-	music_track();
-	music_track(const config& node);
-	explicit music_track(const std::string& v_name);
-	void write(config& parent_node, bool append) const;
+	music_track(const std::string& file_path, const config& node);
+	music_track(const std::string& file_path, const std::string& file);
 
-	bool valid() const { return file_path_.empty() != true; }
+	static std::shared_ptr<music_track> create(const config& cfg);
+	static std::shared_ptr<music_track> create(const std::string& file);
+
+	void write(config& parent_node, bool append) const;
 
 	bool append() const { return append_; }
 	bool immediate() const { return immediate_; }
 	bool shuffle() const { return shuffle_; }
 	bool play_once() const { return once_; }
-	int ms_before() const { return ms_before_; }
-	int ms_after()  const { return ms_after_;  }
+	auto ms_before() const { return ms_before_; }
+	auto ms_after()  const { return ms_after_;  }
 
 	const std::string& file_path() const { return file_path_; }
 	const std::string& id() const { return id_; }
@@ -48,23 +50,22 @@ public:
 
 	void set_play_once(bool v) { once_ = v; }
 	void set_shuffle(bool v) { shuffle_ = v; }
-	void set_ms_before(int v) { ms_before_ = v; }
-	void set_ms_after(int v) { ms_after_ = v; }
+	void set_ms_before(const std::chrono::milliseconds& v) { ms_before_ = v; }
+	void set_ms_after(const std::chrono::milliseconds& v) { ms_after_ = v; }
 	void set_title(const std::string& v) { title_ = v; }
 
 private:
-	void resolve();
-
 	std::string id_;
 	std::string file_path_;
 	std::string title_;
 
-	int ms_before_, ms_after_;
+	std::chrono::milliseconds ms_before_{0};
+	std::chrono::milliseconds ms_after_{0};
 
-	bool once_;
-	bool append_;
-	bool immediate_;
-	bool shuffle_;
+	bool once_ = false;
+	bool append_ = false;
+	bool immediate_ = false;
+	bool shuffle_ = true;
 };
 
 std::shared_ptr<music_track> get_track(unsigned int i);
@@ -76,5 +77,5 @@ inline bool operator==(const sound::music_track& a, const sound::music_track& b)
 	return a.file_path() == b.file_path();
 }
 inline bool operator!=(const sound::music_track& a, const sound::music_track& b) {
-	return a.file_path() != b.file_path();
+	return !operator==(a, b);
 }

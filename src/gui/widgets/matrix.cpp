@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2012 - 2024
+	Copyright (C) 2012 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -131,7 +131,7 @@ const widget* matrix::find_at(const point& coordinate,
 	return content_.find_at(coordinate, must_be_active);
 }
 
-widget* matrix::find(const std::string& id, const bool must_be_active)
+widget* matrix::find(const std::string_view id, const bool must_be_active)
 {
 	if(widget* result = widget::find(id, must_be_active)) {
 		return result;
@@ -140,7 +140,7 @@ widget* matrix::find(const std::string& id, const bool must_be_active)
 	}
 }
 
-const widget* matrix::find(const std::string& id, const bool must_be_active)
+const widget* matrix::find(const std::string_view id, const bool must_be_active)
 		const
 {
 	if(const widget* result = widget::find(id, must_be_active)) {

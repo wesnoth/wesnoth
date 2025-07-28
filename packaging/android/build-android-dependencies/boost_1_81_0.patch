@@ -1,0 +1,25 @@
+From 5dddf9d8c961240837e7910af185adc9b3f0bfad Mon Sep 17 00:00:00 2001
+From: huangqinjin <huangqinjin@gmail.com>
+Date: Fri, 12 Oct 2018 10:27:07 +0800
+Subject: [PATCH] do not add version suffix for android
+
+---
+ boostcpp.jam | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/boostcpp.jam b/boostcpp.jam
+index dea1a43ea06..c74082ecd1a 100644
+--- a/boostcpp.jam
++++ b/boostcpp.jam
+@@ -197,8 +197,10 @@ rule tag ( name : type ? : property-set )
+         # version suffix is not needed -- the linker expects the
+         # libFoo.1.2.3.dylib format. AIX linkers do not accept version suffixes
+         # either. Pgi compilers can not accept a library with version suffix.
++        # For android, if we link to libFoo.so, which is a soft link to libFoo.so.1.2.3,
++        # the android studio will only pack the former into the final apk.
+         if $(type) = SHARED_LIB &&
+-          ! [ $(property-set).get <target-os> ] in windows cygwin darwin aix &&
++          ! [ $(property-set).get <target-os> ] in windows cygwin darwin aix android &&
+           ! [ $(property-set).get <toolset> ] in pgi
+         {
+             result = $(result).$(BOOST_VERSION)  ;

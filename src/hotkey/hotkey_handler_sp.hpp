@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2024
+	Copyright (C) 2014 - 2025
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -95,5 +95,5 @@ public:
 	{ return playsingle_controller_.reset_replay(); }
 	virtual void replay_exit() override;
 	virtual void load_autosave(const std::string& filename, bool start_replay = false) override;
-	virtual hotkey::ACTION_STATE get_action_state(const hotkey::ui_command&) const override;
+	virtual hotkey::action_state get_action_state(const hotkey::ui_command&) const override;
 };

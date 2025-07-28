@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -21,7 +21,6 @@
 #include <functional>
 
 //our user-defined double-click event type
-#define DOUBLE_CLICK_EVENT SDL_USEREVENT
 #define TIMER_EVENT (SDL_USEREVENT + 1)
 #define HOVER_REMOVE_POPUP_EVENT (SDL_USEREVENT + 2)
 #define DRAW_EVENT (SDL_USEREVENT + 3)
@@ -120,6 +119,8 @@ void focus_handler(const sdl_handler* ptr);
 
 bool has_focus(const sdl_handler* ptr, const SDL_Event* event);
 
+void set_main_thread();
+
 // whether the currently executing thread is the main thread.
 bool is_in_main_thread();
 
@@ -150,20 +151,12 @@ void draw();
 inline void pump_and_draw() { pump(); draw(); }
 // TODO: draw_manager - should this also raise_process_event? Some things do some don't
 
-struct pump_info {
-	pump_info() : resize_dimensions(), ticks_(0) {}
-	std::pair<int,int> resize_dimensions;
-	int ticks(unsigned *refresh_counter=nullptr, unsigned refresh_rate=1);
-private:
-	int ticks_; //0 if not calculated
-};
-
 class pump_monitor {
 //pump_monitors receive notification after an events::pump() occurs
 public:
 	pump_monitor();
 	virtual ~pump_monitor();
-	virtual void process(pump_info& info) = 0;
+	virtual void process() = 0;
 };
 
 void raise_process_event();
@@ -178,9 +171,23 @@ void process_tooltip_strings(int mousex, int mousey);
 /**
  * Is the event an input event?
  *
- * @returns                       Whether or not the event is an input event.
+ * @returns     Whether or not the event is an input event.
  */
 bool is_input(const SDL_Event& event);
+
+/**
+ * Check if this mouse button event is caused by a touch
+ *
+ * @returns      Whether or not this event is caused by a touch
+ */
+bool is_touch(const SDL_MouseButtonEvent& event);
+
+/**
+ * Check if this mouse motion event is caused by a touch
+ *
+ * @returns      Whether or not this event is caused by a touch
+ */
+bool is_touch(const SDL_MouseMotionEvent& event);
 
 /** Discards all input events. */
 void discard_input();

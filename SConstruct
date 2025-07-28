@@ -70,6 +70,7 @@ opts.AddVariables(
     PathVariable('fifodir', 'directory for the wesnothd fifo socket file', "/var/run/wesnothd", PathVariable.PathAccept),
     BoolVariable('desktop_entry','Clear to disable desktop-entry', True),
     BoolVariable('appdata_file','Clear to not install appdata file', True),
+    PathVariable('appdata_filepath','Path of appdata file to install', "packaging/org.wesnoth.Wesnoth.appdata.xml", PathVariable.PathAccept),
     BoolVariable('systemd','Install systemd unit file for wesnothd', bool(WhereIs("systemctl"))),
     PathVariable('datarootdir', 'sets the root of data directories to a non-default location', "share", PathVariable.PathAccept),
     PathVariable('datadirname', 'sets the name of data directory', "wesnoth$version_suffix", PathVariable.PathAccept),
@@ -106,6 +107,9 @@ opts.AddVariables(
     BoolVariable('system_lua', 'Enable use of system Lua ' + lua_ver + ' (compiled as C++, only for non-Windows systems).', False),
     PathVariable('luadir', 'Directory where Lua binary package is unpacked.', "", OptionalPath),
     ('host', 'Cross-compile host.', ''),
+    PathVariable('ndkdir', 'Root directory of android NDK to use', "", OptionalPath),
+    PathVariable('android_home', 'Root directory of android SDK to use', "", OptionalPath),
+    ('android_api', 'Target android api', 31),
     EnumVariable('multilib_arch', 'Address model for multilib compiler: 32-bit or 64-bit', "", ["", "32", "64"]),
     ('jobs', 'Set the number of parallel compilations', "1", lambda key, value, env: int(value), int),
     BoolVariable('distcc', 'Use distcc', False),
@@ -120,6 +124,7 @@ opts.AddVariables(
     BoolVariable("OS_ENV", "Forward the entire OS environment to scons", False),
     BoolVariable("history", "Clear to disable GNU history support in lua console", True),
     BoolVariable('force_color', 'Always produce ANSI-colored output (GNU/Clang only).', False),
+    BoolVariable('compile_db', 'Produce a compile_commands.json file.', False),
     )
 
 #
@@ -189,7 +194,12 @@ if env['distcc']:
 
 if env['ccache']: env.Tool('ccache')
 
-boost_version = "1.67"
+if env['compile_db']:
+    env.Tool('compilation_db')
+    cdb = env.CompilationDatabase()
+    Alias('cdb', cdb)
+
+boost_version = "1.70"
 
 def SortHelpText(a, b):
     return (a > b) - (a < b)
@@ -357,7 +367,7 @@ if env["prereqs"]:
         else:
             have_libpthread = conf.CheckLib("pthread")
         return have_libpthread & \
-            conf.CheckBoost("system") & \
+            conf.CheckBoost("system", header_only = True) & \
             conf.CheckBoost("asio", header_only = True) & \
             conf.CheckBoost("context") & \
             conf.CheckBoost("coroutine")
@@ -379,6 +389,7 @@ if env["prereqs"]:
         conf.CheckBoost("program_options", require_version = boost_version) & \
         conf.CheckBoost("random", require_version = boost_version) & \
         conf.CheckBoost("smart_ptr", header_only = True) & \
+        conf.CheckBoostCharconv() & \
 	CheckAsio(conf) & \
 	conf.CheckBoost("thread") & \
         conf.CheckBoost("locale") & \
@@ -388,6 +399,9 @@ if env["prereqs"]:
     if(have_server_prereqs and not env["host"]):
         conf.CheckBoostLocaleBackends(["icu", "winapi"]) \
             or Warning("Only icu and winapi backends of Boost Locale are supported. Bugs/crashes are very likely with other backends")
+
+    # Allowed to fail. We only need to link against process when using the v2 API
+    conf.CheckBoost("process", require_version = boost_version)
 
     if env['harden']:
         env["have_fortify"] = conf.CheckFortifySource()
@@ -406,11 +420,11 @@ if env["prereqs"]:
     have_client_prereqs = have_client_prereqs & conf.CheckJPG()
     have_client_prereqs = have_client_prereqs & conf.CheckWebP()
     have_client_prereqs = have_client_prereqs & conf.CheckCairo(min_version = "1.10")
-    have_client_prereqs = have_client_prereqs & conf.CheckPango("cairo", require_version = "1.44.0")
+    have_client_prereqs = have_client_prereqs & conf.CheckPango("cairo", require_version = "1.50.0")
     have_client_prereqs = have_client_prereqs & conf.CheckPKG("fontconfig")
-    have_client_prereqs = have_client_prereqs & conf.CheckBoost("regex")
+    have_client_prereqs = have_client_prereqs & conf.CheckBoost("regex") or conf.CheckBoost("regex", header_only = True)
     have_client_prereqs = have_client_prereqs & conf.CheckLib("curl")
-    have_client_prereqs = have_client_prereqs & conf.CheckBoost("graph")
+    have_client_prereqs = have_client_prereqs & conf.CheckBoost("graph", header_only = True)
 
     if env["system_lua"]:
         if env["PLATFORM"] == 'win32':
@@ -516,7 +530,7 @@ for env in [test_env, client_env, env]:
             env.AppendUnique(CCFLAGS = ["-fcolor-diagnostics"])
 
     if "gcc" in env["TOOLS"]:
-        env.AppendUnique(CCFLAGS = Split("-Wno-unused-local-typedefs -Wno-maybe-uninitialized -Wtrampolines"))
+        env.AppendUnique(CCFLAGS = Split("-Wno-c++20-extensions -Wno-unused-local-typedefs -Wno-maybe-uninitialized -Wtrampolines"))
         env.AppendUnique(CXXFLAGS = Split("-Wold-style-cast"))
 
         if env['strict']:
@@ -631,7 +645,7 @@ for env in [test_env, client_env, env]:
 
             if env["enable_lto"] == True:
                 rel_comp_flags += " -flto=" + str(env["jobs"])
-                rel_link_flags += rel_comp_flags + " -fuse-ld=gold -Wno-stringop-overflow"
+                rel_link_flags += rel_comp_flags + " -Wno-stringop-overflow"
         elif "clang" in env["CXX"]:
             if env["pgo_data"] == "generate":
                 rel_comp_flags += " -fprofile-instr-generate=pgo_data/wesnoth-%p.profraw"
@@ -665,7 +679,7 @@ for env in [test_env, client_env, env]:
         env[d] = os.path.join(env["prefix"], env[d])
 
     if env["PLATFORM"] == 'win32':
-        env.Append(LIBS = ["wsock32", "crypt32", "iconv", "z", "shlwapi", "winmm", "ole32", "uuid"], CCFLAGS = ["-mthreads"], LINKFLAGS = ["-mthreads"], CPPDEFINES = ["_WIN32_WINNT=0x0601"])
+        env.Append(LIBS = ["wsock32", "crypt32", "iconv", "z", "shlwapi", "winmm", "ole32", "uuid"], CCFLAGS = ["-mthreads"], LINKFLAGS = ["-mthreads"], CPPDEFINES = ["_WIN32_WINNT=0x0A00"])
 
     if env["PLATFORM"] == 'darwin':            # Mac OS X
         env.Append(FRAMEWORKS = "Cocoa")            # Cocoa GUI
@@ -689,7 +703,7 @@ if env['autorevision']:
         pass
 
 Export(Split("env client_env test_env have_client_prereqs have_server_prereqs have_test_prereqs"))
-SConscript(dirs = Split("po doc packaging/windows packaging/systemd"))
+SConscript(dirs = Split("po doc packaging/windows packaging/systemd packaging/android"))
 
 binaries = Split("wesnoth wesnothd campaignd boost_unit_tests")
 builds = {
@@ -783,7 +797,7 @@ if have_client_prereqs and have_X and env["desktop_entry"]:
      env.InstallData("icondir", "wesnoth", "packaging/icons")
      env.InstallData("desktopdir", "wesnoth", "packaging/org.wesnoth.Wesnoth.desktop")
 if have_client_prereqs and "linux" in sys.platform and env["appdata_file"]:
-     env.InstallData("appdatadir", "wesnoth", "packaging/org.wesnoth.Wesnoth.appdata.xml")
+     env.InstallData("appdatadir", "wesnoth", env["appdata_filepath"])
 
 # Python tools
 env.InstallData("bindir", "pytools", [os.path.join("data", "tools", tool) for tool in pythontools])

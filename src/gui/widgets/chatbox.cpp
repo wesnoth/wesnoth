@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2024
+	Copyright (C) 2016 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -77,7 +77,7 @@ void chatbox::finalize_setup()
 	// We need to bind a lambda here since switch_to_window is overloaded.
 	// A lambda alone would be more verbose because it'd need to specify all the parameters.
 	connect_signal_notify_modified(*roomlistbox_,
-		std::bind([this]() { switch_to_window(roomlistbox_->get_selected_row()); }));
+		[this](auto&&...) { switch_to_window(roomlistbox_->get_selected_row()); });
 
 	chat_log_container_ = find_widget<multi_page>("chat_log_container", false, true);
 
@@ -89,14 +89,24 @@ void chatbox::finalize_setup()
 
 void chatbox::load_log(std::map<std::string, chatroom_log>& log, bool show_lobby)
 {
-	for(const auto& l : log) {
+	const std::string new_tip = formatter()
+		<< "\n"
+		// TRANSLATORS: This is the new chat text indicator
+		<< markup::span_color("#FF0000", "============", _("NEW"), "============");
+
+	for(auto& l : log) {
 		const bool is_lobby = l.first == "lobby";
 
 		if(!show_lobby && is_lobby && !l.second.whisper) {
 			continue;
 		}
 
-		find_or_create_window(l.first, l.second.whisper, true, !is_lobby, l.second.log);
+		const std::size_t new_tip_index = l.second.log.find(new_tip);
+
+		if(new_tip_index != std::string::npos) {
+			l.second.log.replace(new_tip_index, new_tip.length(), "");
+		}
+		find_or_create_window(l.first, l.second.whisper, true, !is_lobby, l.second.log + new_tip);
 	}
 
 	log_ = &log;
@@ -220,7 +230,7 @@ void chatbox::append_to_chatbox(const std::string& text, std::size_t id, const b
 
 	const std::string before_message = log.get_value().empty() ? "" : "\n";
 	const std::string new_text = formatter()
-		<< log.get_value() << before_message << markup::span_color("#bcb088", prefs::get().get_chat_timestamp(std::time(0)), text);
+		<< log.get_value() << before_message << markup::span_color("#bcb088", prefs::get().get_chat_timestamp(std::chrono::system_clock::now()), text);
 
 	log.set_use_markup(true);
 	log.set_value(new_text);
@@ -242,10 +252,8 @@ void chatbox::append_to_chatbox(const std::string& text, std::size_t id, const b
 
 void chatbox::send_chat_message(const std::string& message, bool /*allies_only*/)
 {
-	add_chat_message(std::time(nullptr), prefs::get().login(), 0, message);
-
-	::config c {"message", ::config {"message", message, "sender", prefs::get().login()}};
-	send_to_server(c);
+	add_chat_message(std::chrono::system_clock::now(), prefs::get().login(), 0, message);
+	send_to_server(::config{"message", ::config{"message", message, "sender", prefs::get().login()}});
 }
 
 void chatbox::clear_messages()
@@ -263,17 +271,13 @@ void chatbox::user_relation_changed(const std::string& /*name*/)
 	}
 }
 
-void chatbox::add_chat_message(const std::time_t& /*time*/,
+void chatbox::add_chat_message(const std::chrono::system_clock::time_point& /*time*/,
 	const std::string& speaker,
 	int /*side*/,
 	const std::string& message,
 	events::chat_handler::MESSAGE_TYPE /*type*/)
 {
 	std::string text;
-
-	// FIXME: the chat_command_handler class (which handles chat commands) dispatches a
-	// message consisting of '/me insert text here' in the case the '/me' or '/emote'
-	// commands are used, so we need to do some manual preprocessing here.
 	if(message.compare(0, 4, "/me ") == 0) {
 		text = formatter() << markup::italic(speaker, " ", font::escape_text(message.substr(4)));
 	} else {
@@ -448,13 +452,10 @@ lobby_chat_window* chatbox::find_or_create_window(const std::string& name,
 	return &open_windows_.back();
 }
 
-void chatbox::close_window_button_callback(std::string room_name, bool& handled, bool& halt)
+void chatbox::close_window_button_callback(const std::string& room_name, bool& handled, bool& halt)
 {
-	const int index = std::distance(open_windows_.begin(), std::find_if(open_windows_.begin(), open_windows_.end(),
-		[&room_name](const lobby_chat_window& room) { return room.name == room_name; }
-	));
-
-	close_window(index);
+	close_window(std::distance(open_windows_.begin(),
+		utils::ranges::find(open_windows_, room_name, &lobby_chat_window::name)));
 
 	handled = halt = true;
 }

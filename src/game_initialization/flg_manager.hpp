@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2013 - 2024
+	Copyright (C) 2013 - 2025
 	by Andrius Silinskas <silinskas.andrius@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -15,6 +15,8 @@
 
 #pragma once
 
+#include "gui/sort_order.hpp"
+
 #include <string>
 #include <vector>
 
@@ -25,11 +27,22 @@ namespace ng {
 
 const std::string random_enemy_picture("units/random-dice.png");
 
+// TODO: use this for more [era] stuff
+// TODO: move this somewhere more general
+struct era_metadata
+{
+	/** Parses an [era] tag. */
+	explicit era_metadata(const config& cfg);
+
+	/** The order to display factions when a player selects their leader. */
+	sort_order::type faction_sort_order;
+};
+
 /** FLG stands for faction, leader and gender. */
 class flg_manager
 {
 public:
-	flg_manager(const std::vector<const config*>& era_factions,
+	flg_manager(const era_metadata& era_info, const std::vector<const config*>& era_factions,
 		const config& side, bool lock_settings, bool use_map_settings, bool saved_game);
 
 	void set_current_faction(const unsigned index);
@@ -71,15 +84,19 @@ public:
 	const std::string& current_gender() const
 		{ return current_gender_; }
 
-	const config* default_leader_cfg() const
-		{ return default_leader_cfg_; }
-
 	int current_faction_index() const;
 
 	int current_leader_index() const
 		{ return leader_index(current_leader_); }
 	int current_gender_index() const
 		{ return gender_index(current_gender_); }
+	bool leader_lock() const
+		{ return leader_lock_; }
+
+	const era_metadata& era_info() const
+	{
+		return era_info_;
+	}
 
 private:
 	flg_manager(const flg_manager&) = delete;
@@ -103,18 +120,16 @@ private:
 	/** returns -1 if no gender with that name was found */
 	int gender_index(const std::string& gender) const;
 
+	const era_metadata& era_info_;
+
 	const std::vector<const config*>& era_factions_;
 
 	// not sure how reilable the content of this field is, it's currently only used for debugging info.
 	const int side_num_;
 	const bool faction_from_recruit_;
 
-	const std::string original_type_;
-	const std::string original_gender_;
-	std::string savegame_gender_;
 	const std::string original_faction_;
 	const std::vector<std::string> original_recruit_;
-	const std::string choose_faction_by_leader_;
 	const bool saved_game_;
 	const bool has_no_recruits_;
 
@@ -136,7 +151,6 @@ private:
 
 	std::string default_leader_type_;
 	std::string default_leader_gender_;
-	const config* default_leader_cfg_;
 
 	static const config& get_default_faction(const config& cfg);
 };

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2024
+	Copyright (C) 2009 - 2025
 	by Yurii Chernyi <terraninfo@terraninfo.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -52,12 +52,10 @@ void candidate_action_evaluation_loop::on_create()
 		engine::parse_candidate_action_from_config(*this,cfg_element,back_inserter(candidate_actions_));
 	}
 
-	std::function<void(std::vector<candidate_action_ptr>&, const config&)> factory_candidate_actions = [this](std::vector<candidate_action_ptr> &candidate_actions, const config &cfg)
-	{
-		engine::parse_candidate_action_from_config(*this, cfg, std::back_inserter(candidate_actions));
-	};
-	register_vector_property(property_handlers(),"candidate_action",candidate_actions_, factory_candidate_actions);
-
+	register_vector_property(property_handlers(), "candidate_action", candidate_actions_,
+		[this](auto& candidate_actions, const config& cfg) {
+			engine::parse_candidate_action_from_config(*this, cfg, std::back_inserter(candidate_actions));
+		});
 }
 
 config candidate_action_evaluation_loop::to_config() const

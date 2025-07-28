@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -40,7 +40,7 @@ container_base::container_base(const implementation::builder_styled_widget& buil
 		event::dispatcher::back_pre_child);
 }
 
-SDL_Rect container_base::get_client_rect() const
+rect container_base::get_client_rect() const
 {
 	return get_rectangle();
 }
@@ -136,7 +136,7 @@ void container_base::place(const point& origin, const point& size)
 {
 	styled_widget::place(origin, size);
 
-	const SDL_Rect rect = get_client_rect();
+	const rect rect = get_client_rect();
 	const point client_size(rect.w, rect.h);
 	const point client_position(rect.x, rect.y);
 	grid_.place(client_position, client_size);
@@ -183,12 +183,12 @@ void container_base::set_origin(const point& origin)
 	// Inherited.
 	widget::set_origin(origin);
 
-	const SDL_Rect rect = get_client_rect();
+	const rect rect = get_client_rect();
 	const point client_position(rect.x, rect.y);
 	grid_.set_origin(client_position);
 }
 
-void container_base::set_visible_rectangle(const SDL_Rect& rectangle)
+void container_base::set_visible_rectangle(const rect& rectangle)
 {
 	// Inherited.
 	widget::set_visible_rectangle(rectangle);
@@ -221,13 +221,13 @@ const widget* container_base::find_at(const point& coordinate,
 	return grid_.find_at(coordinate, must_be_active);
 }
 
-widget* container_base::find(const std::string& id, const bool must_be_active)
+widget* container_base::find(const std::string_view id, const bool must_be_active)
 {
 	widget* result = styled_widget::find(id, must_be_active);
 	return result ? result : grid_.find(id, must_be_active);
 }
 
-const widget* container_base::find(const std::string& id,
+const widget* container_base::find(const std::string_view id,
 								 const bool must_be_active) const
 {
 	const widget* result = styled_widget::find(id, must_be_active);
@@ -275,10 +275,9 @@ point container_base::border_space() const
 
 void container_base::inject_linked_groups()
 {
-	for(const auto& lg : get_config()->linked_groups) {
-		if(!get_window()->has_linked_size_group(lg.id)) {
-			get_window()->init_linked_size_group(lg.id, lg.fixed_width, lg.fixed_height);
-		}
+	for(const auto& [id, fixed_width, fixed_height] : get_config()->linked_groups) {
+		// No-op if group with this ID already exists
+		get_window()->init_linked_size_group(id, fixed_width, fixed_height);
 	}
 }
 

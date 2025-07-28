@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2024
+	Copyright (C) 2009 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -42,6 +42,7 @@
 #include "gui/core/event/handler.hpp"
 #include "sdl/point.hpp"
 
+#include <chrono>
 #include <string>
 #include <vector>
 
@@ -160,7 +161,7 @@ public:
 
 protected:
 	/** The time of the last click used for double clicking. */
-	uint32_t last_click_stamp_;
+	std::chrono::steady_clock::time_point last_click_stamp_;
 
 	/** The widget the last click was on, used for double clicking. */
 	widget* last_clicked_widget_;
@@ -190,6 +191,8 @@ private:
 using mouse_button_left    = mouse_button<0>;
 using mouse_button_middle  = mouse_button<1>;
 using mouse_button_right   = mouse_button<2>;
+using mouse_button_back    = mouse_button<3>;
+using mouse_button_forward = mouse_button<4>;
 
 /**
  * The event handler class for the widget library.
@@ -204,7 +207,9 @@ using mouse_button_right   = mouse_button<2>;
 class distributor :
 	public mouse_button_left,
 	public mouse_button_middle,
-	public mouse_button_right
+	public mouse_button_right,
+	public mouse_button_back,
+	public mouse_button_forward
 {
 public:
 	distributor(widget& owner, const dispatcher::queue_position queue_position);

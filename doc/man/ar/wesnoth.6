@@ -1,0 +1,412 @@
+.\" This program is free software; you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation; either version 2 of the License, or
+.\" (at your option) any later version.
+.\"
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program; if not, write to the Free Software
+.\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+.\"
+.
+.\"*******************************************************************
+.\"
+.\" This file was generated with po4a. Translate the source file.
+.\"
+.\"*******************************************************************
+.TH ويسنوث 6 2022 ويسنوث "ملحمة ويسنوث"
+.
+.SH اسم
+ملحمة ويسنوث، لعبة إستراتيجيا خيالية تعتمد على تناوب الأدوار بين اللاعبين
+.
+.SH الملخص
+.
+\fBwesnoth\fP [\fIOPTIONS\fP] [\fIPATH_TO_DATA\fP]
+.
+.SH تقديم
+.
+معركة من أجل ب\fBWesnoth\fP هي لعبة إستراتيجية خيالية تعتمد على الأدوار.
+
+اهزم جميع قادة الأعداء باستخدام مجموعة من القوات التي تختارها مع إدارة
+مواردك من الذهب والقرى. كل الوحدات لها نقاط قوتها وضعفها؛ للفوز، انشر قواتك
+لتحقيق أفضل ميزة لها بينما تحرم أعدائك من فرصة فعل الشيء نفسه. عندما تكتسب
+الوحدات الخبرة فإنها تكتسب قدرات جديدة وتصبح أكثر قوة. العب بلغتك واختبر
+مهاراتك ضد خصم كمبيوتر ذكي، أو انضم إلى مجتمع ويسنوث الكبير من اللاعبين عبر
+الإنترنت. أنشئ وحداتك أو أكتب سيناريوهات أو حملات خاصة وشاركها مع الآخرين.
+.
+.SH "إعدادات الخيارات"
+.
+.TP 
+\fB\-\-addon\-info\fP
+Shows a button on the add\-ons manager to query the add\-ons server for
+various information.
+.TP 
+\fB\-\-all\-translations\fP
+اعرض جميع الترجمات في قائمة اختيار اللغة داخل اللعبة حتى لو تم اعتبارها غير
+مكتملة بشكل كافٍ.
+.TP 
+\fB\-c[\fP\fIid_campaign\fP\fB],\ \-\-campaign[\fP\fI=id_campaign\fP\fB]\fP
+اذهب مباشرة إلى الحملة مع التعريف \fIid_campaign\fP. نافذة خيارات سوف تظهر اذا
+لم يتم تحديد تعريف.
+.TP 
+\fB\-\-campaign\-difficulty[\fP\fI=difficulty\fP\fB]\fP
+صعوبة الحملة المحددة (من 1 إلى الحد الأقصى). إذا لم يتم تحديد أي اختيار
+فستظهر نافذة إعلام محدودة لصعوبة الحملة.
+.TP 
+\fB\-\-campaign\-scenario\fP\fI\ id_scenario\fP
+معرّف السيناريو من الحملة المحددة. المعتاد هو السيناريو الأول.
+.TP 
+\fB\-\-campaign\-skip\-story\fP
+تجاوز [story] شاشة القصة والحوار عبر نهاية حدث الانطلاق.
+.TP 
+\fB\-\-clock\fP
+Adds the option to show a clock for testing the drawing timer. Also adds the
+option for showing the GUI Test Dialog.
+.TP 
+\fB\-\-core\fP\fI\ id_core\fP
+Overrides the loaded core with the one whose id is specified.
+.TP 
+\fB\-\-data\-dir\fP\fI\ directory\fP
+Overrides the data directory with the one specified. The data directory is
+the one that contains subdirectories 'data', 'fonts', 'images' and others.
+.TP 
+\fB\-\-data\-path\fP
+يطبع مسار دليل البيانات والمخرجات.
+.TP 
+\fB\-d, \-\-debug\fP
+يتيح خيارات وضع الأوامر الإضافية داخل اللعبة (راجع صفحة wiki على
+https://www.wesnoth.org/wiki/CommandMode للحصول على مزيد من المعلومات حول
+وضع الأوامر).
+.TP 
+\fB\-\-debug\-lua\fP
+تمكن بعض آليات تصحيح أخطاء برمجية Lua
+.TP 
+\fB\-\-strict\-lua\fP
+disallow deprecated Lua API calls
+.TP 
+\fB\-D,\ \-\-diff\fP\fI\ left\-file\fP\fB\ \fP\fIright\-file\fP
+diffs the two WML files; does not preprocess them first (to do that, run
+them through \fB\-p\fP first). Outputs the diff as DiffWML on standard output or
+to the file indicated by \fI\-\-output\fP.
+.TP 
+\fB\-e[\fP\fIfile\fP\fB],\ \-\-editor[\fP\fI=file\fP\fB]\fP
+ابدأ في مصمم الخرائط في اللعبة مباشرة. If \fIfile\fP is specified, equivalent
+to \fB\-l\fP \fB\-\-load\fP.
+.TP 
+\fB\-\-fps\fP
+يعرض عدد الإطارات في الثانية التي تعمل بها اللعبة حاليًا في أحد أركان الشاشة
+بالإضافة إلى طبع هذه القيم إلى ملف في دليل بيانات المستخدم.
+.TP 
+\fB\-f, \-\-fullscreen\fP
+يجعل اللعبة في وضع الشاشة الكاملة.
+.TP 
+\fB\-h, \-\-help\fP
+يعرض ملخصًا لخيارات سطر الأوامر للخيارات القياسية، ثم يغادر.
+.TP 
+\fB\-l,\ \-\-load\fP\fI\ file\fP
+يحمل ملف الحفظ \fIfile\fP من دليل حفظ الألعاب القياسي. إذا تم استخدام خيار
+\fB\-e\fP أو \fB\-\-editor\fP أيضًا، يبدأ المحرر مع فتح الخريطة من \fIfile\fP. إذا كان
+مجلدًا، سيبدأ المحرر مع فتح حوار تحميل الخريطة هناك.
+.TP 
+\fB\-L,\ \-\-language\fP\fI\ lang\fP
+يستخدم لغة \fIlang\fP (رمز) في هذه الجلسة. مثال: \fB\-\-language ang_GB@latin\fP
+.TP 
+\fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIdomain1\fP\fB,\fP\fIdomain2\fP\fB,\fP\fI...\fP
+sets the severity level of the log domains. The wildcard \fB*\fP may be used to
+match a subset of domains, e.g. gui/* or conf* or * (the latter matches all
+domains).  Available levels: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP,\ \fBnone\fP.  By default, the \fBwarning\fP level is used for most domains, but
+\fBdeprecation\fP defaults to \fBnone\fP unless combined with the \fB\-d\fP option.
+This option can be specified multiple times.
+.TP 
+\fB\-\-log\-precise\fP
+يعرض الجدول الزمني في السجل بمزيد من الدقة.
+.TP 
+\fB\-\-log\-strict\fP\fI\ level\fP
+sets the strict \fIlevel\fP of the logger. Any messages sent to log domains of
+this \fIlevel\fP or more severe will cause the unit test to fail regardless of
+the victory result. Only relevant when used with \fB\-u\fP.
+.TP 
+\fB\-\-logdomains[\fP\fI=filter\fP\fB]\fP
+يسرد مجالات السجل المعرفة (فقط تلك التي تحتوي على \fIfilter\fP إذا وُظفت)
+ويخرج.
+.TP 
+\fB\-\-no\-log\-to\-file\fP
+prevents redirecting logged output to a file. The environment variable
+WESNOTH_NO_LOG_FILE can also be set as an alternative. Log files are created
+in the logs directory under the userdata folder.
+.TP 
+\fB\-\-log\-to\-file\fP
+يتم كتابة ناتج السجل إلى ملف. يلغي تأثير \-\-no\-log\-to\-file سواء كان ضمنيًا أو
+صريحًا.
+.TP 
+\fB\-\-no\-log\-sanitize\fP
+disables the anonymization that's normally applied when logging, for example
+replacing usernames with USER.
+.TP 
+\fB\-\-wnoconsole\fP
+لـ Windows، عند استخدامه مع \-\-no\-log\-to\-file، يؤدي إلى كتابة المخرجات إلى
+cerr/cout بدلاً من CONOUT. وإلا، لا يفعل شيئًا.
+.TP 
+\fB\-\-max\-fps\fP\fI\ fps\fP
+عدد الأطر في الثانية (frames per second) التي يمكن للعرض أن يُظهرها، يجب أن
+تكون القيمة بين \fB1\fP و \fB1000\fP، القيمة الافتراضية هي معدل تحديث الشاشة
+(refresh rate).
+.TP 
+\fB\-m, \-\-multiplayer\fP
+يشغل لعبة متعددة اللاعبين. هناك خيارات إضافية يمكن استخدامها مع
+\fB\-\-multiplayer\fP كما هو موضح أدناه.
+.TP 
+\fB\-\-mp\-test\fP
+يحمل سيناريوهات الاختبار متعددة اللاعبين (test mp scenarios).
+.TP 
+\fB\-\-new\-widgets\fP
+توجد أداة واجهة مستخدم جديدة قيد التطوير (WIP widget toolkit)، هذا الخيار
+يُفعّلها. هذا تجريبي للغاية، لا تملأ تقارير الأخطاء لأن معظمها معروف. أجزاء
+من المكتبة تعتبر مستقرة وستعمل دون هذا المفتاح.
+.TP 
+\fB\-\-noaddons\fP
+تعطيل تحميل الملفات المضافة من طرف المستخدم.
+.TP 
+\fB\-\-nocache\fP
+تعطيل التخزين المؤقت لبيانات اللعبة.
+.TP 
+\fB\-\-nogui\fP
+يشغل اللعبة بدون واجهة المستخدم الرسومية (GUI). متاح فقط مع \fB\-\-multiplayer\fP
+أو \fB\-\-screenshot\fP أو \fB\-\-plugin\fP.
+.TP 
+\fB\-\-nobanner\fP
+قمع لافتة بدء التشغيل.
+.TP 
+\fB\-\-nomusic\fP
+تشغيل اللعبة بدون موسيقى.
+.TP 
+\fB\-\-noreplaycheck\fP
+لا تحاول التحقق من صحة إعادة تشغيل (replay) اختبار الوحدة. ذو صلة فقط عند
+استخدامه مع \fB\-u\fP.
+.TP 
+\fB\-\-nosound\fP
+تشغيل اللعبة بدون أصوات وموسيقى.
+.TP 
+\fB\-\-output\fP\fI\ file\fP
+الإخراج إلى الملف المحدد. ينطبق على عمليات ديفينج (مقارنة الملفات).
+.TP 
+\fB\-\-password\fP\fI\ password\fP
+يستخدم \fIpassword\fP عند الاتصال بالخادم، متجاهلاً التفضيلات الأخرى. غير آمن.
+.TP 
+\fB\-\-plugin\fP\fI\ script\fP
+load a \fIscript\fP which defines a Wesnoth plugin. Lua file should return a
+function which will be run as a coroutine and periodically woken up with
+updates.
+.TP 
+\fB\-P,\ \-\-patch\fP\fI\ base\-file\fP\fB\ \fP\fIpatch\-file\fP
+يطبق رقعة DiffWML على ملف WML؛ لا يقوم بمعالجة مسبقة (preprocess) لأي من
+الملفات. يُخرج WML المعدل إلى المخرجات القياسية (standard output) أو إلى
+الملف المحدد بواسطة \fI\-\-output\fP.
+.TP 
+\fB\-p,\ \-\-preprocess\fP\fI\ source\-file/folder\fP\fB\ \fP\fItarget\-directory\fP
+يقوم بمعالجة ملف أو مجلد محدد مسبقًا. لكل ملف (ملفات)، سيتم كتابة ملف .cfg
+عادي وملف .cfg معالج في دليل الهدف المحدد. إذا تم تحديد مجلد، فسيتم معالجته
+بشكل متكرر بناءً على قواعد المعالج المسبق المعروفة. وحدات الماكرو الشائعة من
+دليل "data/core/macros" سيتم معالجتها قبل الموارد المحددة.
+مثال: \fB\-p ~/wesnoth/data/campaigns/tutorial ~/result.\fP
+للتفاصيل حول المعالج المسبق، قم بزيارة:
+https://wiki.wesnoth.org/PreprocessorRef#Command\-line_preprocessor.
+.TP 
+\fB\-\-preprocess\-string\fP\fI\ source\-string\fP
+preprocesses a given string and writes the output to stdout.
+.TP 
+\fB\-\-preprocess\-defines=\fP\fIDEFINE1\fP\fB,\fP\fIDEFINE2\fP\fB,\fP\fI...\fP
+comma separated list of defines to be used by the \fB\-\-preprocess\fP or
+\fB\-\-preprocess\-string\fP command. If \fBSKIP_CORE\fP is in the define list the
+"data/core" directory won't be preprocessed.
+.TP 
+\fB\-\-preprocess\-input\-macros\fP\fI\ source\-file\fP
+used only by the \fB\-\-preprocess\fP or \fB\-\-preprocess\-string\fP
+command. Specifies a file that contains \fB[preproc_define]\fPs to be included
+before preprocessing.
+.TP 
+\fB\-\-preprocess\-output\-macros[\fP\fI=target\-file\fP\fB]\fP
+used only by the \fB\-\-preprocess\fP command (But not by the
+\fB\-\-preprocess\-string\fP command). Will output all preprocessed macros in the
+target file. If the file is not specified the output will be file
+\&'_MACROS_.cfg' in the target directory of preprocess's command. The output
+file can be passed to \fB\-\-preprocess\-input\-macros\fP.  This switch should be
+typed before the \fB\-\-preprocess\fP command.
+.TP 
+\fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
+يضبط دقة الشاشة. مثال: \fB\-r\fP \fB800x600\fP.
+.TP 
+\fB\-\-render\-image\fP\fI\ image\fP\fB\ \fP\fIoutput\fP
+يأخذ مسار صورة صالحًا في Wesnoth مع دوال مسار الصورة، ويُخرج إلى ملف
+\&.png. دوال مسار الصورة موثقة في:
+https://wiki.wesnoth.org/ImagePathFunctionWML.
+.TP 
+\fB\-R,\ \-\-report\fP
+تهيئة أدلة اللعبة وطباعة معلومات الإنشاء المناسبة للاستخدام في تقارير
+الأخطاء والإنهاء.
+.TP 
+\fB\-\-rng\-seed\fP\fI\ number\fP
+يُبذر منشئ الأرقام العشوائية (RNG) بـ \fInumber\fP. مثال: \fB\-\-rng\-seed\fP \fB0\fP.
+.TP 
+\fB\-\-screenshot\fP\fI\ map\fP\fB\ \fP\fIoutput\fP
+يحفظ لقطة شاشة لـ \fImap\fP في \fIoutput\fP دون تهيئة شاشة.
+.TP 
+\fB\-s[\fP\fIhost\fP\fB],\ \-\-server[\fP\fI=host\fP\fB]\fP
+يتصل بالمضيف المحدد إن وُجد، وإلا يتصل بأول خادم في التفضيلات. مثال:
+\fB\-\-server\fP \fBserver.wesnoth.org\fP.
+.TP 
+\fB\-\-showgui\fP
+يشغل اللعبة مع واجهة المستخدم الرسومية (GUI)، متجاوزًا أي \fB\-\-nogui\fP ضمني.
+.TP 
+\fB\-\-strict\-validation\fP
+يتم التعامل مع أخطاء التحقق من الصحة على أنها أخطاء فادحة.
+.TP 
+\fB\-t[\fP\fIscenario_id\fP\fB],\ \-\-test[\fP\fI=scenario_id\fP\fB]\fP
+يشغل سيناريو اختبار صغير في اللعبة. يجب أن يكون السيناريو معرفًا بوسم
+\fB[test]\fP في WML. الافتراضي هو \fBtest\fP. يمكن بدء عرض لميزة \fB[micro_ai]\fP
+باستخدام \fBmicro_ai_test\fP.
+.TP 
+\fB\-\-translations\-over\fP\fI\ percent\fP
+يحدد معيار اكتمال الترجمة الكافي لعرضها في قائمة اللغات داخل اللعبة إلى
+\fIpercent\fP. القيم الصالحة من 0 إلى 100.
+.TP 
+\fB\-u,\ \-\-unit\fP\fI\ scenario\-id\fP
+يشغل سيناريو الاختبار المحدد كاختبار وحدة. يتضمن ضمنيًا \fB\-\-nogui\fP.
+.TP 
+\fB\-\-unsafe\-scripts\fP
+يجعل حزمة \fBpackage\fP متاحة لنصوص Lua، حتى تتمكن من تحميل حزم تعسفية. لا تفعل
+هذا مع نصوص غير موثوقة! هذا الإجراء يعطي Lua نفس صلاحيات تنفيذ Wesnoth.
+.TP 
+\fB\-S,\ \-\-use\-schema\fP\fI\ path\fP
+sets the WML schema for use with \fB\-V,\ \-\-validate\fP.
+.TP 
+\fB\-\-userdata\-dir\fP\fI\ name\fP
+يضبط دليل بيانات المستخدم على \fIname\fP ضمن $HOME أو "My Documents\My Games"
+للنوافذ.  يمكنك أيضًا تحديد مسار مطلق لدليل بيانات المستخدم خارج $HOME أو
+"My Documents\eMy Games". في نظام التشغيل Windows، يمكن أيضًا تحديد دليل
+نسبي لدليل عمل العملية باستخدام مسار يبدأ بـ ".\e" أو "...\e".
+.TP 
+\fB\-\-userdata\-path\fP
+طباعة مسار دليل بيانات المستخدم والخروج.
+.TP 
+\fB\-\-username\fP\fI\ username\fP
+يستخدم \fIusername\fP عند الاتصال بالخادم، متجاهلاً التفضيلات الأخرى.
+.TP 
+\fB\-\-validate\fP\fI\ path\fP
+التحقق من صحة ملف مقابل مخطط WML.
+.TP 
+\fB\-\-validate\-addon\fP\fI\ addon_id\fP
+التحقق من صحة WML للملحق المحدد أثناء اللعب.
+.TP 
+\fB\-\-validate\-core\fP
+التحقق من صحة WML الأساسية أثناء اللعب.
+.TP 
+\fB\-\-validate\-schema\fP\fI\ path\fP
+التحقق من صحة ملف كمخطط WML.
+.TP 
+\fB\-\-validcache\fP
+على افتراض أن ذاكرة التخزين المؤقت صالحة. (اختيار خطير)
+.TP 
+\fB\-v, \-\-version\fP
+إظهار رقم الإصدار والخروج.
+.TP 
+\fB\-\-simple\-version\fP
+إظهار رقم الإصدار ولا شيء آخر ، ثم الخروج.
+.TP 
+\fB\-w, \-\-windowed\fP
+تشغيل اللعبة في وضع النوافذ.
+.TP 
+\fB\-\-with\-replay\fP
+يعيد تشغيل اللعبة المحملة باستخدام خيار \fB\-\-load\fP.
+.
+.SH "خيارات لـ \-\-multiplayer"
+.
+خيارات متعددة اللاعبين الخاصة بالجانب مُعلَّمة بـ \fInumber\fP. يجب استبدال
+\fInumber\fP برقم جانب. عادةً ما يكون 1 أو 2 لكنه يعتمد على عدد اللاعبين الممكن
+في السيناريو المختار.
+.TP 
+\fB\-\-ai\-config\fP\fI\ number\fP\fB:\fP\fIvalue\fP
+تحديد ملف التكوين ليتم تحميله لوحدة التحكم بال AI لهذا الجانب.
+.TP 
+\fB\-\-algorithm\fP\fI\ number\fP\fB:\fP\fIvalue\fP
+يحدد خوارزمية غير قياسية لتستخدمها وحدة تحكم الذكاء الاصطناعي لهذا
+الجانب. يتم تحديد الخوارزمية بواسطة علامة \fB[ai]\fP، والتي يمكن أن تكون
+خوارزمية أساسية إما في "data/ai/ais" أو "data/ai/dev" أو خوارزمية محددة
+بواسطة ملحق. تتضمن القيم المتاحة: \fBidle_ai\fP و \fBexperimental_ai\fP.
+.TP 
+\fB\-\-controller\fP\fI\ number\fP\fB:\fP\fIvalue\fP
+يختار المتحكم لهذا الجانب. القيم المتاحة: \fBhuman\fP، \fBai\fP و \fBnull\fP.
+.TP 
+\fB\-\-era\fP\fI\ value\fP
+استخدم هذا الخيار للعب في العصر المحدد بدلاً من عصر \fBالافتراضي\fP. يتم اختيار
+العصر بواسطة معرف (id). العصور موصوفة في ملف \fBdata/multiplayer/eras.cfg\fP.
+.TP 
+\fB\-\-exit\-at\-end\fP
+يخرج بمجرد انتهاء السيناريو، دون عرض مربع حوار النصر/الهزيمة الذي يتطلب
+عادةً من المستخدم النقر على إنهاء السيناريو.  يُستخدم هذا أيضًا في القياس
+القابل للبرمجة النصية.
+.TP 
+\fB\-\-ignore\-map\-settings\fP
+لا يستخدم إعدادات الخريطة، يستخدم القيم الافتراضية بدلاً من ذلك.
+.TP 
+\fB\-\-label\fP\fI\ label\fP
+يضبط \fIlabel\fP لوحدات الذكاء الاصطناعي.
+.TP 
+\fB\-\-multiplayer\-repeat\fP\fI\ value\fP
+يكرر لعبة متعددة اللاعبين \fIvalue\fP مرات. الأفضل استخدامه مع \fB\-\-nogui\fP
+لاختبار الأداء القابل للنص.
+.TP 
+\fB\-\-parm\fP\fI\ number\fP\fB:\fP\fIname\fP\fB:\fP\fIvalue\fP
+يضبط معاملات إضافية لهذا الجانب. يعتمد هذا المعامل على الخيارات المستخدمة مع
+\fB\-\-controller\fP و \fB\-\-algorithm\fP. يجب أن يكون مفيدًا فقط للأشخاص الذين
+يصممون ذكاءً اصطناعيًا خاصًا بهم. (غير موثّق بالكامل بعد)
+.TP 
+\fB\-\-scenario\fP\fI\ value\fP
+يختار سيناريو متعدد اللاعبين بواسطة المعرف. معرف السيناريو الافتراضي هو
+\fBmultiplayer_The_Freelands\fP.
+.TP 
+\fB\-\-side\fP\fI\ number\fP\fB:\fP\fIvalue\fP
+يختار فصيلًا من العصر الحالي لهذا الجانب. يتم اختيار الفصيل بواسطة
+معرف. الفصائل موصوفة في ملف data/multiplayer.cfg.
+.TP 
+\fB\-\-turns\fP\fI\ value\fP
+يضبط عدد الأدوار للسيناريو المختار. افتراضيًا لا يوجد حد للأدوار.
+.
+.SH "حالة الخروج (EXIT STATUS)"
+.
+حالة الخروج الطبيعية هي 0. حالة الخروج 1 تشير إلى خطأ تهيئة (مثل SDL، فيديو،
+خطوط، إلخ). حالة الخروج 2 تشير إلى خطأ في خيارات سطر الأوامر.
+.br
+عند تشغيل اختبارات الوحدة (باستخدام \fB\ \-u\fP)، تختلف حالة الخروج. حالة الخروج
+0 تشير إلى نجاح الاختبار، و1 تشير إلى فشل الاختبار. حالة الخروج 3 تشير إلى
+نجاح الاختبار لكن مع إنتاج ملف إعادة تشغيل غير صالح. حالة الخروج 4 تشير إلى
+نجاح الاختبار لكن إعادة التشغيل أنتجت أخطاءً. هاتان الحالتان تُرجعان فقط إذا
+لم يتم تمرير \fB\-\-noreplaycheck\fP.
+.
+.SH "المؤلف (AUTHOR)"
+.
+كُتب بواسطة David White <davidnwhite@verizon.net>.
+.br
+حرره Nils Kneuper <crazy\-ivanovic@gmx.net>، ott
+<ott@gaon.net> و Soliton <soliton.de@gmail.com>.
+.br
+صفحة الدليل هذه كُتبت أصلاً بواسطة Cyril Bouthors
+<cyril@bouthors.org>.
+.br
+زوروا الصفحة الرئيسية الرسمية: https://www.wesnoth.org/
+.
+.SH "حقوق النشر (COPYRIGHT)"
+.
+Copyright \(co 2003\-2025 David White <davidnwhite@verizon.net>
+.br
+هذا برنامج حر؛ مرخص تحت GPL الإصدار 2، كما نشرته Free Software
+Foundation. لا يوجد أي ضمان؛ ولا حتى لـ MERCHANTABILITY أو FITNESS FOR A
+PARTICULAR PURPOSE.
+.
+.SH "شاهد أيضًا (SEE ALSO)"
+.
+\fBwesnothd\fP(6)

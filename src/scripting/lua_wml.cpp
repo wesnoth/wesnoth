@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2024
+	Copyright (C) 2014 - 2025
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -36,7 +36,7 @@ namespace lua_wml {
 static int intf_wml_tostring(lua_State* L) {
 	const config& arg = luaW_checkconfig(L, 1);
 	std::ostringstream stream;
-	write(stream, arg);
+	io::write(stream, arg);
 	lua_pushstring(L, stream.str().c_str());
 	return 1;
 }
@@ -81,13 +81,12 @@ static int intf_load_wml(lua_State* L)
 	}
 	std::string wml_file = filesystem::get_wml_location(file).value();
 	filesystem::scoped_istream stream;
-	config result;
 	if(preprocess) {
 		stream = preprocess_file(wml_file, &defines_map);
 	} else {
 		stream.reset(new std::ifstream(wml_file));
 	}
-	read(result, *stream, validator.get());
+	config result = io::read(*stream, validator.get());
 	luaW_pushconfig(L, result);
 	return 1;
 }
@@ -106,8 +105,7 @@ static int intf_parse_wml(lua_State* L)
 		validator.reset(new schema_validation::schema_validator(filesystem::get_wml_location(schema_path).value()));
 		validator->set_create_exceptions(false); // Don't crash if there's an error, just go ahead anyway
 	}
-	config result;
-	read(result, wml, validator.get());
+	config result = io::read(wml, validator.get());
 	luaW_pushconfig(L, result);
 	return 1;
 }

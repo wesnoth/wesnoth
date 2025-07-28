@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -55,8 +55,8 @@ std::function<rect(rect)> prep_minimap_for_rendering(
 
 	DBG_DP << "Creating minimap: " << static_cast<int>(map.w() * scale * 0.75) << ", " << map.h() * scale;
 
-	const std::size_t map_width  = static_cast<size_t>(std::max(0, map.w())) * scale * 3 / 4;
-	const std::size_t map_height = static_cast<size_t>(std::max(0, map.h())) * scale;
+	const std::size_t map_width  = static_cast<std::size_t>(std::max(0, map.w())) * scale * 3 / 4;
+	const std::size_t map_height = static_cast<std::size_t>(std::max(0, map.h())) * scale;
 
 	// No map!
 	if(map_width == 0 || map_height == 0) {
@@ -133,9 +133,7 @@ std::function<rect(rect)> prep_minimap_for_rendering(
 						draw::blit(tile, dest);
 
 						// NOTE: we skip the overlay when base is missing (to avoid hiding the error)
-						if(tile && map.tdata()->get_terrain_info(terrain).is_combined()
-							&& !terrain_info.minimap_image_overlay().empty())
-						{
+						if(tile && terrain_info.is_combined() && !terrain_info.minimap_image_overlay().empty()) {
 							const std::string overlay_file = "terrain/" + terrain_info.minimap_image_overlay() + ".png";
 							const texture& overlay = image::get_texture(overlay_file); // image::HEXED
 
@@ -214,9 +212,9 @@ std::function<rect(rect)> prep_minimap_for_rendering(
 		//
 		// Villages
 		//
-		if(preferences_minimap_draw_villages) {
+		if(preferences_minimap_draw_villages && !is_blindfolded) {
 			for(const map_location& loc : map.villages()) {
-				if(is_blindfolded || (vw && (vw->shrouded(loc) || vw->fogged(loc)))) {
+				if(vw && (vw->shrouded(loc) || vw->fogged(loc))) {
 					continue;
 				}
 

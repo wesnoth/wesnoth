@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2024
+	Copyright (C) 2014 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -96,10 +96,10 @@ public:
 	 *
 	 * - vultraz, 6/27/2017
 	 */
-	SDL_Point get_size();
+	point get_size();
 
 	/** Gets the window's renderer output size, in pixels */
-	SDL_Point get_output_size();
+	point get_output_size();
 
 	/**
 	 * Dummy function for centering the window.

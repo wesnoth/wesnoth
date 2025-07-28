@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2005 - 2024
+	Copyright (C) 2005 - 2025
 	by Guillaume Melquiond <guillaume.melquiond@gmail.com>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -44,7 +44,7 @@ public:
 	{
 		config::attribute_value v;
 		v = value;
-		::write_key_val(out_, key, v, level_, textdomain_);
+		io::write_key_val(out_, key, v, level_, textdomain_);
 	}
 
 private:

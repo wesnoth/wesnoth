@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2011 - 2024
+	Copyright (C) 2011 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -15,21 +15,14 @@
 
 #pragma once
 
-#include <SDL2/SDL_rect.h>
 #include <string>
 
 class t_string;
 struct point;
+struct rect;
 
-namespace gui2
+namespace gui2::dialogs::tip
 {
-
-namespace dialogs
-{
-
-namespace tip
-{
-
 /**
  * Shows a tip.
  *
@@ -44,7 +37,7 @@ namespace tip
 void show(const std::string& window_id,
 		  const t_string& message,
 		  const point& mouse,
-		  const SDL_Rect& source_rect);
+		  const rect& source_rect);
 
 /**
  * Removes a tip.
@@ -53,6 +46,4 @@ void show(const std::string& window_id,
  * */
 void remove();
 
-} // namespace tip
-} // namespace dialogs
-} // namespace gui2
+} // namespace gui2::dialogs::tip

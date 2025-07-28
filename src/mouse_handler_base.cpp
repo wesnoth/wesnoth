@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2006 - 2024
+	Copyright (C) 2006 - 2025
 	by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -18,6 +18,7 @@
 
 #include "cursor.hpp"
 #include "display.hpp"
+#include "gui/widgets/settings.hpp"
 #include "log.hpp"
 #include "preferences/preferences.hpp"
 #include "sdl/rect.hpp"
@@ -57,8 +58,7 @@ mouse_handler_base::mouse_handler_base()
 	, dragging_touch_(false)
 	, dragging_started_(false)
 	, dragging_right_(false)
-	, drag_from_x_(0)
-	, drag_from_y_(0)
+	, drag_from_(0, 0)
 	, drag_from_hex_()
 	, last_hex_()
 	, show_menu_(false)
@@ -92,8 +92,7 @@ void mouse_handler_base::touch_motion_event(const SDL_TouchFingerEvent& event, c
 
 void mouse_handler_base::mouse_update(const bool browse, map_location loc)
 {
-	int x, y;
-	sdl::get_mouse_state(&x, &y);
+	auto [x, y] = sdl::get_mouse_location();
 	mouse_motion(x, y, browse, true, loc);
 }
 
@@ -130,11 +129,11 @@ bool mouse_handler_base::mouse_motion_default(int x, int y, bool /*update*/)
 
 	// Fire the drag & drop only after minimal drag distance
 	// While we check the mouse buttons state, we also grab fresh position data.
-	int mx = drag_from_x_; // some default value to prevent unlikely SDL bug
-	int my = drag_from_y_;
 
 	if(is_dragging() && !dragging_started_) {
-		Uint32 mouse_state = dragging_left_ || dragging_right_ ? sdl::get_mouse_state(&mx, &my) : 0;
+		point pos = drag_from_; // some default value to prevent unlikely SDL bug
+		uint32_t mouse_state = dragging_left_ || dragging_right_ ? sdl::get_mouse_state(&pos.x, &pos.y) : 0;
+
 #ifdef MOUSE_TOUCH_EMULATION
 		if(dragging_left_ && (mouse_state & SDL_BUTTON(SDL_BUTTON_RIGHT))) {
 			// Monkey-patch touch controls again to make them look like left button.
@@ -145,8 +144,8 @@ bool mouse_handler_base::mouse_motion_default(int x, int y, bool /*update*/)
 		   (dragging_right_ && (mouse_state & SDL_BUTTON(SDL_BUTTON_RIGHT)) != 0))
 		{
 			const double drag_distance =
-					std::pow(static_cast<double>(drag_from_x_- mx), 2) +
-					std::pow(static_cast<double>(drag_from_y_- my), 2);
+					std::pow(static_cast<double>(drag_from_.x - pos.x), 2) +
+					std::pow(static_cast<double>(drag_from_.y - pos.y), 2);
 
 			if(drag_distance > drag_threshold() * drag_threshold()) {
 				dragging_started_ = true;
@@ -158,14 +157,9 @@ bool mouse_handler_base::mouse_motion_default(int x, int y, bool /*update*/)
 	return false;
 }
 
-bool mouse_handler_base::mouse_button_event(const SDL_MouseButtonEvent& event, uint8_t button,
-											map_location loc, bool click)
+bool mouse_handler_base::mouse_button_event(
+	const SDL_MouseButtonEvent& /*event*/, uint8_t /*button*/, map_location /*loc*/, bool /*click*/)
 {
-	(void)event;
-	(void)button;
-	(void)loc;
-	(void)click;
-
 	return false;
 }
 
@@ -179,29 +173,31 @@ void mouse_handler_base::mouse_press(const SDL_MouseButtonEvent& event, const bo
 	map_location loc = gui().hex_clicked_on(event.x, event.y);
 	mouse_update(browse, loc);
 
-	static clock_t touch_timestamp = 0;
+	if(events::is_touch(event)) {
+		static std::chrono::steady_clock::time_point touch_timestamp;
+		const auto touch_time = gui2::settings::popup_show_delay;
+		const auto now = std::chrono::steady_clock::now();
 
-	if(is_touch_click(event)) {
-		if (event.state == SDL_PRESSED) {
+		if(event.state == SDL_PRESSED) {
 			cancel_dragging();
-			touch_timestamp = clock();
+			touch_timestamp = now;
 			init_dragging(dragging_touch_);
 			if (!mouse_button_event(event, SDL_BUTTON_LEFT, loc, true)) {
 				left_click(event.x, event.y, browse);
 			}
-		} else if (event.state == SDL_RELEASED) {
+		} else if(event.state == SDL_RELEASED) {
 			minimap_scrolling_ = false;
 
-			if (!dragging_started_ && touch_timestamp > 0) {
-				clock_t dt = clock() - touch_timestamp;
-				if (dt > CLOCKS_PER_SEC * 3 / 10) {
+			if (!dragging_started_ && touch_timestamp != std::chrono::steady_clock::time_point{}) {
+				auto dt = now - touch_timestamp;
+				if (dt > touch_time) {
 					if (!mouse_button_event(event, SDL_BUTTON_RIGHT, loc, true)) {
 						// BUG: This function won't do anything in the game, need right_mouse_up()
 						right_click(event.x, event.y, browse); // show_menu_ = true;
 					}
 				}
 			} else {
-				touch_timestamp = 0;
+				touch_timestamp = {};
 			}
 
 			clear_dragging(event, browse);
@@ -296,7 +292,7 @@ bool mouse_handler_base::is_left_click(const SDL_MouseButtonEvent& event) const
 		return true;
 	}
 #endif
-	if(event.which == SDL_TOUCH_MOUSEID) {
+	if(events::is_touch(event)) {
 		return false;
 	}
 	return event.button == SDL_BUTTON_LEFT && !command_active();
@@ -313,17 +309,12 @@ bool mouse_handler_base::is_right_click(const SDL_MouseButtonEvent& event) const
 	(void) event;
 	return false;
 #else
-	if(event.which == SDL_TOUCH_MOUSEID) {
+	if(events::is_touch(event)) {
 		return false;
 	}
 	return event.button == SDL_BUTTON_RIGHT
 			|| (event.button == SDL_BUTTON_LEFT && command_active());
 #endif
-}
-
-bool mouse_handler_base::is_touch_click(const SDL_MouseButtonEvent& event) const
-{
-	return event.which == SDL_TOUCH_MOUSEID;
 }
 
 bool mouse_handler_base::left_click(int x, int y, const bool /*browse*/)
@@ -356,8 +347,7 @@ void mouse_handler_base::left_drag_end(int /*x*/, int /*y*/, const bool browse)
 
 void mouse_handler_base::mouse_wheel(int scrollx, int scrolly, bool browse)
 {
-	int x, y;
-	sdl::get_mouse_state(&x, &y);
+	auto [x, y] = sdl::get_mouse_location();
 
 	int movex = scrollx * prefs::get().scroll_speed();
 	int movey = scrolly * prefs::get().scroll_speed();
@@ -371,9 +361,9 @@ void mouse_handler_base::mouse_wheel(int scrollx, int scrolly, bool browse)
 		CKey pressed;
 		// Alt + mousewheel do an 90° rotation on the scroll direction
 		if(pressed[SDLK_LALT] || pressed[SDLK_RALT]) {
-			gui().scroll(movey, movex);
+			gui().scroll(point{movey, movex});
 		} else {
-			gui().scroll(movex, movey);
+			gui().scroll(point{movex, movey});
 		}
 	}
 
@@ -407,8 +397,8 @@ void mouse_handler_base::right_mouse_up(int x, int y, const bool browse)
 void mouse_handler_base::init_dragging(bool& dragging_flag)
 {
 	dragging_flag = true;
-	sdl::get_mouse_state(&drag_from_x_, &drag_from_y_);
-	drag_from_hex_ = gui().hex_clicked_on(drag_from_x_, drag_from_y_);
+	drag_from_ = sdl::get_mouse_location();
+	drag_from_hex_ = gui().hex_clicked_on(drag_from_.x, drag_from_.y);
 }
 
 void mouse_handler_base::cancel_dragging()

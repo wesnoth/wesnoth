@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2024
+	Copyright (C) 2009 - 2025
 	by Tomasz Sniatowski <kailoran@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -92,12 +92,13 @@ mp_lobby::mp_lobby(mp::lobby_info& info, wesnothd_connection& connection, int& j
 		  [](bool v) {prefs::get().set_fi_invert(v);},
 		  std::bind(&mp_lobby::update_gamelist_filter, this)))
 	, filter_auto_hosted_(false)
+	, filter_game_presets_(false)
 	, filter_text_(nullptr)
 	, selected_game_id_()
 	, player_list_(std::bind(&mp_lobby::user_dialog_callback, this, std::placeholders::_1))
 	, player_list_dirty_(true)
 	, gamelist_dirty_(true)
-	, last_lobby_update_(0)
+	, last_lobby_update_()
 	, gamelist_diff_update_(true)
 	, network_connection_(connection)
 	, lobby_update_timer_(0)
@@ -105,6 +106,7 @@ mp_lobby::mp_lobby(mp::lobby_info& info, wesnothd_connection& connection, int& j
 	, delay_playerlist_update_(false)
 	, delay_gamelist_update_(false)
 	, joined_game_id_(joined_game)
+	, queue_game_server_preset_()
 {
 	set_show_even_without_video(true);
 	set_allow_plugin_skip(false);
@@ -112,10 +114,10 @@ mp_lobby::mp_lobby(mp::lobby_info& info, wesnothd_connection& connection, int& j
 
 	/*** Local hotkeys. ***/
 	window::register_hotkey(hotkey::HOTKEY_HELP,
-		std::bind(&mp_lobby::show_help_callback, this));
+		[](auto&&...) { help::show_help(); return true; });
 
 	window::register_hotkey(hotkey::HOTKEY_PREFERENCES,
-		std::bind(&mp_lobby::show_preferences_button_callback, this));
+		[this](auto&&...) { show_preferences_button_callback(); return true; });
 }
 
 struct lobby_delay_gamelist_update_guard
@@ -249,7 +251,7 @@ void mp_lobby::update_gamelist()
 
 	update_selected_game();
 	gamelist_dirty_ = false;
-	last_lobby_update_ = SDL_GetTicks();
+	last_lobby_update_ = std::chrono::steady_clock::now();
 	finish_state_sync();
 	update_visible_games();
 }
@@ -356,7 +358,7 @@ void mp_lobby::update_gamelist_diff()
 
 	update_selected_game();
 	gamelist_dirty_ = false;
-	last_lobby_update_ = SDL_GetTicks();
+	last_lobby_update_ = std::chrono::steady_clock::now();
 	finish_state_sync();
 	update_visible_games();
 }
@@ -446,7 +448,7 @@ void mp_lobby::adjust_game_row_contents(const mp::game_info& game, grid* grid, b
 	// TODO: move to some general area of the code.
 	const auto yes_or_no = [](bool val) { return val ? _("yes") : _("no"); };
 
-	ss << "\n<big>" << markup::span_color(font::TITLE_COLOR, _("Settings")) << "</big>\n";
+	ss << "\n" << markup::tag("big", markup::span_color(font::TITLE_COLOR, _("Settings"))) << "\n";
 	ss << _("Experience modifier:")   << " " << game.xp << "\n";
 	ss << _("Gold per village:")      << " " << game.gold << "\n";
 	ss << _("Map size:")              << " " << game.map_size_info << "\n";
@@ -504,8 +506,28 @@ void mp_lobby::adjust_game_row_contents(const mp::game_info& game, grid* grid, b
 		return;
 	}
 
+	//
+	// Presets buttons
+	//
+	if(game.game_preset) {
+		button& delete_preset = grid->find_widget<button>("delete_preset");
+
+		connect_signal_mouse_left_click(delete_preset, std::bind(&mp_lobby::delete_preset, this, game.id));
+	} else {
+		grid->find_widget<button>("delete_preset").set_visible(widget::visibility::invisible);
+	}
+
+	//
+	// Enter game by double clicking row
+	//
 	connect_signal_mouse_left_double_click(row_panel,
 		std::bind(&mp_lobby::enter_game_by_id, this, game.id, DO_EITHER));
+}
+
+void mp_lobby::delete_preset(const int game_id)
+{
+	prefs::get().remove_game_preset(game_id);
+	refresh_lobby();
 }
 
 void mp_lobby::update_gamelist_filter()
@@ -529,7 +551,7 @@ void mp_lobby::update_playerlist()
 	player_list_.update(lobby_info_.users(), selected_game_id_);
 
 	player_list_dirty_ = false;
-	last_lobby_update_ = SDL_GetTicks();
+	last_lobby_update_ = std::chrono::steady_clock::now();
 }
 
 void mp_lobby::update_selected_game()
@@ -552,11 +574,6 @@ void mp_lobby::update_selected_game()
 	player_list_dirty_ = true;
 }
 
-bool mp_lobby::exit_hook(window& window)
-{
-	return window.get_retval() == retval::CANCEL ? quit() : true;
-}
-
 void mp_lobby::pre_show()
 {
 	SCOPE_LB;
@@ -571,7 +588,7 @@ void mp_lobby::pre_show()
 	set_enter_disabled(true);
 
 	// Exit hook to add a confirmation when quitting the Lobby.
-	set_exit_hook(window::exit_hook::on_all, std::bind(&mp_lobby::exit_hook, this, std::placeholders::_1));
+	set_exit_hook(window::exit_hook::always, [this] { return get_retval() == retval::CANCEL ? quit() : true; });
 
 	chatbox_ = find_widget<chatbox>("chat", false, true);
 
@@ -658,6 +675,17 @@ void mp_lobby::pre_show()
 	listbox& tab_bar = find_widget<listbox>("games_list_tab_bar");
 	connect_signal_notify_modified(tab_bar, std::bind(&mp_lobby::tab_switch_callback, this));
 
+	// server-side queue join button
+	button* queue_join_button = find_widget<button>("join_queue", false, true);
+	connect_signal_mouse_left_click(*queue_join_button, std::bind(&mp_lobby::join_queue, this));
+
+	// server-side queue leave button
+	button* queue_leave_button = find_widget<button>("leave_queue", false, true);
+	connect_signal_mouse_left_click(*queue_leave_button, std::bind(&mp_lobby::leave_queue, this));
+
+	// server-side queues list
+	update_queue_list();
+
 	// Set up Lua plugin context
 	plugins_context_.reset(new plugins_context("Multiplayer Lobby"));
 
@@ -683,6 +711,7 @@ void mp_lobby::pre_show()
 void mp_lobby::tab_switch_callback()
 {
 	filter_auto_hosted_ = find_widget<listbox>("games_list_tab_bar").get_selected_row() == 1;
+	filter_game_presets_ = find_widget<listbox>("games_list_tab_bar").get_selected_row() == 2;
 	update_gamelist_filter();
 }
 
@@ -691,6 +720,30 @@ void mp_lobby::open_profile_url()
 	const mp::user_info* info = player_list_.get_selected_info();
 	if(info && info->forum_id != 0) {
 		desktop::open_object(mp::get_profile_link(info->forum_id));
+	}
+}
+
+void mp_lobby::join_queue()
+{
+	listbox* queues_listbox = find_widget<listbox>("queue_list", false, true);
+	const std::vector<mp::queue_info>& queues = mp::get_server_queues();
+	if(queues.size() > static_cast<std::size_t>(queues_listbox->get_selected_row())) {
+		const mp::queue_info& queue = queues[queues_listbox->get_selected_row()];
+		mp::send_to_server(config{"join_server_queue", config{"queue_id", queue.id}});
+	} else {
+		ERR_LB << "Attempted to join queue but couldn't find queue info";
+	}
+}
+
+void mp_lobby::leave_queue()
+{
+	listbox* queues_listbox = find_widget<listbox>("queue_list", false, true);
+	const std::vector<mp::queue_info>& queues = mp::get_server_queues();
+	if(queues.size() > static_cast<std::size_t>(queues_listbox->get_selected_row())) {
+		const mp::queue_info& queue = queues[queues_listbox->get_selected_row()];
+		mp::send_to_server(config{"leave_server_queue", config{"queue_id", queue.id}});
+	} else {
+		ERR_LB << "Attempted to join queue but couldn't find queue info";
 	}
 }
 
@@ -721,7 +774,7 @@ void mp_lobby::network_handler()
 		throw;
 	}
 
-	if ((SDL_GetTicks() - last_lobby_update_ < game_config::lobby_refresh)) {
+	if(std::chrono::steady_clock::now() - last_lobby_update_ < game_config::lobby_refresh) {
 		return;
 	}
 
@@ -745,6 +798,31 @@ void mp_lobby::network_handler()
 	}
 }
 
+void mp_lobby::update_queue_list()
+{
+	listbox* queues_listbox = find_widget<listbox>("queue_list", false, true);
+	queues_listbox->clear();
+
+	std::vector<mp::queue_info>& queues = mp::get_server_queues();
+	std::sort(queues.begin(), queues.end(), [](const mp::queue_info& q1, const mp::queue_info& q2) { return q1.display_name < q2.display_name; });
+
+	for(const mp::queue_info& info : queues) {
+		widget_data data;
+		widget_item item;
+
+		item["label"] = info.current_players.count(prefs::get().login()) > 0 ? "x" : "o";
+		data.emplace("is_in_queue", item);
+
+		item["label"] = info.display_name;
+		data.emplace("queue_name", item);
+
+		item["label"] = std::to_string(info.current_players.size())+"/"+std::to_string(info.players_required);
+		data.emplace("queue_player_count", item);
+
+		queues_listbox->add_row(data);
+	}
+}
+
 void mp_lobby::process_network_data(const config& data)
 {
 	if(auto error = data.optional_child("error")) {
@@ -761,6 +839,50 @@ void mp_lobby::process_network_data(const config& data)
 			announcements_ = info["message"].str();
 			return;
 		}
+	} else if(auto create = data.optional_child("create_game")) {
+		queue_game_server_preset_ = create.value().mandatory_child("game");
+		queue_id_ = create["queue_id"].to_int();
+		set_retval(CREATE_PRESET);
+		return;
+	} else if(auto join_game = data.optional_child("join_game")) {
+		enter_game_by_id(join_game["id"].to_int(), JOIN_MODE::DO_JOIN);
+		return;
+	} else if(auto queue_update = data.optional_child("queue_update")) {
+		std::vector<mp::queue_info>& queues = mp::get_server_queues();
+		if(queue_update["action"].str() == "add") {
+			mp::queue_info& new_info = queues.emplace_back();
+			new_info.id = queue_update["queue_id"].to_int();
+			new_info.players_required = queue_update["players_required"].to_int();
+			new_info.display_name = queue_update["display_name"].str();
+			new_info.scenario_id = queue_update["scenario_id"].str();
+		} else {
+			for(mp::queue_info& info : queues) {
+				if(info.id == queue_update["queue_id"].to_int()) {
+					if(queue_update["action"].str() == "remove") {
+						utils::erase_if(queues, [&](const mp::queue_info& i) { return i.id == queue_update["queue_id"].to_int(); });
+					} else if(queue_update["action"].str() == "update") {
+						if(queue_update->has_attribute("scenario_id")) {
+							info.scenario_id = queue_update["scenario_id"].str();
+						}
+						if(queue_update->has_attribute("display_name")) {
+							info.display_name = queue_update["display_name"].str();
+						}
+						if(queue_update->has_attribute("players_required")) {
+							info.players_required = queue_update["players_required"].to_int();
+						}
+						if(queue_update->has_attribute("current_players")){
+							info.current_players = utils::split_set(queue_update["current_players"].str());
+						}
+					} else {
+						continue;
+					}
+				}
+			}
+		}
+
+		update_queue_list();
+
+		return;
 	}
 
 	chatbox_->process_network_data(data);
@@ -800,6 +922,17 @@ void mp_lobby::process_gamelist_diff(const config& data)
 
 void mp_lobby::enter_game(const mp::game_info& game, JOIN_MODE mode)
 {
+	if(game.id < 0) {
+		optional_const_config preset = prefs::get().get_game_preset(game.id);
+
+		if(preset) {
+			queue_game_server_preset_ = *preset;
+			queue_id_ = preset["id"].to_int();
+			set_retval(CREATE_PRESET);
+			return;
+		}
+	}
+
 	switch(mode) {
 	case DO_JOIN:
 		if(!game.can_join()) {
@@ -855,9 +988,7 @@ void mp_lobby::enter_game(const mp::game_info& game, JOIN_MODE mode)
 		return;
 	}
 
-	config response;
-
-	config& join_data = response.add_child("join");
+	config join_data;
 	join_data["id"] = std::to_string(game.id);
 	join_data["observe"] = try_obsv;
 
@@ -875,27 +1006,22 @@ void mp_lobby::enter_game(const mp::game_info& game, JOIN_MODE mode)
 		join_data["password"] = password;
 	}
 
-	mp::send_to_server(response);
+	join_data["mp_scenario"] = game.scenario_id;
+	mp::send_to_server(config{"join", std::move(join_data)});
+
 	joined_game_id_ = game.id;
 
 	// We're all good. Close lobby and proceed to game!
 	set_retval(try_join ? JOIN : OBSERVE);
 }
 
-void mp_lobby::enter_game_by_index(const int index, JOIN_MODE mode)
-{
-	try {
-		enter_game(*lobby_info_.games().at(index), mode);
-	} catch(const std::out_of_range&) {
-		// Game index was invalid!
-		ERR_LB << "Attempted to join/observe a game with index out of range: " << index << ". "
-		       << "Games vector size is " << lobby_info_.games().size();
-	}
-}
-
 void mp_lobby::enter_game_by_id(const int game_id, JOIN_MODE mode)
 {
-	mp::game_info* game_ptr = lobby_info_.get_game_by_id(game_id);
+	// 0 or positive is a normal game
+	// negative is a preset
+	mp::game_info* game_ptr = game_id >= 0
+		? lobby_info_.get_game_by_id(game_id)
+		: lobby_info_.games().at(gamelistbox_->get_selected_row());
 
 	if(!game_ptr) {
 		ERR_LB << "Attempted to join/observe a game with an invalid id: " << game_id;
@@ -907,17 +1033,12 @@ void mp_lobby::enter_game_by_id(const int game_id, JOIN_MODE mode)
 
 void mp_lobby::enter_selected_game(JOIN_MODE mode)
 {
-	enter_game_by_index(gamelistbox_->get_selected_row(), mode);
+	enter_game(*lobby_info_.games().at(gamelistbox_->get_selected_row()), mode);
 }
 
 void mp_lobby::refresh_lobby()
 {
 	mp::send_to_server(config("refresh_lobby"));
-}
-
-void mp_lobby::show_help_callback()
-{
-	help::show_help();
 }
 
 void mp_lobby::show_preferences_button_callback()
@@ -963,6 +1084,10 @@ void mp_lobby::game_filter_init()
 
 	lobby_info_.add_game_filter([this](const mp::game_info& info) {
 		return info.auto_hosted == filter_auto_hosted_;
+	});
+
+	lobby_info_.add_game_filter([this](const mp::game_info& info) {
+		return info.game_preset == filter_game_presets_;
 	});
 
 	lobby_info_.set_game_filter_invert(

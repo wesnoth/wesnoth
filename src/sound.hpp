@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -62,8 +62,6 @@ void play_music_config(const config &music_node, bool allow_interrupt_current_tr
 // Act on any track list changes from above.
 void commit_music_changes();
 
-// Play this particular music file over and over and over.
-void play_music_repeatedly(const std::string& id);
 // Play this particular music file once, then silence.
 void play_music_once(const std::string& id);
 // Empty the playlist
@@ -92,14 +90,16 @@ void play_sound_positioned(const std::string &files, int id, int repeats, unsign
 void play_bell(const std::string& files);
 
 // Play sound, or random one of comma-separated sounds in timer channel
-void play_timer(const std::string& files, int loop_ticks, int fadein_ticks);
+void play_timer(const std::string& files,
+	const std::chrono::milliseconds& loop_ticks,
+	const std::chrono::milliseconds& fadein_ticks);
 
 // Play user-interface sound, or random one of comma-separated sounds.
 void play_UI_sound(const std::string& files);
 
 // A class to periodically check for new music that needs to be played
 class music_thinker : public events::pump_monitor {
-	void process(events::pump_info &info);
+	void process();
 };
 
 // A class to mute music when the game is in background

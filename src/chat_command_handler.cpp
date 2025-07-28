@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2017 - 2024
+	Copyright (C) 2017 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -31,7 +31,7 @@ bool chat_command_handler::is_enabled(const map_command_handler<chat_command_han
 
 void chat_command_handler::print(const std::string& title, const std::string& message)
 {
-	chat_handler_.add_chat_message(std::time(nullptr), title, 0, message);
+	chat_handler_.add_chat_message(std::chrono::system_clock::now(), title, 0, message);
 }
 
 void chat_command_handler::do_emote()
@@ -129,15 +129,11 @@ void chat_command_handler::do_version() {
 void chat_command_handler::do_info() {
 	if (get_data(1).empty()) return command_failed_need_arg(1);
 
-	config data;
-	config& nickserv = data.add_child("nickserv");
-
-	nickserv.add_child("info")["name"] = get_data(1);
 	utils::string_map symbols;
 	symbols["nick"] = get_arg(1);
 	print(_("nick registration"), VGETTEXT("requesting information for user $nick", symbols));
 
-	chat_handler_.send_to_server(data);
+	chat_handler_.send_to_server(config{"nickserv", config{"info", config{"name", get_data(1)}}});
 }
 
 void chat_command_handler::do_clear_messages() {

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2024
+	Copyright (C) 2016 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -29,10 +29,74 @@
 #include "preferences/preferences.hpp" // for encountered_units
 #include "units/types.hpp"
 
+#ifdef __cpp_impl_three_way_comparison
+#include <compare>
+#endif
 #include <functional>
 
 namespace gui2::dialogs
 {
+namespace
+{
+/** Wrapper type to allow custom sorting for faction names. */
+struct faction_sorter
+{
+	const config* cfg;
+};
+
+#ifdef __cpp_impl_three_way_comparison
+
+/** Must be defined in the same namespace for ADL reasons. */
+auto operator<=>(const faction_sorter& lhs, const faction_sorter& rhs)
+{
+	// Since some eras have multiple random options we can't just
+	// assume there is only one random faction on top of the list.
+	bool lhs_rand = (*lhs.cfg)["random_faction"].to_bool();
+	bool rhs_rand = (*rhs.cfg)["random_faction"].to_bool();
+
+	// Group random factions together.
+	if(lhs_rand <=> rhs_rand != 0) {
+		return std::strong_ordering::greater;
+	}
+
+	std::string lhs_name = (*lhs.cfg)["name"];
+	std::string rhs_name = (*rhs.cfg)["name"];
+
+	// TODO C++20: define three-way comparison for t_string?
+	auto cmp = translation::compare(lhs_name, rhs_name);
+	if(cmp < 0) return std::strong_ordering::less;
+	if(cmp > 0) return std::strong_ordering::greater;
+
+	return std::strong_ordering::equal;
+}
+
+#else // TODO: remove block below as soon as humanly possible
+
+bool operator<(const faction_sorter& lhs, const faction_sorter& rhs)
+{
+	bool lhs_rand = (*lhs.cfg)["random_faction"].to_bool();
+	bool rhs_rand = (*rhs.cfg)["random_faction"].to_bool();
+
+	if(lhs_rand && !rhs_rand) return true;
+	if(!lhs_rand && rhs_rand) return false;
+
+	return translation::compare((*lhs.cfg)["name"].str(), (*rhs.cfg)["name"].str()) < 0;
+}
+
+bool operator>(const faction_sorter& lhs, const faction_sorter& rhs)
+{
+	bool lhs_rand = (*lhs.cfg)["random_faction"].to_bool();
+	bool rhs_rand = (*rhs.cfg)["random_faction"].to_bool();
+
+	if(lhs_rand && !rhs_rand) return false;
+	if(!lhs_rand && rhs_rand) return true;
+
+	return translation::compare((*lhs.cfg)["name"].str(), (*rhs.cfg)["name"].str()) > 0;
+}
+
+#endif
+
+} // namespace
 
 REGISTER_DIALOG(faction_select)
 
@@ -64,7 +128,7 @@ void faction_select::pre_show()
 
 	gender_toggle_.set_member_states("random");
 
-	gender_toggle_.set_callback_on_value_change(
+	gender_toggle_.on_modified(
 		std::bind(&faction_select::on_gender_select, this, std::placeholders::_2));
 
 	//
@@ -90,23 +154,22 @@ void faction_select::pre_show()
 	for(const config *s : flg_manager_.choosable_factions()) {
 		const config& side = *s;
 
-		widget_data data;
-		widget_item item;
-
-		const std::string name = side["name"].str();
 		// flag_rgb here is unrelated to any handling in the unit class
 		const std::string flag_rgb = !side["flag_rgb"].empty() ? side["flag_rgb"].str() : "magenta";
 
-		item["label"] = (formatter() << side["image"] << "~RC(" << flag_rgb << ">" << tc_color_ << ")").str();
-		data.emplace("faction_image", item);
-
-		item["label"] = name;
-		data.emplace("faction_name", item);
-
-		list.add_row(data);
+		list.add_row(widget_data{
+			{ "faction_image", {
+				{ "label", (formatter() << side["image"] << "~RC(" << flag_rgb << ">" << tc_color_ << ")").str() }
+			}},
+			{ "faction_name", {
+				{ "label", side["name"].str() }
+			}},
+		});
 	}
 
 	list.select_row(flg_manager_.current_faction_index());
+	list.set_sorters([this](std::size_t i) { return faction_sorter{flg_manager_.choosable_factions()[i]}; });
+	list.set_active_sorter("sort_0", flg_manager_.era_info().faction_sort_order, true);
 
 	on_faction_select();
 }
@@ -190,7 +253,7 @@ void faction_select::profile_button_callback()
 	}
 }
 
-void faction_select::on_gender_select(const std::string val)
+void faction_select::on_gender_select(const std::string& val)
 {
 	flg_manager_.set_current_gender(val);
 

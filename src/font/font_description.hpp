@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2015 - 2024
+	Copyright (C) 2015 - 2025
 	by Chris Beck<render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 

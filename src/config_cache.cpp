@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by Pauli Nieminen <paniemin@cc.hut.fi>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -43,6 +43,10 @@ void add_builtin_defines(preproc_map& target)
 {
 #ifdef __APPLE__
 	target["APPLE"] = preproc_define();
+#endif
+
+#ifdef __ANDROID__
+	target["ANDROID"] = preproc_define();
 #endif
 
 #if defined(MOUSE_TOUCH_EMULATION) || defined(TARGET_OS_IPHONE)
@@ -94,14 +98,14 @@ void config_cache::get_config(const std::string& file_path, config& cfg, abstrac
 	load_configs(file_path, cfg, validator);
 }
 
-void config_cache::write_file(std::string file_path, const config& cfg)
+void config_cache::write_file(const std::string& file_path, const config& cfg)
 {
 	filesystem::scoped_ostream stream = filesystem::ostream_file(file_path);
 	config_writer writer(*stream, true, game_config::cache_compression_level);
 	writer.write(cfg);
 }
 
-void config_cache::write_file(std::string file_path, const preproc_map& defines)
+void config_cache::write_file(const std::string& file_path, const preproc_map& defines)
 {
 	if(defines.empty()) {
 		if(filesystem::file_exists(file_path)) {
@@ -121,8 +125,7 @@ void config_cache::write_file(std::string file_path, const preproc_map& defines)
 
 void config_cache::read_file(const std::string& file_path, config& cfg)
 {
-	filesystem::scoped_istream stream = filesystem::istream_file(file_path);
-	read_gz(cfg, *stream);
+	cfg = io::read_gz(*filesystem::istream_file(file_path));
 }
 
 preproc_map& config_cache::make_copy_map()
@@ -142,8 +145,7 @@ void config_cache::add_defines_map_diff(preproc_map& defines_map)
 void config_cache::read_configs(const std::string& file_path, config& cfg, preproc_map& defines_map, abstract_validator* validator)
 {
 	//read the file and then write to the cache
-	filesystem::scoped_istream stream = preprocess_file(file_path, &defines_map);
-	read(cfg, *stream, validator);
+	cfg = io::read(*preprocess_file(file_path, &defines_map), validator);
 }
 
 void config_cache::read_cache(const std::string& file_path, config& cfg, abstract_validator* validator)
@@ -408,7 +410,7 @@ bool config_cache::delete_cache_files(const std::vector<std::string>& paths,
 }
 
 config_cache_transaction::state config_cache_transaction::state_ = FREE;
-config_cache_transaction* config_cache_transaction::active_ = 0;
+config_cache_transaction* config_cache_transaction::active_ = nullptr;
 
 config_cache_transaction::config_cache_transaction()
 	: define_filenames_()
@@ -422,7 +424,7 @@ config_cache_transaction::config_cache_transaction()
 config_cache_transaction::~config_cache_transaction()
 {
 	state_ = FREE;
-	active_ = 0;
+	active_ = nullptr;
 }
 
 void config_cache_transaction::lock()

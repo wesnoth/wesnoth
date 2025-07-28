@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2024
+	Copyright (C) 2014 - 2025
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -16,19 +16,18 @@
 #include "recall_list_manager.hpp"
 #include "units/unit.hpp"
 #include "units/ptr.hpp"
+#include "utils/general.hpp"
 
 #include <algorithm>
 #include <string>
 #include <vector>
-
 
 /**
  * Used to find units in vectors by their ID.
  */
 unit_ptr recall_list_manager::find_if_matches_id(const std::string &unit_id)
 {
-	std::vector<unit_ptr >::iterator it = std::find_if(recall_list_.begin(), recall_list_.end(),
-		[&unit_id](const unit_ptr & ptr) { return ptr->id() == unit_id; });
+	auto it = utils::ranges::find(recall_list_, unit_id, &unit::id);
 	if (it != recall_list_.end()) {
 		return *it;
 	} else {
@@ -41,8 +40,7 @@ unit_ptr recall_list_manager::find_if_matches_id(const std::string &unit_id)
  */
 unit_const_ptr recall_list_manager::find_if_matches_id(const std::string &unit_id) const
 {
-	std::vector<unit_ptr >::const_iterator it = std::find_if(recall_list_.begin(), recall_list_.end(),
-		[&unit_id](const unit_ptr & ptr) { return ptr->id() == unit_id; });
+	auto it = utils::ranges::find(recall_list_, unit_id, &unit::id);
 	if (it != recall_list_.end()) {
 		return *it;
 	} else {
@@ -57,9 +55,7 @@ void recall_list_manager::erase_if_matches_id(const std::string &unit_id)
 {
 	// using unit_id as reference has potential to cause a crash if the underlying unit becomes invald
 	// https://github.com/wesnoth/wesnoth/issues/6603
-	recall_list_.erase(std::remove_if(recall_list_.begin(), recall_list_.end(),
-		[unit_id](const unit_ptr & ptr) { return ptr->id() == unit_id; }),
-	                       recall_list_.end());
+	utils::erase_if(recall_list_, [unit_id](const unit_ptr& ptr) { return ptr->id() == unit_id; });
 }
 
 void recall_list_manager::add(const unit_ptr & ptr, int pos)
@@ -74,16 +70,13 @@ void recall_list_manager::add(const unit_ptr & ptr, int pos)
 
 std::size_t recall_list_manager::find_index(const std::string & unit_id) const
 {
-	std::vector<unit_ptr >::const_iterator it = std::find_if(recall_list_.begin(), recall_list_.end(),
-		[&unit_id](const unit_ptr & ptr) { return ptr->id() == unit_id; });
-
+	auto it = utils::ranges::find(recall_list_, unit_id, &unit::id);
 	return std::distance(recall_list_.begin(), it);
 }
 
 unit_ptr recall_list_manager::extract_if_matches_id(const std::string &unit_id, int * pos)
 {
-	std::vector<unit_ptr >::iterator it = std::find_if(recall_list_.begin(), recall_list_.end(),
-		[&unit_id](const unit_ptr & ptr) { return ptr->id() == unit_id; });
+	auto it = utils::ranges::find(recall_list_, unit_id, &unit::id);
 	if (it != recall_list_.end()) {
 		unit_ptr ret = *it;
 		if(pos) {
@@ -98,8 +91,7 @@ unit_ptr recall_list_manager::extract_if_matches_id(const std::string &unit_id, 
 
 unit_ptr recall_list_manager::find_if_matches_underlying_id(std::size_t uid)
 {
-	std::vector<unit_ptr >::iterator it = std::find_if(recall_list_.begin(), recall_list_.end(),
-		[uid](const unit_ptr & ptr) { return ptr->underlying_id() == uid; });
+	auto it = utils::ranges::find(recall_list_, uid, &unit::underlying_id);
 	if (it != recall_list_.end()) {
 		return *it;
 	} else {
@@ -109,8 +101,7 @@ unit_ptr recall_list_manager::find_if_matches_underlying_id(std::size_t uid)
 
 unit_const_ptr recall_list_manager::find_if_matches_underlying_id(std::size_t uid) const
 {
-	std::vector<unit_ptr >::const_iterator it = std::find_if(recall_list_.begin(), recall_list_.end(),
-		[uid](const unit_ptr & ptr) { return ptr->underlying_id() == uid; });
+	auto it = utils::ranges::find(recall_list_, uid, &unit::underlying_id);
 	if (it != recall_list_.end()) {
 		return *it;
 	} else {
@@ -120,15 +111,12 @@ unit_const_ptr recall_list_manager::find_if_matches_underlying_id(std::size_t ui
 
 void recall_list_manager::erase_by_underlying_id(std::size_t uid)
 {
-	recall_list_.erase(std::remove_if(recall_list_.begin(), recall_list_.end(),
-		[uid](const unit_ptr & ptr) { return ptr->underlying_id() == uid; }),
-	                       recall_list_.end());
+	utils::erase_if(recall_list_, [uid](const unit_ptr& ptr) { return ptr->underlying_id() == uid; });
 }
 
 unit_ptr recall_list_manager::extract_if_matches_underlying_id(std::size_t uid)
 {
-	std::vector<unit_ptr >::iterator it = std::find_if(recall_list_.begin(), recall_list_.end(),
-		[uid](const unit_ptr & ptr) { return ptr->underlying_id() == uid; });
+	auto it = utils::ranges::find(recall_list_, uid, &unit::underlying_id);
 	if (it != recall_list_.end()) {
 		unit_ptr ret = *it;
 		recall_list_.erase(it);
@@ -143,6 +131,6 @@ std::vector<unit_ptr>::iterator recall_list_manager::erase_index(std::size_t idx
 	return recall_list_.erase(recall_list_.begin()+idx);
 }
 
-std::vector<unit_ptr>::iterator recall_list_manager::erase(std::vector<unit_ptr>::iterator it) {
+std::vector<unit_ptr>::iterator recall_list_manager::erase(const std::vector<unit_ptr>::iterator& it) {
 	return recall_list_.erase(it);
 }

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -17,14 +17,37 @@
 #include "color.hpp"
 #include "sdl/rect.hpp"
 
-const SDL_PixelFormat surface::neutral_pixel_format = []() {
-	return *SDL_CreateRGBSurfaceWithFormat(0, 1, 1, 32, SDL_PIXELFORMAT_ARGB8888)->format;
-}();
+#include <utility>
+
+namespace
+{
+void add_refcount(surface& surf)
+{
+	if(surf) {
+		++surf->refcount;
+	}
+}
+
+void free_surface(surface& surf)
+{
+	if(surf) {
+		SDL_FreeSurface(surf);
+	}
+}
+
+void make_neutral(surface& surf)
+{
+	if(surf && surf->format->format != SDL_PIXELFORMAT_ARGB8888) {
+		surf = surf.clone();
+	}
+}
+
+} // namespace
 
 surface::surface(SDL_Surface* surf)
 	: surface_(surf)
 {
-	make_neutral(); // EXTREMELY IMPORTANT!
+	make_neutral(*this); // EXTREMELY IMPORTANT!
 }
 
 surface::surface(int w, int h)
@@ -34,51 +57,52 @@ surface::surface(int w, int h)
 		throw std::invalid_argument("Creating surface with negative dimensions");
 	}
 
-	surface_ = SDL_CreateRGBSurfaceWithFormat(0, w, h, neutral_pixel_format.BitsPerPixel, neutral_pixel_format.format);
+	surface_ = SDL_CreateRGBSurfaceWithFormat(0, w, h, 32, SDL_PIXELFORMAT_ARGB8888);
 }
 
-bool surface::is_neutral() const
+surface::surface(const surface& s)
+	: surface_(s)
 {
-	return surface_
-		&& SDL_ISPIXELFORMAT_INDEXED(surface_->format->format) == SDL_FALSE
-		&&  surface_->format->BytesPerPixel == 4
-		&&  surface_->format->Rmask == SDL_RED_MASK
-		&& (surface_->format->Amask | SDL_ALPHA_MASK) == SDL_ALPHA_MASK;
+	add_refcount(*this);
 }
 
-surface& surface::make_neutral()
+surface::surface(surface&& s) noexcept
+	: surface_(std::exchange(s.surface_, nullptr))
 {
-	if(surface_ && !is_neutral()) {
-		SDL_Surface* res = SDL_ConvertSurface(surface_, &neutral_pixel_format, 0);
+}
 
-		// Ensure we don't leak memory with the old surface.
-		free_surface();
+surface::~surface()
+{
+	free_surface(*this);
+}
 
-		surface_ = res;
+surface& surface::operator=(const surface& s)
+{
+	if(this != &s) {
+		free_surface(*this);
+		surface_ = s;
+		add_refcount(*this);
 	}
 
 	return *this;
 }
 
+surface& surface::operator=(surface&& s) noexcept
+{
+	free_surface(*this);
+	surface_ = std::exchange(s.surface_, nullptr);
+	return *this;
+}
+
 surface surface::clone() const
 {
-	// Use SDL_ConvertSurface to make a copy
-	return surface(SDL_ConvertSurface(surface_, &neutral_pixel_format, 0));
+	// Use SDL_ConvertSurfaceFormat to make a copy
+	return surface(SDL_ConvertSurfaceFormat(surface_, SDL_PIXELFORMAT_ARGB8888, 0));
 }
 
-void surface::assign_surface_internal(SDL_Surface* surf)
+std::size_t surface::area() const
 {
-	add_surface_ref(surf); // Needs to be done before assignment to avoid corruption on "a = a;"
-	free_surface();
-	surface_ = surf;
-	make_neutral(); // EXTREMELY IMPORTANT!
-}
-
-void surface::free_surface()
-{
-	if(surface_) {
-		SDL_FreeSurface(surface_);
-	}
+	return surface_ ? surface_->w * surface_->h : 0;
 }
 
 std::ostream& operator<<(std::ostream& stream, const surface& surf)

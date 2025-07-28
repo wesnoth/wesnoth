@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2013 - 2024
+	Copyright (C) 2013 - 2025
 	by Iris Morelle <shadowm2006@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -33,6 +33,7 @@
 
 #include <functional>
 #include <stdexcept>
+#include <utility>
 
 namespace gui2::dialogs
 {
@@ -43,7 +44,7 @@ screenshot_notification::screenshot_notification(const std::string& path, surfac
 	: modal_dialog(window_id())
 	, path_(path)
 	, screenshots_dir_path_(filesystem::get_screenshot_dir())
-	, screenshot_(screenshot)
+	, screenshot_(std::move(screenshot))
 {
 }
 

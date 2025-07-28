@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2018 - 2024
+	Copyright (C) 2018 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -38,8 +38,8 @@ namespace lua_mapgen
 		filter(const filter&) = delete;
 		filter& operator=(const filter&) = delete;
 		//moving is ok though.
-		filter(filter&&) = default;
-		filter& operator=(filter&&) = default;
+		filter(filter&&) noexcept = default;
+		filter& operator=(filter&&) noexcept = default;
 
 		~filter();
 

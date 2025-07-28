@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -25,7 +25,7 @@ namespace tokenizer
 
 namespace {
 
-[[noreturn]] void raise_exception(iterator& i1, iterator i2, std::string str) {
+[[noreturn]] void raise_exception(iterator& i1, iterator i2, const std::string& str) {
 	std::ostringstream expr;
 	while( (i1 != i2) && (*i1 != '\n') ) {
 		if( (*i1 != '\t') )
@@ -77,9 +77,6 @@ token get_token(iterator& i1, const iterator i2) {
 				} else if( *it == 'n' ) { //not
 					if( *(it+1) == 'o' && *(it+2) == 't' )
 						t = token_type::operator_token;
-				} else if( *it == 'f' ) { //fai
-					if( *(it+1) == 'a' && *(it+2) == 'i' )
-						t = token_type::keyword;
 				} else if( *it == 'w' ) { //wfl
 					if( *(it+1) == 'f' && *(it+2) == 'l' )
 						t = token_type::keyword;
@@ -90,9 +87,7 @@ token get_token(iterator& i1, const iterator i2) {
 					t = token_type::operator_token;
 			} else if( diff == 6 ) {
 				std::string s(it, i1);
-				if( s == "faiend" )
-					t = token_type::keyword;
-				else if( s == "wflend" )
+				if( s == "wflend" )
 					t = token_type::keyword;
 			} else if( diff == 9 ) {
 				std::string s(it, i1);

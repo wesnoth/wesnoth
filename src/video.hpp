@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -135,10 +135,16 @@ std::vector<std::string> enumerate_drivers();
 /**
  * The refresh rate of the screen.
  *
+ * In most cases, this will be the native refresh rate of the display, but
+ * could be lower if FPS has been artificially capped (i.e., through --max-fps).
+ *
  * If a refresh cannot be detected, this may return 0, or it may return a
  * substitute value.
  */
 int current_refresh_rate();
+
+/** The native refresh rate of display, not taking any user preferences into account. */
+int native_refresh_rate();
 
 /** True iff the window is not hidden. */
 bool window_is_visible();
@@ -259,7 +265,7 @@ rect to_output(const rect& draw_space_rect);
  *                If not null, this will be modified to reflect the
  *                portion of the draw area that has been returned.
  */
-surface read_pixels(SDL_Rect* r = nullptr);
+surface read_pixels(rect* r = nullptr);
 
 /**
  * The same as read_pixels, but returns a low-resolution surface
@@ -267,7 +273,7 @@ surface read_pixels(SDL_Rect* r = nullptr);
  *
  * This should be considered deprecated, and phased out ASAP.
  */
-surface read_pixels_low_res(SDL_Rect* r = nullptr);
+surface read_pixels_low_res(rect* r = nullptr);
 
 
 /****************************/

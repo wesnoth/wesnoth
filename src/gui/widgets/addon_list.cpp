@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2024
+	Copyright (C) 2016 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -51,8 +51,8 @@ REGISTER_WIDGET(addon_list)
 addon_list::addon_list(const implementation::builder_addon_list& builder)
 	: container_base(builder, type())
 	, addon_vector_()
-	, install_status_visibility_(visibility::visible)
-	, install_buttons_visibility_(visibility::invisible)
+	, install_status_visibility_(builder.install_status_visibility)
+	, install_buttons_visibility_(builder.install_buttons_visibility)
 	, install_function_()
 	, uninstall_function_()
 	, publish_function_()
@@ -220,13 +220,13 @@ void addon_list::set_addons(const addons_list& addons)
 		item["label"] = addon.display_type();
 		data.emplace("type", item);
 
-		grid* row_grid = &list.add_row(data);
+		grid& row_grid = list.add_row(data);
 
 		// Set special retval for the toggle panels
-		row_grid->find_widget<toggle_panel>("list_panel").set_retval(DEFAULT_ACTION_RETVAL);
+		row_grid.find_widget<toggle_panel>("list_panel").set_retval(DEFAULT_ACTION_RETVAL);
 
 		// The control button grid is excluded on lower resolutions.
-		grid* control_grid = row_grid->find_widget<grid>("single_install_buttons", false, false);
+		grid* control_grid = row_grid.find_widget<grid>("single_install_buttons", false, false);
 		if(!control_grid) {
 			continue;
 		}
@@ -301,7 +301,7 @@ void addon_list::set_addons(const addons_list& addons)
 		}
 
 		control_grid->set_visible(install_buttons_visibility_);
-		row_grid->find_widget<label>("installation_status").set_visible(install_status_visibility_);
+		row_grid.find_widget<label>("installation_status").set_visible(install_status_visibility_);
 	}
 
 	select_first_addon();
@@ -332,9 +332,7 @@ void addon_list::select_addon(const std::string& id)
 {
 	listbox& list = get_listbox();
 
-	auto iter = std::find_if(addon_vector_.begin(), addon_vector_.end(),
-		[&id](const addon_info* a) { return a->id == id; }
-	);
+	auto iter = utils::ranges::find(addon_vector_, id, &addon_info::id);
 
 	// Corner case: if you publish an addon with an out-of-folder .pbl file and
 	// delete it locally before deleting it from the server, the game will try
@@ -375,17 +373,21 @@ void addon_list::finalize_setup()
 {
 	listbox& list = get_listbox();
 
-	list.register_translatable_sorting_option(0, [this](const int i) { return addon_vector_[i]->display_title_full(); });
-	list.register_sorting_option(1, [this](const int i) { return addon_vector_[i]->author; });
-	list.register_sorting_option(2, [this](const int i) { return addon_vector_[i]->size; });
-	list.register_sorting_option(3, [this](const int i) { return addon_vector_[i]->downloads; });
-	list.register_translatable_sorting_option(4, [this](const int i) { return addon_vector_[i]->display_type(); });
+	list.set_sorters(
+		[this](const std::size_t i) { return t_string(addon_vector_[i]->display_title_full()); },
+		[this](const std::size_t i) { return addon_vector_[i]->author; },
+		[this](const std::size_t i) { return addon_vector_[i]->size; },
+		[this](const std::size_t i) { return addon_vector_[i]->downloads; },
+		[this](const std::size_t i) { return t_string(addon_vector_[i]->display_type()); }
+	);
 
-	auto order = std::pair(0, sort_order::type::ascending);
-	list.set_active_sorting_option(order);
+	list.set_active_sorter("sort_0", sort_order::type::ascending);
+
+	// Propagate any modified events from the internal listbox to the widget as a whole
+	connect_signal_notify_modified(list, [this](auto&&...) { fire(event::NOTIFY_MODIFIED, *this, nullptr); });
 }
 
-void addon_list::set_addon_order(addon_sort_func func)
+void addon_list::set_addon_order(const addon_sort_func& func)
 {
 	listbox& list = get_listbox();
 
@@ -446,15 +448,15 @@ static widget::visibility parse_visibility(const std::string& str)
 
 builder_addon_list::builder_addon_list(const config& cfg)
 	: builder_styled_widget(cfg)
-	, install_status_visibility_(widget::visibility::visible)
-	, install_buttons_visibility_(widget::visibility::invisible)
+	, install_status_visibility(widget::visibility::visible)
+	, install_buttons_visibility(widget::visibility::invisible)
 {
 	if(cfg.has_attribute("install_status_visibility")) {
-		install_status_visibility_ = parse_visibility(cfg["install_status_visibility"]);
+		install_status_visibility = parse_visibility(cfg["install_status_visibility"]);
 	}
 
 	if(cfg.has_attribute("install_buttons_visibility")) {
-		install_buttons_visibility_ = parse_visibility(cfg["install_buttons_visibility"]);
+		install_buttons_visibility = parse_visibility(cfg["install_buttons_visibility"]);
 	}
 }
 
@@ -469,10 +471,6 @@ std::unique_ptr<widget> builder_addon_list::build() const
 	assert(conf != nullptr);
 
 	widget->init_grid(*conf->grid);
-
-	widget->set_install_status_visibility(install_status_visibility_);
-	widget->set_install_buttons_visibility(install_buttons_visibility_);
-
 	widget->finalize_setup();
 
 	return widget;

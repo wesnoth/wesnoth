@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2024
+	Copyright (C) 2016 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -15,7 +15,6 @@
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "gui/widgets/unit_preview_pane.hpp"
-
 
 #include "gui/core/register_widget.hpp"
 #include "gui/widgets/button.hpp"
@@ -64,7 +63,7 @@ unit_preview_pane::unit_preview_pane(const implementation::builder_unit_preview_
 	, label_details_(nullptr)
 	, tree_details_(nullptr)
 	, button_profile_(nullptr)
-	, image_mods_()
+	, image_mods_(builder.image_mods)
 {
 }
 
@@ -145,7 +144,7 @@ static inline std::string get_hp_tooltip(
 	return tooltip.str();
 }
 
-static inline std::string get_mp_tooltip(int total_movement, std::function<int (t_translation::terrain_code)> get)
+static inline std::string get_mp_tooltip(int total_movement, const std::function<int (t_translation::terrain_code)>& get)
 {
 	std::set<terrain_movement> terrain_moves;
 	std::ostringstream tooltip;
@@ -206,14 +205,25 @@ static inline std::string get_mp_tooltip(int total_movement, std::function<int (
  * attack data, meaning we can keep this as a helper function.
  */
 template<typename T>
-void unit_preview_pane::print_attack_details(T attacks, tree_view_node& parent_node)
+void unit_preview_pane::print_attack_details(
+	T attacks,
+	const int attacks_left,
+	const int max_attacks,
+	tree_view_node& parent_node)
 {
 	if(attacks.empty()) {
 		return;
 	}
 
-
 	auto& header_node = add_name_tree_node(parent_node, "header", markup::bold(_("Attacks")));
+
+	if(max_attacks > 1) {
+		add_name_tree_node(header_node, "item",
+			VGETTEXT("Remaining: $left/$max",
+				{{"left", std::to_string(attacks_left)},
+				{"max",  std::to_string(max_attacks)}}),
+			_("This unit can attack multiple times per turn."));
+	}
 
 	for(const auto& a : attacks) {
 		const std::string range_png = std::string("icons/profiles/") + a.range() + "_attack.png~SCALE_INTO(16,16)";
@@ -224,7 +234,7 @@ void unit_preview_pane::print_attack_details(T attacks, tree_view_node& parent_n
 		const t_string& range = string_table["range_" + a.range()];
 		const t_string& type = string_table["type_" + a.type()];
 
-		const std::string label = markup::span_color(
+		const std::string dmg_label = markup::span_color(
 			font::unit_type_color, a.damage(), font::weapon_numbers_sep, a.num_attacks(), " ", a.name());
 
 		auto& subsection = header_node.add_child(
@@ -232,7 +242,7 @@ void unit_preview_pane::print_attack_details(T attacks, tree_view_node& parent_n
 			{
 				{ "image_range", { { "label", range_png } } },
 				{ "image_type", { { "label", type_png } } },
-				{ "name", { { "label", label }, { "use_markup", "true" } } },
+				{ "name", { { "label", dmg_label }, { "use_markup", "true" } } },
 			}
 		);
 
@@ -247,6 +257,30 @@ void unit_preview_pane::print_attack_details(T attacks, tree_view_node& parent_n
 			);
 		}
 
+		const std::string acc_parry_str = a.accuracy_parry_description();
+		if(!acc_parry_str.empty()) {
+			add_name_tree_node(
+				subsection,
+				"item",
+				markup::span_color(font::weapon_details_color, acc_parry_str),
+				a.accuracy_parry_tooltip()
+			);
+		}
+
+		if(max_attacks > 1) {
+			add_name_tree_node(
+				subsection,
+				"item",
+				markup::span_color(
+					font::weapon_details_color,
+					VNGETTEXT(
+					"uses $num attack",
+					"uses $num attacks",
+					a.attacks_used(),
+					{ {"num", std::to_string(a.attacks_used())} }))
+			);
+		}
+
 		for(const auto& pair : a.special_tooltips()) {
 			add_name_tree_node(
 				subsection,
@@ -258,7 +292,7 @@ void unit_preview_pane::print_attack_details(T attacks, tree_view_node& parent_n
 	}
 }
 
-void unit_preview_pane::set_displayed_type(const unit_type& type)
+void unit_preview_pane::set_display_data(const unit_type& type)
 {
 	// Sets the current type id for the profile button callback to use
 	current_type_ = type;
@@ -385,11 +419,11 @@ void unit_preview_pane::set_displayed_type(const unit_type& type)
 			}
 		}
 
-		print_attack_details(type.attacks(), tree_details_->get_root_node());
+		print_attack_details(type.attacks(), type.max_attacks(), type.max_attacks(), tree_details_->get_root_node());
 	}
 }
 
-void unit_preview_pane::set_displayed_unit(const unit& u)
+void unit_preview_pane::set_display_data(const unit& u)
 {
 	// Sets the current type id for the profile button callback to use
 	current_type_ = u.type();
@@ -521,7 +555,7 @@ void unit_preview_pane::set_displayed_unit(const unit& u)
 				);
 			}
 		}
-		print_attack_details(u.attacks(), tree_details_->get_root_node());
+		print_attack_details(u.attacks(), u.attacks_left(), u.type().max_attacks(), tree_details_->get_root_node());
 	}
 }
 
@@ -584,7 +618,7 @@ namespace implementation
 
 builder_unit_preview_pane::builder_unit_preview_pane(const config& cfg)
 	: builder_styled_widget(cfg)
-	, image_mods_(cfg["image_mods"])
+	, image_mods(cfg["image_mods"])
 {
 }
 
@@ -600,7 +634,6 @@ std::unique_ptr<widget> builder_unit_preview_pane::build() const
 
 	widget->init_grid(*conf->grid);
 	widget->finalize_setup();
-	widget->set_image_mods(image_mods_);
 
 	return widget;
 }

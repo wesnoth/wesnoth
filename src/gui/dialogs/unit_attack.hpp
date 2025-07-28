@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2024
+	Copyright (C) 2010 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -28,7 +28,9 @@ public:
 	unit_attack(const unit_map::iterator& attacker_itor,
 				 const unit_map::iterator& defender_itor,
 				 std::vector<battle_context>&& weapons,
-				 const int best_weapon);
+				 const int best_weapon,
+				 std::vector<gui2::widget_data>& bc_widget_data_vector,
+				 const int leadership_bonus);
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
@@ -60,6 +62,10 @@ private:
 
 	/** The best weapon, aka the one high-lighted. */
 	int best_weapon_;
+
+	std::vector<gui2::widget_data> bc_widget_data_vector_;
+
+	const int leadership_bonus_;
 };
 
 } // namespace dialogs

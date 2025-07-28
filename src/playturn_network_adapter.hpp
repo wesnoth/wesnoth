@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2017 - 2024
+	Copyright (C) 2017 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -35,9 +35,6 @@ public:
 	bool read(config& dst);
 	//returns false if there is still data in the internal buffer.
 	bool is_at_end() const;
-	void set_source(source_type source);
-	//returns a function to be passed to set_source.
-	static source_type get_source_from_config(config& src);
 	void push_front(config&& cfg);
 private:
 	//reads data from the network stream.

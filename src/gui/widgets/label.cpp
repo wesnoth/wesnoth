@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -26,6 +26,7 @@
 #include "cursor.hpp"
 #include "desktop/clipboard.hpp"
 #include "desktop/open.hpp"
+#include "font/standard_colors.hpp"
 #include "gettext.hpp"
 #include "wml_exception.hpp"
 
@@ -45,7 +46,7 @@ label::label(const implementation::builder_label& builder)
 	, can_wrap_(builder.wrap)
 	, characters_per_line_(builder.characters_per_line)
 	, link_aware_(builder.link_aware)
-	, link_color_(color_t::from_hex_string("ffff00"))
+	, link_color_(font::YELLOW_COLOR)
 	, can_shrink_(builder.can_shrink)
 	, text_alpha_(ALPHA_OPAQUE)
 {
@@ -115,25 +116,20 @@ void label::signal_handler_left_button_click(bool& handled)
 {
 	DBG_GUI_E << "label click";
 
-	if (!get_link_aware()) {
+	if(!get_link_aware()) {
 		return; // without marking event as "handled".
 	}
 
-	if (!desktop::open_object_is_supported()) {
+	if(!desktop::open_object_is_supported()) {
 		show_message("", _("Opening links is not supported, contact your packager"), dialogs::message::auto_close);
 		handled = true;
 		return;
 	}
 
-	point mouse = get_mouse_position();
+	std::string link = get_label_link(get_mouse_position());
 
-	mouse.x -= get_x();
-	mouse.y -= get_y();
-
-	std::string link = get_label_link(mouse);
-
-	if (link.length() == 0) {
-		return ; // without marking event as "handled"
+	if(link.empty()) {
+		return; // without marking event as "handled"
 	}
 
 	DBG_GUI_E << "Clicked Link:\"" << link << "\"";
@@ -150,18 +146,12 @@ void label::signal_handler_right_button_click(bool& handled)
 {
 	DBG_GUI_E << "label right click";
 
-	if (!get_link_aware()) {
-		return ; // without marking event as "handled".
+	if(!get_link_aware()) {
+		return; // without marking event as "handled".
 	}
 
-	point mouse = get_mouse_position();
-
-	mouse.x -= get_x();
-	mouse.y -= get_y();
-
-	std::string link = get_label_link(mouse);
-
-	if (link.length() == 0) {
+	std::string link = get_label_link(get_mouse_position());
+	if(link.empty()) {
 		return ; // without marking event as "handled"
 	}
 
@@ -169,7 +159,7 @@ void label::signal_handler_right_button_click(bool& handled)
 
 	desktop::clipboard::copy_to_clipboard(link);
 
-	(void) show_message("", _("Copied link!"), dialogs::message::auto_close);
+	show_message("", _("Copied link!"), dialogs::message::auto_close);
 
 	handled = true;
 }
@@ -182,12 +172,7 @@ void label::signal_handler_mouse_motion(bool& handled, const point& coordinate)
 		return; // without marking event as "handled"
 	}
 
-	point mouse = coordinate;
-
-	mouse.x -= get_x();
-	mouse.y -= get_y();
-
-	update_mouse_cursor(!get_label_link(mouse).empty());
+	update_mouse_cursor(!get_label_link(coordinate).empty());
 
 	handled = true;
 }
@@ -231,7 +216,7 @@ label_definition::label_definition(const config& cfg)
 
 label_definition::resolution::resolution(const config& cfg)
 	: resolution_definition(cfg)
-	, link_color(cfg["link_color"].empty() ? color_t::from_hex_string("ffff00") : color_t::from_rgba_string(cfg["link_color"].str()))
+	, link_color(cfg["link_color"].empty() ? font::YELLOW_COLOR : color_t::from_rgba_string(cfg["link_color"].str()))
 {
 	// Note the order should be the same as the enum state_t is label.hpp.
 	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_enabled", missing_mandatory_wml_tag("label_definition][resolution", "state_enabled")));

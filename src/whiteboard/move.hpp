@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2024
+	Copyright (C) 2010 - 2025
 	by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -35,7 +35,7 @@ namespace wb {
 class move : public action
 {
 public:
-	move(std::size_t team_index, bool hidden, unit& mover, const pathfind::marked_route& route,
+	move(std::size_t team_index, bool hidden, const unit& mover, const pathfind::marked_route& route,
 			arrow_ptr arrow, fake_unit_ptr fake_unit);
 	move(const config&, bool hidden); // For deserialization
 	virtual ~move();
@@ -56,7 +56,7 @@ public:
 
 	/** Return the unit targeted by this action. Null if unit doesn't exist. */
 	virtual unit_ptr get_unit() const;
-	virtual size_t get_unit_id() const { return unit_underlying_id_; }
+	virtual std::size_t get_unit_id() const { return unit_underlying_id_; }
 	/** @return pointer to the fake unit used only for visuals */
 	virtual fake_unit_ptr get_fake_unit() { return fake_unit_; }
 
@@ -134,7 +134,7 @@ private:
 };
 
 /** Dumps an move on a stream, for debug purposes. */
-std::ostream &operator<<(std::ostream &s, move_ptr move);
-std::ostream &operator<<(std::ostream &s, move_const_ptr move);
+std::ostream &operator<<(std::ostream &s, const move_ptr& move);
+std::ostream &operator<<(std::ostream &s, const move_const_ptr& move);
 
 } // end namespace wb

@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -34,9 +34,9 @@ public:
 };
 
 void clear_tooltips();
-void clear_tooltips(const SDL_Rect& rect);
-int  add_tooltip(const SDL_Rect& rect, const std::string& message, const std::string& action ="");
-bool update_tooltip(int id, const SDL_Rect& rect, const std::string& message);
+void clear_tooltips(const rect& rect);
+int  add_tooltip(const rect& rect, const std::string& message, const std::string& action ="");
+bool update_tooltip(int id, const rect& rect, const std::string& message);
 void remove_tooltip(int id);
 void process(int mousex, int mousey);
 

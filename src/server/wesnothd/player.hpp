@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -17,7 +17,7 @@
 
 #include "server/common/simple_wml.hpp"
 
-#include <ctime>
+#include <chrono>
 #include <set>
 
 namespace wesnothd {
@@ -31,9 +31,16 @@ public:
 		OBSERVING
 	};
 
-	player(const std::string& n, simple_wml::node& cfg, long id, bool registered, const std::string& version, const std::string& source,
-	       unsigned long long login_id, const std::size_t max_messages=4, const std::size_t time_period=10,
-	       const bool moderator=false);
+	player(const std::string& n,
+		simple_wml::node& cfg,
+		long id,
+		bool registered,
+		const std::string& version,
+		const std::string& source,
+		unsigned long long login_id,
+		const std::size_t max_messages = 4,
+		const std::chrono::seconds& time_period = std::chrono::seconds{10},
+		const bool moderator = false);
 
 	void set_status(STATUS status);
 
@@ -57,6 +64,11 @@ public:
 
 	unsigned long long get_login_id() const { return login_id_; };
 
+	void add_queue(int queue_id) { in_queues_.emplace(queue_id); }
+	void clear_queues() { in_queues_.clear(); }
+	void remove_from_queue(int queue_id) { in_queues_.erase(queue_id); }
+	const std::set<int>& get_queues() const { return in_queues_; }
+
 private:
 	const std::string name_;
 	std::string version_;
@@ -65,13 +77,14 @@ private:
 
 	bool registered_;
 
-	std::time_t flood_start_;
+	std::chrono::steady_clock::time_point flood_start_;
 	unsigned int messages_since_flood_start_;
 	const std::size_t MaxMessages;
-	const std::time_t TimePeriod;
+	const std::chrono::seconds TimePeriod;
 	STATUS status_;
 	bool moderator_;
 	unsigned long long login_id_;
+	std::set<int> in_queues_;
 };
 
 } //namespace wesnothd

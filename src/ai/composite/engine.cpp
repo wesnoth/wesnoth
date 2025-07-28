@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2024
+	Copyright (C) 2009 - 2025
 	by Yurii Chernyi <terraninfo@terraninfo.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -114,11 +114,6 @@ void engine::do_parse_goal_from_config( const config &/*cfg*/, std::back_insert_
 void engine::do_parse_stage_from_config( ai_context &/*context*/, const config &/*cfg*/, std::back_insert_iterator<std::vector< stage_ptr >> /*b*/ )
 {
 
-}
-
-std::string engine::evaluate(const std::string& /*str*/)
-{
-	return "evaluate command is not implemented by this engine";
 }
 
 void engine::set_ai_context(ai_context_ptr ai_context)

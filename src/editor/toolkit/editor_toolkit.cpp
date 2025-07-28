@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2012 - 2024
+	Copyright (C) 2012 - 2025
 	by Fabian Mueller <fabianmueller5@gmx.de>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -28,10 +28,9 @@
 
 namespace editor {
 
-editor_toolkit::editor_toolkit(editor_display& gui, const CKey& key,
-		const game_config_view& game_config, context_manager& c_manager)
+editor_toolkit::editor_toolkit(editor_display& gui, const game_config_view& game_config, context_manager& c_manager)
 	: gui_(gui)
-	, key_(key)
+	, key_()
 	, palette_manager_()
 	, mouse_action_(nullptr)  // Will be set before this constructor ends.
 	, mouse_actions_()
@@ -86,7 +85,7 @@ void editor_toolkit::init_mouse_actions(context_manager& cmanager)
 
 	for (const theme::menu& menu : gui_.get_theme().menus()) {
 		if (menu.items().size() == 1) {
-			hotkey::HOTKEY_COMMAND hk = hotkey::get_hotkey_command(menu.items().front()["id"]).command;
+			hotkey::HOTKEY_COMMAND hk = hotkey::get_hotkey_command(menu.items().front()["id"].str()).command;
 			mouse_action_map::iterator i = mouse_actions_.find(hk);
 			if (i != mouse_actions_.end()) {
 				i->second->set_toolbar_button(&menu);
@@ -131,8 +130,7 @@ common_palette& editor_toolkit::get_palette()
 void editor_toolkit::update_mouse_action_highlights()
 {
 	DBG_ED << __func__;
-	int x, y;
-	sdl::get_mouse_state(&x, &y);
+	auto [x, y] = sdl::get_mouse_location();
 	map_location hex_clicked = gui_.hex_clicked_on(x,y);
 	get_mouse_action().update_brush_highlights(gui_, hex_clicked);
 }
@@ -147,7 +145,7 @@ void editor_toolkit::clear_mouseover_overlay()
 	gui_.clear_mouseover_hex_overlay();
 }
 
-void editor_toolkit::set_brush(std::string id) {
+void editor_toolkit::set_brush(const std::string& id) {
 
 	for (brush& i : brushes_) {
 		if (i.id() == id) {

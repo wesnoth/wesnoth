@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2024
+	Copyright (C) 2010 - 2025
 	by Jody Northup
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -28,7 +28,7 @@ config pack_scalar(const std::string &name, const t_string &val)
 }
 
 static std::string get_persist_cfg_name(const std::string &name_space) {
-	return (filesystem::get_dir(filesystem::get_user_data_dir() + "/persist/") + name_space + filesystem::wml_extension);
+	return filesystem::get_wml_persist_dir() + "/" + name_space + filesystem::wml_extension;
 }
 
 void persist_file_context::load()
@@ -38,7 +38,7 @@ void persist_file_context::load()
 		filesystem::scoped_istream file_stream = filesystem::istream_file(cfg_name);
 		if (!(file_stream->fail())) {
 			try {
-				read(cfg_,*file_stream);
+				cfg_ = io::read(*file_stream);
 			} catch (const config::error &err) {
 				LOG_PERSIST << err.message;
 			}

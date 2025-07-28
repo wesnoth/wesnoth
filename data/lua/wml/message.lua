@@ -296,7 +296,7 @@ local function message_user_choice(cfg, speaker, options, text_input, sound)
 		local option_chosen, ti_content = gui.show_narration(msg_cfg, options, text_input)
 
 		if voice then
-			wesnoth.sources.wml_message_speaker = nil
+			wesnoth.audio.sources.wml_message_speaker = nil
 		end
 
 		if option_chosen == -2 then -- Pressed Escape (only if no input)

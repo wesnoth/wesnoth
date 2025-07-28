@@ -1,0 +1,41 @@
+diff --git a/glib/gthreadprivate.h b/glib/gthreadprivate.h
+index 9c847e039..21ea3cca7 100644
+--- a/glib/gthreadprivate.h
++++ b/glib/gthreadprivate.h
+@@ -61,6 +61,7 @@ struct  _GRealThread
+  * This must not be called with a timeout parameter as that differs
+  * in size between the two syscall variants!
+  */
++#undef __NR_futex_time64
+ #if defined(__NR_futex) && defined(__NR_futex_time64)
+ #define g_futex_simple(uaddr, futex_op, ...)                                     \
+   G_STMT_START                                                                   \
+diff --git a/meson.build b/meson.build
+index 0cbc9689f..d3668817f 100644
+--- a/meson.build
++++ b/meson.build
+@@ -903,15 +903,15 @@ if cc.compiles('''#include <linux/futex.h>
+                }''', name : 'futex(2) system call')
+   glib_conf.set('HAVE_FUTEX', 1)
+ endif
+-if cc.compiles('''#include <linux/futex.h>
+-               #include <sys/syscall.h>
+-               #include <unistd.h>
+-               int main (int argc, char ** argv) {
+-                 syscall (__NR_futex_time64, NULL, FUTEX_WAKE, FUTEX_WAIT);
+-                 return 0;
+-               }''', name : 'futex(2) system call')
+-  glib_conf.set('HAVE_FUTEX_TIME64', 1)
+-endif
++#if cc.compiles('''#include <linux/futex.h>
++#               #include <sys/syscall.h>
++#               #include <unistd.h>
++#               int main (int argc, char ** argv) {
++#                 syscall (__NR_futex_time64, NULL, FUTEX_WAKE, FUTEX_WAIT);
++#                 return 0;
++#               }''', name : 'futex(2) system call')
++#  glib_conf.set('HAVE_FUTEX_TIME64', 1)
++#endif
+ 
+ # Check for eventfd(2)
+ if cc.links('''#include <sys/eventfd.h>

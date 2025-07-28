@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2024
+	Copyright (C) 2009 - 2025
 	by Yurii Chernyi <terraninfo@terraninfo.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -143,7 +143,7 @@ std::vector<target> default_ai_context_impl::find_targets(const move_map& enemy_
 			std::set<map_location> threats;
 
 			for(const map_location& adj : get_adjacent_tiles(leader->get_location())) {
-				std::pair<move_map::const_iterator,move_map::const_iterator> itors = enemy_dstsrc.equal_range(adj);
+				auto itors = enemy_dstsrc.equal_range(adj);
 				while(itors.first != itors.second) {
 					if(units_.count(itors.first->second)) {
 						threats.insert(itors.first->second);

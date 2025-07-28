@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by Tomasz Sniatowski <kailoran@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -56,6 +56,10 @@ editor_team_info::editor_team_info(const team& t)
 }
 
 const std::size_t map_context::max_action_stack_size_ = 100;
+
+namespace {
+	static const int editor_team_default_gold = 100;
+}
 
 map_context::map_context(const editor_map& map, bool pure_map, const config& schedule, const std::string& addon_id)
 	: filename_()
@@ -307,6 +311,7 @@ void map_context::new_side()
 	config cfg;
 	cfg["side"] = teams_.size(); // side is 1-indexed, so we can just use size()
 	cfg["hidden"] = false;
+	cfg["gold"] = editor_team_default_gold;
 
 	teams_.back().build(cfg, map());
 
@@ -450,8 +455,7 @@ config map_context::convert_scenario(const config& old_scenario)
 
 void map_context::load_scenario()
 {
-	config scen;
-	read(scen, *(preprocess_file(filename_)));
+	config scen = io::read(*preprocess_file(filename_));
 
 	config scenario;
 	if(scen.has_child("scenario")) {
@@ -513,7 +517,7 @@ void map_context::load_scenario()
 		}
 
 		for(const config& music : evt.child_range("music")) {
-			music_tracks_.emplace(music["name"], sound::music_track(music));
+			music_tracks_.emplace_back(sound::music_track::create(music));
 		}
 
 		for(config& a_unit : evt.child_range("unit")) {
@@ -527,6 +531,20 @@ void map_context::load_scenario()
 bool map_context::select_area(int index)
 {
 	return map_.set_selection(tod_manager_->get_area_by_index(index));
+}
+
+bool map_context::playlist_contains(const std::shared_ptr<sound::music_track>& track) const
+{
+	return utils::contains(music_tracks_, track);
+}
+
+void map_context::toggle_track(const std::shared_ptr<sound::music_track>& track)
+{
+	if(playlist_contains(track)) {
+		music_tracks_.remove(track);
+	} else {
+		music_tracks_.push_back(track);
+	}
 }
 
 void map_context::draw_terrain(const t_translation::terrain_code& terrain, const map_location& loc, bool one_layer_only)
@@ -653,6 +671,7 @@ config map_context::to_config()
 	scenario.remove_children("event", [](const config& cfg) {
 		return cfg["id"].str() == "editor_event-start" || cfg["id"].str() == "editor_event-prestart";
 	});
+	scenario.remove_children("time");
 
 	scenario["id"] = scenario_id_;
 	scenario["name"] = t_string(scenario_name_, current_textdomain);
@@ -725,14 +744,13 @@ config map_context::to_config()
 	}
 
 	// [music]s
-	for(const music_map::value_type& track : music_tracks_) {
-		track.second.write(event, true);
+	for(const auto& track : music_tracks_) {
+		track->write(event, true);
 	}
 
 	// [unit]s
-	config traits;
 	preproc_map traits_map;
-	read(traits, *(preprocess_file(game_config::path+"/data/core/macros/traits.cfg", &traits_map)));
+	preprocess_file(game_config::path + "/data/core/macros/traits.cfg", &traits_map);
 
 	for(const auto& unit : units_) {
 		config& u = event.add_child("unit");
@@ -756,10 +774,10 @@ config map_context::to_config()
 			u["unrenamable"] = unit.unrenamable();
 		}
 
+		config& mods = u.add_child("modifications");
 		if(unit.loyal()) {
-			config trait_loyal;
-			read(trait_loyal, traits_map["TRAIT_LOYAL"].value);
-			u.append(trait_loyal);
+			config trait_loyal = io::read(preprocess_string("{TRAIT_LOYAL}", &traits_map, "wesnoth-help"));
+			mods.append(std::move(trait_loyal));
 		}
 		//TODO this entire block could also be replaced by unit.write(u, true)
 		//however, the resultant config is massive and contains many attributes we don't need.
@@ -788,7 +806,7 @@ config map_context::to_config()
 		side["share_vision"] = team_shared_vision::get_string(team.share_vision());
 
 		side["gold"] = team.gold();
-		side["income"] = team.base_income();
+		side["income"] = team.raw_income();
 
 		for(const map_location& village : team.villages()) {
 			village.write(side.add_child("village"));
@@ -815,7 +833,7 @@ void map_context::save_schedule(const std::string& schedule_id, const std::strin
 			 * and insert [editor_times] block at correct place */
 			preproc_map editor_map;
 			editor_map["EDITOR"] = preproc_define("true");
-			read(schedule, *(preprocess_file(schedule_path, &editor_map)));
+			schedule = io::read(*preprocess_file(schedule_path, &editor_map));
 		}
 	} catch(const filesystem::io_exception& e) {
 		utils::string_map symbols;

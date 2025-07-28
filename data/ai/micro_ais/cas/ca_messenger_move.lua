@@ -30,7 +30,7 @@ function ca_messenger_move:execution(cfg)
 
     local path1 = AH.find_path_with_avoid(messenger, x, y, avoid_map)
     if (not path1) then path1 = { { messenger.x, messenger.y } } end
-    local next_hop = AH.next_hop(messenger, x, y, { path1 = path1, avoid_map = avoid_map, ignore_own_units = true } )
+    local next_hop = AH.next_hop(messenger, x, y, { path = path1, avoid_map = avoid_map, ignore_own_units = true } )
     if (not next_hop) then next_hop = { messenger.x, messenger.y } end
 
     -- Compare this to the "ideal path"

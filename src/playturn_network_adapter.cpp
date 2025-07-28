@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2017 - 2024
+	Copyright (C) 2017 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -16,8 +16,9 @@
 #include "log.hpp"
 #include "utils/general.hpp"
 
-#include <functional>
 #include <cassert>
+#include <functional>
+#include <utility>
 
 
 static lg::log_domain log_network("network");
@@ -43,8 +44,6 @@ void playturn_network_adapter::read_from_network()
 		this->data_.pop_back();
 		throw;
 	}
-	//ping is handeled by network.cpp and we can ignore it.
-	back.remove_attribute("ping");
 	if((!has_data) || back.empty())
 	{
 		this->data_.pop_back();
@@ -128,16 +127,14 @@ bool playturn_network_adapter::read(config& dst)
 }
 
 playturn_network_adapter::playturn_network_adapter(source_type source)
-	: network_reader_(source)
+	: network_reader_(std::move(source))
 	, data_({config()})
 	, data_front_()
 	, next_(data_.front().ordered_end())
 	, next_command_num_(0)
 
 {
-
 }
-
 
 playturn_network_adapter::~playturn_network_adapter()
 {
@@ -147,29 +144,4 @@ playturn_network_adapter::~playturn_network_adapter()
 			LOG_NW << "Destroying playturn_network_adapter with an non empty buffer, this means loss of network data";
 		}
 	} catch (...) {}
-}
-
-void playturn_network_adapter::set_source(source_type source)
-{
-	network_reader_ = source;
-}
-
-
-static bool read_config(config& src, config& dst)
-{
-	assert(dst.empty());
-	if(!src.empty())
-	{
-		src.swap(dst);
-		return true;
-	}
-	else
-	{
-		return false;
-	}
-}
-
-playturn_network_adapter::source_type playturn_network_adapter::get_source_from_config(config& cfg)
-{
-	return std::bind(read_config, std::ref(cfg), std::placeholders::_1);
 }

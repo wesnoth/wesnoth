@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2024
+	Copyright (C) 2014 - 2025
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -626,7 +626,7 @@ void lua_interpreter::display(lua_kernel_base * lk) {
 	if(!game_config::debug && resources::controller) {
 		display_chat_manager& chat_man = resources::controller->get_display().get_chat_manager();
 		const std::string& message = _("The lua console can only be used in debug mode! (Run ‘:debug’ first)");
-		chat_man.add_chat_message(time(nullptr), _("lua console"), 0, message, events::chat_handler::MESSAGE_PRIVATE, false);
+		chat_man.add_chat_message(std::chrono::system_clock::now(), _("lua console"), 0, message, events::chat_handler::MESSAGE_PRIVATE, false);
 		return;
 	}
 #endif

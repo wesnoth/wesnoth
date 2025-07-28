@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
 	Copyright (C) 2003 by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
@@ -39,7 +39,11 @@
 #include "events.hpp"
 #include "hotkey/hotkey_command.hpp"
 #include "key.hpp"
+#include "map/location.hpp"
 #include "quit_confirmation.hpp"
+#include "theme.hpp"
+
+#include <chrono>
 
 class game_config_view;
 class display;
@@ -67,9 +71,7 @@ public:
 	controller_base();
 	virtual ~controller_base();
 
-	virtual void play_slice(bool is_delay_enabled = true);
-
-	void apply_keyboard_scroll(int x, int y);
+	virtual void play_slice();
 
 	void set_scroll_up(bool on)
 	{
@@ -154,7 +156,7 @@ protected:
 		// No action by default
 	}
 
-	virtual void process(events::pump_info&) override;
+	virtual void process() override;
 
 	/** Process keydown (always). Overridden in derived classes */
 	virtual void process_keydown_event(const SDL_Event& /*event*/)
@@ -168,16 +170,12 @@ protected:
 		// No action by default
 	}
 
-	virtual void show_menu(const std::vector<config>& items_arg, int xloc, int yloc, bool context_menu, display& disp);
-	virtual void execute_action(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu);
-
-	virtual bool in_context_menu(const hotkey::ui_command& cmd) const;
+	bool show_menu(const theme::menu* menu, const point& loc, bool context_menu);
+	virtual void execute_action(const std::vector<std::string>& items_arg);
 
 	void long_touch_callback(int x, int y);
 
 	const game_config_view& game_config_;
-
-	CKey key_;
 
 	bool scrolling_;
 	bool scroll_up_;
@@ -185,7 +183,7 @@ protected:
 	bool scroll_left_;
 	bool scroll_right_;
 	/* When the last scroll tick was processed */
-	uint32_t last_scroll_tick_;
+	std::chrono::steady_clock::time_point last_scroll_tick_;
 	/* Sub-pixel movement left over from a previous scroll tick.
 	 * This is added to the next scroll tick, if scrolling continues. */
 	double scroll_carry_x_;
@@ -213,7 +211,6 @@ private:
 
 	keyup_listener key_release_listener_;
 
-	bool last_mouse_is_touch_;
 	/** Context menu timer */
-	size_t long_touch_timer_;
+	std::size_t long_touch_timer_;
 };

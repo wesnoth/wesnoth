@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2024
+	Copyright (C) 2016 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -25,8 +25,9 @@
 #include "gettext.hpp"
 #include "serialization/markup.hpp"
 
-#include <functional>
+#include <SDL2/SDL_timer.h>
 
+#include <functional>
 #include <sstream>
 
 namespace gui2::dialogs

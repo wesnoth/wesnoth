@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2024
+	Copyright (C) 2009 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -130,6 +130,16 @@ enum ui_event : uint32_t {
 	RIGHT_BUTTON_CLICK             = encode_category(15, event_category::general),
 	RIGHT_BUTTON_DOUBLE_CLICK      = encode_category(16, event_category::general),
 
+	// Mouse forward/back buttons (buttons 4 and 5, SDL_BUTTON_X1/SDL_BUTTON_X2)
+	BACK_BUTTON_DOWN               = encode_category(49, event_category::general),
+	BACK_BUTTON_UP                 = encode_category(50, event_category::general),
+	BACK_BUTTON_CLICK              = encode_category(51, event_category::general),
+	BACK_BUTTON_DOUBLE_CLICK       = encode_category(52, event_category::general),
+	FORWARD_BUTTON_DOWN            = encode_category(53, event_category::general),
+	FORWARD_BUTTON_UP              = encode_category(54, event_category::general),
+	FORWARD_BUTTON_CLICK           = encode_category(55, event_category::general),
+	FORWARD_BUTTON_DOUBLE_CLICK    = encode_category(56, event_category::general),
+
 	SDL_VIDEO_RESIZE               = encode_category(17, event_category::mouse),
 	SDL_MOUSE_MOTION               = encode_category(18, event_category::mouse),
 	MOUSE_MOTION                   = encode_category(19, event_category::mouse),
@@ -139,6 +149,13 @@ enum ui_event : uint32_t {
 	SDL_MIDDLE_BUTTON_UP           = encode_category(23, event_category::mouse),
 	SDL_RIGHT_BUTTON_DOWN          = encode_category(24, event_category::mouse),
 	SDL_RIGHT_BUTTON_UP            = encode_category(25, event_category::mouse),
+
+	// Raw mouse forward/back button events
+	SDL_BACK_BUTTON_DOWN           = encode_category(57, event_category::mouse),
+	SDL_BACK_BUTTON_UP             = encode_category(58, event_category::mouse),
+	SDL_FORWARD_BUTTON_DOWN        = encode_category(59, event_category::mouse),
+	SDL_FORWARD_BUTTON_UP          = encode_category(60, event_category::mouse),
+
 	SDL_WHEEL_LEFT                 = encode_category(26, event_category::mouse),
 	SDL_WHEEL_RIGHT                = encode_category(27, event_category::mouse),
 	SDL_WHEEL_UP                   = encode_category(28, event_category::mouse),
@@ -256,16 +273,6 @@ void capture_keyboard(dispatcher* dispatcher);
 std::ostream& operator<<(std::ostream& stream, const ui_event event);
 
 } // namespace event
-
-/**
- * Keeps track of any open windows of any type (modal, non-modal, or tooltip) in the
- * order in which they were opened. Currently only used as a helper for is_in_dialog(),
- * but could potentially be useful for other things in the future.
- */
-extern std::vector<window*> open_window_stack;
-
-/** Removes a entry from the open_window_stack list. This should be used instead of pop_back. */
-void remove_from_window_stack(window* window);
 
 /**
  * Is a dialog open?

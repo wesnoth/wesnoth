@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -19,16 +19,24 @@
 
 #include "cursor.hpp"
 #include "desktop/clipboard.hpp"
+#include "font/attributes.hpp"
 #include "gui/core/gui_definition.hpp"
 #include "gui/core/log.hpp"
 #include "gui/core/timer.hpp"
+#include "gui/widgets/window.hpp"
 #include "serialization/unicode.hpp"
+
+#ifdef __ANDROID__
+#include <SDL2/SDL_keyboard.h>
+#endif
 
 #include <functional>
 #include <limits>
 
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
+
+using namespace std::chrono_literals;
 
 namespace gui2
 {
@@ -44,11 +52,9 @@ text_box_base::text_box_base(const implementation::builder_styled_widget& builde
 	, ime_start_point_(0)
 	, cursor_timer_(0)
 	, cursor_alpha_(0)
-	, cursor_blink_rate_ms_(750)
-	, text_changed_callback_()
+	, cursor_blink_rate_(750ms)
 {
-	auto cfg = get_control(control_type, builder.definition);
-	set_font_family(cfg->text_font_family);
+	set_font_family(get_config()->text_font_family);
 
 #ifdef __unix__
 	// pastes on UNIX systems.
@@ -120,6 +126,13 @@ void text_box_base::set_maximum_length(const std::size_t maximum_length)
 	}
 }
 
+void text_box_base::set_highlight_area(const unsigned start_offset, const unsigned end_offset, const color_t& color)
+{
+	font::attribute_list attrs;
+	add_attribute_bg_color(attrs, start_offset, end_offset, color);
+	text_.apply_attributes(attrs);
+}
+
 void text_box_base::set_value(const std::string& text)
 {
 	if(text != text_.text()) {
@@ -159,8 +172,8 @@ void text_box_base::insert_char(const std::string& unicode)
 
 	if(text_.insert_text(selection_start_, unicode, get_use_markup())) {
 		// Update status
-		size_t plain_text_len = utf8::size(plain_text());
-		size_t cursor_pos = selection_start_ + utf8::size(unicode);
+		std::size_t plain_text_len = utf8::size(plain_text());
+		std::size_t cursor_pos = selection_start_ + utf8::size(unicode);
 		if (get_use_markup() && (selection_start_ + utf8::size(unicode) > plain_text_len + 1)) {
 			cursor_pos = plain_text_len;
 		}
@@ -170,14 +183,14 @@ void text_box_base::insert_char(const std::string& unicode)
 	}
 }
 
-size_t text_box_base::get_composition_length() const
+std::size_t text_box_base::get_composition_length() const
 {
 	if(!is_composing()) {
 		return 0;
 	}
 
-	size_t text_length = utf8::size(text_.text());
-	size_t text_cached_length = utf8::size(text_cached_);
+	std::size_t text_length = utf8::size(text_.text());
+	std::size_t text_cached_length = utf8::size(text_cached_);
 	if(text_length < text_cached_length) {
 		return 0;
 	}
@@ -188,9 +201,11 @@ size_t text_box_base::get_composition_length() const
 void text_box_base::interrupt_composition()
 {
 	ime_composing_ = false;
+#ifndef __ANDROID__
 	// We need to inform the IME that text input is no longer in progress.
 	SDL_StopTextInput();
 	SDL_StartTextInput();
+#endif
 }
 
 void text_box_base::copy_selection()
@@ -292,7 +307,7 @@ void text_box_base::set_state(const state_t state)
 
 void text_box_base::toggle_cursor_timer(bool enable)
 {
-	if(!cursor_blink_rate_ms_) {
+	if(cursor_blink_rate_ == 0ms) {
 		return;
 	}
 
@@ -301,7 +316,7 @@ void text_box_base::toggle_cursor_timer(bool enable)
 	}
 
 	cursor_timer_ = enable
-			? add_timer(cursor_blink_rate_ms_, std::bind(&text_box_base::cursor_timer_callback, this), true)
+			? add_timer(cursor_blink_rate_, std::bind(&text_box_base::cursor_timer_callback, this), true)
 			: 0;
 }
 
@@ -316,8 +331,10 @@ void text_box_base::cursor_timer_callback()
 			cursor_alpha_ = 255;
 			return;
 		default:
+			// FIXME: very hacky way to check if the widget's owner is the top window
 			// back() on an empty vector is UB and was causing a crash when run on Wayland (see #7104 on github)
-			if(!open_window_stack.empty() && get_window() != open_window_stack.back()) {
+			const auto& dispatchers = event::get_all_dispatchers();
+			if(!dispatchers.empty() && static_cast<event::dispatcher*>(get_window()) != dispatchers.back()) {
 				cursor_alpha_ = 0;
 			} else {
 				cursor_alpha_ = (~cursor_alpha_) & 0xFF;
@@ -337,7 +354,7 @@ void text_box_base::cursor_timer_callback()
 
 void text_box_base::reset_cursor_state()
 {
-	if(!cursor_blink_rate_ms_) {
+	if(cursor_blink_rate_ == 0ms) {
 		return;
 	}
 
@@ -447,10 +464,6 @@ void text_box_base::handle_commit(bool& handled, const std::string& unicode)
 		}
 		insert_char(unicode);
 		fire(event::NOTIFY_MODIFIED, *this, nullptr);
-
-		if(text_changed_callback_) {
-			text_changed_callback_(this, this->text());
-		}
 	}
 }
 
@@ -467,7 +480,7 @@ void text_box_base::handle_editing(bool& handled, const std::string& unicode, in
 			delete_selection();
 			ime_start_point_ = selection_start_;
 			text_cached_ = text_.text();
-			SDL_Rect rect = get_rectangle();
+			rect rect = get_rectangle();
 			if(new_len > 0) {
 				rect.x += get_cursor_position(ime_start_point_).x;
 				rect.w = get_cursor_position(ime_start_point_ + new_len).x - rect.x;
@@ -667,26 +680,25 @@ void text_box_base::signal_handler_sdl_key_down(const event::ui_event event,
 			break;
 
 		default:
-			// Don't call the text changed callback if nothing happened.
 			return;
-	}
-
-	if(text_changed_callback_) {
-		text_changed_callback_(this, this->text());
 	}
 }
 
 void text_box_base::signal_handler_receive_keyboard_focus(const event::ui_event event)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
-
+#ifdef __ANDROID__
+	SDL_StartTextInput();
+#endif
 	set_state(FOCUSED);
 }
 
 void text_box_base::signal_handler_lose_keyboard_focus(const event::ui_event event)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
-
+#ifdef __ANDROID__
+	SDL_StopTextInput();
+#endif
 	set_state(ENABLED);
 }
 
@@ -694,7 +706,6 @@ void text_box_base::signal_handler_mouse_enter(const event::ui_event event,
 											   bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
-
 	if(state_ != FOCUSED) {
 		set_state(HOVERED);
 	}

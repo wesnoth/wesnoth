@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -34,8 +34,16 @@ namespace tk = tokenizer;
 class formula
 {
 public:
-	formula(const std::string& str, function_symbol_table* symbols = nullptr);
+	formula(const std::string& str, function_symbol_table* symbols = nullptr, bool manage_symbols = false);
 	formula(const tk::token* i1, const tk::token* i2, function_symbol_table* symbols = nullptr);
+
+	formula(formula&&) noexcept = default;
+	formula& operator=(formula&&) noexcept = default;
+
+	// Since function_symbol_table is an incomplete type at this point,
+	// a destructor must be defined out-of-line once its definition is
+	// complete, otherwise compilation fails when used with unique_ptr.
+	~formula();
 
 	static variant evaluate(
 			const const_formula_ptr& f,
@@ -80,9 +88,7 @@ private:
 
 	expression_ptr expr_;
 	std::string str_;
-	// Can't be a unique_ptr because function_symbol_table is an incomplete type,
-	// and the header it's declared in depends on this one.
-	const std::shared_ptr<function_symbol_table> managed_symbols_;
+	std::unique_ptr<function_symbol_table> managed_symbols_;
 	function_symbol_table* symbols_;
 
 	friend class formula_debugger;

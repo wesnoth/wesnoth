@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2024
+	Copyright (C) 2009 - 2025
 	by Yurii Chernyi <terraninfo@terraninfo.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -341,11 +341,18 @@ manager::manager()
 	, tod_changed_("ai_tod_changed")
 	, gamestate_changed_("ai_gamestate_changed")
 	, turn_started_("ai_turn_started")
-	, last_interact_(0)
+	, last_interact_()
 	, num_interact_(0)
 {
 	registry::init();
 	singleton_ = this;
+}
+
+manager::~manager() {
+	ai_map_.clear();
+	if(singleton_ == this) {
+		singleton_ = nullptr;
+	}
 }
 
 manager* manager::singleton_ = nullptr;
@@ -415,12 +422,15 @@ void manager::remove_turn_started_observer( events::observer* event_observer )
 }
 
 void manager::raise_user_interact() {
-	if(resources::simulation_){
+	if(resources::simulation){
 		return;
 	}
 
-	const int interact_time = 30;
-	const int time_since_interact = SDL_GetTicks() - last_interact_;
+	using namespace std::chrono_literals;
+	constexpr auto interact_time = 30ms;
+
+	const auto now = std::chrono::steady_clock::now();
+	const auto time_since_interact = now - last_interact_;
 	if(time_since_interact < interact_time) {
 		return;
 	}
@@ -428,8 +438,7 @@ void manager::raise_user_interact() {
 	++num_interact_;
 	user_interact_.notify_observers();
 
-	last_interact_ = SDL_GetTicks();
-
+	last_interact_ = now;
 }
 
 void manager::raise_sync_network() {
@@ -454,156 +463,6 @@ void manager::raise_recruit_list_changed() {
 
 void manager::raise_map_changed() {
 	map_changed_.notify_observers();
-}
-
-// =======================================================================
-// EVALUATION
-// =======================================================================
-
-const std::string manager::evaluate_command( side_number side, const std::string& str )
-{
-	//insert new command into history
-	history_.emplace_back(history_item_counter_++,str);
-
-	//prune history - erase 1/2 of it if it grows too large
-	if (history_.size()>MAX_HISTORY_SIZE){
-		history_.erase(history_.begin(),history_.begin()+MAX_HISTORY_SIZE/2);
-		LOG_AI_MANAGER << "AI MANAGER: pruned history";
-	}
-
-	if (!should_intercept(str)){
-		ai_composite& ai = get_active_ai_for_side(side);
-		raise_gamestate_changed();
-		return ai.evaluate(str);
-	}
-
-	return internal_evaluate_command(side,str);
-}
-
-bool manager::should_intercept( const std::string& str ) const
-{
-	if (str.length()<1) {
-		return false;
-	}
-	if (str.at(0)=='!'){
-		return true;
-	}
-	if (str.at(0)=='?'){
-		return true;
-	}
-	return false;
-
-}
-
-// this is stub code to allow testing of basic 'history', 'repeat-last-command', 'add/remove/replace ai' capabilities.
-// yes, it doesn't look nice. but it is usable.
-// to be refactored at earliest opportunity
-// TODO: extract to separate class which will use fai or lua parser
-const std::string manager::internal_evaluate_command( side_number side, const std::string& str ){
-	const int MAX_HISTORY_VISIBLE = 30;
-
-	//repeat last command
-	if (str=="!") {
-			//this command should not be recorded in history
-			if (!history_.empty()){
-				history_.pop_back();
-				history_item_counter_--;
-			}
-
-			if (history_.empty()){
-				return "AI MANAGER: empty history";
-			}
-			return evaluate_command(side, history_.back().get_command());//no infinite loop since '!' commands are not present in history
-	};
-	//show last command
-	if (str=="?") {
-		//this command should not be recorded in history
-		if (!history_.empty()){
-			history_.pop_back();
-			history_item_counter_--;
-		}
-
-		if (history_.empty()){
-			return "AI MANAGER: History is empty";
-		}
-
-		int n = std::min<int>( MAX_HISTORY_VISIBLE, history_.size() );
-		std::stringstream strstream;
-		strstream << "AI MANAGER: History - last "<< n <<" commands:\n";
-		std::deque< command_history_item >::reverse_iterator j = history_.rbegin();
-
-		for (int cmd_id=n; cmd_id>0; --cmd_id){
-			strstream << j->get_number() << "    :" << j->get_command() << '\n';
-			++j;//this is *reverse* iterator
-		}
-
-		return strstream.str();
-	};
-
-	std::vector< std::string > cmd = utils::parenthetical_split(str, ' ',"'","'");
-
-	if (cmd.size()==3){
-		// add_ai side file
-		if (cmd.at(0)=="!add_ai"){
-			side = std::stoi(cmd.at(1));
-			std::string file = cmd.at(2);
-			if (add_ai_for_side_from_file(side,file,false)){
-				return std::string("AI MANAGER: added [")+manager::get_active_ai_identifier_for_side(side)+std::string("] AI for side ")+std::to_string(side)+std::string(" from file ")+file;
-			} else {
-				return std::string("AI MANAGER: failed attempt to add AI for side ")+std::to_string(side)+std::string(" from file ")+file;
-			}
-		}
-		// replace_ai side file
-		if (cmd.at(0)=="!replace_ai"){
-			side = std::stoi(cmd.at(1));
-			std::string file = cmd.at(2);
-			if (add_ai_for_side_from_file(side,file,true)){
-					return std::string("AI MANAGER: added [")+manager::get_active_ai_identifier_for_side(side)+std::string("] AI for side ")+std::to_string(side)+std::string(" from file ")+file;
-			} else {
-					return std::string("AI MANAGER: failed attempt to add AI for side ")+std::to_string(side)+std::string(" from file ")+file;
-			}
-		}
-
-	} else if (cmd.size()==2){
-		// remove_ai side
-		if (cmd.at(0)=="!remove_ai"){
-			side = std::stoi(cmd.at(1));
-			remove_ai_for_side(side);
-			return std::string("AI MANAGER: made an attempt to remove AI for side ")+std::to_string(side);
-		}
-		if (cmd.at(0)=="!"){
-			//this command should not be recorded in history
-			if (!history_.empty()){
-				history_.pop_back();
-				history_item_counter_--;
-			}
-
-			int command = std::stoi(cmd.at(1));
-			std::deque< command_history_item >::reverse_iterator j = history_.rbegin();
-			//yes, the iterator could be precisely positioned (since command numbers go 1,2,3,4,..). will do it later.
-			while ( (j!=history_.rend()) && (j->get_number()!=command) ){
-				++j;// this is *reverse* iterator
-			}
-			if (j!=history_.rend()){
-				return evaluate_command(side,j->get_command());//no infinite loop since '!' commands are not present in history
-			}
-			return "AI MANAGER: no command with requested number found";
-		}
-	} else if (cmd.size()==1){
-		if (cmd.at(0)=="!help") {
-			return
-				"known commands:\n"
-				"!    - repeat last command (? and ! do not count)\n"
-				"! NUMBER    - repeat numbered command\n"
-				"?    - show a history list\n"
-				"!add_ai TEAM FILE    - add a AI to side (0 - command AI, N - AI for side #N) from file\n"
-				"!remove_ai TEAM    - remove AI from side (0 - command AI, N - AI for side #N)\n"
-				"!replace_ai TEAM FILE    - replace AI of side (0 - command AI, N - AI for side #N) from file\n"
-				"!help    - show this help message";
-		}
-	}
-
-	return "AI MANAGER: nothing to do";
 }
 
 // =======================================================================
@@ -720,9 +579,9 @@ const ai::unit_advancements_aspect& manager::get_advancement_aspect_for_side(sid
 // =======================================================================
 
 void manager::play_turn( side_number side ){
-	last_interact_ = 0;
+	last_interact_ = {};
 	num_interact_ = 0;
-	const int turn_start_time = SDL_GetTicks();
+	const auto turn_start_time = std::chrono::steady_clock::now();
 	get_ai_info().recent_attacks.clear();
 	ai_composite& ai_obj = get_active_ai_for_side(side);
 	resources::game_events->pump().fire("ai_turn");
@@ -732,9 +591,9 @@ void manager::play_turn( side_number side ){
 	}
 	ai_obj.new_turn();
 	ai_obj.play_turn();
-	const int turn_end_time= SDL_GetTicks();
+	const auto turn_end_time = std::chrono::steady_clock::now();
 	DBG_AI_MANAGER << "side " << side << ": number of user interactions: "<<num_interact_;
-	DBG_AI_MANAGER << "side " << side << ": total turn time: "<<turn_end_time - turn_start_time << " ms ";
+	DBG_AI_MANAGER << "side " << side << ": total turn time: " << (turn_end_time - turn_start_time).count() << " ms ";
 }
 
 // =======================================================================

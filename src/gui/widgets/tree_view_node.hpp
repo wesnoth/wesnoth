@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2010 - 2024
+	Copyright (C) 2010 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -191,11 +191,10 @@ public:
 								   const bool must_be_active) const override;
 
 	/** See @ref widget::find. */
-	widget* find(const std::string& id, const bool must_be_active) override;
+	widget* find(const std::string_view id, const bool must_be_active) override;
 
 	/** See @ref widget::find. */
-	const widget* find(const std::string& id,
-						const bool must_be_active) const override;
+	const widget* find(const std::string_view id, const bool must_be_active) const override;
 
 	/**
 	 * The number of children in this widget.
@@ -244,7 +243,7 @@ public:
 	tree_view_node* get_node_below();
 	tree_view_node* get_selectable_node_above();
 	tree_view_node* get_selectable_node_below();
-	void select_node(bool expand_parents = false);
+	void select_node(bool expand_parents = false, bool fire_event = true);
 	grid& get_grid() { return grid_; }
 	void layout_initialize(const bool full_initialization) override;
 
@@ -309,7 +308,7 @@ private:
 	place(const unsigned indentation_step_size, point origin, unsigned width);
 
 	/** See @ref widget::set_visible_rectangle. */
-	virtual void set_visible_rectangle(const SDL_Rect& rectangle) override;
+	virtual void set_visible_rectangle(const rect& rectangle) override;
 
 	/** See @ref widget::impl_draw_children. */
 	virtual void impl_draw_children() override;

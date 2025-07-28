@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2023 - 2024
+	Copyright (C) 2023 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -16,6 +16,7 @@
 
 #include "gui/dialogs/editor/edit_pbl.hpp"
 
+#include "addon/validation.hpp"
 #include "editor/editor_common.hpp"
 #include "filesystem.hpp"
 #include "gettext.hpp"
@@ -100,7 +101,7 @@ void editor_edit_pbl::pre_show()
 	config pbl;
 	if(filesystem::file_exists(pbl_)) {
 		try {
-			read(pbl, *preprocess_file(pbl_));
+			pbl = io::read(*preprocess_file(pbl_));
 		} catch(const config::error& e) {
 			ERR_ED << "Caught a config error while parsing file " << pbl_ << "\n" << e.message;
 		}
@@ -123,7 +124,7 @@ void editor_edit_pbl::pre_show()
 	std::vector<config> addons_list;
 	filesystem::get_files_in_dir(filesystem::get_addons_dir(), nullptr, &dirs_, filesystem::name_mode::FILE_NAME_ONLY);
 	if(dirs_.size() > 0 && std::find(dirs_.begin(), dirs_.end(), current_addon_) != dirs_.end()) {
-		dirs_.erase(std::remove(dirs_.begin(), dirs_.end(), current_addon_));
+		utils::erase(dirs_, current_addon_);
 	}
 
 	for(const std::string& dir : dirs_) {
@@ -140,15 +141,21 @@ void editor_edit_pbl::pre_show()
 
 	if(pbl["forum_auth"].to_bool()) {
 		find_widget<toggle_button>("forum_auth").set_value(true);
+		find_widget<text_box>("primary_authors").set_value(pbl["primary_authors"]);
+		find_widget<text_box>("secondary_authors").set_value(pbl["secondary_authors"]);
 		find_widget<text_box>("email").set_visible(gui2::widget::visibility::invisible);
 		find_widget<label>("email_label").set_visible(gui2::widget::visibility::invisible);
 		find_widget<text_box>("password").set_visible(gui2::widget::visibility::invisible);
 		find_widget<label>("password_label").set_visible(gui2::widget::visibility::invisible);
+		find_widget<text_box>("primary_authors").set_visible(gui2::widget::visibility::visible);
+		find_widget<label>("primary_authors_label").set_visible(gui2::widget::visibility::visible);
 		find_widget<text_box>("secondary_authors").set_visible(gui2::widget::visibility::visible);
 		find_widget<label>("secondary_authors_label").set_visible(gui2::widget::visibility::visible);
 	} else {
 		find_widget<text_box>("email").set_value(pbl["email"]);
 		find_widget<text_box>("password").set_value(pbl["passphrase"]);
+		find_widget<text_box>("primary_authors").set_visible(gui2::widget::visibility::invisible);
+		find_widget<label>("primary_authors_label").set_visible(gui2::widget::visibility::invisible);
 		find_widget<text_box>("secondary_authors").set_visible(gui2::widget::visibility::invisible);
 		find_widget<label>("secondary_authors_label").set_visible(gui2::widget::visibility::invisible);
 	}
@@ -205,12 +212,17 @@ void editor_edit_pbl::pre_show()
 	button& translations_delete = find_widget<button>("translations_delete");
 
 	for(const config& child : pbl.child_range("translation")) {
-		const widget_data& entry{
-			{"translations_language", widget_item{{"label", child["language"].str()}}},
-			{"translations_title", widget_item{{"label", child["title"].str()}}},
-			{"translations_description", widget_item{{"label", child["description"].str()}}},
-		};
-		translations.add_row(entry);
+		translations.add_row(widget_data{
+			{ "translations_language", {
+				{ "label", child["language"].str() }
+			}},
+			{ "translations_title", {
+				{ "label", child["title"].str() }
+			}},
+			{ "translations_description", {
+				{ "label", child["description"].str() }
+			}},
+		});
 	}
 
 	if(translations.get_item_count() == 0) {
@@ -264,6 +276,10 @@ config editor_edit_pbl::create_cfg()
 
 	if(find_widget<toggle_button>("forum_auth").get_value_bool()) {
 		cfg["forum_auth"] = true;
+
+		if(const std::string& primary_authors = find_widget<text_box>("primary_authors").get_value(); !primary_authors.empty()) {
+			cfg["primary_authors"] = primary_authors;
+		}
 
 		if(const std::string& secondary_authors = find_widget<text_box>("secondary_authors").get_value(); !secondary_authors.empty()) {
 			cfg["secondary_authors"] = secondary_authors;
@@ -319,6 +335,8 @@ void editor_edit_pbl::toggle_auth()
 		find_widget<text_box>("password").set_visible(gui2::widget::visibility::invisible);
 		find_widget<label>("email_label").set_visible(gui2::widget::visibility::invisible);
 		find_widget<label>("password_label").set_visible(gui2::widget::visibility::invisible);
+		find_widget<text_box>("primary_authors").set_visible(gui2::widget::visibility::visible);
+		find_widget<label>("primary_authors_label").set_visible(gui2::widget::visibility::visible);
 		find_widget<text_box>("secondary_authors").set_visible(gui2::widget::visibility::visible);
 		find_widget<label>("secondary_authors_label").set_visible(gui2::widget::visibility::visible);
 	} else {
@@ -326,6 +344,8 @@ void editor_edit_pbl::toggle_auth()
 		find_widget<text_box>("password").set_visible(gui2::widget::visibility::visible);
 		find_widget<label>("email_label").set_visible(gui2::widget::visibility::visible);
 		find_widget<label>("password_label").set_visible(gui2::widget::visibility::visible);
+		find_widget<text_box>("primary_authors").set_visible(gui2::widget::visibility::invisible);
+		find_widget<label>("primary_authors_label").set_visible(gui2::widget::visibility::invisible);
 		find_widget<text_box>("secondary_authors").set_visible(gui2::widget::visibility::invisible);
 		find_widget<label>("secondary_authors_label").set_visible(gui2::widget::visibility::invisible);
 	}
@@ -339,13 +359,18 @@ void editor_edit_pbl::add_translation()
 	editor_edit_pbl_translation::execute(language, title, description);
 
 	if(!language.empty() && !title.empty()) {
-		listbox& translations = find_widget<listbox>("translations");
-		const widget_data& entry{
-			{"translations_language", widget_item{{"label", language}}},
-			{"translations_title", widget_item{{"label", title}}},
-			{"translations_description", widget_item{{"label", description}}},
-		};
-		translations.add_row(entry);
+		find_widget<listbox>("translations").add_row(widget_data{
+			{ "translations_language", {
+				{ "label", language }
+			}},
+			{ "translations_title", {
+				{ "label", title }
+			}},
+			{ "translations_description", {
+				{ "label", description }
+			}},
+		});
+
 		find_widget<button>("translations_delete").set_active(true);
 	}
 }
@@ -367,12 +392,14 @@ void editor_edit_pbl::validate()
 	validator.reset(new schema_validation::schema_validator(filesystem::get_wml_location("schema/pbl.cfg").value()));
 	validator->set_create_exceptions(false);
 
-	config temp;
 	std::stringstream ss;
 	ss << create_cfg();
-	read(temp, ss.str(), validator.get());
+	config temp = io::read(ss, validator.get());
+
 	if(!validator->get_errors().empty()) {
 		gui2::show_error_message(utils::join(validator->get_errors(), "\n"));
+	} else if(addon_icon_too_large(temp["icon"].str())) {
+		gui2::show_error_message(_("The icon’s file size is too large"));
 	} else {
 		gui2::show_message(_("Success"), _("No validation errors"), gui2::dialogs::message::button_style::auto_close);
 	}

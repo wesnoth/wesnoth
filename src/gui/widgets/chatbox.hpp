@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2016 - 2024
+	Copyright (C) 2016 - 2025
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -96,7 +96,7 @@ protected:
 	virtual void user_relation_changed(const std::string& name) override;
 
 	/** Inherited form @ref chat_handler */
-	virtual void add_chat_message(const std::time_t& time,
+	virtual void add_chat_message(const std::chrono::system_clock::time_point& time,
 		const std::string& speaker,
 		int side,
 		const std::string& message,
@@ -227,7 +227,7 @@ public:
 	 */
 	lobby_chat_window* find_or_create_window(const std::string& name, const bool whisper, const bool open_new, const bool allow_close, const std::string& initial_text);
 
-	void close_window_button_callback(std::string room_name, bool& handled, bool& halt);
+	void close_window_button_callback(const std::string& room_name, bool& handled, bool& halt);
 
 	void process_message(const ::config& data, bool whisper = false);
 

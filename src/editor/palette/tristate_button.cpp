@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2013 - 2024
+	Copyright (C) 2013 - 2025
 	by Fabian Mueller <fabianmueller5@gmx.de>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -225,12 +225,12 @@ void tristate_button::draw_contents()
 	}
 
 	// Draw the button base.
-	const SDL_Rect& loc = location();
+	const rect& loc = location();
 	draw::blit(base, loc);
 
 	// Draw the item.
 	// TODO: don't hardcode an implicit reliance on 38 pixel buttons
-	SDL_Rect magic{loc.x + 1, loc.y + 1, 36, 36};
+	rect magic{loc.x + 1, loc.y + 1, 36, 36};
 	draw::blit(itemBaseImage_, magic);
 	if (itemOverlayImage_) {
 		draw::blit(itemOverlayImage_, magic);
@@ -307,17 +307,18 @@ void tristate_button::mouse_down(const SDL_MouseButtonEvent& event) {
 	if (!hit(event.x, event.y))
 		return;
 
+	//The widget is expected to be in one of the "active" states when the mouse cursor is hovering over it, but that currently doesn't happen if the widget is moved under the cursor by scrolling the palette.
 	if (event.button == SDL_BUTTON_RIGHT) {
-		if (state_ == ACTIVE)
+		if (state_ == ACTIVE || state_ == NORMAL)
 			state_ = TOUCHED_RIGHT;
-		if (state_ == PRESSED_ACTIVE_LEFT)
+		if (state_ == PRESSED_ACTIVE_LEFT || state_ == PRESSED_LEFT)
 			state_ = TOUCHED_BOTH_LEFT;
 	}
 
 	if (event.button == SDL_BUTTON_LEFT) {
-		if (state_ == ACTIVE)
+		if (state_ == ACTIVE || state_ == NORMAL)
 			state_ = TOUCHED_LEFT;
-		if (state_ == PRESSED_ACTIVE_RIGHT)
+		if (state_ == PRESSED_ACTIVE_RIGHT || state_ == PRESSED_RIGHT)
 			state_ = TOUCHED_BOTH_RIGHT;
 	}
 

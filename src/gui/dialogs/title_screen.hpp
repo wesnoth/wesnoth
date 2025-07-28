@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -71,7 +71,7 @@ private:
 
 	void init_callbacks();
 
-	void register_button(const std::string& id, hotkey::HOTKEY_COMMAND hk, std::function<void()> callback);
+	void register_button(const std::string& id, hotkey::HOTKEY_COMMAND hk, const std::function<void()>& callback);
 
 	/***** ***** ***** ***** Callbacks ***** ***** ****** *****/
 
@@ -90,17 +90,10 @@ private:
 	/** Shows the debug clock. */
 	void show_debug_clock_window();
 
-	/** Shows the gui test window. */
-	void show_gui_test_dialog();
-
 	/** Shows the preferences dialog. */
 	void show_preferences();
 
 	void hotkey_callback_select_tests();
-
-	void show_achievements();
-
-	void show_community();
 
 	void button_callback_multiplayer();
 

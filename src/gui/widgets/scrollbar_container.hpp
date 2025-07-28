@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -24,6 +24,7 @@ class spacer;
 
 namespace implementation
 {
+struct builder_scrollbar_container;
 struct builder_scroll_label;
 struct builder_scrollbar_panel;
 struct builder_styled_widget;
@@ -48,7 +49,7 @@ class scrollbar_container : public container_base
 	friend struct scrollbar_container_implementation;
 
 public:
-	explicit scrollbar_container(const implementation::builder_styled_widget& builder, const std::string& control_type);
+	explicit scrollbar_container(const implementation::builder_scrollbar_container& builder, const std::string& control_type);
 
 	virtual ~scrollbar_container()
 	{
@@ -112,7 +113,7 @@ public:
 	virtual void set_origin(const point& origin) override;
 
 	/** See @ref widget::set_visible_rectangle. */
-	virtual void set_visible_rectangle(const SDL_Rect& rectangle) override;
+	virtual void set_visible_rectangle(const rect& rectangle) override;
 
 	/***** ***** ***** inherited ****** *****/
 
@@ -129,10 +130,10 @@ public:
 	virtual const widget* find_at(const point& coordinate, const bool must_be_active) const override;
 
 	/** See @ref widget::find. */
-	widget* find(const std::string& id, const bool must_be_active) override;
+	widget* find(const std::string_view id, const bool must_be_active) override;
 
 	/** See @ref widget::find. */
-	const widget* find(const std::string& id, const bool must_be_active) const override;
+	const widget* find(const std::string_view id, const bool must_be_active) const override;
 
 	/** See @ref widget::disable_click_dismiss. */
 	bool disable_click_dismiss() const override;
@@ -170,7 +171,7 @@ public:
 		return content_grid_.get();
 	}
 
-	const SDL_Rect& content_visible_area() const
+	const rect& content_visible_area() const
 	{
 		return content_visible_area_;
 	}
@@ -259,7 +260,7 @@ protected:
 	 *
 	 * @param rect                The rect which should be visible.
 	 */
-	void show_content_rect(const SDL_Rect& rect);
+	void show_content_rect(const rect& rect);
 
 	/*
 	 * The widget contains the following three grids.
@@ -509,7 +510,7 @@ private:
 	 *
 	 * The visible area for the content needs to be updated when scrolling.
 	 */
-	SDL_Rect content_visible_area_;
+	rect content_visible_area_;
 
 	/**
 	 * Function for the subclasses to do their setup.
@@ -585,5 +586,17 @@ public:
 		return vertical_scrollbar_grid_;
 	}
 };
+
+namespace implementation
+{
+struct builder_scrollbar_container : public builder_styled_widget
+{
+	explicit builder_scrollbar_container(const config& cfg);
+
+	scrollbar_container::scrollbar_mode vertical_scrollbar_mode;
+	scrollbar_container::scrollbar_mode horizontal_scrollbar_mode;
+};
+
+} // namespace implementation
 
 } // namespace gui2

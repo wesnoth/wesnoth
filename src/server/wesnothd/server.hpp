@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2024
+	Copyright (C) 2009 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -19,6 +19,7 @@
 #include "server/common/user_handler.hpp"
 #include "server/wesnothd/metrics.hpp"
 #include "server/wesnothd/ban.hpp"
+#include "server/wesnothd/player.hpp"
 #include "server/common/simple_wml.hpp"
 #include "server/common/server_base.hpp"
 #include "server/wesnothd/player_connection.hpp"
@@ -27,6 +28,7 @@
 
 #include <boost/asio/steady_timer.hpp>
 
+#include <chrono>
 #include <random>
 
 namespace wesnothd
@@ -60,10 +62,13 @@ private:
 	void handle_whisper(player_iterator player, simple_wml::node& whisper);
 	void handle_query(player_iterator player, simple_wml::node& query);
 	void handle_nickserv(player_iterator player, simple_wml::node& nickserv);
+	void handle_ping(player_iterator player, simple_wml::node& nickserv);
 	void handle_message(player_iterator player, simple_wml::node& message);
 	void handle_create_game(player_iterator player, simple_wml::node& create_game);
 	void cleanup_game(game*); // deleter for shared_ptr
 	void handle_join_game(player_iterator player, simple_wml::node& join);
+	void handle_join_server_queue(player_iterator p, simple_wml::node& data);
+	void handle_leave_server_queue(player_iterator p, simple_wml::node& data);
 	void disconnect_player(player_iterator player);
 	void remove_player(player_iterator player);
 
@@ -82,6 +87,15 @@ public:
 			player->socket()
 		);
 	}
+	void send_to_player(any_socket_ptr socket, simple_wml::document& data) {
+		if(player_connections_.get<socket_t>().find(socket) != player_connections_.end())
+		{
+			utils::visit(
+				[this, &data](auto&& socket) { async_send_doc_queued(socket, data); },
+				socket
+			);
+		}
+	}
 	void send_server_message_to_lobby(const std::string& message, utils::optional<player_iterator> exclude = {});
 	void send_server_message_to_all(const std::string& message, utils::optional<player_iterator> exclude = {});
 
@@ -95,7 +109,7 @@ private:
 	struct connection_log
 	{
 		std::string nick, ip;
-		std::time_t log_off;
+		std::chrono::system_clock::time_point log_off;
 
 		bool operator==(const connection_log& c) const
 		{
@@ -110,13 +124,34 @@ private:
 	{
 		std::string ip;
 		int attempts;
-		std::time_t first_attempt;
+		std::chrono::steady_clock::time_point first_attempt;
 
 		bool operator==(const login_log& l) const
 		{
 			// only the IP matters
 			return l.ip == ip;
 		}
+	};
+
+	struct queue_info
+	{
+		queue_info(int id, const std::string& scenario_id, const std::string& name, int required, config game)
+		: id(id)
+		, scenario_id(scenario_id)
+		, display_name(name)
+		, players_required(required)
+		, players_in_queue()
+		, settings(game)
+		{
+
+		}
+
+		int id;
+		std::string scenario_id;
+		std::string display_name;
+		std::size_t players_required;
+		std::vector<std::string> players_in_queue;
+		config settings;
 	};
 
 	std::deque<login_log> failed_logins_;
@@ -144,6 +179,7 @@ private:
 	std::map<std::string,config> redirected_versions_;
 	std::map<std::string,config> proxy_versions_;
 	std::vector<std::string> disallowed_names_;
+	std::map<int, queue_info> queue_info_;
 	std::string admin_passwd_;
 	std::string motd_;
 	std::string announcements_;
@@ -151,11 +187,10 @@ private:
 	std::string tournaments_;
 	std::string information_;
 	std::size_t default_max_messages_;
-	std::size_t default_time_period_;
+	std::chrono::seconds default_time_period_;
 	std::size_t concurrent_connections_;
 	bool graceful_restart;
-	std::time_t lan_server_;
-	std::time_t last_user_seen_time_;
+	std::chrono::seconds lan_server_;
 	std::string restart_command;
 	std::size_t max_ip_log_size_;
 	bool deny_unregistered_login_;
@@ -165,14 +200,14 @@ private:
 	std::set<std::string> client_sources_;
 	std::vector<std::string> tor_ip_list_;
 	int failed_login_limit_;
-	std::time_t failed_login_ban_;
+	std::chrono::seconds failed_login_ban_;
 	std::deque<login_log>::size_type failed_login_buffer_size_;
 
 	/** Parse the server config into local variables. */
-	void load_config();
+	void load_config(bool reload);
 
 	bool ip_exceeds_connection_limit(const std::string& ip) const;
-	std::string is_ip_banned(const std::string& ip);
+	utils::optional<server_base::login_ban_info> is_ip_banned(const std::string& ip);
 
 	simple_wml::document version_query_response_;
 	simple_wml::document login_response_;
@@ -212,7 +247,7 @@ private:
 
 	void delete_game(int, const std::string& reason="");
 
-	void update_game_in_lobby(const game& g, utils::optional<player_iterator> exclude = {});
+	void update_game_in_lobby(game& g, utils::optional<player_iterator> exclude = {});
 
 	void start_new_server();
 
@@ -252,7 +287,8 @@ private:
 	void motd_handler(const std::string &, const std::string &, std::string &, std::ostringstream *);
 	void searchlog_handler(const std::string &, const std::string &, std::string &, std::ostringstream *);
 	void dul_handler(const std::string &, const std::string &, std::string &, std::ostringstream *);
-	void stopgame(const std::string &, const std::string &, std::string &, std::ostringstream *);
+	void stopgame_handler(const std::string &, const std::string &, std::string &, std::ostringstream *);
+	void reset_queues_handler(const std::string &, const std::string &, std::string &, std::ostringstream *);
 
 #ifndef _WIN32
 	void handle_sighup(const boost::system::error_code& error, int signal_number);
@@ -267,9 +303,11 @@ private:
 	void handle_lan_server_shutdown(const boost::system::error_code& error);
 
 	boost::asio::steady_timer dummy_player_timer_;
-	int dummy_player_timer_interval_;
+	std::chrono::seconds dummy_player_timer_interval_;
 	void start_dummy_player_updates();
 	void dummy_player_updates(const boost::system::error_code& ec);
+
+	void send_queue_update(const queue_info& queue, utils::optional<player_iterator> exclude = {});
 };
 
 }

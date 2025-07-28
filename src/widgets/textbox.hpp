@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -55,8 +55,8 @@ public:
 protected:
 	// scrollarea overrides
 	virtual void draw_contents() override;
-	virtual void update_location(const SDL_Rect& rect) override;
-	virtual void set_inner_location(const SDL_Rect& ) override;
+	virtual void update_location(const rect& rect) override;
+	virtual void set_inner_location(const rect& ) override;
 	virtual void scroll(unsigned int pos) override;
 
 private:

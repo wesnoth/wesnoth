@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2009 - 2024
+	Copyright (C) 2009 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -23,6 +23,8 @@
 #include "gui/widgets/text_box_base.hpp"
 #include "gui/widgets/widget.hpp"
 #include "sdl/input.hpp" // get_mouse_button_mask
+
+#include <SDL2/SDL.h>
 
 #include <array>
 #include <functional>
@@ -328,7 +330,8 @@ void mouse_motion::start_hover_timer(widget* widget, const point& coordinate)
 	DBG_GUI_E << LOG_HEADER << "Start hover timer for widget '" << widget->id()
 			  << "' at address " << widget << ".";
 
-	hover_timer_ = add_timer(50, std::bind(&mouse_motion::show_tooltip, this));
+	using namespace std::chrono_literals;
+	hover_timer_ = add_timer(50ms, std::bind(&mouse_motion::show_tooltip, this));
 
 	if(hover_timer_) {
 		hover_widget_ = widget;
@@ -398,6 +401,22 @@ constexpr std::array mouse_data{
 		RIGHT_BUTTON_CLICK,
 		RIGHT_BUTTON_DOUBLE_CLICK,
 	},
+	data_pod{
+		SDL_BACK_BUTTON_DOWN,
+		SDL_BACK_BUTTON_UP,
+		BACK_BUTTON_DOWN,
+		BACK_BUTTON_UP,
+		BACK_BUTTON_CLICK,
+		BACK_BUTTON_DOUBLE_CLICK,
+	},
+	data_pod{
+		SDL_FORWARD_BUTTON_DOWN,
+		SDL_FORWARD_BUTTON_UP,
+		FORWARD_BUTTON_DOWN,
+		FORWARD_BUTTON_UP,
+		FORWARD_BUTTON_CLICK,
+		FORWARD_BUTTON_DOUBLE_CLICK,
+	},
 };
 
 } // namespace
@@ -405,7 +424,7 @@ constexpr std::array mouse_data{
 template<std::size_t I>
 mouse_button<I>::mouse_button(widget& owner, const dispatcher::queue_position queue_position)
 	: mouse_motion(owner, queue_position)
-	, last_click_stamp_(0)
+	, last_click_stamp_()
 	, last_clicked_widget_(nullptr)
 	, focus_(nullptr)
 	, is_down_(false)
@@ -434,9 +453,9 @@ mouse_button<I>::mouse_button(widget& owner, const dispatcher::queue_position qu
 template<std::size_t I>
 void mouse_button<I>::initialize_state(int32_t button_state)
 {
-	last_click_stamp_ = 0;
+	last_click_stamp_ = {};
 	last_clicked_widget_ = nullptr;
-	focus_ = 0;
+	focus_ = nullptr;
 	// SDL_BUTTON_LEFT, SDL_BUTTON_MIDDLE, and SDL_BUTTON_RIGHT correspond to 1,2,3
 	is_down_ = button_state & SDL_BUTTON(I + 1);
 }
@@ -525,7 +544,8 @@ void mouse_button<I>::signal_handler_sdl_button_up(
 	// will reach here with mouse_captured_ == false.
 	widget* mouse_over = owner_.find_at(coordinate, true);
 	if(mouse_captured_) {
-		const unsigned mask = SDL_BUTTON_LMASK | SDL_BUTTON_MMASK | SDL_BUTTON_RMASK;
+		const unsigned mask
+			= SDL_BUTTON_LMASK | SDL_BUTTON_MMASK | SDL_BUTTON_RMASK | SDL_BUTTON_X1MASK | SDL_BUTTON_X2MASK;
 
 		if((sdl::get_mouse_button_mask() & mask) == 0) {
 			mouse_captured_ = false;
@@ -551,12 +571,12 @@ void mouse_button<I>::signal_handler_sdl_button_up(
 template<std::size_t I>
 void mouse_button<I>::mouse_button_click(widget* widget)
 {
-	uint32_t stamp = SDL_GetTicks();
+	auto stamp = std::chrono::steady_clock::now();
 	if(last_click_stamp_ + settings::double_click_time >= stamp && last_clicked_widget_ == widget) {
 		DBG_GUI_E << LOG_HEADER << "Firing: " << mouse_data[I].button_double_click_event << ".";
 
 		owner_.fire(mouse_data[I].button_double_click_event, *widget);
-		last_click_stamp_ = 0;
+		last_click_stamp_ = {};
 		last_clicked_widget_ = nullptr;
 
 	} else {
@@ -581,6 +601,8 @@ distributor::distributor(widget& owner,const dispatcher::queue_position queue_po
 	, mouse_button_left(owner, queue_position)
 	, mouse_button_middle(owner, queue_position)
 	, mouse_button_right(owner, queue_position)
+	, mouse_button_back(owner, queue_position)
+	, mouse_button_forward(owner, queue_position)
 	, keyboard_focus_(nullptr)
 	, keyboard_focus_chain_()
 {
@@ -665,6 +687,8 @@ void distributor::initialize_state()
 	mouse_button_left::initialize_state(button_state);
 	mouse_button_middle::initialize_state(button_state);
 	mouse_button_right::initialize_state(button_state);
+	mouse_button_back::initialize_state(button_state);
+	mouse_button_forward::initialize_state(button_state);
 
 	init_mouse_location();
 }
@@ -815,6 +839,20 @@ void distributor::signal_handler_notify_removal(dispatcher& w, const ui_event ev
 	}
 	if(mouse_button_right::focus_ == &w) {
 		mouse_button_right::focus_ = nullptr;
+	}
+
+	if(mouse_button_back::last_clicked_widget_ == &w) {
+		mouse_button_back::last_clicked_widget_ = nullptr;
+	}
+	if(mouse_button_back::focus_ == &w) {
+		mouse_button_back::focus_ = nullptr;
+	}
+
+	if(mouse_button_forward::last_clicked_widget_ == &w) {
+		mouse_button_forward::last_clicked_widget_ = nullptr;
+	}
+	if(mouse_button_forward::focus_ == &w) {
+		mouse_button_forward::focus_ = nullptr;
 	}
 
 	if(mouse_focus_ == &w) {

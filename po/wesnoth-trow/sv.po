@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-05-26 20:07 UTC\n"
+"POT-Creation-Date: 2025-03-17 04:21 UTC\n"
 "PO-Revision-Date: 2007-11-30 11:09+0100\n"
 "Last-Translator: Stefan Bergström (tephlon) <stefan DOT bergstrom AT gmail "
 "DOT com>\n"
@@ -66,7 +66,7 @@ msgstr "Furste"
 #, fuzzy
 msgid ""
 "Lead Prince Haldric through the destruction of the Green Isle and across the "
-"Ocean to establish the very kingdom of Wesnoth itself. The confrontation "
+"Ocean to establish the very Kingdom of Wesnoth itself. The confrontation "
 "with Lich-Lord Jevyan awaits...\n"
 "\n"
 msgstr ""
@@ -3891,7 +3891,7 @@ msgstr "Skynda på. Vi måste säkra fronten eller så är allt förbi!"
 #. [event]
 #. [unit_type]: id=Familiar, race=undead
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:579
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:291
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:290
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:367
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:461
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:259
@@ -4120,7 +4120,7 @@ msgid "Kegrid"
 msgstr "Kegrid"
 
 #. [side]: type=Drake Flameheart, id=Kegrid
-#. [side]: type=Drake Flameheart, id=Gerrick
+#. [side]: type=Drake Flameheart, id=Garash
 #. [side]: type=Drake Flameheart, id=Merkush
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:52
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:74
@@ -4128,10 +4128,10 @@ msgstr "Kegrid"
 msgid "Drakes"
 msgstr ""
 
-#. [side]: type=Drake Flameheart, id=Gerrick
+#. [side]: type=Drake Flameheart, id=Garash
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:68
-msgid "Gerrick"
-msgstr "Gerrick"
+msgid "Garash"
+msgstr ""
 
 #. [side]: type=Drake Flameheart, id=Merkush
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:96
@@ -4177,41 +4177,45 @@ msgstr "Vi har fredliga avsikter. Vi önskar enbart fylla på våra skeppsförr�
 msgid "I don’t think diplomacy is going to work."
 msgstr "(Viskande) Jag tror inte att diplomati fungerar."
 
-#. [message]: speaker=Gerrick
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:221
+#. [message]: speaker=Garash
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:220
+#, fuzzy
+#| msgid ""
+#| "Ssso humansss, you’ve come to trouble usss again. Prepare to die! For the "
+#| "glory of the Lords of Morogor!"
 msgid ""
-"Ssso humansss, you’ve come to trouble usss again. Prepare to die! For the "
-"glory of the Lords of Morogor!"
+"So, prey, you have come to trouble us again. Prepare to die! For the glory "
+"of Morogor!"
 msgstr ""
 "Ssså männissskor, ni har kommit för att ssställa till det för ossss igen. "
 "Bered er att dö! För Morogors furstar!"
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:225
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:224
 #, fuzzy
 msgid "Do I need to say, <i>“I told you so”</i>?"
 msgstr "(Viskande) Behöver jag säga 'vad var det jag sa'?"
 
 #. [event]
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:243
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:242
 msgid "Bitey the Serpent"
 msgstr "Ormen Bits"
 
 #. [message]
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:251
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:250
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:334
 msgid "Look out, a serpent has emerged from the deep."
 msgstr "Se upp! En sjöorm har stigit upp ur djupet!"
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:266
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:265
 msgid ""
 "Well, it looks like their warriors have given up the fight. We should be "
 "able to re-provision the ships now."
 msgstr "Deras krigare verkar ha gett upp. Vi bör kunna proviantera skeppen nu."
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:270
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:269
 msgid ""
 "The nice thing is, they’ll go back to guarding this island after we’re gone "
 "for a while. It’ll make a good way of preventing others from following us."
@@ -4220,7 +4224,7 @@ msgstr ""
 "bevaka ön. Det blir inte lätt för andra att följa efter oss."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:274
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:273
 msgid ""
 "This island is slowly sinking. Hmm, I wonder what they’ll do when it gets "
 "too small for them?"
@@ -4229,7 +4233,7 @@ msgstr ""
 "liten för dem?"
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:278
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:277
 msgid ""
 "They seem rather intelligent. They’re certainly belligerent and numerous. "
 "I’m sure they’ll eventually evacuate. Just like us right now."
@@ -4239,12 +4243,12 @@ msgstr ""
 "ön. Precis som vi gör nu."
 
 #. [message]: speaker=Prince Haldric
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:282
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:281
 msgid "I don’t find that thought very comforting."
 msgstr "Jag finner inte den tanken särskilt lugnande."
 
 #. [message]: speaker=Familiar
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:295
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:294
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/14_Rough_Landing.cfg:371
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/20_Return_of_the_Fleet.cfg:327
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/22_The_Rise_of_Wesnoth.cfg:364
@@ -4253,7 +4257,7 @@ msgid "<i>Clack</i>! <i>Clack!</i>"
 msgstr ""
 
 #. [message]: speaker=Lady Jessene
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:320
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:319
 msgid ""
 "The fleet is starving, we’ll never pacify this island before we all die!"
 msgstr ""
@@ -7306,7 +7310,7 @@ msgstr ""
 #. [unit_type]: id=Familiar, race=undead
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Familiar.cfg:17
 msgid ""
-"Powerful magic users sometimes have familiars, creatures which have had a "
+"Powerful magic users sometimes have Familiars, creatures which have had a "
 "spirit or minor demon drawn into them. A familiar may act as a spy or "
 "messenger for its master."
 msgstr ""
@@ -7681,6 +7685,9 @@ msgid ""
 msgstr ""
 "Detta är sannerligen fantastiska nyheter. Vårt antal har fördubblats. Och nu "
 "till ärendet vi har för handen."
+
+#~ msgid "Gerrick"
+#~ msgstr "Gerrick"
 
 #~ msgid "Southbay Guard"
 #~ msgstr "Sunnanviksvakt"

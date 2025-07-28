@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -19,6 +19,7 @@
 #include "commandline_options.hpp" // for commandline_options, etc
 #include "config.hpp"              // for config, config::error, etc
 #include "cursor.hpp"              // for set, CURSOR_TYPE::NORMAL, etc
+#include "events.hpp"
 #include "filesystem.hpp" // for filesystem::file_exists, filesystem::io_exception, etc
 #include "floating_label.hpp"
 #include "font/error.hpp"          // for error
@@ -42,16 +43,17 @@
 #include "scripting/plugins/manager.hpp"
 #include "sdl/exception.hpp" // for exception
 #include "serialization/binary_or_text.hpp" // for config_writer
+#include "serialization/chrono.hpp"
 #include "serialization/parser.hpp"         // for read
 #include "serialization/preprocessor.hpp"   // for preproc_define, etc
 #include "serialization/schema_validator.hpp" // for strict_validation_enabled and schema_validator
 #include "sound.hpp"                   // for commit_music_changes, etc
+#include "utils/optimer.hpp"
 #include "formula/string_utils.hpp" // VGETTEXT
 #include <functional>
 #include "game_version.hpp"        // for version_info
 #include "video.hpp"          // for video::error and video::quit
 #include "wesconfig.h"        // for PACKAGE
-#include "widgets/button.hpp" // for button
 #include "wml_exception.hpp"  // for wml_exception
 
 #include "utils/spritesheet_generator.hpp"
@@ -71,12 +73,10 @@
 #include <boost/algorithm/string/predicate.hpp> // for checking cmdline options
 #include "utils/optional_fwd.hpp"
 
-#include <algorithm> // for transform
 #include <cerrno>    // for ENOMEM
 #include <clocale>   // for setlocale, LC_ALL, etc
 #include <cstdio>    // for remove, fprintf, stderr
 #include <cstdlib>   // for srand, exit
-#include <ctime>     // for time, ctime, std::time_t
 #include <exception> // for exception
 #include <vector>
 #include <iostream>
@@ -101,9 +101,17 @@
 
 #endif // _WIN32
 
+#ifdef __ANDROID__
+#define main SDL_main
+#endif
+
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 #include "gui/widgets/debug.hpp"
 #endif
+
+// this file acts as a launcher for various gui2 dialogs
+// so this reduces some boilerplate.
+using namespace gui2::dialogs;
 
 static lg::log_domain log_config("config");
 #define LOG_CONFIG LOG_STREAM(info, log_config)
@@ -122,6 +130,63 @@ static void safe_exit(int res)
 	exit(res);
 }
 
+static void handle_preprocess_string(const commandline_options& cmdline_opts)
+{
+	preproc_map defines_map;
+
+	if(cmdline_opts.preprocess_input_macros) {
+		std::string file = *cmdline_opts.preprocess_input_macros;
+		if(!filesystem::file_exists(file)) {
+			PLAIN_LOG << "please specify an existing file. File " << file << " doesn't exist.";
+			return;
+		}
+
+		PLAIN_LOG << "Reading cached defines from: " << file;
+
+		config cfg;
+
+		try {
+			cfg = io::read(*filesystem::istream_file(file));
+		} catch(const config::error& e) {
+			PLAIN_LOG << "Caught a config error while parsing file '" << file << "':\n" << e.message;
+		}
+
+		int read = 0;
+
+		// use static preproc_define::read_pair(config) to make a object
+		for(const auto [_, cfg] : cfg.all_children_view()) {
+			const preproc_map::value_type def = preproc_define::read_pair(cfg);
+			defines_map[def.first] = def.second;
+			++read;
+		}
+
+		PLAIN_LOG << "Read " << read << " defines.";
+	}
+
+	if(cmdline_opts.preprocess_defines) {
+		// add the specified defines
+		for(const std::string& define : *cmdline_opts.preprocess_defines) {
+			if(define.empty()) {
+				PLAIN_LOG << "empty define supplied";
+				continue;
+			}
+
+			LOG_PREPROC << "adding define: " << define;
+			defines_map.emplace(define, preproc_define(define));
+		}
+	}
+
+	// add the WESNOTH_VERSION define
+	defines_map["WESNOTH_VERSION"] = preproc_define(game_config::wesnoth_version.str());
+
+	// preprocess resource
+	PLAIN_LOG << "preprocessing specified string: " << *cmdline_opts.preprocess_source_string;
+	const utils::ms_optimer timer(
+		[](const auto& timer) { PLAIN_LOG << "preprocessing finished. Took " << timer << " ticks."; });
+	std::cout << preprocess_string(*cmdline_opts.preprocess_source_string, &defines_map) << std::endl;
+	PLAIN_LOG << "added " << defines_map.size() << " defines.";
+}
+
 static void handle_preprocess_command(const commandline_options& cmdline_opts)
 {
 	preproc_map input_macros;
@@ -133,13 +198,12 @@ static void handle_preprocess_command(const commandline_options& cmdline_opts)
 			return;
 		}
 
-		PLAIN_LOG << SDL_GetTicks() << " Reading cached defines from: " << file;
+		PLAIN_LOG << "Reading cached defines from: " << file;
 
 		config cfg;
 
 		try {
-			filesystem::scoped_istream stream = filesystem::istream_file(file);
-			read(cfg, *stream);
+			cfg = io::read(*filesystem::istream_file(file));
 		} catch(const config::error& e) {
 			PLAIN_LOG << "Caught a config error while parsing file '" << file << "':\n" << e.message;
 		}
@@ -153,13 +217,14 @@ static void handle_preprocess_command(const commandline_options& cmdline_opts)
 			++read;
 		}
 
-		PLAIN_LOG << SDL_GetTicks() << " Read " << read << " defines.";
+		PLAIN_LOG << "Read " << read << " defines.";
 	}
 
 	const std::string resourceToProcess(*cmdline_opts.preprocess_path);
 	const std::string targetDir(*cmdline_opts.preprocess_target);
 
-	uint32_t startTime = SDL_GetTicks();
+	const utils::ms_optimer timer(
+		[](const auto& timer) { PLAIN_LOG << "preprocessing finished. Took " << timer << " ticks."; });
 
 	// If the users add the SKIP_CORE define we won't preprocess data/core
 	bool skipCore = false;
@@ -237,8 +302,6 @@ static void handle_preprocess_command(const commandline_options& cmdline_opts)
 			PLAIN_LOG << "couldn't open the file.";
 		}
 	}
-
-	PLAIN_LOG << "preprocessing finished. Took " << SDL_GetTicks() - startTime << " ticks.";
 }
 
 static int handle_validate_command(const std::string& file, abstract_validator& validator, const std::vector<std::string>& defines) {
@@ -257,9 +320,7 @@ static int handle_validate_command(const std::string& file, abstract_validator& 
 	}
 	PLAIN_LOG << "Validating " << file << " against schema " << validator.name_;
 	lg::set_strict_severity(lg::severity::LG_ERROR);
-	filesystem::scoped_istream stream = preprocess_file(file, &defines_map);
-	config result;
-	read(result, *stream, &validator);
+	io::read(*preprocess_file(file, &defines_map), &validator);
 	if(lg::broke_strict()) {
 		std::cout << "validation failed\n";
 	} else {
@@ -271,6 +332,29 @@ static int handle_validate_command(const std::string& file, abstract_validator& 
 /** Process commandline-arguments */
 static int process_command_args(commandline_options& cmdline_opts)
 {
+	// Options that output info unaffected by other options and return.
+	if(cmdline_opts.help) {
+		std::cout << cmdline_opts;
+		return 0;
+	}
+
+	if(cmdline_opts.logdomains) {
+		std::cout << lg::list_log_domains(*cmdline_opts.logdomains);
+		return 0;
+	}
+
+	if(cmdline_opts.version) {
+		std::cout << "Battle for Wesnoth" << " " << game_config::wesnoth_version.str() << "\n\n";
+		std::cout << "Library versions:\n" << game_config::library_versions_report() << '\n';
+		std::cout << "Optional features:\n" << game_config::optional_features_report();
+		return 0;
+	}
+
+	if(cmdline_opts.simple_version) {
+		std::cout << game_config::wesnoth_version.str() << "\n";
+		return 0;
+	}
+
 	// Options that don't change behavior based on any others should be checked alphabetically below.
 
 	if(cmdline_opts.no_log_sanitize) {
@@ -300,10 +384,6 @@ static int process_command_args(commandline_options& cmdline_opts)
 			&& !cmdline_opts.data_path
 			&& !cmdline_opts.userdata_path
 			&& !cmdline_opts.usercache_path
-			&& !cmdline_opts.version
-			&& !cmdline_opts.simple_version
-			&& !cmdline_opts.logdomains
-			&& !cmdline_opts.help
 			&& !cmdline_opts.report
 			&& !cmdline_opts.do_diff
 			&& !cmdline_opts.do_patch
@@ -340,9 +420,9 @@ static int process_command_args(commandline_options& cmdline_opts)
 	}
 
 	if(!cmdline_opts.nobanner) {
+		const auto now = std::chrono::system_clock::now();
 		PLAIN_LOG << "Battle for Wesnoth v" << game_config::revision  << " " << game_config::build_arch();
-		const std::time_t t = std::time(nullptr);
-		PLAIN_LOG << "Started on " << ctime(&t);
+		PLAIN_LOG << "Started on " << chrono::format_local_timestamp(now, "%a %b %d %T %Y") << '\n';
 	}
 
 	if(cmdline_opts.usercache_path) {
@@ -362,6 +442,9 @@ static int process_command_args(commandline_options& cmdline_opts)
 		}
 	} else {
 		// if a pre-defined path does not exist this will empty it
+#ifdef __ANDROID__
+		game_config::path = SDL_AndroidGetExternalStoragePath() + std::string("/gamedata");
+#endif
 		game_config::path = filesystem::normalize_path(game_config::path, true, true);
 		if(game_config::path.empty()) {
 			if(std::string exe_dir = filesystem::get_exe_dir(); !exe_dir.empty()) {
@@ -396,18 +479,12 @@ static int process_command_args(commandline_options& cmdline_opts)
 		game_config::allow_insecure = true;
 	}
 
+	if(cmdline_opts.addon_server_info) {
+		game_config::addon_server_info = true;
+	}
+
 	if(cmdline_opts.strict_lua) {
 		game_config::strict_lua = true;
-	}
-
-	if(cmdline_opts.help) {
-		std::cout << cmdline_opts;
-		return 0;
-	}
-
-	if(cmdline_opts.logdomains) {
-		std::cout << lg::list_log_domains(*cmdline_opts.logdomains);
-		return 0;
 	}
 
 	if(cmdline_opts.log_precise_timestamps) {
@@ -426,20 +503,6 @@ static int process_command_args(commandline_options& cmdline_opts)
 		strict_validation_enabled = true;
 	}
 
-	if(cmdline_opts.version) {
-		std::cout << "Battle for Wesnoth" << " " << game_config::wesnoth_version.str() << "\n\n";
-		std::cout << "Library versions:\n" << game_config::library_versions_report() << '\n';
-		std::cout << "Optional features:\n" << game_config::optional_features_report();
-
-		return 0;
-	}
-
-	if(cmdline_opts.simple_version) {
-		std::cout << game_config::wesnoth_version.str() << "\n";
-
-		return 0;
-	}
-
 	if(cmdline_opts.report) {
 		std::cout << "\n========= BUILD INFORMATION =========\n\n" << game_config::full_build_report();
 		return 0;
@@ -452,11 +515,10 @@ static int process_command_args(commandline_options& cmdline_opts)
 	}
 
 	if(cmdline_opts.do_diff) {
-		config left, right;
 		std::ifstream in_left(cmdline_opts.diff_left);
 		std::ifstream in_right(cmdline_opts.diff_right);
-		read(left, in_left);
-		read(right, in_right);
+		config left = io::read(in_left);
+		config right = io::read(in_right);
 		std::ostream* os = &std::cout;
 		if(cmdline_opts.output_file) {
 			os = new std::ofstream(*cmdline_opts.output_file);
@@ -468,11 +530,10 @@ static int process_command_args(commandline_options& cmdline_opts)
 	}
 
 	if(cmdline_opts.do_patch) {
-		config base, diff;
 		std::ifstream in_base(cmdline_opts.diff_left);
 		std::ifstream in_diff(cmdline_opts.diff_right);
-		read(base, in_base);
-		read(diff, in_diff);
+		config base = io::read(in_base);
+		config diff = io::read(in_diff);
 		base.apply_diff(diff);
 		std::ostream* os = &std::cout;
 		if(cmdline_opts.output_file) {
@@ -494,6 +555,11 @@ static int process_command_args(commandline_options& cmdline_opts)
 
 	if(cmdline_opts.preprocess) {
 		handle_preprocess_command(cmdline_opts);
+		return 0;
+	}
+
+	if(cmdline_opts.preprocess_source_string.has_value()) {
+		handle_preprocess_string(cmdline_opts);
 		return 0;
 	}
 
@@ -670,7 +736,6 @@ static int do_gameloop(commandline_options& cmdline_opts)
 	srand(std::time(nullptr));
 
 	const auto game = std::make_unique<game_launcher>(cmdline_opts);
-	const int start_ticks = SDL_GetTicks();
 
 	init_locale();
 
@@ -718,18 +783,18 @@ static int do_gameloop(commandline_options& cmdline_opts)
 		utils::string_map symbols;
 		symbols["logdir"] = filesystem::get_logs_dir();
 		std::string msg = VGETTEXT("Unable to create log files in directory $logdir. This is often caused by incorrect folder permissions, anti-virus software restricting folder access, or using OneDrive to manage your My Documents folder.", symbols);
-		gui2::show_message(_("Logging Failure"), msg, gui2::dialogs::message::ok_button);
+		gui2::show_message(_("Logging Failure"), msg, message::ok_button);
 	}
 
 	game_config_manager config_manager(cmdline_opts);
 
 	if(game_config::check_migration) {
 		game_config::check_migration = false;
-		gui2::dialogs::migrate_version_selection::execute();
+		migrate_version_selection::execute();
 	}
 
-	gui2::dialogs::loading_screen::display([&res, &config_manager, &cmdline_opts]() {
-		gui2::dialogs::loading_screen::progress(loading_stage::load_config);
+	loading_screen::display([&res, &config_manager, &cmdline_opts]() {
+		loading_screen::progress(loading_stage::load_config);
 		res = config_manager.init_game_config(game_config_manager::NO_FORCE_RELOAD);
 
 		if(res == false) {
@@ -737,7 +802,7 @@ static int do_gameloop(commandline_options& cmdline_opts)
 			return;
 		}
 
-		gui2::dialogs::loading_screen::progress(loading_stage::init_fonts);
+		loading_screen::progress(loading_stage::init_fonts);
 
 		res = font::load_font_config();
 		if(res == false) {
@@ -746,7 +811,7 @@ static int do_gameloop(commandline_options& cmdline_opts)
 		}
 
 		if(!game_config::no_addons && !cmdline_opts.noaddons)  {
-			gui2::dialogs::loading_screen::progress(loading_stage::refresh_addons);
+			loading_screen::progress(loading_stage::refresh_addons);
 
 			refresh_addon_version_info_cache();
 		}
@@ -756,12 +821,12 @@ static int do_gameloop(commandline_options& cmdline_opts)
 		return 1;
 	}
 
-	LOG_CONFIG << "time elapsed: " << (SDL_GetTicks() - start_ticks) << " ms";
-
 	plugins_manager plugins_man(new application_lua_kernel);
 
 	const plugins_context::reg_vec callbacks {
 		{"play_multiplayer", std::bind(&game_launcher::play_multiplayer, game.get(), game_launcher::mp_mode::CONNECT)},
+		{"play_local", std::bind(&game_launcher::play_multiplayer, game.get(), game_launcher::mp_mode::LOCAL)},
+		{"play_campaign", std::bind(&game_launcher::play_campaign, game.get())},
 	};
 
 	const plugins_context::areg_vec accessors {
@@ -847,49 +912,46 @@ static int do_gameloop(commandline_options& cmdline_opts)
 
 		int retval;
 		{ // scope to not keep the title screen alive all game
-			gui2::dialogs::title_screen dlg(*game);
+			title_screen dlg(*game);
 
 			// Allows re-layout on resize.
 			// Since RELOAD_UI is not checked here, it causes
 			// the dialog to be closed and reshown with changes.
-			while(dlg.get_retval() == gui2::dialogs::title_screen::REDRAW_BACKGROUND) {
+			while(dlg.get_retval() == title_screen::REDRAW_BACKGROUND) {
 				dlg.show();
 			}
 			retval = dlg.get_retval();
 		}
 
 		switch(retval) {
-		case gui2::dialogs::title_screen::QUIT_GAME:
+		case title_screen::QUIT_GAME:
 			LOG_GENERAL << "quitting game...";
 			return 0;
-		case gui2::dialogs::title_screen::MP_CONNECT:
-			game_config::set_debug(game_config::mp_debug);
+		case title_screen::MP_CONNECT:
 			game->play_multiplayer(game_launcher::mp_mode::CONNECT);
 			break;
-		case gui2::dialogs::title_screen::MP_HOST:
-			game_config::set_debug(game_config::mp_debug);
+		case title_screen::MP_HOST:
 			game->play_multiplayer(game_launcher::mp_mode::HOST);
 			break;
-		case gui2::dialogs::title_screen::MP_LOCAL:
-			game_config::set_debug(game_config::mp_debug);
+		case title_screen::MP_LOCAL:
 			game->play_multiplayer(game_launcher::mp_mode::LOCAL);
 			break;
-		case gui2::dialogs::title_screen::RELOAD_GAME_DATA:
-			gui2::dialogs::loading_screen::display([&config_manager]() {
+		case title_screen::RELOAD_GAME_DATA:
+			loading_screen::display([&config_manager]() {
 				config_manager.reload_changed_game_config();
 				gui2::init();
 				gui2::switch_theme(prefs::get().gui2_theme());
 			});
 			break;
-		case gui2::dialogs::title_screen::MAP_EDITOR:
+		case title_screen::MAP_EDITOR:
 			game->start_editor();
 			break;
-		case gui2::dialogs::title_screen::LAUNCH_GAME:
+		case title_screen::LAUNCH_GAME:
 			game->launch_game(game_launcher::reload_mode::RELOAD_DATA);
 			break;
-		case gui2::dialogs::title_screen::REDRAW_BACKGROUND:
+		case title_screen::REDRAW_BACKGROUND:
 			break;
-		case gui2::dialogs::title_screen::RELOAD_UI:
+		case title_screen::RELOAD_UI:
 			gui2::switch_theme(prefs::get().gui2_theme());
 			break;
 		}
@@ -916,12 +978,22 @@ int wesnoth_main(int argc, char** argv)
 int main(int argc, char** argv)
 #endif
 {
+	events::set_main_thread();
 	auto args = read_argv(argc, argv);
 	assert(!args.empty());
 
 #ifdef _WIN32
 	_putenv("PANGOCAIRO_BACKEND=fontconfig");
 	_putenv("FONTCONFIG_PATH=fonts");
+#endif
+#ifdef __APPLE__
+	// Using setenv with overwrite disabled so we can override this in the
+	// original process environment for research/testing purposes.
+	setenv("PANGOCAIRO_BACKEND", "fontconfig", 0);
+#endif
+#ifdef __ANDROID__
+	setenv("PANGOCAIRO_BACKEND", "fontconfig", 0);
+	setenv("SDL_HINT_AUDIODRIVER", "android", 0);
 #endif
 
 	try {
@@ -957,8 +1029,9 @@ int main(int argc, char** argv)
 		// declare this here so that it will always be at the front of the event queue.
 		events::event_context global_context;
 
+#ifndef __ANDROID__
 		SDL_StartTextInput();
-
+#endif
 		const int res = do_gameloop(cmdline_opts);
 		safe_exit(res);
 	} catch(const boost::program_options::error& e) {

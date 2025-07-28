@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -282,7 +282,7 @@ void wml_event_pump::show_wml_messages(std::stringstream& source, const std::str
 		}
 
 		game_display::get_singleton()->get_chat_manager().add_chat_message(
-			std::time(nullptr), caption, 0, msg.str(), events::chat_handler::MESSAGE_PUBLIC, false);
+			std::chrono::system_clock::now(), caption, 0, msg.str(), events::chat_handler::MESSAGE_PUBLIC, false);
 	}
 }
 

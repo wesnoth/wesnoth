@@ -6,7 +6,7 @@ wmltools.py -- Python routines for working with a Battle For Wesnoth WML tree
 """
 
 from functools import total_ordering
-import collections, codecs
+import collections
 import sys, os, re, sre_constants, hashlib, glob, gzip
 import string
 import enum
@@ -297,7 +297,7 @@ def issave(filename):
                 return False
     else:
         try:
-            with codecs.open(filename, "r", "utf8") as content:
+            with open(filename, "r", encoding="utf8") as content:
                 firstline = content.readline()
         except UnicodeDecodeError:
             # our saves are in UTF-8, so this file shouldn't be one
@@ -693,7 +693,7 @@ class CrossRef:
         temp_docstrings = {}
         current_docstring = None
         try:
-            with codecs.open(filename, "r", "utf8") as dfp:
+            with open(filename, "r", encoding="utf8") as dfp:
                 state = States.OUTSIDE
                 latch_unit = in_base_unit = in_theme = False
                 for (n, line) in enumerate(dfp):
@@ -924,7 +924,7 @@ class CrossRef:
             elif filename.endswith(".def"):
                 # It's a list of names to be considered defined
                 self.noxref = True
-                with codecs.open(filename, "r", "utf8") as dfp:
+                with open(filename, "r", encoding="utf8") as dfp:
                     for line in dfp:
                         self.xref[line.strip()] = True
         # Next, decorate definitions with all references from the filelist.
@@ -941,7 +941,7 @@ class CrossRef:
                 print(fn)
             if iswml(fn):
                 try:
-                    with codecs.open(fn, "r", "utf8") as rfp:
+                    with open(fn, "r", encoding="utf8") as rfp:
                         attack_name = None
                         have_icon = False
                         beneath = 0

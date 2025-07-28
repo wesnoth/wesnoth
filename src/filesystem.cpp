@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2003 - 2024
+	Copyright (C) 2003 - 2025
 	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -22,20 +22,36 @@
 #include "filesystem.hpp"
 
 #include "config.hpp"
+#include "game_config_view.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "serialization/base64.hpp"
+#include "serialization/chrono.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
 #include "utils/general.hpp"
 
 #include <boost/algorithm/string/predicate.hpp>
+#include <boost/algorithm/string/replace.hpp>
 #include <boost/filesystem.hpp>
 #include <boost/filesystem/fstream.hpp>
+#include <boost/format.hpp>
 #include <boost/iostreams/device/file_descriptor.hpp>
 #include <boost/iostreams/stream.hpp>
-#include <boost/process.hpp>
-#include "game_config_view.hpp"
+
+#if !defined(_WIN32) && !defined(__APPLE__)
+
+#if BOOST_VERSION >= 108600
+#include <boost/process/v2/environment.hpp>
+#else
+#include <boost/process/search_path.hpp>
+#endif
+
+#endif
+
+#ifdef __ANDROID__
+#include <SDL2/SDL_system.h>
+#endif
 
 #ifdef _WIN32
 #include <boost/locale.hpp>
@@ -59,6 +75,7 @@
 #include <algorithm>
 #include <cstdlib>
 #include <set>
+#include <utility>
 
 // Copied from boost::predef, as it's there only since 1.55.
 #if defined(__APPLE__) && defined(__MACH__) && defined(__ENVIRONMENT_IPHONE_OS_VERSION_MIN_REQUIRED__)
@@ -75,7 +92,6 @@ static lg::log_domain log_filesystem("filesystem");
 #define WRN_FS LOG_STREAM(warn, log_filesystem)
 #define ERR_FS LOG_STREAM(err, log_filesystem)
 
-namespace bp = boost::process;
 namespace bfs = boost::filesystem;
 using boost::system::error_code;
 
@@ -441,6 +457,9 @@ static bfs::path subtract_path(const bfs::path& full, const bfs::path& prefix_pa
 	return rest;
 }
 
+// Forward declaration, implemented below
+std::chrono::system_clock::time_point file_modified_time(const bfs::path& path);
+
 void get_files_in_dir(const std::string& dir,
 		std::vector<std::string>* files,
 		std::vector<std::string>* dirs,
@@ -501,10 +520,7 @@ void get_files_in_dir(const std::string& dir,
 			push_if_exists(files, di->path(), mode == name_mode::ENTIRE_FILE_PATH);
 
 			if(checksum != nullptr) {
-				std::time_t mtime = bfs::last_write_time(di->path(), ec);
-				if(ec) {
-					LOG_FS << "Failed to read modification time of " << di->path().string() << ": " << ec.message();
-				} else if(mtime > checksum->modified) {
+				if(auto mtime = file_modified_time(di->path()); mtime > checksum->modified) {
 					checksum->modified = mtime;
 				}
 
@@ -666,6 +682,7 @@ static void setup_user_data_dir()
 #if defined(__APPLE__) && !defined(__IPHONEOS__)
 	migrate_apple_config_directory_for_unsandboxed_builds();
 #endif
+
 	if(!file_exists(user_data_dir / "logs")) {
 		game_config::check_migration = true;
 	}
@@ -741,6 +758,8 @@ void set_user_data_dir(std::string newprefdir)
 		} else {
 			newprefdir = "~/.wesnoth" + get_version_path_suffix();
 		}
+#elif defined(__ANDROID__)
+		newprefdir = SDL_AndroidGetExternalStoragePath();
 #else
 		const char* h = std::getenv("HOME");
 		std::string home = h ? h : "";
@@ -807,7 +826,7 @@ bool rename_dir(const std::string& old_dir, const std::string& new_dir)
 
 static void set_cache_path(bfs::path newcache)
 {
-	cache_dir = newcache;
+	cache_dir = std::move(newcache);
 	if(!create_directory_if_missing_recursive(cache_dir)) {
 		ERR_FS << "could not open or create cache directory at " << cache_dir.string() << '\n';
 	}
@@ -822,6 +841,32 @@ static const bfs::path& get_user_data_path()
 {
 	assert(!user_data_dir.empty() && "Attempted to access userdata location before userdata initialization!");
 	return user_data_dir;
+}
+
+utils::optional<std::string> get_game_manual_file(const std::string& locale_code)
+{
+	utils::optional<std::string> manual_path_opt;
+	const std::string& manual_dir(game_config::path + "/doc/manual/");
+	boost::format manual_template(manual_dir + "manual.%s.html");
+	bfs::path manual_path((manual_template % locale_code).str());
+
+	if(bfs::exists(manual_path)) {
+		return "file://" + bfs::canonical(manual_path).string();
+	}
+
+	// Split the given locale code: "en_GB" -> "en", "GB"
+	// If the result of split() is empty then locale_code is empty (likely using System Language)
+	// Assume en is always available as a fall-back
+	const auto& split_locale_code = utils::split(locale_code, '_');
+	const std::string& language_code = split_locale_code.empty() ? "en" : split_locale_code[0];
+	manual_path = (manual_template % language_code).str();
+
+	if(bfs::exists(manual_path)) {
+		// If a filename like manual.en_GB.html is not found, try manual.en.html
+		return "file://" + bfs::canonical(manual_path).string();
+	}
+
+	return {};
 }
 
 std::string get_user_data_dir()
@@ -983,15 +1028,23 @@ std::string get_exe_path()
 	// with version
 	std::string version = std::to_string(game_config::wesnoth_version.major_version()) + "." + std::to_string(game_config::wesnoth_version.minor_version());
 	std::string exe = filesystem::get_program_invocation("wesnoth-"+version);
-	bfs::path search = bp::search_path(exe).string();
-	if(!search.string().empty()) {
+#if BOOST_VERSION >= 108600
+	bfs::path search = boost::process::v2::environment::find_executable(exe);
+#else
+	bfs::path search = boost::process::search_path(exe);
+#endif
+	if(!search.empty()) {
 		return search.string();
 	}
 
 	// versionless
 	exe = filesystem::get_program_invocation("wesnoth");
-	search = bp::search_path(exe).string();
-	if(!search.string().empty()) {
+#if BOOST_VERSION >= 108600
+	search = boost::process::v2::environment::find_executable(exe);
+#else
+	search = boost::process::search_path(exe);
+#endif
+	if(!search.empty()) {
 		return search.string();
 	}
 
@@ -1094,13 +1147,12 @@ std::vector<uint8_t> read_file_binary(const std::string& fname)
 std::string read_file_as_data_uri(const std::string& fname)
 {
 	std::vector<uint8_t> file_contents = filesystem::read_file_binary(fname);
-	utils::byte_string_view view = {file_contents.data(), file_contents.size()};
 	std::string name = filesystem::base_name(fname);
 	std::string img = "";
 
 	if(name.find(".") != std::string::npos) {
 		// convert to web-safe base64, since the + symbols will get stripped out when reading this back in later
-		img = "data:image/"+name.substr(name.find(".")+1)+";base64,"+base64::encode(view);
+		img = "data:image/" + name.substr(name.find(".") + 1) + ";base64," + base64::encode(file_contents);
 	}
 
 	return img;
@@ -1215,15 +1267,21 @@ bool file_exists(const std::string& name)
 	return file_exists(bfs::path(name));
 }
 
-std::time_t file_modified_time(const std::string& fname)
+/** @todo expose to public interface. Most string functions should take a path object */
+std::chrono::system_clock::time_point file_modified_time(const bfs::path& path)
 {
 	error_code ec;
-	std::time_t mtime = bfs::last_write_time(bfs::path(fname), ec);
+	std::time_t mtime = bfs::last_write_time(path, ec);
 	if(ec) {
-		LOG_FS << "Failed to read modification time of " << fname << ": " << ec.message();
+		LOG_FS << "Failed to read modification time of " << path.string() << ": " << ec.message();
 	}
 
-	return mtime;
+	return chrono::parse_timestamp(mtime);
+}
+
+std::chrono::system_clock::time_point file_modified_time(const std::string& fname)
+{
+	return file_modified_time(bfs::path(fname));
 }
 
 bool is_map(const std::string& filename)
@@ -1360,7 +1418,7 @@ bool is_root(const std::string& path)
 	//
 	// See also: <https://googleprojectzero.blogspot.com/2016/02/the-definitive-guide-on-win32-to-nt.html>
 	//
-	const std::wstring& wpath = bfs::path{path}.make_preferred().wstring();
+	const std::wstring wpath = bfs::path{path}.make_preferred().wstring();
 	return PathIsRootW(wpath.c_str()) == TRUE;
 #endif
 }
@@ -1395,39 +1453,40 @@ std::string normalize_path(const std::string& fpath, bool normalize_separators, 
 	}
 }
 
-bool to_asset_path(std::string& path, std::string addon_id, std::string asset_type)
+utils::optional<std::string> to_asset_path(const std::string& path, const std::string& addon_id, const std::string& asset_type)
 {
-	std::string rel_path = "";
-	std::string core_asset_dir = get_dir(game_config::path + "/data/core/" + asset_type);
-	std::string addon_asset_dir;
+	// datadir is absolute path to where wesnoth's data is installed
+	bfs::path datadir = game_config::path;
+	bfs::path core_asset_dir = datadir / "data" / "core" / asset_type;
+	bfs::path data_asset_dir = datadir / asset_type;
+	bfs::path outpath = path;
 
 	bool found = false;
-	bool is_in_core_dir = (path.find(core_asset_dir) != std::string::npos);
-	bool is_in_addon_dir = false;
 
-	if (is_in_core_dir) {
-		rel_path = path.erase(0, core_asset_dir.size()+1);
-		found = true;
-	} else if (!addon_id.empty()) {
-		addon_asset_dir = get_current_editor_dir(addon_id) + "/" + asset_type;
-		is_in_addon_dir = (path.find(addon_asset_dir) != std::string::npos);
-		if (is_in_addon_dir) {
-			rel_path = path.erase(0, addon_asset_dir.size()+1);
-			found = true;
-		} else {
-			// Not found in either core or addons dirs,
-			// return a possible path where the asset could be copied.
-			std::string filename = boost::filesystem::path(path).filename().string();
-			std::string asset_path = addon_asset_dir + "/" + filename;
-			rel_path = filename;
-			found = false;
+	if(is_prefix(path, core_asset_dir)) {
+		// Case 1: remove leading datadir/data/core/asset_type from given absolute path
+		// For example: given  datadir/data/core/images/misc/image.png, returns misc/image.png
+		outpath = bfs::relative(path, core_asset_dir);
+		found = file_exists(core_asset_dir / outpath);
+	} else if(is_prefix(path, data_asset_dir)) {
+		// Case 2: remove leading datadir/asset_type from given absolute path
+		// For example: given datadir/images/misc/image.png, returns misc/image.png
+		outpath = bfs::relative(path, data_asset_dir);
+		found = file_exists(data_asset_dir / outpath);
+	} else if(!addon_id.empty()) {
+		bfs::path addon_asset_dir = get_current_editor_dir(addon_id);
+		addon_asset_dir /= asset_type;
+
+		// Case 3: remove leading addondir/asset_type from given absolute path,
+		// where addondir is absolute path to the addon's directory
+		// For example: given addondir/images/misc/image.png, returns misc/image.png
+		if(is_prefix(path, addon_asset_dir)) {
+			outpath = bfs::relative(path, addon_asset_dir);
+			found = file_exists(addon_asset_dir / outpath);
 		}
-	} else {
-		found = false;
 	}
 
-	path = rel_path;
-	return found;
+	return found ? utils::optional<std::string>{ outpath.string() } : utils::nullopt;
 }
 
 /**
@@ -1797,6 +1856,17 @@ utils::optional<std::string> get_localized_path(const std::string& file, const s
 	}
 
 	return utils::nullopt;
+}
+
+utils::optional<std::string> get_localized_path(const utils::optional<std::string>& base_path)
+{
+	if(base_path) {
+		if(auto localized = get_localized_path(*base_path)) {
+			return localized;
+		}
+	}
+
+	return base_path;
 }
 
 utils::optional<std::string> get_addon_id_from_path(const std::string& location)

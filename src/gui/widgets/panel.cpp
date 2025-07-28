@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -39,12 +39,12 @@ panel::panel(const implementation::builder_styled_widget& builder, const std::st
 {
 }
 
-SDL_Rect panel::get_client_rect() const
+rect panel::get_client_rect() const
 {
 	const auto conf = cast_config_to<panel_definition>();
 	assert(conf);
 
-	SDL_Rect result = get_rectangle();
+	rect result = get_rectangle();
 	result.x += conf->left_border;
 	result.y += conf->top_border;
 	result.w -= conf->left_border + conf->right_border;

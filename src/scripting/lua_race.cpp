@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2014 - 2024
+	Copyright (C) 2014 - 2025
 	by Chris Beck <render787@gmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -47,6 +47,8 @@ static int impl_race_get(lua_State* L)
 	return_tstring_attrib("description", race.description());
 	return_tstring_attrib("name", race.name());
 	return_int_attrib("num_traits", race.num_traits());
+	return_tstring_attrib("male_name", race.name(unit_race::GENDER::MALE));
+	return_tstring_attrib("female_name", race.name(unit_race::GENDER::FEMALE));
 	return_tstring_attrib("plural_name", race.plural_name());
 	return_bool_attrib("ignore_global_traits", !race.uses_global_traits());
 	return_string_attrib("undead_variation", race.undead_variation());

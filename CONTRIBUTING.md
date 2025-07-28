@@ -118,6 +118,8 @@ private:
 };
 ```
 
+For more details on coding style, please see the [Coding Standards](https://wiki.wesnoth.org/CodingStandards) page.
+
 ## Translations
 For specific information on how to update and submit translations, see [here](https://wiki.wesnoth.org/WesnothTranslationsHowTo).
 

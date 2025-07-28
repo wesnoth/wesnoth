@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2012 - 2024
+	Copyright (C) 2012 - 2025
 	by Boldizsár Lipka <lipkab@zoho.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -409,6 +409,20 @@ int manager::get_era_index() const
 	return -1;
 }
 
+int manager::get_era_index(const std::string& id) const
+{
+	int result = 0;
+	for(const config& i : depinfo_.child_range("era")) {
+		if(i["id"] == id) {
+			return result;
+		}
+
+		result++;
+	}
+
+	return -1;
+}
+
 int manager::get_scenario_index() const
 {
 	int result = 0;
@@ -430,7 +444,7 @@ bool manager::is_modification_active(int index) const
 	return std::find(mods_.begin(), mods_.end(), id) != mods_.end();
 }
 
-bool manager::is_modification_active(const std::string id) const
+bool manager::is_modification_active(const std::string& id) const
 {
 	return std::find(mods_.begin(), mods_.end(), id) != mods_.end();
 }

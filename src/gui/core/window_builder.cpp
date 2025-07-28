@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2024
+	Copyright (C) 2008 - 2025
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -37,7 +37,7 @@ builder_widget::builder_widget(const config& cfg)
 	: id(cfg["id"])
 	, linked_group(cfg["linked_group"])
 	, debug_border_mode(widget::debug_border::none)
-	, debug_border_color(decode_color(cfg["debug_border_color"]))
+	, debug_border_color(color_t::from_rgba_string(cfg["debug_border_color"].str()))
 {
 	// TODO: move to a `decode` function?
 	switch(const int dbm = cfg["debug_border_mode"].to_int(0); dbm) {
