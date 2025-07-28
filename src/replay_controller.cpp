@@ -82,7 +82,6 @@ replay_controller::~replay_controller()
 		controller_.toggle_skipping_replay();
 	}
 	controller_.get_display().get_theme().theme_reset_event().detach_handler(this);
-	controller_.get_display().queue_rerender();
 }
 void replay_controller::add_replay_theme()
 {
