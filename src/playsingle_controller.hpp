@@ -85,6 +85,8 @@ public:
 	replay_controller * get_replay_controller() const override { return replay_controller_.get(); }
 	void enable_replay(bool is_unit_test = false);
 	void on_replay_end(bool is_unit_test);
+	void update_theme() override;
+
 protected:
 	void play_side_impl();
 	void before_human_turn();

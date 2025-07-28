@@ -347,6 +347,7 @@ void playsingle_controller::play_scenario_main_loop()
 			if(ex.start_replay) {
 				replay_controller_->play_replay();
 			}
+			update_theme();
 		}
 	} // end for loop
 }
@@ -490,6 +491,7 @@ void playsingle_controller::play_side_impl()
 
 		if(player_type_changed_) {
 			replay_controller_.reset();
+			update_theme();
 		}
 	} else if((current_team().is_local_human() && current_team().is_proxy_human())) {
 		LOG_NG << "is human...";
@@ -613,6 +615,21 @@ void playsingle_controller::update_gui_linger()
 	gui_->queue_rerender();
 }
 
+void playsingle_controller::update_theme()
+{
+	std::shared_ptr<config> thm;
+	if(!theme().empty()) {
+		thm = theme::get_theme_config(theme());
+		if(is_replay() && !thm->child_or_empty("resolution").has_child("replay")) {
+			thm.reset();
+		}	
+	}
+	if(!thm) {
+		thm = theme::get_theme_config(prefs::get().theme());
+	}
+	gui_->set_theme(thm);
+}
+
 void playsingle_controller::linger()
 {
 	LOG_NG << "beginning end-of-scenario linger";
@@ -626,6 +643,7 @@ void playsingle_controller::linger()
 		replay_controller_->play_side_impl();
 		if(player_type_changed_) {
 			replay_controller_.reset();
+			update_theme();
 		}
 	}
 	while(!end_turn_requested_) {
