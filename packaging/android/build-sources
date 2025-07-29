@@ -29,4 +29,7 @@ do
 
 	# rename libSDL2-2.0.so -> libSDL2.so, otherwise the final apk(s) won't be able to find it
 	mv $LIBDIR/libSDL2-2.0.so $LIBDIR/libSDL2.so
+	
+	# strip *.so files
+	$NDKDIR/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-strip $LIBDIR/*.so
 done

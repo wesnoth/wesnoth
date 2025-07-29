@@ -5,6 +5,7 @@ plugins {
 android {
     namespace 'org.wesnoth.Wesnoth'
     compileSdk 35
+    ndkVersion '26.3.11579264'
 
     defaultConfig {
         applicationId "org.wesnoth.Wesnoth"
