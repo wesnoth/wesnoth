@@ -273,7 +273,7 @@ static void do_resolve_rects(const config& cfg, config& resolved_config, config*
 
 static void proprocess_theme_cfg(config& cfg)
 {
-	if(cfg["preprocessed"]) {
+	if(cfg["preprocessed"].to_bool()) {
 		return;
 	}
 	auto res = config{"preprocessed", true};
@@ -979,7 +979,7 @@ theme::object* theme::refresh_title2(const std::string& id, const std::string& t
 {
 	std::string new_title;
 
-	const config& cfg = find_ref(id, cfg(), false);
+	const config& cfg = find_ref(id, this->cfg(), false);
 	if(!cfg[title_tag].empty())
 		new_title = cfg[title_tag].str();
 
@@ -1001,7 +1001,7 @@ void theme::set_known_themes(const game_config_view* cfg)
 	if(cfg) {
 		known_themes.clear();
 		for(const config& thm : cfg->child_range("theme")) {
-			known_themes[thm["id"]] = thm;
+			known_themes[thm["id"]] = std::make_shared<config>(thm);
 		}
 	}
 }
@@ -1011,11 +1011,11 @@ std::vector<theme_info> theme::get_basic_theme_info(bool include_hidden)
 	std::vector<theme_info> res;
 
 	for(const auto& [id, cfg] : known_themes) {
-		if(!cfg["hidden"].to_bool(false) || include_hidden) {
+		if(!(*cfg)["hidden"].to_bool(false) || include_hidden) {
 			auto& info = res.emplace_back();
 			info.id = id;
-			info.name = cfg["name"].t_str();
-			info.description = cfg["description"].t_str();
+			info.name = (*cfg)["name"].t_str();
+			info.description = (*cfg)["description"].t_str();
 		}
 	}
 
