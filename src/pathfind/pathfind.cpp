@@ -340,7 +340,7 @@ static void find_routes(
 
 		// Get the locations adjacent to current.
 		std::vector<map_location> adj_locs(6);
-		get_adjacent_tiles(cur_hex, adj_locs.data());
+		get_adjacent_tiles(cur_hex, utils::span{adj_locs}.first<6>());
 
 		// Sort adjacents by on-boardness
 		auto off_board_it = std::partition(adj_locs.begin(), adj_locs.end(), [&index](map_location loc){

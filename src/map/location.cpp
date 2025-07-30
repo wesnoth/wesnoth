@@ -509,31 +509,31 @@ void write_locations(const std::vector<map_location>& locs, config& cfg)
 	cfg["y"] = y.str();
 }
 
-void get_adjacent_tiles(const map_location& a, map_location* res)
+void get_adjacent_tiles(const map_location& a, utils::span<map_location, 6> res)
 {
-	res->x = a.x;
-	res->y = a.y - 1;
-	++res;
-	res->x = a.x + 1;
-	res->y = a.y - (((a.x & 1) == 0) ? 1 : 0);
-	++res;
-	res->x = a.x + 1;
-	res->y = a.y + (((a.x & 1) == 1) ? 1 : 0);
-	++res;
-	res->x = a.x;
-	res->y = a.y + 1;
-	++res;
-	res->x = a.x - 1;
-	res->y = a.y + (((a.x & 1) == 1) ? 1 : 0);
-	++res;
-	res->x = a.x - 1;
-	res->y = a.y - (((a.x & 1) == 0) ? 1 : 0);
+	res[0].x = a.x;
+	res[0].y = a.y - 1;
+
+	res[1].x = a.x + 1;
+	res[1].y = a.y - (((a.x & 1) == 0) ? 1 : 0);
+
+	res[2].x = a.x + 1;
+	res[2].y = a.y + (((a.x & 1) == 1) ? 1 : 0);
+
+	res[3].x = a.x;
+	res[3].y = a.y + 1;
+
+	res[4].x = a.x - 1;
+	res[4].y = a.y + (((a.x & 1) == 1) ? 1 : 0);
+
+	res[5].x = a.x - 1;
+	res[5].y = a.y - (((a.x & 1) == 0) ? 1 : 0);
 }
 
 std::array<map_location, 6> get_adjacent_tiles(const map_location& center)
 {
 	std::array<map_location, 6> res;
-	get_adjacent_tiles(center, res.data());
+	get_adjacent_tiles(center, res);
 	return res;
 }
 

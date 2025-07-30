@@ -21,6 +21,7 @@ class variable_set;
 
 #include <array>
 #include <set>
+#include "utils/span.hpp"
 #include <string>
 #include <tuple>
 #include <vector>
@@ -202,7 +203,7 @@ bool tiles_adjacent(const map_location& a, const map_location& b);
  * Function which, given a location, will place all adjacent locations in res.
  * res must point to an array of 6 location objects.
  */
-void get_adjacent_tiles(const map_location& a, map_location* res);
+void get_adjacent_tiles(const map_location& a, utils::span<map_location, 6> res);
 
 /** Returns an array of the six hexes adjacent to @p center. */
 std::array<map_location, 6> get_adjacent_tiles(const map_location& center);
