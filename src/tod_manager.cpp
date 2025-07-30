@@ -36,7 +36,7 @@ static lg::log_domain log_engine("engine");
 
 tod_manager::tod_manager(const config& scenario_cfg)
 	: currentTime_(0)
-	, times_()
+	, times_(time_of_day::parse_times(scenario_cfg))
 	, areas_()
 	, liminal_bonus_(25)
 	, turn_(scenario_cfg["turn_at"].to_int(1))
@@ -52,7 +52,6 @@ tod_manager::tod_manager(const config& scenario_cfg)
 		random_tod_ = false;
 	}
 
-	time_of_day::parse_times(scenario_cfg, times_);
 	liminal_bonus_ = std::max(25, calculate_best_liminal_bonus(times_));
 
 	if(scenario_cfg.has_attribute("liminal_bonus")) {
@@ -286,9 +285,7 @@ bool tod_manager::is_start_ToD(const std::string& random_start_time)
 
 void tod_manager::replace_schedule(const config& time_cfg)
 {
-	std::vector<time_of_day> new_scedule;
-	time_of_day::parse_times(time_cfg, new_scedule);
-	replace_schedule(new_scedule, time_cfg["current_time"].to_int(0));
+	replace_schedule(time_of_day::parse_times(time_cfg), time_cfg["current_time"].to_int(0));
 }
 
 void tod_manager::replace_schedule(const std::vector<time_of_day>& schedule, int initial_time)
@@ -388,7 +385,7 @@ void tod_manager::add_time_area(const gamemap& map, const config& cfg)
 	area.currentTime = cfg["current_time"].to_int(0);
 	const std::vector<map_location>& locs(map.parse_location_range(area.xsrc, area.ysrc, true));
 	area.hexes.insert(locs.begin(), locs.end());
-	time_of_day::parse_times(cfg, area.times);
+	area.times = time_of_day::parse_times(cfg);
 	has_tod_bonus_changed_ = true;
 }
 
@@ -399,7 +396,7 @@ void tod_manager::add_time_area(const std::string& id, const std::set<map_locati
 	area.id = id;
 	area.hexes = locs;
 	area.currentTime = time_cfg["current_time"].to_int(0);
-	time_of_day::parse_times(time_cfg, area.times);
+	area.times = time_of_day::parse_times(time_cfg);
 	has_tod_bonus_changed_ = true;
 }
 
