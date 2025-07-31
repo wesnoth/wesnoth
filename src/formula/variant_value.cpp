@@ -110,7 +110,7 @@ std::string variant_callable::get_debug_string(formula_seen_stack& seen, bool ve
 
 	if(!callable_) {
 		ss << "null";
-	} else if(std::find(seen.begin(), seen.end(), callable_) == seen.end()) {
+	} else if(!utils::contains(seen, callable_)) {
 		if(!verbose) {
 			seen.push_back(callable_);
 		}

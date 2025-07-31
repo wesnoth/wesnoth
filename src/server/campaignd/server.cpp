@@ -412,7 +412,7 @@ void server::load_config()
 				throw filesystem::io_exception("The addon '" + addon_id
 					   + "' already exists in the new form! Possible code or filesystem interference!\n");
 			}
-			if(std::find(legacy_addons.begin(), legacy_addons.end(), addon_id) == legacy_addons.end()) {
+			if(!utils::contains(legacy_addons, addon_id)) {
 				throw filesystem::io_exception("No file has been found for the legacy addon '" + addon_id
 					   + "'. Check the file structure!\n");
 			}

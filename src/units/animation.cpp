@@ -26,6 +26,7 @@
 #include "units/animation_component.hpp"
 #include "units/filter.hpp"
 #include "units/unit.hpp"
+#include "utils/general.hpp"
 #include "variable.hpp"
 
 #include <algorithm>
@@ -382,7 +383,7 @@ int unit_animation::matches(const map_location& loc, const map_location& second_
 	const display& disp = *display::get_singleton();
 
 	if(!event.empty() && !event_.empty()) {
-		if(std::find(event_.begin(), event_.end(), event) == event_.end()) {
+		if(!utils::contains(event_, event)) {
 			return MATCH_FAIL;
 		}
 
@@ -398,7 +399,7 @@ int unit_animation::matches(const map_location& loc, const map_location& second_
 	}
 
 	if(!value_.empty()) {
-		if(std::find(value_.begin(), value_.end(), value) == value_.end()) {
+		if(!utils::contains(value_, value)) {
 			return MATCH_FAIL;
 		}
 
@@ -407,7 +408,7 @@ int unit_animation::matches(const map_location& loc, const map_location& second_
 
 	if(my_unit) {
 		if(!directions_.empty()) {
-			if(std::find(directions_.begin(), directions_.end(), my_unit->facing()) == directions_.end()) {
+			if(!utils::contains(directions_, my_unit->facing())) {
 				return MATCH_FAIL;
 			}
 
@@ -441,7 +442,7 @@ int unit_animation::matches(const map_location& loc, const map_location& second_
 	}
 
 	if(!hits_.empty()) {
-		if(std::find(hits_.begin(),hits_.end(),hit) == hits_.end()) {
+		if(!utils::contains(hits_, hit)) {
 			return MATCH_FAIL;
 		}
 
@@ -449,7 +450,7 @@ int unit_animation::matches(const map_location& loc, const map_location& second_
 	}
 
 	if(!value2_.empty()) {
-		if(std::find(value2_.begin(),value2_.end(),value2) == value2_.end()) {
+		if(!utils::contains(value2_, value2)) {
 			return MATCH_FAIL;
 		}
 
@@ -487,7 +488,7 @@ void unit_animation::fill_initial_animations(std::vector<unit_animation>& animat
 
 	std::vector<unit_animation> animation_base;
 	for(const auto& anim : animations) {
-		if(std::find(anim.event_.begin(), anim.event_.end(), "default") != anim.event_.end()) {
+		if(utils::contains(anim.event_, "default")) {
 			animation_base.push_back(anim);
 			animation_base.back().base_score_ += unit_animation::DEFAULT_ANIM;
 			animation_base.back().event_.clear();

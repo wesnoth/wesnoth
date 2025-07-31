@@ -579,8 +579,7 @@ bool unit::ability_affects_adjacent(const std::string& ability, const config& cf
 			}
 		}
 		if (i.has_attribute("adjacent")) { //key adjacent defined
-			std::vector<map_location::direction> dirs = map_location::parse_directions(i["adjacent"]);
-			if (std::find(dirs.begin(), dirs.end(), direction) == dirs.end()) {
+			if(!utils::contains(map_location::parse_directions(i["adjacent"]), direction)) {
 				continue;
 			}
 		}
@@ -629,8 +628,7 @@ bool unit::has_ability_type(const std::string& ability) const
 //a second set of halo encoded in the abilities (like illuminates halo in [illuminates] ability for example)
 static void add_string_to_vector(std::vector<std::string>& image_list, const config& cfg, const std::string& attribute_name)
 {
-	auto ret = std::find(image_list.begin(), image_list.end(), cfg[attribute_name].str());
-	if(ret == image_list.end()){
+	if(!utils::contains(image_list, cfg[attribute_name].str())) {
 		image_list.push_back(cfg[attribute_name].str());
 	}
 }
@@ -2003,7 +2001,7 @@ namespace
 		// tag_name and id are equivalent of ability ability_type and ability_id/type_active filters
 		//can be extent to special_id/type_active. If tag_name or id matche if present in list.
 		const std::vector<std::string> filter_type = utils::split(filter["tag_name"]);
-		if ( !filter_type.empty() && std::find(filter_type.begin(), filter_type.end(), tag_name) == filter_type.end() )
+		if(!filter_type.empty() && !utils::contains(filter_type, tag_name))
 			return false;
 
 		if(!string_matches_if_present(filter, cfg, "id", ""))

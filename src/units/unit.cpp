@@ -1771,10 +1771,8 @@ bool unit::resistance_filter_matches(const config& cfg, const std::string& damag
 	const std::string& apply_to = cfg["apply_to"];
 	if(!apply_to.empty()) {
 		if(damage_name != apply_to) {
-			if(apply_to.find(',') != std::string::npos  &&
-			     apply_to.find(damage_name) != std::string::npos) {
-				const std::vector<std::string>& vals = utils::split(apply_to);
-				if(std::find(vals.begin(),vals.end(),damage_name) == vals.end()) {
+			if(apply_to.find(',') != std::string::npos && apply_to.find(damage_name) != std::string::npos) {
+				if(!utils::contains(utils::split(apply_to), damage_name)) {
 					return false;
 				}
 			} else {
@@ -2258,7 +2256,7 @@ void unit::apply_builtin_effect(const std::string& apply_to, const config& effec
 		{
 			set_state(to_remove, false);
 		}
-	} else if(std::find(movetype::effects.cbegin(), movetype::effects.cend(), apply_to) != movetype::effects.cend()) {
+	} else if(utils::contains(movetype::effects, apply_to)) {
 		// "movement_costs", "vision_costs", "jamming_costs", "defense", "resistance"
 		if(auto ap = effect.optional_child(apply_to)) {
 			set_attr_changed(UA_MOVEMENT_TYPE);

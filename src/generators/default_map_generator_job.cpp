@@ -27,6 +27,7 @@
 #include "generators/map_generator.hpp" // mapgen_exception
 #include "pathfind/pathfind.hpp"
 #include "pathutils.hpp"
+#include "utils/general.hpp"
 #include "utils/name_generator_factory.hpp"
 #include "utils/optimer.hpp"
 #include "seed_rng.hpp"
@@ -139,7 +140,7 @@ namespace {
 			return false;
 		}
 
-		return std::find(terrain_.begin(),terrain_.end(),map_[x][y]) != terrain_.end();
+		return utils::contains(terrain_, map_[x][y]);
 	}
 
 
@@ -217,7 +218,7 @@ namespace {
 	bool terrain_converter::convert_terrain(const t_translation::terrain_code & terrain,
 			const int height, const int temperature) const
 	{
-		return std::find(from.begin(),from.end(),terrain) != from.end() && height >= min_height && height <= max_height && temperature >= min_temp && temperature <= max_temp && to != t_translation::NONE_TERRAIN;
+		return utils::contains(from, terrain) && height >= min_height && height <= max_height && temperature >= min_temp && temperature <= max_temp && to != t_translation::NONE_TERRAIN;
 	}
 
 	t_translation::terrain_code terrain_converter::convert_to() const
@@ -965,7 +966,7 @@ std::string default_map_generator_job::default_generate_map(generator_data data,
 				throw mapgen_exception(error);
 			}
 
-			assert(std::find(castles.begin(), castles.end(), best_loc) == castles.end());
+			assert(!utils::contains(castles, best_loc));
 			castles.push_back(best_loc);
 
 			// Make sure the location can't get a second castle.

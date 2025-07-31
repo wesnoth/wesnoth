@@ -37,6 +37,7 @@
 #include "serialization/chrono.hpp"
 #include "synced_context.hpp"
 #include "units/unit.hpp"
+#include "utils/general.hpp"
 #include "whiteboard/manager.hpp"
 #include "wml_exception.hpp"
 
@@ -324,7 +325,7 @@ bool replay::add_chat_message_location()
 bool replay::add_chat_message_location(int pos)
 {
 	assert(base_->get_command_at(pos).has_child("speak"));
-	if(std::find(message_locations.begin(), message_locations.end(), pos) == message_locations.end()) {
+	if(!utils::contains(message_locations, pos)) {
 		message_locations.push_back(pos);
 		return true;
 	}

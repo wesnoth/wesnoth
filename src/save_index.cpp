@@ -107,7 +107,7 @@ void save_index_class::clean_up_index()
 	if(root.all_children_count() > filenames.size()) {
 		root.remove_children("save", [&filenames](const config& d)
 			{
-				return std::find(filenames.begin(), filenames.end(), d["save"]) == filenames.end();
+				return !utils::contains(filenames, d["save"]);
 			}
 		);
 	}
@@ -226,7 +226,7 @@ std::vector<save_info> save_index_class::get_saves_list(const std::string* filte
 		// Reference: https://partner.steamgames.com/doc/features/cloud (under Steam Auto-Cloud section as of September 2021)
 		static const std::vector<std::string> to_ignore {"steam_autocloud.vdf"};
 
-		if(std::find(to_ignore.begin(), to_ignore.end(), filename) != to_ignore.end()) {
+		if(utils::contains(to_ignore, filename)) {
 			return true;
 		} else if(filter) {
 			return filename.end() == std::search(filename.begin(), filename.end(), filter->begin(), filter->end());

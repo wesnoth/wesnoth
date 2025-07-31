@@ -456,8 +456,7 @@ static void append_special_note(std::vector<t_string>& notes, const t_string& ne
 	std::string_view note_plain = new_note.c_str();
 	utils::trim(note_plain);
 	if(note_plain.empty()) return;
-	auto iter = std::find(notes.begin(), notes.end(), new_note);
-	if(iter != notes.end()) return;
+	if(utils::contains(notes, new_note)) return;
 	notes.push_back(new_note);
 }
 
@@ -649,9 +648,7 @@ bool unit_type::musthave_status(const std::string& status_name) const
 			const std::string& ut = effect["unit_type"];
 
 			if(!ut.empty()) {
-				const std::vector<std::string>& types = utils::split(ut);
-
-				if(std::find(types.begin(), types.end(), id()) == types.end()) {
+				if(!utils::contains(utils::split(ut), id())) {
 					continue;
 				}
 			}
@@ -697,6 +694,11 @@ bool unit_type::has_random_traits() const
 	}
 
 	return false;
+}
+
+bool unit_type::has_gender_variation(const unit_race::GENDER gender) const
+{
+	return utils::contains(genders_, gender);
 }
 
 std::vector<std::string> unit_type::variations() const
@@ -773,9 +775,7 @@ bool unit_type::resistance_filter_matches(
 	if(!apply_to.empty()) {
 		if(damage_name != apply_to) {
 			if(apply_to.find(',') != std::string::npos && apply_to.find(damage_name) != std::string::npos) {
-				const std::vector<std::string>& vals = utils::split(apply_to);
-
-				if(std::find(vals.begin(), vals.end(), damage_name) == vals.end()) {
+				if(!utils::contains(utils::split(apply_to), damage_name)) {
 					return false;
 				}
 			} else {
@@ -959,7 +959,7 @@ void unit_type_data::apply_base_unit(unit_type& type, std::vector<std::string>& 
 	}
 
 	// Detect recursion so the WML author is made aware of an error.
-	if(std::find(base_tree.begin(), base_tree.end(), type.base_unit_id_) != base_tree.end()) {
+	if(utils::contains(base_tree, type.base_unit_id_)) {
 		throw_base_unit_recursion_error(base_tree, type.base_unit_id_);
 	}
 

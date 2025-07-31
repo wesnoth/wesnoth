@@ -35,6 +35,7 @@
 #include "serialization/string_utils.hpp"
 #include "synced_context.hpp"
 #include "units/types.hpp"
+#include "utils/general.hpp"
 #include "whiteboard/side_actions.hpp"
 
 static lg::log_domain log_engine("engine");
@@ -517,7 +518,7 @@ bool team::calculate_is_enemy(std::size_t index) const
 			<< "]" << std::endl;
 
 	for(const std::string& t : our_teams) {
-		if(std::find(their_teams.begin(), their_teams.end(), t) != their_teams.end()) {
+		if(utils::contains(their_teams, t)) {
 			LOG_NGE << "team " << info_.side << " found same team name [" << t << "] in team " << index + 1;
 			return false;
 		} else {

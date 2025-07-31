@@ -716,7 +716,7 @@ void distributor::keyboard_capture(widget* widget)
 void distributor::keyboard_add_to_chain(widget* widget)
 {
 	assert(widget);
-	assert(std::find(keyboard_focus_chain_.begin(), keyboard_focus_chain_.end(), widget) == keyboard_focus_chain_.end());
+	assert(!utils::contains(keyboard_focus_chain_, widget));
 	keyboard_focus_chain_.push_back(widget);
 }
 

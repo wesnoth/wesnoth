@@ -311,7 +311,7 @@ void mp_create_game::pre_show()
 
 		toggle_button& mog_toggle = row_grid->find_widget<toggle_button>("mod_active_state");
 
-		if(std::find(activemods.begin(), activemods.end(), mod->id) != activemods.end()) {
+		if(utils::contains(activemods, mod->id)) {
 			create_engine_.active_mods().push_back(mod->id);
 			mog_toggle.set_value_bool(true);
 		}

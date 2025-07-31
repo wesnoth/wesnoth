@@ -806,7 +806,7 @@ void window::add_linked_widget(const std::string& id, widget* wgt)
 	}
 
 	std::vector<widget*>& widgets = linked_size_[id].widgets;
-	if(std::find(widgets.begin(), widgets.end(), wgt) == widgets.end()) {
+	if(!utils::contains(widgets, wgt)) {
 		widgets.push_back(wgt);
 	}
 }
@@ -823,9 +823,7 @@ void window::remove_linked_widget(const std::string& id, const widget* wgt)
 
 	if(itor != widgets.end()) {
 		widgets.erase(itor);
-
-		assert(std::find(widgets.begin(), widgets.end(), wgt)
-			   == widgets.end());
+		assert(!utils::contains(widgets, wgt));
 	}
 }
 
@@ -1224,7 +1222,7 @@ void window::remove_from_keyboard_chain(widget* widget)
 
 void window::add_to_tab_order(widget* widget, int at)
 {
-	if(std::find(tab_order.begin(), tab_order.end(), widget) != tab_order.end()) {
+	if(utils::contains(tab_order, widget)) {
 		return;
 	}
 	assert(event_distributor_);

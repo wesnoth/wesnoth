@@ -164,7 +164,7 @@ bool game::allow_observers() const
 
 bool game::is_observer(player_iterator player) const
 {
-	return std::find(observers_.begin(), observers_.end(), player) != observers_.end();
+	return utils::contains(observers_, player);
 }
 
 bool game::is_muted_observer(player_iterator player) const
@@ -177,12 +177,12 @@ bool game::is_muted_observer(player_iterator player) const
 		return true;
 	}
 
-	return std::find(muted_observers_.begin(), muted_observers_.end(), player) != muted_observers_.end();
+	return utils::contains(muted_observers_, player);
 }
 
 bool game::is_player(player_iterator player) const
 {
-	return std::find(players_.begin(), players_.end(), player) != players_.end();
+	return utils::contains(players_, player);
 }
 
 std::string game::username(player_iterator iter) const
@@ -567,7 +567,7 @@ void game::transfer_side_control(player_iterator player, const simple_wml::node&
 	sides_[side_num - 1].reset();
 
 	// If the old player lost his last side, make him an observer.
-	if(old_player && std::find(sides_.begin(), sides_.end(), old_player) == sides_.end() && is_player(*old_player)) {
+	if(old_player && !utils::contains(sides_, old_player) && is_player(*old_player)) {
 		observers_.push_back(*old_player);
 
 		(*old_player)->info().set_status(player::OBSERVING);
@@ -681,10 +681,8 @@ void game::describe_slots()
 
 bool game::player_is_banned(player_iterator player, const std::string& name) const
 {
-	auto ban = std::find(bans_.begin(), bans_.end(), player->client_ip());
-	auto name_ban = std::find(name_bans_.begin(), name_bans_.end(), name);
-
-	return ban != bans_.end() || name_ban != name_bans_.end();
+	return utils::contains(bans_, player->client_ip())
+		|| utils::contains(name_bans_, name);
 }
 
 void game::mute_all_observers()

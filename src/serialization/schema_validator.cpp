@@ -518,7 +518,7 @@ utils::optional<std::map<std::string, wml_key>> schema_validator::find_mandatory
 	const wml_tag* tag, const config& cfg, std::vector<const wml_tag*>& visited) const
 {
 	// Return an empty optional if a super cycle is detected.
-	if(std::find(visited.begin(), visited.end(), tag) != visited.end()) {
+	if(utils::contains(visited, tag)) {
 		return utils::nullopt;
 	}
 
@@ -572,7 +572,7 @@ void schema_validator::validate_mandatory_keys(const std::map<std::string, wml_k
 	std::vector<const wml_tag*>& visited)
 {
 	// Skip validation if a super cycle is detected.
-	if(std::find(visited.begin(), visited.end(), tag) != visited.end()) {
+	if(utils::contains(visited, tag)) {
 		return;
 	}
 

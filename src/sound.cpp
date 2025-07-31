@@ -872,7 +872,7 @@ void reposition_sound(int id, unsigned int distance)
 bool is_sound_playing(int id)
 {
 	audio_lock lock;
-	return std::find(channel_ids.begin(), channel_ids.end(), id) != channel_ids.end();
+	return utils::contains(channel_ids, id);
 }
 
 void stop_sound(int id)
@@ -909,8 +909,7 @@ Mix_Chunk* load_chunk(const std::string& file, channel_group group)
 		bool cache_full = (sound_cache.size() == max_cached_chunks);
 		while(cache_full && it != it_bgn) {
 			// make sure this chunk is not being played before freeing it
-			std::vector<Mix_Chunk*>::iterator ch_end = channel_chunks.end();
-			if(std::find(channel_chunks.begin(), ch_end, (--it)->get_data()) == ch_end) {
+			if(!utils::contains(channel_chunks, (--it)->get_data())) {
 				sound_cache.erase(it);
 				cache_full = false;
 			}
