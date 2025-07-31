@@ -12,6 +12,7 @@
 ### Units
 ### User interface
 ### WML Engine
+   * Add 'radius' attribute to [illuminates] abilities
 ### Miscellaneous and Bug Fixes
 
 ## Version 1.19.14
