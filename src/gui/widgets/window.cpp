@@ -899,19 +899,18 @@ void window::layout()
 	}
 	catch(const layout_exception_resize_failed&)
 	{
-
 		/** @todo implement the scrollbars on the window. */
 
 		std::stringstream sstr;
-		sstr << __FILE__ << ":" << __LINE__ << " in function '" << __func__
-			 << "' found the following problem: Failed to size window;"
-			 << " wanted size " << get_best_size() << " available size "
-			 << maximum_width << ',' << maximum_height << " screen size "
-			 << settings::screen_width << ',' << settings::screen_height << '.';
+		sstr << __FILE__ << ":" << __LINE__ << " in function ‘" << __func__
+		     << "’ found the following problem: Failed to size window with id ‘" << id()
+		     << "’; wanted size " << get_best_size() << ", available size ("
+		     << maximum_width << ',' << maximum_height << "), screen size ("
+		     << settings::screen_width << ',' << settings::screen_height << ").";
 
-		throw wml_exception(_("Failed to show a dialog, "
-							   "which doesn’t fit on the screen."),
-							 sstr.str());
+		throw wml_exception(
+			VGETTEXT("Failed to show dialog with id ‘$id’, which doesn’t fit on the screen.", {{"id", id()}}),
+			sstr.str());
 	}
 
 	/****** Validate click dismiss status. *****/
@@ -939,16 +938,15 @@ void window::layout()
 			/** @todo implement the scrollbars on the window. */
 
 			std::stringstream sstr;
-			sstr << __FILE__ << ":" << __LINE__ << " in function '" << __func__
-				 << "' found the following problem: Failed to size window;"
-				 << " wanted size " << get_best_size() << " available size "
-				 << maximum_width << ',' << maximum_height << " screen size "
-				 << settings::screen_width << ',' << settings::screen_height
-				 << '.';
+			sstr << __FILE__ << ":" << __LINE__ << " in function ‘" << __func__
+			     << "’ found the following problem: Failed to size window with id ‘" << id()
+			     << "’; wanted size " << get_best_size() << ", available size ("
+			     << maximum_width << ',' << maximum_height << "), screen size ("
+			     << settings::screen_width << ',' << settings::screen_height << ").";
 
-			throw wml_exception(_("Failed to show a dialog, "
-								   "which doesn’t fit on the screen."),
-								 sstr.str());
+			throw wml_exception(
+				VGETTEXT("Failed to show dialog with id ‘$id’, which doesn’t fit on the screen.", {{"id", id()}}),
+				sstr.str());
 		}
 	}
 
