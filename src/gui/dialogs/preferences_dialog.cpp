@@ -492,10 +492,11 @@ void preferences_dialog::initialize_callbacks()
 	//
 
 	/* FULLSCREEN TOGGLE */
-	toggle_button& toggle_fullscreen =
-			find_widget<toggle_button>("fullscreen");
-
+	toggle_button& toggle_fullscreen = find_widget<toggle_button>("fullscreen");
 	toggle_fullscreen.set_value(prefs::get().fullscreen());
+#ifdef __ANDROID__
+	toggle_fullscreen.set_active(false);
+#endif
 
 	// We bind a special callback function, so setup_single_toggle() is not used
 	connect_signal_mouse_left_click(toggle_fullscreen,
@@ -505,7 +506,11 @@ void preferences_dialog::initialize_callbacks()
 	menu_button& res_list = find_widget<menu_button>("resolution_set");
 
 	res_list.set_use_markup(true);
+#ifdef __ANDROID__
+	res_list.set_active(false);
+#else
 	res_list.set_active(!prefs::get().fullscreen());
+#endif
 
 	set_resolution_list(res_list);
 

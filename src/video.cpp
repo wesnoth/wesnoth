@@ -359,6 +359,11 @@ void init_test_window()
 
 void init_window(bool hidden)
 {
+#ifdef __ANDROID__
+	prefs::get().set_fullscreen(true);
+	SDL_SetHint(SDL_HINT_RENDER_DRIVER, "opengles");
+#endif
+
 	// Position
 	const int x = prefs::get().fullscreen() ? SDL_WINDOWPOS_UNDEFINED : SDL_WINDOWPOS_CENTERED;
 	const int y = prefs::get().fullscreen() ? SDL_WINDOWPOS_UNDEFINED : SDL_WINDOWPOS_CENTERED;
@@ -379,10 +384,6 @@ void init_window(bool hidden)
 	} else if(prefs::get().maximized()) {
 		window_flags |= SDL_WINDOW_MAXIMIZED;
 	}
-
-#ifdef __ANDROID__
-	SDL_SetHint(SDL_HINT_RENDER_DRIVER, "opengles");
-#endif
 
 	if(hidden) {
 		LOG_DP << "hiding main window";
