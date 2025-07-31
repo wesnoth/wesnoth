@@ -698,24 +698,24 @@ config map_context::to_config()
 	// write out all the scenario data below
 
 	// [time]s and [time_area]s
-	// put the [time_area]s into the event to keep as much editor-specific stuff separated in its own event as possible
 	config times = tod_manager_->to_config(current_textdomain);
-	times.remove_attribute("turn_at");
-	times.remove_attribute("it_is_a_new_turn");
-	if(scenario["turns"].to_int() == -1) {
+
+	// TODO: random_start_time is written separately above. Should we use the value from the ToD manager?
+	times.remove_attributes("turn_at", "it_is_a_new_turn", "random_start_time");
+
+	if(times["turns"].to_int() == -1) {
 		times.remove_attribute("turns");
-	} else {
-		scenario["turns"] = times["turns"];
 	}
 
-	for(const config& time : times.child_range("time")) {
-		config& t = scenario.add_child("time");
-		t.append(time);
+	if(times["current_time"].to_int() == 0) {
+		times.remove_attribute("current_time");
 	}
-	for(const config& time_area : times.child_range("time_area")) {
-		config& t = event.add_child("time_area");
-		t.append(time_area);
-	}
+
+	scenario.merge_attributes(times);
+	scenario.append_children_by_move(times, "time");
+
+	// put the [time_area]s into the event to keep as much editor-specific stuff separated in its own event as possible
+	event.append_children_by_move(times, "time_area");
 
 	// [label]s
 	labels_.write(event);
