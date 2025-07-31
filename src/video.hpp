@@ -239,6 +239,11 @@ rect input_area();
 int get_pixel_scale();
 
 /**
+ * @returns     Scale factor corresponding to maximum possible scale.
+ */
+int get_max_pixel_scale();
+
+/**
  * Convert coordinates in draw space to coordinates in render space.
  */
 rect to_output(const rect& draw_space_rect);

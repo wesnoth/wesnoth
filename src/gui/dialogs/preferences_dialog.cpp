@@ -515,21 +515,26 @@ void preferences_dialog::initialize_callbacks()
 	connect_signal<event::SDL_VIDEO_RESIZE>(
 		[this, &res_list](auto&&...) { set_resolution_list(res_list); });
 
-	/* PIXEL SCALE */
-	register_integer("pixel_scale_slider", true,
-		[]() {return prefs::get().pixel_scale();},
-		[](int v) {prefs::get().set_pixel_scale(v);});
+	if (video::get_max_pixel_scale() > 1) {
+		/* PIXEL SCALE */
+		register_integer("pixel_scale_slider", true,
+			[]() {return prefs::get().pixel_scale();},
+			[](int v) {prefs::get().set_pixel_scale(v);});
 
-	slider& ps_slider =
-		find_widget<slider>("pixel_scale_slider");
-	connect_signal_mouse_left_release(ps_slider,
-		[this](auto&&...) { apply_pixel_scale(); });
+		slider& ps_slider = find_widget<slider>("pixel_scale_slider");
+		ps_slider.set_value_range(1, video::get_max_pixel_scale());
+		connect_signal_mouse_left_release(ps_slider,
+			[this](auto&&...) { apply_pixel_scale(); });
 
-	/* AUTOMATIC PIXEL SCALE */
-	register_bool("auto_pixel_scale", true,
-		[]() {return prefs::get().auto_pixel_scale();},
-		[](bool v) {prefs::get().set_auto_pixel_scale(v);},
-		[&](widget& w) { disable_widget_on_toggle_inverted<slider>(*this, w, "pixel_scale_slider"); }, true);
+		/* AUTOMATIC PIXEL SCALE */
+		register_bool("auto_pixel_scale", true,
+			[]() {return prefs::get().auto_pixel_scale();},
+			[](bool v) {prefs::get().set_auto_pixel_scale(v);},
+			[&](widget& w) { disable_widget_on_toggle_inverted<slider>(*this, w, "pixel_scale_slider"); }, true);
+	} else {
+		find_widget<slider>("pixel_scale_slider").set_active(false);
+		find_widget<toggle_button>("auto_pixel_scale").set_active(false);
+	}
 
 	toggle_button& auto_ps_toggle =
 		find_widget<toggle_button>("auto_pixel_scale");

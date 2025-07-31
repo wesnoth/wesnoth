@@ -66,6 +66,7 @@ point test_resolution_ = {1024, 768}; /**< resolution for unit tests */
 int refresh_rate_ = 0;
 point game_canvas_size_ = {0, 0};
 int pixel_scale_ = 1;
+int max_scale_ = 1;
 rect input_area_ = {};
 
 } // anon namespace
@@ -233,10 +234,10 @@ bool update_framebuffer()
 
 	// Find max valid pixel scale at current output size.
 	point osize(window->get_output_size());
-	int max_scale = std::min(
+	max_scale_ = std::min(
 		osize.x / pref_constants::min_window_width,
 		osize.y / pref_constants::min_window_height);
-	max_scale = std::min(max_scale, pref_constants::max_pixel_scale);
+	max_scale_ = std::min(max_scale_, pref_constants::max_pixel_scale);
 
 	// Determine best pixel scale according to preference and window size
 	int scale = 1;
@@ -245,14 +246,14 @@ bool update_framebuffer()
 		int def_scale = std::min(
 			osize.x / pref_constants::def_window_width,
 			osize.y / pref_constants::def_window_height);
-		scale = std::min(max_scale, def_scale);
+		scale = std::min(max_scale_, def_scale);
 		// Otherwise reduce to keep below the max window size (1920x1080).
 		int min_scale = std::min(
 			osize.x / (pref_constants::max_window_width+1) + 1,
 			osize.y / (pref_constants::max_window_height+1) + 1);
 		scale = std::max(scale, min_scale);
 	} else {
-		scale = std::min(max_scale, prefs::get().pixel_scale());
+		scale = std::min(max_scale_, prefs::get().pixel_scale());
 	}
 	// Cache it for easy access.
 	if (pixel_scale_ != scale) {
@@ -496,6 +497,11 @@ rect input_area()
 int get_pixel_scale()
 {
 	return pixel_scale_;
+}
+
+int get_max_pixel_scale()
+{
+	return max_scale_;
 }
 
 int native_refresh_rate()
