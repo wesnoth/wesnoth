@@ -31,8 +31,8 @@
 #include "mp_game_settings.hpp"
 #include "preferences/preferences.hpp"
 #include "serialization/markup.hpp"
+#include "utils/general.hpp
 #include "wml_exception.hpp"
-
 
 #include <boost/algorithm/string.hpp>
 
@@ -152,7 +152,7 @@ game_info::game_info(const config& game, const std::vector<std::string>& install
 	// Parse the list of addons required to join this game.
 	for(const config& addon : game.child_range("addon")) {
 		if(addon.has_attribute("id") && addon["required"].to_bool(false)) {
-			if(std::find(installed_addons.begin(), installed_addons.end(), addon["id"].str()) == installed_addons.end()) {
+			if(!utils::contains(installed_addons, addon["id"].str())) {
 				required_addon r;
 				r.addon_id = addon["id"].str();
 				r.outcome = addon_req::NEED_DOWNLOAD;

@@ -275,26 +275,27 @@ bool terrain_filter::match_internal(const map_location& loc, const unit* ref_uni
 		if(!tod_type.empty()) {
 			const std::vector<std::string>& vals = utils::split(tod_type);
 			if(tod.lawful_bonus<0) {
-				if(std::find(vals.begin(),vals.end(), unit_alignments::chaotic) == vals.end()) {
+				if(!utils::contains(vals, unit_alignments::chaotic)) {
 					return false;
 				}
 			} else if(tod.lawful_bonus>0) {
-				if(std::find(vals.begin(),vals.end(), unit_alignments::lawful) == vals.end()) {
+				if(!utils::contains(vals, unit_alignments::lawful)) {
 					return false;
 				}
-			} else if(std::find(vals.begin(),vals.end(), unit_alignments::neutral) == vals.end() &&
-				std::find(vals.begin(),vals.end(), unit_alignments::liminal) == vals.end()) {
+			} else if(
+				!utils::contains(vals, unit_alignments::neutral) &&
+				!utils::contains(vals, unit_alignments::liminal)
+			) {
 				return false;
 			}
 		}
 
 		if(!tod_id.empty()) {
 			if(tod_id != tod.id) {
-				if(std::find(tod_id.begin(),tod_id.end(),',') != tod_id.end() &&
-					std::search(tod_id.begin(),tod_id.end(),
-					tod.id.begin(),tod.id.end()) != tod_id.end()) {
-					const std::vector<std::string>& vals = utils::split(tod_id);
-					if(std::find(vals.begin(),vals.end(),tod.id) == vals.end()) {
+				if(utils::contains(tod_id, ',')
+					&& std::search(tod_id.begin(), tod_id.end(), tod.id.begin(), tod.id.end()) != tod_id.end()
+				) {
+					if(!utils::contains(utils::split(tod_id), tod.id)) {
 						return false;
 					}
 				} else {
@@ -498,7 +499,7 @@ public:
 	{
 		if (filter.cfg_.has_attribute("x") || filter.cfg_.has_attribute("y")) {
 			std::vector<map_location> xy_vector = filter.fc_->get_disp_context().map().parse_location_range(filter.cfg_["x"], filter.cfg_["y"], with_border);
-			filter_area(src, dest, filter, [&xy_vector](const map_location& loc) { return std::find(xy_vector.begin(), xy_vector.end(), loc) != xy_vector.end(); });
+			filter_area(src, dest, filter, [&xy_vector](const map_location& loc) { return utils::contains(xy_vector, loc); });
 		}
 		else {
 			filter_area(src, dest, filter, no_filter());

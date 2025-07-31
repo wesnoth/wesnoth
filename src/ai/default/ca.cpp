@@ -690,8 +690,7 @@ void get_villages_phase::find_villages(
 			}
 		}
 
-		if(std::find(dispatched_units.begin(), dispatched_units.end(),
-				j->second) != dispatched_units.end()) {
+		if(utils::contains(dispatched_units, j->second)) {
 			continue;
 		}
 
@@ -1431,7 +1430,7 @@ double retreat_phase::evaluate()
 		if (i->side() == get_side() &&
 		    i->movement_left() == i->total_movement() &&
 		    //leaders.find(*i) == leaders.end() && //unit_map::const_iterator(i) != leader &&
-		    std::find(leaders.begin(), leaders.end(), i) == leaders.end() &&
+		    !utils::contains(leaders, i) &&
 		    !i->incapacitated() && is_allowed_unit(*i))
 		{
 			// This unit still has movement left, and is a candidate to retreat.
@@ -1455,8 +1454,7 @@ double retreat_phase::evaluate()
 
 					//if(leader != units_.end() && std::count(leader_adj,
 					//			leader_adj + 6, itors.first->second)) {
-					if(std::find(leaders_adj_v.begin(), leaders_adj_v.end(), itors.first->second) != leaders_adj_v.end()){
-
+					if(utils::contains(leaders_adj_v, itors.first->second)){
 						can_reach_leader = true;
 						break;
 					}

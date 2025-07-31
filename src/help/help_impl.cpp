@@ -148,20 +148,14 @@ bool section_is_referenced(const std::string &section_id, const config &cfg)
 {
 	if (auto toplevel = cfg.optional_child("toplevel"))
 	{
-		const std::vector<std::string> toplevel_refs
-			= utils::quoted_split(toplevel["sections"]);
-		if (std::find(toplevel_refs.begin(), toplevel_refs.end(), section_id)
-			!= toplevel_refs.end()) {
+		if(utils::contains(utils::quoted_split(toplevel["sections"]), section_id)) {
 			return true;
 		}
 	}
 
 	for (const config &section : cfg.child_range("section"))
 	{
-		const std::vector<std::string> sections_refd
-			= utils::quoted_split(section["sections"]);
-		if (std::find(sections_refd.begin(), sections_refd.end(), section_id)
-			!= sections_refd.end()) {
+		if(utils::contains(utils::quoted_split(section["sections"]), section_id)) {
 			return true;
 		}
 	}
@@ -172,20 +166,14 @@ bool topic_is_referenced(const std::string &topic_id, const config &cfg)
 {
 	if (auto toplevel = cfg.optional_child("toplevel"))
 	{
-		const std::vector<std::string> toplevel_refs
-			= utils::quoted_split(toplevel["topics"]);
-		if (std::find(toplevel_refs.begin(), toplevel_refs.end(), topic_id)
-			!= toplevel_refs.end()) {
+		if(utils::contains(utils::quoted_split(toplevel["topics"]), topic_id)) {
 			return true;
 		}
 	}
 
 	for (const config &section : cfg.child_range("section"))
 	{
-		const std::vector<std::string> topics_refd
-			= utils::quoted_split(section["topics"]);
-		if (std::find(topics_refd.begin(), topics_refd.end(), topic_id)
-			!= topics_refd.end()) {
+		if(utils::contains(utils::quoted_split(section["topics"]), topic_id)) {
 			return true;
 		}
 	}

@@ -31,6 +31,7 @@
 #include "units/animation_component.hpp"
 #include "units/map.hpp"
 #include "units/types.hpp"
+#include "utils/general.hpp"
 
 namespace wb
 {
@@ -209,7 +210,7 @@ action::error recruit::check_validity() const
 	const std::set<std::string>& recruits = resources::gameboard->teams()[team_index()].recruits();
 	if(recruits.find(unit_name_) == recruits.end()) {
 		bool in_extra_recruit = any_recruiter(team_index() + 1, get_recruit_hex(), [&](unit& leader) {
-			return std::find(leader.recruits().begin(), leader.recruits().end(), unit_name_) != leader.recruits().end();
+			return utils::contains(leader.recruits(), unit_name_);
 		});
 		if (!in_extra_recruit) {
 			return UNIT_UNAVAILABLE;

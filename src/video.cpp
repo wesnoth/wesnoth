@@ -24,6 +24,7 @@
 #include "sdl/texture.hpp"
 #include "sdl/utils.hpp"
 #include "sdl/window.hpp"
+#include "utils/general.hpp"
 
 #ifdef TARGET_OS_OSX
 #include "desktop/apple_video.hpp"
@@ -768,7 +769,7 @@ std::vector<point> get_available_resolutions(const bool include_current)
 		}
 	}
 
-	if(std::find(result.begin(), result.end(), min_res) == result.end()) {
+	if(!utils::contains(result, min_res)) {
 		result.push_back(min_res);
 	}
 

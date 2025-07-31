@@ -1337,7 +1337,7 @@ bool recruitment::leader_matches_job(const data& leader_data, const config* job)
 		// If no leader is specified, all leaders are okay.
 		return true;
 	}
-	return (std::find(ids.begin(), ids.end(), leader_data.leader->id()) != ids.end());
+	return utils::contains(ids, leader_data.leader->id());
 }
 
 /**

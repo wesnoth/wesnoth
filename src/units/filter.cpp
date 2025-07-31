@@ -333,7 +333,7 @@ void unit_filter_compound::fill(const vconfig& cfg)
 			[](const config::attribute_value& c) { return utils::split(c.str()); },
 			[](const std::vector<std::string>& id_list, const unit_filter_args& args)
 			{
-				return std::find(id_list.begin(), id_list.end(), args.u.id()) != id_list.end();
+				return utils::contains(id_list, args.u.id());
 			}
 		);
 
@@ -341,7 +341,7 @@ void unit_filter_compound::fill(const vconfig& cfg)
 			[](const config::attribute_value& c) { return utils::split(c.str()); },
 			[](const std::vector<std::string>& types, const unit_filter_args& args)
 			{
-				return std::find(types.begin(), types.end(), args.u.type_id()) != types.end();
+				return utils::contains(types, args.u.type_id());
 			}
 		);
 
@@ -360,7 +360,7 @@ void unit_filter_compound::fill(const vconfig& cfg)
 						types_expanded.insert(type);
 					}
 				}
-				return types_expanded.find(args.u.type_id()) != types_expanded.end();
+				return utils::contains(types_expanded, args.u.type_id());
 			}
 		);
 
@@ -368,7 +368,7 @@ void unit_filter_compound::fill(const vconfig& cfg)
 			[](const config::attribute_value& c) { return utils::split(c.str()); },
 			[](const std::vector<std::string>& types, const unit_filter_args& args)
 			{
-				return std::find(types.begin(), types.end(), args.u.variation()) != types.end();
+				return utils::contains(types, args.u.variation());
 			}
 		);
 
@@ -490,7 +490,7 @@ void unit_filter_compound::fill(const vconfig& cfg)
 			[](const config::attribute_value& c) { return utils::split(c.str()); },
 			[](const std::vector<std::string>& races, const unit_filter_args& args)
 			{
-				return std::find(races.begin(), races.end(), args.u.race()->id()) != races.end();
+				return utils::contains(races, args.u.race()->id());
 			}
 		);
 
@@ -532,7 +532,7 @@ void unit_filter_compound::fill(const vconfig& cfg)
 			},
 			[](const std::vector<int>& sides, const unit_filter_args& args)
 			{
-				return std::find(sides.begin(), sides.end(), args.u.side()) != sides.end();
+				return utils::contains(sides, args.u.side());
 			}
 		);
 
