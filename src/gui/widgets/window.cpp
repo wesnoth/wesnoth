@@ -907,7 +907,7 @@ void window::layout()
 		     << settings::screen_width << ',' << settings::screen_height << ").";
 
 		throw wml_exception(
-			VGETTEXT("Failed to show dialog with id ‘$id’, which doesn’t fit on the screen.", {{"id", id()}}),
+			_("Failed to show a dialog, which doesn’t fit on the screen."),
 			sstr.str());
 	}
 
@@ -943,7 +943,7 @@ void window::layout()
 			     << settings::screen_width << ',' << settings::screen_height << ").";
 
 			throw wml_exception(
-				VGETTEXT("Failed to show dialog with id ‘$id’, which doesn’t fit on the screen.", {{"id", id()}}),
+				_("Failed to show a dialog, which doesn’t fit on the screen."),
 				sstr.str());
 		}
 	}
