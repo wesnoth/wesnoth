@@ -109,7 +109,7 @@ static std::u32string markov_generate_name(const markov_prefix_map& prefixes,
 		if (i == prefixes.end() || i->second.empty()) {
 			return res;
 		}
-		if (utils::contains(i->second.begin(), static_cast<char32_t>(0))) {
+		if (utils::contains(i->second, static_cast<char32_t>(0))) {
 			// This ending is valid.
 			return res;
 		}
