@@ -398,7 +398,7 @@ void flg_manager::update_choosable_leaders()
 	choosable_leaders_ = available_leaders_;
 
 	if(!default_leader_type_.empty() && leader_lock_) {
-		if(utils::contains(available_leaders_.begin(), default_leader_type_)) {
+		if(utils::contains(available_leaders_, default_leader_type_)) {
 			choosable_leaders_.clear();
 			choosable_leaders_.push_back(default_leader_type_);
 		}
