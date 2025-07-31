@@ -33,6 +33,7 @@
 #include "units/unit.hpp"
 #include "units/filter.hpp"
 #include "units/map.hpp"
+#include "utils/general.hpp"
 #include "variable.hpp"
 
 static lg::log_domain log_engine("engine");

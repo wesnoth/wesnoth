@@ -408,7 +408,7 @@ int unit_animation::matches(const map_location& loc, const map_location& second_
 
 	if(my_unit) {
 		if(!directions_.empty()) {
-			if(utils::contains(directions_, my_unit->facing())) {
+			if(!utils::contains(directions_, my_unit->facing())) {
 				return MATCH_FAIL;
 			}
 
