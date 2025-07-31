@@ -118,6 +118,7 @@
 #include "gui/dialogs/units_dialog.hpp"
 #include "gui/dialogs/wml_error.hpp"
 #include "gui/dialogs/wml_message.hpp"
+#include "gui/widgets/retval.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "language.hpp"
@@ -732,11 +733,13 @@ BOOST_AUTO_TEST_CASE(test_make_test_fake)
 {
 	test_utils::get_fake_display(10, 10);
 
+	int status;
 	try {
 		message dlg("title", "message", true, false, false);
 		dlg.show(1);
+		status = dlg.get_retval();
 	} catch(const wml_exception& e) {
-		BOOST_CHECK(e.user_message == _("Failed to show a dialog, which doesn’t fit on the screen."));
+		BOOST_CHECK(status == gui2::retval::LAYOUT_FAILURE);
 		return;
 	} catch(...) {
 		BOOST_ERROR("Didn't catch the wanted exception, instead caught " << utils::get_unknown_exception_type() << ".");
