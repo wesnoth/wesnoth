@@ -24,6 +24,7 @@
 #include "editor/action/action_select.hpp"
 #include "editor/action/mouse/mouse_action.hpp"
 #include "editor/controller/editor_controller.hpp"
+#include "editor/controller/editor_controller_private.hpp"
 #include "editor/palette/terrain_palettes.hpp"
 #include "editor/palette/location_palette.hpp"
 
@@ -61,29 +62,6 @@
 
 namespace editor
 {
-namespace
-{
-auto parse_editor_music(const config_array_view& editor_music_range)
-{
-	std::vector<std::shared_ptr<sound::music_track>> tracks;
-
-	for(const config& editor_music : editor_music_range) {
-		for(const config& music : editor_music.child_range("music")) {
-			if(auto track = sound::music_track::create(music)) {
-				tracks.push_back(std::move(track));
-			}
-		}
-	}
-
-	if(tracks.empty()) {
-		ERR_ED << "No editor music defined";
-	}
-
-	return tracks;
-}
-
-} // namespace
-
 std::string editor_controller::current_addon_id_ = "";
 
 editor_controller::editor_controller(bool clear_id)
@@ -93,12 +71,12 @@ editor_controller::editor_controller(bool clear_id)
 	, active_menu_(menu_type::none)
 	, reports_(new reports())
 	, gui_(new editor_display(*this, *reports_))
-	, tods_()
+	, schedules_(parse_editor_times(game_config_.child_range("editor_times")))
 	, context_manager_(new context_manager(*gui_.get(), game_config_, clear_id ? "" : editor_controller::current_addon_id_))
-	, toolkit_(nullptr)
+	, toolkit_(new editor_toolkit(*gui_.get(), game_config_, *context_manager_.get()))
 	, tooltip_manager_()
-	, floating_label_manager_(nullptr)
-	, help_manager_(nullptr)
+	, floating_label_manager_(new font::floating_label_context())
+	, help_manager_(new help::help_manager(&game_config_))
 	, do_quit_(false)
 	, quit_mode_(EXIT_ERROR)
 	, music_tracks_(parse_editor_music(game_config_.child_range("editor_music")))
@@ -108,11 +86,7 @@ editor_controller::editor_controller(bool clear_id)
 	}
 
 	init_gui();
-	toolkit_.reset(new editor_toolkit(*gui_.get(), game_config_, *context_manager_.get()));
-	help_manager_.reset(new help::help_manager(&game_config_));
 	context_manager_->locs_ = toolkit_->get_palette_manager()->location_palette_.get();
-	init_tods(game_config_);
-	get_current_map_context().set_starting_position_labels(gui());
 	cursor::set(cursor::NORMAL);
 
 	gui().queue_rerender();
@@ -120,9 +94,7 @@ editor_controller::editor_controller(bool clear_id)
 
 void editor_controller::init_gui()
 {
-	gui().change_display_context(&get_current_map_context());
 	gui().add_redraw_observer(std::bind(&editor_controller::display_redraw_callback, this, std::placeholders::_1));
-	floating_label_manager_.reset(new font::floating_label_context());
 	gui().set_debug_flag(display::DEBUG_COORDINATES, prefs::get().editor_draw_hex_coordinates());
 	gui().set_debug_flag(display::DEBUG_TERRAIN_CODES, prefs::get().editor_draw_terrain_codes());
 	gui().set_debug_flag(display::DEBUG_NUM_BITMAPS, prefs::get().editor_draw_num_of_bitmaps());
@@ -133,39 +105,6 @@ void editor_controller::init_gui()
 //	TODO: Should the editor map contexts actually own the halo manager and swap them in and out from the gui?
 //	Note that if that is what happens it might not actually be a good idea for the gui to own the halo manager, so that it can be swapped out
 //	without deleting it.
-}
-
-void editor_controller::init_tods(const game_config_view& game_config)
-{
-	for (const config &schedule : game_config.child_range("editor_times")) {
-
-		const std::string& schedule_id = schedule["id"];
-		/* Use schedule id as the name if schedule name is empty */
-		const std::string& schedule_name = schedule["name"].empty() ? schedule["id"] : schedule["name"];
-		if (schedule_id.empty()) {
-			ERR_ED << "Missing ID attribute in a TOD Schedule.";
-			continue;
-		}
-
-		tods_map::iterator times = tods_.find(schedule_id);
-		if (times == tods_.end()) {
-			std::pair<tods_map::iterator, bool> new_times =
-				tods_.emplace(schedule_id, std::pair(schedule_name, std::vector<time_of_day>()));
-			times = new_times.first;
-		} else {
-			ERR_ED << "Duplicate TOD Schedule identifiers.";
-			continue;
-		}
-
-		for (const config &time : schedule.child_range("time")) {
-			times->second.second.emplace_back(time);
-		}
-
-	}
-
-	if (tods_.empty()) {
-		ERR_ED << "No editor time-of-day defined";
-	}
 }
 
 editor_controller::~editor_controller()
@@ -233,7 +172,7 @@ void editor_controller::unit_editor_dialog()
 
 void editor_controller::custom_tods_dialog()
 {
-	if (tods_.empty()) {
+	if (schedules_.empty()) {
 		gui2::show_error_message(_("No editor time-of-day found."));
 		return;
 	}
@@ -271,21 +210,13 @@ void editor_controller::custom_tods_dialog()
 			return;
 		}
 
-		/* In case the ID or Name field is blank and user presses OK */
-		if (sch_id.empty()) {
+		// If the ID field is unset or already in use, reset to default.
+		// TODO: notify the user if the schedule ID is already taken
+		if(sch_id.empty() || utils::contains(schedules_, sch_id)) {
 			sch_id = current_addon_id_ + "-schedule-" + timestamp;
-		} else {
-			/* Check if the id entered is same as any of the existing ids
-			 * If so, replace */
-			// TODO : Notify the user if they enter an already existing schedule ID
-			for (auto map_elem : tods_) {
-				if (sch_id == map_elem.first) {
-					sch_id = current_addon_id_ + "-schedule-" + timestamp;
-				}
-			}
 		}
 
-		tods_.emplace(sch_id, std::pair(sch_name, schedule));
+		schedules_.try_emplace(sch_id, sch_id, sch_name, schedule);
 		get_current_map_context().replace_schedule(schedule);
 		get_current_map_context().save_schedule(sch_id, sch_name);
 		gui_->update_tod();
@@ -643,17 +574,17 @@ hotkey::action_state editor_controller::get_action_state(const hotkey::ui_comman
 			return hotkey::on_if(get_current_map_context().playlist_contains(music_tracks_[index]));
 		case menu_type::schedule:
 			{
-				tods_map::const_iterator it = tods_.begin();
+				auto it = schedules_.begin();
 				std::advance(it, index);
-				const std::vector<time_of_day>& times1 = it->second.second;
+				const std::vector<time_of_day>& times1 = it->second.times;
 				const std::vector<time_of_day>& times2 = get_current_map_context().get_time_manager()->times();
 				return hotkey::selected_if(times1 == times2);
 			}
 		case menu_type::local_schedule:
 			{
-				tods_map::const_iterator it = tods_.begin();
+				auto it = schedules_.begin();
 				std::advance(it, index);
-				const std::vector<time_of_day>& times1 = it->second.second;
+				const std::vector<time_of_day>& times1 = it->second.times;
 				int active_area = get_current_map_context().get_active_area();
 				const std::vector<time_of_day>& times2 = get_current_map_context().get_time_manager()->times(active_area);
 				return hotkey::selected_if(times1 == times2);
@@ -742,18 +673,18 @@ bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool p
 			}
 		case menu_type::schedule:
 			{
-				tods_map::iterator iter = tods_.begin();
+				auto iter = schedules_.begin();
 				std::advance(iter, index);
-				get_current_map_context().replace_schedule(iter->second.second);
+				get_current_map_context().replace_schedule(iter->second.times);
 				// TODO: test again after the assign-schedule menu is fixed. Should work, though.
 				gui_->update_tod();
 				return true;
 			}
 		case menu_type::local_schedule:
 			{
-				tods_map::iterator iter = tods_.begin();
+				auto iter = schedules_.begin();
 				std::advance(iter, index);
-				get_current_map_context().replace_local_schedule(iter->second.second);
+				get_current_map_context().replace_local_schedule(iter->second.times);
 				return true;
 			}
 		case menu_type::unit_facing:
@@ -1259,14 +1190,14 @@ void editor_controller::show_menu(const std::vector<config>& items_arg, const po
 
 	else if(first_id == "editor-assign-schedule") {
 		active_menu_ = menu_type::schedule;
-		std::transform(tods_.begin(), tods_.end(), std::back_inserter(generated),
-			[](const tods_map::value_type& tod) { return config{"label", tod.second.first}; });
+		std::transform(schedules_.begin(), schedules_.end(), std::back_inserter(generated),
+			[](const auto& tod) { return config{"label", tod.second.name}; });
 	}
 
 	else if(first_id == "editor-assign-local-schedule") {
 		active_menu_ = menu_type::local_schedule;
-		std::transform(tods_.begin(), tods_.end(), std::back_inserter(generated),
-			[](const tods_map::value_type& tod) { return config{"label", tod.second.first}; });
+		std::transform(schedules_.begin(), schedules_.end(), std::back_inserter(generated),
+			[](const auto& tod) { return config{"label", tod.second.name}; });
 	}
 
 	else {
