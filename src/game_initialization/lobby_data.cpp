@@ -31,7 +31,7 @@
 #include "mp_game_settings.hpp"
 #include "preferences/preferences.hpp"
 #include "serialization/markup.hpp"
-#include "utils/general.hpp
+#include "utils/general.hpp"
 #include "wml_exception.hpp"
 
 #include <boost/algorithm/string.hpp>
