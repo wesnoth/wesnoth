@@ -1897,6 +1897,14 @@ public:
 	 * @param filter the filter used for checking.
 	 */
 	bool ability_matches_filter(const config & cfg, const std::string& tag_name, const config & filter) const;
+	/**
+	 * This function return true if locations checked are the same, or if units have same id.
+	 * @param unit the unit compared.
+	 */
+	bool same_unit(const unit& unit) const
+	{
+		return (get_location() == unit.get_location() || id() == unit.id());
+	}
 
 
 private:
