@@ -614,7 +614,7 @@ bool mouse_handler::mouse_button_event(const SDL_MouseButtonEvent& event, uint8_
 		"mouse5"	// SDL_BUTTON_X2
 	};
 
-	if (gui().view_locked() || button < SDL_BUTTON_LEFT || button > buttons.size()) {
+	if (gui().view_locked() || button < SDL_BUTTON_LEFT || button >= buttons.size()) {
 		return false;
 	} else if (event.state > SDL_PRESSED || !pc_.get_map().on_board(loc)) {
 		return false;
