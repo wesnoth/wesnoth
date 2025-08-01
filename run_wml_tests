@@ -302,11 +302,11 @@ if __name__ == '__main__':
     ap.add_argument("-a", "--additional_arg", action="append",
         help="Additional arguments to go to wesnoth. For options that start with a hyphen, '--add_argument --data-dir' will give an error, use '--add_argument=--data-dir' instead.")
     ap.add_argument("-t", "--timeout", type=int, default=10,
-        help="New timer value to use, instead of 10s as default. The value 0 means no timer, and also skips tests that expect timeout.")
+        help="New timer value to use, instead of 10s as default. The value 0 means no timer, and also skips tests that expect a timeout.")
     ap.add_argument("-bt", "--batch-timeout", type=int, default=300,
         help="New timer value to use for batched tests, instead of 300s as default.")
-    ap.add_argument("-bm", "--batch-max", type=int, default=0,
-        help="Maximum number of tests to do in a batch. Default no limit.")
+    ap.add_argument("-bm", "--batch-max", type=int, default=100,
+        help="New maximum number of tests to do in a batch, instead of 100 as default. 0 means no limit.")
     ap.add_argument("-bd", "--batch-disable", action="store_const", const=1, dest='batch_max',
         help="Disable test batching, may be useful if debugging a small subset of tests. Equivalent to --batch-max=1")
     ap.add_argument("-s", "--no-strict", dest="strict_mode", action="store_false",
