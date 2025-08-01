@@ -273,7 +273,7 @@ bool terrain_filter::match_internal(const map_location& loc, const unit* ref_uni
 		}
 
 		if(!tod_type.empty()) {
-			const std::vector<std::string>& vals = utils::split(tod_type);
+			const std::vector<std::string_view>& vals = utils::split_view(tod_type);
 			if(tod.lawful_bonus<0) {
 				if(!utils::contains(vals, unit_alignments::chaotic)) {
 					return false;
@@ -295,7 +295,7 @@ bool terrain_filter::match_internal(const map_location& loc, const unit* ref_uni
 				if(utils::contains(tod_id, ',')
 					&& std::search(tod_id.begin(), tod_id.end(), tod.id.begin(), tod.id.end()) != tod_id.end()
 				) {
-					if(!utils::contains(utils::split(tod_id), tod.id)) {
+					if(!utils::contains(utils::split_view(tod_id), tod.id)) {
 						return false;
 					}
 				} else {

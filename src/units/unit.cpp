@@ -1772,7 +1772,7 @@ bool unit::resistance_filter_matches(const config& cfg, const std::string& damag
 	if(!apply_to.empty()) {
 		if(damage_name != apply_to) {
 			if(apply_to.find(',') != std::string::npos && apply_to.find(damage_name) != std::string::npos) {
-				if(!utils::contains(utils::split(apply_to), damage_name)) {
+				if(!utils::contains(utils::split_view(apply_to), damage_name)) {
 					return false;
 				}
 			} else {

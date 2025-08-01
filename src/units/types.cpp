@@ -648,7 +648,7 @@ bool unit_type::musthave_status(const std::string& status_name) const
 			const std::string& ut = effect["unit_type"];
 
 			if(!ut.empty()) {
-				if(!utils::contains(utils::split(ut), id())) {
+				if(!utils::contains(utils::split_view(ut), id())) {
 					continue;
 				}
 			}
@@ -775,7 +775,7 @@ bool unit_type::resistance_filter_matches(
 	if(!apply_to.empty()) {
 		if(damage_name != apply_to) {
 			if(apply_to.find(',') != std::string::npos && apply_to.find(damage_name) != std::string::npos) {
-				if(!utils::contains(utils::split(apply_to), damage_name)) {
+				if(!utils::contains(utils::split_view(apply_to), damage_name)) {
 					return false;
 				}
 			} else {
