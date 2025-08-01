@@ -18,11 +18,31 @@
 template<typename T>
 class lua_ptr;
 
+/**
+ * Allows creation of lua_ptr<T> instances, but does not affect the lifetime of the T itself.
+ * This allows the instance of T to be deleted while the lua_ptr<T>s still exist.
+ *
+ * The implementation details are making a shared_ptr<non-owning raw pointer to T>, with that
+ * shared_ptr owned by the instance of T that's being pointed to, which is then used to create
+ * weak_ptrs. The lua_ptr is a wrapper to make sure that no-one gets a second non-temporary
+ * shared_ptr<non-owning raw pointer T>. As there's only one shared_ptr, the weak_ptrs become
+ * invalid (but defined behavior) when the instance of T is deleted, because that deletes the
+ * shared_ptr.
+ */
 template<typename T>
 class enable_lua_ptr
 {
 public:
 	enable_lua_ptr(T* tp) : self_(std::make_shared<T*>(tp)) {}
+
+	/**
+	 * The weak_ptrs are pointing to o's shared_ptr's control block, so to keep existing
+	 * weak_ptrs valid the existing control block is reused instead of replaced.
+	 *
+	 * After the move, the existing control block will point to the new T, and o.self_ will be
+	 * empty (which is guaranteed by the specification for std::shared_ptr's move assignment
+	 * operator).
+	 */
 	enable_lua_ptr(enable_lua_ptr&& o) : self_(std::move(o.self_))
 	{
 		*self_ = static_cast<T*>(this);
@@ -31,6 +51,7 @@ public:
 	{
 		self_ = std::move(o.self_);
 		*self_ = static_cast<T*>(this);
+		return *this;
 	}
 private:
 	enable_lua_ptr(const enable_lua_ptr& o) = delete;
@@ -39,7 +60,7 @@ private:
 	std::shared_ptr<T*> self_;
 };
 
-/** Tmust inherit enable_lua_ptr<T> */
+/** T must inherit enable_lua_ptr<T> */
 template<typename T>
 class lua_ptr
 {
