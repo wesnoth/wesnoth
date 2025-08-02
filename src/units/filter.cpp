@@ -478,7 +478,7 @@ void unit_filter_compound::fill(const vconfig& cfg)
 			[](const std::vector<std::string_view>& check_traits, const unit_filter_args& args)
 			{
 				std::vector<std::string> have_traits = args.u.get_traits_list();
-				std::vector<std::string> isect;
+				std::vector<std::string_view> isect;
 				std::sort(have_traits.begin(), have_traits.end());
 				std::set_intersection(check_traits.begin(), check_traits.end(), have_traits.begin(), have_traits.end(), std::back_inserter(isect));
 				return !isect.empty();

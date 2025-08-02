@@ -155,12 +155,12 @@ std::vector<std::string> square_parenthetical_split(const std::string& val,
 					if (found_tilde == std::string::npos) {
 						std::size_t found_asterisk = piece.find_first_of('*');
 						if (found_asterisk == std::string::npos) {
-							std::string_view temp = piece;
+							auto temp = std::string(piece);
 							boost::trim(temp); // TODO C++20: do this in one step with boost::trim_copy
 							square_expansion.emplace_back(temp);
 						}
 						else { //'*' multiple expansion
-							std::string_view s_begin = piece.substr(0, found_asterisk);
+							auto s_begin = std::string(piece.substr(0, found_asterisk));
 							boost::trim(s_begin);
 							auto s_end = std::string(piece.substr(found_asterisk + 1));
 							boost::trim(s_end);

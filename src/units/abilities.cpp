@@ -2432,7 +2432,7 @@ bool filter_base_matches(const config& cfg, int def)
 std::string substitute_variables(const std::string& str, const std::string& tag_name, const config& ability_or_special) {
 	if(tag_name == "plague") {
 		// Substitute [plague]type= as $type
-		const auto iter = unit_types.types().find(ability_or_special["type"]);
+		const auto iter = unit_types.types().find(ability_or_special["type"].str());
 
 		// TODO: warn if an invalid type is specified?
 		if(iter == unit_types.types().end()) {

@@ -310,7 +310,7 @@ t_translation::terrain_code gamemap_base::get_terrain(const map_location& loc) c
 
 map_location gamemap_base::special_location(std::string_view id) const
 {
-	auto it = starting_positions_.left.find(id);
+	auto it = starting_positions_.left.find(std::string(id));
 	if (it != starting_positions_.left.end()) {
 		auto& coordinate = it->second;
 		return map_location(coordinate.x, coordinate.y);
@@ -362,7 +362,8 @@ const std::string* gamemap_base::is_special_location(const map_location& loc) co
 void gamemap_base::set_special_location(std::string_view id, const map_location& loc)
 {
 	bool valid = loc.valid();
-	auto it_left = starting_positions_.left.find(id);
+	auto key = std::string(id);
+	auto it_left = starting_positions_.left.find(key);
 	if (it_left != starting_positions_.left.end()) {
 		if (valid) {
 			starting_positions_.left.replace_data(it_left, loc);
@@ -372,7 +373,7 @@ void gamemap_base::set_special_location(std::string_view id, const map_location&
 		}
 	}
 	else {
-		starting_positions_.left.insert(it_left, std::pair(id, loc));
+		starting_positions_.left.insert(it_left, std::pair(key, loc));
 	}
 }
 

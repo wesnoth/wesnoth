@@ -423,6 +423,7 @@ class split_view_visitor
 	: public boost::static_visitor<std::vector<std::string_view>>
 #endif
 {
+public:
 	/** Splitting only supported for string-like values. */
 	template<typename T>
 	auto operator()(const T&) const
@@ -444,7 +445,7 @@ class split_view_visitor
 	}
 };
 
-} // namespace
+} // anon namespace
 
 std::vector<std::string> split(const config_attribute_value& val)
 {
