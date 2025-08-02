@@ -100,18 +100,11 @@ bool side_filter::match_internal(const team &t) const
 		const std::string& this_team_name = t.team_name();
 
 		if(!utils::contains(this_team_name, ',')) {
-			if(this_team_name != that_team_name) return false;
-		}
-		else {
-			const std::vector<std::string>& these_team_names = utils::split(this_team_name);
-			bool search_futile = true;
-			for(const std::string& this_single_team_name : these_team_names) {
-				if(this_single_team_name == that_team_name) {
-					search_futile = false;
-					break;
-				}
+			if(this_team_name != that_team_name) {
+				return false;
 			}
-			if(search_futile) return false;
+		} else if(!utils::contains(utils::split_view(this_team_name), that_team_name)) {
+			return false;
 		}
 	}
 
@@ -211,7 +204,7 @@ bool side_filter::match_internal(const team &t) const
 		}
 		else {
 			bool found = false;
-			for(const std::string& controller : utils::split(cfg_controller))
+			for(const std::string_view& controller : utils::split_view(cfg_controller))
 			{
 				if(side_controller::get_string(t.controller()) == controller) {
 					found = true;

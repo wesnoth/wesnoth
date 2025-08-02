@@ -238,4 +238,5 @@ inline std::ostream& operator<<(std::ostream& os, const std::monostate&) { retur
 namespace utils
 {
 	std::vector<std::string> split(const config_attribute_value& val);
+	std::vector<std::string_view> split_view(const config_attribute_value& val);
 }

@@ -94,7 +94,7 @@ private: // These will be called by build().
 	/** Load the most needed data into an empty unit_type (build to CREATE). */
 	void build_created();
 
-	typedef std::map<std::string, unit_type> variations_map;
+	using variations_map = std::map<std::string, unit_type, std::less<>>;
 public:
 	/** Performs a build of this to the indicated stage. */
 	void build(BUILD_STATUS status, const movement_type_map& movement_types,
@@ -261,7 +261,7 @@ public:
 	 *                          siblings' if the unit_type is a variation
 	 *                          itself) id matches @a variation_id.
 	 */
-	bool has_variation(const std::string& variation_id) const;
+	bool has_variation(std::string_view variation_id) const;
 
 	/**
 	 * Whether the unit type has at least one help-visible variation.
@@ -388,7 +388,7 @@ public:
 
 	unit_type_data();
 
-	typedef std::map<std::string,unit_type> unit_type_map;
+	using unit_type_map = std::map<std::string, unit_type, std::less<>>;
 
 	const unit_type_map& types() const { return types_; }
 	const std::vector<const unit_type*> types_list() const {
@@ -406,7 +406,7 @@ public:
 	void set_config(const game_config_view& cfg);
 
 	/** Finds a unit_type by its id() and makes sure it is built to the specified level. */
-	const unit_type *find(const std::string& key, unit_type::BUILD_STATUS status = unit_type::FULL) const;
+	const unit_type* find(std::string_view key, unit_type::BUILD_STATUS status = unit_type::FULL) const;
 	void check_types(const std::vector<std::string>& types) const;
 	const unit_race *find_race(const std::string&) const;
 

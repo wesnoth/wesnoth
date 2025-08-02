@@ -144,7 +144,7 @@ const std::string& gender_string(unit_race::GENDER gender) {
 	}
 }
 
-unit_race::GENDER string_gender(const std::string& str, unit_race::GENDER def) {
+unit_race::GENDER string_gender(std::string_view str, unit_race::GENDER def) {
 	if ( str == unit_race::s_male ) {
 		return unit_race::MALE;
 	} else if ( str == unit_race::s_female ) {

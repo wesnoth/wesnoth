@@ -111,8 +111,8 @@ protected:
 		return variant(tmp);
 	}
 
-	template<typename T>
-	static variant convert_set(const std::set<T>& input_set)
+	template<typename T, typename Compare>
+	static variant convert_set(const std::set<T, Compare>& input_set)
 	{
 		std::map<variant,variant> tmp;
 		for(const auto& elem : input_set) {

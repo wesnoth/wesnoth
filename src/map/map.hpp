@@ -91,8 +91,8 @@ public:
 	const location_map& special_locations() const { return starting_positions_; }
 	const std::vector<map_location> starting_positions() const;
 
-	void set_special_location(const std::string& id, const map_location& loc);
-	map_location special_location(const std::string& id) const;
+	void set_special_location(std::string_view id, const map_location& loc);
+	map_location special_location(std::string_view id) const;
 
 	/** Manipulate starting positions of the different sides. */
 	void set_starting_position(int side, const map_location& loc);

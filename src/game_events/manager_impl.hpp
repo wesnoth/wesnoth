@@ -82,7 +82,7 @@ private:
 
 public:
 	/** Utility to standardize the event names used in by_name_. */
-	static std::string standardize_name(const std::string& name);
+	static std::string standardize_name(std::string_view name);
 
 	/** Compare function to sort event handlers by priority. */
 	static bool cmp(const handler_ptr& lhs, const handler_ptr& rhs);

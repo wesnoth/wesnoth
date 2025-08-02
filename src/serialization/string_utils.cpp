@@ -150,34 +150,34 @@ std::vector<std::string> square_parenthetical_split(const std::string& val,
 			std::size_t size_square_exp = 0;
 			for (std::size_t i=0; i < square_left.size(); i++) {
 				std::string tmp_val(square_left[i]+1,square_right[i]);
-				std::vector< std::string > tmp = split(tmp_val);
-				for(const std::string& piece : tmp) {
+				for(const std::string_view& piece : split_view(tmp_val)) {
 					std::size_t found_tilde = piece.find_first_of('~');
 					if (found_tilde == std::string::npos) {
 						std::size_t found_asterisk = piece.find_first_of('*');
 						if (found_asterisk == std::string::npos) {
-							std::string tmp2(piece);
-							boost::trim(tmp2);
-							square_expansion.push_back(tmp2);
+							auto temp = std::string(piece);
+							boost::trim(temp); // TODO C++20: do this in one step with boost::trim_copy
+							square_expansion.emplace_back(temp);
 						}
 						else { //'*' multiple expansion
-							std::string s_begin = piece.substr(0,found_asterisk);
+							auto s_begin = std::string(piece.substr(0, found_asterisk));
 							boost::trim(s_begin);
-							std::string s_end = piece.substr(found_asterisk+1);
+							auto s_end = std::string(piece.substr(found_asterisk + 1));
 							boost::trim(s_end);
-							for (int ast=std::stoi(s_end); ast>0; --ast)
-								square_expansion.push_back(s_begin);
+							for(int ast = std::stoi(s_end); ast > 0; --ast) {
+								square_expansion.emplace_back(s_begin);
+							}
 						}
 					}
 					else { //expand number range
-						std::string s_begin = piece.substr(0,found_tilde);
+						auto s_begin = std::string(piece.substr(0, found_tilde));
 						boost::trim(s_begin);
 						int begin = std::stoi(s_begin);
 						std::size_t padding = 0, padding_end = 0;
 						while (padding<s_begin.size() && s_begin[padding]=='0') {
 							padding++;
 						}
-						std::string s_end = piece.substr(found_tilde+1);
+						auto s_end = std::string(piece.substr(found_tilde + 1));
 						boost::trim(s_end);
 						int end = std::stoi(s_end);
 						while (padding_end<s_end.size() && s_end[padding_end]=='0') {
@@ -285,21 +285,21 @@ std::map<std::string, std::string> map_split(
 		, const std::string& default_value)
 {
 	//first split by major so that we get a vector with the key-value pairs
-	std::vector< std::string > v = split(val, major, flags);
+	std::vector<std::string_view> v = split_view(val, major, flags);
 
 	//now split by minor to extract keys and values
-	std::map< std::string, std::string > res;
+	std::map<std::string, std::string> res;
 
-	for( std::vector< std::string >::iterator i = v.begin(); i != v.end(); ++i) {
-		std::size_t pos = i->find_first_of(minor);
+	for(const std::string_view& view : v) {
+		std::size_t pos = view.find_first_of(minor);
 		std::string key, value;
 
 		if(pos == std::string::npos) {
-			key = (*i);
+			key = view;
 			value = default_value;
 		} else {
-			key = i->substr(0, pos);
-			value = i->substr(pos + 1);
+			key = view.substr(0, pos);
+			value = view.substr(pos + 1);
 		}
 
 		res[key] = value;
@@ -971,7 +971,7 @@ std::vector<std::pair<int, int>> parse_ranges_unsigned(const std::string& str)
 std::vector<std::pair<double, double>> parse_ranges_real(const std::string& str)
 {
 	std::vector<std::pair<double, double>> to_return;
-	for(const std::string& r : utils::split(str)) {
+	for(const std::string_view& r : utils::split_view(str)) {
 		to_return.push_back(parse_range_real(r));
 	}
 
@@ -981,7 +981,7 @@ std::vector<std::pair<double, double>> parse_ranges_real(const std::string& str)
 std::vector<std::pair<int, int>> parse_ranges_int(const std::string& str)
 {
 	std::vector<std::pair<int, int>> to_return;
-	for(const std::string& r : utils::split(str)) {
+	for(const std::string_view& r : utils::split_view(str)) {
 		to_return.push_back(parse_range(r));
 	}
 

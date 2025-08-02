@@ -137,7 +137,7 @@ map_location unit_creator::find_location(const config &cfg, const unit* pass_che
 		// "map", "map_passable", and "map_overwrite".
 		else if(place == "map"  ||  place == "map_passable" || place == "map_overwrite") {
 			if(cfg.has_attribute("location_id")) {
-				loc = board_->map().special_location(cfg["location_id"]);
+				loc = board_->map().special_location(cfg["location_id"].str());
 			}
 			if(!loc.valid()) {
 				loc = map_location(cfg, resources::gamedata);

@@ -416,7 +416,45 @@ std::ostream& operator<<(std::ostream& os, const config_attribute_value& v)
 
 namespace utils
 {
-	std::vector<std::string> split(const config_attribute_value& val) {
-		return utils::split(val.str());
+namespace
+{
+class split_view_visitor
+#ifdef USING_BOOST_VARIANT
+	: public boost::static_visitor<std::vector<std::string_view>>
+#endif
+{
+public:
+	/** Splitting only supported for string-like values. */
+	template<typename T>
+	auto operator()(const T&) const
+	{
+		return std::vector<std::string_view>{};
 	}
+
+	/** Underlying variant owns its own string; safe to take a view. */
+	auto operator()(const std::string& str) const
+	{
+		return utils::split_view(str);
+	}
+
+	/** t_string::str returns a reference, not a temporary; safe to take a view. */
+	auto operator()(const t_string& str) const
+	{
+		static_assert(std::is_reference_v<decltype(std::declval<t_string>().str())>);
+		return utils::split_view(str.str());
+	}
+};
+
+} // anon namespace
+
+std::vector<std::string> split(const config_attribute_value& val)
+{
+	return utils::split(val.str());
 }
+
+std::vector<std::string_view> split_view(const config_attribute_value& val)
+{
+	return val.apply_visitor(split_view_visitor{});
+}
+
+} // namespace utils

@@ -42,7 +42,7 @@ recruit_action::recruit_action(const unit_const_ptr& recruited, const map_locati
 static const unit_type& get_unit_type(const config& cfg)
 {
 	const config& child = cfg.mandatory_child("unit");
-	const unit_type* u_type = unit_types.find(child["type"]);
+	const unit_type* u_type = unit_types.find(child["type"].str());
 
 	if(!u_type) {
 		// Bad data.

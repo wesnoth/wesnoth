@@ -240,7 +240,7 @@ void unit_type::build_help_index(
 	// if num_traits is not defined, we use the num_traits from race
 	num_traits_ = cfg["num_traits"].to_int(race_->num_traits());
 
-	for(const std::string& g : utils::split(cfg["gender"])) {
+	for(const std::string_view& g : utils::split_view(cfg["gender"])) {
 		genders_.push_back(string_gender(g));
 	}
 
@@ -347,14 +347,12 @@ void unit_type::build_created()
 		pair.second.build_created();
 	}
 
-
 	const config& cfg = get_cfg();
 
 	const std::string& advances_to_val = cfg["advances_to"];
 	if(advances_to_val != "null" && !advances_to_val.empty()) {
 		advances_to_ = utils::split(advances_to_val);
 	}
-
 
 	type_name_ = cfg["name"].t_str();
 	variation_name_ = cfg["variation_name"].t_str();
@@ -648,7 +646,7 @@ bool unit_type::musthave_status(const std::string& status_name) const
 			const std::string& ut = effect["unit_type"];
 
 			if(!ut.empty()) {
-				if(!utils::contains(utils::split(ut), id())) {
+				if(!utils::contains(utils::split_view(ut), id())) {
 					continue;
 				}
 			}
@@ -713,7 +711,7 @@ std::vector<std::string> unit_type::variations() const
 	return retval;
 }
 
-bool unit_type::has_variation(const std::string& variation_id) const
+bool unit_type::has_variation(std::string_view variation_id) const
 {
 	return variations_.find(variation_id) != variations_.end();
 }
@@ -775,7 +773,7 @@ bool unit_type::resistance_filter_matches(
 	if(!apply_to.empty()) {
 		if(damage_name != apply_to) {
 			if(apply_to.find(',') != std::string::npos && apply_to.find(damage_name) != std::string::npos) {
-				if(!utils::contains(utils::split(apply_to), damage_name)) {
+				if(!utils::contains(utils::split_view(apply_to), damage_name)) {
 					return false;
 				}
 			} else {
@@ -1221,7 +1219,7 @@ void unit_type_data::build_unit_type(const unit_type & ut, unit_type::BUILD_STAT
 /**
  * Finds a unit_type by its id() and makes sure it is built to the specified level.
  */
-const unit_type* unit_type_data::find(const std::string& key, unit_type::BUILD_STATUS status) const
+const unit_type* unit_type_data::find(std::string_view key, unit_type::BUILD_STATUS status) const
 {
 	if(key.empty() || key == "random") {
 		return nullptr;
@@ -1344,14 +1342,14 @@ void unit_type::apply_scenario_fix(const config& cfg)
 		cost_ = attr->to_int(1);
 	}
 	if(auto attr = cfg.get("add_advancement")) {
-		for(const auto& str : utils::split(attr->str())) {
+		for(const auto& str : utils::split_view(*attr)) {
 			if(!utils::contains(advances_to_, str)) {
-				advances_to_.push_back(str);
+				advances_to_.emplace_back(str);
 			}
 		}
 	}
 	if(auto attr = cfg.get("remove_advancement")) {
-		for(const auto& str : utils::split(attr->str())) {
+		for(const auto& str : utils::split_view(*attr)) {
 			boost::remove_erase(advances_to_, str);
 		}
 	}

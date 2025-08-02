@@ -75,8 +75,7 @@ std::size_t hash_value(const map_location& a){
 	return h( (static_cast<uint32_t>(a.x) << 16) ^ static_cast<uint32_t>(a.y) );
 }
 
-
-map_location::direction map_location::parse_direction(const std::string& str)
+map_location::direction map_location::parse_direction(std::string_view str)
 {
 	if(str.empty()) {
 		return direction::indeterminate;
@@ -89,16 +88,16 @@ map_location::direction map_location::parse_direction(const std::string& str)
 
 	const std::size_t open = str.find_first_of('('), close = str.find_last_of(')');
 	if (open != std::string::npos && close != std::string::npos) {
-		std::string sub = str.substr(open + 1, close - open - 1);
+		std::string_view sub = str.substr(open + 1, close - open - 1);
 		map_location::direction dir = parse_direction(sub);
-		sub = str;
-		sub.replace(open, close - open + 1, write_direction(dir));
-		return parse_direction(sub);
+		auto res = std::string(str);
+		res.replace(open, close - open + 1, write_direction(dir));
+		return parse_direction(res);
 	}
 
 	const std::size_t start = str[0] == '-' ? 1 : 0;
 	const std::size_t end = str.find_first_of(':');
-	const std::string& main_dir = str.substr(start, end - start);
+	const std::string_view main_dir = str.substr(start, end - start);
 	map_location::direction dir;
 
 	if (main_dir == "n") {
@@ -122,7 +121,7 @@ map_location::direction map_location::parse_direction(const std::string& str)
 	}
 
 	if (end != std::string::npos) {
-		const std::string rel_dir = str.substr(end + 1);
+		const std::string rel_dir(str.substr(end + 1));
 		if (rel_dir == "cw") {
 			dir = rotate_direction(dir, 1);
 		} else if (rel_dir == "ccw") {
@@ -135,14 +134,11 @@ map_location::direction map_location::parse_direction(const std::string& str)
 	return dir;
 }
 
-std::vector<map_location::direction> map_location::parse_directions(const std::string& str)
+std::vector<map_location::direction> map_location::parse_directions(std::string_view str)
 {
-	map_location::direction temp;
 	std::vector<map_location::direction> to_return;
-	std::vector<std::string> dir_strs = utils::split(str);
-	std::vector<std::string>::const_iterator i, i_end=dir_strs.end();
-	for(i = dir_strs.begin(); i != i_end; ++i) {
-		temp = map_location::parse_direction(*i);
+	for(const auto& dir : utils::split_view(str)) {
+		map_location::direction temp = map_location::parse_direction(dir);
 		// Filter out any invalid directions
 		if(temp != direction::indeterminate) {
 			to_return.push_back(temp);

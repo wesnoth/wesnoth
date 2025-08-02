@@ -507,8 +507,8 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_create_unit, child, spectator)
 	map_location loc(child);
 	resources::whiteboard->on_kill_unit();
 	const std::string& variation = child["variation"].str();
-	const unit_race::GENDER gender = string_gender(child["gender"], unit_race::NUM_GENDERS);
-	const unit_type *u_type = unit_types.find(child["type"]);
+	const unit_race::GENDER gender = string_gender(child["gender"].str(), unit_race::NUM_GENDERS);
+	const unit_type *u_type = unit_types.find(child["type"].str());
 	if (!u_type) {
 		spectator.error("Invalid unit type");
 		return false;

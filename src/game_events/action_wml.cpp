@@ -98,7 +98,7 @@ namespace { // Support functions
 			side_num = 1;
 		}
 
-		unit_race::GENDER gender = string_gender(cfg["gender"]);
+		unit_race::GENDER gender = string_gender(cfg["gender"].str());
 		const unit_type *ut = unit_types.find(type);
 		if (!ut) return fake_unit_ptr();
 		fake_unit_ptr fake = fake_unit_ptr(unit::create(*ut, side_num, false, gender));
@@ -498,7 +498,7 @@ WML_HANDLER_FUNCTION(recall,, cfg)
 							DBG_NG << "...valid location for the recall found. Recalling.";
 							avail.erase(u);	// Erase before recruiting, since recruiting can fire more events
 							actions::place_recruit(to_recruit, loc, leader->get_location(), 0, true,
-							                       map_location::parse_direction(cfg["facing"]),
+							                       map_location::parse_direction(cfg["facing"].str()),
 							                       cfg["show"].to_bool(true), cfg["fire_event"].to_bool(false),
 							                       true, true);
 							return;
@@ -515,7 +515,7 @@ WML_HANDLER_FUNCTION(recall,, cfg)
 						avail.erase(u);	// Erase before recruiting, since recruiting can fire more events
 						map_location null_location = map_location::null_location();
 						actions::place_recruit(to_recruit, loc, null_location, 0, true,
-						                       map_location::parse_direction(cfg["facing"]),
+						                       map_location::parse_direction(cfg["facing"].str()),
 						                       cfg["show"].to_bool(true), cfg["fire_event"].to_bool(false),
 						                       true, true);
 						return;

@@ -407,9 +407,8 @@ static std::vector<std::string> get_variations(const std::string& base, const st
 		res.push_back(base);
 		return res;
 	}
-	std::vector<std::string> vars = utils::split(variations, ';', 0);
 
-	for(const std::string& v : vars) {
+	for(const std::string_view& v : utils::split_view(variations, ';', 0)) {
 		res.push_back(base);
 		pos = 0;
 		while((pos = res.back().find("@V", pos)) != std::string::npos) {
