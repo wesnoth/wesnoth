@@ -39,6 +39,9 @@ enum retval : int
 
 	/** The dialog was closed automatically as its timeout had been reached. */
 	AUTO_CLOSE = -3,
+
+	/** The dialog can not be created due to a layout failure. */
+	LAYOUT_FAILURE = -4
 };
 
 } // namespace gui2

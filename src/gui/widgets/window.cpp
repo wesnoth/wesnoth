@@ -899,6 +899,8 @@ void window::layout()
 	{
 		/** @todo implement the scrollbars on the window. */
 
+		set_retval(gui2::retval::LAYOUT_FAILURE);
+
 		std::stringstream sstr;
 		sstr << __FILE__ << ":" << __LINE__ << " in function ‘" << __func__
 		     << "’ found the following problem: Failed to size window with id ‘" << id()
@@ -932,8 +934,9 @@ void window::layout()
 		}
 		catch(const layout_exception_resize_failed&)
 		{
-
 			/** @todo implement the scrollbars on the window. */
+
+			set_retval(gui2::retval::LAYOUT_FAILURE);
 
 			std::stringstream sstr;
 			sstr << __FILE__ << ":" << __LINE__ << " in function ‘" << __func__
