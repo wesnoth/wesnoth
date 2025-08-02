@@ -119,9 +119,7 @@ void debug_layout_graph::set_level(const std::string& level)
 		return;
 	}
 
-	std::vector<std::string> params = utils::split(level);
-
-	for(const auto & param : params)
+	for(const auto & param : utils::split_view(level))
 	{
 		if(param == "all") {
 			level_ = ALL;
@@ -146,9 +144,7 @@ void debug_layout_graph::set_domain(const std::string& domain)
 		return;
 	}
 
-	std::vector<std::string> params = utils::split(domain);
-
-	for(const auto & param : params)
+	for(const auto & param : utils::split_view(domain))
 	{
 		if(param == "all") {
 			domain_ = ALL;

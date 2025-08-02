@@ -344,7 +344,7 @@ bool attack_type::apply_modification(const config& cfg)
 	}
 
 	if(del_specials.empty() == false) {
-		const std::vector<std::string>& dsl = utils::split(del_specials);
+		const std::vector<std::string_view>& dsl = utils::split_view(del_specials);
 		config new_specials;
 		for(const auto [key, cfg] : specials_.all_children_view()) {
 			if(!utils::contains(dsl, cfg["id"].str())) {

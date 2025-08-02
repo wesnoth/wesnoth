@@ -208,7 +208,7 @@ bool same_unit(const unit& u, const unit& unit)
 
 }
 
-bool unit::get_ability_bool(const std::string& tag_name, const map_location& loc) const
+bool unit::get_ability_bool(std::string_view tag_name, const map_location& loc) const
 {
 	// Check that the unit has an ability of tag_name type which meets the conditions to be active.
 	// If so, return true.
@@ -248,7 +248,7 @@ bool unit::get_ability_bool(const std::string& tag_name, const map_location& loc
 	return false;
 }
 
-unit_ability_list unit::get_abilities(const std::string& tag_name, const map_location& loc) const
+unit_ability_list unit::get_abilities(std::string_view tag_name, const map_location& loc) const
 {
 	unit_ability_list res(loc_);
 
@@ -290,7 +290,7 @@ unit_ability_list unit::get_abilities(const std::string& tag_name, const map_loc
 	return res;
 }
 
-unit_ability_list unit::get_abilities_weapons(const std::string& tag_name, const map_location& loc, const_attack_ptr weapon, const_attack_ptr opp_weapon) const
+unit_ability_list unit::get_abilities_weapons(std::string_view tag_name, const map_location& loc, const_attack_ptr weapon, const_attack_ptr opp_weapon) const
 {
 	unit_ability_list res = get_abilities(tag_name, loc);
 	utils::erase_if(res, [&](const unit_ability& i) {
@@ -456,7 +456,7 @@ unit::recursion_guard::~recursion_guard()
 	}
 }
 
-bool unit::ability_active(const std::string& ability,const config& cfg,const map_location& loc) const
+bool unit::ability_active(std::string_view ability,const config& cfg,const map_location& loc) const
 {
 	auto filter_lock = update_variables_recursion(cfg);
 	if(!filter_lock) {
@@ -498,7 +498,7 @@ static bool ability_active_adjacent_helper(const unit& self, bool illuminates, c
 			assert(dir >= 0 && dir <= 5);
 			map_location::direction direction{ dir };
 			if(i.has_attribute("adjacent")) { //key adjacent defined
-				if(!utils::contains(map_location::parse_directions(i["adjacent"]), direction)) {
+				if(!utils::contains(map_location::parse_directions(i["adjacent"].str()), direction)) {
 					continue;
 				}
 			}
@@ -524,7 +524,7 @@ static bool ability_active_adjacent_helper(const unit& self, bool illuminates, c
 		terrain_filter adj_filter(vconfig(i), resources::filter_con, false);
 		adj_filter.flatten(illuminates);
 
-		std::vector<map_location::direction> dirs = i["adjacent"].empty() ? map_location::all_directions() : map_location::parse_directions(i["adjacent"]);
+		std::vector<map_location::direction> dirs = i["adjacent"].empty() ? map_location::all_directions() : map_location::parse_directions(i["adjacent"].str());
 		for(const map_location::direction index : dirs) {
 			if(!adj_filter.match(adjacent[static_cast<int>(index)])) {
 				continue;
@@ -541,7 +541,7 @@ static bool ability_active_adjacent_helper(const unit& self, bool illuminates, c
 	return true;
 }
 
-bool unit::ability_active_impl(const std::string& ability,const config& cfg,const map_location& loc) const
+bool unit::ability_active_impl(std::string_view ability,const config& cfg,const map_location& loc) const
 {
 	bool illuminates = ability == "illuminates";
 
@@ -556,7 +556,7 @@ bool unit::ability_active_impl(const std::string& ability,const config& cfg,cons
 	return true;
 }
 
-bool unit::ability_affects_adjacent(const std::string& ability, const config& cfg, std::size_t dist, int dir, const map_location& loc, const unit& from) const
+bool unit::ability_affects_adjacent(std::string_view ability, const config& cfg, std::size_t dist, int dir, const map_location& loc, const unit& from) const
 {
 	if(!cfg.has_child("affect_adjacent")) {
 		return false;
@@ -579,7 +579,7 @@ bool unit::ability_affects_adjacent(const std::string& ability, const config& cf
 			}
 		}
 		if (i.has_attribute("adjacent")) { //key adjacent defined
-			if(!utils::contains(map_location::parse_directions(i["adjacent"]), direction)) {
+			if(!utils::contains(map_location::parse_directions(i["adjacent"].str()), direction)) {
 				continue;
 			}
 		}
@@ -592,7 +592,7 @@ bool unit::ability_affects_adjacent(const std::string& ability, const config& cf
 	return false;
 }
 
-bool unit::ability_affects_self(const std::string& ability,const config& cfg,const map_location& loc) const
+bool unit::ability_affects_self(std::string_view ability, const config& cfg, const map_location& loc) const
 {
 	auto filter = cfg.optional_child("filter_self");
 	bool affect_self = cfg["affect_self"].to_bool(true);
@@ -619,7 +619,7 @@ bool unit::ability_affects_weapon(const config& cfg, const const_attack_ptr& wea
 	return weapon->matches_filter(filter);
 }
 
-bool unit::has_ability_type(const std::string& ability) const
+bool unit::has_ability_type(std::string_view ability) const
 {
 	return !abilities_.child_range(ability).empty();
 }
@@ -1705,7 +1705,7 @@ bool attack_type::overwrite_special_checking(unit_ability_list& overwriters, con
 	return false;
 }
 
-bool unit::get_self_ability_bool(const config& cfg, const std::string& ability, const map_location& loc) const
+bool unit::get_self_ability_bool(const config& cfg, std::string_view ability, const map_location& loc) const
 {
 	auto filter_lock = update_variables_recursion(cfg);
 	if(!filter_lock) {
@@ -1715,7 +1715,7 @@ bool unit::get_self_ability_bool(const config& cfg, const std::string& ability, 
 	return (ability_active_impl(ability, cfg, loc) && ability_affects_self(ability, cfg, loc));
 }
 
-bool unit::get_adj_ability_bool(const config& cfg, const std::string& ability, std::size_t dist, int dir, const map_location& loc, const unit& from, const map_location& from_loc) const
+bool unit::get_adj_ability_bool(const config& cfg,std::string_view ability, std::size_t dist, int dir, const map_location& loc, const unit& from, const map_location& from_loc) const
 {
 	auto filter_lock = from.update_variables_recursion(cfg);
 	if(!filter_lock) {
@@ -1725,12 +1725,12 @@ bool unit::get_adj_ability_bool(const config& cfg, const std::string& ability, s
 	return (affects_side(cfg, side(), from.side()) && from.ability_active_impl(ability, cfg, from_loc) && ability_affects_adjacent(ability, cfg, dist, dir, loc, from));
 }
 
-bool unit::get_self_ability_bool_weapon(const config& special, const std::string& tag_name, const map_location& loc, const const_attack_ptr& weapon, const const_attack_ptr& opp_weapon) const
+bool unit::get_self_ability_bool_weapon(const config& special, std::string_view tag_name, const map_location& loc, const const_attack_ptr& weapon, const const_attack_ptr& opp_weapon) const
 {
 	return (get_self_ability_bool(special, tag_name, loc) && ability_affects_weapon(special, weapon, false) && ability_affects_weapon(special, opp_weapon, true));
 }
 
-bool unit::get_adj_ability_bool_weapon(const config& special, const std::string& tag_name, std::size_t dist, int dir, const map_location& loc, const unit& from, const map_location& from_loc, const const_attack_ptr& weapon, const const_attack_ptr& opp_weapon) const
+bool unit::get_adj_ability_bool_weapon(const config& special, std::string_view tag_name, std::size_t dist, int dir, const map_location& loc, const unit& from, const map_location& from_loc, const const_attack_ptr& weapon, const const_attack_ptr& opp_weapon) const
 {
 	return (get_adj_ability_bool(special, tag_name, dist, dir, loc, from, from_loc) && ability_affects_weapon(special, weapon, false) && ability_affects_weapon(special, opp_weapon, true));
 }
@@ -2000,7 +2000,7 @@ namespace
 
 		// tag_name and id are equivalent of ability ability_type and ability_id/type_active filters
 		//can be extent to special_id/type_active. If tag_name or id matche if present in list.
-		const std::vector<std::string> filter_type = utils::split(filter["tag_name"]);
+		const std::vector<std::string_view> filter_type = utils::split_view(filter["tag_name"]);
 		if(!filter_type.empty() && !utils::contains(filter_type, tag_name))
 			return false;
 

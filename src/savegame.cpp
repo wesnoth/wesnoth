@@ -838,7 +838,7 @@ static void convert_old_saves_1_13_1(config& cfg)
 	for(config& snapshot : cfg.child_range("snapshot")) {
 		if(snapshot.has_attribute("used_items")) {
 			config used_items;
-			for(const std::string& item : utils::split(snapshot["used_items"])) {
+			for(const std::string_view& item : utils::split_view(snapshot["used_items"])) {
 				used_items[item] = true;
 			}
 

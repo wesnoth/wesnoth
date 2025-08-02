@@ -204,7 +204,7 @@ bool side_filter::match_internal(const team &t) const
 		}
 		else {
 			bool found = false;
-			for(const std::string& controller : utils::split(cfg_controller))
+			for(const std::string_view& controller : utils::split_view(cfg_controller))
 			{
 				if(side_controller::get_string(t.controller()) == controller) {
 					found = true;

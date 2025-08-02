@@ -46,10 +46,10 @@ void addon_auth::pre_show()
 
 	std::vector<config> content_list;
 
-	for(const auto& author : utils::split(cfg_["primary_authors"].str(""), ',')) {
+	for(const auto& author : utils::split_view(cfg_["primary_authors"])) {
 		content_list.emplace_back("label", author);
 	}
-	for(const auto& author : utils::split(cfg_["secondary_authors"].str(""), ',')) {
+	for(const auto& author : utils::split_view(cfg_["secondary_authors"])) {
 		content_list.emplace_back("label", author);
 	}
 	if(content_list.size() > 0) {

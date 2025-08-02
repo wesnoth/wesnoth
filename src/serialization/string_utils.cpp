@@ -155,23 +155,30 @@ std::vector<std::string> square_parenthetical_split(const std::string& val,
 					if (found_tilde == std::string::npos) {
 						std::size_t found_asterisk = piece.find_first_of('*');
 						if (found_asterisk == std::string::npos) {
-							square_expansion.emplace_back(std::string(boost::trim_copy(piece)));
+							std::string_view temp = piece;
+							boost::trim(temp); // TODO C++20: do this in one step with boost::trim_copy
+							square_expansion.emplace_back(temp);
 						}
 						else { //'*' multiple expansion
-							std::string s_begin(boost::trim_copy(piece.substr(0, found_asterisk)));
-							std::string s_end(boost::trim_copy(piece.substr(found_asterisk + 1)));
-							for (int ast=std::stoi(s_end); ast>0; --ast)
-								square_expansion.push_back(s_begin);
+							std::string_view s_begin = piece.substr(0, found_asterisk);
+							boost::trim(s_begin);
+							auto s_end = std::string(piece.substr(found_asterisk + 1));
+							boost::trim(s_end);
+							for(int ast = std::stoi(s_end); ast > 0; --ast) {
+								square_expansion.emplace_back(s_begin);
+							}
 						}
 					}
 					else { //expand number range
-						std::string s_begin(boost::trim_copy(piece.substr(0, found_tilde)));
+						auto s_begin = std::string(piece.substr(0, found_tilde));
+						boost::trim(s_begin);
 						int begin = std::stoi(s_begin);
 						std::size_t padding = 0, padding_end = 0;
 						while (padding<s_begin.size() && s_begin[padding]=='0') {
 							padding++;
 						}
-						std::string s_end(boost::trim_copy(piece.substr(found_tilde + 1)));
+						auto s_end = std::string(piece.substr(found_tilde + 1));
+						boost::trim(s_end);
 						int end = std::stoi(s_end);
 						while (padding_end<s_end.size() && s_end[padding_end]=='0') {
 							padding_end++;

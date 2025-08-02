@@ -65,7 +65,7 @@ unsigned get_h_align(const std::string& h_align)
 	}
 }
 
-unsigned get_border(const std::vector<std::string>& borders)
+unsigned get_border(const std::vector<std::string_view>& borders)
 {
 	unsigned result = 0;
 	for(const auto & border : borders)
@@ -91,7 +91,7 @@ unsigned read_flags(const config& cfg)
 
 	const unsigned v_flags = get_v_align(cfg["vertical_alignment"]);
 	const unsigned h_flags = get_h_align(cfg["horizontal_alignment"]);
-	flags |= get_border(utils::split(cfg["border"]));
+	flags |= get_border(utils::split_view(cfg["border"]));
 
 	if(cfg["vertical_grow"].to_bool()) {
 		flags |= grid::VERTICAL_GROW_SEND_TO_CLIENT;

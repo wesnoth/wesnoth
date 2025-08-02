@@ -317,10 +317,8 @@ unit_animation::unit_animation(const config& cfg,const std::string& frame_string
 
 	event_ = utils::split(cfg["apply_to"]);
 
-	const std::vector<std::string>& my_directions = utils::split(cfg["direction"]);
-	for(const auto& direction :  my_directions) {
-		const map_location::direction d = map_location::parse_direction(direction);
-		directions_.push_back(d);
+	for(const auto& direction : utils::split_view(cfg["direction"])) {
+		directions_.push_back(map_location::parse_direction(direction));
 	}
 
 	/*const filter_context* fc = game_display::get_singleton();
@@ -342,11 +340,11 @@ unit_animation::unit_animation(const config& cfg,const std::string& frame_string
 		secondary_unit_filter_.push_back(filter);
 	}
 
-	for(const auto& v : utils::split(cfg["value"])) {
-		value_.push_back(atoi(v.c_str()));
+	for(const auto& v : utils::split_view(cfg["value"])) {
+		value_.push_back(atoi(v.data()));
 	}
 
-	for(const auto& h : utils::split(cfg["hits"])) {
+	for(const auto& h : utils::split_view(cfg["hits"])) {
 		if(h == "yes" || h == strike_result::hit) {
 			hits_.push_back(strike_result::type::hit);
 		}
@@ -360,8 +358,8 @@ unit_animation::unit_animation(const config& cfg,const std::string& frame_string
 		}
 	}
 
-	for(const auto& v2 : utils::split(cfg["value_second"])) {
-		value2_.push_back(atoi(v2.c_str()));
+	for(const auto& v2 : utils::split_view(cfg["value_second"])) {
+		value2_.push_back(atoi(v2.data()));
 	}
 
 	for(const config& filter : cfg.child_range("filter_attack")) {
@@ -783,7 +781,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 				.duration(225ms)
 				.blend("0.0,0.5:75,0.0:75,0.5:75,0.0", {255,0,0}));
 		} else {
-			for(const std::string& hit_type : utils::split(anim["hits"])) {
+			for(const std::string_view& hit_type : utils::split_view(anim["hits"])) {
 				config tmp = anim;
 				tmp["hits"] = hit_type;
 

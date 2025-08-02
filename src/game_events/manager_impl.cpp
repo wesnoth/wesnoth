@@ -63,9 +63,9 @@ void event_handlers::log_handlers()
  * This means stripping leading and trailing spaces, and converting internal
  * spaces to underscores.
  */
-std::string event_handlers::standardize_name(const std::string& name)
+std::string event_handlers::standardize_name(std::string_view name)
 {
-	std::string retval = name;
+	std::string retval(name);
 
 	// Trim leading and trailing spaces.
 	boost::trim(retval);
@@ -196,7 +196,7 @@ void event_handlers::clean_up_expired_handlers(const std::string& event_name)
 
 	// Then remove any now-unlockable weak_ptrs from the by-name list.
 	// Might be more than one so we split.
-	for(const std::string& name : utils::split(event_name)) {
+	for(const std::string_view& name : utils::split_view(event_name)) {
 		by_name_[standardize_name(name)].remove_if(
 			[](const weak_handler_ptr& ptr) { return ptr.expired(); }
 		);

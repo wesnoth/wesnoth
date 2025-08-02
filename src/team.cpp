@@ -510,14 +510,14 @@ bool team::calculate_is_enemy(std::size_t index) const
 	}
 
 	// We are friends with anyone who we share a teamname with
-	std::vector<std::string> our_teams = utils::split(info_.team_name);
-	std::vector<std::string> their_teams = utils::split(resources::gameboard->teams()[index].info_.team_name);
+	std::vector<std::string_view> our_teams = utils::split_view(info_.team_name);
+	std::vector<std::string_view> their_teams = utils::split_view(resources::gameboard->teams()[index].info_.team_name);
 
 	LOG_NGE << "team " << info_.side << " calculates if it has enemy in team " << index + 1 << "; our team_name ["
 			<< info_.team_name << "], their team_name is [" << resources::gameboard->teams()[index].info_.team_name
 			<< "]" << std::endl;
 
-	for(const std::string& t : our_teams) {
+	for(const std::string_view& t : our_teams) {
 		if(utils::contains(their_teams, t)) {
 			LOG_NGE << "team " << info_.side << " found same team name [" << t << "] in team " << index + 1;
 			return false;

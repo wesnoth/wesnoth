@@ -308,7 +308,7 @@ t_translation::terrain_code gamemap_base::get_terrain(const map_location& loc) c
 	return loc == map_location::null_location() ? t_translation::NONE_TERRAIN : t_translation::terrain_code();
 }
 
-map_location gamemap_base::special_location(const std::string& id) const
+map_location gamemap_base::special_location(std::string_view id) const
 {
 	auto it = starting_positions_.left.find(id);
 	if (it != starting_positions_.left.end()) {
@@ -359,7 +359,7 @@ const std::string* gamemap_base::is_special_location(const map_location& loc) co
 	return it == starting_positions_.right.end() ? nullptr : &it->second;
 }
 
-void gamemap_base::set_special_location(const std::string& id, const map_location& loc)
+void gamemap_base::set_special_location(std::string_view id, const map_location& loc)
 {
 	bool valid = loc.valid();
 	auto it_left = starting_positions_.left.find(id);

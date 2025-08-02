@@ -89,7 +89,7 @@ private:
 	std::string help_taxonomy_;
 };
 
-unit_race::GENDER string_gender(const std::string& str, unit_race::GENDER def = unit_race::MALE);
+unit_race::GENDER string_gender(std::string_view str, unit_race::GENDER def = unit_race::MALE);
 const std::string& gender_string(unit_race::GENDER gender);
 
 /**
