@@ -15,6 +15,7 @@
 #pragma once
 
 #include "config.hpp"
+#include "units/unit.hpp"
 
 /**
  * Utility functions for implementing [filter], [filter_ability], [filter_weapon], etc.
@@ -69,3 +70,31 @@ bool set_includes_if_present(const config& filter, const config& cfg, const std:
 bool bool_or_empty(const config& filter, const config& cfg, const std::string& attribute);
 
 } // namespace utils::config_filters
+
+/**
+ * Utility functions for for checking units variables like get_location(), id(), has_ability_distant().
+ */
+namespace utils::unit_filters
+{
+
+/**
+ * This function return true if locations checked are the same, or if units have same id.
+ */
+bool same_unit(const unit& self, const unit& unit);
+
+/**
+ * This function return true if same_unit() don't match, unit not incapacitated, and unit have has_ability_distant() variable.
+ */
+bool distant_unit_match(const unit& self, const unit& unit);
+
+/**
+ * This function return true if distant_unit_match() true and, unit have affect_distant() variable.
+ */
+bool distant_unit_match(const unit& self, const unit& unit, const std::string& tag_name);
+
+/**
+ * This function return true if distant_unit_match() true and, unit have has_ability_distant_image() variable.
+ */
+bool distant_halo_unit_match(const unit& self, const unit& unit);
+
+} // namespace utils::unit_filters
