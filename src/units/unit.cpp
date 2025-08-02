@@ -1513,7 +1513,7 @@ void unit::set_state(std::string_view state, bool value)
 bool unit::has_ability_by_id(std::string_view ability) const
 {
 	for(const auto [key, cfg] : abilities_.all_children_view()) {
-		if(cfg["id"].str() == ability) {
+		if(cfg["id"] == ability) {
 			return true;
 		}
 	}
@@ -1526,7 +1526,7 @@ void unit::remove_ability_by_id(std::string_view ability)
 	set_attr_changed(UA_ABILITIES);
 	config::all_children_iterator i = abilities_.ordered_begin();
 	while (i != abilities_.ordered_end()) {
-		if(i->cfg["id"].str() == ability) {
+		if(i->cfg["id"] == ability) {
 			i = abilities_.erase(i);
 		} else {
 			++i;
