@@ -1,10 +1,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/mnuClear"
-        android:title="Clear Data"
+        android:title="Clear Gamedata"
         android:showAsAction="never"/>
     <item
         android:id="@+id/mnuLocalInstall"
-        android:title="Install Data from ZIP"
+        android:title="Install Gamedata ZIP"
+        android:showAsAction="never"/>
+    <item
+        android:id="@+id/mnuImportExport"
+        android:title="Import/Export Userdata"
         android:showAsAction="never"/>
 </menu>
