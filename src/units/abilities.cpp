@@ -44,7 +44,6 @@
 #include "units/filter.hpp"
 #include "units/map.hpp"
 #include "utils/config_filters.hpp"
-#include "units/filter.hpp"
 
 #include <utility>
 
@@ -198,18 +197,11 @@ int find_direction(const map_location& loc, const map_location& from_loc, std::s
 	return 0;
 }
 
-/**
- * This function return true if locations checked are the same, or if units have same id.
- */
-bool same_unit(const unit& u, const unit& unit)
-{
-	return (u.get_location() == unit.get_location() || u.id() == unit.id());
-}
-
 }
 
 bool unit::get_ability_bool(const std::string& tag_name, const map_location& loc) const
 {
+	using namespace utils::unit_filters;
 	// Check that the unit has an ability of tag_name type which meets the conditions to be active.
 	// If so, return true.
 	for (const config &i : this->abilities_.child_range(tag_name)) {
@@ -228,7 +220,7 @@ bool unit::get_ability_bool(const std::string& tag_name, const map_location& loc
 	// different from the central unit, that the ability is of the right type, detailed verification of each ability),
 	// if so return true.
 	for(const unit& u : units) {
-		if(!u.has_ability_distant() || u.incapacitated() || same_unit(u, *this) || !u.affect_distant(tag_name)) {
+		if(!distant_unit_match(*this, u, tag_name)) {
 			continue;
 		}
 		const map_location& from_loc = u.get_location();
@@ -250,6 +242,7 @@ bool unit::get_ability_bool(const std::string& tag_name, const map_location& loc
 
 unit_ability_list unit::get_abilities(const std::string& tag_name, const map_location& loc) const
 {
+	using namespace utils::unit_filters;
 	unit_ability_list res(loc_);
 
 	// Check that the unit has an ability of tag_name type which meets the conditions to be active.
@@ -270,7 +263,7 @@ unit_ability_list unit::get_abilities(const std::string& tag_name, const map_loc
 	// different from the central unit, that the ability is of the right type, detailed verification of each ability),
 	// If so, add to unit_ability_list.
 	for(const unit& u : units) {
-		if(!u.has_ability_distant() || u.incapacitated() || same_unit(u, *this) || !u.affect_distant(tag_name)) {
+		if(!distant_unit_match(*this, u, tag_name)) {
 			continue;
 		}
 		const map_location& from_loc = u.get_location();
@@ -468,6 +461,7 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const map
 
 static bool ability_active_adjacent_helper(const unit& self, bool illuminates, const config& cfg, const map_location& loc, bool in_abilities_tag)
 {
+	using namespace utils::unit_filters;
 	const auto adjacent = get_adjacent_tiles(loc);
 
 	const unit_map& units = get_unit_map();
@@ -484,7 +478,7 @@ static bool ability_active_adjacent_helper(const unit& self, bool illuminates, c
 		for(const unit& u : units) {
 			const map_location& from_loc = u.get_location();
 			std::size_t distance = distance_between(from_loc, loc);
-			if(same_unit(u, self) || distance > radius || !ufilt(u, self)) {
+			if(same_unit(self, u) || distance > radius || !ufilt(u, self)) {
 				continue;
 			}
 			int dir = 0;
@@ -635,6 +629,7 @@ static void add_string_to_vector(std::vector<std::string>& image_list, const con
 
 std::vector<std::string> unit::halo_or_icon_abilities(const std::string& image_type) const
 {
+	using namespace utils::unit_filters;
 	std::vector<std::string> image_list;
 	for(const auto [key, cfg] : abilities_.all_children_view()){
 		bool is_active = ability_active(key, cfg, loc_);
@@ -651,7 +646,7 @@ std::vector<std::string> unit::halo_or_icon_abilities(const std::string& image_t
 	const unit_map& units = get_unit_map();
 
 	for(const unit& u : units) {
-		if(!u.has_ability_distant_image() || u.incapacitated() || same_unit(u, *this)) {
+		if(!distant_halo_unit_match(*this, u)) {
 			continue;
 		}
 		const map_location& from_loc = u.get_location();
@@ -924,6 +919,7 @@ std::vector<std::pair<t_string, t_string>> attack_type::special_tooltips(
 std::vector<std::pair<t_string, t_string>> attack_type::abilities_special_tooltips(
 	boost::dynamic_bitset<>* active_list) const
 {
+	using namespace utils::unit_filters;
 	std::vector<std::pair<t_string, t_string>> res;
 	if(active_list) {
 		active_list->clear();
@@ -948,7 +944,7 @@ std::vector<std::pair<t_string, t_string>> attack_type::abilities_special_toolti
 		}
 	}
 	for(const unit& u : get_unit_map()) {
-		if(!u.has_ability_distant() || u.incapacitated() || same_unit(u, *self_)) {
+		if(!distant_unit_match(*self_, u)) {
 			continue;
 		}
 		const map_location& from_loc = u.get_location();
@@ -1117,10 +1113,11 @@ void attack_type::weapon_specials_impl_adj(
 	const std::string& affect_adjacents,
 	bool leader_bool)
 {
+	using namespace utils::unit_filters;
 	const unit_map& units = get_unit_map();
 	if(self){
 		for(const unit& u : units) {
-			if(!u.has_ability_distant() || u.incapacitated() || same_unit(u, *self)) {
+			if(!distant_unit_match(*self, u)) {
 				continue;
 			}
 			const map_location& from_loc = u.get_location();
@@ -1783,6 +1780,7 @@ bool attack_type::check_adj_abilities_impl(const const_attack_ptr& self_attack, 
  */
 bool attack_type::has_special_or_ability(const std::string& special) const
 {
+	using namespace utils::unit_filters;
 	//Now that filter_(second)attack in event supports special_id/type_active, including abilities used as weapons,
 	//these can be detected even in placeholder attacks generated to compensate for the lack of attack in defense against an attacker using a range attack not possessed by the defender.
 	//It is therefore necessary to check if the range is not empty (proof that the weapon is not a placeholder) to decide if has_weapon_ability can be returned or not.
@@ -1802,7 +1800,7 @@ bool attack_type::has_special_or_ability(const std::string& special) const
 		}
 
 		for(const unit& u : units) {
-			if(!u.affect_distant(special) || u.incapacitated() || same_unit(u, *self_)) {
+			if(!distant_unit_match(*self_, u, special)) {
 				continue;
 			}
 			const map_location& from_loc = u.get_location();
@@ -1827,7 +1825,7 @@ bool attack_type::has_special_or_ability(const std::string& special) const
 		}
 
 		for(const unit& u : units) {
-			if(!u.affect_distant(special) || u.incapacitated() || same_unit(u, *other_)) {
+			if(!distant_unit_match(*other_, u, special)) {
 				continue;
 			}
 			const map_location& from_loc = u.get_location();
@@ -1873,6 +1871,7 @@ bool attack_type::has_filter_special_or_ability(const config& filter, bool simpl
 	const std::set<std::string> filter_special_id = simple_check ? utils::split_set(filter["special_id"].str()) : utils::split_set(filter["special_id_active"].str());
 	const std::set<std::string> filter_special_type = simple_check ? utils::split_set(filter["special_type"].str()) : utils::split_set(filter["special_type_active"].str());
 	using namespace utils::config_filters;
+	using namespace utils::unit_filters;
 	for(const auto [key, cfg] : specials().all_children_view()) {
 		if(special_checking(cfg["id"].str(), key, filter_special, filter_special_id, filter_special_type)) {
 			if(simple_check) {
@@ -1907,7 +1906,7 @@ bool attack_type::has_filter_special_or_ability(const config& filter, bool simpl
 			}
 		}
 		for(const unit& u : units) {
-			if(!u.has_ability_distant() || u.incapacitated() || same_unit(u, *self_)) {
+			if(!distant_unit_match(*self_, u)) {
 				continue;
 			}
 			const map_location& from_loc = u.get_location();
@@ -1933,7 +1932,7 @@ bool attack_type::has_filter_special_or_ability(const config& filter, bool simpl
 		}
 
 		for(const unit& u : units) {
-			if(!u.has_ability_distant() || u.incapacitated() || same_unit(u, *other_)) {
+			if(!distant_unit_match(*other_, u)) {
 				continue;
 			}
 			const map_location& from_loc = u.get_location();
@@ -2159,6 +2158,7 @@ bool attack_type::has_special_or_ability_with_filter(const config & filter) cons
 		return false;
 	}
 	using namespace utils::config_filters;
+	using namespace utils::unit_filters;
 	bool check_if_active = filter["active"].to_bool();
 	for(const auto [key, cfg] : specials().all_children_view()) {
 		if(special_matches_filter(cfg, key, filter)) {
@@ -2196,7 +2196,7 @@ bool attack_type::has_special_or_ability_with_filter(const config & filter) cons
 		}
 		if(check_adjacent) {
 			for(const unit& u : units) {
-				if(!u.has_ability_distant() || u.incapacitated() || same_unit(u, *self_)) {
+				if(!distant_unit_match(*self_, u)) {
 					continue;
 				}
 				const map_location& from_loc = u.get_location();
@@ -2224,7 +2224,7 @@ bool attack_type::has_special_or_ability_with_filter(const config & filter) cons
 
 		if(check_adjacent) {
 			for(const unit& u : units) {
-				if(!u.has_ability_distant() || u.incapacitated() || same_unit(u, *other_)) {
+				if(!distant_unit_match(*other_, u)) {
 					continue;
 				}
 				const map_location& from_loc = u.get_location();

@@ -152,3 +152,23 @@ bool utils::config_filters::bool_or_empty(const config& filter, const config& cf
 	}
 	return is_matches;
 }
+
+bool utils::unit_filters::same_unit(const unit& self, const unit& unit)
+{
+	return (self.get_location() == unit.get_location() || self.id() == unit.id());
+}
+
+bool utils::unit_filters::distant_unit_match(const unit& self, const unit& unit)
+{
+	return (unit.has_ability_distant() && !unit.incapacitated() && !same_unit(self, unit) && self.id() != unit.id());
+}
+
+bool utils::unit_filters::distant_unit_match(const unit& self, const unit& unit, const std::string& tag_name)
+{
+	return (distant_unit_match(self, unit) && unit.affect_distant(tag_name));
+}
+
+bool utils::unit_filters::distant_halo_unit_match(const unit& self, const unit& unit)
+{
+	return (distant_unit_match(self, unit) && unit.has_ability_distant_image());
+}
