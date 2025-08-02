@@ -292,17 +292,12 @@ std::map<std::string, std::string> map_split(
 
 	for(const std::string_view& view : v) {
 		std::size_t pos = view.find_first_of(minor);
-		std::string key, value;
 
 		if(pos == std::string::npos) {
-			key = view;
-			value = default_value;
+			res.emplace(view, default_value);
 		} else {
-			key = view.substr(0, pos);
-			value = view.substr(pos + 1);
+			res.emplace(view.substr(0, pos), view.substr(pos + 1));
 		}
-
-		res[key] = value;
 	}
 
 	return res;
