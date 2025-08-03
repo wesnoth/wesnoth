@@ -29,7 +29,6 @@
 #include "terrain/filter.hpp"
 #include "units/unit.hpp"
 #include "units/types.hpp"
-#include "utils/charconv.hpp"
 #include "variable.hpp" // needed for vconfig, scoped unit
 #include "formula/callable_objects.hpp"
 #include "formula/formula.hpp"
@@ -520,9 +519,10 @@ void unit_filter_compound::fill(const vconfig& cfg)
 			[](const config::attribute_value& c)
 			{
 				std::vector<int> res;
-				for(const std::string_view& s : utils::split_view(c)) {
+				// NOTE: cannot use split_view here since the value might be a single number
+				for(const std::string& s : utils::split(c)) {
 					try {
-						res.push_back(utils::stoi(s));
+						res.push_back(std::stoi(s));
 					} catch(const std::invalid_argument&) {
 						WRN_CF << "ignored invalid side='" << s << "' in filter";
 					}
