@@ -40,14 +40,17 @@ public class IOUtils {
 		
 		copyRecursive(context, source, targetDir);
 	}
-	
+
 	private static void copyRecursive(Context context, DocumentFile source, DocumentFile targetParent) {
 		final String sourceName = source.getName();
-		
+
 		if (source.isDirectory()) {
 			DocumentFile newDir = targetParent.findFile(sourceName);
 			if (newDir == null || !newDir.isDirectory()) {
 				newDir = targetParent.createDirectory(sourceName);
+				if (newDir == null) {
+					return;
+				}
 			}
 
 			for (DocumentFile child : source.listFiles()) {
@@ -61,9 +64,18 @@ public class IOUtils {
 				}
 
 				DocumentFile newFile = targetParent.createFile(getMimeType(sourceName), sourceName);
-				copyStream(
-					context.getContentResolver().openInputStream(source.getUri()),
-					context.getContentResolver().openOutputStream(newFile.getUri()));
+				if (newFile == null) {
+					return;
+				}
+
+				InputStream in = context.getContentResolver().openInputStream(source.getUri());
+				OutputStream out = context.getContentResolver().openOutputStream(newFile.getUri());
+
+				if (in == null || out == null) {
+					return;
+				}
+
+				copyStream(in, out);
 			} catch (IOException ioe) {
 				Log.e("Import/Export copy", "IO error", ioe);
 			}
