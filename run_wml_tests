@@ -235,7 +235,7 @@ class WesnothRunner:
                     names=", ".join([test.name for test in test_list])))
             res = subprocess.CompletedProcess(args, UnitTestResult.TIMEOUT.value, t.output or b'')
         if self.verbose >= Verbosity.OUTPUT_OF_PASSING_TESTS:
-            print(res.stdout.decode('utf-8'))
+            print("TEST OUTPUT:\n{output}\nTEST OUTPUT END".format(output=res.stdout.decode('utf-8'))) # stderr is redirected to stdout
             print("Result:", res.returncode)
         if res.returncode < 0:
             print("Wesnoth exited because of signal", -res.returncode)
@@ -261,7 +261,7 @@ class WesnothRunner:
                 # here is likely to have many 'PASS TEST' lines with the failing test last.
                 # If support for batching other UnitTestResults is added then this needs to filter
                 # the output from the other tests.
-                print(res.stdout.decode('utf-8'))
+                print("TEST OUTPUT:\n{output}\nTEST OUTPUT END".format(output=res.stdout.decode('utf-8'))) # stderr is redirected to stdout
             print("Failure, Wesnoth returned", returned_result, "but we expected", expected_result)
             test_summary.fail_test(test_list)
             raise UnexpectedTestStatusException()
