@@ -149,7 +149,7 @@ std::vector<std::string> square_parenthetical_split(const std::string& val,
 			//push back square contents
 			std::size_t size_square_exp = 0;
 			for (std::size_t i=0; i < square_left.size(); i++) {
-#if __cpp_lib_string_view >= 201803L // C++20 or later... for some godforsaken reason
+#if __cplusplus >= 202002L
 				auto bracket_range = std::string_view(square_left[i] + 1, square_right[i]);
 #else
 				std::string::const_iterator begin = square_left[i] + 1;
