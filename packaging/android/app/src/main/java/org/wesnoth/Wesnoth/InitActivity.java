@@ -52,14 +52,12 @@ import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.PopupMenu;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import org.wesnoth.Wesnoth.BuildConfig;
+import androidx.documentfile.provider.DocumentFile;
 
 public class InitActivity extends Activity {
 
@@ -106,6 +104,10 @@ public class InitActivity extends Activity {
 			initialize();
 		} else if (reqCode == 2 && resCode == RESULT_OK) {
 			initializeAssetsFromZip(intent.getData());
+		} else if (reqCode == 3 && resCode == RESULT_OK) {
+			importUserData(intent.getData());
+		} else if (reqCode == 4 && resCode == RESULT_OK) {
+			exportUserData(intent.getData());
 		}
 	}
 
@@ -118,10 +120,13 @@ public class InitActivity extends Activity {
 			settingsMenu.setOnMenuItemClickListener(menuItem -> {
 				if (menuItem.getItemId() == R.id.mnuClear) {
 					// TODO do the deleting in another thread
-					clearGameData(dataDir);
+					showClearDataDialog(dataDir);
 					return true;
 				} else if (menuItem.getItemId() == R.id.mnuLocalInstall) {
 					showZIPHelpDialog();
+					return true;
+				} else if (menuItem.getItemId() == R.id.mnuImportExport) {
+					showImportExportDialog();
 					return true;
 				}
 				return false;
@@ -296,7 +301,7 @@ public class InitActivity extends Activity {
 
 		try (FileOutputStream certStream = new FileOutputStream(certFile)) {
 			certFile.createNewFile();
-			copyStream(getResources().openRawResource(R.raw.cacert), certStream);
+			IOUtils.copyStream(getResources().openRawResource(R.raw.cacert), certStream);
 		} catch (Exception e) {
 			Log.e("InitActivity", "Exception", e);
 		}
@@ -320,7 +325,7 @@ public class InitActivity extends Activity {
 		});
 	}
 
-	private void clearGameData(File dataDir) {
+	private void showClearDataDialog(File dataDir) {
 		new AlertDialog.Builder(this)
 			.setTitle("Confirm Deletion")
 			.setMessage("All gamedata will be completely deleted. Are you sure?")
@@ -362,40 +367,76 @@ public class InitActivity extends Activity {
 		Intent inttOpen2 = Intent.createChooser(inttOpen, "Open ZIP file...");
 		startActivityForResult(inttOpen2, 2);
 	}
-
-	private void updateDownloadProgress(int progress, int max, String type) {
+	
+	private void showImportExportDialog() {
+		new AlertDialog.Builder(this)
+			.setTitle("Import/Export User Data")
+			.setMessage("This allows you to import/export your userdata folder, which contains your add-ons, game saves, logs and so on. Intended for advanced users and UMC creators.")
+			.setPositiveButton("Import", (dialog, which) ->
+				// Open directory picker to select import destination
+				startActivityForResult(new Intent(Intent.ACTION_OPEN_DOCUMENT_TREE), 3)
+			)
+			.setNegativeButton("Export", (dialog, which) ->
+				// Open directory picker to select export destination
+				startActivityForResult(new Intent(Intent.ACTION_OPEN_DOCUMENT_TREE), 4)
+			)
+			.setNeutralButton("Cancel", null)
+			.setCancelable(false)
+			.show();
+	}
+	
+	private void importUserData(Uri uri) {
+		Toast.makeText(this, "Importing...", Toast.LENGTH_SHORT).show();
+		Executors.newSingleThreadExecutor().execute(() -> {
+			runOnUiThread(()-> showProgressScreen());
+			DocumentFile targetDir = DocumentFile.fromTreeUri(this, uri);
+			for (DocumentFile child : targetDir.listFiles()) {
+				if (!child.getName().equals("gamedata")) {
+					runOnUiThread(()-> updateProgress("Importing " + child.getName(), 0));
+					IOUtils.copyRecursive(this, child, getExternalFilesDir(null));
+				}
+			}
+			runOnUiThread(()-> showLaunchScreen());
+			runOnUiThread(()-> Toast.makeText(this, "Imported!", Toast.LENGTH_SHORT).show());
+		});
+	}
+	
+	private void exportUserData(Uri uri) {
+		Toast.makeText(this, "Exporting...", Toast.LENGTH_SHORT).show();
+		Executors.newSingleThreadExecutor().execute(() -> {
+			runOnUiThread(()-> showProgressScreen());
+			for (File child : getExternalFilesDir(null).listFiles()) {
+				if (!child.getName().equals("gamedata")) {
+					runOnUiThread(()-> updateProgress("Exporting " + child.getName(), 0));
+					IOUtils.copyRecursive(this, child, uri);
+				}
+			}
+			runOnUiThread(()-> showLaunchScreen());
+			runOnUiThread(()-> Toast.makeText(this, "Exported!", Toast.LENGTH_SHORT).show());
+		});
+	}
+	
+	private void updateProgress(String progressMsg, int progress) {
 		TextView progressText = (TextView) findViewById(R.id.download_msg);
 		ProgressBar progressBar = (ProgressBar) findViewById(R.id.download_progress);
 		progressBar.setProgress(progress);
-		progressText.setText("Downloading " + type + " ... (" + toSizeString(progress) + "/" + toSizeString(max) + ")");
+		progressText.setText(progressMsg);
+	}
+
+	private void updateDownloadProgress(int progress, int max, String type) {
+		updateProgress(
+			String.format("Downloading %s ... (%s/%s)", type, toSizeString(progress), toSizeString(max)),
+			progress);
 	}
 
 	private void updateUnpackProgress(int progress, int max, String type) {
-		TextView progressText = (TextView) findViewById(R.id.download_msg);
-		ProgressBar progressBar = (ProgressBar) findViewById(R.id.download_progress);
-		progressBar.setProgress(progress);
 		// progress starts from 0 but asset counting starts from 1.
 		// also, when installing from zip the total number of files is
-		// not available, so don't show it in that case.
-		if (max > 0) {
-			progressText.setText("Unpacking " + type + " assets... (" + (progress+1) + "/" + max + ")");
-		} else {
-			progressText.setText("Unpacking " + type + " assets... (" + (progress+1) + ")");
-		}
-	}
-
-	private void copyStreamNoClose(InputStream in, OutputStream out) throws IOException {
-		byte[] buffer = new byte[8192];
-		int length;
-		while ((length = in.read(buffer)) > 0) {
-			out.write(buffer, 0, length);
-		}
-	}
-
-	private void copyStream(InputStream in, OutputStream out) throws IOException {
-		copyStreamNoClose(in, out);
-		out.close();
-		in.close();
+		// not available, so don't show max in that case.
+		String unpackMsg = max > 0
+			? String.format("Unpacking %s assets... (%s/%s)", type, progress+1, max)
+			: String.format("Unpacking %s assets... (%s)", type, progress+1);
+		updateProgress(unpackMsg, progress);
 	}
 
 	private long downloadFile(String url, File destpath, String type, long modified) {
@@ -474,7 +515,7 @@ public class InitActivity extends Activity {
 			return false;
 		}
 
-		try (ZipInputStream zf = new ZipInputStream(getContentResolver().openInputStream(uri))) {
+		try (ZipInputStream zf = new ZipInputStream(zipstream)) {
 			AtomicInteger progress = new AtomicInteger(1);
 
 			runOnUiThread(() -> ((ProgressBar) findViewById(R.id.download_progress)).setIndeterminate(true));
@@ -490,7 +531,7 @@ public class InitActivity extends Activity {
 					}
 				} else {
 					FileOutputStream out = new FileOutputStream(new File(destdir, ze.getName()));
-					copyStreamNoClose(zf, out);
+					IOUtils.copyStreamNoClose(zf, out);
 					out.close();
 				}
 
@@ -542,7 +583,7 @@ public class InitActivity extends Activity {
 						dir.mkdir();
 					}
 				} else {
-					copyStream(
+					IOUtils.copyStream(
 						zf.getInputStream(ze),
 						new FileOutputStream(new File(destdir, ze.getName())));
 				}
