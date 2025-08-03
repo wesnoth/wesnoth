@@ -372,14 +372,14 @@ public class InitActivity extends Activity {
 		new AlertDialog.Builder(this)
 			.setTitle("Import/Export User Data")
 			.setMessage("This allows you to import/export your userdata folder, which contains your add-ons, game saves, logs and so on. Intended for advanced users and UMC creators.")
-			.setPositiveButton("Import", (dialog, which) -> {
+			.setPositiveButton("Import", (dialog, which) ->
 				// Open directory picker to select import destination
-				startActivityForResult(new Intent(Intent.ACTION_OPEN_DOCUMENT_TREE), 3);
-			})
-			.setNegativeButton("Export", (dialog, which) -> {
+				startActivityForResult(new Intent(Intent.ACTION_OPEN_DOCUMENT_TREE), 3)
+			)
+			.setNegativeButton("Export", (dialog, which) ->
 				// Open directory picker to select export destination
-				startActivityForResult(new Intent(Intent.ACTION_OPEN_DOCUMENT_TREE), 4);
-			})
+				startActivityForResult(new Intent(Intent.ACTION_OPEN_DOCUMENT_TREE), 4)
+			)
 			.setNeutralButton("Cancel", null)
 			.setCancelable(false)
 			.show();
@@ -388,13 +388,15 @@ public class InitActivity extends Activity {
 	private void importUserData(Uri uri) {
 		Toast.makeText(this, "Importing...", Toast.LENGTH_SHORT).show();
 		Executors.newSingleThreadExecutor().execute(() -> {
+			runOnUiThread(()-> showProgressScreen());
 			DocumentFile targetDir = DocumentFile.fromTreeUri(this, uri);
 			for (DocumentFile child : targetDir.listFiles()) {
 				if (!child.getName().equals("gamedata")) {
-					runOnUiThread(()-> Toast.makeText(this, "Importing " + child.getName(), Toast.LENGTH_SHORT).show());
+					runOnUiThread(()-> updateProgress("Importing " + child.getName(), 0));
 					IOUtils.copyRecursive(this, child, getExternalFilesDir(null));
 				}
 			}
+			runOnUiThread(()-> showLaunchScreen());
 			runOnUiThread(()-> Toast.makeText(this, "Imported!", Toast.LENGTH_SHORT).show());
 		});
 	}
@@ -402,12 +404,14 @@ public class InitActivity extends Activity {
 	private void exportUserData(Uri uri) {
 		Toast.makeText(this, "Exporting...", Toast.LENGTH_SHORT).show();
 		Executors.newSingleThreadExecutor().execute(() -> {
+			runOnUiThread(()-> showProgressScreen());
 			for (File child : getExternalFilesDir(null).listFiles()) {
 				if (!child.getName().equals("gamedata")) {
-					runOnUiThread(()-> Toast.makeText(this, "Exporting " + child.getName(), Toast.LENGTH_SHORT).show());
+					runOnUiThread(()-> updateProgress("Exporting " + child.getName(), 0));
 					IOUtils.copyRecursive(this, child, uri);
 				}
 			}
+			runOnUiThread(()-> showLaunchScreen());
 			runOnUiThread(()-> Toast.makeText(this, "Exported!", Toast.LENGTH_SHORT).show());
 		});
 	}
