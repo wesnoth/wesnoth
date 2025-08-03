@@ -112,12 +112,12 @@ std::vector<std::string> square_parenthetical_split(const std::string& val,
 		const char separator, const std::string& left,
 		const std::string& right,const int flags)
 {
-	std::vector< std::string > res;
+	std::vector<std::string> res;
 	std::vector<char> part;
 	bool in_parenthesis = false;
 	std::vector<std::string::const_iterator> square_left;
 	std::vector<std::string::const_iterator> square_right;
-	std::vector< std::string > square_expansion;
+	std::vector<std::string> square_expansion;
 
 	std::string lp=left;
 	std::string rp=right;
@@ -149,15 +149,20 @@ std::vector<std::string> square_parenthetical_split(const std::string& val,
 			//push back square contents
 			std::size_t size_square_exp = 0;
 			for (std::size_t i=0; i < square_left.size(); i++) {
-				std::string tmp_val(square_left[i]+1,square_right[i]);
-				for(const std::string_view& piece : split_view(tmp_val)) {
+#if __cpp_lib_string_view >= 201803L // C++20 or later... for some godforsaken reason
+				auto bracket_range = std::string_view(square_left[i] + 1, square_right[i]);
+#else
+				std::string::const_iterator begin = square_left[i] + 1;
+				auto bracket_range = std::string_view(&*begin, std::distance(begin, square_right[i]));
+#endif
+				for(const std::string_view& piece : split_view(bracket_range)) {
 					std::size_t found_tilde = piece.find_first_of('~');
 					if (found_tilde == std::string::npos) {
 						std::size_t found_asterisk = piece.find_first_of('*');
 						if (found_asterisk == std::string::npos) {
-							auto temp = std::string(piece);
-							boost::trim(temp); // TODO C++20: do this in one step with boost::trim_copy
-							square_expansion.emplace_back(temp);
+							auto tmp2 = std::string(piece);
+							boost::trim(tmp2);
+							square_expansion.push_back(std::move(tmp2));
 						}
 						else { //'*' multiple expansion
 							auto s_begin = std::string(piece.substr(0, found_asterisk));
@@ -165,7 +170,7 @@ std::vector<std::string> square_parenthetical_split(const std::string& val,
 							auto s_end = std::string(piece.substr(found_asterisk + 1));
 							boost::trim(s_end);
 							for(int ast = std::stoi(s_end); ast > 0; --ast) {
-								square_expansion.emplace_back(s_begin);
+								square_expansion.push_back(s_begin);
 							}
 						}
 					}

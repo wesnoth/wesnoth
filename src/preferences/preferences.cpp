@@ -999,7 +999,7 @@ void prefs::set_achievement(const std::string& content_for, const std::string& i
 		// if achievements already exist for this content and the achievement has not already been set, add it
 		if(ach["content_for"].str() == content_for)
 		{
-			std::vector<std::string> ids = utils::split(ach["ids"]);
+			std::vector<std::string_view> ids = utils::split_view(ach["ids"]);
 
 			if(ids.empty())
 			{
@@ -1763,10 +1763,10 @@ const std::vector<std::string>& prefs::modifications(bool mp)
 {
 	if((!mp_modifications_initialized_ && mp) || (!sp_modifications_initialized_ && !mp)) {
 		if(mp) {
-			mp_modifications_ = utils::split(preferences_[prefs_list::mp_modifications].str(), ',');
+			mp_modifications_ = utils::split(preferences_[prefs_list::mp_modifications]);
 			mp_modifications_initialized_ = true;
 		} else {
-			sp_modifications_ = utils::split(preferences_[prefs_list::sp_modifications].str(), ',');
+			sp_modifications_ = utils::split(preferences_[prefs_list::sp_modifications]);
 			sp_modifications_initialized_ = true;
 		}
 	}

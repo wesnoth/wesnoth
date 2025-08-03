@@ -132,7 +132,7 @@ void editor_edit_pbl::pre_show()
 	}
 	dependencies.set_values(addons_list);
 
-	std::vector<std::string> existing_dependencies = utils::split(pbl["dependencies"].str(), ',');
+	std::vector<std::string_view> existing_dependencies = utils::split_view(pbl["dependencies"]);
 	for(unsigned i = 0; i < dirs_.size(); i++) {
 		if(utils::contains(existing_dependencies, dirs_[i])) {
 			dependencies.select_option(i);
@@ -201,7 +201,7 @@ void editor_edit_pbl::pre_show()
 	tags_list.emplace_back("label", _("Terraforming"), "checkbox", false);
 	tags.set_values(tags_list);
 
-	std::vector<std::string> chosen_tags = utils::split(pbl["tags"].str(), ',');
+	std::vector<std::string_view> chosen_tags = utils::split_view(pbl["tags"]);
 	for(unsigned i = 0; i < tag_values.size(); i++) {
 		if(utils::contains(chosen_tags, tag_values[i])) {
 			tags.select_option(i);

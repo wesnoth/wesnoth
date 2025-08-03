@@ -413,8 +413,8 @@ static void show_deprecated_warnings(config& umc_cfg)
 	}
 
 
-	// hardcoded list of 1.14 advancement macros, just used for the error mesage below.
-	static const std::set<std::string> deprecated_defines {
+	// hardcoded list of 1.14 advancement macros, just used for the error message below.
+	static const std::set<std::string_view> deprecated_defines {
 		"ENABLE_PARAGON",
 		"DISABLE_GRAND_MARSHAL",
 		"ENABLE_ARMAGEDDON_DRAKE",
@@ -429,7 +429,7 @@ static void show_deprecated_warnings(config& umc_cfg)
 	};
 
 	for(auto& campaign : umc_cfg.child_range("campaign")) {
-		for(auto str : utils::split(campaign["extra_defines"])) {
+		for(auto str : utils::split_view(campaign["extra_defines"])) {
 			if(deprecated_defines.count(str) > 0) {
 				//TODO: we could try to implement a compatibility path by
 				//      somehow getting the content of that macro from the
@@ -438,7 +438,7 @@ static void show_deprecated_warnings(config& umc_cfg)
 				//      it before also didn't work in all cases (see #4402)
 				//      i don't think it is worth it.
 				deprecated_message(
-					"campaign id='" + campaign["id"].str() + "' has extra_defines=" + str,
+					"campaign id='" + campaign["id"].str() + "' has extra_defines=" + std::string(str),
 					DEP_LEVEL::REMOVED,
 					{1, 15, 4},
 					_("instead, use the macro with the same name in the [campaign] tag")

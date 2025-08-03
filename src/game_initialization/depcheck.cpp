@@ -185,7 +185,7 @@ std::vector<std::string> manager::get_required(const elem& e) const
 	config data = depinfo_.find_mandatory_child(e.type, "id", e.id);
 
 	if(data.has_attribute("force_modification")) {
-		return utils::split(data["force_modification"].str(), ',');
+		return utils::split(data["force_modification"]);
 	}
 
 	return result;
