@@ -310,7 +310,7 @@ public class InitActivity extends Activity {
 	private void initializeAssetsFromZip(Uri uri) {
 		Executors.newSingleThreadExecutor().execute(() -> {
 			runOnUiThread(() -> showProgressScreen());
-			
+
 			Properties status = initStatusFile(dataDir);
 
 			if (unpackArchive(uri, dataDir, "Core")) {
