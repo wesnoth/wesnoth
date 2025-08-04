@@ -153,9 +153,6 @@ public:
 	const std::vector<time_of_day>& times() const { return times_; }
 	const std::vector<time_of_day>& times(const map_location& loc) const;
 
-	/** Mutable access to the underlying time list. */
-	std::vector<time_of_day>& times() { return times_; }
-
 	const std::vector<time_of_day>& times(int index) const {
 		assert(index < static_cast<int>(areas_.size()));
 		return areas_[index].times;
