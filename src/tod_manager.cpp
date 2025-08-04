@@ -211,7 +211,7 @@ const time_of_day& tod_manager::get_area_time_of_day(int area_i, int n_turn) con
 	return get_time_of_day_turn(areas_[area_i].times, n_turn, areas_[area_i].currentTime);
 }
 
-const time_of_day tod_manager::get_illuminated_time_of_day(
+time_of_day tod_manager::get_illuminated_time_of_day(
 	const unit_map& units, const gamemap& map, const map_location& loc, int for_turn) const
 {
 	// get ToD ignoring illumination
