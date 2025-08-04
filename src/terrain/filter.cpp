@@ -264,13 +264,9 @@ bool terrain_filter::match_internal(const map_location& loc, const unit* ref_uni
 	const std::string& tod_id = t_tod_id;
 	if(!tod_type.empty() || !tod_id.empty()) {
 		// creating a time_of_day is expensive, only do it if we will use it
-		time_of_day tod;
-
-		if(flat_) {
-			tod = fc_->get_tod_man().get_time_of_day(loc);
-		} else {
-			tod = fc_->get_tod_man().get_illuminated_time_of_day(fc_->get_disp_context().units(), fc_->get_disp_context().map(),loc);
-		}
+		const time_of_day& tod = flat_
+			? fc_->get_tod_man().get_time_of_day(loc)
+			: fc_->get_tod_man().get_illuminated_time_of_day(fc_->get_disp_context().units(), fc_->get_disp_context().map(), loc);
 
 		if(!tod_type.empty()) {
 			const std::vector<std::string>& vals = utils::split(tod_type);
