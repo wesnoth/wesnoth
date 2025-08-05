@@ -65,7 +65,7 @@ mp_create_game::mp_create_game(saved_game& state, bool local_mode)
 	, options_manager_()
 	, selected_game_index_(-1)
 	, selected_rfm_index_(-1)
-	, use_map_settings_(register_bool( "use_map_settings", true,
+	, use_map_settings_(register_bool("use_map_settings", true,
 		[]() {return prefs::get().mp_use_map_settings();},
 		[](bool v) {prefs::get().set_mp_use_map_settings(v);},
 		std::bind(&mp_create_game::update_map_settings, this)))
@@ -219,8 +219,17 @@ void mp_create_game::quick_mp_setup(saved_game& state, const config presets)
 	create.get_state().classification().oos_debug = false;
 	params.shuffle_sides = presets["shuffle_sides"].to_bool();
 
-	params.mode = random_faction_mode::type::no_mirror;
+	params.mode = random_faction_mode::get_enum(presets["random_faction_mode"].str()).value_or(random_faction_mode::type::independent);
 	params.name = settings::game_name_default();
+
+	std::vector<std::string> mods = utils::split(presets["mp_modifications"].str());
+	for(const std::string& mod : mods) {
+		create.active_mods().push_back(mod);
+	}
+
+	if(presets.has_child("options")) {
+		params.options = presets.mandatory_child("options");
+	}
 }
 
 void mp_create_game::pre_show()
@@ -903,6 +912,14 @@ void mp_create_game::save_preset()
 	preset["turns"] = turns_->get_widget_value();
 	preset["observer"] = observers_->get_widget_value();
 	preset["use_map_settings"] = use_map_settings_->get_widget_value();
+	
+	// TODO: need to populate the same in the list of presets selectable in the game creation list
+	// TODO: test that addon info is stored in the database correctly
+	// TODO: test with non-mainline modifications/eras/scenarios
+	preset["mp_modifications"] = utils::join(create_engine_.active_mods(), ",");
+	preset.add_child("options", options_manager_->get_options_config());
+	random_faction_mode::type type = random_faction_mode::get_enum(selected_rfm_index_).value_or(random_faction_mode::type::independent);
+	preset["random_faction_mode"] = random_faction_mode::get_string(type);
 
 	prefs::get().add_game_preset(std::move(preset));
 }
