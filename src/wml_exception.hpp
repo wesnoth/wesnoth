@@ -101,7 +101,7 @@ struct wml_exception final
 {
 	enum class error_type {
 		INVALID_WML = 0,
-		GUI_LAYOUT_FAILURE = -4
+		GUI_LAYOUT_FAILURE = -1
 	};
 
 	wml_exception(
