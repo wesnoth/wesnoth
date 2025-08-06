@@ -92,13 +92,6 @@ unit_const_ptr unit_filter::first_match_on_map() const {
 }
 
 namespace {
-bool same_unit(const unit& u, const unit& unit)
-{
-	return (u.get_location() == unit.get_location() || u.id() == unit.id());
-}
-}
-
-namespace {
 
 struct unit_filter_xy : public unit_filter_base
 {
@@ -144,7 +137,7 @@ struct unit_filter_adjacent : public unit_filter_base
 		for(const unit& u : units) {
 			const map_location& from_loc = u.get_location();
 			std::size_t distance = distance_between(from_loc, args.loc);
-			if(same_unit(u, args.u) || distance > radius || !child_.matches(unit_filter_args{u, from_loc, &args.u, args.fc, args.use_flat_tod} )) {
+			if(u.underlying_id() == args.u.underlying_id() || distance > radius || !child_.matches(unit_filter_args{u, from_loc, &args.u, args.fc, args.use_flat_tod} )) {
 				continue;
 			}
 			int dir = 0;
@@ -427,7 +420,7 @@ void unit_filter_compound::fill(const vconfig& cfg)
 				}
 
 				for(const unit& unit : units) {
-					if(!unit.has_ability_distant() || unit.incapacitated() || same_unit(unit, args.u)) {
+					if(!unit.has_ability_distant() || unit.incapacitated() || unit.underlying_id() == args.u.underlying_id()) {
 						continue;
 					}
 					const map_location& from_loc = unit.get_location();
@@ -812,7 +805,7 @@ void unit_filter_compound::fill(const vconfig& cfg)
 
 						if(c.get_parsed_config()["affect_adjacent"].to_bool(true)) {
 							for(const unit& unit : units) {
-								if(!unit.has_ability_distant() || unit.incapacitated() || same_unit(unit, args.u)) {
+								if(!unit.has_ability_distant() || unit.incapacitated() || unit.underlying_id() == args.u.underlying_id()) {
 									continue;
 								}
 								const map_location& from_loc = unit.get_location();

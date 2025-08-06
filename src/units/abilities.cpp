@@ -198,14 +198,6 @@ int find_direction(const map_location& loc, const map_location& from_loc, std::s
 	return 0;
 }
 
-/**
- * This function return true if locations checked are the same, or if units have same id.
- */
-bool same_unit(const unit& u, const unit& unit)
-{
-	return (u.get_location() == unit.get_location() || u.id() == unit.id());
-}
-
 }
 
 bool unit::get_ability_bool(const std::string& tag_name, const map_location& loc) const
@@ -228,7 +220,7 @@ bool unit::get_ability_bool(const std::string& tag_name, const map_location& loc
 	// different from the central unit, that the ability is of the right type, detailed verification of each ability),
 	// if so return true.
 	for(const unit& u : units) {
-		if(!u.has_ability_distant() || u.incapacitated() || same_unit(u, *this) || !u.affect_distant(tag_name)) {
+		if(!u.has_ability_distant() || u.incapacitated() || u.underlying_id() == underlying_id() || !u.affect_distant(tag_name)) {
 			continue;
 		}
 		const map_location& from_loc = u.get_location();
@@ -270,7 +262,7 @@ unit_ability_list unit::get_abilities(const std::string& tag_name, const map_loc
 	// different from the central unit, that the ability is of the right type, detailed verification of each ability),
 	// If so, add to unit_ability_list.
 	for(const unit& u : units) {
-		if(!u.has_ability_distant() || u.incapacitated() || same_unit(u, *this) || !u.affect_distant(tag_name)) {
+		if(!u.has_ability_distant() || u.incapacitated() || u.underlying_id() == underlying_id() || !u.affect_distant(tag_name)) {
 			continue;
 		}
 		const map_location& from_loc = u.get_location();
@@ -484,7 +476,7 @@ static bool ability_active_adjacent_helper(const unit& self, bool illuminates, c
 		for(const unit& u : units) {
 			const map_location& from_loc = u.get_location();
 			std::size_t distance = distance_between(from_loc, loc);
-			if(same_unit(u, self) || distance > radius || !ufilt(u, self)) {
+			if(u.underlying_id() == self.underlying_id() || distance > radius || !ufilt(u, self)) {
 				continue;
 			}
 			int dir = 0;
@@ -651,7 +643,7 @@ std::vector<std::string> unit::halo_or_icon_abilities(const std::string& image_t
 	const unit_map& units = get_unit_map();
 
 	for(const unit& u : units) {
-		if(!u.has_ability_distant_image() || u.incapacitated() || same_unit(u, *this)) {
+		if(!u.has_ability_distant_image() || u.incapacitated() || u.underlying_id() == underlying_id()) {
 			continue;
 		}
 		const map_location& from_loc = u.get_location();
@@ -948,7 +940,7 @@ std::vector<std::pair<t_string, t_string>> attack_type::abilities_special_toolti
 		}
 	}
 	for(const unit& u : get_unit_map()) {
-		if(!u.has_ability_distant() || u.incapacitated() || same_unit(u, *self_)) {
+		if(!u.has_ability_distant() || u.incapacitated() || u.underlying_id() == self_->underlying_id()) {
 			continue;
 		}
 		const map_location& from_loc = u.get_location();
@@ -1120,7 +1112,7 @@ void attack_type::weapon_specials_impl_adj(
 	const unit_map& units = get_unit_map();
 	if(self){
 		for(const unit& u : units) {
-			if(!u.has_ability_distant() || u.incapacitated() || same_unit(u, *self)) {
+			if(!u.has_ability_distant() || u.incapacitated() || u.underlying_id() == self->underlying_id()) {
 				continue;
 			}
 			const map_location& from_loc = u.get_location();
@@ -1802,7 +1794,7 @@ bool attack_type::has_special_or_ability(const std::string& special) const
 		}
 
 		for(const unit& u : units) {
-			if(!u.affect_distant(special) || u.incapacitated() || same_unit(u, *self_)) {
+			if(!u.affect_distant(special) || u.incapacitated() || u.underlying_id() == self_->underlying_id()) {
 				continue;
 			}
 			const map_location& from_loc = u.get_location();
@@ -1827,7 +1819,7 @@ bool attack_type::has_special_or_ability(const std::string& special) const
 		}
 
 		for(const unit& u : units) {
-			if(!u.affect_distant(special) || u.incapacitated() || same_unit(u, *other_)) {
+			if(!u.affect_distant(special) || u.incapacitated() || u.underlying_id() == other_->underlying_id()) {
 				continue;
 			}
 			const map_location& from_loc = u.get_location();
@@ -1907,7 +1899,7 @@ bool attack_type::has_filter_special_or_ability(const config& filter, bool simpl
 			}
 		}
 		for(const unit& u : units) {
-			if(!u.has_ability_distant() || u.incapacitated() || same_unit(u, *self_)) {
+			if(!u.has_ability_distant() || u.incapacitated() || u.underlying_id() == self_->underlying_id()) {
 				continue;
 			}
 			const map_location& from_loc = u.get_location();
@@ -1933,7 +1925,7 @@ bool attack_type::has_filter_special_or_ability(const config& filter, bool simpl
 		}
 
 		for(const unit& u : units) {
-			if(!u.has_ability_distant() || u.incapacitated() || same_unit(u, *other_)) {
+			if(!u.has_ability_distant() || u.incapacitated() || u.underlying_id() == other_->underlying_id()) {
 				continue;
 			}
 			const map_location& from_loc = u.get_location();
@@ -2196,7 +2188,7 @@ bool attack_type::has_special_or_ability_with_filter(const config & filter) cons
 		}
 		if(check_adjacent) {
 			for(const unit& u : units) {
-				if(!u.has_ability_distant() || u.incapacitated() || same_unit(u, *self_)) {
+				if(!u.has_ability_distant() || u.incapacitated() || u.underlying_id() == self_->underlying_id()) {
 					continue;
 				}
 				const map_location& from_loc = u.get_location();
@@ -2224,7 +2216,7 @@ bool attack_type::has_special_or_ability_with_filter(const config & filter) cons
 
 		if(check_adjacent) {
 			for(const unit& u : units) {
-				if(!u.has_ability_distant() || u.incapacitated() || same_unit(u, *other_)) {
+				if(!u.has_ability_distant() || u.incapacitated() || u.underlying_id() == other_->underlying_id()) {
 					continue;
 				}
 				const map_location& from_loc = u.get_location();
