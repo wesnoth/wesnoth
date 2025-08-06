@@ -5,7 +5,7 @@
 ### Editor
 ### Multiplayer
 ### Lua API
-   * All widgets now have the event handler `on_double_click`. If set, it will be fired when the user left double clicks on that widget.
+   * Toggle panel now have the event handler `on_double_click`. If set, it will be fired when the user left double clicks on that widget. For other widgets, they can be wrapped inside a toggle panel for this to work.
 ### Packaging
 ### Terrain
 ### Translations
