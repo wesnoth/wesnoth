@@ -908,7 +908,8 @@ void window::layout()
 
 		throw wml_exception(
 			_("Failed to show a dialog, which doesn’t fit on the screen."),
-			sstr.str());
+			sstr.str(),
+			wml_exception::error_type::GUI_LAYOUT_FAILURE);
 	}
 
 	/****** Validate click dismiss status. *****/
@@ -932,7 +933,6 @@ void window::layout()
 		}
 		catch(const layout_exception_resize_failed&)
 		{
-
 			/** @todo implement the scrollbars on the window. */
 
 			std::stringstream sstr;
@@ -944,7 +944,8 @@ void window::layout()
 
 			throw wml_exception(
 				_("Failed to show a dialog, which doesn’t fit on the screen."),
-				sstr.str());
+				sstr.str(),
+				wml_exception::error_type::GUI_LAYOUT_FAILURE);
 		}
 	}
 
