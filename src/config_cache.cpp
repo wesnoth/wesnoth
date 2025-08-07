@@ -141,12 +141,11 @@ void config_cache::add_defines_map_diff(preproc_map& defines_map)
 	config_cache_transaction::instance().add_defines_map_diff(defines_map);
 }
 
-config config_cache::read_configs(const std::string& file_path, abstract_validator* validator)
+std::pair<config, preproc_map> config_cache::read_configs(const std::string& file_path, abstract_validator* validator)
 {
-	preproc_map copy_map(make_copy_map());
+	preproc_map copy_map = make_copy_map();
 	config cfg = read_configs(file_path, copy_map, validator);
-	add_defines_map_diff(copy_map);
-	return cfg;
+	return { std::move(cfg), std::move(copy_map) };
 }
 
 config config_cache::read_configs(const std::string& file_path, preproc_map& defines_map, abstract_validator* validator)
@@ -193,9 +192,7 @@ config config_cache::read_cache(const std::string& file_path, abstract_validator
 			try {
 				if(filesystem::file_exists(fname_checksum)) {
 					DBG_CACHE << "Reading checksum: " << fname_checksum;
-					config checksum_cfg = read_file(fname_checksum);
-
-					dir_checksum = filesystem::file_tree_checksum(checksum_cfg);
+					dir_checksum = filesystem::file_tree_checksum{read_file(fname_checksum)};
 				}
 			} catch(const config::error&) {
 				ERR_CACHE << "cache checksum is corrupt";
@@ -238,13 +235,12 @@ config config_cache::read_cache(const std::string& file_path, abstract_validator
 		// Now we need queued defines so read them to memory
 		read_defines_queue();
 
-		preproc_map copy_map(make_copy_map());
-		config cfg = read_configs(file_path, copy_map, validator);
-		add_defines_map_diff(copy_map);
+		auto [cfg, defines] = read_configs(file_path, validator);
+		add_defines_map_diff(defines);
 
 		try {
 			write_file(fname + extension, cfg);
-			write_file(fname + ".define" + extension, copy_map);
+			write_file(fname + ".define" + extension, defines);
 
 			config checksum_cfg;
 
@@ -258,7 +254,10 @@ config config_cache::read_cache(const std::string& file_path, abstract_validator
 	}
 
 	LOG_CACHE << "Loading plain config instead of cache";
-	return read_configs(file_path, validator);
+
+	auto [cfg, defines] = read_configs(file_path, validator);
+	add_defines_map_diff(defines);
+	return cfg;
 }
 
 void config_cache::read_defines_file(const std::string& file_path)
@@ -286,7 +285,9 @@ config config_cache::load_configs(const std::string& config_path, abstract_valid
 	if(use_cache_) {
 		return read_cache(config_path, validator);
 	} else {
-		return read_configs(config_path, validator);
+		auto [cfg, defines] = read_configs(config_path, validator);
+		add_defines_map_diff(defines);
+		return cfg;
 	}
 }
 

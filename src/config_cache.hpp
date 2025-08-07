@@ -164,7 +164,8 @@ private:
 
 	config read_cache(const std::string& path, abstract_validator* validator = nullptr);
 
-	config read_configs(const std::string& path, abstract_validator* validator);
+	std::pair<config, preproc_map> read_configs(const std::string& path, abstract_validator* validator);
+
 	config read_configs(const std::string& path, preproc_map& defines, abstract_validator* validator = nullptr);
 	config load_configs(const std::string& path, abstract_validator* validator = nullptr);
 
