@@ -153,10 +153,8 @@ static void handle_preprocess_string(const commandline_options& cmdline_opts)
 
 		int read = 0;
 
-		// use static preproc_define::read_pair(config) to make a object
 		for(const auto [_, cfg] : cfg.all_children_view()) {
-			const preproc_map::value_type def = preproc_define::read_pair(cfg);
-			defines_map[def.first] = def.second;
+			preproc_define::insert(defines_map, cfg);
 			++read;
 		}
 
@@ -172,12 +170,12 @@ static void handle_preprocess_string(const commandline_options& cmdline_opts)
 			}
 
 			LOG_PREPROC << "adding define: " << define;
-			defines_map.emplace(define, preproc_define(define));
+			defines_map.try_emplace(define, define);
 		}
 	}
 
 	// add the WESNOTH_VERSION define
-	defines_map["WESNOTH_VERSION"] = preproc_define(game_config::wesnoth_version.str());
+	defines_map.try_emplace("WESNOTH_VERSION", game_config::wesnoth_version.str());
 
 	// preprocess resource
 	PLAIN_LOG << "preprocessing specified string: " << *cmdline_opts.preprocess_source_string;
@@ -210,10 +208,8 @@ static void handle_preprocess_command(const commandline_options& cmdline_opts)
 
 		int read = 0;
 
-		// use static preproc_define::read_pair(config) to make a object
 		for(const auto [_, cfg] : cfg.all_children_view()) {
-			const preproc_map::value_type def = preproc_define::read_pair(cfg);
-			input_macros[def.first] = def.second;
+			preproc_define::insert(input_macros, cfg);
 			++read;
 		}
 
@@ -242,7 +238,7 @@ static void handle_preprocess_command(const commandline_options& cmdline_opts)
 			}
 
 			LOG_PREPROC << "adding define: " << define;
-			defines_map.emplace(define, preproc_define(define));
+			defines_map.try_emplace(define, define);
 
 			if(define == "SKIP_CORE") {
 				PLAIN_LOG << "'SKIP_CORE' defined.";
@@ -255,7 +251,7 @@ static void handle_preprocess_command(const commandline_options& cmdline_opts)
 	}
 
 	// add the WESNOTH_VERSION define
-	defines_map["WESNOTH_VERSION"] = preproc_define(game_config::wesnoth_version.str());
+	defines_map.try_emplace("WESNOTH_VERSION", game_config::wesnoth_version.str());
 
 	PLAIN_LOG << "added " << defines_map.size() << " defines.";
 
@@ -304,11 +300,12 @@ static void handle_preprocess_command(const commandline_options& cmdline_opts)
 	}
 }
 
-static int handle_validate_command(const std::string& file, abstract_validator& validator, const std::vector<std::string>& defines) {
+static int handle_validate_command(const std::string& file, abstract_validator& validator, const std::vector<std::string>& defines)
+{
 	preproc_map defines_map;
-	// add the WESNOTH_VERSION define
-	defines_map["WESNOTH_VERSION"] = preproc_define(game_config::wesnoth_version.str());
-	defines_map["SCHEMA_VALIDATION"] = preproc_define();
+	defines_map.try_emplace("WESNOTH_VERSION", game_config::wesnoth_version.str());
+	defines_map.try_emplace("SCHEMA_VALIDATION");
+
 	for(const std::string& define : defines) {
 		if(define.empty()) {
 			PLAIN_LOG << "empty define supplied";
@@ -316,8 +313,9 @@ static int handle_validate_command(const std::string& file, abstract_validator& 
 		}
 
 		LOG_PREPROC << "adding define: " << define;
-		defines_map.emplace(define, preproc_define(define));
+		defines_map.try_emplace(define, define);
 	}
+
 	PLAIN_LOG << "Validating " << file << " against schema " << validator.name_;
 	lg::set_strict_severity(lg::severity::LG_ERROR);
 	io::read(*preprocess_file(file, &defines_map), &validator);

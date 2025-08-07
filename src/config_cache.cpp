@@ -42,18 +42,18 @@ namespace
 void add_builtin_defines(preproc_map& target)
 {
 #ifdef __APPLE__
-	target["APPLE"] = preproc_define();
+	target.try_emplace("APPLE");
 #endif
 
 #ifdef __ANDROID__
-	target["ANDROID"] = preproc_define();
+	target.try_emplace("ANDROID");
 #endif
 
 #if defined(MOUSE_TOUCH_EMULATION) || defined(TARGET_OS_IPHONE)
-	target["IPHONEOS"] = preproc_define();
+	target.try_emplace("IPHONEOS");
 #endif
 
-	target["WESNOTH_VERSION"] = preproc_define(game_config::wesnoth_version.str());
+	target.try_emplace("WESNOTH_VERSION", game_config::wesnoth_version.str());
 }
 
 }
@@ -83,7 +83,6 @@ const preproc_map& config_cache::get_preproc_map() const
 void config_cache::clear_defines()
 {
 	LOG_CACHE << "Clearing defines map!";
-
 	defines_map_.clear();
 
 	//
@@ -93,9 +92,9 @@ void config_cache::clear_defines()
 	add_builtin_defines(defines_map_);
 }
 
-void config_cache::get_config(const std::string& file_path, config& cfg, abstract_validator* validator)
+config config_cache::get_config(const std::string& file_path, abstract_validator* validator)
 {
-	load_configs(file_path, cfg, validator);
+	return load_configs(file_path, validator);
 }
 
 void config_cache::write_file(const std::string& file_path, const config& cfg)
@@ -123,9 +122,9 @@ void config_cache::write_file(const std::string& file_path, const preproc_map& d
 	}
 }
 
-void config_cache::read_file(const std::string& file_path, config& cfg)
+config config_cache::read_file(const std::string& file_path)
 {
-	cfg = io::read_gz(*filesystem::istream_file(file_path));
+	return io::read_gz(*filesystem::istream_file(file_path));
 }
 
 preproc_map& config_cache::make_copy_map()
@@ -142,10 +141,9 @@ void config_cache::add_defines_map_diff(preproc_map& defines_map)
 	return config_cache_transaction::instance().add_defines_map_diff(defines_map);
 }
 
-void config_cache::read_configs(const std::string& file_path, config& cfg, preproc_map& defines_map, abstract_validator* validator)
+config config_cache::read_configs(const std::string& file_path, preproc_map& defines_map, abstract_validator* validator)
 {
-	//read the file and then write to the cache
-	cfg = io::read(*preprocess_file(file_path, &defines_map), validator);
+	return io::read(*preprocess_file(file_path, &defines_map), validator);
 }
 
 void config_cache::read_cache(const std::string& file_path, config& cfg, abstract_validator* validator)
@@ -157,19 +155,17 @@ void config_cache::read_cache(const std::string& file_path, config& cfg, abstrac
 
 	bool is_valid = true;
 
-	for(const preproc_map::value_type& d : defines_map_) {
+	for(const auto& [key, define] : defines_map_) {
 		//
 		// Only WESNOTH_VERSION is allowed to be non-empty.
 		//
-		if((!d.second.value.empty() || !d.second.arguments.empty()) &&
-		   d.first != "WESNOTH_VERSION")
-		{
+		if((!define.value.empty() || !define.arguments.empty()) && key != "WESNOTH_VERSION") {
 			is_valid = false;
-			ERR_CACHE << "Invalid preprocessor define: " << d.first;
+			ERR_CACHE << "Invalid preprocessor define: " << key;
 			break;
 		}
 
-		defines_string << " " << d.first;
+		defines_string << " " << key;
 	}
 
 	// Do cache check only if define map is valid and
@@ -188,10 +184,8 @@ void config_cache::read_cache(const std::string& file_path, config& cfg, abstrac
 		if(!force_valid_cache_ && !fake_invalid_cache_) {
 			try {
 				if(filesystem::file_exists(fname_checksum)) {
-					config checksum_cfg;
-
 					DBG_CACHE << "Reading checksum: " << fname_checksum;
-					read_file(fname_checksum, checksum_cfg);
+					config checksum_cfg = read_file(fname_checksum);
 
 					dir_checksum = filesystem::file_tree_checksum(checksum_cfg);
 				}
@@ -213,7 +207,7 @@ void config_cache::read_cache(const std::string& file_path, config& cfg, abstrac
 			log_scope("read cache");
 
 			try {
-				read_file(fname + extension,cfg);
+				cfg = read_file(fname + extension);
 				const std::string define_file = fname + ".define" + extension;
 
 				if(filesystem::file_exists(define_file)) {
@@ -238,7 +232,7 @@ void config_cache::read_cache(const std::string& file_path, config& cfg, abstrac
 
 		preproc_map copy_map(make_copy_map());
 
-		read_configs(file_path, cfg, copy_map, validator);
+		cfg = read_configs(file_path, copy_map, validator);
 		add_defines_map_diff(copy_map);
 
 		try {
@@ -259,45 +253,42 @@ void config_cache::read_cache(const std::string& file_path, config& cfg, abstrac
 	LOG_CACHE << "Loading plain config instead of cache";
 
 	preproc_map copy_map(make_copy_map());
-	read_configs(file_path, cfg, copy_map, validator);
+	cfg = read_configs(file_path, copy_map, validator);
 	add_defines_map_diff(copy_map);
 }
 
 void config_cache::read_defines_file(const std::string& file_path)
 {
-	config cfg;
-	read_file(file_path, cfg);
-
 	DBG_CACHE << "Reading cached defines from: " << file_path;
+	config file_cfg = read_file(file_path);
 
-	// use static preproc_define::read_pair(config) to make a object
-	// and pass that object config_cache_transaction::insert_to_active method
-	for(const auto [key, cfg] : cfg.all_children_view()) {
-		config_cache_transaction::instance().insert_to_active(preproc_define::read_pair(cfg));
+	for(const auto [key, cfg] : file_cfg.all_children_view()) {
+		preproc_define::insert(config_cache_transaction::instance().get_active_map(defines_map_), cfg);
 	}
 }
 
 void config_cache::read_defines_queue()
 {
-	const std::vector<std::string>& files = config_cache_transaction::instance().get_define_files();
-
-	for(const std::string &p : files) {
+	for(const std::string& p : config_cache_transaction::instance().get_define_files()) {
 		read_defines_file(p);
 	}
 }
 
-void config_cache::load_configs(const std::string& config_path, config& cfg, abstract_validator* validator)
+config config_cache::load_configs(const std::string& config_path, abstract_validator* validator)
 {
 	// Make sure that we have fake transaction if no real one is going on
 	fake_transaction fake;
+	config cfg;
 
-	if (use_cache_) {
+	if(use_cache_) {
 		read_cache(config_path, cfg, validator);
 	} else {
 		preproc_map copy_map(make_copy_map());
-		read_configs(config_path, cfg, copy_map, validator);
+		cfg = read_configs(config_path, copy_map, validator);
 		add_defines_map_diff(copy_map);
 	}
+
+	return cfg;
 }
 
 void config_cache::set_force_invalid_cache(bool force)
@@ -323,13 +314,12 @@ void config_cache::recheck_filetree_checksum()
 void config_cache::add_define(const std::string& define)
 {
 	DBG_CACHE << "adding define: " << define;
-	defines_map_[define] = preproc_define();
+	defines_map_.try_emplace(define);
 
 	if(config_cache_transaction::is_active()) {
 		// we have to add this to active map too
-		config_cache_transaction::instance().get_active_map(defines_map_).emplace(define, preproc_define());
+		config_cache_transaction::instance().get_active_map(defines_map_).try_emplace(define);
 	}
-
 }
 
 void config_cache::remove_define(const std::string& define)
@@ -454,52 +444,26 @@ preproc_map& config_cache_transaction::get_active_map(const preproc_map& defines
 	return active_map_;
 }
 
-namespace
-{
-
-bool compare_define(const preproc_map::value_type& a, const preproc_map::value_type& b)
-{
-	if(a.first < b.first) {
-		return true;
-	}
-
-	if(b.first < a.first) {
-		return false;
-	}
-
-	if(a.second < b.second) {
-		return true;
-	}
-
-	return false;
-}
-
-} // end anonymous namespace
-
 void config_cache_transaction::add_defines_map_diff(preproc_map& new_map)
 {
-	if(get_state() == ACTIVE) {
-		preproc_map temp;
-		std::set_difference(new_map.begin(),
-				new_map.end(),
-				active_map_.begin(),
-				active_map_.end(),
-				std::insert_iterator<preproc_map>(temp,temp.begin()),
-				&compare_define);
-
-		for(const preproc_map::value_type &def : temp) {
-			insert_to_active(def);
+	switch(get_state()) {
+	case ACTIVE:
+		// First, remove all duplicate defines from the input map
+		for(const auto& [key, define] : active_map_) {
+			new_map.erase(key);
 		}
 
-		temp.swap(new_map);
-	} else if (get_state() == LOCKED) {
-		new_map.clear();
-	}
-}
+		// Then copy the remaining unique defines back to the active map
+		active_map_.insert(new_map.begin(), new_map.end());
+		break;
 
-void config_cache_transaction::insert_to_active(const preproc_map::value_type& def)
-{
-	active_map_[def.first] = def.second;
+	case LOCKED:
+		new_map.clear();
+		break;
+
+	default:
+		break;
+	}
 }
 
 }

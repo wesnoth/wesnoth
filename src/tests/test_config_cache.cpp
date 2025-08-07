@@ -29,21 +29,17 @@
 
 #include <functional>
 
-
 static preproc_map setup_test_preproc_map()
 {
 	preproc_map defines_map;
 
 #if defined(__APPLE__)
-	defines_map["APPLE"] = preproc_define();
+	defines_map.try_emplace("APPLE");
 #endif
 
-	defines_map["WESNOTH_VERSION"] = preproc_define(game_config::wesnoth_version.str());
-
+	defines_map.try_emplace("WESNOTH_VERSION", game_config::wesnoth_version.str());
 	return defines_map;
-
 }
-
 
 /**
  * Used to make distinct singleton for testing it
@@ -98,7 +94,7 @@ BOOST_AUTO_TEST_CASE( test_preproc_defines )
 	// scoped
 	{
 		test_scoped_define test("TEST");
-		defines_map["TEST"] = preproc_define();
+		defines_map.try_emplace("TEST");;
 
 		BOOST_CHECK_EQUAL_COLLECTIONS(test_defines.begin(),test_defines.end(),
 				defines_map.begin() ,defines_map.end());
@@ -111,7 +107,7 @@ BOOST_AUTO_TEST_CASE( test_preproc_defines )
 
 	// Manual add define
 	cache.add_define("TEST");
-	defines_map["TEST"] = preproc_define();
+	defines_map.try_emplace("TEST");;
 	BOOST_CHECK_EQUAL_COLLECTIONS(test_defines.begin(),test_defines.end(),
 			defines_map.begin() ,defines_map.end());
 

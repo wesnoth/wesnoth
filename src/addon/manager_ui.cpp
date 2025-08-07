@@ -287,9 +287,7 @@ bool ad_hoc_addon_fetch_session(const std::vector<std::string>& addon_ids)
 				// if _info.cfg exists, compare the local vs remote add-on versions to determine whether a download is needed
 				if(filesystem::file_exists(info_cfg)) {
 					game_config::config_cache& cache = game_config::config_cache::instance();
-					config info;
-					cache.get_config(info_cfg, info);
-					version_info installed_addon_version(info.child_or_empty("info")["version"]);
+					version_info installed_addon_version(cache.get_config(info_cfg).child_or_empty("info")["version"]);
 
 					// if the installed version is outdated, download the most recent version from the add-ons server
 					if(installed_addon_version >= addon.current_version) {

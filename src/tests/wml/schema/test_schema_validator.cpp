@@ -38,8 +38,8 @@ BOOST_AUTO_TEST_CASE(test_super_cycle)
 
 	// See: wesnoth.cpp > handle_validate_command
 	preproc_map defines_map;
-	defines_map["WESNOTH_VERSION"] = preproc_define(game_config::wesnoth_version.str());
-	defines_map["SCHEMA_VALIDATION"] = preproc_define();
+	defines_map.try_emplace("WESNOTH_VERSION", game_config::wesnoth_version.str());
+	defines_map.try_emplace("SCHEMA_VALIDATION");
 
 	auto stream = preprocess_file(config_path, &defines_map);
 
@@ -58,8 +58,8 @@ BOOST_AUTO_TEST_CASE(test_super_cycle_only_if_used)
 	validator.set_create_exceptions(true);
 
 	preproc_map defines_map;
-	defines_map["WESNOTH_VERSION"] = preproc_define(game_config::wesnoth_version.str());
-	defines_map["SCHEMA_VALIDATION"] = preproc_define();
+	defines_map.try_emplace("WESNOTH_VERSION", game_config::wesnoth_version.str());
+	defines_map.try_emplace("SCHEMA_VALIDATION");
 
 	auto stream = preprocess_file(config_path, &defines_map);
 	BOOST_CHECK_NO_THROW(io::read(*stream, &validator));
@@ -76,8 +76,8 @@ BOOST_AUTO_TEST_CASE(test_super_cycle_crashes_on_unknown_key)
 	validator.set_create_exceptions(true);
 
 	preproc_map defines_map;
-	defines_map["WESNOTH_VERSION"] = preproc_define(game_config::wesnoth_version.str());
-	defines_map["SCHEMA_VALIDATION"] = preproc_define();
+	defines_map.try_emplace("WESNOTH_VERSION", game_config::wesnoth_version.str());
+	defines_map.try_emplace("SCHEMA_VALIDATION");
 
 	auto stream = preprocess_file(config_path, &defines_map);
 
@@ -96,8 +96,8 @@ BOOST_AUTO_TEST_CASE(test_super_missing)
 	validator.set_create_exceptions(true);
 
 	preproc_map defines_map;
-	defines_map["WESNOTH_VERSION"] = preproc_define(game_config::wesnoth_version.str());
-	defines_map["SCHEMA_VALIDATION"] = preproc_define();
+	defines_map.try_emplace("WESNOTH_VERSION", game_config::wesnoth_version.str());
+	defines_map.try_emplace("SCHEMA_VALIDATION");
 
 	auto stream = preprocess_file(config_path, &defines_map);
 
@@ -116,8 +116,8 @@ BOOST_AUTO_TEST_CASE(test_super_missing_only_if_used)
 	validator.set_create_exceptions(true);
 
 	preproc_map defines_map;
-	defines_map["WESNOTH_VERSION"] = preproc_define(game_config::wesnoth_version.str());
-	defines_map["SCHEMA_VALIDATION"] = preproc_define();
+	defines_map.try_emplace("WESNOTH_VERSION", game_config::wesnoth_version.str());
+	defines_map.try_emplace("SCHEMA_VALIDATION");
 
 	auto stream = preprocess_file(config_path, &defines_map);
 	BOOST_CHECK_NO_THROW(io::read(*stream, &validator));
@@ -133,8 +133,8 @@ BOOST_AUTO_TEST_CASE(test_super_mandatory)
 	validator.set_create_exceptions(true);
 
 	preproc_map defines_map;
-	defines_map["WESNOTH_VERSION"] = preproc_define(game_config::wesnoth_version.str());
-	defines_map["SCHEMA_VALIDATION"] = preproc_define();
+	defines_map.try_emplace("WESNOTH_VERSION", game_config::wesnoth_version.str());
+	defines_map.try_emplace("SCHEMA_VALIDATION");
 
 	auto stream = preprocess_file(config_path, &defines_map);
 	BOOST_CHECK_NO_THROW(io::read(*stream, &validator));
@@ -150,8 +150,8 @@ BOOST_AUTO_TEST_CASE(test_super_mandatory_missing)
 	validator.set_create_exceptions(true);
 
 	preproc_map defines_map;
-	defines_map["WESNOTH_VERSION"] = preproc_define(game_config::wesnoth_version.str());
-	defines_map["SCHEMA_VALIDATION"] = preproc_define();
+	defines_map.try_emplace("WESNOTH_VERSION", game_config::wesnoth_version.str());
+	defines_map.try_emplace("SCHEMA_VALIDATION");
 
 	auto stream = preprocess_file(config_path, &defines_map);
 	BOOST_CHECK_EXCEPTION(io::read(*stream, &validator), wml_exception, [](const wml_exception& e) {
@@ -169,8 +169,8 @@ BOOST_AUTO_TEST_CASE(test_super_cycle_mandatory)
 	validator.set_create_exceptions(true);
 
 	preproc_map defines_map;
-	defines_map["WESNOTH_VERSION"] = preproc_define(game_config::wesnoth_version.str());
-	defines_map["SCHEMA_VALIDATION"] = preproc_define();
+	defines_map.try_emplace("WESNOTH_VERSION", game_config::wesnoth_version.str());
+	defines_map.try_emplace("SCHEMA_VALIDATION");
 
 	auto stream = preprocess_file(config_path, &defines_map);
 	BOOST_CHECK_NO_THROW(io::read(*stream, &validator));
