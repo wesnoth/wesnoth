@@ -657,6 +657,13 @@ class preprocessor_data : public preprocessor
 			macro_parens  // Processing a parenthesized macro argument
 		};
 
+		token_desc(token_type type, const int stack_pos, const int linenum)
+			: type(type)
+			, stack_pos(stack_pos)
+			, linenum(linenum)
+		{
+		}
+
 		token_type type;
 
 		/** Starting position in #strings_ of the delayed text for this chunk. */
