@@ -70,6 +70,7 @@ void help_browser::pre_show()
 	button& next_button = find_widget<button>("next");
 
 	rich_label& topic_text = find_widget<rich_label>("topic_text");
+	panel& topic_panel = find_widget<panel>("topic_panel");
 
 	next_button.set_active(false);
 	back_button.set_active(false);
@@ -86,24 +87,24 @@ void help_browser::pre_show()
 	toggle_button& contents = find_widget<toggle_button>("contents");
 
 	contents.set_value(true);
-	topic_tree.set_visible(true);
+	topic_panel.set_visible(true);
 	connect_signal_mouse_left_click(contents, [&](auto&&...) {
-		auto parent = topic_text.get_window();
+		auto parent = topic_panel.get_window();
 		// Cache the initial values, get_best_size() keeps changing
 		if ((parent != nullptr) && (win_w == 0)) {
 			win_w = parent->get_best_size().x;
 		}
 		if (tree_w == 0) {
-			tree_w = topic_tree.get_best_size().x;
+			tree_w = topic_panel.get_best_size().x;
 		}
 
 		// Set RL's width and reshow
-		bool is_contents_visible = (topic_tree.get_visible() == widget::visibility::visible);
-		if (topic_text.get_window()) {
+		bool is_contents_visible = (topic_panel.get_visible() == widget::visibility::visible);
+		if (topic_panel.get_window()) {
 			topic_text.set_width(win_w - (is_contents_visible ? 0 : tree_w) - 20 /* Padding */);
 			show_topic(history_.at(history_pos_), false);
 		}
-		topic_tree.set_visible(!is_contents_visible);
+		topic_panel.set_visible(!is_contents_visible);
 		invalidate_layout();
 	});
 
