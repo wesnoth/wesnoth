@@ -127,7 +127,6 @@ function gui.add_widget_definition(type, id, content) end
 ---@field ellipsize_mode "'none'"|"'start'"|"'middle'"|"'end'"
 ---@field overflow_to_tooltip boolean
 ---@field on_left_click fun() a function that is called when the widget is left clicked once
----@field on_double_click fun() a function that is called when the widget is left clicked twice
 
 ---The window widget is a container that contains all other widgets in the dialog
 ---@class window : widget
@@ -148,6 +147,7 @@ function gui.add_widget_definition(type, id, content) end
 ---@class toggle_panel : widget
 ---@field selected boolean
 ---@field selected_index integer
+---@field on_double_click fun() a function that is called when the widget is left clicked twice
 ---@field on_modified fun()
 
 ---A dynamic list of items, shown with a scrollbar
