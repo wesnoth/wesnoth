@@ -162,10 +162,12 @@ private:
 	void write_file(const std::string& file, const config& cfg);
 	void write_file(const std::string& file, const preproc_map& defines);
 
-	void read_cache(const std::string& path, config& cfg, abstract_validator* validator = nullptr);
+	config read_cache(const std::string& path, abstract_validator* validator = nullptr);
 
+	config read_configs(const std::string& path, abstract_validator* validator);
 	config read_configs(const std::string& path, preproc_map& defines, abstract_validator* validator = nullptr);
 	config load_configs(const std::string& path, abstract_validator* validator = nullptr);
+
 	void read_defines_queue();
 	void read_defines_file(const std::string& path);
 

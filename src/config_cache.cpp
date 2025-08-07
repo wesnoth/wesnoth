@@ -138,7 +138,15 @@ preproc_map& config_cache::make_copy_map()
 
 void config_cache::add_defines_map_diff(preproc_map& defines_map)
 {
-	return config_cache_transaction::instance().add_defines_map_diff(defines_map);
+	config_cache_transaction::instance().add_defines_map_diff(defines_map);
+}
+
+config config_cache::read_configs(const std::string& file_path, abstract_validator* validator)
+{
+	preproc_map copy_map(make_copy_map());
+	config cfg = read_configs(file_path, copy_map, validator);
+	add_defines_map_diff(copy_map);
+	return cfg;
 }
 
 config config_cache::read_configs(const std::string& file_path, preproc_map& defines_map, abstract_validator* validator)
@@ -146,7 +154,7 @@ config config_cache::read_configs(const std::string& file_path, preproc_map& def
 	return io::read(*preprocess_file(file_path, &defines_map), validator);
 }
 
-void config_cache::read_cache(const std::string& file_path, config& cfg, abstract_validator* validator)
+config config_cache::read_cache(const std::string& file_path, abstract_validator* validator)
 {
 	static const std::string extension = ".gz";
 
@@ -207,14 +215,14 @@ void config_cache::read_cache(const std::string& file_path, config& cfg, abstrac
 			log_scope("read cache");
 
 			try {
-				cfg = read_file(fname + extension);
+				config cfg = read_file(fname + extension);
 				const std::string define_file = fname + ".define" + extension;
 
 				if(filesystem::file_exists(define_file)) {
 					config_cache_transaction::instance().add_define_file(define_file);
 				}
 
-				return;
+				return cfg;
 			} catch(const config::error& e) {
 				ERR_CACHE << "cache " << fname << extension << " is corrupt. Loading from files: "<< e.message;
 			} catch(const filesystem::io_exception&) {
@@ -231,8 +239,7 @@ void config_cache::read_cache(const std::string& file_path, config& cfg, abstrac
 		read_defines_queue();
 
 		preproc_map copy_map(make_copy_map());
-
-		cfg = read_configs(file_path, copy_map, validator);
+		config cfg = read_configs(file_path, copy_map, validator);
 		add_defines_map_diff(copy_map);
 
 		try {
@@ -247,14 +254,11 @@ void config_cache::read_cache(const std::string& file_path, config& cfg, abstrac
 			ERR_CACHE << "could not write to cache '" << fname << "'";
 		}
 
-		return;
+		return cfg;
 	}
 
 	LOG_CACHE << "Loading plain config instead of cache";
-
-	preproc_map copy_map(make_copy_map());
-	cfg = read_configs(file_path, copy_map, validator);
-	add_defines_map_diff(copy_map);
+	return read_configs(file_path, validator);
 }
 
 void config_cache::read_defines_file(const std::string& file_path)
@@ -278,17 +282,12 @@ config config_cache::load_configs(const std::string& config_path, abstract_valid
 {
 	// Make sure that we have fake transaction if no real one is going on
 	fake_transaction fake;
-	config cfg;
 
 	if(use_cache_) {
-		read_cache(config_path, cfg, validator);
+		return read_cache(config_path, validator);
 	} else {
-		preproc_map copy_map(make_copy_map());
-		cfg = read_configs(config_path, copy_map, validator);
-		add_defines_map_diff(copy_map);
+		return read_configs(config_path, validator);
 	}
-
-	return cfg;
 }
 
 void config_cache::set_force_invalid_cache(bool force)
@@ -466,4 +465,4 @@ void config_cache_transaction::add_defines_map_diff(preproc_map& new_map)
 	}
 }
 
-}
+} // namespace game_config
