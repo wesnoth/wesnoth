@@ -159,6 +159,10 @@ bool help_browser::add_topics_for_section(const help::section& parent_section, t
 	}
 
 	for(const help::topic& topic : parent_section.topics) {
+		if (topic.id[0] == '.') {
+			continue;
+		}
+
 		if ((match(topic.id) || match(topic.title)) && (topic.id.compare(0, 2, "..") != 0)) {
 			add_topic(topic.id, topic.title, false, parent_node);
 			topics_added = true;
