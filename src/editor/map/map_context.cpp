@@ -832,7 +832,7 @@ void map_context::save_schedule(const std::string& schedule_id, const std::strin
 			/* If exists, read the schedule.cfg
 			 * and insert [editor_times] block at correct place */
 			preproc_map editor_map;
-			editor_map["EDITOR"] = preproc_define("true");
+			editor_map.try_emplace("EDITOR");
 			schedule = io::read(*preprocess_file(schedule_path, &editor_map));
 		}
 	} catch(const filesystem::io_exception& e) {

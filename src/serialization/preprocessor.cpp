@@ -226,12 +226,9 @@ void preproc_define::read(const config& cfg)
 	}
 }
 
-preproc_map::value_type preproc_define::read_pair(const config& cfg)
+void preproc_define::insert(preproc_map& map, const config& cfg)
 {
-	preproc_define second;
-	second.read(cfg);
-
-	return preproc_map::value_type(cfg["name"], second);
+	map.try_emplace(cfg["name"], cfg);
 }
 
 std::ostream& operator<<(std::ostream& stream, const preproc_define& def)
@@ -1311,9 +1308,9 @@ bool preprocessor_data::get_chunk()
 				}
 
 				buffer.erase(buffer.end() - 7, buffer.end());
-				(*parent_.defines_)[symbol]
-						= preproc_define(buffer, items, optargs, parent_.textdomain_, linenum, parent_.location_,
-						deprecation_detail, deprecation_level, deprecation_version);
+				(*parent_.defines_).insert_or_assign(symbol,
+						preproc_define(buffer, items, optargs, parent_.textdomain_, linenum, parent_.location_,
+						deprecation_detail, deprecation_level, deprecation_version));
 
 				LOG_PREPROC << "defining macro " << symbol << " (location " << get_location(parent_.location_) << ")";
 			}

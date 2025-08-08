@@ -67,7 +67,7 @@ static int intf_load_wml(lua_State* L)
 			std::string define = lua_tostring(L, -1);
 			lua_pop(L, 1);
 			if(!define.empty()) {
-				defines_map.emplace(define, preproc_define(define));
+				defines_map.try_emplace(define, define);
 			}
 		}
 	} else if(!lua_isnoneornil(L, 2)) {
