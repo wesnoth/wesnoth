@@ -35,24 +35,16 @@ typedef std::map<std::string, struct preproc_define> preproc_map;
 
 struct preproc_define
 {
-	preproc_define()
-		: value()
-		, arguments()
-		, optional_arguments()
-		, textdomain()
-		, linenum(0)
-		, location()
-	{
-	}
+	preproc_define() = default;
 
 	explicit preproc_define(const std::string& val)
 		: value(val)
-		, arguments()
-		, optional_arguments()
-		, textdomain()
-		, linenum(0)
-		, location()
 	{
+	}
+
+	explicit preproc_define(const config& cfg)
+	{
+		read(cfg);
 	}
 
 	preproc_define(const std::string& val,
@@ -67,11 +59,11 @@ struct preproc_define
 		, arguments(args)
 		, optional_arguments(optargs)
 		, textdomain(domain)
-		, linenum(line)
 		, location(loc)
 		, deprecation_message(dep_msg)
-		, deprecation_level(dep_lvl)
 		, deprecation_version(dep_ver)
+		, deprecation_level(dep_lvl)
+		, linenum(line)
 	{
 	}
 
@@ -83,15 +75,15 @@ struct preproc_define
 
 	std::string textdomain;
 
-	int linenum;
-
 	std::string location;
 
 	std::string deprecation_message;
 
+	version_info deprecation_version;
+
 	utils::optional<DEP_LEVEL> deprecation_level;
 
-	version_info deprecation_version;
+	int linenum{0};
 
 	bool is_deprecated() const {
 		return deprecation_level.has_value();
@@ -104,7 +96,7 @@ struct preproc_define
 	void read(const config&);
 	void read_argument(const config&);
 
-	static preproc_map::value_type read_pair(const config&);
+	static void insert(preproc_map&, const config&);
 
 	bool operator==(const preproc_define&) const;
 

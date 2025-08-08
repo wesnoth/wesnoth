@@ -145,14 +145,14 @@ BOOST_AUTO_TEST_CASE( test_fs_enum )
 
 BOOST_AUTO_TEST_CASE( test_fs_binary_path )
 {
-	config main_config;
-	game_config_view game_config_view_ = game_config_view::wrap(main_config);
 	game_config::config_cache& cache = game_config::config_cache::instance();
 
 	cache.clear_defines();
 	cache.add_define("EDITOR");
 	cache.add_define("MULTIPLAYER");
-	cache.get_config(game_config::path +"/data", main_config);
+
+	config main_config = cache.get_config(game_config::path + "/data");
+	game_config_view game_config_view_ = game_config_view::wrap(main_config);
 
 	const filesystem::binary_paths_manager bin_paths_manager(game_config_view_);
 

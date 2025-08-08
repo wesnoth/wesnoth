@@ -105,10 +105,9 @@ public:
 	/**
 	 * Gets a config object from given @a path.
 	 * @param path file to load. Should be _main.cfg.
-	 * @param cfg config object that is written to. Should be empty on entry.
 	 * @param validator the WML schema validator, if provided.
 	 */
-	void get_config(const std::string& path, config& cfg, abstract_validator* validator = nullptr);
+	config get_config(const std::string& path, abstract_validator* validator = nullptr);
 
 	/**
 	 * Clear stored defines map to default values
@@ -159,14 +158,17 @@ private:
 
 	std::string cache_file_prefix_;
 
-	void read_file(const std::string& file, config& cfg);
+	config read_file(const std::string& file);
 	void write_file(const std::string& file, const config& cfg);
 	void write_file(const std::string& file, const preproc_map& defines);
 
-	void read_cache(const std::string& path, config& cfg, abstract_validator* validator = nullptr);
+	config read_cache(const std::string& path, abstract_validator* validator = nullptr);
 
-	void read_configs(const std::string& path, config& cfg, preproc_map& defines, abstract_validator* validator = nullptr);
-	void load_configs(const std::string& path, config& cfg, abstract_validator* validator = nullptr);
+	std::pair<config, preproc_map> read_configs(const std::string& path, abstract_validator* validator);
+
+	config read_configs(const std::string& path, preproc_map& defines, abstract_validator* validator = nullptr);
+	config load_configs(const std::string& path, abstract_validator* validator = nullptr);
+
 	void read_defines_queue();
 	void read_defines_file(const std::string& path);
 
@@ -207,12 +209,6 @@ public:
 	 */
 	void lock();
 
-	/**
-	 * Used to let std::for_each insert new defines to active_map
-	 * map to active
-	 */
-	void insert_to_active(const preproc_map::value_type& def);
-
 	enum state
 	{
 		FREE,
@@ -225,8 +221,8 @@ private:
 	friend class config_cache;
 	friend class fake_transaction;
 
-	static state state_;
-	static config_cache_transaction* active_;
+	static inline state state_ = FREE;
+	static inline config_cache_transaction* active_ = nullptr;
 
 	std::vector<std::string> define_filenames_;
 	preproc_map active_map_;

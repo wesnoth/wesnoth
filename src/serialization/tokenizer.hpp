@@ -39,11 +39,6 @@ constexpr int END_STANDARD_ASCII = 128;
  */
 struct token
 {
-	token() :
-		type(END),
-		value()
-	{}
-
 	/**
 	 * used for a token's type field
 	 */
@@ -85,7 +80,7 @@ struct token
 		DOLLAR = '$',
 	};
 
-	token_type type;
+	token_type type{END};
 	/** the token's value, can be either a single character or multiple characters */
 	std::string value;
 };
