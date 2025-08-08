@@ -447,15 +447,18 @@ preproc_map& config_cache_transaction::get_active_map(const preproc_map& defines
 void config_cache_transaction::add_defines_map_diff(preproc_map& new_map)
 {
 	switch(get_state()) {
-	case ACTIVE:
-		// First, remove all duplicate defines from the input map
-		for(const auto& [key, define] : active_map_) {
-			new_map.erase(key);
-		}
+	case ACTIVE: {
+		preproc_map temp;
+		std::set_difference(new_map.begin(),
+				new_map.end(),
+				active_map_.begin(),
+				active_map_.end(),
+				std::insert_iterator(temp, temp.begin()));
 
-		// Then copy the remaining unique defines back to the active map
-		active_map_.insert(new_map.begin(), new_map.end());
+		active_map_.insert(temp.begin(), temp.end());
+		std::swap(temp, new_map);
 		break;
+	}
 
 	case LOCKED:
 		new_map.clear();
