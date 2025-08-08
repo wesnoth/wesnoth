@@ -221,8 +221,8 @@ private:
 	friend class config_cache;
 	friend class fake_transaction;
 
-	static state state_;
-	static config_cache_transaction* active_;
+	static inline state state_ = FREE;
+	static inline config_cache_transaction* active_ = nullptr;
 
 	std::vector<std::string> define_filenames_;
 	preproc_map active_map_;
