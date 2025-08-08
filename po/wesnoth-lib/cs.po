@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-07-20 22:54-0500\n"
-"PO-Revision-Date: 2025-05-26 23:45+0200\n"
+"PO-Revision-Date: 2025-07-25 23:04+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -300,8 +300,8 @@ msgid ""
 "identical. See <ref>dst='..terrain_sand' text='sand'</ref>."
 msgstr ""
 "<italic>text='Pouště'</italic> mají poněkud odlišné složení než malé jámy "
-"s pískem nebo pláže, hru ale ovlivňují obdobně. Podívej se na <ref>dst='.."
-"terrain_sand' text='písek'</ref>."
+"s pískem nebo pláže, hru ale ovlivňují obdobně. Podívej se na "
+"<ref>dst='..terrain_sand' text='písek'</ref>."
 
 #. [terrain_type]: id=sand_beach
 #. [terrain_type]: id=sand
@@ -5015,7 +5015,7 @@ msgstr "Dohazování"
 #: data/gui/themes/default/dialogs/lobby_main.cfg:102
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:128
 msgid "Presets"
-msgstr ""
+msgstr "Předvolby"
 
 #. [label]: id=map
 #: data/gui/themes/default/dialogs/lobby_main.cfg:153
@@ -5029,10 +5029,8 @@ msgstr "Vyžaduje heslo pro vstup"
 
 #. [button]: id=delete_preset
 #: data/gui/themes/default/dialogs/lobby_main.cfg:305
-#, fuzzy
-#| msgid "Delete Unit"
 msgid "Delete this preset"
-msgstr "Smazat jednotku"
+msgstr "Smazat tuto předvolbu"
 
 #. [toggle_button]: id=filter_vacant_slots
 #: data/gui/themes/default/dialogs/lobby_main.cfg:477
@@ -5743,10 +5741,8 @@ msgstr "Velikost mapy:"
 #: data/gui/themes/default/dialogs/mp_create_game/default_resolution.cfg:460
 #: data/gui/themes/default/dialogs/mp_create_game/small_resolution.cfg:378
 #: data/gui/themes/default/dialogs/mp_create_game/tiny_resolution.cfg:335
-#, fuzzy
-#| msgid "Saved Games"
 msgid "Save Preset"
-msgstr "Uložené hry"
+msgstr "Uložit předvolbu"
 
 #. [row]
 #: data/gui/themes/default/dialogs/mp_faction_select.cfg:210
@@ -6082,14 +6078,12 @@ msgstr "Zakázat automatické pohyby na počátku herního kola"
 #. [toggle_button]: id=show_turn_dialog
 #: data/gui/themes/default/dialogs/preferences/01_general.cfg:114
 msgid "Turn prompt"
-msgstr ""
+msgstr "Výzva před kolem"
 
 #. [toggle_button]: id=show_turn_dialog
 #: data/gui/themes/default/dialogs/preferences/01_general.cfg:115
-#, fuzzy
-#| msgid "Display a dialog at the beginning of your turn"
 msgid "Display a prompt at the beginning of your turn"
-msgstr "Zobrazit dialog na začátku tvého kola"
+msgstr "Zobrazit výzvu na začátku svého kola"
 
 #. [toggle_button]: id=whiteboard_on_start
 #: data/gui/themes/default/dialogs/preferences/01_general.cfg:128
@@ -7710,10 +7704,8 @@ msgid "Unit type saved."
 msgstr "Typ jednotky uložen."
 
 #: src/gui/dialogs/editor/generator_settings.cpp:38
-#, fuzzy
-#| msgid "/1000 tiles"
 msgid "$count/1000 tiles"
-msgstr "/1000 polí"
+msgstr "$count/1000 políček"
 
 #: src/gui/dialogs/editor/generator_settings.cpp:43
 msgid "Coastal"
@@ -7732,18 +7724,16 @@ msgid "Find File"
 msgstr "Najít soubor"
 
 #: src/gui/dialogs/file_dialog.cpp:191
-#, fuzzy
-#| msgid "Winter Elven Castle"
 msgid "enter filename"
-msgstr "Zimní elfí hrad"
+msgstr "zadej název souboru"
 
 #: src/gui/dialogs/file_dialog.cpp:201
 msgid "invalid extension (use $extensions)"
-msgstr ""
+msgstr "neplatná přípona (použij $extensions)"
 
 #: src/gui/dialogs/file_dialog.cpp:208
 msgid "filename contains whitespace"
-msgstr ""
+msgstr "název souboru obsahuje bílý znak"
 
 #: src/gui/dialogs/file_dialog.cpp:237
 msgid "Open"
@@ -8145,8 +8135,8 @@ msgid ""
 "multiplayer lobby. Please report this at https://bugs.wesnoth.org."
 msgstr ""
 "S databází pro ověření verze rozšíření, která je potřebná pro čekárnu hry "
-"více hráčů, není něco v pořádku. Prosím nahlas to na https://bugs.wesnoth."
-"org."
+"více hráčů, není něco v pořádku. Prosím nahlas to na https://"
+"bugs.wesnoth.org."
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:996
 msgid "This game is password protected. Join using moderator rights anyway?"
@@ -8265,7 +8255,7 @@ msgstr "Hra"
 
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:81
 msgid "Hotkey(s): $bindings"
-msgstr ""
+msgstr "Klávesové zkratky: $bindings"
 
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:308
 msgid "Invalid Color"
@@ -8787,10 +8777,8 @@ msgid "Select/Move/Attack"
 msgstr "Vybrat/Pohnout/Zaútočit"
 
 #: src/hotkey/hotkey_command.cpp:84
-#, fuzzy
-#| msgid "Touch"
 msgid "Touch Hex"
-msgstr "Dotek"
+msgstr "Dotknout se políčka"
 
 #: src/hotkey/hotkey_command.cpp:85
 msgid "Animate Map"
@@ -9610,24 +9598,3 @@ msgstr "V sekci „[$section|]“ není nastaven povinný klíč „$key|“."
 #: src/wml_exception.cpp:104
 msgid "In section ‘[$section|]’ the mandatory subtag ‘[$tag|]’ is missing."
 msgstr "V sekci „[$section|]“ chybí povinná podřízená značka „[$tag|]”."
-
-#~ msgid "Turn dialog"
-#~ msgstr "Dialog tahu"
-
-#~ msgid "<span color='#00dcff' size='small'>please enter a filename</span>"
-#~ msgstr ""
-#~ "<span color='#00dcff' size='small'>zadej prosím název souboru</span>"
-
-#~ msgid ""
-#~ "<span color='red'><span face='DejaVuSans'>✘</span> <span "
-#~ "size='small'>wrong extension, use $extensions</span></span>"
-#~ msgstr ""
-#~ "<span color='red'><span face='DejaVuSans'>✘</span> <span "
-#~ "size='small'>špatná přípona, použij $extensions</span></span>"
-
-#~ msgid ""
-#~ "<span color='red'><span face='DejaVuSans'>✘</span> <span "
-#~ "size='small'>whitespace is not allowed in filename</span></span>"
-#~ msgstr ""
-#~ "<span color='red'><span face='DejaVuSans'>✘</span> <span "
-#~ "size='small'>v názvu souboru není povolen bílý znak</span></span>"
