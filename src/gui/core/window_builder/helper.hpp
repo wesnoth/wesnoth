@@ -55,7 +55,7 @@ unsigned get_h_align(const std::string& h_align);
  *
  * @returns                       The border flags.
  */
-unsigned get_border(const std::vector<std::string>& borders);
+unsigned get_border(const std::vector<std::string_view>& borders);
 
 /**
  * Returns the placement/resize flags.

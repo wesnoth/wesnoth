@@ -447,14 +447,14 @@ std::string unit_topic_generator::operator()() const {
 		ss << _("Base unit:") << font::nbsp << markup::make_link(parent->type_name(), ".." + unit_prefix + type_.id()) << "\n";
 	} else {
 		bool first = true;
-		for(const std::string& base_id : utils::split(type_.get_cfg()["base_ids"])) {
+		for(const std::string_view& base_id : utils::split_view(type_.get_cfg()["base_ids"])) {
 			if(first) {
 				ss << _("Base units:") << font::nbsp;
 				first = false;
 			}
 			const unit_type* base_type = unit_types.find(base_id, unit_type::HELP_INDEXED);
 			const std::string section_prefix = base_type->show_variations_in_help() ? ".." : "";
-			ss << markup::make_link(base_type->type_name(), section_prefix + unit_prefix + base_id) << "\n";
+			ss << markup::make_link(base_type->type_name(), section_prefix + unit_prefix + std::string(base_id)) << "\n";
 		}
 	}
 

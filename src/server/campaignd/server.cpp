@@ -1320,15 +1320,15 @@ ADDON_CHECK_STATUS server::validate_addon(const server::request& req, config*& e
 				return ADDON_CHECK_STATUS::USER_DOES_NOT_EXIST;
 			}
 
-			for(const std::string& primary_author : utils::split(upload["primary_authors"].str(), ',')) {
-				if(!user_handler_->user_exists(primary_author)) {
+			for(const std::string_view& primary_author : utils::split_view(upload["primary_authors"])) {
+				if(!user_handler_->user_exists(std::string(primary_author))) {
 					LOG_CS << "Validation error: forum auth requested for a primary author who doesn't exist";
 					return ADDON_CHECK_STATUS::USER_DOES_NOT_EXIST;
 				}
 			}
 
-			for(const std::string& secondary_author : utils::split(upload["secondary_authors"].str(), ',')) {
-				if(!user_handler_->user_exists(secondary_author)) {
+			for(const std::string_view& secondary_author : utils::split_view(upload["secondary_authors"])) {
+				if(!user_handler_->user_exists(std::string(secondary_author))) {
 					LOG_CS << "Validation error: forum auth requested for a secondary author who doesn't exist";
 					return ADDON_CHECK_STATUS::USER_DOES_NOT_EXIST;
 				}

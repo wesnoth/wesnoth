@@ -158,7 +158,7 @@ struct unit_filter_adjacent : public unit_filter_base
 			assert(dir >= 0 && dir <= 5);
 			map_location::direction direction{ dir };
 			if(!i_adjacent.empty()) { //key adjacent defined
-				if(!utils::contains(map_location::parse_directions(i_adjacent), direction)) {
+				if(!utils::contains(map_location::parse_directions(i_adjacent.str()), direction)) {
 					continue;
 				}
 			}
@@ -310,10 +310,10 @@ void unit_filter_compound::create_attribute(const config::attribute_value& v, C 
 	if(v.blank()) {
 	}
 	else if(v.apply_visitor(contains_dollar_visitor())) {
-		children_.emplace_back(new unit_filter_attribute_literal<C, F>(std::move(v.str()), std::move(conv), std::move(func)));
+		children_.emplace_back(new unit_filter_attribute_literal(std::move(v.str()), std::move(conv), std::move(func)));
 	}
 	else {
-		children_.emplace_back(new unit_filter_attribute_parsed<decltype(conv(v)), F>(std::move(conv(v)), std::move(func)));
+		children_.emplace_back(new unit_filter_attribute_parsed(std::move(conv(v)), std::move(func)));
 	}
 }
 
@@ -330,27 +330,27 @@ void unit_filter_compound::fill(const vconfig& cfg)
 		);
 
 		create_attribute(literal["id"],
-			[](const config::attribute_value& c) { return utils::split(c.str()); },
-			[](const std::vector<std::string>& id_list, const unit_filter_args& args)
+			[](const config::attribute_value& c) { return utils::split_view(c); },
+			[](const std::vector<std::string_view>& id_list, const unit_filter_args& args)
 			{
 				return utils::contains(id_list, args.u.id());
 			}
 		);
 
 		create_attribute(literal["type"],
-			[](const config::attribute_value& c) { return utils::split(c.str()); },
-			[](const std::vector<std::string>& types, const unit_filter_args& args)
+			[](const config::attribute_value& c) { return utils::split_view(c); },
+			[](const std::vector<std::string_view>& types, const unit_filter_args& args)
 			{
 				return utils::contains(types, args.u.type_id());
 			}
 		);
 
 		create_attribute(literal["type_adv_tree"],
-			[](const config::attribute_value& c) { return utils::split(c.str()); },
-			[](const std::vector<std::string>& types, const unit_filter_args& args)
+			[](const config::attribute_value& c) { return utils::split_view(c); },
+			[](const std::vector<std::string_view>& types, const unit_filter_args& args)
 			{
-				std::set<std::string> types_expanded;
-				for(const std::string& type : types) {
+				std::set<std::string_view> types_expanded;
+				for(const std::string_view& type : types) {
 					if(types_expanded.count(type)) {
 						continue;
 					}
@@ -365,22 +365,22 @@ void unit_filter_compound::fill(const vconfig& cfg)
 		);
 
 		create_attribute(literal["variation"],
-			[](const config::attribute_value& c) { return utils::split(c.str()); },
-			[](const std::vector<std::string>& types, const unit_filter_args& args)
+			[](const config::attribute_value& c) { return utils::split_view(c); },
+			[](const std::vector<std::string_view>& types, const unit_filter_args& args)
 			{
 				return utils::contains(types, args.u.variation());
 			}
 		);
 
 		create_attribute(literal["has_variation"],
-			[](const config::attribute_value& c) { return utils::split(c.str()); },
-			[](const std::vector<std::string>& types, const unit_filter_args& args)
+			[](const config::attribute_value& c) { return utils::split_view(c); },
+			[](const std::vector<std::string_view>& types, const unit_filter_args& args)
 			{
 				// If this unit is a variation itself then search in the base unit's variations.
 				const unit_type* const type = args.u.variation().empty() ? &args.u.type() : unit_types.find(args.u.type().parent_id());
 				assert(type);
 
-				for(const std::string& variation_id : types) {
+				for(const std::string_view& variation_id : types) {
 					if (type->has_variation(variation_id)) {
 						return true;
 					}
@@ -390,10 +390,10 @@ void unit_filter_compound::fill(const vconfig& cfg)
 		);
 
 		create_attribute(literal["ability"],
-			[](const config::attribute_value& c) { return utils::split(c.str()); },
-			[](const std::vector<std::string>& abilities, const unit_filter_args& args)
+			[](const config::attribute_value& c) { return utils::split_view(c); },
+			[](const std::vector<std::string_view>& abilities, const unit_filter_args& args)
 			{
-				for(const std::string& ability_id : abilities) {
+				for(const std::string_view& ability_id : abilities) {
 					if (args.u.has_ability_by_id(ability_id)) {
 						return true;
 					}
@@ -403,10 +403,10 @@ void unit_filter_compound::fill(const vconfig& cfg)
 		);
 
 		create_attribute(literal["ability_type"],
-			[](const config::attribute_value& c) { return utils::split(c.str()); },
-			[](const std::vector<std::string>& abilities, const unit_filter_args& args)
+			[](const config::attribute_value& c) { return utils::split_view(c); },
+			[](const std::vector<std::string_view>& abilities, const unit_filter_args& args)
 			{
-				for(const std::string& ability : abilities) {
+				for(const std::string_view& ability : abilities) {
 					if (args.u.has_ability_type(ability)) {
 						return true;
 					}
@@ -455,10 +455,10 @@ void unit_filter_compound::fill(const vconfig& cfg)
 		);
 
 		create_attribute(literal["ability_type_active"],
-			[](const config::attribute_value& c) { return utils::split(c.str()); },
-			[](const std::vector<std::string>& abilities, const unit_filter_args& args)
+			[](const config::attribute_value& c) { return utils::split_view(c); },
+			[](const std::vector<std::string_view>& abilities, const unit_filter_args& args)
 			{
-				for(const std::string& ability : abilities) {
+				for(const std::string_view& ability : abilities) {
 					if (!args.u.get_abilities(ability, args.loc).empty()) {
 						return true;
 					}
@@ -470,16 +470,14 @@ void unit_filter_compound::fill(const vconfig& cfg)
 		create_attribute(literal["trait"],
 			[](const config::attribute_value& c)
 			{
-				auto res = utils::split(c.str());
+				auto res = utils::split_view(c);
 				std::sort(res.begin(), res.end());
 				return res;
-
 			},
-			[](const std::vector<std::string>& check_traits, const unit_filter_args& args)
+			[](const std::vector<std::string_view>& check_traits, const unit_filter_args& args)
 			{
-
 				std::vector<std::string> have_traits = args.u.get_traits_list();
-				std::vector<std::string> isect;
+				std::vector<std::string_view> isect;
 				std::sort(have_traits.begin(), have_traits.end());
 				std::set_intersection(check_traits.begin(), check_traits.end(), have_traits.begin(), have_traits.end(), std::back_inserter(isect));
 				return !isect.empty();
@@ -487,8 +485,8 @@ void unit_filter_compound::fill(const vconfig& cfg)
 		);
 
 		create_attribute(literal["race"],
-			[](const config::attribute_value& c) { return utils::split(c.str()); },
-			[](const std::vector<std::string>& races, const unit_filter_args& args)
+			[](const config::attribute_value& c) { return utils::split_view(c); },
+			[](const std::vector<std::string_view>& races, const unit_filter_args& args)
 			{
 				return utils::contains(races, args.u.race()->id());
 			}
@@ -521,10 +519,11 @@ void unit_filter_compound::fill(const vconfig& cfg)
 			[](const config::attribute_value& c)
 			{
 				std::vector<int> res;
-				for(const std::string& s : utils::split(c.str())) {
+				// NOTE: cannot use split_view here since the value might be a single number
+				for(const std::string& s : utils::split(c)) {
 					try {
 						res.push_back(std::stoi(s));
-					} catch(std::invalid_argument&) {
+					} catch(const std::invalid_argument&) {
 						WRN_CF << "ignored invalid side='" << s << "' in filter";
 					}
 				}
@@ -537,10 +536,10 @@ void unit_filter_compound::fill(const vconfig& cfg)
 		);
 
 		create_attribute(literal["status"],
-			[](const config::attribute_value& c) { return utils::split(c.str()); },
-			[](const std::vector<std::string>& statuses, const unit_filter_args& args)
+			[](const config::attribute_value& c) { return utils::split_view(c); },
+			[](const std::vector<std::string_view>& statuses, const unit_filter_args& args)
 			{
-				for(const std::string& status : statuses) {
+				for(const std::string_view& status : statuses) {
 					if (args.u.get_state(status)) {
 						return true;
 					}
@@ -553,7 +552,6 @@ void unit_filter_compound::fill(const vconfig& cfg)
 			[](const config::attribute_value& c) { return c.str(); },
 			[](const std::string& weapon, const unit_filter_args& args)
 			{
-
 				for(const attack_type& a : args.u.attacks()) {
 					if(a.id() == weapon) {
 						return true;
@@ -588,10 +586,10 @@ void unit_filter_compound::fill(const vconfig& cfg)
 		);
 
 		create_attribute(literal["usage"],
-			[](const config::attribute_value& c) { return utils::split(c.str()); },
-			[](const std::vector<std::string>& usages, const unit_filter_args& args)
+			[](const config::attribute_value& c) { return utils::split_view(c); },
+			[](const std::vector<std::string_view>& usages, const unit_filter_args& args)
 			{
-				for(const std::string& usage : usages) {
+				for(const std::string_view& usage : usages) {
 					if(args.u.usage() == usage) {
 						return true;
 					}

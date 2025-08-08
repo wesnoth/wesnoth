@@ -78,13 +78,13 @@ struct map_location {
 		return rotate_direction(d, 3);
 	}
 
-	static direction parse_direction(const std::string& str);
+	static direction parse_direction(std::string_view str);
 
 	/**
 	 * Parse_directions takes a comma-separated list, and filters out any
 	 * invalid directions
 	 */
-	static std::vector<direction> parse_directions(const std::string& str);
+	static std::vector<direction> parse_directions(std::string_view str);
 	static std::string write_direction(direction dir);
 	static std::string write_translated_direction(direction dir);
 

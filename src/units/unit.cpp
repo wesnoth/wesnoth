@@ -518,7 +518,7 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 	}
 
 	random_traits_ = cfg["random_traits"].to_bool(true);
-	facing_ = map_location::parse_direction(cfg["facing"]);
+	facing_ = map_location::parse_direction(cfg["facing"].str());
 	if(facing_ == map_location::direction::indeterminate) facing_ = get_random_direction();
 
 	for(const config& mods : cfg.child_range("modifications")) {
@@ -904,8 +904,8 @@ void unit::generate_traits(bool must_have_only)
 			// See if the unit already has a trait that excludes the current one
 			for(const config& mod : current_traits) {
 				if (mod["exclude_traits"] != "") {
-					for (const auto& c: utils::split(mod["exclude_traits"])) {
-						temp_exclude_traits.push_back(c);
+					for(const auto& c: utils::split_view(mod["exclude_traits"])) {
+						temp_exclude_traits.emplace_back(c);
 					}
 				}
 			}
@@ -1403,9 +1403,9 @@ void unit::heal(int amount)
 	}
 }
 
-const std::set<std::string> unit::get_states() const
+std::set<std::string, std::less<>> unit::get_states() const
 {
-	std::set<std::string> all_states = states_;
+	auto all_states = states_;
 	for(const auto& state : known_boolean_state_names_) {
 		if(get_state(state.second)) {
 			all_states.insert(state.first);
@@ -1420,7 +1420,7 @@ const std::set<std::string> unit::get_states() const
 	return all_states;
 }
 
-bool unit::get_state(const std::string& state) const
+bool unit::get_state(std::string_view state) const
 {
 	state_t known_boolean_state_id = get_known_boolean_state_id(state);
 	if(known_boolean_state_id!=STATE_UNKNOWN){
@@ -1448,7 +1448,7 @@ bool unit::get_state(state_t state) const
 	return known_boolean_states_[state];
 }
 
-unit::state_t unit::get_known_boolean_state_id(const std::string& state)
+unit::state_t unit::get_known_boolean_state_id(std::string_view state)
 {
 	auto i = known_boolean_state_names_.find(state);
 	if(i != known_boolean_state_names_.end()) {
@@ -1468,7 +1468,7 @@ std::string unit::get_known_boolean_state_name(state_t state)
 	return "";
 }
 
-std::map<std::string, unit::state_t> unit::known_boolean_state_names_ {
+std::map<std::string, unit::state_t, std::less<>> unit::known_boolean_state_names_ {
 	{"slowed",       STATE_SLOWED},
 	{"poisoned",     STATE_POISONED},
 	{"petrified",    STATE_PETRIFIED},
@@ -1479,7 +1479,7 @@ std::map<std::string, unit::state_t> unit::known_boolean_state_names_ {
 	{"invulnerable", STATE_INVULNERABLE},
 };
 
-void unit::set_state(const std::string& state, bool value)
+void unit::set_state(std::string_view state, bool value)
 {
 	appearance_changed_ = true;
 	state_t known_boolean_state_id = get_known_boolean_state_id(state);
@@ -1496,13 +1496,21 @@ void unit::set_state(const std::string& state, bool value)
 	}
 
 	if(value) {
+#ifdef __cpp_lib_associative_heterogeneous_insertion
 		states_.insert(state);
+#else
+		states_.insert(std::string{state});
+#endif
 	} else {
+#ifdef __cpp_lib_associative_heterogeneous_erasure
 		states_.erase(state);
+#else
+		states_.erase(std::string{state});
+#endif
 	}
 }
 
-bool unit::has_ability_by_id(const std::string& ability) const
+bool unit::has_ability_by_id(std::string_view ability) const
 {
 	for(const auto [key, cfg] : abilities_.all_children_view()) {
 		if(cfg["id"] == ability) {
@@ -1513,7 +1521,7 @@ bool unit::has_ability_by_id(const std::string& ability) const
 	return false;
 }
 
-void unit::remove_ability_by_id(const std::string& ability)
+void unit::remove_ability_by_id(std::string_view ability)
 {
 	set_attr_changed(UA_ABILITIES);
 	config::all_children_iterator i = abilities_.ordered_begin();
@@ -1772,7 +1780,7 @@ bool unit::resistance_filter_matches(const config& cfg, const std::string& damag
 	if(!apply_to.empty()) {
 		if(damage_name != apply_to) {
 			if(apply_to.find(',') != std::string::npos && apply_to.find(damage_name) != std::string::npos) {
-				if(!utils::contains(utils::split(apply_to), damage_name)) {
+				if(!utils::contains(utils::split_view(apply_to), damage_name)) {
 					return false;
 				}
 			} else {
@@ -2247,12 +2255,12 @@ void unit::apply_builtin_effect(const std::string& apply_to, const config& effec
 		const std::string& add = effect["add"];
 		const std::string& remove = effect["remove"];
 
-		for(const std::string& to_add : utils::split(add))
+		for(const std::string_view& to_add : utils::split_view(add))
 		{
 			set_state(to_add, true);
 		}
 
-		for(const std::string& to_remove : utils::split(remove))
+		for(const std::string_view& to_remove : utils::split_view(remove))
 		{
 			set_state(to_remove, false);
 		}
@@ -2272,7 +2280,7 @@ void unit::apply_builtin_effect(const std::string& apply_to, const config& effec
 			set_attr_changed(UA_ABILITIES);
 			config to_append;
 			for(const auto [key, cfg] : ab_effect->all_children_view()) {
-				if(!has_ability_by_id(cfg["id"])) {
+				if(!has_ability_by_id(cfg["id"].str())) {
 					to_append.add_child(key, cfg);
 					for(const config& event : cfg.child_range("event")) {
 						events.add_child("event", event);
@@ -2284,7 +2292,7 @@ void unit::apply_builtin_effect(const std::string& apply_to, const config& effec
 	} else if(apply_to == "remove_ability") {
 		if(auto ab_effect = effect.optional_child("abilities")) {
 			for(const auto [key, cfg] : ab_effect->all_children_view()) {
-				remove_ability_by_id(cfg["id"]);
+				remove_ability_by_id(cfg["id"].str());
 			}
 		}
 		if(auto fab_effect = effect.optional_child("filter_ability")) {

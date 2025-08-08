@@ -986,7 +986,7 @@ bool prefs::achievement(const std::string& content_for, const std::string& id)
 	{
 		if(ach["content_for"].str() == content_for)
 		{
-			return utils::contains(utils::split(ach["ids"]), id);
+			return utils::contains(utils::split_view(ach["ids"]), id);
 		}
 	}
 	return false;
@@ -999,7 +999,7 @@ void prefs::set_achievement(const std::string& content_for, const std::string& i
 		// if achievements already exist for this content and the achievement has not already been set, add it
 		if(ach["content_for"].str() == content_for)
 		{
-			std::vector<std::string> ids = utils::split(ach["ids"]);
+			std::vector<std::string_view> ids = utils::split_view(ach["ids"]);
 
 			if(ids.empty())
 			{
@@ -1090,7 +1090,7 @@ bool prefs::sub_achievement(const std::string& content_for, const std::string& i
 		return true;
 	}
 
-	for(config& ach : preferences_.child_range(prefs_list::achievements))
+	for(const config& ach : preferences_.child_range(prefs_list::achievements))
 	{
 		if(ach["content_for"].str() == content_for)
 		{
@@ -1099,7 +1099,7 @@ bool prefs::sub_achievement(const std::string& content_for, const std::string& i
 			{
 				if(in_progress["id"] == id)
 				{
-					return utils::contains(utils::split(in_progress["sub_ids"]), sub_id);
+					return utils::contains(utils::split_view(in_progress["sub_ids"]), sub_id);
 				}
 			}
 		}
@@ -1125,7 +1125,7 @@ void prefs::set_sub_achievement(const std::string& content_for, const std::strin
 			{
 				if(in_progress["id"].str() == id)
 				{
-					std::vector<std::string> sub_ids = utils::split(in_progress["sub_ids"]);
+					std::vector<std::string_view> sub_ids = utils::split_view(in_progress["sub_ids"]);
 
 					if(!utils::contains(sub_ids, sub_id))
 					{
@@ -1763,10 +1763,10 @@ const std::vector<std::string>& prefs::modifications(bool mp)
 {
 	if((!mp_modifications_initialized_ && mp) || (!sp_modifications_initialized_ && !mp)) {
 		if(mp) {
-			mp_modifications_ = utils::split(preferences_[prefs_list::mp_modifications].str(), ',');
+			mp_modifications_ = utils::split(preferences_[prefs_list::mp_modifications]);
 			mp_modifications_initialized_ = true;
 		} else {
-			sp_modifications_ = utils::split(preferences_[prefs_list::sp_modifications].str(), ',');
+			sp_modifications_ = utils::split(preferences_[prefs_list::sp_modifications]);
 			sp_modifications_initialized_ = true;
 		}
 	}

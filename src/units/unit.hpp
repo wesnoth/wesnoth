@@ -845,21 +845,21 @@ public:
 	 * Get the status effects currently affecting the unit.
 	 * @return A set of status keys
 	 */
-	const std::set<std::string> get_states() const;
+	std::set<std::string, std::less<>> get_states() const;
 
 	/**
 	 * Check if the unit is affected by a status effect
 	 * @param state The status effect to check
 	 * @returns true if the unit is affected by the status effect
 	 */
-	bool get_state(const std::string& state) const;
+	bool get_state(std::string_view state) const;
 
 	/**
 	 * Set whether the unit is affected by a status effect
 	 * @param state The status effect to change
 	 * @param value Whether the unit should be affected by the status
 	 */
-	void set_state(const std::string& state, bool value);
+	void set_state(std::string_view state, bool value);
 
 	/**
 	 * Built-in status effects known to the engine
@@ -895,7 +895,7 @@ public:
 	 * Convert a string status effect ID to a built-in status effect ID
 	 * @returns the state_t representing the status, or STATE_UNKNOWN if it's not built-in
 	 */
-	static state_t get_known_boolean_state_id(const std::string& state);
+	static state_t get_known_boolean_state_id(std::string_view state);
 
 	/**
 	 * Convert a built-in status effect ID to a string status effect ID
@@ -1311,7 +1311,7 @@ public:
 	}
 
 	/** Gets if this unit own ability of @a tag_name type with [affect_adjacent] subtags. */
-	utils::optional<std::size_t> affect_distant(const std::string& tag_name) const
+	utils::optional<std::size_t> affect_distant(std::string_view tag_name) const
 	{
 		auto iter = affect_distant_.find(tag_name);
 		return iter != affect_distant_.end() ? iter->second : utils::nullopt;
@@ -1752,7 +1752,7 @@ public:
 	 * @param loc                 The location around which to check for affected units. This may or
 	 *                            may not be the location of this unit.
 	 */
-	bool get_ability_bool(const std::string& tag_name, const map_location& loc) const;
+	bool get_ability_bool(std::string_view tag_name, const map_location& loc) const;
 
 	/**
 	 * Checks whether this unit currently possesses or is affected by a given ability.
@@ -1764,7 +1764,7 @@ public:
 	 *
 	 * @param tag_name            The name of the ability to check for.
 	 */
-	bool get_ability_bool(const std::string& tag_name) const
+	bool get_ability_bool(std::string_view tag_name) const
 	{
 		return get_ability_bool(tag_name, loc_);
 	}
@@ -1775,7 +1775,7 @@ public:
 	 * @param ability name of ability type checked.
 	 * @param loc location of the unit checked.
 	 */
-	bool get_self_ability_bool(const config& cfg, const std::string& ability, const map_location& loc) const;
+	bool get_self_ability_bool(const config& cfg, std::string_view ability, const map_location& loc) const;
 	/** Checks whether this unit currently possesses a given ability of leadership type
 	 * @return True if the ability @a tag_name is active.
 	 * @param special the const config to one of abilities @a tag_name checked.
@@ -1784,7 +1784,7 @@ public:
 	 * @param weapon the attack used by unit checked in this function.
 	 * @param opp_weapon the attack used by opponent to unit checked.
 	 */
-	bool get_self_ability_bool_weapon(const config& special, const std::string& tag_name, const map_location& loc, const const_attack_ptr& weapon = nullptr, const const_attack_ptr& opp_weapon = nullptr) const;
+	bool get_self_ability_bool_weapon(const config& special, std::string_view tag_name, const map_location& loc, const const_attack_ptr& weapon = nullptr, const const_attack_ptr& opp_weapon = nullptr) const;
 	/** Checks whether this unit is affected by a given ability, and that that ability is active.
 	 * @return True if the ability @a tag_name is active.
 	 * @param cfg the const config to one of abilities @a ability checked.
@@ -1795,7 +1795,7 @@ public:
 	 * @param dist distance between unit distant and @a this.
 	 * @param dir direction to research a unit distant to @a this.
 	 */
-	bool get_adj_ability_bool(const config& cfg, const std::string& ability, std::size_t dist, int dir, const map_location& loc, const unit& from, const map_location& from_loc) const;
+	bool get_adj_ability_bool(const config& cfg, std::string_view ability, std::size_t dist, int dir, const map_location& loc, const unit& from, const map_location& from_loc) const;
 	/** Checks whether this unit is affected by a given ability of leadership type
 	 * @return True if the ability @a tag_name is active.
 	 * @param special the const config to one of abilities @a tag_name checked.
@@ -1808,7 +1808,7 @@ public:
 	 * @param dist distance between unit distant and @a this.
 	 * @param dir direction to research a unit distant to @a this.
 	 */
-	bool get_adj_ability_bool_weapon(const config& special, const std::string& tag_name, std::size_t dist, int dir, const map_location& loc, const unit& from, const map_location& from_loc, const const_attack_ptr& weapon, const const_attack_ptr& opp_weapon) const;
+	bool get_adj_ability_bool_weapon(const config& special, std::string_view tag_name, std::size_t dist, int dir, const map_location& loc, const unit& from, const map_location& from_loc, const const_attack_ptr& weapon, const const_attack_ptr& opp_weapon) const;
 
 	/**
 	 * Gets the unit's active abilities of a particular type if it were on a specified location.
@@ -1816,21 +1816,21 @@ public:
 	 * @param loc The location to use for resolving abilities
 	 * @return A list of active abilities, paired with the location they are active on
 	 */
-	unit_ability_list get_abilities(const std::string& tag_name, const map_location& loc) const;
+	unit_ability_list get_abilities(std::string_view tag_name, const map_location& loc) const;
 
 	/**
 	 * Gets the unit's active abilities of a particular type.
 	 * @param tag_name The type of ability to check for
 	 * @return A list of active abilities, paired with the location they are active on
 	 */
-	unit_ability_list get_abilities(const std::string& tag_name) const
+	unit_ability_list get_abilities(std::string_view tag_name) const
 	{
 		return get_abilities(tag_name, loc_);
 	}
 
-	unit_ability_list get_abilities_weapons(const std::string& tag_name, const map_location& loc, const_attack_ptr weapon = nullptr, const_attack_ptr opp_weapon = nullptr) const;
+	unit_ability_list get_abilities_weapons(std::string_view tag_name, const map_location& loc, const_attack_ptr weapon = nullptr, const_attack_ptr opp_weapon = nullptr) const;
 
-	unit_ability_list get_abilities_weapons(const std::string& tag_name, const_attack_ptr weapon = nullptr, const_attack_ptr opp_weapon = nullptr) const
+	unit_ability_list get_abilities_weapons(std::string_view tag_name, const_attack_ptr weapon = nullptr, const_attack_ptr opp_weapon = nullptr) const
 	{
 		return get_abilities_weapons(tag_name, loc_, weapon, opp_weapon);
 	}
@@ -1869,20 +1869,20 @@ public:
 	 * @param ability The type of ability (tag name) to check for.
 	 * @returns true if the ability is present
 	 */
-	bool has_ability_type(const std::string& ability) const;
+	bool has_ability_type(std::string_view ability) const;
 
 	/**
 	 * Check if the unit has an ability of a specific ID.
 	 * @param ability The ID of ability to check for.
 	 * @returns true if the ability is present
 	 */
-	bool has_ability_by_id(const std::string& ability) const;
+	bool has_ability_by_id(std::string_view ability) const;
 
 	/**
 	 * Removes a unit's abilities with a specific ID.
 	 * @param ability The type of ability (tag name) to remove.
 	 */
-	void remove_ability_by_id(const std::string& ability);
+	void remove_ability_by_id(std::string_view ability);
 
 	/**
 	 * Removes a unit's abilities with a specific ID or other attribute.
@@ -1898,9 +1898,7 @@ public:
 	 */
 	bool ability_matches_filter(const config & cfg, const std::string& tag_name, const config & filter) const;
 
-
 private:
-
 	/**
 	 * Helper similar to std::unique_lock for detecting when calculations such as abilities
 	 * have entered infinite recursion.
@@ -1946,7 +1944,8 @@ private:
 	 * @param loc The location on which to resolve the ability
 	 * @returns true if it is active
 	 */
-	bool ability_active(const std::string& ability, const config& cfg, const map_location& loc) const;
+	bool ability_active(std::string_view ability, const config& cfg, const map_location& loc) const;
+
 	/**
 	 * Check if an ability is active. The caller is responsible for preventing excessive recursion, so must hold a recursion_guard.
 	 * @param ability The type (tag name) of the ability
@@ -1954,7 +1953,7 @@ private:
 	 * @param loc The location on which to resolve the ability
 	 * @returns true if it is active
 	 */
-	bool ability_active_impl(const std::string& ability, const config& cfg, const map_location& loc) const;
+	bool ability_active_impl(std::string_view ability, const config& cfg, const map_location& loc) const;
 
 	/**
 	 * Check if an ability affects distant units.
@@ -1965,14 +1964,15 @@ private:
 	 * @param dist distance between unit distant and @a this.
 	 * @param dir direction to research a unit distant to @a this.
 	 */
-	bool ability_affects_adjacent(const std::string& ability, const config& cfg, std::size_t dist, int dir, const map_location& loc, const unit& from) const;
+	bool ability_affects_adjacent(std::string_view ability, const config& cfg, std::size_t dist, int dir, const map_location& loc, const unit& from) const;
+
 	/**
 	 * Check if an ability affects the owning unit.
 	 * @param ability The type (tag name) of the ability
 	 * @param cfg an ability WML structure
 	 * @param loc The location on which to resolve the ability
 	 */
-	bool ability_affects_self(const std::string& ability, const config& cfg, const map_location& loc) const;
+	bool ability_affects_self(std::string_view ability, const config& cfg, const map_location& loc) const;
 
 	/**
 	 * filters the weapons that condition the use of abilities for combat ([resistance],[leadership] or abilities used like specials
@@ -2070,12 +2070,12 @@ private:
 	int attacks_left_;
 	int max_attacks_;
 
-	std::set<std::string> states_;
+	std::set<std::string, std::less<>> states_;
 
 	static const std::size_t num_bool_states = state_t::NUMBER_OF_STATES;
 
 	std::bitset<num_bool_states> known_boolean_states_;
-	static std::map<std::string, state_t> known_boolean_state_names_;
+	static std::map<std::string, state_t, std::less<>> known_boolean_state_names_;
 
 	config variables_;
 	config events_;
@@ -2174,14 +2174,14 @@ private:
 
 	/**
 	 * Used for easing checking if unit own a ability of specified type with [affect_adjacent] sub tag.
-	 *
 	 */
-	std::map<std::string, utils::optional<std::size_t>> affect_distant_;
+	std::map<std::string, utils::optional<std::size_t>, std::less<>> affect_distant_;
+
 	/**
 	 * Used for easing checking if unit own a ability with [affect_adjacent] sub tag.
-	 *
 	 */
 	utils::optional<std::size_t> has_ability_distant_;
+
 	/**
 	 * used if ability own halo_image or overlay_image attributes in same time what [affect_adjacent].
 	 */

@@ -399,7 +399,7 @@ void load_config(const config &v)
 	{
 		std::vector<color_t> color_vec;
 
-		for(const auto& s : utils::split(v[key].str())) {
+		for(const auto& s : utils::split_view(v[key])) {
 			try {
 				color_vec.push_back(color_t::from_hex_string(s));
 			} catch(const std::invalid_argument& e) {
@@ -473,7 +473,7 @@ void add_color_info(const game_config_view& v, bool build_defaults)
 		std::string id = *a1;
 		std::vector<color_t> temp;
 
-		for(const auto& s : utils::split(*a2)) {
+		for(const auto& s : utils::split_view(*a2)) {
 			try {
 				temp.push_back(color_t::from_hex_string(s));
 			} catch(const std::invalid_argument&) {
@@ -499,7 +499,7 @@ void add_color_info(const game_config_view& v, bool build_defaults)
 	for(const config &cp : v.child_range("color_palette")) {
 		for(const auto& [key, value] : cp.attribute_range()) {
 			std::vector<color_t> temp;
-			for(const auto& s : utils::split(value)) {
+			for(const auto& s : utils::split_view(value)) {
 				try {
 					temp.push_back(color_t::from_hex_string(s));
 				} catch(const std::invalid_argument& e) {
@@ -529,11 +529,11 @@ const color_range& color_info(std::string_view name)
 	}
 
 	std::vector<color_t> temp;
-	for(const auto& s : utils::split(name)) {
+	for(const auto& s : utils::split_view(name)) {
 		try {
 			temp.push_back(color_t::from_hex_string(s));
 		} catch(const std::invalid_argument&) {
-			throw config::error(_("Invalid color in range: ") + s);
+			throw config::error(_("Invalid color in range: ") + std::string{s});
 		}
 	}
 
@@ -549,7 +549,7 @@ const std::vector<color_t>& tc_info(std::string_view name)
 	}
 
 	std::vector<color_t> temp;
-	for(const auto& s : utils::split(name)) {
+	for(const auto& s : utils::split_view(name)) {
 		try {
 			temp.push_back(color_t::from_hex_string(s));
 		} catch(const std::invalid_argument& e) {

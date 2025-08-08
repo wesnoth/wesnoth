@@ -38,7 +38,7 @@ bool utils::config_filters::string_matches_if_present(
 		return true;
 	}
 
-	return utils::contains(utils::split(filter[attribute]), cfg[attribute].str(def));
+	return utils::contains(utils::split_view(filter[attribute]), cfg[attribute].str(def));
 }
 
 bool utils::config_filters::set_includes_if_present(const config& filter, const config& cfg, const std::string& attribute)

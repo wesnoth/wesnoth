@@ -157,7 +157,7 @@ bool terrain_filter::match_internal(const map_location& loc, const unit* ref_uni
 		}
 		if (cfg_.has_attribute("location_id")) {
 			std::set<map_location> matching_locs;
-			for(const auto& id : utils::split(cfg_["location_id"])) {
+			for(const auto& id : utils::split_view(cfg_["location_id"])) {
 				map_location test_loc = fc_->get_disp_context().map().special_location(id);
 				if(test_loc.valid()) {
 					matching_locs.insert(test_loc);
@@ -214,7 +214,7 @@ bool terrain_filter::match_internal(const map_location& loc, const unit* ref_uni
 			int match_count = 0;
 			vconfig::child_list::difference_type index = i - i_begin;
 			std::vector<map_location::direction> dirs = (*i).has_attribute("adjacent")
-				? map_location::parse_directions((*i)["adjacent"]) : map_location::all_directions();
+				? map_location::parse_directions((*i)["adjacent"].str()) : map_location::all_directions();
 			std::vector<map_location::direction>::const_iterator j, j_end = dirs.end();
 			for (j = dirs.begin(); j != j_end; ++j) {
 				const map_location &adj = adjacent[static_cast<int>(*j)];
@@ -269,7 +269,7 @@ bool terrain_filter::match_internal(const map_location& loc, const unit* ref_uni
 			: fc_->get_tod_man().get_illuminated_time_of_day(fc_->get_disp_context().units(), fc_->get_disp_context().map(), loc);
 
 		if(!tod_type.empty()) {
-			const std::vector<std::string>& vals = utils::split(tod_type);
+			const std::vector<std::string_view>& vals = utils::split_view(tod_type);
 			if(tod.lawful_bonus<0) {
 				if(!utils::contains(vals, unit_alignments::chaotic)) {
 					return false;
@@ -291,7 +291,7 @@ bool terrain_filter::match_internal(const map_location& loc, const unit* ref_uni
 				if(utils::contains(tod_id, ',')
 					&& std::search(tod_id.begin(), tod_id.end(), tod.id.begin(), tod.id.end()) != tod_id.end()
 				) {
-					if(!utils::contains(utils::split(tod_id), tod.id)) {
+					if(!utils::contains(utils::split_view(tod_id), tod.id)) {
 						return false;
 					}
 				} else {
@@ -465,7 +465,7 @@ public:
 	{
 		if (filter.cfg_.has_attribute("location_id")) {
 			std::set<map_location> matching_locs;
-			for(const auto& id : utils::split(filter.cfg_["location_id"])) {
+			for(const auto& id : utils::split_view(filter.cfg_["location_id"])) {
 				map_location test_loc = filter.fc_->get_disp_context().map().special_location(id);
 				if(test_loc.valid()) {
 					matching_locs.insert(test_loc);
@@ -547,7 +547,7 @@ void terrain_filter::get_locs_impl(std::set<map_location>& locs, const unit* ref
 		terrain_filterimpl::filter_special_loc(area, match_set, *this, terrain_filterimpl::no_filter(), terrain_filterimpl::no_filter());
 	}
 	else if (cfg_.has_attribute("location_id")) {
-		for(const auto& id : utils::split(cfg_["location_id"])) {
+		for(const auto& id : utils::split_view(cfg_["location_id"])) {
 			map_location test_loc = fc_->get_disp_context().map().special_location(id);
 			if(test_loc.valid()) {
 				match_set.insert(test_loc);

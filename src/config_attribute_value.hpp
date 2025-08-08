@@ -189,7 +189,7 @@ public:
 	template<typename T>
 	bool operator==(const T& comp) const
 	{
-		if constexpr(std::is_convertible_v<T, std::string>) {
+		if constexpr(std::is_constructible_v<std::string, T>) {
 			config_attribute_value v;
 			v = comp;
 			return *this == v;
@@ -238,4 +238,5 @@ inline std::ostream& operator<<(std::ostream& os, const std::monostate&) { retur
 namespace utils
 {
 	std::vector<std::string> split(const config_attribute_value& val);
+	std::vector<std::string_view> split_view(const config_attribute_value& val);
 }

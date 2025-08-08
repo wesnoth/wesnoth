@@ -185,7 +185,7 @@ std::vector<std::string> manager::get_required(const elem& e) const
 	config data = depinfo_.find_mandatory_child(e.type, "id", e.id);
 
 	if(data.has_attribute("force_modification")) {
-		result = utils::split(data["force_modification"].str(), ',');
+		return utils::split(data["force_modification"]);
 	}
 
 	return result;
@@ -235,17 +235,13 @@ bool manager::does_conflict(const elem& elem1, const elem& elem2, bool directonl
 
 	// Whether we should skip the check entirely
 	if(data1.has_attribute("ignore_incompatible_" + elem2.type)) {
-		std::vector<std::string> ignored = utils::split(data1["ignore_incompatible_" + elem2.type]);
-
-		if(utils::contains(ignored, elem2.id)) {
+		if(utils::contains(utils::split_view(data1["ignore_incompatible_" + elem2.type]), elem2.id)) {
 			return false;
 		}
 	}
 
 	if(data2.has_attribute("ignore_incompatible_" + elem1.type)) {
-		std::vector<std::string> ignored = utils::split(data2["ignore_incompatible_" + elem1.type]);
-
-		if(utils::contains(ignored, elem1.id)) {
+		if(utils::contains(utils::split_view(data2["ignore_incompatible_" + elem1.type]), elem1.id)) {
 			return false;
 		}
 	}
@@ -258,21 +254,21 @@ bool manager::does_conflict(const elem& elem1, const elem& elem2, bool directonl
 
 	// Checking for direct conflicts between elem1 and elem2
 	if(data1.has_attribute("allow_" + elem2.type)) {
-		std::vector<std::string> allowed = utils::split(data1["allow_" + elem2.type]);
+		auto allowed = utils::split_view(data1["allow_" + elem2.type]);
 
 		result = !utils::contains(allowed, elem2.id) && !does_require(elem1, elem2);
 	} else if(data1.has_attribute("disallow_" + elem2.type)) {
-		std::vector<std::string> disallowed = utils::split(data1["disallow_" + elem2.type]);
+		auto disallowed = utils::split_view(data1["disallow_" + elem2.type]);
 
 		result = utils::contains(disallowed, elem2.id);
 	}
 
 	if(data2.has_attribute("allow_" + elem1.type)) {
-		std::vector<std::string> allowed = utils::split(data2["allow_" + elem1.type]);
+		auto allowed = utils::split_view(data2["allow_" + elem1.type]);
 
 		result = result || (!utils::contains(allowed, elem1.id) && !does_require(elem2, elem1));
 	} else if(data2.has_attribute("disallow_" + elem1.type)) {
-		std::vector<std::string> disallowed = utils::split(data2["disallow_" + elem1.type]);
+		auto disallowed = utils::split_view(data2["disallow_" + elem1.type]);
 
 		result = result || utils::contains(disallowed, elem1.id);
 	}
@@ -326,9 +322,7 @@ bool manager::does_require(const elem& elem1, const elem& elem2) const
 	config data = depinfo_.find_mandatory_child(elem1.type, "id", elem1.id);
 
 	if(data.has_attribute("force_modification")) {
-		std::vector<std::string> required = utils::split(data["force_modification"]);
-
-		return utils::contains(required, elem2.id);
+		return utils::contains(utils::split_view(data["force_modification"]), elem2.id);
 	}
 
 	return false;

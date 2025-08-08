@@ -35,7 +35,7 @@ struct move_action : undo_action, shroud_clearing_action
 		: undo_action()
 		, shroud_clearing_action(cfg)
 		, starting_moves(cfg["starting_moves"].to_int())
-		, starting_dir(map_location::parse_direction(cfg["starting_direction"]))
+		, starting_dir(map_location::parse_direction(cfg["starting_direction"].str()))
 		, goto_hex(cfg.child_or_empty("unit")["goto_x"].to_int(-999),
 			  cfg.child_or_empty("unit")["goto_y"].to_int(-999),
 			  wml_loc())

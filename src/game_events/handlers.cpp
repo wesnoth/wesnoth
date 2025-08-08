@@ -84,7 +84,7 @@ std::vector<std::string> event_handler::names(const variable_set* vars) const
 			single_name = utils::interpolate_variables_into_string(single_name, *vars);
 		}
 		// Variable interpolation could've introduced additional commas, so split again.
-		for(const std::string& subname : utils::split(single_name)) {
+		for(const std::string_view& subname : utils::split_view(single_name)) {
 			standardized_names.emplace_back(event_handlers::standardize_name(subname));
 		}
 	}
