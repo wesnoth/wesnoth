@@ -324,10 +324,10 @@ unit::unit(const unit& o)
 	, small_profile_(o.small_profile_)
 	, changed_attributes_(o.changed_attributes_)
 	, invisibility_cache_()
-	, has_ability_distant_(o.has_ability_distant_)
-	, has_ability_distant_image_(o.has_ability_distant_image_)
+	, max_ability_radius_(o.max_ability_radius_)
+	, max_ability_radius_image_(o.max_ability_radius_image_)
 {
-	affect_distant_ = o.affect_distant_;
+	max_ability_radius_type_ = o.max_ability_radius_type_;
 	// Copy the attacks rather than just copying references
 	for(auto& a : attacks_) {
 		a.reset(new attack_type(*a));
@@ -407,31 +407,31 @@ unit::unit(unit_ctor_t)
 	, upkeep_(upkeep_full{})
 	, changed_attributes_(0)
 	, invisibility_cache_()
-	, has_ability_distant_(utils::nullopt)
-	, has_ability_distant_image_(utils::nullopt)
+	, max_ability_radius_(0)
+	, max_ability_radius_image_(0)
 {
-	affect_distant_.clear();
+	max_ability_radius_type_.clear();
 }
 
 void unit::set_has_ability_distant()
 {
 	// check if unit own abilities with [affect_adjacent/distant]
 	// else variables are false or erased.
-	affect_distant_.clear();
-	has_ability_distant_ = utils::nullopt;
-	has_ability_distant_image_ = utils::nullopt;
+	max_ability_radius_type_.clear();
+	max_ability_radius_ = 0;
+	max_ability_radius_image_ = 0;
 	for(const auto [key, ability] : abilities_.all_children_view()) {
 		for (const config &i : ability.child_range("affect_adjacent")) {
 			// if 'radius' = "all_map" then radius is to maximum.
 			unsigned int radius = i["radius"] != "all_map" ? i["radius"].to_int(1) : INT_MAX;
-			if(!affect_distant_[key] || *affect_distant_[key] < radius) {
-				affect_distant_[key] = radius;
+			if(!max_ability_radius_type_[key] || max_ability_radius_type_[key] < radius) {
+				max_ability_radius_type_[key] = radius;
 			}
-			if(!has_ability_distant_ || *has_ability_distant_ < radius) {
-				has_ability_distant_ =  radius;
+			if(!max_ability_radius_ || max_ability_radius_ < radius) {
+				max_ability_radius_ =  radius;
 			}
-			if((!has_ability_distant_image_ || *has_ability_distant_image_ < radius) && (ability.has_attribute("halo_image") || ability.has_attribute("overlay_image"))) {
-				has_ability_distant_image_ = radius;
+			if((!max_ability_radius_image_ || max_ability_radius_image_ < radius) && (ability.has_attribute("halo_image") || ability.has_attribute("overlay_image"))) {
+				max_ability_radius_image_ = radius;
 			}
 		}
 	}
