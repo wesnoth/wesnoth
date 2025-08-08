@@ -750,7 +750,7 @@ config map_context::to_config()
 
 	// [unit]s
 	preproc_map traits_map;
-	preprocess_file(game_config::path + "/data/core/macros/traits.cfg", &traits_map);
+	preprocess_file(game_config::path + "/data/core/macros/traits.cfg", traits_map);
 
 	for(const auto& unit : units_) {
 		config& u = event.add_child("unit");
@@ -776,8 +776,7 @@ config map_context::to_config()
 
 		config& mods = u.add_child("modifications");
 		if(unit.loyal()) {
-			config trait_loyal = io::read(preprocess_string("{TRAIT_LOYAL}", &traits_map, "wesnoth-help"));
-			mods.append(std::move(trait_loyal));
+			mods.append(io::read(preprocess_string("{TRAIT_LOYAL}", &traits_map, "wesnoth-help")));
 		}
 		//TODO this entire block could also be replaced by unit.write(u, true)
 		//however, the resultant config is massive and contains many attributes we don't need.
@@ -833,7 +832,7 @@ void map_context::save_schedule(const std::string& schedule_id, const std::strin
 			 * and insert [editor_times] block at correct place */
 			preproc_map editor_map;
 			editor_map.try_emplace("EDITOR");
-			schedule = io::read(*preprocess_file(schedule_path, &editor_map));
+			schedule = io::read(*preprocess_file(schedule_path, editor_map));
 		}
 	} catch(const filesystem::io_exception& e) {
 		utils::string_map symbols;

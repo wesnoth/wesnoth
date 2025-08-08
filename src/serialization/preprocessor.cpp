@@ -308,13 +308,12 @@ private:
 class preprocessor_streambuf : public std::streambuf
 {
 public:
-	preprocessor_streambuf(preproc_map* def)
+	preprocessor_streambuf(preproc_map& def)
 		: std::streambuf()
 		, out_buffer_("")
 		, buffer_()
 		, preprocessor_queue_()
 		, defines_(def)
-		, default_defines_()
 		, textdomain_(PACKAGE)
 		, location_("")
 		, linenum_(0)
@@ -357,7 +356,6 @@ private:
 		, buffer_()
 		, preprocessor_queue_()
 		, defines_(t.defines_)
-		, default_defines_()
 		, textdomain_(PACKAGE)
 		, location_("")
 		, linenum_(0)
@@ -379,8 +377,7 @@ private:
 	/** Input preprocessor queue. */
 	std::deque<std::unique_ptr<preprocessor>> preprocessor_queue_;
 
-	preproc_map* defines_;
-	preproc_map default_defines_;
+	preproc_map& defines_;
 
 	std::string textdomain_;
 	std::string location_;
@@ -396,7 +393,7 @@ private:
 	friend class preprocessor;
 	friend class preprocessor_file;
 	friend class preprocessor_data;
-	friend struct preprocessor_scope_helper;
+	friend class preprocessor_defines_pod;
 };
 
 /** Preprocessor constructor. */
@@ -1294,8 +1291,8 @@ bool preprocessor_data::get_chunk()
 			}
 
 			if(!skipping_) {
-				preproc_map::const_iterator old_i = parent_.defines_->find(symbol);
-				if(old_i != parent_.defines_->end()) {
+				preproc_map::const_iterator old_i = parent_.defines_.find(symbol);
+				if(old_i != parent_.defines_.end()) {
 					std::ostringstream new_pos, old_pos;
 					const preproc_define& old_d = old_i->second;
 
@@ -1308,7 +1305,7 @@ bool preprocessor_data::get_chunk()
 				}
 
 				buffer.erase(buffer.end() - 7, buffer.end());
-				(*parent_.defines_).insert_or_assign(symbol,
+				parent_.defines_.insert_or_assign(symbol,
 						preproc_define(buffer, items, optargs, parent_.textdomain_, linenum, parent_.location_,
 						deprecation_detail, deprecation_level, deprecation_version));
 
@@ -1321,7 +1318,7 @@ bool preprocessor_data::get_chunk()
 			if(symbol.empty()) {
 				parent_.error("No macro argument found after #ifdef/#ifndef directive", linenum_);
 			}
-			bool found = parent_.defines_->count(symbol) != 0;
+			bool found = parent_.defines_.count(symbol) != 0;
 			DBG_PREPROC << "testing for macro " << symbol << ": " << (found ? "defined" : "not defined");
 			conditional_skip(negate ? found : !found);
 		} else if(command == "ifhave" || command == "ifnhave") {
@@ -1348,8 +1345,8 @@ bool preprocessor_data::get_chunk()
 
 			if(vop == OP_INVALID) {
 				parent_.error("Invalid #ifver/#ifnver operator", linenum_);
-			} else if(parent_.defines_->count(vsymstr) != 0) {
-				const preproc_define& sym = (*parent_.defines_)[vsymstr];
+			} else if(parent_.defines_.count(vsymstr) != 0) {
+				const preproc_define& sym = parent_.defines_[vsymstr];
 
 				if(!sym.arguments.empty()) {
 					parent_.error("First argument macro in #ifver/#ifnver should not require arguments", linenum_);
@@ -1408,7 +1405,7 @@ bool preprocessor_data::get_chunk()
 			skip_spaces();
 			const std::string& symbol = read_word();
 			if(!skipping_) {
-				parent_.defines_->erase(symbol);
+				parent_.defines_.erase(symbol);
 				LOG_PREPROC << "undefine macro " << symbol << " (location " << get_location(parent_.location_) << ")";
 			}
 		} else if(command == "error") {
@@ -1521,7 +1518,7 @@ bool preprocessor_data::get_chunk()
 
 				pop_token();
 				put(v.str());
-			} else if(parent_.depth() < 100 && (macro = parent_.defines_->find(symbol)) != parent_.defines_->end()) {
+			} else if(parent_.depth() < 100 && (macro = parent_.defines_.find(symbol)) != parent_.defines_.end()) {
 				const preproc_define& val = macro->second;
 				std::size_t nb_arg = strings_.size() - token.stack_pos - 1;
 				std::size_t optional_arg_num = 0;
@@ -1684,89 +1681,86 @@ bool preprocessor_data::get_chunk()
 
 
 // ==================================================================================
-// PREPROCESSOR SCOPE HELPER
+// PREPROCESSOR DEFINES POD
 // ==================================================================================
 
-struct preprocessor_scope_helper : std::basic_istream<char>
+class preprocessor_defines_pod : public std::istream
 {
-	preprocessor_scope_helper(const std::string& fname, preproc_map* defines)
-		: std::basic_istream<char>(nullptr)
-		, buf_(nullptr)
-		, local_defines_(nullptr)
+public:
+	preprocessor_defines_pod()
+		: std::istream(nullptr)
+		, owned_defines_(new preproc_map)
+		, buffer_(*owned_defines_)
 	{
-		//
-		// If no defines were provided, we create a new local preproc_map and assign
-		// it to defines temporarily. In this case, the map will be deleted once this
-		// object is destroyed and defines will still be subsequently null.
-		//
-		if(!defines) {
-			local_defines_.reset(new preproc_map);
-			defines = local_defines_.get();
-		}
-
-		buf_.reset(new preprocessor_streambuf(defines));
-
-		// Begin processing.
-		buf_->add_preprocessor<preprocessor_file>(fname);
-
-		//
-		// TODO: not sure if this call is needed. Previously, this call was passed a
-		// preprocessor_streambuf pointer and the std::basic_istream constructor was
-		// called with its contents. However, at that point the preprocessing should
-		// already have completed, meaning this call might be redundant. Not sure.
-		//
-		// - vultraz, 2017-08-31
-		//
-		init(buf_.get());
 	}
 
-	~preprocessor_scope_helper()
+	preprocessor_defines_pod(preproc_map& defines)
+		: std::istream(nullptr)
+		, owned_defines_(nullptr)
+		, buffer_(defines)
+	{
+	}
+
+	~preprocessor_defines_pod()
 	{
 		clear(std::ios_base::goodbit);
 		exceptions(std::ios_base::goodbit);
 		rdbuf(nullptr);
 	}
 
-	std::unique_ptr<preprocessor_streambuf> buf_;
-	std::unique_ptr<preproc_map> local_defines_;
-};
+	template<typename Preprocessor, typename... Args>
+	void run(Args&&... args)
+	{
+		// Begin processing.
+		buffer_.add_preprocessor<Preprocessor>(std::forward<Args>(args)...);
 
+		// Take ownership of the contents of the processing buffer.
+		rdbuf(&buffer_);
+	}
+
+private:
+	/** If no external defines map is passed in, this local instance will be used. */
+	std::unique_ptr<preproc_map> owned_defines_;
+
+	/** The actual preprocessing stream. */
+	preprocessor_streambuf buffer_;
+};
 
 // ==================================================================================
 // FREE-STANDING FUNCTIONS
 // ==================================================================================
 
-filesystem::scoped_istream preprocess_file(const std::string& fname, preproc_map* defines)
+filesystem::scoped_istream preprocess_file(const std::string& fname, preproc_map& defines)
 {
 	log_scope("preprocessing file " + fname + " ...");
 
-	// NOTE: the preprocessor_scope_helper does *not* take ownership of defines.
-	return filesystem::scoped_istream(new preprocessor_scope_helper(fname, defines));
+	auto processor = std::make_unique<preprocessor_defines_pod>(defines);
+	processor->run<preprocessor_file>(fname);
+	return processor;
+}
+
+filesystem::scoped_istream preprocess_file(const std::string& fname)
+{
+	log_scope("preprocessing file " + fname + " ...");
+
+	auto processor = std::make_unique<preprocessor_defines_pod>();
+	processor->run<preprocessor_file>(fname);
+	return processor;
 }
 
 std::string preprocess_string(const std::string& contents, preproc_map* defines, const std::string& textdomain)
 {
 	log_scope("preprocessing string " + contents.substr(0, 10) + " ...");
 
-	std::unique_ptr<preprocessor_streambuf> buf;
-	std::unique_ptr<preproc_map> local_defines;
+	auto processor = defines
+		? std::make_unique<preprocessor_defines_pod>(*defines)
+		: std::make_unique<preprocessor_defines_pod>();
 
-	//
-	// If no defines were provided, we create a new local preproc_map and assign
-	// it to defines temporarily. In this case, the map will be deleted once this
-	// object is destroyed and defines will still be subsequently null.
-	//
-	if(!defines) {
-		local_defines.reset(new preproc_map);
-		defines = local_defines.get();
-	}
+	processor->run<preprocessor_data>(
+		std::make_unique<std::istringstream>(contents), "<string>", "", 1, game_config::path, textdomain, nullptr);
 
-	buf.reset(new preprocessor_streambuf(defines));
-
-	// Begin processing.
-	buf->add_preprocessor<preprocessor_data>(
-		std::unique_ptr<std::istream>(new std::istringstream(contents)), "<string>", "", 1, game_config::path, textdomain, nullptr);
-	return formatter() << buf.get();
+	// TODO: should we return the stream itself like preprocess_file does?
+	return formatter() << processor.get();
 }
 
 void preprocess_resource(const std::string& res_name,
@@ -1802,7 +1796,9 @@ void preprocess_resource(const std::string& res_name,
 	// disable filename encoding to get clear #line in cfg.plain
 	encode_filename = false;
 
-	filesystem::scoped_istream stream = preprocess_file(res_name, defines_map);
+	filesystem::scoped_istream stream = defines_map
+		? preprocess_file(res_name, *defines_map)
+		: preprocess_file(res_name);
 
 	std::stringstream ss;
 

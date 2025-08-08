@@ -150,7 +150,7 @@ std::pair<config, preproc_map> config_cache::read_configs(const std::string& fil
 
 config config_cache::read_configs(const std::string& file_path, preproc_map& defines_map, abstract_validator* validator)
 {
-	return io::read(*preprocess_file(file_path, &defines_map), validator);
+	return io::read(*preprocess_file(file_path, defines_map), validator);
 }
 
 config config_cache::read_cache(const std::string& file_path, abstract_validator* validator)
