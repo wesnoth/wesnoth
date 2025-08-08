@@ -200,7 +200,7 @@ void unit_animation_component::reset_after_advance(const unit_type * newtype)
 
 void unit_animation_component::reset_affect_adjacent(const unit_map& units)
 {
-	if(u_.has_ability_distant_image()) {
+	if(u_.max_ability_radius_image()) {
 		for(const unit& unit : units) {
 			if(unit.incapacitated() || &unit == &u_) {
 				continue;

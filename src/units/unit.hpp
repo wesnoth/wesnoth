@@ -1310,23 +1310,35 @@ public:
 		return is_healthy_;
 	}
 
-	/** Gets if this unit own ability of @a tag_name type with [affect_adjacent] subtags. */
-	utils::optional<std::size_t> affect_distant(const std::string& tag_name) const
+	/**
+	 * If this unit has abilities of @a tag_name type with [affect_adjacent] subtags, returns the radius of the one with the furthest reach.
+	 *
+	 * If the unit has no such abilities, returns zero.
+	 */
+	std::size_t max_ability_radius_type(const std::string& tag_name) const
 	{
-		auto iter = affect_distant_.find(tag_name);
-		return iter != affect_distant_.end() ? iter->second : utils::nullopt;
+		auto iter = max_ability_radius_type_.find(tag_name);
+		return iter != max_ability_radius_type_.end() ? iter->second : 0;
 	}
 
-	/** Gets if this unit own ability with [affect_adjacent] subtags. */
-	utils::optional<std::size_t> has_ability_distant() const
+	/**
+	 * If this unit has abilities with [affect_adjacent] subtags, returns the radius of the one with the furthest reach.
+	 *
+	 * If the unit has no such abilities, returns zero.
+	 */
+	std::size_t max_ability_radius() const
 	{
-		return has_ability_distant_;
+		return max_ability_radius_;
 	}
 
-	/** Gets if this unit own ability with [affect_adjacent] subtags in same time what halo_image or overlay_image attributes. */
-	utils::optional<std::size_t> has_ability_distant_image() const
+	/**
+	 * If this unit has abilities with [affect_adjacent] subtags and halo_image or overlay_image attributes, returns the radius of the one with the furthest reach.
+	 *
+	 * If the unit has no such abilities, returns zero.
+	 */
+	std::size_t max_ability_radius_image() const
 	{
-		return has_ability_distant_image_;
+		return max_ability_radius_image_;
 	}
 
 	/**
@@ -2176,16 +2188,16 @@ private:
 	 * Used for easing checking if unit own a ability of specified type with [affect_adjacent] sub tag.
 	 *
 	 */
-	std::map<std::string, utils::optional<std::size_t>> affect_distant_;
+	std::map<std::string, std::size_t> max_ability_radius_type_;
 	/**
 	 * Used for easing checking if unit own a ability with [affect_adjacent] sub tag.
 	 *
 	 */
-	utils::optional<std::size_t> has_ability_distant_;
+	std::size_t max_ability_radius_;
 	/**
 	 * used if ability own halo_image or overlay_image attributes in same time what [affect_adjacent].
 	 */
-	utils::optional<std::size_t> has_ability_distant_image_;
+	std::size_t max_ability_radius_image_;
 	void set_has_ability_distant();
 };
 
