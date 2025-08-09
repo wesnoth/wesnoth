@@ -33,11 +33,27 @@ BOOST_AUTO_TEST_CASE(test_lua_ptr) {
 	BOOST_CHECK(ptr);
 	BOOST_CHECK_EQUAL(ptr.get_ptr(), &obj);
 	{
-		auto obj_moved = std::move(obj);
+		// test move constructor
+		auto obj2 = std::move(obj);
 		BOOST_CHECK(ptr);
-		BOOST_CHECK_EQUAL(ptr.get_ptr(), &obj_moved);
+		BOOST_CHECK_EQUAL(ptr.get_ptr(), &obj2);
 		BOOST_CHECK_EQUAL(ptr->value, "test");
+
+		// NOLINTNEXTLINE(bugprone-use-after-move)
+		lua_ptr<dummy_object> ptr_from_moved_object(obj);
+		BOOST_CHECK(!ptr_from_moved_object);
+
+		// test move assignment
+		dummy_object obj3{"different"};
+		obj3 = std::move(obj2);
+		BOOST_CHECK(ptr);
+		BOOST_CHECK_EQUAL(ptr.get_ptr(), &obj3);
+		BOOST_CHECK_EQUAL(ptr->value, "test");
+
 		vec.clear();
+		BOOST_CHECK(ptr);
+		BOOST_CHECK_EQUAL(ptr->value, "test");
+		BOOST_CHECK(!ptr_from_moved_object);
 	}
 	BOOST_CHECK(!ptr);
 }
