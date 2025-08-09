@@ -48,6 +48,21 @@ mp_options_helper::mp_options_helper(window& window, ng::create_engine& create_e
 	update_all_options();
 }
 
+void mp_options_helper::set_options(const config& new_options)
+{
+	visible_options_.clear();
+	node_data_map_.clear();
+	options_tree_.clear();
+
+	for(const auto [_, cfg] : new_options.all_children_view()) {
+		for(const auto& saved_option : cfg.child_range("option")) {
+			options_data_[cfg["id"]][saved_option["id"].str()] = saved_option["value"];
+		}
+	}
+
+	update_all_options();
+}
+
 void mp_options_helper::update_all_options()
 {
 	visible_options_.clear();

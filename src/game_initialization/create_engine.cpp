@@ -234,6 +234,7 @@ create_engine::create_engine(saved_game& state)
 	, level_name_filter_()
 	, player_count_filter_(1)
 	, type_map_()
+	, preset_ids_()
 	, user_map_names_()
 	, user_scenario_names_()
 	, eras_()
@@ -750,6 +751,7 @@ void create_engine::init_all_levels()
 
 		if(data) {
 			type_map_[level_type::type::preset].games.emplace_back(new scenario(*data));
+			preset_ids_.emplace_back(preset["id"].to_int());
 		}
 	}
 

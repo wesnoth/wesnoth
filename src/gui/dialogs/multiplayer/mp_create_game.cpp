@@ -117,6 +117,7 @@ mp_create_game::mp_create_game(saved_game& state, bool local_mode)
 	, mod_list_()
 	, eras_menu_button_()
 	, local_mode_(local_mode)
+	, previous_settings_()
 {
 	level_types_ = {
 		{level_type::type::scenario, _("Scenarios")},
@@ -312,7 +313,7 @@ void mp_create_game::pre_show()
 	//
 	mod_list_ = &find_widget<listbox>("mod_list");
 
-	const auto& activemods = prefs::get().modifications();
+	const auto& activemods = prefs::get().modifications();//
 	for(const auto& mod : create_engine_.get_extras_by_type(ng::create_engine::MOD)) {
 		grid* row_grid = &mod_list_->add_row(widget_data{{ "mod_name", {{ "label", mod->name }}}});
 
@@ -625,7 +626,55 @@ void mp_create_game::on_game_select()
 	options_manager_->update_game_options();
 
 	// Game settings
-	update_map_settings();
+	if(level_types_[find_widget<menu_button>("game_types").get_value()].first != level_type::type::preset) {
+		update_map_settings();
+	} else {
+		if(auto preset = prefs::get().get_game_preset(create_engine_.preset_id_by_index(selected_game))) {
+			use_map_settings_->set_widget_value(preset["use_map_settings"].to_bool());
+			fog_->set_widget_value(preset["fog"].to_bool());
+			shroud_->set_widget_value(preset["shroud"].to_bool());
+			start_time_->set_widget_value(preset["random_start_time"].to_bool());
+			shuffle_sides_->set_widget_value(preset["shuffle_sides"].to_bool());
+			observers_->set_widget_value(preset["observer"].to_bool());
+			turns_->set_widget_value(preset["turns"].to_int());
+			gold_->set_widget_value(preset["village_gold"].to_int());
+			support_->set_widget_value(preset["village_support"].to_int());
+			experience_->set_widget_value(preset["experience_modifier"].to_int());
+			time_limit_->set_widget_value(preset["countdown"].to_bool());
+			init_turn_limit_->set_widget_value(preset["countdown_turn_limit"].to_int());
+			turn_bonus_->set_widget_value(preset["countdown_turn_bonus"].to_int());
+			reservoir_->set_widget_value(preset["countdown_reservoir"].to_int());
+			action_bonus_->set_widget_value(preset["countdown_action_bonus"].to_int());
+
+			random_faction_mode::type mode = random_faction_mode::get_enum(preset["random_faction_mode"].str()).value_or(random_faction_mode::type::independent);
+			find_widget<menu_button>("random_faction_mode").set_selected(static_cast<int>(mode));
+
+			const int era_selection = create_engine_.find_extra_by_id(ng::create_engine::ERA, preset["scenario"].str());
+			if(era_selection >= 0) {
+				eras_menu_button_->set_selected(era_selection);
+			}
+			on_era_select();
+
+			int i = 0;
+			const auto& activemods = utils::split(preset["mp_modifications"].str());
+			for(const auto& mod : create_engine_.get_extras_by_type(ng::create_engine::MOD)) {
+				if(utils::contains(activemods, mod->id)) {
+					toggle_button& mod_button = mod_list_->get_row_grid(i)->find_widget<toggle_button>("mod_active_state");
+					mod_button.set_value_bool(true);
+					on_mod_toggle(mod->id, &mod_button);
+				} else {
+					toggle_button& mod_button = mod_list_->get_row_grid(i)->find_widget<toggle_button>("mod_active_state");
+					mod_button.set_value_bool(false);
+					on_mod_toggle(mod->id, &mod_button);
+				}
+				i++;
+			}
+
+			if(preset->has_child("options")) {
+				options_manager_->set_options(preset->mandatory_child("options"));
+			}
+		}
+	}
 }
 
 void mp_create_game::on_tab_select()
@@ -678,6 +727,10 @@ void mp_create_game::update_games_list()
 
 	display_games_of_type(level_types_[index].first, create_engine_.current_level().id());
 	find_widget<button>("save_preset").set_active(level_types_[index].first == level_type::type::scenario);
+
+	if(level_types_[index].first != level_type::type::preset) {
+		backup_settings();
+	}
 }
 
 void mp_create_game::display_games_of_type(level_type::type type, const std::string& level)
@@ -913,15 +966,39 @@ void mp_create_game::save_preset()
 	preset["observer"] = observers_->get_widget_value();
 	preset["use_map_settings"] = use_map_settings_->get_widget_value();
 	
-	// TODO: need to populate the same in the list of presets selectable in the game creation list
-	// TODO: test that addon info is stored in the database correctly
-	// TODO: test with non-mainline modifications/eras/scenarios
+	// TODO: code de-duplication
 	preset["mp_modifications"] = utils::join(create_engine_.active_mods(), ",");
 	preset.add_child("options", options_manager_->get_options_config());
 	random_faction_mode::type type = random_faction_mode::get_enum(selected_rfm_index_).value_or(random_faction_mode::type::independent);
 	preset["random_faction_mode"] = random_faction_mode::get_string(type);
 
 	prefs::get().add_game_preset(std::move(preset));
+}
+
+void mp_create_game::backup_settings()
+{
+	previous_settings_.clear();
+	previous_settings_["scenario"] = create_engine_.current_level().id();
+	previous_settings_["era"] = create_engine_.current_era().id;
+	previous_settings_["fog"] = fog_->get_widget_value();
+	previous_settings_["shroud"] = shroud_->get_widget_value();
+	previous_settings_["village_gold"] = gold_->get_widget_value();
+	previous_settings_["village_support"] = support_->get_widget_value();
+	previous_settings_["experience_modifier"] = experience_->get_widget_value();
+	previous_settings_["countdown"] = time_limit_->get_widget_value();
+	previous_settings_["countdown_turn_limit"] = init_turn_limit_->get_widget_value();
+	previous_settings_["countdown_action_bonus"] = action_bonus_->get_widget_value();
+	previous_settings_["countdown_turn_bonus"] = turn_bonus_->get_widget_value();
+	previous_settings_["countdown_reservoir"] = reservoir_->get_widget_value();
+	previous_settings_["random_start_time"] = start_time_->get_widget_value();
+	previous_settings_["shuffle_sides"] = shuffle_sides_->get_widget_value();
+	previous_settings_["turns"] = turns_->get_widget_value();
+	previous_settings_["observer"] = observers_->get_widget_value();
+	previous_settings_["use_map_settings"] = use_map_settings_->get_widget_value();
+	previous_settings_["mp_modifications"] = utils::join(create_engine_.active_mods(), ",");
+	previous_settings_.add_child("options", options_manager_->get_options_config());
+	random_faction_mode::type type = random_faction_mode::get_enum(selected_rfm_index_).value_or(random_faction_mode::type::independent);
+	previous_settings_["random_faction_mode"] = random_faction_mode::get_string(type);
 }
 
 std::vector<std::string> mp_create_game::get_active_mods()
