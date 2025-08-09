@@ -135,6 +135,8 @@ private:
 
 	void backup_settings();
 
+	config settings_config();
+
 	enum tab { TAB_GENERAL, TAB_OPTIONS, TAB_SETTINGS };
 };
 
