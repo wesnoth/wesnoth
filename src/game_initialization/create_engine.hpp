@@ -394,6 +394,8 @@ public:
 	/** Returns true if the current level has one or more [side] tags. */
 	bool current_level_has_side_data();
 
+	int preset_id_by_index(int index) const { return preset_ids_.at(index); }
+
 private:
 	create_engine(const create_engine&) = delete;
 	create_engine& operator=(const create_engine&) = delete;
@@ -438,6 +440,7 @@ private:
 	};
 
 	std::map<level_type::type, type_list> type_map_;
+	std::vector<int> preset_ids_;
 
 	std::vector<std::string> user_map_names_;
 	std::vector<std::string> user_scenario_names_;

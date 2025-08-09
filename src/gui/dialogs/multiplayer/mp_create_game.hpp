@@ -97,6 +97,8 @@ private:
 
 	bool local_mode_;
 
+	config previous_settings_;
+
 	template<typename widget>
 	void on_filter_change(const std::string& id, bool do_select);
 
@@ -130,6 +132,10 @@ private:
 	void load_game_callback();
 
 	void save_preset();
+
+	void backup_settings();
+
+	config settings_config();
 
 	enum tab { TAB_GENERAL, TAB_OPTIONS, TAB_SETTINGS };
 };
