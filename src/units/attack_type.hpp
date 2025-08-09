@@ -257,22 +257,7 @@ private:
 	 * @param tag_name type of abilitie/special checked.
 	 */
 	bool overwrite_special_checking(unit_ability_list& overwriters, const config& cfg, const std::string& tag_name) const;
-	/** check_self_abilities : return an boolean value for checking of activities of abilities used like weapon
-	 * @return True if the special @a special is active.
-	 * @param cfg the config to one special ability checked.
-	 * @param special The special ability type who is being checked.
-	 */
-	bool check_self_abilities(const config& cfg, const std::string& special) const;
-	/** check_adj_abilities : return an boolean value for checking of activities of abilities used like weapon
-	 * @return True if the special @a special is active.
-	 * @param cfg the config to one special ability checked.
-	 * @param special The special ability type who is being checked.
-	 * @param dist distance between unit distant and self_.
-	 * @param dir direction to research a unit distant to self_.
-	 * @param from unit distant to self_ is checked.
-	 * @param from_loc location of @a from
-	 */
-	bool check_adj_abilities(const config& cfg, const std::string& special, std::size_t dist, int dir, const unit& from, const map_location& from_loc) const;
+
 	bool special_active(const config& special, AFFECTS whom, const std::string& tag_name,
 	                    bool in_abilities_tag = false) const;
 
@@ -372,6 +357,44 @@ private:
 		const std::string& tag_name,
 		bool in_abilities_tag = false
 	);
+
+	/** has_ability_impl : return an boolean value for checking of activities of abilities used like weapon
+	 * @return True if  @a special is active.
+	 * @param self_attack the attack used by unit who fight.
+	 * @param other_attack the attack used by opponent.
+	 * @param self the unit who fight.
+	 * @param self_loc location of @a self.
+	 * @param whom determine if unit affected or not by special ability.
+	 * @param special The special ability type who is being checked.
+	 */
+	static bool has_ability_impl(
+		const const_attack_ptr& self_attack,
+		const unit_const_ptr& self,
+		const map_location& self_loc,
+		const const_attack_ptr& other_attack,
+		AFFECTS whom,
+		const std::string& special);
+
+	/** special_distant_filtering_impl : return an boolean value if special matche with filter
+	 * @return True if the @a special is active.
+	 * @param self_attack the attack used by unit who fight.
+	 * @param other_attack the attack used by opponent.
+	 * @param self the unit who fight.
+	 * @param self_loc location of @a self.
+	 * @param whom determine if unit affected or not by special ability.
+	 * @param filter if special check with filter, return true.
+	 * @param sub_filter if true, check the attributes of [filter_special], else, check special(_id/type)(_active).
+	 * @param leader_bool If true, [leadership] abilities are checked.
+	 */
+	static bool special_distant_filtering_impl(
+		const const_attack_ptr& self_attack,
+		const unit_const_ptr& self,
+		const map_location& self_loc,
+		const const_attack_ptr& other_attack,
+		AFFECTS whom,
+		const config & filter,
+		bool sub_filter,
+		bool leader_bool=false);
 
 	// Used via specials_context() to control which specials are
 	// considered active.
