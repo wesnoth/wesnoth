@@ -82,7 +82,7 @@ static int intf_load_wml(lua_State* L)
 	std::string wml_file = filesystem::get_wml_location(file).value();
 	filesystem::scoped_istream stream;
 	if(preprocess) {
-		stream = preprocess_file(wml_file, &defines_map);
+		stream = preprocess_file(wml_file, defines_map);
 	} else {
 		stream.reset(new std::ifstream(wml_file));
 	}

@@ -277,7 +277,7 @@ bool schema_validator::read_config_file(const std::string& filename)
 			validator.reset(new schema_self_validator());
 		}
 		preproc_map preproc(game_config::config_cache::instance().get_preproc_map());
-		filesystem::scoped_istream stream = preprocess_file(filename, &preproc);
+		filesystem::scoped_istream stream = preprocess_file(filename, preproc);
 		cfg = io::read(*stream, validator.get());
 	} catch(const config::error& e) {
 		ERR_VL << "Failed to read file " << filename << ":\n" << e.what();

@@ -60,12 +60,12 @@ editor_edit_unit::editor_edit_unit(const game_config_view& game_config, const st
 	, addon_id_(addon_id)
 {
 	//TODO some weapon specials can have args (PLAGUE_TYPE)
-	io::read(*preprocess_file(game_config::path+"/data/core/macros/weapon_specials.cfg", &specials_map_));
+	io::read(*preprocess_file(game_config::path+"/data/core/macros/weapon_specials.cfg", specials_map_));
 	for (const auto& x : specials_map_) {
 		specials_list_.emplace_back("label", x.first, "checkbox", false);
 	}
 
-	io::read(*preprocess_file(game_config::path+"/data/core/macros/abilities.cfg", &abilities_map_));
+	io::read(*preprocess_file(game_config::path+"/data/core/macros/abilities.cfg", abilities_map_));
 	for (const auto& x : abilities_map_) {
 		// Don't add any macros that have INTERNAL
 		if (x.first.find("INTERNAL") == std::string::npos) {

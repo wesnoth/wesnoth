@@ -133,7 +133,8 @@ std::ostream& operator<<(std::ostream& stream, const preproc_map::value_type& de
  *
  * @returns                       The resulting preprocessed file data.
  */
-filesystem::scoped_istream preprocess_file(const std::string& fname, preproc_map* defines = nullptr);
+filesystem::scoped_istream preprocess_file(const std::string& fname, preproc_map& defines);
+filesystem::scoped_istream preprocess_file(const std::string& fname);
 
 /**
  * Function to use the WML preprocessor on a string.
