@@ -1910,6 +1910,16 @@ public:
 	 */
 	bool ability_matches_filter(const config & cfg, const std::string& tag_name, const config & filter) const;
 
+	/**
+	checks that the unit has an ability that has [affect_adjacent] and that it is not incapacitated or is not the same unit as the beneficiary.
+	 * @param underlying_id the identity of the beneficiary
+	 * @param is_image if true, check abilities with halo/overlay_image attribute and [affect_adjacent]
+	 */
+	bool has_ability_adjacent(const std::size_t& underlying_id, bool is_image = false) const
+	{
+		return((is_image ? max_ability_radius_image() : max_ability_radius()) && !incapacitated() && underlying_id_.value != underlying_id);
+	}
+
 
 private:
 

@@ -220,7 +220,7 @@ bool unit::get_ability_bool(const std::string& tag_name, const map_location& loc
 	// different from the central unit, that the ability is of the right type, detailed verification of each ability),
 	// if so return true.
 	for(const unit& u : units) {
-		if(!u.max_ability_radius() || u.incapacitated() || u.underlying_id() == underlying_id() || !u.max_ability_radius_type(tag_name)) {
+		if(!u.has_ability_adjacent(underlying_id()) || !u.max_ability_radius_type(tag_name)) {
 			continue;
 		}
 		const map_location& from_loc = u.get_location();
@@ -262,7 +262,7 @@ unit_ability_list unit::get_abilities(const std::string& tag_name, const map_loc
 	// different from the central unit, that the ability is of the right type, detailed verification of each ability),
 	// If so, add to unit_ability_list.
 	for(const unit& u : units) {
-		if(!u.max_ability_radius() || u.incapacitated() || u.underlying_id() == underlying_id() || !u.max_ability_radius_type(tag_name)) {
+		if(!u.has_ability_adjacent(underlying_id()) || !u.max_ability_radius_type(tag_name)) {
 			continue;
 		}
 		const map_location& from_loc = u.get_location();
@@ -643,7 +643,7 @@ std::vector<std::string> unit::halo_or_icon_abilities(const std::string& image_t
 	const unit_map& units = get_unit_map();
 
 	for(const unit& u : units) {
-		if(!u.max_ability_radius_image() || u.incapacitated() || u.underlying_id() == underlying_id()) {
+		if(!u.has_ability_adjacent(underlying_id(), true)) {
 			continue;
 		}
 		const map_location& from_loc = u.get_location();
@@ -940,7 +940,7 @@ std::vector<std::pair<t_string, t_string>> attack_type::abilities_special_toolti
 		}
 	}
 	for(const unit& u : get_unit_map()) {
-		if(!u.max_ability_radius() || u.incapacitated() || u.underlying_id() == self_->underlying_id()) {
+		if(!u.has_ability_adjacent(self_->underlying_id())) {
 			continue;
 		}
 		const map_location& from_loc = u.get_location();
@@ -1112,7 +1112,7 @@ void attack_type::weapon_specials_impl_adj(
 	const unit_map& units = get_unit_map();
 	if(self){
 		for(const unit& u : units) {
-			if(!u.max_ability_radius() || u.incapacitated() || u.underlying_id() == self->underlying_id()) {
+			if(!u.has_ability_adjacent(self->underlying_id())) {
 				continue;
 			}
 			const map_location& from_loc = u.get_location();
@@ -1772,7 +1772,7 @@ bool attack_type::has_ability_impl(
 	}
 	const unit_map& units = get_unit_map();
 	for(const unit& u : units) {
-		if(!u.max_ability_radius() || u.incapacitated() || u.underlying_id() == self->underlying_id() || !u.max_ability_radius_type(special)) {
+		if(!u.has_ability_adjacent(self->underlying_id()) || !u.max_ability_radius_type(special)) {
 			continue;
 		}
 		const map_location& from_loc = u.get_location();
@@ -1859,7 +1859,7 @@ bool attack_type::special_distant_filtering_impl(
 	}
 	if(check_adjacent) {
 		for(const unit& u : units) {
-			if(!u.max_ability_radius() || u.incapacitated() || u.underlying_id() == self->underlying_id()) {
+			if(!u.has_ability_adjacent(self->underlying_id())) {
 				continue;
 			}
 			const map_location& from_loc = u.get_location();

@@ -420,7 +420,7 @@ void unit_filter_compound::fill(const vconfig& cfg)
 				}
 
 				for(const unit& unit : units) {
-					if(!unit.max_ability_radius() || unit.incapacitated() || unit.underlying_id() == args.u.underlying_id()) {
+					if(!unit.has_ability_adjacent(args.u.underlying_id())) {
 						continue;
 					}
 					const map_location& from_loc = unit.get_location();
@@ -805,7 +805,7 @@ void unit_filter_compound::fill(const vconfig& cfg)
 
 						if(c.get_parsed_config()["affect_adjacent"].to_bool(true)) {
 							for(const unit& unit : units) {
-								if(!unit.max_ability_radius() || unit.incapacitated() || unit.underlying_id() == args.u.underlying_id()) {
+								if(!unit.has_ability_adjacent(args.u.underlying_id())) {
 									continue;
 								}
 								const map_location& from_loc = unit.get_location();
