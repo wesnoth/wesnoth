@@ -124,16 +124,16 @@ void lobby_info::process_gamelist(const config& data)
 	games_by_id_.clear();
 
 	for(const config& game : prefs::get().get_game_presets()) {
-		const auto game_config = game_config_manager::get()->game_config();
+		const game_config_view& game_config = game_config_manager::get()->game_config();
 
 		optional_const_config scenario = game_config.find_child("multiplayer", "id", game["scenario"].str());
 		if(!scenario) {
-			ERR_LB << "Scenario " << game["scenario"].str() << " not found in game preset " << game["id"];
+			ERR_LB << "Scenario " << game["scenario"].str() << " not found in game config " << game["id"];
 			continue;
 		}
 		optional_const_config era = game_config.find_child("era", "id", game["era"].str());
 		if(!era) {
-			ERR_LB << "Era " << game["era"].str() << " not found in game preset " << game["id"];
+			ERR_LB << "Era " << game["era"].str() << " not found in game config " << game["id"];
 			continue;
 		}
 
@@ -174,7 +174,7 @@ void lobby_info::process_gamelist(const config& data)
 		qgame["observer"] = game["observer"];
 		qgame["human_sides"] = human_sides;
 
-		std::vector<std::string> mods = utils::split(game["mp_modifications"].str());
+		std::vector<std::string> mods = utils::split(game["modifications"].str());
 		for(const std::string& mod : mods) {
 			auto cfg = game_config.find_child("modification", "id", mod);
 
@@ -183,7 +183,7 @@ void lobby_info::process_gamelist(const config& data)
 				m["name"] = cfg["name"];
 				m["id"] = mod;
 			} else {
-				ERR_LB << "Modification " << mod << " not found in game preset " << game["id"];
+				ERR_LB << "Modification " << mod << " not found in game config " << game["id"];
 				continue;
 			}
 		}

@@ -223,7 +223,7 @@ void mp_create_game::quick_mp_setup(saved_game& state, const config presets)
 	params.mode = random_faction_mode::get_enum(presets["random_faction_mode"].str()).value_or(random_faction_mode::type::independent);
 	params.name = settings::game_name_default();
 
-	std::vector<std::string> mods = utils::split(presets["mp_modifications"].str());
+	std::vector<std::string> mods = utils::split(presets["modifications"].str());
 	for(const std::string& mod : mods) {
 		create.active_mods().push_back(mod);
 	}
@@ -649,24 +649,18 @@ void mp_create_game::on_game_select()
 			random_faction_mode::type mode = random_faction_mode::get_enum(preset["random_faction_mode"].str()).value_or(random_faction_mode::type::independent);
 			find_widget<menu_button>("random_faction_mode").set_selected(static_cast<int>(mode));
 
-			const int era_selection = create_engine_.find_extra_by_id(ng::create_engine::ERA, preset["scenario"].str());
+			const int era_selection = create_engine_.find_extra_by_id(ng::create_engine::ERA, preset["era"].str());
 			if(era_selection >= 0) {
 				eras_menu_button_->set_selected(era_selection);
 			}
 			on_era_select();
 
 			int i = 0;
-			const auto& activemods = utils::split(preset["mp_modifications"].str());
+			const auto& activemods = utils::split(preset["modifications"].str());
 			for(const auto& mod : create_engine_.get_extras_by_type(ng::create_engine::MOD)) {
-				if(utils::contains(activemods, mod->id)) {
-					toggle_button& mod_button = mod_list_->get_row_grid(i)->find_widget<toggle_button>("mod_active_state");
-					mod_button.set_value_bool(true);
-					on_mod_toggle(mod->id, &mod_button);
-				} else {
-					toggle_button& mod_button = mod_list_->get_row_grid(i)->find_widget<toggle_button>("mod_active_state");
-					mod_button.set_value_bool(false);
-					on_mod_toggle(mod->id, &mod_button);
-				}
+				toggle_button& mod_button = mod_list_->get_row_grid(i)->find_widget<toggle_button>("mod_active_state");
+				mod_button.set_value_bool(utils::contains(activemods, mod->id));
+				on_mod_toggle(mod->id, &mod_button);
 				i++;
 			}
 
@@ -966,7 +960,7 @@ config mp_create_game::settings_config()
 	settings["turns"] = turns_->get_widget_value();
 	settings["observer"] = observers_->get_widget_value();
 	settings["use_map_settings"] = use_map_settings_->get_widget_value();
-	settings["mp_modifications"] = utils::join(create_engine_.active_mods(), ",");
+	settings["modifications"] = utils::join(create_engine_.active_mods(), ",");
 	settings.add_child("options", options_manager_->get_options_config());
 	random_faction_mode::type type = random_faction_mode::get_enum(selected_rfm_index_).value_or(random_faction_mode::type::independent);
 	settings["random_faction_mode"] = random_faction_mode::get_string(type);
