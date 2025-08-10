@@ -178,11 +178,14 @@ static void handle_preprocess_string(const commandline_options& cmdline_opts)
 	defines_map.try_emplace("WESNOTH_VERSION", game_config::wesnoth_version.str());
 
 	// preprocess resource
+	PLAIN_LOG << "added " << defines_map.size() << " defines.";
 	PLAIN_LOG << "preprocessing specified string: " << *cmdline_opts.preprocess_source_string;
+
 	const utils::ms_optimer timer(
 		[](const auto& timer) { PLAIN_LOG << "preprocessing finished. Took " << timer << " ticks."; });
-	std::cout << preprocess_string(*cmdline_opts.preprocess_source_string, "wesnoth", defines_map) << std::endl;
-	PLAIN_LOG << "added " << defines_map.size() << " defines.";
+
+	const auto output_stream = preprocess_string(*cmdline_opts.preprocess_source_string, "wesnoth", defines_map);
+	std::cout << output_stream.get() << std::endl;
 }
 
 static void handle_preprocess_command(const commandline_options& cmdline_opts)
