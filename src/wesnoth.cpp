@@ -181,7 +181,7 @@ static void handle_preprocess_string(const commandline_options& cmdline_opts)
 	PLAIN_LOG << "preprocessing specified string: " << *cmdline_opts.preprocess_source_string;
 	const utils::ms_optimer timer(
 		[](const auto& timer) { PLAIN_LOG << "preprocessing finished. Took " << timer << " ticks."; });
-	std::cout << preprocess_string(*cmdline_opts.preprocess_source_string, &defines_map) << std::endl;
+	std::cout << preprocess_string(*cmdline_opts.preprocess_source_string, "wesnoth", defines_map) << std::endl;
 	PLAIN_LOG << "added " << defines_map.size() << " defines.";
 }
 

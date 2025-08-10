@@ -142,14 +142,11 @@ filesystem::scoped_istream preprocess_file(const std::string& fname);
  * @param defines                 A map of symbols defined.
  * @param contents                The string to be preprocessed.
  * @param textdomain              The textdomain to associate the contents.
- *                                Default: wesnoth
  *
  * @returns                       The resulting preprocessed string.
  */
-std::string preprocess_string(
-	const std::string& contents,
-	preproc_map* defines,
-	const std::string& textdomain = "wesnoth");
+filesystem::scoped_istream preprocess_string(const std::string& contents, const std::string& textdomain, preproc_map& defines);
+filesystem::scoped_istream preprocess_string(const std::string& contents, const std::string& textdomain);
 
 void preprocess_resource(
 	const std::string& res_name,

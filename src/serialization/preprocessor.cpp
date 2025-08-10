@@ -393,7 +393,7 @@ private:
 	friend class preprocessor;
 	friend class preprocessor_file;
 	friend class preprocessor_data;
-	friend class preprocessor_defines_pod;
+	friend class preprocessor_istream;
 };
 
 /** Preprocessor constructor. */
@@ -1681,27 +1681,27 @@ bool preprocessor_data::get_chunk()
 
 
 // ==================================================================================
-// PREPROCESSOR DEFINES POD
+// PREPROCESSOR ISTREAM
 // ==================================================================================
 
-class preprocessor_defines_pod : public std::istream
+class preprocessor_istream : public std::istream
 {
 public:
-	preprocessor_defines_pod()
+	preprocessor_istream()
 		: std::istream(nullptr)
-		, owned_defines_(new preproc_map)
-		, buffer_(*owned_defines_)
+		, owned_defines_()
+		, buffer_(owned_defines_)
 	{
 	}
 
-	preprocessor_defines_pod(preproc_map& defines)
+	preprocessor_istream(preproc_map& defines)
 		: std::istream(nullptr)
-		, owned_defines_(nullptr)
+		, owned_defines_()
 		, buffer_(defines)
 	{
 	}
 
-	~preprocessor_defines_pod()
+	~preprocessor_istream()
 	{
 		clear(std::ios_base::goodbit);
 		exceptions(std::ios_base::goodbit);
@@ -1709,20 +1709,20 @@ public:
 	}
 
 	template<typename Preprocessor, typename... Args>
-	void run(Args&&... args)
+	void process(Args&&... args)
 	{
+		// Take ownership of the processing buffer.
+		rdbuf(&buffer_);
+
 		// Begin processing.
 		buffer_.add_preprocessor<Preprocessor>(std::forward<Args>(args)...);
-
-		// Take ownership of the contents of the processing buffer.
-		rdbuf(&buffer_);
 	}
 
 private:
-	/** If no external defines map is passed in, this local instance will be used. */
-	std::unique_ptr<preproc_map> owned_defines_;
+	/** Defines map to be used if no external map is given. */
+	preproc_map owned_defines_;
 
-	/** The actual preprocessing stream. */
+	/** The underlying processing buffer. */
 	preprocessor_streambuf buffer_;
 };
 
@@ -1734,33 +1734,42 @@ filesystem::scoped_istream preprocess_file(const std::string& fname, preproc_map
 {
 	log_scope("preprocessing file " + fname + " ...");
 
-	auto processor = std::make_unique<preprocessor_defines_pod>(defines);
-	processor->run<preprocessor_file>(fname);
-	return processor;
+	auto stream = std::make_unique<preprocessor_istream>(defines);
+	stream->process<preprocessor_file>(fname);
+	return stream;
 }
 
 filesystem::scoped_istream preprocess_file(const std::string& fname)
 {
 	log_scope("preprocessing file " + fname + " ...");
 
-	auto processor = std::make_unique<preprocessor_defines_pod>();
-	processor->run<preprocessor_file>(fname);
-	return processor;
+	auto stream = std::make_unique<preprocessor_istream>();
+	stream->process<preprocessor_file>(fname);
+	return stream;
 }
 
-std::string preprocess_string(const std::string& contents, preproc_map* defines, const std::string& textdomain)
+filesystem::scoped_istream preprocess_string(
+	const std::string& contents, const std::string& textdomain)
 {
 	log_scope("preprocessing string " + contents.substr(0, 10) + " ...");
 
-	auto processor = defines
-		? std::make_unique<preprocessor_defines_pod>(*defines)
-		: std::make_unique<preprocessor_defines_pod>();
-
-	processor->run<preprocessor_data>(
+	auto stream = std::make_unique<preprocessor_istream>();
+	stream->process<preprocessor_data>(
 		std::make_unique<std::istringstream>(contents), "<string>", "", 1, game_config::path, textdomain, nullptr);
 
-	// TODO: should we return the stream itself like preprocess_file does?
-	return formatter() << processor.get();
+	return stream;
+}
+
+filesystem::scoped_istream preprocess_string(
+	const std::string& contents, const std::string& textdomain, preproc_map& defines)
+{
+	log_scope("preprocessing string " + contents.substr(0, 10) + " ...");
+
+	auto stream = std::make_unique<preprocessor_istream>(defines);
+	stream->process<preprocessor_data>(
+		std::make_unique<std::istringstream>(contents), "<string>", "", 1, game_config::path, textdomain, nullptr);
+
+	return stream;
 }
 
 void preprocess_resource(const std::string& res_name,

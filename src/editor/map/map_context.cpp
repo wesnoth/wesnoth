@@ -776,7 +776,7 @@ config map_context::to_config()
 
 		config& mods = u.add_child("modifications");
 		if(unit.loyal()) {
-			mods.append(io::read(preprocess_string("{TRAIT_LOYAL}", &traits_map, "wesnoth-help")));
+			mods.append(io::read(*preprocess_string("{TRAIT_LOYAL}", "wesnoth-help", traits_map)));
 		}
 		//TODO this entire block could also be replaced by unit.write(u, true)
 		//however, the resultant config is massive and contains many attributes we don't need.
