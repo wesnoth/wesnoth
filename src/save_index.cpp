@@ -39,7 +39,7 @@ static lg::log_domain log_enginerefac("enginerefac");
 
 namespace savegame
 {
-void extract_summary_from_config(config&&, config&);
+void extract_summary_from_config(const config&, config&);
 
 void save_index_class::rebuild(const std::string& name)
 {
@@ -384,9 +384,8 @@ save_info create_save_info::operator()(const std::string& filename) const
 	return save_info(filename, manager_, modified);
 }
 
-void extract_summary_from_config(config&& save, config& cfg_summary)
+void extract_summary_from_config(const config& cfg_save, config& cfg_summary)
 {
-	config cfg_save = std::move(save);
 	auto cfg_snapshot = cfg_save.optional_child("snapshot");
 
 	// Servergenerated replays contain [scenario] and no [replay_start]
