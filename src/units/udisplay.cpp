@@ -174,7 +174,7 @@ bool do_not_show_anims(display* disp)
 /**
  * The path must remain unchanged for the life of this object.
  */
-unit_mover::unit_mover(const std::vector<map_location>& path, bool animate, bool force_scroll) :
+unit_movement_animator::unit_movement_animator(const std::vector<map_location>& path, bool animate, bool force_scroll) :
 	disp_(game_display::get_singleton()),
 	can_draw_(disp_ && !video::headless() && path.size() > 1),
 	animate_(animate),
@@ -197,7 +197,7 @@ unit_mover::unit_mover(const std::vector<map_location>& path, bool animate, bool
 }
 
 
-unit_mover::~unit_mover()
+unit_movement_animator::~unit_movement_animator()
 {
 	// Make sure a unit hidden for movement is unhidden.
 	update_shown_unit();
@@ -216,7 +216,7 @@ unit_mover::~unit_mover()
 /* Note: Hide the unit in its current location; do not actually remove it.
  * Otherwise the status displays will be wrong during the movement.
  */
-void unit_mover::replace_temporary(const unit_ptr& u)
+void unit_movement_animator::replace_temporary(const unit_ptr& u)
 {
 	if ( disp_ == nullptr )
 		// No point in creating a temp unit with no way to display it.
@@ -242,7 +242,7 @@ void unit_mover::replace_temporary(const unit_ptr& u)
  * This uses temp_unit_ptr_, so (in the destructor) call this before deleting
  * temp_unit_ptr_.
  */
-void unit_mover::update_shown_unit()
+void unit_movement_animator::update_shown_unit()
 {
 	if ( shown_unit_ ) {
 		// Switch the display back to the real unit.
@@ -257,7 +257,7 @@ void unit_mover::update_shown_unit()
  * Initiates the display of movement for the supplied unit.
  * This should be called before attempting to display moving to a new hex.
  */
-void unit_mover::start(const unit_ptr& u)
+void unit_movement_animator::start(const unit_ptr& u)
 {
 	// Nothing to do here if there is nothing to animate.
 	if ( !can_draw_ )
@@ -315,7 +315,7 @@ void unit_mover::start(const unit_ptr& u)
  * wait (another call to proceed_to() or finish() will implicitly wait). The
  * unit must remain valid until the wait is finished.
  */
-void unit_mover::proceed_to(const unit_ptr& u, std::size_t path_index, bool update, bool wait)
+void unit_movement_animator::proceed_to(const unit_ptr& u, std::size_t path_index, bool update, bool wait)
 {
 	// Nothing to do here if animations cannot be shown.
 	if ( !can_draw_ || !animate_ )
@@ -394,7 +394,7 @@ void unit_mover::proceed_to(const unit_ptr& u, std::size_t path_index, bool upda
  * It is not necessary to call this unless you want to wait before the next
  * call to proceed_to() or finish().
  */
-void unit_mover::wait_for_anims()
+void unit_movement_animator::wait_for_anims()
 {
 	if ( wait_until_ == std::chrono::milliseconds::max() )
 		// Wait for end (not currently used, but still supported).
@@ -434,7 +434,7 @@ void unit_mover::wait_for_anims()
  * If @a dir is not supplied, the final direction will be determined by (the
  * last two traversed hexes of) the path.
  */
-void unit_mover::finish(const unit_ptr& u, map_location::direction dir)
+void unit_movement_animator::finish(const unit_ptr& u, map_location::direction dir)
 {
 	// Nothing to do here if the display is not valid.
 	if ( !can_draw_ ) {
@@ -511,7 +511,7 @@ void move_unit(const std::vector<map_location>& path, const unit_ptr& u,
                bool animate, map_location::direction dir,
                bool force_scroll)
 {
-	unit_mover mover(path, animate, force_scroll);
+	unit_movement_animator mover(path, animate, force_scroll);
 
 	mover.start(u);
 	mover.proceed_to(u, path.size());
