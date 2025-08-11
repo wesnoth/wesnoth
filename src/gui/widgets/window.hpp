@@ -46,8 +46,6 @@ namespace event { struct message; }
 
 // ------------ WIDGET -----------{
 
-namespace dialogs { class modal_dialog; }
-
 namespace event
 {
 class distributor;
@@ -263,12 +261,6 @@ public:
 	virtual const widget* find_at(const point& coordinate,
 								   const bool must_be_active) const override;
 
-	/** Inherited from widget. */
-	dialogs::modal_dialog* dialog()
-	{
-		return owner_;
-	}
-
 	/** See @ref widget::find. */
 	widget* find(const std::string_view id, const bool must_be_active) override;
 
@@ -404,11 +396,6 @@ public:
 		return retval_;
 	}
 
-	void set_owner(dialogs::modal_dialog* owner)
-	{
-		owner_ = owner;
-	}
-
 	void set_click_dismiss(const bool click_dismiss)
 	{
 		click_dismiss_ = click_dismiss;
@@ -481,9 +468,6 @@ private:
 
 	// return value of the window, 0 default.
 	int retval_;
-
-	/** The dialog that owns the window. */
-	dialogs::modal_dialog* owner_;
 
 	/**
 	 * When set the form needs a full layout redraw cycle.
