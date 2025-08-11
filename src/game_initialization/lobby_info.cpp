@@ -174,18 +174,15 @@ void lobby_info::process_gamelist(const config& data)
 		qgame["observer"] = game["observer"];
 		qgame["human_sides"] = human_sides;
 
-		std::vector<std::string> mods = utils::split(game["modifications"].str());
-		for(const std::string& mod : mods) {
+		for(const std::string& mod : utils::split(game["modifications"].str())) {
 			auto cfg = game_config.find_child("modification", "id", mod);
 
-			if(cfg) {
-				config& m = qgame.add_child("modification");
-				m["name"] = cfg["name"];
-				m["id"] = mod;
-			} else {
+			if(!cfg) {
 				ERR_LB << "Modification " << mod << " not found in game config " << game["id"];
 				continue;
 			}
+
+			qgame.add_child("modification", config{ "name", cfg["name"], "id", mod });
 		}
 
 		if(game.has_child("options")) {

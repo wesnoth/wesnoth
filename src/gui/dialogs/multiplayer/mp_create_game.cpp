@@ -223,8 +223,7 @@ void mp_create_game::quick_mp_setup(saved_game& state, const config presets)
 	params.mode = random_faction_mode::get_enum(presets["random_faction_mode"].str()).value_or(random_faction_mode::type::independent);
 	params.name = settings::game_name_default();
 
-	std::vector<std::string> mods = utils::split(presets["modifications"].str());
-	for(const std::string& mod : mods) {
+	for(const std::string& mod : utils::split(presets["modifications"].str())) {
 		create.active_mods().push_back(mod);
 	}
 
@@ -656,7 +655,7 @@ void mp_create_game::on_game_select()
 			on_era_select();
 
 			int i = 0;
-			const auto& activemods = utils::split(preset["modifications"].str());
+			const auto& activemods = utils::split(preset["modifications"]);
 			for(const auto& mod : create_engine_.get_extras_by_type(ng::create_engine::MOD)) {
 				toggle_button& mod_button = mod_list_->get_row_grid(i)->find_widget<toggle_button>("mod_active_state");
 				mod_button.set_value_bool(utils::contains(activemods, mod->id));
