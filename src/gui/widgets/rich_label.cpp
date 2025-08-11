@@ -247,13 +247,15 @@ std::size_t rich_label::get_split_location(std::string_view text, const point& p
 	return len;
 }
 
-void rich_label::set_dom(const config& dom) {
+void rich_label::set_dom(const config& dom)
+{
 	std::tie(shapes_, size_) = get_parsed_text(dom, point(0,0), init_w_, true);
 	update_canvas();
 	queue_redraw();
 }
 
-void rich_label::set_label(const t_string& text) {
+void rich_label::set_label(const t_string& text)
+{
 	set_dom(markup::parse_text(text));
 }
 

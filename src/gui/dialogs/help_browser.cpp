@@ -41,7 +41,7 @@ namespace gui2::dialogs
 namespace
 {
 	int win_w = 0;
-	int tree_w = 0;
+	int rl_init_w = 0;
 }
 
 REGISTER_DIALOG(help_browser)
@@ -91,18 +91,22 @@ void help_browser::pre_show()
 	connect_signal_mouse_left_click(contents, [&](auto&&...) {
 		auto parent = topic_panel.get_window();
 		// Cache the initial values, get_best_size() keeps changing
+		// initial width of the window
 		if ((parent != nullptr) && (win_w == 0)) {
 			win_w = parent->get_best_size().x;
 		}
-		if (tree_w == 0) {
-			tree_w = topic_panel.get_best_size().x;
+
+		// initial width of the rich label
+		if(rl_init_w == 0) {
+			rl_init_w = topic_text.get_width();
+			PLAIN_LOG << "RL init width: " << rl_init_w;
 		}
 
 		// Set RL's width and reshow
 		bool is_contents_visible = (topic_panel.get_visible() == widget::visibility::visible);
-		if (topic_panel.get_window()) {
-			topic_text.set_width(win_w - (is_contents_visible ? 0 : tree_w) - 20 /* Padding */);
-			show_topic(history_.at(history_pos_), false);
+		if (parent) {
+			topic_text.set_width(is_contents_visible ? win_w : rl_init_w);
+			show_topic(history_.at(history_pos_), false, true);
 		}
 		topic_panel.set_visible(!is_contents_visible);
 		invalidate_layout();
@@ -112,7 +116,7 @@ void help_browser::pre_show()
 	add_to_keyboard_chain(&filter);
 	filter.on_modified([this](const auto& box) { update_list(box.text()); });
 
-	topic_text.register_link_callback(std::bind(&help_browser::show_topic, this, std::placeholders::_1, true));
+	topic_text.register_link_callback(std::bind(&help_browser::show_topic, this, std::placeholders::_1, true, false));
 
 	connect_signal_notify_modified(topic_tree, std::bind(&help_browser::on_topic_select, this));
 
@@ -188,8 +192,15 @@ tree_view_node& help_browser::add_topic(const std::string& topic_id, const std::
 	return new_node;
 }
 
-void help_browser::show_topic(std::string topic_id, bool add_to_history)
+void help_browser::show_topic(std::string topic_id, bool add_to_history, bool reshow)
 {
+	if(reshow) {
+		const help::topic* topic = help::find_topic(toplevel_, topic_id);
+		find_widget<rich_label>("topic_text").set_dom(topic->text.parsed_text());
+		invalidate_layout();
+		return;
+	}
+
 	if(topic_id.empty() || topic_id == current_topic_) {
 		return;
 	} else {
