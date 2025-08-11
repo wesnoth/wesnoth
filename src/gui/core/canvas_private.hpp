@@ -231,6 +231,11 @@ private:
 	// TODO: use a typed_formula?
 	wfl::formula actions_formula_;
 
+	/**
+	 * Prevents duplicate error logs when an image can't be loaded.
+	 */
+	bool failure_logged_;
+
 	static void dimension_validation(unsigned value, const std::string& name, const std::string& key);
 };
 
