@@ -39,7 +39,7 @@ static lg::log_domain log_enginerefac("enginerefac");
 
 namespace savegame
 {
-void extract_summary_from_config(config&, config&);
+void extract_summary_from_config(config&&, config&);
 
 void save_index_class::rebuild(const std::string& name)
 {
@@ -54,11 +54,7 @@ void save_index_class::rebuild(const std::string& name, const std::chrono::syste
 	config& summary = data(name);
 
 	try {
-		config full;
-		std::string dummy;
-		read_save_file(dir_, name, full, &dummy);
-
-		extract_summary_from_config(full, summary);
+		extract_summary_from_config(read_save_file(dir_, name), summary);
 	} catch(const game::load_game_failed&) {
 		summary["corrupt"] = true;
 	}
@@ -305,10 +301,11 @@ static filesystem::scoped_istream find_save_file(const std::string& dir,
 	throw game::load_game_failed();
 }
 
-void read_save_file(const std::string& dir, const std::string& name, config& cfg, std::string* error_log)
+config read_save_file(const std::string& dir, const std::string& name)
 {
 	static const std::vector<std::string> suffixes{"", ".gz", ".bz2"};
 	filesystem::scoped_istream file_stream = find_save_file(dir, name, suffixes);
+	config cfg;
 
 	try {
 		/*
@@ -324,25 +321,19 @@ void read_save_file(const std::string& dir, const std::string& name, config& cfg
 		}
 	} catch(const std::ios_base::failure& e) {
 		LOG_SAVE << e.what();
+		throw game::load_game_failed(e.what());
 
-		if(error_log) {
-			*error_log += e.what();
-		}
-		throw game::load_game_failed();
 	} catch(const config::error& err) {
 		LOG_SAVE << err.message;
-
-		if(error_log) {
-			*error_log += err.message;
-		}
-
-		throw game::load_game_failed();
+		throw game::load_game_failed(err.message);
 	}
 
 	if(cfg.empty()) {
 		LOG_SAVE << "Could not parse file data into config";
 		throw game::load_game_failed();
 	}
+
+	return cfg;
 }
 
 void save_index_class::delete_old_auto_saves(const int autosavemax, const int infinite_auto_saves)
@@ -393,8 +384,9 @@ save_info create_save_info::operator()(const std::string& filename) const
 	return save_info(filename, manager_, modified);
 }
 
-void extract_summary_from_config(config& cfg_save, config& cfg_summary)
+void extract_summary_from_config(config&& save, config& cfg_summary)
 {
+	config cfg_save = std::move(save);
 	auto cfg_snapshot = cfg_save.optional_child("snapshot");
 
 	// Servergenerated replays contain [scenario] and no [replay_start]

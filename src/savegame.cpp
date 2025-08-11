@@ -146,7 +146,7 @@ bool loadgame::load_game_ingame()
 	const config& summary = load_data_.manager->get(load_data_.filename);
 
 	if(summary["corrupt"].to_bool(false)) {
-		gui2::show_error_message(_("The file you have tried to load is corrupt: '"));
+		gui2::show_error_message(_("The file you have tried to load is corrupt"));
 		return false;
 	}
 
@@ -185,23 +185,17 @@ bool loadgame::load_game()
 		return false;
 	}
 
-	std::string error_log;
-	read_save_file(load_data_.manager->dir(), load_data_.filename, load_data_.load_config, &error_log);
+	try {
+		load_data_.load_config = read_save_file(load_data_.manager->dir(), load_data_.filename);
+	} catch(const game::load_game_failed& e) {
+		gui2::show_error_message(_("The file you have tried to load is corrupt") + "\n\n" + e.what());
+		return false;
+	}
 
 	convert_old_saves(load_data_.load_config);
 
 	for(config& side : load_data_.load_config.child_range("side")) {
 		side.remove_attribute("is_local");
-	}
-
-	if(!error_log.empty()) {
-		try {
-			gui2::show_error_message(
-				_("Warning: The file you have tried to load is corrupt. Loading anyway.\n") + error_log);
-		} catch(const utf8::invalid_utf8_exception&) {
-			gui2::show_error_message(_("Warning: The file you have tried to load is corrupt. Loading anyway.\n")
-				+ std::string("(UTF-8 ERROR)"));
-		}
 	}
 
 	if(!load_data_.difficulty.empty()) {
@@ -297,17 +291,14 @@ bool loadgame::load_multiplayer_game()
 
 	// read_save_file needs to be called before we can verify the classification so the data has
 	// been populated. Since we do that, we report any errors in that process first.
-	std::string error_log;
-	{
+	try {
 		cursor::setter cur(cursor::WAIT);
 		log_scope("load_game");
 
-		read_save_file(load_data_.manager->dir(), load_data_.filename, load_data_.load_config, &error_log);
+		load_data_.load_config = read_save_file(load_data_.manager->dir(), load_data_.filename);
 		copy_era(load_data_.load_config);
-	}
-
-	if(!error_log.empty()) {
-		gui2::show_error_message(_("The file you have tried to load is corrupt: '") + error_log);
+	} catch(const game::load_game_failed& e) {
+		gui2::show_error_message(_("The file you have tried to load is corrupt") + "\n\n" + e.what());
 		return false;
 	}
 

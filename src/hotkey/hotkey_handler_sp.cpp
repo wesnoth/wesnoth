@@ -323,7 +323,7 @@ void playsingle_controller::hotkey_handler::load_autosave(const std::string& fil
 		if(playsingle_controller_.is_networked_mp()) {
 			gui2::show_error_message(msg);
 		} else {
-			const int res = gui2::show_message("", msg + _("Do you want to load it anyway?"), gui2::dialogs::message::yes_no_buttons);
+			const int res = gui2::show_message("", msg + "\n\n" + _("Do you want to load it anyway?"), gui2::dialogs::message::yes_no_buttons);
 			if(res != gui2::retval::CANCEL) {
 				play_controller::hotkey_handler::load_autosave(filename);
 			}
@@ -331,11 +331,10 @@ void playsingle_controller::hotkey_handler::load_autosave(const std::string& fil
 	};
 
 	config savegame;
-	std::string error_log;
-	savegame::read_save_file(filesystem::get_saves_dir(), filename, savegame, &error_log);
-
-	if(!error_log.empty()) {
-		invalid_save_file(_("The file you have tried to load is corrupt: '") + error_log);
+	try {
+		savegame = savegame::read_save_file(filesystem::get_saves_dir(), filename);
+	} catch(const game::load_game_failed& e) {
+		gui2::show_error_message(_("The file you have tried to load is corrupt") + "\n\n" + e.what());
 		return;
 	}
 	if(savegame.child_or_empty("snapshot")["replay_pos"].to_int(-1) < 0 ) {
