@@ -319,16 +319,6 @@ void playsingle_controller::hotkey_handler::load_autosave(const std::string& fil
 	if(!start_replay) {
 		play_controller::hotkey_handler::load_autosave(filename);
 	}
-	auto invalid_save_file = [this, filename](const std::string& msg){
-		if(playsingle_controller_.is_networked_mp()) {
-			gui2::show_error_message(msg);
-		} else {
-			const int res = gui2::show_message("", msg + "\n\n" + _("Do you want to load it anyway?"), gui2::dialogs::message::yes_no_buttons);
-			if(res != gui2::retval::CANCEL) {
-				play_controller::hotkey_handler::load_autosave(filename);
-			}
-		}
-	};
 
 	config savegame;
 	try {
@@ -338,11 +328,11 @@ void playsingle_controller::hotkey_handler::load_autosave(const std::string& fil
 		return;
 	}
 	if(savegame.child_or_empty("snapshot")["replay_pos"].to_int(-1) < 0 ) {
-		invalid_save_file(_("The file you have tried to load has no replay information. "));
+		gui2::show_error_message(_("The file you have tried to load has no replay information."));
 		return;
 	}
 	if(!playsingle_controller_.get_saved_game().get_replay().is_ancestor(savegame.child_or_empty("replay"))) {
-		invalid_save_file(_("The file you have tried to load is not from the current session."));
+		gui2::show_error_message(_("The file you have tried to load is not from the current session."));
 		return;
 	}
 
