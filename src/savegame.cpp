@@ -140,7 +140,7 @@ void load_interactive_by_exception()
 
 utils::optional<load_game_metadata> load_interactive()
 {
-	// FIXME: game_load dialog should initialize its own manager
+	// FIXME: game_load dialog should initialize its own manager pointer
 	load_game_metadata load_data{ save_index_class::default_saves_dir() };
 
 	if(!gui2::dialogs::game_load::execute(load_data)) {
@@ -226,7 +226,7 @@ bool check_version_compatibility(const version_info& save_version)
 // TODO: reduce code duplication with load_interactive
 utils::optional<load_game_metadata> load_interactive_for_multiplayer()
 {
-	// FIXME: game_load dialog should initialize its own manager
+	// FIXME: game_load dialog should initialize its own manager pointer
 	load_game_metadata load_data{ save_index_class::default_saves_dir() };
 
 	if(!gui2::dialogs::game_load::execute(load_data)) {
@@ -252,8 +252,6 @@ utils::optional<load_game_metadata> load_interactive_for_multiplayer()
 		return utils::nullopt;
 	}
 
-	// Since we want to verify game classification and version compatibility before setting the
-	// gamestate, we can't make use of the game_classification object owned by the gamestate.
 	const auto metadata = game_classification{load_data.load_config};
 
 	if(!metadata.is_multiplayer()) {
@@ -272,7 +270,7 @@ utils::optional<load_game_metadata> load_interactive_for_multiplayer()
 void set_gamestate(saved_game& gamestate, load_game_metadata& load_data)
 {
 	gamestate.set_data(std::exchange(load_data.load_config, {}));
-	gamestate.unify_controllers(); // TODO: check if this is the right replacement for the thing
+	gamestate.unify_controllers();
 }
 
 savegame::savegame(saved_game& gamestate, const compression::format compress_saves, const std::string& title)

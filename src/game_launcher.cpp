@@ -661,33 +661,6 @@ savegame::load_game_metadata game_launcher::extract_load_data()
 	return std::exchange(load_data_, utils::nullopt).value();
 }
 
-bool game_launcher::load_prepared_game()
-{
-	auto load_data = extract_load_data();
-	savegame::set_gamestate(state_, load_data);
-
-	play_replay_ = load_data.show_replay;
-
-	// in case show_replay && is_start_of_scenario
-	// there won't be any turns to replay, but the
-	// user gets to watch the intro sequence again ...
-	if(load_data.show_replay && !state_.is_start_of_scenario()) {
-		state_.statistics().clear_current_scenario();
-	}
-
-	if(load_data.cancel_orders) {
-		state_.cancel_orders();
-	}
-
-	try {
-		game_config_manager::get()->load_game_config_for_game(state_.classification(), state_.get_scenario_id());
-	} catch(const config::error&) {
-		return false;
-	}
-
-	return true;
-}
-
 bool game_launcher::load_game()
 {
 	DBG_GENERAL << "Current campaign type: " << campaign_type::get_string(state_.classification().type);
@@ -728,6 +701,33 @@ bool game_launcher::load_game()
 
 	// If the player canceled loading, we won't have any load data at this point
 	return has_load_data() && load_prepared_game();
+}
+
+bool game_launcher::load_prepared_game()
+{
+	auto load_data = extract_load_data();
+	savegame::set_gamestate(state_, load_data);
+
+	play_replay_ = load_data.show_replay;
+
+	// in case show_replay && is_start_of_scenario
+	// there won't be any turns to replay, but the
+	// user gets to watch the intro sequence again ...
+	if(load_data.show_replay && !state_.is_start_of_scenario()) {
+		state_.statistics().clear_current_scenario();
+	}
+
+	if(load_data.cancel_orders) {
+		state_.cancel_orders();
+	}
+
+	try {
+		game_config_manager::get()->load_game_config_for_game(state_.classification(), state_.get_scenario_id());
+	} catch(const config::error&) {
+		return false;
+	}
+
+	return true;
 }
 
 bool game_launcher::new_campaign()

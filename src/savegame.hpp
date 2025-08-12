@@ -96,9 +96,10 @@ private:
 	IMPLEMENT_LUA_JAILBREAK_EXCEPTION(load_game_exception)
 };
 
-inline bool is_replay_save(const config& cfg)
+/** @note This function expects a save_index summary config */
+inline bool is_replay_save(const config& summary)
 {
-	return cfg["replay"].to_bool() && !cfg["snapshot"].to_bool(true);
+	return summary["replay"].to_bool() && !summary["snapshot"].to_bool(true);
 }
 
 utils::optional<load_game_metadata> load_interactive();

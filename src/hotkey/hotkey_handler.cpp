@@ -506,6 +506,6 @@ hotkey::action_state play_controller::hotkey_handler::get_action_state(const hot
 	}
 }
 
-void play_controller::hotkey_handler::load_autosave(const std::string& filename, bool)
+void play_controller::hotkey_handler::load_autosave(const std::string&, bool)
 {
 }
