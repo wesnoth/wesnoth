@@ -989,7 +989,6 @@ template<>
 struct dialog_tester<game_load>
 {
 	config cfg;
-	game_config_view view;
 	// It would be good to have a test directory instead of using the same directory as the player,
 	// however this code will support that - default_saves_dir() will respect --userdata-dir.
 	savegame::load_game_metadata data{savegame::save_index_class::default_saves_dir()};
@@ -999,10 +998,8 @@ struct dialog_tester<game_load>
 	}
 	game_load* create()
 	{
-		view = game_config_view::wrap(cfg);
-		return new game_load(view, data);
+		return new game_load(data);
 	}
-
 };
 
 template<>
