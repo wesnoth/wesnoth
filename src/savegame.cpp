@@ -90,12 +90,8 @@ bool loadgame::show_difficulty_dialog()
 
 	std::string campaign_id = load_data_.summary["campaign"];
 
-	for(const config& campaign : game_config_.child_range("campaign")) {
-		if(campaign["id"] != campaign_id) {
-			continue;
-		}
-
-		gui2::dialogs::campaign_difficulty difficulty_dlg(campaign);
+	if(const auto campaign = game_config_.find_child("campaign", "id", campaign_id)) {
+		gui2::dialogs::campaign_difficulty difficulty_dlg(*campaign);
 
 		// Return if canceled, since otherwise load_data_.difficulty will be set to 'CANCEL'
 		if(!difficulty_dlg.show()) {
@@ -104,9 +100,6 @@ bool loadgame::show_difficulty_dialog()
 
 		load_data_.difficulty = difficulty_dlg.selected_difficulty();
 		load_data_.select_difficulty = false;
-
-		// Exit loop
-		break;
 	}
 
 	return true;

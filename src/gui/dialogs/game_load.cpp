@@ -340,15 +340,10 @@ void game_load::evaluate_summary_string(std::stringstream& str, const config& cf
 	if(campaign_type_enum) {
 		switch(*campaign_type_enum) {
 			case campaign_type::type::scenario: {
-				const config* campaign = nullptr;
-				if(!campaign_id.empty()) {
-					if(auto c = cache_config_.find_child("campaign", "id", campaign_id)) {
-						campaign = c.ptr();
-					}
-				}
-
+				const auto campaign = cache_config_.find_child("campaign", "id", campaign_id);
 				utils::string_map symbols;
-				if(campaign != nullptr) {
+
+				if(campaign) {
 					symbols["campaign_name"] = (*campaign)["name"];
 				} else {
 					// Fallback to nontranslatable campaign id.
@@ -358,7 +353,7 @@ void game_load::evaluate_summary_string(std::stringstream& str, const config& cf
 				str << VGETTEXT("Campaign: $campaign_name", symbols);
 
 				// Display internal id for debug purposes if we didn't above
-				if(game_config::debug && (campaign != nullptr)) {
+				if(game_config::debug && campaign) {
 					str << '\n' << "(" << campaign_id << ")";
 				}
 				break;
@@ -391,18 +386,11 @@ void game_load::evaluate_summary_string(std::stringstream& str, const config& cf
 		switch (*campaign_type_enum) {
 		case campaign_type::type::scenario:
 		case campaign_type::type::multiplayer: {
-			const config* campaign = nullptr;
-			if (!campaign_id.empty()) {
-				if (auto c = cache_config_.find_child("campaign", "id", campaign_id)) {
-					campaign = c.ptr();
-				}
-			}
-
 			// 'SCENARIO' or SP should only ever be campaigns
 			// 'MULTIPLAYER' may be a campaign with difficulty or single scenario without difficulty
 			// For the latter do not show the difficulty - even though it will be listed as
 			// NORMAL -> Medium in the save file it should not be considered valid (GitHub Issue #5321)
-			if (campaign != nullptr) {
+			if(auto campaign = cache_config_.find_child("campaign", "id", campaign_id)) {
 				str << "\n" << _("Difficulty: ");
 				try {
 					const config& difficulty = campaign->find_mandatory_child("difficulty", "define", cfg_summary["difficulty"]);
