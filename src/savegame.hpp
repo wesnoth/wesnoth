@@ -122,7 +122,7 @@ public:
 	}
 
 	/** GUI Dialog sequence which confirms attempts to load saves from previous game versions. */
-	static bool check_version_compatibility(const version_info & version);
+	static bool check_version_compatibility(const version_info& version);
 
 	static bool is_replay_save(const config& cfg)
 	{
@@ -132,8 +132,6 @@ public:
 private:
 	/** Display the difficulty dialog. */
 	bool show_difficulty_dialog();
-	/** Call check_version_compatibility above, using the version of this savefile. */
-	bool check_version_compatibility();
 	/** Copy era information into the snapshot. */
 	void copy_era(config& cfg);
 

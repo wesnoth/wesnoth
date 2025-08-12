@@ -208,12 +208,7 @@ bool loadgame::load_game()
 		return true;
 	}
 
-	return check_version_compatibility();
-}
-
-bool loadgame::check_version_compatibility()
-{
-	return loadgame::check_version_compatibility(gamestate_.classification().version);
+	return check_version_compatibility(gamestate_.classification().version);
 }
 
 bool loadgame::check_version_compatibility(const version_info& save_version)
