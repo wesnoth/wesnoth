@@ -1185,16 +1185,15 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse, const
 		pathfind::paths clicked_location;
 		clicked_location.destinations.insert(hex);
 
-		for(unit_map::iterator u = pc_.get_units().begin(); u != pc_.get_units().end();
-				++u) {
-			bool invisible = u->invisible(u->get_location());
+		for(const ::unit& u : pc_.get_units()) {
+			bool invisible = u.invisible(u.get_location());
 
-			if(!gui_->fogged(u->get_location()) && !u->incapacitated() && !invisible) {
+			if(!gui_->fogged(u.get_location()) && !u.incapacitated() && !invisible) {
 				const pathfind::paths& path =
-					pathfind::paths(*u, false, true, gui().viewing_team(), path_turns_, false, false);
+					pathfind::paths(u, false, true, gui().viewing_team(), path_turns_, false, false);
 
 				if(path.destinations.find(hex) != path.destinations.end()) {
-					reaching_unit_locations.destinations.insert(u->get_location());
+					reaching_unit_locations.destinations.insert(u.get_location());
 					gui_->highlight_another_reach(clicked_location);
 				}
 			}
