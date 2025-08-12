@@ -291,7 +291,6 @@ bool loadgame::load_multiplayer_game()
 		log_scope("load_game");
 
 		load_data_.load_config = read_save_file(load_data_.manager->dir(), load_data_.filename);
-		copy_era(load_data_.load_config);
 	} catch(const game::load_game_failed& e) {
 		gui2::show_error_message(_("The file you have tried to load is corrupt") + "\n\n" + e.what());
 		return false;
@@ -311,6 +310,7 @@ bool loadgame::load_multiplayer_game()
 		return false;
 	}
 
+	copy_era(load_data_.load_config);
 	return check_version_compatibility(metadata.version);
 }
 
