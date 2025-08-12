@@ -562,7 +562,7 @@ game_launcher::unit_test_result game_launcher::single_unit_test()
 	load_data_ = savegame::load_game_metadata{
 		savegame::save_index_class::default_saves_dir(), save.filename(), "", true, true, false};
 
-	if(!load_game()) {
+	if(!load_prepared_game()) {
 		PLAIN_LOG << "Failed to load the replay!";
 		return unit_test_result::TEST_FAIL_LOADING_REPLAY; // failed to load replay
 	}
@@ -656,29 +656,46 @@ bool game_launcher::has_load_data() const
 	return load_data_.has_value();
 }
 
-bool game_launcher::load_game()
+savegame::load_game_metadata game_launcher::extract_load_data()
 {
-	assert(game_config_manager::get());
+	return std::exchange(load_data_, utils::nullopt).value();
+}
 
-	DBG_GENERAL << "Current campaign type: " << campaign_type::get_string(state_.classification().type);
+bool game_launcher::load_prepared_game()
+{
+	auto load_data = extract_load_data();
+	savegame::set_gamestate(state_, load_data);
 
-	savegame::loadgame load(savegame::save_index_class::default_saves_dir(), state_);
-	if(load_data_) {
-		load.data() = std::move(*load_data_);
-		clear_loaded_game();
+	play_replay_ = load_data.show_replay;
+
+	// in case show_replay && is_start_of_scenario
+	// there won't be any turns to replay, but the
+	// user gets to watch the intro sequence again ...
+	if(load_data.show_replay && !state_.is_start_of_scenario()) {
+		state_.statistics().clear_current_scenario();
+	}
+
+	if(load_data.cancel_orders) {
+		state_.cancel_orders();
 	}
 
 	try {
-		if(!load.load_game()) {
-			return false;
-		}
+		game_config_manager::get()->load_game_config_for_game(state_.classification(), state_.get_scenario_id());
+	} catch(const config::error&) {
+		return false;
+	}
 
-		load.set_gamestate();
-		try {
-			game_config_manager::get()->load_game_config_for_game(state_.classification(), state_.get_scenario_id());
-		} catch(const config::error&) {
-			return false;
-		}
+	return true;
+}
+
+bool game_launcher::load_game()
+{
+	DBG_GENERAL << "Current campaign type: " << campaign_type::get_string(state_.classification().type);
+	assert(!load_data_);
+
+	// FIXME: evaluate which of these damn catch blocks are still necessary
+	try {
+		load_data_ = savegame::load_interactive();
 
 	} catch(const config::error& e) {
 		if(e.message.empty()) {
@@ -709,26 +726,8 @@ bool game_launcher::load_game()
 		return false;
 	}
 
-	play_replay_ = load.data().show_replay;
-	LOG_CONFIG << "is middle game savefile: " << (state_.is_mid_game_save() ? "yes" : "no");
-	LOG_CONFIG << "show replay: " << (play_replay_ ? "yes" : "no");
-	// in case load.data().show_replay && state_.is_start_of_scenario
-	// there won't be any turns to replay, but the
-	// user gets to watch the intro sequence again ...
-
-	if(!state_.is_start_of_scenario() && load.data().show_replay) {
-		state_.statistics().clear_current_scenario();
-	}
-
-	if(state_.classification().is_multiplayer()) {
-		state_.unify_controllers();
-	}
-
-	if(load.data().cancel_orders) {
-		state_.cancel_orders();
-	}
-
-	return true;
+	// If the player canceled loading, we won't have any load data at this point
+	return has_load_data() && load_prepared_game();
 }
 
 bool game_launcher::new_campaign()

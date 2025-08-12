@@ -96,51 +96,25 @@ private:
 	IMPLEMENT_LUA_JAILBREAK_EXCEPTION(load_game_exception)
 };
 
-/** The class for loading a savefile. */
-class loadgame
+inline bool is_replay_save(const config& cfg)
 {
-public:
-	loadgame(const std::shared_ptr<save_index_class>& index, saved_game& gamestate);
-	virtual ~loadgame() {}
+	return cfg["replay"].to_bool() && !cfg["snapshot"].to_bool(true);
+}
 
-	/* In any of the following three function, a bool value of false indicates
-	   some failure or abort of the load process */
+utils::optional<load_game_metadata> load_interactive();
+utils::optional<load_game_metadata> load_interactive_for_multiplayer();
 
-	/** Load a game without providing any information. */
-	bool load_game_ingame();
-	/** Load a game with pre-setting information for the load-game dialog. */
-	bool load_game();
-	/** Loading a game from within the multiplayer-create dialog. */
-	bool load_multiplayer_game();
-	/** Generate the gamestate out of the loaded game config. */
-	void set_gamestate();
+/**
+ * In-game load wrapper for @ref load_interactive.
+ *
+ * If load_interactive returns a valid load_game_metadata object,
+ * load_game_exception will be thrown with said object as its payload.
+ * Otherwise, no exception is thrown.
+ */
+void load_interactive_by_exception();
 
-	// Getter-methods
-	load_game_metadata& data()
-	{
-		return load_data_;
-	}
+void set_gamestate(saved_game& gamestate, load_game_metadata& load_data);
 
-	/** GUI Dialog sequence which confirms attempts to load saves from previous game versions. */
-	static bool check_version_compatibility(const version_info& version);
-
-	static bool is_replay_save(const config& cfg)
-	{
-		return cfg["replay"].to_bool() && !cfg["snapshot"].to_bool(true);
-	}
-
-private:
-	/** Display the difficulty dialog. */
-	bool show_difficulty_dialog();
-	/** Copy era information into the snapshot. */
-	void copy_era(config& cfg);
-
-	const game_config_view& game_config_;
-
-	saved_game& gamestate_; /** Primary output information. */
-
-	load_game_metadata load_data_;
-};
 /**
  * The base class for all savegame stuff.
  * This should not be used directly, as it does not directly produce usable saves.

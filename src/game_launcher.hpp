@@ -90,6 +90,7 @@ public:
 
 	bool has_load_data() const;
 	bool load_game();
+	bool load_prepared_game();
 	void set_test(const std::string& id);
 
 	/** Return the ID of the campaign to jump to (skipping the main menu). */
@@ -127,6 +128,12 @@ private:
 	 * Wesnoth is running multiple unit tests, this gets called once per test.
 	 */
 	unit_test_result single_unit_test();
+
+	/**
+	 * Returns the load_game_metadata object stored in load_data_.
+	 * After this function returns, load_data_ will contain no value.
+	 */
+	savegame::load_game_metadata extract_load_data();
 
 	const commandline_options& cmdline_opts_;
 

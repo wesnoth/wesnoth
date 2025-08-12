@@ -870,15 +870,14 @@ void mp_create_game::update_map_settings()
 
 void mp_create_game::load_game_callback()
 {
-	savegame::loadgame load(savegame::save_index_class::default_saves_dir(), create_engine_.get_state());
-
-	if(!load.load_multiplayer_game()) {
+	auto load_data = savegame::load_interactive_for_multiplayer();
+	if(!load_data) {
 		return;
 	}
 
-	load.set_gamestate();
+	savegame::set_gamestate(create_engine_.get_state(), load_data.value());
 
-	if(load.data().cancel_orders) {
+	if(load_data->cancel_orders) {
 		create_engine_.get_state().cancel_orders();
 	}
 

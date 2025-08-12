@@ -75,22 +75,14 @@ void clean_saves(const std::string& label)
 	}
 }
 
-loadgame::loadgame(const std::shared_ptr<save_index_class>& index, saved_game& gamestate)
-	: game_config_(game_config_manager::get()->game_config())
-	, gamestate_(gamestate)
-	, load_data_{index}
+namespace
 {
-}
-
-bool loadgame::show_difficulty_dialog()
+bool show_difficulty_dialog(load_game_metadata& load_data)
 {
-	if(load_data_.summary["corrupt"].to_bool()) {
-		return false;
-	}
+	std::string campaign_id = load_data.summary["campaign"];
+	const game_config_view& game_config = game_config_manager::get()->game_config();
 
-	std::string campaign_id = load_data_.summary["campaign"];
-
-	if(const auto campaign = game_config_.find_child("campaign", "id", campaign_id)) {
+	if(const auto campaign = game_config.find_child("campaign", "id", campaign_id)) {
 		gui2::dialogs::campaign_difficulty difficulty_dlg(*campaign);
 
 		// Return if canceled, since otherwise load_data_.difficulty will be set to 'CANCEL'
@@ -98,113 +90,88 @@ bool loadgame::show_difficulty_dialog()
 			return false;
 		}
 
-		load_data_.difficulty = difficulty_dlg.selected_difficulty();
-		load_data_.select_difficulty = false;
+		load_data.difficulty = difficulty_dlg.selected_difficulty();
+		load_data.load_config["difficulty"] = load_data.difficulty;
+		load_data.select_difficulty = false;
 	}
 
 	return true;
 }
 
-// Called only by play_controller to handle in-game attempts to load. Instead of returning true,
-// throws a "load_game_exception" to signal a resulting load game request.
-bool loadgame::load_game_ingame()
+void copy_era(config& cfg)
+{
+	auto replay_start = cfg.optional_child("replay_start");
+	if(!replay_start) {
+		return;
+	}
+
+	auto era = replay_start->optional_child("era");
+	if(!era) {
+		return;
+	}
+
+	auto snapshot = cfg.optional_child("snapshot");
+	if(!snapshot) {
+		return;
+	}
+
+	snapshot->add_child("era", *era);
+}
+
+} // namespace
+
+/** Confirms attempts to load saves from previous game versions. */
+bool check_version_compatibility(const version_info& version);
+bool check_version_compatibility(const config& cfg)
+{
+	return check_version_compatibility(cfg["version"].str());
+}
+
+void load_interactive_by_exception()
 {
 	if(video::headless()) {
-		return false;
+		return;
 	}
 
-	if(!gui2::dialogs::game_load::execute(game_config_, load_data_)) {
-		return false;
+	if(auto load_data = load_interactive()) {
+		throw load_game_exception(std::move(load_data).value());
 	}
-
-	if(load_data_.filename.empty()) {
-		return false;
-	}
-
-	if(load_data_.select_difficulty) {
-		if(!show_difficulty_dialog()) {
-			return false;
-		}
-	}
-
-	if(!load_data_.manager) {
-		ERR_SAVE << "Null pointer in save index";
-		return false;
-	}
-
-	load_data_.show_replay |= is_replay_save(load_data_.summary);
-
-	// Confirm the integrity of the file before throwing the exception.
-	// Use the summary in the save_index for this.
-	const config& summary = load_data_.manager->get(load_data_.filename);
-
-	if(summary["corrupt"].to_bool(false)) {
-		gui2::show_error_message(_("The file you have tried to load is corrupt"));
-		return false;
-	}
-
-	if(!loadgame::check_version_compatibility(summary["version"].str())) {
-		return false;
-	}
-
-	throw load_game_exception(std::move(load_data_));
 }
 
-bool loadgame::load_game()
+utils::optional<load_game_metadata> load_interactive()
 {
-	bool skip_version_check = true;
+	// FIXME: game_load dialog should initialize its own manager
+	load_game_metadata load_data{ save_index_class::default_saves_dir() };
 
-	if(load_data_.filename.empty()) {
-		if(!gui2::dialogs::game_load::execute(game_config_, load_data_)) {
-			return false;
-		}
-
-		skip_version_check = false;
-		load_data_.show_replay |= is_replay_save(load_data_.summary);
+	if(!gui2::dialogs::game_load::execute(load_data)) {
+		return utils::nullopt;
 	}
 
-	if(load_data_.filename.empty()) {
-		return false;
-	}
-
-	if(load_data_.select_difficulty) {
-		if(!show_difficulty_dialog()) {
-			return false;
-		}
-	}
-
-	if(!load_data_.manager) {
-		ERR_SAVE << "Null pointer in save index";
-		return false;
-	}
+	load_data.show_replay |= is_replay_save(load_data.summary);
 
 	try {
-		load_data_.load_config = read_save_file(load_data_.manager->dir(), load_data_.filename);
+		load_data.load_config = read_save_file(load_data.manager->dir(), load_data.filename);
 	} catch(const game::load_game_failed& e) {
 		gui2::show_error_message(_("The file you have tried to load is corrupt") + "\n\n" + e.what());
-		return false;
+		return utils::nullopt;
 	}
 
-	convert_old_saves(load_data_.load_config);
+	convert_old_saves(load_data.load_config);
 
-	for(config& side : load_data_.load_config.child_range("side")) {
-		side.remove_attribute("is_local");
+	if(load_data.select_difficulty) {
+		if(!show_difficulty_dialog(load_data)) {
+			return utils::nullopt;
+		}
 	}
 
-	if(!load_data_.difficulty.empty()) {
-		load_data_.load_config["difficulty"] = load_data_.difficulty;
-	}
-	// read classification to for loading the game_config config object.
-	gamestate_.classification() = game_classification(load_data_.load_config);
-
-	if(skip_version_check) {
-		return true;
+	if(!check_version_compatibility(load_data.load_config)) {
+		return utils::nullopt;
 	}
 
-	return check_version_compatibility(gamestate_.classification().version);
+	return load_data;
 }
 
-bool loadgame::check_version_compatibility(const version_info& save_version)
+bool check_version_compatibility(const version_info& save_version)
 {
 	if(save_version == game_config::wesnoth_version) {
 		return true;
@@ -256,26 +223,17 @@ bool loadgame::check_version_compatibility(const version_info& save_version)
 	return true;
 }
 
-void loadgame::set_gamestate()
+// TODO: reduce code duplication with load_interactive
+utils::optional<load_game_metadata> load_interactive_for_multiplayer()
 {
-	gamestate_.set_data(load_data_.load_config);
-}
+	// FIXME: game_load dialog should initialize its own manager
+	load_game_metadata load_data{ save_index_class::default_saves_dir() };
 
-bool loadgame::load_multiplayer_game()
-{
-	if(!gui2::dialogs::game_load::execute(game_config_, load_data_)) {
-		return false;
+	if(!gui2::dialogs::game_load::execute(load_data)) {
+		return utils::nullopt;
 	}
 
-	load_data_.show_replay |= is_replay_save(load_data_.summary);
-	if(load_data_.filename.empty()) {
-		return false;
-	}
-
-	if(!load_data_.manager) {
-		ERR_SAVE << "Null pointer in save index";
-		return false;
-	}
+	load_data.show_replay |= is_replay_save(load_data.summary);
 
 	// read_save_file needs to be called before we can verify the classification so the data has
 	// been populated. Since we do that, we report any errors in that process first.
@@ -283,48 +241,38 @@ bool loadgame::load_multiplayer_game()
 		cursor::setter cur(cursor::WAIT);
 		log_scope("load_game");
 
-		load_data_.load_config = read_save_file(load_data_.manager->dir(), load_data_.filename);
+		load_data.load_config = read_save_file(load_data.manager->dir(), load_data.filename);
 	} catch(const game::load_game_failed& e) {
 		gui2::show_error_message(_("The file you have tried to load is corrupt") + "\n\n" + e.what());
-		return false;
+		return utils::nullopt;
 	}
 
-	if(is_replay_save(load_data_.summary)) {
+	if(is_replay_save(load_data.summary)) {
 		gui2::show_transient_message(_("Load Game"), _("Replays are not supported in multiplayer mode."));
-		return false;
+		return utils::nullopt;
 	}
 
 	// Since we want to verify game classification and version compatibility before setting the
 	// gamestate, we can't make use of the game_classification object owned by the gamestate.
-	const auto metadata = game_classification{load_data_.load_config};
+	const auto metadata = game_classification{load_data.load_config};
 
 	if(!metadata.is_multiplayer()) {
 		gui2::show_transient_error_message(_("This is not a multiplayer save."));
-		return false;
+		return utils::nullopt;
 	}
 
-	copy_era(load_data_.load_config);
-	return check_version_compatibility(metadata.version);
+	if(!check_version_compatibility(metadata.version)) {
+		return utils::nullopt;
+	}
+
+	copy_era(load_data.load_config);
+	return load_data;
 }
 
-void loadgame::copy_era(config& cfg)
+void set_gamestate(saved_game& gamestate, load_game_metadata& load_data)
 {
-	auto replay_start = cfg.optional_child("replay_start");
-	if(!replay_start) {
-		return;
-	}
-
-	auto era = replay_start->optional_child("era");
-	if(!era) {
-		return;
-	}
-
-	auto snapshot = cfg.optional_child("snapshot");
-	if(!snapshot) {
-		return;
-	}
-
-	snapshot->add_child("era", *era);
+	gamestate.set_data(std::exchange(load_data.load_config, {}));
+	gamestate.unify_controllers(); // TODO: check if this is the right replacement for the thing
 }
 
 savegame::savegame(saved_game& gamestate, const compression::format compress_saves, const std::string& title)
