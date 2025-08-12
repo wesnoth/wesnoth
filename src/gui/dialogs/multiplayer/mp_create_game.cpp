@@ -876,6 +876,8 @@ void mp_create_game::load_game_callback()
 		return;
 	}
 
+	load.set_gamestate();
+
 	if(load.data().cancel_orders) {
 		create_engine_.get_state().cancel_orders();
 	}

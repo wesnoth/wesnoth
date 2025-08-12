@@ -307,16 +307,16 @@ bool loadgame::load_multiplayer_game()
 		return false;
 	}
 
-	// We want to verify the game classification before setting the data, so we don't check on
-	// gamestate_.classification() and instead construct a game_classification object manually.
-	if(game_classification(load_data_.load_config).type != campaign_type::type::multiplayer) {
+	// Since we want to verify game classification and version compatibility before setting the
+	// gamestate, we can't make use of the game_classification object owned by the gamestate.
+	const auto metadata = game_classification{load_data_.load_config};
+
+	if(!metadata.is_multiplayer()) {
 		gui2::show_transient_error_message(_("This is not a multiplayer save."));
 		return false;
 	}
 
-	set_gamestate();
-
-	return check_version_compatibility();
+	return check_version_compatibility(metadata.version);
 }
 
 void loadgame::copy_era(config& cfg)
