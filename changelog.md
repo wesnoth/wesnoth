@@ -5,14 +5,13 @@
 ### Editor
 ### Multiplayer
 ### Lua API
-   * Toggle panel now has the event handler `on_double_click`. If set, it will be fired when the user left double clicks on that widget. For other widgets, they can be wrapped inside a toggle panel for this to work.
+   * Toggle panel now have the event handler `on_double_click`. If set, it will be fired when the user left double clicks on that widget. For other widgets, they can be wrapped inside a toggle panel for this to work.
 ### Packaging
 ### Terrain
 ### Translations
    * Updated translations: Ancient Greek, Bengali, British English, Chinese (Simplified), Czech, Galician, Hungarian
 ### Units
 ### User interface
-   * Deselect Hex hotkey is now bound to Middle Mouse click instead of Right Mouse click, because Right Mouse always shows the context menu regardless of the hotkey bound to it.
 ### WML Engine
    * Add 'radius' attribute to [illuminates] abilities
 ### Miscellaneous and Bug Fixes
