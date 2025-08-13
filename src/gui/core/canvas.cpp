@@ -265,11 +265,9 @@ void image_shape::draw(wfl::map_formula_callable& variables)
 {
 	DBG_GUI_D << "Image: draw.";
 
-	/**
-	 * @todo formulas are now recalculated every draw cycle which is a  bit
-	 * silly unless there has been a resize. So to optimize we should use an
-	 * extra flag or do the calculation in a separate routine.
-	 */
+	// The name will be passed to the texture loading code on each draw, any caching is left to the
+	// image loading code itself. A name can point to a different image file due to i18n support,
+	// even when the image_name_ isn't a formula.
 	const std::string& name = image_name_(variables);
 
 	if(name.empty()) {
