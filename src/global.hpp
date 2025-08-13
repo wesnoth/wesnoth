@@ -78,3 +78,11 @@
 #else
 #define AGGREGATE_EMPLACE(...) push_back({ __VA_ARGS__ })
 #endif
+
+#if defined(__APPLE__) && defined(__MACH__) && defined(__ENVIRONMENT_IPHONE_OS_VERSION_MIN_REQUIRED__)
+#define __IPHONEOS__ (__ENVIRONMENT_IPHONE_OS_VERSION_MIN_REQUIRED__*1000)
+#endif
+
+#if defined(__ANDROID__) || defined(__IPHONEOS__)
+#define TOUCHSCREEN
+#endif

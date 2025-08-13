@@ -15,13 +15,10 @@
 
 #ifdef __APPLE__
 
+#include "global.hpp"
 #include "apple_version.hpp"
 
 #import "game_version.hpp"
-
-#if defined(__APPLE__) && defined(__MACH__) && defined(__ENVIRONMENT_IPHONE_OS_VERSION_MIN_REQUIRED__)
-#define __IPHONEOS__ (__ENVIRONMENT_IPHONE_OS_VERSION_MIN_REQUIRED__*1000)
-#endif
 
 #import <Foundation/Foundation.h>
 
