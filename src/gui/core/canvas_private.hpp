@@ -195,13 +195,7 @@ private:
 	typed_formula<unsigned> w_; /**< The width of the image. */
 	typed_formula<unsigned> h_; /**< The height of the image. */
 
-	/**
-	 * Name of the image.
-	 *
-	 * This value is only used when the image name is a formula. If it isn't a
-	 * formula the image will be loaded in the constructor. If it's a formula it
-	 * will be loaded every draw cycles. This allows 'changing' images.
-	 */
+	/** String to pass to the image loader. May be a Data URI, may include Image Path Functions. */
 	typed_formula<std::string> image_name_;
 
 	/**
