@@ -915,6 +915,8 @@ void mouse_handler::select_or_action(bool browse)
 	  (clicked_u->side() == side_num_ && clicked_u->id() != selected_u->id()))
 	) {
 		select_hex(last_hex_, false);
+	} else if (clicked_u && clicked_u->side() != side_num_) {
+		select_hex(last_hex_, false);
 	} else {
 		move_action(browse);
 	}
@@ -1119,8 +1121,12 @@ void mouse_handler::touch_action(const map_location touched_hex, bool browse)
 {
 	unit_map::iterator unit = find_unit(touched_hex);
 
-	if (touched_hex.valid() && unit.valid() && !unit->get_hidden()) {
-		select_or_action(browse);
+	if(touched_hex.valid() && unit.valid() && !unit->get_hidden()) {
+		if(touched_hex == selected_hex_) {
+			deselect_hex();
+		} else {
+			select_or_action(browse);
+		}
 	}
 }
 
