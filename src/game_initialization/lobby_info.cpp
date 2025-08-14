@@ -20,6 +20,7 @@
 #include "log.hpp"
 #include "mp_ui_alerts.hpp"
 #include "preferences/preferences.hpp"
+#include "serialization/string_utils.hpp"
 
 
 static lg::log_domain log_engine("engine");
@@ -123,9 +124,16 @@ void lobby_info::process_gamelist(const config& data)
 	games_by_id_.clear();
 
 	for(const config& game : prefs::get().get_game_presets()) {
-		optional_const_config scenario = game_config_manager::get()->game_config().find_child("multiplayer", "id", game["scenario"].str());
+		const game_config_view& game_config = game_config_manager::get()->game_config();
+
+		optional_const_config scenario = game_config.find_child("multiplayer", "id", game["scenario"].str());
 		if(!scenario) {
-			ERR_LB << "Scenario " << game["scenario"].str() << " not found in game config";
+			ERR_LB << "Scenario " << game["scenario"].str() << " not found in game config " << game["id"];
+			continue;
+		}
+		optional_const_config era = game_config.find_child("era", "id", game["era"].str());
+		if(!era) {
+			ERR_LB << "Era " << game["era"].str() << " not found in game config " << game["id"];
 			continue;
 		}
 
@@ -153,6 +161,7 @@ void lobby_info::process_gamelist(const config& data)
 		qgame["mp_shroud"] = game["shroud"];
 		qgame["mp_village_gold"] = game["village_gold"];
 		qgame["experience_modifier"] = game["experience_modifier"];
+		qgame["random_faction_mode"] = game["random_faction_mode"];
 
 		qgame["mp_countdown"] = game["countdown"];
 		if(qgame["mp_countdown"].to_bool()) {
@@ -165,12 +174,27 @@ void lobby_info::process_gamelist(const config& data)
 		qgame["observer"] = game["observer"];
 		qgame["human_sides"] = human_sides;
 
+		for(const std::string& mod : utils::split(game["modifications"].str())) {
+			auto cfg = game_config.find_child("modification", "id", mod);
+
+			if(!cfg) {
+				ERR_LB << "Modification " << mod << " not found in game config " << game["id"];
+				continue;
+			}
+
+			qgame.add_child("modification", config{ "name", cfg["name"], "id", mod });
+		}
+
+		if(game.has_child("options")) {
+			qgame.add_child("options", game.mandatory_child("options"));
+		}
+
 		if(scenario->has_attribute("map_data")) {
 			qgame["map_data"] = scenario["map_data"];
 		} else {
 			qgame["map_data"] = filesystem::read_map(scenario["map_file"]);
 		}
-		qgame["hash"] = game_config_manager::get()->game_config().mandatory_child("multiplayer_hashes")[game["scenario"].str()];
+		qgame["hash"] = game_config.mandatory_child("multiplayer_hashes")[game["scenario"].str()];
 
 		config& qchild = qgame.add_child("slot_data");
 		qchild["vacant"] = human_sides;

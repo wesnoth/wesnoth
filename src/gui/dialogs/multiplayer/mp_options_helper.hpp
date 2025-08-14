@@ -44,6 +44,8 @@ public:
 
 	config get_options_config();
 
+	void set_options(const config& new_options);
+
 private:
 	struct option_source
 	{
