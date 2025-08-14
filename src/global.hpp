@@ -15,6 +15,8 @@
 
 #pragma once
 
+#include <boost/predef/os/ios.h>
+
 #ifdef _MSC_VER
 #endif //_MSC_VER
 
@@ -79,8 +81,8 @@
 #define AGGREGATE_EMPLACE(...) push_back({ __VA_ARGS__ })
 #endif
 
-#if defined(__APPLE__) && defined(__MACH__) && defined(__ENVIRONMENT_IPHONE_OS_VERSION_MIN_REQUIRED__)
-#define __IPHONEOS__ (__ENVIRONMENT_IPHONE_OS_VERSION_MIN_REQUIRED__*1000)
+#ifdef BOOST_OS_IOS
+#define __IPHONEOS__ BOOST_OS_IOS
 #endif
 
 #if defined(__ANDROID__) || defined(__IPHONEOS__)

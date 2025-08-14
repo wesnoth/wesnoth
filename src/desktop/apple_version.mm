@@ -15,8 +15,8 @@
 
 #ifdef __APPLE__
 
-#include "global.hpp"
 #include "apple_version.hpp"
+#include "global.hpp"
 
 #import "game_version.hpp"
 

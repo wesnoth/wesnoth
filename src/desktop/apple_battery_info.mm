@@ -15,8 +15,8 @@
 
 #ifdef __APPLE__
 
-#include "global.hpp"
 #include "apple_battery_info.hpp"
+#include "global.hpp"
 
 #if defined(__IPHONEOS__)
 
