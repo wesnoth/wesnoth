@@ -854,9 +854,13 @@ void addon_manager::install_addon(const addon_info& addon)
 {
 	addon_info versioned_addon = addon;
 	if(addon.id == find_widget<addon_list>("addons").get_selected_addon()->id) {
-		if (menu_button* list = find_widget<menu_button>("version_filter", false, false)) {
-			versioned_addon.current_version = list->get_value_string();
+		widget* parent = this;
+		if(stacked_widget* stk = find_widget<stacked_widget>("main_stack", false, false)) {
+			parent = stk->get_layer_grid(1);
 		}
+		// At this point the version list should always be found, so error if it's not there
+		menu_button& list = parent->find_widget<menu_button>("version_filter");
+		versioned_addon.current_version = list.get_value_string();
 	}
 
 	addons_client::install_result result = client_.install_addon_with_checks(addons_, versioned_addon);
@@ -1186,11 +1190,13 @@ void addon_manager::on_addon_select()
 void addon_manager::on_selected_version_change()
 {
 	widget* parent = this;
+	const addon_info* info = nullptr;
 	if(stacked_widget* stk = find_widget<stacked_widget>("main_stack", false, false)) {
-		parent = stk->get_layer_grid(0);
+		parent = stk->get_layer_grid(1);
+		info = stk->get_layer_grid(0)->find_widget<addon_list>("addons").get_selected_addon();
+	} else {
+		info = find_widget<addon_list>("addons").get_selected_addon();
 	}
-
-	const addon_info* info = parent->find_widget<addon_list>("addons").get_selected_addon();
 
 	if(info == nullptr) {
 		return;
