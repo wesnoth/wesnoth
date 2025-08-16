@@ -2917,6 +2917,7 @@ void display::draw_report(const std::string& report_name, bool tooltip_test)
 		skip_element:
 		t = elements.front()["tooltip"].t_str().c_str();
 		if (!t.empty()) {
+			if (t.back() == '\n') { t.pop_back(); } // remove unwanted trailing newline
 			if (tooltip_test && !used_ellipsis) {
 				tooltips::add_tooltip(area, t, elements.front()["help"].t_str().c_str());
 			} else {
