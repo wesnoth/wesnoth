@@ -906,7 +906,7 @@ static int do_gameloop(commandline_options& cmdline_opts)
 		cursor::set(cursor::NORMAL);
 
 		// If loading a game, skip the titlescreen entirely
-		if(game->has_load_data() && game->load_game()) {
+		if(game->has_load_data() && game->load_prepared_game()) {
 			game->launch_game(game_launcher::reload_mode::RELOAD_DATA);
 			continue;
 		}

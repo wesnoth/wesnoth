@@ -22,6 +22,7 @@
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
 #include "game_config.hpp"
+#include "game_config_manager.hpp"
 #include "gettext.hpp"
 #include "gui/auxiliary/field.hpp"
 #include "gui/dialogs/game_delete.hpp"
@@ -56,7 +57,7 @@ namespace gui2::dialogs
 
 REGISTER_DIALOG(game_load)
 
-bool game_load::execute(const game_config_view& cache_config, savegame::load_game_metadata& data)
+bool game_load::execute(savegame::load_game_metadata& data)
 {
 	if(savegame::save_index_class::default_saves_dir()->get_saves_list().empty()) {
 		bool found_files = false;
@@ -74,10 +75,10 @@ bool game_load::execute(const game_config_view& cache_config, savegame::load_gam
 		}
 	}
 
-	return game_load(cache_config, data).show();
+	return game_load(data).show();
 }
 
-game_load::game_load(const game_config_view& cache_config, savegame::load_game_metadata& data)
+game_load::game_load(savegame::load_game_metadata& data)
 	: modal_dialog(window_id())
 	, filename_(data.filename)
 	, save_index_manager_(data.manager)
@@ -86,7 +87,7 @@ game_load::game_load(const game_config_view& cache_config, savegame::load_game_m
 	, cancel_orders_(register_bool("cancel_orders", true, data.cancel_orders))
 	, summary_(data.summary)
 	, games_()
-	, cache_config_(cache_config)
+	, cache_config_(game_config_manager::get()->game_config())
 {
 }
 
@@ -254,7 +255,7 @@ void game_load::display_savegame_internal(const savegame::save_info& game)
 	toggle_button& cancel_orders_toggle     = dynamic_cast<toggle_button&>(*cancel_orders_->get_widget());
 	toggle_button& change_difficulty_toggle = dynamic_cast<toggle_button&>(*change_difficulty_->get_widget());
 
-	const bool is_replay = savegame::loadgame::is_replay_save(summary_);
+	const bool is_replay = savegame::is_replay_save(summary_);
 	const bool is_scenario_start = summary_["turn"].empty();
 
 	// Always toggle show_replay on if the save is a replay
@@ -374,7 +375,7 @@ void game_load::evaluate_summary_string(std::stringstream& str, const config& cf
 
 	str << "\n";
 
-	if(savegame::loadgame::is_replay_save(cfg_summary)) {
+	if(savegame::is_replay_save(cfg_summary)) {
 		str << _("Replay");
 	} else if(!cfg_summary["turn"].empty()) {
 		str << _("Turn") << " " << cfg_summary["turn"];
