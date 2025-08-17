@@ -124,10 +124,19 @@ inline void animated<T>::update_last_draw_time(double acceleration)
 		}
 	}
 
-	const auto current_frame_end_time = get_current_frame_end_time();
+	const auto current_animation_time = get_animation_time();
+	const auto animation_total_end_time = get_end_time();
+
 	// catch up && don't go after the end
-	if(current_frame_end_time < get_animation_time() && current_frame_end_time < get_end_time()) {
-		current_frame_key_++;
+	while (true)
+	{
+		const auto current_frame_end = get_current_frame_end_time();
+		if (!(current_frame_end < current_animation_time &&
+			  current_frame_end < animation_total_end_time))
+		{
+			break;
+		}
+		current_frame_key_++; // Advance to the next frame
 	}
 }
 
