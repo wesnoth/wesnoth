@@ -127,6 +127,18 @@ bool check_version_compatibility(const config& cfg)
 	return check_version_compatibility(cfg["version"].str());
 }
 
+void load_game_metadata::read_file()
+{
+	try {
+		load_config = read_save_file(manager->dir(), filename);
+	} catch(const game::load_game_failed& e) {
+		gui2::show_error_message(_("The file you have tried to load is corrupt") + "\n\n" + e.what());
+		throw;
+	}
+
+	convert_old_saves(load_config);
+}
+
 void load_interactive_by_exception()
 {
 	if(video::headless()) {
@@ -150,13 +162,10 @@ utils::optional<load_game_metadata> load_interactive()
 	load_data.show_replay |= is_replay_save(load_data.summary);
 
 	try {
-		load_data.load_config = read_save_file(load_data.manager->dir(), load_data.filename);
-	} catch(const game::load_game_failed& e) {
-		gui2::show_error_message(_("The file you have tried to load is corrupt") + "\n\n" + e.what());
+		load_data.read_file();
+	} catch(const game::load_game_failed&) {
 		return utils::nullopt;
 	}
-
-	convert_old_saves(load_data.load_config);
 
 	if(load_data.select_difficulty) {
 		if(!show_difficulty_dialog(load_data)) {
@@ -241,9 +250,8 @@ utils::optional<load_game_metadata> load_interactive_for_multiplayer()
 		cursor::setter cur(cursor::WAIT);
 		log_scope("load_game");
 
-		load_data.load_config = read_save_file(load_data.manager->dir(), load_data.filename);
-	} catch(const game::load_game_failed& e) {
-		gui2::show_error_message(_("The file you have tried to load is corrupt") + "\n\n" + e.what());
+		load_data.read_file();
+	} catch(const game::load_game_failed&) {
 		return utils::nullopt;
 	}
 

@@ -89,7 +89,7 @@ public:
 	unit_test_result unit_test();
 
 	bool has_load_data() const;
-	bool load_game();
+	bool load_game_prompt();
 	bool load_prepared_game();
 	void set_test(const std::string& id);
 
@@ -155,6 +155,6 @@ private:
 	bool jump_to_multiplayer_;
 	jump_to_campaign_info jump_to_campaign_;
 
-	bool jump_to_editor_;
+	utils::optional<std::string> jump_to_editor_;
 	utils::optional<savegame::load_game_metadata> load_data_;
 };

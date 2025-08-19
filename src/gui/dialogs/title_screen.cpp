@@ -281,11 +281,11 @@ void title_screen::init_callbacks()
 	// Load game
 	//
 	register_button("load", hotkey::HOTKEY_LOAD_GAME, [this]() {
-		if(game_.load_game()) {
+		if(game_.load_game_prompt()) {
 			// Suspend drawing of the title screen,
 			// so it doesn't flicker in between loading screens.
 			hide();
-			set_retval(LAUNCH_GAME);
+			set_retval(LOAD_GAME);
 		}
 	});
 

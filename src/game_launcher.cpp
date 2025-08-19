@@ -128,7 +128,7 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts)
 	, multiplayer_server_()
 	, jump_to_multiplayer_(false)
 	, jump_to_campaign_{}
-	, jump_to_editor_(false)
+	, jump_to_editor_()
 	, load_data_()
 {
 	bool no_music = false;
@@ -170,20 +170,26 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts)
 	if(cmdline_opts_.debug_dot_level)
 		gui2::debug_layout_graph::set_level(*cmdline_opts_.debug_dot_level);
 #endif
-	if(cmdline_opts_.editor) {
-		jump_to_editor_ = true;
-		if(!cmdline_opts_.editor->empty()) {
-			load_data_ = savegame::load_game_metadata{
-				savegame::save_index_class::default_saves_dir(), *cmdline_opts_.editor};
-		}
-	}
+	if(cmdline_opts_.editor)
+		jump_to_editor_ = cmdline_opts_.editor;
 	if(cmdline_opts_.fps)
 		prefs::get().set_show_fps(true);
 	if(cmdline_opts_.fullscreen)
 		prefs::get().set_fullscreen(true);
-	if(cmdline_opts_.load)
+	if(cmdline_opts_.load) {
+#ifdef __cpp_aggregate_paren_init
+		load_data_.emplace(
+			savegame::save_index_class::default_saves_dir(), *cmdline_opts_.load);
+#else
 		load_data_ = savegame::load_game_metadata{
 			savegame::save_index_class::default_saves_dir(), *cmdline_opts_.load};
+#endif
+		try {
+			load_data_->read_file();
+		} catch(const game::load_game_failed&) {
+			load_data_.reset();
+		}
+	}
 	if(cmdline_opts_.max_fps) {
 		prefs::get().set_refresh_rate(std::clamp(*cmdline_opts_.max_fps, 1, 1000));
 	}
@@ -367,7 +373,7 @@ bool game_launcher::init_lua_script()
 
 			/* Cancel all "jumps" to editor / campaign / multiplayer */
 			jump_to_multiplayer_ = false;
-			jump_to_editor_ = false;
+			jump_to_editor_ = utils::nullopt;
 			jump_to_campaign_.jump = false;
 
 			std::string full_plugin((std::istreambuf_iterator<char>(*sf)), std::istreambuf_iterator<char>());
@@ -559,8 +565,14 @@ game_launcher::unit_test_result game_launcher::single_unit_test()
 	savegame::replay_savegame save(state_, compression::format::none);
 	save.save_game_automatic(false, "unit_test_replay");
 
+#ifdef __cpp_aggregate_paren_init
+	load_data_.emplace(
+		savegame::save_index_class::default_saves_dir(), save.filename(), "", true, true, false);
+#else
 	load_data_ = savegame::load_game_metadata{
 		savegame::save_index_class::default_saves_dir(), save.filename(), "", true, true, false};
+#endif
+	load_data_->read_file();
 
 	if(!load_prepared_game()) {
 		PLAIN_LOG << "Failed to load the replay!";
@@ -661,7 +673,7 @@ savegame::load_game_metadata game_launcher::extract_load_data()
 	return std::exchange(load_data_, utils::nullopt).value();
 }
 
-bool game_launcher::load_game()
+bool game_launcher::load_game_prompt()
 {
 	DBG_GENERAL << "Current campaign type: " << campaign_type::get_string(state_.classification().type);
 	assert(!load_data_);
@@ -700,7 +712,7 @@ bool game_launcher::load_game()
 	}
 
 	// If the player canceled loading, we won't have any load data at this point
-	return has_load_data() && load_prepared_game();
+	return has_load_data();
 }
 
 bool game_launcher::load_prepared_game()
@@ -776,12 +788,10 @@ bool game_launcher::goto_multiplayer()
 bool game_launcher::goto_editor()
 {
 	if(jump_to_editor_) {
-		jump_to_editor_ = false;
+		// If no filename was specified, this will be an empty string.
+		const std::string to_open = std::exchange(jump_to_editor_, utils::nullopt).value();
 
-		const std::string to_open = load_data_ ? filesystem::normalize_path(load_data_->filename) : "";
-		clear_loaded_game();
-
-		if(start_editor(to_open) == editor::EXIT_QUIT_TO_DESKTOP) {
+		if(start_editor(filesystem::normalize_path(to_open)) == editor::EXIT_QUIT_TO_DESKTOP) {
 			return false;
 		}
 	}

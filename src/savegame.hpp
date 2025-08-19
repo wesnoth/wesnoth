@@ -74,6 +74,9 @@ struct load_game_metadata
 
 	/** Config information of the savefile to be loaded. */
 	config load_config {};
+
+	/** Reads the savefile @ref filename and stores the result in @ref load_config. */
+	void read_file();
 };
 
 /**
@@ -106,10 +109,10 @@ utils::optional<load_game_metadata> load_interactive();
 utils::optional<load_game_metadata> load_interactive_for_multiplayer();
 
 /**
- * In-game load wrapper for @ref load_interactive.
+ * @ref load_interactive wrapper for in-game save loading.
  *
- * If load_interactive returns a valid load_game_metadata object,
- * load_game_exception will be thrown with said object as its payload.
+ * If load_interactive returns a load_game_metadata object,
+ * throws load_game_exception with said object as its payload.
  * Otherwise, no exception is thrown.
  */
 void load_interactive_by_exception();
