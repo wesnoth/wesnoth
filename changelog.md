@@ -1,3 +1,18 @@
+## Version 1.19.15+dev
+### Add-ons client
+### Add-ons server
+### Campaigns
+### Editor
+### Multiplayer
+### Lua API
+### Packaging
+### Terrain
+### Translations
+### Units
+### User interface
+### WML Engine
+### Miscellaneous and Bug Fixes
+
 ## Version 1.19.15
 ### Lua API
    * Toggle panel now have the event handler `on_double_click`. If set, it will be fired when the user left double clicks on that widget. For other widgets, they can be wrapped inside a toggle panel for this to work.
