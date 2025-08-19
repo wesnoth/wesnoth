@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-07-20 22:54-0500\n"
+"POT-Creation-Date: 2025-08-19 10:14-0500\n"
 "PO-Revision-Date: 2022-01-13 19:16+0000\n"
 "Last-Translator: GunChleoc, 2021\n"
 "Language-Team: Gaelic, Scottish (https://www.transifex.com/gunchleoc/"
@@ -2501,7 +2501,7 @@ msgstr "Tòisich iomairt aon-chluicheadair ùr"
 #: data/gui/themes/default/dialogs/mp_method_selection.cfg:55
 #: data/gui/themes/default/dialogs/preferences.cfg:365
 #: data/gui/themes/default/dialogs/title_screen.cfg:257
-#: src/gui/dialogs/game_load.cpp:367
+#: src/gui/dialogs/game_load.cpp:362
 msgid "Multiplayer"
 msgstr "Ioma-chluicheadair"
 
@@ -2674,7 +2674,7 @@ msgstr ""
 #: data/gui/themes/default/dialogs/game_version.cfg:991
 #: data/gui/themes/default/dialogs/gamestate_inspector.cfg:398
 #: data/gui/themes/default/dialogs/generator_settings.cfg:190
-#: data/gui/themes/default/dialogs/help_browser.cfg:295
+#: data/gui/themes/default/dialogs/help_browser.cfg:296
 #: data/gui/themes/default/dialogs/lobby_player_info.cfg:292
 #: data/gui/themes/default/dialogs/lua_interpreter.cfg:130
 #: data/gui/themes/default/dialogs/message.cfg:135
@@ -2916,7 +2916,7 @@ msgstr "Air ùrachadh:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [scroll_label]: id=description
 #: data/gui/themes/default/dialogs/addon_manager.cfg:415
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:662
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:713
 msgid "No description available."
 msgstr "Chan eil tuairisgeul ri fhaighinn."
 
@@ -2963,7 +2963,7 @@ msgstr "Ùraich an tuilleadan"
 #. [button]: id=single_uninstall
 #: data/gui/themes/default/dialogs/addon_manager.cfg:622
 #: data/gui/themes/default/widgets/addon_list.cfg:435
-#: src/gui/dialogs/addon/manager.cpp:1052
+#: src/gui/dialogs/addon/manager.cpp:1056
 msgid "Uninstall add-on"
 msgstr "Dì-stàlaich an tuilleadan"
 
@@ -2972,7 +2972,7 @@ msgstr "Dì-stàlaich an tuilleadan"
 #. [button]: id=single_publish
 #: data/gui/themes/default/dialogs/addon_manager.cfg:645
 #: data/gui/themes/default/widgets/addon_list.cfg:412
-#: src/gui/widgets/addon_list.cpp:260
+#: src/gui/widgets/addon_list.cpp:262
 msgid "Publish add-on"
 msgstr "Foillsich an tuilleadan"
 
@@ -2991,7 +2991,7 @@ msgstr "Eisimeileachdan:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=dependencies
 #: data/gui/themes/default/dialogs/addon_manager.cfg:713
-#: src/gui/dialogs/addon/manager.cpp:1127
+#: src/gui/dialogs/addon/manager.cpp:1131
 msgid "addon_dependencies^None"
 msgstr "Gun eisimeileachd"
 
@@ -3005,7 +3005,7 @@ msgstr "Eadar-theangachaidhean:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=translations
 #: data/gui/themes/default/dialogs/addon_manager.cfg:748
-#: src/gui/dialogs/addon/manager.cpp:1141
+#: src/gui/dialogs/addon/manager.cpp:1145
 msgid "translations^None"
 msgstr "Gin"
 
@@ -3041,7 +3041,7 @@ msgstr "Manaidsear nan tuilleadan"
 #. [button]: id=details_toggle
 #: data/gui/themes/default/dialogs/addon_manager.cfg:1099
 #: src/gui/dialogs/addon/manager.cpp:569 src/gui/dialogs/addon/manager.cpp:836
-#: src/gui/dialogs/addon/manager.cpp:933
+#: src/gui/dialogs/addon/manager.cpp:937
 msgid "Add-on Details"
 msgstr "Mion-fhiosrachadh an tuilleadain"
 
@@ -3435,7 +3435,7 @@ msgstr "Luchdaich eitean"
 #: data/gui/themes/default/dialogs/language_selection.cfg:293
 #: src/gui/dialogs/editor/custom_tod.cpp:172
 #: src/gui/dialogs/editor/edit_unit.cpp:308
-#: src/preferences/preferences.cpp:1344
+#: src/preferences/preferences.cpp:1342
 msgid "Select"
 msgstr "Tagh"
 
@@ -3585,7 +3585,7 @@ msgstr ""
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/themes/default/dialogs/depcheck_confirm_change.cfg:40
-#: src/gui/dialogs/addon/manager.cpp:1025
+#: src/gui/dialogs/addon/manager.cpp:1029
 #: src/gui/dialogs/editor/custom_tod.cpp:187
 #: src/gui/dialogs/editor/edit_unit.cpp:323
 #: src/gui/dialogs/editor/edit_unit.cpp:1030
@@ -4359,7 +4359,7 @@ msgstr "Àirde:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #: data/gui/themes/default/dialogs/editor_new_map.cfg:116
-#: src/gui/dialogs/units_dialog.cpp:469
+#: src/gui/dialogs/units_dialog.cpp:467
 msgid "Create"
 msgstr "Cruthaich"
 
@@ -4759,7 +4759,7 @@ msgstr "Roghainnean a’ chnàmh-sgeòil"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #: data/gui/themes/default/dialogs/game_stats.cfg:832
-#: src/gui/dialogs/units_dialog.cpp:558
+#: src/gui/dialogs/units_dialog.cpp:556
 msgid "Scroll To"
 msgstr "Sgrolaich thuige"
 
@@ -5138,7 +5138,7 @@ msgstr ""
 #. [widget]: id=tab_label
 #. saved settings to start a game with, such as era, map, fog, etc
 #: data/gui/themes/default/dialogs/lobby_main.cfg:102
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:128
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:129
 msgid "Presets"
 msgstr ""
 
@@ -6350,7 +6350,7 @@ msgstr "Grad-iuchraichean"
 #. [toggle_button]: id=sort_2
 #. Translate G as the initial letter for Game
 #: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:126
-#: src/gui/dialogs/preferences_dialog.cpp:879
+#: src/gui/dialogs/preferences_dialog.cpp:890
 msgid "game_hotkeys^G"
 msgstr "G"
 
@@ -6363,7 +6363,7 @@ msgstr "Ri fhaighinn sa gheama"
 #. [toggle_button]: id=sort_3
 #. Translate E as the initial letter for Editor
 #: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:141
-#: src/gui/dialogs/preferences_dialog.cpp:880
+#: src/gui/dialogs/preferences_dialog.cpp:891
 msgid "editor_hotkeys^E"
 msgstr "E"
 
@@ -6376,7 +6376,7 @@ msgstr "Ri fhaighinn san deasaiche"
 #. [toggle_button]: id=sort_4
 #. Translate M as the initial letter for Main Menu
 #: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:156
-#: src/gui/dialogs/preferences_dialog.cpp:881
+#: src/gui/dialogs/preferences_dialog.cpp:892
 msgid "mainmenu_hotkeys^M"
 msgstr "M"
 
@@ -7314,7 +7314,7 @@ msgstr "$prefix, $next"
 msgid "disjunct end^$prefix, or $last"
 msgstr "$prefix no $last"
 
-#: src/gui/core/canvas.cpp:258
+#: src/gui/core/canvas.cpp:259
 #, fuzzy
 #| msgid "Image doesn't fit on canvas."
 msgid "Image doesn’t fit on canvas."
@@ -7332,7 +7332,7 @@ msgstr "Cha deach staid no roinn tarraing a mhìneachadh."
 msgid "No resolution defined for "
 msgstr "Cha deach dùmhlachd-bhreacaidh a mhìneachadh."
 
-#: src/gui/core/window_builder.cpp:147 src/gui/widgets/addon_list.cpp:428
+#: src/gui/core/window_builder.cpp:147 src/gui/widgets/addon_list.cpp:430
 #: src/gui/widgets/multi_page.cpp:181 src/gui/widgets/panel.cpp:131
 #: src/gui/widgets/size_lock.cpp:110 src/gui/widgets/stacked_widget.cpp:229
 #: src/gui/widgets/toggle_panel.cpp:321
@@ -7368,13 +7368,13 @@ msgstr ""
 #: src/gui/dialogs/addon/addon_server_info.cpp:95
 #: src/gui/dialogs/addon/addon_server_info.cpp:120
 #: src/gui/dialogs/addon/addon_server_info.cpp:148
-#: src/gui/dialogs/addon/manager.cpp:991 src/gui/dialogs/addon/manager.cpp:1033
+#: src/gui/dialogs/addon/manager.cpp:995 src/gui/dialogs/addon/manager.cpp:1037
 msgid "The server responded with an error:"
 msgstr "Dh’fhreagair am frithealaiche le mearachd:"
 
 #: src/gui/dialogs/addon/addon_server_info.cpp:97
-#: src/gui/dialogs/addon/manager.cpp:1009
-#: src/gui/dialogs/addon/manager.cpp:1036
+#: src/gui/dialogs/addon/manager.cpp:1013
+#: src/gui/dialogs/addon/manager.cpp:1040
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:514
 msgid "Response"
 msgstr "Freagairt"
@@ -7649,7 +7649,7 @@ msgstr "Chan eil tuilleadan ri fhaighinn"
 msgid "There are no add-ons available for download from this server."
 msgstr "Chan eil tuilleadan ri luchdadh a-nuas air an fhrithealaiche seo."
 
-#: src/gui/dialogs/addon/manager.cpp:876
+#: src/gui/dialogs/addon/manager.cpp:880
 msgid ""
 "The following add-on appears to have publishing or version control "
 "information stored locally, and will not be removed:"
@@ -7657,15 +7657,15 @@ msgstr ""
 "A rèir coltais, tha fiosrachadh foillsichidh no smachd nan tionndaidhean mun "
 "tuilleadan seo air stòradh gu h-ionadail is cha dèid a thoirt air falbh:"
 
-#: src/gui/dialogs/addon/manager.cpp:884
+#: src/gui/dialogs/addon/manager.cpp:888
 msgid "The following add-on could not be deleted properly:"
 msgstr "Cha b’ urrainn dhuinn an tuilleadan seo a sguabadh às mar bu chòir:"
 
-#: src/gui/dialogs/addon/manager.cpp:964
+#: src/gui/dialogs/addon/manager.cpp:968
 msgid "Warning"
 msgstr "Rabhadh"
 
-#: src/gui/dialogs/addon/manager.cpp:965
+#: src/gui/dialogs/addon/manager.cpp:969
 msgid ""
 "The remote version of this add-on is greater or equal to the version being "
 "uploaded. Do you really wish to continue?"
@@ -7674,21 +7674,21 @@ msgstr ""
 "tionndadh a tha thu airson luchdadh suas. A bheil thu cinnteach gu bheil thu "
 "airson leantainn air adhart?"
 
-#: src/gui/dialogs/addon/manager.cpp:983
+#: src/gui/dialogs/addon/manager.cpp:987
 msgid "The passphrase attribute cannot be present when forum_auth is used."
 msgstr ""
 
-#: src/gui/dialogs/addon/manager.cpp:988
+#: src/gui/dialogs/addon/manager.cpp:992
 msgid "Invalid icon path. Make sure the path points to a valid image."
 msgstr ""
 "Chan eil slighe na h-ìomhaigheige dligheach. Dèan cinnteach gun tomh an t-"
 "slighe ri dealbh dligheach."
 
-#: src/gui/dialogs/addon/manager.cpp:994
+#: src/gui/dialogs/addon/manager.cpp:998
 msgid "The add-on was rejected by the server:"
 msgstr "Chaidh an tuilleadan a dhiùltadh leis an fhrithealaiche:"
 
-#: src/gui/dialogs/addon/manager.cpp:1021
+#: src/gui/dialogs/addon/manager.cpp:1025
 msgid ""
 "Deleting '$addon|' will permanently erase its download and upload counts on "
 "the add-ons server. Do you really wish to continue?"
@@ -7697,13 +7697,13 @@ msgstr ""
 "luchdaidhean suas is a-nuas air frithealaiche nan tuilleadan. A bheil thu "
 "cinnteach gu bheil thu airson leantainn air adhart?"
 
-#: src/gui/dialogs/addon/manager.cpp:1053
+#: src/gui/dialogs/addon/manager.cpp:1057
 msgid "Do you want to uninstall '$addon|'?"
 msgstr "A bheil thu airson “$addon|” a dhì-stàladh?"
 
 #. TRANSLATORS: Month + day of month + year + 12-hour time, eg 'November 02 2021, 1:59 PM'. Format for your locale.
 #. Format reference: https://www.boost.org/doc/libs/1_85_0/doc/html/date_time/date_time_io.html#date_time.format_flags
-#: src/gui/dialogs/addon/manager.cpp:1086
+#: src/gui/dialogs/addon/manager.cpp:1090
 #, fuzzy
 #| msgid "%Y-%m-%d %I:%M %p"
 msgid "%B %d %Y, %I:%M %p"
@@ -7711,13 +7711,13 @@ msgstr "%Y-%m-%d %I:%M%p"
 
 #. TRANSLATORS: Month + day of month + year + 24-hour time, eg 'November 02 2021, 13:59'. Format for your locale.
 #. Format reference: https://www.boost.org/doc/libs/1_85_0/doc/html/date_time/date_time_io.html#date_time.format_flags
-#: src/gui/dialogs/addon/manager.cpp:1089
+#: src/gui/dialogs/addon/manager.cpp:1093
 #, fuzzy
 #| msgid "%Y-%m-%d %H:%M"
 msgid "%B %d %Y, %H:%M"
 msgstr "%Y-%m-%d %H:%M"
 
-#: src/gui/dialogs/addon/manager.cpp:1144
+#: src/gui/dialogs/addon/manager.cpp:1148
 msgid "url^None"
 msgstr "Gun làrach-lìn"
 
@@ -8119,39 +8119,39 @@ msgstr "Tha am faidhle a thagh thu coirbte: "
 msgid "(Invalid)"
 msgstr "(Mì-dhligheach)"
 
-#: src/gui/dialogs/game_load.cpp:358
+#: src/gui/dialogs/game_load.cpp:353
 msgid "Campaign: $campaign_name"
 msgstr "Iomairt: $campaign_name"
 
-#: src/gui/dialogs/game_load.cpp:370
+#: src/gui/dialogs/game_load.cpp:365
 msgid "Tutorial"
 msgstr "Oideachadh"
 
-#: src/gui/dialogs/game_load.cpp:373
+#: src/gui/dialogs/game_load.cpp:368
 msgid "Test scenario"
 msgstr "Deuchainn air cnàmh-sgeul"
 
-#: src/gui/dialogs/game_load.cpp:383
+#: src/gui/dialogs/game_load.cpp:378
 msgid "Replay"
 msgstr "Ath-chluich"
 
-#: src/gui/dialogs/game_load.cpp:385
+#: src/gui/dialogs/game_load.cpp:380
 msgid "Turn"
 msgstr "Cuairt"
 
-#: src/gui/dialogs/game_load.cpp:387
+#: src/gui/dialogs/game_load.cpp:382
 msgid "Scenario start"
 msgstr "Tòisich cnàmh-sgeul"
 
-#: src/gui/dialogs/game_load.cpp:406
+#: src/gui/dialogs/game_load.cpp:394
 msgid "Difficulty: "
 msgstr "Duilgheas: "
 
-#: src/gui/dialogs/game_load.cpp:429
+#: src/gui/dialogs/game_load.cpp:417
 msgid "Version: "
 msgstr "Tionndadh: "
 
-#: src/gui/dialogs/game_load.cpp:434
+#: src/gui/dialogs/game_load.cpp:422
 msgid "Modifications: "
 msgstr "Atharraichean: "
 
@@ -8445,65 +8445,65 @@ msgstr "Taobh $side"
 msgid "Add Server"
 msgstr "Cuir frithealaiche ris"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:122
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:123
 msgid "Scenarios"
 msgstr "Cnàmh-sgeulan"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:123
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:124
 msgid "Multiplayer Campaigns"
 msgstr "Iomairtean ioma-chluicheadair"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:124
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:125
 msgid "Singleplayer Campaigns"
 msgstr "Iomairtean aon-chluicheadair"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:125
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:126
 msgid "Custom Maps"
 msgstr "Mapaichean gnàthaichte"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:126
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:127
 msgid "Custom Scenarios"
 msgstr "Cnàmh-sgeòil ghnàthaichte"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:127
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:128
 msgid "Random Maps"
 msgstr "Mapaichean air thuaiream"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:276
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:277
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:285
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:286
 msgid "No games found."
 msgstr "Cha deach geama a lorg."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:338
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:347
 msgid "No eras found."
 msgstr "Cha deach linn a lorg."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:339
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:348
 msgid "No eras found"
 msgstr "Cha deach linn a lorg"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:608
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:617
 msgid "No eras available for this game."
 msgstr "Chan eil linn ri fhaighinn airson a’ gheama seo."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:814
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:869
 msgid "number of players^$min to $max"
 msgstr "$min gu $max"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:951
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:1023
 msgid "The selected game has no sides!"
 msgstr "Chan eil taobhan aig a’ gheama a thagh thu!"
 
 #. TRANSLATORS: This sentence will be followed by some details of the error, most likely the "Map could not be loaded" message from create_engine.cpp
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:958
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:1030
 msgid "The selected game cannot be created."
 msgstr "Cha ghabh an geama a thagh thu a chruthachadh."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:1031
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:1103
 msgid "Choose Starting Scenario"
 msgstr "Tagh an cnàmh-sgeul tòiseachaidh"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:1031
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:1103
 msgid "Select at which point to begin this campaign."
 msgstr "Tagh càit an tòisich an iomairt seo."
 
@@ -8581,12 +8581,12 @@ msgstr "Ainm cleachdaiche mì-dhligheach"
 msgid "Not on friends or ignore lists"
 msgstr "Chan eil iad air liosta nan caraidean no neo-shuime agad"
 
-#: src/gui/dialogs/preferences_dialog.cpp:925
-#: src/gui/dialogs/preferences_dialog.cpp:989
+#: src/gui/dialogs/preferences_dialog.cpp:936
+#: src/gui/dialogs/preferences_dialog.cpp:1000
 msgid "No hotkey selected"
 msgstr "Cha deach grad-iuchair a thaghadh"
 
-#: src/gui/dialogs/preferences_dialog.cpp:953
+#: src/gui/dialogs/preferences_dialog.cpp:964
 msgid ""
 "“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\n"
 "Do you wish to reassign it to “<b>$new_hotkey_action|</b>”?"
@@ -8595,16 +8595,16 @@ msgstr ""
 "b>”. A bheil thu airson a shònrachadh dha “<b>$new_hotkey_action|</b>” ’na "
 "àite?"
 
-#: src/gui/dialogs/preferences_dialog.cpp:959
+#: src/gui/dialogs/preferences_dialog.cpp:970
 msgid "Reassign Hotkey"
 msgstr "Sònraich a’ ghrad-iuchair dhan nì ùr"
 
-#: src/gui/dialogs/preferences_dialog.cpp:976
+#: src/gui/dialogs/preferences_dialog.cpp:987
 msgid "All hotkeys have been reset to their default values."
 msgstr ""
 "Chaidh a h-uile grad-iuchair ath-shuidheachadh air an luach bhunaiteach."
 
-#: src/gui/dialogs/preferences_dialog.cpp:976
+#: src/gui/dialogs/preferences_dialog.cpp:987
 msgid "Hotkeys Reset"
 msgstr "Ath-shuidhich na grad-iuchraichean"
 
@@ -8733,35 +8733,35 @@ msgstr "Tha an t-aonad seo cha mhòr air an ath rang a ruigsinn."
 msgid "Dismiss Unit"
 msgstr "Cuir an t-aonad à dreuchd"
 
-#: src/gui/dialogs/units_dialog.cpp:432
+#: src/gui/dialogs/units_dialog.cpp:430
 msgid "unit_variation^Default Variation"
 msgstr "Eugsamhlachadh bunaiteach"
 
-#: src/gui/dialogs/units_dialog.cpp:468
+#: src/gui/dialogs/units_dialog.cpp:466
 msgid "Create Unit"
 msgstr "Cruthaich aonad"
 
-#: src/gui/dialogs/units_dialog.cpp:539
+#: src/gui/dialogs/units_dialog.cpp:537
 msgid "Recruit Unit"
 msgstr "Trus aonad"
 
-#: src/gui/dialogs/units_dialog.cpp:540 src/hotkey/hotkey_command.cpp:111
+#: src/gui/dialogs/units_dialog.cpp:538 src/hotkey/hotkey_command.cpp:111
 msgid "Recruit"
 msgstr "Trus"
 
-#: src/gui/dialogs/units_dialog.cpp:557 src/hotkey/hotkey_command.cpp:129
+#: src/gui/dialogs/units_dialog.cpp:555 src/hotkey/hotkey_command.cpp:129
 msgid "Unit List"
 msgstr "Liosta nan aonad"
 
-#: src/gui/dialogs/units_dialog.cpp:701
+#: src/gui/dialogs/units_dialog.cpp:699
 msgid "Recall Unit"
 msgstr "Ais-ghairm aonad"
 
-#: src/gui/dialogs/units_dialog.cpp:702 src/hotkey/hotkey_command.cpp:113
+#: src/gui/dialogs/units_dialog.cpp:700 src/hotkey/hotkey_command.cpp:113
 msgid "Recall"
 msgstr "Ais-ghairm"
 
-#: src/gui/dialogs/units_dialog.cpp:832
+#: src/gui/dialogs/units_dialog.cpp:830
 msgid ""
 "This unit cannot be recalled because you will not have enough gold at this "
 "point in your plan."
@@ -8769,7 +8769,7 @@ msgstr ""
 "Cha ghabh an t-aonad seo ais-ghairm oir cha bhi òr gu leòr agad aig an àm "
 "seo dhen phlana agad."
 
-#: src/gui/dialogs/units_dialog.cpp:834
+#: src/gui/dialogs/units_dialog.cpp:832
 msgid "This unit cannot be recalled because you do not have enough gold."
 msgstr "Cha ghabh an t-aonad seo ais-ghairm oir chan eil òr gu leòr agad."
 
@@ -8793,7 +8793,7 @@ msgstr "Air a stàladh, ro shean air an fhrithealaiche"
 msgid "addon_state^Published, outdated on server"
 msgstr "Foillsichte, ro shean air an fhrithealaiche"
 
-#: src/gui/widgets/addon_list.cpp:291
+#: src/gui/widgets/addon_list.cpp:293
 msgid "Delete add-on from server"
 msgstr "Sguab às an tuilleadan air an fhrithealaiche"
 
@@ -8993,20 +8993,19 @@ msgstr "PG: "
 msgid "Abilities"
 msgstr "Comasan"
 
-#: src/gui/widgets/window.cpp:288
+#: src/gui/widgets/window.cpp:287
 #, fuzzy
 #| msgid "Linked '$id' group has multiple definitions."
 msgid "Linked ‘$id’ group has multiple definitions."
 msgstr "Tha iomadh mìneachadh aig a’ bhuidheann ceangailte “$id|.”"
 
-#: src/gui/widgets/window.cpp:887
+#: src/gui/widgets/window.cpp:884
 #, fuzzy
 #| msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgid "Click dismiss needs a ‘click_dismiss’ or ‘ok’ button."
 msgstr "Tha putan “click_dismiss” no “ok” a dhìth air click dismiss."
 
-#: src/gui/widgets/window.cpp:912 src/gui/widgets/window.cpp:949
-#: src/tests/gui/test_gui2.cpp:739
+#: src/gui/widgets/window.cpp:909 src/gui/widgets/window.cpp:945
 #, fuzzy
 #| msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgid "Failed to show a dialog, which doesn’t fit on the screen."
@@ -9893,13 +9892,13 @@ msgstr "Seall consoil Lua"
 msgid "Unrecognized Command"
 msgstr "Àithne neo-aithnichte"
 
-#: src/preferences/preferences.cpp:1301
+#: src/preferences/preferences.cpp:1299
 msgid "No known themes. Try changing from within an existing game."
 msgstr ""
 "Chan eil ùrlaran aithnichte ann. Feuch an atharraich thu taobh a-staigh "
 "geama a tha ann."
 
-#: src/preferences/preferences.cpp:1338
+#: src/preferences/preferences.cpp:1336
 msgid ""
 "The <b>$filename</b> server application provides multiplayer server "
 "functionality and is required for hosting local network games. It will "
@@ -9910,15 +9909,15 @@ msgstr ""
 "Lorgaidh tu san aon phasgan ’s a tha faidhle so-ghnìomhaichte a’ gheama mar "
 "as trice."
 
-#: src/preferences/preferences.cpp:1342
+#: src/preferences/preferences.cpp:1340
 msgid "Find Server Application"
 msgstr "Lorg aplacaid frihealaiche"
 
-#: src/preferences/preferences.cpp:1824
+#: src/preferences/preferences.cpp:1822
 msgid "[%H:%M]"
 msgstr "[%H:%M]"
 
-#: src/preferences/preferences.cpp:1826
+#: src/preferences/preferences.cpp:1824
 msgid "[%I:%M %p]"
 msgstr "[%I:%M %p]"
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.1.1\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-07-20 22:54-0500\n"
+"POT-Creation-Date: 2025-08-19 10:14-0500\n"
 "PO-Revision-Date: 2024-11-03 12:49+0100\n"
 "Last-Translator: Gaute Storli Nielsen <gauteamus(at)gmail(dot)com>\n"
 "Language-Team: None\n"
@@ -67,7 +67,7 @@ msgstr ""
 #. [trait]: id=loyal_dummy
 #. [trait]: id=loyal
 #: data/campaigns/The_Deceivers_Gambit/scenarios/00_Graduation.cfg:112
-#: data/campaigns/The_Deceivers_Gambit/scenarios/11_Clan_Blackcrest.cfg:737
+#: data/campaigns/The_Deceivers_Gambit/scenarios/11_Clan_Blackcrest.cfg:738
 #: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:19
 #: data/core/macros/traits.cfg:12
 msgid "loyal"
@@ -75,7 +75,7 @@ msgstr "lojal"
 
 #. [trait]: id=loyal_dummy
 #: data/campaigns/The_Deceivers_Gambit/scenarios/00_Graduation.cfg:113
-#: data/campaigns/The_Deceivers_Gambit/scenarios/11_Clan_Blackcrest.cfg:738
+#: data/campaigns/The_Deceivers_Gambit/scenarios/11_Clan_Blackcrest.cfg:739
 #: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:20
 #, fuzzy
 #| msgid "Zero upkeep"
@@ -277,7 +277,7 @@ msgstr "bakholdsangrep"
 #. [chance]
 #. [dummy]: id=feeding
 #: data/campaigns/World_Conquest/resources/data/training.cfg:501
-#: data/core/macros/abilities.cfg:410
+#: data/core/macros/abilities.cfg:409
 msgid "feeding"
 msgstr "åtseleter"
 
@@ -304,13 +304,13 @@ msgstr "Grotte"
 
 #. [hides]: id=concealment
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:21
-#: data/core/macros/abilities.cfg:350
+#: data/core/macros/abilities.cfg:349
 msgid "concealment"
 msgstr "skjulested"
 
 #. [drains]: id=drains
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:24
-#: data/core/macros/weapon_specials.cfg:207
+#: data/core/macros/weapon_specials.cfg:209
 msgid "drains"
 msgstr "blodsugende"
 
@@ -342,13 +342,13 @@ msgstr "Soppvokst grotte"
 
 #. [hides]: id=nightstalk
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:45
-#: data/core/macros/abilities.cfg:330 data/core/macros/abilities.cfg:331
+#: data/core/macros/abilities.cfg:329 data/core/macros/abilities.cfg:330
 msgid "nightstalk"
 msgstr "nattskygger"
 
 #. [poison]: id=poison
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:51
-#: data/core/macros/weapon_specials.cfg:229
+#: data/core/macros/weapon_specials.cfg:231
 msgid "poison"
 msgstr "giftig"
 
@@ -5700,7 +5700,7 @@ msgstr ""
 "forflytningspoeng."
 
 #. [hides]: id=nightstalk
-#: data/core/macros/abilities.cfg:332
+#: data/core/macros/abilities.cfg:331
 msgid ""
 "The unit becomes invisible during night.\n"
 "\n"
@@ -5715,12 +5715,12 @@ msgstr ""
 "mister umiddelbart alle gjenværende forflytningspoeng."
 
 #. [hides]: id=concealment
-#: data/core/macros/abilities.cfg:351
+#: data/core/macros/abilities.cfg:350
 msgid "female^concealment"
 msgstr "skjulested"
 
 #. [hides]: id=concealment
-#: data/core/macros/abilities.cfg:352
+#: data/core/macros/abilities.cfg:351
 msgid ""
 "This unit can hide in villages, and remain undetected by its enemies, except "
 "by those standing next to it.\n"
@@ -5738,17 +5738,17 @@ msgstr ""
 "forflytningspoeng."
 
 #. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:370
+#: data/core/macros/abilities.cfg:369
 msgid "submerge"
 msgstr "dykke"
 
 #. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:371
+#: data/core/macros/abilities.cfg:370
 msgid "female^submerge"
 msgstr "dykke"
 
 #. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:372
+#: data/core/macros/abilities.cfg:371
 msgid ""
 "This unit can hide in deep water, and remain undetected by its enemies.\n"
 "\n"
@@ -5761,19 +5761,19 @@ msgstr ""
 "angrepet, eller hvis den har fiendtlige enheter i noe nabofelt. "
 
 #. [hides]: id=swamp_lurk
-#: data/core/macros/abilities.cfg:390
+#: data/core/macros/abilities.cfg:389
 msgid "swamp lurk"
 msgstr ""
 
 #. [hides]: id=swamp_lurk
-#: data/core/macros/abilities.cfg:391
+#: data/core/macros/abilities.cfg:390
 #, fuzzy
 #| msgid "female^weak"
 msgid "female^swamp lurk"
 msgstr "svak"
 
 #. [hides]: id=swamp_lurk
-#: data/core/macros/abilities.cfg:392
+#: data/core/macros/abilities.cfg:391
 #, fuzzy
 #| msgid ""
 #| "This unit can hide in forest, and remain undetected by its enemies.\n"
@@ -5796,12 +5796,12 @@ msgstr ""
 "forflytningspoeng."
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:411
+#: data/core/macros/abilities.cfg:410
 msgid "female^feeding"
 msgstr "åtseleter"
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:412
+#: data/core/macros/abilities.cfg:411
 msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a unit, "
 "except units that are immune to plague."
@@ -6841,62 +6841,48 @@ msgid ""
 "When used offensively, this attack always has at least a 60% chance to hit."
 msgstr "Dette angrepet har alltid minst 60% sjanse for å treffe i offensiv."
 
-#. [disable]: id=naval_ram
+#. [dummy]: id=naval
 #: data/core/macros/weapon_specials.cfg:129
-msgid "naval ram"
+msgid "naval"
 msgstr ""
 
-#. [disable]: id=naval_ram
+#. [dummy]: id=naval
 #: data/core/macros/weapon_specials.cfg:130
-msgid "This attack can only be used against units in water terrain."
-msgstr ""
-
-#. [disable]: id=naval_ram
-#: data/core/macros/weapon_specials.cfg:138
 msgid ""
-"This unit has an attack that can only be used against units in watery "
-"terrain."
+"This attack can only be used when both the attacker and the defender are in "
+"water or swamp."
 msgstr ""
 
-#. [damage]: id=charge
-#: data/core/macros/weapon_specials.cfg:142
-#: data/core/macros/weapon_specials.cfg:180
-msgid "charge"
-msgstr "stormangrep"
-
-#. [damage]: id=charge
-#: data/core/macros/weapon_specials.cfg:143
-#: data/core/macros/weapon_specials.cfg:181
+#. [dummy]: id=naval
+#: data/core/macros/weapon_specials.cfg:131
 msgid ""
-"When used offensively, this attack deals double damage to the target. It "
-"also causes this unit to take double damage from the target’s counterattack."
-msgstr ""
-"Når dette angrepet brukes offensivt, gjør det dobbel skade på målet. Det "
-"fører også til at denne enheten tar dobbel skade fra målets motangrep."
-
-#. [chance_to_hit]: id=honed
-#: data/core/macros/weapon_specials.cfg:156
-msgid "honed"
-msgstr ""
-
-#. [chance_to_hit]: id=honed
-#: data/core/macros/weapon_specials.cfg:157
-msgid "This attack is 10% more accurate than other attacks."
+"This unit has an attack that can only be used when both the attacker and the "
+"defender are in water or swamp."
 msgstr ""
 
 #. [chance_to_hit]: id=honed
 #: data/core/macros/weapon_specials.cfg:158
+msgid "honed"
+msgstr ""
+
+#. [chance_to_hit]: id=honed
+#: data/core/macros/weapon_specials.cfg:159
+msgid "This attack is 10% more accurate than other attacks."
+msgstr ""
+
+#. [chance_to_hit]: id=honed
+#: data/core/macros/weapon_specials.cfg:160
 msgid ""
 "This unit’s “honed” attack is slightly more accurate than other attacks."
 msgstr ""
 
 #. [swarm]: id=swarm
-#: data/core/macros/weapon_specials.cfg:169
+#: data/core/macros/weapon_specials.cfg:171
 msgid "swarm"
 msgstr "sverm"
 
 #. [swarm]: id=swarm
-#: data/core/macros/weapon_specials.cfg:170
+#: data/core/macros/weapon_specials.cfg:172
 msgid ""
 "The number of strikes of this attack decreases when the unit is wounded. The "
 "number of strikes is proportional to the percentage of its of maximum HP the "
@@ -6907,25 +6893,39 @@ msgstr ""
 "er proporsjonalt med prosentandelen av enhetens maksimale HP. Eksempelvis "
 "vil en enhet med 3/4 av sine maksimale HP få 3/4 av antall slag."
 
+#. [damage]: id=charge
+#: data/core/macros/weapon_specials.cfg:182
+msgid "charge"
+msgstr "stormangrep"
+
+#. [damage]: id=charge
+#: data/core/macros/weapon_specials.cfg:183
+msgid ""
+"When used offensively, this attack deals double damage to the target. It "
+"also causes this unit to take double damage from the target’s counterattack."
+msgstr ""
+"Når dette angrepet brukes offensivt, gjør det dobbel skade på målet. Det "
+"fører også til at denne enheten tar dobbel skade fra målets motangrep."
+
 #. [damage]: id=guard
-#: data/core/macros/weapon_specials.cfg:194
+#: data/core/macros/weapon_specials.cfg:196
 msgid "guard"
 msgstr ""
 
 #. [damage]: id=guard
-#: data/core/macros/weapon_specials.cfg:195
+#: data/core/macros/weapon_specials.cfg:197
 msgid "This attack blocks half of the damage from its target’s strikes."
 msgstr ""
 
 #. [damage]: id=guard
-#: data/core/macros/weapon_specials.cfg:196
+#: data/core/macros/weapon_specials.cfg:198
 msgid ""
 "This unit’s guarding attack can halve incoming damage, but only when used in "
 "combat."
 msgstr ""
 
 #. [drains]: id=drains
-#: data/core/macros/weapon_specials.cfg:208
+#: data/core/macros/weapon_specials.cfg:210
 msgid ""
 "This unit drains health from living units, healing itself for half the "
 "amount of damage it deals (rounded down)."
@@ -6934,18 +6934,18 @@ msgstr ""
 "halvparten av den påførte skaden (rundet ned)."
 
 #. [firststrike]: id=firststrike
-#: data/core/macros/weapon_specials.cfg:218
+#: data/core/macros/weapon_specials.cfg:220
 msgid "first strike"
 msgstr "første slag"
 
 #. [firststrike]: id=firststrike
-#: data/core/macros/weapon_specials.cfg:219
+#: data/core/macros/weapon_specials.cfg:221
 msgid ""
 "This unit always strikes first with this attack, even if they are defending."
 msgstr "Denne enheten slår alltid først, selv om den forsvarer seg."
 
 #. [poison]: id=poison
-#: data/core/macros/weapon_specials.cfg:230
+#: data/core/macros/weapon_specials.cfg:232
 msgid ""
 "This attack poisons living targets. Poisoned units lose 8 HP every turn "
 "until they are cured or are reduced to 1 HP. Poison cannot, of itself, kill "
@@ -6956,12 +6956,12 @@ msgstr ""
 "HP. Gift kan ikke i seg selv drepe en enhet."
 
 #. [stun]: id=stun
-#: data/core/macros/weapon_specials.cfg:240
+#: data/core/macros/weapon_specials.cfg:242
 msgid "stun"
 msgstr "lamslå"
 
 #. [stun]: id=stun
-#: data/core/macros/weapon_specials.cfg:241
+#: data/core/macros/weapon_specials.cfg:243
 msgid ""
 "This attack hits so hard that the opponent is dazed and can no longer "
 "enforce a zone of control. The effect wears off on the opponent’s next turn."
@@ -6971,7 +6971,7 @@ msgstr ""
 "runde."
 
 #. [stun]: id=stun
-#: data/core/macros/weapon_specials.cfg:242
+#: data/core/macros/weapon_specials.cfg:244
 msgid ""
 "This unit is able to stun its enemies, disrupting their zones of control."
 msgstr ""
@@ -6979,12 +6979,12 @@ msgstr ""
 "kontrollsonene deres."
 
 #. [damage_type]: id=arcane_damage
-#: data/core/macros/weapon_specials.cfg:251
+#: data/core/macros/weapon_specials.cfg:253
 msgid "arcane"
 msgstr "arkan"
 
 #. [damage_type]: id=arcane_damage
-#: data/core/macros/weapon_specials.cfg:252
+#: data/core/macros/weapon_specials.cfg:254
 msgid ""
 "This attack combines the arcane type with the type of weapon used so that "
 "resistance to the arcane type does not penalize the user."
@@ -6993,7 +6993,7 @@ msgstr ""
 "at motstand mot den arkanske typen ikke straffer brukeren."
 
 #. [damage_type]: id=arcane_damage
-#: data/core/macros/weapon_specials.cfg:253
+#: data/core/macros/weapon_specials.cfg:255
 msgid ""
 "This unit can use the arcane type when the opponent is particularly "
 "sensitive to it in relation to the weapon on which it is applied."
@@ -8170,32 +8170,39 @@ msgstr "Mekanisk"
 
 #. [race]: id=ship
 #: data/core/units.cfg:296
+#, fuzzy
+#| msgid ""
+#| "Animated neither by natural life nor by necromancy, the term "
+#| "<italic>text='mechanical'</italic> describes a created artifact of an "
+#| "intelligent being. Most mechanical things neither move nor think on their "
+#| "own, but some do so as a result of magical enchantment."
 msgid ""
 "Ships are not living beings, but they are crafted and (usually) controlled "
-"by living beings. Although inanimate objects, they are very dear to their "
-"masters, needing care and attention in return for providing sustenance and "
-"protection. For this reason, most are given names and attributed traits. "
-"Those traits may be technical or they may simply reflect the collective "
-"attitude of the crew, but they are real."
+"by living beings. Most ships neither move nor think on their own, but some "
+"do so as a result of magical enchantment."
 msgstr ""
+"Levendegjort av verken bilogi eller nekromanti, brukes begrepet "
+"<italic>text='mekanisk'</italic> for å beskrive et intelligent vesen som er "
+"kunstig framstilt. De fleste mekaniske ting verken beveger seg eller tenker "
+"på egen hånd, men noen gjør det som følge av magisk fortryllelse."
 
 #. [race]: id=merman
-#: data/core/units.cfg:310
+#: data/core/units.cfg:328
 msgid "race^Merman"
 msgstr "Havmann"
 
 #. [race]: id=merman
-#: data/core/units.cfg:311
+#: data/core/units.cfg:329
 msgid "race^Mermaid"
 msgstr "Havfrue"
 
 #. [race]: id=merman
-#: data/core/units.cfg:312
+#: data/core/units.cfg:330
 msgid "race^Merfolk"
 msgstr "Marmæler"
 
 #. [race]: id=merman
-#: data/core/units.cfg:314
+#: data/core/units.cfg:332
 msgid ""
 "Something like a fusion between humans and fish, the merfolk are an "
 "enigmatic race with both piscine and humanoid attributes. They have strong "
@@ -8218,22 +8225,22 @@ msgstr ""
 "har store utfordringer med å bevege seg over ulendt eller skogkledd terreng."
 
 #. [race]: id=monster
-#: data/core/units.cfg:322
+#: data/core/units.cfg:340
 msgid "race^Monster"
 msgstr "Monster"
 
 #. [race]: id=monster
-#: data/core/units.cfg:323
+#: data/core/units.cfg:341
 msgid "race+female^Monster"
 msgstr "Monster"
 
 #. [race]: id=monster
-#: data/core/units.cfg:324
+#: data/core/units.cfg:342
 msgid "race^Monsters"
 msgstr "Monstre"
 
 #. [race]: id=monster
-#: data/core/units.cfg:325
+#: data/core/units.cfg:343
 msgid ""
 "The term “monster” incorporates many hideous beasts that haunt the caves, "
 "wilderness, ocean depths, and other climes of the world. They figure largely "
@@ -8244,22 +8251,22 @@ msgstr ""
 "og mareritt blant verdens innbyggere."
 
 #. [race]: id=naga
-#: data/core/units.cfg:332
+#: data/core/units.cfg:350
 msgid "race^Naga"
 msgstr "Naga"
 
 #. [race]: id=naga
-#: data/core/units.cfg:333
+#: data/core/units.cfg:351
 msgid "race^Nagini"
 msgstr "Naga"
 
 #. [race]: id=naga
-#: data/core/units.cfg:334
+#: data/core/units.cfg:352
 msgid "race^Nagas"
 msgstr "Naga"
 
 #. [race]: id=naga
-#: data/core/units.cfg:335
+#: data/core/units.cfg:353
 msgid ""
 "The serpentine nagas are one of the least understood races of the Great "
 "Continent. Part of this is due to their xenophobic nature and part is due to "
@@ -8290,22 +8297,22 @@ msgstr ""
 "som åpent vann."
 
 #. [race]: id=ogre
-#: data/core/units.cfg:343
+#: data/core/units.cfg:361
 msgid "race^Ogre"
 msgstr "Rise"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:344
+#: data/core/units.cfg:362
 msgid "race+female^Ogre"
 msgstr "Rise"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:345
+#: data/core/units.cfg:363
 msgid "race^Ogres"
 msgstr "Riser"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:346
+#: data/core/units.cfg:364
 msgid ""
 "Ogres are a wild and uncivilized race who dwell mainly in the wilderness of "
 "the Great Continent. Physically, they resemble humans and orcs but are "
@@ -8338,22 +8345,22 @@ msgstr ""
 "ukjent."
 
 #. [race]: id=orc
-#: data/core/units.cfg:354
+#: data/core/units.cfg:372
 msgid "race^Orc"
 msgstr "Ork"
 
 #. [race]: id=orc
-#: data/core/units.cfg:355
+#: data/core/units.cfg:373
 msgid "race+female^Orc"
 msgstr "Ork"
 
 #. [race]: id=orc
-#: data/core/units.cfg:356
+#: data/core/units.cfg:374
 msgid "race^Orcs"
 msgstr "Orker"
 
 #. [race]: id=orc
-#: data/core/units.cfg:357
+#: data/core/units.cfg:375
 msgid ""
 "In appearance, orcs resemble humans but with some bestial features. They are "
 "taller, sturdier and stronger than humans. They are warlike, savage, and "
@@ -8454,7 +8461,7 @@ msgstr ""
 "kampferdigheter.\n"
 
 #. [race]: id=orc
-#: data/core/units.cfg:368
+#: data/core/units.cfg:386
 msgid ""
 "\n"
 "\n"
@@ -8467,22 +8474,22 @@ msgstr ""
 "spesialisere seg i andre ferdigheter, som bueskyting eller snikmord."
 
 #. [race]: id=raven
-#: data/core/units.cfg:377
+#: data/core/units.cfg:395
 msgid "race^Raven"
 msgstr "Ravn"
 
 #. [race]: id=raven
-#: data/core/units.cfg:378
+#: data/core/units.cfg:396
 msgid "race+female^Raven"
 msgstr "Ravn"
 
 #. [race]: id=raven
-#: data/core/units.cfg:379
+#: data/core/units.cfg:397
 msgid "race^Ravens"
 msgstr "Ravner"
 
 #. [race]: id=raven
-#: data/core/units.cfg:380
+#: data/core/units.cfg:398
 msgid ""
 "Ravens are general scavengers, often associating with hunters or predators "
 "in the hope of sharing in the kill. They do not have the powerful beak or "
@@ -8517,22 +8524,22 @@ msgstr ""
 "er glade for å ha dem i nærheten som vakter."
 
 #. [race]: id=troll
-#: data/core/units.cfg:391
+#: data/core/units.cfg:409
 msgid "race^Troll"
 msgstr "Troll"
 
 #. [race]: id=troll
-#: data/core/units.cfg:392
+#: data/core/units.cfg:410
 msgid "race+female^Troll"
 msgstr "Troll"
 
 #. [race]: id=troll
-#: data/core/units.cfg:393
+#: data/core/units.cfg:411
 msgid "race^Trolls"
 msgstr "Troll"
 
 #. [race]: id=troll
-#: data/core/units.cfg:394
+#: data/core/units.cfg:412
 msgid ""
 "Trolls are ancient creatures, one of the oldest known races known to inhabit "
 "the Great Continent. They are large, slow, simple, and live extremely long "
@@ -8604,22 +8611,22 @@ msgstr ""
 "øst for Wesnoth, samt hvor enn orkiske horder reiser."
 
 #. [race]: id=undead
-#: data/core/units.cfg:414
+#: data/core/units.cfg:432
 msgid "race^Undead"
 msgstr "Vandød"
 
 #. [race]: id=undead
-#: data/core/units.cfg:415
+#: data/core/units.cfg:433
 msgid "race+female^Undead"
 msgstr "Vandød"
 
 #. [race]: id=undead
-#: data/core/units.cfg:416
+#: data/core/units.cfg:434
 msgid "race+plural^Undead"
 msgstr "Vandøde"
 
 #. [race]: id=undead
-#: data/core/units.cfg:417
+#: data/core/units.cfg:435
 msgid ""
 "Undead are not really a single race of creatures, although often treated as "
 "such. Most ordinary creatures can, by a sufficiently skilled necromancer, be "
@@ -8689,22 +8696,22 @@ msgstr ""
 "den tid."
 
 #. [race]: id=wolf
-#: data/core/units.cfg:430
+#: data/core/units.cfg:448
 msgid "race^Wolf"
 msgstr "Ulv"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:431
+#: data/core/units.cfg:449
 msgid "race+female^Wolf"
 msgstr "Ulv"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:432
+#: data/core/units.cfg:450
 msgid "race^Wolves"
 msgstr "Ulver"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:433
+#: data/core/units.cfg:451
 msgid ""
 "Wolves are predatory canines encountered frequently in the wilderness. "
 "Quick, tough, and durable, a solitary wolf suffices to maim or kill "
@@ -8722,17 +8729,17 @@ msgstr ""
 "jakte på husdyr."
 
 #. [race]: id=wose
-#: data/core/units.cfg:442
+#: data/core/units.cfg:460
 msgid "race^Wose"
 msgstr "Trehyrde"
 
 #. [race]: id=wose
-#: data/core/units.cfg:443
+#: data/core/units.cfg:461
 msgid "race^Woses"
 msgstr "Trehyrder"
 
 #. [race]: id=wose
-#: data/core/units.cfg:444
+#: data/core/units.cfg:462
 msgid ""
 "The mighty wose resides within the deepest forests of the known world. To "
 "the untrained eye, the wose appears to be nothing more than an oddly shaped, "

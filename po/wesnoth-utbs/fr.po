@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Under_the_Burning_Suns-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-07-21 03:54 UTC\n"
+"POT-Creation-Date: 2025-08-19 15:14 UTC\n"
 "PO-Revision-Date: 2024-03-06 17:00+0100\n"
 "Last-Translator: demario\n"
 "Language-Team: French <wesnothfr@lists.tuxfamily.org>\n"
@@ -17178,35 +17178,43 @@ msgstr "Le coût d'entretien des unités alliées adjacentes est diminué de 1."
 
 # Le nom de l'effet (label flottant)
 #. [unstore_unit]
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:956
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:952
 msgid "dazed"
 msgstr "troublé"
 
 #. [unstore_unit]
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:957
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:953
 msgid "female^dazed"
 msgstr "troublée"
 
+#. [defense]: id=enemy_dazed
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:973
+msgid "parry:"
+msgstr ""
+
+#. [defense]: id=enemy_dazed
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:974
+msgid "Because this unit is dazed, its defense is decreased by 10%"
+msgstr ""
+
 #. [chance_to_hit]: id=self_dazed
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1023
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1044
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:982
 msgid "accuracy:"
 msgstr ""
 
 #. [chance_to_hit]: id=self_dazed
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1024
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1045
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:983
 msgid "Because this unit is dazed, its accuracy is decreased by 10%"
 msgstr ""
 
 # Le nom d'une capacité
 #. [dummy]: id=opportunist
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1433
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1366
 msgid "opportunist"
 msgstr "opportunisme"
 
 #. [dummy]: id=opportunist
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1434
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1367
 msgid ""
 "This ability makes Kaleh attack enemies with single strike of bolas when "
 "they leave his zone of control."
@@ -17215,39 +17223,39 @@ msgstr ""
 "bolas au début du mouvement."
 
 #. [dummy]: id=taunt
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1508
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1441
 msgid "taunt"
 msgstr "moquerie"
 
 #. [dummy]: id=taunt
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1509
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1442
 msgid "Taunts the enemy making them try to attack Kaleh for one turn."
 msgstr "Moque l'ennemi pour le faire attaquer Kaleh durant un tour."
 
 #. [dummy]: id=taunted
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1546
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1479
 msgid "taunted"
 msgstr "moqué"
 
 #. [dummy]: id=taunted
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1547
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1480
 msgid "This unit is taunted by Kaleh, it will try to attack him for one turn."
 msgstr ""
 "Cette unité est moquée par Kaleh et elle l'attaquera en représailles durant "
 "un tour."
 
 #. [leadership]: id=inspire
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1556
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1489
 msgid "inspire"
 msgstr "inspiration"
 
 #. [leadership]: id=inspire
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1557
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1490
 msgid "female^inspire"
 msgstr "inspiration"
 
 #. [leadership]: id=inspire
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1558
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1491
 msgid ""
 "This unit can inspire own units that are next to it, making them fight "
 "better. Adjacent own units of lower or equal level will deal 25% more damage "
@@ -17258,7 +17266,7 @@ msgstr ""
 "sépare, vers le bas, du niveau de l'unité qui inspire."
 
 #. [leadership]: id=inspire
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1559
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1492
 msgid ""
 "The presence of this unit inspires own units next to it to deal more damage "
 "in combat, though this only applies to units of lower or equal level."
@@ -17266,21 +17274,21 @@ msgstr ""
 "Par sa présence, cette unité inspire ses propres troupes de niveau égal ou "
 "inférieur qui lui sont adjacentes à faire plus de dégâts au combat."
 
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1570
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1503
 msgid "cooldown 1"
 msgstr "recharge 1"
 
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1573
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1506
 msgid "cooldown 2"
 msgstr "recharge 2"
 
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1576
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1509
 #, fuzzy
 #| msgid "After using this attack, you can't use it during your next turn."
 msgid "After using this attack, you can’t use it during your next turn."
 msgstr "Cette attaque ne peut pas être utilisée le tour suivant l'attaque."
 
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1579
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1512
 #, fuzzy
 #| msgid ""
 #| "After using this attack, you can't use it during your next two turns."
@@ -17290,12 +17298,12 @@ msgstr ""
 
 # C'est une attaque spéciale
 #. [dummy]: id=pierce
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1640
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1573
 msgid "pierce"
 msgstr "perforation"
 
 #. [dummy]: id=pierce
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1641
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1574
 msgid ""
 "This weapon, when used offensively, can also deal damage to a unit behind "
 "the target."
@@ -17305,12 +17313,12 @@ msgstr ""
 
 # C'est une attaque spéciale
 #. [dummy]: id=puncture
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1711
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1644
 msgid "puncture"
 msgstr "percement"
 
 #. [dummy]: id=puncture
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1712
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1645
 msgid ""
 "This weapon, when used offensively, can also deal damage to two units behind "
 "the target."
@@ -17319,12 +17327,12 @@ msgstr ""
 "unités se trouvant derrière la cible."
 
 #. [dummy]: id=rain_of_arrows
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1795
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1728
 msgid "rain of arrows"
 msgstr "pluie de flèches"
 
 #. [dummy]: id=rain_of_arrows
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1796
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1729
 msgid ""
 "This weapon, when used offensively, can also deal damage to a unit behind "
 "the target and all units adjacent to the unit behind the target."
@@ -17334,13 +17342,13 @@ msgstr ""
 "adjacentes."
 
 #. [dummy]: id=sword_dance
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1917
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1850
 msgid "sword dance"
 msgstr "danse d'épées"
 
 # « précision » et « parade » sont 2 capacités du domaine #wesnoth
 #. [dummy]: id=sword_dance
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1918
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1851
 msgid ""
 "Every time Nym hits an enemy she gains +10% accuracy and 10% parry until the "
 "end of the combat."

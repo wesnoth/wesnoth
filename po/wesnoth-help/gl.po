@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-07-20 22:54-0500\n"
+"POT-Creation-Date: 2025-08-19 10:14-0500\n"
 "PO-Revision-Date: 2025-07-23 13:07+0200\n"
 "Last-Translator: Adrian Chaves <adrian@chaves.io>\n"
 "Language-Team: Galician <kde-i18n-doc@kde.org>\n"
@@ -75,7 +75,7 @@ msgstr ""
 #. [trait]: id=loyal_dummy
 #. [trait]: id=loyal
 #: data/campaigns/The_Deceivers_Gambit/scenarios/00_Graduation.cfg:112
-#: data/campaigns/The_Deceivers_Gambit/scenarios/11_Clan_Blackcrest.cfg:737
+#: data/campaigns/The_Deceivers_Gambit/scenarios/11_Clan_Blackcrest.cfg:738
 #: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:19
 #: data/core/macros/traits.cfg:12
 msgid "loyal"
@@ -84,7 +84,7 @@ msgstr "leal"
 # Aparece como “mensaxe contextual”.
 #. [trait]: id=loyal_dummy
 #: data/campaigns/The_Deceivers_Gambit/scenarios/00_Graduation.cfg:113
-#: data/campaigns/The_Deceivers_Gambit/scenarios/11_Clan_Blackcrest.cfg:738
+#: data/campaigns/The_Deceivers_Gambit/scenarios/11_Clan_Blackcrest.cfg:739
 #: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:20
 msgid "Zero upkeep."
 msgstr "Sen mantemento."
@@ -287,7 +287,7 @@ msgstr "puñalada polas costas"
 #. [chance]
 #. [dummy]: id=feeding
 #: data/campaigns/World_Conquest/resources/data/training.cfg:501
-#: data/core/macros/abilities.cfg:410
+#: data/core/macros/abilities.cfg:409
 msgid "feeding"
 msgstr "aliméntase"
 
@@ -314,13 +314,13 @@ msgstr "Cova"
 
 #. [hides]: id=concealment
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:21
-#: data/core/macros/abilities.cfg:350
+#: data/core/macros/abilities.cfg:349
 msgid "concealment"
 msgstr "ocúltase"
 
 #. [drains]: id=drains
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:24
-#: data/core/macros/weapon_specials.cfg:207
+#: data/core/macros/weapon_specials.cfg:209
 msgid "drains"
 msgstr "absorbe"
 
@@ -352,13 +352,13 @@ msgstr "Colonia de cogomelos"
 
 #. [hides]: id=nightstalk
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:45
-#: data/core/macros/abilities.cfg:330 data/core/macros/abilities.cfg:331
+#: data/core/macros/abilities.cfg:329 data/core/macros/abilities.cfg:330
 msgid "nightstalk"
 msgstr "asexante nocturno"
 
 #. [poison]: id=poison
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:51
-#: data/core/macros/weapon_specials.cfg:229
+#: data/core/macros/weapon_specials.cfg:231
 msgid "poison"
 msgstr "velenoso"
 
@@ -600,12 +600,12 @@ msgstr "Ferramenta de localizacións de inicio"
 msgid ""
 "Defines the side leader starting position.\n"
 "This tool sets the side leaders’ default starting locations, and named "
-"special locations. Both types of location are enabled in both <ref "
-"dst='..editor_mode_terrain'>Terrain Editor</ref> and <ref "
-"dst='..editor_mode_scenario'>Scenario Editor</ref> modes. The location names "
-"are shown as a list in the editor palette, clicking on the map will place "
-"that name on a hex, each location can only be placed on a single hex, and "
-"the editor will only allow one location per hex.\n"
+"special locations. Both types of location are enabled in both <ref dst='.."
+"editor_mode_terrain'>Terrain Editor</ref> and <ref dst='.."
+"editor_mode_scenario'>Scenario Editor</ref> modes. The location names are "
+"shown as a list in the editor palette, clicking on the map will place that "
+"name on a hex, each location can only be placed on a single hex, and the "
+"editor will only allow one location per hex.\n"
 "\n"
 "To add named special locations, click “Add” at the bottom of the editor "
 "palette, and enter the name. These names must start with a letter and may "
@@ -630,12 +630,12 @@ msgstr ""
 "\n"
 "Esta ferramenta establece as localizacións iniciais por defecto dos líderes "
 "de bando, así como as localizacións especiais con nome. Ambos tipos de "
-"localización están dispoñibles tanto no modo de <ref "
-"dst='..editor_mode_terrain'>Editor de Terreo</ref> como no de <ref "
-"dst='..editor_mode_scenario'>Editor de Escenario</ref>. Os nomes das "
-"localizacións aparecen nunha lista na paleta do editor; ao premer no mapa "
-"colócase ese nome nun hexágono. Cada localización só pode asignarse a un "
-"único hexágono, e o editor só permite unha localización por hexágono.\n"
+"localización están dispoñibles tanto no modo de <ref dst='.."
+"editor_mode_terrain'>Editor de Terreo</ref> como no de <ref dst='.."
+"editor_mode_scenario'>Editor de Escenario</ref>. Os nomes das localizacións "
+"aparecen nunha lista na paleta do editor; ao premer no mapa colócase ese "
+"nome nun hexágono. Cada localización só pode asignarse a un único hexágono, "
+"e o editor só permite unha localización por hexágono.\n"
 "\n"
 "Para engadir localizacións especiais nomeadas, fai clic en \"Engadir\" na "
 "parte inferior da paleta do editor e introduce o nome. Estes nomes deben "
@@ -681,9 +681,9 @@ msgstr ""
 #: data/core/editor/help.cfg:131
 msgid ""
 "editor^<header>Movement Overlays</header>\n"
-"<img src='terrain/grass/green.png~BLIT(terrain/impassable-"
-"editor.png~O(0.5))'/><img src='terrain/grass/green.png~BLIT(terrain/"
-"unwalkable-editor.png~O(0.5))'/>\n"
+"<img src='terrain/grass/green.png~BLIT(terrain/impassable-editor."
+"png~O(0.5))'/><img src='terrain/grass/green.png~BLIT(terrain/unwalkable-"
+"editor.png~O(0.5))'/>\n"
 "<b>Impassable and Unwalkable</b>\n"
 "\n"
 "While easily noticeable in the editor, these are invisible in the game, so "
@@ -693,9 +693,9 @@ msgid ""
 msgstr ""
 "<header>Superposicións de movemento</header>\n"
 "\n"
-"<img src='terrain/grass/green.png~BLIT(terrain/impassable-"
-"editor.png~O(0.5))'/><img src='terrain/grass/green.png~BLIT(terrain/"
-"unwalkable-editor.png~O(0.5))'/>\n"
+"<img src='terrain/grass/green.png~BLIT(terrain/impassable-editor."
+"png~O(0.5))'/><img src='terrain/grass/green.png~BLIT(terrain/unwalkable-"
+"editor.png~O(0.5))'/>\n"
 "<b>Intransitábel e Non camiñábel</b>\n"
 "\n"
 "Aínda que son doadas de recoñecer no editor, estas superposicións son "
@@ -710,9 +710,9 @@ msgstr ""
 #: data/core/editor/help.cfg:140
 msgid ""
 "editor^<header>Castle Overlays</header>\n"
-"<img src='terrain/grass/green.png~BLIT(terrain/castle/castle-overlay-"
-"editor.png~O(0.5))'/><img src='terrain/grass/green.png~BLIT(terrain/castle/"
-"keep-overlay-editor.png~O(0.5))'/>\n"
+"<img src='terrain/grass/green.png~BLIT(terrain/castle/castle-overlay-editor."
+"png~O(0.5))'/><img src='terrain/grass/green.png~BLIT(terrain/castle/keep-"
+"overlay-editor.png~O(0.5))'/>\n"
 "Adding either of these overlays to a passable hex allows units to be "
 "recruited onto a hex. The keep also allows a leader to recruit from there.\n"
 "\n"
@@ -723,9 +723,9 @@ msgid ""
 "units being recruited onto them."
 msgstr ""
 "<header>Superposicións de Castelo</header>\n"
-"<img src='terrain/grass/green.png~BLIT(terrain/castle/castle-overlay-"
-"editor.png~O(0.5))'/><img src='terrain/grass/green.png~BLIT(terrain/castle/"
-"keep-overlay-editor.png~O(0.5))'/>\n"
+"<img src='terrain/grass/green.png~BLIT(terrain/castle/castle-overlay-editor."
+"png~O(0.5))'/><img src='terrain/grass/green.png~BLIT(terrain/castle/keep-"
+"overlay-editor.png~O(0.5))'/>\n"
 "Engadir calquera destas superposicións a un hexágono transitable permite que "
 "as unidades sexan recrutadas nun hexágono. A torre tamén permite que un "
 "líder reclute desde alí.\n"
@@ -892,8 +892,8 @@ msgstr "Terreo obsoleto"
 #. The Xol and ^Efs terrains’ help pages aren’t given hyperlinks, because they both have hide_help enabled. Even when on a map with Xol on it, ctrl+t will show the hidden page but the ref still won’t link to it.
 #: data/core/editor/help.cfg:210
 msgid ""
-"editor^<img src='terrain/grass/green.png~BLIT(terrain/deprecated-"
-"editor.png)'/>\n"
+"editor^<img src='terrain/grass/green.png~BLIT(terrain/deprecated-editor."
+"png)'/>\n"
 "The magenta ‘D’ (for “Deprecated”).\n"
 "\n"
 "This is shown in the editor over deprecated terrain codes. Examples are:\n"
@@ -1343,8 +1343,8 @@ msgstr ""
 "menú “Ficheiro”; isto cambiará ao modo escenario.\n"
 "\n"
 " Para cargar un mapa que se creou no editor de escenarios, use \"Cargar "
-"mapa\" no menú \"Ficheiro\" e seleccione o ficheiro .cfg (non un "
-"ficheiro .map)."
+"mapa\" no menú \"Ficheiro\" e seleccione o ficheiro .cfg (non un ficheiro ."
+"map)."
 
 #. [topic]: id=..editor_mode_scenario
 #: data/core/editor/help.cfg:404
@@ -1354,10 +1354,10 @@ msgid ""
 "The map editor saves one file when in terrain mode (a .map) or two files "
 "when in scenario mode (both a .map and a .cfg).\n"
 "\n"
-"Loading a .cfg file has different results depending on the contents of "
-"the .cfg file. For .cfg files that were created by the scenario editor, it "
-"will open the .cfg in the scenario editor. However, for .cfg files that "
-"cannot be opened by the scenario editor, the editor will attempt to find the "
+"Loading a .cfg file has different results depending on the contents of the ."
+"cfg file. For .cfg files that were created by the scenario editor, it will "
+"open the .cfg in the scenario editor. However, for .cfg files that cannot be "
+"opened by the scenario editor, the editor will attempt to find the "
 "scenario’s map data and open the corresponding .map file in terrain-only "
 "mode, as if the .map file was chosen in the file selector. It is recommended "
 "in those cases to simply load the .map file directly instead."
@@ -1572,8 +1572,8 @@ msgid ""
 "\n"
 "• <span face='monospace'>map_file=maps/01_First_Map.map</span> <i>— "
 "supported since Wesnoth 1.14</i>\n"
-"• <span face='monospace'>map_data=&quot;&#0x7B;maps/"
-"01_First_Map.map&#0x7D;&quot;</span> <i>— a WML preprocessor include</i>\n"
+"• <span face='monospace'>map_data=&quot;&#0x7B;maps/01_First_Map.map&#0x7D;"
+"&quot;</span> <i>— a WML preprocessor include</i>\n"
 "\n"
 "The <i>map_file</i> method is preferred over using a preprocessor include."
 msgstr ""
@@ -1599,9 +1599,8 @@ msgstr ""
 "\n"
 "• <span face='monospace'>map_file=maps/01_First_Map.map</span> <i>— "
 "compatible desde o Noroeste 1.14</i>\n"
-"• <span face='monospace'>map_data=&quot;&#0x7B;maps/"
-"01_First_Map.map&#0x7D;&quot;</span> <i>— unha inclusión de preprocesador "
-"WML</i>\n"
+"• <span face='monospace'>map_data=&quot;&#0x7B;maps/01_First_Map.map&#0x7D;"
+"&quot;</span> <i>— unha inclusión de preprocesador WML</i>\n"
 "\n"
 "Prefírese o método <i>map_file</i> a usar unha inclusión de preprocesador."
 
@@ -1654,12 +1653,12 @@ msgid ""
 msgstr ""
 "<header>Ficheiros creados polo Editor de escenarios</header>\n"
 "\n"
-"No modo de escenario, o editor garda os datos do escenario como un "
-"ficheiro .cfg e os datos do mapa como un ficheiro .map separado. A "
-"continuación, o escenario fai referencia ao ficheiro .map mediante map_file. "
-"Ao cargar un ficheiro .cfg, o editor de escenarios comprende os ficheiros "
-"creados polo propio editor de escenarios, pero é probable que teña problemas "
-"cos ficheiros que foron editados a man; Os problemas pódense evitar <ref "
+"No modo de escenario, o editor garda os datos do escenario como un ficheiro ."
+"cfg e os datos do mapa como un ficheiro .map separado. A continuación, o "
+"escenario fai referencia ao ficheiro .map mediante map_file. Ao cargar un "
+"ficheiro .cfg, o editor de escenarios comprende os ficheiros creados polo "
+"propio editor de escenarios, pero é probable que teña problemas cos "
+"ficheiros que foron editados a man; Os problemas pódense evitar <ref "
 "dst='editor_separate_events_file'>usando un ficheiro .cfg separado</ref> "
 "para as partes editadas a man."
 
@@ -2307,8 +2306,8 @@ msgstr ""
 #: data/core/encyclopedia/geography.cfg:194
 msgid ""
 "<header>Notable land features:</header>\n"
-"    • Aethenwood: The largest southern forest, home to reclusive <ref "
-"dst='..race_elf'>elves</ref>.\n"
+"    • Aethenwood: The largest southern forest, home to reclusive <ref dst='.."
+"race_elf'>elves</ref>.\n"
 "    • Vale of Blossoming Trees: An elvish vale at the southern edge of the "
 "Aethenwood. It contains the sacred Isle of Elrath.\n"
 "    • Lake Aelin: An elvish lake at the edge of their territory along the "
@@ -2318,8 +2317,8 @@ msgid ""
 "enter it seldom return."
 msgstr ""
 "<header>Características terrestres notables:</header>\n"
-"• Fraga de Aethen: A maior fraga do sur, fogar dos reclusos <ref "
-"dst='..race_elf'>elfos</ref>.\n"
+"• Fraga de Aethen: A maior fraga do sur, fogar dos reclusos <ref dst='.."
+"race_elf'>elfos</ref>.\n"
 "• Val das Árbores Floridas: un val élfico na beira sur da fraga de Aethen. "
 "Contén a sagrada Illa de Elrath.\n"
 "• Lago Aelin: un lago élfico na beira do seu territorio ao longo do río "
@@ -2851,8 +2850,8 @@ msgstr ""
 "Cando esteas a xogar, non esquezas que podes deixar o punteiro enriba de "
 "moitos dos elementos do xogo, como na información do panel lateral, para "
 "mostrar unha breve descrición do elemento en cuestión. Isto pode resultar de "
-"gran utilidade ao descubrir novos elementos, como <ref "
-"dst='..abilities_section'>habilidades</ref>, por vez primeira."
+"gran utilidade ao descubrir novos elementos, como <ref dst='.."
+"abilities_section'>habilidades</ref>, por vez primeira."
 
 #. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:187
@@ -2931,15 +2930,15 @@ msgid ""
 "statistics, then press the <b>Recruit</b> button to recruit it."
 msgstr ""
 "Cada bando comeza cun líder na súa torre. Ao principio de calquera batalla, "
-"e ás veces durante a mesma, necesitarás recrutar <ref "
-"dst='..units'>unidades'</ref> para o teu exército. Para recrutar debes ter o "
-"líder (como por exemplo Conrad na campaña <i>O herdeiro ao trono</i>) no "
-"hexágono de torre dun <ref dst='..terrain_castle'>castelo'</ref>. Entón "
-"poderás recrutar, ben accedendo a <b>Recrutar'</b> desde o menú, ben "
-"premendo co botón secundario un hexágono de castelo e escollendo "
-"<b>Recrutar</b>. Así abrirase o menú de recrutamento, que lista as unidades "
-"dispoñíbeis para recrutar, xunto co seu custo. Preme nunha unidade para ver "
-"as súas estatísticas, e preme <b>Recrutar</b> para recrutala."
+"e ás veces durante a mesma, necesitarás recrutar <ref dst='.."
+"units'>unidades'</ref> para o teu exército. Para recrutar debes ter o líder "
+"(como por exemplo Conrad na campaña <i>O herdeiro ao trono</i>) no hexágono "
+"de torre dun <ref dst='..terrain_castle'>castelo'</ref>. Entón poderás "
+"recrutar, ben accedendo a <b>Recrutar'</b> desde o menú, ben premendo co "
+"botón secundario un hexágono de castelo e escollendo <b>Recrutar</b>. Así "
+"abrirase o menú de recrutamento, que lista as unidades dispoñíbeis para "
+"recrutar, xunto co seu custo. Preme nunha unidade para ver as súas "
+"estatísticas, e preme <b>Recrutar</b> para recrutala."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:200
@@ -4425,18 +4424,16 @@ msgstr "Epílogo"
 #: data/core/help.cfg:531
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
-"basic strategy, or familiarize yourself with <ref "
-"dst='..traits_section'>traits</ref> and <ref "
-"dst='..abilities_section'>abilities</ref>, but you now know everything you "
-"need to know to play the <i>Heir to the Throne</i> campaign. Have fun, and "
-"good luck!"
+"basic strategy, or familiarize yourself with <ref dst='.."
+"traits_section'>traits</ref> and <ref dst='..abilities_section'>abilities</"
+"ref>, but you now know everything you need to know to play the <i>Heir to "
+"the Throne</i> campaign. Have fun, and good luck!"
 msgstr ""
 "Isto conclúe os fundamentos do Noroeste. Quizais queiras ler sobre "
-"estratexias básicas ou familiarizarte cos <ref "
-"dst='..traits_section'>trazos</ref> e <ref "
-"dst='..abilities_section'>habilidades</ref>, pero agora xa sabes todo o "
-"necesario para xogar a campaña <i>O herdeiro ao trono</i>. ¡Divírtete e boa "
-"sorte!"
+"estratexias básicas ou familiarizarte cos <ref dst='.."
+"traits_section'>trazos</ref> e <ref dst='..abilities_section'>habilidades</"
+"ref>, pero agora xa sabes todo o necesario para xogar a campaña <i>O "
+"herdeiro ao trono</i>. ¡Divírtete e boa sorte!"
 
 #. [topic]: id=license
 #: data/core/help.cfg:536
@@ -4876,8 +4873,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Podes ver que eras tes cargadas na sección de <ref "
-"dst='..eras_section'>eras</ref> da axuda."
+"Podes ver que eras tes cargadas na sección de <ref dst='.."
+"eras_section'>eras</ref> da axuda."
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:636
@@ -5738,7 +5735,7 @@ msgstr ""
 "que lle quede."
 
 #. [hides]: id=nightstalk
-#: data/core/macros/abilities.cfg:332
+#: data/core/macros/abilities.cfg:331
 msgid ""
 "The unit becomes invisible during night.\n"
 "\n"
@@ -5753,12 +5750,12 @@ msgstr ""
 "poderá moverse máis nesa quenda."
 
 #. [hides]: id=concealment
-#: data/core/macros/abilities.cfg:351
+#: data/core/macros/abilities.cfg:350
 msgid "female^concealment"
 msgstr "ocúltase"
 
 #. [hides]: id=concealment
-#: data/core/macros/abilities.cfg:352
+#: data/core/macros/abilities.cfg:351
 msgid ""
 "This unit can hide in villages, and remain undetected by its enemies, except "
 "by those standing next to it.\n"
@@ -5775,17 +5772,17 @@ msgstr ""
 "descubra por primeira vez perde de inmediato todo o movemento que lle quede."
 
 #. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:370
+#: data/core/macros/abilities.cfg:369
 msgid "submerge"
 msgstr "mergúllase"
 
 #. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:371
+#: data/core/macros/abilities.cfg:370
 msgid "female^submerge"
 msgstr "mergúllase"
 
 #. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:372
+#: data/core/macros/abilities.cfg:371
 msgid ""
 "This unit can hide in deep water, and remain undetected by its enemies.\n"
 "\n"
@@ -5801,17 +5798,17 @@ msgstr ""
 "a descubra non poderá moverse máis nesa quenda."
 
 #. [hides]: id=swamp_lurk
-#: data/core/macros/abilities.cfg:390
+#: data/core/macros/abilities.cfg:389
 msgid "swamp lurk"
 msgstr "espreita no pantano"
 
 #. [hides]: id=swamp_lurk
-#: data/core/macros/abilities.cfg:391
+#: data/core/macros/abilities.cfg:390
 msgid "female^swamp lurk"
 msgstr "espreita no pantano"
 
 #. [hides]: id=swamp_lurk
-#: data/core/macros/abilities.cfg:392
+#: data/core/macros/abilities.cfg:391
 msgid ""
 "This unit can hide in swamp, and remain undetected by its enemies.\n"
 "\n"
@@ -5828,12 +5825,12 @@ msgstr ""
 "quede."
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:411
+#: data/core/macros/abilities.cfg:410
 msgid "female^feeding"
 msgstr "aliméntase"
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:412
+#: data/core/macros/abilities.cfg:411
 msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a unit, "
 "except units that are immune to plague."
@@ -6906,54 +6903,47 @@ msgstr ""
 "Cando se usa de forma ofensiva, este ataque sempre ten como mínimo un 60% de "
 "probabilidades de atinar."
 
-#. [disable]: id=naval_ram
+#. [dummy]: id=naval
 #: data/core/macros/weapon_specials.cfg:129
-msgid "naval ram"
+#, fuzzy
+#| msgid "naval ram"
+msgid "naval"
 msgstr "ariete naval"
 
-#. [disable]: id=naval_ram
+#. [dummy]: id=naval
 #: data/core/macros/weapon_specials.cfg:130
-msgid "This attack can only be used against units in water terrain."
+#, fuzzy
+#| msgid "This attack can only be used against units in water terrain."
+msgid ""
+"This attack can only be used when both the attacker and the defender are in "
+"water or swamp."
 msgstr "Este ataque só pode usarse contra unidades en terreo acuático."
 
-#. [disable]: id=naval_ram
-#: data/core/macros/weapon_specials.cfg:138
+#. [dummy]: id=naval
+#: data/core/macros/weapon_specials.cfg:131
+#, fuzzy
+#| msgid ""
+#| "This unit has an attack that can only be used against units in watery "
+#| "terrain."
 msgid ""
-"This unit has an attack that can only be used against units in watery "
-"terrain."
+"This unit has an attack that can only be used when both the attacker and the "
+"defender are in water or swamp."
 msgstr ""
 "Esta unidade ten un ataque que só pode usarse contra unidades en terreo "
 "acuático."
 
-#. [damage]: id=charge
-#: data/core/macros/weapon_specials.cfg:142
-#: data/core/macros/weapon_specials.cfg:180
-msgid "charge"
-msgstr "carga"
-
-#. [damage]: id=charge
-#: data/core/macros/weapon_specials.cfg:143
-#: data/core/macros/weapon_specials.cfg:181
-msgid ""
-"When used offensively, this attack deals double damage to the target. It "
-"also causes this unit to take double damage from the target’s counterattack."
-msgstr ""
-"Cando se usa de forma ofensiva, este ataque inflixe o dobre de dano no "
-"obxectivo. Isto tamén fai que a unidade reciba o dobre de dano no "
-"contraataque do obxectivo."
-
 #. [chance_to_hit]: id=honed
-#: data/core/macros/weapon_specials.cfg:156
+#: data/core/macros/weapon_specials.cfg:158
 msgid "honed"
 msgstr "mellorado"
 
 #. [chance_to_hit]: id=honed
-#: data/core/macros/weapon_specials.cfg:157
+#: data/core/macros/weapon_specials.cfg:159
 msgid "This attack is 10% more accurate than other attacks."
 msgstr "Este ataque é un 10% máis preciso que outros ataques."
 
 #. [chance_to_hit]: id=honed
-#: data/core/macros/weapon_specials.cfg:158
+#: data/core/macros/weapon_specials.cfg:160
 msgid ""
 "This unit’s “honed” attack is slightly more accurate than other attacks."
 msgstr ""
@@ -6961,12 +6951,12 @@ msgstr ""
 "ataques."
 
 #. [swarm]: id=swarm
-#: data/core/macros/weapon_specials.cfg:169
+#: data/core/macros/weapon_specials.cfg:171
 msgid "swarm"
 msgstr "enxame"
 
 #. [swarm]: id=swarm
-#: data/core/macros/weapon_specials.cfg:170
+#: data/core/macros/weapon_specials.cfg:172
 msgid ""
 "The number of strikes of this attack decreases when the unit is wounded. The "
 "number of strikes is proportional to the percentage of its of maximum HP the "
@@ -6978,18 +6968,33 @@ msgstr ""
 "unidade. Por exemplo: se unha unidade ten tres cuartos de vida, terá tres "
 "cuartos do número de golpes."
 
+#. [damage]: id=charge
+#: data/core/macros/weapon_specials.cfg:182
+msgid "charge"
+msgstr "carga"
+
+#. [damage]: id=charge
+#: data/core/macros/weapon_specials.cfg:183
+msgid ""
+"When used offensively, this attack deals double damage to the target. It "
+"also causes this unit to take double damage from the target’s counterattack."
+msgstr ""
+"Cando se usa de forma ofensiva, este ataque inflixe o dobre de dano no "
+"obxectivo. Isto tamén fai que a unidade reciba o dobre de dano no "
+"contraataque do obxectivo."
+
 #. [damage]: id=guard
-#: data/core/macros/weapon_specials.cfg:194
+#: data/core/macros/weapon_specials.cfg:196
 msgid "guard"
 msgstr "garda"
 
 #. [damage]: id=guard
-#: data/core/macros/weapon_specials.cfg:195
+#: data/core/macros/weapon_specials.cfg:197
 msgid "This attack blocks half of the damage from its target’s strikes."
 msgstr "Este ataque bloquea a metade do dano dos golpes do seu obxectivo."
 
 #. [damage]: id=guard
-#: data/core/macros/weapon_specials.cfg:196
+#: data/core/macros/weapon_specials.cfg:198
 msgid ""
 "This unit’s guarding attack can halve incoming damage, but only when used in "
 "combat."
@@ -6998,7 +7003,7 @@ msgstr ""
 "pero só cando se usa en combate."
 
 #. [drains]: id=drains
-#: data/core/macros/weapon_specials.cfg:208
+#: data/core/macros/weapon_specials.cfg:210
 msgid ""
 "This unit drains health from living units, healing itself for half the "
 "amount of damage it deals (rounded down)."
@@ -7007,12 +7012,12 @@ msgstr ""
 "inflixe (redondeado cara abaixo)."
 
 #. [firststrike]: id=firststrike
-#: data/core/macros/weapon_specials.cfg:218
+#: data/core/macros/weapon_specials.cfg:220
 msgid "first strike"
 msgstr "primeiro golpe"
 
 #. [firststrike]: id=firststrike
-#: data/core/macros/weapon_specials.cfg:219
+#: data/core/macros/weapon_specials.cfg:221
 msgid ""
 "This unit always strikes first with this attack, even if they are defending."
 msgstr ""
@@ -7020,7 +7025,7 @@ msgstr ""
 "sendo atacada."
 
 #. [poison]: id=poison
-#: data/core/macros/weapon_specials.cfg:230
+#: data/core/macros/weapon_specials.cfg:232
 msgid ""
 "This attack poisons living targets. Poisoned units lose 8 HP every turn "
 "until they are cured or are reduced to 1 HP. Poison cannot, of itself, kill "
@@ -7031,12 +7036,12 @@ msgstr ""
 "vida. O veleno por si só non pode matar unha unidade."
 
 #. [stun]: id=stun
-#: data/core/macros/weapon_specials.cfg:240
+#: data/core/macros/weapon_specials.cfg:242
 msgid "stun"
 msgstr "atordar"
 
 #. [stun]: id=stun
-#: data/core/macros/weapon_specials.cfg:241
+#: data/core/macros/weapon_specials.cfg:243
 msgid ""
 "This attack hits so hard that the opponent is dazed and can no longer "
 "enforce a zone of control. The effect wears off on the opponent’s next turn."
@@ -7046,7 +7051,7 @@ msgstr ""
 "opoñente."
 
 #. [stun]: id=stun
-#: data/core/macros/weapon_specials.cfg:242
+#: data/core/macros/weapon_specials.cfg:244
 msgid ""
 "This unit is able to stun its enemies, disrupting their zones of control."
 msgstr ""
@@ -7054,12 +7059,12 @@ msgstr ""
 "de control."
 
 #. [damage_type]: id=arcane_damage
-#: data/core/macros/weapon_specials.cfg:251
+#: data/core/macros/weapon_specials.cfg:253
 msgid "arcane"
 msgstr "arcano"
 
 #. [damage_type]: id=arcane_damage
-#: data/core/macros/weapon_specials.cfg:252
+#: data/core/macros/weapon_specials.cfg:254
 msgid ""
 "This attack combines the arcane type with the type of weapon used so that "
 "resistance to the arcane type does not penalize the user."
@@ -7068,7 +7073,7 @@ msgstr ""
 "resistencia ao tipo arcano non penalice ao usuario."
 
 #. [damage_type]: id=arcane_damage
-#: data/core/macros/weapon_specials.cfg:253
+#: data/core/macros/weapon_specials.cfg:255
 msgid ""
 "This unit can use the arcane type when the opponent is particularly "
 "sensitive to it in relation to the weapon on which it is applied."
@@ -8144,38 +8149,39 @@ msgstr "Barcos"
 
 #. [race]: id=ship
 #: data/core/units.cfg:296
+#, fuzzy
+#| msgid ""
+#| "Animated neither by natural life nor by necromancy, the term "
+#| "<italic>text='mechanical'</italic> describes a created artifact of an "
+#| "intelligent being. Most mechanical things neither move nor think on their "
+#| "own, but some do so as a result of magical enchantment."
 msgid ""
 "Ships are not living beings, but they are crafted and (usually) controlled "
-"by living beings. Although inanimate objects, they are very dear to their "
-"masters, needing care and attention in return for providing sustenance and "
-"protection. For this reason, most are given names and attributed traits. "
-"Those traits may be technical or they may simply reflect the collective "
-"attitude of the crew, but they are real."
+"by living beings. Most ships neither move nor think on their own, but some "
+"do so as a result of magical enchantment."
 msgstr ""
-"Os barcos non son seres vivos, pero están fabricados e (normalmente) "
-"controlados por seres vivos. Aínda que son obxectos inanimados, son moi "
-"queridos polos seus amos e necesitan coidados e atención a cambio de "
-"proporcionar sustento e protección. Por esta razón, a maioría reciben nomes "
-"e atribúenlles trazos. Eses trazos poden ser técnicos ou simplemente "
-"reflectir a actitude colectiva da tripulación, pero son reais."
+"O termo «máquina» emprégase para facer referencia a aqueles artefactos "
+"animados non por vida natural ou nigromancia, senón grazas ao traballo dun "
+"ser intelixente. A meirande parte das máquinas nin se moven nin pensan por "
+"si mesmas, se ben existen excepcións debidas a encantamentos máxicos."
 
 #. [race]: id=merman
-#: data/core/units.cfg:310
+#: data/core/units.cfg:328
 msgid "race^Merman"
 msgstr "Sirénido"
 
 #. [race]: id=merman
-#: data/core/units.cfg:311
+#: data/core/units.cfg:329
 msgid "race^Mermaid"
 msgstr "Sirénida"
 
 #. [race]: id=merman
-#: data/core/units.cfg:312
+#: data/core/units.cfg:330
 msgid "race^Merfolk"
 msgstr "Sirénidos"
 
 #. [race]: id=merman
-#: data/core/units.cfg:314
+#: data/core/units.cfg:332
 msgid ""
 "Something like a fusion between humans and fish, the merfolk are an "
 "enigmatic race with both piscine and humanoid attributes. They have strong "
@@ -8200,22 +8206,22 @@ msgstr ""
 "terreos boscosos ou agrestes."
 
 #. [race]: id=monster
-#: data/core/units.cfg:322
+#: data/core/units.cfg:340
 msgid "race^Monster"
 msgstr "Monstro"
 
 #. [race]: id=monster
-#: data/core/units.cfg:323
+#: data/core/units.cfg:341
 msgid "race+female^Monster"
 msgstr "Monstro"
 
 #. [race]: id=monster
-#: data/core/units.cfg:324
+#: data/core/units.cfg:342
 msgid "race^Monsters"
 msgstr "Monstros"
 
 #. [race]: id=monster
-#: data/core/units.cfg:325
+#: data/core/units.cfg:343
 msgid ""
 "The term “monster” incorporates many hideous beasts that haunt the caves, "
 "wilderness, ocean depths, and other climes of the world. They figure largely "
@@ -8227,22 +8233,22 @@ msgstr ""
 "seus veciños."
 
 #. [race]: id=naga
-#: data/core/units.cfg:332
+#: data/core/units.cfg:350
 msgid "race^Naga"
 msgstr "Naga macho"
 
 #. [race]: id=naga
-#: data/core/units.cfg:333
+#: data/core/units.cfg:351
 msgid "race^Nagini"
 msgstr "Naga femia"
 
 #. [race]: id=naga
-#: data/core/units.cfg:334
+#: data/core/units.cfg:352
 msgid "race^Nagas"
 msgstr "Nagas"
 
 #. [race]: id=naga
-#: data/core/units.cfg:335
+#: data/core/units.cfg:353
 msgid ""
 "The serpentine nagas are one of the least understood races of the Great "
 "Continent. Part of this is due to their xenophobic nature and part is due to "
@@ -8273,22 +8279,22 @@ msgstr ""
 "xeralmente prefiren os pantanos e mailos ríos que o mar aberto."
 
 #. [race]: id=ogre
-#: data/core/units.cfg:343
+#: data/core/units.cfg:361
 msgid "race^Ogre"
 msgstr "Ogro"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:344
+#: data/core/units.cfg:362
 msgid "race+female^Ogre"
 msgstr "Ogro"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:345
+#: data/core/units.cfg:363
 msgid "race^Ogres"
 msgstr "Ogros"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:346
+#: data/core/units.cfg:364
 msgid ""
 "Ogres are a wild and uncivilized race who dwell mainly in the wilderness of "
 "the Great Continent. Physically, they resemble humans and orcs but are "
@@ -8321,22 +8327,22 @@ msgstr ""
 "mutuo."
 
 #. [race]: id=orc
-#: data/core/units.cfg:354
+#: data/core/units.cfg:372
 msgid "race^Orc"
 msgstr "Orco"
 
 #. [race]: id=orc
-#: data/core/units.cfg:355
+#: data/core/units.cfg:373
 msgid "race+female^Orc"
 msgstr "Orco"
 
 #. [race]: id=orc
-#: data/core/units.cfg:356
+#: data/core/units.cfg:374
 msgid "race^Orcs"
 msgstr "Orcos"
 
 #. [race]: id=orc
-#: data/core/units.cfg:357
+#: data/core/units.cfg:375
 msgid ""
 "In appearance, orcs resemble humans but with some bestial features. They are "
 "taller, sturdier and stronger than humans. They are warlike, savage, and "
@@ -8444,7 +8450,7 @@ msgstr ""
 "\n"
 
 #. [race]: id=orc
-#: data/core/units.cfg:368
+#: data/core/units.cfg:386
 msgid ""
 "\n"
 "\n"
@@ -8457,22 +8463,22 @@ msgstr ""
 "noutras habilidades, como o tiro con arco ou o asasinato."
 
 #. [race]: id=raven
-#: data/core/units.cfg:377
+#: data/core/units.cfg:395
 msgid "race^Raven"
 msgstr "Corvo"
 
 #. [race]: id=raven
-#: data/core/units.cfg:378
+#: data/core/units.cfg:396
 msgid "race+female^Raven"
 msgstr "Corvo"
 
 #. [race]: id=raven
-#: data/core/units.cfg:379
+#: data/core/units.cfg:397
 msgid "race^Ravens"
 msgstr "Corvos"
 
 #. [race]: id=raven
-#: data/core/units.cfg:380
+#: data/core/units.cfg:398
 msgid ""
 "Ravens are general scavengers, often associating with hunters or predators "
 "in the hope of sharing in the kill. They do not have the powerful beak or "
@@ -8509,22 +8515,22 @@ msgstr ""
 "centinelas."
 
 #. [race]: id=troll
-#: data/core/units.cfg:391
+#: data/core/units.cfg:409
 msgid "race^Troll"
 msgstr "Troll"
 
 #. [race]: id=troll
-#: data/core/units.cfg:392
+#: data/core/units.cfg:410
 msgid "race+female^Troll"
 msgstr "Troll"
 
 #. [race]: id=troll
-#: data/core/units.cfg:393
+#: data/core/units.cfg:411
 msgid "race^Trolls"
 msgstr "Troles"
 
 #. [race]: id=troll
-#: data/core/units.cfg:394
+#: data/core/units.cfg:412
 msgid ""
 "Trolls are ancient creatures, one of the oldest known races known to inhabit "
 "the Great Continent. They are large, slow, simple, and live extremely long "
@@ -8597,22 +8603,22 @@ msgstr ""
 "as hordas dos orcos."
 
 #. [race]: id=undead
-#: data/core/units.cfg:414
+#: data/core/units.cfg:432
 msgid "race^Undead"
 msgstr "Non morto"
 
 #. [race]: id=undead
-#: data/core/units.cfg:415
+#: data/core/units.cfg:433
 msgid "race+female^Undead"
 msgstr "Non morta"
 
 #. [race]: id=undead
-#: data/core/units.cfg:416
+#: data/core/units.cfg:434
 msgid "race+plural^Undead"
 msgstr "Non mortos"
 
 #. [race]: id=undead
-#: data/core/units.cfg:417
+#: data/core/units.cfg:435
 msgid ""
 "Undead are not really a single race of creatures, although often treated as "
 "such. Most ordinary creatures can, by a sufficiently skilled necromancer, be "
@@ -8683,22 +8689,22 @@ msgstr ""
 "polos elfos e ananos antes diso."
 
 #. [race]: id=wolf
-#: data/core/units.cfg:430
+#: data/core/units.cfg:448
 msgid "race^Wolf"
 msgstr "Lobo"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:431
+#: data/core/units.cfg:449
 msgid "race+female^Wolf"
 msgstr "Loba"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:432
+#: data/core/units.cfg:450
 msgid "race^Wolves"
 msgstr "Lobos"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:433
+#: data/core/units.cfg:451
 msgid ""
 "Wolves are predatory canines encountered frequently in the wilderness. "
 "Quick, tough, and durable, a solitary wolf suffices to maim or kill "
@@ -8716,17 +8722,17 @@ msgstr ""
 "afastarse da civilización, achegándose só ás veces para atacar ao gando."
 
 #. [race]: id=wose
-#: data/core/units.cfg:442
+#: data/core/units.cfg:460
 msgid "race^Wose"
 msgstr "Wose"
 
 #. [race]: id=wose
-#: data/core/units.cfg:443
+#: data/core/units.cfg:461
 msgid "race^Woses"
 msgstr "Woses"
 
 #. [race]: id=wose
-#: data/core/units.cfg:444
+#: data/core/units.cfg:462
 msgid ""
 "The mighty wose resides within the deepest forests of the known world. To "
 "the untrained eye, the wose appears to be nothing more than an oddly shaped, "
@@ -9081,6 +9087,21 @@ msgstr "Custo de visión"
 #: src/help/help_topic_generators.cpp:841
 msgid "Jamming Cost"
 msgstr "Custo de ofuscamento"
+
+#~ msgid ""
+#~ "Ships are not living beings, but they are crafted and (usually) "
+#~ "controlled by living beings. Although inanimate objects, they are very "
+#~ "dear to their masters, needing care and attention in return for providing "
+#~ "sustenance and protection. For this reason, most are given names and "
+#~ "attributed traits. Those traits may be technical or they may simply "
+#~ "reflect the collective attitude of the crew, but they are real."
+#~ msgstr ""
+#~ "Os barcos non son seres vivos, pero están fabricados e (normalmente) "
+#~ "controlados por seres vivos. Aínda que son obxectos inanimados, son moi "
+#~ "queridos polos seus amos e necesitan coidados e atención a cambio de "
+#~ "proporcionar sustento e protección. Por esta razón, a maioría reciben "
+#~ "nomes e atribúenlles trazos. Eses trazos poden ser técnicos ou "
+#~ "simplemente reflectir a actitude colectiva da tripulación, pero son reais."
 
 #~ msgid "Methor"
 #~ msgstr "Medor"
@@ -9590,9 +9611,9 @@ msgstr "Custo de ofuscamento"
 #~ "artificial. Esta orde ten que dala o xogador ou o cliente que controla "
 #~ "dito bando. Se non se proporciona un segundo parámetro, a orde cambia a "
 #~ "situación actual. Se o segundo parámetro é «on» (activado), a "
-#~ "intelixencia artificial toma o control do bando. Se é «off» "
-#~ "(desactivado), o xogador volve tomar o control. Se non se lle fornece "
-#~ "ningún parámetro non fai nada.\n"
+#~ "intelixencia artificial toma o control do bando. Se é "
+#~ "«off» (desactivado), o xogador volve tomar o control. Se non se lle "
+#~ "fornece ningún parámetro non fai nada.\n"
 #~ "\n"
 
 #, fuzzy

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.18\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-04-28 03:22 UTC\n"
+"POT-Creation-Date: 2025-08-19 15:14 UTC\n"
 "PO-Revision-Date: 2025-06-20 18:24+0800\n"
 "Last-Translator: vimacs <vimacs.hacks@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -23,49 +23,49 @@ msgstr ""
 #. [campaign]: id=Eastern_Invasion
 #. [achievement_group]
 #. [scenario]: id=01_Eastern_Invasion
-#: data/campaigns/Eastern_Invasion/_main.cfg:38
+#: data/campaigns/Eastern_Invasion/_main.cfg:39
 #: data/campaigns/Eastern_Invasion/achievements.cfg:20
 #: data/campaigns/Eastern_Invasion/scenarios/01_Eastern_Invasion.cfg:19
 msgid "Eastern Invasion"
 msgstr "东部入侵"
 
 #. [campaign]: id=Eastern_Invasion
-#: data/campaigns/Eastern_Invasion/_main.cfg:39
+#: data/campaigns/Eastern_Invasion/_main.cfg:40
 msgid "EI"
 msgstr "EI"
 
 #. [campaign]: id=Eastern_Invasion
-#: data/campaigns/Eastern_Invasion/_main.cfg:43
+#: data/campaigns/Eastern_Invasion/_main.cfg:44
 msgid "1x enemies"
 msgstr "1倍敌军"
 
 #. [campaign]: id=Eastern_Invasion
-#: data/campaigns/Eastern_Invasion/_main.cfg:43
+#: data/campaigns/Eastern_Invasion/_main.cfg:44
 msgid "Skirmish"
 msgstr "小规模战斗"
 
 #. [campaign]: id=Eastern_Invasion
-#: data/campaigns/Eastern_Invasion/_main.cfg:44
+#: data/campaigns/Eastern_Invasion/_main.cfg:45
 msgid "3x enemies"
 msgstr "3倍敌军"
 
 #. [campaign]: id=Eastern_Invasion
-#: data/campaigns/Eastern_Invasion/_main.cfg:44
+#: data/campaigns/Eastern_Invasion/_main.cfg:45
 msgid "Incursion"
 msgstr "袭击"
 
 #. [campaign]: id=Eastern_Invasion
-#: data/campaigns/Eastern_Invasion/_main.cfg:45
+#: data/campaigns/Eastern_Invasion/_main.cfg:46
 msgid "5x enemies"
 msgstr "5倍敌军"
 
 #. [campaign]: id=Eastern_Invasion
-#: data/campaigns/Eastern_Invasion/_main.cfg:45
+#: data/campaigns/Eastern_Invasion/_main.cfg:46
 msgid "Invasion"
 msgstr "侵略"
 
 #. [campaign]: id=Eastern_Invasion
-#: data/campaigns/Eastern_Invasion/_main.cfg:89
+#: data/campaigns/Eastern_Invasion/_main.cfg:90
 msgid ""
 "There are rumors of undead attacks on the eastern border of Wesnoth. You, an "
 "officer in the Royal Army, have been sent to the eastern front to protect "
@@ -77,56 +77,60 @@ msgstr ""
 "\n"
 
 #. [campaign]: id=Eastern_Invasion
-#: data/campaigns/Eastern_Invasion/_main.cfg:91
+#: data/campaigns/Eastern_Invasion/_main.cfg:92
 msgid "(Intermediate level, 16 scenarios.)"
 msgstr "（中等级别，16幕场景。）"
 
 #. [about]
-#: data/campaigns/Eastern_Invasion/_main.cfg:95
+#: data/campaigns/Eastern_Invasion/_main.cfg:96
 msgid "Newest Campaign Version Rewrite"
 msgstr "最新版本战役重写"
 
 #. [about]
-#: data/campaigns/Eastern_Invasion/_main.cfg:101
+#: data/campaigns/Eastern_Invasion/_main.cfg:102
 msgid "Original Campaign Design"
 msgstr "原版战役设计"
 
 #. [about]
-#: data/campaigns/Eastern_Invasion/_main.cfg:107
+#: data/campaigns/Eastern_Invasion/_main.cfg:108
 msgid "Prose and Story Editing, Code Preparation"
 msgstr "散文与故事编辑、代码准备"
 
 #. [about]
-#: data/campaigns/Eastern_Invasion/_main.cfg:113
+#: data/campaigns/Eastern_Invasion/_main.cfg:114
 msgid "Artwork and Graphics Design"
 msgstr "插图和图形设计"
 
 #. [about]
-#: data/campaigns/Eastern_Invasion/_main.cfg:131
+#: data/campaigns/Eastern_Invasion/_main.cfg:132
 msgid "Campaign Redesign Playtesters"
 msgstr "战役重制游戏测试者"
 
 #. [about]
-#: data/campaigns/Eastern_Invasion/_main.cfg:143
+#: data/campaigns/Eastern_Invasion/_main.cfg:144
 #, fuzzy
 #| msgid "Previous Campaign Maintenance"
 msgid "Campaign Maintenance"
 msgstr "前战役维护者"
 
 #. [about]
-#: data/campaigns/Eastern_Invasion/_main.cfg:152
+#: data/campaigns/Eastern_Invasion/_main.cfg:153
 msgid "Previous Campaign Maintenance"
 msgstr "前战役维护者"
 
 #. [about]
-#: data/campaigns/Eastern_Invasion/_main.cfg:164
+#: data/campaigns/Eastern_Invasion/_main.cfg:165
 msgid "Others"
 msgstr "其他"
 
 #. [achievement_group]
 #: data/campaigns/Eastern_Invasion/achievements.cfg:33
+#, fuzzy
+#| msgid ""
+#| "Complete the ‘<i>Eastern Invasion</i>’ scenario with at least 10 "
+#| "surviving units."
 msgid ""
-"Complete the ‘<i>Eastern Invasion</i>’ scenario with at least 10 surviving "
+"Complete the <i>Eastern Invasion</i> scenario with at least 10 surviving "
 "units."
 msgstr "在完成 ‘<i>东部入侵</i>’ 场景时有至少10个存活单位。"
 
@@ -137,7 +141,9 @@ msgstr "场景1：战术撤退"
 
 #. [achievement_group]
 #: data/campaigns/Eastern_Invasion/achievements.cfg:35
-msgid "Complete ‘<i>The Escape Tunnel</i>’ before the undead arrive."
+#, fuzzy
+#| msgid "Complete ‘<i>The Escape Tunnel</i>’ before the undead arrive."
+msgid "Complete <i>The Escape Tunnel</i> before the undead arrive."
 msgstr "在亡灵到达完成之前“<i>离脱隧道</i>”场景。"
 
 #. [achievement_group]
@@ -147,8 +153,12 @@ msgstr "场景2：快速通关"
 
 #. [achievement_group]
 #: data/campaigns/Eastern_Invasion/achievements.cfg:37
+#, fuzzy
+#| msgid ""
+#| "Complete ‘<i>An Unexpected Appearance</i>’ without killing Mal-Tar, the "
+#| "dark adept."
 msgid ""
-"Complete ‘<i>An Unexpected Appearance</i>’ without killing Mal-Tar, the dark "
+"Complete <i>An Unexpected Appearance</i> without killing Mal-Tar, the dark "
 "adept."
 msgstr "在不杀黑暗狂徒玛尔-塔的情况下完成“<i>意外的露面</i>”。"
 
@@ -159,7 +169,10 @@ msgstr "场景3：仁慈"
 
 #. [achievement_group]
 #: data/campaigns/Eastern_Invasion/achievements.cfg:39
-msgid "Defeat both the bandit and elven leaders in ‘<i>Elven Interlude</i>’."
+#, fuzzy
+#| msgid ""
+#| "Defeat both the bandit and elven leaders in ‘<i>Elven Interlude</i>’."
+msgid "Defeat both the bandit and elven leaders in <i>Elven Interlude</i>."
 msgstr "在“<i>精灵的插曲</i>”中同时击败强盗和精灵首领。"
 
 #. [achievement_group]
@@ -169,7 +182,9 @@ msgstr "场景4a：焦土政策"
 
 #. [achievement_group]
 #: data/campaigns/Eastern_Invasion/achievements.cfg:41
-msgid "Recruit the dunefolk in ‘<i>Ill Humours</i>’."
+#, fuzzy
+#| msgid "Recruit the dunefolk in ‘<i>Ill Humours</i>’."
+msgid "Recruit the dunefolk in <i>Ill Humours</i>."
 msgstr "在“<i>坏脾气</i>”中征募沙丘游民。"
 
 #. [achievement_group]
@@ -179,7 +194,9 @@ msgstr "场景4b：雇佣兵"
 
 #. [achievement_group]
 #: data/campaigns/Eastern_Invasion/achievements.cfg:43
-msgid "Rescue all 6 prisoners from ‘<i>Mal Ravanal’s Capital</i>’."
+#, fuzzy
+#| msgid "Rescue all 6 prisoners from ‘<i>Mal Ravanal’s Capital</i>’."
+msgid "Rescue all 6 prisoners from <i>Mal Ravanal’s Capital</i>."
 msgstr "从“<i>玛尔-拉瓦纳尔之都</i>”救出全部 6 名囚犯。"
 
 #. [achievement_group]
@@ -189,7 +206,9 @@ msgstr "场景4c：没有人（骑师）被落下"
 
 #. [achievement_group]
 #: data/campaigns/Eastern_Invasion/achievements.cfg:45
-msgid "Complete ‘<i>Northern Outpost</i>’ without any peasants dying."
+#, fuzzy
+#| msgid "Complete ‘<i>Northern Outpost</i>’ without any peasants dying."
+msgid "Complete <i>Northern Outpost</i> without any peasants dying."
 msgstr "在没有任何农民死亡的情况下完成“<i>北疆哨所</i>”。"
 
 #. [achievement_group]
@@ -199,8 +218,12 @@ msgstr "场景5：民族英雄"
 
 #. [achievement_group]
 #: data/campaigns/Eastern_Invasion/achievements.cfg:47
+#, fuzzy
+#| msgid ""
+#| "Defeat the necromancer in ‘<i>Undead Crossing</i>’ before rescuing "
+#| "Dolburras."
 msgid ""
-"Defeat the necromancer in ‘<i>Undead Crossing</i>’ before rescuing Dolburras."
+"Defeat the necromancer in <i>Undead Crossing</i> before rescuing Dolburras."
 msgstr "在“<i>亡灵渡口</i>”中救出多尔布拉斯之前击败死灵法师。"
 
 #. [achievement_group]
@@ -210,7 +233,9 @@ msgstr "场景6a：一个小小的请求？"
 
 #. [achievement_group]
 #: data/campaigns/Eastern_Invasion/achievements.cfg:49
-msgid "Complete ‘<i>Soradoc</i>’ without killing any enemy leaders."
+#, fuzzy
+#| msgid "Complete ‘<i>Soradoc</i>’ without killing any enemy leaders."
+msgid "Complete <i>Soradoc</i> without killing any enemy leaders."
 msgstr "不消灭任何敌方首领而完成“<i>索拉多克</i>”。"
 
 #. [achievement_group]
@@ -220,7 +245,9 @@ msgstr "场景6b：忍者"
 
 #. [achievement_group]
 #: data/campaigns/Eastern_Invasion/achievements.cfg:51
-msgid "Refuse to enslave any ogres in ‘<i>Capturing the Ogres</i>’."
+#, fuzzy
+#| msgid "Refuse to enslave any ogres in ‘<i>Capturing the Ogres</i>’."
+msgid "Refuse to enslave any ogres in <i>Capturing the Ogres</i>."
 msgstr "在“<i>捕获食人魔</i>”中拒绝奴役任何食人魔。"
 
 #. [achievement_group]
@@ -230,7 +257,9 @@ msgstr "场景7a：食人魔权利倡导者"
 
 #. [achievement_group]
 #: data/campaigns/Eastern_Invasion/achievements.cfg:53
-msgid "Kill 5 enemy leaders in ‘<i>Ogre Crossing</i>’."
+#, fuzzy
+#| msgid "Kill 5 enemy leaders in ‘<i>Ogre Crossing</i>’."
+msgid "Kill 5 enemy leaders in <i>Ogre Crossing</i>."
 msgstr "在“<i>食人魔渡口</i>”中击杀5个敌方首领。"
 
 #. [achievement_group]
@@ -240,7 +269,9 @@ msgstr "场景7b：狂乱的状况"
 
 #. [achievement_group]
 #: data/campaigns/Eastern_Invasion/achievements.cfg:55
-msgid "Ally with the dwarves in ‘<i>Xenophobia</i>’."
+#, fuzzy
+#| msgid "Ally with the dwarves in ‘<i>Xenophobia</i>’."
+msgid "Ally with the dwarves in <i>Xenophobia</i>."
 msgstr "在“<i>异种憎恶</i>”中与矮人结盟。"
 
 #. [achievement_group]
@@ -250,7 +281,9 @@ msgstr "场景8：和我的斧头"
 
 #. [achievement_group]
 #: data/campaigns/Eastern_Invasion/achievements.cfg:57
-msgid "Recruit the wild ogres in ‘<i>Castle in the Ice</i>’."
+#, fuzzy
+#| msgid "Recruit the wild ogres in ‘<i>Castle in the Ice</i>’."
+msgid "Recruit the wild ogres in <i>Castle in the Ice</i>."
 msgstr "在“<i>冰中城堡</i>”一幕招募野生食人魔。"
 
 #. [achievement_group]
@@ -260,7 +293,9 @@ msgstr "场景9：哇哇……"
 
 #. [achievement_group]
 #: data/campaigns/Eastern_Invasion/achievements.cfg:59
-msgid "Find the legendary Staff of Power in ‘<i>Dark Sanctuary</i>’."
+#, fuzzy
+#| msgid "Find the legendary Staff of Power in ‘<i>Dark Sanctuary</i>’."
+msgid "Find the legendary Staff of Power in <i>Dark Sanctuary</i>."
 msgstr "在“<i>黑暗圣殿</i>”中寻找传奇的力量之法杖。"
 
 #. [achievement_group]
@@ -270,7 +305,9 @@ msgstr "场景10：脑子"
 
 #. [achievement_group]
 #: data/campaigns/Eastern_Invasion/achievements.cfg:61
-msgid "Find the Ring of Invisibility in ‘<i>Captured</i>’."
+#, fuzzy
+#| msgid "Find the Ring of Invisibility in ‘<i>Captured</i>’."
+msgid "Find the Ring of Invisibility in <i>Captured</i>."
 msgstr "在“<i>被俘</i>”中找到隐身指环。"
 
 # 引用自 https://zh.wikipedia.org/wiki/%E8%87%B3%E5%B0%8A%E9%AD%94%E6%88%92
@@ -281,7 +318,9 @@ msgstr "场景11：众戒归一黑暗中"
 
 #. [achievement_group]
 #: data/campaigns/Eastern_Invasion/achievements.cfg:63
-msgid "Complete ‘<i>Evacuation</i>’ by defeating all enemy leaders."
+#, fuzzy
+#| msgid "Complete ‘<i>Evacuation</i>’ by defeating all enemy leaders."
+msgid "Complete <i>Evacuation</i> by defeating all enemy leaders."
 msgstr "通过击败所有敌方首领完成“<i>撤退</i>”一幕。"
 
 #. [achievement_group]
@@ -291,7 +330,9 @@ msgstr "场景12：B计划"
 
 #. [achievement_group]
 #: data/campaigns/Eastern_Invasion/achievements.cfg:65
-msgid "Recruit Gaennell, the dark adept, in ‘<i>Spoils of War</i>’."
+#, fuzzy
+#| msgid "Recruit Gaennell, the dark adept, in ‘<i>Spoils of War</i>’."
+msgid "Recruit Gaennell, the dark adept, in <i>Spoils of War</i>."
 msgstr "在“<i>战利品</i>”中征募黑暗狂徒盖内尔。"
 
 #. [achievement_group]
@@ -301,7 +342,9 @@ msgstr "场景13：赎罪誓言"
 
 #. [achievement_group]
 #: data/campaigns/Eastern_Invasion/achievements.cfg:67
-msgid "Read the story of the Clans’ defeat in ‘<i>The Drowned Plains</i>’."
+#, fuzzy
+#| msgid "Read the story of the Clans’ defeat in ‘<i>The Drowned Plains</i>’."
+msgid "Read the story of the Clans’ defeat in <i>The Drowned Plains</i>."
 msgstr "在“<i>淹没的平原</i>”中阅读关于氏族战败的故事。"
 
 #. [achievement_group]
@@ -313,8 +356,7 @@ msgstr "场景14：历史学家"
 #: data/campaigns/Eastern_Invasion/achievements.cfg:69
 #, fuzzy
 #| msgid "Complete ‘<i>Eleventh Hour</i>’ with no recalling and no items."
-msgid ""
-"Complete ‘<i>Eleventh Hour</i>’ with no recalling and no droppable items."
+msgid "Complete <i>Eleventh Hour</i> with no recalling and no droppable items."
 msgstr "在没有召回并且不带道具的情况下完成“<i>最后时刻</i>”。"
 
 #. [achievement_group]
@@ -324,7 +366,9 @@ msgstr "场景16：平行历史"
 
 #. [achievement_group]
 #: data/campaigns/Eastern_Invasion/achievements.cfg:71
-msgid "Kill no enemies before defeating Mal-Ravanal in ‘<i>The Duel</i>’."
+#, fuzzy
+#| msgid "Kill no enemies before defeating Mal-Ravanal in ‘<i>The Duel</i>’."
+msgid "Kill no enemies before defeating Mal-Ravanal in <i>The Duel</i>."
 msgstr "在“<i>决斗</i>”中击败玛尔-拉瓦纳尔之前，不杀死任何敌人。"
 
 #. [achievement_group]
@@ -334,7 +378,9 @@ msgstr "场景17a：和平主义者"
 
 #. [achievement_group]
 #: data/campaigns/Eastern_Invasion/achievements.cfg:73
-msgid "Kill all enemies before defeating Mal-Ravanal in ‘<i>All-In</i>’."
+#, fuzzy
+#| msgid "Kill all enemies before defeating Mal-Ravanal in ‘<i>All-In</i>’."
+msgid "Kill all enemies before defeating Mal-Ravanal in <i>All-In</i>."
 msgstr "在“<i>全体上场</i>”中击败玛尔-拉瓦纳尔之前，消灭所有敌人。"
 
 #. [achievement_group]
@@ -12192,62 +12238,6 @@ msgstr ""
 "从小起，平原的贵族们就在战斗和治理方面刻苦训练，为有朝一日成为氏族的队长做准"
 "备。尽管年少气盛，这些战士有一天有可能成为伟大的战士。"
 
-#. [unit_type]: id=Shadow Lord, race=human, gender=female
-#. In the liberty textdomain exists a male unit with that name
-#: data/campaigns/Eastern_Invasion/units/Human_Shadow_Lord.cfg:6
-msgid "female^Shadow Lord"
-msgstr "暗影领主"
-
-# Translated by ollama with model qwen2.5:14b.
-#. [unit_type]: id=Shadow Lord, race=human, gender=female
-#: data/campaigns/Eastern_Invasion/units/Human_Shadow_Lord.cfg:24
-#, fuzzy
-msgid ""
-"Few humans fathom the secrets of light and dark magic and retain their "
-"sanity. Those that can master that balance become Shadow Lords, fully "
-"existing neither in the world of light nor the world of darkness. No longer "
-"needing physical weapons, they are fearsome to both their enemies and those "
-"they fight alongside."
-msgstr ""
-"少數人類能夠洞悉光明與黑暗魔法的奧秘並保持理智。能夠掌握這種平衡的人成為暗影"
-"領主，他們既不在光明的世界也不在黑暗的世界中完全存在。不再需要物理武器，他們"
-"對敵人和盟友都是一種恐懼的存在。"
-
-#. [attack]: type=arcane
-#. Translation for this weapon can be taken from liberty textdomain
-#: data/campaigns/Eastern_Invasion/units/Human_Shadow_Lord.cfg:36
-msgid "astral blade"
-msgstr "星刃"
-
-#. [attack]: type=impact
-#. The secondary attack of this unit is named shadow wave, known from the Dark Adept line
-#. The secondary attack of this unit is named shadow wave (same as the Dark Sorcerer’s)
-#: data/campaigns/Eastern_Invasion/units/Human_Shadow_Lord.cfg:49
-#: data/campaigns/Eastern_Invasion/units/Human_Shadow_Mage.cfg:49
-msgid "blast wave"
-msgstr "冲击波"
-
-#. [unit_type]: id=Shadow Mage, race=human, gender=female
-#. In the liberty textdomain exists a male unit with that name
-#: data/campaigns/Eastern_Invasion/units/Human_Shadow_Mage.cfg:6
-msgid "female^Shadow Mage"
-msgstr "暗影法师"
-
-# Translated by ollama with model qwen2.5:14b.
-#. [unit_type]: id=Shadow Mage, race=human, gender=female
-#: data/campaigns/Eastern_Invasion/units/Human_Shadow_Mage.cfg:23
-#, fuzzy
-msgid ""
-"Obsessive study over the forces of light and dark have turned the shadow "
-"mages into feared fighters. Cloaked in mist, they have been known to vanish "
-"into the night swifter than any ghost. While their zealous study has left "
-"their bodies exhausted and enfeebled, they instead channel their energies "
-"into devastatingly accurate melee attacks."
-msgstr ""
-"沉迷于光明与黑暗力量的研究，影法师们变成了令人畏惧的战士。他们身披迷雾，在夜"
-"色中消失得比任何鬼魂都要迅速。尽管他们的狂热研究使身体疲惫虚弱，但他们却将能"
-"量倾注于极具破坏力的近战攻击之中。"
-
 #. [attack]: type=fire
 #: data/campaigns/Eastern_Invasion/units/Human_Terraent_Paladin.cfg:48
 msgid "blessed lance"
@@ -13342,8 +13332,8 @@ msgstr "<i>黑暗吞噬灵魂。</i>"
 #. [item_dialog_musttake]
 #. Button label for 'take an item'
 #: data/campaigns/Eastern_Invasion/utils/items.cfg:37
-#: data/campaigns/Eastern_Invasion/utils/items.cfg:1083
-#: data/campaigns/Eastern_Invasion/utils/items.cfg:1239
+#: data/campaigns/Eastern_Invasion/utils/items.cfg:1097
+#: data/campaigns/Eastern_Invasion/utils/items.cfg:1253
 #, fuzzy
 #| msgid "Take it."
 msgid "Take"
@@ -13352,7 +13342,7 @@ msgstr "拿走它。"
 #. [item_dialog]: description={ITEM_DESC}
 #. Button label for 'leave an item'
 #: data/campaigns/Eastern_Invasion/utils/items.cfg:39
-#: data/campaigns/Eastern_Invasion/utils/items.cfg:1084
+#: data/campaigns/Eastern_Invasion/utils/items.cfg:1098
 #, fuzzy
 #| msgid "Leave it."
 msgid "Leave"
@@ -13510,11 +13500,19 @@ msgid "Baneblade"
 msgstr "毒刃"
 
 #: data/campaigns/Eastern_Invasion/utils/items.cfg:632
+#, fuzzy
+#| msgid ""
+#| "This incorporeal sword resembles those wielded by undead wraiths. Any "
+#| "mortal brave enough to wield it becomes <i><b>chaotic</b></i> and lashes "
+#| "out at their foes with reckless abandon.\n"
+#| "<i><b>6x4 arcane</b></i> damage, <i><b>drains</b></i>, <i><b>berserk</b></"
+#| "i>."
 msgid ""
 "This incorporeal sword resembles those wielded by undead wraiths. Any mortal "
 "brave enough to wield it becomes <i><b>chaotic</b></i> and lashes out at "
 "their foes with reckless abandon.\n"
-"<i><b>6x4 arcane</b></i> damage, <i><b>drains</b></i>, <i><b>berserk</b></i>."
+"<i><b>6x4 arcane</b></i> damage, <i><b>drains</b></i>, <i><b>berserk</b></"
+"i>. Always used on defense."
 msgstr ""
 "这把无形的剑类似于亡灵幽灵挥舞的剑。任何有足够勇气挥舞它的凡人都会变得 <i><b>"
 "混沌</b></i>，并肆无忌惮地猛烈攻击敌人。\n"
@@ -13647,7 +13645,7 @@ msgstr "我不会使用这样的黑暗魔法造物，尽管我不会介意我的
 msgid "plague staff"
 msgstr "瘟疫法杖"
 
-#: data/campaigns/Eastern_Invasion/utils/items.cfg:934
+#: data/campaigns/Eastern_Invasion/utils/items.cfg:948
 msgid "Drop Plague Staff"
 msgstr "放下瘟疫法杖"
 
@@ -13657,7 +13655,7 @@ msgstr "放下瘟疫法杖"
 #. randomly getting a falcon, spider, wolf or sand scorpion corpse. Here “crown” means “top of head”, or “top of cephalothorax”.
 #. Dacyn says this the first time a corpse is recruited, and this event could happen in almost any scenario from S07b onwards.
 #. Even before picking up the amulet, he’s showing a level of interest that might get a student expelled from the Academy on Alduin
-#: data/campaigns/Eastern_Invasion/utils/items.cfg:979
+#: data/campaigns/Eastern_Invasion/utils/items.cfg:993
 #, fuzzy
 msgid ""
 "Fascinating. The necromantic magic concentrates in the subject’s crown, "
@@ -13668,21 +13666,21 @@ msgstr ""
 # Translated by ollama with model qwen2.5:14b.
 #. [message]: speaker=Owaec
 #. First time a corpse is recruited by the wielder of the plague staff.
-#: data/campaigns/Eastern_Invasion/utils/items.cfg:984
+#: data/campaigns/Eastern_Invasion/utils/items.cfg:998
 #, fuzzy
 msgid "A disgusting abomination! I lament living in such times..."
 msgstr "一个令人作呕的怪物！我哀叹生活在这个时代……"
 
 #. [object]
-#: data/campaigns/Eastern_Invasion/utils/items.cfg:1042
+#: data/campaigns/Eastern_Invasion/utils/items.cfg:1056
 msgid "Gwza-Alswdan"
 msgstr "瓜扎-奥苏丹"
 
 # Translated by ollama with model qwen2.5:14b.
 #. [item_dialog]: description={ITEM_DESC}
 #. [item_dialog_musttake]
-#: data/campaigns/Eastern_Invasion/utils/items.cfg:1080
-#: data/campaigns/Eastern_Invasion/utils/items.cfg:1236
+#: data/campaigns/Eastern_Invasion/utils/items.cfg:1094
+#: data/campaigns/Eastern_Invasion/utils/items.cfg:1250
 #, fuzzy
 msgid ""
 "<span size='small'><i>  (Elixirs only last for 1 scenario.)</i></span>\n"
@@ -13694,12 +13692,12 @@ msgstr ""
 "<span size='small'><i>拾取物品会消耗你的移动和攻击机会。</i></span>\n"
 "<b></b>"
 
-#: data/campaigns/Eastern_Invasion/utils/items.cfg:1109
+#: data/campaigns/Eastern_Invasion/utils/items.cfg:1123
 msgid "Elixir of Water Breathing"
 msgstr "水下呼吸药水"
 
 # Translated by ollama with model qwen2.5:14b.
-#: data/campaigns/Eastern_Invasion/utils/items.cfg:1110
+#: data/campaigns/Eastern_Invasion/utils/items.cfg:1124
 #, fuzzy
 msgid ""
 "This shimmering blue vial grants its drinker normal movement and defense in "
@@ -13708,31 +13706,31 @@ msgstr "这个闪烁着蓝色光芒的药瓶能让饮使用者在沼泽和浅水
 
 # Translated by ollama with model qwen2.5:14b.
 #. [floating_text]
-#: data/campaigns/Eastern_Invasion/utils/items.cfg:1130
+#: data/campaigns/Eastern_Invasion/utils/items.cfg:1144
 #, fuzzy
 msgid "<span color='#00FFFF' size='x-small'>water breathing</span>"
 msgstr "<span color='#00FFFF' size='x-small'>水中呼吸</span>"
 
 #. [trait]: id=TRAIT_waterbreathing
-#: data/campaigns/Eastern_Invasion/utils/items.cfg:1142
+#: data/campaigns/Eastern_Invasion/utils/items.cfg:1156
 msgid "waterbreathing"
 msgstr "水下呼吸"
 
 # Translated by ollama with model qwen2.5:14b.
 #. [trait]: id=TRAIT_waterbreathing
-#: data/campaigns/Eastern_Invasion/utils/items.cfg:1143
+#: data/campaigns/Eastern_Invasion/utils/items.cfg:1157
 #, fuzzy
 msgid ""
 "An elixir of waterbreathing has given this unit normal movement and defense "
 "in swamp and shallow water."
 msgstr "一瓶水下呼吸药剂让该单位在沼泽和浅水中拥有正常的移动和防御能力。"
 
-#: data/campaigns/Eastern_Invasion/utils/items.cfg:1176
+#: data/campaigns/Eastern_Invasion/utils/items.cfg:1190
 msgid "Elixir of Elements"
 msgstr "元素药水"
 
 # Translated by ollama with model qwen2.5:14b.
-#: data/campaigns/Eastern_Invasion/utils/items.cfg:1177
+#: data/campaigns/Eastern_Invasion/utils/items.cfg:1191
 #, fuzzy
 msgid ""
 "This bubbling yellow vial grants immunity to both fire and cold. It also "
@@ -13741,19 +13739,19 @@ msgstr "这个沸腾的黄色药瓶能让你免疫火焰和寒冷，但它也会
 
 # Translated by ollama with model qwen2.5:14b.
 #. [floating_text]
-#: data/campaigns/Eastern_Invasion/utils/items.cfg:1197
+#: data/campaigns/Eastern_Invasion/utils/items.cfg:1211
 #, fuzzy
 msgid "<span color='#E8B923' size='x-small'>elemental resist</span>"
 msgstr "<span color='#E8B923' size='x-small'>元素抗性</span>"
 
 #. [trait]: id=TRAIT_elements
-#: data/campaigns/Eastern_Invasion/utils/items.cfg:1209
+#: data/campaigns/Eastern_Invasion/utils/items.cfg:1223
 msgid "elements"
 msgstr "元素"
 
 # Translated by ollama with model qwen2.5:14b.
 #. [trait]: id=TRAIT_elements
-#: data/campaigns/Eastern_Invasion/utils/items.cfg:1210
+#: data/campaigns/Eastern_Invasion/utils/items.cfg:1224
 #, fuzzy
 msgid ""
 "An elixir of elements has given this unit immunity to both fire and cold."
@@ -13761,14 +13759,14 @@ msgstr "一种元素酏剂赋予了这个单位免疫火焰和寒冷。"
 
 # Translated by ollama with model qwen2.5:14b.
 #. [item_dialog_musttake]
-#: data/campaigns/Eastern_Invasion/utils/items.cfg:1233
+#: data/campaigns/Eastern_Invasion/utils/items.cfg:1247
 #, fuzzy
 msgid "Elixir of Haste"
 msgstr "疾行神水"
 
 # Translated by ollama with model qwen2.5:14b.
 #. [item_dialog_musttake]
-#: data/campaigns/Eastern_Invasion/utils/items.cfg:1235
+#: data/campaigns/Eastern_Invasion/utils/items.cfg:1249
 #, fuzzy
 msgid ""
 "This saccharine green liquid grants +1 movement and +10% defense on all "
@@ -13779,21 +13777,21 @@ msgstr ""
 
 # Translated by ollama with model qwen2.5:14b.
 #. [floating_text]
-#: data/campaigns/Eastern_Invasion/utils/items.cfg:1258
+#: data/campaigns/Eastern_Invasion/utils/items.cfg:1272
 #, fuzzy
 msgid "<span color='#0BDA51' size='x-small'>haste</span>"
 msgstr "<span color='#0BDA51' size='x-small'>急速</span>"
 
 # Translated by ollama with model qwen2.5:14b.
 #. [trait]: id=TRAIT_haste
-#: data/campaigns/Eastern_Invasion/utils/items.cfg:1270
+#: data/campaigns/Eastern_Invasion/utils/items.cfg:1284
 #, fuzzy
 msgid "haste"
 msgstr "急速生效"
 
 # Translated by ollama with model qwen2.5:14b.
 #. [trait]: id=TRAIT_haste
-#: data/campaigns/Eastern_Invasion/utils/items.cfg:1271
+#: data/campaigns/Eastern_Invasion/utils/items.cfg:1285
 #, fuzzy
 msgid ""
 "An elixir of haste has given this unit +1 movement and +10% defense on all "
@@ -13801,13 +13799,13 @@ msgid ""
 msgstr "一瓶敏捷药水使该单位在所有地形上移动+1格且防御力提升10%。"
 
 # Translated by ollama with model qwen2.5:14b.
-#: data/campaigns/Eastern_Invasion/utils/items.cfg:1309
+#: data/campaigns/Eastern_Invasion/utils/items.cfg:1323
 #, fuzzy
 msgid "Elixir of Fury"
 msgstr "狂怒精华"
 
 # Translated by ollama with model qwen2.5:14b.
-#: data/campaigns/Eastern_Invasion/utils/items.cfg:1310
+#: data/campaigns/Eastern_Invasion/utils/items.cfg:1324
 #, fuzzy
 msgid ""
 "The red liquid in this vial sloshes violently, as though trying to escape. "
@@ -13819,21 +13817,21 @@ msgstr ""
 
 # Translated by ollama with model qwen2.5:14b.
 #. [floating_text]
-#: data/campaigns/Eastern_Invasion/utils/items.cfg:1330
+#: data/campaigns/Eastern_Invasion/utils/items.cfg:1344
 #, fuzzy
 msgid "<span color='#FF0000' size='x-small'>berserker fury</span>"
 msgstr "<span color='#FF0000' size='x-small'>狂战士怒火</span>"
 
 # Translated by ollama with model qwen2.5:14b.
 #. [trait]: id=TRAIT_fury
-#: data/campaigns/Eastern_Invasion/utils/items.cfg:1342
+#: data/campaigns/Eastern_Invasion/utils/items.cfg:1356
 #, fuzzy
 msgid "fury"
 msgstr "狂怒"
 
 # Translated by ollama with model qwen2.5:14b.
 #. [trait]: id=TRAIT_fury
-#: data/campaigns/Eastern_Invasion/utils/items.cfg:1343
+#: data/campaigns/Eastern_Invasion/utils/items.cfg:1357
 #, fuzzy
 msgid ""
 "An elixir of fury has given this unit <b><i>unlimited melee attacks</i></b> "
@@ -13997,6 +13995,44 @@ msgstr ""
 "克服了重重困难，这个单位经受了玛尔-拉瓦纳尔的监狱的恐怖和折磨，并活着讲述了这"
 "个故事。幸存者承受着被囚禁的沉重负担，但也了解了以前囚禁他们的人的强项和弱"
 "点。"
+
+#~ msgid "female^Shadow Lord"
+#~ msgstr "暗影领主"
+
+# Translated by ollama with model qwen2.5:14b.
+#, fuzzy
+#~ msgid ""
+#~ "Few humans fathom the secrets of light and dark magic and retain their "
+#~ "sanity. Those that can master that balance become Shadow Lords, fully "
+#~ "existing neither in the world of light nor the world of darkness. No "
+#~ "longer needing physical weapons, they are fearsome to both their enemies "
+#~ "and those they fight alongside."
+#~ msgstr ""
+#~ "少數人類能夠洞悉光明與黑暗魔法的奧秘並保持理智。能夠掌握這種平衡的人成為暗"
+#~ "影領主，他們既不在光明的世界也不在黑暗的世界中完全存在。不再需要物理武器，"
+#~ "他們對敵人和盟友都是一種恐懼的存在。"
+
+#~ msgid "astral blade"
+#~ msgstr "星刃"
+
+#~ msgid "blast wave"
+#~ msgstr "冲击波"
+
+#~ msgid "female^Shadow Mage"
+#~ msgstr "暗影法师"
+
+# Translated by ollama with model qwen2.5:14b.
+#, fuzzy
+#~ msgid ""
+#~ "Obsessive study over the forces of light and dark have turned the shadow "
+#~ "mages into feared fighters. Cloaked in mist, they have been known to "
+#~ "vanish into the night swifter than any ghost. While their zealous study "
+#~ "has left their bodies exhausted and enfeebled, they instead channel their "
+#~ "energies into devastatingly accurate melee attacks."
+#~ msgstr ""
+#~ "沉迷于光明与黑暗力量的研究，影法师们变成了令人畏惧的战士。他们身披迷雾，在"
+#~ "夜色中消失得比任何鬼魂都要迅速。尽管他们的狂热研究使身体疲惫虚弱，但他们却"
+#~ "将能量倾注于极具破坏力的近战攻击之中。"
 
 #~ msgid ""
 #~ "I suppose you have a right to know of the adversary we face. I will tell "
@@ -15167,8 +15203,8 @@ msgstr ""
 #, fuzzy
 #~ msgid "Drog"
 #~ msgstr ""
-#~ "恶龙氏族成员简称或称呼，可译为“德拉格”或保留原名“德罗格”。此处采用音译："
-#~ "“德罗格”"
+#~ "恶龙氏族成员简称或称呼，可译为“德拉格”或保留原名“德罗格”。此处采用音"
+#~ "译：“德罗格”"
 
 # Translated by ollama with model qwen2.5:14b.
 #, fuzzy

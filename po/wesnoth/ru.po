@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-07-20 22:54-0500\n"
+"POT-Creation-Date: 2025-08-19 10:14-0500\n"
 "PO-Revision-Date: 2024-04-13 23:08+0300\n"
 "Last-Translator: Artem Khrapov <artemkhrapov2001@yandex.ru>\n"
 "Language-Team: https://wiki.wesnoth.org/RussianTranslation\n"
@@ -275,7 +275,7 @@ msgstr ""
 #. [unstore_unit]
 #. [lua]: set_status
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:369
-#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:1066
+#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:1057
 msgid "poisoned"
 msgstr "отравлен"
 
@@ -4437,11 +4437,12 @@ msgstr "Lato"
 msgid "DejaVu Sans Mono"
 msgstr "DejaVu Sans Mono"
 
-# Важно! Используется обходной шрифт, так как Oldania ADF Std не поддерживает символы кириллицы! --kabachuha
 #. [fonts]
 #: data/hardwired/fonts.cfg:20
-msgid "Oldania ADF Std"
-msgstr "Monotype Corsiva Italic"
+#, fuzzy
+#| msgid "Description"
+msgid "WesScript"
+msgstr "Описание"
 
 #. [terrain_type]: id=urbanjungle
 #: data/internal/Urban_Jungle/terrain.cfg:8
@@ -4714,31 +4715,31 @@ msgstr "Недопустимый уровень устаревания (долж
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:1066
+#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:1057
 msgid "female^poisoned"
 msgstr "отравлена"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1073
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1064
 msgid "female^slowed"
 msgstr "замедлена"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1073
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1064
 msgid "slowed"
 msgstr "замедлен"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1079
+#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1070
 msgid "female^petrified"
 msgstr "окаменела"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1079
+#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1070
 msgid "petrified"
 msgstr "окаменел"
 
@@ -5094,6 +5095,7 @@ msgstr ""
 #: data/tips.cfg:181 data/tips.cfg:189 data/tips.cfg:198 data/tips.cfg:202
 #: data/tips.cfg:206 data/tips.cfg:214 data/tips.cfg:234 data/tips.cfg:242
 #: data/tips.cfg:250 data/tips.cfg:266 data/tips.cfg:271 data/tips.cfg:276
+#: data/tips.cfg:282
 msgid "<i>― The Wesnoth Tactical Guide</i>"
 msgstr "<i>— Веснотское тактическое руководство</i>"
 
@@ -5929,6 +5931,15 @@ msgstr ""
 "деревень. Даже если они займут поле с деревней, они не получат никакого "
 "бонуса к рейтингу защиты, хотя по прежнему будут лечиться."
 
+#. [tip]
+#: data/tips.cfg:281
+msgid ""
+"Nearly every hotkey can be customized in the <b>Preferences</b> > "
+"<b>Hotkeys</b> tab. Rebinding frequently used actions (Undo, Show Enemy "
+"Moves, End Turn, Recruit/Recall) to comfortable keys can noticeably speed up "
+"your turns and improve your quality of life."
+msgstr ""
+
 #. TRANSLATORS: In networked games, when one player has the choice
 #. between multiple advancements of a unit, this text is sent to
 #. other players. It will be embedded within a message.
@@ -5936,11 +5947,11 @@ msgstr ""
 msgid "waiting for^an advancement choice"
 msgstr "выбор продвижения"
 
-#: src/actions/attack.cpp:588 src/actions/attack.cpp:1391
+#: src/actions/attack.cpp:579 src/actions/attack.cpp:1382
 msgid "An invalid attacker weapon got selected."
 msgstr "Выбрано неправильное оружие атакующего."
 
-#: src/actions/attack.cpp:1086
+#: src/actions/attack.cpp:1077
 #, fuzzy
 #| msgid "Attacks: "
 msgid "attack^miss"
@@ -6055,6 +6066,10 @@ msgid ""
 msgstr ""
 "Стек повтора рассинхронизирован. Как правило, это вызвано испорченным файлом "
 "сохранения или нерабочим WML кодом в этом сценарии или эре. Подробности:"
+
+#: src/actions/undo.cpp:342
+msgid "Unhandled choices while redoing"
+msgstr ""
 
 #: src/addon/client.cpp:78
 msgid "Connecting to $server_address|..."
@@ -6275,77 +6290,77 @@ msgstr "Вы точно хотите продолжить?"
 msgid "Confirm"
 msgstr "Подтвердить"
 
-#: src/addon/info.cpp:256
+#: src/addon/info.cpp:252
 msgid "addon_type^Campaign"
 msgstr "Кампания"
 
-#: src/addon/info.cpp:258
+#: src/addon/info.cpp:254
 msgid "addon_type^Scenario"
 msgstr "Сценарий"
 
-#: src/addon/info.cpp:260
+#: src/addon/info.cpp:256
 msgid "addon_type^SP/MP Campaign"
 msgstr "Кампания для ОП/МП"
 
-#: src/addon/info.cpp:262
+#: src/addon/info.cpp:258
 msgid "addon_type^MP era"
 msgstr "Эра для МП"
 
-#: src/addon/info.cpp:264
+#: src/addon/info.cpp:260
 msgid "addon_type^MP faction"
 msgstr "Фракция для МП"
 
-#: src/addon/info.cpp:266
+#: src/addon/info.cpp:262
 msgid "addon_type^MP map-pack"
 msgstr "Пакет карт для МП"
 
-#: src/addon/info.cpp:268
+#: src/addon/info.cpp:264
 msgid "addon_type^MP scenario"
 msgstr "Сценарий для МП"
 
-#: src/addon/info.cpp:270
+#: src/addon/info.cpp:266
 msgid "addon_type^MP campaign"
 msgstr "Кампания для МП"
 
-#: src/addon/info.cpp:272
+#: src/addon/info.cpp:268
 msgid "addon_type^Modification"
 msgstr "Модификация"
 
-#: src/addon/info.cpp:274
+#: src/addon/info.cpp:270
 msgid "addon_type^Core"
 msgstr "Ядро"
 
-#: src/addon/info.cpp:276
+#: src/addon/info.cpp:272
 msgid "addon_type^Resources"
 msgstr "Ресурсы"
 
-#: src/addon/info.cpp:278
+#: src/addon/info.cpp:274
 msgid "addon_type^Other"
 msgstr "Другое"
 
-#: src/addon/info.cpp:280
+#: src/addon/info.cpp:276
 msgid "addon_type^(unknown)"
 msgstr "(неизвестен)"
 
-#: src/addon/info.cpp:317
+#: src/addon/info.cpp:313
 msgid "unit_byte^B"
 msgstr "Б"
 
-#: src/addon/manager_ui.cpp:81 src/addon/manager_ui.cpp:322
+#: src/addon/manager_ui.cpp:81 src/addon/manager_ui.cpp:320
 msgid "Network communication error."
 msgstr "Ошибка при подключении к сети."
 
-#: src/addon/manager_ui.cpp:84 src/addon/manager_ui.cpp:325
+#: src/addon/manager_ui.cpp:84 src/addon/manager_ui.cpp:323
 msgid "Remote host disconnected."
 msgstr "Удалённый хост отключился."
 
-#: src/addon/manager_ui.cpp:87 src/addon/manager_ui.cpp:328
+#: src/addon/manager_ui.cpp:87 src/addon/manager_ui.cpp:326
 msgid ""
 "A problem occurred when trying to create the files necessary to install this "
 "add-on."
 msgstr "Проблема с созданием файлов для полной установки этого аддона."
 
-#: src/addon/manager_ui.cpp:96 src/addon/manager_ui.cpp:337
+#: src/addon/manager_ui.cpp:96 src/addon/manager_ui.cpp:335
 msgid ""
 "A local file with add-on publishing information could not be read.\n"
 "\n"
@@ -6357,7 +6372,7 @@ msgstr ""
 "Файл: $path\n"
 "Сообщение об ошибке: $msg"
 
-#: src/addon/manager_ui.cpp:104 src/addon/manager_ui.cpp:343
+#: src/addon/manager_ui.cpp:104 src/addon/manager_ui.cpp:341
 msgid "The add-ons server address specified is not valid."
 msgstr "Указанный адрес сервера аддонов неверен."
 
@@ -6411,7 +6426,7 @@ msgstr[2] "Следующие аддоны были удалены:"
 msgid "An error occurred while downloading the add-ons list from the server."
 msgstr "Ошибка при скачивании списка аддонов с сервера."
 
-#: src/addon/manager_ui.cpp:315
+#: src/addon/manager_ui.cpp:313
 msgid ""
 "Could not find add-ons matching the ids $addon_ids on the add-on server."
 msgstr ""
@@ -6628,7 +6643,7 @@ msgstr "запрашиваю информацию о пользователе $n
 msgid "(A) — admin command"
 msgstr "(A) — админская команда"
 
-#: src/chat_command_handler.hpp:58 src/menu_events.cpp:1205
+#: src/chat_command_handler.hpp:58 src/menu_events.cpp:1209
 msgid "(admin only)"
 msgstr "(только для админов)"
 
@@ -6750,7 +6765,7 @@ msgstr "Показать версию."
 msgid "Request information about a nickname."
 msgstr "Запросить данные о нике."
 
-#: src/chat_command_handler.hpp:121 src/menu_events.cpp:1255
+#: src/chat_command_handler.hpp:121 src/menu_events.cpp:1259
 msgid "Clear chat history."
 msgstr "Очистить историю чата."
 
@@ -6902,60 +6917,60 @@ msgstr ""
 msgid "Invalid color in range: "
 msgstr "Неверный диапазон цветов:"
 
-#: src/game_config_manager.cpp:246 src/game_config_manager.cpp:256
-#: src/game_config_manager.cpp:268
+#: src/game_config_manager.cpp:243 src/game_config_manager.cpp:253
+#: src/game_config_manager.cpp:265
 msgid "Error validating data core."
 msgstr "Ошибка проверки ядра данных."
 
-#: src/game_config_manager.cpp:247
+#: src/game_config_manager.cpp:244
 msgid "Found a core without id attribute."
 msgstr "Найдено ядро без атрибута id."
 
-#: src/game_config_manager.cpp:248 src/game_config_manager.cpp:259
-#: src/game_config_manager.cpp:272
+#: src/game_config_manager.cpp:245 src/game_config_manager.cpp:256
+#: src/game_config_manager.cpp:269
 msgid "Skipping the core."
 msgstr "Пропуск ядра."
 
-#: src/game_config_manager.cpp:257 src/game_config_manager.cpp:269
-#: src/game_config_manager.cpp:292
+#: src/game_config_manager.cpp:254 src/game_config_manager.cpp:266
+#: src/game_config_manager.cpp:289
 msgid "Core ID: "
 msgstr "Ядро ID: "
 
-#: src/game_config_manager.cpp:258
+#: src/game_config_manager.cpp:255
 msgid "The ID is already in use."
 msgstr "Идентификатор уже используется."
 
-#: src/game_config_manager.cpp:270
+#: src/game_config_manager.cpp:267
 msgid "Core Path: "
 msgstr "Путь ядра: "
 
-#: src/game_config_manager.cpp:271
+#: src/game_config_manager.cpp:268
 msgid "File not found."
 msgstr "Файл не найден."
 
-#: src/game_config_manager.cpp:291 src/game_config_manager.cpp:303
+#: src/game_config_manager.cpp:288 src/game_config_manager.cpp:300
 msgid "Error loading core data."
 msgstr "Ошибка загрузки данных ядра."
 
-#: src/game_config_manager.cpp:293
+#: src/game_config_manager.cpp:290
 msgid "Error loading the core with named id."
 msgstr "Ошибка загрузки ядра с указанным id."
 
-#: src/game_config_manager.cpp:294
+#: src/game_config_manager.cpp:291
 msgid "Falling back to the default core."
 msgstr "Возврат к ядру по умолчанию."
 
-#: src/game_config_manager.cpp:304
+#: src/game_config_manager.cpp:301
 #, fuzzy
 #| msgid "Can't locate the default core."
 msgid "Can’t locate the default core."
 msgstr "Не удается найти ядро по умолчанию."
 
-#: src/game_config_manager.cpp:305
+#: src/game_config_manager.cpp:302
 msgid "The game will now exit."
 msgstr "Теперь игра завершит работу."
 
-#: src/game_config_manager.cpp:366
+#: src/game_config_manager.cpp:363
 msgid ""
 "Error loading custom game configuration files. The game will try without "
 "loading add-ons."
@@ -6963,7 +6978,7 @@ msgstr ""
 "Ошибка загрузки конфигурации пользовательских файлов игры. Игра попробует "
 "запуститься без загрузки дополнений."
 
-#: src/game_config_manager.cpp:373
+#: src/game_config_manager.cpp:370
 msgid ""
 "Error loading custom game configuration files. The game will fallback to the "
 "default core files."
@@ -6971,7 +6986,7 @@ msgstr ""
 "Ошибка загрузки конфигурации пользовательских файлов игры. Игра вернется к "
 "основным файлам по умолчанию."
 
-#: src/game_config_manager.cpp:382
+#: src/game_config_manager.cpp:379
 msgid ""
 "Error loading default core game configuration files. The game will now exit."
 msgstr ""
@@ -6981,7 +6996,7 @@ msgstr ""
 #. TRANSLATORS: For example, 'Cuttle Fish' units will not be able to advance to 'Kraken'.
 #. The substituted strings are unit ids, not translated names; hopefully any add-ons
 #. that trigger this will be quickly fixed and stop triggering the warning.
-#: src/game_config_manager.cpp:407
+#: src/game_config_manager.cpp:404
 msgid ""
 "Error: [advancefrom] no longer works. ‘$lower_level’ units will not be able "
 "to advance to ‘$higher_level’; please ask the add-on author to use "
@@ -6991,19 +7006,19 @@ msgstr ""
 "смогут продвинуться до ‘$higher_level’; пожалуйста, попросите автора аддона "
 "использовать вместо этого [modify_unit_type]."
 
-#: src/game_config_manager.cpp:444
+#: src/game_config_manager.cpp:441
 msgid "instead, use the macro with the same name in the [campaign] tag"
 msgstr ""
 "вместо этого. Используйте макрос с таким же названием под тегом [campaign]"
 
-#: src/game_config_manager.cpp:637
+#: src/game_config_manager.cpp:630
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "Следующий аддон имеет ошибки и не может быть загружен:"
 msgstr[1] "Следующие аддоны имеют ошибки и не могут быть загружены:"
 msgstr[2] "Следующие аддоны имеют ошибки и не могут быть загружены:"
 
-#: src/game_config_manager.cpp:641
+#: src/game_config_manager.cpp:634
 msgid "Please report this to the author or maintainer of this add-on."
 msgid_plural ""
 "Please report this to the respective authors or maintainers of these add-ons."
@@ -7040,7 +7055,7 @@ msgid "Anonymous player"
 msgstr "Анонимный игрок"
 
 #: src/game_initialization/connect_engine.cpp:879
-#: src/game_initialization/connect_engine.cpp:1122
+#: src/game_initialization/connect_engine.cpp:1123
 msgid "Computer Player"
 msgstr "Компьютер"
 
@@ -7048,24 +7063,24 @@ msgstr "Компьютер"
 msgid "$playername $side"
 msgstr "$playername $side"
 
-#: src/game_initialization/connect_engine.cpp:1118
+#: src/game_initialization/connect_engine.cpp:1119
 msgid "Network Player"
 msgstr "Сетевой игрок"
 
-#: src/game_initialization/connect_engine.cpp:1121
+#: src/game_initialization/connect_engine.cpp:1122
 msgid "Local Player"
 msgstr "Локальный игрок"
 
-#: src/game_initialization/connect_engine.cpp:1123
+#: src/game_initialization/connect_engine.cpp:1124
 msgid "Nobody"
 msgstr "Пусто"
 
-#: src/game_initialization/connect_engine.cpp:1126
+#: src/game_initialization/connect_engine.cpp:1127
 msgid "Reserved"
 msgstr "Занято"
 
 #: src/game_initialization/create_engine.cpp:74
-#: src/game_initialization/create_engine.cpp:682
+#: src/game_initialization/create_engine.cpp:683
 msgid "Map could not be loaded: "
 msgstr "Карта не может быть загружена: "
 
@@ -7081,43 +7096,43 @@ msgstr "недоступно."
 msgid "Custom map."
 msgstr "Пользовательская карта."
 
-#: src/game_initialization/create_engine.cpp:411
+#: src/game_initialization/create_engine.cpp:412
 #, fuzzy
 #| msgid "Multiplayer"
 msgid "multiplayer^MP"
 msgstr "Сетевая игра"
 
-#: src/game_initialization/depcheck.cpp:505
+#: src/game_initialization/depcheck.cpp:504
 msgid "Failed to resolve dependencies"
 msgstr "Не удалось разрешить зависимости"
 
-#: src/game_initialization/depcheck.cpp:505
+#: src/game_initialization/depcheck.cpp:504
 msgid "OK"
 msgstr "OK"
 
-#: src/game_initialization/depcheck.cpp:530
+#: src/game_initialization/depcheck.cpp:529
 #, fuzzy
 #| msgid "Scenario can't be activated. Some dependencies are missing: "
 msgid "Scenario can’t be activated. Some dependencies are missing: "
 msgstr "Сценарий нельзя активировать. Не хватает некоторых зависимостей: "
 
-#: src/game_initialization/depcheck.cpp:584
-#: src/game_initialization/depcheck.cpp:707
+#: src/game_initialization/depcheck.cpp:583
+#: src/game_initialization/depcheck.cpp:706
 msgid "No compatible eras found."
 msgstr "Совместимых эр не найдено."
 
-#: src/game_initialization/depcheck.cpp:599
+#: src/game_initialization/depcheck.cpp:598
 #, fuzzy
 #| msgid "Era can't be activated. Some dependencies are missing: "
 msgid "Era can’t be activated. Some dependencies are missing: "
 msgstr "Эру нельзя активировать. Не хватает некоторых зависимостей: "
 
-#: src/game_initialization/depcheck.cpp:652
-#: src/game_initialization/depcheck.cpp:744
+#: src/game_initialization/depcheck.cpp:651
+#: src/game_initialization/depcheck.cpp:743
 msgid "No compatible scenarios found."
 msgstr "Совместимых сценариев не найдено."
 
-#: src/game_initialization/depcheck.cpp:681
+#: src/game_initialization/depcheck.cpp:680
 msgid ""
 "Not all of the chosen modifications are compatible. Some of them will be "
 "disabled."
@@ -7128,15 +7143,15 @@ msgstr "Не все выбранные модификации совместим
 msgid "A component"
 msgstr "Компонент"
 
-#: src/game_initialization/flg_manager.cpp:221
+#: src/game_initialization/flg_manager.cpp:218
 msgid "Only random sides in the current era."
 msgstr "В текущей эре могут быть только случайные стороны."
 
-#: src/game_initialization/flg_manager.cpp:243
+#: src/game_initialization/flg_manager.cpp:240
 msgid "Unable to find a leader type for faction $faction"
 msgstr "Не могу найти тип лидера для фракции $faction"
 
-#: src/game_initialization/flg_manager.cpp:266
+#: src/game_initialization/flg_manager.cpp:263
 msgid "Cannot obtain genders for invalid leader $leader"
 msgstr "Не могу получить пол неправильного лидера $leader"
 
@@ -7186,7 +7201,7 @@ msgid "mp_game_available_slots^Full"
 msgstr "Все слоты заполнены"
 
 #: src/game_initialization/lobby_data.cpp:377
-#: src/game_initialization/lobby_data.cpp:379 src/savegame.cpp:652
+#: src/game_initialization/lobby_data.cpp:379 src/savegame.cpp:631
 msgid "Turn"
 msgstr "Ход"
 
@@ -7411,13 +7426,13 @@ msgstr "Неизвестный сценарий:  '$scenario|'"
 msgid "No campaigns are available."
 msgstr "Нет доступных кампаний."
 
-#: src/game_launcher.cpp:685 src/game_launcher.cpp:704 src/replay.cpp:663
+#: src/game_launcher.cpp:685 src/game_launcher.cpp:704
+#: src/hotkey/hotkey_handler_sp.cpp:327 src/replay.cpp:664 src/savegame.cpp:142
+#: src/savegame.cpp:184 src/savegame.cpp:288
 msgid "The file you have tried to load is corrupt"
 msgstr "Файл, который Вы пытались загрузить, поврежден"
 
 #: src/game_launcher.cpp:687 src/game_launcher.cpp:706
-#: src/hotkey/hotkey_handler_sp.cpp:338 src/savegame.cpp:149
-#: src/savegame.cpp:310
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Загружаемый файл поврежден: '"
 
@@ -7437,13 +7452,13 @@ msgstr "Ошибка при запуске сервера: "
 msgid "Connection failed: "
 msgstr "Подключение не удалось: "
 
-#: src/generators/default_map_generator_job.cpp:707
+#: src/generators/default_map_generator_job.cpp:708
 #, fuzzy
 #| msgid "Random maps with an odd width aren't supported."
 msgid "Random maps with an odd width aren’t supported."
 msgstr "Случайные карты с нечётной шириной не поддерживаются."
 
-#: src/generators/default_map_generator_job.cpp:964
+#: src/generators/default_map_generator_job.cpp:965
 #, fuzzy
 #| msgid ""
 #| "No valid castle location found. Too many or too few mountain hexes? "
@@ -7590,81 +7605,81 @@ msgstr "нет"
 msgid "yes"
 msgstr "да"
 
-#: src/help/help_impl.cpp:398
+#: src/help/help_impl.cpp:386
 msgid "Only available during a scenario."
 msgstr "Доступно только в сценарии."
 
-#: src/help/help_impl.cpp:399 src/help/help_impl.cpp:438
+#: src/help/help_impl.cpp:387 src/help/help_impl.cpp:426
 msgid "Time of Day Schedule"
 msgstr "Распорядок времени суток"
 
-#: src/help/help_impl.cpp:429
+#: src/help/help_impl.cpp:417
 msgid "Lawful Bonus:"
 msgstr "Преимущество Порядочных:"
 
-#: src/help/help_impl.cpp:430
+#: src/help/help_impl.cpp:418
 msgid "Neutral Bonus:"
 msgstr "Преимущество Нейтральных:"
 
-#: src/help/help_impl.cpp:431
+#: src/help/help_impl.cpp:419
 msgid "Chaotic Bonus:"
 msgstr "Преимущество Хаотичных:"
 
-#: src/help/help_impl.cpp:432
+#: src/help/help_impl.cpp:420
 msgid "Liminal Bonus:"
 msgstr "Преимущество Теневых:"
 
-#: src/help/help_impl.cpp:433
+#: src/help/help_impl.cpp:421
 msgid "Schedule"
 msgstr "Расписание"
 
-#: src/help/help_impl.cpp:519
+#: src/help/help_impl.cpp:507
 #, fuzzy
 #| msgid "<header>text='Units with this special attack'</header>"
 msgid "Units with this special attack"
 msgstr "<header>text='Бойцы с этой особой атакой'</header>"
 
-#: src/help/help_impl.cpp:580
+#: src/help/help_impl.cpp:568
 #, fuzzy
 #| msgid "<header>text='Units with this ability'</header>"
 msgid "Units with this ability"
 msgstr "<header>text='Бойцы с этой способностью'</header>"
 
-#: src/help/help_impl.cpp:616
+#: src/help/help_impl.cpp:604
 msgid "Factions"
 msgstr "Фракции"
 
-#: src/help/help_impl.cpp:664
+#: src/help/help_impl.cpp:652
 msgid "Races: "
 msgstr "Расы: "
 
-#: src/help/help_impl.cpp:673 src/help/help_impl.cpp:1121
+#: src/help/help_impl.cpp:661 src/help/help_impl.cpp:1109
 msgid "Alignments: "
 msgstr "Тип: "
 
-#: src/help/help_impl.cpp:680
+#: src/help/help_impl.cpp:668
 msgid "Leaders"
 msgstr "Лидеры"
 
-#: src/help/help_impl.cpp:689
+#: src/help/help_impl.cpp:677
 msgid "Recruits"
 msgstr "Завербовано"
 
-#: src/help/help_impl.cpp:774 src/units/types.cpp:444
+#: src/help/help_impl.cpp:762 src/units/types.cpp:444
 msgid "No description available."
 msgstr "Описание недоступно."
 
-#: src/help/help_impl.cpp:884 src/help/help_impl.cpp:1098
+#: src/help/help_impl.cpp:872 src/help/help_impl.cpp:1086
 msgid "race^Miscellaneous"
 msgstr "Разное"
 
-#: src/help/help_impl.cpp:1121
+#: src/help/help_impl.cpp:1109
 msgid "Alignment: "
 msgstr "Тип: "
 
 #. TRANSLATORS: this is expected to say "[Dunefolk are] a group of units, all of whom are Humans",
 #. or "[Quenoth Elves are] a group of units, all of whom are Elves".
-#: src/help/help_impl.cpp:1140
+#: src/help/help_impl.cpp:1128
 #, fuzzy
 #| msgid ""
 #| "This is a group of units, all of whom are <ref>dst='$topic_id' "
@@ -7676,25 +7691,25 @@ msgstr ""
 "Это — группа бойцов, все из которых — <ref>dst='$topic_id' "
 "text='$help_taxonomy'</ref>."
 
-#: src/help/help_impl.cpp:1145
+#: src/help/help_impl.cpp:1133
 #, fuzzy
 #| msgid "<header>text='Subgroups of units within this group'</header>"
 msgid "Subgroups of units within this group"
 msgstr "<header>text='Подгруппы бойцов внутри этой группы'</header>"
 
-#: src/help/help_impl.cpp:1147
+#: src/help/help_impl.cpp:1135
 #, fuzzy
 #| msgid "<header>text='Groups of units within this race'</header>"
 msgid "Groups of units within this race"
 msgstr "<header>text='Группы бойцов среди этой расы'</header>"
 
-#: src/help/help_impl.cpp:1156
+#: src/help/help_impl.cpp:1144
 #, fuzzy
 #| msgid "<header>text='Units of this group'</header>"
 msgid "Units of this group"
 msgstr "<header>text='Бойцы этой группы'</header>"
 
-#: src/help/help_impl.cpp:1158
+#: src/help/help_impl.cpp:1146
 #, fuzzy
 #| msgid "<header>text='Units of this race'</header>"
 msgid "Units of this race"
@@ -7748,23 +7763,21 @@ msgstr "Воспроизвести с начала"
 msgid "(press $hotkey to deactivate)"
 msgstr "(нажмите $hotkey, чтобы деактивировать)"
 
-#: src/hotkey/hotkey_handler_sp.cpp:155 src/menu_events.cpp:2092
+#: src/hotkey/hotkey_handler_sp.cpp:155 src/menu_events.cpp:2096
 msgid "Planning mode activated!"
 msgstr "Режим планирования включён!"
 
-#: src/hotkey/hotkey_handler_sp.cpp:157 src/menu_events.cpp:2095
+#: src/hotkey/hotkey_handler_sp.cpp:157 src/menu_events.cpp:2099
 msgid "Planning mode deactivated!"
 msgstr "Режим планирования отключён!"
 
-#: src/hotkey/hotkey_handler_sp.cpp:326
-msgid "Do you want to load it anyway?"
-msgstr "Всё равно загрузить?"
-
-#: src/hotkey/hotkey_handler_sp.cpp:342
-msgid "The file you have tried to load has no replay information. "
+#: src/hotkey/hotkey_handler_sp.cpp:331
+#, fuzzy
+#| msgid "The file you have tried to load has no replay information. "
+msgid "The file you have tried to load has no replay information."
 msgstr "Выбранный файл не содержит информации, необходимой для повтора. "
 
-#: src/hotkey/hotkey_handler_sp.cpp:346
+#: src/hotkey/hotkey_handler_sp.cpp:335
 msgid "The file you have tried to load is not from the current session."
 msgstr "Выбранный файл не относится к текущей сессии."
 
@@ -7934,11 +7947,11 @@ msgstr[2] ""
 msgid "You have no units available to recruit."
 msgstr "Нет бойцов для вербовки."
 
-#: src/menu_events.cpp:390
+#: src/menu_events.cpp:392
 msgid "You are separated from your soldiers and may not recall them."
 msgstr "Вы отделены от ваших солдат и не можете их призвать."
 
-#: src/menu_events.cpp:409
+#: src/menu_events.cpp:411
 msgid ""
 "There are no troops available to recall.\n"
 "(You must have veteran survivors from a previous scenario.)"
@@ -7946,89 +7959,89 @@ msgstr ""
 "Нет войск для призыва.\n"
 "(У Вас должны быть уцелевшие бойцы с прошлого сценария.)"
 
-#: src/menu_events.cpp:414
+#: src/menu_events.cpp:416
 #, fuzzy
 #| msgid "You currently can't recall at the highlighted location."
 msgid "You currently can’t recall at the highlighted location."
 msgstr "Вы сейчас не можете призывать на обозначенном поле."
 
-#: src/menu_events.cpp:442
+#: src/menu_events.cpp:444
 msgid "You must have at least 1 gold piece to recall a unit."
 msgid_plural "You must have at least $cost gold pieces to recall this unit."
 msgstr[0] "У Вас должна быть хотя бы $cost золотая монета для призыва бойца."
 msgstr[1] "У Вас должны быть хотя бы $cost золотые монеты для призыва бойца."
 msgstr[2] "У Вас должно быть хотя бы $cost золотых монет для призыва бойца."
 
-#: src/menu_events.cpp:587
+#: src/menu_events.cpp:589
 msgid "You cannot end your turn yet!"
 msgstr "Вам пока нельзя закончить ход!"
 
-#: src/menu_events.cpp:602
+#: src/menu_events.cpp:604
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr ""
 "Вы еще не начинали свой ход. Вы действительно хотите завершить свой ход?"
 
-#: src/menu_events.cpp:611
+#: src/menu_events.cpp:613
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr ""
 "Некоторые бойцы еще не сделали ход. Вы действительно хотите завершить свой "
 "ход?"
 
-#: src/menu_events.cpp:620
+#: src/menu_events.cpp:622
 msgid "Some units have not moved. Do you really want to end your turn?"
 msgstr ""
 "Некоторые бойцы еще не ходили. Вы действительно хотите завершить свой ход?"
 
-#: src/menu_events.cpp:676
+#: src/menu_events.cpp:678
 msgid "Rename Unit"
 msgstr "Переименовать бойца"
 
-#: src/menu_events.cpp:677 src/reports.cpp:176
+#: src/menu_events.cpp:679 src/reports.cpp:176
 msgid "Name:"
 msgstr "Имя:"
 
-#: src/menu_events.cpp:851
+#: src/menu_events.cpp:855
 msgid "Clear Labels"
 msgstr "Удалить метки"
 
-#: src/menu_events.cpp:852
+#: src/menu_events.cpp:856
 msgid "Are you sure you want to clear map labels?"
 msgstr "Вы уверены, что хотите удалить метки на карте?"
 
-#: src/menu_events.cpp:1056
+#: src/menu_events.cpp:1060
 msgid "Search"
 msgstr "Поиск"
 
-#: src/menu_events.cpp:1196
+#: src/menu_events.cpp:1200
 msgid "(D) — debug only, (N) — network only, (A) — admin only"
 msgstr ""
 "(D) — отладочная команда, (N) — сетевая команда, (A) — админская команда"
 
-#: src/menu_events.cpp:1203
+#: src/menu_events.cpp:1207
 msgid "(debug command)"
 msgstr "(отладочная команда)"
 
-#: src/menu_events.cpp:1204
+#: src/menu_events.cpp:1208
 msgid "(network only)"
 msgstr "(сетевая команда)"
 
-#: src/menu_events.cpp:1206
+#: src/menu_events.cpp:1210
 msgid "(not during other events)"
 msgstr "(не во время других событий)"
 
-#: src/menu_events.cpp:1236
+#: src/menu_events.cpp:1240
 msgid "Refresh gui."
 msgstr "Обновить экран."
 
-#: src/menu_events.cpp:1237
+#: src/menu_events.cpp:1241
 msgid "Switch a side to/from AI control."
 msgstr "Отдать управление над стороной ИИ или человеку."
 
 #. TRANSLATORS: These are the arguments accepted by the "droid" command,
 #. which must be a side-number and then optionally one of "on", "off" or "full".
 #. As with the command's name, "on", "off" and "full" are hardcoded, and shouldn't change in the translation.
-#: src/menu_events.cpp:1241
+#: src/menu_events.cpp:1245
 msgid ""
 "[<side> [on/off/full]]\n"
 "“on” = enable but retain vision, “full” = as if it’s controlled by another "
@@ -8038,59 +8051,59 @@ msgstr ""
 "“on” = передать управление ИИ, но продолжить наблюдать за ней; “full” = как "
 "если бы ей управлял другой игрок"
 
-#: src/menu_events.cpp:1242
+#: src/menu_events.cpp:1246
 msgid "Change terrain type of current hex"
 msgstr "Сменить тип местности выбранного поля"
 
 #. TRANSLATORS: [both|base|overlay] are hardcoded literal arguments and shouldn't be translated.
-#: src/menu_events.cpp:1244
+#: src/menu_events.cpp:1248
 msgid "<terrain type> [both|base|overlay]"
 msgstr "<тип местности> [both|base|overlay]"
 
-#: src/menu_events.cpp:1245
+#: src/menu_events.cpp:1249
 msgid "Switch a side to/from idle state."
 msgstr "Заморозить/разморозить сторону."
 
 #. TRANSLATORS: These are the arguments accepted by the "idle" command,
 #. which must be a side-number and then optionally "on" or "off".
 #. As with the command's name, "on" and "off" are hardcoded, and shouldn't change in the translation.
-#: src/menu_events.cpp:1249
+#: src/menu_events.cpp:1253
 msgid "command_idle^[<side> [on/off]]"
 msgstr "command_idle^[<сторона> [on/off]]"
 
-#: src/menu_events.cpp:1250
+#: src/menu_events.cpp:1254
 msgid "Change the in-game theme."
 msgstr "Поменять тему игры."
 
-#: src/menu_events.cpp:1252
+#: src/menu_events.cpp:1256
 msgid "<side> <nickname>"
 msgstr "<сторона> <ник>"
 
-#: src/menu_events.cpp:1252
+#: src/menu_events.cpp:1256
 msgid "Assign control of a side to a different player or observer."
 msgstr "Отдать контроль над стороной другому игроку или зрителю."
 
-#: src/menu_events.cpp:1253
+#: src/menu_events.cpp:1257
 msgid "Query the controller status of a side."
 msgstr "Узнать, кто контролирует сторону."
 
-#: src/menu_events.cpp:1254
+#: src/menu_events.cpp:1258
 msgid "<side>"
 msgstr "<сторона>"
 
-#: src/menu_events.cpp:1256
+#: src/menu_events.cpp:1260
 msgid "Debug foreground terrain."
 msgstr "Отладка верхнего слоя местности."
 
-#: src/menu_events.cpp:1258
+#: src/menu_events.cpp:1262
 msgid "Debug layers from terrain under the mouse."
 msgstr "Отладка слоёв местности под курсором."
 
-#: src/menu_events.cpp:1259
+#: src/menu_events.cpp:1263
 msgid "Display and log fps (Frames Per Second)."
 msgstr "Показывать и записывать FPS (кадров в секунду)."
 
-#: src/menu_events.cpp:1260
+#: src/menu_events.cpp:1264
 #, fuzzy
 #| msgid ""
 #| "Similar to the 'fps' command, but also forces everything to redraw "
@@ -8102,41 +8115,41 @@ msgstr ""
 "Схоже с командой «fps», но кроме того вызывает перерисовку всего, а не "
 "только изменившихся сущностей."
 
-#: src/menu_events.cpp:1261
+#: src/menu_events.cpp:1265
 msgid "Save game."
 msgstr "Сохранить игру."
 
-#: src/menu_events.cpp:1263
+#: src/menu_events.cpp:1267
 msgid "Quit game."
 msgstr "Выйти из игры."
 
-#: src/menu_events.cpp:1266
+#: src/menu_events.cpp:1270
 msgid "Save and quit."
 msgstr "Сохраниться и выйти."
 
-#: src/menu_events.cpp:1268
+#: src/menu_events.cpp:1272
 msgid "Ignore replay errors."
 msgstr "Игнорировать ошибки в реплее."
 
-#: src/menu_events.cpp:1269
+#: src/menu_events.cpp:1273
 msgid "Disable autosaves."
 msgstr "Отключить автосохранение."
 
-#: src/menu_events.cpp:1271
+#: src/menu_events.cpp:1275
 msgid "<id>"
 msgstr "<id>"
 
-#: src/menu_events.cpp:1271
+#: src/menu_events.cpp:1275
 #, fuzzy
 #| msgid "Advance to the next scenario, or scenario identified by 'id'"
 msgid "Advance to the next scenario, or scenario identified by ‘id’"
 msgstr "Перейти к следующему сценарию, или сценарию 'id'"
 
-#: src/menu_events.cpp:1273
+#: src/menu_events.cpp:1277
 msgid "Choose next scenario"
 msgstr "Выберите следующий сценарий"
 
-#: src/menu_events.cpp:1276
+#: src/menu_events.cpp:1280
 msgid ""
 "Change turn number (and time of day), or increase by one if no number is "
 "specified."
@@ -8144,79 +8157,79 @@ msgstr ""
 "Изменить номер хода (и время дня), или увеличить его на один, если значение "
 "не указано."
 
-#: src/menu_events.cpp:1276
+#: src/menu_events.cpp:1280
 msgid "[turn]"
 msgstr "[ход]"
 
-#: src/menu_events.cpp:1279
+#: src/menu_events.cpp:1283
 msgid ""
 "Change turn limit, or turn the turn limit off if no number is specified or "
 "it’s −1."
 msgstr ""
 "Изменить лимит ходов, или отключить совсем, если значение не указано или -1."
 
-#: src/menu_events.cpp:1279
+#: src/menu_events.cpp:1283
 msgid "[limit]"
 msgstr "[лимит]"
 
-#: src/menu_events.cpp:1281
+#: src/menu_events.cpp:1285
 msgid "Turn debug mode on."
 msgstr "Включить режим отладки."
 
-#: src/menu_events.cpp:1282
+#: src/menu_events.cpp:1286
 msgid "Turn debug mode off."
 msgstr "Отключить режим отладки."
 
-#: src/menu_events.cpp:1284 src/menu_events.cpp:1288
+#: src/menu_events.cpp:1288 src/menu_events.cpp:1292
 msgid "<command>[;<command>...]"
 msgstr "<команда>[;<команда>...]"
 
-#: src/menu_events.cpp:1284
+#: src/menu_events.cpp:1288
 msgid "Execute a Lua statement."
 msgstr "Выполнить выражение Lua."
 
-#: src/menu_events.cpp:1286
+#: src/menu_events.cpp:1290
 msgid "Grant higher privileges to Lua scripts."
 msgstr "Дать скриптам на Lua высокий приоритет."
 
-#: src/menu_events.cpp:1287
+#: src/menu_events.cpp:1291
 msgid "Set the command used by the custom command hotkey"
 msgstr "Сменить команду на горячей клавише."
 
-#: src/menu_events.cpp:1290
+#: src/menu_events.cpp:1294
 msgid "Invoke a dialog allowing changing control of MP sides."
 msgstr "Вызвать диалог смены сторон в мультиплеере."
 
-#: src/menu_events.cpp:1291
+#: src/menu_events.cpp:1295
 msgid "Launch the gamestate inspector"
 msgstr "Запустить Инспектор состояния игры"
 
-#: src/menu_events.cpp:1293
+#: src/menu_events.cpp:1297
 msgid "<name>[=<command>]"
 msgstr "<имя>[=<команда>]"
 
-#: src/menu_events.cpp:1293
+#: src/menu_events.cpp:1297
 msgid "Set or show alias to a command"
 msgstr "Установить/показать алиас команды"
 
-#: src/menu_events.cpp:1295 src/menu_events.cpp:1300
+#: src/menu_events.cpp:1299 src/menu_events.cpp:1304
 msgid "<var>=<value>"
 msgstr "<переменная>=<значение>"
 
-#: src/menu_events.cpp:1295
+#: src/menu_events.cpp:1299
 msgid "Set a scenario variable."
 msgstr "Установить переменную в сценарии."
 
-#: src/menu_events.cpp:1296
+#: src/menu_events.cpp:1300
 msgid "<var>"
 msgstr "<переменная>"
 
-#: src/menu_events.cpp:1296
+#: src/menu_events.cpp:1300
 msgid "Show a scenario variable."
 msgstr "Посмотреть переменную в сценарии."
 
 #. TRANSLATORS: Do not translate the word "advances"; it is a hardcoded literal argument.
-#: src/menu_events.cpp:1299
+#: src/menu_events.cpp:1303
 msgid ""
 "Modify a unit variable. (Only top level keys are supported, and "
 "advances=<number>.)"
@@ -8224,85 +8237,85 @@ msgstr ""
 "Поменять переменную бойца. (Поддерживаются только ключи верхнего уровня и "
 "advances=<число>.)"
 
-#: src/menu_events.cpp:1306
+#: src/menu_events.cpp:1310
 msgid "Discover all units in help."
 msgstr "Раскрыть всех бойцов в справке."
 
-#: src/menu_events.cpp:1307
+#: src/menu_events.cpp:1311
 #, fuzzy
 #| msgid "'Undiscover' all units in help."
 msgid "‘Undiscover’ all units in help."
 msgstr "Скрыть всех бойцов в справке."
 
-#: src/menu_events.cpp:1308
+#: src/menu_events.cpp:1312
 msgid "<unit type id>"
 msgstr "<идентификатор типа бойца>"
 
-#: src/menu_events.cpp:1308
+#: src/menu_events.cpp:1312
 msgid "Create a unit."
 msgstr "Создать бойца."
 
-#: src/menu_events.cpp:1309
+#: src/menu_events.cpp:1313
 msgid "Toggle fog for the current player."
 msgstr "Переключить туман для текущей стороны."
 
-#: src/menu_events.cpp:1310
+#: src/menu_events.cpp:1314
 msgid "Toggle shroud for the current player."
 msgstr "Переключить пелену для текущей стороны."
 
-#: src/menu_events.cpp:1311
+#: src/menu_events.cpp:1315
 msgid "<amount>"
 msgstr "<количество>"
 
-#: src/menu_events.cpp:1311
+#: src/menu_events.cpp:1315
 msgid "Give gold to the current player."
 msgstr "Дать золота текущему игроку."
 
-#: src/menu_events.cpp:1312
+#: src/menu_events.cpp:1316
 msgid "<event name>"
 msgstr "<название события>"
 
-#: src/menu_events.cpp:1312
+#: src/menu_events.cpp:1316
 msgid "Fire a game event."
 msgstr "Запустить событие игры."
 
-#: src/menu_events.cpp:1315
+#: src/menu_events.cpp:1319
 msgid "Toggle overlaying of x,y coordinates on hexes."
 msgstr "Переключить отрисовку кодов x,y на сетке."
 
-#: src/menu_events.cpp:1318
+#: src/menu_events.cpp:1322
 msgid "Toggle overlaying of terrain codes on hexes."
 msgstr "Переключить отрисовку кодов местности на сетке."
 
-#: src/menu_events.cpp:1321
+#: src/menu_events.cpp:1325
 msgid "Toggle overlaying of number of bitmaps on hexes."
 msgstr "Переключить наложение растровых изображений на сетке."
 
-#: src/menu_events.cpp:1323
+#: src/menu_events.cpp:1327
 msgid "Toggle planning mode."
 msgstr "Переключить режим планирования."
 
-#: src/menu_events.cpp:1326
+#: src/menu_events.cpp:1330
 msgid "Access whiteboard options dialog."
 msgstr "Открыть настройки планировщика."
 
-#: src/menu_events.cpp:1439
+#: src/menu_events.cpp:1443
 msgid "Could not find label or unit containing the string ‘$search’."
 msgstr "Не могу найти метку или бойца с текстом «$search»."
 
-#: src/menu_events.cpp:1486
+#: src/menu_events.cpp:1490
 #, fuzzy
 #| msgid "Can't droid invalid side: '$side'."
 msgid "Can’t droid invalid side: ‘$side’."
 msgstr "Нельзя переключить на бота неверную сторону: '$side'."
 
-#: src/menu_events.cpp:1489
+#: src/menu_events.cpp:1493
 #, fuzzy
 #| msgid "Can't droid networked side: '$side'."
 msgid "Can’t droid networked side: ‘$side’."
 msgstr "Нельзя переключить на бота сетевую сторону: '$side'."
 
-#: src/menu_events.cpp:1501 src/menu_events.cpp:1517 src/menu_events.cpp:1549
+#: src/menu_events.cpp:1505 src/menu_events.cpp:1521 src/menu_events.cpp:1553
 #, fuzzy
 #| msgid ""
 #| "It is not allowed to change a side from AI to human control when it's not "
@@ -8313,31 +8326,31 @@ msgid ""
 msgstr ""
 "Нельзя переключить управление стороны с ИИ на игрока, пока идёт не Ваш ход."
 
-#: src/menu_events.cpp:1511 src/menu_events.cpp:1567
+#: src/menu_events.cpp:1515 src/menu_events.cpp:1571
 #, fuzzy
 #| msgid "Side '$side' controller is now controlled by: AI."
 msgid "Side ‘$side’ controller is now controlled by: AI."
 msgstr "Сторону '$side' теперь контролирует: бот."
 
-#: src/menu_events.cpp:1513
+#: src/menu_events.cpp:1517
 #, fuzzy
 #| msgid "Side '$side' is already droided."
 msgid "Side ‘$side’ is already droided."
 msgstr "Сторона '$side' уже управляется ботом."
 
-#: src/menu_events.cpp:1527 src/menu_events.cpp:1559
+#: src/menu_events.cpp:1531 src/menu_events.cpp:1563
 #, fuzzy
 #| msgid "Side '$side' controller is now controlled by: human."
 msgid "Side ‘$side’ controller is now controlled by: human."
 msgstr "Сторону '$side' теперь контролирует: человек."
 
-#: src/menu_events.cpp:1529
+#: src/menu_events.cpp:1533
 #, fuzzy
 #| msgid "Side '$side' is already not droided."
 msgid "Side ‘$side’ is already not droided."
 msgstr "Сторона '$side' уже не управляется ботом."
 
-#: src/menu_events.cpp:1533
+#: src/menu_events.cpp:1537
 #, fuzzy
 #| msgid ""
 #| "It is not allowed to change a side from human to AI control when it's not "
@@ -8348,19 +8361,19 @@ msgid ""
 msgstr ""
 "Нельзя переключить управление стороны с игрока на ИИ, пока идёт не Ваш ход."
 
-#: src/menu_events.cpp:1543
+#: src/menu_events.cpp:1547
 #, fuzzy
 #| msgid "Side '$side' controller is now fully controlled by: AI."
 msgid "Side ‘$side’ controller is now fully controlled by: AI."
 msgstr "Сторона '$side' теперь полностью управляется ИИ."
 
-#: src/menu_events.cpp:1545
+#: src/menu_events.cpp:1549
 #, fuzzy
 #| msgid "Side '$side' is already fully AI controlled."
 msgid "Side ‘$side’ is already fully AI controlled."
 msgstr "Сторона '$side' уже полностью управляется ИИ."
 
-#: src/menu_events.cpp:1570
+#: src/menu_events.cpp:1574
 #, fuzzy
 #| msgid ""
 #| "Invalid action provided for side '$side'. Valid actions are: on, off, "
@@ -8371,75 +8384,75 @@ msgstr ""
 "Стороне '$side' приписано недопустимое действие. Допустимы только: on, off, "
 "full."
 
-#: src/menu_events.cpp:1579
+#: src/menu_events.cpp:1583
 #, fuzzy
 #| msgid "Side '$side' is already fully AI controlled."
 msgid "Side ‘$side’ is not a human or AI player."
 msgstr "Сторона '$side' уже полностью управляется ИИ."
 
-#: src/menu_events.cpp:1615
+#: src/menu_events.cpp:1619
 #, fuzzy
 #| msgid "Can't idle invalid side: '$side'."
 msgid "Can’t idle invalid side: ‘$side’."
 msgstr "Нельзя заморозить неверную сторону: '$side'."
 
-#: src/menu_events.cpp:1620
+#: src/menu_events.cpp:1624
 #, fuzzy
 #| msgid "Can't idle networked side: '$side'."
 msgid "Can’t idle networked side: ‘$side’."
 msgstr "Нельзя заморозить сетевую сторону: '$side'."
 
-#: src/menu_events.cpp:1625
+#: src/menu_events.cpp:1629
 #, fuzzy
 #| msgid "Can't idle local ai side: '$side'."
 msgid "Can’t idle local ai side: ‘$side’."
 msgstr "Нельзя заморозить сторону локального бота: '$side'."
 
-#: src/menu_events.cpp:1671
+#: src/menu_events.cpp:1675
 #, fuzzy
 #| msgid "Can't change control of invalid side: '$side'."
 msgid "Can’t change control of invalid side: ‘$side’."
 msgstr "Не могу изменить управление неверной стороной: '$side'."
 
-#: src/menu_events.cpp:1681
+#: src/menu_events.cpp:1685
 #, fuzzy
 #| msgid "Can't change control of out-of-bounds side: '$side'."
 msgid "Can’t change control of out-of-bounds side: ‘$side’."
 msgstr "Не могу изменить управление вышедшей из пределов стороны: '$side'."
 
-#: src/menu_events.cpp:1698
+#: src/menu_events.cpp:1702
 #, fuzzy
 #| msgid "Can't query control of invalid side: '$side'."
 msgid "Can’t query control of invalid side: ‘$side’."
 msgstr "Не могу проверить управление неверной стороной: '$side'."
 
-#: src/menu_events.cpp:1705
+#: src/menu_events.cpp:1709
 #, fuzzy
 #| msgid "Can't query control of out-of-bounds side: '$side'."
 msgid "Can’t query control of out-of-bounds side: ‘$side’."
 msgstr "Не проверить управление вышедшей из пределов стороны: '$side'."
 
-#: src/menu_events.cpp:1827
+#: src/menu_events.cpp:1831
 msgid "Choose Scenario (Debug!)"
 msgstr "Выберите сценарий (Отладка!)"
 
-#: src/menu_events.cpp:1863
+#: src/menu_events.cpp:1867
 msgid "Debug mode activated!"
 msgstr "Режим отладки включён!"
 
-#: src/menu_events.cpp:1866
+#: src/menu_events.cpp:1870
 msgid "Debug mode not available in network games"
 msgstr "В сетевой игре отладочный режим недоступен"
 
-#: src/menu_events.cpp:1873
+#: src/menu_events.cpp:1877
 msgid "Debug mode deactivated!"
 msgstr "Режим отладки отключён!"
 
-#: src/menu_events.cpp:1893
+#: src/menu_events.cpp:1897
 msgid "WARNING! Unsafe Lua Mode"
 msgstr "ВНИМАНИЕ! Небезопасный режим Lua"
 
-#: src/menu_events.cpp:1894
+#: src/menu_events.cpp:1898
 msgid ""
 "Executing Lua code in in this manner opens your computer to potential "
 "security breaches from any malicious add-ons or other programs you may have "
@@ -8453,15 +8466,15 @@ msgstr ""
 "\n"
 "Не продолжайте, если вы не знаете точно, что делаете."
 
-#: src/menu_events.cpp:1899
+#: src/menu_events.cpp:1903
 msgid "Unsafe mode enabled!"
 msgstr "Включён небезопасный режим!"
 
-#: src/menu_events.cpp:1948
+#: src/menu_events.cpp:1952
 msgid "Variable not found"
 msgstr "Переменная не найдена"
 
-#: src/menu_events.cpp:1981
+#: src/menu_events.cpp:1985
 #, fuzzy
 #| msgid ""
 #| "Debug command 'unit: $unit' failed: no unit selected or hovered over."
@@ -8470,7 +8483,7 @@ msgstr ""
 "Команда отладки 'unit: $unit' не сработала: нет выбранного бойца или бойца "
 "под курсором."
 
-#: src/menu_events.cpp:1999
+#: src/menu_events.cpp:2003
 #, fuzzy
 #| msgid ""
 #| "Invalid alignment: '$alignment', needs to be one of lawful, neutral, "
@@ -8482,29 +8495,29 @@ msgstr ""
 "Неизвестный характер: «$alignment», должен быть: «порядочный», либо "
 "«хаотичный», либо «теневой»."
 
-#: src/menu_events.cpp:2025
+#: src/menu_events.cpp:2029
 msgid "Do you wish to clear all of your discovered units from help?"
 msgstr "Вы точно хотите убрать всю информацию об открытых бойцах из справки?"
 
-#: src/menu_events.cpp:2039
+#: src/menu_events.cpp:2043
 msgid "Invalid unit type"
 msgstr "Неправильный тип бойца"
 
-#: src/menu_events.cpp:2046
+#: src/menu_events.cpp:2050
 msgid "Invalid location"
 msgstr "Неверное место"
 
-#: src/menu_events.cpp:2121
+#: src/menu_events.cpp:2125
 msgid "prompt^Command:"
 msgstr "Команда:"
 
-#: src/menu_events.cpp:2147
+#: src/menu_events.cpp:2151
 #, fuzzy
 #| msgid "prompt^Command:"
 msgid "prompt^Formula:"
 msgstr "Команда:"
 
-#: src/mouse_events.cpp:1293
+#: src/mouse_events.cpp:1307
 msgid ""
 "You cannot move your leader away from the keep with some planned recruits or "
 "recalls left."
@@ -8512,35 +8525,35 @@ msgstr ""
 "Вы не можете убрать лидера из цитадели до тех пор, пока у Вас остаются "
 "запланированные бойцы для вербовки или призыва."
 
-#: src/mouse_events.cpp:1397
+#: src/mouse_events.cpp:1411
 msgid "No Attacks"
 msgstr "Атаки отсутствуют"
 
-#: src/mouse_events.cpp:1397
+#: src/mouse_events.cpp:1411
 msgid "This unit has no usable weapons."
 msgstr "Этот боец нет имеет оружия."
 
-#: src/mouse_events.cpp:1479 src/mouse_events.cpp:1495
+#: src/mouse_events.cpp:1493 src/mouse_events.cpp:1509
 msgid "Other aspects: "
 msgstr "Прочее: "
 
-#: src/mouse_events.cpp:1508 src/mouse_events.cpp:1522
+#: src/mouse_events.cpp:1522 src/mouse_events.cpp:1536
 msgid "Weapon: "
 msgstr "Оружие: "
 
-#: src/mouse_events.cpp:1509 src/mouse_events.cpp:1523
+#: src/mouse_events.cpp:1523 src/mouse_events.cpp:1537
 msgid "Type: "
 msgstr "Тип: "
 
-#: src/mouse_events.cpp:1510 src/mouse_events.cpp:1524
+#: src/mouse_events.cpp:1524 src/mouse_events.cpp:1538
 msgid "Damage: "
 msgstr "Урон: "
 
-#: src/mouse_events.cpp:1511 src/mouse_events.cpp:1525
+#: src/mouse_events.cpp:1525 src/mouse_events.cpp:1539
 msgid "Attacks: "
 msgstr "Атак: "
 
-#: src/mouse_events.cpp:1512 src/mouse_events.cpp:1526
+#: src/mouse_events.cpp:1526 src/mouse_events.cpp:1540
 msgid "Chance to hit: "
 msgstr "Точность: "
 
@@ -8639,13 +8652,13 @@ msgstr "Ошибка синхронизации, нет смысла продо�
 msgid "Error details:"
 msgstr "Подробности ошибки:"
 
-#: src/play_controller.cpp:1244
+#: src/play_controller.cpp:1243
 msgid "Warning: broken campaign branches"
 msgstr "Предупреждение: разрыв ветвей кампании"
 
 #. TRANSLATORS: This is an error that will hopefully only be seen by UMC authors and by players who have already
 #. said "okay" to a "loading saves from an old version might not work" dialog.
-#: src/play_controller.cpp:1250
+#: src/play_controller.cpp:1249
 msgid ""
 "The next scenario is missing, you will not be able to finish this campaign."
 msgid_plural ""
@@ -8661,7 +8674,7 @@ msgstr[2] ""
 "Некоторые из возможных следующих сценариев отсутствуют, вероятно, Вы не "
 "сможете завершить эту кампанию."
 
-#: src/play_controller.cpp:1257
+#: src/play_controller.cpp:1256
 msgid ""
 "Please report the following missing scenario to the campaign’s author:\n"
 "$unknown_list|"
@@ -8678,12 +8691,12 @@ msgstr[2] ""
 "Пожалуйста, сообщите автору кампании о следующих отсутствующих сценариях:\n"
 "$unknown_list|"
 
-#: src/play_controller.cpp:1261
+#: src/play_controller.cpp:1260
 msgid "Once this is fixed, you will need to restart this scenario."
 msgstr ""
 "Как только это будет исправлено, Вам потребуется перезапустить сценарий."
 
-#: src/play_controller.cpp:1340
+#: src/play_controller.cpp:1339
 msgid "No objectives available"
 msgstr "Нет целей"
 
@@ -8717,31 +8730,31 @@ msgstr ""
 "над стороной необходимо передать. Вы можете использовать :droid, :control "
 "или :give_control ."
 
-#: src/playmp_controller.cpp:575
+#: src/playmp_controller.cpp:578
 msgid "Give control to their ally $player"
 msgstr "Дать контроль их союзнику $player"
 
-#: src/playmp_controller.cpp:584
+#: src/playmp_controller.cpp:587
 msgid "Give control to observer $player"
 msgstr "Дать контроль наблюдателю $player"
 
-#: src/playmp_controller.cpp:589
+#: src/playmp_controller.cpp:592
 msgid "Replace with AI"
 msgstr "Заменить ботом"
 
-#: src/playmp_controller.cpp:590
+#: src/playmp_controller.cpp:593
 msgid "Replace with local player"
 msgstr "Заменить локальным игроком"
 
-#: src/playmp_controller.cpp:591
+#: src/playmp_controller.cpp:594
 msgid "Set side to idle"
 msgstr "Заморозить сторону"
 
-#: src/playmp_controller.cpp:592
+#: src/playmp_controller.cpp:595
 msgid "Save and abort game"
 msgstr "Сохранить и завершить игру"
 
-#: src/playmp_controller.cpp:596
+#: src/playmp_controller.cpp:599
 msgid ""
 "$player who controlled side $side_drop has left the game. What do you want "
 "to do?"
@@ -9217,31 +9230,27 @@ msgstr "Обратный отсчет"
 
 #. TRANSLATORS: Day of week + month + day of month + year + 12-hour time, eg 'Tue Nov 02 2021, 1:59 PM'.
 #. Format for your locale.
-#: src/save_index.cpp:255
+#: src/save_index.cpp:251
 msgid "%a %b %d %Y, %I:%M %p"
 msgstr "%a %b %d %I:%M %p %Y"
 
 #. TRANSLATORS: Day of week + month + day of month + year + 24-hour time, eg 'Tue Nov 02 2021, 13:59'.
 #. Format for your locale.
-#: src/save_index.cpp:258
+#: src/save_index.cpp:254
 msgid "%a %b %d %Y, %H:%M"
 msgstr "%a %b %d %H:%M %Y"
 
 #. TRANSLATORS: This string is used as part of a filename, as in, "HttT-The Elves Besieged replay.gz"
-#: src/save_index.cpp:273 src/savegame.cpp:578
+#: src/save_index.cpp:269 src/savegame.cpp:557
 msgid "replay"
 msgstr "повтор"
 
-#: src/save_index.cpp:356 src/savegame.cpp:66 src/savegame.cpp:614
-#: src/savegame.cpp:616
+#: src/save_index.cpp:347 src/savegame.cpp:66 src/savegame.cpp:593
+#: src/savegame.cpp:595
 msgid "Auto-Save"
 msgstr "Автосохр"
 
-#: src/savegame.cpp:200 src/savegame.cpp:202
-msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
-msgstr "Внимание: загружаемый файл поврежден. Но мы попробуем его загрузить.\n"
-
-#: src/savegame.cpp:246
+#: src/savegame.cpp:228
 msgid ""
 "This save is from an old, unsupported version ($version_number|) and cannot "
 "be loaded."
@@ -9249,7 +9258,7 @@ msgstr ""
 "Это сохранение из старой, неподдерживаемой версии ($version_number|), и не "
 "может быть загружено."
 
-#: src/savegame.cpp:255
+#: src/savegame.cpp:237
 msgid ""
 "This save is from a different version of the game ($version_number|), and "
 "might not work with this version.\n"
@@ -9281,35 +9290,35 @@ msgstr ""
 "\n"
 "Вы желаете продолжить?"
 
-#: src/savegame.cpp:269 src/savegame.cpp:315
+#: src/savegame.cpp:251 src/savegame.cpp:293
 msgid "Load Game"
 msgstr "Загрузить игру"
 
-#: src/savegame.cpp:315
+#: src/savegame.cpp:293
 msgid "Replays are not supported in multiplayer mode."
 msgstr "Повторы не поддерживаются в многопользовательском режиме."
 
-#: src/savegame.cpp:322
+#: src/savegame.cpp:302
 msgid "This is not a multiplayer save."
 msgstr "Это не мультиплеерное сохранение."
 
-#: src/savegame.cpp:356
+#: src/savegame.cpp:335
 msgid "The game could not be saved: "
 msgstr "Игра не может быть сохранена: "
 
-#: src/savegame.cpp:425
+#: src/savegame.cpp:404
 msgid "Name: "
 msgstr "Название: "
 
-#: src/savegame.cpp:425
+#: src/savegame.cpp:404
 msgid "Save already exists. Do you want to overwrite it?"
 msgstr "Сохранение уже существует. Перезаписать?"
 
-#: src/savegame.cpp:426
+#: src/savegame.cpp:405
 msgid "Overwrite?"
 msgstr "Перезаписать?"
 
-#: src/savegame.cpp:433
+#: src/savegame.cpp:412
 #, fuzzy
 #| msgid ""
 #| "Save names should not end on '.gz' or '.bz2'. Please remove the extension."
@@ -9319,7 +9328,7 @@ msgstr ""
 "Имена сохранений не должны оканчиваться на '.gz' или '.bz2'. Выберите другое "
 "имя."
 
-#: src/savegame.cpp:438
+#: src/savegame.cpp:417
 msgid ""
 "Save names may not end with a dot, or contain two dots or any of the "
 "following characters:\n"
@@ -9329,31 +9338,31 @@ msgstr ""
 "или любой из следующих символов:\n"
 "    \" * / : < > ? \\ | ~"
 
-#: src/savegame.cpp:486
+#: src/savegame.cpp:465
 msgid "Saved"
 msgstr "Сохранено"
 
-#: src/savegame.cpp:486
+#: src/savegame.cpp:465
 msgid "The game has been saved."
 msgstr "Игра успешно сохранена."
 
-#: src/savegame.cpp:518 src/savegame.cpp:535
+#: src/savegame.cpp:497 src/savegame.cpp:514
 msgid "Could not write to file"
 msgstr "Не могу записать в файл"
 
-#: src/savegame.cpp:570
+#: src/savegame.cpp:549
 msgid "Save Replay"
 msgstr "Сохранить повтор"
 
-#: src/savegame.cpp:596
+#: src/savegame.cpp:575
 msgid "Could not auto save the game. Please save the game manually."
 msgstr "Автосохранение игры невозможно. Сохраните игру вручную."
 
-#: src/savegame.cpp:646
+#: src/savegame.cpp:625
 msgid "Save Game"
 msgstr "Сохранить игру"
 
-#: src/savegame.cpp:660
+#: src/savegame.cpp:639
 msgid "Game state is corrupted"
 msgstr "Игра повреждена"
 
@@ -9533,7 +9542,7 @@ msgstr "Команда отладки использована"
 msgid "A unit was created using debug mode during $player’s turn"
 msgstr "Боец был создан в режиме отладки во время хода $player"
 
-#: src/synced_user_choice.cpp:343
+#: src/synced_user_choice.cpp:344
 msgid "waiting for $desc from side $sides"
 msgid_plural "waiting for $desc from sides $sides"
 msgstr[0] "ожидание $desc от стороны $sides"
@@ -9549,7 +9558,7 @@ msgstr "ввода"
 
 #. TRANSLATORS: $color_id is the internal identifier of a side color, for example, 'lightred'.
 #. Translate the quotation marks only; leave "color_id" untranslated, as it's a variable name.
-#: src/team.cpp:990
+#: src/team.cpp:991
 msgid "“$color_id”"
 msgstr "«$color_id»"
 
@@ -9573,29 +9582,29 @@ msgstr "border_size должен быть между 0,0 и 0,5."
 msgid "Hotkey(s): "
 msgstr "Горячие клавиши: "
 
-#: src/time_of_day.cpp:44
+#: src/time_of_day.cpp:45
 msgid "Stub Time of Day"
 msgstr "Время суток-заглушка"
 
-#: src/time_of_day.cpp:45
+#: src/time_of_day.cpp:46
 msgid "This Time of Day is only a Stub!"
 msgstr "Это время суток - всего лишь заглушка!"
 
-#: src/units/abilities.cpp:1063
+#: src/units/abilities.cpp:1054
 msgid "Owned: "
 msgstr "Принадлежит: "
 
 #. TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
-#: src/units/abilities.cpp:1067
+#: src/units/abilities.cpp:1058
 msgid "Taught: "
 msgstr "Наставляемый: "
 
 #. TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
-#: src/units/abilities.cpp:1071
+#: src/units/abilities.cpp:1062
 msgid "Taught: (by an enemy): "
 msgstr "Наставляемый: (врагом): "
 
-#: src/units/abilities.cpp:1084
+#: src/units/abilities.cpp:1075
 msgid "Used by opponent: "
 msgstr "Оппонент использует: "
 
@@ -9608,7 +9617,7 @@ msgid "Parry:"
 msgstr "Парирование:"
 
 #. TRANSLATORS: Current value for WML code set_min_range, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:503
+#: src/units/attack_type.cpp:501
 #, fuzzy
 #| msgid "$number damage"
 #| msgid_plural "$number damage"
@@ -9616,7 +9625,7 @@ msgid "$number min range"
 msgstr "повреждение: $number"
 
 #. TRANSLATORS: Current value for WML code increase_min_range, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:510
+#: src/units/attack_type.cpp:508
 #, fuzzy
 #| msgid "<span color=\"$color\">$number_or_percent</span> damage"
 #| msgid_plural "<span color=\"$color\">$number_or_percent</span> damage"
@@ -9624,7 +9633,7 @@ msgid "<span color=\"$color\">$number_or_percent</span> min range"
 msgstr "<span color=\"$color\">$number_or_percent</span> повреждения"
 
 #. TRANSLATORS: Current value for WML code set_max_range, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:517
+#: src/units/attack_type.cpp:515
 #, fuzzy
 #| msgid "$number damage"
 #| msgid_plural "$number damage"
@@ -9632,7 +9641,7 @@ msgid "$number max range"
 msgstr "повреждение: $number"
 
 #. TRANSLATORS: Current value for WML code increase_max_range, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:524
+#: src/units/attack_type.cpp:522
 #, fuzzy
 #| msgid "<span color=\"$color\">$number_or_percent</span> damage"
 #| msgid_plural "<span color=\"$color\">$number_or_percent</span> damage"
@@ -9640,14 +9649,14 @@ msgid "<span color=\"$color\">$number_or_percent</span> max range"
 msgstr "<span color=\"$color\">$number_or_percent</span> повреждения"
 
 #. TRANSLATORS: Current value for WML code increase_damage, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:531
+#: src/units/attack_type.cpp:529
 msgid "<span color=\"$color\">$number_or_percent</span> damage"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> damage"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> повреждения"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> повреждения"
 msgstr[2] "<span color=\"$color\">$number_or_percent</span> повреждения"
 
-#: src/units/attack_type.cpp:540
+#: src/units/attack_type.cpp:538
 msgid "$number damage"
 msgid_plural "$number damage"
 msgstr[0] "повреждение: $number"
@@ -9655,7 +9664,7 @@ msgstr[1] "повреждение: $number"
 msgstr[2] "повреждение: $number"
 
 #. TRANSLATORS: Current value for WML code increase_attacks, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:549
+#: src/units/attack_type.cpp:547
 msgid "<span color=\"$color\">$number_or_percent</span> strike"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> strikes"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> удар"
@@ -9663,7 +9672,7 @@ msgstr[1] "<span color=\"$color\">$number_or_percent</span> удара"
 msgstr[2] "<span color=\"$color\">$number_or_percent</span> ударов"
 
 #. TRANSLATORS: Current value for WML code set_attacks, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:558
+#: src/units/attack_type.cpp:556
 msgid "$number strike"
 msgid_plural "$number strikes"
 msgstr[0] "$number удар"
@@ -9671,27 +9680,27 @@ msgstr[1] "$number удара"
 msgstr[2] "$number ударов"
 
 #. TRANSLATORS: Current value for WML code set_accuracy, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:567
+#: src/units/attack_type.cpp:565
 msgid "$number| accuracy"
 msgstr "$number| точных ударов"
 
 #. TRANSLATORS: Current value for WML code increase_accuracy, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:574
+#: src/units/attack_type.cpp:572
 msgid "<span color=\"$color\">$number_or_percent|%</span> accuracy"
 msgstr "<span color=\"$color\">$number_or_percent|%</span> точность"
 
 #. TRANSLATORS: Current value for WML code set_parry, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:581
+#: src/units/attack_type.cpp:579
 msgid "$number parry"
 msgstr "$number отражений ударов"
 
 #. TRANSLATORS: Current value for WML code increase_parry, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:588
+#: src/units/attack_type.cpp:586
 msgid "<span color=\"$color\">$number_or_percent</span> parry"
 msgstr "<span color=\"$color\">$number_or_percent</span> отражений ударов"
 
 #. TRANSLATORS: Current value for WML code set_movement_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:595
+#: src/units/attack_type.cpp:593
 msgid "$number movement point"
 msgid_plural "$number movement points"
 msgstr[0] "$number очко движения"
@@ -9699,7 +9708,7 @@ msgstr[1] "$number очка движения"
 msgstr[2] "$number очков движения"
 
 #. TRANSLATORS: Current value for WML code increase_movement_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:604
+#: src/units/attack_type.cpp:602
 msgid "<span color=\"$color\">$number_or_percent</span> movement point"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> movement points"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> очко движения"
@@ -9707,7 +9716,7 @@ msgstr[1] "<span color=\"$color\">$number_or_percent</span> очка движе�
 msgstr[2] "<span color=\"$color\">$number_or_percent</span> очков движения"
 
 #. TRANSLATORS: Current value for WML code set_attacks_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:613
+#: src/units/attack_type.cpp:611
 msgid "$number attack used"
 msgid_plural "$number attacks used"
 msgstr[0] "$number атака потрачена"
@@ -9715,7 +9724,7 @@ msgstr[1] "$number атаки потрачено"
 msgstr[2] "$number атак потрачено"
 
 #. TRANSLATORS: Current value for WML code increase_attacks_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:622
+#: src/units/attack_type.cpp:620
 msgid "<span color=\"$color\">$number_or_percent</span> attack used"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> attacks used"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> атака потрачена"
@@ -9797,34 +9806,34 @@ msgstr "Этот боец нет имеет оружия."
 msgid "This unit is a leader and cannot be dismissed."
 msgstr "Боец неуязвим. Никакая атака не может нанести ему урон."
 
-#: src/units/unit.cpp:2012
+#: src/units/unit.cpp:2010
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/units/unit.cpp:2018
+#: src/units/unit.cpp:2016
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "<span color=\"$color\">$number_or_percent</span> ЗД"
 
-#: src/units/unit.cpp:2028
+#: src/units/unit.cpp:2026
 msgid "<span color=\"$color\">$number_or_percent</span> move"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> ход"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> хода"
 msgstr[2] "<span color=\"$color\">$number_or_percent</span> ходов"
 
-#: src/units/unit.cpp:2034
+#: src/units/unit.cpp:2032
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "<span color=\"$color\">$number_or_percent</span> обзор"
 
-#: src/units/unit.cpp:2038
+#: src/units/unit.cpp:2036
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "<span color=\"$color\">$number_or_percent</span> помех обзора"
 
-#: src/units/unit.cpp:2043
+#: src/units/unit.cpp:2041
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "<span color=\"$color\">$number_or_percent</span> ОП для продвижения"
 
-#: src/units/unit.cpp:2047
+#: src/units/unit.cpp:2045
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
 msgid_plural ""
 "<span color=\"$color\">$number_or_percent</span> attacks per turn"
@@ -9832,11 +9841,11 @@ msgstr[0] "<span color=\"$color\">$number_or_percent</span> атака за хо
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> атаки за ход"
 msgstr[2] "<span color=\"$color\">$number_or_percent</span> атак за ход"
 
-#: src/units/unit.cpp:2054
+#: src/units/unit.cpp:2052
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "<span color=\"$color\">$number_or_percent</span> стоимость призыва"
 
-#: src/units/unit.cpp:2539
+#: src/units/unit.cpp:2537
 msgid "$effect_description per level"
 msgstr "$effect_description за уровень"
 
@@ -9860,7 +9869,7 @@ msgstr "$year ДП"
 msgid "$year AF"
 msgstr "$year ПП"
 
-#: src/wesnoth.cpp:785
+#: src/wesnoth.cpp:786
 msgid ""
 "Unable to create log files in directory $logdir. This is often caused by "
 "incorrect folder permissions, anti-virus software restricting folder access, "
@@ -9871,7 +9880,7 @@ msgstr ""
 "директориям; или использованием облачных хранилищ — таких как OneDrive или "
 "Яндекс.Диск — синхронизированных с папкой \"Мои Документы\"."
 
-#: src/wesnoth.cpp:786
+#: src/wesnoth.cpp:787
 msgid "Logging Failure"
 msgstr "Ошибка записи логов"
 
@@ -9899,6 +9908,18 @@ msgstr "Скрыть план $player"
 msgid "Whiteboard Options"
 msgstr "Настройки планировщика"
 
+# Важно! Используется обходной шрифт, так как Oldania ADF Std не поддерживает символы кириллицы! --kabachuha
+#~ msgid "Oldania ADF Std"
+#~ msgstr "Monotype Corsiva Italic"
+
+#~ msgid "Do you want to load it anyway?"
+#~ msgstr "Всё равно загрузить?"
+
+#~ msgid ""
+#~ "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
+#~ msgstr ""
+#~ "Внимание: загружаемый файл поврежден. Но мы попробуем его загрузить.\n"
+
 #~ msgid "Time of day: "
 #~ msgstr "Время суток: "
 
@@ -9915,11 +9936,6 @@ msgstr "Настройки планировщика"
 #~ msgstr ""
 #~ "Отправить произвольное сообщение на сервер. Можно использовать, чтобы "
 #~ "проверить доступность соединения."
-
-#, fuzzy
-#~| msgid "Description"
-#~ msgid "description"
-#~ msgstr "Описание"
 
 #~ msgid "Era:"
 #~ msgstr "Эра:"

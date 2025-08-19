@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.18 - wesnoth-editor\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-07-20 22:54-0500\n"
+"POT-Creation-Date: 2025-08-19 10:14-0500\n"
 "PO-Revision-Date: 2024-12-03 10:19+0100\n"
 "Last-Translator: Wuzzy <Wuzzy@disroot.org>\n"
 "Language-Team: German <irc://irc.libera.chat/#wesnoth-de>\n"
@@ -270,15 +270,15 @@ msgstr "Stufe: "
 msgid "Cost: "
 msgstr "Kosten: "
 
-#: src/editor/controller/editor_controller.cpp:187
+#: src/editor/controller/editor_controller.cpp:186
 msgid "Fatal error"
 msgstr "Kritischer Fehler"
 
-#: src/editor/controller/editor_controller.cpp:217
+#: src/editor/controller/editor_controller.cpp:216
 msgid "Do you really want to quit?"
 msgstr "Wollt Ihr wirklich beenden?"
 
-#: src/editor/controller/editor_controller.cpp:219
+#: src/editor/controller/editor_controller.cpp:218
 msgid ""
 "Do you really want to quit? Changes to this map since the last save will be "
 "lost."
@@ -286,7 +286,7 @@ msgstr ""
 "Wollt Ihr wirklich beenden? Sämtliche Änderungen an der Karte seit dem "
 "letzten Speichern werden verloren gehen."
 
-#: src/editor/controller/editor_controller.cpp:221
+#: src/editor/controller/editor_controller.cpp:220
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -294,34 +294,34 @@ msgstr ""
 "Wollt Ihr wirklich beenden? Die folgenden Karten wurden seit dem letzten "
 "Speichern verändert und sämtliche Änderungen werden verloren gehen:"
 
-#: src/editor/controller/editor_controller.cpp:238
+#: src/editor/controller/editor_controller.cpp:237
 msgid "No editor time-of-day found."
 msgstr "Keine Tageszeiten-Definitionen für den Editor gefunden."
 
-#: src/editor/controller/editor_controller.cpp:874
+#: src/editor/controller/editor_controller.cpp:873
 msgid "Add-on Files"
 msgstr "Erweiterungsdateien"
 
 # kommt identisch in wesnoth-lib vor
-#: src/editor/controller/editor_controller.cpp:887
+#: src/editor/controller/editor_controller.cpp:886
 msgid "Opening files is not supported, contact your packager"
 msgstr ""
 "Zwischenablage-Unterstützung nicht gefunden, wendet Euch an Euren "
 "Paketbetreuer"
 
-#: src/editor/controller/editor_controller.cpp:1328
+#: src/editor/controller/editor_controller.cpp:1327
 msgid "Change Unit ID"
 msgstr "Einheitenkennung ändern"
 
-#: src/editor/controller/editor_controller.cpp:1329
+#: src/editor/controller/editor_controller.cpp:1328
 msgid "ID:"
 msgstr "Kennung:"
 
-#: src/editor/controller/editor_controller.cpp:1345
+#: src/editor/controller/editor_controller.cpp:1344
 msgid "Rename Unit"
 msgstr "Einheit umbenennen"
 
-#: src/editor/controller/editor_controller.cpp:1346
+#: src/editor/controller/editor_controller.cpp:1345
 msgid "Name:"
 msgstr "Name:"
 
@@ -339,11 +339,11 @@ msgstr "<span color='red'><span face='DejaVuSans'>✘</span> $msg</span>"
 msgid "Load Map or Scenario"
 msgstr "Karte aus Szenario geladen"
 
-#: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1133
+#: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1146
 msgid "New Map"
 msgstr "Neue Karte"
 
-#: src/editor/map/context_manager.cpp:326 src/editor/map/map_context.cpp:1133
+#: src/editor/map/context_manager.cpp:326 src/editor/map/map_context.cpp:1146
 msgid "New Scenario"
 msgstr "Neues Szenario"
 
@@ -502,23 +502,23 @@ msgstr ""
 msgid "Unable to parse file to find map data"
 msgstr "Konnte Datei nicht parsen, um Karten-Daten zu finden"
 
-#: src/editor/map/map_context.cpp:827 src/editor/map/map_context.cpp:867
+#: src/editor/map/map_context.cpp:840 src/editor/map/map_context.cpp:880
 msgid "Could not save time schedule: $msg"
 msgstr "Der Zeitplan konnte nicht gespeichert werden: $msg"
 
-#: src/editor/map/map_context.cpp:861
+#: src/editor/map/map_context.cpp:874
 msgid "Time schedule saved."
 msgstr "Zeitplan gespeichert."
 
-#: src/editor/map/map_context.cpp:907
+#: src/editor/map/map_context.cpp:920
 msgid "Could not save the scenario: $msg"
 msgstr "Das Szenario konnte nicht gespeichert werden: $msg"
 
-#: src/editor/map/map_context.cpp:938
+#: src/editor/map/map_context.cpp:951
 msgid "Could not save into scenario"
 msgstr "Konnte nicht in das Szenario gespeichert werden"
 
-#: src/editor/map/map_context.cpp:948
+#: src/editor/map/map_context.cpp:961
 msgid "Could not save the map: $msg"
 msgstr "Die Karte konnte nicht gespeichert werden: $msg"
 

@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth Latin 1.2\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-07-21 03:54 UTC\n"
+"POT-Creation-Date: 2025-08-19 15:14 UTC\n"
 "PO-Revision-Date: 2012-12-19 20:12-0000\n"
 "Last-Translator: Thomas Hockings <elprofesh@gmail.com>\n"
 "Language-Team: Latin <http://wiki.wesnoth.org/LatinTranslation>\n"
@@ -43,18 +43,12 @@ msgid "mace"
 msgstr "fustis ferreus"
 
 #. [attack]: type=blade
-#. [attack]: type=arcane
 #: data/campaigns/Descent_Into_Darkness/units/Apprentice_Mage.cfg:23
 #: data/campaigns/Descent_Into_Darkness/units/Apprentice_Necromancer.cfg:22
 #: data/campaigns/Descent_Into_Darkness/units/Dark_Mage.cfg:23
 #: data/campaigns/Descent_Into_Darkness/units/Malin_Keshar.cfg:465
 #: data/campaigns/Descent_Into_Darkness/units/Malin_Keshar.cfg:493
 #: data/campaigns/Descent_Into_Darkness/units/Malin_Keshar.cfg:535
-#: data/campaigns/Eastern_Invasion/units/Human_Shadow_Mage.cfg:35
-#: data/campaigns/Liberty/units/Rogue_Mage.cfg:23
-#: data/campaigns/Liberty/units/Shadow_Mage.cfg:32
-#: data/campaigns/The_Deceivers_Gambit/units/Bandit_Rogue_Mage.cfg:27
-#: data/campaigns/The_Deceivers_Gambit/units/Bandit_Shadow_Mage.cfg:30
 #: data/core/units/dunefolk/Falconer.cfg:141
 #: data/core/units/dunefolk/Sky_Hunter.cfg:139
 #: data/core/units/humans/Loyalist_Bowman.cfg:23
@@ -81,14 +75,8 @@ msgstr "unda gelida"
 #: data/campaigns/Descent_Into_Darkness/units/Malin_Keshar.cfg:556
 #: data/campaigns/Eastern_Invasion/units/Human_Dacyn_Fallen_Mage.cfg:83
 #: data/campaigns/Eastern_Invasion/units/Human_Dacyn_Twilight_Mage.cfg:85
-#: data/campaigns/Eastern_Invasion/units/Human_Shadow_Lord.cfg:62
-#: data/campaigns/Eastern_Invasion/units/Human_Shadow_Mage.cfg:62
 #: data/campaigns/Eastern_Invasion/units/Undead_Ravanal_Dread_Lich.cfg:109
 #: data/campaigns/Secrets_of_the_Ancients/units/Necro_Ancient_Lich.cfg:56
-#: data/campaigns/The_Deceivers_Gambit/units/Bandit_Arcane_Enforcer.cfg:63
-#: data/campaigns/The_Deceivers_Gambit/units/Bandit_Rogue_Mage.cfg:38
-#: data/campaigns/The_Deceivers_Gambit/units/Bandit_Shadow_Lord.cfg:49
-#: data/campaigns/The_Deceivers_Gambit/units/Bandit_Shadow_Mage.cfg:50
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:101
 #: data/campaigns/Under_the_Burning_Suns/units/undead/Spider_Lich.cfg:47
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:53
@@ -340,7 +328,6 @@ msgstr "gladius"
 #: data/campaigns/Eastern_Invasion/units/Human_Gweddry_Frontier_Sergeant.cfg:38
 #: data/campaigns/Eastern_Invasion/units/Human_Gweddry_Veteran_Commander.cfg:55
 #: data/campaigns/Eastern_Invasion/units/Human_Gweddry_Veteran_Lieutenant.cfg:53
-#: data/campaigns/The_Deceivers_Gambit/units/Bandit_Arcane_Enforcer.cfg:52
 #: data/campaigns/The_Deceivers_Gambit/units/Human_Deoran_Mirror.cfg:53
 #: data/campaigns/The_South_Guard/units/Deoran2_Dragoon.cfg:61
 #: data/campaigns/The_South_Guard/units/Deoran3_Cavalier.cfg:53
@@ -448,14 +435,6 @@ msgstr "procella gelida"
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Archer.cfg:40
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Marksman.cfg:43
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:942
-#: data/core/units/boats/Elf_Cutter.cfg:99
-#: data/core/units/boats/Elf_Sloop.cfg:99
-#: data/core/units/boats/Orc_Barge.cfg:108
-#: data/core/units/boats/Orc_Battle-Barge.cfg:127
-#: data/core/units/boats/Orc_Rigship.cfg:79
-#: data/core/units/boats/Orc_Warship.cfg:79
-#: data/core/units/boats/Raider_Coastal.cfg:146
-#: data/core/units/boats/Raider_Iron.cfg:153
 #: data/core/units/elves/Archer.cfg:32 data/core/units/elves/Avenger.cfg:48
 #: data/core/units/elves/Captain.cfg:43 data/core/units/elves/Champion.cfg:35
 #: data/core/units/elves/Fighter.cfg:31 data/core/units/elves/Hero.cfg:31
@@ -625,7 +604,7 @@ msgstr "detestatio"
 #: data/core/units/monsters/Dragonfly.cfg:31
 #: data/core/units/monsters/Dragonfly_Grand.cfg:32
 #: data/core/units/monsters/Dragonfly_Naiad.cfg:62
-#: data/core/units/monsters/Fire_Dragon.cfg:33
+#: data/core/units/monsters/Fire_Dragon.cfg:55
 #: data/core/units/monsters/Frost_Stoat.cfg:94
 #: data/core/units/monsters/Giant_Rat.cfg:30
 #: data/core/units/monsters/Icemonax.cfg:62
@@ -688,67 +667,6 @@ msgstr ""
 msgid "Soulless"
 msgstr "Inanimum"
 
-#. [attack]: type=blade
-#: data/campaigns/The_Deceivers_Gambit/units/Bandit_Arcane_Enforcer.cfg:41
-#: data/core/units/orcs/Ruler.cfg:27 data/core/units/orcs/Sovereign.cfg:28
-#: data/core/units/orcs/Warlord.cfg:30 data/core/units/orcs/Warrior.cfg:38
-msgid "greatsword"
-msgstr "spatha maior"
-
-#. [unit_type]: id=Shadow Lord, race=human, gender=male,female
-#: data/campaigns/The_Deceivers_Gambit/units/Bandit_Shadow_Lord.cfg:5
-#, fuzzy
-#| msgid "Shadow"
-msgid "Shadow Lord"
-msgstr "Umbra"
-
-#. [unit_type]: id=Shadow Lord, race=human, gender=male,female
-#: data/campaigns/The_Deceivers_Gambit/units/Bandit_Shadow_Lord.cfg:19
-msgid ""
-"The fruits of the paths of either light or darkness are well known to magi: "
-"the brilliance of a white mage or the deep gloom of a necromancer. Much less "
-"well known is the art of the Shadow Lord, those few who master a union of "
-"both white and black magic. Though decades of zealous study and self-neglect "
-"have left them drained of strength, these savants have transcended the need "
-"for crude physical weapons, instead channeling their energies into "
-"devastating magical attacks that undercut their enemies’ resistances."
-msgstr ""
-
-#. [attack]: type=blade
-#: data/campaigns/The_Deceivers_Gambit/units/Bandit_Shadow_Lord.cfg:31
-#, fuzzy
-#| msgid "war blade"
-msgid "astral blade"
-msgstr "ferrum belli"
-
-#. [damage_type]: id=cold_damage
-#: data/campaigns/The_Deceivers_Gambit/units/Bandit_Shadow_Lord.cfg:37
-#, fuzzy
-#| msgid "chill wave"
-msgid "chill"
-msgstr "unda gelida"
-
-#. [damage_type]: id=cold_damage
-#: data/campaigns/The_Deceivers_Gambit/units/Bandit_Shadow_Lord.cfg:38
-msgid ""
-"This attack can deal either blade or cold damage, depending on which would "
-"be more effective."
-msgstr ""
-
-#. [damage_type]: id=cold_damage
-#: data/campaigns/The_Deceivers_Gambit/units/Bandit_Shadow_Lord.cfg:39
-msgid ""
-"This unit’s melee attack can deal either blade or cold damage, depending on "
-"which would be more effective."
-msgstr ""
-
-#. [female]: gender=female
-#: data/campaigns/The_Deceivers_Gambit/units/Bandit_Shadow_Lord.cfg:87
-#, fuzzy
-#| msgid "female^Dark Adept"
-msgid "female^Shadow Lord"
-msgstr "Adsecula Venefici"
-
 #. [unit_type]: id=Dwarvish Masked Berserker, race=dwarf
 #. [unit_type]: id=Dwarvish Berserker, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Berserker.cfg:18
@@ -792,9 +710,9 @@ msgstr ""
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Dragonguard.cfg:24
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderer.cfg:29
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderguard.cfg:26
-#: data/core/units/dunefolk/Burner.cfg:32
-#: data/core/units/dunefolk/Firetrooper.cfg:86
-#: data/core/units/dunefolk/Scorcher.cfg:33
+#: data/core/units/dunefolk/Burner.cfg:33
+#: data/core/units/dunefolk/Firetrooper.cfg:87
+#: data/core/units/dunefolk/Scorcher.cfg:34
 #: data/core/units/dwarves/Dragonguard.cfg:38
 #: data/core/units/dwarves/Thunderer.cfg:64
 #: data/core/units/dwarves/Thunderguard.cfg:39
@@ -835,9 +753,9 @@ msgstr ""
 
 #. [attack]: type=blade
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Fighter.cfg:32
-#: data/core/units/dunefolk/Explorer.cfg:35
-#: data/core/units/dunefolk/Rover.cfg:84
-#: data/core/units/dunefolk/Wayfarer.cfg:43
+#: data/core/units/dunefolk/Explorer.cfg:36
+#: data/core/units/dunefolk/Rover.cfg:88
+#: data/core/units/dunefolk/Wayfarer.cfg:44
 #: data/core/units/dwarves/Explorer.cfg:37
 #: data/core/units/dwarves/Fighter.cfg:57
 #: data/core/units/dwarves/Pathfinder.cfg:36
@@ -1133,9 +1051,20 @@ msgid "thorns"
 msgstr "spinae"
 
 #. [attack]: type=impact
+#. [attack]: type=fire
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Dustbok.cfg:23
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Tauroch_Flagbearer.cfg:39
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Tauroch_Vanguard.cfg:38
+#: data/core/units/boats/Carrack_Merchant.cfg:29
+#: data/core/units/boats/Carrack_Pirate.cfg:25
+#: data/core/units/boats/Derelict_Ship.cfg:22
+#: data/core/units/boats/Elf_Cutter.cfg:25
+#: data/core/units/boats/Elf_Sloop.cfg:26 data/core/units/boats/Fireship.cfg:76
+#: data/core/units/boats/Ghost_Ship.cfg:38
+#: data/core/units/boats/Orc_Rigship.cfg:22
+#: data/core/units/boats/Orc_Warship.cfg:23
+#: data/core/units/boats/Raider_Coastal.cfg:30
+#: data/core/units/boats/Raider_Iron.cfg:31 data/core/units/boats/Skiff.cfg:25
 #: data/core/units/drakes/Enforcer.cfg:44
 #: data/core/units/drakes/Thrasher.cfg:41
 msgid "ram"
@@ -1257,7 +1186,7 @@ msgid "Canoe"
 msgstr ""
 
 #. [unit_type]: id=Canoe, race=ship
-#: data/core/units/boats/Canoe.cfg:19
+#: data/core/units/boats/Canoe.cfg:32
 msgid ""
 "A Canoe is a small, open-top water vessel commonly used for transportation "
 "or hunting. Their light-weight construction allows them to be carried around "
@@ -1265,24 +1194,75 @@ msgid ""
 "race has some form of canoe."
 msgstr ""
 
-#. [unit_type]: id=Derelict Hulk, race=ship
-#: data/core/units/boats/Derelict_Ship.cfg:4
-msgid "Derelict Hulk"
+#. [unit_type]: id=Merchant Carrack, race=ship
+#: data/core/units/boats/Carrack_Merchant.cfg:4
+msgid "Merchant Carrack"
 msgstr ""
 
-#. [unit_type]: id=Derelict Hulk, race=ship
+#. [unit_type]: id=Merchant Carrack, race=ship
+#: data/core/units/boats/Carrack_Merchant.cfg:20
+msgid ""
+"Merchant Carracks are swift ships with large cargo holds. Though they are "
+"not designed for war, their large and stable deck makes for a good archery "
+"platform, and their spacious holds can carry both medical supplies and "
+"repair equipment."
+msgstr ""
+
+#. [attack]: type=pierce
+#: data/core/units/boats/Carrack_Merchant.cfg:42
+#: data/core/units/boats/Orc_Barge.cfg:37
+#: data/core/units/boats/Orc_Battle-Barge.cfg:35
+#: data/core/units/boats/Raider_Coastal.cfg:43
+#: data/core/units/boats/Raider_Iron.cfg:44 data/core/units/boats/Skiff.cfg:39
+#, fuzzy
+#| msgid "Poacher"
+msgid "archers"
+msgstr "Auceps"
+
+#. [unit_type]: id=Pirate Carrack, race=ship
+#: data/core/units/boats/Carrack_Pirate.cfg:4
+msgid "Pirate Carrack"
+msgstr ""
+
+#. [unit_type]: id=Pirate Carrack, race=ship
+#: data/core/units/boats/Carrack_Pirate.cfg:21
+#, fuzzy
+msgid ""
+"Pirate galleons are to transport ships what wolves are to sheep. The pirates "
+"who crew them are more than happy to help relieve other ships of their "
+"weighty cargo, or to fight as privateers in return for coin."
+msgstr ""
+"Naves Veligerae Praedonum sunt ad naves transportantes quod lupi ad oves. "
+"Naves plenae mercium non debent solae esse, procul a terra. Melius eas "
+"adiuvare ut non mergant quia obruuntur..."
+
+#. [attack]: type=pierce
+#: data/core/units/boats/Carrack_Pirate.cfg:38
+#, fuzzy
+#| msgid "ballista"
+msgid "ballistae"
+msgstr "ballista"
+
+#. [attack]: type=pierce
+#: data/core/units/boats/Carrack_Pirate.cfg:47
+#, fuzzy
+#| msgid "Trapper"
+msgid "grapple"
+msgstr "Captor"
+
+#. [unit_type]: id=Derelict, race=ship
+#: data/core/units/boats/Derelict_Ship.cfg:4
+msgid "Derelict"
+msgstr ""
+
+#. [unit_type]: id=Derelict, race=ship
 #. [unit_type]: id=Ghost Ship, race=ship
 #: data/core/units/boats/Derelict_Ship.cfg:18
-#: data/core/units/boats/Ghost_Ship.cfg:30
+#: data/core/units/boats/Ghost_Ship.cfg:34
 msgid ""
 "Derelicts are abandoned wrecks that continue to drift across the seas. Most "
 "are merely ruined ships that will soon sink, but there are tales of others "
 "that haunt certain waterways for generations."
-msgstr ""
-
-#. [attack]: type=impact
-#: data/core/units/boats/Derelict_Ship.cfg:145
-msgid "jetsam"
 msgstr ""
 
 #. [unit_type]: id=Elvish Cutter, race=ship
@@ -1293,24 +1273,22 @@ msgid "Elvish Cutter"
 msgstr "Praecursor Dryadalis"
 
 #. [unit_type]: id=Elvish Cutter, race=ship
-#. [unit_type]: id=Elvish Sloop, race=ship
-#. [unit_type]: id=Orcish Battle Barge, race=ship
-#. [unit_type]: id=Orcish Rigship, race=ship
-#. [unit_type]: id=Orcish Warship, race=ship
-#: data/core/units/boats/Elf_Cutter.cfg:19
-#: data/core/units/boats/Elf_Sloop.cfg:19
-#: data/core/units/boats/Orc_Battle-Barge.cfg:20
-#: data/core/units/boats/Orc_Rigship.cfg:19
-#: data/core/units/boats/Orc_Warship.cfg:19
-msgid "..."
+#: data/core/units/boats/Elf_Cutter.cfg:17
+msgid ""
+"Elves are not a seafaring race by nature, preferring instead the quiet "
+"solitude of forests. Nevertheless, there is some demand for river trade and "
+"transport, particularly between the enclaves of Wesmere and Lintanir. "
+"Artfully grafted together from still-living trees, these sleek ships can "
+"recover from minor injuries without their crews’ intervention."
 msgstr ""
 
-#. [attack]: type=impact
-#: data/core/units/boats/Elf_Cutter.cfg:108
-#: data/core/units/boats/Elf_Sloop.cfg:111 data/core/units/elves/Druid.cfg:35
-#: data/core/units/elves/Lady.cfg:27 data/core/units/elves/Shyde.cfg:42
-msgid "ensnare"
-msgstr "illaqueare"
+#. [attack]: type=pierce
+#: data/core/units/boats/Elf_Cutter.cfg:38
+#: data/core/units/boats/Elf_Cutter.cfg:47
+#: data/core/units/boats/Elf_Sloop.cfg:39
+#: data/core/units/boats/Elf_Sloop.cfg:48
+msgid "marksmen"
+msgstr ""
 
 #. [unit_type]: id=Elvish Sloop, race=ship
 #: data/core/units/boats/Elf_Sloop.cfg:5
@@ -1318,6 +1296,15 @@ msgstr "illaqueare"
 #| msgid "Elvish Scout"
 msgid "Elvish Sloop"
 msgstr "Speculator Dryadalis"
+
+#. [unit_type]: id=Elvish Sloop, race=ship
+#: data/core/units/boats/Elf_Sloop.cfg:18
+msgid ""
+"Sleek in the water and festooned with greenery, these mightiest of elvish "
+"ships weather wave and storm with impunity. Such behemoths are only seen in "
+"times of crisis, for their living timber can survive only a handful of years "
+"after being launched."
+msgstr ""
 
 #. [unit_type]: id=Fireship, race=ship
 #: data/core/units/boats/Fireship.cfg:4
@@ -1327,7 +1314,7 @@ msgid "Fireship"
 msgstr "aura ignis"
 
 #. [unit_type]: id=Fireship, race=ship
-#: data/core/units/boats/Fireship.cfg:18
+#: data/core/units/boats/Fireship.cfg:20
 msgid ""
 "Fireships are generally derelict or doomed ships set ablaze to create chaos "
 "in one last act of belligerence. Their main hazard is fiery collision, but "
@@ -1335,14 +1322,16 @@ msgid ""
 "them, but often they just drift along on unseen winds and currents."
 msgstr ""
 
-#. [attack]: type=fire
-#: data/core/units/boats/Fireship.cfg:170
-msgid "ember"
+#. [dummy]: id=deteriorate
+#: data/core/units/boats/Fireship.cfg:25
+msgid "deteriorate"
 msgstr ""
 
-#. [attack]: type=fire
-#: data/core/units/boats/Fireship.cfg:179
-msgid "crash"
+#. [dummy]: id=deteriorate
+#: data/core/units/boats/Fireship.cfg:26
+msgid ""
+"This unit is deteriorating. It cannot be healed, and loses 10 hitpoints at "
+"the start of each of its turns."
 msgstr ""
 
 #. [unit_type]: id=Ghost Ship, race=ship
@@ -1353,16 +1342,16 @@ msgid "Ghost Ship"
 msgstr "Phasma"
 
 #. [attack]: type=fire
-#: data/core/units/boats/Ghost_Ship.cfg:191
+#: data/core/units/boats/Ghost_Ship.cfg:51
 #: data/core/units/humans/Mage_Elder.cfg:35
 #: data/core/units/monsters/Raven_Harbinger.cfg:100
 #: data/core/units/monsters/Raven_Omen.cfg:90
 msgid "lightning"
 msgstr "fulmen"
 
-#. [attack]: type=impact
-#: data/core/units/boats/Ghost_Ship.cfg:203
-msgid "black wind"
+#. [attack]: type=cold
+#: data/core/units/boats/Ghost_Ship.cfg:63
+msgid "lost souls"
 msgstr ""
 
 #. [unit_type]: id=Boat, race=mechanical
@@ -1418,8 +1407,6 @@ msgstr ""
 #. [attack]: type=pierce
 #: data/core/units/boats/Legacy_Pirate_Galleon.cfg:26
 #: data/core/units/boats/Legacy_Transport_Galleon.cfg:26
-#: data/core/units/boats/Pirate_Ship.cfg:169
-#: data/core/units/boats/Transport_Ship.cfg:168
 msgid "ballista"
 msgstr "ballista"
 
@@ -1429,9 +1416,7 @@ msgid "Transport Galleon"
 msgstr "Navis Oneraria"
 
 #. [unit_type]: id=Transport Galleon, race=mechanical
-#. [unit_type]: id=Transport Ship, race=ship
 #: data/core/units/boats/Legacy_Transport_Galleon.cfg:22
-#: data/core/units/boats/Transport_Ship.cfg:20
 #, fuzzy
 msgid ""
 "Transport Galleons are well-armed ships that carry troops. If they reach the "
@@ -1448,22 +1433,22 @@ msgid "Orcish Barge"
 msgstr "Sagittarius Orcius"
 
 #. [unit_type]: id=Orcish Barge, race=ship
-#: data/core/units/boats/Orc_Barge.cfg:20
+#: data/core/units/boats/Orc_Barge.cfg:26
 msgid ""
 "Orcish barges are crude constructions, devoid of any of the craftsmanship "
 "seen in almost any other ship. But what they lack in speed and grace, they "
-"make up for with their rugged utility in navigating rivers and swamps. Their "
-"primary means of movement comes from a large, symmetric sail held at three "
-"points for downwind propulsion. When currents and winds lead to the wrong "
-"direction, the crew must use poles and anchors to move the barge in the "
-"intended direction.\n"
+"make up for with their rugged durability and utility in navigating rivers "
+"and swamps. Their primary means of movement comes from a large, symmetric "
+"sail held at three points for downwind propulsion. When currents and winds "
+"lead to the wrong direction, the crew must use poles and anchors to move the "
+"barge in the intended direction.\n"
 "\n"
-"Barges serve as transports for either supplies or troops, but they have been "
-"used as pickets in larger conflicts. They lack any specific weaponry, but "
-"the crew is equipped with the crude orcish bows that can be deterrent enough "
-"in many situations.\n"
+"Barges serve as transports for either supplies or troops, and when stocked "
+"with medicines can provide a safe space — akin to a village — for wounded "
+"fighters to rest. They lack any specific weaponry and cannot ram, but the "
+"crew is equipped with enough crude orcish bows to provide deterrent.\n"
 "\n"
-"These barges are very ineffective in the high seas, little better than a "
+"These barges are very ineffective in the high seas; little better than a "
 "floating wreck."
 msgstr ""
 
@@ -1474,8 +1459,21 @@ msgstr ""
 msgid "Orcish Battle Barge"
 msgstr "Dominator Orcium"
 
+#. [unit_type]: id=Orcish Battle Barge, race=ship
+#: data/core/units/boats/Orc_Battle-Barge.cfg:26
+msgid ""
+"Despite their simplistic design, barges provide a surprising amount of "
+"utility: bulk transport of goods or men, navigability in shallow water or "
+"swamp, and a safe space for wounded fighters to rest. They also provide a "
+"wide, steady platform on which to mount siege equipment, a fact of which "
+"orcs are well aware.\n"
+"\n"
+"These barges are very ineffective in the high seas; little better than a "
+"floating wreck."
+msgstr ""
+
 #. [attack]: type=impact
-#: data/core/units/boats/Orc_Battle-Barge.cfg:118
+#: data/core/units/boats/Orc_Battle-Barge.cfg:44
 msgid "catapult"
 msgstr ""
 
@@ -1486,13 +1484,27 @@ msgstr ""
 msgid "Orcish Rigship"
 msgstr "Dux Orcium"
 
+#. [unit_type]: id=Orcish Rigship, race=ship
+#: data/core/units/boats/Orc_Rigship.cfg:18
+msgid ""
+"Most orcs have little need for sailing vessels, preferring to fight their "
+"battles across the dry peaks and hills of the Heart Mountains. But along the "
+"north-western coast of the Great Continent, in the cities of Bitok and "
+"Tirigaz, orcish shipmakers have been hard at work perfecting their craft. "
+"The so-called “Rigship” is but one of many designs bearing testament to "
+"their skill."
+msgstr ""
+
+#. [attack]: type=pierce
 #. [attack]: type=fire
-#: data/core/units/boats/Orc_Rigship.cfg:88
-#: data/core/units/boats/Orc_Warship.cfg:88
+#: data/core/units/boats/Orc_Rigship.cfg:35
+#: data/core/units/boats/Orc_Rigship.cfg:44
+#: data/core/units/boats/Orc_Warship.cfg:36
+#: data/core/units/boats/Orc_Warship.cfg:45
 #, fuzzy
-#| msgid "fireball"
-msgid "firebow"
-msgstr "globus ignis"
+#| msgid "crossbow"
+msgid "crossbows"
+msgstr "scorpio"
 
 #. [unit_type]: id=Orcish Warship, race=ship
 #: data/core/units/boats/Orc_Warship.cfg:5
@@ -1501,22 +1513,14 @@ msgstr "globus ignis"
 msgid "Orcish Warship"
 msgstr "Bellator Orcius"
 
-#. [unit_type]: id=Pirate Ship, race=ship
-#: data/core/units/boats/Pirate_Ship.cfg:4
-msgid "Pirate Ship"
-msgstr ""
-
-#. [unit_type]: id=Pirate Ship, race=ship
-#: data/core/units/boats/Pirate_Ship.cfg:22
-#, fuzzy
+#. [unit_type]: id=Orcish Warship, race=ship
+#: data/core/units/boats/Orc_Warship.cfg:19
 msgid ""
-"Pirate galleons are to transport ships what wolves are to sheep. The pirates "
-"who crew them are more than happy to help relieve other ships of their "
-"weighty cargo."
+"When orcs first stepped off their ships onto the western shores of the Great "
+"Continent, they found an unspoiled paradise across which to spread. The "
+"shipwrights of the Tirigaz coast have not forgotten that lesson, and devote "
+"significant effort to the construction of newer and ever-better vessels."
 msgstr ""
-"Naves Veligerae Praedonum sunt ad naves transportantes quod lupi ad oves. "
-"Naves plenae mercium non debent solae esse, procul a terra. Melius eas "
-"adiuvare ut non mergant quia obruuntur..."
 
 #. [unit_type]: id=Raft, race=ship
 #: data/core/units/boats/Raft.cfg:5
@@ -1524,11 +1528,14 @@ msgid "Raft"
 msgstr ""
 
 #. [unit_type]: id=Raft, race=ship
-#: data/core/units/boats/Raft.cfg:19
+#: data/core/units/boats/Raft.cfg:20
 msgid ""
 "Rafts can be an efficient means of downriver transport, but they can also be "
 "an improvised vessel of desperation, patched together from the wreck of a "
-"larger ship."
+"larger ship.\n"
+"\n"
+"These rafts are very ineffective in the high seas; little better than a "
+"floating wreck."
 msgstr ""
 
 #. [unit_type]: id=Coastal Raider, race=ship
@@ -1539,18 +1546,19 @@ msgid "Coastal Raider"
 msgstr "Lupes"
 
 #. [unit_type]: id=Coastal Raider, race=ship
-#: data/core/units/boats/Raider_Coastal.cfg:30
+#: data/core/units/boats/Raider_Coastal.cfg:24
 msgid ""
-"While many larger ships rely on impressive sails to harness the power of the "
+"While Carracks and Cogs rely on impressive sails to harness the power of the "
 "wind, galleys and raiders are propelled by muscle-power of the crew manning "
 "the oars. This has the disadvantage of requiring a larger crew, and it does "
 "limit the speed and efficiency of transport. But these seeming weaknesses "
 "also make the vessel less vulnerable to the whims of weather and the "
 "predations of pirates.\n"
 "\n"
-"Coastal Raider ships are a very basic warship, used by several races to move "
-"armed forces rapidly through shallow and coastal water. They do not possess "
-"any specific armaments, but there are always archers amongst the crew."
+"Coastal Raider ships are a very basic warship, protected against ramming and "
+"used to move armed forces rapidly through shallow and coastal water. They do "
+"not possess any specific armaments, but oared propulsion makes the vessel "
+"much more maneuverable when ramming or beaching."
 msgstr ""
 
 #. [unit_type]: id=Iron Raider, race=ship
@@ -1561,26 +1569,20 @@ msgid "Iron Raider"
 msgstr "Eques Grypum"
 
 #. [unit_type]: id=Iron Raider, race=ship
-#: data/core/units/boats/Raider_Iron.cfg:36
+#: data/core/units/boats/Raider_Iron.cfg:25
 msgid ""
-"While Galleons and Cogs rely on impressive sails to harness the power of the "
+"While Carracks and Cogs rely on impressive sails to harness the power of the "
 "wind, galleys and raiders are propelled by muscle-power of the crew manning "
 "the oars. This has the disadvantage of requiring a larger crew, and it does "
 "limit the speed and efficiency of transport. But these seeming weaknesses "
 "also make the vessel less vulnerable to the whims of weather and the "
 "predations of pirates.\n"
 "\n"
-"Iron Raiders are Coastal Raiders that have been hardened to become tougher "
-"targets and harder hitters, at the expense of speed. They are often used as "
-"front-line escorts of slower cargo ships in rivers and coasts."
+"Iron Raiders are veteran Coastal Raiders that have been hardened to become "
+"tougher targets and harder hitters. They are often used as front-line "
+"escorts of slower cargo ships in rivers and coasts, where their heavy iron "
+"ram proves the most effective."
 msgstr ""
-
-#. [attack]: type=impact
-#: data/core/units/boats/Raider_Iron.cfg:163
-#, fuzzy
-#| msgid "Cavalryman"
-msgid "naval ram"
-msgstr "Cataphractarius"
 
 #. [unit_type]: id=Skiff, race=ship
 #: data/core/units/boats/Skiff.cfg:5
@@ -1588,7 +1590,7 @@ msgid "Skiff"
 msgstr ""
 
 #. [unit_type]: id=Skiff, race=ship
-#: data/core/units/boats/Skiff.cfg:22
+#: data/core/units/boats/Skiff.cfg:21
 #, fuzzy
 #| msgid ""
 #| "Propelled by oars or small sails, boats are used to travel short "
@@ -1599,13 +1601,6 @@ msgid ""
 msgstr ""
 "Rates, remis velisve gubernatae, usui hominibus sunt causa paulum et in "
 "brevi eundi, ubi magnae naves navigare non possunt."
-
-#. [unit_type]: id=Transport Ship, race=ship
-#: data/core/units/boats/Transport_Ship.cfg:4
-#, fuzzy
-#| msgid "Transport Galleon"
-msgid "Transport Ship"
-msgstr "Navis Oneraria"
 
 #. [unit_type]: id=Drake Arbiter, race=drake, gender=male,female
 #: data/core/units/drakes/Arbiter.cfg:4
@@ -1675,7 +1670,7 @@ msgstr "ungues proelii"
 #: data/core/units/drakes/Hurricane.cfg:61
 #: data/core/units/drakes/Inferno.cfg:41 data/core/units/drakes/Sky.cfg:60
 #: data/core/units/drakes/Warrior.cfg:35
-#: data/core/units/monsters/Fire_Dragon.cfg:51
+#: data/core/units/monsters/Fire_Dragon.cfg:73
 #: data/core/units/monsters/Fire_Guardian.cfg:32
 #: data/core/units/monsters/Fire_Wisp.cfg:53
 #: data/core/units/monsters/Fire_Wraith.cfg:60
@@ -2166,7 +2161,7 @@ msgstr ""
 #: data/core/units/dunefolk/Captain.cfg:30
 #: data/core/units/dunefolk/Paragon.cfg:30
 #: data/core/units/dunefolk/Paragon.cfg:39
-#: data/core/units/dunefolk/Soldier.cfg:26
+#: data/core/units/dunefolk/Soldier.cfg:30
 #: data/core/units/dunefolk/Swordsman.cfg:26
 #: data/core/units/dunefolk/Swordsman.cfg:35
 #: data/core/units/dunefolk/Warmaster.cfg:31
@@ -2194,12 +2189,12 @@ msgid ""
 msgstr ""
 
 #. [attack]: type=fire
-#: data/core/units/dunefolk/Burner.cfg:41
+#: data/core/units/dunefolk/Burner.cfg:42
 msgid "tar bomb"
 msgstr ""
 
 #. [female]: gender=female
-#: data/core/units/dunefolk/Burner.cfg:98
+#: data/core/units/dunefolk/Burner.cfg:99
 #, fuzzy
 #| msgid "Drake Burner"
 msgid "female^Dune Burner"
@@ -2248,11 +2243,11 @@ msgstr ""
 
 #. [attack]: type=pierce
 #: data/core/units/dunefolk/Cataphract.cfg:64
-#: data/core/units/dunefolk/Explorer.cfg:44
+#: data/core/units/dunefolk/Explorer.cfg:45
 #: data/core/units/dunefolk/Horse_Archer.cfg:36
-#: data/core/units/dunefolk/Rider.cfg:36 data/core/units/dunefolk/Rover.cfg:93
+#: data/core/units/dunefolk/Rider.cfg:36 data/core/units/dunefolk/Rover.cfg:97
 #: data/core/units/dunefolk/Sunderer.cfg:41
-#: data/core/units/dunefolk/Wayfarer.cfg:52
+#: data/core/units/dunefolk/Wayfarer.cfg:53
 #: data/core/units/dunefolk/Windbolt.cfg:41
 msgid "composite bow"
 msgstr ""
@@ -2325,13 +2320,13 @@ msgid ""
 msgstr ""
 
 #. [attack]: type=fire
-#: data/core/units/dunefolk/Firetrooper.cfg:95
-#: data/core/units/dunefolk/Scorcher.cfg:42
+#: data/core/units/dunefolk/Firetrooper.cfg:96
+#: data/core/units/dunefolk/Scorcher.cfg:43
 msgid "flamethrower"
 msgstr ""
 
 #. [female]: gender=female
-#: data/core/units/dunefolk/Firetrooper.cfg:149
+#: data/core/units/dunefolk/Firetrooper.cfg:150
 msgid "female^Dune Firetrooper"
 msgstr ""
 
@@ -2578,7 +2573,7 @@ msgid ""
 msgstr ""
 
 #. [female]: gender=female
-#: data/core/units/dunefolk/Scorcher.cfg:95
+#: data/core/units/dunefolk/Scorcher.cfg:96
 #, fuzzy
 #| msgid "female^Necromancer"
 msgid "female^Dune Scorcher"
@@ -3222,6 +3217,12 @@ msgid ""
 "the druids’ careful tending, the forest kindles their magics in turn, "
 "symbiotically enhancing the already potent powers that these elves possess."
 msgstr ""
+
+#. [attack]: type=impact
+#: data/core/units/elves/Druid.cfg:35 data/core/units/elves/Lady.cfg:27
+#: data/core/units/elves/Shyde.cfg:42
+msgid "ensnare"
+msgstr "illaqueare"
 
 #. [unit_type]: id=Elvish Enchantress, race=elf, gender=female
 #: data/core/units/elves/Enchantress.cfg:4
@@ -5235,7 +5236,7 @@ msgstr ""
 #. [attack]: type=impact
 #: data/core/units/merfolk/Brawler.cfg:30
 #: data/core/units/monsters/Cat_Jump.cfg:92
-#: data/core/units/monsters/Fire_Dragon.cfg:42
+#: data/core/units/monsters/Fire_Dragon.cfg:64
 #: data/core/units/monsters/Icemonax_Greater.cfg:72
 msgid "tail"
 msgstr "cauda"
@@ -5988,7 +5989,7 @@ msgid "Fire Dragon"
 msgstr "Draco Ignis"
 
 #. [unit_type]: id=Fire Dragon, race=monster
-#: data/core/units/monsters/Fire_Dragon.cfg:24
+#: data/core/units/monsters/Fire_Dragon.cfg:46
 msgid ""
 "A dragon is a legendary creature, normally seen only in fantastic tales. "
 "They are very rare, and were it not for the historical events, the "
@@ -7305,6 +7306,12 @@ msgid ""
 "respect of his brethren through leadership rather than coercion."
 msgstr ""
 
+#. [attack]: type=blade
+#: data/core/units/orcs/Ruler.cfg:27 data/core/units/orcs/Sovereign.cfg:28
+#: data/core/units/orcs/Warlord.cfg:30 data/core/units/orcs/Warrior.cfg:38
+msgid "greatsword"
+msgstr "spatha maior"
+
 #. [unit_type]: id=Orcish Slayer, race=orc
 #: data/core/units/orcs/Slayer.cfg:4
 msgid "Orcish Slayer"
@@ -8582,6 +8589,41 @@ msgid ""
 "believed to be different from the magic of elves or merfolk. The details of "
 "this craft can only be speculated on by other races."
 msgstr ""
+
+#, fuzzy
+#~| msgid "Shadow"
+#~ msgid "Shadow Lord"
+#~ msgstr "Umbra"
+
+#, fuzzy
+#~| msgid "war blade"
+#~ msgid "astral blade"
+#~ msgstr "ferrum belli"
+
+#, fuzzy
+#~| msgid "chill wave"
+#~ msgid "chill"
+#~ msgstr "unda gelida"
+
+#, fuzzy
+#~| msgid "female^Dark Adept"
+#~ msgid "female^Shadow Lord"
+#~ msgstr "Adsecula Venefici"
+
+#, fuzzy
+#~| msgid "fireball"
+#~ msgid "firebow"
+#~ msgstr "globus ignis"
+
+#, fuzzy
+#~| msgid "Cavalryman"
+#~ msgid "naval ram"
+#~ msgstr "Cataphractarius"
+
+#, fuzzy
+#~| msgid "Transport Galleon"
+#~ msgid "Transport Ship"
+#~ msgstr "Navis Oneraria"
 
 #~ msgid "Galleons are blue-water ships built for trade and transport."
 #~ msgstr "Naves Longae pelagi sunt, mercaturae transferentique aedificatae."

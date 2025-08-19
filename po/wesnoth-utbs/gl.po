@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-07-21 03:54 UTC\n"
+"POT-Creation-Date: 2025-08-19 15:14 UTC\n"
 "PO-Revision-Date: 2018-05-16 07:12+0100\n"
 "Last-Translator: Adrian Chaves <adrian@chaves.io>\n"
 "Language-Team: Galician <kde-i18n-doc@kde.org>\n"
@@ -7588,8 +7588,8 @@ msgstr "Garda da porta"
 #| msgid ""
 #| "This cave seems pretty empty, except for those two glowing runes in the "
 #| "center. This fort must have once been heavily occupied because countless "
-#| "feet have left well worn paths leading in several directions. "
-#| "$unittest.name which way should we go?"
+#| "feet have left well worn paths leading in several directions. $unittest."
+#| "name which way should we go?"
 msgid ""
 "This cave seems pretty empty, except for those two glowing runes in the "
 "center. This fort must have once been heavily occupied because countless "
@@ -7606,8 +7606,8 @@ msgstr ""
 #| msgid ""
 #| "This cave seems pretty empty, except for those two glowing runes in the "
 #| "center. This fort must have once been heavily occupied because countless "
-#| "feet have left well worn paths leading in several directions. "
-#| "$unittest.name which way should we go?"
+#| "feet have left well worn paths leading in several directions. $unittest."
+#| "name which way should we go?"
 msgid ""
 "This cave seems pretty empty, except for those two glowing runes in the "
 "center. This fort must have once been heavily occupied because countless "
@@ -7624,8 +7624,8 @@ msgstr ""
 #| msgid ""
 #| "This cave seems pretty empty, except for those two glowing runes in the "
 #| "center. This fort must have once been heavily occupied because countless "
-#| "feet have left well worn paths leading in several directions. "
-#| "$unittest.name which way should we go?"
+#| "feet have left well worn paths leading in several directions. $unittest."
+#| "name which way should we go?"
 msgid ""
 "This cave seems pretty empty, except for those two glowing runes in the "
 "center. This fort must have once been heavily occupied because countless "
@@ -7642,8 +7642,8 @@ msgstr ""
 #| msgid ""
 #| "This cave seems pretty empty, except for those two glowing runes in the "
 #| "center. This fort must have once been heavily occupied because countless "
-#| "feet have left well worn paths leading in several directions. "
-#| "$unittest.name which way should we go?"
+#| "feet have left well worn paths leading in several directions. $unittest."
+#| "name which way should we go?"
 msgid ""
 "This cave seems pretty empty, except for those two glowing runes in the "
 "center. This fort must have once been heavily occupied because countless "
@@ -17253,35 +17253,43 @@ msgid "The upkeep costs of adjacent friendly units are lowered by 1."
 msgstr "O custo de mantemento das unidades adxacentes redúcese en 1."
 
 #. [unstore_unit]
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:956
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:952
 msgid "dazed"
 msgstr "confuso"
 
 # cazadora do deserto FIXADO
 #. [unstore_unit]
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:957
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:953
 msgid "female^dazed"
 msgstr "confusa"
 
+#. [defense]: id=enemy_dazed
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:973
+msgid "parry:"
+msgstr ""
+
+#. [defense]: id=enemy_dazed
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:974
+msgid "Because this unit is dazed, its defense is decreased by 10%"
+msgstr ""
+
 #. [chance_to_hit]: id=self_dazed
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1023
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1044
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:982
 msgid "accuracy:"
 msgstr ""
 
 #. [chance_to_hit]: id=self_dazed
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1024
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1045
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:983
 msgid "Because this unit is dazed, its accuracy is decreased by 10%"
 msgstr ""
 
 #. [dummy]: id=opportunist
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1433
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1366
 msgid "opportunist"
 msgstr ""
 
 #. [dummy]: id=opportunist
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1434
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1367
 msgid ""
 "This ability makes Kaleh attack enemies with single strike of bolas when "
 "they leave his zone of control."
@@ -17289,46 +17297,46 @@ msgstr ""
 
 # aparecido FIXADO
 #. [dummy]: id=taunt
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1508
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1441
 #, fuzzy
 #| msgid "Haunt"
 msgid "taunt"
 msgstr "Aparecido"
 
 #. [dummy]: id=taunt
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1509
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1442
 msgid "Taunts the enemy making them try to attack Kaleh for one turn."
 msgstr ""
 
 # aparecido FIXADO
 #. [dummy]: id=taunted
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1546
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1479
 #, fuzzy
 #| msgid "Haunt"
 msgid "taunted"
 msgstr "Aparecido"
 
 #. [dummy]: id=taunted
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1547
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1480
 msgid "This unit is taunted by Kaleh, it will try to attack him for one turn."
 msgstr ""
 
 #. [leadership]: id=inspire
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1556
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1489
 #, fuzzy
 #| msgid "Pulsing Spire"
 msgid "inspire"
 msgstr "Chapitel latexante"
 
 #. [leadership]: id=inspire
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1557
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1490
 #, fuzzy
 #| msgid "female^support"
 msgid "female^inspire"
 msgstr "apoiar"
 
 #. [leadership]: id=inspire
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1558
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1491
 msgid ""
 "This unit can inspire own units that are next to it, making them fight "
 "better. Adjacent own units of lower or equal level will deal 25% more damage "
@@ -17336,73 +17344,73 @@ msgid ""
 msgstr ""
 
 #. [leadership]: id=inspire
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1559
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1492
 msgid ""
 "The presence of this unit inspires own units next to it to deal more damage "
 "in combat, though this only applies to units of lower or equal level."
 msgstr ""
 
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1570
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1503
 msgid "cooldown 1"
 msgstr ""
 
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1573
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1506
 msgid "cooldown 2"
 msgstr ""
 
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1576
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1509
 msgid "After using this attack, you can’t use it during your next turn."
 msgstr ""
 
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1579
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1512
 msgid "After using this attack, you can’t use it during your next two turns."
 msgstr ""
 
 #. [dummy]: id=pierce
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1640
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1573
 msgid "pierce"
 msgstr ""
 
 #. [dummy]: id=pierce
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1641
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1574
 msgid ""
 "This weapon, when used offensively, can also deal damage to a unit behind "
 "the target."
 msgstr ""
 
 #. [dummy]: id=puncture
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1711
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1644
 msgid "puncture"
 msgstr ""
 
 #. [dummy]: id=puncture
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1712
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1645
 msgid ""
 "This weapon, when used offensively, can also deal damage to two units behind "
 "the target."
 msgstr ""
 
 #. [dummy]: id=rain_of_arrows
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1795
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1728
 msgid "rain of arrows"
 msgstr ""
 
 #. [dummy]: id=rain_of_arrows
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1796
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1729
 msgid ""
 "This weapon, when used offensively, can also deal damage to a unit behind "
 "the target and all units adjacent to the unit behind the target."
 msgstr ""
 
 #. [dummy]: id=sword_dance
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1917
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1850
 #, fuzzy
 #| msgid "Good riddance."
 msgid "sword dance"
 msgstr "Ben feito."
 
 #. [dummy]: id=sword_dance
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1918
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1851
 msgid ""
 "Every time Nym hits an enemy she gains +10% accuracy and 10% parry until the "
 "end of the combat."
@@ -18770,9 +18778,9 @@ msgstr "Torre fantasma"
 #~ msgid ""
 #~ "Truth is that $ally_unit.name not know much of sunlight lands. Sun and "
 #~ "stars are scary, everything is open, exposed, no safe places to hide. But "
-#~ "$ally_unit.name cannot go back through all that water. And "
-#~ "$ally_unit.name doesn’t know where to find other tunnels back to his "
-#~ "home. He is as lost as elves are."
+#~ "$ally_unit.name cannot go back through all that water. And $ally_unit."
+#~ "name doesn’t know where to find other tunnels back to his home. He is as "
+#~ "lost as elves are."
 #~ msgstr ""
 #~ "O certo é que Nogo non sabe moito das terras bañadas polo sol. Non me "
 #~ "gustan o sol nin as estrelas, todo está demasiado aberto, demasiado "
@@ -18792,8 +18800,8 @@ msgstr "Torre fantasma"
 #~ "guide and protect elves, and $ally_unit.name will keep his oath. "
 #~ "$ally_unit.name will follow elves wherever they may go and protect them "
 #~ "from danger as best he can. Maybe later, $ally_unit.name will find "
-#~ "another way back down to the caves of his people. But for now, "
-#~ "$ally_unit.name will continue to serve and protect you."
+#~ "another way back down to the caves of his people. But for now, $ally_unit."
+#~ "name will continue to serve and protect you."
 #~ msgstr ""
 #~ "Pero Nogo non ten medo. O gran líder díxolle a Nogo que guiase e "
 #~ "protexese aos elfos, e Nogo cumprirá coa súa palabra. Nogo seguirá aos "
@@ -18873,9 +18881,9 @@ msgstr "Torre fantasma"
 #~| "is a credit to your race."
 #~ msgid ""
 #~ "No, you don’t have to introduce yourselves. I already know who you are "
-#~ "and why you have been journeying all this way. And I must say, "
-#~ "$ally_unit.name, that your recent actions and indeed your presence with "
-#~ "these fine folk speaks well for your people."
+#~ "and why you have been journeying all this way. And I must say, $ally_unit."
+#~ "name, that your recent actions and indeed your presence with these fine "
+#~ "folk speaks well for your people."
 #~ msgstr ""
 #~ "Non, non é necesario que vos presentedes. Xa sei quen sodes e por que "
 #~ "estivestes viaxando todo este tempo. E debo dicir, Iarl, que as túas "
@@ -18926,9 +18934,8 @@ msgstr "Torre fantasma"
 #~ msgid ""
 #~ "$ally_unit.name not going to just sit here while Kaleh does all the "
 #~ "fighting. Kaleh will need strong fighter like $ally_unit.name. Other "
-#~ "elves may be scared, but $ally_unit.name fear no dark place. "
-#~ "$ally_unit.name just hope there still something to smash when he gets "
-#~ "there."
+#~ "elves may be scared, but $ally_unit.name fear no dark place. $ally_unit."
+#~ "name just hope there still something to smash when he gets there."
 #~ msgstr ""
 #~ "Nogo non vai quedar sentado mentres Cälé se queda con todo o combate Cälé "
 #~ "necesitará un guerreiro forte coma Nogo. Pode que os outros elfos estean "
@@ -18997,11 +19004,11 @@ msgstr "Torre fantasma"
 #~ "of the island and look out upon the waters, upon the world that we "
 #~ "sacrificed so much to preserve. I remind myself what Zhul said, and they "
 #~ "all believed, that despite all the death and fighting we saw in our "
-#~ "journey, this world was a beautiful and good enough place that "
-#~ "$ally_unit.name was willing to sacrifice his life to save it. Looking out "
-#~ "over the waters, and back upon the prosperity of my people, I tell myself "
-#~ "it was worth it. But when I think of the desperate war that his people "
-#~ "are probably still fighting underground, it seems a small consolation."
+#~ "journey, this world was a beautiful and good enough place that $ally_unit."
+#~ "name was willing to sacrifice his life to save it. Looking out over the "
+#~ "waters, and back upon the prosperity of my people, I tell myself it was "
+#~ "worth it. But when I think of the desperate war that his people are "
+#~ "probably still fighting underground, it seems a small consolation."
 #~ msgstr ""
 #~ "Aínda que creo que a batalla na cidadela negra foi o noso mellor momento, "
 #~ "aínda me persegue a morte de Ial naquel lugar escuro. Así que todas as "
