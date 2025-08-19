@@ -154,11 +154,7 @@ void addon_info::write_minimal(config& cfg) const
 
 std::string addon_info::display_title() const
 {
-	if(title.empty()) {
-		return font::escape_text(make_addon_title(id));
-	} else {
-		return font::escape_text(title);
-	}
+	return title.empty() ? make_addon_title(id) : title;
 }
 
 addon_info_translation addon_info_translation::invalid = {false, "", ""};
