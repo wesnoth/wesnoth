@@ -1,13 +1,6 @@
-## Version 1.19.14+dev
-### Add-ons client
-### Add-ons server
-### Campaigns
-### Editor
-### Multiplayer
+## Version 1.19.15
 ### Lua API
    * Toggle panel now have the event handler `on_double_click`. If set, it will be fired when the user left double clicks on that widget. For other widgets, they can be wrapped inside a toggle panel for this to work.
-### Packaging
-### Terrain
 ### Translations
    * Updated translations: Ancient Greek, Bengali, British English, Chinese (Simplified), Czech, Galician, Hungarian
 ### Units
@@ -46,11 +39,9 @@
      * Same reasoning as the Sylph changes. As a flying, slowing, magical healer with 6mp, the Shyde was powerful even before the numerous buffs she received in 1.18. This is a reversion to her 1.16 values.
      * cost 58 -> 52, hitpoints 51 -> 46, entangle 7-3 -> 6-3 (ranged impact), thorns 10-3 -> 8-3 (ranged pierce), faerie touch 7-2 -> 6-2 (melee impact).
    * Added resting, defense, and standing animations for the Fire Dragon.
-### User interface
 ### WML Engine
    * Add 'radius' attribute to [illuminates] abilities
    * Added [defense] special to modify the base cth while being overridable by chance_to_hit using value (allows to combine an addition with marsksman without increasing value when base value remains below 60).
-### Miscellaneous and Bug Fixes
 
 ## Version 1.19.14
 ### Campaigns
