@@ -123,20 +123,32 @@ inline void animated<T>::update_last_draw_time(double acceleration)
 		auto current_animation_time = get_animation_time();
 		auto current_frame_end_time = get_current_frame_end_time();
 		const auto animation_cycle_end_time = get_end_time();
+		auto cycle_overtime = current_animation_time - animation_cycle_end_time;
 
-		// --- Full cycle catch-up (starts new frame cycle)---
 
-		if (current_animation_time >= animation_cycle_end_time) {
+		// --- New cycle ---
+		if (cycle_overtime > std::chrono::milliseconds{0}) {
 			const auto cycle_duration = std::max(
 				std::chrono::floor<std::chrono::milliseconds>(get_animation_duration() / acceleration_),
 				std::chrono::milliseconds{1}
 			);
-			const auto ncycles = ((current_animation_time - animation_cycle_end_time) / cycle_duration) + 1;
-			start_tick_ += cycle_duration * ncycles;
-			current_frame_key_ = 0;
+
+			// --- Full cycle catch-up (more than 1 cycle behind) ---
+			if (cycle_overtime >= cycle_duration) {
+				const auto ncycles = cycle_overtime / cycle_duration;
+				start_tick_ += cycle_duration * ncycles;
+				current_frame_key_ = 0;
+			}
+
+			// --- Single-step cycle (less than 1 cycle behind) ---
+			else {
+				start_tick_ += cycle_duration;
+				current_frame_key_ = 0;
+			}
+
 			current_animation_time = get_animation_time();
 			current_frame_end_time = get_current_frame_end_time();
-		} 
+		}
 
 		// --- Frame catch-up in the cycle ---
 
