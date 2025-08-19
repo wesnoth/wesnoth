@@ -11,9 +11,45 @@
 ### Translations
    * Updated translations: Ancient Greek, Bengali, British English, Chinese (Simplified), Czech, Galician, Hungarian
 ### Units
+   * Arcane resistance of all Drake race units changed from -10% to -20%
+   * Dune Soldier:
+     * Blade resistace decreased form 20% to 10%.
+   * Dune Rover:
+     * Blade resistace increased form 0% to 10%.
+     * Hp decreased from 33 to 32.
+   * Dune Explorer:
+     * Blade resistace increased form 0% to 10%.
+     * Gold cost increased from 29 to 31.
+   * Dune Wayfarer:
+     * Blade resistace increased form 0% to 10%.
+     * Gold cost increased from 55 to 58.
+   * Dune Burner - line:
+     *  +1 mp, +10% pierce resistance, +20% impact resistance, cold resistance set to 0%.
+   * Dune Burner:
+     * Ranged damage decreased from 7 to 6.
+     * Xp increased from 36 to 40.
+   * Dune Scorcher:
+     * Xp increased from 60 to 64.
+     * Gold cost increased from 23 to 30.
+     * Hp increased from 47 to 51.
+   * Dune Firetrooper:
+     * Gold cost increased from 41 to 44.
+   * Elvish Sylph:
+     * The Elvish Sylph, Shyde, and Enchantress received massive buffs in 1.18. Those have been partially walked back in #8749, but these units still remain outliers in power at their respective levels - especially now that most undead have -40% arcane resist.
+     * A dexterous Sylph, for example, is better than a Great Mage in almost every possible aspect - damage, movement, hitpoints, melee, support (slows), and defense.
+     * This change brings most of their stats back down to their 1.16 levels (or slightly stronger), but deliberately leaves the Sylph and Enchantress's slowing attacks unnerfed; I think those attacks are somewhat weak in comparison to their much more deadly arcane attacks.
+     * cost 135 -> 110, hitpoints 68 -> 60, faerie fire 13-5 -> 10-5 (ranged arcane).
+   * Elvish Enchantress:
+     * Same reasoning as the Sylph changes, but much smaller in magnitude.
+     * cost 62 -> 57, faerie fire 11-4 -> 10-4 (ranged arcane).
+   * Elvish Shyde:
+     * Same reasoning as the Sylph changes. As a flying, slowing, magical healer with 6mp, the Shyde was powerful even before the numerous buffs she received in 1.18. This is a reversion to her 1.16 values.
+     * cost 58 -> 52, hitpoints 51 -> 46, entangle 7-3 -> 6-3 (ranged impact), thorns 10-3 -> 8-3 (ranged pierce), faerie touch 7-2 -> 6-2 (melee impact).
+   * Added resting, defense, and standing animations for the Fire Dragon.
 ### User interface
 ### WML Engine
    * Add 'radius' attribute to [illuminates] abilities
+   * Added [defense] special to modify the base cth while being overridable by chance_to_hit using value (allows to combine an addition with marsksman without increasing value when base value remains below 60).
 ### Miscellaneous and Bug Fixes
 
 ## Version 1.19.14
