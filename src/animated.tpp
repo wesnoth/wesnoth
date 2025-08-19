@@ -116,29 +116,70 @@ inline void animated<T>::update_last_draw_time(double acceleration)
 		does_not_change_ = true;
 		return;
 	}
+	
+	// --- Progress animation frames ---
 
-	if(cycles_) {
-		while(get_animation_time() > get_end_time()) { // cut extra time
-			start_tick_ += std::max(std::chrono::floor<std::chrono::milliseconds>(get_animation_duration() / acceleration_), std::chrono::milliseconds{1});
+	if (cycles_) {
+		auto current_animation_time = get_animation_time();
+		auto current_frame_end_time = get_current_frame_end_time();
+		const auto animation_cycle_end_time = get_end_time();
+
+		// --- Full cycle catch-up (starts new frame cycle)---
+
+		if (current_animation_time >= animation_cycle_end_time) {
+			const auto cycle_duration = std::max(
+				std::chrono::floor<std::chrono::milliseconds>(get_animation_duration() / acceleration_),
+				std::chrono::milliseconds{1}
+			);
+			const auto ncycles = ((current_animation_time - animation_cycle_end_time) / cycle_duration) + 1;
+			start_tick_ += cycle_duration * ncycles;
 			current_frame_key_ = 0;
+			current_animation_time = get_animation_time();
+			current_frame_end_time = get_current_frame_end_time();
+		} 
+
+		// --- Frame catch-up in the cycle ---
+
+		if (current_animation_time - current_frame_end_time > std::chrono::milliseconds{200}) {
+			const auto cycle_duration = std::max(
+				std::chrono::floor<std::chrono::milliseconds>(get_animation_duration() / acceleration_),
+				std::chrono::milliseconds{1}
+			);
+
+			// The target time within a single animation cycle.
+			auto time_in_cycle = (get_animation_time() - get_begin_time()) % cycle_duration + get_begin_time();
+			
+			// Perform a binary search on the frames using their start_time_
+			auto it = std::upper_bound(frames_.begin(), frames_.end(), time_in_cycle, 
+				[](const std::chrono::milliseconds& time, const frame& f) {
+				return time < f.start_time_;
+			});
+
+			// The result of upper_bound is the first element GREATER than our time, 
+			// so we subtract one to get the correct frame.
+			if (it != frames_.begin()) {
+				--it;
+			}
+			current_frame_key_ = std::distance(frames_.begin(), it);
+
+		} else {
+
+			// --- little/no lag, just advance one frame if needed ---
+			if(current_frame_end_time < current_animation_time && current_frame_end_time < get_end_time()) {
+				current_frame_key_++;
+			}
+		}
+	} else {
+
+		// --- (not a looped animation): advance one frame if behind ---
+		const auto current_frame_end_time = get_current_frame_end_time();
+		if(current_frame_end_time < get_animation_time() && current_frame_end_time < get_end_time()) {
+			current_frame_key_++;
 		}
 	}
 
-	const auto current_animation_time = get_animation_time();
-	const auto animation_total_end_time = get_end_time();
-
-	// catch up && don't go after the end
-	while (true)
-	{
-		const auto current_frame_end = get_current_frame_end_time();
-		if (!(current_frame_end < current_animation_time &&
-			  current_frame_end < animation_total_end_time))
-		{
-			break;
-		}
-		current_frame_key_++; // Advance to the next frame
-	}
 }
+
 
 template<typename T>
 inline bool animated<T>::not_started() const
