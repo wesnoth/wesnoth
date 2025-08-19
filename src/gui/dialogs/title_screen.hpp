@@ -47,6 +47,8 @@ public:
 	enum result {
 		// Window was resized, so needs redrawing
 		REDRAW_BACKGROUND = 0, // Needs to be 0, the value of gui2::retval::NONE
+		// Load and begin playing a saved game
+		LOAD_GAME,
 		// Start playing a single-player game, such as the tutorial or a campaign
 		LAUNCH_GAME,
 		// Connect to an MP server

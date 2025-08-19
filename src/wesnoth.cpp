@@ -728,6 +728,26 @@ static void check_fpu()
 }
 #endif
 
+/** Gets the appropriate action code for the current iteration of the game loop. */
+static int get_gameloop_action(game_launcher& game)
+{
+	// If loading a game, skip the titlescreen entirely
+	if(game.has_load_data()) {
+		return title_screen::LOAD_GAME;
+	}
+
+	title_screen dlg{game};
+
+	// Allows re-layout on resize.
+	// Since RELOAD_UI is not checked here, it causes
+	// the dialog to be closed and reshown with changes.
+	while(dlg.get_retval() == title_screen::REDRAW_BACKGROUND) {
+		dlg.show();
+	}
+
+	return dlg.get_retval();
+}
+
 /**
  * Setups the game environment and enters
  * the titlescreen or game loops.
@@ -905,26 +925,7 @@ static int do_gameloop(commandline_options& cmdline_opts)
 
 		cursor::set(cursor::NORMAL);
 
-		// If loading a game, skip the titlescreen entirely
-		if(game->has_load_data() && game->load_game()) {
-			game->launch_game(game_launcher::reload_mode::RELOAD_DATA);
-			continue;
-		}
-
-		int retval;
-		{ // scope to not keep the title screen alive all game
-			title_screen dlg(*game);
-
-			// Allows re-layout on resize.
-			// Since RELOAD_UI is not checked here, it causes
-			// the dialog to be closed and reshown with changes.
-			while(dlg.get_retval() == title_screen::REDRAW_BACKGROUND) {
-				dlg.show();
-			}
-			retval = dlg.get_retval();
-		}
-
-		switch(retval) {
+		switch(get_gameloop_action(*game)) {
 		case title_screen::QUIT_GAME:
 			LOG_GENERAL << "quitting game...";
 			return 0;
@@ -947,6 +948,11 @@ static int do_gameloop(commandline_options& cmdline_opts)
 		case title_screen::MAP_EDITOR:
 			game->start_editor();
 			break;
+		case title_screen::LOAD_GAME:
+			if(!game->load_prepared_game()) {
+				break;
+			}
+			[[fallthrough]];
 		case title_screen::LAUNCH_GAME:
 			game->launch_game(game_launcher::reload_mode::RELOAD_DATA);
 			break;

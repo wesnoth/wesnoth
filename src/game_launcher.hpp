@@ -89,7 +89,8 @@ public:
 	unit_test_result unit_test();
 
 	bool has_load_data() const;
-	bool load_game();
+	bool load_game_prompt();
+	bool load_prepared_game();
 	void set_test(const std::string& id);
 
 	/** Return the ID of the campaign to jump to (skipping the main menu). */
@@ -128,6 +129,12 @@ private:
 	 */
 	unit_test_result single_unit_test();
 
+	/**
+	 * Returns the load_game_metadata object stored in load_data_.
+	 * After this function returns, load_data_ will contain no value.
+	 */
+	savegame::load_game_metadata extract_load_data();
+
 	const commandline_options& cmdline_opts_;
 
 	font::manager font_manager_;
@@ -148,6 +155,6 @@ private:
 	bool jump_to_multiplayer_;
 	jump_to_campaign_info jump_to_campaign_;
 
-	bool jump_to_editor_;
+	utils::optional<std::string> jump_to_editor_;
 	utils::optional<savegame::load_game_metadata> load_data_;
 };

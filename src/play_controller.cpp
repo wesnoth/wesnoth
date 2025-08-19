@@ -935,8 +935,7 @@ void play_controller::save_map()
 
 void play_controller::load_game()
 {
-	savegame::loadgame load(savegame::save_index_class::default_saves_dir(), saved_game_);
-	load.load_game_ingame();
+	savegame::load_interactive_by_exception();
 }
 
 void play_controller::undo()

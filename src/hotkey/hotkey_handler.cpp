@@ -229,7 +229,7 @@ bool play_controller::hotkey_handler::do_execute_command(const hotkey::ui_comman
 
 	if(balg::starts_with(cmd.id, quickreplay_prefix)) {
 		std::string savename = cmd.id.substr(quickreplay_prefix.size());
-		// Load the game by throwing load_game_exception
+		// Load the game by throwing reset_gamestate_exception
 		load_autosave(savename, true);
 	}
 
@@ -506,7 +506,6 @@ hotkey::action_state play_controller::hotkey_handler::get_action_state(const hot
 	}
 }
 
-void play_controller::hotkey_handler::load_autosave(const std::string& filename, bool)
+void play_controller::hotkey_handler::load_autosave(const std::string&, bool)
 {
-	throw savegame::load_game_exception({savegame::save_index_class::default_saves_dir(), filename});
 }

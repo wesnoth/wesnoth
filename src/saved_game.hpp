@@ -44,8 +44,7 @@ public:
 	saved_game& operator=(const saved_game& other) = delete;
 	saved_game& operator=(saved_game&& other);
 	void swap(saved_game& other);
-	/** destroys the passed config. */
-	void set_data(config& cfg);
+	void set_data(config&& cfg);
 	void clear();
 	/** writes the config information into a stream (file) */
 	void write_config(config_writer& out) const;
