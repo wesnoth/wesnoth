@@ -686,10 +686,8 @@ const std::vector<const shroud_map*>& team::ally_fog(const std::vector<team>& te
 	return ally_fog_;
 }
 
-bool team::knows_about_team(std::size_t index) const
+bool team::knows_upkeep(const team& t) const
 {
-	const team& t = resources::gameboard->teams()[index];
-
 	// We know about our own team
 	if(this == &t) {
 		return true;
@@ -701,7 +699,7 @@ bool team::knows_about_team(std::size_t index) const
 	}
 
 	// We don't know about enemies
-	if(is_enemy(index + 1)) {
+	if(is_enemy(t.side())) {
 		return false;
 	}
 
