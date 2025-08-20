@@ -569,7 +569,8 @@ bool addons_client::try_fetch_addon(const addon_info & addon)
 	if(!(
 		download_addon(archive, addon.id, addon.display_title_full(), addon.current_version, !is_addon_installed(addon.id)) &&
 		install_addon(archive, addon)
-		)) {
+		))
+	{
 		const std::string& server_error = get_last_server_error();
 		if(!server_error.empty()) {
 			gui2::show_error_message(

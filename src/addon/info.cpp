@@ -192,12 +192,7 @@ addon_info_translation addon_info::translated_info() const
 std::string addon_info::display_title_translated() const
 {
 	addon_info_translation info = translated_info();
-
-	if(info.valid()) {
-		return info.title;
-	}
-
-	return "";
+	return info.valid() ? info.title : "";
 }
 
 std::string addon_info::display_title_translated_or_original() const
@@ -209,20 +204,13 @@ std::string addon_info::display_title_translated_or_original() const
 std::string addon_info::description_translated() const
 {
 	addon_info_translation info = translated_info();
-
-	if(info.valid() && !info.description.empty()) {
-		return info.description;
-	}
-
-	return description;
+	return (info.valid() && !info.description.empty()) ? info.description : description;
 }
 
 std::string addon_info::display_title_full() const
 {
 	std::string local_title = display_title_translated();
-	if(local_title.empty())
-		return display_title();
-	return local_title + " (" + display_title() + ")";
+	return local_title.empty() ? display_title() : local_title + " (" + display_title() + ")";
 }
 
 std::string addon_info::display_icon() const
@@ -305,11 +293,7 @@ void read_addons_list(const config& cfg, addons_list& dest)
 
 std::string size_display_string(double size)
 {
-	if(size > 0.0) {
-		return utils::si_string(size, true, _("unit_byte^B"));
-	} else {
-		return "";
-	}
+	return size > 0.0 ? utils::si_string(size, true, _("unit_byte^B")) : "";
 }
 
 std::string make_addon_title(const std::string& id)
