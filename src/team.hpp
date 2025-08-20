@@ -353,7 +353,8 @@ public:
 	/** Merge a WML shroud map with the shroud data of this player. */
 	void merge_shroud_map_data(const std::string& shroud_data) { shroud_.merge(shroud_data); }
 
-	bool knows_about_team(std::size_t index) const;
+	/** Whether @a other's count of villages, units, upkeep and income should be visible in the status table. */
+	bool knows_upkeep(const team &other) const;
 	/** Records hexes that were cleared of fog via WML. */
 	void add_fog_override(const std::set<map_location> &hexes) { fog_clearer_.insert(hexes.begin(), hexes.end()); }
 	/** Removes the record of hexes that were cleared of fog via WML. */
