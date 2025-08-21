@@ -64,10 +64,10 @@ inline void animated<T>::add_frame(const std::chrono::milliseconds& duration, co
 	// which case emplace_back could invalidate it before the new frame is constructed.
 	if(frames_.empty()) {
 		does_not_change_ = !force_change;
-		frames_.push_back(frame{duration, value, starting_frame_time_});
+		frames_.push_back(frame{value, starting_frame_time_, duration});
 	} else {
 		does_not_change_ = false;
-		frames_.push_back(frame{duration, value, frames_.back().start_time_ + frames_.back().duration_});
+		frames_.push_back(frame{value, get_frame_end_time(frames_.back()), duration});
 	}
 }
 
@@ -117,18 +117,36 @@ inline void animated<T>::update_last_draw_time(double acceleration)
 		return;
 	}
 
-	if(cycles_) {
-		while(get_animation_time() > get_end_time()) { // cut extra time
-			start_tick_ += std::max(std::chrono::floor<std::chrono::milliseconds>(get_animation_duration() / acceleration_), std::chrono::milliseconds{1});
-			current_frame_key_ = 0;
-		}
+	auto animation_time = get_animation_time();
+	const auto end_time = get_end_time();
+
+	// Check if it's time to move on to the next cycle. Might skip multiple frames
+	// if the animation was paused off screen and has now scrolled back on screen.
+	if(cycles_ && animation_time > end_time) {
+		const auto cycle_duration = std::chrono::floor<std::chrono::milliseconds>(get_animation_duration() / acceleration_);
+
+		const auto time_past_end = animation_time - end_time;
+		const auto time_in_cycle = time_past_end % cycle_duration;
+
+		// Reset start tick to the beginning of the current cycle.
+		start_tick_ += animation_time - time_in_cycle;
+
+		// We could be anywhere in the cycle. Assume first frame and adjust as needed below.
+		current_frame_key_ = 0;
+		animation_time = time_in_cycle;
 	}
 
-	const auto current_frame_end_time = get_current_frame_end_time();
-	// catch up && don't go after the end
-	if(current_frame_end_time < get_animation_time() && current_frame_end_time < get_end_time()) {
-		current_frame_key_++;
+	// Find the index of the appropriate frame for the current animation time.
+	auto iter = frames_.begin() + current_frame_key_;
+	while(std::next(iter) != frames_.end()) {
+		if(get_frame_end_time(*iter) > animation_time) {
+			break;
+		}
+
+		++iter;
 	}
+
+	current_frame_key_ = std::distance(frames_.begin(), iter);
 }
 
 template<typename T>
@@ -269,7 +287,7 @@ inline std::chrono::milliseconds animated<T>::get_current_frame_begin_time() con
 		return starting_frame_time_;
 	}
 
-	return frames_[current_frame_key_].start_time_;
+	return get_frame_begin_time(frames_[current_frame_key_]);
 }
 
 template<typename T>
@@ -279,7 +297,7 @@ inline std::chrono::milliseconds animated<T>::get_current_frame_end_time() const
 		return starting_frame_time_;
 	}
 
-	return get_current_frame_begin_time() + get_current_frame_duration();
+	return get_frame_end_time(frames_[current_frame_key_]);
 }
 
 template<typename T>
@@ -289,7 +307,7 @@ inline std::chrono::milliseconds animated<T>::get_current_frame_duration() const
 		return std::chrono::milliseconds{0};
 	}
 
-	return frames_[current_frame_key_].duration_;
+	return get_frame_duration(frames_[current_frame_key_]);
 }
 
 template<typename T>
@@ -372,7 +390,7 @@ inline std::chrono::milliseconds animated<T>::get_end_time() const
 		return starting_frame_time_;
 	}
 
-	return frames_.back().start_time_ + frames_.back().duration_;
+	return get_frame_end_time(frames_.back());
 }
 
 template<typename T>

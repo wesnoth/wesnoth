@@ -119,11 +119,27 @@ protected:
 private:
 	struct frame
 	{
-		// Represents the timestamp of the frame start
-		std::chrono::milliseconds duration_;
 		T value_;
+
+		// Represents the timestamp of the frame start
 		std::chrono::milliseconds start_time_;
+		std::chrono::milliseconds duration_;
 	};
+
+	static auto get_frame_begin_time(const frame& frame)
+	{
+		return frame.start_time_;
+	}
+
+	static auto get_frame_end_time(const frame& frame)
+	{
+		return frame.start_time_ + frame.duration_;
+	}
+
+	static auto get_frame_duration(const frame& frame)
+	{
+		return frame.duration_;
+	}
 
 	bool does_not_change_; // Optimization for 1-frame permanent animations
 	bool started_;
@@ -139,7 +155,7 @@ private:
 	bool cycles_;
 	double acceleration_;
 	std::chrono::steady_clock::time_point last_update_tick_;
-	int current_frame_key_;
+	std::size_t current_frame_key_;
 };
 
 // NOTE: this needs to be down here or the templates won't build.
