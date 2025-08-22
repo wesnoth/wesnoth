@@ -88,6 +88,8 @@ context_manager::context_manager(editor_display& gui, const game_config_view& ga
 {
 	resources::filter_con = this;
 	create_default_context();
+	gui.change_display_context(&get_map_context());
+	get_map_context().set_starting_position_labels(gui);
 	init_map_generators(game_config);
 }
 
@@ -1028,7 +1030,7 @@ int context_manager::add_map_context_of(std::unique_ptr<map_context>&& mc)
 template<typename... T>
 void context_manager::replace_map_context(const T&... args)
 {
-	replace_map_context_with(std::move(std::make_unique<map_context>(args...)));
+	replace_map_context_with(std::make_unique<map_context>(args...));
 }
 
 void context_manager::replace_map_context_with(std::unique_ptr<map_context>&& mc)
