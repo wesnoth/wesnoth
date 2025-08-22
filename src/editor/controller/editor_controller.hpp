@@ -182,7 +182,6 @@ private:
 		load_mru,
 		palette,
 		area,
-		addon,
 		side,
 		time,
 		local_time,

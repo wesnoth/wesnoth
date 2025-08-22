@@ -321,7 +321,6 @@ bool editor_controller::can_execute_command(const hotkey::ui_command& cmd) const
 			case menu_type::load_mru:
 			case menu_type::palette:
 			case menu_type::area:
-			case menu_type::addon:
 			case menu_type::side:
 			case menu_type::time:
 			case menu_type::schedule:
@@ -630,14 +629,12 @@ hotkey::action_state editor_controller::get_action_state(const hotkey::ui_comman
 			return hotkey::action_state::stateless;
 		case menu_type::area:
 			return hotkey::selected_if(index == get_current_map_context().get_active_area());
-		case menu_type::addon:
-			return hotkey::action_state::stateless;
 		case menu_type::side:
 			return hotkey::selected_if(static_cast<std::size_t>(index) == gui_->playing_team_index());
 		case menu_type::time:
-			return hotkey::selected_if(index ==	get_current_map_context().get_time_manager()->get_current_time());
+			return hotkey::selected_if(index == get_current_map_context().get_time_manager()->get_current_time());
 		case menu_type::local_time:
-			return hotkey::selected_if(index ==	get_current_map_context().get_time_manager()->get_current_area_time(
+			return hotkey::selected_if(index == get_current_map_context().get_time_manager()->get_current_area_time(
 				get_current_map_context().get_active_area()));
 		case menu_type::music:
 			return hotkey::on_if(get_current_map_context().playlist_contains(music_tracks_[index]));
@@ -720,8 +717,6 @@ bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool p
 				gui_->scroll_to_tiles({ area.begin(), area.end() });
 				return true;
 			}
-		case menu_type::addon:
-			return true;
 		case menu_type::time:
 			{
 				get_current_map_context().set_starting_time(index);
@@ -1225,10 +1220,6 @@ void editor_controller::show_menu(const std::vector<config>& items_arg, const po
 	else if(first_id == "editor-switch-area") {
 		active_menu_ = menu_type::area;
 		context_manager_->expand_areas_menu(generated);
-	}
-
-	else if(first_id == "editor-pbl") {
-		active_menu_ = menu_type::addon;
 	}
 
 	else if(first_id == "editor-switch-time") {
