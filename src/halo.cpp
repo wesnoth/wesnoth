@@ -35,12 +35,13 @@ static lg::log_domain log_halo("halo");
 #define LOG_HL LOG_STREAM(info, log_halo)
 #define DBG_HL LOG_STREAM(debug, log_halo)
 
+using namespace std::chrono_literals;
+
 namespace halo
 {
 
 class halo_impl
 {
-
 	class effect
 	{
 	public:
@@ -64,8 +65,6 @@ class halo_impl
 		bool expired()     const { return !images_.cycles() && images_.animation_finished(); }
 		bool need_update() const { return images_.need_update(); }
 		bool does_change() const { return !images_.does_not_change(); }
-		bool on_location(const std::set<map_location>& locations) const;
-		bool location_not_known() const;
 
 	private:
 
@@ -96,7 +95,7 @@ class halo_impl
 	};
 
 	std::map<int, effect> haloes;
-	int halo_id;
+	int halo_id{1};
 
 	/**
 	 * Upon unrendering, an invalidation list is send. All haloes in that area and
@@ -117,20 +116,7 @@ class halo_impl
 	 */
 	std::set<int> changing_haloes;
 
-	public:
-	/**
-	 * impl's of exposed functions
-	 */
-
-	explicit halo_impl() :
-		haloes(),
-		halo_id(1),
-		invalidated_haloes(),
-		deleted_haloes(),
-		changing_haloes()
-	{}
-
-
+public:
 	int add(int x, int y, const std::string& image, const map_location& loc,
 			ORIENTATION orientation=NORMAL, bool infinite=true);
 
@@ -161,7 +147,7 @@ halo_impl::effect::effect(int xpos, int ypos,
 
 	set_location(xpos, ypos);
 
-	images_.start_animation(std::chrono::milliseconds{0}, infinite);
+	images_.start_animation(0ms, infinite);
 
 	update();
 }
@@ -179,7 +165,6 @@ rect halo_impl::effect::get_draw_location()
 {
 	return screen_loc_;
 }
-
 
 /** Update the current location, animation frame, etc. */
 void halo_impl::effect::update()
@@ -295,7 +280,6 @@ void halo_impl::effect::queue_redraw()
 }
 
 
-
 /*************/
 /* halo_impl */
 /*************/
@@ -312,20 +296,19 @@ int halo_impl::add(int x, int y, const std::string& image, const map_location& l
 	for(const std::string& item : items) {
 		const std::vector<std::string>& sub_items = utils::split(item, ':');
 		std::string str = item;
-		int time = 100;
+		auto time = 100ms;
 
 		if(sub_items.size() > 1) {
 			str = sub_items.front();
 			try {
-				time = std::stoi(sub_items.back());
+				time = std::chrono::milliseconds{std::stoi(sub_items.back())};
 			} catch(const std::invalid_argument&) {
 				ERR_HL << "Invalid time value found when constructing halo: " << sub_items.back();
 			}
 		}
-		image_vector.push_back(animated<image::locator>::frame_description(time,image::locator(str)));
-
+		image_vector.emplace_back(time, image::locator(str));
 	}
-	haloes.emplace(id, effect(x, y, image_vector, loc, orientation, infinite));
+	haloes.try_emplace(id, x, y, image_vector, loc, orientation, infinite);
 	invalidated_haloes.insert(id);
 	if(haloes.find(id)->second.does_change() || !infinite) {
 		changing_haloes.insert(id);
@@ -379,7 +362,7 @@ void halo_impl::update()
 	deleted_haloes.clear();
 
 	// Update the location and animation frame of the remaining halos
-	for(auto& [id, halo] : haloes) { (void)id;
+	for(auto& [id, halo] : haloes) {
 		halo.update();
 	}
 
@@ -406,7 +389,6 @@ void halo_impl::render(const rect& region)
 		}
 	}
 }
-
 
 
 /*****************/
