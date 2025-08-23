@@ -647,6 +647,13 @@ void textbox::handle_event(const SDL_Event& event, bool was_forwarded)
 
 	const bool mouse_inside = loc.contains(mousex, mousey);
 
+#ifdef __ANDROID__
+	if(mouse_inside) {
+		// Show onscreen keyboard
+		SDL_StartTextInput();
+	}
+#endif
+
 	// Someone else may set the mouse cursor for us to something unusual (e.g.
 	// the WAIT cursor) so we ought to mess with that only if it's set to
 	// NORMAL or IBEAM.

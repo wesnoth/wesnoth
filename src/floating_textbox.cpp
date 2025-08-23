@@ -23,6 +23,7 @@
 #include "preferences/preferences.hpp"
 #include "log.hpp"
 
+#include <SDL2/SDL_keyboard.h>
 #include <ctime>
 
 static lg::log_domain log_display("display");
@@ -52,6 +53,11 @@ void floating_textbox::close()
 	check_.reset(nullptr);
 	font::remove_floating_label(label_);
 	mode_ = TEXTBOX_NONE;
+
+#ifdef __ANDROID__
+	// Hide onscreen keyboard
+	SDL_StopTextInput();
+#endif
 }
 
 void floating_textbox::update_location(game_display& gui)
@@ -64,7 +70,13 @@ void floating_textbox::update_location(game_display& gui)
 
 	const int border_size = 10;
 
+#ifdef __ANDROID__
+	// On Android the Onscreen keyboard hides this box if aligned to bottom,
+	// so we align it to top instead.
+	const int ypos = area.y + border_size - (check_ != nullptr ? check_->height() + border_size : 0);
+#else
 	const int ypos = area.y + area.h - 30 - (check_ != nullptr ? check_->height() + border_size : 0);
+#endif
 
 	if(label_ != 0) {
 		font::remove_floating_label(label_);
@@ -83,7 +95,7 @@ void floating_textbox::update_location(game_display& gui)
 	}
 
 	const rect& label_area = font::get_floating_label_rect(label_);
-	const int textbox_width = area.w - label_area.w - border_size*3;
+	const int textbox_width = area.w - label_area.w - border_size * 3;
 
 	if(textbox_width <= 0) {
 		font::remove_floating_label(label_);
@@ -92,7 +104,7 @@ void floating_textbox::update_location(game_display& gui)
 
 	if(box_ != nullptr) {
 		const rect rect {
-				area.x + label_area.w + border_size * 2
+			area.x + label_area.w + border_size * 2
 			, ypos
 			, textbox_width
 			, box_->height()
@@ -120,10 +132,14 @@ void floating_textbox::show(
 		check_->set_check(checked);
 	}
 
-
 	box_.reset(new gui::textbox(100,"",true,256,font::SIZE_NORMAL,0.8,0.6));
 
 	update_location(gui);
+
+#ifdef __ANDROID__
+	// Show onscreen keyboard
+	SDL_StartTextInput();
+#endif
 }
 
 void floating_textbox::tab(const std::set<std::string>& dictionary)
