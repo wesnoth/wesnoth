@@ -130,7 +130,6 @@ private:
 	/** Deletes non-existent save files from the index. */
 	void clean_up_index();
 
-	bool loaded_;
 	config data_;
 	std::map<std::string, std::chrono::system_clock::time_point> modified_;
 	const std::string dir_;
