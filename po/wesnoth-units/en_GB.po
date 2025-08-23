@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-08-19 15:14 UTC\n"
-"PO-Revision-Date: 2025-07-21 15:56+1000\n"
+"PO-Revision-Date: 2025-08-20 13:41+1000\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -1232,7 +1232,7 @@ msgstr ""
 #. [unit_type]: id=Merchant Carrack, race=ship
 #: data/core/units/boats/Carrack_Merchant.cfg:4
 msgid "Merchant Carrack"
-msgstr ""
+msgstr "Merchant Carrack"
 
 #. [unit_type]: id=Merchant Carrack, race=ship
 #: data/core/units/boats/Carrack_Merchant.cfg:20
@@ -1242,6 +1242,10 @@ msgid ""
 "platform, and their spacious holds can carry both medical supplies and "
 "repair equipment."
 msgstr ""
+"Merchant Carracks are swift ships with large cargo holds. Though they are "
+"not designed for war, their large and stable deck makes for a good archery "
+"platform, and their spacious holds can carry both medical supplies and "
+"repair equipment."
 
 #. [attack]: type=pierce
 #: data/core/units/boats/Carrack_Merchant.cfg:42
@@ -1249,23 +1253,16 @@ msgstr ""
 #: data/core/units/boats/Orc_Battle-Barge.cfg:35
 #: data/core/units/boats/Raider_Coastal.cfg:43
 #: data/core/units/boats/Raider_Iron.cfg:44 data/core/units/boats/Skiff.cfg:39
-#, fuzzy
-#| msgid "Poacher"
 msgid "archers"
-msgstr "Poacher"
+msgstr "archers"
 
 #. [unit_type]: id=Pirate Carrack, race=ship
 #: data/core/units/boats/Carrack_Pirate.cfg:4
 msgid "Pirate Carrack"
-msgstr ""
+msgstr "Pirate Carrack"
 
 #. [unit_type]: id=Pirate Carrack, race=ship
 #: data/core/units/boats/Carrack_Pirate.cfg:21
-#, fuzzy
-#| msgid ""
-#| "Pirate galleons are to transport ships what wolves are to sheep. The "
-#| "pirates who crew them are more than happy to help relieve other ships of "
-#| "their weighty cargo."
 msgid ""
 "Pirate galleons are to transport ships what wolves are to sheep. The pirates "
 "who crew them are more than happy to help relieve other ships of their "
@@ -1273,28 +1270,22 @@ msgid ""
 msgstr ""
 "Pirate galleons are to transport ships what wolves are to sheep. The pirates "
 "who crew them are more than happy to help relieve other ships of their "
-"weighty cargo."
+"weighty cargo, or to fight as privateers in return for coin."
 
 #. [attack]: type=pierce
 #: data/core/units/boats/Carrack_Pirate.cfg:38
-#, fuzzy
-#| msgid "ballista"
 msgid "ballistae"
-msgstr "ballista"
+msgstr "ballistae"
 
 #. [attack]: type=pierce
 #: data/core/units/boats/Carrack_Pirate.cfg:47
-#, fuzzy
-#| msgid "Trapper"
 msgid "grapple"
-msgstr "Trapper"
+msgstr "grapple"
 
 #. [unit_type]: id=Derelict, race=ship
 #: data/core/units/boats/Derelict_Ship.cfg:4
-#, fuzzy
-#| msgid "Derelict Hulk"
 msgid "Derelict"
-msgstr "Derelict Hulk"
+msgstr "Derelict"
 
 #. [unit_type]: id=Derelict, race=ship
 #. [unit_type]: id=Ghost Ship, race=ship
@@ -1323,6 +1314,11 @@ msgid ""
 "Artfully grafted together from still-living trees, these sleek ships can "
 "recover from minor injuries without their crews’ intervention."
 msgstr ""
+"Elves are not a seafaring race by nature, preferring instead the quiet "
+"solitude of forests. Nevertheless, there is some demand for river trade and "
+"transport, particularly between the enclaves of Wesmere and Lintanir. "
+"Artfully grafted together from still-living trees, these sleek ships can "
+"recover from minor injuries without their crews’ intervention."
 
 #. [attack]: type=pierce
 #: data/core/units/boats/Elf_Cutter.cfg:38
@@ -1330,7 +1326,7 @@ msgstr ""
 #: data/core/units/boats/Elf_Sloop.cfg:39
 #: data/core/units/boats/Elf_Sloop.cfg:48
 msgid "marksmen"
-msgstr ""
+msgstr "marksmen"
 
 #. [unit_type]: id=Elvish Sloop, race=ship
 #: data/core/units/boats/Elf_Sloop.cfg:5
@@ -1345,6 +1341,10 @@ msgid ""
 "times of crisis, for their living timber can survive only a handful of years "
 "after being launched."
 msgstr ""
+"Sleek in the water and festooned with greenery, these mightiest of elvish "
+"ships weather wave and storm with impunity. Such behemoths are only seen in "
+"times of crisis, for their living timber can survive only a handful of years "
+"after being launched."
 
 #. [unit_type]: id=Fireship, race=ship
 #: data/core/units/boats/Fireship.cfg:4
@@ -1367,7 +1367,7 @@ msgstr ""
 #. [dummy]: id=deteriorate
 #: data/core/units/boats/Fireship.cfg:25
 msgid "deteriorate"
-msgstr ""
+msgstr "deteriorate"
 
 #. [dummy]: id=deteriorate
 #: data/core/units/boats/Fireship.cfg:26
@@ -1375,6 +1375,8 @@ msgid ""
 "This unit is deteriorating. It cannot be healed, and loses 10 hitpoints at "
 "the start of each of its turns."
 msgstr ""
+"This unit is deteriorating. It cannot be healed, and loses 10 hit-points at "
+"the start of each of its turns."
 
 #. [unit_type]: id=Ghost Ship, race=ship
 #: data/core/units/boats/Ghost_Ship.cfg:16
@@ -1392,7 +1394,7 @@ msgstr "lightning"
 #. [attack]: type=cold
 #: data/core/units/boats/Ghost_Ship.cfg:63
 msgid "lost souls"
-msgstr ""
+msgstr "lost souls"
 
 #. [unit_type]: id=Boat, race=mechanical
 #: data/core/units/boats/Legacy_Boat.cfg:7
@@ -1471,23 +1473,6 @@ msgstr "Orcish Barge"
 
 #. [unit_type]: id=Orcish Barge, race=ship
 #: data/core/units/boats/Orc_Barge.cfg:26
-#, fuzzy
-#| msgid ""
-#| "Orcish barges are crude constructions, devoid of any of the craftsmanship "
-#| "seen in almost any other ship. But what they lack in speed and grace, "
-#| "they make up for with their rugged utility in navigating rivers and "
-#| "swamps. Their primary means of movement comes from a large, symmetric "
-#| "sail held at three points for downwind propulsion. When currents and "
-#| "winds lead to the wrong direction, the crew must use poles and anchors to "
-#| "move the barge in the intended direction.\n"
-#| "\n"
-#| "Barges serve as transports for either supplies or troops, but they have "
-#| "been used as pickets in larger conflicts. They lack any specific "
-#| "weaponry, but the crew is equipped with the crude orcish bows that can be "
-#| "deterrent enough in many situations.\n"
-#| "\n"
-#| "These barges are very ineffective in the high seas, little better than a "
-#| "floating wreck."
 msgid ""
 "Orcish barges are crude constructions, devoid of any of the craftsmanship "
 "seen in almost any other ship. But what they lack in speed and grace, they "
@@ -1507,18 +1492,18 @@ msgid ""
 msgstr ""
 "Orcish barges are crude constructions, devoid of any of the craftsmanship "
 "seen in almost any other ship. But what they lack in speed and grace, they "
-"make up for with their rugged utility in navigating rivers and swamps. Their "
-"primary means of movement comes from a large, symmetric sail held at three "
-"points for down-wind propulsion. When currents and winds lead to the wrong "
-"direction, the crew must use poles and anchors to move the barge in the "
-"intended direction.\n"
+"make up for with their rugged durability and utility in navigating rivers "
+"and swamps. Their primary means of movement comes from a large, symmetric "
+"sail held at three points for downwind propulsion. When currents and winds "
+"lead to the wrong direction, the crew must use poles and anchors to move the "
+"barge in the intended direction.\n"
 "\n"
-"Barges serve as transports for either supplies or troops, but they have been "
-"used as pickets in larger conflicts. They lack any specific weaponry, but "
-"the crew is equipped with the crude orcish bows that can be deterrent enough "
-"in many situations.\n"
+"Barges serve as transports for either supplies or troops, and when stocked "
+"with medicines can provide a safe space — akin to a village — for wounded "
+"fighters to rest. They lack any specific weaponry and cannot ram, but the "
+"crew is equipped with enough crude orcish bows to provide deterrent.\n"
 "\n"
-"These barges are very ineffective in the high seas, little better than a "
+"These barges are very ineffective in the high seas; little better than a "
 "floating wreck."
 
 #. [unit_type]: id=Orcish Battle Barge, race=ship
@@ -1538,6 +1523,14 @@ msgid ""
 "These barges are very ineffective in the high seas; little better than a "
 "floating wreck."
 msgstr ""
+"Despite their simplistic design, barges provide a surprising amount of "
+"utility: bulk transport of goods or men, navigability in shallow water or "
+"swamp, and a safe space for wounded fighters to rest. They also provide a "
+"wide, steady platform on which to mount siege equipment, a fact of which "
+"orcs are well aware.\n"
+"\n"
+"These barges are very ineffective in the high seas; little better than a "
+"floating wreck."
 
 #. [attack]: type=impact
 #: data/core/units/boats/Orc_Battle-Barge.cfg:44
@@ -1559,6 +1552,12 @@ msgid ""
 "The so-called “Rigship” is but one of many designs bearing testament to "
 "their skill."
 msgstr ""
+"Most orcs have little need for sailing vessels, preferring to fight their "
+"battles across the dry peaks and hills of the Heart Mountains. But along the "
+"north-western coast of the Great Continent, in the cities of Bitok and "
+"Tirigaz, orcish ship-makers have been hard at work perfecting their craft. "
+"The so-called ‘Rig-ship’ is but one of many designs bearing testament to "
+"their skill."
 
 #. [attack]: type=pierce
 #. [attack]: type=fire
@@ -1566,10 +1565,8 @@ msgstr ""
 #: data/core/units/boats/Orc_Rigship.cfg:44
 #: data/core/units/boats/Orc_Warship.cfg:36
 #: data/core/units/boats/Orc_Warship.cfg:45
-#, fuzzy
-#| msgid "crossbow"
 msgid "crossbows"
-msgstr "crossbow"
+msgstr "crossbows"
 
 #. [unit_type]: id=Orcish Warship, race=ship
 #: data/core/units/boats/Orc_Warship.cfg:5
@@ -1584,6 +1581,11 @@ msgid ""
 "shipwrights of the Tirigaz coast have not forgotten that lesson, and devote "
 "significant effort to the construction of newer and ever-better vessels."
 msgstr ""
+"When orcs first stepped off their ships on to the western shores of the "
+"Great Continent, they found an unspoiled paradise across which to spread. "
+"The shipwrights of the Tirigaz coast have not forgotten that lesson, and "
+"devote significant effort to the construction of newer and ever-better "
+"vessels."
 
 #. [unit_type]: id=Raft, race=ship
 #: data/core/units/boats/Raft.cfg:5
@@ -1592,11 +1594,6 @@ msgstr "Raft"
 
 #. [unit_type]: id=Raft, race=ship
 #: data/core/units/boats/Raft.cfg:20
-#, fuzzy
-#| msgid ""
-#| "Rafts can be an efficient means of downriver transport, but they can also "
-#| "be an improvised vessel of desperation, patched together from the wreck "
-#| "of a larger ship."
 msgid ""
 "Rafts can be an efficient means of downriver transport, but they can also be "
 "an improvised vessel of desperation, patched together from the wreck of a "
@@ -1607,7 +1604,10 @@ msgid ""
 msgstr ""
 "Rafts can be an efficient means of downriver transport, but they can also be "
 "an improvised vessel of desperation, patched together from the wreck of a "
-"larger ship."
+"larger ship.\n"
+"\n"
+"These rafts are very ineffective in the high seas; little better than a "
+"floating wreck."
 
 #. [unit_type]: id=Coastal Raider, race=ship
 #: data/core/units/boats/Raider_Coastal.cfg:4
@@ -1616,19 +1616,6 @@ msgstr "Coastal Raider"
 
 #. [unit_type]: id=Coastal Raider, race=ship
 #: data/core/units/boats/Raider_Coastal.cfg:24
-#, fuzzy
-#| msgid ""
-#| "While many larger ships rely on impressive sails to harness the power of "
-#| "the wind, galleys and raiders are propelled by muscle-power of the crew "
-#| "manning the oars. This has the disadvantage of requiring a larger crew, "
-#| "and it does limit the speed and efficiency of transport. But these "
-#| "seeming weaknesses also make the vessel less vulnerable to the whims of "
-#| "weather and the predations of pirates.\n"
-#| "\n"
-#| "Coastal Raider ships are a very basic warship, used by several races to "
-#| "move armed forces rapidly through shallow and coastal water. They do not "
-#| "possess any specific armaments, but there are always archers amongst the "
-#| "crew."
 msgid ""
 "While Carracks and Cogs rely on impressive sails to harness the power of the "
 "wind, galleys and raiders are propelled by muscle-power of the crew manning "
@@ -1642,16 +1629,17 @@ msgid ""
 "not possess any specific armaments, but oared propulsion makes the vessel "
 "much more maneuverable when ramming or beaching."
 msgstr ""
-"While many larger ships rely on impressive sails to harness the power of the "
+"While Carracks and Cogs rely on impressive sails to harness the power of the "
 "wind, galleys and raiders are propelled by muscle-power of the crew manning "
 "the oars. This has the disadvantage of requiring a larger crew, and it does "
 "limit the speed and efficiency of transport. But these seeming weaknesses "
 "also make the vessel less vulnerable to the whims of weather and the "
 "predations of pirates.\n"
 "\n"
-"Coastal Raider ships are a very basic warship, used by several races to move "
-"armed forces rapidly through shallow and coastal water. They do not possess "
-"any specific armaments, but there are always archers amongst the crew."
+"Coastal Raider ships are a very basic warship, protected against ramming and "
+"used to move armed forces rapidly through shallow and coastal water. They do "
+"not possess any specific armaments, but oared propulsion makes the vessel "
+"much more manoeuvrable when ramming or beaching."
 
 #. [unit_type]: id=Iron Raider, race=ship
 #: data/core/units/boats/Raider_Iron.cfg:4
@@ -1660,19 +1648,6 @@ msgstr "Iron Raider"
 
 #. [unit_type]: id=Iron Raider, race=ship
 #: data/core/units/boats/Raider_Iron.cfg:25
-#, fuzzy
-#| msgid ""
-#| "While Galleons and Cogs rely on impressive sails to harness the power of "
-#| "the wind, galleys and raiders are propelled by muscle-power of the crew "
-#| "manning the oars. This has the disadvantage of requiring a larger crew, "
-#| "and it does limit the speed and efficiency of transport. But these "
-#| "seeming weaknesses also make the vessel less vulnerable to the whims of "
-#| "weather and the predations of pirates.\n"
-#| "\n"
-#| "Iron Raiders are Coastal Raiders that have been hardened to become "
-#| "tougher targets and harder hitters, at the expense of speed. They are "
-#| "often used as front-line escorts of slower cargo ships in rivers and "
-#| "coasts."
 msgid ""
 "While Carracks and Cogs rely on impressive sails to harness the power of the "
 "wind, galleys and raiders are propelled by muscle-power of the crew manning "
@@ -1686,16 +1661,17 @@ msgid ""
 "escorts of slower cargo ships in rivers and coasts, where their heavy iron "
 "ram proves the most effective."
 msgstr ""
-"While Galleons and Cogs rely on impressive sails to harness the power of the "
+"While Carracks and Cogs rely on impressive sails to harness the power of the "
 "wind, galleys and raiders are propelled by muscle-power of the crew manning "
 "the oars. This has the disadvantage of requiring a larger crew, and it does "
 "limit the speed and efficiency of transport. But these seeming weaknesses "
 "also make the vessel less vulnerable to the whims of weather and the "
 "predations of pirates.\n"
 "\n"
-"Iron Raiders are Coastal Raiders that have been hardened to become tougher "
-"targets and harder hitters, at the expense of speed. They are often used as "
-"front-line escorts of slower cargo ships in rivers and coasts."
+"Iron Raiders are veteran Coastal Raiders that have been hardened to become "
+"tougher targets and harder hitters. They are often used as front-line "
+"escorts of slower cargo ships in rivers and coasts, where their heavy iron "
+"ram proves the most effective."
 
 #. [unit_type]: id=Skiff, race=ship
 #: data/core/units/boats/Skiff.cfg:5
