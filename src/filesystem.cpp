@@ -945,12 +945,18 @@ std::vector<other_version_dir> find_other_version_saves_dirs()
 		//
 
 #if defined(_WIN32)
-		path = get_user_data_path().parent_path() / ("Wesnoth" + suffix) / "saves";
+		path = get_user_data_path().parent_path() / ("Wesnoth" + suffix);
 #elif defined(_X11)
-		path = get_user_data_path().parent_path() / suffix / "saves";
+		path = get_user_data_path().parent_path() / suffix;
 #elif defined(__APPLE__)
-		path = get_user_data_path().parent_path() / ("Wesnoth_" + suffix) / "saves";
+		path = get_user_data_path().parent_path() / ("Wesnoth_" + suffix);
 #endif
+
+		// 1.19.2 added get_sync_dir() and changed the path to the save directory.
+		if(minor >= 19) {
+			path /= "sync";
+		}
+		path /= "saves";
 
 		if(bfs::exists(path)) {
 			result.emplace_back(suffix, path.string());
