@@ -138,13 +138,31 @@ void save_index_class::write_save_index()
 }
 
 save_index_class::save_index_class(const std::string& dir)
-	: loaded_(false)
-	, data_()
+	: data_()
 	, modified_()
 	, dir_(dir)
 	, read_only_(true)
 	, clean_up_index_(true)
 {
+	const std::string si_file = filesystem::get_save_index_file();
+
+	// Don't try to load the file if it doesn't exist.
+	if(filesystem::file_exists(si_file)) {
+		try {
+			filesystem::scoped_istream stream = filesystem::istream_file(si_file);
+			try {
+				data_ = io::read_gz(*stream);
+			} catch(const boost::iostreams::gzip_error&) {
+				stream->seekg(0);
+				data_ = io::read(*stream);
+			}
+		} catch(const filesystem::io_exception& e) {
+			ERR_SAVE << "error reading save index: '" << e.what() << "'";
+		} catch(const config::error& e) {
+			ERR_SAVE << "error parsing save index config file:\n" << e.message;
+			data_.clear();
+		}
+	}
 }
 
 save_index_class::save_index_class(create_for_default_saves_dir)
@@ -168,28 +186,6 @@ config& save_index_class::data(const std::string& name)
 
 config& save_index_class::data()
 {
-	const std::string si_file = filesystem::get_save_index_file();
-
-	// Don't try to load the file if it doesn't exist.
-	if(loaded_ == false && filesystem::file_exists(si_file)) {
-		try {
-			filesystem::scoped_istream stream = filesystem::istream_file(si_file);
-			try {
-				data_ = io::read_gz(*stream);
-			} catch(const boost::iostreams::gzip_error&) {
-				stream->seekg(0);
-				data_ = io::read(*stream);
-			}
-		} catch(const filesystem::io_exception& e) {
-			ERR_SAVE << "error reading save index: '" << e.what() << "'";
-		} catch(const config::error& e) {
-			ERR_SAVE << "error parsing save index config file:\n" << e.message;
-			data_.clear();
-		}
-
-		loaded_ = true;
-	}
-
 	return data_;
 }
 
