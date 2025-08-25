@@ -1299,7 +1299,7 @@ void window::signal_handler_sdl_key_down(const event::ui_event event,
 				handled = true;
 			}
 		}
-	} else if(key == SDLK_ESCAPE && !escape_disabled_) {
+	} else if((key == SDLK_ESCAPE || key == SDLK_AC_BACK) && !escape_disabled_) {
 		set_retval(retval::CANCEL);
 		handled = true;
 	} else if(key == SDLK_SPACE) {
