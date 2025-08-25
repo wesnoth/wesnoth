@@ -840,7 +840,7 @@ bool play_controller::have_keyboard_focus()
 
 void play_controller::process_focus_keydown_event(const SDL_Event& event)
 {
-	if(event.key.keysym.sym == SDLK_ESCAPE) {
+	if(event.key.keysym.sym == SDLK_ESCAPE || event.key.keysym.sym == SDLK_AC_BACK) {
 		menu_handler_.get_textbox().close();
 	} else if(event.key.keysym.sym == SDLK_TAB) {
 		tab();

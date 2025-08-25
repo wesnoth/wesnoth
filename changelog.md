@@ -11,8 +11,10 @@
    * Updated translations: Bengali, British English
 ### Units
 ### User interface
+   * On Android, back button now works similarly to Escape on desktop.
 ### WML Engine
 ### Miscellaneous and Bug Fixes
+   * On Android, in-game command prompt now correctly shows on-screen keyboard.
 
 ## Version 1.19.15
 ### Lua API

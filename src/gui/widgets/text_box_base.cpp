@@ -667,6 +667,7 @@ void text_box_base::signal_handler_sdl_key_down(const event::ui_event event,
 			handle_key_enter(modifier, handled);
 			break;
 
+		case SDLK_AC_BACK:
 		case SDLK_ESCAPE:
 			if(!is_composing() || (modifier & (KMOD_CTRL | KMOD_ALT | KMOD_GUI | KMOD_SHIFT))) {
 				return;
