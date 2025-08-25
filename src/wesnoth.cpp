@@ -1001,6 +1001,7 @@ int main(int argc, char** argv)
 #ifdef __ANDROID__
 	setenv("PANGOCAIRO_BACKEND", "fontconfig", 0);
 	setenv("SDL_HINT_AUDIODRIVER", "android", 0);
+	setenv("SDL_HINT_ANDROID_TRAP_BACK_BUTTON", "1", 0);
 #endif
 
 	try {

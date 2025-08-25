@@ -29,6 +29,7 @@ bool CKey::is_uncomposable(const SDL_KeyboardEvent &event) {
 
 	switch (event.keysym.sym) {
 		case SDLK_RETURN:
+		case SDLK_AC_BACK:
 		case SDLK_ESCAPE:
 		case SDLK_BACKSPACE:
 		case SDLK_TAB:

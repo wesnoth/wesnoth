@@ -73,6 +73,13 @@ private:
 
 	void init_callbacks();
 
+	// Does different actions based on if it was called by clicking
+	// the button or by using the hotkey
+	void register_button(
+		const std::string& id,
+		hotkey::HOTKEY_COMMAND hk,
+		const std::function<void()>& callback_btn,
+		const std::function<void()>& callback_hotkey);
 	void register_button(const std::string& id, hotkey::HOTKEY_COMMAND hk, const std::function<void()>& callback);
 
 	/***** ***** ***** ***** Callbacks ***** ***** ****** *****/
