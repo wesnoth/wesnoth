@@ -1482,6 +1482,7 @@ void console_handler::do_droid()
 	// default to the current side if empty
 	const unsigned int side = side_s.empty() ? team_num_ : lexical_cast_default<unsigned int>(side_s);
 	const bool is_your_turn = menu_handler_.pc_.current_side() == static_cast<int>(menu_handler_.gui_->viewing_team().side());
+	team& team = menu_handler_.board().get_team(side);
 
 	utils::string_map symbols;
 	symbols["side"] = std::to_string(side);
@@ -1489,16 +1490,16 @@ void console_handler::do_droid()
 	if(side < 1 || side > menu_handler_.pc_.get_teams().size()) {
 		command_failed(VGETTEXT("Can’t droid invalid side: ‘$side’.", symbols));
 		return;
-	} else if(menu_handler_.board().get_team(side).is_network()) {
+	} else if(team.is_network()) {
 		command_failed(VGETTEXT("Can’t droid networked side: ‘$side’.", symbols));
 		return;
-	} else if(menu_handler_.board().get_team(side).is_local()) {
+	} else if(team.is_local()) {
 		bool changed = false;
 
-		const bool is_human = menu_handler_.board().get_team(side).is_human();
-		const bool is_droid = menu_handler_.board().get_team(side).is_droid();
-		const bool is_proxy_human = menu_handler_.board().get_team(side).is_proxy_human();
-		const bool is_ai = menu_handler_.board().get_team(side).is_ai();
+		const bool is_human = team.is_human();
+		const bool is_droid = team.is_droid();
+		const bool is_proxy_human = team.is_proxy_human();
+		const bool is_ai = team.is_ai();
 
 		if(action == "on") {
 			if(is_ai && !is_your_turn) {
@@ -1506,8 +1507,8 @@ void console_handler::do_droid()
 				return;
 			}
 			if(!is_human || !is_droid) {
-				menu_handler_.board().get_team(side).make_human();
-				menu_handler_.board().get_team(side).make_droid();
+				team.make_human();
+				team.make_droid();
 				changed = true;
 				if(is_ai) {
 					menu_handler_.pc_.send_to_wesnothd(config {"change_controller", config {"side", side, "player", prefs::get().login(), "to", side_controller::human}});
@@ -1522,8 +1523,8 @@ void console_handler::do_droid()
 				return;
 			}
 			if(!is_human || !is_proxy_human) {
-				menu_handler_.board().get_team(side).make_human();
-				menu_handler_.board().get_team(side).make_proxy_human();
+				team.make_human();
+				team.make_proxy_human();
 				changed = true;
 				if(is_ai) {
 					menu_handler_.pc_.send_to_wesnothd(config {"change_controller", config {"side", side, "player", prefs::get().login(), "to", side_controller::human}});
@@ -1538,8 +1539,8 @@ void console_handler::do_droid()
 				return;
 			}
 			if(!is_ai || !is_droid) {
-				menu_handler_.board().get_team(side).make_ai();
-				menu_handler_.board().get_team(side).make_droid();
+				team.make_ai();
+				team.make_droid();
 				changed = true;
 				if(is_human || is_proxy_human) {
 					menu_handler_.pc_.send_to_wesnothd(config {"change_controller", config {"side", side, "player", prefs::get().login(), "to", side_controller::ai}});
@@ -1554,16 +1555,16 @@ void console_handler::do_droid()
 				return;
 			}
 			if(is_ai || is_droid) {
-				menu_handler_.board().get_team(side).make_human();
-				menu_handler_.board().get_team(side).make_proxy_human();
+				team.make_human();
+				team.make_proxy_human();
 				changed = true;
 				if(is_ai) {
 					menu_handler_.pc_.send_to_wesnothd(config {"change_controller", config {"side", side, "player", prefs::get().login(), "to", side_controller::human}});
 				}
 				print(get_cmd(), VGETTEXT("Side ‘$side’ controller is now controlled by: human.", symbols));
 			} else {
-				menu_handler_.board().get_team(side).make_human();
-				menu_handler_.board().get_team(side).make_droid();
+				team.make_human();
+				team.make_droid();
 				changed = true;
 				if(is_ai) {
 					menu_handler_.pc_.send_to_wesnothd(config {"change_controller", config {"side", side, "player", prefs::get().login(), "to", side_controller::human}});
@@ -1612,28 +1613,29 @@ void console_handler::do_idle()
 	const std::string action = get_arg(2);
 	// default to the current side if empty
 	const unsigned int side = side_s.empty() ? team_num_ : lexical_cast_default<unsigned int>(side_s);
+	team& team = menu_handler_.board().get_team(side);
 
 	if(side < 1 || side > menu_handler_.pc_.get_teams().size()) {
 		utils::string_map symbols;
 		symbols["side"] = side_s;
 		command_failed(VGETTEXT("Can’t idle invalid side: ‘$side’.", symbols));
 		return;
-	} else if(menu_handler_.board().get_team(side).is_network()) {
+	} else if(team.is_network()) {
 		utils::string_map symbols;
 		symbols["side"] = std::to_string(side);
 		command_failed(VGETTEXT("Can’t idle networked side: ‘$side’.", symbols));
 		return;
-	} else if(menu_handler_.board().get_team(side).is_local_ai()) {
+	} else if(team.is_local_ai()) {
 		utils::string_map symbols;
 		symbols["side"] = std::to_string(side);
 		command_failed(VGETTEXT("Can’t idle local ai side: ‘$side’.", symbols));
 		return;
-	} else if(menu_handler_.board().get_team(side).is_local_human()) {
-		if(menu_handler_.board().get_team(side).is_idle() ? action == " on" : action == " off") {
+	} else if(team.is_local_human()) {
+		if(team.is_idle() ? action == " on" : action == " off") {
 			return;
 		}
 		// toggle the proxy controller between idle / non idle
-		menu_handler_.board().get_team(side).toggle_idle();
+		team.toggle_idle();
 		if(team_num_ == side) {
 			if(playsingle_controller* psc = dynamic_cast<playsingle_controller*>(&menu_handler_.pc_)) {
 				psc->set_player_type_changed();
