@@ -442,10 +442,15 @@ static int process_command_args(commandline_options& cmdline_opts)
 			PLAIN_LOG << "Overriding data directory with '" << game_config::path << "'";
 		}
 	} else {
-		// if a pre-defined path does not exist this will empty it
-#ifdef __ANDROID__
-		game_config::path = SDL_AndroidGetExternalStoragePath() + std::string("/gamedata");
+#if defined(__ANDROID__) && !defined(WESNOTH_PATH)
+		if(const char* ext_path = SDL_AndroidGetExternalStoragePath()) {
+			game_config::path = ext_path + std::string("/gamedata");
+			PLAIN_LOG << "Determined game data directory: " << game_config::path;
+		} else {
+			PLAIN_LOG << "Cannot find game data directory, specify one with --data-dir. SDL_AndroidGetExternalStoragePath() failed: " << SDL_GetError();
+		}
 #endif
+		// if a pre-defined path does not exist this will empty it
 		game_config::path = filesystem::normalize_path(game_config::path, true, true);
 		if(game_config::path.empty()) {
 			if(std::string exe_dir = filesystem::get_exe_dir(); !exe_dir.empty()) {
