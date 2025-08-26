@@ -1379,7 +1379,7 @@ double attack_type::modified_damage() const
 int attack_type::modified_chance_to_hit(int cth, bool special_only) const
 {
 	int parry = other_attack_ ? other_attack_->parry() : 0;
-	unit_ability_list defense_list = special_only ? get_specials("defense_special") : get_specials_and_abilities("defense_special");
+	unit_ability_list defense_list = special_only ? get_specials("defense") : get_specials_and_abilities("defense");
 	unit_ability_list chance_to_hit_list = special_only ? get_specials("chance_to_hit") : get_specials_and_abilities("chance_to_hit");
 	cth = std::clamp((100 - composite_value(defense_list, 100 - cth)) + accuracy_ - parry, 0, 100);
 	return composite_value(chance_to_hit_list, cth);

@@ -34,7 +34,7 @@ struct ability_list_defines
 	static constexpr const char* const chance_to_hit = "chance_to_hit";
 	static constexpr const char* const damage = "damage";
 	static constexpr const char* const damage_type = "damage_type";
-	static constexpr const char* const defense_special = "defense_special";
+	static constexpr const char* const defense = "defense";
 	static constexpr const char* const disable = "disable";
 	static constexpr const char* const drains = "drains";
 	static constexpr const char* const firststrike = "firststrike";
@@ -45,16 +45,16 @@ struct ability_list_defines
 	static constexpr const char* const slow = "slow";
 	static constexpr const char* const swarm = "swarm";
 
-	ENUM_AND_ARRAY(heals, regenerate, resistance, leadership, skirmisher, illuminates, teleport, hides, dummy, attacks, berserk, chance_to_hit, damage, damage_type, defense_special, disable, drains, firststrike, heal_on_hit, petrifies, plague, poison, slow, swarm)
+	ENUM_AND_ARRAY(heals, regenerate, resistance, leadership, skirmisher, illuminates, teleport, hides, dummy, attacks, berserk, chance_to_hit, damage, damage_type, defense, disable, drains, firststrike, heal_on_hit, petrifies, plague, poison, slow, swarm)
 
 	static const std::set<std::string>& weapon_number_tags()
 	{
-		static std::set<std::string> tags{attacks, damage, defense_special, chance_to_hit, berserk, swarm, drains, heal_on_hit};
+		static std::set<std::string> tags{attacks, damage, defense, chance_to_hit, berserk, swarm, drains, heal_on_hit};
 		return tags;
 	}
 	static const std::set<std::string>& weapon_inverse_affect_tags()
 	{
-		static std::set<std::string> tags{defense_special};
+		static std::set<std::string> tags{defense};
 		return tags;
 	}
 
@@ -78,7 +78,7 @@ struct ability_list_defines
 
 	static const std::set<std::string>& all_weapon_tags()
 	{
-		static std::set<std::string> tags{attacks, berserk, chance_to_hit, damage, damage_type, defense_special, disable, drains, firststrike, heal_on_hit, petrifies, plague, poison, slow, swarm};
+		static std::set<std::string> tags{attacks, berserk, chance_to_hit, damage, damage_type, defense, disable, drains, firststrike, heal_on_hit, petrifies, plague, poison, slow, swarm};
 		return tags;
 	}
 };
