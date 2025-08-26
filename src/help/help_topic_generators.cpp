@@ -382,14 +382,16 @@ std::string unit_topic_generator::operator()() const {
 	}
 
 	// Unit Images
-	ss << markup::img(formatter()
-		<< male_type.image() << "~RC(" << male_type.flag_rgb() << ">red)"
-		<< (screen_width >= 1200 ? "~SCALE_SHARP(200%,200%)" : ""));
-
-	if(female_type.image() != male_type.image()) {
+	if(!male_type.image().empty()) {
 		ss << markup::img(formatter()
-			<< female_type.image() << "~RC(" << female_type.flag_rgb() << ">red)"
+			<< male_type.image() << "~RC(" << male_type.flag_rgb() << ">red)"
 			<< (screen_width >= 1200 ? "~SCALE_SHARP(200%,200%)" : ""));
+
+		if(!female_type.image().empty() && female_type.image() != male_type.image()) {
+			ss << markup::img(formatter()
+				<< female_type.image() << "~RC(" << female_type.flag_rgb() << ">red)"
+				<< (screen_width >= 1200 ? "~SCALE_SHARP(200%,200%)" : ""));
+		}
 	}
 
 	ss << "\n";
