@@ -110,7 +110,7 @@ static config parse_entity(std::string::const_iterator& beg, std::string::const_
 			break;
 		case NAMED:
 			if(!isalnum(*beg)) {
-				throw parse_error("invalid entity: non-alphanumeric characters after '&#'.");
+				throw parse_error("invalid entity: non-alphanumeric characters after '&'.");
 			}
 			s << *beg;
 			break;
@@ -120,7 +120,7 @@ static config parse_entity(std::string::const_iterator& beg, std::string::const_
 			} else if(isdigit(*beg)) {
 				s << *beg;
 			} else {
-				throw parse_error("invalid entity: unexpected characters after '&', numbers or 'x' expected.");
+				throw parse_error("invalid entity: unexpected characters after '&#', numbers or 'x' expected.");
 			}
 			break;
 		case HEX:
