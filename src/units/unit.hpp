@@ -1034,8 +1034,9 @@ public:
 	/**
 	 * The unit's defense on a given terrain
 	 * @param terrain The terrain to check
+	 * @param weapon if exist, call weapon specials/abilities instead of generic abilities
 	 */
-	int defense_modifier(const t_translation::terrain_code& terrain) const;
+	int defense_modifier(const t_translation::terrain_code& terrain, const const_attack_ptr& weapon = nullptr) const;
 
 	/**
 	 * For the provided list of resistance abilities, determine the damage resistance based on which are active and any max_value that's present.

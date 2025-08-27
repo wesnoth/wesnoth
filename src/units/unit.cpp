@@ -1751,18 +1751,38 @@ void unit::set_loyal(bool loyal)
 	}
 }
 
-int unit::defense_modifier(const t_translation::terrain_code & terrain) const
+namespace {
+	bool has_special_attributes(const config& special)
+	{
+		if(special.has_attribute("apply_to") || special.has_attribute("active_on")) {
+			return true;
+		}
+		if(special.has_child("filter_student") || special.has_child("filter_opponent") || special.has_child("filter_attacker") || special.has_child("filter_defender")) {
+			return true;
+		}
+		if(special.has_child("filter_adjacent_student") || special.has_child("filter_adjacent_student_location")) {
+			return true;
+		}
+		return false;
+	}
+}
+
+int unit::defense_modifier(const t_translation::terrain_code & terrain, const const_attack_ptr& weapon) const
 {
 	int def = movement_type_.defense_modifier(terrain);
-#if 0
+
 	// A [defense] ability is too costly and doesn't take into account target locations.
 	// Left as a comment in case someone ever wonders why it isn't a good idea.
-	unit_ability_list defense_abilities = get_abilities("defense");
-	if(!defense_abilities.empty()) {
-		unit_abilities::effect defense_effect(defense_abilities, def);
-		def = defense_effect.get_composite_value();
+	unit_ability_list defense_abilities = weapon ? weapon->get_specials_and_abilities("defense") : get_abilities("defense");
+	if(!weapon) {
+		utils::erase_if(defense_abilities, [&](const unit_ability& i) {
+			return has_special_attributes(*i.ability_cfg);
+		});
 	}
-#endif
+	if(!defense_abilities.empty()) {
+		unit_abilities::effect defense_effect(defense_abilities, 100 - def);
+		def = 100 - defense_effect.get_composite_value();
+	}
 	return def;
 }
 
