@@ -52,11 +52,6 @@ struct ability_list_defines
 		static std::set<std::string> tags{attacks, damage, defense, chance_to_hit, berserk, swarm, drains, heal_on_hit};
 		return tags;
 	}
-	static const std::set<std::string>& weapon_inverse_affect_tags()
-	{
-		static std::set<std::string> tags{defense};
-		return tags;
-	}
 
 	static const std::set<std::string>& no_weapon_number_tags()
 	{

@@ -1034,8 +1034,15 @@ public:
 	/**
 	 * The unit's defense on a given terrain
 	 * @param terrain The terrain to check
+	 * @param loc location of unit
+	 * @param weapon used for call "defense" special.
 	 */
-	int defense_modifier(const t_translation::terrain_code& terrain) const;
+	int defense_modifier(const t_translation::terrain_code& terrain, const map_location& loc, const const_attack_ptr& weapon = nullptr) const;
+
+	int defense_modifier(const t_translation::terrain_code& terrain, const const_attack_ptr& weapon = nullptr) const
+	{
+	    return defense_modifier(terrain, loc_, weapon);
+	}
 
 	/**
 	 * For the provided list of resistance abilities, determine the damage resistance based on which are active and any max_value that's present.

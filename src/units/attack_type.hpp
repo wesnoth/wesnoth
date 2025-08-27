@@ -81,7 +81,7 @@ public:
 	 * @param simple_check If true, check whether the unit has the special. Else, check whether the special is currently active.
 	 */
 	bool has_special(const std::string& special, bool simple_check = false) const;
-	unit_ability_list get_specials(const std::string& special) const;
+	unit_ability_list get_specials(const std::string& special, bool inverse_affect = false) const;
 	std::vector<std::pair<t_string, t_string>> special_tooltips(boost::dynamic_bitset<>* active_list = nullptr) const;
 	std::vector<std::pair<t_string, t_string>> abilities_special_tooltips(boost::dynamic_bitset<>* active_list = nullptr) const;
 	std::string weapon_specials() const;
@@ -117,12 +117,13 @@ public:
 	 */
 	int composite_value(const unit_ability_list& abil_list, int base_value) const;
 	/** Returns list for weapon like abilities for each ability type. */
-	unit_ability_list get_weapon_ability(const std::string& ability) const;
+	unit_ability_list get_weapon_ability(const std::string& ability, bool inverse_affect = false) const;
 	/**
 	 * @param special the tag name to check for
+	 * @param reverse_affect if true, the affected attacks are reversed
 	 * @return list which contains get_weapon_ability and get_specials list for each ability type, with overwritten items removed
 	 */
-	unit_ability_list get_specials_and_abilities(const std::string& special) const;
+	unit_ability_list get_specials_and_abilities(const std::string& special, bool reverse_affect = false) const;
 	/** used for abilities used like weapon and true specials
 	 * @return True if the ability @a special is active.
 	 * @param special The special being checked.
