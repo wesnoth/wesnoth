@@ -17,6 +17,8 @@
 
 #include "gui/dialogs/help_browser.hpp"
 
+#include "font/pango/escape.hpp"
+#include "font/standard_colors.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/rich_label.hpp"
@@ -27,6 +29,7 @@
 #include "gui/widgets/tree_view_node.hpp"
 #include "gui/widgets/window.hpp"
 #include "help/help.hpp"
+#include "serialization/markup.hpp"
 #include "serialization/string_utils.hpp"
 #include "utils/ci_searcher.hpp"
 
@@ -99,7 +102,6 @@ void help_browser::pre_show()
 		// initial width of the rich label
 		if(rl_init_w == 0) {
 			rl_init_w = topic_text.get_width();
-			PLAIN_LOG << "RL init width: " << rl_init_w;
 		}
 
 		// Set RL's width and reshow
@@ -237,7 +239,14 @@ void help_browser::show_topic(std::string topic_id, bool add_to_history, bool re
 		selected_node.select_node(true, false);
 
 		find_widget<label>("topic_title").set_label(topic->title);
-		find_widget<rich_label>("topic_text").set_dom(topic->text.parsed_text());
+		try {
+			find_widget<rich_label>("topic_text").set_dom(topic->text.parsed_text());
+		} catch(const game::error& err) {
+			find_widget<rich_label>("topic_text").set_label(
+				markup::span_color(font::BAD_COLOR,
+					"Error parsing markup in help page with ID: " + topic->id + "\n"
+					+ font::escape_text(err.message)));
+		}
 
 		invalidate_layout();
 	}

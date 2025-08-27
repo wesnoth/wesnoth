@@ -105,7 +105,7 @@ static config parse_entity(std::string::const_iterator& beg, std::string::const_
 				type = NAMED;
 				s << *beg;
 			} else {
-				throw parse_error("invalid entity: wrong characters after '&', alphanumeric characters, '#' or '_' expected.");
+				throw parse_error("invalid entity: unexpected characters after '&', alphanumeric characters, '#' or '_' expected.");
 			}
 			break;
 		case NAMED:
@@ -120,14 +120,14 @@ static config parse_entity(std::string::const_iterator& beg, std::string::const_
 			} else if(isdigit(*beg)) {
 				s << *beg;
 			} else {
-				throw parse_error("invalid entity: wrong characters after '&', numbers or 'x' expected.");
+				throw parse_error("invalid entity: unexpected characters after '&', numbers or 'x' expected.");
 			}
 			break;
 		case HEX:
 			if(isxdigit(*beg)) {
 				s << *beg;
 			} else {
-				throw parse_error("invalid entity: wrong characters after '&#x', hexadecimal digits expected.");
+				throw parse_error("invalid entity: unexpected characters after '&#x', hexadecimal digits expected.");
 			}
 			break;
 		}
