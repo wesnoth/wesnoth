@@ -582,7 +582,7 @@ static config unit_defense(const reports::context& rc, const unit* u, const map_
 	}
 
 	const t_translation::terrain_code &terrain = map[displayed_unit_hex];
-	int def = 100 - u->defense_modifier(terrain);
+	int def = 100 - u->defense_modifier(terrain, displayed_unit_hex);
 	color_t color = game_config::red_to_green(def);
 	str << span_color(color, def, '%');
 	tooltip << _("Terrain:") << " " << markup::bold(map.get_terrain_info(terrain).description()) << "\n";
@@ -1744,7 +1744,7 @@ REPORT_GENERATOR(position, rc)
 	}
 
 	int move_cost = u->movement_cost(terrain);
-	int defense = 100 - u->defense_modifier(terrain);
+	int defense = 100 - u->defense_modifier(terrain, mouseover_hex);
 	if (move_cost < movetype::UNREACHABLE) {
 		str << " " << defense << "%," << move_cost;
 	} else if (mouseover_hex == displayed_unit_hex) {

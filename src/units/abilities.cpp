@@ -846,12 +846,11 @@ bool attack_type::has_special(const std::string& special, bool simple_check) con
 unit_ability_list attack_type::get_specials(const std::string& special) const
 {
 	//log_scope("get_specials");
-	bool inverse_affect = abilities_list::weapon_inverse_affect_tags().count(special) != 0;
 	const map_location loc = self_ ? self_->get_location() : self_loc_;
 	unit_ability_list res(loc);
 
 	for(const config& i : specials_.child_range(special)) {
-		if(special_active(i, inverse_affect ? AFFECT_OTHER : AFFECT_SELF, special)) {
+		if(special_active(i, AFFECT_SELF, special)) {
 			res.emplace_back(&i, loc, loc);
 		}
 	}
@@ -861,7 +860,7 @@ unit_ability_list attack_type::get_specials(const std::string& special) const
 	}
 
 	for(const config& i : other_attack_->specials_.child_range(special)) {
-		if(other_attack_->special_active(i, inverse_affect ? AFFECT_SELF : AFFECT_OTHER, special)) {
+		if(other_attack_->special_active(i, AFFECT_OTHER, special)) {
 			res.emplace_back(&i, other_loc_, other_loc_);
 		}
 	}
@@ -1379,9 +1378,8 @@ double attack_type::modified_damage() const
 int attack_type::modified_chance_to_hit(int cth, bool special_only) const
 {
 	int parry = other_attack_ ? other_attack_->parry() : 0;
-	unit_ability_list defense_list = special_only ? get_specials("defense") : get_specials_and_abilities("defense");
 	unit_ability_list chance_to_hit_list = special_only ? get_specials("chance_to_hit") : get_specials_and_abilities("chance_to_hit");
-	cth = std::clamp((100 - composite_value(defense_list, 100 - cth)) + accuracy_ - parry, 0, 100);
+	cth = std::clamp(cth + accuracy_ - parry, 0, 100);
 	return composite_value(chance_to_hit_list, cth);
 }
 
@@ -1557,18 +1555,17 @@ namespace { // Helpers for attack_type::special_active()
 
 unit_ability_list attack_type::get_weapon_ability(const std::string& ability) const
 {
-	bool inverse_affect = abilities_list::weapon_inverse_affect_tags().count(ability) != 0;
 	const map_location loc = self_ ? self_->get_location() : self_loc_;
 	unit_ability_list abil_list(loc);
 	if(self_) {
 		abil_list.append_if((*self_).get_abilities(ability, self_loc_), [&](const unit_ability& i) {
-			return special_active(*i.ability_cfg, inverse_affect ? AFFECT_OTHER : AFFECT_SELF, ability, true);
+			return special_active(*i.ability_cfg, AFFECT_SELF, ability, true);
 		});
 	}
 
 	if(other_) {
 		abil_list.append_if((*other_).get_abilities(ability, other_loc_), [&](const unit_ability& i) {
-			return special_active_impl(other_attack_, shared_from_this(), *i.ability_cfg, inverse_affect ? AFFECT_SELF : AFFECT_OTHER, ability, true);
+			return special_active_impl(other_attack_, shared_from_this(), *i.ability_cfg, AFFECT_OTHER, ability, true);
 		});
 	}
 
