@@ -800,9 +800,7 @@ std::unique_ptr<units_dialog> units_dialog::build_recall_dialog(
 			}
 		},
 		[](const auto& unit) {
-			// this allows 0/35, 0/100 etc to be sorted
-			// also sorts 23/35 before 0/35, after which 0/100 comes
-			return unit->experience() + unit->max_experience();
+			return std::tuple(static_cast<int>(unit->experience_to_advance()), unit->max_experience());
 		});
 
 	set_column("unit_traits",
