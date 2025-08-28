@@ -133,7 +133,6 @@ struct unit_filter_adjacent : public unit_filter_base
 		std::size_t radius = cfg_["radius"].to_int(1);
 
 		config::attribute_value i_adjacent = cfg_["adjacent"];
-		std::vector<map_location::direction> dirs;
 		for(const unit& u : units) {
 			const map_location& from_loc = u.get_location();
 			std::size_t distance = distance_between(from_loc, args.loc);
@@ -167,6 +166,40 @@ struct unit_filter_adjacent : public unit_filter_base
 			return false;
 		}
 		if(!i_count.empty() && !in_ranges<int>(match_count, utils::parse_ranges_unsigned(i_count.str()))) {
+			return false;
+		}
+		return true;
+	}
+
+	const unit_filter_compound child_;
+	const vconfig cfg_;
+};
+
+struct unit_filter_adjacent_location : public unit_filter_base
+{
+	unit_filter_adjacent_location(const vconfig& cfg)
+		: child_(cfg)
+		, cfg_(cfg)
+	{
+	}
+
+	virtual bool matches(const unit_filter_args& args) const override
+	{
+		const auto adjacent = get_adjacent_tiles(args.loc);
+		std::size_t match_count = 0;
+		terrain_filter adj_filter(cfg_, resources::filter_con, false);
+		adj_filter.flatten(args.use_flat_tod);
+
+		std::vector<map_location::direction> dirs = cfg_["adjacent"].empty() ? map_location::all_directions() : map_location::parse_directions(cfg_["adjacent"]);
+		for(const map_location::direction index : dirs) {
+			if(!adj_filter.match(adjacent[static_cast<int>(index)])) {
+				continue;
+			}
+			match_count++;
+		}
+		static std::vector<std::pair<int,int>> default_counts = utils::parse_ranges_unsigned("1-6");
+		config::attribute_value i_count = cfg_["count"];
+		if(!in_ranges<int>(match_count, !i_count.blank() ? utils::parse_ranges_unsigned(i_count) : default_counts)) {
 			return false;
 		}
 		return true;
@@ -771,6 +804,9 @@ void unit_filter_compound::fill(const vconfig& cfg)
 			}
 			else if (child.first == "filter_adjacent") {
 				children_.emplace_back(new unit_filter_adjacent(child.second));
+			}
+			else if (child.first == "filter_adjacent_location") {
+				children_.emplace_back(new unit_filter_adjacent_location(child.second));
 			}
 			else if (child.first == "filter_location") {
 				create_child(child.second, [](const vconfig& c, const unit_filter_args& args) {

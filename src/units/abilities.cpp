@@ -468,6 +468,12 @@ static bool ability_active_adjacent_helper(const unit& self, bool illuminates, c
 	const std::string& filter_adjacent = in_abilities_tag ? "filter_adjacent_student" : "filter_adjacent";
 	const std::string& filter_adjacent_location = in_abilities_tag ? "filter_adjacent_student_location" : "filter_adjacent_location";
 
+	if (cfg.has_child("filter_adjacent")) {
+		deprecated_message("[filter_adjacent] in abilities or specials", DEP_LEVEL::INDEFINITE, "", "Use [filter][filter_adjacent] instead].");
+	}
+	if (cfg.has_child("filter_adjacent_student")) {
+		deprecated_message("[filter_adjacent_student] in abilities used like weapon", DEP_LEVEL::INDEFINITE, "", "Use [filter_student][filter_adjacent] instead.");
+	}
 	for(const config &i : cfg.child_range(filter_adjacent)) {
 		std::size_t radius = i["radius"].to_int(1);
 		std::size_t count = 0;
@@ -511,6 +517,12 @@ static bool ability_active_adjacent_helper(const unit& self, bool illuminates, c
 		}
 	}
 
+	if (cfg.has_child("filter_adjacent_location")) {
+		deprecated_message("[filter_adjacent_location] in abilities or specials", DEP_LEVEL::INDEFINITE, "", "Use [filter][filter_adjacent_location] instead].");
+	}
+	if (cfg.has_child("filter_adjacent_student")) {
+		deprecated_message("[filter_adjacent_student_location] in abilities used like weapon", DEP_LEVEL::INDEFINITE, "", "Use [filter_student][filter_adjacent_location] instead.");
+	}
 	for(const config &i : cfg.child_range(filter_adjacent_location)) {
 		std::size_t count = 0;
 		terrain_filter adj_filter(vconfig(i), resources::filter_con, false);
