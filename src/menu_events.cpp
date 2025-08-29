@@ -1647,7 +1647,9 @@ void console_handler::do_idle()
 
 void console_handler::do_theme()
 {
-	prefs::get().show_theme_dialog();
+	if(prefs::get().show_theme_dialog()) {
+		menu_handler_.pc_.update_theme();
+	}
 }
 
 void console_handler::do_control()
