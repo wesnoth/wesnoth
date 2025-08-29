@@ -37,7 +37,7 @@ public:
 		const std::string& defender_type_id, int attacker_lvl,
 		int defender_lvl, const std::size_t turn, const time_of_day &t);
 
-	static config get_auto_shroud(bool turned_on);
+	static config get_auto_shroud(bool turned_on, bool block_undo = true);
 
 	static config get_update_shroud();
 
