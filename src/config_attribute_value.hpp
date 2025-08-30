@@ -33,6 +33,9 @@
 
 #include <chrono>
 #include <climits>
+#ifdef __cpp_concepts
+#include <concepts>
+#endif
 #include <iosfwd>
 #include <string>
 #include <vector>
@@ -178,6 +181,19 @@ public:
 		return !operator==(other);
 	}
 
+#ifdef __cpp_concepts
+	template<typename T>
+	bool operator==(const T& comp) const
+	{
+		return apply_visitor([&comp]<typename V>(const V& value) {
+			if constexpr(std::equality_comparable_with<T, V>) {
+				return comp == value;
+			} else {
+				return false;
+			}
+		});
+	}
+#else
 	bool operator==(bool comp) const
 	{
 		const bool has_bool =
@@ -189,7 +205,7 @@ public:
 	template<typename T>
 	bool operator==(const T& comp) const
 	{
-		if constexpr(std::is_convertible_v<T, std::string>) {
+		if constexpr(std::is_constructible_v<std::string, T>) {
 			config_attribute_value v;
 			v = comp;
 			return *this == v;
@@ -197,6 +213,7 @@ public:
 			return utils::holds_alternative<T>(value_) && this->to(T{}) == comp;
 		}
 	}
+#endif
 
 	template<typename T>
 	bool friend operator!=(const config_attribute_value& val, const T& str)
