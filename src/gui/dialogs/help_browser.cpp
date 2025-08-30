@@ -129,12 +129,9 @@ void help_browser::pre_show()
 	tree_view_node* initial_node = topic_tree.find_widget<tree_view_node>(initial_topic_, false, false);
 	if(initial_node) {
 		initial_node->select_node(true);
-	} else {
-		ERR_HP << "Help browser tried to show topic with id '" << initial_topic_
-		       << "' but that topic could not be found." << std::endl;
 	}
 
-	on_topic_select();
+	show_topic(initial_topic_);
 }
 
 void help_browser::update_list(const std::string& filter_text) {
@@ -235,8 +232,10 @@ void help_browser::show_topic(std::string topic_id, bool add_to_history, bool re
 			topic_id_temp.insert(0, "-");
 		}
 		tree_view& topic_tree = find_widget<tree_view>("topic_tree");
-		tree_view_node& selected_node = topic_tree.find_widget<tree_view_node>(topic_id_temp);
-		selected_node.select_node(true, false);
+		tree_view_node* selected_node = topic_tree.find_widget<tree_view_node>(topic_id_temp, false, false);
+		if(selected_node) {
+			selected_node->select_node(true, false);
+		}
 
 		find_widget<label>("topic_title").set_label(topic->title);
 		try {
