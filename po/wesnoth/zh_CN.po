@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.18\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-05-20 17:25-0500\n"
-"PO-Revision-Date: 2024-10-07 09:53+0800\n"
+"PO-Revision-Date: 2025-08-02 16:47+0800\n"
 "Last-Translator: vimacs <vimacs.hacks@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Poedit 3.6\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -69,14 +69,14 @@ msgstr "大号纯文本文件"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:26
 msgid "Whether to show icons in the add-ons list on the add-ons manager"
-msgstr ""
+msgstr "是否在附加组件管理器的附加组件列表中显示图标"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:27
 msgid ""
 "Disabling saves bandwidth by not sending icons for the add-ons list in the "
 "add-ons manager"
-msgstr ""
+msgstr "通过不为附加组件管理器的附加组件列表发送图标，禁用此项可节省带宽"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:34
@@ -5799,7 +5799,7 @@ msgstr "不正确的附加组件密码。"
 msgid ""
 "Forum authentication was requested for a user that is not registered on the "
 "forums."
-msgstr ""
+msgstr "为未在论坛注册的用户请求了论坛身份验证。"
 
 #: src/addon/validation.cpp:401
 msgid "Upload denied. Please contact the server administration for assistance."
@@ -5878,7 +5878,7 @@ msgstr "未指定附加组件的描述。"
 
 #: src/addon/validation.cpp:471
 msgid "No add-on author/maintainer email specified."
-msgstr "未指定附加组件的作者/维护者电子邮箱"
+msgstr "未指定附加组件的作者/维护者的电子邮箱。"
 
 #: src/addon/validation.cpp:475
 msgid "Missing passphrase."
@@ -5912,7 +5912,7 @@ msgstr "附加组件发布信息中包含无效的UTF-8序列。"
 msgid ""
 "The add-on's forum_auth attribute does not match what was previously "
 "uploaded."
-msgstr ""
+msgstr "该附加组件的 forum_auth 属性与之前上传的不匹配。"
 
 #: src/addon/validation.cpp:512
 msgid "Unspecified server error."
@@ -5933,7 +5933,7 @@ msgstr "服务器上的附加组件版本列表为空。"
 #: src/addon/validation.cpp:528
 msgid ""
 "This server does not support using the forum_auth attribute in your pbl."
-msgstr ""
+msgstr "此服务器不支持在您的 pbl 中使用 forum_auth 属性。"
 
 #: src/addon/validation.cpp:538
 msgid "Unspecified validation failure."
@@ -6579,7 +6579,7 @@ msgstr "无法找到”$era|“时代"
 
 #: src/game_initialization/multiplayer.cpp:237
 msgid "Invalid address specified for multiplayer server"
-msgstr "指定的多人游戏服务器地址无效。"
+msgstr "指定的多人游戏服务器地址无效"
 
 #: src/game_initialization/multiplayer.cpp:272
 msgid ""
@@ -6847,7 +6847,7 @@ msgstr "时代："
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:153
 msgid " UTC+0"
-msgstr ""
+msgstr " UTC+0"
 
 #: src/gui/dialogs/multiplayer/match_history.cpp:255
 msgid "No game history found."
@@ -7855,7 +7855,7 @@ msgstr "当前本地时间"
 
 #: src/play_controller.cpp:565
 msgid "Trying to create a corrupt file, please report this bug"
-msgstr "尝试创建一个损坏的文件，请报告这个错误。"
+msgstr "尝试创建一个损坏的文件，请报告这个错误"
 
 #: src/play_controller.cpp:1050
 msgid ""
@@ -8331,7 +8331,7 @@ msgstr "电池"
 
 #: src/reports.cpp:1796
 msgid "Countdown until your turn automatically ends."
-msgstr "直到你的回合自动结束的倒计时"
+msgstr "倒计时直到你的回合自动结束。"
 
 #: src/reports.cpp:1796
 msgid "Turn Countdown"
@@ -8699,7 +8699,7 @@ msgstr ""
 
 #: src/units/abilities.cpp:1098
 msgid "Used by opponent: "
-msgstr ""
+msgstr "由对手使用："
 
 #. TRANSLATORS: Current value for WML code increase_damage, documented in https://wiki.wesnoth.org/EffectWML
 #: src/units/attack_type.cpp:537
@@ -8887,6 +8887,8 @@ msgid ""
 "incorrect folder permissions, anti-virus software restricting folder access, "
 "or using OneDrive to manage your My Documents folder."
 msgstr ""
+"无法在目录 $logdir 中创建日志文件。这通常是由于目录权限不正确、防病毒软件限制"
+"目录访问，或使用 OneDrive 管理“我的文档”目录所致。"
 
 #: src/wesnoth.cpp:806
 msgid "Logging Failure"
