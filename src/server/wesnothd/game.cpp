@@ -642,18 +642,36 @@ std::unique_ptr<simple_wml::document> game::change_controller_type(const std::si
 	return response.clone();
 }
 
-void game::change_host_and_notify(player_iterator new_host)
+void game::change_host_and_notify(player_iterator new_host, utils::optional<player_iterator> initiator)
 {
 	if(owner_ == new_host) {
 		return;
 	}
+	// If the initiator is provided and is not the host, then notify players who initiated the host change.
+	const bool is_unexpected_initiator = initiator && *initiator != owner_;
 	owner_ = new_host;
 	const std::string owner_name = username(owner_);
 	simple_wml::document cfg;
 	cfg.root().add_child("host_transfer");
-
-	std::string message = owner_name + " has been chosen as the new host.";
 	server.send_to_player(owner_, cfg);
+
+	if(initiator) {
+		LOG_GAME
+			<< (*initiator)->client_ip() << "\t" << (*initiator)->info().name()
+			<< "\tchanged host to: " << owner_name << " (" << owner_->client_ip()
+			<< ")\tin game:\t\"" << name_ << "\" (" << id_ << ", " << db_id_ << ")";
+	} else {
+		LOG_GAME
+			<< "Host changed to: " << owner_name << " (" << owner_->client_ip()
+			<< ")\tin game:\t\"" << name_ << "\" (" << id_ << ", " << db_id_ << ")";
+	}
+
+	std::string message;
+	if(is_unexpected_initiator) {
+		message = (*initiator)->info().name() + " changed the host of this game to " + owner_name + ".";
+	} else {
+		message = owner_name + " has been chosen as the new host.";
+	}
 	send_and_record_server_message(message);
 }
 
@@ -895,7 +913,6 @@ void game::unban_user(const simple_wml::node& unban, player_iterator unbanner)
 }
 
 void game::transfer_host(const simple_wml::node& new_host, player_iterator requestor) {
-	// TODO: moderators should also have the ability to change the host.
 	if(requestor != owner_) {
 		send_server_message("You cannot transfer host: not the game host.", requestor);
 		return;
@@ -904,16 +921,16 @@ void game::transfer_host(const simple_wml::node& new_host, player_iterator reque
 	const simple_wml::string_span& username = new_host["username"];
 	auto user { find_user(username) };
 
-	if(!user || is_player(*user)) {
+	if(!user || !is_player(*user)) {
 		send_server_message("'" + username.to_string() + "' is not a player in this game.", requestor);
 		return;
 	}
 
-	LOG_GAME
-		<< requestor->client_ip() << "\t" << requestor->info().name()
-		<< "\ttransferred hostship to: " << username << " (" << (*user)->client_ip()
-		<< ")\tin game:\t\"" << name_ << "\" (" << id_ << ", " << db_id_ << ")";
-	change_host_and_notify(*user);
+	if(*user == owner_) {
+		send_server_message("'" + username.to_string() + "' is already the host of this game.", requestor);
+	}
+
+	change_host_and_notify(*user, requestor);
 }
 
 void game::process_message(simple_wml::document& data, player_iterator user)
@@ -1526,7 +1543,7 @@ bool game::remove_player(player_iterator player, const bool disconnect, const bo
 
 	// If the player was host choose a new one.
 	if(host) {
-		change_host_and_notify(players_.front());
+		change_host_and_notify(players_.front(), /*initiator=*/{});
 	}
 
 	bool ai_transfer = false;

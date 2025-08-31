@@ -278,7 +278,7 @@ public:
 	void unban_user(const simple_wml::node& unban, player_iterator unbanner);
 
 	/**
-	 * Transfer host role by name.
+	 * Transfers host role by name.
 	 *
 	 * @param new_host The user to become the new host.
 	 * @param requestor The player initiating the host transfer.
@@ -789,9 +789,13 @@ private:
 
 	/**
 	 * Changes the host to @a new_host, and notify the new host about its status.
+	 *
 	 * No-op if @a new_host is already the host.
+	 *
+	 * @param new_host The player to become the new host.
+	 * @param initiator Optional intiator of the request (for logging).
 	 */
-	void change_host_and_notify(player_iterator new_host);
+	void change_host_and_notify(player_iterator new_host, utils::optional<player_iterator> initiator);
 
 	/**
 	 * Shortcut to a convenience function for finding a user by name.
