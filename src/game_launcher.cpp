@@ -563,7 +563,7 @@ game_launcher::unit_test_result game_launcher::single_unit_test()
 	}
 
 	savegame::replay_savegame save(state_, compression::format::none);
-	save.save_game_automatic(false, "unit_test_replay");
+	save.save_game_automatic();
 
 #ifdef __cpp_aggregate_paren_init
 	load_data_.emplace(
