@@ -1754,15 +1754,20 @@ void unit::set_loyal(bool loyal)
 int unit::defense_modifier(const t_translation::terrain_code & terrain) const
 {
 	int def = movement_type_.defense_modifier(terrain);
-#if 0
+
 	// A [defense] ability is too costly and doesn't take into account target locations.
 	// Left as a comment in case someone ever wonders why it isn't a good idea.
-	unit_ability_list defense_abilities = get_abilities("defense");
-	if(!defense_abilities.empty()) {
-		unit_abilities::effect defense_effect(defense_abilities, def);
-		def = defense_effect.get_composite_value();
+	unit_ability_list defense_abilities;
+	for(const config& i : abilities().child_range("individual_defense")) {
+		if(get_self_ability_bool(i, "individual_defense", loc_)) {
+			defense_abilities.emplace_back(&i, loc_, loc_);
+		}
 	}
-#endif
+	if(!defense_abilities.empty()) {
+		unit_abilities::effect defense_effect(defense_abilities, 100 - def);
+		def = 100 - defense_effect.get_composite_value();
+	}
+
 	return def;
 }
 
