@@ -4180,7 +4180,9 @@ int game_lua_kernel::intf_add_tile_overlay(lua_State *L)
 			cfg["halo"],
 			team_name,
 			cfg["name"], // Name is treated as the ID
+			cfg["drawing_layer"],
 			cfg["visible_in_fog"].to_bool(true),
+			cfg["multihex"].to_bool(false),
 			cfg["submerge"].to_double(0),
 			cfg["z_order"].to_double(0)
 		));
@@ -4192,15 +4194,26 @@ int game_lua_kernel::intf_add_tile_overlay(lua_State *L)
  * Removes an overlay from a tile.
  * - Arg 1: location.
  * - Arg 2: optional string.
+ * - Arg 3: optional bolean.
  */
 int game_lua_kernel::intf_remove_tile_overlay(lua_State *L)
 {
 	map_location loc = luaW_checklocation(L, 1);
 	char const *m = lua_tostring(L, 2);
+	bool do_partial_string = false;
+
+	// Check if the second argument is a string.
+	// If it is, then the third argument might be a boolean.
+	// If it's not a string, we check if the second argument is a boolean.
+	if(m) {
+		do_partial_string = lua_toboolean(L, 3);
+	} else {
+		do_partial_string = lua_toboolean(L, 2);
+	}
 
 	if (m) {
 		if (game_display_) {
-			game_display_->remove_single_overlay(loc, m);
+			game_display_->remove_single_overlay(loc, m, do_partial_string);
 		}
 	} else {
 		if (game_display_) {

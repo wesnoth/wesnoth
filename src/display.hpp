@@ -170,8 +170,13 @@ public:
 	/** remove_overlay will remove all overlays on a tile. */
 	void remove_overlay(const map_location& loc);
 
-	/** remove_single_overlay will remove a single overlay from a tile */
-	void remove_single_overlay(const map_location& loc, const std::string& toDelete);
+	/**
+	 * remove_single_overlay will remove a single overlay from a tile.
+	 * - @param loc The location of the tile.
+	 * - @param toDelete The name or partial name of the overlay to delete.
+	 * - @param do_partial_string True to perform a partial string match, false for an exact match.
+	 */
+	void remove_single_overlay(const map_location& loc, const std::string& toDelete, bool do_partial_string);
 
 	/**
 	 * Updates internals that cache map size. This should be called when the map

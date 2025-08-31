@@ -24,6 +24,7 @@
 #include "color.hpp"
 #include "draw.hpp"
 #include "draw_manager.hpp"
+#include "drawing_layer.hpp"
 #include "fake_unit_manager.hpp"
 #include "filesystem.hpp"
 #include "floating_label.hpp"
@@ -64,6 +65,13 @@
 #include <iomanip>
 #include <numeric>
 #include <utility>
+
+#include <vector>
+#include <string>
+#include <sstream>
+
+//	#include <iostream>
+//	std::cout << "multihex " << ov.multihex;
 
 #ifdef _WIN32
 #include <windows.h>
@@ -115,28 +123,329 @@ static int get_zoom_levels_index(unsigned int zoom_level)
 	return std::distance(zoom_levels.begin(), iter);
 }
 
+namespace
+{
+	// Constants for hex geometry
+	static constexpr int HEX_W = 72; // hex width in px
+	static constexpr int HEX_H = 72; // hex full height in px
+
+	/// Build a cropped overlay string for one hex of a multihex image
+	static std::string make_overlay_crop(const map_location& anchor,
+		const map_location& hex,
+		const std::string& ref_image,
+		int big_width,
+		int big_height)
+	{
+		// Center of the big image
+		int cx = big_width / 2;
+		int cy = big_height / 2;
+
+		// Logical offsets between anchor and this hex
+		int dx_logical = hex.x - anchor.x;
+		int dy_logical = hex.y - anchor.y;
+
+		// Convert to correct pixel offsets for a hex grid
+		int dx_px = dx_logical * (HEX_W - HEX_W / 4);
+		int dy_px = dy_logical * HEX_H;
+		if(hex.x % 2 != 0) {
+			dy_px += HEX_H / 2;
+		}
+
+		// Desired top-left corner of the crop rect
+		int crop_x = cx + dx_px - (HEX_W / 2);
+		int crop_y = cy + dy_px - (HEX_H / 2);
+
+		// Visible part inside the source image
+		int src_x = std::max(0, crop_x);
+		int src_y = std::max(0, crop_y);
+		int src_w = HEX_W - std::max(0, -crop_x);
+		int src_h = HEX_H - std::max(0, -crop_y);
+
+		if(src_x + src_w > big_width) {
+			src_w = big_width - src_x;
+		}
+		if(src_y + src_h > big_height) {
+			src_h = big_height - src_y;
+		}
+
+		// Destination offset inside the 72x72 hex canvas
+		int dst_x = src_x - crop_x;
+		int dst_y = src_y - crop_y;
+
+		// Build image string:
+		// start with a transparent hex, then BLIT the cropped source at the offset.
+		std::ostringstream ss;
+		ss << "misc/blank-hex.png";
+		if(src_w > 0 && src_h > 0) {
+			ss << "~BLIT(" << ref_image << "~CROP(" << src_x << "," << src_y << "," << src_w << "," << src_h << ")"
+			   << "," << dst_x << "," << dst_y << ")";
+		}
+
+		return ss.str();
+	}
+
+	drawing_layer resolve_layer(const std::string& name)
+	{
+		if(name.empty()) {
+			return drawing_layer::terrain_bg;
+		}
+
+		// not efficient, change this if drawing_layer input goes into mass use
+		// this list should mimic drawing_layer.hpp enum class drawing_layer
+		if(name == "terrain_bg")
+			return drawing_layer::terrain_bg;
+		else if(name == "grid_top")
+			return drawing_layer::grid_top;
+		else if(name == "mouseover_overlay")
+			return drawing_layer::mouseover_overlay;
+		else if(name == "footsteps")
+			return drawing_layer::footsteps;
+		else if(name == "mouseover_top")
+			return drawing_layer::mouseover_top;
+		else if(name == "unit_bg")
+			return drawing_layer::unit_bg;
+		else if(name == "unit_default")
+			return drawing_layer::unit_default;
+		else if(name == "terrain_fg")
+			return drawing_layer::terrain_fg;
+		else if(name == "grid_bottom")
+			return drawing_layer::grid_bottom;
+		else if(name == "unit_move_default")
+			return drawing_layer::unit_move_default;
+		else if(name == "unit_fg")
+			return drawing_layer::unit_fg;
+		else if(name == "unit_missile_default")
+			return drawing_layer::unit_missile_default;
+		else if(name == "mouseover_bottom")
+			return drawing_layer::mouseover_bottom;
+		else if(name == "fog_shroud")
+			return drawing_layer::fog_shroud;
+		else if(name == "arrows")
+			return drawing_layer::arrows;
+		else if(name == "actions_numbering")
+			return drawing_layer::actions_numbering;
+		else if(name == "selected_hex")
+			return drawing_layer::selected_hex;
+		else if(name == "attack_indicator")
+			return drawing_layer::attack_indicator;
+		else if(name == "unit_bar")
+			return drawing_layer::unit_bar;
+		else if(name == "move_info")
+			return drawing_layer::move_info;
+		else if(name == "linger_overlay")
+			return drawing_layer::linger_overlay;
+		else if(name == "border")
+			return drawing_layer::border;
+
+		// Unknown string → default
+		return drawing_layer::terrain_bg;
+	}
+
+	// Build animation (or static locator) from a string
+	static animated<image::locator> make_anim_from_string(const std::string& str)
+	{
+		if(str.empty()) {
+			return animated<image::locator>();
+		}
+
+		animated<image::locator>::anim_description desc;
+		std::vector<std::string> items = utils::square_parenthetical_split(str, ',');
+
+		// If it's a multi-frame animation, or has a colon for a single frame with duration.
+		if(items.size() > 1 || str.find(':') != std::string::npos) {
+			for(const auto& item : items) {
+				auto parts = utils::split(item, ':');
+				if(!parts.empty()) {
+					std::string frame_img = parts.front();
+					int time_ms = (parts.size() > 1) ? std::stoi(parts.back()) : 100; // Default to 100ms
+					desc.push_back(animated<image::locator>::frame_description(time_ms, image::locator(frame_img)));
+				}
+			}
+		} else {
+			// Handle single frame image.
+			desc.push_back(animated<image::locator>::frame_description(100, image::locator(str)));
+		}
+
+		// create the animated object.
+		animated<image::locator> anim(desc);
+		anim.start_animation(std::chrono::milliseconds{0}, true);
+		return anim;
+	}
+
+} // namespace
+
 void display::add_overlay(const map_location& loc, overlay&& ov)
 {
-	std::vector<overlay>& overlays = get_overlays()[loc];
-	auto pos = std::find_if(overlays.begin(), overlays.end(),
-		[new_order = ov.z_order](const overlay& existing) { return existing.z_order > new_order; });
+	// Handle halo
+	if(!ov.halo.empty()) {
+		//old code
+		std::vector<overlay>& overlays = get_overlays()[loc];
+		auto pos = std::find_if(overlays.begin(), overlays.end(),
+			[new_order = ov.z_order](const overlay& existing) { return existing.z_order > new_order; });
 
-	auto inserted = overlays.emplace(pos, std::move(ov));
-	if(const std::string& halo = inserted->halo; !halo.empty()) {
+		auto inserted = overlays.emplace(pos, std::move(ov));
 		auto [x, y] = get_location_rect(loc).center();
-		inserted->halo_handle = halo_man_.add(x, y, halo, loc);
+		inserted->halo_handle = halo_man_.add(x, y, inserted->halo, loc);
+		return;
+	}
+
+	// --- 1. Parse Image String ---
+	std::vector<std::pair<std::string, int>> frames;
+	std::vector<std::string> items = utils::square_parenthetical_split(ov.image, ',');
+	bool is_anim = false;
+
+	if(items.size() > 1 || ov.image.find(':') != std::string::npos) {
+		// This is an animation string.
+		is_anim = true;
+		for(const auto& item : items) {
+			auto parts = utils::split(item, ':');
+			if(!parts.empty()) {
+				std::string frame_img = parts.front();
+				int time_ms = (parts.size() > 1) ? std::stoi(parts.back()) : 100;
+				frames.emplace_back(frame_img, time_ms);
+			}
+		}
+	} else {
+		// This is a single, static image.
+		if(!ov.multihex) {
+			// old code
+			std::vector<overlay>& overlays = get_overlays()[loc];
+			auto pos = std::find_if(overlays.begin(), overlays.end(),
+				[new_order = ov.z_order](const overlay& existing) { return existing.z_order > new_order; });
+			auto inserted = overlays.emplace(pos, std::move(ov));
+			return;
+		} else {
+			if(!ov.image.empty()) {
+				frames.emplace_back(ov.image, 100);
+			}
+		}
+	}
+
+	// --- 2. Get Dimensions ---
+	const auto size = image::get_size(frames.front().first);
+	const int width = size.x;
+	const int height = size.y;
+
+	// --- 3. Add Overlay (Splitting if Multi-Hex) ---
+
+	// Case A: Multi-hex overlay (image is larger than one hex tile).
+	if((width > 72 || height > 72) && ov.multihex) {
+
+		const int radius_x = static_cast<int>(std::ceil(static_cast<double>(width) / (2 * 54)));
+		const int radius_y = static_cast<int>(std::ceil(static_cast<double>(height) / (2 * 72)));
+		std::vector<map_location> children;
+
+		// Iterate over all hexes that the multi-hex overlay covers.
+		for(int dx = -radius_x; dx <= radius_x; ++dx) {
+			for(int dy = -radius_y; dy <= radius_y; ++dy) {
+				const map_location hex(loc.x + dx, loc.y + dy); // Create a new map location for the current hex in the multi-hex overlay.
+				std::string part_image_string;
+				if(is_anim) {
+					std::ostringstream joined_stream;
+					for(size_t i = 0; i < frames.size(); ++i) { // Loop through each frame of the original animation.
+						const auto& [frame_img, time_ms] = frames[i];
+						std::string cropped_frame = make_overlay_crop(loc, hex, frame_img, width, height); // Crop the current frame to fit this hex.
+						joined_stream << cropped_frame << ":" << std::to_string(time_ms); // Append the cropped frame and its timing to the new animation string.
+						if(i < frames.size() - 1) {joined_stream << ',';} // Add a comma separator if it's not the last frame.
+					}
+					part_image_string = joined_stream.str();
+				} else // A static multihex image.
+					{ part_image_string = make_overlay_crop(loc, hex, frames.front().first, width, height);}
+
+				// Create a new 'overlay' and animation objects for this single hex part.
+				overlay part_overlay(part_image_string, "", ov.team_name,
+					ov.id + "_part_" + std::to_string(dx) + "_" + std::to_string(dy), ov.drawing_layer,
+					ov.visible_in_fog, ov.submerge,
+					ov.z_order);
+				part_overlay.anim = make_anim_from_string(part_image_string);
+				part_overlay.is_animated = is_anim;
+				std::vector<overlay>& overlays = get_overlays()[hex]; // Get the vector of overlays for the current hex location.
+
+				// Find the correct position to insert the new overlay, sorted by z_order.
+				auto pos = std::lower_bound(overlays.begin(), overlays.end(), part_overlay.z_order,
+					[](const overlay& existing, int new_order) { return existing.z_order < new_order; });
+				overlays.emplace(pos, std::move(part_overlay)); // Insert the newly created overlay part into the vector.
+
+				// Record child location
+				if(!(dx == 0 && dy == 0)) { // exclude centre itself
+					children.push_back(hex);
+				}
+			}
+		}
+
+		// Now store children in the centre overlay itself
+		auto& centre_vec = get_overlays()[loc];
+		if(!centre_vec.empty()) {
+			auto& centre_overlay_part = centre_vec.back();
+			centre_overlay_part.child_hexes = std::move(children);
+			centre_overlay_part.multihex = true;
+		}
+	} else {
+
+		// Case B: Single-hex overlay (static or animated).
+		std::vector<overlay>& overlays = get_overlays()[loc];
+		auto pos = std::lower_bound(overlays.begin(), overlays.end(), ov.z_order,
+			[](const overlay& existing, int new_order) { return existing.z_order < new_order; });
+		ov.multihex = false;
+		ov.anim = make_anim_from_string(ov.image);
+		ov.is_animated = is_anim;
+		overlays.emplace(pos, std::move(ov));
 	}
 }
 
 void display::remove_overlay(const map_location& loc)
 {
-	get_overlays().erase(loc);
+	auto it = get_overlays().find(loc);
+	if(it == get_overlays().end())
+		return;
+
+	// Copy children before erasing parent
+	std::vector<map_location> children;
+	for(const auto& ov : it->second) {
+		for(const auto& ch : ov.child_hexes) {
+			children.push_back(ch);
+		}
+	}
+
+	// Remove parent(s)
+	get_overlays().erase(it);
+
+	// Remove children
+	for(const auto& child : children) {
+		get_overlays().erase(child);
+	}
 }
 
-void display::remove_single_overlay(const map_location& loc, const std::string& toDelete)
+void display::remove_single_overlay(const map_location& loc, const std::string& toDelete, bool do_partial_string)
 {
-	utils::erase_if(get_overlays()[loc],
-		[&toDelete](const overlay& ov) { return ov.image == toDelete || ov.halo == toDelete || ov.id == toDelete; });
+	auto it = get_overlays().find(loc);
+	if(it == get_overlays().end())
+		return;
+
+	std::vector<map_location> children;
+
+	auto& vec = it->second;
+	utils::erase_if(vec, [&](const overlay& ov) {
+		auto match = [&](const std::string& s) {
+			return (!do_partial_string) ? (s == toDelete) : (s.find(toDelete) != std::string::npos);
+		};
+		bool should_remove = match(ov.id) || match(ov.halo) || match(ov.image);
+		if(should_remove && ov.multihex && !ov.child_hexes.empty()) {
+			// Collect all children before removing parent
+			children.insert(children.end(), ov.child_hexes.begin(), ov.child_hexes.end());
+		}
+		return should_remove;
+	});
+
+	// If we removed a parent overlay, also erase its children
+	for(const auto& ch : children) {
+		get_overlays().erase(ch);
+	}
+
+	// If vector is now empty, erase the key from the map
+	if(vec.empty()) {
+		get_overlays().erase(it);
+	}
 }
 
 display::display(const display_context* dc,
@@ -2667,15 +2976,20 @@ void display::draw_overlays_at(const map_location& loc)
 			}
 		}
 
-		texture tex = ov.image.find("~NO_TOD_SHIFT()") == std::string::npos
-			? image::get_lighted_texture(ov.image, lt)
-			: image::get_texture(ov.image, image::HEXED);
+		texture tex;
+		if(ov.is_animated) {
+			const image::locator& frame = ov.anim.get_current_frame();
+			tex = image::get_texture(frame, image::HEXED);
+		} else { //old code
+			tex = ov.image.find("~NO_TOD_SHIFT()") == std::string::npos
+				? image::get_lighted_texture(ov.image, lt)
+				: image::get_texture(ov.image, image::HEXED);
+		} 
 
 		// Base submerge value for the terrain at this location
 		const double ter_sub = context().map().get_terrain_info(loc).unit_submerge();
 
-		drawing_buffer_add(
-			drawing_layer::terrain_bg, loc, [tex, ter_sub, ovr_sub = ov.submerge](const rect& dest) mutable {
+		drawing_buffer_add(resolve_layer(ov.drawing_layer), loc, [tex, ter_sub, ovr_sub = ov.submerge](const rect& dest) mutable {
 				if(ovr_sub > 0.0 && ter_sub > 0.0) {
 					// Adjust submerge appropriately
 					double submerge = ter_sub * ovr_sub;
@@ -3041,14 +3355,27 @@ void display::invalidate_animations()
 	// There are timing issues with this, but i'm not touching it.
 	new_animation_frame();
 	animate_map_ = prefs::get().animate_map();
-	if(animate_map_) {
-		for(const map_location& loc : get_visible_hexes()) {
-			if(shrouded(loc))
-				continue;
+	for(const map_location& loc : get_visible_hexes()) {
+		if(shrouded(loc))
+			continue;
+
+		// terrain animations
+		if(animate_map_) {
 			if(builder_->update_animation(loc)) {
 				invalidate(loc);
 			} else {
 				invalidate_animations_location(loc);
+			}
+		}
+
+		// overlay animation (not halos)
+		for(auto& ov : get_overlays()[loc]) {
+			if(ov.is_animated) {
+				bool changed = ov.anim.need_update();
+				ov.anim.update_last_draw_time();
+				if(changed) {
+					invalidate(loc);
+				}
 			}
 		}
 	}

@@ -24,6 +24,7 @@ local function add_overlay(x, y, cfg)
 			team_name = cfg.team_name,
 			filter_team = cfg.filter_team,
 			visible_in_fog = cfg.visible_in_fog,
+			multihex = cfg.multihex,
 			submerge = cfg.submerge,
 			redraw = cfg.redraw,
 			name = cfg.name,
@@ -36,14 +37,20 @@ end
 ---@param x integer
 ---@param y integer
 ---@param name? string
-function wesnoth.interface.remove_item(x, y, name)
+---@param do_partial_string_match boolean
+function wesnoth.interface.remove_item(x, y, name, do_partial_string_match)
 	local items = scenario_items:get(x, y)
 	if not items then return end
-	wesnoth.interface.remove_hex_overlay(x, y, name)
+	wesnoth.interface.remove_hex_overlay(x, y, name, do_partial_string_match)
 	if name then
 		for i = #items,1,-1 do
 			local item = items[i]
-			if item.image == name or item.halo == name or item.name == name then
+			if (item.image == name or item.halo == name or item.name == name) or 
+				(do_partial_string_match and 
+				((type(item.image) == "string" and string.find(item.image, name, 1, true)) or 
+				(type(item.halo) == "string" and string.find(item.halo, name, 1, true)) or 
+				(type(item.name) == "string" and string.find(item.name, name, 1, true))))
+				then
 				table.remove(items, i)
 			end
 		end
@@ -136,7 +143,7 @@ end
 function wml_actions.remove_item(cfg)
 	local locs = wesnoth.map.find(cfg)
 	for i, loc in ipairs(locs) do
-		wesnoth.interface.remove_item(loc[1], loc[2], cfg.image)
+		wesnoth.interface.remove_item(loc[1], loc[2], cfg.image , cfg.do_partial_string_match)
 	end
 end
 
