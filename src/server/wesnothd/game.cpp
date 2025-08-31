@@ -642,8 +642,12 @@ std::unique_ptr<simple_wml::document> game::change_controller_type(const std::si
 	return response.clone();
 }
 
-void game::notify_new_host()
+void game::change_host_and_notify(player_iterator new_host)
 {
+	if(owner_ == new_host) {
+		return;
+	}
+	owner_ = new_host;
 	const std::string owner_name = username(owner_);
 	simple_wml::document cfg;
 	cfg.root().add_child("host_transfer");
@@ -888,6 +892,28 @@ void game::unban_user(const simple_wml::node& unban, player_iterator unbanner)
 	utils::erase(bans_, (*user)->client_ip());
 	utils::erase(name_bans_, username.to_string());
 	send_and_record_server_message(username.to_string() + " has been unbanned.");
+}
+
+void game::transfer_host(const simple_wml::node& new_host, player_iterator requestor) {
+	// TODO: moderators should also have the ability to change the host.
+	if(requestor != owner_) {
+		send_server_message("You cannot transfer host: not the game host.", requestor);
+		return;
+	}
+
+	const simple_wml::string_span& username = new_host["username"];
+	auto user { find_user(username) };
+
+	if(!user || is_player(*user)) {
+		send_server_message("'" + username.to_string() + "' is not a player in this game.", requestor);
+		return;
+	}
+
+	LOG_GAME
+		<< requestor->client_ip() << "\t" << requestor->info().name()
+		<< "\ttransferred hostship to: " << username << " (" << (*user)->client_ip()
+		<< ")\tin game:\t\"" << name_ << "\" (" << id_ << ", " << db_id_ << ")";
+	change_host_and_notify(*user);
 }
 
 void game::process_message(simple_wml::document& data, player_iterator user)
@@ -1500,8 +1526,7 @@ bool game::remove_player(player_iterator player, const bool disconnect, const bo
 
 	// If the player was host choose a new one.
 	if(host) {
-		owner_ = players_.front();
-		notify_new_host();
+		change_host_and_notify(players_.front());
 	}
 
 	bool ai_transfer = false;

@@ -2159,6 +2159,9 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 		g.unban_user(*unban, p);
 		return;
 		// If info is being provided about the game state.
+	} else if(const simple_wml::node* transfer_host = data.child("transfer_host")) {
+		g.transfer_host(*transfer_host, p);
+		return;
 	} else if(const simple_wml::node* info = data.child("info")) {
 		if(!g.is_player(p)) {
 			return;

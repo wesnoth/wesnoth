@@ -82,6 +82,8 @@ protected:
 				" the server."), _("<nickname>"));
 		register_command("kick", &chat_command_handler::do_network_send_req_arg,
 			_("Kick a player or observer."), _("<nickname>"));
+		register_command("transfer_host", &chat_command_handler::do_network_send_req_arg,
+			_("Transfer host to another player."), _("<nickname>"));
 		register_command("mute", &chat_command_handler::do_network_send,
 			_("Mute an observer. Without an argument displays the mute status."), _("<nickname>"));
 		register_command("unmute", &chat_command_handler::do_network_send,
