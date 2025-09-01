@@ -32,6 +32,7 @@
 #include "team.hpp"
 #include "units/unit.hpp"
 
+#include <boost/algorithm/string/trim.hpp>
 #include <boost/regex.hpp>
 
 namespace editor
@@ -95,6 +96,7 @@ map_context::map_context(const editor_map& map, bool pure_map, const std::string
 {
 }
 
+// Look for attr in file_contents, if there is an equal sign on the same line assume that what follows to the line end is the attribute value
 static std::string get_map_location(const std::string& file_contents, const std::string& attr)
 {
 	std::size_t attr_name_start = file_contents.find(attr);
@@ -102,14 +104,12 @@ static std::string get_map_location(const std::string& file_contents, const std:
 
 	std::size_t attr_value_start = file_contents.find("=", attr_name_start);
 	std::size_t line_end = file_contents.find("\n", attr_name_start);
-	if(line_end < attr_value_start) return "";
+	if(line_end < attr_value_start) return ""; // assume not both values are string::npos
 
 	attr_value_start++;
 	std::string attr_value = file_contents.substr(attr_value_start, line_end - attr_value_start);
-	std::string_view v2 = attr_value;
-	utils::trim(v2);
 
-	return std::string(v2);
+	return boost::trim_copy(attr_value);
 }
 
 map_context::map_context(const std::string& filename, const std::string& addon_id)
@@ -212,91 +212,69 @@ map_context::map_context(const std::string& filename, const std::string& addon_i
 		pure_map_ = true;
 
 		add_to_recent_files();
-	} else {
-		// 4.0 old-style editor generated scenario which lacks a top-level tag
-		if(file_string.find("[multiplayer]") == std::string::npos &&
-			file_string.find("[scenario]") == std::string::npos &&
-			file_string.find("[test]") == std::string::npos) {
-			LOG_ED << "Loading generated scenario file";
-			try {
-				load_scenario();
-			} catch(const std::exception& e) {
-				throw editor_map_load_exception("load_scenario: old-style scenario", e.what());
-			}
-			add_to_recent_files();
-		} else {
-			std::string map_data_loc = get_map_location(file_string, "map_data");
-			std::string map_file_loc = get_map_location(file_string, "map_file");
+		return;
+	}
 
-			if(!map_data_loc.empty()) {
-				if(map_data_loc.find("\"{") == std::string::npos) {
-					// 2.0 Embedded pure map
-					LOG_ED << "Loading embedded map file";
-					embedded_ = true;
-					pure_map_ = true;
-					std::size_t start = file_string.find(map_data_loc)+1;
-					std::size_t length = file_string.find("\"", start)-start;
-					std::string map_data = file_string.substr(start, length);
-					map_ = editor_map::from_string(map_data);
-					add_to_recent_files();
-				} else {
-					// 3.0 Macro referenced pure map
-					const std::string& macro_argument = map_data_loc.substr(2, map_data_loc.size()-4);
-					LOG_ED << "Map looks like a scenario, trying {" << macro_argument << "}";
+	// 2.0 try loading cfg file
+	LOG_ED << "Try loading scenario file";
+	try {
+		load_scenario();
+	} catch(const std::exception& e) {
+		gui2::show_message(_("Error"), _("Failed to load the scenario, attempting to load only the map."), gui2::dialogs::message::auto_close);
 
-					auto new_filename = filesystem::get_wml_location(macro_argument, filesystem::directory_name(filesystem::get_short_wml_path(filename_)));
+		std::string map_data_loc = get_map_location(file_string, "map_data");
+		std::string map_file_loc = get_map_location(file_string, "map_file");
 
-					if(!new_filename) {
-						std::string message = _("The map file looks like a scenario, but the map_data value does not point to an existing file")
-											+ std::string("\n") + macro_argument;
-						throw editor_map_load_exception(filename, message);
-					}
-
-					LOG_ED << "New filename is: " << new_filename.value();
-
-					filename_ = new_filename.value();
-					file_string = filesystem::read_file(filename_);
-					map_ = editor_map::from_string(file_string);
-					pure_map_ = true;
-
-					add_to_recent_files();
-				}
-			} else if(!map_file_loc.empty()) {
-				// 5.0 The file is using map_file.
-				try {
-					// 5.1 The file can be loaded by the editor as a scenario
-					if(file_string.find("<<") != std::string::npos) {
-						throw editor_map_load_exception(filename, _("Found the characters ‘<<’ indicating inline lua is present — aborting"));
-					}
-					load_scenario();
-				} catch(const std::exception&) {
-					// 5.2 The file can't be loaded by the editor as a scenario, so try to just load the map
-					gui2::show_message(_("Error"), _("Failed to load the scenario, attempting to load only the map."), gui2::dialogs::message::auto_close);
-
-					// NOTE: this means that loading the map file from a scenario where the maps are in nested directories under maps/ will not work
-					//       this is done to address mainline scenarios referencing their maps as "multiplayer/maps/<map_file>.map"
-					//       otherwise this results in the "multiplayer/maps/" part getting duplicated in the path and then not being found
-					std::string new_filename = filesystem::get_current_editor_dir(addon_id_) + "/maps/" + filesystem::base_name(map_file_loc);
-					if(!filesystem::file_exists(new_filename)) {
-						std::string message = _("The map file looks like a scenario, but the map_file value does not point to an existing file")
-											+ std::string("\n") + new_filename;
-						throw editor_map_load_exception(filename, message);
-					}
-
-					LOG_ED << "New filename is: " << new_filename;
-
-					filename_ = new_filename;
-					file_string = filesystem::read_file(filename_);
-					map_ = editor_map::from_string(file_string);
-					pure_map_ = true;
-				}
-
-				add_to_recent_files();
+		if(!map_data_loc.empty()) {
+			if(map_data_loc.find("\"{") == std::string::npos) {
+				// 2.1 Embedded pure map
+				LOG_ED << "Loading embedded map_data";
+				embedded_ = true;
+				pure_map_ = true;
+				// build on sloppy parsing from get_map_location
+				std::size_t start = file_string.find(map_data_loc)+1; // assume that the "parsed" attribute value is not found earlier in the scenario file and assume it starts with a double quote
+				std::size_t length = file_string.find("\"", start)-start; // assume the attribute value ends with a double quote and does not contain one
+				std::string map_data = file_string.substr(start, length);
+				map_ = editor_map::from_string(map_data);
 			} else {
-				throw editor_map_load_exception(filename, _("Unable to parse file to find map data"));
+				// 2.2 Macro referenced pure map
+				// assume `map_data = "{...}"` so skip the quotes and curly braces
+				const std::string& macro_argument = map_data_loc.substr(2, map_data_loc.size()-4);
+				LOG_ED << "Map looks like a scenario, trying {" << macro_argument << "}";
+
+				auto new_filename = filesystem::get_wml_location(macro_argument, filesystem::directory_name(filesystem::get_short_wml_path(filename_)));
+
+				if(!new_filename) {
+					std::string message = _("The file looks like a scenario, but the map_data attribute does not point to an existing file") + std::string("\n") + macro_argument;
+					throw editor_map_load_exception(filename, message);
+				}
+
+				LOG_ED << "New filename is: " << new_filename.value();
+
+				pure_map_ = true;
+				filename_ = new_filename.value();
+				map_ = editor_map::from_string(filesystem::read_file(filename_));
 			}
+		} else if(!map_file_loc.empty()) {
+			// 2.3 map_file referenced pure map
+
+			const std::string& new_filename = filesystem::get_map_file(map_file_loc);
+			if(!filesystem::file_exists(new_filename)) {
+				std::string message = _("The file looks like a scenario, but the map_file attribute does not point to an existing file") + std::string("\n") + map_file_loc;
+				throw editor_map_load_exception(filename, message);
+			}
+
+			LOG_ED << "New filename is: " << new_filename;
+
+			pure_map_ = true;
+			filename_ = new_filename;
+			map_ = editor_map::from_string(filesystem::read_file(filename_));
+		} else {
+			// 2.4 could not load the scenario or find the map data in it; throw error from load_scenario
+			throw editor_map_load_exception(filename, e.what());
 		}
 	}
+	add_to_recent_files();
 }
 
 map_context::~map_context()
