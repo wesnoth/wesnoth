@@ -208,7 +208,8 @@ const std::string help_msg =
 	" k[ick]ban <mask> <time> <reason>, help, games, metrics,"
 	" [lobby]msg <message>, motd [<message>],"
 	" pm|privatemsg <nickname> <message>, requests, roll <sides>, sample, searchlog <mask>,"
-	" signout, stats, status [<mask>], stopgame <nick> [<reason>], reset_queues, unban <ipmask>\n"
+	" setgamehost <nick>, signout, stats, status [<mask>], stopgame <nick> [<reason>],"
+	" reset_queues, unban <ipmask>\n"
 	"Specific strings (those not in between <> like the command names)"
 	" are case insensitive.";
 
@@ -2160,7 +2161,7 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 		g.unban_user(*unban, p);
 		return;
 		// If host should be transferred to another player.
-	} else if(const simple_wml::node* transfer_host = data.child("transfer_host")) {
+	} else if(const simple_wml::node* transfer_host = data.child("transferhost")) {
 		g.transfer_host(*transfer_host, p);
 		return;
 		// If info is being provided about the game state.
@@ -3259,18 +3260,20 @@ void server::set_game_host_handler(const std::string& issuer_name,
 {
 	assert(out != nullptr);
 
-	const auto issuer = player_connections_.get<name_t>().find(issuer_name);
+	const auto issuer = player_connections_.project<0>(player_connections_.get<name_t>().find(issuer_name));
 	// Shouldn't happen, but should check just in case.
-	if(!issuer->info().is_moderator()) {
+	if(issuer == player_connections_.get<0>().end()) {
+		*out << issuer_name << " does not exist?";
+	} else if(!issuer->info().is_moderator()) {
 		*out << issuer_name << " is not a moderator?";
 		return;
 	}
 
 	const std::string nick = parameters.substr(0, parameters.find(' '));
 	const std::string reason = parameters.length() > nick.length() + 1 ? parameters.substr(nick.length() + 1) : "";
-	const auto player = player_connections_.get<name_t>().find(nick);
+	const auto player = player_connections_.project<0>(player_connections_.get<name_t>().find(nick));
 
-	if(player == player_connections_.get<name_t>().end()) {
+	if(player == player_connections_.get<0>().end()) {
 		*out << "Player '" << nick << "' is not currently logged in.";
 		return;
 	}
@@ -3283,7 +3286,9 @@ void server::set_game_host_handler(const std::string& issuer_name,
 
 	*out << "Player '" << nick << "' is in game with id '" << g->id() << ", " << g->db_id()
 		 << "' named '" << g->name() << "'. Setting host to " << nick;
-	g->change_host_and_notify(player, issuer);
+	simple_wml::document player_wml;
+	player_wml.root().set_attr("username", nick.c_str());
+	g->transfer_host(player_wml.root(), issuer);
 }
 
 void server::delete_game(int gameid, const std::string& reason)

@@ -88,7 +88,7 @@ void chat_handler::send_command(const std::string& cmd, const std::string& args 
 		data.add_child(cmd)["type"] = args;
 	}
 	else if (cmd == "ban" || cmd == "unban" || cmd == "kick"
-		|| cmd == "mute" || cmd == "unmute" || cmd == "transfer_host") {
+		|| cmd == "mute" || cmd == "unmute" || cmd == "transferhost") {
 		data.add_child(cmd)["username"] = args;
 	}
 	else if (cmd == "ping") {

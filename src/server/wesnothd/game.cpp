@@ -913,9 +913,11 @@ void game::unban_user(const simple_wml::node& unban, player_iterator unbanner)
 }
 
 void game::transfer_host(const simple_wml::node& new_host, player_iterator requestor) {
-	if(requestor != owner_) {
-		send_server_message("You cannot transfer host: not the game host.", requestor);
-		return;
+	if(!requestor->info().is_moderator()) {
+		if(requestor != owner_) {
+			send_server_message("You cannot transfer host: not the game host.", requestor);
+			return;
+		}
 	}
 
 	const simple_wml::string_span& username = new_host["username"];
