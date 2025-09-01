@@ -29,6 +29,7 @@ local function add_overlay(x, y, cfg)
 			redraw = cfg.redraw,
 			name = cfg.name,
 			z_order = cfg.z_order,
+			drawing_layer = cfg.drawing_layer,
 			wml.tag.variables(wml.get_child(cfg, "variables") or {}),
 		})
 end

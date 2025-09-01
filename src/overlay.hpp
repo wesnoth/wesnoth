@@ -76,6 +76,7 @@ struct overlay
 
 	// --- multihex support ---
 	bool multihex;
+	bool is_child = false;
 	std::vector<map_location> child_hexes;
 
 	// --- drawing layer support ---

@@ -4194,7 +4194,7 @@ int game_lua_kernel::intf_add_tile_overlay(lua_State *L)
  * Removes an overlay from a tile.
  * - Arg 1: location.
  * - Arg 2: optional string.
- * - Arg 3: optional bolean.
+ * - Arg 3: optional boolean.
  */
 int game_lua_kernel::intf_remove_tile_overlay(lua_State *L)
 {

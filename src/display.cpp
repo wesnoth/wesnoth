@@ -125,62 +125,67 @@ static int get_zoom_levels_index(unsigned int zoom_level)
 
 namespace
 {
+
+	struct crop_rect
+	{
+		int src_x, src_y;
+		int src_w, src_h;
+		int dst_x, dst_y;
+		bool valid() const
+		{
+			return src_w > 0 && src_h > 0;
+		}
+	};	
+
 	// Constants for hex geometry
 	static constexpr int HEX_W = 72; // hex width in px
 	static constexpr int HEX_H = 72; // hex full height in px
 
-	/// Build a cropped overlay string for one hex of a multihex image
-	static std::string make_overlay_crop(const map_location& anchor,
-		const map_location& hex,
-		const std::string& ref_image,
-		int big_width,
-		int big_height)
+	/// Compute the crop rectangle for one hex of a multihex image
+	static crop_rect compute_overlay_crop(
+		const map_location& anchor, const map_location& hex, int big_width, int big_height)
 	{
-		// Center of the big image
 		int cx = big_width / 2;
 		int cy = big_height / 2;
 
-		// Logical offsets between anchor and this hex
 		int dx_logical = hex.x - anchor.x;
 		int dy_logical = hex.y - anchor.y;
 
-		// Convert to correct pixel offsets for a hex grid
 		int dx_px = dx_logical * (HEX_W - HEX_W / 4);
 		int dy_px = dy_logical * HEX_H;
 		if(hex.x % 2 != 0) {
 			dy_px += HEX_H / 2;
 		}
 
-		// Desired top-left corner of the crop rect
 		int crop_x = cx + dx_px - (HEX_W / 2);
 		int crop_y = cy + dy_px - (HEX_H / 2);
 
-		// Visible part inside the source image
 		int src_x = std::max(0, crop_x);
 		int src_y = std::max(0, crop_y);
 		int src_w = HEX_W - std::max(0, -crop_x);
 		int src_h = HEX_H - std::max(0, -crop_y);
 
-		if(src_x + src_w > big_width) {
+		if(src_x + src_w > big_width)
 			src_w = big_width - src_x;
-		}
-		if(src_y + src_h > big_height) {
+		if(src_y + src_h > big_height)
 			src_h = big_height - src_y;
-		}
 
-		// Destination offset inside the 72x72 hex canvas
 		int dst_x = src_x - crop_x;
 		int dst_y = src_y - crop_y;
 
-		// Build image string:
-		// start with a transparent hex, then BLIT the cropped source at the offset.
+		return {src_x, src_y, src_w, src_h, dst_x, dst_y};
+	}
+
+	/// Build the cropped overlay string for a given frame image, using precomputed rect
+	static std::string build_overlay_crop_string(const std::string& ref_image, const crop_rect& rect)
+	{
 		std::ostringstream ss;
 		ss << "misc/blank-hex.png";
-		if(src_w > 0 && src_h > 0) {
-			ss << "~BLIT(" << ref_image << "~CROP(" << src_x << "," << src_y << "," << src_w << "," << src_h << ")"
-			   << "," << dst_x << "," << dst_y << ")";
+		if(rect.valid()) {
+			ss << "~BLIT(" << ref_image << "~CROP(" << rect.src_x << "," << rect.src_y << "," << rect.src_w << ","
+			   << rect.src_h << ")"
+			   << "," << rect.dst_x << "," << rect.dst_y << ")";
 		}
-
 		return ss.str();
 	}
 
@@ -278,7 +283,7 @@ void display::add_overlay(const map_location& loc, overlay&& ov)
 {
 	// Handle halo
 	if(!ov.halo.empty()) {
-		//old code
+		//run old code and return
 		std::vector<overlay>& overlays = get_overlays()[loc];
 		auto pos = std::find_if(overlays.begin(), overlays.end(),
 			[new_order = ov.z_order](const overlay& existing) { return existing.z_order > new_order; });
@@ -308,7 +313,7 @@ void display::add_overlay(const map_location& loc, overlay&& ov)
 	} else {
 		// This is a single, static image.
 		if(!ov.multihex) {
-			// old code
+			// run old code and return
 			std::vector<overlay>& overlays = get_overlays()[loc];
 			auto pos = std::find_if(overlays.begin(), overlays.end(),
 				[new_order = ov.z_order](const overlay& existing) { return existing.z_order > new_order; });
@@ -329,7 +334,7 @@ void display::add_overlay(const map_location& loc, overlay&& ov)
 	// --- 3. Add Overlay (Splitting if Multi-Hex) ---
 
 	// Case A: Multi-hex overlay (image is larger than one hex tile).
-	if((width > 72 || height > 72) && ov.multihex) {
+	if((width > 54 || height > 72) && ov.multihex) {
 
 		const int radius_x = static_cast<int>(std::ceil(static_cast<double>(width) / (2 * 54)));
 		const int radius_y = static_cast<int>(std::ceil(static_cast<double>(height) / (2 * 72)));
@@ -340,23 +345,33 @@ void display::add_overlay(const map_location& loc, overlay&& ov)
 			for(int dy = -radius_y; dy <= radius_y; ++dy) {
 				const map_location hex(loc.x + dx, loc.y + dy); // Create a new map location for the current hex in the multi-hex overlay.
 				std::string part_image_string;
+				crop_rect rect = compute_overlay_crop(loc, hex, width, height); // Crop main image to fit this hex.
 				if(is_anim) {
 					std::ostringstream joined_stream;
 					for(size_t i = 0; i < frames.size(); ++i) { // Loop through each frame of the original animation.
 						const auto& [frame_img, time_ms] = frames[i];
-						std::string cropped_frame = make_overlay_crop(loc, hex, frame_img, width, height); // Crop the current frame to fit this hex.
-						joined_stream << cropped_frame << ":" << std::to_string(time_ms); // Append the cropped frame and its timing to the new animation string.
+						joined_stream << build_overlay_crop_string(frame_img, rect) << ":" << time_ms; // Append the cropped frame and its timing to the new animation string.
 						if(i < frames.size() - 1) {joined_stream << ',';} // Add a comma separator if it's not the last frame.
 					}
 					part_image_string = joined_stream.str();
-				} else // A static multihex image.
-					{ part_image_string = make_overlay_crop(loc, hex, frames.front().first, width, height);}
+				} else { // A static multihex image.
+					part_image_string = build_overlay_crop_string(frames.front().first, rect);
+				}
 
 				// Create a new 'overlay' and animation objects for this single hex part.
 				overlay part_overlay(part_image_string, "", ov.team_name,
 					ov.id + "_part_" + std::to_string(dx) + "_" + std::to_string(dy), ov.drawing_layer,
 					ov.visible_in_fog, ov.submerge,
 					ov.z_order);
+
+				// If this is the parent hex (dx=0, dy=0), override the parent's ID
+				if(dx == 0 && dy == 0) {
+					part_overlay.id = ov.id;
+					part_overlay.is_child = false;
+				} else {
+					part_overlay.is_child = true;
+					children.push_back(hex); // Record child location
+				}
 				part_overlay.anim = make_anim_from_string(part_image_string);
 				part_overlay.is_animated = is_anim;
 				std::vector<overlay>& overlays = get_overlays()[hex]; // Get the vector of overlays for the current hex location.
@@ -365,11 +380,6 @@ void display::add_overlay(const map_location& loc, overlay&& ov)
 				auto pos = std::lower_bound(overlays.begin(), overlays.end(), part_overlay.z_order,
 					[](const overlay& existing, int new_order) { return existing.z_order < new_order; });
 				overlays.emplace(pos, std::move(part_overlay)); // Insert the newly created overlay part into the vector.
-
-				// Record child location
-				if(!(dx == 0 && dy == 0)) { // exclude centre itself
-					children.push_back(hex);
-				}
 			}
 		}
 
@@ -399,20 +409,37 @@ void display::remove_overlay(const map_location& loc)
 	if(it == get_overlays().end())
 		return;
 
-	// Copy children before erasing parent
-	std::vector<map_location> children;
+	// Collect pairs of child hexes and their parent's base id before erasing parent
+	std::vector<std::pair<map_location, std::string>> children_and_parent_id;
 	for(const auto& ov : it->second) {
-		for(const auto& ch : ov.child_hexes) {
-			children.push_back(ch);
+		if(ov.multihex) {
+			for(const auto& ch : ov.child_hexes) {
+				children_and_parent_id.emplace_back(ch, ov.id);
+			}
 		}
 	}
 
-	// Remove parent(s)
+	// Remove all overlays on this 1 hex (including children of other parents)
 	get_overlays().erase(it);
 
-	// Remove children
-	for(const auto& child : children) {
-		get_overlays().erase(child);
+	// If we erased a parent overlay, also erase its children
+	for(const auto& p : children_and_parent_id) {
+		const map_location& ch = p.first;
+		const std::string& parent_id = p.second;
+
+		auto itc = get_overlays().find(ch);
+		if(itc == get_overlays().end())
+			continue;
+
+		auto& child_vec = itc->second;
+		utils::erase_if(child_vec, [&](const overlay& ov) {
+			// Remove only overlays whose id contains parent_id + "_part_"
+			return ov.id.find(parent_id + "_part_") != std::string::npos;
+		});
+
+		if(child_vec.empty()) {
+			get_overlays().erase(itc);
+		}
 	}
 }
 
@@ -422,24 +449,42 @@ void display::remove_single_overlay(const map_location& loc, const std::string& 
 	if(it == get_overlays().end())
 		return;
 
-	std::vector<map_location> children;
-
+	std::vector<std::pair<map_location, std::string>> children_and_parent_id;
 	auto& vec = it->second;
 	utils::erase_if(vec, [&](const overlay& ov) {
-		auto match = [&](const std::string& s) {
-			return (!do_partial_string) ? (s == toDelete) : (s.find(toDelete) != std::string::npos);
+		auto match = [&](const std::string& s) { // avoid deleting a child unless it is a full match
+			return (!do_partial_string) ? (s == toDelete) : (s.find(toDelete) != std::string::npos && !ov.is_child);
 		};
+
 		bool should_remove = match(ov.id) || match(ov.halo) || match(ov.image);
 		if(should_remove && ov.multihex && !ov.child_hexes.empty()) {
-			// Collect all children before removing parent
-			children.insert(children.end(), ov.child_hexes.begin(), ov.child_hexes.end());
+			// Collect all children and their parent base ID
+			for(const auto& ch : ov.child_hexes) {
+				children_and_parent_id.emplace_back(ch, ov.id);
+			}
 		}
+
 		return should_remove;
 	});
 
-	// If we removed a parent overlay, also erase its children
-	for(const auto& ch : children) {
-		get_overlays().erase(ch);
+	// If we erased a parent overlay, also erase its children
+	for(const auto& p : children_and_parent_id) {
+		const map_location& ch = p.first;
+		const std::string& parent_id = p.second;
+
+		auto itc = get_overlays().find(ch);
+		if(itc == get_overlays().end())
+			continue;
+
+		auto& child_vec = itc->second;
+		utils::erase_if(child_vec, [&](const overlay& ov) {
+			// Remove only overlays whose id contains parent_id + "_part_"
+			return ov.id.find(parent_id + "_part_") != std::string::npos;
+		});
+
+		if(child_vec.empty()) {
+			get_overlays().erase(itc);
+		}
 	}
 
 	// If vector is now empty, erase the key from the map
