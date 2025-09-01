@@ -41,6 +41,18 @@
 #include <vector>
 #include <type_traits>
 
+#ifdef __cpp_concepts
+template<typename T>
+concept integer_type =
+	std::integral<T> &&
+	!std::same_as<T, char> &&
+	!std::same_as<T, char8_t> &&
+	!std::same_as<T, char16_t> &&
+	!std::same_as<T, char32_t> &&
+	!std::same_as<T, wchar_t> &&
+	!std::same_as<T, bool>;
+#endif
+
 /**
  * Variant for storing WML attributes.
  * The most efficient type is used when assigning a value. For instance,
@@ -187,7 +199,11 @@ public:
 	{
 		return apply_visitor([&comp]<typename V>(const V& value) {
 			if constexpr(std::equality_comparable_with<T, V>) {
-				return comp == value;
+				if constexpr(integer_type<T> && integer_type<V>) {
+					return std::cmp_equal(comp, value);
+				} else {
+					return comp == value;
+				}
 			} else {
 				return false;
 			}
