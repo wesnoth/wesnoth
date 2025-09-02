@@ -3024,10 +3024,13 @@ void display::draw_overlays_at(const map_location& loc)
 		texture tex;
 		if(ov.is_animated) {
 			const image::locator& frame = ov.anim.get_current_frame();
-			tex = image::get_texture(frame, image::HEXED);
-		} else { //old code
-			tex = ov.image.find("~NO_TOD_SHIFT()") == std::string::npos
-				? image::get_lighted_texture(ov.image, lt)
+			// Check the animation frame for the NO_TOD modifier, just like the static image.
+			tex = frame.get_modifications().find("NO_TOD_SHIFT") == std::string::npos
+				? image::get_lighted_texture(frame, lt)
+				: image::get_texture(frame, image::HEXED);
+		} else { // old code
+			tex = ov.image.find("~NO_TOD_SHIFT") == std::string::npos 
+				? image::get_lighted_texture(ov.image, lt)														
 				: image::get_texture(ov.image, image::HEXED);
 		} 
 
