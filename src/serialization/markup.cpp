@@ -200,7 +200,7 @@ static char parse_escape(std::string::const_iterator& beg, std::string::const_it
 static config parse_text_until(std::string::const_iterator& beg, std::string::const_iterator end, char close)
 {
 	// In practice, close will be one of < ' "
-	// Parsing will go until either close or eos, and will emit one or more text and character_entity tags.
+	// Parsing will go until either close or end of stream, and will emit one or more text and character_entity tags.
 	// However, recognized character entities will be collapsed into the text tags.
 	std::ostringstream s;
 	bool saw_newline = false;
@@ -209,7 +209,7 @@ static config parse_text_until(std::string::const_iterator& beg, std::string::co
 		if(*beg == '&') {
 			auto entity = parse_entity(beg, end);
 			if(beg == end) {
-				throw parse_error(position_info(beg) + ": unexpected eos after entity");
+				throw parse_error(position_info(beg) + ": unexpected end of stream after entity");
 			}
 			if(entity.has_attribute("code_point")) {
 				s << unicode_cast<std::string>(entity["code_point"].to_int());
@@ -289,7 +289,7 @@ static std::pair<std::string, std::string> parse_attribute(std::string::const_it
 			if(*beg == '&') {
 				auto entity = parse_entity(beg, end);
 				if(beg == end) {
-					throw parse_error(position_info(beg) + ": unexpected eos after entity");
+					throw parse_error(position_info(beg) + ": unexpected end of stream after entity");
 				}
 				if(entity.has_attribute("code_point")) {
 					s << unicode_cast<std::string>(entity["code_point"].to_int());
@@ -322,15 +322,15 @@ static void check_closing_tag(std::string::const_iterator& beg, std::string::con
 	std::size_t remaining = end - beg;
 	assert(remaining >= 2 && *beg == '<' && *(beg + 1) == '/');
 	if(remaining < match.size() + 3) {
-		throw parse_error(position_info(beg) + ": Unexpected eos in closing tag");
+		throw parse_error(position_info(beg) + ": Unexpected end of stream in closing tag");
 	}
 	beg += 2;
 	if(!std::equal(match.begin(), match.end(), beg)) {
-		throw parse_error(position_info(beg) + ": Mismatched closing tag");
+		throw parse_error(position_info(beg) + ": Mismatched closing tag " + std::string(match));
 	}
 	beg += match.size();
 	if(*beg != '>') {
-		throw parse_error(position_info(beg) + ": Unterminated closing tag");
+		throw parse_error(position_info(beg) + ": Unterminated closing tag " + std::string(match));
 	}
 	++beg;
 }
@@ -409,7 +409,7 @@ static std::pair<std::string, config> parse_tag(std::string::const_iterator& beg
 		} else if(isalnum(*beg) || *beg == '_') {
 			const auto& [key, value] = parse_attribute(beg, end, true);
 			if(beg == end) {
-				throw parse_error(position_info(beg) + ": unexpected eos following attribute");
+				throw parse_error(position_info(beg) + ": unexpected end of stream following attribute");
 			}
 			elem[key] = value;
 		}
