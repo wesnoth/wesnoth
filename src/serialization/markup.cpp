@@ -15,10 +15,13 @@
 #include "serialization/markup.hpp"
 
 #include "config.hpp"
+#include "formatter.hpp"
 #include "game_config.hpp"
 #include "gettext.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode_cast.hpp"  // for unicode_cast
+
+#include <algorithm>
 
 namespace markup {
 
@@ -89,6 +92,23 @@ It is possible to have empty text spans in some cases, for example given a run o
 or a character entity directly followed by a paragraph break.
 
 */
+
+static std::string::const_iterator text_start;
+
+static std::string position_info(std::string::const_iterator pos)
+{
+	// line numbers start at 1
+	int lines = std::count(text_start, pos, '\n') + 1;
+	// Find the start position of the line where the current position is.
+	// We do this by searching in reverse from cursor_position toward text_start.
+	int chars = 0;
+	while(*pos != '\n' && pos != text_start) {
+		pos--;
+		chars++;
+	}
+	return formatter() << "line " << lines << ", character " << chars;
+}
+
 static config parse_entity(std::string::const_iterator& beg, std::string::const_iterator end)
 {
 	config entity;
@@ -105,12 +125,16 @@ static config parse_entity(std::string::const_iterator& beg, std::string::const_
 				type = NAMED;
 				s << *beg;
 			} else {
-				throw parse_error("invalid entity: unexpected characters after '&', alphanumeric characters, '#' or '_' expected.");
+				throw parse_error("invalid entity at "
+				 + position_info(beg)
+				 + ": unexpected characters after '&', alphanumeric characters, '#' or '_' expected.");
 			}
 			break;
 		case NAMED:
 			if(!isalnum(*beg)) {
-				throw parse_error("invalid entity: non-alphanumeric characters after '&'.");
+				throw parse_error("invalid entity at "
+				 + position_info(beg)
+				 + ": non-alphanumeric characters after '&'.");
 			}
 			s << *beg;
 			break;
@@ -120,14 +144,18 @@ static config parse_entity(std::string::const_iterator& beg, std::string::const_
 			} else if(isdigit(*beg)) {
 				s << *beg;
 			} else {
-				throw parse_error("invalid entity: unexpected characters after '&#', numbers or 'x' expected.");
+				throw parse_error("invalid entity at "
+				 + position_info(beg)
+				 +": unexpected characters after '&#', numbers or 'x' expected.");
 			}
 			break;
 		case HEX:
 			if(isxdigit(*beg)) {
 				s << *beg;
 			} else {
-				throw parse_error("invalid entity: unexpected characters after '&#x', hexadecimal digits expected.");
+				throw parse_error("invalid entity at "
+				 + position_info(beg)
+				 + ": unexpected characters after '&#x', hexadecimal digits expected.");
 			}
 			break;
 		}
@@ -181,7 +209,7 @@ static config parse_text_until(std::string::const_iterator& beg, std::string::co
 		if(*beg == '&') {
 			auto entity = parse_entity(beg, end);
 			if(beg == end) {
-				throw parse_error("unexpected eos after entity");
+				throw parse_error(position_info(beg) + ": unexpected eos after entity");
 			}
 			if(entity.has_attribute("code_point")) {
 				s << unicode_cast<std::string>(entity["code_point"].to_int());
@@ -231,7 +259,7 @@ static std::pair<std::string, std::string> parse_attribute(std::string::const_it
 {
 	std::string attr = parse_name(beg, end), value;
 	if(attr.empty()) {
-		throw parse_error("missing attribute name");
+		throw parse_error(position_info(beg) + ": missing attribute name");
 	}
 	while(isspace(*beg)) ++beg;
 	if(*beg != '=') {
@@ -240,16 +268,16 @@ static std::pair<std::string, std::string> parse_attribute(std::string::const_it
 			// But in this path, we're now pointing to the character AFTER that.
 			--beg;
 			return {attr, value};
-		} else throw parse_error("attribute missing value in old-style tag");
+		} else throw parse_error(position_info(beg) + ": attribute missing value in old-style tag");
 	}
 	++beg;
 	while(isspace(*beg)) ++beg;
 	if(*beg == '\'' || *beg == '"') {
 		config res = parse_text_until(beg, end, *beg++);
 		if(res.has_child("character_entity")) {
-			throw parse_error("unsupported entity in attribute value");
+			throw parse_error(position_info(beg) + ": unsupported entity in attribute value");
 		} else if(res.all_children_count() > 1) {
-			throw parse_error("paragraph break in attribute value");
+			throw parse_error(position_info(beg) + ": paragraph break in attribute value");
 		}
 		if(auto t = res.optional_child("text")) {
 			value = t["text"].str();
@@ -261,12 +289,12 @@ static std::pair<std::string, std::string> parse_attribute(std::string::const_it
 			if(*beg == '&') {
 				auto entity = parse_entity(beg, end);
 				if(beg == end) {
-					throw parse_error("unexpected eos after entity");
+					throw parse_error(position_info(beg) + ": unexpected eos after entity");
 				}
 				if(entity.has_attribute("code_point")) {
 					s << unicode_cast<std::string>(entity["code_point"].to_int());
 				} else {
-					throw parse_error("unsupported entity in attribute value");
+					throw parse_error(position_info(beg) + ": unsupported entity in attribute value");
 				}
 			} else if(*beg == '\\') {
 				s << parse_escape(beg, end);
@@ -294,15 +322,15 @@ static void check_closing_tag(std::string::const_iterator& beg, std::string::con
 	std::size_t remaining = end - beg;
 	assert(remaining >= 2 && *beg == '<' && *(beg + 1) == '/');
 	if(remaining < match.size() + 3) {
-		throw parse_error("Unexpected eos in closing tag");
+		throw parse_error(position_info(beg) + ": Unexpected eos in closing tag");
 	}
 	beg += 2;
 	if(!std::equal(match.begin(), match.end(), beg)) {
-		throw parse_error("Mismatched closing tag");
+		throw parse_error(position_info(beg) + ": Mismatched closing tag");
 	}
 	beg += match.size();
 	if(*beg != '>') {
-		throw parse_error("Unterminated closing tag");
+		throw parse_error(position_info(beg) + ": Unterminated closing tag");
 	}
 	++beg;
 }
@@ -328,14 +356,14 @@ static config parse_tag_contents(std::string::const_iterator& beg, std::string::
 	}
 	if(res.has_attribute("text")) {
 		if(beg == end || *beg != '<' || (beg + 1) == end || *(beg + 1) != '/') {
-			throw parse_error("Extra text at the end of old-style tag with explicit 'text' attribute");
+			throw parse_error(position_info(beg) + ": Extra text at the end of old-style tag with explicit 'text' attribute");
 		}
 		check_closing_tag(beg, end, match);
 		return res;
 	} else if(res.attribute_count() > 0) {
 		config text = parse_text_until(beg, end, '<');
 		if(beg == end || *beg != '<' || (beg + 1) == end || *(beg + 1) != '/') {
-			throw parse_error("Extra text at the end of old-style tag with explicit 'text' attribute");
+			throw parse_error(position_info(beg) + ": Extra text at the end of old-style tag with explicit 'text' attribute");
 		}
 		if(text.all_children_count() == 1 && text.has_child("text")) {
 			res["text"] = text.mandatory_child("text")["text"];
@@ -348,7 +376,7 @@ static config parse_tag_contents(std::string::const_iterator& beg, std::string::
 	while(true) {
 		config text = parse_text_until(beg, end, '<');
 		if(beg == end || beg + 1 == end) {
-			throw parse_error("Missing closing tag");
+			throw parse_error(position_info(beg) + ": Missing closing tag");
 		}
 		res.append_children(text);
 		if(*(beg + 1) == '/') {
@@ -370,7 +398,7 @@ static std::pair<std::string, config> parse_tag(std::string::const_iterator& beg
 	++beg;
 	std::string tag_name = parse_name(beg, end);
 	if(tag_name.empty()) {
-		throw parse_error("missing tag name");
+		throw parse_error(position_info(beg) + ": missing tag name");
 	}
 	bool auto_closed = false;
 	config elem;
@@ -381,7 +409,7 @@ static std::pair<std::string, config> parse_tag(std::string::const_iterator& beg
 		} else if(isalnum(*beg) || *beg == '_') {
 			const auto& [key, value] = parse_attribute(beg, end, true);
 			if(beg == end) {
-				throw parse_error("unexpected eos following attribute");
+				throw parse_error(position_info(beg) + ": unexpected eos following attribute");
 			}
 			elem[key] = value;
 		}
@@ -403,6 +431,7 @@ static std::pair<std::string, config> parse_tag(std::string::const_iterator& beg
 config parse_text(const std::string &text)
 {
 	config res;
+	text_start = text.begin();
 	auto beg = text.begin(), end = text.end();
 	while(beg != end) {
 		if(*beg == '<') {
