@@ -46,10 +46,10 @@ function wesnoth.interface.remove_item(x, y, name, do_partial_string_match)
 	if name then
 		for i = #items,1,-1 do
 			local item = items[i]
-			if (item.image == name or item.halo == name or item.name == name) or 
-				(do_partial_string_match and 
-				((type(item.image) == "string" and string.find(item.image, name, 1, true)) or 
-				(type(item.halo) == "string" and string.find(item.halo, name, 1, true)) or 
+			if (item.image == name or item.halo == name or item.name == name) or
+				(do_partial_string_match and
+				((type(item.image) == "string" and string.find(item.image, name, 1, true)) or
+				(type(item.halo) == "string" and string.find(item.halo, name, 1, true)) or
 				(type(item.name) == "string" and string.find(item.name, name, 1, true))))
 				then
 				table.remove(items, i)

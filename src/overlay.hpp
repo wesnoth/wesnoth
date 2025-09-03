@@ -21,29 +21,31 @@
 
 struct overlay
 {
-
 	overlay(const std::string& img,
-			const std::string& halo_img,
-			const std::string& overlay_team_name,
-			const std::string& item_id,
-			const std::string& drawing_layer,
-			const bool fogged,
-			const bool multihex,
-			float submerge,
-			float item_z_order = 0)
+		const std::string& halo_img,
+		const std::string& overlay_team_name,
+		const std::string& item_id,
+		const std::string& drawing_layer,
+		const bool fogged,
+		const bool multihex,
+		float submerge,
+		float item_z_order = 0)
 		: image(img)
 		, halo(halo_img)
 		, team_name(overlay_team_name)
 		, name()
 		, id(item_id)
-		, drawing_layer(drawing_layer)
 		, halo_handle()
 		, visible_in_fog(fogged)
-		, multihex(multihex)
 		, submerge(submerge)
 		, z_order(item_z_order)
-	{}
-
+		, is_animated(false)
+		, multihex(multihex)
+		, is_child(false)
+		, child_hexes()
+		, drawing_layer(drawing_layer)
+	{
+	}
 
 	overlay(const config& cfg)
 		: image(cfg["image"])
@@ -51,13 +53,17 @@ struct overlay
 		, team_name(cfg["team_name"])
 		, name(cfg["name"].t_str())
 		, id(cfg["id"])
-		, drawing_layer(cfg["drawing_layer"])
 		, halo_handle()
 		, visible_in_fog(cfg["visible_in_fog"].to_bool())
-		, multihex(cfg["multihex"].to_bool())
 		, submerge(cfg["submerge"].to_double(0))
 		, z_order(cfg["z_order"].to_double(0))
-	{}
+		, is_animated(false)
+		, multihex(cfg["multihex"].to_bool())
+		, is_child(false)
+		, child_hexes()
+		, drawing_layer(cfg["drawing_layer"])
+	{
+	}
 
 	std::string image;
 	std::string halo;
@@ -81,6 +87,4 @@ struct overlay
 
 	// --- drawing layer support ---
 	std::string drawing_layer;
-
-
 };

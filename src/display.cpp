@@ -135,7 +135,7 @@ namespace
 		{
 			return src_w > 0 && src_h > 0;
 		}
-	};	
+	};
 
 	// Constants for hex geometry
 	static constexpr int HEX_W = 72; // hex width in px
@@ -317,7 +317,7 @@ void display::add_overlay(const map_location& loc, overlay&& ov)
 			std::vector<overlay>& overlays = get_overlays()[loc];
 			auto pos = std::find_if(overlays.begin(), overlays.end(),
 				[new_order = ov.z_order](const overlay& existing) { return existing.z_order > new_order; });
-			auto inserted = overlays.emplace(pos, std::move(ov));
+			overlays.emplace(pos, std::move(ov));
 			return;
 		} else {
 			if(!ov.image.empty()) {
@@ -3032,7 +3032,7 @@ void display::draw_overlays_at(const map_location& loc)
 			tex = ov.image.find("~NO_TOD_SHIFT") == std::string::npos 
 				? image::get_lighted_texture(ov.image, lt)														
 				: image::get_texture(ov.image, image::HEXED);
-		} 
+		}
 
 		// Base submerge value for the terrain at this location
 		const double ter_sub = context().map().get_terrain_info(loc).unit_submerge();
