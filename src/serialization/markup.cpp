@@ -19,6 +19,7 @@
 #include "game_config.hpp"
 #include "gettext.hpp"
 #include "serialization/string_utils.hpp"
+#include "serialization/unicode.hpp"
 #include "serialization/unicode_cast.hpp"  // for unicode_cast
 
 #include <algorithm>
@@ -97,16 +98,14 @@ static std::string::const_iterator text_start;
 
 static std::string position_info(std::string::const_iterator pos)
 {
-	// line numbers start at 1
+	// line numbers start from 1
 	int lines = std::count(text_start, pos, '\n') + 1;
+	// store error location
+	auto error_pos = pos;
 	// Find the start position of the line where the current position is.
 	// We do this by searching in reverse from cursor_position toward text_start.
-	int chars = 0;
-	while(*pos != '\n' && pos != text_start) {
-		pos--;
-		chars++;
-	}
-	return formatter() << "line " << lines << ", character " << chars;
+	for(;pos != text_start && *pos != '\n'; pos--);
+	return formatter() << "line " << lines << ", character " << utf8::size(pos, error_pos);
 }
 
 static config parse_entity(std::string::const_iterator& beg, std::string::const_iterator end)

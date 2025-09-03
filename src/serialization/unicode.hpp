@@ -52,6 +52,7 @@ namespace utf8 {
 
 	/** Length in characters of a UTF-8 string. */
 	std::size_t size(std::string_view str);
+	std::size_t size(const std::string::const_iterator& start, const std::string::const_iterator& end);
 
 	/** Insert a UTF-8 string at the specified position. */
 	std::string& insert(std::string& str, const std::size_t pos, const std::string& insert) ;
