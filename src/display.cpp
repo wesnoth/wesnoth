@@ -2747,7 +2747,7 @@ void display::draw_overlays_at(const map_location& loc)
 				? image::get_lighted_texture(frame, lt)
 				: image::get_texture(frame, image::HEXED);
 		} else { // static image
-			tex = ov.image.find("~NO_TOD_SHIFT") == std::string::npos 
+			tex = ov.image.find("~NO_TOD_SHIFT") == std::string::npos
 				? image::get_lighted_texture(ov.image, lt)
 				: image::get_texture(ov.image, image::HEXED);
 		}
