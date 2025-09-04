@@ -115,17 +115,89 @@ static int get_zoom_levels_index(unsigned int zoom_level)
 	return std::distance(zoom_levels.begin(), iter);
 }
 
+namespace
+{
+
+	// Build animation (or static locator) from a string
+	static animated<image::locator> make_anim_from_string(const std::string& str)
+	{
+		if(str.empty()) {
+			return animated<image::locator>();
+		}
+
+		animated<image::locator>::anim_description desc;
+		std::vector<std::string> items = utils::square_parenthetical_split(str, ',');
+
+		// If it's a multi-frame animation, or has a colon for a single frame with duration.
+		if(items.size() > 1 || str.find(':') != std::string::npos) {
+			for(const auto& item : items) {
+				auto parts = utils::split(item, ':');
+				if(!parts.empty()) {
+					std::string frame_img = parts.front();
+					int time_ms = (parts.size() > 1) ? std::stoi(parts.back()) : 100; // Default to 100ms
+					desc.push_back(animated<image::locator>::frame_description(time_ms, image::locator(frame_img)));
+				}
+			}
+		} else {
+			// Handle single frame image.
+			desc.push_back(animated<image::locator>::frame_description(100, image::locator(str)));
+		}
+
+		// create the animated object.
+		animated<image::locator> anim(desc);
+		anim.start_animation(std::chrono::milliseconds{0}, true);
+		return anim;
+	}
+
+} // namespace
+
 void display::add_overlay(const map_location& loc, overlay&& ov)
 {
-	std::vector<overlay>& overlays = get_overlays()[loc];
-	auto pos = std::find_if(overlays.begin(), overlays.end(),
-		[new_order = ov.z_order](const overlay& existing) { return existing.z_order > new_order; });
+	// Assign halo and return
+	if(!ov.halo.empty()) {
+		std::vector<overlay>& overlays = get_overlays()[loc];
+		auto pos = std::find_if(overlays.begin(), overlays.end(),
+			[new_order = ov.z_order](const overlay& existing) { return existing.z_order > new_order; });
 
-	auto inserted = overlays.emplace(pos, std::move(ov));
-	if(const std::string& halo = inserted->halo; !halo.empty()) {
+		auto inserted = overlays.emplace(pos, std::move(ov));
 		auto [x, y] = get_location_rect(loc).center();
-		inserted->halo_handle = halo_man_.add(x, y, halo, loc);
+		inserted->halo_handle = halo_man_.add(x, y, inserted->halo, loc);
+		return;
 	}
+
+	// --- 1. Parse Image String to tease out any animation ---
+	std::vector<std::pair<std::string, int>> frames;
+	std::vector<std::string> items = utils::square_parenthetical_split(ov.image, ',');
+	bool is_anim = false;
+
+	if(items.size() > 1 || ov.image.find(':') != std::string::npos) {
+		// This is an animation string. Reform it into a series of frames, 1 per image. 
+		is_anim = true;
+		for(const auto& item : items) {
+			auto parts = utils::split(item, ':');
+			if(!parts.empty()) {
+				std::string frame_img = parts.front();
+				int time_ms = (parts.size() > 1) ? std::stoi(parts.back()) : 100;
+				frames.emplace_back(frame_img, time_ms);
+			}
+		}
+	} else {
+		// Assign single, static image and return
+		std::vector<overlay>& overlays = get_overlays()[loc];
+		auto pos = std::find_if(overlays.begin(), overlays.end(),
+			[new_order = ov.z_order](const overlay& existing) { return existing.z_order > new_order; });
+		overlays.emplace(pos, std::move(ov));
+		return;
+	}
+
+	// Assign animation
+	std::vector<overlay>& overlays = get_overlays()[loc];
+	auto pos = std::lower_bound(overlays.begin(), overlays.end(), ov.z_order,
+		[](const overlay& existing, int new_order) { return existing.z_order < new_order; });
+	ov.anim = make_anim_from_string(ov.image);
+	ov.is_animated = is_anim;
+	overlays.emplace(pos, std::move(ov));
+
 }
 
 void display::remove_overlay(const map_location& loc)
@@ -2667,9 +2739,18 @@ void display::draw_overlays_at(const map_location& loc)
 			}
 		}
 
-		texture tex = ov.image.find("~NO_TOD_SHIFT()") == std::string::npos
-			? image::get_lighted_texture(ov.image, lt)
-			: image::get_texture(ov.image, image::HEXED);
+		// Apply Time-of-Day lighting to the overlay image and crop it to hex shape
+		texture tex;
+		if(ov.is_animated) {
+			const image::locator& frame = ov.anim.get_current_frame();
+			tex = frame.get_modifications().find("NO_TOD_SHIFT") == std::string::npos
+				? image::get_lighted_texture(frame, lt)
+				: image::get_texture(frame, image::HEXED);
+		} else { // static image
+			tex = ov.image.find("~NO_TOD_SHIFT") == std::string::npos 
+				? image::get_lighted_texture(ov.image, lt)
+				: image::get_texture(ov.image, image::HEXED);
+		}
 
 		// Base submerge value for the terrain at this location
 		const double ter_sub = context().map().get_terrain_info(loc).unit_submerge();
@@ -3041,14 +3122,27 @@ void display::invalidate_animations()
 	// There are timing issues with this, but i'm not touching it.
 	new_animation_frame();
 	animate_map_ = prefs::get().animate_map();
-	if(animate_map_) {
-		for(const map_location& loc : get_visible_hexes()) {
-			if(shrouded(loc))
-				continue;
+	for(const map_location& loc : get_visible_hexes()) {
+		if(shrouded(loc))
+			continue;
+
+		// terrain animation
+		if(animate_map_) {
 			if(builder_->update_animation(loc)) {
 				invalidate(loc);
 			} else {
 				invalidate_animations_location(loc);
+			}
+		}
+
+		// overlay animation (not halos)
+		for(auto& ov : get_overlays()[loc]) {
+			if(ov.is_animated) {
+				bool changed = ov.anim.need_update();
+				ov.anim.update_last_draw_time();
+				if(changed) {
+					invalidate(loc);
+				}
 			}
 		}
 	}
