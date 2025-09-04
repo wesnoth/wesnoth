@@ -627,7 +627,7 @@ static surface get_hexed(const locator& i_locator, bool skip_cache = false)
 		// if the image is too large in either dimension, crop it.
 		if(image->w > mask->w || image->h >= mask->h) {
 			// fill the crop surface with transparency
-			SDL_FillRect(fit, nullptr, SDL_MapRGBA(fit->format, 128, 128, 128, 0)); // changed rgb input from 0,0,0 to 128,128,128 .. needed to avoid lightening or darkening
+			SDL_FillRect(fit, nullptr, SDL_MapRGBA(fit->format, 0, 0, 0, 0));
 			// crop the input image to hexmask dimensions
 			int cutx = std::max(0, image->w - mask->w) / 2;
 			int cuty = std::max(0, image->h - mask->h) / 2;
@@ -640,7 +640,11 @@ static surface get_hexed(const locator& i_locator, bool skip_cache = false)
 		int placex = (mask->w - image->w) / 2;
 		int placey = (mask->h - image->h) / 2;
 		rect dst = {placex, placey, image->w, image->h};
+		SDL_BlendMode src_blend;
+		SDL_GetSurfaceBlendMode(image, &src_blend);
+		SDL_SetSurfaceBlendMode(image, SDL_BLENDMODE_NONE);
 		sdl_blit(image, nullptr, fit, &dst);
+		SDL_SetSurfaceBlendMode(image, src_blend);
 		image = fit;
 	}
 	// hex cut tiles, also check and cache if empty result
