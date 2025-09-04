@@ -85,12 +85,8 @@ std::size_t index(std::string_view str, const std::size_t index)
 std::size_t size(std::string_view str)
 {
 	std::size_t chr, i = 0, len = str.size();
-	try {
-		for (chr = 0; i < len; ++chr) {
-			i += byte_size_from_utf8_first(str[i]);
-		}
-	} catch(const invalid_utf8_exception&) {
-		ERR_GENERAL << "Invalid UTF-8 string.";
+	for (chr = 0; i < len; ++chr) {
+		i += byte_size_from_utf8_first(str[i]);
 	}
 	return chr;
 }
@@ -99,12 +95,8 @@ std::size_t size(const std::string::const_iterator& start, const std::string::co
 {
 	std::size_t count;
 	std::string::const_iterator pos = start;
-	try {
-		for (count = 0; pos < end; ++count) {
-			pos += byte_size_from_utf8_first(*pos);
-		}
-	} catch(const invalid_utf8_exception&) {
-		ERR_GENERAL << "Invalid UTF-8 string.";
+	for (count = 0; pos < end; ++count) {
+		pos += byte_size_from_utf8_first(*pos);
 	}
 	return count;
 }
