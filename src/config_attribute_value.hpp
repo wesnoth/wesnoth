@@ -33,10 +33,26 @@
 
 #include <chrono>
 #include <climits>
+#ifdef __cpp_concepts
+#include <concepts>
+#endif
 #include <iosfwd>
 #include <string>
+#include <utility>
 #include <vector>
 #include <type_traits>
+
+#ifdef __cpp_concepts
+template<typename T>
+concept integer_type =
+	std::integral<T> &&
+	!std::same_as<T, char> &&
+	!std::same_as<T, char8_t> &&
+	!std::same_as<T, char16_t> &&
+	!std::same_as<T, char32_t> &&
+	!std::same_as<T, wchar_t> &&
+	!std::same_as<T, bool>;
+#endif
 
 /**
  * Variant for storing WML attributes.
@@ -178,6 +194,23 @@ public:
 		return !operator==(other);
 	}
 
+#ifdef __cpp_concepts
+	template<typename T>
+	bool operator==(const T& comp) const
+	{
+		return apply_visitor([&comp]<typename V>(const V& value) {
+			if constexpr(std::equality_comparable_with<T, V>) {
+				if constexpr(integer_type<T> && integer_type<V>) {
+					return std::cmp_equal(comp, value);
+				} else {
+					return comp == value;
+				}
+			} else {
+				return false;
+			}
+		});
+	}
+#else
 	bool operator==(bool comp) const
 	{
 		const bool has_bool =
@@ -189,7 +222,7 @@ public:
 	template<typename T>
 	bool operator==(const T& comp) const
 	{
-		if constexpr(std::is_convertible_v<T, std::string>) {
+		if constexpr(std::is_constructible_v<std::string, T>) {
 			config_attribute_value v;
 			v = comp;
 			return *this == v;
@@ -197,6 +230,7 @@ public:
 			return utils::holds_alternative<T>(value_) && this->to(T{}) == comp;
 		}
 	}
+#endif
 
 	template<typename T>
 	bool friend operator!=(const config_attribute_value& val, const T& str)
