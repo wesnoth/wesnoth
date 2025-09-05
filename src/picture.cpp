@@ -640,7 +640,11 @@ static surface get_hexed(const locator& i_locator, bool skip_cache = false)
 		int placex = (mask->w - image->w) / 2;
 		int placey = (mask->h - image->h) / 2;
 		rect dst = {placex, placey, image->w, image->h};
+		SDL_BlendMode src_blend;
+		SDL_GetSurfaceBlendMode(image, &src_blend);
+		SDL_SetSurfaceBlendMode(image, SDL_BLENDMODE_NONE);
 		sdl_blit(image, nullptr, fit, &dst);
+		SDL_SetSurfaceBlendMode(image, src_blend);
 		image = fit;
 	}
 	// hex cut tiles, also check and cache if empty result
