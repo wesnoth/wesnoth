@@ -171,7 +171,7 @@ void display::add_overlay(const map_location& loc, overlay&& ov)
 	bool is_anim = false;
 
 	if(items.size() > 1 || ov.image.find(':') != std::string::npos) {
-		// This is an animation string. Reform it into a series of frames, 1 per image. 
+		// This is an animation string. Reform it into a series of frames, 1 per image.
 		is_anim = true;
 		for(const auto& item : items) {
 			auto parts = utils::split(item, ':');
