@@ -211,7 +211,16 @@ std::string make_link(const std::string& text, const std::string& dst);
 /** Thrown when the help system fails to parse something. */
 struct parse_error : public game::error
 {
-	parse_error(const std::string& msg) : game::error(msg) {}
+	parse_error(const std::string::const_iterator& error_loc, const std::string& error_msg)
+		: game::error(error_msg)
+		, error_position_(error_loc)
+	{ }
+
+public:
+	std::string::const_iterator error_location() { return error_position_; }
+
+private:
+	std::string::const_iterator error_position_;
 };
 
 /**

@@ -72,27 +72,29 @@ std::size_t index(std::string_view str, const std::size_t index)
 	// chr counts characters, i is the codepoint index
 	// remark: several functions rely on the fallback to str.length()
 	unsigned int i = 0, len = str.size();
-	try {
-		for (unsigned int chr=0; chr<index && i<len; ++chr) {
-			i += byte_size_from_utf8_first(str[i]);
-		}
-	} catch(const invalid_utf8_exception&) {
-		ERR_GENERAL << "Invalid UTF-8 string.";
+	for(unsigned int chr = 0; chr < index && i < len; ++chr) {
+		i += byte_size_from_utf8_first(str[i]);
 	}
 	return i;
 }
 
 std::size_t size(std::string_view str)
 {
-	unsigned int chr, i = 0, len = str.size();
-	try {
-		for (chr=0; i<len; ++chr) {
-			i += byte_size_from_utf8_first(str[i]);
-		}
-	} catch(const invalid_utf8_exception&) {
-		ERR_GENERAL << "Invalid UTF-8 string.";
+	std::size_t chr, i = 0, len = str.size();
+	for(chr = 0; i < len; ++chr) {
+		i += byte_size_from_utf8_first(str[i]);
 	}
 	return chr;
+}
+
+std::size_t size(const std::string::const_iterator& start, const std::string::const_iterator& end)
+{
+	std::size_t count;
+	std::string::const_iterator pos = start;
+	for(count = 0; pos < end; ++count) {
+		pos += byte_size_from_utf8_first(*pos);
+	}
+	return count;
 }
 
 std::string& insert(std::string& str, const std::size_t pos, const std::string& insert)
