@@ -72,7 +72,7 @@ struct ability_list_defines
 
 	static const std::set<std::string>& all_weapon_tags()
 	{
-		static std::set<std::string> tags{attacks, berserk, chance_to_hit, damage, damage_type, defense, disable, drains, firststrike, heal_on_hit, petrifies, plague, poison, slow, swarm};
+		static std::set<std::string> tags{attacks, berserk, chance_to_hit, damage, damage_type, disable, drains, firststrike, heal_on_hit, petrifies, plague, poison, slow, swarm};
 		return tags;
 	}
 };
