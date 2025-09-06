@@ -36,6 +36,7 @@ struct ability_list_defines
 	static constexpr const char* const damage_type = "damage_type";
 	static constexpr const char* const defense = "defense";
 	static constexpr const char* const disable = "disable";
+	static constexpr const char* const dodge_or_parry = "dodge_or_parry";
 	static constexpr const char* const drains = "drains";
 	static constexpr const char* const firststrike = "firststrike";
 	static constexpr const char* const heal_on_hit = "heal_on_hit";
@@ -49,12 +50,12 @@ struct ability_list_defines
 
 	static const std::set<std::string>& weapon_number_tags()
 	{
-		static std::set<std::string> tags{attacks, damage, defense, chance_to_hit, berserk, swarm, drains, heal_on_hit};
+		static std::set<std::string> tags{attacks, damage, dodge_or_parry, chance_to_hit, berserk, swarm, drains, heal_on_hit};
 		return tags;
 	}
 	static const std::set<std::string>& weapon_inverse_affect_tags()
 	{
-		static std::set<std::string> tags{defense};
+		static std::set<std::string> tags{dodge_or_parry};
 		return tags;
 	}
 
@@ -66,7 +67,7 @@ struct ability_list_defines
 
 	static const std::set<std::string>& ability_value_tags()
 	{
-		static std::set<std::string> tags{resistance, leadership, heals, regenerate, illuminates};
+		static std::set<std::string> tags{defense, resistance, leadership, heals, regenerate, illuminates};
 		return tags;
 	}
 
@@ -78,7 +79,7 @@ struct ability_list_defines
 
 	static const std::set<std::string>& all_weapon_tags()
 	{
-		static std::set<std::string> tags{attacks, berserk, chance_to_hit, damage, damage_type, defense, disable, drains, firststrike, heal_on_hit, petrifies, plague, poison, slow, swarm};
+		static std::set<std::string> tags{attacks, berserk, chance_to_hit, damage, damage_type, disable, dodge_or_parry, drains, firststrike, heal_on_hit, petrifies, plague, poison, slow, swarm};
 		return tags;
 	}
 };
