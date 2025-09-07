@@ -489,6 +489,30 @@ private:
 };
 
 /**
+ * PAD modification.
+ * Expands the image by adding transparent pixels to its top, right, bottom, and left sides.
+ */
+class pad_modification : public modification
+{
+public:
+	pad_modification(int top, int right, int bottom, int left)
+		: top_{top}
+		, right_{right}
+		, bottom_{bottom}
+		, left_{left}
+	{
+	}
+
+	virtual void operator()(surface& src) const override;
+
+private:
+	int top_;
+	int right_;
+	int bottom_;
+	int left_;
+};
+
+/**
  * Opacity (O) modification
  */
 class o_modification : public modification
