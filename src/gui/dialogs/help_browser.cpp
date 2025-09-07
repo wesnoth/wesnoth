@@ -240,11 +240,11 @@ void help_browser::show_topic(std::string topic_id, bool add_to_history, bool re
 		find_widget<label>("topic_title").set_label(topic->title);
 		try {
 			find_widget<rich_label>("topic_text").set_dom(topic->text.parsed_text());
-		} catch(const game::error& err) {
+		} catch(const markup::parse_error& e) {
 			find_widget<rich_label>("topic_text").set_label(
 				markup::span_color(font::BAD_COLOR,
 					"Error parsing markup in help page with ID: " + topic->id + "\n"
-					+ font::escape_text(err.message)));
+					+ font::escape_text(e.message)));
 		}
 
 		invalidate_layout();
