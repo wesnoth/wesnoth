@@ -147,7 +147,10 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 	drains = !opp.get_state("undrainable") && weapon->has_special_or_ability("drains");
 	petrifies = !opp.get_state("unpetrifiable") && weapon->has_special_or_ability("petrifies");
 	poisons = !opp.get_state("unpoisonable") && weapon->has_special_or_ability("poison") && !opp.get_state(unit::STATE_POISONED);
-	rounds = weapon->get_specials_and_abilities("berserk").highest("value", 1).first;
+	std::map<double, active_ability_list> berserk_list_map = weapon->map_ability_list(weapon->get_specials_and_abilities("berserk"));
+	for(auto base : berserk_list_map) {
+		rounds = (base.second).highest("value", 1).first;
+	}
 
 	firststrike = weapon->has_special_or_ability("firststrike");
 
@@ -163,6 +166,11 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 		opp.undead_variation() != "null" && !resources::gameboard->map().is_village(opp_loc);
 
 	if(plagues) {
+		std::map<double, active_ability_list> plague_type_list_map = weapon->map_ability_list(plague_specials);
+		for(std::map<double, active_ability_list>::reverse_iterator it = plague_type_list_map.rbegin(); it != plague_type_list_map.rend(); it++) {
+			plague_specials = it->second;
+			break;
+		}
 		plague_type = plague_specials.front().ability_cfg()["type"].str();
 
 		if(plague_type.empty()) {

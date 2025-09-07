@@ -807,6 +807,8 @@
 0 tunnel_source_teleport_unit_fail
 0 tunnel_source_teleport_unit_succeed
 # attacks ability tests
+0 attacks_priority_high
+0 attacks_priority_low
 9 attacks_negative_value
 0 attacks_zero
 0 attacks_add
@@ -847,6 +849,8 @@
 0 attacks_overwrite_specials_mixed
 # berserk ability tests
 0 berserk_negative_value
+0 berserk_high_priority
+0 berserk_low_priority
 0 berserk_zero
 0 berserk_add
 0 berserk_add_divide
@@ -882,6 +886,8 @@
 0 berserk_overwrite_specials_mixed
 0 berserk_different_values
 # chance_to_hit ability tests
+0 chance_to_hit_priority_high
+0 chance_to_hit_priority_low
 0 chance_to_hit_negative_value
 0 chance_to_hit_add
 0 chance_to_hit_add_cumulative
@@ -917,6 +923,8 @@
 0 chance_to_hit_overwrite_specials_two_one_side
 0 chance_to_hit_overwrite_specials_mixed
 # damage ability tests
+0 damage_priority_high
+0 damage_priority_low
 0 damage_negative_value
 0 damage_zero
 0 damage_add
@@ -1019,6 +1027,8 @@
 0 disable_affect_enemies
 0 disable_affect_everybody
 # drains ability tests
+0 drains_priority_high
+0 drains_priority_low
 0 drains_negative_value
 0 drains_zero
 0 drains_add
@@ -1068,6 +1078,8 @@
 0 firststrike_affect_enemies
 0 firststrike_affect_everybody
 # heal_on_hit ability tests
+0 heal_on_hit_priority_high
+0 heal_on_hit_priority_low
 0 heal_on_hit_negative_value
 0 heal_on_hit_zero
 0 heal_on_hit_add
@@ -1115,6 +1127,8 @@
 0 petrifies_affect_everybody
 # plague tests
 0 plague_ability
+0 plague_ability_high_priority
+0 plague_ability_low_priority
 0 plague_affect_allies
 0 plague_affect_allies_distant
 0 plague_affect_self_no
@@ -1153,6 +1167,8 @@
 0 swarm_attacks_min_negative
 0 swarm_attacks_min_wfl
 0 swarm_min_max_zero
+0 swarm_min_max_zero_high_priority
+0 swarm_min_max_zero_low_priority
 0 swarm_no_min_no_max
 0 swarm_overwrite_specials_both_sides
 0 swarm_overwrite_specials_mixed
