@@ -1239,7 +1239,6 @@ attack_type::specials_context_t::specials_context_t(attack_type::specials_contex
 }
 
 
-
 namespace { // Helpers for attack_type::special_active()
 
 	/**
@@ -1793,7 +1792,7 @@ namespace
 		bool no_value_weapon_abilities_check =  abilities_list::no_weapon_number_tags().count(tag_name) != 0 || abilities_list::ability_no_value_tags().count(tag_name) != 0;
 		if(filter.has_attribute("cumulative") && no_value_weapon_abilities_check)
 			return false;
-		if(filter.has_attribute("value") && no_value_weapon_abilities_check)
+		if(filter.has_attribute("value") && no_value_weapon_abilities_check && tag_name != "berserk")
 			return false;
 		if(filter.has_attribute("add") && no_value_weapon_abilities_check)
 			return false;
@@ -1802,6 +1801,8 @@ namespace
 		if(filter.has_attribute("multiply") && no_value_weapon_abilities_check)
 			return false;
 		if(filter.has_attribute("divide") && no_value_weapon_abilities_check)
+			return false;
+		if(filter.has_attribute("priority") && no_value_weapon_abilities_check)
 			return false;
 
 		bool all_engine =  abilities_list::no_weapon_number_tags().count(tag_name) != 0 || abilities_list::weapon_number_tags().count(tag_name) != 0 || abilities_list::ability_value_tags().count(tag_name) != 0 || abilities_list::ability_no_value_tags().count(tag_name) != 0;
@@ -1864,6 +1865,9 @@ namespace
 			return false;
 
 		if(!string_matches_if_present(filter, cfg, "active_on", "both"))
+			return false;
+
+		if(!double_matches_if_present(filter, cfg, "priority"))
 			return false;
 
 		//value, add, sub multiply and divide check values of attribute used in engines abilities(default value of 'value' can be checked when not specified)

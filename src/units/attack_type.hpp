@@ -275,6 +275,12 @@ private:
 	 * @param ab the ability/special checked
 	 */
 	bool overwrite_special_checking(active_ability_list& overwriters, const unit_ability_t& ab) const;
+	/** Return the special weapon values, considering specials.
+	 * @param abil_list The list of special checked.
+	 * @param base_value The value modified or not by function.
+	 * @param is_cth if true, value must be between 0 and 100.
+	 */
+	std::pair<int, double> get_composites_values(const active_ability_list& abil_list, double base_value, bool is_cth = false) const;
 
 	bool special_active(const unit_ability_t& ab, AFFECTS whom) const;
 
