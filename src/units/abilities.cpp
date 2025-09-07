@@ -1372,15 +1372,27 @@ std::pair<std::string, std::set<std::string>> attack_type::damage_types() const
  */
 double attack_type::modified_damage() const
 {
-	double damage_value = unit_abilities::effect(get_specials_and_abilities("damage"), damage(), shared_from_this()).get_composite_double_value();
-	return damage_value;
+	return unit_abilities::effect(get_specials_and_abilities("damage"), damage(), shared_from_this()).get_composite_double_value();
 }
 
 int attack_type::modified_chance_to_hit(int cth, bool special_only) const
 {
+	const map_location loc = self_ ? self_->get_location() : self_loc_;
 	int parry = other_attack_ ? other_attack_->parry() : 0;
 	unit_ability_list chance_to_hit_list = special_only ? get_specials("chance_to_hit") : get_specials_and_abilities("chance_to_hit");
 	cth = std::clamp(cth + accuracy_ - parry, 0, 100);
+	unit_ability_list base_list(loc);
+	utils::erase_if(chance_to_hit_list, [&](const unit_ability& i) {
+		if((*i.ability_cfg)["base_stat"].to_bool()) {
+			base_list.emplace_back(i);
+		}
+		return (*i.ability_cfg)["base_stat"].to_bool();
+	});
+	//proceed to 'base_stat' calculation if base_list no empty.
+	if(!base_list.empty()) {
+		cth = std::clamp(composite_value(base_list, cth), 0, 100);
+	}
+	//use modified cth like base by traditionnal [chance_to_hit] and return final result.
 	return composite_value(chance_to_hit_list, cth);
 }
 
