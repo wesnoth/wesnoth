@@ -791,14 +791,12 @@ std::pair<std::string, std::set<std::string>> attack_type::damage_types() const
  */
 double attack_type::modified_damage() const
 {
-	double damage_value = unit_abilities::effect(get_specials_and_abilities("damage"), damage(), shared_from_this()).get_composite_double_value();
-	return damage_value;
+	return unit_abilities::effect(get_specials_and_abilities("damage"), damage(), shared_from_this()).get_composite_double_value();
 }
 
 int attack_type::modified_chance_to_hit(int cth) const
 {
 	int parry = other_attack_ ? other_attack_->parry() : 0;
-	active_ability_list chance_to_hit_list = get_specials_and_abilities("chance_to_hit");
 	cth = std::clamp(cth + accuracy_ - parry, 0, 100);
-	return composite_value(chance_to_hit_list, cth);
+	return composite_value(get_specials_and_abilities("chance_to_hit"), cth);
 }
