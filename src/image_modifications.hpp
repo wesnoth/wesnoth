@@ -489,6 +489,35 @@ private:
 };
 
 /**
+ * Offset (OFFSET) modification.
+ * Moves the image by (dx, dy), by expanding some sides with transparent pixels.
+ */
+class offset_modification : public modification
+{
+public:
+	offset_modification(int dx, int dy)
+		: dx_(dx)
+		, dy_(dy)
+	{
+	}
+
+	virtual void operator()(surface& src) const override;
+
+	int get_dx() const
+	{
+		return dx_;
+	}
+	int get_dy() const
+	{
+		return dy_;
+	}
+
+private:
+	int dx_;
+	int dy_;
+};
+
+/**
  * Opacity (O) modification
  */
 class o_modification : public modification

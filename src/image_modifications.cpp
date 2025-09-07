@@ -448,6 +448,32 @@ void xbrz_modification::operator()(surface& src) const
 	}
 }
 
+void offset_modification::operator()(surface& src) const
+{
+	if(!src)
+		return;
+
+	// Compute new dimensions, doubling (* 2) the growth to compensate for center anchoring
+	int new_w = src->w + std::abs(dx_) * 2;
+	int new_h = src->h + std::abs(dy_) * 2;
+
+	// Make a new transparent surface
+	surface shifted(new_w, new_h);
+
+	// The destination rectangle's position is now just the absolute offset
+	SDL_Rect dstrect;
+	dstrect.x = (dx_ >= 0) ? dx_ * 2 : 0;
+	dstrect.y = (dy_ >= 0) ? dy_ * 2 : 0;
+	dstrect.w = src->w;
+	dstrect.h = src->h;
+
+	// Blit original into new
+	SDL_BlitSurface(src, nullptr, shifted, &dstrect);
+
+	// Replace source
+	src = shifted;
+}
+
 /*
  * The Opacity IPF doesn't seem to work with surface-wide alpha and instead needs per-pixel alpha.
  * If this is needed anywhere else it can be moved back to sdl/utils.*pp.
@@ -1065,6 +1091,22 @@ REGISTER_MOD_PARSER(XBRZ, args)
 {
 	const int factor = std::clamp(utils::from_chars<int>(args).value_or(1), 1, 6);
 	return std::make_unique<xbrz_modification>(factor);
+}
+
+// Offset
+REGISTER_MOD_PARSER(OFFSET, args)
+{
+	const auto params = utils::split_view(args, ',');
+
+	if(params.size() != 2) {
+		ERR_DP << "~OFFSET() requires exactly 2 arguments";
+		return nullptr;
+	}
+
+	const int dx = utils::from_chars<int>(params[0]).value_or(0);
+	const int dy = utils::from_chars<int>(params[1]).value_or(0);
+
+	return std::make_unique<offset_modification>(dx, dy);
 }
 
 // Gaussian-like blur
