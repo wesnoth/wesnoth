@@ -114,8 +114,9 @@ public:
 	/** Return the special weapon value, considering specials.
 	 * @param abil_list The list of special checked.
 	 * @param base_value The value modified or not by function.
+	 * @param base_usable if true, check if 'base_stat' is used.
 	 */
-	int composite_value(const unit_ability_list& abil_list, int base_value) const;
+	int composite_value(const unit_ability_list& abil_list, int base_value, bool base_usable = false) const;
 	/** Returns list for weapon like abilities for each ability type. */
 	unit_ability_list get_weapon_ability(const std::string& ability) const;
 	/**
