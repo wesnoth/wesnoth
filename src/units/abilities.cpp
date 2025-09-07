@@ -120,6 +120,7 @@ unit_ability_t::unit_ability_t(std::string tag, config cfg, bool inside_attack)
 	, in_specials_tag_(inside_attack)
 	, active_on_(active_on_t::both)
 	, apply_to_(apply_to_t::self)
+	, priority_(cfg["priority"].to_double(0.00))
 	, cfg_(std::move(cfg))
 	, currently_checked_(false)
 {
@@ -1678,13 +1679,13 @@ namespace
 		if(filter.has_attribute("apply_to")  && tag_name != "resistance" && abilities_check)
 			return false;
 
-		if(filter.has_attribute("overwrite_specials") && abilities_list::weapon_number_tags().count(tag_name) == 0)
+		if(filter.has_attribute("overwrite_specials") && abilities_list::weapon_math_tags().count(tag_name) == 0)
 			return false;
 
-		bool no_value_weapon_abilities_check =  abilities_list::no_weapon_number_tags().count(tag_name) != 0 || abilities_list::ability_no_value_tags().count(tag_name) != 0;
-		if(filter.has_attribute("cumulative") && no_value_weapon_abilities_check)
+		bool no_value_weapon_abilities_check =  abilities_list::no_weapon_math_tags().count(tag_name) != 0 || abilities_list::ability_no_value_tags().count(tag_name) != 0;
+		if(filter.has_attribute("cumulative") && no_value_weapon_abilities_check && (tag_name != "swarm" || tag_name != "berserk"))
 			return false;
-		if(filter.has_attribute("value") && no_value_weapon_abilities_check)
+		if(filter.has_attribute("value") && (no_value_weapon_abilities_check && tag_name != "berserk"))
 			return false;
 		if(filter.has_attribute("add") && no_value_weapon_abilities_check)
 			return false;
@@ -1694,8 +1695,10 @@ namespace
 			return false;
 		if(filter.has_attribute("divide") && no_value_weapon_abilities_check)
 			return false;
+		if(filter.has_attribute("priority") && no_value_weapon_abilities_check)
+			return false;
 
-		bool all_engine =  abilities_list::no_weapon_number_tags().count(tag_name) != 0 || abilities_list::weapon_number_tags().count(tag_name) != 0 || abilities_list::ability_value_tags().count(tag_name) != 0 || abilities_list::ability_no_value_tags().count(tag_name) != 0;
+		bool all_engine =  abilities_list::no_weapon_math_tags().count(tag_name) != 0 || abilities_list::weapon_math_tags().count(tag_name) != 0 || abilities_list::ability_value_tags().count(tag_name) != 0 || abilities_list::ability_no_value_tags().count(tag_name) != 0;
 		if(filter.has_attribute("replacement_type") && tag_name != "damage_type" && all_engine)
 			return false;
 		if(filter.has_attribute("alternative_type") && tag_name != "damage_type" && all_engine)
@@ -1755,6 +1758,9 @@ namespace
 			return false;
 
 		if(!string_matches_if_present(filter, cfg, "active_on", "both"))
+			return false;
+
+		if(!double_matches_if_present(filter, cfg, "priority"))
 			return false;
 
 		//value, add, sub multiply and divide check values of attribute used in engines abilities(default value of 'value' can be checked when not specified)
@@ -2155,9 +2161,26 @@ int individual_value_double(const config::attribute_value *v, int def, const act
 
 effect::effect(const active_ability_list& list, int def, const const_attack_ptr& att, EFFECTS wham) :
 	effect_list_(),
-	composite_value_(0)
+	composite_value_(def),
+	composite_double_value_(def)
 {
+	std::map<double, active_ability_list> base_list;
+	for(const active_ability& i : list) {
+		double priority = i.ability().priority();
+		if(base_list[priority].empty()) {
+			base_list[priority] = list.loc();
+		}
+		base_list[priority].emplace_back(i);
+	}
+	int value = def;
+	for(auto base : base_list) {
+		effect::effect_impl(base.second, value, att, wham);
+		value = composite_value_;
+	}
+}
 
+void effect::effect_impl(const active_ability_list& list, int def, const const_attack_ptr& att, EFFECTS wham )
+{
 	int value_set = def;
 	std::map<std::string,individual_effect> values_add;
 	std::map<std::string,individual_effect> values_sub;

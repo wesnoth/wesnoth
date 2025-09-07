@@ -52,6 +52,7 @@ public:
 
 	active_on_t active_on() const { return active_on_; };
 	apply_to_t apply_to() const { return apply_to_; };
+	double priority() const { return priority_; };
 
 	struct tooltip_info
 	{
@@ -123,6 +124,7 @@ private:
 	bool in_specials_tag_;
 	active_on_t active_on_;
 	apply_to_t apply_to_;
+	double priority_;
 	config cfg_;
 
 	mutable bool currently_checked_;
@@ -271,6 +273,8 @@ class effect
 		const_iterator end() const
 		{ return effect_list_.end(); }
 	private:
+		/** Part of the constructor, calculates for a group of abilities with equal priority. */
+		void effect_impl(const active_ability_list& list, int def, const const_attack_ptr& att, EFFECTS wham);
 		std::vector<individual_effect> effect_list_;
 		int composite_value_;
 		double composite_double_value_;
