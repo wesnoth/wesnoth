@@ -1151,10 +1151,12 @@ void attack_type::modified_attacks(unsigned & min_attacks,
 	}
 
 	// Apply [swarm].
-	active_ability_list swarm_specials = get_specials_and_abilities("swarm");
-	if ( !swarm_specials.empty() ) {
-		min_attacks = std::max<int>(0, swarm_specials.highest("swarm_attacks_min").first);
-		max_attacks = std::max<int>(0, swarm_specials.highest("swarm_attacks_max", attacks_value).first);
+	std::map<double, active_ability_list> swarm_specials_map = map_ability_list(get_specials_and_abilities("swarm"));
+	if(!swarm_specials_map.empty()) {
+		for(auto swarms : swarm_specials_map) {
+			min_attacks = std::max<int>(0, (swarms.second).highest("swarm_attacks_min").first);
+			max_attacks = std::max<int>(0, (swarms.second).highest("swarm_attacks_max", attacks_value).first);
+		}
 	} else {
 		min_attacks = max_attacks = attacks_value;
 	}
@@ -1276,16 +1278,39 @@ std::pair<std::string, std::set<std::string>> attack_type::damage_types() const
  */
 double attack_type::modified_damage() const
 {
-	double damage_value = unit_abilities::effect(get_specials_and_abilities("damage"), damage(), shared_from_this()).get_composite_double_value();
-	return damage_value;
+	std::map<double, active_ability_list> base_list = map_ability_list(get_specials_and_abilities("damage"));
+	double damage = damage_;
+	//proceed to calculation, of low priority toward high priority.
+	for(auto base : base_list) {
+		damage = unit_abilities::effect(base.second, std::round(damage), shared_from_this()).get_composite_double_value();
+	}
+	return damage;
+}
+
+std::map<double, active_ability_list> attack_type::map_ability_list(const active_ability_list& abil_list) const
+{
+	std::map<double, active_ability_list> base_list;
+	for(const active_ability& i : abil_list) {
+		double priority = i.ability_cfg()["priority"].to_double(0);
+		if(base_list[priority].empty()) {
+			base_list[priority] = abil_list.loc();
+		}
+		base_list[priority].emplace_back(i);
+	}
+	return base_list;
 }
 
 int attack_type::modified_chance_to_hit(int cth) const
 {
 	int parry = other_attack_ ? other_attack_->parry() : 0;
-	active_ability_list chance_to_hit_list = get_specials_and_abilities("chance_to_hit");
 	cth = std::clamp(cth + accuracy_ - parry, 0, 100);
-	return composite_value(chance_to_hit_list, cth);
+	//create a map ability list sorted by 'calculation_priority'.
+	std::map<double, active_ability_list> base_list = map_ability_list(get_specials_and_abilities("chance_to_hit"));
+	//proceed to calculation, of low priority toward high priority.
+	for(auto base : base_list) {
+		cth = std::clamp(unit_abilities::effect(base.second, cth, shared_from_this()).get_composite_value(), 0, 100);
+	}
+	return cth;
 }
 
 
@@ -1480,7 +1505,12 @@ active_ability_list attack_type::get_specials_and_abilities(const std::string& s
 
 int attack_type::composite_value(const active_ability_list& abil_list, int base_value) const
 {
-	return unit_abilities::effect(abil_list, base_value, shared_from_this()).get_composite_value();
+	std::map<double, active_ability_list> base_list = map_ability_list(abil_list);
+	//proceed to calculation, of low priority toward high priority.
+	for(auto base : base_list) {
+		base_value = unit_abilities::effect(base.second, base_value, shared_from_this()).get_composite_value();
+	}
+	return base_value;
 }
 
 static bool overwrite_special_affects(const unit_ability_t& ab)
@@ -1837,6 +1867,10 @@ namespace
 		if(filter.has_attribute("divide") && no_value_weapon_abilities_check)
 			return false;
 
+		//priority was used in specials with value and plague only.
+		if(filter.has_attribute("priority") && abilities_list::weapon_number_tags().count(tag_name) == 0 && tag_name != "plague")
+			return false;
+
 		bool all_engine =  abilities_list::no_weapon_number_tags().count(tag_name) != 0 || abilities_list::weapon_number_tags().count(tag_name) != 0 || abilities_list::ability_value_tags().count(tag_name) != 0 || abilities_list::ability_no_value_tags().count(tag_name) != 0;
 		if(filter.has_attribute("replacement_type") && tag_name != "damage_type" && all_engine)
 			return false;
@@ -1897,6 +1931,9 @@ namespace
 			return false;
 
 		if(!string_matches_if_present(filter, cfg, "active_on", "both"))
+			return false;
+
+		if(!double_matches_if_present(filter, cfg, "priority"))
 			return false;
 
 		//value, add, sub multiply and divide check values of attribute used in engines abilities(default value of 'value' can be checked when not specified)

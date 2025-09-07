@@ -172,6 +172,12 @@ public:
 	 * @param base_value The value modified or not by function.
 	 */
 	int composite_value(const active_ability_list& abil_list, int base_value) const;
+
+	/** Return a map active_ability_list sorted by priority
+	 * @param abil_list The list of special checked.
+	 */
+	std::map<double, active_ability_list> map_ability_list(const active_ability_list& abil_list) const;
+
 	/** Returns list for weapon like abilities for each ability type. */
 	active_ability_list get_weapon_ability(const std::string& ability) const;
 	/**
