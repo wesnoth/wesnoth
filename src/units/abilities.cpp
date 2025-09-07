@@ -1372,16 +1372,38 @@ std::pair<std::string, std::set<std::string>> attack_type::damage_types() const
  */
 double attack_type::modified_damage() const
 {
-	double damage_value = unit_abilities::effect(get_specials_and_abilities("damage"), damage(), shared_from_this()).get_composite_double_value();
-	return damage_value;
+	const map_location loc = self_ ? self_->get_location() : self_loc_;
+	double damage = damage_;
+	unit_ability_list damage_list = get_specials_and_abilities("damage");
+	unit_ability_list base_list(loc);
+	utils::erase_if(damage_list, [&](const unit_ability& i) {
+		if((*i.ability_cfg)["base_stat"].to_bool()) {
+			base_list.emplace_back(i);
+		}
+		return (*i.ability_cfg)["base_stat"].to_bool();
+	});
+	damage = unit_abilities::effect(base_list, std::round(damage), shared_from_this()).get_composite_double_value();
+
+	return unit_abilities::effect(damage_list, std::round(damage), shared_from_this()).get_composite_double_value();;
 }
 
 int attack_type::modified_chance_to_hit(int cth, bool special_only) const
 {
+	const map_location loc = self_ ? self_->get_location() : self_loc_;
 	int parry = other_attack_ ? other_attack_->parry() : 0;
 	unit_ability_list chance_to_hit_list = special_only ? get_specials("chance_to_hit") : get_specials_and_abilities("chance_to_hit");
 	cth = std::clamp(cth + accuracy_ - parry, 0, 100);
-	return composite_value(chance_to_hit_list, cth);
+	unit_ability_list base_list(loc);
+	utils::erase_if(chance_to_hit_list, [&](const unit_ability& i) {
+		if((*i.ability_cfg)["base_stat"].to_bool()) {
+			base_list.emplace_back(i);
+		}
+		return (*i.ability_cfg)["base_stat"].to_bool();
+	});
+	//proceed to 'base_stat' calculation if base_list no empty.
+	cth = std::clamp(unit_abilities::effect(base_list, cth, shared_from_this()).get_composite_value(), 0, 100);
+	//use modified cth like base by traditionnal [chance_to_hit] and return final result.
+	return unit_abilities::effect(chance_to_hit_list, cth, shared_from_this()).get_composite_value();
 }
 
 
@@ -1592,7 +1614,18 @@ unit_ability_list attack_type::get_specials_and_abilities(const std::string& spe
 
 int attack_type::composite_value(const unit_ability_list& abil_list, int base_value) const
 {
-	return unit_abilities::effect(abil_list, base_value, shared_from_this()).get_composite_value();
+	const map_location loc = self_ ? self_->get_location() : self_loc_;
+	int value = base_value;
+	unit_ability_list base_list(loc);
+	unit_ability_list final_list = abil_list;
+	utils::erase_if(final_list, [&](const unit_ability& i) {
+		if((*i.ability_cfg)["base_stat"].to_bool()) {
+			base_list.emplace_back(i);
+		}
+		return (*i.ability_cfg)["base_stat"].to_bool();
+	});
+	value = unit_abilities::effect(base_list, value, shared_from_this()).get_composite_value();
+	return unit_abilities::effect(final_list, value, shared_from_this()).get_composite_value();
 }
 
 static bool overwrite_special_affects(const config& special)
