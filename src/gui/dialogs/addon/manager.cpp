@@ -992,7 +992,7 @@ void addon_manager::publish_addon(const addon_info& addon)
 		gui2::show_error_message(_("Invalid icon path. Make sure the path points to a valid image."));
 	} else if(!client_.request_distribution_terms(server_msg)) {
 		gui2::show_error_message(
-			_("The server responded with an error:") + "\n" + client_.get_last_server_error());
+			_("The server responded with an error:") + "\n" + client_.get_last_server_error(), true);
 	} else if(gui2::dialogs::addon_license_prompt::execute(server_msg)) {
 		if(!client_.upload_addon(addon_id, server_msg, cfg, tracking_info_[addon_id].state == ADDON_INSTALLED_LOCAL_ONLY)) {
 			const std::string& msg = _("The add-on was rejected by the server:") +
@@ -1034,7 +1034,7 @@ void addon_manager::delete_addon(const addon_info& addon)
 
 	std::string server_msg;
 	if(!client_.delete_remote_addon(addon_id, server_msg)) {
-		gui2::show_error_message(_("The server responded with an error:") + "\n" + client_.get_last_server_error());
+		gui2::show_error_message(_("The server responded with an error:") + "\n" + client_.get_last_server_error(), true);
 	} else {
 		// FIXME: translation needed!
 		gui2::show_transient_message(_("Response"), server_msg);
