@@ -214,14 +214,14 @@ public:
 
 	template<typename T>
 	std::enable_if_t<std::is_constructible_v<std::string, T>, bool>
-	bool friend operator!=(const config_attribute_value& val, const T& str)
+	friend operator!=(const config_attribute_value& val, const T& str)
 	{
 		return !val.operator==(str);
 	}
 
 	template<typename T>
 	std::enable_if_t<std::is_constructible_v<std::string, T>, bool>
-	bool friend operator!=(const T &str, const config_attribute_value& val)
+	friend operator!=(const T &str, const config_attribute_value& val)
 	{
 		return !val.operator==(str);
 	}
