@@ -38,7 +38,6 @@
 #endif
 #include <iosfwd>
 #include <string>
-#include <utility>
 #include <vector>
 #include <type_traits>
 
@@ -173,6 +172,7 @@ public:
 
 	// Implicit conversions:
 	operator std::string() const { return str(); }
+	operator t_string() const { return t_str(); }
 
 	/** Tests for an attribute that was never set. */
 	bool blank() const;
