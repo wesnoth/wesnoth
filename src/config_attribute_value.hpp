@@ -44,14 +44,7 @@
 
 #ifdef __cpp_concepts
 template<typename T>
-concept integer_type =
-	std::integral<T> &&
-	!std::same_as<T, char> &&
-	!std::same_as<T, char8_t> &&
-	!std::same_as<T, char16_t> &&
-	!std::same_as<T, char32_t> &&
-	!std::same_as<T, wchar_t> &&
-	!std::same_as<T, bool>;
+concept StringLike = std::constructible_from<std::string, T>;
 #endif
 
 /**
@@ -180,7 +173,6 @@ public:
 
 	// Implicit conversions:
 	operator std::string() const { return str(); }
-	operator t_string() const { return t_str(); }
 
 	/** Tests for an attribute that was never set. */
 	bool blank() const;
@@ -195,54 +187,45 @@ public:
 	}
 
 #ifdef __cpp_concepts
-	template<typename T>
+	template<StringLike T>
 	bool operator==(const T& comp) const
 	{
-		return apply_visitor([&comp]<typename V>(const V& value) {
-			if constexpr(std::equality_comparable_with<T, V>) {
-				if constexpr(integer_type<T> && integer_type<V>) {
-					return std::cmp_equal(comp, value);
-				} else {
-					return comp == value;
-				}
+		return apply_visitor([this, &comp]<typename V>(const V& value) {
+			if constexpr(StringLike<V>) {
+				return value == comp;
 			} else {
-				return false;
+				return *this == create(comp);
 			}
 		});
 	}
 #else
-	bool operator==(bool comp) const
+	template<typename T>
+	std::enable_if_t<std::is_constructible_v<std::string, T>, bool>
+	operator==(const T& comp) const
 	{
-		const bool has_bool =
-			utils::holds_alternative<yes_no>(value_) ||
-			utils::holds_alternative<true_false>(value_);
-		return has_bool && to_bool() == comp;
+		return apply_visitor([this, &comp](const auto& value) {
+			if constexpr(std::is_constructible_v<std::string, std::decay_t<decltype(value)>>) {
+				return value == comp;
+			} else {
+				return *this == create(comp);
+			}
+		});
 	}
 
 	template<typename T>
-	bool operator==(const T& comp) const
-	{
-		if constexpr(std::is_constructible_v<std::string, T>) {
-			config_attribute_value v;
-			v = comp;
-			return *this == v;
-		} else {
-			return utils::holds_alternative<T>(value_) && this->to(T{}) == comp;
-		}
-	}
-#endif
-
-	template<typename T>
+	std::enable_if_t<std::is_constructible_v<std::string, T>, bool>
 	bool friend operator!=(const config_attribute_value& val, const T& str)
 	{
 		return !val.operator==(str);
 	}
 
 	template<typename T>
+	std::enable_if_t<std::is_constructible_v<std::string, T>, bool>
 	bool friend operator!=(const T &str, const config_attribute_value& val)
 	{
 		return !val.operator==(str);
 	}
+#endif
 
 	// Streaming:
 	friend std::ostream& operator<<(std::ostream& os, const config_attribute_value& v);
