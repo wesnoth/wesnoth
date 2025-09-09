@@ -27,6 +27,7 @@ struct overlay
 			const std::string& item_id,
 			const bool fogged,
 			float submerge,
+			float parallax_mult,
 			float item_z_order = 0)
 		: image(img)
 		, halo(halo_img)
@@ -36,6 +37,7 @@ struct overlay
 		, halo_handle()
 		, visible_in_fog(fogged)
 		, submerge(submerge)
+		, parallax_mult(parallax_mult)
 		, z_order(item_z_order)
 	{}
 
@@ -49,6 +51,7 @@ struct overlay
 		, halo_handle()
 		, visible_in_fog(cfg["visible_in_fog"].to_bool())
 		, submerge(cfg["submerge"].to_double(0))
+		, parallax_mult(cfg["parallax_mult"].to_double(1.0))
 		, z_order(cfg["z_order"].to_double(0))
 	{
 	}
@@ -62,6 +65,7 @@ struct overlay
 	halo::handle halo_handle;
 	bool visible_in_fog;
 	float submerge;
+	float parallax_mult;
 	float z_order;
 
 	// Other support

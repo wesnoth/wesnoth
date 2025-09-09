@@ -161,7 +161,7 @@ void display::add_overlay(const map_location& loc, overlay&& ov)
 
 		auto inserted = overlays.emplace(pos, std::move(ov));
 		auto [x, y] = get_location_rect(loc).center();
-		inserted->halo_handle = halo_man_.add(x, y, inserted->halo, loc);
+		inserted->halo_handle = halo_man_.add(x, y, inserted->halo, loc, halo::NORMAL, true, inserted->parallax_mult);
 		return;
 	}
 
