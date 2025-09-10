@@ -223,6 +223,8 @@ BOOST_AUTO_TEST_CASE(test_config_attribute_value)
 	BOOST_CHECK_EQUAL(c["x"], "test");
 	c["x"] = false;
 	BOOST_CHECK_EQUAL(c["x"], "no");
+	c["x"] = 9.87654321;
+	BOOST_CHECK_EQUAL(c["x"], "9.87654321");
 	c["x"] = "sfvsdgdsfg";
 	BOOST_CHECK_EQUAL(c["x"], std::string{"sfvsdgdsfg"});
 	BOOST_CHECK_EQUAL(c["x"], std::string_view{"sfvsdgdsfg"});
@@ -335,9 +337,9 @@ BOOST_AUTO_TEST_CASE(test_variable_info)
 		[tag1]
 		[/tag1]
 		*/
-		BOOST_CHECK_EQUAL(variable_access_const("tag1.length", nonempty).as_scalar(), 3);
-		BOOST_CHECK_EQUAL(variable_access_const("tag1.tag2.length", nonempty).as_scalar(), 0);
-		BOOST_CHECK_EQUAL(variable_access_const("tag1[1].tag2.length", nonempty).as_scalar(), 3);
+		BOOST_CHECK_EQUAL(variable_access_const("tag1.length", nonempty).as_scalar().to_int(), 3);
+		BOOST_CHECK_EQUAL(variable_access_const("tag1.tag2.length", nonempty).as_scalar().to_int(), 0);
+		BOOST_CHECK_EQUAL(variable_access_const("tag1[1].tag2.length", nonempty).as_scalar().to_int(), 3);
 		BOOST_CHECK_EQUAL(variable_access_const("tag1[1].tag2[2].atribute1", nonempty).as_scalar().to_int(), 88);
 		int count = 0;
 		for([[maybe_unused]] const config& child : variable_access_const("tag1", nonempty).as_array()) {
