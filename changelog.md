@@ -13,6 +13,7 @@
 ### User interface
    * On Android, back button now works similarly to Escape on desktop.
 ### WML Engine
+   * Custom WML menu items now support an accompanying toggle button.
 ### Miscellaneous and Bug Fixes
    * On Android, in-game command prompt now correctly shows on-screen keyboard.
 
