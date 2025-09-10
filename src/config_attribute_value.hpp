@@ -187,8 +187,7 @@ public:
 	}
 
 #ifdef __cpp_concepts
-	template<StringLike T>
-	bool operator==(const T& comp) const
+	bool operator==(const StringLike auto& comp) const
 	{
 		return apply_visitor([this, &comp]<typename V>(const V& value) {
 			if constexpr(StringLike<V>) {
@@ -215,13 +214,6 @@ public:
 	template<typename T>
 	std::enable_if_t<std::is_constructible_v<std::string, T>, bool>
 	friend operator!=(const config_attribute_value& val, const T& str)
-	{
-		return !val.operator==(str);
-	}
-
-	template<typename T>
-	std::enable_if_t<std::is_constructible_v<std::string, T>, bool>
-	friend operator!=(const T &str, const config_attribute_value& val)
 	{
 		return !val.operator==(str);
 	}
