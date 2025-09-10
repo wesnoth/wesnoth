@@ -291,13 +291,13 @@ BOOST_AUTO_TEST_CASE(test_variable_info)
 		config c2;
 		variable_access_create access("a.b[0].c[1].d.e.f[2].g", c2);
 		access.as_scalar() = 84;
-		BOOST_CHECK_EQUAL(variable_access_const("a.length", c2).as_scalar(), 1);
-		BOOST_CHECK_EQUAL(variable_access_const("a.b.length", c2).as_scalar(), 1);
-		BOOST_CHECK_EQUAL(variable_access_const("a.b.c.length", c2).as_scalar(), 2);
-		BOOST_CHECK_EQUAL(variable_access_const("a.b.c[1].d.e.f.length", c2).as_scalar(), 3);
+		BOOST_CHECK_EQUAL(variable_access_const("a.length", c2).as_scalar().to_int(), 1);
+		BOOST_CHECK_EQUAL(variable_access_const("a.b.length", c2).as_scalar().to_int(), 1);
+		BOOST_CHECK_EQUAL(variable_access_const("a.b.c.length", c2).as_scalar().to_int(), 2);
+		BOOST_CHECK_EQUAL(variable_access_const("a.b.c[1].d.e.f.length", c2).as_scalar().to_int(), 3);
 		// we set g as a scalar
-		BOOST_CHECK_EQUAL(variable_access_const("a.b.c[1].d.e.f[2].g.length", c2).as_scalar(), 0);
-		BOOST_CHECK_EQUAL(variable_access_const("a.b.c[1].d.e.f[2].g", c2).as_scalar(), 84);
+		BOOST_CHECK_EQUAL(variable_access_const("a.b.c[1].d.e.f[2].g.length", c2).as_scalar().to_int(), 0);
+		BOOST_CHECK_EQUAL(variable_access_const("a.b.c[1].d.e.f[2].g", c2).as_scalar().to_int(), 84);
 	}
 	{
 		config c2;
