@@ -47,6 +47,7 @@ frame_builder::frame_builder(const config& cfg,const std::string& frame_string)
 	, blend_ratio_(cfg[frame_string + "blend_ratio"])
 	, highlight_ratio_(cfg[frame_string + "alpha"])
 	, offset_(cfg[frame_string + "offset"])
+	, parallax_r_(cfg[frame_string + "parallax_r"])
 	, submerge_(cfg[frame_string + "submerge"])
 	, x_(cfg[frame_string + "x"])
 	, y_(cfg[frame_string + "y"])
@@ -169,6 +170,12 @@ frame_builder& frame_builder::offset(const std::string& offset)
 	return *this;
 }
 
+frame_builder& frame_builder::parallax_r(const std::string& parallax_r)
+{
+	parallax_r_ = parallax_r;
+	return *this;
+}
+
 frame_builder& frame_builder::submerge(const std::string& submerge)
 {
 	submerge_ = submerge;
@@ -239,6 +246,7 @@ frame_parsed_parameters::frame_parsed_parameters(const frame_builder& builder, c
 	, blend_ratio_(builder.blend_ratio_,duration_)
 	, highlight_ratio_(builder.highlight_ratio_,duration_)
 	, offset_(builder.offset_,duration_)
+	, parallax_r_(builder.parallax_r_, duration_)
 	, submerge_(builder.submerge_,duration_)
 	, x_(builder.x_,duration_)
 	, y_(builder.y_,duration_)
@@ -261,6 +269,7 @@ bool frame_parsed_parameters::does_not_change() const
 		blend_ratio_.does_not_change() &&
 		highlight_ratio_.does_not_change() &&
 		offset_.does_not_change() &&
+		parallax_r_.does_not_change() &&
 		submerge_.does_not_change() &&
 		x_.does_not_change() &&
 		y_.does_not_change() &&
@@ -271,7 +280,17 @@ bool frame_parsed_parameters::does_not_change() const
 
 bool frame_parsed_parameters::need_update() const
 {
-	return !this->does_not_change();
+	if (!this->does_not_change()) {
+		return true;
+	}
+
+	// For non-animated parallax images, we still need to redraw if the screen has moved. (scrolling)
+	const bool has_parallax = (parallax_r_.get_current_element(0ms, 1.0) != 1.0f);
+	if (has_parallax) {
+		return display::get_singleton()->camera_moved_this_frame();
+	}
+
+	return false;
 }
 
 frame_parameters frame_parsed_parameters::parameters(const std::chrono::milliseconds& current_time) const
@@ -293,6 +312,7 @@ frame_parameters frame_parsed_parameters::parameters(const std::chrono::millisec
 		.blend_ratio = blend_ratio_.get_current_element(current_time),
 		.highlight_ratio = highlight_ratio_.get_current_element(current_time,1.0),
 		.offset = offset_.get_current_element(current_time,-1000),
+		.parallax_r = parallax_r_.get_current_element(current_time, 1.0),
 		.submerge = submerge_.get_current_element(current_time),
 		.x = x_.get_current_element(current_time),
 		.y = y_.get_current_element(current_time),
@@ -320,6 +340,7 @@ frame_parameters frame_parsed_parameters::parameters(const std::chrono::millisec
 	result.blend_ratio = blend_ratio_.get_current_element(current_time);
 	result.highlight_ratio = highlight_ratio_.get_current_element(current_time,1.0);
 	result.offset = offset_.get_current_element(current_time,-1000);
+	result.parallax_r = parallax_r_.get_current_element(current_time, 1.0);
 	result.submerge = submerge_.get_current_element(current_time);
 	result.x = x_.get_current_element(current_time);
 	result.y = y_.get_current_element(current_time);
@@ -447,6 +468,10 @@ std::vector<std::string> frame_parsed_parameters::debug_strings() const
 
 	if(!offset_.get_original().empty()) {
 		v.emplace_back("offset=" + offset_.get_original());
+	}
+
+	if(!parallax_r_.get_original().empty()) {
+		v.emplace_back("parallax_r=" + parallax_r_.get_original());
 	}
 
 	if(!submerge_.get_original().empty()) {
@@ -640,6 +665,7 @@ void unit_frame::redraw(const std::chrono::milliseconds& frame_time, bool on_sta
 
 	const frame_parameters current_data = merge_parameters(frame_time,animation_val,engine_val);
 	double tmp_offset = current_data.offset;
+	const double parallax_r_ = current_data.parallax_r;
 
 	// Debug code to see the number of frames and their position
 	//if(tmp_offset) {
@@ -703,6 +729,12 @@ void unit_frame::redraw(const std::chrono::milliseconds& frame_time, bool on_sta
 			my_y += current_data.directional_y * disp_zoom;
 		} else {
 			my_y -= current_data.directional_y * disp_zoom;
+		}
+
+		if(parallax_r_ != 1.0f) {
+			const point p_offset = display::get_singleton()->get_parallax_r_offset(x, y, parallax_r_);
+			my_x += p_offset.x;
+			my_y += p_offset.y;
 		}
 
 		// TODO: don't conflate highlights and alpha
@@ -805,6 +837,7 @@ std::set<map_location> unit_frame::get_overlaped_hex(const std::chrono::millisec
 	const frame_parameters current_data = merge_parameters(frame_time, animation_val, engine_val);
 
 	double tmp_offset = current_data.offset;
+	const double parallax_r_ = current_data.parallax_r;
 	const int d2 = display::get_singleton()->hex_size() / 2;
 
 	image::locator image_loc;
@@ -819,7 +852,12 @@ std::set<map_location> unit_frame::get_overlaped_hex(const std::chrono::millisec
 	// We always invalidate our own hex because we need to be called at redraw time even
 	// if we don't draw anything in the hex itself
 	std::set<map_location> result;
-	if(tmp_offset == 0 && current_data.x == 0 && current_data.directional_x == 0 && image::is_in_hex(image_loc)) {
+
+	// Parallax images needs updating when the camera moves.
+	const bool parallax_active = (parallax_r_ != 1.0f);
+	const bool force_unoptimized = parallax_active && display::get_singleton()->camera_moved_this_frame();
+
+	if(!force_unoptimized && tmp_offset == 0 && current_data.x == 0 && current_data.directional_x == 0 && image::is_in_hex(image_loc)) {
 		result.insert(src);
 
 		bool facing_north = (
@@ -885,6 +923,12 @@ std::set<map_location> unit_frame::get_overlaped_hex(const std::chrono::millisec
 				my_y += current_data.directional_y * disp_zoom;
 			} else {
 				my_y -= current_data.directional_y * disp_zoom;
+			}
+
+			if(parallax_r_ != 1.0f) {
+				const point p_offset = display::get_singleton()->get_parallax_r_offset(x, y, parallax_r_);
+				my_x += p_offset.x;
+				my_y += p_offset.y;
 			}
 
 			// Check if our underlying hexes are invalidated. If we need to update ourselves because we changed,
@@ -1011,6 +1055,8 @@ frame_parameters unit_frame::merge_parameters(const std::chrono::milliseconds& c
 	if(result.offset == -1000) {
 		result.offset = 0.0;
 	}
+
+	result.parallax_r = current_val.parallax_r != 1.0 ? current_val.parallax_r : animation_val.parallax_r;
 
 	/** The engine provides a submerge for units in water */
 	result.submerge = current_val.submerge != 0 ? current_val.submerge : animation_val.submerge;

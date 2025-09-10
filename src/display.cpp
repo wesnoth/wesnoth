@@ -679,6 +679,23 @@ rect display::get_location_rect(const map_location& loc) const
 	return { get_location(loc), point{hex_size(), hex_size()} };
 }
 
+point display::get_parallax_r_offset(int x, int y, double parallax) const
+{
+	// --- Radial-from-center parallax ---
+	// Moves proportionally to distance from the center of the screen.
+	const rect& game_area = map_outside_area();
+	const int cx = game_area.x + game_area.w / 2;
+	const int cy = game_area.y + game_area.h / 2;
+	const int dx = x - cx;
+	const int dy = y - cy;
+	const double disp_zoom = get_zoom_factor();
+
+	return {
+		static_cast<int>(dx * (parallax - 1.0) * disp_zoom),
+		static_cast<int>(dy * (parallax - 1.0) * disp_zoom)
+	};
+}
+
 map_location display::minimap_location_on(int x, int y)
 {
 	// TODO: don't return location for this,
@@ -2231,6 +2248,9 @@ void display::draw()
 		}
 		drawing_buffer_commit();
 	}
+
+	// Track screen movement (scrolling).
+	last_rendered_viewport_origin_ = viewport_origin_;
 }
 
 void display::update()
