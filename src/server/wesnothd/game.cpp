@@ -920,6 +920,12 @@ void game::transfer_host(const simple_wml::node& new_host, player_iterator reque
 		}
 	}
 
+	// TODO: In theory this operation should be possible, but transitioning between the host lobby
+	// screen and everyone else's lobby screen is non-trivial.
+	if(!started_) {
+		send_server_message("Transferring host in an unstarted game is not yet supported.");
+	}
+
 	const simple_wml::string_span& username = new_host["username"];
 	auto user { find_user(username) };
 
