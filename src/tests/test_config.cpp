@@ -215,19 +215,27 @@ BOOST_AUTO_TEST_CASE(test_config_attribute_value)
 	BOOST_CHECK_EQUAL(x_str, "123456789123");
 
 // check heterogeneous comparison
+	using namespace std::literals;
+
 	c["x"] = "1";
 	BOOST_CHECK_EQUAL(c["x"], "1");
 	c["x"] = 222;
 	BOOST_CHECK_EQUAL(c["x"], "222");
+	BOOST_CHECK_EQUAL(c["x"], "222"s);
 	c["x"] = "test";
-	BOOST_CHECK_EQUAL(c["x"], "test");
+	BOOST_CHECK_EQUAL(c["x"], "test"sv);
 	c["x"] = false;
 	BOOST_CHECK_EQUAL(c["x"], "no");
+	BOOST_CHECK_EQUAL(c["x"], "false");
 	c["x"] = 9.87654321;
 	BOOST_CHECK_EQUAL(c["x"], "9.87654321");
+	BOOST_CHECK_EQUAL(c["x"], t_string{"9.87654321"});
+	BOOST_CHECK_EQUAL(c["x"], config_attribute_value::create("9.87654321"));
 	c["x"] = "sfvsdgdsfg";
-	BOOST_CHECK_EQUAL(c["x"], std::string{"sfvsdgdsfg"});
-	BOOST_CHECK_EQUAL(c["x"], std::string_view{"sfvsdgdsfg"});
+	BOOST_CHECK_EQUAL(c["x"], "sfvsdgdsfg");
+	BOOST_CHECK_EQUAL(c["x"], "sfvsdgdsfg"s);
+	BOOST_CHECK_EQUAL(c["x"], "sfvsdgdsfg"sv);
+	BOOST_CHECK_EQUAL(c["x"], t_string{"sfvsdgdsfg"});
 	BOOST_CHECK_NE(c["x"], "a random string");
 
 	// blank != "" test.
