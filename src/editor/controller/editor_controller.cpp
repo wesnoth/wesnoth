@@ -853,7 +853,7 @@ bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool p
 		return true;
 
 	case HOTKEY_EDITOR_SELECT_ADDON:
-		initialize_addon();
+		select_addon();
 		return true;
 
 	case HOTKEY_EDITOR_OPEN_ADDON:
