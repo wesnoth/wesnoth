@@ -146,10 +146,13 @@ public:
 		return context_manager_->get_map_context();
 	}
 
-	/** Initialize an addon if the addon id is empty
-	 * @return    If the initialization succeeded.
-	 * */
-	bool initialize_addon();
+	/**
+	 *  Initialize an addon. Will not initialize if one is already initialized
+	 *  unless `force_initialize` is `true`.
+	 *  @param force_initialize Initialize addon even if one is already intialized.
+	 *  @return    If the initialization succeeded.
+	 */
+	bool initialize_addon(bool force_initialize = false);
 
 protected:
 	/* controller_base overrides */
