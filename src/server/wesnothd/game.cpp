@@ -644,11 +644,8 @@ std::unique_ptr<simple_wml::document> game::change_controller_type(const std::si
 
 void game::change_host_and_notify(player_iterator new_host, utils::optional<player_iterator> initiator)
 {
-	if(owner_ == new_host) {
-		return;
-	}
 	// If the initiator is provided and is not the host, then notify players who initiated the host change.
-	const bool is_unexpected_initiator = initiator && *initiator != owner_;
+	const bool initiated_by_non_host = initiator && *initiator != owner_;
 	owner_ = new_host;
 	const std::string owner_name = username(owner_);
 	simple_wml::document cfg;
@@ -667,7 +664,7 @@ void game::change_host_and_notify(player_iterator new_host, utils::optional<play
 	}
 
 	std::string message;
-	if(is_unexpected_initiator) {
+	if(initiated_by_non_host) {
 		message = (*initiator)->info().name() + " changed the host of this game to " + owner_name + ".";
 	} else {
 		message = owner_name + " has been chosen as the new host.";
@@ -913,11 +910,11 @@ void game::unban_user(const simple_wml::node& unban, player_iterator unbanner)
 }
 
 void game::transfer_host(const simple_wml::node& new_host, player_iterator requestor) {
-	if(!requestor->info().is_moderator()) {
-		if(requestor != owner_) {
-			send_server_message("You cannot transfer host: not the game host.", requestor);
-			return;
-		}
+	// Only moderators and the current host can transfer host-ship to another player. If anyone else tries
+	// to run the command, assume they are a player in the game who is not (yet) the host.
+	if(!requestor->info().is_moderator() && requestor != owner_) {
+		send_server_message("You cannot transfer host: not the game host.", requestor);
+		return;
 	}
 
 	// TODO: In theory this operation should be possible, but transitioning between the host lobby

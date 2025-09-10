@@ -3261,14 +3261,6 @@ void server::set_game_host_handler(const std::string& issuer_name,
 	assert(out != nullptr);
 
 	const auto issuer = player_connections_.project<0>(player_connections_.get<name_t>().find(issuer_name));
-	// Shouldn't happen, but should check just in case.
-	if(issuer == player_connections_.get<0>().end()) {
-		*out << issuer_name << " does not exist?";
-	} else if(!issuer->info().is_moderator()) {
-		*out << issuer_name << " is not a moderator?";
-		return;
-	}
-
 	const std::string nick = parameters.substr(0, parameters.find(' '));
 	const std::string reason = parameters.length() > nick.length() + 1 ? parameters.substr(nick.length() + 1) : "";
 	const auto player = player_connections_.project<0>(player_connections_.get<name_t>().find(nick));
