@@ -146,13 +146,15 @@ public:
 		return context_manager_->get_map_context();
 	}
 
+	/** Show dialog to select active addon or create a new one. */
+	void select_addon();
+
 	/**
-	 *  Initialize an addon. Will not initialize if one is already initialized
-	 *  unless `force_initialize` is `true`.
-	 *  @param force_initialize Initialize addon even if one is already intialized.
+	 *  Show dialog to select active addon or create a new one if one is
+	 *  not yet initialized. Does nothing otherwise.
 	 *  @return    If the initialization succeeded.
 	 */
-	bool initialize_addon(bool force_initialize = false);
+	bool initialize_addon();
 
 protected:
 	/* controller_base overrides */

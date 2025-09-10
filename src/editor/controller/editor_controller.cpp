@@ -853,7 +853,7 @@ bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool p
 		return true;
 
 	case HOTKEY_EDITOR_SELECT_ADDON:
-		initialize_addon(true);
+		initialize_addon();
 		return true;
 
 	case HOTKEY_EDITOR_OPEN_ADDON:
@@ -1143,12 +1143,19 @@ bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool p
 	}
 }
 
-bool editor_controller::initialize_addon(bool force_initialize) {
-	if(current_addon_id_.empty() || force_initialize) {
-		// editor::initialize_addon can return empty id in case of failure
-		current_addon_id_ = editor::initialize_addon();
-	}
+void editor_controller::select_addon()
+{
+	current_addon_id_ = editor::initialize_addon();
 	context_manager_->set_addon_id(current_addon_id_);
+}
+
+bool editor_controller::initialize_addon()
+{
+	if(current_addon_id_.empty()) {
+		select_addon();
+	}
+
+	// current_addon_id_ could be empty if editor::initialize_addon failed
 	return !current_addon_id_.empty();
 }
 
