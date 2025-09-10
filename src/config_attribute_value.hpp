@@ -213,9 +213,9 @@ public:
 
 	template<typename T>
 	std::enable_if_t<std::is_constructible_v<std::string, T>, bool>
-	friend operator!=(const config_attribute_value& val, const T& str)
+	operator!=(const T& comp) const
 	{
-		return !val.operator==(str);
+		return !operator==(comp);
 	}
 #endif
 

@@ -256,6 +256,11 @@ BOOST_AUTO_TEST_CASE(test_config_attribute_value)
 
 BOOST_AUTO_TEST_CASE(test_variable_info)
 {
+	// Returns the integer value of the given variable in the config
+	const auto scalar_value = [](const std::string& var, const config& cfg) {
+		return variable_access_const{var, cfg}.as_scalar().to_int();
+	};
+
 	config c;
 	{
 		variable_access_const access("", c);
@@ -293,13 +298,13 @@ BOOST_AUTO_TEST_CASE(test_variable_info)
 		config c2;
 		variable_access_create access("a.b[0].c[1].d.e.f[2].g", c2);
 		access.as_scalar() = 84;
-		BOOST_CHECK_EQUAL(variable_access_const("a.length", c2).as_scalar().to_int(), 1);
-		BOOST_CHECK_EQUAL(variable_access_const("a.b.length", c2).as_scalar().to_int(), 1);
-		BOOST_CHECK_EQUAL(variable_access_const("a.b.c.length", c2).as_scalar().to_int(), 2);
-		BOOST_CHECK_EQUAL(variable_access_const("a.b.c[1].d.e.f.length", c2).as_scalar().to_int(), 3);
+		BOOST_CHECK_EQUAL(scalar_value("a.length", c2), 1);
+		BOOST_CHECK_EQUAL(scalar_value("a.b.length", c2), 1);
+		BOOST_CHECK_EQUAL(scalar_value("a.b.c.length", c2), 2);
+		BOOST_CHECK_EQUAL(scalar_value("a.b.c[1].d.e.f.length", c2), 3);
 		// we set g as a scalar
-		BOOST_CHECK_EQUAL(variable_access_const("a.b.c[1].d.e.f[2].g.length", c2).as_scalar().to_int(), 0);
-		BOOST_CHECK_EQUAL(variable_access_const("a.b.c[1].d.e.f[2].g", c2).as_scalar().to_int(), 84);
+		BOOST_CHECK_EQUAL(scalar_value("a.b.c[1].d.e.f[2].g.length", c2), 0);
+		BOOST_CHECK_EQUAL(scalar_value("a.b.c[1].d.e.f[2].g", c2), 84);
 	}
 	{
 		config c2;
@@ -337,10 +342,10 @@ BOOST_AUTO_TEST_CASE(test_variable_info)
 		[tag1]
 		[/tag1]
 		*/
-		BOOST_CHECK_EQUAL(variable_access_const("tag1.length", nonempty).as_scalar().to_int(), 3);
-		BOOST_CHECK_EQUAL(variable_access_const("tag1.tag2.length", nonempty).as_scalar().to_int(), 0);
-		BOOST_CHECK_EQUAL(variable_access_const("tag1[1].tag2.length", nonempty).as_scalar().to_int(), 3);
-		BOOST_CHECK_EQUAL(variable_access_const("tag1[1].tag2[2].atribute1", nonempty).as_scalar().to_int(), 88);
+		BOOST_CHECK_EQUAL(scalar_value("tag1.length", nonempty), 3);
+		BOOST_CHECK_EQUAL(scalar_value("tag1.tag2.length", nonempty), 0);
+		BOOST_CHECK_EQUAL(scalar_value("tag1[1].tag2.length", nonempty), 3);
+		BOOST_CHECK_EQUAL(scalar_value("tag1[1].tag2[2].atribute1", nonempty), 88);
 		int count = 0;
 		for([[maybe_unused]] const config& child : variable_access_const("tag1", nonempty).as_array()) {
 			++count;
