@@ -92,7 +92,7 @@ void addon_server_info::admin_delete_addon()
 
 	std::string msg;
 	if(!client_.delete_remote_addon(addon_, msg, admin_set)) {
-		gui2::show_error_message(_("The server responded with an error:") + "\n" + client_.get_last_server_error());
+		gui2::show_error_message(_("The server responded with an error:") + "\n" + client_.get_last_server_error(), true);
 	} else {
 		gui2::show_transient_message(_("Response"), msg);
 		needs_refresh_ = true;
