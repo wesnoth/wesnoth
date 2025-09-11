@@ -448,6 +448,34 @@ void xbrz_modification::operator()(surface& src) const
 	}
 }
 
+void pad_modification::operator()(surface& src) const
+{
+	if(!src) {
+		return;
+	}
+
+	// Calculate the new dimensions of the padded surface
+	const int new_w = src->w + left_ + right_;
+	const int new_h = src->h + top_ + bottom_;
+
+	// Create a new transparent surface with the calculated dimensions
+	surface padded(new_w, new_h);
+
+	// Define the destination rectangle for the original image
+	rect dstrect{
+		left_,
+		top_,
+		src->w,
+		src->h
+	};
+
+	// Blit the original surface onto the new, padded surface
+	SDL_BlitSurface(src, nullptr, padded, &dstrect);
+
+	// Replace the original surface with the new, padded one
+	src = padded;
+}
+
 /*
  * The Opacity IPF doesn't seem to work with surface-wide alpha and instead needs per-pixel alpha.
  * If this is needed anywhere else it can be moved back to sdl/utils.*pp.
@@ -1065,6 +1093,78 @@ REGISTER_MOD_PARSER(XBRZ, args)
 {
 	const int factor = std::clamp(utils::from_chars<int>(args).value_or(1), 1, 6);
 	return std::make_unique<xbrz_modification>(factor);
+}
+
+// PAD
+REGISTER_MOD_PARSER(PAD, args)
+{
+	int top = 0;
+	int right = 0;
+	int bottom = 0;
+	int left = 0;
+
+	// Check for the presence of an '=' sign to determine the parsing mode.
+	if(args.find('=') != std::string_view::npos) {
+
+		// --- Keyword-Argument Mode ---
+		const std::string args_str(args);
+		const auto params = utils::map_split(args_str, ',', '=');
+
+		// Check for illegally mixed formats like "~PAD(3,left=2)"
+		const auto positional_params = utils::split_view(args, ',');
+		for(const auto& p : positional_params) {
+			if(p.find('=') == std::string_view::npos) {
+				ERR_DP << "~PAD() does not allow mixing positional and keyword arguments. Use format: PAD(key=value...) or PAD(all).";
+				return nullptr;
+			}
+		}
+
+		// Map valid input strings to the corresponding integer reference
+		const std::map<std::string, int*> alias_map = {
+			{"top", &top},
+			{"t", &top},
+			{"right", &right},
+			{"r", &right},
+			{"bottom", &bottom},
+			{"b", &bottom},
+			{"left", &left},
+			{"l", &left},
+		};
+
+		// Parse and assign values if keywords are valid
+		for(const auto& [key, value] : params) {
+			auto it = alias_map.find(key);
+			if(it != alias_map.end()) {
+				*it->second = utils::from_chars<int>(value).value_or(0);
+			} else {
+				ERR_DP << "~PAD() found an unknown keyword: '" << key << "'. Valid keywords: top, t, right, r, bottom, b, left, l.";
+				return nullptr;
+			}
+		}
+
+	} else {
+
+		// --- Numeric-Argument Mode ---
+		const auto params = utils::split_view(args, ',');
+
+		if(params.size() == 1) {
+			auto result = utils::from_chars<int>(params[0]);
+
+			// Check if the conversion was successful
+			if(result) {
+				const int pad = result.value();
+				top = right = bottom = left = pad;
+			} else {
+				ERR_DP << "~PAD() requires a single, valid integer for a numeric argument. Received: '" << params[0] << "'.";
+				return nullptr;
+			}
+		} else {
+			ERR_DP << "~PAD() takes exactly 1 numeric argument. For custom padding, use 'key=value' format. PAD(key=value...) or PAD(all).";
+			return nullptr;
+		}
+	}
+
+	return std::make_unique<pad_modification>(top, right, bottom, left);
 }
 
 // Gaussian-like blur
