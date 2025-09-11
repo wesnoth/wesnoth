@@ -146,9 +146,14 @@ public:
 		return context_manager_->get_map_context();
 	}
 
-	/** Initialize an addon if the addon id is empty
-	 * @return    If the initialization succeeded.
-	 * */
+	/** Show dialog to select active addon or create a new one. */
+	void select_addon();
+
+	/**
+	 *  Show dialog to select active addon or create a new one if one is
+	 *  not yet initialized. Does nothing otherwise.
+	 *  @return    If the initialization succeeded.
+	 */
 	bool initialize_addon();
 
 protected:
