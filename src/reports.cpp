@@ -1030,8 +1030,8 @@ static int attack_info(const reports::context& rc, const attack_type &at, config
 		//If we have a second unit, do the 2-unit specials_context
 		bool attacking = (u.side() == rc.screen().playing_team().side());
 		auto ctx = (sec_u == nullptr)
-	? at.specials_context(u.shared_from_this(), hex, attacking)
-	: at.specials_context(u.shared_from_this(), sec_u->shared_from_this(), hex, sec_u->get_location(), attacking, std::move(sec_u_weapon));
+	? at.specials_context(u.shared_from_this(), hex, true)
+	: at.specials_context(u.shared_from_this(), sec_u->shared_from_this(), hex, sec_u->get_location(), true, std::move(sec_u_weapon));
 
 		boost::dynamic_bitset<> active;
 		const std::vector<std::pair<t_string, t_string>>& specials = at.abilities_special_tooltips(&active);
@@ -1041,7 +1041,7 @@ static int attack_info(const reports::context& rc, const attack_type &at, config
 			// Aliases for readability:
 			const auto& [name, description] = specials[i];
 			const color_t& details_color =
-				active[i] ? font::weapon_details_color : font::INACTIVE_COLOR;
+				attacking && active[i] ? font::weapon_details_color : font::INACTIVE_COLOR;
 
 			str << span_color(details_color, "  ", "  ", name) << '\n';
 			const std::string help_page = "weaponspecial_" + name.base_str();
