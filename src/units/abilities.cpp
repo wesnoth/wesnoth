@@ -923,7 +923,8 @@ std::vector<std::pair<t_string, t_string>> attack_type::abilities_special_toolti
 		return res;
 	}
 	for(const auto [key, cfg] : self_->abilities().all_children_view()) {
-		if(!active_list || check_self_abilities_impl(shared_from_this(), other_attack_, cfg, self_, self_loc_, AFFECT_SELF, key, false)) {
+		if(check_self_abilities_impl(shared_from_this(), other_attack_, cfg, self_, self_loc_, AFFECT_SELF, key, false, active_list)) {
+			bool active = !active_list || special_active(cfg, AFFECT_SELF, key);
 			const std::string name = cfg["name_affected"];
 			const std::string desc = cfg["description_affected"];
 
@@ -933,7 +934,7 @@ std::vector<std::pair<t_string, t_string>> attack_type::abilities_special_toolti
 			res.emplace_back(name, desc);
 			checking_name.insert(name);
 			if(active_list) {
-				active_list->push_back(true);
+				active_list->push_back(active);
 			}
 		}
 	}
@@ -948,7 +949,8 @@ std::vector<std::pair<t_string, t_string>> attack_type::abilities_special_toolti
 		}
 		int dir = find_direction(self_loc_, from_loc, distance);
 		for(const auto [key, cfg] : u.abilities().all_children_view()) {
-			if(!active_list || check_adj_abilities_impl(shared_from_this(), other_attack_, cfg, self_, u, distance, dir, self_loc_, from_loc, AFFECT_SELF, key, false)) {
+			if(check_adj_abilities_impl(shared_from_this(), other_attack_, cfg, self_, u, distance, dir, self_loc_, from_loc, AFFECT_SELF, key, false, active_list)) {
+				bool active = !active_list || special_active(cfg, AFFECT_SELF, key);
 				const std::string name = cfg["name_affected"];
 				const std::string desc = cfg["description_affected"];
 
@@ -958,7 +960,7 @@ std::vector<std::pair<t_string, t_string>> attack_type::abilities_special_toolti
 				res.emplace_back(name, desc);
 				checking_name.insert(name);
 				if(active_list) {
-					active_list->push_back(true);
+					active_list->push_back(active);
 				}
 			}
 		}
@@ -1723,7 +1725,7 @@ bool unit::get_adj_ability_bool_weapon(const config& special, const std::string&
 	return (get_adj_ability_bool(special, tag_name, dist, dir, loc, from, from_loc) && ability_affects_weapon(special, weapon, false) && ability_affects_weapon(special, opp_weapon, true));
 }
 
-bool attack_type::check_self_abilities_impl(const const_attack_ptr& self_attack, const const_attack_ptr& other_attack, const config& special, const unit_const_ptr& u, const map_location& loc, AFFECTS whom, const std::string& tag_name, bool leader_bool)
+bool attack_type::check_self_abilities_impl(const const_attack_ptr& self_attack, const const_attack_ptr& other_attack, const config& special, const unit_const_ptr& u, const map_location& loc, AFFECTS whom, const std::string& tag_name, bool leader_bool, bool just_teaching)
 {
 	if(tag_name == "leadership" && leader_bool){
 		if(u->get_self_ability_bool_weapon(special, tag_name, loc, self_attack, other_attack)) {
@@ -1731,14 +1733,14 @@ bool attack_type::check_self_abilities_impl(const const_attack_ptr& self_attack,
 		}
 	}
 	if(abilities_list::all_weapon_tags().count(tag_name) != 0){
-		if(u->get_self_ability_bool(special, tag_name, loc) && special_active_impl(self_attack, other_attack, special, whom, tag_name, true)) {
+		if(u->get_self_ability_bool(special, tag_name, loc) && special_active_impl(self_attack, other_attack, special, whom, tag_name, true, just_teaching)) {
 			return true;
 		}
 	}
 	return false;
 }
 
-bool attack_type::check_adj_abilities_impl(const const_attack_ptr& self_attack, const const_attack_ptr& other_attack, const config& special, const unit_const_ptr& u, const unit& from, std::size_t dist, int dir, const map_location& loc, const map_location& from_loc, AFFECTS whom, const std::string& tag_name, bool leader_bool)
+bool attack_type::check_adj_abilities_impl(const const_attack_ptr& self_attack, const const_attack_ptr& other_attack, const config& special, const unit_const_ptr& u, const unit& from, std::size_t dist, int dir, const map_location& loc, const map_location& from_loc, AFFECTS whom, const std::string& tag_name, bool leader_bool, bool just_teaching)
 {
 	if(tag_name == "leadership" && leader_bool) {
 		if(u->get_adj_ability_bool_weapon(special, tag_name, dist, dir, loc, from, from_loc, self_attack, other_attack)) {
@@ -1746,7 +1748,7 @@ bool attack_type::check_adj_abilities_impl(const const_attack_ptr& self_attack, 
 		}
 	}
 	if(abilities_list::all_weapon_tags().count(tag_name) != 0) {
-		if(u->get_adj_ability_bool(special, tag_name, dist, dir, loc, from, from_loc) && special_active_impl(self_attack, other_attack, special, whom, tag_name, true)) {
+		if(u->get_adj_ability_bool(special, tag_name, dist, dir, loc, from, from_loc) && special_active_impl(self_attack, other_attack, special, whom, tag_name, true, just_teaching)) {
 			return true;
 		}
 	}
@@ -2175,6 +2177,7 @@ bool attack_type::special_active(const config& special, AFFECTS whom, const std:
  * @param whom              specifies which combatant we care about
  * @param tag_name          tag name of the special config
  * @param in_abilities_tag  if special coded in [specials] or [abilities] tags
+ * @param just_teaching  when true, returns inactive specials, when false the special is required to be active.
  */
 bool attack_type::special_active_impl(
 	const const_attack_ptr& self_attack,
@@ -2182,7 +2185,8 @@ bool attack_type::special_active_impl(
 	const config& special,
 	AFFECTS whom,
 	const std::string& tag_name,
-	bool in_abilities_tag)
+	bool in_abilities_tag,
+	bool just_teaching)
 {
 	assert(self_attack || other_attack);
 	bool is_attacker = self_attack ? self_attack->is_attacker_ : !other_attack->is_attacker_;
@@ -2201,11 +2205,12 @@ bool attack_type::special_active_impl(
 	}
 
 	// Is this active on attack/defense?
+	// if just_teaching is true, ignore this step for abilities weapon name_affected displayed same when inactive.
 	const std::string & active_on = special["active_on"];
-	if ( !active_on.empty() ) {
-		if ( is_attacker  &&  active_on != "offense" )
+	if(!just_teaching && !active_on.empty()) {
+		if(is_attacker && active_on != "offense")
 			return false;
-		if ( !is_attacker  &&  active_on != "defense" )
+		if(!is_attacker && active_on != "defense")
 			return false;
 	}
 
@@ -2289,17 +2294,17 @@ bool attack_type::special_active_impl(
 	if (!special_unit_matches(self, other, self_loc, self_attack, special, is_for_listing, filter_self, self_check_if_recursion))
 		return false;
 	std::string opp_check_if_recursion = (applied_both || !whom_is_self) ? tag_name : "";
-	if (!special_unit_matches(other, self, other_loc, other_attack, special, is_for_listing, "filter_opponent", opp_check_if_recursion))
+	if (!just_teaching && !special_unit_matches(other, self, other_loc, other_attack, special, is_for_listing, "filter_opponent", opp_check_if_recursion))
 		return false;
 	//in case of apply_to=attacker|defender, if both [filter_attacker] and [filter_defender] are used,
 	//check what is_attacker is true(or false for (filter_defender]) in affect self case only is necessary for what unit affected by special has a tag_name check.
 	bool applied_to_attacker = applied_both || (whom_is_self && is_attacker) || (!whom_is_self && !is_attacker);
 	std::string att_check_if_recursion = applied_to_attacker ? tag_name : "";
-	if (!special_unit_matches(att, def, att_loc, att_weapon, special, is_for_listing, "filter_attacker", att_check_if_recursion))
+	if ((!just_teaching || is_attacker) && !special_unit_matches(att, def, att_loc, att_weapon, special, is_for_listing, "filter_attacker", att_check_if_recursion))
 		return false;
 	bool applied_to_defender = applied_both || (whom_is_self && !is_attacker) || (!whom_is_self && is_attacker);
 	std::string def_check_if_recursion= applied_to_defender ? tag_name : "";
-	if (!special_unit_matches(def, att, def_loc, def_weapon, special, is_for_listing, "filter_defender", def_check_if_recursion))
+	if ((!just_teaching || !is_attacker) && !special_unit_matches(def, att, def_loc, def_weapon, special, is_for_listing, "filter_defender", def_check_if_recursion))
 		return false;
 
 	// filter adjacent units or adjacent locations
