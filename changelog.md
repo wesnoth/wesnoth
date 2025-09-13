@@ -8,7 +8,7 @@
 ### Packaging
 ### Terrain
 ### Translations
-   * Updated translations: Bengali, British English, Chinese (Simplified)
+   * Updated translations: Bengali, British English, Chinese (Simplified), Czech, Spanish
 ### Units
 ### User interface
    * On Android, back button now works similarly to Escape on desktop.

@@ -14,9 +14,9 @@ msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-08-19 10:14-0500\n"
-"PO-Revision-Date: 2023-01-15 10:18+0100\n"
-"Last-Translator: Toranks <toranksmervat@gmail.com>\n"
-"Language-Team: Wesnoth\n"
+"PO-Revision-Date: 2025-08-29 20:04-0300\n"
+"Last-Translator: Sebastián Lecchini<sebas38760@gmail.com>\n"
+"Language-Team: es\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -205,7 +205,7 @@ msgstr "Ventana"
 #. [menu]: id=menu-editor-addon
 #: data/themes/editor.cfg:110
 msgid "Add-on"
-msgstr ""
+msgstr "Complemento"
 
 #. [menu]: id=menu-editor-areas
 #: data/themes/editor.cfg:119
@@ -225,7 +225,7 @@ msgstr "Asignar planificación de las fases horarias locales"
 #. [menu]: id=menu-editor-unit
 #: data/themes/editor.cfg:141
 msgid "Unit"
-msgstr ""
+msgstr "Unidad"
 
 #. [menu]: id=menu-editor-side
 #: data/themes/editor.cfg:151
@@ -307,14 +307,11 @@ msgstr "No se encontraron datos de la «hora del día» para el editor."
 
 #: src/editor/controller/editor_controller.cpp:873
 msgid "Add-on Files"
-msgstr ""
+msgstr "Archivos del complemento"
 
 #: src/editor/controller/editor_controller.cpp:886
-#, fuzzy
-#| msgid "Clipboard support not found, contact your packager"
 msgid "Opening files is not supported, contact your packager"
-msgstr ""
-"No se ha encontrado soporte para el portapapeles, contacte con su proveedor"
+msgstr "Abrir archivos no está soportado, contacte con su proveedor"
 
 #: src/editor/controller/editor_controller.cpp:1327
 msgid "Change Unit ID"
@@ -334,17 +331,15 @@ msgstr "Nombre:"
 
 #: src/editor/editor_display.cpp:170
 msgid "<span color='#66ff00'><span face='DejaVuSans'>✔</span> $msg</span>"
-msgstr ""
+msgstr "<span color='#66ff00'><span face='DejaVuSans'>✔</span> $msg</span>"
 
 #: src/editor/editor_display.cpp:172
 msgid "<span color='red'><span face='DejaVuSans'>✘</span> $msg</span>"
-msgstr ""
+msgstr "<span color='red'><span face='DejaVuSans'>✘</span> $msg</span>"
 
 #: src/editor/map/context_manager.cpp:217
-#, fuzzy
-#| msgid "Map loaded from scenario"
 msgid "Load Map or Scenario"
-msgstr "Mapa cargado desde escenario"
+msgstr "Cargar mapa o escenario"
 
 #: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1146
 msgid "New Map"
@@ -403,10 +398,8 @@ msgstr "Error"
 
 #: src/editor/map/context_manager.cpp:669
 #: src/editor/map/context_manager.cpp:718
-#, fuzzy
-#| msgid "Do you really want to quit?"
 msgid "Do you really want to save $type1 in $type2 folder?"
-msgstr "¿Realmente desea salir?"
+msgstr "¿Realmente desea guardar $type1 en la carpeta $type2?"
 
 #: src/editor/map/context_manager.cpp:677
 #: src/editor/map/context_manager.cpp:885
@@ -445,8 +438,6 @@ msgid "Scenario saved."
 msgstr "Escenario guardado."
 
 #: src/editor/map/context_manager.cpp:861
-#, fuzzy
-#| msgid "Map saved."
 msgid "Map saved"
 msgstr "Mapa guardado."
 
@@ -460,13 +451,9 @@ msgid "Map loaded from scenario"
 msgstr "Mapa cargado desde escenario"
 
 #: src/editor/map/context_manager.cpp:940
-#, fuzzy
-#| msgid ""
-#| "Loaded referenced map file:\n"
-#| "$new"
 msgid "Loaded referenced map file:"
 msgstr ""
-"Cargado el archivo de mapa indicado:\n"
+"Archivo de mapa referenciado cargado:\n"
 "$new"
 
 #: src/editor/map/editor_map.cpp:146
@@ -488,7 +475,7 @@ msgstr "Archivo vacío"
 
 #: src/editor/map/map_context.cpp:202
 msgid "File does not have .map, .cfg, or .mask extension"
-msgstr ""
+msgstr "El archivo no tiene extensión .map, .cfg, o .mask"
 
 #: src/editor/map/map_context.cpp:249
 msgid ""
@@ -501,16 +488,14 @@ msgstr ""
 #: src/editor/map/map_context.cpp:268
 msgid "Found the characters ‘<<’ indicating inline lua is present — aborting"
 msgstr ""
+"Se encontraron los caracteres ‘<<’, lo que indica que hay Lua en línea — "
+"abortando"
 
 #: src/editor/map/map_context.cpp:273
 msgid "Failed to load the scenario, attempting to load only the map."
-msgstr ""
+msgstr "No se pudo cargar el escenario, intentando cargar solo el mapa."
 
 #: src/editor/map/map_context.cpp:280
-#, fuzzy
-#| msgid ""
-#| "The map file looks like a scenario, but the map_data value does not point "
-#| "to an existing file"
 msgid ""
 "The map file looks like a scenario, but the map_file value does not point to "
 "an existing file"
@@ -520,19 +505,15 @@ msgstr ""
 
 #: src/editor/map/map_context.cpp:295
 msgid "Unable to parse file to find map data"
-msgstr ""
+msgstr "No se pudo analizar el archivo para encontrar los datos del mapa"
 
 #: src/editor/map/map_context.cpp:840 src/editor/map/map_context.cpp:880
-#, fuzzy
-#| msgid "Could not save the scenario: $msg"
 msgid "Could not save time schedule: $msg"
 msgstr "No se pudo guardar el escenario: $msg"
 
 #: src/editor/map/map_context.cpp:874
-#, fuzzy
-#| msgid "Time Schedule Menu"
 msgid "Time schedule saved."
-msgstr "Menú de planificación de fases horarias"
+msgstr "Fase horaria guardada."
 
 #: src/editor/map/map_context.cpp:920
 msgid "Could not save the scenario: $msg"
@@ -559,10 +540,8 @@ msgid "Will not work in game without extra care."
 msgstr "No funcionará en un juego sin atención adicional."
 
 #: src/editor/palette/item_palette.cpp:33
-#, fuzzy
-#| msgid "Right-click: "
 msgid "Left-click: Place item $item | Right-click to remove"
-msgstr "Clic-derecho: "
+msgstr "Clic izquierdo: colocar objeto $item | Clic derecho: quitar"
 
 #: src/editor/palette/location_palette.cpp:247
 msgid "Go To"
