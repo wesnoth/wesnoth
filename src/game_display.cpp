@@ -471,7 +471,7 @@ void game_display::draw_movement_info(const map_location& loc)
 			// Display the def% of this terrain
 			int move_cost = un->movement_cost(context().map().get_terrain(loc));
 			int def = (move_cost == movetype::UNREACHABLE ?
-						0 : 100 - un->defense_modifier(context().map().get_terrain(loc)));
+						0 : 100 - un->defense_modifier(context().map().get_terrain(loc), loc));
 			std::stringstream def_text;
 			def_text << def << "%";
 
@@ -516,7 +516,7 @@ void game_display::draw_movement_info(const map_location& loc)
 			// Display the def% of this terrain
 			int move_cost = selectedUnit->movement_cost(context().map().get_terrain(loc));
 			int def = (move_cost == movetype::UNREACHABLE ?
-						0 : 100 - selectedUnit->defense_modifier(context().map().get_terrain(loc)));
+						0 : 100 - selectedUnit->defense_modifier(context().map().get_terrain(loc), loc));
 			std::stringstream def_text;
 			def_text << def << "%";
 
