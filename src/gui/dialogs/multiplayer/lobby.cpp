@@ -854,16 +854,12 @@ void mp_lobby::process_network_data(const config& data)
 			new_info.id = queue_update["queue_id"].to_int();
 			new_info.players_required = queue_update["players_required"].to_int();
 			new_info.display_name = queue_update["display_name"].str();
-			new_info.scenario_id = queue_update["scenario_id"].str();
 		} else {
 			for(mp::queue_info& info : queues) {
 				if(info.id == queue_update["queue_id"].to_int()) {
 					if(queue_update["action"].str() == "remove") {
 						utils::erase_if(queues, [&](const mp::queue_info& i) { return i.id == queue_update["queue_id"].to_int(); });
 					} else if(queue_update["action"].str() == "update") {
-						if(queue_update->has_attribute("scenario_id")) {
-							info.scenario_id = queue_update["scenario_id"].str();
-						}
 						if(queue_update->has_attribute("display_name")) {
 							info.display_name = queue_update["display_name"].str();
 						}
