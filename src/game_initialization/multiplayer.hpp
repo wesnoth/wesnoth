@@ -30,7 +30,6 @@ namespace mp
 struct queue_info
 {
 	int id;
-	std::string scenario_id;
 	std::string display_name;
 	int players_required;
 	std::set<std::string> current_players;

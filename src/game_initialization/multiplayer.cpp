@@ -108,7 +108,6 @@ private:
 				for(const config& queue : cfg.mandatory_child("queues").child_range("queue")) {
 					queue_info info;
 					info.id = queue["id"].to_int();
-					info.scenario_id = queue["scenario_id"].str();
 					info.display_name = queue["display_name"].str();
 					info.players_required = queue["players_required"].to_int();
 					info.current_players = utils::split_set(queue["current_players"].str());
