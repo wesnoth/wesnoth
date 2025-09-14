@@ -153,7 +153,7 @@ namespace
 	// Create a crop string for one hex of a multihex image (72x72 px)
 	static std::string build_child_crop_string(const map_location& anchor, const map_location& hex, int big_width, int big_height)
 	{
-		// Calculate the pixel offset between the anchor hex (the parent's center) and the current child hex. 
+		// Calculate the pixel offset between the anchor hex (the parent's center) and the current child hex.
 		// Columns are 54px wide, rows are 72px tall.
 		int dx_px = (hex.x - anchor.x) * 54; //(HEX_W - HEX_W / 4);
 		int dy_px = (hex.y - anchor.y) * 72; // HEX_H
@@ -170,7 +170,7 @@ namespace
 		int crop_x = (big_width / 2) + dx_px - 36; //(HEX_W / 2)
 		int crop_y = (big_height / 2) + dy_px - 36; //(HEX_H / 2)
 
-		// Return crop string for a 72x72 box. 
+		// Return crop string for a 72x72 box.
 		std::stringstream ss;
 		ss << "~CROP(" << crop_x << "," << crop_y << "," << 72 << "," << 72 << ")"; //HEX_W, HEX_H
 		return ss.str();
