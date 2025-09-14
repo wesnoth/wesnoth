@@ -26,6 +26,7 @@ struct overlay
 			const std::string& overlay_team_name,
 			const std::string& item_id,
 			const bool fogged,
+			const bool multihex,
 			float submerge,
 			float parallax,
 			float item_z_order = 0,
@@ -33,10 +34,11 @@ struct overlay
 		: image(img)
 		, halo(halo_img)
 		, team_name(overlay_team_name)
-		, name()
+		, name() // The relation between id and name is strange, they are often assumed to be the same. Can cause issues for removal.
 		, id(item_id)
 		, halo_handle()
 		, visible_in_fog(fogged)
+		, multihex(multihex)
 		, submerge(submerge)
 		, parallax(parallax)
 		, z_order(item_z_order)
@@ -51,6 +53,7 @@ struct overlay
 		, id(cfg["id"])
 		, halo_handle()
 		, visible_in_fog(cfg["visible_in_fog"].to_bool())
+		, multihex(cfg["multihex"].to_bool())
 		, submerge(cfg["submerge"].to_double(0))
 		, parallax(cfg["parallax"].to_double(1.0))
 		, z_order(cfg["z_order"].to_double(0))
@@ -65,11 +68,14 @@ struct overlay
 
 	halo::handle halo_handle;
 	bool visible_in_fog;
+	bool multihex;
 	float submerge;
 	float parallax;
 	float z_order;
 
 	// Other support
 	bool is_animated = false;
+	bool is_child = false;         // A child overlay part of an larger multihex image (center part is parent)
+	std::vector<std::pair<std::string, map_location>> child_hexes; // Locations and ids of child hexes if multihex (stored in parents)
 	animated<image::locator> anim; // Manages the sequence of frames and timing for animated overlays.
 };
