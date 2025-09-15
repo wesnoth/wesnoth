@@ -66,11 +66,11 @@ public:
 	/** Default implementation, but defined out-of-line for efficiency reasons. */
 	t_string_base(const t_string_base&);
 	t_string_base(t_string_base&&) noexcept = default;
-	t_string_base(const std::string& string);
-	t_string_base(std::string&& string);
+	explicit t_string_base(const std::string& string);
+	explicit t_string_base(std::string&& string);
 	t_string_base(const std::string& string, const std::string& textdomain);
 	t_string_base(const std::string& sing, const std::string& pl, int count, const std::string& textdomain);
-	t_string_base(const char* string);
+	explicit t_string_base(const char* string);
 
 	static t_string_base from_serialized(const std::string& string);
 	std::string to_serialized() const;
@@ -152,7 +152,7 @@ public:
 
 	t_string& operator=(t_string&&) noexcept = default;
 
-	t_string(const base &);
+	explicit t_string(const base &);
 	t_string(const char *);
 	t_string(const std::string &);
 	t_string(std::string&&);
@@ -166,9 +166,9 @@ public:
 
 	operator const t_string_base &() const { return get(); }
 
-	t_string operator+(const t_string& o) const { return get() + o.get(); }
-	t_string operator+(const std::string& o) const { return get() + o; }
-	t_string operator+(const char* o) const { return get() + o; }
+	t_string operator+(const t_string& o) const { return t_string(get() + o.get()); }
+	t_string operator+(const std::string& o) const { return t_string(get() + o); }
+	t_string operator+(const char* o) const { return t_string(get() + o); }
 
 private:
 	template<typename T>
