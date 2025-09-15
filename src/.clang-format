@@ -7,7 +7,6 @@ AllowAllParametersOfDeclarationOnNextLine: true
 AllowShortIfStatementsOnASingleLine: false
 AllowShortLoopsOnASingleLine: false
 AllowShortFunctionsOnASingleLine: false
-AlwaysBreakTemplateDeclarations: true
 AlwaysBreakBeforeMultilineStrings: false
 AlignOperands: false
 AllowShortLambdasOnASingleLine: All
@@ -32,7 +31,7 @@ BreakBeforeTernaryOperators: true
 BreakConstructorInitializers: BeforeComma
 BreakFunctionDefinitionParameters: false
 BreakInheritanceList: BeforeComma
-BreakTemplateDeclarations: Always
+BreakTemplateDeclarations: Yes
 BinPackParameters: false
 BinPackLongBracedList: false
 ColumnLimit: 120
@@ -75,10 +74,9 @@ SortIncludes: true
 SortUsingDeclarations: Lexicographic
 SeparateDefinitionBlocks: Always
 SpaceBeforeAssignmentOperators: true
-SpacesInAngles: Never
 SpaceBeforeParens: Custom
 SpaceBeforeParensOptions:
-    AfterControlStatements: true
+    AfterControlStatements: false
     AfterForeachMacros: false
     AfterFunctionDeclarationName: false
     AfterFunctionDefinitionName: false
@@ -93,7 +91,6 @@ SpaceBeforeRangeBasedForLoopColon: true
 SpaceAfterTemplateKeyword: false
 SpacesBeforeTrailingComments: 1
 SpacesInParens: Never
-SpacesInParentheses: false
 SpacesInAngles: Never
 SpacesInCStyleCastParentheses: false
 Standard: Latest
