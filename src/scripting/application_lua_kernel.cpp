@@ -298,7 +298,7 @@ static int intf_execute(lua_State* L)
 	}
 	try {
 		config data = luaW_serialize_function(L, FUNC);
-		if(data["params"] != 0) {
+		if(data["params"].to_int() != 0) {
 			lua_pushboolean(L, false);
 			lua_pushstring(L, "cannot execute function with parameters");
 			return 2;
