@@ -159,7 +159,7 @@ void carryover_info::transfer_all_to(config& side_cfg){
 	if(side_cfg["save_id"].empty()){
 		side_cfg["save_id"] = side_cfg["id"];
 	}
-	auto iside = utils::ranges::find(carryover_sides_, side_cfg["save_id"], &carryover::get_save_id);
+	auto iside = utils::ranges::find(carryover_sides_, side_cfg["save_id"].str(), &carryover::get_save_id);
 	if(iside != carryover_sides_.end())
 	{
 		iside->transfer_all_gold_to(side_cfg);

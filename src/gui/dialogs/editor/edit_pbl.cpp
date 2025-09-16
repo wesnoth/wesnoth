@@ -111,11 +111,11 @@ void editor_edit_pbl::pre_show()
 	name->set_value(pbl["title"]);
 	keyboard_capture(name);
 
-	find_widget<scroll_text>("description").set_value(pbl["description"]);
+	find_widget<scroll_text>("description").set_value(pbl["description"].t_str());
 	find_widget<text_box>("icon").set_value(pbl["icon"]);
 	if(!pbl["icon"].empty()) {
 		drawing& img = find_widget<drawing>("preview");
-		img.set_label(pbl["icon"]);
+		img.set_label(pbl["icon"].str());
 	}
 	find_widget<text_box>("author").set_value(pbl["author"]);
 	find_widget<text_box>("version").set_value(pbl["version"]);

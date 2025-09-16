@@ -168,7 +168,7 @@ config persist_file_context::get_var(const std::string &global) const
 			for (std::size_t i = 0; i < arrsize; i++)
 				ret.add_child(global, cfg.mandatory_child(global,i));
 		} else {
-			ret = pack_scalar(global,cfg[global]);
+			ret = pack_scalar(global, cfg[global].t_str());
 		}
 	} else {
 		ret = pack_scalar(global,"");

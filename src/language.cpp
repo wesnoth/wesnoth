@@ -317,7 +317,7 @@ bool load_strings(bool complain)
 	}
 	for(const config& lang : languages) {
 		for(const auto& [key, value] : lang.attribute_range()) {
-			strings_[key] = value;
+			strings_[key] = value.t_str();
 		}
 	}
 

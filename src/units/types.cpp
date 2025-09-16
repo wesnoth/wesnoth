@@ -194,8 +194,8 @@ void unit_type::build_help_index(
 
 	const config& cfg = get_cfg();
 
-	type_name_ = cfg["name"];
-	description_ = cfg["description"];
+	type_name_ = cfg["name"].t_str();
+	description_ = cfg["description"].t_str();
 	hitpoints_ = cfg["hitpoints"].to_int(1);
 	level_ = cfg["level"].to_int();
 	recall_cost_ = cfg["recall_cost"].to_int(-1);
@@ -213,7 +213,7 @@ void unit_type::build_help_index(
 	do_not_list_ = cfg["do_not_list"].to_bool(false);
 
 	for(const config& sn : cfg.child_range("special_note")) {
-		special_notes_.push_back(sn["note"]);
+		special_notes_.push_back(sn["note"].t_str());
 	}
 
 	adjust_profile(profile_);

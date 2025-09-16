@@ -176,26 +176,24 @@ terrain_type::terrain_type(const config& cfg)
 	std::sort(union_type_.begin(),union_type_.end());
 	union_type_.erase(std::unique(union_type_.begin(), union_type_.end()), union_type_.end());
 
-
-
 	//mouse over message are only shown on villages
 	if(village_) {
-		income_description_ = cfg["income_description"];
+		income_description_ = cfg["income_description"].t_str();
 		if(income_description_.empty()) {
 			income_description_ = _("Village");
 		}
 
-		income_description_ally_ = cfg["income_description_ally"];
+		income_description_ally_ = cfg["income_description_ally"].t_str();
 		if(income_description_ally_.empty()) {
 			income_description_ally_ = _("Allied village");
 		}
 
-		income_description_enemy_ = cfg["income_description_enemy"];
+		income_description_enemy_ = cfg["income_description_enemy"].t_str();
 		if(income_description_enemy_.empty()) {
 			income_description_enemy_ = _("Enemy village");
 		}
 
-		income_description_own_ = cfg["income_description_own"];
+		income_description_own_ = cfg["income_description_own"].t_str();
 		if(income_description_own_.empty()) {
 			income_description_own_ = _("Owned village");
 		}

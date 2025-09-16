@@ -112,7 +112,7 @@ void team_builder::objectives()
 	// to the level-global "objectives"
 	// this is only used by the default mp 'Defeat enemy leader' objectives
 	if(team_.objectives().empty()) {
-		team_.set_objectives(level_["objectives"], false);
+		team_.set_objectives(level_["objectives"].t_str(), false);
 	}
 }
 

@@ -657,7 +657,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(debug_set_var, child, /*spectator*/)
 	debug_cmd_notification("set_var");
 
 	try {
-		resources::gamedata->set_variable(child["name"],child["value"]);
+		resources::gamedata->set_variable(child["name"], child["value"].t_str());
 	}
 	catch(const invalid_variablename_exception&) {
 	//	command_failed(_("Variable not found"));
