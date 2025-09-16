@@ -477,7 +477,7 @@ void campaign_selection::add_campaign_to_tree(const config& campaign)
 			return std::string{};
 		}
 
-		auto difficulties = campaign.child_range("difficulty");
+		config::const_child_itors difficulties = campaign.child_range("difficulty");
 		auto did_complete_at = [](const config& c) { return c["completed_at"].to_bool(); };
 
 		// Check for non-completion on every difficulty save the first.
