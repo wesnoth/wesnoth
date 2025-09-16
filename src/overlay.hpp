@@ -29,7 +29,8 @@ struct overlay
 			const bool multihex,
 			float submerge,
 			float parallax_mult,
-			float item_z_order = 0)
+			float item_z_order = 0,
+			std::chrono::milliseconds duration = std::chrono::milliseconds(0))
 		: image(img)
 		, halo(halo_img)
 		, team_name(overlay_team_name)
@@ -41,6 +42,7 @@ struct overlay
 		, submerge(submerge)
 		, parallax_mult(parallax_mult)
 		, z_order(item_z_order)
+		, duration(duration)
 	{}
 
 
@@ -56,6 +58,7 @@ struct overlay
 		, submerge(cfg["submerge"].to_double(0))
 		, parallax_mult(cfg["parallax_mult"].to_double(1.0))
 		, z_order(cfg["z_order"].to_double(0))
+		, duration(std::chrono::milliseconds(cfg["duration"].to_int(0)))
 	{
 	}
 
@@ -71,6 +74,7 @@ struct overlay
 	float submerge;
 	float parallax_mult;
 	float z_order;
+	std::chrono::milliseconds duration;
 
 	// Other support
 	bool is_animated = false;
