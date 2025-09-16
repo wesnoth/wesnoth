@@ -11,12 +11,12 @@ local function add_overlay(x, y, cfg)
 	end
 
 	wesnoth.interface.add_hex_overlay(x, y, cfg)
-	
+
 	if cfg.duration and cfg.duration ~= 0 then
 		return --Do not store item if it is on a duration timer.
 		--Avoids having to remove scenario_items from display.cpp when duration expires.
 	end
-	
+
 	local items = scenario_items:get(x, y)
 	if not items then
 		items = {}
