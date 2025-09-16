@@ -20,7 +20,9 @@ Wesnoth's engine conforms to the C++17 standard. We encourage the use of standar
 
 All C++, WML and Lua files are in UTF-8, as we use Gettext-style translations, and translatable strings use some punctuation that's outside of the ASCII subset. More details are in the [Typography Style Guide](https://wiki.wesnoth.org/Typography_Style_Guide) and the guide to [using Gettext strings](https://wiki.wesnoth.org/GettextForWesnothDevelopers).
 
-If your pull request touches the engine's C++ source code, we recommend (but don't require) you run `clang-format` on your changes before submission (Visual Studio Code gives you a handy context menu option to do so). This ensures that your code remains formatted according to our conventions. Make a local commit before running `clang-format`, in case more code than expected gets changed.
+WML files must be formatted with wmlindent, as this will be checked by the CI. Currently the data/gui and data/schema directories are exceptions to this, some of the unit tests are exceptions too.
+
+For C++ files, we have a configuration file for `clang-format`, however C++ formatting is currently handled by comments in code review without a check by the CI. This may change in future, but currently we want to incrementally move towards consistent formatting in steps that leave a useful `git blame` history rather than reformatting the whole codebase in one go. For C++ changes in files that aren't matching the standard it's left to the judgement of the contributor. We recommend making a local commit before running `clang-format`, in case more code than expected gets changed. Some GUIs, such as Visual Studio Code, are able to run clang-format on just the selected text rather than the full file.
 
 Additionally, for machine generated or machine assisted code, if you open a pull request you are expected to be able to explain what the code you're submitting does and why it's done this way. If you're not able to explain the code you've submitted then the reviewer(s) may decide to immediately close your pull request - we are all volunteers, our time is limited, and it's not our responsibility to try to interpret the code you asked an AI to output. Do not submit "vibe coded" pull requests if you aren't able to explain their implementation details yourself and always make sure to carefully test any generated code before opening your pull request. Any pull request that is primarily or entirely machine generated must also state this in the commit message.
 
@@ -31,8 +33,9 @@ Generally, we follow these conventions in our C++ code:
 #pragma once
 
 // Includes for files from the src/... directories should use double-quotes.
-#include "help/help.hpp"
+// Includes should also be sorted alphabetically.
 #include "gettext.hpp"
+#include "help/help.hpp"
 
 // Use angle brackets for system and external includes.
 // Includes should also be sorted alphabetically.
@@ -45,9 +48,9 @@ Generally, we follow these conventions in our C++ code:
 // Classes should have scope specifiers (public, protected, private), but structs can omit them.
 struct my_struct
 {
-    // Public members do not need a trailing underscore.
-    // Inline initialization is acceptable over a constructor.
-    bool member = false;
+	// Public members do not need a trailing underscore.
+	// Inline initialization is acceptable over a constructor.
+	bool member = false;
 };
 
 // Class names are lower-case with underscores between words.
@@ -55,68 +58,66 @@ struct my_struct
 class my_class
 {
 public:
-    // Use using directives over typedefs. They're easier to read.
-    using alias_t = std::vector<my_struct>;
+	// Use using directives over typedefs. They're easier to read.
+	using alias_t = std::vector<my_struct>;
 
-    // Use leading commas in the ctor list
-    // Use the T& foo or T* foo reference and pointer styles, not T &foo or T *foo.
-    // Use the "explicit" keyword for single-argument constructors.
-    explicit my_class(alias_t& ref)
-        : the_array_of_doom_()
-        , vec_ptr_(nullptr) // Use nullptr instead of NULL or 0
-    {
-        // Use C++ casts (static_cast and dynamic_cast) instead of C-style casts.
-        // Do try and avoid reinterpret_cast and const_cast if at all possible.
-        const float cast_test = static_cast<float>(how_far_to_destination_);
+	// Use leading commas in the ctor list
+	// Use the T& foo or T* foo reference and pointer styles, not T &foo or T *foo.
+	// Use the "explicit" keyword for single-argument constructors.
+	explicit my_class(alias_t& ref)
+		: the_array_of_doom_()
+		, vec_ptr_(nullptr) // Use nullptr instead of NULL or 0
+	{
+		// Use C++ casts (static_cast and dynamic_cast) instead of C-style casts.
+		// Do try and avoid reinterpret_cast and const_cast if at all possible.
+		const float cast_test = static_cast<float>(how_far_to_destination_);
 
-        // Don't put a space after conditional keywords, and keep their opening brackets on the same line.
-        if(!ref.empty()) {
-            vec_ptr_ = &ref;
+		// Don't put a space after conditional keywords, and keep their opening brackets on the same line.
+		if(!ref.empty()) {
+			vec_ptr_ = &ref;
 
-            // Use lambdas for short functions like this.
-            // We also encourage the use of auto in lambdas and other places where
-            // type names are long and can be inferred.
-            std::sort(ref.begin(), ref.end(), [](const auto& a, const auto& b) {
-                return a.member && !b.member;
-            });
-        }
-    }
+			// Use lambdas for short functions like this.
+			// We also encourage the use of auto in lambdas and other places where
+			// type names are long and can be inferred.
+			std::sort(ref.begin(), ref.end(), [](const auto& a, const auto& b) { return a.member && !b.member; });
+		}
+	}
 
-    /**
-     * Keep class method brackets on their own line, and always utilize const for methods and
-     * variables when possible.
-     *
-     * For documenting functions, we loosely follow Doxygen conventions. You don't need to document
-     * every single function, but important ones should optimally have at least a one-line comment
-     * explaining what it does.
-     *
-     * This returns a translatable string, using gettext's _ function.
-     *
-     * @param speaker_id        The person speaking
-     */
-    t_string exclaim(const std::string& speaker_id) const
-    {
-        if(how_far_to_destination_ < 100) {
-            if(speaker_id == "signboard") {
-                return _("Oldwood — enter at own risk");
-            } else {
-                // TRANSLATORS: The lake is the small underground one in S06 Temple in the Deep
-                return _("Hmm, someone has written underneath “Fire-carrying trespassers will be thrown in the lake.”");
-            }
-        } else {
-            return _("Clearwater — just keep following the river");
-        }
-    }
+	/**
+	 * Keep class method brackets on their own line, and always utilize const for methods and
+	 * variables when possible.
+	 *
+	 * For documenting functions, we loosely follow Doxygen conventions. You don't need to document
+	 * every single function, but important ones should optimally have at least a one-line comment
+	 * explaining what it does.
+	 *
+	 * This returns a translatable string, using gettext's _ function.
+	 *
+	 * @param speaker_id        The person speaking
+	 */
+	t_string exclaim(const std::string& speaker_id) const
+	{
+		if(how_far_to_destination_ < 100) {
+			if(speaker_id == "signboard") {
+				return _("Oldwood — enter at own risk");
+			} else {
+				// TRANSLATORS: The lake is the small underground one in S06 Temple in the Deep
+				return _("Hmm, someone has written underneath “Fire-carrying trespassers will be thrown in the lake.”");
+			}
+		} else {
+			return _("Clearwater — just keep following the river");
+		}
+	}
 
 private:
-    // End private class members with an underscore. Additionally, use C++ standard
-    // like std::array as opposed to C equivalents (such as int[])
-    std::array<int, 8> the_array_of_doom_;
+	// End private class members with an underscore. Additionally, use C++ standard
+	// like std::array as opposed to C equivalents (such as int[])
+	std::array<int, 8> the_array_of_doom_;
 
-    alias_t* vec_ptr_;
+	alias_t* vec_ptr_;
 
-    // Use static or constexpr for constants. Don't use macros.
-    static const int how_far_to_destination_ = 1000;
+	// Use static or constexpr for constants. Don't use macros.
+	static const int how_far_to_destination_ = 1000;
 };
 ```
 
