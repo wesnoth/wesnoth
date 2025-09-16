@@ -33,10 +33,18 @@
 
 #include <chrono>
 #include <climits>
+#ifdef __cpp_concepts
+#include <concepts>
+#endif
 #include <iosfwd>
 #include <string>
 #include <vector>
 #include <type_traits>
+
+#ifdef __cpp_concepts
+template<typename T>
+concept StringLike = std::constructible_from<std::string, T>;
+#endif
 
 /**
  * Variant for storing WML attributes.
@@ -178,37 +186,38 @@ public:
 		return !operator==(other);
 	}
 
-	bool operator==(bool comp) const
+#ifdef __cpp_concepts
+	bool operator==(const StringLike auto& comp) const
 	{
-		const bool has_bool =
-			utils::holds_alternative<yes_no>(value_) ||
-			utils::holds_alternative<true_false>(value_);
-		return has_bool && to_bool() == comp;
+		return apply_visitor([this, &comp]<typename V>(const V& value) {
+			if constexpr(StringLike<V>) {
+				return value == comp;
+			} else {
+				return *this == create(comp);
+			}
+		});
+	}
+#else
+	template<typename T>
+	std::enable_if_t<std::is_constructible_v<std::string, T>, bool>
+	operator==(const T& comp) const
+	{
+		return apply_visitor([this, &comp](const auto& value) {
+			if constexpr(std::is_constructible_v<std::string, std::decay_t<decltype(value)>>) {
+				return value == comp;
+			} else {
+				return *this == create(comp);
+			}
+		});
 	}
 
 	template<typename T>
-	bool operator==(const T& comp) const
+	std::enable_if_t<std::is_constructible_v<std::string, T>, bool>
+	operator!=(const T& comp) const
 	{
-		if constexpr(std::is_convertible_v<T, std::string>) {
-			config_attribute_value v;
-			v = comp;
-			return *this == v;
-		} else {
-			return utils::holds_alternative<T>(value_) && this->to(T{}) == comp;
-		}
+		return !operator==(comp);
 	}
-
-	template<typename T>
-	bool friend operator!=(const config_attribute_value& val, const T& str)
-	{
-		return !val.operator==(str);
-	}
-
-	template<typename T>
-	bool friend operator!=(const T &str, const config_attribute_value& val)
-	{
-		return !val.operator==(str);
-	}
+#endif
 
 	// Streaming:
 	friend std::ostream& operator<<(std::ostream& os, const config_attribute_value& v);

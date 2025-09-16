@@ -1562,7 +1562,7 @@ void prefs::add_game_preset(config&& preset_data)
 
 void prefs::remove_game_preset(int id)
 {
-	preferences_.remove_children(prefs_list::game_preset, [&id](const config& preset) {return preset["id"] == id;});
+	preferences_.remove_children(prefs_list::game_preset, [&id](const config& preset) { return preset["id"].to_int() == id; });
 }
 
 config::child_itors prefs::get_game_presets()
