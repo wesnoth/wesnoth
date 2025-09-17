@@ -440,7 +440,7 @@ int manager::get_scenario_index() const
 
 bool manager::is_modification_active(int index) const
 {
-	return utils::contains(mods_, depinfo_.mandatory_child("modification", index)["id"]);
+	return utils::contains(mods_, depinfo_.mandatory_child("modification", index)["id"].str());
 }
 
 bool manager::is_modification_active(const std::string& id) const
