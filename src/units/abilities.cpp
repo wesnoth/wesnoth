@@ -869,24 +869,25 @@ unit_ability_list attack_type::get_specials(const std::string& special) const
 
 /**
  * Returns a vector of names and descriptions for the specials of *this.
- * Each std::pair in the vector has first = name and second = description.
+ * Each std::tuple in the vector is [name, description, active].
  *
- * This uses either the active or inactive name/description for each special,
- * based on the current context (see set_specials_context), provided
- * @a active_list is not nullptr. Otherwise specials are assumed active.
+ * If assume_active is true, all specials will be shown as if they are active
+ * and the third element of the tuple will always be true without checking.
+ *
+ * If assume_active is false, this uses either the active or inactive
+ * name/description for each special, based on the current context (see
+ * set_specials_context).
+ *
  * If the appropriate name is empty, the special is skipped.
  */
-std::vector<std::pair<t_string, t_string>> attack_type::special_tooltips(
-	boost::dynamic_bitset<>* active_list) const
+std::vector<attack_type::attack_tooltip_metadata> attack_type::special_tooltips(
+	bool assume_active) const
 {
 	//log_scope("special_tooltips");
-	std::vector<std::pair<t_string, t_string>> res;
-	if(active_list) {
-		active_list->clear();
-	}
+	std::vector<attack_tooltip_metadata> res;
 
 	for(const auto [key, cfg] : specials_.all_children_view()) {
-		bool active = !active_list || special_active(cfg, AFFECT_EITHER, key);
+		bool active = assume_active || special_active(cfg, AFFECT_EITHER, key);
 
 		std::string name = active
 			? cfg["name"].str()
@@ -902,40 +903,39 @@ std::vector<std::pair<t_string, t_string>> attack_type::special_tooltips(
 
 		res.emplace_back(
 			unit_abilities::substitute_variables(name, key, cfg),
-			unit_abilities::substitute_variables(desc, key, cfg)
+			unit_abilities::substitute_variables(desc, key, cfg),
+			active
 		);
-
-		if(active_list) {
-			active_list->push_back(active);
-		}
 	}
 	return res;
 }
 
-std::vector<std::pair<t_string, t_string>> attack_type::abilities_special_tooltips(
-	boost::dynamic_bitset<>* active_list) const
+/**
+ * Finds all weapon specials used as abilities which affect this weapon, so the
+ * abilities for which this unit is the student (including ones where the unit
+ * is teaching itself).
+ *
+ * Behavior is similar to attack_type::special_tooltips, however as there's only
+ * one caller the implementation is fixed to assume_active==false.
+ */
+std::vector<attack_type::attack_tooltip_metadata> attack_type::abilities_special_tooltips() const
 {
-	std::vector<std::pair<t_string, t_string>> res;
-	if(active_list) {
-		active_list->clear();
-	}
+	std::vector<attack_tooltip_metadata> res;
 	std::set<std::string> checking_name;
 	if(!self_) {
 		return res;
 	}
 	for(const auto [key, cfg] : self_->abilities().all_children_view()) {
-		if(!active_list || check_self_abilities_impl(shared_from_this(), other_attack_, cfg, self_, self_loc_, AFFECT_SELF, key, false)) {
+		if(check_self_abilities_impl(shared_from_this(), other_attack_, cfg, self_, self_loc_, AFFECT_SELF, key, false)) {
+			const bool active = true; // See PR 10538, for now this conditional block is only reached for active ones
 			const std::string name = cfg["name_affected"];
 			const std::string desc = cfg["description_affected"];
 
 			if(name.empty() || checking_name.count(name) != 0) {
 				continue;
 			}
-			res.emplace_back(name, desc);
+			res.emplace_back(name, desc, active);
 			checking_name.insert(name);
-			if(active_list) {
-				active_list->push_back(true);
-			}
 		}
 	}
 	for(const unit& u : get_unit_map()) {
@@ -949,18 +949,16 @@ std::vector<std::pair<t_string, t_string>> attack_type::abilities_special_toolti
 		}
 		int dir = find_direction(self_loc_, from_loc, distance);
 		for(const auto [key, cfg] : u.abilities().all_children_view()) {
-			if(!active_list || check_adj_abilities_impl(shared_from_this(), other_attack_, cfg, self_, u, distance, dir, self_loc_, from_loc, AFFECT_SELF, key, false)) {
+			if(check_adj_abilities_impl(shared_from_this(), other_attack_, cfg, self_, u, distance, dir, self_loc_, from_loc, AFFECT_SELF, key, false)) {
+				const bool active = true; // See PR 10538, for now this conditional block is only reached for active ones
 				const std::string name = cfg["name_affected"];
 				const std::string desc = cfg["description_affected"];
 
 				if(name.empty() || checking_name.count(name) != 0) {
 					continue;
 				}
-				res.emplace_back(name, desc);
+				res.emplace_back(name, desc, active);
 				checking_name.insert(name);
-				if(active_list) {
-					active_list->push_back(true);
-				}
 			}
 		}
 	}
