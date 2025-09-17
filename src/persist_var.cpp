@@ -72,7 +72,7 @@ static void get_global_variable(persist_context &ctx, const vconfig &pcfg)
 	{
 		std::size_t arrsize = cfg.child_count(global);
 		if (arrsize == 0) {
-			resources::gamedata->set_variable(local, cfg[global].t_str());
+			resources::gamedata->set_variable(local,cfg[global]);
 		} else {
 			resources::gamedata->clear_variable(local);
 			for (std::size_t i = 0; i < arrsize; i++)
