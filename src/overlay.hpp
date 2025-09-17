@@ -25,6 +25,7 @@ struct overlay
 			const std::string& halo_img,
 			const std::string& overlay_team_name,
 			const std::string& item_id,
+			const std::string& drawing_layer,
 			const bool fogged,
 			const bool multihex,
 			float submerge,
@@ -36,6 +37,7 @@ struct overlay
 		, team_name(overlay_team_name)
 		, name() // The relation between id and name is strange, they are often assumed to be the same. Can cause issues for removal.
 		, id(item_id)
+		, drawing_layer(drawing_layer)
 		, halo_handle()
 		, visible_in_fog(fogged)
 		, multihex(multihex)
@@ -52,6 +54,7 @@ struct overlay
 		, team_name(cfg["team_name"])
 		, name(cfg["name"].t_str())
 		, id(cfg["id"])
+		, drawing_layer(cfg["drawing_layer"])
 		, halo_handle()
 		, visible_in_fog(cfg["visible_in_fog"].to_bool())
 		, multihex(cfg["multihex"].to_bool())
@@ -67,6 +70,7 @@ struct overlay
 	std::string team_name;
 	t_string name;
 	std::string id;
+	std::string drawing_layer; // List of input based on drawing_layer.hpp
 
 	halo::handle halo_handle;
 	bool visible_in_fog;

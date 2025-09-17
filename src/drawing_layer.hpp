@@ -16,6 +16,9 @@
 
 #pragma once
 
+// Changes to this enum need to be copied to the list in display.cpp at "Drawing_layer overlay support".
+// These layers are exposed to WML/Lua via display.cpp, so changing existing names may break existing content, but you can add more.
+
 enum class drawing_layer {
 	/** Terrain drawn behind the unit */
 	terrain_bg,

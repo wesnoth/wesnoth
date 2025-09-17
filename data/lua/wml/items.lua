@@ -29,6 +29,7 @@ local function add_overlay(x, y, cfg)
 			halo = cfg.halo,
 			team_name = cfg.team_name,
 			filter_team = cfg.filter_team,
+			drawing_layer = cfg.drawing_layer,
 			visible_in_fog = cfg.visible_in_fog,
 			multihex = cfg.multihex,
 			submerge = cfg.submerge,
@@ -69,6 +70,7 @@ end
 ---@field halo string
 ---@field team_name string
 ---@field filter_team WML
+---@field drawing_layer string
 ---@field visible_in_fog boolean
 ---@field multihex boolean
 ---@field submerge number
@@ -95,6 +97,7 @@ function wesnoth.interface.get_items(x, y)
 			halo = cfg.halo,
 			team_name = cfg.team_name,
 			filter_team = cfg.filter_team,
+			drawing_layer = cfg.drawing_layer,
 			visible_in_fog = cfg.visible_in_fog,
 			multihex = cfg.multihex,
 			submerge = cfg.submerge,

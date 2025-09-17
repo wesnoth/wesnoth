@@ -206,6 +206,53 @@ namespace
 		return overlays_to_remove;
 	}
 
+	// Drawing_layer overlay support
+	static const std::map<std::string, drawing_layer> layer_map = {
+		{"terrain_bg", drawing_layer::terrain_bg},
+		{"reachmap_highlight", drawing_layer::reachmap_highlight},
+		{"grid_top", drawing_layer::grid_top},
+		{"mouseover_overlay", drawing_layer::mouseover_overlay},
+		{"footsteps", drawing_layer::footsteps},
+		{"mouseover_top", drawing_layer::mouseover_top},
+		{"unit_bg", drawing_layer::unit_bg},
+		{"unit_default", drawing_layer::unit_default},
+		{"terrain_fg", drawing_layer::terrain_fg},
+		{"reachmap_border", drawing_layer::reachmap_border},
+		{"grid_bottom", drawing_layer::grid_bottom},
+		{"unit_move_default", drawing_layer::unit_move_default},
+		{"unit_fg", drawing_layer::unit_fg},
+		{"unit_missile_default", drawing_layer::unit_missile_default},
+		{"mouseover_bottom", drawing_layer::mouseover_bottom},
+		{"fog_shroud", drawing_layer::fog_shroud},
+		{"arrows", drawing_layer::arrows},
+		{"actions_numbering", drawing_layer::actions_numbering},
+		{"selected_hex", drawing_layer::selected_hex},
+		{"attack_indicator", drawing_layer::attack_indicator},
+		{"unit_bar", drawing_layer::unit_bar},
+		{"move_info", drawing_layer::move_info},
+		{"linger_overlay", drawing_layer::linger_overlay},
+		{"border", drawing_layer::border},
+	};
+
+	// Convert string to drawing_layer enum.
+	drawing_layer resolve_drawing_layer(const std::string& name)
+	{
+		if(name.empty()) { // Default to terrain_bg.
+			return drawing_layer::terrain_bg;
+		}
+
+		// Find the name in the map.
+		auto it = layer_map.find(name);
+
+		// If found, return the corresponding enum value.
+		if(it != layer_map.end()) {
+			return it->second;
+		}
+
+		// Unknown string → default
+		return drawing_layer::terrain_bg;
+	}
+
 } // namespace
 
 void display::add_overlay(const map_location& loc, overlay&& ov)
@@ -292,7 +339,7 @@ void display::add_overlay(const map_location& loc, overlay&& ov)
 				}
 
 				// Create a new 'overlay' and animation objects for this single hex part.
-				overlay part_overlay(part_image_string, "", ov.team_name, child_id, ov.visible_in_fog, ov.multihex, ov.submerge, ov.z_order);
+				overlay part_overlay(part_image_string, "", ov.team_name, child_id, ov.drawing_layer, ov.visible_in_fog, ov.multihex, ov.submerge, ov.z_order);
 				part_overlay.is_child = true;
 				children.push_back({child_id, hex}); // Record child location and id.
 				if(is_anim) {
@@ -2951,8 +2998,7 @@ void display::draw_overlays_at(const map_location& loc)
 		// Base submerge value for the terrain at this location
 		const double ter_sub = context().map().get_terrain_info(loc).unit_submerge();
 
-		drawing_buffer_add(
-			drawing_layer::terrain_bg, loc, [tex, ter_sub, ovr_sub = ov.submerge](const rect& dest) mutable {
+		drawing_buffer_add(resolve_drawing_layer(ov.drawing_layer), loc, [tex, ter_sub, ovr_sub = ov.submerge](const rect& dest) mutable {
 				if(ovr_sub > 0.0 && ter_sub > 0.0) {
 					// Adjust submerge appropriately
 					double submerge = ter_sub * ovr_sub;
