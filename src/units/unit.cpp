@@ -2375,7 +2375,7 @@ void unit::apply_builtin_effect(const std::string& apply_to, const config& effec
 		temp_advances = utils::parenthetical_split(amlas, ',');
 
 		for(int i = advancements_.size() - 1; i >= 0; i--) {
-			if(std::find(temp_advances.begin(), temp_advances.end(), advancements_[i]["id"]) != temp_advances.end()) {
+			if(utils::contains(temp_advances, advancements_[i]["id"].str())) {
 				advancements_.erase(advancements_.begin() + i);
 			}
 		}
