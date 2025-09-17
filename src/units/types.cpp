@@ -1379,9 +1379,9 @@ void unit_type::apply_scenario_fix(const config& cfg)
 		// Make sure the variations are created.
 		unit_types.build_unit_type(*this, VARIATIONS);
 		for (auto& cv : cfg.child_range("variation")){
-			for(auto& v : variations_) {
-				if(v.first == cv["variation_id"]){
-					v.second.apply_scenario_fix(cv);
+			for(auto& [variation_id, variation_type] : variations_) {
+				if(cv["variation_id"] == variation_id) {
+					variation_type.apply_scenario_fix(cv);
 				}
 			}
 		}

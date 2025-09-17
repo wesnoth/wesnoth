@@ -103,7 +103,7 @@ void save_index_class::clean_up_index()
 	if(root.all_children_count() > filenames.size()) {
 		root.remove_children("save", [&filenames](const config& d)
 			{
-				return !utils::contains(filenames, d["save"]);
+				return !utils::contains(filenames, d["save"].str());
 			}
 		);
 	}
