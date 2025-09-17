@@ -66,7 +66,7 @@ void save_index_class::rebuild(const std::string& name, const std::chrono::syste
 void save_index_class::remove(const std::string& name)
 {
 	config& root = data();
-	root.remove_children("save", [&name](const config& d) { return name == d["save"]; });
+	root.remove_children("save", [&name](const config& d) { return d["save"] == name; });
 	write_save_index();
 }
 
