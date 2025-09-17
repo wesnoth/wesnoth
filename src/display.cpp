@@ -117,14 +117,12 @@ static int get_zoom_levels_index(unsigned int zoom_level)
 
 namespace
 {
-	//Animation suport
+	//Animation overlay suport
 	// Build animation (or static locator) from a string
-	static animated<image::locator> make_anim_from_string(const std::string& str)
-	{
+	static animated<image::locator> make_anim_from_string(const std::string& str){
 		if(str.empty()) {
 			return animated<image::locator>();
 		}
-
 		animated<image::locator>::anim_description desc;
 		std::vector<std::string> items = utils::square_parenthetical_split(str, ',');
 
@@ -149,34 +147,34 @@ namespace
 		return anim;
 	}
 
-	// Multihex support
+	// Multihex overlay support
 	// Create a crop string for one hex of a multihex image (72x72 px)
-	static std::string build_child_crop_string(const map_location& anchor, const map_location& hex, int big_width, int big_height)
-	{
+	static std::string build_child_crop_string(const map_location& anchor, const map_location& hex, int big_width, int big_height){
+		const int tile_size = game_config::tile_size;
+
 		// Calculate the pixel offset between the anchor hex (the parent's center) and the current child hex.
-		// Columns are 54px wide, rows are 72px tall.
-		int dx_px = (hex.x - anchor.x) * 54; //(HEX_W - HEX_W / 4);
-		int dy_px = (hex.y - anchor.y) * 72; // HEX_H
+		int dx_px = (hex.x - anchor.x) * (tile_size * 3 / 4);
+		int dy_px = (hex.y - anchor.y) * tile_size;
 
 		// Adjust the pixel offset to account for the vertical staggering of the hex grid.
-		if(hex.x % 2 != 0) { // Add a vertical offset if the child hex is on an odd-numbered column.
-			dy_px += 36; //(HEX_H / 2)
+		if(hex.x % 2 != 0) {
+			dy_px += tile_size / 2;
 		}
-		if(anchor.x % 2 != 0) { // Subtract a vertical offset if the parent's anchor hex is on an odd-numbered column.
-			dy_px -= 36; //(HEX_H / 2)
+		if(anchor.x % 2 != 0) {
+			dy_px -= tile_size / 2;
 		}
 
-		// We find the center of the big image and then apply the pixel offsets to determine the top-left corner of the crop
-		int crop_x = (big_width / 2) + dx_px - 36; //(HEX_W / 2)
-		int crop_y = (big_height / 2) + dy_px - 36; //(HEX_H / 2)
+		// We find the center of the big image and then apply the pixel offsets to determine the top-left corner of the crop.
+		int crop_x = (big_width / 2) + dx_px - (tile_size / 2);
+		int crop_y = (big_height / 2) + dy_px - (tile_size / 2);
 
-		// Return crop string for a 72x72 box.
+		// Return crop string for a hex_width x hex_height box.
 		std::stringstream ss;
-		ss << "~CROP(" << crop_x << "," << crop_y << "," << 72 << "," << 72 << ")"; //HEX_W, HEX_H
+		ss << "~CROP(" << crop_x << "," << crop_y << "," << tile_size << "," << tile_size << ")";
 		return ss.str();
 	}
 
-	// Duration support
+	// Duration overlay support
 	struct OverlayTimers {
 		std::chrono::steady_clock::time_point end_time;
 		std::string id;
@@ -192,8 +190,7 @@ namespace
 	}
 
 	// Prune overlays whose timers have expired.
-	static std::vector<OverlayTimers> get_expired_overlays()
-	{
+	static std::vector<OverlayTimers> get_expired_overlays(){
 		const auto now = std::chrono::steady_clock::now();
 		std::vector<OverlayTimers> overlays_to_remove;
 
