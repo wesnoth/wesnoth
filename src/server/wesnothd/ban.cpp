@@ -703,7 +703,7 @@ void ban_manager::load_config(const config& cfg)
 	}
 
 	init_ban_help();
-	if(filename_ != cfg["ban_save_file"]) {
+	if(cfg["ban_save_file"] != filename_) {
 		dirty_ = true;
 		filename_ = cfg["ban_save_file"].str();
 	}
