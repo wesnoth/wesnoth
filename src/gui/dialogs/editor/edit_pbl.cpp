@@ -166,7 +166,7 @@ void editor_edit_pbl::pre_show()
 
 	unsigned selected = 0;
 	for(unsigned i = 0; i < type_values.size(); i++) {
-		if(type_values[i] == pbl["type"]) {
+		if(pbl["type"] == type_values[i]) {
 			selected = i;
 			break;
 		}
