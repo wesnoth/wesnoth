@@ -175,10 +175,10 @@ void team::team_info::read(const config& cfg)
 	gold = cfg["gold"].to_int();
 	income = cfg["income"].to_int();
 	team_name = cfg["team_name"].str(cfg["side"].str());
-	user_team_name = cfg["user_team_name"];
-	side_name = cfg["side_name"];
+	user_team_name = cfg["user_team_name"].t_str();
+	side_name = cfg["side_name"].t_str();
 	faction = cfg["faction"].str();
-	faction_name = cfg["faction_name"];
+	faction_name = cfg["faction_name"].t_str();
 	id = cfg["id"].str();
 	save_id = cfg["save_id"].str(id);
 	current_player = cfg["current_player"].str();
@@ -187,7 +187,7 @@ void team::team_info::read(const config& cfg)
 	flag = cfg["flag"].str();
 	flag_icon = cfg["flag_icon"].str();
 	scroll_to_leader = cfg["scroll_to_leader"].to_bool(true);
-	objectives = cfg["objectives"];
+	objectives = cfg["objectives"].t_str();
 	objectives_changed = cfg["objectives_changed"].to_bool();
 	disallow_observers = cfg["disallow_observers"].to_bool();
 	allow_player = cfg["allow_player"].to_bool(true);

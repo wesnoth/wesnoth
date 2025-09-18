@@ -699,14 +699,14 @@ static std::vector<widget_data> parse_list_data(const config& data, const unsign
 			list_data.emplace_back();
 
 			for(const auto& [key, value] : c.attribute_range()) {
-				list_data.back()[""][key] = value;
+				list_data.back()[""][key] = value.t_str();
 			}
 
 			for(const auto& w : c.child_range("widget")) {
 				VALIDATE(w.has_attribute("id"), missing_mandatory_wml_key("[list_data][row][column][widget]", "id"));
 
 				for(const auto& [key, value] : w.attribute_range()) {
-					list_data.back()[w["id"]][key] = value;
+					list_data.back()[w["id"]][key] = value.t_str();
 				}
 			}
 		}

@@ -337,7 +337,7 @@ builder_slider::builder_slider(const config& cfg)
 	}
 
 	for(const auto& label : labels->child_range("value")) {
-		value_labels_.push_back(label["label"]);
+		value_labels_.push_back(label["label"].t_str());
 	}
 }
 

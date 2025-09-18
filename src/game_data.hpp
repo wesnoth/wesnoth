@@ -38,7 +38,7 @@ public:
 	/** throws invalid_variablename_exception if varname is no valid variable name. */
 	config& get_variable_cfg(const std::string& varname);
 	/** does nothing if varname is no valid variable name. */
-	void set_variable(const std::string& varname, const t_string& value);
+	void set_variable(const std::string& varname, const config::attribute_value& value);
 	/** throws invalid_variablename_exception if varname is no valid variable name. */
 	config& add_variable_cfg(const std::string& varname, const config& value=config());
 	/** returns a variable_access that cannot be used to change the game variables */
@@ -117,7 +117,7 @@ public:
 		return cannot_end_turn_reason_;
 	}
 	bool allow_end_turn() const { return can_end_turn_; }
-	void set_allow_end_turn(bool value, const t_string& reason = "") {
+	void set_allow_end_turn(bool value, const t_string& reason = {}) {
 		can_end_turn_ = value;
 		cannot_end_turn_reason_ = reason;
 	}

@@ -473,7 +473,7 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 								//we put the translated name at the beginning of the hyperlink,
 								//so the automatic alphabetic sorting of std::set can use it
 								std::string link = markup::make_link(type_name, ref_id);
-								special_units[special["name"]].insert(link);
+								special_units[special["name"].t_str()].insert(link);
 							}
 						}
 					}
@@ -490,7 +490,7 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 								//we put the translated name at the beginning of the hyperlink,
 								//so the automatic alphabetic sorting of std::set can use it
 								std::string link = markup::make_link(type_name, ref_id);
-								special_units[special["name"]].insert(link);
+								special_units[special["name"].t_str()].insert(link);
 							}
 						}
 					}
@@ -682,7 +682,7 @@ std::vector<topic> generate_faction_topics(const config & era, const bool sort_g
 		}
 
 		const std::string name = f["name"];
-		const std::string ref_id = faction_prefix + era["id"] + "_" + id;
+		const std::string ref_id = faction_prefix + era["id"].str() + "_" + id;
 		topics.emplace_back(name, ref_id, text.str());
 	}
 	if (sort_generated)
