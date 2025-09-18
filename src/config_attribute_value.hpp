@@ -32,7 +32,6 @@
 #include "utils/variant.hpp"
 
 #include <chrono>
-#include <climits>
 #ifdef __cpp_concepts
 #include <concepts>
 #endif

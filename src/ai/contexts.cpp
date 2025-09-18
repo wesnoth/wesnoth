@@ -53,7 +53,6 @@
 
 #include <algorithm>                    // for find, count, max, fill_n
 #include <cmath>                       // for sqrt
-#include <cstdlib>                     // for abs
 #include <ctime>                       // for time
 #include <iterator>                     // for back_inserter
 #include <ostream>                      // for operator<<, basic_ostream, etc

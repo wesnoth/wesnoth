@@ -29,7 +29,6 @@
 #include "team.hpp"
 
 #include <array>
-#include <cstdlib>
 
 static lg::log_domain log_config("config");
 #define LOG_CF LOG_STREAM(info, log_config)

@@ -51,7 +51,6 @@
 #include "variable.hpp" // for vconfig, etc
 
 #include <cassert>                     // for assert
-#include <cstdlib>                     // for rand
 #include <exception>                    // for exception
 #include <iterator>                     // for back_insert_iterator, etc
 #include <string_view>
