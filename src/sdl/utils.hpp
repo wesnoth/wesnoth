@@ -21,7 +21,6 @@
 #include "utils/math.hpp"
 #include "game_version.hpp"
 
-#include <cstdlib>
 #include <string>
 
 struct rect;
