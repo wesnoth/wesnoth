@@ -238,6 +238,15 @@ BOOST_AUTO_TEST_CASE(test_config_attribute_value)
 	BOOST_CHECK_EQUAL(c["x"], t_string{"sfvsdgdsfg"});
 	BOOST_CHECK_NE(c["x"], "a random string");
 
+	// reversed order heterogenous comparison
+	c["x"] = 9.87654321;
+	BOOST_CHECK_EQUAL("9.87654321", c["x"]);
+	BOOST_CHECK_EQUAL(t_string{"9.87654321"}, c["x"]);
+	BOOST_CHECK_EQUAL(config_attribute_value::create("9.87654321"), c["x"]);
+	BOOST_CHECK_NE("1.23456789", c["x"]);
+	BOOST_CHECK_NE("1.23456789"s, c["x"]);
+	BOOST_CHECK_NE("1.23456789"sv, c["x"]);
+
 	// blank != "" test.
 	c.clear();
 	BOOST_CHECK(cc["x"] != "");
