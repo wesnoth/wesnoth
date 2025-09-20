@@ -23,7 +23,7 @@ msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-08-19 10:14-0500\n"
-"PO-Revision-Date: 2025-09-06 14:59-0300\n"
+"PO-Revision-Date: 2025-09-15 05:55-0300\n"
 "Last-Translator: Sebastián Lecchini <sebas38760@gmail.com>\n"
 "Language-Team: wesnoth-es-trad-1_14@googlegroups.com\n"
 "Language: es\n"
@@ -2030,12 +2030,12 @@ msgstr ""
 "dst='great_continent'>Gran Continente</ref>. La mayoría de las campañas "
 "principales giran en torno a él. Está delimitado en el mapa por el <ref "
 "dst='great_river'>Río Grande</ref> al norte, la costa del <ref "
-"dst='great_ocean'>océano</ref> al oeste, el Bosque Aethen al <ref "
+"dst='great_ocean'>océano</ref> al oeste, el Bosque Edén al <ref "
 "dst='southwest_elven_lands'>suroeste</ref>, y el Pantano Amargo al sureste.\n"
 "\n"
-"Al otro lado del Río Aethen, al sur del Fuerte Tahn, se encuentra una región "
+"Al otro lado del Río Edén, al sur del Fuerte Tahn, se encuentra una región "
 "fronteriza de Wesnoth. Está delimitada al sur por bosques densos, de los "
-"cuales el Bosque Aethen puede considerarse su extensión más septentrional. "
+"cuales el Bosque Edén puede considerarse su extensión más septentrional. "
 "Kerlath es su provincia más austral, marcando el fin de Wesnoth y el inicio "
 "del misterioso <ref dst='far_south'>Lejano Sur</ref>."
 
@@ -2072,7 +2072,7 @@ msgstr ""
 "    • Soradoc: La ciudad más oriental de Wesnoth, controla la confluencia "
 "del Río Weldyn y el Río Grande.\n"
 "    • Fuerte Tahn: El puesto fronterizo más austral, controla el cruce norte/"
-"sur del Río Aethen.\n"
+"sur del Río Edén.\n"
 "    • Tath: Ciudad fortificada importante al norte de Dan’Tonk, ejerce "
 "control sobre el territorio salvaje al este de las Colinas Marrones y al "
 "norte hasta el Vado de Abez.\n"
@@ -4637,7 +4637,6 @@ msgstr ""
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:570
-#, fuzzy
 msgid ""
 "Every unit has a defense rating and a movement cost for each of the basic "
 "terrain types, and these values are listed in the unit’s help page. Basic "
@@ -4671,7 +4670,6 @@ msgstr ""
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:577
-#, fuzzy
 msgid ""
 "One notable exception is bridge terrains, such as <i>bridges over shallow "
 "water</i>, <i>fords</i>, and <i>bridges over chasms</i>. Fords are easily "
@@ -4692,7 +4690,6 @@ msgstr ""
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:580
-#, fuzzy
 msgid ""
 "Land-based villages generally give the best defense and movement as well. "
 "These villages are mixed terrains, based on the village terrain type, "
@@ -4706,7 +4703,6 @@ msgstr ""
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:583
-#, fuzzy
 msgid ""
 "Finally, water villages are generally inhospitable to land units, and do not "
 "give defense or movement benefits associated with the village terrain type. "
@@ -4721,7 +4717,6 @@ msgstr ""
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:586
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -4729,6 +4724,8 @@ msgid ""
 "its hex and viewing the <i>terrain description</i> by either pressing the "
 "hotkey, or right clicking and selecting from the context menu."
 msgstr ""
+"\n"
+"\n"
 "Puede ver el tipo de comportamiento que genera un terreno mixto pasando el "
 "cursor sobre su hexágono y consultando la <i>descripción del terreno</i>, ya "
 "sea usando el atajo de teclado o haciendo clic derecho y seleccionando la "
@@ -4736,7 +4733,6 @@ msgstr ""
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:586
-#, fuzzy
 msgid ""
 "You can see what basic types a mixed terrain is comprised of by mousing over "
 "its hex and checking the terrain type icons displayed in the upper right "
@@ -5145,43 +5141,30 @@ msgstr ""
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:690
-#, fuzzy
-#| msgid ""
-#| "Similar to the ‘fps’ command, but also forces everything to redraw "
-#| "instead of only things that have changed.\n"
-#| "\n"
 msgid ""
 "\n"
 "Similar to the ‘fps’ command, but also forces everything to redraw instead "
 "of only things that have changed.\n"
 "\n"
 msgstr ""
-"Similar al comando ‘fps’, pero también fuerza que todo se vuelva a dibujar "
+"\n"
+"Similar al comando ‘fps’, pero también fuerza a que todo se vuelva a dibujar "
 "en lugar de solo los elementos que han cambiado.\n"
 "\n"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:693
-#, fuzzy
-#| msgid ""
-#| "Clear chat messages.\n"
-#| "\n"
 msgid ""
 "\n"
 "Clear chat messages.\n"
 "\n"
 msgstr ""
-"Borrar los mensajes del chat.\n"
+"\n"
+"Borra los mensajes del chat.\n"
 "\n"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:696
-#, fuzzy
-#| msgid ""
-#| "Switch debug mode on (does not work in multiplayer). See <ref "
-#| "dst='debug_commands'>debug mode commands</ref>.\n"
-#| "Debug mode is turned off by quitting the game or :nodebug.\n"
-#| "\n"
 msgid ""
 "\n"
 "Switch debug mode on (does not work in multiplayer). See <ref "
@@ -5189,7 +5172,8 @@ msgid ""
 "Debug mode is turned off by quitting the game or :nodebug.\n"
 "\n"
 msgstr ""
-"Activar el modo de depuración (no funciona en multijugador). Ver <ref "
+"\n"
+"Activa el modo de depuración (no funciona en multijugador). Ver <ref "
 "dst='debug_commands'>comandos del modo depuración</ref>.\n"
 "El modo depuración se desactiva al salir del juego o al usar :nodebug.\n"
 "\n"
@@ -5440,7 +5424,6 @@ msgstr ""
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:762
-#, fuzzy
 msgid ""
 "\n"
 "Unmute a specific observer. If no username is supplied the list of muted "
@@ -9873,9 +9856,9 @@ msgstr "Coste de la interferencia"
 #~ "élficas llevan arcos y ninguna otra raza puede competir con sus arqueros "
 #~ "en velocidad o puntería. A menudo se encuentran a disgusto en espacios "
 #~ "abiertos y yermos. Principalmente viven en los bosques del Gran "
-#~ "Continente; el Bosque Aethen en el sudoeste, Wesmere en el noroeste, y "
-#~ "los grandes bosques del norte de los cuales Lintanir solo es el vértice "
-#~ "más meridional.\n"
+#~ "Continente; el Bosque Edén en el sudoeste, Wesmere en el noroeste, y los "
+#~ "grandes bosques del norte de los cuales Lintanir solo es el vértice más "
+#~ "meridional.\n"
 #~ "\n"
 #~ "Los elfos son la más antigua de las razas del continente, con la posible "
 #~ "excepción de los troles. Muchos de su asentamientos no pueden ser datados "
