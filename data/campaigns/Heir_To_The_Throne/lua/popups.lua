@@ -182,7 +182,7 @@ function wesnoth.wml_actions.display_scenario_preview(cfg)
 				T.column{ T.grid{ T.row{
 					T.column{ T.button{
 						return_value=1, use_markup=true,
-						label=_"Play",
+						label=_"Continue",
 					}},
 					T.column{ T.label{ label="    " }},
 					T.column{ T.button{
