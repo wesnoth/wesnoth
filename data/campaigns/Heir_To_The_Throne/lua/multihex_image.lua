@@ -62,7 +62,7 @@ function wesnoth.wml_actions.multihex_image(cfg)
 		cfg.image = "misc/blank-hex.png~BLIT("..ref_image.."~CROP(0,"..tostring(math.max(0,height/2-72))..","..tostring(width/2-18)..","..tostring(math.min(height/2,72)).."),"..tostring(72-(width/2-18))..","..tostring(math.max(0,72-height/2))..")"
 		wesnoth.wml_actions.item(cfg)
 	end
-	if redraw then 
+	if redraw then
 		wesnoth.wml_actions.redraw{}
 	end
 end
