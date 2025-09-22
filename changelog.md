@@ -1,6 +1,4 @@
-## Version 1.19.15+dev
-### Add-ons client
-### Add-ons server
+## Version 1.19.16
 ### Campaigns
    * Liberty
      * Changed some of Maddock's dialogue to stay consistent with The Deceiver's Gambit.
@@ -17,16 +15,11 @@
      * S13: changed some of Eldred and the orcs' dialogue.
      * S14: revert ruffians to orcs.
      * Credits: "Story continued in" changed from "Asheviere's Dogs" to "Liberty"
-### Editor
 ### Multiplayer
    * 5p - The Wilderlands:
      * Fixed lag during AI turn (issue #10419)
-### Lua API
-### Packaging
-### Terrain
 ### Translations
    * Updated translations: Bengali, British English, Chinese (Simplified), Czech, Spanish
-### Units
 ### User interface
    * On Android, back button now works similarly to Escape on desktop.
    * Updated the load-game dialog support for other versions' files, ready for 1.20
