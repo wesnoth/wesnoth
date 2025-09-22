@@ -220,9 +220,13 @@ private:
 void swap(t_string& lhs, t_string& rhs);
 
 inline std::ostream& operator<<(std::ostream& os, const t_string& str) { return os << str.get(); }
+
+#ifndef __cpp_impl_three_way_comparison
 inline bool operator==(const std::string &a, const t_string& b)    { return b == a; }
 inline bool operator==(const char *a, const t_string& b)           { return b == a; }
 inline bool operator!=(const std::string &a, const t_string& b)    { return b != a; }
 inline bool operator!=(const char *a, const t_string& b)           { return b != a; }
+#endif
+
 inline t_string operator+(const std::string &a, const t_string& b) { return t_string(a) + b; }
 inline t_string operator+(const char *a, const t_string& b)        { return t_string(a) + b; }

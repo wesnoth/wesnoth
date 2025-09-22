@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-08-19 15:14 UTC\n"
+"POT-Creation-Date: 2025-09-22 04:01 UTC\n"
 "PO-Revision-Date: 2025-09-03 14:38-0300\n"
 "Last-Translator: Sebastián Lecchini <sebas38760@gmail.com>\n"
 "Language-Team: es\n"
@@ -1236,12 +1236,18 @@ msgid "Canoe"
 msgstr "Canoa"
 
 #. [unit_type]: id=Canoe, race=ship
-#: data/core/units/boats/Canoe.cfg:32
+#: data/core/units/boats/Canoe.cfg:33
+#, fuzzy
+#| msgid ""
+#| "A Canoe is a small, open-top water vessel commonly used for "
+#| "transportation or hunting. Their light-weight construction allows them to "
+#| "be carried around barriers or between unconnected bodies of water. Almost "
+#| "every intelligent race has some form of canoe."
 msgid ""
 "A Canoe is a small, open-top water vessel commonly used for transportation "
 "or hunting. Their light-weight construction allows them to be carried around "
 "barriers or between unconnected bodies of water. Almost every intelligent "
-"race has some form of canoe."
+"race has some form of Canoe."
 msgstr ""
 "Una canoa es una pequeña embarcación descubierta, comúnmente utilizada para "
 "transporte o caza. Su construcción ligera permite cargarla por tierra para "
@@ -1497,8 +1503,26 @@ msgstr "Barcaza orca"
 
 #. [unit_type]: id=Orcish Barge, race=ship
 #: data/core/units/boats/Orc_Barge.cfg:26
+#, fuzzy
+#| msgid ""
+#| "Orcish barges are crude constructions, devoid of any of the craftsmanship "
+#| "seen in almost any other ship. But what they lack in speed and grace, "
+#| "they make up for with their rugged durability and utility in navigating "
+#| "rivers and swamps. Their primary means of movement comes from a large, "
+#| "symmetric sail held at three points for downwind propulsion. When "
+#| "currents and winds lead to the wrong direction, the crew must use poles "
+#| "and anchors to move the barge in the intended direction.\n"
+#| "\n"
+#| "Barges serve as transports for either supplies or troops, and when "
+#| "stocked with medicines can provide a safe space — akin to a village — for "
+#| "wounded fighters to rest. They lack any specific weaponry and cannot ram, "
+#| "but the crew is equipped with enough crude orcish bows to provide "
+#| "deterrent.\n"
+#| "\n"
+#| "These barges are very ineffective in the high seas; little better than a "
+#| "floating wreck."
 msgid ""
-"Orcish barges are crude constructions, devoid of any of the craftsmanship "
+"Orcish Barges are crude constructions, devoid of any of the craftsmanship "
 "seen in almost any other ship. But what they lack in speed and grace, they "
 "make up for with their rugged durability and utility in navigating rivers "
 "and swamps. Their primary means of movement comes from a large, symmetric "
@@ -1619,12 +1643,20 @@ msgstr "Balsa"
 
 #. [unit_type]: id=Raft, race=ship
 #: data/core/units/boats/Raft.cfg:20
+#, fuzzy
+#| msgid ""
+#| "Rafts can be an efficient means of downriver transport, but they can also "
+#| "be an improvised vessel of desperation, patched together from the wreck "
+#| "of a larger ship.\n"
+#| "\n"
+#| "These rafts are very ineffective in the high seas; little better than a "
+#| "floating wreck."
 msgid ""
 "Rafts can be an efficient means of downriver transport, but they can also be "
 "an improvised vessel of desperation, patched together from the wreck of a "
 "larger ship.\n"
 "\n"
-"These rafts are very ineffective in the high seas; little better than a "
+"These Rafts are very ineffective in the high seas; little better than a "
 "floating wreck."
 msgstr ""
 "Las balsas pueden ser un medio eficiente de transporte río abajo, pero "
@@ -1708,8 +1740,12 @@ msgstr "Esquife"
 
 #. [unit_type]: id=Skiff, race=ship
 #: data/core/units/boats/Skiff.cfg:21
+#, fuzzy
+#| msgid ""
+#| "Propelled by oars or small sails, skiffs are used to travel short "
+#| "distances and in shallows where large ships cannot navigate."
 msgid ""
-"Propelled by oars or small sails, skiffs are used to travel short distances "
+"Propelled by oars or small sails, Skiffs are used to travel short distances "
 "and in shallows where large ships cannot navigate."
 msgstr ""
 "Impulsadas por remos o velas pequeñas, los esquifes se usan para viajar "
@@ -9683,15 +9719,17 @@ msgid "Bone Knight"
 msgstr "Lobero esqueleto"
 
 #. [unit_type]: id=Bone Knight, race=undead
+#. [unit_type]: id=Skeleton Rider, race=undead
 #: data/core/units/undead/Skele_Bone_Knight.cfg:60
+#: data/core/units/undead/Skeleton_Rider.cfg:79
 msgid ""
-"Once great warriors across the plains, these mounted riders atop their "
-"skeletal horses were raised from the ground by unholy magic to spread fear "
-"and destruction."
+"Once great warriors thundering across the plains, these mounted riders atop "
+"their skeletal horses were raised from the grave by unholy magic to spread "
+"fear and destruction."
 msgstr ""
-"Una vez grandes guerreros en las llanuras, estos jinetes montados sobre sus "
-"caballos esqueléticos fueron levantados del suelo por magia profana para "
-"sembrar el miedo y la destrucción."
+"Estos jinetes montados sobre sus caballos esqueléticos, que alguna vez "
+"fueron grandes guerreros que atravesaban las llanuras, fueron levantados de "
+"la tumba por magia profana para sembrar miedo y destrucción."
 
 #. [unit_type]: id=Bone Shooter, race=undead
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:4
@@ -9879,17 +9917,6 @@ msgstr ""
 #: data/core/units/undead/Skeleton_Rider.cfg:5
 msgid "Skeleton Rider"
 msgstr "Jinete esqueleto"
-
-#. [unit_type]: id=Skeleton Rider, race=undead
-#: data/core/units/undead/Skeleton_Rider.cfg:79
-msgid ""
-"Once great warriors thundering across the plains, these mounted riders atop "
-"their skeletal horses were raised from the grave by unholy magic to spread "
-"fear and destruction."
-msgstr ""
-"Estos jinetes montados sobre sus caballos esqueléticos, que alguna vez "
-"fueron grandes guerreros que atravesaban las llanuras, fueron levantados de "
-"la tumba por magia profana para sembrar miedo y destrucción."
 
 #. [unit_type]: id=Ghost, race=undead
 #: data/core/units/undead/Spirit_Ghost.cfg:4
@@ -10147,6 +10174,15 @@ msgstr ""
 "enemigos en combate, y generalmente se cree que es diferente de la magia de "
 "elfos o sirenas. Los detalles de este arte solo pueden ser objeto de "
 "especulación por parte de otras razas."
+
+#~ msgid ""
+#~ "Once great warriors across the plains, these mounted riders atop their "
+#~ "skeletal horses were raised from the ground by unholy magic to spread "
+#~ "fear and destruction."
+#~ msgstr ""
+#~ "Una vez grandes guerreros en las llanuras, estos jinetes montados sobre "
+#~ "sus caballos esqueléticos fueron levantados del suelo por magia profana "
+#~ "para sembrar el miedo y la destrucción."
 
 #~ msgid "Shadow Lord"
 #~ msgstr "Señor de las Sombras"

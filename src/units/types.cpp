@@ -194,8 +194,8 @@ void unit_type::build_help_index(
 
 	const config& cfg = get_cfg();
 
-	type_name_ = cfg["name"];
-	description_ = cfg["description"];
+	type_name_ = cfg["name"].t_str();
+	description_ = cfg["description"].t_str();
 	hitpoints_ = cfg["hitpoints"].to_int(1);
 	level_ = cfg["level"].to_int();
 	recall_cost_ = cfg["recall_cost"].to_int(-1);
@@ -213,7 +213,7 @@ void unit_type::build_help_index(
 	do_not_list_ = cfg["do_not_list"].to_bool(false);
 
 	for(const config& sn : cfg.child_range("special_note")) {
-		special_notes_.push_back(sn["note"]);
+		special_notes_.push_back(sn["note"].t_str());
 	}
 
 	adjust_profile(profile_);
@@ -1379,9 +1379,9 @@ void unit_type::apply_scenario_fix(const config& cfg)
 		// Make sure the variations are created.
 		unit_types.build_unit_type(*this, VARIATIONS);
 		for (auto& cv : cfg.child_range("variation")){
-			for(auto& v : variations_) {
-				if(v.first == cv["variation_id"]){
-					v.second.apply_scenario_fix(cv);
+			for(auto& [variation_id, variation_type] : variations_) {
+				if(cv["variation_id"] == variation_id) {
+					variation_type.apply_scenario_fix(cv);
 				}
 			}
 		}

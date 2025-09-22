@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-08-19 15:14 UTC\n"
+"POT-Creation-Date: 2025-09-22 04:01 UTC\n"
 "PO-Revision-Date: 2013-10-25 13:22+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
@@ -1171,12 +1171,12 @@ msgid "Canoe"
 msgstr ""
 
 #. [unit_type]: id=Canoe, race=ship
-#: data/core/units/boats/Canoe.cfg:32
+#: data/core/units/boats/Canoe.cfg:33
 msgid ""
 "A Canoe is a small, open-top water vessel commonly used for transportation "
 "or hunting. Their light-weight construction allows them to be carried around "
 "barriers or between unconnected bodies of water. Almost every intelligent "
-"race has some form of canoe."
+"race has some form of Canoe."
 msgstr ""
 
 #. [unit_type]: id=Merchant Carrack, race=ship
@@ -1425,7 +1425,7 @@ msgstr "오크 궁병"
 #. [unit_type]: id=Orcish Barge, race=ship
 #: data/core/units/boats/Orc_Barge.cfg:26
 msgid ""
-"Orcish barges are crude constructions, devoid of any of the craftsmanship "
+"Orcish Barges are crude constructions, devoid of any of the craftsmanship "
 "seen in almost any other ship. But what they lack in speed and grace, they "
 "make up for with their rugged durability and utility in navigating rivers "
 "and swamps. Their primary means of movement comes from a large, symmetric "
@@ -1524,7 +1524,7 @@ msgid ""
 "an improvised vessel of desperation, patched together from the wreck of a "
 "larger ship.\n"
 "\n"
-"These rafts are very ineffective in the high seas; little better than a "
+"These Rafts are very ineffective in the high seas; little better than a "
 "floating wreck."
 msgstr ""
 
@@ -1586,7 +1586,7 @@ msgstr ""
 #| "Propelled by oars or small sails, boats are used to travel short "
 #| "distances and in shallows where large ships cannot navigate."
 msgid ""
-"Propelled by oars or small sails, skiffs are used to travel short distances "
+"Propelled by oars or small sails, Skiffs are used to travel short distances "
 "and in shallows where large ships cannot navigate."
 msgstr ""
 "작은 돛이나 노로 추진력을 얻는 보트는 큰 배가 다닐 수 없는 얕은 물길에서의 단"
@@ -8506,11 +8506,13 @@ msgid "Bone Knight"
 msgstr "고블린 기사"
 
 #. [unit_type]: id=Bone Knight, race=undead
+#. [unit_type]: id=Skeleton Rider, race=undead
 #: data/core/units/undead/Skele_Bone_Knight.cfg:60
+#: data/core/units/undead/Skeleton_Rider.cfg:79
 msgid ""
-"Once great warriors across the plains, these mounted riders atop their "
-"skeletal horses were raised from the ground by unholy magic to spread fear "
-"and destruction."
+"Once great warriors thundering across the plains, these mounted riders atop "
+"their skeletal horses were raised from the grave by unholy magic to spread "
+"fear and destruction."
 msgstr ""
 
 #. [unit_type]: id=Bone Shooter, race=undead
@@ -8699,14 +8701,6 @@ msgstr ""
 #| msgid "Skeleton Archer"
 msgid "Skeleton Rider"
 msgstr "해골 궁사"
-
-#. [unit_type]: id=Skeleton Rider, race=undead
-#: data/core/units/undead/Skeleton_Rider.cfg:79
-msgid ""
-"Once great warriors thundering across the plains, these mounted riders atop "
-"their skeletal horses were raised from the grave by unholy magic to spread "
-"fear and destruction."
-msgstr ""
 
 #. [unit_type]: id=Ghost, race=undead
 #: data/core/units/undead/Spirit_Ghost.cfg:4

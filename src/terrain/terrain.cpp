@@ -176,69 +176,67 @@ terrain_type::terrain_type(const config& cfg)
 	std::sort(union_type_.begin(),union_type_.end());
 	union_type_.erase(std::unique(union_type_.begin(), union_type_.end()), union_type_.end());
 
-
-
 	//mouse over message are only shown on villages
 	if(village_) {
-		income_description_ = cfg["income_description"];
+		income_description_ = cfg["income_description"].t_str();
 		if(income_description_.empty()) {
 			income_description_ = _("Village");
 		}
 
-		income_description_ally_ = cfg["income_description_ally"];
+		income_description_ally_ = cfg["income_description_ally"].t_str();
 		if(income_description_ally_.empty()) {
 			income_description_ally_ = _("Allied village");
 		}
 
-		income_description_enemy_ = cfg["income_description_enemy"];
+		income_description_enemy_ = cfg["income_description_enemy"].t_str();
 		if(income_description_enemy_.empty()) {
 			income_description_enemy_ = _("Enemy village");
 		}
 
-		income_description_own_ = cfg["income_description_own"];
+		income_description_own_ = cfg["income_description_own"].t_str();
 		if(income_description_own_.empty()) {
 			income_description_own_ = _("Owned village");
 		}
 	}
 }
 
-terrain_type::terrain_type(const terrain_type& base, const terrain_type& overlay) :
-	icon_image_(),
-	minimap_image_(base.minimap_image_),
-	minimap_image_overlay_(overlay.minimap_image_),
-	editor_image_(base.editor_image_ + "~BLIT(" + overlay.editor_image_ +")"),
-	id_(base.id_+"^"+overlay.id_),
-	name_(overlay.name_),
-	editor_name_((base.editor_name_.empty() ? base.name_ : base.editor_name_) + " / " + (overlay.editor_name_.empty() ? overlay.name_ : overlay.editor_name_)),
-	description_(overlay.description()),
-	help_topic_text_(),
-	number_(t_translation::terrain_code(base.number_.base, overlay.number_.overlay)),
-	mvt_type_(overlay.mvt_type_),
-	vision_type_(overlay.vision_type_),
-	def_type_(overlay.def_type_),
-	union_type_(),
-	height_adjust_(base.height_adjust_),
-	height_adjust_set_(base.height_adjust_set_),
-	submerge_(base.submerge_),
-	submerge_set_(base.submerge_set_),
-	light_modification_(base.light_modification_ + overlay.light_modification_),
-	max_light_(std::max(base.max_light_, overlay.max_light_)),
-	min_light_(std::min(base.min_light_, overlay.min_light_)),
-	heals_(std::max<int>(base.heals_, overlay.heals_)),
-	income_description_(),
-	income_description_ally_(),
-	income_description_enemy_(),
-	income_description_own_(),
-	editor_group_(),
-	village_(base.village_ || overlay.village_),
-	castle_(base.castle_ || overlay.castle_),
-	keep_(base.keep_ || overlay.keep_),
-	overlay_(false),
-	combined_(true),
-	editor_default_base_(),
-	hide_help_(true),
-	hide_in_editor_(base.hide_in_editor_ || overlay.hide_in_editor_),
-	hide_if_impassable_(base.hide_if_impassable_ || overlay.hide_if_impassable_)
+terrain_type::terrain_type(const terrain_type& base, const terrain_type& overlay)
+	: icon_image_()
+	, minimap_image_(base.minimap_image_)
+	, minimap_image_overlay_(overlay.minimap_image_)
+	, editor_image_(base.editor_image_ + "~BLIT(" + overlay.editor_image_ + ")")
+	, id_(base.id_ + "^" + overlay.id_)
+	, name_(overlay.name_)
+	, editor_name_((base.editor_name_.empty() ? base.name_ : base.editor_name_) + " / " + (overlay.editor_name_.empty() ? overlay.name_ : overlay.editor_name_))
+	, description_(overlay.description())
+	, help_topic_text_()
+	, number_(t_translation::terrain_code(base.number_.base, overlay.number_.overlay))
+	, mvt_type_(overlay.mvt_type_)
+	, vision_type_(overlay.vision_type_)
+	, def_type_(overlay.def_type_)
+	, union_type_()
+	, height_adjust_(base.height_adjust_)
+	, height_adjust_set_(base.height_adjust_set_)
+	, submerge_(base.submerge_)
+	, submerge_set_(base.submerge_set_)
+	, light_modification_(base.light_modification_ + overlay.light_modification_)
+	, max_light_(std::max(base.max_light_, overlay.max_light_))
+	, min_light_(std::min(base.min_light_, overlay.min_light_))
+	, heals_(std::max<int>(base.heals_, overlay.heals_))
+	, income_description_()
+	, income_description_ally_()
+	, income_description_enemy_()
+	, income_description_own_()
+	, editor_group_()
+	, village_(base.village_ || overlay.village_)
+	, castle_(base.castle_ || overlay.castle_)
+	, keep_(base.keep_ || overlay.keep_)
+	, overlay_(false)
+	, combined_(true)
+	, editor_default_base_()
+	, hide_help_(true)
+	, hide_in_editor_(base.hide_in_editor_ || overlay.hide_in_editor_)
+	, hide_if_impassable_(base.hide_if_impassable_ || overlay.hide_if_impassable_)
 {
 	if(description_.empty()) {
 		description_ = base.description();
@@ -270,8 +268,6 @@ terrain_type::terrain_type(const terrain_type& base, const terrain_type& overlay
 	std::sort(union_type_.begin(),union_type_.end());
 	union_type_.erase(std::unique(union_type_.begin(), union_type_.end()), union_type_.end());
 
-
-
 	//mouse over message are only shown on villages
 	if(base.village_) {
 		income_description_ = base.income_description_;
@@ -285,7 +281,6 @@ terrain_type::terrain_type(const terrain_type& base, const terrain_type& overlay
 		income_description_enemy_ = overlay.income_description_enemy_;
 		income_description_own_ = overlay.income_description_own_;
 	}
-
 }
 
 t_translation::terrain_code terrain_type::terrain_with_default_base() const {

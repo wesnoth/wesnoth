@@ -295,7 +295,7 @@ void configuration::expand_simplified_aspects(side_number side, config& cfg) {
 			if (algorithm.empty()) {
 				algorithm = aiparam["ai_algorithm"].str();
 				base_config = get_ai_config_for(algorithm);
-			} else if(algorithm != aiparam["ai_algorithm"]) {
+			} else if(aiparam["ai_algorithm"] != algorithm) {
 				lg::log_to_chat() << "side " << side << " has two [ai] tags with contradictory ai_algorithm - the first one will take precedence.\n";
 				ERR_WML << "side " << side << " has two [ai] tags with contradictory ai_algorithm - the first one will take precedence.";
 			}

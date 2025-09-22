@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth_Units-1.16.6\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-08-19 15:14 UTC\n"
+"POT-Creation-Date: 2025-09-22 04:01 UTC\n"
 "PO-Revision-Date: 2024-02-13 18:32+0100\n"
 "Last-Translator: alberic89 <alberic89@gmx.com>\n"
 "Language-Team: French <wesnothfr@lists.tuxfamily.org> \n"
@@ -1270,12 +1270,12 @@ msgid "Canoe"
 msgstr ""
 
 #. [unit_type]: id=Canoe, race=ship
-#: data/core/units/boats/Canoe.cfg:32
+#: data/core/units/boats/Canoe.cfg:33
 msgid ""
 "A Canoe is a small, open-top water vessel commonly used for transportation "
 "or hunting. Their light-weight construction allows them to be carried around "
 "barriers or between unconnected bodies of water. Almost every intelligent "
-"race has some form of canoe."
+"race has some form of Canoe."
 msgstr ""
 
 #. [unit_type]: id=Merchant Carrack, race=ship
@@ -1528,7 +1528,7 @@ msgstr "Archer orc"
 #. [unit_type]: id=Orcish Barge, race=ship
 #: data/core/units/boats/Orc_Barge.cfg:26
 msgid ""
-"Orcish barges are crude constructions, devoid of any of the craftsmanship "
+"Orcish Barges are crude constructions, devoid of any of the craftsmanship "
 "seen in almost any other ship. But what they lack in speed and grace, they "
 "make up for with their rugged durability and utility in navigating rivers "
 "and swamps. Their primary means of movement comes from a large, symmetric "
@@ -1627,7 +1627,7 @@ msgid ""
 "an improvised vessel of desperation, patched together from the wreck of a "
 "larger ship.\n"
 "\n"
-"These rafts are very ineffective in the high seas; little better than a "
+"These Rafts are very ineffective in the high seas; little better than a "
 "floating wreck."
 msgstr ""
 
@@ -1689,7 +1689,7 @@ msgstr ""
 #| "Propelled by oars or small sails, boats are used to travel short "
 #| "distances and in shallows where large ships cannot navigate."
 msgid ""
-"Propelled by oars or small sails, skiffs are used to travel short distances "
+"Propelled by oars or small sails, Skiffs are used to travel short distances "
 "and in shallows where large ships cannot navigate."
 msgstr ""
 "Souvent propulsés grâce à des rames ou des petites voiles, les bateaux sont "
@@ -10433,15 +10433,17 @@ msgid "Bone Knight"
 msgstr "Saqued'os"
 
 #. [unit_type]: id=Bone Knight, race=undead
+#. [unit_type]: id=Skeleton Rider, race=undead
 #: data/core/units/undead/Skele_Bone_Knight.cfg:60
+#: data/core/units/undead/Skeleton_Rider.cfg:79
 msgid ""
-"Once great warriors across the plains, these mounted riders atop their "
-"skeletal horses were raised from the ground by unholy magic to spread fear "
-"and destruction."
+"Once great warriors thundering across the plains, these mounted riders atop "
+"their skeletal horses were raised from the grave by unholy magic to spread "
+"fear and destruction."
 msgstr ""
 "Jadis de grands guerriers sillonnant les plaines, ces cavaliers montés sur "
-"le squelette de leur cheval sont sortis de la tombe par une magie impie pour "
-"semer la peur et la destruction."
+"leurs chevaux squelettiques sont sortis de leur tombe par une magie impie "
+"pour semer la peur et la destruction."
 
 #. [unit_type]: id=Bone Shooter, race=undead
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:4
@@ -10634,17 +10636,6 @@ msgstr ""
 #: data/core/units/undead/Skeleton_Rider.cfg:5
 msgid "Skeleton Rider"
 msgstr "Squelette monté"
-
-#. [unit_type]: id=Skeleton Rider, race=undead
-#: data/core/units/undead/Skeleton_Rider.cfg:79
-msgid ""
-"Once great warriors thundering across the plains, these mounted riders atop "
-"their skeletal horses were raised from the grave by unholy magic to spread "
-"fear and destruction."
-msgstr ""
-"Jadis de grands guerriers sillonnant les plaines, ces cavaliers montés sur "
-"leurs chevaux squelettiques sont sortis de leur tombe par une magie impie "
-"pour semer la peur et la destruction."
 
 #. [unit_type]: id=Ghost, race=undead
 #: data/core/units/undead/Spirit_Ghost.cfg:4
@@ -10900,6 +10891,15 @@ msgid ""
 "believed to be different from the magic of elves or merfolk. The details of "
 "this craft can only be speculated on by other races."
 msgstr ""
+
+#~ msgid ""
+#~ "Once great warriors across the plains, these mounted riders atop their "
+#~ "skeletal horses were raised from the ground by unholy magic to spread "
+#~ "fear and destruction."
+#~ msgstr ""
+#~ "Jadis de grands guerriers sillonnant les plaines, ces cavaliers montés "
+#~ "sur le squelette de leur cheval sont sortis de la tombe par une magie "
+#~ "impie pour semer la peur et la destruction."
 
 #, fuzzy
 #~| msgid "Shadow"

@@ -496,7 +496,7 @@ void mp_staging::update_leader_display(const ng::side_engine_ptr& side, grid& ro
 	}
 
 	row_grid.find_widget<label>("leader_type").set_label(current_leader == "random" ? _("Random") : current_leader);
-	row_grid.find_widget<label>("leader_faction").set_label(side->flg().current_faction()["name"]);
+	row_grid.find_widget<label>("leader_faction").set_label(side->flg().current_faction()["name"].t_str());
 
 	// Gender
 	if(current_gender != font::unicode_em_dash) {

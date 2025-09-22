@@ -725,7 +725,7 @@ void saved_game::update_label()
 	if(classification().abbrev.empty()) {
 		label = starting_point_["name"].str();
 	} else {
-		label = classification().abbrev + "-" + starting_point_["name"];
+		label = classification().abbrev + "-" + starting_point_["name"].t_str();
 	}
 
 	utils::erase_if(label, is_illegal_file_char);

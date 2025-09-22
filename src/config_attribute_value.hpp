@@ -32,13 +32,11 @@
 #include "utils/variant.hpp"
 
 #include <chrono>
-#include <climits>
 #ifdef __cpp_concepts
 #include <concepts>
 #endif
 #include <iosfwd>
 #include <string>
-#include <vector>
 #include <type_traits>
 
 #ifdef __cpp_concepts
@@ -172,7 +170,6 @@ public:
 
 	// Implicit conversions:
 	operator std::string() const { return str(); }
-	operator t_string() const { return t_str(); }
 
 	/** Tests for an attribute that was never set. */
 	bool blank() const;
@@ -200,22 +197,36 @@ public:
 #else
 	template<typename T>
 	std::enable_if_t<std::is_constructible_v<std::string, T>, bool>
-	operator==(const T& comp) const
+	friend operator==(const config_attribute_value& attribute, const T& comp)
 	{
-		return apply_visitor([this, &comp](const auto& value) {
+		return attribute.apply_visitor([&](const auto& value) {
 			if constexpr(std::is_constructible_v<std::string, std::decay_t<decltype(value)>>) {
 				return value == comp;
 			} else {
-				return *this == create(comp);
+				return attribute == config_attribute_value::create(comp);
 			}
 		});
 	}
 
 	template<typename T>
 	std::enable_if_t<std::is_constructible_v<std::string, T>, bool>
-	operator!=(const T& comp) const
+	friend operator==(const T& comp, const config_attribute_value& val)
 	{
-		return !operator==(comp);
+		return val == comp;
+	}
+
+	template<typename T>
+	std::enable_if_t<std::is_constructible_v<std::string, T>, bool>
+	friend operator!=(const config_attribute_value& val, const T& comp)
+	{
+		return !(val == comp);
+	}
+
+	template<typename T>
+	std::enable_if_t<std::is_constructible_v<std::string, T>, bool>
+	friend operator!=(const T& comp, const config_attribute_value& val)
+	{
+		return !(val == comp);
 	}
 #endif
 

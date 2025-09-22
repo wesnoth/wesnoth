@@ -29,7 +29,6 @@
 #include "team.hpp"
 
 #include <array>
-#include <cstdlib>
 
 static lg::log_domain log_config("config");
 #define LOG_CF LOG_STREAM(info, log_config)
@@ -828,7 +827,7 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine, const
 	// Initialize team and color.
 	unsigned team_name_index = 0;
 	for(const connect_engine::team_data_pod& data : parent_.team_data_) {
-		if(data.team_name == cfg["team_name"]) {
+		if(cfg["team_name"] == data.team_name) {
 			break;
 		}
 

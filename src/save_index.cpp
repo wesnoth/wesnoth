@@ -66,7 +66,7 @@ void save_index_class::rebuild(const std::string& name, const std::chrono::syste
 void save_index_class::remove(const std::string& name)
 {
 	config& root = data();
-	root.remove_children("save", [&name](const config& d) { return name == d["save"]; });
+	root.remove_children("save", [&name](const config& d) { return d["save"] == name; });
 	write_save_index();
 }
 
@@ -103,7 +103,7 @@ void save_index_class::clean_up_index()
 	if(root.all_children_count() > filenames.size()) {
 		root.remove_children("save", [&filenames](const config& d)
 			{
-				return !utils::contains(filenames, d["save"]);
+				return !utils::contains(filenames, d["save"].str());
 			}
 		);
 	}

@@ -729,7 +729,7 @@ utils::string_map_res movetype::resistances::damage_table() const
 	utils::string_map_res result;
 
 	for(const auto& [key, value] : cfg_.attribute_range()) {
-		result[key] = value;
+		result[key] = value.t_str();
 	}
 
 	return result;
@@ -812,7 +812,7 @@ movetype::movetype(const config & cfg) :
 	flying_ = cfg["flying"].to_bool(flying_);
 
 	for(const config& sn : cfg.child_range("special_note")) {
-		special_notes_.push_back(sn["note"]);
+		special_notes_.push_back(sn["note"].t_str());
 	}
 }
 

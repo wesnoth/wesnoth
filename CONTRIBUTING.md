@@ -22,6 +22,8 @@ All C++, WML and Lua files are in UTF-8, as we use Gettext-style translations, a
 
 If your pull request touches the engine's C++ source code, we recommend (but don't require) you run `clang-format` on your changes before submission (Visual Studio Code gives you a handy context menu option to do so). This ensures that your code remains formatted according to our conventions. Make a local commit before running `clang-format`, in case more code than expected gets changed.
 
+Additionally, for machine generated or machine assisted code, if you open a pull request you are expected to be able to explain what the code you're submitting does and why it's done this way. If you're not able to explain the code you've submitted then the reviewer(s) may decide to immediately close your pull request - we are all volunteers, our time is limited, and it's not our responsibility to try to interpret the code you asked an AI to output. Do not submit "vibe coded" pull requests if you aren't able to explain their implementation details yourself and always make sure to carefully test any generated code before opening your pull request. Any pull request that is primarily or entirely machine generated must also state this in the commit message.
+
 Generally, we follow these conventions in our C++ code:
 
 ```cpp
