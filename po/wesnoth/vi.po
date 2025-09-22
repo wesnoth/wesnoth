@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-08-19 10:14-0500\n"
+"POT-Creation-Date: 2025-09-21 23:01-0500\n"
 "PO-Revision-Date: 2014-06-05 22:13+0700\n"
 "Last-Translator: \n"
 "Language-Team: Vietnamese <kde-i18n-doc@kde.org>\n"
@@ -659,32 +659,32 @@ msgid "Spanish Translation"
 msgstr "Bản dịch tiếng Tây Ban Nha"
 
 #. [about]
-#: data/core/about_i18n.cfg:1822
+#: data/core/about_i18n.cfg:1826
 msgid "Swedish Translation"
 msgstr "Bản dịch tiếng Thụy Điển"
 
 #. [about]
-#: data/core/about_i18n.cfg:1867
+#: data/core/about_i18n.cfg:1871
 msgid "Turkish Translation"
 msgstr "Bản dịch tiếng Thổ Nhĩ Kỳ"
 
 #. [about]
-#: data/core/about_i18n.cfg:1892
+#: data/core/about_i18n.cfg:1896
 msgid "Ukrainian Translation"
 msgstr "Bản dịch tiếng Ukraina"
 
 #. [about]
-#: data/core/about_i18n.cfg:1926
+#: data/core/about_i18n.cfg:1930
 msgid "Valencian (southern Catalan) Translation"
 msgstr "Bản dịch tiếng Valencia (nam Catalan)"
 
 #. [about]
-#: data/core/about_i18n.cfg:1939
+#: data/core/about_i18n.cfg:1943
 msgid "Vietnamese Translation"
 msgstr "Bản dịch tiếng Việt"
 
 #. [about]
-#: data/core/about_i18n.cfg:1958
+#: data/core/about_i18n.cfg:1962
 #, fuzzy
 #| msgid "Polish Translation"
 msgid "Welsh Translation"
@@ -692,7 +692,7 @@ msgstr "Bản dịch tiếng Ba Lan"
 
 #. [about]
 #. Real Acadèmia de Cultura Valenciana
-#: data/core/about_i18n.cfg:1967
+#: data/core/about_i18n.cfg:1971
 msgid "RACV’s Translation"
 msgstr "Bản dịch của RACV"
 
@@ -3781,7 +3781,7 @@ msgstr "Nấm"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=village
-#: data/core/team-colors.cfg:207 src/terrain/terrain.cpp:185
+#: data/core/team-colors.cfg:207 src/terrain/terrain.cpp:183
 msgid "Village"
 msgstr "Làng"
 
@@ -3812,14 +3812,14 @@ msgstr "Không thể qua"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=fog
-#: data/core/team-colors.cfg:243 src/game_initialization/lobby_data.cpp:384
+#: data/core/team-colors.cfg:243 src/game_initialization/lobby_data.cpp:376
 msgid "Fog"
 msgstr "Sương mù"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=shroud
-#: data/core/team-colors.cfg:249 src/game_initialization/lobby_data.cpp:387
-#: src/game_initialization/lobby_data.cpp:390
+#: data/core/team-colors.cfg:249 src/game_initialization/lobby_data.cpp:379
+#: src/game_initialization/lobby_data.cpp:382
 msgid "Shroud"
 msgstr "Màn che"
 
@@ -5846,7 +5846,7 @@ msgstr ""
 
 #: src/addon/client.cpp:131 src/addon/client.cpp:149 src/addon/client.cpp:167
 #: src/addon/client.cpp:185 src/addon/client.cpp:205 src/addon/client.cpp:226
-#: src/addon/client.cpp:246 src/addon/client.cpp:576
+#: src/addon/client.cpp:246 src/addon/client.cpp:577
 #: src/gui/dialogs/multiplayer/match_history.cpp:248
 msgid "The server responded with an error:"
 msgstr "Máy chủ đã trả lời bằng lỗi:"
@@ -5977,7 +5977,7 @@ msgstr "Đang xóa phần bổ sung <i>$addon_title</i> khỏi máy chủ..."
 msgid "Downloading add-on <i>$addon_title</i>..."
 msgstr "Đang tải về phần bổ sung <i>$addon_title</i>..."
 
-#: src/addon/client.cpp:500 src/addon/client.cpp:861
+#: src/addon/client.cpp:500 src/addon/client.cpp:862
 msgid "Add-ons Manager"
 msgstr "Quản lý phần bổ sung"
 
@@ -6007,7 +6007,7 @@ msgstr ""
 "Phần bổ sung <i>$addon_title</i> có tên tập tin hoặc tên thư mục không hợp "
 "lệ và không thể cài đặt được."
 
-#: src/addon/client.cpp:631
+#: src/addon/client.cpp:632
 msgid ""
 "The selected add-on has the following dependency, which is not currently "
 "installed or available from the server. Do you wish to continue?"
@@ -6018,11 +6018,11 @@ msgstr[0] ""
 "Phần bổ sung được chọn có thành phần phụ thuộc sau đây, hiện chưa được cài "
 "đặt hoặc không có từ máy chủ. Bạn có muốn tiếp tục không?"
 
-#: src/addon/client.cpp:640
+#: src/addon/client.cpp:641
 msgid "Broken Dependencies"
 msgstr "Thành phần phụ thuộc bị hỏng"
 
-#: src/addon/client.cpp:680
+#: src/addon/client.cpp:681
 msgid ""
 "The following dependency could not be installed. Do you still wish to "
 "continue?"
@@ -6032,11 +6032,11 @@ msgid_plural ""
 msgstr[0] ""
 "Thành phần phụ thuộc sau đây không thể cài đặt được. Bạn vẫn muốn tiếp tục?"
 
-#: src/addon/client.cpp:684
+#: src/addon/client.cpp:685
 msgid "Dependencies Installation Failed"
 msgstr "Cài đặt thành phần phụ thuộc thất bại"
 
-#: src/addon/client.cpp:707
+#: src/addon/client.cpp:708
 msgid ""
 "The add-on '$addon|' is already installed and contains additional "
 "information that will be permanently lost if you continue:"
@@ -6044,80 +6044,80 @@ msgstr ""
 "Phần bổ sung '$addon|' đã được cài đặt và chứa các thông tin thêm, chúng sẽ "
 "bị mất vĩnh viễn nếu bạn tiếp tục:"
 
-#: src/addon/client.cpp:711
+#: src/addon/client.cpp:712
 msgid "Publishing information file (.pbl)"
 msgstr "Tập tin thông tin phát hành (.pbl)"
 
-#: src/addon/client.cpp:715
+#: src/addon/client.cpp:716
 msgid "Version control system (VCS) information"
 msgstr "Thông tin hệ thống kiểm soát phiên bản (VCS)"
 
-#: src/addon/client.cpp:719
+#: src/addon/client.cpp:720
 msgid "Do you really wish to continue?"
 msgstr "Bạn có thực sự muốn tiếp tục không?"
 
-#: src/addon/client.cpp:721 src/addon/manager_ui.cpp:171
-#: src/game_initialization/multiplayer.cpp:374
+#: src/addon/client.cpp:722 src/addon/manager_ui.cpp:171
+#: src/game_initialization/multiplayer.cpp:373
 msgid "Confirm"
 msgstr "Xác nhận"
 
-#: src/addon/info.cpp:252
+#: src/addon/info.cpp:236
 msgid "addon_type^Campaign"
 msgstr "Chiến dịch"
 
-#: src/addon/info.cpp:254
+#: src/addon/info.cpp:238
 msgid "addon_type^Scenario"
 msgstr "Màn chơi"
 
-#: src/addon/info.cpp:256
+#: src/addon/info.cpp:240
 msgid "addon_type^SP/MP Campaign"
 msgstr "Chiến dịch 1NC/NNC"
 
-#: src/addon/info.cpp:258
+#: src/addon/info.cpp:242
 msgid "addon_type^MP era"
 msgstr "Thời đại NNC"
 
-#: src/addon/info.cpp:260
+#: src/addon/info.cpp:244
 msgid "addon_type^MP faction"
 msgstr "Liên minh NNC"
 
-#: src/addon/info.cpp:262
+#: src/addon/info.cpp:246
 msgid "addon_type^MP map-pack"
 msgstr "Gói bản đồ NNC"
 
-#: src/addon/info.cpp:264
+#: src/addon/info.cpp:248
 msgid "addon_type^MP scenario"
 msgstr "Màn chơi NNC"
 
-#: src/addon/info.cpp:266
+#: src/addon/info.cpp:250
 msgid "addon_type^MP campaign"
 msgstr "Chiến dịch NNC"
 
-#: src/addon/info.cpp:268
+#: src/addon/info.cpp:252
 #, fuzzy
 #| msgid "addon_type^MP modification"
 msgid "addon_type^Modification"
 msgstr "Bản sửa đổi NNC"
 
-#: src/addon/info.cpp:270
+#: src/addon/info.cpp:254
 #, fuzzy
 #| msgid "addon_type^Resources"
 msgid "addon_type^Core"
 msgstr "Tài nguyên"
 
-#: src/addon/info.cpp:272
+#: src/addon/info.cpp:256
 msgid "addon_type^Resources"
 msgstr "Tài nguyên"
 
-#: src/addon/info.cpp:274
+#: src/addon/info.cpp:258
 msgid "addon_type^Other"
 msgstr "Khác"
 
-#: src/addon/info.cpp:276
+#: src/addon/info.cpp:260
 msgid "addon_type^(unknown)"
 msgstr "(không xác định)"
 
-#: src/addon/info.cpp:313
+#: src/addon/info.cpp:296
 msgid "unit_byte^B"
 msgstr "B"
 
@@ -6779,7 +6779,7 @@ msgstr[0] ""
 "Xin báo cáo lỗi này với tác giả hoặc người bảo trì tương ứng của các phần bổ "
 "sung này."
 
-#: src/game_events/pump.cpp:389 src/game_launcher.cpp:939
+#: src/game_events/pump.cpp:389 src/game_launcher.cpp:947
 msgid "Error: "
 msgstr "Lỗi: "
 
@@ -6795,38 +6795,38 @@ msgstr "Gỡ lỗi: "
 msgid "Info: "
 msgstr "Thông tin: "
 
-#: src/game_initialization/connect_engine.cpp:94
+#: src/game_initialization/connect_engine.cpp:93
 msgid "Team"
 msgstr "Đội"
 
-#: src/game_initialization/connect_engine.cpp:874
+#: src/game_initialization/connect_engine.cpp:873
 #, fuzzy
 #| msgid "Anonymous local player"
 msgid "Anonymous player"
 msgstr "NC cục bộ ẩn danh"
 
-#: src/game_initialization/connect_engine.cpp:879
-#: src/game_initialization/connect_engine.cpp:1123
+#: src/game_initialization/connect_engine.cpp:878
+#: src/game_initialization/connect_engine.cpp:1122
 msgid "Computer Player"
 msgstr "Máy tính"
 
-#: src/game_initialization/connect_engine.cpp:921
+#: src/game_initialization/connect_engine.cpp:920
 msgid "$playername $side"
 msgstr "$playername $side"
 
-#: src/game_initialization/connect_engine.cpp:1119
+#: src/game_initialization/connect_engine.cpp:1118
 msgid "Network Player"
 msgstr "NC mạng"
 
-#: src/game_initialization/connect_engine.cpp:1122
+#: src/game_initialization/connect_engine.cpp:1121
 msgid "Local Player"
 msgstr "NC cục bộ"
 
-#: src/game_initialization/connect_engine.cpp:1124
+#: src/game_initialization/connect_engine.cpp:1123
 msgid "Nobody"
 msgstr ""
 
-#: src/game_initialization/connect_engine.cpp:1127
+#: src/game_initialization/connect_engine.cpp:1126
 msgid "Reserved"
 msgstr "Dành riêng"
 
@@ -6927,62 +6927,62 @@ msgid "Unknown era"
 msgstr "Thời đại không xác định"
 
 #: src/game_initialization/lobby_data.cpp:263
-#: src/game_initialization/lobby_data.cpp:298
+#: src/game_initialization/lobby_data.cpp:290
 #, fuzzy
 #| msgid "scenario settings^Side"
 msgid "scenario_abbreviation^S"
 msgstr "Phe"
 
-#: src/game_initialization/lobby_data.cpp:284
+#: src/game_initialization/lobby_data.cpp:276
 msgid "Remote scenario"
 msgstr "Màn chơi từ xa"
 
-#: src/game_initialization/lobby_data.cpp:305
-#: src/game_initialization/lobby_data.cpp:329
+#: src/game_initialization/lobby_data.cpp:297
+#: src/game_initialization/lobby_data.cpp:321
 msgid "campaign_abbreviation^C"
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:335
+#: src/game_initialization/lobby_data.cpp:327
 msgid "Unknown scenario"
 msgstr "Màn chơi không xác định"
 
-#: src/game_initialization/lobby_data.cpp:349
+#: src/game_initialization/lobby_data.cpp:341
 msgid "Reloaded game"
 msgstr "Trò chơi được tải lại"
 
-#: src/game_initialization/lobby_data.cpp:364
+#: src/game_initialization/lobby_data.cpp:356
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "Còn trống:"
 
-#: src/game_initialization/lobby_data.cpp:366
+#: src/game_initialization/lobby_data.cpp:358
 msgid "mp_game_available_slots^Full"
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:377
-#: src/game_initialization/lobby_data.cpp:379 src/savegame.cpp:631
+#: src/game_initialization/lobby_data.cpp:369
+#: src/game_initialization/lobby_data.cpp:371 src/savegame.cpp:585
 msgid "Turn"
 msgstr "Lượt"
 
-#: src/game_initialization/lobby_data.cpp:392
+#: src/game_initialization/lobby_data.cpp:384
 #, fuzzy
 #| msgid "vision: "
 msgid "vision^none"
 msgstr "tầm nhìn: "
 
-#: src/game_initialization/lobby_data.cpp:401
+#: src/game_initialization/lobby_data.cpp:393
 #, fuzzy
 #| msgid "Time limit"
 msgid "time limit^none"
 msgstr "Giới hạn thời gian"
 
-#: src/game_initialization/lobby_data.cpp:445
+#: src/game_initialization/lobby_data.cpp:437
 msgid ""
 "The host’s version of <i>$addon</i> is incompatible. They have version "
 "<b>$host_ver</b> while you have version <b>$local_ver</b>."
 msgstr ""
 
-#: src/game_initialization/lobby_data.cpp:459
+#: src/game_initialization/lobby_data.cpp:451
 msgid ""
 "Your version of <i>$addon</i> is incompatible. You have version "
 "<b>$local_ver</b> while the host has version <b>$host_ver</b>."
@@ -6998,11 +6998,11 @@ msgstr "Đánh bại người chỉ huy kẻ thù"
 msgid "Cannot find era ‘$era’"
 msgstr "Không thể tìm thấy thời đại $era"
 
-#: src/game_initialization/multiplayer.cpp:255
+#: src/game_initialization/multiplayer.cpp:254
 msgid "Invalid address specified for multiplayer server"
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:290
+#: src/game_initialization/multiplayer.cpp:289
 #, fuzzy
 #| msgid ""
 #| "The server accepts versions '$version1' while you are using version "
@@ -7014,11 +7014,11 @@ msgstr ""
 "Máy chủ chấp nhận phiên bản '$version1' trong khi bạn đang sử dụng phiên bản "
 "'$version2'"
 
-#: src/game_initialization/multiplayer.cpp:303
+#: src/game_initialization/multiplayer.cpp:302
 msgid "Server-side redirect loop"
 msgstr "Lặp điều hướng phía máy chủ"
 
-#: src/game_initialization/multiplayer.cpp:347
+#: src/game_initialization/multiplayer.cpp:346
 msgid ""
 "The nickname ‘$nick’ is inactive. You cannot claim ownership of this "
 "nickname until you activate your account via email or ask an administrator "
@@ -7028,28 +7028,28 @@ msgstr ""
 "đến khi bạn kích hoạt tài khoản qua email hoặc nhờ một quản trị viên làm "
 "giùm bạn."
 
-#: src/game_initialization/multiplayer.cpp:356
+#: src/game_initialization/multiplayer.cpp:355
 msgid "Do you want to continue?"
 msgstr "Bạn có muốn tiếp tục không?"
 
-#: src/game_initialization/multiplayer.cpp:358
+#: src/game_initialization/multiplayer.cpp:357
 msgid "Warning"
 msgstr "Cảnh báo"
 
-#: src/game_initialization/multiplayer.cpp:420
+#: src/game_initialization/multiplayer.cpp:419
 msgid ""
 "The remote server requested a password while using an insecure connection."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:422
+#: src/game_initialization/multiplayer.cpp:421
 msgid "You must login first."
 msgstr "Trước hết bạn phải đăng nhập."
 
-#: src/game_initialization/multiplayer.cpp:424
+#: src/game_initialization/multiplayer.cpp:423
 msgid "The nickname ‘$nick’ is already taken."
 msgstr "Biệt danh ’$nick’ đã có người sử dụng."
 
-#: src/game_initialization/multiplayer.cpp:426
+#: src/game_initialization/multiplayer.cpp:425
 #, fuzzy
 #| msgid ""
 #| "The nickname ‘$nick’ contains invalid characters. Only alpha-numeric "
@@ -7061,58 +7061,58 @@ msgstr ""
 "Biệt danh ’$nick’ chứa ký tự không hợp lệ. Chỉ cho phép các ký tự dạng chữ "
 "cái, chữ số, dấu gạch dưới và gạch nối."
 
-#: src/game_initialization/multiplayer.cpp:430
+#: src/game_initialization/multiplayer.cpp:429
 msgid "The nickname ‘$nick’ is too long. Nicks must be 20 characters or less."
 msgstr "Biệt danh ’$nick’ quá dài. Biệt danh phải từ 20 ký tự trở xuống."
 
-#: src/game_initialization/multiplayer.cpp:432
+#: src/game_initialization/multiplayer.cpp:431
 msgid "The nickname ‘$nick’ is reserved and cannot be used by players."
 msgstr ""
 "Biệt danh ’$nick’ đã được dành riêng và các người chơi không thể sử dụng."
 
-#: src/game_initialization/multiplayer.cpp:434
+#: src/game_initialization/multiplayer.cpp:433
 msgid "The nickname ‘$nick’ is not registered on this server."
 msgstr "Biệt danh ’$nick’ chưa đăng ký trên máy chủ này."
 
-#: src/game_initialization/multiplayer.cpp:435
+#: src/game_initialization/multiplayer.cpp:434
 msgid " This server disallows unregistered nicknames."
 msgstr " Máy chủ này không cho phép các biệt danh chưa đăng ký."
 
-#: src/game_initialization/multiplayer.cpp:438
+#: src/game_initialization/multiplayer.cpp:437
 #, fuzzy
 #| msgid "The nickname ‘$nick’ is registered on this server."
 msgid "Your IP address is banned on this server for $duration|."
 msgstr "Biệt danh ’$nick’ đã đăng ký trên máy chủ này."
 
-#: src/game_initialization/multiplayer.cpp:440
+#: src/game_initialization/multiplayer.cpp:439
 #, fuzzy
 #| msgid "The nickname ‘$nick’ is registered on this server."
 msgid "Your IP address is banned on this server."
 msgstr "Biệt danh ’$nick’ đã đăng ký trên máy chủ này."
 
-#: src/game_initialization/multiplayer.cpp:444
+#: src/game_initialization/multiplayer.cpp:443
 #, fuzzy
 #| msgid "The nickname ‘$nick’ is registered on this server."
 msgid "The nickname ‘$nick’ is banned on this server’s forums for $duration|."
 msgstr "Biệt danh ’$nick’ đã đăng ký trên máy chủ này."
 
-#: src/game_initialization/multiplayer.cpp:446
+#: src/game_initialization/multiplayer.cpp:445
 #, fuzzy
 #| msgid "The nickname ‘$nick’ is registered on this server."
 msgid "The nickname ‘$nick’ is banned on this server’s forums."
 msgstr "Biệt danh ’$nick’ đã đăng ký trên máy chủ này."
 
-#: src/game_initialization/multiplayer.cpp:450
+#: src/game_initialization/multiplayer.cpp:449
 #, fuzzy
 #| msgid "The nickname ‘$nick’ is registered on this server."
 msgid "Your IP address is banned on this server’s forums for $duration|."
 msgstr "Biệt danh ’$nick’ đã đăng ký trên máy chủ này."
 
-#: src/game_initialization/multiplayer.cpp:452
+#: src/game_initialization/multiplayer.cpp:451
 msgid "Your IP address is banned on this server’s forums."
 msgstr ""
 
-#: src/game_initialization/multiplayer.cpp:456
+#: src/game_initialization/multiplayer.cpp:455
 #, fuzzy
 #| msgid "The nickname ‘$nick’ is registered on this server."
 msgid ""
@@ -7120,19 +7120,19 @@ msgid ""
 "for $duration|."
 msgstr "Biệt danh ’$nick’ đã đăng ký trên máy chủ này."
 
-#: src/game_initialization/multiplayer.cpp:458
+#: src/game_initialization/multiplayer.cpp:457
 #, fuzzy
 #| msgid "The nickname ‘$nick’ is registered on this server."
 msgid ""
 "The email address for the nickname ‘$nick’ is banned on this server’s forums."
 msgstr "Biệt danh ’$nick’ đã đăng ký trên máy chủ này."
 
-#: src/game_initialization/multiplayer.cpp:461
-#: src/game_initialization/multiplayer.cpp:463
+#: src/game_initialization/multiplayer.cpp:460
+#: src/game_initialization/multiplayer.cpp:462
 msgid "The nickname ‘$nick’ is registered on this server."
 msgstr "Biệt danh ’$nick’ đã đăng ký trên máy chủ này."
 
-#: src/game_initialization/multiplayer.cpp:464
+#: src/game_initialization/multiplayer.cpp:463
 msgid ""
 "WARNING: There is already a client using this nickname, logging in will "
 "cause that client to be kicked!"
@@ -7140,32 +7140,32 @@ msgstr ""
 "CẢNH BÁO: Đã có một máy khách sử dụng biệt danh này, đăng nhập sẽ làm cho "
 "máy khách đó bị đuổi!"
 
-#: src/game_initialization/multiplayer.cpp:467
+#: src/game_initialization/multiplayer.cpp:466
 msgid "The password you provided was incorrect."
 msgstr "Mật khẩu bạn cung cấp không đúng."
 
-#: src/game_initialization/multiplayer.cpp:469
+#: src/game_initialization/multiplayer.cpp:468
 msgid "You have made too many login attempts."
 msgstr "Bạn đã thử đăng nhập quá nhiều lần."
 
-#: src/game_initialization/multiplayer.cpp:471
+#: src/game_initialization/multiplayer.cpp:470
 msgid "Password hashing failed."
 msgstr ""
 
-#: src/game_initialization/playcampaign.cpp:150 src/game_launcher.cpp:892
+#: src/game_initialization/playcampaign.cpp:150 src/game_launcher.cpp:900
 msgid "The game could not be loaded: "
 msgstr "Không thể tải trò chơi: "
 
-#: src/game_initialization/playcampaign.cpp:156 src/game_launcher.cpp:894
+#: src/game_initialization/playcampaign.cpp:156 src/game_launcher.cpp:902
 msgid "Error while playing the game: "
 msgstr "Lỗi khi chơi trò chơi: "
 
-#: src/game_initialization/playcampaign.cpp:159 src/game_launcher.cpp:931
+#: src/game_initialization/playcampaign.cpp:159 src/game_launcher.cpp:939
 msgid "The game map could not be loaded: "
 msgstr "Không thể tải bản đồ trò chơi: "
 
-#: src/game_initialization/playcampaign.cpp:162 src/game_launcher.cpp:896
-#: src/game_launcher.cpp:1017
+#: src/game_initialization/playcampaign.cpp:162 src/game_launcher.cpp:904
+#: src/game_launcher.cpp:1025
 msgid "Map generator error: "
 msgstr ""
 
@@ -7194,29 +7194,28 @@ msgstr "Màn không xác định: '$scenario|'"
 msgid "No campaigns are available."
 msgstr "Không có chiến dịch nào.\n"
 
-#: src/game_launcher.cpp:685 src/game_launcher.cpp:704
-#: src/hotkey/hotkey_handler_sp.cpp:327 src/replay.cpp:664 src/savegame.cpp:142
-#: src/savegame.cpp:184 src/savegame.cpp:288
+#: src/game_launcher.cpp:686 src/game_launcher.cpp:705
+#: src/hotkey/hotkey_handler_sp.cpp:324 src/replay.cpp:664 src/savegame.cpp:187
 msgid "The file you have tried to load is corrupt"
 msgstr "Tập tin bạn cố tải bị hỏng"
 
-#: src/game_launcher.cpp:687 src/game_launcher.cpp:706
+#: src/game_launcher.cpp:688 src/game_launcher.cpp:707
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Tập tin bạn cố tải bị hỏng: '"
 
-#: src/game_launcher.cpp:696
+#: src/game_launcher.cpp:697
 msgid "File I/O Error while reading the game"
 msgstr "Lỗi vào/ra tập tin khi đọc trò chơi"
 
-#: src/game_launcher.cpp:698
+#: src/game_launcher.cpp:699
 msgid "File I/O Error while reading the game: '"
 msgstr "Lỗi vào/ra tập tin khi đọc trò chơi: '"
 
-#: src/game_launcher.cpp:890
+#: src/game_launcher.cpp:898
 msgid "Error while starting server: "
 msgstr "Lỗi khi khởi động máy chủ: "
 
-#: src/game_launcher.cpp:912
+#: src/game_launcher.cpp:920
 #, fuzzy
 #| msgid "Connection timed out"
 msgid "Connection failed: "
@@ -7551,25 +7550,25 @@ msgstr "phát lượt"
 msgid "Replay from Start"
 msgstr "Trở lại từ đầu"
 
-#: src/hotkey/hotkey_handler_sp.cpp:155
+#: src/hotkey/hotkey_handler_sp.cpp:156
 msgid "(press $hotkey to deactivate)"
 msgstr "(ấn $hotkey để ngừng kích hoạt)"
 
-#: src/hotkey/hotkey_handler_sp.cpp:155 src/menu_events.cpp:2096
+#: src/hotkey/hotkey_handler_sp.cpp:156 src/menu_events.cpp:2098
 msgid "Planning mode activated!"
 msgstr "Đã kích hoạt chế độ lập kế hoạch!"
 
-#: src/hotkey/hotkey_handler_sp.cpp:157 src/menu_events.cpp:2099
+#: src/hotkey/hotkey_handler_sp.cpp:158 src/menu_events.cpp:2101
 msgid "Planning mode deactivated!"
 msgstr "Đã ngừng kích hoạt chế độ lập kế hoạch!"
 
-#: src/hotkey/hotkey_handler_sp.cpp:331
+#: src/hotkey/hotkey_handler_sp.cpp:342
 #, fuzzy
 #| msgid "The file you have tried to load is corrupt"
 msgid "The file you have tried to load has no replay information."
 msgstr "Tập tin bạn cố tải bị hỏng"
 
-#: src/hotkey/hotkey_handler_sp.cpp:335
+#: src/hotkey/hotkey_handler_sp.cpp:346
 #, fuzzy
 #| msgid "The file you have tried to load is corrupt"
 msgid "The file you have tried to load is not from the current session."
@@ -8103,130 +8102,130 @@ msgstr "Truy cập hộp thoại tùy chọn bảng trắng"
 msgid "Could not find label or unit containing the string ‘$search’."
 msgstr "Không thể tìm thấy nhãn hoặc đơn vị chứa chuỗi '$search'."
 
-#: src/menu_events.cpp:1490
+#: src/menu_events.cpp:1491
 #, fuzzy
 #| msgid "Can't droid invalid side: '$side'."
 msgid "Can’t droid invalid side: ‘$side’."
 msgstr "Không thể tự động hóa phe không hợp lệ: '$side'."
 
-#: src/menu_events.cpp:1493
+#: src/menu_events.cpp:1494
 #, fuzzy
 #| msgid "Can't droid networked side: '$side'."
 msgid "Can’t droid networked side: ‘$side’."
 msgstr "Không thể tự động hóa phe mạng: '$side'."
 
-#: src/menu_events.cpp:1505 src/menu_events.cpp:1521 src/menu_events.cpp:1553
+#: src/menu_events.cpp:1506 src/menu_events.cpp:1522 src/menu_events.cpp:1554
 msgid ""
 "It is not allowed to change a side from AI to human control when it’s not "
 "your turn."
 msgstr ""
 
-#: src/menu_events.cpp:1515 src/menu_events.cpp:1571
+#: src/menu_events.cpp:1516 src/menu_events.cpp:1572
 msgid "Side ‘$side’ controller is now controlled by: AI."
 msgstr ""
 
-#: src/menu_events.cpp:1517
+#: src/menu_events.cpp:1518
 #, fuzzy
 #| msgid "The nickname ‘$nick’ is already taken."
 msgid "Side ‘$side’ is already droided."
 msgstr "Biệt danh ’$nick’ đã có người sử dụng."
 
-#: src/menu_events.cpp:1531 src/menu_events.cpp:1563
+#: src/menu_events.cpp:1532 src/menu_events.cpp:1564
 msgid "Side ‘$side’ controller is now controlled by: human."
 msgstr ""
 
-#: src/menu_events.cpp:1533
+#: src/menu_events.cpp:1534
 #, fuzzy
 #| msgid "The nickname ‘$nick’ is already taken."
 msgid "Side ‘$side’ is already not droided."
 msgstr "Biệt danh ’$nick’ đã có người sử dụng."
 
-#: src/menu_events.cpp:1537
+#: src/menu_events.cpp:1538
 msgid ""
 "It is not allowed to change a side from human to AI control when it’s not "
 "your turn."
 msgstr ""
 
-#: src/menu_events.cpp:1547
+#: src/menu_events.cpp:1548
 msgid "Side ‘$side’ controller is now fully controlled by: AI."
 msgstr ""
 
-#: src/menu_events.cpp:1549
+#: src/menu_events.cpp:1550
 msgid "Side ‘$side’ is already fully AI controlled."
 msgstr ""
 
-#: src/menu_events.cpp:1574
+#: src/menu_events.cpp:1575
 msgid ""
 "Invalid action provided for side ‘$side’. Valid actions are: on, off, full."
 msgstr ""
 
-#: src/menu_events.cpp:1583
+#: src/menu_events.cpp:1584
 msgid "Side ‘$side’ is not a human or AI player."
 msgstr ""
 
-#: src/menu_events.cpp:1619
+#: src/menu_events.cpp:1621
 #, fuzzy
 #| msgid "Can't idle invalid side: '$side'."
 msgid "Can’t idle invalid side: ‘$side’."
 msgstr "Không thể rảnh rỗi hóa phe không hợp lệ: '$side'."
 
-#: src/menu_events.cpp:1624
+#: src/menu_events.cpp:1626
 #, fuzzy
 #| msgid "Can't droid networked side: '$side'."
 msgid "Can’t idle networked side: ‘$side’."
 msgstr "Không thể tự động hóa phe mạng: '$side'."
 
-#: src/menu_events.cpp:1629
+#: src/menu_events.cpp:1631
 #, fuzzy
 #| msgid "Can't idle invalid side: '$side'."
 msgid "Can’t idle local ai side: ‘$side’."
 msgstr "Không thể rảnh rỗi hóa phe không hợp lệ: '$side'."
 
-#: src/menu_events.cpp:1675
+#: src/menu_events.cpp:1677
 #, fuzzy
 #| msgid "Can't change control of invalid side: '$side'."
 msgid "Can’t change control of invalid side: ‘$side’."
 msgstr "Không thể thay đổi quyền điều khiển của phe không hợp lệ: '$side'."
 
-#: src/menu_events.cpp:1685
+#: src/menu_events.cpp:1687
 #, fuzzy
 #| msgid "Can't change control of out-of-bounds side: '$side'."
 msgid "Can’t change control of out-of-bounds side: ‘$side’."
 msgstr "Không thể thay đổi quyền điều khiển của phe ngoài phạm vi: '$side'."
 
-#: src/menu_events.cpp:1702
+#: src/menu_events.cpp:1704
 #, fuzzy
 #| msgid "Can't query control of invalid side: '$side'."
 msgid "Can’t query control of invalid side: ‘$side’."
 msgstr "Không thể truy vấn quyền điều khiển của phe không hợp lệ: '$side'."
 
-#: src/menu_events.cpp:1709
+#: src/menu_events.cpp:1711
 #, fuzzy
 #| msgid "Can't query control of out-of-bounds side: '$side'."
 msgid "Can’t query control of out-of-bounds side: ‘$side’."
 msgstr "Không thể truy vấn quyền điều khiển của phe ngoài phạm vi: '$side'."
 
-#: src/menu_events.cpp:1831
+#: src/menu_events.cpp:1833
 msgid "Choose Scenario (Debug!)"
 msgstr "Chọn màn (Gỡ lỗi!)"
 
-#: src/menu_events.cpp:1867
+#: src/menu_events.cpp:1869
 msgid "Debug mode activated!"
 msgstr "Đã kích hoạt chế độ gỡ lỗi!"
 
-#: src/menu_events.cpp:1870
+#: src/menu_events.cpp:1872
 msgid "Debug mode not available in network games"
 msgstr "Không dùng được chế độ gỡ lỗi trong trò chơi mạng"
 
-#: src/menu_events.cpp:1877
+#: src/menu_events.cpp:1879
 msgid "Debug mode deactivated!"
 msgstr "Đã ngừng kích hoạt chế độ gỡ lỗi!"
 
-#: src/menu_events.cpp:1897
+#: src/menu_events.cpp:1899
 msgid "WARNING! Unsafe Lua Mode"
 msgstr ""
 
-#: src/menu_events.cpp:1898
+#: src/menu_events.cpp:1900
 msgid ""
 "Executing Lua code in in this manner opens your computer to potential "
 "security breaches from any malicious add-ons or other programs you may have "
@@ -8235,19 +8234,19 @@ msgid ""
 "Do not continue unless you really know what you are doing."
 msgstr ""
 
-#: src/menu_events.cpp:1903
+#: src/menu_events.cpp:1905
 msgid "Unsafe mode enabled!"
 msgstr "Đã kích hoạt chế độ không an toàn!"
 
-#: src/menu_events.cpp:1952
+#: src/menu_events.cpp:1954
 msgid "Variable not found"
 msgstr "Không tìm thấy biến"
 
-#: src/menu_events.cpp:1985
+#: src/menu_events.cpp:1987
 msgid "Debug command ‘unit: $unit’ failed: no unit selected or hovered over."
 msgstr ""
 
-#: src/menu_events.cpp:2003
+#: src/menu_events.cpp:2005
 #, fuzzy
 #| msgid ""
 #| "Invalid alignment: '$alignment', needs to be one of lawful, neutral, "
@@ -8259,23 +8258,23 @@ msgstr ""
 "Phân loại không hợp lệ: '$alignment', phải là một trong: chính thống, trung "
 "lập, hỗn độn hoặc tính ngưỡng."
 
-#: src/menu_events.cpp:2029
+#: src/menu_events.cpp:2031
 msgid "Do you wish to clear all of your discovered units from help?"
 msgstr "Bạn có muốn xóa tất cả các đơn vị quân đã khám phá khỏi mục trợ giúp?"
 
-#: src/menu_events.cpp:2043
+#: src/menu_events.cpp:2045
 msgid "Invalid unit type"
 msgstr "Kiểu đơn vị không hợp lệ"
 
-#: src/menu_events.cpp:2050
+#: src/menu_events.cpp:2052
 msgid "Invalid location"
 msgstr "Vị trí không hợp lệ"
 
-#: src/menu_events.cpp:2125
+#: src/menu_events.cpp:2127
 msgid "prompt^Command:"
 msgstr "Lệnh:"
 
-#: src/menu_events.cpp:2151
+#: src/menu_events.cpp:2153
 #, fuzzy
 #| msgid "prompt^Command:"
 msgid "prompt^Formula:"
@@ -8422,7 +8421,7 @@ msgstr "giờ cục bộ hiện tại"
 msgid "Trying to create a corrupt file, please report this bug"
 msgstr ""
 
-#: src/play_controller.cpp:1062
+#: src/play_controller.cpp:1061
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
 "want to save your game?"
@@ -8430,17 +8429,17 @@ msgstr ""
 "Trò chơi bị mất đồng bộ. Tiếp tục có thể sẽ không có nhiều ý nghĩa. Bạn có "
 "muốn lưu trò chơi không?"
 
-#: src/play_controller.cpp:1063
+#: src/play_controller.cpp:1062
 msgid "Error details:"
 msgstr "Chi tiết lỗi:"
 
-#: src/play_controller.cpp:1243
+#: src/play_controller.cpp:1242
 msgid "Warning: broken campaign branches"
 msgstr ""
 
 #. TRANSLATORS: This is an error that will hopefully only be seen by UMC authors and by players who have already
 #. said "okay" to a "loading saves from an old version might not work" dialog.
-#: src/play_controller.cpp:1249
+#: src/play_controller.cpp:1248
 msgid ""
 "The next scenario is missing, you will not be able to finish this campaign."
 msgid_plural ""
@@ -8448,7 +8447,7 @@ msgid_plural ""
 "finish this campaign."
 msgstr[0] ""
 
-#: src/play_controller.cpp:1256
+#: src/play_controller.cpp:1255
 msgid ""
 "Please report the following missing scenario to the campaign’s author:\n"
 "$unknown_list|"
@@ -8457,11 +8456,11 @@ msgid_plural ""
 "$unknown_list|"
 msgstr[0] ""
 
-#: src/play_controller.cpp:1260
+#: src/play_controller.cpp:1259
 msgid "Once this is fixed, you will need to restart this scenario."
 msgstr ""
 
-#: src/play_controller.cpp:1339
+#: src/play_controller.cpp:1338
 msgid "No objectives available"
 msgstr "Không có mục tiêu"
 
@@ -9003,7 +9002,7 @@ msgstr ""
 
 #. TRANSLATORS: Day of week + month + day of month + year + 12-hour time, eg 'Tue Nov 02 2021, 1:59 PM'.
 #. Format for your locale.
-#: src/save_index.cpp:251
+#: src/save_index.cpp:247
 #, fuzzy
 #| msgid "%a %b %d %I:%M %p %Y"
 msgid "%a %b %d %Y, %I:%M %p"
@@ -9011,23 +9010,23 @@ msgstr "%a %b %d %I:%M %p %Y"
 
 #. TRANSLATORS: Day of week + month + day of month + year + 24-hour time, eg 'Tue Nov 02 2021, 13:59'.
 #. Format for your locale.
-#: src/save_index.cpp:254
+#: src/save_index.cpp:250
 #, fuzzy
 #| msgid "%a %b %d %H:%M %Y"
 msgid "%a %b %d %Y, %H:%M"
 msgstr "%a %b %d %H:%M %Y"
 
 #. TRANSLATORS: This string is used as part of a filename, as in, "HttT-The Elves Besieged replay.gz"
-#: src/save_index.cpp:269 src/savegame.cpp:557
+#: src/save_index.cpp:265 src/savegame.cpp:511
 msgid "replay"
 msgstr "phát lại"
 
-#: src/save_index.cpp:347 src/savegame.cpp:66 src/savegame.cpp:593
-#: src/savegame.cpp:595
+#: src/save_index.cpp:343 src/savegame.cpp:66 src/savegame.cpp:547
+#: src/savegame.cpp:549
 msgid "Auto-Save"
 msgstr "Lưu tự động"
 
-#: src/savegame.cpp:228
+#: src/savegame.cpp:143
 msgid ""
 "This save is from an old, unsupported version ($version_number|) and cannot "
 "be loaded."
@@ -9035,7 +9034,7 @@ msgstr ""
 "Bản lưu này là từ một phiên bản cũ, không được hỗ trợ ($version_number|) và "
 "không thể tải được."
 
-#: src/savegame.cpp:237
+#: src/savegame.cpp:152
 msgid ""
 "This save is from a different version of the game ($version_number|), and "
 "might not work with this version.\n"
@@ -9053,35 +9052,35 @@ msgid ""
 "Do you wish to continue?"
 msgstr ""
 
-#: src/savegame.cpp:251 src/savegame.cpp:293
+#: src/savegame.cpp:166 src/savegame.cpp:259
 msgid "Load Game"
 msgstr "Tải trò chơi"
 
-#: src/savegame.cpp:293
+#: src/savegame.cpp:259
 msgid "Replays are not supported in multiplayer mode."
 msgstr ""
 
-#: src/savegame.cpp:302
+#: src/savegame.cpp:266
 msgid "This is not a multiplayer save."
 msgstr "Đây không phải bản lưu nhiều người chơi."
 
-#: src/savegame.cpp:335
+#: src/savegame.cpp:289
 msgid "The game could not be saved: "
 msgstr "Không thể lưu trò chơi: "
 
-#: src/savegame.cpp:404
+#: src/savegame.cpp:358
 msgid "Name: "
 msgstr "Tên: "
 
-#: src/savegame.cpp:404
+#: src/savegame.cpp:358
 msgid "Save already exists. Do you want to overwrite it?"
 msgstr "Bản lưu đã tồn tại. Bạn có muốn ghi đè lên không?"
 
-#: src/savegame.cpp:405
+#: src/savegame.cpp:359
 msgid "Overwrite?"
 msgstr "Ghi đè?"
 
-#: src/savegame.cpp:412
+#: src/savegame.cpp:366
 #, fuzzy
 #| msgid ""
 #| "Save names should not end on '.gz' or '.bz2'. Please remove the extension."
@@ -9090,38 +9089,38 @@ msgid ""
 msgstr ""
 "Tên bản lưu không nên kết thúc bằng '.gz' hoặc '.bz2'. Xin xóa phần mở rộng."
 
-#: src/savegame.cpp:417
+#: src/savegame.cpp:371
 msgid ""
 "Save names may not end with a dot, or contain two dots or any of the "
 "following characters:\n"
 "    \" * / : < > ? \\ | ~"
 msgstr ""
 
-#: src/savegame.cpp:465
+#: src/savegame.cpp:419
 msgid "Saved"
 msgstr "Đã lưu"
 
-#: src/savegame.cpp:465
+#: src/savegame.cpp:419
 msgid "The game has been saved."
 msgstr "Đã lưu trò chơi."
 
-#: src/savegame.cpp:497 src/savegame.cpp:514
+#: src/savegame.cpp:451 src/savegame.cpp:468
 msgid "Could not write to file"
 msgstr "Không thể ghi vào tập tin"
 
-#: src/savegame.cpp:549
+#: src/savegame.cpp:503
 msgid "Save Replay"
 msgstr "Lưu bản phát lại"
 
-#: src/savegame.cpp:575
+#: src/savegame.cpp:529
 msgid "Could not auto save the game. Please save the game manually."
 msgstr "Không thể tự động lưu trò chơi. Xin lưu trò chơi một cách thủ công."
 
-#: src/savegame.cpp:625
+#: src/savegame.cpp:579
 msgid "Save Game"
 msgstr "Lưu trò chơi"
 
-#: src/savegame.cpp:639
+#: src/savegame.cpp:593
 msgid "Game state is corrupted"
 msgstr ""
 
@@ -9195,113 +9194,113 @@ msgstr "ở $pos"
 msgid "Value: ‘$value’ Previous: ‘$previous_value’"
 msgstr "Giá trị '$value' Giá trị trước '$previous_value'"
 
-#: src/serialization/string_utils.cpp:558
+#: src/serialization/string_utils.cpp:560
 msgid "prefix_milli^m"
 msgstr "m"
 
-#: src/serialization/string_utils.cpp:559
+#: src/serialization/string_utils.cpp:561
 msgid "prefix_micro^µ"
 msgstr "µ"
 
-#: src/serialization/string_utils.cpp:560
+#: src/serialization/string_utils.cpp:562
 msgid "prefix_nano^n"
 msgstr "n"
 
-#: src/serialization/string_utils.cpp:561
+#: src/serialization/string_utils.cpp:563
 msgid "prefix_pico^p"
 msgstr "p"
 
-#: src/serialization/string_utils.cpp:562
+#: src/serialization/string_utils.cpp:564
 msgid "prefix_femto^f"
 msgstr "f"
 
-#: src/serialization/string_utils.cpp:563
+#: src/serialization/string_utils.cpp:565
 msgid "prefix_atto^a"
 msgstr "a"
 
-#: src/serialization/string_utils.cpp:564
+#: src/serialization/string_utils.cpp:566
 msgid "prefix_zepto^z"
 msgstr "z"
 
-#: src/serialization/string_utils.cpp:565
+#: src/serialization/string_utils.cpp:567
 msgid "prefix_yocto^y"
 msgstr "y"
 
 #. TRANSLATORS: Translate the K in KiB only
-#: src/serialization/string_utils.cpp:578
+#: src/serialization/string_utils.cpp:580
 msgid "prefix_kibi^K"
 msgstr "K"
 
-#: src/serialization/string_utils.cpp:579
+#: src/serialization/string_utils.cpp:581
 msgid "prefix_kilo^k"
 msgstr "k"
 
-#: src/serialization/string_utils.cpp:581
+#: src/serialization/string_utils.cpp:583
 msgid "prefix_mega^M"
 msgstr "M"
 
-#: src/serialization/string_utils.cpp:582
+#: src/serialization/string_utils.cpp:584
 msgid "prefix_giga^G"
 msgstr "G"
 
-#: src/serialization/string_utils.cpp:583
+#: src/serialization/string_utils.cpp:585
 msgid "prefix_tera^T"
 msgstr "T"
 
-#: src/serialization/string_utils.cpp:584
+#: src/serialization/string_utils.cpp:586
 msgid "prefix_peta^P"
 msgstr "P"
 
-#: src/serialization/string_utils.cpp:585
+#: src/serialization/string_utils.cpp:587
 msgid "prefix_exa^E"
 msgstr "E"
 
-#: src/serialization/string_utils.cpp:586
+#: src/serialization/string_utils.cpp:588
 msgid "prefix_zetta^Z"
 msgstr "Z"
 
-#: src/serialization/string_utils.cpp:587
+#: src/serialization/string_utils.cpp:589
 msgid "prefix_yotta^Y"
 msgstr "Y"
 
 #. TRANSLATORS: Translate the i in (for example) KiB only
-#: src/serialization/string_utils.cpp:602
+#: src/serialization/string_utils.cpp:604
 msgid "infix_binary^i"
 msgstr "i"
 
-#: src/synced_commands.cpp:380
+#: src/synced_commands.cpp:382
 #, fuzzy
 #| msgid "Unknown era"
 msgid "(unknown player)"
 msgstr "Thời đại không xác định"
 
-#: src/synced_commands.cpp:385
+#: src/synced_commands.cpp:387
 msgid "The :$command debug command was used during $player’s turn"
 msgstr ""
 
-#: src/synced_commands.cpp:393
+#: src/synced_commands.cpp:395
 msgid ""
 "A player used a debug command during the game. If this is unexpected, it is "
 "possible the player in question is cheating."
 msgstr ""
 
-#: src/synced_commands.cpp:395
+#: src/synced_commands.cpp:397
 #, fuzzy
 #| msgid "Details"
 msgid "Details:"
 msgstr "Chi tiết"
 
-#: src/synced_commands.cpp:398
+#: src/synced_commands.cpp:400
 msgid "Do you wish to save the game before continuing?"
 msgstr ""
 
-#: src/synced_commands.cpp:400
+#: src/synced_commands.cpp:402
 #, fuzzy
 #| msgid "(debug command)"
 msgid "Debug Command Used"
 msgstr "(lệnh gỡ lỗi)"
 
-#: src/synced_commands.cpp:506
+#: src/synced_commands.cpp:508
 msgid "A unit was created using debug mode during $player’s turn"
 msgstr ""
 
@@ -9319,19 +9318,19 @@ msgstr ""
 
 #. TRANSLATORS: $color_id is the internal identifier of a side color, for example, 'lightred'.
 #. Translate the quotation marks only; leave "color_id" untranslated, as it's a variable name.
-#: src/team.cpp:991
+#: src/team.cpp:989
 msgid "“$color_id”"
 msgstr ""
 
-#: src/terrain/terrain.cpp:190
+#: src/terrain/terrain.cpp:188
 msgid "Allied village"
 msgstr "Làng của đồng minh"
 
-#: src/terrain/terrain.cpp:195
+#: src/terrain/terrain.cpp:193
 msgid "Enemy village"
 msgstr "Làng của kẻ thù"
 
-#: src/terrain/terrain.cpp:200
+#: src/terrain/terrain.cpp:198
 msgid "Owned village"
 msgstr "Làng đã sở hữu"
 
@@ -9351,23 +9350,23 @@ msgstr "Thời điểm trong ngày thử nghiệm"
 msgid "This Time of Day is only a Stub!"
 msgstr ""
 
-#: src/units/abilities.cpp:1054
+#: src/units/abilities.cpp:1053
 #, fuzzy
 #| msgid "slowed: "
 msgid "Owned: "
 msgstr "bị chậm: "
 
 #. TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
-#: src/units/abilities.cpp:1058
+#: src/units/abilities.cpp:1057
 msgid "Taught: "
 msgstr ""
 
 #. TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
-#: src/units/abilities.cpp:1062
+#: src/units/abilities.cpp:1061
 msgid "Taught: (by an enemy): "
 msgstr ""
 
-#: src/units/abilities.cpp:1075
+#: src/units/abilities.cpp:1074
 msgid "Used by opponent: "
 msgstr ""
 
@@ -9572,13 +9571,13 @@ msgstr "hỗn độn"
 msgid "liminal"
 msgstr "tính ngưỡng"
 
-#: src/units/unit.cpp:362
+#: src/units/unit.cpp:361
 #, fuzzy
 #| msgid "No usable weapon"
 msgid "This unit cannot be dismissed."
 msgstr "Không có vũ khí nào sử dụng được"
 
-#: src/units/unit.cpp:750
+#: src/units/unit.cpp:749
 #, fuzzy
 #| msgid ""
 #| "This unit is invisible. It cannot be seen or attacked by enemy units."
@@ -9586,42 +9585,42 @@ msgid "This unit is a leader and cannot be dismissed."
 msgstr ""
 "Đơn vị này vô hình. Các đơn vị kẻ thù không thể nhìn thấy hay tấn công nó."
 
-#: src/units/unit.cpp:2010
+#: src/units/unit.cpp:2008
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/units/unit.cpp:2016
+#: src/units/unit.cpp:2014
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "mỗi lượt"
 
-#: src/units/unit.cpp:2026
+#: src/units/unit.cpp:2024
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> move"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "mỗi lượt"
 
-#: src/units/unit.cpp:2032
+#: src/units/unit.cpp:2030
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "mỗi lượt"
 
-#: src/units/unit.cpp:2036
+#: src/units/unit.cpp:2034
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "mỗi lượt"
 
-#: src/units/unit.cpp:2041
+#: src/units/unit.cpp:2039
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "mỗi lượt"
 
-#: src/units/unit.cpp:2045
+#: src/units/unit.cpp:2043
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
@@ -9629,13 +9628,13 @@ msgid_plural ""
 "<span color=\"$color\">$number_or_percent</span> attacks per turn"
 msgstr[0] "mỗi lượt"
 
-#: src/units/unit.cpp:2052
+#: src/units/unit.cpp:2050
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "mỗi lượt"
 
-#: src/units/unit.cpp:2537
+#: src/units/unit.cpp:2535
 msgid "$effect_description per level"
 msgstr "$effect_description mỗi cấp độ"
 
@@ -9659,14 +9658,14 @@ msgstr ""
 msgid "$year AF"
 msgstr ""
 
-#: src/wesnoth.cpp:786
+#: src/wesnoth.cpp:811
 msgid ""
 "Unable to create log files in directory $logdir. This is often caused by "
 "incorrect folder permissions, anti-virus software restricting folder access, "
 "or using OneDrive to manage your My Documents folder."
 msgstr ""
 
-#: src/wesnoth.cpp:787
+#: src/wesnoth.cpp:812
 #, fuzzy
 #| msgid "Loading data files"
 msgid "Logging Failure"

@@ -22,7 +22,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-08-19 10:14-0500\n"
+"POT-Creation-Date: 2025-09-21 23:01-0500\n"
 "PO-Revision-Date: 2025-09-15 05:55-0300\n"
 "Last-Translator: Sebastián Lecchini <sebas38760@gmail.com>\n"
 "Language-Team: wesnoth-es-trad-1_14@googlegroups.com\n"
@@ -98,7 +98,7 @@ msgstr "Mantenimiento nulo."
 
 #. [chance_to_hit]
 #. [chance_to_hit]: id=magical
-#: data/campaigns/The_Deceivers_Gambit/scenarios/14_Long_Live_the_Queen.cfg:1294
+#: data/campaigns/The_Deceivers_Gambit/scenarios/14_Long_Live_the_Queen.cfg:1297
 #: data/core/macros/weapon_specials.cfg:117
 msgid ""
 "This attack always has a 70% chance to hit regardless of the defensive "
@@ -109,7 +109,7 @@ msgstr ""
 
 #. [chance_to_hit]
 #. [chance_to_hit]: id=magical
-#: data/campaigns/The_Deceivers_Gambit/scenarios/14_Long_Live_the_Queen.cfg:1294
+#: data/campaigns/The_Deceivers_Gambit/scenarios/14_Long_Live_the_Queen.cfg:1297
 #: data/core/macros/weapon_specials.cfg:116
 msgid "magical"
 msgstr "mágico"
@@ -613,12 +613,12 @@ msgstr "Guía de posiciones de inicio"
 msgid ""
 "Defines the side leader starting position.\n"
 "This tool sets the side leaders’ default starting locations, and named "
-"special locations. Both types of location are enabled in both <ref "
-"dst='..editor_mode_terrain'>Terrain Editor</ref> and <ref "
-"dst='..editor_mode_scenario'>Scenario Editor</ref> modes. The location names "
-"are shown as a list in the editor palette, clicking on the map will place "
-"that name on a hex, each location can only be placed on a single hex, and "
-"the editor will only allow one location per hex.\n"
+"special locations. Both types of location are enabled in both <ref dst='.."
+"editor_mode_terrain'>Terrain Editor</ref> and <ref dst='.."
+"editor_mode_scenario'>Scenario Editor</ref> modes. The location names are "
+"shown as a list in the editor palette, clicking on the map will place that "
+"name on a hex, each location can only be placed on a single hex, and the "
+"editor will only allow one location per hex.\n"
 "\n"
 "To add named special locations, click “Add” at the bottom of the editor "
 "palette, and enter the name. These names must start with a letter and may "
@@ -642,13 +642,12 @@ msgstr ""
 "Define la posición de inicio del líder de cada bando.\n"
 "Esta herramienta asigna las posiciones de inicio predefinidas de los líderes "
 "de cada bando, y de posiciones especiales designadas. Ambos tipos de "
-"posiciones se activan tanto en el modo de <ref "
-"dst='..editor_mode_terrain'>Editor de terreno</ref> como en el de <ref "
-"dst='..editor_mode_scenario'>Editor de escenario</ref>. Los nombres de "
-"posición se muestran en una lista en la paleta de edición, haciendo clic en "
-"el mapa se pondrá ese nombre en un hexágono, cada posición puede ponerse "
-"únicamente en un solo hexágono, y el editor solo permitirá una posición por "
-"hexágono.\n"
+"posiciones se activan tanto en el modo de <ref dst='.."
+"editor_mode_terrain'>Editor de terreno</ref> como en el de <ref dst='.."
+"editor_mode_scenario'>Editor de escenario</ref>. Los nombres de posición se "
+"muestran en una lista en la paleta de edición, haciendo clic en el mapa se "
+"pondrá ese nombre en un hexágono, cada posición puede ponerse únicamente en "
+"un solo hexágono, y el editor solo permitirá una posición por hexágono.\n"
 "\n"
 "Para añadir posiciones especiales designadas, haga clic en «Añadir» en la "
 "parte baja de la paleta de edición, e introduzca el nombre. Estos nombres "
@@ -694,9 +693,9 @@ msgstr ""
 #: data/core/editor/help.cfg:131
 msgid ""
 "editor^<header>Movement Overlays</header>\n"
-"<img src='terrain/grass/green.png~BLIT(terrain/impassable-"
-"editor.png~O(0.5))'/><img src='terrain/grass/green.png~BLIT(terrain/"
-"unwalkable-editor.png~O(0.5))'/>\n"
+"<img src='terrain/grass/green.png~BLIT(terrain/impassable-editor."
+"png~O(0.5))'/><img src='terrain/grass/green.png~BLIT(terrain/unwalkable-"
+"editor.png~O(0.5))'/>\n"
 "<b>Impassable and Unwalkable</b>\n"
 "\n"
 "While easily noticeable in the editor, these are invisible in the game, so "
@@ -706,10 +705,10 @@ msgid ""
 msgstr ""
 "<bold>text='Superposiciones de movimiento'</bold>\n"
 "\n"
-"<img>src='terrain/grass/green.png~BLIT(terrain/impassable-"
-"editor.png~O(0.5))' align=here box=yes</img> <img>src='terrain/grass/"
-"green.png~BLIT(terrain/unwalkable-editor.png~O(0.5))' align=here box=yes</"
-"img> Impenetrable e intransitable\n"
+"<img>src='terrain/grass/green.png~BLIT(terrain/impassable-editor."
+"png~O(0.5))' align=here box=yes</img> <img>src='terrain/grass/green."
+"png~BLIT(terrain/unwalkable-editor.png~O(0.5))' align=here box=yes</img> "
+"Impenetrable e intransitable\n"
 "\n"
 "Si bien se notan fácilmente en el editor, estos son invisibles en el juego, "
 "por lo que los terrenos mixtos creados por ellos se ven como el terreno "
@@ -722,9 +721,9 @@ msgstr ""
 #: data/core/editor/help.cfg:140
 msgid ""
 "editor^<header>Castle Overlays</header>\n"
-"<img src='terrain/grass/green.png~BLIT(terrain/castle/castle-overlay-"
-"editor.png~O(0.5))'/><img src='terrain/grass/green.png~BLIT(terrain/castle/"
-"keep-overlay-editor.png~O(0.5))'/>\n"
+"<img src='terrain/grass/green.png~BLIT(terrain/castle/castle-overlay-editor."
+"png~O(0.5))'/><img src='terrain/grass/green.png~BLIT(terrain/castle/keep-"
+"overlay-editor.png~O(0.5))'/>\n"
 "Adding either of these overlays to a passable hex allows units to be "
 "recruited onto a hex. The keep also allows a leader to recruit from there.\n"
 "\n"
@@ -736,10 +735,10 @@ msgid ""
 msgstr ""
 "<bold>text='Superposiciones de castillo'</bold>\n"
 "\n"
-"<img>src='terrain/grass/green.png~BLIT(terrain/castle/castle-overlay-"
-"editor.png~O(0.5))' align=here box=yes</img> <img>src='terrain/grass/"
-"green.png~BLIT(terrain/castle/keep-overlay-editor.png~O(0.5))' align=here "
-"box=yes</img>\n"
+"<img>src='terrain/grass/green.png~BLIT(terrain/castle/castle-overlay-editor."
+"png~O(0.5))' align=here box=yes</img> <img>src='terrain/grass/green."
+"png~BLIT(terrain/castle/keep-overlay-editor.png~O(0.5))' align=here box=yes</"
+"img>\n"
 "\n"
 "Agregar cualquiera de estas superposiciones a un hexágono transitable "
 "permite reclutar unidades en un hexágono. La fortaleza también permite que "
@@ -912,8 +911,8 @@ msgstr "Terreno discontinuado"
 #. The Xol and ^Efs terrains’ help pages aren’t given hyperlinks, because they both have hide_help enabled. Even when on a map with Xol on it, ctrl+t will show the hidden page but the ref still won’t link to it.
 #: data/core/editor/help.cfg:210
 msgid ""
-"editor^<img src='terrain/grass/green.png~BLIT(terrain/deprecated-"
-"editor.png)'/>\n"
+"editor^<img src='terrain/grass/green.png~BLIT(terrain/deprecated-editor."
+"png)'/>\n"
 "The magenta ‘D’ (for “Deprecated”).\n"
 "\n"
 "This is shown in the editor over deprecated terrain codes. Examples are:\n"
@@ -924,8 +923,8 @@ msgid ""
 "The help pages for these terrains may have additional text that’s only shown "
 "in the editor, describing the deprecation and the recommended replacements."
 msgstr ""
-"editor^<img src='terrain/grass/green.png~BLIT(terrain/deprecated-"
-"editor.png)'/>\n"
+"editor^<img src='terrain/grass/green.png~BLIT(terrain/deprecated-editor."
+"png)'/>\n"
 "La 'D' magenta (de \"Obsoleto\").\n"
 "\n"
 "Esto se muestra en el editor sobre códigos de terreno obsoletos. Ejemplos:\n"
@@ -1377,10 +1376,10 @@ msgid ""
 "The map editor saves one file when in terrain mode (a .map) or two files "
 "when in scenario mode (both a .map and a .cfg).\n"
 "\n"
-"Loading a .cfg file has different results depending on the contents of "
-"the .cfg file. For .cfg files that were created by the scenario editor, it "
-"will open the .cfg in the scenario editor. However, for .cfg files that "
-"cannot be opened by the scenario editor, the editor will attempt to find the "
+"Loading a .cfg file has different results depending on the contents of the ."
+"cfg file. For .cfg files that were created by the scenario editor, it will "
+"open the .cfg in the scenario editor. However, for .cfg files that cannot be "
+"opened by the scenario editor, the editor will attempt to find the "
 "scenario’s map data and open the corresponding .map file in terrain-only "
 "mode, as if the .map file was chosen in the file selector. It is recommended "
 "in those cases to simply load the .map file directly instead."
@@ -1595,8 +1594,8 @@ msgid ""
 "\n"
 "• <span face='monospace'>map_file=maps/01_First_Map.map</span> <i>— "
 "supported since Wesnoth 1.14</i>\n"
-"• <span face='monospace'>map_data=&quot;&#0x7B;maps/"
-"01_First_Map.map&#0x7D;&quot;</span> <i>— a WML preprocessor include</i>\n"
+"• <span face='monospace'>map_data=&quot;&#0x7B;maps/01_First_Map.map&#0x7D;"
+"&quot;</span> <i>— a WML preprocessor include</i>\n"
 "\n"
 "The <i>map_file</i> method is preferred over using a preprocessor include."
 msgstr ""
@@ -1622,9 +1621,8 @@ msgstr ""
 "\n"
 "• <span face='monospace'>map_file=maps/01_First_Map.map</span> <i>— "
 "soportado desde Wesnoth 1.14</i>\n"
-"• <span face='monospace'>map_data=&quot;&#0x7B;maps/"
-"01_First_Map.map&#0x7D;&quot;</span> <i>— una inclusión de preprocesador "
-"WML</i>\n"
+"• <span face='monospace'>map_data=&quot;&#0x7B;maps/01_First_Map.map&#0x7D;"
+"&quot;</span> <i>— una inclusión de preprocesador WML</i>\n"
 "\n"
 "El método <i>map_file</i> es preferible al uso de una inclusión de "
 "preprocesador."
@@ -1649,10 +1647,10 @@ msgid ""
 msgstr ""
 "<header>Embebido</header>\n"
 "\n"
-"Los datos del mapa pueden guardarse como parte de un archivo de "
-"escenario .cfg, directamente en el atributo <i>map_data</i>. En otras "
-"palabras, en el lugar en el que el preprocesador lo insertaría al usar el "
-"método preprocessor-include.\n"
+"Los datos del mapa pueden guardarse como parte de un archivo de escenario ."
+"cfg, directamente en el atributo <i>map_data</i>. En otras palabras, en el "
+"lugar en el que el preprocesador lo insertaría al usar el método "
+"preprocessor-include.\n"
 "\n"
 "<header>Usando el formato embebido en modo terreno</header>\n"
 "\n"
@@ -1678,14 +1676,14 @@ msgid ""
 msgstr ""
 "<header>Archivos creados con el editor de escenarios</header>\n"
 "\n"
-"En modo escenario, el editor guarda los datos del escenario como un "
-"archivo .cfg y los datos del mapa como un archivo .map separado. El "
-"escenario luego hace referencia al archivo .map mediante map_file. Cuando se "
-"carga un archivo .cfg, el editor de escenarios entiende los archivos creados "
-"con el propio editor de escenarios, pero probablemente tenga dificultades "
-"con los archivos que han sido editados manualmente; se pueden evitar "
-"problemas mediante el <ref dst='editor_separate_events_file'>uso de un "
-"archivo .cfg separado</ref> para las partes editadas a mano."
+"En modo escenario, el editor guarda los datos del escenario como un archivo ."
+"cfg y los datos del mapa como un archivo .map separado. El escenario luego "
+"hace referencia al archivo .map mediante map_file. Cuando se carga un "
+"archivo .cfg, el editor de escenarios entiende los archivos creados con el "
+"propio editor de escenarios, pero probablemente tenga dificultades con los "
+"archivos que han sido editados manualmente; se pueden evitar problemas "
+"mediante el <ref dst='editor_separate_events_file'>uso de un archivo .cfg "
+"separado</ref> para las partes editadas a mano."
 
 #. [editor_times]: id=deep_underground
 #. [time]: id=deep_underground
@@ -2363,8 +2361,8 @@ msgstr ""
 #: data/core/encyclopedia/geography.cfg:194
 msgid ""
 "<header>Notable land features:</header>\n"
-"    • Aethenwood: The largest southern forest, home to reclusive <ref "
-"dst='..race_elf'>elves</ref>.\n"
+"    • Aethenwood: The largest southern forest, home to reclusive <ref dst='.."
+"race_elf'>elves</ref>.\n"
 "    • Vale of Blossoming Trees: An elvish vale at the southern edge of the "
 "Aethenwood. It contains the sacred Isle of Elrath.\n"
 "    • Lake Aelin: An elvish lake at the edge of their territory along the "
@@ -2597,8 +2595,8 @@ msgstr "Jugabilidad"
 #. [section]: id=traits_section
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:29 data/core/help.cfg:545
-#: src/help/help_topic_generators.cpp:536
-#: src/help/help_topic_generators.cpp:552
+#: src/help/help_topic_generators.cpp:538
+#: src/help/help_topic_generators.cpp:554
 msgid "Traits"
 msgstr "Rasgos"
 
@@ -2908,8 +2906,8 @@ msgstr ""
 "Mientras juegas, ten en cuenta que puedes colocar el cursor sobre muchos "
 "elementos del juego, como la información mostrada en el panel de estado, "
 "para ver una breve descripción de cada elemento. Esto es especialmente útil "
-"cuando encuentras nuevos elementos, como <ref "
-"dst='..abilities_section'>habilidades</ref>, por primera vez."
+"cuando encuentras nuevos elementos, como <ref dst='.."
+"abilities_section'>habilidades</ref>, por primera vez."
 
 #. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:187
@@ -2990,15 +2988,15 @@ msgid ""
 "statistics, then press the <b>Recruit</b> button to recruit it."
 msgstr ""
 "Cada bando comienza con un líder en su torreón. Al inicio de cualquier "
-"batalla, y en ocasiones durante la misma, necesitarás reclutar <ref "
-"dst='..units' text='unidades'></ref> para tu ejército. Para reclutar, debes "
-"tener a tu líder (por ejemplo, Konrad en la campaña <i>Heredero al Trono</"
-"i>) en el hexágono del torreón de un <ref dst='..terrain_castle'>castillo</"
-"ref>. Luego, puedes reclutar eligiendo <b>Reclutar</b> en el menú o haciendo "
-"clic derecho sobre un hexágono y seleccionando <b>Reclutar</b>. Esto abrirá "
-"el menú de reclutamiento, donde se listan las unidades disponibles junto con "
-"su coste en oro. Haz clic en una unidad para ver sus estadísticas y luego "
-"pulsa el botón <b>Reclutar</b> para reclutarla."
+"batalla, y en ocasiones durante la misma, necesitarás reclutar <ref dst='.."
+"units' text='unidades'></ref> para tu ejército. Para reclutar, debes tener a "
+"tu líder (por ejemplo, Konrad en la campaña <i>Heredero al Trono</i>) en el "
+"hexágono del torreón de un <ref dst='..terrain_castle'>castillo</ref>. "
+"Luego, puedes reclutar eligiendo <b>Reclutar</b> en el menú o haciendo clic "
+"derecho sobre un hexágono y seleccionando <b>Reclutar</b>. Esto abrirá el "
+"menú de reclutamiento, donde se listan las unidades disponibles junto con su "
+"coste en oro. Haz clic en una unidad para ver sus estadísticas y luego pulsa "
+"el botón <b>Reclutar</b> para reclutarla."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:200
@@ -4491,18 +4489,16 @@ msgstr "Resumiendo"
 #: data/core/help.cfg:531
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
-"basic strategy, or familiarize yourself with <ref "
-"dst='..traits_section'>traits</ref> and <ref "
-"dst='..abilities_section'>abilities</ref>, but you now know everything you "
-"need to know to play the <i>Heir to the Throne</i> campaign. Have fun, and "
-"good luck!"
+"basic strategy, or familiarize yourself with <ref dst='.."
+"traits_section'>traits</ref> and <ref dst='..abilities_section'>abilities</"
+"ref>, but you now know everything you need to know to play the <i>Heir to "
+"the Throne</i> campaign. Have fun, and good luck!"
 msgstr ""
 "Con esto termina la introducción a los fundamentos de Wesnoth. Puede que "
 "quiera seguir leyendo la sección de estrategia básica, o familiarizarse con "
-"los <ref dst='..traits_section'>rasgos</ref> y las <ref "
-"dst='..abilities_section'>habilidades</ref>, pero ahora ya sabe lo necesario "
-"para poder jugar la campaña <i>Heredero al trono</i>. ¡Diviértase y buena "
-"suerte!"
+"los <ref dst='..traits_section'>rasgos</ref> y las <ref dst='.."
+"abilities_section'>habilidades</ref>, pero ahora ya sabe lo necesario para "
+"poder jugar la campaña <i>Heredero al trono</i>. ¡Diviértase y buena suerte!"
 
 #. [topic]: id=license
 #: data/core/help.cfg:536
@@ -4940,8 +4936,8 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Puede ver las eras que tiene cargadas en la sección <ref "
-"dst='..eras_section'>eras</ref> de la ayuda."
+"Puede ver las eras que tiene cargadas en la sección <ref dst='.."
+"eras_section'>eras</ref> de la ayuda."
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:636
@@ -8238,22 +8234,22 @@ msgstr ""
 "encantamiento mágico."
 
 #. [race]: id=merman
-#: data/core/units.cfg:328
+#: data/core/units.cfg:307
 msgid "race^Merman"
 msgstr "Sirénido"
 
 #. [race]: id=merman
-#: data/core/units.cfg:329
+#: data/core/units.cfg:308
 msgid "race^Mermaid"
 msgstr "Sirénida"
 
 #. [race]: id=merman
-#: data/core/units.cfg:330
+#: data/core/units.cfg:309
 msgid "race^Merfolk"
 msgstr "Sirénidos"
 
 #. [race]: id=merman
-#: data/core/units.cfg:332
+#: data/core/units.cfg:311
 msgid ""
 "Something like a fusion between humans and fish, the merfolk are an "
 "enigmatic race with both piscine and humanoid attributes. They have strong "
@@ -8278,22 +8274,22 @@ msgstr ""
 "accidentado o boscoso."
 
 #. [race]: id=monster
-#: data/core/units.cfg:340
+#: data/core/units.cfg:319
 msgid "race^Monster"
 msgstr "Monstruo"
 
 #. [race]: id=monster
-#: data/core/units.cfg:341
+#: data/core/units.cfg:320
 msgid "race+female^Monster"
 msgstr "Monstruo"
 
 #. [race]: id=monster
-#: data/core/units.cfg:342
+#: data/core/units.cfg:321
 msgid "race^Monsters"
 msgstr "Monstruos"
 
 #. [race]: id=monster
-#: data/core/units.cfg:343
+#: data/core/units.cfg:322
 msgid ""
 "The term “monster” incorporates many hideous beasts that haunt the caves, "
 "wilderness, ocean depths, and other climes of the world. They figure largely "
@@ -8305,22 +8301,22 @@ msgstr ""
 "habitantes."
 
 #. [race]: id=naga
-#: data/core/units.cfg:350
+#: data/core/units.cfg:329
 msgid "race^Naga"
 msgstr "Naga"
 
 #. [race]: id=naga
-#: data/core/units.cfg:351
+#: data/core/units.cfg:330
 msgid "race^Nagini"
 msgstr "Nagini"
 
 #. [race]: id=naga
-#: data/core/units.cfg:352
+#: data/core/units.cfg:331
 msgid "race^Nagas"
 msgstr "Nagas"
 
 #. [race]: id=naga
-#: data/core/units.cfg:353
+#: data/core/units.cfg:332
 msgid ""
 "The serpentine nagas are one of the least understood races of the Great "
 "Continent. Part of this is due to their xenophobic nature and part is due to "
@@ -8352,23 +8348,23 @@ msgstr ""
 "nagas prefieren los ríos y los pantanos tanto como el mar abierto."
 
 #. [race]: id=ogre
-#: data/core/units.cfg:361
+#: data/core/units.cfg:340
 msgid "race^Ogre"
 msgstr "Ogro"
 
 # Hum, weird, yet less weird than others...
 #. [race]: id=ogre
-#: data/core/units.cfg:362
+#: data/core/units.cfg:341
 msgid "race+female^Ogre"
 msgstr "Ogresa"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:363
+#: data/core/units.cfg:342
 msgid "race^Ogres"
 msgstr "Ogros"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:364
+#: data/core/units.cfg:343
 msgid ""
 "Ogres are a wild and uncivilized race who dwell mainly in the wilderness of "
 "the Great Continent. Physically, they resemble humans and orcs but are "
@@ -8402,7 +8398,7 @@ msgstr ""
 "cooperación, domesticación o simplemente oportunismo mutuo."
 
 #. [race]: id=orc
-#: data/core/units.cfg:372
+#: data/core/units.cfg:351
 msgid "race^Orc"
 msgstr "Orco"
 
@@ -8410,17 +8406,17 @@ msgstr "Orco"
 # Perseo-> "Las orcas no son tan grandes, mujer orco, como en el de los otros"
 # Humm! Las orcas, esos animales marinos tan grandes... Realmente da lugar a confusión...
 #. [race]: id=orc
-#: data/core/units.cfg:373
+#: data/core/units.cfg:352
 msgid "race+female^Orc"
 msgstr "Orca"
 
 #. [race]: id=orc
-#: data/core/units.cfg:374
+#: data/core/units.cfg:353
 msgid "race^Orcs"
 msgstr "Orcos"
 
 #. [race]: id=orc
-#: data/core/units.cfg:375
+#: data/core/units.cfg:354
 msgid ""
 "In appearance, orcs resemble humans but with some bestial features. They are "
 "taller, sturdier and stronger than humans. They are warlike, savage, and "
@@ -8527,7 +8523,7 @@ msgstr ""
 "\n"
 
 #. [race]: id=orc
-#: data/core/units.cfg:386
+#: data/core/units.cfg:365
 msgid ""
 "\n"
 "\n"
@@ -8540,22 +8536,22 @@ msgstr ""
 "habilidades, como el tiro con arco o el asesinato."
 
 #. [race]: id=raven
-#: data/core/units.cfg:395
+#: data/core/units.cfg:374
 msgid "race^Raven"
 msgstr "Cuervo"
 
 #. [race]: id=raven
-#: data/core/units.cfg:396
+#: data/core/units.cfg:375
 msgid "race+female^Raven"
 msgstr "Cuervo"
 
 #. [race]: id=raven
-#: data/core/units.cfg:397
+#: data/core/units.cfg:376
 msgid "race^Ravens"
 msgstr "Cuervos"
 
 #. [race]: id=raven
-#: data/core/units.cfg:398
+#: data/core/units.cfg:377
 msgid ""
 "Ravens are general scavengers, often associating with hunters or predators "
 "in the hope of sharing in the kill. They do not have the powerful beak or "
@@ -8594,22 +8590,22 @@ msgstr ""
 "centinelas."
 
 #. [race]: id=troll
-#: data/core/units.cfg:409
+#: data/core/units.cfg:388
 msgid "race^Troll"
 msgstr "Trol"
 
 #. [race]: id=troll
-#: data/core/units.cfg:410
+#: data/core/units.cfg:389
 msgid "race+female^Troll"
 msgstr "Trol"
 
 #. [race]: id=troll
-#: data/core/units.cfg:411
+#: data/core/units.cfg:390
 msgid "race^Trolls"
 msgstr "Troles"
 
 #. [race]: id=troll
-#: data/core/units.cfg:412
+#: data/core/units.cfg:391
 msgid ""
 "Trolls are ancient creatures, one of the oldest known races known to inhabit "
 "the Great Continent. They are large, slow, simple, and live extremely long "
@@ -8686,22 +8682,22 @@ msgstr ""
 "orcas."
 
 #. [race]: id=undead
-#: data/core/units.cfg:432
+#: data/core/units.cfg:411
 msgid "race^Undead"
 msgstr "No muerto"
 
 #. [race]: id=undead
-#: data/core/units.cfg:433
+#: data/core/units.cfg:412
 msgid "race+female^Undead"
 msgstr "No muerta"
 
 #. [race]: id=undead
-#: data/core/units.cfg:434
+#: data/core/units.cfg:413
 msgid "race+plural^Undead"
 msgstr "No muertos"
 
 #. [race]: id=undead
-#: data/core/units.cfg:435
+#: data/core/units.cfg:414
 msgid ""
 "Undead are not really a single race of creatures, although often treated as "
 "such. Most ordinary creatures can, by a sufficiently skilled necromancer, be "
@@ -8773,22 +8769,22 @@ msgstr ""
 "desconocidos para los elfos y enanos antes de tal acontecimiento."
 
 #. [race]: id=wolf
-#: data/core/units.cfg:448
+#: data/core/units.cfg:427
 msgid "race^Wolf"
 msgstr "Lobo"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:449
+#: data/core/units.cfg:428
 msgid "race+female^Wolf"
 msgstr "Loba"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:450
+#: data/core/units.cfg:429
 msgid "race^Wolves"
 msgstr "Lobos"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:451
+#: data/core/units.cfg:430
 msgid ""
 "Wolves are predatory canines encountered frequently in the wilderness. "
 "Quick, tough, and durable, a solitary wolf suffices to maim or kill "
@@ -8807,18 +8803,18 @@ msgstr ""
 "dar caza al ganado."
 
 #. [race]: id=wose
-#: data/core/units.cfg:460
+#: data/core/units.cfg:439
 msgid "race^Wose"
 msgstr "Wose"
 
 #. [race]: id=wose
-#: data/core/units.cfg:461
+#: data/core/units.cfg:440
 msgid "race^Woses"
 msgstr "Woses"
 
 # En español no se usa faerie para la magia de este tipo: celtas, druidas, hadas, etc. No existe un equivalente: digamos que vendría a ser un poder místico o algo así.
 #. [race]: id=wose
-#: data/core/units.cfg:462
+#: data/core/units.cfg:441
 msgid ""
 "The mighty wose resides within the deepest forests of the known world. To "
 "the untrained eye, the wose appears to be nothing more than an oddly shaped, "
@@ -8983,7 +8979,7 @@ msgstr ""
 "hexágono."
 
 #: src/help/help_topic_generators.cpp:246
-#: src/help/help_topic_generators.cpp:656
+#: src/help/help_topic_generators.cpp:658
 msgid "Special Notes"
 msgstr "Notas especiales:"
 
@@ -9013,40 +9009,40 @@ msgstr "Propiedades defensivas: "
 msgid "Level"
 msgstr "Nivel"
 
-#: src/help/help_topic_generators.cpp:415
+#: src/help/help_topic_generators.cpp:417
 msgid "Advances from:"
 msgstr "Promocionado de: "
 
-#: src/help/help_topic_generators.cpp:417
+#: src/help/help_topic_generators.cpp:419
 msgid "Advances to:"
 msgstr "Promociona a: "
 
-#: src/help/help_topic_generators.cpp:447
+#: src/help/help_topic_generators.cpp:449
 msgid "Base unit:"
 msgstr "Unidad de referencia: "
 
-#: src/help/help_topic_generators.cpp:452
+#: src/help/help_topic_generators.cpp:454
 msgid "Base units:"
 msgstr "Unidades de referencia: "
 
-#: src/help/help_topic_generators.cpp:470
+#: src/help/help_topic_generators.cpp:472
 msgid "Variations:"
 msgstr "Variaciones: "
 
 # Prefiero usar varios por ser un término más castellano
-#: src/help/help_topic_generators.cpp:497
+#: src/help/help_topic_generators.cpp:499
 msgid "race^Miscellaneous"
 msgstr "Varios"
 
-#: src/help/help_topic_generators.cpp:499
+#: src/help/help_topic_generators.cpp:501
 msgid "Race:"
 msgstr "Raza: "
 
-#: src/help/help_topic_generators.cpp:562
+#: src/help/help_topic_generators.cpp:564
 msgid "Abilities:"
 msgstr "Habilidades: "
 
-#: src/help/help_topic_generators.cpp:588
+#: src/help/help_topic_generators.cpp:590
 msgid "Ability Upgrades:"
 msgstr "Mejoras de habilidades: "
 
@@ -9054,123 +9050,123 @@ msgstr "Mejoras de habilidades: "
 #. TRANSLATORS: This string is used in the help page of a single unit. If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:618
+#: src/help/help_topic_generators.cpp:620
 msgid "HP:"
 msgstr "PV:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit. If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:622
+#: src/help/help_topic_generators.cpp:624
 msgid "Moves:"
 msgstr "Movimientos:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:627
+#: src/help/help_topic_generators.cpp:629
 msgid "Vision:"
 msgstr "Visión:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit. If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:633
+#: src/help/help_topic_generators.cpp:635
 msgid "Jamming:"
 msgstr "Interferencia:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit. If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:638
+#: src/help/help_topic_generators.cpp:640
 msgid "Cost:"
 msgstr "Coste:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit. If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:642
+#: src/help/help_topic_generators.cpp:644
 msgid "Alignment:"
 msgstr "Alineamiento:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit. It uses
 #. non-breaking spaces to prevent unpleasant line breaks (issue #3256). In the
 #. translation use non-breaking spaces as appropriate for the target language.
-#: src/help/help_topic_generators.cpp:649
+#: src/help/help_topic_generators.cpp:651
 msgid "Required XP:"
 msgstr "PX requeridos:"
 
-#: src/help/help_topic_generators.cpp:667
+#: src/help/help_topic_generators.cpp:669
 msgid "Attacks"
 msgstr "Ataques"
 
-#: src/help/help_topic_generators.cpp:670
+#: src/help/help_topic_generators.cpp:672
 msgid "Attacks per turn: "
 msgstr "Ataques por turno: "
 
-#: src/help/help_topic_generators.cpp:689
+#: src/help/help_topic_generators.cpp:691
 msgid "Name"
 msgstr "Nombre"
 
-#: src/help/help_topic_generators.cpp:690
+#: src/help/help_topic_generators.cpp:692
 msgid "Strikes"
 msgstr "Golpes"
 
-#: src/help/help_topic_generators.cpp:691
+#: src/help/help_topic_generators.cpp:693
 msgid "Range"
 msgstr "Alcance"
 
-#: src/help/help_topic_generators.cpp:692
+#: src/help/help_topic_generators.cpp:694
 msgid "Type"
 msgstr "Tipo"
 
-#: src/help/help_topic_generators.cpp:693
+#: src/help/help_topic_generators.cpp:695
 msgid "Special"
 msgstr "Especial"
 
-#: src/help/help_topic_generators.cpp:715
+#: src/help/help_topic_generators.cpp:717
 msgid "uses $num attack"
 msgid_plural "uses $num attacks"
 msgstr[0] "usa $num ataque"
 msgstr[1] "usa $num ataques"
 
-#: src/help/help_topic_generators.cpp:795
+#: src/help/help_topic_generators.cpp:797
 msgid "Resistances"
 msgstr "Resistencias"
 
-#: src/help/help_topic_generators.cpp:800
+#: src/help/help_topic_generators.cpp:802
 msgid "Attack Type"
 msgstr "Tipo de ataque"
 
-#: src/help/help_topic_generators.cpp:801
+#: src/help/help_topic_generators.cpp:803
 msgid "Resistance"
 msgstr "Resistencia"
 
-#: src/help/help_topic_generators.cpp:832
+#: src/help/help_topic_generators.cpp:834
 msgid "Terrain Modifiers"
 msgstr "Modificadores de terreno"
 
-#: src/help/help_topic_generators.cpp:836
+#: src/help/help_topic_generators.cpp:838
 msgid "Terrain"
 msgstr "Terreno"
 
-#: src/help/help_topic_generators.cpp:837
+#: src/help/help_topic_generators.cpp:839
 msgid "Defense"
 msgstr "Defensa"
 
-#: src/help/help_topic_generators.cpp:838
+#: src/help/help_topic_generators.cpp:840
 msgid "Movement Cost"
 msgstr "Coste de movimiento"
 
-#: src/help/help_topic_generators.cpp:839
+#: src/help/help_topic_generators.cpp:841
 msgid "Defense Cap"
 msgstr "Tope defensivo"
 
-#: src/help/help_topic_generators.cpp:840
+#: src/help/help_topic_generators.cpp:842
 msgid "Vision Cost"
 msgstr "Coste de la visión"
 
-#: src/help/help_topic_generators.cpp:841
+#: src/help/help_topic_generators.cpp:843
 msgid "Jamming Cost"
 msgstr "Coste de la interferencia"
 
@@ -9492,8 +9488,8 @@ msgstr "Coste de la interferencia"
 #~ "\n"
 #~ "Si su complemento solo va a ser usado con la versión 1.16 y posteriores, "
 #~ "hay nuevas características para cargar archivos .cfg mediante map_file, y "
-#~ "evitar la repetición del nombre del complemento dentro de los "
-#~ "archivos .cfg.\n"
+#~ "evitar la repetición del nombre del complemento dentro de los archivos ."
+#~ "cfg.\n"
 #~ "\n"
 #~ "• _main.cfg:\n"
 #~ "  ◦ utilice “[binary_path]” para añadir los directorios de los "
@@ -9503,8 +9499,8 @@ msgstr "Coste de la interferencia"
 #~ "• maps/map_from_01.cfg\n"
 #~ "  ◦ este es el archivo creado por el editor de escenarios\n"
 #~ "• scenarios/01_Forest.cfg\n"
-#~ "  ◦ dentro del elemento [scenario], utilice "
-#~ "“map_file=\"map_from_01.cfg\"” para cargar ese archivo"
+#~ "  ◦ dentro del elemento [scenario], utilice “map_file=\"map_from_01."
+#~ "cfg\"” para cargar ese archivo"
 
 #~ msgid ""
 #~ "<header>text='Which scenario files use the [scenario] tag'</header>\n"
@@ -9540,12 +9536,12 @@ msgstr "Coste de la interferencia"
 #~ "contener las marcas de [scenario] [/scenario].\n"
 #~ "\n"
 #~ "Lo contrario se aplica cuando un escenario forma parte de una campaña o "
-#~ "de otro complemento. Normalmente cada escenario tiene su propio "
-#~ "archivo .cfg, aunque esto no sea necesario - todo el WML de un "
-#~ "complemento será combinado por el preprocesador, no importa si el "
-#~ "complemento se ha escrito en archivos separados o no. El motor necesita "
-#~ "las marcas [scenario]...[/scenario] (o [multiplayer]...[/multiplayer]) "
-#~ "para saber qué WML forma parte de cada escenario."
+#~ "de otro complemento. Normalmente cada escenario tiene su propio archivo ."
+#~ "cfg, aunque esto no sea necesario - todo el WML de un complemento será "
+#~ "combinado por el preprocesador, no importa si el complemento se ha "
+#~ "escrito en archivos separados o no. El motor necesita las marcas "
+#~ "[scenario]...[/scenario] (o [multiplayer]...[/multiplayer]) para saber "
+#~ "qué WML forma parte de cada escenario."
 
 #~ msgid "Flat"
 #~ msgstr "Llano"

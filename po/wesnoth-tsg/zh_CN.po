@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-08-19 15:14 UTC\n"
+"POT-Creation-Date: 2025-09-22 04:01 UTC\n"
 "PO-Revision-Date: 2024-10-03 17:43+0800\n"
 "Last-Translator: vimacs <vimacs.hacks@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -283,7 +283,7 @@ msgstr ""
 #. [command]
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:117
 #: data/campaigns/The_South_Guard/scenarios/02x_Westin.cfg:423
-#: data/campaigns/The_South_Guard/utils/sg_characters.cfg:86
+#: data/campaigns/The_South_Guard/utils/sg_characters.cfg:87
 #, fuzzy
 #| msgid "Campaign Maintenance"
 msgid "Captain Mari"
@@ -3863,7 +3863,7 @@ msgstr ""
 
 #. [unit]
 #: data/campaigns/The_South_Guard/scenarios/05b_Pebbles_in_the_Flood.cfg:205
-#: data/campaigns/The_South_Guard/utils/sg_characters.cfg:94
+#: data/campaigns/The_South_Guard/utils/sg_characters.cfg:95
 msgid "Mal M’Brin"
 msgstr "玛尔·莫布林"
 
@@ -5609,8 +5609,8 @@ msgstr ""
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Tides_of_War.cfg:509
 msgid ""
 "You survived $pebbles_defense_length turns last scenario! Deoran starts\n"
-"   with $soldiers.length extra soldiers and $"
-"( ($pebbles_defense_length-36)*3 ) extra gold!"
+"   with $soldiers.length extra soldiers and "
+"$( ($pebbles_defense_length-36)*3 ) extra gold!"
 msgstr ""
 
 #. [else]
@@ -5636,7 +5636,7 @@ msgstr ""
 #| "So, the fleshbags have managed to mount a defense. It would seem that the "
 #| "pesky fly turned out to be more than a minor annoyance after all."
 msgid ""
-"So, the fleshbags have managed to mount a defense. I would seem that the "
+"So, the fleshbags have managed to mount a defense. It would seem that the "
 "pesky fly turned out to be more than a minor annoyance after all."
 msgstr ""
 "这么说，肉袋们居然成功搞出了像样的防守。看来，讨厌的苍蝇终究并不是只有一点儿"
@@ -6701,52 +6701,52 @@ msgid ""
 msgstr ""
 
 #. [objective]: condition=lose
-#: data/campaigns/The_South_Guard/utils/sg_characters.cfg:109
+#: data/campaigns/The_South_Guard/utils/sg_characters.cfg:110
 #, fuzzy
 #| msgid "Death of Deoran"
 msgid "Death of Deoran or Captain Mari"
 msgstr "德欧兰死亡"
 
 #. [objective]: condition=lose
-#: data/campaigns/The_South_Guard/utils/sg_characters.cfg:116
+#: data/campaigns/The_South_Guard/utils/sg_characters.cfg:117
 #, fuzzy
 #| msgid "Death of Sir Gerrick"
 msgid "Death of Deoran or Sir Gerrick"
 msgstr "格里克爵士死亡"
 
 #. [objective]: condition=lose
-#: data/campaigns/The_South_Guard/utils/sg_characters.cfg:123
+#: data/campaigns/The_South_Guard/utils/sg_characters.cfg:124
 #, fuzzy
 #| msgid "Death of Minister Hylas"
 msgid "Death of Deoran or Minister Hylas"
 msgstr "海拉斯辅佐官死亡"
 
 #. [objective]: condition=lose
-#: data/campaigns/The_South_Guard/utils/sg_characters.cfg:130
+#: data/campaigns/The_South_Guard/utils/sg_characters.cfg:131
 msgid "Death of Deoran, Captain Mari, or Ethiliel"
 msgstr ""
 
 #. [objective]: condition=lose
-#: data/campaigns/The_South_Guard/utils/sg_characters.cfg:137
+#: data/campaigns/The_South_Guard/utils/sg_characters.cfg:138
 #, fuzzy
 #| msgid "Death of Sir Gerrick"
 msgid "Death of Deoran, Sir Gerrick, or Ethiliel"
 msgstr "格里克爵士死亡"
 
 #. [objective]: condition=lose
-#: data/campaigns/The_South_Guard/utils/sg_characters.cfg:144
+#: data/campaigns/The_South_Guard/utils/sg_characters.cfg:145
 #, fuzzy
 #| msgid "Death of Minister Hylas"
 msgid "Death of Deoran, Minister Hylas, or Ethiliel"
 msgstr "海拉斯辅佐官死亡"
 
 #. [message]: speaker=unit
-#: data/campaigns/The_South_Guard/utils/sg_characters.cfg:161
+#: data/campaigns/The_South_Guard/utils/sg_characters.cfg:162
 msgid "I have failed my kingdom and duty..."
 msgstr "我辜负了我的王国和使命……"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/utils/sg_characters.cfg:178
+#: data/campaigns/The_South_Guard/utils/sg_characters.cfg:179
 msgid ""
 "They’ve broken through the trapdoor and entered the refugee cellar! Even if "
 "we could still manage to win by force of arms, Westin is doomed without its "
@@ -6754,29 +6754,29 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/utils/sg_characters.cfg:206
+#: data/campaigns/The_South_Guard/utils/sg_characters.cfg:207
 msgid "Taste cold steel!"
 msgstr "吃我一剑！"
 
 #. [message]: speaker=unit
-#: data/campaigns/The_South_Guard/utils/sg_characters.cfg:222
+#: data/campaigns/The_South_Guard/utils/sg_characters.cfg:223
 msgid "Yeah... I should’ve figured I wouldn’t get a happy ending..."
 msgstr ""
 
 #. [message]: speaker=unit
-#: data/campaigns/The_South_Guard/utils/sg_characters.cfg:241
+#: data/campaigns/The_South_Guard/utils/sg_characters.cfg:242
 #, fuzzy
 #| msgid "I have given all for my kingdom! Avenge me, Deoran!"
 msgid "I have given all in service of my kingdom..."
 msgstr "我已为我的王国奉献了一切！为我报仇，德欧兰！"
 
 #. [message]: speaker=unit
-#: data/campaigns/The_South_Guard/utils/sg_characters.cfg:261
+#: data/campaigns/The_South_Guard/utils/sg_characters.cfg:262
 msgid "May the Light guide you where I have failed..."
 msgstr "愿圣光在我失败之处指引你……"
 
 #. [message]: speaker=unit
-#: data/campaigns/The_South_Guard/utils/sg_characters.cfg:281
+#: data/campaigns/The_South_Guard/utils/sg_characters.cfg:282
 msgid ""
 "I have lost everything helping the humans... Now they will surely perish!"
 msgstr "帮助人类让我失去了一切……现在他们难逃一死！"
