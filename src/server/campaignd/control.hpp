@@ -95,6 +95,14 @@ public:
 		return utils::join(args_, " ");
 	}
 
+	/**
+	 * Allow comparison with other strings.
+	 */
+	bool operator==(std::string_view cmp) const
+	{
+		return cmd() == cmp;
+	}
+
 private:
 	std::vector<std::string> args_;
 };
