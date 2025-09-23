@@ -11,6 +11,7 @@ function wesnoth.wml_actions.companion_message(cfg)
 	-- cfg.message_Harper
 	-- cfg.message_Ulfdain
 	-- cfg.message_Jeniver
+	-- cfg.message_Seimus
 	-- cfg.message_Dosh
 	-- cfg.fallback_Konrad
 
@@ -20,7 +21,7 @@ function wesnoth.wml_actions.companion_message(cfg)
 	-- use this list to track which companion last spoke, so we can spread lines around evenly
 	-- initialize this list once per campaign, and rotate through the companions each time one speaks
 	if next(wml.array_variables["companion_ids"])==nil then
-		wml.array_variables["companion_ids"] = { {id="Delfador"}, {id="Kalenz"}, {id="Chantal"}, {id="Moremirmu"}, {id="Harper"}, {id="Jeniver"}, {id="Ulfdain"}, {id="Dosh"} }
+		wml.array_variables["companion_ids"] = { {id="Delfador"}, {id="Kalenz"}, {id="Chantal"}, {id="Moremirmu"}, {id="Harper"}, {id="Jeniver"}, {id="Seimus"}, {id="Ulfdain"}, {id="Dosh"} }
 	end
 
 	--###########################
