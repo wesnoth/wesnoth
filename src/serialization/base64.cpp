@@ -23,26 +23,24 @@ namespace
 constexpr std::string_view base64_itoa_map  = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 constexpr std::string_view crypt64_itoa_map = "./0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 
-constexpr std::array<int, 256> fill_atoi_map(std::string_view itoa)
+constexpr auto fill_atoi_map(std::string_view itoa)
 {
-	std::array<int, 256> atoi64{};
+	std::array<int, 256> atoi{};
 #if __cpp_lib_array_constexpr >= 201811L
-	atoi64.fill(-1);
+	atoi.fill(-1);
 #else
-	for(int& elem : atoi64) {
-		elem = -1;
-	}
+	for(int& elem : atoi) { elem = -1; }
 #endif
 
 	for(std::size_t i = 0; i < itoa.size(); ++i) {
-		atoi64[itoa[i]] = i;
+		atoi[itoa[i]] = static_cast<int>(i);
 	}
 
-	return atoi64;
+	return atoi;
 }
 
-constexpr auto base64_atoi_map  = fill_atoi_map(base64_itoa_map);
-constexpr auto crypt64_atoi_map = fill_atoi_map(crypt64_itoa_map);
+constexpr std::array<int, 256> base64_atoi_map  = fill_atoi_map(base64_itoa_map);
+constexpr std::array<int, 256> crypt64_atoi_map = fill_atoi_map(crypt64_itoa_map);
 
 char itoa(unsigned value, std::string_view map)
 {
