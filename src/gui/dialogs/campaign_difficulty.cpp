@@ -65,7 +65,7 @@ void campaign_difficulty::pre_show()
 
 		grid& grid = list.add_row(widget_data{
 			{ "icon", {
-				{ "label", d["image"] }
+				{ "label", d["image"].t_str() }
 			}},
 			{ "label", {
 				{ "label", ss.str() },

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.4.2+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-08-19 10:14-0500\n"
+"POT-Creation-Date: 2025-09-21 23:01-0500\n"
 "PO-Revision-Date: 2025-03-23 10:23+0100\n"
 "Last-Translator: Mejri Ziad <nouveau.dep@gmail.com>\n"
 "Language-Team: none\n"
@@ -2408,7 +2408,7 @@ msgstr "ابدأ حملة لاعب واحد جديدة"
 #: data/gui/themes/default/dialogs/mp_method_selection.cfg:55
 #: data/gui/themes/default/dialogs/preferences.cfg:365
 #: data/gui/themes/default/dialogs/title_screen.cfg:257
-#: src/gui/dialogs/game_load.cpp:362
+#: src/gui/dialogs/game_load.cpp:363
 msgid "Multiplayer"
 msgstr "متعدد اللاعبين"
 
@@ -2650,7 +2650,7 @@ msgstr "حفظ كلمة المرور محليا (مشفرة)"
 #: data/gui/themes/default/dialogs/tod_new_schedule.cfg:127
 #: data/gui/themes/default/dialogs/unit_advance.cfg:191
 #: data/gui/themes/default/dialogs/wml_error.cfg:162
-#: data/gui/themes/default/dialogs/wml_message.cfg:444
+#: data/gui/themes/default/dialogs/wml_message.cfg:425
 #: src/gui/dialogs/message.cpp:177 src/gui/dialogs/message.cpp:184
 #: src/gui/dialogs/units_dialog.cpp:78
 msgid "OK"
@@ -2864,7 +2864,7 @@ msgstr "إلغاء تثبيت الإضافة"
 #. [button]: id=single_publish
 #: data/gui/themes/default/dialogs/addon_manager.cfg:645
 #: data/gui/themes/default/widgets/addon_list.cfg:412
-#: src/gui/widgets/addon_list.cpp:262
+#: src/gui/widgets/addon_list.cpp:264
 msgid "Publish add-on"
 msgstr "نشر الإضافة"
 
@@ -3278,8 +3278,8 @@ msgstr "تشغيل"
 #. [slider]: id=enemey_gold_factor
 #. [slider]: id=enemy_gold_factor
 #: data/gui/themes/default/dialogs/campaign_difficulty.cfg:53
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:262
-#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:309
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:249
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:295
 #: src/gui/dialogs/editor/edit_pbl.cpp:198
 msgid "Difficulty"
 msgstr "الصعوبة"
@@ -5064,14 +5064,14 @@ msgstr "إنشاء لعبة"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=join_global
 #: data/gui/themes/default/dialogs/lobby_main.cfg:561
-#: src/gui/dialogs/multiplayer/lobby.cpp:996
+#: src/gui/dialogs/multiplayer/lobby.cpp:992
 msgid "Join"
 msgstr "انضمام"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=observe_global
 #: data/gui/themes/default/dialogs/lobby_main.cfg:573
-#: src/gui/dialogs/multiplayer/lobby.cpp:966
+#: src/gui/dialogs/multiplayer/lobby.cpp:962
 msgid "Observe"
 msgstr "مشاهدة"
 
@@ -7053,7 +7053,7 @@ msgstr "<غير معروف>"
 #. other's resources rather than duplicating them. For example,
 #. Swedish (sv) and Danish (da) are such, so Swedish translator could
 #. translate this message as "sv,da", while Danish as "da,sv".
-#: src/filesystem.cpp:1845
+#: src/filesystem.cpp:1851
 msgid "language code for localized resources^en_US"
 msgstr "ar"
 
@@ -7109,10 +7109,10 @@ msgstr "لم يتم تحديد قسم السحب للحالة."
 msgid "No resolution defined for "
 msgstr "لم يتم تحديد الدقة بالنسبة إلى "
 
-#: src/gui/core/window_builder.cpp:147 src/gui/widgets/addon_list.cpp:430
+#: src/gui/core/window_builder.cpp:147 src/gui/widgets/addon_list.cpp:432
 #: src/gui/widgets/multi_page.cpp:181 src/gui/widgets/panel.cpp:131
 #: src/gui/widgets/size_lock.cpp:110 src/gui/widgets/stacked_widget.cpp:229
-#: src/gui/widgets/toggle_panel.cpp:321
+#: src/gui/widgets/toggle_panel.cpp:325
 msgid "No grid defined."
 msgstr "لم يتم تحديد شبكة."
 
@@ -7316,19 +7316,19 @@ msgstr "استصلاح الأرض"
 msgid "addon_tag^Players can change the terrain"
 msgstr "يمكن للّاعبين تغيير التضاريس"
 
-#: src/gui/dialogs/addon/manager.cpp:248 src/gui/widgets/addon_list.cpp:102
+#: src/gui/dialogs/addon/manager.cpp:248 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Not installed"
 msgstr "غير مثبتة"
 
-#: src/gui/dialogs/addon/manager.cpp:249 src/gui/widgets/addon_list.cpp:102
+#: src/gui/dialogs/addon/manager.cpp:249 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Published, not installed"
 msgstr "منشورة، غير مثبتة"
 
-#: src/gui/dialogs/addon/manager.cpp:253 src/gui/widgets/addon_list.cpp:110
+#: src/gui/dialogs/addon/manager.cpp:253 src/gui/widgets/addon_list.cpp:111
 msgid "addon_state^Installed"
 msgstr "مثبتة"
 
-#: src/gui/dialogs/addon/manager.cpp:254 src/gui/widgets/addon_list.cpp:110
+#: src/gui/dialogs/addon/manager.cpp:254 src/gui/widgets/addon_list.cpp:111
 msgid "addon_state^Published"
 msgstr "منشورة"
 
@@ -7356,23 +7356,23 @@ msgstr "مثبتة ($local_version|)، قديمة على الخادم"
 msgid "addon_state^Published ($local_version| installed), outdated on server"
 msgstr "منشورة ($local_version| مثبتة)، قديمة على الخادم"
 
-#: src/gui/dialogs/addon/manager.cpp:279 src/gui/widgets/addon_list.cpp:113
+#: src/gui/dialogs/addon/manager.cpp:279 src/gui/widgets/addon_list.cpp:114
 msgid "addon_state^Installed, not ready to publish"
 msgstr "مثبتة، غير جاهزة للنشر"
 
-#: src/gui/dialogs/addon/manager.cpp:280 src/gui/widgets/addon_list.cpp:113
+#: src/gui/dialogs/addon/manager.cpp:280 src/gui/widgets/addon_list.cpp:114
 msgid "addon_state^Ready to publish"
 msgstr "جاهزة للنشر"
 
-#: src/gui/dialogs/addon/manager.cpp:284 src/gui/widgets/addon_list.cpp:125
+#: src/gui/dialogs/addon/manager.cpp:284 src/gui/widgets/addon_list.cpp:126
 msgid "addon_state^Installed, broken"
 msgstr "مثبتة، معطلة"
 
-#: src/gui/dialogs/addon/manager.cpp:285 src/gui/widgets/addon_list.cpp:125
+#: src/gui/dialogs/addon/manager.cpp:285 src/gui/widgets/addon_list.cpp:126
 msgid "addon_state^Published, broken"
 msgstr "منشورة، مكسورة"
 
-#: src/gui/dialogs/addon/manager.cpp:288 src/gui/widgets/addon_list.cpp:129
+#: src/gui/dialogs/addon/manager.cpp:288 src/gui/widgets/addon_list.cpp:130
 msgid "addon_state^Unknown"
 msgstr "غير معروفة"
 
@@ -7498,15 +7498,15 @@ msgstr "ضعف المهاجم مقابل"
 msgid "game^Get Add-ons"
 msgstr "الحصول على الإضافات"
 
-#: src/gui/dialogs/campaign_selection.cpp:394
+#: src/gui/dialogs/campaign_selection.cpp:388
 msgid "More campaigns..."
 msgstr "المزيد من الإضافات..."
 
-#: src/gui/dialogs/campaign_selection.cpp:408
+#: src/gui/dialogs/campaign_selection.cpp:402
 msgid "Missing Campaigns"
 msgstr "الحملات المفقودة"
 
-#: src/gui/dialogs/campaign_selection.cpp:442
+#: src/gui/dialogs/campaign_selection.cpp:436
 #: src/gui/dialogs/multiplayer/lobby.cpp:435
 msgid "active_modifications^None"
 msgstr "لا شيء"
@@ -7793,68 +7793,68 @@ msgstr "تم مسح ذاكرة التخزين المؤقت لبيانات الل
 msgid "The game data cache could not be purged."
 msgstr "لا يمكن مسح ذاكرة التخزين المؤقت لبيانات اللعبة."
 
-#: src/gui/dialogs/game_load.cpp:72
+#: src/gui/dialogs/game_load.cpp:73
 msgid "No Saved Games"
 msgstr "لا توجد ألعاب محفوظة"
 
-#: src/gui/dialogs/game_load.cpp:72
+#: src/gui/dialogs/game_load.cpp:73
 msgid "There are no saved games to load."
 msgstr "لا توجد ألعاب محفوظة للتحميل."
 
-#: src/gui/dialogs/game_load.cpp:143
+#: src/gui/dialogs/game_load.cpp:144
 msgid "game_version^Current Version"
 msgstr "الإصدار الحالي"
 
-#: src/gui/dialogs/game_load.cpp:147
+#: src/gui/dialogs/game_load.cpp:148
 msgid "game_version^Wesnoth $version"
 msgstr "ويسنوث $version"
 
 #. TRANSLATORS: "reserve" refers to units on the recall list
-#: src/gui/dialogs/game_load.cpp:233
+#: src/gui/dialogs/game_load.cpp:234
 msgid "$active active, $reserve reserve"
 msgstr "$active نشط، $reserve احتياطي"
 
-#: src/gui/dialogs/game_load.cpp:288
+#: src/gui/dialogs/game_load.cpp:289
 msgid "The selected file is corrupt: "
 msgstr "الملف المحدد تالف: "
 
-#: src/gui/dialogs/game_load.cpp:328
+#: src/gui/dialogs/game_load.cpp:329
 msgid "(Invalid)"
 msgstr "(غير صالح)"
 
-#: src/gui/dialogs/game_load.cpp:353
+#: src/gui/dialogs/game_load.cpp:354
 msgid "Campaign: $campaign_name"
 msgstr "الحملة: $campaign_name"
 
-#: src/gui/dialogs/game_load.cpp:365
+#: src/gui/dialogs/game_load.cpp:366
 msgid "Tutorial"
 msgstr "البرنامج التعليمي"
 
-#: src/gui/dialogs/game_load.cpp:368
+#: src/gui/dialogs/game_load.cpp:369
 msgid "Test scenario"
 msgstr "سيناريو اختبار"
 
-#: src/gui/dialogs/game_load.cpp:378
+#: src/gui/dialogs/game_load.cpp:379
 msgid "Replay"
 msgstr "الإعادة"
 
-#: src/gui/dialogs/game_load.cpp:380
+#: src/gui/dialogs/game_load.cpp:381
 msgid "Turn"
 msgstr "دور"
 
-#: src/gui/dialogs/game_load.cpp:382
+#: src/gui/dialogs/game_load.cpp:383
 msgid "Scenario start"
 msgstr "بداية السيناريو"
 
-#: src/gui/dialogs/game_load.cpp:394
+#: src/gui/dialogs/game_load.cpp:395
 msgid "Difficulty: "
 msgstr "الصعوبة: "
 
-#: src/gui/dialogs/game_load.cpp:417
+#: src/gui/dialogs/game_load.cpp:418
 msgid "Version: "
 msgstr "النسخة: "
 
-#: src/gui/dialogs/game_load.cpp:422
+#: src/gui/dialogs/game_load.cpp:423
 msgid "Modifications: "
 msgstr "التعديلات: "
 
@@ -8094,13 +8094,13 @@ msgstr "غير مسموح للمراقبين"
 msgid "lobby"
 msgstr "الردهة"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:966
+#: src/gui/dialogs/multiplayer/lobby.cpp:962
 msgid ""
 "This game doesn’t allow observers. Observe using moderator rights anyway?"
 msgstr ""
 "هذه اللعبة لا تسمح بالمراقبين. المراقبة باستخدام حقوق المشرفين على أي حال؟"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:977
+#: src/gui/dialogs/multiplayer/lobby.cpp:973
 msgid ""
 "Something is wrong with the addon version check database supporting the "
 "multiplayer lobby. Please report this at https://bugs.wesnoth.org."
@@ -8108,7 +8108,7 @@ msgstr ""
 "هناك خطأ ما في قاعدة بيانات التحقق من إصدار الملحق التي تدعم الردهة متعددة "
 "اللاعبين. يرجى الإبلاغ عن هذا على https://bugs.wesnoth.org."
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:996
+#: src/gui/dialogs/multiplayer/lobby.cpp:992
 msgid "This game is password protected. Join using moderator rights anyway?"
 msgstr "هذه اللعبة محمية بكلمة مرور. الانضمام باستخدام حقوق المشرف على أي حال؟"
 
@@ -8173,20 +8173,20 @@ msgstr "لا توجد عصور متاحة لهذه اللعبة."
 msgid "number of players^$min to $max"
 msgstr "$min إلى $max"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:1023
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:1022
 msgid "The selected game has no sides!"
 msgstr "اللعبة المختارة ليس لها جوانب!"
 
 #. TRANSLATORS: This sentence will be followed by some details of the error, most likely the "Map could not be loaded" message from create_engine.cpp
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:1030
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:1029
 msgid "The selected game cannot be created."
 msgstr "لا يمكن إنشاء اللعبة المحددة."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:1103
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:1102
 msgid "Choose Starting Scenario"
 msgstr "اختر سيناريو البداية"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:1103
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:1102
 msgid "Select at which point to begin this campaign."
 msgstr "حدد عند أي نقطة تبدأ هذه الحملة."
 
@@ -8362,15 +8362,15 @@ msgstr "أخِذت"
 msgid "$count|× $name"
 msgstr "$count|× $name"
 
-#: src/gui/dialogs/title_screen.cpp:116 src/hotkey/hotkey_command.cpp:98
+#: src/gui/dialogs/title_screen.cpp:131 src/hotkey/hotkey_command.cpp:98
 msgid "Screenshot"
 msgstr "لقطة شاشة"
 
-#: src/gui/dialogs/title_screen.cpp:378
+#: src/gui/dialogs/title_screen.cpp:399
 msgid "Version $version"
 msgstr "النسخة $version"
 
-#: src/gui/dialogs/title_screen.cpp:468 src/hotkey/hotkey_command.cpp:311
+#: src/gui/dialogs/title_screen.cpp:489 src/hotkey/hotkey_command.cpp:311
 msgid "Choose Test Scenario"
 msgstr "اختر سيناريو اختبار"
 
@@ -8434,7 +8434,7 @@ msgstr "استدعاء وحدة"
 msgid "Recall"
 msgstr "استدعاء"
 
-#: src/gui/dialogs/units_dialog.cpp:830
+#: src/gui/dialogs/units_dialog.cpp:828
 msgid ""
 "This unit cannot be recalled because you will not have enough gold at this "
 "point in your plan."
@@ -8442,7 +8442,7 @@ msgstr ""
 "لا يمكن استدعاء هذه الوحدة لأنه لن يكون لديك ما يكفي من الذهب في هذه المرحلة "
 "من خطتك."
 
-#: src/gui/dialogs/units_dialog.cpp:832
+#: src/gui/dialogs/units_dialog.cpp:830
 msgid "This unit cannot be recalled because you do not have enough gold."
 msgstr "لا يمكن استدعاء هذه الوحدة لأنه ليس لديك ما يكفي من الذهب."
 
@@ -8450,23 +8450,23 @@ msgstr "لا يمكن استدعاء هذه الوحدة لأنه ليس لدي�
 msgid "No default gui defined."
 msgstr "لم يتم تعريف واجهة المستخدم الرسومية القياسية."
 
-#: src/gui/widgets/addon_list.cpp:117
+#: src/gui/widgets/addon_list.cpp:118
 msgid "addon_state^Installed, upgradable"
 msgstr "مثبتة، قابلة للترقية"
 
-#: src/gui/widgets/addon_list.cpp:117
+#: src/gui/widgets/addon_list.cpp:118
 msgid "addon_state^Published, upgradable"
 msgstr "منشورة، قابلة للترقية"
 
-#: src/gui/widgets/addon_list.cpp:121
+#: src/gui/widgets/addon_list.cpp:122
 msgid "addon_state^Installed, outdated on server"
 msgstr "مثبتة، قديمة على الخادم"
 
-#: src/gui/widgets/addon_list.cpp:121
+#: src/gui/widgets/addon_list.cpp:122
 msgid "addon_state^Published, outdated on server"
 msgstr "منشورة، قديمة على الخادم"
 
-#: src/gui/widgets/addon_list.cpp:293
+#: src/gui/widgets/addon_list.cpp:295
 msgid "Delete add-on from server"
 msgstr "حذف الإضافة من الخادم"
 

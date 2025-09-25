@@ -281,7 +281,7 @@ void flg_manager::update_available_factions()
 		}
 
 		// Add default faction to the top of the list.
-		if(original_faction_ == (*faction)["id"]) {
+		if((*faction)["id"] == original_faction_) {
 			available_factions_.insert(available_factions_.begin(), faction);
 		} else {
 			available_factions_.push_back(faction);

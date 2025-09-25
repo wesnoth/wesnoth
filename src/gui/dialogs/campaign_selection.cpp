@@ -367,22 +367,16 @@ void campaign_selection::pre_show()
 		add_campaign_to_tree(campaign);
 
 		/*** Add detail item ***/
-		widget_data data;
-		widget_item item;
-
-		item["label"] = campaign["description"];
-		item["use_markup"] = "true";
-
-		if(!campaign["description_alignment"].empty()) {
-			item["text_alignment"] = campaign["description_alignment"];
-		}
-
-		data.emplace("description", item);
-
-		item["label"] = campaign["image"];
-		data.emplace("image", item);
-
-		pages.add_page(data);
+		pages.add_page({
+			{"description", {
+				{"label", campaign["description"].t_str()},
+				{"text_alignment", campaign["description_alignment"].str("left")},
+				{"use_markup", "true"}
+			}},
+			{"image", {
+				{"label", campaign["image"].str()}
+			}}
+		});
 		page_ids_.push_back(campaign["id"]);
 	}
 
@@ -477,20 +471,13 @@ void campaign_selection::pre_show()
 
 void campaign_selection::add_campaign_to_tree(const config& campaign)
 {
-	tree_view& tree = find_widget<tree_view>("campaign_tree");
-	widget_data data;
-	widget_item item;
-
-	item["label"] = campaign["icon"];
-	data.emplace("icon", item);
-
-	item["label"] = campaign["name"];
-	data.emplace("name", item);
-
 	// We completed the campaign! Calculate the appropriate victory laurel.
-	if(campaign["completed"].to_bool()) {
-		config::const_child_itors difficulties = campaign.child_range("difficulty");
+	const auto get_laurel = [&campaign] {
+		if(!campaign["completed"].to_bool()) {
+			return std::string{};
+		}
 
+		config::const_child_itors difficulties = campaign.child_range("difficulty");
 		auto did_complete_at = [](const config& c) { return c["completed_at"].to_bool(); };
 
 		// Check for non-completion on every difficulty save the first.
@@ -509,17 +496,27 @@ void campaign_selection::add_campaign_to_tree(const config& campaign)
 		 * - Use the silver laurel otherwise.
 		 */
 		if(!difficulties.empty() && did_complete_at(difficulties.back())) {
-			item["label"] = game_config::images::victory_laurel_hardest;
+			return game_config::images::victory_laurel_hardest;
 		} else if(only_first_completed && did_complete_at(difficulties.front())) {
-			item["label"] = game_config::images::victory_laurel_easy;
+			return game_config::images::victory_laurel_easy;
 		} else {
-			item["label"] = game_config::images::victory_laurel;
+			return game_config::images::victory_laurel;
 		}
+	};
 
-		data.emplace("victory", item);
-	}
+	auto& node = find_widget<tree_view>("campaign_tree")
+		.add_node("campaign", {
+			{"icon", {
+				{"label", campaign["icon"].str()}
+			}},
+			{"name", {
+				{"label", campaign["name"].t_str()}
+			}},
+			{"victory", {
+				{"label", get_laurel()}
+			}}
+		});
 
-	auto& node = tree.add_node("campaign", data);
 	node.set_id(campaign["id"]);
 	connect_signal_mouse_left_double_click(
 		node.find_widget<toggle_panel>("tree_view_node_label"),

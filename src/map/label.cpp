@@ -392,8 +392,8 @@ void terrain_label::read(const config& cfg)
 
 	std::string tmp_color = cfg["color"];
 
-	text_ = cfg["text"];
-	tooltip_ = cfg["tooltip"];
+	text_ = cfg["text"].t_str();
+	tooltip_ = cfg["tooltip"].t_str();
 	team_name_ = cfg["team_name"].str();
 	visible_in_fog_ = cfg["visible_in_fog"].to_bool(true);
 	visible_in_shroud_ = cfg["visible_in_shroud"].to_bool();

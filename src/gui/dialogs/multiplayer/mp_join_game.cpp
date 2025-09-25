@@ -382,7 +382,7 @@ void mp_join_game::generate_side_list()
 		if (team_color_it != game_config::team_rgb_colors.end()) {
 			item["label"] = markup::span_color(team_color_it->second[0], side["side"]);
 		} else {
-			item["label"] = side["side"];
+			item["label"] = side["side"].str();
 		}
 		data.emplace("side_number", item);
 
@@ -421,7 +421,7 @@ void mp_join_game::generate_side_list()
 		item["label"] = description;
 		data.emplace("leader_type", item);
 
-		item["label"] = side["faction_name"];
+		item["label"] = side["faction_name"].t_str();
 		data.emplace("leader_faction", item);
 
 		std::string gender_icon = "icons/icon-random.png";

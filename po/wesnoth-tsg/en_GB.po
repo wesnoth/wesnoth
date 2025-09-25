@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-08-19 15:14 UTC\n"
+"POT-Creation-Date: 2025-09-22 04:01 UTC\n"
 "PO-Revision-Date: 2025-08-20 13:26+1000\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
@@ -270,7 +270,7 @@ msgstr ""
 #. [command]
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:117
 #: data/campaigns/The_South_Guard/scenarios/02x_Westin.cfg:423
-#: data/campaigns/The_South_Guard/utils/sg_characters.cfg:86
+#: data/campaigns/The_South_Guard/utils/sg_characters.cfg:87
 msgid "Captain Mari"
 msgstr "Captain Mari"
 
@@ -4592,7 +4592,7 @@ msgstr ""
 
 #. [unit]
 #: data/campaigns/The_South_Guard/scenarios/05b_Pebbles_in_the_Flood.cfg:205
-#: data/campaigns/The_South_Guard/utils/sg_characters.cfg:94
+#: data/campaigns/The_South_Guard/utils/sg_characters.cfg:95
 msgid "Mal M’Brin"
 msgstr "Mal M’Brin"
 
@@ -6618,12 +6618,12 @@ msgstr ""
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Tides_of_War.cfg:509
 msgid ""
 "You survived $pebbles_defense_length turns last scenario! Deoran starts\n"
-"   with $soldiers.length extra soldiers and $"
-"( ($pebbles_defense_length-36)*3 ) extra gold!"
+"   with $soldiers.length extra soldiers and "
+"$( ($pebbles_defense_length-36)*3 ) extra gold!"
 msgstr ""
 "You survived $pebbles_defense_length turns last scenario! Deoran starts\n"
-"   with $soldiers.length extra soldiers and $"
-"( ($pebbles_defense_length-36)*3 ) extra gold!"
+"   with $soldiers.length extra soldiers and "
+"$( ($pebbles_defense_length-36)*3 ) extra gold!"
 
 #. [else]
 #. $pebbles_defense_length will be 3 or greater. $soldiers.length will be 3 or greater
@@ -6647,8 +6647,12 @@ msgstr ""
 
 #. [message]: speaker=Mebrin
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Tides_of_War.cfg:559
+#, fuzzy
+#| msgid ""
+#| "So, the fleshbags have managed to mount a defense. I would seem that the "
+#| "pesky fly turned out to be more than a minor annoyance after all."
 msgid ""
-"So, the fleshbags have managed to mount a defense. I would seem that the "
+"So, the fleshbags have managed to mount a defense. It would seem that the "
 "pesky fly turned out to be more than a minor annoyance after all."
 msgstr ""
 "So, the fleshbags have managed to mount a defence. I would seem that the "
@@ -7669,42 +7673,42 @@ msgstr ""
 "order to win!"
 
 #. [objective]: condition=lose
-#: data/campaigns/The_South_Guard/utils/sg_characters.cfg:109
+#: data/campaigns/The_South_Guard/utils/sg_characters.cfg:110
 msgid "Death of Deoran or Captain Mari"
 msgstr "Death of Deoran or Captain Mari"
 
 #. [objective]: condition=lose
-#: data/campaigns/The_South_Guard/utils/sg_characters.cfg:116
+#: data/campaigns/The_South_Guard/utils/sg_characters.cfg:117
 msgid "Death of Deoran or Sir Gerrick"
 msgstr "Death of Deoran or Sir Gerrick"
 
 #. [objective]: condition=lose
-#: data/campaigns/The_South_Guard/utils/sg_characters.cfg:123
+#: data/campaigns/The_South_Guard/utils/sg_characters.cfg:124
 msgid "Death of Deoran or Minister Hylas"
 msgstr "Death of Deoran or Minister Hylas"
 
 #. [objective]: condition=lose
-#: data/campaigns/The_South_Guard/utils/sg_characters.cfg:130
+#: data/campaigns/The_South_Guard/utils/sg_characters.cfg:131
 msgid "Death of Deoran, Captain Mari, or Ethiliel"
 msgstr "Death of Deoran, Captain Mari, or Ethiliel"
 
 #. [objective]: condition=lose
-#: data/campaigns/The_South_Guard/utils/sg_characters.cfg:137
+#: data/campaigns/The_South_Guard/utils/sg_characters.cfg:138
 msgid "Death of Deoran, Sir Gerrick, or Ethiliel"
 msgstr "Death of Deoran, Sir Gerrick, or Ethiliel"
 
 #. [objective]: condition=lose
-#: data/campaigns/The_South_Guard/utils/sg_characters.cfg:144
+#: data/campaigns/The_South_Guard/utils/sg_characters.cfg:145
 msgid "Death of Deoran, Minister Hylas, or Ethiliel"
 msgstr "Death of Deoran, Minister Hylas, or Ethiliel"
 
 #. [message]: speaker=unit
-#: data/campaigns/The_South_Guard/utils/sg_characters.cfg:161
+#: data/campaigns/The_South_Guard/utils/sg_characters.cfg:162
 msgid "I have failed my kingdom and duty..."
 msgstr "I have failed my kingdom and duty..."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/utils/sg_characters.cfg:178
+#: data/campaigns/The_South_Guard/utils/sg_characters.cfg:179
 msgid ""
 "They’ve broken through the trapdoor and entered the refugee cellar! Even if "
 "we could still manage to win by force of arms, Westin is doomed without its "
@@ -7715,27 +7719,27 @@ msgstr ""
 "people..."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/utils/sg_characters.cfg:206
+#: data/campaigns/The_South_Guard/utils/sg_characters.cfg:207
 msgid "Taste cold steel!"
 msgstr "Taste cold steel!"
 
 #. [message]: speaker=unit
-#: data/campaigns/The_South_Guard/utils/sg_characters.cfg:222
+#: data/campaigns/The_South_Guard/utils/sg_characters.cfg:223
 msgid "Yeah... I should’ve figured I wouldn’t get a happy ending..."
 msgstr "Yeah... I should’ve expected I wouldn’t get a happy ending..."
 
 #. [message]: speaker=unit
-#: data/campaigns/The_South_Guard/utils/sg_characters.cfg:241
+#: data/campaigns/The_South_Guard/utils/sg_characters.cfg:242
 msgid "I have given all in service of my kingdom..."
 msgstr "I have given all in service of my kingdom..."
 
 #. [message]: speaker=unit
-#: data/campaigns/The_South_Guard/utils/sg_characters.cfg:261
+#: data/campaigns/The_South_Guard/utils/sg_characters.cfg:262
 msgid "May the Light guide you where I have failed..."
 msgstr "May the Light guide you where I have failed..."
 
 #. [message]: speaker=unit
-#: data/campaigns/The_South_Guard/utils/sg_characters.cfg:281
+#: data/campaigns/The_South_Guard/utils/sg_characters.cfg:282
 msgid ""
 "I have lost everything helping the humans... Now they will surely perish!"
 msgstr ""

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-08-19 10:14-0500\n"
+"POT-Creation-Date: 2025-09-21 23:01-0500\n"
 "PO-Revision-Date: 2024-03-17 17:34+0100\n"
 "Last-Translator: Merijn de Vet\n"
 "Language-Team: Dutch <merijndevet@hotmail.com>\n"
@@ -2438,7 +2438,7 @@ msgstr "Begin een nieuwe veldtocht voor één speler"
 #: data/gui/themes/default/dialogs/mp_method_selection.cfg:55
 #: data/gui/themes/default/dialogs/preferences.cfg:365
 #: data/gui/themes/default/dialogs/title_screen.cfg:257
-#: src/gui/dialogs/game_load.cpp:362
+#: src/gui/dialogs/game_load.cpp:363
 msgid "Multiplayer"
 msgstr "Multiplayer"
 
@@ -2685,7 +2685,7 @@ msgstr "Sla wachtwoord lokaal op (versleuteld)"
 #: data/gui/themes/default/dialogs/tod_new_schedule.cfg:127
 #: data/gui/themes/default/dialogs/unit_advance.cfg:191
 #: data/gui/themes/default/dialogs/wml_error.cfg:162
-#: data/gui/themes/default/dialogs/wml_message.cfg:444
+#: data/gui/themes/default/dialogs/wml_message.cfg:425
 #: src/gui/dialogs/message.cpp:177 src/gui/dialogs/message.cpp:184
 #: src/gui/dialogs/units_dialog.cpp:78
 msgid "OK"
@@ -2899,7 +2899,7 @@ msgstr "Verwijder add-on"
 #. [button]: id=single_publish
 #: data/gui/themes/default/dialogs/addon_manager.cfg:645
 #: data/gui/themes/default/widgets/addon_list.cfg:412
-#: src/gui/widgets/addon_list.cpp:262
+#: src/gui/widgets/addon_list.cpp:264
 msgid "Publish add-on"
 msgstr "Publiceer add-on"
 
@@ -3311,8 +3311,8 @@ msgstr "Spelen"
 #. [slider]: id=enemey_gold_factor
 #. [slider]: id=enemy_gold_factor
 #: data/gui/themes/default/dialogs/campaign_difficulty.cfg:53
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:262
-#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:309
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:249
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:295
 #: src/gui/dialogs/editor/edit_pbl.cpp:198
 msgid "Difficulty"
 msgstr "Moelijkheid"
@@ -5157,14 +5157,14 @@ msgstr "Creëer Spel"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=join_global
 #: data/gui/themes/default/dialogs/lobby_main.cfg:561
-#: src/gui/dialogs/multiplayer/lobby.cpp:996
+#: src/gui/dialogs/multiplayer/lobby.cpp:992
 msgid "Join"
 msgstr "Sluit aan"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=observe_global
 #: data/gui/themes/default/dialogs/lobby_main.cfg:573
-#: src/gui/dialogs/multiplayer/lobby.cpp:966
+#: src/gui/dialogs/multiplayer/lobby.cpp:962
 msgid "Observe"
 msgstr "Observeer"
 
@@ -7184,7 +7184,7 @@ msgstr "<unknown>"
 #. other's resources rather than duplicating them. For example,
 #. Swedish (sv) and Danish (da) are such, so Swedish translator could
 #. translate this message as "sv,da", while Danish as "da,sv".
-#: src/filesystem.cpp:1845
+#: src/filesystem.cpp:1851
 msgid "language code for localized resources^en_US"
 msgstr "nl"
 
@@ -7244,10 +7244,10 @@ msgstr "Er is geen tekensectie gedefinieerd for deze staat."
 msgid "No resolution defined for "
 msgstr "Er is geen resolutie gedefinieerd."
 
-#: src/gui/core/window_builder.cpp:147 src/gui/widgets/addon_list.cpp:430
+#: src/gui/core/window_builder.cpp:147 src/gui/widgets/addon_list.cpp:432
 #: src/gui/widgets/multi_page.cpp:181 src/gui/widgets/panel.cpp:131
 #: src/gui/widgets/size_lock.cpp:110 src/gui/widgets/stacked_widget.cpp:229
-#: src/gui/widgets/toggle_panel.cpp:321
+#: src/gui/widgets/toggle_panel.cpp:325
 msgid "No grid defined."
 msgstr "Er is geen raster gedefinieerd."
 
@@ -7463,19 +7463,19 @@ msgstr "Terreinaanpassing"
 msgid "addon_tag^Players can change the terrain"
 msgstr "Spelers kunnen het terrein aanpassen"
 
-#: src/gui/dialogs/addon/manager.cpp:248 src/gui/widgets/addon_list.cpp:102
+#: src/gui/dialogs/addon/manager.cpp:248 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Not installed"
 msgstr "Niet geïnstalleerd"
 
-#: src/gui/dialogs/addon/manager.cpp:249 src/gui/widgets/addon_list.cpp:102
+#: src/gui/dialogs/addon/manager.cpp:249 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Published, not installed"
 msgstr "Gepubliceerd, niet geïnstalleerd"
 
-#: src/gui/dialogs/addon/manager.cpp:253 src/gui/widgets/addon_list.cpp:110
+#: src/gui/dialogs/addon/manager.cpp:253 src/gui/widgets/addon_list.cpp:111
 msgid "addon_state^Installed"
 msgstr "Geïnstalleerd"
 
-#: src/gui/dialogs/addon/manager.cpp:254 src/gui/widgets/addon_list.cpp:110
+#: src/gui/dialogs/addon/manager.cpp:254 src/gui/widgets/addon_list.cpp:111
 msgid "addon_state^Published"
 msgstr "Gepubliceerd"
 
@@ -7503,23 +7503,23 @@ msgstr "Geïnstalleerd ($loval_version|), verouderd op server"
 msgid "addon_state^Published ($local_version| installed), outdated on server"
 msgstr "Gepubliceerd  ($local_version| installed), verouderd op server"
 
-#: src/gui/dialogs/addon/manager.cpp:279 src/gui/widgets/addon_list.cpp:113
+#: src/gui/dialogs/addon/manager.cpp:279 src/gui/widgets/addon_list.cpp:114
 msgid "addon_state^Installed, not ready to publish"
 msgstr "Geïnstalleerd, niet klaar voor publicatie"
 
-#: src/gui/dialogs/addon/manager.cpp:280 src/gui/widgets/addon_list.cpp:113
+#: src/gui/dialogs/addon/manager.cpp:280 src/gui/widgets/addon_list.cpp:114
 msgid "addon_state^Ready to publish"
 msgstr "Klaar voor publicatie"
 
-#: src/gui/dialogs/addon/manager.cpp:284 src/gui/widgets/addon_list.cpp:125
+#: src/gui/dialogs/addon/manager.cpp:284 src/gui/widgets/addon_list.cpp:126
 msgid "addon_state^Installed, broken"
 msgstr "Geïnstalleerd, beschadigd"
 
-#: src/gui/dialogs/addon/manager.cpp:285 src/gui/widgets/addon_list.cpp:125
+#: src/gui/dialogs/addon/manager.cpp:285 src/gui/widgets/addon_list.cpp:126
 msgid "addon_state^Published, broken"
 msgstr "Gepubliceerd, beschadigd"
 
-#: src/gui/dialogs/addon/manager.cpp:288 src/gui/widgets/addon_list.cpp:129
+#: src/gui/dialogs/addon/manager.cpp:288 src/gui/widgets/addon_list.cpp:130
 msgid "addon_state^Unknown"
 msgstr "Onbekend"
 
@@ -7654,17 +7654,17 @@ msgstr "Aanvaller kwetsbaarheid tegen"
 msgid "game^Get Add-ons"
 msgstr "Add-ons"
 
-#: src/gui/dialogs/campaign_selection.cpp:394
+#: src/gui/dialogs/campaign_selection.cpp:388
 #, fuzzy
 #| msgid "Campaign"
 msgid "More campaigns..."
 msgstr "Veldtocht"
 
-#: src/gui/dialogs/campaign_selection.cpp:408
+#: src/gui/dialogs/campaign_selection.cpp:402
 msgid "Missing Campaigns"
 msgstr "Missende Veldtochten"
 
-#: src/gui/dialogs/campaign_selection.cpp:442
+#: src/gui/dialogs/campaign_selection.cpp:436
 #: src/gui/dialogs/multiplayer/lobby.cpp:435
 msgid "active_modifications^None"
 msgstr "Geen"
@@ -7964,68 +7964,68 @@ msgstr "Het spel datacache is verwidjerd"
 msgid "The game data cache could not be purged."
 msgstr "Het spel datacache kon niet worden verwijderd"
 
-#: src/gui/dialogs/game_load.cpp:72
+#: src/gui/dialogs/game_load.cpp:73
 msgid "No Saved Games"
 msgstr "Geen Opgeslagen Spellen"
 
-#: src/gui/dialogs/game_load.cpp:72
+#: src/gui/dialogs/game_load.cpp:73
 msgid "There are no saved games to load."
 msgstr "Er zijn geen opgeslagen spellen om te laden"
 
-#: src/gui/dialogs/game_load.cpp:143
+#: src/gui/dialogs/game_load.cpp:144
 msgid "game_version^Current Version"
 msgstr "Huidige Versie"
 
-#: src/gui/dialogs/game_load.cpp:147
+#: src/gui/dialogs/game_load.cpp:148
 msgid "game_version^Wesnoth $version"
 msgstr "Wesnoth $version"
 
 #. TRANSLATORS: "reserve" refers to units on the recall list
-#: src/gui/dialogs/game_load.cpp:233
+#: src/gui/dialogs/game_load.cpp:234
 msgid "$active active, $reserve reserve"
 msgstr "$active actief, $reserve reserve"
 
-#: src/gui/dialogs/game_load.cpp:288
+#: src/gui/dialogs/game_load.cpp:289
 msgid "The selected file is corrupt: "
 msgstr "Het geselecteerde bestand is beschadigd: "
 
-#: src/gui/dialogs/game_load.cpp:328
+#: src/gui/dialogs/game_load.cpp:329
 msgid "(Invalid)"
 msgstr "(Ongeldig)"
 
-#: src/gui/dialogs/game_load.cpp:353
+#: src/gui/dialogs/game_load.cpp:354
 msgid "Campaign: $campaign_name"
 msgstr "Veldtocht: $campaign_name"
 
-#: src/gui/dialogs/game_load.cpp:365
+#: src/gui/dialogs/game_load.cpp:366
 msgid "Tutorial"
 msgstr "Uitleg"
 
-#: src/gui/dialogs/game_load.cpp:368
+#: src/gui/dialogs/game_load.cpp:369
 msgid "Test scenario"
 msgstr "Test scenario"
 
-#: src/gui/dialogs/game_load.cpp:378
+#: src/gui/dialogs/game_load.cpp:379
 msgid "Replay"
 msgstr "Herhaling"
 
-#: src/gui/dialogs/game_load.cpp:380
+#: src/gui/dialogs/game_load.cpp:381
 msgid "Turn"
 msgstr "Beurt"
 
-#: src/gui/dialogs/game_load.cpp:382
+#: src/gui/dialogs/game_load.cpp:383
 msgid "Scenario start"
 msgstr "Begin scenario"
 
-#: src/gui/dialogs/game_load.cpp:394
+#: src/gui/dialogs/game_load.cpp:395
 msgid "Difficulty: "
 msgstr "Moeilijkheidsgraad: "
 
-#: src/gui/dialogs/game_load.cpp:417
+#: src/gui/dialogs/game_load.cpp:418
 msgid "Version: "
 msgstr "Versie: "
 
-#: src/gui/dialogs/game_load.cpp:422
+#: src/gui/dialogs/game_load.cpp:423
 msgid "Modifications: "
 msgstr "Aanpassingen: "
 
@@ -8273,7 +8273,7 @@ msgstr "Waarnemers niet toegestaan"
 msgid "lobby"
 msgstr "lobby"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:966
+#: src/gui/dialogs/multiplayer/lobby.cpp:962
 #, fuzzy
 #| msgid ""
 #| "This game doesn't allow observers. Observe using moderator rights anyway?"
@@ -8282,7 +8282,7 @@ msgid ""
 msgstr ""
 "Dit spel staat geen waarnemers toe. Toch observeren met moderator-rechten?"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:977
+#: src/gui/dialogs/multiplayer/lobby.cpp:973
 msgid ""
 "Something is wrong with the addon version check database supporting the "
 "multiplayer lobby. Please report this at https://bugs.wesnoth.org."
@@ -8290,7 +8290,7 @@ msgstr ""
 "Er is iets mis met de add-on versie, controleer de database van de "
 "multiplayer lobby. Maak een melding hiervan op https://bugs.wesnoth.org."
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:996
+#: src/gui/dialogs/multiplayer/lobby.cpp:992
 msgid "This game is password protected. Join using moderator rights anyway?"
 msgstr ""
 "Dit spel is beveiligd met een wachtwoord. Toch aansluiten met moderator-"
@@ -8357,20 +8357,20 @@ msgstr "Geen tijdperken beschikbaar voor dit spel."
 msgid "number of players^$min to $max"
 msgstr "$min tot $max"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:1023
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:1022
 msgid "The selected game has no sides!"
 msgstr "Het geselecteerde spel heeft geen kanten!"
 
 #. TRANSLATORS: This sentence will be followed by some details of the error, most likely the "Map could not be loaded" message from create_engine.cpp
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:1030
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:1029
 msgid "The selected game cannot be created."
 msgstr "Het geselecteerde spel kan niet aangemaakt worden."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:1103
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:1102
 msgid "Choose Starting Scenario"
 msgstr "Kies Start Scenario"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:1103
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:1102
 msgid "Select at which point to begin this campaign."
 msgstr "Selecteer het punt waarop je deze veldtocht wil beginnen."
 
@@ -8551,15 +8551,15 @@ msgstr "Ingenomen"
 msgid "$count|× $name"
 msgstr "$count|× $name"
 
-#: src/gui/dialogs/title_screen.cpp:116 src/hotkey/hotkey_command.cpp:98
+#: src/gui/dialogs/title_screen.cpp:131 src/hotkey/hotkey_command.cpp:98
 msgid "Screenshot"
 msgstr "Schermafbeelding"
 
-#: src/gui/dialogs/title_screen.cpp:378
+#: src/gui/dialogs/title_screen.cpp:399
 msgid "Version $version"
 msgstr "Versie $version"
 
-#: src/gui/dialogs/title_screen.cpp:468 src/hotkey/hotkey_command.cpp:311
+#: src/gui/dialogs/title_screen.cpp:489 src/hotkey/hotkey_command.cpp:311
 msgid "Choose Test Scenario"
 msgstr "Kies Test Scenario"
 
@@ -8623,7 +8623,7 @@ msgstr "Eenheid Oproepen"
 msgid "Recall"
 msgstr "Oproepen"
 
-#: src/gui/dialogs/units_dialog.cpp:830
+#: src/gui/dialogs/units_dialog.cpp:828
 msgid ""
 "This unit cannot be recalled because you will not have enough gold at this "
 "point in your plan."
@@ -8631,7 +8631,7 @@ msgstr ""
 "Deze eenheid kan niet opgeroepen worden omdat je niet voldoende goud bezit "
 "op dit moment in je plan."
 
-#: src/gui/dialogs/units_dialog.cpp:832
+#: src/gui/dialogs/units_dialog.cpp:830
 msgid "This unit cannot be recalled because you do not have enough gold."
 msgstr ""
 "Deze eenheid kan niet opgeroepen worden omdat je niet voldoende goud bezit."
@@ -8640,23 +8640,23 @@ msgstr ""
 msgid "No default gui defined."
 msgstr "Geen standaard gui gedefinieerd."
 
-#: src/gui/widgets/addon_list.cpp:117
+#: src/gui/widgets/addon_list.cpp:118
 msgid "addon_state^Installed, upgradable"
 msgstr "Geïnstalleerd, upgrade beschikbaar"
 
-#: src/gui/widgets/addon_list.cpp:117
+#: src/gui/widgets/addon_list.cpp:118
 msgid "addon_state^Published, upgradable"
 msgstr "Gepubliceerd, upgrade beschikbaar"
 
-#: src/gui/widgets/addon_list.cpp:121
+#: src/gui/widgets/addon_list.cpp:122
 msgid "addon_state^Installed, outdated on server"
 msgstr "Geïnstalleerd, verouderd op server"
 
-#: src/gui/widgets/addon_list.cpp:121
+#: src/gui/widgets/addon_list.cpp:122
 msgid "addon_state^Published, outdated on server"
 msgstr "Gepubliceerd, verouderd op server"
 
-#: src/gui/widgets/addon_list.cpp:293
+#: src/gui/widgets/addon_list.cpp:295
 msgid "Delete add-on from server"
 msgstr "Verwijder add-on van server"
 

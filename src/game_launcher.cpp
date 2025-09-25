@@ -82,7 +82,6 @@
 #endif
 
 #include <algorithm> // for copy, max, min, stable_sort
-#include <cstdlib>   // for system
 #include <new>
 #include <thread>
 #include <utility> // for pair

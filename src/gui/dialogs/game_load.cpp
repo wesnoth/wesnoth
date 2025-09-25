@@ -187,7 +187,7 @@ void game_load::display_savegame_internal(const savegame::save_info& game)
 			.set_map_data(summary_["map_data"]);
 
 	find_widget<label>("lblScenario")
-			.set_label(summary_["label"]);
+			.set_label(summary_["label"].t_str());
 
 	listbox& leader_list = find_widget<listbox>("leader_list");
 
@@ -224,14 +224,14 @@ void game_load::display_savegame_internal(const savegame::save_info& game)
 		item["label"] = leader_image;
 		data.emplace("imgLeader", item);
 
-		item["label"] = leader["leader_name"];
+		item["label"] = leader["leader_name"].t_str();
 		data.emplace("leader_name", item);
 
-		item["label"] = leader["gold"];
+		item["label"] = leader["gold"].str();
 		data.emplace("leader_gold", item);
 
 		// TRANSLATORS: "reserve" refers to units on the recall list
-		item["label"] = VGETTEXT("$active active, $reserve reserve", {{"active", leader["units"]}, {"reserve", leader["recall_units"]}});
+		item["label"] = VGETTEXT("$active active, $reserve reserve", {{"active", leader["units"].str()}, {"reserve", leader["recall_units"].str()}});
 		data.emplace("leader_troops", item);
 
 		leader_list.add_row(data);
@@ -345,7 +345,7 @@ void game_load::evaluate_summary_string(std::stringstream& str, const config& cf
 				utils::string_map symbols;
 
 				if(campaign) {
-					symbols["campaign_name"] = (*campaign)["name"];
+					symbols["campaign_name"] = (*campaign)["name"].t_str();
 				} else {
 					// Fallback to nontranslatable campaign id.
 					symbols["campaign_name"] = "(" + campaign_id + ")";

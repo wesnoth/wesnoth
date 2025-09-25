@@ -36,7 +36,7 @@ public:
 	/**
 	 * Parses a control line string.
 	 */
-	control_line(const std::string& str) : args_(utils::split(str, ' '))
+	explicit control_line(const std::string& str) : args_(utils::split(str, ' '))
 	{
 		if(args_.empty()) {
 			args_.emplace_back();
@@ -51,14 +51,6 @@ public:
 		// Because of how utils::split() works, this can only happen if there
 		// are no other arguments.
 		return args_[0].empty();
-	}
-
-	/**
-	 * Returns the control command.
-	 */
-	operator const std::string&() const
-	{
-		return cmd();
 	}
 
 	/**
@@ -93,6 +85,14 @@ public:
 	std::string full() const
 	{
 		return utils::join(args_, " ");
+	}
+
+	/**
+	 * Allow comparison with other strings.
+	 */
+	bool operator==(std::string_view cmp) const
+	{
+		return cmd() == cmp;
 	}
 
 private:

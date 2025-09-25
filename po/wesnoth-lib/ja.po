@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-08-19 10:14-0500\n"
+"POT-Creation-Date: 2025-09-21 23:01-0500\n"
 "PO-Revision-Date: 2023-12-03 03:44+0000\n"
 "Last-Translator: RatArmy, 2025\n"
 "Language-Team: Japanese (https://app.transifex.com/wesnoth-jp/teams/60513/"
@@ -2409,7 +2409,7 @@ msgstr "一人プレイ用のキャンペーン（物語）を開始します"
 #: data/gui/themes/default/dialogs/mp_method_selection.cfg:55
 #: data/gui/themes/default/dialogs/preferences.cfg:365
 #: data/gui/themes/default/dialogs/title_screen.cfg:257
-#: src/gui/dialogs/game_load.cpp:362
+#: src/gui/dialogs/game_load.cpp:363
 msgid "Multiplayer"
 msgstr "マルチプレイヤー"
 
@@ -2652,7 +2652,7 @@ msgstr "パスワードを暗号化して保存する"
 #: data/gui/themes/default/dialogs/tod_new_schedule.cfg:127
 #: data/gui/themes/default/dialogs/unit_advance.cfg:191
 #: data/gui/themes/default/dialogs/wml_error.cfg:162
-#: data/gui/themes/default/dialogs/wml_message.cfg:444
+#: data/gui/themes/default/dialogs/wml_message.cfg:425
 #: src/gui/dialogs/message.cpp:177 src/gui/dialogs/message.cpp:184
 #: src/gui/dialogs/units_dialog.cpp:78
 msgid "OK"
@@ -2866,7 +2866,7 @@ msgstr "アドオンのアンインストール"
 #. [button]: id=single_publish
 #: data/gui/themes/default/dialogs/addon_manager.cfg:645
 #: data/gui/themes/default/widgets/addon_list.cfg:412
-#: src/gui/widgets/addon_list.cpp:262
+#: src/gui/widgets/addon_list.cpp:264
 msgid "Publish add-on"
 msgstr "アドオンの公開"
 
@@ -3278,8 +3278,8 @@ msgstr "プレイ"
 #. [slider]: id=enemey_gold_factor
 #. [slider]: id=enemy_gold_factor
 #: data/gui/themes/default/dialogs/campaign_difficulty.cfg:53
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:262
-#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:309
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:249
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:295
 #: src/gui/dialogs/editor/edit_pbl.cpp:198
 msgid "Difficulty"
 msgstr "難易度 "
@@ -5123,14 +5123,14 @@ msgstr "ゲームを作成"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=join_global
 #: data/gui/themes/default/dialogs/lobby_main.cfg:561
-#: src/gui/dialogs/multiplayer/lobby.cpp:996
+#: src/gui/dialogs/multiplayer/lobby.cpp:992
 msgid "Join"
 msgstr "参加"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=observe_global
 #: data/gui/themes/default/dialogs/lobby_main.cfg:573
-#: src/gui/dialogs/multiplayer/lobby.cpp:966
+#: src/gui/dialogs/multiplayer/lobby.cpp:962
 msgid "Observe"
 msgstr "観戦"
 
@@ -7134,7 +7134,7 @@ msgstr "<不明>"
 #. other's resources rather than duplicating them. For example,
 #. Swedish (sv) and Danish (da) are such, so Swedish translator could
 #. translate this message as "sv,da", while Danish as "da,sv".
-#: src/filesystem.cpp:1845
+#: src/filesystem.cpp:1851
 msgid "language code for localized resources^en_US"
 msgstr "ja"
 
@@ -7194,10 +7194,10 @@ msgstr "state に対して draw section が定義されていません。"
 msgid "No resolution defined for "
 msgstr "解像度（resolution）が1つも定義されていません。"
 
-#: src/gui/core/window_builder.cpp:147 src/gui/widgets/addon_list.cpp:430
+#: src/gui/core/window_builder.cpp:147 src/gui/widgets/addon_list.cpp:432
 #: src/gui/widgets/multi_page.cpp:181 src/gui/widgets/panel.cpp:131
 #: src/gui/widgets/size_lock.cpp:110 src/gui/widgets/stacked_widget.cpp:229
-#: src/gui/widgets/toggle_panel.cpp:321
+#: src/gui/widgets/toggle_panel.cpp:325
 msgid "No grid defined."
 msgstr "グリッド（grid）が定義されていません。"
 
@@ -7414,19 +7414,19 @@ msgstr "地形変更"
 msgid "addon_tag^Players can change the terrain"
 msgstr "地形に変更を加えます。"
 
-#: src/gui/dialogs/addon/manager.cpp:248 src/gui/widgets/addon_list.cpp:102
+#: src/gui/dialogs/addon/manager.cpp:248 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Not installed"
 msgstr "未インストール"
 
-#: src/gui/dialogs/addon/manager.cpp:249 src/gui/widgets/addon_list.cpp:102
+#: src/gui/dialogs/addon/manager.cpp:249 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Published, not installed"
 msgstr "公開済み、未インストール"
 
-#: src/gui/dialogs/addon/manager.cpp:253 src/gui/widgets/addon_list.cpp:110
+#: src/gui/dialogs/addon/manager.cpp:253 src/gui/widgets/addon_list.cpp:111
 msgid "addon_state^Installed"
 msgstr "インストール済み"
 
-#: src/gui/dialogs/addon/manager.cpp:254 src/gui/widgets/addon_list.cpp:110
+#: src/gui/dialogs/addon/manager.cpp:254 src/gui/widgets/addon_list.cpp:111
 msgid "addon_state^Published"
 msgstr "公開済み"
 
@@ -7455,23 +7455,23 @@ msgid "addon_state^Published ($local_version| installed), outdated on server"
 msgstr ""
 "公開済み（$local_version| インストール済み）、サーバー上に旧バージョン有り"
 
-#: src/gui/dialogs/addon/manager.cpp:279 src/gui/widgets/addon_list.cpp:113
+#: src/gui/dialogs/addon/manager.cpp:279 src/gui/widgets/addon_list.cpp:114
 msgid "addon_state^Installed, not ready to publish"
 msgstr "インストール済み、公開準備未了"
 
-#: src/gui/dialogs/addon/manager.cpp:280 src/gui/widgets/addon_list.cpp:113
+#: src/gui/dialogs/addon/manager.cpp:280 src/gui/widgets/addon_list.cpp:114
 msgid "addon_state^Ready to publish"
 msgstr "公開準備完了"
 
-#: src/gui/dialogs/addon/manager.cpp:284 src/gui/widgets/addon_list.cpp:125
+#: src/gui/dialogs/addon/manager.cpp:284 src/gui/widgets/addon_list.cpp:126
 msgid "addon_state^Installed, broken"
 msgstr "インストール済み、破損"
 
-#: src/gui/dialogs/addon/manager.cpp:285 src/gui/widgets/addon_list.cpp:125
+#: src/gui/dialogs/addon/manager.cpp:285 src/gui/widgets/addon_list.cpp:126
 msgid "addon_state^Published, broken"
 msgstr "公開済み、破損"
 
-#: src/gui/dialogs/addon/manager.cpp:288 src/gui/widgets/addon_list.cpp:129
+#: src/gui/dialogs/addon/manager.cpp:288 src/gui/widgets/addon_list.cpp:130
 msgid "addon_state^Unknown"
 msgstr "不明"
 
@@ -7601,17 +7601,17 @@ msgstr "攻撃側の弱点："
 msgid "game^Get Add-ons"
 msgstr "アドオンの削除"
 
-#: src/gui/dialogs/campaign_selection.cpp:394
+#: src/gui/dialogs/campaign_selection.cpp:388
 #, fuzzy
 #| msgid "Campaigns"
 msgid "More campaigns..."
 msgstr "キャンペーン"
 
-#: src/gui/dialogs/campaign_selection.cpp:408
+#: src/gui/dialogs/campaign_selection.cpp:402
 msgid "Missing Campaigns"
 msgstr "欠落したキャンペーン"
 
-#: src/gui/dialogs/campaign_selection.cpp:442
+#: src/gui/dialogs/campaign_selection.cpp:436
 #: src/gui/dialogs/multiplayer/lobby.cpp:435
 msgid "active_modifications^None"
 msgstr "なし"
@@ -7909,68 +7909,68 @@ msgstr "ゲームデータのキャッシュを削除しました。"
 msgid "The game data cache could not be purged."
 msgstr "ゲームデータのキャッシュを削除できませんでした。"
 
-#: src/gui/dialogs/game_load.cpp:72
+#: src/gui/dialogs/game_load.cpp:73
 msgid "No Saved Games"
 msgstr "セーブデータが存在しません"
 
-#: src/gui/dialogs/game_load.cpp:72
+#: src/gui/dialogs/game_load.cpp:73
 msgid "There are no saved games to load."
 msgstr "再開できるセーブデータが存在しません。"
 
-#: src/gui/dialogs/game_load.cpp:143
+#: src/gui/dialogs/game_load.cpp:144
 msgid "game_version^Current Version"
 msgstr "現在のバージョン"
 
-#: src/gui/dialogs/game_load.cpp:147
+#: src/gui/dialogs/game_load.cpp:148
 msgid "game_version^Wesnoth $version"
 msgstr "Wesnoth $version"
 
 #. TRANSLATORS: "reserve" refers to units on the recall list
-#: src/gui/dialogs/game_load.cpp:233
+#: src/gui/dialogs/game_load.cpp:234
 msgid "$active active, $reserve reserve"
 msgstr "アクティブ $active 、予約 $reserve"
 
-#: src/gui/dialogs/game_load.cpp:288
+#: src/gui/dialogs/game_load.cpp:289
 msgid "The selected file is corrupt: "
 msgstr "選択したファイルは壊れています："
 
-#: src/gui/dialogs/game_load.cpp:328
+#: src/gui/dialogs/game_load.cpp:329
 msgid "(Invalid)"
 msgstr "（無効）"
 
-#: src/gui/dialogs/game_load.cpp:353
+#: src/gui/dialogs/game_load.cpp:354
 msgid "Campaign: $campaign_name"
 msgstr "キャンペーン：$campaign_name"
 
-#: src/gui/dialogs/game_load.cpp:365
+#: src/gui/dialogs/game_load.cpp:366
 msgid "Tutorial"
 msgstr "チュートリアル"
 
-#: src/gui/dialogs/game_load.cpp:368
+#: src/gui/dialogs/game_load.cpp:369
 msgid "Test scenario"
 msgstr "テストシナリオ"
 
-#: src/gui/dialogs/game_load.cpp:378
+#: src/gui/dialogs/game_load.cpp:379
 msgid "Replay"
 msgstr "リプレイ"
 
-#: src/gui/dialogs/game_load.cpp:380
+#: src/gui/dialogs/game_load.cpp:381
 msgid "Turn"
 msgstr "ターン"
 
-#: src/gui/dialogs/game_load.cpp:382
+#: src/gui/dialogs/game_load.cpp:383
 msgid "Scenario start"
 msgstr "シナリオの開始"
 
-#: src/gui/dialogs/game_load.cpp:394
+#: src/gui/dialogs/game_load.cpp:395
 msgid "Difficulty: "
 msgstr "難易度："
 
-#: src/gui/dialogs/game_load.cpp:417
+#: src/gui/dialogs/game_load.cpp:418
 msgid "Version: "
 msgstr "バージョン："
 
-#: src/gui/dialogs/game_load.cpp:422
+#: src/gui/dialogs/game_load.cpp:423
 msgid "Modifications: "
 msgstr "Mod："
 
@@ -8219,7 +8219,7 @@ msgstr "観戦不可"
 msgid "lobby"
 msgstr "ロビー"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:966
+#: src/gui/dialogs/multiplayer/lobby.cpp:962
 #, fuzzy
 #| msgid ""
 #| "This game doesn't allow observers. Observe using moderator rights anyway?"
@@ -8228,7 +8228,7 @@ msgid ""
 msgstr ""
 "このゲームでは観戦が許可されていません。管理者権限を使用して観戦しますか？"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:977
+#: src/gui/dialogs/multiplayer/lobby.cpp:973
 msgid ""
 "Something is wrong with the addon version check database supporting the "
 "multiplayer lobby. Please report this at https://bugs.wesnoth.org."
@@ -8236,7 +8236,7 @@ msgstr ""
 "マルチプレイヤーロビーのアドオンバージョンチェックデータベースに何らかの不具"
 "合があったようです。bugs.wesnoth.orgにバグ報告をお願いします。"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:996
+#: src/gui/dialogs/multiplayer/lobby.cpp:992
 msgid "This game is password protected. Join using moderator rights anyway?"
 msgstr ""
 "このゲームはパスワードで保護されています。管理者権限を使用して参加しますか？"
@@ -8302,20 +8302,20 @@ msgstr "このゲームには時代を適用できません。"
 msgid "number of players^$min to $max"
 msgstr "$min ～ $max"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:1023
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:1022
 msgid "The selected game has no sides!"
 msgstr "選択したゲームには陣営がありません！"
 
 #. TRANSLATORS: This sentence will be followed by some details of the error, most likely the "Map could not be loaded" message from create_engine.cpp
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:1030
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:1029
 msgid "The selected game cannot be created."
 msgstr "選択したゲームを作成できません。"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:1103
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:1102
 msgid "Choose Starting Scenario"
 msgstr "開始シナリオの選択"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:1103
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:1102
 msgid "Select at which point to begin this campaign."
 msgstr "どこからキャンペーンを開始しますか？"
 
@@ -8491,15 +8491,15 @@ msgstr "被"
 msgid "$count|× $name"
 msgstr "$count|× $name"
 
-#: src/gui/dialogs/title_screen.cpp:116 src/hotkey/hotkey_command.cpp:98
+#: src/gui/dialogs/title_screen.cpp:131 src/hotkey/hotkey_command.cpp:98
 msgid "Screenshot"
 msgstr "スクリーンショット"
 
-#: src/gui/dialogs/title_screen.cpp:378
+#: src/gui/dialogs/title_screen.cpp:399
 msgid "Version $version"
 msgstr "バージョン $version"
 
-#: src/gui/dialogs/title_screen.cpp:468 src/hotkey/hotkey_command.cpp:311
+#: src/gui/dialogs/title_screen.cpp:489 src/hotkey/hotkey_command.cpp:311
 msgid "Choose Test Scenario"
 msgstr "テストシナリオを選択"
 
@@ -8563,7 +8563,7 @@ msgstr "ユニットの召還"
 msgid "Recall"
 msgstr "召還"
 
-#: src/gui/dialogs/units_dialog.cpp:830
+#: src/gui/dialogs/units_dialog.cpp:828
 msgid ""
 "This unit cannot be recalled because you will not have enough gold at this "
 "point in your plan."
@@ -8571,7 +8571,7 @@ msgstr ""
 "計画中のこの時点では、ゴールドが不足しているためこのユニットを召還できませ"
 "ん。"
 
-#: src/gui/dialogs/units_dialog.cpp:832
+#: src/gui/dialogs/units_dialog.cpp:830
 msgid "This unit cannot be recalled because you do not have enough gold."
 msgstr "ゴールドが不足しているため、このユニットを召還することはできません。"
 
@@ -8579,23 +8579,23 @@ msgstr "ゴールドが不足しているため、このユニットを召還す
 msgid "No default gui defined."
 msgstr "デフォルトの GUI が定義されていません。"
 
-#: src/gui/widgets/addon_list.cpp:117
+#: src/gui/widgets/addon_list.cpp:118
 msgid "addon_state^Installed, upgradable"
 msgstr "インストール済み、アップデート有り"
 
-#: src/gui/widgets/addon_list.cpp:117
+#: src/gui/widgets/addon_list.cpp:118
 msgid "addon_state^Published, upgradable"
 msgstr "公開済み、アップデート有り"
 
-#: src/gui/widgets/addon_list.cpp:121
+#: src/gui/widgets/addon_list.cpp:122
 msgid "addon_state^Installed, outdated on server"
 msgstr "インストール済み、サーバー上に旧バージョン有り"
 
-#: src/gui/widgets/addon_list.cpp:121
+#: src/gui/widgets/addon_list.cpp:122
 msgid "addon_state^Published, outdated on server"
 msgstr "公開済み、サーバー上に旧バージョン有り"
 
-#: src/gui/widgets/addon_list.cpp:293
+#: src/gui/widgets/addon_list.cpp:295
 msgid "Delete add-on from server"
 msgstr "サーバーからアドオンを削除します"
 

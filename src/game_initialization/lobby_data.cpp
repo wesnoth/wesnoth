@@ -269,16 +269,8 @@ game_info::game_info(const config& game, const std::vector<std::string>& install
 			// to test them, since they always would appear as remote scenarios
 			if(!reloaded) {
 				if(auto hashes = game_config.optional_child("multiplayer_hashes")) {
-					std::string hash = game["hash"];
-					bool hash_found = false;
-					for(const auto & i : hashes->attribute_range()) {
-						if(i.first == game["mp_scenario"] && i.second == hash) {
-							hash_found = true;
-							break;
-						}
-					}
-
-					if(!hash_found) {
+					std::string scenario = game["mp_scenario"];
+					if(hashes[scenario] != game["hash"]) {
 						remote_scenario = true;
 						info_stream << spaced_em_dash();
 						info_stream << _("Remote scenario");

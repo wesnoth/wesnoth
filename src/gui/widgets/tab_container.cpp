@@ -155,9 +155,9 @@ builder_tab_container::builder_tab_container(const config& cfg)
 			widget_data list_row;
 			widget_item item;
 
-			item["label"] = tab["image"];
+			item["label"] = tab["image"].t_str();
 			list_row.emplace("image", item);
-			item["label"] = tab["name"];
+			item["label"] = tab["name"].t_str();
 			list_row.emplace("name", item);
 
 			list_items.emplace_back(list_row);

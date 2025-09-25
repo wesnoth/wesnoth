@@ -210,19 +210,23 @@ bool toggle_panel::impl_draw_foreground()
 void toggle_panel::signal_handler_mouse_enter(const event::ui_event event,
 											   bool& handled)
 {
+#ifndef __ANDROID__
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	set_state(FOCUSED);
 	handled = true;
+#endif
 }
 
 void toggle_panel::signal_handler_mouse_leave(const event::ui_event event,
 											   bool& handled)
 {
+#ifndef __ANDROID__
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".";
 
 	set_state(ENABLED);
 	handled = true;
+#endif
 }
 
 void

@@ -290,7 +290,7 @@ bool attack_type::apply_modification(const config& cfg)
 
 	set_changed(true);
 	const std::string& set_name = cfg["set_name"];
-	const t_string& set_desc = cfg["set_description"];
+	const t_string& set_desc = cfg["set_description"].t_str();
 	const std::string& set_type = cfg["set_type"];
 	const std::string& set_range = cfg["set_range"];
 	const std::string& set_attack_alignment = cfg["set_alignment"];

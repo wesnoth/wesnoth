@@ -7,9 +7,9 @@ AllowAllParametersOfDeclarationOnNextLine: true
 AllowShortIfStatementsOnASingleLine: false
 AllowShortLoopsOnASingleLine: false
 AllowShortFunctionsOnASingleLine: false
-AlwaysBreakTemplateDeclarations: true
 AlwaysBreakBeforeMultilineStrings: false
 AlignOperands: false
+AllowShortLambdasOnASingleLine: All
 BreakBeforeBinaryOperators: true
 
 # Same as 'Linux', but includes structs
@@ -26,23 +26,39 @@ BraceWrapping:
     BeforeCatch: false
     BeforeElse: false
 
+BreakBeforeConceptDeclarations: Always
 BreakBeforeTernaryOperators: true
-BreakConstructorInitializersBeforeComma: true
+BreakConstructorInitializers: BeforeComma
+BreakFunctionDefinitionParameters: false
+BreakInheritanceList: BeforeComma
+BreakTemplateDeclarations: Yes
 BinPackParameters: false
+BinPackLongBracedList: false
 ColumnLimit: 120
 ConstructorInitializerAllOnOneLineOrOnePerLine: false
 ConstructorInitializerIndentWidth: 4
 ContinuationIndentWidth: 4
 Cpp11BracedListStyle: true
 DerivePointerBinding: false
+EmptyLineBeforeAccessModifier: Always
+EnumTrailingComma: Leave
 ExperimentalAutoDetectBinPacking: false
+IncludeBlocks: Regroup
+IndentAccessModifiers: false
 IndentCaseLabels: false
 IndentFunctionDeclarationAfterType: false
 IndentWidth: 4
-KeepEmptyLinesAtTheStartOfBlocks: false
+InsertBraces: true
+InsertNewlineAtEOF: true
+KeepEmptyLines:
+    AtEndOfFile: true
+    AtStartOfBlock: false
+    AtStartOfFile: false
+LambdaBodyIndentation: Signature
 MaxEmptyLinesToKeep: 1
 NamespaceIndentation: None
 ObjCSpaceBeforeProtocolList: true
+PackConstructorInitializers: Never
 PenaltyBreakBeforeFirstCallParameter: 19
 PenaltyBreakComment: 300
 PenaltyBreakString: 1000
@@ -51,15 +67,32 @@ PenaltyExcessCharacter: 1000000
 PenaltyReturnTypeOnItsOwnLine: 60
 PointerAlignment: Left
 PointerBindsToType: true
+RemoveParentheses: ReturnStatement
+RemoveSemicolon: true
+RequiresClausePosition: WithPreceding
 SortIncludes: true
+SortUsingDeclarations: Lexicographic
+SeparateDefinitionBlocks: Always
 SpaceBeforeAssignmentOperators: true
-SpaceBeforeParens: Never
+SpaceBeforeParens: Custom
+SpaceBeforeParensOptions:
+    AfterControlStatements: false
+    AfterForeachMacros: false
+    AfterFunctionDeclarationName: false
+    AfterFunctionDefinitionName: false
+    AfterIfMacros: false
+    AfterNot: false
+    AfterOverloadedOperator: false
+    AfterPlacementOperator: false
+    AfterRequiresInClause: false
+    AfterRequiresInExpression: false
+    BeforeNonEmptyParentheses: false
+SpaceBeforeRangeBasedForLoopColon: true
 SpaceAfterTemplateKeyword: false
-SpaceInEmptyParentheses: false
 SpacesBeforeTrailingComments: 1
-SpacesInParentheses: false
-SpacesInAngles: false
+SpacesInParens: Never
+SpacesInAngles: Never
 SpacesInCStyleCastParentheses: false
-Standard: Cpp11
+Standard: Latest
 TabWidth: 4
 UseTab: ForContinuationAndIndentation

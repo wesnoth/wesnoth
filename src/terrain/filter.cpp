@@ -258,8 +258,8 @@ bool terrain_filter::match_internal(const map_location& loc, const unit* ref_uni
 		}
 	}
 
-	const t_string& t_tod_type = cfg_["time_of_day"];
-	const t_string& t_tod_id = cfg_["time_of_day_id"];
+	const t_string& t_tod_type = cfg_["time_of_day"].t_str();
+	const t_string& t_tod_id = cfg_["time_of_day_id"].t_str();
 	const std::string& tod_type = t_tod_type;
 	const std::string& tod_id = t_tod_id;
 	if(!tod_type.empty() || !tod_id.empty()) {

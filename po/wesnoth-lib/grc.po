@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-08-19 10:14-0500\n"
+"POT-Creation-Date: 2025-09-21 23:01-0500\n"
 "PO-Revision-Date: 2025-07-19 11:45+0100\n"
 "Last-Translator: Mejri Ziad <nouveau.dep@gmail.com>\n"
 "Language-Team: \n"
@@ -2424,7 +2424,7 @@ msgstr "Ἄρχειν καινῆς στρατηγίας μονοπαίκτου"
 #: data/gui/themes/default/dialogs/mp_method_selection.cfg:55
 #: data/gui/themes/default/dialogs/preferences.cfg:365
 #: data/gui/themes/default/dialogs/title_screen.cfg:257
-#: src/gui/dialogs/game_load.cpp:362
+#: src/gui/dialogs/game_load.cpp:363
 msgid "Multiplayer"
 msgstr "Πολυπαίκτης"
 
@@ -2666,7 +2666,7 @@ msgstr "Σῴζειν σύνθημα ἐγχώριον (κεκρυμμένον)"
 #: data/gui/themes/default/dialogs/tod_new_schedule.cfg:127
 #: data/gui/themes/default/dialogs/unit_advance.cfg:191
 #: data/gui/themes/default/dialogs/wml_error.cfg:162
-#: data/gui/themes/default/dialogs/wml_message.cfg:444
+#: data/gui/themes/default/dialogs/wml_message.cfg:425
 #: src/gui/dialogs/message.cpp:177 src/gui/dialogs/message.cpp:184
 #: src/gui/dialogs/units_dialog.cpp:78
 msgid "OK"
@@ -2880,7 +2880,7 @@ msgstr "Προσθήκην Ἐξαιρεῖν"
 #. [button]: id=single_publish
 #: data/gui/themes/default/dialogs/addon_manager.cfg:645
 #: data/gui/themes/default/widgets/addon_list.cfg:412
-#: src/gui/widgets/addon_list.cpp:262
+#: src/gui/widgets/addon_list.cpp:264
 msgid "Publish add-on"
 msgstr "Προσθήκην Ἀναρτᾶν"
 
@@ -3297,8 +3297,8 @@ msgstr "Παίζειν"
 #. [slider]: id=enemey_gold_factor
 #. [slider]: id=enemy_gold_factor
 #: data/gui/themes/default/dialogs/campaign_difficulty.cfg:53
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:262
-#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:309
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:249
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:295
 #: src/gui/dialogs/editor/edit_pbl.cpp:198
 msgid "Difficulty"
 msgstr "Δυσκολία"
@@ -5086,14 +5086,14 @@ msgstr "Παιδιὰν Ποιεῖν"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=join_global
 #: data/gui/themes/default/dialogs/lobby_main.cfg:561
-#: src/gui/dialogs/multiplayer/lobby.cpp:996
+#: src/gui/dialogs/multiplayer/lobby.cpp:992
 msgid "Join"
 msgstr "Εἰσέρχεσθαι"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=observe_global
 #: data/gui/themes/default/dialogs/lobby_main.cfg:573
-#: src/gui/dialogs/multiplayer/lobby.cpp:966
+#: src/gui/dialogs/multiplayer/lobby.cpp:962
 msgid "Observe"
 msgstr "Θεᾶσθαι"
 
@@ -7079,7 +7079,7 @@ msgstr "<ἄγνωστος>"
 #. other's resources rather than duplicating them. For example,
 #. Swedish (sv) and Danish (da) are such, so Swedish translator could
 #. translate this message as "sv,da", while Danish as "da,sv".
-#: src/filesystem.cpp:1845
+#: src/filesystem.cpp:1851
 msgid "language code for localized resources^en_US"
 msgstr "en_US"
 
@@ -7135,10 +7135,10 @@ msgstr "Οὐδεμία γραφικὴ τομὴ ὡρισμένη τῇ κατ
 msgid "No resolution defined for "
 msgstr "Οὐδεμία ἀνάλυσις ὡρισμένη "
 
-#: src/gui/core/window_builder.cpp:147 src/gui/widgets/addon_list.cpp:430
+#: src/gui/core/window_builder.cpp:147 src/gui/widgets/addon_list.cpp:432
 #: src/gui/widgets/multi_page.cpp:181 src/gui/widgets/panel.cpp:131
 #: src/gui/widgets/size_lock.cpp:110 src/gui/widgets/stacked_widget.cpp:229
-#: src/gui/widgets/toggle_panel.cpp:321
+#: src/gui/widgets/toggle_panel.cpp:325
 msgid "No grid defined."
 msgstr "Οὐδεμία πλέγμα ὡρισμένον."
 
@@ -7346,19 +7346,19 @@ msgstr "Μεταμορφώσεις Χώρας"
 msgid "addon_tag^Players can change the terrain"
 msgstr "Παίκται δύνανται τὸν χῶρον μεταβάλλειν"
 
-#: src/gui/dialogs/addon/manager.cpp:248 src/gui/widgets/addon_list.cpp:102
+#: src/gui/dialogs/addon/manager.cpp:248 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Not installed"
 msgstr "Οὐ κατεσταλμένη"
 
-#: src/gui/dialogs/addon/manager.cpp:249 src/gui/widgets/addon_list.cpp:102
+#: src/gui/dialogs/addon/manager.cpp:249 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Published, not installed"
 msgstr "Δημοσιευθεῖσα, οὐ κατεσταλμένη"
 
-#: src/gui/dialogs/addon/manager.cpp:253 src/gui/widgets/addon_list.cpp:110
+#: src/gui/dialogs/addon/manager.cpp:253 src/gui/widgets/addon_list.cpp:111
 msgid "addon_state^Installed"
 msgstr "Κατεσταλμένη"
 
-#: src/gui/dialogs/addon/manager.cpp:254 src/gui/widgets/addon_list.cpp:110
+#: src/gui/dialogs/addon/manager.cpp:254 src/gui/widgets/addon_list.cpp:111
 msgid "addon_state^Published"
 msgstr "Δημοσιευθεῖσα"
 
@@ -7387,23 +7387,23 @@ msgid "addon_state^Published ($local_version| installed), outdated on server"
 msgstr ""
 "Δημοσιευθεῖσα ($local_version| κατεσταλμένη), παρωχημένη ἐπὶ διακομιστῇ"
 
-#: src/gui/dialogs/addon/manager.cpp:279 src/gui/widgets/addon_list.cpp:113
+#: src/gui/dialogs/addon/manager.cpp:279 src/gui/widgets/addon_list.cpp:114
 msgid "addon_state^Installed, not ready to publish"
 msgstr "Κατεσταλμένη, οὐκ ἕτοιμος πρὸς δημοσίευσιν"
 
-#: src/gui/dialogs/addon/manager.cpp:280 src/gui/widgets/addon_list.cpp:113
+#: src/gui/dialogs/addon/manager.cpp:280 src/gui/widgets/addon_list.cpp:114
 msgid "addon_state^Ready to publish"
 msgstr "Ἕτοιμος πρὸς δημοσίευσιν"
 
-#: src/gui/dialogs/addon/manager.cpp:284 src/gui/widgets/addon_list.cpp:125
+#: src/gui/dialogs/addon/manager.cpp:284 src/gui/widgets/addon_list.cpp:126
 msgid "addon_state^Installed, broken"
 msgstr "Κατεσταλμένη, κατεστραμμένη"
 
-#: src/gui/dialogs/addon/manager.cpp:285 src/gui/widgets/addon_list.cpp:125
+#: src/gui/dialogs/addon/manager.cpp:285 src/gui/widgets/addon_list.cpp:126
 msgid "addon_state^Published, broken"
 msgstr "Δημοσιευθεῖσα, κατεστραμμένη"
 
-#: src/gui/dialogs/addon/manager.cpp:288 src/gui/widgets/addon_list.cpp:129
+#: src/gui/dialogs/addon/manager.cpp:288 src/gui/widgets/addon_list.cpp:130
 msgid "addon_state^Unknown"
 msgstr "Ἄγνωστος"
 
@@ -7531,15 +7531,15 @@ msgstr "Παθητικὴ ἐπιτιθεμένου κατὰ"
 msgid "game^Get Add-ons"
 msgstr "Λαμβάνειν Προσθήκας"
 
-#: src/gui/dialogs/campaign_selection.cpp:394
+#: src/gui/dialogs/campaign_selection.cpp:388
 msgid "More campaigns..."
 msgstr "Πλείοναι στρατεῖαι..."
 
-#: src/gui/dialogs/campaign_selection.cpp:408
+#: src/gui/dialogs/campaign_selection.cpp:402
 msgid "Missing Campaigns"
 msgstr "Ἁπώλειαι Στρατειῶν"
 
-#: src/gui/dialogs/campaign_selection.cpp:442
+#: src/gui/dialogs/campaign_selection.cpp:436
 #: src/gui/dialogs/multiplayer/lobby.cpp:435
 msgid "active_modifications^None"
 msgstr "Οὐδεμία"
@@ -7830,68 +7830,68 @@ msgstr "Τὸ ταμιεῖον τῶν παιγνίων δεδομένων ἐ�
 msgid "The game data cache could not be purged."
 msgstr "Τὸ ταμιεῖον τῶν παιγνίων δεδομένων οὐκ ἐδυνήθη ἐκκενωθῆναι."
 
-#: src/gui/dialogs/game_load.cpp:72
+#: src/gui/dialogs/game_load.cpp:73
 msgid "No Saved Games"
 msgstr "Οὐδεὶς Σῳζόμενος Παιγνίδαι"
 
-#: src/gui/dialogs/game_load.cpp:72
+#: src/gui/dialogs/game_load.cpp:73
 msgid "There are no saved games to load."
 msgstr "Οὐδεὶς σῳζόμενος παιγνὶς ἀναφόρτωσις ἄξιος."
 
-#: src/gui/dialogs/game_load.cpp:143
+#: src/gui/dialogs/game_load.cpp:144
 msgid "game_version^Current Version"
 msgstr "Παροῦσα Παραλλαγή"
 
-#: src/gui/dialogs/game_load.cpp:147
+#: src/gui/dialogs/game_load.cpp:148
 msgid "game_version^Wesnoth $version"
 msgstr "Βεσνοθία $version"
 
 #. TRANSLATORS: "reserve" refers to units on the recall list
-#: src/gui/dialogs/game_load.cpp:233
+#: src/gui/dialogs/game_load.cpp:234
 msgid "$active active, $reserve reserve"
 msgstr "$active ἐνεργοί, $reserve ἐφεδρεύοντες"
 
-#: src/gui/dialogs/game_load.cpp:288
+#: src/gui/dialogs/game_load.cpp:289
 msgid "The selected file is corrupt: "
 msgstr "Ὁ ἐπιλεχθεὶς φάκελος διεφθαρμένος ἐστίν: "
 
-#: src/gui/dialogs/game_load.cpp:328
+#: src/gui/dialogs/game_load.cpp:329
 msgid "(Invalid)"
 msgstr "(Ἄκυρος)"
 
-#: src/gui/dialogs/game_load.cpp:353
+#: src/gui/dialogs/game_load.cpp:354
 msgid "Campaign: $campaign_name"
 msgstr "Στρατεία: $campaign_name"
 
-#: src/gui/dialogs/game_load.cpp:365
+#: src/gui/dialogs/game_load.cpp:366
 msgid "Tutorial"
 msgstr "Διδασκαλία"
 
-#: src/gui/dialogs/game_load.cpp:368
+#: src/gui/dialogs/game_load.cpp:369
 msgid "Test scenario"
 msgstr "Πείραμα σκηνῆς"
 
-#: src/gui/dialogs/game_load.cpp:378
+#: src/gui/dialogs/game_load.cpp:379
 msgid "Replay"
 msgstr "Ἀναδείκνυσις"
 
-#: src/gui/dialogs/game_load.cpp:380
+#: src/gui/dialogs/game_load.cpp:381
 msgid "Turn"
 msgstr "Τροπή"
 
-#: src/gui/dialogs/game_load.cpp:382
+#: src/gui/dialogs/game_load.cpp:383
 msgid "Scenario start"
 msgstr "Ἀρχὴ σκηνῆς"
 
-#: src/gui/dialogs/game_load.cpp:394
+#: src/gui/dialogs/game_load.cpp:395
 msgid "Difficulty: "
 msgstr "Χαλεπότης: "
 
-#: src/gui/dialogs/game_load.cpp:417
+#: src/gui/dialogs/game_load.cpp:418
 msgid "Version: "
 msgstr "Παραλλαγή: "
 
-#: src/gui/dialogs/game_load.cpp:422
+#: src/gui/dialogs/game_load.cpp:423
 msgid "Modifications: "
 msgstr "Μεταποιήσεις: "
 
@@ -8133,14 +8133,14 @@ msgstr "Θεαταὶ οὐκ ἐπιτρέπονται"
 msgid "lobby"
 msgstr "Ἀνδρών"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:966
+#: src/gui/dialogs/multiplayer/lobby.cpp:962
 msgid ""
 "This game doesn’t allow observers. Observe using moderator rights anyway?"
 msgstr ""
 "Τούτῳ τῷ παιγνίῳ θεαταὶ οὐκ ἐπιτρέπονται. Θεᾶσθαι ἐπιτροπικῇ ἐξουσίᾳ "
 "χρώμενος?"
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:977
+#: src/gui/dialogs/multiplayer/lobby.cpp:973
 msgid ""
 "Something is wrong with the addon version check database supporting the "
 "multiplayer lobby. Please report this at https://bugs.wesnoth.org."
@@ -8148,7 +8148,7 @@ msgstr ""
 "Τῷ βάσει δεδομένων παραλλαγῆς προσθηκῶν ἀνδρῶνος συμπαραλαμβανομένῳ "
 "συμβέβηκε κακῶς ἔχειν. Ἀναφέρετε τοῦτο ἐπὶ https://bugs.wesnoth.org."
 
-#: src/gui/dialogs/multiplayer/lobby.cpp:996
+#: src/gui/dialogs/multiplayer/lobby.cpp:992
 msgid "This game is password protected. Join using moderator rights anyway?"
 msgstr ""
 "Τοῦτο τὸ παιγνίδιον ῥήματι φυλασσόμενον ἐστίν. Συμμετέχειν ἐπιτροπικῇ "
@@ -8215,20 +8215,20 @@ msgstr "Οὐδεὶς αἰὼν προκείμενος τούτῳ τῷ πα�
 msgid "number of players^$min to $max"
 msgstr "$min πρὸς $max"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:1023
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:1022
 msgid "The selected game has no sides!"
 msgstr "Τῷ ἐπιλεχθέντι παιγνίῳ οὐδεμία πλευρά!"
 
 #. TRANSLATORS: This sentence will be followed by some details of the error, most likely the "Map could not be loaded" message from create_engine.cpp
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:1030
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:1029
 msgid "The selected game cannot be created."
 msgstr "Τὸ ἐπιλεχθὲν παιγνίδιον γενέσθαι ἀδύνατον."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:1103
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:1102
 msgid "Choose Starting Scenario"
 msgstr "Ἐκλεγέσθω Ἀρχομένη Σκηνή"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:1103
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:1102
 msgid "Select at which point to begin this campaign."
 msgstr "Ἐκλεγέσθω πόθεν ταύτην τὴν στρατείαν ἄρχεσθαι."
 
@@ -8402,15 +8402,15 @@ msgstr "Λαβόντες"
 msgid "$count|× $name"
 msgstr "$count|× $name"
 
-#: src/gui/dialogs/title_screen.cpp:116 src/hotkey/hotkey_command.cpp:98
+#: src/gui/dialogs/title_screen.cpp:131 src/hotkey/hotkey_command.cpp:98
 msgid "Screenshot"
 msgstr "Στιγμογραφία"
 
-#: src/gui/dialogs/title_screen.cpp:378
+#: src/gui/dialogs/title_screen.cpp:399
 msgid "Version $version"
 msgstr "Παραλλαγὴ $version"
 
-#: src/gui/dialogs/title_screen.cpp:468 src/hotkey/hotkey_command.cpp:311
+#: src/gui/dialogs/title_screen.cpp:489 src/hotkey/hotkey_command.cpp:311
 msgid "Choose Test Scenario"
 msgstr "Ἐκλεγέσθω Πειραματικὴ Σκηνή"
 
@@ -8472,7 +8472,7 @@ msgstr "Στρατιώτην Ἀνακαλεῖσθαι"
 msgid "Recall"
 msgstr "Ἀνακαλεῖσθαι"
 
-#: src/gui/dialogs/units_dialog.cpp:830
+#: src/gui/dialogs/units_dialog.cpp:828
 msgid ""
 "This unit cannot be recalled because you will not have enough gold at this "
 "point in your plan."
@@ -8480,7 +8480,7 @@ msgstr ""
 "Οὗτος ὁ στρατιώτης οὐκ ἀνακαλεῖσθαι δύναται, ἐπεὶ οὐκ ἕξεις ἱκανὸν χρυσίον "
 "κατὰ τοῦτο τῆς βουλῆς."
 
-#: src/gui/dialogs/units_dialog.cpp:832
+#: src/gui/dialogs/units_dialog.cpp:830
 msgid "This unit cannot be recalled because you do not have enough gold."
 msgstr ""
 "Οὗτος ὁ στρατιώτης οὐκ ἀνακαλεῖσθαι δύναται, ἐπεὶ οὐκ ἱκανὸν χρυσίον ἔχεις."
@@ -8489,23 +8489,23 @@ msgstr ""
 msgid "No default gui defined."
 msgstr "Οὐδεμία προορίου γραφικὴ διαμόρφωσις ὥρισται."
 
-#: src/gui/widgets/addon_list.cpp:117
+#: src/gui/widgets/addon_list.cpp:118
 msgid "addon_state^Installed, upgradable"
 msgstr "Ἐγκατεστάθη, ἀνανεώσιμος"
 
-#: src/gui/widgets/addon_list.cpp:117
+#: src/gui/widgets/addon_list.cpp:118
 msgid "addon_state^Published, upgradable"
 msgstr "Ἐδημοσιεύθη, ἀνανεώσιμος"
 
-#: src/gui/widgets/addon_list.cpp:121
+#: src/gui/widgets/addon_list.cpp:122
 msgid "addon_state^Installed, outdated on server"
 msgstr "Ἐγκατεστάθη, παρωχημένη ἐπὶ ὑπηρετητοῦ"
 
-#: src/gui/widgets/addon_list.cpp:121
+#: src/gui/widgets/addon_list.cpp:122
 msgid "addon_state^Published, outdated on server"
 msgstr "Ἐδημοσιεύθη, παρωχημένη ἐπὶ ὑπηρετητοῦ"
 
-#: src/gui/widgets/addon_list.cpp:293
+#: src/gui/widgets/addon_list.cpp:295
 msgid "Delete add-on from server"
 msgstr "Προσθήκην ἐξ ὑπηρετητοῦ ἐξαλείψαι"
 

@@ -15,8 +15,6 @@
 
 #pragma once
 
-#include <cstdlib>
-
 namespace gui2
 {
 

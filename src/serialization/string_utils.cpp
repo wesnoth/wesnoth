@@ -174,13 +174,15 @@ std::vector<std::string> square_parenthetical_split(const std::string& val,
 						boost::trim(s_begin);
 						int begin = std::stoi(s_begin);
 						std::size_t padding = 0, padding_end = 0;
-						while (padding<s_begin.size() && s_begin[padding]=='0') {
+						// last digit is not padding
+						while (padding<s_begin.size()-1 && s_begin[padding]=='0') {
 							padding++;
 						}
 						std::string s_end = piece.substr(found_tilde+1);
 						boost::trim(s_end);
 						int end = std::stoi(s_end);
-						while (padding_end<s_end.size() && s_end[padding_end]=='0') {
+						// last digit is not padding
+						while (padding_end<s_end.size()-1 && s_end[padding_end]=='0') {
 							padding_end++;
 						}
 						if (padding*padding_end > 0 && s_begin.size() != s_end.size()) {

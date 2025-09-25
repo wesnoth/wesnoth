@@ -51,7 +51,6 @@
 #include "variable.hpp" // for vconfig, etc
 
 #include <cassert>                     // for assert
-#include <cstdlib>                     // for rand
 #include <exception>                    // for exception
 #include <iterator>                     // for back_insert_iterator, etc
 #include <string_view>
@@ -572,7 +571,7 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 	}
 
 	if(const config::attribute_value* v = cfg.get("description")) {
-		description_ = *v;
+		description_ = v->t_str();
 	}
 
 	if(const config::attribute_value* v = cfg.get("cost")) {
@@ -1751,18 +1750,17 @@ void unit::set_loyal(bool loyal)
 	}
 }
 
-int unit::defense_modifier(const t_translation::terrain_code & terrain) const
+int unit::defense_modifier(const t_translation::terrain_code & terrain, const map_location& loc) const
 {
 	int def = movement_type_.defense_modifier(terrain);
-#if 0
+
 	// A [defense] ability is too costly and doesn't take into account target locations.
 	// Left as a comment in case someone ever wonders why it isn't a good idea.
-	unit_ability_list defense_abilities = get_abilities("defense");
+	unit_ability_list defense_abilities = get_abilities("defense", loc);
 	if(!defense_abilities.empty()) {
-		unit_abilities::effect defense_effect(defense_abilities, def);
-		def = defense_effect.get_composite_value();
+		unit_abilities::effect defense_effect(defense_abilities, 100 - def);
+		def = 100 - defense_effect.get_composite_value();
 	}
-#endif
 	return def;
 }
 
@@ -2076,7 +2074,7 @@ void unit::apply_builtin_effect(const std::string& apply_to, const config& effec
 		}
 
 		if(const config::attribute_value* v = effect.get("description")) {
-			description_ = *v;
+			description_ = v->t_str();
 		}
 
 		if(config::const_child_itors cfg_range = effect.child_range("special_note")) {
@@ -2376,7 +2374,7 @@ void unit::apply_builtin_effect(const std::string& apply_to, const config& effec
 		temp_advances = utils::parenthetical_split(amlas, ',');
 
 		for(int i = advancements_.size() - 1; i >= 0; i--) {
-			if(std::find(temp_advances.begin(), temp_advances.end(), advancements_[i]["id"]) != temp_advances.end()) {
+			if(utils::contains(temp_advances, advancements_[i]["id"].str())) {
 				advancements_.erase(advancements_.begin() + i);
 			}
 		}
@@ -2544,7 +2542,7 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 
 	t_string description;
 
-	const t_string& mod_description = mod["description"];
+	const t_string& mod_description = mod["description"].t_str();
 	if(!mod_description.empty()) {
 		description = mod_description;
 	}
@@ -2574,7 +2572,9 @@ void unit::add_trait_description(const config& trait, const t_string& descriptio
 	const std::string& gender_string = gender_ == unit_race::FEMALE ? "female_name" : "male_name";
 	const auto& gender_specific_name = trait[gender_string];
 
-	const t_string name = gender_specific_name.empty() ? trait["name"] : gender_specific_name;
+	const t_string name = gender_specific_name.empty()
+		? trait["name"].t_str()
+		: gender_specific_name.t_str();
 
 	if(!name.empty()) {
 		trait_names_.push_back(name);
