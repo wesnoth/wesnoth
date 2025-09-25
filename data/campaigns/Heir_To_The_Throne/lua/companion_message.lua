@@ -47,8 +47,8 @@ function wesnoth.wml_actions.companion_message(cfg)
 			if (wesnoth.units.find_on_map({id=companion.id}))[1] and cfg["message_"..companion.id] then
 				wesnoth.wml_actions.message{ speaker=companion.id, message=cfg["message_"..companion.id] }
 				-- shuffle the speaker to the back of the list, so they're deprioritized next time
- 				table.remove( companion_ids, i )
- 				table.insert( companion_ids, companion )
+				table.remove( companion_ids, i )
+				table.insert( companion_ids, companion )
 				wml.array_variables["companion_ids"] = companion_ids
 				return true
 			end
