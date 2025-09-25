@@ -992,29 +992,26 @@ static int attack_info(const reports::context& rc, const attack_type &at, config
 		auto ctx = (sec_u == nullptr) ? at.specials_context_for_listing(attacking) :
 						at.specials_context(u.shared_from_this(), sec_u->shared_from_this(), hex, sec_u->get_location(), attacking, std::move(sec_u_weapon));
 
-		boost::dynamic_bitset<> active;
-		const std::vector<std::pair<t_string, t_string>> &specials = at.special_tooltips(&active);
-		const std::size_t specials_size = specials.size();
-		for ( std::size_t i = 0; i != specials_size; ++i )
+		bool has_specials = false;
+		for(const auto& tip : at.special_tooltips(false))
 		{
-			// Aliases for readability:
-			const t_string &name = specials[i].first;
-			const t_string &description = specials[i].second;
-			const color_t &details_color =
-				active[i] ? font::weapon_details_color : font::INACTIVE_COLOR;
+			has_specials = true;
 
-			str << span_color(details_color, "  ", "  ", name) << '\n';
-			std::string help_page = "weaponspecial_" + name.base_str();
-			tooltip << _("Weapon special:") << " " << markup::bold(name);
-			if (!active[i]) {
+			const color_t &details_color =
+				tip.active ? font::weapon_details_color : font::INACTIVE_COLOR;
+
+			str << span_color(details_color, "  ", "  ", tip.name) << '\n';
+			std::string help_page = "weaponspecial_" + tip.name.base_str();
+			tooltip << _("Weapon special:") << " " << markup::bold(tip.name);
+			if (!tip.active) {
 				tooltip << markup::italic(_(" (inactive)"));
 			}
-			tooltip << '\n' << description;
+			tooltip << '\n' << tip.description;
 
 			add_text(res, flush(str), flush(tooltip), help_page);
 		}
 
-		if(!specials.empty()) {
+		if(has_specials) {
 			// Add some padding so the end of the specials list
 			// isn't too close vertically to the attack icons of
 			// the next attack. Also for symmetry with the padding
@@ -1033,28 +1030,26 @@ static int attack_info(const reports::context& rc, const attack_type &at, config
 	? at.specials_context(u.shared_from_this(), hex, attacking)
 	: at.specials_context(u.shared_from_this(), sec_u->shared_from_this(), hex, sec_u->get_location(), attacking, std::move(sec_u_weapon));
 
-		boost::dynamic_bitset<> active;
-		const std::vector<std::pair<t_string, t_string>>& specials = at.abilities_special_tooltips(&active);
-		const std::size_t specials_size = specials.size();
-		for ( std::size_t i = 0; i != specials_size; ++i )
+		bool has_specials = false;
+		for(const auto& tip : at.abilities_special_tooltips())
 		{
-			// Aliases for readability:
-			const auto& [name, description] = specials[i];
-			const color_t& details_color =
-				active[i] ? font::weapon_details_color : font::INACTIVE_COLOR;
+			has_specials = true;
 
-			str << span_color(details_color, "  ", "  ", name) << '\n';
-			const std::string help_page = "weaponspecial_" + name.base_str();
-			tooltip << _("Weapon special:") << " " << markup::bold(name);
-			if (!active[i]) {
+			const color_t& details_color =
+				tip.active ? font::weapon_details_color : font::INACTIVE_COLOR;
+
+			str << span_color(details_color, "  ", "  ", tip.name) << '\n';
+			const std::string help_page = "weaponspecial_" + tip.name.base_str();
+			tooltip << _("Weapon special:") << " " << markup::bold(tip.name);
+			if (!tip.active) {
 				tooltip << markup::italic(_(" (inactive)"));
 			}
-			tooltip << '\n' << description;
+			tooltip << '\n' << tip.description;
 
 			add_text(res, flush(str), flush(tooltip), help_page);
 		}
 
-		if(!specials.empty()) {
+		if(has_specials) {
 			// Add some padding so the end of the specials list
 			// isn't too close vertically to the attack icons of
 			// the next attack. Also for symmetry with the padding

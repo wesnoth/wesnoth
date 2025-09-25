@@ -441,7 +441,7 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 			continue;
 
 		for(const attack_type& atk : type.attacks()) {
-			for(const auto& [name, description] : atk.special_tooltips()) {
+			for(const auto& [name, description, active] : atk.special_tooltips()) {
 				special_description.emplace(name, description);
 
 				if (!type.hide_help()) {
