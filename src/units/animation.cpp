@@ -343,7 +343,7 @@ unit_animation::unit_animation(const config& cfg,const std::string& frame_string
 	}
 
 	for(const auto& v : utils::split(cfg["value"])) {
-		value_.push_back(atoi(v.c_str()));
+		value_.push_back(utils::stoi(v));
 	}
 
 	for(const auto& h : utils::split(cfg["hits"])) {
@@ -361,7 +361,7 @@ unit_animation::unit_animation(const config& cfg,const std::string& frame_string
 	}
 
 	for(const auto& v2 : utils::split(cfg["value_second"])) {
-		value2_.push_back(atoi(v2.c_str()));
+		value2_.push_back(utils::stoi(v2));
 	}
 
 	for(const config& filter : cfg.child_range("filter_attack")) {

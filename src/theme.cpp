@@ -22,8 +22,10 @@
 #include "log.hpp"
 #include "sdl/rect.hpp"
 #include "serialization/string_utils.hpp"
+#include "utils/from_chars.hpp"
 #include "wml_exception.hpp"
 #include "game_config_view.hpp"
+
 #include <sstream>
 #include <utility>
 
@@ -51,7 +53,7 @@ static std::size_t compute(std::string expr, std::size_t ref1, std::size_t ref2 
 		ref = ref2;
 	}
 
-	return ref + atoi(expr.c_str());
+	return ref + utils::from_chars<int>(expr).value_or(0);
 }
 
 // If x2 or y2 are not specified, use x1 and y1 values
@@ -60,18 +62,18 @@ static _rect read_rect(const config& cfg)
 	_rect rect {0, 0, 0, 0};
 	std::vector<std::string> items = utils::split(cfg["rect"].str());
 	if(items.size() >= 1)
-		rect.x1 = atoi(items[0].c_str());
+		rect.x1 = utils::from_chars<int>(items[0]).value_or(0);
 
 	if(items.size() >= 2)
-		rect.y1 = atoi(items[1].c_str());
+		rect.y1 = utils::from_chars<int>(items[1]).value_or(0);
 
 	if(items.size() >= 3)
-		rect.x2 = atoi(items[2].c_str());
+		rect.x2 = utils::from_chars<int>(items[2]).value_or(0);
 	else
 		rect.x2 = rect.x1;
 
 	if(items.size() >= 4)
-		rect.y2 = atoi(items[3].c_str());
+		rect.y2 = utils::from_chars<int>(items[3]).value_or(0);
 	else
 		rect.y2 = rect.y1;
 
