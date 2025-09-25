@@ -34,7 +34,7 @@ constexpr std::array<int, 256> fill_atoi_map(const std::string_view& itoa)
 	}
 #endif
 
-	for(int i = 0; i < itoa.size(); ++i) {
+	for(std::size_t i = 0; i < itoa.size(); ++i) {
 		res[itoa[i]] = i;
 	}
 
