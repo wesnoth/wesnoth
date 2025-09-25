@@ -636,7 +636,7 @@ public:
 	}
 
 	/** The type IDs of the other units this unit may recruit, if possible. */
-	const std::vector<std::string>& recruits() const
+	const std::set<std::string>& recruits() const
 	{
 		return recruit_list_;
 	}
@@ -2060,7 +2060,7 @@ private:
 
 	int recall_cost_;
 	bool canrecruit_;
-	std::vector<std::string> recruit_list_;
+	std::set<std::string> recruit_list_;
 	unit_alignments::type alignment_;
 
 	std::string flag_rgb_;
