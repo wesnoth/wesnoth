@@ -283,7 +283,7 @@ variant unit_callable::get_value(const std::string& key) const
 	} else if(key == "objects_count") {
 		return variant(u_.objects_count());
 	} else if(key == "extra_recruit") {
-		return formula_callable::convert_vector(u_.recruits());
+		return formula_callable::convert_set(u_.recruits());
 	} else if(key == "advances_to") {
 		return formula_callable::convert_vector(u_.advances_to());
 	} else if(key == "states" || key == "status") {

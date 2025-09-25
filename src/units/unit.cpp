@@ -1263,7 +1263,8 @@ color_t unit::xp_color() const
 void unit::set_recruits(const std::vector<std::string>& recruits)
 {
 	unit_types.check_types(recruits);
-	recruit_list_ = recruits;
+	std::set<std::string> recruits_set(recruits.begin(), recruits.end());
+	recruit_list_ = recruits_set;
 }
 
 const std::vector<std::string> unit::advances_to_translated() const
