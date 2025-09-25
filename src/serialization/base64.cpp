@@ -23,28 +23,28 @@ namespace
 constexpr std::string_view base64_itoa_map  = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 constexpr std::string_view crypt64_itoa_map = "./0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 
-constexpr std::array<int, 256> fill_atoi_map(const std::string_view& itoa)
+constexpr std::array<int, 256> fill_atoi_map(std::string_view itoa)
 {
-	std::array<int, 256> res;
+	std::array<int, 256> atoi64{};
 #if __cpp_lib_array_constexpr >= 201811L
-	res.fill(-1);
+	atoi64.fill(-1);
 #else
-	for(int& elem : res) {
+	for(int& elem : atoi64) {
 		elem = -1;
 	}
 #endif
 
 	for(std::size_t i = 0; i < itoa.size(); ++i) {
-		res[itoa[i]] = i;
+		atoi64[itoa[i]] = i;
 	}
 
-	return res;
+	return atoi64;
 }
 
 constexpr auto base64_atoi_map  = fill_atoi_map(base64_itoa_map);
 constexpr auto crypt64_atoi_map = fill_atoi_map(crypt64_itoa_map);
 
-char itoa(unsigned value, const std::string_view& map)
+char itoa(unsigned value, std::string_view map)
 {
 	return map[value & 0x3f];
 }
@@ -135,7 +135,7 @@ std::vector<uint8_t> generic_decode_le(std::string_view in, utils::span<const in
 	return out;
 }
 
-std::string generic_encode_be(utils::byte_view in, const std::string_view& itoa_map, bool pad)
+std::string generic_encode_be(utils::byte_view in, std::string_view itoa_map, bool pad)
 {
 	const int in_len = in.size();
 	const int groups = (in_len + 2) / 3;
@@ -168,7 +168,7 @@ std::string generic_encode_be(utils::byte_view in, const std::string_view& itoa_
 	return out;
 
 }
-std::string generic_encode_le(utils::byte_view in, const std::string_view& itoa_map, bool pad)
+std::string generic_encode_le(utils::byte_view in, std::string_view itoa_map, bool pad)
 {
 	const int in_len = in.size();
 	const int groups = (in_len + 2) / 3;
