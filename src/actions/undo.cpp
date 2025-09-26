@@ -212,12 +212,6 @@ void undo_list::read(const config& cfg, int current_side)
 			undos_.push_back(std::make_unique<undo_action_container>());
 			undos_.back()->read(child);
 		}
-	} catch(const bad_lexical_cast&) {
-		//It ddoenst make sense to "skip" actions in the undo stakc since that would just result in errors later.
-		ERR_NG << "Error when parsing undo list from config: bad lexical cast.";
-		ERR_NG << "config was: " << cfg.debug();
-		ERR_NG << "discardind undo stack...";
-		undos_.clear();
 	} catch(const config::error& e) {
 		ERR_NG << "Error when parsing undo list from config: " << e.what();
 		ERR_NG << "config was: " << cfg.debug();

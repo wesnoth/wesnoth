@@ -78,14 +78,12 @@ namespace implementation {
  *
  * @param value                   The value to convert.
  *
- * @returns                       The converted value.
- *
- * @throw                         bad_lexical_cast if the cast was unsuccessful.
+ * @returns                       The converted value, or nullopt if conversion failed.
  */
 template<typename To, typename From>
-inline To lexical_cast(From value)
+inline utils::optional<To> lexical_cast(From value)
 {
-	return implementation::lexical_caster<To, From>().operator()(value, utils::nullopt);
+	return implementation::lexical_caster<To, From>{}(value);
 }
 
 /**
@@ -102,17 +100,8 @@ inline To lexical_cast(From value)
 template<typename To, typename From>
 inline To lexical_cast_default(From value, To fallback = To())
 {
-	return implementation::lexical_caster<To, From>().operator()(value, fallback);
+	return implementation::lexical_caster<To, From>{}(value).value_or(fallback);
 }
-
-/** Thrown when a lexical_cast fails. */
-struct bad_lexical_cast : std::exception
-{
-	const char* what() const noexcept
-	{
-		return "bad_lexical_cast";
-	}
-};
 
 namespace implementation {
 
@@ -135,7 +124,7 @@ template<
 >
 struct lexical_caster
 {
-	To operator()(From value, utils::optional<To> fallback) const
+	utils::optional<To> operator()(From value) const
 	{
 		DEBUG_THROW("generic");
 
@@ -143,9 +132,7 @@ struct lexical_caster
 		std::stringstream sstr;
 
 		if(!(sstr << value && sstr >> result)) {
-			if(fallback) { return *fallback; }
-
-			throw bad_lexical_cast();
+			return utils::nullopt;
 		} else {
 			return result;
 		}
@@ -166,7 +153,7 @@ struct lexical_caster<
 	, std::enable_if_t<std::is_arithmetic_v<From>>
 >
 {
-	std::string operator()(From value, utils::optional<std::string>) const
+	utils::optional<std::string> operator()(From value) const
 	{
 		DEBUG_THROW("specialized - To std::string - From arithmetic");
 		if constexpr (std::is_same_v<bool, From>) {
@@ -176,8 +163,6 @@ struct lexical_caster<
 		}
 	}
 };
-
-
 
 /**
  * Specialized conversion class.
@@ -192,7 +177,7 @@ struct lexical_caster<
 	, void
 >
 {
-	bool operator()(std::string_view str, utils::optional<bool> fallback) const
+	utils::optional<bool> operator()(std::string_view str) const
 	{
 		DEBUG_THROW("specialized - To bool - From string");
 		utils::trim_for_from_chars(str);
@@ -200,10 +185,8 @@ struct lexical_caster<
 			return true;
 		} else if(str == "0") {
 			return false;
-		} else if (fallback) {
-			return *fallback;
 		} else {
-			throw bad_lexical_cast();
+			return utils::nullopt;
 		}
 	}
 };
@@ -221,7 +204,7 @@ struct lexical_caster<
 	, void
 >
 {
-	To operator()(std::string_view str, utils::optional<To> fallback) const
+	utils::optional<To> operator()(std::string_view str) const
 	{
 		DEBUG_THROW("specialized - To arithmetic - From string");
 
@@ -232,10 +215,8 @@ struct lexical_caster<
 		auto [ptr, ec] = utils::charconv::from_chars(str.data(), str.data() + str.size(), res);
 		if(ec == std::errc()) {
 			return res;
-		} else if(fallback){
-			return *fallback;
 		} else {
-			throw bad_lexical_cast();
+			return utils::nullopt;
 		}
 	}
 };
@@ -253,17 +234,12 @@ struct lexical_caster<
 	, void
 >
 {
-	To operator()(const std::string& value, utils::optional<To> fallback) const
+	utils::optional<To> operator()(const std::string& value) const
 	{
-		// Dont DEBUG_THROW. the test shodul test what actual implementaiton is used in the end, not which specialazion that jsut forwards  to another
-		if(fallback) {
-			return lexical_cast_default<To>(std::string_view(value), *fallback);
-		} else {
-			return lexical_cast<To>(std::string_view(value));
-		}
+		// Dont DEBUG_THROW. the test should test what actual implementation is used in the end, not which specialization that just forwards to another
+		return lexical_cast<To>(std::string_view(value));
 	}
 };
-
 
 /**
  * Specialized conversion class.
@@ -278,14 +254,10 @@ struct lexical_caster<
 	, std::enable_if_t<std::is_same_v<From, const char*> || std::is_same_v<From, char*> >
 >
 {
-	To operator()(const std::string& value, utils::optional<To> fallback) const
+	utils::optional<To> operator()(const std::string& value) const
 	{
-		// Dont DEBUG_THROW. the test shodul test what actual implementaiton is used in the end, not which specialazion that jsut forwards  to another
-		if(fallback) {
-			return lexical_cast_default<To>(std::string_view(value), *fallback);
-		} else {
-			return lexical_cast<To>(std::string_view(value));
-		}
+		// Dont DEBUG_THROW. the test should test what actual implementation is used in the end, not which specialization that just forwards to another
+		return lexical_cast<To>(std::string_view(value));
 	}
 };
 

@@ -100,11 +100,11 @@ public:
 
 			try {
 				std::vector<std::string> range = utils::split(colon_split[0],'~',split_flag);
-				T range0 = lexical_cast<T>(range[0]);
-				T range1 = (range.size() > 1) ? lexical_cast<T>(range[1]) : range0;
+				T range0 = lexical_cast<T>(range[0]).value();
+				T range1 = (range.size() > 1) ? lexical_cast<T>(range[1]).value() : range0;
 
 				base_data.push_back({{range0, range1}, time});
-			} catch(const bad_lexical_cast&) {}
+			} catch(const utils::bad_optional_access&) {}
 		}
 	}
 

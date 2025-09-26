@@ -1664,10 +1664,8 @@ void console_handler::do_control()
 		return;
 	}
 
-	unsigned int side_num;
-	try {
-		side_num = lexical_cast<unsigned int>(side);
-	} catch(const bad_lexical_cast&) {
+	utils::optional side_num_parsed = lexical_cast<unsigned int>(side);
+	if(!side_num_parsed) {
 		const auto& teams = menu_handler_.pc_.get_teams();
 		const auto it_t = utils::ranges::find(teams, side, &team::save_id);
 
@@ -1677,10 +1675,11 @@ void console_handler::do_control()
 			command_failed(VGETTEXT("Can’t change control of invalid side: ‘$side’.", symbols));
 			return;
 		} else {
-			side_num = it_t->side();
+			side_num_parsed = it_t->side();
 		}
 	}
 
+	unsigned int side_num = side_num_parsed.value();
 	if(side_num < 1 || side_num > menu_handler_.pc_.get_teams().size()) {
 		utils::string_map symbols;
 		symbols["side"] = side;
@@ -1695,16 +1694,15 @@ void console_handler::do_control()
 void console_handler::do_controller()
 {
 	const std::string side = get_arg(1);
-	unsigned int side_num;
-	try {
-		side_num = lexical_cast<unsigned int>(side);
-	} catch(const bad_lexical_cast&) {
+	utils::optional side_num_parsed = lexical_cast<unsigned int>(side);
+	if(!side_num_parsed) {
 		utils::string_map symbols;
 		symbols["side"] = side;
 		command_failed(VGETTEXT("Can’t query control of invalid side: ‘$side’.", symbols));
 		return;
 	}
 
+	unsigned int side_num = side_num_parsed.value();
 	if(side_num < 1 || side_num > menu_handler_.pc_.get_teams().size()) {
 		utils::string_map symbols;
 		symbols["side"] = side;

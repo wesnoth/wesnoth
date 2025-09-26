@@ -614,14 +614,12 @@ std::vector<std::pair<unsigned int,std::string>> commandline_options::parse_to_u
 			throw bad_commandline_tuple(s, expected_format);
 		}
 
-		unsigned int temp;
-		try {
-			temp = lexical_cast<unsigned int>(tokens[0]);
-		} catch (const bad_lexical_cast &) {
+		utils::optional temp = lexical_cast<unsigned int>(tokens[0]);
+		if(!temp) {
 			throw bad_commandline_tuple(s, expected_format);
 		}
 
-		vec.emplace_back(temp, std::move(tokens[1]));
+		vec.emplace_back(temp.value(), std::move(tokens[1]));
 	}
 	return vec;
 }
@@ -640,14 +638,12 @@ std::vector<std::tuple<unsigned int,std::string,std::string>> commandline_option
 			throw bad_commandline_tuple(s, expected_format);
 		}
 
-		unsigned int temp;
-		try {
-			temp = lexical_cast<unsigned int>(tokens[0]);
-		} catch (const bad_lexical_cast &) {
+		utils::optional temp = lexical_cast<unsigned int>(tokens[0]);
+		if(!temp) {
 			throw bad_commandline_tuple(s, expected_format);
 		}
 
-		vec.emplace_back(temp, tokens[1], tokens[2]);
+		vec.emplace_back(temp.value(), tokens[1], tokens[2]);
 	}
 	return vec;
 }
