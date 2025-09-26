@@ -77,7 +77,6 @@ opts.AddVariables(
     PathVariable('desktopdir', 'sets the desktop entry directory to a non-default location', "$datarootdir/applications", PathVariable.PathAccept),
     PathVariable('icondir', 'sets the icons directory to a non-default location', "$datarootdir/icons", PathVariable.PathAccept),
     PathVariable('appdatadir', 'sets the appdata directory to a non-default location', "$datarootdir/metainfo", PathVariable.PathAccept),
-    BoolVariable('internal_data', 'Set to put data in Mac OS X application fork', False),
     PathVariable('localedirname', 'sets the locale data directory to a non-default location', "translations", PathVariable.PathAccept),
     PathVariable('mandir', 'sets the man pages directory to a non-default location', "$datarootdir/man", PathVariable.PathAccept),
     PathVariable('docdir', 'sets the doc directory to a non-default location', "$datarootdir/doc/wesnoth", PathVariable.PathAccept),
@@ -666,9 +665,6 @@ for env in [test_env, client_env, env]:
 # #
 # End setting options for release build
 # #
-
-    if env['internal_data']:
-        env.Append(CPPDEFINES = "USE_INTERNAL_DATA")
 
     if have_X:
         env.Append(CPPDEFINES = "_X11")
