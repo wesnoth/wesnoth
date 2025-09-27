@@ -155,9 +155,10 @@ struct lexical_caster<
 {
 	utils::optional<std::string> operator()(From value) const
 	{
+		using namespace std::string_literals;
 		DEBUG_THROW("specialized - To std::string - From arithmetic");
 		if constexpr (std::is_same_v<bool, From>) {
-			return value ? "1" : "0";
+			return value ? "1"s : "0"s;
 		} else {
 			return utils::charconv_buffer<From>(value).to_string();
 		}
