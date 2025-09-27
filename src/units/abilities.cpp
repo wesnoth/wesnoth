@@ -38,7 +38,6 @@
 #include "team.hpp"
 #include "terrain/filter.hpp"
 #include "units/types.hpp"
-#include "units/unit.hpp"
 #include "units/abilities.hpp"
 #include "units/ability_tags.hpp"
 #include "units/filter.hpp"
@@ -2363,6 +2362,22 @@ std::string substitute_variables(const std::string& str, const std::string& tag_
 	return str;
 }
 
+int individual_value_int(const config::attribute_value *v, int def, const unit_ability & ability, const map_location& loc, const const_attack_ptr& att) {
+	int value = std::round(get_single_ability_value(*v, static_cast<double>(def), ability, loc, att, [&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
+		callable.add("base_value", wfl::variant(def));
+		return std::round(formula.evaluate(callable).as_int());
+	}));
+	return value;
+}
+
+int individual_value_double(const config::attribute_value *v, int def, const unit_ability & ability, const map_location& loc, const const_attack_ptr& att) {
+	int value = std::round(get_single_ability_value(*v, static_cast<double>(def), ability, loc, att, [&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
+		callable.add("base_value", wfl::variant(def));
+		return formula.evaluate(callable).as_decimal() / 1000.0 ;
+	}) * 100);
+	return value;
+}
+
 effect::effect(const unit_ability_list& list, int def, const const_attack_ptr& att, EFFECTS wham) :
 	effect_list_(),
 	composite_value_(0)
@@ -2388,10 +2403,7 @@ effect::effect(const unit_ability_list& list, int def, const const_attack_ptr& a
 
 		if(wham != EFFECT_CUMULABLE){
 			if (const config::attribute_value *v = cfg.get("value")) {
-				int value = std::round(get_single_ability_value(*v, static_cast<double>(def), ability, list.loc(), att, [&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
-					callable.add("base_value", wfl::variant(def));
-					return std::round(formula.evaluate(callable).as_int());
-				}));
+				int value = individual_value_int(v, def, ability, list.loc(), att);
 
 				int value_cum = cfg["cumulative"].to_bool() ? std::max(def, value) : value;
 				assert((set_effect_min.type != NOT_USED) == (set_effect_max.type != NOT_USED));
@@ -2411,49 +2423,39 @@ effect::effect(const unit_ability_list& list, int def, const const_attack_ptr& a
 		}
 
 		if(wham != EFFECT_WITHOUT_CLAMP_MIN_MAX) {
-			if(cfg.has_attribute("max_value")){
-				max_value = max_value ? std::min(*max_value, cfg["max_value"].to_int()) : cfg["max_value"].to_int();
+			if(const config::attribute_value *v = cfg.get("max_value")) {
+				int value = individual_value_int(v, def, ability, list.loc(), att);
+				max_value = max_value ? std::min(*max_value, value) : value;
 			}
-			if(cfg.has_attribute("min_value")){
-				min_value = min_value ? std::max(*min_value, cfg["min_value"].to_int()) : cfg["min_value"].to_int();
+			if(const config::attribute_value *v = cfg.get("min_value")) {
+				int value = individual_value_int(v, def, ability, list.loc(), att);
+				min_value = min_value ? std::max(*min_value, value) : value;
 			}
 		}
 
 		if (const config::attribute_value *v = cfg.get("add")) {
-			int add = std::round(get_single_ability_value(*v, static_cast<double>(def), ability, list.loc(), att, [&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
-				callable.add("base_value", wfl::variant(def));
-				return std::round(formula.evaluate(callable).as_int());
-			}));
+			int add = individual_value_int(v, def, ability, list.loc(), att);
 			std::map<std::string,individual_effect>::iterator add_effect = values_add.find(effect_id);
 			if(add_effect == values_add.end() || add > add_effect->second.value) {
 				values_add[effect_id].set(ADD, add, ability.ability_cfg, ability.teacher_loc);
 			}
 		}
 		if (const config::attribute_value *v = cfg.get("sub")) {
-			int sub = - std::round(get_single_ability_value(*v, static_cast<double>(def), ability, list.loc(), att, [&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
-				callable.add("base_value", wfl::variant(def));
-				return std::round(formula.evaluate(callable).as_int());
-			}));
+			int sub = - individual_value_int(v, def, ability, list.loc(), att);
 			std::map<std::string,individual_effect>::iterator sub_effect = values_sub.find(effect_id);
 			if(sub_effect == values_sub.end() || sub < sub_effect->second.value) {
 				values_sub[effect_id].set(ADD, sub, ability.ability_cfg, ability.teacher_loc);
 			}
 		}
 		if (const config::attribute_value *v = cfg.get("multiply")) {
-			int multiply = std::round(get_single_ability_value(*v, static_cast<double>(def), ability, list.loc(), att, [&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
-				callable.add("base_value", wfl::variant(def));
-				return formula.evaluate(callable).as_decimal() / 1000.0 ;
-			}) * 100);
+			int multiply = individual_value_double(v, def, ability, list.loc(), att);
 			std::map<std::string,individual_effect>::iterator mul_effect = values_mul.find(effect_id);
 			if(mul_effect == values_mul.end() || multiply > mul_effect->second.value) {
 				values_mul[effect_id].set(MUL, multiply, ability.ability_cfg, ability.teacher_loc);
 			}
 		}
 		if (const config::attribute_value *v = cfg.get("divide")) {
-			int divide = std::round(get_single_ability_value(*v, static_cast<double>(def), ability, list.loc(), att, [&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
-				callable.add("base_value", wfl::variant(def));
-				return formula.evaluate(callable).as_decimal() / 1000.0 ;
-			}) * 100);
+			int divide = individual_value_double(v, def, ability, list.loc(), att);
 
 			if (divide == 0) {
 				ERR_NG << "division by zero with divide= in ability/weapon special " << effect_id;

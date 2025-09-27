@@ -17,6 +17,7 @@
 
 #include "map/location.hpp"
 #include "units/ptr.hpp"
+#include "units/unit.hpp"
 
 class unit_ability_list;
 namespace unit_abilities
@@ -36,6 +37,10 @@ enum EFFECTS { EFFECT_DEFAULT=1, EFFECT_CUMULABLE=2, EFFECT_WITHOUT_CLAMP_MIN_MA
  * @return The string `str` with all gettext variables substitutes with corresponding special properties
  */
 std::string substitute_variables(const std::string& str, const std::string& tag_name, const config& ability_or_special);
+
+int individual_value(const config::attribute_value *v, int def, const unit_ability & ability, const map_location& loc, const const_attack_ptr& att);
+
+int individual_double_value(const config::attribute_value *v, int def, const unit_ability & ability, const map_location& loc, const const_attack_ptr& att);
 
 struct individual_effect
 {
