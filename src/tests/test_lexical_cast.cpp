@@ -53,13 +53,11 @@ using test_integral_types = std::tuple<
 
 using test_floating_point_types = std::tuple<float, double, long double>;
 
-
-
 using test_match_types = decltype(std::tuple_cat(test_bool_types{}, test_integral_types{}));
 using test_nomatch_types = decltype(std::tuple_cat(test_floating_point_types{}));
 using test_types = decltype(std::tuple_cat(test_nomatch_types{}, test_match_types{}));
 
-using test_arethmetic_types = decltype(std::tuple_cat(test_integral_types{}, test_floating_point_types{}));
+using test_arithmetic_types = decltype(std::tuple_cat(test_integral_types{}, test_floating_point_types{}));
 
 namespace {
 
@@ -109,7 +107,7 @@ BOOST_AUTO_TEST_CASE_TEMPLATE(test_lexical_cast_throw, T, test_types)
 #undef TEST_CASE
 
 BOOST_AUTO_TEST_CASE_TEMPLATE(
-		test_lexical_arethmetic_signed, T, test_arethmetic_types)
+		test_lexical_arithmetic_signed, T, test_arithmetic_types)
 {
 	result = "specialized - To arithmetic - From string";
 
@@ -144,37 +142,37 @@ BOOST_AUTO_TEST_CASE(test_lexical_cast_bool)
 
 BOOST_AUTO_TEST_CASE(test_lexical_cast_result)
 {
-	BOOST_CHECK_EQUAL(lexical_cast<std::string>(true), "1");
-	BOOST_CHECK_EQUAL(lexical_cast<std::string>(false), "0");
+	BOOST_CHECK_EQUAL(lexical_cast<std::string>(true).value(), "1");
+	BOOST_CHECK_EQUAL(lexical_cast<std::string>(false).value(), "0");
 
-	BOOST_CHECK_EQUAL(lexical_cast<std::string>(1), "1");
-	BOOST_CHECK_EQUAL(lexical_cast<std::string>(1u), "1");
+	BOOST_CHECK_EQUAL(lexical_cast<std::string>(1).value(), "1");
+	BOOST_CHECK_EQUAL(lexical_cast<std::string>(1u).value(), "1");
 
-	BOOST_CHECK_EQUAL(lexical_cast<std::string>(1.2f), "1.2");
-	BOOST_CHECK_EQUAL(lexical_cast<std::string>(1.2), "1.2");
+	BOOST_CHECK_EQUAL(lexical_cast<std::string>(1.2f).value(), "1.2");
+	BOOST_CHECK_EQUAL(lexical_cast<std::string>(1.2).value(), "1.2");
 
-	BOOST_CHECK_EQUAL(lexical_cast<int>("1"), 1);
-	BOOST_CHECK_EQUAL(lexical_cast<int>("-1"), -1);
-	BOOST_CHECK_EQUAL(lexical_cast<unsigned>("1"), 1);
-	BOOST_CHECK_EQUAL(lexical_cast<double>("1.2"), 1.2);
+	BOOST_CHECK_EQUAL(lexical_cast<int>("1").value(), 1);
+	BOOST_CHECK_EQUAL(lexical_cast<int>("-1").value(), -1);
+	BOOST_CHECK_EQUAL(lexical_cast<unsigned>("1").value(), 1);
+	BOOST_CHECK_EQUAL(lexical_cast<double>("1.2").value(), 1.2);
 
 	// The unit [effect] code uses this a lot
 	BOOST_CHECK_EQUAL(lexical_cast_default<int>("80%"), 80);
 
-	BOOST_CHECK_EQUAL(lexical_cast<double>("0x11"), 0);
+	BOOST_CHECK_EQUAL(lexical_cast<double>("0x11").value(), 0);
 
 	std::string a = "01234567890123456789";
-	BOOST_CHECK_EQUAL(lexical_cast<long long>(a), 1234567890123456789ll);
-	BOOST_CHECK_THROW(lexical_cast<int>(a), bad_lexical_cast);
-	BOOST_CHECK_EQUAL(lexical_cast<double>(a), 1.23456789012345678e18);
+	BOOST_CHECK_EQUAL(lexical_cast<long long>(a).value(), 1234567890123456789ll);
+	BOOST_CHECK(lexical_cast<int>(a) == utils::nullopt);
+	BOOST_CHECK_EQUAL(lexical_cast<double>(a).value(), 1.23456789012345678e18);
 	BOOST_CHECK_EQUAL(lexical_cast_default<long long>(a, 0ll), 1234567890123456789ll);
 	BOOST_CHECK_EQUAL(lexical_cast_default<int>(a, 0), 0);
 	BOOST_CHECK_EQUAL(lexical_cast_default<double>(a, 0.0), 1.23456789012345678e18);
 
 	std::string b = "99999999999999999999";
-	BOOST_CHECK_THROW(lexical_cast<long long>(b), bad_lexical_cast);
-	BOOST_CHECK_THROW(lexical_cast<int>(b), bad_lexical_cast);
-	BOOST_CHECK_EQUAL(lexical_cast<double>(b), 1e20);
+	BOOST_CHECK(lexical_cast<long long>(b) == utils::nullopt);
+	BOOST_CHECK(lexical_cast<int>(b) == utils::nullopt);
+	BOOST_CHECK_EQUAL(lexical_cast<double>(b).value(), 1e20);
 	BOOST_CHECK_EQUAL(lexical_cast_default<long long>(b, 0ll), 0ll);
 	BOOST_CHECK_EQUAL(lexical_cast_default<int>(b, 0), 0);
 	BOOST_CHECK_EQUAL(lexical_cast_default<double>(b, 0.0), 1e20);

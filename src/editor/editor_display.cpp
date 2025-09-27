@@ -118,7 +118,7 @@ void editor_display::layout()
 		text = get_map().get_terrain_editor_string(mouseoverHex_);
 		refresh_report("terrain", &element);
 		refresh_report("terrain_info");
-		text = lexical_cast<std::string>(mouseoverHex_);
+		text = lexical_cast<std::string>(mouseoverHex_).value();
 		refresh_report("position", &element);
 	}
 

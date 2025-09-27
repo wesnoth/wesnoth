@@ -147,14 +147,8 @@ void playsingle_controller::play_scenario_init(const config& level)
 	// Read sound sources
 	assert(soundsources_manager_ != nullptr);
 	for(const config& s : level.child_range("sound_source")) {
-		try {
-			soundsource::sourcespec spec(s);
-			soundsources_manager_->add(spec);
-		} catch(const bad_lexical_cast&) {
-			ERR_NG << "Error when parsing sound_source config: bad lexical cast.";
-			ERR_NG << "sound_source config was: " << s.debug();
-			ERR_NG << "Skipping this sound source...";
-		}
+		soundsource::sourcespec spec(s);
+		soundsources_manager_->add(spec);
 	}
 
 	// At the beginning of the scenario, save a snapshot as replay_start

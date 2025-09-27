@@ -45,7 +45,7 @@ namespace actions {
 		void write(config& cfg);
 		/**
 		 * Creates the list of undo steps based on a config.
-		 * Throws bad_lexical_cast or config::error if it cannot parse the config properly.
+		 * Throws config::error if it cannot parse the config properly.
 		 */
 		void read(const config& cfg);
 		void add(t_step_ptr&& action);

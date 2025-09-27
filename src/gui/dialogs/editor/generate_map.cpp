@@ -110,12 +110,7 @@ void editor_generate_map::pre_show()
 
 utils::optional<uint32_t> editor_generate_map::get_seed()
 {
-	try {
-		return lexical_cast<uint32_t>(random_seed_);
-	}
-	catch(const bad_lexical_cast& ) {
-		return utils::nullopt;
-	}
+	return lexical_cast<uint32_t>(random_seed_);
 }
 
 } // namespace dialogs
