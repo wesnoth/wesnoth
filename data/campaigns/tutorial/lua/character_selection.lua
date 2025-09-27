@@ -18,7 +18,7 @@ function pre_show(dialog)
 end
 
 function wml_actions.select_character()
-	local character_selection_dialog = wml.load "campaigns/Heir_To_The_Throne_Classic/gui/character_selection.cfg"
+	local character_selection_dialog = wml.load "campaigns/tutorial/gui/character_selection.cfg"
 	local dialog_wml = wml.get_child(character_selection_dialog, 'resolution')
 
 	local result = wesnoth.sync.evaluate_single(function()
@@ -28,7 +28,7 @@ function wml_actions.select_character()
 
 	if selected == 2 then
 		wesnoth.units.to_map({
-			type = "Tutorial Fighteress",
+			type = "Fighteress",
 			side = 1,
 			id = unit.id,
 			name = _"Li’sar",
@@ -39,7 +39,7 @@ function wml_actions.select_character()
 		}, unit.x, unit.y )
 		wesnoth.sides[1].side_name = _"Li’sar"
 		-- enable the help to display this unit's page
-		wesnoth.add_known_unit("Tutorial Fighteress")
+		wesnoth.add_known_unit("Fighteress")
 	else
 		wesnoth.units.to_map(unit)
 	end
