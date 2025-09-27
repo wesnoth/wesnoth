@@ -113,13 +113,13 @@ BOOST_AUTO_TEST_CASE_TEMPLATE(
 
 	const char* value = "test";
 	BOOST_CHECK_EXCEPTION(lexical_cast<T>(
-			value).value(), const char*, validate);
+			value), const char*, validate);
 	BOOST_CHECK_EXCEPTION(lexical_cast<T>(
-			const_cast<char*>(value)).value(), const char*, validate);
+			const_cast<char*>(value)), const char*, validate);
 	BOOST_CHECK_EXCEPTION(lexical_cast<T>(
-			std::string(value)).value(), const char*, validate);
+			std::string(value)), const char*, validate);
 	BOOST_CHECK_EXCEPTION(lexical_cast<T>(
-			std::string_view(value)).value(), const char*, validate);
+			std::string_view(value)), const char*, validate);
 }
 
 BOOST_AUTO_TEST_CASE(test_lexical_cast_bool)
@@ -128,13 +128,13 @@ BOOST_AUTO_TEST_CASE(test_lexical_cast_bool)
 
 	const char* value = "test";
 	BOOST_CHECK_EXCEPTION(lexical_cast<bool>(
-			value).value(), const char*, validate);
+			value), const char*, validate);
 	BOOST_CHECK_EXCEPTION(lexical_cast<bool>(
-			const_cast<char*>(value)).value(), const char*, validate);
+			const_cast<char*>(value)), const char*, validate);
 	BOOST_CHECK_EXCEPTION(lexical_cast<bool>(
-			std::string(value)).value(), const char*, validate);
+			std::string(value)), const char*, validate);
 	BOOST_CHECK_EXCEPTION(lexical_cast<bool>(
-			std::string_view(value)).value(), const char*, validate);
+			std::string_view(value)), const char*, validate);
 }
 
 } //  namespace test_throw
