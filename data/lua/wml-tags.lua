@@ -84,6 +84,10 @@ function wml_actions.chat(cfg)
 	end
 end
 
+function wesnoth.wml_actions.clear_chat(cfg)
+	wesnoth.interface.clear_chat_messages()
+end
+
 function wml_actions.gold(cfg)
 	local amount = math.floor(tonumber(cfg.amount)) or
 		wml.error "[gold] missing required amount= attribute."
@@ -308,7 +312,7 @@ function wml_actions.scroll_to(cfg)
 	local loc = wesnoth.map.find( cfg )[1]
 	if not loc then return end
 	if not utils.optional_side_filter(cfg) then return end
-	wesnoth.interface.scroll_to_hex(loc[1], loc[2], cfg.check_fogged, cfg.immediate)
+	wesnoth.interface.scroll_to_hex(loc[1], loc[2], cfg.check_fogged, cfg.immediate, cfg.only_if_needed)
 	if cfg.highlight then
 		wesnoth.interface.highlight_hex(loc[1], loc[2])
 		wml_actions.redraw{}
@@ -319,7 +323,7 @@ function wml_actions.scroll_to_unit(cfg)
 	local u = wesnoth.units.find_on_map(cfg)[1]
 	if not u then return end
 	if not utils.optional_side_filter(cfg, "for_side", "for_side") then return end
-	wesnoth.interface.scroll_to_hex(u.x, u.y, cfg.check_fogged, cfg.immediate)
+	wesnoth.interface.scroll_to_hex(u.x, u.y, cfg.check_fogged, cfg.immediate, cfg.only_if_needed)
 	if cfg.highlight then
 		wesnoth.interface.highlight_hex(u.x, u.y)
 		wml_actions.redraw{}
@@ -928,6 +932,10 @@ end
 
 function wesnoth.wml_actions.zoom(cfg)
 	wesnoth.interface.zoom(cfg.factor, cfg.relative)
+end
+
+function wesnoth.wml_actions.store_zoom(cfg)
+	wml.variables[cfg.variable or "zoom"] = wesnoth.interface.zoom(1, true)
 end
 
 function wesnoth.wml_actions.story(cfg)

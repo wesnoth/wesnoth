@@ -540,7 +540,7 @@ void server::handle_read_from_fifo(const boost::system::error_code& error, std::
 	std::string cmd;
 	std::getline(is, cmd);
 
-	const control_line ctl = cmd;
+	const control_line ctl{cmd};
 
 	if(ctl == "shut_down") {
 		LOG_CS << "Shut down requested by admin, shutting down...";

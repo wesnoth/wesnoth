@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-09-22 04:01 UTC\n"
-"PO-Revision-Date: 2025-09-14 19:53-0300\n"
+"PO-Revision-Date: 2025-09-23 10:32-0300\n"
 "Last-Translator: Sebastián Lecchini<sebas38760@gmail.com>\n"
 "Language-Team: Wesnoth\n"
 "Language: es\n"
@@ -36,7 +36,7 @@ msgstr "Libertad"
 #. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:20
 msgid "1x enemies"
-msgstr ""
+msgstr "1× enemigos"
 
 #. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:20
@@ -46,7 +46,7 @@ msgstr "Fácil"
 #. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:21
 msgid "2x enemies"
-msgstr ""
+msgstr "2× enemigos"
 
 #. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:21
@@ -56,12 +56,12 @@ msgstr "Normal"
 #. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:22
 msgid "3x enemies"
-msgstr ""
+msgstr "3× enemigos"
 
 #. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:22
 msgid "Hard"
-msgstr ""
+msgstr "Difícil"
 
 #. [campaign]: id=Liberty
 #. "marchlander" is archaic English for an inhabitant of a border region, not to be confused with "marshlander"
@@ -77,7 +77,7 @@ msgstr ""
 "de recios habitantes de los límites fronterizos se rebela contra el gobierno "
 "de la nueva reina. Para abrirse camino hacia la libertad, deben aprender a "
 "usar las sombras y el engaño para derrotar a las espadas entrenadas del "
-"ejército uesniano.\n"
+"ejército Wesnotiano.\n"
 "\n"
 
 #. [campaign]: id=Liberty
@@ -91,6 +91,8 @@ msgid ""
 "Story continued in:\n"
 "Heir to the Throne"
 msgstr ""
+"La historia continúa en:\n"
+"El Heredero al Trono"
 
 #. [about]
 #: data/campaigns/Liberty/_main.cfg:34
@@ -125,17 +127,13 @@ msgstr ""
 
 #. [achievement]: id=liberty_nameless
 #: data/campaigns/Liberty/achievements.cfg:14
-#, fuzzy
-#| msgid "The Nameless General"
 msgid "The Nameless Guard"
-msgstr "El general sin nombre"
+msgstr "El Guardia sin nombre"
 
 #. [achievement]: id=liberty_nameless
 #: data/campaigns/Liberty/achievements.cfg:15
-#, fuzzy
-#| msgid "Find out the name of the general in <i>Unlawful Orders</i>."
 msgid "Discover the name of the royal guard in <i>Unlawful Orders</i>."
-msgstr "Averigua el nombre del general en <i>Órdenes Ilegales</i>."
+msgstr "Averigua el nombre del guardia real en <i>Órdenes Ilegales</i>."
 
 #. [achievement]: id=liberty_iron
 #: data/campaigns/Liberty/achievements.cfg:21
@@ -322,7 +320,7 @@ msgstr "Gorokh"
 #. [event]
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:173
 msgid "Gruk"
-msgstr ""
+msgstr "Gruk"
 
 #. [message]: speaker=Fal Khag
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:195
@@ -545,7 +543,7 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:435
 msgid "Your footpad has gained +1 ranged damage!"
-msgstr ""
+msgstr "¡Tu salteador ha ganado +1 de daño a distancia!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:447
@@ -901,7 +899,7 @@ msgstr "Si, unos proscritos."
 #. [message]: speaker=narrator
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:521
 msgid "Your units — formerly <i>neutral</i> — are now <i>chaotic</i>!"
-msgstr ""
+msgstr "¡Tus unidades — antes <i>neutrales</i> — ahora son <i>caóticas</i>!"
 
 #. [message]: speaker=Reinforcement Knight
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:555
@@ -1203,7 +1201,7 @@ msgstr "Es agua rica y fresca. ¡Umm!"
 #. [message]: speaker=narrator
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:443
 msgid "Your unit has gained +1 maximum hitpoints!"
-msgstr ""
+msgstr "¡Tu unidad ha ganado +1 punto de vida máximo!"
 
 #. [message]: speaker=Urk Delek
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:459
@@ -1318,10 +1316,8 @@ msgstr "Elensefar"
 
 #. [objective]: condition=win
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:177
-#, fuzzy
-#| msgid "Defeat both enemy leaders"
 msgid "Defeat the enemy leader"
-msgstr "Derrote a ambos líderes enemigos"
+msgstr "Derrote al líder enemigo"
 
 #. [objective]: condition=lose
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:189
@@ -1331,14 +1327,14 @@ msgstr "Muerte de Maddock"
 #. [event]
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:236
 msgid "The Daneth"
-msgstr ""
+msgstr "El Daneth"
 
 #. [event]
 #. [unit]: type=Skiff, id=Skiff
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:237
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:330
 msgid "Mary’s Minnow"
-msgstr ""
+msgstr "El Pececillo de Mary"
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:296
@@ -1366,21 +1362,14 @@ msgstr ""
 
 #. [message]: speaker=Lord Maddock
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:309
-#, fuzzy
-#| msgid ""
-#| "That was partially my fault, since I was not able to send a messenger to "
-#| "you in time. I shall have to inform you now. Five weeks ago, at the Ford "
-#| "of Abez, Queen Asheviere’s men allied themselves with the northern orcs "
-#| "and betrayed King Garard II."
 msgid ""
 "That was partially my fault, since I was not able to send a messenger to you "
 "in time. I shall have to inform you now. Five weeks ago, at the Ford of "
 "Abez, King Garard II of Wesnoth was murdered."
 msgstr ""
 "Eso fue en parte culpa mía, ya que no pude enviarte un mensajero a tiempo. "
-"Tendré que informarte ahora. Hace cinco semanas, en el Vado de Abez, los "
-"hombres de la reina Asheviere se aliaron con los orcos del norte y "
-"traicionaron al rey Garard II."
+"Tendré que informarte ahora. Hace cinco semanas, en el Vado de Abez, el rey "
+"Garard II de Wesnoth fue asesinado."
 
 #. [message]: speaker=Lord Maddock
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:313
@@ -1390,25 +1379,23 @@ msgid ""
 "Prince Eldred fell in battle not long after, upon which Asheviere claimed "
 "the throne."
 msgstr ""
+"Oficialmente, uno de sus capitanes cometió el crimen. Extraoficialmente, se "
+"rumorea que la reina Asheviere y su hijo Eldred estuvieron involucrados. De "
+"cualquier modo, el príncipe Eldred cayó en batalla poco después, tras lo "
+"cual Asheviere reclamó el trono."
 
 #. [message]: speaker=Lord Maddock
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:317
-#, fuzzy
-#| msgid ""
-#| "Since Prince Eldred died in the battle, the Queen took the throne and has "
-#| "been consolidating her power. Part of that has been bringing the elders "
-#| "from the local villages here, forcing them to swear allegiance to her. "
-#| "That was the purpose of that patrol."
 msgid ""
 "The Queen is not popular. She is at war with supporters of the old king, and "
 "searches far and wide for new conscripts. Part of that has been taking "
 "elders from the local villages, forcing them to swear allegiance to her. "
 "That was the purpose of that patrol."
 msgstr ""
-"Desde que el príncipe Eldred murió en la batalla, la reina tomó el trono y "
-"ha estado consolidando su poder. Entre otras cosas ha estado trayendo aquí a "
-"los ancianos de las aldeas locales cercanas, obligándoles a jurarle lealtad. "
-"Ese era el propósito de esa patrulla."
+"La reina no es popular. Está en guerra con los partidarios del antiguo rey y "
+"busca por todas partes nuevos reclutas. Parte de eso ha sido llevarse a los "
+"ancianos de las aldeas locales, obligándolos a jurarle lealtad. Ese era el "
+"propósito de esa patrulla."
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:321
@@ -1443,6 +1430,10 @@ msgid ""
 "maintains a large garrison south at the great fortress of Halstead, but even "
 "should they mobilize all their troops, I doubt they could take Elensefar."
 msgstr ""
+"No vendrán. No tengo intención de tomar partido en el conflicto de Wesnoth, "
+"y la reina sabe que sería un error intentar forzarme. Es cierto que mantiene "
+"una gran guarnición al sur, en la gran fortaleza de Halstead, pero aun si "
+"movilizara todas sus tropas, dudo que pudieran tomar Elensefar."
 
 #. [message]: speaker=Harper
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:337
@@ -1462,6 +1453,12 @@ msgid ""
 "and we are not in the habit of maintaining a large standing army. It will "
 "take time to assemble mercenaries of the right caliber."
 msgstr ""
+"Sí, soy consciente de la propensión de la reina Asheviere a contratar orcos "
+"para complementar sus fuerzas. También he comenzado a ampliar mi ejército, "
+"aunque creo que es poco probable que se produzcan hostilidades. Pero la "
+"población de Elensefar es pequeña y no tenemos la costumbre de mantener un "
+"ejército permanente grande. Tomará tiempo reunir mercenarios del calibre "
+"adecuado."
 
 #. [message]: speaker=Lord Maddock
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:345
@@ -1472,12 +1469,17 @@ msgid ""
 "wizard and his rebels have suffered several defeats. I have some concessions "
 "that I shall have to make..."
 msgstr ""
+"El tratado entre Elensefar y Wesnoth es antiguo, y no creo que Su Majestad "
+"quiera romperlo. Pero no puedo permitirme hacer enemigos de Weldyn, como "
+"seguro pueden entender. Asheviere parece estar ganando su guerra civil. El "
+"mago y sus rebeldes han sufrido varias derrotas. Hay algunas concesiones que "
+"tendré que hacer..."
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:349
 msgid "And what abouts us? Throw us like dogs to those Wesnothians?"
 msgstr ""
-"¿Y qué pasa con nosotros? ¿Seremos arrojados como perros a esos uesnianos?"
+"¿Y qué pasa con nosotros? ¿Seremos arrojados como perros a esos wesnotianos?"
 
 #. [message]: speaker=Lord Maddock
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:353
@@ -1486,6 +1488,9 @@ msgid ""
 "arise. I am already in covert communication with— ...listen, there is a "
 "bigger picture here, Baldras."
 msgstr ""
+"No pongas palabras en mi boca. Estoy más que dispuesto a actuar si surge la "
+"necesidad. Ya estoy en comunicación secreta con— ...escucha, hay un panorama "
+"más amplio aquí, Baldras."
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:357
@@ -1494,7 +1499,7 @@ msgid ""
 "come to take the city right from your hands."
 msgstr ""
 "El panorama de vos sentado ociosamente aquí esperando hasta que los "
-"uesnianos vengan a arrebataros la ciudad de las manos."
+"wesnotianos vengan a arrebataros la ciudad de las manos."
 
 #. [message]: speaker=Lord Maddock
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:361
@@ -1520,20 +1525,16 @@ msgstr ""
 #. [message]: speaker=unit
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:393
 msgid "Hey, look! Some buried treasure!"
-msgstr "¡Hey Mirad! ¡Un tesoro enterrado!"
+msgstr "¡Hey Miren! ¡Un tesoro enterrado!"
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:421
-#, fuzzy
-#| msgid ""
-#| "It says, “Here lies Daneth, child of the Light, loyal defender of Lord "
-#| "and Land.” Whoever that was."
 msgid ""
 "It says, “Here lies Daneth, child of the Light, loyal defender of Lord and "
 "Land.”"
 msgstr ""
 "Dice: «Aquí yace Daneth, hijo de la Luz, leal defensor de su Señor y de su "
-"Tierra». Quienquiera que fuera."
+"Tierra»."
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:425
@@ -1626,10 +1627,8 @@ msgstr ""
 
 #. [modify_unit]
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:865
-#, fuzzy
-#| msgid "General Kestrel"
 msgid "Kestrel"
-msgstr "General Kestrel"
+msgstr "Kestrel"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:872
@@ -1638,23 +1637,15 @@ msgstr "¿Quién sois? ¿Qué sois?"
 
 #. [message]: speaker=Kestrel
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:876
-#, fuzzy
-#| msgid ""
-#| "We... are accursed. We were the soldiers of Prince Eldred, the King’s son "
-#| "and betrayer... when the Prince was slain at the hands of the mage "
-#| "Delfador, those of us who bore witness to it were warped into these "
-#| "twisted forms. Now, our mortal bodies pass... into another plane of "
-#| "hellish existence..."
 msgid ""
 "We... are accursed. We were the soldiers of Prince Eldred, the King’s son "
 "and betrayer... when the Prince stooped to black magic, we were damned... "
 "those of us who bore witness were warped into these twisted forms."
 msgstr ""
-"Nosotros... estamos malditos. Éramos los soldados del príncipe Eldred, el "
-"hijo del Rey y traidor... cuando el príncipe fue asesinado a manos del mago "
-"Delfador, aquellos de nosotros que fuimos testigos nos vimos transformados "
-"en estas formas retorcidas. Ahora, nuestros cuerpos mortales pasan... a otro "
-"plano de existencia infernal..."
+"Nosotros... estamos malditos. Éramos los soldados del príncipe Eldred, hijo "
+"del Rey y traidor... cuando el príncipe recurrió a la magia negra, fuimos "
+"condenados... aquellos de nosotros que fuimos testigos fuimos deformados en "
+"estas formas retorcidas."
 
 #. [message]: speaker=Kestrel
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:880
@@ -1662,6 +1653,8 @@ msgid ""
 "The Queen sent us away... sent us west. Now, our mortal bodies pass... into "
 "another plane of hellish existence..."
 msgstr ""
+"La reina nos envió lejos... nos envió hacia el oeste. Ahora, nuestros "
+"cuerpos mortales pasan... a otro plano de existencia infernal..."
 
 #. [message]: speaker=Lord Maddock
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:903
@@ -1762,7 +1755,7 @@ msgstr ""
 "\n"
 "Han sido unos días duros desde que dejamos Elensefar con todas esas "
 "patrullas marchando. Al ir en bote a lo largo del río Grande, nos las hemos "
-"arreglado para evitar a los uesnianos, pero estar siempre en alerta es en "
+"arreglado para evitar a los wesnotianos, pero estar siempre en alerta es en "
 "verdad agotador. Estoy empezando a sentir ese cansancio en mis huesos... los "
 "viejos como yo deberíamos estar sentados en casa, descansando nuestros "
 "cuerpos grises y cuidando de la gente más joven que crece. No tengo nada que "
@@ -2305,7 +2298,7 @@ msgid ""
 "slow them Wesnothians down enough for us to figure out the next step."
 msgstr ""
 "No lo sé. Pero, mientras tanto, emboscar a las patrullas resultaría bastante "
-"fácil. Eso retrasaría a los uesnianos lo suficiente como para que podamos "
+"fácil. Eso retrasaría a los wesnotianos lo suficiente como para que podamos "
 "calcular el siguiente paso."
 
 #. [message]: speaker=Helicrom
@@ -2535,8 +2528,8 @@ msgid ""
 "Amnesty? Knowing these Wesnothians, they’ll have my head. Then again, if I "
 "could gives my life to save my whole village, I would."
 msgstr ""
-"¿Amnistía? Conociendo a estos uesnianos, pedirán mi cabeza. Por otra parte, "
-"si pudiera dar mi vida para salvar a toda mi aldea, lo haría."
+"¿Amnistía? Conociendo a estos wesnotianos, pedirán mi cabeza. Por otra "
+"parte, si pudiera dar mi vida para salvar a toda mi aldea, lo haría."
 
 #. [message]: speaker=Harper
 #: data/campaigns/Liberty/scenarios/06_The_Hunters.cfg:1103
@@ -2908,19 +2901,17 @@ msgstr "¡Toque de carga!"
 #. [message]: type=Lancer
 #: data/campaigns/Liberty/scenarios/07_Glory.cfg:391
 msgid "At your order, my liege."
-msgstr "A vuestras órdenes, señor."
+msgstr "A sus órdenes, señor."
 
 #. [message]: speaker=Sir Gwydion
 #: data/campaigns/Liberty/scenarios/07_Glory.cfg:395
-#, fuzzy
-#| msgid ""
-#| "Ready thy lances! Let us trample the armies of Weldyn beneath our steeds!"
 msgid ""
 "Lo, Knights of Elensefar, the battle hath begun ere our arrival. Ready thy "
 "lances! Let us trample the armies of Weldyn beneath our steeds!"
 msgstr ""
-"¡Preparad vuestras lanzas! ¡Aplastemos los ejércitos de Weldyn bajo nuestros "
-"corceles!"
+"¡Miren, caballeros de Elensefar, la batalla ha comenzado antes de nuestra "
+"llegada! ¡Preparen sus lanzas! ¡Aplastemos los ejércitos de Weldyn bajo "
+"nuestros corceles!"
 
 #. [message]: role=farseer
 #: data/campaigns/Liberty/scenarios/07_Glory.cfg:408
@@ -3138,13 +3129,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Liberty/scenarios/08_Epilogue.cfg:22
-#, fuzzy
-#| msgid ""
-#| "I’m sure them Wesnothians will come back in time and with Maddock holed "
-#| "up in his stupid tower, they’ll eventually siege Elensefar and take the "
-#| "city... but that don’t be my problem anymore. I has me a village to worry "
-#| "about. I need to get back, consult myself with Relana and figure out what "
-#| "to do next. We gots some more time now, but we can’t wait forever."
 msgid ""
 "I’m sure them Wesnothians will come back in time. Maddock sounded like he "
 "had a plan... we’ll see. But that don’t be my problem anymore. I has me a "
@@ -3152,12 +3136,11 @@ msgid ""
 "figure out what to do next. We gots some more time now, but we can’t wait "
 "forever."
 msgstr ""
-"Estoy seguro de que los Wesnothianos volverán pronto y con Maddock escondido "
-"en su estúpido torreón, eventualmente asediarán Elensefar y tomarán la "
-"ciudad... pero ese ya no será mi problema. Tengo un pueblo del que "
-"preocuparme. Necesito volver, consultar con Relana y decidir lo que hacer a "
-"continuación. Ahora tenemos algo más de tiempo, pero no podemos esperar para "
-"siempre."
+"Estoy seguro de que los Wesnothianos volverán pronto. Maddock parecía tener "
+"un plan... ya veremos. Pero eso ya no es mi problema. Tengo un pueblo del "
+"que preocuparme. Necesito regresar, consultar con Relana y decidir qué hacer "
+"a continuación. Ahora tenemos un poco más de tiempo, pero no podemos esperar "
+"para siempre."
 
 #. [part]
 #: data/campaigns/Liberty/scenarios/08_Epilogue.cfg:25

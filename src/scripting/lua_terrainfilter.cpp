@@ -24,6 +24,7 @@
 #include "scripting/lua_formula_bridge.hpp"
 #include "scripting/push_check.hpp"
 #include "serialization/string_utils.hpp"
+#include "utils/from_chars.hpp"
 
 #include "formula/callable_objects.hpp"
 #include "formula/formula.hpp"
@@ -47,7 +48,6 @@ private:
 
 using known_sets_t = std::map<std::string, std::set<map_location>>;
 using offset_list_t = std::vector<std::pair<int, int>>;
-using std::string_view;
 using dynamic_bitset  = boost::dynamic_bitset<>;
 using location_set = std::set<map_location>;
 
@@ -57,35 +57,24 @@ LOG_LMG << #NAME << ":matches(" << l << ") line:" << __LINE__;
 
 //helper functions for parsing
 namespace {
-	int atoi(string_view s)
+	std::pair<int, int> parse_single_range(std::string_view s)
 	{
-		if(s.empty()) {
-			return 0;
-		}
-
-		char** end = nullptr;
-		int res = strtol(&s[0], end, 10);
-		return res;
-	}
-
-	std::pair<int, int> parse_single_range(string_view s)
-	{
-		int dash_pos = s.find('-');
-		if(dash_pos == int(string_view::npos)) {
-			int res = atoi(s);
+		std::size_t dash_pos = s.find('-');
+		if(dash_pos == std::string_view::npos) {
+			int res = utils::from_chars<int>(s).value_or(0);
 			return {res, res};
 		}
-		else {
-			string_view first = s.substr(0, dash_pos);
-			string_view second = s.substr(dash_pos + 1);
-			return {atoi(first), atoi(second)};
-		}
+
+		return {
+			utils::from_chars<int>(s.substr(0, dash_pos)).value_or(0),
+			utils::from_chars<int>(s.substr(dash_pos + 1)).value_or(0)
+		};
 	}
 
-	dynamic_bitset parse_range(string_view s)
+	dynamic_bitset parse_range(std::string_view s)
 	{
 		dynamic_bitset res;
-		utils::split_foreach(s, ',', utils::STRIP_SPACES, [&](string_view part){
+		utils::split_foreach(s, ',', utils::STRIP_SPACES, [&](std::string_view part){
 			auto pair = parse_single_range(part);
 			int m = std::max(pair.first, pair.second);
 			if(m >= int(res.size())) {
@@ -97,7 +86,7 @@ namespace {
 		});
 		return res;
 	}
-	void parse_rel(string_view str, offset_list_t& even, offset_list_t& odd)
+	void parse_rel(std::string_view str, offset_list_t& even, offset_list_t& odd)
 	{
 		//sw = 1*s -1*se
 		//nw = -1*se
@@ -142,9 +131,9 @@ namespace {
 		}
 	}
 
-	void parse_rel_sequence(string_view s, offset_list_t& even, offset_list_t& odd)
+	void parse_rel_sequence(std::string_view s, offset_list_t& even, offset_list_t& odd)
 	{
-		utils::split_foreach(s, ',', utils::STRIP_SPACES, [&](string_view part){
+		utils::split_foreach(s, ',', utils::STRIP_SPACES, [&](std::string_view part){
 			parse_rel(part, even, odd);
 		});
 	}

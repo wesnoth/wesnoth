@@ -188,9 +188,11 @@ public:
 	bool operator==(const std::string& o) const { return get() == o; }
 	bool operator==(const char* o) const { return get() == o; }
 
+#ifndef __cpp_impl_three_way_comparison
 	bool operator!=(const t_string& o) const { return !operator==(o); }
 	bool operator!=(const std::string& o) const { return !operator==(o); }
 	bool operator!=(const char* o) const { return !operator==(o); }
+#endif
 
 	bool operator<(const t_string& o) const { return get() < o.get(); }
 
