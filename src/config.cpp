@@ -1323,14 +1323,14 @@ std::string config::hash() const
 	return std::string(hash_str);
 }
 
-void config::swap(config& cfg)
+void config::swap(config& cfg) noexcept
 {
 	values_.swap(cfg.values_);
 	children_.swap(cfg.children_);
 	ordered_children.swap(cfg.ordered_children);
 }
 
-void swap(config& lhs, config& rhs)
+void swap(config& lhs, config& rhs) noexcept
 {
 	lhs.swap(rhs);
 }

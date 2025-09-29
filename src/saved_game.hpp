@@ -43,7 +43,7 @@ public:
 
 	saved_game& operator=(const saved_game& other) = delete;
 	saved_game& operator=(saved_game&& other);
-	void swap(saved_game& other);
+	void swap(saved_game& other) noexcept;
 	void set_data(config&& cfg);
 	void clear();
 	/** writes the config information into a stream (file) */
@@ -174,4 +174,4 @@ private:
 };
 
 /** Implement non-member swap function for std::swap (calls @ref saved_game::swap). */
-void swap(saved_game& lhs, saved_game& rhs);
+void swap(saved_game& lhs, saved_game& rhs) noexcept;

@@ -892,7 +892,7 @@ public:
 	void merge_children_by_attribute(config_key_type key, config_key_type attribute);
 
 	//this is a cheap O(1) operation
-	void swap(config& cfg);
+	void swap(config& cfg) noexcept;
 
 	/**
 	 * Returns true if this object represents valid WML,
@@ -925,7 +925,7 @@ private:
 using optional_config = optional_config_impl<config>;
 using optional_const_config = optional_config_impl<const config>;
 /** Implement non-member swap function for std::swap (calls @ref config::swap). */
-void swap(config& lhs, config& rhs);
+void swap(config& lhs, config& rhs) noexcept;
 
 namespace detail
 {
