@@ -544,32 +544,13 @@ config& config::add_child_at_total(config_key_type key, const config &val, std::
 	return res;
 }
 
-namespace
-{
-struct remove_ordered
-{
-	remove_ordered(const config::child_map::iterator& iter)
-		: iter_(iter)
-	{
-	}
-
-	bool operator()(const config::child_pos& pos) const
-	{
-		return pos.pos == iter_;
-	}
-
-private:
-	config::child_map::iterator iter_;
-};
-} // end anon namespace
-
 void config::clear_children_impl(config_key_type key)
 {
 	child_map::iterator i = children_.find(key);
 	if(i == children_.end())
 		return;
 
-	utils::erase_if(ordered_children, remove_ordered{i});
+	utils::erase_if(ordered_children, [&i](const config::child_pos& pos) { return pos.pos == i; });
 	children_.erase(i);
 }
 
@@ -580,7 +561,7 @@ void config::splice_children(config& src, config_key_type key)
 		return;
 	}
 
-	utils::erase_if(src.ordered_children, remove_ordered{i_src});
+	utils::erase_if(src.ordered_children, [&i_src](const config::child_pos& pos) { return pos.pos == i_src; });
 
 	auto i_dst = map_get(children_, key);
 	child_list& dst = i_dst->second;
