@@ -586,7 +586,10 @@ void config::splice_children(config& src, config_key_type key)
 	child_list& dst = i_dst->second;
 
 	const auto before = dst.size();
-	dst.insert(dst.end(), std::make_move_iterator(i_src->second.begin()), std::make_move_iterator(i_src->second.end()));
+	dst.insert(dst.end(),
+		std::move_iterator{i_src->second.begin()},
+		std::move_iterator{i_src->second.end()});
+
 	src.children_.erase(i_src);
 	// key might be a reference to i_src->first, so it is no longer usable.
 
