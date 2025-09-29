@@ -261,7 +261,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(move, child, spectator)
 	std::vector<map_location> steps;
 
 	try {
-		read_locations(child,steps);
+		steps = read_locations(child);
 	} catch (const std::invalid_argument&) {
 		WRN_REPLAY << "Warning: Path data contained something which could not be parsed to a sequence of locations:" << "\n config = " << child.debug();
 		return false;
