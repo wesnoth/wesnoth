@@ -785,7 +785,7 @@ optional_config config::find_child(config_key_type key, const std::string& name,
 	}
 
 	const child_list::iterator j = utils::ranges::find(i->second, value,
-		[&](const std::unique_ptr<config>& pcfg) { return (*pcfg)[name]; });
+		[&](const std::unique_ptr<config>& pcfg) -> const auto& { return (*pcfg)[name]; });
 
 	if(j != i->second.end()) {
 		return **j;
