@@ -87,7 +87,7 @@ config::config(const config& cfg)
 	append_children(cfg);
 }
 
-config::config(config_key_type child)
+config::config(std::string_view child)
 	: values_()
 	, children_()
 	, ordered_children_()
@@ -125,7 +125,7 @@ config& config::operator=(config&& cfg) noexcept
 	return *this;
 }
 
-bool config::valid_tag(config_key_type name)
+bool config::valid_tag(std::string_view name)
 {
 	if(name == "") {
 		// Empty strings not allowed
@@ -148,17 +148,17 @@ bool config::valid_tag(config_key_type name)
 	}
 }
 
-bool config::valid_attribute(config_key_type name)
+bool config::valid_attribute(std::string_view name)
 {
 	return valid_tag(name);
 }
 
-bool config::has_attribute(config_key_type key) const
+bool config::has_attribute(std::string_view key) const
 {
 	return values_.find(key) != values_.end();
 }
 
-void config::remove_attribute(config_key_type key)
+void config::remove_attribute(std::string_view key)
 {
 	map_erase_key(values_, key);
 }
@@ -177,7 +177,7 @@ void config::append_attributes(const config& cfg)
 	}
 }
 
-void config::append_children(const config& cfg, config_key_type key)
+void config::append_children(const config& cfg, std::string_view key)
 {
 	for(const config& value : cfg.child_range(key)) {
 		add_child(key, value);
@@ -220,7 +220,7 @@ void config::append(config&& cfg)
 	cfg.clear_attributes();
 }
 
-void config::append_children_by_move(config& cfg, config_key_type key)
+void config::append_children_by_move(config& cfg, std::string_view key)
 {
 	// DO note this leaves the tags empty in the source config. Not sure if
 	// that should be changed.
@@ -231,7 +231,7 @@ void config::append_children_by_move(config& cfg, config_key_type key)
 	cfg.clear_children_impl(key);
 }
 
-void config::merge_children(config_key_type key)
+void config::merge_children(std::string_view key)
 {
 	if(child_count(key) < 2) {
 		return;
@@ -246,7 +246,7 @@ void config::merge_children(config_key_type key)
 	add_child(key, std::move(merged_children));
 }
 
-void config::merge_children_by_attribute(config_key_type key, config_key_type attribute)
+void config::merge_children_by_attribute(std::string_view key, std::string_view attribute)
 {
 	if(child_count(key) < 2) {
 		return;
@@ -264,7 +264,7 @@ void config::merge_children_by_attribute(config_key_type key, config_key_type at
 	}
 }
 
-config::child_itors config::child_range(config_key_type key)
+config::child_itors config::child_range(std::string_view key)
 {
 	child_map::iterator i = children_.find(key);
 	static child_list dummy;
@@ -276,7 +276,7 @@ config::child_itors config::child_range(config_key_type key)
 	return child_itors(child_iterator(p->begin()), child_iterator(p->end()));
 }
 
-config::const_child_itors config::child_range(config_key_type key) const
+config::const_child_itors config::child_range(std::string_view key) const
 {
 	child_map::const_iterator i = children_.find(key);
 	static child_list dummy;
@@ -288,7 +288,7 @@ config::const_child_itors config::child_range(config_key_type key) const
 	return const_child_itors(const_child_iterator(p->begin()), const_child_iterator(p->end()));
 }
 
-std::size_t config::child_count(config_key_type key) const
+std::size_t config::child_count(std::string_view key) const
 {
 	child_map::const_iterator i = children_.find(key);
 	if(i != children_.end()) {
@@ -308,7 +308,7 @@ std::size_t config::attribute_count() const
 	return std::count_if(values_.begin(), values_.end(), [](const attribute& v) { return !v.second.blank(); });
 }
 
-bool config::has_child(config_key_type key) const
+bool config::has_child(std::string_view key) const
 {
 	child_map::const_iterator i = children_.find(key);
 	return i != children_.end() && !i->second.empty();
@@ -316,7 +316,7 @@ bool config::has_child(config_key_type key) const
 
 namespace {
 template<class Tchildren>
-auto get_child_impl(Tchildren& children, config_key_type key, int n) -> optional_config_impl<std::remove_reference_t<decltype(**(*children.begin()).second.begin())>>
+auto get_child_impl(Tchildren& children, std::string_view key, int n) -> optional_config_impl<std::remove_reference_t<decltype(**(*children.begin()).second.begin())>>
 {
 
 	auto i = children.find(key);
@@ -340,7 +340,7 @@ auto get_child_impl(Tchildren& children, config_key_type key, int n) -> optional
 
 }
 
-config& config::mandatory_child(config_key_type key, const std::string& parent)
+config& config::mandatory_child(std::string_view key, const std::string& parent)
 {
 	if(auto res = get_child_impl(children_, key, 0)) {
 		return *res;
@@ -349,7 +349,7 @@ config& config::mandatory_child(config_key_type key, const std::string& parent)
 	}
 }
 
-const config& config::mandatory_child(config_key_type key, const std::string& parent) const
+const config& config::mandatory_child(std::string_view key, const std::string& parent) const
 {
 	if(auto res = get_child_impl(children_, key, 0)) {
 		return *res;
@@ -358,7 +358,7 @@ const config& config::mandatory_child(config_key_type key, const std::string& pa
 	}
 }
 
-config& config::mandatory_child(config_key_type key, int n)
+config& config::mandatory_child(std::string_view key, int n)
 {
 	if(auto res = get_child_impl(children_, key, n)) {
 		return *res;
@@ -367,7 +367,7 @@ config& config::mandatory_child(config_key_type key, int n)
 	}
 }
 
-const config& config::mandatory_child(config_key_type key, int n) const
+const config& config::mandatory_child(std::string_view key, int n) const
 {
 	if(auto res = get_child_impl(children_, key, n)) {
 		return *res;
@@ -376,17 +376,17 @@ const config& config::mandatory_child(config_key_type key, int n) const
 	}
 }
 
-optional_config config::optional_child(config_key_type key, int n)
+optional_config config::optional_child(std::string_view key, int n)
 {
 	return get_child_impl(children_, key, n);
 }
 
-optional_const_config config::optional_child(config_key_type key, int n) const
+optional_const_config config::optional_child(std::string_view key, int n) const
 {
 	return get_child_impl(children_, key, n);
 }
 
-const config& config::child_or_empty(config_key_type key) const
+const config& config::child_or_empty(std::string_view key) const
 {
 	static const config empty_cfg;
 	child_map::const_iterator i = children_.find(key);
@@ -397,7 +397,7 @@ const config& config::child_or_empty(config_key_type key) const
 	return empty_cfg;
 }
 
-config& config::child_or_add(config_key_type key)
+config& config::child_or_add(std::string_view key)
 {
 	child_map::const_iterator i = children_.find(key);
 	if(i != children_.end() && !i->second.empty()) {
@@ -407,7 +407,7 @@ config& config::child_or_add(config_key_type key)
 	return add_child(key);
 }
 
-optional_config_impl<const config> config::get_deprecated_child(config_key_type old_key, const std::string& in_tag, DEP_LEVEL level, const std::string& message) const
+optional_config_impl<const config> config::get_deprecated_child(std::string_view old_key, const std::string& in_tag, DEP_LEVEL level, const std::string& message) const
 {
 	if(auto res = optional_child(old_key)) {
 		const std::string what = formatter() << "[" << in_tag << "][" << old_key << "]";
@@ -418,7 +418,7 @@ optional_config_impl<const config> config::get_deprecated_child(config_key_type 
 	return utils::nullopt;
 }
 
-config::const_child_itors config::get_deprecated_child_range(config_key_type old_key, const std::string& in_tag, DEP_LEVEL level, const std::string& message) const
+config::const_child_itors config::get_deprecated_child_range(std::string_view old_key, const std::string& in_tag, DEP_LEVEL level, const std::string& message) const
 {
 	static child_list dummy;
 	const child_list* p = &dummy;
@@ -432,7 +432,7 @@ config::const_child_itors config::get_deprecated_child_range(config_key_type old
 	return const_child_itors(const_child_iterator(p->begin()), const_child_iterator(p->end()));
 }
 
-config& config::add_child(config_key_type key)
+config& config::add_child(std::string_view key)
 {
 	auto iter = map_get(children_, key);
 	child_list& v = iter->second;
@@ -441,7 +441,7 @@ config& config::add_child(config_key_type key)
 	return *v.back();
 }
 
-config& config::add_child(config_key_type key, const config& val)
+config& config::add_child(std::string_view key, const config& val)
 {
 	auto iter = map_get(children_, key);
 	child_list& v = iter->second;
@@ -451,7 +451,7 @@ config& config::add_child(config_key_type key, const config& val)
 	return *v.back();
 }
 
-config& config::add_child(config_key_type key, config&& val)
+config& config::add_child(std::string_view key, config&& val)
 {
 	auto iter = map_get(children_, key);
 	child_list& v = iter->second;
@@ -461,7 +461,7 @@ config& config::add_child(config_key_type key, config&& val)
 	return *v.back();
 }
 
-config& config::add_child_at(config_key_type key, const config& val, std::size_t index)
+config& config::add_child_at(std::string_view key, const config& val, std::size_t index)
 {
 	auto iter = map_get(children_, key);
 	child_list& v = iter->second;
@@ -494,7 +494,7 @@ config& config::add_child_at(config_key_type key, const config& val, std::size_t
 	return *v[index];
 }
 
-std::size_t config::find_total_first_of(config_key_type key, std::size_t start)
+std::size_t config::find_total_first_of(std::string_view key, std::size_t start)
 {
 	assert(start <= ordered_children_.size());
 	const std::size_t npos = static_cast<std::size_t>(-1);
@@ -508,7 +508,7 @@ std::size_t config::find_total_first_of(config_key_type key, std::size_t start)
 	return static_cast<std::size_t>(pos - ordered_begin());
 }
 
-config& config::add_child_at_total(config_key_type key, const config &val, std::size_t pos)
+config& config::add_child_at_total(std::string_view key, const config &val, std::size_t pos)
 {
 	assert(pos <= ordered_children_.size());
 	if(pos == ordered_children_.size()) {
@@ -544,7 +544,7 @@ config& config::add_child_at_total(config_key_type key, const config &val, std::
 	return res;
 }
 
-void config::clear_children_impl(config_key_type key)
+void config::clear_children_impl(std::string_view key)
 {
 	child_map::iterator i = children_.find(key);
 	if(i == children_.end())
@@ -554,7 +554,7 @@ void config::clear_children_impl(config_key_type key)
 	children_.erase(i);
 }
 
-void config::splice_children(config& src, config_key_type key)
+void config::splice_children(config& src, std::string_view key)
 {
 	child_map::iterator i_src = src.children_.find(key);
 	if(i_src == src.children_.end()) {
@@ -579,7 +579,7 @@ void config::splice_children(config& src, config_key_type key)
 	}
 }
 
-void config::recursive_clear_value(config_key_type key)
+void config::recursive_clear_value(std::string_view key)
 {
 	map_erase_key(values_, key);
 
@@ -619,7 +619,7 @@ config::all_children_iterator config::erase(const config::all_children_iterator&
 	return all_children_iterator(remove_child(i.i_->pos, i.i_->index));
 }
 
-void config::remove_child(config_key_type key, std::size_t index)
+void config::remove_child(std::string_view key, std::size_t index)
 {
 	child_map::iterator i = children_.find(key);
 	if(i == children_.end() || index >= i->second.size()) {
@@ -630,7 +630,7 @@ void config::remove_child(config_key_type key, std::size_t index)
 	remove_child(i, index);
 }
 
-void config::remove_children(config_key_type key, const std::function<bool(const config&)>& p)
+void config::remove_children(std::string_view key, const std::function<bool(const config&)>& p)
 {
 	child_map::iterator pos = children_.find(key);
 	if(pos == children_.end()) {
@@ -650,7 +650,7 @@ void config::remove_children(config_key_type key, const std::function<bool(const
 	}
 }
 
-const config::attribute_value& config::operator[](config_key_type key) const
+const config::attribute_value& config::operator[](std::string_view key) const
 {
 	const attribute_map::const_iterator i = values_.find(key);
 	if(i != values_.end()) {
@@ -661,19 +661,19 @@ const config::attribute_value& config::operator[](config_key_type key) const
 	return empty_attribute;
 }
 
-const config::attribute_value* config::get(config_key_type key) const
+const config::attribute_value* config::get(std::string_view key) const
 {
 	attribute_map::const_iterator i = values_.find(key);
 	return i != values_.end() ? &i->second : nullptr;
 }
 
-const config::attribute_value& config::get_or(const config_key_type key, const config_key_type default_key) const
+const config::attribute_value& config::get_or(const std::string_view key, const std::string_view default_key) const
 {
     const config::attribute_value & value = operator[](key);
     return !value.blank() ? value : operator[](default_key);
 }
 
-config::attribute_value& config::operator[](config_key_type key)
+config::attribute_value& config::operator[](std::string_view key)
 {
 	auto res = values_.lower_bound(key);
 
@@ -684,7 +684,7 @@ config::attribute_value& config::operator[](config_key_type key)
 	return res->second;
 }
 
-const config::attribute_value& config::get_old_attribute(config_key_type key, const std::string& old_key, const std::string& in_tag, const std::string& message) const
+const config::attribute_value& config::get_old_attribute(std::string_view key, const std::string& old_key, const std::string& in_tag, const std::string& message) const
 {
 	if(has_attribute(old_key)) {
 		const std::string what = formatter() << "[" << in_tag << "]" << old_key << "=";
@@ -706,7 +706,7 @@ const config::attribute_value& config::get_old_attribute(config_key_type key, co
 	return empty_attribute;
 }
 
-const config::attribute_value& config::get_deprecated_attribute(config_key_type old_key, const std::string& in_tag, DEP_LEVEL level, const std::string& message) const
+const config::attribute_value& config::get_deprecated_attribute(std::string_view old_key, const std::string& in_tag, DEP_LEVEL level, const std::string& message) const
 {
 	if(auto i = values_.find(old_key); i != values_.end()) {
 		const std::string what = formatter() << "[" << in_tag << "]" << old_key << "=";
@@ -760,7 +760,7 @@ config::attr_itors config::attribute_range()
 	return range;
 }
 
-optional_config config::find_child(config_key_type key, const std::string& name, const std::string& value)
+optional_config config::find_child(std::string_view key, const std::string& name, const std::string& value)
 {
 	const child_map::iterator i = children_.find(key);
 	if(i == children_.end()) {
@@ -780,7 +780,7 @@ optional_config config::find_child(config_key_type key, const std::string& name,
 	return utils::nullopt;
 }
 
-config& config::find_mandatory_child(config_key_type key, const std::string &name, const std::string &value)
+config& config::find_mandatory_child(std::string_view key, const std::string &name, const std::string &value)
 {
 	auto res = find_child(key, name, value);
 	if(res) {
@@ -789,7 +789,7 @@ config& config::find_mandatory_child(config_key_type key, const std::string &nam
 	throw error("Cannot find child [" + std::string(key) + "] with " + name + "=" + value);
 }
 
-const config& config::find_mandatory_child(config_key_type key, const std::string &name, const std::string &value) const
+const config& config::find_mandatory_child(std::string_view key, const std::string &name, const std::string &value) const
 {
 	auto res = find_child(key, name, value);
 	if(res) {

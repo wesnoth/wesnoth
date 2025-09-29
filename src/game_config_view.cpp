@@ -23,7 +23,7 @@ static lg::log_domain log_config("config");
 #define LOG_CONFIG LOG_STREAM(info, log_config)
 
 
-config_array_view game_config_view::child_range(config_key_type key) const
+config_array_view game_config_view::child_range(std::string_view key) const
 {
 	config_array_view res;
 	if(cfgs_.size() <= 1 || key != "terrain_graphics") {
@@ -47,7 +47,7 @@ config_array_view game_config_view::child_range(config_key_type key) const
 	return res;
 }
 
-optional_const_config game_config_view::find_child(config_key_type key, const std::string &name, const std::string &value) const
+optional_const_config game_config_view::find_child(std::string_view key, const std::string &name, const std::string &value) const
 {
 	for(const config& cfg : cfgs_) {
 		if(optional_const_config res = cfg.find_child(key, name, value)) {
@@ -58,7 +58,7 @@ optional_const_config game_config_view::find_child(config_key_type key, const st
 	return optional_const_config();
 }
 
-const config& game_config_view::find_mandatory_child(config_key_type key, const std::string &name, const std::string &value) const
+const config& game_config_view::find_mandatory_child(std::string_view key, const std::string &name, const std::string &value) const
 {
 	auto res = find_child(key, name, value);
 	if(res) {
@@ -67,7 +67,7 @@ const config& game_config_view::find_mandatory_child(config_key_type key, const 
 	throw config::error("Cannot find child [" + std::string(key) + "] with " + name + "=" + value);
 }
 
-const config& game_config_view::mandatory_child(config_key_type key) const
+const config& game_config_view::mandatory_child(std::string_view key) const
 {
 	for(const config& cfg : cfgs_) {
 		if(const auto res = cfg.optional_child(key)) {
@@ -77,7 +77,7 @@ const config& game_config_view::mandatory_child(config_key_type key) const
 	throw config::error("missing WML tag [" + std::string(key) + "]");
 }
 
-optional_const_config game_config_view::optional_child(config_key_type key) const
+optional_const_config game_config_view::optional_child(std::string_view key) const
 {
 	for(const config& cfg : cfgs_) {
 		if(const auto res = cfg.optional_child(key)) {
@@ -88,7 +88,7 @@ optional_const_config game_config_view::optional_child(config_key_type key) cons
 }
 
 
-const config& game_config_view::child_or_empty(config_key_type key) const
+const config& game_config_view::child_or_empty(std::string_view key) const
 {
 	for(const config& cfg : cfgs_) {
 		if(const auto res = cfg.optional_child(key)) {
@@ -99,7 +99,7 @@ const config& game_config_view::child_or_empty(config_key_type key) const
 	return cfg;
 }
 
-game_config_view game_config_view::merged_children_view(config_key_type key) const
+game_config_view game_config_view::merged_children_view(std::string_view key) const
 {
 	game_config_view res;
 	for(const config& cfg : cfgs_) {
