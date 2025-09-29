@@ -75,14 +75,14 @@ const char* config::diff_track_attribute = "__diff_track";
 config::config()
 	: values_()
 	, children_()
-	, ordered_children()
+	, ordered_children_()
 {
 }
 
 config::config(const config& cfg)
 	: values_(cfg.values_)
 	, children_()
-	, ordered_children()
+	, ordered_children_()
 {
 	append_children(cfg);
 }
@@ -90,7 +90,7 @@ config::config(const config& cfg)
 config::config(config_key_type child)
 	: values_()
 	, children_()
-	, ordered_children()
+	, ordered_children_()
 {
 	add_child(child);
 }
@@ -114,7 +114,7 @@ config& config::operator=(const config& cfg)
 config::config(config&& cfg) noexcept
 	: values_(std::move(cfg.values_))
 	, children_(std::move(cfg.children_))
-	, ordered_children(std::move(cfg.ordered_children))
+	, ordered_children_(std::move(cfg.ordered_children_))
 {
 }
 
@@ -197,7 +197,7 @@ void config::append(config&& cfg)
 	if(children_.empty()) {
 		//optimisation
 		children_ = std::move(cfg.children_);
-		ordered_children = std::move(cfg.ordered_children);
+		ordered_children_ = std::move(cfg.ordered_children_);
 		cfg.clear_all_children();
 	}
 	else {
@@ -300,7 +300,7 @@ std::size_t config::child_count(config_key_type key) const
 
 std::size_t config::all_children_count() const
 {
-	return ordered_children.size();
+	return ordered_children_.size();
 }
 
 std::size_t config::attribute_count() const
@@ -437,7 +437,7 @@ config& config::add_child(config_key_type key)
 	auto iter = map_get(children_, key);
 	child_list& v = iter->second;
 	v.emplace_back(new config());
-	ordered_children.emplace_back(iter, v.size() - 1);
+	ordered_children_.emplace_back(iter, v.size() - 1);
 	return *v.back();
 }
 
@@ -446,7 +446,7 @@ config& config::add_child(config_key_type key, const config& val)
 	auto iter = map_get(children_, key);
 	child_list& v = iter->second;
 	v.emplace_back(new config(val));
-	ordered_children.emplace_back(iter, v.size() - 1);
+	ordered_children_.emplace_back(iter, v.size() - 1);
 
 	return *v.back();
 }
@@ -456,7 +456,7 @@ config& config::add_child(config_key_type key, config&& val)
 	auto iter = map_get(children_, key);
 	child_list& v = iter->second;
 	v.emplace_back(new config(std::move(val)));
-	ordered_children.emplace_back(iter, v.size() - 1);
+	ordered_children_.emplace_back(iter, v.size() - 1);
 
 	return *v.back();
 }
@@ -475,12 +475,12 @@ config& config::add_child_at(config_key_type key, const config& val, std::size_t
 
 	const child_pos value(iter, index);
 
-	std::vector<child_pos>::iterator ord = ordered_children.begin();
-	for(; ord != ordered_children.end(); ++ord) {
+	std::vector<child_pos>::iterator ord = ordered_children_.begin();
+	for(; ord != ordered_children_.end(); ++ord) {
 		if(ord->pos != value.pos)
 			continue;
 		if(!inserted && ord->index == index) {
-			ord = ordered_children.insert(ord, value);
+			ord = ordered_children_.insert(ord, value);
 			inserted = true;
 		} else if(ord->index >= index) {
 			ord->index++;
@@ -488,7 +488,7 @@ config& config::add_child_at(config_key_type key, const config& val, std::size_t
 	}
 
 	if(!inserted) {
-		ordered_children.push_back(value);
+		ordered_children_.push_back(value);
 	}
 
 	return *v[index];
@@ -496,7 +496,7 @@ config& config::add_child_at(config_key_type key, const config& val, std::size_t
 
 std::size_t config::find_total_first_of(config_key_type key, std::size_t start)
 {
-	assert(start <= ordered_children.size());
+	assert(start <= ordered_children_.size());
 	const std::size_t npos = static_cast<std::size_t>(-1);
 
 	auto pos = std::find_if(ordered_begin() + start, ordered_end(), [&](const config::any_child& can){ return can.key == key; });
@@ -510,20 +510,20 @@ std::size_t config::find_total_first_of(config_key_type key, std::size_t start)
 
 config& config::add_child_at_total(config_key_type key, const config &val, std::size_t pos)
 {
-	assert(pos <= ordered_children.size());
-	if(pos == ordered_children.size()) {
+	assert(pos <= ordered_children_.size());
+	if(pos == ordered_children_.size()) {
 		//optimisation
 		return config::add_child(key, val);
 	}
 
-	auto end = ordered_children.end();
-	auto pos_it = ordered_children.begin() + pos;
+	auto end = ordered_children_.end();
+	auto pos_it = ordered_children_.begin() + pos;
 	auto next = std::find_if(pos_it, end,[&](const child_pos& p){ return p.pos->first == key; });
 
 	if(next == end) {
 		config& res = config::add_child(key, val);
 		//rotate the just inserted element to position pos.
-		std::rotate(ordered_children.begin() + pos, ordered_children.end() - 1, ordered_children.end());
+		std::rotate(ordered_children_.begin() + pos, ordered_children_.end() - 1, ordered_children_.end());
 		return res;
 	}
 
@@ -539,8 +539,8 @@ config& config::add_child_at_total(config_key_type key, const config &val, std::
 		}
 	}
 
-	//finally insert our new child in ordered_children.
-	ordered_children.insert(pos_it, { pl, index });
+	//finally insert our new child in ordered_children_.
+	ordered_children_.insert(pos_it, { pl, index });
 	return res;
 }
 
@@ -550,7 +550,7 @@ void config::clear_children_impl(config_key_type key)
 	if(i == children_.end())
 		return;
 
-	utils::erase_if(ordered_children, [&i](const config::child_pos& pos) { return pos.pos == i; });
+	utils::erase_if(ordered_children_, [&i](const config::child_pos& pos) { return pos.pos == i; });
 	children_.erase(i);
 }
 
@@ -561,7 +561,7 @@ void config::splice_children(config& src, config_key_type key)
 		return;
 	}
 
-	utils::erase_if(src.ordered_children, [&i_src](const config::child_pos& pos) { return pos.pos == i_src; });
+	utils::erase_if(src.ordered_children_, [&i_src](const config::child_pos& pos) { return pos.pos == i_src; });
 
 	auto i_dst = map_get(children_, key);
 	child_list& dst = i_dst->second;
@@ -575,7 +575,7 @@ void config::splice_children(config& src, config_key_type key)
 	// key might be a reference to i_src->first, so it is no longer usable.
 
 	for(std::size_t j = before; j < dst.size(); ++j) {
-		ordered_children.emplace_back(i_dst, j);
+		ordered_children_.emplace_back(i_dst, j);
 	}
 }
 
@@ -595,13 +595,13 @@ std::vector<config::child_pos>::iterator config::remove_child(const child_map::i
 	/* Find the position with the correct index and decrement all the
 	   indices in the ordering that are above this index. */
 	std::size_t found = 0;
-	for(child_pos& p : ordered_children) {
+	for(child_pos& p : ordered_children_) {
 		if(p.pos != pos) {
 			continue;
 		}
 
 		if(p.index == index) {
-			found = &p - &ordered_children.front();
+			found = &p - &ordered_children_.front();
 		} else if(p.index > index) {
 			--p.index;
 		}
@@ -611,7 +611,7 @@ std::vector<config::child_pos>::iterator config::remove_child(const child_map::i
 	pos->second.erase(pos->second.begin() + index);
 
 	// Erase from the ordering and return the next position.
-	return ordered_children.erase(ordered_children.begin() + found);
+	return ordered_children_.erase(ordered_children_.begin() + found);
 }
 
 config::all_children_iterator config::erase(const config::all_children_iterator& i)
@@ -803,14 +803,14 @@ void config::clear()
 	// No validity check for this function.
 	children_.clear();
 	values_.clear();
-	ordered_children.clear();
+	ordered_children_.clear();
 }
 
 void config::clear_all_children()
 {
 	// No validity check for this function.
 	children_.clear();
-	ordered_children.clear();
+	ordered_children_.clear();
 }
 
 void config::clear_attributes()
@@ -836,47 +836,47 @@ config::const_all_children_iterator::reference config::const_all_children_iterat
 
 config::const_all_children_iterator config::ordered_begin() const
 {
-	return const_all_children_iterator(ordered_children.cbegin());
+	return const_all_children_iterator(ordered_children_.cbegin());
 }
 
 config::const_all_children_iterator config::ordered_cbegin() const
 {
-	return const_all_children_iterator(ordered_children.cbegin());
+	return const_all_children_iterator(ordered_children_.cbegin());
 }
 
 config::const_all_children_iterator config::ordered_end() const
 {
-	return const_all_children_iterator(ordered_children.cend());
+	return const_all_children_iterator(ordered_children_.cend());
 }
 
 config::const_all_children_iterator config::ordered_cend() const
 {
-	return const_all_children_iterator(ordered_children.cend());
+	return const_all_children_iterator(ordered_children_.cend());
 }
 
 config::const_all_children_itors config::all_children_range() const
 {
 	return const_all_children_itors(
-		const_all_children_iterator(ordered_children.cbegin()),
-		const_all_children_iterator(ordered_children.cend())
+		const_all_children_iterator(ordered_children_.cbegin()),
+		const_all_children_iterator(ordered_children_.cend())
 	);
 }
 
 config::all_children_iterator config::ordered_begin()
 {
-	return all_children_iterator(ordered_children.begin());
+	return all_children_iterator(ordered_children_.begin());
 }
 
 config::all_children_iterator config::ordered_end()
 {
-	return all_children_iterator(ordered_children.end());
+	return all_children_iterator(ordered_children_.end());
 }
 
 config::all_children_itors config::all_children_range()
 {
 	return all_children_itors(
-		all_children_iterator(ordered_children.begin()),
-		all_children_iterator(ordered_children.end())
+		all_children_iterator(ordered_children_.begin()),
+		all_children_iterator(ordered_children_.end())
 	);
 }
 
@@ -1102,8 +1102,8 @@ void config::merge_with(const config& c)
 	merge_attributes(c);
 
 	// Now merge shared tags
-	all_children_iterator::Itor i, i_end = ordered_children.end();
-	for(i = ordered_children.begin(); i != i_end; ++i) {
+	all_children_iterator::Itor i, i_end = ordered_children_.end();
+	for(i = ordered_children_.begin(); i != i_end; ++i) {
 		const std::string& tag = i->pos->first;
 		const child_map::const_iterator j = c.children_.find(tag);
 
@@ -1310,7 +1310,7 @@ void config::swap(config& cfg) noexcept
 {
 	values_.swap(cfg.values_);
 	children_.swap(cfg.children_);
-	ordered_children.swap(cfg.ordered_children);
+	ordered_children_.swap(cfg.ordered_children_);
 }
 
 void swap(config& lhs, config& rhs) noexcept
