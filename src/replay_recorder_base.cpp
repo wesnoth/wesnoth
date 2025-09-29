@@ -26,7 +26,7 @@ replay_recorder_base::~replay_recorder_base(void)
 {
 }
 
-void replay_recorder_base::swap(replay_recorder_base& other)
+void replay_recorder_base::swap(replay_recorder_base& other) noexcept
 {
 	commands_.swap(other.commands_);
 	std::swap(pos_, other.pos_);
