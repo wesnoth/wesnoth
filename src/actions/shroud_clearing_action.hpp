@@ -23,19 +23,16 @@ namespace actions
 /** base class for classes that clear srhoud (move/recruit/recall) */
 struct shroud_clearing_action
 {
-
 	shroud_clearing_action(const config& cfg)
-		: route()
+		: route(read_locations(cfg))
 		, view_info(cfg.child_or_empty("unit"))
 	{
-		read_locations(cfg, route);
 	}
 
 	shroud_clearing_action(const unit_const_ptr u, const map_location& loc)
 		: route(1, loc)
 		, view_info(*u)
 	{
-
 	}
 
 	typedef std::vector<map_location> route_t;
@@ -44,7 +41,6 @@ struct shroud_clearing_action
 		: route(begin, end)
 		, view_info(*u)
 	{
-
 	}
 
 	/**
