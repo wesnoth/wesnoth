@@ -788,17 +788,17 @@ public:
 	/** In-order iteration over all children. */
 	template<typename Self>
 	auto all_children_view(this Self&& self)
-	{ return self.ordered_children | std::views::transform(&config::any_tag_view<Self>); }
+	{ return self.ordered_children_ | std::views::transform(&config::any_tag_view<Self>); }
 
 #else
 
 	/** In-order iteration over all children. */
 	auto all_children_view() const
-	{ return ordered_children | utils::views::transform(&config::any_tag_view<const config&>); }
+	{ return ordered_children_ | utils::views::transform(&config::any_tag_view<const config&>); }
 
 	/** In-order iteration over all children. */
 	auto all_children_view()
-	{ return ordered_children | utils::views::transform(&config::any_tag_view<config&>); }
+	{ return ordered_children_ | utils::views::transform(&config::any_tag_view<config&>); }
 
 #endif // __cpp_explicit_this_parameter
 
@@ -918,7 +918,7 @@ private:
 	/** A list of all children of this node. */
 	child_map children_;
 
-	std::vector<child_pos> ordered_children;
+	std::vector<child_pos> ordered_children_;
 };
 
 
