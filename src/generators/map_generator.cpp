@@ -27,20 +27,10 @@ static lg::log_domain log_mapgen("mapgen");
 #define ERR_NG LOG_STREAM(err, log_mapgen)
 #define LOG_NG LOG_STREAM(info, log_mapgen)
 
-config map_generator::create_scenario(utils::optional<uint32_t> randomseed)
-{
-	config res;
-	res["map_data"] = create_map(randomseed);
-	return res;
-}
-std::string map_generator::create_map(utils::optional<uint32_t> randomseed)
-{
-	return create_scenario(randomseed)["map_data"];
-}
 /**
 	by default we don't allow user configs.
 */
-bool map_generator::allow_user_config() const
+bool map_generator::allow_user_config()
 {
 	return false;
 }

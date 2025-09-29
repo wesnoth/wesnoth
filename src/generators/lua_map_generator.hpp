@@ -24,13 +24,11 @@
 
 class lua_map_generator : public map_generator {
 public:
-	lua_map_generator(const config & cfg, const config* vars);
+	lua_map_generator(const std::string& file_name, const config & cfg, const config* vars);
 
-	bool allow_user_config() const override { return !user_config_.empty(); }
+	bool allow_user_config() override;
 
 	std::string name() const override { return "lua"; }
-
-	std::string id() const { return id_; }
 
 	std::string config_name() const override { return config_name_; }
 
@@ -39,11 +37,8 @@ public:
 	virtual config create_scenario(utils::optional<uint32_t> randomseed) override;
 
 private:
-	std::string id_, config_name_;
-
-	std::string user_config_;
-	std::string create_map_;
-	std::string create_scenario_;
+	std::string config_name_;
+	std::string file_name_;
 
 	mapgen_lua_kernel lk_;
 

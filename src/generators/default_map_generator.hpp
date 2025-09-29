@@ -43,7 +43,7 @@ class default_map_generator : public map_generator
 public:
 	default_map_generator(const config &game_config);
 
-	bool allow_user_config() const override;
+	bool allow_user_config() override;
 	void user_config() override;
 
 	std::string name() const override;

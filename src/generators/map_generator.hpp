@@ -39,7 +39,7 @@ public:
 	 * Returns true if the map generator has an interactive screen,
 	 * which allows the user to modify how the generator behaves.
 	 */
-	virtual bool allow_user_config() const;
+	virtual bool allow_user_config();
 
 	/**
 	 * Display the interactive screen, which allows the user
@@ -66,5 +66,5 @@ public:
 	 */
 	virtual std::string create_map(utils::optional<uint32_t> randomseed = {}) = 0;
 
-	virtual config create_scenario(utils::optional<uint32_t> randomseed = {});
+	virtual config create_scenario(utils::optional<uint32_t> randomseed = {}) = 0;
 };

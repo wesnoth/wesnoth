@@ -122,7 +122,7 @@ public:
 		log_ << font::escape_text(lk.get_log().str()) << std::flush;
 		raw_log_ << lk.get_log().str() << std::flush;
 		// Lua kernel sends log strings to this function
-		L_.set_external_log([this](const std::string & str) {
+		L_.set_external_log([this](std::string_view str) {
 			log_ << font::escape_text(str);
 			raw_log_ << str;
 		});
