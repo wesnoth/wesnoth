@@ -22,7 +22,6 @@
 #include "config.hpp"
 
 #include "formatter.hpp"
-#include "lexical_cast.hpp"
 #include "log.hpp"
 #include "deprecation.hpp"
 #include "game_version.hpp"
@@ -1032,7 +1031,7 @@ void config::apply_diff(const config& diff, bool track /* = false */)
 	}
 
 	for(const config& i : diff.child_range("change_child")) {
-		const std::size_t index = lexical_cast<std::size_t>(i["index"].str());
+		const std::size_t index = i["index"].to_size_t();
 		for(const auto [key, cfg] : i.all_children_view()) {
 			if(key.empty()) {
 				continue;
@@ -1048,7 +1047,7 @@ void config::apply_diff(const config& diff, bool track /* = false */)
 	}
 
 	for(const config& i : diff.child_range("insert_child")) {
-		const auto index = lexical_cast<std::size_t>(i["index"].str());
+		const std::size_t index = i["index"].to_size_t();
 		for(const auto [key, cfg] : i.all_children_view()) {
 			config& inserted = add_child_at(key, cfg, index);
 			if(track) {
@@ -1058,7 +1057,7 @@ void config::apply_diff(const config& diff, bool track /* = false */)
 	}
 
 	for(const config& i : diff.child_range("delete_child")) {
-		const auto index = lexical_cast<std::size_t>(i["index"].str());
+		const std::size_t index = i["index"].to_size_t();
 		for(const auto [key, cfg] : i.all_children_view()) {
 			if(!track) {
 				remove_child(key, index);
@@ -1078,14 +1077,14 @@ void config::clear_diff_track(const config& diff)
 {
 	remove_attribute(diff_track_attribute);
 	for(const config& i : diff.child_range("delete_child")) {
-		const auto index = lexical_cast<std::size_t>(i["index"].str());
+		const std::size_t index = i["index"].to_size_t();
 		for(const auto [key, cfg] : i.all_children_view()) {
 			remove_child(key, index);
 		}
 	}
 
 	for(const config& i : diff.child_range("change_child")) {
-		const std::size_t index = lexical_cast<std::size_t>(i["index"].str());
+		const std::size_t index = i["index"].to_size_t();
 		for(const auto [key, cfg] : i.all_children_view()) {
 			if(key.empty()) {
 				continue;
