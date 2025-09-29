@@ -169,6 +169,7 @@ rect halo_impl::effect::get_draw_location()
 /** Update the current location, animation frame, etc. */
 void halo_impl::effect::update()
 {
+	images_.update_last_draw_time(); //name is a bit missleading, it needs to be called on every update to keep the timer on track.
 	double zf = disp->get_zoom_factor();
 
 	if(map_loc_.x != -1 && map_loc_.y != -1) {
@@ -235,9 +236,6 @@ bool halo_impl::effect::render()
 {
 	// This should only be set if we actually draw something
 	last_draw_loc_ = {};
-
-	// Update animation frame, even if we didn't actually draw it
-	images_.update_last_draw_time();
 
 	if(!visible()) {
 		return false;
@@ -361,11 +359,6 @@ void halo_impl::update()
 	}
 	deleted_haloes.clear();
 
-	// Update the location and animation frame of the remaining halos
-	for(auto& [id, halo] : haloes) {
-		halo.update();
-	}
-
 	// Invalidate any animated halos which need updating
 	for(int id : changing_haloes) {
 		auto& halo = haloes.at(id);
@@ -373,6 +366,11 @@ void halo_impl::update()
 			DBG_HL << "invalidating changed halo " << id;
 			halo.queue_redraw();
 		}
+	}
+
+	// Update the location and animation frame of the remaining halos
+	for(auto& [id, halo] : haloes) {
+		halo.update();
 	}
 }
 
