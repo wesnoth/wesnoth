@@ -119,9 +119,7 @@ std::vector<std::string> square_parenthetical_split(const std::string& val,
 		const std::string& right,const int flags)
 {
 	std::vector< std::string > res;
-	std::string lp=left;
 
-	//Early returns -->
 	if ((flags & REMOVE_EMPTY) && val.empty()) {
 		return res;
 	}
@@ -134,15 +132,7 @@ std::vector<std::string> square_parenthetical_split(const std::string& val,
 		return res;
 	}
 
-	// If the string contains no complex markers and no white spaces, return the string immediately.
-	// Added since many static images are treated as animations and run through here.
-	const std::string complex_markers = left + separator + "*~" + " \t\n\r\f\v";
-	if (val.find_first_of(complex_markers) == std::string::npos)
-	{
-		return { val };
-	}
-	//Early returns <--
-
+	std::string lp = left;
 	std::string rp = right;
 	std::vector<char> part;
 	bool in_parenthesis = false;
@@ -157,9 +147,21 @@ std::vector<std::string> square_parenthetical_split(const std::string& val,
 		while (i1 != val.end() && portable_isspace(*i1))
 			++i1;
 	}
-	if (i1 == val.end()) return res; //Early return
+	if (i1 == val.end()) return res;
 	i2=i1;
 	j1=i1;
+
+	// If the string contains no animation markers, return the string immediately.
+	// Added since many static images are treated as animations and run through here.
+	const std::string complex_markers = separator + "[";
+	if (val.find_first_of(complex_markers) == std::string::npos)
+	{
+		std::string mutable_val(i1, val.end());
+		if (flags & STRIP_SPACES) {
+			boost::trim_right(mutable_val);
+		}
+		return { mutable_val };
+	}
 
 	while (true) {
 		if(i2 == val.end() || (!in_parenthesis && *i2 == separator)) {
