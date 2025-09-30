@@ -1377,9 +1377,22 @@ double attack_type::modified_damage() const
 
 int attack_type::modified_chance_to_hit(int cth, bool special_only) const
 {
-	int parry = other_attack_ ? other_attack_->parry() : 0;
+	//create two unit_ability_list for traditionnal [chance_to_hit] and 'base_cth' version.
 	unit_ability_list chance_to_hit_list = special_only ? get_specials("chance_to_hit") : get_specials_and_abilities("chance_to_hit");
-	cth = std::clamp(cth + accuracy_ - parry, 0, 100);
+	unit_ability_list base_cth_list;
+	//erase [chance_to_hit] with base_cth attribute, who will be added to base_cth_list.
+	utils::erase_if(chance_to_hit_list, [&](const unit_ability& i) {
+		if((*i.ability_cfg)["base_cth"].to_bool()) {
+			base_cth_list.emplace_back(i);
+		}
+		return (*i.ability_cfg)["base_cth"].to_bool();
+	});
+	int parry = other_attack_ ? other_attack_->parry() : 0;
+	//modify base cth by 'accuracy' and 'parry' attributes when used.
+	cth = std::clamp(cth  + accuracy_ - parry, 0, 100);
+	//calculation of new cth by [chance_to_hit]base_cth when exist.
+	cth = std::clamp(composite_value(base_cth_list, cth), 0, 100);
+	//use modified cth like base by traditionnal [chance_to_hit] and return final result.
 	return composite_value(chance_to_hit_list, cth);
 }
 
