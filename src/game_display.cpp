@@ -469,9 +469,7 @@ void game_display::draw_movement_info(const map_location& loc)
 						wb->get_temp_move_unit() : context().units().find(route_.steps.front());
 		if(un != context().units().end()) {
 			// Display the def% of this terrain
-			int move_cost = un->movement_cost(context().map().get_terrain(loc));
-			int def = (move_cost == movetype::UNREACHABLE ?
-						0 : 100 - un->defense_modifier(context().map().get_terrain(loc), loc));
+			int def = 100 - un->defense_modifier(context().map().get_terrain(loc), loc);
 			std::stringstream def_text;
 			def_text << def << "%";
 
@@ -514,9 +512,7 @@ void game_display::draw_movement_info(const map_location& loc)
 		const unit_map::const_iterator mouseoveredUnit = resources::gameboard->find_visible_unit(mouseoverHex_,viewing_team());
 		if(selectedUnit != context().units().end() && mouseoveredUnit == context().units().end()) {
 			// Display the def% of this terrain
-			int move_cost = selectedUnit->movement_cost(context().map().get_terrain(loc));
-			int def = (move_cost == movetype::UNREACHABLE ?
-						0 : 100 - selectedUnit->defense_modifier(context().map().get_terrain(loc), loc));
+			int def = 100 - selectedUnit->defense_modifier(context().map().get_terrain(loc), loc);
 			std::stringstream def_text;
 			def_text << def << "%";
 
