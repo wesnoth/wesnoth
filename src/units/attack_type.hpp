@@ -83,7 +83,7 @@ public:
 	bool has_special(const std::string& special, bool simple_check = false) const;
 	unit_ability_list get_specials(const std::string& special) const;
 	std::vector<std::pair<t_string, t_string>> special_tooltips(boost::dynamic_bitset<>* active_list = nullptr) const;
-	std::vector<std::pair<t_string, t_string>> abilities_special_tooltips(boost::dynamic_bitset<>* active_list = nullptr) const;
+	std::vector<std::pair<t_string, t_string>> abilities_special_tooltips(boost::dynamic_bitset<>* active_list) const;
 	std::string weapon_specials() const;
 	std::string weapon_specials_value(const std::set<std::string>& checking_tags) const;
 
@@ -306,6 +306,7 @@ private:
 	 * @param whom determine if unit affected or not by special ability.
 	 * @param tag_name The special ability type who is being checked.
 	 * @param leader_bool If true, [leadership] abilities are checked.
+	 * @param just_teaching when true, returns inactive specials, when false the special is required to be active.
 	 */
 	static bool check_self_abilities_impl(
 		const const_attack_ptr& self_attack,
@@ -315,7 +316,8 @@ private:
 		const map_location& loc,
 		AFFECTS whom,
 		const std::string& tag_name,
-		bool leader_bool=false
+		bool leader_bool=false,
+		bool just_teaching = false
 	);
 
 
@@ -333,6 +335,7 @@ private:
 	 * @param whom determine if unit affected or not by special ability.
 	 * @param tag_name The special ability type who is being checked.
 	 * @param leader_bool If true, [leadership] abilities are checked.
+	 * @param just_teaching when true, returns inactive specials, when false the special is required to be active.
 	 */
 	static bool check_adj_abilities_impl(
 		const const_attack_ptr& self_attack,
@@ -346,7 +349,8 @@ private:
 		const map_location& from_loc,
 		AFFECTS whom,
 		const std::string& tag_name,
-		bool leader_bool = false
+		bool leader_bool = false,
+		bool just_teaching = false
 	);
 
 	static bool special_active_impl(
@@ -355,7 +359,8 @@ private:
 		const config& special,
 		AFFECTS whom,
 		const std::string& tag_name,
-		bool in_abilities_tag = false
+		bool in_abilities_tag = false,
+		bool just_teaching = false
 	);
 
 	/** has_ability_impl : return an boolean value for checking of activities of abilities used like weapon
