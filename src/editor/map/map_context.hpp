@@ -515,7 +515,7 @@ private:
 public:
 
 	overlay_map& get_overlays() { return overlays_; }
-
+	void set_overlays(overlay_map overlays) { overlays_ = std::move(overlays); }
 };
 
 
