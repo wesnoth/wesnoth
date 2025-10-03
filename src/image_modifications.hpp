@@ -489,32 +489,27 @@ private:
 };
 
 /**
- * Offset (OFFSET) modification.
- * Moves the image by (dx, dy), by expanding some sides with transparent pixels.
+ * PAD modification.
+ * Expands the image by adding transparent pixels to its top, right, bottom, and left sides.
  */
-class offset_modification : public modification
+class pad_modification : public modification
 {
 public:
-	offset_modification(int dx, int dy)
-		: dx_(dx)
-		, dy_(dy)
+	pad_modification(int top, int right, int bottom, int left)
+		: top_{top}
+		, right_{right}
+		, bottom_{bottom}
+		, left_{left}
 	{
 	}
 
 	virtual void operator()(surface& src) const override;
 
-	int get_dx() const
-	{
-		return dx_;
-	}
-	int get_dy() const
-	{
-		return dy_;
-	}
-
 private:
-	int dx_;
-	int dy_;
+	int top_;
+	int right_;
+	int bottom_;
+	int left_;
 };
 
 /**

@@ -247,21 +247,24 @@ static std::string parse_name(std::string::const_iterator& beg, std::string::con
 
 static std::pair<std::string, std::string> parse_attribute(std::string::const_iterator& beg, std::string::const_iterator end, bool allow_empty)
 {
-	std::string attr = parse_name(beg, end), value;
+	std::string attr = parse_name(beg, end);
 	if(attr.empty()) {
 		throw parse_error(beg, "missing attribute name");
 	}
 	while(isspace(*beg)) ++beg;
+
 	if(*beg != '=') {
 		if(allow_empty) {
 			// The caller expects beg to point to the last character of the attribute upon return.
 			// But in this path, we're now pointing to the character AFTER that.
 			--beg;
-			return {attr, value};
+			return {attr, ""};
 		} else throw parse_error(beg, "attribute missing value in old-style tag");
 	}
 	++beg;
 	while(isspace(*beg)) ++beg;
+
+	std::string value;
 	if(*beg == '\'' || *beg == '"') {
 		config res = parse_text_until(beg, end, *beg++);
 		if(res.has_child("character_entity")) {

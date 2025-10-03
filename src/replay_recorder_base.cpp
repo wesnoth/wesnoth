@@ -20,16 +20,13 @@ replay_recorder_base::replay_recorder_base(void)
 	, commands_()
 	, pos_(0)
 {
-
 }
-
 
 replay_recorder_base::~replay_recorder_base(void)
 {
 }
 
-
-void replay_recorder_base::swap(replay_recorder_base& other)
+void replay_recorder_base::swap(replay_recorder_base& other) noexcept
 {
 	commands_.swap(other.commands_);
 	std::swap(pos_, other.pos_);
@@ -158,7 +155,7 @@ bool replay_recorder_base::is_ancestor(const config& other_replay) const
 	return true;
 }
 
-void swap(replay_recorder_base& lhs, replay_recorder_base& rhs)
+void swap(replay_recorder_base& lhs, replay_recorder_base& rhs) noexcept
 {
 	lhs.swap(rhs);
 }

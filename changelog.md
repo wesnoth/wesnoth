@@ -13,6 +13,7 @@
 ### Units
 ### User interface
 ### WML Engine
+   * ~PAD() added as an IPF (image path function). It allows the sides of an image to be padded with transparent pixels. Can be used to artificially offset images.
 ### Miscellaneous and Bug Fixes
 
 ## Version 1.19.16

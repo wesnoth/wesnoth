@@ -248,9 +248,8 @@ sourcespec::sourcespec(const config& cfg)
 	, faderange_(cfg["fade_range"].to_int(14))
 	, check_fogged_(cfg["check_fogged"].to_bool(true))
 	, check_shrouded_(cfg["check_shrouded"].to_bool(true))
-	, locations_()
+	, locations_(read_locations(cfg))
 {
-	read_locations(cfg, locations_);
 }
 
 } // namespace soundsource

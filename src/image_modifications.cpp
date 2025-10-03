@@ -448,30 +448,34 @@ void xbrz_modification::operator()(surface& src) const
 	}
 }
 
-void offset_modification::operator()(surface& src) const
+void pad_modification::operator()(surface& src) const
 {
-	if(!src)
-		return;
+	// Calculate the new dimensions of the padded surface
+	const int new_w = src->w + left_ + right_;
+	const int new_h = src->h + top_ + bottom_;
 
-	// Compute new dimensions, doubling (* 2) the growth to compensate for center anchoring
-	int new_w = src->w + std::abs(dx_) * 2;
-	int new_h = src->h + std::abs(dy_) * 2;
+	// Create a new transparent surface with the calculated dimensions
+	surface padded(new_w, new_h);
 
-	// Make a new transparent surface
-	surface shifted(new_w, new_h);
+	// Define the destination rectangle for the original image
+	rect dstrect{
+		left_,
+		top_,
+		0, // These two values are ignored by SDL_BlitSurface, so we set them to 0.
+		0  // The function always blits the entire source surface.
+	};
 
-	// The destination rectangle's position is now just the absolute offset
-	SDL_Rect dstrect;
-	dstrect.x = (dx_ >= 0) ? dx_ * 2 : 0;
-	dstrect.y = (dy_ >= 0) ? dy_ * 2 : 0;
-	dstrect.w = src->w;
-	dstrect.h = src->h;
+	SDL_BlendMode original_blend_mode;
+	SDL_GetSurfaceBlendMode(src, &original_blend_mode);
+	// Set blend mode to none to prevent blending
+	SDL_SetSurfaceBlendMode(src, SDL_BLENDMODE_NONE);
 
-	// Blit original into new
-	SDL_BlitSurface(src, nullptr, shifted, &dstrect);
+	// Blit the original surface onto the new, padded surface
+	SDL_BlitSurface(src, nullptr, padded, &dstrect);
 
-	// Replace source
-	src = shifted;
+	SDL_SetSurfaceBlendMode(padded, original_blend_mode);
+
+	src = padded;
 }
 
 /*
@@ -1093,20 +1097,64 @@ REGISTER_MOD_PARSER(XBRZ, args)
 	return std::make_unique<xbrz_modification>(factor);
 }
 
-// Offset
-REGISTER_MOD_PARSER(OFFSET, args)
+// Pad
+REGISTER_MOD_PARSER(PAD, args)
 {
-	const auto params = utils::split_view(args, ',');
+	int top = 0;
+	int right = 0;
+	int bottom = 0;
+	int left = 0;
 
-	if(params.size() != 2) {
-		ERR_DP << "~OFFSET() requires exactly 2 arguments";
-		return nullptr;
+	// Check for the presence of an '=' sign to determine the parsing mode.
+	if(args.find('=') != std::string_view::npos) {
+		// --- Keyword-Argument Mode ---
+		const auto params = utils::map_split(std::string{args}, ',', '='); // map_split needs a std::string
+
+		// Map valid input strings to the corresponding integer reference
+		const std::map<std::string, int*> alias_map = {
+			{"top", &top},
+			{"t", &top},
+			{"right", &right},
+			{"r", &right},
+			{"bottom", &bottom},
+			{"b", &bottom},
+			{"left", &left},
+			{"l", &left},
+		};
+
+		// Parse and assign values if keywords are valid
+		for(const auto& [key, value] : params) {
+			auto it = alias_map.find(key);
+			if(it != alias_map.end()) {
+				if(utils::optional padding = utils::from_chars<int>(value)) {
+					*it->second = padding.value();
+				} else {
+					ERR_DP << "~PAD() keyword argument '" << key << "' requires a valid integer value. Received: '" << value << "'.";
+					return nullptr;
+				}
+			} else {
+				ERR_DP << "~PAD() found an unknown keyword: '" << key << "'. Valid keywords: top, t, right, r, bottom, b, left, l.";
+				return nullptr;
+			}
+		}
+	} else {
+		// --- Numeric-Argument Mode ---
+		const auto params = utils::split_view(args, ',');
+		if(params.size() != 1) {
+			ERR_DP << "~PAD() takes either 1 numeric argument for the padding on all sides or a comma separated list of '<keyword>=<number>' pairs with available keywords: top, t, right, r, bottom, b, left, l.";
+			return nullptr;
+		}
+
+		// Single integer argument: apply to all sides
+		if(utils::optional padding = utils::from_chars<int>(params[0])) {
+			top = right = bottom = left = padding.value();
+		} else {
+			ERR_DP << "~PAD() numeric argument (pad all sides) requires a single valid integer. Received: '" << params[0] << "'.";
+			return nullptr;
+		}
 	}
 
-	const int dx = utils::from_chars<int>(params[0]).value_or(0);
-	const int dy = utils::from_chars<int>(params[1]).value_or(0);
-
-	return std::make_unique<offset_modification>(dx, dy);
+	return std::make_unique<pad_modification>(top, right, bottom, left);
 }
 
 // Gaussian-like blur

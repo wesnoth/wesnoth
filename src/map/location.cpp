@@ -472,12 +472,7 @@ void write_location_range(const std::set<map_location>& locs, config& cfg)
 	cfg["y"] = y.str();
 }
 
-static map_location read_locations_helper(const std::string& xi, const std::string& yi)
-{
-	return map_location(std::stoi(xi)-1, std::stoi(yi)-1);
-}
-
-void read_locations(const config& cfg, std::vector<map_location>& locs)
+std::vector<map_location> read_locations(const config& cfg)
 {
 	const std::vector<std::string> xvals = utils::split(cfg["x"]);
 	const std::vector<std::string> yvals = utils::split(cfg["y"]);
@@ -486,7 +481,13 @@ void read_locations(const config& cfg, std::vector<map_location>& locs)
 		throw std::invalid_argument("Number of x and y coordinates do not match.");
 	}
 
-	std::transform(xvals.begin(), xvals.end(), yvals.begin(), std::back_inserter(locs), &read_locations_helper);
+	std::vector<map_location> locs;
+	std::transform(xvals.begin(), xvals.end(), yvals.begin(), std::back_inserter(locs),
+		[](const std::string& xi, const std::string& yi) -> map_location {
+			return {std::stoi(xi), std::stoi(yi), wml_loc{}};
+		});
+
+	return locs;
 }
 
 void write_locations(const std::vector<map_location>& locs, config& cfg)
