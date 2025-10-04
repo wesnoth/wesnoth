@@ -51,7 +51,7 @@ public:
 	 * If it is not attached to an item, the location should be set to -1, -1
 	 */
 	handle add(int x, int y, const std::string& image, const map_location& loc,
-			halo::ORIENTATION orientation=NORMAL, bool infinite=true);
+		halo::ORIENTATION orientation=NORMAL, bool infinite=true, float parallax_mult = 1.0f);
 
 	/** Set the position of an existing haloing effect, according to its handle. */
 	void set_location(const handle & h, int x, int y);
