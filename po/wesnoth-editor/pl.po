@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.5-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-05-20 17:25-0500\n"
-"PO-Revision-Date: 2023-12-04 10:40+0100\n"
+"PO-Revision-Date: 2025-09-27 14:04+0200\n"
 "Last-Translator: Jarom <jaromirb@op.pl>\n"
 "Language-Team: none\n"
 "Language: pl\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-Basepath: /usr/local/wesnoth\n"
-"X-Generator: Poedit 3.4.1\n"
+"X-Generator: Poedit 3.7\n"
 "X-Poedit-SearchPath-0: /usr/local/wesnoth\n"
 
 #. [brush]: id=brush-1
@@ -371,10 +371,8 @@ msgstr "Błąd"
 
 #: src/editor/map/context_manager.cpp:713
 #: src/editor/map/context_manager.cpp:762
-#, fuzzy
-#| msgid "Do you really want to quit?"
 msgid "Do you really want to save $type1 in $type2 folder?"
-msgstr "Czy naprawdę chcesz wyjść?"
+msgstr "Czy na pewno chcesz zapisać $type1 w folderze $type2?"
 
 #: src/editor/map/context_manager.cpp:721
 #: src/editor/map/context_manager.cpp:939
@@ -412,8 +410,10 @@ msgid "Scenario saved."
 msgstr "Scenariusz zapisany."
 
 #: src/editor/map/context_manager.cpp:915
+#, fuzzy
+#| msgid "Map saved"
 msgid "Map saved."
-msgstr "Mapa zapisana."
+msgstr "Mapa zapisana"
 
 #: src/editor/map/context_manager.cpp:988
 msgid "Loaded embedded map data"
@@ -446,8 +446,10 @@ msgid "Empty file"
 msgstr "Pusty plik mapy"
 
 #: src/editor/map/map_context.cpp:196
+#, fuzzy
+#| msgid "File does not have .map, .cfg, or .mask extension"
 msgid "File does not have .map or .cfg extension"
-msgstr "Plik nie ma rozszerzenia .map ani .cfg"
+msgstr "Plik nie ma rozszerzenia .map, .cfg ani .mask"
 
 #: src/editor/map/map_context.cpp:242
 msgid ""
@@ -458,9 +460,12 @@ msgstr ""
 "istniejący plik"
 
 #: src/editor/map/map_context.cpp:261
+#, fuzzy
+#| msgid ""
+#| "Found the characters ‘<<’ indicating inline lua is present — aborting"
 msgid "Found the characters '<<' indicating inline lua is present - aborting"
 msgstr ""
-"Znaleziono znaki \"<<\" wskazujące, że w pliku znajdują się fragmenty lua - "
+"Znaleziono znaki \"<<\" wskazujące, że w pliku znajdują się fragmenty lua — "
 "operacja została przerwana"
 
 #: src/editor/map/map_context.cpp:266
@@ -577,6 +582,35 @@ msgstr "Wybierz plik"
 #: src/gui/dialogs/editor/custom_tod.cpp:164
 msgid "Select"
 msgstr "Wybierz"
+
+#~ msgid "Unit"
+#~ msgstr "Jednostka"
+
+#~ msgid "Add-on Files"
+#~ msgstr "Pliki dodatków"
+
+#~ msgid "Opening files is not supported, contact your packager"
+#~ msgstr ""
+#~ "Otwieranie plików nie jest wspierane, skontaktuj się z osobą "
+#~ "odpowiedzialną za pakowanie twojej wersji"
+
+#~ msgid "<span color='#66ff00'><span face='DejaVuSans'>✔</span> $msg</span>"
+#~ msgstr "<span color='#66ff00'><span face='DejaVuSans'>✔</span> $msg</span>"
+
+#~ msgid "<span color='red'><span face='DejaVuSans'>✘</span> $msg</span>"
+#~ msgstr "<span color='red'><span face='DejaVuSans'>✘</span> $msg</span>"
+
+#~ msgid "Load Map or Scenario"
+#~ msgstr "Załaduj mapę lub scenariusz"
+
+#~ msgid "Could not save time schedule: $msg"
+#~ msgstr "Zapisanie schematu pory dnia nie powiodło się: $msg"
+
+#~ msgid "Time schedule saved."
+#~ msgstr "Zapisano schemat pory dnia."
+
+#~ msgid "Left-click: Place item $item | Right-click to remove"
+#~ msgstr "LPM: Umieść przedmiot $item | PPM żeby usunąć"
 
 #~ msgid "player^None"
 #~ msgstr "Brak"
