@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-05-20 17:25-0500\n"
-"PO-Revision-Date: 2024-05-22 18:11+0800\n"
+"PO-Revision-Date: 2025-10-03 15:27+0800\n"
 "Last-Translator: vimacs <vimacs.hacks@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.6\n"
 
 #. [damage_type]: id=arcane_damage
 #: data/campaigns/Eastern_Invasion/utils/abilities.cfg:548
@@ -7545,24 +7545,18 @@ msgstr ""
 
 #. [race]: id=raven
 #: data/core/units.cfg:351
-#, fuzzy
-#| msgid "race^Dwarves"
 msgid "race^Raven"
-msgstr "矮人"
+msgstr "渡鸦"
 
 #. [race]: id=raven
 #: data/core/units.cfg:352
-#, fuzzy
-#| msgid "race+female^Drake"
 msgid "race+female^Raven"
-msgstr "龙人"
+msgstr "渡鸦"
 
 #. [race]: id=raven
 #: data/core/units.cfg:353
-#, fuzzy
-#| msgid "race^Dwarves"
 msgid "race^Ravens"
-msgstr "矮人"
+msgstr "渡鸦"
 
 #. [race]: id=raven
 #: data/core/units.cfg:354
@@ -7583,6 +7577,17 @@ msgid ""
 "farmers struggle to keep ravens away from freshly sown seeds, but others are "
 "happy to have them around as sentries."
 msgstr ""
+"渡鸦是一般的食腐动物，经常与猎人或捕食者联系，希望分享猎物。它们没有狮鹫或猛"
+"禽那样强壮的喙或爪子，但由于它们的智力和识别任何优势的能力，它们仍然可以是一"
+"种威胁。\n"
+"\n"
+"在战斗结束后，死伤者是渡鸦的盛宴，因此渡鸦对战败者的盟友来说是一种滋扰，但一"
+"些胜利者将其视为军事仪式的一部分。兽人和人类具有的暴力和大规模，使得这些种族"
+"在这种情况下与渡鸦不断互动。因此，这些鸟已成为与战争有关的寓言、譬喻和迷信中"
+"的角色。\n"
+"\n"
+"作为聪明的食腐动物，渡鸦不需要靠战争的死亡来生存。一些农民努力让渡鸦远离新鲜"
+"播种的种子，但其他人很乐意让它们作为哨兵出现在周围。"
 
 #. [race]: id=troll
 #: data/core/units.cfg:365
@@ -7846,19 +7851,17 @@ msgstr "+1最大生命值"
 #. [lua]: wesnoth.interface.game_display.unit_status
 #: data/lua/stun.lua:14
 msgid "stunned: This unit is stunned. It cannot enforce its Zone of Control."
-msgstr ""
+msgstr "眩晕：此单位眩晕了。它无法维持自己的控制区域。"
 
 #. [lua]: on_hit
 #: data/lua/stun.lua:24
-#, fuzzy
-#| msgid "female^undead"
 msgid "female^stunned"
-msgstr "亡灵"
+msgstr "眩晕"
 
 #. [lua]: on_hit
 #: data/lua/stun.lua:26
 msgid "stunned"
-msgstr ""
+msgstr "眩晕"
 
 #: src/help/help.cpp:183
 msgid "Close"
