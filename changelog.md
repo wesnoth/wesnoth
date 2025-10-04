@@ -9,7 +9,7 @@
 ### Terrain
 ### Translations
 ### Translations
-   * Updated translations: British English, Spanish
+   * Updated translations: British English, Polish, Spanish
 ### Units
 ### User interface
 ### WML Engine
