@@ -2383,7 +2383,7 @@ effect::effect(const unit_ability_list& list, int def, const const_attack_ptr& a
 	composite_value_(0)
 {
 
-	int value_set = (wham == EFFECT_CUMULABLE) ? std::max(list.highest("value").first, 0) + std::min(list.lowest("value").first, 0) : def;
+	int value_set = def;
 	std::map<std::string,individual_effect> values_add;
 	std::map<std::string,individual_effect> values_sub;
 	std::map<std::string,individual_effect> values_mul;
@@ -2391,6 +2391,7 @@ effect::effect(const unit_ability_list& list, int def, const const_attack_ptr& a
 
 	individual_effect set_effect_max;
 	individual_effect set_effect_min;
+	individual_effect set_effect_cum;
 	utils::optional<int> max_value = utils::nullopt;
 	utils::optional<int> min_value = utils::nullopt;
 
@@ -2401,11 +2402,14 @@ effect::effect(const unit_ability_list& list, int def, const const_attack_ptr& a
 		if (!filter_base_matches(cfg, def))
 			continue;
 
-		if(wham != EFFECT_CUMULABLE){
-			if (const config::attribute_value *v = cfg.get("value")) {
-				int value = individual_value_int(v, def, ability, list.loc(), att);
-
-				int value_cum = cfg["cumulative"].to_bool() ? std::max(def, value) : value;
+		if (const config::attribute_value *v = cfg.get("value")) {
+			int value = individual_value_int(v, def, ability, list.loc(), att);
+			int value_cum = wham != EFFECT_CUMULABLE && cfg["cumulative"].to_bool() ? std::max(def, value) : value;
+			if(set_effect_cum.type != NOT_USED && wham == EFFECT_CUMULABLE && cfg["cumulative"].to_bool()) {
+				set_effect_cum.set(SET, set_effect_cum.value + value_cum, ability.ability_cfg, ability.teacher_loc);
+			} else if(wham == EFFECT_CUMULABLE && cfg["cumulative"].to_bool()) {
+				set_effect_cum.set(SET, value_cum, ability.ability_cfg, ability.teacher_loc);
+			} else {
 				assert((set_effect_min.type != NOT_USED) == (set_effect_max.type != NOT_USED));
 				if(set_effect_min.type == NOT_USED) {
 					set_effect_min.set(SET, value_cum, ability.ability_cfg, ability.teacher_loc);
@@ -2469,7 +2473,7 @@ effect::effect(const unit_ability_list& list, int def, const const_attack_ptr& a
 		}
 	}
 
-	if(wham != EFFECT_CUMULABLE && set_effect_max.type != NOT_USED) {
+	if(set_effect_max.type != NOT_USED) {
 		value_set = std::max(set_effect_max.value, 0) + std::min(set_effect_min.value, 0);
 		if(set_effect_max.value > def) {
 			effect_list_.push_back(set_effect_max);
@@ -2512,6 +2516,11 @@ effect::effect(const unit_ability_list& list, int def, const const_attack_ptr& a
 	for(const auto& val : values_sub) {
 		substraction += val.second.value;
 		effect_list_.push_back(val.second);
+	}
+
+	if(set_effect_cum.type != NOT_USED) {
+		value_set += set_effect_cum.value;
+		effect_list_.push_back(set_effect_cum);
 	}
 
 	composite_double_value_ = (value_set + addition + substraction) * multiplier / divisor;
