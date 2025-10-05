@@ -253,4 +253,6 @@ public:
 
 private:
 	frame_parsed_parameters builder_;
+
+	mutable std::set<map_location> last_redraw_hexes_;
 };
