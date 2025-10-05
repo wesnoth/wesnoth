@@ -864,7 +864,7 @@ std::set<map_location> unit_frame::get_overlaped_hex(const std::chrono::millisec
 			const double disp_zoom = display::get_singleton()->get_zoom_factor();
 
 	//Commented out a lot of code here that I suspect is not needed, but since I dont understand it I will leave it here for now.
-	// 
+	//
 	//		bool facing_west = (
 	//			direction == map_location::direction::north_west ||
 	//			direction == map_location::direction::south_west);
