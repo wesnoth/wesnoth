@@ -642,8 +642,7 @@ void context_manager::resize_map_dialog()
 		}
 
 		chain->append_action(std::make_unique<editor_action_item_move_all>(x_offset, y_offset));
-
-		// get_map_context().get_labels().move(x_offset, y_offset);
+		chain->append_action(std::make_unique<editor_action_time_area_move_all>(x_offset, y_offset));
 
 		// TODO Reduces the number of editor actions in the following loop.
 		// It can be a lot if the map has a lot of labels (say hundreds).
