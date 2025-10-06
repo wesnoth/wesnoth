@@ -27,6 +27,7 @@
 #include "halo.hpp"
 #include "picture.hpp"
 #include "utils/optional_fwd.hpp"
+#include "sdl/rect.hpp"
 
 #include <boost/logic/tribool.hpp>
 
@@ -248,6 +249,7 @@ public:
 		return builder_.debug_strings();
 	}
 
+	// Returns a set of hexes requiring redraw: current frame overlap + last frame cleanup.
 	std::set<map_location> get_overlaped_hex(const std::chrono::milliseconds& frame_time, const map_location& src, const map_location& dst,
 		const frame_parameters& animation_val, const frame_parameters& engine_val) const;
 
@@ -255,4 +257,5 @@ private:
 	frame_parsed_parameters builder_;
 
 	mutable std::set<map_location> last_redraw_hexes_;
+	mutable rect last_cached_rect_;
 };

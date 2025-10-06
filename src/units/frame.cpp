@@ -796,11 +796,11 @@ void unit_frame::redraw(const std::chrono::milliseconds& frame_time, bool on_sta
 std::set<map_location> unit_frame::get_overlaped_hex(const std::chrono::milliseconds& frame_time, const map_location& src, const map_location& dst,
 		const frame_parameters& animation_val, const frame_parameters& engine_val) const
 {
-	// This function will get a list of hexes that this frame overlap, so that we know what tiles to update. Gets list for current and last frame.
 
 	display* disp = display::get_singleton();
-	std::set<map_location> result = last_redraw_hexes_; // Start with last redrawn hexes, so that we can clean the alst frame.
+	std::set<map_location> result = last_redraw_hexes_; // Start with last redrawn hexes, so that we can clean the last frame.
 	std::set<map_location> current_frame_hexes;
+	rect r { 0, 0, 0, 0 };
 
 	const auto [xsrc, ysrc] = disp->get_location(src);
 	const auto [xdst, ydst] = disp->get_location(dst);
@@ -820,35 +820,12 @@ std::set<map_location> unit_frame::get_overlaped_hex(const std::chrono::millisec
 		image_loc = current_data.image.clone(current_data.image_mod);
 	}
 
-	// We always invalidate our own hex because we need to be called at redraw time even
-	// if we don't draw anything in the hex itself
-	if(tmp_offset == 0 && current_data.x == 0 && current_data.directional_x == 0 && image::is_in_hex(image_loc)) {
-		current_frame_hexes.insert(src);
+	current_frame_hexes.insert(src);
 
-		bool facing_north = (
-			direction == map_location::direction::north_west ||
-			direction == map_location::direction::north ||
-			direction == map_location::direction::north_east);
-
-		if(!current_data.auto_vflip) { facing_north = true; }
-
-		int my_y = current_data.y;
-		if(facing_north) {
-			my_y += current_data.directional_y;
-		} else {
-			my_y -= current_data.directional_y;
-		}
-
-		if(my_y < 0) {
-			current_frame_hexes.insert(src.get_direction(map_location::direction::north));
-			current_frame_hexes.insert(src.get_direction(map_location::direction::north_east));
-			current_frame_hexes.insert(src.get_direction(map_location::direction::north_west));
-		} else if(my_y > 0) {
-			current_frame_hexes.insert(src.get_direction(map_location::direction::south));
-			current_frame_hexes.insert(src.get_direction(map_location::direction::south_east));
-			current_frame_hexes.insert(src.get_direction(map_location::direction::south_west));
-		}
-	} else {
+	if(tmp_offset == 0 && current_data.x == 0 && current_data.y == 0 && current_data.directional_x == 0 && image::is_in_hex(image_loc)) {
+		//single hex image that isnt moving to another hex and has no offset.
+	}
+	else {
 		int w = 0, h = 0;
 
 		if(!image_loc.is_void() && !image_loc.get_filename().empty()) {
@@ -858,58 +835,29 @@ std::set<map_location> unit_frame::get_overlaped_hex(const std::chrono::millisec
 		}
 
 		if(w != 0 || h != 0) {
-			// TODO: unduplicate this code
 			const int x = static_cast<int>(tmp_offset * xdst + (1.0 - tmp_offset) * xsrc) + d2;
 			const int y = static_cast<int>(tmp_offset * ydst + (1.0 - tmp_offset) * ysrc) + d2;
 			const double disp_zoom = display::get_singleton()->get_zoom_factor();
 
-	//Commented out a lot of code here that I suspect is not needed, but since I dont understand it I will leave it here for now.
-	//
-	//		bool facing_west = (
-	//			direction == map_location::direction::north_west ||
-	//			direction == map_location::direction::south_west);
-
-	//		bool facing_north = (
-	//			direction == map_location::direction::north_west ||
-	//			direction == map_location::direction::north ||
-	//			direction == map_location::direction::north_east);
-
-	//		if(!current_data.auto_hflip) { facing_west = false; }
-	//		if(!current_data.auto_vflip) { facing_north = true; }
-
-			int my_x = x + disp_zoom * (current_data.x - w / 2);
-			int my_y = y + disp_zoom * (current_data.y - h / 2);
-
-	//		if(facing_west) {
-	//			my_x -= current_data.directional_x * disp_zoom;
-	//		} else {
-	//			my_x += current_data.directional_x * disp_zoom;
-	//		}
-
-	//		if(facing_north) {
-	//			my_y += current_data.directional_y * disp_zoom;
-	//		} else {
-	//			my_y -= current_data.directional_y * disp_zoom;
-	//		}
-
-			// Check if our underlying hexes are invalidated. If we need to update ourselves because we changed,
-			// invalidate our hexes and return whether or not was successful.
-			const rect r {my_x, my_y, int(w * disp_zoom), int(h * disp_zoom)};
-			display::rect_of_hexes underlying_hex = disp->hexes_under_rect(r);
-
-	//		current_frame_hexes.insert(src);
-			current_frame_hexes.insert(underlying_hex.begin(), underlying_hex.end());
-		} else {
-			// We have no "redraw surface" but we still need to invalidate our own hex in case we have a halo
-			// and/or sound that needs a redraw.
-			current_frame_hexes.insert(src);
-			current_frame_hexes.insert(dst);
+			// Build a rectangle the size and place of the frame. Use it to get the hexes it overlaps.
+			r.x = x + disp_zoom * (current_data.x - w / 2);
+			r.y = y + disp_zoom * (current_data.y - h / 2);
+			r.w = int(w * disp_zoom);
+			r.h = int(h * disp_zoom);
+			if (r == last_cached_rect_) {
+				current_frame_hexes.insert(last_redraw_hexes_.begin(), last_redraw_hexes_.end());
+			}else {
+				display::rect_of_hexes underlying_hex = disp->hexes_under_rect(r);
+				current_frame_hexes.insert(underlying_hex.begin(), underlying_hex.end());
+			}
 		}
 	}
 
-	// Prepare cleanup list for next frame
 	result.insert(current_frame_hexes.begin(), current_frame_hexes.end());
+
+	// Cache results for next time we update this animation/image
 	last_redraw_hexes_ = std::move(current_frame_hexes);
+	last_cached_rect_ = r;
 
 	return result;
 }
