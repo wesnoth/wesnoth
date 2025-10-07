@@ -204,6 +204,13 @@ private:
 	progressive_int drawing_layer_;
 };
 
+struct frame_redraw_cache {
+	std::set<map_location> previous_hexes;
+	rect previous_rect{ 0, 0, 0, 0 };
+	bool is_diagonal = false;
+	bool initialized = false;
+};
+
 /** Describes a unit's animation sequence. */
 class unit_frame
 {
@@ -249,13 +256,10 @@ public:
 		return builder_.debug_strings();
 	}
 
-	// Returns a set of hexes requiring redraw: current frame overlap + last frame cleanup.
+	// Returns a set of hexes requiring redraw: current frame overlap + previous frame cleanup.
 	std::set<map_location> get_overlaped_hex(const std::chrono::milliseconds& frame_time, const map_location& src, const map_location& dst,
-		const frame_parameters& animation_val, const frame_parameters& engine_val) const;
+		const frame_parameters& animation_val, const frame_parameters& engine_val, frame_redraw_cache& cache) const;
 
 private:
 	frame_parsed_parameters builder_;
-
-	mutable std::set<map_location> last_redraw_hexes_;
-	mutable rect last_cached_rect_;
 };

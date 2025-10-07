@@ -933,6 +933,7 @@ unit_animation::particle::particle(const config& cfg, const std::string& frame_s
 	, halo_id_()
 	, last_frame_begin_time_(0)
 	, cycles_(false)
+	, redraw_cache_()
 {
 	starting_frame_time_ = std::chrono::milliseconds::max();
 
@@ -1279,7 +1280,7 @@ std::set<map_location> unit_animation::particle::get_overlaped_hex(const frame_p
 {
 	const unit_frame& current_frame = get_current_frame();
 	const frame_parameters default_val = parameters_.parameters(get_animation_time() - get_begin_time());
-	return current_frame.get_overlaped_hex(get_current_frame_time(), src, dst, default_val,value);
+	return current_frame.get_overlaped_hex(get_current_frame_time(), src, dst, default_val,value,redraw_cache_);
 }
 
 unit_animation::particle::~particle()

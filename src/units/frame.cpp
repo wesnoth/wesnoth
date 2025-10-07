@@ -794,59 +794,69 @@ void unit_frame::redraw(const std::chrono::milliseconds& frame_time, bool on_sta
 }
 
 std::set<map_location> unit_frame::get_overlaped_hex(const std::chrono::milliseconds& frame_time, const map_location& src, const map_location& dst,
-		const frame_parameters& animation_val, const frame_parameters& engine_val) const
+		const frame_parameters& animation_val, const frame_parameters& engine_val, frame_redraw_cache& cache) const
 {
+	// Returns a set of hexes requiring redraw: current frame overlap + last frame cleanup.
 
 	display* disp = display::get_singleton();
-	std::set<map_location> result = last_redraw_hexes_; // Start with last redrawn hexes, so that we can clean the last frame.
+	std::set<map_location> result = cache.previous_hexes; // Start with last redrawn hexes, so that we can clean the last frame.
 	std::set<map_location> current_frame_hexes;
-	rect r { 0, 0, 0, 0 };
-
-	const auto [xsrc, ysrc] = disp->get_location(src);
-	const auto [xdst, ydst] = disp->get_location(dst);
-	const map_location::direction direction = src.get_relative_dir(dst);
+	current_frame_hexes.insert(src);
+	rect r{ 0, 0, 0, 0 };
 
 	const frame_parameters current_data = merge_parameters(frame_time, animation_val, engine_val);
-
 	double tmp_offset = current_data.offset;
-	const int d2 = display::get_singleton()->hex_size() / 2;
-
 	image::locator image_loc;
-	if(direction != map_location::direction::north && direction != map_location::direction::south) {
-		image_loc = current_data.image_diagonal.clone(current_data.image_mod);
+
+	//Get the image we are using, either diagonal or not
+	if (!cache.initialized) {
+		cache.initialized = true;
+		const map_location::direction direction = src.get_relative_dir(dst);
+		if (direction != map_location::direction::north && direction != map_location::direction::south) {
+			image_loc = current_data.image_diagonal.clone(current_data.image_mod);
+			cache.is_diagonal = true;
+		}
+		if (image_loc.is_void() || image_loc.get_filename().empty()) {
+			image_loc = current_data.image.clone(current_data.image_mod);
+			cache.is_diagonal = false;
+		}
+	}else {
+		if (cache.is_diagonal) {
+			image_loc = current_data.image_diagonal.clone(current_data.image_mod);
+		}else {
+			image_loc = current_data.image.clone(current_data.image_mod);
+		}
 	}
 
-	if(image_loc.is_void() || image_loc.get_filename().empty()) { // invalid diag image, or not diagonal
-		image_loc = current_data.image.clone(current_data.image_mod);
-	}
-
-	current_frame_hexes.insert(src);
-
+	//Handle multi-hex and single-hex.
 	if(tmp_offset == 0 && current_data.x == 0 && current_data.y == 0 && current_data.directional_x == 0 && image::is_in_hex(image_loc)) {
-		//single hex image that isnt moving to another hex and has no offset.
+		//Single hex image that isnt moving to another hex and has no offset. Current_frame_hexes already has src inserted
 	}
 	else {
 		int w = 0, h = 0;
-
 		if(!image_loc.is_void() && !image_loc.get_filename().empty()) {
 			const point s = image::get_size(image_loc);
 			w = s.x;
 			h = s.y;
 		}
 
+		// Build a rectangle the size and place of the frame. Use it to get the hexes it overlaps.
 		if(w != 0 || h != 0) {
-			const int x = static_cast<int>(tmp_offset * xdst + (1.0 - tmp_offset) * xsrc) + d2;
-			const int y = static_cast<int>(tmp_offset * ydst + (1.0 - tmp_offset) * ysrc) + d2;
+			const int hex_radius = disp->hex_size() / 2;
+			const point src_coords = disp->get_location(src),
+				dst_coords = disp->get_location(dst);
+			const int xsrc = src_coords.x, ysrc = src_coords.y,
+				xdst = dst_coords.x, ydst = dst_coords.y;
+			const int x = static_cast<int>(tmp_offset * xdst + (1.0 - tmp_offset) * xsrc) + hex_radius;
+			const int y = static_cast<int>(tmp_offset * ydst + (1.0 - tmp_offset) * ysrc) + hex_radius;
 			const double disp_zoom = display::get_singleton()->get_zoom_factor();
-
-			// Build a rectangle the size and place of the frame. Use it to get the hexes it overlaps.
 			r.x = x + disp_zoom * (current_data.x - w / 2);
 			r.y = y + disp_zoom * (current_data.y - h / 2);
 			r.w = int(w * disp_zoom);
 			r.h = int(h * disp_zoom);
-			if (r == last_cached_rect_) {
-				current_frame_hexes.insert(last_redraw_hexes_.begin(), last_redraw_hexes_.end());
-			}else {
+			if (r == cache.previous_rect) { //Same rectangle as last time, get cache.
+				current_frame_hexes.insert(cache.previous_hexes.begin(), cache.previous_hexes.end());
+			}else { //Get the hexes under the rectangle
 				display::rect_of_hexes underlying_hex = disp->hexes_under_rect(r);
 				current_frame_hexes.insert(underlying_hex.begin(), underlying_hex.end());
 			}
@@ -855,9 +865,9 @@ std::set<map_location> unit_frame::get_overlaped_hex(const std::chrono::millisec
 
 	result.insert(current_frame_hexes.begin(), current_frame_hexes.end());
 
-	// Cache results for next time we update this animation/image
-	last_redraw_hexes_ = std::move(current_frame_hexes);
-	last_cached_rect_ = r;
+	// Cache for next time we update this animation/image
+	cache.previous_hexes = std::move(current_frame_hexes);
+	cache.previous_rect = r;
 
 	return result;
 }
