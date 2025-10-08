@@ -208,6 +208,8 @@ struct frame_redraw_cache {
 	std::set<map_location> previous_hexes;
 	rect previous_rect{ 0, 0, 0, 0 };
 	bool is_diagonal = false;
+	bool facing_north = false;
+	bool facing_west = false;
 	bool initialized = false;
 };
 
