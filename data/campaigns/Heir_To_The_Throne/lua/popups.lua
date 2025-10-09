@@ -393,4 +393,130 @@ end
 
 
 
+--###########################################################################################################################################################
+--                                                                 SELECT LINTANIR BOON
+--###########################################################################################################################################################
+function wesnoth.wml_actions.select_lintanir_boon(cfg)
+	--###############################
+	-- DEFINE GRID
+	--###############################
+	local grid = T.grid{ T.row{
+		T.column{ T.label{  use_markup=true,  label="<span size='40000'> </span>"  }},
+		T.column{ border="bottom", border_size=18, T.grid{
+			-------------------------
+			-- TITLE
+			-------------------------
+			T.row{ T.column{ T.image{  label="icons/banner3.png~CROP(50,0,400,22)"  }}},
+			T.row{ T.column{ T.label{  use_markup=true,  label="<span size='8000'> </span>"  }}},
+			T.row{ T.column{
+				horizontal_alignment="center",
+				T.label{  definition="title",  label=_"Choose a boon to receive:"  }
+			}},
+			T.row{ T.column{ T.label{  use_markup=true,  label="<span size='15000'> </span>"  }}},
+
+			-------------------------
+			-- PORTRAITS
+			-------------------------
+			T.row{ T.column{ T.horizontal_listbox{
+				id="boons",
+				has_minimum=false,
+				T.list_definition{ T.row{ T.column{ T.toggle_panel{ T.grid{
+					T.row{ T.column{
+						border="all", border_size=5,
+						T.image{ id="image" }
+					}},
+					T.row{ T.column{
+						border="all", border_size=5,
+						T.label{ id="name", use_markup=true, text_alignment="center" }
+					}},
+				}}}}},
+				T.list_data{
+					T.row{ T.column{
+						T.widget{  id="image", label="misc/blank-hex.png~SCALE(120,120)~BLIT(icons/book.png~SCALE(76,76),22,22)"           },
+						T.widget{  id="name",  label=stringx.join("", {"<span size='large' face='WesScript'>",_"Wose Lore","</span>"})     },
+					}},
+					T.row{ T.column{
+						T.widget{  id="image", label="misc/blank-hex.png~SCALE(120,120)~BLIT(attacks/sword-flaming.png~SCALE(76,76),22,22)"},
+						T.widget{  id="name",  label=stringx.join("", {"<span size='large' face='WesScript'>",_"Flaming Sword","</span>" })},
+					}},
+					T.row{ T.column{
+						T.widget{  id="image", label="misc/blank-hex.png~SCALE(120,120)~BLIT(icons/breastplate2.png~SCALE(76,76),22,22)"   },
+						T.widget{  id="name",  label=stringx.join("", {"<span size='large' face='WesScript'>",_"Void Armor","</span>"})    },
+					}},
+				}
+			}}},
+
+			-------------------------
+			-- LEAVE WITH A COMPANION
+			-------------------------
+			T.row{ T.column{ T.grid{
+				T.row{
+					T.column{ T.button{ id="take_lore",  return_value=1, label=_"Take"}},
+					T.column{ T.button{ id="take_sword", return_value=2, label=_"Take"}},
+					T.column{ T.button{ id="take_armor", return_value=3, label=_"Take"}},
+				},
+				-- this second row helps keep the table's formatting the same, even when 1+ buttons are hidden
+				T.row{
+					T.column{ T.spacer{ width=132 }},
+					T.column{ T.spacer{ width=132 }},
+					T.column{ T.spacer{ width=132 }},
+				}
+			}}},
+		}},
+		T.column{ T.label{  use_markup=true,  label="<span size='80000'> </span>"  }},
+	}}
+
+	--###############################
+	-- SHOW/HIDE SELECTION BUTTONS
+	--###############################
+	local function preshow(dialog)
+		if (not wml.variables['asked_lore' ]) then dialog["take_lore" ].visible=false end
+		if (not wml.variables['asked_sword']) then dialog["take_sword"].visible=false end
+		if (not wml.variables['asked_armor']) then dialog["take_armor"].visible=false end
+
+		dialog["boons"].on_modified = function()	
+			wesnoth.interface.skip_messages(false) -- each time the player picks an option, clear the skip_message flag
+			if dialog["boons"].selected_index==1 then wesnoth.game_events.fire('ask_about_lore' ) end
+			if dialog["boons"].selected_index==2 then wesnoth.game_events.fire('ask_about_sword') end
+			if dialog["boons"].selected_index==3 then wesnoth.game_events.fire('ask_about_armor') end
+			dialog:close()
+		end
+	end
+
+	--###############################
+	-- CREATE DIALOG
+	--###############################
+	local result = wesnoth.sync.evaluate_single(function()
+		local button = gui.show_dialog({
+			definition="menu",
+			T.helptip{ id="tooltip_large" }, -- mandatory field
+			T.tooltip{ id="tooltip_large" }, -- mandatory field
+			grid
+		}, preshow)
+
+		wesnoth.interface.skip_messages(false) -- each time the player picks an option, clear the skip_message flag
+		if     button==1 then wesnoth.game_events.fire('take_lore')
+		elseif button==2 then wesnoth.game_events.fire('take_sword')
+		elseif button==3 then wesnoth.game_events.fire('take_armor')
+		elseif button==-1 or button==-2 then
+			-- if we close the dialog with enter or escape, open it back up. Wait for the player to select a companion.
+			wesnoth.wml_actions.select_lintanir_boon()
+		end
+		return { button=button }
+	end)
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
