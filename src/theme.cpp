@@ -22,7 +22,7 @@
 #include "log.hpp"
 #include "sdl/rect.hpp"
 #include "serialization/string_utils.hpp"
-#include "utils/from_chars.hpp"
+#include "utils/charconv.hpp"
 #include "wml_exception.hpp"
 #include "game_config_view.hpp"
 
