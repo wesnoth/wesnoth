@@ -20,6 +20,7 @@
 #include <assert.h>
 #include <cctype>
 #include <charconv>
+#include "utils/optional_fwd.hpp"
 #include <string_view>
 #include <string>
 #include <stdexcept>
@@ -162,5 +163,35 @@ namespace utils
 			throw std::out_of_range("Failed to convert string to int: input value is out of the representable range for an int.");
 		}
 		return res;
+	}
+
+#ifdef __cpp_concepts
+	template<std::integral T>
+	inline auto from_chars(std::string_view str, int base = 10) -> utils::optional<T>
+#else
+	template<typename T>
+	inline auto from_chars(std::string_view str, int base = 10) -> std::enable_if_t<std::is_integral_v<T>, utils::optional<T>>
+#endif
+	{
+		trim_for_from_chars(str);
+		T result{};
+		const auto [_, ec] = utils::charconv::from_chars(str.data(), str.data() + str.size(), result, base);
+		return ec == std::errc{} ? utils::make_optional(result) : utils::nullopt;
+	}
+
+#ifdef __cpp_concepts
+	template<std::floating_point T>
+	inline auto from_chars(std::string_view str,
+		utils::charconv::chars_format fmt = utils::charconv::chars_format::general) -> utils::optional<T>
+#else
+	template<typename T>
+	inline auto from_chars(std::string_view str,
+		utils::charconv::chars_format fmt = utils::charconv::chars_format::general) -> std::enable_if_t<std::is_floating_point_v<T>, utils::optional<T>>
+#endif
+	{
+		trim_for_from_chars(str);
+		T result{};
+		const auto [_, ec] = utils::charconv::from_chars(str.data(), str.data() + str.size(), result, fmt);
+		return ec == std::errc{} ? utils::make_optional(result) : utils::nullopt;
 	}
 }
