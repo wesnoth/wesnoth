@@ -21,7 +21,6 @@ jobs:
       
       - name: Verify fastlane metadata
         uses: ashutoshgngwr/validate-fastlane-supply-metadata@v2
-        
 
       - name: Restore Wesnoth dependencies cache
         id: restore-deps-cache
@@ -62,39 +61,50 @@ jobs:
         with:
           name: dependencies.tar.gz
           path: ./packaging/android/dependencies.tar.gz
+          
+      - name: Run Workflow
+        id: write_file
+        uses: timheuer/base64-to-file@v1.2
+        with:
+          fileName: 'wesnoth.keystore'
+          fileDir: './packaging/android/app/'
+          encodedString: ${{ secrets.SIGNING_KEYSTORE }}
 
       - name: Build Wesnoth and create APKs and AAB
         env:
           API: ${{ env.API }}
           PREFIXDIR: ${{ env.BUILDBASEDIR }}/prefix
-        run: cd packaging/android; chmod +x ./gradlew; ./gradlew buildCppSource assembleDebug bundleDebug;
+          SIGNING_KEY_ALIAS: ${{ secrets.SIGNING_KEY_ALIAS }}
+          SIGNING_KEY_PASSWORD: ${{ secrets.SIGNING_KEY_PASSWORD }}
+          SIGNING_STORE_PASSWORD: ${{ secrets.SIGNING_STORE_PASSWORD }}
+        run: cd packaging/android; chmod +x ./gradlew; ./gradlew buildCppSource assembleRelease bundleRelease;
 
       - name: Upload APK (armeabi-v7a)
         uses: actions/upload-artifact@v4
         with:
           name: "wesnoth-armeabi-v7a.apk"
-          path: "packaging/android/app/build/outputs/apk/debug/app-armeabi-v7a-debug.apk"
+          path: "packaging/android/app/build/outputs/apk/release/app-armeabi-v7a-release.apk"
 
       - name: Upload APK (arm64-v8a)
         uses: actions/upload-artifact@v4
         with:
           name: "wesnoth-arm64-v8a.apk"
-          path: "packaging/android/app/build/outputs/apk/debug/app-arm64-v8a-debug.apk"
+          path: "packaging/android/app/build/outputs/apk/release/app-arm64-v8a-release.apk"
 
       - name: Upload APK (x86)
         uses: actions/upload-artifact@v4
         with:
           name: "wesnoth-x86.apk"
-          path: "packaging/android/app/build/outputs/apk/debug/app-x86-debug.apk"
+          path: "packaging/android/app/build/outputs/apk/release/app-x86-release.apk"
 
       - name: Upload APK (x86_64)
         uses: actions/upload-artifact@v4
         with:
           name: "wesnoth-x86_64.apk"
-          path: "packaging/android/app/build/outputs/apk/debug/app-x86_64-debug.apk"
+          path: "packaging/android/app/build/outputs/apk/release/app-x86_64-release.apk"
 
       - name: Upload AAB
         uses: actions/upload-artifact@v4
         with:
           name: "wesnoth.aab"
-          path: "packaging/android/app/build/outputs/bundle/debug/app-debug.aab"
+          path: "packaging/android/app/build/outputs/bundle/release/app-release.aab"
