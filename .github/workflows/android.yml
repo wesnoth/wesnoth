@@ -61,14 +61,6 @@ jobs:
         with:
           name: dependencies.tar.gz
           path: ./packaging/android/dependencies.tar.gz
-          
-      - name: Run Workflow
-        id: write_file
-        uses: timheuer/base64-to-file@v1.2
-        with:
-          fileName: 'wesnoth.keystore'
-          fileDir: './packaging/android/app/'
-          encodedString: ${{ secrets.SIGNING_KEYSTORE }}
 
       - name: Build Wesnoth and create APKs and AAB
         env:
@@ -77,7 +69,8 @@ jobs:
           SIGNING_KEY_ALIAS: ${{ secrets.SIGNING_KEY_ALIAS }}
           SIGNING_KEY_PASSWORD: ${{ secrets.SIGNING_KEY_PASSWORD }}
           SIGNING_STORE_PASSWORD: ${{ secrets.SIGNING_STORE_PASSWORD }}
-        run: cd packaging/android; chmod +x ./gradlew; ./gradlew buildCppSource assembleRelease bundleRelease;
+          SIGNING_KEYSTORE: ${{ secrets.SIGNING_KEYSTORE }}
+        run: cd packaging/android && printf %s "$SIGNING_KEYSTORE" | base64 > app/wesnoth.keystore && ./gradlew buildCppSource assembleRelease bundleRelease;
 
       - name: Upload APK (armeabi-v7a)
         uses: actions/upload-artifact@v4
