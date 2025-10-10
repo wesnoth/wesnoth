@@ -474,7 +474,7 @@ function wesnoth.wml_actions.select_lintanir_boon(cfg)
 		if (not wml.variables['asked_sword']) then dialog["take_sword"].visible=false end
 		if (not wml.variables['asked_armor']) then dialog["take_armor"].visible=false end
 
-		dialog["boons"].on_modified = function()	
+		dialog["boons"].on_modified = function()
 			wesnoth.interface.skip_messages(false) -- each time the player picks an option, clear the skip_message flag
 			if dialog["boons"].selected_index==1 then wesnoth.game_events.fire('ask_about_lore' ) end
 			if dialog["boons"].selected_index==2 then wesnoth.game_events.fire('ask_about_sword') end
