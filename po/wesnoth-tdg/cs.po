@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-09-22 04:01 UTC\n"
-"PO-Revision-Date: 2025-09-03 21:09+0200\n"
+"PO-Revision-Date: 2025-09-22 23:48+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -503,7 +503,7 @@ msgstr ""
 
 #: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:215
 msgid "Contingency"
-msgstr ""
+msgstr "Plán B"
 
 #: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:217
 msgid ""
@@ -582,6 +582,13 @@ msgid ""
 "<b>double- or right-click on Delfador to cast them</b>. You can only cast 1 "
 "spell per turn.</i></span>"
 msgstr ""
+"<span size='small'><i>Delfador umí mnoho užitečných kouzel a další se naučí "
+"v průběhu tažení, jak se mu bude automaticky zvyšovat jeho úroveň. "
+"K zvyšování úrovně nepoužívá zkušenosti.\n"
+"Ty místo toho využívá na sesílání určitých kouzel. Pokud si zvolíš kouzla, "
+"která stojí zkušenosti, <b>klikni dvakrát nebo pravým na Delfadora, abys je "
+"seslal</b>.\n"
+"V každém kole můžeš seslat pouze 1 kouzlo.</i></span>"
 
 #. [lua]: display_skills_dialog
 #: data/campaigns/The_Deceivers_Gambit/lua/spellcasting.lua:57
@@ -593,6 +600,13 @@ msgid ""
 "<b>double- or right-click on the apprentice to cast them</b>. You can only "
 "cast 1 spell per turn.</i></span>"
 msgstr ""
+"<span size='small'><i>Učedník umí několik užitečných kouzel a další se naučí "
+"v průběhu tažení, jak se mu bude automaticky zvyšovat jeho úroveň. "
+"K zvyšování úrovně nepoužívá zkušenosti.\n"
+"Ty místo toho využívá na sesílání určitých kouzel. Pokud si zvolíš kouzla, "
+"která stojí zkušenosti, <b>klikni dvakrát nebo pravým na učedníka, abys je "
+"seslal</b>.\n"
+"V každém kole můžeš seslat pouze 1 kouzlo.</i></span>"
 
 #. [lua]: display_skills_dialog
 #: data/campaigns/The_Deceivers_Gambit/lua/spellcasting.lua:131
@@ -792,18 +806,19 @@ msgstr "Kouzla sesíláš dvojitým nebo pravým kliknutím na učedníka."
 #. spoken after Delfador attacks the fire guardians, referencing the "10 copper" bet from earlier. Since there are 3 guardians and they have 50% fire resistance, this is not a wise move by Delfador.
 #: data/campaigns/The_Deceivers_Gambit/scenarios/00_Graduation.cfg:286
 msgid "All right, all right! It’s just as you said."
-msgstr ""
+msgstr "Dobrá, dobrá! Je to přesně tak, jak jsi říkala."
 
 #. [message]: speaker=Saegwylyn
 #: data/campaigns/The_Deceivers_Gambit/scenarios/00_Graduation.cfg:291
 msgid "10 more copper for me!"
-msgstr ""
+msgstr "Dalších 10 měďáků pro mne!"
 
 #. [message]: speaker=Saegwylyn
 #: data/campaigns/The_Deceivers_Gambit/scenarios/00_Graduation.cfg:304
 msgid ""
 "So he does know proper magic after all. It only took four failed exams..."
 msgstr ""
+"Takže nakonec pořádnou magii umí. Zabralo to jen čtyři neúspěšné zkoušky..."
 
 #. [message]: speaker=Methor
 #. if the levitate spell ends over impassable terrain (like lava), Delfador dies
@@ -812,6 +827,8 @@ msgid ""
 "Almost there! Just fly across the chasm and touch the orb — and make sure "
 "your levitate spell doesn’t end over lava!"
 msgstr ""
+"Už tam skoro jsi! Stačí přeletět průrvu a dotknout se koule – a dávej pozor, "
+"aby tvé kouzlo vznášení se neskončilo nad lávou!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/The_Deceivers_Gambit/scenarios/00_Graduation.cfg:332
@@ -832,18 +849,18 @@ msgstr ""
 #: data/campaigns/The_Deceivers_Gambit/scenarios/00_Graduation.cfg:395
 #: data/campaigns/The_Deceivers_Gambit/utils/spellcasting.cfg:1782
 msgid "<span color='#ffffff' size='x-small'>Contingency</span>"
-msgstr ""
+msgstr "<span color='#ffffff' size='x-small'>Plán B</span>"
 
 #. [message]: speaker=Delfador
 #. Delfador has just reached the end of the obstacle course / final exam (and the end of the scenario0
 #: data/campaigns/The_Deceivers_Gambit/scenarios/00_Graduation.cfg:459
 msgid "Look at me, I made it! This time just has to be good enough!"
-msgstr ""
+msgstr "Podívejte se na mě, dokázal jsem to! Tentokrát to prostě musí stačit!"
 
 #. [message]: speaker=Leollyn
 #: data/campaigns/The_Deceivers_Gambit/scenarios/00_Graduation.cfg:464
 msgid "<span size='small'>Well, what do you think?</span>"
-msgstr ""
+msgstr "<span size='small'>No, co si o tom myslíte?</span>"
 
 #. [message]: speaker=Saegwylyn
 #: data/campaigns/The_Deceivers_Gambit/scenarios/00_Graduation.cfg:470
@@ -852,6 +869,9 @@ msgid ""
 "for his own amusement. This one is a petty magician, not a wise sage or "
 "advisor of kings.</span>"
 msgstr ""
+"<span size='small'>Já říkám ne. Mág potřebuje moudrost. Tento učeň se stará "
+"jen o vlastní zábavu. Je to nevýrazný kouzelník, ne mudřec nebo rádce králů."
+"</span>"
 
 #. [message]: speaker=Methor
 #: data/campaigns/The_Deceivers_Gambit/scenarios/00_Graduation.cfg:474
@@ -860,6 +880,9 @@ msgid ""
 "more than most, but with this much magical aptitude who wouldn’t want to "
 "show off?</span>"
 msgstr ""
+"<span size='small'>Já říkám ano. Přiznávám, že můj učedník si užívá "
+"pozornosti více než většina ostatních, ale kdo by se nechtěl s takovým "
+"magickým nadáním předvést?</span>"
 
 #. [message]: speaker=Methor
 #: data/campaigns/The_Deceivers_Gambit/scenarios/00_Graduation.cfg:478
@@ -868,6 +891,9 @@ msgid ""
 "we’ve trained in years. The skill is innate; the wisdom will come with time."
 "</span>"
 msgstr ""
+"<span size='small'>Myslím, že tohle je zřejmě jeden z nejnadanějších mágů, "
+"které jsme za poslední roky vycvičili. Jeho schopnosti jsou vrozené, "
+"moudrost přijde s časem.</span>"
 
 #. [message]: speaker=Leollyn
 #: data/campaigns/The_Deceivers_Gambit/scenarios/00_Graduation.cfg:483
@@ -875,6 +901,8 @@ msgid ""
 "<span size='small'>So mine is the deciding vote. Very well, I’ve made up my "
 "mind.</span>"
 msgstr ""
+"<span size='small'>Takže můj hlas rozhodne. Dobrá, už jsem to rozmyslel.</"
+"span>"
 
 #. [message]: speaker=narrator
 #. non sequitur. The screen has faded to black, and Delfador is hearing a voice with no apparent origin. In scenario 4, this is later revealed to be the elvish seer Elende, prophesying about Delfador's future.
@@ -882,14 +910,14 @@ msgstr ""
 msgid ""
 "<i>The Deceiver weaves the twine encircling the puppets in the court of "
 "royals.</i>"
-msgstr ""
+msgstr "<i>Podvodník splétá provázek okolo loutek na královském dvoře.</i>"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Deceivers_Gambit/scenarios/00_Graduation.cfg:514
 msgid ""
 "<i>Fatherless prince and sovereignless king, the balance of man hangs upon "
 "this thread.</i>"
-msgstr ""
+msgstr "<i>Princ bez otce a král bez vlády, na tomhle vlásku závisí.</i>"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_Deceivers_Gambit/scenarios/00_Graduation.cfg:518
@@ -897,6 +925,8 @@ msgid ""
 "<i>Should force and fire brandish themselves where wisdom and pity are left "
 "wanting, this string of fate shall inexorably be sundered.</i>"
 msgstr ""
+"<i>Když se síla a oheň ohání tam, kde chybí moudrost a soucit, pak bude "
+"šňůra osudu nenávratně přetržena.</i>"
 
 #. [message]: speaker=Leollyn
 #. the screen has faded back to normal, and master Leollyn is annoyed that Delfador wasn't paying attention
@@ -921,13 +951,13 @@ msgstr ""
 #. Delfador has just taken lethal damage
 #: data/campaigns/The_Deceivers_Gambit/scenarios/00_Graduation.cfg:558
 msgid "Oh no! Master, help!"
-msgstr ""
+msgstr "Ale ne! Mistře, pomoc!"
 
 #. [message]: speaker=Methor
 #. Methor casts a spell to save Delfador
 #: data/campaigns/The_Deceivers_Gambit/scenarios/00_Graduation.cfg:563
 msgid "I’ll save you!"
-msgstr ""
+msgstr "Zachráním tě!"
 
 #. [message]: speaker=Methor
 #: data/campaigns/The_Deceivers_Gambit/scenarios/00_Graduation.cfg:578
@@ -935,6 +965,8 @@ msgid ""
 "(sigh) Not again! I suppose you’ll have to retry the exam next year... for "
 "the sixth time."
 msgstr ""
+"(povzdechne si) Už zase! Asi budeš muset zkoušku opakovat příští rok... po "
+"šesté."
 
 #. [scenario]
 #: data/campaigns/The_Deceivers_Gambit/scenarios/01_Stirrings_of_War.cfg:8
@@ -8224,7 +8256,7 @@ msgstr ""
 #: data/campaigns/The_Deceivers_Gambit/utils/spellcasting.cfg:513
 msgid ""
 "My levitate spell has ended over impassable terrain! I‘m falling to my death!"
-msgstr ""
+msgstr "Moje kouzlo vznášení se skončilo nad neprostupným terénem! Umírám!"
 
 #. [event]
 #: data/campaigns/The_Deceivers_Gambit/utils/spellcasting.cfg:592

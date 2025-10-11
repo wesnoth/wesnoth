@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-09-22 04:01 UTC\n"
-"PO-Revision-Date: 2025-07-29 21:35+0200\n"
+"PO-Revision-Date: 2025-10-05 20:57+0200\n"
 "Last-Translator: Septim <septim@centrum.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -532,6 +532,9 @@ msgid ""
 "banner. Each village we own provides us with some income — and importantly "
 "for you, provides a place to rest and recover."
 msgstr ""
+"Obsadil jsi vesnici, nyní nad ní vlají červenobílé barvy našeho praporu. "
+"Každá vesnice, kterou vlastníme, nám poskytuje určitý příjem. A co je pro "
+"tebe důležité, poskytuje i místo k odpočinku a zotavení."
 
 #. [message]
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:581
@@ -557,6 +560,8 @@ msgid ""
 "I’ve had enough of being humiliated by this dummy. Time to recruit some "
 "proper soldiers and smash that thing to pieces."
 msgstr ""
+"Už mám dost toho, jak mě ta figurína ponižuje! Je čas najmout nějaké pořádné "
+"vojáky a rozbít tu věc na kusy."
 
 #. [message]
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:605
@@ -567,6 +572,12 @@ msgid ""
 "In most scenarios, you will lose if your leader is killed. Use Deoran enough "
 "to build his experience, but not so aggressively that he’s at risk of dying!"
 msgstr ""
+"Zlatá koruna nad Deoranovým ukazatelem životů značí, že je vůdce. Když stojí "
+"na políčku s hradní <b>pevností</b>, může <b>verbovat</b> nové jednotky.\n"
+"\n"
+"Ve většině scénářů prohraješ, pokud je tvůj velitel zabit. Používej proto "
+"Deorana dostatečně k navýšení jeho zkušeností, ale ne tak agresivně, abys "
+"riskoval jeho smrt!"
 
 #. [disallow_end_turn]
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:611
@@ -574,6 +585,8 @@ msgid ""
 "Use “Ctrl+R” to recruit a soldier first!\n"
 "(press “u” if you need to undo a move)"
 msgstr ""
+"Nejprve stiskni „Ctrl+R“ k naverbování vojáka!\n"
+"(stiskni „u“, pokud potřebuješ vrátit tah zpět)"
 
 #. [objective]: condition=win
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:620
@@ -582,14 +595,11 @@ msgstr "Naverbuj nějaké vojáky"
 
 #. [message]
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:641
-#, fuzzy
-#| msgid ""
-#| "Press <b>Ctrl+R</b> to recruit new soldiers. (or right-click on Deoran)"
 msgid ""
 "Press <b>Ctrl+R</b> to recruit new soldiers. (Or right-click on Deoran.)"
 msgstr ""
-"Pro verbování nových vojáků stiskni <b>Ctrl+R</b> (případně klikni pravým "
-"tlačítkem na Deorana)."
+"Pro verbování nových vojáků stiskni <b>Ctrl+R</b>. (Případně klikni pravým "
+"tlačítkem na Deorana.)"
 
 #. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:651
@@ -647,6 +657,11 @@ msgid ""
 "\n"
 "With enough experience, a soldier will advance to a powerful level 2 unit."
 msgstr ""
+"Jednotky získávají malé množství zkušeností při útoku nebo obraně, ale "
+"mnohem více jich získávají zasazováním finálního úderu, zejména v případě "
+"nepřátel na vysoké úrovni.\n"
+"\n"
+"S dostatečnými zkušenostmi voják posílí na jednotku 2. úrovně."
 
 #. [message]: speaker=Mari
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:733
@@ -655,6 +670,9 @@ msgid ""
 "was supposed to return that after we finished training? Maybe I can find a "
 "replacement once we reach Westin."
 msgstr ""
+"To není špatné, rozštípal jsi ho na kusy. ... Je už pozdě zmínit, že jsem ho "
+"měla po skončení tréninku vrátit? Možná najdu náhradu, až dorazíme do "
+"Westinu."
 
 #. [message]: speaker=Mari
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:738
@@ -662,19 +680,21 @@ msgid ""
 "Of course before we can reach Westin, we’ll first have to fight our way past "
 "these bandits."
 msgstr ""
+"Samozřejmě, než se dostaneme do Westinu, budeme se muset nejdřív probojovat "
+"přes tamty bandity."
 
 #. [message]: speaker=Mari
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:758
 msgid ""
 "Are you... actually trying to fight the quintain? We don’t have all day."
-msgstr ""
+msgstr "Ty se... jako fakt snažíš bojovat s panákem? Nemáme na to celý den."
 
 #. [message]: speaker=Mari
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:766
 msgid ""
 "We’re going to have to cut things short, rookie. Look: bandits on the south "
 "road!"
-msgstr ""
+msgstr "Budeme to muset zkrátit, zelenáči. Podívej, bandité na jižní silnici!"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:782
@@ -688,6 +708,9 @@ msgid ""
 "dangerous road? Tell ya what, we can offer ya protection ’round here for a "
 "small fee."
 msgstr ""
+"Kohopak to tu máme? Dáma a její věrný panoš cestují na jih po téhle "
+"nebezpečné cestě? Řekněme to takto, za malý poplatek vám tu můžeme nabídnout "
+"ochranu."
 
 #. [message]
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:832
@@ -696,6 +719,8 @@ msgid ""
 "Guard, on orders from Prince Arand to ensure the region is kept safe and "
 "secure!"
 msgstr ""
+"Máš nás za blázny? Jedu na jih na rozkaz prince Aranda, abych posílil "
+"ctihodnou Jižní hlídku z Westinu a zajistil bezpečnost a ochranu regionu!"
 
 #. [message]
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:836
@@ -703,6 +728,8 @@ msgid ""
 "The only danger around here is you, and I intend to put an end to it. Men, "
 "raise your spears!"
 msgstr ""
+"Jediné nebezpečí tady představujete vy a já s tím hodlám skoncovat. Muži, "
+"pozvedněte kopí!"
 
 #. [message]: speaker=Urza Mathin
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:840
@@ -711,6 +738,9 @@ msgid ""
 "Uzra brothers, and these are my thugs. Time to show you who the real power "
 "is in these parts!"
 msgstr ""
+"Ha, jako by to mělo být tak snadné, hošánku. Jsem Urza Matin, nejstarší ze "
+"čtyř bratrů Urzů, a tohle jsou moji lupiči. Je čas ti ukázat, kdo má v "
+"těchto končinách skutečnou moc!"
 
 #. [objective]: condition=win
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:849
@@ -736,7 +766,7 @@ msgstr "Mari zemře"
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:887
 msgid ""
 "Are you going to help fight? We must drive these villains from the road!"
-msgstr ""
+msgstr "Hodláte mi v boji pomoct? Musíme tyhle padouchy vyhnat ze silnice!"
 
 #. [message]: speaker=Mari
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:894
@@ -745,6 +775,9 @@ msgid ""
 "dangerous — you and your professional soldiers should be able to make short "
 "work of them, even without my sword."
 msgstr ""
+"Oficiálně vzato, jsem tu jen jako pozorovatel. Tihle lotři nevypadají moc "
+"nebezpečně. Ty a tví profesionální vojáci byste si s nimi měli snadno "
+"poradit, i bez pomoci mého meče."
 
 #. [message]: speaker=Mari
 #. sarcasm. $quintain_killers.length is probably between 3 and 5
@@ -753,6 +786,8 @@ msgid ""
 "Besides, it only took $quintain_killers.length of you to deal with my dummy. "
 "What’s a dozen muscly bandits compared to that?"
 msgstr ""
+"Kromě toho, vypořádat se s mou figurínou ti trvalo jen "
+"$quintain_killers.length kol. Co je proti tomu tucet svalnatých banditů?"
 
 #. [message]: speaker=Mari
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:905
@@ -760,6 +795,8 @@ msgid ""
 "Oh, <i><b>now</b></i> you want my help? I thought you were too clever to "
 "listen to my tutorial."
 msgstr ""
+"Aha, <i><b>teď</b></i> chceš moji pomoc? Myslela jsem, že jsi moc chytrý na "
+"to, abys absolvoval můj výcvik."
 
 #. [message]: speaker=Mari
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:909
@@ -768,6 +805,9 @@ msgid ""
 "dangerous — you and your professional soldiers should be able to make short "
 "work of them, even without my sword."
 msgstr ""
+"Podívej, oficiálně vzato jsem tu jen jako pozorovatel. Tihle lotři "
+"nevypadají moc nebezpečně. Ty a tví profesionální vojáci byste si s nimi "
+"měli snadno poradit, i bez pomoci mého meče."
 
 #. [message]
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:918
@@ -788,17 +828,17 @@ msgstr ""
 #. [message]: speaker=Mari
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:955
 msgid "Get out of my face!"
-msgstr ""
+msgstr "Jdi mi z očí!"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:961
 msgid "What happened to being a passive observer?"
-msgstr ""
+msgstr "Copak se stalo s tím pasivním pozorovatelem?"
 
 #. [message]: speaker=Mari
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:965
 msgid "...self-defense doesn’t count."
-msgstr ""
+msgstr "... sebeobrana se nepočítá."
 
 #. [set_menu_item]: id=tutorial_toggle_on
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:975
@@ -5434,8 +5474,8 @@ msgstr ""
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Tides_of_War.cfg:509
 msgid ""
 "You survived $pebbles_defense_length turns last scenario! Deoran starts\n"
-"   with $soldiers.length extra soldiers and "
-"$( ($pebbles_defense_length-36)*3 ) extra gold!"
+"   with $soldiers.length extra soldiers and $"
+"( ($pebbles_defense_length-36)*3 ) extra gold!"
 msgstr ""
 
 #. [else]

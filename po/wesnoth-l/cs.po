@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-09-22 04:01 UTC\n"
-"PO-Revision-Date: 2025-08-29 22:05+0200\n"
+"PO-Revision-Date: 2025-10-08 21:34+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -29,7 +29,7 @@ msgstr "Svoboda"
 #. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:20
 msgid "1x enemies"
-msgstr ""
+msgstr "1x nepřátelé"
 
 #. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:20
@@ -39,7 +39,7 @@ msgstr "Lehká"
 #. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:21
 msgid "2x enemies"
-msgstr ""
+msgstr "2x nepřátelé"
 
 #. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:21
@@ -49,12 +49,12 @@ msgstr "Normální"
 #. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:22
 msgid "3x enemies"
-msgstr ""
+msgstr "3x nepřátelé"
 
 #. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:22
 msgid "Hard"
-msgstr ""
+msgstr "Těžká"
 
 #. [campaign]: id=Liberty
 #. "marchlander" is archaic English for an inhabitant of a border region, not to be confused with "marshlander"
@@ -83,6 +83,8 @@ msgid ""
 "Story continued in:\n"
 "Heir to the Throne"
 msgstr ""
+"Příběh pokračuje v tažení:\n"
+"Dědic trůnu"
 
 #. [about]
 #: data/campaigns/Liberty/_main.cfg:34
@@ -117,17 +119,13 @@ msgstr ""
 
 #. [achievement]: id=liberty_nameless
 #: data/campaigns/Liberty/achievements.cfg:14
-#, fuzzy
-#| msgid "The Nameless General"
 msgid "The Nameless Guard"
-msgstr "Bezejmenný generál"
+msgstr "Bezejmenná stráž"
 
 #. [achievement]: id=liberty_nameless
 #: data/campaigns/Liberty/achievements.cfg:15
-#, fuzzy
-#| msgid "Find out the name of the general in <i>Unlawful Orders</i>."
 msgid "Discover the name of the royal guard in <i>Unlawful Orders</i>."
-msgstr "Zjisti jméno generála v <i>Nezákonných rozkazech</i>."
+msgstr "Odhal jméno královské stráže v <i>Nezákonných rozkazech</i>."
 
 #. [achievement]: id=liberty_iron
 #: data/campaigns/Liberty/achievements.cfg:21
@@ -314,7 +312,7 @@ msgstr "Gorokh"
 #. [event]
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:173
 msgid "Gruk"
-msgstr ""
+msgstr "Gruk"
 
 #. [message]: speaker=Fal Khag
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:195
@@ -538,7 +536,7 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:435
 msgid "Your footpad has gained +1 ranged damage!"
-msgstr ""
+msgstr "Tvůj lapka získal +1 ke zranění na dálku!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:447
@@ -886,7 +884,7 @@ msgstr "Jo, psanci."
 #. [message]: speaker=narrator
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:521
 msgid "Your units — formerly <i>neutral</i> — are now <i>chaotic</i>!"
-msgstr ""
+msgstr "Tvé jednotky – dříve <i>neutrální</i> – jsou nyní <i>chaotické</i>!"
 
 #. [message]: speaker=Reinforcement Knight
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:555
@@ -1186,7 +1184,7 @@ msgstr "Hmm, jaká osvěžující, chutná voda!"
 #. [message]: speaker=narrator
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:443
 msgid "Your unit has gained +1 maximum hitpoints!"
-msgstr ""
+msgstr "Tvá jednotka získala +1 k maximu životů!"
 
 #. [message]: speaker=Urk Delek
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:459
@@ -1299,10 +1297,8 @@ msgstr "Elensefar"
 
 #. [objective]: condition=win
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:177
-#, fuzzy
-#| msgid "Defeat both enemy leaders"
 msgid "Defeat the enemy leader"
-msgstr "Poraz oba nepřátelské vůdce"
+msgstr "Poraz nepřátelského vůdce"
 
 #. [objective]: condition=lose
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:189
@@ -1312,14 +1308,14 @@ msgstr "Lord Maddok zemře"
 #. [event]
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:236
 msgid "The Daneth"
-msgstr ""
+msgstr "Danet"
 
 #. [event]
 #. [unit]: type=Skiff, id=Skiff
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:237
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:330
 msgid "Mary’s Minnow"
-msgstr ""
+msgstr "Mářina střevle"
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:296
@@ -1348,20 +1344,14 @@ msgstr ""
 
 #. [message]: speaker=Lord Maddock
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:309
-#, fuzzy
-#| msgid ""
-#| "That was partially my fault, since I was not able to send a messenger to "
-#| "you in time. I shall have to inform you now. Five weeks ago, at the Ford "
-#| "of Abez, Queen Asheviere’s men allied themselves with the northern orcs "
-#| "and betrayed King Garard II."
 msgid ""
 "That was partially my fault, since I was not able to send a messenger to you "
 "in time. I shall have to inform you now. Five weeks ago, at the Ford of "
 "Abez, King Garard II of Wesnoth was murdered."
 msgstr ""
-"To je částečně má chyba, protože jsem k vám nemohl včas poslat posla. Budu "
-"vás muset informovat teď. Před pěti týdny se u Abezského brodu spojili muži "
-"královny Ašvíry se severními skřety a zradili krále Gararda II."
+"To je částečně má chyba, protože jsem k vám nemohl včas poslat posla. Budu "
+"vás muset informovat teď. Před pěti týdny byl u Abezského brodu zavražděn "
+"král Wesnothu, Garard II."
 
 #. [message]: speaker=Lord Maddock
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:313
@@ -1371,25 +1361,22 @@ msgid ""
 "Prince Eldred fell in battle not long after, upon which Asheviere claimed "
 "the throne."
 msgstr ""
+"Oficiálně je známo, že se zločinu dopustil jeden z jeho kapitánů. "
+"Nepotvrzeně se proslýchá, že se na něm podílela královna Ašvíra a její syn "
+"Eldred. Ať tak či onak, princ Eldred nedlouho poté padl v bitvě, po níž si "
+"Ašvíra nárokovala trůn."
 
 #. [message]: speaker=Lord Maddock
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:317
-#, fuzzy
-#| msgid ""
-#| "Since Prince Eldred died in the battle, the Queen took the throne and has "
-#| "been consolidating her power. Part of that has been bringing the elders "
-#| "from the local villages here, forcing them to swear allegiance to her. "
-#| "That was the purpose of that patrol."
 msgid ""
 "The Queen is not popular. She is at war with supporters of the old king, and "
 "searches far and wide for new conscripts. Part of that has been taking "
 "elders from the local villages, forcing them to swear allegiance to her. "
 "That was the purpose of that patrol."
 msgstr ""
-"Vzhledem k tomu, že v bitvě zemřel i princ Eldred, nastoupila na trůn "
-"královna. A upevňuje svoji moc. Součástí toho bylo, že nechala přivést "
-"starší z místních vesnic, aby je přinutila přísahat jí věrnost. To byl záměr "
-"té hlídky."
+"Královna není oblíbená. Vede válku s příznivci bývalého krále a všude hledá "
+"nové rekruty. Součástí toho je, že odvádí starší z místních vesnic a nutí je "
+"přísahat jí věrnost. To byl záměr té hlídky."
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:321
@@ -1423,6 +1410,10 @@ msgid ""
 "maintains a large garrison south at the great fortress of Halstead, but even "
 "should they mobilize all their troops, I doubt they could take Elensefar."
 msgstr ""
+"Nepřijdou. Nemám v úmyslu si vybírat stranu ve westnothském střetu "
+"a královna ví, že by se mě neměla snažit donutit. Je pravda, že na jihu ve "
+"velké pevnosti Halstead udržuje početnou posádku, ale i kdyby uvedli do "
+"pohybu všechny své oddíly, pochybuji, že by dokázali dobýt Elensefar."
 
 #. [message]: speaker=Harper
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:337
@@ -1442,6 +1433,11 @@ msgid ""
 "and we are not in the habit of maintaining a large standing army. It will "
 "take time to assemble mercenaries of the right caliber."
 msgstr ""
+"Ano, jsem si vědom toho, že královna Ašvíra má sklon najímat si skřety na "
+"doplnění svých sil. Já také začal rozšiřovat své vojsko, i když si myslím, "
+"že k válce nedojde. Ale obyvatel Elensefaru je málo a nemáme ve zvyku "
+"udržovat velkou stálou armádu. Shromáždit žoldnéře těch správných kvalit "
+"bude chvíli trvat."
 
 #. [message]: speaker=Lord Maddock
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:345
@@ -1452,6 +1448,11 @@ msgid ""
 "wizard and his rebels have suffered several defeats. I have some concessions "
 "that I shall have to make..."
 msgstr ""
+"Smlouva mezi Elensefarem a Wesnothem je prastará a nemyslím si, že by ji "
+"Její Veličenstvo chtělo porušit. Ale nemohu si dovolit udělat si "
+"z weldynských nepřátele, jak jistě chápeš. Zdá se, že Ašvíra ve své občanské "
+"válce vítězí. Čaroděj a jeho rebelové utrpěli několik porážek. Musím udělat "
+"několik ústupků..."
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:349
@@ -1465,6 +1466,9 @@ msgid ""
 "arise. I am already in covert communication with— ...listen, there is a "
 "bigger picture here, Baldras."
 msgstr ""
+"Nevkládej mi slova do úst. Jsem více než ochoten jednat, pokud to bude "
+"potřeba. Už jsem v tajném spojení s... ... poslouchej, jde o něco většího, "
+"Baldrasi."
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:357
@@ -1504,16 +1508,11 @@ msgstr "Hej, koukněte! Nějakej zakopanej poklad!"
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:421
-#, fuzzy
-#| msgid ""
-#| "It says, “Here lies Daneth, child of the Light, loyal defender of Lord "
-#| "and Land.” Whoever that was."
 msgid ""
 "It says, “Here lies Daneth, child of the Light, loyal defender of Lord and "
 "Land.”"
 msgstr ""
-"Tady se říká: „Zde leží Daneth, dítě Světla, věrný obránce pána a země.“ "
-"Kdoví, kdo to byl."
+"Tady se říká: „Zde leží Danet, dítě Světla, věrný obránce pána a země.“"
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:425
@@ -1527,7 +1526,7 @@ msgid ""
 "It says, “Here lies Daneth, child of the Light, loyal defender of Lord and "
 "Land.” Whoever that was."
 msgstr ""
-"Tady se říká: „Zde leží Daneth, dítě Světla, věrný obránce pána a země.“ "
+"Tady se říká: „Zde leží Danet, dítě Světla, věrný obránce pána a země.“ "
 "Kdoví, kdo to byl."
 
 #. [message]: speaker=unit
@@ -1602,10 +1601,8 @@ msgstr ""
 
 #. [modify_unit]
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:865
-#, fuzzy
-#| msgid "General Kestrel"
 msgid "Kestrel"
-msgstr "Generál Kestrel"
+msgstr "Kestrel"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:872
@@ -1614,22 +1611,15 @@ msgstr "Kdo jste? Co jste?"
 
 #. [message]: speaker=Kestrel
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:876
-#, fuzzy
-#| msgid ""
-#| "We... are accursed. We were the soldiers of Prince Eldred, the King’s son "
-#| "and betrayer... when the Prince was slain at the hands of the mage "
-#| "Delfador, those of us who bore witness to it were warped into these "
-#| "twisted forms. Now, our mortal bodies pass... into another plane of "
-#| "hellish existence..."
 msgid ""
 "We... are accursed. We were the soldiers of Prince Eldred, the King’s son "
 "and betrayer... when the Prince stooped to black magic, we were damned... "
 "those of us who bore witness were warped into these twisted forms."
 msgstr ""
-"My... jsme prokletí. Byli jsme vojáky prince Eldreda, králova syna a "
-"zrádce... Když byl princ zabit rukou mága Delfadora, tak se ti z nás, kteří "
-"u toho byli, přeměnili do těchto deformovaných podob. Nyní naše smrtelná "
-"těla přecházejí... do jiných sfér pekelné existence..."
+"My... jsme prokletí. Byli jsme vojáky prince Eldreda, králova syna "
+"a zrádce... Když se princ uchýlil k černé magii, byli jsme odsouzeni "
+"k věčnému zatracení... Ti z nás, kteří to spatřili na vlastní oči, byli "
+"znetvořeni."
 
 #. [message]: speaker=Kestrel
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:880
@@ -1637,6 +1627,8 @@ msgid ""
 "The Queen sent us away... sent us west. Now, our mortal bodies pass... into "
 "another plane of hellish existence..."
 msgstr ""
+"Královna nás poslala pryč... poslala nás na západ. Nyní naše smrtelná těla "
+"přecházejí... do jiné roviny děsivého bytí..."
 
 #. [message]: speaker=Lord Maddock
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:903
@@ -2848,13 +2840,12 @@ msgstr "Na váš rozkaz, poručíku."
 
 #. [message]: speaker=Sir Gwydion
 #: data/campaigns/Liberty/scenarios/07_Glory.cfg:395
-#, fuzzy
-#| msgid ""
-#| "Ready thy lances! Let us trample the armies of Weldyn beneath our steeds!"
 msgid ""
 "Lo, Knights of Elensefar, the battle hath begun ere our arrival. Ready thy "
 "lances! Let us trample the armies of Weldyn beneath our steeds!"
-msgstr "Připravte svá kopí! Nechť vojska Weldynu zhynou pod kopyty našich ořů!"
+msgstr ""
+"Hle, rytíři elensefarští, bitva započala již před naším příjezdem. Připravte "
+"svá kopí! Nechť vojska Weldynu zhynou pod kopyty našich ořů!"
 
 #. [message]: role=farseer
 #: data/campaigns/Liberty/scenarios/07_Glory.cfg:408
@@ -3063,13 +3054,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Liberty/scenarios/08_Epilogue.cfg:22
-#, fuzzy
-#| msgid ""
-#| "I’m sure them Wesnothians will come back in time and with Maddock holed "
-#| "up in his stupid tower, they’ll eventually siege Elensefar and take the "
-#| "city... but that don’t be my problem anymore. I has me a village to worry "
-#| "about. I need to get back, consult myself with Relana and figure out what "
-#| "to do next. We gots some more time now, but we can’t wait forever."
 msgid ""
 "I’m sure them Wesnothians will come back in time. Maddock sounded like he "
 "had a plan... we’ll see. But that don’t be my problem anymore. I has me a "
@@ -3077,11 +3061,10 @@ msgid ""
 "figure out what to do next. We gots some more time now, but we can’t wait "
 "forever."
 msgstr ""
-"Jsem si jistej, že začas se wesnothský vrátěj. A když bude Maddok dřepět ve "
-"svý věži, obklíčí wesnothský nakonec Elensefar a město dobyjou... Ale to už "
-"není můj problém. Pro mě je starostí moje vesnice. Potřebuju se vrátit, "
-"promluvit si s Relanou a vymyslet, co dál. Teď jsme získali nějakej čas, ale "
-"to nám nevydrží věčně."
+"Jsem si jistej, že začas se wesnothský vrátěj. Vypadalo to, jako by měl "
+"Maddok nějakej plán... no, uvidíme. Ale to už není můj problém. Pro mě je "
+"starostí moje vesnice. Potřebuju se vrátit, promluvit si s Relanou "
+"a vymyslet, co dál. Teď jsme získali nějakej čas, ale to nám nevydrží věčně."
 
 #. [part]
 #: data/campaigns/Liberty/scenarios/08_Epilogue.cfg:25

@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-09-22 04:01 UTC\n"
-"PO-Revision-Date: 2025-09-07 08:57+0200\n"
+"PO-Revision-Date: 2025-10-09 23:04+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -1223,12 +1223,6 @@ msgstr "Kánoe"
 
 #. [unit_type]: id=Canoe, race=ship
 #: data/core/units/boats/Canoe.cfg:33
-#, fuzzy
-#| msgid ""
-#| "A Canoe is a small, open-top water vessel commonly used for "
-#| "transportation or hunting. Their light-weight construction allows them to "
-#| "be carried around barriers or between unconnected bodies of water. Almost "
-#| "every intelligent race has some form of canoe."
 msgid ""
 "A Canoe is a small, open-top water vessel commonly used for transportation "
 "or hunting. Their light-weight construction allows them to be carried around "
@@ -1253,6 +1247,10 @@ msgid ""
 "platform, and their spacious holds can carry both medical supplies and "
 "repair equipment."
 msgstr ""
+"Obchodní karaky jsou rychlé lodě s velkými nákladovými prostory. Ačkoli "
+"nejsou určeny pro válku, jejich velká a rovná paluba je dobrou plochou pro "
+"lukostřelbu a v jejich prostorném podpalubí lze přepravovat jak lékařské "
+"zásoby, tak opravárenské vybavení."
 
 #. [attack]: type=pierce
 #: data/core/units/boats/Carrack_Merchant.cfg:42
@@ -1322,6 +1320,11 @@ msgid ""
 "Artfully grafted together from still-living trees, these sleek ships can "
 "recover from minor injuries without their crews’ intervention."
 msgstr ""
+"Elfové nejsou od přírody mořeplavci, raději dávají přednost klidné lesní "
+"samotě. Přesto existuje určitá poptávka po říčním obchodu a dopravě, zejména "
+"mezi enklávami Wesmérií a Lintanirem. Tyto elegantní lodě, umně sroubované "
+"z dosud živých stromů, se dokáží zotavit z drobných poškození bez zásahu "
+"posádky."
 
 #. [attack]: type=pierce
 #: data/core/units/boats/Elf_Cutter.cfg:38
@@ -1329,7 +1332,7 @@ msgstr ""
 #: data/core/units/boats/Elf_Sloop.cfg:39
 #: data/core/units/boats/Elf_Sloop.cfg:48
 msgid "marksmen"
-msgstr ""
+msgstr "ostrostřelci"
 
 #. [unit_type]: id=Elvish Sloop, race=ship
 #: data/core/units/boats/Elf_Sloop.cfg:5
@@ -1344,6 +1347,9 @@ msgid ""
 "times of crisis, for their living timber can survive only a handful of years "
 "after being launched."
 msgstr ""
+"Tyto nejmohutnější elfské lodě, ladné ve vodě a ozdobené zelení, beztrestně "
+"odolávají vlnám i bouřím. Takto velké lodě jsou k vidění pouze v dobách "
+"krize, protože jejich živé dřevo vydrží jen několik let po spuštění na vodu."
 
 #. [unit_type]: id=Fireship, race=ship
 #: data/core/units/boats/Fireship.cfg:4
@@ -1367,7 +1373,7 @@ msgstr ""
 #. [dummy]: id=deteriorate
 #: data/core/units/boats/Fireship.cfg:25
 msgid "deteriorate"
-msgstr ""
+msgstr "chátrání"
 
 #. [dummy]: id=deteriorate
 #: data/core/units/boats/Fireship.cfg:26
@@ -1375,6 +1381,8 @@ msgid ""
 "This unit is deteriorating. It cannot be healed, and loses 10 hitpoints at "
 "the start of each of its turns."
 msgstr ""
+"Tato jednotka chátrá. Nelze ji opravit a na začátku každého svého kola "
+"ztrácí 10 zásahových bodů."
 
 #. [unit_type]: id=Ghost Ship, race=ship
 #: data/core/units/boats/Ghost_Ship.cfg:16
@@ -1392,7 +1400,7 @@ msgstr "blesk"
 #. [attack]: type=cold
 #: data/core/units/boats/Ghost_Ship.cfg:63
 msgid "lost souls"
-msgstr ""
+msgstr "ztracené duše"
 
 #. [unit_type]: id=Boat, race=mechanical
 #: data/core/units/boats/Legacy_Boat.cfg:7
@@ -1472,24 +1480,6 @@ msgstr "Skřetí bárka"
 
 #. [unit_type]: id=Orcish Barge, race=ship
 #: data/core/units/boats/Orc_Barge.cfg:26
-#, fuzzy
-#| msgid ""
-#| "Orcish barges are crude constructions, devoid of any of the craftsmanship "
-#| "seen in almost any other ship. But what they lack in speed and grace, "
-#| "they make up for with their rugged durability and utility in navigating "
-#| "rivers and swamps. Their primary means of movement comes from a large, "
-#| "symmetric sail held at three points for downwind propulsion. When "
-#| "currents and winds lead to the wrong direction, the crew must use poles "
-#| "and anchors to move the barge in the intended direction.\n"
-#| "\n"
-#| "Barges serve as transports for either supplies or troops, and when "
-#| "stocked with medicines can provide a safe space — akin to a village — for "
-#| "wounded fighters to rest. They lack any specific weaponry and cannot ram, "
-#| "but the crew is equipped with enough crude orcish bows to provide "
-#| "deterrent.\n"
-#| "\n"
-#| "These barges are very ineffective in the high seas; little better than a "
-#| "floating wreck."
 msgid ""
 "Orcish Barges are crude constructions, devoid of any of the craftsmanship "
 "seen in almost any other ship. But what they lack in speed and grace, they "
@@ -1541,6 +1531,14 @@ msgid ""
 "These barges are very ineffective in the high seas; little better than a "
 "floating wreck."
 msgstr ""
+"Navzdory své zjednodušené konstrukci zajišťují bárky překvapivě mnoho "
+"užitečných služeb: hromadnou přepravu zboží nebo lidí, plavbu v mělké vodě "
+"nebo močále a bezpečné místo pro odpočinek zraněných bojovníků. Poskytují "
+"také širokou a rovnou palubu, na kterou lze připevnit obléhací zařízení, "
+"čehož jsou si skřeti dobře vědomi.\n"
+"\n"
+"Na volném moři jsou tyto bárky velmi slabé, jen o málo lepší než plovoucí "
+"vrak."
 
 #. [attack]: type=impact
 #: data/core/units/boats/Orc_Battle-Barge.cfg:44
@@ -1562,6 +1560,11 @@ msgid ""
 "The so-called “Rigship” is but one of many designs bearing testament to "
 "their skill."
 msgstr ""
+"Většina skřetů plachetnice moc nepotřebuje a raději bojuje na suchých "
+"vrcholcích a kopcích Srdcových hor. Podél severozápadního pobřeží Velkého "
+"kontinentu, ve městech Bitok a Tirigaz, však skřetí loďaři usilovně pracují "
+"na zdokonalování svých plavidel. Takzvaná „galéra“ je jen jednou z mnoha "
+"konstrukcí, které svědčí o jejich zručnosti."
 
 #. [attack]: type=pierce
 #. [attack]: type=fire
@@ -1585,6 +1588,10 @@ msgid ""
 "shipwrights of the Tirigaz coast have not forgotten that lesson, and devote "
 "significant effort to the construction of newer and ever-better vessels."
 msgstr ""
+"Když se skřeti poprvé vylodili na západních březích Velkého kontinentu, "
+"našli nedotčený ráj, po kterém se mohli rozšířit. Loďaři na pobřeží Tirigazu "
+"na tuto lekci nezapomněli a věnují značné úsilí stavbě stále nových "
+"a lepších plavidel."
 
 #. [unit_type]: id=Raft, race=ship
 #: data/core/units/boats/Raft.cfg:5
@@ -1593,14 +1600,6 @@ msgstr "Vor"
 
 #. [unit_type]: id=Raft, race=ship
 #: data/core/units/boats/Raft.cfg:20
-#, fuzzy
-#| msgid ""
-#| "Rafts can be an efficient means of downriver transport, but they can also "
-#| "be an improvised vessel of desperation, patched together from the wreck "
-#| "of a larger ship.\n"
-#| "\n"
-#| "These rafts are very ineffective in the high seas; little better than a "
-#| "floating wreck."
 msgid ""
 "Rafts can be an efficient means of downriver transport, but they can also be "
 "an improvised vessel of desperation, patched together from the wreck of a "
@@ -1686,10 +1685,6 @@ msgstr "Lodice"
 
 #. [unit_type]: id=Skiff, race=ship
 #: data/core/units/boats/Skiff.cfg:21
-#, fuzzy
-#| msgid ""
-#| "Propelled by oars or small sails, skiffs are used to travel short "
-#| "distances and in shallows where large ships cannot navigate."
 msgid ""
 "Propelled by oars or small sails, Skiffs are used to travel short distances "
 "and in shallows where large ships cannot navigate."
@@ -2729,7 +2724,7 @@ msgstr ""
 #: data/core/units/dunefolk/Raider.cfg:59
 #: data/core/units/goblins/Pillager.cfg:68
 msgid "torch"
-msgstr "louč"
+msgstr "pochodeň"
 
 #. [attack]: type=pierce
 #: data/core/units/dunefolk/Marauder.cfg:71
