@@ -838,7 +838,10 @@ void server::login_client(boost::asio::yield_context yield, SocketPtr socket)
 	}
 
 	simple_wml::node& player_cfg = games_and_users_list_.root().add_child("user");
-	auto [new_player, inserted] = player_connections_.emplace(
+
+	player_iterator new_player;
+	bool inserted;
+	std::tie(new_player, inserted) = player_connections_.emplace(
 		socket,
 		username,
 		player_cfg,
