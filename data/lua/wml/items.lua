@@ -25,6 +25,7 @@ local function add_overlay(x, y, cfg)
 			filter_team = cfg.filter_team,
 			visible_in_fog = cfg.visible_in_fog,
 			submerge = cfg.submerge,
+			parallax_mult = cfg.parallax_mult,
 			redraw = cfg.redraw,
 			name = cfg.name,
 			z_order = cfg.z_order,
@@ -62,6 +63,7 @@ end
 ---@field filter_team WML
 ---@field visible_in_fog boolean
 ---@field submerge number
+---@field parallax_mult number
 ---@field redraw boolean
 ---@field name string
 ---@field z_order integer
@@ -85,6 +87,7 @@ function wesnoth.interface.get_items(x, y)
 			filter_team = cfg.filter_team,
 			visible_in_fog = cfg.visible_in_fog,
 			submerge = cfg.submerge,
+			parallax_mult = cfg.parallax_mult,
 			redraw = cfg.redraw,
 			name = cfg.name,
 			z_order = cfg.z_order,
