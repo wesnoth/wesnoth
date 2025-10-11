@@ -16,6 +16,7 @@
 #pragma once
 
 #include "halo.hpp"
+#include "display.hpp"
 
 struct overlay
 {
@@ -63,4 +64,7 @@ struct overlay
 	float submerge;
 	float z_order;
 
+	// Other support
+	bool is_animated = false;
+	animated<image::locator> anim; // Manages the sequence of frames and timing for animated overlays.
 };
