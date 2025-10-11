@@ -1755,8 +1755,6 @@ int unit::defense_modifier(const t_translation::terrain_code & terrain, const ma
 {
 	int def = movement_type_.defense_modifier(terrain);
 
-	// A [defense] ability is too costly and doesn't take into account target locations.
-	// Left as a comment in case someone ever wonders why it isn't a good idea.
 	unit_ability_list defense_abilities = get_abilities("defense", loc);
 	if(!defense_abilities.empty()) {
 		unit_abilities::effect defense_effect(defense_abilities, 100 - def);
