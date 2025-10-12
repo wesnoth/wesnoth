@@ -112,6 +112,7 @@ validate_misc "World_Conquest" "MULTIPLAYER,LOAD_WC2"                    || RET=
 
 validate_campaign "Dead_Water"              "CAMPAIGN_DEAD_WATER"              "EASY" "NORMAL" "HARD" "NIGHTMARE" || RET=1
 validate_campaign "Descent_Into_Darkness"   "CAMPAIGN_DESCENT"                 "EASY" "NORMAL" "HARD"             || RET=1
+validate_campaign "Dusk_of_Dawn"            "CAMPAIGN_DUSK_OF_DAWN"                   "NORMAL" "HARD"             || RET=1
 validate_campaign "Eastern_Invasion"        "CAMPAIGN_EASTERN_INVASION"        "EASY" "NORMAL" "HARD"             || RET=1
 validate_campaign "Heir_To_The_Throne"      "CAMPAIGN_HEIR_TO_THE_THRONE"      "EASY" "NORMAL" "HARD"             || RET=1
 validate_campaign "Legend_of_Wesmere"       "CAMPAIGN_LOW"                     "EASY" "NORMAL" "HARD"             || RET=1
