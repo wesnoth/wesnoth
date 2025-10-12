@@ -71,7 +71,7 @@ jobs:
           SIGNING_KEY_PASSWORD: ${{ secrets.SIGNING_KEY_PASSWORD }}
           SIGNING_STORE_PASSWORD: ${{ secrets.SIGNING_STORE_PASSWORD }}
           SIGNING_KEYSTORE: ${{ secrets.SIGNING_KEYSTORE }}
-        run: cd packaging/android && printf %s "$SIGNING_KEYSTORE" | base64 > app/wesnoth.keystore && ./gradlew buildCppSource assembleRelease bundleRelease;
+        run: cd packaging/android && printf %s "$SIGNING_KEYSTORE" | base64 -d > app/wesnoth.keystore && ./gradlew buildCppSource assembleRelease bundleRelease;
 
       - name: Upload APK (armeabi-v7a)
         if: github.event_name == 'push'
