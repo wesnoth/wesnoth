@@ -34,7 +34,6 @@ jobs:
       - name: Download and build Wesnoth dependencies
         if: ${{ steps.restore-deps-cache.outputs.cache-hit  != 'true' }}
         env:
-          API: ${{ env.API }}
           PREFIXDIR: ${{ env.BUILDBASEDIR }}/prefix
           DOWNLOADDIR: ${{ env.BUILDBASEDIR }}/download
           BUILDDIR: ${{ env.BUILDBASEDIR }}/build
@@ -65,7 +64,6 @@ jobs:
       - name: Build Wesnoth and create APK/AAB (Release)
         if: github.event_name == 'push'
         env:
-          API: ${{ env.API }}
           PREFIXDIR: ${{ env.BUILDBASEDIR }}/prefix
           SIGNING_KEY_ALIAS: ${{ secrets.SIGNING_KEY_ALIAS }}
           SIGNING_KEY_PASSWORD: ${{ secrets.SIGNING_KEY_PASSWORD }}
@@ -111,7 +109,6 @@ jobs:
       - name: Build Wesnoth and create APK/AAB (Debug)
         if: github.event_name != 'push'
         env:
-          API: ${{ env.API }}
           PREFIXDIR: ${{ env.BUILDBASEDIR }}/prefix
         run: cd packaging/android && ./gradlew buildCppSource assembleDebug bundleDebug;
 
