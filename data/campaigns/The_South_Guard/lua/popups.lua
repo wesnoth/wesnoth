@@ -198,7 +198,7 @@ function choose_companion(cfg)
 		if (not wml.variables['asked_mari']   ) then dialog["leave_with_mari"   ].visible=false end
 		if (not wml.variables['asked_hylas']  ) then dialog["leave_with_hylas"  ].visible=false end
 
-		dialog["characters"].on_modified = function()	
+		dialog["characters"].on_modified = function()
 			wesnoth.interface.skip_messages(false) -- each time the player picks an option, clear the skip_message flag
 			if dialog["characters"].selected_index==1 then wesnoth.game_events.fire('ask_about_gerrick' ) end
 			if dialog["characters"].selected_index==2 then wesnoth.game_events.fire('ask_about_mari'    ) end
