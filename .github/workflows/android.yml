@@ -15,6 +15,7 @@ jobs:
     env:
       API: 23
       BUILDBASEDIR: ${{ github.WORKSPACE }}/packaging/android
+      BUILDTYPE: ${{ github.event_name == 'push' && 'release' || 'debug' }}
 
     steps:
       - { uses: actions/checkout@v4, with: { submodules: "recursive" } }
@@ -70,41 +71,6 @@ jobs:
           SIGNING_STORE_PASSWORD: ${{ secrets.SIGNING_STORE_PASSWORD }}
           SIGNING_KEYSTORE: ${{ secrets.SIGNING_KEYSTORE }}
         run: cd packaging/android && printf %s "$SIGNING_KEYSTORE" | base64 -d > app/wesnoth.keystore && ./gradlew buildCppSource assembleRelease bundleRelease;
-
-      - name: Upload APK (armeabi-v7a)
-        if: github.event_name == 'push'
-        uses: actions/upload-artifact@v4
-        with:
-          name: "wesnoth-armeabi-v7a.apk"
-          path: "packaging/android/app/build/outputs/apk/release/app-armeabi-v7a-release.apk"
-
-      - name: Upload APK (arm64-v8a)
-        if: github.event_name == 'push'
-        uses: actions/upload-artifact@v4
-        with:
-          name: "wesnoth-arm64-v8a.apk"
-          path: "packaging/android/app/build/outputs/apk/release/app-arm64-v8a-release.apk"
-
-      - name: Upload APK (x86)
-        if: github.event_name == 'push'
-        uses: actions/upload-artifact@v4
-        with:
-          name: "wesnoth-x86.apk"
-          path: "packaging/android/app/build/outputs/apk/release/app-x86-release.apk"
-
-      - name: Upload APK (x86_64)
-        if: github.event_name == 'push'
-        uses: actions/upload-artifact@v4
-        with:
-          name: "wesnoth-x86_64.apk"
-          path: "packaging/android/app/build/outputs/apk/release/app-x86_64-release.apk"
-
-      - name: Upload AAB
-        if: github.event_name == 'push'
-        uses: actions/upload-artifact@v4
-        with:
-          name: "wesnoth.aab"
-          path: "packaging/android/app/build/outputs/bundle/release/app-release.aab"
           
       - name: Build Wesnoth and create APK/AAB (Debug)
         if: github.event_name != 'push'
@@ -113,36 +79,31 @@ jobs:
         run: cd packaging/android && ./gradlew buildCppSource assembleDebug bundleDebug;
 
       - name: Upload APK (armeabi-v7a)
-        if: github.event_name != 'push'
         uses: actions/upload-artifact@v4
         with:
           name: "wesnoth-armeabi-v7a.apk"
-          path: "packaging/android/app/build/outputs/apk/debug/app-armeabi-v7a-debug.apk"
+          path: "packaging/android/app/build/outputs/apk/${{ env.BUILDTYPE }}/app-armeabi-v7a-${{ env.BUILDTYPE }}.apk"
 
       - name: Upload APK (arm64-v8a)
-        if: github.event_name != 'push'
         uses: actions/upload-artifact@v4
         with:
           name: "wesnoth-arm64-v8a.apk"
-          path: "packaging/android/app/build/outputs/apk/debug/app-arm64-v8a-debug.apk"
+          path: "packaging/android/app/build/outputs/apk/${{ env.BUILDTYPE }}/app-arm64-v8a-${{ env.BUILDTYPE }}.apk"
 
       - name: Upload APK (x86)
-        if: github.event_name != 'push'
         uses: actions/upload-artifact@v4
         with:
           name: "wesnoth-x86.apk"
-          path: "packaging/android/app/build/outputs/apk/debug/app-x86-debug.apk"
+          path: "packaging/android/app/build/outputs/apk/${{ env.BUILDTYPE }}/app-x86-${{ env.BUILDTYPE }}.apk"
 
       - name: Upload APK (x86_64)
-        if: github.event_name != 'push'
         uses: actions/upload-artifact@v4
         with:
           name: "wesnoth-x86_64.apk"
-          path: "packaging/android/app/build/outputs/apk/debug/app-x86_64-debug.apk"
+          path: "packaging/android/app/build/outputs/apk/${{ env.BUILDTYPE }}/app-x86_64-${{ env.BUILDTYPE }}.apk"
 
       - name: Upload AAB
-        if: github.event_name != 'push'
         uses: actions/upload-artifact@v4
         with:
           name: "wesnoth.aab"
-          path: "packaging/android/app/build/outputs/bundle/debug/app-debug.aab"
+          path: "packaging/android/app/build/outputs/bundle/${{ env.BUILDTYPE }}/app-${{ env.BUILDTYPE }}.aab"
