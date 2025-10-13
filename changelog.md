@@ -10,6 +10,7 @@
 ### Translations
 ### Units
 ### User interface
+   * New key `title_position` added to `[part]` that allows changing the position of the title text.
 ### WML Engine
 ### Miscellaneous and Bug Fixes
 

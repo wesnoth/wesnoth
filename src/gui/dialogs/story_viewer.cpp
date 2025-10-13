@@ -13,6 +13,7 @@
 	See the COPYING file for more details.
 */
 
+#include "gui/widgets/drawing.hpp"
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "gui/dialogs/story_viewer.hpp"
@@ -235,24 +236,20 @@ void story_viewer::display_part()
 	//
 	// Title
 	//
-	label& title_label = find_widget<label>("title");
-
+	drawing& title_label = find_widget<stacked_widget>("background_stack").find_widget<drawing>("title");
 	std::string title_text = current_part_->title();
-	bool showing_title;
-
-	if(current_part_->show_title() && !title_text.empty()) {
-		showing_title = true;
-
-		PangoAlignment title_text_alignment = decode_text_alignment(current_part_->title_text_alignment());
-
-		title_label.set_visible(widget::visibility::visible);
-		title_label.set_text_alignment(title_text_alignment);
+	bool showing_title = current_part_->show_title() && !title_text.empty();
+	title_label.set_visible(showing_title);
+	if(showing_title) {
+		for(auto& canv : title_label.get_canvases()) {
+			auto& title_position = current_part_->title_position();
+			canv.set_variable("hperc", wfl::variant(title_position.x));
+			canv.set_variable("vperc", wfl::variant(title_position.y));
+		}
 		title_label.set_label(title_text);
-	} else {
-		showing_title = false;
-
-		title_label.set_visible(widget::visibility::invisible);
+		title_label.set_text_alignment(decode_text_alignment(current_part_->title_text_alignment()));
 	}
+	title_label.queue_redraw();
 
 	//
 	// Story text
