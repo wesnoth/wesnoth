@@ -99,6 +99,7 @@ namespace
 {
 using namespace std::string_literals;
 const std::array old_style_tags{ "bold"s, "italic"s, "header"s, "format"s, "img"s, "ref"s, "jump"s };
+const std::array old_style_attr{ /*ref*/ "dst"s, "text"s, "force"s, /*jump*/ "to"s, "amount"s, /*img*/ "src"s, "align"s, "float"s, /*format*/ "bold"s, "italic"s, "color"s, "font_size"s };
 }
 
 static std::string position_info(const std::string::const_iterator& text_start, const std::string::const_iterator& error_position)
@@ -252,21 +253,27 @@ static std::string parse_name(std::string::const_iterator& beg, std::string::con
 	return s.str();
 }
 
-static std::pair<std::string, std::string> parse_attribute(std::string::const_iterator& beg, std::string::const_iterator end, bool allow_empty)
+static std::pair<std::string, std::string> parse_attribute(std::string::const_iterator& beg, std::string::const_iterator end, bool old_style)
 {
 	std::string attr = parse_name(beg, end);
 	if(attr.empty()) {
 		throw parse_error(beg, "missing attribute name");
 	}
+	if(old_style && !utils::contains(old_style_attr, attr)) {
+		throw parse_error(beg, "dummy error: not an old-style attribute name"); // old-style=true caller ignores parse errors
+	}
+
 	while(isspace(*beg)) ++beg;
 
 	if(*beg != '=') {
-		if(allow_empty) {
+		if(old_style) {
+			throw parse_error(beg, "attribute missing value in old-style tag");
+		} else {
 			// The caller expects beg to point to the last character of the attribute upon return.
 			// But in this path, we're now pointing to the character AFTER that.
 			--beg;
 			return {attr, ""};
-		} else throw parse_error(beg, "attribute missing value in old-style tag");
+		}
 	}
 	++beg;
 	while(isspace(*beg)) ++beg;
@@ -351,7 +358,7 @@ static config parse_tag_contents(std::string::const_iterator& beg, std::string::
 		if(isspace(*beg)) continue;
 		auto save_beg = beg;
 		try {
-			auto [key, val] = parse_attribute(beg, end, false);
+			auto [key, val] = parse_attribute(beg, end, true);
 			res[key] = val;
 		} catch(parse_error&) {
 			beg = save_beg;
@@ -412,7 +419,7 @@ static std::pair<std::string, config> parse_tag(std::string::const_iterator& beg
 		if(*beg == '/' && (beg + 1) != end && *(beg + 1) == '>') {
 			auto_closed = true;
 		} else if(isalnum(*beg) || *beg == '_') {
-			const auto& [key, value] = parse_attribute(beg, end, true);
+			const auto& [key, value] = parse_attribute(beg, end, false);
 			if(beg == end) {
 				throw parse_error(beg, "unexpected end of stream following attribute");
 			}
