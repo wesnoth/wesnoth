@@ -99,6 +99,7 @@ namespace
 {
 using namespace std::string_literals;
 const std::array old_style_tags{ "bold"s, "italic"s, "header"s, "format"s, "img"s, "ref"s, "jump"s };
+const std::array old_style_attr{ /*ref*/ "dst"s, "text"s, "force"s, /*jump*/ "to"s, "amount"s, /*img*/ "src"s, "align"s, "float"s, /*format*/ "bold"s, "italic"s, "color"s, "font_size"s };
 }
 
 static std::string position_info(const std::string::const_iterator& text_start, const std::string::const_iterator& error_position)
@@ -252,21 +253,27 @@ static std::string parse_name(std::string::const_iterator& beg, std::string::con
 	return s.str();
 }
 
-static std::pair<std::string, std::string> parse_attribute(std::string::const_iterator& beg, std::string::const_iterator end, bool allow_empty)
+static std::pair<std::string, std::string> parse_attribute(std::string::const_iterator& beg, std::string::const_iterator end, bool old_style)
 {
 	std::string attr = parse_name(beg, end);
 	if(attr.empty()) {
 		throw parse_error(beg, "missing attribute name");
 	}
+	if(old_style && !utils::contains(old_style_attr, attr)) {
+		throw parse_error(beg, "dummy error: not an old-style attribute name"); // old-style=true caller ignores parse errors
+	}
+
 	while(isspace(*beg)) ++beg;
 
 	if(*beg != '=') {
-		if(allow_empty) {
+		if(old_style) {
+			throw parse_error(beg, "attribute missing value in old-style tag");
+		} else {
 			// The caller expects beg to point to the last character of the attribute upon return.
 			// But in this path, we're now pointing to the character AFTER that.
 			--beg;
 			return {attr, ""};
-		} else throw parse_error(beg, "attribute missing value in old-style tag");
+		}
 	}
 	++beg;
 	while(isspace(*beg)) ++beg;
@@ -317,31 +324,31 @@ static std::pair<std::string, std::string> parse_attribute(std::string::const_it
 	return {attr, value};
 }
 
-static void check_closing_tag(std::string::const_iterator& beg, std::string::const_iterator end, std::string_view match)
+static void check_closing_tag(std::string::const_iterator& beg, std::string::const_iterator end, std::string_view tag_name)
 {
 	std::size_t remaining = end - beg;
 	assert(remaining >= 2 && *beg == '<' && *(beg + 1) == '/');
-	if(remaining < match.size() + 3) {
+	if(remaining < tag_name.size() + 3) {
 		throw parse_error(beg, "Unexpected end of stream in closing tag");
 	}
 	beg += 2;
-	if(!std::equal(match.begin(), match.end(), beg)) {
-		throw parse_error(beg, "Mismatched closing tag " + std::string(match));
+	if(!std::equal(tag_name.begin(), tag_name.end(), beg)) {
+		throw parse_error(beg, "Mismatched closing tag " + std::string(tag_name));
 	}
-	beg += match.size();
+	beg += tag_name.size();
 	if(*beg != '>') {
-		throw parse_error(beg, "Unterminated closing tag " + std::string(match));
+		throw parse_error(beg, "Unterminated closing tag " + std::string(tag_name));
 	}
 	++beg;
 }
 
 static std::pair<std::string, config> parse_tag(std::string::const_iterator& beg, std::string::const_iterator end);
-static config parse_tag_contents(std::string::const_iterator& beg, std::string::const_iterator end, std::string_view match, bool check_for_attributes)
+static config parse_tag_contents(std::string::const_iterator& beg, std::string::const_iterator end, std::string_view tag_name, bool check_for_attributes)
 {
 	assert(*beg == '>');
 	++beg;
 
-	if(!utils::contains(old_style_tags, match)) {
+	if(!utils::contains(old_style_tags, tag_name)) {
 		check_for_attributes = false;
 	}
 
@@ -351,7 +358,7 @@ static config parse_tag_contents(std::string::const_iterator& beg, std::string::
 		if(isspace(*beg)) continue;
 		auto save_beg = beg;
 		try {
-			auto [key, val] = parse_attribute(beg, end, false);
+			auto [key, val] = parse_attribute(beg, end, true);
 			res[key] = val;
 		} catch(parse_error&) {
 			beg = save_beg;
@@ -363,7 +370,7 @@ static config parse_tag_contents(std::string::const_iterator& beg, std::string::
 		if(beg == end || *beg != '<' || (beg + 1) == end || *(beg + 1) != '/') {
 			throw parse_error(beg, "Extra text at the end of old-style tag with explicit 'text' attribute");
 		}
-		check_closing_tag(beg, end, match);
+		check_closing_tag(beg, end, tag_name);
 		return res;
 	} else if(res.attribute_count() > 0) {
 		config text = parse_text_until(beg, end, '<');
@@ -375,17 +382,17 @@ static config parse_tag_contents(std::string::const_iterator& beg, std::string::
 		} else {
 			res.append_children(text);
 		}
-		check_closing_tag(beg, end, match);
+		check_closing_tag(beg, end, tag_name);
 		return res;
 	}
 	while(true) {
 		config text = parse_text_until(beg, end, '<');
 		if(beg == end || beg + 1 == end) {
-			throw parse_error(beg, "Missing closing tag for " + std::string(match));
+			throw parse_error(beg, "Missing closing tag for " + std::string(tag_name));
 		}
 		res.append_children(text);
 		if(*(beg + 1) == '/') {
-			check_closing_tag(beg, end, match);
+			check_closing_tag(beg, end, tag_name);
 			break;
 		}
 		auto [tag, contents] = parse_tag(beg, end);
@@ -412,7 +419,7 @@ static std::pair<std::string, config> parse_tag(std::string::const_iterator& beg
 		if(*beg == '/' && (beg + 1) != end && *(beg + 1) == '>') {
 			auto_closed = true;
 		} else if(isalnum(*beg) || *beg == '_') {
-			const auto& [key, value] = parse_attribute(beg, end, true);
+			const auto& [key, value] = parse_attribute(beg, end, false);
 			if(beg == end) {
 				throw parse_error(beg, "unexpected end of stream following attribute");
 			}
