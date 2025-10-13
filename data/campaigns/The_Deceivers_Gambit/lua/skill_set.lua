@@ -142,7 +142,7 @@ local skill_set = {
             id          = "skill_polymorph",
             label       = label(_"Polymorph"),
             image       = "icons/polymorph.png",
-            description = header_spell().._"Transform into a stoat (<span color='#00bbe6' style='italic'>1xp</span>), bear (<span color='#00bbe6' style='italic'>8xp</span>), crab (<span color='#00bbe6' style='italic'>16xp</span>), or roc (<span color='#00bbe6' style='italic'>32xp</span>). Lasts until cancelled.\n           Replaces Delfador’s attacks, spells, and passives, but does not affect hitpoints.",
+            description = header_spell().._"Transform into a <ref dst='unit_Frost Stoat Poly'>stoat</ref> (<span color='#00bbe6' style='italic'>1xp</span>), <ref dst='unit_Cave Bear Poly'>bear</ref> (<span color='#00bbe6' style='italic'>8xp</span>), <ref dst='unit_Giant Crab'>crab</ref> (<span color='#00bbe6' style='italic'>16xp</span>), or <ref dst='unit_Roc'>roc</ref> (<span color='#00bbe6' style='italic'>32xp</span>). Lasts until cancelled.\n           Replaces Delfador’s attacks, spells, and passives, but does not affect hitpoints.",
             subskills   = {
                 [1]={ id="skill_polymorph_stoat",  xp_cost=1,  label="   <span>".._"Stoat".." (<span color='#00bbe6' style='italic'>".._"1xp" .."</span>)</span>   " },
                 [2]={ id="skill_polymorph_bear",   xp_cost=8,  label="   <span>".._"Bear" .." (<span color='#00bbe6' style='italic'>".._"8xp" .."</span>)</span>   " },
