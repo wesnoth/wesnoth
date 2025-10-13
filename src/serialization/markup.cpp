@@ -317,31 +317,31 @@ static std::pair<std::string, std::string> parse_attribute(std::string::const_it
 	return {attr, value};
 }
 
-static void check_closing_tag(std::string::const_iterator& beg, std::string::const_iterator end, std::string_view match)
+static void check_closing_tag(std::string::const_iterator& beg, std::string::const_iterator end, std::string_view tag_name)
 {
 	std::size_t remaining = end - beg;
 	assert(remaining >= 2 && *beg == '<' && *(beg + 1) == '/');
-	if(remaining < match.size() + 3) {
+	if(remaining < tag_name.size() + 3) {
 		throw parse_error(beg, "Unexpected end of stream in closing tag");
 	}
 	beg += 2;
-	if(!std::equal(match.begin(), match.end(), beg)) {
-		throw parse_error(beg, "Mismatched closing tag " + std::string(match));
+	if(!std::equal(tag_name.begin(), tag_name.end(), beg)) {
+		throw parse_error(beg, "Mismatched closing tag " + std::string(tag_name));
 	}
-	beg += match.size();
+	beg += tag_name.size();
 	if(*beg != '>') {
-		throw parse_error(beg, "Unterminated closing tag " + std::string(match));
+		throw parse_error(beg, "Unterminated closing tag " + std::string(tag_name));
 	}
 	++beg;
 }
 
 static std::pair<std::string, config> parse_tag(std::string::const_iterator& beg, std::string::const_iterator end);
-static config parse_tag_contents(std::string::const_iterator& beg, std::string::const_iterator end, std::string_view match, bool check_for_attributes)
+static config parse_tag_contents(std::string::const_iterator& beg, std::string::const_iterator end, std::string_view tag_name, bool check_for_attributes)
 {
 	assert(*beg == '>');
 	++beg;
 
-	if(!utils::contains(old_style_tags, match)) {
+	if(!utils::contains(old_style_tags, tag_name)) {
 		check_for_attributes = false;
 	}
 
@@ -363,7 +363,7 @@ static config parse_tag_contents(std::string::const_iterator& beg, std::string::
 		if(beg == end || *beg != '<' || (beg + 1) == end || *(beg + 1) != '/') {
 			throw parse_error(beg, "Extra text at the end of old-style tag with explicit 'text' attribute");
 		}
-		check_closing_tag(beg, end, match);
+		check_closing_tag(beg, end, tag_name);
 		return res;
 	} else if(res.attribute_count() > 0) {
 		config text = parse_text_until(beg, end, '<');
@@ -375,17 +375,17 @@ static config parse_tag_contents(std::string::const_iterator& beg, std::string::
 		} else {
 			res.append_children(text);
 		}
-		check_closing_tag(beg, end, match);
+		check_closing_tag(beg, end, tag_name);
 		return res;
 	}
 	while(true) {
 		config text = parse_text_until(beg, end, '<');
 		if(beg == end || beg + 1 == end) {
-			throw parse_error(beg, "Missing closing tag for " + std::string(match));
+			throw parse_error(beg, "Missing closing tag for " + std::string(tag_name));
 		}
 		res.append_children(text);
 		if(*(beg + 1) == '/') {
-			check_closing_tag(beg, end, match);
+			check_closing_tag(beg, end, tag_name);
 			break;
 		}
 		auto [tag, contents] = parse_tag(beg, end);
