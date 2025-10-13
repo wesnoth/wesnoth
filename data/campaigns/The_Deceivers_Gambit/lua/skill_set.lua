@@ -48,7 +48,7 @@ local skill_set = {
             id          = "skill_animate_mud",
             label       = label(_"Animate Mud"),
             image       = "icons/animate-mud.png",
-            description = header_passive().._"Learn to recruit <i>Mudcrawlers</i>. Mudcrawlers gain +100% damage and xp\n               while adjacent to you, but dissolve at the end of each scenario.",
+            description = header_passive().._"Learn to recruit <i><ref dst='unit_Mudcrawler'>Mudcrawlers</ref></i>. Mudcrawlers gain +100% damage and xp\n               while adjacent to you, but dissolve at the end of each scenario.",
         },
     },
     --###############################
@@ -198,7 +198,7 @@ local skill_set = {
             id          = "skill_animate_fire",
             label       = label(_"Animate Fire"),
             image       = "icons/animate-fire.png",
-            description = header_passive().._"Learn to recruit <i>Fire Guardians</i>. Fire Guardians gain +100% damage and xp\n               while adjacent to you, but dissipate at the end of each scenario.",
+            description = header_passive().._"Learn to recruit <i><ref dst='unit_Fire Guardian'>Fire Guardians</ref></i>. Fire Guardians gain +100% damage and xp\n               while adjacent to you, but dissipate at the end of each scenario.",
         },
         -------------------------
         -- CONTINGENCY
