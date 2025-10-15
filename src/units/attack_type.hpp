@@ -155,7 +155,7 @@ public:
 	bool apply_effect(const config& cfg);
 
 	/**
-	 * Generates a description of the effect(s) specified by @a cfg, if applicable.
+	 * Generates a description of the effect specified by @a cfg, if applicable.
 	 * This covers a subset of the effects which can be applied via @ref apply_effect.
 	 */
 	static std::string describe_effect(const config& cfg);
