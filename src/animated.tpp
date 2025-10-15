@@ -171,11 +171,8 @@ inline bool animated<T>::need_update() const
 		return false;
 	}
 
-	if(get_current_animation_tick() > std::chrono::floor<std::chrono::milliseconds>(get_current_frame_end_time() / acceleration_ + start_tick_)) {
-		return true;
-	}
-
-	return false;
+	auto frame_end = std::chrono::floor<std::chrono::milliseconds>(get_current_frame_end_time() / acceleration_);
+	return get_current_animation_tick() > start_tick_ + frame_end;
 }
 
 template<typename T>
