@@ -686,8 +686,8 @@ std::vector<texture> game_display::get_reachmap_images(const map_location& loc) 
 			tiles[i] = CLEAR;
 		}
 		// Grab the reachmap-context team index updated in "display::process_reachmap_changes()" and test for adjacent enemy units
-		else if(u != nullptr && resources::gameboard->get_team(display::reach_map_team_index_).is_enemy(u->side())) {
-			DBG_DP << test_location << " has an ENEMY";
+		else if(u != nullptr && !u->incapacitated() && resources::gameboard->get_team(display::reach_map_team_index_).is_enemy(u->side())) {
+			DBG_DP << test_location << " has an attackable ENEMY";
 			tiles[i] = ENEMY;
 		} else {
 			DBG_DP << test_location << " is NOT REACHABLE";
