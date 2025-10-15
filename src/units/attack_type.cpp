@@ -283,7 +283,7 @@ void attack_type::remove_special_by_filter(const config& filter)
  *
  * @returns whether or not @c this matched the @a cfg as a filter.
  */
-bool attack_type::apply_modification(const config& cfg)
+bool attack_type::apply_effect(const config& cfg)
 {
 	if( !matches_filter(cfg) )
 		return false;
@@ -317,7 +317,7 @@ bool attack_type::apply_modification(const config& cfg)
 	const std::string& increase_attacks_used = cfg["increase_attacks_used"];
 	const std::string& set_attacks_used = cfg["set_attacks_used"];
 	// NB: If you add something here that requires a description,
-	// it needs to be added to describe_modification as well.
+	// it needs to be added to describe_effect as well.
 
 	if(set_name.empty() == false) {
 		id_ = set_name;
@@ -458,7 +458,7 @@ bool attack_type::apply_modification(const config& cfg)
 	return true;
 }
 
-std::string attack_type::describe_modification(const config& cfg)
+std::string attack_type::describe_effect(const config& cfg)
 {
 	const std::string& increase_min_range = cfg["increase_min_range"];
 	const std::string& set_min_range = cfg["set_min_range"];
