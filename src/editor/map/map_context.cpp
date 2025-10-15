@@ -878,14 +878,14 @@ void map_context::save_scenario()
 		wml_stream
 			<< "# This file was generated using the scenario editor.\n"
 			<< "#\n"
-			<< "# If you edit this file by hand, then do not use macros.\n"
-			<< "# The editor doesn't support macros, and so using them will result in only being able to edit the map.\n"
+			<< "# If you edit this file by hand, then do not expect common macros to be available when the editor loads the file.\n"
+			<< "# Also expect any preprocessor constructs (which includes macros and comments) to be expanded/vanish on saving.\n"
 			<< "# Additionally, the contents of all [side] and [time] tags as well as any events that have an id starting with 'editor_event-' are replaced entirely.\n"
 			<< "# Any manual changes made to those will be lost.\n"
 			<< "\n";
 		{
 			config_writer out(wml_stream, false);
-			out.write(to_config());
+			out.write(to_config(), true);
 		}
 
 		if(!wml_stream.str().empty()) {
