@@ -1991,17 +1991,19 @@ const std::set<std::string> unit::builtin_effects {
 std::string unit::describe_builtin_effect(const std::string& apply_to, const config& effect)
 {
 	if(apply_to == "attack") {
+		std::string description = attack_type::describe_modification(effect);
 		std::vector<t_string> attack_names;
-
-		for(const attack_ptr& a : attacks_) {
-			if(a->matches_filter(effect)) {
-				attack_names.emplace_back(a->name(), "wesnoth-units");
+		if(!description.empty()) {
+			for(const attack_ptr& a : attacks_) {
+				if(a->matches_filter(effect)) {
+					attack_names.emplace_back(a->name(), "wesnoth-units");
+				}
 			}
 		}
 		if(!attack_names.empty()) {
 			utils::string_map symbols;
 			symbols["attack_list"] = utils::format_conjunct_list("", attack_names);
-			symbols["effect_description"] = attack_type::describe_modification(effect);
+			symbols["effect_description"] = std::move(description);
 			return VGETTEXT("$attack_list|: $effect_description", symbols);
 		}
 	} else if(apply_to == "hitpoints") {
