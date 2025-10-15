@@ -1993,17 +1993,15 @@ std::string unit::describe_builtin_effect(const std::string& apply_to, const con
 	if(apply_to == "attack") {
 		std::vector<t_string> attack_names;
 
-		std::string desc;
-		for(attack_ptr a : attacks_) {
-			bool affected = a->describe_modification(effect, &desc);
-			if(affected && !desc.empty()) {
+		for(const attack_ptr& a : attacks_) {
+			if(a->matches_filter(effect)) {
 				attack_names.emplace_back(a->name(), "wesnoth-units");
 			}
 		}
 		if(!attack_names.empty()) {
 			utils::string_map symbols;
 			symbols["attack_list"] = utils::format_conjunct_list("", attack_names);
-			symbols["effect_description"] = desc;
+			symbols["effect_description"] = attack_type::describe_modification(effect);
 			return VGETTEXT("$attack_list|: $effect_description", symbols);
 		}
 	} else if(apply_to == "hitpoints") {

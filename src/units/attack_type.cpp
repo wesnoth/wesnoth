@@ -458,24 +458,8 @@ bool attack_type::apply_modification(const config& cfg)
 	return true;
 }
 
-/**
- * Trimmed down version of apply_modification(), with no modifications actually
- * made. This can be used to get a description of the modification(s) specified
- * by @a cfg (if *this matches cfg as a filter).
- *
- * If *description is provided, it will be set to a (translated) description
- * of the modification(s) applied (currently only changes to the number of
- * strikes, damage, accuracy, and parry are included in this description).
- *
- * @returns whether or not @c this matched the @a cfg as a filter.
- */
-bool attack_type::describe_modification(const config& cfg,std::string* description)
+std::string attack_type::describe_modification(const config& cfg)
 {
-	if( !matches_filter(cfg) )
-		return false;
-
-	// Did the caller want the description?
-	if(description != nullptr) {
 		const std::string& increase_min_range = cfg["increase_min_range"];
 		const std::string& set_min_range = cfg["set_min_range"];
 		const std::string& increase_max_range = cfg["increase_max_range"];
@@ -623,10 +607,7 @@ bool attack_type::describe_modification(const config& cfg,std::string* descripti
 				{{"number_or_percent", utils::print_modifier(increase_attacks_used)}, {"color", increase_attacks_used[0] == '-' ? "#f00" : "#0f0"}}));
 		}
 
-		*description = utils::format_conjunct_list("", desc);
-	}
-
-	return true;
+		return utils::format_conjunct_list("", desc);
 }
 
 attack_type::recursion_guard attack_type::update_variables_recursion(const config& special) const

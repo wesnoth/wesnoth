@@ -153,7 +153,9 @@ public:
 
 	bool matches_filter(const config& filter, const std::string& check_if_recursion = "") const;
 	bool apply_modification(const config& cfg);
-	bool describe_modification(const config& cfg,std::string* description);
+
+	/** Generates a description of the modification(s) specified by @a cfg. */
+	static std::string describe_modification(const config& cfg);
 
 	int movement_used() const { return movement_used_; }
 	void set_movement_used(int value) { movement_used_ = value; }
