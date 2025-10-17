@@ -15,7 +15,7 @@ jobs:
     env:
       API: 23
       BUILDBASEDIR: ${{ github.WORKSPACE }}/packaging/android
-      BUILDTYPE: ${{ github.event_name == 'push' && 'release' || 'debug' }}
+      BUILDTYPE: ${{ vars.SIGNING_KEY_ALIAS == '' && 'debug' || 'release' }}
 
     steps:
       - { uses: actions/checkout@v4, with: { submodules: "recursive" } }
@@ -63,17 +63,17 @@ jobs:
           path: ./packaging/android/dependencies.tar.gz
 
       - name: Build Wesnoth and create APK/AAB (Release)
-        if: github.event_name == 'push'
+        if: env.BUILDTYPE == 'release'
         env:
           PREFIXDIR: ${{ env.BUILDBASEDIR }}/prefix
-          SIGNING_KEY_ALIAS: ${{ secrets.SIGNING_KEY_ALIAS }}
+          SIGNING_KEY_ALIAS: ${{ vars.SIGNING_KEY_ALIAS }}
           SIGNING_KEY_PASSWORD: ${{ secrets.SIGNING_KEY_PASSWORD }}
           SIGNING_STORE_PASSWORD: ${{ secrets.SIGNING_STORE_PASSWORD }}
           SIGNING_KEYSTORE: ${{ secrets.SIGNING_KEYSTORE }}
-        run: cd packaging/android && printf %s "$SIGNING_KEYSTORE" | base64 -d > app/wesnoth.keystore && ./gradlew buildCppSource assembleRelease bundleRelease;
-          
+        run: cd packaging/android && printf %s "$SIGNING_KEYSTORE" | base64 -d > app/wesnoth.keystore && ./gradlew buildCppSource assembleRelease bundleRelease
+
       - name: Build Wesnoth and create APK/AAB (Debug)
-        if: github.event_name != 'push'
+        if: env.BUILDTYPE == 'debug'
         env:
           PREFIXDIR: ${{ env.BUILDBASEDIR }}/prefix
         run: cd packaging/android && ./gradlew buildCppSource assembleDebug bundleDebug;
