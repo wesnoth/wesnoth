@@ -281,12 +281,12 @@ void unit_preview_pane::print_attack_details(
 			);
 		}
 
-		for(const auto& pair : a.special_tooltips()) {
+		for(const auto& tip : a.special_tooltips()) {
 			add_name_tree_node(
 				subsection,
 				"item",
-				markup::span_color(font::weapon_details_color, pair.first),
-				markup::span_size("x-large", pair.first) + "\n" + pair.second
+				markup::span_color(font::weapon_details_color, tip.name),
+				markup::span_size("x-large", tip.name) + "\n" + tip.description
 			);
 		}
 	}

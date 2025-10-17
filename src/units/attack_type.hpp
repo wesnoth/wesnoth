@@ -82,8 +82,31 @@ public:
 	 */
 	bool has_special(const std::string& special, bool simple_check = false) const;
 	unit_ability_list get_specials(const std::string& special) const;
-	std::vector<std::pair<t_string, t_string>> special_tooltips(boost::dynamic_bitset<>* active_list = nullptr) const;
-	std::vector<std::pair<t_string, t_string>> abilities_special_tooltips(boost::dynamic_bitset<>* active_list = nullptr) const;
+
+	/**
+	 * Return value for special_tooltips() and abilities_special_tooltips().
+	 *
+	 * Those functions are responsible for choosing whether to use
+	 * name_inactive, name_affected, etc.
+	 */
+	struct attack_tooltip_metadata
+	{
+		// constructor because emplace_back() doesn't use aggregate initialization
+		explicit attack_tooltip_metadata(t_string&& n, t_string&& d, bool a)
+			: name(std::move(n))
+			, description(std::move(d))
+			, active(a)
+		{
+		}
+
+		t_string name;
+		t_string description;
+		bool active;
+	};
+
+	std::vector<attack_tooltip_metadata> special_tooltips(bool assume_active=true) const;
+	std::vector<attack_tooltip_metadata> abilities_special_tooltips() const;
+
 	std::string weapon_specials() const;
 	std::string weapon_specials_value(const std::set<std::string>& checking_tags) const;
 
