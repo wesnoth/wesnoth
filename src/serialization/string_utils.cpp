@@ -106,6 +106,14 @@ std::vector<std::string_view> split_view(std::string_view s, const char sep, con
 	return res;
 }
 
+namespace {
+	std::size_t get_padding(std::string_view str)
+	{
+		// A leading '0' signals we want to pad upto the size of the number
+		return (str.size() > 1 && str[0] == '0') ? (str.size() - 1) : 0;
+	}
+}
+
 std::vector<std::string> square_parenthetical_split(const std::string& val,
 		const char separator, const std::string& left,
 		const std::string& right,const int flags)
@@ -171,23 +179,15 @@ std::vector<std::string> square_parenthetical_split(const std::string& val,
 						std::string s_begin = piece.substr(0,found_tilde);
 						boost::trim(s_begin);
 						int begin = std::stoi(s_begin);
-						std::size_t padding = 0, padding_end = 0;
-						// last digit is not padding
-						while (padding<s_begin.size()-1 && s_begin[padding]=='0') {
-							padding++;
-						}
 						std::string s_end = piece.substr(found_tilde+1);
 						boost::trim(s_end);
 						int end = std::stoi(s_end);
-						// last digit is not padding
-						while (padding_end<s_end.size()-1 && s_end[padding_end]=='0') {
-							padding_end++;
-						}
-						if (padding*padding_end > 0 && s_begin.size() != s_end.size()) {
+
+						std::size_t padding = std::max(get_padding(s_begin), get_padding(s_end));
+						if (padding > 0 && s_begin.size() != s_end.size()) {
 							ERR_GENERAL << "Square bracket padding sizes not matching: "
 										<< s_begin << " and " << s_end <<".";
 						}
-						if (padding_end > padding) padding = padding_end;
 
 						int increment = (end >= begin ? 1 : -1);
 						end+=increment; //include end in expansion
