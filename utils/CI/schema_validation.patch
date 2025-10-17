@@ -2,7 +2,7 @@ diff --git a/data/schema/core/actionwml.cfg b/data/schema/core/actionwml.cfg
 index 0eff8c99f10..98e94c8cc6c 100644
 --- a/data/schema/core/actionwml.cfg
 +++ b/data/schema/core/actionwml.cfg
-@@ -1445,5 +1445,35 @@
+@@ -1445,5 +1445,36 @@
  			{SIMPLE_KEY y s_unsigned}
  		[/tag]
  	[/tag]
@@ -30,6 +30,7 @@ index 0eff8c99f10..98e94c8cc6c 100644
 +	# TSG
 +	{DATA_TAG "display_tip" 0 infinite any}
 +	{DATA_TAG "companion_message" 0 infinite any}
++	{DATA_TAG "choose_companion" 0 infinite any}
 +	# tutorial
 +	{DATA_TAG "select_character" 0 infinite any}
 +	{DATA_TAG "hint_message" 0 infinite any}
