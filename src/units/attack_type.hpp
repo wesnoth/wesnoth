@@ -152,8 +152,13 @@ public:
 	// In unit_types.cpp:
 
 	bool matches_filter(const config& filter, const std::string& check_if_recursion = "") const;
-	bool apply_modification(const config& cfg);
-	bool describe_modification(const config& cfg,std::string* description);
+	bool apply_effect(const config& cfg);
+
+	/**
+	 * Generates a description of the effect specified by @a cfg, if applicable.
+	 * This covers a subset of the effects which can be applied via @ref apply_effect.
+	 */
+	static std::string describe_effect(const config& cfg);
 
 	int movement_used() const { return movement_used_; }
 	void set_movement_used(int value) { movement_used_ = value; }
