@@ -12,6 +12,7 @@
    * Updated translations: Bengali, British English, Czech, Polish, Spanish
 ### Units
 ### User interface
+   * New key `title_position` added to `[part]` that allows changing the position of the title text.
 ### WML Engine
    * ~PAD() added as an IPF (image path function). It allows the sides of an image to be padded with transparent pixels. Can be used to artificially offset images.
 ### Miscellaneous and Bug Fixes
