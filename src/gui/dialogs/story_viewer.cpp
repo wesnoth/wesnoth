@@ -13,7 +13,6 @@
 	See the COPYING file for more details.
 */
 
-#include "gui/widgets/drawing.hpp"
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "gui/dialogs/story_viewer.hpp"
