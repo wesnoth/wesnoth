@@ -489,6 +489,7 @@ void create_engine::prepare_for_other()
 	state_.set_scenario(current_level().data());
 	state_.mp_settings().hash = current_level().data().hash();
 	state_.check_require_scenario();
+	game_config_manager::get()->load_game_config_for_game(state_.classification(), state_.get_scenario_id());
 }
 
 void create_engine::apply_level_filter(const std::string& name)
