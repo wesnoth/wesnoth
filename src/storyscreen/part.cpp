@@ -192,21 +192,33 @@ void part::resolve_wml(const vconfig& cfg)
 		text_alignment_ = cfg["text_alignment"].str();
 	}
 
-	auto decode_position = [](const std::string& pos_str) -> int {
-		if (pos_str == "left" || pos_str == "top") {
-			return 0;
-		} else if (pos_str == "center" || pos_str == "middle") {
-			return 50;
-		} else if (pos_str == "right" || pos_str == "bottom") {
-			return 100;
+	auto decode_position = [](const std::string& pos_str, const bool vertical) -> int {
+		if(vertical) {
+			if(pos_str == "top") {
+				return 0;
+			} else if (pos_str == "middle") {
+				return 50;
+			} else if (pos_str == "bottom") {
+				return 100;
+			} else {
+				return 0;
+			}
 		} else {
-			return utils::from_chars<int>(pos_str).value_or(0);
+			if(pos_str == "left") {
+				return 0;
+			} else if (pos_str == "center") {
+				return 50;
+			} else if (pos_str == "right") {
+				return 100;
+			} else {
+				return 0;
+			}
 		}
 	};
 
 	std::string hpos, vpos;
 	if(cfg.has_attribute("title_position")) {
-		if (cfg["title_position"] == "centered") {
+		if(cfg["title_position"] == "centered") {
 			title_perc_pos_ = {50, 50};
 		} else {
 			auto vals = utils::split(cfg["title_position"]);
@@ -214,7 +226,10 @@ void part::resolve_wml(const vconfig& cfg)
 			if (vals.size() > 1) {
 				vpos = vals[1];
 			}
-			title_perc_pos_ = { decode_position(hpos), decode_position(vpos) };
+			title_perc_pos_ = {
+				decode_position(hpos, false),
+				decode_position(vpos, true)
+			};
 		}
 	}
 
