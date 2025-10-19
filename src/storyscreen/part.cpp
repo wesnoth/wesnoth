@@ -192,14 +192,15 @@ void part::resolve_wml(const vconfig& cfg)
 		text_alignment_ = cfg["text_alignment"].str();
 	}
 
-	auto decode_position = [](const std::string& pos_str, const bool vertical) -> int {
+	auto decode_position = [loc = text_block_loc_](const std::string& pos_str, const bool vertical) -> int {
 		if(vertical) {
+			// The ternary checks avoid part text and title text overlaping.
 			if(pos_str == "top") {
-				return 0;
+				return loc == BLOCK_TOP ? 50 : 0;
 			} else if (pos_str == "middle") {
-				return 50;
+				return loc == BLOCK_MIDDLE ? 0 : 50;
 			} else if (pos_str == "bottom") {
-				return 100;
+				return loc == BLOCK_BOTTOM ? 50 : 100;
 			} else {
 				return 0;
 			}
