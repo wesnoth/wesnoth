@@ -417,7 +417,6 @@ std::string escape(std::string_view str, const char *special_chars)
 {
 	std::string::size_type pos = str.find_first_of(special_chars);
 	if (pos == std::string::npos) {
-		// Fast path, possibly involving only reference counting.
 		return std::string(str);
 	}
 	std::string res = std::string(str);
@@ -432,7 +431,6 @@ std::string unescape(std::string_view str)
 {
 	std::string::size_type pos = str.find('\\');
 	if (pos == std::string::npos) {
-		// Fast path, possibly involving only reference counting.
 		return std::string(str);
 	}
 	std::string res = std::string(str);
