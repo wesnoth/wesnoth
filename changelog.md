@@ -3,6 +3,7 @@
 ### Add-ons server
 ### Campaigns
 ### Editor
+   * Move items/unit/labels when map is resized
 ### Multiplayer
 ### Lua API
 ### Packaging
@@ -11,9 +12,19 @@
 ### Translations
    * Updated translations: Bengali, British English, Czech, Polish, Spanish
 ### Units
+   * Sergeant:
+     * Crossbow damage changed from 4-3 to 6-2
+   * Lieutenant:
+     * Crossbow damage changed from 5-3 to 7-2
+   * General:
+     * Crossbow damage changed from 7-3 to 10-2
+   * Grand Marshal:
+     * Crossbow damage changed from 8-3 to 12-2
 ### User interface
 ### WML Engine
    * ~PAD() added as an IPF (image path function). It allows the sides of an image to be padded with transparent pixels. Can be used to artificially offset images.
+   * WML formulas can be used in abilities/specials 'max_value' and 'min_value'.
+   * Add [clear_chat], [store_zoom], and optional scrolling support to [scroll_to] and [scroll_to_unit]
 ### Miscellaneous and Bug Fixes
 
 ## Version 1.19.16
