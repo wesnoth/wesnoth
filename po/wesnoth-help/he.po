@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-09-21 23:01-0500\n"
+"POT-Creation-Date: 2025-10-20 20:10-0500\n"
 "PO-Revision-Date: 2009-07-13 00:55+0300\n"
 "Last-Translator: Oron Peled <oron@actcom.co.il>\n"
 "Language-Team: Hebrew\n"
@@ -124,9 +124,7 @@ msgid "intelligent"
 msgstr "חכם"
 
 #. [trait]: id=intelligent_dummy
-#. [trait]: id=intelligent
 #: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:25
-#: data/core/macros/traits.cfg:192
 msgid "Intelligent units require 20% less experience than usual to advance."
 msgstr "יחידות חכמות צריכות 20% פחות נק\"נ מכרגיל כדי להתקדם."
 
@@ -445,7 +443,7 @@ msgstr ""
 
 #. [section]: id=editor_mode_terrain
 #. [topic]: id=..editor_mode_terrain
-#: data/core/editor/help.cfg:13 data/core/editor/help.cfg:374
+#: data/core/editor/help.cfg:13 data/core/editor/help.cfg:367
 #, fuzzy
 #| msgid "Terrain Modifiers"
 msgid "Terrain Editor"
@@ -453,7 +451,7 @@ msgstr "מתאמי שטח"
 
 #. [section]: id=editor_mode_scenario
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:20 data/core/editor/help.cfg:386
+#: data/core/editor/help.cfg:20 data/core/editor/help.cfg:379
 #, fuzzy
 #| msgid "Terrain Modifiers"
 msgid "Scenario Editor"
@@ -719,83 +717,109 @@ msgstr "מתאמי שטח"
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:165
 msgid ""
-"\n"
 "A cosmetic elevation effect that looks a little different in the editor than "
 "in the game due to visual aids in the editor; all the overlays described "
-"here are found in the terrain palette’s “elevation” group.\n"
+"here are found in the terrain palette’s “elevation” group."
 msgstr ""
 
 #. [topic]: id=editor_terrain_elevation
-#: data/core/editor/help.cfg:168
+#: data/core/editor/help.cfg:166
 #, fuzzy
-msgid "editor^<header>Direct Overlays</header>"
+msgid "editor^Direct Overlays"
 msgstr ""
 "\n"
 "\n"
 "<header>text='סיכויי פגיעה'</header>"
 
 #. [topic]: id=editor_terrain_elevation
-#: data/core/editor/help.cfg:171
+#: data/core/editor/help.cfg:170
+msgid "Bluffs and Gulch"
+msgstr ""
+
+#. [topic]: id=editor_terrain_elevation
+#: data/core/editor/help.cfg:172
 msgid ""
-"\n"
-"<b>Bluffs and Gulch</b>\n"
-"\n"
 "The bluffs, gulches, and similar variations are much like a standard terrain "
 "overlay, and can simply be used that way. However, for larger areas of the "
 "map, where you will want to allow the use of other overlay terrains, you "
-"will want to combine these with the “markers” described in the next "
-"section.\n"
-"\n"
+"will want to combine these with the “markers” described in the next section."
+msgstr ""
+
+#. [topic]: id=editor_terrain_elevation
+#: data/core/editor/help.cfg:174
+msgid "editor^Elevation Floodfill"
 msgstr ""
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:177
-msgid "editor^<header>Elevation Floodfill</header>"
-msgstr ""
-
-#. [topic]: id=editor_terrain_elevation
-#: data/core/editor/help.cfg:181
 msgid "Raised elevation on-map marker"
 msgstr ""
 
 #. [topic]: id=editor_terrain_elevation
-#: data/core/editor/help.cfg:182
+#: data/core/editor/help.cfg:178
 msgid "Raised elevation editor palette icon"
 msgstr ""
 
 #. [topic]: id=editor_terrain_elevation
-#: data/core/editor/help.cfg:189
+#: data/core/editor/help.cfg:180
 msgid ""
-"\n"
-"editor^<header>How to Use</header>\n"
-"\n"
+"To make a patch of terrain higher or lower, and still be able to use other "
+"overlay terrains such as trees, you will need to use these markers. Placing "
+"one of these arrows on the map will flood-fill the map with a color-coded "
+"haze; neither the haze nor the arrow will be visible in game. The hazed area "
+"will have a border ledge, making it look higher or lower than the adjacent "
+"tiles."
+msgstr ""
+
+#. [topic]: id=editor_terrain_elevation
+#: data/core/editor/help.cfg:182
+msgid ""
+"There are two high markers and two low markers, so it is possible to make "
+"terraces of up to five levels (lowest, lower, normal, higher, highest). "
+"Placing a high region next to a low region does not result in larger cliffs."
+msgstr ""
+
+#. [topic]: id=editor_terrain_elevation
+#: data/core/editor/help.cfg:184
+msgid "editor^How to Use"
+msgstr ""
+
+#. [topic]: id=editor_terrain_elevation
+#: data/core/editor/help.cfg:186
+msgid ""
 "The marker arrows are not very useful by themselves, but the bluffs/gulch-"
-"type terrains can be used to contain the floodfilled area.\n"
-"\n"
+"type terrains can be used to contain the floodfilled area."
+msgstr ""
+
+#. [topic]: id=editor_terrain_elevation
+#: data/core/editor/help.cfg:188
+msgid ""
 "An example use case would be:\n"
 "1.  Select the Bluffs (^Qhh) from the editor palette and use single-hex "
 "paint tool to outline a big blob over an empty, all-grass map.\n"
 "2.  Place a Marker High (^_mh) arrow on a tile inside the blob (not on the "
 "Bluffs border).\n"
 "3.  The blob should all be raised now, and as long as you don’t overwrite "
-"the Marker or Bluffs overlays, you can add other terrain overlays as "
-"needed.\n"
-"\n"
-"The graphics used to represent the ledge borders are determined by the base "
-"terrain.\n"
+"the Marker or Bluffs overlays, you can add other terrain overlays as needed."
 msgstr ""
 
 #. [topic]: id=editor_terrain_elevation
-#: data/core/editor/help.cfg:201
+#: data/core/editor/help.cfg:193
 msgid ""
-"editor^<span style='italic' font_size='15'>Note for UMC authors: The flood-"
-"filled tiles do not have their terrain codes changed, or any other "
-"properties affected, so filtering a location by elevation is not simple.</"
-"span>"
+"The graphics used to represent the ledge borders are determined by the base "
+"terrain."
+msgstr ""
+
+#. [topic]: id=editor_terrain_elevation
+#: data/core/editor/help.cfg:194
+msgid ""
+"editor^Note for UMC authors: The flood-filled tiles do not have their "
+"terrain codes changed, or any other properties affected, so filtering a "
+"location by elevation is not simple."
 msgstr ""
 
 #. [topic]: id=editor_deprecated_overlay
-#: data/core/editor/help.cfg:207
+#: data/core/editor/help.cfg:200
 #, fuzzy
 #| msgid "Terrain"
 msgid "Deprecated Terrain"
@@ -804,7 +828,7 @@ msgstr "סוג שטח"
 #. [topic]: id=editor_deprecated_overlay
 #. The main reason for choosing “D” is that the hole in the middle of the letter makes it easier to see which terrain is underneath it. This uses a hardcoded image and doesn’t expect the image to be translated.
 #. The Xol and ^Efs terrains’ help pages aren’t given hyperlinks, because they both have hide_help enabled. Even when on a map with Xol on it, ctrl+t will show the hidden page but the ref still won’t link to it.
-#: data/core/editor/help.cfg:210
+#: data/core/editor/help.cfg:203
 msgid ""
 "editor^<img src='terrain/grass/green.png~BLIT(terrain/deprecated-editor."
 "png)'/>\n"
@@ -820,12 +844,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_tool_label
-#: data/core/editor/help.cfg:224
+#: data/core/editor/help.cfg:217
 msgid "Label Tool"
 msgstr ""
 
 #. [topic]: id=editor_tool_label
-#: data/core/editor/help.cfg:225
+#: data/core/editor/help.cfg:218
 msgid ""
 "Put text labels on the map.\n"
 "• Left-click will open a dialog box to create a new label or edit an "
@@ -838,12 +862,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_tool_scenery
-#: data/core/editor/help.cfg:239
+#: data/core/editor/help.cfg:232
 msgid "Item Tool (Scenery Tool)"
 msgstr ""
 
 #. [topic]: id=editor_tool_scenery
-#: data/core/editor/help.cfg:240
+#: data/core/editor/help.cfg:233
 msgid ""
 "The Item Tool allows placing decorations such as windmills, bookcases and "
 "monoliths.\n"
@@ -860,12 +884,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_tool_village
-#: data/core/editor/help.cfg:257
+#: data/core/editor/help.cfg:250
 msgid "Village Ownership Tool"
 msgstr ""
 
 #. [topic]: id=editor_tool_village
-#: data/core/editor/help.cfg:258
+#: data/core/editor/help.cfg:251
 msgid ""
 "This tool assigns ownership of villages at the start of a scenario.\n"
 "The villages must first be placed on the terrain with the <ref "
@@ -879,12 +903,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_tool_unit
-#: data/core/editor/help.cfg:273
+#: data/core/editor/help.cfg:266
 msgid "Unit Tool"
 msgstr ""
 
 #. [topic]: id=editor_tool_unit
-#: data/core/editor/help.cfg:274
+#: data/core/editor/help.cfg:267
 msgid ""
 "Place units belonging to the currently-selected side.\n"
 "• Left-click will place a unit.\n"
@@ -897,12 +921,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_named_area
-#: data/core/editor/help.cfg:288
+#: data/core/editor/help.cfg:281
 msgid "Named Areas"
 msgstr ""
 
 #. [topic]: id=editor_named_area
-#: data/core/editor/help.cfg:289
+#: data/core/editor/help.cfg:282
 msgid ""
 "This tool creates sets of tiles that can be used in WML scripts’ Standard "
 "Location Filters (a concept explained in detail on the Wiki), by using the "
@@ -927,12 +951,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_playlist
-#: data/core/editor/help.cfg:310
+#: data/core/editor/help.cfg:303
 msgid "Playlist Manager"
 msgstr ""
 
 #. [topic]: id=editor_playlist
-#: data/core/editor/help.cfg:311
+#: data/core/editor/help.cfg:304
 msgid ""
 "Shows a list of music tracks known to the editor, with toggle-boxes to "
 "enable them.\n"
@@ -941,12 +965,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_addon_id
-#: data/core/editor/help.cfg:321
+#: data/core/editor/help.cfg:314
 msgid "Change Add-on ID"
 msgstr ""
 
 #. [topic]: id=editor_addon_id
-#: data/core/editor/help.cfg:322
+#: data/core/editor/help.cfg:315
 msgid ""
 "Allows changing the ID of an add-on, which is the name of the folder it’s "
 "in. This will only rename that folder and update any references to it in the "
@@ -954,12 +978,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_pbl_editor
-#: data/core/editor/help.cfg:331
+#: data/core/editor/help.cfg:324
 msgid "Add-on Publishing Editor"
 msgstr ""
 
 #. [topic]: id=editor_pbl_editor
-#: data/core/editor/help.cfg:332
+#: data/core/editor/help.cfg:325
 msgid ""
 "Allows setting up an add-on’s _server.pbl file, which is required for "
 "publishing an add-on to the add-ons server for other players to download. "
@@ -967,12 +991,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:340
+#: data/core/editor/help.cfg:333
 msgid "Map/Scenario Editor"
 msgstr ""
 
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:341
+#: data/core/editor/help.cfg:334
 msgid ""
 "Wesnoth’s Map and Scenario Editor allows users to create and edit the maps "
 "on which every Wesnoth scenario takes place. It also provides a limited set "
@@ -1003,7 +1027,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:353
+#: data/core/editor/help.cfg:346
 msgid ""
 "In either mode, you will be prompted to choose an add-on to use for the "
 "scenarios you create. This can be an existing add-on or a brand new add-on. "
@@ -1015,7 +1039,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..editor
-#: data/core/editor/help.cfg:355
+#: data/core/editor/help.cfg:348
 msgid ""
 "<header>What you do *not* get</header>\n"
 "\n"
@@ -1041,7 +1065,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..editor_mode_terrain
-#: data/core/editor/help.cfg:375
+#: data/core/editor/help.cfg:368
 msgid ""
 "The terrain editor’s functionality is similar to a simple paint "
 "application.\n"
@@ -1056,7 +1080,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:387
+#: data/core/editor/help.cfg:380
 msgid ""
 "The scenario editor mode adds support for some map-related WML features, "
 "such as areas and scenery items. Most scenarios will still require "
@@ -1065,7 +1089,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:389
+#: data/core/editor/help.cfg:382
 msgid ""
 "<header>Checking whether the editor is in scenario mode</header>\n"
 "\n"
@@ -1076,7 +1100,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:396
+#: data/core/editor/help.cfg:389
 msgid ""
 "<header>Entering scenario mode</header>\n"
 "\n"
@@ -1091,7 +1115,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..editor_mode_scenario
-#: data/core/editor/help.cfg:404
+#: data/core/editor/help.cfg:397
 msgid ""
 "<header>The files: .map and .cfg</header>\n"
 "\n"
@@ -1108,12 +1132,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_separate_events_file
-#: data/core/editor/help.cfg:416
+#: data/core/editor/help.cfg:409
 msgid "Separate Event Files"
 msgstr ""
 
 #. [topic]: id=editor_separate_events_file
-#: data/core/editor/help.cfg:417
+#: data/core/editor/help.cfg:410
 msgid ""
 "When loading a .cfg file, the scenario editor understands files created by "
 "the scenario editor, but is likely to have difficulty with files that have "
@@ -1149,12 +1173,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_masks
-#: data/core/editor/help.cfg:440
+#: data/core/editor/help.cfg:433
 msgid "Editor Mask Usage"
 msgstr ""
 
 #. [topic]: id=editor_masks
-#: data/core/editor/help.cfg:441
+#: data/core/editor/help.cfg:434
 msgid ""
 "Masks can be applied to a base map for reuse in several scenarios playing at "
 "the same locations."
@@ -1162,14 +1186,14 @@ msgstr ""
 
 #. [topic]: id=editor_time_schedule
 #. Time of Day and Schedule Editor, please use a short string as it will be used in the left-hand pane of the help browser
-#: data/core/editor/help.cfg:449
+#: data/core/editor/help.cfg:442
 #, fuzzy
 #| msgid "Time of Day"
 msgid "ToD and Schedule Editor"
 msgstr "זמן ביום"
 
 #. [topic]: id=editor_time_schedule
-#: data/core/editor/help.cfg:450
+#: data/core/editor/help.cfg:443
 msgid ""
 "This button at the top-right of the screen accesses the time-of-day preview "
 "and the schedule editor.\n"
@@ -1181,13 +1205,13 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:460
+#: data/core/editor/help.cfg:453
 msgid "Editor Palette"
 msgstr ""
 
 #. [topic]: id=editor_palette
 #. the “Player 1”, “Player 2”, ... list is translated using "Player $side_num" in the wesnoth-editor textdomain
-#: data/core/editor/help.cfg:462
+#: data/core/editor/help.cfg:455
 msgid ""
 "The editor palette contains the applicable items you may use with the "
 "currently selected tool. For example, the Paint tool will display a full "
@@ -1203,32 +1227,32 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:468
+#: data/core/editor/help.cfg:461
 msgid "Show all kinds of terrain"
 msgstr ""
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:469
+#: data/core/editor/help.cfg:462
 msgid "Show only water terrains"
 msgstr ""
 
 #. [topic]: id=editor_palette
-#: data/core/editor/help.cfg:470
+#: data/core/editor/help.cfg:463
 msgid "Show only villages"
 msgstr ""
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:483
+#: data/core/editor/help.cfg:476
 msgid "Wesnoth Map Format"
 msgstr ""
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:484
+#: data/core/editor/help.cfg:477
 msgid "Wesnoth stores its maps in human readable plain text files."
 msgstr ""
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:486
+#: data/core/editor/help.cfg:479
 msgid ""
 "<header>Native</header>\n"
 "\n"
@@ -1257,7 +1281,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:499
+#: data/core/editor/help.cfg:492
 msgid ""
 "<header>Embedded</header>\n"
 "\n"
@@ -1276,7 +1300,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=editor_map_format
-#: data/core/editor/help.cfg:507
+#: data/core/editor/help.cfg:500
 msgid ""
 "<header>Files created by the Scenario Editor</header>\n"
 "\n"
@@ -1878,9 +1902,9 @@ msgstr "אפשרויות משחק"
 #. #-#-#-#-#  wesnoth-help.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [section]: id=traits_section
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:29 data/core/help.cfg:545
-#: src/help/help_topic_generators.cpp:538
-#: src/help/help_topic_generators.cpp:554
+#: data/core/help.cfg:29 data/core/help.cfg:543
+#: src/help/help_topic_generators.cpp:537
+#: src/help/help_topic_generators.cpp:542
 msgid "Traits"
 msgstr "כשרונות"
 
@@ -1910,38 +1934,32 @@ msgstr ""
 
 #. [section]: id=terrains_section
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:70 data/core/help.cfg:560
+#: data/core/help.cfg:70 data/core/help.cfg:558
 msgid "Terrains"
 msgstr "סוגי שטח"
 
 #. [section]: id=addons
 #. [topic]: id=..addons
-#: data/core/help.cfg:78 data/core/help.cfg:608
+#: data/core/help.cfg:78 data/core/help.cfg:606
 msgid "Add-ons"
 msgstr ""
 
 #. [section]: id=commands
 #. [topic]: id=..commands
-#: data/core/help.cfg:84 data/core/help.cfg:681
+#: data/core/help.cfg:84 data/core/help.cfg:679
 msgid "Commands"
 msgstr "פקודות"
 
 #. [topic]: id=..introduction
-#: data/core/help.cfg:96
+#: data/core/help.cfg:97
 #, fuzzy
 msgid ""
-"\n"
 "<i>Battle for Wesnoth</i> is a turn-based fantasy strategy game somewhat "
 "unusual among modern strategy games. While other games strive for "
 "complexity, <i>Battle for Wesnoth</i> strives for simplicity of both rules "
 "and gameplay. This does not make the game simple, however — from these "
 "simple rules arises a wealth of strategy, making the game easy to learn but "
-"a challenge to master.\n"
-"\n"
-"The following pages outline all you need to know to play Wesnoth. As you "
-"play, new information is added to the various categories as you come across "
-"new aspects of the game. For more detailed information on special situations "
-"and exceptions, follow the included links."
+"a challenge to master."
 msgstr ""
 "\n"
 "\n"
@@ -1949,6 +1967,20 @@ msgstr ""
 "אסטרטגיה מודרנים. בעוד משחקים אחרים שואפים לתחכום הקרב על ווסנות' שואף "
 "לפשטות גם בחוקים וגם במשחק. זה לא הופך את המשחק לפשוט, מתוך החוקים הפשוטים "
 "הללו צומח עושר אסטרטגי, כך שהמשחק פשוט ללמידה אבל אתגר למומחה."
+
+#. [topic]: id=..introduction
+#: data/core/help.cfg:99
+#, fuzzy
+msgid ""
+"The following pages outline all you need to know to play Wesnoth. As you "
+"play, new information is added to the various categories as you come across "
+"new aspects of the game. For more detailed information on special situations "
+"and exceptions, follow the included links."
+msgstr ""
+"הדפים האלה מתארים בקווים כללים, את כל מה שאתה צריך לדעת כדי לשחק בקרב על "
+"ווסנות'. הם מכסים את איך לשחק והמנגנונים הבסיסיים מאחורי המשחק, מידע חדש "
+"יתווסף לדפים האלה כאשר תתקל בצדדים חדשים של המשחק. למידע יותר מפורט על מצבים "
+"מיוחדים ודברים יוצאי דופן, אנא עקוב אחרי הקישור המצורף."
 
 #. [topic]: id=about_game
 #: data/core/help.cfg:105
@@ -2043,7 +2075,7 @@ msgid "Unknown Unit"
 msgstr "יחידה לא מוכר"
 
 #. [topic]: id=.unknown_unit
-#: data/core/help.cfg:157
+#: data/core/help.cfg:158
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -2051,7 +2083,6 @@ msgstr "יחידה לא מוכר"
 #| "This unit is unknown for the moment. You must discover it in the game to "
 #| "be allowed to see its description."
 msgid ""
-"\n"
 "This unit is unknown for the moment. You must discover it in the game to be "
 "allowed to see its description."
 msgstr ""
@@ -2101,16 +2132,6 @@ msgstr ""
 #: data/core/help.cfg:175
 #, fuzzy
 msgid ""
-"\n"
-"\n"
-"<header>Fundamentals of Gameplay</header>\n"
-"\n"
-msgstr "<header>text='יחידות מגזע זה'</header>"
-
-#. [topic]: id=..gameplay
-#: data/core/help.cfg:175
-#, fuzzy
-msgid ""
 "While playing, keep in mind that you can mouse-over many items in the game, "
 "such as the information displayed in the status pane, to see a brief "
 "description explaining each item. This is especially useful when you "
@@ -2121,28 +2142,17 @@ msgstr ""
 "מוצג תאור קצר, שמסביר את הפריט, כאשר הסמן נמצא מעליו. הדבר שימושי במיוחד "
 "כאשר אתה נתקל ב  <ref>dst=abilities text=יכולות</ref>  חדשות בפעם הראשונה."
 
+#. [topic]: id=..gameplay
+#: data/core/help.cfg:177
+#, fuzzy
+#| msgid "Fundamentals of Gameplay"
+msgid "Fundamentals of Gameplay"
+msgstr "יסודות המשחק"
+
 #. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:187
 msgid "Victory and Defeat"
 msgstr "נצחון והפסד"
-
-#. [topic]: id=victory_and_defeat
-#: data/core/help.cfg:188
-#, fuzzy
-msgid ""
-"\n"
-"\n"
-"When you win a scenario, the map grays over and the <b>End Turn</b> button "
-"changes to <b>End Scenario</b>. You can now do things like changing your "
-"save options or (if you are in a multiplayer game) chatting with other "
-"players before pressing that button to advance."
-msgstr ""
-"\n"
-"\n"
-"כשאתה מנצח היתקלות, המפה תהפוך לאפורה וכפתור 'סיים תור' יהפוך לכפתור 'סיים "
-"התקלות'. בינתיים תוכל לעשות דברים כמו לשנות את הגדרות השמירה או (במשחק "
-"רב-משתתפים) לדבר עם המשתתפים האחרים לפני שתלחוץ על הכפתור ותעבור להתקלות "
-"הבאה. "
 
 #. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:188
@@ -2162,36 +2172,26 @@ msgstr ""
 "מסויימת, או להציל מישהו, או לשרוד למספר תורים עד שעזרה מגיעה, או לשרוד עד "
 "שחבר מגיע ואז להזיז את מנהיגך לנקודה מסיומת. "
 
+#. [topic]: id=victory_and_defeat
+#: data/core/help.cfg:190
+#, fuzzy
+msgid ""
+"When you win a scenario, the map grays over and the <b>End Turn</b> button "
+"changes to <b>End Scenario</b>. You can now do things like changing your "
+"save options or (if you are in a multiplayer game) chatting with other "
+"players before pressing that button to advance."
+msgstr ""
+"\n"
+"\n"
+"כשאתה מנצח היתקלות, המפה תהפוך לאפורה וכפתור 'סיים תור' יהפוך לכפתור 'סיים "
+"התקלות'. בינתיים תוכל לעשות דברים כמו לשנות את הגדרות השמירה או (במשחק "
+"רב-משתתפים) לדבר עם המשתתפים האחרים לפני שתלחוץ על הכפתור ותעבור להתקלות "
+"הבאה. "
+
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:197
 msgid "Recruiting and Recalling"
 msgstr "גיוס והחזרה"
-
-#. [topic]: id=recruit_and_recall
-#: data/core/help.cfg:198
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "If you right-clicked on a castle hex and selected recruit, the new unit "
-#| "will appear in that square. Otherwise, it will appear in a free square "
-#| "near the keep. You may only recruit as many units as you have free hexes "
-#| "in your castle, and you cannot spend more gold than you actually have on "
-#| "recruiting."
-msgid ""
-"\n"
-"\n"
-"If you right-clicked on a castle hex and selected recruit, the new unit will "
-"appear in that hex. Otherwise, it will appear in a free hex near the keep. "
-"You may only recruit as many units as you have free hexes in your castle, "
-"and you cannot spend more gold than you actually have on recruiting."
-msgstr ""
-"\n"
-"\n"
-"אם לחצת לחיצה ימנית על משבצת טירה ובחרת גיוס, היחידה החדשה תופיע במשבצת זו. "
-"אחרת, היא תופיע במשבצת פנויה ליד המצודה. מספר היחידות שאתה יכול לגייס הוא "
-"ככל היותר כמספר המשושים הפנויים בטירה שלך, אתה לא יכול להשקיע בגיוס יותר זהב "
-"ממה שיש לך."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:198
@@ -2219,9 +2219,31 @@ msgstr ""
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:200
 #, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "If you right-clicked on a castle hex and selected recruit, the new unit "
+#| "will appear in that square. Otherwise, it will appear in a free square "
+#| "near the keep. You may only recruit as many units as you have free hexes "
+#| "in your castle, and you cannot spend more gold than you actually have on "
+#| "recruiting."
 msgid ""
+"If you right-clicked on a castle hex and selected recruit, the new unit will "
+"appear in that hex. Otherwise, it will appear in a free hex near the keep. "
+"You may only recruit as many units as you have free hexes in your castle, "
+"and you cannot spend more gold than you actually have on recruiting."
+msgstr ""
 "\n"
 "\n"
+"אם לחצת לחיצה ימנית על משבצת טירה ובחרת גיוס, היחידה החדשה תופיע במשבצת זו. "
+"אחרת, היא תופיע במשבצת פנויה ליד המצודה. מספר היחידות שאתה יכול לגייס הוא "
+"ככל היותר כמספר המשושים הפנויים בטירה שלך, אתה לא יכול להשקיע בגיוס יותר זהב "
+"ממה שיש לך."
+
+#. [topic]: id=recruit_and_recall
+#: data/core/help.cfg:202
+#, fuzzy
+msgid ""
 "Recruited units come with two random <ref dst='..traits_section'>traits</"
 "ref> which modify their statistics."
 msgstr ""
@@ -2231,10 +2253,15 @@ msgstr ""
 "שמשנים את תכונותיהם."
 
 #. [topic]: id=recruit_and_recall
-#: data/core/help.cfg:202
+#: data/core/help.cfg:204
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "In later scenarios, you may also Recall survivors from earlier battles. "
+#| "Recalling costs a standard 20 gold and presents you with a list of all "
+#| "surviving units from previous scenarios."
 msgid ""
-"\n"
-"\n"
 "In later scenarios, you may also Recall survivors from earlier battles. "
 "Recalling costs a standard 20 gold and presents you with a list of all "
 "surviving units from previous scenarios."
@@ -2246,11 +2273,9 @@ msgstr ""
 "היחידות ששרדו התקלויות קודמות)."
 
 #. [topic]: id=recruit_and_recall
-#: data/core/help.cfg:204
+#: data/core/help.cfg:206
 #, fuzzy
 msgid ""
-"\n"
-"\n"
 "Units not only cost gold to Recruit or Recall, they also require money to "
 "support. See <ref dst='income_and_upkeep'>income and upkeep</ref> for more "
 "information."
@@ -2269,8 +2294,19 @@ msgstr "הכנסה ואחזקה"
 #: data/core/help.cfg:214
 #, fuzzy
 msgid ""
-"\n"
-"\n"
+"In Wesnoth, it is not enough simply to recruit units and fight. You must "
+"watch your gold as well, especially in campaigns, where you can carry extra "
+"gold over from one scenario to the next. There are two aspects to this; "
+"<i>income</i> and <i>upkeep</i>."
+msgstr ""
+"בווסנות', זה לא מספיק פשוט לגייס יחידות ולהלחם. אתה חייב גם לשמור על הזהב "
+"שלך, במיוחד במערכות, בהם אתה יכול להעביר זהב מהתקלות אחד לבאה אחריו. יש לכך "
+"שני צדדים; הכנסה ואחזקה."
+
+#. [topic]: id=income_and_upkeep
+#: data/core/help.cfg:216
+#, fuzzy
+msgid ""
 "Income is simple. You have a base income of 2 gold per turn. For every "
 "village you control, you gain one additional gold each turn. Thus, if you "
 "have ten villages, you would normally gain 12 gold each turn. Your upkeep "
@@ -2283,23 +2319,9 @@ msgstr ""
 "זהב כל תור. הוצאות האחזקה מנוקות מההכנסה הזאת, כמפורט למטה."
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:214
-#, fuzzy
-msgid ""
-"In Wesnoth, it is not enough simply to recruit units and fight. You must "
-"watch your gold as well, especially in campaigns, where you can carry extra "
-"gold over from one scenario to the next. There are two aspects to this; "
-"<i>income</i> and <i>upkeep</i>."
-msgstr ""
-"בווסנות', זה לא מספיק פשוט לגייס יחידות ולהלחם. אתה חייב גם לשמור על הזהב "
-"שלך, במיוחד במערכות, בהם אתה יכול להעביר זהב מהתקלות אחד לבאה אחריו. יש לכך "
-"שני צדדים; הכנסה ואחזקה."
-
-#. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:219
 #, fuzzy
 msgid ""
-"\n"
 "Upkeep is also fairly simple. Each unit requires an amount of Upkeep equal "
 "to its level. You can support as many levels worth of units as you have "
 "villages, without paying any upkeep. However, for each level of unit beyond "
@@ -2316,11 +2338,9 @@ msgstr ""
 "לשלם שני זהב בכל תור לאחזקה."
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:220
+#: data/core/help.cfg:221
 #, fuzzy
 msgid ""
-"\n"
-"\n"
 "Upkeep costs are subtracted from your income, so in the case of twelve "
 "levels of units and ten villages, your resultant Income would be 10 gold per "
 "turn."
@@ -2331,9 +2351,8 @@ msgstr ""
 "ההכנסה שתשאר לך היא 10 זהב לתור."
 
 #. [topic]: id=income_and_upkeep
-#: data/core/help.cfg:225
+#: data/core/help.cfg:224
 msgid ""
-"\n"
 "In general, the base income, the amount of gold you get per village per "
 "turn, and the number of unit levels each village can support are "
 "configurable, but in campaigns they are almost always the values described "
@@ -2345,8 +2364,6 @@ msgstr ""
 #: data/core/help.cfg:226
 #, fuzzy
 msgid ""
-"\n"
-"\n"
 "There are two important exceptions to upkeep: units with the loyal trait and "
 "leaders never incur upkeep. Units you begin the scenario with (such as "
 "Delfador), or units who join you during a scenario (such as the horseman in "
@@ -2362,12 +2379,12 @@ msgstr ""
 "תמיד יהיה המנהיג."
 
 #. [topic]: id=hitpoints
-#: data/core/help.cfg:235
+#: data/core/help.cfg:233
 msgid "Hitpoints and Experience"
 msgstr "נקודות פגיעה ונקודות ניסיון"
 
 #. [topic]: id=hitpoints
-#: data/core/help.cfg:236
+#: data/core/help.cfg:234
 #, fuzzy
 msgid ""
 "Each unit has a certain number of <i>hitpoints</i> (HP). If the hitpoints of "
@@ -2381,7 +2398,7 @@ msgstr ""
 "לחימה באוייבים."
 
 #. [topic]: id=hitpoints
-#: data/core/help.cfg:240
+#: data/core/help.cfg:238
 msgid ""
 "The hitpoints and experience points are both indicated in the status pane "
 "using two numbers (the current value and the maximum value the unit can "
@@ -2391,7 +2408,7 @@ msgstr ""
 "מספרים (הערך הנוכחי והערך המרבי שיכול להיות ליחידה)."
 
 #. [topic]: id=hitpoints
-#: data/core/help.cfg:242
+#: data/core/help.cfg:240
 #, fuzzy
 #| msgid ""
 #| "The hitpoints are also indicated by an energy bar next to each unit, "
@@ -2410,17 +2427,35 @@ msgstr ""
 "ref>."
 
 #. [topic]: id=advancement
-#: data/core/help.cfg:249
+#: data/core/help.cfg:247
 #, fuzzy
 #| msgid "Advances to: "
 msgid "Advancement"
 msgstr "מתקדמת אל: "
 
 #. [topic]: id=advancement
-#: data/core/help.cfg:250
+#: data/core/help.cfg:248
 msgid ""
-"\n"
-"\n"
+"If both units survive a combat, they gain a number of experience points "
+"equal to the level of the unit they’re fighting. If a unit kills another in "
+"combat, however, it gains much more experience — 4 for a level 0 unit, 8 for "
+"level 1, 16 for level 2, 24 for level 3, and so forth."
+msgstr ""
+"אם שתי היחידות שורדות את הלחימה, הן זוכות במספר נקודות ניסיון ששווה לרמת "
+"היחידה בה הם נלחמים. אולם אם יחידה אחת הורגת את השניה בקרב, היא תזכה בהרבה "
+"יותר ניסיון - 4 ליחידה ברמה 0, 8 לרמה 1, 16 לרמה 2, 24 לרמה 3, וכו'."
+
+#. [topic]: id=advancement
+#: data/core/help.cfg:250
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "Units have a certain amount of experience required to advance (this is "
+#| "20% less for units with the Intelligent trait). Once they achieve this "
+#| "amount, they immediately advance to the next level, healing fully in the "
+#| "process. In some cases, you will be given a choice of advancement options."
+msgid ""
 "Units have a certain amount of experience required to advance (this is 20% "
 "less for units with the Intelligent trait). Once they achieve this amount, "
 "they immediately advance to the next level, healing fully in the process. In "
@@ -2433,23 +2468,9 @@ msgstr ""
 "ומתרפאות באופן מלא בתהליך. בחלק מהמקרים ניתן לבחור בין אפשרויות קידום שונות."
 
 #. [topic]: id=advancement
-#: data/core/help.cfg:250
-msgid ""
-"If both units survive a combat, they gain a number of experience points "
-"equal to the level of the unit they’re fighting. If a unit kills another in "
-"combat, however, it gains much more experience — 4 for a level 0 unit, 8 for "
-"level 1, 16 for level 2, 24 for level 3, and so forth."
-msgstr ""
-"אם שתי היחידות שורדות את הלחימה, הן זוכות במספר נקודות ניסיון ששווה לרמת "
-"היחידה בה הם נלחמים. אולם אם יחידה אחת הורגת את השניה בקרב, היא תזכה בהרבה "
-"יותר ניסיון - 4 ליחידה ברמה 0, 8 לרמה 1, 16 לרמה 2, 24 לרמה 3, וכו'."
-
-#. [topic]: id=advancement
 #: data/core/help.cfg:252
 #, fuzzy
 msgid ""
-"\n"
-"\n"
 "While most units have three levels, not all do. Occasional units (such as "
 "<ref dst='unit_Mage'>magi</ref>) may have four. Once a unit has reached its "
 "maximum level, it may have an <i>After Maximum Level Advancement</i> (AMLA) "
@@ -2476,40 +2497,12 @@ msgstr ""
 "הקאד\"מ. רוב היחידות רק יזכו בבונוס לנק\"פ המירבי שלהן."
 
 #. [topic]: id=movement
-#: data/core/help.cfg:261
+#: data/core/help.cfg:259
 msgid "Movement"
 msgstr "תנועה"
 
 #. [topic]: id=movement
-#: data/core/help.cfg:262
-#, fuzzy
-msgid ""
-"\n"
-"\n"
-"Each unit has a certain number of movement points which are used up when "
-"moving into a new hex, depending on the Terrain of that particular hex. For "
-"instance, grassland nearly always costs 1 movement point to enter. Exactly "
-"how many movement points are spent entering a hex depends on the unit type — "
-"in forest, elvish units only spend 1 movement point, most human and orc "
-"units spend 2, while horsemen spend 3. You can learn how many movement "
-"points a unit requires to enter a certain terrain type by right-clicking on "
-"it, selecting <b>Unit Description</b>, and then looking at <b>Terrain "
-"Modifiers</b>."
-msgstr ""
-"\n"
-"\n"
-"לכל יחידה יש מספר מסויים של נקודות תנועה, מספר נקודות התנועה בהם היא משתמשת "
-"במעבר למשבצת חדשה תלוי בסוג השטח של המשבצת המדובר. לדוגמה, כניסה לאדמת מרעה "
-"עולה כמעט תמיד נקודת תנועה אחת. המספר המדוייק של נקודות התנועה שדרושות "
-"לכניסה למשבצת תלויה בסוג היחידה - יחידות אלפיות ישקיעו רק נקודת תנועה אחת "
-"כדי להכנס ליער, אבל רוב היחידות של האורקים ובני האדם ישקיעו 2, ופרשים "
-"בני-אנוש ישקיעו 3. (פרשים אלפיים ישקיעו 1 ורוכבי זאבים 2). אתה יכול ללמוד "
-"כמה נקודות תנועה דרושות ליחידה כדי להכנס לסוג שטח מסויים על ידי לחיצה ימנית "
-"עליה, בחירת בתאור יחידה, ואז הסתכל ב<italic>text=מתאמי שטח</italic> (למטה "
-"בתאור).italic>."
-
-#. [topic]: id=movement
-#: data/core/help.cfg:262
+#: data/core/help.cfg:260
 #, fuzzy
 msgid ""
 "Movement in <i>Battle for Wesnoth</i> is simple. Click on the unit you wish "
@@ -2538,11 +2531,35 @@ msgstr ""
 "היא עדיין תוכל להתקיף."
 
 #. [topic]: id=movement
+#: data/core/help.cfg:262
+#, fuzzy
+msgid ""
+"Each unit has a certain number of movement points which are used up when "
+"moving into a new hex, depending on the Terrain of that particular hex. For "
+"instance, grassland nearly always costs 1 movement point to enter. Exactly "
+"how many movement points are spent entering a hex depends on the unit type — "
+"in forest, elvish units only spend 1 movement point, most human and orc "
+"units spend 2, while horsemen spend 3. You can learn how many movement "
+"points a unit requires to enter a certain terrain type by right-clicking on "
+"it, selecting <b>Unit Description</b>, and then looking at <b>Terrain "
+"Modifiers</b>."
+msgstr ""
+"\n"
+"\n"
+"לכל יחידה יש מספר מסויים של נקודות תנועה, מספר נקודות התנועה בהם היא משתמשת "
+"במעבר למשבצת חדשה תלוי בסוג השטח של המשבצת המדובר. לדוגמה, כניסה לאדמת מרעה "
+"עולה כמעט תמיד נקודת תנועה אחת. המספר המדוייק של נקודות התנועה שדרושות "
+"לכניסה למשבצת תלויה בסוג היחידה - יחידות אלפיות ישקיעו רק נקודת תנועה אחת "
+"כדי להכנס ליער, אבל רוב היחידות של האורקים ובני האדם ישקיעו 2, ופרשים "
+"בני-אנוש ישקיעו 3. (פרשים אלפיים ישקיעו 1 ורוכבי זאבים 2). אתה יכול ללמוד "
+"כמה נקודות תנועה דרושות ליחידה כדי להכנס לסוג שטח מסויים על ידי לחיצה ימנית "
+"עליה, בחירת בתאור יחידה, ואז הסתכל ב<italic>text=מתאמי שטח</italic> (למטה "
+"בתאור).italic>."
+
+#. [topic]: id=movement
 #: data/core/help.cfg:264
 #, fuzzy
 msgid ""
-"\n"
-"\n"
 "Another thing to keep in mind while moving is <i>zones of control</i>. Each "
 "unit — except for level 0 units — generates a zone of control in the hexes "
 "immediately surrounding it, and any enemy unit entering those hexes "
@@ -2561,9 +2578,14 @@ msgstr ""
 
 #. [topic]: id=movement
 #: data/core/help.cfg:266
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "To see where the enemy can move to during their next turn, press Ctrl-v "
+#| "or Cmd-v. Ctrl-b or Cmd-b shows where the enemy could move, if your units "
+#| "were not on the map to block their progress."
 msgid ""
-"\n"
-"\n"
 "To see where the enemy can move to during their next turn, press Ctrl-v or "
 "Cmd-v. Ctrl-b or Cmd-b shows where the enemy could move, if your units were "
 "not on the map to block their progress."
@@ -2575,12 +2597,12 @@ msgstr ""
 "לחסום את התקדמותו."
 
 #. [topic]: id=vision
-#: data/core/help.cfg:275
+#: data/core/help.cfg:273
 msgid "Vision"
 msgstr ""
 
 #. [topic]: id=vision
-#: data/core/help.cfg:276
+#: data/core/help.cfg:274
 msgid ""
 "Vision determines how far a unit can see on the map. Normally, a unit’s "
 "vision range is calculated as its movement range plus one hex. Certain units "
@@ -2589,12 +2611,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=shroud_and_fog
-#: data/core/help.cfg:283
+#: data/core/help.cfg:281
 msgid "Shroud and Fog of War"
 msgstr "הסתרה וערפל קרב"
 
 #. [topic]: id=shroud_and_fog
-#: data/core/help.cfg:284
+#: data/core/help.cfg:282
 #, fuzzy
 msgid ""
 "In some scenarios, parts of the map will be hidden from you. There are two "
@@ -2633,7 +2655,7 @@ msgstr ""
 "ולכן ישמור על יכולתך לבטל מהלכים."
 
 #. [topic]: id=shroud_and_fog
-#: data/core/help.cfg:288
+#: data/core/help.cfg:286
 #, fuzzy
 msgid "<header>Multiplayer and undo</header>"
 msgstr ""
@@ -2642,7 +2664,7 @@ msgstr ""
 "<header>text='סדר ניסיונות הפגיעה ומספרם'</header>"
 
 #. [topic]: id=shroud_and_fog
-#: data/core/help.cfg:290
+#: data/core/help.cfg:288
 msgid ""
 "In multiplayer games, moves that have been sent to the network can’t be "
 "undone; the game delays sending data to try to preserve your undo ability. "
@@ -2653,12 +2675,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=saveload
-#: data/core/help.cfg:297
+#: data/core/help.cfg:295
 msgid "Save-loading"
 msgstr ""
 
 #. [topic]: id=saveload
-#: data/core/help.cfg:298
+#: data/core/help.cfg:296
 msgid ""
 "Random numbers are part of Wesnoth, attacks can fail and units can die due "
 "to bad luck — this is an expected part of the game. Going back to a previous "
@@ -2668,7 +2690,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=saveload
-#: data/core/help.cfg:300
+#: data/core/help.cfg:298
 msgid ""
 "One of the challenges of the game is to work out how to protect your heroes. "
 "Small risks quickly build up: if you have five important units, and they "
@@ -2678,7 +2700,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=saveload
-#: data/core/help.cfg:303
+#: data/core/help.cfg:301
 msgid ""
 "Small risks build up for your non-hero units too. While the story and "
 "dialogue usually aim to give you some emotional bond with your troops, the "
@@ -2689,7 +2711,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=saveload
-#: data/core/help.cfg:305
+#: data/core/help.cfg:303
 msgid ""
 "The difficulty levels are balanced assuming that the player won’t save-load. "
 "In the mainline campaigns, harder difficulties generally have more enemies "
@@ -2699,22 +2721,25 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=saveload
-#: data/core/help.cfg:307
+#: data/core/help.cfg:305
 msgid ""
 "That said, it’s a game; the best way to play it is whichever way gives you "
 "the most enjoyment."
 msgstr ""
 
 #. [topic]: id=whylost
-#: data/core/help.cfg:314
+#: data/core/help.cfg:312
 msgid "Learning from Losses"
+msgstr ""
+
+#. [topic]: id=whylost
+#: data/core/help.cfg:313
+msgid "<i>Why did I lose that scenario?</i>"
 msgstr ""
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:315
 msgid ""
-"<i>Why did I lose that scenario?</i>\n"
-"\n"
 "One of the most difficult parts of Wesnoth is understanding why a scenario "
 "was lost."
 msgstr ""
@@ -2722,8 +2747,6 @@ msgstr ""
 #. [topic]: id=whylost
 #: data/core/help.cfg:317
 msgid ""
-"\n"
-"\n"
 "When you first start playing, you will probably lose some scenarios. That is "
 "normal, and is part of learning the game. When that happens, try to learn "
 "from your mistakes: watch the replay, try to understand what you did wrong, "
@@ -2732,17 +2755,12 @@ msgstr ""
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:319
-msgid ""
-"\n"
-"\n"
-"Some common reasons for losing a scenario are:"
+msgid "Some common reasons for losing a scenario are:"
 msgstr ""
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:321
 msgid ""
-"\n"
-"\n"
 "• Playing a campaign at too high a <ref dst='..gameplay'>difficulty level</"
 "ref>. Try restarting the scenario at an easier difficulty."
 msgstr ""
@@ -2750,8 +2768,6 @@ msgstr ""
 #. [topic]: id=whylost
 #: data/core/help.cfg:323
 msgid ""
-"\n"
-"\n"
 "• Playing a poor strategy: for example, recruiting the wrong types of units, "
 "fighting at the wrong <ref dst='time_of_day'>time of day</ref>, not taking "
 "advantage of terrain features or units’ special abilities, and so on."
@@ -2760,8 +2776,6 @@ msgstr ""
 #. [topic]: id=whylost
 #: data/core/help.cfg:325
 msgid ""
-"\n"
-"\n"
 "• Missing clues. Often there will be hints in the campaign’s story and "
 "dialog about what to expect from a difficult scenario and how to prepare for "
 "it. If you have a loyal mage on your side, take the time to listen to its "
@@ -2771,8 +2785,6 @@ msgstr ""
 #. [topic]: id=whylost
 #: data/core/help.cfg:327
 msgid ""
-"\n"
-"\n"
 "• Barely scraping a victory in a previous scenario. Campaigns generally "
 "assume that you will have some <i>carryover gold</i> and some experienced "
 "units on your <i>recall list.</i> (These concepts are explained in the "
@@ -2787,8 +2799,6 @@ msgstr ""
 #. [topic]: id=whylost
 #: data/core/help.cfg:329
 msgid ""
-"\n"
-"\n"
 "• Poor gold management. At higher difficulties, managing gold — capturing "
 "villages to increase the income, and using low-level units and fresh "
 "recruits to reduce the spending — becomes important. If you use many high-"
@@ -2800,10 +2810,7 @@ msgstr ""
 #. [topic]: id=whylost
 #: data/core/help.cfg:331
 #, fuzzy
-msgid ""
-"\n"
-"\n"
-"<header>Unlikely reasons</header>"
+msgid "Unlikely reasons"
 msgstr ""
 "\n"
 "\n"
@@ -2812,8 +2819,6 @@ msgstr ""
 #. [topic]: id=whylost
 #: data/core/help.cfg:333
 msgid ""
-"\n"
-"\n"
 "In addition to the common reasons, listed above, there are a few other "
 "reasons which are unlikely, though not impossible. They are:"
 msgstr ""
@@ -2821,8 +2826,6 @@ msgstr ""
 #. [topic]: id=whylost
 #: data/core/help.cfg:335
 msgid ""
-"\n"
-"\n"
 "• You may have played a strategy that the campaign developer did not "
 "anticipate, and ended up with a set of high-level units not suitable for the "
 "next scenario."
@@ -2831,8 +2834,6 @@ msgstr ""
 #. [topic]: id=whylost
 #: data/core/help.cfg:337
 msgid ""
-"\n"
-"\n"
 "• You may have found a scenario that can only be won on the second or third "
 "time through, whether by requiring above-average luck or by expecting the "
 "players to have foreknowledge — to know what surprises are coming up before "
@@ -2844,8 +2845,6 @@ msgstr ""
 #. [topic]: id=whylost
 #: data/core/help.cfg:339
 msgid ""
-"\n"
-"\n"
 "• Unusually-bad luck. Whether an attack hits or misses is random, so it "
 "could happen that the enemy was very lucky and had many hits, while you were "
 "very unlucky and had many misses. However, this is a very rare occurrence, "
@@ -2861,8 +2860,6 @@ msgstr ""
 #. [topic]: id=whylost
 #: data/core/help.cfg:341
 msgid ""
-"\n"
-"\n"
 "Be wary of attributing a loss to any of these reasons. If you are not a "
 "veteran player, it is far more likely that your loss was caused by one of "
 "the <i>common</i> errors, listed above, and is not indicative of a bug in "
@@ -2873,8 +2870,6 @@ msgstr ""
 #. [topic]: id=whylost
 #: data/core/help.cfg:343
 msgid ""
-"\n"
-"\n"
 "The “Damage Calculations” dialog shows some statistics that can help "
 "determine whether a match was very lucky or very unlucky. However, reading "
 "the statistics is no substitute to watching the replay and looking for "
@@ -2883,24 +2878,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=combat
-#: data/core/help.cfg:352
+#: data/core/help.cfg:350
 msgid "Combat"
 msgstr "קרב"
 
 #. [topic]: id=combat
-#: data/core/help.cfg:353
-#, fuzzy
-msgid ""
-"\n"
-"\n"
-"<header>Order and Number of Strikes</header>"
-msgstr ""
-"\n"
-"\n"
-"<header>text='סדר ניסיונות הפגיעה ומספרם'</header>"
-
-#. [topic]: id=combat
-#: data/core/help.cfg:353
+#: data/core/help.cfg:351
 #, fuzzy
 msgid ""
 "Combat in <i>Battle for Wesnoth</i> always takes place between units in "
@@ -2923,11 +2906,18 @@ msgstr ""
 "לטווח רחוק שבדרך כלל כרוכה בשימוש בכלי נשק כמו קשתות, חניתות או כדורי אש."
 
 #. [topic]: id=combat
+#: data/core/help.cfg:353
+#, fuzzy
+msgid "Order and Number of Strikes"
+msgstr ""
+"\n"
+"\n"
+"<header>text='סדר ניסיונות הפגיעה ומספרם'</header>"
+
+#. [topic]: id=combat
 #: data/core/help.cfg:355
 #, fuzzy
 msgid ""
-"\n"
-"\n"
 "The attacker gets the first strike, then the defender retaliates. Each "
 "strike either hits, doing a given amount of damage, or misses, doing no "
 "damage at all. Strikes alternate until each unit has used up all of its "
@@ -2947,22 +2937,13 @@ msgstr ""
 
 #. [topic]: id=combat
 #: data/core/help.cfg:357
-#, fuzzy
-msgid ""
-"\n"
-"\n"
-"<header>Chance to Hit</header>"
+msgid "Chance to Hit"
 msgstr ""
-"\n"
-"\n"
-"<header>text='סיכויי פגיעה'</header>"
 
 #. [topic]: id=combat
 #: data/core/help.cfg:359
 #, fuzzy
 msgid ""
-"\n"
-"\n"
 "Every unit has a chance of being hit, based on the <i>terrain</i> it is in. "
 "This is shown in the status pane, and may also be found by right-clicking a "
 "unit, selecting <b>Unit Description</b>, and then looking at <b>Terrain "
@@ -2982,8 +2963,6 @@ msgstr ""
 #: data/core/help.cfg:361
 #, fuzzy
 msgid ""
-"\n"
-"\n"
 "There are two exceptions to this rule: <ref "
 "dst='weaponspecial_magical'>magical attacks</ref> and <ref "
 "dst='weaponspecial_marksman'>marksmen</ref>. Magical attacks always have a "
@@ -2999,21 +2978,13 @@ msgstr ""
 
 #. [topic]: id=combat
 #: data/core/help.cfg:363
-msgid ""
-"\n"
-"\n"
-"<header>text=Damage</header>"
+msgid "Damage"
 msgstr ""
-"\n"
-"\n"
-"<header>text=נזק</header>"
 
 #. [topic]: id=combat
 #: data/core/help.cfg:365
 #, fuzzy
 msgid ""
-"\n"
-"\n"
 "Each strike which hits causes a base amount of damage depending on the "
 "attack type. For instance, an elvish fighter with a 5×4 attack does 5 base "
 "damage. This is usually modified by two things: <ref "
@@ -3035,8 +3006,6 @@ msgstr ""
 #: data/core/help.cfg:367
 #, fuzzy
 msgid ""
-"\n"
-"\n"
 "A few units have special <ref dst='..abilities_section'>abilities</ref> "
 "which affect damage dealt in combat. The most common of these is <ref "
 "dst='weaponspecial_charge'>charge</ref>, which doubles the damage dealt by "
@@ -3050,31 +3019,12 @@ msgstr ""
 "היחידה עם הסתערות מתקיפה."
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:375
+#: data/core/help.cfg:373
 msgid "Damage Types and Resistance"
 msgstr "סוגי נזק ועמידות"
 
 #. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:376
-#, fuzzy
-msgid ""
-"\n"
-"\n"
-"Resistances work very simply: if a unit has 40% resistance against a damage "
-"type, then it will suffer 40% less damage when hit with that damage type. It "
-"is also possible for a unit to be vulnerable against some damage types. If a "
-"unit has −100% resistance against a damage type, it will suffer 100% more "
-"damage when hit by that type."
-msgstr ""
-"\n"
-"\n"
-"עמידות עובדת בצורה מאד פשוטה: אם ליחידה יש 40% עמידות כנגד סוג נזק מסויים, "
-"אז היא תספוג 40% פחות נזק כשתפגע על ידי נזק מאותו הסוג. זה גם אפשרי שיחידה "
-"תהייה פגיעה יותר לסוגי נזק מסויימים. אם יש ליחידה −100% עמידות נגד סוג נזק, "
-"היא תספוג 100% יותר נזק כאשר תפגע מסוג נזק זה."
-
-#. [topic]: id=damage_types_and_resistance
-#: data/core/help.cfg:376
+#: data/core/help.cfg:374
 #, fuzzy
 msgid ""
 "In Wesnoth, there are three types of damage usually associated with physical "
@@ -3089,11 +3039,26 @@ msgstr ""
 "להן מסוגי נזק מסויימים."
 
 #. [topic]: id=damage_types_and_resistance
+#: data/core/help.cfg:376
+#, fuzzy
+msgid ""
+"Resistances work very simply: if a unit has 40% resistance against a damage "
+"type, then it will suffer 40% less damage when hit with that damage type. It "
+"is also possible for a unit to be vulnerable against some damage types. If a "
+"unit has −100% resistance against a damage type, it will suffer 100% more "
+"damage when hit by that type."
+msgstr ""
+"\n"
+"\n"
+"עמידות עובדת בצורה מאד פשוטה: אם ליחידה יש 40% עמידות כנגד סוג נזק מסויים, "
+"אז היא תספוג 40% פחות נזק כשתפגע על ידי נזק מאותו הסוג. זה גם אפשרי שיחידה "
+"תהייה פגיעה יותר לסוגי נזק מסויימים. אם יש ליחידה −100% עמידות נגד סוג נזק, "
+"היא תספוג 100% יותר נזק כאשר תפגע מסוג נזק זה."
+
+#. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:378
 #, fuzzy
 msgid ""
-"\n"
-"\n"
 "For example, skeletons are highly resistant to blade and pierce damage, but "
 "are vulnerable to impact and fire damage, and extremely vulnerable to arcane "
 "damage."
@@ -3105,9 +3070,14 @@ msgstr ""
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:380
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "If a strike is determined to hit, it will always do at least 1 point of "
+#| "damage. This applies even if the defender has 100% resistance to the "
+#| "damage type."
 msgid ""
-"\n"
-"\n"
 "If a strike is determined to hit, it will always do at least 1 point of "
 "damage. This applies even if the defender has 100% resistance to the damage "
 "type."
@@ -3118,12 +3088,12 @@ msgstr ""
 "למגן יש 100% עמידות לסוג זה של נזק."
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:388
+#: data/core/help.cfg:386
 msgid "Orbs and ellipses"
 msgstr ""
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:389
+#: data/core/help.cfg:387
 msgid ""
 "There are colored indicators above the energy bars of some units, consisting "
 "of a colored orb (and sometimes a <ref dst='crowns'>crown</ref>)."
@@ -3131,7 +3101,7 @@ msgstr ""
 
 #. [topic]: id=orbs
 #. The help page has a set of images above this paragraph, in the same order as the bullet points
-#: data/core/help.cfg:400
+#: data/core/help.cfg:398
 msgid ""
 "The orbs show whether the unit can move or attack. The statuses and their "
 "standard colors are:\n"
@@ -3157,7 +3127,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:412
+#: data/core/help.cfg:410
 #, fuzzy
 msgid "<header>Ellipses</header>"
 msgstr ""
@@ -3166,7 +3136,7 @@ msgstr ""
 "<header>text='סיכויי פגיעה'</header>"
 
 #. [topic]: id=orbs
-#: data/core/help.cfg:415
+#: data/core/help.cfg:413
 msgid ""
 "A team-colored shape is drawn on the ground under each unit. This is called "
 "the “ellipse”, although some units’ ellipses are not elliptical."
@@ -3174,7 +3144,7 @@ msgstr ""
 
 #. [topic]: id=orbs
 #. The help page has a set of images above this paragraph, in the same order as the bullet points
-#: data/core/help.cfg:425
+#: data/core/help.cfg:423
 msgid ""
 "• Most units have a circular ellipse.\n"
 "• Units that can recruit have a seven-pointed star.\n"
@@ -3187,12 +3157,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=crowns
-#: data/core/help.cfg:436
+#: data/core/help.cfg:434
 msgid "Crowns and loyal markers"
 msgstr ""
 
 #. [topic]: id=crowns
-#: data/core/help.cfg:437
+#: data/core/help.cfg:435
 msgid ""
 "Some units have an additional marker superimposed on their <ref "
 "dst='orbs'>orb</ref>, and a corresponding shape to their <ref "
@@ -3201,7 +3171,7 @@ msgstr ""
 
 #. [topic]: id=crowns
 #. The help page has a set of images above this paragraph, in the same order as the first set of bullet points, showing what the "loyal icon" is and the difference between "silver" and "blueish-silver".
-#: data/core/help.cfg:450
+#: data/core/help.cfg:448
 msgid ""
 "• Leaders are shown with a <b>gold crown</b>.\n"
 "• Heroes have a <b>blueish-silver crown</b>.\n"
@@ -3224,36 +3194,47 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:468
+#: data/core/help.cfg:466
 msgid "Time of Day"
 msgstr "זמן ביום"
 
 #. [topic]: id=time_of_day
+#: data/core/help.cfg:467
+msgid "The time of day affects the damage of certain units as follows:"
+msgstr ""
+
+#. [topic]: id=time_of_day
 #: data/core/help.cfg:469
-#, fuzzy
 msgid ""
-"The time of day affects the damage of certain units as follows:\n"
-"\n"
 "• <span weight='heavy' size='15'>LAWFUL</span> units get +25% damage in "
-"daytime, and −25% damage at night.\n"
+"daytime, and −25% damage at night."
+msgstr ""
+
+#. [topic]: id=time_of_day
+#: data/core/help.cfg:470
+msgid ""
 "• <span weight='heavy' size='15'>CHAOTIC</span> units get +25% damage at "
-"night, and −25% in daytime.\n"
+"night, and −25% in daytime."
+msgstr ""
+
+#. [topic]: id=time_of_day
+#: data/core/help.cfg:471
+msgid ""
 "• <span weight='heavy' size='15'>NEUTRAL</span> units are unaffected by the "
-"time of day.\n"
+"time of day."
+msgstr ""
+
+#. [topic]: id=time_of_day
+#: data/core/help.cfg:472
+msgid ""
 "• <span weight='heavy' size='15'>LIMINAL</span> units get +25% damage during "
 "twilight."
 msgstr ""
-"הזמן ביום משפיע על הנזק של יחידות מסויימות בצורה הבאה:\n"
-"יחידות סדר מקבלות +25% לנזק ביום, ו −25% לנזק בלילה.\n"
-"יחידות תוהו מקבלות +25% לנזק בלילה  ו −25% לנזק ביום.\n"
-"יחידות נטראליות לא מושפעות מהזמן ביום."
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:474
 #, fuzzy
 msgid ""
-"\n"
-"\n"
 "The current time of day can be observed under the minimap in the status "
 "pane. For the usual day/night cycle, morning and afternoon count as day, "
 "first and second watch count as night:"
@@ -3267,70 +3248,70 @@ msgstr ""
 #. [topic]: id=time_of_day
 #. [time]: id=dawn
 #. [time]: id=dawn_hour
-#: data/core/help.cfg:479 data/core/macros/schedules.cfg:16
+#: data/core/help.cfg:477 data/core/macros/schedules.cfg:16
 #: data/core/macros/schedules.cfg:290
 msgid "Dawn"
 msgstr "שחר"
 
 #. [topic]: id=time_of_day
 #. [time]: id=morning
-#: data/core/help.cfg:482 data/core/macros/schedules.cfg:28
+#: data/core/help.cfg:480 data/core/macros/schedules.cfg:28
 msgid "Morning"
 msgstr "בוקר"
 
 #. [topic]: id=time_of_day
 #. [time]: id=afternoon
-#: data/core/help.cfg:485 data/core/macros/schedules.cfg:46
+#: data/core/help.cfg:483 data/core/macros/schedules.cfg:46
 msgid "Afternoon"
 msgstr "אחה\"צ"
 
 #. [topic]: id=time_of_day
 #. [time]: id=dusk
 #. [time]: id=dusk_hour
-#: data/core/help.cfg:488 data/core/macros/schedules.cfg:55
+#: data/core/help.cfg:486 data/core/macros/schedules.cfg:55
 #: data/core/macros/schedules.cfg:411
 msgid "Dusk"
 msgstr "בין ערביים"
 
 #. [topic]: id=time_of_day
 #. [time]: id=first_watch
-#: data/core/help.cfg:491 data/core/macros/schedules.cfg:67
+#: data/core/help.cfg:489 data/core/macros/schedules.cfg:67
 msgid "First Watch"
 msgstr "משמרת ראשונה"
 
 #. [topic]: id=time_of_day
 #. [time]: id=second_watch
-#: data/core/help.cfg:494 data/core/macros/schedules.cfg:91
+#: data/core/help.cfg:492 data/core/macros/schedules.cfg:91
 msgid "Second Watch"
 msgstr "משמרת שניה"
 
 #. [topic]: id=time_of_day
-#: data/core/help.cfg:497
+#: data/core/help.cfg:495
 #, fuzzy
 #| msgid ""
 #| "Keep in mind that some scenarios take place underground, where it is "
 #| "perpetually night!"
 msgid ""
 "Keep in mind that some scenarios take place underground, where it is "
-"perpetually night!\n"
+"perpetually night!"
 msgstr "שים לב שיש התקלויות המתרשות מתחת האדמה, ושם תמיד שורר לילה!"
+
+#. [topic]: id=time_of_day
+#: data/core/help.cfg:497
+msgid ""
+"Some underground locations are illuminated. They are perpetually "
+"intermediate between day and night."
+msgstr ""
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:499
 msgid ""
-"Some underground locations are illuminated. They are perpetually "
-"intermediate between day and night.\n"
+"Some role-playing scenarios take place indoors — these regions are similarly "
+"intermediate."
 msgstr ""
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:501
-msgid ""
-"Some role-playing scenarios take place indoors — these regions are similarly "
-"intermediate.\n"
-msgstr ""
-
-#. [topic]: id=time_of_day
-#: data/core/help.cfg:503
 msgid ""
 "Finally, units with the <ref "
 "dst='ability_illuminationilluminates'>illuminates</ref> ability and terrain "
@@ -3339,16 +3320,22 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=healing
-#: data/core/help.cfg:510
+#: data/core/help.cfg:508
 msgid "Healing"
 msgstr "ריפוי"
+
+#. [topic]: id=healing
+#: data/core/help.cfg:509
+msgid ""
+"In combat, your units will inevitably take damage. There are several ways to "
+"heal your units. However, with the exception of resting, these do not stack; "
+"only one can occur per turn."
+msgstr ""
 
 #. [topic]: id=healing
 #: data/core/help.cfg:511
 #, fuzzy
 msgid ""
-"\n"
-"\n"
 "• <b>Resting</b>: A unit which neither moves, attacks, nor is attacked will "
 "heal 2 HP in its next turn."
 msgstr ""
@@ -3357,18 +3344,9 @@ msgstr ""
 "מנוחה: יחידה שלא זזה ולא מתקיפה או מותקפת תתרפא ב - 2 נק\"פ בתור הבא."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:511
-msgid ""
-"In combat, your units will inevitably take damage. There are several ways to "
-"heal your units. However, with the exception of resting, these do not stack; "
-"only one can occur per turn."
-msgstr ""
-
-#. [topic]: id=healing
-#: data/core/help.cfg:513
+#: data/core/help.cfg:512
 #, fuzzy
 msgid ""
-"\n"
 "• <b>Villages</b>: A unit which starts a turn in a village or <ref "
 "dst='terrain_oasis'>oasis</ref> will heal 8HP. If the unit is poisoned, the "
 "poison will be cured instead."
@@ -3377,10 +3355,9 @@ msgstr ""
 "כפר: יחידה שמתחילה את התור בכפר תתרפא ב- 8 נק\"פ."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:514
+#: data/core/help.cfg:513
 #, fuzzy
 msgid ""
-"\n"
 "• <ref dst='ability_regeneratesregenerates'>Regeneration</ref>: Certain "
 "units (such as trolls) will automatically heal 8HP every turn. If the unit "
 "is poisoned, the poison will be cured instead."
@@ -3390,10 +3367,9 @@ msgstr ""
 "טרולים) יתרפאו אוטומטית 8 נק\"פ בכל תור."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:515
+#: data/core/help.cfg:514
 #, fuzzy
 msgid ""
-"\n"
 "• <b>Healing units</b>: Units with the <ref dst='ability_healingheals "
 "+4'>Heals</ref> ability will heal each allied adjacent unit, usually <ref "
 "dst='ability_healingheals +4'>4HP</ref> or <ref dst='ability_healingheals "
@@ -3406,10 +3382,9 @@ msgstr ""
 "text='8'</ref> לתור, או למנוע מרעל לגרום לנזק."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:516
+#: data/core/help.cfg:515
 #, fuzzy
 msgid ""
-"\n"
 "• <b>Curing units</b>: Units with the <ref dst='ability_curingcures'>cures</"
 "ref> ability will cure Poison in all allied adjacent units (in preference to "
 "healing, if it has that ability as well)."
@@ -3420,9 +3395,8 @@ msgstr ""
 "צד של היחידה המרפאה ירופאו, ורק עד 8 נק\"פ ליחידה."
 
 #. [topic]: id=healing
-#: data/core/help.cfg:517
+#: data/core/help.cfg:516
 msgid ""
-"\n"
 "• <b>Advancement</b>: When a unit <ref dst='advancement'>advances</ref>, it "
 "will heal fully. This can happen as soon as your unit gains enough "
 "experience, whether it is your turn or not."
@@ -3430,9 +3404,14 @@ msgstr ""
 
 #. [topic]: id=healing
 #: data/core/help.cfg:518
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "Resting can be combined with other forms of healing, but villages, "
+#| "regeneration, healing and curing cannot combine with each other: the best "
+#| "option will be used. Finally, units heal fully between scenarios."
 msgid ""
-"\n"
-"\n"
 "Resting can be combined with other forms of healing, but villages, "
 "regeneration, healing and curing cannot combine with each other: the best "
 "option will be used. Finally, units heal fully between scenarios."
@@ -3447,20 +3426,13 @@ msgstr ""
 #. [topic]: id=healing
 #: data/core/help.cfg:520
 #, fuzzy
-msgid ""
-"\n"
-"\n"
-"<b>Advanced</b>"
-msgstr ""
-"\n"
-"\n"
-"<header>text='סיכויי פגיעה'</header>"
+#| msgid "Advances to: "
+msgid "Advanced"
+msgstr "מתקדמת אל: "
 
 #. [topic]: id=healing
 #: data/core/help.cfg:522
 msgid ""
-"\n"
-"\n"
 "Unlike other forms of healing, the heals ability will not take effect on the "
 "healed unit’s turn, but on the healer’s turn. This means that while a unit "
 "surrounded by several healers on the same side will only receive healing "
@@ -3469,12 +3441,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=wrap_up
-#: data/core/help.cfg:530
+#: data/core/help.cfg:528
 msgid "Wrap Up"
 msgstr "סיכום"
 
 #. [topic]: id=wrap_up
-#: data/core/help.cfg:531
+#: data/core/help.cfg:529
 #, fuzzy
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
@@ -3489,16 +3461,22 @@ msgstr ""
 "לדעת כדי לשחק במערכץ תסביך הירושה. תהנה, ובהצלחה!"
 
 #. [topic]: id=license
-#: data/core/help.cfg:536
+#: data/core/help.cfg:534
 msgid "License"
 msgstr "רישיון"
+
+#. [topic]: id=..traits_section
+#: data/core/help.cfg:545
+msgid ""
+"Traits are modifications that change a unit’s attributes slightly. They are "
+"usually randomly assigned to a unit when it is recruited. The traits "
+"available to a unit are largely determined by its <i>race</i>."
+msgstr ""
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:547
 #, fuzzy
 msgid ""
-"\n"
-"\n"
 "Most units have two traits. However, goblins have only one trait, undead "
 "units are always assigned the single trait <i>undead</i> and in some cases "
 "<i>fearless</i>, and woses do not receive any traits. "
@@ -3508,19 +3486,9 @@ msgstr ""
 "תכונותיה, ולרוב מוקצים לה באופן אקראי בעת גיוסה."
 
 #. [topic]: id=..traits_section
-#: data/core/help.cfg:547
-msgid ""
-"Traits are modifications that change a unit’s attributes slightly. They are "
-"usually randomly assigned to a unit when it is recruited. The traits "
-"available to a unit are largely determined by its <i>race</i>."
-msgstr ""
-
-#. [topic]: id=..traits_section
 #: data/core/help.cfg:549
 #, fuzzy
 msgid ""
-"\n"
-"\n"
 "The traits that are available to most non‐undead units are <ref "
 "dst='traits_intelligent'>intelligent</ref>, <ref dst='traits_quick'>quick</"
 "ref>, <ref dst='traits_resilient'>resilient</ref>, and <ref "
@@ -3536,15 +3504,12 @@ msgstr ""
 #: data/core/help.cfg:551
 #, fuzzy
 msgid ""
-"\n"
-"\n"
 "Elves may also receive <ref dst='traits_dextrous'>dextrous</ref>, and "
 "dwarves may receive <ref dst='traits_healthy'>healthy</ref>. Trolls and "
 "certain humans may receive <ref dst='traits_fearless'>fearless</ref>. Other "
 "traits which may be assigned include <ref dst='traits_loyal'>loyal</ref>, "
 "<ref dst='traits_feral'>feral</ref> and <ref dst='traits_undead'>undead</"
-"ref>.\n"
-"\n"
+"ref>."
 msgstr ""
 "\n"
 "\n"
@@ -3554,15 +3519,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:561
-msgid ""
-"\n"
-"\n"
-"Terrains come in two types: <i>basic</i> and <i>mixed</i>."
-msgstr ""
-
-#. [topic]: id=..terrains_section
-#: data/core/help.cfg:561
+#: data/core/help.cfg:559
 #, fuzzy
 #| msgid ""
 #| "Game maps feature a variety of terrains that affect both unit movement "
@@ -3577,42 +3534,34 @@ msgstr ""
 "\n"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:563
-#, fuzzy
-msgid ""
-"\n"
-"\n"
-"<header>Basic Terrain Types</header>"
+#: data/core/help.cfg:561
+msgid "Terrains come in two types: <i>basic</i> and <i>mixed</i>."
 msgstr ""
+
+#. [topic]: id=..terrains_section
+#: data/core/help.cfg:563 data/core/help.cfg:570 data/core/help.cfg:596
+msgid ""
+"</header>\n"
 "\n"
-"\n"
-"<header>text='סיכויי פגיעה'</header>"
+msgstr ""
+
+#. [topic]: id=..terrains_section
+#: data/core/help.cfg:563 data/core/help.cfg:596
+#, fuzzy
+#| msgid "Terrain"
+msgid "Basic Terrain Types"
+msgstr "סוג שטח"
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:565
 msgid ""
-"\n"
-"\n"
 "Basic terrain types include Flat, Hills, Mountains, Sands, Water and Swamps. "
 "There are many more besides these — a list of the terrain types you have "
-"discovered can be found at the end of this page.\n"
-"\n"
+"discovered can be found at the end of this page."
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:570
-#, fuzzy
-msgid ""
-"\n"
-"\n"
-"<header>Mixed Terrain Types</header>"
-msgstr ""
-"\n"
-"\n"
-"<header>text='סיכויי פגיעה'</header>"
-
-#. [topic]: id=..terrains_section
-#: data/core/help.cfg:570
+#: data/core/help.cfg:568
 msgid ""
 "Every unit has a defense rating and a movement cost for each of the basic "
 "terrain types, and these values are listed in the unit’s help page. Basic "
@@ -3620,60 +3569,53 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
+#: data/core/help.cfg:570
+#, fuzzy
+msgid "Mixed Terrain Types"
+msgstr ""
+"\n"
+"\n"
+"<header>text='סיכויי פגיעה'</header>"
+
+#. [topic]: id=..terrains_section
 #: data/core/help.cfg:572
 msgid ""
-"\n"
-"\n"
 "Mixed terrain types share the properties of multiple basic terrain types — "
 "units generally receive the <i>best defense</i> and <i>worst movement</i> of "
 "the underlying basic types when they move onto a mixed type. For example, "
 "this is the case with <i>forested hills</i>, <i>sand hills</i>, and <i>cave "
-"hills</i>.\n"
-"\n"
+"hills</i>."
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:577
+#: data/core/help.cfg:575
 msgid ""
 "One notable exception is bridge terrains, such as <i>bridges over shallow "
 "water</i>, <i>fords</i>, and <i>bridges over chasms</i>. Fords are easily "
 "passable to both merfolk and humans — all units moving on a ford enjoy the "
 "best defense and best movement out of flat and shallow water, rather than "
 "the worse movement of the two. Similarly, bridges over chasms are passable "
-"to nonfliers (unsurprisingly).\n"
-"\n"
+"to nonfliers (unsurprisingly)."
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:580
+#: data/core/help.cfg:578
 msgid ""
 "Land-based villages generally give the best defense and movement as well. "
 "These villages are mixed terrains, based on the village terrain type, "
-"together with hill, swamp, and cave, respectively.\n"
-"\n"
+"together with hill, swamp, and cave, respectively."
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:583
+#: data/core/help.cfg:581
 msgid ""
 "Finally, water villages are generally inhospitable to land units, and do not "
 "give defense or movement benefits associated with the village terrain type. "
-"Instead, they count only as water tiles.\n"
-"\n"
+"Instead, they count only as water tiles."
 msgstr ""
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:586
-msgid ""
-"\n"
-"\n"
-"You can see what type of behavior the mixed terrain gives by mousing over "
-"its hex and viewing the <i>terrain description</i> by either pressing the "
-"hotkey, or right clicking and selecting from the context menu."
-msgstr ""
-
-#. [topic]: id=..terrains_section
-#: data/core/help.cfg:586
+#: data/core/help.cfg:584
 msgid ""
 "You can see what basic types a mixed terrain is comprised of by mousing over "
 "its hex and checking the terrain type icons displayed in the upper right "
@@ -3681,22 +3623,23 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=..terrains_section
+#: data/core/help.cfg:586
+msgid ""
+"You can see what type of behavior the mixed terrain gives by mousing over "
+"its hex and viewing the <i>terrain description</i> by either pressing the "
+"hotkey, or right clicking and selecting from the context menu."
+msgstr ""
+
+#. [topic]: id=..terrains_section
 #: data/core/help.cfg:588
 #, fuzzy
-msgid ""
-"\n"
-"\n"
-"<header>Defense Caps</header>"
-msgstr ""
-"\n"
-"\n"
-"<header>text='סיכויי פגיעה'</header>"
+#| msgid "Defense"
+msgid "Defense Caps"
+msgstr "הגנה"
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:590
 msgid ""
-"\n"
-"\n"
 "Some units have <i>defense caps</i> for a particular basic terrain type. "
 "These units suffer a penalty on mixed terrains with that type — their "
 "defense cannot exceed the cap."
@@ -3705,8 +3648,6 @@ msgstr ""
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:592
 msgid ""
-"\n"
-"\n"
 "For example, the <ref dst='unit_Cavalryman'>Loyalist Cavalryman</ref> has a "
 "defense rating of 30% on forests, and a defense cap for forests. Thus, on "
 "forested hills, he has a defense rating of 30% rather than 40%, because the "
@@ -3716,27 +3657,12 @@ msgstr ""
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:594
 msgid ""
-"\n"
-"\n"
 "If a unit has a defense cap for some terrain, it is always the same as its "
 "defense rating on that terrain (it cannot be larger)."
 msgstr ""
 
-#. [topic]: id=..terrains_section
-#: data/core/help.cfg:596
-#, fuzzy
-msgid ""
-"\n"
-"\n"
-"<header>Basic Terrain Types</header>\n"
-"\n"
-msgstr ""
-"\n"
-"\n"
-"<header>text='סיכויי פגיעה'</header>"
-
 #. [topic]: id=..addons
-#: data/core/help.cfg:609
+#: data/core/help.cfg:607
 msgid ""
 "The degree of customization offered by the Wesnoth engine allows players to "
 "create their own game content, including new scenarios, campaigns, and much "
@@ -3745,8 +3671,15 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:619
+#: data/core/help.cfg:617
 msgid "Using Add-ons"
+msgstr ""
+
+#. [topic]: id=using_addons
+#: data/core/help.cfg:618
+msgid ""
+"The game supports different types of add-on content, which are not all "
+"available in every gameplay mode."
 msgstr ""
 
 #. [topic]: id=using_addons
@@ -3756,27 +3689,15 @@ msgstr ""
 #| "\n"
 #| "\n"
 #| "<header>text=Damage</header>"
-msgid ""
-"\n"
-"\n"
-"<header>Campaigns and Scenarios</header>"
+msgid "Campaigns and Scenarios"
 msgstr ""
 "\n"
 "\n"
 "<header>text=נזק</header>"
 
 #. [topic]: id=using_addons
-#: data/core/help.cfg:620
-msgid ""
-"The game supports different types of add-on content, which are not all "
-"available in every gameplay mode."
-msgstr ""
-
-#. [topic]: id=using_addons
 #: data/core/help.cfg:622
 msgid ""
-"\n"
-"\n"
 "Single-player campaigns are collections of scenarios that fit together to "
 "tell a story. Both stand-alone scenarios—if intended to be played as such—"
 "and regular campaigns are available from the <i>Campaigns</i> menu at the "
@@ -3787,17 +3708,12 @@ msgstr ""
 #: data/core/help.cfg:624
 #, fuzzy
 #| msgid "<header>text='Units having this special attack'</header>"
-msgid ""
-"\n"
-"\n"
-"<header>Multiplayer Campaigns, Scenarios, and Map Packs</header>"
+msgid "Multiplayer Campaigns, Scenarios, and Map Packs"
 msgstr "<header>text='יחידות עם התקפה מיוחדת זו'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:626
 msgid ""
-"\n"
-"\n"
 "<i>Multiplayer</i> games can be played in fully customized, scripted "
 "scenarios or even specially designed campaigns. There are also packs "
 "providing sets of individual multiplayer scenarios."
@@ -3806,10 +3722,7 @@ msgstr ""
 #. [topic]: id=using_addons
 #: data/core/help.cfg:628
 #, fuzzy
-msgid ""
-"\n"
-"\n"
-"<header>Multiplayer Eras and Factions</header>"
+msgid "Multiplayer Eras and Factions"
 msgstr ""
 "\n"
 "\n"
@@ -3818,13 +3731,15 @@ msgstr ""
 #. [topic]: id=using_addons
 #: data/core/help.cfg:630
 msgid ""
-"\n"
-"\n"
 "For gameplay purposes, various races of creatures in the world cooperate "
 "with each other in factions. Factions are grouped in balanced sets with a "
 "common theme; for example, the main factions of Wesnoth can be found in the "
-"included Default Era.\n"
-"\n"
+"included Default Era."
+msgstr ""
+
+#. [topic]: id=using_addons
+#: data/core/help.cfg:632
+msgid ""
 "In <i>Multiplayer</i> mode, you can choose an era when creating a new game, "
 "and players can pick from the available factions for that era when setting "
 "up their sides and teams."
@@ -3833,29 +3748,18 @@ msgstr ""
 #. [topic]: id=using_addons
 #: data/core/help.cfg:634
 msgid ""
-"\n"
-"\n"
 "You can see what eras you have loaded in the <ref dst='..eras_section'>eras</"
 "ref> of the help."
 msgstr ""
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:636
-#, fuzzy
-msgid ""
-"\n"
-"\n"
-"<header>Modifications</header>"
+msgid "Modifications"
 msgstr ""
-"\n"
-"\n"
-"<header>text='סדר ניסיונות הפגיעה ומספרם'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:638
 msgid ""
-"\n"
-"\n"
 "Modifications are optional scenario- and era-independent scripts that can "
 "alter the default ruleset in various ways. You can choose and configure "
 "modifications when creating a new game."
@@ -3864,24 +3768,21 @@ msgstr ""
 #. [topic]: id=using_addons
 #: data/core/help.cfg:640
 #, fuzzy
-msgid ""
-"\n"
-"\n"
-"<header>Cores</header>"
-msgstr ""
-"\n"
-"\n"
-"<header>text='סיכויי פגיעה'</header>"
+#| msgid "Forest"
+msgid "Cores"
+msgstr "יער"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:642
 msgid ""
-"\n"
-"\n"
 "Cores enable total conversion of The Battle for Wesnoth. A core can replace "
 "all the content in Wesnoth: when a different core is loaded, the regular "
-"units, terrains and the like do not exist.\n"
-"\n"
+"units, terrains and the like do not exist."
+msgstr ""
+
+#. [topic]: id=using_addons
+#: data/core/help.cfg:644
+msgid ""
 "Cores allow a significantly different game experience: for example, a World "
 "War II campaign, or even a different game altogether, as long as it can be "
 "represented as a hexagonal map with ‘units’ in some way."
@@ -3890,10 +3791,7 @@ msgstr ""
 #. [topic]: id=using_addons
 #: data/core/help.cfg:646
 #, fuzzy
-msgid ""
-"\n"
-"\n"
-"<header>Creator Resources</header>"
+msgid "Creator Resources"
 msgstr ""
 "\n"
 "\n"
@@ -3902,8 +3800,6 @@ msgstr ""
 #. [topic]: id=using_addons
 #: data/core/help.cfg:648
 msgid ""
-"\n"
-"\n"
 "Content authors can use resource packs available on the add-ons server to "
 "enrich their own content with existing assets such as images, music, and "
 "code. These are not generally intended for direct use in-game; however, "
@@ -3912,12 +3808,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=installing_addons
-#: data/core/help.cfg:657
+#: data/core/help.cfg:655
 msgid "Installing Add-ons"
 msgstr ""
 
 #. [topic]: id=installing_addons
-#: data/core/help.cfg:658
+#: data/core/help.cfg:656
 msgid ""
 "User-made add-ons can be obtained and updated through the <i>Add-ons</i> "
 "option in the main menu. After connecting to the add-ons server (by default "
@@ -3942,12 +3838,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=removing_addons
-#: data/core/help.cfg:671
+#: data/core/help.cfg:669
 msgid "Removing Add-ons"
 msgstr ""
 
 #. [topic]: id=removing_addons
-#: data/core/help.cfg:672
+#: data/core/help.cfg:670
 msgid ""
 "To remove add-ons, choose <b>Remove Add-ons</b> in the add-ons server "
 "connection dialog. You will be presented with options to remove any number "
@@ -3960,7 +3856,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:687
+#: data/core/help.cfg:685
 #, fuzzy
 #| msgid "General commands"
 msgid "General Commands"
@@ -3969,43 +3865,39 @@ msgstr "פקודות סטנדרטיות"
 #. [topic]: id=general_commands
 #. [topic]: id=mp_commands
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:688 data/core/help.cfg:733 data/core/help.cfg:771
+#: data/core/help.cfg:686 data/core/help.cfg:733 data/core/help.cfg:773
 msgid ""
 "These commands can either be issued via the command line by prefixing them "
 "with ‘:’ (as shown here) or via the chat by prefixing them with ‘/’ (press "
-"‘m’ first to open the chat line).\n"
-"\n"
+"‘m’ first to open the chat line)."
 msgstr ""
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:690
+#: data/core/help.cfg:689
 msgid ""
-"\n"
 "Similar to the ‘fps’ command, but also forces everything to redraw instead "
-"of only things that have changed.\n"
-"\n"
+"of only things that have changed."
 msgstr ""
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:693
-msgid ""
-"\n"
-"Clear chat messages.\n"
-"\n"
+#: data/core/help.cfg:692
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "Clear chat messages.\n"
+#| "\n"
+msgid "Clear chat messages."
 msgstr ""
 "\n"
 "נקה הודעות צ'אט\n"
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:696
+#: data/core/help.cfg:695
 #, fuzzy
 msgid ""
-"\n"
 "Switch debug mode on (does not work in multiplayer). See <ref "
-"dst='debug_commands'>debug mode commands</ref>.\n"
-"Debug mode is turned off by quitting the game or :nodebug.\n"
-"\n"
+"dst='debug_commands'>debug mode commands</ref>."
 msgstr ""
 "\n"
 "עבור למצב דיבוג (לא עובד במשחק רב-משתתפים). ראה <ref>dst='debug_commands' "
@@ -4014,103 +3906,113 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:700
+#. ':nodebug' is a command and should not be translated
+#: data/core/help.cfg:698
+msgid "Debug mode is turned off by quitting the game or :nodebug."
+msgstr ""
+
+#. [topic]: id=general_commands
+#: data/core/help.cfg:701
 msgid ""
-"\n"
 "Switch a side between human and AI control. The second parameter can be "
 "‘off’ to bring the side under human control, ‘on’ to watch the AI make its "
-"moves, or ‘full’ to make the AI’s turn behave similarly to another player‘s "
+"moves, or ‘full’ to make the AI’s turn behave similarly to another player’s "
 "turn. If no second parameter is supplied, it toggles between ‘on’ and ‘off’. "
-"Defaults to toggling the currently active side if no parameters are "
-"supplied.\n"
-"\n"
+"Defaults to toggling the currently active side if no parameters are supplied."
 msgstr ""
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:703
-msgid ""
-"\n"
-"Display the controller status of a side.\n"
-"\n"
+#: data/core/help.cfg:704
+msgid "Display the controller status of a side."
 msgstr ""
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:706
+#: data/core/help.cfg:707
 #, fuzzy
 #| msgid ""
 #| "\n"
 #| "Toggle the display of the current frames per second.\n"
 #| "\n"
 msgid ""
-"\n"
 "Toggle the display of the current frames per second. Also writes these "
-"values to a file in the userdata directory.\n"
-"\n"
+"values to a file in the userdata directory."
 msgstr ""
 "\n"
 "שנה את מספר הפריימים לשניה.\n"
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:709
-msgid ""
-"\n"
-"Switch a log domain to a different log level.\n"
-"\n"
+#: data/core/help.cfg:710
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "Switch a log domain to a different log level.\n"
+#| "\n"
+msgid "Switch a log domain to a different log level."
 msgstr ""
 "\n"
 "שנה את רמת התיעוד.\n"
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:712
-msgid ""
-"\n"
-"Redraws the screen and reloads any image files that have been changed.\n"
-"\n"
+#: data/core/help.cfg:713
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "Redraws the screen and reloads any image files that have been changed.\n"
+#| "\n"
+msgid "Redraws the screen and reloads any image files that have been changed."
 msgstr ""
 "\n"
 "מצייר את המסך מחדש וטוען קבצי תמונה שהשתנו.\n"
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:715
-msgid ""
-"\n"
-"Bring up theme selection menu.\n"
-"\n"
+#: data/core/help.cfg:716
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "Bring up theme selection menu.\n"
+#| "\n"
+msgid "Bring up theme selection menu."
 msgstr ""
 "\n"
 "פתח את תפריט בחירת מראה.\n"
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:718
-msgid ""
-"\n"
-"Quit the scenario (without prompting).\n"
-"\n"
+#: data/core/help.cfg:719
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "Quit the scenario (without prompting).\n"
+#| "\n"
+msgid "Quit the scenario (without prompting)."
 msgstr ""
 "\n"
 "צא מההתקלות הנוכחית (בלי להקפיץ חלון).\n"
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:721
-msgid ""
-"\n"
-"Save the game (without prompting).\n"
-"\n"
+#: data/core/help.cfg:722
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "Save the game (without prompting).\n"
+#| "\n"
+msgid "Save the game (without prompting)."
 msgstr ""
 "\n"
 "שמור את משחק.\n"
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:724
-msgid ""
-"\n"
-"Save the game and quit the scenario (without prompting)."
+#: data/core/help.cfg:725
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "Save the game and quit the scenario (without prompting)."
+msgid "Save the game and quit the scenario (without prompting)."
 msgstr ""
 "\n"
 "שמור את המשחק וצא מההתקלות הנוכחית."
@@ -4123,14 +4025,12 @@ msgid "Multiplayer Commands"
 msgstr "פקודות למשחק רב משתתפים"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:735
+#: data/core/help.cfg:736
 #, fuzzy
 msgid ""
-"\n"
 "Ban a user in a multiplayer game by the IP address used by that username and "
 "kick him. Can be used on users not in the game but on the server. (Of course "
-"they won’t be kicked then.)\n"
-"\n"
+"they won’t be kicked then.)"
 msgstr ""
 "\n"
 "אסור למשתמש לשחק במשחק רב-משתתפים עם כתובת הIP של המשתמש והעף אותו מהמשחק "
@@ -4138,16 +4038,14 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:738
+#: data/core/help.cfg:739
 #, fuzzy
 msgid ""
-"\n"
 "Change the controller for side (write here the number of the side) to "
 "username (write here the nickname of the player or observer). You can check "
 "what side belongs to which player in the <b>Scenario Settings</b> dialog "
 "(Press the <b>More</b> button in the <b>Status Table</b> (alt+s by default) "
-"to get there.). The host can change control of any side.\n"
-"\n"
+"to get there.). The host can change control of any side."
 msgstr ""
 "\n"
 "שנה את השולט בצד (כתוב את מספר הצד) למשתמש (כתוב את שם השחקן/צופה). אתה יכול "
@@ -4156,32 +4054,27 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:741
+#: data/core/help.cfg:742
 msgid ""
-"\n"
 "Launch a dialog to assist the host in changing the human controllers of "
-"sides.\n"
-"\n"
+"sides."
 msgstr ""
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:744
+#: data/core/help.cfg:745
 msgid ""
-"\n"
 "Toggle the idle state for a side. The host may make a side idle after a "
-"network disconnection.\n"
-"\n"
+"network disconnection."
 msgstr ""
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:747
+#. ':control' is a command and should not be translated
+#: data/core/help.cfg:750
 #, fuzzy
 msgid ""
-"\n"
 "Kick a user in multiplayer. They will be able to rejoin the game. If you "
 "just want to change control of their side(s) use the :control command "
-"instead.\n"
-"\n"
+"instead."
 msgstr ""
 "\n"
 "העף שחקן ממשחק רב-משתתפים. הם יכולים להצטרף מחדש. דרך ידידותית להוריד מישהו "
@@ -4189,24 +4082,26 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:750
+#: data/core/help.cfg:753
 #, fuzzy
 msgid ""
-"\n"
 "Send a private message to a user. When in a game, it is not possible to send "
 "private messages to players who are currently controlling a side in the same "
-"game.\n"
-"\n"
+"game."
 msgstr ""
 "שלח הודעה פרטית. אי אפשר לשלוח הודעות פרטיות לשחקנים שלא שולטים בצד במשחק. "
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:753
+#: data/core/help.cfg:756
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "Mute a specific observer. If no username is supplied the muted usernames "
+#| "are displayed.\n"
+#| "\n"
 msgid ""
-"\n"
 "Mute a specific observer. If no username is supplied the muted usernames are "
-"displayed.\n"
-"\n"
+"displayed."
 msgstr ""
 "\n"
 "השתק צופה אחד (עם הוא מגלה דברים ששחקנים אחרים לא יכולים לראות בגלל ערפל "
@@ -4214,24 +4109,19 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:756
+#: data/core/help.cfg:759
 #, fuzzy
-msgid ""
-"\n"
-"Toggle muting/silencing of all observers on/off.\n"
-"\n"
+msgid "Toggle muting/silencing of all observers on/off."
 msgstr ""
 "\n"
 "הדלק/כבה השתקת כל הצופים."
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:759
+#: data/core/help.cfg:762
 #, fuzzy
 msgid ""
-"\n"
 "Unban a user in a multiplayer game by the IP address used by that username. "
-"Can be used on users not in the game but on the server.\n"
-"\n"
+"Can be used on users not in the game but on the server."
 msgstr ""
 "\n"
 "אסור למשתמש לשחק במשחק רב-משתתפים עם כתובת הIP של המשתמש והעף אותו מהמשחק "
@@ -4239,10 +4129,9 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:762
+#: data/core/help.cfg:765
 #, fuzzy
 msgid ""
-"\n"
 "Unmute a specific observer. If no username is supplied the list of muted "
 "observers is cleared."
 msgstr ""
@@ -4252,93 +4141,66 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:770
+#: data/core/help.cfg:772
 #, fuzzy
 #| msgid "Debug mode commands"
 msgid "Debug Mode Commands"
 msgstr "פקודות למצב דיבוג (עם אתה לא יודע מה זה אז אתה כנראה לא צריך את זה)."
 
-# I'm skipping this for a moment as most users who use Debug Mode
-# (Campaign Developers, for example) know english
-#. [topic]: id=debug_commands
-#: data/core/help.cfg:773
-msgid ""
-"\n"
-"Brings up a menu for choosing a scenario to immediately advance to in a "
-"campaign.\n"
-"\n"
-msgstr ""
-
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:776
 msgid ""
-"\n"
-"Create a unit of the specified type on the selected hex.\n"
-"\n"
+"Brings up a menu for choosing a scenario to immediately advance to in a "
+"campaign."
 msgstr ""
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:779
-msgid ""
-"\n"
-"Toggle fog/shroud for the current side.\n"
-"\n"
+msgid "Create a unit of the specified type on the selected hex."
 msgstr ""
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:782
-msgid ""
-"\n"
-"Adds the specified amount to the current side’s gold.\n"
-"\n"
+msgid "Toggle fog/shroud for the current side."
 msgstr ""
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:785
-msgid ""
-"\n"
-"Immediately advances to the next scenario in a campaign.\n"
-"\n"
+msgid "Adds the specified amount to the current side’s gold."
 msgstr ""
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:788
-msgid ""
-"\n"
-"Manually set a gamestate variable to value.\n"
-"\n"
+msgid "Immediately advances to the next scenario in a campaign."
 msgstr ""
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:791
-msgid ""
-"\n"
-"Show a gamestate variable.\n"
-"\n"
+msgid "Manually set a gamestate variable to value."
 msgstr ""
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:794
-msgid ""
-"\n"
-"Manually fire the specified event.\n"
-"\n"
+msgid "Show a gamestate variable."
 msgstr ""
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:797
-msgid ""
-"\n"
-"Modifies the specified property of the selected unit. Example: :unit "
-"hitpoints=100\n"
-"\n"
+msgid "Manually fire the specified event."
 msgstr ""
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:800
+#. The example text is a command and should not be translated.
+#: data/core/help.cfg:802
 msgid ""
-"\n"
-"Makes the selected unit level up N times. Example: :unit advances=2"
+"Modifies the specified property of the selected unit. Example: :unit "
+"hitpoints=100"
+msgstr ""
+
+#. [topic]: id=debug_commands
+#. The example text is a command and should not be translated.
+#: data/core/help.cfg:807
+msgid "Makes the selected unit level up N times. Example: :unit advances=2"
 msgstr ""
 
 #. [heals]: id=healing
@@ -5393,8 +5255,17 @@ msgstr "אפס אחזקה"
 #: data/core/macros/traits.cfg:15
 #, fuzzy
 msgid ""
-"\n"
-"\n"
+"<i>Loyal</i> units don’t incur upkeep. Most units incur an upkeep cost at "
+"the end of every turn, which is equal to their level. Loyal units do not "
+"incur this cost."
+msgstr ""
+"יחידות נאמנות לא דורשות דמי החזקה. רוב היחידות דורשות דמי החזקה בסוף כל תור, "
+"ששווים לרמת היחידה. יחידות נאמנות לא דורשות את העלות הזו."
+
+#. [trait]: id=loyal
+#: data/core/macros/traits.cfg:17
+#, fuzzy
+msgid ""
 "During campaigns, certain units may opt to join the player’s forces of their "
 "own volition. These units are marked with the loyal trait. Although they may "
 "require payment to be recalled, they never incur any upkeep costs. This can "
@@ -5410,17 +5281,6 @@ msgstr ""
 "במהלך מערכות ארוכות, כאשר הזהב קשה להשגה. מאפיין זה לאולם לא ניתו ליחידות "
 "מגוייסות, ולכן זה יכול להיות לא חכם לשחרר יחידה כזו או לשלוח אותה למוות "
 "טיפשי."
-
-#. [trait]: id=loyal
-#: data/core/macros/traits.cfg:15
-#, fuzzy
-msgid ""
-"<italic>text='Loyal'</italic> units don’t incur upkeep. Most units incur an "
-"upkeep cost at the end of every turn, which is equal to their level. Loyal "
-"units do not incur this cost."
-msgstr ""
-"יחידות נאמנות לא דורשות דמי החזקה. רוב היחידות דורשות דמי החזקה בסוף כל תור, "
-"ששווים לרמת היחידה. יחידות נאמנות לא דורשות את העלות הזו."
 
 #. [trait]: id=undead
 #: data/core/macros/traits.cfg:56
@@ -5438,9 +5298,14 @@ msgstr "חסינה לרעל, יניקה ומגיפה"
 #. [trait]: id=undead
 #: data/core/macros/traits.cfg:58
 #, fuzzy
+msgid "<i>Undead</i> units are immune to poison, drain, and plague."
+msgstr ""
+"יחידות אל-מתות הינם חסינות לרעל, ויכולות יניקה ומגיפה אינם משפיעות עליהם. "
+
+#. [trait]: id=undead
+#: data/core/macros/traits.cfg:60
+#, fuzzy
 msgid ""
-"\n"
-"\n"
 "Undead units generally have undead as their only trait. Since undead units "
 "are the bodies of the dead, risen to fight again, poison has no effect upon "
 "them. This can make them invaluable in dealing with foes who use poison in "
@@ -5452,14 +5317,6 @@ msgstr ""
 "אל-מתות הם גופות של מתים, שהוחזרו כדי להלחם שוב, אין לרעל כל השפעה עליהן. "
 "עובדה זו יכולה להפוך אותן ליקרות ערך כאשר נלחמים ביריב שמשתמש ברעל ביחד עם "
 "ההתקפות שלו."
-
-#. [trait]: id=undead
-#: data/core/macros/traits.cfg:58
-#, fuzzy
-msgid ""
-"<italic>text='Undead'</italic> units are immune to poison, drain, and plague."
-msgstr ""
-"יחידות אל-מתות הינם חסינות לרעל, ויכולות יניקה ומגיפה אינם משפיעות עליהם. "
 
 #. [trait]: id=mechanical
 #: data/core/macros/traits.cfg:81
@@ -5474,9 +5331,14 @@ msgstr "מכני"
 #. [trait]: id=mechanical
 #: data/core/macros/traits.cfg:84
 #, fuzzy
+msgid "<i>Mechanical</i> units are immune to poison, drain, and plague."
+msgstr ""
+"יחידות מכניות הינם חסינות לרעל, ויכולות יניקה ומגיפה אינם משפיעות עליהם. "
+
+#. [trait]: id=mechanical
+#: data/core/macros/traits.cfg:86
+#, fuzzy
 msgid ""
-"\n"
-"\n"
 "Mechanical units generally have mechanical as their only trait. Since "
 "mechanical units don’t really have life, drain, poison, and plague have no "
 "effect upon them."
@@ -5485,15 +5347,6 @@ msgstr ""
 "\n"
 "ליחידות מכניות (כגון סירות) יש בדרך כלל את 'מכני' ככשרון היחיד שלהם. מכיוון "
 "שיחידות אלו לא באמת חיות, יניקה, רעל ומגיפה לא משפיעים עליהם. "
-
-#. [trait]: id=mechanical
-#: data/core/macros/traits.cfg:84
-#, fuzzy
-msgid ""
-"<italic>text='Mechanical'</italic> units are immune to poison, drain, and "
-"plague."
-msgstr ""
-"יחידות מכניות הינם חסינות לרעל, ויכולות יניקה ומגיפה אינם משפיעות עליהם. "
 
 #. [trait]: id=elemental
 #: data/core/macros/traits.cfg:107
@@ -5510,9 +5363,14 @@ msgstr "נאמנה"
 #. [trait]: id=elemental
 #: data/core/macros/traits.cfg:110
 #, fuzzy
+msgid "<i>Elemental</i> units are immune to poison, drain, and plague."
+msgstr ""
+"יחידות מכניות הינם חסינות לרעל, ויכולות יניקה ומגיפה אינם משפיעות עליהם. "
+
+#. [trait]: id=elemental
+#: data/core/macros/traits.cfg:112
+#, fuzzy
 msgid ""
-"\n"
-"\n"
 "Elemental units generally have elemental as their only trait. Since "
 "elemental units are energy-based beings, drain, poison, and plague have no "
 "effect upon them."
@@ -5521,15 +5379,6 @@ msgstr ""
 "\n"
 "ליחידות מכניות (כגון סירות) יש בדרך כלל את 'מכני' ככשרון היחיד שלהם. מכיוון "
 "שיחידות אלו לא באמת חיות, יניקה, רעל ומגיפה לא משפיעים עליהם. "
-
-#. [trait]: id=elemental
-#: data/core/macros/traits.cfg:110
-#, fuzzy
-msgid ""
-"<italic>text='Elemental'</italic> units are immune to poison, drain, and "
-"plague."
-msgstr ""
-"יחידות מכניות הינם חסינות לרעל, ויכולות יניקה ומגיפה אינם משפיעות עליהם. "
 
 #. [trait]: id=strong
 #: data/core/macros/traits.cfg:132
@@ -5545,8 +5394,16 @@ msgstr "חזקה"
 #: data/core/macros/traits.cfg:134
 #, fuzzy
 msgid ""
-"\n"
-"\n"
+"<i>Strong</i> units do 1 more damage for every successful strike in melee "
+"combat, and have 1 additional hitpoint."
+msgstr ""
+"יחידות חזקות עושות נקודת נזק אחת יותר עבור כל פגיעה מוצלחת בקפא\"פ , ויש להן "
+"עוד נקודת פגיעה 1."
+
+#. [trait]: id=strong
+#: data/core/macros/traits.cfg:136
+#, fuzzy
+msgid ""
 "While useful for any close-combat unit, strong is most effective for units "
 "who have a high number of swings such as the elvish fighter. Strong units "
 "can be very useful when a tiny bit of extra damage is all that is needed to "
@@ -5557,16 +5414,6 @@ msgstr ""
 "בעוד שכוח שימושי לכל יחידת קפא\"פ, הוא שימושי במיוחד ליחדות עם מספר גבוהה של "
 "התקפות לתור כמו למשל לוחם אלפי. יחידות חזקות שימושיות גם כאשר עוד כמות קטנה "
 "של נזק היא כל מה שצריך כדי להפוך מכה שגורמת נזק למכת מוות."
-
-#. [trait]: id=strong
-#: data/core/macros/traits.cfg:134
-#, fuzzy
-msgid ""
-"<italic>text='Strong'</italic> units do 1 more damage for every successful "
-"strike in melee combat, and have 1 additional hitpoint."
-msgstr ""
-"יחידות חזקות עושות נקודת נזק אחת יותר עבור כל פגיעה מוצלחת בקפא\"פ , ויש להן "
-"עוד נקודת פגיעה 1."
 
 #. [trait]: id=dextrous
 #: data/core/macros/traits.cfg:153
@@ -5582,8 +5429,14 @@ msgstr "זריזה"
 #: data/core/macros/traits.cfg:155
 #, fuzzy
 msgid ""
-"\n"
-"\n"
+"<i>Dextrous</i> units do 1 more damage for every successful strike in ranged "
+"combat."
+msgstr "יחידות חזקות עושות נקודת נזק אחת יותר עבור כל פגיעה מוצלחת בטווח רחוק."
+
+#. [trait]: id=dextrous
+#: data/core/macros/traits.cfg:157
+#, fuzzy
+msgid ""
 "Dextrous is a trait possessed only by elves. The elven people are known for "
 "their uncanny grace, and their great facility with the bow. Some, however, "
 "are gifted with natural talent that exceeds their brethren. These elves "
@@ -5594,14 +5447,6 @@ msgstr ""
 "זריזות רבה הוא כשרון שקיים רק אצל האלפים. האלפים נודעים בתנועותהם מלאות החן, "
 "ובכשרונם הרב עם קשת. אולם, כמה מהם חוננו בכישרון טבעי שעוקף את זה של אחיהם. "
 "אלפים אלו מורדים נקודה נוספת של נזק בכל התקפת טווח-רחוק."
-
-#. [trait]: id=dextrous
-#: data/core/macros/traits.cfg:155
-#, fuzzy
-msgid ""
-"<italic>text='Dextrous'</italic> units do 1 more damage for every successful "
-"strike in ranged combat."
-msgstr "יחידות חזקות עושות נקודת נזק אחת יותר עבור כל פגיעה מוצלחת בטווח רחוק."
 
 #. [trait]: id=quick
 #: data/core/macros/traits.cfg:170
@@ -5617,8 +5462,14 @@ msgstr "מהירה"
 #: data/core/macros/traits.cfg:172
 #, fuzzy
 msgid ""
-"\n"
-"\n"
+"<i>Quick</i> units have 1 extra movement point, but 5% less hitpoints than "
+"usual."
+msgstr "ליחידות מהירות יש עוד נקודת תנועה אחת, אבל 5% פחות נק\"פ מכרגיל."
+
+#. [trait]: id=quick
+#: data/core/macros/traits.cfg:174
+#, fuzzy
+msgid ""
 "Quick is the most noticeable trait, particularly in slower moving units such "
 "as trolls or heavy infantry. Units with the quick trait often have greatly "
 "increased mobility in rough terrain, which can be important to consider when "
@@ -5634,14 +5485,6 @@ msgstr ""
 "בנוסף, יחידות מהירות לא קשוחות כמו יחידות ללא המאפיין היחודי, ולכן טובות "
 "פחות בשמירה על עמדות מפתח."
 
-#. [trait]: id=quick
-#: data/core/macros/traits.cfg:172
-#, fuzzy
-msgid ""
-"<italic>text='Quick'</italic> units have 1 extra movement point, but 5% less "
-"hitpoints than usual."
-msgstr "ליחידות מהירות יש עוד נקודת תנועה אחת, אבל 5% פחות נק\"פ מכרגיל."
-
 #. [trait]: id=intelligent
 #: data/core/macros/traits.cfg:191
 msgid "female^intelligent"
@@ -5650,15 +5493,20 @@ msgstr "חכמה"
 #. [trait]: id=intelligent
 #: data/core/macros/traits.cfg:192
 #, fuzzy
+#| msgid "Intelligent units require 20% less experience than usual to advance."
 msgid ""
-"\n"
-"\n"
-"<italic>text='Intelligent'</italic> units are very useful at the beginning "
-"of a campaign as they can advance to higher levels more quickly. Later in "
-"campaigns Intelligent is not quite as useful because the <italic>text='After "
-"Maximum Level Advancement'</italic> (AMLA) is not as significant a change as "
-"advancing a level. If you have many ‘maximum level’ units you may wish to "
-"recall units with more desirable traits."
+"<i>Intelligent</i> units require 20% less experience than usual to advance."
+msgstr "יחידות חכמות צריכות 20% פחות נק\"נ מכרגיל כדי להתקדם."
+
+#. [trait]: id=intelligent
+#: data/core/macros/traits.cfg:194
+#, fuzzy
+msgid ""
+"Intelligent units are very useful at the beginning of a campaign as they can "
+"advance to higher levels more quickly. Later in campaigns Intelligent is not "
+"quite as useful because the <i>After Maximum Level Advancement</i> (AMLA) is "
+"not as significant a change as advancing a level. If you have many ‘maximum "
+"level’ units you may wish to recall units with more desirable traits."
 msgstr ""
 "\n"
 "\n"
@@ -5679,9 +5527,24 @@ msgstr "עמידה"
 
 #. [trait]: id=resilient
 #: data/core/macros/traits.cfg:208
+#, fuzzy
 msgid ""
-"\n"
-"\n"
+"<i>Resilient</i> units have an additional 4 hitpoints, and gain 1 more per "
+"level."
+msgstr "ליחידות חסונות יש 4 נק\"פ + נק\"פ 1/דרגה יותר מהרגיל."
+
+#. [trait]: id=resilient
+#: data/core/macros/traits.cfg:210
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "Resilient units can be useful at all stages of a campaign, and this is a "
+#| "useful trait for all units. Resilient is often most helpful as a trait "
+#| "when it occurs in a unit that has some combination of low hitpoints, good "
+#| "defense, or high resistances. Resilient units are especially useful for "
+#| "holding strategic positions against opponents."
+msgid ""
 "Resilient units can be useful at all stages of a campaign, and this is a "
 "useful trait for all units. Resilient is often most helpful as a trait when "
 "it occurs in a unit that has some combination of low hitpoints, good "
@@ -5695,14 +5558,6 @@ msgstr ""
 "ביחידה עם שילוב של נק\"פ נמוך והגנה טובה, או עמידות גבוהה. יחידות חסונות "
 "שימושיות במיוחד להחזקת עמדות מפתח נגד היריב."
 
-#. [trait]: id=resilient
-#: data/core/macros/traits.cfg:208
-#, fuzzy
-msgid ""
-"<italic>text='Resilient'</italic> units have an additional 4 hitpoints, and "
-"gain 1 more per level."
-msgstr "ליחידות חסונות יש 4 נק\"פ + נק\"פ 1/דרגה יותר מהרגיל."
-
 #. [trait]: id=healthy
 #: data/core/macros/traits.cfg:227
 msgid "healthy"
@@ -5712,16 +5567,6 @@ msgstr "בריא"
 #: data/core/macros/traits.cfg:228
 msgid "female^healthy"
 msgstr "בריאה"
-
-#. [trait]: id=healthy
-#: data/core/macros/traits.cfg:230
-msgid ""
-"\n"
-"\n"
-"<italic>text='Healthy'</italic> units have 1 additional hitpoint, and gain 1 "
-"more per level. They will also heal 2 hitpoints each turn, regardless of "
-"whether they engaged in combat the turn before."
-msgstr ""
 
 #. [trait]: id=healthy
 #: data/core/macros/traits.cfg:230
@@ -5735,6 +5580,14 @@ msgid ""
 msgstr ""
 "ידועים בקשיחותם, מספר גמדים הינם קשוחים יותר מאחרים ויכולים לנוח גם בזמן "
 "תנועה."
+
+#. [trait]: id=healthy
+#: data/core/macros/traits.cfg:232
+msgid ""
+"<i>Healthy</i> units have 1 additional hitpoint, and gain 1 more per level. "
+"They will also heal 2 hitpoints each turn, regardless of whether they "
+"engaged in combat the turn before."
+msgstr ""
 
 #. [trait]: id=fearless
 #: data/core/macros/traits.cfg:253 data/core/macros/traits.cfg:270
@@ -5772,9 +5625,8 @@ msgstr ""
 #: data/core/macros/traits.cfg:288
 msgid ""
 "Dwellings of sentient beings are not easily used for cover by feral "
-"creatures of low intelligence. As a result, <italic>text='feral'</italic> "
-"units receive a maximum of 50% defense in any land-based village regardless "
-"of base terrain."
+"creatures of low intelligence. As a result, <i>feral</i> units receive a "
+"maximum of 50% defense in any land-based village regardless of base terrain."
 msgstr ""
 
 #. [trait]: id=weak
@@ -5791,8 +5643,8 @@ msgstr "חלשה"
 #: data/core/macros/traits.cfg:306
 #, fuzzy
 msgid ""
-"Units with the <italic>text='weak'</italic> trait receive a 1 point decrease "
-"in hitpoints and melee damage."
+"Units with the <i>weak</i> trait receive a 1 point decrease in hitpoints and "
+"melee damage."
 msgstr ""
 "ליחידות חלשות יש נקודת פגיעה 1 פחות ומורידים 1 פחות נזק בהתקפות קפא\"פ. "
 
@@ -5808,9 +5660,20 @@ msgstr "איטית"
 
 #. [trait]: id=slow
 #: data/core/macros/traits.cfg:325
+#, fuzzy
+msgid "<i>Slow</i> units have 1 less movement point but 5% more hitpoints."
+msgstr "ליחידות איטיות יש נקודת תנועה אחת פחות, אבל 5% יותר נק\"פ"
+
+#. [trait]: id=slow
+#: data/core/macros/traits.cfg:327
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "Thick-bodied and clumsy, slow individuals of goblins and other species "
+#| "take a movement penalty but are compensated for it with a slight increase "
+#| "in endurance."
 msgid ""
-"\n"
-"\n"
 "Thick-bodied and clumsy, slow individuals of goblins and other species take "
 "a movement penalty but are compensated for it with a slight increase in "
 "endurance."
@@ -5819,14 +5682,6 @@ msgstr ""
 "\n"
 "כבדי-גוף ומסורבלים, גובלינים איטיים הינם איטיים (כמובן) יותר מאחרים אבל טיפה "
 "יותר קשוחים. "
-
-#. [trait]: id=slow
-#: data/core/macros/traits.cfg:325
-#, fuzzy
-msgid ""
-"<italic>text='Slow'</italic> units have 1 less movement point but 5% more "
-"hitpoints."
-msgstr "ליחידות איטיות יש נקודת תנועה אחת פחות, אבל 5% יותר נק\"פ"
 
 #. [trait]: id=dim
 #: data/core/macros/traits.cfg:343
@@ -5840,9 +5695,21 @@ msgstr "טיפשה"
 
 #. [trait]: id=dim
 #: data/core/macros/traits.cfg:345
+#, fuzzy
 msgid ""
-"\n"
-"\n"
+"Units with trait <i>dim</i> suffer a 20% increase in experience required to "
+"advance."
+msgstr "יחידות טיפשות צריכות 20% יותר נסיון בשביל להצליח לעלות רמה"
+
+#. [trait]: id=dim
+#: data/core/macros/traits.cfg:347
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "Dim is a trait all too common in goblins and other lesser species. There "
+#| "are reasons these species are lesser, and this is one of them."
+msgid ""
 "Dim is a trait all too common in goblins and other lesser species. There are "
 "reasons these species are lesser, and this is one of them."
 msgstr ""
@@ -5850,14 +5717,6 @@ msgstr ""
 "\n"
 "טיפשות היא כשרון די נפוץ בגובלינים ויצורים פחותים אחרים. יש סיבות שיצורים "
 "אלו הינם אלו הם הפחותים, וזה אחד מהם."
-
-#. [trait]: id=dim
-#: data/core/macros/traits.cfg:345
-#, fuzzy
-msgid ""
-"Units with trait <italic>text='dim'</italic> suffer a 20% increase in "
-"experience required to advance."
-msgstr "יחידות טיפשות צריכות 20% יותר נסיון בשביל להצליח לעלות רמה"
 
 #. [trait]: id=aged
 #: data/core/macros/traits.cfg:359
@@ -5875,10 +5734,36 @@ msgstr "טיפשה"
 #: data/core/macros/traits.cfg:361
 #, fuzzy
 msgid ""
-"Units with the <italic>text='aged'</italic> trait have 8 hitpoints less and "
-"suffer from a 1 point decrease in movement and melee damage."
+"Units with the <i>aged</i> trait have 8 hitpoints less and suffer from a 1 "
+"point decrease in movement and melee damage."
 msgstr ""
 "ליחידות חלשות יש נקודת פגיעה 1 פחות ומורידים 1 פחות נזק בהתקפות קפא\"פ. "
+
+#. [trait]: id=oceangoing
+#: data/core/macros/traits.cfg:386
+msgid "oceangoing"
+msgstr ""
+
+#. [trait]: id=oceangoing
+#. this is a defense reduction - without this ability most oceangoing ships would have 30% defense on these terrains
+#: data/core/macros/traits.cfg:388
+msgid ""
+"This unit is limited to 20% defense while in ford, bridge, oasis, or water-"
+"based village/castle terrain."
+msgstr ""
+
+#. [trait]: id=push_poles
+#. https://en.wikipedia.org/wiki/Setting_pole
+#: data/core/macros/traits.cfg:416
+msgid "push-poles"
+msgstr ""
+
+#. [trait]: id=push_poles
+#: data/core/macros/traits.cfg:417
+msgid ""
+"This unit has 30% defense while in ford, bridge, oasis, or water-based "
+"village/castle terrain."
+msgstr ""
 
 #. [disable]: id=unwieldy
 #: data/core/macros/weapon_specials.cfg:7
@@ -6548,13 +6433,15 @@ msgid "race^Goblins"
 msgstr "גובלינים"
 
 #. [race]: id=goblin
-#: data/core/units.cfg:161
+#: data/core/units.cfg:163
 msgid ""
-"\n"
-"\n"
 "Goblins are puny and quite frail, rarely growing past the size and stature "
-"of a human child.\n"
-"\n"
+"of a human child."
+msgstr ""
+
+#. [race]: id=goblin
+#: data/core/units.cfg:165
+msgid ""
 "Goblins are born into a lifetime of near-slavery to their larger kin, and "
 "used as sword-fodder in battle. They thrive in spite of their tragic fate; "
 "in part because they are so very numerous, and also because their brother "
@@ -7038,9 +6925,17 @@ msgid ""
 "cruel by nature. Their blood is darker and thicker than that of humans, and "
 "they have little care for personal hygiene or their personal appearance. "
 "Although Orcs are violent even among themselves, they are pack-oriented; an "
-"orc never travels alone or lives in groups smaller than half a dozen.\n"
-"\n"
-"<header>text='Society'</header>\n"
+"orc never travels alone or lives in groups smaller than half a dozen."
+msgstr ""
+
+#. [race]: id=orc
+#: data/core/units.cfg:356
+msgid "Society"
+msgstr ""
+
+#. [race]: id=orc
+#: data/core/units.cfg:357
+msgid ""
 "Almost every orc is a member of a tribe or a clan. Relations between "
 "neighboring tribes are usually violent, except in cases of a mutual enemy "
 "threatens their existence or prospects of great plunder override mutual "
@@ -7049,8 +6944,12 @@ msgid ""
 "followers. An orc tribe in times of peace tends to focus almost solely on "
 "strengthening itself in preparation for the next armed conflict. Orcs are "
 "known to possess a crude system of writing — usually in blood — although "
-"it’s most commonly used to trade insults or threats among tribal leaders.\n"
-"\n"
+"it’s most commonly used to trade insults or threats among tribal leaders."
+msgstr ""
+
+#. [race]: id=orc
+#: data/core/units.cfg:359
+msgid ""
 "Orc societies are based on little else but strength; might makes right, and "
 "a leader leads and survives only as long as no one manages to wrest the "
 "title from him. A constant struggle for power simmers among potential tribal "
@@ -7059,8 +6958,12 @@ msgid ""
 "history knows some notable exceptions. Orcs hold no particular honor code "
 "and while indisputable raw strength is usually the preferred method of "
 "displaying power, assassination, poisoning and backstabbing are completely "
-"viable means to further one’s own goals.\n"
-"\n"
+"viable means to further one’s own goals."
+msgstr ""
+
+#. [race]: id=orc
+#: data/core/units.cfg:361
+msgid ""
 "Orcs mostly live in rural areas, often in foothills or mountainous regions, "
 "sometimes in caves. They grow no crops nor keep livestock, but are competent "
 "hunters as a result of their physical stature and brutality. Due to their "
@@ -7070,8 +6973,12 @@ msgid ""
 "lifestyle, never settling in one region for too long. The larger tribes may "
 "establish themselves firmly in an area for years or even decades and build "
 "large encampments almost resembling cities, but even these are easily "
-"dismantled and abandoned if there is a need to relocate the horde.\n"
-"\n"
+"dismantled and abandoned if there is a need to relocate the horde."
+msgstr ""
+
+#. [race]: id=orc
+#: data/core/units.cfg:363
+msgid ""
 "The oldest known orcs have been around 50 to 60 years of age, but very few "
 "individuals ever live to see over two or three decades before meeting their "
 "end either in war or by the hand of one of their kin. The oldest orcs are "
@@ -7080,15 +6987,12 @@ msgid ""
 "the shamans do not directly contribute much to orcish societies but only act "
 "as advisors — not something orcs tend to otherwise tolerate. Shamans are in "
 "many ways the opposite of most other orcs: they are often physically "
-"withered and frail in comparison and lack skill in battle.\n"
-"\n"
+"withered and frail in comparison and lack skill in battle."
 msgstr ""
 
 #. [race]: id=orc
-#: data/core/units.cfg:365
+#: data/core/units.cfg:367
 msgid ""
-"\n"
-"\n"
 "Orcs who were not the strongest of their litter tend to specialize in other "
 "skills, like archery or assassination."
 msgstr ""
@@ -7396,7 +7300,7 @@ msgid ""
 msgstr ""
 
 #: src/help/help_topic_generators.cpp:246
-#: src/help/help_topic_generators.cpp:658
+#: src/help/help_topic_generators.cpp:654
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -7479,13 +7383,20 @@ msgstr "שונות"
 msgid "Race:"
 msgstr "גזע: "
 
-#: src/help/help_topic_generators.cpp:564
+#: src/help/help_topic_generators.cpp:537
+#: src/help/help_topic_generators.cpp:547
+msgid "(1 of):"
+msgid_plural "(random $number of):"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/help/help_topic_generators.cpp:560
 #, fuzzy
 #| msgid "Abilities: "
 msgid "Abilities:"
 msgstr "יכולות: "
 
-#: src/help/help_topic_generators.cpp:590
+#: src/help/help_topic_generators.cpp:586
 #, fuzzy
 #| msgid "Ability Upgrades: "
 msgid "Ability Upgrades:"
@@ -7494,7 +7405,7 @@ msgstr "תגבורי יכולות: "
 #. TRANSLATORS: This string is used in the help page of a single unit. If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:620
+#: src/help/help_topic_generators.cpp:616
 #, fuzzy
 #| msgid "HP: "
 msgid "HP:"
@@ -7503,7 +7414,7 @@ msgstr "נק\"פ: "
 #. TRANSLATORS: This string is used in the help page of a single unit. If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:624
+#: src/help/help_topic_generators.cpp:620
 #, fuzzy
 #| msgid "Moves: "
 msgid "Moves:"
@@ -7512,14 +7423,14 @@ msgstr "מהלכים: "
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:629
+#: src/help/help_topic_generators.cpp:625
 msgid "Vision:"
 msgstr ""
 
 #. TRANSLATORS: This string is used in the help page of a single unit. If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:635
+#: src/help/help_topic_generators.cpp:631
 #, fuzzy
 msgid "Jamming:"
 msgstr "נחיל"
@@ -7527,7 +7438,7 @@ msgstr "נחיל"
 #. TRANSLATORS: This string is used in the help page of a single unit. If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:640
+#: src/help/help_topic_generators.cpp:636
 #, fuzzy
 #| msgid "Cost: "
 msgid "Cost:"
@@ -7536,7 +7447,7 @@ msgstr "עלות: "
 #. TRANSLATORS: This string is used in the help page of a single unit. If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:644
+#: src/help/help_topic_generators.cpp:640
 #, fuzzy
 #| msgid "Alignment: "
 msgid "Alignment:"
@@ -7545,93 +7456,223 @@ msgstr "נטייה: "
 #. TRANSLATORS: This string is used in the help page of a single unit. It uses
 #. non-breaking spaces to prevent unpleasant line breaks (issue #3256). In the
 #. translation use non-breaking spaces as appropriate for the target language.
-#: src/help/help_topic_generators.cpp:651
+#: src/help/help_topic_generators.cpp:647
 #, fuzzy
 #| msgid "Required XP: "
 msgid "Required XP:"
 msgstr "נק\"פ נדרש: "
 
-#: src/help/help_topic_generators.cpp:669
+#: src/help/help_topic_generators.cpp:665
 #, fuzzy
 #| msgid "Attack Type"
 msgid "Attacks"
 msgstr "סוג תקיפה"
 
-#: src/help/help_topic_generators.cpp:672
+#: src/help/help_topic_generators.cpp:668
 #, fuzzy
 #| msgid "Attack Type"
 msgid "Attacks per turn: "
 msgstr "סוג תקיפה"
 
-#: src/help/help_topic_generators.cpp:691
+#: src/help/help_topic_generators.cpp:687
 msgid "Name"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:692
+#: src/help/help_topic_generators.cpp:688
 msgid "Strikes"
 msgstr "נסיונות פגיעה"
 
-#: src/help/help_topic_generators.cpp:693
+#: src/help/help_topic_generators.cpp:689
 msgid "Range"
 msgstr "טווח"
 
-#: src/help/help_topic_generators.cpp:694
+#: src/help/help_topic_generators.cpp:690
 msgid "Type"
 msgstr "סוג"
 
-#: src/help/help_topic_generators.cpp:695
+#: src/help/help_topic_generators.cpp:691
 msgid "Special"
 msgstr "מיוחד"
 
-#: src/help/help_topic_generators.cpp:717
+#: src/help/help_topic_generators.cpp:713
 msgid "uses $num attack"
 msgid_plural "uses $num attacks"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/help/help_topic_generators.cpp:797
+#: src/help/help_topic_generators.cpp:793
 msgid "Resistances"
 msgstr "עמידויות"
 
-#: src/help/help_topic_generators.cpp:802
+#: src/help/help_topic_generators.cpp:798
 msgid "Attack Type"
 msgstr "סוג תקיפה"
 
-#: src/help/help_topic_generators.cpp:803
+#: src/help/help_topic_generators.cpp:799
 msgid "Resistance"
 msgstr "עמידות"
 
-#: src/help/help_topic_generators.cpp:834
+#: src/help/help_topic_generators.cpp:830
 #, fuzzy
 #| msgid "Terrain Modifiers"
 msgid "Terrain Modifiers"
 msgstr "מתאמי שטח"
 
-#: src/help/help_topic_generators.cpp:838
+#: src/help/help_topic_generators.cpp:834
 msgid "Terrain"
 msgstr "סוג שטח"
 
-#: src/help/help_topic_generators.cpp:839
+#: src/help/help_topic_generators.cpp:835
 msgid "Defense"
 msgstr "הגנה"
 
-#: src/help/help_topic_generators.cpp:840
+#: src/help/help_topic_generators.cpp:836
 msgid "Movement Cost"
 msgstr "מחיר תנועה"
 
-#: src/help/help_topic_generators.cpp:841
+#: src/help/help_topic_generators.cpp:837
 #, fuzzy
 #| msgid "Defense"
 msgid "Defense Cap"
 msgstr "הגנה"
 
-#: src/help/help_topic_generators.cpp:842
+#: src/help/help_topic_generators.cpp:838
 msgid "Vision Cost"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:843
+#: src/help/help_topic_generators.cpp:839
 msgid "Jamming Cost"
 msgstr ""
+
+#, fuzzy
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "<header>Fundamentals of Gameplay</header>\n"
+#~ "\n"
+#~ msgstr "<header>text='יחידות מגזע זה'</header>"
+
+#, fuzzy
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "<header>Chance to Hit</header>"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "<header>text='סיכויי פגיעה'</header>"
+
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "<header>text=Damage</header>"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "<header>text=נזק</header>"
+
+#, fuzzy
+#~ msgid ""
+#~ "The time of day affects the damage of certain units as follows:\n"
+#~ "\n"
+#~ "• <span weight='heavy' size='15'>LAWFUL</span> units get +25% damage in "
+#~ "daytime, and −25% damage at night.\n"
+#~ "• <span weight='heavy' size='15'>CHAOTIC</span> units get +25% damage at "
+#~ "night, and −25% in daytime.\n"
+#~ "• <span weight='heavy' size='15'>NEUTRAL</span> units are unaffected by "
+#~ "the time of day.\n"
+#~ "• <span weight='heavy' size='15'>LIMINAL</span> units get +25% damage "
+#~ "during twilight."
+#~ msgstr ""
+#~ "הזמן ביום משפיע על הנזק של יחידות מסויימות בצורה הבאה:\n"
+#~ "יחידות סדר מקבלות +25% לנזק ביום, ו −25% לנזק בלילה.\n"
+#~ "יחידות תוהו מקבלות +25% לנזק בלילה  ו −25% לנזק ביום.\n"
+#~ "יחידות נטראליות לא מושפעות מהזמן ביום."
+
+#, fuzzy
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "<b>Advanced</b>"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "<header>text='סיכויי פגיעה'</header>"
+
+#, fuzzy
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "<header>Basic Terrain Types</header>"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "<header>text='סיכויי פגיעה'</header>"
+
+#, fuzzy
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "<header>Mixed Terrain Types</header>"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "<header>text='סיכויי פגיעה'</header>"
+
+#, fuzzy
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "<header>Defense Caps</header>"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "<header>text='סיכויי פגיעה'</header>"
+
+#, fuzzy
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "<header>Basic Terrain Types</header>\n"
+#~ "\n"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "<header>text='סיכויי פגיעה'</header>"
+
+#, fuzzy
+#~| msgid ""
+#~| "\n"
+#~| "\n"
+#~| "<header>text=Damage</header>"
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "<header>Campaigns and Scenarios</header>"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "<header>text=נזק</header>"
+
+#, fuzzy
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "<header>Modifications</header>"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "<header>text='סדר ניסיונות הפגיעה ומספרם'</header>"
+
+#, fuzzy
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "<header>Cores</header>"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "<header>text='סיכויי פגיעה'</header>"
 
 #, fuzzy
 #~| msgid ""
@@ -7846,29 +7887,10 @@ msgstr ""
 #~ "<header>text='סיכויי פגיעה'</header>"
 
 #, fuzzy
-#~| msgid "Fundamentals of Gameplay"
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "<big>Fundamentals of Gameplay</big>\n"
-#~ "\n"
-#~ msgstr "יסודות המשחק"
-
-#, fuzzy
 #~ msgid ""
 #~ "\n"
 #~ "\n"
 #~ "<big>Basic Terrain Types</big>"
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "<header>text='סיכויי פגיעה'</header>"
-
-#, fuzzy
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "<big>Mixed Terrain Types</big>"
 #~ msgstr ""
 #~ "\n"
 #~ "\n"
@@ -7894,20 +7916,6 @@ msgstr ""
 #~ "\n"
 #~ "\n"
 #~ "<header>text='סיכויי פגיעה'</header>"
-
-#, fuzzy
-#~| msgid ""
-#~| "\n"
-#~| "\n"
-#~| "<header>text=Damage</header>"
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "<big>Campaigns and Scenarios</big>"
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "<header>text=נזק</header>"
 
 #~ msgid "race^Mermen"
 #~ msgstr "בני-ים"
@@ -8035,19 +8043,6 @@ msgstr ""
 #~ "- לחץ על  <italic>text=מערכה</italic>  ואז על <italic>text='תסביך "
 #~ "הירושה'</italic>. מכיוון שהקרב על ווסנות' יכול להיות מאד מאתגר, יכול "
 #~ "להיות שתרצה להתחיל מ - <italic>text=קל</italic>."
-
-#, fuzzy
-#~ msgid ""
-#~ "These pages outline all you need to know to play <italic>text='Battle for "
-#~ "Wesnoth'</italic>. They cover how to play and the basic mechanics behind "
-#~ "the game. As you play the game, new information is added to these pages "
-#~ "as you come across new aspects of the game. For more detailed information "
-#~ "on special situations and exceptions, please follow the links included."
-#~ msgstr ""
-#~ "הדפים האלה מתארים בקווים כללים, את כל מה שאתה צריך לדעת כדי לשחק בקרב על "
-#~ "ווסנות'. הם מכסים את איך לשחק והמנגנונים הבסיסיים מאחורי המשחק, מידע חדש "
-#~ "יתווסף לדפים האלה כאשר תתקל בצדדים חדשים של המשחק. למידע יותר מפורט על "
-#~ "מצבים מיוחדים ודברים יוצאי דופן, אנא עקוב אחרי הקישור המצורף."
 
 #, fuzzy
 #~ msgid ""

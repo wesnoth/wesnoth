@@ -20,7 +20,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth Multiplayer 1.19\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-09-22 04:01 UTC\n"
+"POT-Creation-Date: 2025-10-21 01:10 UTC\n"
 "PO-Revision-Date: 2025-09-14 13:20-0300\n"
 "Last-Translator: Sebastián Lecchini<sebas38760@gmail.com>\n"
 "Language-Team: Wesnoth-spanish\n"
@@ -222,45 +222,62 @@ msgstr "Los bandos $winners están empatados."
 msgid "dialog^Turns Over"
 msgstr "Se han acabado los turnos"
 
-#. [multiplayer_side]: id=Drakes, type=random, description=<img src='portraits/drakes/inferno.webp~BG()' align='middle' float='yes'/><clear/>
+#. [multiplayer_side]: id=Drakes, type=random
 #: data/multiplayer/factions/drakes-aoh.cfg:4
 #: data/multiplayer/factions/drakes-default.cfg:4
 msgid "Drakes"
 msgstr "Dracos"
 
-#. [multiplayer_side]: id=Drakes, type=random, description=<img src='portraits/drakes/inferno.webp~BG()' align='middle' float='yes'/><clear/>
-#: data/multiplayer/factions/drakes-aoh.cfg:12
-#: data/multiplayer/factions/drakes-default.cfg:12
+#. [multiplayer_side]: id=Drakes, type=random
+#: data/multiplayer/factions/drakes-aoh.cfg:13
+#: data/multiplayer/factions/drakes-default.cfg:13
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "The <b>Drakes</b> are a faction of dragon-like <ref dst='.."
+#| "race_drake'>Drakes</ref> and their lizard <ref dst='.."
+#| "race_lizard'>Saurian</ref> allies. Drakes are descendants of dragons, but "
+#| "smaller in size. Saurians are considerably smaller than Drakes and from "
+#| "different ancestry. Together, the Drake faction has high mobility but low "
+#| "defense, leading to unusual tactics for a <ref dst='.."
+#| "era_era_default'>Default Era</ref> faction."
 msgid ""
-"\n"
-"The <b>Drakes</b> are a faction of dragon-like <ref "
-"dst='..race_drake'>Drakes</ref> and their lizard <ref "
-"dst='..race_lizard'>Saurian</ref> allies. Drakes are descendants of dragons, "
-"but smaller in size. Saurians are considerably smaller than Drakes and from "
-"different ancestry. Together, the Drake faction has high mobility but low "
-"defense, leading to unusual tactics for a <ref "
-"dst='..era_era_default'>Default Era</ref> faction."
+"The <b>Drakes</b> are a faction of dragon-like <ref dst='.."
+"race_drake'>Drakes</ref> and their lizard <ref dst='..race_lizard'>Saurian</"
+"ref> allies. Drakes are descendants of dragons, but smaller in size. "
+"Saurians are considerably smaller than Drakes and from different ancestry. "
+"Together, the Drake faction has high mobility but low defense, leading to "
+"unusual tactics for a <ref dst='..era_era_default'>Default Era</ref> faction."
 msgstr ""
 "\n"
-"Los <b>Dracos</b> son una facción de dragones pequeños <ref "
-"dst='..race_drake'>Dracos</ref> y sus aliados reptilianos <ref "
-"dst='..race_lizard'>Saurios</ref>. Los Dracos son descendientes de dragones, "
-"pero de menor tamaño. Los Saurios son considerablemente más pequeños que los "
+"Los <b>Dracos</b> son una facción de dragones pequeños <ref dst='.."
+"race_drake'>Dracos</ref> y sus aliados reptilianos <ref dst='.."
+"race_lizard'>Saurios</ref>. Los Dracos son descendientes de dragones, pero "
+"de menor tamaño. Los Saurios son considerablemente más pequeños que los "
 "Dracos y de distinta ascendencia. En conjunto, la facción Dracos tiene gran "
 "movilidad pero baja defensa, lo que conduce a tácticas inusuales para una "
 "facción de la <ref dst='..era_era_default'>Era Predeterminada</ref>."
 
-#. [multiplayer_side]: id=Dunefolk, type=random, description=<img src='portraits/dunefolk/herbalist.webp~BG()' align='middle' float='yes'/><clear/>
+#. [multiplayer_side]: id=Dunefolk, type=random
 #: data/multiplayer/factions/dunefolk-aoh.cfg:4
 #: data/multiplayer/factions/dunefolk-default.cfg:4
 msgid "Dunefolk"
 msgstr "Barjanes"
 
-#. [multiplayer_side]: id=Dunefolk, type=random, description=<img src='portraits/dunefolk/herbalist.webp~BG()' align='middle' float='yes'/><clear/>
-#: data/multiplayer/factions/dunefolk-aoh.cfg:12
-#: data/multiplayer/factions/dunefolk-default.cfg:12
+#. [multiplayer_side]: id=Dunefolk, type=random
+#: data/multiplayer/factions/dunefolk-aoh.cfg:13
+#: data/multiplayer/factions/dunefolk-default.cfg:13
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "The <b>Dunefolk</b> are a faction of humans from the deserts and hills of "
+#| "the southern lands. The Dunefolk specialize in using terrain features to "
+#| "coordinate attacks at dawn or dusk. Their ranks boast lawful and liminal "
+#| "units, healers, high-accuracy melee fighters, and fearsome horse-mounted "
+#| "archers. While Dunefolk units tend to be more expensive than those of the "
+#| "Loyalist faction, they make up for this with high mobility — especially "
+#| "on hilly terrains."
 msgid ""
-"\n"
 "The <b>Dunefolk</b> are a faction of humans from the deserts and hills of "
 "the southern lands. The Dunefolk specialize in using terrain features to "
 "coordinate attacks at dawn or dusk. Their ranks boast lawful and liminal "
@@ -279,17 +296,27 @@ msgstr ""
 "facción Leal, lo compensan con su gran movilidad — especialmente en terrenos "
 "con colinas."
 
-#. [multiplayer_side]: id=Knalgan Alliance, type=random, description=<img src='portraits/dwarves/ulfserker.webp~BG()' align='middle' float='yes'/><clear/>
+#. [multiplayer_side]: id=Knalgan Alliance, type=random
 #: data/multiplayer/factions/knalgans-aoh.cfg:4
 #: data/multiplayer/factions/knalgans-default.cfg:4
 msgid "Knalgan Alliance"
 msgstr "Alianza de Knalga"
 
-#. [multiplayer_side]: id=Knalgan Alliance, type=random, description=<img src='portraits/dwarves/ulfserker.webp~BG()' align='middle' float='yes'/><clear/>
-#: data/multiplayer/factions/knalgans-aoh.cfg:11
-#: data/multiplayer/factions/knalgans-default.cfg:11
+#. [multiplayer_side]: id=Knalgan Alliance, type=random
+#: data/multiplayer/factions/knalgans-aoh.cfg:12
+#: data/multiplayer/factions/knalgans-default.cfg:12
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "The <b>Knalgan Alliance</b> is a faction of <ref dst='.."
+#| "race_dwarf'>Dwarves</ref> and their outlaw <ref dst='..race_human'>Human</"
+#| "ref> allies. Dwarves are an old race who live underground and have tough, "
+#| "but short, warriors. The outlaws are humans who are not socially "
+#| "acceptable among others of their race, but have become allies of the "
+#| "dwarves due to common enemies. This leads to a combination of tough and "
+#| "defensive dwarves who are only good on certain terrain and humans who can "
+#| "cover ground that dwarves are not good at fighting in."
 msgid ""
-"\n"
 "The <b>Knalgan Alliance</b> is a faction of <ref dst='..race_dwarf'>Dwarves</"
 "ref> and their outlaw <ref dst='..race_human'>Human</ref> allies. Dwarves "
 "are an old race who live underground and have tough, but short, warriors. "
@@ -300,27 +327,34 @@ msgid ""
 "fighting in."
 msgstr ""
 "\n"
-"La <b>Alianza de Knalga</b> es una facción de <ref "
-"dst='..race_dwarf'>Enanos</ref> y de sus aliados <ref "
-"dst='..race_human'>Humanos</ref> fuera de la ley. Los enanos son una antigua "
-"raza que vive bajo tierra y que tiene duros guerreros de pequeño tamaño. Los "
-"forajidos son humanos que no resultan aceptables socialmente entre otros de "
-"su raza, pero que han llegado a hacerse aliados de los enanos debido a sus "
-"enemigos en común. Esto conduce a una combinación de duros enanos con "
-"fuertes defensas que solo son buenos en terrenos concretos y de humanos que "
-"pueden cubrir el terreno en el que los enanos no luchan bien."
+"La <b>Alianza de Knalga</b> es una facción de <ref dst='.."
+"race_dwarf'>Enanos</ref> y de sus aliados <ref dst='..race_human'>Humanos</"
+"ref> fuera de la ley. Los enanos son una antigua raza que vive bajo tierra y "
+"que tiene duros guerreros de pequeño tamaño. Los forajidos son humanos que "
+"no resultan aceptables socialmente entre otros de su raza, pero que han "
+"llegado a hacerse aliados de los enanos debido a sus enemigos en común. Esto "
+"conduce a una combinación de duros enanos con fuertes defensas que solo son "
+"buenos en terrenos concretos y de humanos que pueden cubrir el terreno en el "
+"que los enanos no luchan bien."
 
-#. [multiplayer_side]: id=Loyalists, type=random, description=<img src='portraits/humans/grand-knight.webp~BG()' align='middle' float='yes'/><clear/>
+#. [multiplayer_side]: id=Loyalists, type=random
 #: data/multiplayer/factions/loyalists-aoh.cfg:4
 #: data/multiplayer/factions/loyalists-default.cfg:4
 msgid "Loyalists"
 msgstr "Leales"
 
-#. [multiplayer_side]: id=Loyalists, type=random, description=<img src='portraits/humans/grand-knight.webp~BG()' align='middle' float='yes'/><clear/>
-#: data/multiplayer/factions/loyalists-aoh.cfg:12
-#: data/multiplayer/factions/loyalists-default.cfg:12
+#. [multiplayer_side]: id=Loyalists, type=random
+#: data/multiplayer/factions/loyalists-aoh.cfg:13
+#: data/multiplayer/factions/loyalists-default.cfg:13
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "The <b>Loyalists</b> are a faction of <ref dst='..race_human'>Humans</"
+#| "ref> who are loyal to the throne of Wesnoth. Humans are a versatile race "
+#| "who specialize in many different areas. Similarly, the Loyalist faction "
+#| "is a very versatile melee-oriented faction with important ranged support "
+#| "from bowmen and mages."
 msgid ""
-"\n"
 "The <b>Loyalists</b> are a faction of <ref dst='..race_human'>Humans</ref> "
 "who are loyal to the throne of Wesnoth. Humans are a versatile race who "
 "specialize in many different areas. Similarly, the Loyalist faction is a "
@@ -334,24 +368,33 @@ msgstr ""
 "una facción muy versátil orientada al cuerpo a cuerpo con un importante "
 "soporte a distancia por parte de arqueros y magos."
 
-#. [multiplayer_side]: id=Northerners, type=random, description=<img src='portraits/orcs/warlord.webp~BG()' align='middle' float='yes'/><clear/>
+#. [multiplayer_side]: id=Northerners, type=random
 #: data/multiplayer/factions/northerners-aoh.cfg:4
 #: data/multiplayer/factions/northerners-default.cfg:4
 msgid "Northerners"
 msgstr "Norteños"
 
-#. [multiplayer_side]: id=Northerners, type=random, description=<img src='portraits/orcs/warlord.webp~BG()' align='middle' float='yes'/><clear/>
-#: data/multiplayer/factions/northerners-aoh.cfg:12
-#: data/multiplayer/factions/northerners-default.cfg:11
+#. [multiplayer_side]: id=Northerners, type=random
+#: data/multiplayer/factions/northerners-aoh.cfg:13
+#: data/multiplayer/factions/northerners-default.cfg:12
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "The <b>Northerners</b> are a faction of <ref dst='..race_orc'>Orcs</ref> "
+#| "and their allies who live in the north of the Great Continent, thus their "
+#| "name. Northerners consist of the warrior orcs race, the enslaved <ref "
+#| "dst='..race_goblin'>goblins</ref>, <ref dst='..race_troll'>trolls</ref> "
+#| "who are tricked into combat by the orcs, and the serpentine <ref dst='.."
+#| "race_naga'>naga</ref>. The Northerners play best by taking advantage of "
+#| "having many low-cost and high HP soldiers."
 msgid ""
-"\n"
 "The <b>Northerners</b> are a faction of <ref dst='..race_orc'>Orcs</ref> and "
 "their allies who live in the north of the Great Continent, thus their name. "
-"Northerners consist of the warrior orcs race, the enslaved <ref "
-"dst='..race_goblin'>goblins</ref>, <ref dst='..race_troll'>trolls</ref> who "
-"are tricked into combat by the orcs, and the serpentine <ref "
-"dst='..race_naga'>naga</ref>. The Northerners play best by taking advantage "
-"of having many low-cost and high HP soldiers."
+"Northerners consist of the warrior orcs race, the enslaved <ref dst='.."
+"race_goblin'>goblins</ref>, <ref dst='..race_troll'>trolls</ref> who are "
+"tricked into combat by the orcs, and the serpentine <ref dst='.."
+"race_naga'>naga</ref>. The Northerners play best by taking advantage of "
+"having many low-cost and high HP soldiers."
 msgstr ""
 "\n"
 "Los <b>Norteños</b> son una facción de <ref>text='Orcos' dst='..race_orc'</"
@@ -362,17 +405,30 @@ msgstr ""
 "las <ref>dst='..race_naga'>nagas</ref>. Los Norteños juegan mejor "
 "aprovechando el bajo coste y los PV altos de sus unidades."
 
-#. [multiplayer_side]: id=Rebels, type=random, description=<img src='portraits/elves/druid.webp~BG()' align='middle' float='yes'/><clear/>
+#. [multiplayer_side]: id=Rebels, type=random
 #: data/multiplayer/factions/rebels-aoh.cfg:4
 #: data/multiplayer/factions/rebels-default.cfg:4
 msgid "Rebels"
 msgstr "Rebeldes"
 
-#. [multiplayer_side]: id=Rebels, type=random, description=<img src='portraits/elves/druid.webp~BG()' align='middle' float='yes'/><clear/>
-#: data/multiplayer/factions/rebels-aoh.cfg:12
-#: data/multiplayer/factions/rebels-default.cfg:12
+#. [multiplayer_side]: id=Rebels, type=random
+#: data/multiplayer/factions/rebels-aoh.cfg:13
+#: data/multiplayer/factions/rebels-default.cfg:13
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "The <b>Rebels</b> are a faction of <ref dst='..race_elf'>Elves</ref> and "
+#| "their various forest-dwelling allies. They get their human name, Rebels, "
+#| "from the time of Heir to the Throne, when they started the rebellion "
+#| "against the evil Queen Asheviere. Elves are a magical race that are "
+#| "masters of the bow and are capable of living many years longer than "
+#| "humans. In harmony with nature, the elves find allies with the <ref "
+#| "dst='..race_human'>human</ref> mages, certain <ref dst='.."
+#| "race_merman'>merfolk</ref>, and tree creatures called <ref dst='.."
+#| "race_wose'>Woses</ref>. Rebels are best played taking advantage of their "
+#| "high forest defense, mastery of ranged attacks, and the elves’ neutral "
+#| "alignment."
 msgid ""
-"\n"
 "The <b>Rebels</b> are a faction of <ref dst='..race_elf'>Elves</ref> and "
 "their various forest-dwelling allies. They get their human name, Rebels, "
 "from the time of Heir to the Throne, when they started the rebellion against "
@@ -391,23 +447,33 @@ msgstr ""
 "contra la malvada reina Asheviere. Los Elfos son una raza mágica de gran "
 "maestría con el arco y capaces de vivir muchos más años que los humanos. En "
 "armonía con la naturaleza, los elfos encuentran aliados entre los magos <ref "
-"dst='..race_human'>humanos</ref>, ciertos <ref "
-"dst='..race_merman'>sirénidos</ref>, y criaturas arbóreas llamadas <ref "
-"dst='..race_wose'>Woses</ref>. Los Rebeldes se juegan mejor tomando ventaja "
-"de su gran defensa en los bosques, maestría en los ataques a distancia y del "
+"dst='..race_human'>humanos</ref>, ciertos <ref dst='.."
+"race_merman'>sirénidos</ref>, y criaturas arbóreas llamadas <ref dst='.."
+"race_wose'>Woses</ref>. Los Rebeldes se juegan mejor tomando ventaja de su "
+"gran defensa en los bosques, maestría en los ataques a distancia y del "
 "alineamiento neutral de los elfos."
 
-#. [multiplayer_side]: id=Undead, type=random, description=<img src='portraits/undead/spectre.webp~BG()' align='middle' float='yes'/><clear/>
+#. [multiplayer_side]: id=Undead, type=random
 #: data/multiplayer/factions/undead-aoh.cfg:4
 #: data/multiplayer/factions/undead-default.cfg:4
 msgid "Undead"
 msgstr "No muertos"
 
-#. [multiplayer_side]: id=Undead, type=random, description=<img src='portraits/undead/spectre.webp~BG()' align='middle' float='yes'/><clear/>
-#: data/multiplayer/factions/undead-aoh.cfg:12
-#: data/multiplayer/factions/undead-default.cfg:12
+#. [multiplayer_side]: id=Undead, type=random
+#: data/multiplayer/factions/undead-aoh.cfg:13
+#: data/multiplayer/factions/undead-default.cfg:13
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "The <b>Undead</b> are a faction of <ref dst='..race_undead'>undead</ref> "
+#| "creatures and <ref dst='..race_human'>human</ref> practitioners of dark "
+#| "arts that usually accompany them. Often, these “Dark Adepts” are the "
+#| "units that do the most damage for the faction, but they have a major "
+#| "vulnerability — their practicing of this forbidden, evil magic has "
+#| "consumed all their energy and so they have no melee attack at all. The "
+#| "Undead are a very aggressive faction and the most powerful <ref dst='.."
+#| "era_era_default'>Default Era</ref> faction at nighttime."
 msgid ""
-"\n"
 "The <b>Undead</b> are a faction of <ref dst='..race_undead'>undead</ref> "
 "creatures and <ref dst='..race_human'>human</ref> practitioners of dark arts "
 "that usually accompany them. Often, these “Dark Adepts” are the units that "
@@ -418,15 +484,15 @@ msgid ""
 "faction at nighttime."
 msgstr ""
 "\n"
-"Los <b>No Muertos</b> son una facción de criaturas <ref "
-"dst='..race_undead'>no muertas</ref> y de <ref dst='..race_human'>humanos</"
-"ref> practicantes de las artes oscuras que suelen acompañarlos. A menudo, "
-"estos Adeptos Oscuros son las unidades que hacen el mayor daño de la "
-"facción, pero son más vulnerables — la práctica de esta malvada magia "
-"prohibida ha consumido toda su energía y no pueden realizar ningún tipo de "
-"ataque cuerpo a cuerpo. Los No Muertos son una facción muy agresiva y la "
-"facción más poderosa de la <ref dst='..era_era_default'>Era Predeterminada</"
-"ref> durante la noche."
+"Los <b>No Muertos</b> son una facción de criaturas <ref dst='.."
+"race_undead'>no muertas</ref> y de <ref dst='..race_human'>humanos</ref> "
+"practicantes de las artes oscuras que suelen acompañarlos. A menudo, estos "
+"Adeptos Oscuros son las unidades que hacen el mayor daño de la facción, pero "
+"son más vulnerables — la práctica de esta malvada magia prohibida ha "
+"consumido toda su energía y no pueden realizar ningún tipo de ataque cuerpo "
+"a cuerpo. Los No Muertos son una facción muy agresiva y la facción más "
+"poderosa de la <ref dst='..era_era_default'>Era Predeterminada</ref> durante "
+"la noche."
 
 # Sustituír aethermaw
 # Darkmage: Yo propongo algo por el estilo de "entrañas del éter"; quizá «entérañas» (mezclando ambas palabras)
@@ -1374,8 +1440,8 @@ msgstr ""
 #. [message]: speaker=second_unit
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:216
 msgid ""
-"Cheers of your enemy are the last thing you hear as you slip into "
-"death...their joy fills your last moments with pure hate."
+"Cheers of your enemy are the last thing you hear as you slip into death..."
+"their joy fills your last moments with pure hate."
 msgstr ""
 "Vítores de tu enemigo es la última cosa que escuchas mientras te deslizas "
 "hacia la muerte... su alegría llena tus últimos momentos con puro odio."
@@ -1929,8 +1995,13 @@ msgstr "Estatua de Sulla"
 
 #. [unit]: gender=female
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:101
+#, fuzzy
+#| msgid ""
+#| "A stone-carved likeness of Sulla the Great, also known as Sulla the Just, "
+#| "Sulla the Tyrant, Empress of the Sinking Tower, Lady of the Walking "
+#| "Glacier, Sulla the Incinerator, Sulla the Proud and Sulla the Righteous."
 msgid ""
-"A stone-carved likeness of Sulla the Great, also known as Sulla the Just, "
+"A stone-carved likeness of Aether Mage Sulla, also known as Sulla the Just, "
 "Sulla the Tyrant, Empress of the Sinking Tower, Lady of the Walking Glacier, "
 "Sulla the Incinerator, Sulla the Proud and Sulla the Righteous."
 msgstr ""

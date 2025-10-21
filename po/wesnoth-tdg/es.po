@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-09-22 04:01 UTC\n"
+"POT-Creation-Date: 2025-10-21 01:10 UTC\n"
 "PO-Revision-Date: 2025-09-23 10:53-0300\n"
 "Last-Translator: Sebastián Lecchini <sebas38760@gmail.com>\n"
 "Language-Team: es\n"
@@ -16,9 +16,11 @@ msgstr ""
 #. [editor_group]: id=the_deceivers_gambit
 #. [campaign]: id=The Deceivers Gambit 1
 #. [achievement_group]
+#. [part]
 #: data/campaigns/The_Deceivers_Gambit/_main.cfg:50
 #: data/campaigns/The_Deceivers_Gambit/_main.cfg:134
 #: data/campaigns/The_Deceivers_Gambit/achievements.cfg:18
+#: data/campaigns/The_Deceivers_Gambit/scenarios/01_Stirrings_of_War.cfg:22
 msgid "The Deceiver’s Gambit"
 msgstr "El Gambito del Engañador"
 
@@ -301,43 +303,63 @@ msgstr ""
 msgid "Scenario 14: Armchair General"
 msgstr "Escenario 14: General de Sillón"
 
-#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:17
+#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:7
+#, fuzzy
+#| msgid "Attack"
+msgid "Attack:"
+msgstr "Atacar"
+
+#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:8
+msgid "Spell:"
+msgstr ""
+
+#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:9
+msgid "Passive:"
+msgstr ""
+
+#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:20
 msgid "Magic Missile"
 msgstr "Misil Mágico"
 
-#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:19
-msgid ""
-"<span color='#ad6a61'><i><b>Attack:</b></i></span> Ranged 7x3 fire, "
-"<i>magical</i>."
+#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:22
+msgid "Ranged 7x3 fire, <i><ref dst='weaponspecial_magical'>magical</ref></i>."
 msgstr ""
-"<span color='#ad6a61'><i><b>Ataque:</b></i></span> A distancia 7x3 fuego, "
-"<i>mágico</i>."
 
-#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:26
+#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:29
 msgid "Shield"
 msgstr "Escudo"
 
-#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:28
+#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:31
+#, fuzzy
+#| msgid ""
+#| "<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span "
+#| "color='#00bbe6'><i>8xp</i></span> to gain <i>+20% dodge chance</i> until "
+#| "the start of your next turn or until cancelled."
 msgid ""
-"<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span "
-"color='#00bbe6'><i>8xp</i></span> to gain <i>+20% dodge chance</i> until the "
-"start of your next turn or until cancelled."
+"Spend <span color='#00bbe6' style='italic'>8xp</span> to gain <i>+20% dodge "
+"chance</i> until the start of your next turn or until cancelled."
 msgstr ""
 "<span color='#6ca364'><i><b>Hechizo:</b></i></span> Gasta <span "
 "color='#00bbe6'><i>8xp</i></span> para obtener <i>+20% de probabilidad de "
 "esquivar</i> hasta el inicio de tu próximo turno o hasta que se cancele."
 
-#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:46
+#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:39
 msgid "Panacea"
 msgstr "Panacea"
 
-#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:48
+#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:41
+#, fuzzy
+#| msgid ""
+#| "<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span "
+#| "color='#00bbe6'><i>8xp</i></span> to fully heal the lowest-health "
+#| "adjacent living ally, and increase its\n"
+#| "           attacks, strikes, and damage by its level. <span "
+#| "color='#dd0000'><b>Next turn, it dies.</b></span>"
 msgid ""
-"<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span "
-"color='#00bbe6'><i>8xp</i></span> to fully heal the lowest-health adjacent "
-"living ally, and increase its\n"
-"           attacks, strikes, and damage by its level. <span "
-"color='#dd0000'><b>Next turn, it dies.</b></span>"
+"Spend <span color='#00bbe6' style='italic'>8xp</span> to fully heal the "
+"lowest-health adjacent human ally, and increase its\n"
+"          attacks, strikes, and damage by its level. <span color='#dd0000' "
+"weight='bold'>Next turn, it dies.</span>"
 msgstr ""
 "<span color='#6ca364'><i><b>Hechizo:</b></i></span> Gasta <span "
 "color='#00bbe6'><i>8xp</i></span> para curar completamente al aliado vivo "
@@ -345,14 +367,19 @@ msgstr ""
 "ataques, golpes y daño según su nivel. <span color='#dd0000'><b>Al siguiente "
 "turno, muere.</b></span>"
 
-#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:56
+#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:49
 msgid "Animate Mud"
 msgstr "Animar Lodo"
 
-#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:58
+#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:51
+#, fuzzy
+#| msgid ""
+#| "<span color='#a9a150'><i><b>Passive:</b></i></span> Learn to recruit "
+#| "<i>Mudcrawlers</i>. Mudcrawlers gain +100% damage and XP\n"
+#| "               while adjacent to you, but dissolve at the end of each "
+#| "scenario."
 msgid ""
-"<span color='#a9a150'><i><b>Passive:</b></i></span> Learn to recruit "
-"<i>Mudcrawlers</i>. Mudcrawlers gain +100% damage and XP\n"
+"Learn to recruit <i>Mudcrawlers</i>. Mudcrawlers gain +100% damage and xp\n"
 "               while adjacent to you, but dissolve at the end of each "
 "scenario."
 msgstr ""
@@ -361,42 +388,50 @@ msgstr ""
 "XP\n"
 "mientras estén adyacentes a ti, pero se disuelven al final de cada escenario."
 
-#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:70
+#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:63
 msgid "Chill Touch"
 msgstr "Toque Gélido"
 
-#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:72
+#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:65
 msgid ""
-"<span color='#ad6a61'><i><b>Attack:</b></i></span> Melee 6x3 cold, <i>slows</"
-"i>. Replaces your default melee attack."
+"Melee 6x3 cold, <i><ref dst='weaponspecial_slows'>slows</ref></i>. Replaces "
+"your default melee attack."
 msgstr ""
-"<span color='#ad6a61'><i><b>Ataque:</b></i></span> Cuerpo a cuerpo 6x3 frío, "
-"<i>ralentiza</i>. Reemplaza tu ataque cuerpo a cuerpo por defecto."
 
-#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:79
+#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:72
 msgid "Levitate"
 msgstr "Levitar"
 
-#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:81
+#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:74
+#, fuzzy
+#| msgid ""
+#| "<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span "
+#| "color='#00bbe6'><i>8xp</i></span> to gain <i>flight</i> and the "
+#| "<i>skirmisher</i> ability until the start of your next turn or until "
+#| "cancelled."
 msgid ""
-"<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span "
-"color='#00bbe6'><i>8xp</i></span> to gain <i>flight</i> and the "
-"<i>skirmisher</i> ability until the start of your next turn or until "
-"cancelled."
+"Spend <span color='#00bbe6' style='italic'>8xp</span> to gain <i>flight</i> "
+"and the <i><ref dst='ability_skirmisherskirmisher'>skirmisher</ref></i> "
+"ability until the start of your next turn or until cancelled."
 msgstr ""
 "<span color='#6ca364'><i><b>Hechizo:</b></i></span> Gasta <span "
 "color='#00bbe6'><i>8xp</i></span> para obtener <i>vuelo</i> y la habilidad "
 "<i>guerrillero</i> hasta el inicio de tu próximo turno o hasta que se "
 "cancele."
 
-#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:89
+#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:82
 msgid "Find Familiar"
 msgstr "Invocar Familiar"
 
-#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:91
+#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:84
+#, fuzzy
+#| msgid ""
+#| "<span color='#a9a150'><i><b>Passive:</b></i></span> Begin each scenario "
+#| "with your trusty pet raven.\n"
+#| "               Your familiar’s level and xp persist across scenarios, but "
+#| "reset if it dies."
 msgid ""
-"<span color='#a9a150'><i><b>Passive:</b></i></span> Begin each scenario with "
-"your trusty pet raven.\n"
+"Begin each scenario with your trusty pet raven.\n"
 "               Your familiar’s level and xp persist across scenarios, but "
 "reset if it dies."
 msgstr ""
@@ -405,69 +440,76 @@ msgstr ""
 "               El nivel y la experiencia de tu familiar persisten entre "
 "escenarios, pero se reinician si muere."
 
-#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:98
+#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:91
 msgid "Mnemonic"
 msgstr "Mnemónico"
 
-#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:100
-msgid ""
-"<span color='#a9a150'><i><b>Passive:</b></i></span> Whenever an adjacent "
-"ally gains xp, you gain the same amount of xp."
+#. [dummy]
+#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:93
+#: data/campaigns/The_Deceivers_Gambit/utils/spellcasting.cfg:645
+msgid "Whenever an adjacent ally gains xp, you gain the same amount of xp."
 msgstr ""
-"<span color='#a9a150'><i><b>Pasivo:</b></i></span> Siempre que un aliado "
-"adyacente gane experiencia, tú ganas la misma cantidad de experiencia."
+"Cada vez que un aliado adyacente gana experiencia, tú ganas la misma "
+"cantidad de experiencia."
 
-#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:112
-#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:178
-#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:229
+#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:105
+#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:171
+#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:222
 msgid "Fireball"
 msgstr "Bola de Fuego"
 
-#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:114
-msgid ""
-"<span color='#ad6a61'><i><b>Attack:</b></i></span> Ranged 8x4 fire, "
-"<i>magical</i>."
+#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:107
+msgid "Ranged 8x4 fire, <i><ref dst='weaponspecial_magical'>magical</ref></i>."
 msgstr ""
-"<span color='#ad6a61'><i><b>Ataque:</b></i></span> A distancia 8x4 fuego, "
-"<i>mágico</i>."
 
-#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:121
+#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:114
 msgid "Siphon"
 msgstr "Sifón"
 
-#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:123
+#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:116
 msgid ""
-"<span color='#ad6a61'><i><b>Attack:</b></i></span> Ranged 8x4 arcane, "
-"<i>magical</i>, <i>drains</i>."
+"Ranged 8x4 arcane, <i><ref dst='weaponspecial_magical'>magical</ref></i> and "
+"<i><ref dst='weaponspecial_drains'>drains</ref></i>."
 msgstr ""
-"<span color='#ad6a61'><i><b>Ataque:</b></i></span> A distancia 8x4 arcano, "
-"<i>mágico</i>, <i>drena</i>."
 
-#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:130
+#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:123
 msgid "Blizzard"
 msgstr "Tormenta de Nieve"
 
-#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:132
+#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:125
+#, fuzzy
+#| msgid ""
+#| "<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span "
+#| "color='#00bbe6'><i>16xp</i></span> and <span color='#c06a61'><i>your "
+#| "attack</i></span> to slow enemy units and freeze terrain in a 3-hex "
+#| "radius."
 msgid ""
-"<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span "
-"color='#00bbe6'><i>16xp</i></span> and <span color='#c06a61'><i>your attack</"
-"i></span> to slow enemy units and freeze terrain in a 3-hex radius."
+"Spend <span color='#00bbe6' style='italic'>16xp</span> and <span "
+"color='#c06a61' style='italic'>your attack</span> to <i><ref "
+"dst='weaponspecial_slows'>slow</ref></i> enemy units and freeze terrain in a "
+"3-hex radius."
 msgstr ""
 "<span color='#6ca364'><i><b>Hechizo:</b></i></span> Gasta <span "
 "color='#00bbe6'><i>16xp</i></span> y <span color='#c06a61'><i>tu ataque</i></"
 "span> para ralentizar unidades enemigas y congelar el terreno en un radio de "
 "3 hexágonos."
 
-#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:140
+#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:133
 msgid "Counterspell"
 msgstr "Contrahechizo"
 
-#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:142
+#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:135
+#, fuzzy
+#| msgid ""
+#| "<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span "
+#| "color='#00bbe6'><i>16xp</i></span> to <i>disallow magical attacks</i> in "
+#| "a 3-hex radius, until cancelled.\n"
+#| "           Disables Delfador’s spells, but not his passive skills."
 msgid ""
-"<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span "
-"color='#00bbe6'><i>16xp</i></span> to <i>disallow magical attacks</i> in a 3-"
-"hex radius, until cancelled.\n"
-"           Disables Delfador’s spells, but not his passive skills."
+"Spend <span color='#00bbe6' style='italic'>16xp</span> to <i>disallow <ref "
+"dst='weaponspecial_magical'>magical</ref> attacks</i> in a 3-hex radius, "
+"until cancelled.\n"
+"          Disables Delfador’s spells, but not his passive skills."
 msgstr ""
 "<span color='#6ca364'><i><b>Hechizo:</b></i></span> Gasta <span "
 "color='#00bbe6'><i>16xp</i></span> para <i>prohibir ataques mágicos</i> en "
@@ -475,18 +517,26 @@ msgstr ""
 "           Desactiva los hechizos de Delfador, pero no sus habilidades "
 "pasivas."
 
-#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:150
+#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:143
 msgid "Polymorph"
 msgstr "Polimorfia"
 
-#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:152
+#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:145
+#, fuzzy
+#| msgid ""
+#| "<span color='#6ca364'><i><b>Spell:</b></i></span> Transform into a stoat "
+#| "(<span color='#00bbe6'><i>1xp</i></span>), bear (<span "
+#| "color='#00bbe6'><i>8xp</i></span>), crab (<span color='#00bbe6'><i>16xp</"
+#| "i></span>), or roc (<span color='#00bbe6'><i>32xp</i></span>). Lasts "
+#| "until cancelled.\n"
+#| "            Replaces Delfador’s attacks, spells, and passives, but does "
+#| "not affect hitpoints."
 msgid ""
-"<span color='#6ca364'><i><b>Spell:</b></i></span> Transform into a stoat "
-"(<span color='#00bbe6'><i>1xp</i></span>), bear (<span "
-"color='#00bbe6'><i>8xp</i></span>), crab (<span color='#00bbe6'><i>16xp</i></"
-"span>), or roc (<span color='#00bbe6'><i>32xp</i></span>). Lasts until "
-"cancelled.\n"
-"            Replaces Delfador’s attacks, spells, and passives, but does not "
+"Transform into a stoat (<span color='#00bbe6' style='italic'>1xp</span>), "
+"bear (<span color='#00bbe6' style='italic'>8xp</span>), crab (<span "
+"color='#00bbe6' style='italic'>16xp</span>), or roc (<span color='#00bbe6' "
+"style='italic'>32xp</span>). Lasts until cancelled.\n"
+"           Replaces Delfador’s attacks, spells, and passives, but does not "
 "affect hitpoints."
 msgstr ""
 "<span color='#6ca364'><i><b>Hechizo:</b></i></span> Transfórmate en una "
@@ -497,48 +547,48 @@ msgstr ""
 "            Sustituye los ataques, hechizos y pasivos de Delfador, pero no "
 "afecta los puntos de vida."
 
-#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:164
+#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:157
 msgid "Glamour"
 msgstr "Glamour"
 
-#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:166
+#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:159
 msgid ""
-"<span color='#a9a150'><i><b>Passive:</b></i></span> Gain the <i>leadership</"
-"i> ability."
+"Gain the <i><ref dst='ability_leadershipleadership'>leadership</ref></i> "
+"ability."
 msgstr ""
-"<span color='#a9a150'><i><b>Pasivo:</b></i></span> Obtén la habilidad "
-"<i>liderazgo</i>."
+
+#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:173
+msgid ""
+"Ranged 12x4 fire, <i><ref dst='weaponspecial_magical'>magical</ref></i>."
+msgstr ""
 
 #: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:180
-msgid ""
-"<span color='#ad6a61'><i><b>Attack:</b></i></span> Ranged 12x4 fire, "
-"<i>magical</i>."
-msgstr ""
-"<span color='#ad6a61'><i><b>Ataque:</b></i></span> A distancia 12x4 fuego, "
-"<i>mágico</i>."
-
-#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:187
 msgid "Dancing Daggers"
 msgstr "Dagas Bailarinas"
 
-#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:189
+#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:182
 msgid ""
-"<span color='#ad6a61'><i><b>Attack:</b></i></span> Ranged 5x8 blade, "
-"<i>backstab</i>."
+"Ranged 5x8 blade, <i><ref dst='weaponspecial_backstab'>backstab</ref></i>"
 msgstr ""
-"<span color='#ad6a61'><i><b>Ataque:</b></i></span> A distancia 5x8 hoja, "
-"<i>puñalada por la espalda</i>."
 
-#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:196
+#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:189
 msgid "Enthrall"
 msgstr "Fascinar"
 
-#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:198
+#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:191
+#, fuzzy
+#| msgid ""
+#| "<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span "
+#| "color='#00bbe6'><i>48xp</i></span> and <span color='#c06a61'><i>your "
+#| "attack</i></span> to magically disguise yourself as an awe-inspiring "
+#| "drake,\n"
+#| "           reducing accuracy and dodge by 10% for enemies in a 2 hex "
+#| "radius. Lasts until cancelled."
 msgid ""
-"<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span "
-"color='#00bbe6'><i>48xp</i></span> and <span color='#c06a61'><i>your attack</"
-"i></span> to magically disguise yourself as an awe-inspiring drake,\n"
-"           reducing accuracy and dodge by 10% for enemies in a 2 hex radius. "
+"Spend <span color='#00bbe6' style='italic'>48xp</span> and <span "
+"color='#c06a61' style='italic'>your attack</span> to magically disguise "
+"yourself as an awe-inspiring drake,\n"
+"          reducing accuracy and dodge by 10% for enemies in a 2 hex radius. "
 "Lasts until cancelled."
 msgstr ""
 "<span color='#6ca364'><i><b>Hechizo:</b></i></span> Gasta <span "
@@ -547,14 +597,20 @@ msgstr ""
 "           reduciendo la precisión y la evasión en un 10% para enemigos en "
 "un radio de 2 hexágonos. Dura hasta que se cancele."
 
-#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:206
+#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:199
 msgid "Animate Fire"
 msgstr "Animar Fuego"
 
-#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:208
+#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:201
+#, fuzzy
+#| msgid ""
+#| "<span color='#a9a150'><i><b>Passive:</b></i></span> Learn to recruit "
+#| "<i>Fire Guardians</i>. Fire Guardians gain +100% damage and XP\n"
+#| "               while adjacent to you, but dissipate at the end of each "
+#| "scenario."
 msgid ""
-"<span color='#a9a150'><i><b>Passive:</b></i></span> Learn to recruit <i>Fire "
-"Guardians</i>. Fire Guardians gain +100% damage and XP\n"
+"Learn to recruit <i>Fire Guardians</i>. Fire Guardians gain +100% damage and "
+"xp\n"
 "               while adjacent to you, but dissipate at the end of each "
 "scenario."
 msgstr ""
@@ -564,49 +620,63 @@ msgstr ""
 "               mientras estén adyacentes a ti, pero se disipan al final de "
 "cada escenario."
 
-#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:215
+#. [floating_text]
+#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:208
+#: data/campaigns/The_Deceivers_Gambit/scenarios/00_Graduation.cfg:395
+#: data/campaigns/The_Deceivers_Gambit/utils/spellcasting.cfg:1782
 msgid "Contingency"
 msgstr "Contingencia"
 
-#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:217
+#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:210
+#, fuzzy
+#| msgid ""
+#| "<span color='#a9a150'><i><b>Passive:</b></i></span> Whenever one of your "
+#| "human soldiers dies, they are instead returned safely to your recall list."
 msgid ""
-"<span color='#a9a150'><i><b>Passive:</b></i></span> Whenever one of your "
-"human soldiers dies, they are instead returned safely to your recall list."
+"Whenever one of your human soldiers dies, they are instead returned safely "
+"to your recall list."
 msgstr ""
 "<span color='#a9a150'><i><b>Pasivo:</b></i></span> Siempre que uno de tus "
 "soldados humanos muere, en su lugar es devuelto de forma segura a tu lista "
 "de reclutamiento."
 
-#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:231
+#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:224
 msgid ""
-"<span color='#ad6a61'><i><b>Attack:</b></i></span> Ranged 18x4 fire, "
-"<i>magical</i>."
+"Ranged 18x4 fire, <i><ref dst='weaponspecial_magical'>magical</ref></i>."
 msgstr ""
-"<span color='#ad6a61'><i><b>Ataque:</b></i></span> A distancia 18x4 fuego, "
-"<i>mágico</i>."
 
-#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:238
+#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:231
 msgid "Chain Lightning"
 msgstr "Rayo en cadena"
 
-#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:240
+#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:233
+#, fuzzy
+#| msgid ""
+#| "<span color='#ad6a61'><i><b>Attack:</b></i></span> Ranged 14x4 fire, "
+#| "<i>magical</i>. If this attack kills an enemy, you may attack again."
 msgid ""
-"<span color='#ad6a61'><i><b>Attack:</b></i></span> Ranged 14x4 fire, "
-"<i>magical</i>. If this attack kills an enemy, you may attack again."
+"Ranged 14x4 fire, <i><ref dst='weaponspecial_magical'>magical</ref></i>. If "
+"this attack kills an enemy, you may attack again."
 msgstr ""
 "<span color='#ad6a61'><i><b>Ataque:</b></i></span> A distancia 14x4 fuego, "
 "<i>mágico</i>. Si este ataque mata a un enemigo, puedes atacar de nuevo."
 
-#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:247
+#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:240
 msgid "Time Dilation"
 msgstr "Dilatación temporal"
 
-#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:249
+#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:242
+#, fuzzy
+#| msgid ""
+#| "<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span "
+#| "color='#00bbe6'><i>48xp</i></span> to grant yourself and all allies "
+#| "double movement and a second attack this turn.\n"
+#| "           When this turn ends, affected units become slowed."
 msgid ""
-"<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span "
-"color='#00bbe6'><i>48xp</i></span> to grant yourself and all allies double "
-"movement and a second attack this turn.\n"
-"           When this turn ends, affected units become slowed."
+"Spend <span color='#00bbe6' style='italic'>48xp</span> to grant yourself and "
+"all allies double movement and a second attack this turn.\n"
+"          When this turn ends, affected units become <ref "
+"dst='weaponspecial_slows'>slowed</ref>."
 msgstr ""
 "<span color='#6ca364'><i><b>Hechizo:</b></i></span> Gasta <span "
 "color='#00bbe6'><i>48xp</i></span> para otorgarte a ti y a todos los aliados "
@@ -614,16 +684,23 @@ msgstr ""
 "           Al final de este turno, las unidades afectadas quedarán "
 "ralentizadas."
 
-#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:257
+#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:250
 msgid "Cataclysm"
 msgstr "Cataclismo"
 
-#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:259
+#: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:252
+#, fuzzy
+#| msgid ""
+#| "<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span "
+#| "color='#00bbe6'><i>99xp</i></span> and <span color='#c06a61'><i>your "
+#| "attack</i></span> to injure everyone in a 5-hex radius for ~75% of their\n"
+#| "           current HP. Dries water, melts snow, burns forest, and levels "
+#| "castles/villages."
 msgid ""
-"<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span "
-"color='#00bbe6'><i>99xp</i></span> and <span color='#c06a61'><i>your attack</"
-"i></span> to injure everyone in a 5-hex radius for ~75% of their\n"
-"           current HP. Dries water, melts snow, burns forest, and levels "
+"Spend <span color='#00bbe6' style='italic'>99xp</span> and <span "
+"color='#c06a61' style='italic'>your attack</span> to injure everyone in a 5-"
+"hex radius for ~75% of their\n"
+"          current hp. Dries water, melts snow, burns forest, and levels "
 "castles/villages."
 msgstr ""
 "<span color='#6ca364'><i><b>Hechizo:</b></i></span> Gasta <span "
@@ -932,12 +1009,6 @@ msgid "We’d better get out of here. Remember what happened on his last exam?"
 msgstr ""
 "Será mejor que nos vayamos. ¿Recuerdas lo que pasó en su último examen?"
 
-#. [floating_text]
-#: data/campaigns/The_Deceivers_Gambit/scenarios/00_Graduation.cfg:395
-#: data/campaigns/The_Deceivers_Gambit/utils/spellcasting.cfg:1782
-msgid "<span color='#ffffff' size='x-small'>Contingency</span>"
-msgstr "<span color='#ffffff' size='x-small'>Contingencia</span>"
-
 #. [message]: speaker=Delfador
 #. Delfador has just reached the end of the obstacle course / final exam (and the end of the scenario0
 #: data/campaigns/The_Deceivers_Gambit/scenarios/00_Graduation.cfg:459
@@ -946,15 +1017,21 @@ msgstr "¡Mírenme, lo logré! ¡Esta vez tiene que ser suficiente!"
 
 #. [message]: speaker=Leollyn
 #: data/campaigns/The_Deceivers_Gambit/scenarios/00_Graduation.cfg:464
-msgid "<span size='small'>Well, what do you think?</span>"
+#, fuzzy
+#| msgid "<span size='small'>Well, what do you think?</span>"
+msgid "Well, what do you think?"
 msgstr "<span size='small'>Bueno, ¿qué opinas?</span>"
 
 #. [message]: speaker=Saegwylyn
 #: data/campaigns/The_Deceivers_Gambit/scenarios/00_Graduation.cfg:470
+#, fuzzy
+#| msgid ""
+#| "<span size='small'>I say no. A mage needs wisdom; this apprentice cares "
+#| "only for his own amusement. This one is a petty magician, not a wise sage "
+#| "or advisor of kings.</span>"
 msgid ""
-"<span size='small'>I say no. A mage needs wisdom; this apprentice cares only "
-"for his own amusement. This one is a petty magician, not a wise sage or "
-"advisor of kings.</span>"
+"I say no. A mage needs wisdom; this apprentice cares only for his own "
+"amusement. This one is a petty magician, not a wise sage or advisor of kings."
 msgstr ""
 "<span size='small'>Yo digo que no. Un mago necesita sabiduría; este aprendiz "
 "solo se preocupa por su propia diversión. Este es un mago mediocre, no un "
@@ -962,10 +1039,14 @@ msgstr ""
 
 #. [message]: speaker=Methor
 #: data/campaigns/The_Deceivers_Gambit/scenarios/00_Graduation.cfg:474
+#, fuzzy
+#| msgid ""
+#| "<span size='small'>I say yes. I admit my apprentice enjoys the spotlight "
+#| "more than most, but with this much magical aptitude who wouldn’t want to "
+#| "show off?</span>"
 msgid ""
-"<span size='small'>I say yes. I admit my apprentice enjoys the spotlight "
-"more than most, but with this much magical aptitude who wouldn’t want to "
-"show off?</span>"
+"I say yes. I admit my apprentice enjoys the spotlight more than most, but "
+"with this much magical aptitude who wouldn’t want to show off?"
 msgstr ""
 "<span size='small'>Yo digo que sí. Admito que mi aprendiz disfruta la "
 "atención más que la mayoría, pero con tanta aptitud mágica, ¿quién no "
@@ -973,10 +1054,14 @@ msgstr ""
 
 #. [message]: speaker=Methor
 #: data/campaigns/The_Deceivers_Gambit/scenarios/00_Graduation.cfg:478
+#, fuzzy
+#| msgid ""
+#| "<span size='small'>I think it’s obvious this is one of the most gifted "
+#| "magi we’ve trained in years. The skill is innate; the wisdom will come "
+#| "with time.</span>"
 msgid ""
-"<span size='small'>I think it’s obvious this is one of the most gifted magi "
-"we’ve trained in years. The skill is innate; the wisdom will come with time."
-"</span>"
+"I think it’s obvious this is one of the most gifted magi we’ve trained in "
+"years. The skill is innate; the wisdom will come with time."
 msgstr ""
 "<span size='small'>Creo que es obvio que este es uno de los magos más "
 "dotados que hemos entrenado en años. La habilidad es innata; la sabiduría "
@@ -984,9 +1069,11 @@ msgstr ""
 
 #. [message]: speaker=Leollyn
 #: data/campaigns/The_Deceivers_Gambit/scenarios/00_Graduation.cfg:483
-msgid ""
-"<span size='small'>So mine is the deciding vote. Very well, I’ve made up my "
-"mind.</span>"
+#, fuzzy
+#| msgid ""
+#| "<span size='small'>So mine is the deciding vote. Very well, I’ve made up "
+#| "my mind.</span>"
+msgid "So mine is the deciding vote. Very well, I’ve made up my mind."
 msgstr ""
 "<span size='small'>Entonces el mío es el voto decisivo. Muy bien, ya he "
 "tomado una decisión.</span>"
@@ -1066,20 +1153,6 @@ msgstr ""
 #: data/campaigns/The_Deceivers_Gambit/scenarios/01_Stirrings_of_War.cfg:8
 msgid "Stirrings of War"
 msgstr "Turbulencias de guerra"
-
-#. [part]
-#. newlines at the beginning help to (depending on the screne size) center this vertically. The space at the end stops the last letter from getting cut off
-#: data/campaigns/The_Deceivers_Gambit/scenarios/01_Stirrings_of_War.cfg:19
-msgid ""
-"<span font_family='WesScript' size='90000'>\n"
-"\n"
-"\n"
-"<i>The Deceiver’s Gambit </i></span>"
-msgstr ""
-"<span font_family='WesScript' size='90000'>\n"
-"\n"
-"\n"
-"<i>El Gambito del Engañador </i></span>"
 
 #. [part]
 #: data/campaigns/The_Deceivers_Gambit/scenarios/01_Stirrings_of_War.cfg:27
@@ -1198,8 +1271,13 @@ msgstr ""
 
 #. [message]: speaker=Methor
 #: data/campaigns/The_Deceivers_Gambit/scenarios/01_Stirrings_of_War.cfg:181
-msgid "<i>Quiet!</i> <span size='small'>Do you hear that?</span>"
-msgstr "<i>¡Silencio!</i> <span size='small'>¿Escuchas eso?</span>"
+msgid "<i>Quiet!</i>"
+msgstr ""
+
+#. [message]: speaker=Methor
+#: data/campaigns/The_Deceivers_Gambit/scenarios/01_Stirrings_of_War.cfg:181
+msgid "Do you hear that?"
+msgstr ""
 
 #. [message]: speaker=Ozgob
 #. 'stragglers' refers to soldiers (like Delfador and Methor) who are joining Garard's war-camp, but are arriving late
@@ -1987,7 +2065,9 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/The_Deceivers_Gambit/scenarios/03_The_Ambassador.cfg:131
-msgid "Meet Wesnoth‘s ambassador"
+#, fuzzy
+#| msgid "Meet Wesnoth‘s ambassador"
+msgid "Meet Wesnoth’s ambassador"
 msgstr "Reunirse con el embajador de Wesnoth"
 
 #. [objective]: condition=lose
@@ -2038,8 +2118,12 @@ msgstr ""
 
 #. [message]: speaker=Delfador
 #: data/campaigns/The_Deceivers_Gambit/scenarios/03_The_Ambassador.cfg:261
+#, fuzzy
+#| msgid ""
+#| "Hey, it‘s you! You‘re the man I was sent to meet: Ambassador Deoran! The "
+#| "king gave me a sealed message for you and the north-elves."
 msgid ""
-"Hey, it‘s you! You‘re the man I was sent to meet: Ambassador Deoran! The "
+"Hey, it’s you! You‘re the man I was sent to meet: Ambassador Deoran! The "
 "king gave me a sealed message for you and the north-elves."
 msgstr ""
 "¡Eh, eres tú! Eres el hombre al que me enviaron a encontrar: ¡el embajador "
@@ -2135,7 +2219,9 @@ msgstr ""
 #. [message]: id=$unit.id
 #. said the first time a unit gets ambushed by a wose
 #: data/campaigns/The_Deceivers_Gambit/scenarios/03_The_Ambassador.cfg:359
-msgid "Ack! It‘s one of them!"
+#, fuzzy
+#| msgid "Ack! It‘s one of them!"
+msgid "Ack! It’s one of them!"
 msgstr "¡Ah! ¡Es uno de ellos!"
 
 #. [message]
@@ -2186,9 +2272,13 @@ msgstr ""
 
 #. [message]: speaker=Delfador
 #: data/campaigns/The_Deceivers_Gambit/scenarios/03_The_Ambassador.cfg:438
+#, fuzzy
+#| msgid ""
+#| "Already an accomplishment! But only thanks to your help, ambassador. Now "
+#| "onwards to deliver the king‘s message."
 msgid ""
 "Already an accomplishment! But only thanks to your help, ambassador. Now "
-"onwards to deliver the king‘s message."
+"onwards to deliver the king’s message."
 msgstr ""
 "¡Ya es un logro! Pero solo gracias a tu ayuda, embajador. Ahora, sigamos "
 "adelante para entregar el mensaje del rey."
@@ -3862,18 +3952,9 @@ msgid "The Great River"
 msgstr "El Gran Río"
 
 #. [part]
-#. newlines at the beginning help to (depending on the screne size) center this vertically. The space at the end stops the last letter from getting cut off
-#: data/campaigns/The_Deceivers_Gambit/scenarios/07_The_Great_River.cfg:41
-msgid ""
-"<span font_family='WesScript' size='90000'>\n"
-"\n"
-"\n"
-"<i>Part 2 </i></span>"
+#: data/campaigns/The_Deceivers_Gambit/scenarios/07_The_Great_River.cfg:44
+msgid "Part 2"
 msgstr ""
-"<span font_family='WesScript' size='90000'>\n"
-"\n"
-"\n"
-"<i>Parte 2 </i></span>"
 
 #. [part]
 #: data/campaigns/The_Deceivers_Gambit/scenarios/07_The_Great_River.cfg:48
@@ -5759,8 +5840,8 @@ msgstr "Los fantasmas aliados no te seguirán al siguiente escenario."
 
 #. [floating_text]
 #: data/campaigns/The_Deceivers_Gambit/scenarios/10_Houses_of_the_Dead.cfg:378
-msgid "<span color='#008800' size='x-small'>Ghost Captured</span>"
-msgstr "<span color='#008800' size='x-small'>Fantasma Capturado</span>"
+msgid "Ghost Captured"
+msgstr ""
 
 #. [event]
 #: data/campaigns/The_Deceivers_Gambit/scenarios/10_Houses_of_the_Dead.cfg:398
@@ -6224,7 +6305,9 @@ msgstr "¡Habla, muchacho! Te crié para ser un asesino, no un cobarde."
 
 #. [message]: speaker=Eldred
 #: data/campaigns/The_Deceivers_Gambit/scenarios/10x_Elensefar_Outskirts.cfg:134
-msgid "<span size='x-small'>You hardly raised me at all...</span>"
+#, fuzzy
+#| msgid "<span size='x-small'>You hardly raised me at all...</span>"
+msgid "You hardly raised me at all..."
 msgstr "<span size='x-small'>Casi no me criaste...</span>"
 
 #. [message]: speaker=Garard
@@ -6810,9 +6893,9 @@ msgid ""
 "<i><b>your</b></i> success! Victory! Victory! Victory by the name of "
 "Delfador!!"
 msgstr ""
-"Pero eso es conversación para después. Ahora ven, celebremos mi— nuestro"
-"— ...bien, ¡<i><b>tu</b></i> éxito! ¡Victoria! ¡Victoria! ¡Victoria en "
-"nombre de Delfador!"
+"Pero eso es conversación para después. Ahora ven, celebremos mi— nuestro— ..."
+"bien, ¡<i><b>tu</b></i> éxito! ¡Victoria! ¡Victoria! ¡Victoria en nombre de "
+"Delfador!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/The_Deceivers_Gambit/scenarios/11_Clan_Blackcrest.cfg:1082
@@ -10049,8 +10132,8 @@ msgstr "misil"
 
 #. [floating_text]
 #: data/campaigns/The_Deceivers_Gambit/utils/spellcasting.cfg:237
-msgid "<span color='#ff0000' size='x-small'>No Target</span>"
-msgstr "<span color='#ff0000' size='x-small'>Sin Objetivo</span>"
+msgid "No Target"
+msgstr ""
 
 #. [dummy]
 #: data/campaigns/The_Deceivers_Gambit/utils/spellcasting.cfg:283
@@ -10108,13 +10191,6 @@ msgid ""
 msgstr ""
 "¿Un familiar ya, aprendiz? Bien hecho — eso es una demostración de magia "
 "impresionante incluso para magos experimentados."
-
-#. [dummy]
-#: data/campaigns/The_Deceivers_Gambit/utils/spellcasting.cfg:645
-msgid "Whenever an adjacent ally gains xp, you gain the same amount of xp."
-msgstr ""
-"Cada vez que un aliado adyacente gana experiencia, tú ganas la misma "
-"cantidad de experiencia."
 
 #. [dummy]
 #: data/campaigns/The_Deceivers_Gambit/utils/spellcasting.cfg:645
@@ -10233,8 +10309,8 @@ msgstr "Lanzar Hechizos"
 
 #. [floating_text]
 #: data/campaigns/The_Deceivers_Gambit/utils/spellcasting.cfg:2435
-msgid "<span color='#a308b8' size='small'>Max XP!</span>"
-msgstr "<span color='#a308b8' size='small'>¡XP Máx!</span>"
+msgid "Max XP!"
+msgstr ""
 
 #. [message]
 #: data/campaigns/The_Deceivers_Gambit/utils/spellcasting.cfg:2447
@@ -10381,6 +10457,106 @@ msgid ""
 msgstr ""
 "Estoy gravemente herido; no puedo seguir ayudando en tu misión. ¡Continúa la "
 "lucha sin mí, Delfador!"
+
+#~ msgid ""
+#~ "<span color='#ad6a61'><i><b>Attack:</b></i></span> Ranged 7x3 fire, "
+#~ "<i>magical</i>."
+#~ msgstr ""
+#~ "<span color='#ad6a61'><i><b>Ataque:</b></i></span> A distancia 7x3 fuego, "
+#~ "<i>mágico</i>."
+
+#~ msgid ""
+#~ "<span color='#ad6a61'><i><b>Attack:</b></i></span> Melee 6x3 cold, "
+#~ "<i>slows</i>. Replaces your default melee attack."
+#~ msgstr ""
+#~ "<span color='#ad6a61'><i><b>Ataque:</b></i></span> Cuerpo a cuerpo 6x3 "
+#~ "frío, <i>ralentiza</i>. Reemplaza tu ataque cuerpo a cuerpo por defecto."
+
+#~ msgid ""
+#~ "<span color='#a9a150'><i><b>Passive:</b></i></span> Whenever an adjacent "
+#~ "ally gains xp, you gain the same amount of xp."
+#~ msgstr ""
+#~ "<span color='#a9a150'><i><b>Pasivo:</b></i></span> Siempre que un aliado "
+#~ "adyacente gane experiencia, tú ganas la misma cantidad de experiencia."
+
+#~ msgid ""
+#~ "<span color='#ad6a61'><i><b>Attack:</b></i></span> Ranged 8x4 fire, "
+#~ "<i>magical</i>."
+#~ msgstr ""
+#~ "<span color='#ad6a61'><i><b>Ataque:</b></i></span> A distancia 8x4 fuego, "
+#~ "<i>mágico</i>."
+
+#~ msgid ""
+#~ "<span color='#ad6a61'><i><b>Attack:</b></i></span> Ranged 8x4 arcane, "
+#~ "<i>magical</i>, <i>drains</i>."
+#~ msgstr ""
+#~ "<span color='#ad6a61'><i><b>Ataque:</b></i></span> A distancia 8x4 "
+#~ "arcano, <i>mágico</i>, <i>drena</i>."
+
+#~ msgid ""
+#~ "<span color='#a9a150'><i><b>Passive:</b></i></span> Gain the "
+#~ "<i>leadership</i> ability."
+#~ msgstr ""
+#~ "<span color='#a9a150'><i><b>Pasivo:</b></i></span> Obtén la habilidad "
+#~ "<i>liderazgo</i>."
+
+#~ msgid ""
+#~ "<span color='#ad6a61'><i><b>Attack:</b></i></span> Ranged 12x4 fire, "
+#~ "<i>magical</i>."
+#~ msgstr ""
+#~ "<span color='#ad6a61'><i><b>Ataque:</b></i></span> A distancia 12x4 "
+#~ "fuego, <i>mágico</i>."
+
+#~ msgid ""
+#~ "<span color='#ad6a61'><i><b>Attack:</b></i></span> Ranged 5x8 blade, "
+#~ "<i>backstab</i>."
+#~ msgstr ""
+#~ "<span color='#ad6a61'><i><b>Ataque:</b></i></span> A distancia 5x8 hoja, "
+#~ "<i>puñalada por la espalda</i>."
+
+#~ msgid ""
+#~ "<span color='#ad6a61'><i><b>Attack:</b></i></span> Ranged 18x4 fire, "
+#~ "<i>magical</i>."
+#~ msgstr ""
+#~ "<span color='#ad6a61'><i><b>Ataque:</b></i></span> A distancia 18x4 "
+#~ "fuego, <i>mágico</i>."
+
+#~ msgid "<span color='#ffffff' size='x-small'>Contingency</span>"
+#~ msgstr "<span color='#ffffff' size='x-small'>Contingencia</span>"
+
+#~ msgid ""
+#~ "<span font_family='WesScript' size='90000'>\n"
+#~ "\n"
+#~ "\n"
+#~ "<i>The Deceiver’s Gambit </i></span>"
+#~ msgstr ""
+#~ "<span font_family='WesScript' size='90000'>\n"
+#~ "\n"
+#~ "\n"
+#~ "<i>El Gambito del Engañador </i></span>"
+
+#~ msgid "<i>Quiet!</i> <span size='small'>Do you hear that?</span>"
+#~ msgstr "<i>¡Silencio!</i> <span size='small'>¿Escuchas eso?</span>"
+
+#~ msgid ""
+#~ "<span font_family='WesScript' size='90000'>\n"
+#~ "\n"
+#~ "\n"
+#~ "<i>Part 2 </i></span>"
+#~ msgstr ""
+#~ "<span font_family='WesScript' size='90000'>\n"
+#~ "\n"
+#~ "\n"
+#~ "<i>Parte 2 </i></span>"
+
+#~ msgid "<span color='#008800' size='x-small'>Ghost Captured</span>"
+#~ msgstr "<span color='#008800' size='x-small'>Fantasma Capturado</span>"
+
+#~ msgid "<span color='#ff0000' size='x-small'>No Target</span>"
+#~ msgstr "<span color='#ff0000' size='x-small'>Sin Objetivo</span>"
+
+#~ msgid "<span color='#a308b8' size='small'>Max XP!</span>"
+#~ msgstr "<span color='#a308b8' size='small'>¡XP Máx!</span>"
 
 #~ msgid "<span size='x-small'>Father.</span>"
 #~ msgstr "<span size='x-small'>Padre.</span>"
