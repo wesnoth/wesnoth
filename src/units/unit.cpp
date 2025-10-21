@@ -2103,8 +2103,10 @@ void unit::apply_builtin_effect(const std::string& apply_to, const config& effec
 		utils::erase_if(attacks_, [&effect](const attack_ptr& a) { return a->matches_filter(effect); });
 	} else if(apply_to == "attack") {
 		set_attr_changed(UA_ATTACKS);
-		for(attack_ptr a : attacks_) {
-			a->apply_effect(effect);
+		for(const attack_ptr& a : attacks_) {
+			if(a->matches_filter(effect)) {
+				a->apply_effect(effect);
+			}
 			for(const config& specials : effect.child_range("set_specials")) {
 				for(const auto [key, special] : specials.all_children_view()) {
 					for(const config& special_event : special.child_range("event")) {

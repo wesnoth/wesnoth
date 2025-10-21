@@ -277,17 +277,8 @@ void attack_type::remove_special_by_filter(const config& filter)
 	}
 }
 
-/**
- * Modifies *this using the specifications in @a cfg, but only if *this matches
- * @a cfg viewed as a filter.
- *
- * @returns whether or not @c this matched the @a cfg as a filter.
- */
-bool attack_type::apply_effect(const config& cfg)
+void attack_type::apply_effect(const config& cfg)
 {
-	if( !matches_filter(cfg) )
-		return false;
-
 	set_changed(true);
 	const std::string& set_name = cfg["set_name"];
 	const t_string& set_desc = cfg["set_description"].t_str();
@@ -454,8 +445,6 @@ bool attack_type::apply_effect(const config& cfg)
 	if(set_defense_weight.empty() == false) {
 		defense_weight_ = lexical_cast_default<double>(set_defense_weight,1.0);
 	}
-
-	return true;
 }
 
 std::string attack_type::describe_effect(const config& cfg)
