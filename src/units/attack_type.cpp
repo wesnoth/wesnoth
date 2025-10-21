@@ -27,7 +27,6 @@
 #include "deprecation.hpp"
 #include "game_version.hpp"
 
-#include "lexical_cast.hpp"
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/markup.hpp"
