@@ -22,7 +22,7 @@
      * ranged damage 15-3 -> 14-3
      * cost 42g->58g
    * Mermaid Priestess:
-     * experience 46xp->73xp
+     * experience 61xp->73xp
    * Mermaid Diviner:
      * cost 49g->57g
      
