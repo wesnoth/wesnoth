@@ -11,6 +11,12 @@ local function add_overlay(x, y, cfg)
 	end
 
 	wesnoth.interface.add_hex_overlay(x, y, cfg)
+
+	if cfg.duration and cfg.duration ~= 0 then
+		return --Do not store item if it is on a duration timer.
+		--Avoids having to remove scenario_items from display.cpp when duration expires.
+	end
+
 	local items = scenario_items:get(x, y)
 	if not items then
 		items = {}
@@ -24,10 +30,13 @@ local function add_overlay(x, y, cfg)
 			team_name = cfg.team_name,
 			filter_team = cfg.filter_team,
 			visible_in_fog = cfg.visible_in_fog,
+			multihex = cfg.multihex,
 			submerge = cfg.submerge,
+			parallax_mult = cfg.parallax_mult,
 			redraw = cfg.redraw,
 			name = cfg.name,
 			z_order = cfg.z_order,
+			duration = cfg.duration,
 			wml.tag.variables(wml.get_child(cfg, "variables") or {}),
 		})
 end
@@ -61,10 +70,13 @@ end
 ---@field team_name string
 ---@field filter_team WML
 ---@field visible_in_fog boolean
+---@field multihex boolean
 ---@field submerge number
+---@field parallax_mult number
 ---@field redraw boolean
 ---@field name string
 ---@field z_order integer
+---@field duration integer
 ---@field variables WMLTable
 
 ---Get items on a given hex
@@ -84,10 +96,13 @@ function wesnoth.interface.get_items(x, y)
 			team_name = cfg.team_name,
 			filter_team = cfg.filter_team,
 			visible_in_fog = cfg.visible_in_fog,
+			multihex = cfg.multihex,
 			submerge = cfg.submerge,
+			parallax_mult = cfg.parallax_mult,
 			redraw = cfg.redraw,
 			name = cfg.name,
 			z_order = cfg.z_order,
+			duration = cfg.duration,
 			variables = wml.get_child(cfg, "variables"),
 		})
 	end
