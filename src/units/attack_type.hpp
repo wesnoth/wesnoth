@@ -266,6 +266,7 @@ private:
 	bool special_active(const config& special, AFFECTS whom, const std::string& tag_name,
 	                    bool in_abilities_tag = false) const;
 
+	bool special_tooltip_active(const config& special, const std::string& tag_name) const;
 /** weapon_specials_impl_self and weapon_specials_impl_adj : check if special name can be added.
 	 * @param[in,out] temp_string the string modified and returned
 	 * @param[in] self the unit checked.
@@ -311,7 +312,6 @@ private:
 	 * @param whom determine if unit affected or not by special ability.
 	 * @param tag_name The special ability type who is being checked.
 	 * @param leader_bool If true, [leadership] abilities are checked.
-	 * @param just_teaching when true, returns inactive specials, when false the special is required to be active.
 	 */
 	static bool check_self_abilities_impl(
 		const const_attack_ptr& self_attack,
@@ -321,8 +321,7 @@ private:
 		const map_location& loc,
 		AFFECTS whom,
 		const std::string& tag_name,
-		bool leader_bool=false,
-		bool just_teaching = false
+		bool leader_bool=false
 	);
 
 
@@ -340,7 +339,6 @@ private:
 	 * @param whom determine if unit affected or not by special ability.
 	 * @param tag_name The special ability type who is being checked.
 	 * @param leader_bool If true, [leadership] abilities are checked.
-	 * @param just_teaching when true, returns inactive specials, when false the special is required to be active.
 	 */
 	static bool check_adj_abilities_impl(
 		const const_attack_ptr& self_attack,
@@ -354,8 +352,7 @@ private:
 		const map_location& from_loc,
 		AFFECTS whom,
 		const std::string& tag_name,
-		bool leader_bool = false,
-		bool just_teaching = false
+		bool leader_bool = false
 	);
 
 	static bool special_active_impl(
@@ -364,8 +361,7 @@ private:
 		const config& special,
 		AFFECTS whom,
 		const std::string& tag_name,
-		bool in_abilities_tag = false,
-		bool just_teaching = false
+		bool in_abilities_tag = false
 	);
 
 	/** has_ability_impl : return an boolean value for checking of activities of abilities used like weapon
