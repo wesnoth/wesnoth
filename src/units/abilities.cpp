@@ -923,7 +923,8 @@ std::vector<std::pair<t_string, t_string>> attack_type::abilities_special_toolti
 		return res;
 	}
 	for(const auto [key, cfg] : self_->abilities().all_children_view()) {
-		if(!active_list || check_self_abilities_impl(shared_from_this(), other_attack_, cfg, self_, self_loc_, AFFECT_SELF, key, false)) {
+		if(self_->get_self_ability_bool(cfg, key, self_loc_) && special_tooltip_active(cfg, key)) {
+			bool active = !active_list || special_active(cfg, AFFECT_SELF, key);
 			const std::string name = cfg["name_affected"];
 			const std::string desc = cfg["description_affected"];
 
@@ -933,7 +934,7 @@ std::vector<std::pair<t_string, t_string>> attack_type::abilities_special_toolti
 			res.emplace_back(name, desc);
 			checking_name.insert(name);
 			if(active_list) {
-				active_list->push_back(true);
+				active_list->push_back(active);
 			}
 		}
 	}
@@ -948,7 +949,8 @@ std::vector<std::pair<t_string, t_string>> attack_type::abilities_special_toolti
 		}
 		int dir = find_direction(self_loc_, from_loc, distance);
 		for(const auto [key, cfg] : u.abilities().all_children_view()) {
-			if(!active_list || check_adj_abilities_impl(shared_from_this(), other_attack_, cfg, self_, u, distance, dir, self_loc_, from_loc, AFFECT_SELF, key, false)) {
+			if(self_->get_adj_ability_bool(cfg, key, distance, dir, self_loc_, u, from_loc) && special_tooltip_active(cfg, key)) {
+				bool active = !active_list || special_active(cfg, AFFECT_SELF, key);
 				const std::string name = cfg["name_affected"];
 				const std::string desc = cfg["description_affected"];
 
@@ -958,7 +960,7 @@ std::vector<std::pair<t_string, t_string>> attack_type::abilities_special_toolti
 				res.emplace_back(name, desc);
 				checking_name.insert(name);
 				if(active_list) {
-					active_list->push_back(true);
+					active_list->push_back(active);
 				}
 			}
 		}
@@ -2306,6 +2308,54 @@ bool attack_type::special_active_impl(
 	if(self && !ability_active_adjacent_helper(*self, false, special, self_loc, in_abilities_tag))
 		return false;
 
+
+	return true;
+}
+
+/**
+ * Returns whether or not the given special is active for the specified unit,
+ * based on the current context (see set_specials_context).
+ * @param special           a weapon special WML structure
+ * @param tag_name          tag name of the special config
+ */
+bool attack_type::special_tooltip_active(const config& special, const std::string& tag_name) const
+{
+	//log_scope("special_tooltip_active");
+
+	bool whom_is_self = special_affects_self(special, is_attacker_);
+	if(!whom_is_self)
+		return false;
+
+	const unit_map& units = get_unit_map();
+
+	unit_const_ptr self = self_ ;
+	unit_const_ptr other = other_;
+	//TODO: why is this needed?
+	if(self == nullptr) {
+		unit_map::const_iterator it = units.find(self_loc_);
+		if(it.valid()) {
+			self = it.get_shared_ptr();
+		}
+	}
+	if(other == nullptr) {
+		unit_map::const_iterator it = units.find(other_loc_);
+		if(it.valid()) {
+			other = it.get_shared_ptr();
+		}
+	}
+
+	bool applied_both = special["apply_to"] == "both";
+	std::string self_check_if_recursion = (applied_both || whom_is_self) ? tag_name : "";
+	if (!special_unit_matches(self, other, self_loc_, shared_from_this(), special, is_for_listing_, "filter_student", self_check_if_recursion))
+		return false;
+	bool applied_to_attacker = applied_both || (whom_is_self && is_attacker_);
+	std::string att_check_if_recursion = applied_to_attacker ? tag_name : "";
+	if (is_attacker_ && !special_unit_matches(self, other, self_loc_, shared_from_this(), special, is_for_listing_, "filter_attacker", att_check_if_recursion))
+		return false;
+	bool applied_to_defender = applied_both || (whom_is_self && !is_attacker_);
+	std::string def_check_if_recursion= applied_to_defender ? tag_name : "";
+	if (!is_attacker_ && !special_unit_matches(self, other, self_loc_, shared_from_this(), special, is_for_listing_, "filter_defender", def_check_if_recursion))
+		return false;
 
 	return true;
 }
