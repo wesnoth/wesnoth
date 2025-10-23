@@ -321,7 +321,8 @@ public:
 	}
 
 	/** Retrieves the percentage based position of the title text */
-	const point& title_position() {
+	const point& title_position() const
+	{
 		return title_perc_pos_;
 	}
 

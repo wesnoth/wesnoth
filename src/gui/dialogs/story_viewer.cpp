@@ -235,7 +235,7 @@ void story_viewer::display_part()
 	//
 	// Title
 	//
-	drawing& title_label = find_widget<stacked_widget>("background_stack").find_widget<drawing>("title_text");
+	label& title_label = find_widget<stacked_widget>("background_stack").find_widget<label>("title_text");
 	std::string title_text = current_part_->title();
 	bool showing_title = current_part_->show_title() && !title_text.empty();
 	title_label.set_visible(showing_title);
@@ -244,9 +244,10 @@ void story_viewer::display_part()
 			auto& title_position = current_part_->title_position();
 			canv.set_variable("hperc", wfl::variant(title_position.x));
 			canv.set_variable("vperc", wfl::variant(title_position.y));
-			canv.set_variable("fade_alpha", wfl::variant(0));
+			// canv.set_variable("fade_alpha", wfl::variant(0));
 		}
 		title_label.set_label(title_text);
+		title_label.set_text_alpha(0);
 		title_label.set_text_alignment(decode_text_alignment(current_part_->title_text_alignment()));
 	}
 	title_label.queue_redraw();
@@ -483,10 +484,11 @@ void story_viewer::update()
 
 	unsigned short new_alpha = std::clamp<short>(fade_step_ * 25.5, 0, ALPHA_OPAQUE);
 	find_widget<scroll_label>("part_text").set_text_alpha(new_alpha);
-	drawing& title = find_widget<drawing>("title_text");
-	for (auto& canv : title.get_canvases()) {
-		canv.set_variable("fade_alpha", wfl::variant(new_alpha));
-	}
+	label& title = find_widget<label>("title_text");
+	title.set_text_alpha(new_alpha);
+	// for (auto& canv : title.get_canvases()) {
+	// 	canv.set_variable("fade_alpha", wfl::variant(new_alpha));
+	// }
 	queue_redraw();
 
 	// The text stack also needs to be marked dirty so the background panel redraws correctly.

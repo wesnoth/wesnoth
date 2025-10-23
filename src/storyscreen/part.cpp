@@ -192,28 +192,28 @@ void part::resolve_wml(const vconfig& cfg)
 		text_alignment_ = cfg["text_alignment"].str();
 	}
 
-	auto decode_position = [loc = text_block_loc_](const std::string& pos_str, const bool vertical) -> int {
-		if(vertical) {
-			// The ternary checks avoid part text and title text overlaping.
-			if(pos_str == "top") {
-				return loc == BLOCK_TOP ? 50 : 0;
-			} else if (pos_str == "middle") {
-				return loc == BLOCK_MIDDLE ? 0 : 50;
-			} else if (pos_str == "bottom") {
-				return loc == BLOCK_BOTTOM ? 50 : 100;
-			} else {
-				return 0;
-			}
+	auto decode_hposition = [](const std::string& pos_str) {
+		if(pos_str == "left") {
+			return 0;
+		} else if (pos_str == "center") {
+			return 50;
+		} else if (pos_str == "right") {
+			return 100;
 		} else {
-			if(pos_str == "left") {
-				return 0;
-			} else if (pos_str == "center") {
-				return 50;
-			} else if (pos_str == "right") {
-				return 100;
-			} else {
-				return 0;
-			}
+			return 0;
+		}
+	};
+
+	auto decode_vposition = [loc = text_block_loc_](const std::string& pos_str) {
+		// The ternary checks avoid part text and title text overlaping.
+		if(pos_str == "top") {
+			return loc == BLOCK_TOP ? 50 : 0;
+		} else if (pos_str == "middle") {
+			return loc == BLOCK_MIDDLE ? 0 : 50;
+		} else if (pos_str == "bottom") {
+			return loc == BLOCK_BOTTOM ? 50 : 100;
+		} else {
+			return 0;
 		}
 	};
 
@@ -228,8 +228,8 @@ void part::resolve_wml(const vconfig& cfg)
 				vpos = vals[1];
 			}
 			title_perc_pos_ = {
-				decode_position(hpos, false),
-				decode_position(vpos, true)
+				decode_hposition(hpos),
+				decode_vposition(vpos)
 			};
 		}
 	}
