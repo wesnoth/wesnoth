@@ -49,7 +49,6 @@
 #include <vector>                       // for vector, etc
 #include <boost/logic/tribool.hpp>
 #include "config.hpp"
-#include <algorithm>                    // for sorting, etc
 
 class game_config_view;
 class unit_type;
