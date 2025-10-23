@@ -86,6 +86,7 @@ void team_builder::init()
 {
 	if(side_cfg_["side"].to_int(side_) != side_) {
 		ERR_NG_TC << "found invalid side=" << side_cfg_["side"].to_int(side_) << " in definition of side number " << side_;
+		throw game::load_game_failed("Invalid side definition");
 	}
 
 	log_step("init");
