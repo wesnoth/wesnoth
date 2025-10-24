@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-tsg-es\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-10-21 01:10 UTC\n"
-"PO-Revision-Date: 2025-09-23 06:00-0300\n"
+"PO-Revision-Date: 2025-10-22 15:49-0300\n"
 "Last-Translator: Sebastián Lecchini<sebas38760@gmail.com>\n"
 "Language-Team: es\n"
 "Language: es\n"
@@ -2254,8 +2254,9 @@ msgid ""
 "the South Guard, then you are not to blame."
 msgstr ""
 "¿Qué ha pasado? ¡Ustedes, humanos, han matado a mis amigos, tomado a nuestro "
-"sabio, y me han encarcelado aquí durante estas largas y terribles lunas! ..."
-"pero si realmente son de la Guardia Sur, entonces no tienen la culpa."
+"sabio, y me han encarcelado aquí durante estas largas y terribles "
+"lunas! ...pero si realmente son de la Guardia Sur, entonces no tienen la "
+"culpa."
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/03_Vale_of_Tears.cfg:482
@@ -6201,7 +6202,7 @@ msgstr ""
 #. $unit.cost will be the value of the unit; likely between 14 and 40. If translation is an issue, the exact cost can be omitted.
 #: data/campaigns/The_South_Guard/scenarios/06a_Vengeance.cfg:846
 msgid "$unit.cost gold refunded"
-msgstr ""
+msgstr "$unit.cost de oro reembolsado"
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/06a_Vengeance.cfg:881
@@ -6730,13 +6731,13 @@ msgstr ""
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Tides_of_War.cfg:509
 msgid ""
 "You survived $pebbles_defense_length turns last scenario! Deoran starts\n"
-"   with $soldiers.length extra soldiers and "
-"$( ($pebbles_defense_length-36)*3 ) extra gold!"
+"   with $soldiers.length extra soldiers and $"
+"( ($pebbles_defense_length-36)*3 ) extra gold!"
 msgstr ""
 "¡Has sobrevivido $pebbles_defense_length turnos en el escenario anterior! "
 "Deoran empieza\n"
-"   con $soldiers.length soldados adicionales y "
-"$( ($pebbles_defense_length-36)*3 ) de oro extra!"
+"   con $soldiers.length soldados adicionales y $"
+"( ($pebbles_defense_length-36)*3 ) de oro extra!"
 
 #. [else]
 #. $pebbles_defense_length will be 3 or greater. $soldiers.length will be 3 or greater
@@ -7499,18 +7500,6 @@ msgstr ""
 
 #. [unit_type]: id=Cavalryman Commander, race=human
 #: data/campaigns/The_South_Guard/units/Deoran1_Cavalryman.cfg:41
-#, fuzzy
-#| msgid ""
-#| "At scarcely 17 or 18 years of age, squires are not yet full knights, but "
-#| "still have the knowledge and skill to master their mounts whilst in full "
-#| "panoply. Talented squires are sometimes given command of small units in "
-#| "Wesnoth’s army, where they gain experience with fellow troops and honing "
-#| "their prowess in battle.\n"
-#| "\n"
-#| "<span color='#c7c7c7'><i>If you’re a veteran player, you’ll notice that "
-#| "Deoran is based off the Cavalryman, but lacks the Cavalryman’s blade and "
-#| "impact resistances. This was done to simplify the unit, so as not to "
-#| "overwhelm new players.</i></span>"
 msgid ""
 "At scarcely 17 or 18 years of age, squires are not yet full knights, but "
 "still have the knowledge and skill to master their mounts whilst in full "
@@ -7522,12 +7511,7 @@ msgstr ""
 "ya poseen el conocimiento y la habilidad para dominar sus monturas con toda "
 "su armadura. Los escuderos talentosos a veces reciben el mando de pequeñas "
 "unidades en el ejército de Wesnoth, donde ganan experiencia con sus "
-"compañeros y perfeccionan su destreza en combate.\n"
-"\n"
-"<span color='#c7c7c7'><i>Si eres un jugador veterano, notarás que Deoran "
-"está basado en el Caballero a Caballo, pero carece de la espada y las "
-"resistencias al impacto del Caballero. Esto se hizo para simplificar la "
-"unidad y no abrumar a los jugadores nuevos.</i></span>"
+"compañeros y perfeccionan su destreza en combate."
 
 #. [unit_type]: id=Cavalryman Commander, race=human
 #. [unit_type]: id=Dragoon Commander, race=human
@@ -7540,42 +7524,27 @@ msgid ""
 "Cavalryman, but lacks the Cavalryman’s blade and impact resistances. This "
 "was done to simplify the unit, so as not to overwhelm new players.</i>"
 msgstr ""
+"<i>Si eres un jugador veterano, notarás que Deoran está basado en el Jinete "
+"de Caballería, pero carece de las resistencias al impacto y corte de dicho "
+"Jinete. Esto se hizo para simplificar la unidad y no abrumar a los jugadores "
+"nuevos.</i>"
 
 #. [unit_type]: id=Dragoon Commander, race=human
 #: data/campaigns/The_South_Guard/units/Deoran2_Dragoon.cfg:35
-#, fuzzy
-#| msgid ""
-#| "Leaders of the border guards, mounted commanders command the garrisons "
-#| "that keep peace in the outermost provinces of Wesnoth. As effective "
-#| "leaders and powerful warriors, these men patrol the countryside and "
-#| "eliminate any and all threats to peace in the frontier villages."
 msgid ""
 "The more talented cavalrymen in the armies of Wesnoth are trained in the use "
 "of the crossbow, and matched with much more powerful steeds. As effective "
 "leaders and powerful warriors, these men patrol the countryside and "
 "eliminate any and all threats to peace in the frontier villages."
 msgstr ""
-"Líderes de los guardas fronterizos, los comandantes de caballería tienen el "
-"mando en los fuertes que mantienen la paz en las provincias más lejanas de "
-"Wesnoth. Como líderes eficientes y guerreros poderosos, estos hombres "
-"patrullan la campiña y eliminan cualquier posible amenaza contra la paz en "
-"las aldeas fronterizas."
+"Los jinetes más talentosos de los ejércitos de Wesnoth son entrenados en el "
+"uso de la ballesta y emparejados con corceles mucho más poderosos. Como "
+"líderes eficientes y guerreros formidables, estos hombres patrullan la "
+"campiña y eliminan cualquier amenaza que ponga en peligro la paz de las "
+"aldeas fronterizas."
 
 #. [unit_type]: id=Cavalier Commander, race=human
 #: data/campaigns/The_South_Guard/units/Deoran3_Cavalier.cfg:36
-#, fuzzy
-#| msgid ""
-#| "Cavaliers are masters at the use of both sword and crossbow from "
-#| "horseback, able to cover great distances quickly on their patrols, and "
-#| "have keen eyes for detecting and eliminating all manner of perilous "
-#| "dangers. Their greatest strength, however, lies in their ability to "
-#| "inspire great courage in their men, who fight fearlessly and tenaciously "
-#| "under their command.\n"
-#| "\n"
-#| "<span color='#c7c7c7'><i>If you’re a veteran player, you’ll notice that "
-#| "Deoran is based off the Cavalryman, but lacks the Cavalryman’s blade and "
-#| "impact resistances. This was done to simplify the unit, so as not to "
-#| "overwhelm new players.</i></span>"
 msgid ""
 "Cavaliers are masters at the use of both sword and crossbow from horseback, "
 "able to cover great distances quickly on their patrols, and have keen eyes "
@@ -7583,17 +7552,12 @@ msgid ""
 "strength, however, lies in their ability to inspire great courage in their "
 "men, who fight fearlessly and tenaciously under their command."
 msgstr ""
-"Los caballeros son maestros en el uso de la espada y la ballesta desde el "
-"caballo, capaces de recorrer grandes distancias rápidamente en sus "
-"patrullas, y tienen una gran capacidad para detectar y eliminar todo tipo de "
-"peligros. Su mayor fortaleza, sin embargo, radica en su habilidad para "
-"inspirar gran valor en sus hombres, quienes luchan sin temor y con tenacidad "
-"bajo su mando.\n"
-"\n"
-"<span color='#c7c7c7'><i>Si eres un jugador veterano, notarás que Deoran "
-"está basado en el Caballero a Caballo, pero carece de la espada y las "
-"resistencias al impacto del Caballero. Esto se hizo para simplificar la "
-"unidad y no abrumar a los jugadores nuevos.</i></span>"
+"Los coraceros son maestros en el uso tanto de la espada como de la ballesta "
+"desde el caballo, capaces de recorrer grandes distancias rápidamente en sus "
+"patrullas, y poseen una gran agudeza para detectar y eliminar todo tipo de "
+"peligros. Su mayor fortaleza, sin embargo, radica en su capacidad para "
+"inspirar un gran valor en sus hombres, quienes luchan sin temor y con "
+"tenacidad bajo su mando."
 
 #. [unit_type]: id=Veteran Infantryman, race=human
 #: data/campaigns/The_South_Guard/units/Gerrick2_Veteran_Infantryman.cfg:4
@@ -7763,15 +7727,8 @@ msgstr ""
 "campesinos."
 
 #: data/campaigns/The_South_Guard/utils/_initial.cfg:357
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<big>Click a mouse button or press the spacebar to continue...</big>"
 msgid "Click a mouse button or press the spacebar to continue..."
 msgstr ""
-"\n"
-"\n"
 "<big>Haz clic en un botón del ratón o presiona la barra espaciadora para "
 "continuar...</big>"
 
