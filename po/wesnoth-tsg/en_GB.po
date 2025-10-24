@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-10-21 01:10 UTC\n"
-"PO-Revision-Date: 2025-09-22 15:34+1000\n"
+"PO-Revision-Date: 2025-10-22 10:48+1100\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -6109,7 +6109,7 @@ msgstr ""
 #. $unit.cost will be the value of the unit; likely between 14 and 40. If translation is an issue, the exact cost can be omitted.
 #: data/campaigns/The_South_Guard/scenarios/06a_Vengeance.cfg:846
 msgid "$unit.cost gold refunded"
-msgstr ""
+msgstr "$unit.cost gold refunded"
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/06a_Vengeance.cfg:881
@@ -6618,12 +6618,12 @@ msgstr ""
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Tides_of_War.cfg:509
 msgid ""
 "You survived $pebbles_defense_length turns last scenario! Deoran starts\n"
-"   with $soldiers.length extra soldiers and "
-"$( ($pebbles_defense_length-36)*3 ) extra gold!"
+"   with $soldiers.length extra soldiers and $"
+"( ($pebbles_defense_length-36)*3 ) extra gold!"
 msgstr ""
 "You survived $pebbles_defense_length turns last scenario! Deoran starts\n"
-"   with $soldiers.length extra soldiers and "
-"$( ($pebbles_defense_length-36)*3 ) extra gold!"
+"   with $soldiers.length extra soldiers and $"
+"( ($pebbles_defense_length-36)*3 ) extra gold!"
 
 #. [else]
 #. $pebbles_defense_length will be 3 or greater. $soldiers.length will be 3 or greater
@@ -7366,18 +7366,6 @@ msgstr ""
 
 #. [unit_type]: id=Cavalryman Commander, race=human
 #: data/campaigns/The_South_Guard/units/Deoran1_Cavalryman.cfg:41
-#, fuzzy
-#| msgid ""
-#| "At scarcely 17 or 18 years of age, squires are not yet full knights, but "
-#| "still have the knowledge and skill to master their mounts whilst in full "
-#| "panoply. Talented squires are sometimes given command of small units in "
-#| "Wesnoth’s army, where they gain experience with fellow troops and honing "
-#| "their prowess in battle.\n"
-#| "\n"
-#| "<span color='#c7c7c7'><i>If you’re a veteran player, you’ll notice that "
-#| "Deoran is based off the Cavalryman, but lacks the Cavalryman’s blade and "
-#| "impact resistances. This was done to simplify the unit, so as not to "
-#| "overwhelm new players.</i></span>"
 msgid ""
 "At scarcely 17 or 18 years of age, squires are not yet full knights, but "
 "still have the knowledge and skill to master their mounts whilst in full "
@@ -7389,12 +7377,7 @@ msgstr ""
 "still have the knowledge and skill to master their mounts whilst in full "
 "panoply. Talented squires are sometimes given command of small units in "
 "Wesnoth’s army, where they gain experience with fellow troops and honing "
-"their prowess in battle.\n"
-"\n"
-"<span color='#c7c7c7'><i>If you’re a veteran player, you’ll notice that "
-"Deoran is based on the Cavalryman, but lacks the Cavalryman’s blade and "
-"impact resistances. This was done to simplify the unit, so as not to "
-"overwhelm new players.</i></span>"
+"their prowess in battle."
 
 #. [unit_type]: id=Cavalryman Commander, race=human
 #. [unit_type]: id=Dragoon Commander, race=human
@@ -7407,41 +7390,25 @@ msgid ""
 "Cavalryman, but lacks the Cavalryman’s blade and impact resistances. This "
 "was done to simplify the unit, so as not to overwhelm new players.</i>"
 msgstr ""
+"<i>If you’re a veteran player, you’ll notice that Deoran is based on the "
+"Cavalryman, but lacks the Cavalryman’s blade and impact resistances. This "
+"was done to simplify the unit, so as not to overwhelm new players.</i>"
 
 #. [unit_type]: id=Dragoon Commander, race=human
 #: data/campaigns/The_South_Guard/units/Deoran2_Dragoon.cfg:35
-#, fuzzy
-#| msgid ""
-#| "Leaders of the border guards, mounted commanders command the garrisons "
-#| "that keep peace in the outermost provinces of Wesnoth. As effective "
-#| "leaders and powerful warriors, these men patrol the countryside and "
-#| "eliminate any and all threats to peace in the frontier villages."
 msgid ""
 "The more talented cavalrymen in the armies of Wesnoth are trained in the use "
 "of the crossbow, and matched with much more powerful steeds. As effective "
 "leaders and powerful warriors, these men patrol the countryside and "
 "eliminate any and all threats to peace in the frontier villages."
 msgstr ""
-"Leaders of the border guards, mounted commanders command the garrisons that "
-"keep peace in the outermost provinces of Wesnoth. As effective leaders and "
-"powerful warriors, these men patrol the countryside and eliminate any and "
-"all threats to peace in the frontier villages."
+"The more talented cavalrymen in the armies of Wesnoth are trained in the use "
+"of the crossbow, and matched with much more powerful steeds. As effective "
+"leaders and powerful warriors, these men patrol the countryside and "
+"eliminate any threats to peace in the frontier villages."
 
 #. [unit_type]: id=Cavalier Commander, race=human
 #: data/campaigns/The_South_Guard/units/Deoran3_Cavalier.cfg:36
-#, fuzzy
-#| msgid ""
-#| "Cavaliers are masters at the use of both sword and crossbow from "
-#| "horseback, able to cover great distances quickly on their patrols, and "
-#| "have keen eyes for detecting and eliminating all manner of perilous "
-#| "dangers. Their greatest strength, however, lies in their ability to "
-#| "inspire great courage in their men, who fight fearlessly and tenaciously "
-#| "under their command.\n"
-#| "\n"
-#| "<span color='#c7c7c7'><i>If you’re a veteran player, you’ll notice that "
-#| "Deoran is based off the Cavalryman, but lacks the Cavalryman’s blade and "
-#| "impact resistances. This was done to simplify the unit, so as not to "
-#| "overwhelm new players.</i></span>"
 msgid ""
 "Cavaliers are masters at the use of both sword and crossbow from horseback, "
 "able to cover great distances quickly on their patrols, and have keen eyes "
@@ -7453,12 +7420,7 @@ msgstr ""
 "able to cover great distances quickly on their patrols, and have keen eyes "
 "for detecting and eliminating all manner of perilous dangers. Their greatest "
 "strength, however, lies in their ability to inspire great courage in their "
-"men, who fight fearlessly and tenaciously under their command.\n"
-"\n"
-"<span color='#c7c7c7'><i>If you’re a veteran player, you’ll notice that "
-"Deoran is based on the Cavalryman, but lacks the Cavalryman’s blade and "
-"impact resistances. This was done to simplify the unit, so as not to "
-"overwhelm new players.</i></span>"
+"men, who fight fearlessly and tenaciously under their command."
 
 #. [unit_type]: id=Veteran Infantryman, race=human
 #: data/campaigns/The_South_Guard/units/Gerrick2_Veteran_Infantryman.cfg:4
@@ -7624,16 +7586,8 @@ msgstr ""
 "labour, and thus are not conscripted as often as peasants."
 
 #: data/campaigns/The_South_Guard/utils/_initial.cfg:357
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<big>Click a mouse button or press the spacebar to continue...</big>"
 msgid "Click a mouse button or press the spacebar to continue..."
-msgstr ""
-"\n"
-"\n"
-"<big>Click a mouse button or press the space-bar to continue...</big>"
+msgstr "Click a mouse button or press the space-bar to continue..."
 
 #. [display_tip]
 #: data/campaigns/The_South_Guard/utils/savescumming.cfg:116
