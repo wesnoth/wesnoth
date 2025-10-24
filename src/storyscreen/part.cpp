@@ -21,8 +21,6 @@
 #include "storyscreen/part.hpp"
 
 #include "config.hpp"
-#include "log.hpp"
-#include "utils/charconv.hpp"
 #include "variable.hpp"
 
 namespace storyscreen
@@ -192,7 +190,7 @@ void part::resolve_wml(const vconfig& cfg)
 		text_alignment_ = cfg["text_alignment"].str();
 	}
 
-	auto decode_hposition = [](const std::string& pos_str) {
+	const auto decode_hposition = [](const std::string& pos_str) {
 		if(pos_str == "left") {
 			return 0;
 		} else if (pos_str == "center") {
@@ -204,7 +202,7 @@ void part::resolve_wml(const vconfig& cfg)
 		}
 	};
 
-	auto decode_vposition = [loc = text_block_loc_](const std::string& pos_str) {
+	const auto decode_vposition = [&loc = text_block_loc_](const std::string& pos_str) {
 		// The ternary checks avoid part text and title text overlaping.
 		if(pos_str == "top") {
 			return loc == BLOCK_TOP ? 50 : 0;
@@ -217,20 +215,27 @@ void part::resolve_wml(const vconfig& cfg)
 		}
 	};
 
-	std::string hpos, vpos;
 	if(cfg.has_attribute("title_position")) {
 		if(cfg["title_position"] == "centered") {
 			title_perc_pos_ = {50, 50};
 		} else {
-			auto vals = utils::split(cfg["title_position"]);
-			hpos = vals[0];
-			if (vals.size() > 1) {
-				vpos = vals[1];
+			const auto vals = utils::split(cfg["title_position"]);
+			switch(vals.size()) {
+			case 0:
+				// No values provided. Default to top-left.
+				title_perc_pos_ = {0, 0};
+				break;
+
+			case 1:
+				// Singe value, could be either horizontal or vertical.
+				title_perc_pos_ = {decode_hposition(vals[0]), decode_vposition(vals[0])};
+				break;
+
+			default:
+				// Separate horizontal and vertical values.
+				title_perc_pos_ = {decode_hposition(vals[0]), decode_vposition(vals[1])};
+				break;
 			}
-			title_perc_pos_ = {
-				decode_hposition(hpos),
-				decode_vposition(vpos)
-			};
 		}
 	}
 

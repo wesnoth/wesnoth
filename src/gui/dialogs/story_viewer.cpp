@@ -22,7 +22,6 @@
 #include "sdl/point.hpp"
 #include "gui/core/timer.hpp"
 #include "gui/widgets/button.hpp"
-#include "gui/widgets/drawing.hpp"
 #include "gui/widgets/grid.hpp"
 #include "gui/widgets/image.hpp"
 #include "gui/widgets/label.hpp"
@@ -244,7 +243,6 @@ void story_viewer::display_part()
 			auto& title_position = current_part_->title_position();
 			canv.set_variable("hperc", wfl::variant(title_position.x));
 			canv.set_variable("vperc", wfl::variant(title_position.y));
-			// canv.set_variable("fade_alpha", wfl::variant(0));
 		}
 		title_label.set_label(title_text);
 		title_label.set_text_alpha(0);
@@ -484,11 +482,7 @@ void story_viewer::update()
 
 	unsigned short new_alpha = std::clamp<short>(fade_step_ * 25.5, 0, ALPHA_OPAQUE);
 	find_widget<scroll_label>("part_text").set_text_alpha(new_alpha);
-	label& title = find_widget<label>("title_text");
-	title.set_text_alpha(new_alpha);
-	// for (auto& canv : title.get_canvases()) {
-	// 	canv.set_variable("fade_alpha", wfl::variant(new_alpha));
-	// }
+	find_widget<label>("title_text").set_text_alpha(new_alpha);
 	queue_redraw();
 
 	// The text stack also needs to be marked dirty so the background panel redraws correctly.
