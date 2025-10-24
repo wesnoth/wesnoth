@@ -13,6 +13,8 @@
 ### User interface
 ### WML Engine
 ### Miscellaneous and Bug Fixes
+   * Build System:
+     * Changed CMake to not directly pull in boost-system (fixing build issues on archlinux using boost-libs >1.89.0-2)
 
 ## Version 1.19.17
 ### Editor
