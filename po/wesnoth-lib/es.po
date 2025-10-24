@@ -16,8 +16,8 @@ msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-05-20 17:25-0500\n"
-"PO-Revision-Date: 2023-06-04 00:11+0200\n"
-"Last-Translator: Toranks <toranksmervat@gmail.com>\n"
+"PO-Revision-Date: 2025-10-20 14:11-0300\n"
+"Last-Translator: Sebastián Lecchini <sebas38760@gmail.com>\n"
 "Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
@@ -484,7 +484,7 @@ msgstr "Restos"
 #. [terrain_type]: id=wall_windows
 #: data/core/terrain.cfg:603
 msgid "Window"
-msgstr ""
+msgstr "Ventana"
 
 #. [terrain_type]: id=great_tree
 #. [terrain_type]: id=great_tree_snowy
@@ -1034,10 +1034,8 @@ msgstr "Pared de cueva terrosa natural"
 
 #. [terrain_type]: id=cavewall_damaged
 #: data/core/terrain.cfg:1425
-#, fuzzy
-#| msgid "Natural Cave Wall"
 msgid "Damaged Cave Wall"
-msgstr "Pared de cueva natural"
+msgstr "Pared de cueva dañada"
 
 #. [terrain_type]: id=wall_hedge
 #: data/core/terrain.cfg:1435
@@ -1112,17 +1110,13 @@ msgstr "Muro de piedra con maleza"
 
 #. [terrain_type]: id=wall_stone_damaged
 #: data/core/terrain.cfg:1554
-#, fuzzy
-#| msgid "Stone Wall"
 msgid "Damaged Stone Wall"
-msgstr "Muro de piedra"
+msgstr "Muro de piedra dañado"
 
 #. [terrain_type]: id=wall_stone_ruins
 #: data/core/terrain.cfg:1564
-#, fuzzy
-#| msgid "Mine Wall"
 msgid "Ruined Wall"
-msgstr "Muro minero"
+msgstr "Muro en ruinas"
 
 #. [terrain_type]: id=portal_gate_rusty_sw
 #. [terrain_type]: id=portal_gate_rusty_se
@@ -2348,10 +2342,8 @@ msgstr "Discontinuado"
 
 #. [settings]
 #: data/gui/default.cfg:23
-#, fuzzy
-#| msgid " (Press '$hotkey' for more information)"
 msgid " (Press ‘$hotkey’ for more information)"
-msgstr " (Pulse '$hotkey' para más información)"
+msgstr " (Presiona ‘$hotkey’ para más información)"
 
 #. [button]: id=search
 #: data/gui/macros/_initial.cfg:363 data/gui/window/mp_match_history.cfg:589
@@ -3033,43 +3025,43 @@ msgstr "Copiar este registro al porta-papeles"
 #. Within the “Community” dialog, this chooses a tab with links to various Wesnoth websites.
 #: data/gui/window/community_dialog.cfg:42 data/gui/window/title_screen.cfg:262
 msgid "Community"
-msgstr ""
+msgstr "Comunidad"
 
 #. [button]: id=forums
 #. this is on a button that opens the Wesnoth forums webpage
 #: data/gui/window/community_dialog.cfg:63
 msgid "Forums"
-msgstr ""
+msgstr "Foros"
 
 #. [button]: id=discord
 #. this is on a button that opens the Wesnoth Discord server webpage
 #: data/gui/window/community_dialog.cfg:82
 msgid "Discord"
-msgstr ""
+msgstr "Discord"
 
 #. [button]: id=irc
 #. this is on a button that opens the Wesnoth IRC webpage. IRC is an acronym for Internet Relay Chat
 #: data/gui/window/community_dialog.cfg:101
 msgid "IRC"
-msgstr ""
+msgstr "IRC"
 
 #. [button]: id=steam
 #. this is on a button that opens the Wesnoth Steam forums webpage
 #: data/gui/window/community_dialog.cfg:120
 msgid "Steam"
-msgstr ""
+msgstr "Steam"
 
 #. [button]: id=reddit
 #. this is on a button that opens the Wesnoth Reddit webpage
 #: data/gui/window/community_dialog.cfg:139
 msgid "Reddit"
-msgstr ""
+msgstr "Reddit"
 
 #. [button]: id=donate
 #. this is on a button that opens the Wesnoth SPI webpage for sending donations
 #: data/gui/window/community_dialog.cfg:158
 msgid "Donate"
-msgstr ""
+msgstr "Donar"
 
 #. [label]
 #: data/gui/window/core_dialog.cfg:44
@@ -3254,10 +3246,8 @@ msgstr "Sólo equipo"
 
 #. [label]
 #: data/gui/window/editor_choose_addon.cfg:45
-#, fuzzy
-#| msgid "Add-on Details"
 msgid "Add-on selection"
-msgstr "Detalles del complemento"
+msgstr "Selección de complemento"
 
 #. [label]
 #: data/gui/window/editor_choose_addon.cfg:62
@@ -3266,25 +3256,25 @@ msgid ""
 "New Add-on option is chosen, its ID can be changed via the Change Add-on ID "
 "option."
 msgstr ""
+"Elige un complemento para asociar con la sesión actual del editor. Si se "
+"elige la opción Nuevo complemento, su ID puede cambiarse mediante la opción "
+"Cambiar ID de complemento."
 
 #. [label]: id=existing_addon_id
 #: data/gui/window/editor_choose_addon.cfg:98
-#, fuzzy
-#| msgid "Add-ons"
 msgid "Add-on ID"
-msgstr "Complementos"
+msgstr "ID del complemento"
 
 #. [label]
 #: data/gui/window/editor_choose_addon.cfg:172
-#, fuzzy
-#| msgid "Show ally orb"
 msgid "Show all"
-msgstr "Mostrar orbes de los aliados"
+msgstr "Mostrar todo"
 
 #. [toggle_button]: id=show_all
 #: data/gui/window/editor_choose_addon.cfg:184
 msgid "Whether to show all installed add-ons or only your add-ons"
 msgstr ""
+"Indica si se muestran todos los complementos instalados o solo los tuyos"
 
 #. [label]
 #: data/gui/window/editor_edit_label.cfg:106
@@ -3319,34 +3309,34 @@ msgstr "Visible en el velo"
 #. [label]: id=title
 #: data/gui/window/editor_edit_pbl.cfg:84
 msgid "Add-on Publishing Setup"
-msgstr ""
+msgstr "Configuración de publicación del complemento"
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:150
 msgid "The name of the add-on displayed in-game."
-msgstr ""
+msgstr "El nombre del complemento que se muestra en el juego."
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:150
 msgid "Title:"
-msgstr ""
+msgstr "Título:"
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:151
 msgid "The description of the add-on to display in the add-ons manager."
 msgstr ""
+"La descripción del complemento que se muestra en el administrador de "
+"complementos."
 
 #. [label]: id=icon_label
 #: data/gui/window/editor_edit_pbl.cfg:162
 msgid "Icon:"
-msgstr ""
+msgstr "Ícono:"
 
 #. [button]: id=select_icon
 #: data/gui/window/editor_edit_pbl.cfg:182
-#, fuzzy
-#| msgid "Select None"
 msgid "Select an icon file"
-msgstr "No seleccionar nada"
+msgstr "Seleccionar un archivo de ícono"
 
 #. [text_box]: id=icon
 #: data/gui/window/editor_edit_pbl.cfg:195
@@ -3354,6 +3344,8 @@ msgid ""
 "The path to the icon image to display in the add-ons manager. Must be an "
 "image from mainline."
 msgstr ""
+"La ruta de la imagen del ícono que se mostrará en el administrador de "
+"complementos. Debe ser una imagen del contenido principal del juego."
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:206
@@ -3366,11 +3358,13 @@ msgid ""
 "The author of this add-on. If forum authentication is used, this is your "
 "forum username."
 msgstr ""
+"El autor de este complemento. Si se usa la autenticación del foro, este es "
+"tu nombre de usuario del foro."
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:207
 msgid "The add-on’s current version. This should be of the form X.Y.Z."
-msgstr ""
+msgstr "La versión actual del complemento. Debe tener el formato X.Y.Z."
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:208
@@ -3379,11 +3373,15 @@ msgid ""
 "depends on. The add-on ID is the folder name in your operating system’s file "
 "manager, not the add-on’s name."
 msgstr ""
+"Una lista separada por comas con los ID de otros complementos de los que "
+"depende este complemento. El ID del complemento es el nombre de la carpeta "
+"en el administrador de archivos de tu sistema operativo, no el nombre del "
+"complemento."
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:211
 msgid "Forum thread:"
-msgstr ""
+msgstr "Tema del foro:"
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:211
@@ -3391,23 +3389,23 @@ msgid ""
 "The numeric topic ID of a thread on the Wesnoth forums where players can "
 "post feedback."
 msgstr ""
+"El ID numérico del tema en los foros de Wesnoth donde los jugadores pueden "
+"dejar comentarios."
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:212
 msgid "Forum URL"
-msgstr ""
+msgstr "URL del foro"
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:212
 msgid "The full URL of your feedback thread on the forums."
-msgstr ""
+msgstr "La URL completa del tema de comentarios en los foros."
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:213
-#, fuzzy
-#| msgid "Authenticate"
 msgid "Forum Authentication:"
-msgstr "Acreditación"
+msgstr "Autenticación del foro:"
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:213
@@ -3415,6 +3413,9 @@ msgid ""
 "Whether to use your forum username and password when uploading or to store "
 "your password and email address in the add-on’s _server.pbl."
 msgstr ""
+"Indica si se usará tu nombre de usuario y contraseña del foro al subir el "
+"complemento, o si se guardarán tu contraseña y dirección de correo "
+"electrónico en el archivo _server.pbl del complemento."
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:214
@@ -3422,22 +3423,26 @@ msgid ""
 "Comma delimited list of forum usernames of other people who are allowed to "
 "upload updates for this add-on."
 msgstr ""
+"Lista separada por comas con los nombres de usuario del foro de otras "
+"personas autorizadas a subir actualizaciones de este complemento."
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:214
 msgid "Secondary Authors:"
-msgstr ""
+msgstr "Autores secundarios:"
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:215
 msgid ""
 "An email address you can be contacted at in case of issues with your add-on."
 msgstr ""
+"Una dirección de correo electrónico donde se pueda contactarte en caso de "
+"problemas con tu complemento."
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:215
 msgid "Email:"
-msgstr ""
+msgstr "Correo electrónico:"
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:216
@@ -3445,18 +3450,18 @@ msgid ""
 "The add-on’s current password. Using forum authentication is recommended "
 "instead since this password is not stored securely."
 msgstr ""
+"La contraseña actual del complemento. Se recomienda usar la autenticación "
+"del foro, ya que esta contraseña no se almacena de forma segura."
 
 #. [label]: id=translations_title
 #: data/gui/window/editor_edit_pbl.cfg:274
 msgid "Title"
-msgstr ""
+msgstr "Título"
 
 #. [label]: id=translations_description
 #: data/gui/window/editor_edit_pbl.cfg:291
-#, fuzzy
-#| msgid "Description:"
 msgid "Description"
-msgstr "Descripción:"
+msgstr "Descripción"
 
 #. [button]: id=translations_add
 #. [button]: id=server_add
@@ -3476,7 +3481,7 @@ msgstr "Eliminar"
 #. [button]: id=validate
 #: data/gui/window/editor_edit_pbl.cfg:451
 msgid "Validate"
-msgstr ""
+msgstr "Validar"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
@@ -3489,24 +3494,18 @@ msgstr "Guardar"
 
 #. [label]: id=title
 #: data/gui/window/editor_edit_pbl_translation.cfg:69
-#, fuzzy
-#| msgid "Translations:"
 msgid "Translation"
-msgstr "Traducciones:"
+msgstr "Traducción"
 
 #. [label]
 #: data/gui/window/editor_edit_pbl_translation.cfg:84
-#, fuzzy
-#| msgid "Password Required"
 msgid "* Required"
-msgstr "Se requiere contraseña"
+msgstr "* Requerido"
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl_translation.cfg:97
-#, fuzzy
-#| msgid "Language"
 msgid "* Language:"
-msgstr "Idioma"
+msgstr "* Idioma:"
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl_translation.cfg:97
@@ -3514,21 +3513,23 @@ msgid ""
 "The POSIX locale name of the translation, such as sv (Swedish) or zh_CN "
 "(Simplified Chinese)."
 msgstr ""
+"El nombre local POSIX de la traducción, como sv (Sueco) o zh_CN (Chino "
+"simplificado)."
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl_translation.cfg:98
 msgid "* Title:"
-msgstr ""
+msgstr "* Título:"
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl_translation.cfg:98
 msgid "The translation of the add-on’s title."
-msgstr ""
+msgstr "La traducción del título del complemento."
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl_translation.cfg:99
 msgid "The translation of the add-on’s description."
-msgstr ""
+msgstr "La traducción de la descripción del complemento."
 
 #. [label]: id=title
 #: data/gui/window/editor_edit_scenario.cfg:42
@@ -3585,10 +3586,8 @@ msgstr "Nombre del equipo:"
 
 #. [label]
 #: data/gui/window/editor_edit_side.cfg:164
-#, fuzzy
-#| msgid "Recruits:"
 msgid "Recruit list:"
-msgstr "Reclutamientos:"
+msgstr "Lista de reclutas:"
 
 #. [toggle_button]: id=no_leader
 #: data/gui/window/editor_edit_side.cfg:218
@@ -4206,29 +4205,23 @@ msgstr "Copiar el informe completo al porta-papeles"
 
 #. [button]: id=open_stderr
 #: data/gui/window/game_version.cfg:622
-#, fuzzy
-#| msgid "Open Log File"
 msgid "Log File"
-msgstr "Abrir archivo de registro"
+msgstr "Archivo de registro"
 
 #. [button]: id=open_stderr
 #: data/gui/window/game_version.cfg:623
-#, fuzzy
-#| msgid "Opens the log file, which may contain useful debug information"
 msgid ""
 "Opens the log file pertaining to the current session, which may contain "
 "useful debug information"
 msgstr ""
-"Abre el archivo de registro, que podría tener información útil para depurar "
-"errores"
+"Abre el archivo de registro correspondiente a la sesión actual, que podría "
+"contener información útil para depurar errores."
 
 #. [button]: id=run_migrator
 #. button to open the version migration dialog manually to re-migrate add-ons and the preferences file
 #: data/gui/window/game_version.cfg:635
-#, fuzzy
-#| msgid "Crater"
 msgid "Migrate"
-msgstr "Cráter"
+msgstr "Migrar"
 
 # Traducir un asterisco?
 #. [label]
@@ -4328,6 +4321,9 @@ msgid ""
 "including translation. Translations may drift behind or even become "
 "abandoned."
 msgstr ""
+"<i>The Battle for Wesnoth</i> depende de voluntarios para su desarrollo, "
+"incluida la traducción. Algunas traducciones pueden quedar desactualizadas o "
+"incluso abandonarse."
 
 #. [label]
 #. Beneath the label widget displaying this text there is a widget displaying
@@ -4338,6 +4334,10 @@ msgid ""
 "interface and in-game help only. More complete stats, including details for "
 "each campaign, are available at the following page:"
 msgstr ""
+"<b>Nota:</b> Los porcentajes de traducción mostrados se aplican solo a la "
+"interfaz principal del juego y a la ayuda integrada. Estadísticas más "
+"completas, con detalles de cada campaña, están disponibles en la siguiente "
+"página:"
 
 #. [label]
 #. Beneath the label widget displaying this text there is a widget displaying
@@ -4347,11 +4347,13 @@ msgid ""
 "If you are interested in translating the game yourself, please follow the "
 "link below for more information:"
 msgstr ""
+"Si te interesa traducir el juego, sigue el enlace de abajo para obtener más "
+"información:"
 
 #. [toggle_button]: id=show_all
 #: data/gui/window/language_selection.cfg:276
 msgid "Show in-progress or abandoned translations"
-msgstr ""
+msgstr "Mostrar traducciones en progreso o abandonadas"
 
 #. [label]: id=status
 #: data/gui/window/loadscreen.cfg:183
@@ -5217,13 +5219,10 @@ msgstr "Rivales"
 msgid "Modifications"
 msgstr "Modificaciones"
 
-# Jugadores: (queda demasiado largo y se descuadra)
 #. [label]
 #: data/gui/window/mp_match_history.cfg:450
-#, fuzzy
-#| msgid "Players:"
 msgid "Player:"
-msgstr "Rivales:"
+msgstr "Jugador:"
 
 #. [text_box]: id=search_player
 #. [text_box]: id=search_game_name
@@ -5232,21 +5231,17 @@ msgstr "Rivales:"
 #: data/gui/window/mp_match_history.cfg:506
 #: data/gui/window/mp_match_history.cfg:530
 msgid "Asterisks match all characters"
-msgstr ""
+msgstr "El asterisco coincide con cualquier carácter"
 
 #. [label]
 #: data/gui/window/mp_match_history.cfg:474
-#, fuzzy
-#| msgid "Contents"
 msgid "Content Type:"
-msgstr "Contenido"
+msgstr "Tipo de contenido:"
 
 #. [label]
 #: data/gui/window/mp_match_history.cfg:494
-#, fuzzy
-#| msgid "Team name:"
 msgid "Game name:"
-msgstr "Nombre del equipo:"
+msgstr "Nombre de la partida:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -5331,17 +5326,13 @@ msgstr "* campos requeridos"
 
 #. [menu_button]: id=controller
 #: data/gui/window/mp_staging.cfg:245
-#, fuzzy
-#| msgid "Change the side's controller"
 msgid "Change the side’s controller"
-msgstr "Cambiar el mando del bando"
+msgstr "Cambiar el control del bando"
 
 #. [menu_button]: id=ai_controller
 #: data/gui/window/mp_staging.cfg:261
-#, fuzzy
-#| msgid "Change the AI side's behaviour"
 msgid "Change the AI side’s behaviour"
-msgstr "Cambiar el funcionamiento de la IA del bando"
+msgstr "Cambiar el comportamiento de la IA del bando"
 
 #. [menu_button]: id=side_team
 #: data/gui/window/mp_staging.cfg:288
@@ -5602,7 +5593,7 @@ msgstr "Eliminar atajo"
 #. [label]
 #: data/gui/window/preferences/03_display.cfg:15
 msgid "Window size:"
-msgstr ""
+msgstr "Tamaño de la ventana:"
 
 #. [label]: id=help_text
 #: data/gui/window/preferences/03_display.cfg:39
@@ -5611,10 +5602,8 @@ msgstr "Multiplicador de escala de píxels:"
 
 #. [menu_button]: id=resolution_set
 #: data/gui/window/preferences/03_display.cfg:73
-#, fuzzy
-#| msgid "Change the buffer size"
 msgid "Change the game window size"
-msgstr "Cambiar el tamaño de búfer"
+msgstr "Cambiar el tamaño de la ventana del juego"
 
 #. [slider]: id=pixel_scale_slider
 #: data/gui/window/preferences/03_display.cfg:87
@@ -5637,10 +5626,8 @@ msgstr "Conmuta entre pantalla completa y modo ventana"
 
 #. [toggle_button]: id=auto_pixel_scale
 #: data/gui/window/preferences/03_display.cfg:114
-#, fuzzy
-#| msgid "Pixel scale multiplier:"
 msgid "pixel_scale_multiplier^Automatic scale"
-msgstr "Multiplicador de escala de píxels:"
+msgstr "Escala automática"
 
 #. [toggle_button]: id=auto_pixel_scale
 #: data/gui/window/preferences/03_display.cfg:115
@@ -5682,7 +5669,7 @@ msgstr ""
 #. [label]
 #: data/gui/window/preferences/03_display.cfg:168
 msgid "Interface theme:"
-msgstr ""
+msgstr "Tema de la interfaz:"
 
 #. [menu_button]: id=choose_theme
 #: data/gui/window/preferences/03_display.cfg:181
@@ -5690,23 +5677,25 @@ msgid ""
 "Change the in-game interface theme. Additional themes may be provided by "
 "community-made add-ons"
 msgstr ""
+"Cambia el tema de la interfaz del juego. Se pueden obtener temas adicionales "
+"a través de complementos creados por la comunidad."
 
 #. [toggle_button]: id=show_floating_labels
 #: data/gui/window/preferences/03_display.cfg:200
 msgid "Combat damage indicators"
-msgstr ""
+msgstr "Indicadores de daño de combate"
 
 #. [toggle_button]: id=show_floating_labels
 #: data/gui/window/preferences/03_display.cfg:201
-#, fuzzy
-#| msgid "Show damage and healing amounts above a unit"
 msgid "Show amount of damage inflicted or healed as fading labels above units"
-msgstr "Muestra las cantidades de daño y de sanación sobre una unidad"
+msgstr ""
+"Muestra la cantidad de daño o curación como etiquetas que se desvanecen "
+"sobre las unidades"
 
 #. [toggle_button]: id=show_ellipses
 #: data/gui/window/preferences/03_display.cfg:214
 msgid "Team color indicators"
-msgstr ""
+msgstr "Indicadores de color de equipo"
 
 #. [toggle_button]: id=show_ellipses
 #: data/gui/window/preferences/03_display.cfg:215
@@ -5720,7 +5709,7 @@ msgstr ""
 #. [toggle_button]: id=show_grid
 #: data/gui/window/preferences/03_display.cfg:228
 msgid "Grid overlay"
-msgstr ""
+msgstr "Mostrar cuadrícula"
 
 #. [toggle_button]: id=show_grid
 #: data/gui/window/preferences/03_display.cfg:229
@@ -5749,10 +5738,8 @@ msgstr "Mostrar gráficos animados del agua (puede ser lento)"
 
 #. [toggle_button]: id=animate_units_standing
 #: data/gui/window/preferences/03_display.cfg:293
-#, fuzzy
-#| msgid "Show unit standing animations"
 msgid "Unit standing animations"
-msgstr "Mostrar animaciones para unidades quietas"
+msgstr "Animaciones de unidades quietas"
 
 #. [toggle_button]: id=animate_units_standing
 #: data/gui/window/preferences/03_display.cfg:294
@@ -5761,10 +5748,8 @@ msgstr "Mostrar siempre las animaciones de unidades en el campo de batalla"
 
 #. [toggle_button]: id=animate_units_idle
 #: data/gui/window/preferences/03_display.cfg:312
-#, fuzzy
-#| msgid "Show unit idle animations"
 msgid "Unit idle animations"
-msgstr "Mostrar las animaciones de las unidades inactivas"
+msgstr "Animaciones de unidades inactivas"
 
 #. [toggle_button]: id=animate_units_idle
 #: data/gui/window/preferences/03_display.cfg:313
@@ -5949,29 +5934,21 @@ msgstr ""
 
 #. [button]: id=add_friend
 #: data/gui/window/preferences/05_multiplayer.cfg:264
-#, fuzzy
-#| msgid ""
-#| "Add this username to your friends list (add optional notes, e.g., "
-#| "'player_name notes on friend')"
 msgid ""
 "Add this username to your friends list (add optional notes, e.g., "
 "‘player_name notes on friend’)"
 msgstr ""
-"Añadir este nombre de usuario a tu lista de amigos (añadir notas "
-"adicionales, por ejemplo, «nombre nota sobre el amigo»)"
+"Añade este nombre de usuario a tu lista de amigos (puedes agregar notas "
+"opcionales, por ejemplo, «nombre_usuario notas sobre el amigo»)"
 
 #. [button]: id=add_ignored
 #: data/gui/window/preferences/05_multiplayer.cfg:277
-#, fuzzy
-#| msgid ""
-#| "Add this username to your ignore list (add optional reason, e.g., "
-#| "'player_name reason ignored')"
 msgid ""
 "Add this username to your ignore list (add optional reason, e.g., "
 "‘player_name reason ignored’)"
 msgstr ""
-"Añadir este nombre de usuario a tu lista de ignorados (añadir opcionalmente "
-"un motivo, por ejemplo, «nombre motivo para ignorarle»)"
+"Añade este nombre de usuario a tu lista de ignorados (puedes agregar un "
+"motivo opcional, por ejemplo, «nombre_usuario motivo para ignorar»)"
 
 #. [button]: id=remove
 #: data/gui/window/preferences/05_multiplayer.cfg:290
@@ -6306,10 +6283,8 @@ msgstr "Ver logros"
 
 #. [grid]
 #: data/gui/window/title_screen.cfg:262
-#, fuzzy
-#| msgid "The Battle for Wesnoth"
 msgid "Places to talk about Wesnoth"
-msgstr "La batalla por Wesnoth"
+msgstr "Lugares para hablar sobre Wesnoth"
 
 #. [grid]
 #: data/gui/window/title_screen.cfg:263
@@ -6501,10 +6476,8 @@ msgid "filesystem_path_game^User preferences"
 msgstr "Preferencias de usuario"
 
 #: src/desktop/paths.cpp:227
-#, fuzzy
-#| msgid "filesystem_path_game^Game data"
 msgid "filesystem_path_game^Editor maps"
-msgstr "Datos del juego"
+msgstr "Mapas del editor"
 
 #: src/desktop/paths.cpp:240
 msgid "filesystem_path_system^Home"
@@ -7048,10 +7021,8 @@ msgid "Attacker vulnerability vs"
 msgstr "Vulnerabilidad del atacante contra"
 
 #: src/gui/dialogs/campaign_selection.cpp:354
-#, fuzzy
-#| msgid "Campaigns"
 msgid "Missing Campaigns"
-msgstr "Campañas"
+msgstr "Campañas faltantes"
 
 #. TRANSLATORS: "more than 15" gives a little leeway to add or remove one without changing the translatable text.
 #. It's already ambiguous, 1.18 has 19 campaigns, if you include the tutorial and multiplayer-only World Conquest.
@@ -7062,6 +7033,10 @@ msgid ""
 "package manager, there’s probably a separate package to install the complete "
 "game data."
 msgstr ""
+"Wesnoth normalmente incluye más de 15 campañas principales, incluso antes de "
+"instalar cualquiera desde el servidor de complementos. Si instalaste el "
+"juego mediante un gestor de paquetes, es probable que exista un paquete "
+"adicional para instalar los datos completos del juego."
 
 #: src/gui/dialogs/campaign_selection.cpp:396
 #: src/gui/dialogs/multiplayer/lobby.cpp:438
@@ -7111,42 +7086,32 @@ msgstr ""
 "Por favor, seleccione una que sea compatible."
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:173
-#, fuzzy
-#| msgid "Cores"
 msgid "Core"
-msgstr "Módulos"
+msgstr "Módulo"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:174
 msgid "Campaign"
 msgstr "Campaña"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:175
-#, fuzzy
-#| msgid "Campaign"
 msgid "Hybrid Campaign"
-msgstr "Campaña"
+msgstr "Campaña híbrida"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:176
-#, fuzzy
-#| msgid "Multiplayer Campaigns"
 msgid "Multiplayer Campaign"
-msgstr "Campañas multijugador"
+msgstr "Campaña multijugador"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:177
 msgid "Scenario"
 msgstr "Escenario"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:178
-#, fuzzy
-#| msgid "Multiplayer Alerts"
 msgid "Multiplayer Scenario"
-msgstr "Alertas multijugador"
+msgstr "Escenario multijugador"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:179
-#, fuzzy
-#| msgid "Action"
 msgid "Faction"
-msgstr "Acción"
+msgstr "Facción"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:180
 #: src/gui/dialogs/multiplayer/lobby.cpp:426
@@ -7155,65 +7120,51 @@ msgstr "Era"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:181
 msgid "Map Pack"
-msgstr ""
+msgstr "Paquete de mapas"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:182
-#, fuzzy
-#| msgid "Modifications"
 msgid "Modification"
-msgstr "Modificaciones"
+msgstr "Modificación"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:183
 msgid "Media"
-msgstr ""
+msgstr "Medios"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:184
-#, fuzzy
-#| msgid "Other Games"
 msgid "Other"
-msgstr "Otras partidas"
+msgstr "Otros"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:190
-#, fuzzy
-#| msgid "addon_tag^Cooperative"
 msgid "Cooperative"
 msgstr "Cooperativo"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:191
-#, fuzzy
-#| msgid "addon_tag^Cosmetic"
 msgid "Cosmetic"
 msgstr "Cosmético"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:193
 msgid "RNG"
-msgstr ""
+msgstr "Azar"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:194
-#, fuzzy
-#| msgid "addon_tag^Survival"
 msgid "Survival"
 msgstr "Supervivencia"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:195
-#, fuzzy
-#| msgid "addon_tag^Terraforming"
 msgid "Terraforming"
-msgstr "Terraformado"
+msgstr "Terraformación"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:378
 msgid "No validation errors"
-msgstr ""
+msgstr "Sin errores de validación"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:378
 msgid "Success"
-msgstr ""
+msgstr "Éxito"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:408
-#, fuzzy
-#| msgid "Choose weapon:"
 msgid "Choose an icon"
-msgstr "Elegir arma:"
+msgstr "Elegir un icono"
 
 #: src/gui/dialogs/editor/generator_settings.cpp:71
 msgid "/1000 tiles"
@@ -8623,10 +8574,9 @@ msgid "Item Tool"
 msgstr "Herramienta de objeto"
 
 #: src/hotkey/hotkey_command.cpp:205
-#, fuzzy
-#| msgid "Left mouse button sets a new item."
 msgid "Left mouse button sets a new item. Right click removes item."
-msgstr "El botón izquierdo del ratón coloca un nuevo objeto."
+msgstr ""
+"El botón izquierdo del ratón coloca un nuevo objeto. El derecho lo elimina."
 
 #: src/hotkey/hotkey_command.cpp:206
 msgid ""
@@ -8665,9 +8615,8 @@ msgid "Loyal"
 msgstr "Leal"
 
 #: src/hotkey/hotkey_command.cpp:215
-#, fuzzy
 msgid "Show Tool Information"
-msgstr "Información del mapa"
+msgstr "Mostrar información de la herramienta"
 
 #: src/hotkey/hotkey_command.cpp:217
 msgid "Toggle Minimap Unit Coding"
@@ -8850,13 +8799,11 @@ msgstr "Añadir área nueva"
 
 #: src/hotkey/hotkey_command.cpp:272
 msgid "Add-on Publishing Editor"
-msgstr ""
+msgstr "Editor de publicación de complementos"
 
 #: src/hotkey/hotkey_command.cpp:273
-#, fuzzy
-#| msgid "Manage Add-ons"
 msgid "Change Add-on ID"
-msgstr "Administrar complementos"
+msgstr "Cambiar ID del complemento"
 
 #: src/hotkey/hotkey_command.cpp:275
 msgid "Edit Scenario"

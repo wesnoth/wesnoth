@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "POT-Creation-Date: 2024-05-25 21:28-0500\n"
-"PO-Revision-Date: 2023-01-15 10:17+0100\n"
-"Last-Translator: Toranks <toranksmervat@gmail.com>\n"
+"PO-Revision-Date: 2025-10-21 15:48-0300\n"
+"Last-Translator: Sebastián Lecchini <sebas38760@gmail.com>\n"
 "Language-Team: Wesnoth\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
@@ -539,10 +539,8 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:195
-#, fuzzy, no-wrap
-#| msgid "B<--no-log-to-file>"
 msgid "B<--log-to-file>"
-msgstr "B<--no-log-to-file>"
+msgstr "B<--log-to-file>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:198
@@ -550,13 +548,14 @@ msgid ""
 "log output is written to a file. Cancels the effect of --no-log-to-file "
 "whether implicit or explicit."
 msgstr ""
+"El registro de salida se escribe en un archivo. Anula el efecto de --no-log-"
+"to-file, ya sea implícito o explícito."
 
 #. type: TP
 #: doc/man/wesnoth.6:198
-#, fuzzy, no-wrap
-#| msgid "B<--noaddons>"
+#, no-wrap
 msgid "B<--wnoconsole>"
-msgstr "B<--noaddons>"
+msgstr "B<--wnoconsole>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:201
@@ -564,6 +563,8 @@ msgid ""
 "For Windows, when used with --no-log-to-file, results in output being "
 "written to cerr/cout instead of CONOUT. Otherwise, does nothing."
 msgstr ""
+"En Windows, cuando se usa junto con --no-log-to-file, hace que la salida se "
+"escriba en cerr/cout en lugar de CONOUT. De lo contrario, no hace nada."
 
 #. type: TP
 #: doc/man/wesnoth.6:201
@@ -1001,21 +1002,15 @@ msgstr "B<-t[>I<scenario_id>B<],\\ --test[>I<=scenario_id>B<]>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:358
-#, fuzzy
-#| msgid ""
-#| "runs the game in a small test scenario. The scenario should be one "
-#| "defined with a B<[test]> WML tag. The default is B<test>.  A "
-#| "demonstration of the B<[micro_ai]> feature can be started with "
-#| "B<micro_ai_test>.  Implies B<--nogui>."
 msgid ""
 "runs the game in a small test scenario. The scenario should be one defined "
 "with a B<[test]> WML tag. The default is B<test>.  A demonstration of the "
 "B<[micro_ai]> feature can be started with B<micro_ai_test>."
 msgstr ""
-"ejecuta el juego en un pequeño escenario de prueba. El escenario debería de "
-"ser alguno definido con una etiqueta WML B<[test]>. Por omisión es B<test>. "
-"Una demostración de la característica B<[micro_ai]> puede ser iniciada con "
-"B<micro_ai_test>. Implica B<--nogui>."
+"Ejecuta el juego en un pequeño escenario de prueba. El escenario debe estar "
+"definido con una etiqueta WML B<[test]>. De forma predeterminada es B<test>. "
+"Una demostración de la función B<[micro_ai]> puede iniciarse con "
+"B<micro_ai_test>."
 
 #. type: TP
 #: doc/man/wesnoth.6:358
@@ -1540,12 +1535,9 @@ msgstr "COPYRIGHT"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:542 doc/man/wesnothd.6:301
-#, fuzzy
-#| msgid ""
-#| "Copyright \\(co 2003-2022 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgid "Copyright \\(co 2003-2024 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
-"Copyright \\(co 2003-2021 David White E<lt>davidnwhite@verizon.netE<gt>"
+"Copyright \\(co 2003-2024 David White E<lt>davidnwhite@verizon.netE<gt>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:545 doc/man/wesnothd.6:304
