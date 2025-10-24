@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-05-20 17:25-0500\n"
-"PO-Revision-Date: 2025-03-11 20:22+0800\n"
+"PO-Revision-Date: 2025-10-24 12:38+0800\n"
 "Last-Translator: vimacs <vimacs.hacks@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Poedit 3.7\n"
 
 #. [ai]: id=ai_default_rca
 #: data/ai/ais/ai_default_rca.cfg:9
@@ -5759,10 +5759,6 @@ msgstr "查找并设置多人游戏服务器的路径以主建局域网游戏"
 
 #. [button]: id=add_friend
 #: data/gui/window/preferences/05_multiplayer.cfg:264
-#, fuzzy
-#| msgid ""
-#| "Add this username to your friends list (add optional notes, e.g., "
-#| "'player_name notes on friend')"
 msgid ""
 "Add this username to your friends list (add optional notes, e.g., "
 "‘player_name notes on friend’)"
@@ -5771,10 +5767,6 @@ msgstr ""
 
 #. [button]: id=add_ignored
 #: data/gui/window/preferences/05_multiplayer.cfg:277
-#, fuzzy
-#| msgid ""
-#| "Add this username to your ignore list (add optional reason, e.g., "
-#| "'player_name reason ignored')"
 msgid ""
 "Add this username to your ignore list (add optional reason, e.g., "
 "‘player_name reason ignored’)"
@@ -6292,10 +6284,8 @@ msgid "filesystem_path_game^User preferences"
 msgstr "玩家首选项"
 
 #: src/desktop/paths.cpp:227
-#, fuzzy
-#| msgid "filesystem_path_game^Game data"
 msgid "filesystem_path_game^Editor maps"
-msgstr "游戏数据"
+msgstr "编辑器地图"
 
 #: src/desktop/paths.cpp:240
 msgid "filesystem_path_system^Home"
@@ -6454,10 +6444,8 @@ msgid "Text has a font size of 0."
 msgstr "字体大小是0。"
 
 #: src/gui/core/widget_definition.cpp:29
-#, fuzzy
-#| msgid "No state or draw section defined."
 msgid "No draw section defined for state."
-msgstr "没有已定义的状态或绘图区域。"
+msgstr "没有为状态定义的绘图区域。"
 
 #: src/gui/core/widget_definition.cpp:67 src/gui/core/window_builder.cpp:133
 msgid "No resolution defined."
@@ -6483,7 +6471,7 @@ msgstr ""
 
 #: src/gui/dialogs/achievements_dialog.cpp:137
 msgid "Completed"
-msgstr ""
+msgstr "已完成"
 
 #: src/gui/dialogs/addon/manager.cpp:157
 msgid "addons_view^All Add-ons"
@@ -6791,18 +6779,14 @@ msgstr "你要卸载’$addon|’吗？"
 #. TRANSLATORS: Month + day of month + year + 12-hour time, eg 'November 02 2021, 1:59 PM'. Format for your locale.
 #. Format reference: https://www.boost.org/doc/libs/1_85_0/doc/html/date_time/date_time_io.html#date_time.format_flags
 #: src/gui/dialogs/addon/manager.cpp:1045
-#, fuzzy
-#| msgid "%Y-%m-%d %I:%M %p"
 msgid "%B %d %Y, %I:%M %p"
-msgstr "%Y-%m-%d %I:%M %p"
+msgstr "%B %d %Y, %I:%M %p"
 
 #. TRANSLATORS: Month + day of month + year + 24-hour time, eg 'November 02 2021, 13:59'. Format for your locale.
 #. Format reference: https://www.boost.org/doc/libs/1_85_0/doc/html/date_time/date_time_io.html#date_time.format_flags
 #: src/gui/dialogs/addon/manager.cpp:1048
-#, fuzzy
-#| msgid "%Y-%m-%d %H:%M"
 msgid "%B %d %Y, %H:%M"
-msgstr "%Y-%m-%d %H:%M"
+msgstr "%B %d %Y, %H:%M"
 
 #: src/gui/dialogs/addon/manager.cpp:1109
 msgid "url^None"
@@ -6949,7 +6933,7 @@ msgstr "装饰性"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:193
 msgid "RNG"
-msgstr ""
+msgstr "随机数生成器"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:194
 msgid "Survival"
@@ -7584,8 +7568,6 @@ msgstr ""
 "括号中的两个数字之和（差）是实际命中/被命中数。"
 
 #: src/gui/dialogs/statistics_dialog.cpp:368
-#, fuzzy
-#| msgid "Recruits"
 msgid "stats^Recruits"
 msgstr "次征募"
 
