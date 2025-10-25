@@ -149,7 +149,7 @@ void story_viewer::display_part()
 		sound::play_sound_positioned(current_part_->voice(), VOICE_SOUND_SOURCE_ID, 0, 0);
 	}
 
-	config cfg;
+	config cfg, image;
 
 	//
 	// Background images
@@ -186,15 +186,17 @@ void story_viewer::display_part()
 			width_formula  = "(width)";
 		}
 
+		image["x"] = x_formula;
+		image["y"] = y_formula;
+		image["w"] = width_formula;
+		image["h"] = height_formula;
+		image["name"] = layer.file();
+		image["resize_mode"] = (tile_h || tile_v) ? "tile_center" : "scale";
+
+		config& layer_image = cfg.add_child("image", image);
+
 		if(base_layer == nullptr || layer.is_base_layer()) {
-			base_layer = &cfg.add_child("image", config{
-				"x", x_formula,
-				"y", y_formula,
-				"w", width_formula,
-				"h", height_formula,
-				"name", layer.file(),
-				"resize_mode", (tile_h || tile_v) ? "tile_center" : "scale"
-			});
+			base_layer = &layer_image;
 		}
 	}
 
