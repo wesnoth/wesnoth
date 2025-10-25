@@ -186,15 +186,17 @@ void story_viewer::display_part()
 			width_formula  = "(width)";
 		}
 
+		config& image = cfg.add_child("image", config{
+			"x", x_formula,
+			"y", y_formula,
+			"w", width_formula,
+			"h", height_formula,
+			"name", layer.file(),
+			"resize_mode", (tile_h || tile_v) ? "tile_center" : "scale"
+		});
+
 		if(base_layer == nullptr || layer.is_base_layer()) {
-			base_layer = &cfg.add_child("image", config{
-				"x", x_formula,
-				"y", y_formula,
-				"w", width_formula,
-				"h", height_formula,
-				"name", layer.file(),
-				"resize_mode", (tile_h || tile_v) ? "tile_center" : "scale"
-			});
+			base_layer = &image;
 		}
 	}
 
