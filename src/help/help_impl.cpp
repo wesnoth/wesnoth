@@ -988,9 +988,16 @@ void generate_terrain_sections(section& sec, int /*level*/)
 		}
 	}
 
-	for (const auto& base : base_map) {
-		sec.add_section(base.second);
-	}
+	std::vector<section> sorted_sections;
+	for (const auto& pair : base_map) {
+        sorted_sections.push_back(pair.second);
+    }
+
+	std::sort(sorted_sections.begin(), sorted_sections.end(), section_less());
+
+    for (const section& s : sorted_sections) {
+        sec.add_section(s);
+    }
 }
 
 void generate_unit_sections(const config* /*help_cfg*/, section& sec, int /*level*/, const bool /*sort_generated*/, const std::string& race)
