@@ -993,11 +993,7 @@ void generate_terrain_sections(section& sec, int /*level*/)
         sorted_sections.push_back(pair.second);
     }
 
-	std::sort(sorted_sections.begin(), sorted_sections.end(),
-        [](const section& a, const section& b) {
-            return translation::icompare(a.title, b.title) < 0;
-        }
-    );
+	std::sort(sorted_sections.begin(), sorted_sections.end(), section_less());
 
     for (const section& s : sorted_sections) {
         sec.add_section(s);
