@@ -22,7 +22,6 @@
 #include "sdl/point.hpp"
 #include "gui/core/timer.hpp"
 #include "gui/widgets/button.hpp"
-#include "gui/widgets/drawing.hpp"
 #include "gui/widgets/grid.hpp"
 #include "gui/widgets/image.hpp"
 #include "gui/widgets/label.hpp"
@@ -237,24 +236,21 @@ void story_viewer::display_part()
 	//
 	// Title
 	//
-	label& title_label = find_widget<label>("title");
-
+	label& title_label = find_widget<stacked_widget>("background_stack").find_widget<label>("title_text");
 	std::string title_text = current_part_->title();
-	bool showing_title;
-
-	if(current_part_->show_title() && !title_text.empty()) {
-		showing_title = true;
-
-		PangoAlignment title_text_alignment = decode_text_alignment(current_part_->title_text_alignment());
-
-		title_label.set_visible(widget::visibility::visible);
-		title_label.set_text_alignment(title_text_alignment);
+	bool showing_title = current_part_->show_title() && !title_text.empty();
+	title_label.set_visible(showing_title);
+	if(showing_title) {
+		for(auto& canv : title_label.get_canvases()) {
+			auto& title_position = current_part_->title_position();
+			canv.set_variable("hperc", wfl::variant(title_position.x));
+			canv.set_variable("vperc", wfl::variant(title_position.y));
+		}
 		title_label.set_label(title_text);
-	} else {
-		showing_title = false;
-
-		title_label.set_visible(widget::visibility::invisible);
+		title_label.set_text_alpha(0);
+		title_label.set_text_alignment(decode_text_alignment(current_part_->title_text_alignment()));
 	}
+	title_label.queue_redraw();
 
 	//
 	// Story text
@@ -488,6 +484,8 @@ void story_viewer::update()
 
 	unsigned short new_alpha = std::clamp<short>(fade_step_ * 25.5, 0, ALPHA_OPAQUE);
 	find_widget<scroll_label>("part_text").set_text_alpha(new_alpha);
+	find_widget<label>("title_text").set_text_alpha(new_alpha);
+	queue_redraw();
 
 	// The text stack also needs to be marked dirty so the background panel redraws correctly.
 	flag_stack_as_dirty();
