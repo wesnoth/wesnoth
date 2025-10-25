@@ -2277,14 +2277,20 @@ bool attack_type::special_active_impl(
 }
 
 /**
- * Returns whether or not the given special is active for the specified unit,
- * based on the current context (see set_specials_context).
+ * Returns whether or not the given special is active for the specified unit disregarding other units,
+ * based on the current context (see specials_context).
  * @param ab                the ability/special
  */
 bool attack_type::special_tooltip_active(const unit_ability_t& ab) const
 {
 	//log_scope("special_tooltip_active");
 
+	//here 'active_on' and checking of opponent weapon shouldn't implemented
+	//because other_attack_ don't exist in sidebar display.
+	//'apply_to' and some filters like [filter_student] are checked for know if
+	//special must be displayed in sidebar.
+
+	//only special who affect self are valid here.
 	bool whom_is_self = special_affects_self(ab, is_attacker_);
 	if(!whom_is_self)
 		return false;
@@ -2293,7 +2299,6 @@ bool attack_type::special_tooltip_active(const unit_ability_t& ab) const
 
 	unit_const_ptr self = self_ ;
 	unit_const_ptr other = other_;
-	//TODO: why is this needed?
 	if(self == nullptr) {
 		unit_map::const_iterator it = units.find(self_loc_);
 		if(it.valid()) {
@@ -2307,6 +2312,9 @@ bool attack_type::special_tooltip_active(const unit_ability_t& ab) const
 		}
 	}
 
+	//this part of checking is similar to special_active but not the same.
+	//"filter_opponent" is not checked here, and "filter_attacker/defender" only
+	//if attacker/defender is self_.
 	bool applied_both = ab.cfg()["apply_to"] == "both";
 	std::string self_check_if_recursion = (applied_both || whom_is_self) ? ab.tag() : "";
 	if (!special_unit_matches(self, other, self_loc_, shared_from_this(), ab.cfg(), is_for_listing_, "filter_student", self_check_if_recursion))
