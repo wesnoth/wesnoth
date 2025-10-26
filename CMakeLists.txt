@@ -53,7 +53,7 @@ option(ENABLE_TESTS "Build unit tests")
 option(ENABLE_NLS "Enable building of translations" ${ENABLE_GAME})
 
 set(BOOST_VERSION "1.70")
-set(BOOST_REQ_COMPONENTS iostreams program_options regex system thread random coroutine locale filesystem graph)
+set(BOOST_REQ_COMPONENTS iostreams program_options regex thread random coroutine locale filesystem graph)
 
 if(ENABLE_TESTS)
   list(APPEND BOOST_REQ_COMPONENTS unit_test_framework)

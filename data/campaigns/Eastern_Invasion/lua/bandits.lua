@@ -61,8 +61,13 @@ local function bandits_found(x,y)
 
 		if rand3 <= boss_chance or #bandit_villages < 3 then
 			vars.boss_found = true
-			local loc = wesnoth.map.find({T["not"] { T.filter {} } , T["and"] { x = x, y = y, radius = 2 } })[1]
-			wesnoth.game_events.fire("boss_found", x, y, loc[1], loc[2])
+			local radius = 2
+			local locs
+			repeat
+				locs = wesnoth.map.find({T["not"] { T.filter {} } , T["and"] { x = x, y = y, radius = radius } })
+				radius = radius + 1
+			until locs[1]
+			wesnoth.game_events.fire("boss_found", x, y, locs[1][1], locs[1][2])
 		end
 	end
 end

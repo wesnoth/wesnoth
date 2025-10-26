@@ -29,7 +29,7 @@
 #include "serialization/preprocessor.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
-#include "utils/from_chars.hpp"
+#include "utils/charconv.hpp"
 #include "utils/iterable_pair.hpp"
 #include "game_version.hpp"
 
@@ -838,7 +838,10 @@ void server::login_client(boost::asio::yield_context yield, SocketPtr socket)
 	}
 
 	simple_wml::node& player_cfg = games_and_users_list_.root().add_child("user");
-	auto [new_player, inserted] = player_connections_.emplace(
+
+	player_iterator new_player;
+	bool inserted;
+	std::tie(new_player, inserted) = player_connections_.emplace(
 		socket,
 		username,
 		player_cfg,

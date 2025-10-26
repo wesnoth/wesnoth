@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.4.2+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-09-21 23:01-0500\n"
+"POT-Creation-Date: 2025-10-20 20:10-0500\n"
 "PO-Revision-Date: 2025-03-21 10:15+0100\n"
 "Last-Translator: Mejri Ziad <nouveau.dep@gmail.com>\n"
 "Language-Team: none\n"
@@ -4527,7 +4527,7 @@ msgid "Invalid deprecation level $level (should be 1-4)"
 msgstr "مستوى الإهمال $level غير صالح (يجب أن يكون 1-4)"
 
 #. [lua]: wml_actions.deprecated_message
-#: data/lua/wml-tags.lua:887
+#: data/lua/wml-tags.lua:891
 msgid "Invalid deprecation level (should be 1-4)"
 msgstr "مستوى الإهمال غير صالح (يجب أن يكون 1-4)"
 
@@ -9146,77 +9146,77 @@ msgstr "في $pos"
 msgid "Value: ‘$value’ Previous: ‘$previous_value’"
 msgstr "القيمة: '$value' السابقة: '$previous_value'"
 
-#: src/serialization/string_utils.cpp:560
+#: src/serialization/string_utils.cpp:556
 msgid "prefix_milli^m"
 msgstr "ملي"
 
-#: src/serialization/string_utils.cpp:561
+#: src/serialization/string_utils.cpp:557
 msgid "prefix_micro^µ"
 msgstr "ميكرو"
 
-#: src/serialization/string_utils.cpp:562
+#: src/serialization/string_utils.cpp:558
 msgid "prefix_nano^n"
 msgstr "نانو"
 
-#: src/serialization/string_utils.cpp:563
+#: src/serialization/string_utils.cpp:559
 msgid "prefix_pico^p"
 msgstr "بيكو"
 
-#: src/serialization/string_utils.cpp:564
+#: src/serialization/string_utils.cpp:560
 msgid "prefix_femto^f"
 msgstr "فيمتو"
 
-#: src/serialization/string_utils.cpp:565
+#: src/serialization/string_utils.cpp:561
 msgid "prefix_atto^a"
 msgstr "آتو"
 
-#: src/serialization/string_utils.cpp:566
+#: src/serialization/string_utils.cpp:562
 msgid "prefix_zepto^z"
 msgstr "زيبتو"
 
-#: src/serialization/string_utils.cpp:567
+#: src/serialization/string_utils.cpp:563
 msgid "prefix_yocto^y"
 msgstr "يوكتو"
 
 #. TRANSLATORS: Translate the K in KiB only
-#: src/serialization/string_utils.cpp:580
+#: src/serialization/string_utils.cpp:576
 msgid "prefix_kibi^K"
 msgstr "كيبي"
 
-#: src/serialization/string_utils.cpp:581
+#: src/serialization/string_utils.cpp:577
 msgid "prefix_kilo^k"
 msgstr "كيلو"
 
-#: src/serialization/string_utils.cpp:583
+#: src/serialization/string_utils.cpp:579
 msgid "prefix_mega^M"
 msgstr "ميغا"
 
-#: src/serialization/string_utils.cpp:584
+#: src/serialization/string_utils.cpp:580
 msgid "prefix_giga^G"
 msgstr "جيغا"
 
-#: src/serialization/string_utils.cpp:585
+#: src/serialization/string_utils.cpp:581
 msgid "prefix_tera^T"
 msgstr "تيرا"
 
-#: src/serialization/string_utils.cpp:586
+#: src/serialization/string_utils.cpp:582
 msgid "prefix_peta^P"
 msgstr "بيتا"
 
-#: src/serialization/string_utils.cpp:587
+#: src/serialization/string_utils.cpp:583
 msgid "prefix_exa^E"
 msgstr "ايكسا"
 
-#: src/serialization/string_utils.cpp:588
+#: src/serialization/string_utils.cpp:584
 msgid "prefix_zetta^Z"
 msgstr "زيتا"
 
-#: src/serialization/string_utils.cpp:589
+#: src/serialization/string_utils.cpp:585
 msgid "prefix_yotta^Y"
 msgstr "يوتا"
 
 #. TRANSLATORS: Translate the i in (for example) KiB only
-#: src/serialization/string_utils.cpp:604
+#: src/serialization/string_utils.cpp:600
 msgid "infix_binary^i"
 msgstr "إ"
 
@@ -9287,11 +9287,11 @@ msgstr "قرية عدو"
 msgid "Owned village"
 msgstr "قرية مملوكة"
 
-#: src/theme.cpp:314
+#: src/theme.cpp:330
 msgid "border_size should be between 0.0 and 0.5."
 msgstr "border_size يجب أن يكون بين 0.0 و 0.5."
 
-#: src/theme.cpp:565 src/theme.cpp:570
+#: src/theme.cpp:581 src/theme.cpp:586
 msgid "Hotkey(s): "
 msgstr "مفتاح التشغيل السريع: "
 
@@ -9304,21 +9304,21 @@ msgstr "روتين الوقت من اليوم"
 msgid "This Time of Day is only a Stub!"
 msgstr "هذا الوقت من اليوم هو مجرد روتين!"
 
-#: src/units/abilities.cpp:1053
+#: src/units/abilities.cpp:1052
 msgid "Owned: "
 msgstr "يملكه: "
 
 #. TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
-#: src/units/abilities.cpp:1057
+#: src/units/abilities.cpp:1056
 msgid "Taught: "
 msgstr "علم: "
 
 #. TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
-#: src/units/abilities.cpp:1061
+#: src/units/abilities.cpp:1060
 msgid "Taught: (by an enemy): "
 msgstr "علّمت: (من قبل عدو): "
 
-#: src/units/abilities.cpp:1074
+#: src/units/abilities.cpp:1073
 msgid "Used by opponent: "
 msgstr "يستخدمه الخصم: "
 
@@ -9331,27 +9331,27 @@ msgid "Parry:"
 msgstr "التحدي:"
 
 #. TRANSLATORS: Current value for WML code set_min_range, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:501
+#: src/units/attack_type.cpp:485
 msgid "$number min range"
 msgstr "$number ضرر أدنى"
 
 #. TRANSLATORS: Current value for WML code increase_min_range, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:508
+#: src/units/attack_type.cpp:492
 msgid "<span color=\"$color\">$number_or_percent</span> min range"
 msgstr "<span color=\"$color\">$number_or_percent</span> ضرر أدنى"
 
 #. TRANSLATORS: Current value for WML code set_max_range, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:515
+#: src/units/attack_type.cpp:499
 msgid "$number max range"
 msgstr "$number ضرر أقصى"
 
 #. TRANSLATORS: Current value for WML code increase_max_range, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:522
+#: src/units/attack_type.cpp:506
 msgid "<span color=\"$color\">$number_or_percent</span> max range"
 msgstr "<span color=\"$color\">$number_or_percent</span> ضررأقصى"
 
 #. TRANSLATORS: Current value for WML code increase_damage, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:529
+#: src/units/attack_type.cpp:513
 msgid "<span color=\"$color\">$number_or_percent</span> damage"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> damage"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> ضرر"
@@ -9361,7 +9361,7 @@ msgstr[3] "<span color=\"$color\">$number_or_percent</span> أضرار"
 msgstr[4] "<span color=\"$color\">$number_or_percent</span> أضرار"
 msgstr[5] "<span color=\"$color\">$number_or_percent</span> أضرار"
 
-#: src/units/attack_type.cpp:538
+#: src/units/attack_type.cpp:522
 msgid "$number damage"
 msgid_plural "$number damage"
 msgstr[0] "$number ضرر"
@@ -9372,7 +9372,7 @@ msgstr[4] "$number أضرار"
 msgstr[5] "$number أضرار"
 
 #. TRANSLATORS: Current value for WML code increase_attacks, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:547
+#: src/units/attack_type.cpp:531
 msgid "<span color=\"$color\">$number_or_percent</span> strike"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> strikes"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> إصابة"
@@ -9383,7 +9383,7 @@ msgstr[4] "<span color=\"$color\">$number_or_percent</span> إصابات"
 msgstr[5] "<span color=\"$color\">$number_or_percent</span> إصابات"
 
 #. TRANSLATORS: Current value for WML code set_attacks, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:556
+#: src/units/attack_type.cpp:540
 msgid "$number strike"
 msgid_plural "$number strikes"
 msgstr[0] "$number إصابة"
@@ -9394,27 +9394,27 @@ msgstr[4] "$number إصابات"
 msgstr[5] "$number إصابات"
 
 #. TRANSLATORS: Current value for WML code set_accuracy, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:565
+#: src/units/attack_type.cpp:549
 msgid "$number| accuracy"
 msgstr "$number| الدقة"
 
 #. TRANSLATORS: Current value for WML code increase_accuracy, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:572
+#: src/units/attack_type.cpp:556
 msgid "<span color=\"$color\">$number_or_percent|%</span> accuracy"
 msgstr "<span color=\"$color\">$number_or_percent|%</span> الدقة"
 
 #. TRANSLATORS: Current value for WML code set_parry, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:579
+#: src/units/attack_type.cpp:563
 msgid "$number parry"
 msgstr "$number تحدي"
 
 #. TRANSLATORS: Current value for WML code increase_parry, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:586
+#: src/units/attack_type.cpp:570
 msgid "<span color=\"$color\">$number_or_percent</span> parry"
 msgstr "<span color=\"$color\">$number_or_percent</span> تحدي"
 
 #. TRANSLATORS: Current value for WML code set_movement_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:593
+#: src/units/attack_type.cpp:577
 msgid "$number movement point"
 msgid_plural "$number movement points"
 msgstr[0] "$number نقطة حركة"
@@ -9425,7 +9425,7 @@ msgstr[4] "$number نقاط حركة"
 msgstr[5] "$number نقاط حركة"
 
 #. TRANSLATORS: Current value for WML code increase_movement_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:602
+#: src/units/attack_type.cpp:586
 msgid "<span color=\"$color\">$number_or_percent</span> movement point"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> movement points"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> نقطة حركة"
@@ -9436,7 +9436,7 @@ msgstr[4] "<span color=\"$color\">$number_or_percent</span> نقاط حركة"
 msgstr[5] "<span color=\"$color\">$number_or_percent</span> نقاط حركة"
 
 #. TRANSLATORS: Current value for WML code set_attacks_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:611
+#: src/units/attack_type.cpp:595
 msgid "$number attack used"
 msgid_plural "$number attacks used"
 msgstr[0] "$number هجوم مستخدم"
@@ -9447,7 +9447,7 @@ msgstr[4] "$number هجوم مستخدم"
 msgstr[5] "$number هجوم مستخدم"
 
 #. TRANSLATORS: Current value for WML code increase_attacks_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:620
+#: src/units/attack_type.cpp:604
 msgid "<span color=\"$color\">$number_or_percent</span> attack used"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> attacks used"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> هجوم مستخدم"
@@ -9527,15 +9527,15 @@ msgstr "لا يمكن استبعاد هذه الوحدة."
 msgid "This unit is a leader and cannot be dismissed."
 msgstr "هذه الوحدة هي قائد ولا يمكن الاستغناء عنها."
 
-#: src/units/unit.cpp:2008
+#: src/units/unit.cpp:2007
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/units/unit.cpp:2014
+#: src/units/unit.cpp:2013
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "<span color=\"$color\">$number_or_percent</span> نقطة حياة"
 
-#: src/units/unit.cpp:2024
+#: src/units/unit.cpp:2023
 msgid "<span color=\"$color\">$number_or_percent</span> move"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> حركة"
@@ -9545,19 +9545,19 @@ msgstr[3] "<span color=\"$color\">$number_or_percent</span> حركات"
 msgstr[4] "<span color=\"$color\">$number_or_percent</span> حركة"
 msgstr[5] "<span color=\"$color\">$number_or_percent</span> حركة"
 
-#: src/units/unit.cpp:2030
+#: src/units/unit.cpp:2029
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "<span color=\"$color\">$number_or_percent</span> الرؤية"
 
-#: src/units/unit.cpp:2034
+#: src/units/unit.cpp:2033
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "<span color=\"$color\">$number_or_percent</span> تشويش"
 
-#: src/units/unit.cpp:2039
+#: src/units/unit.cpp:2038
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "<span color=\"$color\">$number_or_percent</span> نقطة خبرة  للتقدم"
 
-#: src/units/unit.cpp:2043
+#: src/units/unit.cpp:2042
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
 msgid_plural ""
 "<span color=\"$color\">$number_or_percent</span> attacks per turn"
@@ -9568,11 +9568,11 @@ msgstr[3] "<span color=\"$color\">$number_or_percent</span> هجمات في ال
 msgstr[4] "<span color=\"$color\">$number_or_percent</span> هجوم في الدور"
 msgstr[5] "<span color=\"$color\">$number_or_percent</span> هجوم في الدور"
 
-#: src/units/unit.cpp:2050
+#: src/units/unit.cpp:2049
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "<span color=\"$color\">$number_or_percent</span> تكلفة الاستدعاء"
 
-#: src/units/unit.cpp:2535
+#: src/units/unit.cpp:2534
 msgid "$effect_description per level"
 msgstr "$effect_description لكل مستوى"
 

@@ -21,8 +21,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.19\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-09-21 23:01-0500\n"
-"PO-Revision-Date: 2025-08-29 14:30-0300\n"
+"POT-Creation-Date: 2025-10-20 20:10-0500\n"
+"PO-Revision-Date: 2025-10-21 15:30-0300\n"
 "Last-Translator: Sebastián Lecchini<sebas38760@gmail.com>\n"
 "Language-Team: Wesnoth Spanish translation\n"
 "Language: es\n"
@@ -2867,12 +2867,20 @@ msgstr ""
 "suffix=men|drum|tor|num|lad|de|ak|lol|dum|tam|nur|dium|deum|bil|rook|relm|"
 "dium|numm|dan|doom|tum|din\n"
 
-# Por lo que me han comentado en el foro. Esta línea ya no se usa para generar nombres aleatorios pseudo españoles. Ahora se usa una fórmula en otra línea. Dejaré un comentario en la misma.
+# Por lo que me han comentado en el foro. Esta línea ya no se usa para generar
+# nombres aleatorios pseudo españoles. Ahora se usa una fórmula en otra línea.
+# Dejaré un comentario en la misma.
 #: data/core/macros/names.cfg:289
 msgid "Bal,Cam,Corn,Del,Earl,El,Fox,Fren,Gel,Hel,Hex,Hol,Hox,Il,Kin,Nam,Nes,New,Ol,Old,Olf,Oul,Ox,Rock,Rook,Sal,Sam,Sed,Sel,Sen,Sil,Tal,Water,Wet,York"
 msgstr "Altos,Almas,Alisos,Años,Arcos,Asnos,Barbos,Barcos,Baños,Bastos,Bolos,Búhos,Bulos,Cameros,Cañas,Casas,Cercos,Cirros,Coles,Cominos,Copas,Cimas,Dagas,Daños,Dolores,Dunas,Enanos,Elfos,Fangos,Fatigas,Fosos,Fríos,Frutos,Gamos,Gatos,Gentes,Hadas,Helados,Hilos,Humanos,Humos,Hongos,Iluso,Inane,Jaras,Jotas,Justas,Lanzas,Lances,Lilas,Lindes,Linos,Lobos,Locos,Lunas,Magos,Malos,Matas,Mesas,Mirtos,Mirlos,Mulas,Nagas,Nabos,Nogales,Nevadas,Olores,Olmos,Orcos,Oro,Osos,Palos,Patos,Peces,Pecos,Peras,Picos,Pinares,Piñas,Raíces,Ranas,Reyes,Rocas,Rosas,Sales,Salmones,Santos,Secos,Setos,Setas,Sapos,Silos,Simas,Soles,Sustos,Silvanos,Sirenas,Tejos,Tilos,Tocones,Topos,Tortas,Talentos,Vacas,Varas,Vides,Viñas,Vistas,Zarza,Zorros,Zumos,Zotes"
 
-# Esto tiene su truco. En primer lugar he obtenido una lista de códigos postales con todas las poblaciones españolas. Con una hoja de cálculo he reducido los nombres a una sola palabra y he quitado espacios, guiones y otros símbolos. Con las palabras resultantes he calculado los 30 prefijos de dos o tres letras más comunes. Luego he hecho lo mismo con los sufijos. Los he añadido a la fórmula y ahora se generan nombres aleatorios pseudo españoles en los mapas generados para partidas multijugador.
+# Esto tiene su truco. En primer lugar he obtenido una lista de códigos
+# postales con todas las poblaciones españolas. Con una hoja de cálculo he
+# reducido los nombres a una sola palabra y he quitado espacios, guiones y
+# otros símbolos. Con las palabras resultantes he calculado los 30 prefijos de
+# dos o tres letras más comunes. Luego he hecho lo mismo con los sufijos. Los
+# he añadido a la fórmula y ahora se generan nombres aleatorios pseudo
+# españoles en los mapas generados para partidas multijugador.
 #. Generator for the base names of features assigned by the random map generator; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:291
 msgid ""
@@ -3047,7 +3055,8 @@ msgstr "Santuario silvano"
 msgid "Suspense"
 msgstr "Suspense"
 
-# No se si es un barranco, una rendición, un desplome, una cascada, etc Está fuera de contexto
+# No se si es un barranco, una rendición, un desplome, una cascada, etc Está
+# fuera de contexto
 #. [music]
 #: data/core/macros/sound-utils.cfg:295
 msgid "The City Falls"
@@ -3396,7 +3405,8 @@ msgstr ""
 msgid "arcane"
 msgstr "arcano"
 
-# Hay que cambiar el orden de las palabras para que tenga sentido en castellano. Lo mismo para las líneas siguientes.
+# Hay que cambiar el orden de las palabras para que tenga sentido en
+# castellano. Lo mismo para las líneas siguientes.
 #. [naming]
 #. Generator for bridge labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
 #: data/english.cfg:37
@@ -3498,7 +3508,8 @@ msgstr ""
 "\t\tmain={suffix}$base{!}\n"
 "\t"
 
-# Se cambian los sufijos por formas de nombrar una población en castellano a discreción. Se cambia el orden
+# Se cambian los sufijos por formas de nombrar una población en castellano a
+# discreción. Se cambia el orden
 #. [village_naming]
 #. Generator for generic village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
 #: data/english.cfg:74
@@ -3599,7 +3610,12 @@ msgstr ""
 "\t\tmain={suffix}{prefix}\n"
 "\t"
 
-# Aquí los ingleses usan una serie de sufijos para crear nombres aleatorios que en castellano no tienen ningún significado. Los que lo tienen quedan muy incoherentes. Así que lo que queda feo en el mapa se cambia por otra palabra más o menos adecuada. Muchas de las palabras en inglés se refieren a cementerios, tumbas, restos y otras desgracias que en castellano quedan fatal si se traducen directamente.
+# Aquí los ingleses usan una serie de sufijos para crear nombres aleatorios
+# que en castellano no tienen ningún significado. Los que lo tienen quedan muy
+# incoherentes. Así que lo que queda feo en el mapa se cambia por otra palabra
+# más o menos adecuada. Muchas de las palabras en inglés se refieren a
+# cementerios, tumbas, restos y otras desgracias que en castellano quedan
+# fatal si se traducen directamente.
 #. [village_naming]
 #. Generator for hill village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
 #: data/english.cfg:109
@@ -3630,7 +3646,8 @@ msgstr ""
 "\t\tmain={suffix}{prefix}\n"
 "\t"
 
-# Los túmulos y tumbas, si resultan excesivos se podrían sustituir por cualquier otra cosa más neutral: flores, cabras, estrellas, etc.
+# Los túmulos y tumbas, si resultan excesivos se podrían sustituir por
+# cualquier otra cosa más neutral: flores, cabras, estrellas, etc.
 #. [village_naming]
 #. Generator for mountain labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
 #: data/english.cfg:120
@@ -3646,7 +3663,10 @@ msgstr ""
 "\t\tmain={suffix}$base{!}\n"
 "\t"
 
-# Accidentes geográficos en los caminos. Bury en general es un cementerio así que se cambia por algo más adecuado en castellano. Lo mismo con cualquier otra palabra intraducible o poco útil en castellano. Cambiamos el orden de las palabras para castellanizarlo.
+# Accidentes geográficos en los caminos. Bury en general es un cementerio así
+# que se cambia por algo más adecuado en castellano. Lo mismo con cualquier
+# otra palabra intraducible o poco útil en castellano. Cambiamos el orden de
+# las palabras para castellanizarlo.
 #. [village_naming]
 #. Generator for roadside village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
 #: data/english.cfg:125
@@ -3663,7 +3683,8 @@ msgstr ""
 "\t\tmain={suffix}{prefix}\n"
 "\t"
 
-# Esto serían algún tipo de accidente geográfico de las marismas o pantanos. Así que el tema de las tumbas se podría cambiar por algo más adecuado.
+# Esto serían algún tipo de accidente geográfico de las marismas o pantanos.
+# Así que el tema de las tumbas se podría cambiar por algo más adecuado.
 #. [village_naming]
 #. Generator for swamp village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
 #: data/english.cfg:131
@@ -3993,7 +4014,7 @@ msgid "Invalid deprecation level $level (should be 1-4)"
 msgstr "Nivel de exclusión $level no válido (debería ser 1-4)"
 
 #. [lua]: wml_actions.deprecated_message
-#: data/lua/wml-tags.lua:887
+#: data/lua/wml-tags.lua:891
 msgid "Invalid deprecation level (should be 1-4)"
 msgstr "Nivel de exclusión no válido (debería ser 1-4)"
 
@@ -4996,7 +5017,9 @@ msgstr ""
 "pueden utilizar el borde de un bosque de una manera similar, y los enanos "
 "puede hacer lo mismo con las montañas."
 
-# La palabra BERSERK del idioma inglés es traducida por la palabra FRENESÍ del idioma español.  Esto es por ambas significar más o menos lo mismo, refiriéndose a una persona que se vuelve loca de rabia o coraje.  (AELC)
+# La palabra BERSERK del idioma inglés es traducida por la palabra FRENESÍ del
+# idioma español.  Esto es por ambas significar más o menos lo mismo,
+# refiriéndose a una persona que se vuelve loca de rabia o coraje.  (AELC)
 #. [tip]
 #: data/tips.cfg:209
 msgid ""
@@ -5071,7 +5094,9 @@ msgstr ""
 msgid "<i>― Lord Hamel of Knalga</i>"
 msgstr "<i>―Señor Hamel de Knalga</i>"
 
-# No encontré ninguna referencia para la palabra ILLUMINATES en el idioma español dentro de Wesnoth, así que elegí la palabra adecuada en el idioma español para ella, ILUMINAR.  (AELC)
+# No encontré ninguna referencia para la palabra ILLUMINATES en el idioma
+# español dentro de Wesnoth, así que elegí la palabra adecuada en el idioma
+# español para ella, ILUMINAR.  (AELC)
 #. [tip]
 #: data/tips.cfg:229
 msgid ""
@@ -5221,7 +5246,9 @@ msgstr ""
 "pantalla de <i>Cargar partida</i> al cargar archivos de guardado de inicio "
 "de escenario."
 
-# No encontré referencia alguna a unidades FERAL en el idioma español en Wesnoth, así que escogí la palabra que mejor describiera su significada en el idioma inglés, FIERAS
+# No encontré referencia alguna a unidades FERAL en el idioma español en
+# Wesnoth, así que escogí la palabra que mejor describiera su significada en
+# el idioma inglés, FIERAS
 #
 # Aelonin/Darkmage edit:
 # Traduje "feral" por "salvaje" en wesnoth-help.
@@ -6168,44 +6195,44 @@ msgstr "%d de %b del %y"
 #: src/formula/format_timespan.hpp:38
 msgid "timespan^$num year"
 msgid_plural "timespan^$num years"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "$num año"
+msgstr[1] "$num años"
 
 #: src/formula/format_timespan.hpp:39
 msgid "timespan^$num month"
 msgid_plural "timespan^$num months"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "$num mes"
+msgstr[1] "$num meses"
 
 #: src/formula/format_timespan.hpp:40
 msgid "timespan^$num week"
 msgid_plural "timespan^$num weeks"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "$num semana"
+msgstr[1] "$num semanas"
 
 #: src/formula/format_timespan.hpp:41
 msgid "timespan^$num day"
 msgid_plural "timespan^$num days"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "$num día"
+msgstr[1] "$num días"
 
 #: src/formula/format_timespan.hpp:42
 msgid "timespan^$num hour"
 msgid_plural "timespan^$num hours"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "$num hora"
+msgstr[1] "$num horas"
 
 #: src/formula/format_timespan.hpp:43
 msgid "timespan^$num minute"
 msgid_plural "timespan^$num minutes"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "$num minuto"
+msgstr[1] "$num minutos"
 
 #: src/formula/format_timespan.hpp:44
 msgid "timespan^$num second"
 msgid_plural "timespan^$num seconds"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "$num segundo"
+msgstr[1] "$num segundos"
 
 #: src/formula/format_timespan.hpp:89 src/formula/format_timespan.hpp:112
 msgid "timespan^expired"
@@ -6673,7 +6700,8 @@ msgstr "La contraseña que introdujo es incorrecta."
 msgid "You have made too many login attempts."
 msgstr "Ha realizado demasiados intentos de acceso."
 
-# Poner resumen criptográfico en vez de hash queda muy largo. En según que ámbitos ya sabemos lo que es el hash.
+# Poner resumen criptográfico en vez de hash queda muy largo. En según que
+# ámbitos ya sabemos lo que es el hash.
 #: src/game_initialization/multiplayer.cpp:470
 msgid "Password hashing failed."
 msgstr "Error de hash de contraseña."
@@ -7686,7 +7714,8 @@ msgstr ""
 "El comando de depuración 'unit: $unit' falló: no se seleccionó ninguna "
 "unidad ni se pasó el cursor sobre ella."
 
-# Es un elemento del WML. No se debe traducir  lawful, neutral, chaotic, o liminal.
+# Es un elemento del WML. No se debe traducir  lawful, neutral, chaotic, o
+# liminal.
 #: src/menu_events.cpp:2005
 msgid ""
 "Invalid alignment: ‘$alignment’, needs to be one of lawful, neutral, "
@@ -8358,14 +8387,16 @@ msgstr "Cuenta atrás hasta que su turno termine automáticamente."
 msgid "Turn Countdown"
 msgstr "Cuenta atrás de turno"
 
-# TRANSLATORS: Day of week + month + day of month + year + 12-hour time, eg 'Tue Nov 02 2021, 1:59 PM'. Format for your locale.
+# TRANSLATORS: Day of week + month + day of month + year + 12-hour time, eg
+# 'Tue Nov 02 2021, 1:59 PM'. Format for your locale.
 #. TRANSLATORS: Day of week + month + day of month + year + 12-hour time, eg 'Tue Nov 02 2021, 1:59 PM'.
 #. Format for your locale.
 #: src/save_index.cpp:247
 msgid "%a %b %d %Y, %I:%M %p"
 msgstr "%a %d %b %I:%M %p %Y"
 
-# TRANSLATORS: Day of week + month + day of month + year + 24-hour time, eg 'Tue Nov 02 2021, 13:59'. Format for your locale.
+# TRANSLATORS: Day of week + month + day of month + year + 24-hour time, eg
+# 'Tue Nov 02 2021, 13:59'. Format for your locale.
 #. TRANSLATORS: Day of week + month + day of month + year + 24-hour time, eg 'Tue Nov 02 2021, 13:59'.
 #. Format for your locale.
 #: src/save_index.cpp:250
@@ -8570,77 +8601,77 @@ msgstr "en $pos"
 msgid "Value: ‘$value’ Previous: ‘$previous_value’"
 msgstr "Valor: '$value' Previo: '$previous_value'"
 
-#: src/serialization/string_utils.cpp:560
+#: src/serialization/string_utils.cpp:556
 msgid "prefix_milli^m"
 msgstr "m"
 
-#: src/serialization/string_utils.cpp:561
+#: src/serialization/string_utils.cpp:557
 msgid "prefix_micro^µ"
 msgstr "µ"
 
-#: src/serialization/string_utils.cpp:562
+#: src/serialization/string_utils.cpp:558
 msgid "prefix_nano^n"
 msgstr "n"
 
-#: src/serialization/string_utils.cpp:563
+#: src/serialization/string_utils.cpp:559
 msgid "prefix_pico^p"
 msgstr "p"
 
-#: src/serialization/string_utils.cpp:564
+#: src/serialization/string_utils.cpp:560
 msgid "prefix_femto^f"
 msgstr "f"
 
-#: src/serialization/string_utils.cpp:565
+#: src/serialization/string_utils.cpp:561
 msgid "prefix_atto^a"
 msgstr "a"
 
-#: src/serialization/string_utils.cpp:566
+#: src/serialization/string_utils.cpp:562
 msgid "prefix_zepto^z"
 msgstr "z"
 
-#: src/serialization/string_utils.cpp:567
+#: src/serialization/string_utils.cpp:563
 msgid "prefix_yocto^y"
 msgstr "y"
 
 #. TRANSLATORS: Translate the K in KiB only
-#: src/serialization/string_utils.cpp:580
+#: src/serialization/string_utils.cpp:576
 msgid "prefix_kibi^K"
 msgstr "K"
 
-#: src/serialization/string_utils.cpp:581
+#: src/serialization/string_utils.cpp:577
 msgid "prefix_kilo^k"
 msgstr "k"
 
-#: src/serialization/string_utils.cpp:583
+#: src/serialization/string_utils.cpp:579
 msgid "prefix_mega^M"
 msgstr "M"
 
-#: src/serialization/string_utils.cpp:584
+#: src/serialization/string_utils.cpp:580
 msgid "prefix_giga^G"
 msgstr "G"
 
-#: src/serialization/string_utils.cpp:585
+#: src/serialization/string_utils.cpp:581
 msgid "prefix_tera^T"
 msgstr "T"
 
-#: src/serialization/string_utils.cpp:586
+#: src/serialization/string_utils.cpp:582
 msgid "prefix_peta^P"
 msgstr "P"
 
-#: src/serialization/string_utils.cpp:587
+#: src/serialization/string_utils.cpp:583
 msgid "prefix_exa^E"
 msgstr "E"
 
-#: src/serialization/string_utils.cpp:588
+#: src/serialization/string_utils.cpp:584
 msgid "prefix_zetta^Z"
 msgstr "Z"
 
-#: src/serialization/string_utils.cpp:589
+#: src/serialization/string_utils.cpp:585
 msgid "prefix_yotta^Y"
 msgstr "Y"
 
 #. TRANSLATORS: Translate the i in (for example) KiB only
-#: src/serialization/string_utils.cpp:604
+#: src/serialization/string_utils.cpp:600
 msgid "infix_binary^i"
 msgstr "i"
 
@@ -8710,11 +8741,11 @@ msgstr "Aldea enemiga"
 msgid "Owned village"
 msgstr "Aldea propia"
 
-#: src/theme.cpp:314
+#: src/theme.cpp:330
 msgid "border_size should be between 0.0 and 0.5."
 msgstr "border_size debería estar entre 0.0 y 0.5."
 
-#: src/theme.cpp:565 src/theme.cpp:570
+#: src/theme.cpp:581 src/theme.cpp:586
 msgid "Hotkey(s): "
 msgstr "Atajo(s) de teclado: "
 
@@ -8727,21 +8758,21 @@ msgstr "Franja horaria mínima"
 msgid "This Time of Day is only a Stub!"
 msgstr "¡Esta franja horaria es solo mínima!"
 
-#: src/units/abilities.cpp:1053
+#: src/units/abilities.cpp:1052
 msgid "Owned: "
 msgstr "Posee: "
 
 #. TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
-#: src/units/abilities.cpp:1057
+#: src/units/abilities.cpp:1056
 msgid "Taught: "
 msgstr "Influye: "
 
 #. TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
-#: src/units/abilities.cpp:1061
+#: src/units/abilities.cpp:1060
 msgid "Taught: (by an enemy): "
 msgstr "Influye (por enemigo): "
 
-#: src/units/abilities.cpp:1074
+#: src/units/abilities.cpp:1073
 msgid "Used by opponent: "
 msgstr "Usado por oponente: "
 
@@ -8754,95 +8785,95 @@ msgid "Parry:"
 msgstr "Esquivar:"
 
 #. TRANSLATORS: Current value for WML code set_min_range, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:501
+#: src/units/attack_type.cpp:485
 msgid "$number min range"
 msgstr "Rango mínimo $number"
 
 #. TRANSLATORS: Current value for WML code increase_min_range, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:508
+#: src/units/attack_type.cpp:492
 msgid "<span color=\"$color\">$number_or_percent</span> min range"
 msgstr "Rango mínimo <span color=\"$color\">$number_or_percent</span>"
 
 #. TRANSLATORS: Current value for WML code set_max_range, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:515
+#: src/units/attack_type.cpp:499
 msgid "$number max range"
 msgstr "Rango máximo $number"
 
 #. TRANSLATORS: Current value for WML code increase_max_range, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:522
+#: src/units/attack_type.cpp:506
 msgid "<span color=\"$color\">$number_or_percent</span> max range"
 msgstr "Rango máximo <span color=\"$color\">$number_or_percent</span>"
 
 #. TRANSLATORS: Current value for WML code increase_damage, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:529
+#: src/units/attack_type.cpp:513
 msgid "<span color=\"$color\">$number_or_percent</span> damage"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> damage"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> daño"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> daños"
 
-#: src/units/attack_type.cpp:538
+#: src/units/attack_type.cpp:522
 msgid "$number damage"
 msgid_plural "$number damage"
 msgstr[0] "$number daño"
 msgstr[1] "$number daños"
 
 #. TRANSLATORS: Current value for WML code increase_attacks, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:547
+#: src/units/attack_type.cpp:531
 msgid "<span color=\"$color\">$number_or_percent</span> strike"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> strikes"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> golpe"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> golpes"
 
 #. TRANSLATORS: Current value for WML code set_attacks, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:556
+#: src/units/attack_type.cpp:540
 msgid "$number strike"
 msgid_plural "$number strikes"
 msgstr[0] "$number golpe"
 msgstr[1] "$number golpes"
 
 #. TRANSLATORS: Current value for WML code set_accuracy, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:565
+#: src/units/attack_type.cpp:549
 msgid "$number| accuracy"
 msgstr "$number| precisión"
 
 #. TRANSLATORS: Current value for WML code increase_accuracy, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:572
+#: src/units/attack_type.cpp:556
 msgid "<span color=\"$color\">$number_or_percent|%</span> accuracy"
 msgstr "<span color=\"$color\">$number_or_percent|%</span> precisión"
 
 #. TRANSLATORS: Current value for WML code set_parry, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:579
+#: src/units/attack_type.cpp:563
 msgid "$number parry"
 msgstr "$number bloqueo"
 
 #. TRANSLATORS: Current value for WML code increase_parry, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:586
+#: src/units/attack_type.cpp:570
 msgid "<span color=\"$color\">$number_or_percent</span> parry"
 msgstr "<span color=\"$color\">$number_or_percent</span> bloqueo"
 
 #. TRANSLATORS: Current value for WML code set_movement_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:593
+#: src/units/attack_type.cpp:577
 msgid "$number movement point"
 msgid_plural "$number movement points"
 msgstr[0] "$number punto de movimiento"
 msgstr[1] "$number puntos de movimiento"
 
 #. TRANSLATORS: Current value for WML code increase_movement_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:602
+#: src/units/attack_type.cpp:586
 msgid "<span color=\"$color\">$number_or_percent</span> movement point"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> movement points"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> movimiento"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> movimientos"
 
 #. TRANSLATORS: Current value for WML code set_attacks_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:611
+#: src/units/attack_type.cpp:595
 msgid "$number attack used"
 msgid_plural "$number attacks used"
 msgstr[0] "$number ataque usado"
 msgstr[1] "$number ataques usados"
 
 #. TRANSLATORS: Current value for WML code increase_attacks_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:620
+#: src/units/attack_type.cpp:604
 msgid "<span color=\"$color\">$number_or_percent</span> attack used"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> attacks used"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> ataque usado"
@@ -8916,45 +8947,45 @@ msgstr "Esta unidad no puede ser despedida."
 msgid "This unit is a leader and cannot be dismissed."
 msgstr "Esta unidad es un líder y no puede ser despedida."
 
-#: src/units/unit.cpp:2008
+#: src/units/unit.cpp:2007
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/units/unit.cpp:2014
+#: src/units/unit.cpp:2013
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "<span color=\"$color\">$number_or_percent</span> PV"
 
-#: src/units/unit.cpp:2024
+#: src/units/unit.cpp:2023
 msgid "<span color=\"$color\">$number_or_percent</span> move"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> movimiento"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> movimientos"
 
-#: src/units/unit.cpp:2030
+#: src/units/unit.cpp:2029
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "<span color=\"$color\">$number_or_percent</span> vista"
 
-#: src/units/unit.cpp:2034
+#: src/units/unit.cpp:2033
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "<span color=\"$color\">$number_or_percent</span> interferencia"
 
-#: src/units/unit.cpp:2039
+#: src/units/unit.cpp:2038
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "<span color=\"$color\">$number_or_percent</span> PX para promoción"
 
-#: src/units/unit.cpp:2043
+#: src/units/unit.cpp:2042
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
 msgid_plural ""
 "<span color=\"$color\">$number_or_percent</span> attacks per turn"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> ataque por turno"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> ataques por turno"
 
-#: src/units/unit.cpp:2050
+#: src/units/unit.cpp:2049
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr ""
 "<span color=\"$color\">$number_or_percent</span> coste de reincorporación"
 
-#: src/units/unit.cpp:2535
+#: src/units/unit.cpp:2534
 msgid "$effect_description per level"
 msgstr "$effect_description por nivel"
 
@@ -9110,7 +9141,10 @@ msgstr "Opciones del modo pizarra"
 #~ "Algunos tipos de terreno dan bonificaciones únicas, como sanar o "
 #~ "iluminación."
 
-# ¿Cómo traducirlo si aún no está traducida la campaña Wings of Victory? Esa campaña no es de la versión 1.14 estable sino de la versión 1.15 de desarrollo. Quizás sea un vuelo, pero también una expedición o una incursión. No conocemos el contexto.
+# ¿Cómo traducirlo si aún no está traducida la campaña Wings of Victory? Esa
+# campaña no es de la versión 1.14 estable sino de la versión 1.15 de
+# desarrollo. Quizás sea un vuelo, pero también una expedición o una
+# incursión. No conocemos el contexto.
 #~ msgid "<i>― Galun, Flight Leader, 5YW</i>"
 #~ msgstr "<i>― Galun, líder de vuelo, 5 AñW</i>"
 
@@ -9344,7 +9378,9 @@ msgstr "Opciones del modo pizarra"
 #~ msgid "Menu 2"
 #~ msgstr "Menú 2"
 
-# Esta es una traducción literal, ya que puede tener varios significados en el idioma inglés.  Esto último se debe a que no tiene más palabras que de a entender a lo que se refiere en inglés.
+# Esta es una traducción literal, ya que puede tener varios significados en el
+# idioma inglés.  Esto último se debe a que no tiene más palabras que de a
+# entender a lo que se refiere en inglés.
 #~ msgid "very long"
 #~ msgstr "muy largo"
 
@@ -9396,25 +9432,9 @@ msgstr "Opciones del modo pizarra"
 #~ "Esta partida guardada es de otra versión del juego ($version_number|). "
 #~ "¿Quiere intentar cargarla igualmente?"
 
-#, fuzzy
-#~ msgid "Provinces"
-#~ msgstr "Preferencias"
-
-#, fuzzy
-#~ msgid "Thermal"
-#~ msgstr "Normal"
-
-#, fuzzy
-#~ msgid "Enemies"
-#~ msgstr "Aldea enemiga"
-
 # e/y
 #~ msgid " and "
 #~ msgstr " y "
-
-#, fuzzy
-#~ msgid "damage"
-#~ msgstr "Daño"
 
 #~ msgid "XP to advance"
 #~ msgstr "PX para subir de nivel"
@@ -9422,36 +9442,13 @@ msgstr "Opciones del modo pizarra"
 #~ msgid "gold"
 #~ msgstr "oro"
 
-#, fuzzy
-#~ msgid "moves"
-#~ msgstr "movimiento"
-
 #~ msgid "gender^Random"
 #~ msgstr "Aleatorio"
 
-# Se le añaden ':' para separarlo de la cadena anterior. Si esta cadena se usa en más de un sitio, sería conveniente revisarla.
+# Se le añaden ':' para separarlo de la cadena anterior. Si esta cadena se usa
+# en más de un sitio, sería conveniente revisarla.
 #~ msgid " resistance vs "
 #~ msgstr " resistencia a ataques "
-
-#, fuzzy
-#~ msgid "strike"
-#~ msgstr "Golpes"
-
-#, fuzzy
-#~ msgid "female^steadfast"
-#~ msgstr "ralentizada"
-
-#, fuzzy
-#~ msgid "initiative"
-#~ msgstr " (inactivo)"
-
-#, fuzzy
-#~ msgid "$value| XP to advance"
-#~ msgstr "PX para subir de nivel"
-
-#, fuzzy
-#~ msgid "+moves defense"
-#~ msgstr "Ser más defensivo"
 
 #~ msgid "Use experimental PRNG combat"
 #~ msgstr "Usa combate con PRNG experimental"
@@ -9834,16 +9831,6 @@ msgstr "Opciones del modo pizarra"
 #~ msgid "None"
 #~ msgstr "Ninguno"
 
-#~ msgid "<span color=\"$color\">$number_or_percent movement</span> point"
-#~ msgid_plural ""
-#~ "<span color=\"$color\">$number_or_percent movement</span> points"
-#~ msgstr[0] ""
-#~ "<span color=\"$color\">$number_or_percent movement</span> punto de "
-#~ "movimiento"
-#~ msgstr[1] ""
-#~ "<span color=\"$color\">$number_or_percent movement</span> puntos de "
-#~ "movimiento"
-
 #~ msgid "Ping timeout"
 #~ msgstr "Tiempo de expiración de ping"
 
@@ -10111,16 +10098,6 @@ msgstr "Opciones del modo pizarra"
 
 #~ msgid "Update Failed"
 #~ msgstr "La actualización ha fallado"
-
-#~ msgid ""
-#~ "The following add-on could not be downloaded or installed successfully:"
-#~ msgid_plural ""
-#~ "The following add-ons could not be downloaded or installed successfully:"
-#~ msgstr[0] ""
-#~ "El siguiente complemento no pudo ser descargado o instalado correctamente:"
-#~ msgstr[1] ""
-#~ "Los siguientes complementos no pudieron ser descargados o instalados "
-#~ "correctamente:"
 
 #~ msgid "Female ♀"
 #~ msgstr "Femenino ♀"
@@ -10464,11 +10441,6 @@ msgstr "Opciones del modo pizarra"
 
 #~ msgid "(empty)"
 #~ msgstr "(vacío)"
-
-#~ msgid "multiplayer_starting_gold^Gold"
-#~ msgid_plural "multiplayer_starting_gold^Gold"
-#~ msgstr[0] "Oro"
-#~ msgstr[1] "Oro"
 
 #~ msgid "Statistics"
 #~ msgstr "Estadísticas"
@@ -10894,10 +10866,6 @@ msgstr "Opciones del modo pizarra"
 #~ msgstr ""
 #~ "DejaVu Sans,Andagii,Droid Sans Japanese,Droid Sans Fallback,Junicode"
 
-#, fuzzy
-#~ msgid "Clear Weather"
-#~ msgstr "Limpiar mensajes"
-
 #~ msgid "Initializing user interface"
 #~ msgstr "Iniciando interfaz de usuario"
 
@@ -10943,11 +10911,6 @@ msgstr "Opciones del modo pizarra"
 #~ msgid "Starting game"
 #~ msgstr "Empezando la partida"
 
-#~ msgid "unit^Gold"
-#~ msgid_plural "Gold"
-#~ msgstr[0] "Oro"
-#~ msgstr[1] "Oro"
-
 #~ msgid "Manage persistence data"
 #~ msgstr "Maneja datos persistentes"
 
@@ -10957,23 +10920,11 @@ msgstr "Opciones del modo pizarra"
 #~ msgid " move"
 #~ msgstr " movimiento"
 
-#, fuzzy
-#~ msgid " vision"
-#~ msgstr "visión: "
-
-#, fuzzy
-#~ msgid " jamming"
-#~ msgstr "Advertencia: "
-
 #~ msgid "Show your ignores and friends list."
 #~ msgstr "Muestra su lista de jugadores amigos e ignorados."
 
 #~ msgid "There are no players on your friends or ignore list."
 #~ msgstr "No hay jugadores en sus listas de amigos o jugadores ignorados."
-
-#, fuzzy
-#~ msgid "Battle for Wesnoth"
-#~ msgstr "La batalla por Wesnoth"
 
 #~ msgid "save_compression_short^gzip"
 #~ msgstr "gzip"
@@ -11344,10 +11295,6 @@ msgstr "Opciones del modo pizarra"
 #~ msgid "Show Helptip"
 #~ msgstr "Mostrar sugerencias"
 
-#, fuzzy
-#~ msgid "Compress savegames using bzip2"
-#~ msgstr "Comprimir partidas guardadas"
-
 #~ msgid "?"
 #~ msgstr "?"
 
@@ -11369,121 +11316,9 @@ msgstr "Opciones del modo pizarra"
 #~ msgid "KB"
 #~ msgstr "KB"
 
-#, fuzzy
-#~ msgid "Multiplayer_AI^Default AI (RCA)"
-#~ msgstr "IA RCA"
-
-#, fuzzy
-#~ msgid "Multiplayer_AI^Experimental AI"
-#~ msgstr "IA RCA"
-
-#, fuzzy
-#~ msgid "Enemy unit weight  (default: 100)"
-#~ msgstr "¡Unidad enemiga divisada!"
-
-#, fuzzy
-#~ msgid "Move Konrad here"
-#~ msgstr "Mover el líder aquí"
-
-#, fuzzy
-#~ msgid "Whelps"
-#~ msgstr "ayuda"
-
-#, fuzzy
-#~ msgid "End scenario"
-#~ msgstr "Finalizar escenario"
-
-#, fuzzy
-#~ msgid "Take the pass"
-#~ msgstr "Guardar el mapa como"
-
-#, fuzzy
-#~ msgid "Defeat Rowck"
-#~ msgstr "Derrota"
-
-#, fuzzy
-#~ msgid "Station 1"
-#~ msgstr "Facción"
-
-#, fuzzy
-#~ msgid "Station 2"
-#~ msgstr "Facción"
-
-#, fuzzy
-#~ msgid "Defeat all enemy units"
-#~ msgstr "Derrotar a los líderes enemigos"
-
-#, fuzzy
-#~ msgid "Notes"
-#~ msgstr "Notas:"
-
-#, fuzzy
-#~ msgid "Defeat all lurkers"
-#~ msgstr "Cancelar todas las órdenes"
-
-#, fuzzy
-#~ msgid "Messenger"
-#~ msgstr "Mensaje:"
-
-#, fuzzy
-#~ msgid "AI moves Messenger here"
-#~ msgstr "Mover el líder aquí"
-
-#, fuzzy
-#~ msgid "Move Rossauba here"
-#~ msgstr "Mover el líder aquí"
-
-#, fuzzy
-#~ msgid "Recruiting"
-#~ msgstr "Reclutar"
-
-#, fuzzy
-#~ msgid "Swarm"
-#~ msgstr "Enjambre:"
-
-#, fuzzy
-#~ msgid "AI Location:"
-#~ msgstr "Ubicación inválida"
-
 #~ msgid "Unknown unit type '$type|' while generating traits"
 #~ msgstr ""
 #~ "Tipo de unidad desconocida «$type|» mientras se generaba los alineamientos"
-
-#, fuzzy
-#~ msgid "invisible"
-#~ msgstr "invisible: "
-
-#, fuzzy
-#~ msgid "female^invisible"
-#~ msgstr "ralentizada"
-
-#, fuzzy
-#~ msgid "I triggered a moveto event."
-#~ msgstr "Desencadena un evento del juego."
-
-#, fuzzy
-#~ msgid "Choose a Map to Open"
-#~ msgstr "Escoger arma:"
-
-#, fuzzy
-#~ msgid "Choose a Mask to Apply"
-#~ msgstr "Escoja partida a cargar"
-
-#, fuzzy
-#~ msgid "Choose Target Map"
-#~ msgstr "Escoger arma:"
-
-#, fuzzy
-#~ msgid "The file already exists. Do you want to overwrite it?"
-#~ msgstr "El mapa ya existe. ¿Desea sobreescribirlo?"
-
-#, fuzzy
-#~ msgid "No random map generators found."
-#~ msgstr "Ninguna información de era."
-
-#, fuzzy
-#~ msgid "Map creation failed."
-#~ msgstr "¡La instalación ha fallado!"
 
 #~ msgid "The server responded with an error: \"$error|\""
 #~ msgstr "El servidor devolvió un error: \"$error|\""
@@ -11500,19 +11335,6 @@ msgstr "Opciones del modo pizarra"
 #~ msgstr ""
 #~ "Mientras el complemento se instalaba, se encontró que faltaba un archivo "
 #~ "de dependencia. Trate de actualizar dicho complemento."
-
-#~ msgid ""
-#~ "An outdated local add-on has publishing information attached. It will not "
-#~ "be offered for updating."
-#~ msgid_plural ""
-#~ "Some outdated local add-ons have publishing information attached. They "
-#~ "will not be offered for updating."
-#~ msgstr[0] ""
-#~ "Un complemento local, antiguo, posee información de publicación. No será "
-#~ "ofrecido para ser actualizado."
-#~ msgstr[1] ""
-#~ "Algunos complementos locales, antiguos, poseen información de "
-#~ "publicación. No serán ofrecido para ser actualizados."
 
 #~ msgid "Installation of some dependency failed"
 #~ msgstr "La instalación de algunos archivos de dependencia ha fallado."
@@ -11816,10 +11638,6 @@ msgstr "Opciones del modo pizarra"
 
 #~ msgid "Apply a Mask"
 #~ msgstr "Aplicar una máscara"
-
-#, fuzzy
-#~ msgid "Toggle Terrain Transition Update"
-#~ msgstr "Activar o desactivar la actualización en la transición de terreno"
 
 #~ msgid "Auto-update Terrain Transitions"
 #~ msgstr "Actualizar automáticamente transiciones de terreno"
@@ -12573,7 +12391,8 @@ msgstr "Opciones del modo pizarra"
 #~ msgid "Oooh tingly!!!"
 #~ msgstr "¡Oooh hormigueo !"
 
-# Esto cada vez tiene menos sentido. Supongo que son líneas que se usan para depurar código y que no salen ingame.
+# Esto cada vez tiene menos sentido. Supongo que son líneas que se usan para
+# depurar código y que no salen ingame.
 #~ msgid "Send me a thief to spy on the blondes"
 #~ msgstr "Envíame un ladrón para espiar a las rubias"
 
@@ -12754,3 +12573,222 @@ msgstr "Opciones del modo pizarra"
 
 #~ msgid "menu 4, only acessible via hotkeys"
 #~ msgstr "menú 4, solo accesible a través de teclas de acceso rápido"
+
+#, fuzzy
+#~ msgid "Provinces"
+#~ msgstr "Preferencias"
+
+#, fuzzy
+#~ msgid "Thermal"
+#~ msgstr "Normal"
+
+#, fuzzy
+#~ msgid "Enemies"
+#~ msgstr "Aldea enemiga"
+
+#, fuzzy
+#~ msgid "damage"
+#~ msgstr "Daño"
+
+#, fuzzy
+#~ msgid "moves"
+#~ msgstr "movimiento"
+
+#, fuzzy
+#~ msgid "strike"
+#~ msgstr "Golpes"
+
+#, fuzzy
+#~ msgid "female^steadfast"
+#~ msgstr "ralentizada"
+
+#, fuzzy
+#~ msgid "initiative"
+#~ msgstr " (inactivo)"
+
+#, fuzzy
+#~ msgid "$value| XP to advance"
+#~ msgstr "PX para subir de nivel"
+
+#, fuzzy
+#~ msgid "+moves defense"
+#~ msgstr "Ser más defensivo"
+
+#~ msgid "<span color=\"$color\">$number_or_percent movement</span> point"
+#~ msgid_plural ""
+#~ "<span color=\"$color\">$number_or_percent movement</span> points"
+#~ msgstr[0] ""
+#~ "<span color=\"$color\">$number_or_percent movement</span> punto de "
+#~ "movimiento"
+#~ msgstr[1] ""
+#~ "<span color=\"$color\">$number_or_percent movement</span> puntos de "
+#~ "movimiento"
+
+#~ msgid ""
+#~ "The following add-on could not be downloaded or installed successfully:"
+#~ msgid_plural ""
+#~ "The following add-ons could not be downloaded or installed successfully:"
+#~ msgstr[0] ""
+#~ "El siguiente complemento no pudo ser descargado o instalado correctamente:"
+#~ msgstr[1] ""
+#~ "Los siguientes complementos no pudieron ser descargados o instalados "
+#~ "correctamente:"
+
+#~ msgid "multiplayer_starting_gold^Gold"
+#~ msgid_plural "multiplayer_starting_gold^Gold"
+#~ msgstr[0] "Oro"
+#~ msgstr[1] "Oro"
+
+#, fuzzy
+#~ msgid "Clear Weather"
+#~ msgstr "Limpiar mensajes"
+
+#~ msgid "unit^Gold"
+#~ msgid_plural "Gold"
+#~ msgstr[0] "Oro"
+#~ msgstr[1] "Oro"
+
+#, fuzzy
+#~ msgid " vision"
+#~ msgstr "visión: "
+
+#, fuzzy
+#~ msgid " jamming"
+#~ msgstr "Advertencia: "
+
+#, fuzzy
+#~ msgid "Battle for Wesnoth"
+#~ msgstr "La batalla por Wesnoth"
+
+#, fuzzy
+#~ msgid "Compress savegames using bzip2"
+#~ msgstr "Comprimir partidas guardadas"
+
+#, fuzzy
+#~ msgid "Multiplayer_AI^Default AI (RCA)"
+#~ msgstr "IA RCA"
+
+#, fuzzy
+#~ msgid "Multiplayer_AI^Experimental AI"
+#~ msgstr "IA RCA"
+
+#, fuzzy
+#~ msgid "Enemy unit weight  (default: 100)"
+#~ msgstr "¡Unidad enemiga divisada!"
+
+#, fuzzy
+#~ msgid "Move Konrad here"
+#~ msgstr "Mover el líder aquí"
+
+#, fuzzy
+#~ msgid "Whelps"
+#~ msgstr "ayuda"
+
+#, fuzzy
+#~ msgid "End scenario"
+#~ msgstr "Finalizar escenario"
+
+#, fuzzy
+#~ msgid "Take the pass"
+#~ msgstr "Guardar el mapa como"
+
+#, fuzzy
+#~ msgid "Defeat Rowck"
+#~ msgstr "Derrota"
+
+#, fuzzy
+#~ msgid "Station 1"
+#~ msgstr "Facción"
+
+#, fuzzy
+#~ msgid "Station 2"
+#~ msgstr "Facción"
+
+#, fuzzy
+#~ msgid "Defeat all enemy units"
+#~ msgstr "Derrotar a los líderes enemigos"
+
+#, fuzzy
+#~ msgid "Notes"
+#~ msgstr "Notas:"
+
+#, fuzzy
+#~ msgid "Defeat all lurkers"
+#~ msgstr "Cancelar todas las órdenes"
+
+#, fuzzy
+#~ msgid "Messenger"
+#~ msgstr "Mensaje:"
+
+#, fuzzy
+#~ msgid "AI moves Messenger here"
+#~ msgstr "Mover el líder aquí"
+
+#, fuzzy
+#~ msgid "Move Rossauba here"
+#~ msgstr "Mover el líder aquí"
+
+#, fuzzy
+#~ msgid "Recruiting"
+#~ msgstr "Reclutar"
+
+#, fuzzy
+#~ msgid "Swarm"
+#~ msgstr "Enjambre:"
+
+#, fuzzy
+#~ msgid "AI Location:"
+#~ msgstr "Ubicación inválida"
+
+#, fuzzy
+#~ msgid "invisible"
+#~ msgstr "invisible: "
+
+#, fuzzy
+#~ msgid "female^invisible"
+#~ msgstr "ralentizada"
+
+#, fuzzy
+#~ msgid "I triggered a moveto event."
+#~ msgstr "Desencadena un evento del juego."
+
+#, fuzzy
+#~ msgid "Choose a Map to Open"
+#~ msgstr "Escoger arma:"
+
+#, fuzzy
+#~ msgid "Choose a Mask to Apply"
+#~ msgstr "Escoja partida a cargar"
+
+#, fuzzy
+#~ msgid "Choose Target Map"
+#~ msgstr "Escoger arma:"
+
+#, fuzzy
+#~ msgid "The file already exists. Do you want to overwrite it?"
+#~ msgstr "El mapa ya existe. ¿Desea sobreescribirlo?"
+
+#, fuzzy
+#~ msgid "No random map generators found."
+#~ msgstr "Ninguna información de era."
+
+#, fuzzy
+#~ msgid "Map creation failed."
+#~ msgstr "¡La instalación ha fallado!"
+
+#~ msgid ""
+#~ "An outdated local add-on has publishing information attached. It will not "
+#~ "be offered for updating."
+#~ msgid_plural ""
+#~ "Some outdated local add-ons have publishing information attached. They "
+#~ "will not be offered for updating."
+#~ msgstr[0] ""
+#~ "Un complemento local, antiguo, posee información de publicación. No será "
+#~ "ofrecido para ser actualizado."
+#~ msgstr[1] ""
+#~ "Algunos complementos locales, antiguos, poseen información de "
+#~ "publicación. No serán ofrecido para ser actualizados."
+
+#, fuzzy
+#~ msgid "Toggle Terrain Transition Update"
+#~ msgstr "Activar o desactivar la actualización en la transición de terreno"

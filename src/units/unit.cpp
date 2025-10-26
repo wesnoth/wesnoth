@@ -1755,8 +1755,6 @@ int unit::defense_modifier(const t_translation::terrain_code & terrain, const ma
 {
 	int def = movement_type_.defense_modifier(terrain);
 
-	// A [defense] ability is too costly and doesn't take into account target locations.
-	// Left as a comment in case someone ever wonders why it isn't a good idea.
 	unit_ability_list defense_abilities = get_abilities("defense", loc);
 	if(!defense_abilities.empty()) {
 		unit_abilities::effect defense_effect(defense_abilities, 100 - def);
@@ -1993,19 +1991,19 @@ const std::set<std::string> unit::builtin_effects {
 std::string unit::describe_builtin_effect(const std::string& apply_to, const config& effect)
 {
 	if(apply_to == "attack") {
+		std::string description = attack_type::describe_effect(effect);
 		std::vector<t_string> attack_names;
-
-		std::string desc;
-		for(attack_ptr a : attacks_) {
-			bool affected = a->describe_modification(effect, &desc);
-			if(affected && !desc.empty()) {
-				attack_names.emplace_back(a->name(), "wesnoth-units");
+		if(!description.empty()) {
+			for(const attack_ptr& a : attacks_) {
+				if(a->matches_filter(effect)) {
+					attack_names.emplace_back(a->name(), "wesnoth-units");
+				}
 			}
 		}
 		if(!attack_names.empty()) {
 			utils::string_map symbols;
 			symbols["attack_list"] = utils::format_conjunct_list("", attack_names);
-			symbols["effect_description"] = desc;
+			symbols["effect_description"] = std::move(description);
 			return VGETTEXT("$attack_list|: $effect_description", symbols);
 		}
 	} else if(apply_to == "hitpoints") {
@@ -2106,7 +2104,7 @@ void unit::apply_builtin_effect(const std::string& apply_to, const config& effec
 	} else if(apply_to == "attack") {
 		set_attr_changed(UA_ATTACKS);
 		for(attack_ptr a : attacks_) {
-			a->apply_modification(effect);
+			a->apply_effect(effect);
 			for(const config& specials : effect.child_range("set_specials")) {
 				for(const auto [key, special] : specials.all_children_view()) {
 					for(const config& special_event : special.child_range("event")) {

@@ -136,12 +136,13 @@ inline void animated<T>::update_last_draw_time(double acceleration)
 	// Update the index key to the appropriate frame for the current animation time.
 	auto iter = frames_.begin() + current_frame_key_;
 	while(std::next(iter) != frames_.end()) {
-			if(std::next(iter)->start_time_ > animation_time) {
-					break;
-			}
+		if(std::next(iter)->start_time_ > animation_time) {
+			break;
+		}
 
-			++iter;
+		++iter;
 	}
+
 	current_frame_key_ = std::distance(frames_.begin(), iter);
 }
 
@@ -170,11 +171,8 @@ inline bool animated<T>::need_update() const
 		return false;
 	}
 
-	if(get_current_animation_tick() > std::chrono::floor<std::chrono::milliseconds>(get_current_frame_end_time() / acceleration_ + start_tick_)) {
-		return true;
-	}
-
-	return false;
+	auto frame_end = std::chrono::floor<std::chrono::milliseconds>(get_current_frame_end_time() / acceleration_);
+	return get_current_animation_tick() > start_tick_ + frame_end;
 }
 
 template<typename T>

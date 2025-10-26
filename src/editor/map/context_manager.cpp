@@ -15,22 +15,25 @@
 
 #define GETTEXT_DOMAIN "wesnoth-editor"
 
-#include "resources.hpp"
-#include "team.hpp"
+#include "editor/map/context_manager.hpp"
 
 #include "addon/validation.hpp"
-
-#include "editor/map/context_manager.hpp"
+#include "editor/action/action.hpp"
+#include "editor/action/action_item.hpp"
+#include "editor/action/action_label.hpp"
+#include "editor/action/action_unit.hpp"
+#include "editor/controller/editor_controller.hpp"
+#include "editor/editor_display.hpp"
 #include "editor/map/map_context.hpp"
+
 #include "filesystem.hpp"
 #include "formula/string_utils.hpp"
 #include "generators/map_create.hpp"
 #include "generators/map_generator.hpp"
 #include "gettext.hpp"
-#include "video.hpp"
+#include "resources.hpp"
+#include "team.hpp"
 
-#include "editor/action/action.hpp"
-#include "editor/controller/editor_controller.hpp"
 #include "preferences/preferences.hpp"
 
 #include "gui/dialogs/edit_text.hpp"
@@ -50,6 +53,9 @@
 
 #include "serialization/markup.hpp"
 #include "terrain/translation.hpp"
+
+#include "units/unit.hpp"
+#include "video.hpp"
 
 #include <memory>
 #include <boost/algorithm/string.hpp>
@@ -628,8 +634,50 @@ void context_manager::resize_map_dialog()
 				break;
 		}
 
-		editor_action_resize_map a(w, h, x_offset, y_offset, fill);
-		perform_refresh(a);
+		auto chain = std::make_unique<editor_action_chain>();
+		auto units = get_map_context().units();
+		for (const auto& u : units) {
+			map_location l{u.get_location().x - x_offset, u.get_location().y - y_offset};
+			chain->append_action(std::make_unique<editor_action_unit_replace>(u.get_location(), l));
+		}
+
+		chain->append_action(std::make_unique<editor_action_item_move_all>(x_offset, y_offset));
+		chain->append_action(std::make_unique<editor_action_time_area_move_all>(x_offset, y_offset));
+
+		// TODO Reduces the number of editor actions in the following loop.
+		// It can be a lot if the map has a lot of labels (say hundreds).
+		map_labels& labels = get_map_context().get_labels();
+		get_map_context().map().for_each_loc([&](const map_location& loc) {
+			map_location new_loc{loc.x - x_offset, loc.y - y_offset};
+			const terrain_label* old_label = labels.get_label(loc);
+
+			if (old_label == nullptr) {
+				return;
+			}
+
+			// Create action chain to:
+			// 1. Delete label in initial hex
+			// 2. Delete label in target hex if it exists, otherwise will no-op
+			// 3. Create label in target hex
+			chain->append_action(std::make_unique<editor_action_label_delete>(loc));
+			chain->append_action(std::make_unique<editor_action_label_delete>(new_loc));
+			chain->append_action(
+				std::make_unique<editor_action_label>(
+					new_loc,
+					old_label->text(),
+					old_label->team_name(),
+					old_label->color(),
+					old_label->visible_in_fog(),
+					old_label->visible_in_shroud(),
+					old_label->immutable(),
+					old_label->category()
+				)
+			);
+		});
+
+		chain->append_action(
+			std::make_unique<editor_action_resize_map>(w, h, x_offset, y_offset, fill));
+		perform_refresh(*chain);
 	}
 }
 

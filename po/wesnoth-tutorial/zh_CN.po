@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.18\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-01-19 17:47 UTC\n"
+"POT-Creation-Date: 2025-10-21 01:10 UTC\n"
 "PO-Revision-Date: 2025-05-26 15:31+0800\n"
 "Last-Translator: vimacs <vimacs.hacks@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -391,8 +391,8 @@ msgstr "这<b>假人</b>也有进攻回合？"
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:586
 msgid ""
 "Yes. It’s a magical quintain! If it hits you, it does 3 damage, and has 5 "
-"chances. If it hits every time, you’ll drop from $student_hp to $"
-"($student_hp-15) hitpoints. Brace yourself!"
+"chances. If it hits every time, you’ll drop from $student_hp to "
+"$($student_hp-15) hitpoints. Brace yourself!"
 msgstr ""
 "是啊，这是一个魔法刺靶！如果它命中你，那么会造成3点伤害，而它有5次机会。如果"
 "它每次都命中，那么你的生命值会从$student_hp|降到 $($student_hp-15)。打起精神"
@@ -2020,8 +2020,8 @@ msgstr "我们会怀念$unit.name|的，不过至少她不是我们的老兵里�
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1314
 msgid ""
-"Higher level units are powerful, but not invulnerable. We’ll miss you, "
-"$unit.name|."
+"Higher level units are powerful, but not invulnerable. We’ll miss you, $unit."
+"name|."
 msgstr "高级单位是很强大，但并不是无敌的。我们会想念你的，$unit.name|。"
 
 #. [message]: speaker=Galdrad
@@ -2260,11 +2260,13 @@ msgid ""
 "mistake."
 msgstr "别忘了，如果操作失误，你可以按<b>u</b>键来撤销大部分操作。"
 
-#: data/campaigns/tutorial/utils/utils.cfg:126
-msgid ""
-"\n"
-"\n"
-"<big>Click a mouse button or press the spacebar to continue...</big>"
+#: data/campaigns/tutorial/utils/utils.cfg:128
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "<big>Click a mouse button or press the spacebar to continue...</big>"
+msgid "Click a mouse button or press the spacebar to continue..."
 msgstr ""
 "\n"
 "\n"

@@ -101,8 +101,8 @@ function display_skills_dialog(selecting)
         -- skill row
         table.insert( skill_grid[2], T.row{
             T.column{ border="left",  border_size=15, button},
-            T.column{                                 T.label{label="  "}},  T.column{  horizontal_alignment="left", T.image{id="image"..i                }  },
-            T.column{ border="right", border_size=15, T.label{label="  "}},  T.column{  horizontal_alignment="left", T.label{id="label"..i,use_markup=true}  },
+            T.column{                                 T.label{label="  "}},  T.column{  horizontal_alignment="left", T.image{      id="image"..i          }  },
+            T.column{ border="right", border_size=15, T.label{label="  "}},  T.column{  horizontal_alignment="left", T.rich_label{ id="label"..i, width=0 }  },
         } )
 
         -- subskill row
@@ -169,6 +169,9 @@ function display_skills_dialog(selecting)
                     if (not skill_set_copy[i][1]) then return end
                     dialog2["image"..i].label = skill_set_copy[i][button.selected_index].image
                     dialog2["label"..i].label = skill_set_copy[i][button.selected_index].description
+                    dialog2["label"..i].on_link_click = function(dest)
+                        gui.show_help(dest)
+                    end
 
                     -- also update variables
                     for j,skill in pairs(skill_set_copy[i]) do
@@ -190,6 +193,9 @@ function display_skills_dialog(selecting)
                     dialog2["button"..i].visible = true
                     dialog2["image" ..i].label = skill2.image
                     dialog2["label" ..i].label = skill2.description
+                    dialog2["label" ..i].on_link_click = function(dest)
+                        gui.show_help(dest)
+                    end
 
                     -- if the button is clickable (i.e. a castable spell), set on_button_click
                     local function initialize_button( buttonid, skill, small )
@@ -250,7 +256,6 @@ function display_skills_dialog(selecting)
                     ::continue::
                 end
             end
-
         end
     end
 

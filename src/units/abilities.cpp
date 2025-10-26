@@ -38,7 +38,6 @@
 #include "team.hpp"
 #include "terrain/filter.hpp"
 #include "units/types.hpp"
-#include "units/unit.hpp"
 #include "units/abilities.hpp"
 #include "units/ability_tags.hpp"
 #include "units/filter.hpp"
@@ -924,7 +923,8 @@ std::vector<std::pair<t_string, t_string>> attack_type::abilities_special_toolti
 		return res;
 	}
 	for(const auto [key, cfg] : self_->abilities().all_children_view()) {
-		if(!active_list || check_self_abilities_impl(shared_from_this(), other_attack_, cfg, self_, self_loc_, AFFECT_SELF, key, false)) {
+		if(self_->get_self_ability_bool(cfg, key, self_loc_) && special_tooltip_active(cfg, key)) {
+			bool active = !active_list || special_active(cfg, AFFECT_SELF, key);
 			const std::string name = cfg["name_affected"];
 			const std::string desc = cfg["description_affected"];
 
@@ -934,7 +934,7 @@ std::vector<std::pair<t_string, t_string>> attack_type::abilities_special_toolti
 			res.emplace_back(name, desc);
 			checking_name.insert(name);
 			if(active_list) {
-				active_list->push_back(true);
+				active_list->push_back(active);
 			}
 		}
 	}
@@ -949,7 +949,8 @@ std::vector<std::pair<t_string, t_string>> attack_type::abilities_special_toolti
 		}
 		int dir = find_direction(self_loc_, from_loc, distance);
 		for(const auto [key, cfg] : u.abilities().all_children_view()) {
-			if(!active_list || check_adj_abilities_impl(shared_from_this(), other_attack_, cfg, self_, u, distance, dir, self_loc_, from_loc, AFFECT_SELF, key, false)) {
+			if(self_->get_adj_ability_bool(cfg, key, distance, dir, self_loc_, u, from_loc) && special_tooltip_active(cfg, key)) {
+				bool active = !active_list || special_active(cfg, AFFECT_SELF, key);
 				const std::string name = cfg["name_affected"];
 				const std::string desc = cfg["description_affected"];
 
@@ -959,7 +960,7 @@ std::vector<std::pair<t_string, t_string>> attack_type::abilities_special_toolti
 				res.emplace_back(name, desc);
 				checking_name.insert(name);
 				if(active_list) {
-					active_list->push_back(true);
+					active_list->push_back(active);
 				}
 			}
 		}
@@ -1935,6 +1936,8 @@ namespace
 			return false;
 
 		bool no_value_weapon_abilities_check =  abilities_list::no_weapon_number_tags().count(tag_name) != 0 || abilities_list::ability_no_value_tags().count(tag_name) != 0;
+		if(filter.has_attribute("cumulative") && no_value_weapon_abilities_check)
+			return false;
 		if(filter.has_attribute("value") && no_value_weapon_abilities_check)
 			return false;
 		if(filter.has_attribute("add") && no_value_weapon_abilities_check)
@@ -2311,6 +2314,54 @@ bool attack_type::special_active_impl(
 	return true;
 }
 
+/**
+ * Returns whether or not the given special is active for the specified unit,
+ * based on the current context (see set_specials_context).
+ * @param special           a weapon special WML structure
+ * @param tag_name          tag name of the special config
+ */
+bool attack_type::special_tooltip_active(const config& special, const std::string& tag_name) const
+{
+	//log_scope("special_tooltip_active");
+
+	bool whom_is_self = special_affects_self(special, is_attacker_);
+	if(!whom_is_self)
+		return false;
+
+	const unit_map& units = get_unit_map();
+
+	unit_const_ptr self = self_ ;
+	unit_const_ptr other = other_;
+	//TODO: why is this needed?
+	if(self == nullptr) {
+		unit_map::const_iterator it = units.find(self_loc_);
+		if(it.valid()) {
+			self = it.get_shared_ptr();
+		}
+	}
+	if(other == nullptr) {
+		unit_map::const_iterator it = units.find(other_loc_);
+		if(it.valid()) {
+			other = it.get_shared_ptr();
+		}
+	}
+
+	bool applied_both = special["apply_to"] == "both";
+	std::string self_check_if_recursion = (applied_both || whom_is_self) ? tag_name : "";
+	if (!special_unit_matches(self, other, self_loc_, shared_from_this(), special, is_for_listing_, "filter_student", self_check_if_recursion))
+		return false;
+	bool applied_to_attacker = applied_both || (whom_is_self && is_attacker_);
+	std::string att_check_if_recursion = applied_to_attacker ? tag_name : "";
+	if (is_attacker_ && !special_unit_matches(self, other, self_loc_, shared_from_this(), special, is_for_listing_, "filter_attacker", att_check_if_recursion))
+		return false;
+	bool applied_to_defender = applied_both || (whom_is_self && !is_attacker_);
+	std::string def_check_if_recursion= applied_to_defender ? tag_name : "";
+	if (!is_attacker_ && !special_unit_matches(self, other, self_loc_, shared_from_this(), special, is_for_listing_, "filter_defender", def_check_if_recursion))
+		return false;
+
+	return true;
+}
+
 
 
 namespace unit_abilities
@@ -2363,12 +2414,28 @@ std::string substitute_variables(const std::string& str, const std::string& tag_
 	return str;
 }
 
+int individual_value_int(const config::attribute_value *v, int def, const unit_ability & ability, const map_location& loc, const const_attack_ptr& att) {
+	int value = std::round(get_single_ability_value(*v, static_cast<double>(def), ability, loc, att, [&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
+		callable.add("base_value", wfl::variant(def));
+		return std::round(formula.evaluate(callable).as_int());
+	}));
+	return value;
+}
+
+int individual_value_double(const config::attribute_value *v, int def, const unit_ability & ability, const map_location& loc, const const_attack_ptr& att) {
+	int value = std::round(get_single_ability_value(*v, static_cast<double>(def), ability, loc, att, [&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
+		callable.add("base_value", wfl::variant(def));
+		return formula.evaluate(callable).as_decimal() / 1000.0 ;
+	}) * 100);
+	return value;
+}
+
 effect::effect(const unit_ability_list& list, int def, const const_attack_ptr& att, EFFECTS wham) :
 	effect_list_(),
 	composite_value_(0)
 {
 
-	int value_set = (wham == EFFECT_CUMULABLE) ? std::max(list.highest("value").first, 0) + std::min(list.lowest("value").first, 0) : def;
+	int value_set = def;
 	std::map<std::string,individual_effect> values_add;
 	std::map<std::string,individual_effect> values_sub;
 	std::map<std::string,individual_effect> values_mul;
@@ -2376,6 +2443,7 @@ effect::effect(const unit_ability_list& list, int def, const const_attack_ptr& a
 
 	individual_effect set_effect_max;
 	individual_effect set_effect_min;
+	individual_effect set_effect_cum;
 	utils::optional<int> max_value = utils::nullopt;
 	utils::optional<int> min_value = utils::nullopt;
 
@@ -2386,14 +2454,14 @@ effect::effect(const unit_ability_list& list, int def, const const_attack_ptr& a
 		if (!filter_base_matches(cfg, def))
 			continue;
 
-		if(wham != EFFECT_CUMULABLE){
-			if (const config::attribute_value *v = cfg.get("value")) {
-				int value = std::round(get_single_ability_value(*v, static_cast<double>(def), ability, list.loc(), att, [&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
-					callable.add("base_value", wfl::variant(def));
-					return std::round(formula.evaluate(callable).as_int());
-				}));
-
-				int value_cum = cfg["cumulative"].to_bool() ? std::max(def, value) : value;
+		if (const config::attribute_value *v = cfg.get("value")) {
+			int value = individual_value_int(v, def, ability, list.loc(), att);
+			int value_cum = wham != EFFECT_CUMULABLE && cfg["cumulative"].to_bool() ? std::max(def, value) : value;
+			if(set_effect_cum.type != NOT_USED && wham == EFFECT_CUMULABLE && cfg["cumulative"].to_bool()) {
+				set_effect_cum.set(SET, set_effect_cum.value + value_cum, ability.ability_cfg, ability.teacher_loc);
+			} else if(wham == EFFECT_CUMULABLE && cfg["cumulative"].to_bool()) {
+				set_effect_cum.set(SET, value_cum, ability.ability_cfg, ability.teacher_loc);
+			} else {
 				assert((set_effect_min.type != NOT_USED) == (set_effect_max.type != NOT_USED));
 				if(set_effect_min.type == NOT_USED) {
 					set_effect_min.set(SET, value_cum, ability.ability_cfg, ability.teacher_loc);
@@ -2411,49 +2479,39 @@ effect::effect(const unit_ability_list& list, int def, const const_attack_ptr& a
 		}
 
 		if(wham != EFFECT_WITHOUT_CLAMP_MIN_MAX) {
-			if(cfg.has_attribute("max_value")){
-				max_value = max_value ? std::min(*max_value, cfg["max_value"].to_int()) : cfg["max_value"].to_int();
+			if(const config::attribute_value *v = cfg.get("max_value")) {
+				int value = individual_value_int(v, def, ability, list.loc(), att);
+				max_value = max_value ? std::min(*max_value, value) : value;
 			}
-			if(cfg.has_attribute("min_value")){
-				min_value = min_value ? std::max(*min_value, cfg["min_value"].to_int()) : cfg["min_value"].to_int();
+			if(const config::attribute_value *v = cfg.get("min_value")) {
+				int value = individual_value_int(v, def, ability, list.loc(), att);
+				min_value = min_value ? std::max(*min_value, value) : value;
 			}
 		}
 
 		if (const config::attribute_value *v = cfg.get("add")) {
-			int add = std::round(get_single_ability_value(*v, static_cast<double>(def), ability, list.loc(), att, [&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
-				callable.add("base_value", wfl::variant(def));
-				return std::round(formula.evaluate(callable).as_int());
-			}));
+			int add = individual_value_int(v, def, ability, list.loc(), att);
 			std::map<std::string,individual_effect>::iterator add_effect = values_add.find(effect_id);
 			if(add_effect == values_add.end() || add > add_effect->second.value) {
 				values_add[effect_id].set(ADD, add, ability.ability_cfg, ability.teacher_loc);
 			}
 		}
 		if (const config::attribute_value *v = cfg.get("sub")) {
-			int sub = - std::round(get_single_ability_value(*v, static_cast<double>(def), ability, list.loc(), att, [&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
-				callable.add("base_value", wfl::variant(def));
-				return std::round(formula.evaluate(callable).as_int());
-			}));
+			int sub = - individual_value_int(v, def, ability, list.loc(), att);
 			std::map<std::string,individual_effect>::iterator sub_effect = values_sub.find(effect_id);
 			if(sub_effect == values_sub.end() || sub < sub_effect->second.value) {
 				values_sub[effect_id].set(ADD, sub, ability.ability_cfg, ability.teacher_loc);
 			}
 		}
 		if (const config::attribute_value *v = cfg.get("multiply")) {
-			int multiply = std::round(get_single_ability_value(*v, static_cast<double>(def), ability, list.loc(), att, [&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
-				callable.add("base_value", wfl::variant(def));
-				return formula.evaluate(callable).as_decimal() / 1000.0 ;
-			}) * 100);
+			int multiply = individual_value_double(v, def, ability, list.loc(), att);
 			std::map<std::string,individual_effect>::iterator mul_effect = values_mul.find(effect_id);
 			if(mul_effect == values_mul.end() || multiply > mul_effect->second.value) {
 				values_mul[effect_id].set(MUL, multiply, ability.ability_cfg, ability.teacher_loc);
 			}
 		}
 		if (const config::attribute_value *v = cfg.get("divide")) {
-			int divide = std::round(get_single_ability_value(*v, static_cast<double>(def), ability, list.loc(), att, [&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
-				callable.add("base_value", wfl::variant(def));
-				return formula.evaluate(callable).as_decimal() / 1000.0 ;
-			}) * 100);
+			int divide = individual_value_double(v, def, ability, list.loc(), att);
 
 			if (divide == 0) {
 				ERR_NG << "division by zero with divide= in ability/weapon special " << effect_id;
@@ -2467,7 +2525,7 @@ effect::effect(const unit_ability_list& list, int def, const const_attack_ptr& a
 		}
 	}
 
-	if(wham != EFFECT_CUMULABLE && set_effect_max.type != NOT_USED) {
+	if(set_effect_max.type != NOT_USED) {
 		value_set = std::max(set_effect_max.value, 0) + std::min(set_effect_min.value, 0);
 		if(set_effect_max.value > def) {
 			effect_list_.push_back(set_effect_max);
@@ -2510,6 +2568,11 @@ effect::effect(const unit_ability_list& list, int def, const const_attack_ptr& a
 	for(const auto& val : values_sub) {
 		substraction += val.second.value;
 		effect_list_.push_back(val.second);
+	}
+
+	if(set_effect_cum.type != NOT_USED) {
+		value_set += set_effect_cum.value;
+		effect_list_.push_back(set_effect_cum);
 	}
 
 	composite_double_value_ = (value_set + addition + substraction) * multiplier / divisor;
