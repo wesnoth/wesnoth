@@ -1936,6 +1936,8 @@ namespace
 			return false;
 
 		bool no_value_weapon_abilities_check =  abilities_list::no_weapon_number_tags().count(tag_name) != 0 || abilities_list::ability_no_value_tags().count(tag_name) != 0;
+		if(filter.has_attribute("cumulative") && no_value_weapon_abilities_check)
+			return false;
 		if(filter.has_attribute("value") && no_value_weapon_abilities_check)
 			return false;
 		if(filter.has_attribute("add") && no_value_weapon_abilities_check)
