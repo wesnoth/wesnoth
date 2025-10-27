@@ -42,6 +42,7 @@ struct overlay
 		, submerge(submerge)
 		, parallax(parallax)
 		, z_order(item_z_order)
+		, duration(duration)
 	{}
 
 
@@ -57,6 +58,7 @@ struct overlay
 		, submerge(cfg["submerge"].to_double(0))
 		, parallax(cfg["parallax"].to_double(1.0))
 		, z_order(cfg["z_order"].to_double(0))
+		, duration(std::chrono::milliseconds(cfg["duration"].to_int(0)))
 	{
 	}
 
@@ -72,6 +74,7 @@ struct overlay
 	float submerge;
 	float parallax;
 	float z_order;
+	std::chrono::milliseconds duration;
 
 	// Other support
 	bool is_animated = false;

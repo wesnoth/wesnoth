@@ -11,6 +11,14 @@ local function add_overlay(x, y, cfg)
 	end
 
 	wesnoth.interface.add_hex_overlay(x, y, cfg)
+
+	if cfg.duration and cfg.duration ~= 0 then
+		return --Do not store item if it is on a duration timer.
+		--A safeguard against any sync issues that can happen with timers.
+		--Means that any images with duration are purely visual and can't be used for gameplay purposes.
+		--The image is not saved and won't persist over save/load.
+	end
+
 	local items = scenario_items:get(x, y)
 	if not items then
 		items = {}
@@ -30,6 +38,7 @@ local function add_overlay(x, y, cfg)
 			redraw = cfg.redraw,
 			name = cfg.name,
 			z_order = cfg.z_order,
+			duration = cfg.duration,
 			wml.tag.variables(wml.get_child(cfg, "variables") or {}),
 		})
 end
@@ -69,6 +78,7 @@ end
 ---@field redraw boolean
 ---@field name string
 ---@field z_order integer
+---@field duration integer
 ---@field variables WMLTable
 
 ---Get items on a given hex
@@ -94,6 +104,7 @@ function wesnoth.interface.get_items(x, y)
 			redraw = cfg.redraw,
 			name = cfg.name,
 			z_order = cfg.z_order,
+			duration = cfg.duration,
 			variables = wml.get_child(cfg, "variables"),
 		})
 	end

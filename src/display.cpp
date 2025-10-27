@@ -194,6 +194,55 @@ namespace
 		return ss.str();
 	}
 
+	// Duration overlay support
+	/**
+	 * Holds data for an overlay with a limited display duration.
+	 */
+	struct overlay_timers
+	{
+		std::chrono::steady_clock::time_point end_time;
+		std::string id;
+		map_location loc;
+	};
+	static std::vector<overlay_timers> timed_overlays_;
+
+	/**
+	 * Sets a timer for an overlay to be removed after a specified duration.
+	 *
+	 * @param loc       The map location of the overlay.
+	 * @param id        The ID of the overlay.
+	 * @param duration  The time until the overlay should be removed.
+	 */
+	static void set_overlay_duration(const map_location& loc, const std::string& id, std::chrono::milliseconds duration)
+	{
+		if (duration.count() > 0) {
+			timed_overlays_.push_back({ std::chrono::steady_clock::now() + duration, id, loc });
+		}
+	}
+
+	/**
+	 * List overlays whose timers have expired and prune internal timer list.
+	 *
+	 * @return A vector of the overlays that have expired.
+	 */
+	static std::vector<overlay_timers> extract_expired_overlays()
+	{
+		const auto now = std::chrono::steady_clock::now();
+		std::vector<overlay_timers> overlays_to_remove;
+
+		// Use a custom loop to move expired overlays to the 'overlays_to_remove' vector.
+		for (auto it = timed_overlays_.begin(); it != timed_overlays_.end();) {
+			if (now >= it->end_time) {
+				overlays_to_remove.push_back(std::move(*it));
+				it = timed_overlays_.erase(it);
+			}
+			else {
+				++it;
+			}
+		}
+		return overlays_to_remove;
+	}
+
 } // namespace
 
 void display::add_overlay(const map_location& loc, overlay&& ov)
@@ -201,6 +250,9 @@ void display::add_overlay(const map_location& loc, overlay&& ov)
 	// Assign halo and return.
 	if(!ov.halo.empty()) {
 		std::vector<overlay>& overlays = get_overlays()[loc];
+		if(ov.duration.count() > 0) {
+			set_overlay_duration(loc, ov.id, ov.duration); // Start timer if duration is set.
+		}
 
 		// Find the correct position to insert the new overlay, sorted by z_order.
 		auto pos = std::lower_bound(overlays.begin(), overlays.end(), ov.z_order, [](const overlay& existing, int new_order) { return existing.z_order < new_order; });
@@ -230,6 +282,9 @@ void display::add_overlay(const map_location& loc, overlay&& ov)
 		// Assign single static image and return
 		if(!ov.multihex) {
 			std::vector<overlay>& overlays = get_overlays()[loc];
+			if(ov.duration.count() > 0) {
+				set_overlay_duration(loc, ov.id, ov.duration); // Start timer if duration is set.
+			}
 			auto pos = std::lower_bound(overlays.begin(), overlays.end(), ov.z_order, [](const overlay& existing, int new_order) { return existing.z_order < new_order; });
 			overlays.emplace(pos, std::move(ov));
 			return;
@@ -295,6 +350,9 @@ void display::add_overlay(const map_location& loc, overlay&& ov)
 		//Assign parent at the center location.
 		std::vector<overlay>& centre_vec = get_overlays()[loc];
 		ov.child_hexes = std::move(children); // Store children.
+		if(ov.duration.count() > 0) {
+			set_overlay_duration(loc, ov.id, ov.duration); // Start timer if duration is set.
+		}
 		auto pos = std::lower_bound(centre_vec.begin(), centre_vec.end(), ov.z_order,
 			[](const overlay& existing, int new_order) { return existing.z_order < new_order; });
 		if(is_anim) {
@@ -306,6 +364,9 @@ void display::add_overlay(const map_location& loc, overlay&& ov)
 
 		// Case B: Assign single-hex animated overlay
 		std::vector<overlay>& overlays = get_overlays()[loc];
+		if(ov.duration.count() > 0) {
+			set_overlay_duration(loc, ov.id, ov.duration); // Start timer if duration is set.
+		}
 		auto pos = std::lower_bound(overlays.begin(), overlays.end(), ov.z_order,
 			[](const overlay& existing, int new_order) { return existing.z_order < new_order; });
 		ov.multihex = false;
@@ -2474,6 +2535,14 @@ void display::draw()
 void display::update()
 {
 	//DBG_DP << "display::update";
+
+	// Remove duration expired overlays.
+	std::vector<overlay_timers> to_remove = extract_expired_overlays();
+	for(const auto& overlay : to_remove) {
+		this->remove_single_overlay(overlay.loc, overlay.id);
+		this->invalidate(overlay.loc);
+	}
+
 	// Ensure render textures are correctly sized and up-to-date.
 	update_render_textures();
 
