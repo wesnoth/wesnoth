@@ -306,11 +306,6 @@ const topic *find_topic(const section &sec, const std::string &id);
 const section *find_section(const section &sec, const std::string &id);
 section *find_section(section &sec, const std::string &id);
 
-std::string remove_first_space(const std::string& text);
-
-/** Return the first word in s, not removing any spaces in the start of it. */
-std::string get_first_word(const std::string &s);
-
 /** Load the appropriate terrain types data to use */
 std::shared_ptr<terrain_type_data> load_terrain_types_data();
 
@@ -324,16 +319,7 @@ extern int last_num_encountered_units;
 extern int last_num_encountered_terrains;
 extern boost::tribool last_debug_state;
 
-extern std::vector<std::string> empty_string_vector;
 extern const int max_section_level;
-extern const int title_size;
-extern const int title2_size;
-extern const int box_width;
-extern const int normal_font_size;
-extern const unsigned max_history;
-extern const std::string topic_img;
-extern const std::string closed_section_img;
-extern const std::string open_section_img;
 // The topic to open by default when opening the help dialog.
 extern const std::string default_show_topic;
 extern const std::string unknown_unit_topic;
