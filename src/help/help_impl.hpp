@@ -309,7 +309,6 @@ section *find_section(section &sec, const std::string &id);
 /** Load the appropriate terrain types data to use */
 std::shared_ptr<terrain_type_data> load_terrain_types_data();
 
-extern const game_config_view *game_cfg;
 // The default toplevel.
 extern help::section default_toplevel;
 // All sections and topics not referenced from the default toplevel.

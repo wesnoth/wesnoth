@@ -261,7 +261,7 @@ void title_screen::init_callbacks()
 	// Help
 	//
 	register_button("help", hotkey::HOTKEY_HELP, []() {
-		help::help_manager help_manager(&game_config_manager::get()->game_config());
+		help::help_manager help_manager;
 		help::show_help();
 	});
 

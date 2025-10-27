@@ -56,7 +56,6 @@ static lg::log_domain log_help("help");
 
 namespace help {
 
-const game_config_view *game_cfg = nullptr;
 // The default toplevel.
 help::section default_toplevel;
 // All sections and topics not referenced from the default toplevel.
@@ -519,7 +518,7 @@ std::vector<topic> generate_era_topics(const bool sort_generated, const std::str
 {
 	std::vector<topic> topics;
 
-	auto era = game_cfg->find_child("era","id", era_id);
+	auto era = game_config_manager::get()->game_config().find_child("era","id", era_id);
 	if(era && !era["hide_help"].to_bool()) {
 		topics = generate_faction_topics(*era, sort_generated);
 
@@ -847,7 +846,7 @@ void generate_races_sections(const config* help_cfg, section& sec, int level)
 
 void generate_era_sections(const config* help_cfg, section & sec, int level)
 {
-	for (const config & era : game_cfg->child_range("era")) {
+	for(const config& era : game_config_manager::get()->game_config().child_range("era")) {
 		if (era["hide_help"].to_bool()) {
 			continue;
 		}
@@ -1246,8 +1245,8 @@ void generate_contents()
 {
 	default_toplevel.clear();
 	hidden_sections.clear();
-	if (game_cfg != nullptr) {
-		const config *help_config = &game_cfg->child_or_empty("help");
+	if(auto gcm = game_config_manager::get()) {
+		const config *help_config = &gcm->game_config().child_or_empty("help");
 		try {
 			default_toplevel = parse_config(help_config);
 			// Create a config object that contains everything that is
