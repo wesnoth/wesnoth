@@ -52,13 +52,6 @@ namespace help {
  * This would allow for complete customization of the contents, although not in a
  * very easy way. It's used as the internal implementation of the other help*
  * functions.
- *
- *@pre The help_manager must already exist; this is different to the functions
- * declared in help.hpp, which is why this one's declaration is in the .cpp
- * file. Because this takes a section as an argument, it wouldn't make sense
- * for it to call ensure_cache_lifecycle() internally - if the help_manager
- * doesn't already exist, that would likely destroy the referenced object at
- * the point that this function exited.
  */
 void show_with_toplevel(const section& toplevel, const std::string& show_topic = "");
 
@@ -103,26 +96,8 @@ void show_unit_description(const unit_type& t)
 	show_help(get_unit_type_help_id(t));
 }
 
-help_manager::help_manager(const game_config_view *cfg)
-{
-	assert(!game_cfg);
-	assert(cfg);
-	// This is a global rawpointer in the help:: namespace.
-	game_cfg = cfg;
-}
-
-std::unique_ptr<help_manager> ensure_cache_lifecycle()
-{
-	// The internals of help_manager are that this global raw pointer is
-	// non-null if and only if an instance of help_manager already exists.
-	if(game_cfg)
-		return nullptr;
-	return std::make_unique<help_manager>(&game_config_manager::get()->game_config());
-}
-
 help_manager::~help_manager()
 {
-	game_cfg = nullptr;
 	default_toplevel.clear();
 	hidden_sections.clear();
 	// These last numbers must be reset so that the content is regenerated.
@@ -138,7 +113,7 @@ help_manager::~help_manager()
  */
 void show_help(const std::string& show_topic)
 {
-	auto cache_lifecycle = ensure_cache_lifecycle();
+	help_manager manager;
 	show_with_toplevel(default_toplevel, show_topic);
 }
 
