@@ -25,6 +25,7 @@
 #include "game_errors.hpp" //thrown sometimes
 #include "language.hpp" // for string_table
 #include "log.hpp"
+#include "serialization/string_utils.hpp"
 #include "units/abilities.hpp"
 #include "units/animation.hpp"
 #include "units/unit.hpp"
@@ -35,6 +36,7 @@
 
 #include <array>
 #include <locale>
+#include <vector>
 
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
@@ -249,8 +251,9 @@ void unit_type::build_help_index(
 		genders_.push_back(unit_race::MALE);
 	}
 
-	if(auto abil_cfg = cfg.optional_child("abilities")) {
-		for(const auto [key, cfg] : abil_cfg->all_children_view()) {
+	auto abil_cfg = abilities_cfg();
+	if(!abil_cfg.empty()) {
+		for(const auto [key, cfg] : abil_cfg.all_children_view()) {
 			config subst_cfg(cfg);
 			subst_cfg["name"] = unit_abilities::substitute_variables(cfg["name"], key, cfg);
 			subst_cfg["female_name"] = unit_abilities::substitute_variables(cfg["female_name"], key, cfg);
@@ -546,8 +549,9 @@ int unit_type::experience_needed(bool with_acceleration) const
 
 bool unit_type::has_ability_by_id(const std::string& ability) const
 {
-	if(auto abil = get_cfg().optional_child("abilities")) {
-		for(const auto [key, cfg] : abil->all_children_view()) {
+	auto abil = abilities_cfg();
+	if(!abil.empty()) {
+		for(const auto [key, cfg] : abil.all_children_view()) {
 			if(cfg["id"] == ability) {
 				return true;
 			}
@@ -561,20 +565,39 @@ std::vector<std::string> unit_type::get_ability_list() const
 {
 	std::vector<std::string> res;
 
-	auto abilities = get_cfg().optional_child("abilities");
-	if(!abilities) {
+	auto abilities = abilities_cfg();
+	if(abilities.empty()) {
 		return res;
 	}
 
-	for(const auto [key, cfg] : abilities->all_children_view()) {
+	for(const auto [key, cfg] : abilities.all_children_view()) {
 		std::string id = cfg["id"];
-
 		if(!id.empty()) {
 			res.push_back(std::move(id));
 		}
 	}
 
 	return res;
+}
+
+config unit_type::abilities_cfg() const {
+	const config& new_cfg = get_cfg();
+	config abil_cfg = new_cfg.has_child("abilities")
+		? new_cfg.mandatory_child("abilities")
+		: config();
+
+	// abilities via the [unit_type]abilities key.
+	if(new_cfg.has_attribute("abilities")) {
+		std::vector<std::string> abil_ids_list = utils::split(new_cfg["abilities"].str());
+		auto abil_map = unit_types.abilities();
+		for(const std::string& id : abil_ids_list) {
+			auto ability = abil_map.find(id);
+			if(ability != abil_map.end()) {
+				abil_cfg.append_children(ability->second);
+			}
+		}
+	}
+	return abil_cfg;
 }
 
 bool unit_type::hide_help() const
@@ -733,9 +756,10 @@ int unit_type::resistance_against(const std::string& damage_name, bool attacker)
 {
 	int resistance = movement_type_.resistance_against(damage_name);
 	unit_ability_list resistance_abilities;
+	auto abilities = abilities_cfg();
 
-	if(auto abilities = get_cfg().optional_child("abilities")) {
-		for(const config& cfg : abilities->child_range("resistance")) {
+	if(!abilities.empty()) {
+		for(const config& cfg : abilities.child_range("resistance")) {
 			if(!cfg["affect_self"].to_bool(true)) {
 				continue;
 			}
@@ -1077,6 +1101,12 @@ void unit_type_data::set_config(const game_config_view& cfg)
 		races_.emplace(race.id(), race);
 
 		gui2::dialogs::loading_screen::progress();
+	}
+
+	if(auto abil_cfg = cfg.optional_child("abilities")) {
+		for(const auto& [key, child_cfg] : abil_cfg->all_children_range()) {
+			abilities_map_.emplace(child_cfg["id"], config(key, child_cfg));
+		}
 	}
 
 	// Movetype resistance patching
