@@ -46,6 +46,7 @@ static lg::log_domain log_config("config");
 
 static lg::log_domain log_unit("unit");
 #define DBG_UT LOG_STREAM(debug, log_unit)
+#define WRN_UT LOG_STREAM(warn, log_unit)
 #define LOG_UT LOG_STREAM(info, log_unit)
 #define ERR_UT LOG_STREAM(err, log_unit)
 
@@ -594,6 +595,8 @@ config unit_type::abilities_cfg() const {
 			auto ability = abil_map.find(id);
 			if(ability != abil_map.end()) {
 				abil_cfg.append_children(ability->second);
+			} else {
+				WRN_UT << "Ability with id ‘" << id << "’ does not exist in registry, skipping.";
 			}
 		}
 	}
@@ -1103,9 +1106,12 @@ void unit_type_data::set_config(const game_config_view& cfg)
 		gui2::dialogs::loading_screen::progress();
 	}
 
-	if(auto abil_cfg = cfg.optional_child("abilities")) {
-		for(const auto& [key, child_cfg] : abil_cfg->all_children_range()) {
-			abilities_map_.emplace(child_cfg["id"], config(key, child_cfg));
+	for(const auto& abil_cfg : cfg.child_range("abilities")) {
+		for(const auto& [key, child_cfg] : abil_cfg.get().all_children_range()) {
+			const std::string& id = child_cfg["unique_id"].str(child_cfg["id"]);
+			if(abilities_map_.find(id) == abilities_map_.end()) {
+				abilities_map_.try_emplace(id, config(key, child_cfg));
+			}
 		}
 	}
 
