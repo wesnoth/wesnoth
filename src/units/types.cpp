@@ -1111,6 +1111,8 @@ void unit_type_data::set_config(const game_config_view& cfg)
 			const std::string& id = child_cfg["unique_id"].str(child_cfg["id"]);
 			if(abilities_map_.find(id) == abilities_map_.end()) {
 				abilities_map_.try_emplace(id, config(key, child_cfg));
+			} else {
+				WRN_UT << "Ability with id ‘" << id << "’ already exists, not adding.";
 			}
 		}
 	}
@@ -1292,6 +1294,7 @@ void unit_type_data::clear()
 	types_.clear();
 	movement_types_.clear();
 	races_.clear();
+	abilities_map_.clear();
 	build_status_ = unit_type::NOT_BUILT;
 
 	hide_help_all_ = false;
