@@ -54,7 +54,7 @@ private:
 	 */
 	help_manager() = default;
 
-	static std::shared_ptr<help_manager> singleton_;
+	static inline std::shared_ptr<help_manager> singleton_;
 };
 
 void init_help();
