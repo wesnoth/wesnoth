@@ -96,6 +96,16 @@ void show_unit_description(const unit_type& t)
 	show_help(get_unit_type_help_id(t));
 }
 
+std::shared_ptr<help_manager> help_manager::get_instance()
+{
+	if(!singleton_) {
+		singleton_.reset(new help_manager);
+	}
+
+	assert(singleton_);
+	return singleton_;
+}
+
 help_manager::~help_manager()
 {
 	default_toplevel.clear();
@@ -113,7 +123,7 @@ help_manager::~help_manager()
  */
 void show_help(const std::string& show_topic)
 {
-	help_manager manager;
+	auto manager = help_manager::get_instance();
 	show_with_toplevel(default_toplevel, show_topic);
 }
 

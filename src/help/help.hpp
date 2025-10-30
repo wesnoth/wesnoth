@@ -19,6 +19,7 @@ class terrain_type;
 class unit;
 class unit_type;
 
+#include <memory>
 #include <string>
 
 namespace help {
@@ -34,11 +35,26 @@ namespace help {
  *
  * Creating two instances of this will cause an assert.
  */
-struct help_manager {
-	help_manager() = default;
+class help_manager
+{
+public:
 	help_manager(const help_manager&) = delete;
 	help_manager& operator=(const help_manager&) = delete;
+
 	~help_manager();
+
+	/** Returns the existing help_manager instance, or a newly allocated object otherwise. */
+	static std::shared_ptr<help_manager> get_instance();
+
+private:
+	/**
+	 * Private default constructor.
+	 *
+	 * Use @ref get_instance to get a managed instance instead.
+	 */
+	help_manager() = default;
+
+	static std::shared_ptr<help_manager> singleton_;
 };
 
 void init_help();
