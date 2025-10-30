@@ -1379,6 +1379,9 @@ double attack_type::modified_damage() const
 int attack_type::modified_chance_to_hit(int cth, bool special_only) const
 {
 	int parry = other_attack_ ? other_attack_->parry() : 0;
+	if(accuracy_ != 0 || parry != 0) {
+		deprecated_message("accuracy= and parry= in [attack]", DEP_LEVEL::INDEFINITE, "", "Use [added_accuracy] weapon special instead.");
+	}
 	cth = std::clamp(cth + accuracy_ - parry, 0, 100);
 	cth += unit_abilities::effect(special_only ? get_specials("added_accuracy") : get_specials_and_abilities("added_accuracy"), 0, shared_from_this(), unit_abilities::EFFECT_CUMULABLE).get_composite_value();
 	//use modified cth like base by traditionnal [chance_to_hit] and return final result.
