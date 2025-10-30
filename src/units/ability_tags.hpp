@@ -43,13 +43,14 @@ struct ability_list_defines
 	static constexpr const char* const plague = "plague";
 	static constexpr const char* const poison = "poison";
 	static constexpr const char* const slow = "slow";
+	static constexpr const char* const added_accuracy = "added_accuracy";
 	static constexpr const char* const swarm = "swarm";
 
-	ENUM_AND_ARRAY(heals, regenerate, resistance, leadership, skirmisher, illuminates, teleport, hides, dummy, attacks, berserk, chance_to_hit, damage, damage_type, defense, disable, drains, firststrike, heal_on_hit, petrifies, plague, poison, slow, swarm)
+	ENUM_AND_ARRAY(heals, regenerate, resistance, leadership, skirmisher, illuminates, teleport, hides, dummy, attacks, berserk, chance_to_hit, damage, damage_type, defense, disable, drains, firststrike, heal_on_hit, petrifies, plague, poison, slow, added_accuracy, swarm)
 
 	static const std::set<std::string>& weapon_number_tags()
 	{
-		static std::set<std::string> tags{attacks, damage, chance_to_hit, berserk, swarm, drains, heal_on_hit};
+		static std::set<std::string> tags{attacks, damage, chance_to_hit, berserk, swarm, drains, heal_on_hit, added_accuracy};
 		return tags;
 	}
 
@@ -73,7 +74,7 @@ struct ability_list_defines
 
 	static const std::set<std::string>& all_weapon_tags()
 	{
-		static std::set<std::string> tags{attacks, berserk, chance_to_hit, damage, damage_type, disable, drains, firststrike, heal_on_hit, petrifies, plague, poison, slow, swarm};
+		static std::set<std::string> tags{attacks, berserk, chance_to_hit, damage, damage_type, disable, drains, firststrike, heal_on_hit, petrifies, plague, poison, slow, added_accuracy, swarm};
 		return tags;
 	}
 };
