@@ -267,7 +267,7 @@ jobs:
       fail-fast: false
       matrix:
         cfg: [ Release ]
-    runs-on: macos-13
+    runs-on: macos-14
     env:
       CFG: ${{ matrix.cfg }}
 
