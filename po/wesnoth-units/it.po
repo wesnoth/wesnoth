@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-10-21 01:10 UTC\n"
-"PO-Revision-Date: 2025-04-06 22:01+0200\n"
+"PO-Revision-Date: 2025-10-31 19:46+0100\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <>\n"
 "Language: it\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.2.2\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
 #. [attack]: type=impact
@@ -1236,7 +1236,7 @@ msgstr ""
 #. [unit_type]: id=Canoe, race=ship
 #: data/core/units/boats/Canoe.cfg:5
 msgid "Canoe"
-msgstr ""
+msgstr "Canoa"
 
 #. [unit_type]: id=Canoe, race=ship
 #: data/core/units/boats/Canoe.cfg:33
@@ -1246,11 +1246,15 @@ msgid ""
 "barriers or between unconnected bodies of water. Almost every intelligent "
 "race has some form of Canoe."
 msgstr ""
+"Una Canoa è una piccola imbarcazione scoperta comunemente usata per il "
+"trasporto o per la caccia. La sua struttura leggera le permette di aggirare "
+"gli ostacoli o di spostarsi tra specchi d’acqua tra loro non contigui. Quasi "
+"ogni razza intelligente possiede una qualche tipo di canoa."
 
 #. [unit_type]: id=Merchant Carrack, race=ship
 #: data/core/units/boats/Carrack_Merchant.cfg:4
 msgid "Merchant Carrack"
-msgstr ""
+msgstr "Caracca Mercantile"
 
 #. [unit_type]: id=Merchant Carrack, race=ship
 #: data/core/units/boats/Carrack_Merchant.cfg:21
@@ -1260,6 +1264,11 @@ msgid ""
 "platform, and their spacious holds can carry both medical supplies and "
 "repair equipment."
 msgstr ""
+"Le Caracche Mercantili sono navi veloci dotate di ampie stive. Sebbene non "
+"sia progettate per andare in guerra, il loro ponte ampio e stabile "
+"costituisce una buona piattaforma di tiro per gli arcieri, e le loro "
+"spaziose stive possono trasportare sia forniture mediche che attrezzature "
+"per le riparazioni."
 
 #. [attack]: type=pierce
 #: data/core/units/boats/Carrack_Merchant.cfg:43
@@ -1267,50 +1276,38 @@ msgstr ""
 #: data/core/units/boats/Orc_Battle-Barge.cfg:36
 #: data/core/units/boats/Raider_Coastal.cfg:44
 #: data/core/units/boats/Raider_Iron.cfg:45 data/core/units/boats/Skiff.cfg:40
-#, fuzzy
-#| msgid "Poacher"
 msgid "archers"
-msgstr "Bracconiere"
+msgstr "arcieri"
 
 #. [unit_type]: id=Pirate Carrack, race=ship
 #: data/core/units/boats/Carrack_Pirate.cfg:4
 msgid "Pirate Carrack"
-msgstr ""
+msgstr "Caracca Pirata"
 
 #. [unit_type]: id=Pirate Carrack, race=ship
 #: data/core/units/boats/Carrack_Pirate.cfg:22
-#, fuzzy
-#| msgid ""
-#| "Pirate Galleons are to transport ships what wolves are to sheep. The "
-#| "pirates who crew them are more than happy to help relieve other ships of "
-#| "their weighty cargo."
 msgid ""
 "Pirate galleons are to transport ships what wolves are to sheep. The pirates "
 "who crew them are more than happy to help relieve other ships of their "
 "weighty cargo, or to fight as privateers in return for coin."
 msgstr ""
-"I Galeoni Pirata stanno alle navi da trasporto come i lupi alle pecore. I "
+"I galeoni pirata stanno alle navi da trasporto come i lupi alle pecore. I "
 "pirati che formano il loro equipaggio sono più che felici di aiutare le "
-"altre navi a disfarsi del loro pesante carico."
+"altre navi a disfarsi del loro pesante carico, o a combattere come mercenari "
+"in cambio di oro."
 
 #. [attack]: type=pierce
 #: data/core/units/boats/Carrack_Pirate.cfg:39
-#, fuzzy
-#| msgid "ballista"
 msgid "ballistae"
-msgstr "balista"
+msgstr "balliste"
 
 #. [attack]: type=pierce
 #: data/core/units/boats/Carrack_Pirate.cfg:48
-#, fuzzy
-#| msgid "Trapper"
 msgid "grapple"
-msgstr "Cacciatore"
+msgstr "rampino"
 
 #. [unit_type]: id=Derelict, race=ship
 #: data/core/units/boats/Derelict_Ship.cfg:4
-#, fuzzy
-#| msgid "Derelict Hulk"
 msgid "Derelict"
 msgstr "Relitto"
 
@@ -1330,10 +1327,8 @@ msgstr ""
 
 #. [unit_type]: id=Elvish Cutter, race=ship
 #: data/core/units/boats/Elf_Cutter.cfg:5
-#, fuzzy
-#| msgid "Elvish Outrider"
 msgid "Elvish Cutter"
-msgstr "Avanguardia degli Elfi"
+msgstr "Cutter Elfico"
 
 #. [unit_type]: id=Elvish Cutter, race=ship
 #: data/core/units/boats/Elf_Cutter.cfg:18
@@ -1344,6 +1339,12 @@ msgid ""
 "Artfully grafted together from still-living trees, these sleek ships can "
 "recover from minor injuries without their crews’ intervention."
 msgstr ""
+"Gli elfi non sono una razza marinara per loro natura: preferiscono piuttosto "
+"la tranquilla solitudine delle foreste. Cionondimeno, esiste una certa "
+"esigenza di commercio e trasporto fluviale, specialmente tra le enclavi di "
+"Wesmere e Lintanir. Con degli alberi ancora vivi innestati ad arte nei loro "
+"scafi, questi eleganti vascelli possono auto-ripararsi da piccoli danni "
+"senza alcun intervento dei loro equipaggi."
 
 #. [attack]: type=pierce
 #: data/core/units/boats/Elf_Cutter.cfg:39
@@ -1351,14 +1352,12 @@ msgstr ""
 #: data/core/units/boats/Elf_Sloop.cfg:40
 #: data/core/units/boats/Elf_Sloop.cfg:49
 msgid "marksmen"
-msgstr ""
+msgstr "cecchini"
 
 #. [unit_type]: id=Elvish Sloop, race=ship
 #: data/core/units/boats/Elf_Sloop.cfg:5
-#, fuzzy
-#| msgid "Elvish Scout"
 msgid "Elvish Sloop"
-msgstr "Elfo Esploratore"
+msgstr "Sloop Elfico"
 
 #. [unit_type]: id=Elvish Sloop, race=ship
 #: data/core/units/boats/Elf_Sloop.cfg:19
@@ -1368,6 +1367,10 @@ msgid ""
 "times of crisis, for their living timber can survive only a handful of years "
 "after being launched."
 msgstr ""
+"Eleganti in acqua e ornate di vegetazione, queste possenti navi elfiche "
+"affrontano impunemente onde e tempeste. Questi colossi vengono avvistate "
+"soltanto in tempi di crisi, perché il loro legno vivente può sopravvivere in "
+"acqua soltanto una manciata di anni dopo il loro varo."
 
 #. [unit_type]: id=Fireship, race=ship
 #: data/core/units/boats/Fireship.cfg:4
@@ -1392,7 +1395,7 @@ msgstr ""
 #. [dummy]: id=deteriorate
 #: data/core/units/boats/Fireship.cfg:26
 msgid "deteriorate"
-msgstr ""
+msgstr "degrado"
 
 #. [dummy]: id=deteriorate
 #: data/core/units/boats/Fireship.cfg:27
@@ -1400,13 +1403,13 @@ msgid ""
 "This unit is deteriorating. It cannot be healed, and loses 10 hitpoints at "
 "the start of each of its turns."
 msgstr ""
+"Questa unità si sta sfaldando. Non potendo essere riparata, perderà 10 PF "
+"all’inizio di ogni suo turno."
 
 #. [unit_type]: id=Ghost Ship, race=ship
 #: data/core/units/boats/Ghost_Ship.cfg:16
-#, fuzzy
-#| msgid "Ghost"
 msgid "Ghost Ship"
-msgstr "Fantasma"
+msgstr "Nave Fantasma"
 
 #. [attack]: type=fire
 #: data/core/units/boats/Ghost_Ship.cfg:52
@@ -1419,7 +1422,7 @@ msgstr "saetta"
 #. [attack]: type=cold
 #: data/core/units/boats/Ghost_Ship.cfg:64
 msgid "lost souls"
-msgstr ""
+msgstr "anime perse"
 
 #. [unit_type]: id=Boat, race=mechanical
 #: data/core/units/boats/Legacy_Boat.cfg:7
@@ -1496,10 +1499,8 @@ msgstr ""
 
 #. [unit_type]: id=Orcish Barge, race=ship
 #: data/core/units/boats/Orc_Barge.cfg:5
-#, fuzzy
-#| msgid "Orcish Archer"
 msgid "Orcish Barge"
-msgstr "Orco Arciere"
+msgstr "Chiatta Orchesca"
 
 #. [unit_type]: id=Orcish Barge, race=ship
 #: data/core/units/boats/Orc_Barge.cfg:27
@@ -1520,13 +1521,28 @@ msgid ""
 "These barges are very ineffective in the high seas; little better than a "
 "floating wreck."
 msgstr ""
+"Le chiatte orchesche sono delle imbarcazioni rudimentali, prive di "
+"qualsivoglia artigianalità presente in qualsiasi altra nave. Ma ciò che "
+"manca loro in velocità e grazia viene compensato in termini di robustezza e "
+"utilità nella navigazione lungo fiumi e paludi. Il loro principale mezzo di "
+"locomozione è una grande vela simmetrica, fissata su tre punti, che consente "
+"la navigazione sottovento. Quando le correnti e i venti sospingono la "
+"chiatta in una direzione sbagliata, l’equipaggio deve utilizzare pali ed "
+"ancore per farla muovere nella direzione voluta.\n"
+"\n"
+"Le chiatte servono come mezzi di trasporto sia di rifornimenti che di "
+"truppe, ma sono state anche utilizzate come vedette in conflitti più ampi. "
+"Non sono dotate di particolari armamenti, ma l’equipaggio è dotato dei rozzi "
+"archi orcheschi, che possono essere un deterrente più che sufficiente in "
+"molti contesti.\n"
+"\n"
+"Queste chiatte sono decisamente inefficaci in alto mare, poco più di un "
+"relitto galleggiante."
 
 #. [unit_type]: id=Orcish Battle Barge, race=ship
 #: data/core/units/boats/Orc_Battle-Barge.cfg:5
-#, fuzzy
-#| msgid "Orcish Ruler"
 msgid "Orcish Battle Barge"
-msgstr "Orco Dominatore"
+msgstr "Chiatta Orchesca da Battaglia"
 
 #. [unit_type]: id=Orcish Battle Barge, race=ship
 #: data/core/units/boats/Orc_Battle-Barge.cfg:27
@@ -1540,18 +1556,25 @@ msgid ""
 "These barges are very ineffective in the high seas; little better than a "
 "floating wreck."
 msgstr ""
+"Nonostante il loro semplicistico design, le chiatte offrono un sorprendente "
+"vantaggio: sono molto efficaci per trasportare merci o uomini, hanno una "
+"buona navigabilità in acque basse o paludose e offrono uno spazio sicuro per "
+"il riposo dei combattenti feriti. Offrono anche una piattaforma ampia e "
+"stabile su cui montare le attrezzature d’assedio, un fatto di cui gli orchi "
+"sono ben consapevoli.\n"
+"\n"
+"Queste chiatte sono molto inefficaci in alto mare; poco più di un relitto "
+"galleggiante."
 
 #. [attack]: type=impact
 #: data/core/units/boats/Orc_Battle-Barge.cfg:45
 msgid "catapult"
-msgstr ""
+msgstr "catapulta"
 
 #. [unit_type]: id=Orcish Rigship, race=ship
 #: data/core/units/boats/Orc_Rigship.cfg:5
-#, fuzzy
-#| msgid "Orcish Nightblade"
 msgid "Orcish Rigship"
-msgstr "Orco Lamaoscura"
+msgstr "Galea Orchesca"
 
 #. [unit_type]: id=Orcish Rigship, race=ship
 #: data/core/units/boats/Orc_Rigship.cfg:19
@@ -1563,6 +1586,12 @@ msgid ""
 "The so-called “Rigship” is but one of many designs bearing testament to "
 "their skill."
 msgstr ""
+"La maggior parte degli orchi non ha bisogno di imbarcazioni a vela, "
+"preferendo combattere le proprie battaglie tra le cime aride e le colline "
+"delle Montagne Centrali. Ma lungo la costa nord-occidentale del Grande "
+"Continente, nelle città di Bitok e Tirigaz, i carpentieri orcheschi hanno "
+"lavorato duramente per perfezionare la loro arte. La cosiddetta \"Galea\" è "
+"solo uno dei tanti progetti che testimoniano la loro abilità."
 
 #. [attack]: type=pierce
 #. [attack]: type=fire
@@ -1570,17 +1599,13 @@ msgstr ""
 #: data/core/units/boats/Orc_Rigship.cfg:45
 #: data/core/units/boats/Orc_Warship.cfg:37
 #: data/core/units/boats/Orc_Warship.cfg:46
-#, fuzzy
-#| msgid "crossbow"
 msgid "crossbows"
-msgstr "balestra"
+msgstr "balestre"
 
 #. [unit_type]: id=Orcish Warship, race=ship
 #: data/core/units/boats/Orc_Warship.cfg:5
-#, fuzzy
-#| msgid "Orcish Warrior"
 msgid "Orcish Warship"
-msgstr "Orco Guerriero"
+msgstr "Galeazza Orchesca"
 
 #. [unit_type]: id=Orcish Warship, race=ship
 #: data/core/units/boats/Orc_Warship.cfg:20
@@ -1590,11 +1615,16 @@ msgid ""
 "shipwrights of the Tirigaz coast have not forgotten that lesson, and devote "
 "significant effort to the construction of newer and ever-better vessels."
 msgstr ""
+"Quando gli orchi sbarcarono per la prima volta dalle loro navi sulle coste "
+"occidentali del Grande Continente, trovarono un paradiso incontaminato in "
+"cui espandersi. I carpentieri navali della costa di Tirigaz non hanno "
+"dimenticato quella lezione e dedicano sforzi significativi alla costruzione "
+"di imbarcazioni sempre più nuove e migliori."
 
 #. [unit_type]: id=Raft, race=ship
 #: data/core/units/boats/Raft.cfg:5
 msgid "Raft"
-msgstr ""
+msgstr "Zattera"
 
 #. [unit_type]: id=Raft, race=ship
 #: data/core/units/boats/Raft.cfg:21
@@ -1606,6 +1636,12 @@ msgid ""
 "These Rafts are very ineffective in the high seas; little better than a "
 "floating wreck."
 msgstr ""
+"Le Zattere possono essere un mezzo efficiente per il trasporto fluviale, ma "
+"alla disperata possono anche essere usate come imbarcazioni di fortuna, "
+"ricavandole assemblando pezzi dai relitti di navi più grandi.\n"
+"\n"
+"Queste Zattere sono decisamente inefficaci in alto mare, poco più di un "
+"relitto galleggiante."
 
 #. [unit_type]: id=Coastal Raider, race=ship
 #: data/core/units/boats/Raider_Coastal.cfg:4
@@ -1614,19 +1650,6 @@ msgstr "Dromone Costiero"
 
 #. [unit_type]: id=Coastal Raider, race=ship
 #: data/core/units/boats/Raider_Coastal.cfg:25
-#, fuzzy
-#| msgid ""
-#| "While many larger ships rely on impressive sails to harness the power of "
-#| "the wind, galleys and raiders are propelled by muscle-power of the crew "
-#| "manning the oars. This has the disadvantage of requiring a larger crew, "
-#| "and it does limit the speed and efficiency of transport. But these "
-#| "seeming weaknesses also make the vessel less vulnerable to the whims of "
-#| "weather and the predations of pirates.\n"
-#| "\n"
-#| "Coastal Raider ships are a very basic warship, used by several races to "
-#| "move armed forces rapidly through shallow and coastal water. They do not "
-#| "possess any specific armaments, but there are always archers amongst the "
-#| "crew."
 msgid ""
 "While Carracks and Cogs rely on impressive sails to harness the power of the "
 "wind, galleys and raiders are propelled by muscle-power of the crew manning "
@@ -1640,19 +1663,19 @@ msgid ""
 "not possess any specific armaments, but oared propulsion makes the vessel "
 "much more maneuverable when ramming or beaching."
 msgstr ""
-"Mentre la maggior parte delle grosse navi fa affidamento sulle sue imponenti "
-"vele per addomesticare la forza dei venti, le galee e i dromoni vengono "
-"spinte dalla forza muscolare di una ciurma di rematori. Questo sistema di "
-"propulsione ha lo svantaggio di richiedere l’utilizzo di ciurme più numerose "
-"e, di conseguenza, di limitare la velocità e la capacità di carico. Ma "
-"quello che sembra essere uno svantaggio rende anche il vascello meno "
-"vulnerabile ai capricci delle condizioni meteorologiche e agli assalti dei "
-"pirati.\n"
+"Mentre le Caracche le Cocche fanno affidamento sulle sue imponenti vele per "
+"addomesticare la forza dei venti, le galee e i dromoni vengono spinti dalla "
+"forza muscolare di una ciurma di rematori. Questo sistema di propulsione ha "
+"lo svantaggio di richiedere l’utilizzo di ciurme più numerose e, di "
+"conseguenza, di limitare la velocità e la capacità di carico. Ma quello che "
+"sembra essere uno svantaggio rende anche il vascello meno vulnerabile ai "
+"capricci delle condizioni meteorologiche e agli assalti dei pirati.\n"
 "\n"
-"I Dromoni Costieri sono delle navi da guerra piuttosto semplici, utilizzare "
-"da molte razze diverse per muovere rapidamente interi eserciti attraverso "
-"acque poco profonde e lungo le coste. Non hanno degli armamenti specifici, "
-"ma ci sono sempre degli arcieri nella ciurma."
+"I Dromoni Costieri sono delle navi da guerra piuttosto semplici, protette "
+"contro lo speronamento e utilizzate per muovere rapidamente interi eserciti "
+"attraverso acque poco profonde e lungo le coste. Non hanno degli armamenti "
+"specifici, ma la propulsione a remi rende i vascelli molto più manovrabili "
+"in caso di speronamento o di sbarco."
 
 #. [unit_type]: id=Iron Raider, race=ship
 #: data/core/units/boats/Raider_Iron.cfg:4
@@ -1661,19 +1684,6 @@ msgstr "Galea Rinforzata"
 
 #. [unit_type]: id=Iron Raider, race=ship
 #: data/core/units/boats/Raider_Iron.cfg:26
-#, fuzzy
-#| msgid ""
-#| "While Galleons and Cogs rely on impressive sails to harness the power of "
-#| "the wind, galleys and raiders are propelled by muscle-power of the crew "
-#| "manning the oars. This has the disadvantage of requiring a larger crew, "
-#| "and it does limit the speed and efficiency of transport. But these "
-#| "seeming weaknesses also make the vessel less vulnerable to the whims of "
-#| "weather and the predations of pirates.\n"
-#| "\n"
-#| "Iron Raiders are Coastal Raiders that have been hardened to become "
-#| "tougher targets and harder hitters, at the expense of speed. They are "
-#| "often used as front-line escorts of slower cargo ships in rivers and "
-#| "coasts."
 msgid ""
 "While Carracks and Cogs rely on impressive sails to harness the power of the "
 "wind, galleys and raiders are propelled by muscle-power of the crew manning "
@@ -1687,38 +1697,34 @@ msgid ""
 "escorts of slower cargo ships in rivers and coasts, where their heavy iron "
 "ram proves the most effective."
 msgstr ""
-"Mentre i Galeoni e le Cocche fanno affidamento sulle imponenti vele per "
-"addomesticare la forza dei venti, le galee e i dromoni vengono spinte dalla "
+"Mentre le Caracche e le Cocche fanno affidamento sulle imponenti vele per "
+"addomesticare la forza dei venti, le galee e i dromoni vengono spinti dalla "
 "forza muscolare di una ciurma di rematori. Questo sistema di propulsione ha "
 "lo svantaggio di richiedere l’utilizzo di ciurme più numerose e, di "
 "conseguenza, di limitare la velocità e la capacità di carico. Ma quello che "
 "sembra essere uno svantaggio rende anche il vascello meno vulnerabile ai "
 "capricci delle condizioni meteorologiche e agli assalti dei pirati.\n"
 "\n"
-"Le Galee Rinforzate sono dei Dromoni Costieri irrobustiti in modo da "
-"diventare dei bersagli più difficili da colpire e allo stesso tempo poter "
-"attaccare con più forza d’urto, il tutto a spese di una minore velocità. "
-"Vengono usare spesso lungo i fiumi e le coste come prima linea di scorta "
-"delle lente navi mercantili."
+"Le Galee Rinforzate sono dei vecchi Dromoni Costieri irrobustiti in modo da "
+"diventare dei bersagli più difficili da colpire e più resistenti ai colpi. "
+"Vengono usate spesso come prima linea di scorta delle lente navi mercantili "
+"lungo i fiumi e le coste, dove il loro pesante ariete di ferro si rivela più "
+"efficace."
 
 #. [unit_type]: id=Skiff, race=ship
 #: data/core/units/boats/Skiff.cfg:5
 msgid "Skiff"
-msgstr ""
+msgstr "Schifo"
 
 #. [unit_type]: id=Skiff, race=ship
 #: data/core/units/boats/Skiff.cfg:22
-#, fuzzy
-#| msgid ""
-#| "Propelled by oars or small sails, Boats are used to travel short "
-#| "distances and in shallows where large ships cannot navigate."
 msgid ""
 "Propelled by oars or small sails, Skiffs are used to travel short distances "
 "and in shallows where large ships cannot navigate."
 msgstr ""
-"Spinte da remi o da piccole vele, le Barche vengono impiegate per percorrere "
-"brevi distanze o per gli spostamenti nelle acque basse, dove le grandi navi "
-"non riescono a navigare."
+"Spinte da remi o da piccole vele, gli schifi vengono impiegati per "
+"percorrere brevi distanze o per gli spostamenti nelle acque basse dove le "
+"grandi navi non riescono a navigare."
 
 #. [unit_type]: id=Drake Arbiter, race=drake, gender=male,female
 #: data/core/units/drakes/Arbiter.cfg:4
@@ -2806,10 +2812,11 @@ msgstr ""
 msgid "torch"
 msgstr "torcia"
 
+# (AWH) dardo con una corda, a volte con una bandierina in fondo...
 #. [attack]: type=pierce
 #: data/core/units/dunefolk/Marauder.cfg:71
 msgid "rope dart"
-msgstr ""
+msgstr "dardo a meteora"
 
 #. [unit_type]: id=Dune Paragon, race=dunefolk
 #: data/core/units/dunefolk/Paragon.cfg:8
@@ -2901,7 +2908,7 @@ msgstr ""
 #. [attack]: type=pierce
 #: data/core/units/dunefolk/Raider.cfg:68
 msgid "dart"
-msgstr ""
+msgstr "dardo"
 
 #. [unit_type]: id=Dune Rider, race=dunefolk
 #: data/core/units/dunefolk/Rider.cfg:8
@@ -6333,14 +6340,6 @@ msgstr "Nereide Divinatrice"
 
 #. [unit_type]: id=Mermaid Diviner, race=merman, gender=female
 #: data/core/units/merfolk/Diviner.cfg:22
-#, fuzzy
-#| msgid ""
-#| "Years of devotion may endow a priestess with great wisdom on the workings "
-#| "of the world, and grants some the favor of the light. The power thus "
-#| "given to these ladies of the water is a recurring motif in tale and song; "
-#| "such as the that of the knights of the silver spire, cornered and slain "
-#| "to a man at the banks of the Alavynne, but who rode again the next day, "
-#| "in full number, and wrought the downfall of the crimson duke."
 msgid ""
 "Years of devotion may endow a priestess with great wisdom on the workings of "
 "the world, and grants some the favor of the light. The power thus given to "
@@ -10316,19 +10315,14 @@ msgstr ""
 #~ msgid "crash"
 #~ msgstr "urto"
 
-# Attacco della formica del fuoco, da definire quando avremo la descrizione...
-#, fuzzy
-#~| msgid "fire"
 #~ msgid "firebow"
-#~ msgstr "fuoco"
+#~ msgstr "arco incendiario"
 
 #~ msgid "naval ram"
 #~ msgstr "rostro"
 
-#, fuzzy
-#~| msgid "Transport Galleon"
 #~ msgid "Transport Ship"
-#~ msgstr "Galeone da Trasporto"
+#~ msgstr "Navee da Trasporto"
 
 #~ msgid "forceful scimitar strike"
 #~ msgstr "colpo di scimitarra potente"
@@ -10463,3 +10457,12 @@ msgstr ""
 #, fuzzy
 #~ msgid "Giant Stoat"
 #~ msgstr "Ratto Gigante"
+
+#~ msgid "..."
+#~ msgstr "..."
+
+#~ msgid "black wind"
+#~ msgstr "vento nero"
+
+#~ msgid "Pirate Ship"
+#~ msgstr "Nave Pirata"
