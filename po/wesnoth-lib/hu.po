@@ -9,13 +9,13 @@
 # Széll András <szell.andris@gmail.com>, 2018.
 # Krutki Tamás <krtamas@0x64.org>, 2018.
 # Pazurik L. Ádám <pazurik.laszlo.adam@gmail.com>, 2018.
-# Berda Jenő <big4billy@gmail.com>, 2024.
+# Berda Jenő <big4billy@gmail.com>, 2024-2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: hu-lib_1.5\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-05-20 17:25-0500\n"
-"PO-Revision-Date: 2025-07-15 22:33+0200\n"
+"PO-Revision-Date: 2025-10-26 02:05+0200\n"
 "Last-Translator: Berda Jenő <big4billy@gmail.com>\n"
 "Language-Team: Hungarian <>\n"
 "Language: hu\n"
@@ -5418,8 +5418,10 @@ msgstr "Párbeszédablak be"
 
 #. [toggle_button]: id=show_turn_dialog
 #: data/gui/window/preferences/01_general.cfg:115
+#, fuzzy
+#| msgid "Display a prompt at the beginning of your turn"
 msgid "Display a dialog at the beginning of your turn"
-msgstr "Egy párbeszédablakot dob fel, amikor a te köröd következik"
+msgstr "A köröd elején egy párbeszédablak jelenik meg"
 
 #. [toggle_button]: id=whiteboard_on_start
 #: data/gui/window/preferences/01_general.cfg:128
@@ -7153,8 +7155,10 @@ msgid "Choose an icon"
 msgstr "Válassz egy ikont"
 
 #: src/gui/dialogs/editor/generator_settings.cpp:71
+#, fuzzy
+#| msgid "$count/1000 tiles"
 msgid "/1000 tiles"
-msgstr "/1000 terület"
+msgstr "$count/1000 mező"
 
 #: src/gui/dialogs/editor/generator_settings.cpp:74
 msgid "Coastal"
@@ -8183,8 +8187,10 @@ msgid "Select/Move/Attack"
 msgstr "Kiválasztás/mozgás/támadás"
 
 #: src/hotkey/hotkey_command.cpp:84
+#, fuzzy
+#| msgid "Touch Hex"
 msgid "Touch"
-msgstr "Érintés"
+msgstr "Mező megfogása"
 
 #: src/hotkey/hotkey_command.cpp:85
 msgid "Animate Map"
@@ -9294,11 +9300,20 @@ msgstr "A kötelező ‘$key|’ kulcs nincs beállítva itt: ‘[$section|]’.
 #~ msgid "Search help topic names"
 #~ msgstr "Súgótémakörök nevének keresése"
 
+#~ msgid "Presets"
+#~ msgstr "Előbeállítások"
+
+#~ msgid "Delete this preset"
+#~ msgstr "Előbeállítás törlése"
+
 #~ msgid "Join Queue"
 #~ msgstr "Csatlakozás a várólistához"
 
 #~ msgid "Leave Queue"
 #~ msgstr "Várólistából kilépés"
+
+#~ msgid "Save Preset"
+#~ msgstr "Előbeállítás mentése"
 
 #~ msgid "Faction:"
 #~ msgstr "Szövetség:"
@@ -9316,6 +9331,9 @@ msgstr "A kötelező ‘$key|’ kulcs nincs beállítva itt: ‘[$section|]’.
 #~ msgstr ""
 #~ "Hálózati játék\n"
 #~ "hosztolása"
+
+#~ msgid "Turn prompt"
+#~ msgstr "Kör párbeszédablak"
 
 #~ msgid "UI theme:"
 #~ msgstr "Felhasználó felület téma:"
@@ -9412,24 +9430,14 @@ msgstr "A kötelező ‘$key|’ kulcs nincs beállítva itt: ‘[$section|]’.
 #~ msgid "Unit type saved."
 #~ msgstr "Egységtípus mentve."
 
-#~ msgid "<span color='#00dcff' size='small'>please enter a filename</span>"
-#~ msgstr ""
-#~ "<span color='#00dcff' size='small'>kérem, adjon meg egy fájlnevet</span>"
+#~ msgid "enter filename"
+#~ msgstr "add meg a fájlnevet"
 
-#~ msgid ""
-#~ "<span color='red'><span face='DejaVuSans'>✘</span> <span "
-#~ "size='small'>wrong extension, use $extensions</span></span>"
-#~ msgstr ""
-#~ "<span color='red'><span face='DejaVuSans'>✘</span> <span "
-#~ "size='small'>hibás kiterjesztés, használja ezeket: $extensions</span></"
-#~ "span>"
+#~ msgid "invalid extension (use $extensions)"
+#~ msgstr "érvénytelen kiterjesztés (használja ezeket: $extensions)"
 
-#~ msgid ""
-#~ "<span color='red'><span face='DejaVuSans'>✘</span> <span "
-#~ "size='small'>whitespace is not allowed in filename</span></span>"
-#~ msgstr ""
-#~ "<span color='red'><span face='DejaVuSans'>✘</span> <span size='small'>A "
-#~ "szóköz nem engedélyezett a fájlnévben</span></span>"
+#~ msgid "filename contains whitespace"
+#~ msgstr "a fájl neve szóközt tartalmaz"
 
 #~ msgid "Opening files is not supported, contact your packager"
 #~ msgstr ""
@@ -9445,6 +9453,9 @@ msgstr "A kötelező ‘$key|’ kulcs nincs beállítva itt: ‘[$section|]’.
 #~ msgstr ""
 #~ "A funkció importálja a Wesnoth előző verziójának beállításait, azonban "
 #~ "nem található másik verzió az eszközön"
+
+#~ msgid "Hotkey(s): $bindings"
+#~ msgstr "Gyorsbillentyű(k): $bindings"
 
 #~ msgid "Invalid Color"
 #~ msgstr "Érvénytelen szín"
@@ -9499,6 +9510,25 @@ msgstr "A kötelező ‘$key|’ kulcs nincs beállítva itt: ‘[$section|]’.
 
 #~ msgid "In section ‘[$section|]’ the mandatory subtag ‘[$tag|]’ is missing."
 #~ msgstr "A kötelező ‘$tag|’ alcímke nincs beállítva itt: ‘[$section|]’."
+
+#~ msgid "<span color='#00dcff' size='small'>please enter a filename</span>"
+#~ msgstr ""
+#~ "<span color='#00dcff' size='small'>kérem, adjon meg egy fájlnevet</span>"
+
+#~ msgid ""
+#~ "<span color='red'><span face='DejaVuSans'>✘</span> <span "
+#~ "size='small'>wrong extension, use $extensions</span></span>"
+#~ msgstr ""
+#~ "<span color='red'><span face='DejaVuSans'>✘</span> <span "
+#~ "size='small'>hibás kiterjesztés, használja ezeket: $extensions</span></"
+#~ "span>"
+
+#~ msgid ""
+#~ "<span color='red'><span face='DejaVuSans'>✘</span> <span "
+#~ "size='small'>whitespace is not allowed in filename</span></span>"
+#~ msgstr ""
+#~ "<span color='red'><span face='DejaVuSans'>✘</span> <span size='small'>A "
+#~ "szóköz nem engedélyezett a fájlnévben</span></span>"
 
 #~ msgid "corrupted original file"
 #~ msgstr "hibás eredeti fájl"
@@ -10250,9 +10280,6 @@ msgstr "A kötelező ‘$key|’ kulcs nincs beállítva itt: ‘[$section|]’.
 #~| msgid "Refresh Image Cache"
 #~ msgid "Purge Cache"
 #~ msgstr "Képek átmeneti tárolójának frissítése"
-
-#~ msgid "Hotkey Settings"
-#~ msgstr "Gyorsbillentyűk beállításai"
 
 #~ msgid "Reset all bindings to the default values"
 #~ msgstr ""

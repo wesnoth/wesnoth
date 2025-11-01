@@ -18,7 +18,7 @@ msgstr ""
 "Project-Id-Version: hu-wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-05-20 17:25-0500\n"
-"PO-Revision-Date: 2025-07-18 22:04+0200\n"
+"PO-Revision-Date: 2025-10-26 01:52+0200\n"
 "Last-Translator: Berda Jenő <big4billy@gmail.com>\n"
 "Language-Team: Hungarian <>\n"
 "Language: hu\n"
@@ -3389,12 +3389,12 @@ msgstr "(Megjegyzés: Az új kódban inkább ezt kell használnia: $replacement)
 #. [lua]: wesnoth.deprecate_api
 #: data/lua/core/_initial.lua:38 src/deprecation.cpp:69
 msgid "Invalid deprecation level $level (should be 1-4)"
-msgstr ""
+msgstr "$level nem megfelelő leértékelési szint (1-4 lehet csak)"
 
 #. [lua]: wml_actions.deprecated_message
 #: data/lua/wml-tags.lua:881
 msgid "Invalid deprecation level (should be 1-4)"
-msgstr ""
+msgstr "Nem megfelelő leértékelési szint (1-4 lehet csak)"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
@@ -5492,6 +5492,8 @@ msgstr "<N>"
 #: src/chat_command_handler.hpp:115
 msgid "Get a random number between 1 and N visible in the game setup lobby."
 msgstr ""
+"Szerezz be egy véletlenszámot 1 és N között, mely látható a játékbeállítási "
+"előcsarnokban."
 
 #: src/chat_command_handler.hpp:117
 msgid "Display version information."
@@ -5691,7 +5693,7 @@ msgstr ""
 
 #: src/game_config_manager.cpp:444
 msgid "instead, use the macro with the same name in the [campaign] tag"
-msgstr ""
+msgstr "ehelyett használd az azonos nevű makrót a [campaign] címlapon"
 
 #: src/game_config_manager.cpp:639
 msgid "The following add-on had errors and could not be loaded:"
@@ -6459,16 +6461,20 @@ msgid "Back to Start"
 msgstr "Vissza a kezdéshez"
 
 #: src/hotkey/hotkey_handler.cpp:441
+#, fuzzy
+#| msgid "Back to Turn $number"
 msgid "Back to Turn "
-msgstr "Vissza ehhez a körhöz: "
+msgstr "Vissza ehhez a körhöz: $number"
 
 #: src/hotkey/hotkey_handler.cpp:457
 msgid "Replay from Start"
 msgstr "Újrakezdés az elejétől"
 
 #: src/hotkey/hotkey_handler.cpp:457
+#, fuzzy
+#| msgid "Replay from Turn $number"
 msgid "Replay from Turn "
-msgstr "Újrakezdés ettől a körtől: "
+msgstr "Újrakezdés ettől a körtől: $number"
 
 #: src/hotkey/hotkey_handler_sp.cpp:151
 msgid "(press $hotkey to deactivate)"
@@ -6487,8 +6493,10 @@ msgid "Do you want to load it anyway?"
 msgstr "Mindenképp be akarod tölteni?"
 
 #: src/hotkey/hotkey_handler_sp.cpp:338
+#, fuzzy
+#| msgid "The file you have tried to load has no replay information."
 msgid "The file you have tried to load has no replay information. "
-msgstr "A betölteni próbált fájl nem tartalmaz visszajátszási információkat. "
+msgstr "A betölteni próbált fájl nem tartalmaz visszajátszási információkat."
 
 #: src/hotkey/hotkey_handler_sp.cpp:342
 msgid "The file you have tried to load is not from the current session."
@@ -7534,20 +7542,26 @@ msgid "Special Notes:"
 msgstr "Különleges megjegyzések:"
 
 #: src/reports.cpp:222
+#, fuzzy
+#| msgid "Races: "
 msgid "Race: "
-msgstr "Faj: "
+msgstr "Fajok: "
 
 #: src/reports.cpp:241
 msgid "Side: <b>$side_name</b> ($color_name)"
 msgstr "Oldal: <b>$side_name</b> ($color_name)"
 
 #: src/reports.cpp:319
+#, fuzzy
+#| msgid "Trait:"
 msgid "Trait: "
-msgstr "Jellemvonások: "
+msgstr "Jellemvonások:"
 
 #: src/reports.cpp:342
+#, fuzzy
+#| msgid "invisible:"
 msgid "invisible: "
-msgstr "láthatatlan: "
+msgstr "láthatatlan:"
 
 #: src/reports.cpp:343
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
@@ -7556,8 +7570,10 @@ msgstr ""
 "támadhatják meg."
 
 #: src/reports.cpp:346
+#, fuzzy
+#| msgid "slowed:"
 msgid "slowed: "
-msgstr "lelassítva: "
+msgstr "lelassítva:"
 
 #: src/reports.cpp:347
 msgid ""
@@ -7568,8 +7584,10 @@ msgstr ""
 "okozni, és a lépéspontköltsége is megkétszereződött."
 
 #: src/reports.cpp:350
+#, fuzzy
+#| msgid "poisoned:"
 msgid "poisoned: "
-msgstr "megmérgezve: "
+msgstr "megmérgezve:"
 
 #: src/reports.cpp:351
 msgid ""
@@ -7588,16 +7606,20 @@ msgstr ""
 "1 alá az egység életerőpontjait."
 
 #: src/reports.cpp:354
+#, fuzzy
+#| msgid "petrified:"
 msgid "petrified: "
-msgstr "kővé vált: "
+msgstr "kővé vált:"
 
 #: src/reports.cpp:355
 msgid "This unit has been petrified. It may not move or attack."
 msgstr "Ezt az egységet kővé változtatták. Nem léphet, és nem is harcolhat."
 
 #: src/reports.cpp:358
+#, fuzzy
+#| msgid "unhealable:"
 msgid "unhealable: "
-msgstr "gyógyíthatatlan: "
+msgstr "gyógyíthatatlan:"
 
 #: src/reports.cpp:359
 msgid ""
@@ -7608,36 +7630,46 @@ msgstr ""
 "pihenés nem regenerálja."
 
 #: src/reports.cpp:362
+#, fuzzy
+#| msgid "invulnerable:"
 msgid "invulnerable: "
-msgstr "sebezhetetlen: "
+msgstr "sebezhetetlen:"
 
 #: src/reports.cpp:363
 msgid "This unit is invulnerable. It cannot be harmed by any attack."
 msgstr "Ez az egység sebezhetetlen. Semmilyen támadás nem okoz sérülést."
 
 #: src/reports.cpp:441
+#, fuzzy
+#| msgid "Ability:"
 msgid "Ability: "
-msgstr "Képesség: "
+msgstr "Képesség:"
 
 #: src/reports.cpp:443 src/reports.cpp:998
 msgid " (inactive)"
 msgstr " (inaktív)"
 
 #: src/reports.cpp:511
+#, fuzzy
+#| msgid "Resistances:"
 msgid "Resistances: "
-msgstr "Ellenállások: "
+msgstr "Ellenállóképességek:"
 
 #: src/reports.cpp:513
 msgid "(Att / Def)"
 msgstr "(Tám / Véd)"
 
 #: src/reports.cpp:544
+#, fuzzy
+#| msgid "Experience Modifier:"
 msgid "Experience Modifier: "
-msgstr "Szintlépési küszöb: "
+msgstr "Szintlépési küszöb:"
 
 #: src/reports.cpp:594
+#, fuzzy
+#| msgid "Terrain:"
 msgid "Terrain: "
-msgstr "Terep: "
+msgstr "Terep:"
 
 #: src/reports.cpp:611
 msgid "maximum^max."
@@ -7648,8 +7680,10 @@ msgid "minimum^min."
 msgstr "min."
 
 #: src/reports.cpp:616
+#, fuzzy
+#| msgid "Defense:"
 msgid "Defense: "
-msgstr "Védekezés: "
+msgstr "Védekezés:"
 
 #: src/reports.cpp:651 src/reports.cpp:652
 msgid "vision:"
@@ -7664,57 +7698,81 @@ msgid "Movement Costs:"
 msgstr "Lépéspontköltség:"
 
 #: src/reports.cpp:828
+#, fuzzy
+#| msgid "Base damage:"
 msgid "Base damage: "
-msgstr "Alapsebzés: "
+msgstr "Alap sebzés:"
 
 #: src/reports.cpp:830 src/reports.cpp:864 src/reports.cpp:874
+#, fuzzy
+#| msgid "With specials:"
 msgid "With specials: "
-msgstr "Különleges támadással: "
+msgstr "Különleges támadással:"
 
 #: src/reports.cpp:833
 msgid "Time of day: "
 msgstr "Napszak: "
 
 #: src/reports.cpp:837
+#, fuzzy
+#| msgid "Leadership:"
 msgid "Leadership: "
-msgstr "Hadvezetés: "
+msgstr "Hadvezetés:"
 
 #: src/reports.cpp:841
+#, fuzzy
+#| msgid "Slowed:"
 msgid "Slowed: "
-msgstr "Lelassítva: "
+msgstr "Lelassítva:"
 
 #: src/reports.cpp:849
+#, fuzzy
+#| msgid "Max swarm bonus:"
 msgid "Max swarm bonus: "
-msgstr "Maximum rajzási bónusz: "
+msgstr "Maximum rajzási bónusz:"
 
 #: src/reports.cpp:850 src/reports.cpp:869
+#, fuzzy
+#| msgid "Swarm:"
 msgid "Swarm: "
-msgstr "Rajzás: "
+msgstr "Rajzás:"
 
 #: src/reports.cpp:851 src/reports.cpp:862 src/reports.cpp:873
+#, fuzzy
+#| msgid "Base attacks:"
 msgid "Base attacks: "
-msgstr "Alap támadás: "
+msgstr "Alap támadások:"
 
 #: src/reports.cpp:857
+#, fuzzy
+#| msgid "Specials:"
 msgid "Specials: "
-msgstr "Különleges támadás: "
+msgstr "Specialitások:"
 
 # bétateszt. Gondolom arra utal, hogy a rajzó ÉP-je mennyi a max-hoz képest (a rajzás száma ettől függ)
 #: src/reports.cpp:867
+#, fuzzy
+#| msgid "Subject to swarm:"
 msgid "Subject to swarm: "
-msgstr "Rajzási tényező: "
+msgstr "Rajzásra hajlam:"
 
 #: src/reports.cpp:901
+#, fuzzy
+#| msgid "Weapon range:"
 msgid "Weapon range: "
-msgstr "Hatótávolság: "
+msgstr "Hatótávolság:"
 
 #: src/reports.cpp:902
+#, fuzzy
+#| msgid "Damage type:"
 msgid "Damage type: "
-msgstr "Sebzéstípus: "
+msgstr "Sebzéstípus:"
 
 #: src/reports.cpp:903
+#, fuzzy
+#| msgid "Damage versus:"
 msgid "Damage versus: "
-msgstr "Sebzés ellene: "
+msgstr "Sebzés ellene:"
 
 #: src/reports.cpp:965
 msgid "Accuracy:"
@@ -7725,8 +7783,10 @@ msgid "Parry:"
 msgstr "%-os hárítás:"
 
 #: src/reports.cpp:996
+#, fuzzy
+#| msgid "Weapon special:"
 msgid "Weapon special: "
-msgstr "Különleges támadások: "
+msgstr "Fegyver specialitás:"
 
 #: src/reports.cpp:1071
 msgid "weapon^None"
@@ -7760,20 +7820,28 @@ msgid "Time of day:"
 msgstr "Napszak:"
 
 #: src/reports.cpp:1318 src/reports.cpp:1372
+#, fuzzy
+#| msgid "Lawful units:"
 msgid "Lawful units: "
-msgstr "Igazságos egységek: "
+msgstr "Igazságos egységek:"
 
 #: src/reports.cpp:1320 src/reports.cpp:1374
+#, fuzzy
+#| msgid "Neutral units:"
 msgid "Neutral units: "
-msgstr "Semleges egységek: "
+msgstr "Semleges egységek:"
 
 #: src/reports.cpp:1321 src/reports.cpp:1375
+#, fuzzy
+#| msgid "Chaotic units:"
 msgid "Chaotic units: "
-msgstr "Törvénytelen egységek: "
+msgstr "Törvénytelen egységek:"
 
 #: src/reports.cpp:1323 src/reports.cpp:1377
+#, fuzzy
+#| msgid "Liminal units:"
 msgid "Liminal units: "
-msgstr "Ingatag egységek: "
+msgstr "Ingatag egységek:"
 
 #: src/reports.cpp:1436
 msgid "Turn Number"
@@ -8476,6 +8544,13 @@ msgstr "Lépéstervező beállítása"
 #~ msgid "Customize Reach Map (Unit Movement UI)"
 #~ msgstr "Elérési térkép testreszabása (egységmozgás felhasználói felülete)"
 
+#~ msgid "Show missed attack indicator"
+#~ msgstr "Elvétett támadás jelző mutatása"
+
+#~ msgid "Display a visual indicator above a defender when an attack misses."
+#~ msgstr ""
+#~ "Jelenítsen meg egy jelzőt a védő felett, ha egy támadás nem sikerül."
+
 #~ msgid "deflect"
 #~ msgstr "eltérít"
 
@@ -8547,6 +8622,9 @@ msgstr "Lépéstervező beállítása"
 
 #~ msgid "Urban"
 #~ msgstr "Városi"
+
+#~ msgid "WesScript"
+#~ msgstr "Wes-szkript"
 
 #~ msgid ""
 #~ "Densely packed structures are less suitable for garrison than traditional "
@@ -8651,6 +8729,24 @@ msgstr "Lépéstervező beállítása"
 #~ msgid "<i>― Great Mage Delfador, 520YW</i>"
 #~ msgstr "<i>― Delfador nagymágus, W.i.sz. 520</i>"
 
+#~ msgid ""
+#~ "Nearly every hotkey can be customized in the <b>Preferences</b> > "
+#~ "<b>Hotkeys</b> tab. Rebinding frequently used actions (Undo, Show Enemy "
+#~ "Moves, End Turn, Recruit/Recall) to comfortable keys can noticeably speed "
+#~ "up your turns and improve your quality of life."
+#~ msgstr ""
+#~ "Szinte minden gyorsbillentyű testreszabható a <b>Beállítások</b> > "
+#~ "<b>Gyorsbillentyűk</b> lapon. A gyakran használt műveletek (Visszavonás, "
+#~ "Ellenséges mozgás megjelenítése, Kör befejezése, Toborzás/Visszahívás) a "
+#~ "játékos számára kényelmes billentyűkre való átdefiniálása érezhetően "
+#~ "felgyorsíthatja a köreit és javítja a komfortját."
+
+#~ msgid "attack^miss"
+#~ msgstr "nem talált"
+
+#~ msgid "Unhandled choices while redoing"
+#~ msgstr "Nem kezelt választási lehetőségek visszaállítás közben"
+
 #~ msgid "Requesting add-on counts by type..."
 #~ msgstr "Kiegészítők számának lekérése típus szerint..."
 
@@ -8721,6 +8817,9 @@ msgstr "Lépéstervező beállítása"
 #~ msgid "timespan^expired"
 #~ msgstr "letelt"
 
+#~ msgid "multiplayer^MP"
+#~ msgstr "TJ"
+
 #~ msgid "Your IP address is banned on this server for $duration|."
 #~ msgstr "Az IP-címed $duration| időtartamra le van tiltva a szerverről."
 
@@ -8745,6 +8844,24 @@ msgstr "Lépéstervező beállítása"
 #~ msgid "prompt^Formula:"
 #~ msgstr "Képlet:"
 
+#~ msgid "Type:"
+#~ msgstr "Típus:"
+
+#~ msgid "Race:"
+#~ msgstr "Faj:"
+
+#~ msgid "Alignment:"
+#~ msgstr "Beállítottság:"
+
+#~ msgid "Weapon:"
+#~ msgstr "Fegyver:"
+
+#~ msgid "Damage:"
+#~ msgstr "Sebzés:"
+
+#~ msgid "Attacks:"
+#~ msgstr "Támadások:"
+
 #~ msgid "$number min range"
 #~ msgstr "$number min. lőtáv"
 
@@ -8757,16 +8874,14 @@ msgstr "Lépéstervező beállítása"
 #~ msgid "<span color=\"$color\">$number_or_percent</span> max range"
 #~ msgstr "<span color=\"$color\">$number_or_percent</span> max. lőtáv"
 
+#~ msgid "The $unit_type is not available to recruit."
+#~ msgstr "Nem toborozható egység: $unit_type."
+
 #~ msgid "This unit cannot be dismissed."
 #~ msgstr "Ezt az egységet nem lehet elbocsátani."
 
 #~ msgid "This unit is a leader and cannot be dismissed."
 #~ msgstr "Ez az egység vezető és nem bocsátható el."
-
-#, fuzzy
-#~| msgid "Description"
-#~ msgid "description"
-#~ msgstr "Leírás"
 
 # súgó
 # https://forums.wesnoth.org/viewtopic.php?t=32691&start=15#p473320
@@ -8973,11 +9088,6 @@ msgstr "Lépéstervező beállítása"
 #~| msgid "January"
 #~ msgid "Manual"
 #~ msgstr "január"
-
-#, fuzzy
-#~| msgid "Multiplayer"
-#~ msgid "Multiply"
-#~ msgstr "Többjátékos"
 
 #, fuzzy
 #~| msgid "Cannot find era $era"
@@ -9349,11 +9459,6 @@ msgstr "Lépéstervező beállítása"
 #~| msgid "Cost: "
 #~ msgid "Cost:"
 #~ msgstr "Ár:"
-
-#, fuzzy
-#~| msgid "Alignment: "
-#~ msgid "Alignment:"
-#~ msgstr "Beállítottság: "
 
 #, fuzzy
 #~| msgid "Required XP: "
