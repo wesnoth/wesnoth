@@ -8,7 +8,7 @@
 ### Packaging
 ### Terrain
 ### Translations
-   * Updated translations: Bengali, British English, Finnish, Spanish
+   * Updated translations: Bengali, British English, Finnish, Hungarian, Spanish
 ### Units
 ### User interface
    * New key `title_position` added to `[part]` that allows changing the position of the title text.
