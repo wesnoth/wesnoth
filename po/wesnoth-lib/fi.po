@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-09-21 23:01-0500\n"
-"PO-Revision-Date: 2025-06-24 22:48+0300\n"
+"PO-Revision-Date: 2025-10-29 00:04+0200\n"
 "Last-Translator: Jaakko Saarikko <jaakko.saarikko@protonmail.com>\n"
 "Language-Team: Finnish <http://wiki.wesnoth.org/FinnishTranslation>\n"
 "Language: fi\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.6\n"
+"X-Generator: Poedit 3.7\n"
 
 #. [ai]: id=ai_default_rca
 #: data/ai/ais/ai_default_rca.cfg:9
@@ -3756,10 +3756,8 @@ msgstr ""
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:214
-#, fuzzy
-#| msgid "Secondary Authors:"
 msgid "Primary Authors:"
-msgstr "Toissijaiset tekijät:"
+msgstr "Päätekijät:"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:215
@@ -4121,17 +4119,17 @@ msgstr "Valitse/Liikuta/Hyökkää"
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:672
 msgid "Range:"
-msgstr ""
+msgstr "Kantama:"
 
 #. [option]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:686
 msgid "range^Melee"
-msgstr ""
+msgstr "Lähitaistelu"
 
 #. [option]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:690
 msgid "range^Ranged"
-msgstr ""
+msgstr "Kaukotaistelu"
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:731
@@ -7303,10 +7301,8 @@ msgid "addons_of_type^Cores"
 msgstr "Ytimet"
 
 #: src/gui/dialogs/addon/manager.cpp:163
-#, fuzzy
-#| msgid "addons_of_type^Cores"
 msgid "addons_of_type^Themes"
-msgstr "Ytimet"
+msgstr "Teemat"
 
 #: src/gui/dialogs/addon/manager.cpp:164
 msgid "addons_of_type^Resources"
@@ -7583,10 +7579,8 @@ msgid "Attacker vulnerability vs"
 msgstr "Hyökkääjän alttius vs"
 
 #: src/gui/dialogs/campaign_selection.cpp:77
-#, fuzzy
-#| msgid "Add-ons"
 msgid "game^Get Add-ons"
-msgstr "Lisäosat"
+msgstr "Hae lisäosia"
 
 #: src/gui/dialogs/campaign_selection.cpp:388
 msgid "More campaigns..."
@@ -7738,7 +7732,7 @@ msgstr "Valitse kuvake"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:190
 msgid "scout"
-msgstr ""
+msgstr "tiedustelija"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:191
 #, fuzzy
@@ -7754,11 +7748,11 @@ msgstr "Etsi"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:193
 msgid "mixed fighter"
-msgstr ""
+msgstr "sekataistelija"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:194
 msgid "healer"
-msgstr ""
+msgstr "parantaja"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:1029
 #, fuzzy
@@ -7768,7 +7762,7 @@ msgstr "Tallennus on jo olemassa. Haluatko korvata sen?"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:1048
 msgid "Unit type saved."
-msgstr ""
+msgstr "Yksikkötyyppi tallennettu."
 
 #: src/gui/dialogs/editor/generator_settings.cpp:38
 #, fuzzy
@@ -7800,11 +7794,11 @@ msgstr "Generoi nimi"
 
 #: src/gui/dialogs/file_dialog.cpp:201
 msgid "invalid extension (use $extensions)"
-msgstr ""
+msgstr "Virheellinen pääte (käytä $extensions)"
 
 #: src/gui/dialogs/file_dialog.cpp:208
 msgid "filename contains whitespace"
-msgstr ""
+msgstr "tiedostonimi sisältää välilyönnin"
 
 #: src/gui/dialogs/file_dialog.cpp:237
 msgid "Open"
@@ -8591,7 +8585,7 @@ msgstr "Poista lisäosa palvelimesta"
 #. TRANSLATORS: This is the new chat text indicator
 #: src/gui/widgets/chatbox.cpp:95
 msgid "NEW"
-msgstr ""
+msgstr "UUSI"
 
 #: src/gui/widgets/chatbox.cpp:298
 msgid "whisper to $receiver"
@@ -8734,7 +8728,7 @@ msgstr ""
 
 #: src/gui/widgets/unit_preview_pane.cpp:225
 msgid "This unit can attack multiple times per turn."
-msgstr ""
+msgstr "Tämä yksikkö voi hyökätä useita kertoja vuoron aikana."
 
 #: src/gui/widgets/unit_preview_pane.cpp:277
 msgid "uses $num attack"

@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-10-20 20:10-0500\n"
-"PO-Revision-Date: 2025-06-23 20:08+0300\n"
+"PO-Revision-Date: 2025-10-28 23:53+0200\n"
 "Last-Translator: Jaakko Saarikko <jaakko.saarikko@protonmail.com>\n"
 "Language-Team: \n"
 "Language: fi\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "\"\"Language-Team: Finnish <http://wiki.wesnoth.org/FinnishTranslation>\n"
-"X-Generator: Poedit 3.6\n"
+"X-Generator: Poedit 3.7\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -5479,7 +5479,7 @@ msgstr "Ladataan lisäosaa:<i>$addon_title</i>..."
 
 #: src/addon/client.cpp:500 src/addon/client.cpp:862
 msgid "Add-ons Manager"
-msgstr "Lisäosamanageri"
+msgstr "Lisäosien hallintaohjelma"
 
 #: src/addon/client.cpp:500
 msgid "Installing add-on <i>$addon_title</i>..."
@@ -6980,10 +6980,8 @@ msgid "Accelerated speed disabled!"
 msgstr "Nopeutettu peli ei käytössä!"
 
 #: src/hotkey/hotkey_handler.cpp:404
-#, fuzzy
-#| msgid "Back to Turn "
 msgid "Back to Turn $number"
-msgstr "Takaisin vuoroon "
+msgstr "Takaisin vuoroon $number"
 
 #: src/hotkey/hotkey_handler.cpp:405
 msgid "Back to Start"
@@ -7478,8 +7476,6 @@ msgid "Discover all units in help."
 msgstr "Paljasta kaikki yksiköt ohjeessa."
 
 #: src/menu_events.cpp:1311
-#, fuzzy
-#| msgid "'Undiscover' all units in help."
 msgid "‘Undiscover’ all units in help."
 msgstr "'Piilota' kaikki yksiköt ohjeessa."
 
