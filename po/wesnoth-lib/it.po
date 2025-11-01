@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-09-21 23:01-0500\n"
-"PO-Revision-Date: 2025-04-28 22:30+0200\n"
+"PO-Revision-Date: 2025-08-02 12:55+0200\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.4.4\n"
 
 #. [ai]: id=ai_default_rca
 #: data/ai/ais/ai_default_rca.cfg:9
@@ -5071,7 +5071,7 @@ msgstr "Matchmaking"
 #: data/gui/themes/default/dialogs/lobby_main.cfg:102
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:129
 msgid "Presets"
-msgstr ""
+msgstr "Presets"
 
 #. [label]: id=map
 #: data/gui/themes/default/dialogs/lobby_main.cfg:153
@@ -5085,10 +5085,8 @@ msgstr "Richiede una password per entrare"
 
 #. [button]: id=delete_preset
 #: data/gui/themes/default/dialogs/lobby_main.cfg:305
-#, fuzzy
-#| msgid "Delete Unit"
 msgid "Delete this preset"
-msgstr "Elimina unità"
+msgstr "Elimina questo preset"
 
 #. [toggle_button]: id=filter_vacant_slots
 #: data/gui/themes/default/dialogs/lobby_main.cfg:477
@@ -5212,14 +5210,12 @@ msgstr ""
 #. [button]: id=join_queue
 #: data/gui/themes/default/dialogs/lobby_main.cfg:728
 msgid "Join Queue"
-msgstr ""
+msgstr "Mettiti in Coda"
 
 #. [button]: id=leave_queue
 #: data/gui/themes/default/dialogs/lobby_main.cfg:738
-#, fuzzy
-#| msgid "Leave"
 msgid "Leave Queue"
-msgstr "Abbandona"
+msgstr "Abbandona la Coda"
 
 #. [label]
 #: data/gui/themes/default/dialogs/lobby_main.cfg:844
@@ -5804,10 +5800,8 @@ msgstr "Dimensione mappa:"
 #: data/gui/themes/default/dialogs/mp_create_game/default_resolution.cfg:460
 #: data/gui/themes/default/dialogs/mp_create_game/small_resolution.cfg:378
 #: data/gui/themes/default/dialogs/mp_create_game/tiny_resolution.cfg:335
-#, fuzzy
-#| msgid "Saved Games"
 msgid "Save Preset"
-msgstr "Partite salvate"
+msgstr "Salva Preset"
 
 #. [row]
 #: data/gui/themes/default/dialogs/mp_faction_select.cfg:210
@@ -6139,12 +6133,10 @@ msgstr "Vieta i movimenti automatici all’inizio del tuo turno"
 #. [toggle_button]: id=show_turn_dialog
 #: data/gui/themes/default/dialogs/preferences/01_general.cfg:114
 msgid "Turn prompt"
-msgstr ""
+msgstr "Messaggio Turni"
 
 #. [toggle_button]: id=show_turn_dialog
 #: data/gui/themes/default/dialogs/preferences/01_general.cfg:115
-#, fuzzy
-#| msgid "Display a dialog at the beginning of your turn"
 msgid "Display a prompt at the beginning of your turn"
 msgstr "Mostra un messaggio all’inizio del tuo turno"
 
@@ -6982,7 +6974,7 @@ msgstr "Attacca il nemico"
 #: data/gui/themes/default/dialogs/units_dialog.cfg:24
 #: data/gui/themes/default/dialogs/units_dialog.cfg:574
 msgid "★"
-msgstr ""
+msgstr "★"
 
 #. [toggle_button]: id=unit_details
 #. [toggle_button]: id=sort_4
@@ -7042,7 +7034,7 @@ msgstr "Rinomina"
 #. [button]: id=mark_favorite
 #: data/gui/themes/default/dialogs/units_dialog.cfg:575
 msgid "Mark/unmark the selected unit as favorite"
-msgstr ""
+msgstr "Marca/Smarca le unità selezionate come preferite"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -7785,10 +7777,8 @@ msgid "Unit type saved."
 msgstr "Tipo di unità salvato."
 
 #: src/gui/dialogs/editor/generator_settings.cpp:38
-#, fuzzy
-#| msgid "/1000 tiles"
 msgid "$count/1000 tiles"
-msgstr "/1000 tessere"
+msgstr "$count/1000 tessere"
 
 #: src/gui/dialogs/editor/generator_settings.cpp:43
 msgid "Coastal"
@@ -7807,18 +7797,16 @@ msgid "Find File"
 msgstr "Trova file"
 
 #: src/gui/dialogs/file_dialog.cpp:191
-#, fuzzy
-#| msgid "Winter Elven Castle"
 msgid "enter filename"
-msgstr "Castello invernale degli elfi"
+msgstr "inserici il nome del file"
 
 #: src/gui/dialogs/file_dialog.cpp:201
 msgid "invalid extension (use $extensions)"
-msgstr ""
+msgstr "estensione non valida (usa $extensions)"
 
 #: src/gui/dialogs/file_dialog.cpp:208
 msgid "filename contains whitespace"
-msgstr ""
+msgstr "Il nome del file contiene uno o più spazi bianchi"
 
 #: src/gui/dialogs/file_dialog.cpp:237
 msgid "Open"
@@ -8351,7 +8339,7 @@ msgstr "Partita"
 
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:81
 msgid "Hotkey(s): $bindings"
-msgstr ""
+msgstr "Scorciatoia(e): $bindings"
 
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:308
 msgid "Invalid Color"
@@ -8504,10 +8492,8 @@ msgid "Rename Unit"
 msgstr "Rinomina l’unità"
 
 #: src/gui/dialogs/units_dialog.cpp:272
-#, fuzzy
-#| msgid "This unit is loyal and requires no upkeep."
 msgid "This unit requires no upkeep."
-msgstr "Questa unità è leale e non richiede un costo di mantenimento."
+msgstr "Questa unità non richiede un costo di mantenimento."
 
 #: src/gui/dialogs/units_dialog.cpp:273 src/gui/dialogs/units_dialog.cpp:278
 #: src/gui/dialogs/units_dialog.cpp:283
@@ -8871,10 +8857,8 @@ msgid "Select/Move/Attack"
 msgstr "Seleziona/Muovi/Attacca"
 
 #: src/hotkey/hotkey_command.cpp:84
-#, fuzzy
-#| msgid "Touch"
 msgid "Touch Hex"
-msgstr "Tocca"
+msgstr "Tocca esagono"
 
 #: src/hotkey/hotkey_command.cpp:85
 msgid "Animate Map"

@@ -27,7 +27,6 @@
 #include "deprecation.hpp"
 #include "game_version.hpp"
 
-#include "lexical_cast.hpp"
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/markup.hpp"
@@ -277,45 +276,36 @@ void attack_type::remove_special_by_filter(const config& filter)
 	}
 }
 
-/**
- * Modifies *this using the specifications in @a cfg, but only if *this matches
- * @a cfg viewed as a filter.
- *
- * @returns whether or not @c this matched the @a cfg as a filter.
- */
-bool attack_type::apply_effect(const config& cfg)
+void attack_type::apply_effect(const config& cfg)
 {
-	if( !matches_filter(cfg) )
-		return false;
-
 	set_changed(true);
-	const std::string& set_name = cfg["set_name"];
+	const config::attribute_value& set_name = cfg["set_name"];
 	const t_string& set_desc = cfg["set_description"].t_str();
-	const std::string& set_type = cfg["set_type"];
-	const std::string& set_range = cfg["set_range"];
-	const std::string& set_attack_alignment = cfg["set_alignment"];
-	const std::string& set_icon = cfg["set_icon"];
-	const std::string& del_specials = cfg["remove_specials"];
+	const config::attribute_value& set_type = cfg["set_type"];
+	const config::attribute_value& set_range = cfg["set_range"];
+	const config::attribute_value& set_attack_alignment = cfg["set_alignment"];
+	const config::attribute_value& set_icon = cfg["set_icon"];
+	const config::attribute_value& del_specials = cfg["remove_specials"];
 	auto set_specials = cfg.optional_child("set_specials");
-	const std::string& increase_min_range = cfg["increase_min_range"];
-	const std::string& set_min_range = cfg["set_min_range"];
-	const std::string& increase_max_range = cfg["increase_max_range"];
-	const std::string& set_max_range = cfg["set_max_range"];
+	const config::attribute_value& increase_min_range = cfg["increase_min_range"];
+	const config::attribute_value& set_min_range = cfg["set_min_range"];
+	const config::attribute_value& increase_max_range = cfg["increase_max_range"];
+	const config::attribute_value& set_max_range = cfg["set_max_range"];
 	auto remove_specials = cfg.optional_child("remove_specials");
-	const std::string& increase_damage = cfg["increase_damage"];
-	const std::string& set_damage = cfg["set_damage"];
-	const std::string& increase_attacks = cfg["increase_attacks"];
-	const std::string& set_attacks = cfg["set_attacks"];
-	const std::string& set_attack_weight = cfg["attack_weight"];
-	const std::string& set_defense_weight = cfg["defense_weight"];
-	const std::string& increase_accuracy = cfg["increase_accuracy"];
-	const std::string& set_accuracy = cfg["set_accuracy"];
-	const std::string& increase_parry = cfg["increase_parry"];
-	const std::string& set_parry = cfg["set_parry"];
-	const std::string& increase_movement = cfg["increase_movement_used"];
-	const std::string& set_movement = cfg["set_movement_used"];
-	const std::string& increase_attacks_used = cfg["increase_attacks_used"];
-	const std::string& set_attacks_used = cfg["set_attacks_used"];
+	const config::attribute_value& increase_damage = cfg["increase_damage"];
+	const config::attribute_value& set_damage = cfg["set_damage"];
+	const config::attribute_value& increase_attacks = cfg["increase_attacks"];
+	const config::attribute_value& set_attacks = cfg["set_attacks"];
+	const config::attribute_value& set_attack_weight = cfg["attack_weight"];
+	const config::attribute_value& set_defense_weight = cfg["defense_weight"];
+	const config::attribute_value& increase_accuracy = cfg["increase_accuracy"];
+	const config::attribute_value& set_accuracy = cfg["set_accuracy"];
+	const config::attribute_value& increase_parry = cfg["increase_parry"];
+	const config::attribute_value& set_parry = cfg["set_parry"];
+	const config::attribute_value& increase_movement = cfg["increase_movement_used"];
+	const config::attribute_value& set_movement = cfg["set_movement_used"];
+	const config::attribute_value& increase_attacks_used = cfg["increase_attacks_used"];
+	const config::attribute_value& set_attacks_used = cfg["set_attacks_used"];
 	// NB: If you add something here that requires a description,
 	// it needs to be added to describe_effect as well.
 
@@ -336,7 +326,7 @@ bool attack_type::apply_effect(const config& cfg)
 	}
 
 	if(set_attack_alignment.empty() == false) {
-		alignment_ = unit_alignments::get_enum(set_attack_alignment);
+		alignment_ = unit_alignments::get_enum(set_attack_alignment.str());
 	}
 
 	if(set_icon.empty() == false) {
@@ -370,7 +360,7 @@ bool attack_type::apply_effect(const config& cfg)
 	}
 
 	if(set_min_range.empty() == false) {
-		min_range_ = std::stoi(set_min_range);
+		min_range_ = set_min_range.to_int();
 	}
 
 	if(increase_min_range.empty() == false) {
@@ -378,7 +368,7 @@ bool attack_type::apply_effect(const config& cfg)
 	}
 
 	if(set_max_range.empty() == false) {
-		max_range_ = std::stoi(set_max_range);
+		max_range_ = set_max_range.to_int();
 	}
 
 	if(increase_max_range.empty() == false) {
@@ -390,7 +380,7 @@ bool attack_type::apply_effect(const config& cfg)
 	}
 
 	if(set_damage.empty() == false) {
-		damage_ = std::stoi(set_damage);
+		damage_ = set_damage.to_int();
 		if (damage_ < 0) {
 			damage_ = 0;
 		}
@@ -404,7 +394,7 @@ bool attack_type::apply_effect(const config& cfg)
 	}
 
 	if(set_attacks.empty() == false) {
-		num_attacks_ = std::stoi(set_attacks);
+		num_attacks_ = set_attacks.to_int();
 		if (num_attacks_ < 0) {
 			num_attacks_ = 0;
 		}
@@ -416,7 +406,7 @@ bool attack_type::apply_effect(const config& cfg)
 	}
 
 	if(set_accuracy.empty() == false) {
-		accuracy_ = std::stoi(set_accuracy);
+		accuracy_ = set_accuracy.to_int();
 	}
 
 	if(increase_accuracy.empty() == false) {
@@ -424,7 +414,7 @@ bool attack_type::apply_effect(const config& cfg)
 	}
 
 	if(set_parry.empty() == false) {
-		parry_ = std::stoi(set_parry);
+		parry_ = set_parry.to_int();
 	}
 
 	if(increase_parry.empty() == false) {
@@ -432,7 +422,7 @@ bool attack_type::apply_effect(const config& cfg)
 	}
 
 	if(set_movement.empty() == false) {
-		movement_used_ = std::stoi(set_movement);
+		movement_used_ = set_movement.to_int();
 	}
 
 	if(increase_movement.empty() == false) {
@@ -440,7 +430,7 @@ bool attack_type::apply_effect(const config& cfg)
 	}
 
 	if(set_attacks_used.empty() == false) {
-		attacks_used_ = std::stoi(set_attacks_used);
+		attacks_used_ = set_attacks_used.to_int();
 	}
 
 	if(increase_attacks_used.empty() == false) {
@@ -448,34 +438,36 @@ bool attack_type::apply_effect(const config& cfg)
 	}
 
 	if(set_attack_weight.empty() == false) {
-		attack_weight_ = lexical_cast_default<double>(set_attack_weight,1.0);
+		attack_weight_ = set_attack_weight.to_double(1.0);
 	}
 
 	if(set_defense_weight.empty() == false) {
-		defense_weight_ = lexical_cast_default<double>(set_defense_weight,1.0);
+		defense_weight_ = set_defense_weight.to_double(1.0);
 	}
-
-	return true;
 }
 
 std::string attack_type::describe_effect(const config& cfg)
 {
-	const std::string& increase_min_range = cfg["increase_min_range"];
-	const std::string& set_min_range = cfg["set_min_range"];
-	const std::string& increase_max_range = cfg["increase_max_range"];
-	const std::string& set_max_range = cfg["set_max_range"];
-	const std::string& increase_damage = cfg["increase_damage"];
-	const std::string& set_damage = cfg["set_damage"];
-	const std::string& increase_attacks = cfg["increase_attacks"];
-	const std::string& set_attacks = cfg["set_attacks"];
-	const std::string& increase_accuracy = cfg["increase_accuracy"];
-	const std::string& set_accuracy = cfg["set_accuracy"];
-	const std::string& increase_parry = cfg["increase_parry"];
-	const std::string& set_parry = cfg["set_parry"];
-	const std::string& increase_movement = cfg["increase_movement_used"];
-	const std::string& set_movement = cfg["set_movement_used"];
-	const std::string& increase_attacks_used = cfg["increase_attacks_used"];
-	const std::string& set_attacks_used = cfg["set_attacks_used"];
+	const config::attribute_value& increase_min_range = cfg["increase_min_range"];
+	const config::attribute_value& set_min_range = cfg["set_min_range"];
+	const config::attribute_value& increase_max_range = cfg["increase_max_range"];
+	const config::attribute_value& set_max_range = cfg["set_max_range"];
+	const config::attribute_value& increase_damage = cfg["increase_damage"];
+	const config::attribute_value& set_damage = cfg["set_damage"];
+	const config::attribute_value& increase_attacks = cfg["increase_attacks"];
+	const config::attribute_value& set_attacks = cfg["set_attacks"];
+	const config::attribute_value& increase_accuracy = cfg["increase_accuracy"];
+	const config::attribute_value& set_accuracy = cfg["set_accuracy"];
+	const config::attribute_value& increase_parry = cfg["increase_parry"];
+	const config::attribute_value& set_parry = cfg["set_parry"];
+	const config::attribute_value& increase_movement = cfg["increase_movement_used"];
+	const config::attribute_value& set_movement = cfg["set_movement_used"];
+	const config::attribute_value& increase_attacks_used = cfg["increase_attacks_used"];
+	const config::attribute_value& set_attacks_used = cfg["set_attacks_used"];
+
+	const auto format_modifier = [](const config::attribute_value& attr) -> utils::string_map {
+		return {{"number_or_percent", utils::print_modifier(attr)}, {"color", attr.to_int() < 0 ? "#f00" : "#0f0"}};
+	};
 
 	std::vector<t_string> desc;
 
@@ -483,28 +475,28 @@ std::string attack_type::describe_effect(const config& cfg)
 		desc.emplace_back(VGETTEXT(
 			// TRANSLATORS: Current value for WML code set_min_range, documented in https://wiki.wesnoth.org/EffectWML
 			"$number min range",
-			{{"number", set_min_range}}));
+			{{"number", set_min_range.str()}}));
 	}
 
 	if(!increase_min_range.empty()) {
 		desc.emplace_back(VGETTEXT(
 			// TRANSLATORS: Current value for WML code increase_min_range, documented in https://wiki.wesnoth.org/EffectWML
 			"<span color=\"$color\">$number_or_percent</span> min range",
-			{{"number_or_percent", utils::print_modifier(increase_min_range)}, {"color", increase_min_range[0] == '-' ? "#f00" : "#0f0"}}));
+			format_modifier(increase_min_range)));
 	}
 
 	if(!set_max_range.empty()) {
 		desc.emplace_back(VGETTEXT(
 			// TRANSLATORS: Current value for WML code set_max_range, documented in https://wiki.wesnoth.org/EffectWML
 			"$number max range",
-			{{"number", set_max_range}}));
+			{{"number", set_max_range.str()}}));
 	}
 
 	if(!increase_max_range.empty()) {
 		desc.emplace_back(VGETTEXT(
 			// TRANSLATORS: Current value for WML code increase_max_range, documented in https://wiki.wesnoth.org/EffectWML
 			"<span color=\"$color\">$number_or_percent</span> max range",
-			{{"number_or_percent", utils::print_modifier(increase_max_range)}, {"color", increase_max_range[0] == '-' ? "#f00" : "#0f0"}}));
+			format_modifier(increase_max_range)));
 	}
 
 	if(!increase_damage.empty()) {
@@ -512,8 +504,8 @@ std::string attack_type::describe_effect(const config& cfg)
 			// TRANSLATORS: Current value for WML code increase_damage, documented in https://wiki.wesnoth.org/EffectWML
 			"<span color=\"$color\">$number_or_percent</span> damage",
 			"<span color=\"$color\">$number_or_percent</span> damage",
-			std::stoi(increase_damage),
-			{{"number_or_percent", utils::print_modifier(increase_damage)}, {"color", increase_damage[0] == '-' ? "#f00" : "#0f0"}}));
+			increase_damage.to_int(),
+			format_modifier(increase_damage)));
 	}
 
 	if(!set_damage.empty()) {
@@ -521,8 +513,8 @@ std::string attack_type::describe_effect(const config& cfg)
 		desc.emplace_back(VNGETTEXT(
 			"$number damage",
 			"$number damage",
-			std::stoi(set_damage),
-			{{"number", set_damage}}));
+			set_damage.to_int(),
+			{{"number", set_damage.str()}}));
 	}
 
 	if(!increase_attacks.empty()) {
@@ -530,8 +522,8 @@ std::string attack_type::describe_effect(const config& cfg)
 			// TRANSLATORS: Current value for WML code increase_attacks, documented in https://wiki.wesnoth.org/EffectWML
 			"<span color=\"$color\">$number_or_percent</span> strike",
 			"<span color=\"$color\">$number_or_percent</span> strikes",
-			std::stoi(increase_attacks),
-			{{"number_or_percent", utils::print_modifier(increase_attacks)}, {"color", increase_attacks[0] == '-' ? "#f00" : "#0f0"}}));
+			increase_attacks.to_int(),
+			format_modifier(increase_attacks)));
 	}
 
 	if(!set_attacks.empty()) {
@@ -539,36 +531,36 @@ std::string attack_type::describe_effect(const config& cfg)
 			// TRANSLATORS: Current value for WML code set_attacks, documented in https://wiki.wesnoth.org/EffectWML
 			"$number strike",
 			"$number strikes",
-			std::stoi(set_attacks),
-			{{"number", set_attacks}}));
+			set_attacks.to_int(),
+			{{"number", set_attacks.str()}}));
 	}
 
 	if(!set_accuracy.empty()) {
 		desc.emplace_back(VGETTEXT(
 			// TRANSLATORS: Current value for WML code set_accuracy, documented in https://wiki.wesnoth.org/EffectWML
 			"$number| accuracy",
-			{{"number", set_accuracy}}));
+			{{"number", set_accuracy.str()}}));
 	}
 
 	if(!increase_accuracy.empty()) {
 		desc.emplace_back(VGETTEXT(
 			// TRANSLATORS: Current value for WML code increase_accuracy, documented in https://wiki.wesnoth.org/EffectWML
 			"<span color=\"$color\">$number_or_percent|%</span> accuracy",
-			{{"number_or_percent", utils::print_modifier(increase_accuracy)}, {"color", increase_accuracy[0] == '-' ? "#f00" : "#0f0"}}));
+			format_modifier(increase_accuracy)));
 	}
 
 	if(!set_parry.empty()) {
 		desc.emplace_back(VGETTEXT(
 			// TRANSLATORS: Current value for WML code set_parry, documented in https://wiki.wesnoth.org/EffectWML
 			"$number parry",
-			{{"number", set_parry}}));
+			{{"number", set_parry.str()}}));
 	}
 
 	if(!increase_parry.empty()) {
 		desc.emplace_back(VGETTEXT(
 			// TRANSLATORS: Current value for WML code increase_parry, documented in https://wiki.wesnoth.org/EffectWML
 			"<span color=\"$color\">$number_or_percent</span> parry",
-			{{"number_or_percent", utils::print_modifier(increase_parry)}, {"color", increase_parry[0] == '-' ? "#f00" : "#0f0"}}));
+			format_modifier(increase_parry)));
 	}
 
 	if(!set_movement.empty()) {
@@ -576,8 +568,8 @@ std::string attack_type::describe_effect(const config& cfg)
 			// TRANSLATORS: Current value for WML code set_movement_used, documented in https://wiki.wesnoth.org/EffectWML
 			"$number movement point",
 			"$number movement points",
-			std::stoi(set_movement),
-			{{"number", set_movement}}));
+			set_movement.to_int(),
+			{{"number", set_movement.str()}}));
 	}
 
 	if(!increase_movement.empty()) {
@@ -585,8 +577,8 @@ std::string attack_type::describe_effect(const config& cfg)
 			// TRANSLATORS: Current value for WML code increase_movement_used, documented in https://wiki.wesnoth.org/EffectWML
 			"<span color=\"$color\">$number_or_percent</span> movement point",
 			"<span color=\"$color\">$number_or_percent</span> movement points",
-			std::stoi(increase_movement),
-			{{"number_or_percent", utils::print_modifier(increase_movement)}, {"color", increase_movement[0] == '-' ? "#f00" : "#0f0"}}));
+			increase_movement.to_int(),
+			format_modifier(increase_movement)));
 	}
 
 	if(!set_attacks_used.empty()) {
@@ -594,8 +586,8 @@ std::string attack_type::describe_effect(const config& cfg)
 			// TRANSLATORS: Current value for WML code set_attacks_used, documented in https://wiki.wesnoth.org/EffectWML
 			"$number attack used",
 			"$number attacks used",
-			std::stoi(set_attacks_used),
-			{{"number", set_attacks_used}}));
+			set_attacks_used.to_int(),
+			{{"number", set_attacks_used.str()}}));
 	}
 
 	if(!increase_attacks_used.empty()) {
@@ -603,8 +595,8 @@ std::string attack_type::describe_effect(const config& cfg)
 			// TRANSLATORS: Current value for WML code increase_attacks_used, documented in https://wiki.wesnoth.org/EffectWML
 			"<span color=\"$color\">$number_or_percent</span> attack used",
 			"<span color=\"$color\">$number_or_percent</span> attacks used",
-			std::stoi(increase_attacks_used),
-			{{"number_or_percent", utils::print_modifier(increase_attacks_used)}, {"color", increase_attacks_used[0] == '-' ? "#f00" : "#0f0"}}));
+			increase_attacks_used.to_int(),
+			format_modifier(increase_attacks_used)));
 	}
 
 	return utils::format_conjunct_list("", desc);

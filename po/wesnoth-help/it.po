@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-10-20 20:10-0500\n"
-"PO-Revision-Date: 2025-05-25 00:07+0200\n"
+"PO-Revision-Date: 2025-10-31 18:53+0100\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italiano <wesnoth-l10n-it@cirulla.net>\n"
 "Language: it\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.4.4\n"
+"X-Generator: Poedit 3.2.2\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
 #. [time]: id=underground
@@ -608,12 +608,12 @@ msgstr "Strumento Punti di Partenza"
 msgid ""
 "Defines the side leader starting position.\n"
 "This tool sets the side leaders’ default starting locations, and named "
-"special locations. Both types of location are enabled in both <ref dst='.."
-"editor_mode_terrain'>Terrain Editor</ref> and <ref dst='.."
-"editor_mode_scenario'>Scenario Editor</ref> modes. The location names are "
-"shown as a list in the editor palette, clicking on the map will place that "
-"name on a hex, each location can only be placed on a single hex, and the "
-"editor will only allow one location per hex.\n"
+"special locations. Both types of location are enabled in both <ref "
+"dst='..editor_mode_terrain'>Terrain Editor</ref> and <ref "
+"dst='..editor_mode_scenario'>Scenario Editor</ref> modes. The location names "
+"are shown as a list in the editor palette, clicking on the map will place "
+"that name on a hex, each location can only be placed on a single hex, and "
+"the editor will only allow one location per hex.\n"
 "\n"
 "To add named special locations, click “Add” at the bottom of the editor "
 "palette, and enter the name. These names must start with a letter and may "
@@ -639,12 +639,12 @@ msgstr ""
 "Questo strumento imposta la posizione standard ad inizio gioco dei "
 "condottieri di una squadra, e assegna dei nome a delle luoghi speciali sulla "
 "mappa. Entrambi questi tipi di punto sono disponibili sia in modalità <ref "
-"dst='..editor_mode_terrain'>Editor Terreni</ref> che in modalità <ref dst='.."
-"editor_mode_scenario'>Editor Scenario</ref>. I nomi di una località vengono "
-"visualizzati come una lista nella Tavolozza dell’editor; cliccando sulla "
-"mappa verrà piazzato quel nome in un esagono. Ogni punto può essere piazzato "
-"soltanto su un singolo esagono e l’editor permetterà di piazzare soltanto un "
-"punto per esagono.\n"
+"dst='..editor_mode_terrain'>Editor Terreni</ref> che in modalità <ref "
+"dst='..editor_mode_scenario'>Editor Scenario</ref>. I nomi di una località "
+"vengono visualizzati come una lista nella Tavolozza dell’editor; cliccando "
+"sulla mappa verrà piazzato quel nome in un esagono. Ogni punto può essere "
+"piazzato soltanto su un singolo esagono e l’editor permetterà di piazzare "
+"soltanto un punto per esagono.\n"
 "\n"
 "Per aggiungere dei punti speciali con un nome, clicca il bottone “Aggiungi” "
 "che trovi in fondo alla Tavolozza dell’editor ed inserisci un nome. Questi "
@@ -691,9 +691,9 @@ msgstr ""
 #: data/core/editor/help.cfg:131
 msgid ""
 "editor^<header>Movement Overlays</header>\n"
-"<img src='terrain/grass/green.png~BLIT(terrain/impassable-editor."
-"png~O(0.5))'/><img src='terrain/grass/green.png~BLIT(terrain/unwalkable-"
-"editor.png~O(0.5))'/>\n"
+"<img src='terrain/grass/green.png~BLIT(terrain/impassable-"
+"editor.png~O(0.5))'/><img src='terrain/grass/green.png~BLIT(terrain/"
+"unwalkable-editor.png~O(0.5))'/>\n"
 "<b>Impassable and Unwalkable</b>\n"
 "\n"
 "While easily noticeable in the editor, these are invisible in the game, so "
@@ -702,9 +702,9 @@ msgid ""
 "respectively."
 msgstr ""
 "<header>Sovrapposizioni di Movimento</header>\n"
-"<img src='terrain/grass/green.png~BLIT(terrain/impassable-editor."
-"png~O(0.5))' /><img src='terrain/grass/green.png~BLIT(terrain/unwalkable-"
-"editor.png~O(0.5))' />\n"
+"<img src='terrain/grass/green.png~BLIT(terrain/impassable-"
+"editor.png~O(0.5))' /><img src='terrain/grass/green.png~BLIT(terrain/"
+"unwalkable-editor.png~O(0.5))' />\n"
 "<b>Invalicabile e Impervio\\</b>\n"
 "\n"
 "Sebbene facilmente identificabili nell’editor, sono invisibili in gioco, in "
@@ -718,9 +718,9 @@ msgstr ""
 #: data/core/editor/help.cfg:140
 msgid ""
 "editor^<header>Castle Overlays</header>\n"
-"<img src='terrain/grass/green.png~BLIT(terrain/castle/castle-overlay-editor."
-"png~O(0.5))'/><img src='terrain/grass/green.png~BLIT(terrain/castle/keep-"
-"overlay-editor.png~O(0.5))'/>\n"
+"<img src='terrain/grass/green.png~BLIT(terrain/castle/castle-overlay-"
+"editor.png~O(0.5))'/><img src='terrain/grass/green.png~BLIT(terrain/castle/"
+"keep-overlay-editor.png~O(0.5))'/>\n"
 "Adding either of these overlays to a passable hex allows units to be "
 "recruited onto a hex. The keep also allows a leader to recruit from there.\n"
 "\n"
@@ -731,9 +731,9 @@ msgid ""
 "units being recruited onto them."
 msgstr ""
 "<header>Sovrapposizioni per Castelli</header>\n"
-"<img src='terrain/grass/green.png~BLIT(terrain/castle/castle-overlay-editor."
-"png~O(0.5))' /><img src='terrain/grass/green.png~BLIT(terrain/castle/keep-"
-"overlay-editor.png~O(0.5))'/>\n"
+"<img src='terrain/grass/green.png~BLIT(terrain/castle/castle-overlay-"
+"editor.png~O(0.5))' /><img src='terrain/grass/green.png~BLIT(terrain/castle/"
+"keep-overlay-editor.png~O(0.5))'/>\n"
 "Aggiungere una di queste sovrapposizioni ad un esagono attraversabile "
 "permette alle unità di essere reclutate sull’esagono stesso. Anche la "
 "fortezza permette ad un condottiero di reclutare da lì.\n"
@@ -783,70 +783,44 @@ msgstr "Grafica per Terreno Sopraelevato"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:165
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "A cosmetic elevation effect that looks a little different in the editor "
-#| "than in the game due to visual aids in the editor; all the overlays "
-#| "described here are found in the terrain palette’s “elevation” group.\n"
 msgid ""
 "A cosmetic elevation effect that looks a little different in the editor than "
 "in the game due to visual aids in the editor; all the overlays described "
 "here are found in the terrain palette’s “elevation” group."
 msgstr ""
-"\n"
 "Un effetto cosmetico di elevazione che nell’editor risulta leggermente "
 "diverso da quello in gioco, dovuto agli aiuti visuali dell’editor stesso. "
 "Tutte le sovrapposizioni descritte possono essere trovate nel gruppo "
-"\"elevazioni\" della tavolozza dei terreni.\n"
+"\"elevazioni\" della tavolozza dei terreni."
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:166
-#, fuzzy
-#| msgid "editor^<header>Direct Overlays</header>"
 msgid "editor^Direct Overlays"
-msgstr "<header>Sovrapposizioni Dirette</header>"
+msgstr "Sovrapposizioni Dirette"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:170
 msgid "Bluffs and Gulch"
-msgstr ""
+msgstr "Scogliere e Forre"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:172
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "<b>Bluffs and Gulch</b>\n"
-#| "\n"
-#| "The bluffs, gulches, and similar variations are much like a standard "
-#| "terrain overlay, and can simply be used that way. However, for larger "
-#| "areas of the map, where you will want to allow the use of other overlay "
-#| "terrains, you will want to combine these with the “markers” described in "
-#| "the next section.\n"
-#| "\n"
 msgid ""
 "The bluffs, gulches, and similar variations are much like a standard terrain "
 "overlay, and can simply be used that way. However, for larger areas of the "
 "map, where you will want to allow the use of other overlay terrains, you "
 "will want to combine these with the “markers” described in the next section."
 msgstr ""
-"\n"
-"<b>Scogliere e Forre</b>n\n"
-"\n"
 "Le scogliere, le forre e varianti similari, sono molto simili ad una "
 "sovrapposizione di terreno standard e come tali possono essere utilizzate. "
 "Comunque, per grosse aree di una mappa, dove potresti voler combinarli con "
 "altre sovrapposizioni, potresti volerli combinare con i “marcatori” "
-"descritti nella sezione successiva.\n"
-"\n"
+"descritti nella sezione successiva."
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:174
-#, fuzzy
-#| msgid "editor^<header>Elevation Floodfill</header>"
 msgid "editor^Elevation Floodfill"
-msgstr "<header>Riempimento Sopraelevazioni</header>"
+msgstr "Riempimento Sopraelevazioni"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:177
@@ -860,21 +834,6 @@ msgstr "Icona della tavolozza dell’editor di sopraelevazione"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:180
-#, fuzzy
-#| msgid ""
-#| "Raised elevation editor palette icon\n"
-#| "\n"
-#| "To make a patch of terrain higher or lower, and still be able to use "
-#| "other overlay terrains such as trees, you will need to use these markers. "
-#| "Placing one of these arrows on the map will flood-fill the map with a "
-#| "color-coded haze; neither the haze nor the arrow will be visible in game. "
-#| "The hazed area will have a border ledge, making it look higher or lower "
-#| "than the adjacent tiles.\n"
-#| "\n"
-#| "There are two high markers and two low markers, so it is possible to make "
-#| "terraces of up to five levels (lowest, lower, normal, higher, highest). "
-#| "Placing a high region next to a low region does not result in larger "
-#| "cliffs.\n"
 msgid ""
 "To make a patch of terrain higher or lower, and still be able to use other "
 "overlay terrains such as trees, you will need to use these markers. Placing "
@@ -883,20 +842,13 @@ msgid ""
 "will have a border ledge, making it look higher or lower than the adjacent "
 "tiles."
 msgstr ""
-"Icona sopraelevazione tavoletta editor\n"
-"\n"
 "Per fare in modo che un pezzo di terreno risulti elevato o abbassato e "
 "contemporaneamente utilizzare altri tipi di sovrapposizioni quali gli "
 "alberi, dovrai utilizzare questi marcatori. Piazzando una di queste frecce "
 "sulla mappa, la riempirai con una trasparenza colorata secondo codifica. In "
 "gioco non saranno visibili né la freccia, né la foschia. L’area coperta "
 "dalla foschia avrà un bordo  sporgente, facendola sembrare più alta o più "
-"bassa  delle tessere adiacenti.\n"
-"\n"
-"Ci sono due marcatori \"alto\" e due \"basso\", in modo da poter fare "
-"terrazze fino a cinque piani ( bassissimo, basso, normale, alto, altissimo). "
-"Non si ottengono scogliere più grandi piazzando una regione rialzata vicino "
-"ad una ribassata.\n"
+"bassa delle tessere adiacenti."
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:182
@@ -905,11 +857,15 @@ msgid ""
 "terraces of up to five levels (lowest, lower, normal, higher, highest). "
 "Placing a high region next to a low region does not result in larger cliffs."
 msgstr ""
+"Ci sono due marcatori \"alto\" e due \"basso\", in modo da poter fare "
+"terrazze fino a cinque piani ( bassissimo, basso, normale, alto, altissimo). "
+"Non si ottengono scogliere più grandi piazzando una regione rialzata vicino "
+"ad una ribassata."
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:184
 msgid "editor^How to Use"
-msgstr ""
+msgstr "Modalità d’uso"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:186
@@ -917,28 +873,11 @@ msgid ""
 "The marker arrows are not very useful by themselves, but the bluffs/gulch-"
 "type terrains can be used to contain the floodfilled area."
 msgstr ""
+"Le frecce marcatrici non sono molto utili di per sé, ma i terreni di tipo "
+"scogliere/forre possono essere utilizzati per contenere le aree riempite."
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:188
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "editor^<header>How to Use</header>\n"
-#| "\n"
-#| "The marker arrows are not very useful by themselves, but the bluffs/gulch-"
-#| "type terrains can be used to contain the floodfilled area.\n"
-#| "\n"
-#| "An example use case would be:\n"
-#| "1.  Select the Bluffs (^Qhh) from the editor palette and use single-hex "
-#| "paint tool to outline a big blob over an empty, all-grass map.\n"
-#| "2.  Place a Marker High (^_mh) arrow on a tile inside the blob (not on "
-#| "the Bluffs border).\n"
-#| "3.  The blob should all be raised now, and as long as you don’t overwrite "
-#| "the Marker or Bluffs overlays, you can add other terrain overlays as "
-#| "needed.\n"
-#| "\n"
-#| "The graphics used to represent the ledge borders are determined by the "
-#| "base terrain.\n"
 msgid ""
 "An example use case would be:\n"
 "1.  Select the Bluffs (^Qhh) from the editor palette and use single-hex "
@@ -948,13 +887,6 @@ msgid ""
 "3.  The blob should all be raised now, and as long as you don’t overwrite "
 "the Marker or Bluffs overlays, you can add other terrain overlays as needed."
 msgstr ""
-"\n"
-"<header>Modalità d’uso</bold>\n"
-"\n"
-"Le frecce marcatrici non sono molto utili di per sé, ma i terreni di tipo "
-"scogliere/forre possono essere utilizzati per contenere le aree coperte "
-"dalla trasparenza colorata.\n"
-"\n"
 "Un esempio di utilizzo potrebbe essere:\n"
 "1.  Seleziona la Scogliera (^Qhh) dalla tavolozza dell’editor e utilizza il "
 "pennello a singolo esagono per disegnare uno grossa area sopra una tratto "
@@ -963,10 +895,7 @@ msgstr ""
 "dell’area, non sui bordi della scogliera.\n"
 "3.  L’area dovrebbe risultare adesso tutta rialzata e fintanto che non "
 "sovrascriverai la freccia marcatrice o la sovrapposizione scogliera, puoi "
-"aggiungere qualsiasi altra sovrapposizione desideri.\n"
-"\n"
-"La grafica utilizzata per rappresentare i bordi della sporgenza dipende dal "
-"tipo di terreno base.\n"
+"aggiungere qualsiasi altra sovrapposizione desideri."
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:193
@@ -974,24 +903,20 @@ msgid ""
 "The graphics used to represent the ledge borders are determined by the base "
 "terrain."
 msgstr ""
+"La grafica utilizzata per rappresentare i bordi della sporgenza dipende dal "
+"tipo di terreno base."
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:194
-#, fuzzy
-#| msgid ""
-#| "editor^<span style='italic' font_size='15'>Note for UMC authors: The "
-#| "flood-filled tiles do not have their terrain codes changed, or any other "
-#| "properties affected, so filtering a location by elevation is not simple.</"
-#| "span>"
 msgid ""
 "editor^Note for UMC authors: The flood-filled tiles do not have their "
 "terrain codes changed, or any other properties affected, so filtering a "
 "location by elevation is not simple."
 msgstr ""
-"<span style='italic' font_size='15'>Nota per i creatori di contenuti/"
-"estensioni: le tessere trasparenti per il riempimento non hanno cambiato il "
-"loro codice terreno, o una qualsiasi delle altre caratteristiche: è quindi "
-"piuttosto difficile filtrare una posizione in base alla sua elevazione</span>"
+"Nota per i creatori di contenuti/estensioni: le tessere trasparenti per il "
+"riempimento non hanno cambiato il loro codice terreno, o una qualsiasi delle "
+"altre caratteristiche: è quindi piuttosto difficile filtrare una posizione "
+"in base alla sua elevazione."
 
 #. [topic]: id=editor_deprecated_overlay
 #: data/core/editor/help.cfg:200
@@ -1003,8 +928,8 @@ msgstr "Terreni Deprecati"
 #. The Xol and ^Efs terrains’ help pages aren’t given hyperlinks, because they both have hide_help enabled. Even when on a map with Xol on it, ctrl+t will show the hidden page but the ref still won’t link to it.
 #: data/core/editor/help.cfg:203
 msgid ""
-"editor^<img src='terrain/grass/green.png~BLIT(terrain/deprecated-editor."
-"png)'/>\n"
+"editor^<img src='terrain/grass/green.png~BLIT(terrain/deprecated-"
+"editor.png)'/>\n"
 "The magenta ‘D’ (for “Deprecated”).\n"
 "\n"
 "This is shown in the editor over deprecated terrain codes. Examples are:\n"
@@ -1479,18 +1404,18 @@ msgid ""
 "The map editor saves one file when in terrain mode (a .map) or two files "
 "when in scenario mode (both a .map and a .cfg).\n"
 "\n"
-"Loading a .cfg file has different results depending on the contents of the ."
-"cfg file. For .cfg files that were created by the scenario editor, it will "
-"open the .cfg in the scenario editor. However, for .cfg files that cannot be "
-"opened by the scenario editor, the editor will attempt to find the "
+"Loading a .cfg file has different results depending on the contents of "
+"the .cfg file. For .cfg files that were created by the scenario editor, it "
+"will open the .cfg in the scenario editor. However, for .cfg files that "
+"cannot be opened by the scenario editor, the editor will attempt to find the "
 "scenario’s map data and open the corresponding .map file in terrain-only "
 "mode, as if the .map file was chosen in the file selector. It is recommended "
 "in those cases to simply load the .map file directly instead."
 msgstr ""
 "<header>I file: .map e .cfg</header>\n"
 "\n"
-"L’editor di mappe salva soltanto un singolo file se in modalità terreno (un ."
-"map), due se in modalità scenario (un .map e un .cfg).\n"
+"L’editor di mappe salva soltanto un singolo file se in modalità terreno "
+"(un .map), due se in modalità scenario (un .map e un .cfg).\n"
 "\n"
 " I file .cfg creati in modalità scenario verranno aperti dall’editor di "
 "scenario. Quelli che non possono essere aperti dall’editor di scenario\n"
@@ -1707,8 +1632,8 @@ msgid ""
 "\n"
 "• <span face='monospace'>map_file=maps/01_First_Map.map</span> <i>— "
 "supported since Wesnoth 1.14</i>\n"
-"• <span face='monospace'>map_data=&quot;&#0x7B;maps/01_First_Map.map&#0x7D;"
-"&quot;</span> <i>— a WML preprocessor include</i>\n"
+"• <span face='monospace'>map_data=&quot;&#0x7B;maps/"
+"01_First_Map.map&#0x7D;&quot;</span> <i>— a WML preprocessor include</i>\n"
 "\n"
 "The <i>map_file</i> method is preferred over using a preprocessor include."
 msgstr ""
@@ -1735,8 +1660,9 @@ msgstr ""
 "\n"
 "• <span face='monospace'>map_file=maps/01_Prima_Mappa.map</span> <i>— "
 "supportato a partire da Wesnoth 1.14</i>\n"
-"• <span face='monospace'>map_data=&quot;&#0x7B;maps/01_Prima_Mappa.map&#0x7D;"
-"&quot;</span> <i>— una inclusione del preprocessore WML</i>\n"
+"• <span face='monospace'>map_data=&quot;&#0x7B;maps/"
+"01_Prima_Mappa.map&#0x7D;&quot;</span> <i>— una inclusione del preprocessore "
+"WML</i>\n"
 "\n"
 "Il metodo <i>map_file</i> è da preferirsi rispetto all’utilizzo "
 "dell’inclusione da preprocessore."
@@ -1793,11 +1719,12 @@ msgstr ""
 "\n"
 "In modalità scenario, l’editor salva i dati dello scenario in un file .cfg e "
 "quelli della mappa in un file .map separato. Lo scenario farà poi "
-"riferimento al file .map tramite map_file. Quando viene caricato un file ."
-"cfg, l’editor di scenario riconosce i file da lui creati, ma è possibile che "
-"si trovi in difficoltà con dei file modificati manualmente. Questi problemi "
-"possono essere evitati <ref dst='editor_separate_events_file'>utilizzando un "
-"file .cfg separato</ref> per le parti editate a mano."
+"riferimento al file .map tramite map_file. Quando viene caricato un "
+"file .cfg, l’editor di scenario riconosce i file da lui creati, ma è "
+"possibile che si trovi in difficoltà con dei file modificati manualmente. "
+"Questi problemi possono essere evitati <ref "
+"dst='editor_separate_events_file'>utilizzando un file .cfg separato</ref> "
+"per le parti editate a mano."
 
 #. [editor_times]: id=deep_underground
 #. [time]: id=deep_underground
@@ -2453,8 +2380,8 @@ msgstr ""
 #: data/core/encyclopedia/geography.cfg:194
 msgid ""
 "<header>Notable land features:</header>\n"
-"    • Aethenwood: The largest southern forest, home to reclusive <ref dst='.."
-"race_elf'>elves</ref>.\n"
+"    • Aethenwood: The largest southern forest, home to reclusive <ref "
+"dst='..race_elf'>elves</ref>.\n"
 "    • Vale of Blossoming Trees: An elvish vale at the southern edge of the "
 "Aethenwood. It contains the sacred Isle of Elrath.\n"
 "    • Lake Aelin: An elvish lake at the edge of their territory along the "
@@ -2743,20 +2670,6 @@ msgstr "Comandi"
 # modificare il titolo se lo localizziamo
 #. [topic]: id=..introduction
 #: data/core/help.cfg:97
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "<i>Battle for Wesnoth</i> is a turn-based fantasy strategy game somewhat "
-#| "unusual among modern strategy games. While other games strive for "
-#| "complexity, <i>Battle for Wesnoth</i> strives for simplicity of both "
-#| "rules and gameplay. This does not make the game simple, however — from "
-#| "these simple rules arises a wealth of strategy, making the game easy to "
-#| "learn but a challenge to master.\n"
-#| "\n"
-#| "The following pages outline all you need to know to play Wesnoth. As you "
-#| "play, new information is added to the various categories as you come "
-#| "across new aspects of the game. For more detailed information on special "
-#| "situations and exceptions, follow the included links."
 msgid ""
 "<i>Battle for Wesnoth</i> is a turn-based fantasy strategy game somewhat "
 "unusual among modern strategy games. While other games strive for "
@@ -2765,20 +2678,13 @@ msgid ""
 "simple rules arises a wealth of strategy, making the game easy to learn but "
 "a challenge to master."
 msgstr ""
-"\n"
 "<i>Battle for Wesnoth</i> è un gioco strategico a turni ad ambientazione "
 "fantasy, abbastanza insolito nel panorama dei moderni giochi strategici. "
 "Mentre altri giochi ricercano la complessità, <i>Battle for Wesnoth</i> "
 "punta sulla semplicità sia delle regole che della struttura di gioco. Ciò "
 "non rende tuttavia il gioco piatto: su queste semplici regole si fonda una "
 "fitta rete di complesse strategie che rendono il gioco facile da imparare, "
-"ma difficile da padroneggiare.\n"
-"\n"
-"Le prossime pagine ti spiegheranno tutto quello che c’è da sapere per "
-"giocare a Wesnoth. Durante una partita, vengono aggiunte di volta in volta "
-"nuove informazioni nelle varie categorie, man mano che procedi e scopri "
-"nuovi aspetti del gioco. Per informazioni più dettagliate su situazioni "
-"speciali ed eccezioni, consulta i relativi collegamenti."
+"ma difficile da padroneggiare."
 
 #. [topic]: id=..introduction
 #: data/core/help.cfg:99
@@ -2788,6 +2694,11 @@ msgid ""
 "new aspects of the game. For more detailed information on special situations "
 "and exceptions, follow the included links."
 msgstr ""
+"Le prossime pagine ti spiegheranno tutto quello che c’è da sapere per "
+"giocare a Wesnoth. Durante una partita, vengono aggiunte di volta in volta "
+"nuove informazioni nelle varie categorie, man mano che procedi e scopri "
+"nuovi aspetti del gioco. Per informazioni più dettagliate su situazioni "
+"speciali ed eccezioni, consulta i relativi collegamenti."
 
 #. [topic]: id=about_game
 #: data/core/help.cfg:105
@@ -2921,16 +2832,10 @@ msgstr "Unità sconosciuta"
 
 #. [topic]: id=.unknown_unit
 #: data/core/help.cfg:158
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "This unit is unknown for the moment. You must discover it in the game to "
-#| "be allowed to see its description."
 msgid ""
 "This unit is unknown for the moment. You must discover it in the game to be "
 "allowed to see its description."
 msgstr ""
-"\n"
 "Quest’unità ti è al momento sconosciuta. Devi scoprirla durante il gioco per "
 "poterne vedere la descrizione."
 
@@ -3023,18 +2928,8 @@ msgstr ""
 
 #. [topic]: id=..gameplay
 #: data/core/help.cfg:177
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>Fundamentals of Gameplay</header>\n"
-#| "\n"
 msgid "Fundamentals of Gameplay"
-msgstr ""
-"\n"
-"\n"
-"<header>Fondamenti del gioco</header>\n"
-"\n"
+msgstr "Fondamenti del gioco"
 
 #. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:187
@@ -3062,22 +2957,12 @@ msgstr ""
 
 #. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:190
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "When you win a scenario, the map grays over and the <b>End Turn</b> "
-#| "button changes to <b>End Scenario</b>. You can now do things like "
-#| "changing your save options or (if you are in a multiplayer game) chatting "
-#| "with other players before pressing that button to advance."
 msgid ""
 "When you win a scenario, the map grays over and the <b>End Turn</b> button "
 "changes to <b>End Scenario</b>. You can now do things like changing your "
 "save options or (if you are in a multiplayer game) chatting with other "
 "players before pressing that button to advance."
 msgstr ""
-"\n"
-"\n"
 "Completando vittoriosamente uno scenario, la mappa diventerà grigia e il "
 "pulsante <b>Fine turno</b> si tramuterà in <b>Fine scenario</b>. A quel "
 "punto, potrai eseguire azioni come cambiare le opzioni di salvataggio o (se "
@@ -3116,23 +3001,12 @@ msgstr ""
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:200
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "If you right-clicked on a castle hex and selected recruit, the new unit "
-#| "will appear in that hex. Otherwise, it will appear in a free hex near the "
-#| "keep. You may only recruit as many units as you have free hexes in your "
-#| "castle, and you cannot spend more gold than you actually have on "
-#| "recruiting."
 msgid ""
 "If you right-clicked on a castle hex and selected recruit, the new unit will "
 "appear in that hex. Otherwise, it will appear in a free hex near the keep. "
 "You may only recruit as many units as you have free hexes in your castle, "
 "and you cannot spend more gold than you actually have on recruiting."
 msgstr ""
-"\n"
-"\n"
 "Se fai clic col tasto destro del mouse su un esagono con castello e poi "
 "selezioni “Recluta”, una nuova unità apparirà in quella posizione; "
 "altrimenti essa apparirà in un esagono libero vicino alla fortezza. Puoi "
@@ -3142,58 +3016,32 @@ msgstr ""
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:202
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Recruited units come with two random <ref dst='..traits_section'>traits</"
-#| "ref> which modify their statistics."
 msgid ""
 "Recruited units come with two random <ref dst='..traits_section'>traits</"
 "ref> which modify their statistics."
 msgstr ""
-"\n"
-"\n"
-"Alle unità reclutate vengono conferite due <ref dst='.."
-"traits_section'>caratteristiche</ref> casuali che modificano le loro "
+"Alle unità reclutate vengono conferite due <ref "
+"dst='..traits_section'>caratteristiche</ref> casuali che modificano le loro "
 "statistiche."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:204
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "In later scenarios, you may also Recall survivors from earlier battles. "
-#| "Recalling costs a standard 20 gold and presents you with a list of all "
-#| "surviving units from previous scenarios."
 msgid ""
 "In later scenarios, you may also Recall survivors from earlier battles. "
 "Recalling costs a standard 20 gold and presents you with a list of all "
 "surviving units from previous scenarios."
 msgstr ""
-"\n"
-"\n"
 "Negli scenari successivi potrai anche richiamare le unità sopravvissute alle "
 "battaglie precedenti. Richiamare le unità costa sempre 20 monete d’oro; "
 "apparirà una lista di tutte le unità sopravvissute negli scenari precedenti."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:206
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Units not only cost gold to Recruit or Recall, they also require money to "
-#| "support. See <ref dst='income_and_upkeep'>income and upkeep</ref> for "
-#| "more information."
 msgid ""
 "Units not only cost gold to Recruit or Recall, they also require money to "
 "support. See <ref dst='income_and_upkeep'>income and upkeep</ref> for more "
 "information."
 msgstr ""
-"\n"
-"\n"
 "Ricorda che le unità non hanno solo un costo di reclutamento o di richiamo, "
 "ma necessitano anche di denaro per il proprio mantenimento. Leggi la sezione "
 "<ref dst='income_and_upkeep'>Entrate e mantenimento</ref> per saperne di più."
@@ -3218,22 +3066,12 @@ msgstr ""
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:216
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Income is simple. You have a base income of 2 gold per turn. For every "
-#| "village you control, you gain one additional gold each turn. Thus, if you "
-#| "have ten villages, you would normally gain 12 gold each turn. Your upkeep "
-#| "costs are subtracted from this income, as detailed below."
 msgid ""
 "Income is simple. You have a base income of 2 gold per turn. For every "
 "village you control, you gain one additional gold each turn. Thus, if you "
 "have ten villages, you would normally gain 12 gold each turn. Your upkeep "
 "costs are subtracted from this income, as detailed below."
 msgstr ""
-"\n"
-"\n"
 "Le entrate sono semplici da capire: il tuo guadagno base è di 2 monete d’oro "
 "per turno. Per ogni villaggio che controlli, guadagni 1 moneta d’oro "
 "aggiuntiva per turno. Perciò, se possiedi 10 villaggi, guadagnerai di norma "
@@ -3242,15 +3080,6 @@ msgstr ""
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:219
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "Upkeep is also fairly simple. Each unit requires an amount of Upkeep "
-#| "equal to its level. You can support as many levels worth of units as you "
-#| "have villages, without paying any upkeep. However, for each level of unit "
-#| "beyond the number of villages you have, you must pay one gold per turn. "
-#| "For example, if you have twelve level one units and ten villages, you "
-#| "would have to pay two gold each turn in upkeep."
 msgid ""
 "Upkeep is also fairly simple. Each unit requires an amount of Upkeep equal "
 "to its level. You can support as many levels worth of units as you have "
@@ -3259,7 +3088,6 @@ msgid ""
 "example, if you have twelve level one units and ten villages, you would have "
 "to pay two gold each turn in upkeep."
 msgstr ""
-"\n"
 "Il mantenimento è altrettanto facile da capire: ogni unità necessita di una "
 "certa quantità d’oro per il mantenimento, pari al suo livello. Puoi "
 "mantenere tanti livelli equivalenti di unità quanti sono i tuoi villaggi. "
@@ -3270,34 +3098,17 @@ msgstr ""
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:221
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Upkeep costs are subtracted from your income, so in the case of twelve "
-#| "levels of units and ten villages, your resultant Income would be 10 gold "
-#| "per turn."
 msgid ""
 "Upkeep costs are subtracted from your income, so in the case of twelve "
 "levels of units and ten villages, your resultant Income would be 10 gold per "
 "turn."
 msgstr ""
-"\n"
-"\n"
 "Tali costi vengono sottratti dalle tue entrate, quindi, se hai dodici "
 "livelli di unità e dieci villaggi, le entrate complessive saranno di 10 "
 "monete d’oro per turno."
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:224
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "In general, the base income, the amount of gold you get per village per "
-#| "turn, and the number of unit levels each village can support are "
-#| "configurable, but in campaigns they are almost always the values "
-#| "described above. The <i>Scenario Settings</i> tab of the <i>Status Table</"
-#| "i> dialog shows the values for the current scenario."
 msgid ""
 "In general, the base income, the amount of gold you get per village per "
 "turn, and the number of unit levels each village can support are "
@@ -3305,7 +3116,6 @@ msgid ""
 "above. The <i>Scenario Settings</i> tab of the <i>Status Table</i> dialog "
 "shows the values for the current scenario."
 msgstr ""
-"\n"
 "In generale, le entrate di base, l’ammontare di monete d’oro che guadagni ad "
 "ogni turno per ogni villaggio e il numero di livelli di unità che ogni "
 "villaggio può supportare sono tutti configurabili, ma nelle campagne sono "
@@ -3315,16 +3125,6 @@ msgstr ""
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:226
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "There are two important exceptions to upkeep: units with the loyal trait "
-#| "and leaders never incur upkeep. Units you begin the scenario with (such "
-#| "as Delfador), or units who join you during a scenario (such as the "
-#| "horseman in the second scenario of <i>Heir to the Throne</i>) will "
-#| "usually have the <i>loyal</i> trait. The unit you are playing (such as "
-#| "Konrad) will almost always be a leader."
 msgid ""
 "There are two important exceptions to upkeep: units with the loyal trait and "
 "leaders never incur upkeep. Units you begin the scenario with (such as "
@@ -3333,8 +3133,6 @@ msgid ""
 "<i>loyal</i> trait. The unit you are playing (such as Konrad) will almost "
 "always be a leader."
 msgstr ""
-"\n"
-"\n"
 "Vi sono due importanti eccezioni relative al mantenimento: le unità con la "
 "caratteristica “leale” e i condottieri non hanno bisogno di mantenimento. Le "
 "unità con cui inizi lo scenario (come Delfador) o quelle che si uniscono "
@@ -3409,22 +3207,12 @@ msgstr ""
 
 #. [topic]: id=advancement
 #: data/core/help.cfg:250
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Units have a certain amount of experience required to advance (this is "
-#| "20% less for units with the Intelligent trait). Once they achieve this "
-#| "amount, they immediately advance to the next level, healing fully in the "
-#| "process. In some cases, you will be given a choice of advancement options."
 msgid ""
 "Units have a certain amount of experience required to advance (this is 20% "
 "less for units with the Intelligent trait). Once they achieve this amount, "
 "they immediately advance to the next level, healing fully in the process. In "
 "some cases, you will be given a choice of advancement options."
 msgstr ""
-"\n"
-"\n"
 "Le unità hanno bisogno di un certo numero di punti esperienza per avanzare "
 "di livello (alle unità con la caratteristica “intelligente” ne serve il 20% "
 "in meno). Una volta raggiunta questa soglia, esse avanzano immediatamente al "
@@ -3433,20 +3221,6 @@ msgstr ""
 
 #. [topic]: id=advancement
 #: data/core/help.cfg:252
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "While most units have three levels, not all do. Occasional units (such as "
-#| "<ref dst='unit_Mage'>magi</ref>) may have four. Once a unit has reached "
-#| "its maximum level, it may have an <i>After Maximum Level Advancement</i> "
-#| "(AMLA) available to it. The AMLA will modify the unit each time the unit "
-#| "reaches the experience goal, but the unit will remain the same level. The "
-#| "typical AMLA effect is for the unit to raise the maximum HP by 3 and full-"
-#| "heal it. The first AMLA will normally be reached with 150 XP gained (120 "
-#| "XP for intelligent units). However, gaining an AMLA becomes progressively "
-#| "harder for each AMLA the unit receives, and so it is usually more useful "
-#| "to try to advance your lower level units."
 msgid ""
 "While most units have three levels, not all do. Occasional units (such as "
 "<ref dst='unit_Mage'>magi</ref>) may have four. Once a unit has reached its "
@@ -3459,8 +3233,6 @@ msgid ""
 "for each AMLA the unit receives, and so it is usually more useful to try to "
 "advance your lower level units."
 msgstr ""
-"\n"
-"\n"
 "La maggior parte delle unità possiede tre livelli, ma non tutte: alcune "
 "(come i <ref dst='unit_Mage'>maghi</ref>) possono averne quattro. Una volta "
 "che un’unità ha raggiunto il suo livello massimo, potrà comunque ottenere un "
@@ -3513,19 +3285,6 @@ msgstr ""
 
 #. [topic]: id=movement
 #: data/core/help.cfg:262
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Each unit has a certain number of movement points which are used up when "
-#| "moving into a new hex, depending on the Terrain of that particular hex. "
-#| "For instance, grassland nearly always costs 1 movement point to enter. "
-#| "Exactly how many movement points are spent entering a hex depends on the "
-#| "unit type — in forest, elvish units only spend 1 movement point, most "
-#| "human and orc units spend 2, while horsemen spend 3. You can learn how "
-#| "many movement points a unit requires to enter a certain terrain type by "
-#| "right-clicking on it, selecting <b>Unit Description</b>, and then looking "
-#| "at <b>Terrain Modifiers</b>."
 msgid ""
 "Each unit has a certain number of movement points which are used up when "
 "moving into a new hex, depending on the Terrain of that particular hex. For "
@@ -3537,8 +3296,6 @@ msgid ""
 "it, selecting <b>Unit Description</b>, and then looking at <b>Terrain "
 "Modifiers</b>."
 msgstr ""
-"\n"
-"\n"
 "Ogni unità possiede un certo numero di punti movimento che vengono usati "
 "quando si sposta in un nuovo esagono, in base al tipo di terreno in esso "
 "presente. Per esempio, le praterie in genere necessitano di 1 punto "
@@ -3553,17 +3310,6 @@ msgstr ""
 
 #. [topic]: id=movement
 #: data/core/help.cfg:264
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Another thing to keep in mind while moving is <i>zones of control</i>. "
-#| "Each unit — except for level 0 units — generates a zone of control in the "
-#| "hexes immediately surrounding it, and any enemy unit entering those hexes "
-#| "immediately ends its movement. Learning how to use zones of control to "
-#| "your advantage is an important part of Wesnoth, as only <ref "
-#| "dst='ability_skirmisherskirmisher'>skirmishers</ref> can ignore zones of "
-#| "control."
 msgid ""
 "Another thing to keep in mind while moving is <i>zones of control</i>. Each "
 "unit — except for level 0 units — generates a zone of control in the hexes "
@@ -3573,8 +3319,6 @@ msgid ""
 "dst='ability_skirmisherskirmisher'>skirmishers</ref> can ignore zones of "
 "control."
 msgstr ""
-"\n"
-"\n"
 "Un’altra cosa da tenere a mente durante gli spostamenti sono le <i>zone di "
 "controllo</i>. Ad eccezione di quelle di livello 0, ogni unità genera una "
 "zona di controllo negli esagoni che la circondano: qualsiasi unità nemica "
@@ -3585,20 +3329,11 @@ msgstr ""
 
 #. [topic]: id=movement
 #: data/core/help.cfg:266
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "To see where the enemy can move to during their next turn, press Ctrl-v "
-#| "or Cmd-v. Ctrl-b or Cmd-b shows where the enemy could move, if your units "
-#| "were not on the map to block their progress."
 msgid ""
 "To see where the enemy can move to during their next turn, press Ctrl-v or "
 "Cmd-v. Ctrl-b or Cmd-b shows where the enemy could move, if your units were "
 "not on the map to block their progress."
 msgstr ""
-"\n"
-"\n"
 "Per vedere dove può spostarsi un’unità nemica durante il suo prossimo turno, "
 "premi Ctrl-v o Cmd-v. La combinazione Ctrl-b o Cmd-b mostra invece dove "
 "potrebbe spostarsi l’unità nemica se le tue unità non bloccassero i suoi "
@@ -3789,44 +3524,25 @@ msgstr "Imparare dalle sconfitte"
 #. [topic]: id=whylost
 #: data/core/help.cfg:313
 msgid "<i>Why did I lose that scenario?</i>"
-msgstr ""
+msgstr "<i>Perché sono stato sconfitto in quello scenario?</i>"
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:315
-#, fuzzy
-#| msgid ""
-#| "<i>Why did I lose that scenario?</i>\n"
-#| "\n"
-#| "One of the most difficult parts of Wesnoth is understanding why a "
-#| "scenario was lost."
 msgid ""
 "One of the most difficult parts of Wesnoth is understanding why a scenario "
 "was lost."
 msgstr ""
-"<i>Perché sono stato sconfitto in quello scenario?</i>\n"
-"\n"
 "Una delle cose più difficile di Wesnoth è il comprendere perché si è stati "
 "sconfitti in uno scenario."
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:317
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "When you first start playing, you will probably lose some scenarios. That "
-#| "is normal, and is part of learning the game. When that happens, try to "
-#| "learn from your mistakes: watch the replay, try to understand what you "
-#| "did wrong, then <ref dst='saveload'>restart the scenario</ref> and try "
-#| "again."
 msgid ""
 "When you first start playing, you will probably lose some scenarios. That is "
 "normal, and is part of learning the game. When that happens, try to learn "
 "from your mistakes: watch the replay, try to understand what you did wrong, "
 "then <ref dst='saveload'>restart the scenario</ref> and try again."
 msgstr ""
-"\n"
-"\n"
 "Quando inizi a giocare, probabilmente verrai sconfitto in qualche scenario. "
 "Tutto ciò è normale e fa parte della curva di apprendimento del gioco. "
 "Quando succede, prova ad imparare dai tuoi errori: riguardati il replay, "
@@ -3835,52 +3551,27 @@ msgstr ""
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:319
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Some common reasons for losing a scenario are:"
 msgid "Some common reasons for losing a scenario are:"
 msgstr ""
-"\n"
-"\n"
 "Alcuni dei motivi più comuni che portano alla sconfitta in uno scenario:"
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:321
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "• Playing a campaign at too high a <ref dst='..gameplay'>difficulty "
-#| "level</ref>. Try restarting the scenario at an easier difficulty."
 msgid ""
 "• Playing a campaign at too high a <ref dst='..gameplay'>difficulty level</"
 "ref>. Try restarting the scenario at an easier difficulty."
 msgstr ""
-"\n"
-"\n"
 "• Giocare una campagna ad un <ref dst='..gameplay'>Livello di difficoltà</"
 "ref> troppo alto. Prova a giocare lo stesso scenario abbassando il livello "
 "di difficoltà."
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:323
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "• Playing a poor strategy: for example, recruiting the wrong types of "
-#| "units, fighting at the wrong <ref dst='time_of_day'>time of day</ref>, "
-#| "not taking advantage of terrain features or units’ special abilities, and "
-#| "so on."
 msgid ""
 "• Playing a poor strategy: for example, recruiting the wrong types of units, "
 "fighting at the wrong <ref dst='time_of_day'>time of day</ref>, not taking "
 "advantage of terrain features or units’ special abilities, and so on."
 msgstr ""
-"\n"
-"\n"
 "• Scegliere una strategia perdente: ad esempio, reclutando il tipo sbagliato "
 "di unità, combattere nel <ref dst='time_of_day'>periodo del giorno</ref> "
 "inappropriato, non approfittare dei vantaggi che portano le caratteristiche "
@@ -3888,22 +3579,12 @@ msgstr ""
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:325
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "• Missing clues. Often there will be hints in the campaign’s story and "
-#| "dialog about what to expect from a difficult scenario and how to prepare "
-#| "for it. If you have a loyal mage on your side, take the time to listen to "
-#| "its advice; it may save your life."
 msgid ""
 "• Missing clues. Often there will be hints in the campaign’s story and "
 "dialog about what to expect from a difficult scenario and how to prepare for "
 "it. If you have a loyal mage on your side, take the time to listen to its "
 "advice; it may save your life."
 msgstr ""
-"\n"
-"\n"
 "• Indizi mancanti. Spesso si trovano suggerimenti sparsi qua e là lungo lo "
 "svolgimento di una campagna e nei dialoghi, suggerimenti legati a cosa ci si "
 "possa aspettare da uno scenario particolarmente difficile e come prepararsi "
@@ -3912,19 +3593,6 @@ msgstr ""
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:327
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "• Barely scraping a victory in a previous scenario. Campaigns generally "
-#| "assume that you will have some <i>carryover gold</i> and some experienced "
-#| "units on your <i>recall list.</i> (These concepts are explained in the "
-#| "tutorial.) If you win a scenario but lose most of your experienced units "
-#| "and much of your gold, the following scenario may be very difficult to "
-#| "beat, even for a more experienced player. If you find yourself in this "
-#| "situation, you may try to go back a scenario or two and win them more "
-#| "convincingly, or change to an easier difficulty. (However, remember that "
-#| "<i>some</i> losses are expected, particularly at higher difficulties.)"
 msgid ""
 "• Barely scraping a victory in a previous scenario. Campaigns generally "
 "assume that you will have some <i>carryover gold</i> and some experienced "
@@ -3936,8 +3604,6 @@ msgid ""
 "change to an easier difficulty. (However, remember that <i>some</i> losses "
 "are expected, particularly at higher difficulties.)"
 msgstr ""
-"\n"
-"\n"
 "• Vincere uno scenario precedente per il rotto della cuffia. Le campagne "
 "normalmente presuppongono che tu abbia un certo quantitativo di <i>oro "
 "riportato</i> e qualche unità di livello avanzato nella tua <i>lista dei "
@@ -3953,16 +3619,6 @@ msgstr ""
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:329
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "• Poor gold management. At higher difficulties, managing gold — capturing "
-#| "villages to increase the income, and using low-level units and fresh "
-#| "recruits to reduce the spending — becomes important. If you use many high-"
-#| "level units, you might win a scenario easily but have not enough gold "
-#| "carryover for the next scenario. (This would be an example of “barely "
-#| "scraping a victory”.)"
 msgid ""
 "• Poor gold management. At higher difficulties, managing gold — capturing "
 "villages to increase the income, and using low-level units and fresh "
@@ -3971,8 +3627,6 @@ msgid ""
 "carryover for the next scenario. (This would be an example of “barely "
 "scraping a victory”.)"
 msgstr ""
-"\n"
-"\n"
 "• Cattiva gestione delle monete d’oro. Ad alti livelli di difficoltà, "
 "diventa importante la conquista di villaggi per aumentare le entrate e "
 "l’utilizzo di unità di basso livello e reclute fresche per ridurre le spese. "
@@ -3983,66 +3637,31 @@ msgstr ""
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:331
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>Unlikely reasons</header>"
 msgid "Unlikely reasons"
-msgstr ""
-"\n"
-"\n"
-"<header>Motivi improbabili</header>"
+msgstr "Motivi improbabili"
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:333
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "In addition to the common reasons, listed above, there are a few other "
-#| "reasons which are unlikely, though not impossible. They are:"
 msgid ""
 "In addition to the common reasons, listed above, there are a few other "
 "reasons which are unlikely, though not impossible. They are:"
 msgstr ""
-"\n"
-"\n"
 "In aggiunta alle più comuni cause sopra elencate, ce ne sono poche altre "
 "che, sebbene improbabili, non sono impossibili da incontrare. Esse sono:"
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:335
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "• You may have played a strategy that the campaign developer did not "
-#| "anticipate, and ended up with a set of high-level units not suitable for "
-#| "the next scenario."
 msgid ""
 "• You may have played a strategy that the campaign developer did not "
 "anticipate, and ended up with a set of high-level units not suitable for the "
 "next scenario."
 msgstr ""
-"\n"
-"\n"
 "• Potresti aver seguito una strategia che lo sviluppatore della campagna non "
 "ha previsto, e quindi potresti aver finito con un insieme di unità di alto "
 "livello inadatto al prossimo scenario."
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:337
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "• You may have found a scenario that can only be won on the second or "
-#| "third time through, whether by requiring above-average luck or by "
-#| "expecting the players to have foreknowledge — to know what surprises are "
-#| "coming up before they happen. (It is under discussion whether "
-#| "foreknowledge is expected at the highest difficulties. Requiring above-"
-#| "average luck, however, would qualify as a bug.)"
 msgid ""
 "• You may have found a scenario that can only be won on the second or third "
 "time through, whether by requiring above-average luck or by expecting the "
@@ -4051,8 +3670,6 @@ msgid ""
 "the highest difficulties. Requiring above-average luck, however, would "
 "qualify as a bug.)"
 msgstr ""
-"\n"
-"\n"
 "• Potresti aver trovato uno scenario che può essere terminato soltanto la "
 "seconda o la terza volta che viene affrontato, perché potrebbe richiedere "
 "una fortuna superiore alla media o la conoscenza anticipata degli eventi, "
@@ -4064,21 +3681,6 @@ msgstr ""
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:339
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "• Unusually-bad luck. Whether an attack hits or misses is random, so it "
-#| "could happen that the enemy was very lucky and had many hits, while you "
-#| "were very unlucky and had many misses. However, this is a very rare "
-#| "occurrence, virtually unheard of in all but the shortest, smallest "
-#| "scenarios. In fact, losses are more commonly caused by playing a <i>bad</"
-#| "i> strategy despite having <i>above-average</i> luck, than by playing a "
-#| "<i>good</i> strategy but having <i>below-average</i> luck. Moreover, "
-#| "merely having “below-average” luck does not excuse a loss; having below-"
-#| "average luck is perfectly normal, and scenarios are designed to be "
-#| "winnable even with below-average luck. It is only exceedingly bad luck, "
-#| "over multiple turns, that we mean here."
 msgid ""
 "• Unusually-bad luck. Whether an attack hits or misses is random, so it "
 "could happen that the enemy was very lucky and had many hits, while you were "
@@ -4091,8 +3693,6 @@ msgid ""
 "and scenarios are designed to be winnable even with below-average luck. It "
 "is only exceedingly bad luck, over multiple turns, that we mean here."
 msgstr ""
-"\n"
-"\n"
 "• Se la fortuna è cieca, la sfiga ci vede benissimo. Essendo la possibilità "
 "di colpire o di mancare un bersaglio casuale, potrebbe accadere che il "
 "nemico sia particolarmente fortunato e colpisca molte volte, mentre tu sia "
@@ -4109,15 +3709,6 @@ msgstr ""
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:341
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Be wary of attributing a loss to any of these reasons. If you are not a "
-#| "veteran player, it is far more likely that your loss was caused by one of "
-#| "the <i>common</i> errors, listed above, and is not indicative of a bug in "
-#| "the campaign. However, if you still think you found a bug, then by all "
-#| "means, report it!"
 msgid ""
 "Be wary of attributing a loss to any of these reasons. If you are not a "
 "veteran player, it is far more likely that your loss was caused by one of "
@@ -4125,8 +3716,6 @@ msgid ""
 "the campaign. However, if you still think you found a bug, then by all "
 "means, report it!"
 msgstr ""
-"\n"
-"\n"
 "Fai attenzione prima di attribuire una perdita ad uno di questi motivi. Se "
 "non sei un giocatore veterano, è molto più probabile che la tua perdita sia "
 "stata causata da uno degli errori <i>comuni</i> sopra elencati, piuttosto "
@@ -4135,15 +3724,6 @@ msgstr ""
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:343
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "The “Damage Calculations” dialog shows some statistics that can help "
-#| "determine whether a match was very lucky or very unlucky. However, "
-#| "reading the statistics is no substitute to watching the replay and "
-#| "looking for strategic mistakes, or small bits of luck at critical points "
-#| "in the engagement."
 msgid ""
 "The “Damage Calculations” dialog shows some statistics that can help "
 "determine whether a match was very lucky or very unlucky. However, reading "
@@ -4151,8 +3731,6 @@ msgid ""
 "strategic mistakes, or small bits of luck at critical points in the "
 "engagement."
 msgstr ""
-"\n"
-"\n"
 "La finestra “Calcolo dei danni” mostra alcune statistiche che possono "
 "aiutarti a determinare se uno scontro è stato particolarmente fortunato o "
 "sfortunato. Comunque, consultare le statistiche non sostituisce il riesame "
@@ -4192,30 +3770,11 @@ msgstr ""
 
 #. [topic]: id=combat
 #: data/core/help.cfg:353
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>Order and Number of Strikes</header>"
 msgid "Order and Number of Strikes"
-msgstr ""
-"\n"
-"\n"
-"<header>Ordine e numero degli attacchi</header>"
+msgstr "Ordine e numero degli attacchi"
 
 #. [topic]: id=combat
 #: data/core/help.cfg:355
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "The attacker gets the first strike, then the defender retaliates. Each "
-#| "strike either hits, doing a given amount of damage, or misses, doing no "
-#| "damage at all. Strikes alternate until each unit has used up all of its "
-#| "strikes. The number of strikes a unit has varies; for instance, an elvish "
-#| "fighter with a 5×4 attack may strike 4 times, each successful strike "
-#| "dealing 5 damage, while an orcish grunt with a 9×2 attack can only strike "
-#| "twice (but at 9 damage for each hit)."
 msgid ""
 "The attacker gets the first strike, then the defender retaliates. Each "
 "strike either hits, doing a given amount of damage, or misses, doing no "
@@ -4225,8 +3784,6 @@ msgid ""
 "5 damage, while an orcish grunt with a 9×2 attack can only strike twice (but "
 "at 9 damage for each hit)."
 msgstr ""
-"\n"
-"\n"
 "Chi attacca ha l’iniziativa, poi risponde chi difende. Ogni colpo può andare "
 "a segno, causando un certo ammontare di danni, o mancare il bersaglio senza "
 "causare alcun danno. Gli attacchi si alternano fino a quando entrambe le "
@@ -4239,21 +3796,10 @@ msgstr ""
 #. [topic]: id=combat
 #: data/core/help.cfg:357
 msgid "Chance to Hit"
-msgstr ""
+msgstr "Probabilità di colpire"
 
 #. [topic]: id=combat
 #: data/core/help.cfg:359
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Every unit has a chance of being hit, based on the <i>terrain</i> it is "
-#| "in. This is shown in the status pane, and may also be found by right-"
-#| "clicking a unit, selecting <b>Unit Description</b>, and then looking at "
-#| "<b>Terrain Modifiers</b>. For instance, many elves have a defense rating "
-#| "of 70% in forest, so a unit attacking them has only a 30% chance of "
-#| "hitting. Conversely, the elf’s chance of hitting the attacker in return "
-#| "depends on what terrain the attacker is in."
 msgid ""
 "Every unit has a chance of being hit, based on the <i>terrain</i> it is in. "
 "This is shown in the status pane, and may also be found by right-clicking a "
@@ -4263,8 +3809,6 @@ msgid ""
 "Conversely, the elf’s chance of hitting the attacker in return depends on "
 "what terrain the attacker is in."
 msgstr ""
-"\n"
-"\n"
 "Ogni unità ha una probabilità di essere colpita, a seconda del <i>terreno</"
 "i> su cui si trova. Questa probabilità viene mostrata nel pannello di stato "
 "e può essere controllata anche facendo clic col tasto destro sull’unità, "
@@ -4278,15 +3822,6 @@ msgstr ""
 # sul WIF ho provato a ipotizzare "colpo preciso" per l'attacco speciale "marksman" (sez. Glossario generale)
 #. [topic]: id=combat
 #: data/core/help.cfg:361
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "There are two exceptions to this rule: <ref "
-#| "dst='weaponspecial_magical'>magical attacks</ref> and <ref "
-#| "dst='weaponspecial_marksman'>marksmen</ref>. Magical attacks always have "
-#| "a 70% chance to hit, regardless of terrain, and, when used offensively, "
-#| "marksmen always have at least a 60% chance to hit, regardless of terrain."
 msgid ""
 "There are two exceptions to this rule: <ref "
 "dst='weaponspecial_magical'>magical attacks</ref> and <ref "
@@ -4294,8 +3829,6 @@ msgid ""
 "70% chance to hit, regardless of terrain, and, when used offensively, "
 "marksmen always have at least a 60% chance to hit, regardless of terrain."
 msgstr ""
-"\n"
-"\n"
 "Ci sono due eccezioni a questa regola: gli <ref "
 "dst='weaponspecial_magical'>attacchi magici</ref> e le unità con <ref "
 "dst='weaponspecial_marksman'>colpo preciso</ref>. Gli attacchi magici hanno "
@@ -4306,21 +3839,10 @@ msgstr ""
 #. [topic]: id=combat
 #: data/core/help.cfg:363
 msgid "Damage"
-msgstr ""
+msgstr "Danni"
 
 #. [topic]: id=combat
 #: data/core/help.cfg:365
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Each strike which hits causes a base amount of damage depending on the "
-#| "attack type. For instance, an elvish fighter with a 5×4 attack does 5 "
-#| "base damage. This is usually modified by two things: <ref "
-#| "dst='damage_types_and_resistance'>resistance</ref> and <ref "
-#| "dst='time_of_day'>time of day</ref>. To see how base damage is modified "
-#| "by the circumstances, select <b>Damage Calculations</b> in the attack "
-#| "selection menu."
 msgid ""
 "Each strike which hits causes a base amount of damage depending on the "
 "attack type. For instance, an elvish fighter with a 5×4 attack does 5 base "
@@ -4330,8 +3852,6 @@ msgid ""
 "the circumstances, select <b>Damage Calculations</b> in the attack selection "
 "menu."
 msgstr ""
-"\n"
-"\n"
 "Ogni colpo che va a segno causa un ammontare di danno base a seconda del "
 "tipo di attacco. Per esempio, un elfo combattente con un attacco da 5×4 "
 "causa un danno base di 5. Questo valore viene di solito modificato da due "
@@ -4342,22 +3862,12 @@ msgstr ""
 
 #. [topic]: id=combat
 #: data/core/help.cfg:367
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "A few units have special <ref dst='..abilities_section'>abilities</ref> "
-#| "which affect damage dealt in combat. The most common of these is <ref "
-#| "dst='weaponspecial_charge'>charge</ref>, which doubles the damage dealt "
-#| "by both attacker and defender when the unit with charge attacks."
 msgid ""
 "A few units have special <ref dst='..abilities_section'>abilities</ref> "
 "which affect damage dealt in combat. The most common of these is <ref "
 "dst='weaponspecial_charge'>charge</ref>, which doubles the damage dealt by "
 "both attacker and defender when the unit with charge attacks."
 msgstr ""
-"\n"
-"\n"
 "Alcune unità possiedono <ref dst='..abilities_section'>abilità</ref> "
 "speciali che influiscono sul danno causato in combattimento. La più comune "
 "di queste è la <ref dst='weaponspecial_charge'>carica</ref>, che raddoppia i "
@@ -4387,15 +3897,6 @@ msgstr ""
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:376
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Resistances work very simply: if a unit has 40% resistance against a "
-#| "damage type, then it will suffer 40% less damage when hit with that "
-#| "damage type. It is also possible for a unit to be vulnerable against some "
-#| "damage types. If a unit has −100% resistance against a damage type, it "
-#| "will suffer 100% more damage when hit by that type."
 msgid ""
 "Resistances work very simply: if a unit has 40% resistance against a damage "
 "type, then it will suffer 40% less damage when hit with that damage type. It "
@@ -4403,8 +3904,6 @@ msgid ""
 "unit has −100% resistance against a damage type, it will suffer 100% more "
 "damage when hit by that type."
 msgstr ""
-"\n"
-"\n"
 "Le resistenze funzionano in modo molto semplice: se un’unità ha una "
 "resistenza pari al 40% contro un tipo di danno, essa subirà il 40% di danni "
 "in meno se colpita da quel tipo di attacco. È inoltre possibile che un’unità "
@@ -4415,40 +3914,22 @@ msgstr ""
 # v. "taglio" vs "lama"
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:378
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "For example, skeletons are highly resistant to blade and pierce damage, "
-#| "but are vulnerable to impact and fire damage, and extremely vulnerable to "
-#| "arcane damage."
 msgid ""
 "For example, skeletons are highly resistant to blade and pierce damage, but "
 "are vulnerable to impact and fire damage, and extremely vulnerable to arcane "
 "damage."
 msgstr ""
-"\n"
-"\n"
 "Per esempio, gli scheletri sono molto resistenti agli attacchi da taglio e "
 "da perforazione, ma vulnerabili ai danni da impatto e da fuoco ed "
 "estremamente vulnerabili ai danni di tipo arcano."
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:380
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "If a strike is determined to hit, it will always do at least 1 point of "
-#| "damage. This applies even if the defender has 100% resistance to the "
-#| "damage type."
 msgid ""
 "If a strike is determined to hit, it will always do at least 1 point of "
 "damage. This applies even if the defender has 100% resistance to the damage "
 "type."
 msgstr ""
-"\n"
-"\n"
 "Se uno degli attacchi colpisce il bersaglio, esso causa sempre almeno 1 "
 "punto danno. Questa regola si applica anche se il difensore ha il 100% di "
 "resistenza a quel tipo di danno."
@@ -4625,6 +4106,8 @@ msgstr "Periodo della giornata"
 #: data/core/help.cfg:467
 msgid "The time of day affects the damage of certain units as follows:"
 msgstr ""
+"Il periodo della giornata influisce sui danni inflitti da alcune unità come "
+"segue:"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:469
@@ -4632,6 +4115,8 @@ msgid ""
 "• <span weight='heavy' size='15'>LAWFUL</span> units get +25% damage in "
 "daytime, and −25% damage at night."
 msgstr ""
+"• Le unità <span weight='heavy' size='15'>LEGALI</span> causano +25% danni "
+"di giorno e −25% danni di notte."
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:470
@@ -4639,6 +4124,8 @@ msgid ""
 "• <span weight='heavy' size='15'>CHAOTIC</span> units get +25% damage at "
 "night, and −25% in daytime."
 msgstr ""
+"• Le unità <span weight='heavy' size='15'>CAOTICHE</span> causano +25% danni "
+"di notte e −25% danni di giorno."
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:471
@@ -4646,6 +4133,8 @@ msgid ""
 "• <span weight='heavy' size='15'>NEUTRAL</span> units are unaffected by the "
 "time of day."
 msgstr ""
+"• Le unità <span weight='heavy' size='15'>NEUTRALI</span> non sono "
+"influenzate dal periodo della giornata."
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:472
@@ -4653,23 +4142,16 @@ msgid ""
 "• <span weight='heavy' size='15'>LIMINAL</span> units get +25% damage during "
 "twilight."
 msgstr ""
+"• Le unità <span weight='heavy' size='15'>LIMINALI</span> causano +25% danni "
+"durante il crepuscolo (alba/tramonto)."
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:474
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "The current time of day can be observed under the minimap in the status "
-#| "pane. For the usual day/night cycle, morning and afternoon count as day, "
-#| "first and second watch count as night:"
 msgid ""
 "The current time of day can be observed under the minimap in the status "
 "pane. For the usual day/night cycle, morning and afternoon count as day, "
 "first and second watch count as night:"
 msgstr ""
-"\n"
-"\n"
 "Si può osservare il periodo della giornata in un dato momento sotto la "
 "minimappa nel pannello di stato. Ai fini del ciclo del giorno/notte, mattino "
 "e pomeriggio valgono come “giorno”, mentre sera e notte fonda valgono come "
@@ -4717,42 +4199,30 @@ msgstr "Notte fonda"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:495
-#, fuzzy
-#| msgid ""
-#| "Keep in mind that some scenarios take place underground, where it is "
-#| "perpetually night!\n"
 msgid ""
 "Keep in mind that some scenarios take place underground, where it is "
 "perpetually night!"
 msgstr ""
 "Ricorda che alcuni scenari sono ambientati nel sottosuolo, dove la notte è "
-"perenne!\n"
+"perenne!"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:497
-#, fuzzy
-#| msgid ""
-#| "Some underground locations are illuminated. They are perpetually "
-#| "intermediate between day and night.\n"
 msgid ""
 "Some underground locations are illuminated. They are perpetually "
 "intermediate between day and night."
 msgstr ""
 "Alcuni scenari sotterranei sono illuminati. Sono considerati eternamente in "
-"equilibrio tra il giorno e la notte.\n"
+"equilibrio tra il giorno e la notte."
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:499
-#, fuzzy
-#| msgid ""
-#| "Some role-playing scenarios take place indoors — these regions are "
-#| "similarly intermediate.\n"
 msgid ""
 "Some role-playing scenarios take place indoors — these regions are similarly "
 "intermediate."
 msgstr ""
 "Alcuni scenari di gioco-di-ruolo si svolgono il luoghi chiusi — anche queste "
-"regioni vengono considerate intermedie.\n"
+"regioni vengono considerate intermedie."
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:501
@@ -4786,72 +4256,42 @@ msgstr ""
 
 #. [topic]: id=healing
 #: data/core/help.cfg:511
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "• <b>Resting</b>: A unit which neither moves, attacks, nor is attacked "
-#| "will heal 2 HP in its next turn."
 msgid ""
 "• <b>Resting</b>: A unit which neither moves, attacks, nor is attacked will "
 "heal 2 HP in its next turn."
 msgstr ""
-"\n"
-"\n"
 "• <b>Riposo</b>: un’unità che non si muove, non attacca e non viene "
 "attaccata recupera 2 PF nel turno successivo."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:512
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "• <b>Villages</b>: A unit which starts a turn in a village or <ref "
-#| "dst='terrain_oasis'>oasis</ref> will heal 8HP. If the unit is poisoned, "
-#| "the poison will be cured instead."
 msgid ""
 "• <b>Villages</b>: A unit which starts a turn in a village or <ref "
 "dst='terrain_oasis'>oasis</ref> will heal 8HP. If the unit is poisoned, the "
 "poison will be cured instead."
 msgstr ""
-"\n"
 "• <b>Villaggi</b>: un’unità che inizia il turno in un villaggio o in un’oasi "
 "recupera 8 PF. Se l’unità è avvelenata, verrà invece eliminato il veleno."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:513
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "• <ref dst='ability_regeneratesregenerates'>Regeneration</ref>: Certain "
-#| "units (such as trolls) will automatically heal 8HP every turn. If the "
-#| "unit is poisoned, the poison will be cured instead."
 msgid ""
 "• <ref dst='ability_regeneratesregenerates'>Regeneration</ref>: Certain "
 "units (such as trolls) will automatically heal 8HP every turn. If the unit "
 "is poisoned, the poison will be cured instead."
 msgstr ""
-"\n"
 "• <ref dst='ability_regeneratesregenerates'>Rigenerazione</ref>: alcune "
 "unità (come i troll) recuperano automaticamente 8 PF ad ogni turno. Se "
 "l’unità è avvelenata, verrà invece eliminato il veleno."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:514
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "• <b>Healing units</b>: Units with the <ref dst='ability_healingheals "
-#| "+4'>Heals</ref> ability will heal each allied adjacent unit, usually <ref "
-#| "dst='ability_healingheals +4'>4HP</ref> or <ref dst='ability_healingheals "
-#| "+8'>8HP</ref> per turn, or prevent Poison from causing that unit damage."
 msgid ""
 "• <b>Healing units</b>: Units with the <ref dst='ability_healingheals "
 "+4'>Heals</ref> ability will heal each allied adjacent unit, usually <ref "
 "dst='ability_healingheals +4'>4HP</ref> or <ref dst='ability_healingheals "
 "+8'>8HP</ref> per turn, or prevent Poison from causing that unit damage."
 msgstr ""
-"\n"
 "• <b>Unità guaritrici</b>: le unità con l’abilità <ref "
 "dst='ability_healingheals +4'>guarire</ref> guariranno tutte le unità "
 "alleate adiacenti, in genere di <ref dst='ability_healingheals +4'>4PF</ref> "
@@ -4860,19 +4300,11 @@ msgstr ""
 
 #. [topic]: id=healing
 #: data/core/help.cfg:515
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "• <b>Curing units</b>: Units with the <ref "
-#| "dst='ability_curingcures'>cures</ref> ability will cure Poison in all "
-#| "allied adjacent units (in preference to healing, if it has that ability "
-#| "as well)."
 msgid ""
 "• <b>Curing units</b>: Units with the <ref dst='ability_curingcures'>cures</"
 "ref> ability will cure Poison in all allied adjacent units (in preference to "
 "healing, if it has that ability as well)."
 msgstr ""
-"\n"
 "• <b>Unità curatrici</b>: le unità con l’abilità <ref "
 "dst='ability_curingcures'>cura</ref> cureranno dal veleno tutte le unità "
 "alleate adiacenti (con priorità rispetto alla guarigione, se l’unità "
@@ -4880,18 +4312,11 @@ msgstr ""
 
 #. [topic]: id=healing
 #: data/core/help.cfg:516
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "• <b>Advancement</b>: When a unit <ref dst='advancement'>advances</ref>, "
-#| "it will heal fully. This can happen as soon as your unit gains enough "
-#| "experience, whether it is your turn or not."
 msgid ""
 "• <b>Advancement</b>: When a unit <ref dst='advancement'>advances</ref>, it "
 "will heal fully. This can happen as soon as your unit gains enough "
 "experience, whether it is your turn or not."
 msgstr ""
-"\n"
 "• <b>Avanzamento</b>: quando una unità <ref dst='advancement'>avanza di "
 "livello</ref>, viene completamente curata. Tutto ciò accade non appena "
 "ottiene abbastanza esperienza, a prescindere se sia il tuo turno di gioco o "
@@ -4899,20 +4324,11 @@ msgstr ""
 
 #. [topic]: id=healing
 #: data/core/help.cfg:518
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Resting can be combined with other forms of healing, but villages, "
-#| "regeneration, healing and curing cannot combine with each other: the best "
-#| "option will be used. Finally, units heal fully between scenarios."
 msgid ""
 "Resting can be combined with other forms of healing, but villages, "
 "regeneration, healing and curing cannot combine with each other: the best "
 "option will be used. Finally, units heal fully between scenarios."
 msgstr ""
-"\n"
-"\n"
 "Il riposo può essere combinato con le altre forme di guarigione, mentre i "
 "villaggi, la rigenerazione e le abilità “cura” e “guarisce” non si possono "
 "sommare tra loro: avrà effetto solo l’opzione migliore. Infine, le unità "
@@ -4920,23 +4336,11 @@ msgstr ""
 
 #. [topic]: id=healing
 #: data/core/help.cfg:520
-#, fuzzy
-#| msgid "Advancement"
 msgid "Advanced"
-msgstr "Avanzamento"
+msgstr "Opzioni avanzate"
 
 #. [topic]: id=healing
 #: data/core/help.cfg:522
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Unlike other forms of healing, the heals ability will not take effect on "
-#| "the healed unit’s turn, but on the healer’s turn. This means that while a "
-#| "unit surrounded by several healers on the same side will only receive "
-#| "healing from one healer per turn, a unit surrounded by healers from "
-#| "several allied sides will be healed once on each of said allied sides’ "
-#| "turns."
 msgid ""
 "Unlike other forms of healing, the heals ability will not take effect on the "
 "healed unit’s turn, but on the healer’s turn. This means that while a unit "
@@ -4944,8 +4348,6 @@ msgid ""
 "from one healer per turn, a unit surrounded by healers from several allied "
 "sides will be healed once on each of said allied sides’ turns."
 msgstr ""
-"\n"
-"\n"
 "A differenza di altre forme di guarigione, le abilità di guarigione non "
 "hanno effetto quando è il turno del guarito, ma al turno del guaritore. "
 "Questo significa che mentre una unità che è circondata da diversi guaritori "
@@ -4963,16 +4365,17 @@ msgstr "Conclusione"
 #: data/core/help.cfg:529
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
-"basic strategy, or familiarize yourself with <ref dst='.."
-"traits_section'>traits</ref> and <ref dst='..abilities_section'>abilities</"
-"ref>, but you now know everything you need to know to play the <i>Heir to "
-"the Throne</i> campaign. Have fun, and good luck!"
+"basic strategy, or familiarize yourself with <ref "
+"dst='..traits_section'>traits</ref> and <ref "
+"dst='..abilities_section'>abilities</ref>, but you now know everything you "
+"need to know to play the <i>Heir to the Throne</i> campaign. Have fun, and "
+"good luck!"
 msgstr ""
 "Le regole fondamentali di Battle for Wesnoth finiscono qui. Potresti voler "
-"leggere le strategie di base o familiarizzare con le <ref dst='.."
-"traits_section'>caratteristiche</ref> e le <ref dst='.."
-"abilities_section'>abilità</ref>, ma a questo punto conosci già tutto ciò di "
-"cui hai bisogno per giocare la campagna <i>L’erede al trono</i>. Buon "
+"leggere le strategie di base o familiarizzare con le <ref "
+"dst='..traits_section'>caratteristiche</ref> e le <ref "
+"dst='..abilities_section'>abilità</ref>, ma a questo punto conosci già tutto "
+"ciò di cui hai bisogno per giocare la campagna <i>L’erede al trono</i>. Buon "
 "divertimento e buona fortuna!"
 
 #. [topic]: id=license
@@ -4994,20 +4397,11 @@ msgstr ""
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:547
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Most units have two traits. However, goblins have only one trait, undead "
-#| "units are always assigned the single trait <i>undead</i> and in some "
-#| "cases <i>fearless</i>, and woses do not receive any traits. "
 msgid ""
 "Most units have two traits. However, goblins have only one trait, undead "
 "units are always assigned the single trait <i>undead</i> and in some cases "
 "<i>fearless</i>, and woses do not receive any traits. "
 msgstr ""
-"\n"
-"\n"
 "Gran parte delle unità possiede due caratteristiche. Comunque, i goblin ne "
 "hanno una sola; ai non-morti viene assegnata la sola caratteristica <i>non-"
 "morto</i> e in alcuni casi <i>impavido</i>; i wose non ricevono alcuna "
@@ -5015,22 +4409,12 @@ msgstr ""
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:549
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "The traits that are available to most non‐undead units are <ref "
-#| "dst='traits_intelligent'>intelligent</ref>, <ref "
-#| "dst='traits_quick'>quick</ref>, <ref dst='traits_resilient'>resilient</"
-#| "ref>, and <ref dst='traits_strong'>strong</ref>."
 msgid ""
 "The traits that are available to most non‐undead units are <ref "
 "dst='traits_intelligent'>intelligent</ref>, <ref dst='traits_quick'>quick</"
 "ref>, <ref dst='traits_resilient'>resilient</ref>, and <ref "
 "dst='traits_strong'>strong</ref>."
 msgstr ""
-"\n"
-"\n"
 "Le caratteristiche disponibili per tutte le unità diverse dai non-morti sono "
 "<ref dst='traits_intelligent'>intelligente</ref>, <ref "
 "dst='traits_quick'>veloce</ref>, <ref dst='traits_resilient'>resistente</"
@@ -5039,17 +4423,6 @@ msgstr ""
 # provo a rendere "dextrous" con "accurato", come già scritto nel Glossario generale sul WIF
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:551
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Elves may also receive <ref dst='traits_dextrous'>dextrous</ref>, and "
-#| "dwarves may receive <ref dst='traits_healthy'>healthy</ref>. Trolls and "
-#| "certain humans may receive <ref dst='traits_fearless'>fearless</ref>. "
-#| "Other traits which may be assigned include <ref dst='traits_loyal'>loyal</"
-#| "ref>, <ref dst='traits_feral'>feral</ref> and <ref "
-#| "dst='traits_undead'>undead</ref>.\n"
-#| "\n"
 msgid ""
 "Elves may also receive <ref dst='traits_dextrous'>dextrous</ref>, and "
 "dwarves may receive <ref dst='traits_healthy'>healthy</ref>. Trolls and "
@@ -5058,16 +4431,13 @@ msgid ""
 "<ref dst='traits_feral'>feral</ref> and <ref dst='traits_undead'>undead</"
 "ref>."
 msgstr ""
-"\n"
-"\n"
 "Gli elfi possono riceve anche la caratteristica <ref "
 "dst='traits_dextrous'>accurato</ref>, e i nani quella <ref "
 "dst='traits_healthy'>sano</ref>. I troll ed alcuni umani possono ricevere "
 "<ref dst='traits_fearless'>impavido</ref>. Altre caratteristiche che possono "
 "essere assegnate sono <ref dst='traits_loyal'>leale</ref>,<ref "
 "dst='traits_feral'>selvatico</ref> e <ref dst='traits_undead'>non-morto</"
-"ref>.\n"
-"\n"
+"ref>."
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:559
@@ -5080,16 +4450,8 @@ msgstr ""
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:561
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Terrains come in two types: <i>basic</i> and <i>mixed</i>."
 msgid "Terrains come in two types: <i>basic</i> and <i>mixed</i>."
-msgstr ""
-"\n"
-"\n"
-"Esistono due tipi di terreno: <i>base</i> e <i>misti</i>."
+msgstr "Esistono due tipi di terreno: <i>base</i> e <i>misti</i>."
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:563 data/core/help.cfg:570 data/core/help.cfg:596
@@ -5097,37 +4459,24 @@ msgid ""
 "</header>\n"
 "\n"
 msgstr ""
+"</header>\n"
+"\n"
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:563 data/core/help.cfg:596
-#, fuzzy
-#| msgid "Basic terrain type: $types"
-#| msgid_plural "Basic terrain types: $types"
 msgid "Basic Terrain Types"
-msgstr "Terreno di base tipico: $types"
+msgstr "Terreni di tipo Base"
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:565
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Basic terrain types include Flat, Hills, Mountains, Sands, Water and "
-#| "Swamps. There are many more besides these — a list of the terrain types "
-#| "you have discovered can be found at the end of this page.\n"
-#| "\n"
 msgid ""
 "Basic terrain types include Flat, Hills, Mountains, Sands, Water and Swamps. "
 "There are many more besides these — a list of the terrain types you have "
 "discovered can be found at the end of this page."
 msgstr ""
-"\n"
-"\n"
 "I terreni base comprendono Pianura, Collina, Montagna, Sabbia, Acqua e "
 "Palude. Ce ne sono molti altri oltre questi — una lista dei tipi di terreno "
-"che hai scoperto può essere trovata in fondo a questa pagina\n"
-" \n"
-"\n"
+"che hai scoperto può essere trovata in fondo a questa pagina."
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:568
@@ -5143,29 +4492,11 @@ msgstr ""
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:570
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>Mixed Terrain Types</header>"
 msgid "Mixed Terrain Types"
-msgstr ""
-"\n"
-"\n"
-"<header>Terreni di tipo Misto</header>"
+msgstr "Terreni di tipo Misto"
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:572
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Mixed terrain types share the properties of multiple basic terrain types "
-#| "— units generally receive the <i>best defense</i> and <i>worst movement</"
-#| "i> of the underlying basic types when they move onto a mixed type. For "
-#| "example, this is the case with <i>forested hills</i>, <i>sand hills</i>, "
-#| "and <i>cave hills</i>.\n"
-#| "\n"
 msgid ""
 "Mixed terrain types share the properties of multiple basic terrain types — "
 "units generally receive the <i>best defense</i> and <i>worst movement</i> of "
@@ -5173,26 +4504,14 @@ msgid ""
 "this is the case with <i>forested hills</i>, <i>sand hills</i>, and <i>cave "
 "hills</i>."
 msgstr ""
-"\n"
-"\n"
 "I terreni di tipo misto mescolano le proprietà di diversi tipe di terreno "
 "base. Quando si muovono su un terreno di questo tipo, le unità di solito "
 "utilizzano la <i>migliore difesa</i> e il <i>peggior movimento</i> del tipo "
 "di terreno base sottostante.Ad esempio, questo è il caso con <i>colline "
-"boscose</i>, <i>colline sabbiose</i>, e <i>colline cavernose</i>.\n"
-"\n"
+"boscose</i>, <i>colline sabbiose</i>, e <i>colline cavernose</i>."
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:575
-#, fuzzy
-#| msgid ""
-#| "One notable exception is bridge terrains, such as <i>bridges over shallow "
-#| "water</i>, <i>fords</i>, and <i>bridges over chasms</i>. Fords are easily "
-#| "passable to both merfolk and humans — all units moving on a ford enjoy "
-#| "the best defense and best movement out of flat and shallow water, rather "
-#| "than the worse movement of the two. Similarly, bridges over chasms are "
-#| "passable to nonfliers (unsurprisingly).\n"
-#| "\n"
 msgid ""
 "One notable exception is bridge terrains, such as <i>bridges over shallow "
 "water</i>, <i>fords</i>, and <i>bridges over chasms</i>. Fords are easily "
@@ -5208,17 +4527,10 @@ msgstr ""
 "difesa e movimento, scelto fra quello del terreno pianeggiante e le acque "
 "basse, piuttosto che del peggior fattore movimento tra i due tipi di "
 "territorio. Allo stesso modo, i ponti sugli abissi sono attraversabili da "
-"unità che non volano (prevedibilmente).\n"
-"\n"
+"unità che non volano (prevedibilmente)."
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:578
-#, fuzzy
-#| msgid ""
-#| "Land-based villages generally give the best defense and movement as well. "
-#| "These villages are mixed terrains, based on the village terrain type, "
-#| "together with hill, swamp, and cave, respectively.\n"
-#| "\n"
 msgid ""
 "Land-based villages generally give the best defense and movement as well. "
 "These villages are mixed terrains, based on the village terrain type, "
@@ -5227,17 +4539,10 @@ msgstr ""
 "I villaggi terrestri solitamente forniscono i migliori bonus sia in difesa "
 "che in movimento. Sono un tipo di terreno misto, basato sul tipo di terreno "
 "villaggio, insieme a quello di tipo collina, palude e caverna, "
-"rispettivamente\n"
-"\n"
+"rispettivamente."
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:581
-#, fuzzy
-#| msgid ""
-#| "Finally, water villages are generally inhospitable to land units, and do "
-#| "not give defense or movement benefits associated with the village terrain "
-#| "type. Instead, they count only as water tiles.\n"
-#| "\n"
 msgid ""
 "Finally, water villages are generally inhospitable to land units, and do not "
 "give defense or movement benefits associated with the village terrain type. "
@@ -5246,8 +4551,7 @@ msgstr ""
 "Infine, i villaggi acquatici sono generalmente inospitali per le unità "
 "terrestri, e non danno nessuno dei beneficio in difesa o di movimento "
 "eventualmente associato a quel tipo di terreno. Invero, vengono conteggiati "
-"come un esagono acquatico.\n"
-"\n"
+"come un esagono acquatico."
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:584
@@ -5262,20 +4566,11 @@ msgstr ""
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:586
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "You can see what type of behavior the mixed terrain gives by mousing over "
-#| "its hex and viewing the <i>terrain description</i> by either pressing the "
-#| "hotkey, or right clicking and selecting from the context menu."
 msgid ""
 "You can see what type of behavior the mixed terrain gives by mousing over "
 "its hex and viewing the <i>terrain description</i> by either pressing the "
 "hotkey, or right clicking and selecting from the context menu."
 msgstr ""
-"\n"
-"\n"
 "Puoi vedere che tipo di comportamento ha il terreno misto muovendo il mouse "
 "sopra il suo esagono e visualizzando la <i>descrizione terreno</i> "
 "disponibile premendo la scorciatoia da tastiera o cliccando col bottone "
@@ -5283,27 +4578,16 @@ msgstr ""
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:588
-#, fuzzy
-#| msgid "Defense Cap"
 msgid "Defense Caps"
 msgstr "Limite Percentuale Difesa"
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:590
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Some units have <i>defense caps</i> for a particular basic terrain type. "
-#| "These units suffer a penalty on mixed terrains with that type — their "
-#| "defense cannot exceed the cap."
 msgid ""
 "Some units have <i>defense caps</i> for a particular basic terrain type. "
 "These units suffer a penalty on mixed terrains with that type — their "
 "defense cannot exceed the cap."
 msgstr ""
-"\n"
-"\n"
 "Alcune unità hanno un <i>limite percentuale di difesa</i> per un particolare "
 "tipo di terreno base. Queste unità soffrono di una penalità anche su un tipo "
 "di terreno misto che abbia quel tipo, in quanto la lodo difesa non può "
@@ -5311,22 +4595,12 @@ msgstr ""
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:592
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "For example, the <ref dst='unit_Cavalryman'>Loyalist Cavalryman</ref> has "
-#| "a defense rating of 30% on forests, and a defense cap for forests. Thus, "
-#| "on forested hills, he has a defense rating of 30% rather than 40%, "
-#| "because the mixed rating cannot exceed the cap."
 msgid ""
 "For example, the <ref dst='unit_Cavalryman'>Loyalist Cavalryman</ref> has a "
 "defense rating of 30% on forests, and a defense cap for forests. Thus, on "
 "forested hills, he has a defense rating of 30% rather than 40%, because the "
 "mixed rating cannot exceed the cap."
 msgstr ""
-"\n"
-"\n"
 "Ad esempio, il <ref dst='unit_Cavalryman'>Cavaliere Lealista</ref> per un "
 "terreno di tipo foresta ha un bonus di difesa del 30% ed anche un limite "
 "superiore imposto. Quindi, su un terreno di tipo colline con foresta ottiene "
@@ -5335,18 +4609,10 @@ msgstr ""
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:594
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "If a unit has a defense cap for some terrain, it is always the same as "
-#| "its defense rating on that terrain (it cannot be larger)."
 msgid ""
 "If a unit has a defense cap for some terrain, it is always the same as its "
 "defense rating on that terrain (it cannot be larger)."
 msgstr ""
-"\n"
-"\n"
 "Se una unità ha un tetto alla difesa su alcuni terreni, è sempre equivalente "
 "al suo fattore di difesa di quel terreno (non può essere più grande)."
 
@@ -5380,35 +4646,17 @@ msgstr ""
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:620
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>Campaigns and Scenarios</header>"
 msgid "Campaigns and Scenarios"
-msgstr ""
-"\n"
-"\n"
-"<header>Campagne e Scenari</header>"
+msgstr "Campagne e Scenari"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:622
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Single-player campaigns are collections of scenarios that fit together to "
-#| "tell a story. Both stand-alone scenarios—if intended to be played as such—"
-#| "and regular campaigns are available from the <i>Campaigns</i> menu at the "
-#| "title screen."
 msgid ""
 "Single-player campaigns are collections of scenarios that fit together to "
 "tell a story. Both stand-alone scenarios—if intended to be played as such—"
 "and regular campaigns are available from the <i>Campaigns</i> menu at the "
 "title screen."
 msgstr ""
-"\n"
-"\n"
 "Le campagne per giocatore singolo sono raccolte di scenari concatenati fra "
 "loro in modo da raccontare una storia. Sia gli scenari singoli – se pensati "
 "per essere giocati come tali – sia le campagne tradizionali sono disponibili "
@@ -5416,33 +4664,16 @@ msgstr ""
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:624
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>Multiplayer Campaigns, Scenarios, and Map Packs</header>"
 msgid "Multiplayer Campaigns, Scenarios, and Map Packs"
-msgstr ""
-"\n"
-"\n"
-"<header>Campagne, scenari e pacchetti di mappe multigiocatore</header>"
+msgstr "Campagne, scenari e pacchetti di mappe multigiocatore"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:626
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<i>Multiplayer</i> games can be played in fully customized, scripted "
-#| "scenarios or even specially designed campaigns. There are also packs "
-#| "providing sets of individual multiplayer scenarios."
 msgid ""
 "<i>Multiplayer</i> games can be played in fully customized, scripted "
 "scenarios or even specially designed campaigns. There are also packs "
 "providing sets of individual multiplayer scenarios."
 msgstr ""
-"\n"
-"\n"
 "Le partite <i>multigiocatore</i> possono essere giocate su scenari "
 "totalmente personalizzati e scriptati o persino su campagne progettate "
 "appositamente per tale scopo. Sono inoltre presenti pacchetti di mappe che "
@@ -5451,48 +4682,21 @@ msgstr ""
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:628
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>Multiplayer Eras and Factions</header>"
 msgid "Multiplayer Eras and Factions"
-msgstr ""
-"\n"
-"\n"
-"<header>Ere e fazioni nelle partite multigiocatore</header>"
+msgstr "Ere e fazioni nelle partite multigiocatore"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:630
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "For gameplay purposes, various races of creatures in the world cooperate "
-#| "with each other in factions. Factions are grouped in balanced sets with a "
-#| "common theme; for example, the main factions of Wesnoth can be found in "
-#| "the included Default Era.\n"
-#| "\n"
-#| "In <i>Multiplayer</i> mode, you can choose an era when creating a new "
-#| "game, and players can pick from the available factions for that era when "
-#| "setting up their sides and teams."
 msgid ""
 "For gameplay purposes, various races of creatures in the world cooperate "
 "with each other in factions. Factions are grouped in balanced sets with a "
 "common theme; for example, the main factions of Wesnoth can be found in the "
 "included Default Era."
 msgstr ""
-"\n"
-"\n"
 "Per esigenze di gioco, numerose razze tra le creature presenti nel mondo "
 "cooperano tra loro in fazioni. Le fazioni sono raggruppate in insiemi "
 "bilanciati con un tema comune; ad esempio, le fazioni principali di Wesnoth "
-"si possono trovare nell’era di default.\n"
-"\n"
-"In modalità <i>multigiocatore</i>, puoi scegliere un’era al momento di "
-"creare una nuova partita; i giocatori possono scegliere una tra le fazioni "
-"presenti in quell’era durante la preparazione delle squadre e degli "
-"schieramenti."
+"si possono trovare nell’era di default."
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:632
@@ -5501,45 +4705,32 @@ msgid ""
 "and players can pick from the available factions for that era when setting "
 "up their sides and teams."
 msgstr ""
+"In modalità <i>multigiocatore</i>, puoi scegliere un’era al momento di "
+"creare una nuova partita; i giocatori possono scegliere una tra le fazioni "
+"presenti in quell’era durante la preparazione delle squadre e degli "
+"schieramenti."
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:634
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "You can see what eras you have loaded in the <ref dst='.."
-#| "eras_section'>eras</ref> of the help."
 msgid ""
 "You can see what eras you have loaded in the <ref dst='..eras_section'>eras</"
 "ref> of the help."
 msgstr ""
-"\n"
-"\n"
-"Puoi vedere le ere che hai caricato nella sezione <ref dst='.."
-"eras_section'>ere</ref> dell’aiuto."
+"Puoi vedere le ere che hai caricato nella sezione <ref "
+"dst='..eras_section'>ere</ref> dell’aiuto."
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:636
 msgid "Modifications"
-msgstr ""
+msgstr "Modifiche"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:638
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Modifications are optional scenario- and era-independent scripts that can "
-#| "alter the default ruleset in various ways. You can choose and configure "
-#| "modifications when creating a new game."
 msgid ""
 "Modifications are optional scenario- and era-independent scripts that can "
 "alter the default ruleset in various ways. You can choose and configure "
 "modifications when creating a new game."
 msgstr ""
-"\n"
-"\n"
 "Le modifiche sono script opzionali indipendenti dall’era e dallo scenario, "
 "che possono alterare in vari modi il sistema di regole di base. Al momento "
 "di creare una nuova partita, potrai scegliere e configurare le varie "
@@ -5547,66 +4738,27 @@ msgstr ""
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:640
-#, fuzzy
-#| msgid "Forest"
 msgid "Cores"
-msgstr "Foresta"
+msgstr "Nuclei"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:642
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Cores enable total conversion of The Battle for Wesnoth. A core can "
-#| "replace all the content in Wesnoth: when a different core is loaded, the "
-#| "regular units, terrains and the like do not exist.\n"
-#| "\n"
-#| "Cores allow a significantly different game experience: for example, a "
-#| "World War II campaign, or even a different game altogether, as long as it "
-#| "can be represented as a hexagonal map with ‘units’ in some way."
 msgid ""
 "Cores enable total conversion of The Battle for Wesnoth. A core can replace "
 "all the content in Wesnoth: when a different core is loaded, the regular "
 "units, terrains and the like do not exist."
 msgstr ""
-"\n"
-"\n"
 "I Nuclei permettono di convertire totalmente Battle for Wesnoth. Un nucleo "
 "può rimpiazzare anche tutto il contenuto di Wesnoth: quando viene caricato "
-"un nucleo diverso, le normali unità, i terreni e tutto il resto non "
-"esistono.\n"
-"\n"
-"i Nuclei abilitano una esperienza di gioco totalmente differente: ad "
-"esempio, una campagna ambientata durante la Seconda Guerra Mondiale, o anche "
-"un gioco totalmente differente, fintanto che possa essere giocato su una "
-"mappa con degli esagoni e un qualche tipo di “unità”."
+"un nucleo diverso, le normali unità, i terreni e tutto il resto non esistono."
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:644
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Cores enable total conversion of The Battle for Wesnoth. A core can "
-#| "replace all the content in Wesnoth: when a different core is loaded, the "
-#| "regular units, terrains and the like do not exist.\n"
-#| "\n"
-#| "Cores allow a significantly different game experience: for example, a "
-#| "World War II campaign, or even a different game altogether, as long as it "
-#| "can be represented as a hexagonal map with ‘units’ in some way."
 msgid ""
 "Cores allow a significantly different game experience: for example, a World "
 "War II campaign, or even a different game altogether, as long as it can be "
 "represented as a hexagonal map with ‘units’ in some way."
 msgstr ""
-"\n"
-"\n"
-"I Nuclei permettono di convertire totalmente Battle for Wesnoth. Un nucleo "
-"può rimpiazzare anche tutto il contenuto di Wesnoth: quando viene caricato "
-"un nucleo diverso, le normali unità, i terreni e tutto il resto non "
-"esistono.\n"
-"\n"
 "i Nuclei abilitano una esperienza di gioco totalmente differente: ad "
 "esempio, una campagna ambientata durante la Seconda Guerra Mondiale, o anche "
 "un gioco totalmente differente, fintanto che possa essere giocato su una "
@@ -5614,28 +4766,11 @@ msgstr ""
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:646
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>Creator Resources</header>"
 msgid "Creator Resources"
-msgstr ""
-"\n"
-"\n"
-"<header>Risorse per i Creatori</header>"
+msgstr "Risorse per i Creatori"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:648
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Content authors can use resource packs available on the add-ons server to "
-#| "enrich their own content with existing assets such as images, music, and "
-#| "code. These are not generally intended for direct use in-game; however, "
-#| "other playable add-ons may depend on them and suggest or require their "
-#| "installation during download."
 msgid ""
 "Content authors can use resource packs available on the add-ons server to "
 "enrich their own content with existing assets such as images, music, and "
@@ -5643,8 +4778,6 @@ msgid ""
 "other playable add-ons may depend on them and suggest or require their "
 "installation during download."
 msgstr ""
-"\n"
-"\n"
 "Gli autori di contenuti per il gioco possono sfruttare i pacchetti di "
 "risorse disponibili sul server delle estensioni per arricchire le proprie "
 "creazioni, utilizzando risorse preesistenti come immagini, musica e codice. "
@@ -5743,12 +4876,6 @@ msgstr "Comandi generali"
 #. [topic]: id=mp_commands
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:686 data/core/help.cfg:733 data/core/help.cfg:773
-#, fuzzy
-#| msgid ""
-#| "These commands can either be issued via the command line by prefixing "
-#| "them with ‘:’ (as shown here) or via the chat by prefixing them with "
-#| "‘/’ (press ‘m’ first to open the chat line).\n"
-#| "\n"
 msgid ""
 "These commands can either be issued via the command line by prefixing them "
 "with ‘:’ (as shown here) or via the chat by prefixing them with ‘/’ (press "
@@ -5756,77 +4883,41 @@ msgid ""
 msgstr ""
 "Questi comandi possono essere inviati sia tramite la riga di comando, "
 "facendoli precedere da ’:’ (come mostrato qui), sia tramite la chat, "
-"facendoli precedere da ’/’ (premi inizialmente ’m’ per aprire la chat).\n"
-"\n"
+"facendoli precedere da ’/’ (premi inizialmente ’m’ per aprire la chat)."
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:689
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "Similar to the ‘fps’ command, but also forces everything to redraw "
-#| "instead of only things that have changed.\n"
-#| "\n"
 msgid ""
 "Similar to the ‘fps’ command, but also forces everything to redraw instead "
 "of only things that have changed."
 msgstr ""
-"\n"
 "Simile al comando 'fps', ma forza il ridisegno di tutti gli elementi, non "
-"soltanto di quelli cambiati.\n"
-"\n"
+"soltanto di quelli cambiati."
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:692
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "Clear chat messages.\n"
-#| "\n"
 msgid "Clear chat messages."
-msgstr ""
-"\n"
-"Cancella i messaggi della chat.\n"
-"\n"
+msgstr "Cancella i messaggi della chat."
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:695
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "Switch debug mode on (does not work in multiplayer). See <ref "
-#| "dst='debug_commands'>debug mode commands</ref>.\n"
-#| "Debug mode is turned off by quitting the game or :nodebug.\n"
-#| "\n"
 msgid ""
 "Switch debug mode on (does not work in multiplayer). See <ref "
 "dst='debug_commands'>debug mode commands</ref>."
 msgstr ""
-"\n"
 "Attiva la modalità di debug (non funziona in modalità multigiocatore). Si "
-"veda la sezione <ref dst='debug_commands'>comandi di debug</ref>.\n"
-"La modalità di debug sarà disattivata abbandonando la partita o usando il "
-"comando :nodebug.\n"
-"\n"
+"veda la sezione <ref dst='debug_commands'>comandi di debug</ref>."
 
 #. [topic]: id=general_commands
 #. ':nodebug' is a command and should not be translated
 #: data/core/help.cfg:698
 msgid "Debug mode is turned off by quitting the game or :nodebug."
 msgstr ""
+"La modalità di debug sarà disattivata abbandonando la partita o usando il "
+"comando :nodebug."
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:701
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "Switch a side between human and AI control. The second parameter can be "
-#| "‘off’ to bring the side under human control, ‘on’ to watch the AI make "
-#| "its moves, or ‘full’ to make the AI’s turn behave similarly to another "
-#| "player‘s turn. If no second parameter is supplied, it toggles between "
-#| "‘on’ and ‘off’. Defaults to toggling the currently active side if no "
-#| "parameters are supplied.\n"
-#| "\n"
 msgid ""
 "Switch a side between human and AI control. The second parameter can be "
 "‘off’ to bring the side under human control, ‘on’ to watch the AI make its "
@@ -5834,121 +4925,59 @@ msgid ""
 "turn. If no second parameter is supplied, it toggles between ‘on’ and ‘off’. "
 "Defaults to toggling the currently active side if no parameters are supplied."
 msgstr ""
-"\n"
 "Scambia il controllo di una fazione tra umano e meccanizzato (IA). Il "
 "secondo parametro può essere ‘off’ per portare la fazione sotto il controllo "
 "umano, ‘on’ per osservare le mosse fatte dalla IA, o ‘full’ per fare in modo "
 "che il comportamento della IA simuli quello di un turno di un altro "
 "giocatore. Se non viene specificato il secondo parametro, scambia tra ‘on’ e "
 "‘off’. Se no viene fornito nessun parametro, lo scambio avviene per la "
-"fazione attiva corrente.\n"
+"fazione attiva corrente."
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:704
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "Display the controller status of a side.\n"
-#| "\n"
 msgid "Display the controller status of a side."
-msgstr ""
-"\n"
-"Visualizza lo stato del controllore di una squadra.\n"
-"\n"
+msgstr "Visualizza lo stato del controllore di una squadra."
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:707
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "Toggle the display of the current frames per second. Also writes these "
-#| "values to a file in the userdata directory.\n"
-#| "\n"
 msgid ""
 "Toggle the display of the current frames per second. Also writes these "
 "values to a file in the userdata directory."
 msgstr ""
-"\n"
 "Mostra o nasconde la schermata dei fotogrammi al secondo attuali. Riporta "
-"questi valori anche in un file nella directory utente.\n"
-"\n"
+"questi valori anche in un file nella directory utente."
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:710
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "Switch a log domain to a different log level.\n"
-#| "\n"
 msgid "Switch a log domain to a different log level."
-msgstr ""
-"\n"
-"Sposta un dominio di log su un livello di log differente.\n"
-"\n"
+msgstr "Sposta un dominio di log su un livello di log differente."
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:713
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "Redraws the screen and reloads any image files that have been changed.\n"
-#| "\n"
 msgid "Redraws the screen and reloads any image files that have been changed."
 msgstr ""
-"\n"
 "Ridisegna la schermata e ricarica tutti i file immagine che sono stati "
-"cambiati.\n"
-"\n"
+"cambiati."
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:716
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "Bring up theme selection menu.\n"
-#| "\n"
 msgid "Bring up theme selection menu."
-msgstr ""
-"\n"
-"Richiama il menù per la selezione dei temi.\n"
-"\n"
+msgstr "Richiama il menù per la selezione dei temi."
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:719
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "Quit the scenario (without prompting).\n"
-#| "\n"
 msgid "Quit the scenario (without prompting)."
-msgstr ""
-"\n"
-"Abbandona lo scenario (senza preavviso).\n"
-"\n"
+msgstr "Abbandona lo scenario (senza preavviso)."
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:722
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "Save the game (without prompting).\n"
-#| "\n"
 msgid "Save the game (without prompting)."
-msgstr ""
-"\n"
-"Salva la partita (senza preavviso).\n"
-"\n"
+msgstr "Salva la partita (senza preavviso)."
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:725
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "Save the game and quit the scenario (without prompting)."
 msgid "Save the game and quit the scenario (without prompting)."
-msgstr ""
-"\n"
-"Salva la partita e abbandona lo scenario (senza preavviso)."
+msgstr "Salva la partita e abbandona lo scenario (senza preavviso)."
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:732
@@ -5957,36 +4986,18 @@ msgstr "Comandi per le partite multigiocatore"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:736
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "Ban a user in a multiplayer game by the IP address used by that username "
-#| "and kick him. Can be used on users not in the game but on the server. (Of "
-#| "course they won’t be kicked then.)\n"
-#| "\n"
 msgid ""
 "Ban a user in a multiplayer game by the IP address used by that username and "
 "kick him. Can be used on users not in the game but on the server. (Of course "
 "they won’t be kicked then.)"
 msgstr ""
-"\n"
 "Mette al bando ed espelle un utente da una partita multigiocatore usando "
 "l’indirizzo IP associato al suo nome utente. L’opzione può essere impiegata "
 "su utenti non in partita ma presenti sul server (in tal caso, ovviamente, "
-"non saranno espulsi).\n"
-"\n"
+"non saranno espulsi)."
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:739
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "Change the controller for side (write here the number of the side) to "
-#| "username (write here the nickname of the player or observer). You can "
-#| "check what side belongs to which player in the <b>Scenario Settings</b> "
-#| "dialog (Press the <b>More</b> button in the <b>Status Table</b> (alt+s by "
-#| "default) to get there.). The host can change control of any side.\n"
-#| "\n"
 msgid ""
 "Change the controller for side (write here the number of the side) to "
 "username (write here the nickname of the player or observer). You can check "
@@ -5994,150 +5005,84 @@ msgid ""
 "(Press the <b>More</b> button in the <b>Status Table</b> (alt+s by default) "
 "to get there.). The host can change control of any side."
 msgstr ""
-"\n"
 "Passa il controllo della squadra (scrivere qui il numero della squadra) "
 "all’utente (scrivere qui il nome del giocatore o dell’osservatore). Puoi "
 "controllare quale squadra appartiene a quale giocatore nella finestra di "
 "dialogo <b>Impostazioni dello scenario</b> (premi il pulsante <b>Ancora</b> "
 "nella <b>Tabella di stato</b> (combinazione di default: [Alt+s] per "
-"arrivarci). L’ospitante può cambiare il controllo di qualsiasi squadra.\n"
-"\n"
+"arrivarci). L’ospitante può cambiare il controllo di qualsiasi squadra."
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:742
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "Launch a dialog to assist the host in changing the human controllers of "
-#| "sides.\n"
-#| "\n"
 msgid ""
 "Launch a dialog to assist the host in changing the human controllers of "
 "sides."
 msgstr ""
-"\n"
 "Apre una finestra di dialogo per aiutare l’host a cambiare i controllori "
-"umani delle squadre.\n"
-"\n"
+"umani delle squadre."
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:745
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "Toggle the idle state for a side. The host may make a side idle after a "
-#| "network disconnection.\n"
-#| "\n"
 msgid ""
 "Toggle the idle state for a side. The host may make a side idle after a "
 "network disconnection."
 msgstr ""
-"\n"
 "Abilita/disabilita per una squadra lo stato “Inattiva”. L’host può definire "
-"una squadra come inattiva a seguito della sua disconnessione dalla rete.\n"
-"\n"
+"una squadra come inattiva a seguito della sua disconnessione dalla rete."
 
 #. [topic]: id=mp_commands
 #. ':control' is a command and should not be translated
 #: data/core/help.cfg:750
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "Kick a user in multiplayer. They will be able to rejoin the game. If you "
-#| "just want to change control of their side(s) use the :control command "
-#| "instead.\n"
-#| "\n"
 msgid ""
 "Kick a user in multiplayer. They will be able to rejoin the game. If you "
 "just want to change control of their side(s) use the :control command "
 "instead."
 msgstr ""
-"\n"
 "Espelle un utente dalla partita multigiocatore. Tale utente potrà poi "
 "riunirsi alla partita. Se vuoi cambiare il controllo della sua squadra o "
-"delle sue squadre, usa invece il comando :control.\n"
-"\n"
+"delle sue squadre, usa invece il comando :control."
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:753
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "Send a private message to a user. When in a game, it is not possible to "
-#| "send private messages to players who are currently controlling a side in "
-#| "the same game.\n"
-#| "\n"
 msgid ""
 "Send a private message to a user. When in a game, it is not possible to send "
 "private messages to players who are currently controlling a side in the same "
 "game."
 msgstr ""
-"\n"
 "Invia un messaggio privato ad un utente. Durante una partita, non è "
 "possibile inviare messaggi privati ai giocatori che stanno controllando una "
-"squadra presente nella partita a cui stai giocando.\n"
-"\n"
+"squadra presente nella partita a cui stai giocando."
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:756
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "Mute a specific observer. If no username is supplied the muted usernames "
-#| "are displayed.\n"
-#| "\n"
 msgid ""
 "Mute a specific observer. If no username is supplied the muted usernames are "
 "displayed."
 msgstr ""
-"\n"
 "Riduce in silenzio uno specifico osservatore. Se non viene specificato alcun "
-"nome utente, verrà mostrato l’elenco degli osservatori ridotti in silenzio.\n"
-"\n"
+"nome utente, verrà mostrato l’elenco degli osservatori ridotti in silenzio."
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:759
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "Toggle muting/silencing of all observers on/off.\n"
-#| "\n"
 msgid "Toggle muting/silencing of all observers on/off."
-msgstr ""
-"\n"
-"Attiva/disattiva la modalità silenziosa per tutti gli osservatori.\n"
-"\n"
+msgstr "Attiva/disattiva la modalità silenziosa per tutti gli osservatori."
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:762
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "Unban a user in a multiplayer game by the IP address used by that "
-#| "username. Can be used on users not in the game but on the server.\n"
-#| "\n"
 msgid ""
 "Unban a user in a multiplayer game by the IP address used by that username. "
 "Can be used on users not in the game but on the server."
 msgstr ""
-"\n"
 "Toglie il bando ad un utente da una partita multigiocatore usando "
 "l’indirizzo IP associato al suo nome utente. L’opzione può essere impiegata "
-"su utenti non in partita ma presenti sul server.\n"
-"\n"
+"su utenti non in partita ma presenti sul server."
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:765
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "Unmute a specific observer. If no username is supplied the list of muted "
-#| "observers is cleared."
 msgid ""
 "Unmute a specific observer. If no username is supplied the list of muted "
 "observers is cleared."
 msgstr ""
-"\n"
 "Ridà la parola a uno specifico osservatore. Se non viene specificato alcun "
 "nome utente, verrà ripulito l’elenco degli osservatori ridotti in silenzio."
 
@@ -6148,140 +5093,63 @@ msgstr "Comandi di debug"
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:776
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "Brings up a menu for choosing a scenario to immediately advance to in a "
-#| "campaign.\n"
-#| "\n"
 msgid ""
 "Brings up a menu for choosing a scenario to immediately advance to in a "
 "campaign."
 msgstr ""
-"\n"
 "Richiama un menù per la scelta dello scenario a cui avanzare immediatamente "
-"all’interno di una campagna.\n"
-"\n"
+"all’interno di una campagna."
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:779
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "Create a unit of the specified type on the selected hex.\n"
-#| "\n"
 msgid "Create a unit of the specified type on the selected hex."
-msgstr ""
-"\n"
-"Crea un’unità del tipo specificato sull’esagono selezionato.\n"
-"\n"
+msgstr "Crea un’unità del tipo specificato sull’esagono selezionato."
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:782
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "Toggle fog/shroud for the current side.\n"
-#| "\n"
 msgid "Toggle fog/shroud for the current side."
-msgstr ""
-"\n"
-"Attiva/disattiva la nebbia o l’oscurità per la squadra attuale.\n"
-"\n"
+msgstr "Attiva/disattiva la nebbia o l’oscurità per la squadra attuale."
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:785
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "Adds the specified amount to the current side’s gold.\n"
-#| "\n"
 msgid "Adds the specified amount to the current side’s gold."
-msgstr ""
-"\n"
-"Aggiunge l’ammontare specificato all’oro della squadra attuale.\n"
-"\n"
+msgstr "Aggiunge l’ammontare specificato all’oro della squadra attuale."
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:788
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "Immediately advances to the next scenario in a campaign.\n"
-#| "\n"
 msgid "Immediately advances to the next scenario in a campaign."
-msgstr ""
-"\n"
-"Avanza immediatamente allo scenario successivo di una campagna.\n"
-"\n"
+msgstr "Avanza immediatamente allo scenario successivo di una campagna."
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:791
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "Manually set a gamestate variable to value.\n"
-#| "\n"
 msgid "Manually set a gamestate variable to value."
-msgstr ""
-"\n"
-"Imposta manualmente il valore di una variabile di stato del gioco.\n"
-"\n"
+msgstr "Imposta manualmente il valore di una variabile di stato del gioco."
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:794
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "Show a gamestate variable.\n"
-#| "\n"
 msgid "Show a gamestate variable."
-msgstr ""
-"\n"
-"Mostra una variabile di stato del gioco.\n"
-"\n"
+msgstr "Mostra una variabile di stato del gioco."
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:797
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "Manually fire the specified event.\n"
-#| "\n"
 msgid "Manually fire the specified event."
-msgstr ""
-"\n"
-"Lancia manualmente l’evento specificato.\n"
-"\n"
+msgstr "Lancia manualmente l’evento specificato."
 
 #. [topic]: id=debug_commands
 #. The example text is a command and should not be translated.
 #: data/core/help.cfg:802
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "Modifies the specified property of the selected unit. Example: :unit "
-#| "hitpoints=100\n"
-#| "\n"
 msgid ""
 "Modifies the specified property of the selected unit. Example: :unit "
 "hitpoints=100"
 msgstr ""
-"\n"
 "Modifica la proprietà specificata dell’unità selezionata. Esempio: :unit "
-"hitpoints=100\n"
-"\n"
+"hitpoints=100"
 
 #. [topic]: id=debug_commands
 #. The example text is a command and should not be translated.
 #: data/core/help.cfg:807
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "Makes the selected unit level up N times. Example: :unit advances=2"
 msgid "Makes the selected unit level up N times. Example: :unit advances=2"
 msgstr ""
-"\n"
 "Fa avanzare di N livelli l’unità selezionata. Esempio: :unit advances=2"
 
 #. [heals]: id=healing
@@ -6420,12 +5288,13 @@ msgstr ""
 #. [chance_to_hit]: id=diversion
 #: data/core/macros/abilities.cfg:149
 msgid "accuracy:"
-msgstr ""
+msgstr "accuratezza:"
 
 #. [chance_to_hit]: id=diversion
 #: data/core/macros/abilities.cfg:150
 msgid "Due to the diversion, the accuracy of this attack is reduced by 20%."
 msgstr ""
+"A causa della distrazione, l’accuratezza di questo attacco è ridotta del 20%."
 
 #. [leadership]: id=leadership
 #: data/core/macros/abilities.cfg:202
@@ -7100,32 +5969,17 @@ msgstr "Mantenimento zero"
 
 #. [trait]: id=loyal
 #: data/core/macros/traits.cfg:15
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Loyal'</italic> units don’t incur upkeep. Most units incur "
-#| "an upkeep cost at the end of every turn, which is equal to their level. "
-#| "Loyal units do not incur this cost."
 msgid ""
 "<i>Loyal</i> units don’t incur upkeep. Most units incur an upkeep cost at "
 "the end of every turn, which is equal to their level. Loyal units do not "
 "incur this cost."
 msgstr ""
-"Le unità <italic>text='leali'</italic> non necessitano di mantenimento. Gran "
-"parte delle unità ha un costo di mantenimento, pari al loro livello, alla "
-"fine di ogni turno, mentre le unità leali ne sono prive."
+"Le unità <i>leali</i> non necessitano di mantenimento. Gran parte delle "
+"unità ha un costo di mantenimento, pari al loro livello, alla fine di ogni "
+"turno, mentre le unità leali ne sono prive."
 
 #. [trait]: id=loyal
 #: data/core/macros/traits.cfg:17
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "During campaigns, certain units may opt to join the player’s forces of "
-#| "their own volition. These units are marked with the loyal trait. Although "
-#| "they may require payment to be recalled, they never incur any upkeep "
-#| "costs. This can make them invaluable during a long campaign, when gold is "
-#| "in short supply. This trait is never given to recruited units, so it may "
-#| "be unwise to dismiss such units or to send them to a foolish death."
 msgid ""
 "During campaigns, certain units may opt to join the player’s forces of their "
 "own volition. These units are marked with the loyal trait. Although they may "
@@ -7134,8 +5988,6 @@ msgid ""
 "This trait is never given to recruited units, so it may be unwise to dismiss "
 "such units or to send them to a foolish death."
 msgstr ""
-"\n"
-"\n"
 "Durante le campagne, alcune unità possono scegliere di aggiungersi "
 "volontariamente alle tue forze: queste unità sono contrassegnate dalla "
 "caratteristica “leale”. Nonostante abbiano bisogno anch’esse di un costo di "
@@ -7161,33 +6013,19 @@ msgstr "Immune agli attacchi di assorbimento, al veleno e al contagio"
 # Per il momento, qui e nelle stringhe relative a Meccanico ed Elementale, lascio "drain (attack)" = attacco di assorbimento. Se troviamo una formula migliore, correggeremo
 #. [trait]: id=undead
 #: data/core/macros/traits.cfg:58
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Undead'</italic> units are immune to poison, drain, and "
-#| "plague."
 msgid "<i>Undead</i> units are immune to poison, drain, and plague."
 msgstr ""
-"I <italic>text='non-morti'</italic> sono immuni al veleno, al contagio e "
-"agli attacchi di assorbimento."
+"I <i>non-morti</i> sono immuni al veleno, al contagio e agli attacchi di "
+"assorbimento."
 
 #. [trait]: id=undead
 #: data/core/macros/traits.cfg:60
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Undead units generally have undead as their only trait. Since undead "
-#| "units are the bodies of the dead, risen to fight again, poison has no "
-#| "effect upon them. This can make them invaluable in dealing with foes who "
-#| "use poison in conjunction with their attacks."
 msgid ""
 "Undead units generally have undead as their only trait. Since undead units "
 "are the bodies of the dead, risen to fight again, poison has no effect upon "
 "them. This can make them invaluable in dealing with foes who use poison in "
 "conjunction with their attacks."
 msgstr ""
-"\n"
-"\n"
 "Le unità non-morte hanno generalmente solo la caratteristica “non-morto”. "
 "Dato che i non-morti sono cadaveri risorti per tornare a combattere, il "
 "veleno non ha alcun effetto su di loro. Questo può renderli preziosissimi "
@@ -7205,31 +6043,18 @@ msgstr "meccanica"
 
 #. [trait]: id=mechanical
 #: data/core/macros/traits.cfg:84
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Mechanical'</italic> units are immune to poison, drain, and "
-#| "plague."
 msgid "<i>Mechanical</i> units are immune to poison, drain, and plague."
 msgstr ""
-"Le unità <italic>text='meccaniche'</italic> sono immuni al veleno, al "
-"contagio e agli attacchi di assorbimento."
+"Le unità <i>meccaniche</i> sono immuni al veleno, al contagio e agli "
+"attacchi di assorbimento."
 
 #. [trait]: id=mechanical
 #: data/core/macros/traits.cfg:86
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Mechanical units generally have mechanical as their only trait. Since "
-#| "mechanical units don’t really have life, drain, poison, and plague have "
-#| "no effect upon them."
 msgid ""
 "Mechanical units generally have mechanical as their only trait. Since "
 "mechanical units don’t really have life, drain, poison, and plague have no "
 "effect upon them."
 msgstr ""
-"\n"
-"\n"
 "Le unità meccaniche hanno generalmente solo la caratteristica “meccanico”. "
 "Poiché le unità meccaniche non sono vive, gli attacchi di assorbimento, il "
 "veleno e il contagio non hanno effetto su di loro."
@@ -7246,31 +6071,18 @@ msgstr "elementale"
 
 #. [trait]: id=elemental
 #: data/core/macros/traits.cfg:110
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Elemental'</italic> units are immune to poison, drain, and "
-#| "plague."
 msgid "<i>Elemental</i> units are immune to poison, drain, and plague."
 msgstr ""
-"Le unità <italic>text='elementali'</italic> sono immuni al veleno, al "
-"contagio e agli attacchi di assorbimento."
+"Le unità <i>elementali</i> sono immuni al veleno, al contagio e agli "
+"attacchi di assorbimento."
 
 #. [trait]: id=elemental
 #: data/core/macros/traits.cfg:112
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Elemental units generally have elemental as their only trait. Since "
-#| "elemental units are energy-based beings, drain, poison, and plague have "
-#| "no effect upon them."
 msgid ""
 "Elemental units generally have elemental as their only trait. Since "
 "elemental units are energy-based beings, drain, poison, and plague have no "
 "effect upon them."
 msgstr ""
-"\n"
-"\n"
 "Le unità elementali hanno generalmente solo la caratteristica “elementale”. "
 "Poiché le unità elementali sono creature basate sull’energia, gli attacchi "
 "di assorbimento, il veleno e il contagio non hanno effetto su di loro."
@@ -7287,35 +6099,21 @@ msgstr "forte"
 
 #. [trait]: id=strong
 #: data/core/macros/traits.cfg:134
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Strong'</italic> units do 1 more damage for every "
-#| "successful strike in melee combat, and have 1 additional hitpoint."
 msgid ""
 "<i>Strong</i> units do 1 more damage for every successful strike in melee "
 "combat, and have 1 additional hitpoint."
 msgstr ""
-"Le unità <italic>text='forti'</italic> causano 1 punto danno in più per ogni "
-"attacco ravvicinato andato a segno e hanno 1 PF in più."
+"Le unità <i>forti</italic> causano 1 punto danno in più per ogni attacco "
+"ravvicinato andato a segno e hanno 1 PF in più."
 
 #. [trait]: id=strong
 #: data/core/macros/traits.cfg:136
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "While useful for any close-combat unit, strong is most effective for "
-#| "units who have a high number of swings such as the elvish fighter. Strong "
-#| "units can be very useful when a tiny bit of extra damage is all that is "
-#| "needed to turn a damaging stroke into a killing blow."
 msgid ""
 "While useful for any close-combat unit, strong is most effective for units "
 "who have a high number of swings such as the elvish fighter. Strong units "
 "can be very useful when a tiny bit of extra damage is all that is needed to "
 "turn a damaging stroke into a killing blow."
 msgstr ""
-"\n"
-"\n"
 "La caratteristica “forte”, utile per qualsiasi unità da mischia, ha effetti "
 "maggiori sulle unità con un alto numero di attacchi, come gli elfi "
 "combattenti. Le unità forti possono essere molto utili quando serve un po’ "
@@ -7335,35 +6133,21 @@ msgstr "accurata"
 
 #. [trait]: id=dextrous
 #: data/core/macros/traits.cfg:155
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Dextrous'</italic> units do 1 more damage for every "
-#| "successful strike in ranged combat."
 msgid ""
 "<i>Dextrous</i> units do 1 more damage for every successful strike in ranged "
 "combat."
 msgstr ""
-"Le unità <italic>text='accurate'</italic> causano un punto danno in più per "
-"ogni attacco a distanza andato a segno."
+"Le unità <i>accurate</italic> causano un punto danno in più per ogni attacco "
+"a distanza andato a segno."
 
 #. [trait]: id=dextrous
 #: data/core/macros/traits.cfg:157
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Dextrous is a trait possessed only by elves. The elven people are known "
-#| "for their uncanny grace, and their great facility with the bow. Some, "
-#| "however, are gifted with natural talent that exceeds their brethren. "
-#| "These elves inflict an additional point of damage with each arrow."
 msgid ""
 "Dextrous is a trait possessed only by elves. The elven people are known for "
 "their uncanny grace, and their great facility with the bow. Some, however, "
 "are gifted with natural talent that exceeds their brethren. These elves "
 "inflict an additional point of damage with each arrow."
 msgstr ""
-"\n"
-"\n"
 "Solo gli elfi possono avere la caratteristica “accurato”. Gli elfi sono noti "
 "per la loro impareggiabile grazia e la loro incredibile abilità nell’uso "
 "dell’arco. Alcuni di loro sono tuttavia dotati di un talento naturale di "
@@ -7382,29 +6166,15 @@ msgstr "veloce"
 
 #. [trait]: id=quick
 #: data/core/macros/traits.cfg:172
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Quick'</italic> units have 1 extra movement point, but 5% "
-#| "less hitpoints than usual."
 msgid ""
 "<i>Quick</i> units have 1 extra movement point, but 5% less hitpoints than "
 "usual."
 msgstr ""
-"Le unità <italic>text='veloci'</italic> hanno 1 punto movimento in più, ma "
-"il 5% di PF in meno del consueto."
+"Le unità <i>veloci</italic> hanno 1 punto movimento in più, ma il 5% di PF "
+"in meno del consueto."
 
 #. [trait]: id=quick
 #: data/core/macros/traits.cfg:174
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Quick is the most noticeable trait, particularly in slower moving units "
-#| "such as trolls or heavy infantry. Units with the quick trait often have "
-#| "greatly increased mobility in rough terrain, which can be important to "
-#| "consider when deploying your forces. Also, quick units aren’t quite as "
-#| "tough as units without this trait and are subsequently less good at "
-#| "holding contested positions."
 msgid ""
 "Quick is the most noticeable trait, particularly in slower moving units such "
 "as trolls or heavy infantry. Units with the quick trait often have greatly "
@@ -7413,8 +6183,6 @@ msgid ""
 "without this trait and are subsequently less good at holding contested "
 "positions."
 msgstr ""
-"\n"
-"\n"
 "La caratteristica “veloce” è quella più evidente, soprattutto nelle unità "
 "dai movimenti lenti come i troll o la fanteria pesante. Le unità veloci "
 "hanno spesso una mobilità notevolmente superiore sui terreni accidentati, il "
@@ -7430,26 +6198,14 @@ msgstr "intelligente"
 
 #. [trait]: id=intelligent
 #: data/core/macros/traits.cfg:192
-#, fuzzy
-#| msgid "Intelligent units require 20% less experience than usual to advance."
 msgid ""
 "<i>Intelligent</i> units require 20% less experience than usual to advance."
 msgstr ""
-"Le unità intelligenti necessitano del 20% d’esperienza in meno del consueto "
-"per avanzare di livello."
+"Le unità <i>intelligenti</i> necessitano del 20% d’esperienza in meno del "
+"consueto per avanzare di livello."
 
 #. [trait]: id=intelligent
 #: data/core/macros/traits.cfg:194
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<italic>text='Intelligent'</italic> units are very useful at the "
-#| "beginning of a campaign as they can advance to higher levels more "
-#| "quickly. Later in campaigns Intelligent is not quite as useful because "
-#| "the <italic>text='After Maximum Level Advancement'</italic> (AMLA) is not "
-#| "as significant a change as advancing a level. If you have many ‘maximum "
-#| "level’ units you may wish to recall units with more desirable traits."
 msgid ""
 "Intelligent units are very useful at the beginning of a campaign as they can "
 "advance to higher levels more quickly. Later in campaigns Intelligent is not "
@@ -7457,15 +6213,13 @@ msgid ""
 "not as significant a change as advancing a level. If you have many ‘maximum "
 "level’ units you may wish to recall units with more desirable traits."
 msgstr ""
-"\n"
-"\n"
-"Le unità <italic>text='intelligenti'</italic> sono molto utili all’inizio di "
-"una campagna, dato che possono avanzare più velocemente al livello "
-"superiore. Più avanti nel corso di una campagna, le unità intelligenti non "
-"risultano più così utili, in quanto l’<italic>text='Avanzamento Oltre il "
-"Livello Massimo'</italic> (AOLM) non dà variazioni così significative come "
-"un normale avanzamento di livello. Se possiedi molte unità di “livello "
-"massimo”, potresti voler richiamare unità con caratteristiche più utili."
+"Le unità <i>intelligenti</italic> sono molto utili all’inizio di una "
+"campagna, dato che possono avanzare più velocemente al livello superiore. "
+"Più avanti nel corso di una campagna, le unità intelligenti non risultano "
+"più così utili, in quanto l’<i>Avanzamento Oltre il Livello Massimo</i> "
+"(AOLM) non dà variazioni così significative come un normale avanzamento di "
+"livello. Se possiedi molte unità di “livello massimo”, potresti voler "
+"richiamare unità con caratteristiche più utili."
 
 #. [trait]: id=resilient
 #: data/core/macros/traits.cfg:206
@@ -7479,28 +6233,15 @@ msgstr "resistente"
 
 #. [trait]: id=resilient
 #: data/core/macros/traits.cfg:208
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Resilient'</italic> units have an additional 4 hitpoints, "
-#| "and gain 1 more per level."
 msgid ""
 "<i>Resilient</i> units have an additional 4 hitpoints, and gain 1 more per "
 "level."
 msgstr ""
-"Le unità <italic>text='resistenti'</italic> hanno 4 PF più 1 PF per livello "
-"in più del consueto."
+"Le unità <i>resistenti</italic> hanno 4 PF più 1 PF per livello in più del "
+"consueto."
 
 #. [trait]: id=resilient
 #: data/core/macros/traits.cfg:210
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Resilient units can be useful at all stages of a campaign, and this is a "
-#| "useful trait for all units. Resilient is often most helpful as a trait "
-#| "when it occurs in a unit that has some combination of low hitpoints, good "
-#| "defense, or high resistances. Resilient units are especially useful for "
-#| "holding strategic positions against opponents."
 msgid ""
 "Resilient units can be useful at all stages of a campaign, and this is a "
 "useful trait for all units. Resilient is often most helpful as a trait when "
@@ -7508,8 +6249,6 @@ msgid ""
 "defense, or high resistances. Resilient units are especially useful for "
 "holding strategic positions against opponents."
 msgstr ""
-"\n"
-"\n"
 "Le unità resistenti possono essere utili in ogni fase di una campagna: "
 "questa è una caratteristica che reca vantaggi a tutte le unità. La "
 "caratteristica “resistente” è spesso utilissima laddove è applicata a "
@@ -7538,24 +6277,15 @@ msgstr ""
 
 #. [trait]: id=healthy
 #: data/core/macros/traits.cfg:232
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<italic>text='Healthy'</italic> units have 1 additional hitpoint, and "
-#| "gain 1 more per level. They will also heal 2 hitpoints each turn, "
-#| "regardless of whether they engaged in combat the turn before."
 msgid ""
 "<i>Healthy</i> units have 1 additional hitpoint, and gain 1 more per level. "
 "They will also heal 2 hitpoints each turn, regardless of whether they "
 "engaged in combat the turn before."
 msgstr ""
-"\n"
-"\n"
-"Le unità con caratteristica <italic>text='Sano'</italic> hanno un punto "
-"ferita addizionale, e guadagnano un punto addizionale ad ogni passaggio di "
-"livello. Guariscono inoltre 2 punti ferita ad ogni turno, anche se non hanno "
-"riposato il turno precedente."
+"Le unità con caratteristica <i>Sano</i> hanno un punto ferita addizionale, e "
+"guadagnano un punto addizionale ad ogni passaggio di livello. Guariscono "
+"inoltre 2 punti ferita ad ogni turno, anche se non hanno riposato il turno "
+"precedente."
 
 #. [trait]: id=fearless
 #: data/core/macros/traits.cfg:253 data/core/macros/traits.cfg:270
@@ -7592,12 +6322,6 @@ msgstr "Riceve solo il 50% di difesa nei villaggi fondati sulla terraferma"
 
 #. [trait]: id=feral
 #: data/core/macros/traits.cfg:288
-#, fuzzy
-#| msgid ""
-#| "Dwellings of sentient beings are not easily used for cover by feral "
-#| "creatures of low intelligence. As a result, <italic>text='feral'</italic> "
-#| "units receive a maximum of 50% defense in any land-based village "
-#| "regardless of base terrain."
 msgid ""
 "Dwellings of sentient beings are not easily used for cover by feral "
 "creatures of low intelligence. As a result, <i>feral</i> units receive a "
@@ -7605,9 +6329,8 @@ msgid ""
 msgstr ""
 "Le dimore delle creature senzienti non sono tipicamente usate per ospitare "
 "creature selvatiche poco intelligenti. Di conseguenza, le unità "
-"<italic>text='selvatiche'</italic> ricevono una difesa massima del 50% in "
-"ogni villaggio fondato sulla terraferma, a prescindere dal terreno su cui si "
-"trova."
+"<i>selvatiche</i> ricevono una difesa massima del 50% in ogni villaggio "
+"fondato sulla terraferma, a prescindere dal terreno su cui si trova."
 
 #. [trait]: id=weak
 #: data/core/macros/traits.cfg:304
@@ -7621,16 +6344,12 @@ msgstr "debole"
 
 #. [trait]: id=weak
 #: data/core/macros/traits.cfg:306
-#, fuzzy
-#| msgid ""
-#| "Units with the <italic>text='weak'</italic> trait receive a 1 point "
-#| "decrease in hitpoints and melee damage."
 msgid ""
 "Units with the <i>weak</i> trait receive a 1 point decrease in hitpoints and "
 "melee damage."
 msgstr ""
-"Le unità con la caratteristica <italic>text='debole'</italic> hanno una "
-"penalità di −1 ai punti ferita e ai danni inferti negli attacchi ravvicinati."
+"Le unità con la caratteristica <i>debole</italic> hanno una penalità di −1 "
+"ai punti ferita e ai danni inferti negli attacchi ravvicinati."
 
 #. [trait]: id=slow
 #: data/core/macros/traits.cfg:323
@@ -7644,31 +6363,18 @@ msgstr "lenta"
 
 #. [trait]: id=slow
 #: data/core/macros/traits.cfg:325
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Slow'</italic> units have 1 less movement point but 5% more "
-#| "hitpoints."
 msgid "<i>Slow</i> units have 1 less movement point but 5% more hitpoints."
 msgstr ""
-"Le unità <italic>text='lente'</italic> hanno un punto movimento in meno, ma "
-"il 5% di PF in più."
+"Le unità <i>lente</i> hanno un punto movimento in meno, ma il 5% di PF in "
+"più."
 
 #. [trait]: id=slow
 #: data/core/macros/traits.cfg:327
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Thick-bodied and clumsy, slow individuals of goblins and other species "
-#| "take a movement penalty but are compensated for it with a slight increase "
-#| "in endurance."
 msgid ""
 "Thick-bodied and clumsy, slow individuals of goblins and other species take "
 "a movement penalty but are compensated for it with a slight increase in "
 "endurance."
 msgstr ""
-"\n"
-"\n"
 "Tozzi e goffi, gli individui più lenti tra i goblin e le unità delle altre "
 "specie subiscono una penalità al movimento, compensata però da un leggero "
 "incremento della resistenza."
@@ -7685,31 +6391,19 @@ msgstr "ottusa"
 
 #. [trait]: id=dim
 #: data/core/macros/traits.cfg:345
-#, fuzzy
-#| msgid ""
-#| "Units with trait <italic>text='dim'</italic> suffer a 20% increase in "
-#| "experience required to advance."
 msgid ""
 "Units with trait <i>dim</i> suffer a 20% increase in experience required to "
 "advance."
 msgstr ""
-"Le unità <italic>text='ottuse'</italic> necessitano del 20% d’esperienza in "
-"più per avanzare di livello."
+"Le unità <i>ottuse</i> necessitano del 20% d’esperienza in più per avanzare "
+"di livello."
 
 #. [trait]: id=dim
 #: data/core/macros/traits.cfg:347
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Dim is a trait all too common in goblins and other lesser species. There "
-#| "are reasons these species are lesser, and this is one of them."
 msgid ""
 "Dim is a trait all too common in goblins and other lesser species. There are "
 "reasons these species are lesser, and this is one of them."
 msgstr ""
-"\n"
-"\n"
 "La caratteristica “ottuso” è decisamente comune tra i goblin e le altre "
 "specie minori. Ci sono dei motivi se queste specie sono definite minori: "
 "questo è uno di essi."
@@ -7726,22 +6420,18 @@ msgstr "invecchiata"
 
 #. [trait]: id=aged
 #: data/core/macros/traits.cfg:361
-#, fuzzy
-#| msgid ""
-#| "Units with the <italic>text='aged'</italic> trait have 8 hitpoints less "
-#| "and suffer from a 1 point decrease in movement and melee damage."
 msgid ""
 "Units with the <i>aged</i> trait have 8 hitpoints less and suffer from a 1 "
 "point decrease in movement and melee damage."
 msgstr ""
-"Le unità con la caratteristica <italic>text='invecchiato'</italic> hanno una "
-"penalità di −8 ai punti ferita e di −1 al movimento e ai danni inferti negli "
-"attacchi ravvicinati."
+"Le unità con la caratteristica <i>invecchiato</italic> hanno una penalità di "
+"−8 ai punti ferita e di −1 al movimento e ai danni inferti negli attacchi "
+"ravvicinati."
 
 #. [trait]: id=oceangoing
 #: data/core/macros/traits.cfg:386
 msgid "oceangoing"
-msgstr ""
+msgstr "oceanica"
 
 #. [trait]: id=oceangoing
 #. this is a defense reduction - without this ability most oceangoing ships would have 30% defense on these terrains
@@ -7750,12 +6440,14 @@ msgid ""
 "This unit is limited to 20% defense while in ford, bridge, oasis, or water-"
 "based village/castle terrain."
 msgstr ""
+"Questa unità è limitata al 20% in difesa quando si trova in un guado, un "
+"ponte, un’oasi o un villaggio/castello acquatico."
 
 #. [trait]: id=push_poles
 #. https://en.wikipedia.org/wiki/Setting_pole
 #: data/core/macros/traits.cfg:416
 msgid "push-poles"
-msgstr ""
+msgstr "pali di spinta"
 
 #. [trait]: id=push_poles
 #: data/core/macros/traits.cfg:417
@@ -7763,6 +6455,8 @@ msgid ""
 "This unit has 30% defense while in ford, bridge, oasis, or water-based "
 "village/castle terrain."
 msgstr ""
+"Questa unità è limitata al 30% in difesa quando si trova in un guado, un "
+"ponte, un’oasi o un villaggio/castello acquatico."
 
 #. [disable]: id=unwieldy
 #: data/core/macros/weapon_specials.cfg:7
@@ -7862,34 +6556,26 @@ msgstr ""
 
 #. [dummy]: id=naval
 #: data/core/macros/weapon_specials.cfg:129
-#, fuzzy
-#| msgid "naval ram"
 msgid "naval"
 msgstr "rostro"
 
 #. [dummy]: id=naval
 #: data/core/macros/weapon_specials.cfg:130
-#, fuzzy
-#| msgid "This attack can only be used against units in water terrain."
 msgid ""
 "This attack can only be used when both the attacker and the defender are in "
 "water or swamp."
 msgstr ""
-"Questo attacco può essere usato soltanto contro unità su un terreno di tipo "
-"acquatico."
+"Questo attacco può essere usato soltanto quando sia l’attaccante che il "
+"difensore si trovano in acqua o in una palude."
 
 #. [dummy]: id=naval
 #: data/core/macros/weapon_specials.cfg:131
-#, fuzzy
-#| msgid ""
-#| "This unit has an attack that can only be used against units in watery "
-#| "terrain."
 msgid ""
 "This unit has an attack that can only be used when both the attacker and the "
 "defender are in water or swamp."
 msgstr ""
-"Questa unità possiede un attacco che può essere usato soltanto contro unità "
-"su un terreno di tipo acquatico."
+"Questa unità possiede un attacco che può essere usato soltanto quando sia "
+"l’attaccante che il difensore si trovano in acqua o in una palude."
 
 #. [chance_to_hit]: id=honed
 #: data/core/macros/weapon_specials.cfg:158
@@ -8606,23 +7292,11 @@ msgid ""
 "Goblins are puny and quite frail, rarely growing past the size and stature "
 "of a human child."
 msgstr ""
+"I goblin sono esseri gracili e piuttosto deboli che raramente superano la "
+"taglia e l’altezza di un bambino."
 
 #. [race]: id=goblin
 #: data/core/units.cfg:165
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Goblins are puny and quite frail, rarely growing past the size and "
-#| "stature of a human child.\n"
-#| "\n"
-#| "Goblins are born into a lifetime of near-slavery to their larger kin, and "
-#| "used as sword-fodder in battle. They thrive in spite of their tragic "
-#| "fate; in part because they are so very numerous, and also because their "
-#| "brother orcs are well aware how dependent they are on the goblins. They "
-#| "perform the bulk of manual labor needed by the orcs, with the sole "
-#| "exception of jobs that require the brute strength of true orcs. Those the "
-#| "orcs revel in as proof of their prowess."
 msgid ""
 "Goblins are born into a lifetime of near-slavery to their larger kin, and "
 "used as sword-fodder in battle. They thrive in spite of their tragic fate; "
@@ -8632,11 +7306,6 @@ msgid ""
 "that require the brute strength of true orcs. Those the orcs revel in as "
 "proof of their prowess."
 msgstr ""
-"\n"
-"\n"
-"I goblin sono esseri gracili e piuttosto deboli che raramente superano la "
-"taglia e l’altezza di un bambino.\n"
-"\n"
 "I goblin conducono una vita di semi-schiavitù nei confronti degli individui "
 "più grandi e vengono utilizzati in battaglia come carne da cannone. "
 "Nonostante il loro tragico destino, la loro comunità è prospera, in parte a "
@@ -9145,21 +7814,15 @@ msgstr "Navi"
 
 #. [race]: id=ship
 #: data/core/units.cfg:296
-#, fuzzy
-#| msgid ""
-#| "Animated neither by natural life nor by necromancy, the term "
-#| "<italic>text='mechanical'</italic> describes a created artifact of an "
-#| "intelligent being. Most mechanical things neither move nor think on their "
-#| "own, but some do so as a result of magical enchantment."
 msgid ""
 "Ships are not living beings, but they are crafted and (usually) controlled "
 "by living beings. Most ships neither move nor think on their own, but some "
 "do so as a result of magical enchantment."
 msgstr ""
-"Il termine <italic>text='meccanico'</italic> descrive un manufatto creato da "
-"un essere intelligente, non animato dalla vita naturale né dalla "
-"negromanzia. La maggior parte delle cose meccaniche non si muove e non pensa "
-"autonomamente, ma alcune lo fanno come risultato di incantesimi magici."
+"Le navi non sono degli esseri vivneti, ma vengono costruite e (solitamente) "
+"governate da esseri viventi. La maggior parte delle navi non si muove e non "
+"pensa autonomamente, sebbene alcune lo facciano come risultato di "
+"incantesimi magici."
 
 #. [race]: id=merman
 #: data/core/units.cfg:307
@@ -9351,11 +8014,18 @@ msgid ""
 "Although Orcs are violent even among themselves, they are pack-oriented; an "
 "orc never travels alone or lives in groups smaller than half a dozen."
 msgstr ""
+"Gli orchi sono in apparenza per metà uomini e per metà bestie. Sono più "
+"alti, più robusti e più forti degli uomini; sono bellicosi, selvaggi e "
+"crudeli per natura. Il loro sangue è più scuro e più denso di quello umano e "
+"hanno poca cura dell’igiene personale o del loro aspetto. Malgrado gli orchi "
+"si dimostrino violenti persino nei confronti degli altri orchi, si tratta di "
+"esseri gregari: un orco non viaggia mai a lungo né vive autonomamente in "
+"gruppi inferiori alla mezza dozzina di unità."
 
 #. [race]: id=orc
 #: data/core/units.cfg:356
 msgid "Society"
-msgstr ""
+msgstr "Società"
 
 #. [race]: id=orc
 #: data/core/units.cfg:357
@@ -9370,6 +8040,17 @@ msgid ""
 "known to possess a crude system of writing — usually in blood — although "
 "it’s most commonly used to trade insults or threats among tribal leaders."
 msgstr ""
+"Quasi tutti gli orchi sono membri di una tribù o di un clan. I rapporti tra "
+"tribù vicine sono di norma violenti, tranne nei casi in cui un nemico comune "
+"minacci la loro esistenza, oppure laddove la prospettiva di un grande "
+"saccheggio superi la reciproca rivalità. Occasionalmente può emergere un "
+"unico, forte capoclan per guidare di volta in volta le numerose tribù, di "
+"solito tramite l’intimidazione dei suoi seguaci. In tempo di pace, una tribù "
+"di orchi tende quasi esclusivamente a concentrarsi sul suo rafforzamento, in "
+"previsione del prossimo conflitto armato. Gli orchi sono noti per possedere "
+"un rudimentale sistema di scrittura – di solito col sangue – che viene "
+"tuttavia usato principalmente per scambiare ingiurie o minacce tra i "
+"capitribù."
 
 #. [race]: id=orc
 #: data/core/units.cfg:359
@@ -9384,6 +8065,17 @@ msgid ""
 "displaying power, assassination, poisoning and backstabbing are completely "
 "viable means to further one’s own goals."
 msgstr ""
+"Le società degli orchi sono basate sulla forza e poco altro: è la forza che "
+"determina la ragione, perciò un capo comanda e sopravvive finché nessuno "
+"riesce a strappargli il titolo. Una lotta costante per il potere freme tra i "
+"potenziali capitribù. Un condottiero degli orchi raramente vive più di "
+"qualche anno per godersi la sua autorità assoluta, prima di venire ucciso "
+"per la successione al suo ruolo – anche se la storia riporta importanti "
+"eccezioni. Gli orchi non hanno un particolare codice d’onore e, anche se "
+"un’indiscussa dimostrazione di forza bruta è di norma il metodo preferito "
+"per fare sfoggio del proprio potere, l’assassinio, l’avvelenamento e gli "
+"attacchi alle spalle sono metodi perfettamente validi per conseguire i "
+"propri scopi."
 
 #. [race]: id=orc
 #: data/core/units.cfg:361
@@ -9399,6 +8091,18 @@ msgid ""
 "large encampments almost resembling cities, but even these are easily "
 "dismantled and abandoned if there is a need to relocate the horde."
 msgstr ""
+"Gli orchi vivono perlopiù nelle aree rurali, spesso ai piedi delle colline o "
+"delle regioni montuose, a volte nelle caverne. Non coltivano la terra né "
+"allevano animali, ma sono abili cacciatori, data la loro stazza fisica e la "
+"loro brutalità. Grazie alla forza del loro numero, sono in grado di "
+"eliminare virtualmente dalla regione ogni preda più grossa di un roditore in "
+"relativamente poco tempo. Per questo motivo e per il loro potere instabile, "
+"le tribù degli orchi tendono a condurre una vita semi-nomade e non rimangono "
+"mai troppo a lungo in uno stesso posto. Le tribù più grandi possono "
+"stabilirsi saldamente in una regione per anni, o persino decenni, e "
+"costruire grandi accampamenti che somigliano quasi a città, ma persino "
+"questi possono essere smontati facilmente e abbandonati qualora sia "
+"necessario spostare l’orda."
 
 #. [race]: id=orc
 #: data/core/units.cfg:363
@@ -9413,21 +8117,24 @@ msgid ""
 "many ways the opposite of most other orcs: they are often physically "
 "withered and frail in comparison and lack skill in battle."
 msgstr ""
+"I più vecchi orchi di cui si hanno notizie hanno tra 50 e 60 anni di età, ma "
+"pochissimi individui vivono per due o tre decenni prima di incontrare la "
+"loro fine in guerra o per mano di uno della loro razza. Gli orchi più vecchi "
+"sono spesso sciamani, che sono forse gli unici individui che la maggior "
+"parte della loro razza considera fidati e neutrali. Le origini di "
+"quest’usanza sono sconosciute, dato che gli sciamani non hanno una "
+"partecipazione diretta nella società degli orchi, ma agiscono solo da "
+"consiglieri – cosa che gli orchi non tendono in altre circostanze a "
+"tollerare. Gli sciamani sono per molti versi il contrario degli altri orchi: "
+"sono spesso fisicamente decrepiti e deboli e inoltre scarsi nel "
+"combattimento in confronto a loro."
 
 #. [race]: id=orc
 #: data/core/units.cfg:367
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Orcs who were not the strongest of their litter tend to specialize in "
-#| "other skills, like archery or assassination."
 msgid ""
 "Orcs who were not the strongest of their litter tend to specialize in other "
 "skills, like archery or assassination."
 msgstr ""
-"\n"
-"\n"
 "Gli orchi più deboli della cucciolata tendono a specializzarsi in altri "
 "campi, come il tiro con l’arco oppure l’assassinio."
 
@@ -9941,8 +8648,8 @@ msgstr "Razza:"
 #: src/help/help_topic_generators.cpp:547
 msgid "(1 of):"
 msgid_plural "(random $number of):"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "(1 di):"
+msgstr[1] "($number casuale di):"
 
 #: src/help/help_topic_generators.cpp:560
 msgid "Abilities:"
@@ -10329,10 +9036,8 @@ msgstr "Costo di disturbo"
 #~ msgid "Colonel Dommel"
 #~ msgstr "Colonnello Dommel"
 
-#, fuzzy
-#~| msgid "Captain Kestrel"
 #~ msgid "Kestrel"
-#~ msgstr "Capitan Gheppio"
+#~ msgstr "Gheppio"
 
 #~ msgid "Omaranth"
 #~ msgstr "Omaranth"
@@ -10753,8 +9458,8 @@ msgstr "Costo di disturbo"
 #~ "• maps/map_from_01.cfg\n"
 #~ "  ◦ questo è il file creato dall’editor di scenario\n"
 #~ "• scenarios/01_Forest.cfg\n"
-#~ "  ◦ all’interno dell’elemento [scenario], usa “map_file=\"map_from_01."
-#~ "cfg\"” per caricare quel file"
+#~ "  ◦ all’interno dell’elemento [scenario], usa "
+#~ "“map_file=\"map_from_01.cfg\"” per caricare quel file"
 
 #~ msgid ""
 #~ "<header>text='Which scenario files use the [scenario] tag'</header>\n"

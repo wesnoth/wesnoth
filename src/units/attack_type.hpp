@@ -152,7 +152,9 @@ public:
 	// In unit_types.cpp:
 
 	bool matches_filter(const config& filter, const std::string& check_if_recursion = "") const;
-	bool apply_effect(const config& cfg);
+
+	/** Applies effect modifications described by @a cfg. */
+	void apply_effect(const config& cfg);
 
 	/**
 	 * Generates a description of the effect specified by @a cfg, if applicable.

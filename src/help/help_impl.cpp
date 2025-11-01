@@ -32,8 +32,6 @@
 #include "serialization/markup.hpp"     // for markup utility functions
 #include "serialization/parser.hpp"
 #include "serialization/string_utils.hpp"  // for split, quoted_split, etc
-#include "serialization/unicode.hpp"    // for iterator
-#include "serialization/utf8_exception.hpp"  // for char_t, etc
 #include "terrain/terrain.hpp"          // for terrain_type
 #include "terrain/translation.hpp"      // for operator==, ter_list, etc
 #include "terrain/type_data.hpp"        // for terrain_type_data, etc
@@ -58,7 +56,6 @@ static lg::log_domain log_help("help");
 
 namespace help {
 
-const game_config_view *game_cfg = nullptr;
 // The default toplevel.
 help::section default_toplevel;
 // All sections and topics not referenced from the default toplevel.
@@ -68,16 +65,7 @@ int last_num_encountered_units = -1;
 int last_num_encountered_terrains = -1;
 boost::tribool last_debug_state = boost::indeterminate;
 
-std::vector<std::string> empty_string_vector;
 const int max_section_level = 15;
-const int title_size = font::SIZE_LARGE;
-const int title2_size = font::SIZE_PLUS;
-const int box_width = 2;
-const int normal_font_size = font::SIZE_NORMAL;
-const unsigned max_history = 100;
-const std::string topic_img = "help/topic.png";
-const std::string closed_section_img = "help/closed_section.png";
-const std::string open_section_img = "help/open_section.png";
 // The topic to open by default when opening the help dialog.
 const std::string default_show_topic = "..introduction";
 const std::string unknown_unit_topic = ".unknown_unit";
@@ -88,61 +76,6 @@ const std::string faction_prefix = "faction_";
 const std::string era_prefix = "era_";
 const std::string variation_prefix = "variation_";
 const std::string ability_prefix = "ability_";
-
-static bool is_cjk_char(const char32_t ch)
-{
-	/**
-	 * You can check these range at http://unicode.org/charts/
-	 * see the "East Asian Scripts" part.
-	 * Notice that not all characters in that part is still in use today, so don't list them all here.
-	 * Below are characters that I guess may be used in wesnoth translations.
-	 */
-
-	//FIXME add range from Japanese-specific and Korean-specific section if you know the characters are used today.
-
-	if (ch < 0x2e80) return false; // shortcut for common non-CJK
-
-	return
-		//Han Ideographs: all except Supplement
-		(ch >= 0x4e00 && ch < 0x9fcf) ||
-		(ch >= 0x3400 && ch < 0x4dbf) ||
-		(ch >= 0x20000 && ch < 0x2a6df) ||
-		(ch >= 0xf900 && ch < 0xfaff) ||
-		(ch >= 0x3190 && ch < 0x319f) ||
-
-		//Radicals: all except Ideographic Description
-		(ch >= 0x2e80 && ch < 0x2eff) ||
-		(ch >= 0x2f00 && ch < 0x2fdf) ||
-		(ch >= 0x31c0 && ch < 0x31ef) ||
-
-		//Chinese-specific: Bopomofo and Bopomofo Extended
-		(ch >= 0x3104 && ch < 0x312e) ||
-		(ch >= 0x31a0 && ch < 0x31bb) ||
-
-		//Yi-specific: Yi Radicals, Yi Syllables
-		(ch >= 0xa490 && ch < 0xa4c7) ||
-		(ch >= 0xa000 && ch < 0xa48d) ||
-
-		//Japanese-specific: Hiragana, Katakana, Kana Supplement
-		(ch >= 0x3040 && ch <= 0x309f) ||
-		(ch >= 0x30a0 && ch <= 0x30ff) ||
-		(ch >= 0x1b000 && ch <= 0x1b001) ||
-
-		//Ainu-specific: Katakana Phonetic Extensions
-		(ch >= 0x31f0 && ch <= 0x31ff) ||
-
-		//Korean-specific: Hangul Syllables, Hangul Jamo, Hangul Jamo Extended-A, Hangul Jamo Extended-B
-		(ch >= 0xac00 && ch < 0xd7af) ||
-		(ch >= 0x1100 && ch <= 0x11ff) ||
-		(ch >= 0xa960 && ch <= 0xa97c) ||
-		(ch >= 0xd7b0 && ch <= 0xd7fb) ||
-
-		//CJK Symbols and Punctuation
-		(ch >= 0x3000 && ch < 0x303f) ||
-
-		//Halfwidth and Fullwidth Forms
-		(ch >= 0xff00 && ch < 0xffef);
-}
 
 bool section_is_referenced(const std::string &section_id, const config &cfg)
 {
@@ -585,7 +518,7 @@ std::vector<topic> generate_era_topics(const bool sort_generated, const std::str
 {
 	std::vector<topic> topics;
 
-	auto era = game_cfg->find_child("era","id", era_id);
+	auto era = game_config_manager::get()->game_config().find_child("era","id", era_id);
 	if(era && !era["hide_help"].to_bool()) {
 		topics = generate_faction_topics(*era, sort_generated);
 
@@ -913,7 +846,7 @@ void generate_races_sections(const config* help_cfg, section& sec, int level)
 
 void generate_era_sections(const config* help_cfg, section & sec, int level)
 {
-	for (const config & era : game_cfg->child_range("era")) {
+	for(const config& era : game_config_manager::get()->game_config().child_range("era")) {
 		if (era["hide_help"].to_bool()) {
 			continue;
 		}
@@ -1308,46 +1241,12 @@ section *find_section(section &sec, const std::string &id)
 	return const_cast<section *>(find_section(const_cast<const section &>(sec), id));
 }
 
-std::string remove_first_space(const std::string& text)
-{
-	if (text.length() > 0 && text[0] == ' ') {
-		return text.substr(1);
-	}
-	return text;
-}
-
-std::string get_first_word(const std::string &s)
-{
-	std::size_t first_word_start = s.find_first_not_of(' ');
-	if (first_word_start == std::string::npos) {
-		return s;
-	}
-	std::size_t first_word_end = s.find_first_of(" \n", first_word_start);
-	if( first_word_end == first_word_start ) {
-		// This word is '\n'.
-		first_word_end = first_word_start+1;
-	}
-
-	//if no gap(' ' or '\n') found, test if it is CJK character
-	std::string re = s.substr(0, first_word_end);
-
-	utf8::iterator ch(re);
-	if (ch == utf8::iterator::end(re))
-		return re;
-
-	char32_t firstchar = *ch;
-	if (is_cjk_char(firstchar)) {
-		re = unicode_cast<std::string>(firstchar);
-	}
-	return re;
-}
-
 void generate_contents()
 {
 	default_toplevel.clear();
 	hidden_sections.clear();
-	if (game_cfg != nullptr) {
-		const config *help_config = &game_cfg->child_or_empty("help");
+	if(auto gcm = game_config_manager::get()) {
+		const config *help_config = &gcm->game_config().child_or_empty("help");
 		try {
 			default_toplevel = parse_config(help_config);
 			// Create a config object that contains everything that is
