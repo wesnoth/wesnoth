@@ -583,9 +583,10 @@ std::vector<std::string> unit_type::get_ability_list() const
 
 config unit_type::abilities_cfg() const {
 	const config& new_cfg = get_cfg();
-	config abil_cfg = new_cfg.has_child("abilities")
-		? new_cfg.mandatory_child("abilities")
-		: config();
+	config abil_cfg;
+	if(new_cfg.has_child("abilities")) {
+		abil_cfg = new_cfg.mandatory_child("abilities");
+	}
 
 	// abilities via the [unit_type]abilities key.
 	if(new_cfg.has_attribute("abilities")) {
