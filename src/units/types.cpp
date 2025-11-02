@@ -266,13 +266,12 @@ void unit_type::build_help_index(
 
 	for(const config& adv : cfg.child_range("advancement")) {
 		for(const config& effect : adv.child_range("effect")) {
-			auto abil_cfg = effect.optional_child("abilities");
-
-			if(!abil_cfg || effect["apply_to"] != "new_ability") {
+			auto abil_cfg = unit_type_data::add_registry_entries(effect, "abilities", unit_types.abilities());
+			if(!abil_cfg.empty() || effect["apply_to"] != "new_ability") {
 				continue;
 			}
 
-			for(const auto [key, cfg] : abil_cfg->all_children_view()) {
+			for(const auto [key, cfg] : abil_cfg.all_children_view()) {
 				adv_abilities_.emplace_back(cfg);
 			}
 		}
@@ -580,23 +579,7 @@ std::vector<std::string> unit_type::get_ability_list() const
 }
 
 config unit_type::abilities_cfg() const {
-	const config& new_cfg = get_cfg();
-	config abil_cfg = new_cfg.child_or_empty("abilities");
-
-	// abilities via the [unit_type]abilities key.
-	if(new_cfg.has_attribute("abilities")) {
-		std::vector<std::string> abil_ids_list = utils::split(new_cfg["abilities"].str());
-		auto abil_map = unit_types.abilities();
-		for(const std::string& id : abil_ids_list) {
-			auto ability = abil_map.find(id);
-			if(ability != abil_map.end()) {
-				abil_cfg.append_children(ability->second);
-			} else {
-				WRN_UT << "Ability with id ‘" << id << "’ does not exist in registry, skipping.";
-			}
-		}
-	}
-	return abil_cfg;
+	return unit_type_data::add_registry_entries(get_cfg(), "abilities", unit_types.abilities());
 }
 
 bool unit_type::hide_help() const
@@ -1075,6 +1058,27 @@ void unit_type::fill_variations_and_gender()
 
 	gui2::dialogs::loading_screen::progress();
 }
+
+static config add_registry_entries(
+	const config& base_cfg,
+	const std::string& registry_name,
+	const std::map<std::string, config>& registry
+)
+{
+	config to_append = base_cfg.child_or_empty("abilities");
+	if(base_cfg.has_attribute(registry_name)) {
+		std::vector<std::string> abil_ids_list = utils::split(base_cfg[registry_name].str());
+		for(const std::string& id : abil_ids_list) {
+			auto registry_entry = registry.find(id);
+			if(registry_entry != registry.end()) {
+				to_append.append_children(registry_entry->second);
+			} else {
+				WRN_UT << "ID ‘" << id << "’ does not exist in registry for ‘" << registry_name << "’, skipping.";
+			}
+		}
+	}
+}
+
 /**
  * Resets all data based on the provided config.
  * This includes some processing of the config, such as expanding base units.
