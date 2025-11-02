@@ -252,18 +252,15 @@ void unit_type::build_help_index(
 		genders_.push_back(unit_race::MALE);
 	}
 
-	auto abil_cfg = abilities_cfg();
-	if(!abil_cfg.empty()) {
-		for(const auto [key, cfg] : abil_cfg.all_children_view()) {
-			config subst_cfg(cfg);
-			subst_cfg["name"] = unit_abilities::substitute_variables(cfg["name"], key, cfg);
-			subst_cfg["female_name"] = unit_abilities::substitute_variables(cfg["female_name"], key, cfg);
-			subst_cfg["description"] = unit_abilities::substitute_variables(cfg["description"], key, cfg);
-			subst_cfg["name_inactive"] = unit_abilities::substitute_variables(cfg["name_inactive"], key, cfg);
-			subst_cfg["female_name_inactive"] = unit_abilities::substitute_variables(cfg["female_name_inactive"], key, cfg);
-			subst_cfg["description_inactive"] = unit_abilities::substitute_variables(cfg["description_inactive"], key, cfg);
-			abilities_.emplace_back(subst_cfg);
-		}
+	for(const auto [key, cfg] : abilities_cfg().all_children_view()) {
+		config subst_cfg(cfg);
+		subst_cfg["name"] = unit_abilities::substitute_variables(cfg["name"], key, cfg);
+		subst_cfg["female_name"] = unit_abilities::substitute_variables(cfg["female_name"], key, cfg);
+		subst_cfg["description"] = unit_abilities::substitute_variables(cfg["description"], key, cfg);
+		subst_cfg["name_inactive"] = unit_abilities::substitute_variables(cfg["name_inactive"], key, cfg);
+		subst_cfg["female_name_inactive"] = unit_abilities::substitute_variables(cfg["female_name_inactive"], key, cfg);
+		subst_cfg["description_inactive"] = unit_abilities::substitute_variables(cfg["description_inactive"], key, cfg);
+		abilities_.emplace_back(subst_cfg);
 	}
 
 	for(const config& adv : cfg.child_range("advancement")) {
