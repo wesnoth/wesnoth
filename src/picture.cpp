@@ -205,6 +205,104 @@ parsed_data_URI::parsed_data_URI(std::string_view data_URI)
 	good = (scheme == "data" && base64 == "base64" && mime.length() > 0 && data.length() > 0);
 }
 
+// Cashe for intermediate images that are not the final result but gets reused a lot.
+// Mostly used for modified images that are later cut into several tiles, such as water tiles.
+// Purged based on time since last access and remaining space. (TTL + LRU)
+struct IntermediateCacheEntry
+{
+	surface surf;
+	size_t size_bytes;
+	std::chrono::steady_clock::time_point last_access;
+};
+
+// This map will store a key (locator) and an *iterator* into our LRU list.
+using IntermediateCacheLookupMap = cache_map<image::locator, std::list<std::pair<image::locator, IntermediateCacheEntry>>::iterator>;
+using IntermediateCacheLRUList = std::list<std::pair<image::locator, IntermediateCacheEntry>>;
+IntermediateCacheLookupMap intermediate_surface_lookup_;
+IntermediateCacheLRUList intermediate_surface_lru_list_;
+
+size_t intermediate_surface_cache_size_ = 0;
+constexpr size_t MAX_INTERMEDIATE_CACHE_SIZE = 200 * 1024 * 1024; // 200 MB, arbitrary limit. From testing a 2.5MB png file took up 14MB in cache.
+constexpr std::chrono::seconds INTERMEDIATE_CACHE_TTL = std::chrono::seconds(10);
+static std::chrono::steady_clock::time_point last_stale_check_time = std::chrono::steady_clock::now();
+
+/**
+ * Prunes the intermediate surface cache based on TTL policies (11-21sec of stale item).
+ * The nature of intermediate images is such that they are often reused in bursts and then never again,
+ * since the final images are cached elsewhere. Thus there is no need to keep them around for long.
+ */
+static void prune_stale_intermediate_cache()
+{
+	std::chrono::steady_clock::time_point now = std::chrono::steady_clock::now();
+	if (now - last_stale_check_time >= std::chrono::seconds(11)) // Check once per 11 seconds.
+	{
+		last_stale_check_time = now;
+		while (!intermediate_surface_lru_list_.empty()) {
+			std::pair<image::locator, IntermediateCacheEntry>& lru_item = intermediate_surface_lru_list_.back();
+			if (now - lru_item.second.last_access > INTERMEDIATE_CACHE_TTL) { // If expired, evict it.
+				intermediate_surface_cache_size_ -= lru_item.second.size_bytes;
+				intermediate_surface_lookup_.erase(lru_item.first);
+				intermediate_surface_lru_list_.pop_back();
+			}
+			else { // Found first non-stale item, stop.
+				break;
+			}
+		}
+	}
+}
+
+/**
+ * Prunes the intermediate surface cache based on LRU policies (cache over 200MB).
+ */
+static void prune_oversized_intermediate_cache(size_t space_needed = 0)
+{
+	while ((intermediate_surface_cache_size_ + space_needed) > MAX_INTERMEDIATE_CACHE_SIZE && !intermediate_surface_lru_list_.empty())
+	{
+		// Evict from the back (least recently used).
+		std::pair<image::locator, IntermediateCacheEntry>& lru_item = intermediate_surface_lru_list_.back();
+		intermediate_surface_cache_size_ -= lru_item.second.size_bytes;
+		intermediate_surface_lookup_.erase(lru_item.first);
+		intermediate_surface_lru_list_.pop_back();
+	}
+}
+
+/**
+ * Finds a surface in the intermediate cache. Returns null if not found.
+ * If found, updates its timestamp and moves it to the front of the LRU list.
+ */
+static surface find_in_intermediate_cache(const image::locator& key)
+{
+	IntermediateCacheLookupMap::iterator it = intermediate_surface_lookup_.find(key);
+	if (it == intermediate_surface_lookup_.end()) {
+		return nullptr; // Cache miss.
+	}
+	std::list<std::pair<image::locator, IntermediateCacheEntry>>::iterator lru_it = it->second; // Cache hit.
+	lru_it->second.last_access = std::chrono::steady_clock::now(); // Update timestamp.
+	intermediate_surface_lru_list_.splice(intermediate_surface_lru_list_.begin(), intermediate_surface_lru_list_, lru_it); // Move to front of LRU list.
+	return lru_it->second.surf;
+}
+
+/**
+ * Adds a new intermediate surface to the cache.
+ */
+static void add_to_intermediate_cache(const image::locator& key, const surface& surf)
+{
+	if (!surf) {
+		return;
+	}
+	size_t size_bytes = surf->h * surf->pitch;
+	if (size_bytes > MAX_INTERMEDIATE_CACHE_SIZE) { // Image is too big to cache.
+		return;
+	}
+
+	if (intermediate_surface_lookup_.find(key) == intermediate_surface_lookup_.end()) {
+		prune_oversized_intermediate_cache(size_bytes); // Prune cache before adding to ensure we have space
+		intermediate_surface_lru_list_.emplace_front(key, IntermediateCacheEntry{ surf, size_bytes, std::chrono::steady_clock::now() });
+		intermediate_surface_lookup_[key] = intermediate_surface_lru_list_.begin();
+		intermediate_surface_cache_size_ += size_bytes;
+	}
+}
+
 } // end anon namespace
 
 void flush_cache()
@@ -223,6 +321,9 @@ void flush_cache()
 	texture_tod_colored_.clear();
 	image_existence_map.clear();
 	precached_dirs.clear();
+	intermediate_surface_lookup_.clear();
+	intermediate_surface_lru_list_.clear();
+	intermediate_surface_cache_size_ = 0;
 }
 
 locator locator::clone(const std::string& mods) const
@@ -390,45 +491,74 @@ static surface load_image_file(const image::locator& loc)
 	return res;
 }
 
+/**
+ * Core image asset delivery pipeline.
+ * Fetches, modifies, caches, and prepares an image, or a cut of an image, (often a tile) for rendering.
+ * Caches are stored permanently for base images and final results. Cache short duration for intermediate images.
+ * @param loc The image::locator specifying the file, modifications, and the "relative hex offset location" (for tile cutting larger images).
+ * @return The final surface ready for drawing, or nullptr if the image is empty.
+ */
 static surface load_image_sub_file(const image::locator& loc)
 {
-	// Create a new surface in-memory on which to apply the modifications
-	surface surf = get_surface(loc.get_filename(), UNSCALED).clone();
-	if(surf == nullptr) {
-		return nullptr;
-	}
+	surface surf = nullptr;
+	prune_stale_intermediate_cache(); // Prune stale items from intermediate cache
 
-	modification_queue mods = modification::decode(loc.get_modifications());
+	//Handle images with modifications.
+	modification_queue mods = modification::decode(loc.get_modifications()); // Decode modifications (if any)
+	if (!mods.empty()) {
 
-	while(!mods.empty()) {
-		try {
-			std::invoke(mods.top(), surf);
-		} catch(const image::modification::imod_exception& e) {
-			std::ostringstream ss;
-			ss << "\n";
-
-			for(const std::string& mod_name : utils::parenthetical_split(loc.get_modifications(), '~')) {
-				ss << "\t" << mod_name << "\n";
-			}
-
-			ERR_CFG << "Failed to apply a modification to an image:\n"
-					<< "Image: " << loc.get_filename() << "\n"
-					<< "Modifications: " << ss.str() << "\n"
-					<< "Error: " << e.message;
+		// If this is a cutout of a larger image, first try to find the uncut modified image in our intermediate cache
+		image::locator intermediate_cache_key;
+		if (loc.get_loc().valid()) {
+			intermediate_cache_key = image::locator(loc.get_filename(), loc.get_modifications());
+			surf = find_in_intermediate_cache(intermediate_cache_key);
 		}
 
-		mods.pop();
+		// If not found in intermediate_cache, create it.
+		if (surf == nullptr) {
+			surf = get_surface(loc.get_filename(), UNSCALED).clone(); // Clone base image.
+			if (surf == nullptr) {
+				return nullptr;
+			}
+			while (!mods.empty()) {
+				try {
+					std::invoke(mods.top(), surf);
+				}
+				catch (const image::modification::imod_exception& e) { // Log modification errors
+					std::ostringstream ss;
+					ss << "\n";
+					for (const std::string& mod_name : utils::parenthetical_split(loc.get_modifications(), '~')) {
+						ss << "\t" << mod_name << "\n";
+					}
+					ERR_CFG << "Failed to apply a modification to an image:\n"
+						<< "Image: " << loc.get_filename() << "\n"
+						<< "Modifications: " << ss.str() << "\n"
+						<< "Error: " << e.message;
+				}
+				mods.pop();
+			}
+			if (loc.get_loc().valid()) { // Cache intermediate images that are likely to be used in further cutouts, other cases are cached elsewhere.
+				add_to_intermediate_cache(intermediate_cache_key, surf);
+			}
+		}
+	}
+	else { // No modifications: reuse base (cached) surface directly.
+		surf = get_surface(loc.get_filename(), UNSCALED);
+		if (surf == nullptr) {
+			return nullptr;
+		}
 	}
 
+	// Cut out a hex of the image. (Mostly for large terrain images that are split and placed on multiple hex tiles.)
 	if(loc.get_loc().valid()) {
 		rect srcrect(
-			((tile_size * 3) / 4)                           *  loc.get_loc().x,
-			  tile_size * loc.get_loc().y + (tile_size / 2) * (loc.get_loc().x % 2),
-			  tile_size,
-			  tile_size
+			((tile_size * 3) / 4) * loc.get_loc().x,
+			tile_size * loc.get_loc().y + (tile_size / 2) * (loc.get_loc().x % 2),
+			tile_size,
+			tile_size
 		);
 
-		if(loc.get_center_x() >= 0 && loc.get_center_y() >= 0) {
+		if (loc.get_center_x() >= 0 && loc.get_center_y() >= 0) {
 			srcrect.x += surf->w / 2 - loc.get_center_x();
 			srcrect.y += surf->h / 2 - loc.get_center_y();
 		}
