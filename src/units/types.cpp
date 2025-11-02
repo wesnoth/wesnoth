@@ -583,10 +583,7 @@ std::vector<std::string> unit_type::get_ability_list() const
 
 config unit_type::abilities_cfg() const {
 	const config& new_cfg = get_cfg();
-	config abil_cfg;
-	if(new_cfg.has_child("abilities")) {
-		abil_cfg = new_cfg.mandatory_child("abilities");
-	}
+	config abil_cfg = new_cfg.child_or_empty("abilities");
 
 	// abilities via the [unit_type]abilities key.
 	if(new_cfg.has_attribute("abilities")) {
@@ -760,20 +757,17 @@ int unit_type::resistance_against(const std::string& damage_name, bool attacker)
 {
 	int resistance = movement_type_.resistance_against(damage_name);
 	unit_ability_list resistance_abilities;
-	auto abilities = abilities_cfg();
 
-	if(!abilities.empty()) {
-		for(const config& cfg : abilities.child_range("resistance")) {
-			if(!cfg["affect_self"].to_bool(true)) {
-				continue;
-			}
-
-			if(!resistance_filter_matches(cfg, attacker, damage_name, 100 - resistance)) {
-				continue;
-			}
-
-			resistance_abilities.emplace_back(&cfg, map_location::null_location(), map_location::null_location());
+	for(const config& cfg : abilities_cfg().child_range("resistance")) {
+		if(!cfg["affect_self"].to_bool(true)) {
+			continue;
 		}
+
+		if(!resistance_filter_matches(cfg, attacker, damage_name, 100 - resistance)) {
+			continue;
+		}
+
+		resistance_abilities.emplace_back(&cfg, map_location::null_location(), map_location::null_location());
 	}
 
 	if(!resistance_abilities.empty()) {
