@@ -1059,7 +1059,7 @@ void unit_type::fill_variations_and_gender()
 	gui2::dialogs::loading_screen::progress();
 }
 
-static config add_registry_entries(
+config unit_type_data::add_registry_entries(
 	const config& base_cfg,
 	const std::string& registry_name,
 	const std::map<std::string, config>& registry
@@ -1077,6 +1077,7 @@ static config add_registry_entries(
 			}
 		}
 	}
+	return to_append;
 }
 
 /**
@@ -1107,8 +1108,8 @@ void unit_type_data::set_config(const game_config_view& cfg)
 	for(const auto& abil_cfg : cfg.child_range("abilities")) {
 		for(const auto& [key, child_cfg] : abil_cfg.get().all_children_range()) {
 			const std::string& id = child_cfg["unique_id"].str(child_cfg["id"]);
-			if(abilities_map_.find(id) == abilities_map_.end()) {
-				abilities_map_.try_emplace(id, config(key, child_cfg));
+			if(abilities_registry_.find(id) == abilities_registry_.end()) {
+				abilities_registry_.try_emplace(id, config(key, child_cfg));
 			} else {
 				WRN_UT << "Ability with id ‘" << id << "’ already exists, not adding.";
 			}
@@ -1292,7 +1293,7 @@ void unit_type_data::clear()
 	types_.clear();
 	movement_types_.clear();
 	races_.clear();
-	abilities_map_.clear();
+	abilities_registry_.clear();
 	build_status_ = unit_type::NOT_BUILT;
 
 	hide_help_all_ = false;
