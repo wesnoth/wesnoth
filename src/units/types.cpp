@@ -252,7 +252,8 @@ void unit_type::build_help_index(
 		genders_.push_back(unit_race::MALE);
 	}
 
-	for(const auto [key, cfg] : abilities_cfg().all_children_view()) {
+	auto abilities = abilities_cfg();
+	for(const auto [key, cfg] : abilities.all_children_view()) {
 		config subst_cfg(cfg);
 		subst_cfg["name"] = unit_abilities::substitute_variables(cfg["name"], key, cfg);
 		subst_cfg["female_name"] = unit_abilities::substitute_variables(cfg["female_name"], key, cfg);
@@ -754,8 +755,9 @@ int unit_type::resistance_against(const std::string& damage_name, bool attacker)
 {
 	int resistance = movement_type_.resistance_against(damage_name);
 	unit_ability_list resistance_abilities;
+	auto abilities = abilities_cfg();
 
-	for(const config& cfg : abilities_cfg().child_range("resistance")) {
+	for(const config& cfg : abilities.child_range("resistance")) {
 		if(!cfg["affect_self"].to_bool(true)) {
 			continue;
 		}
