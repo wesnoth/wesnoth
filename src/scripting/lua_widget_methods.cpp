@@ -71,7 +71,7 @@ int intf_show_dialog(lua_State* L)
 	std::unique_ptr<gui2::window> wp;
 	try {
 		gui2::builder_window::window_resolution def(def_cfg);
-		wp = std::make_unique<gui2::window>(def);
+		wp = gui2::build(def);
 	} catch (const wml_exception& error) {
 		error.caught();
 		error.show();
