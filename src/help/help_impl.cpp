@@ -61,10 +61,6 @@ help::section default_toplevel;
 // All sections and topics not referenced from the default toplevel.
 help::section hidden_sections;
 
-int last_num_encountered_units = -1;
-int last_num_encountered_terrains = -1;
-boost::tribool last_debug_state = boost::indeterminate;
-
 const int max_section_level = 15;
 // The topic to open by default when opening the help dialog.
 const std::string default_show_topic = "..introduction";
@@ -1241,10 +1237,11 @@ section *find_section(section &sec, const std::string &id)
 	return const_cast<section *>(find_section(const_cast<const section &>(sec), id));
 }
 
-void generate_contents()
+std::pair<section, section> generate_contents()
 {
-	default_toplevel.clear();
-	hidden_sections.clear();
+	std::pair res{section{}, section{}};
+	auto& [default_toplevel, hidden_sections] = res;
+
 	if(auto gcm = game_config_manager::get()) {
 		const config *help_config = &gcm->game_config().child_or_empty("help");
 		try {
@@ -1299,6 +1296,8 @@ void generate_contents()
 			PLAIN_LOG << msg.str();
 		}
 	}
+
+	return res;
 }
 
 // id starting with '.' are hidden
