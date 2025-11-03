@@ -245,7 +245,7 @@ private:
 	tooltips::manager tooltip_manager_;
 	std::unique_ptr<font::floating_label_context> floating_label_manager_;
 
-	std::unique_ptr<help::help_manager> help_manager_;
+	std::shared_ptr<help::help_manager> help_manager_;
 
 	/** Quit main loop flag */
 	bool do_quit_;
