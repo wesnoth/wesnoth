@@ -25,6 +25,7 @@
 #include "game_errors.hpp" //thrown sometimes
 #include "language.hpp" // for string_table
 #include "log.hpp"
+#include "serialization/string_utils.hpp"
 #include "units/abilities.hpp"
 #include "units/animation.hpp"
 #include "units/unit.hpp"
@@ -35,6 +36,7 @@
 
 #include <array>
 #include <locale>
+#include <vector>
 
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
@@ -44,6 +46,7 @@ static lg::log_domain log_config("config");
 
 static lg::log_domain log_unit("unit");
 #define DBG_UT LOG_STREAM(debug, log_unit)
+#define WRN_UT LOG_STREAM(warn, log_unit)
 #define LOG_UT LOG_STREAM(info, log_unit)
 #define ERR_UT LOG_STREAM(err, log_unit)
 
@@ -249,28 +252,26 @@ void unit_type::build_help_index(
 		genders_.push_back(unit_race::MALE);
 	}
 
-	if(auto abil_cfg = cfg.optional_child("abilities")) {
-		for(const auto [key, cfg] : abil_cfg->all_children_view()) {
-			config subst_cfg(cfg);
-			subst_cfg["name"] = unit_abilities::substitute_variables(cfg["name"], key, cfg);
-			subst_cfg["female_name"] = unit_abilities::substitute_variables(cfg["female_name"], key, cfg);
-			subst_cfg["description"] = unit_abilities::substitute_variables(cfg["description"], key, cfg);
-			subst_cfg["name_inactive"] = unit_abilities::substitute_variables(cfg["name_inactive"], key, cfg);
-			subst_cfg["female_name_inactive"] = unit_abilities::substitute_variables(cfg["female_name_inactive"], key, cfg);
-			subst_cfg["description_inactive"] = unit_abilities::substitute_variables(cfg["description_inactive"], key, cfg);
-			abilities_.emplace_back(subst_cfg);
-		}
+	auto abilities = abilities_cfg();
+	for(const auto [key, cfg] : abilities.all_children_view()) {
+		config subst_cfg(cfg);
+		subst_cfg["name"] = unit_abilities::substitute_variables(cfg["name"], key, cfg);
+		subst_cfg["female_name"] = unit_abilities::substitute_variables(cfg["female_name"], key, cfg);
+		subst_cfg["description"] = unit_abilities::substitute_variables(cfg["description"], key, cfg);
+		subst_cfg["name_inactive"] = unit_abilities::substitute_variables(cfg["name_inactive"], key, cfg);
+		subst_cfg["female_name_inactive"] = unit_abilities::substitute_variables(cfg["female_name_inactive"], key, cfg);
+		subst_cfg["description_inactive"] = unit_abilities::substitute_variables(cfg["description_inactive"], key, cfg);
+		abilities_.emplace_back(subst_cfg);
 	}
 
 	for(const config& adv : cfg.child_range("advancement")) {
 		for(const config& effect : adv.child_range("effect")) {
-			auto abil_cfg = effect.optional_child("abilities");
-
-			if(!abil_cfg || effect["apply_to"] != "new_ability") {
+			auto abil_cfg = unit_type_data::add_registry_entries(effect, "abilities", unit_types.abilities());
+			if(!abil_cfg.empty() || effect["apply_to"] != "new_ability") {
 				continue;
 			}
 
-			for(const auto [key, cfg] : abil_cfg->all_children_view()) {
+			for(const auto [key, cfg] : abil_cfg.all_children_view()) {
 				adv_abilities_.emplace_back(cfg);
 			}
 		}
@@ -546,8 +547,9 @@ int unit_type::experience_needed(bool with_acceleration) const
 
 bool unit_type::has_ability_by_id(const std::string& ability) const
 {
-	if(auto abil = get_cfg().optional_child("abilities")) {
-		for(const auto [key, cfg] : abil->all_children_view()) {
+	auto abil = abilities_cfg();
+	if(!abil.empty()) {
+		for(const auto [key, cfg] : abil.all_children_view()) {
 			if(cfg["id"] == ability) {
 				return true;
 			}
@@ -561,20 +563,23 @@ std::vector<std::string> unit_type::get_ability_list() const
 {
 	std::vector<std::string> res;
 
-	auto abilities = get_cfg().optional_child("abilities");
-	if(!abilities) {
+	auto abilities = abilities_cfg();
+	if(abilities.empty()) {
 		return res;
 	}
 
-	for(const auto [key, cfg] : abilities->all_children_view()) {
+	for(const auto [key, cfg] : abilities.all_children_view()) {
 		std::string id = cfg["id"];
-
 		if(!id.empty()) {
 			res.push_back(std::move(id));
 		}
 	}
 
 	return res;
+}
+
+config unit_type::abilities_cfg() const {
+	return unit_type_data::add_registry_entries(get_cfg(), "abilities", unit_types.abilities());
 }
 
 bool unit_type::hide_help() const
@@ -733,19 +738,18 @@ int unit_type::resistance_against(const std::string& damage_name, bool attacker)
 {
 	int resistance = movement_type_.resistance_against(damage_name);
 	unit_ability_list resistance_abilities;
+	auto abilities = abilities_cfg();
 
-	if(auto abilities = get_cfg().optional_child("abilities")) {
-		for(const config& cfg : abilities->child_range("resistance")) {
-			if(!cfg["affect_self"].to_bool(true)) {
-				continue;
-			}
-
-			if(!resistance_filter_matches(cfg, attacker, damage_name, 100 - resistance)) {
-				continue;
-			}
-
-			resistance_abilities.emplace_back(&cfg, map_location::null_location(), map_location::null_location());
+	for(const config& cfg : abilities.child_range("resistance")) {
+		if(!cfg["affect_self"].to_bool(true)) {
+			continue;
 		}
+
+		if(!resistance_filter_matches(cfg, attacker, damage_name, 100 - resistance)) {
+			continue;
+		}
+
+		resistance_abilities.emplace_back(&cfg, map_location::null_location(), map_location::null_location());
 	}
 
 	if(!resistance_abilities.empty()) {
@@ -1054,6 +1058,28 @@ void unit_type::fill_variations_and_gender()
 
 	gui2::dialogs::loading_screen::progress();
 }
+
+config unit_type_data::add_registry_entries(
+	const config& base_cfg,
+	const std::string& registry_name,
+	const std::map<std::string, config>& registry
+)
+{
+	config to_append = base_cfg.child_or_empty("abilities");
+	if(base_cfg.has_attribute(registry_name)) {
+		std::vector<std::string> abil_ids_list = utils::split(base_cfg[registry_name].str());
+		for(const std::string& id : abil_ids_list) {
+			auto registry_entry = registry.find(id);
+			if(registry_entry != registry.end()) {
+				to_append.append_children(registry_entry->second);
+			} else {
+				WRN_UT << "ID ‘" << id << "’ does not exist in registry for ‘" << registry_name << "’, skipping.";
+			}
+		}
+	}
+	return to_append;
+}
+
 /**
  * Resets all data based on the provided config.
  * This includes some processing of the config, such as expanding base units.
@@ -1077,6 +1103,17 @@ void unit_type_data::set_config(const game_config_view& cfg)
 		races_.emplace(race.id(), race);
 
 		gui2::dialogs::loading_screen::progress();
+	}
+
+	for(const auto& abil_cfg : cfg.child_range("abilities")) {
+		for(const auto& [key, child_cfg] : abil_cfg.get().all_children_range()) {
+			const std::string& id = child_cfg["unique_id"].str(child_cfg["id"]);
+			if(abilities_registry_.find(id) == abilities_registry_.end()) {
+				abilities_registry_.try_emplace(id, config(key, child_cfg));
+			} else {
+				WRN_UT << "Ability with id ‘" << id << "’ already exists, not adding.";
+			}
+		}
 	}
 
 	// Movetype resistance patching
@@ -1256,6 +1293,7 @@ void unit_type_data::clear()
 	types_.clear();
 	movement_types_.clear();
 	races_.clear();
+	abilities_registry_.clear();
 	build_status_ = unit_type::NOT_BUILT;
 
 	hide_help_all_ = false;

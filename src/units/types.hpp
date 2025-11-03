@@ -234,8 +234,7 @@ public:
 	config::const_child_itors possible_traits() const
 	{ return possible_traits_.child_range("trait"); }
 
-	const config& abilities_cfg() const
-	{ return get_cfg().child_or_empty("abilities"); }
+	config abilities_cfg() const;
 
 	config::const_child_itors advancements() const
 	{ return advancements_; }
@@ -402,7 +401,15 @@ public:
 	}
 	const race_map& races() const { return races_; }
 	const movement_type_map& movement_types() const { return movement_types_; }
+	const std::map<std::string, config>& abilities() const { return abilities_registry_; }
 	config_array_view traits() const { return units_cfg().child_range("trait"); }
+
+	static config add_registry_entries(
+		const config& base_cfg,
+		const std::string& registry_name,
+		const std::map<std::string, config>& registry
+	);
+
 	void set_config(const game_config_view& cfg);
 
 	/** Finds a unit_type by its id() and makes sure it is built to the specified level. */
@@ -432,11 +439,13 @@ private:
 	movement_type_map movement_types_;
 	race_map races_;
 
+	std::map<std::string, config> abilities_registry_;
+
 	/** True if [hide_help] contains a 'all=yes' at its root. */
 	bool hide_help_all_;
 	// vectors containing the [hide_help] and its sub-tags [not]
-	std::vector< std::set<std::string>> hide_help_type_;
-	std::vector< std::set<std::string>> hide_help_race_;
+	std::vector<std::set<std::string>> hide_help_type_;
+	std::vector<std::set<std::string>> hide_help_race_;
 
 	const game_config_view& units_cfg() const { return units_cfg_; }
 	game_config_view units_cfg_;

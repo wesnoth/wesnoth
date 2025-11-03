@@ -2267,10 +2267,11 @@ void unit::apply_builtin_effect(const std::string& apply_to, const config& effec
 			emit_zoc_ = v->to_bool();
 		}
 	} else if(apply_to == "new_ability") {
-		if(auto ab_effect = effect.optional_child("abilities")) {
+		auto abilities = unit_type_data::add_registry_entries(effect, "abilities", unit_types.abilities());
+		if(!abilities.empty()) {
 			set_attr_changed(UA_ABILITIES);
 			config to_append;
-			for(const auto [key, cfg] : ab_effect->all_children_view()) {
+			for(const auto [key, cfg] : abilities.all_children_view()) {
 				if(!has_ability_by_id(cfg["id"])) {
 					to_append.add_child(key, cfg);
 					for(const config& event : cfg.child_range("event")) {
