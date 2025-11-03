@@ -47,7 +47,6 @@
 #include <string>                       // for string, allocator, etc
 #include <utility>                      // for pair, make_pair
 #include <vector>                       // for vector, etc
-#include <boost/logic/tribool.hpp>
 #include "config.hpp"
 
 class game_config_view;
@@ -55,12 +54,6 @@ class unit_type;
 class terrain_type_data;
 
 namespace help {
-
-/**
- * Generate the help contents from the configurations given to the manager.
- */
-void generate_contents();
-
 
 /** Generate a topic text on the fly. */
 class topic_generator
@@ -272,6 +265,12 @@ std::vector<topic> generate_era_topics(const bool, const std::string & era_id);
 std::vector<topic> generate_trait_topics(const bool);
 
 /**
+ * Generate the help contents from the configurations given to the manager.
+ * @returns A pair consisting of the toplevel section and any hidden sections.
+ */
+std::pair<section, section> generate_contents();
+
+/**
  * Parse a help config, return the top level section. Return an empty
  * section if cfg is nullptr.
  */
@@ -308,15 +307,6 @@ section *find_section(section &sec, const std::string &id);
 
 /** Load the appropriate terrain types data to use */
 std::shared_ptr<terrain_type_data> load_terrain_types_data();
-
-// The default toplevel.
-extern help::section default_toplevel;
-// All sections and topics not referenced from the default toplevel.
-extern help::section hidden_sections;
-
-extern int last_num_encountered_units;
-extern int last_num_encountered_terrains;
-extern boost::tribool last_debug_state;
 
 extern const int max_section_level;
 // The topic to open by default when opening the help dialog.

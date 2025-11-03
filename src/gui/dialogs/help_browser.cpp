@@ -62,7 +62,6 @@ help_browser::help_browser(const help::section& toplevel, const std::string& ini
 	} else {
 		initial_topic_.insert(0, "-");
 	}
-	help::init_help();
 }
 
 void help_browser::pre_show()

@@ -19,11 +19,15 @@ class terrain_type;
 class unit;
 class unit_type;
 
+#include "help/help_impl.hpp"
+
+#include <boost/logic/tribool.hpp>
+
 #include <memory>
 #include <string>
 
-namespace help {
-
+namespace help
+{
 /**
  * The help implementation caches data parsed from the game_config. This class
  * is used to control the lifecycle of that cache, so that the cache will be
@@ -41,10 +45,16 @@ public:
 	help_manager(const help_manager&) = delete;
 	help_manager& operator=(const help_manager&) = delete;
 
-	~help_manager();
-
 	/** Returns the existing help_manager instance, or a newly allocated object otherwise. */
 	static std::shared_ptr<help_manager> get_instance();
+
+	/** Regenerates the cached help topics if necessary. */
+	void verify_cache();
+
+	const section& toplevel_section() const
+	{
+		return default_toplevel_;
+	}
 
 private:
 	/**
@@ -54,10 +64,19 @@ private:
 	 */
 	help_manager() = default;
 
+	int last_num_encountered_units_{-1};
+	int last_num_encountered_terrains_{-1};
+
+	boost::tribool last_debug_state_{boost::indeterminate};
+
+	/** The default toplevel. */
+	section default_toplevel_;
+
+	/** All sections and topics not referenced from the default toplevel. */
+	section hidden_sections_;
+
 	static inline std::shared_ptr<help_manager> singleton_;
 };
-
-void init_help();
 
 /**
  * Open the help browser. The help browser will have the topic with id
