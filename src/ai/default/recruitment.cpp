@@ -115,20 +115,20 @@ std::string data::to_string() const {
 }
 
 recruitment::recruitment(rca_context& context, const config& cfg)
-	: candidate_action(context, cfg),
-	important_hexes_(),
-	important_terrain_(),
-	own_units_in_combat_counter_(0),
-	average_local_cost_(),
-	cheapest_unit_costs_(),
-	combat_cache_(),
-	recruit_situation_change_observer_(),
-	average_lawful_bonus_(0.0),
-	recruitment_instructions_(),
-	recruitment_instructions_turn_(-1),
-	own_units_count_(),
-	total_own_units_(0),
-	scouts_wanted_(0)
+	: candidate_action(context, cfg)
+	, important_hexes_()
+	, important_terrain_()
+	, own_units_in_combat_counter_(0)
+	, average_local_cost_()
+	, cheapest_unit_costs_()
+	, combat_cache_()
+	, recruit_situation_change_observer_()
+	, average_lawful_bonus_(0.0)
+	, recruitment_instructions_()
+	, recruitment_instructions_turn_(-1)
+	, own_units_count_()
+	, total_own_units_(0)
+	, scouts_wanted_(0)
 {
 	if (cfg["state"] == "save_gold") {
 		state_ = SAVE_GOLD;
