@@ -468,8 +468,6 @@ public:
 		friend class attack_type;
 		/** Initialize weapon specials context for listing */
 		explicit specials_context_t(const attack_type& weapon, bool attacking);
-		/** Initialize weapon specials context for a unit type */
-		specials_context_t(const attack_type& weapon, const unit_type& self_type, const map_location& loc, bool attacking = true);
 		/** Initialize weapon specials context for a single unit */
 		specials_context_t(const attack_type& weapon, const_attack_ptr other_weapon,
 			unit_const_ptr self, unit_const_ptr other,
@@ -493,9 +491,6 @@ public:
 	}
 	specials_context_t specials_context(unit_const_ptr self, const map_location& loc, bool attacking = true) const {
 		return specials_context_t(*this, self, loc, attacking);
-	}
-	specials_context_t specials_context(const unit_type& self_type, const map_location& loc, bool attacking = true) const {
-		return specials_context_t(*this, self_type, loc, attacking);
 	}
 	specials_context_t specials_context_for_listing(bool attacking = true) const {
 		return specials_context_t(*this, attacking);
