@@ -439,10 +439,10 @@ void unit::set_has_ability_distant()
 void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 {
 	loc_ = map_location(cfg["x"], cfg["y"], wml_loc());
-	type_ = &get_unit_type(cfg["parent_type"].blank() ? cfg["type"].str() : cfg["parent_type"].str());
+	type_ = &get_unit_type(cfg["parent_type"].str(cfg["type"].str()));
 	race_ = &unit_race::null_race;
 	id_ = cfg["id"].str();
-	variation_ = cfg["variation"].empty() ? type_->default_variation() : cfg["variation"].str();
+	variation_ = cfg["variation"].str(type_->default_variation());
 	canrecruit_ = cfg["canrecruit"].to_bool();
 	gender_ = generate_gender(*type_, cfg);
     name_ = gender_value(cfg, gender_, "male_name", "female_name", "name").t_str();
@@ -533,12 +533,12 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 		auto overlays = utils::parenthetical_split(v->str(), ',');
 		if(overlays.size() > 0) {
 			deprecated_message("[unit]overlays", DEP_LEVEL::PREEMPTIVE, {1, 17, 0}, "This warning is only triggered by the cases that *do* still work: setting [unit]overlays= works, but the [unit]overlays attribute will always be empty if WML tries to read it.");
-			config effect;
-			config o;
-			effect["apply_to"] = "overlay";
-			effect["add"] = v->str();
-			o.add_child("effect", effect);
-			add_modification("object", o);
+			add_modification("object", config{
+				"effect", config{
+					"apply_to", "overlay",
+					"add", v->str()
+				}
+			});
 		}
 	}
 
@@ -1089,15 +1089,11 @@ void unit::advance_to(const unit_type& u_type, bool use_traits)
 
 	anim_comp_->reset_after_advance(&new_type);
 
-	if(random_traits_) {
-		generate_traits(!use_traits);
-	} else {
-		// This will add any "musthave" traits to the new unit that it doesn't already have.
-		// This covers the Dark Sorcerer advancing to Lich and gaining the "undead" trait,
-		// but random and/or optional traits are not added,
-		// and neither are inappropriate traits removed.
-		generate_traits(true);
-	}
+	// This will add any "musthave" traits to the new unit that it doesn't already have.
+	// This covers the Dark Sorcerer advancing to Lich and gaining the "undead" trait,
+	// but random and/or optional traits are not added,
+	// and neither are inappropriate traits removed.
+	generate_traits(random_traits_ ? !use_traits : true);
 
 	// Apply modifications etc, refresh the unit.
 	// This needs to be after type and gender are fixed,
