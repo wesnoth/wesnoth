@@ -1116,13 +1116,13 @@ void unit::advance_to(const unit_type& u_type, bool use_traits)
 		for(const config& unit_event : cfg.child_range("event")) {
 			events.add_child("event", unit_event);
 		}
-		for(const config& abilities : cfg.child_range("abilities")) {
-			for(const auto [key, ability] : abilities.all_children_view()) {
-				for(const config& ability_event : ability.child_range("event")) {
-					events.add_child("event", ability_event);
-				}
+
+		for(const auto [key, ability] : abilities_.all_children_view()) {
+			for(const config& ability_event : ability.child_range("event")) {
+				events.add_child("event", ability_event);
 			}
 		}
+
 		for(const config& attack : cfg.child_range("attack")) {
 			for(const config& specials : attack.child_range("specials")) {
 				for(const auto [key, special] : specials.all_children_view()) {
