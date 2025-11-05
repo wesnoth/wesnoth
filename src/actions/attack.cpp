@@ -620,16 +620,16 @@ battle_context battle_context::choose_defender_weapon(nonempty_unit_const_ptr at
 		double max_weight = 0.0;
 
 		for(const auto& choice : choices) {
-			const attack_type& def = defender->attacks()[choice.defender_stats_->attack_num];
+			const double d_weight = choice.defender_stats_->weapon->defense_weight();
 
-			if(def.defense_weight() >= max_weight) {
+			if(d_weight >= max_weight) {
 				const battle_context_unit_stats& def_stats = *choice.defender_stats_;
 
-				max_weight = def.defense_weight();
+				max_weight = d_weight;
 				int rating = static_cast<int>(
-						def_stats.num_blows * def_stats.damage * def_stats.chance_to_hit * def.defense_weight());
+						def_stats.num_blows * def_stats.damage * def_stats.chance_to_hit * d_weight);
 
-				if(def.defense_weight() > max_weight || rating < min_rating) {
+				if(d_weight > max_weight || rating < min_rating) {
 					min_rating = rating;
 				}
 			}
@@ -639,13 +639,13 @@ battle_context battle_context::choose_defender_weapon(nonempty_unit_const_ptr at
 	battle_context* best_choice = nullptr;
 	// Multiple options: simulate them, save best.
 	for(auto& choice : choices) {
-		const attack_type& def = defender->attacks()[choice.defender_stats_->attack_num];
+		const double d_weight = choice.defender_stats_->weapon->defense_weight();
 
 		choice.simulate(prev_def);
 
 
 		int simple_rating = static_cast<int>(
-				choice.defender_stats_->num_blows * choice.defender_stats_->damage * choice.defender_stats_->chance_to_hit * def.defense_weight());
+				choice.defender_stats_->num_blows * choice.defender_stats_->damage * choice.defender_stats_->chance_to_hit * d_weight);
 
 		//FIXME: make sure there is no mostake in the better_combat call-
 		if(simple_rating >= min_rating && (!best_choice || choice.better_defense(*best_choice, 1.0))) {
