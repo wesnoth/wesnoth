@@ -661,9 +661,9 @@ void unit_attack(display * disp, game_board & board,
 
 	animator.add_animation(defender.shared_from_this(), defender_anim, def->get_location(), true, text, {255, 0, 0});
 
-	unit_ability_list leadership_list = attacker.get_abilities_weapons("leadership", weapon, secondary_attack);
-	unit_ability_list resistance_list = defender.get_abilities_weapons("resistance", secondary_attack, weapon);
-	for(const unit_ability& ability : leadership_list) {
+	active_ability_list leadership_list = attacker.get_abilities_weapons("leadership", weapon, secondary_attack);
+	active_ability_list resistance_list = defender.get_abilities_weapons("resistance", secondary_attack, weapon);
+	for(const active_ability& ability : leadership_list) {
 		if(ability.teacher_loc == a) {
 			continue;
 		}
@@ -681,7 +681,7 @@ void unit_attack(display * disp, game_board & board,
 			hit_type, weapon, secondary_attack, swing);
 	}
 
-	for(const unit_ability& ability : resistance_list) {
+	for(const active_ability& ability : resistance_list) {
 		if(ability.teacher_loc == a) {
 			continue;
 		}
@@ -698,12 +698,12 @@ void unit_attack(display * disp, game_board & board,
 			hit_type, weapon, secondary_attack, swing);
 	}
 
-	unit_ability_list abilities = att->get_location();
+	active_ability_list abilities = att->get_location();
 	for(auto& special : abilities_list::all_weapon_tags()) {
 		abilities.append(weapon->get_weapon_ability(special));
 	}
 
-	for(const unit_ability& ability : abilities) {
+	for(const active_ability& ability : abilities) {
 		if(ability.teacher_loc == a) {
 			continue;
 		}
@@ -714,14 +714,14 @@ void unit_attack(display * disp, game_board & board,
 
 		bool leading_playable = false;
 		bool helping_playable = false;
-		for(const unit_ability& leader_list : leadership_list) {
+		for(const active_ability& leader_list : leadership_list) {
 			if(ability.teacher_loc == leader_list.teacher_loc) {
 				leading_playable = true;
 				break;
 			}
 		}
 
-		for(const unit_ability& helper_list : resistance_list) {
+		for(const active_ability& helper_list : resistance_list) {
 			if(ability.teacher_loc == helper_list.teacher_loc) {
 				helping_playable = true;
 				break;
@@ -778,11 +778,11 @@ void reset_helpers(const unit *attacker,const unit *defender)
 	display* disp = display::get_singleton();
 	const unit_map& units = disp->context().units();
 	if(attacker) {
-		unit_ability_list attacker_abilities = attacker->get_abilities("leadership");
+		active_ability_list attacker_abilities = attacker->get_abilities("leadership");
 		for(auto& special : abilities_list::all_weapon_tags()) {
 			attacker_abilities.append(attacker->get_abilities(special));
 		}
-		for(const unit_ability& ability : attacker_abilities) {
+		for(const active_ability& ability : attacker_abilities) {
 			unit_map::const_iterator leader = units.find(ability.teacher_loc);
 			assert(leader != units.end());
 			leader->anim_comp().set_standing();
@@ -790,11 +790,11 @@ void reset_helpers(const unit *attacker,const unit *defender)
 	}
 
 	if(defender) {
-		unit_ability_list defender_abilities = defender->get_abilities("resistance");
+		active_ability_list defender_abilities = defender->get_abilities("resistance");
 		for(auto& special : abilities_list::all_weapon_tags()) {
 			defender_abilities.append(defender->get_abilities(special));
 		}
-		for(const unit_ability& ability : defender_abilities) {
+		for(const active_ability& ability : defender_abilities) {
 			unit_map::const_iterator helper = units.find(ability.teacher_loc);
 			assert(helper != units.end());
 			helper->anim_comp().set_standing();

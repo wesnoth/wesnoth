@@ -1751,7 +1751,7 @@ int unit::defense_modifier(const t_translation::terrain_code & terrain, const ma
 {
 	int def = movement_type_.defense_modifier(terrain);
 
-	unit_ability_list defense_abilities = get_abilities("defense", loc);
+	active_ability_list defense_abilities = get_abilities("defense", loc);
 	if(!defense_abilities.empty()) {
 		unit_abilities::effect defense_effect(defense_abilities, 100 - def);
 		def = 100 - defense_effect.get_composite_value();
@@ -1781,10 +1781,10 @@ bool unit::resistance_filter_matches(const config& cfg, const std::string& damag
 	return true;
 }
 
-int unit::resistance_value(unit_ability_list resistance_list, const std::string& damage_name) const
+int unit::resistance_value(active_ability_list resistance_list, const std::string& damage_name) const
 {
 	int res = movement_type_.resistance_against(damage_name);
-	utils::erase_if(resistance_list, [&](const unit_ability& i) {
+	utils::erase_if(resistance_list, [&](const active_ability& i) {
 		return !resistance_filter_matches(i.ability_cfg(), damage_name, 100-res);
 	});
 
@@ -1811,8 +1811,8 @@ int unit::resistance_against(const std::string& damage_name, bool attacker, cons
 	if(opp_weapon) {
 		return opp_weapon->effective_damage_type().second;
 	}
-	unit_ability_list resistance_list = get_abilities_weapons("resistance",loc, std::move(weapon), opp_weapon);
-	utils::erase_if(resistance_list, [&](const unit_ability& i) {
+	active_ability_list resistance_list = get_abilities_weapons("resistance",loc, std::move(weapon), opp_weapon);
+	utils::erase_if(resistance_list, [&](const active_ability& i) {
 		return !resistance_filter_matches_base(i.ability_cfg(), attacker);
 	});
 	return resistance_value(resistance_list, damage_name);

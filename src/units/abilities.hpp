@@ -19,7 +19,7 @@
 #include "units/ptr.hpp"
 #include "units/unit.hpp"
 
-class unit_ability_list;
+class active_ability_list;
 namespace unit_abilities
 {
 bool filter_base_matches(const config& cfg, int def);
@@ -38,9 +38,9 @@ enum EFFECTS { EFFECT_DEFAULT=1, EFFECT_CUMULABLE=2, EFFECT_WITHOUT_CLAMP_MIN_MA
  */
 std::string substitute_variables(const std::string& str, const std::string& tag_name, const config& ability_or_special);
 
-int individual_value(const config::attribute_value *v, int def, const unit_ability & ability, const map_location& loc, const const_attack_ptr& att);
+int individual_value(const config::attribute_value *v, int def, const active_ability & ability, const map_location& loc, const const_attack_ptr& att);
 
-int individual_double_value(const config::attribute_value *v, int def, const unit_ability & ability, const map_location& loc, const const_attack_ptr& att);
+int individual_double_value(const config::attribute_value *v, int def, const active_ability & ability, const map_location& loc, const const_attack_ptr& att);
 
 struct individual_effect
 {
@@ -56,7 +56,7 @@ struct individual_effect
 class effect
 {
 	public:
-		effect(const unit_ability_list& list, int def, const const_attack_ptr& attacker = const_attack_ptr(), EFFECTS wham = EFFECT_DEFAULT);
+		effect(const active_ability_list& list, int def, const const_attack_ptr& attacker = const_attack_ptr(), EFFECTS wham = EFFECT_DEFAULT);
 		// Provide read-only access to the effect list:
 		typedef std::vector<individual_effect>::const_iterator iterator;
 		typedef std::vector<individual_effect>::const_iterator const_iterator;

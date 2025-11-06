@@ -239,12 +239,12 @@ bool unit::get_ability_bool(const std::string& tag_name, const map_location& loc
 	return false;
 }
 
-unit_ability_list unit::get_abilities(const std::string& tag_name, const map_location& loc) const
+active_ability_list unit::get_abilities(const std::string& tag_name, const map_location& loc) const
 {
-	unit_ability_list res(loc_);
+	active_ability_list res(loc_);
 
 	// Check that the unit has an ability of tag_name type which meets the conditions to be active.
-	// If so, add to unit_ability_list.
+	// If so, add to active_ability_list.
 	for(const config& i : this->abilities_.child_range(tag_name)) {
 		if (get_self_ability_bool(i, tag_name, loc))
 		{
@@ -259,7 +259,7 @@ unit_ability_list unit::get_abilities(const std::string& tag_name, const map_loc
 	// Check for each unit present on the map that it corresponds to the criteria
 	// (possession of an ability with [affect_adjacent] via a boolean variable, not incapacitated,
 	// different from the central unit, that the ability is of the right type, detailed verification of each ability),
-	// If so, add to unit_ability_list.
+	// If so, add to active_ability_list.
 	for(const unit& u : units) {
 		if(!u.max_ability_radius() || u.incapacitated() || u.underlying_id() == underlying_id() || !u.max_ability_radius_type(tag_name)) {
 			continue;
@@ -281,10 +281,10 @@ unit_ability_list unit::get_abilities(const std::string& tag_name, const map_loc
 	return res;
 }
 
-unit_ability_list unit::get_abilities_weapons(const std::string& tag_name, const map_location& loc, const_attack_ptr weapon, const_attack_ptr opp_weapon) const
+active_ability_list unit::get_abilities_weapons(const std::string& tag_name, const map_location& loc, const_attack_ptr weapon, const_attack_ptr opp_weapon) const
 {
-	unit_ability_list res = get_abilities(tag_name, loc);
-	utils::erase_if(res, [&](const unit_ability& i) {
+	active_ability_list res = get_abilities(tag_name, loc);
+	utils::erase_if(res, [&](const active_ability& i) {
 		return !ability_affects_weapon(i.ability_cfg(), weapon, false) || !ability_affects_weapon(i.ability_cfg(), opp_weapon, true);
 	});
 	return res;
@@ -708,7 +708,7 @@ private:
 };
 
 template<typename T, typename TFuncFormula>
-T get_single_ability_value(const config::attribute_value& v, T def, const unit_ability& ability_info, const map_location& receiver_loc, const const_attack_ptr& att, const TFuncFormula& formula_handler)
+T get_single_ability_value(const config::attribute_value& v, T def, const active_ability& ability_info, const map_location& receiver_loc, const const_attack_ptr& att, const TFuncFormula& formula_handler)
 {
 	return v.apply_visitor(get_ability_value_visitor(def, [&](const std::string& s) {
 
@@ -741,7 +741,7 @@ T get_single_ability_value(const config::attribute_value& v, T def, const unit_a
 }
 
 template<typename TComp>
-std::pair<int,map_location> unit_ability_list::get_extremum(const std::string& key, int def, const TComp& comp) const
+std::pair<int,map_location> active_ability_list::get_extremum(const std::string& key, int def, const TComp& comp) const
 {
 	if ( cfgs_.empty() ) {
 		return std::pair(def, map_location());
@@ -753,7 +753,7 @@ std::pair<int,map_location> unit_ability_list::get_extremum(const std::string& k
 	int abs_max = 0;
 	int flat = 0;
 	int stack = 0;
-	for (const unit_ability& p : cfgs_)
+	for (const active_ability& p : cfgs_)
 	{
 		int value = std::round(get_single_ability_value(p.ability_cfg()[key], static_cast<double>(def), p, loc(), const_attack_ptr(), [&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
 			return std::round(formula.evaluate(callable).as_int());
@@ -775,8 +775,8 @@ std::pair<int,map_location> unit_ability_list::get_extremum(const std::string& k
 	return std::pair(flat + stack, best_loc);
 }
 
-template std::pair<int, map_location> unit_ability_list::get_extremum<std::less<int>>(const std::string& key, int def, const std::less<int>& comp) const;
-template std::pair<int, map_location> unit_ability_list::get_extremum<std::greater<int>>(const std::string& key, int def, const std::greater<int>& comp) const;
+template std::pair<int, map_location> active_ability_list::get_extremum<std::less<int>>(const std::string& key, int def, const std::less<int>& comp) const;
+template std::pair<int, map_location> active_ability_list::get_extremum<std::greater<int>>(const std::string& key, int def, const std::greater<int>& comp) const;
 
 /*
  *
@@ -842,11 +842,11 @@ bool attack_type::has_special(const std::string& special, bool simple_check) con
  * Returns the currently active specials as an ability list, given the current
  * context (see set_specials_context).
  */
-unit_ability_list attack_type::get_specials(const std::string& special) const
+active_ability_list attack_type::get_specials(const std::string& special) const
 {
 	//log_scope("get_specials");
 	const map_location loc = self_ ? self_->get_location() : self_loc_;
-	unit_ability_list res(loc);
+	active_ability_list res(loc);
 
 	for(const config& i : specials_.child_range(special)) {
 		if(special_active(i, AFFECT_SELF, special)) {
@@ -1247,7 +1247,7 @@ void attack_type::modified_attacks(unsigned & min_attacks,
 	}
 
 	// Apply [swarm].
-	unit_ability_list swarm_specials = get_specials_and_abilities("swarm");
+	active_ability_list swarm_specials = get_specials_and_abilities("swarm");
 	if ( !swarm_specials.empty() ) {
 		min_attacks = std::max<int>(0, swarm_specials.highest("swarm_attacks_min").first);
 		max_attacks = std::max<int>(0, swarm_specials.highest("swarm_attacks_max", attacks_value).first);
@@ -1256,7 +1256,7 @@ void attack_type::modified_attacks(unsigned & min_attacks,
 	}
 }
 
-std::string attack_type::select_replacement_type(const unit_ability_list& damage_type_list) const
+std::string attack_type::select_replacement_type(const active_ability_list& damage_type_list) const
 {
 	std::map<std::string, unsigned int> type_count;
 	unsigned int max = 0;
@@ -1285,7 +1285,7 @@ std::string attack_type::select_replacement_type(const unit_ability_list& damage
 	return type_list.front();
 }
 
-std::pair<std::string, int> attack_type::select_alternative_type(const unit_ability_list& damage_type_list, const unit_ability_list& resistance_list) const
+std::pair<std::string, int> attack_type::select_alternative_type(const active_ability_list& damage_type_list, const active_ability_list& resistance_list) const
 {
 	std::map<std::string, int> type_res;
 	int max_res = INT_MIN;
@@ -1323,14 +1323,14 @@ std::pair<std::string, int> attack_type::effective_damage_type() const
 	if(attack_empty()){
 		return {"", 100};
 	}
-	unit_ability_list resistance_list;
+	active_ability_list resistance_list;
 	if(other_){
 		resistance_list = (*other_).get_abilities_weapons("resistance", other_loc_, other_attack_, shared_from_this());
-		utils::erase_if(resistance_list, [&](const unit_ability& i) {
+		utils::erase_if(resistance_list, [&](const active_ability& i) {
 			return (!(i.ability_cfg()["active_on"].empty() || (!is_attacker_ && i.ability_cfg()["active_on"] == "offense") || (is_attacker_ && i.ability_cfg()["active_on"] == "defense")));
 		});
 	}
-	unit_ability_list damage_type_list = get_specials_and_abilities("damage_type");
+	active_ability_list damage_type_list = get_specials_and_abilities("damage_type");
 	int res = other_ ? (*other_).resistance_value(resistance_list, type()) : 100;
 	if(damage_type_list.empty()){
 		return {type(), res};
@@ -1351,7 +1351,7 @@ std::pair<std::string, int> attack_type::effective_damage_type() const
  */
 std::pair<std::string, std::set<std::string>> attack_type::damage_types() const
 {
-	unit_ability_list damage_type_list = get_specials_and_abilities("damage_type");
+	active_ability_list damage_type_list = get_specials_and_abilities("damage_type");
 	std::set<std::string> alternative_damage_types;
 	if(damage_type_list.empty()){
 		return {type(), alternative_damage_types};
@@ -1379,7 +1379,7 @@ double attack_type::modified_damage() const
 int attack_type::modified_chance_to_hit(int cth, bool special_only) const
 {
 	int parry = other_attack_ ? other_attack_->parry() : 0;
-	unit_ability_list chance_to_hit_list = special_only ? get_specials("chance_to_hit") : get_specials_and_abilities("chance_to_hit");
+	active_ability_list chance_to_hit_list = special_only ? get_specials("chance_to_hit") : get_specials_and_abilities("chance_to_hit");
 	cth = std::clamp(cth + accuracy_ - parry, 0, 100);
 	return composite_value(chance_to_hit_list, cth);
 }
@@ -1554,18 +1554,18 @@ namespace { // Helpers for attack_type::special_active()
 //beneficiary unit does not have a corresponding weapon
 //(defense against ranged weapons abilities for a unit that only has melee attacks)
 
-unit_ability_list attack_type::get_weapon_ability(const std::string& ability) const
+active_ability_list attack_type::get_weapon_ability(const std::string& ability) const
 {
 	const map_location loc = self_ ? self_->get_location() : self_loc_;
-	unit_ability_list abil_list(loc);
+	active_ability_list abil_list(loc);
 	if(self_) {
-		abil_list.append_if((*self_).get_abilities(ability, self_loc_), [&](const unit_ability& i) {
+		abil_list.append_if((*self_).get_abilities(ability, self_loc_), [&](const active_ability& i) {
 			return special_active(i.ability_cfg(), AFFECT_SELF, ability, true);
 		});
 	}
 
 	if(other_) {
-		abil_list.append_if((*other_).get_abilities(ability, other_loc_), [&](const unit_ability& i) {
+		abil_list.append_if((*other_).get_abilities(ability, other_loc_), [&](const active_ability& i) {
 			return special_active_impl(other_attack_, shared_from_this(), i.ability_cfg(), AFFECT_OTHER, ability, true);
 		});
 	}
@@ -1573,24 +1573,24 @@ unit_ability_list attack_type::get_weapon_ability(const std::string& ability) co
 	return abil_list;
 }
 
-unit_ability_list attack_type::get_specials_and_abilities(const std::string& special) const
+active_ability_list attack_type::get_specials_and_abilities(const std::string& special) const
 {
 	// get all weapon specials of the provided type
-	unit_ability_list abil_list = get_specials(special);
+	active_ability_list abil_list = get_specials(special);
 	// append all such weapon specials as abilities as well
 	abil_list.append(get_weapon_ability(special));
 	// get a list of specials/"specials as abilities" that may potentially overwrite others
-	unit_ability_list overwriters = overwrite_special_overwriter(abil_list, special);
+	active_ability_list overwriters = overwrite_special_overwriter(abil_list, special);
 	if(!abil_list.empty() && !overwriters.empty()){
 		// remove all abilities that would be overwritten
-		utils::erase_if(abil_list, [&](const unit_ability& j) {
+		utils::erase_if(abil_list, [&](const active_ability& j) {
 			return (overwrite_special_checking(overwriters, j.ability_cfg(), special));
 		});
 	}
 	return abil_list;
 }
 
-int attack_type::composite_value(const unit_ability_list& abil_list, int base_value) const
+int attack_type::composite_value(const active_ability_list& abil_list, int base_value) const
 {
 	return unit_abilities::effect(abil_list, base_value, shared_from_this()).get_composite_value();
 }
@@ -1601,10 +1601,10 @@ static bool overwrite_special_affects(const config& special)
 	return (apply_to == "one_side" || apply_to == "both_sides");
 }
 
-unit_ability_list attack_type::overwrite_special_overwriter(unit_ability_list overwriters, const std::string& tag_name) const
+active_ability_list attack_type::overwrite_special_overwriter(active_ability_list overwriters, const std::string& tag_name) const
 {
 	//remove element without overwrite_specials key, if list empty after check return empty list.
-	utils::erase_if(overwriters, [&](const unit_ability& i) {
+	utils::erase_if(overwriters, [&](const active_ability& i) {
 		return (!overwrite_special_affects(i.ability_cfg()));
 	});
 
@@ -1616,7 +1616,7 @@ unit_ability_list attack_type::overwrite_special_overwriter(unit_ability_list ov
 	// if there are specials/"specials as abilities" that could potentially overwrite each other
 	if(overwriters.size() >= 2){
 		// sort them by overwrite priority from highest to lowest (default priority is 0)
-		utils::sort_if(overwriters,[](const unit_ability& i, const unit_ability& j){
+		utils::sort_if(overwriters,[](const active_ability& i, const active_ability& j){
 			auto oi = i.ability_cfg().optional_child("overwrite");
 			double l = 0;
 			if(oi && !oi["priority"].empty()){
@@ -1630,14 +1630,14 @@ unit_ability_list attack_type::overwrite_special_overwriter(unit_ability_list ov
 			return l > r;
 		});
 		// remove any that need to be overwritten
-		utils::erase_if(overwriters, [&](const unit_ability& i) {
+		utils::erase_if(overwriters, [&](const active_ability& i) {
 			return (overwrite_special_checking(overwriters, i.ability_cfg(), tag_name));
 		});
 	}
 	return overwriters;
 }
 
-bool attack_type::overwrite_special_checking(unit_ability_list& overwriters, const config& cfg, const std::string& tag_name) const
+bool attack_type::overwrite_special_checking(active_ability_list& overwriters, const config& cfg, const std::string& tag_name) const
 {
 	if(overwriters.empty()){
 		return false;
@@ -2414,7 +2414,7 @@ std::string substitute_variables(const std::string& str, const std::string& tag_
 	return str;
 }
 
-int individual_value_int(const config::attribute_value *v, int def, const unit_ability & ability, const map_location& loc, const const_attack_ptr& att) {
+int individual_value_int(const config::attribute_value *v, int def, const active_ability & ability, const map_location& loc, const const_attack_ptr& att) {
 	int value = std::round(get_single_ability_value(*v, static_cast<double>(def), ability, loc, att, [&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
 		callable.add("base_value", wfl::variant(def));
 		return std::round(formula.evaluate(callable).as_int());
@@ -2422,7 +2422,7 @@ int individual_value_int(const config::attribute_value *v, int def, const unit_a
 	return value;
 }
 
-int individual_value_double(const config::attribute_value *v, int def, const unit_ability & ability, const map_location& loc, const const_attack_ptr& att) {
+int individual_value_double(const config::attribute_value *v, int def, const active_ability & ability, const map_location& loc, const const_attack_ptr& att) {
 	int value = std::round(get_single_ability_value(*v, static_cast<double>(def), ability, loc, att, [&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
 		callable.add("base_value", wfl::variant(def));
 		return formula.evaluate(callable).as_decimal() / 1000.0 ;
@@ -2430,7 +2430,7 @@ int individual_value_double(const config::attribute_value *v, int def, const uni
 	return value;
 }
 
-effect::effect(const unit_ability_list& list, int def, const const_attack_ptr& att, EFFECTS wham) :
+effect::effect(const active_ability_list& list, int def, const const_attack_ptr& att, EFFECTS wham) :
 	effect_list_(),
 	composite_value_(0)
 {
@@ -2447,7 +2447,7 @@ effect::effect(const unit_ability_list& list, int def, const const_attack_ptr& a
 	utils::optional<int> max_value = utils::nullopt;
 	utils::optional<int> min_value = utils::nullopt;
 
-	for (const unit_ability & ability : list) {
+	for (const active_ability & ability : list) {
 		const config& cfg = ability.ability_cfg();
 		const std::string& effect_id = cfg[cfg["id"].empty() ? "name" : "id"];
 

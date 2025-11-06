@@ -232,8 +232,8 @@ time_of_day tod_manager::get_illuminated_time_of_day(
 			if(!u.incapacitated()) {
 				const map_location& u_loc = u.get_location();
 				std::size_t distance = distance_between(u_loc, loc);
-				unit_ability_list illum = u.get_abilities("illuminates");
-				utils::erase_if(illum, [&](const unit_ability& i) {
+				active_ability_list illum = u.get_abilities("illuminates");
+				utils::erase_if(illum, [&](const active_ability& i) {
 					std::size_t radius = i.ability_cfg()["radius"] != "all_map" ? i.ability_cfg()["radius"].to_int(1) : INT_MAX;
 					return distance > radius;
 				});
