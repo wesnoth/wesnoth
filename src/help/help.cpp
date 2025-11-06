@@ -21,6 +21,7 @@
 #define GETTEXT_DOMAIN "wesnoth-help"
 
 #include "help/help.hpp"
+#include "help/help_impl.hpp"
 
 #include "config.hpp"                   // for config, etc
 #include "preferences/preferences.hpp"
@@ -32,10 +33,11 @@
 #include "units/unit.hpp"               // for unit
 #include "units/types.hpp"              // for unit_type, unit_type_data, etc
 
+#include <boost/logic/tribool.hpp>
+
 #include <cassert>                      // for assert
 #include <algorithm>                    // for min
 #include <vector>                       // for vector, vector<>::iterator
-
 
 static lg::log_domain log_display("display");
 #define WRN_DP LOG_STREAM(warn, log_display)
@@ -86,17 +88,47 @@ void show_unit_description(const unit_type& t)
 	show_help(get_unit_type_help_id(t));
 }
 
-std::shared_ptr<help_manager> help_manager::get_instance()
+void show_with_toplevel(const section& toplevel_sec, const std::string& show_topic)
 {
-	if(!singleton_) {
-		singleton_.reset(new help_manager);
-	}
-
-	assert(singleton_);
-	return singleton_;
+	gui2::dialogs::help_browser::display(toplevel_sec, show_topic);
 }
 
-void help_manager::verify_cache()
+void show_help(const std::string& show_topic)
+{
+	const auto manager = help_manager::get_instance();
+	show_with_toplevel(manager->regenerate(), show_topic);
+}
+
+//
+// Help Manager Implementation
+//
+
+class help_manager::implementation
+{
+public:
+	friend class help_manager;
+
+	/**
+	 * Regenerates the cached help topics if necessary.
+	 *
+	 * @returns the current toplevel section.
+	 */
+	const section& regenerate();
+
+private:
+	int last_num_encountered_units_{-1};
+	int last_num_encountered_terrains_{-1};
+
+	boost::tribool last_debug_state_{boost::indeterminate};
+
+	/** The default toplevel. */
+	section toplevel_section_;
+
+	/** All sections and topics not referenced from the default toplevel. */
+	section hidden_sections_;
+};
+
+const section& help_manager::implementation::regenerate()
 {
 	// Find all unit_types that have not been constructed yet and fill in the information
 	// needed to create the help topics
@@ -116,20 +148,33 @@ void help_manager::verify_cache()
 		last_debug_state_ = game_config::debug;
 
 		// Update the contents
-		std::tie(default_toplevel_, hidden_sections_) = generate_contents();
+		std::tie(toplevel_section_, hidden_sections_) = generate_contents();
 	}
+
+	return toplevel_section_;
 }
 
-void show_with_toplevel(const section& toplevel_sec, const std::string& show_topic)
+help_manager::help_manager()
+	: impl_(new help_manager::implementation)
 {
-	gui2::dialogs::help_browser::display(toplevel_sec, show_topic);
 }
 
-void show_help(const std::string& show_topic)
+/** Defined out-of-line so the implementation class is visible. */
+help_manager::~help_manager() = default;
+
+std::shared_ptr<help_manager> help_manager::get_instance()
 {
-	auto manager = help_manager::get_instance();
-	manager->verify_cache();
-	show_with_toplevel(manager->toplevel_section(), show_topic);
+	if(!singleton_) {
+		singleton_.reset(new help_manager);
+	}
+
+	assert(singleton_);
+	return singleton_;
+}
+
+const section& help_manager::regenerate()
+{
+	return impl_->regenerate();
 }
 
 } // End namespace help.
