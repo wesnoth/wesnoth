@@ -38,7 +38,7 @@ struct unit_ability
 	unit_ability(const config* ability_cfg, map_location student_loc, map_location teacher_loc)
 		: student_loc(student_loc)
 		, teacher_loc(teacher_loc)
-		, ability_cfg(ability_cfg)
+		, ability_cfg_(ability_cfg)
 	{
 	}
 
@@ -54,8 +54,11 @@ struct unit_ability
 	 * (different from student because of [affect_adjacent])
 	 */
 	map_location teacher_loc;
+
+	const config& ability_cfg() const { return *ability_cfg_; }
+private:
 	/** The contents of the ability tag, never nullptr. */
-	const config* ability_cfg;
+	const config* ability_cfg_;
 };
 
 class unit_ability_list
