@@ -59,7 +59,6 @@ namespace help {
 class topic_generator
 {
 public:
-	topic_generator() = default;
 	virtual std::string operator()() const = 0;
 	virtual ~topic_generator() {}
 };
@@ -79,26 +78,11 @@ class topic_text
 	mutable config parsed_text_;
 	mutable std::shared_ptr<topic_generator> generator_;
 public:
-	topic_text() = default;
-	~topic_text() = default;
-
-	topic_text(const std::string& t):
-		parsed_text_(),
-		generator_(std::make_shared<text_topic_generator>(t))
-	{
-	}
-
 	explicit topic_text(std::shared_ptr<topic_generator> g):
 		parsed_text_(),
 		generator_(g)
 	{
 	}
-
-	topic_text(const topic_text& t) = default;
-	topic_text(topic_text&& t) = default;
-	topic_text& operator=(topic_text&& t) = default;
-	topic_text& operator=(const topic_text& t) = default;
-	topic_text& operator=(std::shared_ptr<topic_generator> g);
 
 	const config& parsed_text() const;
 };
@@ -106,24 +90,10 @@ public:
 /** A topic contains a title, an id and some text. */
 struct topic
 {
-	topic() :
-		title(),
-		id(),
-		text()
-	{
-	}
-
-	topic(const std::string &_title, const std::string &_id) :
-		title(_title),
-		id(_id),
-		text()
-	{
-	}
-
 	topic(const std::string &_title, const std::string &_id, const std::string &_text)
-		: title(_title), id(_id), text(_text) {}
+		: title(_title), id(_id), text(std::make_shared<text_topic_generator>(_text)) {}
 	topic(const std::string &_title, const std::string &_id, std::shared_ptr<topic_generator> g)
-		: title(_title), id(_id), text(g) {}
+		: title(_title), id(_id), text(std::move(g)) {}
 	/** Two topics are equal if their IDs are equal. */
 	bool operator==(const topic &) const;
 	bool operator!=(const topic &t) const { return !operator==(t); }
@@ -139,14 +109,6 @@ typedef std::list<topic> topic_list;
 
 /** A section contains topics and sections along with title and ID. */
 struct section {
-	section() :
-		title(""),
-		id(""),
-		topics(),
-		sections()
-	{
-	}
-
 	/** Two sections are equal if their IDs are equal. */
 	bool operator==(const section &) const;
 	/** Comparison on the ID. */
