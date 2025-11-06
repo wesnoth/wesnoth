@@ -285,12 +285,6 @@ std::string generate_topic_text(const std::string &generator, const config *help
 	return empty_string;
 }
 
-topic_text& topic_text::operator=(std::shared_ptr<topic_generator> g)
-{
-	generator_ = std::move(g);
-	return *this;
-}
-
 const config& topic_text::parsed_text() const
 {
 	if (generator_) {
@@ -537,9 +531,7 @@ std::vector<topic> generate_era_topics(const bool sort_generated, const std::str
 			text << font::unicode_bullet << " " << link << "\n";
 		}
 
-		topic era_topic(era["name"], ".." + era_prefix + era["id"].str(), text.str());
-
-		topics.push_back( era_topic );
+		topics.emplace_back(era["name"], ".." + era_prefix + era["id"].str(), text.str());
 	}
 	return topics;
 }
@@ -886,10 +878,11 @@ void generate_terrain_sections(section& sec, int /*level*/)
 				== prefs::get().encountered_terrains().end() && !info.is_overlay())
 			hidden = true;
 
-		topic terrain_topic;
-		terrain_topic.title = info.editor_name();
-		terrain_topic.id    = hidden_symbol(hidden) + terrain_prefix + info.id();
-		terrain_topic.text  = std::make_shared<terrain_topic_generator>(info);
+		topic terrain_topic{
+			info.editor_name(),
+			hidden_symbol(hidden) + terrain_prefix + info.id(),
+			std::make_shared<terrain_topic_generator>(info)
+		};
 
 		t_translation::ter_list base_terrains = tdata->underlying_union_terrain(t);
 		if (info.has_default_base()) {
@@ -947,9 +940,7 @@ void generate_unit_sections(const config* /*help_cfg*/, section& sec, int /*leve
 			const std::string topic_name = var_type.variation_name();
 			const std::string var_ref = hidden_symbol(var_type.hide_help()) + variation_prefix + var_type.id() + "_" + variation_id;
 
-			topic var_topic(topic_name, var_ref, "");
-			var_topic.text = std::make_shared<unit_topic_generator>(var_type, variation_id);
-			base_unit.topics.push_back(var_topic);
+			base_unit.topics.emplace_back(topic_name, var_ref, std::make_shared<unit_topic_generator>(var_type, variation_id));
 		}
 
 		const std::string type_name = type.type_name();
@@ -984,9 +975,7 @@ std::vector<topic> generate_unit_topics(const bool sort_generated, const std::st
 		const std::string type_name = type.type_name() + (type.id() == type.type_name().str() ? "" : debug_suffix);
 		const std::string real_prefix = type.show_variations_in_help() ? ".." : "";
 		const std::string ref_id = hidden_symbol(type.hide_help()) + real_prefix + unit_prefix +  type.id();
-		topic unit_topic(type_name, ref_id, "");
-		unit_topic.text = std::make_shared<unit_topic_generator>(type);
-		topics.push_back(unit_topic);
+		topics.emplace_back(type_name, ref_id, std::make_shared<unit_topic_generator>(type));
 
 		if (!type.hide_help()) {
 			// we also record an hyperlink of this unit
