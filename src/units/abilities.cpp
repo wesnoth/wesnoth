@@ -285,7 +285,7 @@ unit_ability_list unit::get_abilities_weapons(const std::string& tag_name, const
 {
 	unit_ability_list res = get_abilities(tag_name, loc);
 	utils::erase_if(res, [&](const unit_ability& i) {
-		return !ability_affects_weapon(*i.ability_cfg, weapon, false) || !ability_affects_weapon(*i.ability_cfg, opp_weapon, true);
+		return !ability_affects_weapon(i.ability_cfg(), weapon, false) || !ability_affects_weapon(i.ability_cfg(), opp_weapon, true);
 	});
 	return res;
 }
@@ -755,11 +755,11 @@ std::pair<int,map_location> unit_ability_list::get_extremum(const std::string& k
 	int stack = 0;
 	for (const unit_ability& p : cfgs_)
 	{
-		int value = std::round(get_single_ability_value((*p.ability_cfg)[key], static_cast<double>(def), p, loc(), const_attack_ptr(), [&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
+		int value = std::round(get_single_ability_value(p.ability_cfg()[key], static_cast<double>(def), p, loc(), const_attack_ptr(), [&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
 			return std::round(formula.evaluate(callable).as_int());
 		}));
 
-		if ((*p.ability_cfg)["cumulative"].to_bool()) {
+		if (p.ability_cfg()["cumulative"].to_bool()) {
 			stack += value;
 			if (value < 0) value = -value;
 			if (only_cumulative && !comp(value, abs_max)) {
@@ -1261,7 +1261,7 @@ std::string attack_type::select_replacement_type(const unit_ability_list& damage
 	std::map<std::string, unsigned int> type_count;
 	unsigned int max = 0;
 	for(auto& i : damage_type_list) {
-		const config& c = *i.ability_cfg;
+		const config& c = i.ability_cfg();
 		if(c.has_attribute("replacement_type")) {
 			std::string type = c["replacement_type"].str();
 			unsigned int count = ++type_count[type];
@@ -1291,7 +1291,7 @@ std::pair<std::string, int> attack_type::select_alternative_type(const unit_abil
 	int max_res = INT_MIN;
 	if(other_){
 		for(auto& i : damage_type_list) {
-			const config& c = *i.ability_cfg;
+			const config& c = i.ability_cfg();
 			if(c.has_attribute("alternative_type")) {
 				std::string type = c["alternative_type"].str();
 				if(type_res.count(type) == 0){
@@ -1327,7 +1327,7 @@ std::pair<std::string, int> attack_type::effective_damage_type() const
 	if(other_){
 		resistance_list = (*other_).get_abilities_weapons("resistance", other_loc_, other_attack_, shared_from_this());
 		utils::erase_if(resistance_list, [&](const unit_ability& i) {
-			return (!((*i.ability_cfg)["active_on"].empty() || (!is_attacker_ && (*i.ability_cfg)["active_on"] == "offense") || (is_attacker_ && (*i.ability_cfg)["active_on"] == "defense")));
+			return (!(i.ability_cfg()["active_on"].empty() || (!is_attacker_ && i.ability_cfg()["active_on"] == "offense") || (is_attacker_ && i.ability_cfg()["active_on"] == "defense")));
 		});
 	}
 	unit_ability_list damage_type_list = get_specials_and_abilities("damage_type");
@@ -1358,7 +1358,7 @@ std::pair<std::string, std::set<std::string>> attack_type::damage_types() const
 	}
 	std::string replacement_type = select_replacement_type(damage_type_list);
 	for(auto& i : damage_type_list) {
-		const config& c = *i.ability_cfg;
+		const config& c = i.ability_cfg();
 		if(c.has_attribute("alternative_type")){
 			alternative_damage_types.insert(c["alternative_type"].str());
 		}
@@ -1560,13 +1560,13 @@ unit_ability_list attack_type::get_weapon_ability(const std::string& ability) co
 	unit_ability_list abil_list(loc);
 	if(self_) {
 		abil_list.append_if((*self_).get_abilities(ability, self_loc_), [&](const unit_ability& i) {
-			return special_active(*i.ability_cfg, AFFECT_SELF, ability, true);
+			return special_active(i.ability_cfg(), AFFECT_SELF, ability, true);
 		});
 	}
 
 	if(other_) {
 		abil_list.append_if((*other_).get_abilities(ability, other_loc_), [&](const unit_ability& i) {
-			return special_active_impl(other_attack_, shared_from_this(), *i.ability_cfg, AFFECT_OTHER, ability, true);
+			return special_active_impl(other_attack_, shared_from_this(), i.ability_cfg(), AFFECT_OTHER, ability, true);
 		});
 	}
 
@@ -1584,7 +1584,7 @@ unit_ability_list attack_type::get_specials_and_abilities(const std::string& spe
 	if(!abil_list.empty() && !overwriters.empty()){
 		// remove all abilities that would be overwritten
 		utils::erase_if(abil_list, [&](const unit_ability& j) {
-			return (overwrite_special_checking(overwriters, *j.ability_cfg, special));
+			return (overwrite_special_checking(overwriters, j.ability_cfg(), special));
 		});
 	}
 	return abil_list;
@@ -1605,7 +1605,7 @@ unit_ability_list attack_type::overwrite_special_overwriter(unit_ability_list ov
 {
 	//remove element without overwrite_specials key, if list empty after check return empty list.
 	utils::erase_if(overwriters, [&](const unit_ability& i) {
-		return (!overwrite_special_affects(*i.ability_cfg));
+		return (!overwrite_special_affects(i.ability_cfg()));
 	});
 
 	// if empty, nothing is doing any overwriting
@@ -1617,12 +1617,12 @@ unit_ability_list attack_type::overwrite_special_overwriter(unit_ability_list ov
 	if(overwriters.size() >= 2){
 		// sort them by overwrite priority from highest to lowest (default priority is 0)
 		utils::sort_if(overwriters,[](const unit_ability& i, const unit_ability& j){
-			auto oi = (*i.ability_cfg).optional_child("overwrite");
+			auto oi = i.ability_cfg().optional_child("overwrite");
 			double l = 0;
 			if(oi && !oi["priority"].empty()){
 				l = oi["priority"].to_double(0);
 			}
-			auto oj = (*j.ability_cfg).optional_child("overwrite");
+			auto oj = j.ability_cfg().optional_child("overwrite");
 			double r = 0;
 			if(oj && !oj["priority"].empty()){
 				r = oj["priority"].to_double(0);
@@ -1631,7 +1631,7 @@ unit_ability_list attack_type::overwrite_special_overwriter(unit_ability_list ov
 		});
 		// remove any that need to be overwritten
 		utils::erase_if(overwriters, [&](const unit_ability& i) {
-			return (overwrite_special_checking(overwriters, *i.ability_cfg, tag_name));
+			return (overwrite_special_checking(overwriters, i.ability_cfg(), tag_name));
 		});
 	}
 	return overwriters;
@@ -1645,9 +1645,9 @@ bool attack_type::overwrite_special_checking(unit_ability_list& overwriters, con
 
 	for(const auto& j : overwriters) {
 		// whether the overwriter affects a single side
-		bool affect_side = ((*j.ability_cfg)["overwrite_specials"] == "one_side");
+		bool affect_side = (j.ability_cfg()["overwrite_specials"] == "one_side");
 		// the overwriter's priority, default of 0
-		auto overwrite_specials = (*j.ability_cfg).optional_child("overwrite");
+		auto overwrite_specials = j.ability_cfg().optional_child("overwrite");
 		double priority = overwrite_specials ? overwrite_specials["priority"].to_double(0) : 0.00;
 		// the cfg being checked for whether it will be overwritten
 		auto has_overwrite_specials = cfg.optional_child("overwrite");
@@ -1662,10 +1662,10 @@ bool attack_type::overwrite_special_checking(unit_ability_list& overwriters, con
 		// if the current overwriter affects one side and the cfg being checked can be overwritten by this overwriter
 		// then check that the current overwriter and the cfg being checked both affect either this unit or its opponent
 		if(affect_side && is_overwritable){
-			if(special_affects_self(*j.ability_cfg, is_attacker_)){
+			if(special_affects_self(j.ability_cfg(), is_attacker_)){
 				one_side_overwritable = special_affects_self(cfg, is_attacker_);
 			}
-			else if(special_affects_opponent(*j.ability_cfg, !is_attacker_)){
+			else if(special_affects_opponent(j.ability_cfg(), !is_attacker_)){
 				one_side_overwritable = special_affects_opponent(cfg, !is_attacker_);
 			}
 		}
@@ -2367,12 +2367,12 @@ bool attack_type::special_tooltip_active(const config& special, const std::strin
 namespace unit_abilities
 {
 
-void individual_effect::set(value_modifier t, int val, const config *abil, const map_location &l)
+void individual_effect::set(value_modifier t, int val, const config& abil, const map_location &l)
 {
-	type=t;
-	value=val;
-	ability=abil;
-	loc=l;
+	type = t;
+	value = val;
+	ability = &abil;
+	loc = l;
 }
 
 bool filter_base_matches(const config& cfg, int def)
@@ -2448,7 +2448,7 @@ effect::effect(const unit_ability_list& list, int def, const const_attack_ptr& a
 	utils::optional<int> min_value = utils::nullopt;
 
 	for (const unit_ability & ability : list) {
-		const config& cfg = *ability.ability_cfg;
+		const config& cfg = ability.ability_cfg();
 		const std::string& effect_id = cfg[cfg["id"].empty() ? "name" : "id"];
 
 		if (!filter_base_matches(cfg, def))
@@ -2458,21 +2458,21 @@ effect::effect(const unit_ability_list& list, int def, const const_attack_ptr& a
 			int value = individual_value_int(v, def, ability, list.loc(), att);
 			int value_cum = wham != EFFECT_CUMULABLE && cfg["cumulative"].to_bool() ? std::max(def, value) : value;
 			if(set_effect_cum.type != NOT_USED && wham == EFFECT_CUMULABLE && cfg["cumulative"].to_bool()) {
-				set_effect_cum.set(SET, set_effect_cum.value + value_cum, ability.ability_cfg, ability.teacher_loc);
+				set_effect_cum.set(SET, set_effect_cum.value + value_cum, ability.ability_cfg(), ability.teacher_loc);
 			} else if(wham == EFFECT_CUMULABLE && cfg["cumulative"].to_bool()) {
-				set_effect_cum.set(SET, value_cum, ability.ability_cfg, ability.teacher_loc);
+				set_effect_cum.set(SET, value_cum, ability.ability_cfg(), ability.teacher_loc);
 			} else {
 				assert((set_effect_min.type != NOT_USED) == (set_effect_max.type != NOT_USED));
 				if(set_effect_min.type == NOT_USED) {
-					set_effect_min.set(SET, value_cum, ability.ability_cfg, ability.teacher_loc);
-					set_effect_max.set(SET, value_cum, ability.ability_cfg, ability.teacher_loc);
+					set_effect_min.set(SET, value_cum, ability.ability_cfg(), ability.teacher_loc);
+					set_effect_max.set(SET, value_cum, ability.ability_cfg(), ability.teacher_loc);
 				}
 				else {
 					if(value_cum > set_effect_max.value) {
-						set_effect_max.set(SET, value_cum, ability.ability_cfg, ability.teacher_loc);
+						set_effect_max.set(SET, value_cum, ability.ability_cfg(), ability.teacher_loc);
 					}
 					if(value_cum < set_effect_min.value) {
-						set_effect_min.set(SET, value_cum, ability.ability_cfg, ability.teacher_loc);
+						set_effect_min.set(SET, value_cum, ability.ability_cfg(), ability.teacher_loc);
 					}
 				}
 			}
@@ -2493,21 +2493,21 @@ effect::effect(const unit_ability_list& list, int def, const const_attack_ptr& a
 			int add = individual_value_int(v, def, ability, list.loc(), att);
 			std::map<std::string,individual_effect>::iterator add_effect = values_add.find(effect_id);
 			if(add_effect == values_add.end() || add > add_effect->second.value) {
-				values_add[effect_id].set(ADD, add, ability.ability_cfg, ability.teacher_loc);
+				values_add[effect_id].set(ADD, add, ability.ability_cfg(), ability.teacher_loc);
 			}
 		}
 		if (const config::attribute_value *v = cfg.get("sub")) {
 			int sub = - individual_value_int(v, def, ability, list.loc(), att);
 			std::map<std::string,individual_effect>::iterator sub_effect = values_sub.find(effect_id);
 			if(sub_effect == values_sub.end() || sub < sub_effect->second.value) {
-				values_sub[effect_id].set(ADD, sub, ability.ability_cfg, ability.teacher_loc);
+				values_sub[effect_id].set(ADD, sub, ability.ability_cfg(), ability.teacher_loc);
 			}
 		}
 		if (const config::attribute_value *v = cfg.get("multiply")) {
 			int multiply = individual_value_double(v, def, ability, list.loc(), att);
 			std::map<std::string,individual_effect>::iterator mul_effect = values_mul.find(effect_id);
 			if(mul_effect == values_mul.end() || multiply > mul_effect->second.value) {
-				values_mul[effect_id].set(MUL, multiply, ability.ability_cfg, ability.teacher_loc);
+				values_mul[effect_id].set(MUL, multiply, ability.ability_cfg(), ability.teacher_loc);
 			}
 		}
 		if (const config::attribute_value *v = cfg.get("divide")) {
@@ -2519,7 +2519,7 @@ effect::effect(const unit_ability_list& list, int def, const const_attack_ptr& a
 			else {
 				std::map<std::string,individual_effect>::iterator div_effect = values_div.find(effect_id);
 				if(div_effect == values_div.end() || divide > div_effect->second.value) {
-					values_div[effect_id].set(DIV, divide, ability.ability_cfg, ability.teacher_loc);
+					values_div[effect_id].set(DIV, divide, ability.ability_cfg(), ability.teacher_loc);
 				}
 			}
 		}

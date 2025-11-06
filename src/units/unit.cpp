@@ -1785,7 +1785,7 @@ int unit::resistance_value(unit_ability_list resistance_list, const std::string&
 {
 	int res = movement_type_.resistance_against(damage_name);
 	utils::erase_if(resistance_list, [&](const unit_ability& i) {
-		return !resistance_filter_matches(*i.ability_cfg, damage_name, 100-res);
+		return !resistance_filter_matches(i.ability_cfg(), damage_name, 100-res);
 	});
 
 	if(!resistance_list.empty()) {
@@ -1813,7 +1813,7 @@ int unit::resistance_against(const std::string& damage_name, bool attacker, cons
 	}
 	unit_ability_list resistance_list = get_abilities_weapons("resistance",loc, std::move(weapon), opp_weapon);
 	utils::erase_if(resistance_list, [&](const unit_ability& i) {
-		return !resistance_filter_matches_base(*i.ability_cfg, attacker);
+		return !resistance_filter_matches_base(i.ability_cfg(), attacker);
 	});
 	return resistance_value(resistance_list, damage_name);
 }
