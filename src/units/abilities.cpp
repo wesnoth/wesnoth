@@ -44,6 +44,7 @@
 #include "units/map.hpp"
 #include "utils/config_filters.hpp"
 #include "units/filter.hpp"
+#include "units/unit.hpp"
 
 #include <utility>
 
