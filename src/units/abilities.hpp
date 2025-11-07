@@ -17,9 +17,13 @@
 
 #include "map/location.hpp"
 #include "units/ptr.hpp"
-#include "units/unit.hpp"
+
+
+#include <vector>
+class config;
 
 class active_ability_list;
+
 namespace unit_abilities
 {
 bool filter_base_matches(const config& cfg, int def);
