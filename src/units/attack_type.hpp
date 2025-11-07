@@ -39,11 +39,13 @@ using ability_vector = std::vector<ability_ptr>;
 class unit_ability_t
 {
 public:
-	unit_ability_t(std::string tag, config cfg);
+	unit_ability_t(std::string tag, config cfg, bool inside_attack);
 
-	static ability_ptr create(std::string tag, config cfg) {
-		return std::make_shared<unit_ability_t>(tag, cfg);
+	static ability_ptr create(std::string tag, config cfg, bool inside_attack) {
+		return std::make_shared<unit_ability_t>(tag, cfg, inside_attack);
 	}
+
+	static void do_compat_fixes(config& cfg, bool inside_attack);
 
 	const std::string& tag() const { return tag_; };
 	const std::string& id() const { return id_; };
@@ -51,9 +53,9 @@ public:
 	void write(config& abilities_cfg);
 
 
-	static void parse_vector(const config& abilities_cfg, ability_vector& res);
+	static void parse_vector(const config& abilities_cfg, ability_vector& res, bool inside_attack);
 	static config vector_to_cfg(const ability_vector& abilities);
-	static ability_vector cfg_to_vector(const config& abilities_cfg);
+	static ability_vector cfg_to_vector(const config& abilities_cfg, bool inside_attack);
 
 
 	static ability_vector filter_tag(const ability_vector& vec, const std::string& tag);
@@ -124,7 +126,7 @@ public:
 	void set_attack_weight(double value) { attack_weight_ = value; set_changed(true); }
 	void set_defense_weight(double value) { defense_weight_ = value; set_changed(true); }
 	void set_specials_cfg(const config& value) {
-		specials_ = unit_ability_t::cfg_to_vector(value);  set_changed(true);
+		specials_ = unit_ability_t::cfg_to_vector(value, true);  set_changed(true);
 	}
 
 
