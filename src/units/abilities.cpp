@@ -1804,7 +1804,11 @@ bool attack_type::has_filter_special_or_ability(const config& filter, bool simpl
 		}
 	}
 
-	if(!simple_check && other_attack_) {
+	if (simple_check) {
+		return false;
+	}
+
+	if(other_attack_) {
 		for(const auto& p_ab : other_attack_->specials()) {
 			if(special_checking(p_ab->id(), p_ab->tag(), filter_special, filter_special_id, filter_special_type)) {
 				if(other_attack_->special_active(*p_ab, AFFECT_OTHER)) {
@@ -1812,10 +1816,6 @@ bool attack_type::has_filter_special_or_ability(const config& filter, bool simpl
 				}
 			}
 		}
-	}
-
-	if(simple_check) {
-		return false;
 	}
 
 	if(self_ && special_distant_filtering_impl(shared_from_this(), self_, self_loc_, other_attack_, AFFECT_SELF, filter, false, true)) {
