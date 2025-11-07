@@ -68,7 +68,7 @@ private:
 	/** Pointer-to-implementation to reduce include dependencies. */
 	std::unique_ptr<implementation> impl_;
 
-	static inline std::shared_ptr<help_manager> singleton_;
+	static inline std::weak_ptr<help_manager> singleton_;
 };
 
 /**

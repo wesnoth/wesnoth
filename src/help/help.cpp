@@ -164,12 +164,16 @@ help_manager::~help_manager() = default;
 
 std::shared_ptr<help_manager> help_manager::get_instance()
 {
-	if(!singleton_) {
-		singleton_.reset(new help_manager);
+	// Null if no manager instance exists
+	std::shared_ptr instance = singleton_.lock();
+
+	if(!instance) {
+		instance.reset(new help_manager);
+		singleton_ = instance;
 	}
 
-	assert(singleton_);
-	return singleton_;
+	assert(instance);
+	return instance;
 }
 
 const section& help_manager::regenerate()
