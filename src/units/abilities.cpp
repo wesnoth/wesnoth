@@ -457,52 +457,11 @@ bool unit::ability_active(const unit_ability_t& ab, const map_location& loc) con
 	return ability_active_impl(ab, loc);
 }
 
-static config ability_active_adjacent_helper(const config& cfg, const std::string& filter_self)
-{
-	if(cfg.has_child("filter_adjacent") && filter_self == "filter") {
-		deprecated_message("[filter_adjacent] in abilities", DEP_LEVEL::INDEFINITE, "", "Use [filter][filter_adjacent] instead or other unit filter.");
-	}
-	if(cfg.has_child("filter_adjacent") && filter_self == "filter_self") {
-		deprecated_message("[filter_adjacent]in weapon specials in [specials] tags", DEP_LEVEL::INDEFINITE, "", "Use [filter_self][filter_adjacent] instead.");
-	}
-	config filter = cfg;
-	for(const config &i : cfg.child_range("filter_adjacent")) {
-		config& filter_child = filter.child_or_add(filter_self);
-		if(!filter_child.has_child("filter_adjacent")){
-			filter_child.add_child("filter_adjacent", i);
-		} else {
-			config& filter_and = filter_child.add_child("and");
-			filter_and.add_child("filter_adjacent", i);
-		}
-	}
-
-	if(cfg.has_child("filter_adjacent_location") && filter_self == "filter") {
-		deprecated_message("[filter_adjacent_location] in abilities", DEP_LEVEL::INDEFINITE, "", "Use [filter][filter_location][filter_adjacent_location] instead.");
-	}
-	if(cfg.has_child("filter_adjacent_location") && filter_self == "filter_self") {
-		deprecated_message("[filter_adjacent_location]in weapon specials in [specials] tags", DEP_LEVEL::INDEFINITE, "", "Use [filter_self][filter_location][filter_adjacent_location] instead.");
-	}
-
-	for(const config &i : cfg.child_range("filter_adjacent_location")) {
-		config& filter_child = filter.child_or_add(filter_self);
-		config& filter_location = filter_child.child_or_add("filter_location");
-		if(!filter_location.has_child("filter_adjacent_location")){
-			filter_location.add_child("filter_adjacent_location", i);
-		} else {
-			config& filter_and = filter_location.add_child("and");
-			filter_and.add_child("filter_adjacent_location", i);
-		}
-	}
-
-	return filter;
-}
-
 bool unit::ability_active_impl(const unit_ability_t& ab,const map_location& loc) const
 {
 	bool illuminates = ab.tag() == "illuminates";
-	const config& new_cfg = ability_active_adjacent_helper(ab.cfg(), "filter");
 
-	if(auto afilter = new_cfg.optional_child("filter")) {
+	if(auto afilter = ab.cfg().optional_child("filter")) {
 		if(!unit_filter(vconfig(*afilter)).set_use_flat_tod(illuminates).matches(*this, loc)) {
 			return false;
 		}
@@ -1454,13 +1413,7 @@ namespace { // Helpers for attack_type::special_active()
 			// need to select an appropriate opponent.)
 			return true;
 
-		config cfg = filter;
-		//Add wml filter if [filter_adjacent] or [filter_adjacent_location].
-		if(child_tag == "filter_self") {
-			cfg = ability_active_adjacent_helper(filter, child_tag);
-		}
-		//remade a const config now what change are done.
-		const config& filter_backstab = cfg;
+		const config& filter_backstab = filter;
 
 		auto filter_child = filter_backstab.optional_child(child_tag);
 		if ( !filter_child )

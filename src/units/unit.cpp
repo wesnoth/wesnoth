@@ -686,7 +686,7 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 		set_attr_changed(UA_ABILITIES);
 		abilities_.clear();
 		for(const config& abilities : cfg_range) {
-			unit_ability_t::parse_vector(abilities, abilities_);
+			unit_ability_t::parse_vector(abilities, abilities_, false);
 		}
 	}
 
@@ -2275,7 +2275,7 @@ void unit::apply_builtin_effect(const std::string& apply_to, const config& effec
 			ability_vector to_append;
 			for(const auto [key, cfg] : abilities.all_children_view()) {
 				if(!has_ability_by_id(cfg["id"])) {
-					to_append.push_back(unit_ability_t::create(key, cfg));
+					to_append.push_back(unit_ability_t::create(key, cfg, false));
 					for(const config& event : cfg.child_range("event")) {
 						events.add_child("event", event);
 					}

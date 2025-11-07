@@ -256,7 +256,7 @@ void unit_type::build_help_index(
 	auto abilities = abilities_cfg();
 	for(const auto [key, cfg] : abilities.all_children_view()) {
 		//TODO: std::move
-		auto p_ab = unit_ability_t::create(key, cfg);
+		auto p_ab = unit_ability_t::create(key, cfg, false);
 		abilities_.emplace_back(p_ab);
 		config subst_cfg(cfg);
 		subst_cfg["name"] = unit_abilities::substitute_variables(cfg["name"], *p_ab);

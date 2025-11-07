@@ -48,36 +48,76 @@ static lg::log_domain log_wml("wml");
 #define ERR_WML LOG_STREAM(err, log_wml)
 
 
-unit_ability_t::unit_ability_t(std::string tag, config cfg)
+unit_ability_t::unit_ability_t(std::string tag, config cfg, bool inside_attack)
 	: tag_(std::move(tag))
 	, id_(cfg["id"].str())
 	, cfg_(std::move(cfg))
 {
+	do_compat_fixes(cfg_, inside_attack);
+}
 
-	if (!cfg_["backstab"].blank()) {
+void unit_ability_t::do_compat_fixes(config& cfg, bool inside_attack)
+{
+	if (!cfg["backstab"].blank()) {
 		deprecated_message("backstab= in weapon specials", DEP_LEVEL::INDEFINITE, "", "Use [filter_opponent] with a formula instead; the code can be found in data/core/macros/ in the WEAPON_SPECIAL_BACKSTAB macro.");
 	}
-	if (cfg_["backstab"].to_bool()) {
+	if (cfg["backstab"].to_bool()) {
 		const std::string& backstab_formula = "enemy_of(self, flanker) and not flanker.petrified where flanker = unit_at(direction_from(loc, other.facing))";
-		config& filter_opponent = cfg_.child_or_add("filter_opponent");
+		config& filter_opponent = cfg.child_or_add("filter_opponent");
 		config& filter_opponent2 = filter_opponent.empty() ? filter_opponent : filter_opponent.add_child("and");
 		filter_opponent2["formula"] = backstab_formula;
 	}
-	cfg_.remove_attribute("backstab");
+	cfg.remove_attribute("backstab");
+
+	std::string filter_teacher = inside_attack ? "filter_self" : "filter";
+
+	if (cfg.has_child("filter_adjacent")) {
+		if (inside_attack) {
+			deprecated_message("[filter_adjacent]in weapon specials in [specials] tags", DEP_LEVEL::INDEFINITE, "", "Use [filter_self][filter_adjacent] instead.");
+		} else {
+			deprecated_message("[filter_adjacent] in abilities", DEP_LEVEL::INDEFINITE, "", "Use [filter][filter_adjacent] instead or other unit filter.");
+		}
+	}
+	if (cfg.has_child("filter_adjacent_location")) {
+		if (inside_attack) {
+			deprecated_message("[filter_adjacent_location]in weapon specials in [specials] tags", DEP_LEVEL::INDEFINITE, "", "Use [filter_self][filter_location][filter_adjacent_location] instead.");
+		} else {
+			deprecated_message("[filter_adjacent_location] in abilities", DEP_LEVEL::INDEFINITE, "", "Use [filter][filter_location][filter_adjacent_location] instead.");
+		}
+	}
+
+	//These tags are were never supported inside [specials] according to the wiki.
+	for (config& filter_adjacent : cfg.child_range("filter_adjacent")) {
+		if (filter_adjacent["count"].empty()) {
+			//Previously count= behaved differenty in abilities.cpp and in filter.cpp according to the wiki
+			deprecated_message("omitting count= in [filter_adjacent] in abilities", DEP_LEVEL::FOR_REMOVAL, version_info("1.21"), "specify count explicitly");
+			filter_adjacent["count"] = map_location::parse_directions(filter_adjacent["adjacent"]).size();
+		}
+		cfg.child_or_add(filter_teacher).add_child("filter_adjacent", filter_adjacent);
+	}
+	cfg.remove_children("filter_adjacent");
+	for (config& filter_adjacent : cfg.child_range("filter_adjacent_location")) {
+		if (filter_adjacent["count"].empty()) {
+			//Previously count= bahves differenty in abilities.cpp and in filter.cpp according to the wiki
+			deprecated_message("omitting count= in [filter_adjacent_location] in abilities", DEP_LEVEL::FOR_REMOVAL, version_info("1.21"), "specify count explicitly");
+			filter_adjacent["count"] = map_location::parse_directions(filter_adjacent["adjacent"]).size();
+		}
+		cfg.child_or_add(filter_teacher).add_child("filter_location").add_child("filter_adjacent_location", filter_adjacent);
+	}
+	cfg.remove_children("filter_adjacent_location");
 }
 
-
-void unit_ability_t::parse_vector(const config& abilities_cfg, ability_vector& res)
+void unit_ability_t::parse_vector(const config& abilities_cfg, ability_vector& res, bool inside_attack)
 {
 	for (auto item : abilities_cfg.all_children_range()) {
-		res.push_back(std::make_shared<unit_ability_t>(item.key, item.cfg));
+		res.push_back(unit_ability_t::create(item.key, item.cfg, inside_attack));
 	}
 }
 
-ability_vector unit_ability_t::cfg_to_vector(const config& abilities_cfg)
+ability_vector unit_ability_t::cfg_to_vector(const config& abilities_cfg, bool inside_attack)
 {
 	ability_vector res;
-	parse_vector(abilities_cfg, res);
+	parse_vector(abilities_cfg, res, inside_attack);
 	return res;
 }
 
@@ -140,7 +180,7 @@ attack_type::attack_type(const config& cfg)
 	, specials_()
 	, changed_(true)
 {
-	unit_ability_t::parse_vector(cfg.child_or_empty("specials"), specials_);
+	unit_ability_t::parse_vector(cfg.child_or_empty("specials"), specials_, true);
 
 	if (description_.empty())
 		description_ = translation::egettext(id_.c_str());
@@ -426,7 +466,7 @@ void attack_type::apply_effect(const config& cfg)
 			specials_.clear();
 		}
 		for(const auto [key, cfg] : set_specials->all_children_view()) {
-			specials_.push_back(unit_ability_t::create(key, cfg));
+			specials_.push_back(unit_ability_t::create(key, cfg, true));
 		}
 	}
 
