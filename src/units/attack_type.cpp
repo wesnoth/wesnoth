@@ -48,6 +48,12 @@ static lg::log_domain log_wml("wml");
 #define ERR_WML LOG_STREAM(err, log_wml)
 
 
+unit_ability_t::unit_ability_t(std::string tag, config cfg)
+	: tag_(std::move(tag))
+	, id_(cfg["id"].str())
+	, cfg_(std::move(cfg))
+{}
+
 
 void unit_ability_t::parse_vector(const config& abilities_cfg, ability_vector& res)
 {
@@ -390,7 +396,7 @@ void attack_type::apply_effect(const config& cfg)
 		const std::vector<std::string>& dsl = utils::split(del_specials);
 		ability_vector new_specials;
 		for(ability_ptr& p_ab : specials_) {
-			if(!utils::contains(dsl, p_ab->cfg()["id"].str())) {
+			if(!utils::contains(dsl, p_ab->id())) {
 				new_specials.emplace_back(std::move(p_ab));
 			}
 		}

@@ -1507,7 +1507,7 @@ void unit::set_state(const std::string& state, bool value)
 bool unit::has_ability_by_id(const std::string& ability) const
 {
 	for (const ability_ptr& ab : abilities_) {
-		if (ab->cfg()["id"] == ability) {
+		if (ab->id() == ability) {
 			return true;
 		}
 	}
@@ -1520,7 +1520,7 @@ void unit::remove_ability_by_id(const std::string& ability)
 	set_attr_changed(UA_ABILITIES);
 	auto i = abilities_.begin();
 	while (i != abilities_.end()) {
-		if ((**i).cfg()["id"] == ability) {
+		if ((**i).id() == ability) {
 			i = abilities_.erase(i);
 		} else {
 			++i;
