@@ -56,11 +56,6 @@ static lg::log_domain log_help("help");
 
 namespace help {
 
-// The default toplevel.
-help::section default_toplevel;
-// All sections and topics not referenced from the default toplevel.
-help::section hidden_sections;
-
 const int max_section_level = 15;
 // The topic to open by default when opening the help dialog.
 const std::string default_show_topic = "..introduction";
