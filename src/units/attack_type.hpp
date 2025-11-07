@@ -39,16 +39,14 @@ using ability_vector = std::vector<ability_ptr>;
 class unit_ability_t
 {
 public:
-	unit_ability_t(std::string tag, config cfg)
-		: tag_(std::move(tag))
-		, cfg_(std::move(cfg))
-	{}
+	unit_ability_t(std::string tag, config cfg);
 
 	static ability_ptr create(std::string tag, config cfg) {
 		return std::make_shared<unit_ability_t>(tag, cfg);
 	}
 
 	const std::string& tag() const { return tag_; };
+	const std::string& id() const { return id_; };
 	const config& cfg() const { return cfg_; };
 	void write(config& abilities_cfg);
 
@@ -74,6 +72,7 @@ public:
 */
 private:
 	std::string tag_;
+	std::string id_;
 	config cfg_;
 };
 

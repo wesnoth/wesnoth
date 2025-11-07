@@ -295,7 +295,7 @@ std::vector<std::string> unit::get_ability_list() const
 	std::vector<std::string> res;
 
 	for(const auto& p_ab : this->abilities()) {
-		std::string id = p_ab->cfg()["id"];
+		std::string id = p_ab->id();
 		if (!id.empty())
 			res.push_back(std::move(id));
 	}
@@ -317,7 +317,7 @@ namespace {
 
 			if(!name.empty()) {
 				res.emplace_back(
-					ab.cfg()["id"],
+					ab.id(),
 					ab.cfg()["name"].t_str(),
 						unit_abilities::substitute_variables(name, ab),
 						unit_abilities::substitute_variables(ab.cfg()["description"].t_str(), ab));
@@ -334,7 +334,7 @@ namespace {
 
 			if(!name.empty()) {
 				res.emplace_back(
-					ab.cfg()["id"],
+					ab.id(),
 					ab.cfg().get_or("name_inactive", "name").t_str(),
 						unit_abilities::substitute_variables(name, ab),
 						unit_abilities::substitute_variables(desc, ab));
@@ -1819,7 +1819,7 @@ bool attack_type::special_distant_filtering_impl(
 	const unit_map& units = get_unit_map();
 	bool check_adjacent = sub_filter ? filter["affect_adjacent"].to_bool(true) : true;
 	for(const auto& p_ab : self->abilities()) {
-		bool special_check = sub_filter ? self->ability_matches_filter(*p_ab, filter) : special_checking(p_ab->cfg()["id"].str(), p_ab->tag(), filter_special, filter_special_id, filter_special_type);
+		bool special_check = sub_filter ? self->ability_matches_filter(*p_ab, filter) : special_checking(p_ab->id(), p_ab->tag(), filter_special, filter_special_id, filter_special_type);
 		if(special_check && check_self_abilities_impl(self_attack, other_attack, *p_ab, self, self_loc, whom, leader_bool)){
 			return true;
 		}
@@ -1837,7 +1837,7 @@ bool attack_type::special_distant_filtering_impl(
 			int dir = find_direction(self_loc, from_loc, distance);
 
 			for(const auto& p_ab : u.abilities()) {
-				bool special_check = sub_filter ? u.ability_matches_filter(*p_ab, filter) : special_checking(p_ab->cfg()["id"].str(), p_ab->tag(), filter_special, filter_special_id, filter_special_type);
+				bool special_check = sub_filter ? u.ability_matches_filter(*p_ab, filter) : special_checking(p_ab->id(), p_ab->tag(), filter_special, filter_special_id, filter_special_type);
 				if(special_check && check_adj_abilities_impl(self_attack, other_attack, *p_ab, self, u, distance, dir, self_loc, from_loc, whom, leader_bool)) {
 					return true;
 				}
@@ -1857,7 +1857,7 @@ bool attack_type::has_filter_special_or_ability(const config& filter, bool simpl
 	const std::set<std::string> filter_special_type = simple_check ? utils::split_set(filter["special_type"].str()) : utils::split_set(filter["special_type_active"].str());
 	using namespace utils::config_filters;
 	for(const auto& p_ab : specials()) {
-		if(special_checking(p_ab->cfg()["id"].str(), p_ab->tag(), filter_special, filter_special_id, filter_special_type)) {
+		if(special_checking(p_ab->id(), p_ab->tag(), filter_special, filter_special_id, filter_special_type)) {
 			if(simple_check) {
 				return true;
 			} else if(special_active(*p_ab, AFFECT_SELF)) {
@@ -1868,7 +1868,7 @@ bool attack_type::has_filter_special_or_ability(const config& filter, bool simpl
 
 	if(!simple_check && other_attack_) {
 		for(const auto& p_ab : other_attack_->specials()) {
-			if(special_checking(p_ab->cfg()["id"].str(), p_ab->tag(), filter_special, filter_special_id, filter_special_type)) {
+			if(special_checking(p_ab->id(), p_ab->tag(), filter_special, filter_special_id, filter_special_type)) {
 				if(other_attack_->special_active(*p_ab, AFFECT_OTHER)) {
 					return true;
 				}

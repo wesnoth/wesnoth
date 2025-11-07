@@ -552,7 +552,7 @@ int unit_type::experience_needed(bool with_acceleration) const
 bool unit_type::has_ability_by_id(const std::string& ability) const
 {
 	for(const auto& p_ab : abilities()) {
-		if(p_ab->cfg()["id"] == ability) {
+		if(p_ab->id() == ability) {
 			return true;
 		}
 	}
@@ -565,7 +565,7 @@ std::vector<std::string> unit_type::get_ability_list() const
 	std::vector<std::string> res;
 
 	for(const auto& p_ab : abilities()) {
-		std::string id = p_ab->cfg()["id"];
+		std::string id = p_ab->id();
 		if(!id.empty()) {
 			res.push_back(std::move(id));
 		}

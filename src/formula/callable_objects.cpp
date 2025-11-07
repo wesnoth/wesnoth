@@ -120,8 +120,8 @@ variant attack_type_callable::get_value(const std::string& key) const
 		std::vector<variant> res;
 
 		for(const auto& p_ab : att_->specials()) {
-			if(!p_ab->cfg()["id"].empty()) {
-				res.emplace_back(p_ab->cfg()["id"].str());
+			if(!p_ab->id().empty()) {
+				res.emplace_back(p_ab->id());
 			}
 		}
 		return variant(res);
@@ -189,10 +189,10 @@ int attack_type_callable::do_compare(const formula_callable* callable) const
 		return self_specials.size() < other_specials.size() ? -1 : 1;
 	}
 	for(std::size_t i = 0; i < self_specials.size(); ++i) {
-		const auto& s = self_specials[i]->cfg()["id"];
-		const auto& o = other_specials[i]->cfg()["id"];
+		const auto& s = self_specials[i]->id();
+		const auto& o = other_specials[i]->id();
 		if(s != o) {
-			return s.str().compare(o.str());
+			return s.compare(o);
 		}
 	}
 

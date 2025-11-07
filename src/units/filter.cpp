@@ -414,7 +414,7 @@ void unit_filter_compound::fill(const vconfig& cfg)
 			{
 				const unit_map& units = args.context().get_disp_context().units();
 				for(const auto& p_ab : args.u.abilities()) {
-					if(abilities.count(p_ab->cfg()["id"]) != 0 && args.u.get_self_ability_bool(*p_ab, args.loc)) {
+					if(abilities.count(p_ab->id()) != 0 && args.u.get_self_ability_bool(*p_ab, args.loc)) {
 						return true;
 					}
 				}
@@ -438,7 +438,7 @@ void unit_filter_compound::fill(const vconfig& cfg)
 						}
 					}
 					for(const auto& p_ab : unit.abilities()) {
-						if(abilities.count(p_ab->cfg()["id"]) != 0 && args.u.get_adj_ability_bool(*p_ab, distance, *dir, args.loc, unit, from_loc)) {
+						if(abilities.count(p_ab->id()) != 0 && args.u.get_adj_ability_bool(*p_ab, distance, *dir, args.loc, unit, from_loc)) {
 							return true;
 						}
 					}
