@@ -37,10 +37,6 @@ enum EFFECTS { EFFECT_DEFAULT=1, EFFECT_CUMULABLE=2, EFFECT_WITHOUT_CLAMP_MIN_MA
  */
 std::string substitute_variables(const std::string& str, const unit_ability_t& ab);
 
-int individual_value(const config::attribute_value *v, int def, const active_ability & ability, const map_location& loc, const const_attack_ptr& att);
-
-int individual_double_value(const config::attribute_value *v, int def, const active_ability & ability, const map_location& loc, const const_attack_ptr& att);
-
 struct individual_effect
 {
 	individual_effect() : type(NOT_USED), value(0), ability(nullptr),
