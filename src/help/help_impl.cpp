@@ -1222,66 +1222,57 @@ section *find_section(section &sec, const std::string &id)
 }
 
 std::pair<section, section> generate_contents()
-{
-	std::pair res{section{}, section{}};
-	auto& [default_toplevel, hidden_sections] = res;
+try {
+	const config& help_config = game_config_manager::get()->game_config().child_or_empty("help");
 
-	if(auto gcm = game_config_manager::get()) {
-		const config *help_config = &gcm->game_config().child_or_empty("help");
-		try {
-			default_toplevel = parse_config(help_config);
-			// Create a config object that contains everything that is
-			// not referenced from the toplevel element. Read this
-			// config and save these sections and topics so that they
-			// can be referenced later on when showing help about
-			// specified things, but that should not be shown when
-			// opening the help browser in the default manner.
-			config hidden_toplevel;
-			std::stringstream ss;
-			for (const config &section : help_config->child_range("section"))
-			{
-				const std::string id = section["id"];
-				if (find_section(default_toplevel, id) == nullptr) {
-					// This section does not exist referenced from the
-					// toplevel. Hence, add it to the hidden ones if it
-					// is not referenced from another section.
-					if (!section_is_referenced(id, *help_config)) {
-						if (!ss.str().empty()) {
-							ss << ",";
-						}
-						ss << id;
-					}
-				}
+	std::vector<std::string> hidden_sections;
+	std::vector<std::string> hidden_topics;
+
+	section toplevel_section = parse_config(&help_config);
+
+	for(const config& section : help_config.child_range("section")) {
+		const std::string id = section["id"];
+
+		// This section is not referenced from the toplevel...
+		if(find_section(toplevel_section, id) == nullptr) {
+			// ...nor is it referenced from any other section.
+			if(!section_is_referenced(id, help_config)) {
+				hidden_sections.push_back(id);
 			}
-			hidden_toplevel["sections"] = ss.str();
-			ss.str("");
-			for (const config &topic : help_config->child_range("topic"))
-			{
-				const std::string id = topic["id"];
-				if (find_topic(default_toplevel, id) == nullptr) {
-					if (!topic_is_referenced(id, *help_config)) {
-						if (!ss.str().empty()) {
-							ss << ",";
-						}
-						ss << id;
-					}
-				}
-			}
-			hidden_toplevel["topics"] = ss.str();
-			config hidden_cfg = *help_config;
-			// Change the toplevel to our new, custom built one.
-			hidden_cfg.clear_children("toplevel");
-			hidden_cfg.add_child("toplevel", std::move(hidden_toplevel));
-			hidden_sections = parse_config(&hidden_cfg);
-		}
-		catch (parse_error& e) {
-			std::stringstream msg;
-			msg << "Parse error when parsing help text: '" << e.message << "'";
-			PLAIN_LOG << msg.str();
 		}
 	}
 
-	return res;
+	for(const config& topic : help_config.child_range("topic")) {
+		const std::string id = topic["id"];
+
+		if(find_topic(toplevel_section, id) == nullptr) {
+			if(!topic_is_referenced(id, help_config)) {
+				hidden_topics.push_back(id);
+			}
+		}
+	}
+
+	// Avoid copying the whole help config if nothing is hidden
+	if(hidden_sections.empty() && hidden_topics.empty()) {
+		return {std::move(toplevel_section), section{}};
+	}
+
+	config hidden_config = help_config;
+	hidden_config.clear_children("toplevel");
+
+	// Replace the toplevel tag with a new one containing everything not referenced
+	// by the original. Save these sections and topics so that they can be displayed
+	// later, but hidden when opening the help browser in the usual manner.
+	hidden_config.add_child("toplevel", config{
+		"sections", utils::join(hidden_sections),
+		"topics",   utils::join(hidden_topics)
+	});
+
+	return {std::move(toplevel_section), parse_config(&hidden_config)};
+
+} catch(const parse_error& e) {
+	PLAIN_LOG << "Parse error when parsing help text: '" << e.message << "'";
+	return {};
 }
 
 // id starting with '.' are hidden
