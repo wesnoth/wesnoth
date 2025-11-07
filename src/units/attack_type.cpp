@@ -52,7 +52,19 @@ unit_ability_t::unit_ability_t(std::string tag, config cfg)
 	: tag_(std::move(tag))
 	, id_(cfg["id"].str())
 	, cfg_(std::move(cfg))
-{}
+{
+
+	if (!cfg_["backstab"].blank()) {
+		deprecated_message("backstab= in weapon specials", DEP_LEVEL::INDEFINITE, "", "Use [filter_opponent] with a formula instead; the code can be found in data/core/macros/ in the WEAPON_SPECIAL_BACKSTAB macro.");
+	}
+	if (cfg_["backstab"].to_bool()) {
+		const std::string& backstab_formula = "enemy_of(self, flanker) and not flanker.petrified where flanker = unit_at(direction_from(loc, other.facing))";
+		config& filter_opponent = cfg_.child_or_add("filter_opponent");
+		config& filter_opponent2 = filter_opponent.empty() ? filter_opponent : filter_opponent.add_child("and");
+		filter_opponent2["formula"] = backstab_formula;
+	}
+	cfg_.remove_attribute("backstab");
+}
 
 
 void unit_ability_t::parse_vector(const config& abilities_cfg, ability_vector& res)
