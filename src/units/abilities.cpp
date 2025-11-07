@@ -1454,22 +1454,7 @@ namespace { // Helpers for attack_type::special_active()
 			// need to select an appropriate opponent.)
 			return true;
 
-		//Add wml filter if "backstab" attribute used.
-		if (!filter["backstab"].blank() && child_tag == "filter_opponent") {
-			deprecated_message("backstab= in weapon specials", DEP_LEVEL::INDEFINITE, "", "Use [filter_opponent] with a formula instead; the code can be found in data/core/macros/ in the WEAPON_SPECIAL_BACKSTAB macro.");
-		}
 		config cfg = filter;
-		if(filter["backstab"].to_bool() && child_tag == "filter_opponent"){
-			const std::string& backstab_formula = "enemy_of(self, flanker) and not flanker.petrified where flanker = unit_at(direction_from(loc, other.facing))";
-			config& filter_child = cfg.child_or_add("filter_opponent");
-			if(!filter.has_child("filter_opponent")){
-				filter_child["formula"] = backstab_formula;
-			} else {
-				config filter_opponent;
-				filter_opponent["formula"] = backstab_formula;
-				filter_child.add_child("and", filter_opponent);
-			}
-		}
 		//Add wml filter if [filter_adjacent] or [filter_adjacent_location].
 		if(child_tag == "filter_self") {
 			cfg = ability_active_adjacent_helper(filter, child_tag);
