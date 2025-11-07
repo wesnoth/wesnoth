@@ -31,12 +31,11 @@ enum EFFECTS { EFFECT_DEFAULT=1, EFFECT_CUMULABLE=2, EFFECT_WITHOUT_CLAMP_MIN_MA
 /**
  * Substitute gettext variables in name and description of abilities and specials
  * @param str                  The string in which the substitution is to be done
- * @param tag_name             Tag name of the special (plague, leadership, chance_to_hit etc.)
- * @param ability_or_special   The config for the special (for example, contents inside [plague][/plague] etc.)
+ * @param ab                   The special (for example  [plague][/plague] etc.)
  *
  * @return The string `str` with all gettext variables substitutes with corresponding special properties
  */
-std::string substitute_variables(const std::string& str, const std::string& tag_name, const config& ability_or_special);
+std::string substitute_variables(const std::string& str, const unit_ability_t& ab);
 
 int individual_value(const config::attribute_value *v, int def, const active_ability & ability, const map_location& loc, const const_attack_ptr& att);
 

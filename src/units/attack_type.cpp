@@ -47,6 +47,57 @@ static lg::log_domain log_unit("unit");
 static lg::log_domain log_wml("wml");
 #define ERR_WML LOG_STREAM(err, log_wml)
 
+
+
+void unit_ability_t::parse_vector(const config& abilities_cfg, ability_vector& res)
+{
+	for (auto item : abilities_cfg.all_children_range()) {
+		res.push_back(std::make_shared<unit_ability_t>(item.key, item.cfg));
+	}
+}
+
+ability_vector unit_ability_t::cfg_to_vector(const config& abilities_cfg)
+{
+	ability_vector res;
+	parse_vector(abilities_cfg, res);
+	return res;
+}
+
+ability_vector unit_ability_t::filter_tag(const ability_vector& abs, const std::string& tag)
+{
+	ability_vector res;
+	for (const ability_ptr& p_ab : abs) {
+		if (p_ab->tag() == tag) {
+			res.push_back(p_ab);
+		}
+	}
+	return res;
+}
+
+ability_vector unit_ability_t::clone(const ability_vector& abs)
+{
+	ability_vector res;
+	for (const ability_ptr& p_ab : abs) {
+		res.push_back(std::make_shared<unit_ability_t>(*p_ab));
+	}
+	return res;
+}
+
+config unit_ability_t::vector_to_cfg(const ability_vector& abilities)
+{
+	config abilities_cfg;
+	for (const auto& item : abilities) {
+		item->write(abilities_cfg);
+	}
+	return abilities_cfg;
+}
+
+
+void unit_ability_t::write(config& abilities_cfg)
+{
+	abilities_cfg.add_child(tag(), cfg());
+}
+
 attack_type::attack_type(const config& cfg)
 	: self_loc_()
 	, other_loc_()
@@ -68,9 +119,11 @@ attack_type::attack_type(const config& cfg)
 	, movement_used_(cfg["movement_used"].to_int(100000))
 	, attacks_used_(cfg["attacks_used"].to_int(1))
 	, parry_(cfg["parry"].to_int())
-	, specials_(cfg.child_or_empty("specials"))
+	, specials_()
 	, changed_(true)
 {
+	unit_ability_t::parse_vector(cfg.child_or_empty("specials"), specials_);
+
 	if (description_.empty())
 		description_ = translation::egettext(id_.c_str());
 
@@ -266,9 +319,9 @@ bool attack_type::matches_filter(const config& filter, const std::string& check_
 
 void attack_type::remove_special_by_filter(const config& filter)
 {
-	config::all_children_iterator i = specials_.ordered_begin();
-	while (i != specials_.ordered_end()) {
-		if(special_matches_filter(i->cfg, i->key, filter)) {
+	auto i = specials_.begin();
+	while (i != specials_.end()) {
+		if(special_matches_filter(**i, filter)) {
 			i = specials_.erase(i);
 		} else {
 			++i;
@@ -335,10 +388,10 @@ void attack_type::apply_effect(const config& cfg)
 
 	if(del_specials.empty() == false) {
 		const std::vector<std::string>& dsl = utils::split(del_specials);
-		config new_specials;
-		for(const auto [key, cfg] : specials_.all_children_view()) {
-			if(!utils::contains(dsl, cfg["id"].str())) {
-				new_specials.add_child(key, cfg);
+		ability_vector new_specials;
+		for(ability_ptr& p_ab : specials_) {
+			if(!utils::contains(dsl, p_ab->cfg()["id"].str())) {
+				new_specials.emplace_back(std::move(p_ab));
 			}
 		}
 		specials_ = new_specials;
@@ -355,7 +408,7 @@ void attack_type::apply_effect(const config& cfg)
 			specials_.clear();
 		}
 		for(const auto [key, cfg] : set_specials->all_children_view()) {
-			specials_.add_child(key, cfg);
+			specials_.push_back(unit_ability_t::create(key, cfg));
 		}
 	}
 
@@ -666,5 +719,5 @@ void attack_type::write(config& cfg) const
 	cfg["movement_used"] = movement_used_;
 	cfg["attacks_used"] = attacks_used_;
 	cfg["parry"] = parry_;
-	cfg.add_child("specials", specials_);
+	cfg.add_child("specials", specials_cfg());
 }

@@ -32,3 +32,9 @@ class attack_type;
 
 using attack_ptr = std::shared_ptr<attack_type>;
 using const_attack_ptr = std::shared_ptr<const attack_type>;
+
+class unit_ability_t;
+
+using ability_ptr = std::shared_ptr<unit_ability_t>;
+using const_ability_ptr = std::shared_ptr<const unit_ability_t>;
+

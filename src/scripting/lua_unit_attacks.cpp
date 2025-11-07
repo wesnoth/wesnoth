@@ -269,7 +269,7 @@ static int impl_unit_attack_get(lua_State *L)
 	return_int_attrib("parry", attack.parry());
 	return_int_attrib("max_range", attack.max_range());
 	return_int_attrib("min_range", attack.min_range());
-	return_cfgref_attrib("specials", attack.specials());
+	return_cfgref_attrib("specials", attack.specials_cfg());
 	return_cfgref_attrib("__cfg", attack.to_config());
 	if(luaW_getmetafield(L, 1, m)) {
 		return 1;
@@ -307,7 +307,7 @@ static int impl_unit_attack_set(lua_State *L)
 	modify_int_attrib("min_range", attack.set_min_range(value));
 
 	if(strcmp(m, "specials") == 0) {
-		attack.set_specials(luaW_checkconfig(L, 3));
+		attack.set_specials_cfg(luaW_checkconfig(L, 3));
 		return 0;
 	}
 

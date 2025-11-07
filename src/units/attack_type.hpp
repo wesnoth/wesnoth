@@ -29,9 +29,55 @@
 
 class active_ability_list;
 class unit_type;
+
 namespace wfl {
 	class map_formula_callable;
 }
+
+using ability_vector = std::vector<ability_ptr>;
+
+class unit_ability_t
+{
+public:
+	unit_ability_t(std::string tag, config cfg)
+		: tag_(std::move(tag))
+		, cfg_(std::move(cfg))
+	{}
+
+	static ability_ptr create(std::string tag, config cfg) {
+		return std::make_shared<unit_ability_t>(tag, cfg);
+	}
+
+	const std::string& tag() const { return tag_; };
+	const config& cfg() const { return cfg_; };
+	void write(config& abilities_cfg);
+
+
+	static void parse_vector(const config& abilities_cfg, ability_vector& res);
+	static config vector_to_cfg(const ability_vector& abilities);
+	static ability_vector cfg_to_vector(const config& abilities_cfg);
+
+
+	static ability_vector filter_tag(const ability_vector& vec, const std::string& tag);
+	static ability_vector clone(const ability_vector& vec);
+
+	/*
+	static auto get_view(const ability_vector& vec) {
+		return vec
+			| boost::adaptors::transformed([](const ability_ptr& p)->const config& { return *x; });
+	}
+
+	static auto get_view(const ability_vector& vec, const std::string& tag) {
+		return vec
+			| boost::adaptors::transformed([](const ability_ptr& p)->const config& { return *x; });
+	}
+*/
+private:
+	std::string tag_;
+	config cfg_;
+};
+
+
 //the 'attack type' is the type of attack, how many times it strikes,
 //and how much damage it does.
 class attack_type : public std::enable_shared_from_this<attack_type>
@@ -54,7 +100,15 @@ public:
 	int num_attacks() const { return num_attacks_; }
 	double attack_weight() const { return attack_weight_; }
 	double defense_weight() const { return defense_weight_; }
-	const config &specials() const { return specials_; }
+	const ability_vector& specials() const { return specials_; }
+
+	config specials_cfg() const {
+		return unit_ability_t::vector_to_cfg(specials_);
+	}
+
+	ability_vector specials(const std::string& tag) const {
+		return unit_ability_t::filter_tag(specials_, tag);
+	}
 
 	void set_name(const t_string& value) { description_  = value; set_changed(true); }
 	void set_id(const std::string& value) { id_ = value; set_changed(true); }
@@ -70,7 +124,9 @@ public:
 	void set_num_attacks(int value) { num_attacks_ = value; set_changed(true); }
 	void set_attack_weight(double value) { attack_weight_ = value; set_changed(true); }
 	void set_defense_weight(double value) { defense_weight_ = value; set_changed(true); }
-	void set_specials(config value) { specials_ = value; set_changed(true); }
+	void set_specials_cfg(const config& value) {
+		specials_ = unit_ability_t::cfg_to_vector(value);  set_changed(true);
+	}
 
 
 	// In unit_abilities.cpp:
@@ -227,13 +283,12 @@ private:
 	enum AFFECTS { AFFECT_SELF=1, AFFECT_OTHER=2, AFFECT_EITHER=3 };
 	/**
 	 * Filter a list of abilities or weapon specials
-	 * @param cfg config of ability checked
-	 * @param tag_name le type of ability who is checked
+	 * @param ab the ability/special
 	 * @param filter config contain list of attribute who are researched in cfg
 	 *
 	 * @return true if all attribute with ability checked
 	 */
-	bool special_matches_filter(const config & cfg, const std::string& tag_name, const config & filter) const;
+	bool special_matches_filter(const unit_ability_t& ab, const config & filter) const;
 	/**
 	 * Select best damage type based on frequency count for replacement_type.
 	 *
@@ -252,23 +307,21 @@ private:
 	 * the overwrite_specials attributes.
 	 *
 	 * @param overwriters list that may have overwrite_specials attributes.
-	 * @param tag_name type of abilitie/special checked.
 	 */
-	active_ability_list overwrite_special_overwriter(active_ability_list overwriters, const std::string& tag_name) const;
+	active_ability_list overwrite_special_overwriter(active_ability_list overwriters) const;
 	/**
 	 * Check whether @a cfg would be overwritten by any element of @a overwriters.
 	 *
 	 * @return True if element checked is overwritable.
 	 * @param overwriters list used for check if element is overwritable.
-	 * @param cfg element checked.
-	 * @param tag_name type of abilitie/special checked.
+	 * @param ab the ability/special checked
 	 */
-	bool overwrite_special_checking(active_ability_list& overwriters, const config& cfg, const std::string& tag_name) const;
+	bool overwrite_special_checking(active_ability_list& overwriters, const unit_ability_t& ab) const;
 
-	bool special_active(const config& special, AFFECTS whom, const std::string& tag_name,
+	bool special_active(const unit_ability_t& ab, AFFECTS whom,
 	                    bool in_abilities_tag = false) const;
 
-	bool special_tooltip_active(const config& special, const std::string& tag_name) const;
+	bool special_tooltip_active(const unit_ability_t& ab) const;
 /** weapon_specials_impl_self and weapon_specials_impl_adj : check if special name can be added.
 	 * @param[in,out] temp_string the string modified and returned
 	 * @param[in] self the unit checked.
@@ -308,21 +361,19 @@ private:
 	 * @return True if the special @a tag_name is active.
 	 * @param self_attack the attack used by unit checked in this function.
 	 * @param other_attack the attack used by opponent to unit checked.
-	 * @param special the config to one special ability checked.
+	 * @param ab the ability/special checked
 	 * @param u the unit checked.
 	 * @param loc location of the unit checked.
 	 * @param whom determine if unit affected or not by special ability.
-	 * @param tag_name The special ability type who is being checked.
 	 * @param leader_bool If true, [leadership] abilities are checked.
 	 */
 	static bool check_self_abilities_impl(
 		const const_attack_ptr& self_attack,
 		const const_attack_ptr& other_attack,
-		const config& special,
+		const unit_ability_t& ab,
 		const unit_const_ptr& u,
 		const map_location& loc,
 		AFFECTS whom,
-		const std::string& tag_name,
 		bool leader_bool=false
 	);
 
@@ -331,7 +382,7 @@ private:
 	 * @return True if the special @a tag_name is active.
 	 * @param self_attack the attack used by unit who fight.
 	 * @param other_attack the attack used by opponent.
-	 * @param special the config to one special ability checked.
+	 * @param ab the ability/special checked
 	 * @param u the unit who is or not affected by an abilities owned by @a from.
 	 * @param from unit distant to @a u is checked.
 	 * @param dist distance between unit distant and @a u.
@@ -339,13 +390,12 @@ private:
 	 * @param loc location of the unit checked.
 	 * @param from_loc location of the unit distant to @a u.
 	 * @param whom determine if unit affected or not by special ability.
-	 * @param tag_name The special ability type who is being checked.
 	 * @param leader_bool If true, [leadership] abilities are checked.
 	 */
 	static bool check_adj_abilities_impl(
 		const const_attack_ptr& self_attack,
 		const const_attack_ptr& other_attack,
-		const config& special,
+		const unit_ability_t& ab,
 		const unit_const_ptr& u,
 		const unit& from,
 		std::size_t dist,
@@ -353,16 +403,14 @@ private:
 		const map_location& loc,
 		const map_location& from_loc,
 		AFFECTS whom,
-		const std::string& tag_name,
 		bool leader_bool = false
 	);
 
 	static bool special_active_impl(
 		const const_attack_ptr& self_attack,
 		const const_attack_ptr& other_attack,
-		const config& special,
+		const unit_ability_t& special,
 		AFFECTS whom,
-		const std::string& tag_name,
 		bool in_abilities_tag = false
 	);
 
@@ -477,7 +525,7 @@ private:
 	int movement_used_;
 	int attacks_used_;
 	int parry_;
-	config specials_;
+	ability_vector specials_;
 	bool changed_;
 	/**
 	 * While processing a recursive match, all the filters that are currently being checked, oldest first.
