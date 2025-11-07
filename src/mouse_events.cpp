@@ -1459,22 +1459,22 @@ int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const ma
 
 			const std::set<std::string> checking_tags_other = {"damage_type", "disable", "berserk", "drains",
 				"heal_on_hit", "plague", "slow", "petrifies", "firststrike", "poison"};
-			std::string attw_specials = attacker_weapon.weapon_specials();
-			std::string attw_specials_dmg = attacker_weapon.weapon_specials_value({"leadership", "damage"});
-			std::string attw_specials_atk = attacker_weapon.weapon_specials_value({"attacks", "swarm"});
-			std::string attw_specials_cth = attacker_weapon.weapon_specials_value({"chance_to_hit"});
-			std::string attw_specials_others = attacker_weapon.weapon_specials_value(checking_tags_other);
+			std::string attw_specials = attacker_weapon.describe_weapon_specials();
+			std::string attw_specials_dmg = attacker_weapon.describe_weapon_specials_value({"leadership", "damage"});
+			std::string attw_specials_atk = attacker_weapon.describe_weapon_specials_value({"attacks", "swarm"});
+			std::string attw_specials_cth = attacker_weapon.describe_weapon_specials_value({"chance_to_hit"});
+			std::string attw_specials_others = attacker_weapon.describe_weapon_specials_value(checking_tags_other);
 			bool defender_attack = !(defender_weapon.name().empty() && defender_weapon.damage() == 0
 				&& defender_weapon.num_attacks() == 0 && defender_stats.chance_to_hit == 0);
-			std::string defw_specials = defender_attack ? defender_weapon.weapon_specials() : "";
+			std::string defw_specials = defender_attack ? defender_weapon.describe_weapon_specials() : "";
 			std::string defw_specials_dmg
-				= defender_attack ? defender_weapon.weapon_specials_value({"leadership", "damage"}) : "";
+				= defender_attack ? defender_weapon.describe_weapon_specials_value({"leadership", "damage"}) : "";
 			std::string defw_specials_atk
-				= defender_attack ? defender_weapon.weapon_specials_value({"attacks", "swarm"}) : "";
+				= defender_attack ? defender_weapon.describe_weapon_specials_value({"attacks", "swarm"}) : "";
 			std::string defw_specials_cth
-				= defender_attack ? defender_weapon.weapon_specials_value({"chance_to_hit"}) : "";
+				= defender_attack ? defender_weapon.describe_weapon_specials_value({"chance_to_hit"}) : "";
 			std::string defw_specials_others
-				= defender_attack ? defender_weapon.weapon_specials_value(checking_tags_other) : "";
+				= defender_attack ? defender_weapon.describe_weapon_specials_value(checking_tags_other) : "";
 
 			if(!attw_specials.empty()) {
 				attw_specials = " " + attw_specials;

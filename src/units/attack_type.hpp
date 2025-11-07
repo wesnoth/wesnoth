@@ -141,8 +141,8 @@ public:
 	active_ability_list get_specials(const std::string& special) const;
 	std::vector<std::pair<t_string, t_string>> special_tooltips(boost::dynamic_bitset<>* active_list = nullptr) const;
 	std::vector<std::pair<t_string, t_string>> abilities_special_tooltips(boost::dynamic_bitset<>* active_list) const;
-	std::string weapon_specials() const;
-	std::string weapon_specials_value(const std::set<std::string>& checking_tags) const;
+	std::string describe_weapon_specials() const;
+	std::string describe_weapon_specials_value(const std::set<std::string>& checking_tags) const;
 
 	/** Returns alignment specified by alignment_ variable.
 	 */
