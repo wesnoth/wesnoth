@@ -2331,37 +2331,20 @@ bool attack_type::special_tooltip_active(const unit_ability_t& ab) const
 	if(!whom_is_self)
 		return false;
 
-	const unit_map& units = get_unit_map();
-
-	unit_const_ptr self = self_ ;
-	unit_const_ptr other = other_;
-	if(self == nullptr) {
-		unit_map::const_iterator it = units.find(self_loc_);
-		if(it.valid()) {
-			self = it.get_shared_ptr();
-		}
-	}
-	if(other == nullptr) {
-		unit_map::const_iterator it = units.find(other_loc_);
-		if(it.valid()) {
-			other = it.get_shared_ptr();
-		}
-	}
-
 	//this part of checking is similar to special_active but not the same.
 	//"filter_opponent" is not checked here, and "filter_attacker/defender" only
 	//if attacker/defender is self_.
 	bool applied_both = ab.cfg()["apply_to"] == "both";
 	std::string self_check_if_recursion = (applied_both || whom_is_self) ? ab.tag() : "";
-	if (!special_unit_matches(self, other, self_loc_, shared_from_this(), ab.cfg(), is_for_listing_, "filter_student", self_check_if_recursion))
+	if (!special_unit_matches(self_, other_, self_loc_, shared_from_this(), ab.cfg(), is_for_listing_, "filter_student", self_check_if_recursion))
 		return false;
 	bool applied_to_attacker = applied_both || (whom_is_self && is_attacker_);
 	std::string att_check_if_recursion = applied_to_attacker ? ab.tag() : "";
-	if (is_attacker_ && !special_unit_matches(self, other, self_loc_, shared_from_this(), ab.cfg(), is_for_listing_, "filter_attacker", att_check_if_recursion))
+	if (is_attacker_ && !special_unit_matches(self_, other_, self_loc_, shared_from_this(), ab.cfg(), is_for_listing_, "filter_attacker", att_check_if_recursion))
 		return false;
 	bool applied_to_defender = applied_both || (whom_is_self && !is_attacker_);
 	std::string def_check_if_recursion= applied_to_defender ? ab.tag() : "";
-	if (!is_attacker_ && !special_unit_matches(self, other, self_loc_, shared_from_this(), ab.cfg(), is_for_listing_, "filter_defender", def_check_if_recursion))
+	if (!is_attacker_ && !special_unit_matches(self_, other_, self_loc_, shared_from_this(), ab.cfg(), is_for_listing_, "filter_defender", def_check_if_recursion))
 		return false;
 
 	return true;
