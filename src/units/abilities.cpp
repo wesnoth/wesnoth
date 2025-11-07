@@ -915,7 +915,7 @@ static void add_name(std::string& temp_string, bool active, const std::string& n
  * Whether or not a special is active depends
  * on the current context (see set_specials_context)
  */
-std::string attack_type::weapon_specials() const
+std::string attack_type::describe_weapon_specials() const
 {
 	//log_scope("weapon_specials");
 	std::vector<std::string> special_names;
@@ -960,7 +960,7 @@ static void add_name_list(std::string& temp_string, std::string& weapon_abilitie
 	}
 }
 
-std::string attack_type::weapon_specials_value(const std::set<std::string>& checking_tags) const
+std::string attack_type::describe_weapon_specials_value(const std::set<std::string>& checking_tags) const
 {
 	//log_scope("weapon_specials_value");
 	std::string temp_string, weapon_abilities;
