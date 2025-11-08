@@ -116,6 +116,7 @@ struct section {
 
 	/** Allocate memory for and add the section. */
 	void add_section(const section &s);
+	void add_section(section&& s);
 
 	void clear();
 	std::string title, id;
@@ -171,10 +172,10 @@ public:
 // see.
 
 /** Dispatch generators to their appropriate functions. */
-void generate_sections(const config *help_cfg, const std::string &generator, section &sec, int level);
+void generate_sections(const config& help_cfg, const std::string &generator, section &sec, int level);
 std::vector<topic> generate_topics(const bool sort_topics,const std::string &generator);
-std::string generate_topic_text(const std::string &generator, const config *help_cfg, const section &sec);
-std::string generate_contents_links(const std::string& section_name, config const *help_cfg);
+std::string generate_topic_text(const std::string &generator, const config& help_cfg, const section &sec);
+std::string generate_contents_links(const std::string& section_name, const config& help_cfg);
 std::string generate_contents_links(const section &sec);
 
 /** Thrown when the help system fails to parse something. */
@@ -192,10 +193,10 @@ std::string make_unit_link(const std::string& type_id);
 std::vector<std::string> make_unit_links_list(
 		const std::vector<std::string>& type_id_list, bool ordered = false);
 
-void generate_races_sections(const config *help_cfg, section &sec, int level);
+void generate_races_sections(const config& help_cfg, section &sec, int level);
 void generate_terrain_sections(section &sec, int level);
 std::vector<topic> generate_unit_topics(const bool, const std::string& race);
-void generate_unit_sections(const config *help_cfg, section &sec, int level, const bool, const std::string& race);
+void generate_unit_sections(const config& help_cfg, section &sec, int level, const bool, const std::string& race);
 enum UNIT_DESCRIPTION_TYPE {
 	FULL_DESCRIPTION,
 	/** Ignore this unit for documentation purposes. */
@@ -221,7 +222,7 @@ std::vector<topic> generate_ability_topics(const bool);
 std::vector<topic> generate_time_of_day_topics(const bool);
 std::vector<topic> generate_weapon_special_topics(const bool);
 
-void generate_era_sections(const config *help_cfg, section &sec, int level);
+void generate_era_sections(const config& help_cfg, section &sec, int level);
 std::vector<topic> generate_faction_topics(const config &, const bool);
 std::vector<topic> generate_era_topics(const bool, const std::string & era_id);
 std::vector<topic> generate_trait_topics(const bool);
@@ -236,10 +237,10 @@ std::pair<section, section> generate_contents();
  * Parse a help config, return the top level section. Return an empty
  * section if cfg is nullptr.
  */
-section parse_config(const config *cfg);
+section parse_config(const config& cfg);
+
 /** Recursive function used by parse_config. */
-void parse_config_internal(const config *help_cfg, const config *section_cfg,
-						   section &sec, int level=0);
+section parse_config_internal(const config& help_cfg, const config& section_cfg, int level = 0);
 
 /**
  * Return true if the section with id section_id is referenced from

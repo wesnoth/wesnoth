@@ -104,15 +104,14 @@ bool topic_is_referenced(const std::string &topic_id, const config &cfg)
 	return false;
 }
 
-void parse_config_internal(const config *help_cfg, const config *section_cfg,
-						   section &sec, int level)
+section parse_config_internal(const config& help_cfg, const config& section_cfg, int level)
 {
 	if (level > max_section_level) {
 		PLAIN_LOG << "Maximum section depth has been reached. Maybe circular dependency?";
+		return section{};
 	}
-	else if (section_cfg != nullptr) {
-		const std::vector<std::string> sections = utils::quoted_split((*section_cfg)["sections"]);
-		std::string id = level == 0 ? "toplevel" : (*section_cfg)["id"].str();
+		const std::vector<std::string> sections = utils::quoted_split(section_cfg["sections"]);
+		std::string id = level == 0 ? "toplevel" : section_cfg["id"].str();
 		if (level != 0) {
 			if (!is_valid_id(id)) {
 				std::stringstream ss;
@@ -120,16 +119,15 @@ void parse_config_internal(const config *help_cfg, const config *section_cfg,
 				throw parse_error(ss.str());
 			}
 		}
-		std::string title = level == 0 ? "" : (*section_cfg)["title"].str();
+		std::string title = level == 0 ? "" : section_cfg["title"].str();
+		section sec;
 		sec.id = id;
 		sec.title = title;
 		// Find all child sections.
 		for(const std::string& sec_id : sections) {
-			if (auto child_cfg = help_cfg->find_child("section", "id", sec_id))
+			if (auto child_cfg = help_cfg.find_child("section", "id", sec_id))
 			{
-				section child_section;
-				parse_config_internal(help_cfg, child_cfg.ptr(), child_section, level + 1);
-				sec.add_section(child_section);
+				sec.add_section(parse_config_internal(help_cfg, *child_cfg, level + 1));
 			}
 			else {
 				std::stringstream ss;
@@ -139,35 +137,35 @@ void parse_config_internal(const config *help_cfg, const config *section_cfg,
 			}
 		}
 
-		generate_sections(help_cfg, (*section_cfg)["sections_generator"], sec, level);
-		if ((*section_cfg)["sort_sections"] == "yes") {
+		generate_sections(help_cfg, section_cfg["sections_generator"], sec, level);
+		if (section_cfg["sort_sections"] == "yes") {
 			sec.sections.sort(section_less());
 		}
 
 		bool sort_topics = false;
 		bool sort_generated = true;
 
-		if ((*section_cfg)["sort_topics"] == "yes") {
+		if (section_cfg["sort_topics"] == "yes") {
 		  sort_topics = true;
 		  sort_generated = false;
-		} else if ((*section_cfg)["sort_topics"] == "no") {
+		} else if (section_cfg["sort_topics"] == "no") {
 		  sort_topics = false;
 		  sort_generated = false;
-		} else if ((*section_cfg)["sort_topics"] == "generated") {
+		} else if (section_cfg["sort_topics"] == "generated") {
 		  sort_topics = false;
 		  sort_generated = true;
-		} else if (!(*section_cfg)["sort_topics"].empty()) {
+		} else if (!section_cfg["sort_topics"].empty()) {
 		  std::stringstream ss;
-		  ss << "Invalid sort option: '" << (*section_cfg)["sort_topics"] << "'";
+		  ss << "Invalid sort option: '" << section_cfg["sort_topics"] << "'";
 		  throw parse_error(ss.str());
 		}
 
-		std::vector<topic> generated_topics = generate_topics(sort_generated,(*section_cfg)["generator"]);
+		std::vector<topic> generated_topics = generate_topics(sort_generated, section_cfg["generator"]);
 		std::vector<topic> topics;
 
 		// Find all topics in this section.
-		for(const std::string& topic_id : utils::quoted_split((*section_cfg)["topics"])) {
-			if (auto topic_cfg = help_cfg->find_child("topic", "id", topic_id))
+		for(const std::string& topic_id : utils::quoted_split(section_cfg["topics"])) {
+			if (auto topic_cfg = help_cfg.find_child("topic", "id", topic_id))
 			{
 				std::string text = topic_cfg["text"];
 				text += generate_topic_text(topic_cfg["generator"], help_cfg, sec);
@@ -201,17 +199,16 @@ void parse_config_internal(const config *help_cfg, const config *section_cfg,
 			sec.topics.insert(sec.topics.end(),
 				generated_topics.begin(), generated_topics.end());
 		}
-	}
+		return sec;
 }
 
-section parse_config(const config *cfg)
+section parse_config(const config& cfg)
 {
-	section sec;
-	if (cfg != nullptr) {
-		auto toplevel_cfg = cfg->optional_child("toplevel");
-		parse_config_internal(cfg, toplevel_cfg.ptr(), sec);
+	if(auto toplevel_cfg = cfg.optional_child("toplevel")) {
+		return parse_config_internal(cfg, *toplevel_cfg);
+	} else {
+		return section{};
 	}
-	return sec;
 }
 
 std::vector<topic> generate_topics(const bool sort_generated,const std::string &generator)
@@ -243,7 +240,7 @@ std::vector<topic> generate_topics(const bool sort_generated,const std::string &
 	return res;
 }
 
-void generate_sections(const config *help_cfg, const std::string &generator, section &sec, int level)
+void generate_sections(const config& help_cfg, const std::string &generator, section &sec, int level)
 {
 	if (generator == "races") {
 		generate_races_sections(help_cfg, sec, level);
@@ -262,7 +259,7 @@ void generate_sections(const config *help_cfg, const std::string &generator, sec
 	}
 }
 
-std::string generate_topic_text(const std::string &generator, const config *help_cfg, const section &sec)
+std::string generate_topic_text(const std::string &generator, const config& help_cfg, const section &sec)
 {
 	std::string empty_string = "";
 	if (generator.empty()) {
@@ -729,7 +726,7 @@ std::vector<std::string> make_unit_links_list(const std::vector<std::string>& ty
 	return links_list;
 }
 
-void generate_races_sections(const config* help_cfg, section& sec, int level)
+void generate_races_sections(const config& help_cfg, section& sec, int level)
 {
 	std::set<std::string, string_less> races;
 	std::set<std::string, string_less> visible_races;
@@ -772,7 +769,6 @@ void generate_races_sections(const config* help_cfg, section& sec, int level)
 	// Add all races without a [race]help_taxonomy= to the documentation section, and queue the others.
 	// This avoids a race condition dependency on the order that races are encountered in help_cfg.
 	for(const auto& race_id : races) {
-		section race_section;
 		config section_cfg;
 
 		bool hidden = (visible_races.count(race_id) == 0);
@@ -793,7 +789,7 @@ void generate_races_sections(const config* help_cfg, section& sec, int level)
 		section_cfg["sections_generator"] = "units:" + race_id;
 		section_cfg["generator"] = "units:" + race_id;
 
-		parse_config_internal(help_cfg, &section_cfg, race_section, level + 1);
+		section race_section = parse_config_internal(help_cfg, section_cfg, level + 1);
 
 		if(help_taxonomy.empty()) {
 			sec.add_section(race_section);
@@ -827,7 +823,7 @@ void generate_races_sections(const config* help_cfg, section& sec, int level)
 	}
 }
 
-void generate_era_sections(const config* help_cfg, section & sec, int level)
+void generate_era_sections(const config& help_cfg, section & sec, int level)
 {
 	for(const config& era : game_config_manager::get()->game_config().child_range("era")) {
 		if (era["hide_help"].to_bool()) {
@@ -836,17 +832,14 @@ void generate_era_sections(const config* help_cfg, section & sec, int level)
 
 		DBG_HP << "Adding help section: " << era["id"].str();
 
-		section era_section;
 		config section_cfg;
 		section_cfg["id"] = era_prefix + era["id"].str();
 		section_cfg["title"] = era["name"];
-
 		section_cfg["generator"] = "era:" + era["id"].str();
 
 		DBG_HP << section_cfg.debug();
 
-		parse_config_internal(help_cfg, &section_cfg, era_section, level+1);
-		sec.add_section(era_section);
+		sec.add_section(parse_config_internal(help_cfg, section_cfg, level + 1));
 	}
 }
 
@@ -917,7 +910,7 @@ void generate_terrain_sections(section& sec, int /*level*/)
     }
 }
 
-void generate_unit_sections(const config* /*help_cfg*/, section& sec, int /*level*/, const bool /*sort_generated*/, const std::string& race)
+void generate_unit_sections(const config& /*help_cfg*/, section& sec, int /*level*/, const bool /*sort_generated*/, const std::string& race)
 {
 	for (const unit_type_data::unit_type_map::value_type &i : unit_types.types()) {
 		const unit_type &type = i.second;
@@ -1097,9 +1090,9 @@ UNIT_DESCRIPTION_TYPE description_type(const unit_type &type)
 	return NO_DESCRIPTION;
 }
 
-std::string generate_contents_links(const std::string& section_name, config const *help_cfg)
+std::string generate_contents_links(const std::string& section_name, const config& help_cfg)
 {
-	auto section_cfg = help_cfg->find_child("section", "id", section_name);
+	auto section_cfg = help_cfg.find_child("section", "id", section_name);
 	if (!section_cfg) {
 		return std::string();
 	}
@@ -1114,7 +1107,7 @@ std::string generate_contents_links(const std::string& section_name, config cons
 
 	// Find all topics in this section.
 	for(const std::string& topic : topics) {
-		if (auto topic_cfg = help_cfg->find_child("topic", "id", topic)) {
+		if (auto topic_cfg = help_cfg.find_child("topic", "id", topic)) {
 			std::string id = topic_cfg["id"];
 			if (is_visible_id(id))
 				topics_links.emplace_back(topic_cfg["title"], id);
@@ -1178,6 +1171,11 @@ void section::add_section(const section &s)
 	sections.emplace_back(s);
 }
 
+void section::add_section(section&& s)
+{
+	sections.emplace_back(std::move(s));
+}
+
 void section::clear()
 {
 	topics.clear();
@@ -1228,7 +1226,7 @@ try {
 	std::vector<std::string> hidden_sections;
 	std::vector<std::string> hidden_topics;
 
-	section toplevel_section = parse_config(&help_config);
+	section toplevel_section = parse_config(help_config);
 
 	for(const config& section : help_config.child_range("section")) {
 		const std::string id = section["id"];
@@ -1268,7 +1266,7 @@ try {
 		"topics",   utils::join(hidden_topics)
 	});
 
-	return {std::move(toplevel_section), parse_config(&hidden_config)};
+	return {std::move(toplevel_section), parse_config(hidden_config)};
 
 } catch(const parse_error& e) {
 	PLAIN_LOG << "Parse error when parsing help text: '" << e.message << "'";
