@@ -737,11 +737,8 @@ template std::pair<int, map_location> active_ability_list::get_extremum<std::gre
  * active in the current context (see set_specials_context), including
  * specials obtained from the opponent's attack.
  */
-bool attack_type::has_special(const std::string& special, bool simple_check) const
+bool attack_type::has_special(const std::string& special) const
 {
-	if(simple_check && !specials(special).empty()) {
-		return true;
-	}
 
 	for(const ability_ptr& p_ab : specials(special)) {
 		if(special_active(*p_ab, AFFECT_SELF)) {
@@ -750,7 +747,7 @@ bool attack_type::has_special(const std::string& special, bool simple_check) con
 	}
 
 	// Skip checking the opponent's attack?
-	if ( simple_check || !other_attack_ ) {
+	if ( !other_attack_ ) {
 		return false;
 	}
 
@@ -1690,7 +1687,7 @@ bool attack_type::has_special_or_ability(const std::string& special) const
 	if(range().empty()){
 		return false;
 	}
-	if(has_special(special, false)) {
+	if(has_special(special)) {
 		return true;
 	}
 
