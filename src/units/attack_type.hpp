@@ -135,9 +135,8 @@ public:
 	/**
 	 * @return True iff the special @a special is active.
 	 * @param special The special being checked.
-	 * @param simple_check If true, check whether the unit has the special. Else, check whether the special is currently active.
 	 */
-	bool has_special(const std::string& special, bool simple_check = false) const;
+	bool has_special(const std::string& special) const;
 	active_ability_list get_specials(const std::string& special) const;
 	std::vector<std::pair<t_string, t_string>> special_tooltips(boost::dynamic_bitset<>* active_list = nullptr) const;
 	std::vector<std::pair<t_string, t_string>> abilities_special_tooltips(boost::dynamic_bitset<>* active_list) const;
