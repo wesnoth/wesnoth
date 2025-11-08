@@ -56,28 +56,7 @@ static lg::log_domain log_engine("engine");
 static lg::log_domain log_wml("wml");
 #define ERR_WML LOG_STREAM(err, log_wml)
 
-namespace {
-	class temporary_facing
-	{
-		map_location::direction save_dir_;
-		unit_const_ptr u_;
-	public:
-		temporary_facing(const unit_const_ptr& u, map_location::direction new_dir)
-			: save_dir_(u ? u->facing() : map_location::direction::indeterminate)
-			, u_(u)
-		{
-			if (u_) {
-				u_->set_facing(new_dir);
-			}
-		}
-		~temporary_facing()
-		{
-			if (u_) {
-				u_->set_facing(save_dir_);
-			}
-		}
-	};
-}
+
 
 /*
  *
@@ -134,6 +113,117 @@ A poisoned unit cannot be cured of its poison by a healer, and must seek the car
  * [/abilities]
  *
  */
+
+unit_ability_t::unit_ability_t(std::string tag, config cfg, bool inside_attack)
+	: tag_(std::move(tag))
+	, id_(cfg["id"].str())
+	, cfg_(std::move(cfg))
+{
+	do_compat_fixes(cfg_, inside_attack);
+}
+
+void unit_ability_t::do_compat_fixes(config& cfg, bool inside_attack)
+{
+	if (!cfg["backstab"].blank()) {
+		deprecated_message("backstab= in weapon specials", DEP_LEVEL::INDEFINITE, "", "Use [filter_opponent] with a formula instead; the code can be found in data/core/macros/ in the WEAPON_SPECIAL_BACKSTAB macro.");
+	}
+	if (cfg["backstab"].to_bool()) {
+		const std::string& backstab_formula = "enemy_of(self, flanker) and not flanker.petrified where flanker = unit_at(direction_from(loc, other.facing))";
+		config& filter_opponent = cfg.child_or_add("filter_opponent");
+		config& filter_opponent2 = filter_opponent.empty() ? filter_opponent : filter_opponent.add_child("and");
+		filter_opponent2["formula"] = backstab_formula;
+	}
+	cfg.remove_attribute("backstab");
+
+	std::string filter_teacher = inside_attack ? "filter_self" : "filter";
+
+	if (cfg.has_child("filter_adjacent")) {
+		if (inside_attack) {
+			deprecated_message("[filter_adjacent]in weapon specials in [specials] tags", DEP_LEVEL::INDEFINITE, "", "Use [filter_self][filter_adjacent] instead.");
+		}
+		else {
+			deprecated_message("[filter_adjacent] in abilities", DEP_LEVEL::INDEFINITE, "", "Use [filter][filter_adjacent] instead or other unit filter.");
+		}
+	}
+	if (cfg.has_child("filter_adjacent_location")) {
+		if (inside_attack) {
+			deprecated_message("[filter_adjacent_location]in weapon specials in [specials] tags", DEP_LEVEL::INDEFINITE, "", "Use [filter_self][filter_location][filter_adjacent_location] instead.");
+		}
+		else {
+			deprecated_message("[filter_adjacent_location] in abilities", DEP_LEVEL::INDEFINITE, "", "Use [filter][filter_location][filter_adjacent_location] instead.");
+		}
+	}
+
+	//These tags are were never supported inside [specials] according to the wiki.
+	for (config& filter_adjacent : cfg.child_range("filter_adjacent")) {
+		if (filter_adjacent["count"].empty()) {
+			//Previously count= behaved differenty in abilities.cpp and in filter.cpp according to the wiki
+			deprecated_message("omitting count= in [filter_adjacent] in abilities", DEP_LEVEL::FOR_REMOVAL, version_info("1.21"), "specify count explicitly");
+			filter_adjacent["count"] = map_location::parse_directions(filter_adjacent["adjacent"]).size();
+		}
+		cfg.child_or_add(filter_teacher).add_child("filter_adjacent", filter_adjacent);
+	}
+	cfg.remove_children("filter_adjacent");
+	for (config& filter_adjacent : cfg.child_range("filter_adjacent_location")) {
+		if (filter_adjacent["count"].empty()) {
+			//Previously count= bahves differenty in abilities.cpp and in filter.cpp according to the wiki
+			deprecated_message("omitting count= in [filter_adjacent_location] in abilities", DEP_LEVEL::FOR_REMOVAL, version_info("1.21"), "specify count explicitly");
+			filter_adjacent["count"] = map_location::parse_directions(filter_adjacent["adjacent"]).size();
+		}
+		cfg.child_or_add(filter_teacher).add_child("filter_location").add_child("filter_adjacent_location", filter_adjacent);
+	}
+	cfg.remove_children("filter_adjacent_location");
+}
+
+void unit_ability_t::parse_vector(const config& abilities_cfg, ability_vector& res, bool inside_attack)
+{
+	for (auto item : abilities_cfg.all_children_range()) {
+		res.push_back(unit_ability_t::create(item.key, item.cfg, inside_attack));
+	}
+}
+
+ability_vector unit_ability_t::cfg_to_vector(const config& abilities_cfg, bool inside_attack)
+{
+	ability_vector res;
+	parse_vector(abilities_cfg, res, inside_attack);
+	return res;
+}
+
+ability_vector unit_ability_t::filter_tag(const ability_vector& abs, const std::string& tag)
+{
+	ability_vector res;
+	for (const ability_ptr& p_ab : abs) {
+		if (p_ab->tag() == tag) {
+			res.push_back(p_ab);
+		}
+	}
+	return res;
+}
+
+ability_vector unit_ability_t::clone(const ability_vector& abs)
+{
+	ability_vector res;
+	for (const ability_ptr& p_ab : abs) {
+		res.push_back(std::make_shared<unit_ability_t>(*p_ab));
+	}
+	return res;
+}
+
+config unit_ability_t::vector_to_cfg(const ability_vector& abilities)
+{
+	config abilities_cfg;
+	for (const auto& item : abilities) {
+		item->write(abilities_cfg);
+	}
+	return abilities_cfg;
+}
+
+
+void unit_ability_t::write(config& abilities_cfg)
+{
+	abilities_cfg.add_child(tag(), cfg());
+}
+
 
 
 namespace {
@@ -2055,6 +2145,29 @@ bool attack_type::special_active(const unit_ability_t& ab, AFFECTS whom,
 	return special_active_impl(shared_from_this(), other_attack_, ab, whom, in_abilities_tag);
 }
 
+
+namespace {
+	class temporary_facing
+	{
+		map_location::direction save_dir_;
+		unit_const_ptr u_;
+	public:
+		temporary_facing(const unit_const_ptr& u, map_location::direction new_dir)
+			: save_dir_(u ? u->facing() : map_location::direction::indeterminate)
+			, u_(u)
+		{
+			if (u_) {
+				u_->set_facing(new_dir);
+			}
+		}
+		~temporary_facing()
+		{
+			if (u_) {
+				u_->set_facing(save_dir_);
+			}
+		}
+	};
+}
 /**
  * Returns whether or not the given special is active for the specified unit,
  * based on the current context (see set_specials_context).

@@ -24,6 +24,52 @@ class config;
 
 class active_ability_list;
 
+
+using ability_vector = std::vector<ability_ptr>;
+
+class unit_ability_t
+{
+public:
+	unit_ability_t(std::string tag, config cfg, bool inside_attack);
+
+	static ability_ptr create(std::string tag, config cfg, bool inside_attack) {
+		return std::make_shared<unit_ability_t>(tag, cfg, inside_attack);
+	}
+
+	static void do_compat_fixes(config& cfg, bool inside_attack);
+
+	const std::string& tag() const { return tag_; };
+	const std::string& id() const { return id_; };
+	const config& cfg() const { return cfg_; };
+	void write(config& abilities_cfg);
+
+
+	static void parse_vector(const config& abilities_cfg, ability_vector& res, bool inside_attack);
+	static config vector_to_cfg(const ability_vector& abilities);
+	static ability_vector cfg_to_vector(const config& abilities_cfg, bool inside_attack);
+
+
+	static ability_vector filter_tag(const ability_vector& vec, const std::string& tag);
+	static ability_vector clone(const ability_vector& vec);
+
+	/*
+	static auto get_view(const ability_vector& vec) {
+		return vec
+			| boost::adaptors::transformed([](const ability_ptr& p)->const config& { return *x; });
+	}
+
+	static auto get_view(const ability_vector& vec, const std::string& tag) {
+		return vec
+			| boost::adaptors::transformed([](const ability_ptr& p)->const config& { return *x; });
+	}
+*/
+private:
+	std::string tag_;
+	std::string id_;
+	config cfg_;
+};
+
+
 namespace unit_abilities
 {
 bool filter_base_matches(const config& cfg, int def);
