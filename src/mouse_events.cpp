@@ -1434,11 +1434,10 @@ int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const ma
 				range = string_table["range_" + range];
 			}
 
-			auto a_ctx = attacker_weapon.specials_context(attacker.get_shared_ptr(), defender.get_shared_ptr(),
-				attacker->get_location(), defender->get_location(), true, defender_stats.weapon);
-
-			auto d_ctx = defender_weapon.specials_context(defender.get_shared_ptr(), attacker.get_shared_ptr(),
-				defender->get_location(), attacker->get_location(), false, attacker_stats.weapon);
+			auto ctx = specials_context_t::make(
+				{ attacker.get_shared_ptr(), attacker->get_location(), attacker_stats.weapon },
+				{ defender.get_shared_ptr(), defender->get_location(), defender_stats.weapon },
+				true);
 
 			std::string types = attacker_weapon.effective_damage_type().first;
 			std::string attw_type = !(types).empty() ? types : attacker_weapon.type();
@@ -1453,22 +1452,22 @@ int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const ma
 
 			const std::set<std::string> checking_tags_other = {"damage_type", "disable", "berserk", "drains",
 				"heal_on_hit", "plague", "slow", "petrifies", "firststrike", "poison"};
-			std::string attw_specials = attacker_weapon.describe_weapon_specials();
-			std::string attw_specials_dmg = attacker_weapon.describe_weapon_specials_value({"leadership", "damage"});
-			std::string attw_specials_atk = attacker_weapon.describe_weapon_specials_value({"attacks", "swarm"});
-			std::string attw_specials_cth = attacker_weapon.describe_weapon_specials_value({"chance_to_hit"});
-			std::string attw_specials_others = attacker_weapon.describe_weapon_specials_value(checking_tags_other);
+			std::string attw_specials = ctx.describe_weapon_specials(attacker_weapon);
+			std::string attw_specials_dmg = ctx.describe_weapon_specials_value(attacker_weapon, {"leadership", "damage"});
+			std::string attw_specials_atk = ctx.describe_weapon_specials_value(attacker_weapon, {"attacks", "swarm"});
+			std::string attw_specials_cth = ctx.describe_weapon_specials_value(attacker_weapon, {"chance_to_hit"});
+			std::string attw_specials_others = ctx.describe_weapon_specials_value(attacker_weapon, checking_tags_other);
 			bool defender_attack = !(defender_weapon.name().empty() && defender_weapon.damage() == 0
 				&& defender_weapon.num_attacks() == 0 && defender_stats.chance_to_hit == 0);
-			std::string defw_specials = defender_attack ? defender_weapon.describe_weapon_specials() : "";
+			std::string defw_specials = defender_attack ? ctx.describe_weapon_specials(defender_weapon) : "";
 			std::string defw_specials_dmg
-				= defender_attack ? defender_weapon.describe_weapon_specials_value({"leadership", "damage"}) : "";
+				= defender_attack ? ctx.describe_weapon_specials_value(defender_weapon, {"leadership", "damage"}) : "";
 			std::string defw_specials_atk
-				= defender_attack ? defender_weapon.describe_weapon_specials_value({"attacks", "swarm"}) : "";
+				= defender_attack ? ctx.describe_weapon_specials_value(defender_weapon, {"attacks", "swarm"}) : "";
 			std::string defw_specials_cth
-				= defender_attack ? defender_weapon.describe_weapon_specials_value({"chance_to_hit"}) : "";
+				= defender_attack ? ctx.describe_weapon_specials_value(defender_weapon, {"chance_to_hit"}) : "";
 			std::string defw_specials_others
-				= defender_attack ? defender_weapon.describe_weapon_specials_value(checking_tags_other) : "";
+				= defender_attack ? ctx.describe_weapon_specials_value(defender_weapon, checking_tags_other) : "";
 
 			if(!attw_specials.empty()) {
 				attw_specials = " " + attw_specials;

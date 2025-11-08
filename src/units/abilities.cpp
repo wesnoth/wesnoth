@@ -590,49 +590,46 @@ auto return_true = [](const auto&...) { return true; };
  */
 template<typename TCheck, typename THandler>
 bool foreach_active_special(
-	const const_attack_ptr& self_attack,
-	const unit_const_ptr& self,
-	const map_location& self_loc,
-	const const_attack_ptr& other_attack,
-	const unit_const_ptr& other,
-	const map_location& other_loc,
+	const specials_context_t& context,
+	const specials_context_t::specials_combatant& self,
 	const TCheck& quick_check,
 	const THandler& handler,
 	bool skip_adjacent = false)
 {
+	auto& other = context.other(self);
 	// "const auto&..." because foreach_active_ability calls this with a unit& argument.
 	auto handler_self = [&](const ability_ptr& p_ab, const auto&...) {
-		return attack_type::special_active_impl(self_attack, other_attack, *p_ab, unit_ability_t::affects_t::SELF) && default_false(handler, p_ab);
+		return context.is_special_active(self, *p_ab, unit_ability_t::affects_t::SELF) && default_false(handler, p_ab);
 	};
 	auto handler_other = [&](const ability_ptr& p_ab, const auto&...) {
-		return attack_type::special_active_impl(other_attack, self_attack, *p_ab, unit_ability_t::affects_t::OTHER) && default_false(handler, p_ab);
+		return context.is_special_active(other, *p_ab, unit_ability_t::affects_t::OTHER) && default_false(handler, p_ab);
 	};
 
 	//search in the attacks [specials]
-	if (self_attack) {
-		for (const ability_ptr& p_ab : self_attack->specials()) {
+	if (self.at) {
+		for (const ability_ptr& p_ab : self.at->specials()) {
 			if (quick_check(p_ab) && handler_self(p_ab)) {
 				return true;
 			}
 		}
 	}
 	//search in the opponents attacks [specials]
-	if (other_attack) {
-		for (const ability_ptr& p_ab : other_attack->specials()) {
+	if (other.at) {
+		for (const ability_ptr& p_ab : other.at->specials()) {
 			if (quick_check(p_ab) && handler_other(p_ab)) {
 				return true;
 			}
 		}
 	}
 	//search in unit [abilities] including abilities tought via loadship like abilities.
-	if (self) {
-		if (foreach_active_ability(*self, self_loc, quick_check, handler_self, skip_adjacent)) {
+	if (self.un) {
+		if (foreach_active_ability(*self.un, self.loc, quick_check, handler_self, skip_adjacent)) {
 			return true;
 		}
 	}
 	//search in the opponents [abilities] including abilities tought via loadship like abilities.
-	if (other) {
-		if (foreach_active_ability(*other, other_loc, quick_check, handler_other, skip_adjacent)) {
+	if (other.un) {
+		if (foreach_active_ability(*other.un, other.loc, quick_check, handler_other, skip_adjacent)) {
 			return true;
 		}
 	}
@@ -666,15 +663,6 @@ active_ability_list unit::get_abilities(const std::string& tag_name, const map_l
 	return res;
 }
 
-active_ability_list unit::get_abilities_weapons(const std::string& tag_name, const map_location& loc, const_attack_ptr weapon, const_attack_ptr opp_weapon) const
-{
-	active_ability_list res = get_abilities(tag_name, loc);
-	utils::erase_if(res, [&](const active_ability& i) {
-		//If no weapon is given, assume the ability is active. this is used by ai code.
-		return (weapon || opp_weapon) && !attack_type::special_active_impl(weapon, opp_weapon, i.ability(), unit_ability_t::affects_t::SELF);
-	});
-	return res;
-}
 
 std::vector<std::string> unit::get_ability_id_list() const
 {
@@ -854,10 +842,18 @@ std::vector<std::string> unit::halo_or_icon_abilities(const std::string& image_t
 
 void attack_type::add_formula_context(wfl::map_formula_callable& callable) const
 {
-	if(unit_const_ptr & att = is_attacker_ ? self_ : other_) {
+	//TODO: remove this function and make the caller use specials_context_t::add_formula_context directly.
+	if (context_) {
+		context_->add_formula_context(callable);
+	}
+}
+
+void specials_context_t::add_formula_context(wfl::map_formula_callable& callable) const
+{
+	if(const unit_const_ptr & att = attacker.un) {
 		callable.add("attacker", wfl::variant(std::make_shared<wfl::unit_callable>(*att)));
 	}
-	if(unit_const_ptr & def = is_attacker_ ? other_ : self_) {
+	if(const unit_const_ptr & def = defender.un) {
 		callable.add("defender", wfl::variant(std::make_shared<wfl::unit_callable>(*def)));
 	}
 }
@@ -1004,72 +1000,30 @@ template std::pair<int, map_location> active_ability_list::get_extremum<std::gre
   * @param[in]  attacking     Whether or not the unit with this weapon is the attacker.
   * @param[in]  other_attack  The attack used by the other unit.
   */
-attack_type::specials_context_t::specials_context_t(
-	const attack_type& weapon,
-	const_attack_ptr other_attack,
-	unit_const_ptr self,
-	unit_const_ptr other,
-	const map_location& unit_loc,
-	const map_location& other_loc,
-	bool attacking)
-	: parent(weapon.shared_from_this())
+specials_context_t::specials_context_t(specials_combatant&& att, specials_combatant&& def)
+	: attacker(std::move(att))
+	, defender(std::move(def))
 {
-	weapon.self_ = std::move(self);
-	weapon.other_ = std::move(other);
-	weapon.self_loc_ = unit_loc;
-	weapon.other_loc_ = other_loc;
-	weapon.is_attacker_ = attacking;
-	weapon.other_attack_ = std::move(other_attack);
-	weapon.is_for_listing_ = false;
+	if (attacker.at) {
+		attacker.at->context_ = this;
+	}
+	if (defender.at) {
+		defender.at->context_ = this;
+	}
 }
 
-/**
- * Sets the context under which specials will be checked for being active.
- * This version is appropriate if there is no specific combat being considered.
- * @param[in]  weapon        The weapon being considered.
- * @param[in]  self          A reference to the unit with this weapon.
- * @param[in]  loc           The location of the unit with this weapon.
- * @param[in]  attacking     Whether or not the unit with this weapon is the attacker.
- */
-attack_type::specials_context_t::specials_context_t(const attack_type& weapon, unit_const_ptr self, const map_location& loc, bool attacking)
-	: parent(weapon.shared_from_this())
+specials_context_t::~specials_context_t()
 {
-	weapon.self_ = std::move(self);
-	weapon.other_ = unit_ptr();
-	weapon.self_loc_ = loc;
-	weapon.other_loc_ = map_location::null_location();
-	weapon.is_attacker_ = attacking;
-	weapon.other_attack_ = nullptr;
-	weapon.is_for_listing_ = false;
-}
-
-attack_type::specials_context_t::specials_context_t(const attack_type& weapon, bool attacking)
-	: parent(weapon.shared_from_this())
-{
-	weapon.is_for_listing_ = true;
-	weapon.is_attacker_ = attacking;
-}
-
-attack_type::specials_context_t::~specials_context_t()
-{
-	if (was_moved) return;
-	parent->self_ = unit_ptr();
-	parent->other_ = unit_ptr();
-	parent->self_loc_ = map_location::null_location();
-	parent->other_loc_ = map_location::null_location();
-	parent->is_attacker_ = false;
-	parent->other_attack_ = nullptr;
-	parent->is_for_listing_ = false;
-}
-
-attack_type::specials_context_t::specials_context_t(attack_type::specials_context_t&& other)
-	: parent(std::move(other.parent))
-{
-	other.was_moved = true;
+	if (attacker.at) {
+		attacker.at->context_ = nullptr;
+	}
+	if (defender.at) {
+		defender.at->context_ = nullptr;
+	}
 }
 
 
-
+namespace {
 /**
  * static used in weapon_specials (bool only_active) and
  * @return a string and a set_string for the weapon_specials function below.
@@ -1087,41 +1041,38 @@ static void add_name(std::string& temp_string, bool active, const std::string& n
 	}
 }
 
-void attack_type::weapon_specials_impl_self(
+
+void weapon_specials_impl_self(
 	std::string& temp_string,
-	const unit_const_ptr& self,
-	const const_attack_ptr& self_attack,
-	const const_attack_ptr& other_attack,
-	const map_location& self_loc,
-	AFFECTS whom,
+	const specials_context_t& context,
+	const specials_context_t::specials_combatant& self,
+	unit_ability_t::affects_t whom,
 	std::set<std::string>& checking_name,
 	const std::set<std::string>& checking_tags)
 {
-	if (self) {
-		foreach_self_active_ability(*self, self_loc,
+	if (self.un) {
+		foreach_self_active_ability(*self.un, self.loc,
 			[&](const ability_ptr& p_ab) {
 				return !checking_tags.empty() ? checking_tags.count(p_ab->tag()) != 0 : true;
 			},
 			[&](const ability_ptr& p_ab, const unit&) {
-				const bool active = special_active_impl(self_attack, other_attack, *p_ab, whom);
+				const bool active = context.is_special_active(self, *p_ab, whom);
 				add_name(temp_string, active, p_ab->cfg().get_or("name_affected", "name").str(), checking_name);
 			});
 	}
 }
 
-void attack_type::weapon_specials_impl_adj(
+void weapon_specials_impl_adj(
 	std::string& temp_string,
-	const unit_const_ptr& self,
-	const const_attack_ptr& self_attack,
-	const const_attack_ptr& other_attack,
-	const map_location& self_loc,
-	AFFECTS whom,
+	const specials_context_t& context,
+	const specials_context_t::specials_combatant& self,
+	unit_ability_t::affects_t whom,
 	std::set<std::string>& checking_name,
 	const std::set<std::string>& checking_tags,
-	const std::string& affect_adjacents)
+	const std::string& affect_adjacents = "")
 {
-	if (self) {
-		foreach_distant_active_ability(*self, self_loc,
+	if (self.un) {
+		foreach_distant_active_ability(*self.un, self.loc,
 			[&](const ability_ptr& p_ab) {
 				bool tag_checked = !checking_tags.empty() ? checking_tags.count(p_ab->tag()) != 0 : true;
 				bool default_bool = affect_adjacents == "affect_allies" ? true : false;
@@ -1129,13 +1080,13 @@ void attack_type::weapon_specials_impl_adj(
 				return tag_checked && affect_allies;
 			},
 			[&](const ability_ptr& p_ab, const unit&) {
-				const bool active = special_active_impl(self_attack, other_attack, *p_ab, whom);
+				const bool active = context.is_special_active(self, *p_ab, whom);
 				add_name(temp_string, active, p_ab->cfg().get_or("name_affected", "name").str(), checking_name);
 			});
 	}
 }
 
-static void add_name_list(std::string& temp_string, std::string& weapon_abilities, std::set<std::string>& checking_name, const std::string& from_str)
+void add_name_list(std::string& temp_string, std::string& weapon_abilities, std::set<std::string>& checking_name, const std::string& from_str)
 {
 	if (!temp_string.empty()) {
 		temp_string = from_str.c_str() + temp_string;
@@ -1146,6 +1097,7 @@ static void add_name_list(std::string& temp_string, std::string& weapon_abilitie
 	}
 }
 
+}
 /**
  * Returns a comma-separated string of active names for the specials of *this.
  * Empty names are skipped.
@@ -1153,13 +1105,14 @@ static void add_name_list(std::string& temp_string, std::string& weapon_abilitie
  * Whether or not a special is active depends
  * on the current context (see set_specials_context)
  */
-std::string attack_type::describe_weapon_specials() const
+std::string specials_context_t::describe_weapon_specials(const attack_type& at) const
 {
 	//log_scope("weapon_specials");
+	auto [self, other] = self_and_other(at);
 	std::vector<std::string> special_names;
 
-	for(const auto& p_ab : specials()) {
-		const bool active = special_active(*p_ab, AFFECTS::EITHER);
+	for(const auto& p_ab : at.specials()) {
+		const bool active = is_special_active(self, *p_ab, unit_ability_t::affects_t::EITHER);
 
 		std::string name = active
 			? p_ab->cfg()["name"].str()
@@ -1178,8 +1131,8 @@ std::string attack_type::describe_weapon_specials() const
 	std::string temp_string;
 	std::set<std::string> checking_name;
 	const std::set<std::string>& checking_tags = abilities_list::all_weapon_tags();
-	weapon_specials_impl_self(temp_string, self_, shared_from_this(), other_attack_, self_loc_, AFFECTS::SELF, checking_name, checking_tags);
-	weapon_specials_impl_adj(temp_string, self_, shared_from_this(), other_attack_, self_loc_, AFFECTS::SELF, checking_name, checking_tags, "affect_allies");
+	weapon_specials_impl_self(temp_string, *this, self, unit_ability_t::affects_t::SELF, checking_name, checking_tags);
+	weapon_specials_impl_adj(temp_string, *this, self, unit_ability_t::affects_t::SELF, checking_name, checking_tags, "affect_allies");
 
 	if(!temp_string.empty()) {
 		special_names.push_back("\n" + std::move(temp_string));
@@ -1188,47 +1141,46 @@ std::string attack_type::describe_weapon_specials() const
 	return utils::join(special_names, ", ");
 }
 
-std::string attack_type::describe_weapon_specials_value(const std::set<std::string>& checking_tags) const
+std::string specials_context_t::describe_weapon_specials_value(const attack_type& at, const std::set<std::string>& checking_tags) const
 {
+	auto [self, other] = self_and_other(at);
 	//log_scope("weapon_specials_value");
 	std::string temp_string, weapon_abilities;
 	std::set<std::string> checking_name;
-	for(const auto& p_ab : specials()) {
+	for(const auto& p_ab : at.specials()) {
 		if(checking_tags.count(p_ab->tag()) != 0) {
-			const bool active = special_active(*p_ab, AFFECTS::SELF);
+			const bool active = is_special_active(self, *p_ab, unit_ability_t::affects_t::SELF);
 			add_name(temp_string, active, p_ab->cfg()["name"].str(), checking_name);
 		}
 	}
 	add_name_list(temp_string, weapon_abilities, checking_name, "");
 
-	weapon_specials_impl_self(temp_string, self_, shared_from_this(), other_attack_, self_loc_, AFFECTS::SELF, checking_name, checking_tags);
+	weapon_specials_impl_self(temp_string, *this, self, unit_ability_t::affects_t::SELF, checking_name, checking_tags);
 	add_name_list(temp_string, weapon_abilities, checking_name, _("Owned: "));
 
-	weapon_specials_impl_adj(temp_string, self_, shared_from_this(), other_attack_, self_loc_, AFFECTS::SELF, checking_name, checking_tags, "affect_allies");
+	weapon_specials_impl_adj(temp_string, *this, self, unit_ability_t::affects_t::SELF, checking_name, checking_tags, "affect_allies");
 	// TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
 	add_name_list(temp_string, weapon_abilities, checking_name, _("Taught: "));
 
-	weapon_specials_impl_adj(temp_string, self_, shared_from_this(), other_attack_, self_loc_, AFFECTS::SELF, checking_name, checking_tags, "affect_enemies");
+	weapon_specials_impl_adj(temp_string, *this, self, unit_ability_t::affects_t::SELF, checking_name, checking_tags, "affect_enemies");
 	// TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
 	add_name_list(temp_string, weapon_abilities, checking_name, _("Taught: (by an enemy): "));
 
 
-	if(other_attack_) {
-		for(const auto& p_ab : other_attack_->specials()) {
+	if(other.at) {
+		for(const auto& p_ab : other.at->specials()) {
 			if((checking_tags.count(p_ab->tag()) != 0)){
-				const bool active = other_attack_->special_active(*p_ab, AFFECTS::OTHER);
+				const bool active = is_special_active(other, *p_ab, unit_ability_t::affects_t::OTHER);
 				add_name(temp_string, active, p_ab->cfg()["name"].str(), checking_name);
 			}
 		}
 	}
-	weapon_specials_impl_self(temp_string, other_, other_attack_, shared_from_this(), other_loc_, AFFECTS::OTHER, checking_name, checking_tags);
-	weapon_specials_impl_adj(temp_string, other_, other_attack_, shared_from_this(), other_loc_, AFFECTS::OTHER, checking_name, checking_tags);
+	weapon_specials_impl_self(temp_string, *this, other, unit_ability_t::affects_t::OTHER, checking_name, checking_tags);
+	weapon_specials_impl_adj(temp_string, *this, other, unit_ability_t::affects_t::OTHER, checking_name, checking_tags);
 	add_name_list(temp_string, weapon_abilities, checking_name, _("Used by opponent: "));
 
 	return weapon_abilities;
 }
-
-
 
 
 namespace { // Helpers for attack_type::special_active()
@@ -1310,8 +1262,8 @@ namespace { // Helpers for attack_type::special_active()
 	 * @param[in]  child_tag   The tag of the child filter to use.
 	 * @param[in]  applies_to_checked    Parameter used for don't have infinite recusion for some filter attribute.
 	 */
-	static bool special_unit_matches(unit_const_ptr & u,
-		                             unit_const_ptr & u2,
+	static bool special_unit_matches(const unit_const_ptr & u,
+		                             const unit_const_ptr & u2,
 		                             const map_location & loc,
 		                             const const_attack_ptr& weapon,
 		                             const unit_ability_t& ab,
@@ -1375,18 +1327,17 @@ namespace { // Helpers for attack_type::special_active()
  * @a active_list is not nullptr. Otherwise specials are assumed active.
  * If the appropriate name is empty, the special is skipped.
  */
-std::vector<unit_ability_t::tooltip_info> attack_type::special_tooltips(
-	boost::dynamic_bitset<>* active_list) const
+std::vector<unit_ability_t::tooltip_info> specials_context_t::special_tooltips(const attack_type& at,
+	boost::dynamic_bitset<>& active_list) const
 {
 	//log_scope("special_tooltips");
+	auto [self, other] = self_and_other(at);
+
 	std::vector<unit_ability_t::tooltip_info> res;
-	if (active_list) {
-		active_list->clear();
-	}
+	active_list.clear();
 
-	for (const auto& p_ab : specials()) {
-		bool active = !active_list || special_active(*p_ab, AFFECTS::EITHER);
-
+	for (const auto& p_ab : self.at->specials()) {
+		bool active = is_special_active(self, *p_ab, unit_ability_t::affects_t::EITHER);
 		auto name = p_ab->get_name(!active);
 		auto desc = p_ab->get_description(!active);
 
@@ -1400,31 +1351,72 @@ std::vector<unit_ability_t::tooltip_info> attack_type::special_tooltips(
 			p_ab->get_help_topic_id()
 		);
 
-		if (active_list) {
-			active_list->push_back(active);
-		}
+		active_list.push_back(active);
 	}
 	return res;
 }
 
-std::vector<unit_ability_t::tooltip_info> attack_type::abilities_special_tooltips(
-	boost::dynamic_bitset<>* active_list) const
-{
-	std::vector<unit_ability_t::tooltip_info> res;
-	if (active_list) {
-		active_list->clear();
+namespace {
+	/**
+	 * Returns whether or not the given special is active for the specified unit disregarding other units,
+	 * based on the current context (see specials_context).
+	 * @param ab                the ability/special
+	 */
+	bool special_tooltip_active(const specials_context_t& context, const specials_context_t::specials_combatant& self, const unit_ability_t& ab)
+	{
+		bool is_for_listing = context.is_for_listing;
+
+		auto& other = context.other(self);
+		bool is_attacker = &self == &context.attacker;
+		//log_scope("special_tooltip_active");
+
+		//here 'active_on' and checking of opponent weapon shouldn't implemented
+		//because other_attack_ don't exist in sidebar display.
+		//'apply_to' and some filters like [filter_student] are checked for know if
+		//special must be displayed in sidebar.
+
+		//only special who affect self are valid here.
+		bool whom_is_self = special_affects_self(ab, is_attacker);
+		if (!whom_is_self)
+			return false;
+
+		//this part of checking is similar to special_active but not the same.
+		//"filter_opponent" is not checked here, and "filter_attacker/defender" only
+		//if attacker/defender is self_.
+		bool applied_both = ab.apply_to() == unit_ability_t::apply_to_t::both;
+
+		if (!special_unit_matches(self.un, other.un, self.loc, self.at, ab, is_for_listing, "filter_student", applied_both || whom_is_self))
+			return false;
+		bool applied_to_attacker = applied_both || (whom_is_self && is_attacker);
+		if (is_attacker && !special_unit_matches(self.un, other.un, self.loc, self.at, ab, is_for_listing, "filter_attacker", applied_to_attacker))
+			return false;
+		bool applied_to_defender = applied_both || (whom_is_self && !is_attacker);
+		if (!is_attacker && !special_unit_matches(self.un, other.un, self.loc, self.at, ab, is_for_listing, "filter_defender", applied_to_defender))
+			return false;
+
+		return true;
 	}
+
+}
+
+
+std::vector<unit_ability_t::tooltip_info> specials_context_t::abilities_special_tooltips(const attack_type& at,
+	boost::dynamic_bitset<>& active_list) const
+{
+	auto [self, other] = self_and_other(at);
+	std::vector<unit_ability_t::tooltip_info> res;
+	active_list.clear();
 	std::set<std::string> checking_name;
-	if (!self_) {
+	if (!self.un) {
 		return res;
 	}
-	foreach_active_ability(*self_, self_loc_,
+	foreach_active_ability(*self.un, self.loc,
 		[&](const ability_ptr&) {
 			return true;
 		},
 		[&](const ability_ptr& p_ab, const unit&) {
-			if (special_tooltip_active(*p_ab)) {
-				bool active = !active_list || special_active(*p_ab, AFFECTS::SELF);
+			if (special_tooltip_active(*this, self, *p_ab)) {
+				bool active = is_special_active(self, *p_ab, unit_ability_t::affects_t::SELF);
 				const std::string name = p_ab->cfg()["name_affected"];
 				const std::string desc = p_ab->cfg()["description_affected"];
 
@@ -1433,84 +1425,18 @@ std::vector<unit_ability_t::tooltip_info> attack_type::abilities_special_tooltip
 				}
 				res.AGGREGATE_EMPLACE(name, desc, p_ab->get_help_topic_id());
 				checking_name.insert(name);
-				if (active_list) {
-					active_list->push_back(active);
-				}
+				active_list.push_back(active);
 			}
 		});
 	return res;
 }
+
 
 //The following functions are intended to allow the use in combat of capacities
 //identical to special weapons and therefore to be able to use them on adjacent
 //units (abilities of type 'aura') or else on all types of weapons even if the
 //beneficiary unit does not have a corresponding weapon
 //(defense against ranged weapons abilities for a unit that only has melee attacks)
-
-active_ability_list attack_type::get_weapon_ability(const std::string& ability) const
-{
-	const map_location loc = self_ ? self_->get_location() : self_loc_;
-	active_ability_list abil_list(loc);
-	if(self_) {
-		abil_list.append_if((*self_).get_abilities(ability, self_loc_), [&](const active_ability& i) {
-			return special_active(i.ability(), AFFECTS::SELF);
-		});
-	}
-
-	if(other_) {
-		abil_list.append_if((*other_).get_abilities(ability, other_loc_), [&](const active_ability& i) {
-			return special_active_impl(other_attack_, shared_from_this(), i.ability(), AFFECTS::OTHER);
-		});
-	}
-
-	return abil_list;
-}
-
-/**
- * Returns the currently active specials as an ability list, given the current
- * context (see set_specials_context).
- */
-active_ability_list attack_type::get_specials(const std::string& special) const
-{
-	//log_scope("get_specials");
-	const map_location loc = self_ ? self_->get_location() : self_loc_;
-	active_ability_list res(loc);
-
-	for (const ability_ptr& p_ab : specials(special)) {
-		if (special_active(*p_ab, AFFECTS::SELF)) {
-			res.emplace_back(p_ab, loc, loc);
-		}
-	}
-
-	if (!other_attack_) {
-		return res;
-	}
-
-	for (const ability_ptr& p_ab : other_attack_->specials(special)) {
-		if (other_attack_->special_active(*p_ab, AFFECTS::OTHER)) {
-			res.emplace_back(p_ab, other_loc_, other_loc_);
-		}
-	}
-	return res;
-}
-
-active_ability_list attack_type::get_specials_and_abilities(const std::string& special) const
-{
-	// get all weapon specials of the provided type
-	active_ability_list abil_list = get_specials(special);
-	// append all such weapon specials as abilities as well
-	abil_list.append(get_weapon_ability(special));
-	// get a list of specials/"specials as abilities" that may potentially overwrite others
-	active_ability_list overwriters = overwrite_special_overwriter(abil_list);
-	if(!abil_list.empty() && !overwriters.empty()){
-		// remove all abilities that would be overwritten
-		utils::erase_if(abil_list, [&](const active_ability& j) {
-			return (overwrite_special_checking(overwriters, j.ability()));
-		});
-	}
-	return abil_list;
-}
-
 static bool overwrite_special_affects(const unit_ability_t& ab)
 {
 	const std::string& apply_to = ab.cfg()["overwrite_specials"];
@@ -1555,6 +1481,9 @@ active_ability_list attack_type::overwrite_special_overwriter(active_ability_lis
 
 bool attack_type::overwrite_special_checking(active_ability_list& overwriters, const unit_ability_t& ab) const
 {
+	auto ctx = fallback_context();
+	auto [self, other] = context_->self_and_other(*this);
+	bool is_attacker = &self == &context_->attacker;
 	if(overwriters.empty()){
 		return false;
 	}
@@ -1578,11 +1507,11 @@ bool attack_type::overwrite_special_checking(active_ability_list& overwriters, c
 		// if the current overwriter affects one side and the cfg being checked can be overwritten by this overwriter
 		// then check that the current overwriter and the cfg being checked both affect either this unit or its opponent
 		if(affect_side && is_overwritable){
-			if(special_affects_self(j.ability(), is_attacker_)){
-				one_side_overwritable = special_affects_self(ab, is_attacker_);
+			if(special_affects_self(j.ability(), is_attacker)){
+				one_side_overwritable = special_affects_self(ab, is_attacker);
 			}
-			else if(special_affects_opponent(j.ability(), !is_attacker_)){
-				one_side_overwritable = special_affects_opponent(ab, !is_attacker_);
+			else if(special_affects_opponent(j.ability(), !is_attacker)){
+				one_side_overwritable = special_affects_opponent(ab, !is_attacker);
 			}
 		}
 
@@ -1628,61 +1557,102 @@ bool unit::get_adj_ability_bool(const unit_ability_t& ab, std::size_t dist, int 
 	}
 	return (affects_side(ab, side(), from.side()) && from.ability_active_impl(ab, from_loc) && ability_affects_adjacent(ab, dist, dir, loc, from));
 }
+
 /**
  * Returns whether or not @a *this has a special ability with a tag or id equal to
  * @a special. the Check is for a special ability
  * active in the current context (see set_specials_context), including
  * specials obtained from the opponent's attack.
  */
-bool attack_type::has_special_or_ability(const std::string& special) const
+bool specials_context_t::has_active_special(const attack_type & at, const std::string & tag_name) const
+{
+
+	auto quick_check = [&](const ability_ptr& p_ab) {
+		return p_ab->tag() == tag_name;
+	};
+
+	auto [self, other] = self_and_other(at);
+	return foreach_active_special(*this, self, quick_check, return_true);
+}
+
+bool specials_context_t::has_active_special_id(const attack_type& at, const std::string& special_id) const
 {
 	//Now that filter_(second)attack in event supports special_id/type_active, including abilities used as weapons,
 	//these can be detected even in placeholder attacks generated to compensate for the lack of attack in defense against an attacker using a range attack not possessed by the defender.
 	//It is therefore necessary to check if the range is not empty (proof that the weapon is not a placeholder) to decide if has_weapon_ability can be returned or not.
-	if (range().empty()) {
+	if (at.range().empty()) {
 		return false;
 	}
 
+
 	auto quick_check = [&](const ability_ptr& p_ab) {
-		return p_ab->tag() == special;
+		return p_ab->id() == special_id;
 	};
 
-	return foreach_active_special(
-		shared_from_this(),
-		self_,
-		self_loc_,
-		other_attack_,
-		other_,
-		other_loc_,
-		quick_check,
-		return_true);
+	auto [self, other] = self_and_other(at);
+	return foreach_active_special(*this, self, quick_check, return_true);
 }
 
-bool attack_type::has_active_special_or_ability_id(const std::string& special) const
+active_ability_list specials_context_t::get_active_specials(const attack_type& at, const std::string& tag_name) const
 {
-	//Now that filter_(second)attack in event supports special_id/type_active, including abilities used as weapons,
-	//these can be detected even in placeholder attacks generated to compensate for the lack of attack in defense against an attacker using a range attack not possessed by the defender.
-	//It is therefore necessary to check if the range is not empty (proof that the weapon is not a placeholder) to decide if has_weapon_ability can be returned or not.
-	if (range().empty()) {
-		return false;
+	auto [self, other] = self_and_other(at);
+	const map_location loc = self.un ? self.un->get_location() : self.loc;
+
+	//log_scope("get_specials");
+
+	active_ability_list abil_list(loc);
+
+	// collect from [specials]
+	if (self.at) {
+		for (const ability_ptr& p_ab : self.at->specials(tag_name)) {
+			if (is_special_active(self, *p_ab, unit_ability_t::affects_t::SELF)) {
+				abil_list.emplace_back(p_ab, self.loc, self.loc);
+			}
+		}
 	}
 
-	auto quick_check = [&](const ability_ptr& p_ab) {
-		return p_ab->id() == special;
-	};
+	// collect from opponents [specials]
+	if (other.at) {
+		for (const ability_ptr& p_ab : other.at->specials(tag_name)) {
+			if (is_special_active(other, *p_ab, unit_ability_t::affects_t::OTHER)) {
+				abil_list.emplace_back(p_ab, other.loc, other.loc);
+			}
+		}
+	}
 
-	return foreach_active_special(
-		shared_from_this(),
-		self_,
-		self_loc_,
-		other_attack_,
-		other_,
-		other_loc_,
-		quick_check,
-		return_true);
+	// collect from units and adjacent [abilities]
+	if (self.un) {
+		abil_list.append_if(self.un->get_abilities(tag_name, self.loc), [&](const active_ability& i) {
+			return is_special_active(self, i.ability(), unit_ability_t::affects_t::SELF);
+			});
+	}
+
+	// collect from opponents and adjacent [abilities]
+	if (other.un) {
+		abil_list.append_if(other.un->get_abilities(tag_name, other.loc), [&](const active_ability& i) {
+			return is_special_active(other, i.ability(), unit_ability_t::affects_t::OTHER);
+			});
+	}
+
+	return abil_list;
 }
+
+active_ability_list specials_context_t::get_abilities_weapons(const std::string& tag_name, const unit& un) const
+{
+	auto [self, other] = self_and_other(un);
+	//TODO: fall back to un.get_location() ?
+	active_ability_list res = un.get_abilities(tag_name, self.loc);
+
+	utils::erase_if(res, [&](const active_ability& i) {
+		//If no weapon is given, assume the ability is active. this is used by ai code.
+		return !is_special_active(self, i.ability(), unit_ability_t::affects_t::SELF);
+		});
+	return res;
+
+}
+
+
 //end of emulate weapon special functions.
-
 
 namespace
 {
@@ -1893,14 +1863,10 @@ bool unit_ability_t::matches_filter(const config & filter) const
 	return common_matches_filter(cfg(), tag(), filter);
 }
 
-bool attack_type::has_special_or_ability_with_filter(const config & filter) const
+bool specials_context_t::has_active_special_matching_filter(const attack_type& at, const config & filter) const
 {
-	if(range().empty()){
+	if(at.range().empty()){
 		return false;
-	}
-
-	if (!filter["active"].to_bool()) {
-		return utils::find_if(specials(), [&](const ability_ptr& p_ab) { return p_ab->matches_filter(filter); });
 	}
 
 	bool skip_adjacent = !filter["affect_adjacent"].to_bool(true);
@@ -1909,23 +1875,9 @@ bool attack_type::has_special_or_ability_with_filter(const config & filter) cons
 		return p_ab->matches_filter(filter);
 	};
 
-	return foreach_active_special(
-		shared_from_this(),
-		self_,
-		self_loc_,
-		other_attack_,
-		other_,
-		other_loc_,
-		quick_check,
-		return_true,
-		skip_adjacent);
+	auto [self, other] = self_and_other(at);
+	return foreach_active_special(*this, self, quick_check, return_true, skip_adjacent);
 }
-
-bool attack_type::special_active(const unit_ability_t& ab, AFFECTS whom) const
-{
-	return special_active_impl(shared_from_this(), other_attack_, ab, whom);
-}
-
 
 namespace {
 	class temporary_facing
@@ -1957,24 +1909,21 @@ namespace {
  * @param ab                the ability
  * @param whom              specifies which combatant we care about
  */
-bool attack_type::special_active_impl(
-	const const_attack_ptr& self_attack,
-	const const_attack_ptr& other_attack,
-	const unit_ability_t& ab,
-	AFFECTS whom)
+bool specials_context_t::is_special_active(const specials_combatant& self, const unit_ability_t& ab, unit_ability_t::affects_t whom) const
 {
-	assert(self_attack || other_attack);
-	bool is_attacker = self_attack ? self_attack->is_attacker_ : !other_attack->is_attacker_;
-	bool is_for_listing = self_attack ? self_attack->is_for_listing_ : other_attack->is_for_listing_;
+	bool is_attacker = &self == &attacker;
+	const auto& other = this->other(self);
+
+	bool is_for_listing = this->is_for_listing;
 	//log_scope("special_active");
 
 
 	// Does this affect the specified unit?
-	if ( whom == AFFECTS::SELF ) {
+	if ( whom == unit_ability_t::affects_t::SELF ) {
 		if ( !special_affects_self(ab, is_attacker) )
 			return false;
 	}
-	if ( whom == AFFECTS::OTHER ) {
+	if ( whom == unit_ability_t::affects_t::OTHER ) {
 		if ( !special_affects_opponent(ab, is_attacker) )
 			return false;
 	}
@@ -1987,35 +1936,34 @@ bool attack_type::special_active_impl(
 	// Get the units involved.
 	const unit_map& units = get_unit_map();
 
-	unit_const_ptr self = self_attack ? self_attack->self_ : other_attack->other_;
-	unit_const_ptr other = self_attack ? self_attack->other_ : other_attack->self_;
-	map_location self_loc = self_attack ? self_attack->self_loc_ : other_attack->other_loc_;
-	map_location other_loc = self_attack ? self_attack->other_loc_ : other_attack->self_loc_;
+	unit_const_ptr self_u = self.un;
+	unit_const_ptr other_u = other.un;
+
 	// We also set the weapons context during (attack) wml events, in that case we identify the units via locations because wml might change
 	// the actual unit and usually does so via replacing, in that case self_ is set to nullptr.
 	// TODO: does this really make sense? if wml replaces the unit it also replaces the attack object, deleting the attack context properties
-	if(self == nullptr) {
-		unit_map::const_iterator it = units.find(self_loc);
+	if(self_u == nullptr) {
+		unit_map::const_iterator it = units.find(self.loc);
 		if(it.valid()) {
-			self = it.get_shared_ptr();
+			self_u = it.get_shared_ptr();
 		}
 	}
-	if(other == nullptr) {
-		unit_map::const_iterator it = units.find(other_loc);
+	if(other_u == nullptr) {
+		unit_map::const_iterator it = units.find(other.loc);
 		if(it.valid()) {
-			other = it.get_shared_ptr();
+			other_u = it.get_shared_ptr();
 		}
 	}
 
 	// Make sure they're facing each other.
-	temporary_facing self_facing(self, self_loc.get_relative_dir(other_loc));
-	temporary_facing other_facing(other, other_loc.get_relative_dir(self_loc));
+	temporary_facing self_facing(self_u, self.loc.get_relative_dir(other.loc));
+	temporary_facing other_facing(other_u, other.loc.get_relative_dir(self.loc));
 
 	// Filter poison, plague, drain, slow, petrifies
 	// True if "whom" corresponds to "self", false if "whom" is "other"
-	bool whom_is_self = ((whom == AFFECTS::SELF) || ((whom == AFFECTS::EITHER) && special_affects_self(ab, is_attacker)));
-	unit_const_ptr them = whom_is_self ? other : self;
-	map_location their_loc = whom_is_self ? other_loc : self_loc;
+	bool whom_is_self = ((whom == unit_ability_t::affects_t::SELF) || ((whom == unit_ability_t::affects_t::EITHER) && special_affects_self(ab, is_attacker)));
+	unit_const_ptr them = whom_is_self ? other_u : self_u;
+	map_location their_loc = whom_is_self ? other.loc : self.loc;
 
 	if (buildin_is_immune(ab, them, their_loc)) {
 		return false;
@@ -2023,18 +1971,14 @@ bool attack_type::special_active_impl(
 
 
 	// Translate our context into terms of "attacker" and "defender".
-	unit_const_ptr & att = is_attacker ? self : other;
-	unit_const_ptr & def = is_attacker ? other : self;
-	const map_location & att_loc   = is_attacker ? self_loc : other_loc;
-	const map_location & def_loc   = is_attacker ? other_loc : self_loc;
-	const const_attack_ptr& att_weapon = is_attacker ? self_attack : other_attack;
-	const const_attack_ptr& def_weapon = is_attacker ? other_attack : self_attack;
+	unit_const_ptr & att = is_attacker ? self_u : other_u;
+	unit_const_ptr & def = is_attacker ? other_u : self_u;
 
 	// Filter firststrike here, if both units have first strike then the effects cancel out. Only check
 	// the opponent if "whom" is the defender, otherwise this leads to infinite recursion.
 	if (ab.tag() == "firststrike") {
 		bool whom_is_defender = whom_is_self ? !is_attacker : is_attacker;
-		if (whom_is_defender && att_weapon && att_weapon->has_special_or_ability("firststrike"))
+		if (whom_is_defender && attacker.at && attacker.at->has_special_or_ability("firststrike"))
 			return false;
 	}
 
@@ -2047,60 +1991,22 @@ bool attack_type::special_active_impl(
 	const std::string& filter_self = ab.in_specials_tag() ? "filter_self" : "filter_student";
 
 	bool applied_to_self = (applied_both || whom_is_self);
-	if (!special_unit_matches(self, other, self_loc, self_attack, ab, is_for_listing, filter_self, applied_to_self))
+	if (!special_unit_matches(self_u, other_u, self.loc, self.at, ab, is_for_listing, filter_self, applied_to_self))
 		return false;
 	bool applied_to_opp = (applied_both || !whom_is_self);
-	if (!special_unit_matches(other, self, other_loc, other_attack, ab, is_for_listing, "filter_opponent", applied_to_opp))
+	if (!special_unit_matches(other_u, self_u, other.loc, other.at, ab, is_for_listing, "filter_opponent", applied_to_opp))
 		return false;
 	//in case of apply_to=attacker|defender, if both [filter_attacker] and [filter_defender] are used,
 	//check what is_attacker is true(or false for (filter_defender]) in affect self case only is necessary for what unit affected by special has a tag_name check.
 	bool applied_to_attacker = applied_both || (whom_is_self && is_attacker) || (!whom_is_self && !is_attacker);
-	if (!special_unit_matches(att, def, att_loc, att_weapon, ab, is_for_listing, "filter_attacker", applied_to_attacker))
+	if (!special_unit_matches(att, def, attacker.loc, attacker.at, ab, is_for_listing, "filter_attacker", applied_to_attacker))
 		return false;
 	bool applied_to_defender = applied_both || (whom_is_self && !is_attacker) || (!whom_is_self && is_attacker);
-	if (!special_unit_matches(def, att, def_loc, def_weapon, ab, is_for_listing, "filter_defender", applied_to_defender))
+	if (!special_unit_matches(def, att, defender.loc, defender.at, ab, is_for_listing, "filter_defender", applied_to_defender))
 		return false;
 
 	return true;
 }
-
-/**
- * Returns whether or not the given special is active for the specified unit disregarding other units,
- * based on the current context (see specials_context).
- * @param ab                the ability/special
- */
-bool attack_type::special_tooltip_active(const unit_ability_t& ab) const
-{
-	//log_scope("special_tooltip_active");
-
-	//here 'active_on' and checking of opponent weapon shouldn't implemented
-	//because other_attack_ don't exist in sidebar display.
-	//'apply_to' and some filters like [filter_student] are checked for know if
-	//special must be displayed in sidebar.
-
-	//only special who affect self are valid here.
-	bool whom_is_self = special_affects_self(ab, is_attacker_);
-	if(!whom_is_self)
-		return false;
-
-	//this part of checking is similar to special_active but not the same.
-	//"filter_opponent" is not checked here, and "filter_attacker/defender" only
-	//if attacker/defender is self_.
-	bool applied_both = ab.apply_to() == unit_ability_t::apply_to_t::both;
-
-	if (!special_unit_matches(self_, other_, self_loc_, shared_from_this(), ab, is_for_listing_, "filter_student", applied_both || whom_is_self))
-		return false;
-	bool applied_to_attacker = applied_both || (whom_is_self && is_attacker_);
-	if (is_attacker_ && !special_unit_matches(self_, other_, self_loc_, shared_from_this(), ab, is_for_listing_, "filter_attacker", applied_to_attacker))
-		return false;
-	bool applied_to_defender = applied_both || (whom_is_self && !is_attacker_);
-	if (!is_attacker_ && !special_unit_matches(self_, other_, self_loc_, shared_from_this(), ab, is_for_listing_, "filter_defender", applied_to_defender))
-		return false;
-
-	return true;
-}
-
-
 
 namespace unit_abilities
 {
