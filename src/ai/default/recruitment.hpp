@@ -204,7 +204,7 @@ private:
 			const unit_type* const attacker, const unit_type* const defender,
 			double attacker_defense, double defender_defense,
 			double* damage_to_attacker, double* damage_to_defender) const;
-	nonempty_unit_const_ptr get_dummy_of_type(const unit_type* const attacker) const;
+	std::pair<nonempty_unit_const_ptr, nonempty_unit_const_ptr> get_dummy_of_type(const unit_type* const attacker) const;
 
 // Aspect recruitment_instruction
 	config* get_most_important_job();
@@ -269,7 +269,7 @@ private:
 	count_map own_units_count_;
 	int total_own_units_;
 	int scouts_wanted_;
-	mutable std::map<const unit_type*, nonempty_unit_const_ptr> combat_dummies_;
+	mutable std::map<const unit_type*, std::pair<nonempty_unit_const_ptr, nonempty_unit_const_ptr>> combat_dummies_;
 };
 
 }  // of namespace default_recruitment

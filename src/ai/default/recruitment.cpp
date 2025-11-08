@@ -1167,8 +1167,8 @@ void recruitment::simulate_attack(
 		ERR_AI_RECRUITMENT << "nullptr pointer in simulate_attack()";
 		return;
 	}
-	auto attacker = get_dummy_of_type(attacker_t);
-	auto defender = get_dummy_of_type(defender_t);
+	auto attacker = get_dummy_of_type(attacker_t).first;
+	auto defender = get_dummy_of_type(defender_t).second;
 
 	const_attack_itors attacker_weapons = attacker->attacks();
 	const_attack_itors defender_weapons = defender->attacks();
@@ -1215,12 +1215,14 @@ void recruitment::simulate_attack(
 	*damage_to_attacker += (attacker->max_hitpoints() - best_att_attack->get_avg_hp_of_attacker());
 }
 
-nonempty_unit_const_ptr recruitment::get_dummy_of_type(const unit_type* ut) const
+std::pair<nonempty_unit_const_ptr, nonempty_unit_const_ptr> recruitment::get_dummy_of_type(const unit_type* ut) const
 {
 	if (auto p_u = utils::find(combat_dummies_, ut)) {
 		return p_u->second;
 	} else {
-		auto u = nonempty_unit_const_ptr(unit::create(*ut, get_side(), false));
+		auto u = std::make_pair(
+			nonempty_unit_const_ptr(unit::create(*ut, get_side(), false)),
+			nonempty_unit_const_ptr(unit::create(*ut, get_side(), false)));
 		combat_dummies_.emplace(ut,  u);
 		return u;
 	}
