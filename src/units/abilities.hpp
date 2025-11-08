@@ -23,6 +23,10 @@
 #include <vector>
 class config;
 
+namespace wfl {
+	class map_formula_callable;
+}
+
 class active_ability_list;
 
 
@@ -247,6 +251,80 @@ private:
 	// Data
 	std::vector<active_ability> cfgs_;
 	map_location loc_;
+};
+
+class specials_context_t {
+
+public:
+	struct specials_combatant {
+		unit_const_ptr un;
+		map_location loc;
+		const_attack_ptr at;
+	};
+
+	specials_context_t(specials_context_t&&) = delete;
+	specials_context_t(const specials_context_t&) = delete;
+
+	specials_context_t(specials_combatant&& att, specials_combatant&& def);
+	~specials_context_t();
+
+	static specials_context_t make(specials_combatant&& self, specials_combatant&& other, bool attacking)
+	{
+		return specials_context_t{
+			{
+				std::move(attacking ? self : other),
+			} , {
+				std::move(attacking ? other : self),
+			}
+		};
+	}
+
+	void set_for_listing(bool for_listing)
+	{
+		is_for_listing = for_listing;
+	}
+
+	struct self_and_other_red_t {
+		const specials_combatant& self;
+		const specials_combatant& other;
+	};
+
+	self_and_other_red_t self_and_other(const attack_type& self_att) const
+	{
+		return &self_att == attacker.at.get() ? self_and_other_red_t{ attacker, defender } : self_and_other_red_t{ defender, attacker };
+	}
+	self_and_other_red_t self_and_other(const unit& self_un) const
+	{
+		return &self_un == attacker.un.get() ? self_and_other_red_t{ attacker, defender } : self_and_other_red_t{ defender, attacker };
+	}
+
+	const specials_combatant& other(const specials_combatant& self) const
+	{
+		return &self == &attacker ? defender : attacker;
+	}
+
+	specials_combatant attacker;
+	specials_combatant defender;
+	bool is_for_listing;
+
+	active_ability_list get_active_specials(const attack_type& at, const std::string& tag) const;
+
+	active_ability_list get_abilities_weapons(const std::string& tag, const unit& un) const;
+
+	bool has_active_special(const attack_type& at, const std::string& tag) const;
+	bool has_active_special_id(const attack_type& at, const std::string& id) const;
+	bool has_active_special_matching_filter(const attack_type& at, const config& filter) const;
+
+	bool is_special_active(const specials_combatant& wep, const unit_ability_t& ab, unit_ability_t::affects_t whom) const;
+
+	void add_formula_context(wfl::map_formula_callable& callable) const;
+
+	std::vector<unit_ability_t::tooltip_info> special_tooltips(const attack_type& at, boost::dynamic_bitset<>& active_list) const;
+	std::vector<unit_ability_t::tooltip_info> abilities_special_tooltips(const attack_type& at, boost::dynamic_bitset<>& active_list) const;
+
+	std::string describe_weapon_specials(const attack_type& at) const;
+	std::string describe_weapon_specials_value(const attack_type& at, const std::set<std::string>& checking_tags) const;
+
 };
 
 namespace unit_abilities

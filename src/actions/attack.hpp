@@ -38,7 +38,7 @@ class unit_type;
 class unit;
 class unit_map;
 class gamemap;
-
+class specials_context_t;
 /** Calculates the number of blows resulting from swarm. */
 inline unsigned swarm_blows(unsigned min_blows, unsigned max_blows, unsigned hp, unsigned max_hp)
 {
@@ -266,7 +266,8 @@ void attack_unit_and_advance(const map_location& attacker,
  *
  * Returns the bonus percentage (possibly 0 if there's no leader adjacent).
  */
-int under_leadership(const unit &u, const map_location& loc, const_attack_ptr weapon = nullptr, const_attack_ptr opp_weapon = nullptr);
+int under_leadership(const unit& u, const map_location& loc);
+int under_leadership(const unit& u, const specials_context_t& loc);
 
 /**
  * Returns the amount that a unit's damage should be multiplied by

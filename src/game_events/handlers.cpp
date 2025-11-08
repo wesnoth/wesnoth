@@ -260,14 +260,10 @@ struct filter_attack : public event_filter {
 					const auto opp = unit_d->shared_from_this();
 					auto temp_other_weapon = event_info.data.optional_child(!first_ ? "first" : "second");
 					const_attack_ptr second_attack = temp_other_weapon ? std::make_shared<const attack_type>(*temp_other_weapon) : nullptr;
-					auto ctx = attack->specials_context(u, opp, loc, loc_d, first_, second_attack);
-					utils::optional<decltype(ctx)> opp_ctx;
-					if(second_attack){
-						opp_ctx.emplace(second_attack->specials_context(opp, u, loc_d, loc, !first_, attack));
-					}
+					auto ctx = specials_context_t::make({ u, loc, attack }, { opp, loc_d, second_attack }, first_);
 					return swf_.empty() || attack->matches_filter(swf_.get_parsed_config());
 				} else {
-					auto ctx = attack->specials_context(u, loc, first_);
+					auto ctx = specials_context_t::make({ u, loc, attack }, { }, first_);
 					return swf_.empty() || attack->matches_filter(swf_.get_parsed_config());
 				}
 			}
