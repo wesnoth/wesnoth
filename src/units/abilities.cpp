@@ -2187,7 +2187,9 @@ bool attack_type::special_active_impl(
 	unit_const_ptr other = self_attack ? self_attack->other_ : other_attack->self_;
 	map_location self_loc = self_attack ? self_attack->self_loc_ : other_attack->other_loc_;
 	map_location other_loc = self_attack ? self_attack->other_loc_ : other_attack->self_loc_;
-	//TODO: why is this needed?
+	// We also set the weapons context during (attack) wml events, in that case we identify the units via locations because wml might change
+	//   the actual unit and usualyl does so via replacing, in that case self_ is set to nullptr.    
+	// TODO: does this really make sense? if wml replaces the unit it also replaces the attack object, deleting the attack context properties  
 	if(self == nullptr) {
 		unit_map::const_iterator it = units.find(self_loc);
 		if(it.valid()) {
