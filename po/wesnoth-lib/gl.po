@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-09-21 23:01-0500\n"
-"PO-Revision-Date: 2025-07-07 21:01+0200\n"
+"PO-Revision-Date: 2025-10-09 18:04+0200\n"
 "Last-Translator: Adrian Chaves <adrian@chaves.io>\n"
 "Language-Team: Galician <kde-i18n-doc@kde.org>\n"
 "Language: gl\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.6\n"
+"X-Generator: Poedit 3.7\n"
 
 #. [ai]: id=ai_default_rca
 #: data/ai/ais/ai_default_rca.cfg:9
@@ -1384,7 +1384,7 @@ msgstr "Vila lamacenta"
 #. [terrain_type]: id=mermen-village
 #: data/core/terrain.cfg:2172
 msgid "Merfolk Village"
-msgstr "Vila dos sirénidos"
+msgstr "Vila da xente do mar"
 
 #. [terrain_type]: id=mermen-village
 #: data/core/terrain.cfg:2173
@@ -1399,15 +1399,15 @@ msgid ""
 "Merfolk and nagas have 60% defense in submerged villages, whereas land based "
 "units usually have a low defense."
 msgstr ""
-"As <italic>text='vilas somerxidas'</italic> son o fogar dos sirénidos e dos "
-"nagas. Se ben se trata do medio natural para as criaturas acuáticas, as "
+"As <italic>text='vilas somerxidas'</italic> son o fogar da xente do mar e "
+"dos nagas. Se ben se trata do medio natural para as criaturas acuáticas, as "
 "terrestres teñen grandes dificultades para percorrer e defender estas vilas. "
 "Non obstante, como en calquera outra vila, as instalacións están dispoñíbeis "
 "para todas as criaturas, o que permite que as unidades poidan sandar as súas "
 "feridas. Calquera unidade situada nunha vila pode sandar ata oito puntos de "
 "vida por rolda, ou ser curada do envelenamento.\n"
 "\n"
-"Os sirénidos e mailos nagas teñen un 60% de defensa nas vilas somerxidas, "
+"A xente do mar e mailos nagas teñen un 60% de defensa nas vilas somerxidas, "
 "mentres que as unidades terrestres teñen normalmente pouca defensa nelas."
 
 #. [terrain_type]: id=village_overlay
@@ -2003,7 +2003,7 @@ msgstr ""
 "mellor neste terreo que ao vadear augas pouco profundas, e ademais "
 "garántelles ás criaturas acuáticas unha defensa excepcional.\n"
 "\n"
-"Os sirénidos e os nagas obteñen un 70% de defensa nos arrecifes costeiros."
+"A xente do mar e os nagas obteñen un 70% de defensa nos arrecifes costeiros."
 
 #. [terrain_type]: id=hills
 #: data/core/terrain.cfg:3310
@@ -2048,8 +2048,8 @@ msgstr ""
 "brañas unha liberdade de movemento completa e mais unha bonificación "
 "defensiva. Quen nos lameiros habita, nos lameiros se agocha.\n"
 "\n"
-"Case todas as unidades teñen un 30% de defensa nas brañas, salvo os "
-"sirénidos, os nagas e mailos saurios, que adoitan gozar do 60%."
+"Case todas as unidades teñen un 30% de defensa nas brañas, salvo a xente do "
+"mar, os nagas e mailos saurios, que adoitan gozar do 60%."
 
 #. [terrain_type]: id=shallow_water
 #: data/core/terrain.cfg:3337
@@ -2074,7 +2074,7 @@ msgstr ""
 "auga, ademais de gañar unha bonificación defensiva considerable.\n"
 "\n"
 "A maioría das unidades teñen entre un 20% e un 30% de defensa nas augas "
-"pouco profundas, mentres que os nagas e os sirénidos gozan dun 60%."
+"pouco profundas, mentres que os nagas e a xente do mar gozan dun 60%."
 
 #. [terrain_type]: id=castle
 #: data/core/terrain.cfg:3352
@@ -2121,7 +2121,7 @@ msgstr ""
 "pero tamén limitan bastante o seu avance. As unidades cargadas con armaduras "
 "pesadas, coma a cabalería e as tropas de infantería pesada do Noroeste,rara "
 "vez pode atravesar os terreos montañosos, As razas acuáticas e criaturas "
-"como os sirénidos teñen corpos pisciformes que tamén lles impiden subir "
+"como a xente do mar teñen corpos pisciformes que tamén lles impiden subir "
 "pendentes escarpadas. Os nagas son unha excepción debido aos seus fortes "
 "brazos e ás súas escamas resistentes. Tanto os ananos como os troles son "
 "nativos do terreo montañoso e teñen facilidade para cruzalo.\n"
@@ -2144,7 +2144,7 @@ msgstr ""
 "non poden entrar nas augas profundas, nas que se desenvolven ben as que "
 "poden voar ou nadar moi ben.\n"
 "\n"
-"Os sirénidos e mailos nagas teñen un 50% de defensa nas profundidades, con "
+"A xente do mar e mailos nagas teñen un 50% de defensa nas profundidades, con "
 "total liberdade de movemento."
 
 #. [terrain_type]: id=flat
@@ -5065,10 +5065,8 @@ msgstr "Emparellamento"
 #. saved settings to start a game with, such as era, map, fog, etc
 #: data/gui/themes/default/dialogs/lobby_main.cfg:102
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:129
-#, fuzzy
-#| msgid "Reset"
 msgid "Presets"
-msgstr "Restablecer"
+msgstr "Preaxustes"
 
 #. [label]: id=map
 #: data/gui/themes/default/dialogs/lobby_main.cfg:153
@@ -5082,10 +5080,8 @@ msgstr "Necesita un contrasinal para unirse"
 
 #. [button]: id=delete_preset
 #: data/gui/themes/default/dialogs/lobby_main.cfg:305
-#, fuzzy
-#| msgid "Delete Unit"
 msgid "Delete this preset"
-msgstr "Eliminar a unidade"
+msgstr "Eliminar este preaxuste"
 
 # Aparece na nova interface da sala de espera para partidas con varios xogadores.
 #
@@ -5821,10 +5817,8 @@ msgstr "Tamaño do mapa:"
 #: data/gui/themes/default/dialogs/mp_create_game/default_resolution.cfg:460
 #: data/gui/themes/default/dialogs/mp_create_game/small_resolution.cfg:378
 #: data/gui/themes/default/dialogs/mp_create_game/tiny_resolution.cfg:335
-#, fuzzy
-#| msgid "Saved Games"
 msgid "Save Preset"
-msgstr "Partidas gardadas"
+msgstr "Gardar preaxuste"
 
 #. [row]
 #: data/gui/themes/default/dialogs/mp_faction_select.cfg:210
@@ -5989,13 +5983,12 @@ msgstr "Conectarse ao servidor oficial de partidas con varios xogadores"
 
 #. [widget]: id=name
 #: data/gui/themes/default/dialogs/mp_method_selection.cfg:261
-#, fuzzy
 msgid ""
 "Join\n"
 "Official Server"
 msgstr ""
 "Únirse\n"
-"Servidor oficial"
+"Ao servidor oficial"
 
 # Mensaxe de axuda da segunda opción do menú de «Varios xogadores», «Conectarse a outro servidor».
 #. [column]
@@ -6171,14 +6164,12 @@ msgstr "Non permitir movementos automáticos ao comezo dunha rolda"
 #. [toggle_button]: id=show_turn_dialog
 #: data/gui/themes/default/dialogs/preferences/01_general.cfg:114
 msgid "Turn prompt"
-msgstr ""
+msgstr "Aviso de rolda"
 
 #. [toggle_button]: id=show_turn_dialog
 #: data/gui/themes/default/dialogs/preferences/01_general.cfg:115
-#, fuzzy
-#| msgid "Display a dialog at the beginning of your turn"
 msgid "Display a prompt at the beginning of your turn"
-msgstr "Mostrar un diálogo ao comezo de cada rolda propia"
+msgstr "Amosar un aviso ao comezo da túa rolda"
 
 # Configuración → Xeral.
 #. [toggle_button]: id=whiteboard_on_start
@@ -7275,7 +7266,7 @@ msgstr ""
 
 #: src/gui/dialogs/achievements_dialog.cpp:97
 msgid "$title ($count/$total)"
-msgstr ""
+msgstr "$title ($count/$total)"
 
 #: src/gui/dialogs/achievements_dialog.cpp:138
 msgid "Completed $count/$total"
@@ -7830,10 +7821,8 @@ msgid "Unit type saved."
 msgstr "Tipo de unidade gardado."
 
 #: src/gui/dialogs/editor/generator_settings.cpp:38
-#, fuzzy
-#| msgid "/1000 tiles"
 msgid "$count/1000 tiles"
-msgstr "/1000 hexágonos"
+msgstr "$count/1000 hexágonos"
 
 #: src/gui/dialogs/editor/generator_settings.cpp:43
 msgid "Coastal"
@@ -7852,18 +7841,16 @@ msgid "Find File"
 msgstr "Atopar o ficheiro"
 
 #: src/gui/dialogs/file_dialog.cpp:191
-#, fuzzy
-#| msgid "Generate name"
 msgid "enter filename"
-msgstr "Xerar un nome"
+msgstr "insire o nome de ficheiro"
 
 #: src/gui/dialogs/file_dialog.cpp:201
 msgid "invalid extension (use $extensions)"
-msgstr ""
+msgstr "extensión inválida (use $extensions)"
 
 #: src/gui/dialogs/file_dialog.cpp:208
 msgid "filename contains whitespace"
-msgstr ""
+msgstr "O nome do ficheiro contén espazos en branco"
 
 #: src/gui/dialogs/file_dialog.cpp:237
 msgid "Open"
@@ -8395,10 +8382,8 @@ msgid "Game"
 msgstr "Partidas"
 
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:81
-#, fuzzy
-#| msgid "Hotkey Settings"
 msgid "Hotkey(s): $bindings"
-msgstr "Configuración dos atallos"
+msgstr "Atallo(s): $bindings"
 
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:308
 msgid "Invalid Color"
@@ -8928,10 +8913,8 @@ msgid "Select/Move/Attack"
 msgstr "Seleccionar, mover ou atacar"
 
 #: src/hotkey/hotkey_command.cpp:84
-#, fuzzy
-#| msgid "Touch"
 msgid "Touch Hex"
-msgstr "Tocar"
+msgstr "Hex seleccionado"
 
 # Accesible dende:
 # «Configuración → Visualización».
