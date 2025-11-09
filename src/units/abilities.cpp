@@ -427,19 +427,21 @@ int find_direction(const map_location& loc, const map_location& from_loc, std::s
 	return 0;
 }
 
+// Helper function, to turn void retuning function into false retuning functions
+template<typename TFunc, typename... TArgs>
+bool default_false(const TFunc& f, const TArgs&... args) {
+	if constexpr (std::is_same_v<decltype(f(args...)), void>) {
+		f(args...);
+		return false;
+	}
+	else {
+		return f(args...);
+	}
 }
 
-bool unit::get_ability_bool(const std::string& tag_name, const map_location& loc) const
+template<typename TCheck, typename THandler>
+bool foreach_distant_active_ability(const unit& un, const map_location& loc, TCheck&& quick_check, THandler&& handler)
 {
-	// Check that the unit has an ability of tag_name type which meets the conditions to be active.
-	// If so, return true.
-	for (const auto& p_ab : this->abilities(tag_name)) {
-		if (get_self_ability_bool(*p_ab, loc))
-		{
-			return true;
-		}
-	}
-
 	// If the unit does not have abilities that match the criteria, check if adjacent units or elsewhere on the map have active abilities
 	// with the [affect_adjacent] subtag that could affect the unit.
 	const unit_map& units = get_unit_map();
@@ -449,65 +451,94 @@ bool unit::get_ability_bool(const std::string& tag_name, const map_location& loc
 	// different from the central unit, that the ability is of the right type, detailed verification of each ability),
 	// if so return true.
 	for(const unit& u : units) {
-		if(!u.max_ability_radius() || u.incapacitated() || u.underlying_id() == underlying_id() || !u.max_ability_radius_type(tag_name)) {
+		//TODO: This currently doesn't use max_ability_radius_type, will be added back later.
+		if (!u.max_ability_radius() || u.incapacitated() || u.underlying_id() == un.underlying_id()) {
 			continue;
 		}
+		std::size_t max_ability_radius = u.max_ability_radius();
 		const map_location& from_loc = u.get_location();
 		std::size_t distance = distance_between(from_loc, loc);
-		if(distance > u.max_ability_radius_type(tag_name)) {
+		if (distance > max_ability_radius) {
 			continue;
 		}
 		int dir = find_direction(loc, from_loc, distance);
-		for(const auto& p_ab : u.abilities(tag_name)) {
-			if(get_adj_ability_bool(*p_ab, distance, dir, loc, u, from_loc)) {
+		for (const auto& p_ab : u.abilities()) {
+			if (!quick_check(p_ab)) {
+				continue;
+			}
+			if (un.get_adj_ability_bool(*p_ab, distance, dir, loc, u, from_loc)) {
+				if (default_false(handler, p_ab, u)) {
+					return true;
+				}
+			}
+		}
+	}
+	return false;
+}
+
+template<typename TCheck, typename THandler>
+bool foreach_self_active_ability(const unit& un, map_location loc, const TCheck& quick_check, const THandler& handler)
+{
+	for (const auto& p_ab : un.abilities()) {
+		if (!quick_check(p_ab)) {
+			continue;
+		}
+		if (un.get_self_ability_bool(*p_ab, loc)) {
+			if (default_false(handler, p_ab, un)) {
 				return true;
 			}
 		}
 	}
-
-
 	return false;
+}
+
+// enum class loop_type_t { self_only, distant_only, both };
+
+/*
+ * execeutes a given function for each active ability of @a unit, including
+ * abilitied thought by other units
+ * @param un the unit receiving the abilities
+ * @param loc the location we assume the unit to be at.
+ * @param quick_check a quick check that is exceuted before the ability tested
+ * @param handler the function that is called for each acive ability.
+ *        if this is a boolean function and returns true the execeution
+ *        is aborted, used for "have any active ability"-like checks.
+ * @returns true iff any of the handlers returned true.
+ */
+template<typename TCheck, typename THandler>
+bool foreach_active_ability(const unit& un, map_location loc, const TCheck& quick_check, const THandler& handler)
+{
+	// Check that the unit has an ability of tag_name type which meets the conditions to be active.
+	// If so, return true.
+	if (foreach_self_active_ability(un, loc, quick_check, handler)) {
+		return true;
+	}
+	return foreach_distant_active_ability(un, loc, quick_check, handler);
+}
+
+}
+
+bool unit::get_ability_bool(const std::string& tag_name, const map_location& loc) const
+{
+	return foreach_active_ability(*this, loc,
+		[&](const ability_ptr& p_ab) {
+			return p_ab->tag() == tag_name;
+		},
+		[&](const ability_ptr&, const unit&) {
+			return true;
+		});
 }
 
 active_ability_list unit::get_abilities(const std::string& tag_name, const map_location& loc) const
 {
 	active_ability_list res(loc_);
-
-	// Check that the unit has an ability of tag_name type which meets the conditions to be active.
-	// If so, add to active_ability_list.
-	for(const auto& p_ab : this->abilities(tag_name)) {
-		if (get_self_ability_bool(*p_ab, loc))
-		{
-			res.emplace_back(p_ab, loc, loc);
-		}
-	}
-
-	// If the unit does not have abilities that match the criteria, check if adjacent units or elsewhere on the map have active abilities
-	// with the [affect_adjacent] subtag that could affect the unit.
-	const unit_map& units = get_unit_map();
-
-	// Check for each unit present on the map that it corresponds to the criteria
-	// (possession of an ability with [affect_adjacent] via a boolean variable, not incapacitated,
-	// different from the central unit, that the ability is of the right type, detailed verification of each ability),
-	// If so, add to active_ability_list.
-	for(const unit& u : units) {
-		if(!u.max_ability_radius() || u.incapacitated() || u.underlying_id() == underlying_id() || !u.max_ability_radius_type(tag_name)) {
-			continue;
-		}
-		const map_location& from_loc = u.get_location();
-		std::size_t distance = distance_between(from_loc, loc);
-		if(distance > u.max_ability_radius_type(tag_name)) {
-			continue;
-		}
-		int dir = find_direction(loc, from_loc, distance);
-		for(const auto& p_ab : u.abilities(tag_name)) {
-			if(get_adj_ability_bool(*p_ab, distance, dir, loc, u, from_loc)) {
-				res.emplace_back(p_ab, loc, from_loc);
-			}
-		}
-	}
-
-
+	foreach_active_ability(*this, loc,
+		[&](const ability_ptr& p_ab) {
+			return p_ab->tag() == tag_name;
+		},
+		[&](const ability_ptr& p_ab, const unit& u2) {
+			res.emplace_back(p_ab, loc, u2.get_location());
+		});
 	return res;
 }
 
@@ -682,25 +713,14 @@ std::vector<std::string> unit::halo_or_icon_abilities(const std::string& image_t
 		}
 	}
 
-	const unit_map& units = get_unit_map();
+	foreach_distant_active_ability(*this, loc_,
+		[&](const ability_ptr& p_ab) {
+			return !p_ab->cfg()[image_type + "_image"].str().empty();
+		},
+		[&](const ability_ptr& p_ab, const unit&) {
+			add_string_to_vector(image_list, p_ab->cfg(), image_type + "_image");
+		});
 
-	for(const unit& u : units) {
-		if(!u.max_ability_radius_image() || u.incapacitated() || u.underlying_id() == underlying_id()) {
-			continue;
-		}
-		const map_location& from_loc = u.get_location();
-		std::size_t distance = distance_between(from_loc, loc_);
-		if(distance > u.max_ability_radius_image()) {
-			continue;
-		}
-		int dir = find_direction(loc_, from_loc, distance);
-		for(const auto& p_ab : u.abilities()) {
-			if(!p_ab->cfg()[image_type + "_image"].str().empty() && get_adj_ability_bool(*p_ab, distance, dir, loc_, u, from_loc))
-			{
-				add_string_to_vector(image_list, p_ab->cfg(), image_type + "_image");
-			}
-		}
-	}
 	//rearranges vector alphabetically when its size equals or exceeds two.
 	if(image_list.size() >= 2){
 		std::sort(image_list.begin(), image_list.end());
@@ -958,40 +978,18 @@ std::vector<unit_ability_t::tooltip_info> attack_type::abilities_special_tooltip
 	if(!self_) {
 		return res;
 	}
-	for(const auto& p_ab : self_->abilities()) {
-		if(self_->get_self_ability_bool(*p_ab, self_loc_) && special_tooltip_active(*p_ab)) {
-			bool active = !active_list || special_active(*p_ab, AFFECTS::SELF);
-			const std::string name = p_ab->cfg()["name_affected"];
-			const std::string desc = p_ab->cfg()["description_affected"];
-
-			if(name.empty() || checking_name.count(name) != 0) {
-				continue;
-			}
-			res.AGGREGATE_EMPLACE(name, desc, p_ab->get_help_topic_id());
-			checking_name.insert(name);
-			if(active_list) {
-				active_list->push_back(active);
-			}
-		}
-	}
-	for(const unit& u : get_unit_map()) {
-		if(!u.max_ability_radius() || u.incapacitated() || u.underlying_id() == self_->underlying_id()) {
-			continue;
-		}
-		const map_location& from_loc = u.get_location();
-		std::size_t distance = distance_between(from_loc, self_loc_);
-		if(distance > u.max_ability_radius()) {
-			continue;
-		}
-		int dir = find_direction(self_loc_, from_loc, distance);
-		for(const auto& p_ab : u.abilities()) {
-			if(self_->get_adj_ability_bool(*p_ab, distance, dir, self_loc_, u, from_loc) && special_tooltip_active(*p_ab)) {
+	foreach_active_ability(*self_, self_loc_,
+		[&](const ability_ptr&) {
+			return true;
+		},
+		[&](const ability_ptr& p_ab, const unit&) {
+			if (special_tooltip_active(*p_ab)) {
 				bool active = !active_list || special_active(*p_ab, AFFECTS::SELF);
 				const std::string name = p_ab->cfg()["name_affected"];
 				const std::string desc = p_ab->cfg()["description_affected"];
 
 				if(name.empty() || checking_name.count(name) != 0) {
-					continue;
+					return;
 				}
 				res.AGGREGATE_EMPLACE(name, desc, p_ab->get_help_topic_id());
 				checking_name.insert(name);
@@ -999,8 +997,7 @@ std::vector<unit_ability_t::tooltip_info> attack_type::abilities_special_tooltip
 					active_list->push_back(active);
 				}
 			}
-		}
-	}
+		});
 	return res;
 }
 
@@ -1125,11 +1122,14 @@ void attack_type::weapon_specials_impl_self(
 	const std::set<std::string>& checking_tags)
 {
 	if(self){
-		for(const auto& p_ab : self->abilities()){
-			bool tag_checked = (!checking_tags.empty()) ? (checking_tags.count(p_ab->tag()) != 0) : true;
-			const bool active = tag_checked && check_self_abilities_impl(self_attack, other_attack, *p_ab, self, self_loc, whom);
-			add_name(temp_string, active, p_ab->cfg().get_or("name_affected", "name").str(), checking_name);
-		}
+		foreach_self_active_ability(*self, self_loc,
+			[&](const ability_ptr& p_ab) {
+				return !checking_tags.empty() ? checking_tags.count(p_ab->tag()) != 0 : true;
+			},
+			[&](const ability_ptr& p_ab, const unit&) {
+				const bool active = special_active_impl(self_attack, other_attack, *p_ab, whom);
+				add_name(temp_string, active, p_ab->cfg().get_or("name_affected", "name").str(), checking_name);
+			});
 	}
 }
 
@@ -1144,26 +1144,18 @@ void attack_type::weapon_specials_impl_adj(
 	const std::set<std::string>& checking_tags,
 	const std::string& affect_adjacents)
 {
-	const unit_map& units = get_unit_map();
 	if(self){
-		for(const unit& u : units) {
-			if(!u.max_ability_radius() || u.incapacitated() || u.underlying_id() == self->underlying_id()) {
-				continue;
-			}
-			const map_location& from_loc = u.get_location();
-			std::size_t distance = distance_between(from_loc, self_loc);
-			if(distance > u.max_ability_radius()) {
-				continue;
-			}
-			int dir = find_direction(self_loc, from_loc, distance);
-			for(const auto& p_ab : u.abilities()) {
+		foreach_distant_active_ability(*self, self_loc,
+			[&](const ability_ptr& p_ab) {
 				bool tag_checked = !checking_tags.empty() ? checking_tags.count(p_ab->tag()) != 0 : true;
 				bool default_bool = affect_adjacents == "affect_allies" ? true : false;
 				bool affect_allies = !affect_adjacents.empty() ? p_ab->cfg()[affect_adjacents].to_bool(default_bool) : true;
-				const bool active = tag_checked && check_adj_abilities_impl(self_attack, other_attack, *p_ab, self, u, distance, dir, self_loc, from_loc, whom) && affect_allies;
+				return tag_checked && affect_allies;
+			},
+			[&](const ability_ptr& p_ab, const unit&) {
+				const bool active = special_active_impl(self_attack, other_attack, *p_ab, whom);
 				add_name(temp_string, active, p_ab->cfg().get_or("name_affected", "name").str(), checking_name);
-			}
-		}
+			});
 	}
 }
 
@@ -1555,31 +1547,16 @@ bool attack_type::has_ability_impl(
 	const map_location& self_loc,
 	const const_attack_ptr& other_attack,
 	AFFECTS whom,
-	const std::string& special)
+	const std::string& tag_name)
 {
-	for(const ability_ptr& p_ab : self->abilities(special)) {
-		if(check_self_abilities_impl(self_attack, other_attack, *p_ab, self, self_loc, whom)) {
-			return true;
-		}
-	}
-	const unit_map& units = get_unit_map();
-	for(const unit& u : units) {
-		if(!u.max_ability_radius() || u.incapacitated() || u.underlying_id() == self->underlying_id() || !u.max_ability_radius_type(special)) {
-			continue;
-		}
-		const map_location& from_loc = u.get_location();
-		std::size_t distance = distance_between(from_loc, self_loc);
-		if(distance > u.max_ability_radius_type(special)) {
-			continue;
-		}
-		int dir = find_direction(self_loc, from_loc, distance);
-		for(const ability_ptr& p_ab : u.abilities(special)) {
-			if(check_adj_abilities_impl(self_attack, other_attack, *p_ab, self, u, distance, dir, self_loc, from_loc, whom)) {
-				return true;
-			}
-		}
-	}
-	return false;
+
+	return foreach_active_ability(*self, self_loc,
+		[&](const ability_ptr& p_ab) {
+			return p_ab->tag() == tag_name;
+		},
+		[&](const ability_ptr& p_ab, const unit&) {
+			return special_active_impl(self_attack, other_attack, *p_ab, whom);
+		});
 }
 
 /**
@@ -1640,35 +1617,21 @@ bool attack_type::special_distant_filtering_impl(
 	const std::set<std::string> filter_special = utils::split_set(filter["special_active"].str());
 	const std::set<std::string> filter_special_id =  utils::split_set(filter["special_id_active"].str());
 	const std::set<std::string> filter_special_type = utils::split_set(filter["special_type_active"].str());
-	const unit_map& units = get_unit_map();
-	bool check_adjacent = sub_filter ? filter["affect_adjacent"].to_bool(true) : true;
-	for(const auto& p_ab : self->abilities()) {
-		bool special_check = sub_filter ? self->ability_matches_filter(*p_ab, filter) : special_checking(p_ab->id(), p_ab->tag(), filter_special, filter_special_id, filter_special_type);
-		if(special_check && check_self_abilities_impl(self_attack, other_attack, *p_ab, self, self_loc, whom)){
-			return true;
-		}
-	}
-	if(check_adjacent) {
-		for(const unit& u : units) {
-			if(!u.max_ability_radius() || u.incapacitated() || u.underlying_id() == self->underlying_id()) {
-				continue;
-			}
-			const map_location& from_loc = u.get_location();
-			std::size_t distance = distance_between(from_loc, self_loc);
-			if(distance > u.max_ability_radius()) {
-				continue;
-			}
-			int dir = find_direction(self_loc, from_loc, distance);
 
-			for(const auto& p_ab : u.abilities()) {
-				bool special_check = sub_filter ? u.ability_matches_filter(*p_ab, filter) : special_checking(p_ab->id(), p_ab->tag(), filter_special, filter_special_id, filter_special_type);
-				if(special_check && check_adj_abilities_impl(self_attack, other_attack, *p_ab, self, u, distance, dir, self_loc, from_loc, whom)) {
-					return true;
-				}
-			}
-		}
+	auto handler = [&](const ability_ptr& p_ab, const unit&) {
+		return special_active_impl(self_attack, other_attack, *p_ab, whom);
+	};
+	auto quick_check = [&](const ability_ptr& p_ab) {
+		bool special_check = sub_filter ? self->ability_matches_filter(*p_ab, filter) : special_checking(p_ab->id(), p_ab->tag(), filter_special, filter_special_id, filter_special_type);
+		return special_check;
+	};
+
+
+	bool check_adjacent = sub_filter ? filter["affect_adjacent"].to_bool(true) : true;
+	if (!check_adjacent) {
+		return foreach_self_active_ability(*self, self_loc, quick_check, handler);
 	}
-	return false;
+	return foreach_active_ability(*self, self_loc, quick_check, handler);
 }
 
 bool attack_type::has_filter_special_or_ability(const config& filter, bool simple_check) const
