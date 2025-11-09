@@ -410,7 +410,7 @@ function wesnoth.wml_actions.select_lintanir_boon(cfg)
 			T.row{ T.column{ T.label{  use_markup=true,  label="<span size='8000'> </span>"  }}},
 			T.row{ T.column{
 				horizontal_alignment="center",
-				T.label{  definition="title",  label=_"Choose a boon to receive:"  }
+				T.label{  definition="title",  label=_"Select an item to learn more..."  }
 			}},
 			T.row{ T.column{ T.label{  use_markup=true,  label="<span size='15000'> </span>"  }}},
 
@@ -432,15 +432,15 @@ function wesnoth.wml_actions.select_lintanir_boon(cfg)
 				}}}}},
 				T.list_data{
 					T.row{ T.column{
-						T.widget{  id="image", label="misc/blank-hex.png~SCALE(120,120)~BLIT(icons/book.png~SCALE(76,76),22,22)"           },
+						T.widget{  id="image", label="misc/blank-hex.png~SCALE(120,100)~BLIT(icons/book.png~SCALE(76,76),22,22)"           },
 						T.widget{  id="name",  label=stringx.join("", {"<span size='large' face='WesScript'>",_"Wose Lore","</span>"})     },
 					}},
 					T.row{ T.column{
-						T.widget{  id="image", label="misc/blank-hex.png~SCALE(120,120)~BLIT(attacks/sword-flaming.png~SCALE(76,76),22,22)"},
+						T.widget{  id="image", label="misc/blank-hex.png~SCALE(120,100)~BLIT(attacks/sword-flaming.png~SCALE(76,76),22,22)"},
 						T.widget{  id="name",  label=stringx.join("", {"<span size='large' face='WesScript'>",_"Flaming Sword","</span>" })},
 					}},
 					T.row{ T.column{
-						T.widget{  id="image", label="misc/blank-hex.png~SCALE(120,120)~BLIT(icons/breastplate2.png~SCALE(76,76),22,22)"   },
+						T.widget{  id="image", label="misc/blank-hex.png~SCALE(120,100)~BLIT(icons/breastplate2.png~SCALE(76,76),22,22)"   },
 						T.widget{  id="name",  label=stringx.join("", {"<span size='large' face='WesScript'>",_"Void Armor","</span>"})    },
 					}},
 				}
