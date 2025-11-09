@@ -30,6 +30,10 @@ using ability_vector = std::vector<ability_ptr>;
 class unit_ability_t
 {
 public:
+
+	enum class active_on_t { offense, defense, both };
+	enum class apply_to_t { self, opponent, attacker, defender, both };
+
 	unit_ability_t(std::string tag, config cfg, bool inside_attack);
 
 	static ability_ptr create(std::string tag, config cfg, bool inside_attack) {
@@ -41,6 +45,10 @@ public:
 	const std::string& tag() const { return tag_; };
 	const std::string& id() const { return id_; };
 	const config& cfg() const { return cfg_; };
+
+	active_on_t active_on() const { return active_on_; };
+	apply_to_t apply_to() const { return apply_to_; };
+
 	void write(config& abilities_cfg);
 
 
@@ -55,6 +63,8 @@ public:
 private:
 	std::string tag_;
 	std::string id_;
+	active_on_t active_on_;
+	apply_to_t apply_to_;
 	config cfg_;
 };
 

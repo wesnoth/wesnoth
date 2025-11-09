@@ -117,9 +117,26 @@ A poisoned unit cannot be cured of its poison by a healer, and must seek the car
 unit_ability_t::unit_ability_t(std::string tag, config cfg, bool inside_attack)
 	: tag_(std::move(tag))
 	, id_(cfg["id"].str())
+	, active_on_(active_on_t::both)
+	, apply_to_(apply_to_t::self)
 	, cfg_(std::move(cfg))
 {
 	do_compat_fixes(cfg_, inside_attack);
+
+	if (tag_ != "resistance" && tag_ != "leadership") {
+		std::string apply_to = cfg_["apply_to"].str();
+		apply_to_ = apply_to == "attacker" ? apply_to_t::attacker :
+			apply_to == "defender" ? apply_to_t::defender :
+			apply_to == "self" ? apply_to_t::self :
+			apply_to == "opponent" ? apply_to_t::opponent :
+			apply_to == "both" ? apply_to_t::both :
+			apply_to_t::self;
+
+	}
+	std::string active_on = cfg_["active_on"].str();
+	active_on_ = active_on == "defense" ? active_on_t::defense :
+		active_on == "offense" ? active_on_t::offense :
+		active_on_t::both;
 }
 
 void unit_ability_t::do_compat_fixes(config& cfg, bool inside_attack)
@@ -1232,17 +1249,15 @@ namespace { // Helpers for attack_type::special_active()
 	 */
 	bool special_affects_opponent(const unit_ability_t& ab, bool is_attacker)
 	{
-		//log_scope("special_affects_opponent");
-		const std::string& apply_to = ab.cfg()["apply_to"];
-		if ( apply_to.empty() )
-			return false;
-		if ( apply_to == "both" )
+		using apply_to_t = unit_ability_t::apply_to_t;
+		const auto apply_to = ab.apply_to();
+		if ( apply_to == apply_to_t::both)
 			return true;
-		if ( apply_to == "opponent" )
+		if ( apply_to == apply_to_t::opponent )
 			return true;
-		if ( is_attacker  &&  apply_to == "defender" )
+		if ( is_attacker  && apply_to == apply_to_t::defender)
 			return true;
-		if ( !is_attacker &&  apply_to == "attacker" )
+		if ( !is_attacker && apply_to == apply_to_t::attacker)
 			return true;
 		return false;
 	}
@@ -1254,17 +1269,15 @@ namespace { // Helpers for attack_type::special_active()
 	 */
 	bool special_affects_self(const unit_ability_t& ab, bool is_attacker)
 	{
-		//log_scope("special_affects_self");
-		const std::string& apply_to = ab.cfg()["apply_to"];
-		if ( apply_to.empty() )
+		using apply_to_t = unit_ability_t::apply_to_t;
+		const auto apply_to = ab.apply_to();
+		if ( apply_to == apply_to_t::both )
 			return true;
-		if ( apply_to == "both" )
+		if ( apply_to == apply_to_t::self)
 			return true;
-		if ( apply_to == "self" )
+		if ( is_attacker  &&  apply_to == apply_to_t::attacker)
 			return true;
-		if ( is_attacker  &&  apply_to == "attacker" )
-			return true;
-		if ( !is_attacker &&  apply_to == "defender")
+		if ( !is_attacker &&  apply_to == apply_to_t::defender)
 			return true;
 		return false;
 	}
@@ -2067,11 +2080,10 @@ bool attack_type::special_active_impl(
 	}
 
 	// Is this active on attack/defense?
-	const std::string & active_on = ab.cfg()["active_on"];
-	if ( !active_on.empty() ) {
-		if ( is_attacker  &&  active_on != "offense" )
+	if ( ab.active_on() != unit_ability_t::active_on_t::both) {
+		if ( is_attacker  && ab.active_on() != unit_ability_t::active_on_t::offense)
 			return false;
-		if ( !is_attacker  &&  active_on != "defense" )
+		if ( !is_attacker  && ab.active_on() != unit_ability_t::active_on_t::defense)
 			return false;
 	}
 
