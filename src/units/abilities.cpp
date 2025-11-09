@@ -887,11 +887,11 @@ active_ability_list attack_type::get_specials(const std::string& special) const
  * @a active_list is not nullptr. Otherwise specials are assumed active.
  * If the appropriate name is empty, the special is skipped.
  */
-std::vector<std::pair<t_string, t_string>> attack_type::special_tooltips(
+std::vector<attack_type::special_tooltip_info> attack_type::special_tooltips(
 	boost::dynamic_bitset<>* active_list) const
 {
 	//log_scope("special_tooltips");
-	std::vector<std::pair<t_string, t_string>> res;
+	std::vector<special_tooltip_info> res;
 	if(active_list) {
 		active_list->clear();
 	}
@@ -911,7 +911,7 @@ std::vector<std::pair<t_string, t_string>> attack_type::special_tooltips(
 			? p_ab->cfg()["description"].str()
 			: p_ab->cfg().get_or("description_inactive", "description").str();
 
-		res.emplace_back(
+		res.AGGREGATE_EMPLACE(
 			unit_abilities::substitute_variables(name, *p_ab),
 			unit_abilities::substitute_variables(desc, *p_ab)
 		);
@@ -923,10 +923,10 @@ std::vector<std::pair<t_string, t_string>> attack_type::special_tooltips(
 	return res;
 }
 
-std::vector<std::pair<t_string, t_string>> attack_type::abilities_special_tooltips(
+std::vector<attack_type::special_tooltip_info> attack_type::abilities_special_tooltips(
 	boost::dynamic_bitset<>* active_list) const
 {
-	std::vector<std::pair<t_string, t_string>> res;
+	std::vector<special_tooltip_info> res;
 	if(active_list) {
 		active_list->clear();
 	}
@@ -943,7 +943,7 @@ std::vector<std::pair<t_string, t_string>> attack_type::abilities_special_toolti
 			if(name.empty() || checking_name.count(name) != 0) {
 				continue;
 			}
-			res.emplace_back(name, desc);
+			res.AGGREGATE_EMPLACE(name, desc);
 			checking_name.insert(name);
 			if(active_list) {
 				active_list->push_back(active);
@@ -969,7 +969,7 @@ std::vector<std::pair<t_string, t_string>> attack_type::abilities_special_toolti
 				if(name.empty() || checking_name.count(name) != 0) {
 					continue;
 				}
-				res.emplace_back(name, desc);
+				res.AGGREGATE_EMPLACE(name, desc);
 				checking_name.insert(name);
 				if(active_list) {
 					active_list->push_back(active);
