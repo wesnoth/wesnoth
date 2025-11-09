@@ -110,96 +110,96 @@ section parse_config_internal(const config& help_cfg, const config& section_cfg,
 		PLAIN_LOG << "Maximum section depth has been reached. Maybe circular dependency?";
 		return section{};
 	}
-		const std::vector<std::string> sections = utils::quoted_split(section_cfg["sections"]);
-		std::string id = level == 0 ? "toplevel" : section_cfg["id"].str();
-		if (level != 0) {
-			if (!is_valid_id(id)) {
+	const std::vector<std::string> sections = utils::quoted_split(section_cfg["sections"]);
+	std::string id = level == 0 ? "toplevel" : section_cfg["id"].str();
+	if (level != 0) {
+		if (!is_valid_id(id)) {
+			std::stringstream ss;
+			ss << "Invalid ID, used for internal purpose: '" << id << "'";
+			throw parse_error(ss.str());
+		}
+	}
+	std::string title = level == 0 ? "" : section_cfg["title"].str();
+	section sec;
+	sec.id = id;
+	sec.title = title;
+	// Find all child sections.
+	for(const std::string& sec_id : sections) {
+		if (auto child_cfg = help_cfg.find_child("section", "id", sec_id))
+		{
+			sec.add_section(parse_config_internal(help_cfg, *child_cfg, level + 1));
+		}
+		else {
+			std::stringstream ss;
+			ss << "Help-section '" << sec_id << "' referenced from '"
+				<< id << "' but could not be found.";
+			throw parse_error(ss.str());
+		}
+	}
+
+	generate_sections(help_cfg, section_cfg["sections_generator"], sec, level);
+	if (section_cfg["sort_sections"] == "yes") {
+		sec.sections.sort(section_less());
+	}
+
+	bool sort_topics = false;
+	bool sort_generated = true;
+
+	if (section_cfg["sort_topics"] == "yes") {
+		sort_topics = true;
+		sort_generated = false;
+	} else if (section_cfg["sort_topics"] == "no") {
+		sort_topics = false;
+		sort_generated = false;
+	} else if (section_cfg["sort_topics"] == "generated") {
+		sort_topics = false;
+		sort_generated = true;
+	} else if (!section_cfg["sort_topics"].empty()) {
+		std::stringstream ss;
+		ss << "Invalid sort option: '" << section_cfg["sort_topics"] << "'";
+		throw parse_error(ss.str());
+	}
+
+	std::vector<topic> generated_topics = generate_topics(sort_generated, section_cfg["generator"]);
+	std::vector<topic> topics;
+
+	// Find all topics in this section.
+	for(const std::string& topic_id : utils::quoted_split(section_cfg["topics"])) {
+		if (auto topic_cfg = help_cfg.find_child("topic", "id", topic_id))
+		{
+			std::string text = topic_cfg["text"];
+			text += generate_topic_text(topic_cfg["generator"], help_cfg, sec);
+			topic child_topic(topic_cfg["title"], topic_cfg["id"], text);
+			if (!is_valid_id(child_topic.id)) {
 				std::stringstream ss;
 				ss << "Invalid ID, used for internal purpose: '" << id << "'";
 				throw parse_error(ss.str());
 			}
-		}
-		std::string title = level == 0 ? "" : section_cfg["title"].str();
-		section sec;
-		sec.id = id;
-		sec.title = title;
-		// Find all child sections.
-		for(const std::string& sec_id : sections) {
-			if (auto child_cfg = help_cfg.find_child("section", "id", sec_id))
-			{
-				sec.add_section(parse_config_internal(help_cfg, *child_cfg, level + 1));
-			}
-			else {
-				std::stringstream ss;
-				ss << "Help-section '" << sec_id << "' referenced from '"
-				   << id << "' but could not be found.";
-				throw parse_error(ss.str());
-			}
-		}
-
-		generate_sections(help_cfg, section_cfg["sections_generator"], sec, level);
-		if (section_cfg["sort_sections"] == "yes") {
-			sec.sections.sort(section_less());
-		}
-
-		bool sort_topics = false;
-		bool sort_generated = true;
-
-		if (section_cfg["sort_topics"] == "yes") {
-		  sort_topics = true;
-		  sort_generated = false;
-		} else if (section_cfg["sort_topics"] == "no") {
-		  sort_topics = false;
-		  sort_generated = false;
-		} else if (section_cfg["sort_topics"] == "generated") {
-		  sort_topics = false;
-		  sort_generated = true;
-		} else if (!section_cfg["sort_topics"].empty()) {
-		  std::stringstream ss;
-		  ss << "Invalid sort option: '" << section_cfg["sort_topics"] << "'";
-		  throw parse_error(ss.str());
-		}
-
-		std::vector<topic> generated_topics = generate_topics(sort_generated, section_cfg["generator"]);
-		std::vector<topic> topics;
-
-		// Find all topics in this section.
-		for(const std::string& topic_id : utils::quoted_split(section_cfg["topics"])) {
-			if (auto topic_cfg = help_cfg.find_child("topic", "id", topic_id))
-			{
-				std::string text = topic_cfg["text"];
-				text += generate_topic_text(topic_cfg["generator"], help_cfg, sec);
-				topic child_topic(topic_cfg["title"], topic_cfg["id"], text);
-				if (!is_valid_id(child_topic.id)) {
-					std::stringstream ss;
-					ss << "Invalid ID, used for internal purpose: '" << id << "'";
-					throw parse_error(ss.str());
-				}
-				topics.push_back(child_topic);
-			}
-			else {
-				std::stringstream ss;
-				ss << "Help-topic '" << topic_id << "' referenced from '" << id
-				   << "' but could not be found." << std::endl;
-				throw parse_error(ss.str());
-			}
-		}
-
-		if (sort_topics) {
-			std::sort(topics.begin(),topics.end(), title_less());
-			std::sort(generated_topics.begin(),
-			  generated_topics.end(), title_less());
-			std::merge(generated_topics.begin(),
-			  generated_topics.end(),topics.begin(),topics.end()
-			  ,std::back_inserter(sec.topics),title_less());
+			topics.push_back(child_topic);
 		}
 		else {
-			sec.topics.insert(sec.topics.end(),
-				topics.begin(), topics.end());
-			sec.topics.insert(sec.topics.end(),
-				generated_topics.begin(), generated_topics.end());
+			std::stringstream ss;
+			ss << "Help-topic '" << topic_id << "' referenced from '" << id
+				<< "' but could not be found." << std::endl;
+			throw parse_error(ss.str());
 		}
-		return sec;
+	}
+
+	if (sort_topics) {
+		std::sort(topics.begin(),topics.end(), title_less());
+		std::sort(generated_topics.begin(),
+			generated_topics.end(), title_less());
+		std::merge(generated_topics.begin(),
+			generated_topics.end(),topics.begin(),topics.end()
+			,std::back_inserter(sec.topics),title_less());
+	}
+	else {
+		sec.topics.insert(sec.topics.end(),
+			topics.begin(), topics.end());
+		sec.topics.insert(sec.topics.end(),
+			generated_topics.begin(), generated_topics.end());
+	}
+	return sec;
 }
 
 section parse_config(const config& cfg)
