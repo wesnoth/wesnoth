@@ -1985,20 +1985,21 @@ bool attack_type::has_special_or_ability_with_filter(const config & filter) cons
 	if(range().empty()){
 		return false;
 	}
+
+	if (!filter["active"].to_bool()) {
+		return utils::find_if(specials(), [&](const ability_ptr& p_ab) { return special_matches_filter(*p_ab, filter); });
+	}
+
 	using namespace utils::config_filters;
-	bool check_if_active = filter["active"].to_bool();
 	for(const auto& p_ab : specials()) {
 		if(special_matches_filter(*p_ab, filter)) {
-			if(!check_if_active) {
-				return true;
-			}
 			if(special_active(*p_ab, AFFECTS::SELF)) {
 				return true;
 			}
 		}
 	}
 
-	if(check_if_active && other_attack_) {
+	if(other_attack_) {
 		for(const auto& p_ab : other_attack_->specials()) {
 			if(other_attack_->special_matches_filter(*p_ab, filter)) {
 				if(other_attack_->special_active(*p_ab, AFFECTS::OTHER)) {
@@ -2006,9 +2007,6 @@ bool attack_type::has_special_or_ability_with_filter(const config & filter) cons
 				}
 			}
 		}
-	}
-	if(!check_if_active){
-		return false;
 	}
 
 	if(self_ && special_distant_filtering_impl(shared_from_this(), self_, self_loc_, other_attack_, AFFECTS::SELF, filter, true)) {
