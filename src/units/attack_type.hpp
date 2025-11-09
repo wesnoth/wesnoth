@@ -164,8 +164,9 @@ public:
 	double modified_damage() const;
 	/** Return the defense value, considering specials.
 	 * @param cth The chance_to_hit value modified or not by function.
+	 * @param special_only Decide if get_specials() or get_specials_and_abilities()should be used.
 	 */
-	int modified_chance_to_hit(int cth) const;
+	int modified_chance_to_hit(int cth, bool special_only = false) const;
 
 	/** Return the special weapon value, considering specials.
 	 * @param abil_list The list of special checked.
@@ -467,6 +468,8 @@ public:
 		friend class attack_type;
 		/** Initialize weapon specials context for listing */
 		explicit specials_context_t(const attack_type& weapon, bool attacking);
+		/** Initialize weapon specials context for a unit type */
+		specials_context_t(const attack_type& weapon, const unit_type& self_type, const map_location& loc, bool attacking = true);
 		/** Initialize weapon specials context for a single unit */
 		specials_context_t(const attack_type& weapon, const_attack_ptr other_weapon,
 			unit_const_ptr self, unit_const_ptr other,
@@ -490,6 +493,9 @@ public:
 	}
 	specials_context_t specials_context(unit_const_ptr self, const map_location& loc, bool attacking = true) const {
 		return specials_context_t(*this, self, loc, attacking);
+	}
+	specials_context_t specials_context(const unit_type& self_type, const map_location& loc, bool attacking = true) const {
+		return specials_context_t(*this, self_type, loc, attacking);
 	}
 	specials_context_t specials_context_for_listing(bool attacking = true) const {
 		return specials_context_t(*this, attacking);

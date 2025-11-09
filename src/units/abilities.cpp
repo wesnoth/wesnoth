@@ -1107,6 +1107,26 @@ attack_type::specials_context_t::specials_context_t(const attack_type& weapon, u
 	weapon.is_for_listing_ = false;
 }
 
+/**
+ * Sets the context under which specials will be checked for being active.
+ * This version is appropriate for theoretical units of a particular type.
+ * @param[in]  weapon        The weapon being considered.
+ * @param[in]  self_type     A reference to the type of the unit with this weapon.
+ * @param[in]  loc           The location of the unit with this weapon.
+ * @param[in]  attacking     Whether or not the unit with this weapon is the attacker.
+ */
+attack_type::specials_context_t::specials_context_t(const attack_type& weapon, const unit_type& /*self_type*/, const map_location& loc, bool attacking)
+	: parent(weapon.shared_from_this())
+{
+	weapon.self_ = unit_ptr();
+	weapon.other_ = unit_ptr();
+	weapon.self_loc_ = loc;
+	weapon.other_loc_ = map_location::null_location();
+	weapon.is_attacker_ = attacking;
+	weapon.other_attack_ = nullptr;
+	weapon.is_for_listing_ = false;
+}
+
 attack_type::specials_context_t::specials_context_t(const attack_type& weapon, bool attacking)
 	: parent(weapon.shared_from_this())
 {
@@ -1280,10 +1300,10 @@ double attack_type::modified_damage() const
 	return damage_value;
 }
 
-int attack_type::modified_chance_to_hit(int cth) const
+int attack_type::modified_chance_to_hit(int cth, bool special_only) const
 {
 	int parry = other_attack_ ? other_attack_->parry() : 0;
-	active_ability_list chance_to_hit_list = get_specials_and_abilities("chance_to_hit");
+	active_ability_list chance_to_hit_list = special_only ? get_specials("chance_to_hit") : get_specials_and_abilities("chance_to_hit");
 	cth = std::clamp(cth + accuracy_ - parry, 0, 100);
 	return composite_value(chance_to_hit_list, cth);
 }

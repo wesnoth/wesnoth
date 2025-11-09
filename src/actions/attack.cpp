@@ -79,10 +79,7 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 		bool attacking,
 		nonempty_unit_const_ptr oppp,
 		const map_location& opp_loc,
-		const const_attack_ptr& opp_weapon,
-		utils::optional<int> opp_terrain_defense,
-		utils::optional<int> lawful_bonus
-	)
+		const const_attack_ptr& opp_weapon)
 	: weapon(nullptr)
 	, attack_num(u_attack_num)
 	, is_attacker(attacking)
@@ -171,9 +168,7 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 	}
 
 	// Compute chance to hit.
-
-	int opp_base_cth = opp_terrain_defense ? (100 - *opp_terrain_defense) : opp.defense_modifier(resources::gameboard->map().get_terrain(opp_loc));
-	signed int cth = weapon->modified_chance_to_hit(opp_base_cth);
+	signed int cth = weapon->modified_chance_to_hit(opp.defense_modifier(resources::gameboard->map().get_terrain(opp_loc)));
 
 	if(opp.get_state("invulnerable")) {
 		cth = 0;
@@ -189,14 +184,8 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 
 	// Time of day bonus.
 	unit_alignments::type alignment = weapon->alignment().value_or(u.alignment());
-	if (lawful_bonus) {
-		damage_multiplier += generic_combat_modifier(*lawful_bonus, alignment, u.is_fearless(), 0);
-	}
-	else {
-		damage_multiplier += combat_modifier(
+	damage_multiplier += combat_modifier(
 			resources::gameboard->units(), resources::gameboard->map(), u_loc, alignment, u.is_fearless());
-	}
-
 
 	// Leadership bonus.
 	int leader_bonus = under_leadership(u, u_loc, weapon, opp_weapon);
@@ -223,6 +212,119 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 
 	// Add heal_on_hit (the drain constant)
 	drain_constant += weapon->composite_value(weapon->get_specials_and_abilities("heal_on_hit"), 0);
+
+	drains = drain_constant || drain_percent;
+
+	// Compute the number of blows and handle swarm.
+	weapon->modified_attacks(swarm_min, swarm_max);
+	swarm = swarm_min != swarm_max;
+	num_blows = calc_blows(hp);
+}
+
+battle_context_unit_stats::battle_context_unit_stats(const unit_type* u_type,
+		const_attack_ptr att_weapon,
+		bool attacking,
+		const unit_type* opp_type,
+		const const_attack_ptr& opp_weapon,
+		unsigned int opp_terrain_defense,
+		int lawful_bonus)
+	: weapon(std::move(att_weapon))
+	, attack_num(-2) // This is and stays invalid. Always use weapon when using this constructor.
+	, is_attacker(attacking)
+	, is_poisoned(false)
+	, is_slowed(false)
+	, slows(false)
+	, drains(false)
+	, petrifies(false)
+	, plagues(false)
+	, poisons(false)
+	, swarm(false)
+	, firststrike(false)
+	, disable(false)
+	, experience(0)
+	, max_experience(0)
+	, level(0)
+	, rounds(1)
+	, hp(0)
+	, max_hp(0)
+	, chance_to_hit(0)
+	, damage(0)
+	, slow_damage(0)
+	, drain_percent(0)
+	, drain_constant(0)
+	, num_blows(0)
+	, swarm_min(0)
+	, swarm_max(0)
+	, plague_type()
+{
+	if(!u_type || !opp_type) {
+		return;
+	}
+
+	// Get the current state of the unit.
+	if(u_type->hitpoints() < 0) {
+		hp = 0;
+	} else {
+		hp = u_type->hitpoints();
+	}
+
+	max_experience = u_type->experience_needed();
+	level = (u_type->level());
+	max_hp = (u_type->hitpoints());
+
+	// Exit if no weapon.
+	if(!weapon) {
+		return;
+	}
+
+	// Get the weapon characteristics as appropriate.
+	auto ctx = weapon->specials_context(*u_type, map_location::null_location(), attacking);
+	utils::optional<decltype(ctx)> opp_ctx;
+
+	if(opp_weapon) {
+		opp_ctx.emplace(opp_weapon->specials_context(*opp_type, map_location::null_location(), !attacking));
+	}
+
+	slows = weapon->has_special("slow");
+	drains = !opp_type->musthave_status("undrainable") && weapon->has_special("drains");
+	petrifies = weapon->has_special("petrifies");
+	poisons = !opp_type->musthave_status("unpoisonable") && weapon->has_special("poison");
+	rounds = weapon->get_specials("berserk").highest("value", 1).first;
+	firststrike = weapon->has_special("firststrike");
+	disable = weapon->has_special("disable");
+
+	active_ability_list plague_specials = weapon->get_specials("plague");
+	plagues = !opp_type->musthave_status("unplagueable") && !plague_specials.empty() &&
+		opp_type->undead_variation() != "null";
+
+	if(plagues) {
+		plague_type = plague_specials.front().ability_cfg()["type"].str();
+		if(plague_type.empty()) {
+			plague_type = u_type->parent_id();
+		}
+	}
+
+	signed int cth = weapon->modified_chance_to_hit(100 - opp_terrain_defense, true);
+
+	chance_to_hit = std::clamp(cth, 0, 100);
+
+	double base_damage = weapon->modified_damage();
+	int damage_multiplier = 100;
+	unit_alignments::type alignment = weapon->alignment().value_or(u_type->alignment());
+	damage_multiplier
+			+= generic_combat_modifier(lawful_bonus, alignment, u_type->musthave_status("fearless"), 0);
+	damage_multiplier *= opp_type->resistance_against(weapon->type(), !attacking);
+
+	damage = round_damage(base_damage, damage_multiplier, 10000);
+	slow_damage = round_damage(base_damage, damage_multiplier, 20000);
+
+	if(drains) {
+		// Compute the drain percent (with 50% as the base for backward compatibility)
+		drain_percent = weapon->composite_value(weapon->get_specials("drains"), 50);
+	}
+
+	// Add heal_on_hit (the drain constant)
+	drain_constant += weapon->composite_value(weapon->get_specials("heal_on_hit"), 0);
 
 	drains = drain_constant || drain_percent;
 
