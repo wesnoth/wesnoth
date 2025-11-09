@@ -1300,12 +1300,11 @@ double attack_type::modified_damage() const
 	return damage_value;
 }
 
-int attack_type::modified_chance_to_hit(int cth, bool special_only) const
+int attack_type::modified_chance_to_hit(int cth) const
 {
 	int parry = other_attack_ ? other_attack_->parry() : 0;
-	active_ability_list chance_to_hit_list = special_only ? get_specials("chance_to_hit") : get_specials_and_abilities("chance_to_hit");
 	cth = std::clamp(cth + accuracy_ - parry, 0, 100);
-	return composite_value(chance_to_hit_list, cth);
+	return composite_value(get_specials_and_abilities("chance_to_hit"), cth);
 }
 
 

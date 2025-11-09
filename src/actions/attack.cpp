@@ -304,7 +304,7 @@ battle_context_unit_stats::battle_context_unit_stats(const unit_type* u_type,
 		}
 	}
 
-	signed int cth = weapon->modified_chance_to_hit(100 - opp_terrain_defense, true);
+	signed int cth = weapon->modified_chance_to_hit(100 - opp_terrain_defense);
 
 	chance_to_hit = std::clamp(cth, 0, 100);
 
