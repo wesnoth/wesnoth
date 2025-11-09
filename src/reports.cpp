@@ -993,13 +993,13 @@ static int attack_info(const reports::context& rc, const attack_type &at, config
 						at.specials_context(u.shared_from_this(), sec_u->shared_from_this(), hex, sec_u->get_location(), attacking, std::move(sec_u_weapon));
 
 		boost::dynamic_bitset<> active;
-		const std::vector<std::pair<t_string, t_string>> &specials = at.special_tooltips(&active);
+		const auto &specials = at.special_tooltips(&active);
 		const std::size_t specials_size = specials.size();
 		for ( std::size_t i = 0; i != specials_size; ++i )
 		{
 			// Aliases for readability:
-			const t_string &name = specials[i].first;
-			const t_string &description = specials[i].second;
+			const t_string &name = specials[i].name;
+			const t_string &description = specials[i].description;
 			const color_t &details_color =
 				active[i] ? font::weapon_details_color : font::INACTIVE_COLOR;
 
@@ -1034,7 +1034,7 @@ static int attack_info(const reports::context& rc, const attack_type &at, config
 	: at.specials_context(u.shared_from_this(), sec_u->shared_from_this(), hex, sec_u->get_location(), attacking, std::move(sec_u_weapon));
 
 		boost::dynamic_bitset<> active;
-		const std::vector<std::pair<t_string, t_string>>& specials = at.abilities_special_tooltips(&active);
+		auto specials = at.abilities_special_tooltips(&active);
 		const std::size_t specials_size = specials.size();
 		for ( std::size_t i = 0; i != specials_size; ++i )
 		{

@@ -285,8 +285,8 @@ void unit_preview_pane::print_attack_details(
 			add_name_tree_node(
 				subsection,
 				"item",
-				markup::span_color(font::weapon_details_color, pair.first),
-				markup::span_size("x-large", pair.first) + "\n" + pair.second
+				markup::span_color(font::weapon_details_color, pair.name),
+				markup::span_size("x-large", pair.name) + "\n" + pair.description
 			);
 		}
 	}
