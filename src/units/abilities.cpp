@@ -1299,6 +1299,31 @@ namespace { // Helpers for attack_type::special_active()
 		already_shown.push_back(std::move(identifier));
 	}
 
+
+	static bool buildin_is_immune(const unit_ability_t& ab, const unit_const_ptr& them, map_location their_loc)
+	{
+		if (ab.tag() == "drains" && them && them->get_state("undrainable")) {
+			return true;
+		}
+		if (ab.tag() == "plague" && them &&
+			(them->get_state("unplagueable") ||
+				resources::gameboard->map().is_village(their_loc))) {
+			return true;
+		}
+		if (ab.tag() == "poison" && them &&
+			(them->get_state("unpoisonable") || them->get_state(unit::STATE_POISONED))) {
+			return true;
+		}
+		if (ab.tag() == "slow" && them &&
+			(them->get_state("unslowable") || them->get_state(unit::STATE_SLOWED))) {
+			return true;
+		}
+		if (ab.tag() == "petrifies" && them &&
+			them->get_state("unpetrifiable")) {
+			return true;
+		}
+		return false;
+	}
 	/**
 	 * Determines if a unit/weapon combination matches the specified child
 	 * (normally a [filter_*] child) of the provided filter.
@@ -2083,24 +2108,7 @@ bool attack_type::special_active_impl(
 	unit_const_ptr them = whom_is_self ? other : self;
 	map_location their_loc = whom_is_self ? other_loc : self_loc;
 
-	if (ab.tag() == "drains" && them && them->get_state("undrainable")) {
-		return false;
-	}
-	if (ab.tag() == "plague" && them &&
-		(them->get_state("unplagueable") ||
-		 resources::gameboard->map().is_village(their_loc))) {
-		return false;
-	}
-	if (ab.tag() == "poison" && them &&
-		(them->get_state("unpoisonable") || them->get_state(unit::STATE_POISONED))) {
-		return false;
-	}
-	if (ab.tag() == "slow" && them &&
-		(them->get_state("unslowable") || them->get_state(unit::STATE_SLOWED))) {
-		return false;
-	}
-	if (ab.tag() == "petrifies" && them &&
-		them->get_state("unpetrifiable")) {
+	if (buildin_is_immune(ab, them, their_loc)) {
 		return false;
 	}
 
