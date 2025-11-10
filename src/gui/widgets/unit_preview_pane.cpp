@@ -541,7 +541,7 @@ void unit_preview_pane::set_display_data(const unit& u)
 			}
 		}
 
-		if(!u.get_ability_list().empty()) {
+		if(!u.get_ability_id_list().empty()) {
 			auto& header_node = add_name_tree_node(tree_details_->get_root_node(), "header", markup::bold(_("Abilities")));
 
 			for(const auto& ab : u.ability_tooltips()) {

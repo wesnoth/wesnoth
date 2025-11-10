@@ -250,7 +250,7 @@ variant unit_callable::get_value(const std::string& key) const
 
 		return variant(res);
 	} else if(key == "abilities") {
-		return formula_callable::convert_vector(u_.get_ability_list());
+		return formula_callable::convert_vector(u_.get_ability_id_list());
 	} else if(key == "hitpoints") {
 		return variant(u_.hitpoints());
 	} else if(key == "max_hitpoints") {
@@ -440,7 +440,7 @@ variant unit_type_callable::get_value(const std::string& key) const
 	} else if(key == "race") {
 		return variant(u_.race_id());
 	} else if(key == "abilities") {
-		return formula_callable::convert_vector(u_.get_ability_list());
+		return formula_callable::convert_vector(u_.get_ability_id_list());
 	} else if(key == "traits") {
 		std::vector<variant> res;
 		for(const auto& config : u_.possible_traits()) {
