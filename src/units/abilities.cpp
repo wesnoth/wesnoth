@@ -382,7 +382,7 @@ active_ability_list unit::get_abilities_weapons(const std::string& tag_name, con
 	return res;
 }
 
-std::vector<std::string> unit::get_ability_list() const
+std::vector<std::string> unit::get_ability_id_list() const
 {
 	std::vector<std::string> res;
 
