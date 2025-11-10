@@ -117,6 +117,7 @@ A poisoned unit cannot be cured of its poison by a healer, and must seek the car
 unit_ability_t::unit_ability_t(std::string tag, config cfg, bool inside_attack)
 	: tag_(std::move(tag))
 	, id_(cfg["id"].str())
+	, in_specials_tag_(inside_attack)
 	, active_on_(active_on_t::both)
 	, apply_to_(apply_to_t::self)
 	, cfg_(std::move(cfg))
@@ -2054,7 +2055,6 @@ namespace {
  * @param other_attack      the other unit's attack
  * @param ab                the ability
  * @param whom              specifies which combatant we care about
- * @param in_abilities_tag  if special coded in [specials] or [abilities] tags
  */
 bool attack_type::special_active_impl(
 	const const_attack_ptr& self_attack,
