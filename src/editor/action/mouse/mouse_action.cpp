@@ -92,8 +92,8 @@ std::unique_ptr<editor_action> mouse_action::up_left(
 std::unique_ptr<editor_action> mouse_action::key_event(
 	editor_display& disp, const SDL_Event& event)
 {
-	if (!has_alt_modifier() && (event.key.keysym.sym >= '1' && event.key.keysym.sym <= '9')) {
-		int side = event.key.keysym.sym - '0';
+	if (!has_alt_modifier() && (event.key.key >= '1' && event.key.key <= '9')) {
+		int side = event.key.key - '0';
 		if (side >= 1 && side <= gamemap::MAX_PLAYERS) {
 			map_location pos = disp.get_map().starting_position(side);
 			if (pos.valid()) {
@@ -102,14 +102,14 @@ std::unique_ptr<editor_action> mouse_action::key_event(
 		}
 		return nullptr;
 	}
-	if (!disp.get_map().on_board(previous_move_hex_) || event.type != SDL_KEYUP) {
+	if (!disp.get_map().on_board(previous_move_hex_) || event.type != SDL_EVENT_KEY_UP) {
 		return nullptr;
 	}
 	std::unique_ptr<editor_action> a;
-	if ((has_alt_modifier() && (event.key.keysym.sym >= '1' && event.key.keysym.sym <= '9'))
-	|| event.key.keysym.sym == SDLK_DELETE) {
-		int res = event.key.keysym.sym - '0';
-		if (res > gamemap::MAX_PLAYERS || event.key.keysym.sym == SDLK_DELETE) res = 0;
+	if ((has_alt_modifier() && (event.key.key >= '1' && event.key.key <= '9'))
+	|| event.key.key == SDLK_DELETE) {
+		int res = event.key.key - '0';
+		if (res > gamemap::MAX_PLAYERS || event.key.key == SDLK_DELETE) res = 0;
 		const std::string* old_id = disp.get_map().is_special_location(previous_move_hex_);
 		if (res == 0 && old_id != nullptr) {
 			a = std::make_unique<editor_action_starting_position>(map_location(), *old_id);

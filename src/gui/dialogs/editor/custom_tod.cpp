@@ -274,7 +274,7 @@ void custom_tod::color_slider_callback(COLOR_TYPE type)
 
 void custom_tod::play_sound() {
 	std::string sound_path = find_widget<text_box>("path_sound").get_value();
-	sound::play_sound(sound_path, sound::SOUND_SOURCES);
+	sound::play_sound(sound_path, sound_channels::type::sound_source_tag);
 }
 
 void custom_tod::update_image(const std::string& id_stem) {

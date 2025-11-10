@@ -128,6 +128,7 @@
 #include <utility>                      // for pair
 #include <algorithm>
 #include <vector>                       // for vector, etc
+#include <SDL3/SDL_timer.h>                  // for SDL_GetTicks
 
 #ifdef DEBUG_LUA
 #include "scripting/debug_lua.hpp"
@@ -3327,7 +3328,7 @@ int game_lua_kernel::intf_play_sound(lua_State *L)
 	if (play_controller_.is_skipping_replay()) return 0;
 	char const *m = luaL_checkstring(L, 1);
 	int repeats = luaL_optinteger(L, 2, 0);
-	sound::play_sound(m, sound::SOUND_FX, repeats);
+	sound::play_sound(m, sound_channels::type::sound_fx_tag, repeats);
 	return 0;
 }
 
@@ -3359,7 +3360,7 @@ int game_lua_kernel::intf_set_achievement(lua_State *L)
 						achieve.current_progress_ = -1;
 					}
 					if(achieve.sound_path_ != "") {
-						sound::play_sound(achieve.sound_path_, sound::SOUND_FX);
+						sound::play_sound(achieve.sound_path_, sound_channels::type::sound_fx_tag);
 					}
 					// show the achievement popup
 					luaW_getglobal(L, "gui", "show_popup");

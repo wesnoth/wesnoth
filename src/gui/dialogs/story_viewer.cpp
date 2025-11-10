@@ -145,7 +145,7 @@ void story_viewer::display_part()
 
 	sound::stop_sound(VOICE_SOUND_SOURCE_ID);
 	if(!current_part_->voice().empty()) {
-		sound::play_sound_positioned(current_part_->voice(), VOICE_SOUND_SOURCE_ID, 0, 0);
+		sound::play_sound_positioned(current_part_->voice(), 0, 0);
 	}
 
 	config cfg;

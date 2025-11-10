@@ -2047,10 +2047,16 @@ submerge_data display::get_submerge_data(const rect& dest, double submerge, cons
 	data.unsub_src = {0, 0, size.x, submersion_line};
 
 	// Set up shader vertices
-	const color_t c_mid(255, 255, 255, 0.3 * alpha);
+	// alpha comes in as 0-255 but with SDL3 it's a float, so need to convert it
+	float mid_alpha = 0.3 * (alpha/ALPHA_OPAQUE);
+	const SDL_FColor c_mid{1.0, 1.0, 1.0, mid_alpha};
 	const int pixels_submerged = size.y * submerge;
-	const int bot_alpha = std::max(0.3 - pixels_submerged * 0.015, 0.0) * alpha;
-	const color_t c_bot(255, 255, 255, bot_alpha);
+	float bot_alpha = 1.0;
+	// be more transparent the more pixels are underwater
+	bot_alpha -= (pixels_submerged * 0.035) * (alpha/ALPHA_OPAQUE);
+
+	// fully transparent seems to be -1.0 instead of 0.0 for some reason, so make sure it doesn't end up below -1.0
+	const SDL_FColor c_bot{1.0, 1.0, 1.0, std::max(bot_alpha, -1.0f)};
 	const SDL_FPoint pML{float(dest.x), float(dest_y_mid)};
 	const SDL_FPoint pMR{float(dest.x + dest.w), float(dest_y_mid)};
 	const SDL_FPoint pBL{float(dest.x), float(dest.y + dest.h)};

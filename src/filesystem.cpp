@@ -81,7 +81,7 @@
 #if defined(__APPLE__) && defined(__MACH__) && defined(__ENVIRONMENT_IPHONE_OS_VERSION_MIN_REQUIRED__)
 
 #define WESNOTH_BOOST_OS_IOS (__ENVIRONMENT_IPHONE_OS_VERSION_MIN_REQUIRED__*1000)
-#include <SDL2/SDL_filesystem.h>
+#include <SDL3/SDL_filesystem.h>
 
 #endif
 
@@ -647,7 +647,7 @@ const std::string& get_version_path_suffix()
 	return suffix;
 }
 
-#if defined(__APPLE__) && !defined(__IPHONEOS__)
+#if defined(__APPLE__) && !defined(SDL_PLATFORM_IOS)
 	// Starting from Wesnoth 1.14.6, we have to use sandboxing function on macOS
 	// The problem is, that only signed builds can use sandbox. Unsigned builds
 	// would use other config directory then signed ones. So if we don't want
@@ -679,7 +679,7 @@ const std::string& get_version_path_suffix()
 
 static void setup_user_data_dir()
 {
-#if defined(__APPLE__) && !defined(__IPHONEOS__)
+#if defined(__APPLE__) && !defined(SDL_PLATFORM_IOS)
 	migrate_apple_config_directory_for_unsandboxed_builds();
 #endif
 

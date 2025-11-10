@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2008 - 2025
+	Copyright (C) 2008 - 2024
 	by Mark de Wever <koraq@xs4all.nl>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
@@ -25,11 +25,11 @@
 #include "gui/core/timer.hpp"
 #include "gui/widgets/window.hpp"
 #include "serialization/unicode.hpp"
+#include "video.hpp"
 
 #ifdef __ANDROID__
 #include <SDL2/SDL_keyboard.h>
 #endif
-
 #include <functional>
 #include <limits>
 
@@ -203,8 +203,8 @@ void text_box_base::interrupt_composition()
 	ime_composing_ = false;
 #ifndef __ANDROID__
 	// We need to inform the IME that text input is no longer in progress.
-	SDL_StopTextInput();
-	SDL_StartTextInput();
+	SDL_StopTextInput(video::get_window());
+	SDL_StartTextInput(video::get_window());
 #endif
 }
 
@@ -376,7 +376,7 @@ void text_box_base::handle_key_left_arrow(SDL_Keymod modifier, bool& handled)
 	handled = true;
 	const int offset = selection_start_ - 1 + selection_length_;
 	if(offset >= 0) {
-		set_cursor(offset, (modifier & KMOD_SHIFT) != 0);
+		set_cursor(offset, (modifier & SDL_KMOD_SHIFT) != 0);
 	}
 }
 
@@ -388,7 +388,7 @@ void text_box_base::handle_key_right_arrow(SDL_Keymod modifier, bool& handled)
 	handled = true;
 	const std::size_t offset = selection_start_ + 1 + selection_length_;
 	if(offset <= (get_use_markup() ? utf8::size(plain_text()) : text_.get_length())) {
-		set_cursor(offset, (modifier & KMOD_SHIFT) != 0);
+		set_cursor(offset, (modifier & SDL_KMOD_SHIFT) != 0);
 	}
 }
 
@@ -397,10 +397,10 @@ void text_box_base::handle_key_home(SDL_Keymod modifier, bool& handled)
 	DBG_GUI_E << LOG_SCOPE_HEADER;
 
 	handled = true;
-	if(modifier & KMOD_CTRL) {
-		goto_start_of_data((modifier & KMOD_SHIFT) != 0);
+	if(modifier & SDL_KMOD_CTRL) {
+		goto_start_of_data((modifier & SDL_KMOD_SHIFT) != 0);
 	} else {
-		goto_start_of_line((modifier & KMOD_SHIFT) != 0);
+		goto_start_of_line((modifier & SDL_KMOD_SHIFT) != 0);
 	}
 }
 
@@ -409,10 +409,10 @@ void text_box_base::handle_key_end(SDL_Keymod modifier, bool& handled)
 	DBG_GUI_E << LOG_SCOPE_HEADER;
 
 	handled = true;
-	if(modifier & KMOD_CTRL) {
-		goto_end_of_data((modifier & KMOD_SHIFT) != 0);
+	if(modifier & SDL_KMOD_CTRL) {
+		goto_end_of_data((modifier & SDL_KMOD_SHIFT) != 0);
 	} else {
-		goto_end_of_line((modifier & KMOD_SHIFT) != 0);
+		goto_end_of_line((modifier & SDL_KMOD_SHIFT) != 0);
 	}
 }
 
@@ -468,7 +468,7 @@ void text_box_base::handle_commit(bool& handled, const std::string& unicode)
 }
 
 /**
- * SDL_TEXTEDITING handler. See example at https://wiki.libsdl.org/Tutorials/TextInput
+ * SDL_EVENT_TEXT_EDITING handler. See example at https://wiki.libsdl.org/Tutorials/TextInput
  */
 void text_box_base::handle_editing(bool& handled, const std::string& unicode, int32_t start, int32_t len)
 {
@@ -488,7 +488,7 @@ void text_box_base::handle_editing(bool& handled, const std::string& unicode, in
 				rect.x += get_cursor_position(ime_start_point_ + new_len).x;
 				rect.w = get_cursor_position(ime_start_point_).x - rect.x;
 			}
-			SDL_SetTextInputRect(&rect);
+			SDL_SetTextInputArea(video::get_window(), &rect, 0);
 		}
 
 #ifdef __unix__
@@ -547,11 +547,11 @@ void text_box_base::signal_handler_sdl_key_down(const event::ui_event event,
  */
 #ifdef __APPLE__
 	// Idiomatic modifier key in macOS computers.
-	const SDL_Keycode modifier_key = KMOD_GUI;
+	const SDL_Keycode modifier_key = SDL_KMOD_GUI;
 #else
 	// Idiomatic modifier key in Microsoft desktop environments. Common in
 	// GNU/Linux as well, to some extent.
-	const SDL_Keycode modifier_key = KMOD_CTRL;
+	const SDL_Keycode modifier_key = SDL_KMOD_CTRL;
 #endif
 
 	switch(key) {
@@ -580,7 +580,7 @@ void text_box_base::signal_handler_sdl_key_down(const event::ui_event event,
 			handle_key_page_down(modifier, handled);
 			break;
 
-		case SDLK_a:
+		case SDLK_A:
 			if(!(modifier & modifier_key)) {
 				return;
 			}
@@ -605,8 +605,8 @@ void text_box_base::signal_handler_sdl_key_down(const event::ui_event event,
 			handle_key_backspace(modifier, handled);
 			break;
 
-		case SDLK_u:
-			if( !(modifier & KMOD_CTRL) || !is_editable() ) {
+		case SDLK_U:
+			if( !(modifier & SDL_KMOD_CTRL) || !is_editable() ) {
 				return;
 			}
 
@@ -622,7 +622,7 @@ void text_box_base::signal_handler_sdl_key_down(const event::ui_event event,
 			handle_key_delete(modifier, handled);
 			break;
 
-		case SDLK_c:
+		case SDLK_C:
 			if(!(modifier & modifier_key)) {
 				return;
 			}
@@ -633,7 +633,7 @@ void text_box_base::signal_handler_sdl_key_down(const event::ui_event event,
 			handled = true;
 			break;
 
-		case SDLK_x:
+		case SDLK_X:
 			if( !(modifier & modifier_key) ) {
 				return;
 			}
@@ -646,7 +646,7 @@ void text_box_base::signal_handler_sdl_key_down(const event::ui_event event,
 			handled = true;
 			break;
 
-		case SDLK_v:
+		case SDLK_V:
 			if( !(modifier & modifier_key) || !is_editable() ) {
 				return;
 			}
@@ -669,7 +669,7 @@ void text_box_base::signal_handler_sdl_key_down(const event::ui_event event,
 
 		case SDLK_AC_BACK:
 		case SDLK_ESCAPE:
-			if(!is_composing() || (modifier & (KMOD_CTRL | KMOD_ALT | KMOD_GUI | KMOD_SHIFT))) {
+			if(!is_composing() || (modifier & (SDL_KMOD_CTRL | SDL_KMOD_ALT | SDL_KMOD_GUI | SDL_KMOD_SHIFT))) {
 				return;
 			}
 			interrupt_composition();
