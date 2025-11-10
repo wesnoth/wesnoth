@@ -124,6 +124,7 @@ unit_ability_t::unit_ability_t(std::string tag, config cfg, bool inside_attack)
 
 void unit_ability_t::do_compat_fixes(config& cfg, bool inside_attack)
 {
+	// replace deprecated backstab with formula
 	if (!cfg["backstab"].blank()) {
 		deprecated_message("backstab= in weapon specials", DEP_LEVEL::INDEFINITE, "", "Use [filter_opponent] with a formula instead; the code can be found in data/core/macros/ in the WEAPON_SPECIAL_BACKSTAB macro.");
 	}
@@ -135,8 +136,8 @@ void unit_ability_t::do_compat_fixes(config& cfg, bool inside_attack)
 	}
 	cfg.remove_attribute("backstab");
 
+	// replace deprecated filter_adjacent/filter_adjacent_location with formula
 	std::string filter_teacher = inside_attack ? "filter_self" : "filter";
-
 	if (cfg.has_child("filter_adjacent")) {
 		if (inside_attack) {
 			deprecated_message("[filter_adjacent]in weapon specials in [specials] tags", DEP_LEVEL::INDEFINITE, "", "Use [filter_self][filter_adjacent] instead.");
