@@ -23,34 +23,16 @@
 #include "help/help.hpp"
 #include "help/help_impl.hpp"
 
-#include "config.hpp"                   // for config, etc
-#include "preferences/preferences.hpp"
-#include "game_config_manager.hpp"
-#include "gettext.hpp"                  // for _
 #include "gui/dialogs/help_browser.hpp"
-#include "log.hpp"                      // for LOG_STREAM, log_domain
-#include "terrain/terrain.hpp"          // for terrain_type
-#include "units/unit.hpp"               // for unit
-#include "units/types.hpp"              // for unit_type, unit_type_data, etc
+#include "preferences/preferences.hpp"
+#include "terrain/terrain.hpp"
+#include "units/types.hpp"
+#include "units/unit.hpp"
 
 #include <boost/logic/tribool.hpp>
-
-#include <cassert>                      // for assert
-#include <algorithm>                    // for min
-#include <vector>                       // for vector, vector<>::iterator
-
-static lg::log_domain log_display("display");
-#define WRN_DP LOG_STREAM(warn, log_display)
-
-static lg::log_domain log_help("help");
-#define ERR_HELP LOG_STREAM(err, log_help)
+#include <cassert>
 
 namespace help {
-
-void show_terrain_description(const terrain_type& t)
-{
-	show_help(hidden_symbol(t.hide_help()) + terrain_prefix + t.id());
-}
 
 std::string get_unit_type_help_id(const unit_type& t)
 {
@@ -88,6 +70,11 @@ void show_unit_description(const unit_type& t)
 	show_help(get_unit_type_help_id(t));
 }
 
+void show_terrain_description(const terrain_type& t)
+{
+	show_help(hidden_symbol(t.hide_help()) + terrain_prefix + t.id());
+}
+
 void show_with_toplevel(const section& toplevel_sec, const std::string& show_topic)
 {
 	gui2::dialogs::help_browser::display(toplevel_sec, show_topic);
@@ -116,8 +103,8 @@ public:
 	const section& regenerate();
 
 private:
-	int last_num_encountered_units_{-1};
-	int last_num_encountered_terrains_{-1};
+	std::size_t last_num_encountered_units_{0};
+	std::size_t last_num_encountered_terrains_{0};
 
 	boost::tribool last_debug_state_{boost::indeterminate};
 
@@ -137,12 +124,12 @@ const section& help_manager::implementation::regenerate()
 	const auto& enc_units = prefs::get().encountered_units();
 	const auto& enc_terrains = prefs::get().encountered_terrains();
 
-	if(enc_units.size() != std::size_t(last_num_encountered_units_) ||
-		enc_terrains.size() != std::size_t(last_num_encountered_terrains_) ||
-		last_debug_state_ != game_config::debug ||
-		last_num_encountered_units_ < 0
+	// More units or terrains encountered, or debug mode toggled
+	if(boost::indeterminate(last_debug_state_)
+		|| enc_units.size()    != last_num_encountered_units_
+		|| enc_terrains.size() != last_num_encountered_terrains_
+		|| last_debug_state_   != game_config::debug
 	) {
-		// More units or terrains encountered
 		last_num_encountered_units_ = enc_units.size();
 		last_num_encountered_terrains_ = enc_terrains.size();
 		last_debug_state_ = game_config::debug;
