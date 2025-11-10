@@ -1424,10 +1424,10 @@ DEFINE_WFL_FUNCTION(relative_dir, 2, 2)
 
 DEFINE_WFL_FUNCTION(direction_from, 2, 3)
 {
-	const map_location loc = args()[0]
-		->evaluate(variables, add_debug_info(fdb, 0, "direction_from:location"))
-		.convert_to<location_callable>()
-		->loc();
+	map_location loc;
+	if (auto loc_c = args()[0]->evaluate(variables, add_debug_info(fdb, 0, "direction_from:location")).try_convert<location_callable>()) {
+		loc = loc_c->loc();
+	}
 
 	const std::string dir_str =
 		args()[1]->evaluate(variables, add_debug_info(fdb, 1, "direction_from:dir")).as_string();
@@ -1436,6 +1436,9 @@ DEFINE_WFL_FUNCTION(direction_from, 2, 3)
 		? args()[2]->evaluate(variables, add_debug_info(fdb, 2, "direction_from:count")).as_int()
 		: 1;
 
+	if (!loc.valid()) {
+		return variant();
+	}
 	return variant(std::make_shared<location_callable>(loc.get_direction(map_location::parse_direction(dir_str), n)));
 }
 
