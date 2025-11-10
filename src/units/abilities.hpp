@@ -44,6 +44,7 @@ public:
 
 	const std::string& tag() const { return tag_; };
 	const std::string& id() const { return id_; };
+	bool in_specials_tag() const { return in_specials_tag_; };
 	const config& cfg() const { return cfg_; };
 
 	active_on_t active_on() const { return active_on_; };
@@ -63,6 +64,7 @@ public:
 private:
 	std::string tag_;
 	std::string id_;
+	bool in_specials_tag_;
 	active_on_t active_on_;
 	apply_to_t apply_to_;
 	config cfg_;
