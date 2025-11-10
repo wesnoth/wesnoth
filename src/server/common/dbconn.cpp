@@ -474,7 +474,7 @@ void dbconn::insert_game_player_info(const std::string& uuid, int game_id, const
 {
 	try
 	{
-		modify(connection_, "INSERT INTO `"+db_game_player_info_table_+"`(INSTANCE_UUID, GAME_ID, USER_ID, SIDE_NUMBER, IS_HOST, FACTION, CLIENT_VERSION, CLIENT_SOURCE, USER_NAME, LEADERS) VALUES(?, ?, IFNULL((SELECT user_id FROM `"+db_users_table_+"` WHERE username = ?), -1), ?, ?, ?, ?, ?, ?, ?)",
+		modify(connection_, "INSERT INTO `"+db_game_player_info_table_+"`(INSTANCE_UUID, GAME_ID, USER_ID, SIDE_NUMBER, IS_HOST, FACTION, CLIENT_VERSION, CLIENT_SOURCE, USER_NAME, LEADERS) VALUES(?, ?, IFNULL((SELECT user_id FROM `"+db_users_table_+"` WHERE upper(username) = upper(?)), -1), ?, ?, ?, ?, ?, ?, ?)",
 			{ uuid, game_id, username, side_number, is_host, faction, version, source, current_user, leaders });
 	}
 	catch(const mariadb::exception::base& e)
