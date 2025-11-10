@@ -686,6 +686,12 @@ void attack_type::write(config& cfg) const
 
 
 
+int attack_type::composite_value(const active_ability_list& abil_list, int base_value) const
+{
+	return unit_abilities::effect(abil_list, base_value, shared_from_this()).get_composite_value();
+}
+
+
 /**
  * Calculates the number of attacks this weapon has, considering specials.
  * This returns two numbers because of the swarm special. The actual number of

@@ -1411,11 +1411,6 @@ active_ability_list attack_type::get_specials_and_abilities(const std::string& s
 	return abil_list;
 }
 
-int attack_type::composite_value(const active_ability_list& abil_list, int base_value) const
-{
-	return unit_abilities::effect(abil_list, base_value, shared_from_this()).get_composite_value();
-}
-
 static bool overwrite_special_affects(const unit_ability_t& ab)
 {
 	const std::string& apply_to = ab.cfg()["overwrite_specials"];
