@@ -21,7 +21,6 @@
 #include "map/map.hpp"
 
 #include "config.hpp"
-#include "game_config_view.hpp"
 #include "log.hpp"
 #include "map/exception.hpp"
 #include "serialization/parser.hpp"
