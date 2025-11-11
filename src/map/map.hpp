@@ -245,11 +245,11 @@ public:
 private:
 
 	/**
-	 * Reads the header of a map which is saved in the deprecated map_data format.
+	 * Returns a subview of @a data which excludes any legacy headers.
 	 *
 	 * @param data		          The mapdata to load.
 	 */
-	int read_header(const std::string& data);
+	std::string_view strip_legacy_header(std::string_view data);
 
 	std::shared_ptr<terrain_type_data> tdata_;
 

@@ -132,12 +132,9 @@ void gamemap::read(const std::string& data, const bool allow_invalid)
 		if(allow_invalid) return;
 	}
 
-	int offset = read_header(data);
-
-	const std::string& data_only = std::string(data, offset);
-
 	try {
-		tiles() = t_translation::read_game_map(data_only, special_locations(), t_translation::coordinate{ border_size(), border_size() });
+		const auto border_offset = t_translation::coordinate{border_size(), border_size()};
+		tiles() = t_translation::read_game_map(strip_legacy_header(data), special_locations(), border_offset);
 
 	} catch(const t_translation::error& e) {
 		// We re-throw the error but as map error.
@@ -172,7 +169,7 @@ void gamemap::read(const std::string& data, const bool allow_invalid)
 	}
 }
 
-int gamemap::read_header(const std::string& data)
+std::string_view gamemap::strip_legacy_header(std::string_view data)
 {
 	// Test whether there is a header section
 	std::size_t header_offset = data.find("\n\n");
@@ -187,16 +184,12 @@ int gamemap::read_header(const std::string& data)
 	// The header shouldn't contain commas, so if the comma is found
 	// before the header, we hit a \n\n inside or after a map.
 	// This is no header, so don't parse it as it would be.
+	if(header_offset == std::string::npos || comma_offset < header_offset) {
+		return data;
+	}
 
-	if (!(!(header_offset == std::string::npos || comma_offset < header_offset)))
-		return 0;
-
-	std::string header_str(std::string(data, 0, header_offset + 1));
-	config header = io::read(header_str);
-
-	return header_offset + 2;
+	return data.substr(header_offset + 2);
 }
-
 
 std::string gamemap::write() const
 {
