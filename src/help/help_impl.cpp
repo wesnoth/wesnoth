@@ -845,8 +845,7 @@ void generate_era_sections(const config& help_cfg, section & sec, int level)
 
 void generate_terrain_sections(section& sec, int /*level*/)
 {
-	std::shared_ptr<terrain_type_data> tdata = load_terrain_types_data();
-
+	std::shared_ptr tdata = terrain_type_data::get();
 	if (!tdata) {
 		WRN_HP << "When building terrain help sections, couldn't acquire terrain types data, aborting.";
 		return;
@@ -1305,16 +1304,5 @@ bool is_valid_id(const std::string &id) {
 	}
 	return true;
 }
-
-/** Load the appropriate terrain types data to use */
-std::shared_ptr<terrain_type_data> load_terrain_types_data()
-{
-	if (game_config_manager::get()){
-		return game_config_manager::get()->terrain_types();
-	} else {
-		return {};
-	}
-}
-
 
 } // end namespace help

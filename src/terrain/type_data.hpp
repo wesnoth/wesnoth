@@ -18,6 +18,7 @@
 #include "terrain/terrain.hpp"
 
 #include <map>
+#include <memory>
 
 class game_config_view;
 
@@ -45,8 +46,20 @@ private:
 	mutable bool initialized_;
 	const game_config_view & game_config_;
 
-public:
 	terrain_type_data(const game_config_view & game_config);
+
+public:
+	/**
+	 * Regenerates the terrain database from the given game config.
+	 *
+	 * @returns A pointer to the new terrain database.
+	 */
+	static std::shared_ptr<terrain_type_data> reset(const game_config_view& game_config);
+
+	/**
+	 * @returns A pointer to the current terrain database instance.
+	 */
+	static std::shared_ptr<terrain_type_data> get();
 
 	/**
 	 * On the first call to this function, parse all of the [terrain_type]s
@@ -150,4 +163,6 @@ public:
 
 private:
 	tcodeToTerrain_t::const_iterator find_or_create(t_translation::terrain_code) const;
+
+	static inline std::shared_ptr<terrain_type_data> singleton_;
 };
