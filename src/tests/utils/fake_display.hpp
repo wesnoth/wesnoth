@@ -15,23 +15,17 @@
 
 #pragma once
 
-class game_display;
-
-namespace test_utils {
-
+namespace test_utils
+{
 	/**
-	 * Gets a fake test display.
+	 * Sets the dummy display resolution for use by the tests.
 	 *
 	 * The width and height parameter are ignored if either of them is less
 	 * than zero.
 	 *
 	 * @param width               The width of the display.
 	 * @param height              The height of the display.
-	 *
-	 * @returns                   The display.
 	 */
-	game_display& get_fake_display(
-			const int width, const int height);
+	void set_test_resolution(const int width, const int height);
 
-
-}
+} // namespace test_utils

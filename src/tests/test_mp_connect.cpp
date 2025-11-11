@@ -52,7 +52,7 @@ struct mp_connect_fixture {
 		hotkey_manager(),
 		config_manager()
 	{
-		test_utils::get_fake_display(1000, 500);
+		test_utils::set_test_resolution(1000, 500);
 		config_manager.reset(new game_config_manager(cmdline_opts));
 		config_manager->init_game_config(game_config_manager::NO_FORCE_RELOAD);
 
