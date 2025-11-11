@@ -108,12 +108,6 @@ gamemap::gamemap(const std::string& data)
 	, tdata_(terrain_type_data::get())
 	, villages_()
 {
-	assert(tdata_);
-	// Should only be encountered in unit tests
-	//if(!tdata_) {
-	//	tdata_ = terrain_type_data::reset(game_config_view::wrap({}));
-	//}
-
 	DBG_G << "loading map: '" << data << "'";
 	read(data);
 }
