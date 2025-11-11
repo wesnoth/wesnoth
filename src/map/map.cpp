@@ -168,7 +168,7 @@ void gamemap::read(const std::string& data, const bool allow_invalid)
 	}
 }
 
-std::string_view gamemap::strip_legacy_header(std::string_view data)
+std::string_view gamemap::strip_legacy_header(std::string_view data) const
 {
 	// Test whether there is a header section
 	std::size_t header_offset = data.find("\n\n");
