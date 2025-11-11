@@ -51,7 +51,6 @@
 
 class game_config_view;
 class unit_type;
-class terrain_type_data;
 
 namespace help {
 
@@ -267,9 +266,6 @@ const topic *find_topic(const section &sec, const std::string &id);
  */
 const section *find_section(const section &sec, const std::string &id);
 section *find_section(section &sec, const std::string &id);
-
-/** Load the appropriate terrain types data to use */
-std::shared_ptr<terrain_type_data> load_terrain_types_data();
 
 extern const int max_section_level;
 // The topic to open by default when opening the help dialog.

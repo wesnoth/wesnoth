@@ -21,7 +21,6 @@
 #include "map/map.hpp"
 
 #include "config.hpp"
-#include "game_config_manager.hpp"
 #include "log.hpp"
 #include "map/exception.hpp"
 #include "serialization/parser.hpp"
@@ -103,18 +102,11 @@ void gamemap::write_terrain(const map_location &loc, config& cfg) const
 	cfg["terrain"] = t_translation::write_terrain_code(get_terrain(loc));
 }
 
-gamemap::gamemap(const std::string& data):
-		gamemap_base(1, 1),
-		tdata_(),
-		villages_()
+gamemap::gamemap(const std::string& data)
+	: gamemap_base(1, 1)
+	, tdata_(terrain_type_data::get())
+	, villages_()
 {
-	if(const auto* gcm = game_config_manager::get()) {
-		tdata_ = gcm->terrain_types();
-	} else {
-		// Should only be encountered in unit tests
-		tdata_ = std::make_shared<terrain_type_data>(game_config_view::wrap({}));
-	}
-
 	DBG_G << "loading map: '" << data << "'";
 	read(data);
 }
