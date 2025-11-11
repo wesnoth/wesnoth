@@ -1420,13 +1420,13 @@ active_ability_list attack_type::get_weapon_ability(const std::string& ability) 
 	active_ability_list abil_list(loc);
 	if(self_) {
 		abil_list.append_if((*self_).get_abilities(ability, self_loc_), [&](const active_ability& i) {
-			return special_active(i.ability(), AFFECT_SELF, true);
+			return special_active(i.ability(), AFFECT_SELF);
 		});
 	}
 
 	if(other_) {
 		abil_list.append_if((*other_).get_abilities(ability, other_loc_), [&](const active_ability& i) {
-			return special_active_impl(other_attack_, shared_from_this(), i.ability(), AFFECT_OTHER, true);
+			return special_active_impl(other_attack_, shared_from_this(), i.ability(), AFFECT_OTHER);
 		});
 	}
 
@@ -1588,7 +1588,7 @@ bool attack_type::check_self_abilities_impl(const const_attack_ptr& self_attack,
 		}
 	}
 	if(abilities_list::all_weapon_tags().count(ab.tag()) != 0){
-		if(u->get_self_ability_bool(ab, loc) && special_active_impl(self_attack, other_attack, ab, whom, true)) {
+		if(u->get_self_ability_bool(ab, loc) && special_active_impl(self_attack, other_attack, ab, whom)) {
 			return true;
 		}
 	}
@@ -1603,7 +1603,7 @@ bool attack_type::check_adj_abilities_impl(const const_attack_ptr& self_attack, 
 		}
 	}
 	if(abilities_list::all_weapon_tags().count(ab.tag()) != 0) {
-		if(u->get_adj_ability_bool(ab, dist, dir, loc, from, from_loc) && special_active_impl(self_attack, other_attack, ab, whom, true)) {
+		if(u->get_adj_ability_bool(ab, dist, dir, loc, from, from_loc) && special_active_impl(self_attack, other_attack, ab, whom)) {
 			return true;
 		}
 	}
@@ -2019,10 +2019,9 @@ bool attack_type::has_special_or_ability_with_filter(const config & filter) cons
 	return false;
 }
 
-bool attack_type::special_active(const unit_ability_t& ab, AFFECTS whom,
-                                 bool in_abilities_tag) const
+bool attack_type::special_active(const unit_ability_t& ab, AFFECTS whom) const
 {
-	return special_active_impl(shared_from_this(), other_attack_, ab, whom, in_abilities_tag);
+	return special_active_impl(shared_from_this(), other_attack_, ab, whom);
 }
 
 
@@ -2060,8 +2059,7 @@ bool attack_type::special_active_impl(
 	const const_attack_ptr& self_attack,
 	const const_attack_ptr& other_attack,
 	const unit_ability_t& ab,
-	AFFECTS whom,
-	bool in_abilities_tag)
+	AFFECTS whom)
 {
 	assert(self_attack || other_attack);
 	bool is_attacker = self_attack ? self_attack->is_attacker_ : !other_attack->is_attacker_;
@@ -2147,7 +2145,7 @@ bool attack_type::special_active_impl(
 	//the function of this special in matches_filter()
 	//In apply_to=both case, ab.tag() must be checked in all filter because special applied to both self and opponent.
 	bool applied_both = ab.cfg()["apply_to"] == "both";
-	const std::string& filter_self = in_abilities_tag ? "filter_student" : "filter_self";
+	const std::string& filter_self = ab.in_specials_tag() ? "filter_self" : "filter_student";
 	std::string self_check_if_recursion = (applied_both || whom_is_self) ? ab.tag() : "";
 	if (!special_unit_matches(self, other, self_loc, self_attack, ab.cfg(), is_for_listing, filter_self, self_check_if_recursion))
 		return false;

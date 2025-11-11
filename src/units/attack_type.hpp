@@ -276,8 +276,7 @@ private:
 	 */
 	bool overwrite_special_checking(active_ability_list& overwriters, const unit_ability_t& ab) const;
 
-	bool special_active(const unit_ability_t& ab, AFFECTS whom,
-	                    bool in_abilities_tag = false) const;
+	bool special_active(const unit_ability_t& ab, AFFECTS whom) const;
 
 	bool special_tooltip_active(const unit_ability_t& ab) const;
 /** weapon_specials_impl_self and weapon_specials_impl_adj : check if special name can be added.
@@ -368,8 +367,7 @@ private:
 		const const_attack_ptr& self_attack,
 		const const_attack_ptr& other_attack,
 		const unit_ability_t& special,
-		AFFECTS whom,
-		bool in_abilities_tag = false
+		AFFECTS whom
 	);
 
 	/** has_ability_impl : return an boolean value for checking of activities of abilities used like weapon
