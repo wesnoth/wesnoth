@@ -64,6 +64,7 @@ public:
 private:
 	std::string tag_;
 	std::string id_;
+	// abilities/specials inside [specials] tag follow a differnt syntax than in [abilities] tags, in paricular [filter_self] inside [specials] is equivalent to [filter_student] in abilities.
 	bool in_specials_tag_;
 	active_on_t active_on_;
 	apply_to_t apply_to_;
