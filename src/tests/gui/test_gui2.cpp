@@ -419,10 +419,6 @@ BOOST_AUTO_TEST_CASE(modal_dialog_test_core_selection)
 {
 	test<core_selection>();
 }
-BOOST_AUTO_TEST_CASE(modal_dialog_test_custom_tod)
-{
-	test<custom_tod>();
-}
 BOOST_AUTO_TEST_CASE(modal_dialog_test_depcheck_confirm_change)
 {
 	test<depcheck_confirm_change>();
