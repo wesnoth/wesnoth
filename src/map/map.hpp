@@ -112,21 +112,10 @@ public:
 	{
 		t_translation::ter_list old_;
 		t_translation::ter_list new_;
-		terrain_type_data::merge_mode mode_;
+		terrain_type_data::merge_mode mode_{terrain_type_data::BOTH};
 		utils::optional<t_translation::terrain_code> terrain_;
-		bool use_old_;
-		bool replace_if_failed_;
-
-		overlay_rule()
-			: old_()
-			, new_()
-			, mode_(terrain_type_data::BOTH)
-			, terrain_()
-			, use_old_(false)
-			, replace_if_failed_(false)
-		{
-
-		}
+		bool use_old_{false};
+		bool replace_if_failed_{false};
 	};
 
 	/** Overlays another map onto this one at the given position. */
