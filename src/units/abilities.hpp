@@ -34,6 +34,8 @@ public:
 	enum class active_on_t { offense, defense, both };
 	enum class apply_to_t { self, opponent, attacker, defender, both };
 
+	enum class affects_t { SELF = 1, OTHER = 2, EITHER = 3 };
+
 	unit_ability_t(std::string tag, config cfg, bool inside_attack);
 
 	static ability_ptr create(std::string tag, config cfg, bool inside_attack) {
