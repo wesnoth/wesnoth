@@ -406,6 +406,7 @@ public:
 	const race_map& races() const { return races_; }
 	const movement_type_map& movement_types() const { return movement_types_; }
 	const std::map<std::string, config>& abilities() const { return abilities_registry_; }
+	const std::map<std::string, config>& specials() const { return specials_registry_; }
 	config_array_view traits() const { return units_cfg().child_range("trait"); }
 
 	static config add_registry_entries(
@@ -444,6 +445,7 @@ private:
 	race_map races_;
 
 	std::map<std::string, config> abilities_registry_;
+	std::map<std::string, config> specials_registry_;
 
 	/** True if [hide_help] contains a 'all=yes' at its root. */
 	bool hide_help_all_;
