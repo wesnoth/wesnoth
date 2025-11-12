@@ -52,17 +52,6 @@ public:
 	static ability_vector filter_tag(const ability_vector& vec, const std::string& tag);
 	static ability_vector clone(const ability_vector& vec);
 
-	/*
-	static auto get_view(const ability_vector& vec) {
-		return vec
-			| boost::adaptors::transformed([](const ability_ptr& p)->const config& { return *x; });
-	}
-
-	static auto get_view(const ability_vector& vec, const std::string& tag) {
-		return vec
-			| boost::adaptors::transformed([](const ability_ptr& p)->const config& { return *x; });
-	}
-*/
 private:
 	std::string tag_;
 	std::string id_;
