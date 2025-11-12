@@ -17,18 +17,31 @@
 
 #include "tests/utils/fake_display.hpp"
 
+#include "events.hpp"
 #include "video.hpp"
 
 namespace test_utils
 {
-void set_test_resolution(const int width, const int height)
+namespace
 {
-	static bool video_initialized = false;
-
-	if(!video_initialized) {
-		video_initialized = true;
+class context_manager
+{
+public:
+	context_manager()
+	{
 		video::init(video::fake::no_draw);
 	}
+
+private:
+	const events::event_context main_event_context_;
+};
+
+} // namespace
+
+void set_test_resolution(const int width, const int height)
+{
+	// Single object for the lifetime of the unit tests.
+	static const context_manager main_event_context;
 
 	if(width >= 0 && height >= 0) {
 		video::set_resolution({width, height});
