@@ -850,7 +850,7 @@ bool attack_type::has_special(const std::string& special) const
 {
 
 	for(const ability_ptr& p_ab : specials(special)) {
-		if(special_active(*p_ab, AFFECT_SELF)) {
+		if(special_active(*p_ab, AFFECTS::SELF)) {
 			return true;
 		}
 	}
@@ -861,7 +861,7 @@ bool attack_type::has_special(const std::string& special) const
 	}
 
 	for(const ability_ptr& p_ab : other_attack_->specials(special)) {
-		if(other_attack_->special_active(*p_ab, AFFECT_OTHER)) {
+		if(other_attack_->special_active(*p_ab, AFFECTS::OTHER)) {
 			return true;
 		}
 	}
@@ -879,7 +879,7 @@ active_ability_list attack_type::get_specials(const std::string& special) const
 	active_ability_list res(loc);
 
 	for(const ability_ptr& p_ab : specials(special)) {
-		if(special_active(*p_ab, AFFECT_SELF)) {
+		if(special_active(*p_ab, AFFECTS::SELF)) {
 			res.emplace_back(p_ab, loc, loc);
 		}
 	}
@@ -889,7 +889,7 @@ active_ability_list attack_type::get_specials(const std::string& special) const
 	}
 
 	for(const ability_ptr& p_ab : other_attack_->specials(special)) {
-		if(other_attack_->special_active(*p_ab, AFFECT_OTHER)) {
+		if(other_attack_->special_active(*p_ab, AFFECTS::OTHER)) {
 			res.emplace_back(p_ab, other_loc_, other_loc_);
 		}
 	}
@@ -915,7 +915,7 @@ std::vector<attack_type::special_tooltip_info> attack_type::special_tooltips(
 	}
 
 	for(const auto& p_ab : specials()) {
-		bool active = !active_list || special_active(*p_ab, AFFECT_EITHER);
+		bool active = !active_list || special_active(*p_ab, AFFECTS::EITHER);
 
 		std::string name = active
 			? p_ab->cfg()["name"].str()
@@ -954,7 +954,7 @@ std::vector<attack_type::special_tooltip_info> attack_type::abilities_special_to
 	}
 	for(const auto& p_ab : self_->abilities()) {
 		if(self_->get_self_ability_bool(*p_ab, self_loc_) && special_tooltip_active(*p_ab)) {
-			bool active = !active_list || special_active(*p_ab, AFFECT_SELF);
+			bool active = !active_list || special_active(*p_ab, AFFECTS::SELF);
 			const std::string name = p_ab->cfg()["name_affected"];
 			const std::string desc = p_ab->cfg()["description_affected"];
 
@@ -980,7 +980,7 @@ std::vector<attack_type::special_tooltip_info> attack_type::abilities_special_to
 		int dir = find_direction(self_loc_, from_loc, distance);
 		for(const auto& p_ab : u.abilities()) {
 			if(self_->get_adj_ability_bool(*p_ab, distance, dir, self_loc_, u, from_loc) && special_tooltip_active(*p_ab)) {
-				bool active = !active_list || special_active(*p_ab, AFFECT_SELF);
+				bool active = !active_list || special_active(*p_ab, AFFECTS::SELF);
 				const std::string name = p_ab->cfg()["name_affected"];
 				const std::string desc = p_ab->cfg()["description_affected"];
 
@@ -1028,7 +1028,7 @@ std::string attack_type::describe_weapon_specials() const
 	std::vector<std::string> special_names;
 
 	for(const auto& p_ab : specials()) {
-		const bool active = special_active(*p_ab, AFFECT_EITHER);
+		const bool active = special_active(*p_ab, AFFECTS::EITHER);
 
 		std::string name = active
 			? p_ab->cfg()["name"].str()
@@ -1046,8 +1046,8 @@ std::string attack_type::describe_weapon_specials() const
 	// FIXME: clean this up...
 	std::string temp_string;
 	std::set<std::string> checking_name;
-	weapon_specials_impl_self(temp_string, self_, shared_from_this(), other_attack_, self_loc_, AFFECT_SELF, checking_name);
-	weapon_specials_impl_adj(temp_string, self_, shared_from_this(), other_attack_, self_loc_, AFFECT_SELF, checking_name, {}, "affect_allies");
+	weapon_specials_impl_self(temp_string, self_, shared_from_this(), other_attack_, self_loc_, AFFECTS::SELF, checking_name);
+	weapon_specials_impl_adj(temp_string, self_, shared_from_this(), other_attack_, self_loc_, AFFECTS::SELF, checking_name, {}, "affect_allies");
 
 	if(!temp_string.empty()) {
 		special_names.push_back("\n" + std::move(temp_string));
@@ -1074,20 +1074,20 @@ std::string attack_type::describe_weapon_specials_value(const std::set<std::stri
 	std::set<std::string> checking_name;
 	for(const auto& p_ab : specials()) {
 		if(checking_tags.count(p_ab->tag()) != 0) {
-			const bool active = special_active(*p_ab, AFFECT_SELF);
+			const bool active = special_active(*p_ab, AFFECTS::SELF);
 			add_name(temp_string, active, p_ab->cfg()["name"].str(), checking_name);
 		}
 	}
 	add_name_list(temp_string, weapon_abilities, checking_name, "");
 
-	weapon_specials_impl_self(temp_string, self_, shared_from_this(), other_attack_, self_loc_, AFFECT_SELF, checking_name, checking_tags, true);
+	weapon_specials_impl_self(temp_string, self_, shared_from_this(), other_attack_, self_loc_, AFFECTS::SELF, checking_name, checking_tags, true);
 	add_name_list(temp_string, weapon_abilities, checking_name, _("Owned: "));
 
-	weapon_specials_impl_adj(temp_string, self_, shared_from_this(), other_attack_, self_loc_, AFFECT_SELF, checking_name, checking_tags, "affect_allies", true);
+	weapon_specials_impl_adj(temp_string, self_, shared_from_this(), other_attack_, self_loc_, AFFECTS::SELF, checking_name, checking_tags, "affect_allies", true);
 	// TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
 	add_name_list(temp_string, weapon_abilities, checking_name, _("Taught: "));
 
-	weapon_specials_impl_adj(temp_string, self_, shared_from_this(), other_attack_, self_loc_, AFFECT_SELF, checking_name, checking_tags, "affect_enemies", true);
+	weapon_specials_impl_adj(temp_string, self_, shared_from_this(), other_attack_, self_loc_, AFFECTS::SELF, checking_name, checking_tags, "affect_enemies", true);
 	// TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
 	add_name_list(temp_string, weapon_abilities, checking_name, _("Taught: (by an enemy): "));
 
@@ -1095,13 +1095,13 @@ std::string attack_type::describe_weapon_specials_value(const std::set<std::stri
 	if(other_attack_) {
 		for(const auto& p_ab : other_attack_->specials()) {
 			if((checking_tags.count(p_ab->tag()) != 0)){
-				const bool active = other_attack_->special_active(*p_ab, AFFECT_OTHER);
+				const bool active = other_attack_->special_active(*p_ab, AFFECTS::OTHER);
 				add_name(temp_string, active, p_ab->cfg()["name"].str(), checking_name);
 			}
 		}
 	}
-	weapon_specials_impl_self(temp_string, other_, other_attack_, shared_from_this(), other_loc_, AFFECT_OTHER, checking_name, checking_tags);
-	weapon_specials_impl_adj(temp_string, other_, other_attack_, shared_from_this(), other_loc_, AFFECT_OTHER, checking_name, checking_tags);
+	weapon_specials_impl_self(temp_string, other_, other_attack_, shared_from_this(), other_loc_, AFFECTS::OTHER, checking_name, checking_tags);
+	weapon_specials_impl_adj(temp_string, other_, other_attack_, shared_from_this(), other_loc_, AFFECTS::OTHER, checking_name, checking_tags);
 	add_name_list(temp_string, weapon_abilities, checking_name, _("Used by opponent: "));
 
 	return weapon_abilities;
@@ -1420,13 +1420,13 @@ active_ability_list attack_type::get_weapon_ability(const std::string& ability) 
 	active_ability_list abil_list(loc);
 	if(self_) {
 		abil_list.append_if((*self_).get_abilities(ability, self_loc_), [&](const active_ability& i) {
-			return special_active(i.ability(), AFFECT_SELF);
+			return special_active(i.ability(), AFFECTS::SELF);
 		});
 	}
 
 	if(other_) {
 		abil_list.append_if((*other_).get_abilities(ability, other_loc_), [&](const active_ability& i) {
-			return special_active_impl(other_attack_, shared_from_this(), i.ability(), AFFECT_OTHER);
+			return special_active_impl(other_attack_, shared_from_this(), i.ability(), AFFECTS::OTHER);
 		});
 	}
 
@@ -1661,11 +1661,11 @@ bool attack_type::has_special_or_ability(const std::string& special) const
 		return true;
 	}
 
-	if(self_&& has_ability_impl(shared_from_this(), self_, self_loc_, other_attack_, AFFECT_SELF, special)) {
+	if(self_&& has_ability_impl(shared_from_this(), self_, self_loc_, other_attack_, AFFECTS::SELF, special)) {
 		return true;
 	}
 
-	if(other_&& has_ability_impl(other_attack_, other_, other_loc_, shared_from_this(), AFFECT_OTHER, special)) {
+	if(other_&& has_ability_impl(other_attack_, other_, other_loc_, shared_from_this(), AFFECTS::OTHER, special)) {
 		return true;
 	}
 	return false;
@@ -1746,7 +1746,7 @@ bool attack_type::has_filter_special_or_ability(const config& filter, bool simpl
 		if(special_checking(p_ab->id(), p_ab->tag(), filter_special, filter_special_id, filter_special_type)) {
 			if(simple_check) {
 				return true;
-			} else if(special_active(*p_ab, AFFECT_SELF)) {
+			} else if(special_active(*p_ab, AFFECTS::SELF)) {
 				return true;
 			}
 		}
@@ -1759,18 +1759,18 @@ bool attack_type::has_filter_special_or_ability(const config& filter, bool simpl
 	if(other_attack_) {
 		for(const auto& p_ab : other_attack_->specials()) {
 			if(special_checking(p_ab->id(), p_ab->tag(), filter_special, filter_special_id, filter_special_type)) {
-				if(other_attack_->special_active(*p_ab, AFFECT_OTHER)) {
+				if(other_attack_->special_active(*p_ab, AFFECTS::OTHER)) {
 					return true;
 				}
 			}
 		}
 	}
 
-	if(self_ && special_distant_filtering_impl(shared_from_this(), self_, self_loc_, other_attack_, AFFECT_SELF, filter, false, true)) {
+	if(self_ && special_distant_filtering_impl(shared_from_this(), self_, self_loc_, other_attack_, AFFECTS::SELF, filter, false, true)) {
 		return true;
 	}
 
-	if(other_ && special_distant_filtering_impl(other_attack_, other_, other_loc_, shared_from_this(), AFFECT_OTHER, filter, false)) {
+	if(other_ && special_distant_filtering_impl(other_attack_, other_, other_loc_, shared_from_this(), AFFECTS::OTHER, filter, false)) {
 		return true;
 	}
 	return false;
@@ -1990,7 +1990,7 @@ bool attack_type::has_special_or_ability_with_filter(const config & filter) cons
 			if(!check_if_active) {
 				return true;
 			}
-			if(special_active(*p_ab, AFFECT_SELF)) {
+			if(special_active(*p_ab, AFFECTS::SELF)) {
 				return true;
 			}
 		}
@@ -1999,7 +1999,7 @@ bool attack_type::has_special_or_ability_with_filter(const config & filter) cons
 	if(check_if_active && other_attack_) {
 		for(const auto& p_ab : other_attack_->specials()) {
 			if(other_attack_->special_matches_filter(*p_ab, filter)) {
-				if(other_attack_->special_active(*p_ab, AFFECT_OTHER)) {
+				if(other_attack_->special_active(*p_ab, AFFECTS::OTHER)) {
 					return true;
 				}
 			}
@@ -2009,11 +2009,11 @@ bool attack_type::has_special_or_ability_with_filter(const config & filter) cons
 		return false;
 	}
 
-	if(self_ && special_distant_filtering_impl(shared_from_this(), self_, self_loc_, other_attack_, AFFECT_SELF, filter, true, true)) {
+	if(self_ && special_distant_filtering_impl(shared_from_this(), self_, self_loc_, other_attack_, AFFECTS::SELF, filter, true, true)) {
 		return true;
 	}
 
-	if(other_ && special_distant_filtering_impl(other_attack_, other_, other_loc_, shared_from_this(), AFFECT_OTHER, filter, true)) {
+	if(other_ && special_distant_filtering_impl(other_attack_, other_, other_loc_, shared_from_this(), AFFECTS::OTHER, filter, true)) {
 		return true;
 	}
 	return false;
@@ -2068,11 +2068,11 @@ bool attack_type::special_active_impl(
 
 
 	// Does this affect the specified unit?
-	if ( whom == AFFECT_SELF ) {
+	if ( whom == AFFECTS::SELF ) {
 		if ( !special_affects_self(ab, is_attacker) )
 			return false;
 	}
-	if ( whom == AFFECT_OTHER ) {
+	if ( whom == AFFECTS::OTHER ) {
 		if ( !special_affects_opponent(ab, is_attacker) )
 			return false;
 	}
@@ -2114,7 +2114,7 @@ bool attack_type::special_active_impl(
 
 	// Filter poison, plague, drain, slow, petrifies
 	// True if "whom" corresponds to "self", false if "whom" is "other"
-	bool whom_is_self = ((whom == AFFECT_SELF) || ((whom == AFFECT_EITHER) && special_affects_self(ab, is_attacker)));
+	bool whom_is_self = ((whom == AFFECTS::SELF) || ((whom == AFFECTS::EITHER) && special_affects_self(ab, is_attacker)));
 	unit_const_ptr them = whom_is_self ? other : self;
 	map_location their_loc = whom_is_self ? other_loc : self_loc;
 

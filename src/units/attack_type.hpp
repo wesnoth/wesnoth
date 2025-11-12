@@ -238,7 +238,7 @@ private:
 	// In unit_abilities.cpp:
 
 	// Configured as a bit field, in case that is useful.
-	enum AFFECTS { AFFECT_SELF=1, AFFECT_OTHER=2, AFFECT_EITHER=3 };
+	using AFFECTS = unit_ability_t::affects_t;
 	/**
 	 * Filter a list of abilities or weapon specials
 	 * @param ab the ability/special
