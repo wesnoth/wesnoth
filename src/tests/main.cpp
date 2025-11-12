@@ -84,9 +84,6 @@ struct wesnoth_global_fixture {
 		// declare this here so that it will always be at the front of the event queue.
 		events::event_context global_context;
 
-		// the events system requires a secondary main context
-		events::event_context main_context;
-
 		// Initialize unit tests
 		SDL_Init(SDL_INIT_TIMER);
 		test_utils::set_test_resolution(1024, 768);
