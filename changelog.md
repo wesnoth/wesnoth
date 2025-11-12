@@ -10,7 +10,8 @@
 ### Translations
    * Updated translations: Bengali, British English, Finnish, Galician, Hungarian, Italian, Polish, Spanish
 ### Units
-   * A registry for abilities has been added as `[units][abilities]`. Any ability defined there can be added to a `[unit_type]` by just specifying their `unique_id` in the new key `[unit_type]abilities`, like this: `abilities=heals_8,cures`. The unique id for an ability is the value of its new `unique_id` key which falls back to `id` if unspecified. The `abilities` key is also supported under `[effect]apply_to=new_ability`.
+   * A registry for abilities has been added as `[units][abilities]`. Any ability defined there can be added to a `[unit_type]` by just specifying their `unique_id` in the new key `[unit_type]abilities_list`, like this: `abilities_list=heals_8,cures`. The unique id for an ability is the value of its new `unique_id` key which falls back to `id` if unspecified. The `abilities` key is also supported under `[effect]apply_to=new_ability`.
+   * A similar registry for weapon specials has also been added as `[units][weapon_specials]`. The corresponding key is `specials_list` and is supported inside `[unit_type][attack]` as well as in EffectWML `apply_to=new_attack` and `apply_to=attack`'s `[set_specials]`. `unique_id` is also supported inside weapon special definitions.
 ### User interface
    * New key `title_position` added to `[part]` that allows changing the position of the title text.
 ### WML Engine
