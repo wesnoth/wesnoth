@@ -136,11 +136,14 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 	}
 
 	// Get the weapon characteristics as appropriate.
-	auto ctx = weapon->specials_context(up, oppp, u_loc, opp_loc, attacking, opp_weapon);
+	// Create false location if location not valid like in ai combat simulations.
+	const map_location& loc = u_loc.valid() ? u_loc : map_location(1, 1);
+	const map_location& loc2 = opp_loc.valid() ? opp_loc : map_location(1, 2);
+	auto ctx = weapon->specials_context(up, oppp, loc, loc2, attacking, opp_weapon);
 	utils::optional<decltype(ctx)> opp_ctx;
 
 	if(opp_weapon) {
-		opp_ctx.emplace(opp_weapon->specials_context(oppp, up, opp_loc, u_loc, !attacking, weapon));
+		opp_ctx.emplace(opp_weapon->specials_context(oppp, up, loc2, loc, !attacking, weapon));
 	}
 
 	slows = weapon->has_special_or_ability("slow") && !opp.get_state("unslowable") ;
