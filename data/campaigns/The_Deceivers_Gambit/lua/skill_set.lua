@@ -28,7 +28,7 @@ local skill_set = {
             id          = "skill_shield",
             label       = label(_"Shield"),
             image       = "icons/shield.png",
-            description = header_spell().._"Spend <span color='#00bbe6' style='italic'>8xp</span> to gain <i>+20% dodge chance</i> until the start of your next turn or until cancelled.",
+            description = header_spell().._"Spend <span color='#00bbe6' style='italic'>8 XP</span> to gain <i>+20% dodge chance</i> until the start of your next turn or until cancelled.",
             xp_cost=8, --XP is also used in S04
         },
         -------------------------
@@ -48,7 +48,7 @@ local skill_set = {
             id          = "skill_animate_mud",
             label       = label(_"Animate Mud"),
             image       = "icons/animate-mud.png",
-            description = header_passive().._"Learn to recruit <i>Mudcrawlers</i>. Mudcrawlers gain +100% damage and xp\n               while adjacent to you, but dissolve at the end of each scenario.",
+            description = header_passive().._"Learn to recruit <i><ref dst='unit_Mudcrawler'>Mudcrawlers</ref></i>. Mudcrawlers gain +100% damage and XP\n               while adjacent to you, but dissolve at the end of each scenario.",
         },
     },
     --###############################
@@ -71,7 +71,7 @@ local skill_set = {
             id          = "skill_levitate",
             label       = label(_"Levitate"),
             image       = "icons/levitate.png",
-            description = header_spell().._"Spend <span color='#00bbe6' style='italic'>8xp</span> to gain <i>flight</i> and the <i><ref dst='ability_skirmisherskirmisher'>skirmisher</ref></i> ability until the start of your next turn or until cancelled.",
+            description = header_spell().._"Spend <span color='#00bbe6' style='italic'>8 XP</span> to gain <i>flight</i> and the <i><ref dst='ability_skirmisherskirmisher'>skirmisher</ref></i> ability until the start of your next turn or until cancelled.",
             xp_cost=8, --XP=8 is also used in S04
         },
         -------------------------
@@ -81,7 +81,7 @@ local skill_set = {
             id          = "skill_find_familiar",
             label       = label(_"Find Familiar"),
             image       = "icons/find-familiar.png",
-            description = header_passive().._"Begin each scenario with your trusty pet raven.\n               Your familiar’s level and xp persist across scenarios, but reset if it dies.",
+            description = header_passive().._"Begin each scenario with your trusty pet raven.\n               Your familiar’s level and XP persist across scenarios, but reset if it dies.",
         },
         -------------------------
         -- MNEMONIC
@@ -90,7 +90,7 @@ local skill_set = {
             id          = "skill_mnemonic",
             label       = label(_"Mnemonic"),
             image       = "icons/mnemonic.png",
-            description = header_passive().._"Whenever an adjacent ally gains xp, you gain the same amount of xp.",
+            description = header_passive().._"Whenever an adjacent ally gains XP, you gain the same amount of XP.",
         },
     },
     --###############################
@@ -122,7 +122,7 @@ local skill_set = {
             id          = "skill_blizzard",
             label       = label(_"Blizzard"),
             image       = "icons/blizzard.png",
-            description = header_spell().._"Spend <span color='#00bbe6' style='italic'>16xp</span> and <span color='#c06a61' style='italic'>your attack</span> to <i><ref dst='weaponspecial_slows'>slow</ref></i> enemy units and freeze terrain in a 3-hex radius.",
+            description = header_spell().._"Spend <span color='#00bbe6' style='italic'>16 XP</span> and <span color='#c06a61' style='italic'>your attack</span> to <i><ref dst='weaponspecial_slows'>slow</ref></i> enemy units and freeze terrain in a 3-hex radius.",
             xp_cost=16, atk_cost=1,
         },
         -------------------------
@@ -132,7 +132,7 @@ local skill_set = {
             id          = "skill_counterspell",
             label       = label(_"Counterspell"),
             image       = "icons/counterspell.png",
-            description = header_spell().._"Spend <span color='#00bbe6' style='italic'>16xp</span> to <i>disallow <ref dst='weaponspecial_magical'>magical</ref> attacks</i> in a 3-hex radius, until cancelled.\n          Disables Delfador’s spells, but not his passive skills.",
+            description = header_spell().._"Spend <span color='#00bbe6' style='italic'>16 XP</span> to <i>disallow <ref dst='weaponspecial_magical'>magical</ref> attacks</i> in a 3-hex radius, until cancelled.\n          Disables Delfador’s spells, but not his passive skills.",
             xp_cost=16, --XP=16 is also used in S04
         },
         -------------------------
@@ -142,12 +142,12 @@ local skill_set = {
             id          = "skill_polymorph",
             label       = label(_"Polymorph"),
             image       = "icons/polymorph.png",
-            description = header_spell().._"Transform into a stoat (<span color='#00bbe6' style='italic'>1xp</span>), bear (<span color='#00bbe6' style='italic'>8xp</span>), crab (<span color='#00bbe6' style='italic'>16xp</span>), or roc (<span color='#00bbe6' style='italic'>32xp</span>). Lasts until cancelled.\n           Replaces Delfador’s attacks, spells, and passives, but does not affect hitpoints.",
+            description = header_spell().._"Transform into a <ref dst='unit_Frost Stoat Poly'>stoat</ref> (<span color='#00bbe6' style='italic'>1 XP</span>), <ref dst='unit_Cave Bear Poly'>bear</ref> (<span color='#00bbe6' style='italic'>8 XP</span>), <ref dst='unit_Giant Crab'>crab</ref> (<span color='#00bbe6' style='italic'>16 XP</span>), or <ref dst='unit_Roc'>roc</ref> (<span color='#00bbe6' style='italic'>32 XP</span>). Lasts until cancelled.\n           Replaces Delfador’s attacks, spells, and passives, but does not affect hitpoints.",
             subskills   = {
-                [1]={ id="skill_polymorph_stoat",  xp_cost=1,  label="   <span>".._"Stoat".." (<span color='#00bbe6' style='italic'>".._"1xp" .."</span>)</span>   " },
-                [2]={ id="skill_polymorph_bear",   xp_cost=8,  label="   <span>".._"Bear" .." (<span color='#00bbe6' style='italic'>".._"8xp" .."</span>)</span>   " },
-                [3]={ id="skill_polymorph_crab",   xp_cost=16, label="   <span>".._"Crab" .." (<span color='#00bbe6' style='italic'>".._"16xp".."</span>)</span>   " },
-                [4]={ id="skill_polymorph_roc",    xp_cost=32, label="   <span>".._"Roc"  .." (<span color='#00bbe6' style='italic'>".._"32xp".."</span>)</span>   " }, },
+                [1]={ id="skill_polymorph_stoat",  xp_cost=1,  label="   <span>".._"Stoat".." (<span color='#00bbe6' style='italic'>".._"1 XP" .."</span>)</span>   " },
+                [2]={ id="skill_polymorph_bear",   xp_cost=8,  label="   <span>".._"Bear" .." (<span color='#00bbe6' style='italic'>".._"8 XP" .."</span>)</span>   " },
+                [3]={ id="skill_polymorph_crab",   xp_cost=16, label="   <span>".._"Crab" .." (<span color='#00bbe6' style='italic'>".._"16 XP".."</span>)</span>   " },
+                [4]={ id="skill_polymorph_roc",    xp_cost=32, label="   <span>".._"Roc"  .." (<span color='#00bbe6' style='italic'>".._"32 XP".."</span>)</span>   " }, },
         },
         -------------------------
         -- GLAMOUR
@@ -188,7 +188,7 @@ local skill_set = {
             id          = "skill_illusion",
             label       = label(_"Enthrall"),
             image       = "icons/illusion.png",
-            description = header_spell().._"Spend <span color='#00bbe6' style='italic'>48xp</span> and <span color='#c06a61' style='italic'>your attack</span> to magically disguise yourself as an awe-inspiring drake,\n          reducing accuracy and dodge by 10% for enemies in a 2 hex radius. Lasts until cancelled.",
+            description = header_spell().._"Spend <span color='#00bbe6' style='italic'>48 XP</span> and <span color='#c06a61' style='italic'>your attack</span> to magically disguise yourself as an awe-inspiring drake,\n          reducing accuracy and dodge by 10% for enemies in a 2 hex radius. Lasts until cancelled.",
             xp_cost=48, atk_cost=1,
         },
         -------------------------
@@ -198,7 +198,7 @@ local skill_set = {
             id          = "skill_animate_fire",
             label       = label(_"Animate Fire"),
             image       = "icons/animate-fire.png",
-            description = header_passive().._"Learn to recruit <i>Fire Guardians</i>. Fire Guardians gain +100% damage and xp\n               while adjacent to you, but dissipate at the end of each scenario.",
+            description = header_passive().._"Learn to recruit <i><ref dst='unit_Fire Guardian'>Fire Guardians</ref></i>. Fire Guardians gain +100% damage and XP\n               while adjacent to you, but dissipate at the end of each scenario.",
         },
         -------------------------
         -- CONTINGENCY
@@ -239,7 +239,7 @@ local skill_set = {
             id          = "skill_time_dilation",
             label       = label(_"Time Dilation"),
             image       = "icons/time-dilation.png",
-            description = header_spell().._"Spend <span color='#00bbe6' style='italic'>48xp</span> to grant yourself and all allies double movement and a second attack this turn.\n          When this turn ends, affected units become <ref dst='weaponspecial_slows'>slowed</ref>.",
+            description = header_spell().._"Spend <span color='#00bbe6' style='italic'>48 XP</span> to grant yourself and all allies double movement and a second attack this turn.\n          When this turn ends, affected units become <ref dst='weaponspecial_slows'>slowed</ref>.",
             xp_cost=48, --XP=48 is also used in S04
         },
         -------------------------
@@ -249,7 +249,7 @@ local skill_set = {
             id          = "skill_cataclysm",
             label       = label(_"Cataclysm"),
             image       = "icons/cataclysm.png",
-            description = header_spell().._"Spend <span color='#00bbe6' style='italic'>99xp</span> and <span color='#c06a61' style='italic'>your attack</span> to injure everyone in a 5-hex radius for ~75% of their\n          current hp. Dries water, melts snow, burns forest, and levels castles/villages.",
+            description = header_spell().._"Spend <span color='#00bbe6' style='italic'>99 XP</span> and <span color='#c06a61' style='italic'>your attack</span> to blast everything in a 5-hex radius. Units (except Delfador) will be reduced\n          to 1hp. Dries water, melts snow, burns forest, and levels castles/villages.",
             xp_cost=99, atk_cost=1,
         },
     },
