@@ -331,6 +331,9 @@ unit::unit(const unit& o)
 	for(auto& a : attacks_) {
 		a.reset(new attack_type(*a));
 	}
+	for (auto& a : abilities_) {
+		a.reset(new unit_ability_t(*a));
+	}
 }
 
 unit::unit(unit_ctor_t)
@@ -419,17 +422,17 @@ void unit::set_has_ability_distant()
 	max_ability_radius_type_.clear();
 	max_ability_radius_ = 0;
 	max_ability_radius_image_ = 0;
-	for(const auto [key, ability] : abilities_.all_children_view()) {
-		for (const config &i : ability.child_range("affect_adjacent")) {
+	for(const auto& p_ab : abilities()) {
+		for (const config &i : p_ab->cfg().child_range("affect_adjacent")) {
 			// if 'radius' = "all_map" then radius is to maximum.
 			unsigned int radius = i["radius"] != "all_map" ? i["radius"].to_int(1) : INT_MAX;
-			if(!max_ability_radius_type_[key] || max_ability_radius_type_[key] < radius) {
-				max_ability_radius_type_[key] = radius;
+			if(!max_ability_radius_type_[p_ab->tag()] || max_ability_radius_type_[p_ab->tag()] < radius) {
+				max_ability_radius_type_[p_ab->tag()] = radius;
 			}
 			if(!max_ability_radius_ || max_ability_radius_ < radius) {
 				max_ability_radius_ =  radius;
 			}
-			if((!max_ability_radius_image_ || max_ability_radius_image_ < radius) && (ability.has_attribute("halo_image") || ability.has_attribute("overlay_image"))) {
+			if((!max_ability_radius_image_ || max_ability_radius_image_ < radius) && (p_ab->cfg().has_attribute("halo_image") || p_ab->cfg().has_attribute("overlay_image"))) {
 				max_ability_radius_image_ = radius;
 			}
 		}
@@ -439,10 +442,10 @@ void unit::set_has_ability_distant()
 void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 {
 	loc_ = map_location(cfg["x"], cfg["y"], wml_loc());
-	type_ = &get_unit_type(cfg["parent_type"].blank() ? cfg["type"].str() : cfg["parent_type"].str());
+	type_ = &get_unit_type(cfg["parent_type"].str(cfg["type"].str()));
 	race_ = &unit_race::null_race;
 	id_ = cfg["id"].str();
-	variation_ = cfg["variation"].empty() ? type_->default_variation() : cfg["variation"].str();
+	variation_ = cfg["variation"].str(type_->default_variation());
 	canrecruit_ = cfg["canrecruit"].to_bool();
 	gender_ = generate_gender(*type_, cfg);
     name_ = gender_value(cfg, gender_, "male_name", "female_name", "name").t_str();
@@ -533,12 +536,12 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 		auto overlays = utils::parenthetical_split(v->str(), ',');
 		if(overlays.size() > 0) {
 			deprecated_message("[unit]overlays", DEP_LEVEL::PREEMPTIVE, {1, 17, 0}, "This warning is only triggered by the cases that *do* still work: setting [unit]overlays= works, but the [unit]overlays attribute will always be empty if WML tries to read it.");
-			config effect;
-			config o;
-			effect["apply_to"] = "overlay";
-			effect["add"] = v->str();
-			o.add_child("effect", effect);
-			add_modification("object", o);
+			add_modification("object", config{
+				"effect", config{
+					"apply_to", "overlay",
+					"add", v->str()
+				}
+			});
 		}
 	}
 
@@ -683,7 +686,7 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 		set_attr_changed(UA_ABILITIES);
 		abilities_.clear();
 		for(const config& abilities : cfg_range) {
-			abilities_.append(abilities);
+			unit_ability_t::parse_vector(abilities, abilities_, false);
 		}
 	}
 
@@ -1038,7 +1041,10 @@ void unit::advance_to(const unit_type& u_type, bool use_traits)
 	}
 
 	generate_name_ &= new_type.generate_name();
-	abilities_ = new_type.abilities_cfg();
+
+
+	abilities_ = unit_ability_t::clone(new_type.abilities());
+
 	advancements_.clear();
 
 	for(const config& advancement : new_type.advancements()) {
@@ -1089,15 +1095,11 @@ void unit::advance_to(const unit_type& u_type, bool use_traits)
 
 	anim_comp_->reset_after_advance(&new_type);
 
-	if(random_traits_) {
-		generate_traits(!use_traits);
-	} else {
-		// This will add any "musthave" traits to the new unit that it doesn't already have.
-		// This covers the Dark Sorcerer advancing to Lich and gaining the "undead" trait,
-		// but random and/or optional traits are not added,
-		// and neither are inappropriate traits removed.
-		generate_traits(true);
-	}
+	// This will add any "musthave" traits to the new unit that it doesn't already have.
+	// This covers the Dark Sorcerer advancing to Lich and gaining the "undead" trait,
+	// but random and/or optional traits are not added,
+	// and neither are inappropriate traits removed.
+	generate_traits(random_traits_ ? !use_traits : true);
 
 	// Apply modifications etc, refresh the unit.
 	// This needs to be after type and gender are fixed,
@@ -1120,13 +1122,13 @@ void unit::advance_to(const unit_type& u_type, bool use_traits)
 		for(const config& unit_event : cfg.child_range("event")) {
 			events.add_child("event", unit_event);
 		}
-		for(const config& abilities : cfg.child_range("abilities")) {
-			for(const auto [key, ability] : abilities.all_children_view()) {
-				for(const config& ability_event : ability.child_range("event")) {
-					events.add_child("event", ability_event);
-				}
+
+		for(const auto& p_ab : abilities()) {
+			for(const config& ability_event : p_ab->cfg().child_range("event")) {
+				events.add_child("event", ability_event);
 			}
 		}
+
 		for(const config& attack : cfg.child_range("attack")) {
 			for(const config& specials : attack.child_range("specials")) {
 				for(const auto [key, special] : specials.all_children_view()) {
@@ -1504,8 +1506,8 @@ void unit::set_state(const std::string& state, bool value)
 
 bool unit::has_ability_by_id(const std::string& ability) const
 {
-	for(const auto [key, cfg] : abilities_.all_children_view()) {
-		if(cfg["id"] == ability) {
+	for (const ability_ptr& ab : abilities_) {
+		if (ab->id() == ability) {
 			return true;
 		}
 	}
@@ -1516,9 +1518,9 @@ bool unit::has_ability_by_id(const std::string& ability) const
 void unit::remove_ability_by_id(const std::string& ability)
 {
 	set_attr_changed(UA_ABILITIES);
-	config::all_children_iterator i = abilities_.ordered_begin();
-	while (i != abilities_.ordered_end()) {
-		if(i->cfg["id"] == ability) {
+	auto i = abilities_.begin();
+	while (i != abilities_.end()) {
+		if ((**i).id() == ability) {
 			i = abilities_.erase(i);
 		} else {
 			++i;
@@ -1529,9 +1531,9 @@ void unit::remove_ability_by_id(const std::string& ability)
 void unit::remove_ability_by_attribute(const config& filter)
 {
 	set_attr_changed(UA_ABILITIES);
-	config::all_children_iterator i = abilities_.ordered_begin();
-	while (i != abilities_.ordered_end()) {
-		if(ability_matches_filter(i->cfg, i->key, filter)) {
+	auto i = abilities_.begin();
+	while (i != abilities_.end()) {
+		if(ability_matches_filter(**i, filter)) {
 			i = abilities_.erase(i);
 		} else {
 			++i;
@@ -1703,7 +1705,7 @@ void unit::write(config& cfg, bool write_all) const
 
 	write_subtag("modifications", modifications_);
 	if(write_all || get_attr_changed(UA_ABILITIES)) {
-		write_subtag("abilities", abilities_);
+		write_subtag("abilities", abilities_cfg());
 	}
 	if(write_all || get_attr_changed(UA_ADVANCEMENTS)) {
 		cfg.clear_children("advancement");
@@ -1755,7 +1757,7 @@ int unit::defense_modifier(const t_translation::terrain_code & terrain, const ma
 {
 	int def = movement_type_.defense_modifier(terrain);
 
-	unit_ability_list defense_abilities = get_abilities("defense", loc);
+	active_ability_list defense_abilities = get_abilities("defense", loc);
 	if(!defense_abilities.empty()) {
 		unit_abilities::effect defense_effect(defense_abilities, 100 - def);
 		def = 100 - defense_effect.get_composite_value();
@@ -1785,11 +1787,11 @@ bool unit::resistance_filter_matches(const config& cfg, const std::string& damag
 	return true;
 }
 
-int unit::resistance_value(unit_ability_list resistance_list, const std::string& damage_name) const
+int unit::resistance_value(active_ability_list resistance_list, const std::string& damage_name) const
 {
 	int res = movement_type_.resistance_against(damage_name);
-	utils::erase_if(resistance_list, [&](const unit_ability& i) {
-		return !resistance_filter_matches(*i.ability_cfg, damage_name, 100-res);
+	utils::erase_if(resistance_list, [&](const active_ability& i) {
+		return !resistance_filter_matches(i.ability_cfg(), damage_name, 100-res);
 	});
 
 	if(!resistance_list.empty()) {
@@ -1815,9 +1817,9 @@ int unit::resistance_against(const std::string& damage_name, bool attacker, cons
 	if(opp_weapon) {
 		return opp_weapon->effective_damage_type().second;
 	}
-	unit_ability_list resistance_list = get_abilities_weapons("resistance",loc, std::move(weapon), opp_weapon);
-	utils::erase_if(resistance_list, [&](const unit_ability& i) {
-		return !resistance_filter_matches_base(*i.ability_cfg, attacker);
+	active_ability_list resistance_list = get_abilities_weapons("resistance",loc, std::move(weapon), opp_weapon);
+	utils::erase_if(resistance_list, [&](const active_ability& i) {
+		return !resistance_filter_matches_base(i.ability_cfg(), attacker);
 	});
 	return resistance_value(resistance_list, damage_name);
 }
@@ -2267,18 +2269,21 @@ void unit::apply_builtin_effect(const std::string& apply_to, const config& effec
 			emit_zoc_ = v->to_bool();
 		}
 	} else if(apply_to == "new_ability") {
-		if(auto ab_effect = effect.optional_child("abilities")) {
+		auto abilities = unit_type_data::add_registry_entries(effect, "abilities", unit_types.abilities());
+		if(!abilities.empty()) {
 			set_attr_changed(UA_ABILITIES);
-			config to_append;
-			for(const auto [key, cfg] : ab_effect->all_children_view()) {
+			ability_vector to_append;
+			for(const auto [key, cfg] : abilities.all_children_view()) {
 				if(!has_ability_by_id(cfg["id"])) {
-					to_append.add_child(key, cfg);
+					to_append.push_back(unit_ability_t::create(key, cfg, false));
 					for(const config& event : cfg.child_range("event")) {
 						events.add_child("event", event);
 					}
 				}
 			}
-			abilities_.append(to_append);
+			for (auto& ab : to_append) {
+				abilities_.push_back(std::move(ab));
+			}
 		}
 	} else if(apply_to == "remove_ability") {
 		if(auto ab_effect = effect.optional_child("abilities")) {
@@ -2861,7 +2866,7 @@ void unit::clear_changed_attributes()
 }
 
 std::vector<t_string> unit::unit_special_notes() const {
-	return combine_special_notes(special_notes_, abilities(), attacks(), movement_type());
+	return combine_special_notes(special_notes_, abilities_cfg(), attacks(), movement_type());
 }
 
 // Filters unimportant stats from the unit config and returns a checksum of

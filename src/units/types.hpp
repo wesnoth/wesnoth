@@ -114,6 +114,7 @@ public:
 	 */
 	std::set<std::string> advancement_tree() const;
 
+	const ability_vector& abilities() const { return abilities_; }
 	/** A vector of unit_type ids that this unit_type can advance to. */
 	const std::vector<std::string>& advances_to() const { return advances_to_; }
 	/** A vector of unit_type ids that can advance to this unit_type. */
@@ -217,10 +218,10 @@ public:
 		bool cumulative;
 	};
 
-	const std::vector<ability_metadata>& abilities_metadata() const { return abilities_; }
+	const std::vector<ability_metadata>& abilities_metadata() const { return abilities_infos_; }
 
 	/** Some extra abilities that may be gained through AMLA advancements. */
-	const std::vector<ability_metadata>& adv_abilities_metadata() const { return adv_abilities_; }
+	const std::vector<ability_metadata>& adv_abilities_metadata() const { return adv_abilities_infos_; }
 
 	bool can_advance() const { return !advances_to_.empty(); }
 
@@ -234,8 +235,7 @@ public:
 	config::const_child_itors possible_traits() const
 	{ return possible_traits_.child_range("trait"); }
 
-	const config& abilities_cfg() const
-	{ return get_cfg().child_or_empty("abilities"); }
+	config abilities_cfg() const;
 
 	config::const_child_itors advancements() const
 	{ return advancements_; }
@@ -356,7 +356,10 @@ private:
 	/** Never nullptr, but may point to the null race. */
 	const unit_race* race_;
 
-	std::vector<ability_metadata> abilities_, adv_abilities_;
+	std::vector<ability_metadata> abilities_infos_;
+	std::vector<ability_metadata> adv_abilities_infos_;
+
+	ability_vector abilities_;
 
 	bool zoc_, hide_help_, do_not_list_;
 
@@ -402,7 +405,15 @@ public:
 	}
 	const race_map& races() const { return races_; }
 	const movement_type_map& movement_types() const { return movement_types_; }
+	const std::map<std::string, config>& abilities() const { return abilities_registry_; }
 	config_array_view traits() const { return units_cfg().child_range("trait"); }
+
+	static config add_registry_entries(
+		const config& base_cfg,
+		const std::string& registry_name,
+		const std::map<std::string, config>& registry
+	);
+
 	void set_config(const game_config_view& cfg);
 
 	/** Finds a unit_type by its id() and makes sure it is built to the specified level. */
@@ -432,11 +443,13 @@ private:
 	movement_type_map movement_types_;
 	race_map races_;
 
+	std::map<std::string, config> abilities_registry_;
+
 	/** True if [hide_help] contains a 'all=yes' at its root. */
 	bool hide_help_all_;
 	// vectors containing the [hide_help] and its sub-tags [not]
-	std::vector< std::set<std::string>> hide_help_type_;
-	std::vector< std::set<std::string>> hide_help_race_;
+	std::vector<std::set<std::string>> hide_help_type_;
+	std::vector<std::set<std::string>> hide_help_race_;
 
 	const game_config_view& units_cfg() const { return units_cfg_; }
 	game_config_view units_cfg_;

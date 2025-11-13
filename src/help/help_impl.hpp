@@ -47,26 +47,17 @@
 #include <string>                       // for string, allocator, etc
 #include <utility>                      // for pair, make_pair
 #include <vector>                       // for vector, etc
-#include <boost/logic/tribool.hpp>
 #include "config.hpp"
 
 class game_config_view;
 class unit_type;
-class terrain_type_data;
 
 namespace help {
-
-/**
- * Generate the help contents from the configurations given to the manager.
- */
-void generate_contents();
-
 
 /** Generate a topic text on the fly. */
 class topic_generator
 {
 public:
-	topic_generator() = default;
 	virtual std::string operator()() const = 0;
 	virtual ~topic_generator() {}
 };
@@ -86,26 +77,11 @@ class topic_text
 	mutable config parsed_text_;
 	mutable std::shared_ptr<topic_generator> generator_;
 public:
-	topic_text() = default;
-	~topic_text() = default;
-
-	topic_text(const std::string& t):
-		parsed_text_(),
-		generator_(std::make_shared<text_topic_generator>(t))
-	{
-	}
-
 	explicit topic_text(std::shared_ptr<topic_generator> g):
 		parsed_text_(),
 		generator_(g)
 	{
 	}
-
-	topic_text(const topic_text& t) = default;
-	topic_text(topic_text&& t) = default;
-	topic_text& operator=(topic_text&& t) = default;
-	topic_text& operator=(const topic_text& t) = default;
-	topic_text& operator=(std::shared_ptr<topic_generator> g);
 
 	const config& parsed_text() const;
 };
@@ -113,24 +89,10 @@ public:
 /** A topic contains a title, an id and some text. */
 struct topic
 {
-	topic() :
-		title(),
-		id(),
-		text()
-	{
-	}
-
-	topic(const std::string &_title, const std::string &_id) :
-		title(_title),
-		id(_id),
-		text()
-	{
-	}
-
 	topic(const std::string &_title, const std::string &_id, const std::string &_text)
-		: title(_title), id(_id), text(_text) {}
+		: title(_title), id(_id), text(std::make_shared<text_topic_generator>(_text)) {}
 	topic(const std::string &_title, const std::string &_id, std::shared_ptr<topic_generator> g)
-		: title(_title), id(_id), text(g) {}
+		: title(_title), id(_id), text(std::move(g)) {}
 	/** Two topics are equal if their IDs are equal. */
 	bool operator==(const topic &) const;
 	bool operator!=(const topic &t) const { return !operator==(t); }
@@ -146,14 +108,6 @@ typedef std::list<topic> topic_list;
 
 /** A section contains topics and sections along with title and ID. */
 struct section {
-	section() :
-		title(""),
-		id(""),
-		topics(),
-		sections()
-	{
-	}
-
 	/** Two sections are equal if their IDs are equal. */
 	bool operator==(const section &) const;
 	/** Comparison on the ID. */
@@ -161,6 +115,7 @@ struct section {
 
 	/** Allocate memory for and add the section. */
 	void add_section(const section &s);
+	void add_section(section&& s);
 
 	void clear();
 	std::string title, id;
@@ -216,10 +171,10 @@ public:
 // see.
 
 /** Dispatch generators to their appropriate functions. */
-void generate_sections(const config *help_cfg, const std::string &generator, section &sec, int level);
+void generate_sections(const config& help_cfg, const std::string &generator, section &sec, int level);
 std::vector<topic> generate_topics(const bool sort_topics,const std::string &generator);
-std::string generate_topic_text(const std::string &generator, const config *help_cfg, const section &sec);
-std::string generate_contents_links(const std::string& section_name, config const *help_cfg);
+std::string generate_topic_text(const std::string &generator, const config& help_cfg, const section &sec);
+std::string generate_contents_links(const std::string& section_name, const config& help_cfg);
 std::string generate_contents_links(const section &sec);
 
 /** Thrown when the help system fails to parse something. */
@@ -237,10 +192,10 @@ std::string make_unit_link(const std::string& type_id);
 std::vector<std::string> make_unit_links_list(
 		const std::vector<std::string>& type_id_list, bool ordered = false);
 
-void generate_races_sections(const config *help_cfg, section &sec, int level);
+void generate_races_sections(const config& help_cfg, section &sec, int level);
 void generate_terrain_sections(section &sec, int level);
 std::vector<topic> generate_unit_topics(const bool, const std::string& race);
-void generate_unit_sections(const config *help_cfg, section &sec, int level, const bool, const std::string& race);
+void generate_unit_sections(const config& help_cfg, section &sec, int level, const bool, const std::string& race);
 enum UNIT_DESCRIPTION_TYPE {
 	FULL_DESCRIPTION,
 	/** Ignore this unit for documentation purposes. */
@@ -266,19 +221,25 @@ std::vector<topic> generate_ability_topics(const bool);
 std::vector<topic> generate_time_of_day_topics(const bool);
 std::vector<topic> generate_weapon_special_topics(const bool);
 
-void generate_era_sections(const config *help_cfg, section &sec, int level);
+void generate_era_sections(const config& help_cfg, section &sec, int level);
 std::vector<topic> generate_faction_topics(const config &, const bool);
 std::vector<topic> generate_era_topics(const bool, const std::string & era_id);
 std::vector<topic> generate_trait_topics(const bool);
 
 /**
+ * Generate the help contents from the configurations given to the manager.
+ * @returns A pair consisting of the toplevel section and any hidden sections.
+ */
+std::pair<section, section> generate_contents();
+
+/**
  * Parse a help config, return the top level section. Return an empty
  * section if cfg is nullptr.
  */
-section parse_config(const config *cfg);
+section parse_config(const config& cfg);
+
 /** Recursive function used by parse_config. */
-void parse_config_internal(const config *help_cfg, const config *section_cfg,
-						   section &sec, int level=0);
+section parse_config_internal(const config& help_cfg, const config& section_cfg, int level = 0);
 
 /**
  * Return true if the section with id section_id is referenced from
@@ -305,18 +266,6 @@ const topic *find_topic(const section &sec, const std::string &id);
  */
 const section *find_section(const section &sec, const std::string &id);
 section *find_section(section &sec, const std::string &id);
-
-/** Load the appropriate terrain types data to use */
-std::shared_ptr<terrain_type_data> load_terrain_types_data();
-
-// The default toplevel.
-extern help::section default_toplevel;
-// All sections and topics not referenced from the default toplevel.
-extern help::section hidden_sections;
-
-extern int last_num_encountered_units;
-extern int last_num_encountered_terrains;
-extern boost::tribool last_debug_state;
 
 extern const int max_section_level;
 // The topic to open by default when opening the help dialog.

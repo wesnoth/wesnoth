@@ -30,7 +30,6 @@
 #include "preferences/preferences.hpp"
 #include "gettext.hpp"
 #include "help/help.hpp"
-#include "help/help_impl.hpp"
 #include "play_controller.hpp"
 #include "resources.hpp"
 #include "serialization/markup.hpp"
@@ -150,8 +149,7 @@ static inline std::string get_mp_tooltip(int total_movement, const std::function
 	std::ostringstream tooltip;
 	tooltip << markup::tag("big", _("Movement Costs:"));
 
-	std::shared_ptr<terrain_type_data> tdata = help::load_terrain_types_data();
-
+	std::shared_ptr tdata = terrain_type_data::get();
 	if(!tdata) {
 		return "";
 	}

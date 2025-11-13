@@ -1858,18 +1858,24 @@ void reports::register_generator(const std::string &name, reports::generator *g)
 	all_reports_.clear();
 }
 
-config reports::generate_report(const std::string &name, const reports::context& rc, bool only_static)
+config reports::generate_report(const std::string& name, const reports::context& rc)
 {
-	if (!only_static) {
-		dynamic_report_generators::const_iterator i = dynamic_generators_.find(name);
-		if (i != dynamic_generators_.end())
-			return i->second->generate(rc);
+	const auto iter = dynamic_generators_.find(name);
+	if(iter == dynamic_generators_.end()) {
+		return generate_builtin_report(name, rc);
 	}
-	static_report_generators::const_iterator j = static_generators.find(name);
-	if (j != static_generators.end()) {
-		return j->second(rc);
+
+	return iter->second->generate(rc);
+}
+
+config reports::generate_builtin_report(const std::string& name, const reports::context& rc)
+{
+	const auto iter = static_generators.find(name);
+	if(iter == static_generators.end()) {
+		return config();
 	}
-	return config();
+
+	return std::invoke(iter->second, rc);
 }
 
 const std::set<std::string> &reports::report_list()

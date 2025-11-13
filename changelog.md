@@ -8,8 +8,9 @@
 ### Packaging
 ### Terrain
 ### Translations
-   * Updated translations: Bengali, British English, Finnish, Hungarian, Italian, Polish, Spanish
+   * Updated translations: Bengali, British English, Finnish, Galician, Hungarian, Italian, Polish, Spanish
 ### Units
+   * A registry for abilities has been added as `[units][abilities]`. Any ability defined there can be added to a `[unit_type]` by just specifying their `unique_id` in the new key `[unit_type]abilities`, like this: `abilities=heals_8,cures`. The unique id for an ability is the value of its new `unique_id` key which falls back to `id` if unspecified. The `abilities` key is also supported under `[effect]apply_to=new_ability`.
 ### User interface
    * New key `title_position` added to `[part]` that allows changing the position of the title text.
 ### WML Engine

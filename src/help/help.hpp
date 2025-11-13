@@ -19,9 +19,12 @@ class terrain_type;
 class unit;
 class unit_type;
 
+#include <memory>
 #include <string>
 
-namespace help {
+namespace help
+{
+struct section;
 
 /**
  * The help implementation caches data parsed from the game_config. This class
@@ -34,14 +37,39 @@ namespace help {
  *
  * Creating two instances of this will cause an assert.
  */
-struct help_manager {
-	help_manager() = default;
+class help_manager
+{
+public:
 	help_manager(const help_manager&) = delete;
 	help_manager& operator=(const help_manager&) = delete;
-	~help_manager();
-};
 
-void init_help();
+	~help_manager();
+
+	/** Returns the existing help_manager instance, or a newly allocated object otherwise. */
+	static std::shared_ptr<help_manager> get_instance();
+
+	/**
+	 * Regenerates the cached help topics if necessary.
+	 *
+	 * @returns the toplevel section.
+	 */
+	const section& regenerate();
+
+private:
+	/**
+	 * Private default constructor.
+	 *
+	 * Use @ref get_instance to get a managed instance instead.
+	 */
+	help_manager();
+
+	class implementation;
+
+	/** Pointer-to-implementation to reduce include dependencies. */
+	std::unique_ptr<implementation> impl_;
+
+	static inline std::weak_ptr<help_manager> singleton_;
+};
 
 /**
  * Open the help browser. The help browser will have the topic with id

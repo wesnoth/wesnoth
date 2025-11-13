@@ -47,6 +47,115 @@ static lg::log_domain log_unit("unit");
 static lg::log_domain log_wml("wml");
 #define ERR_WML LOG_STREAM(err, log_wml)
 
+
+unit_ability_t::unit_ability_t(std::string tag, config cfg, bool inside_attack)
+	: tag_(std::move(tag))
+	, id_(cfg["id"].str())
+	, cfg_(std::move(cfg))
+{
+	do_compat_fixes(cfg_, inside_attack);
+}
+
+void unit_ability_t::do_compat_fixes(config& cfg, bool inside_attack)
+{
+	if (!cfg["backstab"].blank()) {
+		deprecated_message("backstab= in weapon specials", DEP_LEVEL::INDEFINITE, "", "Use [filter_opponent] with a formula instead; the code can be found in data/core/macros/ in the WEAPON_SPECIAL_BACKSTAB macro.");
+	}
+	if (cfg["backstab"].to_bool()) {
+		const std::string& backstab_formula = "enemy_of(self, flanker) and not flanker.petrified where flanker = unit_at(direction_from(loc, other.facing))";
+		config& filter_opponent = cfg.child_or_add("filter_opponent");
+		config& filter_opponent2 = filter_opponent.empty() ? filter_opponent : filter_opponent.add_child("and");
+		filter_opponent2["formula"] = backstab_formula;
+	}
+	cfg.remove_attribute("backstab");
+
+	std::string filter_teacher = inside_attack ? "filter_self" : "filter";
+
+	if (cfg.has_child("filter_adjacent")) {
+		if (inside_attack) {
+			deprecated_message("[filter_adjacent]in weapon specials in [specials] tags", DEP_LEVEL::INDEFINITE, "", "Use [filter_self][filter_adjacent] instead.");
+		} else {
+			deprecated_message("[filter_adjacent] in abilities", DEP_LEVEL::INDEFINITE, "", "Use [filter][filter_adjacent] instead or other unit filter.");
+		}
+	}
+	if (cfg.has_child("filter_adjacent_location")) {
+		if (inside_attack) {
+			deprecated_message("[filter_adjacent_location]in weapon specials in [specials] tags", DEP_LEVEL::INDEFINITE, "", "Use [filter_self][filter_location][filter_adjacent_location] instead.");
+		} else {
+			deprecated_message("[filter_adjacent_location] in abilities", DEP_LEVEL::INDEFINITE, "", "Use [filter][filter_location][filter_adjacent_location] instead.");
+		}
+	}
+
+	//These tags are were never supported inside [specials] according to the wiki.
+	for (config& filter_adjacent : cfg.child_range("filter_adjacent")) {
+		if (filter_adjacent["count"].empty()) {
+			//Previously count= behaved differenty in abilities.cpp and in filter.cpp according to the wiki
+			deprecated_message("omitting count= in [filter_adjacent] in abilities", DEP_LEVEL::FOR_REMOVAL, version_info("1.21"), "specify count explicitly");
+			filter_adjacent["count"] = map_location::parse_directions(filter_adjacent["adjacent"]).size();
+		}
+		cfg.child_or_add(filter_teacher).add_child("filter_adjacent", filter_adjacent);
+	}
+	cfg.remove_children("filter_adjacent");
+	for (config& filter_adjacent : cfg.child_range("filter_adjacent_location")) {
+		if (filter_adjacent["count"].empty()) {
+			//Previously count= bahves differenty in abilities.cpp and in filter.cpp according to the wiki
+			deprecated_message("omitting count= in [filter_adjacent_location] in abilities", DEP_LEVEL::FOR_REMOVAL, version_info("1.21"), "specify count explicitly");
+			filter_adjacent["count"] = map_location::parse_directions(filter_adjacent["adjacent"]).size();
+		}
+		cfg.child_or_add(filter_teacher).add_child("filter_location").add_child("filter_adjacent_location", filter_adjacent);
+	}
+	cfg.remove_children("filter_adjacent_location");
+}
+
+void unit_ability_t::parse_vector(const config& abilities_cfg, ability_vector& res, bool inside_attack)
+{
+	for (auto item : abilities_cfg.all_children_range()) {
+		res.push_back(unit_ability_t::create(item.key, item.cfg, inside_attack));
+	}
+}
+
+ability_vector unit_ability_t::cfg_to_vector(const config& abilities_cfg, bool inside_attack)
+{
+	ability_vector res;
+	parse_vector(abilities_cfg, res, inside_attack);
+	return res;
+}
+
+ability_vector unit_ability_t::filter_tag(const ability_vector& abs, const std::string& tag)
+{
+	ability_vector res;
+	for (const ability_ptr& p_ab : abs) {
+		if (p_ab->tag() == tag) {
+			res.push_back(p_ab);
+		}
+	}
+	return res;
+}
+
+ability_vector unit_ability_t::clone(const ability_vector& abs)
+{
+	ability_vector res;
+	for (const ability_ptr& p_ab : abs) {
+		res.push_back(std::make_shared<unit_ability_t>(*p_ab));
+	}
+	return res;
+}
+
+config unit_ability_t::vector_to_cfg(const ability_vector& abilities)
+{
+	config abilities_cfg;
+	for (const auto& item : abilities) {
+		item->write(abilities_cfg);
+	}
+	return abilities_cfg;
+}
+
+
+void unit_ability_t::write(config& abilities_cfg)
+{
+	abilities_cfg.add_child(tag(), cfg());
+}
+
 attack_type::attack_type(const config& cfg)
 	: self_loc_()
 	, other_loc_()
@@ -68,9 +177,11 @@ attack_type::attack_type(const config& cfg)
 	, movement_used_(cfg["movement_used"].to_int(100000))
 	, attacks_used_(cfg["attacks_used"].to_int(1))
 	, parry_(cfg["parry"].to_int())
-	, specials_(cfg.child_or_empty("specials"))
+	, specials_()
 	, changed_(true)
 {
+	unit_ability_t::parse_vector(cfg.child_or_empty("specials"), specials_, true);
+
 	if (description_.empty())
 		description_ = translation::egettext(id_.c_str());
 
@@ -266,9 +377,9 @@ bool attack_type::matches_filter(const config& filter, const std::string& check_
 
 void attack_type::remove_special_by_filter(const config& filter)
 {
-	config::all_children_iterator i = specials_.ordered_begin();
-	while (i != specials_.ordered_end()) {
-		if(special_matches_filter(i->cfg, i->key, filter)) {
+	auto i = specials_.begin();
+	while (i != specials_.end()) {
+		if(special_matches_filter(**i, filter)) {
 			i = specials_.erase(i);
 		} else {
 			++i;
@@ -335,10 +446,10 @@ void attack_type::apply_effect(const config& cfg)
 
 	if(del_specials.empty() == false) {
 		const std::vector<std::string>& dsl = utils::split(del_specials);
-		config new_specials;
-		for(const auto [key, cfg] : specials_.all_children_view()) {
-			if(!utils::contains(dsl, cfg["id"].str())) {
-				new_specials.add_child(key, cfg);
+		ability_vector new_specials;
+		for(ability_ptr& p_ab : specials_) {
+			if(!utils::contains(dsl, p_ab->id())) {
+				new_specials.emplace_back(std::move(p_ab));
 			}
 		}
 		specials_ = new_specials;
@@ -355,7 +466,7 @@ void attack_type::apply_effect(const config& cfg)
 			specials_.clear();
 		}
 		for(const auto [key, cfg] : set_specials->all_children_view()) {
-			specials_.add_child(key, cfg);
+			specials_.push_back(unit_ability_t::create(key, cfg, true));
 		}
 	}
 
@@ -666,5 +777,5 @@ void attack_type::write(config& cfg) const
 	cfg["movement_used"] = movement_used_;
 	cfg["attacks_used"] = attacks_used_;
 	cfg["parry"] = parry_;
-	cfg.add_child("specials", specials_);
+	cfg.add_child("specials", specials_cfg());
 }
