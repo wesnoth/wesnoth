@@ -48,27 +48,16 @@ namespace
  */
 utils::optional<t_translation::terrain_code> as_terrain_code(const variant& loc_var)
 {
-	assert(resources::gameboard);
-	const gamemap& map = resources::gameboard->map();
-
 	if(loc_var.is_string()) {
 		return t_translation::read_terrain_code(loc_var.as_string());
 	}
 
 	else if(auto tc = loc_var.try_convert<terrain_callable>()) {
-		const variant terrain_id = tc->get_value("id");
-		const auto& terrain_data = map.tdata()->map();
-
-		// TODO: there should be a cleaner way to search this than accessing the internal map
-		const auto iter = utils::ranges::find(terrain_data, terrain_id.as_string(),
-			[](const std::pair<t_translation::terrain_code, terrain_type>& p) { return p.second.id(); });
-
-		if(iter != terrain_data.end()) {
-			return iter->first;
-		}
+		return tc->get_terrain_type().number();
 	}
 
 	else if(auto loc = loc_var.try_convert<location_callable>()) {
+		const gamemap& map = resources::gameboard->map();
 		if(map.on_board(loc->loc())) {
 			return map.get_terrain(loc->loc());
 		}
