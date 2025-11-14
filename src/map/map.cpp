@@ -377,17 +377,24 @@ bool gamemap_base::on_board_with_border(const map_location& loc) const
 	       loc.y >= -border_size() &&  loc.y < h() + border_size();
 }
 
-void gamemap::set_terrain(const map_location& loc, const t_translation::terrain_code & terrain, const terrain_type_data::merge_mode mode, bool replace_if_failed) {
+gamemap_base::set_terrain_result gamemap::set_terrain(const map_location& loc,
+	const t_translation::terrain_code& terrain,
+	const terrain_type_data::merge_mode mode,
+	bool replace_if_failed)
+{
+	gamemap_base::set_terrain_result res;
+	auto& [new_terrain, village_state] = res;
+
+	// off the map: ignore request
 	if(!on_board_with_border(loc)) {
 		DBG_G << "set_terrain: " << loc << " is not on the map.";
-		// off the map: ignore request
-		return;
+		return res;
 	}
 
-	t_translation::terrain_code new_terrain = tdata_->merge_terrains(get_terrain(loc), terrain, mode, replace_if_failed);
+	new_terrain = tdata_->merge_terrains(get_terrain(loc), terrain, mode, replace_if_failed);
 
 	if(new_terrain == t_translation::NONE_TERRAIN) {
-		return;
+		return res;
 	}
 
 	if(on_board(loc)) {
@@ -396,12 +403,15 @@ void gamemap::set_terrain(const map_location& loc, const t_translation::terrain_
 
 		if(old_village && !new_village) {
 			utils::erase(villages_, loc);
+			village_state = village_state::former_village;
 		} else if(!old_village && new_village) {
 			villages_.push_back(loc);
+			village_state = village_state::new_village;
 		}
 	}
 
 	(*this)[loc] = new_terrain;
+	return res;
 }
 
 std::vector<map_location> gamemap_base::parse_location_range(const std::string &x, const std::string &y,
