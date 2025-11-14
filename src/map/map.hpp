@@ -73,11 +73,23 @@ public:
 	bool on_board(const map_location& loc) const;
 	bool on_board_with_border(const map_location& loc) const;
 
+	/** What happens to a village hex when its terrain is changed. */
+	enum class village_state { unchanged, new_village, former_village };
+
+	struct set_terrain_result
+	{
+		terrain_code new_terrain = t_translation::NONE_TERRAIN;
+		village_state village_state = village_state::unchanged;
+	};
+
 	/**
 	 * Clobbers over the terrain at location 'loc', with the given terrain.
 	 * Uses mode and replace_if_failed like merge_terrains().
 	 */
-	virtual void set_terrain(const map_location& loc, const terrain_code & terrain, const terrain_type_data::merge_mode mode = terrain_type_data::BOTH, bool replace_if_failed = false) = 0;
+	virtual set_terrain_result set_terrain(const map_location& loc,
+		const terrain_code& terrain,
+		const terrain_type_data::merge_mode mode = terrain_type_data::BOTH,
+		bool replace_if_failed = false) = 0;
 
 	/**
 	 * Looks up terrain at a particular location.
@@ -217,7 +229,10 @@ private:
 		return tiles().get(loc.x + border_size(), loc.y + border_size());
 	}
 public:
-	void set_terrain(const map_location& loc, const terrain_code & terrain, const terrain_type_data::merge_mode mode = terrain_type_data::BOTH, bool replace_if_failed = false) override;
+	gamemap_base::set_terrain_result set_terrain(const map_location& loc,
+		const terrain_code& terrain,
+		const terrain_type_data::merge_mode mode = terrain_type_data::BOTH,
+		bool replace_if_failed = false) override;
 
 	/** Writes the terrain at loc to cfg. */
 	void write_terrain(const map_location &loc, config& cfg) const;
