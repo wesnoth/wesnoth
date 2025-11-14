@@ -624,7 +624,7 @@ UNIT_GETTER("traits", std::vector<std::string>) {
 }
 
 UNIT_GETTER("abilities", std::vector<std::string>) {
-	return u.get_ability_list();
+	return u.get_ability_id_list();
 }
 
 UNIT_GETTER("status", lua_index_raw) {

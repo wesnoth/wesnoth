@@ -230,7 +230,7 @@ public:
 	bool has_zoc() const { return zoc_; }
 
 	bool has_ability_by_id(const std::string& ability) const;
-	std::vector<std::string> get_ability_list() const;
+	std::vector<std::string> get_ability_id_list() const;
 
 	config::const_child_itors possible_traits() const
 	{ return possible_traits_.child_range("trait"); }

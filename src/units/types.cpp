@@ -560,7 +560,7 @@ bool unit_type::has_ability_by_id(const std::string& ability) const
 	return false;
 }
 
-std::vector<std::string> unit_type::get_ability_list() const
+std::vector<std::string> unit_type::get_ability_id_list() const
 {
 	std::vector<std::string> res;
 

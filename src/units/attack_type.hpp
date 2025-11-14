@@ -24,6 +24,7 @@
 #include <boost/iterator/indirect_iterator.hpp>
 #include <boost/dynamic_bitset_fwd.hpp>
 
+#include "units/abilities.hpp"
 #include "units/ptr.hpp" // for attack_ptr
 #include "units/unit_alignments.hpp"
 
@@ -33,51 +34,6 @@ class unit_type;
 namespace wfl {
 	class map_formula_callable;
 }
-
-using ability_vector = std::vector<ability_ptr>;
-
-class unit_ability_t
-{
-public:
-	unit_ability_t(std::string tag, config cfg, bool inside_attack);
-
-	static ability_ptr create(std::string tag, config cfg, bool inside_attack) {
-		return std::make_shared<unit_ability_t>(tag, cfg, inside_attack);
-	}
-
-	static void do_compat_fixes(config& cfg, bool inside_attack);
-
-	const std::string& tag() const { return tag_; };
-	const std::string& id() const { return id_; };
-	const config& cfg() const { return cfg_; };
-	void write(config& abilities_cfg);
-
-
-	static void parse_vector(const config& abilities_cfg, ability_vector& res, bool inside_attack);
-	static config vector_to_cfg(const ability_vector& abilities);
-	static ability_vector cfg_to_vector(const config& abilities_cfg, bool inside_attack);
-
-
-	static ability_vector filter_tag(const ability_vector& vec, const std::string& tag);
-	static ability_vector clone(const ability_vector& vec);
-
-	/*
-	static auto get_view(const ability_vector& vec) {
-		return vec
-			| boost::adaptors::transformed([](const ability_ptr& p)->const config& { return *x; });
-	}
-
-	static auto get_view(const ability_vector& vec, const std::string& tag) {
-		return vec
-			| boost::adaptors::transformed([](const ability_ptr& p)->const config& { return *x; });
-	}
-*/
-private:
-	std::string tag_;
-	std::string id_;
-	config cfg_;
-};
-
 
 //the 'attack type' is the type of attack, how many times it strikes,
 //and how much damage it does.
@@ -135,12 +91,14 @@ public:
 	/**
 	 * @return True iff the special @a special is active.
 	 * @param special The special being checked.
-	 * @param simple_check If true, check whether the unit has the special. Else, check whether the special is currently active.
 	 */
-	bool has_special(const std::string& special, bool simple_check = false) const;
+	bool has_special(const std::string& special) const;
 	active_ability_list get_specials(const std::string& special) const;
-	std::vector<std::pair<t_string, t_string>> special_tooltips(boost::dynamic_bitset<>* active_list = nullptr) const;
-	std::vector<std::pair<t_string, t_string>> abilities_special_tooltips(boost::dynamic_bitset<>* active_list) const;
+
+	struct special_tooltip_info { t_string name; t_string description; };
+	std::vector<special_tooltip_info> special_tooltips(boost::dynamic_bitset<>* active_list = nullptr) const;
+	std::vector<special_tooltip_info> abilities_special_tooltips(boost::dynamic_bitset<>* active_list) const;
+
 	std::string describe_weapon_specials() const;
 	std::string describe_weapon_specials_value(const std::set<std::string>& checking_tags) const;
 
@@ -280,7 +238,7 @@ private:
 	// In unit_abilities.cpp:
 
 	// Configured as a bit field, in case that is useful.
-	enum AFFECTS { AFFECT_SELF=1, AFFECT_OTHER=2, AFFECT_EITHER=3 };
+	using AFFECTS = unit_ability_t::affects_t;
 	/**
 	 * Filter a list of abilities or weapon specials
 	 * @param ab the ability/special
@@ -318,8 +276,7 @@ private:
 	 */
 	bool overwrite_special_checking(active_ability_list& overwriters, const unit_ability_t& ab) const;
 
-	bool special_active(const unit_ability_t& ab, AFFECTS whom,
-	                    bool in_abilities_tag = false) const;
+	bool special_active(const unit_ability_t& ab, AFFECTS whom) const;
 
 	bool special_tooltip_active(const unit_ability_t& ab) const;
 /** weapon_specials_impl_self and weapon_specials_impl_adj : check if special name can be added.
@@ -410,8 +367,7 @@ private:
 		const const_attack_ptr& self_attack,
 		const const_attack_ptr& other_attack,
 		const unit_ability_t& special,
-		AFFECTS whom,
-		bool in_abilities_tag = false
+		AFFECTS whom
 	);
 
 	/** has_ability_impl : return an boolean value for checking of activities of abilities used like weapon
