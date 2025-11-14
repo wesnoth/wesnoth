@@ -52,6 +52,19 @@ public:
 	active_on_t active_on() const { return active_on_; };
 	apply_to_t apply_to() const { return apply_to_; };
 
+	struct tooltip_info
+	{
+		t_string name;
+		t_string description;
+		// a unique id used for help topics, generated from name and id.
+		// doesn't include the "ability_" prefix.
+		// TODO: maybe use cfg["unique_id"] at some point?
+		std::string help_topic_id;
+	};
+
+	static std::string get_help_topic_id(const config& cfg);
+	std::string get_help_topic_id() const;
+
 	void write(config& abilities_cfg);
 
 

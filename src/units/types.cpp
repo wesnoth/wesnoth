@@ -126,6 +126,7 @@ unit_type::~unit_type()
 
 unit_type::ability_metadata::ability_metadata(const config& cfg)
 	: id(cfg["id"])
+	, help_topic_id(unit_ability_t::get_help_topic_id(cfg))
 	, name(cfg["name"].t_str())
 	, name_inactive(cfg["name_inactive"].t_str())
 	, female_name(cfg["female_name"].t_str())

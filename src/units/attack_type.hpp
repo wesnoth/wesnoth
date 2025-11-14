@@ -95,9 +95,8 @@ public:
 	bool has_special(const std::string& special) const;
 	active_ability_list get_specials(const std::string& special) const;
 
-	struct special_tooltip_info { t_string name; t_string description; };
-	std::vector<special_tooltip_info> special_tooltips(boost::dynamic_bitset<>* active_list = nullptr) const;
-	std::vector<special_tooltip_info> abilities_special_tooltips(boost::dynamic_bitset<>* active_list) const;
+	std::vector<unit_ability_t::tooltip_info> special_tooltips(boost::dynamic_bitset<>* active_list = nullptr) const;
+	std::vector<unit_ability_t::tooltip_info> abilities_special_tooltips(boost::dynamic_bitset<>* active_list) const;
 
 	std::string describe_weapon_specials() const;
 	std::string describe_weapon_specials_value(const std::set<std::string>& checking_tags) const;
