@@ -344,6 +344,7 @@ wesnoth.game_events.on_mouse_action = function(x,y)
     if (not selected_unit[1] or selected_unit[1].id~='Delfador') then return end
 
     if (os.clock()-last_click<0.25) then
+        -- same logic in spellcasting.cfg's TDG_spellcasting [menu_item]
         if (wml.variables['wait_to_select_spells']) then
             wml_actions.select_delfador_skills()
         else
