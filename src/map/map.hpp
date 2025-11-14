@@ -79,7 +79,7 @@ public:
 	struct set_terrain_result
 	{
 		terrain_code new_terrain = t_translation::NONE_TERRAIN;
-		village_state village_state = village_state::unchanged;
+		village_state village_change = village_state::unchanged;
 	};
 
 	/**
