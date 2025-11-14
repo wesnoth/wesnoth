@@ -44,6 +44,9 @@ enum class drawing_layer {
 	/** Terrain drawn in front of the unit */
 	terrain_fg = unit_first + 50,
 
+	/** Minimal layer for drawing huge units (units that are visable on hexes beneath the unit location) */
+	unit_huge_minimal = terrain_fg,
+
 	/** Overlay on reachable hexes */
 	reachmap_highlight = terrain_bg,
 
