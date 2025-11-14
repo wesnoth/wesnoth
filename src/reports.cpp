@@ -424,7 +424,7 @@ static config unit_abilities_report(const unit* u, const map_location& loc)
 	const std::size_t abilities_size = abilities.size();
 	for(std::size_t i = 0; i != abilities_size; ++i) {
 		// Aliases for readability:
-		const auto& [id, base_name, display_name, description] = abilities[i];
+		const auto& [display_name, description, help_id] = abilities[i];
 
 		std::ostringstream str, tooltip;
 
@@ -445,7 +445,7 @@ static config unit_abilities_report(const unit* u, const map_location& loc)
 
 		tooltip << '\n' << description;
 
-		add_text(res, str.str(), tooltip.str(), "ability_" + id + base_name.base_str());
+		add_text(res, str.str(), tooltip.str(), "ability_" + help_id);
 	}
 
 	return res;
@@ -998,13 +998,13 @@ static int attack_info(const reports::context& rc, const attack_type &at, config
 		for ( std::size_t i = 0; i != specials_size; ++i )
 		{
 			// Aliases for readability:
-			const t_string &name = specials[i].name;
-			const t_string &description = specials[i].description;
+			const auto& name = specials[i].name;
+			const auto& description = specials[i].description;
 			const color_t &details_color =
 				active[i] ? font::weapon_details_color : font::INACTIVE_COLOR;
 
 			str << span_color(details_color, "  ", "  ", name) << '\n';
-			std::string help_page = "weaponspecial_" + name.base_str();
+			std::string help_page = "weaponspecial_" + specials[i].help_topic_id;
 			tooltip << _("Weapon special:") << " " << markup::bold(name);
 			if (!active[i]) {
 				tooltip << markup::italic(_(" (inactive)"));
@@ -1039,12 +1039,12 @@ static int attack_info(const reports::context& rc, const attack_type &at, config
 		for ( std::size_t i = 0; i != specials_size; ++i )
 		{
 			// Aliases for readability:
-			const auto& [name, description] = specials[i];
+			const auto& [name, description, help_topic_id] = specials[i];
 			const color_t& details_color =
 				active[i] ? font::weapon_details_color : font::INACTIVE_COLOR;
 
 			str << span_color(details_color, "  ", "  ", name) << '\n';
-			const std::string help_page = "weaponspecial_" + name.base_str();
+			const std::string help_page = "weaponspecial_" + help_topic_id;
 			tooltip << _("Weapon special:") << " " << markup::bold(name);
 			if (!active[i]) {
 				tooltip << markup::italic(_(" (inactive)"));

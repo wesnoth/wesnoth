@@ -194,6 +194,22 @@ void unit_ability_t::do_compat_fixes(config& cfg, bool inside_attack)
 	cfg.remove_children("filter_adjacent_location");
 }
 
+
+std::string unit_ability_t::get_help_topic_id(const config& cfg)
+{
+	// NOTE: neither ability names nor ability ids are necessarily unique. Creating
+	// topics for either each unique name or each unique id means certain abilities
+	// will be excluded from help. So... the ability topic ref id is a combination
+	// of id and (untranslated) name. It's rather ugly, but it works.
+	return cfg["id"].str() + cfg["name"].t_str().base_str();
+}
+
+std::string unit_ability_t::get_help_topic_id() const
+{
+	return id() + cfg()["name"].t_str().base_str();
+}
+
+
 void unit_ability_t::parse_vector(const config& abilities_cfg, ability_vector& res, bool inside_attack)
 {
 	for (auto item : abilities_cfg.all_children_range()) {
@@ -420,17 +436,17 @@ namespace {
 	 *
 	 * @returns Whether name was resolved and quadruple added.
 	 */
-	bool add_ability_tooltip(const unit_ability_t& ab, unit_race::GENDER gender, std::vector<std::tuple<std::string, t_string,t_string,t_string>>& res, bool active)
+	bool add_ability_tooltip(const unit_ability_t& ab, unit_race::GENDER gender, std::vector<unit_ability_t::tooltip_info>& res, bool active)
 	{
 		if(active) {
 			const t_string& name = gender_value(ab.cfg(), gender, "name", "female_name", "name").t_str();
 
 			if(!name.empty()) {
-				res.emplace_back(
-					ab.id(),
-					ab.cfg()["name"].t_str(),
-						unit_abilities::substitute_variables(name, ab),
-						unit_abilities::substitute_variables(ab.cfg()["description"].t_str(), ab));
+				res.AGGREGATE_EMPLACE(
+					unit_abilities::substitute_variables(name, ab),
+					unit_abilities::substitute_variables(ab.cfg()["description"].t_str(), ab),
+					ab.get_help_topic_id()
+				);
 				return true;
 			}
 		} else {
@@ -443,11 +459,10 @@ namespace {
 			const t_string& desc = ab.cfg().get_or("description_inactive", "description").t_str();
 
 			if(!name.empty()) {
-				res.emplace_back(
-					ab.id(),
-					ab.cfg().get_or("name_inactive", "name").t_str(),
+				res.AGGREGATE_EMPLACE(
 						unit_abilities::substitute_variables(name, ab),
-						unit_abilities::substitute_variables(desc, ab));
+						unit_abilities::substitute_variables(desc, ab),
+						ab.get_help_topic_id());
 				return true;
 			}
 		}
@@ -456,9 +471,9 @@ namespace {
 	}
 }
 
-std::vector<std::tuple<std::string, t_string, t_string, t_string>> unit::ability_tooltips() const
+std::vector<unit_ability_t::tooltip_info> unit::ability_tooltips() const
 {
-	std::vector<std::tuple<std::string, t_string,t_string,t_string>> res;
+	std::vector<unit_ability_t::tooltip_info> res;
 
 	for(const auto& p_ab : abilities())
 	{
@@ -468,9 +483,9 @@ std::vector<std::tuple<std::string, t_string, t_string, t_string>> unit::ability
 	return res;
 }
 
-std::vector<std::tuple<std::string, t_string, t_string, t_string>> unit::ability_tooltips(boost::dynamic_bitset<>& active_list, const map_location& loc) const
+std::vector<unit_ability_t::tooltip_info> unit::ability_tooltips(boost::dynamic_bitset<>& active_list, const map_location& loc) const
 {
-	std::vector<std::tuple<std::string, t_string,t_string,t_string>> res;
+	std::vector<unit_ability_t::tooltip_info> res;
 	active_list.clear();
 
 	for(const auto& p_ab : abilities())
@@ -905,11 +920,11 @@ active_ability_list attack_type::get_specials(const std::string& special) const
  * @a active_list is not nullptr. Otherwise specials are assumed active.
  * If the appropriate name is empty, the special is skipped.
  */
-std::vector<attack_type::special_tooltip_info> attack_type::special_tooltips(
+std::vector<unit_ability_t::tooltip_info> attack_type::special_tooltips(
 	boost::dynamic_bitset<>* active_list) const
 {
 	//log_scope("special_tooltips");
-	std::vector<special_tooltip_info> res;
+	std::vector<unit_ability_t::tooltip_info> res;
 	if(active_list) {
 		active_list->clear();
 	}
@@ -931,7 +946,8 @@ std::vector<attack_type::special_tooltip_info> attack_type::special_tooltips(
 
 		res.AGGREGATE_EMPLACE(
 			unit_abilities::substitute_variables(name, *p_ab),
-			unit_abilities::substitute_variables(desc, *p_ab)
+			unit_abilities::substitute_variables(desc, *p_ab),
+			p_ab->get_help_topic_id()
 		);
 
 		if(active_list) {
@@ -941,10 +957,10 @@ std::vector<attack_type::special_tooltip_info> attack_type::special_tooltips(
 	return res;
 }
 
-std::vector<attack_type::special_tooltip_info> attack_type::abilities_special_tooltips(
+std::vector<unit_ability_t::tooltip_info> attack_type::abilities_special_tooltips(
 	boost::dynamic_bitset<>* active_list) const
 {
-	std::vector<special_tooltip_info> res;
+	std::vector<unit_ability_t::tooltip_info> res;
 	if(active_list) {
 		active_list->clear();
 	}
@@ -961,7 +977,7 @@ std::vector<attack_type::special_tooltip_info> attack_type::abilities_special_to
 			if(name.empty() || checking_name.count(name) != 0) {
 				continue;
 			}
-			res.AGGREGATE_EMPLACE(name, desc);
+			res.AGGREGATE_EMPLACE(name, desc, p_ab->get_help_topic_id());
 			checking_name.insert(name);
 			if(active_list) {
 				active_list->push_back(active);
@@ -987,7 +1003,7 @@ std::vector<attack_type::special_tooltip_info> attack_type::abilities_special_to
 				if(name.empty() || checking_name.count(name) != 0) {
 					continue;
 				}
-				res.AGGREGATE_EMPLACE(name, desc);
+				res.AGGREGATE_EMPLACE(name, desc, p_ab->get_help_topic_id());
 				checking_name.insert(name);
 				if(active_list) {
 					active_list->push_back(active);

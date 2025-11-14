@@ -1776,8 +1776,7 @@ public:
 	 * @returns                   A list of quadruples consisting of (in order) id, base name,
 	 *                            male or female name as appropriate for the unit, and description.
 	 */
-	std::vector<std::tuple<std::string, t_string, t_string, t_string>>
-	ability_tooltips() const;
+	std::vector<unit_ability_t::tooltip_info> ability_tooltips() const;
 
 	/**
 	 * Gets the names and descriptions of this unit's abilities.
@@ -1790,7 +1789,7 @@ public:
 	 * @returns                   A list of quadruples consisting of (in order) id, base name,
 	 *                            male or female name as appropriate for the unit, and description.
 	 */
-	std::vector<std::tuple<std::string, t_string, t_string, t_string>>
+	std::vector<unit_ability_t::tooltip_info>
 	ability_tooltips(boost::dynamic_bitset<>& active_list, const map_location& loc) const;
 
 	/** Get a list of all abilities by ID. */

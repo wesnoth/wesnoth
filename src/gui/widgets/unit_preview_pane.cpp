@@ -548,8 +548,8 @@ void unit_preview_pane::set_display_data(const unit& u)
 				add_name_tree_node(
 					header_node,
 					"item",
-					std::get<2>(ab),
-					std::get<3>(ab)
+					ab.name,
+					ab.description
 				);
 			}
 		}
