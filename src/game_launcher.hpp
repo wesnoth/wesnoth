@@ -18,6 +18,7 @@
 #include "editor/editor_main.hpp"    // for EXIT_STATUS
 #include "events.hpp"                // for event_context
 #include "font/font_config.hpp"      // for manager
+#include "game_config_manager.hpp"   // for game_config_manager
 #include "game_end_exceptions.hpp"   // for LEVEL_RESULT, etc
 #include "hotkey/hotkey_manager.hpp" // for manager
 #include "picture.hpp"               // for manager
@@ -112,6 +113,7 @@ public:
 	editor::EXIT_STATUS start_editor() { return start_editor(""); }
 
 	const commandline_options & opts() const { return cmdline_opts_; }
+	game_config_manager& config_manager() { return config_manager_; };
 
 private:
 	game_launcher(const game_launcher&) = delete;
@@ -136,6 +138,8 @@ private:
 	savegame::load_game_metadata extract_load_data();
 
 	const commandline_options& cmdline_opts_;
+
+	game_config_manager config_manager_;
 
 	font::manager font_manager_;
 	const image::manager image_manager_;

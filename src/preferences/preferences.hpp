@@ -30,6 +30,7 @@
 struct point;
 class unit_map;
 class game_board;
+class terrain_type;
 
 namespace pref_constants
 {
@@ -449,6 +450,9 @@ public:
 
 	// Add all terrains on the map as encountered terrains.
 	void encounter_map_terrain(const gamemap& map);
+
+	// Mark the given terrain type as encountered.
+	void encounter_map_terrain(const terrain_type& terrain);
 
 	// Calls all of the above functions on the current game board
 	void encounter_all_content(const game_board& gb);
