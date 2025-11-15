@@ -717,8 +717,22 @@ void unit_frame::redraw(const std::chrono::milliseconds& frame_time, bool on_sta
 		}
 
 		if(alpha != 0) {
+
+			//Some huge units (multihex) needs to be drawn above some terrain features, on a higher drawing layer.
+			constexpr int huge_unit_drawing_layer = get_abs_frame_layer(drawing_layer::unit_huge_minimal);
+			int adjusted_drawing_layer = current_data.drawing_layer;
+			int hex_height = game_config::tile_size;
+			// The 50 value below is an arbitrary value, if we replace the transparent padding underneath unit images with y offset we can remove it.
+			if (image_size.y > (hex_height + 50)) { // Minimal height to be considered a huge unit.
+				if ((hex_height / 2) < (image_size.y / 2 + current_data.y)) { // Account for y offset. If the unit is offset upwards enough then we don't need huge_unit_layer.
+					if (adjusted_drawing_layer <= huge_unit_drawing_layer){
+						adjusted_drawing_layer = huge_unit_drawing_layer;
+					}
+				}
+			}
+
 			render_unit_image(my_x, my_y,
-				drawing_layer { int(drawing_layer::unit_first) + current_data.drawing_layer },
+				drawing_layer{ int(drawing_layer::unit_first) + adjusted_drawing_layer },
 				src,
 				image_loc,
 				facing_west,
