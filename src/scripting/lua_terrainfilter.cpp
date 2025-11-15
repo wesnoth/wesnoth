@@ -24,6 +24,7 @@
 #include "scripting/lua_formula_bridge.hpp"
 #include "scripting/push_check.hpp"
 #include "serialization/string_utils.hpp"
+#include "utils/charconv.hpp"
 
 #include "formula/callable_objects.hpp"
 #include "formula/formula.hpp"
@@ -56,29 +57,18 @@ LOG_LMG << #NAME << ":matches(" << l << ") line:" << __LINE__;
 
 //helper functions for parsing
 namespace {
-	int atoi(std::string_view s)
-	{
-		if(s.empty()) {
-			return 0;
-		}
-
-		char** end = nullptr;
-		int res = strtol(&s[0], end, 10);
-		return res;
-	}
-
 	std::pair<int, int> parse_single_range(std::string_view s)
 	{
-		int dash_pos = s.find('-');
-		if(dash_pos == int(std::string_view::npos)) {
-			int res = atoi(s);
+		std::size_t dash_pos = s.find('-');
+		if(dash_pos == std::string_view::npos) {
+			int res = utils::from_chars<int>(s).value_or(0);
 			return {res, res};
 		}
-		else {
-			std::string_view first = s.substr(0, dash_pos);
-			std::string_view second = s.substr(dash_pos + 1);
-			return {atoi(first), atoi(second)};
-		}
+
+		return {
+			utils::from_chars<int>(s.substr(0, dash_pos)).value_or(0),
+			utils::from_chars<int>(s.substr(dash_pos + 1)).value_or(0)
+		};
 	}
 
 	dynamic_bitset parse_range(std::string_view s)

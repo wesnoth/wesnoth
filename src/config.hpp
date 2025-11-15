@@ -45,7 +45,6 @@
 
 #include <boost/range/iterator_range.hpp>
 
-using config_key_type = std::string_view;
 enum class DEP_LEVEL : uint8_t;
 
 class config;
@@ -124,7 +123,7 @@ public:
 		return value();
 	}
 
-	utils::const_clone_t<config_attribute_value, T>& operator[](config_key_type key)
+	utils::const_clone_t<config_attribute_value, T>& operator[](std::string_view key)
 	{
 		assert(tested());
 		return value()[key];
@@ -170,7 +169,7 @@ public:
 	/**
 	 * Creates a config object with an empty child of name @a child.
 	 */
-	explicit config(config_key_type child);
+	explicit config(std::string_view child);
 
 	/**
 	 * Creates a config with several attributes and children.
@@ -178,15 +177,15 @@ public:
 	 * For example: config("key", 42, "value", config())
 	 */
 	template<typename... Args>
-	explicit config(config_key_type first, Args&&... args);
+	explicit config(std::string_view first, Args&&... args);
 
 	~config();
 
 	// Verifies that the string can be used as a tag name
-	static bool valid_tag(config_key_type name);
+	static bool valid_tag(std::string_view name);
 
 	// Verifies that the string can be used as an attribute name
-	static bool valid_attribute(config_key_type name);
+	static bool valid_attribute(std::string_view name);
 
 	typedef std::vector<std::unique_ptr<config>> child_list;
 	typedef std::map<std::string, child_list, std::less<>> child_map;
@@ -358,9 +357,9 @@ public:
 	typedef boost::iterator_range<const_attribute_iterator> const_attr_itors;
 	typedef boost::iterator_range<attribute_iterator> attr_itors;
 
-	child_itors child_range(config_key_type key);
-	const_child_itors child_range(config_key_type key) const;
-	std::size_t child_count(config_key_type key) const;
+	child_itors child_range(std::string_view key);
+	const_child_itors child_range(std::string_view key) const;
+	std::size_t child_count(std::string_view key) const;
 	std::size_t all_children_count() const;
 	/** Count the number of non-blank attributes */
 	std::size_t attribute_count() const;
@@ -372,12 +371,12 @@ public:
 	 *
 	 * @returns                   Whether a child is available.
 	 */
-	bool has_child(config_key_type key) const;
+	bool has_child(std::string_view key) const;
 
 	/**
 	 * Returns the first child with the given @a key, or an empty config if there is none.
 	 */
-	const config & child_or_empty(config_key_type key) const;
+	const config & child_or_empty(std::string_view key) const;
 
 	/**
 	 * Returns the nth child with the given @a key, or
@@ -386,20 +385,20 @@ public:
 	 *       For instance, -1 is the index of the last child.
 	 */
 
-	config& mandatory_child(config_key_type key, int n = 0);
+	config& mandatory_child(std::string_view key, int n = 0);
 	/**
 	 * Returns the nth child with the given @a key, or
 	 * throws an error if there is none.
 	 * @note A negative @a n accesses from the end of the object.
 	 *       For instance, -1 is the index of the last child.
 	 */
-	const config& mandatory_child(config_key_type key, int n = 0) const;
+	const config& mandatory_child(std::string_view key, int n = 0) const;
 
 	/** Equivalent to @ref mandatory_child, but returns an empty optional if the nth child was not found. */
-	optional_config_impl<config> optional_child(config_key_type key, int n = 0);
+	optional_config_impl<config> optional_child(std::string_view key, int n = 0);
 
 	/** Equivalent to @ref mandatory_child, but returns an empty optional if the nth child was not found. */
-	optional_config_impl<const config> optional_child(config_key_type key, int n = 0) const;
+	optional_config_impl<const config> optional_child(std::string_view key, int n = 0) const;
 
 	/**
 	 * Returns a mandatory child node.
@@ -415,7 +414,7 @@ public:
 	 *
 	 * @returns                   The wanted child node.
 	 */
-	config& mandatory_child(config_key_type key, const std::string& parent);
+	config& mandatory_child(std::string_view key, const std::string& parent);
 
 	/**
 	 * Returns a mandatory child node.
@@ -431,7 +430,7 @@ public:
 	 *
 	 * @returns                   The wanted child node.
 	 */
-	const config& mandatory_child(config_key_type key, const std::string& parent) const;
+	const config& mandatory_child(std::string_view key, const std::string& parent) const;
 
 	/**
 	 * Get a deprecated child and log a deprecation message
@@ -441,7 +440,7 @@ public:
 	 * @param message An explanation of the deprecation, possibly mentioning an alternative
 	 * @note The deprecation message will be a level 3 deprecation.
 	 */
-	optional_config_impl<const config> get_deprecated_child(config_key_type old_key, const std::string& in_tag, DEP_LEVEL level, const std::string& message) const;
+	optional_config_impl<const config> get_deprecated_child(std::string_view old_key, const std::string& in_tag, DEP_LEVEL level, const std::string& message) const;
 
 	/**
 	 * Get a deprecated child range and log a deprecation message
@@ -451,43 +450,43 @@ public:
 	 * @param message An explanation of the deprecation, possibly mentioning an alternative
 	 * @note The deprecation message will be a level 3 deprecation.
 	 */
-	const_child_itors get_deprecated_child_range(config_key_type old_key, const std::string& in_tag, DEP_LEVEL level, const std::string& message) const;
+	const_child_itors get_deprecated_child_range(std::string_view old_key, const std::string& in_tag, DEP_LEVEL level, const std::string& message) const;
 
-	config& add_child(config_key_type key);
-	config& add_child(config_key_type key, const config& val);
+	config& add_child(std::string_view key);
+	config& add_child(std::string_view key, const config& val);
 	/**
 	 * @param key the tag name
 	 * @param val the contents of the tag
 	 * @param index is the index of the new child within all children of type key.
 	 */
-	config& add_child_at(config_key_type key, const config &val, std::size_t index);
+	config& add_child_at(std::string_view key, const config &val, std::size_t index);
 
-	config &add_child(config_key_type key, config &&val);
+	config &add_child(std::string_view key, config &&val);
 
 	/**
 	 * Returns a reference to the attribute with the given @a key.
 	 * Creates it if it does not exist.
 	 */
-	attribute_value& operator[](config_key_type key);
+	attribute_value& operator[](std::string_view key);
 
 	/**
 	 * Returns a reference to the attribute with the given @a key
 	 * or to a dummy empty attribute if it does not exist.
 	 */
-	const attribute_value& operator[](config_key_type key) const;
+	const attribute_value& operator[](std::string_view key) const;
 
 	/**
 	 * Returns a pointer to the attribute with the given @a key
 	 * or nullptr if it does not exist.
 	 */
-	const attribute_value *get(config_key_type key) const;
+	const attribute_value *get(std::string_view key) const;
 
     /**
      * Chooses a value. If the value specified by @a key is
      * blank, then @a default_key is chosen instead.
      * If both values are blank or not set, then an empty value is returned.
      */
-    const attribute_value& get_or(const config_key_type key, const config_key_type default_key) const;
+    const attribute_value& get_or(const std::string_view key, const std::string_view default_key) const;
 
 	/**
 	 * Function to handle backward compatibility
@@ -499,7 +498,7 @@ public:
 	 * @param message An explanation of the deprecation, to be output if @a old_key is present.
 	 * @note The deprecation message will be a level 1 deprecation.
 	*/
-	const attribute_value &get_old_attribute(config_key_type key, const std::string &old_key, const std::string& in_tag, const std::string& message = "") const;
+	const attribute_value &get_old_attribute(std::string_view key, const std::string &old_key, const std::string& in_tag, const std::string& message = "") const;
 
 	/**
 	 * Get a deprecated attribute without a direct substitute,
@@ -509,7 +508,7 @@ public:
 	 * @param level The deprecation level
 	 * @param message An explanation of the deprecation, possibly mentioning an alternative
 	 */
-	const attribute_value& get_deprecated_attribute(config_key_type old_key, const std::string& in_tag, DEP_LEVEL level, const std::string& message) const;
+	const attribute_value& get_deprecated_attribute(std::string_view old_key, const std::string& in_tag, DEP_LEVEL level, const std::string& message) const;
 
 	/**
 	 * Inserts an attribute into the config
@@ -517,7 +516,7 @@ public:
 	 * @param value The attribute value
 	 */
 	template<typename T>
-	void insert(config_key_type key, T&& value)
+	void insert(std::string_view key, T&& value)
 	{
 		operator[](key) = std::forward<T>(value);
 	}
@@ -526,11 +525,11 @@ public:
 	 * Returns a reference to the first child with the given @a key.
 	 * Creates the child if it does not yet exist.
 	 */
-	config &child_or_add(config_key_type key);
+	config &child_or_add(std::string_view key);
 
-	bool has_attribute(config_key_type key) const;
+	bool has_attribute(std::string_view key) const;
 
-	void remove_attribute(config_key_type key);
+	void remove_attribute(std::string_view key);
 	void merge_attributes(const config &);
 
 	template<typename... T>
@@ -581,21 +580,21 @@ public:
 	 * Returns the first child of tag @a key with a @a name attribute
 	 * containing @a value.
 	 */
-	optional_config_impl<config> find_child(config_key_type key, const std::string &name,
+	optional_config_impl<config> find_child(std::string_view key, const std::string &name,
 		const std::string &value);
 
-	optional_config_impl<const config> find_child(config_key_type key, const std::string &name,
+	optional_config_impl<const config> find_child(std::string_view key, const std::string &name,
 		const std::string &value) const
 	{ return const_cast<config *>(this)->find_child(key, name, value); }
 
-	config& find_mandatory_child(config_key_type key, const std::string &name,
+	config& find_mandatory_child(std::string_view key, const std::string &name,
 		const std::string &value);
 
-	const config& find_mandatory_child(config_key_type key, const std::string &name,
+	const config& find_mandatory_child(std::string_view key, const std::string &name,
 		const std::string &value) const;
 
 private:
-	void clear_children_impl(config_key_type key);
+	void clear_children_impl(std::string_view key);
 
 public:
 	template<typename... T>
@@ -604,17 +603,17 @@ public:
 	/**
 	 * Moves all the children with tag @a key from @a src to this.
 	 */
-	void splice_children(config& src, config_key_type key);
+	void splice_children(config& src, std::string_view key);
 
-	void remove_child(config_key_type key, std::size_t index);
+	void remove_child(std::string_view key, std::size_t index);
 
 	/**
 	 * Removes all children with tag @a key for which @a p returns true.
 	 * If no predicate is provided, all @a key tags will be removed.
 	 */
-	void remove_children(config_key_type key, const std::function<bool(const config&)>& p = {});
+	void remove_children(std::string_view key, const std::function<bool(const config&)>& p = {});
 
-	void recursive_clear_value(config_key_type key);
+	void recursive_clear_value(std::string_view key);
 
 	void clear();
 	void clear_all_children();
@@ -756,8 +755,8 @@ public:
 	 * @param val the contents of the tag
 	 * @param pos is the index of the new child in _all_ children.
 	 */
-	config& add_child_at_total(config_key_type key, const config &val, std::size_t pos);
-	std::size_t find_total_first_of(config_key_type key, std::size_t start = 0);
+	config& add_child_at_total(std::string_view key, const config &val, std::size_t pos);
+	std::size_t find_total_first_of(std::string_view key, std::size_t start = 0);
 
 	typedef boost::iterator_range<all_children_iterator> all_children_itors;
 	typedef boost::iterator_range<const_all_children_iterator> const_all_children_itors;
@@ -788,17 +787,17 @@ public:
 	/** In-order iteration over all children. */
 	template<typename Self>
 	auto all_children_view(this Self&& self)
-	{ return self.ordered_children | std::views::transform(&config::any_tag_view<Self>); }
+	{ return self.ordered_children_ | std::views::transform(&config::any_tag_view<Self>); }
 
 #else
 
 	/** In-order iteration over all children. */
 	auto all_children_view() const
-	{ return ordered_children | utils::views::transform(&config::any_tag_view<const config&>); }
+	{ return ordered_children_ | utils::views::transform(&config::any_tag_view<const config&>); }
 
 	/** In-order iteration over all children. */
 	auto all_children_view()
-	{ return ordered_children | utils::views::transform(&config::any_tag_view<config&>); }
+	{ return ordered_children_ | utils::views::transform(&config::any_tag_view<config&>); }
 
 #endif // __cpp_explicit_this_parameter
 
@@ -868,10 +867,10 @@ public:
 	/**
 	 * Adds children from @a cfg.
 	 */
-	void append_children(const config &cfg, config_key_type key);
+	void append_children(const config &cfg, std::string_view key);
 
 	/** Moves children with the given name from the given config to this one. */
-	void append_children_by_move(config& cfg, config_key_type key);
+	void append_children_by_move(config& cfg, std::string_view key);
 
 	/**
 	 * Adds attributes from @a cfg.
@@ -882,17 +881,17 @@ public:
 	 * All children with the given key will be merged
 	 * into the first element with that key.
 	 */
-	void merge_children(config_key_type key);
+	void merge_children(std::string_view key);
 
 	/**
 	 * All children with the given key and with equal values
 	 * of the specified attribute will be merged into the
 	 * element with that key and that value of the attribute
 	 */
-	void merge_children_by_attribute(config_key_type key, config_key_type attribute);
+	void merge_children_by_attribute(std::string_view key, std::string_view attribute);
 
 	//this is a cheap O(1) operation
-	void swap(config& cfg);
+	void swap(config& cfg) noexcept;
 
 	/**
 	 * Returns true if this object represents valid WML,
@@ -918,14 +917,14 @@ private:
 	/** A list of all children of this node. */
 	child_map children_;
 
-	std::vector<child_pos> ordered_children;
+	std::vector<child_pos> ordered_children_;
 };
 
 
 using optional_config = optional_config_impl<config>;
 using optional_const_config = optional_config_impl<const config>;
 /** Implement non-member swap function for std::swap (calls @ref config::swap). */
-void swap(config& lhs, config& rhs);
+void swap(config& lhs, config& rhs) noexcept;
 
 namespace detail
 {
@@ -945,7 +944,7 @@ namespace detail
 }
 
 template<typename... Args>
-inline config::config(config_key_type first, Args&&... args)
+inline config::config(std::string_view first, Args&&... args)
 {
 	detail::config_construct_unpack(*this, first, std::forward<Args>(args)...);
 }

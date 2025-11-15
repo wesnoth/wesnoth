@@ -29,6 +29,7 @@
 #include "serialization/preprocessor.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
+#include "utils/charconv.hpp"
 #include "utils/iterable_pair.hpp"
 #include "game_version.hpp"
 
@@ -837,7 +838,10 @@ void server::login_client(boost::asio::yield_context yield, SocketPtr socket)
 	}
 
 	simple_wml::node& player_cfg = games_and_users_list_.root().add_child("user");
-	auto [new_player, inserted] = player_connections_.emplace(
+
+	player_iterator new_player;
+	bool inserted;
+	std::tie(new_player, inserted) = player_connections_.emplace(
 		socket,
 		username,
 		player_cfg,
@@ -2469,7 +2473,7 @@ void server::sample_handler(
 		return;
 	}
 
-	request_sample_frequency = atoi(parameters.c_str());
+	request_sample_frequency = utils::from_chars<int>(parameters).value_or(0);
 	if(request_sample_frequency <= 0) {
 		*out << "Sampling turned off.";
 	} else {
@@ -3367,7 +3371,7 @@ int main(int argc, char** argv)
 				p = q;
 			}
 		} else if((val == "--port" || val == "-p") && arg + 1 != argc) {
-			port = atoi(argv[++arg]);
+			port = utils::from_chars<int>(argv[++arg]).value_or(0);
 		} else if(val == "--keepalive") {
 			keep_alive = true;
 		} else if(val == "--help" || val == "-h") {
@@ -3406,7 +3410,7 @@ int main(int argc, char** argv)
 			setsid();
 #endif
 		} else if(val == "--request_sample_frequency" && arg + 1 != argc) {
-			wesnothd::request_sample_frequency = atoi(argv[++arg]);
+			wesnothd::request_sample_frequency = utils::from_chars<int>(argv[++arg]).value_or(0);
 		} else {
 			ERR_SERVER << "unknown option: " << val;
 			return 2;

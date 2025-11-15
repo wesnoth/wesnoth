@@ -41,6 +41,7 @@
 #include "units/map.hpp"
 #include "units/types.hpp"
 #include "units/unit.hpp"
+#include "utils/general.hpp"
 #include "variable.hpp"
 
 #include <cmath>
@@ -115,20 +116,21 @@ std::string data::to_string() const {
 }
 
 recruitment::recruitment(rca_context& context, const config& cfg)
-	: candidate_action(context, cfg),
-	important_hexes_(),
-	important_terrain_(),
-	own_units_in_combat_counter_(0),
-	average_local_cost_(),
-	cheapest_unit_costs_(),
-	combat_cache_(),
-	recruit_situation_change_observer_(),
-	average_lawful_bonus_(0.0),
-	recruitment_instructions_(),
-	recruitment_instructions_turn_(-1),
-	own_units_count_(),
-	total_own_units_(0),
-	scouts_wanted_(0)
+	: candidate_action(context, cfg)
+	, important_hexes_()
+	, important_terrain_()
+	, own_units_in_combat_counter_(0)
+	, average_local_cost_()
+	, cheapest_unit_costs_()
+	, combat_cache_()
+	, recruit_situation_change_observer_()
+	, average_lawful_bonus_(0.0)
+	, recruitment_instructions_()
+	, recruitment_instructions_turn_(-1)
+	, own_units_count_()
+	, total_own_units_(0)
+	, scouts_wanted_(0)
+	, combat_dummies_()
 {
 	if (cfg["state"] == "save_gold") {
 		state_ = SAVE_GOLD;
@@ -162,6 +164,7 @@ double recruitment::evaluate() {
 	// When evaluate() is called the first time this turn,
 	// we'll retrieve the recruitment-instruction aspect.
 	if (resources::tod_manager->turn() != recruitment_instructions_turn_) {
+		combat_dummies_.clear();
 		recruitment_instructions_ = get_recruitment_instructions();
 		integrate_recruitment_pattern_in_recruitment_instructions();
 		recruitment_instructions_turn_ = resources::tod_manager->turn();
@@ -1078,28 +1081,38 @@ const double* recruitment::get_cached_combat_value(const std::string& a, const s
 	return best_value;
 }
 
+namespace {
+	const_attack_ptr get_unit_attack(const nonempty_unit_const_ptr& up, size_t i_wep) {
+		if (i_wep < up->attacks().size()) {
+			return up->attacks()[i_wep].shared_from_this();
+		}
+		else {
+			return nullptr;
+		}
+	}
+}
 /**
  * For Combat Analysis.
  * This struct encapsulates all information for one attack simulation.
  * One attack simulation is defined by the unit-types, the weapons and the units defenses.
  */
 struct attack_simulation {
-	const unit_type* attacker_type;
-	const unit_type* defender_type;
+	nonempty_unit_const_ptr attacker_u;
+	nonempty_unit_const_ptr defender_u;
 	const battle_context_unit_stats attacker_stats;
 	const battle_context_unit_stats defender_stats;
 	combatant attacker_combatant;
 	combatant defender_combatant;
 
-	attack_simulation(const unit_type* attacker, const unit_type* defender,
+	attack_simulation(nonempty_unit_const_ptr attacker, nonempty_unit_const_ptr defender,
 			double attacker_defense, double defender_defense,
-			const const_attack_ptr& att_weapon, const const_attack_ptr& def_weapon,
+			size_t i_att_weapon, size_t i_def_weapon,
 			int average_lawful_bonus) :
-			attacker_type(attacker),
-			defender_type(defender),
-			attacker_stats(attacker, att_weapon, true, defender, def_weapon,
+			attacker_u(std::move(attacker)),
+			defender_u(std::move(defender)),
+			attacker_stats(attacker_u, map_location(), i_att_weapon, true, defender_u, map_location(), get_unit_attack(defender_u, i_def_weapon),
 					std::round(defender_defense), average_lawful_bonus),
-			defender_stats(defender, def_weapon, false, attacker, att_weapon,
+			defender_stats(defender_u, map_location(), i_def_weapon, false, attacker_u, map_location(), get_unit_attack(attacker_u, i_att_weapon),
 					std::round(attacker_defense), average_lawful_bonus),
 			attacker_combatant(attacker_stats),
 			defender_combatant(defender_stats)
@@ -1129,14 +1142,14 @@ struct attack_simulation {
 	}
 	double get_avg_hp_of_combatant(bool attacker) const {
 		const combatant& combatant = (attacker) ? attacker_combatant : defender_combatant;
-		const unit_type* unit_type = (attacker) ? attacker_type : defender_type;
+		auto u = (attacker) ? attacker_u : defender_u;
 		double avg_hp = combatant.average_hp(0);
 
 		// handle poisson
 		avg_hp -= combatant.poisoned * game_config::poison_amount;
 
 		avg_hp = std::max(0., avg_hp);
-		avg_hp = std::min(static_cast<double>(unit_type->hitpoints()), avg_hp);
+		avg_hp = std::min(static_cast<double>(u->max_hitpoints()), avg_hp);
 		return avg_hp;
 	}
 };
@@ -1147,30 +1160,36 @@ struct attack_simulation {
  * The function will use battle_context::better_combat() to decide which weapon to use.
  */
 void recruitment::simulate_attack(
-			const unit_type* const attacker, const unit_type* const defender,
+			const unit_type* const attacker_t, const unit_type* const defender_t,
 			double attacker_defense, double defender_defense,
 			double* damage_to_attacker, double* damage_to_defender) const {
-	if(!attacker || !defender || !damage_to_attacker || !damage_to_defender) {
+	if(!attacker_t || !defender_t || !damage_to_attacker || !damage_to_defender) {
 		ERR_AI_RECRUITMENT << "nullptr pointer in simulate_attack()";
 		return;
 	}
+	auto attacker = get_dummy_of_type(attacker_t).first;
+	auto defender = get_dummy_of_type(defender_t).second;
+
 	const_attack_itors attacker_weapons = attacker->attacks();
 	const_attack_itors defender_weapons = defender->attacks();
 
 	std::shared_ptr<attack_simulation> best_att_attack;
 
 	// Let attacker choose weapon
-	for (const attack_type& att_weapon : attacker_weapons) {
+	for(size_t i_att_weapon = 0; i_att_weapon < attacker_weapons.size(); ++i_att_weapon) {
+	//for (const attack_type&  : attacker_weapons) {
 		std::shared_ptr<attack_simulation> best_def_response;
 		// Let defender choose weapon
-		for (const attack_type& def_weapon : defender_weapons) {
-			if (att_weapon.range() != def_weapon.range()) {
+		for(size_t i_def_weapon = 0; i_def_weapon < defender_weapons.size(); ++i_def_weapon) {
+
+		//for (const attack_type& def_weapon : defender_weapons) {
+			if (attacker_weapons[i_att_weapon].range() != defender_weapons[i_def_weapon].range()) {
 				continue;
 			}
 			auto simulation = std::make_shared<attack_simulation>(
 					attacker, defender,
 					attacker_defense, defender_defense,
-					att_weapon.shared_from_this(), def_weapon.shared_from_this(), average_lawful_bonus_);
+					i_att_weapon, i_def_weapon, average_lawful_bonus_);
 			if (!best_def_response || simulation->better_result(best_def_response.get(), true)) {
 				best_def_response = simulation;
 			}
@@ -1181,7 +1200,7 @@ void recruitment::simulate_attack(
 			best_def_response.reset(new attack_simulation(
 					attacker, defender,
 					attacker_defense, defender_defense,
-					att_weapon.shared_from_this(), nullptr, average_lawful_bonus_));
+					i_att_weapon, -1, average_lawful_bonus_));
 		}
 		if (!best_att_attack || best_def_response->better_result(best_att_attack.get(), false)) {
 			best_att_attack = best_def_response;
@@ -1192,9 +1211,23 @@ void recruitment::simulate_attack(
 		return;
 	}
 
-	*damage_to_defender += (defender->hitpoints() - best_att_attack->get_avg_hp_of_defender());
-	*damage_to_attacker += (attacker->hitpoints() - best_att_attack->get_avg_hp_of_attacker());
+	*damage_to_defender += (defender->max_hitpoints() - best_att_attack->get_avg_hp_of_defender());
+	*damage_to_attacker += (attacker->max_hitpoints() - best_att_attack->get_avg_hp_of_attacker());
 }
+
+std::pair<nonempty_unit_const_ptr, nonempty_unit_const_ptr> recruitment::get_dummy_of_type(const unit_type* ut) const
+{
+	if (auto p_u = utils::find(combat_dummies_, ut)) {
+		return p_u->second;
+	} else {
+		auto u = std::make_pair(
+			nonempty_unit_const_ptr(unit::create(*ut, get_side(), false)),
+			nonempty_unit_const_ptr(unit::create(*ut, get_side(), false)));
+		combat_dummies_.emplace(ut,  u);
+		return u;
+	}
+}
+
 
 /**
  * For Configuration / Aspect "recruitment-instructions"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-09-21 23:01-0500\n"
+"POT-Creation-Date: 2025-10-20 20:10-0500\n"
 "PO-Revision-Date: 2012-04-01 16:53+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -4475,7 +4475,7 @@ msgid "Invalid deprecation level $level (should be 1-4)"
 msgstr ""
 
 #. [lua]: wml_actions.deprecated_message
-#: data/lua/wml-tags.lua:887
+#: data/lua/wml-tags.lua:891
 msgid "Invalid deprecation level (should be 1-4)"
 msgstr ""
 
@@ -9364,77 +9364,77 @@ msgstr ""
 msgid "Value: ‘$value’ Previous: ‘$previous_value’"
 msgstr "$error, vrednost „$value“, prethodna „$previous_value“ kod $pos"
 
-#: src/serialization/string_utils.cpp:560
+#: src/serialization/string_utils.cpp:556
 msgid "prefix_milli^m"
 msgstr "m"
 
-#: src/serialization/string_utils.cpp:561
+#: src/serialization/string_utils.cpp:557
 msgid "prefix_micro^µ"
 msgstr "µ"
 
-#: src/serialization/string_utils.cpp:562
+#: src/serialization/string_utils.cpp:558
 msgid "prefix_nano^n"
 msgstr "n"
 
-#: src/serialization/string_utils.cpp:563
+#: src/serialization/string_utils.cpp:559
 msgid "prefix_pico^p"
 msgstr "p"
 
-#: src/serialization/string_utils.cpp:564
+#: src/serialization/string_utils.cpp:560
 msgid "prefix_femto^f"
 msgstr "f"
 
-#: src/serialization/string_utils.cpp:565
+#: src/serialization/string_utils.cpp:561
 msgid "prefix_atto^a"
 msgstr "a"
 
-#: src/serialization/string_utils.cpp:566
+#: src/serialization/string_utils.cpp:562
 msgid "prefix_zepto^z"
 msgstr "z"
 
-#: src/serialization/string_utils.cpp:567
+#: src/serialization/string_utils.cpp:563
 msgid "prefix_yocto^y"
 msgstr "y"
 
 #. TRANSLATORS: Translate the K in KiB only
-#: src/serialization/string_utils.cpp:580
+#: src/serialization/string_utils.cpp:576
 msgid "prefix_kibi^K"
 msgstr "k"
 
-#: src/serialization/string_utils.cpp:581
+#: src/serialization/string_utils.cpp:577
 msgid "prefix_kilo^k"
 msgstr "k"
 
-#: src/serialization/string_utils.cpp:583
+#: src/serialization/string_utils.cpp:579
 msgid "prefix_mega^M"
 msgstr "M"
 
-#: src/serialization/string_utils.cpp:584
+#: src/serialization/string_utils.cpp:580
 msgid "prefix_giga^G"
 msgstr "G"
 
-#: src/serialization/string_utils.cpp:585
+#: src/serialization/string_utils.cpp:581
 msgid "prefix_tera^T"
 msgstr "T"
 
-#: src/serialization/string_utils.cpp:586
+#: src/serialization/string_utils.cpp:582
 msgid "prefix_peta^P"
 msgstr "P"
 
-#: src/serialization/string_utils.cpp:587
+#: src/serialization/string_utils.cpp:583
 msgid "prefix_exa^E"
 msgstr "E"
 
-#: src/serialization/string_utils.cpp:588
+#: src/serialization/string_utils.cpp:584
 msgid "prefix_zetta^Z"
 msgstr "Z"
 
-#: src/serialization/string_utils.cpp:589
+#: src/serialization/string_utils.cpp:585
 msgid "prefix_yotta^Y"
 msgstr "Y"
 
 #. TRANSLATORS: Translate the i in (for example) KiB only
-#: src/serialization/string_utils.cpp:604
+#: src/serialization/string_utils.cpp:600
 msgid "infix_binary^i"
 msgstr "i"
 
@@ -9507,11 +9507,11 @@ msgstr "protivničko selo"
 msgid "Owned village"
 msgstr "zaposednuto selo"
 
-#: src/theme.cpp:314
+#: src/theme.cpp:330
 msgid "border_size should be between 0.0 and 0.5."
 msgstr "border_size treba da je između 0,0 i 0,5."
 
-#: src/theme.cpp:565 src/theme.cpp:570
+#: src/theme.cpp:581 src/theme.cpp:586
 msgid "Hotkey(s): "
 msgstr ""
 
@@ -9525,23 +9525,23 @@ msgstr "doba dana"
 msgid "This Time of Day is only a Stub!"
 msgstr ""
 
-#: src/units/abilities.cpp:1053
+#: src/units/abilities.cpp:1052
 #, fuzzy
 #| msgid "slowed: "
 msgid "Owned: "
 msgstr "usporena: "
 
 #. TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
-#: src/units/abilities.cpp:1057
+#: src/units/abilities.cpp:1056
 msgid "Taught: "
 msgstr ""
 
 #. TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
-#: src/units/abilities.cpp:1061
+#: src/units/abilities.cpp:1060
 msgid "Taught: (by an enemy): "
 msgstr ""
 
-#: src/units/abilities.cpp:1074
+#: src/units/abilities.cpp:1073
 msgid "Used by opponent: "
 msgstr ""
 
@@ -9554,7 +9554,7 @@ msgid "Parry:"
 msgstr "pariranje: "
 
 #. TRANSLATORS: Current value for WML code set_min_range, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:501
+#: src/units/attack_type.cpp:485
 #, fuzzy
 #| msgid "damage"
 #| msgid_plural "damage"
@@ -9562,14 +9562,14 @@ msgid "$number min range"
 msgstr "štete"
 
 #. TRANSLATORS: Current value for WML code increase_min_range, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:508
+#: src/units/attack_type.cpp:492
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> min range"
 msgstr "po potezu"
 
 #. TRANSLATORS: Current value for WML code set_max_range, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:515
+#: src/units/attack_type.cpp:499
 #, fuzzy
 #| msgid "damage"
 #| msgid_plural "damage"
@@ -9577,14 +9577,14 @@ msgid "$number max range"
 msgstr "štete"
 
 #. TRANSLATORS: Current value for WML code increase_max_range, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:522
+#: src/units/attack_type.cpp:506
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> max range"
 msgstr "po potezu"
 
 #. TRANSLATORS: Current value for WML code increase_damage, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:529
+#: src/units/attack_type.cpp:513
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> damage"
@@ -9594,7 +9594,7 @@ msgstr[1] "po potezu"
 msgstr[2] "po potezu"
 msgstr[3] "po potezu"
 
-#: src/units/attack_type.cpp:538
+#: src/units/attack_type.cpp:522
 #, fuzzy
 #| msgid "damage"
 #| msgid_plural "damage"
@@ -9606,7 +9606,7 @@ msgstr[2] "štete"
 msgstr[3] "štete"
 
 #. TRANSLATORS: Current value for WML code increase_attacks, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:547
+#: src/units/attack_type.cpp:531
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> strike"
@@ -9617,7 +9617,7 @@ msgstr[2] "po potezu"
 msgstr[3] "po potezu"
 
 #. TRANSLATORS: Current value for WML code set_attacks, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:556
+#: src/units/attack_type.cpp:540
 #, fuzzy
 #| msgid "strike"
 #| msgid_plural "strikes"
@@ -9629,35 +9629,35 @@ msgstr[2] "udara"
 msgstr[3] "udar"
 
 #. TRANSLATORS: Current value for WML code set_accuracy, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:565
+#: src/units/attack_type.cpp:549
 #, fuzzy
 #| msgid "% parry"
 msgid "$number| accuracy"
 msgstr "% pariranja"
 
 #. TRANSLATORS: Current value for WML code increase_accuracy, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:572
+#: src/units/attack_type.cpp:556
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent|%</span> accuracy"
 msgstr "po potezu"
 
 #. TRANSLATORS: Current value for WML code set_parry, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:579
+#: src/units/attack_type.cpp:563
 #, fuzzy
 #| msgid "% parry"
 msgid "$number parry"
 msgstr "% pariranja"
 
 #. TRANSLATORS: Current value for WML code increase_parry, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:586
+#: src/units/attack_type.cpp:570
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> parry"
 msgstr "po potezu"
 
 #. TRANSLATORS: Current value for WML code set_movement_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:593
+#: src/units/attack_type.cpp:577
 msgid "$number movement point"
 msgid_plural "$number movement points"
 msgstr[0] ""
@@ -9666,7 +9666,7 @@ msgstr[2] ""
 msgstr[3] ""
 
 #. TRANSLATORS: Current value for WML code increase_movement_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:602
+#: src/units/attack_type.cpp:586
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> movement point"
@@ -9677,7 +9677,7 @@ msgstr[2] "po potezu"
 msgstr[3] "po potezu"
 
 #. TRANSLATORS: Current value for WML code set_attacks_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:611
+#: src/units/attack_type.cpp:595
 #, fuzzy
 #| msgid "damage"
 #| msgid_plural "damage"
@@ -9689,7 +9689,7 @@ msgstr[2] "štete"
 msgstr[3] "štete"
 
 #. TRANSLATORS: Current value for WML code increase_attacks_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:620
+#: src/units/attack_type.cpp:604
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> attack used"
@@ -9782,17 +9782,17 @@ msgid "This unit is a leader and cannot be dismissed."
 msgstr ""
 "Ova jedinica je nevidljiva. Neprijatelji je ne mogu videti niti napasti."
 
-#: src/units/unit.cpp:2008
+#: src/units/unit.cpp:2007
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/units/unit.cpp:2014
+#: src/units/unit.cpp:2013
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "po potezu"
 
-#: src/units/unit.cpp:2024
+#: src/units/unit.cpp:2023
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> move"
@@ -9802,25 +9802,25 @@ msgstr[1] "po potezu"
 msgstr[2] "po potezu"
 msgstr[3] "po potezu"
 
-#: src/units/unit.cpp:2030
+#: src/units/unit.cpp:2029
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "po potezu"
 
-#: src/units/unit.cpp:2034
+#: src/units/unit.cpp:2033
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "po potezu"
 
-#: src/units/unit.cpp:2039
+#: src/units/unit.cpp:2038
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "po potezu"
 
-#: src/units/unit.cpp:2043
+#: src/units/unit.cpp:2042
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
@@ -9831,13 +9831,13 @@ msgstr[1] "po potezu"
 msgstr[2] "po potezu"
 msgstr[3] "po potezu"
 
-#: src/units/unit.cpp:2050
+#: src/units/unit.cpp:2049
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "po potezu"
 
-#: src/units/unit.cpp:2535
+#: src/units/unit.cpp:2534
 msgid "$effect_description per level"
 msgstr "$effect_description po nivou"
 

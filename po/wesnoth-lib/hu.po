@@ -9,13 +9,13 @@
 # Széll András <szell.andris@gmail.com>, 2018.
 # Krutki Tamás <krtamas@0x64.org>, 2018.
 # Pazurik L. Ádám <pazurik.laszlo.adam@gmail.com>, 2018.
-# Berda Jenő <big4billy@gmail.com>, 2024.
+# Berda Jenő <big4billy@gmail.com>, 2024-2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: hu-lib_1.5\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-09-21 23:01-0500\n"
-"PO-Revision-Date: 2025-07-15 22:33+0200\n"
+"PO-Revision-Date: 2025-10-26 02:05+0200\n"
 "Last-Translator: Berda Jenő <big4billy@gmail.com>\n"
 "Language-Team: Hungarian <>\n"
 "Language: hu\n"
@@ -5045,7 +5045,7 @@ msgstr "Partnerkereső"
 #: data/gui/themes/default/dialogs/lobby_main.cfg:102
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:129
 msgid "Presets"
-msgstr ""
+msgstr "Előbeállítások"
 
 #. [label]: id=map
 #: data/gui/themes/default/dialogs/lobby_main.cfg:153
@@ -5059,10 +5059,8 @@ msgstr "A csatlakozáshoz jelszó szükséges"
 
 #. [button]: id=delete_preset
 #: data/gui/themes/default/dialogs/lobby_main.cfg:305
-#, fuzzy
-#| msgid "Delete Unit"
 msgid "Delete this preset"
-msgstr "Egység törlése"
+msgstr "Előbeállítás törlése"
 
 #. [toggle_button]: id=filter_vacant_slots
 #: data/gui/themes/default/dialogs/lobby_main.cfg:477
@@ -5778,10 +5776,8 @@ msgstr "Térkép mérete:"
 #: data/gui/themes/default/dialogs/mp_create_game/default_resolution.cfg:460
 #: data/gui/themes/default/dialogs/mp_create_game/small_resolution.cfg:378
 #: data/gui/themes/default/dialogs/mp_create_game/tiny_resolution.cfg:335
-#, fuzzy
-#| msgid "Saved Games"
 msgid "Save Preset"
-msgstr "Mentett állások"
+msgstr "Előbeállítás mentése"
 
 #. [row]
 #: data/gui/themes/default/dialogs/mp_faction_select.cfg:210
@@ -6119,14 +6115,12 @@ msgstr "A kör eleji automatikus lépések letiltása"
 #. [toggle_button]: id=show_turn_dialog
 #: data/gui/themes/default/dialogs/preferences/01_general.cfg:114
 msgid "Turn prompt"
-msgstr ""
+msgstr "Kör párbeszédablak"
 
 #. [toggle_button]: id=show_turn_dialog
 #: data/gui/themes/default/dialogs/preferences/01_general.cfg:115
-#, fuzzy
-#| msgid "Display a dialog at the beginning of your turn"
 msgid "Display a prompt at the beginning of your turn"
-msgstr "Egy párbeszédablakot dob fel, amikor a te köröd következik"
+msgstr "A köröd elején egy párbeszédablak jelenik meg"
 
 #. [toggle_button]: id=whiteboard_on_start
 #: data/gui/themes/default/dialogs/preferences/01_general.cfg:128
@@ -7767,10 +7761,8 @@ msgid "Unit type saved."
 msgstr "Egységtípus mentve."
 
 #: src/gui/dialogs/editor/generator_settings.cpp:38
-#, fuzzy
-#| msgid "/1000 tiles"
 msgid "$count/1000 tiles"
-msgstr "/1000 terület"
+msgstr "$count/1000 mező"
 
 #: src/gui/dialogs/editor/generator_settings.cpp:43
 msgid "Coastal"
@@ -7789,18 +7781,16 @@ msgid "Find File"
 msgstr "Fájl keresése"
 
 #: src/gui/dialogs/file_dialog.cpp:191
-#, fuzzy
-#| msgid "Winter Elven Castle"
 msgid "enter filename"
-msgstr "Téli tünde várkastély"
+msgstr "add meg a fájlnevet"
 
 #: src/gui/dialogs/file_dialog.cpp:201
 msgid "invalid extension (use $extensions)"
-msgstr ""
+msgstr "érvénytelen kiterjesztés (használja ezeket: $extensions)"
 
 #: src/gui/dialogs/file_dialog.cpp:208
 msgid "filename contains whitespace"
-msgstr ""
+msgstr "a fájl neve szóközt tartalmaz"
 
 #: src/gui/dialogs/file_dialog.cpp:237
 msgid "Open"
@@ -8328,10 +8318,8 @@ msgid "Game"
 msgstr "Játék"
 
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:81
-#, fuzzy
-#| msgid "Hotkey Settings"
 msgid "Hotkey(s): $bindings"
-msgstr "Gyorsbillentyűk beállításai"
+msgstr "Gyorsbillentyű(k): $bindings"
 
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:308
 msgid "Invalid Color"
@@ -8853,10 +8841,8 @@ msgid "Select/Move/Attack"
 msgstr "Kiválasztás/mozgás/támadás"
 
 #: src/hotkey/hotkey_command.cpp:84
-#, fuzzy
-#| msgid "Touch"
 msgid "Touch Hex"
-msgstr "Érintés"
+msgstr "Mező megfogása"
 
 #: src/hotkey/hotkey_command.cpp:85
 msgid "Animate Map"

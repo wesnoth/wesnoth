@@ -18,7 +18,12 @@
 #include "map/location.hpp"
 #include "units/ptr.hpp"
 
-class unit_ability_list;
+
+#include <vector>
+class config;
+
+class active_ability_list;
+
 namespace unit_abilities
 {
 bool filter_base_matches(const config& cfg, int def);
@@ -30,18 +35,17 @@ enum EFFECTS { EFFECT_DEFAULT=1, EFFECT_CUMULABLE=2, EFFECT_WITHOUT_CLAMP_MIN_MA
 /**
  * Substitute gettext variables in name and description of abilities and specials
  * @param str                  The string in which the substitution is to be done
- * @param tag_name             Tag name of the special (plague, leadership, chance_to_hit etc.)
- * @param ability_or_special   The config for the special (for example, contents inside [plague][/plague] etc.)
+ * @param ab                   The special (for example  [plague][/plague] etc.)
  *
  * @return The string `str` with all gettext variables substitutes with corresponding special properties
  */
-std::string substitute_variables(const std::string& str, const std::string& tag_name, const config& ability_or_special);
+std::string substitute_variables(const std::string& str, const unit_ability_t& ab);
 
 struct individual_effect
 {
 	individual_effect() : type(NOT_USED), value(0), ability(nullptr),
 		loc(map_location::null_location()) {}
-	void set(value_modifier t, int val, const config *abil,const map_location &l);
+	void set(value_modifier t, int val, const config& abil,const map_location &l);
 	value_modifier type;
 	int value;
 	const config *ability;
@@ -51,7 +55,7 @@ struct individual_effect
 class effect
 {
 	public:
-		effect(const unit_ability_list& list, int def, const const_attack_ptr& attacker = const_attack_ptr(), EFFECTS wham = EFFECT_DEFAULT);
+		effect(const active_ability_list& list, int def, const const_attack_ptr& attacker = const_attack_ptr(), EFFECTS wham = EFFECT_DEFAULT);
 		// Provide read-only access to the effect list:
 		typedef std::vector<individual_effect>::const_iterator iterator;
 		typedef std::vector<individual_effect>::const_iterator const_iterator;

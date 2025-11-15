@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3.12+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-08-19 15:14 UTC\n"
-"PO-Revision-Date: 2025-06-24 22:23+0300\n"
+"PO-Revision-Date: 2025-10-14 13:16+0200\n"
 "Last-Translator: Jaakko Saarikko <jaakko.saarikko@protonmail.com>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.6\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #. [campaign]: id=The_Hammer_of_Thursagan
 #. [achievement_group]
@@ -109,10 +109,8 @@ msgstr "Aarnikotka metsästäjä"
 
 #. [achievement]: id=gryphon_hunter
 #: data/campaigns/The_Hammer_of_Thursagan/achievements.cfg:9
-#, fuzzy
-#| msgid "Kill the Gryphon leader in High Pass"
 msgid "Kill the Gryphon leader in <i>High Pass</i>."
-msgstr "Surmaa Aarnikotkien johtaja skenaariossa Korkiasola"
+msgstr "Surmaa Aarnikotkien johtaja skenaariossa <i>Korkiasola</i>."
 
 #. [achievement]: id=conqueror_of_the_forest
 #: data/campaigns/The_Hammer_of_Thursagan/achievements.cfg:16
@@ -121,10 +119,8 @@ msgstr "Metsän valloittaja"
 
 #. [achievement]: id=conqueror_of_the_forest
 #: data/campaigns/The_Hammer_of_Thursagan/achievements.cfg:17
-#, fuzzy
-#| msgid "Defeat an enemy leader in Forbidden Forest"
 msgid "Defeat an enemy leader in <i>Forbidden Forest</i>."
-msgstr "Kukista vihollisjohtajat skenaariossa Kielletty metsä"
+msgstr "Kukista vihollisjohtajat skenaariossa <i>Kielletty metsä</i>."
 
 #. [achievement]: id=new_thursagan
 #: data/campaigns/The_Hammer_of_Thursagan/achievements.cfg:23
@@ -133,10 +129,8 @@ msgstr "Uusi Thursagan"
 
 #. [achievement]: id=new_thursagan
 #: data/campaigns/The_Hammer_of_Thursagan/achievements.cfg:24
-#, fuzzy
-#| msgid "Complete The Underlevels on challenging difficulty"
 msgid "Complete <i>The Underlevels</i> on challenging difficulty."
-msgstr "Läpäise skenaario Alatasot haastavalla vaikeustasolla"
+msgstr "Läpäise skenaario <i>Alatasot</i> haastavalla vaikeustasolla."
 
 #. [scenario]: id=01_At_the_East_Gate
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_the_East_Gate.cfg:5
@@ -170,8 +164,8 @@ msgid ""
 msgstr ""
 "Mutta örkkien, villimiesten ja jäljellä olevien epäkuolleiden uhka ei ollut "
 "vielä ohi. Kääpiöt vartioivat kaikkia Knalgan reittejä tarkoin. Vuonna 550 "
-"Wesnothin löytämisen jälkeen Itäportin kapteeni sai varoituksen, että pieni "
-"joukkio ryöväriörkkejä oli havaittu."
+"Wesnothin perustamisen jälkeen Itäportin kapteeni sai varoituksen, että "
+"pieni joukkio ryöväriörkkejä oli havaittu."
 
 #. [side]
 #. [side]: type=Dwarvish Lord, id=Hamel
@@ -304,8 +298,8 @@ msgid ""
 "your hold was lost to the orcs long ago."
 msgstr ""
 "Kal Kartha, ahjojen linnoitus ja meikäläisten wanha synnyinpaikka? Sekö Kal "
-"Kartha? Emme oo kuulleet teistä vuosiin! On luultu, ett' linnoituksenne "
-"menetettiin örkeille kauan sitten."
+"Kartha? Emme oo kuulleet teistä vuosikausiin! Linnoituksenne luultiin "
+"menetetyn örkeille aikoja sitte."
 
 #. [message]: speaker=Movrur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_the_East_Gate.cfg:180
@@ -324,13 +318,13 @@ msgid ""
 "In that case, we had best consult Lord Hamel. We may yet be able to send you "
 "some aid against these orcish marauders."
 msgstr ""
-"Siinä tapaukses' meidän on parasta kuulla Hamel-herraa. Me voimme viel' "
+"Siinä tapaukses' meidän on parasta kuulla ylimys Hamelia. Me voimme viel' "
 "lähettää teille apua näitä örkkiryövääjiä vastaan."
 
 #. [message]: speaker=Movrur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/01_At_the_East_Gate.cfg:190
 msgid "If you wish it. Let us see what you can offer."
-msgstr "Jos sitä toivot. Näytä meille, mitä voitte tarjota."
+msgstr "Jos niin haluut. Näytä meille, mitä voitte tarjota."
 
 #. [scenario]: id=02_Reclaiming_the_Past
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:5
@@ -361,7 +355,7 @@ msgid ""
 "I make known to ye Angarthing, loremaster in training."
 msgstr ""
 "Aiglondur, tuomas' uutiset ovat järkyttävii, vaik' pikkujutult' "
-"waikuttaakin. Ilmoitan teil' Angarthingin, harjoittelevan taruntuntijan."
+"waikuttaakin. Ilmoitan teil' Angarthingin, harjoittelevan taruntietäjän."
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:103
@@ -390,14 +384,14 @@ msgid ""
 "arrived."
 msgstr ""
 "Ei, se oli vain... huonoa onnea. Oomme just' löytäneet magmapedin uudel', "
-"tarpeeks' kuumalle ahjolle jälleentakomaan hajonnut Thursaganin wasara. "
+"tarpeeks' kuumalle ahjolle jälleentakomaan hajonnu Thursaganin wasara. "
 "Toimme taruntuntijan tarkastaan paikka, mut' örkit väijyttivät meit' hänen "
 "tulonsa jälkeen."
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:118
 msgid "The Hammer of Thursagan?"
-msgstr "Thursaganin vasara?"
+msgstr "Thursaganin vasarako?"
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:123
@@ -454,7 +448,7 @@ msgid ""
 "of Loremasters has given me leave to reveal that the craft secrets were not, "
 "actually, quite as lost as we believed."
 msgstr ""
-"Niin on sanottu, Hamel-herra, ja se on totta. Paitsi tää: Taruntietäjien "
+"Niin on kerrottu, ylimys Hamel, ja se on totta. Paitsi tää: Taruntietäjien "
 "veljeskunta on antanut mulle luvan lähteen paljastaan, ett' taonnan salat "
 "eivät ookkaan ihan niin kadonneet kuin uskoimme."
 
@@ -544,7 +538,7 @@ msgstr ""
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:193
 msgid "Indeed, Lord Hamel, that is what we came to ask."
-msgstr "Totisesti, Hamel-herra, just' sitä me tultiin pyytämään."
+msgstr "Totisesti, ylimys Hamel, just' sitä me tultiin pyytämään."
 
 #. [message]: speaker=Hamel
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:198
@@ -586,12 +580,12 @@ msgstr ""
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:235
 msgid "Aye, my Lord Hamel."
-msgstr "Kyllä, Hamel-herra."
+msgstr "Kyllä, ylimys Hamel."
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:240
 msgid "The Order thanks you, Lord Hamel."
-msgstr "Weljeskunta kiittää teitä, Hamel-herra."
+msgstr "Weljeskunta kiittää teitä, ylimys Hamel."
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/02_Reclaiming_the_Past.cfg:245
@@ -618,9 +612,9 @@ msgid ""
 "orcs and men were all too common."
 msgstr ""
 "Angarthing, Aiglondur, Movrur ja kääpiöjoukot matkasivat nopeasti itään "
-"Pohjoisen liiton asuttujen maiden halki. Pian he saapuivat villimpään "
-"rajamaahan, missä vihamielisten, suurten örkki- ja miesjoukkojen "
-"ryöstöretket olivat aivan liian yleisiä."
+"Pohjoisen liiton asuinmaiden halki. Pian he saapuivat villimpään rajamaahan, "
+"missä vihamielisten, suurten örkki- ja miesjoukkojen ryöstöretket olivat "
+"aivan liian yleisiä."
 
 #. [side]: type=Orcish Warrior, id=Marth-Tak
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:57
@@ -803,7 +797,7 @@ msgid ""
 msgstr ""
 "Pötyä. Voi hyvinkin olla, ett' nää örkit nujersivat kääpiöitten waruskunnan "
 "ja rosvosivat heidän tarvikkeensa. Sun ei pidä tehdä tollaisia "
-"johtopäätöksiä moisist' vähäpätöisistä yhteenotoista."
+"johtopäätöksiä moisist' vähäpätöisistä kahakoista."
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/03_Strange_Allies.cfg:297
@@ -884,7 +878,7 @@ msgid ""
 "We must push through quickly; there is a vicious storm coming in behind us. "
 "Being caught in a blizzard on those heights would be no laughing matter."
 msgstr ""
-"Meidän täytyy painaa läpi pian. Takanamme on tulossa paha myrsky. Ei ois "
+"Meidän täytyy painaa läpi pian. Takanamme on tulos' paha myrsky. Ei ois "
 "naurun asia joutua lumimyrskyn kouriin noissa korkeuksissa."
 
 #. [message]: speaker=Aiglondur
@@ -953,7 +947,7 @@ msgid ""
 "however, we must content ourselves with pressing onward toward Kal Kartha."
 msgstr ""
 "Toivon niin, kansamme rauhan ja turvallisuuden tähden. Nyt meidän on "
-"kuitenkin tyydyttävä painelemaan kohti Kal Karthaa."
+"kuitenkin tyydyttävä paineleen kohti Kal Karthaa."
 
 #. [scenario]: id=05_Fear
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:5
@@ -994,7 +988,7 @@ msgid ""
 "something doesn’t feel right here."
 msgstr ""
 "Meidän pitäis' olla Kal Karthaa ympäröivän asuinmaan laitamilla, mut' täällä "
-"jokin ei tunnu oikeelta."
+"jokin ei tunnu oleen kohdallaan."
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:189
@@ -1051,7 +1045,7 @@ msgstr "<i>Ei voi olla...</i>"
 #. [message]: speaker=slaver
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:284
 msgid "<i>Now, be silent while the master speaks.</i>"
-msgstr "<i>Ole nyt waiti kun mestari puhuu.</i>"
+msgstr "<i>Ole nyt waiti, kun mestari puhuu.</i>"
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:289
@@ -1064,7 +1058,7 @@ msgid ""
 "Fellow dwarves, hail! Kinsman Movrur, are ye back so soon from your journey "
 "to Knalga?"
 msgstr ""
-"Hei, kääpiötoverit! Movrur-toveri, ootkos noin pian palannut matkaltas' "
+"Hei, kääpiötoverit! Movrur-toveri, noinko pian oot palannut matkaltas' "
 "Knalgaan?"
 
 #. [message]: speaker=Movrur
@@ -1124,8 +1118,8 @@ msgid ""
 "while they... go about their business."
 msgstr ""
 "Kyllä, örkkejä. Kal Karthan laitamat ovat vaarallisia paikkoja. Me "
-"jouduttiin varamaan lisää joukkojamme tänne ihan vaan suojeleen talonpoikii, "
-"kun he... hoitavat asioitaan."
+"jouduttiin waramaan lisää joukkojamme tänne ihan vaan suojeleen talonpoikii, "
+"kun he... hoitavat hommiaan."
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/05_Fear.cfg:339
@@ -1338,8 +1332,9 @@ msgid ""
 "To win, either move Aiglondur to the signpost and Angarthing next to him, or "
 "move Angarthing to the signpost and Aiglondur next to him."
 msgstr ""
-"Voitat joko siirtämällä Aiglondur tienviittaan ja Angarthing hänen viereensä "
-"tai siirtämällä Angarthing tienviittaan ja Aiglondur hänen viereensä."
+"Voitat joko siirtämällä Aiglondur tienviittaan ja Angarthing hänen "
+"viereensä, tai siirtämällä Angarthing tienviittaan ja Aiglondur hänen "
+"viereensä."
 
 #. [unit]: type=Elvish Scout, id=Elurin
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/06_Forbidden_Forest.cfg:194
@@ -1477,8 +1472,8 @@ msgid ""
 "Ahhh... more stinky-midgets, come to get killed just like these cowards in "
 "their den."
 msgstr ""
-"Ahhh... lisää haisevia käppänöitä. Tulevat tapettaviksi aivan kuin nuo "
-"pelkurit kolossaan."
+"Ahhh... lisää haisevia käppänöitä. Tulevat tapettaviksi aivan kuten nuo "
+"arkajalat kolossaan."
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_The_Siege_of_Kal_Kartha.cfg:278
@@ -1519,7 +1514,7 @@ msgstr "<i>Sanoinks' mä jotain, mit' ei ois pitäny?</i>"
 #. [message]: speaker=Movrur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_The_Siege_of_Kal_Kartha.cfg:334
 msgid "<i>Never mind. I shall deal with you later.</i>"
-msgstr "<i>Antaa olla. Hoidan sut myöhemmin.</i>"
+msgstr "<i>Antaa olla. Hoitelen sut myöhemmin.</i>"
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_The_Siege_of_Kal_Kartha.cfg:339
@@ -1538,10 +1533,10 @@ msgid ""
 "old lord fell in battle against the besieging orcs. Karrag himself was "
 "wounded near to death; none thought he would recover."
 msgstr ""
-"Niinkö? No, tiiät noi asiat mua paremmin, taruntuntija. Karrag-herra raatoi "
-"pitkää wuotta palauttaakseen taontaperinteen. Hänet ylennettiin, kun wanha "
-"herramme kaatui taistelus' piirittävii örkkei vastaan. Karrag ite haavoittui "
-"liki kuoliaaks'. Hänen ei uskottu toipuvan."
+"Niinkö? No, sä tiiät noi asiat mua paremmin, taruntuntija. Ylimys Karrag "
+"raatoi pitkää wuotta palauttaakseen taontaperinteen. Hänet ylennettiin, kun "
+"wanha ylimyksemme kaatui taistelus' piirittävii örkkei vastaan. Karrag ite "
+"haavoittui liki kuoliaaks'. Hänen ei uskottu toipuvan."
 
 #. [message]: speaker=Movrur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_The_Siege_of_Kal_Kartha.cfg:349
@@ -1567,8 +1562,8 @@ msgid ""
 "and use its power to smash all enemies that oppose us."
 msgstr ""
 "Kyllä. Wasara voi olla hajonnut, mut' se viel' säilyttää joitain sen wanhoja "
-"voimia. Tiedollas' ja avullas', taruntuntija, me voidaan jälleentakoa "
-"wasaran ja sen voimalla murskata kaik' meit' vastustavat wiholliset."
+"voimia. Tiedollas' ja avullas', taruntuntija, me voidaan jälleentakoa wasara "
+"ja sen voimalla murskata kaik' meit' vastustavat wiholliset."
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_The_Siege_of_Kal_Kartha.cfg:364
@@ -1581,7 +1576,7 @@ msgid ""
 "Is it not? Lord Karrag has wielded it in battle to great effect, even broken "
 "as it is."
 msgstr ""
-"Eikö oo? Karrag-herra on käyttänyt sitä taistossa suurel' teholla jopa "
+"Eikö oo? Karrag-ylimys on käyttäny sit' taistossa suurel' teholla jopa "
 "rikkonaisena."
 
 #. [message]: speaker=Movrur
@@ -1593,9 +1588,9 @@ msgid ""
 "knowledge and mastery of lore, no more than that."
 msgstr ""
 "<i>Lopeta puhuminen, senkin taliaivo.</i> Se onkin riimutaonnan woimaa, jota "
-"todistat. Hölmö ei ottais' rikkonaista asetta taistoon, saati arvokasta "
+"todistat. Järkevä ei ottais' hajonnutta asetta taistoon, saati arvokasta "
 "muinaisjäännettä kuten wasaraa. Karrag pitää sitä tietonsa ja perimätiedon "
-"hallintansa symbolina, ei sen kummempaa."
+"hallintansa symbolina. Ei sen kummempaa."
 
 #. [message]: speaker=Dulcatulos
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/07_The_Siege_of_Kal_Kartha.cfg:379
@@ -1651,8 +1646,8 @@ msgid ""
 "I shall go take my place by Lord Karrag. See to it that you offer him the "
 "respect that he is due."
 msgstr ""
-"Menen ottamaan paikkani Karrag-herran rinnalla. Katsokaakin, ett' osoitatte "
-"hänelle kunnioitusta, joka hänelle kuuluu."
+"Menen ottamaan paikkani ylimys Karragin rinnalla. Katsokaakin, ett' "
+"osoitatte hänelle kunnioitusta, joka hänelle kuuluu."
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_The_Court_of_Karrag.cfg:192
@@ -1687,9 +1682,9 @@ msgid ""
 "dirtgrubbers. You can be part of the fist that smites them through the power "
 "of our ancient heirloom, the Hammer of Thursagan."
 msgstr ""
-"Kaik' kääpiöt ovat sukua, ja heidän on voitettava örkit, ihmiset ja muut "
-"mullantonkijat. Voitte olla osana iskemäs' niit' entisaikain perintömme, "
-"Thursaganin wasaran, woiman kautta."
+"Kaik' kääpiöt ovat sukua, ja heidän on voitettava örkit, ihmiset sun muut "
+"mullantonkijat. Te voitte kuulua ensimmäisiin, jotk' iskee niit' entisaikain "
+"perintömme, Thursaganin wasaran, woimalla."
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_The_Court_of_Karrag.cfg:217
@@ -1713,7 +1708,7 @@ msgstr ""
 "Aseena? Eijei, taruntuntija... erehdyt aikeistani. Tiiät yhtä lailla kuin "
 "ma, ett' wasara tuskin on mitätön ase. Wasaras' on kääpiöitten, aidon "
 "kansan, sielu. Juurikin se takoi lihamme ja veremme, yhdistää tahtomme sekä "
-"muovaa päättäväisyytemme. Se on ylivoimamme symboli aitona Irdyan kansana, "
+"muovaa päättäväisyytemme. Se on ylivaltamme symboli aitona Irdyan kansana, "
 "ja mielikuva, jota muut rodut kunnioittavat ja pelkäävät!"
 
 #. [message]: speaker=Angarthing
@@ -1774,8 +1769,8 @@ msgid ""
 "to a lord in his own holding... and one who holds the very soul of the "
 "dwarves in his hand. It is unthinkable!"
 msgstr ""
-"Mestari, teidän ei tarvitse vastata tälle hölmölle. Jopa taruntuntijalle "
-"ylimykselle saneleminen omassa linnoituksessaan... ja sille, joka pitää "
+"Mestari, teidän ei tarvi vastata tälle hölmölle. Jopa taruntuntijalle "
+"ylimykselle saneleminen omas' linnoituksessaan... ja hälle, joka pitää "
 "itsensä kääpiöitten sielun käsissään. Se on ajattelematonta!"
 
 #. [message]: speaker=Angarthing
@@ -1784,7 +1779,7 @@ msgid ""
 "The Law speaks. Against him with the eyes to see, no deception can hold. I "
 "AM A WITNESS!"
 msgstr ""
-"Laki puhuu. Kell' on silmät näkemiseen, ei petos voi häntä pidättää. MÄ OON "
+"Laki puhuu. Kell' on silmät näkemiseen, ei petos voi häntä pi'ättää. MÄ OON "
 "TODISTAJA!"
 
 #. [message]: speaker=Movrur
@@ -1795,7 +1790,7 @@ msgstr "Mestari —"
 #. [message]: speaker=Dulcatulos
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_The_Court_of_Karrag.cfg:298
 msgid "No... no... it is horrible! My lord, how did you come to this?"
-msgstr "Ei... ei... se on kauheaa! Herrani, mitenkä teille on noin käynyt?"
+msgstr "Ei... ei... onpa kauheaa! Herrani, mitenkä teille on noin käynyt?"
 
 #. [message]: speaker=Karrag
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_The_Court_of_Karrag.cfg:303
@@ -1826,8 +1821,8 @@ msgstr ""
 msgid ""
 "Neither side can recruit or recall. You must win with the troops you have."
 msgstr ""
-"Kumpikaan puoli ei voi värvätä tai kutsua veteraaneja. Sinun on voitettava "
-"joukoilla, joita sinulla on."
+"Kumpikaan osapuoli ei voi värvätä tai kutsua veteraaneja. Sinun on "
+"voitettava joukoilla, joita sinulla on."
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/08_The_Court_of_Karrag.cfg:338
@@ -1855,7 +1850,7 @@ msgid ""
 msgstr ""
 "Meidän on seurattava. Pian! Hänen puheensa wasaran tärviöstä lienee vain "
 "hullun houretta, muttemme voi sallia uhkaa, ett' hänen inha loitsu saattais' "
-"onnistua."
+"onnistuu."
 
 #. [scenario]: id=09_The_Underlevels
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:5
@@ -1897,7 +1892,7 @@ msgstr ""
 msgid ""
 "Where <i>is</i> Karrag? We can’t have been more than seconds behind him."
 msgstr ""
-"Missä Karrag <i>on</i>? Emme voi olla kuin vain tovin hänestä jäljessä."
+"Missä Karrag <i>on</i>? Emme voi olla kuin vain tovin hänest' jäljessä."
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:296
@@ -1922,7 +1917,7 @@ msgid ""
 "hellspawn the lich will summon. AXES UP!"
 msgstr ""
 "Kyllä. Karrag kutsuu joukkonsa taistoon. Vain pimeyden jumalat tietävät, "
-"mitä se kuolonherra manaa esiin hornasta. KIRVEISIIN!"
+"mitä hornamaista se kuolonherra manaa esiin. KIRVEISIIN!"
 
 #. [message]: speaker=unit
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:333
@@ -1972,12 +1967,12 @@ msgstr "Käykäämme eespäin."
 #. [message]: speaker=unit
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:522
 msgid "There’s something behind this door. I shall break it down!"
-msgstr "Tämän oven takana on jotain. Murran sen auki!"
+msgstr "Tän oven takana on jotain. Murran sen auki!"
 
 #. [message]: speaker=unit
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:528
 msgid "There’s something behind this door."
-msgstr "Tämän oven takana on jotain."
+msgstr "Tän oven takana on jotain."
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:533
@@ -1992,7 +1987,7 @@ msgstr "Näyttää siltä, ett' tän portin takana on riimu!"
 #. [message]: speaker=unit
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:608
 msgid "The dirtgrubber-friends have come! Slay them all!"
-msgstr "Mullantonkijoiden ystävät ovat tulleet! Surmatkaa ne kaikki!"
+msgstr "Mullantonkijoitten ystävät ovat tulleet! Surmatkaa ne kaikki!"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:613
@@ -2019,8 +2014,8 @@ msgid ""
 "Fools! Even should you defeat me, the master’s ritual will soon be complete "
 "and you shall all become his slaves!"
 msgstr ""
-"Tolvanat! Vaikka nujertaisittekin minut, mestarin rituaali on pian walmis, "
-"ja teistä kaikista tulee hänen orjiaan!"
+"Tolvanat! Vaikka nujertaisittekin mut, mestarin rituaali on pian walmis, ja "
+"teistä kaikista tulee hänen orjiaan!"
 
 #. [message]: speaker=Aragoth
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:664
@@ -2163,13 +2158,13 @@ msgstr "Ei, jos me pysäytämme sut. KIRVEISIIN!"
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:1246
 msgid "No! No! No! Dirtgrubbers must die! The true people must rule all!"
 msgstr ""
-"Ei! Ei! Ei! Mullantonkijoiden täytyy kuolla! Aidon kansan täytyy hallita "
+"Ei! Ei! Ei! Mullantonkijoitten täytyy kuolla! Aidon kansan täytyy hallita "
 "kaikkea!"
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:1251
 msgid "The ‘true people’ speak through our axes. Die, foul lich."
-msgstr "‘Aito kansa‘ puhuu kirveittemme kautta. Kuole, häijy kuolonherra."
+msgstr "\"Aito kansa\" puhuu kirveittemme kautta. Kuole, häijy kuolonherra."
 
 #. [message]: speaker=Karrag
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:1256
@@ -2228,7 +2223,7 @@ msgid ""
 "Imbeciles! Once the master’s dark rite is complete, I will return to slay "
 "you myself!"
 msgstr ""
-"Wähämieliset! Kun mestarin pimeyden riitti on valmis, mä palaan tappamaan "
+"Wähämieliset! Kun mestarin pimennon riitti on valmis, mä palaan tappamaan "
 "teidät itse!"
 
 #. [message]: speaker=Aragoth
@@ -2253,7 +2248,7 @@ msgstr ""
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:1374
 msgid "I feel as if the life is being sapped out of my body!"
-msgstr "Tuntuu kuin elämää imetään pois ruumiistani!"
+msgstr "Tuntuu kuin elämää imettäis' pois ruumiistani!"
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_The_Underlevels.cfg:1379
@@ -2403,8 +2398,8 @@ msgid ""
 "Aiglondur, the Protector dubs you a Lord Companion of the Alliance. He bids "
 "you return to Knalga as soon as convenient, for your investiture."
 msgstr ""
-"Aiglondur, suojelija nimittää sinut liiton ylimysedustajaksi. Hän pyytää "
-"sinua palaamaan Knalgaan niin pian kuin sopii virkaanastujaisiasi varten."
+"Aiglondur, suojelija nimittää teidät liiton ylimysedustajaksi. Hän pyytää "
+"teitä palaamaan Knalgaan niin pian kuin sopii virkaanastujaisianne varten."
 
 #. [message]: speaker=Dulcatulos
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_Epilogue.cfg:179
@@ -2430,7 +2425,7 @@ msgstr ""
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_Epilogue.cfg:195
 msgid "It would be fitting. The Loremasters will approve."
-msgstr "Se ois sopivaa. Taruntuntijat hyväksyvät."
+msgstr "Se sopis'. Taruntuntijat hyväksyvät."
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_Epilogue.cfg:200
@@ -2455,8 +2450,8 @@ msgid ""
 "add, through the study of herb and mineral lore, the ability to cure poison."
 msgstr ""
 "Kääpiöannalistit ovat tämän muinaisen ja ylpeän rodun historioitsijoita. "
-"Heitä on vähän ja heidän olemassaolonsa ei ole Suuren mantereen muiden "
-"kansojen tiedossa yleisesti. Todistajan kykyihin he lisäävät kyvyn parantaa "
+"Heitä on vähän ja heidän olemassaolonsa ei ole Suurmantereen muiden kansojen "
+"tiedossa yleisesti. Todistajan kykyihin he lisäävät kyvyn parantaa "
 "myrkytyksestä yrtti- ja mineraalitiedon tutkimuksilla."
 
 #. [attack]: type=impact
@@ -2675,8 +2670,8 @@ msgid ""
 "Without Dulcatulos to explain our actions to the Kal Karthans we’ll have to "
 "fight them, too. Our mission has failed."
 msgstr ""
-"Ilman Dulcatulosia selittämässä tekojamme Kal Karthansin väelle meidän on "
-"taisteltava heitäkin vastaan. Tehtävämme epäonnistui."
+"Ilman Dulcatulosia selittämässä tekojamme Kal Karthansin väelle joudumme "
+"tappeleen heitäkin vastaan. Tehtävämme epäonnistui."
 
 #~ msgid ""
 #~ "More experienced dwarvish fighters wear heavy chain mail and plate armor, "

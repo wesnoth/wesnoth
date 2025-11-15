@@ -219,8 +219,7 @@ std::string terrain_topic_generator::operator()() const {
 		ss << type_.help_topic_text().str() << "\n";
 	}
 
-	std::shared_ptr<terrain_type_data> tdata = load_terrain_types_data();
-
+	std::shared_ptr tdata = terrain_type_data::get();
 	if(!tdata) {
 		WRN_HP << "When building terrain help topics, we couldn't acquire any terrain types data";
 		return ss.str();
@@ -531,30 +530,26 @@ std::string unit_topic_generator::operator()() const {
 			((trait["availability"].str() == "musthave") ? must_have_traits : random_traits).emplace_back(lang_trait_name, ref_id);
 		}
 
-		bool line1 = !must_have_traits.empty();
-		bool line2 = !random_traits.empty() && type_.num_traits() > must_have_traits.size();
-
-		if(line1) {
+		int nr_random_traits = type_.num_traits() - must_have_traits.size() - must_have_nameless_traits;
+		if(must_have_traits.empty()) {
+			if(nr_random_traits > 0) {
+				ss << _("Traits") << " "<< VNGETTEXT("(1 of):", "(random $number of):", nr_random_traits, utils::string_map{{"number", std::to_string(nr_random_traits)}}) << font::nbsp;
+				print_trait_list(ss, random_traits);
+				ss << "\n";
+			}
+		} else {
 			ss << _("Traits");
-			if(line2) {
+			if(nr_random_traits > 0) {
 				ss << "\n(" << must_have_traits.size() << "):" << font::nbsp;
 				print_trait_list(ss, must_have_traits);
 
-				ss << "\n" << "("
-				   << (type_.num_traits() - must_have_traits.size() - must_have_nameless_traits)
-				   << "):" << font::nbsp;
+				ss << "\n" << VNGETTEXT("(1 of):", "(random $number of):", nr_random_traits, utils::string_map{{"number", std::to_string(nr_random_traits)}}) << font::nbsp;
 				print_trait_list(ss, random_traits);
 			} else {
 				ss << ":" << font::nbsp;
 				print_trait_list(ss, must_have_traits);
 			}
 			ss << "\n";
-		} else {
-			if(line2) {
-				ss << _("Traits") << " (" << (type_.num_traits() - must_have_nameless_traits) << "):" << font::nbsp;
-				print_trait_list(ss, random_traits);
-				ss << "\n";
-			}
 		}
 	}
 
@@ -829,7 +824,7 @@ std::string unit_topic_generator::operator()() const {
 	// Terrain Modifiers table
 	//
 	std::stringstream().swap(table_ss);
-	if(std::shared_ptr<terrain_type_data> tdata = load_terrain_types_data()) {
+	if(std::shared_ptr tdata = terrain_type_data::get()) {
 		// Print the terrain modifier table of the unit.
 		ss << "\n" << markup::tag("header", _("Terrain Modifiers"));
 

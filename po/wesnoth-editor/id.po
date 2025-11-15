@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2.2\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-09-21 23:01-0500\n"
+"POT-Creation-Date: 2025-10-20 20:10-0500\n"
 "PO-Revision-Date: 2011-11-24 17:32+0700\n"
 "Last-Translator: Yuris <yuris_wicaksana@yahoo.com>\n"
 "Language-Team: none\n"
@@ -336,115 +336,115 @@ msgstr ""
 msgid "<span color='red'><span face='DejaVuSans'>✘</span> $msg</span>"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:217
+#: src/editor/map/context_manager.cpp:223
 #, fuzzy
 #| msgid "Map loaded from scenario"
 msgid "Load Map or Scenario"
 msgstr "Peta diload dari skenario"
 
-#: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1146
+#: src/editor/map/context_manager.cpp:319 src/editor/map/map_context.cpp:1146
 #, fuzzy
 #| msgid "(New Map)"
 msgid "New Map"
 msgstr "(Peta Baru)"
 
-#: src/editor/map/context_manager.cpp:326 src/editor/map/map_context.cpp:1146
+#: src/editor/map/context_manager.cpp:332 src/editor/map/map_context.cpp:1146
 #, fuzzy
 #| msgid "(New Map)"
 msgid "New Scenario"
 msgstr "(Peta Baru)"
 
-#: src/editor/map/context_manager.cpp:374
+#: src/editor/map/context_manager.cpp:380
 msgid "No Recent Files"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:402
+#: src/editor/map/context_manager.cpp:408
 #, fuzzy
 #| msgid "(New Map)"
 msgid "Unnamed Area"
 msgstr "(Peta Baru)"
 
-#: src/editor/map/context_manager.cpp:428
+#: src/editor/map/context_manager.cpp:434
 #, fuzzy
 #| msgid "(New Map)"
 msgid "New Side"
 msgstr "(Peta Baru)"
 
-#: src/editor/map/context_manager.cpp:467
+#: src/editor/map/context_manager.cpp:473
 msgid "Apply Mask"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:476
+#: src/editor/map/context_manager.cpp:482
 msgid "Error loading mask"
 msgstr "Error meload samaran"
 
-#: src/editor/map/context_manager.cpp:496
+#: src/editor/map/context_manager.cpp:502
 msgid "Identifier:"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:496
+#: src/editor/map/context_manager.cpp:502
 msgid "Rename Area"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:510
+#: src/editor/map/context_manager.cpp:516
 msgid "Choose Target Map"
 msgstr "Pilih target peta"
 
-#: src/editor/map/context_manager.cpp:519
-#: src/editor/map/context_manager.cpp:944
+#: src/editor/map/context_manager.cpp:525
+#: src/editor/map/context_manager.cpp:992
 msgid "Error loading map"
 msgstr "Error meload peta"
 
-#: src/editor/map/context_manager.cpp:651
+#: src/editor/map/context_manager.cpp:699
 #, fuzzy
 #| msgid "Save the Map As"
 msgid "Save Map As"
 msgstr "Simpan Peta Sebagai"
 
-#: src/editor/map/context_manager.cpp:668
-#: src/editor/map/context_manager.cpp:717 src/editor/map/map_context.cpp:273
+#: src/editor/map/context_manager.cpp:716
+#: src/editor/map/context_manager.cpp:765 src/editor/map/map_context.cpp:273
 #: src/editor/palette/location_palette.cpp:263
 msgid "Error"
 msgstr "Error"
 
-#: src/editor/map/context_manager.cpp:669
-#: src/editor/map/context_manager.cpp:718
+#: src/editor/map/context_manager.cpp:717
+#: src/editor/map/context_manager.cpp:766
 #, fuzzy
 #| msgid "Do you really want to quit?"
 msgid "Do you really want to save $type1 in $type2 folder?"
 msgstr "Apakah anda benar-benar mau keluar?"
 
-#: src/editor/map/context_manager.cpp:677
-#: src/editor/map/context_manager.cpp:885
+#: src/editor/map/context_manager.cpp:725
+#: src/editor/map/context_manager.cpp:933
 msgid "This map is already open."
 msgstr "Peta ini sudah terbuka."
 
-#: src/editor/map/context_manager.cpp:700
+#: src/editor/map/context_manager.cpp:748
 #, fuzzy
 #| msgid "Save the Map As"
 msgid "Save Scenario As"
 msgstr "Simpan Peta Sebagai"
 
-#: src/editor/map/context_manager.cpp:726
+#: src/editor/map/context_manager.cpp:774
 #, fuzzy
 #| msgid "This map is already open."
 msgid "This scenario is already open."
 msgstr "Peta ini sudah terbuka."
 
-#: src/editor/map/context_manager.cpp:759
+#: src/editor/map/context_manager.cpp:807
 msgid "No random map generators found."
 msgstr "Tidak ada generator peta acak ditemukan."
 
-#: src/editor/map/context_manager.cpp:772
-#: src/editor/map/context_manager.cpp:777
+#: src/editor/map/context_manager.cpp:820
+#: src/editor/map/context_manager.cpp:825
 msgid "Map creation failed."
 msgstr "Penciptaan peta gagal."
 
-#: src/editor/map/context_manager.cpp:792
+#: src/editor/map/context_manager.cpp:840
 msgid "Unsaved Changes"
 msgstr "Perubahan Tidak Tersimpan"
 
-#: src/editor/map/context_manager.cpp:793
+#: src/editor/map/context_manager.cpp:841
 #, fuzzy
 #| msgid ""
 #| "Do you want to discard all changes you made to the map since the last "
@@ -454,28 +454,28 @@ msgstr ""
 "Apakah anda mau batalkan semua perubahan yang anda lakukan ke peta ini sejak "
 "simpanan terakhir?"
 
-#: src/editor/map/context_manager.cpp:846
+#: src/editor/map/context_manager.cpp:894
 #, fuzzy
 #| msgid "Map saved."
 msgid "Scenario saved."
 msgstr "Peta tersimpan."
 
-#: src/editor/map/context_manager.cpp:861
+#: src/editor/map/context_manager.cpp:909
 #, fuzzy
 #| msgid "Map saved."
 msgid "Map saved"
 msgstr "Peta tersimpan."
 
-#: src/editor/map/context_manager.cpp:936
+#: src/editor/map/context_manager.cpp:984
 msgid "Loaded embedded map data"
 msgstr "Data peta termasuk diload"
 
-#: src/editor/map/context_manager.cpp:937
-#: src/editor/map/context_manager.cpp:940
+#: src/editor/map/context_manager.cpp:985
+#: src/editor/map/context_manager.cpp:988
 msgid "Map loaded from scenario"
 msgstr "Peta diload dari skenario"
 
-#: src/editor/map/context_manager.cpp:940
+#: src/editor/map/context_manager.cpp:988
 #, fuzzy
 #| msgid ""
 #| "Loaded referenced map file:\n"

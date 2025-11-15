@@ -27,7 +27,6 @@
 #include "deprecation.hpp"
 #include "game_version.hpp"
 
-#include "lexical_cast.hpp"
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/markup.hpp"
@@ -47,6 +46,115 @@ static lg::log_domain log_unit("unit");
 
 static lg::log_domain log_wml("wml");
 #define ERR_WML LOG_STREAM(err, log_wml)
+
+
+unit_ability_t::unit_ability_t(std::string tag, config cfg, bool inside_attack)
+	: tag_(std::move(tag))
+	, id_(cfg["id"].str())
+	, cfg_(std::move(cfg))
+{
+	do_compat_fixes(cfg_, inside_attack);
+}
+
+void unit_ability_t::do_compat_fixes(config& cfg, bool inside_attack)
+{
+	if (!cfg["backstab"].blank()) {
+		deprecated_message("backstab= in weapon specials", DEP_LEVEL::INDEFINITE, "", "Use [filter_opponent] with a formula instead; the code can be found in data/core/macros/ in the WEAPON_SPECIAL_BACKSTAB macro.");
+	}
+	if (cfg["backstab"].to_bool()) {
+		const std::string& backstab_formula = "enemy_of(self, flanker) and not flanker.petrified where flanker = unit_at(direction_from(loc, other.facing))";
+		config& filter_opponent = cfg.child_or_add("filter_opponent");
+		config& filter_opponent2 = filter_opponent.empty() ? filter_opponent : filter_opponent.add_child("and");
+		filter_opponent2["formula"] = backstab_formula;
+	}
+	cfg.remove_attribute("backstab");
+
+	std::string filter_teacher = inside_attack ? "filter_self" : "filter";
+
+	if (cfg.has_child("filter_adjacent")) {
+		if (inside_attack) {
+			deprecated_message("[filter_adjacent]in weapon specials in [specials] tags", DEP_LEVEL::INDEFINITE, "", "Use [filter_self][filter_adjacent] instead.");
+		} else {
+			deprecated_message("[filter_adjacent] in abilities", DEP_LEVEL::INDEFINITE, "", "Use [filter][filter_adjacent] instead or other unit filter.");
+		}
+	}
+	if (cfg.has_child("filter_adjacent_location")) {
+		if (inside_attack) {
+			deprecated_message("[filter_adjacent_location]in weapon specials in [specials] tags", DEP_LEVEL::INDEFINITE, "", "Use [filter_self][filter_location][filter_adjacent_location] instead.");
+		} else {
+			deprecated_message("[filter_adjacent_location] in abilities", DEP_LEVEL::INDEFINITE, "", "Use [filter][filter_location][filter_adjacent_location] instead.");
+		}
+	}
+
+	//These tags are were never supported inside [specials] according to the wiki.
+	for (config& filter_adjacent : cfg.child_range("filter_adjacent")) {
+		if (filter_adjacent["count"].empty()) {
+			//Previously count= behaved differenty in abilities.cpp and in filter.cpp according to the wiki
+			deprecated_message("omitting count= in [filter_adjacent] in abilities", DEP_LEVEL::FOR_REMOVAL, version_info("1.21"), "specify count explicitly");
+			filter_adjacent["count"] = map_location::parse_directions(filter_adjacent["adjacent"]).size();
+		}
+		cfg.child_or_add(filter_teacher).add_child("filter_adjacent", filter_adjacent);
+	}
+	cfg.remove_children("filter_adjacent");
+	for (config& filter_adjacent : cfg.child_range("filter_adjacent_location")) {
+		if (filter_adjacent["count"].empty()) {
+			//Previously count= bahves differenty in abilities.cpp and in filter.cpp according to the wiki
+			deprecated_message("omitting count= in [filter_adjacent_location] in abilities", DEP_LEVEL::FOR_REMOVAL, version_info("1.21"), "specify count explicitly");
+			filter_adjacent["count"] = map_location::parse_directions(filter_adjacent["adjacent"]).size();
+		}
+		cfg.child_or_add(filter_teacher).add_child("filter_location").add_child("filter_adjacent_location", filter_adjacent);
+	}
+	cfg.remove_children("filter_adjacent_location");
+}
+
+void unit_ability_t::parse_vector(const config& abilities_cfg, ability_vector& res, bool inside_attack)
+{
+	for (auto item : abilities_cfg.all_children_range()) {
+		res.push_back(unit_ability_t::create(item.key, item.cfg, inside_attack));
+	}
+}
+
+ability_vector unit_ability_t::cfg_to_vector(const config& abilities_cfg, bool inside_attack)
+{
+	ability_vector res;
+	parse_vector(abilities_cfg, res, inside_attack);
+	return res;
+}
+
+ability_vector unit_ability_t::filter_tag(const ability_vector& abs, const std::string& tag)
+{
+	ability_vector res;
+	for (const ability_ptr& p_ab : abs) {
+		if (p_ab->tag() == tag) {
+			res.push_back(p_ab);
+		}
+	}
+	return res;
+}
+
+ability_vector unit_ability_t::clone(const ability_vector& abs)
+{
+	ability_vector res;
+	for (const ability_ptr& p_ab : abs) {
+		res.push_back(std::make_shared<unit_ability_t>(*p_ab));
+	}
+	return res;
+}
+
+config unit_ability_t::vector_to_cfg(const ability_vector& abilities)
+{
+	config abilities_cfg;
+	for (const auto& item : abilities) {
+		item->write(abilities_cfg);
+	}
+	return abilities_cfg;
+}
+
+
+void unit_ability_t::write(config& abilities_cfg)
+{
+	abilities_cfg.add_child(tag(), cfg());
+}
 
 attack_type::attack_type(const config& cfg)
 	: self_loc_()
@@ -69,9 +177,11 @@ attack_type::attack_type(const config& cfg)
 	, movement_used_(cfg["movement_used"].to_int(100000))
 	, attacks_used_(cfg["attacks_used"].to_int(1))
 	, parry_(cfg["parry"].to_int())
-	, specials_(cfg.child_or_empty("specials"))
+	, specials_()
 	, changed_(true)
 {
+	unit_ability_t::parse_vector(cfg.child_or_empty("specials"), specials_, true);
+
 	if (description_.empty())
 		description_ = translation::egettext(id_.c_str());
 
@@ -267,9 +377,9 @@ bool attack_type::matches_filter(const config& filter, const std::string& check_
 
 void attack_type::remove_special_by_filter(const config& filter)
 {
-	config::all_children_iterator i = specials_.ordered_begin();
-	while (i != specials_.ordered_end()) {
-		if(special_matches_filter(i->cfg, i->key, filter)) {
+	auto i = specials_.begin();
+	while (i != specials_.end()) {
+		if(special_matches_filter(**i, filter)) {
 			i = specials_.erase(i);
 		} else {
 			++i;
@@ -277,47 +387,38 @@ void attack_type::remove_special_by_filter(const config& filter)
 	}
 }
 
-/**
- * Modifies *this using the specifications in @a cfg, but only if *this matches
- * @a cfg viewed as a filter.
- *
- * @returns whether or not @c this matched the @a cfg as a filter.
- */
-bool attack_type::apply_modification(const config& cfg)
+void attack_type::apply_effect(const config& cfg)
 {
-	if( !matches_filter(cfg) )
-		return false;
-
 	set_changed(true);
-	const std::string& set_name = cfg["set_name"];
+	const config::attribute_value& set_name = cfg["set_name"];
 	const t_string& set_desc = cfg["set_description"].t_str();
-	const std::string& set_type = cfg["set_type"];
-	const std::string& set_range = cfg["set_range"];
-	const std::string& set_attack_alignment = cfg["set_alignment"];
-	const std::string& set_icon = cfg["set_icon"];
-	const std::string& del_specials = cfg["remove_specials"];
+	const config::attribute_value& set_type = cfg["set_type"];
+	const config::attribute_value& set_range = cfg["set_range"];
+	const config::attribute_value& set_attack_alignment = cfg["set_alignment"];
+	const config::attribute_value& set_icon = cfg["set_icon"];
+	const config::attribute_value& del_specials = cfg["remove_specials"];
 	auto set_specials = cfg.optional_child("set_specials");
-	const std::string& increase_min_range = cfg["increase_min_range"];
-	const std::string& set_min_range = cfg["set_min_range"];
-	const std::string& increase_max_range = cfg["increase_max_range"];
-	const std::string& set_max_range = cfg["set_max_range"];
+	const config::attribute_value& increase_min_range = cfg["increase_min_range"];
+	const config::attribute_value& set_min_range = cfg["set_min_range"];
+	const config::attribute_value& increase_max_range = cfg["increase_max_range"];
+	const config::attribute_value& set_max_range = cfg["set_max_range"];
 	auto remove_specials = cfg.optional_child("remove_specials");
-	const std::string& increase_damage = cfg["increase_damage"];
-	const std::string& set_damage = cfg["set_damage"];
-	const std::string& increase_attacks = cfg["increase_attacks"];
-	const std::string& set_attacks = cfg["set_attacks"];
-	const std::string& set_attack_weight = cfg["attack_weight"];
-	const std::string& set_defense_weight = cfg["defense_weight"];
-	const std::string& increase_accuracy = cfg["increase_accuracy"];
-	const std::string& set_accuracy = cfg["set_accuracy"];
-	const std::string& increase_parry = cfg["increase_parry"];
-	const std::string& set_parry = cfg["set_parry"];
-	const std::string& increase_movement = cfg["increase_movement_used"];
-	const std::string& set_movement = cfg["set_movement_used"];
-	const std::string& increase_attacks_used = cfg["increase_attacks_used"];
-	const std::string& set_attacks_used = cfg["set_attacks_used"];
+	const config::attribute_value& increase_damage = cfg["increase_damage"];
+	const config::attribute_value& set_damage = cfg["set_damage"];
+	const config::attribute_value& increase_attacks = cfg["increase_attacks"];
+	const config::attribute_value& set_attacks = cfg["set_attacks"];
+	const config::attribute_value& set_attack_weight = cfg["attack_weight"];
+	const config::attribute_value& set_defense_weight = cfg["defense_weight"];
+	const config::attribute_value& increase_accuracy = cfg["increase_accuracy"];
+	const config::attribute_value& set_accuracy = cfg["set_accuracy"];
+	const config::attribute_value& increase_parry = cfg["increase_parry"];
+	const config::attribute_value& set_parry = cfg["set_parry"];
+	const config::attribute_value& increase_movement = cfg["increase_movement_used"];
+	const config::attribute_value& set_movement = cfg["set_movement_used"];
+	const config::attribute_value& increase_attacks_used = cfg["increase_attacks_used"];
+	const config::attribute_value& set_attacks_used = cfg["set_attacks_used"];
 	// NB: If you add something here that requires a description,
-	// it needs to be added to describe_modification as well.
+	// it needs to be added to describe_effect as well.
 
 	if(set_name.empty() == false) {
 		id_ = set_name;
@@ -336,7 +437,7 @@ bool attack_type::apply_modification(const config& cfg)
 	}
 
 	if(set_attack_alignment.empty() == false) {
-		alignment_ = unit_alignments::get_enum(set_attack_alignment);
+		alignment_ = unit_alignments::get_enum(set_attack_alignment.str());
 	}
 
 	if(set_icon.empty() == false) {
@@ -345,10 +446,10 @@ bool attack_type::apply_modification(const config& cfg)
 
 	if(del_specials.empty() == false) {
 		const std::vector<std::string>& dsl = utils::split(del_specials);
-		config new_specials;
-		for(const auto [key, cfg] : specials_.all_children_view()) {
-			if(!utils::contains(dsl, cfg["id"].str())) {
-				new_specials.add_child(key, cfg);
+		ability_vector new_specials;
+		for(ability_ptr& p_ab : specials_) {
+			if(!utils::contains(dsl, p_ab->id())) {
+				new_specials.emplace_back(std::move(p_ab));
 			}
 		}
 		specials_ = new_specials;
@@ -365,12 +466,12 @@ bool attack_type::apply_modification(const config& cfg)
 			specials_.clear();
 		}
 		for(const auto [key, cfg] : set_specials->all_children_view()) {
-			specials_.add_child(key, cfg);
+			specials_.push_back(unit_ability_t::create(key, cfg, true));
 		}
 	}
 
 	if(set_min_range.empty() == false) {
-		min_range_ = std::stoi(set_min_range);
+		min_range_ = set_min_range.to_int();
 	}
 
 	if(increase_min_range.empty() == false) {
@@ -378,7 +479,7 @@ bool attack_type::apply_modification(const config& cfg)
 	}
 
 	if(set_max_range.empty() == false) {
-		max_range_ = std::stoi(set_max_range);
+		max_range_ = set_max_range.to_int();
 	}
 
 	if(increase_max_range.empty() == false) {
@@ -390,7 +491,7 @@ bool attack_type::apply_modification(const config& cfg)
 	}
 
 	if(set_damage.empty() == false) {
-		damage_ = std::stoi(set_damage);
+		damage_ = set_damage.to_int();
 		if (damage_ < 0) {
 			damage_ = 0;
 		}
@@ -404,7 +505,7 @@ bool attack_type::apply_modification(const config& cfg)
 	}
 
 	if(set_attacks.empty() == false) {
-		num_attacks_ = std::stoi(set_attacks);
+		num_attacks_ = set_attacks.to_int();
 		if (num_attacks_ < 0) {
 			num_attacks_ = 0;
 		}
@@ -416,7 +517,7 @@ bool attack_type::apply_modification(const config& cfg)
 	}
 
 	if(set_accuracy.empty() == false) {
-		accuracy_ = std::stoi(set_accuracy);
+		accuracy_ = set_accuracy.to_int();
 	}
 
 	if(increase_accuracy.empty() == false) {
@@ -424,7 +525,7 @@ bool attack_type::apply_modification(const config& cfg)
 	}
 
 	if(set_parry.empty() == false) {
-		parry_ = std::stoi(set_parry);
+		parry_ = set_parry.to_int();
 	}
 
 	if(increase_parry.empty() == false) {
@@ -432,7 +533,7 @@ bool attack_type::apply_modification(const config& cfg)
 	}
 
 	if(set_movement.empty() == false) {
-		movement_used_ = std::stoi(set_movement);
+		movement_used_ = set_movement.to_int();
 	}
 
 	if(increase_movement.empty() == false) {
@@ -440,7 +541,7 @@ bool attack_type::apply_modification(const config& cfg)
 	}
 
 	if(set_attacks_used.empty() == false) {
-		attacks_used_ = std::stoi(set_attacks_used);
+		attacks_used_ = set_attacks_used.to_int();
 	}
 
 	if(increase_attacks_used.empty() == false) {
@@ -448,185 +549,168 @@ bool attack_type::apply_modification(const config& cfg)
 	}
 
 	if(set_attack_weight.empty() == false) {
-		attack_weight_ = lexical_cast_default<double>(set_attack_weight,1.0);
+		attack_weight_ = set_attack_weight.to_double(1.0);
 	}
 
 	if(set_defense_weight.empty() == false) {
-		defense_weight_ = lexical_cast_default<double>(set_defense_weight,1.0);
+		defense_weight_ = set_defense_weight.to_double(1.0);
 	}
-
-	return true;
 }
 
-/**
- * Trimmed down version of apply_modification(), with no modifications actually
- * made. This can be used to get a description of the modification(s) specified
- * by @a cfg (if *this matches cfg as a filter).
- *
- * If *description is provided, it will be set to a (translated) description
- * of the modification(s) applied (currently only changes to the number of
- * strikes, damage, accuracy, and parry are included in this description).
- *
- * @returns whether or not @c this matched the @a cfg as a filter.
- */
-bool attack_type::describe_modification(const config& cfg,std::string* description)
+std::string attack_type::describe_effect(const config& cfg)
 {
-	if( !matches_filter(cfg) )
-		return false;
+	const config::attribute_value& increase_min_range = cfg["increase_min_range"];
+	const config::attribute_value& set_min_range = cfg["set_min_range"];
+	const config::attribute_value& increase_max_range = cfg["increase_max_range"];
+	const config::attribute_value& set_max_range = cfg["set_max_range"];
+	const config::attribute_value& increase_damage = cfg["increase_damage"];
+	const config::attribute_value& set_damage = cfg["set_damage"];
+	const config::attribute_value& increase_attacks = cfg["increase_attacks"];
+	const config::attribute_value& set_attacks = cfg["set_attacks"];
+	const config::attribute_value& increase_accuracy = cfg["increase_accuracy"];
+	const config::attribute_value& set_accuracy = cfg["set_accuracy"];
+	const config::attribute_value& increase_parry = cfg["increase_parry"];
+	const config::attribute_value& set_parry = cfg["set_parry"];
+	const config::attribute_value& increase_movement = cfg["increase_movement_used"];
+	const config::attribute_value& set_movement = cfg["set_movement_used"];
+	const config::attribute_value& increase_attacks_used = cfg["increase_attacks_used"];
+	const config::attribute_value& set_attacks_used = cfg["set_attacks_used"];
 
-	// Did the caller want the description?
-	if(description != nullptr) {
-		const std::string& increase_min_range = cfg["increase_min_range"];
-		const std::string& set_min_range = cfg["set_min_range"];
-		const std::string& increase_max_range = cfg["increase_max_range"];
-		const std::string& set_max_range = cfg["set_max_range"];
-		const std::string& increase_damage = cfg["increase_damage"];
-		const std::string& set_damage = cfg["set_damage"];
-		const std::string& increase_attacks = cfg["increase_attacks"];
-		const std::string& set_attacks = cfg["set_attacks"];
-		const std::string& increase_accuracy = cfg["increase_accuracy"];
-		const std::string& set_accuracy = cfg["set_accuracy"];
-		const std::string& increase_parry = cfg["increase_parry"];
-		const std::string& set_parry = cfg["set_parry"];
-		const std::string& increase_movement = cfg["increase_movement_used"];
-		const std::string& set_movement = cfg["set_movement_used"];
-		const std::string& increase_attacks_used = cfg["increase_attacks_used"];
-		const std::string& set_attacks_used = cfg["set_attacks_used"];
+	const auto format_modifier = [](const config::attribute_value& attr) -> utils::string_map {
+		return {{"number_or_percent", utils::print_modifier(attr)}, {"color", attr.to_int() < 0 ? "#f00" : "#0f0"}};
+	};
 
-		std::vector<t_string> desc;
+	std::vector<t_string> desc;
 
-		if(!set_min_range.empty()) {
-			desc.emplace_back(VGETTEXT(
-				// TRANSLATORS: Current value for WML code set_min_range, documented in https://wiki.wesnoth.org/EffectWML
-				"$number min range",
-				{{"number", set_min_range}}));
-		}
-
-		if(!increase_min_range.empty()) {
-			desc.emplace_back(VGETTEXT(
-				// TRANSLATORS: Current value for WML code increase_min_range, documented in https://wiki.wesnoth.org/EffectWML
-				"<span color=\"$color\">$number_or_percent</span> min range",
-				{{"number_or_percent", utils::print_modifier(increase_min_range)}, {"color", increase_min_range[0] == '-' ? "#f00" : "#0f0"}}));
-		}
-
-		if(!set_max_range.empty()) {
-			desc.emplace_back(VGETTEXT(
-				// TRANSLATORS: Current value for WML code set_max_range, documented in https://wiki.wesnoth.org/EffectWML
-				"$number max range",
-				{{"number", set_max_range}}));
-		}
-
-		if(!increase_max_range.empty()) {
-			desc.emplace_back(VGETTEXT(
-				// TRANSLATORS: Current value for WML code increase_max_range, documented in https://wiki.wesnoth.org/EffectWML
-				"<span color=\"$color\">$number_or_percent</span> max range",
-				{{"number_or_percent", utils::print_modifier(increase_max_range)}, {"color", increase_max_range[0] == '-' ? "#f00" : "#0f0"}}));
-		}
-
-		if(!increase_damage.empty()) {
-			desc.emplace_back(VNGETTEXT(
-				// TRANSLATORS: Current value for WML code increase_damage, documented in https://wiki.wesnoth.org/EffectWML
-				"<span color=\"$color\">$number_or_percent</span> damage",
-				"<span color=\"$color\">$number_or_percent</span> damage",
-				std::stoi(increase_damage),
-				{{"number_or_percent", utils::print_modifier(increase_damage)}, {"color", increase_damage[0] == '-' ? "#f00" : "#0f0"}}));
-		}
-
-		if(!set_damage.empty()) {
-			// TRANSLATORS: Current value for WML code set_damage, documented in https://wiki.wesnoth.org/EffectWML
-			desc.emplace_back(VNGETTEXT(
-				"$number damage",
-				"$number damage",
-				std::stoi(set_damage),
-				{{"number", set_damage}}));
-		}
-
-		if(!increase_attacks.empty()) {
-			desc.emplace_back(VNGETTEXT(
-				// TRANSLATORS: Current value for WML code increase_attacks, documented in https://wiki.wesnoth.org/EffectWML
-				"<span color=\"$color\">$number_or_percent</span> strike",
-				"<span color=\"$color\">$number_or_percent</span> strikes",
-				std::stoi(increase_attacks),
-				{{"number_or_percent", utils::print_modifier(increase_attacks)}, {"color", increase_attacks[0] == '-' ? "#f00" : "#0f0"}}));
-		}
-
-		if(!set_attacks.empty()) {
-			desc.emplace_back(VNGETTEXT(
-				// TRANSLATORS: Current value for WML code set_attacks, documented in https://wiki.wesnoth.org/EffectWML
-				"$number strike",
-				"$number strikes",
-				std::stoi(set_attacks),
-				{{"number", set_attacks}}));
-		}
-
-		if(!set_accuracy.empty()) {
-			desc.emplace_back(VGETTEXT(
-				// TRANSLATORS: Current value for WML code set_accuracy, documented in https://wiki.wesnoth.org/EffectWML
-				"$number| accuracy",
-				{{"number", set_accuracy}}));
-		}
-
-		if(!increase_accuracy.empty()) {
-			desc.emplace_back(VGETTEXT(
-				// TRANSLATORS: Current value for WML code increase_accuracy, documented in https://wiki.wesnoth.org/EffectWML
-				"<span color=\"$color\">$number_or_percent|%</span> accuracy",
-				{{"number_or_percent", utils::print_modifier(increase_accuracy)}, {"color", increase_accuracy[0] == '-' ? "#f00" : "#0f0"}}));
-		}
-
-		if(!set_parry.empty()) {
-			desc.emplace_back(VGETTEXT(
-				// TRANSLATORS: Current value for WML code set_parry, documented in https://wiki.wesnoth.org/EffectWML
-				"$number parry",
-				{{"number", set_parry}}));
-		}
-
-		if(!increase_parry.empty()) {
-			desc.emplace_back(VGETTEXT(
-				// TRANSLATORS: Current value for WML code increase_parry, documented in https://wiki.wesnoth.org/EffectWML
-				"<span color=\"$color\">$number_or_percent</span> parry",
-				{{"number_or_percent", utils::print_modifier(increase_parry)}, {"color", increase_parry[0] == '-' ? "#f00" : "#0f0"}}));
-		}
-
-		if(!set_movement.empty()) {
-			desc.emplace_back(VNGETTEXT(
-				// TRANSLATORS: Current value for WML code set_movement_used, documented in https://wiki.wesnoth.org/EffectWML
-				"$number movement point",
-				"$number movement points",
-				std::stoi(set_movement),
-				{{"number", set_movement}}));
-		}
-
-		if(!increase_movement.empty()) {
-			desc.emplace_back(VNGETTEXT(
-				// TRANSLATORS: Current value for WML code increase_movement_used, documented in https://wiki.wesnoth.org/EffectWML
-				"<span color=\"$color\">$number_or_percent</span> movement point",
-				"<span color=\"$color\">$number_or_percent</span> movement points",
-				std::stoi(increase_movement),
-				{{"number_or_percent", utils::print_modifier(increase_movement)}, {"color", increase_movement[0] == '-' ? "#f00" : "#0f0"}}));
-		}
-
-		if(!set_attacks_used.empty()) {
-			desc.emplace_back(VNGETTEXT(
-				// TRANSLATORS: Current value for WML code set_attacks_used, documented in https://wiki.wesnoth.org/EffectWML
-				"$number attack used",
-				"$number attacks used",
-				std::stoi(set_attacks_used),
-				{{"number", set_attacks_used}}));
-		}
-
-		if(!increase_attacks_used.empty()) {
-			desc.emplace_back(VNGETTEXT(
-				// TRANSLATORS: Current value for WML code increase_attacks_used, documented in https://wiki.wesnoth.org/EffectWML
-				"<span color=\"$color\">$number_or_percent</span> attack used",
-				"<span color=\"$color\">$number_or_percent</span> attacks used",
-				std::stoi(increase_attacks_used),
-				{{"number_or_percent", utils::print_modifier(increase_attacks_used)}, {"color", increase_attacks_used[0] == '-' ? "#f00" : "#0f0"}}));
-		}
-
-		*description = utils::format_conjunct_list("", desc);
+	if(!set_min_range.empty()) {
+		desc.emplace_back(VGETTEXT(
+			// TRANSLATORS: Current value for WML code set_min_range, documented in https://wiki.wesnoth.org/EffectWML
+			"$number min range",
+			{{"number", set_min_range.str()}}));
 	}
 
-	return true;
+	if(!increase_min_range.empty()) {
+		desc.emplace_back(VGETTEXT(
+			// TRANSLATORS: Current value for WML code increase_min_range, documented in https://wiki.wesnoth.org/EffectWML
+			"<span color=\"$color\">$number_or_percent</span> min range",
+			format_modifier(increase_min_range)));
+	}
+
+	if(!set_max_range.empty()) {
+		desc.emplace_back(VGETTEXT(
+			// TRANSLATORS: Current value for WML code set_max_range, documented in https://wiki.wesnoth.org/EffectWML
+			"$number max range",
+			{{"number", set_max_range.str()}}));
+	}
+
+	if(!increase_max_range.empty()) {
+		desc.emplace_back(VGETTEXT(
+			// TRANSLATORS: Current value for WML code increase_max_range, documented in https://wiki.wesnoth.org/EffectWML
+			"<span color=\"$color\">$number_or_percent</span> max range",
+			format_modifier(increase_max_range)));
+	}
+
+	if(!increase_damage.empty()) {
+		desc.emplace_back(VNGETTEXT(
+			// TRANSLATORS: Current value for WML code increase_damage, documented in https://wiki.wesnoth.org/EffectWML
+			"<span color=\"$color\">$number_or_percent</span> damage",
+			"<span color=\"$color\">$number_or_percent</span> damage",
+			increase_damage.to_int(),
+			format_modifier(increase_damage)));
+	}
+
+	if(!set_damage.empty()) {
+		// TRANSLATORS: Current value for WML code set_damage, documented in https://wiki.wesnoth.org/EffectWML
+		desc.emplace_back(VNGETTEXT(
+			"$number damage",
+			"$number damage",
+			set_damage.to_int(),
+			{{"number", set_damage.str()}}));
+	}
+
+	if(!increase_attacks.empty()) {
+		desc.emplace_back(VNGETTEXT(
+			// TRANSLATORS: Current value for WML code increase_attacks, documented in https://wiki.wesnoth.org/EffectWML
+			"<span color=\"$color\">$number_or_percent</span> strike",
+			"<span color=\"$color\">$number_or_percent</span> strikes",
+			increase_attacks.to_int(),
+			format_modifier(increase_attacks)));
+	}
+
+	if(!set_attacks.empty()) {
+		desc.emplace_back(VNGETTEXT(
+			// TRANSLATORS: Current value for WML code set_attacks, documented in https://wiki.wesnoth.org/EffectWML
+			"$number strike",
+			"$number strikes",
+			set_attacks.to_int(),
+			{{"number", set_attacks.str()}}));
+	}
+
+	if(!set_accuracy.empty()) {
+		desc.emplace_back(VGETTEXT(
+			// TRANSLATORS: Current value for WML code set_accuracy, documented in https://wiki.wesnoth.org/EffectWML
+			"$number| accuracy",
+			{{"number", set_accuracy.str()}}));
+	}
+
+	if(!increase_accuracy.empty()) {
+		desc.emplace_back(VGETTEXT(
+			// TRANSLATORS: Current value for WML code increase_accuracy, documented in https://wiki.wesnoth.org/EffectWML
+			"<span color=\"$color\">$number_or_percent|%</span> accuracy",
+			format_modifier(increase_accuracy)));
+	}
+
+	if(!set_parry.empty()) {
+		desc.emplace_back(VGETTEXT(
+			// TRANSLATORS: Current value for WML code set_parry, documented in https://wiki.wesnoth.org/EffectWML
+			"$number parry",
+			{{"number", set_parry.str()}}));
+	}
+
+	if(!increase_parry.empty()) {
+		desc.emplace_back(VGETTEXT(
+			// TRANSLATORS: Current value for WML code increase_parry, documented in https://wiki.wesnoth.org/EffectWML
+			"<span color=\"$color\">$number_or_percent</span> parry",
+			format_modifier(increase_parry)));
+	}
+
+	if(!set_movement.empty()) {
+		desc.emplace_back(VNGETTEXT(
+			// TRANSLATORS: Current value for WML code set_movement_used, documented in https://wiki.wesnoth.org/EffectWML
+			"$number movement point",
+			"$number movement points",
+			set_movement.to_int(),
+			{{"number", set_movement.str()}}));
+	}
+
+	if(!increase_movement.empty()) {
+		desc.emplace_back(VNGETTEXT(
+			// TRANSLATORS: Current value for WML code increase_movement_used, documented in https://wiki.wesnoth.org/EffectWML
+			"<span color=\"$color\">$number_or_percent</span> movement point",
+			"<span color=\"$color\">$number_or_percent</span> movement points",
+			increase_movement.to_int(),
+			format_modifier(increase_movement)));
+	}
+
+	if(!set_attacks_used.empty()) {
+		desc.emplace_back(VNGETTEXT(
+			// TRANSLATORS: Current value for WML code set_attacks_used, documented in https://wiki.wesnoth.org/EffectWML
+			"$number attack used",
+			"$number attacks used",
+			set_attacks_used.to_int(),
+			{{"number", set_attacks_used.str()}}));
+	}
+
+	if(!increase_attacks_used.empty()) {
+		desc.emplace_back(VNGETTEXT(
+			// TRANSLATORS: Current value for WML code increase_attacks_used, documented in https://wiki.wesnoth.org/EffectWML
+			"<span color=\"$color\">$number_or_percent</span> attack used",
+			"<span color=\"$color\">$number_or_percent</span> attacks used",
+			increase_attacks_used.to_int(),
+			format_modifier(increase_attacks_used)));
+	}
+
+	return utils::format_conjunct_list("", desc);
 }
 
 attack_type::recursion_guard attack_type::update_variables_recursion(const config& special) const
@@ -693,5 +777,5 @@ void attack_type::write(config& cfg) const
 	cfg["movement_used"] = movement_used_;
 	cfg["attacks_used"] = attacks_used_;
 	cfg["parry"] = parry_;
-	cfg.add_child("specials", specials_);
+	cfg.add_child("specials", specials_cfg());
 }

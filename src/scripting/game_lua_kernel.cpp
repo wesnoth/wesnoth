@@ -1098,7 +1098,7 @@ int game_lua_kernel::impl_get_terrain_info(lua_State *L)
 	char const *m = luaL_checkstring(L, 2);
 	t_translation::terrain_code t = t_translation::read_terrain_code(m);
 	if (t == t_translation::NONE_TERRAIN || !board().map().tdata()->is_known(t)) return 0;
-	const terrain_type& info = board().map().tdata()->get_terrain_info(t);
+	const terrain_type& info = board().map().get_terrain_info(t);
 
 	lua_newtable(L);
 	lua_pushstring(L, info.id().c_str());
@@ -1128,7 +1128,7 @@ int game_lua_kernel::impl_get_terrain_info(lua_State *L)
 	lua_newtable(L);
 	int idx = 1;
 	for (const auto& terrain : info.mvt_type()) {
-		const terrain_type& base = board().map().tdata()->get_terrain_info(terrain);
+		const terrain_type& base = board().map().get_terrain_info(terrain);
 		if (!base.id().empty()) {
 			lua_pushstring(L, t_translation::write_terrain_code(base.number()).c_str());
 			lua_rawseti(L, -2, idx++);
@@ -1140,7 +1140,7 @@ int game_lua_kernel::impl_get_terrain_info(lua_State *L)
 	lua_newtable(L);
 	idx = 1;
 	for (const auto& terrain : info.def_type()) {
-		const terrain_type& base = board().map().tdata()->get_terrain_info(terrain);
+		const terrain_type& base = board().map().get_terrain_info(terrain);
 		if (!base.id().empty()) {
 			lua_pushstring(L, t_translation::write_terrain_code(base.number()).c_str());
 			lua_rawseti(L, -2, idx++);
@@ -1157,7 +1157,7 @@ int game_lua_kernel::impl_get_terrain_info(lua_State *L)
  */
 int game_lua_kernel::impl_get_terrain_list(lua_State *L)
 {
-	auto codes = board().map().tdata()->list();
+	const auto& codes = board().map().get_terrain_list();
 	std::vector<std::string> terrains;
 	terrains.reserve(codes.size());
 	for(auto code : codes) {
@@ -4950,8 +4950,8 @@ namespace {
  */
 int game_lua_kernel::impl_theme_item(lua_State *L, const std::string& m)
 {
-	reports::context temp_context = reports::context(board(), *game_display_, tod_man(), play_controller_.get_whiteboard(), play_controller_.get_mouse_handler_base());
-	luaW_pushconfig(L, reports_.generate_report(m.c_str(), temp_context , true));
+	auto temp_context = reports::context(board(), *game_display_, tod_man(), play_controller_.get_whiteboard(), play_controller_.get_mouse_handler_base());
+	luaW_pushconfig(L, reports_.generate_builtin_report(m.c_str(), temp_context));
 	return 1;
 }
 

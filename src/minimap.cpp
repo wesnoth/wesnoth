@@ -116,8 +116,9 @@ std::function<rect(rect)> prep_minimap_for_rendering(
 			map.for_each_loc([&](const map_location& loc) {
 				const bool highlighted = reach_map && reach_map->count(loc) != 0 && !shrouded(loc);
 
-				const t_translation::terrain_code terrain = shrouded(loc) ? t_translation::VOID_TERRAIN : map[loc];
-				const terrain_type& terrain_info = map.tdata()->get_terrain_info(terrain);
+				const terrain_type& terrain_info = shrouded(loc)
+					? map.get_terrain_info(t_translation::VOID_TERRAIN)
+					: map.get_terrain_info(loc);
 
 				// Destination rect for drawing the current hex.
 				rect dest = get_dst_rect(loc);
@@ -171,8 +172,8 @@ std::function<rect(rect)> prep_minimap_for_rendering(
 
 					bool first = true;
 
-					for(const auto& underlying_terrain : map.tdata()->underlying_union_terrain(terrain)) {
-						const std::string& terrain_id = map.tdata()->get_terrain_info(underlying_terrain).id();
+					for(const auto& underlying_terrain : terrain_info.union_type()) {
+						const std::string& terrain_id = map.get_terrain_info(underlying_terrain).id();
 
 						it = game_config::team_rgb_range.find(terrain_id);
 						if(it == game_config::team_rgb_range.end()) {

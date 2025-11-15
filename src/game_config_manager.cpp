@@ -344,7 +344,7 @@ void game_config_manager::load_game_config(bool reload_everything, const game_cl
 
 		set_unit_data();
 		terrain_builder::set_terrain_rules_cfg(game_config());
-		tdata_ = std::make_shared<terrain_type_data>(game_config());
+		terrain_type_data::reset(game_config());
 		::init_strings(game_config());
 		theme::set_known_themes(&game_config());
 

@@ -334,8 +334,18 @@ bool game_board::change_terrain(
 	return change_terrain(loc, terrain, mode, replace_if_failed);
 }
 
-bool game_board::change_terrain(const map_location &loc, const t_translation::terrain_code &terrain, terrain_type_data::merge_mode& mode, bool replace_if_failed) {
-	/*
+bool game_board::change_terrain(const map_location& loc,
+	const t_translation::terrain_code& terrain,
+	terrain_type_data::merge_mode& mode,
+	bool replace_if_failed)
+{
+	const auto [new_terrain, village_status] = map_->set_terrain(loc, terrain, mode, replace_if_failed);
+
+	if(new_terrain == t_translation::NONE_TERRAIN) {
+		return false;
+	}
+
+	/**
 	 * When a hex changes from a village terrain to a non-village terrain, and
 	 * a team owned that village it loses that village. When a hex changes from
 	 * a non-village terrain to a village terrain and there is a unit on that
@@ -343,28 +353,18 @@ bool game_board::change_terrain(const map_location &loc, const t_translation::te
 	 * capturing villages it that there are too many choices to make; should a
 	 * unit loose its movement points, should capture events be fired. It is
 	 * easier to do this as wanted by the author in WML.
+	 *
+	 * @note Teams keep their own list of the villages they own. Since this
+	 * check only reflects the state of the gamemap itself, it's safe to query
+	 * the village owner even after the map has been changed.
 	 */
-	t_translation::terrain_code old_t = map_->get_terrain(loc);
-	t_translation::terrain_code new_t = map_->tdata()->merge_terrains(old_t, terrain, mode, replace_if_failed);
-
-	if(new_t == t_translation::NONE_TERRAIN) {
-		return false;
-	}
-
-	prefs::get().encountered_terrains().insert(new_t);
-
-	if(map_->tdata()->is_village(old_t) && !map_->tdata()->is_village(new_t)) {
-		int owner = village_owner(loc);
-		if(owner != 0)
+	if(village_status == gamemap_base::village_state::former_village) {
+		if(int owner = village_owner(loc); owner != 0) {
 			get_team(owner).lose_village(loc);
+		}
 	}
 
-	map_->set_terrain(loc, new_t);
-
-	for(const t_translation::terrain_code& ut : map_->underlying_union_terrain(loc)) {
-		prefs::get().encountered_terrains().insert(ut);
-	}
-
+	prefs::get().encounter_map_terrain(map_->get_terrain_info(new_terrain));
 	return true;
 }
 

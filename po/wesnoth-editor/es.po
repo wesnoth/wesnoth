@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-09-21 23:01-0500\n"
+"POT-Creation-Date: 2025-10-20 20:10-0500\n"
 "PO-Revision-Date: 2025-08-29 20:04-0300\n"
 "Last-Translator: Sebastián Lecchini<sebas38760@gmail.com>\n"
 "Language-Team: es\n"
@@ -337,120 +337,120 @@ msgstr "<span color='#66ff00'><span face='DejaVuSans'>✔</span> $msg</span>"
 msgid "<span color='red'><span face='DejaVuSans'>✘</span> $msg</span>"
 msgstr "<span color='red'><span face='DejaVuSans'>✘</span> $msg</span>"
 
-#: src/editor/map/context_manager.cpp:217
+#: src/editor/map/context_manager.cpp:223
 msgid "Load Map or Scenario"
 msgstr "Cargar mapa o escenario"
 
-#: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1146
+#: src/editor/map/context_manager.cpp:319 src/editor/map/map_context.cpp:1146
 msgid "New Map"
 msgstr "Nuevo mapa"
 
-#: src/editor/map/context_manager.cpp:326 src/editor/map/map_context.cpp:1146
+#: src/editor/map/context_manager.cpp:332 src/editor/map/map_context.cpp:1146
 msgid "New Scenario"
 msgstr "Nuevo escenario"
 
-#: src/editor/map/context_manager.cpp:374
+#: src/editor/map/context_manager.cpp:380
 msgid "No Recent Files"
 msgstr "Sin archivos recientes"
 
-#: src/editor/map/context_manager.cpp:402
+#: src/editor/map/context_manager.cpp:408
 msgid "Unnamed Area"
 msgstr "Área sin nombre"
 
-#: src/editor/map/context_manager.cpp:428
+#: src/editor/map/context_manager.cpp:434
 msgid "New Side"
 msgstr "Nuevo bando"
 
-#: src/editor/map/context_manager.cpp:467
+#: src/editor/map/context_manager.cpp:473
 msgid "Apply Mask"
 msgstr "Aplicar máscara"
 
-#: src/editor/map/context_manager.cpp:476
+#: src/editor/map/context_manager.cpp:482
 msgid "Error loading mask"
 msgstr "Error al cargar la máscara"
 
-#: src/editor/map/context_manager.cpp:496
+#: src/editor/map/context_manager.cpp:502
 msgid "Identifier:"
 msgstr "Identificador:"
 
-#: src/editor/map/context_manager.cpp:496
+#: src/editor/map/context_manager.cpp:502
 msgid "Rename Area"
 msgstr "Renombrar área"
 
-#: src/editor/map/context_manager.cpp:510
+#: src/editor/map/context_manager.cpp:516
 msgid "Choose Target Map"
 msgstr "Seleccionar mapa de destino"
 
-#: src/editor/map/context_manager.cpp:519
-#: src/editor/map/context_manager.cpp:944
+#: src/editor/map/context_manager.cpp:525
+#: src/editor/map/context_manager.cpp:992
 msgid "Error loading map"
 msgstr "Error al cargar el mapa"
 
-#: src/editor/map/context_manager.cpp:651
+#: src/editor/map/context_manager.cpp:699
 msgid "Save Map As"
 msgstr "Guardar mapa como"
 
-#: src/editor/map/context_manager.cpp:668
-#: src/editor/map/context_manager.cpp:717 src/editor/map/map_context.cpp:273
+#: src/editor/map/context_manager.cpp:716
+#: src/editor/map/context_manager.cpp:765 src/editor/map/map_context.cpp:273
 #: src/editor/palette/location_palette.cpp:263
 msgid "Error"
 msgstr "Error"
 
-#: src/editor/map/context_manager.cpp:669
-#: src/editor/map/context_manager.cpp:718
+#: src/editor/map/context_manager.cpp:717
+#: src/editor/map/context_manager.cpp:766
 msgid "Do you really want to save $type1 in $type2 folder?"
 msgstr "¿Realmente desea guardar $type1 en la carpeta $type2?"
 
-#: src/editor/map/context_manager.cpp:677
-#: src/editor/map/context_manager.cpp:885
+#: src/editor/map/context_manager.cpp:725
+#: src/editor/map/context_manager.cpp:933
 msgid "This map is already open."
 msgstr "Este mapa ya se encuentra abierto."
 
-#: src/editor/map/context_manager.cpp:700
+#: src/editor/map/context_manager.cpp:748
 msgid "Save Scenario As"
 msgstr "Guardar escenario como"
 
-#: src/editor/map/context_manager.cpp:726
+#: src/editor/map/context_manager.cpp:774
 msgid "This scenario is already open."
 msgstr "Este escenario ya se encuentra abierto."
 
-#: src/editor/map/context_manager.cpp:759
+#: src/editor/map/context_manager.cpp:807
 msgid "No random map generators found."
 msgstr "No se encontraron generadores de mapas aleatorios."
 
-#: src/editor/map/context_manager.cpp:772
-#: src/editor/map/context_manager.cpp:777
+#: src/editor/map/context_manager.cpp:820
+#: src/editor/map/context_manager.cpp:825
 msgid "Map creation failed."
 msgstr "Falló la creación del mapa."
 
-#: src/editor/map/context_manager.cpp:792
+#: src/editor/map/context_manager.cpp:840
 msgid "Unsaved Changes"
 msgstr "Cambios sin guardar"
 
-#: src/editor/map/context_manager.cpp:793
+#: src/editor/map/context_manager.cpp:841
 msgid "Do you want to discard all changes made to the map since the last save?"
 msgstr ""
 "¿Desea descartar todos los cambios efectuados en el mapa desde que guardó "
 "por última vez?"
 
-#: src/editor/map/context_manager.cpp:846
+#: src/editor/map/context_manager.cpp:894
 msgid "Scenario saved."
 msgstr "Escenario guardado."
 
-#: src/editor/map/context_manager.cpp:861
+#: src/editor/map/context_manager.cpp:909
 msgid "Map saved"
 msgstr "Mapa guardado."
 
-#: src/editor/map/context_manager.cpp:936
+#: src/editor/map/context_manager.cpp:984
 msgid "Loaded embedded map data"
 msgstr "Cargado los datos de mapa incrustados"
 
-#: src/editor/map/context_manager.cpp:937
-#: src/editor/map/context_manager.cpp:940
+#: src/editor/map/context_manager.cpp:985
+#: src/editor/map/context_manager.cpp:988
 msgid "Map loaded from scenario"
 msgstr "Mapa cargado desde escenario"
 
-#: src/editor/map/context_manager.cpp:940
+#: src/editor/map/context_manager.cpp:988
 msgid "Loaded referenced map file:"
 msgstr ""
 "Archivo de mapa referenciado cargado:\n"

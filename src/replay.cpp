@@ -450,8 +450,8 @@ static bool fix_rename_command(const config& c, config& async_child)
 		std::vector<map_location> steps;
 
 		try {
-			read_locations(child.value(), steps);
-		} catch(const bad_lexical_cast &) {
+			steps = read_locations(child.value());
+		} catch(const std::invalid_argument&) {
 			WRN_REPLAY << "Warning: Path data contained something which could not be parsed to a sequence of locations:" << "\n config = " << child->debug();
 		}
 

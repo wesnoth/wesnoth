@@ -413,8 +413,8 @@ void unit_filter_compound::fill(const vconfig& cfg)
 			[](const std::set<std::string>& abilities, const unit_filter_args& args)
 			{
 				const unit_map& units = args.context().get_disp_context().units();
-				for(const auto [key, cfg] : args.u.abilities().all_children_view()) {
-					if(abilities.count(cfg["id"]) != 0 && args.u.get_self_ability_bool(cfg, key, args.loc)) {
+				for(const auto& p_ab : args.u.abilities()) {
+					if(abilities.count(p_ab->id()) != 0 && args.u.get_self_ability_bool(*p_ab, args.loc)) {
 						return true;
 					}
 				}
@@ -437,8 +437,8 @@ void unit_filter_compound::fill(const vconfig& cfg)
 							break;
 						}
 					}
-					for(const auto [key, cfg] : unit.abilities().all_children_view()) {
-						if(abilities.count(cfg["id"]) != 0 && args.u.get_adj_ability_bool(cfg, key, distance, *dir, args.loc, unit, from_loc)) {
+					for(const auto& p_ab : unit.abilities()) {
+						if(abilities.count(p_ab->id()) != 0 && args.u.get_adj_ability_bool(*p_ab, distance, *dir, args.loc, unit, from_loc)) {
 							return true;
 						}
 					}
@@ -788,16 +788,16 @@ void unit_filter_compound::fill(const vconfig& cfg)
 				}
 				create_child(child.second, [](const vconfig& c, const unit_filter_args& args) {
 					if(!(c.get_parsed_config())["active"].to_bool()){
-						for(const auto [key, cfg] : args.u.abilities().all_children_view()) {
-							if(args.u.ability_matches_filter(cfg, key, c.get_parsed_config())) {
+						for(const ability_ptr& p_ab : args.u.abilities()) {
+							if(args.u.ability_matches_filter(*p_ab, c.get_parsed_config())) {
 								return true;
 							}
 						}
 					} else {
 						const unit_map& units = args.context().get_disp_context().units();
-						for(const auto [key, cfg] : args.u.abilities().all_children_view()) {
-							if(args.u.ability_matches_filter(cfg, key, c.get_parsed_config())) {
-								if (args.u.get_self_ability_bool(cfg, key, args.loc)) {
+						for(const ability_ptr& p_ab : args.u.abilities()) {
+							if(args.u.ability_matches_filter(*p_ab, c.get_parsed_config())) {
+								if (args.u.get_self_ability_bool(*p_ab, args.loc)) {
 									return true;
 								}
 							}
@@ -822,8 +822,8 @@ void unit_filter_compound::fill(const vconfig& cfg)
 										break;
 									}
 								}
-								for(const auto [key, cfg] : unit.abilities().all_children_view()) {
-									if(args.u.get_adj_ability_bool(cfg, key, distance, *dir, args.loc, unit, from_loc)) {
+								for(const ability_ptr& p_ab : unit.abilities()) {
+									if(args.u.get_adj_ability_bool(*p_ab, distance, *dir, args.loc, unit, from_loc)) {
 										return true;
 									}
 								}

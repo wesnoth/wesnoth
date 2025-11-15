@@ -232,9 +232,9 @@ time_of_day tod_manager::get_illuminated_time_of_day(
 			if(!u.incapacitated()) {
 				const map_location& u_loc = u.get_location();
 				std::size_t distance = distance_between(u_loc, loc);
-				unit_ability_list illum = u.get_abilities("illuminates");
-				utils::erase_if(illum, [&](const unit_ability& i) {
-					std::size_t radius = (*i.ability_cfg)["radius"] != "all_map" ? (*i.ability_cfg)["radius"].to_int(1) : INT_MAX;
+				active_ability_list illum = u.get_abilities("illuminates");
+				utils::erase_if(illum, [&](const active_ability& i) {
+					std::size_t radius = i.ability_cfg()["radius"] != "all_map" ? i.ability_cfg()["radius"].to_int(1) : INT_MAX;
 					return distance > radius;
 				});
 				if(!illum.empty()) {
@@ -296,6 +296,17 @@ void tod_manager::replace_schedule(const std::vector<time_of_day>& schedule, int
 
 	times_ = schedule;
 	currentTime_ = initial_time;
+}
+
+void tod_manager::move_all_areas(int x_offset, int y_offset) {
+	for (auto& area : areas_) {
+		decltype(area.hexes) new_locs;
+		for (auto& loc : area.hexes) {
+			map_location new_loc{ loc.x - x_offset, loc.y - y_offset };
+			new_locs.insert(new_loc);
+		}
+		area.hexes = new_locs;
+	}
 }
 
 void tod_manager::replace_area_locations(int area_index, const std::set<map_location>& locs)

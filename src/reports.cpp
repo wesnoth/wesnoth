@@ -587,7 +587,7 @@ static config unit_defense(const reports::context& rc, const unit* u, const map_
 	str << span_color(color, def, '%');
 	tooltip << _("Terrain:") << " " << markup::bold(map.get_terrain_info(terrain).description()) << "\n";
 
-	const t_translation::ter_list &underlyings = map.underlying_def_terrain(terrain);
+	const t_translation::ter_list &underlyings = map.underlying_def_terrain(displayed_unit_hex);
 	if (underlyings.size() != 1 || underlyings.front() != terrain)
 	{
 		bool revert = false;
@@ -1440,7 +1440,6 @@ static config unit_box_at(const reports::context& rc, const map_location& mouseo
 	}
 
 	const gamemap &map = rc.map();
-	t_translation::terrain_code terrain = map.get_terrain(mouseover_hex);
 
 	//if (t_translation::terrain_matches(terrain, t_translation::ALL_OFF_MAP))
 	//	return config();
@@ -1449,11 +1448,9 @@ static config unit_box_at(const reports::context& rc, const map_location& mouseo
 	//	add_image(cfg, "icons/terrain/terrain_type_keep.png", "");
 	//}
 
-	const t_translation::ter_list& underlying_terrains = map.underlying_union_terrain(terrain);
-
 	std::string bg_terrain_image;
 
-	for (const t_translation::terrain_code& underlying_terrain : underlying_terrains) {
+	for (const t_translation::terrain_code& underlying_terrain : map.underlying_union_terrain(mouseover_hex)) {
 		const std::string& terrain_id = map.get_terrain_info(underlying_terrain).id();
 		bg_terrain_image = "~BLIT(unit_env/terrain/terrain-" + terrain_id + ".png)" + bg_terrain_image;
 	}
@@ -1620,8 +1617,7 @@ REPORT_GENERATOR(terrain_info, rc)
 //		blit_tced_icon(cfg, "keep", high_res);
 //	}
 
-	const t_translation::ter_list& underlying_terrains = map.underlying_union_terrain(terrain);
-	for(const t_translation::terrain_code& underlying_terrain : underlying_terrains) {
+	for(const t_translation::terrain_code& underlying_terrain : map.underlying_union_terrain(mouseover_hex)) {
 		if(t_translation::terrain_matches(underlying_terrain, t_translation::ALL_OFF_MAP)) {
 			continue;
 		}
@@ -1689,7 +1685,7 @@ REPORT_GENERATOR(terrain, rc)
 			str << map.get_terrain_info(terrain).income_description_ally();
 		}
 
-		const std::string& underlying_desc = map.get_underlying_terrain_string(terrain);
+		const std::string& underlying_desc = map.get_underlying_terrain_string(mouseover_hex);
 		if(!underlying_desc.empty()) {
 			str << underlying_desc;
 		}
@@ -1858,18 +1854,24 @@ void reports::register_generator(const std::string &name, reports::generator *g)
 	all_reports_.clear();
 }
 
-config reports::generate_report(const std::string &name, const reports::context& rc, bool only_static)
+config reports::generate_report(const std::string& name, const reports::context& rc)
 {
-	if (!only_static) {
-		dynamic_report_generators::const_iterator i = dynamic_generators_.find(name);
-		if (i != dynamic_generators_.end())
-			return i->second->generate(rc);
+	const auto iter = dynamic_generators_.find(name);
+	if(iter == dynamic_generators_.end()) {
+		return generate_builtin_report(name, rc);
 	}
-	static_report_generators::const_iterator j = static_generators.find(name);
-	if (j != static_generators.end()) {
-		return j->second(rc);
+
+	return iter->second->generate(rc);
+}
+
+config reports::generate_builtin_report(const std::string& name, const reports::context& rc)
+{
+	const auto iter = static_generators.find(name);
+	if(iter == static_generators.end()) {
+		return config();
 	}
-	return config();
+
+	return std::invoke(iter->second, rc);
 }
 
 const std::set<std::string> &reports::report_list()

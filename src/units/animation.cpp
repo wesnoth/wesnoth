@@ -26,6 +26,7 @@
 #include "units/animation_component.hpp"
 #include "units/filter.hpp"
 #include "units/unit.hpp"
+#include "utils/charconv.hpp"
 #include "utils/general.hpp"
 #include "variable.hpp"
 
@@ -342,8 +343,8 @@ unit_animation::unit_animation(const config& cfg,const std::string& frame_string
 		secondary_unit_filter_.push_back(filter);
 	}
 
-	for(const auto& v : utils::split(cfg["value"])) {
-		value_.push_back(atoi(v.c_str()));
+	for(const std::string& v : utils::split(cfg["value"])) {
+		value_.push_back(utils::from_chars<int>(v).value_or(0));
 	}
 
 	for(const auto& h : utils::split(cfg["hits"])) {
@@ -360,8 +361,8 @@ unit_animation::unit_animation(const config& cfg,const std::string& frame_string
 		}
 	}
 
-	for(const auto& v2 : utils::split(cfg["value_second"])) {
-		value2_.push_back(atoi(v2.c_str()));
+	for(const std::string& v2 : utils::split(cfg["value_second"])) {
+		value2_.push_back(utils::from_chars<int>(v2).value_or(0));
 	}
 
 	for(const config& filter : cfg.child_range("filter_attack")) {

@@ -1,4 +1,4 @@
-## Version 1.19.16+dev
+## Version 1.19.17+dev
 ### Add-ons client
 ### Add-ons server
 ### Campaigns
@@ -8,10 +8,34 @@
 ### Packaging
 ### Terrain
 ### Translations
+   * Updated translations: Bengali, British English, Czech, Finnish, Galician, Hungarian, Italian, Polish, Spanish
 ### Units
+   * A registry for abilities has been added as `[units][abilities]`. Any ability defined there can be added to a `[unit_type]` by just specifying their `unique_id` in the new key `[unit_type]abilities`, like this: `abilities=heals_8,cures`. The unique id for an ability is the value of its new `unique_id` key which falls back to `id` if unspecified. The `abilities` key is also supported under `[effect]apply_to=new_ability`.
 ### User interface
+   * New key `title_position` added to `[part]` that allows changing the position of the title text.
 ### WML Engine
 ### Miscellaneous and Bug Fixes
+   * Build System:
+     * Changed CMake to not directly pull in boost-system (fixing build issues on archlinux using boost-libs >1.89.0-2)
+
+## Version 1.19.17
+### Editor
+   * Move items/unit/labels when map is resized
+### Translations
+   * Updated translations: Bengali, British English, Czech, Polish, Spanish
+### Units
+   * Sergeant:
+     * Crossbow damage changed from 4-3 to 6-2
+   * Lieutenant:
+     * Crossbow damage changed from 5-3 to 7-2
+   * General:
+     * Crossbow damage changed from 7-3 to 10-2
+   * Grand Marshal:
+     * Crossbow damage changed from 8-3 to 12-2
+### WML Engine
+   * ~PAD() added as an IPF (image path function). It allows the sides of an image to be padded with transparent pixels. Can be used to artificially offset images.
+   * WML formulas can be used in abilities/specials 'max_value' and 'min_value'.
+   * Add [clear_chat], [store_zoom], and optional scrolling support to [scroll_to] and [scroll_to_unit]
 
 ## Version 1.19.16
 ### Campaigns
@@ -30,6 +54,20 @@
      * S13: changed some of Eldred and the orcs' dialogue.
      * S14: revert ruffians to orcs.
      * Credits: "Story continued in" changed from "Asheviere's Dogs" to "Liberty"
+   * Winds of Fate
+     * Full redesign of recall costs (most importantly this brings down the recall cost for level 3 veterans to two-thirds of what it was)
+     * Add random walk to spawned wildlife AI
+     * replace leopard with forest lion
+     * replace dolphin with core monsters
+     * S2: slightly more gold for a bigger battle
+     * S3: simplify win and lose conditions
+     * S4: give naga side same gold as either mermish side and give player side some more gold on easier difficulties
+     * S6: more gold on all sides for a much bigger battle
+     * S7: move sapphire of ice beside diary
+     * S8: quicker elf spawning on easy to better depict the story events
+     * S9: Full rebalance
+     * S10: smaller dwarf castle for fewer gryphons
+     * S10 + S11: cut all level 2 recruits
 ### Multiplayer
    * 5p - The Wilderlands:
      * Fixed lag during AI turn (issue #10419)

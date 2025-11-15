@@ -140,7 +140,7 @@ void attack_predictions::set_data(const combatant_data& attacker, const combatan
 	}
 
 	// Get damage modifiers.
-	unit_ability_list dmg_specials = weapon->get_specials_and_abilities("damage");
+	active_ability_list dmg_specials = weapon->get_specials_and_abilities("damage");
 	unit_abilities::effect dmg_effect(dmg_specials, weapon->damage());
 
 	// Get the SET damage modifier, if any.

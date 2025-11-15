@@ -550,7 +550,7 @@ UNIT_GETTER("cost", int) {
 	return u.cost();
 }
 
-UNIT_GETTER("extra_recruit", std::vector<std::string>) {
+UNIT_GETTER("extra_recruit", std::set<std::string>) {
 	return u.recruits();
 }
 

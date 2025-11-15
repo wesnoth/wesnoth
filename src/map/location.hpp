@@ -224,9 +224,9 @@ void write_location_range(const std::set<map_location>& locs, config& cfg);
 /**
  * Parse x,y keys of a config into a vector of locations
  *
- * Throws bad_lexical_cast if it fails to parse.
+ * Throws std::invalid_argument if it fails to parse.
  */
-void read_locations(const config& cfg, std::vector<map_location>& locs);
+std::vector<map_location> read_locations(const config& cfg);
 
 /** Write a vector of locations into a config
  *  adding keys x=x1,x2,..,xn and y=y1,y2,..,yn */

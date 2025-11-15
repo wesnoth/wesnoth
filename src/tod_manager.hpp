@@ -93,6 +93,9 @@ public:
 
 	void replace_area_locations(int index, const std::set<map_location>& locs);
 
+	/** Shift all hex locations for all time areas by the given x/y offsets. */
+	void move_all_areas(int x_offset, int y_offset);
+
 	/**
 	 * @returns the [time_area]s' ids.
 	 */

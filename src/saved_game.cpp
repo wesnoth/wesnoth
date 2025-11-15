@@ -762,7 +762,7 @@ saved_game& saved_game::operator=(saved_game&& other)
 	return *this;
 }
 
-void saved_game::swap(saved_game& other)
+void saved_game::swap(saved_game& other) noexcept
 {
 	carryover_.swap(other.carryover_);
 
@@ -842,7 +842,7 @@ void saved_game::clear()
 	statistics_ = statistics_record::campaign_stats_t();
 }
 
-void swap(saved_game& lhs, saved_game& rhs)
+void swap(saved_game& lhs, saved_game& rhs) noexcept
 {
 	lhs.swap(rhs);
 }

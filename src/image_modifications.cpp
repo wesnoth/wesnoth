@@ -21,11 +21,10 @@
 #include "config.hpp"
 #include "game_config.hpp"
 #include "picture.hpp"
-#include "lexical_cast.hpp"
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
 #include "team.hpp"
-#include "utils/from_chars.hpp"
+#include "utils/charconv.hpp"
 
 #include "formula/formula.hpp"
 #include "formula/callable_objects.hpp"
@@ -448,6 +447,36 @@ void xbrz_modification::operator()(surface& src) const
 	}
 }
 
+void pad_modification::operator()(surface& src) const
+{
+	// Calculate the new dimensions of the padded surface
+	const int new_w = src->w + left_ + right_;
+	const int new_h = src->h + top_ + bottom_;
+
+	// Create a new transparent surface with the calculated dimensions
+	surface padded(new_w, new_h);
+
+	// Define the destination rectangle for the original image
+	rect dstrect{
+		left_,
+		top_,
+		0, // These two values are ignored by SDL_BlitSurface, so we set them to 0.
+		0  // The function always blits the entire source surface.
+	};
+
+	SDL_BlendMode original_blend_mode;
+	SDL_GetSurfaceBlendMode(src, &original_blend_mode);
+	// Set blend mode to none to prevent blending
+	SDL_SetSurfaceBlendMode(src, SDL_BLENDMODE_NONE);
+
+	// Blit the original surface onto the new, padded surface
+	SDL_BlitSurface(src, nullptr, padded, &dstrect);
+
+	SDL_SetSurfaceBlendMode(padded, original_blend_mode);
+
+	src = padded;
+}
+
 /*
  * The Opacity IPF doesn't seem to work with surface-wide alpha and instead needs per-pixel alpha.
  * If this is needed anywhere else it can be moved back to sdl/utils.*pp.
@@ -842,11 +871,11 @@ REGISTER_MOD_PARSER(BLEND, args)
 	const std::string_view::size_type p100_pos = opacity_str.find('%');
 
 	if(p100_pos == std::string::npos)
-		opacity = lexical_cast_default<float>(opacity_str);
+		opacity = utils::from_chars<float>(opacity_str).value_or(0.0f);
 	else {
 		// make multiplier
 		const std::string_view parsed_field = opacity_str.substr(0, p100_pos);
-		opacity = lexical_cast_default<float>(parsed_field);
+		opacity = utils::from_chars<float>(parsed_field).value_or(0.0f);
 		opacity /= 100.0f;
 	}
 
@@ -1067,6 +1096,66 @@ REGISTER_MOD_PARSER(XBRZ, args)
 	return std::make_unique<xbrz_modification>(factor);
 }
 
+// Pad
+REGISTER_MOD_PARSER(PAD, args)
+{
+	int top = 0;
+	int right = 0;
+	int bottom = 0;
+	int left = 0;
+
+	// Check for the presence of an '=' sign to determine the parsing mode.
+	if(args.find('=') != std::string_view::npos) {
+		// --- Keyword-Argument Mode ---
+		const auto params = utils::map_split(std::string{args}, ',', '='); // map_split needs a std::string
+
+		// Map valid input strings to the corresponding integer reference
+		const std::map<std::string, int*> alias_map = {
+			{"top", &top},
+			{"t", &top},
+			{"right", &right},
+			{"r", &right},
+			{"bottom", &bottom},
+			{"b", &bottom},
+			{"left", &left},
+			{"l", &left},
+		};
+
+		// Parse and assign values if keywords are valid
+		for(const auto& [key, value] : params) {
+			auto it = alias_map.find(key);
+			if(it != alias_map.end()) {
+				if(utils::optional padding = utils::from_chars<int>(value)) {
+					*it->second = padding.value();
+				} else {
+					ERR_DP << "~PAD() keyword argument '" << key << "' requires a valid integer value. Received: '" << value << "'.";
+					return nullptr;
+				}
+			} else {
+				ERR_DP << "~PAD() found an unknown keyword: '" << key << "'. Valid keywords: top, t, right, r, bottom, b, left, l.";
+				return nullptr;
+			}
+		}
+	} else {
+		// --- Numeric-Argument Mode ---
+		const auto params = utils::split_view(args, ',');
+		if(params.size() != 1) {
+			ERR_DP << "~PAD() takes either 1 numeric argument for the padding on all sides or a comma separated list of '<keyword>=<number>' pairs with available keywords: top, t, right, r, bottom, b, left, l.";
+			return nullptr;
+		}
+
+		// Single integer argument: apply to all sides
+		if(utils::optional padding = utils::from_chars<int>(params[0])) {
+			top = right = bottom = left = padding.value();
+		} else {
+			ERR_DP << "~PAD() numeric argument (pad all sides) requires a single valid integer. Received: '" << params[0] << "'.";
+			return nullptr;
+		}
+	}
+
+	return std::make_unique<pad_modification>(top, right, bottom, left);
+}
+
 // Gaussian-like blur
 REGISTER_MOD_PARSER(BL, args)
 {
@@ -1080,11 +1169,11 @@ REGISTER_MOD_PARSER(O, args)
 	const std::string::size_type p100_pos = args.find('%');
 	float num = 0.0f;
 	if(p100_pos == std::string::npos) {
-		num = lexical_cast_default<float, std::string_view>(args);
+		num = utils::from_chars<float>(args).value_or(0.0f);
 	} else {
 		// make multiplier
 		const std::string_view parsed_field = args.substr(0, p100_pos);
-		num = lexical_cast_default<float, std::string_view>(parsed_field);
+		num = utils::from_chars<float>(parsed_field).value_or(0.0f);
 		num /= 100.0f;
 	}
 

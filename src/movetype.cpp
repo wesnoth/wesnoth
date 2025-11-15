@@ -20,9 +20,9 @@
 
 #include "movetype.hpp"
 
-#include "game_config_manager.hpp"
 #include "log.hpp"
 #include "terrain/translation.hpp"
+#include "terrain/type_data.hpp"
 
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
@@ -284,10 +284,7 @@ int movetype::terrain_info::data::calc_value(
 		return params_.default_value;
 	}
 
-	std::shared_ptr<terrain_type_data> tdata;
-	if (game_config_manager::get()){
-		tdata = game_config_manager::get()->terrain_types(); //This permits to get terrain info in unit help pages from the help in title screen, even if there is no residual gamemap object
-	}
+	std::shared_ptr tdata = terrain_type_data::get();
 	assert(tdata);
 
 	// Get a list of underlying terrains.

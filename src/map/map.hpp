@@ -73,11 +73,23 @@ public:
 	bool on_board(const map_location& loc) const;
 	bool on_board_with_border(const map_location& loc) const;
 
+	/** What happens to a village hex when its terrain is changed. */
+	enum class village_state { unchanged, new_village, former_village };
+
+	struct set_terrain_result
+	{
+		terrain_code new_terrain = t_translation::NONE_TERRAIN;
+		village_state village_change = village_state::unchanged;
+	};
+
 	/**
 	 * Clobbers over the terrain at location 'loc', with the given terrain.
 	 * Uses mode and replace_if_failed like merge_terrains().
 	 */
-	virtual void set_terrain(const map_location& loc, const terrain_code & terrain, const terrain_type_data::merge_mode mode = terrain_type_data::BOTH, bool replace_if_failed = false) = 0;
+	virtual set_terrain_result set_terrain(const map_location& loc,
+		const terrain_code& terrain,
+		const terrain_type_data::merge_mode mode = terrain_type_data::BOTH,
+		bool replace_if_failed = false) = 0;
 
 	/**
 	 * Looks up terrain at a particular location.
@@ -112,21 +124,10 @@ public:
 	{
 		t_translation::ter_list old_;
 		t_translation::ter_list new_;
-		terrain_type_data::merge_mode mode_;
+		terrain_type_data::merge_mode mode_{terrain_type_data::BOTH};
 		utils::optional<t_translation::terrain_code> terrain_;
-		bool use_old_;
-		bool replace_if_failed_;
-
-		overlay_rule()
-			: old_()
-			, new_()
-			, mode_(terrain_type_data::BOTH)
-			, terrain_()
-			, use_old_(false)
-			, replace_if_failed_(false)
-		{
-
-		}
+		bool use_old_{false};
+		bool replace_if_failed_{false};
 	};
 
 	/** Overlays another map onto this one at the given position. */
@@ -178,6 +179,7 @@ public:
 	const t_translation::ter_list& underlying_union_terrain(const map_location& loc) const;
 	std::string get_terrain_string(const map_location& loc) const;
 	std::string get_terrain_editor_string(const map_location& loc) const;
+	std::string get_underlying_terrain_string(const map_location& loc) const;
 
 	bool is_village(const map_location& loc) const;
 	int gives_healing(const map_location& loc) const;
@@ -185,17 +187,9 @@ public:
 	bool is_keep(const map_location& loc) const;
 
 	/* The above wrappers, but which takes a terrain. This is the old syntax, preserved for brevity in certain cases. */
-	const t_translation::ter_list& underlying_mvt_terrain(const t_translation::terrain_code & terrain) const;
-	const t_translation::ter_list& underlying_def_terrain(const t_translation::terrain_code & terrain) const;
-	const t_translation::ter_list& underlying_union_terrain(const t_translation::terrain_code & terrain) const;
 	std::string get_terrain_string(const t_translation::terrain_code& terrain) const;
 	std::string get_terrain_editor_string(const t_translation::terrain_code& terrain) const;
 	std::string get_underlying_terrain_string(const t_translation::terrain_code& terrain) const;
-
-	bool is_village(const t_translation::terrain_code & terrain) const;
-	int gives_healing(const t_translation::terrain_code & terrain) const;
-	bool is_castle(const t_translation::terrain_code & terrain) const;
-	bool is_keep(const t_translation::terrain_code & terrain) const;
 
 	// Also expose this for the same reason:
 	const terrain_type& get_terrain_info(const t_translation::terrain_code & terrain) const;
@@ -228,7 +222,10 @@ private:
 		return tiles().get(loc.x + border_size(), loc.y + border_size());
 	}
 public:
-	void set_terrain(const map_location& loc, const terrain_code & terrain, const terrain_type_data::merge_mode mode = terrain_type_data::BOTH, bool replace_if_failed = false) override;
+	gamemap_base::set_terrain_result set_terrain(const map_location& loc,
+		const terrain_code& terrain,
+		const terrain_type_data::merge_mode mode = terrain_type_data::BOTH,
+		bool replace_if_failed = false) override;
 
 	/** Writes the terrain at loc to cfg. */
 	void write_terrain(const map_location &loc, config& cfg) const;
@@ -245,11 +242,11 @@ public:
 private:
 
 	/**
-	 * Reads the header of a map which is saved in the deprecated map_data format.
+	 * Returns a subview of @a data which excludes any legacy headers.
 	 *
 	 * @param data		          The mapdata to load.
 	 */
-	int read_header(const std::string& data);
+	std::string_view strip_legacy_header(std::string_view data) const;
 
 	std::shared_ptr<terrain_type_data> tdata_;
 

@@ -290,7 +290,7 @@ public:
 		buffers_.push_back(buffer);
 	}
 
-	void swap(document& o);
+	void swap(document& o) noexcept;
 	void clear();
 
 	static std::string stats();
@@ -314,6 +314,6 @@ private:
 };
 
 /** Implement non-member swap function for std::swap (calls @ref document::swap). */
-void swap(document& lhs, document& rhs);
+void swap(document& lhs, document& rhs) noexcept;
 
 }

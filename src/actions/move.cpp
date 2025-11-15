@@ -965,9 +965,9 @@ namespace { // Private helpers for move_unit()
 	 */
 	std::string unit_mover::read_ambush_string(const unit & ambusher)
 	{
-		for(const unit_ability &hide : ambusher.get_abilities("hides"))
+		for(const active_ability &hide : ambusher.get_abilities("hides"))
 		{
-			const std::string & ambush_string = (*hide.ability_cfg)["alert"].str();
+			const std::string & ambush_string = hide.ability_cfg()["alert"].str();
 			if (!ambush_string.empty()) {
 				return ambush_string;
 			}

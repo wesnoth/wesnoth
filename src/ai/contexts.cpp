@@ -1043,7 +1043,7 @@ double readonly_context_impl::power_projection(const map_location& loc, const mo
 				}
 			}
 
-			int64_t village_bonus = map_.is_village(terrain) ? 3 : 2;
+			int64_t village_bonus = map_.is_village(locs[i]) ? 3 : 2;
 			int64_t defense = 100 - un.defense_modifier(terrain);
 			int64_t rating_64 = hp * defense * most_damage * village_bonus / 200;
 			int rating = rating_64;
