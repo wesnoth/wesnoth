@@ -812,7 +812,7 @@ static int do_gameloop(commandline_options& cmdline_opts)
 		gui2::show_message(_("Logging Failure"), msg, message::ok_button);
 	}
 
-	game_config_manager config_manager(cmdline_opts);
+	game_config_manager& config_manager = game->config_manager();
 
 	if(game_config::check_migration) {
 		game_config::check_migration = false;

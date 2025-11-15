@@ -24,7 +24,6 @@
 #include "filesystem.hpp"          // for get_user_data_dir, etc
 #include "game_classification.hpp" // for game_classification, etc
 #include "game_config.hpp"         // for path, etc
-#include "game_config_manager.hpp" // for game_config_manager
 #include "game_initialization/multiplayer.hpp"  // for start_client, etc
 #include "game_initialization/playcampaign.hpp" // for play_game, etc
 #include "game_initialization/singleplayer.hpp" // for sp_create_mode
@@ -113,6 +112,7 @@ static lg::log_domain log_enginerefac("enginerefac");
 
 game_launcher::game_launcher(const commandline_options& cmdline_opts)
 	: cmdline_opts_(cmdline_opts)
+	, config_manager_(cmdline_opts)
 	, font_manager_()
 	, image_manager_()
 	, main_event_context_()
@@ -456,7 +456,7 @@ bool game_launcher::play_test()
 
 	set_test(test_scenarios_.at(0));
 
-	game_config_manager::get()->load_game_config_for_game(state_.classification(), state_.get_scenario_id());
+	config_manager_.load_game_config_for_game(state_.classification(), state_.get_scenario_id());
 
 	try {
 		campaign_controller ccontroller(state_);
@@ -537,7 +537,7 @@ game_launcher::unit_test_result game_launcher::unit_test()
 
 game_launcher::unit_test_result game_launcher::single_unit_test()
 {
-	game_config_manager::get()->load_game_config_for_game(state_.classification(), state_.get_scenario_id());
+	config_manager_.load_game_config_for_game(state_.classification(), state_.get_scenario_id());
 
 	level_result::type game_res = level_result::type::fail;
 	try {
@@ -623,9 +623,9 @@ bool game_launcher::play_screenshot_mode()
 		return true;
 	}
 
-	game_config_manager::get()->load_game_config_for_editor();
+	config_manager_.load_game_config_for_editor();
 
-	::init_textdomains(game_config_manager::get()->game_config());
+	::init_textdomains(config_manager_.game_config());
 
 	editor::start(false, screenshot_map_, true, screenshot_filename_);
 	return false;
@@ -641,7 +641,7 @@ bool game_launcher::play_render_image_mode()
 	DBG_GENERAL << "Current campaign type: " << campaign_type::get_string(state_.classification().type);
 
 	try {
-		game_config_manager::get()->load_game_config_for_game(state_.classification(), state_.get_scenario_id());
+		config_manager_.load_game_config_for_game(state_.classification(), state_.get_scenario_id());
 	} catch(const config::error& e) {
 		PLAIN_LOG << "Error loading game config: " << e.what();
 		return false;
@@ -733,7 +733,7 @@ bool game_launcher::load_prepared_game()
 	}
 
 	try {
-		game_config_manager::get()->load_game_config_for_game(state_.classification(), state_.get_scenario_id());
+		config_manager_.load_game_config_for_game(state_.classification(), state_.get_scenario_id());
 	} catch(const config::error&) {
 		return false;
 	}
@@ -878,9 +878,9 @@ bool game_launcher::play_multiplayer(mp_mode mode)
 			}
 		}
 
-		// create_engine already calls game_config_manager::get()->load_config but maybe its better to have MULTIPLAYER
+		// create_engine already calls config_manager_.load_config but maybe its better to have MULTIPLAYER
 		// defined while we are in the lobby.
-		game_config_manager::get()->load_game_config_for_create(true);
+		config_manager_.load_game_config_for_create(true);
 
 		events::discard_input(); // prevent the "keylogger" effect
 		cursor::set(cursor::NORMAL);
@@ -958,7 +958,7 @@ bool game_launcher::play_multiplayer_commandline()
 
 	DBG_MP << "starting multiplayer game from the commandline";
 
-	game_config_manager::get()->load_game_config_for_create(true);
+	config_manager_.load_game_config_for_create(true);
 
 	events::discard_input(); // prevent the "keylogger" effect
 	cursor::set(cursor::NORMAL);
@@ -1004,7 +1004,7 @@ void game_launcher::launch_game(reload_mode reload)
 
 		if(reload == reload_mode::RELOAD_DATA) {
 			try {
-				game_config_manager::get()->load_game_config_for_game(
+				config_manager_.load_game_config_for_game(
 					state_.classification(), state_.get_scenario_id());
 			} catch(const config::error&) {
 				return;
@@ -1044,9 +1044,9 @@ editor::EXIT_STATUS game_launcher::start_editor(const std::string& filename)
 {
 	editor::EXIT_STATUS res = editor::EXIT_STATUS::EXIT_NORMAL;
 	while(true) {
-		game_config_manager::get()->load_game_config_for_editor();
+		config_manager_.load_game_config_for_editor();
 
-		::init_textdomains(game_config_manager::get()->game_config());
+		::init_textdomains(config_manager_.game_config());
 
 		res = editor::start(res != editor::EXIT_RELOAD_DATA, filename);
 
@@ -1054,7 +1054,7 @@ editor::EXIT_STATUS game_launcher::start_editor(const std::string& filename)
 			return res;
 		}
 
-		game_config_manager::get()->reload_changed_game_config();
+		config_manager_.reload_changed_game_config();
 	}
 
 	return editor::EXIT_ERROR; // not supposed to happen
