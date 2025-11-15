@@ -51,47 +51,35 @@ const terrain_type& gamemap::get_terrain_info(const map_location &loc) const
 }
 
 const t_translation::ter_list& gamemap::underlying_mvt_terrain(const map_location& loc) const
-	{ return underlying_mvt_terrain(get_terrain(loc)); }
+	{ return tdata_->underlying_mvt_terrain(get_terrain(loc)); }
 const t_translation::ter_list& gamemap::underlying_def_terrain(const map_location& loc) const
-	{ return underlying_def_terrain(get_terrain(loc)); }
+	{ return tdata_->underlying_def_terrain(get_terrain(loc)); }
 const t_translation::ter_list& gamemap::underlying_union_terrain(const map_location& loc) const
-	{ return underlying_union_terrain(get_terrain(loc)); }
+	{ return tdata_->underlying_union_terrain(get_terrain(loc)); }
 std::string gamemap::get_terrain_string(const map_location& loc) const
 	{ return get_terrain_string(get_terrain(loc)); }
 std::string gamemap::get_terrain_editor_string(const map_location& loc) const
 	{ return get_terrain_editor_string(get_terrain(loc)); }
+std::string gamemap::get_underlying_terrain_string(const map_location& loc) const
+	{ return get_underlying_terrain_string(get_terrain(loc)); }
 
 bool gamemap::is_village(const map_location& loc) const
-	{ return on_board(loc) && is_village(get_terrain(loc)); }
+	{ return on_board(loc) && get_terrain_info(loc).is_village(); }
 int gamemap::gives_healing(const map_location& loc) const
-	{ return on_board(loc) ?  gives_healing(get_terrain(loc)) : 0; }
+	{ return on_board(loc) ?  get_terrain_info(loc).gives_healing() : 0; }
 bool gamemap::is_castle(const map_location& loc) const
-	{ return on_board(loc) && is_castle(get_terrain(loc)); }
+	{ return on_board(loc) && get_terrain_info(loc).is_castle(); }
 bool gamemap::is_keep(const map_location& loc) const
-	{ return on_board(loc) && is_keep(get_terrain(loc)); }
+	{ return on_board(loc) && get_terrain_info(loc).is_keep(); }
 
 
 /* Forwarded methods of tdata_ */
-const t_translation::ter_list& gamemap::underlying_mvt_terrain(const t_translation::terrain_code & terrain) const
-	{ return tdata_->underlying_mvt_terrain(terrain); }
-const t_translation::ter_list& gamemap::underlying_def_terrain(const t_translation::terrain_code & terrain) const
-	{ return tdata_->underlying_def_terrain(terrain); }
-const t_translation::ter_list& gamemap::underlying_union_terrain(const t_translation::terrain_code & terrain) const
-	{ return tdata_->underlying_union_terrain(terrain); }
 std::string gamemap::get_terrain_string(const t_translation::terrain_code & terrain) const
 	{ return tdata_->get_terrain_string(terrain); }
 std::string gamemap::get_terrain_editor_string(const t_translation::terrain_code & terrain) const
 	{ return tdata_->get_terrain_editor_string(terrain); }
 std::string gamemap::get_underlying_terrain_string(const t_translation::terrain_code& terrain) const
 	{ return tdata_->get_underlying_terrain_string(terrain); }
-bool gamemap::is_village(const t_translation::terrain_code & terrain) const
-	{ return tdata_->get_terrain_info(terrain).is_village(); }
-int gamemap::gives_healing(const t_translation::terrain_code & terrain) const
-	{ return tdata_->get_terrain_info(terrain).gives_healing(); }
-bool gamemap::is_castle(const t_translation::terrain_code & terrain) const
-	{ return tdata_->get_terrain_info(terrain).is_castle(); }
-bool gamemap::is_keep(const t_translation::terrain_code & terrain) const
-	{ return tdata_->get_terrain_info(terrain).is_keep(); }
 
 const terrain_type& gamemap::get_terrain_info(const t_translation::terrain_code & terrain) const
 	{ return tdata_->get_terrain_info(terrain); }
