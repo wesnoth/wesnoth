@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-10-21 01:10 UTC\n"
-"PO-Revision-Date: 2025-09-22 23:48+0200\n"
+"PO-Revision-Date: 2025-11-11 00:27+0100\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -322,19 +322,12 @@ msgid "Shield"
 msgstr ""
 
 #: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:31
-#, fuzzy
-#| msgid ""
-#| "<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span "
-#| "color='#00bbe6'><i>8xp</i></span> to gain <i>flight</i> and the "
-#| "<i>skirmisher</i> ability until the start of your next turn or until "
-#| "cancelled."
 msgid ""
 "Spend <span color='#00bbe6' style='italic'>8xp</span> to gain <i>+20% dodge "
 "chance</i> until the start of your next turn or until cancelled."
 msgstr ""
-"<span color='#6ca364'><i><b>Kouzlo:</b></i></span> Za <span "
-"color='#00bbe6'><i>8 zk. bodů</i></span> získáš schopnost <i>létání</i> "
-"a <i>průbojnost</i> až do začátku svého dalšího kola nebo do zrušení."
+"Za <span color='#00bbe6' style='italic'>8 zk. bodů</span> získáš <i>+20 % "
+"šance na úhyb</i> až do začátku svého dalšího kola nebo do zrušení."
 
 #: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:39
 msgid "Panacea"
@@ -374,20 +367,14 @@ msgid "Levitate"
 msgstr "Vznášení se"
 
 #: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:74
-#, fuzzy
-#| msgid ""
-#| "<span color='#6ca364'><i><b>Spell:</b></i></span> Spend <span "
-#| "color='#00bbe6'><i>8xp</i></span> to gain <i>flight</i> and the "
-#| "<i>skirmisher</i> ability until the start of your next turn or until "
-#| "cancelled."
 msgid ""
 "Spend <span color='#00bbe6' style='italic'>8xp</span> to gain <i>flight</i> "
 "and the <i><ref dst='ability_skirmisherskirmisher'>skirmisher</ref></i> "
 "ability until the start of your next turn or until cancelled."
 msgstr ""
-"<span color='#6ca364'><i><b>Kouzlo:</b></i></span> Za <span "
-"color='#00bbe6'><i>8 zk. bodů</i></span> získáš schopnost <i>létání</i> "
-"a <i>průbojnost</i> až do začátku svého dalšího kola nebo do zrušení."
+"Za <span color='#00bbe6' style='italic'>8 zk. bodů</span> získáš schopnost "
+"<i><létání/i> a <i><ref dst='ability_skirmisherskirmisher'>průbojnost</ref></"
+"i> až do začátku svého dalšího kola nebo do zrušení."
 
 #: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:82
 msgid "Find Familiar"
@@ -871,66 +858,41 @@ msgstr "Podívejte se na mě, dokázal jsem to! Tentokrát to prostě musí sta�
 
 #. [message]: speaker=Leollyn
 #: data/campaigns/The_Deceivers_Gambit/scenarios/00_Graduation.cfg:464
-#, fuzzy
-#| msgid "<span size='small'>Well, what do you think?</span>"
 msgid "Well, what do you think?"
-msgstr "<span size='small'>No, co si o tom myslíte?</span>"
+msgstr "No, co si o tom myslíte?"
 
 #. [message]: speaker=Saegwylyn
 #: data/campaigns/The_Deceivers_Gambit/scenarios/00_Graduation.cfg:470
-#, fuzzy
-#| msgid ""
-#| "<span size='small'>I say no. A mage needs wisdom; this apprentice cares "
-#| "only for his own amusement. This one is a petty magician, not a wise sage "
-#| "or advisor of kings.</span>"
 msgid ""
 "I say no. A mage needs wisdom; this apprentice cares only for his own "
 "amusement. This one is a petty magician, not a wise sage or advisor of kings."
 msgstr ""
-"<span size='small'>Já říkám ne. Mág potřebuje moudrost. Tento učeň se stará "
-"jen o vlastní zábavu. Je to nevýrazný kouzelník, ne mudřec nebo rádce králů."
-"</span>"
+"Já říkám ne. Mág potřebuje moudrost. Tento učeň se stará jen o vlastní "
+"zábavu. Je to nevýrazný kouzelník, ne mudřec nebo rádce králů."
 
 #. [message]: speaker=Methor
 #: data/campaigns/The_Deceivers_Gambit/scenarios/00_Graduation.cfg:474
-#, fuzzy
-#| msgid ""
-#| "<span size='small'>I say yes. I admit my apprentice enjoys the spotlight "
-#| "more than most, but with this much magical aptitude who wouldn’t want to "
-#| "show off?</span>"
 msgid ""
 "I say yes. I admit my apprentice enjoys the spotlight more than most, but "
 "with this much magical aptitude who wouldn’t want to show off?"
 msgstr ""
-"<span size='small'>Já říkám ano. Přiznávám, že můj učedník si užívá "
-"pozornosti více než většina ostatních, ale kdo by se nechtěl s takovým "
-"magickým nadáním předvést?</span>"
+"Já říkám ano. Přiznávám, že můj učedník si užívá pozornosti více než většina "
+"ostatních, ale kdo by se nechtěl s takovým magickým nadáním předvést?"
 
 #. [message]: speaker=Methor
 #: data/campaigns/The_Deceivers_Gambit/scenarios/00_Graduation.cfg:478
-#, fuzzy
-#| msgid ""
-#| "<span size='small'>I think it’s obvious this is one of the most gifted "
-#| "magi we’ve trained in years. The skill is innate; the wisdom will come "
-#| "with time.</span>"
 msgid ""
 "I think it’s obvious this is one of the most gifted magi we’ve trained in "
 "years. The skill is innate; the wisdom will come with time."
 msgstr ""
-"<span size='small'>Myslím, že tohle je zřejmě jeden z nejnadanějších mágů, "
-"které jsme za poslední roky vycvičili. Jeho schopnosti jsou vrozené, "
-"moudrost přijde s časem.</span>"
+"Myslím, že tohle je zřejmě jeden z nejnadanějších mágů, které jsme za "
+"poslední roky vycvičili. Jeho schopnosti jsou vrozené, moudrost přijde "
+"s časem."
 
 #. [message]: speaker=Leollyn
 #: data/campaigns/The_Deceivers_Gambit/scenarios/00_Graduation.cfg:483
-#, fuzzy
-#| msgid ""
-#| "<span size='small'>So mine is the deciding vote. Very well, I’ve made up "
-#| "my mind.</span>"
 msgid "So mine is the deciding vote. Very well, I’ve made up my mind."
-msgstr ""
-"<span size='small'>Takže můj hlas rozhodne. Dobrá, už jsem to rozmyslel.</"
-"span>"
+msgstr "Takže můj hlas rozhodne. Dobrá, už jsem to rozmyslel."
 
 #. [message]: speaker=narrator
 #. non sequitur. The screen has faded to black, and Delfador is hearing a voice with no apparent origin. In scenario 4, this is later revealed to be the elvish seer Elende, prophesying about Delfador's future.
