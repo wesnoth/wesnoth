@@ -136,11 +136,14 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 	}
 
 	// Get the weapon characteristics as appropriate.
-	auto ctx = weapon->specials_context(up, oppp, u_loc, opp_loc, attacking, opp_weapon);
+	// Create false location if location not valid like in ai combat simulations.
+	const map_location& un_loc = u_loc.valid() ? u_loc : map_location(1, 1);
+	const map_location& u_opp_loc = opp_loc.valid() ? opp_loc : map_location(1, 2);
+	auto ctx = weapon->specials_context(up, oppp, un_loc, u_opp_loc, attacking, opp_weapon);
 	utils::optional<decltype(ctx)> opp_ctx;
 
 	if(opp_weapon) {
-		opp_ctx.emplace(opp_weapon->specials_context(oppp, up, opp_loc, u_loc, !attacking, weapon));
+		opp_ctx.emplace(opp_weapon->specials_context(oppp, up, u_opp_loc, un_loc, !attacking, weapon));
 	}
 
 	slows = weapon->has_special_or_ability("slow") && !opp.get_state("unslowable") ;
@@ -152,7 +155,7 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 	firststrike = weapon->has_special_or_ability("firststrike");
 
 	{
-		const int distance = distance_between(u_loc, opp_loc);
+		const int distance = distance_between(un_loc, u_opp_loc);
 		const bool out_of_range = distance > weapon->max_range() || distance < weapon->min_range();
 		disable = weapon->has_special_or_ability("disable") || out_of_range;
 	}
@@ -199,13 +202,13 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 
 
 	// Leadership bonus.
-	int leader_bonus = under_leadership(u, u_loc, weapon, opp_weapon);
+	int leader_bonus = under_leadership(u, un_loc, weapon, opp_weapon);
 	if(leader_bonus != 0) {
 		damage_multiplier += leader_bonus;
 	}
 
 	// Resistance modifier.
-	damage_multiplier *= opp.damage_from(*weapon, !attacking, opp_loc, opp_weapon);
+	damage_multiplier *= opp.damage_from(*weapon, !attacking, u_opp_loc, opp_weapon);
 
 	// Compute both the normal and slowed damage.
 	damage = round_damage(base_damage, damage_multiplier, 10000);
