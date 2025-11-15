@@ -19,6 +19,7 @@
  */
 
 #include "units/attack_type.hpp"
+#include "units/types.hpp"
 #include "units/unit.hpp"
 #include "formula/callable_objects.hpp"
 #include "formula/formula.hpp"
@@ -180,7 +181,8 @@ attack_type::attack_type(const config& cfg)
 	, specials_()
 	, changed_(true)
 {
-	unit_ability_t::parse_vector(cfg.child_or_empty("specials"), specials_, true);
+	config specials_cfg = unit_type_data::add_registry_entries(cfg, "specials", unit_types.specials());
+	unit_ability_t::parse_vector(specials_cfg, specials_, true);
 
 	if (description_.empty())
 		description_ = translation::egettext(id_.c_str());
@@ -465,6 +467,13 @@ void attack_type::apply_effect(const config& cfg)
 		if(mode != "append") {
 			specials_.clear();
 		}
+		// expand and add registry weapon specials
+		config registry_specials = unit_type_data::add_registry_entries(
+					config{"specials_list", set_specials["specials_list"]}, "specials", unit_types.specials());
+		for(const auto [key, cfg] : registry_specials.all_children_view()) {
+			specials_.push_back(unit_ability_t::create(key, cfg, true));
+		}
+
 		for(const auto [key, cfg] : set_specials->all_children_view()) {
 			specials_.push_back(unit_ability_t::create(key, cfg, true));
 		}

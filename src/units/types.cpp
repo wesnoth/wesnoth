@@ -1063,9 +1063,9 @@ config unit_type_data::add_registry_entries(
 	const std::map<std::string, config>& registry
 )
 {
-	config to_append = base_cfg.child_or_empty("abilities");
-	if(base_cfg.has_attribute(registry_name)) {
-		std::vector<std::string> abil_ids_list = utils::split(base_cfg[registry_name].str());
+	config to_append = base_cfg.child_or_empty(registry_name);
+	if(base_cfg.has_attribute(registry_name + "_list")) {
+		std::vector<std::string> abil_ids_list = utils::split(base_cfg[registry_name + "_list"].str());
 		for(const std::string& id : abil_ids_list) {
 			auto registry_entry = registry.find(id);
 			if(registry_entry != registry.end()) {
@@ -1107,9 +1107,22 @@ void unit_type_data::set_config(const game_config_view& cfg)
 		for(const auto& [key, child_cfg] : abil_cfg.get().all_children_range()) {
 			const std::string& id = child_cfg["unique_id"].str(child_cfg["id"]);
 			if(abilities_registry_.find(id) == abilities_registry_.end()) {
+				DBG_UT << "Adding ability ‘" << id << "’ to registry.";
 				abilities_registry_.try_emplace(id, config(key, child_cfg));
 			} else {
-				WRN_UT << "Ability with id ‘" << id << "’ already exists, not adding.";
+				WRN_UT << "Ability with id ‘" << id << "’ already exists in registry, not adding.";
+			}
+		}
+	}
+
+	for(const auto& sp_cfg : cfg.child_range("weapon_specials")) {
+		for(const auto& [key, child_cfg] : sp_cfg.get().all_children_range()) {
+			const std::string& id = child_cfg["unique_id"].str(child_cfg["id"]);
+			if(specials_registry_.find(id) == specials_registry_.end()) {
+				DBG_UT << "Adding weapon special ‘" << id << "’ to registry.";
+				specials_registry_.try_emplace(id, config(key, child_cfg));
+			} else {
+				WRN_UT << "Weapon special with id ‘" << id << "’ already exists in registry, not adding.";
 			}
 		}
 	}
@@ -1292,6 +1305,7 @@ void unit_type_data::clear()
 	movement_types_.clear();
 	races_.clear();
 	abilities_registry_.clear();
+	specials_registry_.clear();
 	build_status_ = unit_type::NOT_BUILT;
 
 	hide_help_all_ = false;
