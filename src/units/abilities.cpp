@@ -1276,16 +1276,35 @@ std::pair<std::string, std::set<std::string>> attack_type::damage_types() const
  */
 double attack_type::modified_damage() const
 {
-	double damage_value = unit_abilities::effect(get_specials_and_abilities("damage"), damage(), shared_from_this()).get_composite_double_value();
-	return damage_value;
+	return get_composites_values(get_specials_and_abilities("damage"), damage()).second;
+}
+
+std::pair<int, double> attack_type::get_composites_values(const active_ability_list& abil_list, double base_value, bool is_cth) const
+{
+	std::map<double, active_ability_list> base_list;
+	for(const active_ability& i : abil_list) {
+		double priority = i.ability_cfg()["priority"].to_double(0);
+		if(base_list[priority].empty()) {
+			base_list[priority] = abil_list.loc();
+		}
+		base_list[priority].emplace_back(i);
+	}
+	int value = std::round(base_value);
+	double double_value = base_value;
+	for(auto base : base_list) {
+		unit_abilities::effect comp_effect(base.second, is_cth ? std::clamp(value, 0, 100) : value, shared_from_this());
+		value = comp_effect.get_composite_value();
+		double_value = comp_effect.get_composite_double_value();
+	}
+	return {value, double_value};
 }
 
 int attack_type::modified_chance_to_hit(int cth) const
 {
 	int parry = other_attack_ ? other_attack_->parry() : 0;
-	active_ability_list chance_to_hit_list = get_specials_and_abilities("chance_to_hit");
 	cth = std::clamp(cth + accuracy_ - parry, 0, 100);
-	return composite_value(chance_to_hit_list, cth);
+	//proceed to calculation, of low priority toward high priority.
+	return get_composites_values(get_specials_and_abilities("chance_to_hit"), cth, true).first;
 }
 
 
@@ -1480,7 +1499,7 @@ active_ability_list attack_type::get_specials_and_abilities(const std::string& s
 
 int attack_type::composite_value(const active_ability_list& abil_list, int base_value) const
 {
-	return unit_abilities::effect(abil_list, base_value, shared_from_this()).get_composite_value();
+	return get_composites_values(abil_list, base_value).first;
 }
 
 static bool overwrite_special_affects(const unit_ability_t& ab)
@@ -1826,7 +1845,7 @@ namespace
 		bool no_value_weapon_abilities_check =  abilities_list::no_weapon_number_tags().count(tag_name) != 0 || abilities_list::ability_no_value_tags().count(tag_name) != 0;
 		if(filter.has_attribute("cumulative") && no_value_weapon_abilities_check)
 			return false;
-		if(filter.has_attribute("value") && no_value_weapon_abilities_check)
+		if(filter.has_attribute("value") && no_value_weapon_abilities_check && tag_name != "berserk")
 			return false;
 		if(filter.has_attribute("add") && no_value_weapon_abilities_check)
 			return false;
@@ -1835,6 +1854,8 @@ namespace
 		if(filter.has_attribute("multiply") && no_value_weapon_abilities_check)
 			return false;
 		if(filter.has_attribute("divide") && no_value_weapon_abilities_check)
+			return false;
+		if(filter.has_attribute("priority") && no_value_weapon_abilities_check)
 			return false;
 
 		bool all_engine =  abilities_list::no_weapon_number_tags().count(tag_name) != 0 || abilities_list::weapon_number_tags().count(tag_name) != 0 || abilities_list::ability_value_tags().count(tag_name) != 0 || abilities_list::ability_no_value_tags().count(tag_name) != 0;
@@ -1897,6 +1918,9 @@ namespace
 			return false;
 
 		if(!string_matches_if_present(filter, cfg, "active_on", "both"))
+			return false;
+
+		if(!double_matches_if_present(filter, cfg, "priority"))
 			return false;
 
 		//value, add, sub multiply and divide check values of attribute used in engines abilities(default value of 'value' can be checked when not specified)
