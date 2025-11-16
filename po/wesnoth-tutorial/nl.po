@@ -18,7 +18,7 @@ msgstr ""
 "X-Generator: Poedit 3.4.2\n"
 
 #. [campaign]: id=Tutorial
-#: data/campaigns/tutorial/_main.cfg:11
+#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:11
 #, fuzzy
 #| msgid "Battle Training"
 msgid "Battle Training — Old Tutorial"
@@ -26,12 +26,12 @@ msgstr "Gevechtstraining"
 
 #. [difficulty]
 #. [campaign]: id=Tutorial
-#: data/campaigns/tutorial/_main.cfg:14 data/campaigns/tutorial/_main.cfg:32
+#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:14 data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:32
 msgid "Tutorial"
 msgstr "Oefening"
 
 #. [campaign]: id=Tutorial
-#: data/campaigns/tutorial/_main.cfg:21
+#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:21
 #, fuzzy
 #| msgid ""
 #| "Learn the basics of Wesnoth gameplay with a tutorial. Recommended for "
@@ -44,58 +44,58 @@ msgstr ""
 "voor de eerste keer speelt, wordt deze training aangeraden."
 
 #. [campaign]: id=Tutorial
-#: data/campaigns/tutorial/_main.cfg:23
+#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:23
 msgid ""
 "Note: No longer recommended for first-time players. Try <i>The South Guard</"
 "i> instead."
 msgstr ""
 
 #. [difficulty]
-#: data/campaigns/tutorial/_main.cfg:33
+#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:33
 msgid "Beginner"
 msgstr "Beginner"
 
 #. [achievement_group]
-#: data/campaigns/tutorial/achievements.cfg:3
+#: data/campaigns/Heir_To_The_Throne_Classic/achievements.cfg:3
 #, fuzzy
 #| msgid "Tutorial"
 msgid "Old Tutorial"
 msgstr "Oefening"
 
 #. [achievement]: id=completed
-#: data/campaigns/tutorial/achievements.cfg:7
+#: data/campaigns/Heir_To_The_Throne_Classic/achievements.cfg:7
 msgid "Completed the Tutorial"
 msgstr "Voltooi de Oefening"
 
 #. [achievement]: id=completed
-#: data/campaigns/tutorial/achievements.cfg:8
+#: data/campaigns/Heir_To_The_Throne_Classic/achievements.cfg:8
 msgid "Complete the Battle Training."
 msgstr "Voltooi de Gevechtstraining."
 
 #. [label]
-#: data/campaigns/tutorial/gui/character_selection.cfg:19
+#: data/campaigns/Heir_To_The_Throne_Classic/gui/character_selection.cfg:19
 msgid "Select Character"
 msgstr "Selecteer Personage"
 
 #. [label]
-#: data/campaigns/tutorial/gui/character_selection.cfg:30
+#: data/campaigns/Heir_To_The_Throne_Classic/gui/character_selection.cfg:30
 msgid "Who do you want to play as?"
 msgstr "Als wie wil je spelen?"
 
 #. [widget]: id=name
 #. [side]: type=Fighter, id=student
-#: data/campaigns/tutorial/gui/character_selection.cfg:106
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:33
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:30
+#: data/campaigns/Heir_To_The_Throne_Classic/gui/character_selection.cfg:106
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:33
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:30
 msgid "Konrad"
 msgstr "Konrad"
 
 #. [widget]: id=name
 #. [lua]: wml_actions.select_character
 #. [modify_side]
-#: data/campaigns/tutorial/gui/character_selection.cfg:118
-#: data/campaigns/tutorial/lua/character_selection.lua:34
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:178
+#: data/campaigns/Heir_To_The_Throne_Classic/gui/character_selection.cfg:118
+#: data/campaigns/Heir_To_The_Throne_Classic/lua/character_selection.lua:34
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:178
 msgid "Li’sar"
 msgstr "Li’sar"
 
@@ -104,25 +104,25 @@ msgstr "Li’sar"
 #. welcoming new players. Please keep the friendly fun feeling!
 #. If you have any questions, ask in the forums or, the #wesnoth-dev channel on irc.libera.chat,
 #. or https://discord.gg/battleforwesnoth.
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:9
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:9
 msgid "Wesnoth Tutorial — Part I"
 msgstr "Gevechtstraining - Deel 1"
 
 #. [side]: type=Fighter, id=student
 #. [side]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:29
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:26
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:104
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:29
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:26
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:104
 msgid "team_name^Student"
 msgstr "Leerling"
 
 #. [unit]: id=Delfador, type=Elder Mage
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:75
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:75
 msgid "Delfador"
 msgstr "Delfador"
 
 #. [objectives]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:119
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:119
 msgid ""
 "You will learn the basics of:\n"
 "• <small>Movement</small>\n"
@@ -137,32 +137,32 @@ msgstr ""
 "• <small>Rekruteren</small>"
 
 #. [objective]: condition=win
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:125
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:125
 msgid "Destroy a fierce enemy"
 msgstr "Versla een woeste vijand"
 
 #. [objective]: condition=lose
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:129
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:129
 msgid "Get yourself killed"
 msgstr "Zelf doodgaan"
 
 #. [disallow_end_turn]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:137
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:137
 msgid ""
 "You cannot end your turn until you have completed the lesson on movement!"
 msgstr ""
 "Je kunt je beurt pas beëindigen als je de les over verplaatsen hebt afgerond!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:146
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:160
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:168
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:195
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:146
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:160
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:168
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:195
 msgid "Welcome to Wesnoth!"
 msgstr "Welkom in Wesnoth!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:148
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:148
 msgid ""
 "This is a two-part tutorial intended for people who are new to the game. "
 "Part 1 will teach you the basics about movement, attacking, healing, and "
@@ -174,7 +174,7 @@ msgstr ""
 "spelen hetzelfde)."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:162
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:162
 msgid ""
 "For this tutorial, you are playing as Konrad. You are standing on the keep, "
 "and your mentor Delfador is on the east side of the river. You can move the "
@@ -187,7 +187,7 @@ msgstr ""
 "en gegevens aan de rechterkant van het scherm te zien."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:170
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:170
 msgid ""
 "For this tutorial, you are playing as Li’sar. You are standing on the keep, "
 "and your mentor Delfador is on the east side of the river. You can move the "
@@ -200,30 +200,30 @@ msgstr ""
 "en gegevens aan de rechterkant van het scherm te zien."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:176
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:176
 msgid "Click on Konrad"
 msgstr "Klik op Konrad"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:178
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:178
 msgid "Click on Li’sar"
 msgstr "Klik op Li'sar"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:320
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:320
 msgid "To undo your last move, press <b>u</b> or use the right-click menu."
 msgstr ""
 "Als je je laatste zet ongedaan wilt maken, druk je op <b>u</b> of gebruik je "
 "het snel-menu (rechtermuisknop)."
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:360
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:365
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:360
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:365
 msgid "Movement"
 msgstr "Verplaatsen"
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:361
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:361
 msgid ""
 "When you hover over or select a unit, in this case Konrad, the places he can "
 "move to are highlighted. All units have a certain number of <i>movement "
@@ -242,7 +242,7 @@ msgstr ""
 "verkeerde plaats bent gegaan.)"
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:366
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:366
 msgid ""
 "When you hover over or select a unit, in this case Li’sar, the places she "
 "can move to are highlighted. All units have a certain number of <i>movement "
@@ -261,62 +261,62 @@ msgstr ""
 "verkeerde plaats bent gegaan.)"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:376
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:376
 msgid "Move Konrad next to Delfador"
 msgstr "Plaats Konrad naast Delfador"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:378
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:378
 msgid "Move Li’sar next to Delfador"
 msgstr "Plaats Li'sar naast Delfador"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:406
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:406
 msgid "Good morning, Delfador! Is it time to attack things?"
 msgstr "Goedemorgen Delfador! Kunnen we iets gaan aanvallen?"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:407
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:407
 msgid "female^Good morning, Delfador! Is it time to attack things?"
 msgstr "Goedemorgen Delfador! Kunnen we iets gaan aanvallen?"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:412
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:412
 msgid "Um, well..."
 msgstr "Ehm, nou..."
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:417
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:417
 msgid "Have you found an orc for me to fight, huh? A troll?"
 msgstr "Mag ik eindelijk tegen een ork vechten? Of een trol?"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:418
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:418
 msgid "female^Have you found an orc for me to fight, huh? A troll?"
 msgstr "Mag ik eindelijk tegen een ork vechten? Of een trol?"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:423
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:423
 msgid "Quiet! I will summon an enemy for you..."
 msgstr "Stilte! Ik zal een vijand voor je oproepen..."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:481
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:481
 msgid "... this quintain!"
 msgstr "... deze stropop!"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:486
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:486
 msgid "A quintain? You want me to fight a dummy?"
 msgstr "Een stropop? Je wilt me tegen een pop laten vechten?"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:487
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:487
 msgid "female^A quintain? You want me to fight a dummy?"
 msgstr "Een stropop? Je wilt me tegen een pop laten vechten?"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:493
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:493
 msgid ""
 "Young man, you have $student_hp hitpoints and a sword. I’m fairly sure "
 "you’ll win."
@@ -325,7 +325,7 @@ msgstr ""
 "zeker van dat je zult winnen."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:498
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:498
 msgid ""
 "female^Young lady, you have $student_hp hitpoints and a sword. I’m fairly "
 "sure you’ll win."
@@ -334,13 +334,13 @@ msgstr ""
 "zeker van dat je het wel zult winnen."
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:504
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:509
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:504
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:509
 msgid "Attacking"
 msgstr "Aanvallen"
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:505
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:505
 msgid ""
 "To attack the quintain, first select the attacker (Konrad), then the target "
 "(the quintain). You will see an attack description. Click <b>Attack</b> when "
@@ -352,7 +352,7 @@ msgstr ""
 "b> wanneer je er klaar voor bent."
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:510
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:510
 msgid ""
 "To attack the quintain, first select the attacker (Li’sar), then the target "
 "(the quintain). You will see an attack description. Click <b>Attack</b> when "
@@ -364,39 +364,39 @@ msgstr ""
 "b> wanneer je er klaar voor bent."
 
 #. [disallow_end_turn]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:515
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:515
 msgid "You cannot end your turn until you have attacked the dummy!"
 msgstr "Je kunt je beurt pas beëindigen als je de pop hebt aangevallen!"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:534
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:534
 msgid "Hey! This quintain fights back!"
 msgstr "Hé! Deze stropop vecht terug!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:539
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:539
 msgid "Hmm, perhaps we should have started with a doll."
 msgstr "Hmm, misschien hadden we met een iets kleinere pop moeten beginnen."
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:544
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:544
 msgid "Should I retreat?"
 msgstr "Moet ik me terugtrekken?"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:545
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:545
 msgid "female^Should I retreat?"
 msgstr "Moet ik me terugtrekken?"
 
 #. [message]: speaker=Delfador
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:550
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1078
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:550
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1078
 msgid "Good idea!"
 msgstr "Goed idee!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:576
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:576
 msgid ""
 "Unfortunately, you’ve used up your turn attacking the quintain. The quintain "
 "now gets to attack."
@@ -405,12 +405,12 @@ msgstr ""
 "mag nu aanvallen."
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:581
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:581
 msgid "The <i>dummy</i> gets a turn?"
 msgstr "De <i>stropop</i> krijgt een beurt?"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:586
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:586
 msgid ""
 "Yes. It’s a magical quintain! If it hits you, it does 3 damage, and has 5 "
 "chances. If it hits every time, you’ll drop from $student_hp to "
@@ -421,12 +421,12 @@ msgstr ""
 "$student_hp naar $($student_hp-15) levenspunten. Zet je schrap!"
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:592
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:592
 msgid "Turns"
 msgstr "Beurten"
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:593
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:593
 msgid ""
 "Every turn, each side in a scenario gets a chance to make their move. Once "
 "you’ve completed everything you wish to do this turn, click on the <b>End "
@@ -446,32 +446,32 @@ msgstr ""
 
 #. [event]
 #. [else]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:596
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:678
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:790
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:498
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:596
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:678
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:790
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:498
 msgid "End your turn"
 msgstr "Beëindig je beurt"
 
 #. [disallow_end_turn]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:619
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:619
 msgid ""
 "You cannot end your turn until you have completed the lesson on healing!"
 msgstr ""
 "Je kunt je beurt pas beëindigen als je de les over genezen hebt afgerond!"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:634
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:634
 msgid "Ouch! I need to heal! Only $student_hp hitpoints left!"
 msgstr "Oef! Ik moet genezen! Slechts $student_hp levenspunten over!"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:635
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:635
 msgid "female^Ouch! I need to heal! Only $student_hp hitpoints left!"
 msgstr "Oef! Ik moet genezen! Slechts $student_hp levenspunten over!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:640
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:640
 msgid ""
 "There are two villages within your reach. Visiting villages is a good idea, "
 "and ending your turn on one will heal you. To a village!"
@@ -480,27 +480,27 @@ msgstr ""
 "beurt op een dorp eindigt, wordt je genezen. Op naar een dorp!"
 
 #. [label]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:645
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:645
 msgid "Village"
 msgstr "Dorp"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:658
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:658
 msgid "Move Konrad to a nearby village"
 msgstr "Verplaats Konrad naar een dorp in de buurt"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:660
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:660
 msgid "Move Li’sar to a nearby village"
 msgstr "Verplaats Li'sar naar een dorp in de buurt"
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:672
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:672
 msgid "Villages"
 msgstr "Dorpen"
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:673
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:673
 msgid ""
 "You have captured a village! It now flies your colors and has been added to "
 "your total village count (the house icon at the top of the screen shows how "
@@ -514,14 +514,14 @@ msgstr ""
 "beurt krijg je twee goudstukken, plus één voor elk dorp dat je bezit."
 
 #. [disallow_end_turn]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:688
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:688
 msgid ""
 "You cannot end your turn until you have completed the lesson on recruiting!"
 msgstr ""
 "Je kunt de beurt pas beëindigen als je de les over rekruteren hebt afgerond!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:697
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:697
 msgid ""
 "Since you started your turn on a village, you regained some health! Villages "
 "heal units 8 hitpoints per turn, or enough to top off their health, "
@@ -533,22 +533,22 @@ msgstr ""
 "ben je $student_hp_heal_amount levenspunten genezen."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:702
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:702
 msgid "Now, it’s time to summon some help against that quintain."
 msgstr "Nu is het tijd om wat hulp te halen om tegen die stropop te vechten."
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:707
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:707
 msgid "I’ll recruit some elves!"
 msgstr "Ik zal wat elfen rekruteren!"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:708
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:708
 msgid "female^I’ll recruit some elves!"
 msgstr "Ik zal wat elfen rekruteren!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:713
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:713
 msgid ""
 "A splendid idea! It’s probably best not to attempt attacking the quintain "
 "this turn. Instead, you should return to the keep and recruit two units; you "
@@ -560,27 +560,27 @@ msgstr ""
 "goudstukken voor."
 
 #. [label]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:718
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:718
 msgid "Keep"
 msgstr "Donjon"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:732
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:732
 msgid "Move Konrad to the keep"
 msgstr "Plaats Konrad op de donjon"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:734
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:734
 msgid "Move Li’sar to the keep"
 msgstr "Plaats Li'sar op de donjon"
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:751
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:751
 msgid "Recruiting"
 msgstr "Rekruteren"
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:752
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:752
 msgid ""
 "Whenever you’re on a <i>keep</i>, you can <i>recruit</i> units on the castle "
 "tiles around it by right-clicking and selecting <b>Recruit</b>. Note that "
@@ -596,18 +596,18 @@ msgstr ""
 "kiezen: de Elfenkrijger."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:755
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:755
 msgid "Recruit two Elvish Fighters"
 msgstr "Rekruteer twee Elfenkrijgers"
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:775
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:780
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:775
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:780
 msgid "Crowns"
 msgstr "Kronen"
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:776
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:776
 msgid ""
 "The tiny golden crown above your leader (Konrad) indicates he is a side "
 "leader. In most scenarios, you will lose if your leader is killed. Be sure "
@@ -618,7 +618,7 @@ msgstr ""
 "ervoor dat hij veilig is!"
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:781
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:781
 msgid ""
 "The tiny golden crown above your leader (Li’sar) indicates she is a side "
 "leader. In most scenarios, you will lose if your leader is killed. Be sure "
@@ -629,14 +629,14 @@ msgstr ""
 "ervoor dat zij veilig is!"
 
 #. [disallow_end_turn]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:824
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:824
 msgid ""
 "You cannot end your turn until you have completed the lesson on attacking!"
 msgstr ""
 "Je kunt je beurt pas beëindigen als je de les over aanvallen hebt afgerond!"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:833
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:833
 msgid ""
 "Hey, the quintain just healed 2 hitpoints! I’d better attack it at once!"
 msgstr ""
@@ -644,7 +644,7 @@ msgstr ""
 "meteen aanvallen!"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:834
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:834
 msgid ""
 "female^Hey, the quintain just healed 2 hitpoints! I’d better attack it at "
 "once!"
@@ -653,13 +653,13 @@ msgstr ""
 "meteen aanvallen!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:839
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:839
 msgid "Yes, if a unit doesn’t do anything for a turn, it will slowly heal."
 msgstr ""
 "Ja, als een eenheid een beurt lang niets doet, zal het langzaam genezen."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:844
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:844
 msgid ""
 "Before you send your fighters against the quintain, you should know they "
 "have two kinds of attacks..."
@@ -668,17 +668,17 @@ msgstr ""
 "je krijgers twee soorten aanvallen hebben..."
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:849
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:849
 msgid "I’ll tell them to use the one that does more damage!"
 msgstr "Ik zal ze de aanval laten gebruiken die de meeste schade toebrengt!"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:850
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:850
 msgid "female^I’ll tell them to use the one that does more damage!"
 msgstr "Ik zal ze de aanval laten gebruiken die de meeste schade toebrengt!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:855
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:855
 msgid ""
 "And which would that be? The sword (5×4; or 5 damage on each hit, with 4 "
 "attacks) or the bow (3×3; or 3 damage on each hit, with 3 attacks)? I "
@@ -689,17 +689,17 @@ msgstr ""
 "3 kansen)? Je komt er vanzelf achter..."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:858
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:858
 msgid "Attack the quintain with your fighters"
 msgstr "Val de stropop aan met je krijgers"
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:862
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:862
 msgid "Traits"
 msgstr "Karaktereigenschappen"
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:863
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:863
 msgid ""
 "Be sure to examine the <i>traits</i> of your new recruits. They are listed "
 "under its race in the sidebar. Traits can subtly affect how you use your "
@@ -715,7 +715,7 @@ msgstr ""
 "ervaringspunten nodig om naar de volgende rang te promoveren."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:875
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:875
 msgid ""
 "You wouldn’t do anything stupid like charging that quintain yourself again, "
 "now would you? Use the fighters you recruited first; they’ll be a lot of "
@@ -727,7 +727,7 @@ msgstr ""
 
 #. [message]: speaker=Delfador
 #. a strong elf, so +1 damage
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:918
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:918
 msgid ""
 "Your elf used a sword (6×4; or 6 damage on each hit, with 4 attacks), which "
 "is a <i>melee</i> attack. The quintain defended with its melee attack (3×5; "
@@ -741,7 +741,7 @@ msgstr ""
 "te raken). De aanval op afstand (de pijl en boog) was veiliger geweest."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:922
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:922
 msgid ""
 "Elvish Fighters normally do 5×4 damage with their swords, but this elf has "
 "the <i>strong</i> trait, which increases the damage output of melee attacks."
@@ -751,7 +751,7 @@ msgstr ""
 "dichtbij wordt verhoogd."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:928
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:928
 msgid ""
 "Your elf used a sword (5×4; or 5 damage on each hit, with 4 attacks), which "
 "is a <i>melee</i> attack. The quintain defended with its melee attack (3×5; "
@@ -766,7 +766,7 @@ msgstr ""
 
 #. [message]: speaker=Delfador
 #. a dextrous elf, so +1 damage
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:949
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:949
 msgid ""
 "Your elf used a bow, which is a <i>ranged</i> attack (4×3; or 4 damage on "
 "each hit, with 3 attacks). The quintain has no ranged attack, only a melee "
@@ -778,7 +778,7 @@ msgstr ""
 "heeft hij zich niet kunnen verdedigen."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:953
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:953
 msgid ""
 "Elvish Fighters normally do 3×3 damage with their bows, but this elf has the "
 "<i>dextrous</i> trait, which increases the damage output of ranged attacks."
@@ -788,7 +788,7 @@ msgstr ""
 "afstand wordt verhoogd."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:959
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:959
 msgid ""
 "Your elf used a bow, which is a <i>ranged</i> attack (3×3; or 3 damage on "
 "each hit, with 3 attacks). The quintain has no ranged attack, only a melee "
@@ -800,22 +800,22 @@ msgstr ""
 "heeft hij zich niet kunnen verdedigen."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:976
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:976
 msgid "Keep attacking with both elves until the quintain is finished!"
 msgstr "Blijf aanvallen met beide elfen tot de stropop er geweest is!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:991
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:991
 msgid "Maybe you should recruit another elf?"
 msgstr "Misschien moet je nog een elf rekruteren?"
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1000
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1000
 msgid "Unit Descriptions"
 msgstr "Eenheid Beschrijvingen"
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1001
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1001
 msgid ""
 "You can right-click on a unit to see a detailed <b>Unit Description</b>."
 msgstr ""
@@ -823,12 +823,12 @@ msgstr ""
 "<b>Eenheid Beschrijving</b> te bekijken."
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1010
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1010
 msgid "Protect Your Troops"
 msgstr "Bescherm Je Eenheden"
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1011
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1011
 msgid ""
 "Remember to pull back wounded units into villages and recruit more if "
 "needed. Take special care of units with the highest <i>experience points "
@@ -840,12 +840,12 @@ msgstr ""
 "krachtiger kunnen worden."
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1020
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1020
 msgid "Support"
 msgstr "Onderhoud"
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1021
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1021
 msgid ""
 "Each village you control will <i>support</i> one unit for free. After that, "
 "each unit costs you one gold per turn."
@@ -854,17 +854,17 @@ msgstr ""
 "elke eenheid één goudstuk per beurt."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1031
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1031
 msgid "You had really better finish off that quintain."
 msgstr "Je had beter kunnen afrekenen met die stropop."
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1040
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1040
 msgid "Advancement"
 msgstr "Promotie"
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1041
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1041
 msgid ""
 "When a unit gains enough experience points (the <i>experience bar</i>, if "
 "present, is on the <b>right</b> of the <i>hitpoints bar</i>), it will gain a "
@@ -880,12 +880,12 @@ msgstr ""
 "dan eenheden van de eerste rang."
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1050
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1050
 msgid "Defenses"
 msgstr "Verdediging"
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1052
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1052
 msgid ""
 "Whenever one of your units is selected, you’ll see varying percentages as "
 "you move the mouse over the map. The higher the percentage, the more "
@@ -904,22 +904,22 @@ msgstr ""
 "altijd 70% kans om te raken ongeacht op welk terrein de verdediger staat."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1064
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1064
 msgid "Agh! This training is too much for me..."
 msgstr "Agh! Deze training is te veel voor mij..."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1065
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1065
 msgid "female^Agh! This training is too much for me..."
 msgstr "Agh! Deze training is te veel voor mij..."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1101
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1101
 msgid "The quintain is destroyed, and I have gained more experience!"
 msgstr "De stropop is vernietigd, en ik heb ervaring opgedaan!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1106
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1106
 msgid ""
 "Yes, you gain experience through battle, especially by killing an opponent. "
 "Gain enough experience and you’ll become more powerful."
@@ -928,7 +928,7 @@ msgstr ""
 "Doe genoeg ervaring op en je zal krachtiger worden."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1112
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1112
 msgid ""
 "Now, Konrad, I will leave you with more dummies to practice on! After that, "
 "we have real work to do..."
@@ -937,7 +937,7 @@ msgstr ""
 "kunnen we beginnen aan het echte werk..."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1117
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1117
 msgid ""
 "Now, Li’sar, I will leave you with more dummies to practice on! After that, "
 "we have real work to do..."
@@ -946,12 +946,12 @@ msgstr ""
 "kunnen we beginnen aan het echte werk..."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1179
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1179
 msgid "Note"
 msgstr "Let op"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1181
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1181
 msgid ""
 "These dummies only attack if you are a single tile away. With care, you "
 "should be able to kill them one at a time."
@@ -960,7 +960,7 @@ msgstr ""
 "voorzichtig bent, kun je ze een voor een vernietigen."
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1190
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1190
 msgid ""
 "Well, I think I know the basics. Onwards! Maybe I can fight in a real battle "
 "next?"
@@ -969,7 +969,7 @@ msgstr ""
 "in een echte strijd mee kunnen vechten?"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1191
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1191
 msgid ""
 "female^Well, I think I know the basics. Onwards! Maybe I can fight in a real "
 "battle next?"
@@ -978,12 +978,12 @@ msgstr ""
 "in een echte strijd mee kunnen vechten?"
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1206
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1206
 msgid "Victory"
 msgstr "Overwinning"
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:1207
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1207
 msgid ""
 "After your victory notice, the map will be grayed out to indicate that the "
 "scenario is over; this is called <i>linger mode</i>. You will still be able "
@@ -998,64 +998,64 @@ msgstr ""
 "Scenario</b> om door te gaan naar het volgende scenario van de veldtocht."
 
 #. [scenario]: id=2_Tutorial
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:5
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:5
 msgid "Wesnoth Tutorial — Part II"
 msgstr "Gevechtstraining - Deel 2"
 
 #. [side]: type=Orcish Warrior, id=Thrag
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:43
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:43
 msgid "team_name^Orcs"
 msgstr "Orks"
 
 #. [side]: type=Orcish Warrior, id=Thrag
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:47
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:47
 msgid "Thrag"
 msgstr "Thrag"
 
 #. [unit]: id=Galdrad, type=Elvish Champion
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:110
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:110
 msgid "Galdrad"
 msgstr "Galdrad"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:124
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:124
 msgid "I hope I have a chance to retreat after this!"
 msgstr "Ik hoop dat ik me straks kan terugtrekken!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:125
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:125
 msgid "One lucky attack by an Orcish Grunt, and I’m done for!"
 msgstr "Één rake klap van een Orkgrommer en ik ben er geweest!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:126
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:126
 msgid "I could make use of some healing in a village."
 msgstr "Ik zou wel een dorp kunnen gebruiken om in te genezen."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:127
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:127
 msgid "I had better retreat, before I get caught out with such low health!"
 msgstr ""
 "Ik kan me maar beter terugtrekken, voordat ik gepakt wordt met zo weinig "
 "levenspunten!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:128
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:128
 msgid "female^I hope I have a chance to retreat after this!"
 msgstr "Ik hoop dat ik me straks kan terugtrekken!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:129
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:129
 msgid "female^One lucky attack by an Orcish Grunt, and I’m done for!"
 msgstr "Eén rake klap van een Orkgrommer en ik ben er geweest!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:130
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:130
 msgid "female^I could make use of some healing in a village."
 msgstr "Ik zou wel een dorp kunnen gebruiken om in te genezen."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:131
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:131
 msgid ""
 "female^I had better retreat, before I get caught out with such low health!"
 msgstr ""
@@ -1063,27 +1063,27 @@ msgstr ""
 "levenspunten!"
 
 #. [objective]: condition=win
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:136
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:136
 msgid "Defeat the Orc Leader"
 msgstr "Versla de Orkleider"
 
 #. [objective]: condition=lose
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:141
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:141
 msgid "Death of Konrad"
 msgstr "Dood van Konrad"
 
 #. [objective]: condition=lose
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:152
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:152
 msgid "Death of Li’sar"
 msgstr "Dood van Li'sar"
 
 #. [objective]: condition=lose
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:163
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:163
 msgid "Death of Galdrad"
 msgstr "Dood van Galdrad"
 
 #. [disallow_end_turn]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:184
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:184
 msgid ""
 "You cannot end your turn until you have recruited troops and captured a "
 "village!"
@@ -1092,7 +1092,7 @@ msgstr ""
 "dorp hebt veroverd!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:197
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:197
 msgid ""
 "Welcome back! This is the second part of the two-part tutorial. Part 2 will "
 "teach you about recalling units, abilities and weapon specials, income and "
@@ -1104,7 +1104,7 @@ msgstr ""
 "controlegebied en het tijdstip van de dag."
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:203
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:203
 msgid ""
 "Ho, Galdrad! Has Delfador conjured something else to beat me with? A flock "
 "of scarecrows, perhaps?"
@@ -1113,7 +1113,7 @@ msgstr ""
 "vogelverschrikkers misschien?"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:204
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:204
 msgid ""
 "female^Ho, Galdrad! Has Delfador conjured something else to beat me with? A "
 "flock of scarecrows, perhaps?"
@@ -1122,7 +1122,7 @@ msgstr ""
 "vogelverschrikkers misschien?"
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:210
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:210
 msgid ""
 "This is no game, Konrad! Orcs have encamped across the river. This is elven "
 "country; they are fools to enter here. We elves are fast and hard to hit in "
@@ -1135,7 +1135,7 @@ msgstr ""
 "zodat ze ons nooit meer bedreigen. Ik zal je adviseren."
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:215
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:215
 msgid ""
 "This is no game, Li’sar! Orcs have encamped across the river. This is elven "
 "country; they are fools to enter here. We elves are fast and hard to hit in "
@@ -1148,17 +1148,17 @@ msgstr ""
 "zodat ze ons nooit meer bedreigen. Ik zal je adviseren."
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:221
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:221
 msgid "What should I do?"
 msgstr "Wat moet ik doen?"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:222
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:222
 msgid "female^What should I do?"
 msgstr "Wat moet ik doen?"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:225
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:225
 msgid ""
 "First, we will have to deal with the Orcish Grunt stationed in the middle of "
 "the river. He should be little trouble."
@@ -1167,7 +1167,7 @@ msgstr ""
 "Dat zal makkelijk gaan."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:227
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:227
 msgid ""
 "By then, their leader will have recruited more units to send against us and "
 "the real fight will begin."
@@ -1176,7 +1176,7 @@ msgstr ""
 "te vechten en dan zal de strijd losbarsten."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:229
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:229
 msgid ""
 "See this dark blue water? It’s too deep for either side to cross. The orcs "
 "could slowly wade through that narrow band of shallow lighter-blue water in "
@@ -1190,7 +1190,7 @@ msgstr ""
 "hebben terwijl wij worden beschermd door het bos."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:231
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:231
 msgid ""
 "The more likely attack, then, is across the bridge. That middle island is "
 "the key: it has a village for healing injured units and forests in which we "
@@ -1201,19 +1201,19 @@ msgstr ""
 "waar we dekking hebben."
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:235
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:235
 msgid "Let’s go! Attack!"
 msgstr "Laten we gaan! Aanvallen!"
 
 #. [message]: speaker=student
 #. The "us" in "let's" refers to Galdrad and Li'sar.
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:237
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:237
 msgid "female^Let’s go! Attack!"
 msgstr "Laten we gaan! Aanvallen!"
 
 #. [message]: speaker=Galdrad
 #. Addressing Konrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:244
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:244
 msgid ""
 "Hang on! You need to gather your forces. Or do you intend to fight the orcs "
 "single-handedly?"
@@ -1223,7 +1223,7 @@ msgstr ""
 
 #. [message]: speaker=Galdrad
 #. Addressing Li'sar
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:250
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:250
 msgid ""
 "female^Hang on! You need to gather your forces. Or do you intend to fight "
 "the orcs single-handedly?"
@@ -1232,7 +1232,7 @@ msgstr ""
 "Orks in je eentje te verslaan?"
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:264
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:264
 msgid ""
 "I see you have veteran troops from your training! You should <i>recall</i> "
 "them so as to start off the battle with more experienced units. Think "
@@ -1245,7 +1245,7 @@ msgstr ""
 "nieuwe eenheid te rekruteren."
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:270
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:270
 msgid ""
 "Some of your units have also managed to level up. They’re even more "
 "formidable, so you should recall them as well."
@@ -1254,7 +1254,7 @@ msgstr ""
 "ze ook moeten oproepen."
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:285
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:285
 msgid ""
 "Unfortunately, none of your troops survived your training, so you will have "
 "to recruit new units. If you had any veteran troops, you could have "
@@ -1267,12 +1267,12 @@ msgstr ""
 "eenheden zouden van pas zijn gekomen tegen deze orks."
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:291
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:291
 msgid "Recalling"
 msgstr "Oproepen"
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:292
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:292
 msgid ""
 "In addition to recruiting new units each scenario, you can also <i>recall</"
 "i> your experienced veterans from previous scenarios, for the cost of 20 "
@@ -1292,7 +1292,7 @@ msgstr ""
 "om ook nieuwe eenheden te rekruteren naast het oproepen van oude eenheden."
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:297
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:297
 msgid ""
 "You also have two new types of units to recruit this scenario: Elvish "
 "Archers and Elvish Shamans. I’ll tell you more about them when you recruit "
@@ -1306,19 +1306,19 @@ msgstr ""
 
 #. [event]
 #. [on_undo]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:300
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:509
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:551
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:300
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:509
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:551
 msgid "Recruit or recall your troops"
 msgstr "Rekruteer of roep eenheden op"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:314
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:314
 msgid "Elvish Shaman"
 msgstr "Elfensjamaan"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:315
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:315
 msgid ""
 "The Shaman has the ability to <i>heal</i> friendly units around her. She "
 "also has a special attack which <i>slows</i> enemies, halving the damage "
@@ -1332,12 +1332,12 @@ msgstr ""
 "boogschutters, dus pas op als je haar op de frontlinie plaatst."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:320
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:320
 msgid "The <i>Heal</i> Ability"
 msgstr "De <i>Genees</i> Vaardigheid"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:322
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:322
 msgid ""
 "At the start of each turn, allied units adjacent to a Shaman will recover 4 "
 "hitpoints, which is only half of the amount that a village would provide. "
@@ -1359,12 +1359,12 @@ msgstr ""
 "<i>Gameplay</i> gedeelte van het help-menu (standaard sneltoets: <b>F1</b>)."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:329
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:329
 msgid "Weapon Specials"
 msgstr "Wapen Specialiteiten"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:331
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:331
 msgid ""
 "Weapon specials are special attack modifiers that make certain attacks more "
 "powerful. In this case, the Shaman has the Slows special on her entangle "
@@ -1388,14 +1388,14 @@ msgstr ""
 "karaktereigenschappen, is te vinden in Help (standaard sneltoets: <b>F1</b>)."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:361
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:372
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:361
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:372
 msgid "Multiple Healers"
 msgstr "Meerdere Genezers"
 
 #. [message]: speaker=narrator
 #. both healers are level one elvish shamans
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:363
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:363
 msgid ""
 "You now have two healers. However, each unit can only receive healing from "
 "one healer — a unit will still only be healed 4 hitpoints per turn even when "
@@ -1415,7 +1415,7 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #. one healer is a level one shaman, but the other healer is a druid or (very unlikely) a shyde
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:374
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:374
 msgid ""
 "You now have two healers. Your Druid can heal adjacent units by 8 hitpoints "
 "per turn compared to your Shaman’s 4. However, each unit can only receive "
@@ -1428,12 +1428,12 @@ msgstr ""
 "zal worden genezen door de krachtigste genezer."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:381
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:381
 msgid "Healers and Villages"
 msgstr "Genezers en Dorpen"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:382
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:382
 msgid ""
 "A unit in a village will receive healing from the village instead of from "
 "adjacent healers."
@@ -1442,7 +1442,7 @@ msgstr ""
 "aangrenzende genezers."
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:386
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:386
 msgid ""
 "Having more than one healer allows them to heal each other or to cover "
 "separate areas of the battlefield. It can also allow better tactical "
@@ -1457,12 +1457,12 @@ msgstr ""
 "om juist de genezer te verplaatsen in plaats van de gewonde eenheid."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:401
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:401
 msgid "Elvish Archer"
 msgstr "Elfenboogschutter"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:402
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:402
 msgid ""
 "Unlike the Elvish Fighter, which has strong melee attacks, the Elvish Archer "
 "has strong ranged attacks. It’s useful to attack enemy units with strong "
@@ -1476,7 +1476,7 @@ msgstr ""
 "eenheden minder schade in een gevecht met de vijand."
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:428
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:428
 msgid ""
 "You certainly have a fondness for shamans, I see. They will provide a lot of "
 "healing, but not much offensive potential."
@@ -1485,7 +1485,7 @@ msgstr ""
 "genezing, maar kunnen niet veel schade doen."
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:439
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:439
 msgid ""
 "While none of your recruited units can move yet, you still can. You need "
 "more income; there are some villages near the keep you can capture."
@@ -1496,19 +1496,19 @@ msgstr ""
 
 #. [event]
 #. [on_undo]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:442
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:564
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:442
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:564
 msgid "Capture a village"
 msgstr "Neem een dorp in"
 
 #. [disallow_end_turn]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:445
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:445
 msgid "You still have to capture a village!"
 msgstr "Je moet nog een dorp innemen!"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:477
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:544
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:477
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:544
 msgid ""
 "You forgot to recruit troops! You can press <b>u</b> to undo your last move."
 msgstr ""
@@ -1516,12 +1516,12 @@ msgstr ""
 "laatste zet ongedaan te maken."
 
 #. [disallow_end_turn]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:480
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:480
 msgid "You still have to recruit troops!"
 msgstr "Je moet nog eenheden rekruteren!"
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:488
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:488
 msgid ""
 "Excellent! As Delfador mentioned earlier, each captured village will support "
 "one unit and provide you with 1 extra gold per turn."
@@ -1530,12 +1530,12 @@ msgstr ""
 "eenheid en geeft je 1 extra goudstuk per beurt."
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:492
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:492
 msgid "Income and Upkeep"
 msgstr "Inkomen en onderhoud"
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:493
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:493
 msgid ""
 "Each turn, you will gain 2 gold plus one for each village you own. However, "
 "<i>upkeep</i> is subtracted from that. You can support as many levels worth "
@@ -1550,7 +1550,7 @@ msgstr ""
 "leiden tot een negatief inkomen waardoor je goudstukken verliest!"
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:557
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:557
 msgid ""
 "You forgot to capture a village! You can press <b>u</b> to undo your last "
 "move."
@@ -1559,7 +1559,7 @@ msgstr ""
 "ongedaan te maken."
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:576
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:576
 msgid ""
 "Now, young man, it is time to discuss strategy. Your units are ready to "
 "attack, and the orcish leader has begun gathering his own troops."
@@ -1569,7 +1569,7 @@ msgstr ""
 "zijn troepen."
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:581
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:581
 msgid ""
 "Now, young lady, it is time to discuss strategy. Your units are ready to "
 "attack, and the orcish leader has begun gathering his own troops."
@@ -1579,7 +1579,7 @@ msgstr ""
 "zijn troepen."
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:587
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:587
 msgid ""
 "Galdrad, if I go by the ford, I could sneak up near his keep and dispatch "
 "him quickly."
@@ -1588,7 +1588,7 @@ msgstr ""
 "zijn donjon komen en hem snel verslaan."
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:588
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:588
 msgid ""
 "female^Galdrad, if I go by the ford, I could sneak up near his keep and "
 "dispatch him quickly."
@@ -1597,7 +1597,7 @@ msgstr ""
 "zijn donjon komen en haar snel verslaan."
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:593
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:593
 msgid ""
 "You could. However, elves (and orcs) have bad <i>defense</i> in water. "
 "You’ll be more vulnerable as you try to wade slowly across the ford; the "
@@ -1615,7 +1615,7 @@ msgstr ""
 "van 30% hebben."
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:598
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:598
 msgid ""
 "However, keep an eye on that ford. The orcs may try to sneak around behind "
 "our forces. It might do to send a few units to defend the banks, and the "
@@ -1626,7 +1626,7 @@ msgstr ""
 "eenheden op de oever te zetten om het land, en het dorp daar, te verdedigen."
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:603
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:603
 msgid ""
 "Alright. The bridge it is, then, but I’ll be careful about the crossing."
 msgstr ""
@@ -1634,7 +1634,7 @@ msgstr ""
 "houden."
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:604
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:604
 msgid ""
 "female^Alright. The bridge it is, then, but I’ll be careful about the "
 "crossing."
@@ -1643,7 +1643,7 @@ msgstr ""
 "houden."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:607
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:607
 msgid ""
 "That Orcish Grunt is still blocking our path. He has no ranged attacks, so "
 "your archers should be able to engage him with little risk. Unfortunately, "
@@ -1660,14 +1660,14 @@ msgstr ""
 "rivier. Je zou ze veilig moeten stellen voor hun inkomen en genezing."
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:610
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:998
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:610
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:998
 msgid "Long-distance Movement"
 msgstr "Verplaatsen Over Lange Afstand"
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:611
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:999
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:611
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:999
 msgid ""
 "You can order a unit to move for multiple turns by selecting the unit and "
 "clicking on the destination. A number will indicate how many turns it will "
@@ -1678,7 +1678,7 @@ msgstr ""
 "geeft aan hoeveel beurten de eenheid over de verplaatsing zal doen."
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:616
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:616
 msgid ""
 "I think I’ll stick around the keep for now, in order to recruit more units."
 msgstr ""
@@ -1686,7 +1686,7 @@ msgstr ""
 "kunnen rekruteren."
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:617
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:617
 msgid ""
 "female^I think I’ll stick around the keep for now, in order to recruit more "
 "units."
@@ -1695,7 +1695,7 @@ msgstr ""
 "kunnen rekruteren."
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:623
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:623
 msgid ""
 "You’ve learned well, Konrad. It is indeed a good idea to keep your leader "
 "safe and protected and in range of your keep early in the game. The tide of "
@@ -1708,7 +1708,7 @@ msgstr ""
 "van je donjon en geen versterkingen kan rekruteren."
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:628
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:628
 msgid ""
 "You’ve learned well, Li’sar. It is indeed a good idea to keep your leader "
 "safe and protected and in range of your keep early in the game. The tide of "
@@ -1721,12 +1721,12 @@ msgstr ""
 "van je donjon en geen versterkingen kan rekruteren."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:698
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:698
 msgid "The tutorial isn’t meant to be this difficult"
 msgstr "De uitleg was niet bedoeld om zo moeilijk te zijn"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:700
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:700
 msgid ""
 "The orc on the island was supposed to move over the bridge, so that he could "
 "be attacked by several elves at once. Something’s broken the scripted event, "
@@ -1742,12 +1742,12 @@ msgstr ""
 "Graag deze fout melden."
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:712
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:712
 msgid "Tracking Enemy Movement"
 msgstr "Vijandelijke Bewegingen Volgen"
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:713
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:713
 msgid ""
 "You can see where an enemy can reach by moving the mouse over them. You can "
 "see all possible enemy moves at once with the <b>Show Enemy Moves</b> "
@@ -1758,23 +1758,23 @@ msgstr ""
 "<b>Toon Bereik Vijanden</b> in het <b>Acties</b>-menu te kiezen."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:716
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:716
 msgid "We must occupy that island before the Wolf Riders reach it!"
 msgstr "We moeten dat eiland bezetten voor de Wolfruiters het bereiken!"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:721
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:721
 msgid "Can’t we just move around the orcs?"
 msgstr "Kunnen we niet gewoon om de orks heen bewegen?"
 
 #. [message]: speaker=student
 #. "we" refers to Li'sar, Galdrad, and the mixed-gender troops
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:723
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:723
 msgid "female^Can’t we just move around the orcs?"
 msgstr "Kunnen we niet gewoon om de orks heen bewegen?"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:736
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:736
 msgid ""
 "No. Once you move close to an enemy unit, you are in its <i>Zone of Control</"
 "i> and cannot move further that turn. To move your troops onto that island "
@@ -1786,12 +1786,12 @@ msgstr ""
 "Orkgrommer moeten doden."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:740
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:740
 msgid "Zone of Control"
 msgstr "Controlegebied"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:742
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:742
 msgid ""
 "The hexes immediately around a unit constitute its <i>Zone of Control</i>. "
 "When an enemy unit enters those hexes, they cannot move any further that "
@@ -1809,7 +1809,7 @@ msgstr ""
 "vijanden belangrijke locaties bereiken, zoals dorpen."
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:769
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:769
 msgid ""
 "I hope I will survive the counter-attack if my units can’t take this grunt "
 "out this turn. I should order them to grab more villages if they can and "
@@ -1820,7 +1820,7 @@ msgstr ""
 "verplaatsen voor de volgende beurt."
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:774
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:774
 msgid ""
 "If one of your Shamans stands just behind you, she will heal you 4 hitpoints "
 "at the beginning of the next turn."
@@ -1829,7 +1829,7 @@ msgstr ""
 "levenspunten (LP) geneest aan het begin van de volgende beurt."
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:780
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:780
 msgid ""
 "I hope my units will survive the counter-attack if I can’t take this grunt "
 "out this turn. I’d better grab more villages if I can and move everyone "
@@ -1840,7 +1840,7 @@ msgstr ""
 "dichterbij verplaatsen voor de volgende beurt."
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:785
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:785
 msgid ""
 "If one of your Shamans stands just behind your wounded units, she will heal "
 "each of them 4 hitpoints at the beginning of the next turn."
@@ -1850,7 +1850,7 @@ msgstr ""
 "beurt."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:821
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:821
 msgid ""
 "One fewer orc to deal with, and our way across the bridge is clear! I also "
 "gained experience from striking the killing blow!"
@@ -1860,7 +1860,7 @@ msgstr ""
 "te delen!"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:822
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:822
 msgid ""
 "female^One fewer orc to deal with, and our way across the bridge is clear! I "
 "also gained experience from striking the killing blow!"
@@ -1870,7 +1870,7 @@ msgstr ""
 "te delen!"
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:843
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:843
 msgid ""
 "Be careful! If you stand on the bridge you are exposed to attack from "
 "multiple directions! Even though the orcs have low defense in water, they "
@@ -1881,7 +1881,7 @@ msgstr ""
 "zullen ze je overweldigen met hun aantallen."
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:859
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:859
 msgid ""
 "Well done! The island village is ours. You can use the trees to set up a "
 "blockade against the orcs; they can only come across the bridge one by one "
@@ -1894,7 +1894,7 @@ msgstr ""
 "waar je je goed kan verdedigen."
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:871
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:871
 msgid ""
 "Don’t forget about that last village near the channel. The orcs will capture "
 "it if they try to sneak around via the ford! It will be hard to dislodge "
@@ -1905,7 +1905,7 @@ msgstr ""
 "moeilijk zijn om ze dan nog te verjagen."
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:888
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:888
 msgid ""
 "It’s very dangerous to stand in water when there are enemies about! Your "
 "unit will have an 80% chance of being hit. Get back, and wait for them to "
@@ -1916,7 +1916,7 @@ msgstr ""
 "wacht tot ze jou aanvallen!"
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:914
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:914
 msgid ""
 "You’re venturing away from your keep. You might need to recruit more units, "
 "and I doubt the orc leader will let you use his! Careful!"
@@ -1926,7 +1926,7 @@ msgstr ""
 "stelt! Pas op!"
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:923
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:923
 msgid ""
 "When moving a unit, the percentages shown are the unit’s defense on that "
 "hex. The higher the number, the less likely they are to get hit."
@@ -1936,7 +1936,7 @@ msgstr ""
 "hoe minder kans dat de eenheid geraakt wordt."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:938
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:938
 msgid ""
 "We need to occupy that village, otherwise they will take it soon! Move a "
 "unit into the village to stop the orcs capturing it. Whichever unit you "
@@ -1947,7 +1947,7 @@ msgstr ""
 "profiteren van de genezing in het dorp."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:944
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:944
 msgid ""
 "Careful! It is now nighttime. Orcs are <i>chaotic</i>, which means their "
 "attacks are now 25% stronger. By day, their attacks are 25% weaker, which is "
@@ -1962,12 +1962,12 @@ msgstr ""
 "beïnvloeden hen niet."
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:947
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:947
 msgid "Time of Day"
 msgstr "Tijdstip van de dag"
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:948
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:948
 msgid ""
 "During a scenario, the time of day will shift as turns pass. There are four "
 "<i>alignments</i> a unit may be: Lawful, Neutral, Chaotic, or Liminal. Each "
@@ -1984,8 +1984,8 @@ msgstr ""
 
 #. [then]
 #. [else]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:970
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:977
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:970
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:977
 msgid ""
 "Remember to retreat your wounded units to villages. Shamans can only heal 4 "
 "hitpoints per turn, while villages can heal them faster at 8 per turn.\n"
@@ -2014,12 +2014,12 @@ msgstr ""
 "leiden tot een genezing van 10 levenspunten per beurt."
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1007
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1007
 msgid "Tracking Unused Units"
 msgstr "Ongebruikte Eenheden Volgen"
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1008
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1008
 msgid ""
 "You can ensure you use all your troops by pressing <b>n</b> to step from one "
 "unit to the next. If you press <b>space</b>, you can mark the currently "
@@ -2034,12 +2034,12 @@ msgstr ""
 "niet meer naar een volgende eenheid gaat, kun je je beurt beëindigen."
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1016
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1016
 msgid "Status Table"
 msgstr "Statustabel"
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1017
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1017
 msgid ""
 "The Status Table details the sides’ current status and starting conditions. "
 "Fog and shroud will affect what you can see in this table, and occasionally "
@@ -2053,12 +2053,12 @@ msgstr ""
 "<b>Menu</b>."
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1025
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1025
 msgid "Speeding Up Animations"
 msgstr "Versnellen van animaties"
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1026
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1026
 msgid ""
 "Holding down <b>shift</b> will make the animations for moving and fighting "
 "quicker. The <b>acceleration factor</b> can be set, and turned on by "
@@ -2069,12 +2069,12 @@ msgstr ""
 "gezet, in het <b>Voorkeuren</b> menu onder het <b>Algemeen</b> tabblad."
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1034
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1034
 msgid "Victory Conditions"
 msgstr "Overwinningsvoorwaarden"
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1035
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1035
 msgid ""
 "In this scenario, you only need to defeat the orc leader to win. Victory "
 "conditions for a scenario are given under <b>Objectives</b> in the <b>Menu</"
@@ -2085,28 +2085,28 @@ msgstr ""
 "<b>Doelstellingen</b> in het <b>Menu</b>."
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1044
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1044
 msgid "Hurry up and defeat the orcs before they become entrenched!"
 msgstr ""
 "Schiet op en versla de orks voordat ze een stevige positie hebben gecreëerd!"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1072
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1072
 msgid "I have enough gold to recruit more units!"
 msgstr "Ik heb genoeg goudstukken om meer eenheden te rekruteren!"
 
 #. [message]: speaker=student
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1073
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1073
 msgid "female^I have enough gold to recruit more units!"
 msgstr "Ik heb genoeg goudstukken om meer eenheden te rekruteren!"
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1082
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1082
 msgid "Recruit the Right Units"
 msgstr "Rekruteer de Juiste Eenheden"
 
 #. [hint_message]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1083
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1083
 msgid ""
 "Remember to recruit troops useful for the situation. Archers are "
 "particularly effective against Grunts, Wolf Riders and the orcish leader."
@@ -2116,7 +2116,7 @@ msgstr ""
 "Orkleider."
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1122
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1122
 msgid ""
 "Beware of those orcs crossing the river! If they get into the forest they’ll "
 "be hard to dislodge!"
@@ -2125,7 +2125,7 @@ msgstr ""
 "het moeilijk zijn om ze daar weg te krijgen!"
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1162
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1162
 msgid ""
 "That unit is about one kill (8 experience points) away from gaining a level! "
 "Do not let it die!"
@@ -2134,7 +2134,7 @@ msgstr ""
 "promoveren naar de volgende rang! Laat hem niet doodgaan!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1184
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1184
 msgid ""
 "Their leader has moved into that village! He’s not as stupid as I thought. "
 "The village heals him each turn and provides good defense."
@@ -2143,7 +2143,7 @@ msgstr ""
 "dorp herstelt hem elke beurt en zorgt dat hij zich goed kan verdedigen."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1195
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1195
 msgid ""
 "That unit has captured our village! You’d better get him out; it heals him "
 "each turn and provides good defense."
@@ -2153,7 +2153,7 @@ msgstr ""
 
 #. [message]: speaker=unit
 #. The speaker is female
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1208
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1208
 msgid ""
 "Using me to attack is risky! I can slow the opponent with my ranged attack, "
 "but I hope you have a plan if I miss!"
@@ -2163,7 +2163,7 @@ msgstr ""
 "geval ik mis!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1224
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1224
 msgid ""
 "You are close to killing their leader! Because he is second level, the unit "
 "who finishes him will gain 16 experience points. In a campaign, it’s "
@@ -2177,12 +2177,12 @@ msgstr ""
 "op te doen."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1228
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1228
 msgid "You have almost finished the tutorial"
 msgstr "Je hebt de training bijna voltooid"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1230
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1230
 msgid ""
 "In a campaign you may have ten or even twenty scenarios to build your army, "
 "but this tutorial will conclude after you defeat Thrag."
@@ -2192,7 +2192,7 @@ msgstr ""
 "hebt verslagen."
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1256
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1256
 msgid ""
 "We will miss $unit.name| because he had $unit.experience experience points. "
 "He would have advanced a level soon."
@@ -2201,7 +2201,7 @@ msgstr ""
 "en spoedig zou zijn gepromoveerd tot rang 2."
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1262
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1262
 msgid ""
 "We will miss $unit.name| because she had $unit.experience experience points. "
 "She would have advanced a level soon."
@@ -2210,7 +2210,7 @@ msgstr ""
 "en spoedig zou zijn gepromoveerd tot rang 2."
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1291
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1291
 msgid ""
 "We will miss $unit.name|, but at least he was not one of our experienced "
 "troops!"
@@ -2219,7 +2219,7 @@ msgstr ""
 "ervaring nog!"
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1297
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1297
 msgid ""
 "We will miss $unit.name|, but at least she was not one of our experienced "
 "troops!"
@@ -2228,7 +2228,7 @@ msgstr ""
 "ervaring nog!"
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1314
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1314
 msgid ""
 "Higher level units are powerful, but not invulnerable. We’ll miss you, $unit."
 "name|."
@@ -2237,7 +2237,7 @@ msgstr ""
 "$unit.name|."
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1328
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1328
 msgid ""
 "Losing a healer hurts all the troops! Keep them out of the enemy’s reach!"
 msgstr ""
@@ -2245,7 +2245,7 @@ msgstr ""
 "buiten het bereik van de vijand!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1342
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1342
 msgid ""
 "Beware of the orc leader: he can do 36 hitpoints of damage at night! Attack "
 "with many units at once during the day."
@@ -2255,7 +2255,7 @@ msgstr ""
 
 #. [message]: speaker=unit
 #. The speaker is female
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1356
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1356
 msgid ""
 "Advancing a level has fully healed me! I am able to heal units 8 hitpoints "
 "per turn, instead of just 4, and may also cure them of poison if they cannot "
@@ -2272,7 +2272,7 @@ msgstr ""
 
 #. [message]: speaker=unit
 #. The speaker is female
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1370
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1370
 msgid ""
 "Advancing a level has fully healed me! I cannot heal adjacent units anymore, "
 "but to compensate, I have a new, powerful faerie fire attack that deals 7 "
@@ -2286,7 +2286,7 @@ msgstr ""
 "van 70% is om te raken."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1384
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1384
 msgid ""
 "Advancing a level has fully healed me! When attacking, I always have at "
 "least a 60% chance of hitting with my longbow thanks to my <i>Marksman</i> "
@@ -2299,7 +2299,7 @@ msgstr ""
 "om te raken. Gebruik mij om eenheden te raken die moeilijk te raken zijn."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1385
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1385
 msgid ""
 "female^Advancing a level has fully healed me! When attacking, I always have "
 "at least a 60% chance of hitting with my longbow thanks to my <i>Marksman</"
@@ -2312,7 +2312,7 @@ msgstr ""
 "om te raken. Gebruik mij om eenheden te raken die moeilijk te raken zijn."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1398
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1398
 msgid ""
 "Advancing a level has fully healed me! I am good with both bow and sword, "
 "and I have a special ability: <i>Ambush</i>. I can hide in forests where "
@@ -2323,7 +2323,7 @@ msgstr ""
 "bossen schuilen waar eenheden mij pas zien als ze naast me staan."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1399
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1399
 msgid ""
 "female^Advancing a level has fully healed me! I am good with both bow and "
 "sword, and I have a special ability: <i>Ambush</i>. I can hide in forests "
@@ -2334,7 +2334,7 @@ msgstr ""
 "bossen schuilen waar eenheden mij alleen kunnen zien als ze naast me staan."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1413
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1413
 msgid ""
 "Advancing a level has fully healed me! I am good with both bow and sword, "
 "and I have a special ability: <i>Leadership</i>. I do less damage myself "
@@ -2348,7 +2348,7 @@ msgstr ""
 "staan, dus denk goed na waar je mij neerzet!"
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1426
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1426
 msgid ""
 "Advancing a level has fully healed me! I am particularly good with the "
 "sword, dealing 8 damage in 4 attacks. While I don’t have the Leadership "
@@ -2361,7 +2361,7 @@ msgstr ""
 "bekwaamheid wel meer schade toebrengen!"
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1439
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1439
 msgid ""
 "Advancing a level has fully healed me! I have become better at using the "
 "sword, dealing 9 damage in 4 attacks. Although I do not have any special "
@@ -2374,7 +2374,7 @@ msgstr ""
 "het gevecht de Orks verslaan door meer schade toe te brengen!"
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1440
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1440
 msgid ""
 "female^Advancing a level has fully healed me! I have become better at using "
 "the sword, dealing 9 damage in 4 attacks. Although I do not have any special "
@@ -2387,28 +2387,28 @@ msgstr ""
 "het gevecht de Orks verslaan door meer schade toe te brengen!"
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1449
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1449
 msgid "You took too long! Now we’ll never be rid of these orcs!"
 msgstr ""
 "Je hebt er te lang over gedaan! Nu zullen we nooit van deze orks afkomen!"
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1465
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1465
 msgid "That... was foolish. Next time I should be more careful."
 msgstr "Dat... was dom. De volgende keer kan ik beter wat voorzichtiger zijn."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1466
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1466
 msgid "female^That... was foolish. Next time I should be more careful."
 msgstr "Dat... was dom. De volgende keer kan ik beter wat voorzichtiger zijn."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1484
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1484
 msgid "Agh! Who will guide you to victory now?"
 msgstr "Agh! Wie moet je nu naar de overwinning leiden?"
 
 #. [message]: speaker=Galdrad
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1499
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1499
 #, fuzzy
 #| msgid ""
 #| "You have beaten the orcs! You may want to try one of the rookie-level "
@@ -2425,7 +2425,7 @@ msgstr ""
 "als eerste veldtocht."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1504
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1504
 msgid ""
 "You can also refer to the in-game help browser if you ever need to refresh "
 "your memory on gameplay mechanics."
@@ -2434,14 +2434,14 @@ msgstr ""
 "ooit iets op wilt zoeken over een spelmechanisme."
 
 #. [unit_type]: id=Fighter, race=human
-#: data/campaigns/tutorial/units/Fighter.cfg:4
+#: data/campaigns/Heir_To_The_Throne_Classic/units/Fighter.cfg:4
 msgid "Fighter"
 msgstr "Krijger"
 
 #. [unit_type]: id=Fighter, race=human
 #. [unit_type]: id=Fighteress, gender=female, race=human
-#: data/campaigns/tutorial/units/Fighter.cfg:18
-#: data/campaigns/tutorial/units/Fighteress.cfg:20
+#: data/campaigns/Heir_To_The_Throne_Classic/units/Fighter.cfg:18
+#: data/campaigns/Heir_To_The_Throne_Classic/units/Fighteress.cfg:20
 msgid ""
 "Young and brash, Fighters are skilled with swords and are vulnerable to "
 "attack from enemies. However, they have the potential to become great "
@@ -2452,17 +2452,17 @@ msgstr ""
 "grote krijgsheren."
 
 #. [unit_type]: id=Fighteress, gender=female, race=human
-#: data/campaigns/tutorial/units/Fighteress.cfg:4
+#: data/campaigns/Heir_To_The_Throne_Classic/units/Fighteress.cfg:4
 msgid "female^Fighter"
 msgstr "Krijgster"
 
 #. [unit_type]: id=Quintain, race=mechanical
-#: data/campaigns/tutorial/units/Quintain.cfg:4
+#: data/campaigns/Heir_To_The_Throne_Classic/units/Quintain.cfg:4
 msgid "Quintain"
 msgstr "Stropop"
 
 #. [unit_type]: id=Quintain, race=mechanical
-#: data/campaigns/tutorial/units/Quintain.cfg:16
+#: data/campaigns/Heir_To_The_Throne_Classic/units/Quintain.cfg:16
 msgid ""
 "Quintains are used to practice swordplay and jousting on. It would be "
 "extremely unusual to be attacked by one."
@@ -2471,14 +2471,14 @@ msgstr ""
 "ongebruikelijk zijn om door een te worden aangevallen."
 
 #. [unit_type]: id=Warrior, race=human
-#: data/campaigns/tutorial/units/Warrior.cfg:4
+#: data/campaigns/Heir_To_The_Throne_Classic/units/Warrior.cfg:4
 msgid "Warrior"
 msgstr "Strijder"
 
 #. [unit_type]: id=Warrior, race=human
 #. [unit_type]: id=Warrioress, gender=female, race=human
-#: data/campaigns/tutorial/units/Warrior.cfg:19
-#: data/campaigns/tutorial/units/Warrioress.cfg:21
+#: data/campaigns/Heir_To_The_Throne_Classic/units/Warrior.cfg:19
+#: data/campaigns/Heir_To_The_Throne_Classic/units/Warrioress.cfg:21
 msgid ""
 "With more experience, Fighters have honed their skills with the sword and "
 "become powerful Warriors."
@@ -2487,17 +2487,17 @@ msgstr ""
 "opbouwen om krachtige Strijders te worden."
 
 #. [unit_type]: id=Warrioress, gender=female, race=human
-#: data/campaigns/tutorial/units/Warrioress.cfg:4
+#: data/campaigns/Heir_To_The_Throne_Classic/units/Warrioress.cfg:4
 msgid "female^Warrior"
 msgstr "Strijdster"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/utils/utils.cfg:63
+#: data/campaigns/Heir_To_The_Throne_Classic/utils/utils.cfg:63
 msgid "Undo"
 msgstr "Ongedaan maken"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/utils/utils.cfg:65
+#: data/campaigns/Heir_To_The_Throne_Classic/utils/utils.cfg:65
 msgid ""
 "Don’t forget, you can press <b>u</b> to undo most things if you make a "
 "mistake."
@@ -2505,7 +2505,7 @@ msgstr ""
 "Vergeet niet dat de meeste zetten ongedaan gemaakt kunnen worden door op "
 "<b>u</b> te drukken wanneer je een fout maakt."
 
-#: data/campaigns/tutorial/utils/utils.cfg:128
+#: data/campaigns/Heir_To_The_Throne_Classic/utils/utils.cfg:128
 #, fuzzy
 #| msgid ""
 #| "\n"
