@@ -78,7 +78,6 @@ image_dirs = [
     os.path.join("data", "campaigns", "The_South_Guard", "images", "portraits"),
     os.path.join("data", "campaigns", "The_South_Guard", "images", "maps"),
     os.path.join("data", "campaigns", "The_South_Guard", "images", "story"),
-    os.path.join("data", "campaigns", "tutorial", "images", "portraits"),
     os.path.join("data", "campaigns", "Two_Brothers", "images", "maps"),
     os.path.join("data", "campaigns", "Two_Brothers", "images", "portraits"),
     os.path.join("data", "campaigns", "Two_Brothers", "images", "story"),
