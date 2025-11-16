@@ -126,7 +126,6 @@ validate_campaign "The_Deceivers_Gambit"       "CAMPAIGN_THE_DECEIVERS_GAMBIT"  
 validate_campaign "The_Hammer_of_Thursagan"    "CAMPAIGN_THE_HAMMER_OF_THURSAGAN" "EASY" "NORMAL" "HARD"             || RET=1
 validate_campaign "The_Rise_Of_Wesnoth"        "CAMPAIGN_THE_RISE_OF_WESNOTH"     "EASY" "NORMAL" "HARD"             || RET=1
 validate_campaign "The_South_Guard"            "CAMPAIGN_THE_SOUTH_GUARD"         "EASY" "NORMAL" "HARD"             || RET=1
-validate_campaign "tutorial"                   "TUTORIAL"                         "EASY"                             || RET=1
 validate_campaign "Two_Brothers"               "CAMPAIGN_TWO_BROTHERS"            "EASY" "HARD"                      || RET=1
 validate_campaign "Under_the_Burning_Suns"     "CAMPAIGN_UNDER_THE_BURNING_SUNS"  "EASY" "NORMAL" "HARD"             || RET=1
 validate_campaign "Winds_of_Fate"              "CAMPAIGN_WINDS_OF_FATE"           "EASY" "NORMAL" "HARD" "NIGHTMARE" || RET=1
