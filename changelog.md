@@ -14,6 +14,7 @@
 ### User interface
    * New key `title_position` added to `[part]` that allows changing the position of the title text.
 ### WML Engine
+   * Custom WML menu items now support an accompanying toggle button.
 ### Miscellaneous and Bug Fixes
    * Build System:
      * Changed CMake to not directly pull in boost-system (fixing build issues on archlinux using boost-libs >1.89.0-2)
