@@ -210,30 +210,27 @@ public class InitActivity extends Activity {
 					long lastModified = Long.parseLong(status.getProperty("modified." + name, "0"));
 
 					// Download file
-					if (status.getProperty("unpack." + name, "false").equalsIgnoreCase("false")) {
-						final String downloadAddr = String.format(ARCHIVE_URL, VERSION_ID, name);
-						Log.d("InitActivity", "Starting to download " + name + " from " + downloadAddr);
-						try {
-							lastModified = downloadFile(
-								downloadAddr,
-								packageFile,
-								uiname,
-								lastModified);
+					final String downloadAddr = String.format(ARCHIVE_URL, VERSION_ID, name);
+					Log.d("InitActivity", "Starting to download " + name + " from " + downloadAddr);
+					try {
+						lastModified = downloadFile(
+							downloadAddr,
+							packageFile,
+							uiname,
+							lastModified);
 
-							status.setProperty("modified." + name, "" + lastModified);
-						} catch (Exception e) {
-							Log.e("Download", "security error", e);
-						}
+						status.setProperty("modified." + name, "" + lastModified);
+					} catch (Exception e) {
+						Log.e("Download", "security error", e);
+					}
 
-						// Unpack archive
-						// TODO Checksum verification?
-						if (packageFile.exists()) {
-							Log.d("InitActivity", "Start unpack " + name);
+					// Unpack archive
+					// TODO Checksum verification?
+					if (packageFile.exists()) {
+						Log.d("InitActivity", "Start unpack " + name);
 
-							if (unpackArchive(packageFile, dataDir, uiname)) {
-								packageFile.delete();
-								status.setProperty("unpack." + name, "true");
-							}
+						if (unpackArchive(packageFile, dataDir, uiname)) {
+							packageFile.delete();
 						}
 					}
 				}
@@ -469,26 +466,24 @@ public class InitActivity extends Activity {
 			}
 
 			// TODO rewrite to use copyStream function.
-			DataInputStream in = new DataInputStream(conn.getInputStream());
-			OutputStream out = new FileOutputStream(destpath);
-
 			byte[] buffer = new byte[8192];
+			try (
+				DataInputStream in = new DataInputStream(conn.getInputStream());
+				OutputStream out = new FileOutputStream(destpath))
+			{
+				runOnUiThread(() -> {
+					ProgressBar progressBar = (ProgressBar) findViewById(R.id.download_progress);
+					progressBar.setMax(max);
+					progressBar.setProgress(0);
+				});
 
-			runOnUiThread(() -> {
-				ProgressBar progressBar = (ProgressBar) findViewById(R.id.download_progress);
-				progressBar.setMax(max);
-				progressBar.setProgress(0);
-			});
-
-			length.set(in.read(buffer));
-			while (length.get() > 0) {
-				out.write(buffer, 0, length.get());
-				runOnUiThread(() -> updateDownloadProgress(progress.addAndGet(length.get()), max, type));
 				length.set(in.read(buffer));
+				while (length.get() > 0) {
+					out.write(buffer, 0, length.get());
+					runOnUiThread(() -> updateDownloadProgress(progress.addAndGet(length.get()), max, type));
+					length.set(in.read(buffer));
+				}
 			}
-
-			out.close();
-			in.close();
 
 			Log.d("Download", "Download success from URL: " + url);
 			return newModified;
