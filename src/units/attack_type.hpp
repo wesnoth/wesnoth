@@ -96,6 +96,8 @@ public:
 	active_ability_list get_specials(const std::string& special) const;
 
 	std::vector<unit_ability_t::tooltip_info> special_tooltips(boost::dynamic_bitset<>* active_list = nullptr) const;
+	// This returns a list describing all active abilities in the current context, that have the name_affected= set,
+	// in particular it also returns attack-unrelatedabilities if they have name_affected set.
 	std::vector<unit_ability_t::tooltip_info> abilities_special_tooltips(boost::dynamic_bitset<>* active_list) const;
 
 	std::string describe_weapon_specials() const;

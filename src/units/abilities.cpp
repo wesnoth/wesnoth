@@ -134,10 +134,12 @@ unit_ability_t::unit_ability_t(std::string tag, config cfg, bool inside_attack)
 			apply_to_t::self;
 
 	}
-	std::string active_on = cfg_["active_on"].str();
-	active_on_ = active_on == "defense" ? active_on_t::defense :
-		active_on == "offense" ? active_on_t::offense :
-		active_on_t::both;
+	if (tag_ != "leadership") {
+		std::string active_on = cfg_["active_on"].str();
+		active_on_ = active_on == "defense" ? active_on_t::defense :
+			active_on == "offense" ? active_on_t::offense :
+			active_on_t::both;
+	}
 }
 
 void unit_ability_t::do_compat_fixes(config& cfg, const std::string& tag, bool inside_attack)
@@ -468,7 +470,7 @@ active_ability_list unit::get_abilities_weapons(const std::string& tag_name, con
 	active_ability_list res = get_abilities(tag_name, loc);
 	utils::erase_if(res, [&](const active_ability& i) {
 		//If no weapon is given, assume the ability is active. this is used by ai code.
-		return (weapon || opp_weapon) && attack_type::special_active_impl(weapon, opp_weapon, i.ability(), unit_ability_t::affects_t::SELF);
+		return (weapon || opp_weapon) && !attack_type::special_active_impl(weapon, opp_weapon, i.ability(), unit_ability_t::affects_t::SELF);
 	});
 	return res;
 }
