@@ -1071,8 +1071,9 @@ std::string attack_type::describe_weapon_specials() const
 	// FIXME: clean this up...
 	std::string temp_string;
 	std::set<std::string> checking_name;
-	weapon_specials_impl_self(temp_string, self_, shared_from_this(), other_attack_, self_loc_, AFFECTS::SELF, checking_name);
-	weapon_specials_impl_adj(temp_string, self_, shared_from_this(), other_attack_, self_loc_, AFFECTS::SELF, checking_name, {}, "affect_allies");
+	const std::set<std::string>& checking_tags = abilities_list::all_weapon_tags();
+	weapon_specials_impl_self(temp_string, self_, shared_from_this(), other_attack_, self_loc_, AFFECTS::SELF, checking_name, checking_tags);
+	weapon_specials_impl_adj(temp_string, self_, shared_from_this(), other_attack_, self_loc_, AFFECTS::SELF, checking_name, checking_tags, "affect_allies");
 
 	if(!temp_string.empty()) {
 		special_names.push_back("\n" + std::move(temp_string));
@@ -1105,14 +1106,14 @@ std::string attack_type::describe_weapon_specials_value(const std::set<std::stri
 	}
 	add_name_list(temp_string, weapon_abilities, checking_name, "");
 
-	weapon_specials_impl_self(temp_string, self_, shared_from_this(), other_attack_, self_loc_, AFFECTS::SELF, checking_name, checking_tags, true);
+	weapon_specials_impl_self(temp_string, self_, shared_from_this(), other_attack_, self_loc_, AFFECTS::SELF, checking_name, checking_tags);
 	add_name_list(temp_string, weapon_abilities, checking_name, _("Owned: "));
 
-	weapon_specials_impl_adj(temp_string, self_, shared_from_this(), other_attack_, self_loc_, AFFECTS::SELF, checking_name, checking_tags, "affect_allies", true);
+	weapon_specials_impl_adj(temp_string, self_, shared_from_this(), other_attack_, self_loc_, AFFECTS::SELF, checking_name, checking_tags, "affect_allies");
 	// TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
 	add_name_list(temp_string, weapon_abilities, checking_name, _("Taught: "));
 
-	weapon_specials_impl_adj(temp_string, self_, shared_from_this(), other_attack_, self_loc_, AFFECTS::SELF, checking_name, checking_tags, "affect_enemies", true);
+	weapon_specials_impl_adj(temp_string, self_, shared_from_this(), other_attack_, self_loc_, AFFECTS::SELF, checking_name, checking_tags, "affect_enemies");
 	// TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
 	add_name_list(temp_string, weapon_abilities, checking_name, _("Taught: (by an enemy): "));
 
@@ -1140,13 +1141,12 @@ void attack_type::weapon_specials_impl_self(
 	const map_location& self_loc,
 	AFFECTS whom,
 	std::set<std::string>& checking_name,
-	const std::set<std::string>& checking_tags,
-	bool leader_bool)
+	const std::set<std::string>& checking_tags)
 {
 	if(self){
 		for(const auto& p_ab : self->abilities()){
 			bool tag_checked = (!checking_tags.empty()) ? (checking_tags.count(p_ab->tag()) != 0) : true;
-			const bool active = tag_checked && check_self_abilities_impl(self_attack, other_attack, *p_ab, self, self_loc, whom, leader_bool);
+			const bool active = tag_checked && check_self_abilities_impl(self_attack, other_attack, *p_ab, self, self_loc, whom);
 			add_name(temp_string, active, p_ab->cfg().get_or("name_affected", "name").str(), checking_name);
 		}
 	}
@@ -1161,8 +1161,7 @@ void attack_type::weapon_specials_impl_adj(
 	AFFECTS whom,
 	std::set<std::string>& checking_name,
 	const std::set<std::string>& checking_tags,
-	const std::string& affect_adjacents,
-	bool leader_bool)
+	const std::string& affect_adjacents)
 {
 	const unit_map& units = get_unit_map();
 	if(self){
@@ -1180,7 +1179,7 @@ void attack_type::weapon_specials_impl_adj(
 				bool tag_checked = !checking_tags.empty() ? checking_tags.count(p_ab->tag()) != 0 : true;
 				bool default_bool = affect_adjacents == "affect_allies" ? true : false;
 				bool affect_allies = !affect_adjacents.empty() ? p_ab->cfg()[affect_adjacents].to_bool(default_bool) : true;
-				const bool active = tag_checked && check_adj_abilities_impl(self_attack, other_attack, *p_ab, self, u, distance, dir, self_loc, from_loc, whom, leader_bool) && affect_allies;
+				const bool active = tag_checked && check_adj_abilities_impl(self_attack, other_attack, *p_ab, self, u, distance, dir, self_loc, from_loc, whom) && affect_allies;
 				add_name(temp_string, active, p_ab->cfg().get_or("name_affected", "name").str(), checking_name);
 			}
 		}
@@ -1605,9 +1604,12 @@ bool unit::get_adj_ability_bool_weapon(const unit_ability_t& ab, std::size_t dis
 	return (get_adj_ability_bool(ab, dist, dir, loc, from, from_loc) && ability_affects_weapon(ab, weapon, false) && ability_affects_weapon(ab, opp_weapon, true));
 }
 
-bool attack_type::check_self_abilities_impl(const const_attack_ptr& self_attack, const const_attack_ptr& other_attack, const unit_ability_t& ab, const unit_const_ptr& u, const map_location& loc, AFFECTS whom, bool leader_bool)
+bool attack_type::check_self_abilities_impl(const const_attack_ptr& self_attack, const const_attack_ptr& other_attack, const unit_ability_t& ab, const unit_const_ptr& u, const map_location& loc, AFFECTS whom)
 {
-	if(ab.tag() == "leadership" && leader_bool) {
+	if (ab.tag() == "leadership" && whom == AFFECTS::OTHER) {
+		return false;
+	}
+	if(ab.tag() == "leadership") {
 		if(u->get_self_ability_bool_weapon(ab, loc, self_attack, other_attack)) {
 			return true;
 		}
@@ -1620,9 +1622,12 @@ bool attack_type::check_self_abilities_impl(const const_attack_ptr& self_attack,
 	return false;
 }
 
-bool attack_type::check_adj_abilities_impl(const const_attack_ptr& self_attack, const const_attack_ptr& other_attack, const unit_ability_t& ab, const unit_const_ptr& u, const unit& from, std::size_t dist, int dir, const map_location& loc, const map_location& from_loc, AFFECTS whom, bool leader_bool)
+bool attack_type::check_adj_abilities_impl(const const_attack_ptr& self_attack, const const_attack_ptr& other_attack, const unit_ability_t& ab, const unit_const_ptr& u, const unit& from, std::size_t dist, int dir, const map_location& loc, const map_location& from_loc, AFFECTS whom)
 {
-	if(ab.tag() == "leadership" && leader_bool) {
+	if (ab.tag() == "leadership" && whom == AFFECTS::OTHER) {
+		return false;
+	}
+	if(ab.tag() == "leadership") {
 		if(u->get_adj_ability_bool_weapon(ab, dist, dir, loc, from, from_loc, self_attack, other_attack)) {
 			return true;
 		}
@@ -1721,8 +1726,7 @@ bool attack_type::special_distant_filtering_impl(
 	const const_attack_ptr& other_attack,
 	AFFECTS whom,
 	const config & filter,
-	bool sub_filter,
-	bool leader_bool)
+	bool sub_filter)
 {
 	const std::set<std::string> filter_special = utils::split_set(filter["special_active"].str());
 	const std::set<std::string> filter_special_id =  utils::split_set(filter["special_id_active"].str());
@@ -1731,7 +1735,7 @@ bool attack_type::special_distant_filtering_impl(
 	bool check_adjacent = sub_filter ? filter["affect_adjacent"].to_bool(true) : true;
 	for(const auto& p_ab : self->abilities()) {
 		bool special_check = sub_filter ? self->ability_matches_filter(*p_ab, filter) : special_checking(p_ab->id(), p_ab->tag(), filter_special, filter_special_id, filter_special_type);
-		if(special_check && check_self_abilities_impl(self_attack, other_attack, *p_ab, self, self_loc, whom, leader_bool)){
+		if(special_check && check_self_abilities_impl(self_attack, other_attack, *p_ab, self, self_loc, whom)){
 			return true;
 		}
 	}
@@ -1749,7 +1753,7 @@ bool attack_type::special_distant_filtering_impl(
 
 			for(const auto& p_ab : u.abilities()) {
 				bool special_check = sub_filter ? u.ability_matches_filter(*p_ab, filter) : special_checking(p_ab->id(), p_ab->tag(), filter_special, filter_special_id, filter_special_type);
-				if(special_check && check_adj_abilities_impl(self_attack, other_attack, *p_ab, self, u, distance, dir, self_loc, from_loc, whom, leader_bool)) {
+				if(special_check && check_adj_abilities_impl(self_attack, other_attack, *p_ab, self, u, distance, dir, self_loc, from_loc, whom)) {
 					return true;
 				}
 			}
@@ -1791,7 +1795,7 @@ bool attack_type::has_filter_special_or_ability(const config& filter, bool simpl
 		}
 	}
 
-	if(self_ && special_distant_filtering_impl(shared_from_this(), self_, self_loc_, other_attack_, AFFECTS::SELF, filter, false, true)) {
+	if(self_ && special_distant_filtering_impl(shared_from_this(), self_, self_loc_, other_attack_, AFFECTS::SELF, filter, false)) {
 		return true;
 	}
 
@@ -2034,7 +2038,7 @@ bool attack_type::has_special_or_ability_with_filter(const config & filter) cons
 		return false;
 	}
 
-	if(self_ && special_distant_filtering_impl(shared_from_this(), self_, self_loc_, other_attack_, AFFECTS::SELF, filter, true, true)) {
+	if(self_ && special_distant_filtering_impl(shared_from_this(), self_, self_loc_, other_attack_, AFFECTS::SELF, filter, true)) {
 		return true;
 	}
 
