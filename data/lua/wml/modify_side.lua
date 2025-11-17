@@ -97,6 +97,8 @@ function wesnoth.wml_actions.modify_side(cfg)
 				end
 			elseif tag == "set_variable" then
 				wesnoth.wml_actions.set_variable(v[2], side.variables)
+			elseif tag == "set_variables" then
+				wesnoth.wml_actions.set_variables(v[2], side.variables)
 			elseif tag == "clear_variable" then
 				wesnoth.wml_actions.clear_variable(cfg, side.variables)
 			elseif tag == "variables" then
