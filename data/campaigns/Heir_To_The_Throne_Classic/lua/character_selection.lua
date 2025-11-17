@@ -28,7 +28,7 @@ function wml_actions.select_character()
 
 	if selected == 2 then
 		wesnoth.units.to_map({
-			type = "Tutorial Fighteress",
+			type = "Tutorial_Fighteress",
 			side = 1,
 			id = unit.id,
 			name = _"Li’sar",
@@ -39,7 +39,7 @@ function wml_actions.select_character()
 		}, unit.x, unit.y )
 		wesnoth.sides[1].side_name = _"Li’sar"
 		-- enable the help to display this unit's page
-		wesnoth.add_known_unit("Tutorial Fighteress")
+		wesnoth.add_known_unit("Tutorial_Fighteress")
 	else
 		wesnoth.units.to_map(unit)
 	end
