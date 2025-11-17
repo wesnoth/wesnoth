@@ -17,6 +17,7 @@
 
 #include "map/location.hpp"
 #include "units/ptr.hpp"
+#include "units/race.hpp" // for unit_race::GENDER
 
 
 #include <vector>
@@ -64,6 +65,10 @@ public:
 
 	static std::string get_help_topic_id(const config& cfg);
 	std::string get_help_topic_id() const;
+
+
+	std::string get_name(bool is_inactive = false, unit_race::GENDER = unit_race::MALE) const;
+	std::string get_description(bool is_inactive = false, unit_race::GENDER = unit_race::MALE) const;
 
 	void write(config& abilities_cfg);
 

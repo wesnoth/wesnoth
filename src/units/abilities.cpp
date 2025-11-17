@@ -259,6 +259,37 @@ void unit_ability_t::write(config& abilities_cfg)
 	abilities_cfg.add_child(tag(), cfg());
 }
 
+namespace {
+	const config_attribute_value& get_attr_four_fallback(const config& cfg, bool b1, bool b2, std::string_view s_yes_yes, std::string_view s_yes_no, std::string_view s_no_yes, std::string_view s_no_no)
+	{
+		if (b1 && b2) {
+			if (auto* attr = cfg.get(s_yes_yes)) { return *attr; }
+		}
+		if (b1) {
+			if (auto* attr = cfg.get(s_yes_no)) { return *attr; }
+		}
+		if (b2) {
+			if (auto* attr = cfg.get(s_no_yes)) { return *attr; }
+		}
+		return cfg[s_no_no];
+	}
+}
+
+std::string unit_ability_t::get_name(bool is_inactive, unit_race::GENDER gender) const
+{
+	bool is_female = gender == unit_race::FEMALE;
+	std::string res = get_attr_four_fallback(cfg_, is_inactive, is_female, "female_name_inactive", "name_inactive", "female_name", "name").str();
+	return unit_abilities::substitute_variables(res, *this);
+}
+
+std::string unit_ability_t::get_description(bool is_inactive, unit_race::GENDER gender) const
+{
+	bool is_female = gender == unit_race::FEMALE;
+	std::string res = get_attr_four_fallback(cfg_, is_inactive, is_female, "female_description_inactive", "description_inactive", "female_description", "description").str();
+	return unit_abilities::substitute_variables(res, *this);
+}
+
+
 
 
 namespace {
@@ -438,36 +469,19 @@ namespace {
 	 */
 	bool add_ability_tooltip(const unit_ability_t& ab, unit_race::GENDER gender, std::vector<unit_ability_t::tooltip_info>& res, bool active)
 	{
-		if(active) {
-			const t_string& name = gender_value(ab.cfg(), gender, "name", "female_name", "name").t_str();
+		auto name = ab.get_name(!active, gender);
+		auto desc = ab.get_description(!active, gender);
 
-			if(!name.empty()) {
-				res.AGGREGATE_EMPLACE(
-					unit_abilities::substitute_variables(name, ab),
-					unit_abilities::substitute_variables(ab.cfg()["description"].t_str(), ab),
-					ab.get_help_topic_id()
-				);
-				return true;
-			}
-		} else {
-			// See if an inactive name was specified.
-			const config::attribute_value& inactive_value =
-				gender_value(ab.cfg(), gender, "name_inactive",
-						"female_name_inactive", "name_inactive");
-			const t_string& name = !inactive_value.blank() ? inactive_value.t_str() :
-				gender_value(ab.cfg(), gender, "name", "female_name", "name").t_str();
-			const t_string& desc = ab.cfg().get_or("description_inactive", "description").t_str();
-
-			if(!name.empty()) {
-				res.AGGREGATE_EMPLACE(
-						unit_abilities::substitute_variables(name, ab),
-						unit_abilities::substitute_variables(desc, ab),
-						ab.get_help_topic_id());
-				return true;
-			}
+		if (name.empty()) {
+			return false;
 		}
 
-		return false;
+		res.AGGREGATE_EMPLACE(
+			name,
+			desc,
+			ab.get_help_topic_id()
+		);
+		return true;
 	}
 }
 
@@ -932,21 +946,16 @@ std::vector<unit_ability_t::tooltip_info> attack_type::special_tooltips(
 	for(const auto& p_ab : specials()) {
 		bool active = !active_list || special_active(*p_ab, AFFECTS::EITHER);
 
-		std::string name = active
-			? p_ab->cfg()["name"].str()
-			: p_ab->cfg().get_or("name_inactive", "name").str();
+		auto name = p_ab->get_name(!active);
+		auto desc = p_ab->get_description(!active);
 
 		if(name.empty()) {
 			continue;
 		}
 
-		std::string desc = active
-			? p_ab->cfg()["description"].str()
-			: p_ab->cfg().get_or("description_inactive", "description").str();
-
 		res.AGGREGATE_EMPLACE(
-			unit_abilities::substitute_variables(name, *p_ab),
-			unit_abilities::substitute_variables(desc, *p_ab),
+			name,
+			desc,
 			p_ab->get_help_topic_id()
 		);
 
