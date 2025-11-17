@@ -70,6 +70,8 @@ public:
 	std::string get_name(bool is_inactive = false, unit_race::GENDER = unit_race::MALE) const;
 	std::string get_description(bool is_inactive = false, unit_race::GENDER = unit_race::MALE) const;
 
+	bool active_on_matches(bool student_is_attacker) const;
+
 	void write(config& abilities_cfg);
 
 
