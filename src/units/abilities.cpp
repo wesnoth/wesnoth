@@ -289,6 +289,20 @@ std::string unit_ability_t::get_description(bool is_inactive, unit_race::GENDER 
 	return unit_abilities::substitute_variables(res, *this);
 }
 
+bool unit_ability_t::active_on_matches(bool student_is_attacker) const
+{
+	if (active_on() == unit_ability_t::active_on_t::both) {
+		return true;
+	}
+	if (active_on() == unit_ability_t::active_on_t::offense && student_is_attacker) {
+		return true;
+	}
+	if (active_on() == unit_ability_t::active_on_t::defense && !student_is_attacker) {
+		return true;
+	}
+	return false;
+}
+
 
 
 
@@ -2107,11 +2121,8 @@ bool attack_type::special_active_impl(
 	}
 
 	// Is this active on attack/defense?
-	if ( ab.active_on() != unit_ability_t::active_on_t::both) {
-		if ( is_attacker  && ab.active_on() != unit_ability_t::active_on_t::offense)
-			return false;
-		if ( !is_attacker  && ab.active_on() != unit_ability_t::active_on_t::defense)
-			return false;
+	if (!ab.active_on_matches(is_attacker)) {
+		return false;
 	}
 
 	// Get the units involved.
