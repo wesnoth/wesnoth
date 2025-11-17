@@ -43,7 +43,7 @@ public:
 		return std::make_shared<unit_ability_t>(tag, cfg, inside_attack);
 	}
 
-	static void do_compat_fixes(config& cfg, bool inside_attack);
+	static void do_compat_fixes(config& cfg, const std::string& tag, bool inside_attack);
 
 	const std::string& tag() const { return tag_; };
 	const std::string& id() const { return id_; };

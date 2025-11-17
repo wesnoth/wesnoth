@@ -233,7 +233,6 @@ public:
 	 */
 	recursion_guard update_variables_recursion(const config& special) const;
 
-private:
 	// In unit_abilities.cpp:
 
 	// Configured as a bit field, in case that is useful.
@@ -397,6 +396,9 @@ private:
 		AFFECTS whom,
 		const config & filter,
 		bool sub_filter);
+
+	// make more functions proivate after refactoring finished.
+private:
 
 	// Used via specials_context() to control which specials are
 	// considered active.

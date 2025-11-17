@@ -122,7 +122,7 @@ unit_ability_t::unit_ability_t(std::string tag, config cfg, bool inside_attack)
 	, apply_to_(apply_to_t::self)
 	, cfg_(std::move(cfg))
 {
-	do_compat_fixes(cfg_, inside_attack);
+	do_compat_fixes(cfg_, tag_, inside_attack);
 
 	if (tag_ != "resistance" && tag_ != "leadership") {
 		std::string apply_to = cfg_["apply_to"].str();
@@ -140,7 +140,7 @@ unit_ability_t::unit_ability_t(std::string tag, config cfg, bool inside_attack)
 		active_on_t::both;
 }
 
-void unit_ability_t::do_compat_fixes(config& cfg, bool inside_attack)
+void unit_ability_t::do_compat_fixes(config& cfg, const std::string& tag, bool inside_attack)
 {
 	// replace deprecated backstab with formula
 	if (!cfg["backstab"].blank()) {
@@ -192,6 +192,17 @@ void unit_ability_t::do_compat_fixes(config& cfg, bool inside_attack)
 		cfg.child_or_add(filter_teacher).add_child("filter_location").add_child("filter_adjacent_location", filter_adjacent);
 	}
 	cfg.remove_children("filter_adjacent_location");
+
+	if (tag == "resistance" || tag == "leadership") {
+		if (auto child = cfg.optional_child("filter_second_weapon")) {
+			cfg.add_child("filter_opponent").add_child("filter_weapon", *child);
+		}
+		if (auto child = cfg.optional_child("filter_weapon")) {
+			cfg.add_child("filter_student").add_child("filter_weapon", *child);
+		}
+		cfg.remove_children("filter_second_weapon");
+		cfg.remove_children("filter_weapon");
+	}
 }
 
 
@@ -456,7 +467,8 @@ active_ability_list unit::get_abilities_weapons(const std::string& tag_name, con
 {
 	active_ability_list res = get_abilities(tag_name, loc);
 	utils::erase_if(res, [&](const active_ability& i) {
-		return !ability_affects_weapon(i.ability(), weapon, false) || !ability_affects_weapon(i.ability(), opp_weapon, true);
+		//If no weapon is given, assume the ability is active. this is used by ai code.
+		return (weapon || opp_weapon) && attack_type::special_active_impl(weapon, opp_weapon, i.ability(), unit_ability_t::affects_t::SELF);
 	});
 	return res;
 }
@@ -665,25 +677,6 @@ bool unit::ability_affects_self(const unit_ability_t& ab, const map_location& lo
 	bool affect_self = ab.cfg()["affect_self"].to_bool(true);
 	if (!filter || !affect_self) return affect_self;
 	return unit_filter(vconfig(*filter)).set_use_flat_tod(ab.tag() == "illuminates").matches(*this, loc);
-}
-
-bool unit::ability_affects_weapon(const unit_ability_t& ab, const const_attack_ptr& weapon, bool is_opp) const
-{
-	const std::string filter_tag_name = is_opp ? "filter_second_weapon" : "filter_weapon";
-	if(!ab.cfg().has_child(filter_tag_name)) {
-		return true;
-	}
-	const config& filter = ab.cfg().mandatory_child(filter_tag_name);
-	if(!weapon) {
-		return false;
-	}
-	attack_type::recursion_guard filter_lock;
-	filter_lock  = weapon->update_variables_recursion(ab.cfg());
-	if(!filter_lock) {
-		show_recursion_warning(*this, ab.cfg());
-		return false;
-	}
-	return weapon->matches_filter(filter);
 }
 
 bool unit::has_ability_type(const std::string& ability) const
@@ -1608,50 +1601,14 @@ bool unit::get_adj_ability_bool(const unit_ability_t& ab, std::size_t dist, int 
 	return (affects_side(ab, side(), from.side()) && from.ability_active_impl(ab, from_loc) && ability_affects_adjacent(ab, dist, dir, loc, from));
 }
 
-bool unit::get_self_ability_bool_weapon(const unit_ability_t& ab, const map_location& loc, const const_attack_ptr& weapon, const const_attack_ptr& opp_weapon) const
-{
-	return (get_self_ability_bool(ab, loc) && ability_affects_weapon(ab, weapon, false) && ability_affects_weapon(ab, opp_weapon, true));
-}
-
-bool unit::get_adj_ability_bool_weapon(const unit_ability_t& ab, std::size_t dist, int dir, const map_location& loc, const unit& from, const map_location& from_loc, const const_attack_ptr& weapon, const const_attack_ptr& opp_weapon) const
-{
-	return (get_adj_ability_bool(ab, dist, dir, loc, from, from_loc) && ability_affects_weapon(ab, weapon, false) && ability_affects_weapon(ab, opp_weapon, true));
-}
-
 bool attack_type::check_self_abilities_impl(const const_attack_ptr& self_attack, const const_attack_ptr& other_attack, const unit_ability_t& ab, const unit_const_ptr& u, const map_location& loc, AFFECTS whom)
 {
-	if (ab.tag() == "leadership" && whom == AFFECTS::OTHER) {
-		return false;
-	}
-	if(ab.tag() == "leadership") {
-		if(u->get_self_ability_bool_weapon(ab, loc, self_attack, other_attack)) {
-			return true;
-		}
-	}
-	if(abilities_list::all_weapon_tags().count(ab.tag()) != 0){
-		if(u->get_self_ability_bool(ab, loc) && special_active_impl(self_attack, other_attack, ab, whom)) {
-			return true;
-		}
-	}
-	return false;
+	return u->get_self_ability_bool(ab, loc) && special_active_impl(self_attack, other_attack, ab, whom);
 }
 
 bool attack_type::check_adj_abilities_impl(const const_attack_ptr& self_attack, const const_attack_ptr& other_attack, const unit_ability_t& ab, const unit_const_ptr& u, const unit& from, std::size_t dist, int dir, const map_location& loc, const map_location& from_loc, AFFECTS whom)
 {
-	if (ab.tag() == "leadership" && whom == AFFECTS::OTHER) {
-		return false;
-	}
-	if(ab.tag() == "leadership") {
-		if(u->get_adj_ability_bool_weapon(ab, dist, dir, loc, from, from_loc, self_attack, other_attack)) {
-			return true;
-		}
-	}
-	if(abilities_list::all_weapon_tags().count(ab.tag()) != 0) {
-		if(u->get_adj_ability_bool(ab, dist, dir, loc, from, from_loc) && special_active_impl(self_attack, other_attack, ab, whom)) {
-			return true;
-		}
-	}
-	return false;
+	return u->get_adj_ability_bool(ab, dist, dir, loc, from, from_loc) && special_active_impl(self_attack, other_attack, ab, whom);
 }
 
 bool attack_type::has_ability_impl(

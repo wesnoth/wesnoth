@@ -1700,14 +1700,6 @@ public:
 	 * @param loc location of the unit checked.
 	 */
 	bool get_self_ability_bool(const unit_ability_t& ab, const map_location& loc) const;
-	/** Checks whether this unit currently possesses a given ability of leadership type
-	 * @return True if the ability @a tag_name is active.
-	 * @param ab the ability checked
-	 * @param loc location of the unit checked.
-	 * @param weapon the attack used by unit checked in this function.
-	 * @param opp_weapon the attack used by opponent to unit checked.
-	 */
-	bool get_self_ability_bool_weapon(const unit_ability_t& ab, const map_location& loc, const const_attack_ptr& weapon = nullptr, const const_attack_ptr& opp_weapon = nullptr) const;
 	/** Checks whether this unit is affected by a given ability, and that that ability is active.
 	 * @return True if the ability @a tag_name is active.
 	 * @param ab the ability checked
@@ -1718,18 +1710,6 @@ public:
 	 * @param dir direction to research a unit distant to @a this.
 	 */
 	bool get_adj_ability_bool(const unit_ability_t& ab, std::size_t dist, int dir, const map_location& loc, const unit& from, const map_location& from_loc) const;
-	/** Checks whether this unit is affected by a given ability of leadership type
-	 * @return True if the ability @a tag_name is active.
-	 * @param ab the ability checked
-	 * @param loc location of the unit checked.
-	 * @param from unit adjacent to @a this is checked in case of [affect_adjacent] abilities.
-	 * @param from_loc location of the @a from unit.
-	 * @param weapon the attack used by unit checked in this function.
-	 * @param opp_weapon the attack used by opponent to unit checked.
-	 * @param dist distance between unit distant and @a this.
-	 * @param dir direction to research a unit distant to @a this.
-	 */
-	bool get_adj_ability_bool_weapon(const unit_ability_t& ab, std::size_t dist, int dir, const map_location& loc, const unit& from, const map_location& from_loc, const const_attack_ptr& weapon, const const_attack_ptr& opp_weapon) const;
 
 	/**
 	 * Gets the unit's active abilities of a particular type if it were on a specified location.
