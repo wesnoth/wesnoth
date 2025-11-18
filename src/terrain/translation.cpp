@@ -154,29 +154,33 @@ const ter_match ALL_SWAMPS("!,*^V*,*^B*,!,S*"); //excluding swamp villages and b
 
 /***************************************************************************************/
 
-terrain_code::terrain_code(const std::string& b, ter_layer o) :
-	base(string_to_layer_(b)), overlay(o)
-{}
+terrain_code::terrain_code(const std::string& b, ter_layer o)
+	: base(string_to_layer_(b))
+	, overlay(o)
+{
+}
 
-terrain_code::terrain_code(const std::string& b, const std::string& o) :
-	base(string_to_layer_(b)), overlay(string_to_layer_(o))
-{}
+terrain_code::terrain_code(const std::string& b, const std::string& o)
+	: base(string_to_layer_(b))
+	, overlay(string_to_layer_(o))
+{
+}
 
-ter_match::ter_match() :
-	terrain(),
-	mask(),
-	masked_terrain(),
-	has_wildcard(false),
-	is_empty(true)
-{}
+ter_match::ter_match()
+	: terrain()
+	, mask()
+	, masked_terrain()
+	, has_wildcard(false)
+	, is_empty(true)
+{
+}
 
-ter_match::ter_match(std::string_view str, const ter_layer filler) :
-	terrain(t_translation::read_list(str, filler)),
-	mask(),
-	masked_terrain(),
-	has_wildcard(t_translation::has_wildcard(terrain)),
-	is_empty(terrain.empty())
-
+ter_match::ter_match(std::string_view str, const ter_layer filler)
+	: terrain(t_translation::read_list(str, filler))
+	, mask()
+	, masked_terrain()
+	, has_wildcard(t_translation::has_wildcard(terrain))
+	, is_empty(terrain.empty())
 {
 	mask.resize(terrain.size());
 	masked_terrain.resize(terrain.size());
@@ -187,12 +191,12 @@ ter_match::ter_match(std::string_view str, const ter_layer filler) :
 	}
 }
 
-ter_match::ter_match(const terrain_code& tcode):
-	terrain(ter_list(1, tcode)),
-	mask(),
-	masked_terrain(),
-	has_wildcard(t_translation::has_wildcard(terrain)),
-	is_empty(terrain.empty())
+ter_match::ter_match(const terrain_code& tcode)
+	: terrain(ter_list(1, tcode))
+	, mask()
+	, masked_terrain()
+	, has_wildcard(t_translation::has_wildcard(terrain))
+	, is_empty(terrain.empty())
 {
 	mask.resize(terrain.size());
 	masked_terrain.resize(terrain.size());
