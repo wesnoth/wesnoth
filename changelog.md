@@ -1,6 +1,4 @@
-## Version 1.19.17+dev
-### Add-ons client
-### Add-ons server
+## Version 1.19.18
 ### Campaigns
    * Dusk of Dawn
      * Added to mainline.
@@ -30,11 +28,6 @@
      * Allied sides are now at the end of the turn order.
      * Fixed several RNG-related tips not triggering.
      * Various minor bugfixes and tweaks.
-### Editor
-### Multiplayer
-### Lua API
-### Packaging
-### Terrain
 ### Translations
    * Updated translations: Bengali, British English, Czech, Finnish, Galician, Hungarian, Italian, Polish, Spanish
 ### Units
