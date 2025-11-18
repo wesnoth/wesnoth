@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.18\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-06-16 03:18 UTC\n"
+"POT-Creation-Date: 2025-11-18 02:02 UTC\n"
 "PO-Revision-Date: 2024-03-04 17:34+0100\n"
 "Last-Translator: Severin Glöckner <severin.gloeckner@stud.htwk-leipzig.de>\n"
 "Language-Team: irc://irc.libera.chat/#wesnoth-de\n"
@@ -19,81 +19,87 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.4.2\n"
 
-#. [campaign]: id=Heir_To_The_Throne
+#. [campaign]: id=Heir_To_The_Throne_Classic
 #: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:9
-msgid "Heir to the Throne"
+#, fuzzy
+#| msgid "Heir to the Throne"
+msgid "Heir to the Throne, Classic"
 msgstr "Der Thronerbe"
 
-#. [campaign]: id=Heir_To_The_Throne
+#. [campaign]: id=Heir_To_The_Throne_Classic
 #: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:12
-msgid "HttT"
+#, fuzzy
+#| msgid "HttT"
+msgid "HttTC"
 msgstr "HttT"
 
-#. [campaign]: id=Heir_To_The_Throne
+#. [campaign]: id=Heir_To_The_Throne_Classic
 #: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:19
 msgid ""
 "Fight to regain the throne of Wesnoth, of which you are the legitimate "
 "heir.\n"
 "\n"
-msgstr ""
-"Erobert den Thron von Wesnoth zurück, dessen rechtmäßiger Erbe Ihr seid.\n"
+"This is the original version of this classic campaign, preserved for "
+"historical reasons. Also optionally includes the old <i>Battle Training</i> "
+"tutorial.\n"
 "\n"
+msgstr ""
 
-#. [campaign]: id=Heir_To_The_Throne
-#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:21
+#. [campaign]: id=Heir_To_The_Throne_Classic
+#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:23
 msgid "(Novice level, 23 scenarios.)"
 msgstr "(Einstufung: Einfach, 23 Szenarien)"
 
-#. [campaign]: id=Heir_To_The_Throne
-#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:23
+#. [campaign]: id=Heir_To_The_Throne_Classic
+#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:25
 msgid "Easy"
 msgstr "Einfach"
 
-#. [campaign]: id=Heir_To_The_Throne
-#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:23
+#. [campaign]: id=Heir_To_The_Throne_Classic
+#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:25
 #: data/campaigns/Heir_To_The_Throne_Classic/units/Fighter.cfg:4
 msgid "Fighter"
 msgstr "Krieger"
 
-#. [campaign]: id=Heir_To_The_Throne
-#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:24
+#. [campaign]: id=Heir_To_The_Throne_Classic
+#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:26
 #: data/campaigns/Heir_To_The_Throne_Classic/units/Commander.cfg:4
 msgid "Commander"
 msgstr "Feldherr"
 
-#. [campaign]: id=Heir_To_The_Throne
-#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:24
+#. [campaign]: id=Heir_To_The_Throne_Classic
+#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:26
 msgid "Normal"
 msgstr "Normal"
 
-#. [campaign]: id=Heir_To_The_Throne
-#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:25
+#. [campaign]: id=Heir_To_The_Throne_Classic
+#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:27
 msgid "Challenging"
 msgstr "Herausfordernd"
 
-#. [campaign]: id=Heir_To_The_Throne
-#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:25
+#. [campaign]: id=Heir_To_The_Throne_Classic
+#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:27
 #: data/campaigns/Heir_To_The_Throne_Classic/units/Lord.cfg:4
 msgid "Lord"
 msgstr "Fürst"
 
 #. [about]
-#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:32
+#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:34
 msgid "Campaign Design"
 msgstr "Kampagnengestaltung"
 
 #. [about]
-#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:38
+#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:40
 msgid "Campaign Maintenance"
 msgstr "Betreuung"
 
 #. [about]
-#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:51
+#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:53
 msgid "Artwork and Graphics Design"
 msgstr "Grafik"
 
 #. [about]
-#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:75
+#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:77
 msgid "Miscellaneous"
 msgstr "Verschiedenes"
 
@@ -9719,6 +9725,14 @@ msgstr ""
 "Delfador floh in die Aethenwälder und zog Konrad unter dem Schutz der Elfen "
 "groß. Traurig musste er mit ansehen, wie Asheviere ihre Schreckensherrschaft "
 "über Wesnoth begann…"
+
+#~ msgid ""
+#~ "Fight to regain the throne of Wesnoth, of which you are the legitimate "
+#~ "heir.\n"
+#~ "\n"
+#~ msgstr ""
+#~ "Erobert den Thron von Wesnoth zurück, dessen rechtmäßiger Erbe Ihr seid.\n"
+#~ "\n"
 
 #~ msgid "Water Serpent"
 #~ msgstr "Seeschlange"

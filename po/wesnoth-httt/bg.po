@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bg\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-06-16 03:18 UTC\n"
+"POT-Creation-Date: 2025-11-18 02:02 UTC\n"
 "PO-Revision-Date: 2025-04-25 12:16+0300\n"
 "Last-Translator: Ivan Petrov <vankata_petrov@abv.bg>\n"
 "Language-Team: Български\n"
@@ -16,82 +16,87 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.6\n"
 
-#. [campaign]: id=Heir_To_The_Throne
+#. [campaign]: id=Heir_To_The_Throne_Classic
 #: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:9
-msgid "Heir to the Throne"
+#, fuzzy
+#| msgid "Heir to the Throne"
+msgid "Heir to the Throne, Classic"
 msgstr "Наследникът на трона"
 
-#. [campaign]: id=Heir_To_The_Throne
+#. [campaign]: id=Heir_To_The_Throne_Classic
 #: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:12
-msgid "HttT"
+#, fuzzy
+#| msgid "HttT"
+msgid "HttTC"
 msgstr "НнТ"
 
-#. [campaign]: id=Heir_To_The_Throne
+#. [campaign]: id=Heir_To_The_Throne_Classic
 #: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:19
 msgid ""
 "Fight to regain the throne of Wesnoth, of which you are the legitimate "
 "heir.\n"
 "\n"
-msgstr ""
-"Поведете борба, за да се възкачите на трона на Уеснот, на който сте законен "
-"наследник.\n"
+"This is the original version of this classic campaign, preserved for "
+"historical reasons. Also optionally includes the old <i>Battle Training</i> "
+"tutorial.\n"
 "\n"
+msgstr ""
 
-#. [campaign]: id=Heir_To_The_Throne
-#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:21
+#. [campaign]: id=Heir_To_The_Throne_Classic
+#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:23
 msgid "(Novice level, 23 scenarios.)"
 msgstr "(Начинаеща трудност, с 23 мисии.)"
 
-#. [campaign]: id=Heir_To_The_Throne
-#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:23
+#. [campaign]: id=Heir_To_The_Throne_Classic
+#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:25
 msgid "Easy"
 msgstr "Лесна"
 
-#. [campaign]: id=Heir_To_The_Throne
-#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:23
+#. [campaign]: id=Heir_To_The_Throne_Classic
+#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:25
 #: data/campaigns/Heir_To_The_Throne_Classic/units/Fighter.cfg:4
 msgid "Fighter"
 msgstr "Боец"
 
-#. [campaign]: id=Heir_To_The_Throne
-#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:24
+#. [campaign]: id=Heir_To_The_Throne_Classic
+#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:26
 #: data/campaigns/Heir_To_The_Throne_Classic/units/Commander.cfg:4
 msgid "Commander"
 msgstr "Командир"
 
-#. [campaign]: id=Heir_To_The_Throne
-#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:24
+#. [campaign]: id=Heir_To_The_Throne_Classic
+#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:26
 msgid "Normal"
 msgstr "Нормална"
 
-#. [campaign]: id=Heir_To_The_Throne
-#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:25
+#. [campaign]: id=Heir_To_The_Throne_Classic
+#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:27
 msgid "Challenging"
 msgstr "Предизвикателна"
 
-#. [campaign]: id=Heir_To_The_Throne
-#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:25
+#. [campaign]: id=Heir_To_The_Throne_Classic
+#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:27
 #: data/campaigns/Heir_To_The_Throne_Classic/units/Lord.cfg:4
 msgid "Lord"
 msgstr "Лорд"
 
 #. [about]
-#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:32
+#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:34
 msgid "Campaign Design"
 msgstr "Дизайн на кампанията"
 
 #. [about]
-#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:38
+#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:40
 msgid "Campaign Maintenance"
 msgstr "Поддръжка на кампанията"
 
 #. [about]
-#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:51
+#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:53
 msgid "Artwork and Graphics Design"
 msgstr "Дизайн на графиките и изображенията"
 
 #. [about]
-#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:75
+#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:77
 msgid "Miscellaneous"
 msgstr "Други"
 
@@ -9401,6 +9406,15 @@ msgstr ""
 "После Делфадор се укри в гората Етън отвъд югозападната граница на Уеснот, "
 "където отгледа малкия Конрад под закрилата на елфите, без да може да направи "
 "нищо освен тъжно да наблюдава как започва вероломното управление на Ашевиер…"
+
+#~ msgid ""
+#~ "Fight to regain the throne of Wesnoth, of which you are the legitimate "
+#~ "heir.\n"
+#~ "\n"
+#~ msgstr ""
+#~ "Поведете борба, за да се възкачите на трона на Уеснот, на който сте "
+#~ "законен наследник.\n"
+#~ "\n"
 
 #~ msgid "Water Serpent"
 #~ msgstr "Сладководно влечуго"

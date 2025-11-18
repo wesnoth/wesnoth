@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-06-16 03:18 UTC\n"
+"POT-Creation-Date: 2025-11-18 02:02 UTC\n"
 "PO-Revision-Date: 2023-12-03 03:44+0000\n"
 "Last-Translator: RatArmy, 2024\n"
 "Language-Team: Japanese (https://app.transifex.com/wesnoth-jp/teams/60513/"
@@ -17,81 +17,87 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#. [campaign]: id=Heir_To_The_Throne
+#. [campaign]: id=Heir_To_The_Throne_Classic
 #: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:9
-msgid "Heir to the Throne"
+#, fuzzy
+#| msgid "Heir to the Throne"
+msgid "Heir to the Throne, Classic"
 msgstr "王位継承者"
 
-#. [campaign]: id=Heir_To_The_Throne
+#. [campaign]: id=Heir_To_The_Throne_Classic
 #: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:12
-msgid "HttT"
+#, fuzzy
+#| msgid "HttT"
+msgid "HttTC"
 msgstr "HttT"
 
-#. [campaign]: id=Heir_To_The_Throne
+#. [campaign]: id=Heir_To_The_Throne_Classic
 #: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:19
 msgid ""
 "Fight to regain the throne of Wesnoth, of which you are the legitimate "
 "heir.\n"
 "\n"
-msgstr ""
-"Wesnoth の王位を取り戻す為に戦え。あなたはその正当な継承者だ。\n"
+"This is the original version of this classic campaign, preserved for "
+"historical reasons. Also optionally includes the old <i>Battle Training</i> "
+"tutorial.\n"
 "\n"
+msgstr ""
 
-#. [campaign]: id=Heir_To_The_Throne
-#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:21
+#. [campaign]: id=Heir_To_The_Throne_Classic
+#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:23
 msgid "(Novice level, 23 scenarios.)"
 msgstr "（初級レベル、23 シナリオ）"
 
-#. [campaign]: id=Heir_To_The_Throne
-#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:23
+#. [campaign]: id=Heir_To_The_Throne_Classic
+#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:25
 msgid "Easy"
 msgstr "簡単"
 
-#. [campaign]: id=Heir_To_The_Throne
-#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:23
+#. [campaign]: id=Heir_To_The_Throne_Classic
+#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:25
 #: data/campaigns/Heir_To_The_Throne_Classic/units/Fighter.cfg:4
 msgid "Fighter"
 msgstr "戦士"
 
-#. [campaign]: id=Heir_To_The_Throne
-#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:24
+#. [campaign]: id=Heir_To_The_Throne_Classic
+#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:26
 #: data/campaigns/Heir_To_The_Throne_Classic/units/Commander.cfg:4
 msgid "Commander"
 msgstr "司令官"
 
-#. [campaign]: id=Heir_To_The_Throne
-#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:24
+#. [campaign]: id=Heir_To_The_Throne_Classic
+#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:26
 msgid "Normal"
 msgstr "ノーマル"
 
-#. [campaign]: id=Heir_To_The_Throne
-#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:25
+#. [campaign]: id=Heir_To_The_Throne_Classic
+#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:27
 msgid "Challenging"
 msgstr "挑戦的"
 
-#. [campaign]: id=Heir_To_The_Throne
-#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:25
+#. [campaign]: id=Heir_To_The_Throne_Classic
+#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:27
 #: data/campaigns/Heir_To_The_Throne_Classic/units/Lord.cfg:4
 msgid "Lord"
 msgstr "君主"
 
 #. [about]
-#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:32
+#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:34
 msgid "Campaign Design"
 msgstr "キャンペーンデザイン"
 
 #. [about]
-#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:38
+#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:40
 msgid "Campaign Maintenance"
 msgstr "キャンペーンメンテナンス"
 
 #. [about]
-#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:51
+#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:53
 msgid "Artwork and Graphics Design"
 msgstr "アートワークとグラフィックスデザイン"
 
 #. [about]
-#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:75
+#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:77
 msgid "Miscellaneous"
 msgstr "その他"
 
@@ -9442,6 +9448,14 @@ msgstr ""
 "Delfador は南西部の Wesnoth の国境を越えて Aethenwood の森へと逃げ、エルフ族"
 "の守護の下で幼い Konrad を育てました。地上に Asheviere の恐怖の支配が始まった"
 "のを悲しげに見つめながら……"
+
+#~ msgid ""
+#~ "Fight to regain the throne of Wesnoth, of which you are the legitimate "
+#~ "heir.\n"
+#~ "\n"
+#~ msgstr ""
+#~ "Wesnoth の王位を取り戻す為に戦え。あなたはその正当な継承者だ。\n"
+#~ "\n"
 
 #~ msgid "Water Serpent"
 #~ msgstr "ウォーターサーペント"

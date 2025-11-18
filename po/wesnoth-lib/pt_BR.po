@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-09-21 23:01-0500\n"
+"POT-Creation-Date: 2025-11-17 20:02-0600\n"
 "PO-Revision-Date: 2022-09-17 11:45-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: Portuguese/Brazil\n"
@@ -6650,7 +6650,7 @@ msgstr "Custo de Movimento:"
 #. [tab]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:524
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:1206
-#: src/gui/widgets/unit_preview_pane.cpp:218
+#: src/gui/widgets/unit_preview_pane.cpp:216
 msgid "Attacks"
 msgstr "Ataques"
 
@@ -6733,7 +6733,7 @@ msgstr "Conteúdo"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=movement_costs_label
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:908
-#: src/gui/widgets/unit_preview_pane.cpp:151
+#: src/gui/widgets/unit_preview_pane.cpp:150
 msgid "Movement Costs:"
 msgstr "Custo de Movimento:"
 
@@ -10843,8 +10843,8 @@ msgstr "Estatística"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=unit_traits
 #: data/gui/themes/default/dialogs/units_dialog.cfg:147
-#: src/gui/widgets/unit_preview_pane.cpp:398
-#: src/gui/widgets/unit_preview_pane.cpp:533
+#: src/gui/widgets/unit_preview_pane.cpp:396
+#: src/gui/widgets/unit_preview_pane.cpp:531
 msgid "Traits"
 msgstr "Características"
 
@@ -13023,7 +13023,7 @@ msgstr "Todos os Cenários"
 # File: src/gui/dialogs/game_load.cpp, line: 310
 # File: src/gui/dialogs/game_load.cpp, line: 310
 #: src/gui/dialogs/statistics_dialog.cpp:174
-#: src/gui/dialogs/statistics_dialog.cpp:334
+#: src/gui/dialogs/statistics_dialog.cpp:309
 msgid "This Turn"
 msgstr "Este Turno"
 
@@ -13035,7 +13035,7 @@ msgstr "Reais chances de acerto, por chance de acerto:"
 msgid "(no attacks have taken place yet)"
 msgstr "(nenhum ataque aconteu ainda)"
 
-#: src/gui/dialogs/statistics_dialog.cpp:321
+#: src/gui/dialogs/statistics_dialog.cpp:296
 msgid ""
 "stats dialog^Difference of actual outcome to expected outcome, as a "
 "percentage.\n"
@@ -13054,7 +13054,7 @@ msgstr ""
 # File: src/hotkeys.cpp, line: 94
 # File: src/hotkeys.cpp, line: 94
 # File: src/hotkeys.cpp, line: 94
-#: src/gui/dialogs/statistics_dialog.cpp:365
+#: src/gui/dialogs/statistics_dialog.cpp:340
 #, fuzzy
 #| msgid "Recruits"
 msgid "stats^Recruits"
@@ -13064,7 +13064,7 @@ msgstr "Recrutados"
 # File: src/hotkeys.cpp, line: 96
 # File: src/hotkeys.cpp, line: 96
 # File: src/hotkeys.cpp, line: 96
-#: src/gui/dialogs/statistics_dialog.cpp:366
+#: src/gui/dialogs/statistics_dialog.cpp:341
 msgid "Recalls"
 msgstr "Convocados"
 
@@ -13072,11 +13072,11 @@ msgstr "Convocados"
 # File: src/game_preferences_display.cpp, line: 205
 # File: src/game_preferences_display.cpp, line: 205
 # File: src/game_preferences_display.cpp, line: 205
-#: src/gui/dialogs/statistics_dialog.cpp:367
+#: src/gui/dialogs/statistics_dialog.cpp:342
 msgid "Advancements"
 msgstr "Evoluidos"
 
-#: src/gui/dialogs/statistics_dialog.cpp:368
+#: src/gui/dialogs/statistics_dialog.cpp:343
 msgid "Losses"
 msgstr "Perdas"
 
@@ -13132,21 +13132,21 @@ msgstr "Perdas"
 # File: data/core/terrain.cfg, line: 866
 # File: data/core/terrain.cfg, line: 877
 # File: data/core/terrain.cfg, line: 888
-#: src/gui/dialogs/statistics_dialog.cpp:369
+#: src/gui/dialogs/statistics_dialog.cpp:344
 msgid "Kills"
 msgstr "Mortes"
 
-#: src/gui/dialogs/statistics_dialog.cpp:391
-#: src/gui/dialogs/statistics_dialog.cpp:398
+#: src/gui/dialogs/statistics_dialog.cpp:366
+#: src/gui/dialogs/statistics_dialog.cpp:373
 msgid "Inflicted"
 msgstr "Inflingidas"
 
-#: src/gui/dialogs/statistics_dialog.cpp:404
-#: src/gui/dialogs/statistics_dialog.cpp:411
+#: src/gui/dialogs/statistics_dialog.cpp:379
+#: src/gui/dialogs/statistics_dialog.cpp:386
 msgid "Taken"
 msgstr "Recebidas"
 
-#: src/gui/dialogs/statistics_dialog.cpp:452
+#: src/gui/dialogs/statistics_dialog.cpp:427
 msgid "$count|× $name"
 msgstr "$count|× $name"
 
@@ -13165,11 +13165,11 @@ msgstr "Captura de Tela"
 # File: src/gui/dialogs/title_screen.cpp, line: 297
 # File: src/gui/dialogs/title_screen.cpp, line: 297
 # File: src/gui/dialogs/title_screen.cpp, line: 297
-#: src/gui/dialogs/title_screen.cpp:399
+#: src/gui/dialogs/title_screen.cpp:396
 msgid "Version $version"
 msgstr "Versão $version"
 
-#: src/gui/dialogs/title_screen.cpp:489 src/hotkey/hotkey_command.cpp:311
+#: src/gui/dialogs/title_screen.cpp:486 src/hotkey/hotkey_command.cpp:311
 #, fuzzy
 #| msgid "Choose Starting Scenario"
 msgid "Choose Test Scenario"
@@ -13540,47 +13540,47 @@ msgstr "[node]id 'raíz reservado para implementação."
 msgid "Unknown builder id for tree view node."
 msgstr "Id construtor desconhecido para visão da árvore."
 
-#: src/gui/widgets/unit_preview_pane.cpp:135
+#: src/gui/widgets/unit_preview_pane.cpp:134
 msgid "Resistances: "
 msgstr "Resistências: "
 
-#: src/gui/widgets/unit_preview_pane.cpp:137
+#: src/gui/widgets/unit_preview_pane.cpp:136
 msgid "(Att / Def)"
 msgstr "(Atk / Def)"
 
-#: src/gui/widgets/unit_preview_pane.cpp:222
+#: src/gui/widgets/unit_preview_pane.cpp:220
 msgid "Remaining: $left/$max"
 msgstr ""
 
-#: src/gui/widgets/unit_preview_pane.cpp:225
+#: src/gui/widgets/unit_preview_pane.cpp:223
 msgid "This unit can attack multiple times per turn."
 msgstr ""
 
-#: src/gui/widgets/unit_preview_pane.cpp:277
+#: src/gui/widgets/unit_preview_pane.cpp:275
 msgid "uses $num attack"
 msgid_plural "uses $num attacks"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/gui/widgets/unit_preview_pane.cpp:320
-#: src/gui/widgets/unit_preview_pane.cpp:351
-#: src/gui/widgets/unit_preview_pane.cpp:460
-#: src/gui/widgets/unit_preview_pane.cpp:492
+#: src/gui/widgets/unit_preview_pane.cpp:318
+#: src/gui/widgets/unit_preview_pane.cpp:349
+#: src/gui/widgets/unit_preview_pane.cpp:458
+#: src/gui/widgets/unit_preview_pane.cpp:490
 msgid "Lvl $lvl"
 msgstr "Lvl $lvl"
 
-#: src/gui/widgets/unit_preview_pane.cpp:358
-#: src/gui/widgets/unit_preview_pane.cpp:371
-#: src/gui/widgets/unit_preview_pane.cpp:499
-#: src/gui/widgets/unit_preview_pane.cpp:516
+#: src/gui/widgets/unit_preview_pane.cpp:356
+#: src/gui/widgets/unit_preview_pane.cpp:369
+#: src/gui/widgets/unit_preview_pane.cpp:497
+#: src/gui/widgets/unit_preview_pane.cpp:514
 msgid "HP: "
 msgstr "HP: "
 
-#: src/gui/widgets/unit_preview_pane.cpp:360
-#: src/gui/widgets/unit_preview_pane.cpp:376
+#: src/gui/widgets/unit_preview_pane.cpp:358
+#: src/gui/widgets/unit_preview_pane.cpp:374
+#: src/gui/widgets/unit_preview_pane.cpp:500
 #: src/gui/widgets/unit_preview_pane.cpp:502
-#: src/gui/widgets/unit_preview_pane.cpp:504
-#: src/gui/widgets/unit_preview_pane.cpp:521
+#: src/gui/widgets/unit_preview_pane.cpp:519
 msgid "XP: "
 msgstr "XP: "
 
@@ -13591,18 +13591,18 @@ msgstr "XP: "
 # File: data/gui/default/window/mp_create_game.cfg, line: 420
 # File: data/gui/default/window/lobby_main.cfg, line: 184
 # File: data/gui/default/window/mp_create_game.cfg, line: 420
-#: src/gui/widgets/unit_preview_pane.cpp:378
-#: src/gui/widgets/unit_preview_pane.cpp:523
+#: src/gui/widgets/unit_preview_pane.cpp:376
+#: src/gui/widgets/unit_preview_pane.cpp:521
 msgid "Experience Modifier: "
 msgstr "Modificador de experiência: "
 
-#: src/gui/widgets/unit_preview_pane.cpp:381
-#: src/gui/widgets/unit_preview_pane.cpp:526
+#: src/gui/widgets/unit_preview_pane.cpp:379
+#: src/gui/widgets/unit_preview_pane.cpp:524
 msgid "MP: "
 msgstr "PM: "
 
-#: src/gui/widgets/unit_preview_pane.cpp:408
-#: src/gui/widgets/unit_preview_pane.cpp:547
+#: src/gui/widgets/unit_preview_pane.cpp:406
+#: src/gui/widgets/unit_preview_pane.cpp:545
 msgid "Abilities"
 msgstr "Habilidades"
 
