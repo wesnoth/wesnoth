@@ -503,6 +503,27 @@ bool default_false(const TFunc& f, const TArgs&... args) {
 	}
 }
 
+struct tag_check
+{
+	const std::string& tag;
+
+	bool operator()(const ability_ptr& p_ab) const { return p_ab->tag() == tag; }
+	size_t get_unit_radius(const unit& u) const { return u.max_ability_radius_type(tag); }
+};
+
+template <typename T>
+auto radius_helper(const unit&u, T const& check, int) -> decltype(check.get_unit_radius(u))
+{
+	return check.get_unit_radius(u);
+}
+
+template <typename T>
+size_t radius_helper(const unit& u, T const&, long)
+{
+	return u.max_ability_radius();
+}
+
+
 template<typename TCheck, typename THandler>
 bool foreach_distant_active_ability(const unit& un, const map_location& loc, TCheck&& quick_check, THandler&& handler)
 {
@@ -514,15 +535,17 @@ bool foreach_distant_active_ability(const unit& un, const map_location& loc, TCh
 	// (possession of an ability with [affect_adjacent] via a boolean variable, not incapacitated,
 	// different from the central unit, that the ability is of the right type, detailed verification of each ability),
 	// if so return true.
-	for(const unit& u : units) {
-		//TODO: This currently doesn't use max_ability_radius_type, will be added back later.
+	for (const unit& u : units) {
 		if (!u.max_ability_radius() || u.incapacitated() || u.underlying_id() == un.underlying_id()) {
 			continue;
 		}
-		std::size_t max_ability_radius = u.max_ability_radius();
+		size_t u_ability_radius = radius_helper(u, quick_check, 0);
+		if (!u_ability_radius) {
+			continue;
+		}
 		const map_location& from_loc = u.get_location();
 		std::size_t distance = distance_between(from_loc, loc);
-		if (distance > max_ability_radius) {
+		if (distance > u_ability_radius) {
 			continue;
 		}
 		int dir = find_direction(loc, from_loc, distance);
@@ -654,10 +677,7 @@ bool foreach_active_special(
 
 bool unit::get_ability_bool(const std::string& tag_name, const map_location& loc) const
 {
-	return foreach_active_ability(*this, loc,
-		[&](const ability_ptr& p_ab) {
-			return p_ab->tag() == tag_name;
-		},
+	return foreach_active_ability(*this, loc, tag_check{ tag_name },
 		[&](const ability_ptr&, const unit&) {
 			return true;
 		});
@@ -666,10 +686,7 @@ bool unit::get_ability_bool(const std::string& tag_name, const map_location& loc
 active_ability_list unit::get_abilities(const std::string& tag_name, const map_location& loc) const
 {
 	active_ability_list res(loc_);
-	foreach_active_ability(*this, loc,
-		[&](const ability_ptr& p_ab) {
-			return p_ab->tag() == tag_name;
-		},
+	foreach_active_ability(*this, loc, tag_check{ tag_name },
 		[&](const ability_ptr& p_ab, const unit& u2) {
 			res.emplace_back(p_ab, loc, u2.get_location());
 		});
@@ -825,12 +842,21 @@ static void add_string_to_vector(std::vector<std::string>& image_list, const con
 
 std::vector<std::string> unit::halo_or_icon_abilities(const std::string& image_type) const
 {
+	std::string attr_image = image_type + "_image";
+
+	// i didn't know this syntax existed.
+	struct {
+		bool operator()(const ability_ptr& p_ab) const { return !p_ab->cfg()[attr_image_].empty(); }
+		size_t get_unit_radius(const unit& u) const { return u.max_ability_radius_image(); }
+		std::string& attr_image_;
+	} quick_check { attr_image };
+
 	std::vector<std::string> image_list;
 	for(const auto& p_ab : abilities()){
 		bool is_active = ability_active(*p_ab, loc_);
 		//Add halo/overlay to owner of ability if active and affect_self is true.
-		if( !p_ab->cfg()[image_type + "_image"].str().empty() && is_active && ability_affects_self(*p_ab, loc_)){
-			add_string_to_vector(image_list, p_ab->cfg(), image_type + "_image");
+		if( !p_ab->cfg()[attr_image].str().empty() && is_active && ability_affects_self(*p_ab, loc_)){
+			add_string_to_vector(image_list, p_ab->cfg(), attr_image);
 		}
 		//Add halo/overlay to owner of ability who affect adjacent only if active.
 		if(!p_ab->cfg()[image_type + "_image_self"].str().empty() && is_active){
@@ -838,10 +864,7 @@ std::vector<std::string> unit::halo_or_icon_abilities(const std::string& image_t
 		}
 	}
 
-	foreach_distant_active_ability(*this, loc_,
-		[&](const ability_ptr& p_ab) {
-			return !p_ab->cfg()[image_type + "_image"].str().empty();
-		},
+	foreach_distant_active_ability(*this, loc_, quick_check,
 		[&](const ability_ptr& p_ab, const unit&) {
 			add_string_to_vector(image_list, p_ab->cfg(), image_type + "_image");
 		});
