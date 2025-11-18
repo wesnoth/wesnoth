@@ -61,8 +61,6 @@ namespace t_translation {
 	 */
 	static terrain_code get_mask_(const terrain_code& terrain);
 
-	static ter_layer string_to_layer_(std::string_view str);
-
 	/**
 	 * Converts a string to a layer.
 	 *
@@ -71,10 +69,7 @@ namespace t_translation {
 	 *
 	 * @return          The converted layer.
 	 */
-	static ter_layer string_to_layer_(const std::string& str)
-	{
-		return string_to_layer_(std::string_view(str));
-	}
+	static ter_layer string_to_layer_(std::string_view str);
 
 	/**
 	 * Converts a terrain string to a number.
