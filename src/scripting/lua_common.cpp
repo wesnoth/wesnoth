@@ -212,7 +212,7 @@ static int impl_vconfig_get(lua_State *L)
 		if (pos >= len) return 0;
 		std::advance(i, pos);
 
-		lua_createtable(L, 2, 0);
+		luaW_push_namedtuple(L, {"tag", "contents"});
 		lua_pushstring(L, i.get_key().c_str());
 		lua_rawseti(L, -2, 1);
 		luaW_pushvconfig(L, i.get_child());
@@ -250,7 +250,7 @@ static int impl_vconfig_get(lua_State *L)
 		for (int j = 1; i != i_end; ++i, ++j)
 		{
 			luaW_push_namedtuple(L, {"tag", "contents"});
-			lua_pushstring(L, i.get_key().c_str());
+			lua_pushlstring(L, i.get_key().c_str(), i.get_key().size());
 			lua_rawseti(L, -2, 1);
 			luaW_pushvconfig(L, i.get_child());
 			lua_rawseti(L, -2, 2);
