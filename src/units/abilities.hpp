@@ -352,7 +352,7 @@ struct individual_effect
 class effect
 {
 	public:
-		effect(const active_ability_list& list, int def, const specials_context_t* ctx = nullptr, EFFECTS wham = EFFECT_DEFAULT);
+		effect(active_ability_list list, int def, const specials_context_t* ctx = nullptr, EFFECTS wham = EFFECT_DEFAULT);
 		// Provide read-only access to the effect list:
 		typedef std::vector<individual_effect>::const_iterator iterator;
 		typedef std::vector<individual_effect>::const_iterator const_iterator;
