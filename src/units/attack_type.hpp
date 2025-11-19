@@ -192,14 +192,6 @@ public:
 	// Configured as a bit field, in case that is useful.
 	using AFFECTS = unit_ability_t::affects_t;
 	/**
-	 * Filter a list of abilities or weapon specials
-	 * @param ab the ability/special
-	 * @param filter config contain list of attribute who are researched in cfg
-	 *
-	 * @return true if all attribute with ability checked
-	 */
-	bool special_matches_filter(const unit_ability_t& ab, const config & filter) const;
-	/**
 	 * Select best damage type based on frequency count for replacement_type.
 	 *
 	 * @param damage_type_list list of [damage_type] to check.

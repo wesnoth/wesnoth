@@ -1499,7 +1499,7 @@ bool attack_type::overwrite_special_checking(active_ability_list& overwriters, c
 				}
 			}
 			if(overwrite_filter && is_overwritable && one_side_overwritable){
-				special_matches = special_matches_filter(ab, *overwrite_filter);
+				special_matches = ab.matches_filter(*overwrite_filter);
 			}
 		}
 
@@ -1612,7 +1612,7 @@ bool attack_type::special_distant_filtering_impl(
 		return special_active_impl(self_attack, other_attack, *p_ab, whom);
 	};
 	auto quick_check = [&](const ability_ptr& p_ab) {
-		bool special_check = sub_filter ? self->ability_matches_filter(*p_ab, filter) : special_checking(p_ab->id(), p_ab->tag(), filter_special, filter_special_id, filter_special_type);
+		bool special_check = sub_filter ? p_ab->matches_filter(filter) : special_checking(p_ab->id(), p_ab->tag(), filter_special, filter_special_id, filter_special_type);
 		return special_check;
 	};
 
@@ -1859,14 +1859,9 @@ namespace
 	}
 }
 
-bool unit::ability_matches_filter(const unit_ability_t& ab, const config & filter) const
+bool unit_ability_t::matches_filter(const config & filter) const
 {
-	return common_matches_filter(ab.cfg(), ab.tag(), filter);
-}
-
-bool attack_type::special_matches_filter(const unit_ability_t& ab, const config & filter) const
-{
-	return common_matches_filter(ab.cfg(), ab.tag(), filter);
+	return common_matches_filter(cfg(), tag(), filter);
 }
 
 bool attack_type::has_special_or_ability_with_filter(const config & filter) const
@@ -1876,12 +1871,12 @@ bool attack_type::has_special_or_ability_with_filter(const config & filter) cons
 	}
 
 	if (!filter["active"].to_bool()) {
-		return utils::find_if(specials(), [&](const ability_ptr& p_ab) { return special_matches_filter(*p_ab, filter); });
+		return utils::find_if(specials(), [&](const ability_ptr& p_ab) { return p_ab->matches_filter(filter); });
 	}
 
 	using namespace utils::config_filters;
 	for(const auto& p_ab : specials()) {
-		if(special_matches_filter(*p_ab, filter)) {
+		if(p_ab->matches_filter(filter)) {
 			if(special_active(*p_ab, AFFECTS::SELF)) {
 				return true;
 			}
@@ -1890,7 +1885,7 @@ bool attack_type::has_special_or_ability_with_filter(const config & filter) cons
 
 	if(other_attack_) {
 		for(const auto& p_ab : other_attack_->specials()) {
-			if(other_attack_->special_matches_filter(*p_ab, filter)) {
+			if(p_ab->matches_filter(filter)) {
 				if(other_attack_->special_active(*p_ab, AFFECTS::OTHER)) {
 					return true;
 				}
