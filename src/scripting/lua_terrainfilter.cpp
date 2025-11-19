@@ -184,7 +184,7 @@ static std::set<map_location> luaW_to_locationset(lua_State* L, int index)
 	lua_pushvalue(L, index);
 	std::size_t len = lua_rawlen(L, -1);
 	for(std::size_t i = 0; i != len; ++i) {
-		const auto arg = scoped_lua_argument{L, i + 1};
+		const auto arg = scoped_lua_argument(L, i + 1);
 		res.insert(luaW_checklocation(L, -1));
 	}
 	lua_pop(L, 1);
@@ -213,7 +213,7 @@ public:
 		LOG_LMG << "creating con filter";
 		std::size_t len = lua_rawlen(L, -1);
 		for(std::size_t i = 1; i != len; ++i) {
-			const auto arg = scoped_lua_argument{L, i + 1};
+			const auto arg = scoped_lua_argument(L, i + 1);
 			list_.emplace_back(build_filter(L, res_index, ks));
 		}
 	}
