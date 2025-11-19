@@ -34,6 +34,7 @@ public:
 
 	enum class active_on_t { offense, defense, both };
 	enum class apply_to_t { self, opponent, attacker, defender, both };
+	enum class affects_allies_t { yes, no, same_side_only };
 
 	enum class affects_t { SELF = 1, OTHER = 2, EITHER = 3 };
 
@@ -53,6 +54,13 @@ public:
 	active_on_t active_on() const { return active_on_; };
 	apply_to_t apply_to() const { return apply_to_; };
 	double priority() const { return priority_; };
+
+	//has no effect in [specials]
+	affects_allies_t affects_allies() const { return affects_allies_; }
+	//has no effect in [specials]
+	bool affects_self() const { return affects_self_; }
+	//has no effect in [specials]
+	bool affects_enemies() const { return affects_enemies_; }
 
 	struct tooltip_info
 	{
@@ -124,6 +132,9 @@ private:
 	bool in_specials_tag_;
 	active_on_t active_on_;
 	apply_to_t apply_to_;
+	affects_allies_t affects_allies_;
+	bool affects_self_;
+	bool affects_enemies_;
 	double priority_;
 	config cfg_;
 
