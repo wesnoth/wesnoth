@@ -1533,7 +1533,7 @@ void unit::remove_ability_by_attribute(const config& filter)
 	set_attr_changed(UA_ABILITIES);
 	auto i = abilities_.begin();
 	while (i != abilities_.end()) {
-		if(ability_matches_filter(**i, filter)) {
+		if((**i).matches_filter(filter)) {
 			i = abilities_.erase(i);
 		} else {
 			++i;

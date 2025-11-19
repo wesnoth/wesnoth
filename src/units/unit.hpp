@@ -1801,14 +1801,6 @@ public:
 	 */
 	void remove_ability_by_attribute(const config& filter);
 
-	/**
-	 * Verify what abilities attributes match with filter.
-	 * @param ab the ability checked
-	 * @param filter the filter used for checking.
-	 */
-	bool ability_matches_filter(const unit_ability_t& ab, const config & filter) const;
-
-
 private:
 
 	/**

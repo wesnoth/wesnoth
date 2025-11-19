@@ -72,6 +72,8 @@ public:
 
 	bool active_on_matches(bool student_is_attacker) const;
 
+
+	bool matches_filter(const config& filter) const;
 	void write(config& abilities_cfg);
 
 
