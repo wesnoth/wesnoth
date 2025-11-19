@@ -1812,44 +1812,6 @@ public:
 private:
 
 	/**
-	 * Helper similar to std::unique_lock for detecting when calculations such as abilities
-	 * have entered infinite recursion.
-	 *
-	 * This assumes that there's only a single thread accessing the unit, it's a lightweight
-	 * increment/decrement counter rather than a mutex.
-	 */
-	class recursion_guard {
-		friend class unit;
-		/**
-		 * Only expected to be called in update_variables_recursion(), which handles some of the checks.
-		 */
-		explicit recursion_guard(const unit& u, const config& ability);
-	public:
-		/**
-		 * Construct an empty instance, only useful for extending the lifetime of a
-		 * recursion_guard returned from unit.update_variables_recursion() by
-		 * std::moving it to an instance declared in a larger scope.
-		 */
-		explicit recursion_guard();
-
-		/**
-		 * Returns true if a level of recursion was available at the time when update_variables_recursion()
-		 * created this object.
-		 */
-		operator bool() const;
-
-		recursion_guard(recursion_guard&& other) noexcept;
-		recursion_guard(const recursion_guard& other) = delete;
-		recursion_guard& operator=(recursion_guard&&) noexcept;
-		recursion_guard& operator=(const recursion_guard&) = delete;
-		~recursion_guard();
-	private:
-		std::shared_ptr<const unit> parent;
-	};
-
-	recursion_guard update_variables_recursion(const config& ability) const;
-
-	/**
 	 * Check if an ability is active. Includes checks to prevent excessive recursion.
 	 * @param ab the ability checked
 	 * @param loc The location on which to resolve the ability
@@ -1993,12 +1955,6 @@ private:
 
 	std::string role_;
 	attack_list attacks_;
-	/**
-	 * While processing a recursive match, all the filters that are currently being checked, oldest first.
-	 * Each will have an instance of recursion_guard that is currently allocated permission to recurse, and
-	 * which will pop the config off this stack when the recursion_guard is finalized.
-	 */
-	mutable std::vector<const config*> open_queries_;
 
 protected:
 	// TODO: I think we actually consider this to be part of the gamestate, so it might be better if it's not mutable,

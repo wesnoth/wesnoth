@@ -121,6 +121,7 @@ unit_ability_t::unit_ability_t(std::string tag, config cfg, bool inside_attack)
 	, active_on_(active_on_t::both)
 	, apply_to_(apply_to_t::self)
 	, cfg_(std::move(cfg))
+	, currently_checked_(false)
 {
 	do_compat_fixes(cfg_, tag_, inside_attack);
 
@@ -314,6 +315,51 @@ bool unit_ability_t::active_on_matches(bool student_is_attacker) const
 		return true;
 	}
 	return false;
+}
+
+
+unit_ability_t::recursion_guard::recursion_guard(const unit_ability_t& p)
+	: parent()
+{
+	if (!p.currently_checked_) {
+		p.currently_checked_ = true;
+		parent = &p;
+	}
+}
+
+unit_ability_t::recursion_guard::~recursion_guard()
+{
+	if (parent) {
+		parent->currently_checked_ = false;
+	}
+}
+
+unit_ability_t::recursion_guard::operator bool() const {
+	return bool(parent);
+}
+
+unit_ability_t::recursion_guard unit_ability_t::guard_against_recursion(const unit& u) const
+{
+	if (currently_checked_) {
+		static std::vector<std::tuple<std::string, std::string>> already_shown;
+
+		auto identifier = std::tuple<std::string, std::string>{ u.id(), cfg().debug()};
+		if (!utils::contains(already_shown, identifier)) {
+
+			std::string_view filter_text_view = std::get<1>(identifier);
+			utils::trim(filter_text_view);
+			ERR_NG << "Looped recursion error for unit '" << u.id()
+				<< "' while checking ability '" << filter_text_view << "'";
+
+			// Arbitrary limit, just ensuring that having a huge number of specials causing recursion
+			// warnings can't lead to unbounded memory consumption here.
+			if (already_shown.size() > 100) {
+				already_shown.clear();
+			}
+			already_shown.push_back(std::move(identifier));
+		}
+	}
+	return recursion_guard(*this);
 }
 
 
@@ -541,84 +587,11 @@ std::vector<unit_ability_t::tooltip_info> unit::ability_tooltips(boost::dynamic_
 	return res;
 }
 
-namespace {
-	/**
-	 * Print "Recursion limit reached" log messages, including deduplication if the same problem has
-	 * already been logged.
-	 */
-	void show_recursion_warning(const unit& unit, const config& filter) {
-		// This function is only called when an ability is checked for the second time
-		// filter has already been parsed multiple times, so I'm not trying to optimize the performance
-		// of this; it's merely to prevent the logs getting spammed. For example, each of
-		// four_cycle_recursion_branching and event_test_filter_attack_student_weapon_condition only log
-		// 3 unique messages, but without deduplication they'd log 1280 and 392 respectively.
-		static std::vector<std::tuple<std::string, std::string>> already_shown;
-
-		auto identifier = std::tuple<std::string, std::string>{unit.id(), filter.debug()};
-		if(utils::contains(already_shown, identifier)) {
-			return;
-		}
-
-		std::string_view filter_text_view = std::get<1>(identifier);
-		utils::trim(filter_text_view);
-		ERR_NG << "Looped recursion error for unit '" << unit.id()
-		<< "' while checking ability '" << filter_text_view << "'";
-
-		// Arbitrary limit, just ensuring that having a huge number of specials causing recursion
-		// warnings can't lead to unbounded memory consumption here.
-		if(already_shown.size() > 100) {
-			already_shown.clear();
-		}
-		already_shown.push_back(std::move(identifier));
-	}
-}//anonymous namespace
-
-unit::recursion_guard unit::update_variables_recursion(const config& ability) const
-{
-	if(utils::contains(open_queries_, &ability)) {
-		return recursion_guard();
-	}
-	return recursion_guard(*this, ability);
-}
-
-unit::recursion_guard::recursion_guard() = default;
-
-unit::recursion_guard::recursion_guard(const unit & u, const config& ability)
-	: parent(u.shared_from_this())
-{
-	u.open_queries_.emplace_back(&ability);
-}
-
-unit::recursion_guard::recursion_guard(unit::recursion_guard&& other) noexcept
-{
-	std::swap(parent, other.parent);
-}
-
-unit::recursion_guard::operator bool() const {
-	return bool(parent);
-}
-
-unit::recursion_guard& unit::recursion_guard::operator=(unit::recursion_guard&& other) noexcept
-{
-	assert(this != &other);
-	assert(!parent);
-	std::swap(parent, other.parent);
-	return *this;
-}
-
-unit::recursion_guard::~recursion_guard()
-{
-	if(parent) {
-		assert(!parent->open_queries_.empty());
-		parent->open_queries_.pop_back();
-	}
-}
 
 bool unit::ability_active(const unit_ability_t& ab, const map_location& loc) const
 {
-	auto filter_lock = update_variables_recursion(ab.cfg());
+	auto filter_lock = ab.guard_against_recursion(*this);
 	if(!filter_lock) {
-		show_recursion_warning(*this, ab.cfg());
 		return false;
 	}
 	return ability_active_impl(ab, loc);
@@ -1316,37 +1289,6 @@ namespace { // Helpers for attack_type::special_active()
 		return false;
 	}
 
-	/**
-	 * Print "Recursion limit reached" log messages, including deduplication if the same problem has
-	 * already been logged.
-	 */
-	void show_recursion_warning(const const_attack_ptr& attack, const config& filter) {
-		// This function is only called when a special is checked for the second time
-		// filter has already been parsed multiple times, so I'm not trying to optimize the performance
-		// of this; it's merely to prevent the logs getting spammed. For example, each of
-		// four_cycle_recursion_branching and event_test_filter_attack_student_weapon_condition only log
-		// 3 unique messages, but without deduplication they'd log 1280 and 392 respectively.
-		static std::vector<std::tuple<std::string, std::string>> already_shown;
-
-		auto identifier = std::tuple<std::string, std::string>{attack->id(), filter.debug()};
-		if(utils::contains(already_shown, identifier)) {
-			return;
-		}
-
-		std::string_view filter_text_view = std::get<1>(identifier);
-		utils::trim(filter_text_view);
-		ERR_NG << "Looped recursion error for weapon '" << attack->id()
-		<< "' while checking weapon special '" << filter_text_view << "'";
-
-		// Arbitrary limit, just ensuring that having a huge number of specials causing recursion
-		// warnings can't lead to unbounded memory consumption here.
-		if(already_shown.size() > 100) {
-			already_shown.clear();
-		}
-		already_shown.push_back(std::move(identifier));
-	}
-
-
 	static bool buildin_is_immune(const unit_ability_t& ab, const unit_const_ptr& them, map_location their_loc)
 	{
 		if (ab.tag() == "drains" && them && them->get_state("undrainable")) {
@@ -1387,7 +1329,7 @@ namespace { // Helpers for attack_type::special_active()
 		                             unit_const_ptr & u2,
 		                             const map_location & loc,
 		                             const const_attack_ptr& weapon,
-		                             const config & filter,
+		                             const unit_ability_t& ab,
 									 const bool for_listing,
 		                             const std::string & child_tag, const std::string& check_if_recursion)
 	{
@@ -1399,6 +1341,7 @@ namespace { // Helpers for attack_type::special_active()
 			// need to select an appropriate opponent.)
 			return true;
 
+		const config& filter = ab.cfg();
 		const config& filter_backstab = filter;
 
 		auto filter_child = filter_backstab.optional_child(child_tag);
@@ -1416,13 +1359,9 @@ namespace { // Helpers for attack_type::special_active()
 		// If the other unit doesn't exist, try matching without it
 
 
-		attack_type::recursion_guard filter_lock;
-		if (weapon && (filter_child->optional_child("has_attack") || filter_child->optional_child("filter_weapon"))) {
-			filter_lock  = weapon->update_variables_recursion(filter);
-			if(!filter_lock) {
-				show_recursion_warning(weapon, filter);
-				return false;
-			}
+		auto filter_lock = ab.guard_against_recursion(*u);
+		if(!filter_lock) {
+			return false;
 		}
 		// Check for a weapon match.
 		if (auto filter_weapon = filter_child->optional_child("filter_weapon") ) {
@@ -1585,9 +1524,8 @@ bool attack_type::overwrite_special_checking(active_ability_list& overwriters, c
 
 bool unit::get_self_ability_bool(const unit_ability_t& ab, const map_location& loc) const
 {
-	auto filter_lock = update_variables_recursion(ab.cfg());
+	auto filter_lock = ab.guard_against_recursion(*this);
 	if(!filter_lock) {
-		show_recursion_warning(*this, ab.cfg());
 		return false;
 	}
 	return (ability_active_impl(ab, loc) && ability_affects_self(ab, loc));
@@ -1595,9 +1533,8 @@ bool unit::get_self_ability_bool(const unit_ability_t& ab, const map_location& l
 
 bool unit::get_adj_ability_bool(const unit_ability_t& ab, std::size_t dist, int dir, const map_location& loc, const unit& from, const map_location& from_loc) const
 {
-	auto filter_lock = from.update_variables_recursion(ab.cfg());
+	auto filter_lock = ab.guard_against_recursion(from);;
 	if(!filter_lock) {
-		show_recursion_warning(from, ab.cfg());
 		return false;
 	}
 	return (affects_side(ab, side(), from.side()) && from.ability_active_impl(ab, from_loc) && ability_affects_adjacent(ab, dist, dir, loc, from));
@@ -2144,20 +2081,20 @@ bool attack_type::special_active_impl(
 	bool applied_both = ab.cfg()["apply_to"] == "both";
 	const std::string& filter_self = ab.in_specials_tag() ? "filter_self" : "filter_student";
 	std::string self_check_if_recursion = (applied_both || whom_is_self) ? ab.tag() : "";
-	if (!special_unit_matches(self, other, self_loc, self_attack, ab.cfg(), is_for_listing, filter_self, self_check_if_recursion))
+	if (!special_unit_matches(self, other, self_loc, self_attack, ab, is_for_listing, filter_self, self_check_if_recursion))
 		return false;
 	std::string opp_check_if_recursion = (applied_both || !whom_is_self) ? ab.tag() : "";
-	if (!special_unit_matches(other, self, other_loc, other_attack, ab.cfg(), is_for_listing, "filter_opponent", opp_check_if_recursion))
+	if (!special_unit_matches(other, self, other_loc, other_attack, ab, is_for_listing, "filter_opponent", opp_check_if_recursion))
 		return false;
 	//in case of apply_to=attacker|defender, if both [filter_attacker] and [filter_defender] are used,
 	//check what is_attacker is true(or false for (filter_defender]) in affect self case only is necessary for what unit affected by special has a tag_name check.
 	bool applied_to_attacker = applied_both || (whom_is_self && is_attacker) || (!whom_is_self && !is_attacker);
 	std::string att_check_if_recursion = applied_to_attacker ? ab.tag() : "";
-	if (!special_unit_matches(att, def, att_loc, att_weapon, ab.cfg(), is_for_listing, "filter_attacker", att_check_if_recursion))
+	if (!special_unit_matches(att, def, att_loc, att_weapon, ab, is_for_listing, "filter_attacker", att_check_if_recursion))
 		return false;
 	bool applied_to_defender = applied_both || (whom_is_self && !is_attacker) || (!whom_is_self && is_attacker);
 	std::string def_check_if_recursion= applied_to_defender ? ab.tag() : "";
-	if (!special_unit_matches(def, att, def_loc, def_weapon, ab.cfg(), is_for_listing, "filter_defender", def_check_if_recursion))
+	if (!special_unit_matches(def, att, def_loc, def_weapon, ab, is_for_listing, "filter_defender", def_check_if_recursion))
 		return false;
 
 	return true;
@@ -2187,15 +2124,15 @@ bool attack_type::special_tooltip_active(const unit_ability_t& ab) const
 	//if attacker/defender is self_.
 	bool applied_both = ab.cfg()["apply_to"] == "both";
 	std::string self_check_if_recursion = (applied_both || whom_is_self) ? ab.tag() : "";
-	if (!special_unit_matches(self_, other_, self_loc_, shared_from_this(), ab.cfg(), is_for_listing_, "filter_student", self_check_if_recursion))
+	if (!special_unit_matches(self_, other_, self_loc_, shared_from_this(), ab, is_for_listing_, "filter_student", self_check_if_recursion))
 		return false;
 	bool applied_to_attacker = applied_both || (whom_is_self && is_attacker_);
 	std::string att_check_if_recursion = applied_to_attacker ? ab.tag() : "";
-	if (is_attacker_ && !special_unit_matches(self_, other_, self_loc_, shared_from_this(), ab.cfg(), is_for_listing_, "filter_attacker", att_check_if_recursion))
+	if (is_attacker_ && !special_unit_matches(self_, other_, self_loc_, shared_from_this(), ab, is_for_listing_, "filter_attacker", att_check_if_recursion))
 		return false;
 	bool applied_to_defender = applied_both || (whom_is_self && !is_attacker_);
 	std::string def_check_if_recursion= applied_to_defender ? ab.tag() : "";
-	if (!is_attacker_ && !special_unit_matches(self_, other_, self_loc_, shared_from_this(), ab.cfg(), is_for_listing_, "filter_defender", def_check_if_recursion))
+	if (!is_attacker_ && !special_unit_matches(self_, other_, self_loc_, shared_from_this(), ab, is_for_listing_, "filter_defender", def_check_if_recursion))
 		return false;
 
 	return true;

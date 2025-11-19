@@ -83,6 +83,34 @@ public:
 	static ability_vector filter_tag(const ability_vector& vec, const std::string& tag);
 	static ability_vector clone(const ability_vector& vec);
 
+	class recursion_guard
+	{
+	public:
+		recursion_guard(const unit_ability_t& parent);
+		recursion_guard(recursion_guard&&) = delete;
+		recursion_guard(const recursion_guard&) = delete;
+		recursion_guard() = delete;
+		~recursion_guard();
+
+		/**
+		 * Returns true if a level of recursion was available at the time when guard_against_recursion()
+		 * created this object.
+		 */
+		operator bool() const;
+		const unit_ability_t* parent;
+	};
+
+	/**
+	 * Tests which might otherwise cause infinite recursion should call this, check that the
+	 * returned object evaluates to true, and then keep the object returned as long as the
+	 * recursion might occur, similar to a reentrant mutex that's limited to a small number of
+	 * reentrances.
+	 *
+	 * This only expects to be called in a single thread
+	 */
+	recursion_guard guard_against_recursion(const unit& u) const;
+//	recursion_guard guard_against_recursion(const attack_type& a) const;
+
 private:
 	std::string tag_;
 	std::string id_;
@@ -91,6 +119,8 @@ private:
 	active_on_t active_on_;
 	apply_to_t apply_to_;
 	config cfg_;
+
+	mutable bool currently_checked_;
 };
 
 
