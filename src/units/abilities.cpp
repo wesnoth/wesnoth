@@ -1555,11 +1555,11 @@ bool attack_type::overwrite_special_checking(active_ability_list& overwriters, c
 		// if the current overwriter affects one side and the cfg being checked can be overwritten by this overwriter
 		// then check that the current overwriter and the cfg being checked both affect either this unit or its opponent
 		if(affect_side && is_overwritable){
-			if(special_affects_self(j.ability(), is_attacker_)){
-				one_side_overwritable = special_affects_self(ab, is_attacker_);
+			if(overwrite_special_active_impl(shared_from_this(), other_attack_, j.ability(), AFFECTS::SELF)){
+				one_side_overwritable = overwrite_special_active_impl(shared_from_this(), other_attack_, ab, AFFECTS::SELF);
 			}
-			else if(special_affects_opponent(j.ability(), !is_attacker_)){
-				one_side_overwritable = special_affects_opponent(ab, !is_attacker_);
+			else if(overwrite_special_active_impl(other_attack_, shared_from_this(), j.ability(), AFFECTS::OTHER)){
+				one_side_overwritable = overwrite_special_active_impl(other_attack_, shared_from_this(), ab, AFFECTS::OTHER);
 			}
 		}
 
@@ -2077,7 +2077,84 @@ bool attack_type::special_tooltip_active(const unit_ability_t& ab) const
 	return true;
 }
 
+/**
+ * Returns whether or not the given special is applied to self or opponent.
+ * @param self_attack       this unit's attack
+ * @param other_attack      the other unit's attack
+ * @param ab                the ability
+ * @param whom              specifies which combatant we care about
+ */
+bool attack_type::overwrite_special_active_impl(
+	const const_attack_ptr& self_attack,
+	const const_attack_ptr& other_attack,
+	const unit_ability_t& ab,
+	AFFECTS whom)
+{
+	assert(self_attack || other_attack);
+	bool is_attacker = self_attack ? self_attack->is_attacker_ : !other_attack->is_attacker_;
 
+	if ( whom == AFFECTS::SELF ) {
+		if ( !special_affects_self(ab, is_attacker) )
+			return false;
+	}
+	if ( whom == AFFECTS::OTHER ) {
+		if ( !special_affects_opponent(ab, is_attacker) )
+			return false;
+	}
+
+	return true;
+}
+
+bool attack_type::affect_side(const unit_ability_t& ov, const unit_ability_t& ab) const
+{
+	auto has_overwrite_specials = ov.cfg().optional_child("erase_lower_priority");
+	if(has_overwrite_specials) {
+		if(has_overwrite_specials["affect_side"] == "self"){
+			return special_active_impl(shared_from_this(), other_attack_, ab, AFFECTS::SELF);
+		}
+		if(has_overwrite_specials["affect_side"] == "opponent"){
+			return special_active_impl(other_attack_, shared_from_this(), ab, AFFECTS::OTHER);
+		}
+	}
+	return true;
+}
+
+namespace
+{
+	bool priority_checking(active_ability_list& overwriters, const unit_ability_t& ab, const const_attack_ptr& att)
+	{
+		if(overwriters.empty()){
+			return false;
+		}
+
+		for(const auto& j : overwriters) {
+			bool prior = j.ability().priority() > ab.priority();
+			bool special_matches = false;
+			auto overwrite_filter = j.ability_cfg().optional_child("erase_lower_priority");
+			if(overwrite_filter && prior && att) {
+				special_matches = att->affect_side(j.ability(), ab) && common_matches_filter(ab.cfg(), ab.tag(), *overwrite_filter);
+			} else if(overwrite_filter && prior) {
+				special_matches = common_matches_filter(ab.cfg(), ab.tag(), *overwrite_filter);
+			}
+			if(special_matches) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	void edit_list(active_ability_list& temp_list, const const_attack_ptr& att)
+	{
+		utils::sort_if(temp_list,[](const active_ability& i, const active_ability& j){
+			double l = i.ability().priority();
+			double r = j.ability().priority();
+			return l > r;
+		});
+		utils::erase_if(temp_list, [&](const active_ability& i) {
+			return (priority_checking(temp_list, i.ability(), att));
+		});
+	}
+}
 
 namespace unit_abilities
 {
@@ -2125,22 +2202,24 @@ static int individual_value_double(const config::attribute_value *v, int def, co
 	return value;
 }
 
-effect::effect(const active_ability_list& list, int def, const const_attack_ptr& att, EFFECTS wham) :
+effect::effect(const active_ability_list& list, int def, const const_attack_ptr& attacker, EFFECTS wham) :
 	effect_list_(),
 	composite_value_(def),
 	composite_double_value_(def)
 {
+	active_ability_list temp_list = list;
+	edit_list(temp_list, attacker);
 	std::map<double, active_ability_list> base_list;
-	for(const active_ability& i : list) {
+	for(const active_ability& i : temp_list) {
 		double priority = i.ability().priority();
 		if(base_list[priority].empty()) {
-			base_list[priority] = list.loc();
+			base_list[priority] = temp_list.loc();
 		}
 		base_list[priority].emplace_back(i);
 	}
 	int value = def;
 	for(auto base : base_list) {
-		effect::effect_impl(base.second, value, att, wham);
+		effect::effect_impl(base.second, value, attacker, wham);
 		value = composite_value_;
 	}
 }
