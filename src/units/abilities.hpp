@@ -17,6 +17,7 @@
 
 #include "map/location.hpp"
 #include "units/ptr.hpp"
+#include "units/race.hpp" // for unit_race::GENDER
 
 
 #include <vector>
@@ -42,7 +43,7 @@ public:
 		return std::make_shared<unit_ability_t>(tag, cfg, inside_attack);
 	}
 
-	static void do_compat_fixes(config& cfg, bool inside_attack);
+	static void do_compat_fixes(config& cfg, const std::string& tag, bool inside_attack);
 
 	const std::string& tag() const { return tag_; };
 	const std::string& id() const { return id_; };
@@ -51,6 +52,25 @@ public:
 
 	active_on_t active_on() const { return active_on_; };
 	apply_to_t apply_to() const { return apply_to_; };
+
+	struct tooltip_info
+	{
+		t_string name;
+		t_string description;
+		// a unique id used for help topics, generated from name and id.
+		// doesn't include the "ability_" prefix.
+		// TODO: maybe use cfg["unique_id"] at some point?
+		std::string help_topic_id;
+	};
+
+	static std::string get_help_topic_id(const config& cfg);
+	std::string get_help_topic_id() const;
+
+
+	std::string get_name(bool is_inactive = false, unit_race::GENDER = unit_race::MALE) const;
+	std::string get_description(bool is_inactive = false, unit_race::GENDER = unit_race::MALE) const;
+
+	bool active_on_matches(bool student_is_attacker) const;
 
 	void write(config& abilities_cfg);
 

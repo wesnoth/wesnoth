@@ -145,6 +145,16 @@ auto* find(Container& container, const Value& value)
 }
 
 /**
+ * Convenience wrapper for using find_if on a container without needing to comare to end()
+ */
+template<typename Container, typename Predicate>
+auto* find_if(Container& container, const Predicate& predicate)
+{
+	auto res = std::find_if(container.begin(), container.end(), predicate);
+	return (res == container.end()) ? nullptr : &*res;
+}
+
+/**
  * Returns a vector whose elements are initialized from the given range.
  *
  * @todo C++23: use std::vector and co's from_range constructor

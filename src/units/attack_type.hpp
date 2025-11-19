@@ -95,9 +95,10 @@ public:
 	bool has_special(const std::string& special) const;
 	active_ability_list get_specials(const std::string& special) const;
 
-	struct special_tooltip_info { t_string name; t_string description; };
-	std::vector<special_tooltip_info> special_tooltips(boost::dynamic_bitset<>* active_list = nullptr) const;
-	std::vector<special_tooltip_info> abilities_special_tooltips(boost::dynamic_bitset<>* active_list) const;
+	std::vector<unit_ability_t::tooltip_info> special_tooltips(boost::dynamic_bitset<>* active_list = nullptr) const;
+	// This returns a list describing all active abilities in the current context, that have the name_affected= set,
+	// in particular it also returns attack-unrelatedabilities if they have name_affected set.
+	std::vector<unit_ability_t::tooltip_info> abilities_special_tooltips(boost::dynamic_bitset<>* active_list) const;
 
 	std::string describe_weapon_specials() const;
 	std::string describe_weapon_specials_value(const std::set<std::string>& checking_tags) const;
@@ -234,7 +235,6 @@ public:
 	 */
 	recursion_guard update_variables_recursion(const config& special) const;
 
-private:
 	// In unit_abilities.cpp:
 
 	// Configured as a bit field, in case that is useful.
@@ -288,7 +288,6 @@ private:
 	 * @param[in] whom determine if unit affected or not by special ability.
 	 * @param[in,out] checking_name the reference for checking if a name is already added
 	 * @param[in] checking_tags the reference for checking if special ability type can be used
-	 * @param[in] leader_bool If true, [leadership] abilities are checked.
 	 */
 	static void weapon_specials_impl_self(
 		std::string& temp_string,
@@ -298,8 +297,7 @@ private:
 		const map_location& self_loc,
 		AFFECTS whom,
 		std::set<std::string>& checking_name,
-		const std::set<std::string>& checking_tags={},
-		bool leader_bool=false
+		const std::set<std::string>& checking_tags={}
 	);
 
 	static void weapon_specials_impl_adj(
@@ -311,8 +309,7 @@ private:
 		AFFECTS whom,
 		std::set<std::string>& checking_name,
 		const std::set<std::string>& checking_tags={},
-		const std::string& affect_adjacents="",
-		bool leader_bool=false
+		const std::string& affect_adjacents=""
 	);
 	/** check_self_abilities_impl : return an boolean value for checking of activities of abilities used like weapon
 	 * @return True if the special @a tag_name is active.
@@ -322,7 +319,6 @@ private:
 	 * @param u the unit checked.
 	 * @param loc location of the unit checked.
 	 * @param whom determine if unit affected or not by special ability.
-	 * @param leader_bool If true, [leadership] abilities are checked.
 	 */
 	static bool check_self_abilities_impl(
 		const const_attack_ptr& self_attack,
@@ -330,8 +326,7 @@ private:
 		const unit_ability_t& ab,
 		const unit_const_ptr& u,
 		const map_location& loc,
-		AFFECTS whom,
-		bool leader_bool=false
+		AFFECTS whom
 	);
 
 
@@ -347,7 +342,6 @@ private:
 	 * @param loc location of the unit checked.
 	 * @param from_loc location of the unit distant to @a u.
 	 * @param whom determine if unit affected or not by special ability.
-	 * @param leader_bool If true, [leadership] abilities are checked.
 	 */
 	static bool check_adj_abilities_impl(
 		const const_attack_ptr& self_attack,
@@ -359,8 +353,7 @@ private:
 		int dir,
 		const map_location& loc,
 		const map_location& from_loc,
-		AFFECTS whom,
-		bool leader_bool = false
+		AFFECTS whom
 	);
 
 	static bool special_active_impl(
@@ -396,7 +389,6 @@ private:
 	 * @param whom determine if unit affected or not by special ability.
 	 * @param filter if special check with filter, return true.
 	 * @param sub_filter if true, check the attributes of [filter_special], else, check special(_id/type)(_active).
-	 * @param leader_bool If true, [leadership] abilities are checked.
 	 */
 	static bool special_distant_filtering_impl(
 		const const_attack_ptr& self_attack,
@@ -405,8 +397,10 @@ private:
 		const const_attack_ptr& other_attack,
 		AFFECTS whom,
 		const config & filter,
-		bool sub_filter,
-		bool leader_bool=false);
+		bool sub_filter);
+
+	// make more functions proivate after refactoring finished.
+private:
 
 	// Used via specials_context() to control which specials are
 	// considered active.
