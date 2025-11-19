@@ -120,6 +120,9 @@ unit_ability_t::unit_ability_t(std::string tag, config cfg, bool inside_attack)
 	, in_specials_tag_(inside_attack)
 	, active_on_(active_on_t::both)
 	, apply_to_(apply_to_t::self)
+	, affects_allies_(affects_allies_t::same_side_only)
+	, affects_self_(true)
+	, affects_enemies_(false)
 	, priority_(cfg["priority"].to_double(0.00))
 	, cfg_(std::move(cfg))
 	, currently_checked_(false)
@@ -142,6 +145,18 @@ unit_ability_t::unit_ability_t(std::string tag, config cfg, bool inside_attack)
 			active_on == "offense" ? active_on_t::offense :
 			active_on_t::both;
 	}
+	if (!cfg_.has_child("affect_adjacent")) {
+		//optimisation
+		affects_allies_ = affects_allies_t::no;
+	}
+	if (cfg_["affect_allies"].to_bool(false)) {
+		affects_allies_ = affects_allies_t::yes;
+	}
+	if (!cfg_["affect_allies"].to_bool(true)) {
+		affects_allies_ = affects_allies_t::no;
+	}
+	affects_self_ = cfg_["affect_self"].to_bool(true);
+	affects_enemies_ = cfg_["affect_enemies"].to_bool(false);
 }
 
 void unit_ability_t::do_compat_fixes(config& cfg, const std::string& tag, bool inside_attack)
@@ -405,11 +420,11 @@ bool affects_side(const unit_ability_t& ab, std::size_t side, std::size_t other_
 	const team& side_team = get_team(side);
 
 	if(side == other_side)
-		return ab.cfg()["affect_allies"].to_bool(true);
+		return ab.affects_allies() != unit_ability_t::affects_allies_t::no;
 	if(side_team.is_enemy(other_side))
-		return ab.cfg()["affect_enemies"].to_bool();
+		return ab.affects_enemies();
 	else
-		return ab.cfg()["affect_allies"].to_bool();
+		return ab.affects_allies() == unit_ability_t::affects_allies_t::yes;
 }
 
 /**
@@ -680,7 +695,7 @@ bool unit::ability_affects_adjacent(const unit_ability_t& ab, std::size_t dist, 
 bool unit::ability_affects_self(const unit_ability_t& ab, const map_location& loc) const
 {
 	auto filter = ab.cfg().optional_child("filter_self");
-	bool affect_self = ab.cfg()["affect_self"].to_bool(true);
+	bool affect_self = ab.affects_self();
 	if (!filter || !affect_self) return affect_self;
 	return unit_filter(vconfig(*filter)).set_use_flat_tod(ab.tag() == "illuminates").matches(*this, loc);
 }
