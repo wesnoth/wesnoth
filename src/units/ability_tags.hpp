@@ -65,6 +65,15 @@ struct ability_list_defines
 		return tags;
 	}
 
+	/**
+	 * Weapon specials other that don't support add, sub, multiply and divide but return value boolean type used by specials like [poison].
+	 */
+	static const std::set<std::string>& no_weapon_boolean_or_math_tags()
+	{
+		static std::set<std::string> tags{berserk, plague, swarm, damage_type};
+		return tags;
+	}
+
 	static const std::set<std::string>& ability_value_tags()
 	{
 		static std::set<std::string> tags{defense, resistance, leadership, heals, regenerate, illuminates};
