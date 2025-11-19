@@ -130,6 +130,7 @@ unit_ability_t::unit_ability_t(std::string tag, config cfg, bool inside_attack)
 	, affects_self_(true)
 	, affects_enemies_(false)
 	, priority_(cfg["priority"].to_double(0.00))
+	, suppress_priority_(cfg["suppress_priority"].to_double(0.00))
 	, cfg_(std::move(cfg))
 	, currently_checked_(false)
 {
@@ -228,6 +229,7 @@ void unit_ability_t::do_compat_fixes(config& cfg, const std::string& tag, bool i
 		cfg.remove_children("filter_second_weapon");
 		cfg.remove_children("filter_weapon");
 	}
+
 }
 
 
@@ -1468,6 +1470,10 @@ bool attack_type::overwrite_special_checking(active_ability_list& overwriters, c
 		// the overwriter's priority, default of 0
 		auto overwrite_specials = j.ability_cfg().optional_child("overwrite");
 		double priority = overwrite_specials ? overwrite_specials["priority"].to_double(0) : 0.00;
+		// overwrite_specials cannot overwrite specials with higher priority.
+		if(ab.suppress_priority() > priority) {
+			continue;
+		}
 		// the cfg being checked for whether it will be overwritten
 		auto has_overwrite_specials = ab.cfg().optional_child("overwrite");
 		// if the overwriter's priority is greater than 0, then true if the cfg being checked has a higher priority
@@ -1671,6 +1677,8 @@ namespace
 			return false;
 		if(filter.has_attribute("priority") && no_value_weapon_abilities_check)
 			return false;
+		if(filter.has_attribute("suppress_priority") && (no_value_weapon_abilities_check && abilities_list::no_weapon_boolean_or_math_tags().count(tag_name) == 0))
+			return false;
 
 		bool all_engine =  abilities_list::no_weapon_math_tags().count(tag_name) != 0 || abilities_list::weapon_math_tags().count(tag_name) != 0 || abilities_list::ability_value_tags().count(tag_name) != 0 || abilities_list::ability_no_value_tags().count(tag_name) != 0;
 		if(filter.has_attribute("replacement_type") && tag_name != "damage_type" && all_engine)
@@ -1740,6 +1748,15 @@ namespace
 			}
 		} else {
 			if(!double_matches_if_present(filter, cfg, "priority")) {
+				return false;
+			}
+		}
+		if(abilities_list::weapon_math_tags().count(tag_name) != 0 || abilities_list::ability_value_tags().count(tag_name) != 0 || abilities_list::no_weapon_boolean_or_math_tags().count(tag_name) != 0) {
+			if(!double_matches_if_present(filter, cfg, "suppress_priority", 0.00)) {
+				return false;
+			}
+		} else {
+			if(!double_matches_if_present(filter, cfg, "suppress_priority")) {
 				return false;
 			}
 		}
@@ -2015,6 +2032,81 @@ bool specials_context_t::is_special_active(const specials_combatant& self, const
 	return true;
 }
 
+bool attack_type::affect_self_opponent(const config& overwrite_filter, const active_ability& overwrited) const
+{
+	auto ctx = fallback_context();
+	auto [self, other] = context_->self_and_other(*this);
+	const map_location& loc = overwrited.student_loc;
+	if(overwrite_filter["affect_side"].str("both") == "self" ) {
+		return (loc == self.loc);
+	} else if(other.un && overwrite_filter["affect_side"].str("both") == "opponent") {
+		return (loc == other.loc);
+	}
+	return true;
+}
+
+namespace
+{
+	bool priority_checking(active_ability_list& overwriters, const active_ability& overwrited, const const_attack_ptr& att)
+	{
+		if(overwriters.empty()){
+			return false;
+		}
+		const unit_ability_t& ab = overwrited.ability();
+
+		for(const auto& j : overwriters) {
+			bool effect_matches = false;
+			auto overwrite_filter = j.ability_cfg().optional_child("filter_lower_priority");
+			if(j.ability().suppress_priority() > ab.suppress_priority()) {
+				bool affect_side = true;
+				if(overwrite_filter) {
+					if(att) {
+						// Used to differentiate between between the special abilities possessed by the unit and those used by the opponent to debuff/buff it,
+						// even when `apply_to=attacker/defender` is used instead of `apply_to=self/opponent`.
+						affect_side = att->affect_self_opponent(*overwrite_filter, overwrited);
+					}
+					effect_matches = affect_side && common_matches_filter(ab.cfg(), ab.tag(), *overwrite_filter);
+				} else {
+					return true;
+				}
+			}
+			if(effect_matches) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	void edit_list(active_ability_list& abil_list, const const_attack_ptr& att)
+	{
+		utils::sort_if(abil_list,[](const active_ability& i, const active_ability& j){
+			double l = i.ability().suppress_priority();
+			double r = j.ability().suppress_priority();
+			return l > r;
+		});
+		utils::erase_if(abil_list, [&](const active_ability& i) {
+			return (priority_checking(abil_list, i, att));
+		});
+	}
+}
+
+active_ability_list attack_type::get_specials_and_abilities(const std::string& special) const
+{
+	auto ctx = fallback_context();
+	auto abil_list = context_->get_active_specials(*this, special);
+
+	// get a list of specials/"specials as abilities" that may potentially overwrite others
+	active_ability_list overwriters = overwrite_special_overwriter(abil_list);
+	if (!abil_list.empty() && !overwriters.empty()) {
+		// remove all abilities that would be overwritten
+		utils::erase_if(abil_list, [&](const active_ability& j) {
+			return (overwrite_special_checking(overwriters, j));
+			});
+	}
+	edit_list(abil_list, shared_from_this());
+	return abil_list;
+}
+
 namespace unit_abilities
 {
 
@@ -2061,11 +2153,16 @@ static int individual_value_double(const config::attribute_value *v, int def, co
 	return value;
 }
 
-effect::effect(const active_ability_list& list, int def, const specials_context_t* ctx, EFFECTS wham) :
+effect::effect(active_ability_list list, int def, const specials_context_t* ctx, EFFECTS wham) :
 	effect_list_(),
 	composite_value_(def),
 	composite_double_value_(def)
 {
+	//If ctx is not empty, then the edit_list function is already called from get_specials_and_abilities(), and does not need to be called from here,
+	// but only in cases where ctx is empty as for abilities like [leadership] or [heal]
+	if(!ctx) {
+		edit_list(list, nullptr);
+	}
 	std::map<double, active_ability_list> base_list;
 	for(const active_ability& i : list) {
 		double priority = i.ability().priority();
