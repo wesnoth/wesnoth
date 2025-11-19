@@ -2046,7 +2046,7 @@ bool attack_type::special_active_impl(
 	//then the type of special must be entered to avoid calling
 	//the function of this special in matches_filter()
 	//In apply_to=both case, ab.tag() must be checked in all filter because special applied to both self and opponent.
-	bool applied_both = ab.cfg()["apply_to"] == "both";
+	bool applied_both = ab.apply_to() == unit_ability_t::apply_to_t::both;
 	const std::string& filter_self = ab.in_specials_tag() ? "filter_self" : "filter_student";
 	std::string self_check_if_recursion = (applied_both || whom_is_self) ? ab.tag() : "";
 	if (!special_unit_matches(self, other, self_loc, self_attack, ab, is_for_listing, filter_self, self_check_if_recursion))
@@ -2090,7 +2090,7 @@ bool attack_type::special_tooltip_active(const unit_ability_t& ab) const
 	//this part of checking is similar to special_active but not the same.
 	//"filter_opponent" is not checked here, and "filter_attacker/defender" only
 	//if attacker/defender is self_.
-	bool applied_both = ab.cfg()["apply_to"] == "both";
+	bool applied_both = ab.apply_to() == unit_ability_t::apply_to_t::both;
 	std::string self_check_if_recursion = (applied_both || whom_is_self) ? ab.tag() : "";
 	if (!special_unit_matches(self_, other_, self_loc_, shared_from_this(), ab, is_for_listing_, "filter_student", self_check_if_recursion))
 		return false;
