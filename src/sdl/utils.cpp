@@ -22,6 +22,7 @@
 #include "sdl/utils.hpp"
 #include "color.hpp"
 #include "log.hpp"
+#include "utils_simd.hpp"
 #include "xBRZ/xbrz.hpp"
 
 #include <algorithm>
@@ -36,6 +37,52 @@
 
 static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
+
+#include <iostream>
+
+namespace
+{
+	// ----------------------------------------------------
+	// PerfTimer: RAII-style performance timer testing optimizations
+	// Using an anonymous namespace keeps it private to utils.cpp.
+	// ----------------------------------------------------
+	struct PerfTimer {
+		std::chrono::time_point<std::chrono::high_resolution_clock> start;
+
+		// Static variables to persist data across function calls.
+		// The 'inline' keyword allows us to define and initialize
+		// the static members right here (requires C++17+).
+		static inline std::chrono::time_point<std::chrono::steady_clock> last_print = std::chrono::steady_clock::now();
+		static inline double accumulated_ms = 0.0;
+		static inline long call_count = 0;
+
+		PerfTimer() : start(std::chrono::high_resolution_clock::now()) {}
+
+		~PerfTimer() {
+			auto end = std::chrono::high_resolution_clock::now();
+			std::chrono::duration<double, std::milli> elapsed = end - start;
+
+			accumulated_ms += elapsed.count();
+			call_count++;
+
+			auto now = std::chrono::steady_clock::now();
+			// Check if 5 seconds have elapsed
+			auto diff_seconds = std::chrono::duration_cast<std::chrono::seconds>(now - last_print).count();
+
+			if (diff_seconds >= 5) {
+				std::cout << "[Perf]: "
+					<< accumulated_ms << "ms total time spent over "
+					<< call_count << " calls (Avg: "
+					<< (accumulated_ms / call_count) << "ms)" << " " << std::endl;
+
+				// Reset trackers
+				last_print = now;
+				accumulated_ms = 0;
+				call_count = 0;
+			}
+		}
+	};
+}
 
 version_info sdl::get_version()
 {
@@ -404,17 +451,23 @@ surface scale_surface_sharp(const surface& surf, int w, int h)
 
 void adjust_surface_color(surface& nsurf, int red, int green, int blue)
 {
-	if(nsurf && (red != 0 || green != 0 || blue != 0)) {
+	if (nsurf && (red != 0 || green != 0 || blue != 0)) {
 		surface_lock lock(nsurf);
+		uint32_t* pixels = lock.pixels();
+		std::size_t count = nsurf.area();
 
-		for(auto& pixel : lock.pixel_span()) {
-			auto [r, g, b, alpha] = color_t::from_argb_bytes(pixel);
+		bool simd_used = adjust_surface_color_simd(pixels, count, red, green, blue);
 
-			r = std::clamp(static_cast<int>(r) + red, 0, 255);
-			g = std::clamp(static_cast<int>(g) + green, 0, 255);
-			b = std::clamp(static_cast<int>(b) + blue, 0, 255);
+		if (!simd_used) {
+			for (auto& pixel : lock.pixel_span()) {
+				auto [r, g, b, alpha] = color_t::from_argb_bytes(pixel);
 
-			pixel = (alpha << 24) + (r << 16) + (g << 8) + b;
+				r = std::clamp(static_cast<int>(r) + red, 0, 255);
+				g = std::clamp(static_cast<int>(g) + green, 0, 255);
+				b = std::clamp(static_cast<int>(b) + blue, 0, 255);
+
+				pixel = (alpha << 24) + (r << 16) + (g << 8) + b;
+			}
 		}
 	}
 }
@@ -705,8 +758,10 @@ void adjust_surface_alpha_add(surface& nsurf, int amount)
 
 void mask_surface(surface& nsurf, const surface& nmask, bool* empty_result, const std::string& filename)
 {
+//	PerfTimer timer;
+
 	if(nsurf == nullptr) {
-		*empty_result = true;
+		if (empty_result) *empty_result = true;
 		return;
 	}
 	if(nmask == nullptr) {
@@ -732,25 +787,27 @@ void mask_surface(surface& nsurf, const surface& nmask, bool* empty_result, cons
 		surface_lock lock(nsurf);
 		const_surface_lock mlock(nmask);
 
-		uint32_t* beg = lock.pixels();
-		uint32_t* end = beg + nsurf.area();
-		const uint32_t* mbeg = mlock.pixels();
-		const uint32_t* mend = mbeg + nmask->w*nmask->h;
+		uint32_t* surf_ptr = lock.pixels();
+		const uint32_t* mask_ptr = mlock.pixels();
+		std::size_t total_pixels = static_cast<std::size_t>(nmask->w) * static_cast<std::size_t>(nmask->h);
 
-		while(beg != end && mbeg != mend) {
-			auto [r, g, b, alpha] = color_t::from_argb_bytes(*beg);
+		bool simd_used = false;
 
-			uint8_t malpha = (*mbeg) >> 24;
-			if (alpha > malpha) {
-				alpha = malpha;
+		// Attempt SIMD (SSE2 or NEON)
+		simd_used = mask_surface_simd(surf_ptr, mask_ptr, total_pixels, empty);
+
+		if (!simd_used) { // SCALAR FALLBACK PATH (Runs only if SIMD was not available/viable)
+			for (std::size_t i = 0; i < total_pixels; ++i) {
+				const uint32_t surf_pixel = surf_ptr[i];
+				const uint32_t mask_alpha = mask_ptr[i] >> 24;
+				const uint32_t surf_alpha = surf_pixel >> 24;
+
+				const uint32_t alpha = std::min(surf_alpha, mask_alpha);
+				if (alpha) empty = false;
+
+				// Write the pixel back with the new alpha
+				surf_ptr[i] = (alpha << 24) | (surf_pixel & 0x00FFFFFF);
 			}
-			if(alpha)
-				empty = false;
-
-			*beg = (alpha << 24) + (r << 16) + (g << 8) + b;
-
-			++beg;
-			++mbeg;
 		}
 	}
 	if(empty_result)
@@ -759,6 +816,8 @@ void mask_surface(surface& nsurf, const surface& nmask, bool* empty_result, cons
 
 bool in_mask_surface(const surface& nsurf, const surface& nmask)
 {
+//	PerfTimer timer;
+
 	if(nsurf == nullptr) {
 		return false;
 	}
@@ -771,28 +830,36 @@ bool in_mask_surface(const surface& nsurf, const surface& nmask)
 		return false;
 	}
 
+	bool is_contained = true; // Are all opaque pixels contained inside mask?
 	{
 		const_surface_lock lock(nsurf);
 		const_surface_lock mlock(nmask);
 
-		const uint32_t* mbeg = mlock.pixels();
-		const uint32_t* mend = mbeg + nmask->w*nmask->h;
-		const uint32_t* beg = lock.pixels();
-		// no need for 'end', because both surfaces have same size
+		const uint32_t* surf_ptr = lock.pixels();
+		const uint32_t* mask_ptr = mlock.pixels();
+		std::size_t total_pixels = static_cast<std::size_t>(nmask->w) * static_cast<std::size_t>(nmask->h);
 
-		while(mbeg != mend) {
-			uint8_t malpha = (*mbeg) >> 24;
-			if(malpha == 0) {
-				uint8_t alpha = (*beg) >> 24;
-				if (alpha)
-					return false;
+		bool simd_used = false;
+
+		// Attempt SIMD. Note: If SIMD finds a violation, it sets is_contained=false and returns true.
+		simd_used = in_mask_surface_simd(surf_ptr, mask_ptr, total_pixels, is_contained);
+
+		if (!simd_used) { // SCALAR FALLBACK
+			for (std::size_t i = 0; i < total_pixels; ++i) {
+				const uint32_t mask_alpha = mask_ptr[i] >> 24;
+
+				// If mask is transparent (alpha=0), surface must also be transparent
+				if (mask_alpha == 0) {
+					const uint32_t surf_alpha = surf_ptr[i] >> 24;
+					if (surf_alpha > 0) {
+						is_contained = false;
+						break; // Violation found, exit immediately
+					}
+				}
 			}
-			++mbeg;
-			++beg;
 		}
 	}
-
-	return true;
+	return is_contained;
 }
 
 void light_surface(surface& nsurf, const surface &lightmap)
@@ -1322,15 +1389,23 @@ surface rotate_90_surface(const surface& surf, bool clockwise)
 
 void flip_surface(surface& nsurf)
 {
-	if(nsurf) {
+	if (nsurf) {
 		surface_lock lock(nsurf);
 		uint32_t* const pixels = lock.pixels();
 
-		for(int y = 0; y != nsurf->h; ++y) {
-			for(int x = 0; x != nsurf->w/2; ++x) {
-				const int index1 = y*nsurf->w + x;
-				const int index2 = (y+1)*nsurf->w - x - 1;
-				std::swap(pixels[index1],pixels[index2]);
+		for (int y = 0; y != nsurf->h; ++y) {
+			uint32_t* const row_ptr = pixels + y * nsurf->w;
+
+			// Attempt SIMD-accelerated row flip
+			if (flip_row_simd(row_ptr, nsurf->w)) {
+				continue;
+			}
+
+			// Fallback: Original scalar flip for the row
+			for (int x = 0; x != nsurf->w / 2; ++x) {
+				const int index1 = x;
+				const int index2 = nsurf->w - x - 1;
+				std::swap(row_ptr[index1], row_ptr[index2]);
 			}
 		}
 	}
@@ -1386,6 +1461,42 @@ surface get_surface_portion(const surface &src, rect &area)
 	SDL_SetSurfaceBlendMode(src, src_blend);
 
 	return dst;
+}
+
+void apply_surface_opacity(surface& surf, float opacity)
+{
+	if (surf == nullptr) return;
+
+	// Convert float opacity to integer modifier (0-255)
+	uint8_t alpha_mod = float_to_color(opacity);
+
+	if (alpha_mod == 255) return;
+
+	surface_lock lock(surf);
+	uint32_t* pixels = lock.pixels();
+	std::size_t count = surf.area();
+
+	bool simd_used = apply_surface_opacity_simd(pixels, count, alpha_mod);
+
+	if (!simd_used) {
+		uint32_t* beg = pixels;
+		uint32_t* end = pixels + count;
+
+		while (beg != end) {
+			uint32_t pixel = *beg;
+			uint8_t alpha = pixel >> 24;
+
+			if (alpha) {
+				uint8_t r = (pixel >> 16) & 0xFF;
+				uint8_t g = (pixel >> 8) & 0xFF;
+				uint8_t b = pixel & 0xFF;
+				alpha = color_multiply(alpha, alpha_mod);
+				*beg = (alpha << 24) | (r << 16) | (g << 8) | b;
+			}
+
+			++beg;
+		}
+	}
 }
 
 namespace
