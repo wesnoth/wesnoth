@@ -1330,7 +1330,7 @@ namespace { // Helpers for attack_type::special_active()
 	 * @param[in]  filter      The filter containing the child filter to use.
 	 * @param[in]  for_listing
 	 * @param[in]  child_tag   The tag of the child filter to use.
-	 * @param[in]  check_if_recursion    Parameter used for don't have infinite recusion for some filter attribute.
+	 * @param[in]  applies_to_checked    Parameter used for don't have infinite recusion for some filter attribute.
 	 */
 	static bool special_unit_matches(unit_const_ptr & u,
 		                             unit_const_ptr & u2,
@@ -1338,7 +1338,7 @@ namespace { // Helpers for attack_type::special_active()
 		                             const const_attack_ptr& weapon,
 		                             const unit_ability_t& ab,
 									 const bool for_listing,
-		                             const std::string & child_tag, const std::string& check_if_recursion)
+		                             const std::string & child_tag, bool applies_to_checked)
 	{
 		if (for_listing && !loc.valid())
 			// The special's context was set to ignore this unit, so assume we pass.
@@ -1372,6 +1372,7 @@ namespace { // Helpers for attack_type::special_active()
 		}
 		// Check for a weapon match.
 		if (auto filter_weapon = filter_child->optional_child("filter_weapon") ) {
+			std::string check_if_recursion = applies_to_checked ? ab.tag() : "";
 			if ( !weapon || !weapon->matches_filter(*filter_weapon, check_if_recursion) )
 				return false;
 		}
@@ -2048,21 +2049,20 @@ bool attack_type::special_active_impl(
 	//In apply_to=both case, ab.tag() must be checked in all filter because special applied to both self and opponent.
 	bool applied_both = ab.apply_to() == unit_ability_t::apply_to_t::both;
 	const std::string& filter_self = ab.in_specials_tag() ? "filter_self" : "filter_student";
-	std::string self_check_if_recursion = (applied_both || whom_is_self) ? ab.tag() : "";
-	if (!special_unit_matches(self, other, self_loc, self_attack, ab, is_for_listing, filter_self, self_check_if_recursion))
+
+	bool applied_to_self = (applied_both || whom_is_self);
+	if (!special_unit_matches(self, other, self_loc, self_attack, ab, is_for_listing, filter_self, applied_to_self))
 		return false;
-	std::string opp_check_if_recursion = (applied_both || !whom_is_self) ? ab.tag() : "";
-	if (!special_unit_matches(other, self, other_loc, other_attack, ab, is_for_listing, "filter_opponent", opp_check_if_recursion))
+	bool applied_to_opp = (applied_both || !whom_is_self);
+	if (!special_unit_matches(other, self, other_loc, other_attack, ab, is_for_listing, "filter_opponent", applied_to_opp))
 		return false;
 	//in case of apply_to=attacker|defender, if both [filter_attacker] and [filter_defender] are used,
 	//check what is_attacker is true(or false for (filter_defender]) in affect self case only is necessary for what unit affected by special has a tag_name check.
 	bool applied_to_attacker = applied_both || (whom_is_self && is_attacker) || (!whom_is_self && !is_attacker);
-	std::string att_check_if_recursion = applied_to_attacker ? ab.tag() : "";
-	if (!special_unit_matches(att, def, att_loc, att_weapon, ab, is_for_listing, "filter_attacker", att_check_if_recursion))
+	if (!special_unit_matches(att, def, att_loc, att_weapon, ab, is_for_listing, "filter_attacker", applied_to_attacker))
 		return false;
 	bool applied_to_defender = applied_both || (whom_is_self && !is_attacker) || (!whom_is_self && is_attacker);
-	std::string def_check_if_recursion= applied_to_defender ? ab.tag() : "";
-	if (!special_unit_matches(def, att, def_loc, def_weapon, ab, is_for_listing, "filter_defender", def_check_if_recursion))
+	if (!special_unit_matches(def, att, def_loc, def_weapon, ab, is_for_listing, "filter_defender", applied_to_defender))
 		return false;
 
 	return true;
@@ -2091,16 +2091,14 @@ bool attack_type::special_tooltip_active(const unit_ability_t& ab) const
 	//"filter_opponent" is not checked here, and "filter_attacker/defender" only
 	//if attacker/defender is self_.
 	bool applied_both = ab.apply_to() == unit_ability_t::apply_to_t::both;
-	std::string self_check_if_recursion = (applied_both || whom_is_self) ? ab.tag() : "";
-	if (!special_unit_matches(self_, other_, self_loc_, shared_from_this(), ab, is_for_listing_, "filter_student", self_check_if_recursion))
+
+	if (!special_unit_matches(self_, other_, self_loc_, shared_from_this(), ab, is_for_listing_, "filter_student", applied_both || whom_is_self))
 		return false;
 	bool applied_to_attacker = applied_both || (whom_is_self && is_attacker_);
-	std::string att_check_if_recursion = applied_to_attacker ? ab.tag() : "";
-	if (is_attacker_ && !special_unit_matches(self_, other_, self_loc_, shared_from_this(), ab, is_for_listing_, "filter_attacker", att_check_if_recursion))
+	if (is_attacker_ && !special_unit_matches(self_, other_, self_loc_, shared_from_this(), ab, is_for_listing_, "filter_attacker", applied_to_attacker))
 		return false;
 	bool applied_to_defender = applied_both || (whom_is_self && !is_attacker_);
-	std::string def_check_if_recursion= applied_to_defender ? ab.tag() : "";
-	if (!is_attacker_ && !special_unit_matches(self_, other_, self_loc_, shared_from_this(), ab, is_for_listing_, "filter_defender", def_check_if_recursion))
+	if (!is_attacker_ && !special_unit_matches(self_, other_, self_loc_, shared_from_this(), ab, is_for_listing_, "filter_defender", applied_to_defender))
 		return false;
 
 	return true;
