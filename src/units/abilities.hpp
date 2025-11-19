@@ -59,6 +59,9 @@ public:
 	apply_to_t apply_to() const { return apply_to_; };
 	double priority() const { return priority_; };
 
+	double suppress_ability_priority() const { return suppress_ability_priority_; };
+	double suppress_special_priority() const { return suppress_special_priority_; };
+
 	//has no effect in [specials]
 	affects_allies_t affects_allies() const { return affects_allies_; }
 	//has no effect in [specials]
@@ -149,6 +152,8 @@ private:
 	bool affects_self_;
 	bool affects_enemies_;
 	double priority_;
+	double suppress_ability_priority_;
+	double suppress_special_priority_;
 	config cfg_;
 
 	mutable bool currently_checked_;
@@ -351,7 +356,7 @@ struct individual_effect
 class effect
 {
 	public:
-		effect(const active_ability_list& list, int def, const specials_context_t* ctx = nullptr, EFFECTS wham = EFFECT_DEFAULT);
+		effect(active_ability_list list, int def, const specials_context_t* ctx = nullptr, EFFECTS wham = EFFECT_DEFAULT);
 		// Provide read-only access to the effect list:
 		typedef std::vector<individual_effect>::const_iterator iterator;
 		typedef std::vector<individual_effect>::const_iterator const_iterator;

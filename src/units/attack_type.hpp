@@ -203,6 +203,15 @@ public:
 	 */
 	bool overwrite_special_checking(active_ability_list& overwriters, const active_ability& i) const;
 
+	/**
+	 * Check whether @a overwrited would be overwritten by any element of @a overwriters.
+	 *
+	 * @return True if element checked is overwritable.
+	 * @param overwriters list used for check if element is overwritable.
+	 * @param overwrited the ability/special checked
+	 */
+	bool priority_checking(active_ability_list& overwriters, const active_ability& overwrited) const;
+
 	bool special_active(const unit_ability_t& ab, AFFECTS whom) const;
 
 	// make more functions proivate after refactoring finished.

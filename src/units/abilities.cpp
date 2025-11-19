@@ -130,6 +130,8 @@ unit_ability_t::unit_ability_t(std::string tag, config cfg, bool inside_attack)
 	, affects_self_(true)
 	, affects_enemies_(false)
 	, priority_(cfg["priority"].to_double(0.00))
+	, suppress_ability_priority_(-100000.00)
+	, suppress_special_priority_(-100000.00)
 	, cfg_(std::move(cfg))
 	, currently_checked_(false)
 {
@@ -163,6 +165,13 @@ unit_ability_t::unit_ability_t(std::string tag, config cfg, bool inside_attack)
 	}
 	affects_self_ = cfg_["affect_self"].to_bool(true);
 	affects_enemies_ = cfg_["affect_enemies"].to_bool(false);
+
+	if(auto overwrite_specials = cfg_.optional_child("overwrite_specials")) {
+		suppress_special_priority_ = overwrite_specials["priority"].to_double(0.00);
+	}
+	if(auto overwrite_abilities = cfg_.optional_child("overwrite_abilities")) {
+		suppress_ability_priority_ = overwrite_abilities["priority"].to_double(0.00);
+	}
 }
 
 void unit_ability_t::do_compat_fixes(config& cfg, const std::string& tag, bool inside_attack)
@@ -228,6 +237,7 @@ void unit_ability_t::do_compat_fixes(config& cfg, const std::string& tag, bool i
 		cfg.remove_children("filter_second_weapon");
 		cfg.remove_children("filter_weapon");
 	}
+
 }
 
 
@@ -1464,6 +1474,10 @@ bool attack_type::overwrite_special_checking(active_ability_list& overwriters, c
 		// the overwriter's priority, default of 0
 		auto overwrite_specials = j.ability_cfg().optional_child("overwrite");
 		double priority = overwrite_specials ? overwrite_specials["priority"].to_double(0) : 0.00;
+		// overwrite_specials cannot overwrite specials with higher priority.
+		if(priority <= ab.suppress_special_priority()) {
+			continue;
+		}
 		// the cfg being checked for whether it will be overwritten
 		auto has_overwrite_specials = ab.cfg().optional_child("overwrite");
 		// if the overwriter's priority is greater than 0, then true if the cfg being checked has a higher priority
@@ -2011,6 +2025,80 @@ bool specials_context_t::is_special_active(const specials_combatant& self, const
 	return true;
 }
 
+bool attack_type::priority_checking(active_ability_list& overwriters, const active_ability& overwrited) const
+{
+	auto ctx = fallback_context();
+	auto [self, other] = context_->self_and_other(*this);
+	const map_location& loc = overwrited.student_loc;
+	if(overwriters.empty()){
+		return false;
+	}
+	const unit_ability_t& ab = overwrited.ability();
+
+	for(const auto& j : overwriters) {
+		if(j.ability().suppress_special_priority() <= ab.suppress_special_priority()) {
+			continue;
+		}
+		bool effect_matches = false;
+		auto overwrite_filter = j.ability_cfg().optional_child("overwrite_specials");
+		if(overwrite_filter) {
+			bool affect_side = true;
+			//the location of the fighters is used to differentiate the specials applied to 'self' from those applied to 'opponent'
+			//in all cases including 'apply_to=attacker/defender'
+			if((*overwrite_filter)["affect_side"].str("both") == "self" ) {
+				affect_side = loc == self.loc;
+			} else if(other.un && (*overwrite_filter)["affect_side"].str("both") == "opponent") {
+				affect_side = loc == other.loc;
+			}
+			auto filter_abilities_specials = (*overwrite_filter).optional_child("filter_special");
+			effect_matches = filter_abilities_specials ? affect_side && common_matches_filter(ab.cfg(), ab.tag(), *filter_abilities_specials) : affect_side;
+		}
+		if(effect_matches) {
+			return true;
+		}
+	}
+	return false;
+}
+
+namespace
+{
+	bool priority_checking(active_ability_list& overwriters, const active_ability& overwrited)
+	{
+		if(overwriters.empty()){
+			return false;
+		}
+		const unit_ability_t& ab = overwrited.ability();
+
+		for(const auto& j : overwriters) {
+			if(j.ability().suppress_ability_priority() <= ab.suppress_ability_priority()) {
+				continue;
+			}
+			bool effect_matches = false;
+			auto overwrite_filter = j.ability_cfg().optional_child("overwrite_abilities");
+			if(overwrite_filter) {
+				auto filter_abilities = (*overwrite_filter).optional_child("filter_ability");
+				effect_matches = filter_abilities ? common_matches_filter(ab.cfg(), ab.tag(), *filter_abilities) : true;
+			}
+			if(effect_matches) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	void edit_list(active_ability_list& abil_list)
+	{
+		utils::sort_if(abil_list,[](const active_ability& i, const active_ability& j){
+			double l = i.ability().suppress_ability_priority();
+			double r = j.ability().suppress_ability_priority();
+			return l > r;
+		});
+		utils::erase_if(abil_list, [&](const active_ability& i) {
+			return (priority_checking(abil_list, i));
+		});
+	}
+}
+
 namespace unit_abilities
 {
 
@@ -2057,11 +2145,16 @@ static int individual_value_double(const config::attribute_value *v, int def, co
 	return value;
 }
 
-effect::effect(const active_ability_list& list, int def, const specials_context_t* ctx, EFFECTS wham) :
+effect::effect(active_ability_list list, int def, const specials_context_t* ctx, EFFECTS wham) :
 	effect_list_(),
 	composite_value_(def),
 	composite_double_value_(def)
 {
+	//If ctx is not empty, then it is a special and the code is already called from get_specials_and_abilities(), and musn't to be called from here,
+	// but only in cases where ctx is empty as for engine abilities like [leadership] or [heal].
+	if(!ctx) {
+		edit_list(list);
+	}
 	std::map<double, active_ability_list> base_list;
 	for(const active_ability& i : list) {
 		double priority = i.ability().priority();
