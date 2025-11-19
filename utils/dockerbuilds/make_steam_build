@@ -2,11 +2,17 @@
 
 set -xeu
 
-cd steamrt
-docker build -t steamos-wesnoth .
+cd steamrt || exit
+
 rm -rf ../steambuild
-mkdir ../steambuild
+mkdir ../steambuild || exit
 if [ -d "$PWD"/../../../build ]; then
     echo "Existing scons 'build' directory found, this may cause the build to fail!"
 fi
-docker run -v "$PWD"/../../..:/wesnoth -v "$PWD"/../steambuild:/output --tmpfs /build:exec -u "$(id -u)" steamos-wesnoth
+
+docker run -v "$PWD"/../../..:/wesnoth -v "$PWD"/../steambuild:/output --tmpfs /build:exec,mode=1777 -u "$(id -u)" wesnoth/wesnoth:steamrt-sniper sh -c 'mkdir -p /build && cd /build &&
+ scons -j `nproc` ctool=gcc-10 cxxtool=g++-10 enable_lto=true boostdir=/usr/local/include boostlibdir=/usr/local/lib extra_flags_config=-lrt -Y /wesnoth &&
+ cp /build/wesnoth /build/wesnothd /output/ &&
+ mkdir -p /output/lib && cp /usr/local/lib/x86_64-linux-gnu/libpango* /output/lib/'
+
+cp start.sh ../steambuild

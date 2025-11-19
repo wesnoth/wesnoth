@@ -1,4 +1,4 @@
-## Version 1.19.17+dev
+## Version 1.19.18+dev
 ### Add-ons client
 ### Add-ons server
 ### Campaigns
@@ -8,12 +8,98 @@
 ### Packaging
 ### Terrain
 ### Translations
-   * Updated translations: Bengali, British English, Finnish, Galician, Hungarian, Italian, Polish, Spanish
 ### Units
-   * A registry for abilities has been added as `[units][abilities]`. Any ability defined there can be added to a `[unit_type]` by just specifying their `unique_id` in the new key `[unit_type]abilities`, like this: `abilities=heals_8,cures`. The unique id for an ability is the value of its new `unique_id` key which falls back to `id` if unspecified. The `abilities` key is also supported under `[effect]apply_to=new_ability`.
+### User interface
+### WML Engine
+### Miscellaneous and Bug Fixes
+
+## Version 1.19.18
+### Campaigns
+   * Dusk of Dawn
+     * Added to mainline.
+     * This is a new troll campaign.
+     * 4 scenarios, novice level.
+   * Heir to the Throne
+     * Add new "Heir to the Throne" revision to mainline.
+     * Rename existing HttT campaign to "Heir to the Throne, Classic"
+     * Merge "Battle Training" into HttTC.
+   * The Deceiver's Gambit
+     * Revised Delfador and Garard's dialogue (again)
+     * "Stirrings of War" and "The Ambassador" are now regular battle scenarios.
+     * "Fort Garard" now grants all Loyalist recruits; Delfador no longer has to wait until "Ring of Swords"
+     * "The Sylvan Seer" part 1 puzzle now varies with campaign difficulty.
+     * "Ring of Swords" now has a slightly larger map.
+     * "Galcadar" no longer restores your recall list from TDG part I.
+     * "The Traitor" no longer has special village razing mechanics.
+     * Deoran is now a battle unit, not a support unit with complicated abilities.
+     * Most AI allies now go last in the turn order, so they're more predictable.
+     * Various other adjustments and bugfixes.
+   * The South Guard
+     * Restored S01's intro storytext.
+     * Moved some S03/S04 scenario hints to S01/S02.
+     * Added some additional hints to S03/S04.
+     * Replaced most maps' ford terrain with bridge.
+     * Added a more stylish UI for S02x's companion selection choice.
+     * Allied sides are now at the end of the turn order.
+     * Fixed several RNG-related tips not triggering.
+     * Various minor bugfixes and tweaks.
+### Translations
+   * Updated translations: Bengali, British English, Czech, Finnish, Galician, Hungarian, Italian, Polish, Spanish
+### Units
+   * Dwarvish Miner:
+     * hitpoints 25hp->22hp
+     * experience 20xp->24xp
+     * cost 11g->10g
+   * Merman Hoplite:
+     * hitpoints 52hp->58hp
+     * cost 45g->44g
+   * Merman Triton
+     * cost 46g->41g
+   * Merman Netcaster:
+     * ranged damage 9-2 -> 8-2
+     * cost 26g->25g
+   * Merman Entangler:
+     * cost 42g->37g
+   * Merman Spearman:
+     * hitpoints 43hp->47hp
+     * cost 22g->25g
+   * Merman Javelineer:
+     * hitpoints 58hp->60hp
+     * melee damage 8-2 -> 9-2
+     * cost 55g->48g
+   * Mermaid Enchantress:
+     * experience 46xp->75xp
+   * Mermaid Siren:
+     * ranged damage 15-3 -> 14-3
+     * cost 42g->58g
+   * Mermaid Priestess:
+     * experience 61xp->73xp
+   * Mermaid Diviner:
+     * cost 49g->57g
+   * Skeleton Rider:
+     * axe damage 6-3 -> 10-2
+     * hitpoints 36hp->38hp
+     * experience 33xp->46xp
+     * cost 14g->17g
+     * resistances now identical to Chocobone
+     * improved movement costs and defense
+   * Bone Knight
+     * trample damage 7-2(charge) -> 10-2(charge)
+     * hitpoints 50hp->58hp
+     * movement 8mp->7mp
+     * cost 26g->32g
+     * resistances now identical to Chocobone
+     * improved movement costs and defense
+   * A registry for abilities has been added as `[units][abilities]`. Any ability defined there can be added to a `[unit_type]` by just specifying their `unique_id` in the new key `[unit_type]abilities_list`, like this: `abilities_list=heals_8,cures`. The unique id for an ability is the value of its new `unique_id` key which falls back to `id` if unspecified. The `abilities` key is also supported under `[effect]apply_to=new_ability`.
+   * A similar registry for weapon specials has also been added as `[units][weapon_specials]`. The corresponding key is `specials_list` and is supported inside `[unit_type][attack]` as well as in EffectWML `apply_to=new_attack` and `apply_to=attack`'s `[set_specials]`. `unique_id` is also supported inside weapon special definitions.
 ### User interface
    * New key `title_position` added to `[part]` that allows changing the position of the title text.
+   * Enemies that can't be attacked are not highlighted when showing a unit's potential movement.
 ### WML Engine
+   * Remove [filter_adjacent_student] and [filter_adjacent_student_location] from abilities used like weapons because shorthand from existing filters[filter_student][filter_adjacent] and [filter_student][filter_location][filter_adjacent_location].
+   * Deprecate [filter_adjacent] and [filter_adjacent_location] from abilities and weapons specials because shorthand from existing filters[filter][filter_adjacent] and [filter][filter_location][filter_adjacent_location] for abilities or [filter_self][filter_adjacent] and [filter_self][filter_location][filter_adjacent_location] for weapon specials.
+   * Fixed [resistance_defaults] leaking on random maps, causing OOS errors in unrelated content.
+   * Fixed a crash when the sides defined for a scenario are not all consecutive.
 ### Miscellaneous and Bug Fixes
    * Build System:
      * Changed CMake to not directly pull in boost-system (fixing build issues on archlinux using boost-libs >1.89.0-2)

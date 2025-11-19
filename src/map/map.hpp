@@ -179,6 +179,7 @@ public:
 	const t_translation::ter_list& underlying_union_terrain(const map_location& loc) const;
 	std::string get_terrain_string(const map_location& loc) const;
 	std::string get_terrain_editor_string(const map_location& loc) const;
+	std::string get_underlying_terrain_string(const map_location& loc) const;
 
 	bool is_village(const map_location& loc) const;
 	int gives_healing(const map_location& loc) const;
@@ -186,17 +187,9 @@ public:
 	bool is_keep(const map_location& loc) const;
 
 	/* The above wrappers, but which takes a terrain. This is the old syntax, preserved for brevity in certain cases. */
-	const t_translation::ter_list& underlying_mvt_terrain(const t_translation::terrain_code & terrain) const;
-	const t_translation::ter_list& underlying_def_terrain(const t_translation::terrain_code & terrain) const;
-	const t_translation::ter_list& underlying_union_terrain(const t_translation::terrain_code & terrain) const;
 	std::string get_terrain_string(const t_translation::terrain_code& terrain) const;
 	std::string get_terrain_editor_string(const t_translation::terrain_code& terrain) const;
 	std::string get_underlying_terrain_string(const t_translation::terrain_code& terrain) const;
-
-	bool is_village(const t_translation::terrain_code & terrain) const;
-	int gives_healing(const t_translation::terrain_code & terrain) const;
-	bool is_castle(const t_translation::terrain_code & terrain) const;
-	bool is_keep(const t_translation::terrain_code & terrain) const;
 
 	// Also expose this for the same reason:
 	const terrain_type& get_terrain_info(const t_translation::terrain_code & terrain) const;

@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-09-22 04:01 UTC\n"
-"PO-Revision-Date: 2025-10-09 23:00+0200\n"
+"PO-Revision-Date: 2025-10-18 22:58+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -4769,70 +4769,70 @@ msgstr "Na dálku: síť +1 zranění"
 #. [modify_unit_type]: type=Troll Warrior
 #: data/campaigns/Son_Of_The_Black_Eye/utils/1-amla.cfg:160
 msgid "Melee: hammer +2 damage"
-msgstr ""
+msgstr "Boj zblízka: kladivo +2 zranění"
 
 #. [modify_unit_type]: type=Troll Rocklobber
 #: data/campaigns/Son_Of_The_Black_Eye/utils/1-amla.cfg:174
 msgid "Melee: fist +2 damage"
-msgstr ""
+msgstr "Boj zblízka: pěst +2 zranění"
 
 #. [modify_unit_type]: type=Troll Rocklobber
 #: data/campaigns/Son_Of_The_Black_Eye/utils/1-amla.cfg:179
 msgid "Melee: sling +4 damage"
-msgstr ""
+msgstr "Boj zblízka: prak +4 zranění"
 
 #. [modify_unit_type]: type=Great Troll
 #: data/campaigns/Son_Of_The_Black_Eye/utils/1-amla.cfg:193
 msgid "Melee: hammer +1 damage"
-msgstr ""
+msgstr "Boj zblízka: kladivo +1 zranění"
 
 #. [modify_unit_type]: type=Orcish Sovereign
 #: data/campaigns/Son_Of_The_Black_Eye/utils/1-amla.cfg:212
 msgid "Ranged: crossbow +1 damage"
-msgstr ""
+msgstr "Na dálku: kuše +1 zranění"
 
 #. [modify_unit_type]: type=Orcish Nightblade, type=blade, type=impact
 #: data/campaigns/Son_Of_The_Black_Eye/utils/1-amla.cfg:227
 msgid "Melee: blade +2 damage"
-msgstr ""
+msgstr "Boj zblízka: čepel +2 zranění"
 
 #. [modify_unit_type]: type=Orcish Nightblade, type=blade, type=impact
 #: data/campaigns/Son_Of_The_Black_Eye/utils/1-amla.cfg:233
 msgid "Melee: kick +2 damage"
-msgstr ""
+msgstr "Boj zblízka: kop +2 zranění"
 
 #. [modify_unit_type]: type=Orcish Nightblade, type=blade, type=impact
 #: data/campaigns/Son_Of_The_Black_Eye/utils/1-amla.cfg:238
 msgid "Ranged: throwing knives +1 damage"
-msgstr ""
+msgstr "Na dálku: vrhací nože +1 zranění"
 
 #. [modify_unit_type]: type=Saurian Flanker
 #. [modify_unit_type]: type=Saurian Javelineer
 #: data/campaigns/Son_Of_The_Black_Eye/utils/1-amla.cfg:252
 #: data/campaigns/Son_Of_The_Black_Eye/utils/1-amla.cfg:271
 msgid "Melee: +1 spear damage"
-msgstr ""
+msgstr "Boj zblízka: +1 zranění kopím"
 
 #. [modify_unit_type]: type=Saurian Flanker
 #. [modify_unit_type]: type=Saurian Javelineer
 #: data/campaigns/Son_Of_The_Black_Eye/utils/1-amla.cfg:257
 #: data/campaigns/Son_Of_The_Black_Eye/utils/1-amla.cfg:276
 msgid "Ranged: +1 spear damage"
-msgstr ""
+msgstr "Na dálku: +1 zranění kopím"
 
 #. [modify_unit_type]: type=Saurian Prophet
 #. [modify_unit_type]: type=Saurian Seer
 #: data/campaigns/Son_Of_The_Black_Eye/utils/1-amla.cfg:290
 #: data/campaigns/Son_Of_The_Black_Eye/utils/1-amla.cfg:309
 msgid "Melee: staff +1 damage"
-msgstr ""
+msgstr "Boj zblízka: hůl +1 zranění"
 
 #. [modify_unit_type]: type=Saurian Prophet
 #. [modify_unit_type]: type=Saurian Seer
 #: data/campaigns/Son_Of_The_Black_Eye/utils/1-amla.cfg:295
 #: data/campaigns/Son_Of_The_Black_Eye/utils/1-amla.cfg:314
 msgid "Ranged: curse +1 damage"
-msgstr ""
+msgstr "Na dálku: prokletí +1 zranění"
 
 #. [message]: speaker=narrator
 #. newlines at the end are deliberate, and function as spacers before the [option]s
@@ -4853,16 +4853,32 @@ msgid ""
 "experience bars</b></span>, they’ll only get +3 max hp when they level up.\n"
 "\n"
 msgstr ""
+"Blahopřeji, tvá jednotka jménem $unit.language_name povýšila... ale už je na "
+"své nejvyšší možné úrovni!\n"
+"\n"
+"Když se tohle stane, <span color='#0D87B6'><b>některá tažení</b></span> – "
+"jako například toto – umožňují zvolit menší přídavek k životům nebo zranění. "
+"Tato vylepšení se nazývají „AMLA“: „After Maximum Level Advancements“ "
+"(postupy po dosažení nejvyšší úrovně). Pokud mají tvé jednotky nejvyšší "
+"úrovně obyčejné, <span color='#0D87B6'><b>modré ukazatele zkušeností</b></"
+"span>, znamená to, že tyto AMLA jsou dostupné.\n"
+"\n"
+"<span color='#9608CF'><b><i>Jiná tažení tyto možnosti AMLA nemají a místo "
+"toho dávají jednotkám nejvyšší úrovně při povýšení vždy +3 k maximu životů. "
+"Pokud mají tvé jednotky nejvyšší úrovně <span color='#9608CF'><b>fialové "
+"ukazatele zkušeností</b></span>, dostanou při povýšení pouze +3 k maximu "
+"životů.\n"
+"\n"
 
 #. [option]
 #: data/campaigns/Son_Of_The_Black_Eye/utils/1-amla.cfg:358
 msgid "Ok, continue with the game"
-msgstr ""
+msgstr "V pořádku, pokračovat ve hře"
 
 #. [option]
 #: data/campaigns/Son_Of_The_Black_Eye/utils/1-amla.cfg:361
 msgid "Don’t show this message again"
-msgstr ""
+msgstr "Tuto zprávu už znovu neukazovat"
 
 #. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/utils/deaths.cfg:17

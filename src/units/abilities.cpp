@@ -56,28 +56,7 @@ static lg::log_domain log_engine("engine");
 static lg::log_domain log_wml("wml");
 #define ERR_WML LOG_STREAM(err, log_wml)
 
-namespace {
-	class temporary_facing
-	{
-		map_location::direction save_dir_;
-		unit_const_ptr u_;
-	public:
-		temporary_facing(const unit_const_ptr& u, map_location::direction new_dir)
-			: save_dir_(u ? u->facing() : map_location::direction::indeterminate)
-			, u_(u)
-		{
-			if (u_) {
-				u_->set_facing(new_dir);
-			}
-		}
-		~temporary_facing()
-		{
-			if (u_) {
-				u_->set_facing(save_dir_);
-			}
-		}
-	};
-}
+
 
 /*
  *
@@ -134,6 +113,136 @@ A poisoned unit cannot be cured of its poison by a healer, and must seek the car
  * [/abilities]
  *
  */
+
+unit_ability_t::unit_ability_t(std::string tag, config cfg, bool inside_attack)
+	: tag_(std::move(tag))
+	, id_(cfg["id"].str())
+	, in_specials_tag_(inside_attack)
+	, active_on_(active_on_t::both)
+	, apply_to_(apply_to_t::self)
+	, cfg_(std::move(cfg))
+{
+	do_compat_fixes(cfg_, inside_attack);
+
+	if (tag_ != "resistance" && tag_ != "leadership") {
+		std::string apply_to = cfg_["apply_to"].str();
+		apply_to_ = apply_to == "attacker" ? apply_to_t::attacker :
+			apply_to == "defender" ? apply_to_t::defender :
+			apply_to == "self" ? apply_to_t::self :
+			apply_to == "opponent" ? apply_to_t::opponent :
+			apply_to == "both" ? apply_to_t::both :
+			apply_to_t::self;
+
+	}
+	std::string active_on = cfg_["active_on"].str();
+	active_on_ = active_on == "defense" ? active_on_t::defense :
+		active_on == "offense" ? active_on_t::offense :
+		active_on_t::both;
+}
+
+void unit_ability_t::do_compat_fixes(config& cfg, bool inside_attack)
+{
+	// replace deprecated backstab with formula
+	if (!cfg["backstab"].blank()) {
+		deprecated_message("backstab= in weapon specials", DEP_LEVEL::INDEFINITE, "", "Use [filter_opponent] with a formula instead; the code can be found in data/core/macros/ in the WEAPON_SPECIAL_BACKSTAB macro.");
+	}
+	if (cfg["backstab"].to_bool()) {
+		const std::string& backstab_formula = "enemy_of(self, flanker) and not flanker.petrified where flanker = unit_at(direction_from(loc, other.facing))";
+		config& filter_opponent = cfg.child_or_add("filter_opponent");
+		config& filter_opponent2 = filter_opponent.empty() ? filter_opponent : filter_opponent.add_child("and");
+		filter_opponent2["formula"] = backstab_formula;
+	}
+	cfg.remove_attribute("backstab");
+
+	// replace deprecated filter_adjacent/filter_adjacent_location with formula
+	std::string filter_teacher = inside_attack ? "filter_self" : "filter";
+	if (cfg.has_child("filter_adjacent")) {
+		if (inside_attack) {
+			deprecated_message("[filter_adjacent]in weapon specials in [specials] tags", DEP_LEVEL::INDEFINITE, "", "Use [filter_self][filter_adjacent] instead.");
+		}
+		else {
+			deprecated_message("[filter_adjacent] in abilities", DEP_LEVEL::INDEFINITE, "", "Use [filter][filter_adjacent] instead or other unit filter.");
+		}
+	}
+	if (cfg.has_child("filter_adjacent_location")) {
+		if (inside_attack) {
+			deprecated_message("[filter_adjacent_location]in weapon specials in [specials] tags", DEP_LEVEL::INDEFINITE, "", "Use [filter_self][filter_location][filter_adjacent_location] instead.");
+		}
+		else {
+			deprecated_message("[filter_adjacent_location] in abilities", DEP_LEVEL::INDEFINITE, "", "Use [filter][filter_location][filter_adjacent_location] instead.");
+		}
+	}
+
+	//These tags are were never supported inside [specials] according to the wiki.
+	for (config& filter_adjacent : cfg.child_range("filter_adjacent")) {
+		if (filter_adjacent["count"].empty()) {
+			//Previously count= behaved differenty in abilities.cpp and in filter.cpp according to the wiki
+			deprecated_message("omitting count= in [filter_adjacent] in abilities", DEP_LEVEL::FOR_REMOVAL, version_info("1.21"), "specify count explicitly");
+			filter_adjacent["count"] = map_location::parse_directions(filter_adjacent["adjacent"]).size();
+		}
+		cfg.child_or_add(filter_teacher).add_child("filter_adjacent", filter_adjacent);
+	}
+	cfg.remove_children("filter_adjacent");
+	for (config& filter_adjacent : cfg.child_range("filter_adjacent_location")) {
+		if (filter_adjacent["count"].empty()) {
+			//Previously count= bahves differenty in abilities.cpp and in filter.cpp according to the wiki
+			deprecated_message("omitting count= in [filter_adjacent_location] in abilities", DEP_LEVEL::FOR_REMOVAL, version_info("1.21"), "specify count explicitly");
+			filter_adjacent["count"] = map_location::parse_directions(filter_adjacent["adjacent"]).size();
+		}
+		cfg.child_or_add(filter_teacher).add_child("filter_location").add_child("filter_adjacent_location", filter_adjacent);
+	}
+	cfg.remove_children("filter_adjacent_location");
+}
+
+void unit_ability_t::parse_vector(const config& abilities_cfg, ability_vector& res, bool inside_attack)
+{
+	for (auto item : abilities_cfg.all_children_range()) {
+		res.push_back(unit_ability_t::create(item.key, item.cfg, inside_attack));
+	}
+}
+
+ability_vector unit_ability_t::cfg_to_vector(const config& abilities_cfg, bool inside_attack)
+{
+	ability_vector res;
+	parse_vector(abilities_cfg, res, inside_attack);
+	return res;
+}
+
+ability_vector unit_ability_t::filter_tag(const ability_vector& abs, const std::string& tag)
+{
+	ability_vector res;
+	for (const ability_ptr& p_ab : abs) {
+		if (p_ab->tag() == tag) {
+			res.push_back(p_ab);
+		}
+	}
+	return res;
+}
+
+ability_vector unit_ability_t::clone(const ability_vector& abs)
+{
+	ability_vector res;
+	for (const ability_ptr& p_ab : abs) {
+		res.push_back(std::make_shared<unit_ability_t>(*p_ab));
+	}
+	return res;
+}
+
+config unit_ability_t::vector_to_cfg(const ability_vector& abilities)
+{
+	config abilities_cfg;
+	for (const auto& item : abilities) {
+		item->write(abilities_cfg);
+	}
+	return abilities_cfg;
+}
+
+
+void unit_ability_t::write(config& abilities_cfg)
+{
+	abilities_cfg.add_child(tag(), cfg());
+}
+
 
 
 namespace {
@@ -291,7 +400,7 @@ active_ability_list unit::get_abilities_weapons(const std::string& tag_name, con
 	return res;
 }
 
-std::vector<std::string> unit::get_ability_list() const
+std::vector<std::string> unit::get_ability_id_list() const
 {
 	std::vector<std::string> res;
 
@@ -737,25 +846,22 @@ template std::pair<int, map_location> active_ability_list::get_extremum<std::gre
  * active in the current context (see set_specials_context), including
  * specials obtained from the opponent's attack.
  */
-bool attack_type::has_special(const std::string& special, bool simple_check) const
+bool attack_type::has_special(const std::string& special) const
 {
-	if(simple_check && !specials(special).empty()) {
-		return true;
-	}
 
 	for(const ability_ptr& p_ab : specials(special)) {
-		if(special_active(*p_ab, AFFECT_SELF)) {
+		if(special_active(*p_ab, AFFECTS::SELF)) {
 			return true;
 		}
 	}
 
 	// Skip checking the opponent's attack?
-	if ( simple_check || !other_attack_ ) {
+	if ( !other_attack_ ) {
 		return false;
 	}
 
 	for(const ability_ptr& p_ab : other_attack_->specials(special)) {
-		if(other_attack_->special_active(*p_ab, AFFECT_OTHER)) {
+		if(other_attack_->special_active(*p_ab, AFFECTS::OTHER)) {
 			return true;
 		}
 	}
@@ -773,7 +879,7 @@ active_ability_list attack_type::get_specials(const std::string& special) const
 	active_ability_list res(loc);
 
 	for(const ability_ptr& p_ab : specials(special)) {
-		if(special_active(*p_ab, AFFECT_SELF)) {
+		if(special_active(*p_ab, AFFECTS::SELF)) {
 			res.emplace_back(p_ab, loc, loc);
 		}
 	}
@@ -783,7 +889,7 @@ active_ability_list attack_type::get_specials(const std::string& special) const
 	}
 
 	for(const ability_ptr& p_ab : other_attack_->specials(special)) {
-		if(other_attack_->special_active(*p_ab, AFFECT_OTHER)) {
+		if(other_attack_->special_active(*p_ab, AFFECTS::OTHER)) {
 			res.emplace_back(p_ab, other_loc_, other_loc_);
 		}
 	}
@@ -799,17 +905,17 @@ active_ability_list attack_type::get_specials(const std::string& special) const
  * @a active_list is not nullptr. Otherwise specials are assumed active.
  * If the appropriate name is empty, the special is skipped.
  */
-std::vector<std::pair<t_string, t_string>> attack_type::special_tooltips(
+std::vector<attack_type::special_tooltip_info> attack_type::special_tooltips(
 	boost::dynamic_bitset<>* active_list) const
 {
 	//log_scope("special_tooltips");
-	std::vector<std::pair<t_string, t_string>> res;
+	std::vector<special_tooltip_info> res;
 	if(active_list) {
 		active_list->clear();
 	}
 
 	for(const auto& p_ab : specials()) {
-		bool active = !active_list || special_active(*p_ab, AFFECT_EITHER);
+		bool active = !active_list || special_active(*p_ab, AFFECTS::EITHER);
 
 		std::string name = active
 			? p_ab->cfg()["name"].str()
@@ -823,7 +929,7 @@ std::vector<std::pair<t_string, t_string>> attack_type::special_tooltips(
 			? p_ab->cfg()["description"].str()
 			: p_ab->cfg().get_or("description_inactive", "description").str();
 
-		res.emplace_back(
+		res.AGGREGATE_EMPLACE(
 			unit_abilities::substitute_variables(name, *p_ab),
 			unit_abilities::substitute_variables(desc, *p_ab)
 		);
@@ -835,10 +941,10 @@ std::vector<std::pair<t_string, t_string>> attack_type::special_tooltips(
 	return res;
 }
 
-std::vector<std::pair<t_string, t_string>> attack_type::abilities_special_tooltips(
+std::vector<attack_type::special_tooltip_info> attack_type::abilities_special_tooltips(
 	boost::dynamic_bitset<>* active_list) const
 {
-	std::vector<std::pair<t_string, t_string>> res;
+	std::vector<special_tooltip_info> res;
 	if(active_list) {
 		active_list->clear();
 	}
@@ -848,14 +954,14 @@ std::vector<std::pair<t_string, t_string>> attack_type::abilities_special_toolti
 	}
 	for(const auto& p_ab : self_->abilities()) {
 		if(self_->get_self_ability_bool(*p_ab, self_loc_) && special_tooltip_active(*p_ab)) {
-			bool active = !active_list || special_active(*p_ab, AFFECT_SELF);
+			bool active = !active_list || special_active(*p_ab, AFFECTS::SELF);
 			const std::string name = p_ab->cfg()["name_affected"];
 			const std::string desc = p_ab->cfg()["description_affected"];
 
 			if(name.empty() || checking_name.count(name) != 0) {
 				continue;
 			}
-			res.emplace_back(name, desc);
+			res.AGGREGATE_EMPLACE(name, desc);
 			checking_name.insert(name);
 			if(active_list) {
 				active_list->push_back(active);
@@ -874,14 +980,14 @@ std::vector<std::pair<t_string, t_string>> attack_type::abilities_special_toolti
 		int dir = find_direction(self_loc_, from_loc, distance);
 		for(const auto& p_ab : u.abilities()) {
 			if(self_->get_adj_ability_bool(*p_ab, distance, dir, self_loc_, u, from_loc) && special_tooltip_active(*p_ab)) {
-				bool active = !active_list || special_active(*p_ab, AFFECT_SELF);
+				bool active = !active_list || special_active(*p_ab, AFFECTS::SELF);
 				const std::string name = p_ab->cfg()["name_affected"];
 				const std::string desc = p_ab->cfg()["description_affected"];
 
 				if(name.empty() || checking_name.count(name) != 0) {
 					continue;
 				}
-				res.emplace_back(name, desc);
+				res.AGGREGATE_EMPLACE(name, desc);
 				checking_name.insert(name);
 				if(active_list) {
 					active_list->push_back(active);
@@ -922,7 +1028,7 @@ std::string attack_type::describe_weapon_specials() const
 	std::vector<std::string> special_names;
 
 	for(const auto& p_ab : specials()) {
-		const bool active = special_active(*p_ab, AFFECT_EITHER);
+		const bool active = special_active(*p_ab, AFFECTS::EITHER);
 
 		std::string name = active
 			? p_ab->cfg()["name"].str()
@@ -940,8 +1046,8 @@ std::string attack_type::describe_weapon_specials() const
 	// FIXME: clean this up...
 	std::string temp_string;
 	std::set<std::string> checking_name;
-	weapon_specials_impl_self(temp_string, self_, shared_from_this(), other_attack_, self_loc_, AFFECT_SELF, checking_name);
-	weapon_specials_impl_adj(temp_string, self_, shared_from_this(), other_attack_, self_loc_, AFFECT_SELF, checking_name, {}, "affect_allies");
+	weapon_specials_impl_self(temp_string, self_, shared_from_this(), other_attack_, self_loc_, AFFECTS::SELF, checking_name);
+	weapon_specials_impl_adj(temp_string, self_, shared_from_this(), other_attack_, self_loc_, AFFECTS::SELF, checking_name, {}, "affect_allies");
 
 	if(!temp_string.empty()) {
 		special_names.push_back("\n" + std::move(temp_string));
@@ -968,20 +1074,20 @@ std::string attack_type::describe_weapon_specials_value(const std::set<std::stri
 	std::set<std::string> checking_name;
 	for(const auto& p_ab : specials()) {
 		if(checking_tags.count(p_ab->tag()) != 0) {
-			const bool active = special_active(*p_ab, AFFECT_SELF);
+			const bool active = special_active(*p_ab, AFFECTS::SELF);
 			add_name(temp_string, active, p_ab->cfg()["name"].str(), checking_name);
 		}
 	}
 	add_name_list(temp_string, weapon_abilities, checking_name, "");
 
-	weapon_specials_impl_self(temp_string, self_, shared_from_this(), other_attack_, self_loc_, AFFECT_SELF, checking_name, checking_tags, true);
+	weapon_specials_impl_self(temp_string, self_, shared_from_this(), other_attack_, self_loc_, AFFECTS::SELF, checking_name, checking_tags, true);
 	add_name_list(temp_string, weapon_abilities, checking_name, _("Owned: "));
 
-	weapon_specials_impl_adj(temp_string, self_, shared_from_this(), other_attack_, self_loc_, AFFECT_SELF, checking_name, checking_tags, "affect_allies", true);
+	weapon_specials_impl_adj(temp_string, self_, shared_from_this(), other_attack_, self_loc_, AFFECTS::SELF, checking_name, checking_tags, "affect_allies", true);
 	// TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
 	add_name_list(temp_string, weapon_abilities, checking_name, _("Taught: "));
 
-	weapon_specials_impl_adj(temp_string, self_, shared_from_this(), other_attack_, self_loc_, AFFECT_SELF, checking_name, checking_tags, "affect_enemies", true);
+	weapon_specials_impl_adj(temp_string, self_, shared_from_this(), other_attack_, self_loc_, AFFECTS::SELF, checking_name, checking_tags, "affect_enemies", true);
 	// TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
 	add_name_list(temp_string, weapon_abilities, checking_name, _("Taught: (by an enemy): "));
 
@@ -989,13 +1095,13 @@ std::string attack_type::describe_weapon_specials_value(const std::set<std::stri
 	if(other_attack_) {
 		for(const auto& p_ab : other_attack_->specials()) {
 			if((checking_tags.count(p_ab->tag()) != 0)){
-				const bool active = other_attack_->special_active(*p_ab, AFFECT_OTHER);
+				const bool active = other_attack_->special_active(*p_ab, AFFECTS::OTHER);
 				add_name(temp_string, active, p_ab->cfg()["name"].str(), checking_name);
 			}
 		}
 	}
-	weapon_specials_impl_self(temp_string, other_, other_attack_, shared_from_this(), other_loc_, AFFECT_OTHER, checking_name, checking_tags);
-	weapon_specials_impl_adj(temp_string, other_, other_attack_, shared_from_this(), other_loc_, AFFECT_OTHER, checking_name, checking_tags);
+	weapon_specials_impl_self(temp_string, other_, other_attack_, shared_from_this(), other_loc_, AFFECTS::OTHER, checking_name, checking_tags);
+	weapon_specials_impl_adj(temp_string, other_, other_attack_, shared_from_this(), other_loc_, AFFECTS::OTHER, checking_name, checking_tags);
 	add_name_list(temp_string, weapon_abilities, checking_name, _("Used by opponent: "));
 
 	return weapon_abilities;
@@ -1132,161 +1238,6 @@ attack_type::specials_context_t::specials_context_t(attack_type::specials_contex
 	other.was_moved = true;
 }
 
-/**
- * Calculates the number of attacks this weapon has, considering specials.
- * This returns two numbers because of the swarm special. The actual number of
- * attacks depends on the unit's health and should be:
- *   min_attacks + (max_attacks - min_attacks) * (current hp) / (max hp)
- * c.f. swarm_blows()
- */
-void attack_type::modified_attacks(unsigned & min_attacks,
-                                   unsigned & max_attacks) const
-{
-	// Apply [attacks].
-	int attacks_value = composite_value(get_specials_and_abilities("attacks"), num_attacks());
-
-	if ( attacks_value < 0 ) {
-		attacks_value = 0;
-		ERR_NG << "negative number of strikes after applying weapon specials";
-	}
-
-	// Apply [swarm].
-	active_ability_list swarm_specials = get_specials_and_abilities("swarm");
-	if ( !swarm_specials.empty() ) {
-		min_attacks = std::max<int>(0, swarm_specials.highest("swarm_attacks_min").first);
-		max_attacks = std::max<int>(0, swarm_specials.highest("swarm_attacks_max", attacks_value).first);
-	} else {
-		min_attacks = max_attacks = attacks_value;
-	}
-}
-
-std::string attack_type::select_replacement_type(const active_ability_list& damage_type_list) const
-{
-	std::map<std::string, unsigned int> type_count;
-	unsigned int max = 0;
-	for(auto& i : damage_type_list) {
-		const config& c = i.ability_cfg();
-		if(c.has_attribute("replacement_type")) {
-			std::string type = c["replacement_type"].str();
-			unsigned int count = ++type_count[type];
-			if((count > max)) {
-				max = count;
-			}
-		}
-	}
-
-	if (type_count.empty()) return type();
-
-	std::vector<std::string> type_list;
-	for(auto& i : type_count){
-		if(i.second == max){
-			type_list.push_back(i.first);
-		}
-	}
-
-	if(type_list.empty()) return type();
-
-	return type_list.front();
-}
-
-std::pair<std::string, int> attack_type::select_alternative_type(const active_ability_list& damage_type_list, const active_ability_list& resistance_list) const
-{
-	std::map<std::string, int> type_res;
-	int max_res = INT_MIN;
-	if(other_){
-		for(auto& i : damage_type_list) {
-			const config& c = i.ability_cfg();
-			if(c.has_attribute("alternative_type")) {
-				std::string type = c["alternative_type"].str();
-				if(type_res.count(type) == 0){
-					type_res[type] = (*other_).resistance_value(resistance_list, type);
-					max_res = std::max(max_res, type_res[type]);
-				}
-			}
-		}
-	}
-
-	if (type_res.empty()) return {"", INT_MIN};
-
-	std::vector<std::string> type_list;
-	for(auto& i : type_res){
-		if(i.second == max_res){
-			type_list.push_back(i.first);
-		}
-	}
-	if(type_list.empty()) return {"", INT_MIN};
-
-	return {type_list.front(), max_res};
-}
-
-/**
- * The type of attack used and the resistance value that does the most damage.
- */
-std::pair<std::string, int> attack_type::effective_damage_type() const
-{
-	if(attack_empty()){
-		return {"", 100};
-	}
-	active_ability_list resistance_list;
-	if(other_){
-		resistance_list = (*other_).get_abilities_weapons("resistance", other_loc_, other_attack_, shared_from_this());
-		utils::erase_if(resistance_list, [&](const active_ability& i) {
-			return (!(i.ability_cfg()["active_on"].empty() || (!is_attacker_ && i.ability_cfg()["active_on"] == "offense") || (is_attacker_ && i.ability_cfg()["active_on"] == "defense")));
-		});
-	}
-	active_ability_list damage_type_list = get_specials_and_abilities("damage_type");
-	int res = other_ ? (*other_).resistance_value(resistance_list, type()) : 100;
-	if(damage_type_list.empty()){
-		return {type(), res};
-	}
-	std::string replacement_type = select_replacement_type(damage_type_list);
-	std::pair<std::string, int> alternative_type = select_alternative_type(damage_type_list, resistance_list);
-
-	if(other_){
-		res = replacement_type != type() ? (*other_).resistance_value(resistance_list, replacement_type) : res;
-		replacement_type = alternative_type.second > res ? alternative_type.first : replacement_type;
-		res = std::max(res, alternative_type.second);
-	}
-	return {replacement_type, res};
-}
-
-/**
- * Return a type()/replacement_type and a list of alternative_types that should be displayed in the selected unit's report.
- */
-std::pair<std::string, std::set<std::string>> attack_type::damage_types() const
-{
-	active_ability_list damage_type_list = get_specials_and_abilities("damage_type");
-	std::set<std::string> alternative_damage_types;
-	if(damage_type_list.empty()){
-		return {type(), alternative_damage_types};
-	}
-	std::string replacement_type = select_replacement_type(damage_type_list);
-	for(auto& i : damage_type_list) {
-		const config& c = i.ability_cfg();
-		if(c.has_attribute("alternative_type")){
-			alternative_damage_types.insert(c["alternative_type"].str());
-		}
-	}
-
-	return {replacement_type, alternative_damage_types};
-}
-
-/**
- * Returns the damage per attack of this weapon, considering specials.
- */
-double attack_type::modified_damage() const
-{
-	double damage_value = unit_abilities::effect(get_specials_and_abilities("damage"), damage(), shared_from_this()).get_composite_double_value();
-	return damage_value;
-}
-
-int attack_type::modified_chance_to_hit(int cth) const
-{
-	int parry = other_attack_ ? other_attack_->parry() : 0;
-	active_ability_list chance_to_hit_list = get_specials_and_abilities("chance_to_hit");
-	cth = std::clamp(cth + accuracy_ - parry, 0, 100);
-	return composite_value(chance_to_hit_list, cth);
-}
 
 
 namespace { // Helpers for attack_type::special_active()
@@ -1299,17 +1250,15 @@ namespace { // Helpers for attack_type::special_active()
 	 */
 	bool special_affects_opponent(const unit_ability_t& ab, bool is_attacker)
 	{
-		//log_scope("special_affects_opponent");
-		const std::string& apply_to = ab.cfg()["apply_to"];
-		if ( apply_to.empty() )
-			return false;
-		if ( apply_to == "both" )
+		using apply_to_t = unit_ability_t::apply_to_t;
+		const auto apply_to = ab.apply_to();
+		if ( apply_to == apply_to_t::both)
 			return true;
-		if ( apply_to == "opponent" )
+		if ( apply_to == apply_to_t::opponent )
 			return true;
-		if ( is_attacker  &&  apply_to == "defender" )
+		if ( is_attacker  && apply_to == apply_to_t::defender)
 			return true;
-		if ( !is_attacker &&  apply_to == "attacker" )
+		if ( !is_attacker && apply_to == apply_to_t::attacker)
 			return true;
 		return false;
 	}
@@ -1321,17 +1270,15 @@ namespace { // Helpers for attack_type::special_active()
 	 */
 	bool special_affects_self(const unit_ability_t& ab, bool is_attacker)
 	{
-		//log_scope("special_affects_self");
-		const std::string& apply_to = ab.cfg()["apply_to"];
-		if ( apply_to.empty() )
+		using apply_to_t = unit_ability_t::apply_to_t;
+		const auto apply_to = ab.apply_to();
+		if ( apply_to == apply_to_t::both )
 			return true;
-		if ( apply_to == "both" )
+		if ( apply_to == apply_to_t::self)
 			return true;
-		if ( apply_to == "self" )
+		if ( is_attacker  &&  apply_to == apply_to_t::attacker)
 			return true;
-		if ( is_attacker  &&  apply_to == "attacker" )
-			return true;
-		if ( !is_attacker &&  apply_to == "defender")
+		if ( !is_attacker &&  apply_to == apply_to_t::defender)
 			return true;
 		return false;
 	}
@@ -1366,6 +1313,31 @@ namespace { // Helpers for attack_type::special_active()
 		already_shown.push_back(std::move(identifier));
 	}
 
+
+	static bool buildin_is_immune(const unit_ability_t& ab, const unit_const_ptr& them, map_location their_loc)
+	{
+		if (ab.tag() == "drains" && them && them->get_state("undrainable")) {
+			return true;
+		}
+		if (ab.tag() == "plague" && them &&
+			(them->get_state("unplagueable") ||
+				resources::gameboard->map().is_village(their_loc))) {
+			return true;
+		}
+		if (ab.tag() == "poison" && them &&
+			(them->get_state("unpoisonable") || them->get_state(unit::STATE_POISONED))) {
+			return true;
+		}
+		if (ab.tag() == "slow" && them &&
+			(them->get_state("unslowable") || them->get_state(unit::STATE_SLOWED))) {
+			return true;
+		}
+		if (ab.tag() == "petrifies" && them &&
+			them->get_state("unpetrifiable")) {
+			return true;
+		}
+		return false;
+	}
 	/**
 	 * Determines if a unit/weapon combination matches the specified child
 	 * (normally a [filter_*] child) of the provided filter.
@@ -1448,13 +1420,13 @@ active_ability_list attack_type::get_weapon_ability(const std::string& ability) 
 	active_ability_list abil_list(loc);
 	if(self_) {
 		abil_list.append_if((*self_).get_abilities(ability, self_loc_), [&](const active_ability& i) {
-			return special_active(i.ability(), AFFECT_SELF, true);
+			return special_active(i.ability(), AFFECTS::SELF);
 		});
 	}
 
 	if(other_) {
 		abil_list.append_if((*other_).get_abilities(ability, other_loc_), [&](const active_ability& i) {
-			return special_active_impl(other_attack_, shared_from_this(), i.ability(), AFFECT_OTHER, true);
+			return special_active_impl(other_attack_, shared_from_this(), i.ability(), AFFECTS::OTHER);
 		});
 	}
 
@@ -1476,11 +1448,6 @@ active_ability_list attack_type::get_specials_and_abilities(const std::string& s
 		});
 	}
 	return abil_list;
-}
-
-int attack_type::composite_value(const active_ability_list& abil_list, int base_value) const
-{
-	return unit_abilities::effect(abil_list, base_value, shared_from_this()).get_composite_value();
 }
 
 static bool overwrite_special_affects(const unit_ability_t& ab)
@@ -1621,7 +1588,7 @@ bool attack_type::check_self_abilities_impl(const const_attack_ptr& self_attack,
 		}
 	}
 	if(abilities_list::all_weapon_tags().count(ab.tag()) != 0){
-		if(u->get_self_ability_bool(ab, loc) && special_active_impl(self_attack, other_attack, ab, whom, true)) {
+		if(u->get_self_ability_bool(ab, loc) && special_active_impl(self_attack, other_attack, ab, whom)) {
 			return true;
 		}
 	}
@@ -1636,7 +1603,7 @@ bool attack_type::check_adj_abilities_impl(const const_attack_ptr& self_attack, 
 		}
 	}
 	if(abilities_list::all_weapon_tags().count(ab.tag()) != 0) {
-		if(u->get_adj_ability_bool(ab, dist, dir, loc, from, from_loc) && special_active_impl(self_attack, other_attack, ab, whom, true)) {
+		if(u->get_adj_ability_bool(ab, dist, dir, loc, from, from_loc) && special_active_impl(self_attack, other_attack, ab, whom)) {
 			return true;
 		}
 	}
@@ -1690,15 +1657,15 @@ bool attack_type::has_special_or_ability(const std::string& special) const
 	if(range().empty()){
 		return false;
 	}
-	if(has_special(special, false)) {
+	if(has_special(special)) {
 		return true;
 	}
 
-	if(self_&& has_ability_impl(shared_from_this(), self_, self_loc_, other_attack_, AFFECT_SELF, special)) {
+	if(self_&& has_ability_impl(shared_from_this(), self_, self_loc_, other_attack_, AFFECTS::SELF, special)) {
 		return true;
 	}
 
-	if(other_&& has_ability_impl(other_attack_, other_, other_loc_, shared_from_this(), AFFECT_OTHER, special)) {
+	if(other_&& has_ability_impl(other_attack_, other_, other_loc_, shared_from_this(), AFFECTS::OTHER, special)) {
 		return true;
 	}
 	return false;
@@ -1779,7 +1746,7 @@ bool attack_type::has_filter_special_or_ability(const config& filter, bool simpl
 		if(special_checking(p_ab->id(), p_ab->tag(), filter_special, filter_special_id, filter_special_type)) {
 			if(simple_check) {
 				return true;
-			} else if(special_active(*p_ab, AFFECT_SELF)) {
+			} else if(special_active(*p_ab, AFFECTS::SELF)) {
 				return true;
 			}
 		}
@@ -1792,18 +1759,18 @@ bool attack_type::has_filter_special_or_ability(const config& filter, bool simpl
 	if(other_attack_) {
 		for(const auto& p_ab : other_attack_->specials()) {
 			if(special_checking(p_ab->id(), p_ab->tag(), filter_special, filter_special_id, filter_special_type)) {
-				if(other_attack_->special_active(*p_ab, AFFECT_OTHER)) {
+				if(other_attack_->special_active(*p_ab, AFFECTS::OTHER)) {
 					return true;
 				}
 			}
 		}
 	}
 
-	if(self_ && special_distant_filtering_impl(shared_from_this(), self_, self_loc_, other_attack_, AFFECT_SELF, filter, false, true)) {
+	if(self_ && special_distant_filtering_impl(shared_from_this(), self_, self_loc_, other_attack_, AFFECTS::SELF, filter, false, true)) {
 		return true;
 	}
 
-	if(other_ && special_distant_filtering_impl(other_attack_, other_, other_loc_, shared_from_this(), AFFECT_OTHER, filter, false)) {
+	if(other_ && special_distant_filtering_impl(other_attack_, other_, other_loc_, shared_from_this(), AFFECTS::OTHER, filter, false)) {
 		return true;
 	}
 	return false;
@@ -2023,7 +1990,7 @@ bool attack_type::has_special_or_ability_with_filter(const config & filter) cons
 			if(!check_if_active) {
 				return true;
 			}
-			if(special_active(*p_ab, AFFECT_SELF)) {
+			if(special_active(*p_ab, AFFECTS::SELF)) {
 				return true;
 			}
 		}
@@ -2032,7 +1999,7 @@ bool attack_type::has_special_or_ability_with_filter(const config & filter) cons
 	if(check_if_active && other_attack_) {
 		for(const auto& p_ab : other_attack_->specials()) {
 			if(other_attack_->special_matches_filter(*p_ab, filter)) {
-				if(other_attack_->special_active(*p_ab, AFFECT_OTHER)) {
+				if(other_attack_->special_active(*p_ab, AFFECTS::OTHER)) {
 					return true;
 				}
 			}
@@ -2042,22 +2009,44 @@ bool attack_type::has_special_or_ability_with_filter(const config & filter) cons
 		return false;
 	}
 
-	if(self_ && special_distant_filtering_impl(shared_from_this(), self_, self_loc_, other_attack_, AFFECT_SELF, filter, true, true)) {
+	if(self_ && special_distant_filtering_impl(shared_from_this(), self_, self_loc_, other_attack_, AFFECTS::SELF, filter, true, true)) {
 		return true;
 	}
 
-	if(other_ && special_distant_filtering_impl(other_attack_, other_, other_loc_, shared_from_this(), AFFECT_OTHER, filter, true)) {
+	if(other_ && special_distant_filtering_impl(other_attack_, other_, other_loc_, shared_from_this(), AFFECTS::OTHER, filter, true)) {
 		return true;
 	}
 	return false;
 }
 
-bool attack_type::special_active(const unit_ability_t& ab, AFFECTS whom,
-                                 bool in_abilities_tag) const
+bool attack_type::special_active(const unit_ability_t& ab, AFFECTS whom) const
 {
-	return special_active_impl(shared_from_this(), other_attack_, ab, whom, in_abilities_tag);
+	return special_active_impl(shared_from_this(), other_attack_, ab, whom);
 }
 
+
+namespace {
+	class temporary_facing
+	{
+		map_location::direction save_dir_;
+		unit_const_ptr u_;
+	public:
+		temporary_facing(const unit_const_ptr& u, map_location::direction new_dir)
+			: save_dir_(u ? u->facing() : map_location::direction::indeterminate)
+			, u_(u)
+		{
+			if (u_) {
+				u_->set_facing(new_dir);
+			}
+		}
+		~temporary_facing()
+		{
+			if (u_) {
+				u_->set_facing(save_dir_);
+			}
+		}
+	};
+}
 /**
  * Returns whether or not the given special is active for the specified unit,
  * based on the current context (see set_specials_context).
@@ -2065,14 +2054,12 @@ bool attack_type::special_active(const unit_ability_t& ab, AFFECTS whom,
  * @param other_attack      the other unit's attack
  * @param ab                the ability
  * @param whom              specifies which combatant we care about
- * @param in_abilities_tag  if special coded in [specials] or [abilities] tags
  */
 bool attack_type::special_active_impl(
 	const const_attack_ptr& self_attack,
 	const const_attack_ptr& other_attack,
 	const unit_ability_t& ab,
-	AFFECTS whom,
-	bool in_abilities_tag)
+	AFFECTS whom)
 {
 	assert(self_attack || other_attack);
 	bool is_attacker = self_attack ? self_attack->is_attacker_ : !other_attack->is_attacker_;
@@ -2081,21 +2068,20 @@ bool attack_type::special_active_impl(
 
 
 	// Does this affect the specified unit?
-	if ( whom == AFFECT_SELF ) {
+	if ( whom == AFFECTS::SELF ) {
 		if ( !special_affects_self(ab, is_attacker) )
 			return false;
 	}
-	if ( whom == AFFECT_OTHER ) {
+	if ( whom == AFFECTS::OTHER ) {
 		if ( !special_affects_opponent(ab, is_attacker) )
 			return false;
 	}
 
 	// Is this active on attack/defense?
-	const std::string & active_on = ab.cfg()["active_on"];
-	if ( !active_on.empty() ) {
-		if ( is_attacker  &&  active_on != "offense" )
+	if ( ab.active_on() != unit_ability_t::active_on_t::both) {
+		if ( is_attacker  && ab.active_on() != unit_ability_t::active_on_t::offense)
 			return false;
-		if ( !is_attacker  &&  active_on != "defense" )
+		if ( !is_attacker  && ab.active_on() != unit_ability_t::active_on_t::defense)
 			return false;
 	}
 
@@ -2128,28 +2114,11 @@ bool attack_type::special_active_impl(
 
 	// Filter poison, plague, drain, slow, petrifies
 	// True if "whom" corresponds to "self", false if "whom" is "other"
-	bool whom_is_self = ((whom == AFFECT_SELF) || ((whom == AFFECT_EITHER) && special_affects_self(ab, is_attacker)));
+	bool whom_is_self = ((whom == AFFECTS::SELF) || ((whom == AFFECTS::EITHER) && special_affects_self(ab, is_attacker)));
 	unit_const_ptr them = whom_is_self ? other : self;
 	map_location their_loc = whom_is_self ? other_loc : self_loc;
 
-	if (ab.tag() == "drains" && them && them->get_state("undrainable")) {
-		return false;
-	}
-	if (ab.tag() == "plague" && them &&
-		(them->get_state("unplagueable") ||
-		 resources::gameboard->map().is_village(their_loc))) {
-		return false;
-	}
-	if (ab.tag() == "poison" && them &&
-		(them->get_state("unpoisonable") || them->get_state(unit::STATE_POISONED))) {
-		return false;
-	}
-	if (ab.tag() == "slow" && them &&
-		(them->get_state("unslowable") || them->get_state(unit::STATE_SLOWED))) {
-		return false;
-	}
-	if (ab.tag() == "petrifies" && them &&
-		them->get_state("unpetrifiable")) {
+	if (buildin_is_immune(ab, them, their_loc)) {
 		return false;
 	}
 
@@ -2176,7 +2145,7 @@ bool attack_type::special_active_impl(
 	//the function of this special in matches_filter()
 	//In apply_to=both case, ab.tag() must be checked in all filter because special applied to both self and opponent.
 	bool applied_both = ab.cfg()["apply_to"] == "both";
-	const std::string& filter_self = in_abilities_tag ? "filter_student" : "filter_self";
+	const std::string& filter_self = ab.in_specials_tag() ? "filter_self" : "filter_student";
 	std::string self_check_if_recursion = (applied_both || whom_is_self) ? ab.tag() : "";
 	if (!special_unit_matches(self, other, self_loc, self_attack, ab.cfg(), is_for_listing, filter_self, self_check_if_recursion))
 		return false;

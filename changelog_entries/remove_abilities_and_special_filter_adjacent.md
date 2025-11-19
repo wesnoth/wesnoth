@@ -1,3 +1,0 @@
-### WML Engine
-   * Remove [filter_adjacent_student] and [filter_adjacent_student_location] from abilities used like weapons because shorthand from existing filters[filter_student][filter_adjacent] and [filter_student][filter_location][filter_adjacent_location].
-   * Deprecate [filter_adjacent] and [filter_adjacent_location] from abilities and weapons specials because shorthand from existing filters[filter][filter_adjacent] and [filter][filter_location][filter_adjacent_location] for abilities or [filter_self][filter_adjacent] and [filter_self][filter_location][filter_adjacent_location] for weapon specials.

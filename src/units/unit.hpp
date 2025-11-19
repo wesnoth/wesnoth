@@ -32,103 +32,6 @@ class unit_animation_component;
 class vconfig;
 struct color_t;
 
-/** Data typedef for active_ability_list. */
-struct active_ability
-{
-	active_ability(const ability_ptr& p_ability, map_location student_loc, map_location teacher_loc)
-		: student_loc(student_loc)
-		, teacher_loc(teacher_loc)
-		, p_ability_(p_ability)
-	{
-	}
-
-	/**
-	 * Used by the formula in the ability.
-	 * The REAL location of the student (not the 'we are assuming the student is at this position' location)
-	 * once active_ability_list can contain abilities from different 'students', as it contains abilities from
-	 * a unit aswell from its opponents (abilities with apply_to= opponent)
-	 */
-	map_location student_loc;
-	/**
-	 * The location of the teacher, that is the unit who owns the ability tags
-	 * (different from student because of [affect_adjacent])
-	 */
-	map_location teacher_loc;
-
-	const config& ability_cfg() const { return p_ability_->cfg(); }
-	const unit_ability_t& ability() const { return *p_ability_; }
-private:
-	/** The contents of the ability tag, never nullptr. */
-	const_ability_ptr p_ability_;
-};
-
-class active_ability_list
-{
-public:
-	active_ability_list(const map_location& loc = map_location()) : cfgs_() , loc_(loc) {}
-
-	// Implemented in unit_abilities.cpp
-	std::pair<int, map_location> highest(const std::string& key, int def=0) const
-	{
-		return get_extremum(key, def, std::less<int>());
-	}
-	std::pair<int, map_location> lowest(const std::string& key, int def=0) const
-	{
-		return get_extremum(key, def, std::greater<int>());
-	}
-
-	template<typename TComp>
-	std::pair<int, map_location> get_extremum(const std::string& key, int def, const TComp& comp) const;
-
-	// The following make this class usable with standard library algorithms and such
-	typedef std::vector<active_ability>::iterator       iterator;
-	typedef std::vector<active_ability>::const_iterator const_iterator;
-
-	iterator       begin()        { return cfgs_.begin(); }
-	const_iterator begin() const  { return cfgs_.begin(); }
-	iterator       end()          { return cfgs_.end();   }
-	const_iterator end()   const  { return cfgs_.end();   }
-
-	// Vector access
-	bool                empty() const  { return cfgs_.empty(); }
-	active_ability&       front()        { return cfgs_.front(); }
-	const active_ability& front() const  { return cfgs_.front(); }
-	active_ability&       back()         { return cfgs_.back();  }
-	const active_ability& back()  const  { return cfgs_.back();  }
-	std::size_t         size()         { return cfgs_.size();  }
-
-	iterator erase(const iterator& erase_it)  { return cfgs_.erase(erase_it); }
-	iterator erase(const iterator& first, const iterator& last)  { return cfgs_.erase(first, last); }
-
-	template<typename... T>
-	void emplace_back(T&&... args) { cfgs_.emplace_back(args...); }
-
-	const map_location& loc() const { return loc_; }
-
-	/** Appends the abilities from @a other to @a this, ignores other.loc() */
-	void append(const active_ability_list& other)
-	{
-		std::copy(other.begin(), other.end(), std::back_inserter(cfgs_ ));
-	}
-
-	/**
-	 * Appends any abilities from @a other for which the given condition returns true to @a this, ignores other.loc().
-	 *
-	 * @param other where to copy the elements from
-	 * @param predicate a single-argument function that takes a reference to an element and returns a bool
-	 */
-	template<typename Predicate>
-	void append_if(const active_ability_list& other, const Predicate& predicate)
-	{
-		std::copy_if(other.begin(), other.end(), std::back_inserter(cfgs_ ), predicate);
-	}
-
-private:
-	// Data
-	std::vector<active_ability> cfgs_;
-	map_location loc_;
-};
-
 /**
  * This class represents a *single* unit of a specific type.
  */
@@ -1891,7 +1794,7 @@ public:
 	ability_tooltips(boost::dynamic_bitset<>& active_list, const map_location& loc) const;
 
 	/** Get a list of all abilities by ID. */
-	std::vector<std::string> get_ability_list() const;
+	std::vector<std::string> get_ability_id_list() const;
 
 	/**
 	 * Check if the unit has an ability of a specific type.

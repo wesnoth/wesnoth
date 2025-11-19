@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.18\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-10-20 20:10-0500\n"
+"POT-Creation-Date: 2025-11-17 20:02-0600\n"
 "PO-Revision-Date: 2024-03-10 21:27+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
@@ -22,7 +22,7 @@ msgstr ""
 
 #. [time]: id=underground
 #. [editor_times]: id=underground
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:500
+#: data/campaigns/Heir_To_The_Throne_Classic/utils/httt_utils.cfg:500
 #: data/core/editor/time-of-day.cfg:41 data/core/macros/schedules.cfg:113
 msgid "Underground"
 msgstr "地下"
@@ -68,7 +68,7 @@ msgstr ""
 #. [trait]: id=loyal_dummy
 #. [trait]: id=loyal
 #: data/campaigns/The_Deceivers_Gambit/scenarios/00_Graduation.cfg:112
-#: data/campaigns/The_Deceivers_Gambit/scenarios/11_Clan_Blackcrest.cfg:738
+#: data/campaigns/The_Deceivers_Gambit/scenarios/11_Clan_Blackcrest.cfg:748
 #: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:19
 #: data/core/macros/traits.cfg:12
 msgid "loyal"
@@ -76,7 +76,7 @@ msgstr "忠誠"
 
 #. [trait]: id=loyal_dummy
 #: data/campaigns/The_Deceivers_Gambit/scenarios/00_Graduation.cfg:113
-#: data/campaigns/The_Deceivers_Gambit/scenarios/11_Clan_Blackcrest.cfg:739
+#: data/campaigns/The_Deceivers_Gambit/scenarios/11_Clan_Blackcrest.cfg:749
 #: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:20
 #, fuzzy
 #| msgid "Zero upkeep"
@@ -115,14 +115,14 @@ msgstr ""
 #. [resistance]: id=garak_steadfast
 #. [resistance]: id=steadfast
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:703
-#: data/core/macros/abilities.cfg:130
+#: data/core/macros/abilities.cfg:135
 msgid "steadfast"
 msgstr "堅守"
 
 #. [resistance]: id=garak_steadfast
 #. [resistance]: id=steadfast
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:704
-#: data/core/macros/abilities.cfg:131
+#: data/core/macros/abilities.cfg:136
 msgid "female^steadfast"
 msgstr "堅守"
 
@@ -130,19 +130,19 @@ msgstr "堅守"
 #. [illuminates]: id=illumination
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:346
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:347
-#: data/core/macros/abilities.cfg:240
+#: data/core/macros/abilities.cfg:244
 msgid "female^illuminates"
 msgstr "照明"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:684
-#: data/core/macros/abilities.cfg:9
+#: data/core/macros/abilities.cfg:10
 msgid "heals +4"
 msgstr "治療 +4"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:685
-#: data/core/macros/abilities.cfg:10
+#: data/core/macros/abilities.cfg:11
 msgid "female^heals +4"
 msgstr "治療 +4"
 
@@ -172,13 +172,13 @@ msgstr "這個單位有基本治療以及減緩脫水的能力。"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:708
-#: data/core/macros/abilities.cfg:35
+#: data/core/macros/abilities.cfg:37
 msgid "heals +8"
 msgstr "治療 +8"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:709
-#: data/core/macros/abilities.cfg:36
+#: data/core/macros/abilities.cfg:38
 msgid "female^heals +8"
 msgstr "治療 +8"
 
@@ -238,7 +238,7 @@ msgstr "這個單位有治療那些在他附近的單位的能力，也能減緩
 #. [teleport]: id=teleport
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:699
 #: data/campaigns/World_Conquest/resources/data/training.cfg:786
-#: data/core/macros/abilities.cfg:255
+#: data/core/macros/abilities.cfg:259
 msgid "teleport"
 msgstr "傳送"
 
@@ -246,7 +246,7 @@ msgstr "傳送"
 #. [regenerate]: id=regenerates
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:760
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:54
-#: data/core/macros/abilities.cfg:94
+#: data/core/macros/abilities.cfg:98
 msgid "regenerates"
 msgstr "恢復"
 
@@ -267,20 +267,20 @@ msgstr "背刺"
 #. [chance]
 #. [dummy]: id=feeding
 #: data/campaigns/World_Conquest/resources/data/training.cfg:501
-#: data/core/macros/abilities.cfg:409
+#: data/core/macros/abilities.cfg:413
 msgid "feeding"
 msgstr "食屍"
 
 #. [chance]
 #. [leadership]: id=leadership
 #: data/campaigns/World_Conquest/resources/data/training.cfg:528
-#: data/core/macros/abilities.cfg:201
+#: data/core/macros/abilities.cfg:205
 msgid "leadership"
 msgstr "領導"
 
 #. [hides]: id=ambush
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:12
-#: data/core/macros/abilities.cfg:287
+#: data/core/macros/abilities.cfg:291
 msgid "ambush"
 msgstr "埋伏"
 
@@ -294,13 +294,13 @@ msgstr "洞穴"
 
 #. [hides]: id=concealment
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:21
-#: data/core/macros/abilities.cfg:349
+#: data/core/macros/abilities.cfg:353
 msgid "concealment"
 msgstr "隱藏"
 
 #. [drains]: id=drains
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:24
-#: data/core/macros/weapon_specials.cfg:209
+#: data/core/macros/weapon_specials.cfg:208
 msgid "drains"
 msgstr "吸血"
 
@@ -332,13 +332,13 @@ msgstr "蘑菇林"
 
 #. [hides]: id=nightstalk
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:45
-#: data/core/macros/abilities.cfg:329 data/core/macros/abilities.cfg:330
+#: data/core/macros/abilities.cfg:333 data/core/macros/abilities.cfg:334
 msgid "nightstalk"
 msgstr "夜行"
 
 #. [poison]: id=poison
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:51
-#: data/core/macros/weapon_specials.cfg:231
+#: data/core/macros/weapon_specials.cfg:230
 msgid "poison"
 msgstr "毒素"
 
@@ -348,7 +348,7 @@ msgstr "沙地"
 
 #. [skirmisher]: id=skirmisher
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:60
-#: data/core/macros/abilities.cfg:221
+#: data/core/macros/abilities.cfg:225
 msgid "skirmisher"
 msgstr "游撃"
 
@@ -364,7 +364,7 @@ msgstr "沼澤"
 
 #. [heals]: id=curing
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:69
-#: data/core/macros/abilities.cfg:61
+#: data/core/macros/abilities.cfg:62
 msgid "cures"
 msgstr "治癒"
 
@@ -2954,8 +2954,8 @@ msgstr "玩法"
 #. [section]: id=traits_section
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:29 data/core/help.cfg:543
-#: src/help/help_topic_generators.cpp:537
-#: src/help/help_topic_generators.cpp:542
+#: src/help/help_topic_generators.cpp:536
+#: src/help/help_topic_generators.cpp:541
 msgid "Traits"
 msgstr "特質"
 
@@ -5445,13 +5445,6 @@ msgstr ""
 "地形有兩種類型：<italic>text='基礎'</italic>及<italic>text='混合'</italic>。"
 
 #. [topic]: id=..terrains_section
-#: data/core/help.cfg:563 data/core/help.cfg:570 data/core/help.cfg:596
-msgid ""
-"</header>\n"
-"\n"
-msgstr ""
-
-#. [topic]: id=..terrains_section
 #: data/core/help.cfg:563 data/core/help.cfg:596
 #, fuzzy
 #| msgid "Base Terrain: "
@@ -6652,7 +6645,7 @@ msgstr ""
 "讓被選擇的單位連續升N級。例如：:unit advances=2"
 
 #. [heals]: id=healing
-#: data/core/macros/abilities.cfg:11
+#: data/core/macros/abilities.cfg:12
 msgid ""
 "Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
 "\n"
@@ -6667,7 +6660,7 @@ msgstr ""
 "不過這個技能將不會治癒中毒的單位，只能延緩它的發作。"
 
 #. [heals]: id=healing
-#: data/core/macros/abilities.cfg:37
+#: data/core/macros/abilities.cfg:39
 msgid ""
 "This unit combines herbal remedies with magic to heal units more quickly "
 "than is normally possible on the battlefield.\n"
@@ -6684,12 +6677,12 @@ msgstr ""
 "不過這個技能將不會治癒中毒的單位，只能延緩它的發作。"
 
 #. [heals]: id=curing
-#: data/core/macros/abilities.cfg:62
+#: data/core/macros/abilities.cfg:63
 msgid "female^cures"
 msgstr "治癒"
 
 #. [heals]: id=curing
-#: data/core/macros/abilities.cfg:63
+#: data/core/macros/abilities.cfg:64
 msgid ""
 "A curer can cure a unit of poison, although that unit will receive no "
 "additional healing on the turn it is cured of the poison."
@@ -6698,12 +6691,12 @@ msgstr ""
 "生命治療。"
 
 #. [regenerate]: id=regenerates
-#: data/core/macros/abilities.cfg:95
+#: data/core/macros/abilities.cfg:99
 msgid "female^regenerates"
 msgstr "恢復"
 
 #. [regenerate]: id=regenerates
-#: data/core/macros/abilities.cfg:96
+#: data/core/macros/abilities.cfg:100
 msgid ""
 "The unit will heal itself 8 HP per turn. If it is poisoned, it will remove "
 "the poison instead of healing."
@@ -6711,17 +6704,17 @@ msgstr ""
 "這個單位每回合恢復自身8點生命值。如果他中毒了，他會以移除中毒效果代替治療。"
 
 #. [regenerate]: id=regenerates
-#: data/core/macros/abilities.cfg:108
+#: data/core/macros/abilities.cfg:113
 msgid "regenerates +4"
 msgstr "恢復 +4"
 
 #. [regenerate]: id=regenerates
-#: data/core/macros/abilities.cfg:109
+#: data/core/macros/abilities.cfg:114
 msgid "female^regenerates +4"
 msgstr "恢復 +4"
 
 #. [regenerate]: id=regenerates
-#: data/core/macros/abilities.cfg:110
+#: data/core/macros/abilities.cfg:115
 msgid ""
 "The unit will heal itself 4 HP per turn. If it is poisoned, it will remove "
 "the poison instead of healing."
@@ -6729,31 +6722,31 @@ msgstr ""
 "這個單位每回合恢復自身4點生命值。如果他中毒了，他會以移除中毒效果代替治療。"
 
 #. [regenerate]: id=regenerates
-#: data/core/macros/abilities.cfg:111
+#: data/core/macros/abilities.cfg:116
 msgid ""
 "This unit heals itself each turn, though not as much as if stationed in a "
 "village."
 msgstr "這個單位每回合治療他自己，不過治療量不比駐紮在村莊時多。"
 
 #. [resistance]: id=steadfast
-#: data/core/macros/abilities.cfg:132
+#: data/core/macros/abilities.cfg:137
 msgid ""
 "This unit’s resistances are doubled, up to a maximum of 50%, when defending. "
 "Vulnerabilities are not affected."
 msgstr "防守時，這個單位的抗性加倍，上限為50%。弱點不會被影響。"
 
 #. [chance_to_hit]: id=diversion
-#: data/core/macros/abilities.cfg:145
+#: data/core/macros/abilities.cfg:150
 msgid "diversion"
 msgstr "牽制"
 
 #. [chance_to_hit]: id=diversion
-#: data/core/macros/abilities.cfg:146
+#: data/core/macros/abilities.cfg:151
 msgid "female^diversion"
 msgstr "牽制"
 
 #. [chance_to_hit]: id=diversion
-#: data/core/macros/abilities.cfg:147
+#: data/core/macros/abilities.cfg:152
 msgid ""
 "If there is an enemy of the target on the opposite side of the target, this "
 "unit diverts the target’s attention and reduces its chance to hit by 20%."
@@ -6762,7 +6755,7 @@ msgstr ""
 "降20%。"
 
 #. [chance_to_hit]: id=diversion
-#: data/core/macros/abilities.cfg:148
+#: data/core/macros/abilities.cfg:153
 #, fuzzy
 #| msgid ""
 #| "If there is an enemy of the target on the opposite side of the target "
@@ -6777,22 +6770,22 @@ msgstr ""
 "降目標的命中率。"
 
 #. [chance_to_hit]: id=diversion
-#: data/core/macros/abilities.cfg:149
+#: data/core/macros/abilities.cfg:154
 msgid "accuracy:"
 msgstr ""
 
 #. [chance_to_hit]: id=diversion
-#: data/core/macros/abilities.cfg:150
+#: data/core/macros/abilities.cfg:155
 msgid "Due to the diversion, the accuracy of this attack is reduced by 20%."
 msgstr ""
 
 #. [leadership]: id=leadership
-#: data/core/macros/abilities.cfg:202
+#: data/core/macros/abilities.cfg:206
 msgid "female^leadership"
 msgstr "領導"
 
 #. [leadership]: id=leadership
-#: data/core/macros/abilities.cfg:203
+#: data/core/macros/abilities.cfg:207
 msgid ""
 "This unit can lead other troops in battle.\n"
 "\n"
@@ -6804,24 +6797,24 @@ msgstr ""
 "所有相鄰的較低等級的同盟單位每差一個等級，他的攻擊就能多造成25%的傷害。"
 
 #. [skirmisher]: id=skirmisher
-#: data/core/macros/abilities.cfg:222
+#: data/core/macros/abilities.cfg:226
 msgid "female^skirmisher"
 msgstr "游撃"
 
 #. [skirmisher]: id=skirmisher
-#: data/core/macros/abilities.cfg:223
+#: data/core/macros/abilities.cfg:227
 msgid ""
 "This unit is skilled in moving past enemies quickly, and ignores all enemy "
 "Zones of Control."
 msgstr "這個單位能熟練地迅速穿越敵人，並忽略所有敵人的控制區域。"
 
 #. [illuminates]: id=illumination
-#: data/core/macros/abilities.cfg:239
+#: data/core/macros/abilities.cfg:243
 msgid "illuminates"
 msgstr "照明"
 
 #. [illuminates]: id=illumination
-#: data/core/macros/abilities.cfg:241
+#: data/core/macros/abilities.cfg:245
 msgid ""
 "This unit illuminates the surrounding area, making lawful units fight "
 "better, and chaotic units fight worse.\n"
@@ -6834,24 +6827,24 @@ msgstr ""
 "任何鄰接這個單位的單位，在夜間時彷彿是在黄昏，而在黃昏時彷彿是在白天。"
 
 #. [teleport]: id=teleport
-#: data/core/macros/abilities.cfg:256
+#: data/core/macros/abilities.cfg:260
 msgid "female^teleport"
 msgstr "傳送"
 
 #. [teleport]: id=teleport
-#: data/core/macros/abilities.cfg:257
+#: data/core/macros/abilities.cfg:261
 msgid ""
 "This unit may teleport between any two empty villages owned by its side "
 "using one of its moves."
 msgstr "這個單位能在任何兩個同陣營的空村莊間使用一個移動點數來進行傳送。"
 
 #. [hides]: id=ambush
-#: data/core/macros/abilities.cfg:288
+#: data/core/macros/abilities.cfg:292
 msgid "female^ambush"
 msgstr "埋伏"
 
 #. [hides]: id=ambush
-#: data/core/macros/abilities.cfg:289
+#: data/core/macros/abilities.cfg:293
 msgid ""
 "This unit can hide in forest, and remain undetected by its enemies.\n"
 "\n"
@@ -6865,17 +6858,17 @@ msgstr ""
 "邊。任何首次發現這個單位的敵方單位，會立刻失去所有他剩下的移動點數。"
 
 #. [hides]: id=burrow
-#: data/core/macros/abilities.cfg:308
+#: data/core/macros/abilities.cfg:312
 msgid "burrow"
 msgstr "挖洞"
 
 #. [hides]: id=burrow
-#: data/core/macros/abilities.cfg:309
+#: data/core/macros/abilities.cfg:313
 msgid "female^burrow"
 msgstr "挖洞"
 
 #. [hides]: id=burrow
-#: data/core/macros/abilities.cfg:310
+#: data/core/macros/abilities.cfg:314
 msgid ""
 "This unit can hide in forest or sand if it is resting (has not moved for a "
 "turn), and remain undetected by its enemies.\n"
@@ -6891,7 +6884,7 @@ msgstr ""
 "單位的旁邊。任何首次發現這個單位的敵方單位，會立刻失去所有他剩下的移動點數。"
 
 #. [hides]: id=nightstalk
-#: data/core/macros/abilities.cfg:331
+#: data/core/macros/abilities.cfg:335
 msgid ""
 "The unit becomes invisible during night.\n"
 "\n"
@@ -6905,12 +6898,12 @@ msgstr ""
 "這個單位的敵方單位，會立刻失去所有他剩下的移動點數。"
 
 #. [hides]: id=concealment
-#: data/core/macros/abilities.cfg:350
+#: data/core/macros/abilities.cfg:354
 msgid "female^concealment"
 msgstr "隱藏"
 
 #. [hides]: id=concealment
-#: data/core/macros/abilities.cfg:351
+#: data/core/macros/abilities.cfg:355
 #, fuzzy
 #| msgid ""
 #| "This unit can hide in villages (with the exception of water villages), "
@@ -6935,17 +6928,17 @@ msgstr ""
 "邊。任何首次發現這個單位的敵方單位，會立刻失去所有他剩下的移動點數。"
 
 #. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:369
+#: data/core/macros/abilities.cfg:373
 msgid "submerge"
 msgstr "潛水"
 
 #. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:370
+#: data/core/macros/abilities.cfg:374
 msgid "female^submerge"
 msgstr "潛水"
 
 #. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:371
+#: data/core/macros/abilities.cfg:375
 msgid ""
 "This unit can hide in deep water, and remain undetected by its enemies.\n"
 "\n"
@@ -6959,19 +6952,19 @@ msgstr ""
 "邊。任何首次發現這個單位的敵方單位，會立刻失去所有他剩下的移動點數。"
 
 #. [hides]: id=swamp_lurk
-#: data/core/macros/abilities.cfg:389
+#: data/core/macros/abilities.cfg:393
 msgid "swamp lurk"
 msgstr ""
 
 #. [hides]: id=swamp_lurk
-#: data/core/macros/abilities.cfg:390
+#: data/core/macros/abilities.cfg:394
 #, fuzzy
 #| msgid "female^weak"
 msgid "female^swamp lurk"
 msgstr "虛弱"
 
 #. [hides]: id=swamp_lurk
-#: data/core/macros/abilities.cfg:391
+#: data/core/macros/abilities.cfg:395
 #, fuzzy
 #| msgid ""
 #| "This unit can hide in forest, and remain undetected by its enemies.\n"
@@ -6992,12 +6985,12 @@ msgstr ""
 "邊。任何首次發現這個單位的敵方單位，會立刻失去所有他剩下的移動點數。"
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:410
+#: data/core/macros/abilities.cfg:414
 msgid "female^feeding"
 msgstr "食屍"
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:411
+#: data/core/macros/abilities.cfg:415
 msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a unit, "
 "except units that are immune to plague."
@@ -8162,12 +8155,12 @@ msgid ""
 msgstr ""
 
 #. [swarm]: id=swarm
-#: data/core/macros/weapon_specials.cfg:171
+#: data/core/macros/weapon_specials.cfg:170
 msgid "swarm"
 msgstr "連擊"
 
 #. [swarm]: id=swarm
-#: data/core/macros/weapon_specials.cfg:172
+#: data/core/macros/weapon_specials.cfg:171
 msgid ""
 "The number of strikes of this attack decreases when the unit is wounded. The "
 "number of strikes is proportional to the percentage of its of maximum HP the "
@@ -8179,12 +8172,12 @@ msgstr ""
 "數。"
 
 #. [damage]: id=charge
-#: data/core/macros/weapon_specials.cfg:182
+#: data/core/macros/weapon_specials.cfg:181
 msgid "charge"
 msgstr "衝鋒"
 
 #. [damage]: id=charge
-#: data/core/macros/weapon_specials.cfg:183
+#: data/core/macros/weapon_specials.cfg:182
 msgid ""
 "When used offensively, this attack deals double damage to the target. It "
 "also causes this unit to take double damage from the target’s counterattack."
@@ -8193,24 +8186,24 @@ msgstr ""
 "目標的反擊的雙倍傷害。"
 
 #. [damage]: id=guard
-#: data/core/macros/weapon_specials.cfg:196
+#: data/core/macros/weapon_specials.cfg:195
 msgid "guard"
 msgstr ""
 
 #. [damage]: id=guard
-#: data/core/macros/weapon_specials.cfg:197
+#: data/core/macros/weapon_specials.cfg:196
 msgid "This attack blocks half of the damage from its target’s strikes."
 msgstr ""
 
 #. [damage]: id=guard
-#: data/core/macros/weapon_specials.cfg:198
+#: data/core/macros/weapon_specials.cfg:197
 msgid ""
 "This unit’s guarding attack can halve incoming damage, but only when used in "
 "combat."
 msgstr ""
 
 #. [drains]: id=drains
-#: data/core/macros/weapon_specials.cfg:210
+#: data/core/macros/weapon_specials.cfg:209
 msgid ""
 "This unit drains health from living units, healing itself for half the "
 "amount of damage it deals (rounded down)."
@@ -8219,18 +8212,18 @@ msgstr ""
 "（無條件捨去）"
 
 #. [firststrike]: id=firststrike
-#: data/core/macros/weapon_specials.cfg:220
+#: data/core/macros/weapon_specials.cfg:219
 msgid "first strike"
 msgstr "先制"
 
 #. [firststrike]: id=firststrike
-#: data/core/macros/weapon_specials.cfg:221
+#: data/core/macros/weapon_specials.cfg:220
 msgid ""
 "This unit always strikes first with this attack, even if they are defending."
 msgstr "這個單位總是能優先發動這種攻擊，即便他正在防守。"
 
 #. [poison]: id=poison
-#: data/core/macros/weapon_specials.cfg:232
+#: data/core/macros/weapon_specials.cfg:231
 msgid ""
 "This attack poisons living targets. Poisoned units lose 8 HP every turn "
 "until they are cured or are reduced to 1 HP. Poison cannot, of itself, kill "
@@ -8240,19 +8233,19 @@ msgstr ""
 "者生命值被扣到剩下1。光靠毒素無法殺死單位。"
 
 #. [stun]: id=stun
-#: data/core/macros/weapon_specials.cfg:242
+#: data/core/macros/weapon_specials.cfg:241
 msgid "stun"
 msgstr "擊暈"
 
 #. [stun]: id=stun
-#: data/core/macros/weapon_specials.cfg:243
+#: data/core/macros/weapon_specials.cfg:242
 msgid ""
 "This attack hits so hard that the opponent is dazed and can no longer "
 "enforce a zone of control. The effect wears off on the opponent’s next turn."
 msgstr ""
 
 #. [stun]: id=stun
-#: data/core/macros/weapon_specials.cfg:244
+#: data/core/macros/weapon_specials.cfg:243
 #, fuzzy
 #| msgid ""
 #| "This unit is able to slow its enemies, halving their movement speed and "
@@ -8264,19 +8257,19 @@ msgstr ""
 "合。"
 
 #. [damage_type]: id=arcane_damage
-#: data/core/macros/weapon_specials.cfg:253
+#: data/core/macros/weapon_specials.cfg:252
 msgid "arcane"
 msgstr "奧術"
 
 #. [damage_type]: id=arcane_damage
-#: data/core/macros/weapon_specials.cfg:254
+#: data/core/macros/weapon_specials.cfg:253
 msgid ""
 "This attack combines the arcane type with the type of weapon used so that "
 "resistance to the arcane type does not penalize the user."
 msgstr ""
 
 #. [damage_type]: id=arcane_damage
-#: data/core/macros/weapon_specials.cfg:255
+#: data/core/macros/weapon_specials.cfg:254
 msgid ""
 "This unit can use the arcane type when the opponent is particularly "
 "sensitive to it in relation to the weapon on which it is applied."
@@ -10074,8 +10067,8 @@ msgstr ""
 "這個不尋常的主堡可以讓首領站在上面時進行招募，但是不允許首領在相鄰的主堡上將"
 "單位招募到這個格子上。"
 
-#: src/help/help_topic_generators.cpp:246
-#: src/help/help_topic_generators.cpp:654
+#: src/help/help_topic_generators.cpp:245
+#: src/help/help_topic_generators.cpp:653
 #, fuzzy
 #| msgid "Special Notes:"
 msgid "Special Notes"
@@ -10084,7 +10077,7 @@ msgstr "特別備註："
 #. TRANSLATORS: $types is a conjunct list, typical values will be "Castle" or "Flat and Shallow Water".
 #. The terrain names will be hypertext links to the help page of the corresponding terrain type.
 #. There will always be at least 1 item in the list, but unlikely to be more than 3.
-#: src/help/help_topic_generators.cpp:267
+#: src/help/help_topic_generators.cpp:266
 #, fuzzy
 #| msgid "Base Terrain: "
 msgid "Basic terrain type: $types"
@@ -10093,76 +10086,76 @@ msgstr[0] "基礎地形："
 msgstr[1] "基礎地形："
 
 #. TRANSLATORS: In the help for a terrain type, for example Dwarven Village is often placed on Cave Floor
-#: src/help/help_topic_generators.cpp:276
+#: src/help/help_topic_generators.cpp:275
 msgid "Typical base terrain: $type"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:282
+#: src/help/help_topic_generators.cpp:281
 msgid "Movement properties: "
 msgstr "移動性質："
 
-#: src/help/help_topic_generators.cpp:286
+#: src/help/help_topic_generators.cpp:285
 msgid "Defense properties: "
 msgstr "防禦性質："
 
-#: src/help/help_topic_generators.cpp:364
+#: src/help/help_topic_generators.cpp:363
 msgid "Level"
 msgstr "等級"
 
-#: src/help/help_topic_generators.cpp:417
+#: src/help/help_topic_generators.cpp:416
 #, fuzzy
 #| msgid "Advances from: "
 msgid "Advances from:"
 msgstr "升級自："
 
-#: src/help/help_topic_generators.cpp:419
+#: src/help/help_topic_generators.cpp:418
 #, fuzzy
 #| msgid "Advances to: "
 msgid "Advances to:"
 msgstr "升級成："
 
-#: src/help/help_topic_generators.cpp:449
+#: src/help/help_topic_generators.cpp:448
 #, fuzzy
 #| msgid "Base unit: "
 msgid "Base unit:"
 msgstr "基本單位："
 
-#: src/help/help_topic_generators.cpp:454
+#: src/help/help_topic_generators.cpp:453
 #, fuzzy
 #| msgid "Base units: "
 msgid "Base units:"
 msgstr "基本單位："
 
-#: src/help/help_topic_generators.cpp:472
+#: src/help/help_topic_generators.cpp:471
 #, fuzzy
 #| msgid "Variations: "
 msgid "Variations:"
 msgstr "變體："
 
-#: src/help/help_topic_generators.cpp:499
+#: src/help/help_topic_generators.cpp:498
 msgid "race^Miscellaneous"
 msgstr "其它"
 
-#: src/help/help_topic_generators.cpp:501
+#: src/help/help_topic_generators.cpp:500
 #, fuzzy
 #| msgid "Race: "
 msgid "Race:"
 msgstr "種族："
 
-#: src/help/help_topic_generators.cpp:537
-#: src/help/help_topic_generators.cpp:547
+#: src/help/help_topic_generators.cpp:536
+#: src/help/help_topic_generators.cpp:546
 msgid "(1 of):"
 msgid_plural "(random $number of):"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/help/help_topic_generators.cpp:560
+#: src/help/help_topic_generators.cpp:559
 #, fuzzy
 #| msgid "Abilities: "
 msgid "Abilities:"
 msgstr "技能："
 
-#: src/help/help_topic_generators.cpp:586
+#: src/help/help_topic_generators.cpp:585
 #, fuzzy
 #| msgid "Ability Upgrades: "
 msgid "Ability Upgrades:"
@@ -10171,131 +10164,131 @@ msgstr "技能升級："
 #. TRANSLATORS: This string is used in the help page of a single unit. If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:616
+#: src/help/help_topic_generators.cpp:615
 msgid "HP:"
 msgstr "生命值："
 
 #. TRANSLATORS: This string is used in the help page of a single unit. If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:620
+#: src/help/help_topic_generators.cpp:619
 msgid "Moves:"
 msgstr "移動點數："
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:625
+#: src/help/help_topic_generators.cpp:624
 msgid "Vision:"
 msgstr "視野："
 
 #. TRANSLATORS: This string is used in the help page of a single unit. If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:631
+#: src/help/help_topic_generators.cpp:630
 msgid "Jamming:"
 msgstr "干擾："
 
 #. TRANSLATORS: This string is used in the help page of a single unit. If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:636
+#: src/help/help_topic_generators.cpp:635
 msgid "Cost:"
 msgstr "價格："
 
 #. TRANSLATORS: This string is used in the help page of a single unit. If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:640
+#: src/help/help_topic_generators.cpp:639
 msgid "Alignment:"
 msgstr "立場："
 
 #. TRANSLATORS: This string is used in the help page of a single unit. It uses
 #. non-breaking spaces to prevent unpleasant line breaks (issue #3256). In the
 #. translation use non-breaking spaces as appropriate for the target language.
-#: src/help/help_topic_generators.cpp:647
+#: src/help/help_topic_generators.cpp:646
 msgid "Required XP:"
 msgstr "升級所需經驗值："
 
 # 雖然這邊是寫「Attack Type」，但在說明敘述中大部分是寫damage type，為了避免混淆還是翻成「傷害類型」。
-#: src/help/help_topic_generators.cpp:665
+#: src/help/help_topic_generators.cpp:664
 #, fuzzy
 #| msgid "Attack Type"
 msgid "Attacks"
 msgstr "傷害類型"
 
 # 雖然這邊是寫「Attack Type」，但在說明敘述中大部分是寫damage type，為了避免混淆還是翻成「傷害類型」。
-#: src/help/help_topic_generators.cpp:668
+#: src/help/help_topic_generators.cpp:667
 #, fuzzy
 #| msgid "Attack Type"
 msgid "Attacks per turn: "
 msgstr "傷害類型"
 
-#: src/help/help_topic_generators.cpp:687
+#: src/help/help_topic_generators.cpp:686
 msgid "Name"
 msgstr ""
 
 # 這用來表示幫助中單位頁的「傷害×次數」那行。
-#: src/help/help_topic_generators.cpp:688
+#: src/help/help_topic_generators.cpp:687
 msgid "Strikes"
 msgstr "傷害×次數"
 
-#: src/help/help_topic_generators.cpp:689
+#: src/help/help_topic_generators.cpp:688
 msgid "Range"
 msgstr "範圍"
 
-#: src/help/help_topic_generators.cpp:690
+#: src/help/help_topic_generators.cpp:689
 msgid "Type"
 msgstr "傷害類型"
 
-#: src/help/help_topic_generators.cpp:691
+#: src/help/help_topic_generators.cpp:690
 msgid "Special"
 msgstr "特殊效果"
 
-#: src/help/help_topic_generators.cpp:713
+#: src/help/help_topic_generators.cpp:712
 msgid "uses $num attack"
 msgid_plural "uses $num attacks"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/help/help_topic_generators.cpp:793
+#: src/help/help_topic_generators.cpp:792
 msgid "Resistances"
 msgstr "抗性"
 
 # 雖然這邊是寫「Attack Type」，但在說明敘述中大部分是寫damage type，為了避免混淆還是翻成「傷害類型」。
-#: src/help/help_topic_generators.cpp:798
+#: src/help/help_topic_generators.cpp:797
 msgid "Attack Type"
 msgstr "傷害類型"
 
-#: src/help/help_topic_generators.cpp:799
+#: src/help/help_topic_generators.cpp:798
 msgid "Resistance"
 msgstr "抗性"
 
-#: src/help/help_topic_generators.cpp:830
+#: src/help/help_topic_generators.cpp:829
 msgid "Terrain Modifiers"
 msgstr "地形影響"
 
-#: src/help/help_topic_generators.cpp:834
+#: src/help/help_topic_generators.cpp:833
 msgid "Terrain"
 msgstr "地形"
 
-#: src/help/help_topic_generators.cpp:835
+#: src/help/help_topic_generators.cpp:834
 msgid "Defense"
 msgstr "防禦力"
 
-#: src/help/help_topic_generators.cpp:836
+#: src/help/help_topic_generators.cpp:835
 msgid "Movement Cost"
 msgstr "移動成本"
 
-#: src/help/help_topic_generators.cpp:837
+#: src/help/help_topic_generators.cpp:836
 msgid "Defense Cap"
 msgstr "防禦上限"
 
-#: src/help/help_topic_generators.cpp:838
+#: src/help/help_topic_generators.cpp:837
 msgid "Vision Cost"
 msgstr "視野成本"
 
-#: src/help/help_topic_generators.cpp:839
+#: src/help/help_topic_generators.cpp:838
 msgid "Jamming Cost"
 msgstr "干擾成本"
 

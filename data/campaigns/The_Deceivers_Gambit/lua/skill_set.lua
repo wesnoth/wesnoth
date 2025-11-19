@@ -249,7 +249,7 @@ local skill_set = {
             id          = "skill_cataclysm",
             label       = label(_"Cataclysm"),
             image       = "icons/cataclysm.png",
-            description = header_spell().._"Spend <span color='#00bbe6' style='italic'>99 XP</span> and <span color='#c06a61' style='italic'>your attack</span> to blast everything in a 5-hex radius. Units (except Delfador) will be reduced\n          to 1hp. Dries water, melts snow, burns forest, and levels castles/villages.",
+            description = header_spell().._"Spend <span color='#00bbe6' style='italic'>99 XP</span> and <span color='#c06a61' style='italic'>your attack</span> to blast everything in a 5-hex radius. Units (except Delfador) will be reduced\n          to 1 HP. Dries water, melts snow, burns forest, and levels castles/villages.",
             xp_cost=99, atk_cost=1,
         },
     },
