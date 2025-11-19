@@ -22,6 +22,7 @@
 #include "sdl/utils.hpp"
 #include "color.hpp"
 #include "log.hpp"
+#include "utils_simd.hpp"
 #include "xBRZ/xbrz.hpp"
 
 #include <algorithm>
@@ -36,6 +37,54 @@
 
 static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
+
+#include <iostream>
+
+namespace
+{
+	// ----------------------------------------------------
+	// PerfTimer: RAII-style performance timer testing optimizations
+	// Using an anonymous namespace keeps it private to utils.cpp.
+	// ----------------------------------------------------
+	struct PerfTimer {
+		std::chrono::time_point<std::chrono::high_resolution_clock> start;
+
+		// Static variables to persist data across function calls.
+		// The 'inline' keyword allows us to define and initialize 
+		// the static members right here (requires C++17+).
+		static inline std::chrono::time_point<std::chrono::steady_clock> last_print = std::chrono::steady_clock::now();
+		static inline double accumulated_ms = 0.0;
+		static inline long call_count = 0;
+
+		PerfTimer() : start(std::chrono::high_resolution_clock::now()) {}
+
+		~PerfTimer() {
+			auto end = std::chrono::high_resolution_clock::now();
+			std::chrono::duration<double, std::milli> elapsed = end - start;
+
+			accumulated_ms += elapsed.count();
+			call_count++;
+
+			auto now = std::chrono::steady_clock::now();
+			// Check if 5 seconds have elapsed
+			auto diff_seconds = std::chrono::duration_cast<std::chrono::seconds>(now - last_print).count();
+
+			if (diff_seconds >= 5) {
+				// Note: I've added a new line at the end to match your request for " " 
+				// but also included the useful performance data.
+				std::cout << "[Perf]: "
+					<< accumulated_ms << "ms total time spent over "
+					<< call_count << " calls (Avg: "
+					<< (accumulated_ms / call_count) << "ms)" << " " << std::endl;
+
+				// Reset trackers
+				last_print = now;
+				accumulated_ms = 0;
+				call_count = 0;
+			}
+		}
+	};
+}
 
 version_info sdl::get_version()
 {
@@ -705,8 +754,10 @@ void adjust_surface_alpha_add(surface& nsurf, int amount)
 
 void mask_surface(surface& nsurf, const surface& nmask, bool* empty_result, const std::string& filename)
 {
+//	PerfTimer timer;
+
 	if(nsurf == nullptr) {
-		*empty_result = true;
+		if (empty_result) *empty_result = true;
 		return;
 	}
 	if(nmask == nullptr) {
@@ -732,25 +783,27 @@ void mask_surface(surface& nsurf, const surface& nmask, bool* empty_result, cons
 		surface_lock lock(nsurf);
 		const_surface_lock mlock(nmask);
 
-		uint32_t* beg = lock.pixels();
-		uint32_t* end = beg + nsurf.area();
-		const uint32_t* mbeg = mlock.pixels();
-		const uint32_t* mend = mbeg + nmask->w*nmask->h;
+		uint32_t* surf_ptr = lock.pixels();
+		const uint32_t* mask_ptr = mlock.pixels();
+		const int total_pixels = std::min<int>(nsurf.area(), nmask->w * nmask->h);
 
-		while(beg != end && mbeg != mend) {
-			auto [r, g, b, alpha] = color_t::from_argb_bytes(*beg);
+		bool simd_used = false;
 
-			uint8_t malpha = (*mbeg) >> 24;
-			if (alpha > malpha) {
-				alpha = malpha;
+		// Attempt SIMD (SSE2 or NEON)
+		simd_used = mask_surface_simd(surf_ptr, mask_ptr, total_pixels, empty);
+
+		if (!simd_used) { // SCALAR FALLBACK PATH (Runs only if SIMD was not available/viable)
+			for (int i = 0; i < total_pixels; ++i) {
+				const uint32_t surf_pixel = surf_ptr[i];
+				const uint32_t mask_alpha = mask_ptr[i] >> 24;
+				const uint32_t surf_alpha = surf_pixel >> 24;
+
+				const uint32_t alpha = std::min(surf_alpha, mask_alpha);
+				if (alpha) empty = false;
+
+				// Write the pixel back with the new alpha
+				surf_ptr[i] = (alpha << 24) | (surf_pixel & 0x00FFFFFF);
 			}
-			if(alpha)
-				empty = false;
-
-			*beg = (alpha << 24) + (r << 16) + (g << 8) + b;
-
-			++beg;
-			++mbeg;
 		}
 	}
 	if(empty_result)
@@ -759,6 +812,8 @@ void mask_surface(surface& nsurf, const surface& nmask, bool* empty_result, cons
 
 bool in_mask_surface(const surface& nsurf, const surface& nmask)
 {
+//	PerfTimer timer;
+
 	if(nsurf == nullptr) {
 		return false;
 	}
@@ -771,28 +826,36 @@ bool in_mask_surface(const surface& nsurf, const surface& nmask)
 		return false;
 	}
 
+	bool is_contained = true; // Are all opaque pixels contained inside mask?
 	{
 		const_surface_lock lock(nsurf);
 		const_surface_lock mlock(nmask);
 
-		const uint32_t* mbeg = mlock.pixels();
-		const uint32_t* mend = mbeg + nmask->w*nmask->h;
-		const uint32_t* beg = lock.pixels();
-		// no need for 'end', because both surfaces have same size
+		const uint32_t* surf_ptr = lock.pixels();
+		const uint32_t* mask_ptr = mlock.pixels();
+		const int total_pixels = std::min<int>(nsurf.area(), nmask->w * nmask->h);
 
-		while(mbeg != mend) {
-			uint8_t malpha = (*mbeg) >> 24;
-			if(malpha == 0) {
-				uint8_t alpha = (*beg) >> 24;
-				if (alpha)
-					return false;
+		bool simd_used = false;
+
+		// Attempt SIMD. Note: If SIMD finds a violation, it sets is_contained=false and returns true.
+		simd_used = in_mask_surface_simd(surf_ptr, mask_ptr, total_pixels, is_contained);
+
+		if (!simd_used) { // SCALAR FALLBACK
+			for (int i = 0; i < total_pixels; ++i) {
+				const uint32_t mask_alpha = mask_ptr[i] >> 24;
+
+				// If mask is transparent (alpha=0), surface must also be transparent
+				if (mask_alpha == 0) {
+					const uint32_t surf_alpha = surf_ptr[i] >> 24;
+					if (surf_alpha > 0) {
+						is_contained = false;
+						break; // Violation found, exit immediately
+					}
+				}
 			}
-			++mbeg;
-			++beg;
 		}
 	}
-
-	return true;
+	return is_contained;
 }
 
 void light_surface(surface& nsurf, const surface &lightmap)
