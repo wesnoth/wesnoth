@@ -138,30 +138,6 @@ namespace {
 		});
 	}
 
-	/**
-	 * Pushes the argument at @a arg_index to the Lua stack.
-	 * When destroyed, the top argument will be popped from the stack.
-	 *
-	 * @todo expose this more widely
-	 * @todo support different get* functions?
-	 */
-	class scoped_lua_argument
-	{
-	public:
-		scoped_lua_argument(lua_State* L, int arg_index) : state_(L)
-		{
-			lua_geti(state_, -1, arg_index);
-		}
-
-		~scoped_lua_argument()
-		{
-			lua_pop(state_, 1);
-		}
-
-	private:
-		lua_State* const state_;
-	};
-
 	template<typename Func>
 	auto push_arg_and_invoke(lua_State* L, int arg_index, const Func& func)
 	{

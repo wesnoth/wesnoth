@@ -508,6 +508,23 @@ std::string register_vconfig_metatable(lua_State *L)
 
 } // end namespace lua_common
 
+scoped_lua_argument::scoped_lua_argument(lua_State* L, int arg_index)
+	: state_(L)
+{
+	lua_geti(state_, -1, arg_index);
+}
+
+scoped_lua_argument::scoped_lua_argument(lua_State* L, int value_index, int arg_index)
+	: state_(L)
+{
+	lua_geti(state_, value_index, arg_index);
+}
+
+scoped_lua_argument::~scoped_lua_argument()
+{
+	lua_pop(state_, 1);
+}
+
 void* operator new(std::size_t sz, lua_State *L, int nuv)
 {
 	return lua_newuserdatauv(L, sz, nuv);
@@ -894,9 +911,8 @@ std::set<map_location> luaW_check_locationset(lua_State* L, int idx)
 	lua_len(L, idx);
 	int len = luaL_checkinteger(L, -1);
 	for(int i = 1; i <= len; i++) {
-		lua_geti(L, idx, i);
+		const auto arg = scoped_lua_argument{L, idx, i};
 		locs.insert(luaW_checklocation(L, -1));
-		lua_pop(L, 1);
 	}
 	return locs;
 

@@ -42,6 +42,27 @@ namespace lua_common {
 
 }
 
+/**
+ * Pushes the argument at @a arg_index to the Lua stack.
+ * When destroyed, the top argument will be popped from the stack.
+ *
+ * @todo support different get* functions?
+ */
+class scoped_lua_argument
+{
+public:
+	scoped_lua_argument(lua_State* L, int arg_index);
+	scoped_lua_argument(lua_State* L, int value_index, int arg_index);
+
+	~scoped_lua_argument();
+
+	scoped_lua_argument(const scoped_lua_argument&) = delete;
+	scoped_lua_argument& operator==(const scoped_lua_argument&) = delete;
+
+private:
+	lua_State* const state_;
+};
+
 void* operator new(std::size_t sz, lua_State *L, int nuv = 0);
 void operator delete(void* p, lua_State *L, int nuv);
 
