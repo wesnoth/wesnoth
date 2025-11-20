@@ -543,15 +543,83 @@ bool foreach_self_active_ability(const unit& un, map_location loc, const TCheck&
  * @returns true iff any of the handlers returned true.
  */
 template<typename TCheck, typename THandler>
-bool foreach_active_ability(const unit& un, map_location loc, const TCheck& quick_check, const THandler& handler)
+bool foreach_active_ability(const unit& un, map_location loc, const TCheck& quick_check, const THandler& handler, bool skip_adjacent = false)
 {
 	// Check that the unit has an ability of tag_name type which meets the conditions to be active.
 	// If so, return true.
 	if (foreach_self_active_ability(un, loc, quick_check, handler)) {
 		return true;
 	}
-	return foreach_distant_active_ability(un, loc, quick_check, handler);
+	if (!skip_adjacent && foreach_distant_active_ability(un, loc, quick_check, handler)) {
+		return true;
+	}
+	return false;
 }
+
+auto return_true = [](const auto&...) { return true; };
+
+/*
+ * executes the given handler for each active special/ability affecting an attack during combat.
+ * a simple_check parameter can be as a predicate to filter out the abilities/specials that we
+ * are not interested in, simple_check is executed before checking whether a given ability is active.
+ * the @a skip_adjacent parameter can be set to true if we are not intereted in abilities from
+ * adjacent units, used by the [filter_special] code as an optimisation.
+ */
+template<typename TCheck, typename THandler>
+bool foreach_active_special(
+	const const_attack_ptr& self_attack,
+	const unit_const_ptr& self,
+	const map_location& self_loc,
+	const const_attack_ptr& other_attack,
+	const unit_const_ptr& other,
+	const map_location& other_loc,
+	const TCheck& quick_check,
+	const THandler& handler,
+	bool skip_adjacent = false)
+{
+	//search in the attacks [specials]
+	if (self_attack) {
+		for (const ability_ptr& p_ab : self_attack->specials()) {
+			if (quick_check(p_ab)) {
+				if (attack_type::special_active_impl(self_attack, other_attack, *p_ab, unit_ability_t::affects_t::SELF)) {
+					if (default_false(handler, p_ab)) {
+						return true;
+					}
+				}
+			}
+		}
+	}
+	//search in the opponents attacks [specials]
+	if (other_attack) {
+		for (const ability_ptr& p_ab : other_attack->specials()) {
+			if (quick_check(p_ab)) {
+				if (attack_type::special_active_impl(other_attack, self_attack, *p_ab, unit_ability_t::affects_t::OTHER)) {
+					if (default_false(handler, p_ab)) {
+						return true;
+					}
+				}
+			}
+		}
+	}
+	//search in unit [abilities] including abilities tought via loadship like abilities.
+	if (self) {
+		bool match = foreach_active_ability(*self, self_loc, quick_check,
+			[&](const ability_ptr& p_ab, const unit&) {
+				return attack_type::special_active_impl(self_attack, other_attack, *p_ab, unit_ability_t::affects_t::SELF) && default_false(handler, p_ab);
+			}, skip_adjacent);
+		if (match) { return true; }
+	}
+	//search in the opponents [abilities] including abilities tought via loadship like abilities.
+	if (other) {
+		bool match = foreach_active_ability(*other, other_loc, quick_check,
+			[&](const ability_ptr& p_ab, const unit&) {
+				return attack_type::special_active_impl(other_attack, self_attack, *p_ab, unit_ability_t::affects_t::OTHER) && default_false(handler, p_ab);
+			}, skip_adjacent);
+		if (match) { return true; }
+	}
+	return false;
+}
+
 
 }
 
@@ -906,34 +974,6 @@ template std::pair<int, map_location> active_ability_list::get_extremum<std::gre
  *
  */
 
-/**
- * Returns whether or not @a *this has a special with a tag or id equal to
- * @a special. If @a simple_check is set to true, then the check is merely
- * for being present. Otherwise (the default), the check is for a special
- * active in the current context (see set_specials_context), including
- * specials obtained from the opponent's attack.
- */
-bool attack_type::has_special(const std::string& special) const
-{
-
-	for(const ability_ptr& p_ab : specials(special)) {
-		if(special_active(*p_ab, AFFECTS::SELF)) {
-			return true;
-		}
-	}
-
-	// Skip checking the opponent's attack?
-	if ( !other_attack_ ) {
-		return false;
-	}
-
-	for(const ability_ptr& p_ab : other_attack_->specials(special)) {
-		if(other_attack_->special_active(*p_ab, AFFECTS::OTHER)) {
-			return true;
-		}
-	}
-	return false;
-}
 
 /**
  * Returns the currently active specials as an ability list, given the current
@@ -1568,25 +1608,6 @@ bool unit::get_adj_ability_bool(const unit_ability_t& ab, std::size_t dist, int 
 	}
 	return (affects_side(ab, side(), from.side()) && from.ability_active_impl(ab, from_loc) && ability_affects_adjacent(ab, dist, dir, loc, from));
 }
-
-bool attack_type::has_ability_impl(
-	const const_attack_ptr& self_attack,
-	const unit_const_ptr& self,
-	const map_location& self_loc,
-	const const_attack_ptr& other_attack,
-	AFFECTS whom,
-	const std::string& tag_name)
-{
-
-	return foreach_active_ability(*self, self_loc,
-		[&](const ability_ptr& p_ab) {
-			return p_ab->tag() == tag_name;
-		},
-		[&](const ability_ptr& p_ab, const unit&) {
-			return special_active_impl(self_attack, other_attack, *p_ab, whom);
-		});
-}
-
 /**
  * Returns whether or not @a *this has a special ability with a tag or id equal to
  * @a special. the Check is for a special ability
@@ -1598,112 +1619,50 @@ bool attack_type::has_special_or_ability(const std::string& special) const
 	//Now that filter_(second)attack in event supports special_id/type_active, including abilities used as weapons,
 	//these can be detected even in placeholder attacks generated to compensate for the lack of attack in defense against an attacker using a range attack not possessed by the defender.
 	//It is therefore necessary to check if the range is not empty (proof that the weapon is not a placeholder) to decide if has_weapon_ability can be returned or not.
-	if(range().empty()){
+	if (range().empty()) {
 		return false;
 	}
-	if(has_special(special)) {
-		return true;
+
+	auto quick_check = [&](const ability_ptr& p_ab) {
+		return p_ab->tag() == special;
+	};
+
+	return foreach_active_special(
+		shared_from_this(),
+		self_,
+		self_loc_,
+		other_attack_,
+		other_,
+		other_loc_,
+		quick_check,
+		return_true);
+}
+
+bool attack_type::has_active_special_or_ability_id(const std::string& special) const
+{
+	//Now that filter_(second)attack in event supports special_id/type_active, including abilities used as weapons,
+	//these can be detected even in placeholder attacks generated to compensate for the lack of attack in defense against an attacker using a range attack not possessed by the defender.
+	//It is therefore necessary to check if the range is not empty (proof that the weapon is not a placeholder) to decide if has_weapon_ability can be returned or not.
+	if (range().empty()) {
+		return false;
 	}
 
-	if(self_&& has_ability_impl(shared_from_this(), self_, self_loc_, other_attack_, AFFECTS::SELF, special)) {
-		return true;
-	}
+	auto quick_check = [&](const ability_ptr& p_ab) {
+		return p_ab->id() == special;
+	};
 
-	if(other_&& has_ability_impl(other_attack_, other_, other_loc_, shared_from_this(), AFFECTS::OTHER, special)) {
-		return true;
-	}
-	return false;
+	return foreach_active_special(
+		shared_from_this(),
+		self_,
+		self_loc_,
+		other_attack_,
+		other_,
+		other_loc_,
+		quick_check,
+		return_true);
 }
 //end of emulate weapon special functions.
 
-namespace
-{
-	bool special_checking(const std::string& special_id, const std::string& tag_name, const std::set<std::string>& filter_special, const std::set<std::string>& filter_special_id, const std::set<std::string>& filter_special_type)
-	{
-		if(!filter_special.empty() && filter_special.count(special_id) == 0 && filter_special.count(tag_name) == 0)
-			return false;
-
-		if(!filter_special_id.empty() && filter_special_id.count(special_id) == 0)
-			return false;
-
-		if(!filter_special_type.empty() && filter_special_type.count(tag_name) == 0)
-			return false;
-
-		return true;
-	}
-}
-
-bool attack_type::special_distant_filtering_impl(
-	const const_attack_ptr& self_attack,
-	const unit_const_ptr& self,
-	const map_location& self_loc,
-	const const_attack_ptr& other_attack,
-	AFFECTS whom,
-	const config & filter,
-	bool sub_filter)
-{
-	const std::set<std::string> filter_special = utils::split_set(filter["special_active"].str());
-	const std::set<std::string> filter_special_id =  utils::split_set(filter["special_id_active"].str());
-	const std::set<std::string> filter_special_type = utils::split_set(filter["special_type_active"].str());
-
-	auto handler = [&](const ability_ptr& p_ab, const unit&) {
-		return special_active_impl(self_attack, other_attack, *p_ab, whom);
-	};
-	auto quick_check = [&](const ability_ptr& p_ab) {
-		bool special_check = sub_filter ? p_ab->matches_filter(filter) : special_checking(p_ab->id(), p_ab->tag(), filter_special, filter_special_id, filter_special_type);
-		return special_check;
-	};
-
-
-	bool check_adjacent = sub_filter ? filter["affect_adjacent"].to_bool(true) : true;
-	if (!check_adjacent) {
-		return foreach_self_active_ability(*self, self_loc, quick_check, handler);
-	}
-	return foreach_active_ability(*self, self_loc, quick_check, handler);
-}
-
-bool attack_type::has_filter_special_or_ability(const config& filter, bool simple_check) const
-{
-	if(range().empty()){
-		return false;
-	}
-	const std::set<std::string> filter_special = simple_check ? utils::split_set(filter["special"].str()) : utils::split_set(filter["special_active"].str());
-	const std::set<std::string> filter_special_id = simple_check ? utils::split_set(filter["special_id"].str()) : utils::split_set(filter["special_id_active"].str());
-	const std::set<std::string> filter_special_type = simple_check ? utils::split_set(filter["special_type"].str()) : utils::split_set(filter["special_type_active"].str());
-	using namespace utils::config_filters;
-	for(const auto& p_ab : specials()) {
-		if(special_checking(p_ab->id(), p_ab->tag(), filter_special, filter_special_id, filter_special_type)) {
-			if(simple_check) {
-				return true;
-			} else if(special_active(*p_ab, AFFECTS::SELF)) {
-				return true;
-			}
-		}
-	}
-
-	if (simple_check) {
-		return false;
-	}
-
-	if(other_attack_) {
-		for(const auto& p_ab : other_attack_->specials()) {
-			if(special_checking(p_ab->id(), p_ab->tag(), filter_special, filter_special_id, filter_special_type)) {
-				if(other_attack_->special_active(*p_ab, AFFECTS::OTHER)) {
-					return true;
-				}
-			}
-		}
-	}
-
-	if(self_ && special_distant_filtering_impl(shared_from_this(), self_, self_loc_, other_attack_, AFFECTS::SELF, filter, false)) {
-		return true;
-	}
-
-	if(other_ && special_distant_filtering_impl(other_attack_, other_, other_loc_, shared_from_this(), AFFECTS::OTHER, filter, false)) {
-		return true;
-	}
-	return false;
-}
 
 namespace
 {
@@ -1917,33 +1876,22 @@ bool attack_type::has_special_or_ability_with_filter(const config & filter) cons
 		return utils::find_if(specials(), [&](const ability_ptr& p_ab) { return p_ab->matches_filter(filter); });
 	}
 
-	using namespace utils::config_filters;
-	for(const auto& p_ab : specials()) {
-		if(p_ab->matches_filter(filter)) {
-			if(special_active(*p_ab, AFFECTS::SELF)) {
-				return true;
-			}
-		}
-	}
+	bool skip_adjacent = !filter["affect_adjacent"].to_bool(true);
 
-	if(other_attack_) {
-		for(const auto& p_ab : other_attack_->specials()) {
-			if(p_ab->matches_filter(filter)) {
-				if(other_attack_->special_active(*p_ab, AFFECTS::OTHER)) {
-					return true;
-				}
-			}
-		}
-	}
+	auto quick_check = [&](const ability_ptr& p_ab) {
+		return p_ab->matches_filter(filter);
+	};
 
-	if(self_ && special_distant_filtering_impl(shared_from_this(), self_, self_loc_, other_attack_, AFFECTS::SELF, filter, true)) {
-		return true;
-	}
-
-	if(other_ && special_distant_filtering_impl(other_attack_, other_, other_loc_, shared_from_this(), AFFECTS::OTHER, filter, true)) {
-		return true;
-	}
-	return false;
+	return foreach_active_special(
+		shared_from_this(),
+		self_,
+		self_loc_,
+		other_attack_,
+		other_,
+		other_loc_,
+		quick_check,
+		return_true,
+		skip_adjacent);
 }
 
 bool attack_type::special_active(const unit_ability_t& ab, AFFECTS whom) const
