@@ -102,15 +102,15 @@ namespace t_translation {
 	 * and caches the wildcard info required for matching.
 	 */
 	struct ter_match{
-		ter_match();
+		ter_match() = default;
 		ter_match(std::string_view str, const ter_layer filler = NO_LAYER);
 		ter_match(const terrain_code& tcode);
 
 		ter_list terrain;
 		ter_list mask;
 		ter_list masked_terrain;
-		bool has_wildcard;
-		bool is_empty;
+		bool has_wildcard = false;
+		bool is_empty = true;
 	};
 
 	/**  Contains an x and y coordinate used for starting positions in maps. */
