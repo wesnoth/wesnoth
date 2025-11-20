@@ -161,10 +161,9 @@ SIDE_SETTER("scroll_to_leader", bool) {
 }
 
 static void reinit_flag_for_team(lua_State* L, const team& t) {
-   auto* disp = lua_kernel_base::get_lua_kernel<game_lua_kernel>(L).get_display();
-   if(disp) {
-	   disp->reinit_flags_for_team(t);
-   }
+	if(auto disp = game_display::get_singleton()) {
+		disp->reinit_flags_for_team(t);
+	}
 }
 
 SIDE_GETTER("color", std::string) {
