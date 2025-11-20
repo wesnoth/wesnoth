@@ -619,16 +619,15 @@ bool unit::ability_affects_adjacent(const unit_ability_t& ab, std::size_t dist, 
 
 	assert(dir >=0 && dir <= 5);
 	map_location::direction direction{ dir };
-	std::size_t radius = 1;
 
 	for (const config &i : ab.cfg().child_range("affect_adjacent"))
 	{
 		if(i["radius"] != "all_map") {
-			radius = i["radius"].to_int(1);
+			int radius = i["radius"].to_int(1);
 			if(radius <= 0) {
 				continue;
 			}
-			if(dist > radius) {
+			if(dist > size_t(radius)) {
 				continue;
 			}
 		}
