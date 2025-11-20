@@ -109,7 +109,6 @@
 #include "units/ptr.hpp"                // for unit_const_ptr, unit_ptr
 #include "units/types.hpp"              // for unit_type_data, unit_types, etc
 #include "utils/general.hpp"
-#include "utils/scope_exit.hpp"
 #include "variable.hpp"                 // for vconfig, etc
 #include "variable_info.hpp"
 #include "video.hpp"                    // only for faked
@@ -215,6 +214,11 @@ std::vector<int> game_lua_kernel::get_sides_vector(const vconfig& cfg)
 
 	side_filter filter(sides.str(), &game_state_);
 	return filter.get_teams();
+}
+
+scoped_lua_argument game_lua_kernel::push_wml_events_table(lua_State* L) const
+{
+	return {L, LUA_REGISTRYINDEX, EVENT_TABLE};
 }
 
 namespace {
@@ -6079,11 +6083,8 @@ static int intf_run_event_wml(lua_State* L)
 int game_lua_kernel::save_wml_event()
 {
 	lua_State* L = mState;
-	lua_geti(L, LUA_REGISTRYINDEX, EVENT_TABLE);
+	const auto events = push_wml_events_table(L);
 	int evtIdx = lua_gettop(L);
-	ON_SCOPE_EXIT(L) {
-		lua_pop(L, 1);
-	};
 	lua_pushcfunction(L, intf_run_event_wml);
 	return luaL_ref(L, evtIdx);
 }
@@ -6091,11 +6092,8 @@ int game_lua_kernel::save_wml_event()
 int game_lua_kernel::save_wml_event(const std::string& name, const std::string& id, const std::string& code)
 {
 	lua_State* L = mState;
-	lua_geti(L, LUA_REGISTRYINDEX, EVENT_TABLE);
+	const auto events = push_wml_events_table(L);
 	int evtIdx = lua_gettop(L);
-	ON_SCOPE_EXIT(L) {
-		lua_pop(L, 1);
-	};
 	std::ostringstream lua_name;
 	lua_name << "event ";
 	if(name.empty()) {
@@ -6117,11 +6115,8 @@ int game_lua_kernel::save_wml_event(int idx)
 {
 	lua_State* L = mState;
 	idx = lua_absindex(L, idx);
-	lua_geti(L, LUA_REGISTRYINDEX, EVENT_TABLE);
+	const auto events = push_wml_events_table(L);
 	int evtIdx = lua_gettop(L);
-	ON_SCOPE_EXIT(L) {
-		lua_pop(L, 1);
-	};
 	lua_pushvalue(L, idx);
 	return luaL_ref(L, evtIdx);
 }
@@ -6129,18 +6124,14 @@ int game_lua_kernel::save_wml_event(int idx)
 void game_lua_kernel::clear_wml_event(int ref)
 {
 	lua_State* L = mState;
-	lua_geti(L, LUA_REGISTRYINDEX, EVENT_TABLE);
+	const auto events = push_wml_events_table(L);
 	luaL_unref(L, -1, ref);
-	lua_pop(L, 1);
 }
 
 bool game_lua_kernel::run_wml_event(int ref, const vconfig& args, const game_events::queued_event& ev, bool* out)
 {
 	lua_State* L = mState;
-	lua_geti(L, LUA_REGISTRYINDEX, EVENT_TABLE);
-	ON_SCOPE_EXIT(L) {
-		lua_pop(L, 1);
-	};
+	const auto events = push_wml_events_table(L);
 	lua_geti(L, -1, ref);
 	if(lua_isnil(L, -1)) return false;
 	luaW_pushvconfig(L, args);
