@@ -192,14 +192,6 @@ public:
 	// Configured as a bit field, in case that is useful.
 	using AFFECTS = unit_ability_t::affects_t;
 	/**
-	 * Filter a list of abilities or weapon specials
-	 * @param ab the ability/special
-	 * @param filter config contain list of attribute who are researched in cfg
-	 *
-	 * @return true if all attribute with ability checked
-	 */
-	bool special_matches_filter(const unit_ability_t& ab, const config & filter) const;
-	/**
 	 * Select best damage type based on frequency count for replacement_type.
 	 *
 	 * @param damage_type_list list of [damage_type] to check.
@@ -263,50 +255,7 @@ public:
 		const std::set<std::string>& checking_tags={},
 		const std::string& affect_adjacents=""
 	);
-	/** check_self_abilities_impl : return an boolean value for checking of activities of abilities used like weapon
-	 * @return True if the special @a tag_name is active.
-	 * @param self_attack the attack used by unit checked in this function.
-	 * @param other_attack the attack used by opponent to unit checked.
-	 * @param ab the ability/special checked
-	 * @param u the unit checked.
-	 * @param loc location of the unit checked.
-	 * @param whom determine if unit affected or not by special ability.
-	 */
-	static bool check_self_abilities_impl(
-		const const_attack_ptr& self_attack,
-		const const_attack_ptr& other_attack,
-		const unit_ability_t& ab,
-		const unit_const_ptr& u,
-		const map_location& loc,
-		AFFECTS whom
-	);
 
-
-	/** check_adj_abilities_impl : return an boolean value for checking of activities of abilities used like weapon in unit adjacent to fighter
-	 * @return True if the special @a tag_name is active.
-	 * @param self_attack the attack used by unit who fight.
-	 * @param other_attack the attack used by opponent.
-	 * @param ab the ability/special checked
-	 * @param u the unit who is or not affected by an abilities owned by @a from.
-	 * @param from unit distant to @a u is checked.
-	 * @param dist distance between unit distant and @a u.
-	 * @param dir direction to research a unit distant to @a u.
-	 * @param loc location of the unit checked.
-	 * @param from_loc location of the unit distant to @a u.
-	 * @param whom determine if unit affected or not by special ability.
-	 */
-	static bool check_adj_abilities_impl(
-		const const_attack_ptr& self_attack,
-		const const_attack_ptr& other_attack,
-		const unit_ability_t& ab,
-		const unit_const_ptr& u,
-		const unit& from,
-		std::size_t dist,
-		int dir,
-		const map_location& loc,
-		const map_location& from_loc,
-		AFFECTS whom
-	);
 
 	static bool special_active_impl(
 		const const_attack_ptr& self_attack,

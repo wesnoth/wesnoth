@@ -63,6 +63,7 @@ public:
 		std::string help_topic_id;
 	};
 
+	//Generates a unique id to be used to identify the help page for this ability.
 	static std::string get_help_topic_id(const config& cfg);
 	std::string get_help_topic_id() const;
 
@@ -70,8 +71,12 @@ public:
 	std::string get_name(bool is_inactive = false, unit_race::GENDER = unit_race::MALE) const;
 	std::string get_description(bool is_inactive = false, unit_race::GENDER = unit_race::MALE) const;
 
+	//checks whether the ability is active according to the active_on= attribute.
 	bool active_on_matches(bool student_is_attacker) const;
 
+
+	//checks whether the ability matches the filter specified in a [filter_special] or [filter_ability]
+	bool matches_filter(const config& filter) const;
 	void write(config& abilities_cfg);
 
 

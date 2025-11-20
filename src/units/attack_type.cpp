@@ -276,7 +276,7 @@ void attack_type::remove_special_by_filter(const config& filter)
 {
 	auto i = specials_.begin();
 	while (i != specials_.end()) {
-		if(special_matches_filter(**i, filter)) {
+		if((**i).matches_filter(filter)) {
 			i = specials_.erase(i);
 		} else {
 			++i;
