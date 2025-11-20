@@ -199,9 +199,12 @@ public:
 
 	struct ability_metadata
 	{
+		//TODO:most of the member of this class seem to be unused.
 		explicit ability_metadata(const config& cfg);
 
 		std::string id;
+
+		std::string help_topic_id;
 
 		t_string name;
 		t_string name_inactive;

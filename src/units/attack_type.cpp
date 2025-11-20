@@ -276,7 +276,7 @@ void attack_type::remove_special_by_filter(const config& filter)
 {
 	auto i = specials_.begin();
 	while (i != specials_.end()) {
-		if(special_matches_filter(**i, filter)) {
+		if((**i).matches_filter(filter)) {
 			i = specials_.erase(i);
 		} else {
 			++i;
@@ -615,52 +615,6 @@ std::string attack_type::describe_effect(const config& cfg)
 	}
 
 	return utils::format_conjunct_list("", desc);
-}
-
-attack_type::recursion_guard attack_type::update_variables_recursion(const config& special) const
-{
-	if(utils::contains(open_queries_, &special)) {
-		return recursion_guard();
-	}
-	return recursion_guard(*this, special);
-}
-
-attack_type::recursion_guard::recursion_guard() = default;
-
-attack_type::recursion_guard::recursion_guard(const attack_type& weapon, const config& special)
-	: parent(weapon.shared_from_this())
-{
-	parent->open_queries_.emplace_back(&special);
-}
-
-attack_type::recursion_guard::recursion_guard(attack_type::recursion_guard&& other) noexcept
-{
-	std::swap(parent, other.parent);
-}
-
-attack_type::recursion_guard::operator bool() const {
-	return bool(parent);
-}
-
-attack_type::recursion_guard& attack_type::recursion_guard::operator=(attack_type::recursion_guard&& other) noexcept
-{
-	// This is only intended to move ownership to a longer-living variable. Assigning to an instance that
-	// already has a parent implies that the caller is going to recurse and needs a recursion allocation,
-	// but is accidentally dropping one of the allocations that it already has; hence the asserts.
-	assert(this != &other);
-	assert(!parent);
-	std::swap(parent, other.parent);
-	return *this;
-}
-
-attack_type::recursion_guard::~recursion_guard()
-{
-	if(parent) {
-		// As this only expects nested recursion, simply pop the top of the open_queries_ stack
-		// without checking that the top of the stack matches the filter passed to the constructor.
-		assert(!parent->open_queries_.empty());
-		parent->open_queries_.pop_back();
-	}
 }
 
 void attack_type::write(config& cfg) const

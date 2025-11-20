@@ -161,15 +161,6 @@ terrain_code::terrain_code(const std::string& b, const std::string& o)
 {
 }
 
-ter_match::ter_match()
-	: terrain()
-	, mask()
-	, masked_terrain()
-	, has_wildcard(false)
-	, is_empty(true)
-{
-}
-
 ter_match::ter_match(std::string_view str, const ter_layer filler)
 	: terrain(t_translation::read_list(str, filler))
 	, mask()

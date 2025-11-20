@@ -1700,14 +1700,6 @@ public:
 	 * @param loc location of the unit checked.
 	 */
 	bool get_self_ability_bool(const unit_ability_t& ab, const map_location& loc) const;
-	/** Checks whether this unit currently possesses a given ability of leadership type
-	 * @return True if the ability @a tag_name is active.
-	 * @param ab the ability checked
-	 * @param loc location of the unit checked.
-	 * @param weapon the attack used by unit checked in this function.
-	 * @param opp_weapon the attack used by opponent to unit checked.
-	 */
-	bool get_self_ability_bool_weapon(const unit_ability_t& ab, const map_location& loc, const const_attack_ptr& weapon = nullptr, const const_attack_ptr& opp_weapon = nullptr) const;
 	/** Checks whether this unit is affected by a given ability, and that that ability is active.
 	 * @return True if the ability @a tag_name is active.
 	 * @param ab the ability checked
@@ -1718,18 +1710,6 @@ public:
 	 * @param dir direction to research a unit distant to @a this.
 	 */
 	bool get_adj_ability_bool(const unit_ability_t& ab, std::size_t dist, int dir, const map_location& loc, const unit& from, const map_location& from_loc) const;
-	/** Checks whether this unit is affected by a given ability of leadership type
-	 * @return True if the ability @a tag_name is active.
-	 * @param ab the ability checked
-	 * @param loc location of the unit checked.
-	 * @param from unit adjacent to @a this is checked in case of [affect_adjacent] abilities.
-	 * @param from_loc location of the @a from unit.
-	 * @param weapon the attack used by unit checked in this function.
-	 * @param opp_weapon the attack used by opponent to unit checked.
-	 * @param dist distance between unit distant and @a this.
-	 * @param dir direction to research a unit distant to @a this.
-	 */
-	bool get_adj_ability_bool_weapon(const unit_ability_t& ab, std::size_t dist, int dir, const map_location& loc, const unit& from, const map_location& from_loc, const const_attack_ptr& weapon, const const_attack_ptr& opp_weapon) const;
 
 	/**
 	 * Gets the unit's active abilities of a particular type if it were on a specified location.
@@ -1776,8 +1756,7 @@ public:
 	 * @returns                   A list of quadruples consisting of (in order) id, base name,
 	 *                            male or female name as appropriate for the unit, and description.
 	 */
-	std::vector<std::tuple<std::string, t_string, t_string, t_string>>
-	ability_tooltips() const;
+	std::vector<unit_ability_t::tooltip_info> ability_tooltips() const;
 
 	/**
 	 * Gets the names and descriptions of this unit's abilities.
@@ -1790,7 +1769,7 @@ public:
 	 * @returns                   A list of quadruples consisting of (in order) id, base name,
 	 *                            male or female name as appropriate for the unit, and description.
 	 */
-	std::vector<std::tuple<std::string, t_string, t_string, t_string>>
+	std::vector<unit_ability_t::tooltip_info>
 	ability_tooltips(boost::dynamic_bitset<>& active_list, const map_location& loc) const;
 
 	/** Get a list of all abilities by ID. */
@@ -1822,53 +1801,7 @@ public:
 	 */
 	void remove_ability_by_attribute(const config& filter);
 
-	/**
-	 * Verify what abilities attributes match with filter.
-	 * @param ab the ability checked
-	 * @param filter the filter used for checking.
-	 */
-	bool ability_matches_filter(const unit_ability_t& ab, const config & filter) const;
-
-
 private:
-
-	/**
-	 * Helper similar to std::unique_lock for detecting when calculations such as abilities
-	 * have entered infinite recursion.
-	 *
-	 * This assumes that there's only a single thread accessing the unit, it's a lightweight
-	 * increment/decrement counter rather than a mutex.
-	 */
-	class recursion_guard {
-		friend class unit;
-		/**
-		 * Only expected to be called in update_variables_recursion(), which handles some of the checks.
-		 */
-		explicit recursion_guard(const unit& u, const config& ability);
-	public:
-		/**
-		 * Construct an empty instance, only useful for extending the lifetime of a
-		 * recursion_guard returned from unit.update_variables_recursion() by
-		 * std::moving it to an instance declared in a larger scope.
-		 */
-		explicit recursion_guard();
-
-		/**
-		 * Returns true if a level of recursion was available at the time when update_variables_recursion()
-		 * created this object.
-		 */
-		operator bool() const;
-
-		recursion_guard(recursion_guard&& other) noexcept;
-		recursion_guard(const recursion_guard& other) = delete;
-		recursion_guard& operator=(recursion_guard&&) noexcept;
-		recursion_guard& operator=(const recursion_guard&) = delete;
-		~recursion_guard();
-	private:
-		std::shared_ptr<const unit> parent;
-	};
-
-	recursion_guard update_variables_recursion(const config& ability) const;
 
 	/**
 	 * Check if an ability is active. Includes checks to prevent excessive recursion.
@@ -2014,12 +1947,6 @@ private:
 
 	std::string role_;
 	attack_list attacks_;
-	/**
-	 * While processing a recursive match, all the filters that are currently being checked, oldest first.
-	 * Each will have an instance of recursion_guard that is currently allocated permission to recurse, and
-	 * which will pop the config off this stack when the recursion_guard is finalized.
-	 */
-	mutable std::vector<const config*> open_queries_;
 
 protected:
 	// TODO: I think we actually consider this to be part of the gamestate, so it might be better if it's not mutable,
