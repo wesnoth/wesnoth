@@ -43,8 +43,9 @@ namespace lua_common {
 }
 
 /**
- * Pushes the argument at @a arg_index to the Lua stack.
- * When destroyed, the top argument will be popped from the stack.
+ * Shallow wrapper around lua_geti which pops the top variable from the
+ * Lua stack when destroyed. This is meant to be used in local contexts
+ * for quick cleanup of the stack variable.
  *
  * @todo support different get* functions?
  */
@@ -57,7 +58,7 @@ public:
 	~scoped_lua_argument();
 
 	scoped_lua_argument(const scoped_lua_argument&) = delete;
-	scoped_lua_argument& operator==(const scoped_lua_argument&) = delete;
+	scoped_lua_argument& operator=(const scoped_lua_argument&) = delete;
 
 private:
 	lua_State* const state_;

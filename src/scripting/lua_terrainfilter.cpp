@@ -139,7 +139,7 @@ namespace {
 	}
 
 	template<typename Func>
-	auto push_arg_and_invoke(lua_State* L, int arg_index, const Func& func)
+	auto invoke_with_scoped_arg(lua_State* L, int arg_index, const Func& func)
 	{
 		const auto arg = scoped_lua_argument{L, arg_index};
 		return std::invoke(func);
@@ -291,7 +291,7 @@ class cached_filter : public filter_impl
 {
 public:
 	cached_filter(lua_State* L, int res_index, known_sets_t& ks)
-		: filter_(push_arg_and_invoke(L, 2, [&] { return build_filter(L, res_index, ks); }))
+		: filter_(invoke_with_scoped_arg(L, 2, [&] { return build_filter(L, res_index, ks); }))
 		, cache_()
 	{
 		LOG_LMG << "creating cached filter";
@@ -325,7 +325,7 @@ class x_filter : public filter_impl
 {
 public:
 	x_filter(lua_State* L, int /*res_index*/, known_sets_t&)
-		: filter_(push_arg_and_invoke(L, 2, [&] { return parse_range(luaW_tostring(L, -1)); }))
+		: filter_(invoke_with_scoped_arg(L, 2, [&] { return parse_range(luaW_tostring(L, -1)); }))
 	{
 		LOG_LMG << "creating x filter";
 	}
@@ -342,7 +342,7 @@ class y_filter : public filter_impl
 {
 public:
 	y_filter(lua_State* L, int /*res_index*/, known_sets_t&)
-		: filter_(push_arg_and_invoke(L, 2, [&] { return parse_range(luaW_tostring(L, -1)); }))
+		: filter_(invoke_with_scoped_arg(L, 2, [&] { return parse_range(luaW_tostring(L, -1)); }))
 	{
 		LOG_LMG << "creating y filter";
 	}
@@ -376,7 +376,7 @@ class terrain_filter : public filter_impl
 {
 public:
 	terrain_filter(lua_State* L, int /*res_index*/, known_sets_t&)
-		: filter_(push_arg_and_invoke(L, 2, [&] { return t_translation::ter_match{luaW_tostring(L, -1)}; }))
+		: filter_(invoke_with_scoped_arg(L, 2, [&] { return t_translation::ter_match{luaW_tostring(L, -1)}; }))
 	{
 		LOG_LMG << "creating terrain filter";
 	}
@@ -398,7 +398,7 @@ class adjacent_filter : public filter_impl
 {
 public:
 	adjacent_filter(lua_State* L, int res_index, known_sets_t& ks)
-		: filter_(push_arg_and_invoke(L, 2, [&] { return build_filter(L, res_index, ks); }))
+		: filter_(invoke_with_scoped_arg(L, 2, [&] { return build_filter(L, res_index, ks); }))
 	{
 		LOG_LMG << "creating adjacent filter";
 		if(luaW_tableget(L, -1, "adjacent")) {
@@ -519,9 +519,9 @@ class radius_filter : public filter_impl
 public:
 
 	radius_filter(lua_State* L, int res_index, known_sets_t& ks)
-		: radius_(push_arg_and_invoke(L, 2, [&] { return lua_tointeger(L, -1); }))
+		: radius_(invoke_with_scoped_arg(L, 2, [&] { return lua_tointeger(L, -1); }))
 		, filter_radius_()
-		, filter_(push_arg_and_invoke(L, 3, [&] { return build_filter(L, res_index, ks); }))
+		, filter_(invoke_with_scoped_arg(L, 3, [&] { return build_filter(L, res_index, ks); }))
 	{
 		LOG_LMG << "creating radius filter";
 		if(luaW_tableget(L, -1, "filter_radius")) {
@@ -561,7 +561,7 @@ class formula_filter : public filter_impl
 {
 public:
 	formula_filter(lua_State* L, int, known_sets_t&)
-		: formula_(push_arg_and_invoke(L, 2, [&] { return luaW_check_formula(L, 1, true); }))
+		: formula_(invoke_with_scoped_arg(L, 2, [&] { return luaW_check_formula(L, 1, true); }))
 	{
 		LOG_LMG << "creating formula filter";
 	}
