@@ -43,6 +43,8 @@ class reports;
 struct map_location;
 typedef int (*lua_CFunction) (lua_State *L);
 
+class scoped_lua_argument;
+
 class game_lua_kernel : public lua_kernel_base
 {
 	game_display * game_display_;
@@ -194,6 +196,14 @@ class game_lua_kernel : public lua_kernel_base
 	std::string synced_state();
 	void lua_chat(const std::string& caption, const std::string& msg);
 	std::vector<int> get_sides_vector(const vconfig& cfg);
+
+	/**
+	 * Pushes the WML events table to the Lua stack.
+	 *
+	 * @returns RAII helper instance that controls the lifetime
+	 * of the resulting stack variable.
+	 */
+	[[nodiscard]] scoped_lua_argument push_wml_events_table(lua_State* L) const;
 
 public:
 	game_board & board();
