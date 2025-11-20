@@ -57,7 +57,6 @@ class game_lua_kernel : public lua_kernel_base
 	game_data & gamedata();
 	tod_manager & tod_man();
 
-	config level_lua_;
 	int EVENT_TABLE;
 	bool has_preloaded_ = false;
 

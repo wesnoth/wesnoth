@@ -5272,7 +5272,6 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 	, game_state_(gs)
 	, play_controller_(pc)
 	, reports_(reports_object)
-	, level_lua_()
 	, EVENT_TABLE(LUA_NOREF)
 	, queued_events_()
 	, map_locked_(0)
@@ -5739,8 +5738,6 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 void game_lua_kernel::initialize(const config& level)
 {
 	lua_State *L = mState;
-	assert(level_lua_.empty());
-	level_lua_.append_children(level, "lua");
 
 	//Create the races table.
 	cmd_log_ << "Adding races table...\n";
@@ -5758,7 +5755,7 @@ void game_lua_kernel::initialize(const config& level)
 	for (const config &cfg : game_lua_kernel::preload_scripts) {
 		run_lua_tag(cfg);
 	}
-	for (const config &cfg : level_lua_.child_range("lua")) {
+	for (const config &cfg : level.child_range("lua")) {
 		run_lua_tag(cfg);
 	}
 }
