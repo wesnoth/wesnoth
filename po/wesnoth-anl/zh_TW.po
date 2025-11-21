@@ -582,9 +582,9 @@ msgstr "研究"
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:125
 msgid ""
-"We are currently studying $player_$side_number|.research."
-"target_language_name|. To which end would you have our scholars devote their "
-"minds?\n"
+"We are currently studying "
+"$player_$side_number|.research.target_language_name|. To which end would you "
+"have our scholars devote their minds?\n"
 "\n"
 "Our farms produce $player_$side_number|.farming.gold|g\n"
 "Our mines produce $player_$side_number|.mining.gold|g\n"
@@ -610,8 +610,8 @@ msgid ""
 msgstr ""
 "<span color='green'>農業</span>\n"
 "農夫產量 +1 枚金幣\n"
-"研究進度：$player_$side_number|.farming.progress|/$player_$side_number|."
-"farming.target"
+"研究進度：$player_$side_number|.farming.progress|/"
+"$player_$side_number|.farming.target"
 
 #. [command]
 #. [research]
@@ -625,13 +625,13 @@ msgstr "農業"
 msgid ""
 "<span color='green'>Mining</span>\n"
 "Miners produce +1 gold\n"
-"Study Progress: $player_$side_number|.mining.progress|/$player_$side_number|."
-"mining.target"
+"Study Progress: $player_$side_number|.mining.progress|/"
+"$player_$side_number|.mining.target"
 msgstr ""
 "<span color='green'>礦業</span>\n"
 "礦工產量 +1 枚金幣\n"
-"研究進度：$player_$side_number|.mining.progress|/$player_$side_number|."
-"mining.target"
+"研究進度：$player_$side_number|.mining.progress|/"
+"$player_$side_number|.mining.target"
 
 #. [command]
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:158
@@ -648,8 +648,8 @@ msgid ""
 msgstr ""
 "<span color='green'>作戰</span>\n"
 "使你得以招募新的單位類型\n"
-"研究進度：$player_$side_number|.warfare.progress|/$player_$side_number|."
-"warfare.target"
+"研究進度：$player_$side_number|.warfare.progress|/"
+"$player_$side_number|.warfare.target"
 
 #. [command]
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:177
@@ -659,20 +659,20 @@ msgstr "作戰"
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:207
 msgid ""
-"$player_$side_number|.name|’s farms now produce $player_$side_number|."
-"farming.gold gold."
+"$player_$side_number|.name|’s farms now produce "
+"$player_$side_number|.farming.gold gold."
 msgstr ""
-"$player_$side_number|.name|的農田現在可以生產$player_$side_number|.farming."
-"gold|枚金幣了。"
+"$player_$side_number|.name|的農田現在可以生產"
+"$player_$side_number|.farming.gold|枚金幣了。"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:239
 msgid ""
-"$player_$side_number|.name|’s mines now produce $player_$side_number|.mining."
-"gold gold."
+"$player_$side_number|.name|’s mines now produce "
+"$player_$side_number|.mining.gold gold."
 msgstr ""
-"$player_$side_number|.name|的礦場現在可以生產$player_$side_number|.mining."
-"gold|枚金幣。"
+"$player_$side_number|.name|的礦場現在可以生產"
+"$player_$side_number|.mining.gold|枚金幣。"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:266
