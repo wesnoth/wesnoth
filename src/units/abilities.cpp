@@ -464,7 +464,8 @@ int find_direction(const map_location& loc, const map_location& from_loc, std::s
 	return 0;
 }
 
-// Helper function, to turn void retuning function into false retuning functions
+/// Helper function, to turn void retuning function into false retuning functions
+/// Calls @a f with arguments @args, but if @f returns void this function returns false.
 template<typename TFunc, typename... TArgs>
 bool default_false(const TFunc& f, const TArgs&... args) {
 	if constexpr (std::is_same_v<decltype(f(args...)), void>) {
@@ -577,45 +578,41 @@ bool foreach_active_special(
 	const THandler& handler,
 	bool skip_adjacent = false)
 {
+	// "const auto&..." because foreach_active_ability calls this with a unit& argument.
+	auto handler_self = [&](const ability_ptr& p_ab, const auto&...) {
+		return attack_type::special_active_impl(self_attack, other_attack, *p_ab, unit_ability_t::affects_t::SELF) && default_false(handler, p_ab);
+	};
+	auto handler_other = [&](const ability_ptr& p_ab, const auto&...) {
+		return attack_type::special_active_impl(other_attack, self_attack, *p_ab, unit_ability_t::affects_t::OTHER) && default_false(handler, p_ab);
+	};
+
 	//search in the attacks [specials]
 	if (self_attack) {
 		for (const ability_ptr& p_ab : self_attack->specials()) {
-			if (quick_check(p_ab)) {
-				if (attack_type::special_active_impl(self_attack, other_attack, *p_ab, unit_ability_t::affects_t::SELF)) {
-					if (default_false(handler, p_ab)) {
-						return true;
-					}
-				}
+			if (quick_check(p_ab) && handler_self(p_ab)) {
+				return true;
 			}
 		}
 	}
 	//search in the opponents attacks [specials]
 	if (other_attack) {
 		for (const ability_ptr& p_ab : other_attack->specials()) {
-			if (quick_check(p_ab)) {
-				if (attack_type::special_active_impl(other_attack, self_attack, *p_ab, unit_ability_t::affects_t::OTHER)) {
-					if (default_false(handler, p_ab)) {
-						return true;
-					}
-				}
+			if (quick_check(p_ab) && handler_other(p_ab)) {
+				return true;
 			}
 		}
 	}
 	//search in unit [abilities] including abilities tought via loadship like abilities.
 	if (self) {
-		bool match = foreach_active_ability(*self, self_loc, quick_check,
-			[&](const ability_ptr& p_ab, const unit&) {
-				return attack_type::special_active_impl(self_attack, other_attack, *p_ab, unit_ability_t::affects_t::SELF) && default_false(handler, p_ab);
-			}, skip_adjacent);
-		if (match) { return true; }
+		if (foreach_active_ability(*self, self_loc, quick_check, handler_self, skip_adjacent)) {
+			return true;
+		}
 	}
 	//search in the opponents [abilities] including abilities tought via loadship like abilities.
 	if (other) {
-		bool match = foreach_active_ability(*other, other_loc, quick_check,
-			[&](const ability_ptr& p_ab, const unit&) {
-				return attack_type::special_active_impl(other_attack, self_attack, *p_ab, unit_ability_t::affects_t::OTHER) && default_false(handler, p_ab);
-			}, skip_adjacent);
-		if (match) { return true; }
+		if (foreach_active_ability(*other, other_loc, quick_check, handler_other, skip_adjacent)) {
+			return true;
+		}
 	}
 	return false;
 }
