@@ -1736,6 +1736,9 @@ namespace
 		if(!bool_matches_if_present(filter, cfg, "cumulative", false))
 			return false;
 
+		if (!cfg["overwrite_specials"].blank() || cfg.optional_child("overwrite")) {
+			deprecated_message("overwrite_specials= or [overwrite] in weapon specials", DEP_LEVEL::INDEFINITE, "", "Use priority with [suppress_lower_priority] instead.");
+		}
 		if(!string_matches_if_present(filter, cfg, "overwrite_specials", "none"))
 			return false;
 
