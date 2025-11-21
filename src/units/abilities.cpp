@@ -289,6 +289,27 @@ void unit_ability_t::write(config& abilities_cfg)
 	abilities_cfg.add_child(tag(), cfg());
 }
 
+std::string unit_ability_t::substitute_variables(const std::string& str) const {
+	// TODO add more [specials] keys
+	// Currently supports only [plague]type= -> $type
+	if (tag() == "plague") {
+		// Substitute [plague]type= as $type
+		const auto iter = unit_types.types().find(cfg()["type"]);
+
+		// TODO: warn if an invalid type is specified?
+		if (iter == unit_types.types().end()) {
+			return str;
+		}
+
+		const unit_type& type = iter->second;
+		utils::string_map symbols{ { "type", type.type_name() } };
+		return utils::interpolate_variables_into_string(str, &symbols);
+	}
+
+	return str;
+}
+
+
 namespace {
 	const config_attribute_value& get_attr_four_fallback(const config& cfg, bool b1, bool b2, std::string_view s_yes_yes, std::string_view s_yes_no, std::string_view s_no_yes, std::string_view s_no_no)
 	{
@@ -309,14 +330,14 @@ std::string unit_ability_t::get_name(bool is_inactive, unit_race::GENDER gender)
 {
 	bool is_female = gender == unit_race::FEMALE;
 	std::string res = get_attr_four_fallback(cfg_, is_inactive, is_female, "female_name_inactive", "name_inactive", "female_name", "name").str();
-	return unit_abilities::substitute_variables(res, *this);
+	return substitute_variables(res);
 }
 
 std::string unit_ability_t::get_description(bool is_inactive, unit_race::GENDER gender) const
 {
 	bool is_female = gender == unit_race::FEMALE;
 	std::string res = get_attr_four_fallback(cfg_, is_inactive, is_female, "female_description_inactive", "description_inactive", "female_description", "description").str();
-	return unit_abilities::substitute_variables(res, *this);
+	return substitute_variables(res);
 }
 
 bool unit_ability_t::active_on_matches(bool student_is_attacker) const
@@ -1057,7 +1078,7 @@ std::string attack_type::describe_weapon_specials() const
 			continue;
 		}
 
-		name = unit_abilities::substitute_variables(name, *p_ab);
+		name = p_ab->substitute_variables(name);
 
 		special_names.push_back(active ? std::move(name) : markup::span_color(font::INACTIVE_COLOR, name));
 	}
@@ -2134,26 +2155,6 @@ bool filter_base_matches(const config& cfg, int def)
 			(cond_le.empty() || def <= cond_le.to_int());
 	}
 	return true;
-}
-
-// TODO add more [specials] keys
-// Currently supports only [plague]type= -> $type
-std::string substitute_variables(const std::string& str, const unit_ability_t & ab) {
-	if(ab.tag() == "plague") {
-		// Substitute [plague]type= as $type
-		const auto iter = unit_types.types().find(ab.cfg()["type"]);
-
-		// TODO: warn if an invalid type is specified?
-		if(iter == unit_types.types().end()) {
-			return str;
-		}
-
-		const unit_type& type = iter->second;
-		utils::string_map symbols{{ "type", type.type_name() }};
-		return utils::interpolate_variables_into_string(str, &symbols);
-	}
-
-	return str;
 }
 
 int individual_value_int(const config::attribute_value *v, int def, const active_ability & ability, const map_location& loc, const const_attack_ptr& att) {

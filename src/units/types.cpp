@@ -260,12 +260,12 @@ void unit_type::build_help_index(
 		auto p_ab = unit_ability_t::create(key, cfg, false);
 		abilities_.emplace_back(p_ab);
 		config subst_cfg(cfg);
-		subst_cfg["name"] = unit_abilities::substitute_variables(cfg["name"], *p_ab);
-		subst_cfg["female_name"] = unit_abilities::substitute_variables(cfg["female_name"], *p_ab);
-		subst_cfg["description"] = unit_abilities::substitute_variables(cfg["description"], *p_ab);
-		subst_cfg["name_inactive"] = unit_abilities::substitute_variables(cfg["name_inactive"], *p_ab);
-		subst_cfg["female_name_inactive"] = unit_abilities::substitute_variables(cfg["female_name_inactive"], *p_ab);
-		subst_cfg["description_inactive"] = unit_abilities::substitute_variables(cfg["description_inactive"], *p_ab);
+		subst_cfg["name"] = p_ab->substitute_variables(cfg["name"]);
+		subst_cfg["female_name"] = p_ab->substitute_variables(cfg["female_name"]);
+		subst_cfg["description"] = p_ab->substitute_variables(cfg["description"]);
+		subst_cfg["name_inactive"] = p_ab->substitute_variables(cfg["name_inactive"]);
+		subst_cfg["female_name_inactive"] = p_ab->substitute_variables(cfg["female_name_inactive"]);
+		subst_cfg["description_inactive"] = p_ab->substitute_variables(cfg["description_inactive"]);
 		abilities_infos_.emplace_back(subst_cfg);
 	}
 

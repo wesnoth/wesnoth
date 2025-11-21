@@ -97,6 +97,16 @@ public:
 	static ability_vector filter_tag(const ability_vector& vec, const std::string& tag);
 	static ability_vector clone(const ability_vector& vec);
 
+	/**
+	 * Substitute gettext variables in name and description of abilities and specials
+	 * @param str                  The string in which the substitution is to be done
+	 *
+	 * @return The string `str` with all gettext variables substitutes with corresponding special properties
+	 */
+	std::string substitute_variables(const std::string& str) const;
+
+
+
 	class recursion_guard
 	{
 	public:
@@ -246,15 +256,6 @@ bool filter_base_matches(const config& cfg, int def);
 enum value_modifier {NOT_USED,SET,ADD,MUL,DIV};
 
 enum EFFECTS { EFFECT_DEFAULT=1, EFFECT_CUMULABLE=2, EFFECT_WITHOUT_CLAMP_MIN_MAX=3 };
-
-/**
- * Substitute gettext variables in name and description of abilities and specials
- * @param str                  The string in which the substitution is to be done
- * @param ab                   The special (for example  [plague][/plague] etc.)
- *
- * @return The string `str` with all gettext variables substitutes with corresponding special properties
- */
-std::string substitute_variables(const std::string& str, const unit_ability_t& ab);
 
 struct individual_effect
 {
