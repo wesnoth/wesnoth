@@ -134,6 +134,11 @@ public:
 	 * @return list which contains get_weapon_ability and get_specials list for each ability type, with overwritten items removed
 	 */
 	active_ability_list get_specials_and_abilities(const std::string& special) const;
+	/**
+	 * @param special the tag name to check for
+	 * @return list which contains get_specials_and_abilities after overwriting by priority= [erase_lower_priority]
+	 */
+	active_ability_list get_specials_and_abilities_no_math(const std::string& special) const;
 	/** used for abilities used like weapon and true specials
 	 * @return True if the ability @a special is active.
 	 * @param special The special being checked.
