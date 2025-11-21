@@ -231,6 +231,10 @@ void unit_ability_t::do_compat_fixes(config& cfg, const std::string& tag, bool i
 		cfg.remove_children("filter_second_weapon");
 		cfg.remove_children("filter_weapon");
 	}
+
+	if (!cfg["overwrite_specials"].blank()) {
+		deprecated_message("overwrite_specials= in weapon specials", DEP_LEVEL::INDEFINITE, "", "Use priority with [erase_lower_priority] instead.");
+	}
 }
 
 
@@ -1451,6 +1455,10 @@ bool attack_type::overwrite_special_checking(active_ability_list& overwriters, c
 		// the overwriter's priority, default of 0
 		auto overwrite_specials = j.ability_cfg().optional_child("overwrite");
 		double priority = overwrite_specials ? overwrite_specials["priority"].to_double(0) : 0.00;
+		// overwrite_specials cannot overwrite specials with priority higher.
+		if(ab.cfg()["priority"].to_double(0) > priority) {
+			continue;
+		}
 		// the cfg being checked for whether it will be overwritten
 		auto has_overwrite_specials = ab.cfg().optional_child("overwrite");
 		// if the overwriter's priority is greater than 0, then true if the cfg being checked has a higher priority
@@ -1652,9 +1660,8 @@ namespace
 			return false;
 		if(filter.has_attribute("divide") && no_value_weapon_abilities_check)
 			return false;
-		if(filter.has_attribute("priority") && no_value_weapon_abilities_check)
+		if(filter.has_attribute("priority") && (no_value_weapon_abilities_check && abilities_list::no_weapon_boolean_or_math_tags().count(tag_name) == 0))
 			return false;
-
 		bool all_engine =  abilities_list::no_weapon_math_tags().count(tag_name) != 0 || abilities_list::weapon_math_tags().count(tag_name) != 0 || abilities_list::ability_value_tags().count(tag_name) != 0 || abilities_list::ability_no_value_tags().count(tag_name) != 0;
 		if(filter.has_attribute("replacement_type") && tag_name != "damage_type" && all_engine)
 			return false;
@@ -1711,13 +1718,16 @@ namespace
 		if(!bool_matches_if_present(filter, cfg, "cumulative", false))
 			return false;
 
+		if(!filter["overwrite_specials"].blank()) {
+			deprecated_message("overwrite_specials= in weapon specials", DEP_LEVEL::INDEFINITE, "", "Use Use priority instead");
+		}
 		if(!string_matches_if_present(filter, cfg, "overwrite_specials", "none"))
 			return false;
 
 		if(!string_matches_if_present(filter, cfg, "active_on", "both"))
 			return false;
 
-		if(abilities_list::weapon_math_tags().count(tag_name) != 0 || abilities_list::ability_value_tags().count(tag_name) != 0) {
+		if(abilities_list::weapon_math_tags().count(tag_name) != 0 || abilities_list::ability_value_tags().count(tag_name) != 0 || abilities_list::no_weapon_boolean_or_math_tags().count(tag_name) != 0) {
 			if(!double_matches_if_present(filter, cfg, "priority", 0.00)) {
 				return false;
 			}
@@ -2058,6 +2068,23 @@ namespace
 			return (priority_checking(temp_list, i.ability(), att));
 		});
 	}
+}
+
+active_ability_list attack_type::get_specials_and_abilities_no_math(const std::string& special) const
+{
+	// get all weapon specials of the provided type
+	active_ability_list abil_list = get_specials_and_abilities(special);
+	if(special == "plague") {
+		utils::sort_if(abil_list,[](const active_ability& i, const active_ability& j){
+			double l = i.ability().priority();
+			double r = j.ability().priority();
+			return l > r;
+		});
+	} else {
+		edit_list(abil_list, shared_from_this());
+	}
+
+	return abil_list;
 }
 
 namespace unit_abilities
