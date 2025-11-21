@@ -132,28 +132,21 @@ void gamemap::read(const std::string& data, const bool allow_invalid)
 	// Post processing on the map
 	VALIDATE((total_width() >= 1 && total_height() >= 1), "A map needs at least 1 tile, the map cannot be loaded.");
 
-	for(int x = 0; x < total_width(); ++x) {
-		for(int y = 0; y < total_height(); ++y) {
+	for_each_loc([&](const map_location& loc) {
+		const t_translation::terrain_code& terrain = (*this)[loc];
 
-			// Is the terrain valid?
-			t_translation::terrain_code t = tiles().get(x, y);
-			if(tdata_->map().count(t) == 0) {
-				if(!tdata_->is_known(t)) {
-					std::stringstream ss;
-					ss << "Unknown tile in map: (" << t_translation::write_terrain_code(t)
-						   << ") '" << t << "'";
-					throw incorrect_map_format_error(ss.str().c_str());
-				}
-			}
-
-			// Is it a village?
-			if(x >= border_size() && y >= border_size()
-					&& x < total_width()- border_size() && y < total_height()- border_size()
-					&& tdata_->is_village(tiles().get(x, y))) {
-				villages_.push_back(map_location(x - border_size(), y - border_size()));
-			}
+		// Is the terrain valid?
+		if(!tdata_->is_known(terrain)) {
+			std::stringstream ss;
+			ss << "Unknown tile in map: (" << t_translation::write_terrain_code(terrain) << ") '" << terrain << "'";
+			throw incorrect_map_format_error(ss.str());
 		}
-	}
+
+		// Note: This excludes village tiles on the border.
+		if(is_village(loc)) {
+			villages_.push_back(loc);
+		}
+	});
 }
 
 std::string_view gamemap::strip_legacy_header(std::string_view data) const
