@@ -263,14 +263,14 @@ void gamemap_base::overlay(const gamemap_base& m, map_location loc, const std::v
 		}
 	}
 }
+
 t_translation::terrain_code gamemap_base::get_terrain(const map_location& loc) const
 {
-
 	if(on_board_with_border(loc)) {
 		return tiles_.get(loc.x + border_size(), loc.y + border_size());
 	}
 
-	return loc == map_location::null_location() ? t_translation::NONE_TERRAIN : t_translation::terrain_code();
+	return t_translation::NONE_TERRAIN;
 }
 
 map_location gamemap_base::special_location(const std::string& id) const
