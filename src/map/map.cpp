@@ -64,13 +64,13 @@ std::string gamemap::get_underlying_terrain_string(const map_location& loc) cons
 	{ return get_underlying_terrain_string(get_terrain(loc)); }
 
 bool gamemap::is_village(const map_location& loc) const
-	{ return on_board(loc) && get_terrain_info(loc).is_village(); }
+	{ return on_board(loc) && tdata_->get_terrain_info((*this)[loc]).is_village(); }
 int gamemap::gives_healing(const map_location& loc) const
-	{ return on_board(loc) ?  get_terrain_info(loc).gives_healing() : 0; }
+	{ return on_board(loc) ?  tdata_->get_terrain_info((*this)[loc]).gives_healing() : 0; }
 bool gamemap::is_castle(const map_location& loc) const
-	{ return on_board(loc) && get_terrain_info(loc).is_castle(); }
+	{ return on_board(loc) && tdata_->get_terrain_info((*this)[loc]).is_castle(); }
 bool gamemap::is_keep(const map_location& loc) const
-	{ return on_board(loc) && get_terrain_info(loc).is_keep(); }
+	{ return on_board(loc) && tdata_->get_terrain_info((*this)[loc]).is_keep(); }
 
 
 /* Forwarded methods of tdata_ */
