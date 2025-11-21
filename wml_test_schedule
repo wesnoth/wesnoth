@@ -895,6 +895,9 @@
 0 berserk_affect_enemies
 0 berserk_affect_everybody
 0 berserk_divide
+0 berserk_erase_lower_priority
+0 berserk_erase_lower_priority_fail
+0 berserk_without_erase_lower_priority
 0 berserk_high_fraction
 0 berserk_low_fraction
 0 berserk_multiply
@@ -1027,6 +1030,8 @@
 0 damage_type_both_same_replacement_best
 0 damage_type_both_same_alternative_best
 0 damage_type_many
+0 damage_type_many_priority
+0 damage_type_many_erase_lower_priority
 # defense ability tests
 0 defense_negative_value
 0 defense_add
@@ -1173,6 +1178,8 @@
 0 petrifies_affect_everybody
 # plague tests
 0 plague_ability
+0 plague_ability_multiple_no_priority
+0 plague_ability_multiple_priority
 0 plague_affect_allies
 0 plague_affect_allies_distant
 0 plague_affect_self_no
@@ -1210,6 +1217,8 @@
 0 swarm_attacks_min_lower
 0 swarm_attacks_min_negative
 0 swarm_attacks_min_wfl
+0 swarm_erase_lower_priority
+0 swarm_without_erase_lower_priority
 0 swarm_min_max_zero
 0 swarm_no_min_no_max
 0 swarm_overwrite_specials_both_sides
