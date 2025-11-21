@@ -2102,12 +2102,6 @@ int game_lua_kernel::intf_find_path(lua_State *L)
 		if (!lua_isnil(L, -1)) {
 			int i = luaL_checkinteger(L, -1);
 			if (i >= 1 && i <= static_cast<int>(teams().size())) viewing_side = i;
-			else {
-				// If there's a unit, we have a valid side, so fall back to legacy behaviour.
-				// If we don't have a unit, legacy behaviour would be a crash, so let's not.
-				if(u) see_all = true;
-				deprecated_message("wesnoth.paths.find_path with viewing_side=0 (or an invalid side)", DEP_LEVEL::FOR_REMOVAL, {1, 17, 0}, "To consider fogged and hidden units, use ignore_visibility=true instead.");
-			}
 		}
 		lua_pop(L, 1);
 
@@ -2117,11 +2111,6 @@ int game_lua_kernel::intf_find_path(lua_State *L)
 			calc.reset(new lua_pathfind_cost_calculator(L, lua_gettop(L)));
 		}
 		// Don't pop, the lua_pathfind_cost_calculator requires it to stay on the stack.
-	}
-	else if (lua_isfunction(L, arg))
-	{
-		deprecated_message("wesnoth.paths.find_path with cost_function as last argument", DEP_LEVEL::FOR_REMOVAL, {1, 17, 0}, "Use calculate=cost_function inside the path options table instead.");
-		calc.reset(new lua_pathfind_cost_calculator(L, arg));
 	}
 
 	pathfind::teleport_map teleport_locations;
