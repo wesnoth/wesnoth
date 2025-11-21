@@ -1101,8 +1101,8 @@ int game_lua_kernel::impl_get_terrain_info(lua_State *L)
 {
 	char const *m = luaL_checkstring(L, 2);
 	t_translation::terrain_code t = t_translation::read_terrain_code(m);
-	if (t == t_translation::NONE_TERRAIN || !board().map().tdata()->is_known(t)) return 0;
-	const terrain_type& info = board().map().get_terrain_info(t);
+	if (t == t_translation::NONE_TERRAIN || !map().tdata()->is_known(t)) return 0;
+	const terrain_type& info = map().get_terrain_info(t);
 
 	lua_newtable(L);
 	lua_pushstring(L, info.id().c_str());
@@ -1132,7 +1132,7 @@ int game_lua_kernel::impl_get_terrain_info(lua_State *L)
 	lua_newtable(L);
 	int idx = 1;
 	for (const auto& terrain : info.mvt_type()) {
-		const terrain_type& base = board().map().get_terrain_info(terrain);
+		const terrain_type& base = map().get_terrain_info(terrain);
 		if (!base.id().empty()) {
 			lua_pushstring(L, t_translation::write_terrain_code(base.number()).c_str());
 			lua_rawseti(L, -2, idx++);
@@ -1144,7 +1144,7 @@ int game_lua_kernel::impl_get_terrain_info(lua_State *L)
 	lua_newtable(L);
 	idx = 1;
 	for (const auto& terrain : info.def_type()) {
-		const terrain_type& base = board().map().get_terrain_info(terrain);
+		const terrain_type& base = map().get_terrain_info(terrain);
 		if (!base.id().empty()) {
 			lua_pushstring(L, t_translation::write_terrain_code(base.number()).c_str());
 			lua_rawseti(L, -2, idx++);
@@ -1161,7 +1161,7 @@ int game_lua_kernel::impl_get_terrain_info(lua_State *L)
  */
 int game_lua_kernel::impl_get_terrain_list(lua_State *L)
 {
-	const auto& codes = board().map().get_terrain_list();
+	const auto& codes = map().get_terrain_list();
 	std::vector<std::string> terrains;
 	terrains.reserve(codes.size());
 	for(auto code : codes) {
@@ -1184,7 +1184,7 @@ int game_lua_kernel::intf_get_time_of_day(lua_State *L)
 	map_location loc = map_location();
 
 	if(luaW_tolocation(L, 1, loc)) {
-		if(!board().map().on_board_with_border(loc)) {
+		if(!map().on_board_with_border(loc)) {
 			return luaL_argerror(L, 1, "coordinates are not on board");
 		}
 	} else if(lua_isstring(L, 1)) {
@@ -1212,7 +1212,7 @@ int game_lua_kernel::intf_get_time_of_day(lua_State *L)
 	}
 
 	const time_of_day& tod = consider_illuminates ?
-		tod_man().get_illuminated_time_of_day(board().units(), board().map(), loc, for_turn) :
+		tod_man().get_illuminated_time_of_day(units(), map(), loc, for_turn) :
 		tod_man().get_time_of_day(loc, for_turn);
 
 	luaW_push_tod(L, tod);
@@ -1228,7 +1228,7 @@ int game_lua_kernel::intf_get_time_of_day(lua_State *L)
 int game_lua_kernel::intf_get_village_owner(lua_State *L)
 {
 	map_location loc = luaW_checklocation(L, 1);
-	if (!board().map().is_village(loc))
+	if (!map().is_village(loc))
 		return 0;
 
 	int side = board().village_owner(loc);
@@ -1245,7 +1245,7 @@ int game_lua_kernel::intf_get_village_owner(lua_State *L)
 int game_lua_kernel::intf_set_village_owner(lua_State *L)
 {
 	map_location loc = luaW_checklocation(L, 1);
-	if(!board().map().is_village(loc)) {
+	if(!map().is_village(loc)) {
 		return 0;
 	}
 
@@ -1307,7 +1307,7 @@ int game_lua_kernel::intf_get_mouseover_tile(lua_State *L)
 	}
 
 	const map_location &loc = game_display_->mouseover_hex();
-	if (!board().map().on_board(loc)) return 0;
+	if (!map().on_board(loc)) return 0;
 	lua_pushinteger(L, loc.wml_x());
 	lua_pushinteger(L, loc.wml_y());
 	return 2;
@@ -1325,7 +1325,7 @@ int game_lua_kernel::intf_get_selected_tile(lua_State *L)
 	}
 
 	const map_location &loc = game_display_->selected_hex();
-	if (!board().map().on_board(loc)) return 0;
+	if (!map().on_board(loc)) return 0;
 	lua_pushinteger(L, loc.wml_x());
 	lua_pushinteger(L, loc.wml_y());
 	return 2;
@@ -2078,13 +2078,12 @@ int game_lua_kernel::intf_find_path(lua_State *L)
 
 	dst = luaW_checklocation(L, arg);
 
-	if (!board().map().on_board(src))
+	if (!map().on_board(src))
 		return luaL_argerror(L, 1, "invalid location");
-	if (!board().map().on_board(dst))
+	if (!map().on_board(dst))
 		return luaL_argerror(L, arg, "invalid location");
 	++arg;
 
-	const gamemap &map = board().map();
 	bool ignore_units = false, see_all = false, ignore_teleport = false;
 	double stop_at = 10000;
 	std::unique_ptr<pathfind::cost_calculator> calc;
@@ -2142,10 +2141,10 @@ int game_lua_kernel::intf_find_path(lua_State *L)
 		}
 
 		calc.reset(new pathfind::shortest_path_calculator(*u, board().get_team(viewing_side),
-			teams(), map, ignore_units, false, see_all));
+			teams(), map(), ignore_units, false, see_all));
 	}
 
-	pathfind::plain_route res = pathfind::a_star_search(src, dst, stop_at, *calc, map.w(), map.h(),
+	pathfind::plain_route res = pathfind::a_star_search(src, dst, stop_at, *calc, map().w(), map().h(),
 		&teleport_locations);
 
 	int nb = res.steps.size();
