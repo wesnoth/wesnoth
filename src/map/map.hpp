@@ -211,7 +211,7 @@ public:
 
 	std::string write() const;
 
-	const t_translation::terrain_code operator[](const map_location& loc) const
+	const t_translation::terrain_code& operator[](const map_location& loc) const
 	{
 		return tiles().get(loc.x + border_size(), loc.y + border_size());
 	}
