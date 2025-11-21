@@ -229,8 +229,8 @@ void unit_ability_t::do_compat_fixes(config& cfg, const std::string& tag, bool i
 		cfg.remove_children("filter_weapon");
 	}
 
-	if (!cfg["overwrite_specials"].blank()) {
-		deprecated_message("overwrite_specials= in weapon specials", DEP_LEVEL::INDEFINITE, "", "Use priority with [erase_lower_priority] instead.");
+	if (!cfg["overwrite_specials"].blank() || cfg.optional_child("overwrite")) {
+		deprecated_message("overwrite_specials= or [overwrite] in weapon specials", DEP_LEVEL::INDEFINITE, "", "Use priority with [erase_lower_priority] instead.");
 	}
 }
 
@@ -1736,8 +1736,8 @@ namespace
 		if(!bool_matches_if_present(filter, cfg, "cumulative", false))
 			return false;
 
-		if(!filter["overwrite_specials"].blank()) {
-			deprecated_message("overwrite_specials= in weapon specials", DEP_LEVEL::INDEFINITE, "", "Use Use priority instead");
+		if (!cfg["overwrite_specials"].blank() || cfg.optional_child("overwrite")) {
+			deprecated_message("overwrite_specials= or [overwrite] in weapon specials", DEP_LEVEL::INDEFINITE, "", "Use priority with [erase_lower_priority] instead.");
 		}
 		if(!string_matches_if_present(filter, cfg, "overwrite_specials", "none"))
 			return false;
