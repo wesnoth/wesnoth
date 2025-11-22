@@ -880,21 +880,6 @@ public:
 	 */
 	void remove_attacks_ai();
 
-	/**
-	 * Calculates the damage this unit would take from a certain attack.
-	 *
-	 * @param attack              The attack to consider.
-	 * @param attacker            Whether this unit should be considered the attacker.
-	 * @param loc                 The unit's location (to resolve [resistance] abilities)
-	 * @param weapon              The weapon to check for any abilities or weapon specials
-	 *
-	 * @returns                   The expected damage.
-	 */
-	int damage_from(const attack_type& attack, bool attacker, const map_location& loc, const_attack_ptr weapon = nullptr) const
-	{
-		return resistance_against(attack, attacker, loc, weapon);
-	}
-
 	/** The maximum number of attacks this unit may perform per turn, usually 1. */
 	int max_attacks() const
 	{
@@ -964,22 +949,8 @@ public:
 	 * @param damage_name The damage type
 	 * @param attacker True if this unit is on the offensive (to resolve [resistance] abilities)
 	 * @param loc The unit's location (to resolve [resistance] abilities)
-	 * @param weapon The weapon to check for any abilities or weapon specials
-	 * @param opp_weapon The opponent's weapon to check for any abilities or weapon specials
 	 */
-	int resistance_against(const std::string& damage_name, bool attacker, const map_location& loc, const_attack_ptr weapon = nullptr, const const_attack_ptr& opp_weapon = nullptr) const;
-
-	/**
-	 * The unit's resistance against a given attack
-	 * @param atk The attack
-	 * @param attacker True if this unit is on the offensive (to resolve [resistance] abilities)
-	 * @param loc The unit's location (to resolve [resistance] abilities)
-	 * @param weapon The weapon to check for any abilities or weapon specials
-	 */
-	int resistance_against(const attack_type& atk, bool attacker, const map_location& loc, const_attack_ptr weapon = nullptr) const
-	{
-		return resistance_against(atk.type(), attacker, loc , weapon, atk.shared_from_this());
-	}
+	int resistance_against(const std::string& damage_name, bool attacker, const map_location& loc) const;
 
 	/** Gets resistances without any abilities applied. */
 	utils::string_map_res get_base_resistances() const

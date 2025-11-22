@@ -1803,12 +1803,9 @@ int unit::resistance_value(active_ability_list resistance_list, const std::strin
 	return res;
 }
 
-int unit::resistance_against(const std::string& damage_name, bool attacker, const map_location& loc, const_attack_ptr weapon, const const_attack_ptr& opp_weapon) const
+int unit::resistance_against(const std::string& damage_name, bool attacker, const map_location& loc) const
 {
-	if(opp_weapon) {
-		return opp_weapon->effective_damage_type().second;
-	}
-	active_ability_list resistance_list = get_abilities_weapons("resistance",loc, std::move(weapon), opp_weapon);
+	active_ability_list resistance_list = get_abilities("resistance", loc);
 	utils::erase_if(resistance_list, [&](const active_ability& i) {
 		return !i.ability().active_on_matches(attacker);;
 	});
