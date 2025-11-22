@@ -799,8 +799,8 @@ std::pair<std::string, int> attack_type::effective_damage_type() const
 	if (other_) {
 		resistance_list = (*other_).get_abilities_weapons("resistance", other_loc_, other_attack_, shared_from_this());
 		utils::erase_if(resistance_list, [&](const active_ability& i) {
-			return (!(i.ability_cfg()["active_on"].empty() || (!is_attacker_ && i.ability_cfg()["active_on"] == "offense") || (is_attacker_ && i.ability_cfg()["active_on"] == "defense")));
-			});
+			return !i.ability().active_on_matches(!is_attacker_);
+		});
 	}
 	active_ability_list damage_type_list = get_specials_and_abilities("damage_type");
 	int res = other_ ? (*other_).resistance_value(resistance_list, type()) : 100;
