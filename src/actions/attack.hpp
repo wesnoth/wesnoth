@@ -65,6 +65,7 @@ struct battle_context_unit_stats
 	bool swarm;              /**< Attack has swarm special. */
 	bool firststrike;        /**< Attack has firststrike special. */
 	bool disable;            /**< Attack has disable special. */
+	int leadership_bonus;
 	unsigned int experience, max_experience;
 	unsigned int level;
 
@@ -131,6 +132,7 @@ struct battle_context_unit_stats
 		, swarm(do_swarm)
 		, firststrike(first)
 		, disable(false)
+		, leadership_bonus(0)
 		, experience(0) // No units should advance in the attack prediction tests.
 		, max_experience(1000000) // No units should advance in the attack prediction tests.
 		, level(1) // No units should advance in the attack prediction tests.
