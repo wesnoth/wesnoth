@@ -149,20 +149,15 @@ namespace implementation
 builder_tab_container::builder_tab_container(const config& cfg)
 	: implementation::builder_styled_widget(cfg)
 {
-	if (cfg.has_child("tab")) {
-		for(const auto & tab : cfg.child_range("tab"))
+	if(cfg.has_child("tab")) {
+		for(const config& tab : cfg.child_range("tab"))
 		{
-			widget_data list_row;
-			widget_item item;
+			list_items.emplace_back(widget_data{
+				{ "image", {{"label", tab["image"].str()}} },
+				{ "name", {{"label", tab["name"].t_str()}} }
+			});
 
-			item["label"] = tab["image"].t_str();
-			list_row.emplace("image", item);
-			item["label"] = tab["name"].t_str();
-			list_row.emplace("name", item);
-
-			list_items.emplace_back(list_row);
-
-			if (tab.has_child("data")) {
+			if(tab.has_child("data")) {
 				auto builder = std::make_shared<builder_grid>(tab.mandatory_child("data"));
 				builders.push_back(builder);
 			}
