@@ -67,7 +67,6 @@ private:
 
 	/** Initializers */
 	void initialize_callbacks();
-	void initialize_tabs(listbox& selector);
 	void set_resolution_list(menu_button& res_list);
 	void set_theme_list(menu_button& theme_list);
 	void set_gui2_theme_list(menu_button& theme_list);
@@ -86,11 +85,7 @@ private:
 	void on_friends_list_select(listbox& list, text_box& textbox);
 	void update_friends_list_controls(listbox& list);
 
-	void set_visible_page(unsigned int page, const std::string& pager_id);
-
 	/** Callback for selection changes */
-	void on_page_select();
-	void on_tab_select();
 	void on_advanced_prefs_list_select(listbox& tree);
 
 	/** Special callback functions */
