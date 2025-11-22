@@ -925,7 +925,7 @@ static int attack_info(const reports::context& rc, const attack_type &at, config
 			bool new_type = seen_types.insert(enemy.type_id()).second;
 			if (new_type) {
 				auto ctx = at.specials_context(u.shared_from_this(), enemy.shared_from_this(), hex, loc, u.side() == rc.screen().playing_team().side(), nullptr);
-				int resistance = enemy.resistance_against(at, false, loc, nullptr);
+				const auto [damage_type, resistance] = weapon->effective_damage_type();
 				resistances[resistance].insert(enemy.type_name());
 			}
 		}

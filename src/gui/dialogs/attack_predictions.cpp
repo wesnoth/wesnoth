@@ -192,7 +192,7 @@ void attack_predictions::set_data(const combatant_data& attacker, const combatan
 	ss.str("");
 
 	// Resistance modifier.
-	const int resistance_modifier = defender.unit_->damage_from(*weapon, !attacker.stats_.is_attacker, defender.unit_->get_location(), opp_weapon);
+	const auto [damage_type, resistance_modifier] = weapon->effective_damage_type();
 	if(resistance_modifier != 100) {
 		if(attacker.stats_.is_attacker) {
 			if(resistance_modifier < 100) {
@@ -208,7 +208,7 @@ void attack_predictions::set_data(const combatant_data& attacker, const combatan
 			}
 		}
 
-		ss << string_table["type_" + weapon->effective_damage_type().first];
+		ss << string_table["type_" + damage_type];
 
 		set_label_helper("resis_label", ss.str());
 
