@@ -96,6 +96,7 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 	, swarm(false)
 	, firststrike(false)
 	, disable(false)
+	, leadership_bonus(0)
 	, experience(up->experience())
 	, max_experience(up->max_experience())
 	, level(up->level())
@@ -199,9 +200,9 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 
 
 	// Leadership bonus.
-	int leader_bonus = under_leadership(u, u_loc, weapon, opp_weapon);
-	if(leader_bonus != 0) {
-		damage_multiplier += leader_bonus;
+	leadership_bonus = under_leadership(u, u_loc, weapon, opp_weapon);
+	if(leadership_bonus != 0) {
+		damage_multiplier += leadership_bonus;
 	}
 
 	// Resistance modifier.
