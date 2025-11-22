@@ -608,8 +608,8 @@ static void event_queue(const SDL_Event& event, command_executor* executor)
 void command_executor::queue_command(const SDL_Event& event, int index)
 {
 	LOG_HK << "event 0x" << std::hex << event.type << std::dec;
-	if(event.type == SDL_TEXTINPUT) {
-		LOG_HK << "SDL_TEXTINPUT \"" << event.text.text << "\"";
+	if(event.type == SDL_EVENT_TEXT_INPUT) {
+		LOG_HK << "SDL_EVENT_TEXT_INPUT \"" << event.text.text << "\"";
 	}
 
 	const hotkey_ptr hk = get_hotkey(event);
@@ -618,11 +618,11 @@ void command_executor::queue_command(const SDL_Event& event, int index)
 	}
 
 	const hotkey_command& command = hotkey::get_hotkey_command(hk->get_command());
-	bool keypress = (event.type == SDL_KEYDOWN || event.type == SDL_TEXTINPUT) &&
+	bool keypress = (event.type == SDL_EVENT_KEY_DOWN || event.type == SDL_EVENT_TEXT_INPUT) &&
 		!press_event_sent_;
 	bool press = keypress ||
-		(event.type == SDL_JOYBUTTONDOWN || event.type == SDL_MOUSEBUTTONDOWN || event.type == SDL_FINGERDOWN);
-	bool release = event.type == SDL_KEYUP;
+		(event.type == SDL_EVENT_JOYSTICK_BUTTON_DOWN || event.type == SDL_EVENT_MOUSE_BUTTON_DOWN || event.type == SDL_EVENT_FINGER_DOWN);
+	bool release = event.type == SDL_EVENT_KEY_UP;
 	if(press) {
 		LOG_HK << "sending press event (keypress = " <<
 			std::boolalpha << keypress << std::noboolalpha << ")";
@@ -751,7 +751,7 @@ void command_executor_default::set_button_state()
 	}
 }
 
-// Removes duplicate commands caused by both SDL_KEYDOWN and SDL_TEXTINPUT triggering hotkeys.
+// Removes duplicate commands caused by both SDL_EVENT_KEY_DOWN and SDL_EVENT_TEXT_INPUT triggering hotkeys.
 // See https://github.com/wesnoth/wesnoth/issues/1736
 std::vector<command_executor::queued_command> command_executor::filter_command_queue()
 {

@@ -118,7 +118,7 @@ SDL_Cursor* create_cursor(const surface& surf)
 		for(int x = 0; x != surf->w; ++x) {
 			if(static_cast<std::size_t>(x) < cursor_width) {
 				uint8_t r, g, b, a;
-				SDL_GetRGBA(pixels[y * surf->w + x], surf->format, &r, &g, &b, &a);
+				SDL_GetRGBA(pixels[y * surf->w + x], SDL_GetPixelFormatDetails(surf->format), SDL_GetSurfacePalette(surf), &r, &g, &b, &a);
 
 				const std::size_t index = y * cursor_width + x;
 				const std::size_t shift = 7 - (index % 8);
@@ -148,12 +148,12 @@ SDL_Cursor* get_cursor(cursor::CURSOR_TYPE type)
 			const surface& surf(image::get_surface(color_prefix + data.image_color));
 
 			// Construct a temporary ptr to provide a new deleter.
-			data.cursor = cursor_ptr_t(SDL_CreateColorCursor(surf, data.hot_x, data.hot_y), SDL_FreeCursor);
+			data.cursor = cursor_ptr_t(SDL_CreateColorCursor(surf, data.hot_x, data.hot_y), SDL_DestroyCursor);
 		} else {
 			const surface& surf(image::get_surface(bw_prefix + data.image_bw));
 
 			// Construct a temporary ptr to provide a new deleter.
-			data.cursor = cursor_ptr_t(create_cursor(surf), SDL_FreeCursor);
+			data.cursor = cursor_ptr_t(create_cursor(surf), SDL_DestroyCursor);
 		}
 
 		data.is_color = use_color;
@@ -166,13 +166,13 @@ SDL_Cursor* get_cursor(cursor::CURSOR_TYPE type)
 
 manager::manager()
 {
-	SDL_ShowCursor(SDL_ENABLE);
+	SDL_ShowCursor();
 	set();
 }
 
 manager::~manager()
 {
-	SDL_ShowCursor(SDL_ENABLE);
+	SDL_ShowCursor();
 }
 
 void set(CURSOR_TYPE type)
@@ -192,7 +192,7 @@ void set(CURSOR_TYPE type)
 	// if (cursor_image != nullptr && cursor_image != SDL_GetCursor())
 	SDL_SetCursor(cursor_image);
 
-	SDL_ShowCursor(SDL_ENABLE);
+	SDL_ShowCursor();
 }
 
 void set_dragging(bool drag)
