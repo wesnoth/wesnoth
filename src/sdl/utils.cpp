@@ -733,25 +733,30 @@ void mask_surface(surface& nsurf, const surface& nmask, bool* empty_result, cons
 		const_surface_lock mlock(nmask);
 
 		uint32_t* beg = lock.pixels();
-		uint32_t* end = beg + nsurf.area();
+		uint32_t* end = beg + std::min(nsurf.area(), nmask.area());
 		const uint32_t* mbeg = mlock.pixels();
-		const uint32_t* mend = mbeg + nmask->w*nmask->h;
 
-		while(beg != end && mbeg != mend) {
+		// The result is "empty" iff every pixel's alpha component is zero. Instead of branching or
+		// converting to boolean as we go, this just saturates bitwise.
+		uint32_t non_empty_bits = 0;
+
+		while(beg != end) {
 			auto [r, g, b, alpha] = color_t::from_argb_bytes(*beg);
 
 			uint8_t malpha = (*mbeg) >> 24;
 			if (alpha > malpha) {
 				alpha = malpha;
 			}
-			if(alpha)
-				empty = false;
 
-			*beg = (alpha << 24) + (r << 16) + (g << 8) + b;
+			const uint32_t result = color_t{r, g, b, alpha}.to_argb_bytes();
+			non_empty_bits |= result;
+			*beg = result;
 
 			++beg;
 			++mbeg;
 		}
+		auto [ignore_r, ignore_g, ignore_b, non_empty_alpha] = color_t::from_argb_bytes(non_empty_bits);
+		empty = !non_empty_alpha;
 	}
 	if(empty_result)
 		*empty_result = empty;
@@ -782,10 +787,9 @@ bool in_mask_surface(const surface& nsurf, const surface& nmask)
 
 		while(mbeg != mend) {
 			uint8_t malpha = (*mbeg) >> 24;
-			if(malpha == 0) {
-				uint8_t alpha = (*beg) >> 24;
-				if (alpha)
-					return false;
+			uint8_t alpha = (*beg) >> 24;
+			if(malpha == 0 && alpha != 0) {
+				return false;
 			}
 			++mbeg;
 			++beg;
