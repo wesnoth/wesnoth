@@ -52,8 +52,9 @@ tab_container::tab_container(const implementation::builder_tab_container& builde
 	generator_ = generator.get();
 	assert(generator_);
 
+	const widget_item empty_data;
 	for(const auto& builder_entry : builder.builders) {
-		generator->create_item(-1, *builder_entry, widget_item{}, nullptr);
+		generator->create_item(-1, *builder_entry, empty_data, nullptr);
 	}
 
 	grid* parent_grid = find_widget<grid>("_content_grid", false, true);
