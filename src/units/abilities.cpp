@@ -1753,8 +1753,15 @@ namespace
 		if(!string_matches_if_present(filter, cfg, "active_on", "both"))
 			return false;
 
-		if(!double_matches_if_present(filter, cfg, "priority"))
-			return false;
+		if(abilities_list::weapon_math_tags().count(tag_name) != 0 || abilities_list::ability_value_tags().count(tag_name) != 0) {
+			if(!double_matches_if_present(filter, cfg, "priority", 0.00)) {
+				return false;
+			}
+		} else {
+			if(!double_matches_if_present(filter, cfg, "priority")) {
+				return false;
+			}
+		}
 
 		//value, add, sub multiply and divide check values of attribute used in engines abilities(default value of 'value' can be checked when not specified)
 		//who return numericals value but can also check in non-engine abilities(in last case if 'value' not specified none value can matches)
