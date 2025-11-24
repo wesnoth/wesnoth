@@ -279,6 +279,11 @@ def list_contents():
     addons = []
     if options.addons:
         addons = os.listdir(options.addons)
+        try:
+            addons.remove("mainline")
+            print("Ignoring addon named \"mainline\"")
+        except: pass
+
     global global_addons
     global_addons = set(addons)
 
