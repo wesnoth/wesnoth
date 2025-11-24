@@ -75,7 +75,7 @@ void show_terrain_description(const terrain_type& t)
 	show_help(hidden_symbol(t.hide_help()) + terrain_prefix + t.id());
 }
 
-void show_with_toplevel(const section& toplevel_sec, const std::string& show_topic)
+static void show_with_toplevel(const section& toplevel_sec, const std::string& show_topic)
 {
 	gui2::dialogs::help_browser::display(toplevel_sec, show_topic);
 }
