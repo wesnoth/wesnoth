@@ -75,14 +75,20 @@ std::string get_menu_marker(const bool changed)
 	}
 }
 
+/** A reference to the stub ToD schedule as defined in the game config. */
+const config& get_placeholder_schedule(const game_config_view& game_config)
+{
+	return game_config.find_mandatory_child("editor_times", "id", "empty");
 }
+
+} // namespace
 
 namespace editor {
 
 context_manager::context_manager(editor_display& gui, const game_config_view& game_config, const std::string& addon_id)
 	: locs_(nullptr)
 	, gui_(gui)
-	, game_config_(game_config)
+	, placeholder_schedule_(get_placeholder_schedule(game_config))
 	, default_dir_(filesystem::get_dir(filesystem::get_legacy_editor_dir()))
 	, current_addon_(addon_id)
 	, map_generators_()
@@ -469,7 +475,7 @@ void context_manager::apply_mask_dialog()
 
 	if(dlg.show()) {
 		try {
-			map_context mask(game_config_, dlg.path(), current_addon_);
+			map_context mask(placeholder_schedule_, dlg.path(), current_addon_);
 			editor_action_apply_mask a(mask.map());
 			perform_refresh(a);
 		} catch (const editor_map_load_exception& e) {
@@ -512,7 +518,7 @@ void context_manager::create_mask_to_dialog()
 
 	if(dlg.show()) {
 		try {
-			map_context map(game_config_, dlg.path(), current_addon_);
+			map_context map(placeholder_schedule_, dlg.path(), current_addon_);
 			editor_action_create_mask a(map.map());
 			perform_refresh(a);
 		} catch (const editor_map_load_exception& e) {
@@ -959,7 +965,7 @@ void context_manager::load_map(const std::string& filename, bool new_context)
 	LOG_ED << "Load map: " << filename << (new_context ? " (new)" : " (same)");
 	try {
 		{
-			auto mc = std::make_unique<map_context>(game_config_, filename, current_addon_);
+			auto mc = std::make_unique<map_context>(placeholder_schedule_, filename, current_addon_);
 			if(mc->get_filename() != filename) {
 				if(new_context && check_switch_open_map(mc->get_filename())) {
 					return;
@@ -1004,14 +1010,13 @@ void context_manager::revert_map()
 }
 
 void context_manager::init_context(int width, int height, const t_translation::terrain_code& fill, bool new_context, bool is_pure_map) {
-	const config& default_schedule = game_config_.find_mandatory_child("editor_times", "id", "empty");
 	editor_map m(width, height, fill);
 
 	if(new_context) {
-		int new_id = add_map_context(m, is_pure_map, default_schedule, current_addon_);
+		int new_id = add_map_context(m, is_pure_map, placeholder_schedule_, current_addon_);
 		switch_context(new_id);
 	} else {
-		replace_map_context(m, is_pure_map, default_schedule, current_addon_);
+		replace_map_context(m, is_pure_map, placeholder_schedule_, current_addon_);
 	}
 }
 
@@ -1033,8 +1038,7 @@ void context_manager::new_scenario(int width, int height, const t_translation::t
 
 void context_manager::map_to_scenario()
 {
-	const config& default_schedule = game_config_.find_mandatory_child("editor_times", "id", "empty");
-	replace_map_context(get_map_context().map(), false, default_schedule, current_addon_);
+	replace_map_context(get_map_context().map(), false, placeholder_schedule_, current_addon_);
 
 	// Give the converted scenario a number of sides
 	// equal to the number of valid starting positions.
@@ -1097,8 +1101,7 @@ void context_manager::create_blank_context()
 	t_translation::terrain_code default_terrain =
 			t_translation::read_terrain_code(game_config::default_terrain);
 
-	const config& default_schedule = game_config_.find_mandatory_child("editor_times", "id", "empty");
-	add_map_context(editor_map(44, 33, default_terrain), true, default_schedule, current_addon_);
+	add_map_context(editor_map(44, 33, default_terrain), true, placeholder_schedule_, current_addon_);
 }
 
 void context_manager::close_current_context()

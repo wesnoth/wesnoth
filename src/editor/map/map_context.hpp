@@ -29,7 +29,6 @@
 #include "utils/optional_fwd.hpp"
 
 #include <vector>
-class game_config_view;
 
 namespace editor {
 
@@ -80,7 +79,7 @@ public:
 	 * inside scenarios do not change the filename, but set the "embedded" flag
 	 * instead.
 	 */
-	map_context(const game_config_view& game_config, const std::string& filename, const std::string& addon_id);
+	map_context(const config& schedule, const std::string& filename, const std::string& addon_id);
 
 	/**
 	 * Map context destructor

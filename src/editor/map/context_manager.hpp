@@ -324,7 +324,7 @@ public:
 private:
 	editor_display& gui_;
 
-	const game_config_view& game_config_;
+	const config& placeholder_schedule_;
 
 	/** Default directory for map load/save as dialogs */
 	std::string default_dir_;
