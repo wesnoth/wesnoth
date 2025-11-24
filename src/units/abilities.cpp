@@ -1568,6 +1568,44 @@ bool specials_coontext_t::has_active_special_id(const attack_type& at, const std
 	return foreach_active_special(*this, self, quick_check, return_true);
 }
 
+
+//The following functions are intended to allow the use in combat of capacities
+//identical to special weapons and therefore to be able to use them on adjacent
+//units (abilities of type 'aura') or else on all types of weapons even if the
+//beneficiary unit does not have a corresponding weapon
+//(defense against ranged weapons abilities for a unit that only has melee attacks)
+
+active_ability_list specials_coontext_t::get_active_combat_teachers(const attack_type& at) const
+{
+	auto [self, other] = self_and_other(at);
+	const map_location loc = self.un ? self.un->get_location() : self.loc;
+	active_ability_list res(loc);
+	const std::set<std::string>& checking_tags = abilities_list::all_weapon_tags();
+	auto quick_check = [&](const ability_ptr& p_ab) {
+		return checking_tags.count(p_ab->tag()) != 0;
+	};
+
+	if (self.un) {
+		foreach_distant_active_ability(*self.un, self.loc, quick_check,
+			[&](const ability_ptr& p_ab, const unit& u_teacher) {
+				if (is_special_active(self, *p_ab, unit_ability_t::affects_t::SELF)) {
+					res.emplace_back(p_ab, self.un->get_location(), u_teacher.get_location());
+				}
+			}
+		);
+	}
+	if (other.un) {
+		foreach_distant_active_ability(*other.un, other.loc, quick_check,
+			[&](const ability_ptr& p_ab, const unit& u_teacher) {
+				if (is_special_active(other, *p_ab, unit_ability_t::affects_t::OTHER)) {
+					res.emplace_back(p_ab, other.un->get_location(), u_teacher.get_location());
+				}
+			}
+		);
+	}
+	return res;
+}
+
 active_ability_list specials_coontext_t::get_active_specials(const attack_type& at, const std::string& tag_name) const
 {
 	auto [self, other] = self_and_other(at);
