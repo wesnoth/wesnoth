@@ -60,7 +60,7 @@ namespace {
 	static const int editor_team_default_gold = 100;
 }
 
-map_context::map_context(const editor_map& map, bool pure_map, const config& schedule, const std::string& addon_id)
+map_context::map_context(const editor_map& map, bool pure_map, const std::string& addon_id)
 	: filename_()
 	, map_data_key_()
 	, embedded_(false)
@@ -87,7 +87,7 @@ map_context::map_context(const editor_map& map, bool pure_map, const config& sch
 	, labels_(nullptr)
 	, units_()
 	, teams_()
-	, tod_manager_(new tod_manager(schedule))
+	, tod_manager_(new tod_manager)
 	, mp_settings_()
 	, game_classification_()
 	, music_tracks_()
@@ -111,7 +111,7 @@ static std::string get_map_location(const std::string& file_contents, const std:
 	return std::string(v2);
 }
 
-map_context::map_context(const config& schedule, const std::string& filename, const std::string& addon_id)
+map_context::map_context(const std::string& filename, const std::string& addon_id)
 	: filename_(filename)
 	, map_data_key_()
 	, embedded_(false)
@@ -138,7 +138,7 @@ map_context::map_context(const config& schedule, const std::string& filename, co
 	, labels_(nullptr)
 	, units_()
 	, teams_()
-	, tod_manager_(new tod_manager(schedule))
+	, tod_manager_(new tod_manager)
 	, mp_settings_()
 	, game_classification_()
 	, music_tracks_()

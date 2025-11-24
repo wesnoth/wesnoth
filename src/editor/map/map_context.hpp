@@ -69,7 +69,7 @@ public:
 	 * empty, indicating a new map.
 	 * Marked "explicit" to avoid automatic conversions.
 	 */
-	explicit map_context(const editor_map& map, bool pure_map, const config& schedule, const std::string& addon_id);
+	explicit map_context(const editor_map& map, bool pure_map, const std::string& addon_id);
 
 	/**
 	 * Create map_context from a map file. If the map cannot be loaded, an
@@ -79,7 +79,7 @@ public:
 	 * inside scenarios do not change the filename, but set the "embedded" flag
 	 * instead.
 	 */
-	map_context(const config& schedule, const std::string& filename, const std::string& addon_id);
+	map_context(const std::string& filename, const std::string& addon_id);
 
 	/**
 	 * Map context destructor
