@@ -29,7 +29,7 @@ namespace editor
 class context_manager : public filter_context
 {
 public:
-	context_manager(editor_display& gui, const game_config_view& game_config, const std::string& addon_id);
+	context_manager(editor_display& gui, const std::string& addon_id);
 	~context_manager();
 
 	bool is_active_transitions_hotkey(const std::string& item);
@@ -145,7 +145,7 @@ public:
 	void save_scenario_as_dialog();
 
 	/** Display a generate random map dialog and process user input. */
-	void generate_map_dialog();
+	void generate_map_dialog(const std::vector<std::unique_ptr<map_generator>>& map_generators);
 
 	/** Display a load map dialog and process user input. */
 	void resize_map_dialog();
@@ -205,8 +205,6 @@ public:
 	// TODO: Make this private with an accessor or something
 	class location_palette* locs_;
 private:
-	/** init available random map generators */
-	void init_map_generators(const game_config_view& game_config);
 
 	/**
 	 * Shows an are-you-sure dialog if the map was modified.
@@ -330,8 +328,6 @@ private:
 	/** The currently selected add-on */
 	std::string current_addon_;
 
-	/** Available random map generators */
-	std::vector<std::unique_ptr<map_generator>> map_generators_;
 	map_generator* last_map_generator_;
 
 	int current_context_index_;

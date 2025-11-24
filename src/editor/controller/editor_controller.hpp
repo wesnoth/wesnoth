@@ -28,6 +28,8 @@
 
 #include "sound_music_track.hpp"
 
+class map_generator;
+
 namespace font {
 struct floating_label_context;
 }
@@ -252,6 +254,9 @@ private:
 	EXIT_STATUS quit_mode_;
 
 	std::vector<std::shared_ptr<sound::music_track>> music_tracks_;
+
+	/** Available random map generators */
+	std::vector<std::unique_ptr<map_generator>> map_generators_;
 };
 
 } //end namespace editor
