@@ -84,8 +84,8 @@ namespace t_translation {
 		const terrain_code& get(int x, int y) const { std::size_t index = static_cast<std::size_t>(x) * h + y; return data.at(index); }
 
 		std::vector<terrain_code> data;
-		int w;
-		int h;
+		int w{0};
+		int h{0};
 		std::vector<terrain_code>::iterator operator[](int x) { return data.begin() + static_cast<std::size_t>(h) * x; }
 		std::vector<terrain_code>::const_iterator operator[](int x) const { return data.begin() + static_cast<std::size_t>(h) * x; }
 	};
