@@ -30,11 +30,6 @@ class editor_generate_map : public modal_dialog
 public:
 	explicit editor_generate_map(const std::vector<std::unique_ptr<map_generator>>& mg);
 
-	std::vector<std::unique_ptr<map_generator>>& get_map_generators()
-	{
-		return map_generators_;
-	}
-
 	map_generator* get_selected_map_generator();
 
 	void select_map_generator(map_generator* mg);
