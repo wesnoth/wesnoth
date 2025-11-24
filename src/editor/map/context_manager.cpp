@@ -66,7 +66,7 @@ namespace {
 std::vector<std::unique_ptr<editor::map_context>> saved_contexts_;
 int last_context_ = 0;
 
-const std::string get_menu_marker(const bool changed)
+std::string get_menu_marker(const bool changed)
 {
 	if (changed) {
 		return "[" + markup::span_color("#f00", font::unicode_bullet) + "]";
@@ -366,10 +366,7 @@ void context_manager::expand_open_maps_menu(std::vector<config>& items) const
 			ss << " (E)";
 		}
 
-		const std::string label = ss.str();
-		const std::string details = get_menu_marker(changed);
-
-		items.emplace_back("label", label, "details", details);
+		items.emplace_back("label", ss.str(), "details", get_menu_marker(changed));
 	}
 }
 
@@ -402,7 +399,7 @@ void context_manager::expand_areas_menu(std::vector<config>& items) const
 		const std::string& area = area_ids[mci];
 
 		std::stringstream ss;
-		ss << "[" << mci + 1 << "] ";\
+		ss << "[" << mci + 1 << "] ";
 
 		if(area.empty()) {
 			ss << markup::italic(_("Unnamed Area"));
@@ -414,10 +411,7 @@ void context_manager::expand_areas_menu(std::vector<config>& items) const
 			mci == static_cast<std::size_t>(get_map_context().get_active_area())
 			&& tod->get_area_by_index(mci) != get_map_context().map().selection();
 
-		const std::string label = ss.str();
-		const std::string details = get_menu_marker(changed);
-
-		items.emplace_back("label", label, "details", details);
+		items.emplace_back("label", ss.str(), "details", get_menu_marker(changed));
 	}
 }
 
