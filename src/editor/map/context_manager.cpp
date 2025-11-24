@@ -714,7 +714,7 @@ void context_manager::save_map_as_dialog()
 		&& first_pick
 		&& (gui2::show_message(
 				_("Error"),
-				VGETTEXT("Do you really want to save $type1 in $type2 folder?", {{"type1", "map"}, {"type2", "scenarios"}}),
+				_("Do you really want to save a map in the scenarios folder?"),
 				gui2::dialogs::message::yes_no_buttons) != gui2::retval::OK))
 	{
 		return;
@@ -763,7 +763,7 @@ void context_manager::save_scenario_as_dialog()
 		&& first_pick
 		&& (gui2::show_message(
 				_("Error"),
-				VGETTEXT("Do you really want to save $type1 in $type2 folder?", {{"type1", "scenario"}, {"type2", "maps"}}),
+				_("Do you really want to save a scenario in the maps folder?"),
 				gui2::dialogs::message::yes_no_buttons) != gui2::retval::OK))
 	{
 		return;
