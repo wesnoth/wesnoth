@@ -697,8 +697,7 @@ void unit_attack(display * disp, game_board & board,
 			hit_type, weapon, secondary_attack, swing);
 	}
 
-	active_ability_list abilities{att->get_location()};
-	// FIXME
+	active_ability_list abilities = ctx.get_active_combat_teachers(*weapon);
 
 	for(const active_ability& ability : abilities) {
 		if(ability.teacher_loc == a) {

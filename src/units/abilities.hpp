@@ -325,6 +325,8 @@ public:
 	std::string describe_weapon_specials(const attack_type& at) const;
 	std::string describe_weapon_specials_value(const attack_type& at, const std::set<std::string>& checking_tags) const;
 
+	active_ability_list get_active_combat_teachers(const attack_type& at) const;
+
 };
 
 namespace unit_abilities
