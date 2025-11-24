@@ -594,6 +594,15 @@ auto return_true = [](const auto&...) { return true; };
  * are not interested in, simple_check is executed before checking whether a given ability is active.
  * the @a skip_adjacent parameter can be set to true if we are not intereted in abilities from
  * adjacent units, used by the [filter_special] code as an optimisation.
+ * @param context the abilities context we are in, describing attacker defender etc.
+ * @param self the combatant whose weapons are affected by the specials
+ * @param quick_check a predicate describing in whiich abilities we are interested in. (usually checking for tag name)
+ * @handler handler a callback that is executed for each active speical that affects @self in the current context, it takes 3 parameters:
+ *          - a const ability_t& describing the ability
+ *          - a specials_combatant& student
+ *          - a 'source', this is either am attack_type& or a unit&. so handler operator() has to be able to handle both cases
+ *          handler can return a bool, if it returns true, the seacrch is aborted and this functions returns true withaout checking mroe abilities.
+ * @skip_adjacent whether we should skip looking into adjacent units effecting the weapon via leadership-like abilities. (used by the [filter_special] as a optimisation)
  */
 template<typename TCheck, typename THandler>
 bool foreach_active_special(
