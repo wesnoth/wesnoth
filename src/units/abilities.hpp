@@ -185,7 +185,7 @@ private:
 class active_ability_list
 {
 public:
-	active_ability_list(const map_location& loc = map_location()) : cfgs_(), loc_(loc) {}
+	explicit active_ability_list(const map_location& loc = map_location()) : cfgs_(), loc_(loc) {}
 
 	// Implemented in unit_abilities.cpp
 	std::pair<int, map_location> highest(const std::string& key, int def = 0) const
