@@ -2102,7 +2102,7 @@ bool filter_base_matches(const config& cfg, int def)
 	return true;
 }
 
-int individual_value_int(const config::attribute_value *v, int def, const active_ability & ability, const map_location& loc, const const_attack_ptr& att) {
+static int individual_value_int(const config::attribute_value *v, int def, const active_ability & ability, const map_location& loc, const const_attack_ptr& att) {
 	int value = std::round(get_single_ability_value(*v, static_cast<double>(def), ability, loc, att, [&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
 		callable.add("base_value", wfl::variant(def));
 		return std::round(formula.evaluate(callable).as_int());
@@ -2110,7 +2110,7 @@ int individual_value_int(const config::attribute_value *v, int def, const active
 	return value;
 }
 
-int individual_value_double(const config::attribute_value *v, int def, const active_ability & ability, const map_location& loc, const const_attack_ptr& att) {
+static int individual_value_double(const config::attribute_value *v, int def, const active_ability & ability, const map_location& loc, const const_attack_ptr& att) {
 	int value = std::round(get_single_ability_value(*v, static_cast<double>(def), ability, loc, att, [&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
 		callable.add("base_value", wfl::variant(def));
 		return formula.evaluate(callable).as_decimal() / 1000.0 ;
