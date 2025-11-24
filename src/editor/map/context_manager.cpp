@@ -1061,9 +1061,9 @@ void context_manager::map_to_scenario()
 //
 
 template<typename... T>
-int context_manager::add_map_context(const T&... args)
+int context_manager::add_map_context(T&&... args)
 {
-	map_contexts_.emplace_back(std::make_unique<map_context>(args...));
+	map_contexts_.emplace_back(new map_context(std::forward<T>(args)...));
 	return map_contexts_.size() - 1;
 }
 
@@ -1074,9 +1074,10 @@ int context_manager::add_map_context_of(std::unique_ptr<map_context>&& mc)
 }
 
 template<typename... T>
-void context_manager::replace_map_context(const T&... args)
+void context_manager::replace_map_context(T&&... args)
 {
-	replace_map_context_with(std::move(std::make_unique<map_context>(args...)));
+	map_contexts_[current_context_index_].reset(new map_context(std::forward<T>(args)...));
+	refresh_on_context_change();
 }
 
 void context_manager::replace_map_context_with(std::unique_ptr<map_context>&& mc)

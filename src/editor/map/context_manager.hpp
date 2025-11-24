@@ -225,7 +225,7 @@ private:
 	 * @return the index of the added map context in the map_contexts_ array
 	 */
 	template<typename... T>
-	int add_map_context(const T&... args);
+	int add_map_context(T&&... args);
 
 	int add_map_context_of(std::unique_ptr<map_context>&& mc);
 
@@ -233,7 +233,7 @@ private:
 	 * Replace the current map context and refresh accordingly
 	 */
 	template<typename... T>
-	void replace_map_context(const T&... args);
+	void replace_map_context(T&&... args);
 
 	void replace_map_context_with(std::unique_ptr<map_context>&& mc);
 
