@@ -2156,7 +2156,7 @@ effect::effect(const active_ability_list& list, int def, const const_attack_ptr&
 	for(const active_ability& i : list) {
 		double priority = i.ability().priority();
 		if(base_list[priority].empty()) {
-			base_list[priority] = list.loc();
+			base_list[priority] = active_ability_list(list.loc());
 		}
 		base_list[priority].emplace_back(i);
 	}
