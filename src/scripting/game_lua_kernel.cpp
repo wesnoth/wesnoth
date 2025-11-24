@@ -2096,12 +2096,15 @@ int game_lua_kernel::intf_find_path(lua_State *L)
 
 		stop_at = luaW_table_get_def<double>(L, arg, "max_cost", stop_at);
 
-
 		lua_pushstring(L, "viewing_side");
 		lua_rawget(L, arg);
 		if (!lua_isnil(L, -1)) {
 			int i = luaL_checkinteger(L, -1);
-			if (i >= 1 && i <= static_cast<int>(teams().size())) viewing_side = i;
+			if(board().has_team(i)) {
+				viewing_side = i;
+			} else {
+				return luaL_argerror(L, -1, "invalid viewing side");
+			}
 		}
 		lua_pop(L, 1);
 
