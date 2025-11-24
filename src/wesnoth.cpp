@@ -185,7 +185,7 @@ static void handle_preprocess_string(const commandline_options& cmdline_opts)
 		[](const auto& timer) { PLAIN_LOG << "preprocessing finished. Took " << timer << " ticks."; });
 
 	const auto output_stream = preprocess_string(*cmdline_opts.preprocess_source_string, "wesnoth", defines_map);
-	std::cout << output_stream.get() << std::endl;
+	std::cout << io::read(*output_stream) << std::endl;
 }
 
 static void handle_preprocess_command(const commandline_options& cmdline_opts)
