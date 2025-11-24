@@ -28,7 +28,6 @@
 
 #include "filesystem.hpp"
 #include "formula/string_utils.hpp"
-#include "generators/map_generator.hpp"
 #include "gettext.hpp"
 #include "resources.hpp"
 #include "team.hpp"
