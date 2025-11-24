@@ -756,7 +756,7 @@ void attack::fire_event_impl(const std::string& n, bool reverse)
 	LOG_NG << "attack: firing '" << n << "' event";
 	// FIXME: this passes nullptr to the specials_context, i assume it's to avoid binding the context to the concrete c++ unit objects in case the unit gets replaced by wml
 	// But that doesn't really work, see the related comment in attack_type::special_active_impl
-	
+
 	// prepare the event data for weapon filtering
 	config ev_data;
 	config& a_weapon_cfg = ev_data.add_child(reverse ? "second" : "first");
