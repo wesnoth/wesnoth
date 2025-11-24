@@ -21,7 +21,6 @@
 #include "preferences/preferences.hpp"
 
 class map_generator;
-class game_config_view;
 
 namespace editor
 {

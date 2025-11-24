@@ -47,6 +47,7 @@
 #include "cursor.hpp"
 #include "desktop/clipboard.hpp"
 #include "floating_label.hpp"
+#include "generators/map_create.hpp"
 #include "gettext.hpp"
 #include "picture.hpp"
 #include "quit_confirmation.hpp"
@@ -92,7 +93,7 @@ auto parse_map_generators(const config_array_view& multiplayer_tag_range)
 		}
 
 		if(const auto generator_cfg = i.optional_child("generator")) {
-			generators.emplace_back(create_map_generator(i["map_generation"].empty() ? i["scenario_generation"] : i["map_generation"], generator_cfg.value()));
+			generators.emplace_back(create_map_generator(i["map_generation"].str(i["scenario_generation"]), generator_cfg.value()));
 		} else {
 			ERR_ED << "Scenario \"" << i["name"] << "\" with id " << i["id"]
 				   << " has map_generation= but no [generator] tag";
