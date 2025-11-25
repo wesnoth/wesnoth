@@ -91,6 +91,7 @@ map_context::map_context(const editor_map& map, bool pure_map, const std::string
 	, mp_settings_()
 	, game_classification_()
 	, music_tracks_()
+	, last_map_generator_(nullptr)
 {
 }
 
@@ -142,6 +143,7 @@ map_context::map_context(const std::string& filename, const std::string& addon_i
 	, mp_settings_()
 	, game_classification_()
 	, music_tracks_()
+	, last_map_generator_(nullptr)
 {
 	/*
 	 * Overview of situations possibly found in the file:

@@ -82,7 +82,6 @@ context_manager::context_manager(editor_display& gui, const std::string& addon_i
 	, gui_(gui)
 	, default_dir_(filesystem::get_dir(filesystem::get_legacy_editor_dir()))
 	, current_addon_(addon_id)
-	, last_map_generator_(nullptr)
 	, current_context_index_(0)
 	, auto_update_transitions_(prefs::get().editor_auto_update_transitions())
 	, map_contexts_()
@@ -782,7 +781,7 @@ void context_manager::generate_map_dialog(const std::vector<std::unique_ptr<map_
 	}
 
 	gui2::dialogs::editor_generate_map dialog(map_generators);
-	dialog.select_map_generator(last_map_generator_);
+	dialog.select_map_generator(get_map_context().last_used_generator());
 
 	if(dialog.show()) {
 		std::string map_string;
@@ -803,7 +802,7 @@ void context_manager::generate_map_dialog(const std::vector<std::unique_ptr<map_
 			perform_refresh(a);
 		}
 
-		last_map_generator_ = map_generator;
+		get_map_context().set_last_used_generator(map_generator);
 	}
 }
 
