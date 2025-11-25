@@ -993,82 +993,82 @@ template std::pair<int, map_location> active_ability_list::get_extremum<std::gre
  *
  */
 
-
+ /**
+  * Sets the context under which specials will be checked for being active.
+  * This version is appropriate if both units in a combat are known.
+  * @param[in]  weapon        The weapon being considered.
+  * @param[in]  self          A reference to the unit with this weapon.
+  * @param[in]  other         A reference to the other unit in the combat.
+  * @param[in]  unit_loc      The location of the unit with this weapon.
+  * @param[in]  other_loc     The location of the other unit in the combat.
+  * @param[in]  attacking     Whether or not the unit with this weapon is the attacker.
+  * @param[in]  other_attack  The attack used by the other unit.
+  */
+attack_type::specials_context_t::specials_context_t(
+	const attack_type& weapon,
+	const_attack_ptr other_attack,
+	unit_const_ptr self,
+	unit_const_ptr other,
+	const map_location& unit_loc,
+	const map_location& other_loc,
+	bool attacking)
+	: parent(weapon.shared_from_this())
+{
+	weapon.self_ = std::move(self);
+	weapon.other_ = std::move(other);
+	weapon.self_loc_ = unit_loc;
+	weapon.other_loc_ = other_loc;
+	weapon.is_attacker_ = attacking;
+	weapon.other_attack_ = std::move(other_attack);
+	weapon.is_for_listing_ = false;
+}
 
 /**
- * Returns a vector of names and descriptions for the specials of *this.
- * Each std::pair in the vector has first = name and second = description.
- *
- * This uses either the active or inactive name/description for each special,
- * based on the current context (see set_specials_context), provided
- * @a active_list is not nullptr. Otherwise specials are assumed active.
- * If the appropriate name is empty, the special is skipped.
+ * Sets the context under which specials will be checked for being active.
+ * This version is appropriate if there is no specific combat being considered.
+ * @param[in]  weapon        The weapon being considered.
+ * @param[in]  self          A reference to the unit with this weapon.
+ * @param[in]  loc           The location of the unit with this weapon.
+ * @param[in]  attacking     Whether or not the unit with this weapon is the attacker.
  */
-std::vector<unit_ability_t::tooltip_info> attack_type::special_tooltips(
-	boost::dynamic_bitset<>* active_list) const
+attack_type::specials_context_t::specials_context_t(const attack_type& weapon, unit_const_ptr self, const map_location& loc, bool attacking)
+	: parent(weapon.shared_from_this())
 {
-	//log_scope("special_tooltips");
-	std::vector<unit_ability_t::tooltip_info> res;
-	if(active_list) {
-		active_list->clear();
-	}
-
-	for(const auto& p_ab : specials()) {
-		bool active = !active_list || special_active(*p_ab, AFFECTS::EITHER);
-
-		auto name = p_ab->get_name(!active);
-		auto desc = p_ab->get_description(!active);
-
-		if(name.empty()) {
-			continue;
-		}
-
-		res.AGGREGATE_EMPLACE(
-			name,
-			desc,
-			p_ab->get_help_topic_id()
-		);
-
-		if(active_list) {
-			active_list->push_back(active);
-		}
-	}
-	return res;
+	weapon.self_ = std::move(self);
+	weapon.other_ = unit_ptr();
+	weapon.self_loc_ = loc;
+	weapon.other_loc_ = map_location::null_location();
+	weapon.is_attacker_ = attacking;
+	weapon.other_attack_ = nullptr;
+	weapon.is_for_listing_ = false;
 }
 
-std::vector<unit_ability_t::tooltip_info> attack_type::abilities_special_tooltips(
-	boost::dynamic_bitset<>* active_list) const
+attack_type::specials_context_t::specials_context_t(const attack_type& weapon, bool attacking)
+	: parent(weapon.shared_from_this())
 {
-	std::vector<unit_ability_t::tooltip_info> res;
-	if(active_list) {
-		active_list->clear();
-	}
-	std::set<std::string> checking_name;
-	if(!self_) {
-		return res;
-	}
-	foreach_active_ability(*self_, self_loc_,
-		[&](const ability_ptr&) {
-			return true;
-		},
-		[&](const ability_ptr& p_ab, const unit&) {
-			if (special_tooltip_active(*p_ab)) {
-				bool active = !active_list || special_active(*p_ab, AFFECTS::SELF);
-				const std::string name = p_ab->cfg()["name_affected"];
-				const std::string desc = p_ab->cfg()["description_affected"];
-
-				if(name.empty() || checking_name.count(name) != 0) {
-					return;
-				}
-				res.AGGREGATE_EMPLACE(name, desc, p_ab->get_help_topic_id());
-				checking_name.insert(name);
-				if(active_list) {
-					active_list->push_back(active);
-				}
-			}
-		});
-	return res;
+	weapon.is_for_listing_ = true;
+	weapon.is_attacker_ = attacking;
 }
+
+attack_type::specials_context_t::~specials_context_t()
+{
+	if (was_moved) return;
+	parent->self_ = unit_ptr();
+	parent->other_ = unit_ptr();
+	parent->self_loc_ = map_location::null_location();
+	parent->other_loc_ = map_location::null_location();
+	parent->is_attacker_ = false;
+	parent->other_attack_ = nullptr;
+	parent->is_for_listing_ = false;
+}
+
+attack_type::specials_context_t::specials_context_t(attack_type::specials_context_t&& other)
+	: parent(std::move(other.parent))
+{
+	other.was_moved = true;
+}
+
+
 
 /**
  * static used in weapon_specials (bool only_active) and
@@ -1229,81 +1229,6 @@ std::string attack_type::describe_weapon_specials_value(const std::set<std::stri
 }
 
 
-/**
- * Sets the context under which specials will be checked for being active.
- * This version is appropriate if both units in a combat are known.
- * @param[in]  weapon        The weapon being considered.
- * @param[in]  self          A reference to the unit with this weapon.
- * @param[in]  other         A reference to the other unit in the combat.
- * @param[in]  unit_loc      The location of the unit with this weapon.
- * @param[in]  other_loc     The location of the other unit in the combat.
- * @param[in]  attacking     Whether or not the unit with this weapon is the attacker.
- * @param[in]  other_attack  The attack used by the other unit.
- */
-attack_type::specials_context_t::specials_context_t(
-	const attack_type& weapon,
-	const_attack_ptr other_attack,
-	unit_const_ptr self,
-	unit_const_ptr other,
-	const map_location& unit_loc,
-	const map_location& other_loc,
-	bool attacking)
-	: parent(weapon.shared_from_this())
-{
-	weapon.self_ = std::move(self);
-	weapon.other_ = std::move(other);
-	weapon.self_loc_ = unit_loc;
-	weapon.other_loc_ = other_loc;
-	weapon.is_attacker_ = attacking;
-	weapon.other_attack_ = std::move(other_attack);
-	weapon.is_for_listing_ = false;
-}
-
-/**
- * Sets the context under which specials will be checked for being active.
- * This version is appropriate if there is no specific combat being considered.
- * @param[in]  weapon        The weapon being considered.
- * @param[in]  self          A reference to the unit with this weapon.
- * @param[in]  loc           The location of the unit with this weapon.
- * @param[in]  attacking     Whether or not the unit with this weapon is the attacker.
- */
-attack_type::specials_context_t::specials_context_t(const attack_type& weapon, unit_const_ptr self, const map_location& loc, bool attacking)
-	: parent(weapon.shared_from_this())
-{
-	weapon.self_ = std::move(self);
-	weapon.other_ = unit_ptr();
-	weapon.self_loc_ = loc;
-	weapon.other_loc_ = map_location::null_location();
-	weapon.is_attacker_ = attacking;
-	weapon.other_attack_ = nullptr;
-	weapon.is_for_listing_ = false;
-}
-
-attack_type::specials_context_t::specials_context_t(const attack_type& weapon, bool attacking)
-	: parent(weapon.shared_from_this())
-{
-	weapon.is_for_listing_ = true;
-	weapon.is_attacker_ = attacking;
-}
-
-attack_type::specials_context_t::~specials_context_t()
-{
-	if(was_moved) return;
-	parent->self_ = unit_ptr();
-	parent->other_ = unit_ptr();
-	parent->self_loc_ = map_location::null_location();
-	parent->other_loc_ = map_location::null_location();
-	parent->is_attacker_ = false;
-	parent->other_attack_ = nullptr;
-	parent->is_for_listing_ = false;
-}
-
-attack_type::specials_context_t::specials_context_t(attack_type::specials_context_t&& other)
-	: parent(std::move(other.parent))
-{
-	other.was_moved = true;
-}
-
 
 
 namespace { // Helpers for attack_type::special_active()
@@ -1440,6 +1365,81 @@ namespace { // Helpers for attack_type::special_active()
 
 }//anonymous namespace
 
+
+/**
+ * Returns a vector of names and descriptions for the specials of *this.
+ * Each std::pair in the vector has first = name and second = description.
+ *
+ * This uses either the active or inactive name/description for each special,
+ * based on the current context (see set_specials_context), provided
+ * @a active_list is not nullptr. Otherwise specials are assumed active.
+ * If the appropriate name is empty, the special is skipped.
+ */
+std::vector<unit_ability_t::tooltip_info> attack_type::special_tooltips(
+	boost::dynamic_bitset<>* active_list) const
+{
+	//log_scope("special_tooltips");
+	std::vector<unit_ability_t::tooltip_info> res;
+	if (active_list) {
+		active_list->clear();
+	}
+
+	for (const auto& p_ab : specials()) {
+		bool active = !active_list || special_active(*p_ab, AFFECTS::EITHER);
+
+		auto name = p_ab->get_name(!active);
+		auto desc = p_ab->get_description(!active);
+
+		if (name.empty()) {
+			continue;
+		}
+
+		res.AGGREGATE_EMPLACE(
+			name,
+			desc,
+			p_ab->get_help_topic_id()
+		);
+
+		if (active_list) {
+			active_list->push_back(active);
+		}
+	}
+	return res;
+}
+
+std::vector<unit_ability_t::tooltip_info> attack_type::abilities_special_tooltips(
+	boost::dynamic_bitset<>* active_list) const
+{
+	std::vector<unit_ability_t::tooltip_info> res;
+	if (active_list) {
+		active_list->clear();
+	}
+	std::set<std::string> checking_name;
+	if (!self_) {
+		return res;
+	}
+	foreach_active_ability(*self_, self_loc_,
+		[&](const ability_ptr&) {
+			return true;
+		},
+		[&](const ability_ptr& p_ab, const unit&) {
+			if (special_tooltip_active(*p_ab)) {
+				bool active = !active_list || special_active(*p_ab, AFFECTS::SELF);
+				const std::string name = p_ab->cfg()["name_affected"];
+				const std::string desc = p_ab->cfg()["description_affected"];
+
+				if (name.empty() || checking_name.count(name) != 0) {
+					return;
+				}
+				res.AGGREGATE_EMPLACE(name, desc, p_ab->get_help_topic_id());
+				checking_name.insert(name);
+				if (active_list) {
+					active_list->push_back(active);
+				}
+			}
+		});
+	return res;
+}
 
 //The following functions are intended to allow the use in combat of capacities
 //identical to special weapons and therefore to be able to use them on adjacent
