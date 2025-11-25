@@ -220,6 +220,9 @@ protected:
 	void clear_drag_from_hex();
 	void init_dragging(bool& dragging_flag);
 
+	/** Show context menu flag */
+	bool show_menu_;
+
 	/** MMB click (on game map) state flag */
 	bool simple_warp_;
 
@@ -238,6 +241,13 @@ protected:
 	/** RMB drag init flag */
 	bool dragging_right_;
 
+	/** Scroll start flag */
+	bool scroll_started_;
+
+	/** Relative to middle click scrolling */
+	int scroll_start_x_;
+	int scroll_start_y_;
+
 	/** Drag start position */
 	point drag_from_;
 
@@ -246,14 +256,6 @@ protected:
 
 	/** last highlighted hex */
 	map_location last_hex_;
-
-	/** Show context menu flag */
-	bool show_menu_;
-
-	/** Relative to middle click scrolling */
-	int scroll_start_x_;
-	int scroll_start_y_;
-	bool scroll_started_;
 };
 
 } // end namespace events
