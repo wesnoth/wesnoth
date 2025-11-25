@@ -28,12 +28,7 @@ namespace gui2::dialogs
 class editor_generate_map : public modal_dialog
 {
 public:
-	explicit editor_generate_map(std::vector<std::unique_ptr<map_generator>>& mg);
-
-	std::vector<std::unique_ptr<map_generator>>& get_map_generators()
-	{
-		return map_generators_;
-	}
+	explicit editor_generate_map(const std::vector<std::unique_ptr<map_generator>>& mg);
 
 	map_generator* get_selected_map_generator();
 
@@ -53,7 +48,7 @@ private:
 	void do_settings();
 
 	/** Available map generators */
-	std::vector<std::unique_ptr<map_generator>>& map_generators_;
+	const std::vector<std::unique_ptr<map_generator>>& map_generators_;
 
 	/** Last used map generator, must be in map_generators_ */
 	map_generator* last_map_generator_;

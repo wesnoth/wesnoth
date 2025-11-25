@@ -28,8 +28,6 @@
 
 #include "filesystem.hpp"
 #include "formula/string_utils.hpp"
-#include "generators/map_create.hpp"
-#include "generators/map_generator.hpp"
 #include "gettext.hpp"
 #include "resources.hpp"
 #include "team.hpp"
@@ -79,12 +77,11 @@ std::string get_menu_marker(const bool changed)
 
 namespace editor {
 
-context_manager::context_manager(editor_display& gui, const game_config_view& game_config, const std::string& addon_id)
+context_manager::context_manager(editor_display& gui, const std::string& addon_id)
 	: locs_(nullptr)
 	, gui_(gui)
 	, default_dir_(filesystem::get_dir(filesystem::get_legacy_editor_dir()))
 	, current_addon_(addon_id)
-	, map_generators_()
 	, last_map_generator_(nullptr)
 	, current_context_index_(0)
 	, auto_update_transitions_(prefs::get().editor_auto_update_transitions())
@@ -93,7 +90,6 @@ context_manager::context_manager(editor_display& gui, const game_config_view& ga
 {
 	resources::filter_con = this;
 	create_default_context();
-	init_map_generators(game_config);
 }
 
 context_manager::~context_manager()
@@ -778,30 +774,14 @@ void context_manager::save_scenario_as_dialog()
 	}
 }
 
-void context_manager::init_map_generators(const game_config_view& game_config)
+void context_manager::generate_map_dialog(const std::vector<std::unique_ptr<map_generator>>& map_generators)
 {
-	for(const config& i : game_config.child_range("multiplayer")) {
-		if(i["map_generation"].empty() && i["scenario_generation"].empty()) {
-			continue;
-		}
-
-		if(const auto generator_cfg = i.optional_child("generator")) {
-			map_generators_.emplace_back(create_map_generator(i["map_generation"].empty() ? i["scenario_generation"] : i["map_generation"], generator_cfg.value()));
-		} else {
-			ERR_ED << "Scenario \"" << i["name"] << "\" with id " << i["id"]
-					<< " has map_generation= but no [generator] tag";
-		}
-	}
-}
-
-void context_manager::generate_map_dialog()
-{
-	if(map_generators_.empty()) {
+	if(map_generators.empty()) {
 		gui2::show_error_message(_("No random map generators found."));
 		return;
 	}
 
-	gui2::dialogs::editor_generate_map dialog(map_generators_);
+	gui2::dialogs::editor_generate_map dialog(map_generators);
 	dialog.select_map_generator(last_map_generator_);
 
 	if(dialog.show()) {
