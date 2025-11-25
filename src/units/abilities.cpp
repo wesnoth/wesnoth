@@ -994,33 +994,6 @@ template std::pair<int, map_location> active_ability_list::get_extremum<std::gre
  */
 
 
-/**
- * Returns the currently active specials as an ability list, given the current
- * context (see set_specials_context).
- */
-active_ability_list attack_type::get_specials(const std::string& special) const
-{
-	//log_scope("get_specials");
-	const map_location loc = self_ ? self_->get_location() : self_loc_;
-	active_ability_list res(loc);
-
-	for(const ability_ptr& p_ab : specials(special)) {
-		if(special_active(*p_ab, AFFECTS::SELF)) {
-			res.emplace_back(p_ab, loc, loc);
-		}
-	}
-
-	if(!other_attack_) {
-		return res;
-	}
-
-	for(const ability_ptr& p_ab : other_attack_->specials(special)) {
-		if(other_attack_->special_active(*p_ab, AFFECTS::OTHER)) {
-			res.emplace_back(p_ab, other_loc_, other_loc_);
-		}
-	}
-	return res;
-}
 
 /**
  * Returns a vector of names and descriptions for the specials of *this.
@@ -1491,6 +1464,34 @@ active_ability_list attack_type::get_weapon_ability(const std::string& ability) 
 	}
 
 	return abil_list;
+}
+
+/**
+ * Returns the currently active specials as an ability list, given the current
+ * context (see set_specials_context).
+ */
+active_ability_list attack_type::get_specials(const std::string& special) const
+{
+	//log_scope("get_specials");
+	const map_location loc = self_ ? self_->get_location() : self_loc_;
+	active_ability_list res(loc);
+
+	for (const ability_ptr& p_ab : specials(special)) {
+		if (special_active(*p_ab, AFFECTS::SELF)) {
+			res.emplace_back(p_ab, loc, loc);
+		}
+	}
+
+	if (!other_attack_) {
+		return res;
+	}
+
+	for (const ability_ptr& p_ab : other_attack_->specials(special)) {
+		if (other_attack_->special_active(*p_ab, AFFECTS::OTHER)) {
+			res.emplace_back(p_ab, other_loc_, other_loc_);
+		}
+	}
+	return res;
 }
 
 active_ability_list attack_type::get_specials_and_abilities(const std::string& special) const
