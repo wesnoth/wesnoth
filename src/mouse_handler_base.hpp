@@ -200,13 +200,13 @@ public:
 	/** Called when the middle click scrolling. */
 	void set_scroll_start(int x, int y)
 	{
-		scroll_start_x_ = x;
-		scroll_start_y_ = y;
+		scroll_start_.x = x;
+		scroll_start_.y = y;
 	}
 
-	const point get_scroll_start() const
+	point get_scroll_start() const
 	{
-		return {scroll_start_x_, scroll_start_y_};
+		return scroll_start_;
 	}
 
 	bool scroll_started() const
@@ -245,8 +245,7 @@ protected:
 	bool scroll_started_;
 
 	/** Relative to middle click scrolling */
-	int scroll_start_x_;
-	int scroll_start_y_;
+	point scroll_start_;
 
 	/** Drag start position */
 	point drag_from_;
