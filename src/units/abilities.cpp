@@ -1087,6 +1087,65 @@ static void add_name(std::string& temp_string, bool active, const std::string& n
 	}
 }
 
+void attack_type::weapon_specials_impl_self(
+	std::string& temp_string,
+	const unit_const_ptr& self,
+	const const_attack_ptr& self_attack,
+	const const_attack_ptr& other_attack,
+	const map_location& self_loc,
+	AFFECTS whom,
+	std::set<std::string>& checking_name,
+	const std::set<std::string>& checking_tags)
+{
+	if (self) {
+		foreach_self_active_ability(*self, self_loc,
+			[&](const ability_ptr& p_ab) {
+				return !checking_tags.empty() ? checking_tags.count(p_ab->tag()) != 0 : true;
+			},
+			[&](const ability_ptr& p_ab, const unit&) {
+				const bool active = special_active_impl(self_attack, other_attack, *p_ab, whom);
+				add_name(temp_string, active, p_ab->cfg().get_or("name_affected", "name").str(), checking_name);
+			});
+	}
+}
+
+void attack_type::weapon_specials_impl_adj(
+	std::string& temp_string,
+	const unit_const_ptr& self,
+	const const_attack_ptr& self_attack,
+	const const_attack_ptr& other_attack,
+	const map_location& self_loc,
+	AFFECTS whom,
+	std::set<std::string>& checking_name,
+	const std::set<std::string>& checking_tags,
+	const std::string& affect_adjacents)
+{
+	if (self) {
+		foreach_distant_active_ability(*self, self_loc,
+			[&](const ability_ptr& p_ab) {
+				bool tag_checked = !checking_tags.empty() ? checking_tags.count(p_ab->tag()) != 0 : true;
+				bool default_bool = affect_adjacents == "affect_allies" ? true : false;
+				bool affect_allies = !affect_adjacents.empty() ? p_ab->cfg()[affect_adjacents].to_bool(default_bool) : true;
+				return tag_checked && affect_allies;
+			},
+			[&](const ability_ptr& p_ab, const unit&) {
+				const bool active = special_active_impl(self_attack, other_attack, *p_ab, whom);
+				add_name(temp_string, active, p_ab->cfg().get_or("name_affected", "name").str(), checking_name);
+			});
+	}
+}
+
+static void add_name_list(std::string& temp_string, std::string& weapon_abilities, std::set<std::string>& checking_name, const std::string& from_str)
+{
+	if (!temp_string.empty()) {
+		temp_string = from_str.c_str() + temp_string;
+		weapon_abilities += (!weapon_abilities.empty() && !temp_string.empty()) ? "\n" : "";
+		weapon_abilities += temp_string;
+		temp_string.clear();
+		checking_name.clear();
+	}
+}
+
 /**
  * Returns a comma-separated string of active names for the specials of *this.
  * Empty names are skipped.
@@ -1129,17 +1188,6 @@ std::string attack_type::describe_weapon_specials() const
 	return utils::join(special_names, ", ");
 }
 
-static void add_name_list(std::string& temp_string, std::string& weapon_abilities, std::set<std::string>& checking_name, const std::string& from_str)
-{
-	if(!temp_string.empty()){
-		temp_string = from_str.c_str() + temp_string;
-		weapon_abilities += (!weapon_abilities.empty() && !temp_string.empty()) ? "\n" : "";
-		weapon_abilities += temp_string;
-		temp_string.clear();
-		checking_name.clear();
-	}
-}
-
 std::string attack_type::describe_weapon_specials_value(const std::set<std::string>& checking_tags) const
 {
 	//log_scope("weapon_specials_value");
@@ -1178,54 +1226,6 @@ std::string attack_type::describe_weapon_specials_value(const std::set<std::stri
 	add_name_list(temp_string, weapon_abilities, checking_name, _("Used by opponent: "));
 
 	return weapon_abilities;
-}
-
-void attack_type::weapon_specials_impl_self(
-	std::string& temp_string,
-	const unit_const_ptr& self,
-	const const_attack_ptr& self_attack,
-	const const_attack_ptr& other_attack,
-	const map_location& self_loc,
-	AFFECTS whom,
-	std::set<std::string>& checking_name,
-	const std::set<std::string>& checking_tags)
-{
-	if(self){
-		foreach_self_active_ability(*self, self_loc,
-			[&](const ability_ptr& p_ab) {
-				return !checking_tags.empty() ? checking_tags.count(p_ab->tag()) != 0 : true;
-			},
-			[&](const ability_ptr& p_ab, const unit&) {
-				const bool active = special_active_impl(self_attack, other_attack, *p_ab, whom);
-				add_name(temp_string, active, p_ab->cfg().get_or("name_affected", "name").str(), checking_name);
-			});
-	}
-}
-
-void attack_type::weapon_specials_impl_adj(
-	std::string& temp_string,
-	const unit_const_ptr& self,
-	const const_attack_ptr& self_attack,
-	const const_attack_ptr& other_attack,
-	const map_location& self_loc,
-	AFFECTS whom,
-	std::set<std::string>& checking_name,
-	const std::set<std::string>& checking_tags,
-	const std::string& affect_adjacents)
-{
-	if(self){
-		foreach_distant_active_ability(*self, self_loc,
-			[&](const ability_ptr& p_ab) {
-				bool tag_checked = !checking_tags.empty() ? checking_tags.count(p_ab->tag()) != 0 : true;
-				bool default_bool = affect_adjacents == "affect_allies" ? true : false;
-				bool affect_allies = !affect_adjacents.empty() ? p_ab->cfg()[affect_adjacents].to_bool(default_bool) : true;
-				return tag_checked && affect_allies;
-			},
-			[&](const ability_ptr& p_ab, const unit&) {
-				const bool active = special_active_impl(self_attack, other_attack, *p_ab, whom);
-				add_name(temp_string, active, p_ab->cfg().get_or("name_affected", "name").str(), checking_name);
-			});
-	}
 }
 
 
