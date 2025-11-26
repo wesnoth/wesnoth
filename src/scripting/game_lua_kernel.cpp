@@ -2114,6 +2114,8 @@ int game_lua_kernel::intf_find_path(lua_State *L)
 			calc.reset(new lua_pathfind_cost_calculator(L, lua_gettop(L)));
 		}
 		// Don't pop, the lua_pathfind_cost_calculator requires it to stay on the stack.
+	} else {
+		return luaL_argerror(L, arg, "table expected");
 	}
 
 	pathfind::teleport_map teleport_locations;
