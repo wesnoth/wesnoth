@@ -2194,12 +2194,10 @@ int game_lua_kernel::intf_find_reach(lua_State *L)
 		lua_rawget(L, arg);
 		if (!lua_isnil(L, -1)) {
 			int i = luaL_checkinteger(L, -1);
-			if (i >= 1 && i <= static_cast<int>(teams().size())) viewing_side = i;
-			else {
-				// If there's a unit, we have a valid side, so fall back to legacy behaviour.
-				// If we don't have a unit, legacy behaviour would be a crash, so let's not.
-				if(u) see_all = true;
-				deprecated_message("wesnoth.find_reach with viewing_side=0 (or an invalid side)", DEP_LEVEL::FOR_REMOVAL, {1, 17, 0}, "To consider fogged and hidden units, use ignore_visibility=true instead.");
+			if(board().has_team(i)) {
+				viewing_side = i;
+			} else {
+				return luaL_argerror(L, -1, "invalid viewing side");
 			}
 		}
 		lua_pop(L, 1);
