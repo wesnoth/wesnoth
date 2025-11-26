@@ -21,12 +21,12 @@
 #include "editor/toolkit/editor_toolkit.hpp"
 
 #include "controller_base.hpp"
+#include "generators/map_generator.hpp"
 #include "help/help.hpp"
 #include "hotkey/command_executor.hpp"
 #include "mouse_handler_base.hpp"
-#include "tooltips.hpp"
-
 #include "sound_music_track.hpp"
+#include "tooltips.hpp"
 
 namespace font {
 struct floating_label_context;
@@ -252,6 +252,9 @@ private:
 	EXIT_STATUS quit_mode_;
 
 	std::vector<std::shared_ptr<sound::music_track>> music_tracks_;
+
+	/** Available random map generators */
+	std::vector<std::unique_ptr<map_generator>> map_generators_;
 };
 
 } //end namespace editor

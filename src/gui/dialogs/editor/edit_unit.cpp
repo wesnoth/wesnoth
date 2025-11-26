@@ -88,8 +88,6 @@ void editor_edit_unit::pre_show() {
 	// Main Stats tab
 	//
 
-	tabs.select_tab(0);
-
 	menu_button& alignments = find_widget<menu_button>("alignment_list");
 	for (auto& align : unit_alignments::values) {
 		// Show the user the translated strings,
@@ -143,7 +141,6 @@ void editor_edit_unit::pre_show() {
 	//
 	// Advanced Tab
 	//
-	tabs.select_tab(1);
 
 	menu_button& movetypes = find_widget<menu_button>("movetype_list");
 	for(const auto& mt : unit_types.movement_types()) {
@@ -251,7 +248,7 @@ void editor_edit_unit::pre_show() {
 	//
 	// Attack Tab
 	//
-	tabs.select_tab(2);
+
 	multimenu_button& specials = find_widget<multimenu_button>("weapon_specials_list");
 	specials.set_values(specials_list_);
 
@@ -284,8 +281,6 @@ void editor_edit_unit::pre_show() {
 		std::bind(&editor_edit_unit::prev_attack, this));
 
 	update_index();
-
-	tabs.select_tab(0);
 
 	// Disable OK button at start, since ID and Name boxes are empty
 	button_state_change();
@@ -353,9 +348,6 @@ void editor_edit_unit::load_unit_type() {
 
 	const auto& type = all_type_list[type_select->get_selected_index()];
 
-	tab_container& tabs = find_widget<tab_container>("tabs");
-	tabs.select_tab(0);
-
 	find_widget<text_box>("id_box").set_value(type->id());
 	find_widget<text_box>("name_box").set_value(type->type_name().base_str());
 	find_widget<spinner>("level_box").set_value(type->level());
@@ -391,7 +383,6 @@ void editor_edit_unit::load_unit_type() {
 
 	update_image("unit_image");
 
-	tabs.select_tab(1);
 	find_widget<text_box>("path_small_profile_image").set_value(type->small_profile());
 
 	set_selected_from_string(
@@ -447,7 +438,6 @@ void editor_edit_unit::load_unit_type() {
 
 	update_image("small_profile_image");
 
-	tabs.select_tab(2);
 	attacks_.clear();
 	for(const auto& atk : type->attacks())
 	{
@@ -470,8 +460,6 @@ void editor_edit_unit::load_unit_type() {
 
 	update_index();
 
-	tabs.select_tab(0);
-
 	button_state_change();
 	invalidate_layout();
 }
@@ -482,47 +470,41 @@ void editor_edit_unit::save_unit_type() {
 	type_cfg_.clear();
 
 	// Textdomain
-	std::string current_textdomain = "wesnoth-"+addon_id_;
-
-	tab_container& tabs = find_widget<tab_container>("tabs");
-
-	// Page 1
-	grid* grid = tabs.get_tab_grid(0);
+	std::string current_textdomain = "wesnoth-" + addon_id_;
 
 	config& utype = type_cfg_.add_child("unit_type");
-	utype["id"] = grid->find_widget<text_box>("id_box").get_value();
-	utype["name"] = t_string(grid->find_widget<text_box>("name_box").get_value(), current_textdomain);
-	utype["image"] = grid->find_widget<text_box>("path_unit_image").get_value();
-	utype["profile"] = grid->find_widget<text_box>("path_portrait_image").get_value();
-	utype["level"] = grid->find_widget<spinner>("level_box").get_value();
-	utype["advances_to"] = grid->find_widget<text_box>("adv_box").get_value();
-	utype["hitpoints"] = grid->find_widget<slider>("hp_slider").get_value();
-	utype["experience"] = grid->find_widget<slider>("xp_slider").get_value();
-	utype["cost"] = grid->find_widget<slider>("cost_slider").get_value();
-	utype["movement"] = grid->find_widget<slider>("move_slider").get_value();
-	utype["description"] = t_string(grid->find_widget<scroll_text>("desc_box").get_value(), current_textdomain);
-	utype["race"] = grid->find_widget<menu_button>("race_list").get_value_string();
-	utype["alignment"] = unit_alignments::values[grid->find_widget<menu_button>("alignment_list").get_value()];
+	utype["id"] = find_widget<text_box>("id_box").get_value();
+	utype["name"] = t_string(find_widget<text_box>("name_box").get_value(), current_textdomain);
+	utype["image"] = find_widget<text_box>("path_unit_image").get_value();
+	utype["profile"] = find_widget<text_box>("path_portrait_image").get_value();
+	utype["level"] = find_widget<spinner>("level_box").get_value();
+	utype["advances_to"] = find_widget<text_box>("adv_box").get_value();
+	utype["hitpoints"] = find_widget<slider>("hp_slider").get_value();
+	utype["experience"] = find_widget<slider>("xp_slider").get_value();
+	utype["cost"] = find_widget<slider>("cost_slider").get_value();
+	utype["movement"] = find_widget<slider>("move_slider").get_value();
+	utype["description"] = t_string(find_widget<scroll_text>("desc_box").get_value(), current_textdomain);
+	utype["race"] = find_widget<menu_button>("race_list").get_value_string();
+	utype["alignment"] = unit_alignments::values[find_widget<menu_button>("alignment_list").get_value()];
 
 	// Gender
-	if (grid->find_widget<toggle_button>("gender_male").get_value()) {
-		if (grid->find_widget<toggle_button>("gender_female").get_value()) {
+	if (find_widget<toggle_button>("gender_male").get_value()) {
+		if (find_widget<toggle_button>("gender_female").get_value()) {
 			utype["gender"] = "male,female";
 		} else {
 			utype["gender"] = "male";
 		}
 	} else {
-		if (grid->find_widget<toggle_button>("gender_female").get_value()) {
+		if (find_widget<toggle_button>("gender_female").get_value()) {
 			utype["gender"] = "female";
 		}
 	}
 
 	// Page 2
-	grid = tabs.get_tab_grid(1);
 
-	utype["small_profile"] = grid->find_widget<text_box>("path_small_profile_image").get_value();
-	utype["movement_type"] = grid->find_widget<menu_button>("movetype_list").get_value_string();
-	utype["usage"] = grid->find_widget<menu_button>("usage_list").get_value_string();
+	utype["small_profile"] = find_widget<text_box>("path_small_profile_image").get_value();
+	utype["movement_type"] = find_widget<menu_button>("movetype_list").get_value_string();
+	utype["usage"] = find_widget<menu_button>("usage_list").get_value_string();
 
 	if (res_toggles_.any()) {
 		config& resistances = utype.add_child("resistance");
@@ -557,7 +539,7 @@ void editor_edit_unit::save_unit_type() {
 		}
 	}
 
-	const auto& abilities_states = grid->find_widget<multimenu_button>("abilities_list").get_toggle_states();
+	const auto& abilities_states = find_widget<multimenu_button>("abilities_list").get_toggle_states();
 	if (abilities_states.any()) {
 		unsigned int i = 0;
 		sel_abilities_.clear();
@@ -657,10 +639,6 @@ void editor_edit_unit::store_attack() {
 
 	config& attack = attacks_.at(selected_attack_-1).second;
 
-	tab_container& tabs = find_widget<tab_container>("tabs");
-	int prev_tab = tabs.get_active_tab_index();
-	tabs.select_tab(2);
-
 	attack["name"] = find_widget<text_box>("atk_id_box").get_value();
 	attack["description"] = t_string(find_widget<text_box>("atk_name_box").get_value(), current_textdomain);
 	attack["icon"] = find_widget<text_box>("path_attack_image").get_value();
@@ -670,8 +648,6 @@ void editor_edit_unit::store_attack() {
 	attack["range"] = find_widget<combobox>("range_list").get_value();
 
 	attacks_.at(selected_attack_-1).first = find_widget<multimenu_button>("weapon_specials_list").get_toggle_states();
-
-	tabs.select_tab(prev_tab);
 }
 
 void editor_edit_unit::update_attacks() {
@@ -681,10 +657,6 @@ void editor_edit_unit::update_attacks() {
 	}
 
 	config& attack = attacks_.at(selected_attack_-1).second;
-
-	tab_container& tabs = find_widget<tab_container>("tabs");
-	int prev_tab = tabs.get_active_tab_index();
-	tabs.select_tab(2);
 
 	find_widget<text_box>("atk_id_box").set_value(attack["name"]);
 	find_widget<text_box>("atk_name_box").set_value(attack["description"]);
@@ -699,15 +671,9 @@ void editor_edit_unit::update_attacks() {
 
 	find_widget<multimenu_button>("weapon_specials_list")
 		.select_options(attacks_.at(selected_attack_-1).first);
-
-	tabs.select_tab(prev_tab);
 }
 
 void editor_edit_unit::update_index() {
-	tab_container& tabs = find_widget<tab_container>("tabs");
-	int prev_tab = tabs.get_active_tab_index();
-	tabs.select_tab(2);
-
 	find_widget<button>("atk_prev").set_active(selected_attack_ > 1);
 	find_widget<button>("atk_delete").set_active(selected_attack_ > 0);
 	find_widget<button>("atk_next").set_active(selected_attack_ != attacks_.size());
@@ -725,17 +691,11 @@ void editor_edit_unit::update_index() {
 	//Set index
 	const std::string new_index_str = formatter() << selected_attack_ << "/" << attacks_.size();
 	find_widget<label>("atk_number").set_label(new_index_str);
-
-	tabs.select_tab(prev_tab);
 }
 
 void editor_edit_unit::add_attack() {
 	// Textdomain
 	std::string current_textdomain = "wesnoth-"+addon_id_;
-
-	tab_container& tabs = find_widget<tab_container>("tabs");
-	int prev_tab = tabs.get_active_tab_index();
-	tabs.select_tab(2);
 
 	config attack;
 
@@ -754,16 +714,9 @@ void editor_edit_unit::add_attack() {
 		, std::make_pair(find_widget<multimenu_button>("weapon_specials_list").get_toggle_states(), attack));
 
 	update_index();
-
-	tabs.select_tab(prev_tab);
 }
 
 void editor_edit_unit::delete_attack() {
-	tab_container& tabs = find_widget<tab_container>("tabs");
-	int prev_tab = tabs.get_active_tab_index();
-	tabs.select_tab(2);
-
-	//remove attack
 	if (!attacks_.empty()) {
 		attacks_.erase(attacks_.begin() + selected_attack_ - 1);
 	}
@@ -781,8 +734,6 @@ void editor_edit_unit::delete_attack() {
 	}
 
 	update_index();
-
-	tabs.select_tab(prev_tab);
 }
 
 void editor_edit_unit::next_attack() {
@@ -818,10 +769,6 @@ void editor_edit_unit::select_attack() {
 
 //TODO Check if works with non-mainline movetypes
 void editor_edit_unit::load_movetype() {
-	tab_container& tabs = find_widget<tab_container>("tabs");
-	int prev_tab = tabs.get_active_tab_index();
-	tabs.select_tab(1);
-
 	for(const auto& movetype : game_config_
 		.mandatory_child("units")
 		.child_range("movetype")) {
@@ -837,8 +784,6 @@ void editor_edit_unit::load_movetype() {
 			update_movement_costs();
 		}
 	}
-
-	tabs.select_tab(prev_tab);
 }
 
 void editor_edit_unit::write_macro(std::ostream& out, unsigned level, const std::string& macro_name)
@@ -853,9 +798,6 @@ void editor_edit_unit::write_macro(std::ostream& out, unsigned level, const std:
 void editor_edit_unit::update_wml_view() {
 	store_attack();
 	save_unit_type();
-
-	tab_container& tabs = find_widget<tab_container>("tabs");
-	tabs.select_tab(3);
 
 	std::stringstream wml_stream;
 
@@ -1014,10 +956,8 @@ bool editor_edit_unit::check_id(const std::string& id) {
 }
 
 void editor_edit_unit::button_state_change() {
-	grid* grid = find_widget<tab_container>("tabs").get_tab_grid(0);
-
-	std::string id = grid->find_widget<text_box>("id_box").get_value();
-	std::string name = grid->find_widget<text_box>("name_box").get_value();
+	std::string id = find_widget<text_box>("id_box").get_value();
+	std::string name = find_widget<text_box>("name_box").get_value();
 
 	find_widget<button>("ok").set_active(!id.empty() && !name.empty() && check_id(id));
 

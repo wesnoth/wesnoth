@@ -29,7 +29,8 @@
 #include "utils/optional_fwd.hpp"
 
 #include <vector>
-class game_config_view;
+
+class map_generator;
 
 namespace editor {
 
@@ -70,7 +71,7 @@ public:
 	 * empty, indicating a new map.
 	 * Marked "explicit" to avoid automatic conversions.
 	 */
-	explicit map_context(const editor_map& map, bool pure_map, const config& schedule, const std::string& addon_id);
+	explicit map_context(const editor_map& map, bool pure_map, const std::string& addon_id);
 
 	/**
 	 * Create map_context from a map file. If the map cannot be loaded, an
@@ -80,7 +81,7 @@ public:
 	 * inside scenarios do not change the filename, but set the "embedded" flag
 	 * instead.
 	 */
-	map_context(const game_config_view& game_config, const std::string& filename, const std::string& addon_id);
+	map_context(const std::string& filename, const std::string& addon_id);
 
 	/**
 	 * Map context destructor
@@ -400,6 +401,16 @@ public:
 		addon_id_ = addon_id;
 	}
 
+	map_generator* last_used_generator() const
+	{
+		return last_map_generator_;
+	}
+
+	void set_last_used_generator(map_generator* generator)
+	{
+		last_map_generator_ = generator;
+	}
+
 protected:
 	/**
 	 * The actual filename of this map. An empty string indicates a new map.
@@ -466,11 +477,6 @@ protected:
 	int actions_since_save_;
 
 	/**
-	 * Cache of set starting position labels. Necessary for removing them.
-	 */
-	std::set<map_location> starting_position_label_locs_;
-
-	/**
 	 * Refresh flag indicating the map in this context should be completely reloaded by the display
 	 */
 	bool needs_reload_;
@@ -485,8 +491,14 @@ protected:
 	 */
 	bool needs_labels_reset_;
 
-	std::set<map_location> changed_locations_;
 	bool everything_changed_;
+
+	std::set<map_location> changed_locations_;
+
+	/**
+	 * Cache of set starting position labels. Necessary for removing them.
+	 */
+	std::set<map_location> starting_position_label_locs_;
 
 private:
 	std::string addon_id_;
@@ -511,6 +523,8 @@ private:
 
 	typedef std::map<map_location, std::vector<overlay>> overlay_map;
 	overlay_map overlays_;
+
+	map_generator* last_map_generator_;
 
 public:
 

@@ -33,7 +33,7 @@ namespace gui2::dialogs
 
 REGISTER_DIALOG(editor_generate_map)
 
-editor_generate_map::editor_generate_map(std::vector<std::unique_ptr<map_generator>>& mg)
+editor_generate_map::editor_generate_map(const std::vector<std::unique_ptr<map_generator>>& mg)
 	: modal_dialog(window_id())
 	, map_generators_(mg)
 	, last_map_generator_(nullptr)

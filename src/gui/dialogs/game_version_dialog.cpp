@@ -95,12 +95,10 @@ void game_version::pre_show()
 {
 	utils::string_map i18n_syms;
 
-	tab_container& tabs = find_widget<tab_container>("tabs");
 
 	//
 	// General information.
 	//
-	tabs.select_tab(0);
 
 	find_widget<styled_widget>("version").set_label(game_config::revision);
 	find_widget<styled_widget>("os").set_label(markup::italic(desktop::os_version()));
@@ -128,7 +126,6 @@ void game_version::pre_show()
 	//
 	// Game paths tab.
 	//
-	tabs.select_tab(1);
 
 	for(const auto & path_ent : path_map_)
 	{
@@ -163,7 +160,6 @@ void game_version::pre_show()
 	//
 	// Build info tab.
 	//
-	tabs.select_tab(2);
 
 	listbox& deps_listbox = find_widget<listbox>("deps_listbox");
 
@@ -188,7 +184,6 @@ void game_version::pre_show()
 	//
 	// Features tab.
 	//
-	tabs.select_tab(3);
 
 	listbox& opts_listbox = find_widget<listbox>("opts_listbox");
 
@@ -209,7 +204,6 @@ void game_version::pre_show()
 	//
 	// Community tab
 	//
-	tabs.select_tab(4);
 
 	connect_signal_mouse_left_click(find_widget<button>("forums"),
 			std::bind(&desktop::open_object, "https://forums.wesnoth.org/"));
@@ -224,11 +218,7 @@ void game_version::pre_show()
 	connect_signal_mouse_left_click(find_widget<button>("donate"),
 			std::bind(&desktop::open_object, "https://www.spi-inc.org/projects/wesnoth/"));
 
-	//
-	// Set-up page stack and auxiliary controls last.
-	//
-
-	tabs.select_tab(start_page_);
+	find_widget<tab_container>("tabs").select_tab(start_page_);
 }
 
 void game_version::browse_directory_callback(const std::string& path)

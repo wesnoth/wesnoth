@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-11-18 02:02 UTC\n"
-"PO-Revision-Date: 2025-10-21 21:01-0300\n"
+"PO-Revision-Date: 2025-11-18 20:48-0300\n"
 "Last-Translator: Sebastián Lecchini<sebas38760@gmail.com>\n"
 "Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
 "Language: es\n"
@@ -98,18 +98,18 @@ msgid ""
 "<i>Heir to the Throne, Classic</i> optionally includes the old <i>Battle "
 "Training</i> tutorial. Play <i>Battle Training</i>?"
 msgstr ""
+"<i>Heredero al Trono, Clásico</i> incluye opcionalmente el antiguo tutorial "
+"de <i>Entrenamiento de Batalla</i>. ¿Jugar <i>Entrenamiento de Batalla</i>?"
 
 #. [option]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:113
 msgid "Yes"
-msgstr ""
+msgstr "Sí"
 
 #. [option]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:118
-#, fuzzy
-#| msgid "Note"
 msgid "No"
-msgstr "Nota"
+msgstr "No"
 
 #. [objectives]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:149
@@ -406,8 +406,8 @@ msgstr "¿El <i>muñeco</i> tendrá un turno?"
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:616
 msgid ""
 "Yes. It’s a magical quintain! If it hits you, it does 3 damage, and has 5 "
-"chances. If it hits every time, you’ll drop from $student_hp to "
-"$($student_hp-15) hitpoints. Brace yourself!"
+"chances. If it hits every time, you’ll drop from $student_hp to $"
+"($student_hp-15) hitpoints. Brace yourself!"
 msgstr ""
 "Sí. ¡Es un estafermo mágico! Si logra golpearte, hace 3 puntos de daño, y "
 "tiene 5 oportunidades. Si te golpea todas las veces, bajarás de $student_hp "
@@ -2215,8 +2215,8 @@ msgstr ""
 #. [message]: speaker=Galdrad
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1315
 msgid ""
-"Higher level units are powerful, but not invulnerable. We’ll miss you, $unit."
-"name|."
+"Higher level units are powerful, but not invulnerable. We’ll miss you, "
+"$unit.name|."
 msgstr ""
 "Las unidades de más nivel son poderosas, pero no invulnerables. Te echaremos "
 "en falta, $unit.name|."
@@ -2396,7 +2396,7 @@ msgstr "¡Ay! ¿Quién os conducirá ahora a la victoria?"
 #. [message]: speaker=Galdrad
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1504
 msgid "You have beaten the orcs! Well done."
-msgstr ""
+msgstr "¡Has vencido a los orcos! ¡Bien hecho!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1509
@@ -2410,7 +2410,7 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1519
 msgid "Now, continue onwards to play “Heir to the Throne, Classic”..."
-msgstr ""
+msgstr "Ahora, continúa jugando a “Heredero al trono, Clásico”..."
 
 #. [unit_type]: id=Tutorial_Fighter, race=human
 #: data/campaigns/Heir_To_The_Throne_Classic/units/Tutorial_Fighter.cfg:4
@@ -2485,13 +2485,15 @@ msgstr ""
 "las acciones si cometes un error."
 
 #: data/campaigns/Heir_To_The_Throne_Classic/utils/tutorial_utils.cfg:126
-#, fuzzy
-#| msgid "Click a mouse button or press the spacebar to continue..."
 msgid ""
 "\n"
 "\n"
 "<big>Click a mouse button or press the spacebar to continue...</big>"
-msgstr "Haz clic con el ratón o pulsa la barra espaciadora para continuar..."
+msgstr ""
+"\n"
+"\n"
+"<big>Haz clic con el ratón o pulsa la barra espaciadora para continuar...</"
+"big>"
 
 #~ msgid "Battle Training — Old Tutorial"
 #~ msgstr "Entrenamiento de batalla — Tutorial antiguo"
@@ -3119,8 +3121,8 @@ msgstr "Haz clic con el ratón o pulsa la barra espaciadora para continuar..."
 #~ "survives its counter-attack! I’d better grab more villages and move "
 #~ "everyone closer for next turn."
 #~ msgstr ""
-#~ "Ninguna otra unidad puede alcanzar a ese orco. ¡Espero que mi $unit."
-#~ "language_name sobreviva a su contraataque! Es mejor que capture más "
+#~ "Ninguna otra unidad puede alcanzar a ese orco. ¡Espero que mi "
+#~ "$unit.language_name sobreviva a su contraataque! Es mejor que capture más "
 #~ "aldeas, y mueva a todos más cerca para el próximo turno."
 
 #~ msgid "Move your Shaman onto the bridge to stand behind your other unit"

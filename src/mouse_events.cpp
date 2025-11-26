@@ -1391,7 +1391,6 @@ int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const ma
 	std::vector<battle_context> bc_vector;
 	std::vector<gui2::widget_data> bc_widget_data_vector;
 	int best;
-	int leadership_bonus = 0;
 	{
 		pathfind::paths::dest_vect::const_iterator itor = current_paths_.destinations.find(attacker_loc);
 		temporary_unit_mover temp_mover(pc_.get_units(), attacker_src, attacker_loc, itor->move_left, true);
@@ -1423,11 +1422,6 @@ int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const ma
 
 			const attack_type& attacker_weapon = *attacker_stats.weapon;
 			const attack_type& defender_weapon = defender_stats.weapon ? *defender_stats.weapon : *no_weapon;
-
-			if(leadership_bonus == 0) {
-				leadership_bonus
-					= under_leadership(*attacker, attacker_loc, attacker_stats.weapon, defender_stats.weapon);
-			}
 
 			const color_t a_cth_color = game_config::red_to_green(attacker_stats.chance_to_hit);
 			const color_t d_cth_color = game_config::red_to_green(defender_stats.chance_to_hit);
@@ -1570,7 +1564,7 @@ int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const ma
 		}
 	}
 	// bc_widget_data_vector won't be empty when it reaches here.
-	gui2::dialogs::unit_attack dlg(attacker, defender, std::move(bc_vector), best, bc_widget_data_vector, leadership_bonus);
+	gui2::dialogs::unit_attack dlg(attacker, defender, std::move(bc_vector), best, bc_widget_data_vector);
 
 	if(dlg.show()) {
 		return dlg.get_selected_weapon();

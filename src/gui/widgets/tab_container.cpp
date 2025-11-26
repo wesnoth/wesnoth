@@ -38,12 +38,61 @@ namespace gui2
 
 REGISTER_WIDGET(tab_container)
 
+struct tab_container_implementation
+{
+	template<typename W>
+	static W* find(utils::const_clone_ref<tab_container, W> stack,
+			const std::string_view id,
+			const bool must_be_active)
+	{
+		for(unsigned i = 0; i < stack.get_tab_count(); ++i) {
+			auto* tab_grid = stack.get_tab_grid(i);
+			if(!tab_grid) {
+				continue;
+			}
+
+			if(W* res = tab_grid->find(id, must_be_active)) {
+				return res;
+			}
+		}
+
+		return stack.container_base::find(id, must_be_active);
+	}
+};
+
 tab_container::tab_container(const implementation::builder_tab_container& builder)
 	: container_base(builder, type())
 	, state_(ENABLED)
-	, builders_(builder.builders)
-	, list_items_(builder.list_items)
+	, tab_count_(0)
+	, generator_(nullptr)
 {
+	const auto conf = cast_config_to<tab_container_definition>();
+	assert(conf);
+
+	init_grid(*conf->grid);
+
+	auto generator = generator_base::build(true, true, generator_base::independent, false);
+
+	generator_ = generator.get();
+	assert(generator_);
+
+	const widget_item empty_data;
+	for(const auto& builder_entry : builder.builders) {
+		generator->create_item(-1, *builder_entry, empty_data, nullptr);
+	}
+
+	grid* parent_grid = find_widget<grid>("_content_grid", false, true);
+	if(parent_grid) {
+		parent_grid->swap_child("_page", std::move(generator), false);
+	}
+
+	for (const widget_data& row : builder.list_items) {
+		add_tab_entry(row);
+	}
+
+	tab_count_ = builder.builders.size();
+
+	get_internal_list().connect_signal<event::NOTIFY_MODIFIED>(std::bind(&tab_container::change_selection, this));
 }
 
 void tab_container::set_self_active(const bool active)
@@ -71,33 +120,6 @@ listbox& tab_container::get_internal_list()
 	return get_grid().find_widget<listbox>("_tab_list", false);
 }
 
-void tab_container::finalize(std::unique_ptr<generator_base> generator)
-{
-	generator_ = generator.get();
-	assert(generator_);
-
-	widget_item empty_data;
-	for(const auto& builder_entry : builders_) {
-		generator->create_item(-1, *builder_entry, empty_data, nullptr);
-	}
-
-	grid* parent_grid = find_widget<grid>("_content_grid", false, true);
-	if (parent_grid) {
-		parent_grid->swap_child("_page", std::move(generator), false);
-	}
-
-	finalize_listbox();
-
-	select_tab(0);
-}
-
-void tab_container::finalize_listbox() {
-	for (const widget_data& row : list_items_) {
-		add_tab_entry(row);
-	}
-	get_internal_list().connect_signal<event::NOTIFY_MODIFIED>(std::bind(&tab_container::change_selection, this));
-};
-
 void tab_container::add_tab_entry(const widget_data& row)
 {
 	listbox& list = get_internal_list();
@@ -118,6 +140,16 @@ void tab_container::change_selection() {
 	queue_redraw();
 
 	fire(event::NOTIFY_MODIFIED, *this, nullptr);
+}
+
+widget* tab_container::find(const std::string_view id, const bool must_be_active)
+{
+	return tab_container_implementation::find<widget>(*this, id, must_be_active);
+}
+
+const widget* tab_container::find(const std::string_view id, const bool must_be_active) const
+{
+	return tab_container_implementation::find<const widget>(*this, id, must_be_active);
 }
 
 // }---------- DEFINITION ---------{
@@ -149,20 +181,14 @@ namespace implementation
 builder_tab_container::builder_tab_container(const config& cfg)
 	: implementation::builder_styled_widget(cfg)
 {
-	if (cfg.has_child("tab")) {
-		for(const auto & tab : cfg.child_range("tab"))
-		{
-			widget_data list_row;
-			widget_item item;
+	if(cfg.has_child("tab")) {
+		for(const config& tab : cfg.child_range("tab")) {
+			list_items.emplace_back(widget_data{
+				{ "image", {{"label", tab["image"].str()}} },
+				{ "name", {{"label", tab["name"].t_str()}} }
+			});
 
-			item["label"] = tab["image"].t_str();
-			list_row.emplace("image", item);
-			item["label"] = tab["name"].t_str();
-			list_row.emplace("name", item);
-
-			list_items.emplace_back(list_row);
-
-			if (tab.has_child("data")) {
+			if(tab.has_child("data")) {
 				auto builder = std::make_shared<builder_grid>(tab.mandatory_child("data"));
 				builders.push_back(builder);
 			}
@@ -173,18 +199,8 @@ builder_tab_container::builder_tab_container(const config& cfg)
 std::unique_ptr<widget> builder_tab_container::build() const
 {
 	auto widget = std::make_unique<tab_container>(*this);
-
-	const auto conf = widget->cast_config_to<tab_container_definition>();
-	assert(conf);
-
-	widget->init_grid(*conf->grid);
-
-	auto generator = generator_base::build(true, true, generator_base::independent, false);
-	widget->finalize(std::move(generator));
-
 	DBG_GUI_G << "Window builder: placed tab_container '" << id
 			  << "' with definition '" << definition << "'.";
-
 	return widget;
 }
 

@@ -43,6 +43,8 @@ class reports;
 struct map_location;
 typedef int (*lua_CFunction) (lua_State *L);
 
+class scoped_lua_argument;
+
 class game_lua_kernel : public lua_kernel_base
 {
 	game_display * game_display_;
@@ -55,7 +57,6 @@ class game_lua_kernel : public lua_kernel_base
 	game_data & gamedata();
 	tod_manager & tod_man();
 
-	config level_lua_;
 	int EVENT_TABLE;
 	bool has_preloaded_ = false;
 
@@ -195,11 +196,18 @@ class game_lua_kernel : public lua_kernel_base
 	void lua_chat(const std::string& caption, const std::string& msg);
 	std::vector<int> get_sides_vector(const vconfig& cfg);
 
+	/**
+	 * Pushes the WML events table to the Lua stack.
+	 *
+	 * @returns RAII helper instance that controls the lifetime
+	 * of the resulting stack variable.
+	 */
+	[[nodiscard]] scoped_lua_argument push_wml_events_table(lua_State* L) const;
+
 public:
 	game_board & board();
 	std::vector<team> & teams();
 	const gamemap & map() const;
-	game_display * get_display() const { return game_display_; }
 	/**
 		A value != 0 means that the shouldn't remove any units from the map, usually because
 		we are currently operating on a unit& and removing it might cause memory corruptions

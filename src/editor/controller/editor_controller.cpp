@@ -47,6 +47,7 @@
 #include "cursor.hpp"
 #include "desktop/clipboard.hpp"
 #include "floating_label.hpp"
+#include "generators/map_create.hpp"
 #include "gettext.hpp"
 #include "picture.hpp"
 #include "quit_confirmation.hpp"
@@ -82,6 +83,23 @@ auto parse_editor_music(const config_array_view& editor_music_range)
 	return tracks;
 }
 
+auto parse_map_generators(const config_array_view& multiplayer_tag_range)
+{
+	std::vector<std::unique_ptr<map_generator>> generators;
+
+	for(const config& i : multiplayer_tag_range) {
+		if(i["map_generation"].empty() && i["scenario_generation"].empty()) {
+			continue;
+		}
+
+		if(const auto generator_cfg = i.optional_child("generator")) {
+			generators.emplace_back(create_map_generator(i["map_generation"].str(i["scenario_generation"]), generator_cfg.value()));
+		}
+	}
+
+	return generators;
+}
+
 } // namespace
 
 std::string editor_controller::current_addon_id_ = "";
@@ -94,7 +112,7 @@ editor_controller::editor_controller(bool clear_id)
 	, reports_(new reports())
 	, gui_(new editor_display(*this, *reports_))
 	, tods_()
-	, context_manager_(new context_manager(*gui_.get(), game_config_, clear_id ? "" : editor_controller::current_addon_id_))
+	, context_manager_(new context_manager(*gui_.get(), clear_id ? "" : editor_controller::current_addon_id_))
 	, toolkit_(nullptr)
 	, tooltip_manager_()
 	, floating_label_manager_(nullptr)
@@ -102,6 +120,7 @@ editor_controller::editor_controller(bool clear_id)
 	, do_quit_(false)
 	, quit_mode_(EXIT_ERROR)
 	, music_tracks_(parse_editor_music(game_config_.child_range("editor_music")))
+	, map_generators_(parse_map_generators(game_config_.child_range("multiplayer")))
 {
 	if(clear_id) {
 		editor_controller::current_addon_id_ = "";
@@ -1052,7 +1071,7 @@ bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool p
 		}
 		return true;
 	case HOTKEY_EDITOR_MAP_GENERATE:
-		context_manager_->generate_map_dialog();
+		context_manager_->generate_map_dialog(map_generators_);
 		return true;
 	case HOTKEY_EDITOR_MAP_APPLY_MASK:
 		context_manager_->apply_mask_dialog();

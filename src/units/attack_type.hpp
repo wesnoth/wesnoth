@@ -88,11 +88,7 @@ public:
 
 	// In unit_abilities.cpp:
 
-	/**
-	 * @return True iff the special @a special is active.
-	 * @param special The special being checked.
-	 */
-	bool has_special(const std::string& special) const;
+
 	active_ability_list get_specials(const std::string& special) const;
 
 	std::vector<unit_ability_t::tooltip_info> special_tooltips(boost::dynamic_bitset<>* active_list = nullptr) const;
@@ -143,12 +139,15 @@ public:
 	 * @param special The special being checked.
 	 */
 	bool has_special_or_ability(const std::string& special) const;
+	/**
+	 * @param special id to check.
+	 */
+	bool has_active_special_or_ability_id(const std::string& special) const;
 	/** check if special matche
 	 * @return True if special matche with filter(if 'active' filter is true, check if special active).
-	 * @param simple_check If true, check whether the unit has the special. Else, check whether the special is currently active.
 	 * @param filter contain attributes to check(special_id, special_type etc...).
 	 */
-	bool has_filter_special_or_ability(const config& filter, bool simple_check = false) const;
+	bool has_filter_special_or_ability(const config& filter) const;
 	/**
 	 * Returns true if this is a dummy attack_type, for example the placeholder that the unit_attack dialog
 	 * uses when a defender has no weapon for a given range.
@@ -187,66 +186,10 @@ public:
 
 	void add_formula_context(wfl::map_formula_callable&) const;
 
-	/**
-	 * Helper similar to std::unique_lock for detecting when calculations such as has_special
-	 * have entered infinite recursion.
-	 *
-	 * This assumes that there's only a single thread accessing the attack_type, it's a lightweight
-	 * increment/decrement counter rather than a mutex.
-	 */
-	class recursion_guard {
-		friend class attack_type;
-		/**
-		 * Only expected to be called in update_variables_recursion(), which handles some of the checks.
-		 */
-		explicit recursion_guard(const attack_type& weapon, const config& special);
-	public:
-		/**
-		 * Construct an empty instance, only useful for extending the lifetime of a
-		 * recursion_guard returned from weapon.update_variables_recursion() by
-		 * std::moving it to an instance declared in a larger scope.
-		 */
-		explicit recursion_guard();
-
-		/**
-		 * Returns true if a level of recursion was available at the time when update_variables_recursion()
-		 * created this object.
-		 */
-		operator bool() const;
-
-		recursion_guard(recursion_guard&& other) noexcept;
-		recursion_guard(const recursion_guard& other) = delete;
-		recursion_guard& operator=(recursion_guard&&) noexcept;
-		recursion_guard& operator=(const recursion_guard&) = delete;
-		~recursion_guard();
-	private:
-		std::shared_ptr<const attack_type> parent;
-	};
-
-	/**
-	 * Tests which might otherwise cause infinite recursion should call this, check that the
-	 * returned object evaluates to true, and then keep the object returned as long as the
-	 * recursion might occur, similar to a reentrant mutex that's limited to a small number of
-	 * reentrances.
-	 *
-	 * This only expects to be called in a single thread, but the whole of attack_type makes
-	 * that assumption, for example its' mutable members are assumed to be set up by the current
-	 * caller (or caller's caller, probably several layers up).
-	 */
-	recursion_guard update_variables_recursion(const config& special) const;
-
 	// In unit_abilities.cpp:
 
 	// Configured as a bit field, in case that is useful.
 	using AFFECTS = unit_ability_t::affects_t;
-	/**
-	 * Filter a list of abilities or weapon specials
-	 * @param ab the ability/special
-	 * @param filter config contain list of attribute who are researched in cfg
-	 *
-	 * @return true if all attribute with ability checked
-	 */
-	bool special_matches_filter(const unit_ability_t& ab, const config & filter) const;
 	/**
 	 * Select best damage type based on frequency count for replacement_type.
 	 *
@@ -311,50 +254,7 @@ public:
 		const std::set<std::string>& checking_tags={},
 		const std::string& affect_adjacents=""
 	);
-	/** check_self_abilities_impl : return an boolean value for checking of activities of abilities used like weapon
-	 * @return True if the special @a tag_name is active.
-	 * @param self_attack the attack used by unit checked in this function.
-	 * @param other_attack the attack used by opponent to unit checked.
-	 * @param ab the ability/special checked
-	 * @param u the unit checked.
-	 * @param loc location of the unit checked.
-	 * @param whom determine if unit affected or not by special ability.
-	 */
-	static bool check_self_abilities_impl(
-		const const_attack_ptr& self_attack,
-		const const_attack_ptr& other_attack,
-		const unit_ability_t& ab,
-		const unit_const_ptr& u,
-		const map_location& loc,
-		AFFECTS whom
-	);
 
-
-	/** check_adj_abilities_impl : return an boolean value for checking of activities of abilities used like weapon in unit adjacent to fighter
-	 * @return True if the special @a tag_name is active.
-	 * @param self_attack the attack used by unit who fight.
-	 * @param other_attack the attack used by opponent.
-	 * @param ab the ability/special checked
-	 * @param u the unit who is or not affected by an abilities owned by @a from.
-	 * @param from unit distant to @a u is checked.
-	 * @param dist distance between unit distant and @a u.
-	 * @param dir direction to research a unit distant to @a u.
-	 * @param loc location of the unit checked.
-	 * @param from_loc location of the unit distant to @a u.
-	 * @param whom determine if unit affected or not by special ability.
-	 */
-	static bool check_adj_abilities_impl(
-		const const_attack_ptr& self_attack,
-		const const_attack_ptr& other_attack,
-		const unit_ability_t& ab,
-		const unit_const_ptr& u,
-		const unit& from,
-		std::size_t dist,
-		int dir,
-		const map_location& loc,
-		const map_location& from_loc,
-		AFFECTS whom
-	);
 
 	static bool special_active_impl(
 		const const_attack_ptr& self_attack,
@@ -363,41 +263,6 @@ public:
 		AFFECTS whom
 	);
 
-	/** has_ability_impl : return an boolean value for checking of activities of abilities used like weapon
-	 * @return True if  @a special is active.
-	 * @param self_attack the attack used by unit who fight.
-	 * @param other_attack the attack used by opponent.
-	 * @param self the unit who fight.
-	 * @param self_loc location of @a self.
-	 * @param whom determine if unit affected or not by special ability.
-	 * @param special The special ability type who is being checked.
-	 */
-	static bool has_ability_impl(
-		const const_attack_ptr& self_attack,
-		const unit_const_ptr& self,
-		const map_location& self_loc,
-		const const_attack_ptr& other_attack,
-		AFFECTS whom,
-		const std::string& special);
-
-	/** special_distant_filtering_impl : return an boolean value if special matche with filter
-	 * @return True if the @a special is active.
-	 * @param self_attack the attack used by unit who fight.
-	 * @param other_attack the attack used by opponent.
-	 * @param self the unit who fight.
-	 * @param self_loc location of @a self.
-	 * @param whom determine if unit affected or not by special ability.
-	 * @param filter if special check with filter, return true.
-	 * @param sub_filter if true, check the attributes of [filter_special], else, check special(_id/type)(_active).
-	 */
-	static bool special_distant_filtering_impl(
-		const const_attack_ptr& self_attack,
-		const unit_const_ptr& self,
-		const map_location& self_loc,
-		const const_attack_ptr& other_attack,
-		AFFECTS whom,
-		const config & filter,
-		bool sub_filter);
 
 	// make more functions proivate after refactoring finished.
 private:
@@ -472,12 +337,6 @@ private:
 	int parry_;
 	ability_vector specials_;
 	bool changed_;
-	/**
-	 * While processing a recursive match, all the filters that are currently being checked, oldest first.
-	 * Each will have an instance of recursion_guard that is currently allocated permission to recurse, and
-	 * which will pop the config off this stack when the recursion_guard is finalized.
-	 */
-	mutable std::vector<const config*> open_queries_;
 };
 
 using attack_list = std::vector<attack_ptr>;

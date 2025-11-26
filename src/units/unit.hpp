@@ -880,21 +880,6 @@ public:
 	 */
 	void remove_attacks_ai();
 
-	/**
-	 * Calculates the damage this unit would take from a certain attack.
-	 *
-	 * @param attack              The attack to consider.
-	 * @param attacker            Whether this unit should be considered the attacker.
-	 * @param loc                 The unit's location (to resolve [resistance] abilities)
-	 * @param weapon              The weapon to check for any abilities or weapon specials
-	 *
-	 * @returns                   The expected damage.
-	 */
-	int damage_from(const attack_type& attack, bool attacker, const map_location& loc, const_attack_ptr weapon = nullptr) const
-	{
-		return resistance_against(attack, attacker, loc, weapon);
-	}
-
 	/** The maximum number of attacks this unit may perform per turn, usually 1. */
 	int max_attacks() const
 	{
@@ -964,22 +949,8 @@ public:
 	 * @param damage_name The damage type
 	 * @param attacker True if this unit is on the offensive (to resolve [resistance] abilities)
 	 * @param loc The unit's location (to resolve [resistance] abilities)
-	 * @param weapon The weapon to check for any abilities or weapon specials
-	 * @param opp_weapon The opponent's weapon to check for any abilities or weapon specials
 	 */
-	int resistance_against(const std::string& damage_name, bool attacker, const map_location& loc, const_attack_ptr weapon = nullptr, const const_attack_ptr& opp_weapon = nullptr) const;
-
-	/**
-	 * The unit's resistance against a given attack
-	 * @param atk The attack
-	 * @param attacker True if this unit is on the offensive (to resolve [resistance] abilities)
-	 * @param loc The unit's location (to resolve [resistance] abilities)
-	 * @param weapon The weapon to check for any abilities or weapon specials
-	 */
-	int resistance_against(const attack_type& atk, bool attacker, const map_location& loc, const_attack_ptr weapon = nullptr) const
-	{
-		return resistance_against(atk.type(), attacker, loc , weapon, atk.shared_from_this());
-	}
+	int resistance_against(const std::string& damage_name, bool attacker, const map_location& loc) const;
 
 	/** Gets resistances without any abilities applied. */
 	utils::string_map_res get_base_resistances() const
@@ -1801,53 +1772,7 @@ public:
 	 */
 	void remove_ability_by_attribute(const config& filter);
 
-	/**
-	 * Verify what abilities attributes match with filter.
-	 * @param ab the ability checked
-	 * @param filter the filter used for checking.
-	 */
-	bool ability_matches_filter(const unit_ability_t& ab, const config & filter) const;
-
-
 private:
-
-	/**
-	 * Helper similar to std::unique_lock for detecting when calculations such as abilities
-	 * have entered infinite recursion.
-	 *
-	 * This assumes that there's only a single thread accessing the unit, it's a lightweight
-	 * increment/decrement counter rather than a mutex.
-	 */
-	class recursion_guard {
-		friend class unit;
-		/**
-		 * Only expected to be called in update_variables_recursion(), which handles some of the checks.
-		 */
-		explicit recursion_guard(const unit& u, const config& ability);
-	public:
-		/**
-		 * Construct an empty instance, only useful for extending the lifetime of a
-		 * recursion_guard returned from unit.update_variables_recursion() by
-		 * std::moving it to an instance declared in a larger scope.
-		 */
-		explicit recursion_guard();
-
-		/**
-		 * Returns true if a level of recursion was available at the time when update_variables_recursion()
-		 * created this object.
-		 */
-		operator bool() const;
-
-		recursion_guard(recursion_guard&& other) noexcept;
-		recursion_guard(const recursion_guard& other) = delete;
-		recursion_guard& operator=(recursion_guard&&) noexcept;
-		recursion_guard& operator=(const recursion_guard&) = delete;
-		~recursion_guard();
-	private:
-		std::shared_ptr<const unit> parent;
-	};
-
-	recursion_guard update_variables_recursion(const config& ability) const;
 
 	/**
 	 * Check if an ability is active. Includes checks to prevent excessive recursion.
@@ -1993,12 +1918,6 @@ private:
 
 	std::string role_;
 	attack_list attacks_;
-	/**
-	 * While processing a recursive match, all the filters that are currently being checked, oldest first.
-	 * Each will have an instance of recursion_guard that is currently allocated permission to recurse, and
-	 * which will pop the config off this stack when the recursion_guard is finalized.
-	 */
-	mutable std::vector<const config*> open_queries_;
 
 protected:
 	// TODO: I think we actually consider this to be part of the gamestate, so it might be better if it's not mutable,

@@ -123,6 +123,40 @@ std::string attack_type::accuracy_parry_tooltip() const
 	return tooltip.str();
 }
 
+namespace
+{
+	bool special_checking(const std::string& special_id, const std::string& tag_name, const std::set<std::string>& filter_special, const std::set<std::string>& filter_special_id, const std::set<std::string>& filter_special_type)
+	{
+		if (!filter_special.empty() && filter_special.count(special_id) == 0 && filter_special.count(tag_name) == 0)
+			return false;
+
+		if (!filter_special_id.empty() && filter_special_id.count(special_id) == 0)
+			return false;
+
+		if (!filter_special_type.empty() && filter_special_type.count(tag_name) == 0)
+			return false;
+
+		return true;
+	}
+}
+
+
+bool attack_type::has_filter_special_or_ability(const config& filter) const
+{
+	if (range().empty()) {
+		return false;
+	}
+	const std::set<std::string> filter_special = utils::split_set(filter["special"].str());
+	const std::set<std::string> filter_special_id = utils::split_set(filter["special_id"].str());
+	const std::set<std::string> filter_special_type = utils::split_set(filter["special_type"].str());
+	for (const auto& p_ab : specials()) {
+		if (special_checking(p_ab->id(), p_ab->tag(), filter_special, filter_special_id, filter_special_type)) {
+			return true;
+		}
+	}
+	return false;
+}
+
 /**
  * Returns whether or not *this matches the given @a filter, ignoring the
  * complexities introduced by [and], [or], and [not].
@@ -142,6 +176,9 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 	const std::set<std::string> filter_name = utils::split_set(filter["name"].str());
 	const std::set<std::string> filter_type = utils::split_set(filter["type"].str());
 	const std::set<std::string> filter_base_type = utils::split_set(filter["base_type"].str());
+	const std::vector<std::string> filter_special_active = utils::split(filter["special_active"]);
+	const std::vector<std::string> filter_special_id_active = utils::split(filter["special_id_active"]);
+	const std::vector<std::string> filter_special_type_active = utils::split(filter["special_type_active"]);
 	const std::string filter_formula = filter["formula"];
 
 	if (!filter_min_range.empty() && !in_ranges(attack.min_range(), utils::parse_ranges_int(filter_min_range)))
@@ -202,7 +239,7 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 	}
 
 	if(filter.has_attribute("special") || filter.has_attribute("special_id") || filter.has_attribute("special_type")) {
-		if(!attack.has_filter_special_or_ability(filter, true)) {
+		if(!attack.has_filter_special_or_ability(filter)) {
 			return false;
 		}
 	}
@@ -211,8 +248,24 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 		deprecated_message("special_active=", DEP_LEVEL::PREEMPTIVE, {1, 17, 0}, "Please use special_id_active or special_type_active instead");
 	}
 
-	if(filter.has_attribute("special_active") || filter.has_attribute("special_id_active") || filter.has_attribute("special_type_active")) {
-		if(!attack.has_filter_special_or_ability(filter)) {
+	if (!filter_special_type_active.empty()) {
+		if (!utils::find_if(filter_special_type_active, [&](const std::string& special_tag) { return attack.has_special_or_ability(special_tag);  })) {
+			return false;
+		}
+	}
+
+	if (!filter_special_id_active.empty()) {
+		if (!utils::find_if(filter_special_id_active, [&](const std::string& special_id) { return attack.has_active_special_or_ability_id(special_id);  })) {
+			return false;
+		}
+	}
+
+	if (!filter_special_active.empty()) {
+		auto pred = [&](const std::string& special) {
+			//This is not he fastest implementation but this is just a compatibiltiy path anyways.
+			return attack.has_active_special_or_ability_id(special) || attack.has_special_or_ability(special);
+		};
+		if (!utils::find_if(filter_special_active, pred)) {
 			return false;
 		}
 	}
@@ -276,7 +329,7 @@ void attack_type::remove_special_by_filter(const config& filter)
 {
 	auto i = specials_.begin();
 	while (i != specials_.end()) {
-		if(special_matches_filter(**i, filter)) {
+		if((**i).matches_filter(filter)) {
 			i = specials_.erase(i);
 		} else {
 			++i;
@@ -617,52 +670,6 @@ std::string attack_type::describe_effect(const config& cfg)
 	return utils::format_conjunct_list("", desc);
 }
 
-attack_type::recursion_guard attack_type::update_variables_recursion(const config& special) const
-{
-	if(utils::contains(open_queries_, &special)) {
-		return recursion_guard();
-	}
-	return recursion_guard(*this, special);
-}
-
-attack_type::recursion_guard::recursion_guard() = default;
-
-attack_type::recursion_guard::recursion_guard(const attack_type& weapon, const config& special)
-	: parent(weapon.shared_from_this())
-{
-	parent->open_queries_.emplace_back(&special);
-}
-
-attack_type::recursion_guard::recursion_guard(attack_type::recursion_guard&& other) noexcept
-{
-	std::swap(parent, other.parent);
-}
-
-attack_type::recursion_guard::operator bool() const {
-	return bool(parent);
-}
-
-attack_type::recursion_guard& attack_type::recursion_guard::operator=(attack_type::recursion_guard&& other) noexcept
-{
-	// This is only intended to move ownership to a longer-living variable. Assigning to an instance that
-	// already has a parent implies that the caller is going to recurse and needs a recursion allocation,
-	// but is accidentally dropping one of the allocations that it already has; hence the asserts.
-	assert(this != &other);
-	assert(!parent);
-	std::swap(parent, other.parent);
-	return *this;
-}
-
-attack_type::recursion_guard::~recursion_guard()
-{
-	if(parent) {
-		// As this only expects nested recursion, simply pop the top of the open_queries_ stack
-		// without checking that the top of the stack matches the filter passed to the constructor.
-		assert(!parent->open_queries_.empty());
-		parent->open_queries_.pop_back();
-	}
-}
-
 void attack_type::write(config& cfg) const
 {
 	cfg["description"] = description_;
@@ -792,8 +799,8 @@ std::pair<std::string, int> attack_type::effective_damage_type() const
 	if (other_) {
 		resistance_list = (*other_).get_abilities_weapons("resistance", other_loc_, other_attack_, shared_from_this());
 		utils::erase_if(resistance_list, [&](const active_ability& i) {
-			return (!(i.ability_cfg()["active_on"].empty() || (!is_attacker_ && i.ability_cfg()["active_on"] == "offense") || (is_attacker_ && i.ability_cfg()["active_on"] == "defense")));
-			});
+			return !i.ability().active_on_matches(!is_attacker_);
+		});
 	}
 	active_ability_list damage_type_list = get_specials_and_abilities("damage_type");
 	int res = other_ ? (*other_).resistance_value(resistance_list, type()) : 100;
@@ -837,14 +844,12 @@ std::pair<std::string, std::set<std::string>> attack_type::damage_types() const
  */
 double attack_type::modified_damage() const
 {
-	double damage_value = unit_abilities::effect(get_specials_and_abilities("damage"), damage(), shared_from_this()).get_composite_double_value();
-	return damage_value;
+	return unit_abilities::effect(get_specials_and_abilities("damage"), damage(), shared_from_this()).get_composite_double_value();
 }
 
 int attack_type::modified_chance_to_hit(int cth) const
 {
 	int parry = other_attack_ ? other_attack_->parry() : 0;
-	active_ability_list chance_to_hit_list = get_specials_and_abilities("chance_to_hit");
 	cth = std::clamp(cth + accuracy_ - parry, 0, 100);
-	return composite_value(chance_to_hit_list, cth);
+	return composite_value(get_specials_and_abilities("chance_to_hit"), cth);
 }

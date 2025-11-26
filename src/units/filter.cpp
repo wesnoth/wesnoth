@@ -789,14 +789,14 @@ void unit_filter_compound::fill(const vconfig& cfg)
 				create_child(child.second, [](const vconfig& c, const unit_filter_args& args) {
 					if(!(c.get_parsed_config())["active"].to_bool()){
 						for(const ability_ptr& p_ab : args.u.abilities()) {
-							if(args.u.ability_matches_filter(*p_ab, c.get_parsed_config())) {
+							if(p_ab->matches_filter(c.get_parsed_config())) {
 								return true;
 							}
 						}
 					} else {
 						const unit_map& units = args.context().get_disp_context().units();
 						for(const ability_ptr& p_ab : args.u.abilities()) {
-							if(args.u.ability_matches_filter(*p_ab, c.get_parsed_config())) {
+							if(p_ab->matches_filter(c.get_parsed_config())) {
 								if (args.u.get_self_ability_bool(*p_ab, args.loc)) {
 									return true;
 								}

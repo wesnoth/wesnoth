@@ -36,8 +36,8 @@ namespace t_translation {
 	int max_map_size();
 
 	typedef uint32_t ter_layer;
-	const ter_layer WILDCARD = 0x2A000000;
-	const ter_layer NO_LAYER = 0xFFFFFFFF;
+	constexpr ter_layer WILDCARD = 0x2A000000;
+	constexpr ter_layer NO_LAYER = 0xFFFFFFFF;
 
 	// The definitions for a terrain
 	/**
@@ -49,13 +49,13 @@ namespace t_translation {
 	struct terrain_code {
 		terrain_code(const std::string& b, const std::string& o);
 		explicit terrain_code(const std::string& b, ter_layer o = NO_LAYER);
-		terrain_code(ter_layer b, ter_layer o) : base(b), overlay(o) {}
-		terrain_code() : base(0), overlay(NO_LAYER) {}
+		constexpr terrain_code(ter_layer b, ter_layer o) : base(b), overlay(o) {}
+		constexpr terrain_code() = default;
 
-		ter_layer base;
-		ter_layer overlay;
+		ter_layer base = 0;
+		ter_layer overlay = NO_LAYER;
 	};
-	const terrain_code NONE_TERRAIN = terrain_code();
+	constexpr terrain_code NONE_TERRAIN = terrain_code();
 
 	inline bool operator<(const terrain_code& a, const terrain_code& b)
 		{ return std::tie(a.base, a.overlay) < std::tie(b.base, b.overlay); };
@@ -78,20 +78,14 @@ namespace t_translation {
 	struct ter_map {
 
 		ter_map() = default;
-		ter_map(const ter_map&) = default;
-		ter_map(ter_map&&) noexcept = default;
-
-		ter_map(int w, int h, terrain_code fill = terrain_code()) : data(static_cast<std::size_t>(w) * h, fill), w(w), h(h) {}
-
-		ter_map & operator= (const ter_map &) = default;
-		ter_map & operator= (ter_map &&) noexcept = default;
+		ter_map(int w, int h, terrain_code fill = NONE_TERRAIN) : data(static_cast<std::size_t>(w) * h, fill), w(w), h(h) {}
 
 		terrain_code& get(int x, int y) { std::size_t index = static_cast<std::size_t>(x) * h + y; return data.at(index); }
 		const terrain_code& get(int x, int y) const { std::size_t index = static_cast<std::size_t>(x) * h + y; return data.at(index); }
 
 		std::vector<terrain_code> data;
-		int w;
-		int h;
+		int w{0};
+		int h{0};
 		std::vector<terrain_code>::iterator operator[](int x) { return data.begin() + static_cast<std::size_t>(h) * x; }
 		std::vector<terrain_code>::const_iterator operator[](int x) const { return data.begin() + static_cast<std::size_t>(h) * x; }
 	};
@@ -102,15 +96,15 @@ namespace t_translation {
 	 * and caches the wildcard info required for matching.
 	 */
 	struct ter_match{
-		ter_match();
+		ter_match() = default;
 		ter_match(std::string_view str, const ter_layer filler = NO_LAYER);
 		ter_match(const terrain_code& tcode);
 
 		ter_list terrain;
 		ter_list mask;
 		ter_list masked_terrain;
-		bool has_wildcard;
-		bool is_empty;
+		bool has_wildcard = false;
+		bool is_empty = true;
 	};
 
 	/**  Contains an x and y coordinate used for starting positions in maps. */

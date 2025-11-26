@@ -273,12 +273,17 @@ def list_contents():
     append(info["campaigns"], "mainline", "", name="Units", domain="wesnoth-help")
 
     if not options.addons_only:
-        parse("{core}{campaigns}", "__WMLUNITS__,SKIP_CORE")
+        parse("{themes}{core}{campaigns}", "__WMLUNITS__,SKIP_CORE,NORMAL")
         info["campaigns"] += list_campaigns(batchlist, "mainline")
 
     addons = []
     if options.addons:
         addons = os.listdir(options.addons)
+        try:
+            addons.remove("mainline")
+            print("Ignoring addon named \"mainline\"")
+        except: pass
+
     global global_addons
     global_addons = set(addons)
 
@@ -318,7 +323,7 @@ def list_contents():
                 continue
             info["parsed"] = False
             info["dependencies"] = all_dependencies
-            parse("{themes}{core}{multiplayer}{multiplayer/eras.cfg}{~add-ons}", "__WMLUNITS__,MULTIPLAYER,SKIP_CORE")
+            parse("{themes}{core}{multiplayer}{multiplayer/eras.cfg}{~add-ons}", "__WMLUNITS__,MULTIPLAYER,SKIP_CORE,NORMAL")
             info["eras"] = list_eras(batchlist, addon)
             info["campaigns"] = list_campaigns(batchlist, addon)
             info["version"] = version
@@ -369,12 +374,12 @@ def process_campaign_or_era(addon, cid, define, batchlist):
     wesnoth.add_units("mainline")
 
     if define == "MULTIPLAYER":
-        wesnoth.parser.parse_text("{themes}{core}{multiplayer}{multiplayer/eras.cfg}{~add-ons}", "__WMLUNITS__,MULTIPLAYER,SKIP_CORE")
+        wesnoth.parser.parse_text("{themes}{core}{multiplayer}{multiplayer/eras.cfg}{~add-ons}", "__WMLUNITS__,MULTIPLAYER,SKIP_CORE,NORMAL")
         wesnoth.add_units(cid)
     else:
         if addon == "mainline":
             if cid != "mainline":
-                wesnoth.parser.parse_text("{core}{campaigns}", "__WMLUNITS__,SKIP_CORE,NORMAL," + define)
+                wesnoth.parser.parse_text("{themes}{core}{campaigns}", "__WMLUNITS__,SKIP_CORE,NORMAL," + define)
                 wesnoth.add_units(cid)
         else:
             wesnoth.parser.parse_text("{themes}{core}{~add-ons}", "__WMLUNITS__,SKIP_CORE," + define)
