@@ -64,10 +64,6 @@ public:
 		return unit_ability_t::vector_to_cfg(specials_);
 	}
 
-	ability_vector specials(const std::string& tag) const {
-		return unit_ability_t::filter_tag(specials_, tag);
-	}
-
 	void set_name(const t_string& value) { description_  = value; set_changed(true); }
 	void set_id(const std::string& value) { id_ = value; set_changed(true); }
 	void set_type(const std::string& value) { type_ = value; set_changed(true); }
