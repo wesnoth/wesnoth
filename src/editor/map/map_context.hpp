@@ -30,6 +30,8 @@
 
 #include <vector>
 
+class map_generator;
+
 namespace editor {
 
 struct editor_team_info {
@@ -399,6 +401,16 @@ public:
 		addon_id_ = addon_id;
 	}
 
+	map_generator* last_used_generator() const
+	{
+		return last_map_generator_;
+	}
+
+	void set_last_used_generator(map_generator* generator)
+	{
+		last_map_generator_ = generator;
+	}
+
 protected:
 	/**
 	 * The actual filename of this map. An empty string indicates a new map.
@@ -510,6 +522,8 @@ private:
 
 	typedef std::map<map_location, std::vector<overlay>> overlay_map;
 	overlay_map overlays_;
+
+	map_generator* last_map_generator_;
 
 public:
 

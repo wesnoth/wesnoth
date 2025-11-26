@@ -20,8 +20,6 @@
 #include "filter_context.hpp"
 #include "preferences/preferences.hpp"
 
-class map_generator;
-
 namespace editor
 {
 
@@ -326,8 +324,6 @@ private:
 
 	/** The currently selected add-on */
 	std::string current_addon_;
-
-	map_generator* last_map_generator_;
 
 	int current_context_index_;
 
