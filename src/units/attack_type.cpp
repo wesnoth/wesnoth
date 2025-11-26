@@ -718,7 +718,7 @@ void attack_type::modified_attacks(unsigned& min_attacks,
 	}
 
 	// Apply [swarm].
-	active_ability_list swarm_specials = get_specials_and_abilities("swarm");
+	active_ability_list swarm_specials = get_specials_and_abilities_no_math("swarm");
 	if (!swarm_specials.empty()) {
 		min_attacks = std::max<int>(0, swarm_specials.highest("swarm_attacks_min").first);
 		max_attacks = std::max<int>(0, swarm_specials.highest("swarm_attacks_max", attacks_value).first);
@@ -802,7 +802,7 @@ std::pair<std::string, int> attack_type::effective_damage_type() const
 			return !i.ability().active_on_matches(!is_attacker_);
 		});
 	}
-	active_ability_list damage_type_list = get_specials_and_abilities("damage_type");
+	active_ability_list damage_type_list = get_specials_and_abilities_no_math("damage_type");
 	int res = other_ ? (*other_).resistance_value(resistance_list, type()) : 100;
 	if (damage_type_list.empty()) {
 		return { type(), res };
@@ -823,7 +823,7 @@ std::pair<std::string, int> attack_type::effective_damage_type() const
  */
 std::pair<std::string, std::set<std::string>> attack_type::damage_types() const
 {
-	active_ability_list damage_type_list = get_specials_and_abilities("damage_type");
+	active_ability_list damage_type_list = get_specials_and_abilities_no_math("damage_type");
 	std::set<std::string> alternative_damage_types;
 	if (damage_type_list.empty()) {
 		return { type(), alternative_damage_types };
