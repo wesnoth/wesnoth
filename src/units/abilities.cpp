@@ -605,17 +605,17 @@ bool foreach_active_special(
 {
 	auto& other = context.other(self);
 	// "const auto&..." because foreach_active_ability calls this with a unit& argument.
-	auto handler_self = [&](const ability_ptr& p_ab, const auto&...) {
-		return context.is_special_active(self, *p_ab, unit_ability_t::affects_t::SELF) && default_false(handler, p_ab);
+	auto handler_self = [&](const ability_ptr& p_ab, const auto& source) {
+		return context.is_special_active(self, *p_ab, unit_ability_t::affects_t::SELF) && default_false(handler, p_ab, self, source);
 	};
-	auto handler_other = [&](const ability_ptr& p_ab, const auto&...) {
-		return context.is_special_active(other, *p_ab, unit_ability_t::affects_t::OTHER) && default_false(handler, p_ab);
+	auto handler_other = [&](const ability_ptr& p_ab, const auto& source) {
+		return context.is_special_active(other, *p_ab, unit_ability_t::affects_t::OTHER) && default_false(handler, p_ab, other, source);
 	};
 
 	//search in the attacks [specials]
 	if (self.at) {
 		for (const ability_ptr& p_ab : self.at->specials()) {
-			if (quick_check(p_ab) && handler_self(p_ab)) {
+			if (quick_check(p_ab) && handler_self(p_ab, *self.at)) {
 				return true;
 			}
 		}
@@ -623,7 +623,7 @@ bool foreach_active_special(
 	//search in the opponents attacks [specials]
 	if (other.at) {
 		for (const ability_ptr& p_ab : other.at->specials()) {
-			if (quick_check(p_ab) && handler_other(p_ab)) {
+			if (quick_check(p_ab) && handler_other(p_ab, *other.at)) {
 				return true;
 			}
 		}
@@ -1030,81 +1030,12 @@ specials_context_t::~specials_context_t()
 }
 
 
-namespace {
-/**
- * static used in weapon_specials (bool only_active) and
- * @return a string and a set_string for the weapon_specials function below.
- * @param[in,out] temp_string the string modified and returned
- * @param[in] active the boolean for determine if @name can be added or not
- * @param[in] name string who must be or not added
- * @param[in,out] checking_name the reference for checking if @name already added
- */
-static void add_name(std::string& temp_string, bool active, const std::string& name, std::set<std::string>& checking_name)
+static bool is_enemy(std::size_t side, std::size_t other_side)
 {
-	if (active && !name.empty() && checking_name.count(name) == 0) {
-		checking_name.insert(name);
-		if (!temp_string.empty()) temp_string += ", ";
-		temp_string += markup::span_color(font::TITLE_COLOR, name);
-	}
+	const team& side_team = get_team(side);
+	return side_team.is_enemy(other_side);
 }
 
-
-void weapon_specials_impl_self(
-	std::string& temp_string,
-	const specials_context_t& context,
-	const specials_context_t::specials_combatant& self,
-	unit_ability_t::affects_t whom,
-	std::set<std::string>& checking_name,
-	const std::set<std::string>& checking_tags)
-{
-	if (self.un) {
-		foreach_self_active_ability(*self.un, self.loc,
-			[&](const ability_ptr& p_ab) {
-				return !checking_tags.empty() ? checking_tags.count(p_ab->tag()) != 0 : true;
-			},
-			[&](const ability_ptr& p_ab, const unit&) {
-				const bool active = context.is_special_active(self, *p_ab, whom);
-				add_name(temp_string, active, p_ab->cfg().get_or("name_affected", "name").str(), checking_name);
-			});
-	}
-}
-
-void weapon_specials_impl_adj(
-	std::string& temp_string,
-	const specials_context_t& context,
-	const specials_context_t::specials_combatant& self,
-	unit_ability_t::affects_t whom,
-	std::set<std::string>& checking_name,
-	const std::set<std::string>& checking_tags,
-	const std::string& affect_adjacents = "")
-{
-	if (self.un) {
-		foreach_distant_active_ability(*self.un, self.loc,
-			[&](const ability_ptr& p_ab) {
-				bool tag_checked = !checking_tags.empty() ? checking_tags.count(p_ab->tag()) != 0 : true;
-				bool default_bool = affect_adjacents == "affect_allies" ? true : false;
-				bool affect_allies = !affect_adjacents.empty() ? p_ab->cfg()[affect_adjacents].to_bool(default_bool) : true;
-				return tag_checked && affect_allies;
-			},
-			[&](const ability_ptr& p_ab, const unit&) {
-				const bool active = context.is_special_active(self, *p_ab, whom);
-				add_name(temp_string, active, p_ab->cfg().get_or("name_affected", "name").str(), checking_name);
-			});
-	}
-}
-
-void add_name_list(std::string& temp_string, std::string& weapon_abilities, std::set<std::string>& checking_name, const std::string& from_str)
-{
-	if (!temp_string.empty()) {
-		temp_string = from_str.c_str() + temp_string;
-		weapon_abilities += (!weapon_abilities.empty() && !temp_string.empty()) ? "\n" : "";
-		weapon_abilities += temp_string;
-		temp_string.clear();
-		checking_name.clear();
-	}
-}
-
-}
 /**
  * Returns a comma-separated string of active names for the specials of *this.
  * Empty names are skipped.
@@ -1117,32 +1048,38 @@ std::string specials_context_t::describe_weapon_specials(const attack_type& at) 
 	//log_scope("weapon_specials");
 	auto [self, other] = self_and_other(at);
 	std::vector<std::string> special_names;
+	std::set<std::string> ability_names;
 
 	for(const auto& p_ab : at.specials()) {
 		const bool active = is_special_active(self, *p_ab, unit_ability_t::affects_t::EITHER);
-
-		std::string name = active
-			? p_ab->cfg()["name"].str()
-			: p_ab->cfg().get_or("name_inactive", "name").str();
-
-		if(name.empty()) {
-			continue;
+		std::string name = p_ab->get_name(!active);
+		if(!name.empty()) {
+			special_names.push_back(active ? std::move(name) : markup::span_color(font::INACTIVE_COLOR, name));
 		}
-
-		name = p_ab->substitute_variables(name);
-
-		special_names.push_back(active ? std::move(name) : markup::span_color(font::INACTIVE_COLOR, name));
 	}
 
 	// FIXME: clean this up...
-	std::string temp_string;
-	std::set<std::string> checking_name;
-	const std::set<std::string>& checking_tags = abilities_list::all_weapon_tags();
-	weapon_specials_impl_self(temp_string, *this, self, unit_ability_t::affects_t::SELF, checking_name, checking_tags);
-	weapon_specials_impl_adj(temp_string, *this, self, unit_ability_t::affects_t::SELF, checking_name, checking_tags, "affect_allies");
 
-	if(!temp_string.empty()) {
-		special_names.push_back("\n" + std::move(temp_string));
+	if (self.un) {
+		const std::set<std::string>& checking_tags = abilities_list::all_weapon_tags();
+		auto quick_check = [&](const ability_ptr& p_ab) {
+			return checking_tags.count(p_ab->tag()) != 0;
+		};
+
+		foreach_active_ability(*self.un, self.loc, quick_check,
+			[&](const ability_ptr& p_ab, const unit& source) {
+				if (is_enemy(source.side(), self.un->side())) {
+					return;
+				}
+				if (!is_special_active(self, *p_ab, unit_ability_t::affects_t::SELF)) {
+					return;
+				}
+				ability_names.insert(p_ab->cfg().get_or("name_affected", "name").str());
+			});
+	}
+
+	if(!ability_names.empty()) {
+		special_names.push_back("\n" + utils::join(ability_names, ", "));
 	}
 
 	return utils::join(special_names, ", ");
@@ -1152,41 +1089,52 @@ std::string specials_context_t::describe_weapon_specials_value(const attack_type
 {
 	auto [self, other] = self_and_other(at);
 	//log_scope("weapon_specials_value");
-	std::string temp_string, weapon_abilities;
-	std::set<std::string> checking_name;
-	for(const auto& p_ab : at.specials()) {
-		if(checking_tags.count(p_ab->tag()) != 0) {
-			const bool active = is_special_active(self, *p_ab, unit_ability_t::affects_t::SELF);
-			add_name(temp_string, active, p_ab->cfg()["name"].str(), checking_name);
+	std::string res;
+
+	std::set<std::string> wespon_specials;
+	std::set<std::string> abilities_self;
+	std::set<std::string> abilities_allies;
+	std::set<std::string> abilities_enemies;
+	std::set<std::string> opponents_abilities;
+
+	auto quick_check = [&](const ability_ptr& p_ab) {
+		return checking_tags.count(p_ab->tag()) != 0;
+	};
+
+	auto add_to_list = [&](const ability_ptr& p_ab, const specials_combatant& student, const auto& source) {
+		if (&student == &other) {
+			opponents_abilities.insert(p_ab->cfg()["name"].str());
+		} else if constexpr (utils::decayed_is_same<decltype(source), attack_type>) {
+			wespon_specials.insert(p_ab->cfg()["name"].str());
+		} else if (&source == self.un.get()) {
+			abilities_self.insert(p_ab->cfg().get_or("name_affected", "name").str());
+		} else if (!is_enemy(source.side(), self.un->side())) {
+			abilities_allies.insert(p_ab->cfg().get_or("name_affected", "name").str());
+		} else {
+			abilities_enemies.insert(p_ab->cfg().get_or("name_affected", "name").str());
 		}
-	}
-	add_name_list(temp_string, weapon_abilities, checking_name, "");
+	};
 
-	weapon_specials_impl_self(temp_string, *this, self, unit_ability_t::affects_t::SELF, checking_name, checking_tags);
-	add_name_list(temp_string, weapon_abilities, checking_name, _("Owned: "));
-
-	weapon_specials_impl_adj(temp_string, *this, self, unit_ability_t::affects_t::SELF, checking_name, checking_tags, "affect_allies");
-	// TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
-	add_name_list(temp_string, weapon_abilities, checking_name, _("Taught: "));
-
-	weapon_specials_impl_adj(temp_string, *this, self, unit_ability_t::affects_t::SELF, checking_name, checking_tags, "affect_enemies");
-	// TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
-	add_name_list(temp_string, weapon_abilities, checking_name, _("Taught: (by an enemy): "));
-
-
-	if(other.at) {
-		for(const auto& p_ab : other.at->specials()) {
-			if((checking_tags.count(p_ab->tag()) != 0)){
-				const bool active = is_special_active(other, *p_ab, unit_ability_t::affects_t::OTHER);
-				add_name(temp_string, active, p_ab->cfg()["name"].str(), checking_name);
-			}
+	auto add_to_res = [&](std::set<std::string>& to_add, const std::string& category_name) {
+		to_add.erase("");
+		if (!to_add.empty()) {
+			//TODO: markup::span_color(font::TITLE_COLOR) ??
+			res += (res.empty() ? "\n" : "") + category_name + utils::join(to_add, ", ");
 		}
-	}
-	weapon_specials_impl_self(temp_string, *this, other, unit_ability_t::affects_t::OTHER, checking_name, checking_tags);
-	weapon_specials_impl_adj(temp_string, *this, other, unit_ability_t::affects_t::OTHER, checking_name, checking_tags);
-	add_name_list(temp_string, weapon_abilities, checking_name, _("Used by opponent: "));
+	};
 
-	return weapon_abilities;
+
+	foreach_active_special(*this, self, quick_check, add_to_list);
+
+	add_to_res(wespon_specials, "");
+	add_to_res(abilities_self, _("Owned: "));
+	// TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
+	add_to_res(abilities_allies, _("Taught: "));
+	// TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
+	add_to_res(abilities_enemies, _("Taught: (by an enemy): "));
+	add_to_res(opponents_abilities, _("Used by opponent: "));
+
+	return res;
 }
 
 
@@ -1635,44 +1583,24 @@ active_ability_list specials_context_t::get_active_specials(const attack_type& a
 {
 	auto [self, other] = self_and_other(at);
 	const map_location loc = self.un ? self.un->get_location() : self.loc;
+	active_ability_list res(loc);
 
-	//log_scope("get_specials");
+	auto quick_check = [&](const ability_ptr& p_ab) {
+		return p_ab->tag() == tag_name;
+	};
 
-	active_ability_list abil_list(loc);
-
-	// collect from [specials]
-	if (self.at) {
-		for (const ability_ptr& p_ab : self.at->specials(tag_name)) {
-			if (is_special_active(self, *p_ab, unit_ability_t::affects_t::SELF)) {
-				abil_list.emplace_back(p_ab, self.loc, self.loc);
-			}
+	auto add_to_list = utils::overload {
+		[&](const ability_ptr& p_ab, const specials_combatant& student, const attack_type&) {
+			res.emplace_back(p_ab, student.loc, student.loc);
+		},
+		[&](const ability_ptr& p_ab, const specials_combatant& student, const unit& source) {
+			res.emplace_back(p_ab, student.un->get_location(), source.get_location());
 		}
-	}
+	};
 
-	// collect from opponents [specials]
-	if (other.at) {
-		for (const ability_ptr& p_ab : other.at->specials(tag_name)) {
-			if (is_special_active(other, *p_ab, unit_ability_t::affects_t::OTHER)) {
-				abil_list.emplace_back(p_ab, other.loc, other.loc);
-			}
-		}
-	}
 
-	// collect from units and adjacent [abilities]
-	if (self.un) {
-		abil_list.append_if(self.un->get_abilities(tag_name, self.loc), [&](const active_ability& i) {
-			return is_special_active(self, i.ability(), unit_ability_t::affects_t::SELF);
-			});
-	}
-
-	// collect from opponents and adjacent [abilities]
-	if (other.un) {
-		abil_list.append_if(other.un->get_abilities(tag_name, other.loc), [&](const active_ability& i) {
-			return is_special_active(other, i.ability(), unit_ability_t::affects_t::OTHER);
-			});
-	}
-
-	return abil_list;
+	foreach_active_special(*this, self, quick_check, add_to_list);
+	return res;
 }
 
 active_ability_list specials_context_t::get_abilities_weapons(const std::string& tag_name, const unit& un) const
