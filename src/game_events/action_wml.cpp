@@ -577,10 +577,10 @@ WML_HANDLER_FUNCTION(replace_map,, cfg)
 			config file_cfg = mp_sync::get_user_choice("map_data", map_choice(cfg["map_file"].str()));
 			map.read(file_cfg["map_data"].str(), false);
 		} else if(!cfg["map_data"].empty()) {
-			map.read(cfg["map_data"], false);
+			map.read(cfg["map_data"].str(), false);
 		} else {
 			deprecated_message("[replace_map]map=", DEP_LEVEL::INDEFINITE, "1.16", "Use map_data= instead.");
-			map.read(cfg["map"], false);
+			map.read(cfg["map"].str(), false);
 		}
 	} catch(const incorrect_map_format_error&) {
 		const std::string log_map_name = cfg["map"].empty() ? cfg["map_file"] : std::string("from inline data");

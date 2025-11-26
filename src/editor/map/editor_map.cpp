@@ -45,14 +45,14 @@ editor_map::editor_map()
 {
 }
 
-editor_map::editor_map(const std::string& data)
+editor_map::editor_map(std::string_view data)
 	: gamemap(data)
 	, selection_()
 {
 	sanity_check();
 }
 
-editor_map editor_map::from_string(const std::string& data)
+editor_map editor_map::from_string(std::string_view data)
 {
 	try {
 		return editor_map(data);
