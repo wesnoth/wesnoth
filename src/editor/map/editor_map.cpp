@@ -66,7 +66,7 @@ editor_map editor_map::from_string(std::string_view data)
 }
 
 editor_map::editor_map(std::size_t width, std::size_t height, const t_translation::terrain_code & filler)
-	: gamemap(t_translation::write_game_map(t_translation::ter_map(width + 2, height + 2, filler)))
+	: gamemap(width + 2, height + 2, filler)
 	, selection_()
 {
 	sanity_check();
