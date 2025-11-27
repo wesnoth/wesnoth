@@ -2046,8 +2046,7 @@ static int intf_eval_conditional(lua_State *L)
  * Finds a path between two locations.
  * - Arg 1: source location. (Or Arg 1: unit.)
  * - Arg 2: destination.
- * - Arg 3: optional cost function or
- *          table (optional fields: ignore_units, ignore_teleport, max_cost, viewing_side).
+ * - Arg 3: optional table (optional fields: ignore_units, ignore_teleport, max_cost, viewing_side, calculate).
  * - Ret 1: array of pairs containing path steps.
  * - Ret 2: path cost.
  */
@@ -2114,7 +2113,7 @@ int game_lua_kernel::intf_find_path(lua_State *L)
 			calc.reset(new lua_pathfind_cost_calculator(L, lua_gettop(L)));
 		}
 		// Don't pop, the lua_pathfind_cost_calculator requires it to stay on the stack.
-	} else {
+	} else if(!lua_isnoneornil(L, arg)) {
 		return luaL_argerror(L, arg, "table expected");
 	}
 
@@ -2201,6 +2200,8 @@ int game_lua_kernel::intf_find_reach(lua_State *L)
 			}
 		}
 		lua_pop(L, 1);
+	} else if(!lua_isnoneornil(L, arg)) {
+		return luaL_argerror(L, arg, "table expected");
 	}
 
 	const team& viewing_team = board().get_team(viewing_side);
