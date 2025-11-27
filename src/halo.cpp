@@ -48,7 +48,7 @@ class halo_impl
 		effect(
 			int xpos, int ypos,
 			const animated<image::locator>::anim_description& img,
-			const map_location& loc, ORIENTATION, bool infinite
+			const map_location& loc, ORIENTATION, bool infinite, float parallax_mult = 1.0f
 		);
 
 		void set_location(int x, int y);
@@ -91,6 +91,8 @@ class halo_impl
 		// The map location the halo is attached to, if any
 		map_location map_loc_ = {-1, -1};
 
+		float parallax_ = 1.0f;
+
 		display* disp = nullptr;
 	};
 
@@ -118,7 +120,7 @@ class halo_impl
 
 public:
 	int add(int x, int y, const std::string& image, const map_location& loc,
-			ORIENTATION orientation=NORMAL, bool infinite=true);
+			ORIENTATION orientation=NORMAL, bool infinite=true, float parallax_mult = 1.0f);
 
 	/** Set the position of an existing haloing effect, according to its handle. */
 	void set_location(int handle, int x, int y);
@@ -135,10 +137,11 @@ public:
 
 halo_impl::effect::effect(int xpos, int ypos,
 		const animated<image::locator>::anim_description& img,
-		const map_location& loc, ORIENTATION orientation, bool infinite) :
+		const map_location& loc, ORIENTATION orientation, bool infinite, float parallax) :
 	images_(img),
 	orientation_(orientation),
 	map_loc_(loc),
+	parallax_(parallax),
 	disp(display::get_singleton())
 {
 	assert(disp != nullptr);
@@ -201,8 +204,28 @@ void halo_impl::effect::update()
 
 	const auto [zero_x, zero_y] = disp->get_location(map_location::ZERO());
 
-	const int xpos = zero_x + abs_mid_.x - w/2;
-	const int ypos = zero_y + abs_mid_.y - h/2;
+	int xpos = zero_x + abs_mid_.x - w / 2;
+	int ypos = zero_y + abs_mid_.y - h / 2;
+
+	if(parallax_ != 1.0f) {
+		// --- Radial-from-center parallax ---
+		// Moves proportionally to distance from the center of the game area
+		// Use the existing map_outside_area() function to get the rect
+		const rect& game_area = disp->map_outside_area();
+		const int cx = game_area.x + game_area.w / 2;
+		const int cy = game_area.y + game_area.h / 2;
+
+		const int dx = xpos - cx;
+		const int dy = ypos - cy;
+
+		xpos = cx + static_cast<int>(dx * parallax_);
+		ypos = cy + static_cast<int>(dy * parallax_);
+
+		// --- alternative Scroll-based parallax ---
+		// Moves slower or faster than the map as you pan
+		//xpos += static_cast<int>((1.0f - parallax_) * -zero_x);
+		//ypos += static_cast<int>((1.0f - parallax_) * -zero_y);
+	}
 
 	screen_loc_ = {xpos, ypos, w, h};
 
@@ -286,7 +309,7 @@ void halo_impl::effect::queue_redraw()
 
 
 int halo_impl::add(int x, int y, const std::string& image, const map_location& loc,
-		ORIENTATION orientation, bool infinite)
+		ORIENTATION orientation, bool infinite, float parallax_mult)
 {
 	const int id = halo_id++;
 	DBG_HL << "adding halo " << id;
@@ -308,7 +331,8 @@ int halo_impl::add(int x, int y, const std::string& image, const map_location& l
 		}
 		image_vector.emplace_back(time, image::locator(str));
 	}
-	haloes.try_emplace(id, x, y, image_vector, loc, orientation, infinite);
+	// Pass the new parameter to the effect constructor via try_emplace
+	haloes.try_emplace(id, x, y, image_vector, loc, orientation, infinite, parallax_mult);
 	invalidated_haloes.insert(id);
 	if(haloes.find(id)->second.does_change() || !infinite) {
 		changing_haloes.insert(id);
@@ -400,9 +424,9 @@ manager::manager() : impl_(new halo_impl())
 {}
 
 handle manager::add(int x, int y, const std::string& image, const map_location& loc,
-		ORIENTATION orientation, bool infinite)
+		ORIENTATION orientation, bool infinite, float parallax_mult)
 {
-	int new_halo = impl_->add(x,y,image, loc, orientation, infinite);
+	int new_halo = impl_->add(x,y,image, loc, orientation, infinite, parallax_mult);
 	return handle(new halo_record(new_halo, impl_));
 }
 
