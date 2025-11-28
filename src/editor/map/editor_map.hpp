@@ -16,9 +16,9 @@
 #pragma once
 
 #include "editor/editor_common.hpp"
-
 #include "map/map.hpp"
 
+#include <boost/dynamic_bitset.hpp>
 
 namespace editor {
 
@@ -140,12 +140,17 @@ public:
 	 * Select the given area.
 	 * @param area to select.
 	 */
-	bool set_selection(const std::set<map_location>& area);
+	void set_selection(const std::set<map_location>& area);
 
 	/**
 	 * Return the selection set.
 	 */
-	const std::set<map_location>& selection() const { return selection_; }
+	std::set<map_location> selection() const;
+
+	/**
+	 * Returns a set of all hexes *not* currently selected.
+	 */
+	std::set<map_location> selection_inverse() const;
 
 	/**
 	 * Clear the selection
@@ -168,6 +173,16 @@ public:
 	bool everything_selected() const;
 
 	/**
+	 * @return true if at least one location is selected, false otherwise
+	 */
+	bool anything_selected() const;
+
+	/**
+	 * @return true if at no selections are selected, false otherwise
+	 */
+	bool nothing_selected() const;
+
+	/**
 	 * Resize the map. If the filler is NONE, the border terrain will be copied
 	 * when expanding, otherwise the filler terrain will be inserted there
 	 */
@@ -186,7 +201,7 @@ public:
 	 */
 	bool same_size_as(const gamemap& other) const;
 
-protected:
+private:
 	//helper functions for resizing
 	void expand_right(int count, const t_translation::terrain_code & filler);
 	void expand_left(int count, const t_translation::terrain_code & filler);
@@ -197,10 +212,98 @@ protected:
 	void shrink_top(int count);
 	void shrink_bottom(int count);
 
+	class selection_mask
+	{
+	public:
+		explicit selection_mask(const gamemap_base& map)
+			: stride_(map.total_width())
+			, height_(map.total_height())
+		{
+			bitset_.resize(stride_ * height_);
+		}
+
+		/**
+		 * Marks @a loc as selected.
+		 * @returns true if the location was previously deselected.
+		 */
+		bool select(const map_location& loc)
+		{
+			return bitset_.test_set(location_index(loc), true) == false;
+		}
+
+		/**
+		 * Marks @a loc as unselected.
+		 * @returns true if the location was previously selected.
+		 */
+		bool deselect(const map_location& loc)
+		{
+			return bitset_.test_set(location_index(loc), false) == true;
+		}
+
+		bool selected(const map_location& loc) const
+		{
+			return bitset_.test(location_index(loc));
+		}
+
+		void select_all()
+		{
+			bitset_.set();
+		}
+
+		void deselect_all()
+		{
+			bitset_.reset();
+		}
+
+		void invert()
+		{
+			bitset_.flip();
+		}
+
+		selection_mask inverted() const
+		{
+			auto res = selection_mask{*this};
+			res.invert();
+			return res;
+		}
+
+		static std::set<map_location> get_locations(const selection_mask& mask)
+		{
+			std::set<map_location> res;
+
+			for(std::size_t i = 0; i < mask.bitset_.size(); ++i) {
+				if(mask.bitset_.test(i)) {
+					auto pos = std::div(i, mask.stride_);
+					res.emplace(pos.rem, pos.quot);
+				}
+			}
+
+			return res;
+		}
+
+		/** Read-only access to the underlying bitset. */
+		const boost::dynamic_bitset<uint64_t>& mask() const
+		{
+			return bitset_;
+		}
+
+	private:
+		/** Indexes @a loc to its corresponding is-selected flag. */
+		std::size_t location_index(const map_location& loc) const
+		{
+			return static_cast<std::size_t>(loc.wml_x()) * stride_ + loc.wml_y();
+		}
+
+		int stride_{0};
+		int height_{0};
+
+		boost::dynamic_bitset<uint64_t> bitset_;
+	};
+
 	/**
 	 * The selected hexes
 	 */
-	std::set<map_location> selection_;
+	selection_mask selection_;
 };
 
 
