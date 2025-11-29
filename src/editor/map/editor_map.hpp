@@ -228,7 +228,7 @@ private:
 		 */
 		bool select(const map_location& loc)
 		{
-			return bitset_.test_set(location_index(loc), true) == false;
+			return bitset_.test_set(get_index(loc), true) == false;
 		}
 
 		/**
@@ -237,12 +237,12 @@ private:
 		 */
 		bool deselect(const map_location& loc)
 		{
-			return bitset_.test_set(location_index(loc), false) == true;
+			return bitset_.test_set(get_index(loc), false) == true;
 		}
 
 		bool selected(const map_location& loc) const
 		{
-			return bitset_.test(location_index(loc));
+			return bitset_.test(get_index(loc));
 		}
 
 		void select_all()
@@ -273,8 +273,7 @@ private:
 
 			for(std::size_t i = 0; i < mask.bitset_.size(); ++i) {
 				if(mask.bitset_.test(i)) {
-					auto pos = std::div(i, mask.stride_);
-					res.emplace(pos.rem, pos.quot);
+					res.emplace(mask.get_location(i));
 				}
 			}
 
@@ -288,10 +287,17 @@ private:
 		}
 
 	private:
-		/** Indexes @a loc to its corresponding is-selected flag. */
-		std::size_t location_index(const map_location& loc) const
+		/** Indexes @a loc to its corresponding bitflag using row-major ordering. */
+		std::size_t get_index(const map_location& loc) const
 		{
-			return static_cast<std::size_t>(loc.wml_x()) * stride_ + loc.wml_y();
+			return static_cast<std::size_t>(loc.wml_y()) * stride_ + loc.wml_x();
+		}
+
+		/** Gets the corresponding map_location for bit index @a i. */
+		map_location get_location(std::size_t i) const
+		{
+			auto pos = std::div(i, stride_);
+			return {pos.rem, pos.quot, wml_loc{}};
 		}
 
 		int stride_{0};

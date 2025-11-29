@@ -96,7 +96,7 @@ std::unique_ptr<editor_action> editor_action_select_all::perform(map_context& mc
 	std::set<map_location> undo_locs = mc.map().selection_inverse();
 	mc.map().select_all();
 	mc.set_everything_changed();
-	return std::make_unique<editor_action_select>(undo_locs);
+	return std::make_unique<editor_action_deselect>(undo_locs);
 }
 
 void editor_action_select_all::perform_without_undo(map_context& mc) const
