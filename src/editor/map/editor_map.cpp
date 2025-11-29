@@ -41,13 +41,13 @@ editor_map_load_exception wrap_exc(const char* type, const std::string& e_msg, c
 
 editor_map::editor_map()
 	: gamemap("")
-	, selection_()
+	, selection_(*this)
 {
 }
 
 editor_map::editor_map(std::string_view data)
 	: gamemap(data)
-	, selection_()
+	, selection_(*this)
 {
 	sanity_check();
 }
@@ -67,14 +67,14 @@ editor_map editor_map::from_string(std::string_view data)
 
 editor_map::editor_map(std::size_t width, std::size_t height, const t_translation::terrain_code & filler)
 	: gamemap(width + 2, height + 2, filler)
-	, selection_()
+	, selection_(*this)
 {
 	sanity_check();
 }
 
 editor_map::editor_map(const gamemap& map)
 	: gamemap(map)
-	, selection_()
+	, selection_(*this)
 {
 	sanity_check();
 }
@@ -101,11 +101,6 @@ void editor_map::sanity_check()
 	if (h() + 2 * border_size() != total_height()) {
 		ERR_ED << "w is " << w() << " and border_size is " << border_size() << " but total_height is " << total_height();
 		++errors;
-	}
-	for (const map_location& loc : selection_) {
-		if (!on_board_with_border(loc)) {
-			ERR_ED << "Off-map tile in selection: " << loc;
-		}
 	}
 	if (errors) {
 		throw editor_map_integrity_error();
@@ -157,57 +152,66 @@ std::set<map_location> editor_map::set_starting_position_labels(display& disp)
 
 bool editor_map::in_selection(const map_location& loc) const
 {
-	return selection_.find(loc) != selection_.end();
+	return selection_.selected(loc);
 }
 
 bool editor_map::add_to_selection(const map_location& loc)
 {
-	return on_board_with_border(loc) ? selection_.insert(loc).second : false;
+	return selection_.select(loc);
 }
 
-bool editor_map::set_selection(const std::set<map_location>& area)
+void editor_map::set_selection(const std::set<map_location>& area)
 {
 	clear_selection();
-	for (const map_location& loc : area) {
-		if (!add_to_selection(loc))
-			return false;
+
+	for(const map_location& loc : area) {
+		add_to_selection(loc);
 	}
-	return true;
+}
+
+std::set<map_location> editor_map::selection() const
+{
+	return selection_mask::get_locations(selection_);
+}
+
+std::set<map_location> editor_map::selection_inverse() const
+{
+	return selection_mask::get_locations(selection_.inverted());
 }
 
 bool editor_map::remove_from_selection(const map_location& loc)
 {
-	return selection_.erase(loc) != 0;
+	return selection_.deselect(loc);
 }
 
 void editor_map::clear_selection()
 {
-	selection_.clear();
+	selection_.deselect_all();
 }
 
 void editor_map::invert_selection()
 {
-	std::set<map_location> new_selection;
-	for (int x = -1; x < w() + 1; ++x) {
-		for (int y = -1; y < h() + 1; ++y) {
-			if (selection_.find(map_location(x, y)) == selection_.end()) {
-				new_selection.emplace(x, y);
-			}
-		}
-	}
-	selection_.swap(new_selection);
+	selection_.invert();
 }
 
 void editor_map::select_all()
 {
-	clear_selection();
-	invert_selection();
+	selection_.select_all();
 }
 
 bool editor_map::everything_selected() const
 {
-	LOG_ED << selection_.size() << " " << total_width() * total_height();
-	return static_cast<int>(selection_.size()) == total_width() * total_height();
+	return selection_.mask().all();
+}
+
+bool editor_map::anything_selected() const
+{
+	return selection_.mask().any();
+}
+
+bool editor_map::nothing_selected() const
+{
+	return selection_.mask().none();
 }
 
 void editor_map::resize(int width, int height, int x_offset, int y_offset,

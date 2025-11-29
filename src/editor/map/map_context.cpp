@@ -529,9 +529,9 @@ void map_context::load_scenario()
 	previous_cfg_ = scen;
 }
 
-bool map_context::select_area(int index)
+void map_context::select_area(int index)
 {
-	return map_.set_selection(tod_manager_->get_area_by_index(index));
+	map_.set_selection(tod_manager_->get_area_by_index(index));
 }
 
 bool map_context::playlist_contains(const std::shared_ptr<sound::music_track>& track) const
