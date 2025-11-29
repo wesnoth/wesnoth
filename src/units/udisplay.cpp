@@ -698,7 +698,7 @@ void unit_attack(display * disp, game_board & board,
 			hit_type, weapon, secondary_attack, swing);
 	}
 
-	active_ability_list abilities = att->get_location();
+	active_ability_list abilities{att->get_location()};
 	for(auto& special : abilities_list::all_weapon_tags()) {
 		abilities.append(weapon->get_weapon_ability(special));
 	}
