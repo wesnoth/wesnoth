@@ -104,6 +104,14 @@ enum channel { RED, GREEN, BLUE, ALPHA };
 void swap_channels_image(surface& surf, channel r, channel g, channel b, channel a);
 
 /**
+ * Applies an opacity modification to a surface.
+ *
+ * @param surf The surface to modify.
+ * @param opacity The new opacity (0.0 to 1.0).
+ */
+void apply_surface_opacity(surface& surf, float opacity);
+
+/**
  * Recolors a surface using a map with source and converted palette values.
  * This is most often used for team-coloring.
  *
@@ -128,10 +136,28 @@ surface get_surface_portion(const surface &surf, rect &rect);
 void adjust_surface_alpha(surface& surf, uint8_t alpha_mod);
 void adjust_surface_alpha_add(surface& surf, int amount);
 
-/** Applies a mask on a surface. */
+/**
+ * Applies a mask to the source surface by calculating the minimum alpha channel
+ * value for every corresponding pixel.This operation ensures that the resulting
+ * surface is only visible where BOTH the original surface AND the mask were visible.
+ * Mostly used to remove any pixels outside a hex shape.
+ * @param surf            The surface to be modified (the destination).
+ * @param mask            The mask surface (read-only).
+ * @param empty_result    Optional output pointer (bool*). If provided, it is set to true
+ * if the resulting surface contains no visible pixels (i.e., is fully transparent).
+ * @param filename        Optional string for logging purposes.
+ */
 void mask_surface(surface& surf, const surface& mask, bool* empty_result = nullptr, const std::string& filename = std::string());
 
-/** Check if a surface fit into a mask */
+/**
+ * Checks if the source surface is entirely covered by the visible area of the mask.
+ * If a visible pixel is found outside the mask's visible area, the function immediately
+ * returns false. Mostly used to see if an image has all visable pixels within a hex shape.
+ * @param surf The source surface (whose visibility is being checked).
+ * @param mask The mask surface (whose visible area defines the boundary).
+ * * @return true if all visible pixels of @p surf are contained within the non-transparent
+ * area of @p mask (i.e., the surface is fully covered). Returns false otherwise.
+ */
 bool in_mask_surface(const surface& surf, const surface& mask);
 
 /**
