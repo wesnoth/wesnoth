@@ -84,25 +84,24 @@ extern const std::string wml_extension;
 class blacklist_pattern_list
 {
 public:
-	blacklist_pattern_list()
-		: file_patterns_(), directory_patterns_()
-	{}
-	blacklist_pattern_list(const std::vector<std::string>& file_patterns, const std::vector<std::string>& directory_patterns)
-		: file_patterns_(file_patterns), directory_patterns_(directory_patterns)
+	blacklist_pattern_list() = default;
+
+	blacklist_pattern_list(std::vector<std::string> file_patterns, std::vector<std::string> directory_patterns)
+		: file_patterns_(std::move(file_patterns)), directory_patterns_(std::move(directory_patterns))
 	{}
 
 	bool match_file(const std::string& name) const;
 
 	bool match_dir(const std::string& name) const;
 
-	void add_file_pattern(const std::string& pattern)
+	void add_file_pattern(std::string pattern)
 	{
-		file_patterns_.push_back(pattern);
+		file_patterns_.push_back(std::move(pattern));
 	}
 
-	void add_directory_pattern(const std::string& pattern)
+	void add_directory_pattern(std::string pattern)
 	{
-		directory_patterns_.push_back(pattern);
+		directory_patterns_.push_back(std::move(pattern));
 	}
 
 	void remove_blacklisted_files_and_dirs(std::vector<std::string>& files, std::vector<std::string>& directories) const;
@@ -437,7 +436,7 @@ char path_separator();
  */
 struct binary_paths_manager
 {
-	binary_paths_manager();
+	binary_paths_manager() = default;
 	binary_paths_manager(const game_config_view& cfg);
 	~binary_paths_manager();
 
