@@ -35,6 +35,7 @@
 #include "map/map.hpp"
 #include "resources.hpp"
 #include "serialization/markup.hpp"
+#include "serialization/string_utils.hpp"
 #include "team.hpp"
 #include "terrain/filter.hpp"
 #include "units/types.hpp"
@@ -56,6 +57,13 @@ static lg::log_domain log_engine("engine");
 static lg::log_domain log_wml("wml");
 #define ERR_WML LOG_STREAM(err, log_wml)
 
+namespace
+{
+	using namespace std::string_literals;
+	const std::array numeric_keys{
+		"value"s, "add"s, "sub"s, "multiply"s, "divide"s, "max_value"s, "min_value"s
+	};
+}
 
 
 /*
@@ -291,8 +299,11 @@ void unit_ability_t::write(config& abilities_cfg)
 
 std::string unit_ability_t::substitute_variables(const std::string& str) const {
 	// TODO add more [specials] keys
-	// Currently supports only [plague]type= -> $type
-	if (tag() == "plague") {
+
+	utils::string_map symbols;
+
+	// [plague]type= -> $type
+	if(tag() == "plague") {
 		// Substitute [plague]type= as $type
 		const auto iter = unit_types.types().find(cfg()["type"]);
 
@@ -302,11 +313,22 @@ std::string unit_ability_t::substitute_variables(const std::string& str) const {
 		}
 
 		const unit_type& type = iter->second;
-		utils::string_map symbols{ { "type", type.type_name() } };
-		return utils::interpolate_variables_into_string(str, &symbols);
+		symbols.emplace("type", type.type_name());
 	}
 
-	return str;
+	// weapon specials with value keys, like value, add, sub etc.
+	// i.e., [heals]value= -> $value, [regenerates]add= -> $add etc.
+	for(const auto& vkey : numeric_keys) {
+		if(cfg().has_attribute(vkey)) {
+			if(vkey == "multiply" || vkey == "divide") {
+				symbols.emplace(vkey, std::to_string(cfg()[vkey].to_double()));
+			} else {
+				symbols.emplace(vkey, std::to_string(cfg()[vkey].to_int()));
+			}
+		}
+	}
+
+	return symbols.empty() ? str : utils::interpolate_variables_into_string(str, &symbols);
 }
 
 
