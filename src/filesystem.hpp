@@ -76,9 +76,9 @@ enum class filter_mode { NO_FILTER, SKIP_MEDIA_DIR, SKIP_PBL_FILES };
 enum class reorder_mode { DONT_REORDER, DO_REORDER };
 
 // default extensions
-const std::string map_extension = ".map";
-const std::string mask_extension = ".mask";
-const std::string wml_extension = ".cfg";
+extern const std::string map_extension;
+extern const std::string mask_extension;
+extern const std::string wml_extension;
 
 // A list of file and directory blacklist patterns
 class blacklist_pattern_list
