@@ -1526,10 +1526,6 @@ static void init_binary_paths()
 	}
 }
 
-binary_paths_manager::binary_paths_manager()
-	: paths_()
-{
-}
 
 binary_paths_manager::binary_paths_manager(const game_config_view& cfg)
 	: paths_()
