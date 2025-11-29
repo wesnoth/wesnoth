@@ -61,6 +61,9 @@ public:
 	/** Real height of the map, including borders */
 	int total_height() const { return tiles_.h; }
 
+	/** Total square area of ther map, including borders. */
+	int total_area() const { return total_width() * total_height(); }
+
 	/** Tell if the map is of 0 size. */
 	bool empty() const
 	{

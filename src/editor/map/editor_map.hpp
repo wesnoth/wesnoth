@@ -226,7 +226,7 @@ private:
 	public:
 		explicit selection_mask(const gamemap_base& map)
 		{
-			bitset_.resize(stride_ * map.total_height());
+			bitset_.resize(map.total_area());
 		}
 
 		/**

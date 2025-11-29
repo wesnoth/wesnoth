@@ -228,6 +228,9 @@ void editor_map::resize(int width, int height, int x_offset, int y_offset,
 		return;
 	}
 
+	// Save the old selections before resizing
+	std::set<map_location> old_selection = selection();
+
 	// Determine the amount of resizing is required
 	const int left_resize = -x_offset;
 	const int right_resize = (width - old_w) + x_offset;
@@ -253,6 +256,13 @@ void editor_map::resize(int width, int height, int x_offset, int y_offset,
 		expand_top(top_resize, filler);
 	} else if(top_resize < 0) {
 		shrink_top(-top_resize);
+	}
+
+	// Reset and resize selection mask
+	selection_ = selection_mask{*this};
+
+	for(const map_location& loc : old_selection) {
+		add_to_selection(loc.plus(-x_offset, -y_offset));
 	}
 
 	// fix the starting positions
