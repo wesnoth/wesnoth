@@ -214,6 +214,11 @@ bool editor_map::nothing_selected() const
 	return selection_.mask().none();
 }
 
+std::size_t editor_map::num_selected() const
+{
+	return selection_.mask().count();
+}
+
 void editor_map::resize(int width, int height, int x_offset, int y_offset,
 	const t_translation::terrain_code & filler)
 {

@@ -183,6 +183,15 @@ public:
 	bool nothing_selected() const;
 
 	/**
+	 * @return the number of locations selected.
+	 *
+	 * @note This is more efficient than checking selection().size() since
+	 * it avoids allocating a full map_location set and simply queries the
+	 * number of engaged bits in the underlying bitset.
+	 */
+	std::size_t num_selected() const;
+
+	/**
 	 * Resize the map. If the filler is NONE, the border terrain will be copied
 	 * when expanding, otherwise the filler terrain will be inserted there
 	 */

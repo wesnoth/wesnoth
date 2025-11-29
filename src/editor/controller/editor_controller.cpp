@@ -512,8 +512,8 @@ bool editor_controller::can_execute_command(const hotkey::ui_command& cmd) const
 		return get_current_map_context().map().anything_selected()
 				&& !toolkit_->is_mouse_action_set(HOTKEY_EDITOR_CLIPBOARD_PASTE);
 	case HOTKEY_EDITOR_SELECTION_RANDOMIZE:
-		return (get_current_map_context().map().selection().size() > 1
-				&& !toolkit_->is_mouse_action_set(HOTKEY_EDITOR_CLIPBOARD_PASTE));
+		return get_current_map_context().map().num_selected() > 1
+				&& !toolkit_->is_mouse_action_set(HOTKEY_EDITOR_CLIPBOARD_PASTE);
 	case HOTKEY_EDITOR_SELECTION_ROTATE:
 	case HOTKEY_EDITOR_SELECTION_FLIP:
 	case HOTKEY_EDITOR_CLIPBOARD_PASTE:
