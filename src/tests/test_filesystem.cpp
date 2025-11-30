@@ -256,4 +256,56 @@ BOOST_AUTO_TEST_CASE( test_fs_fluff )
 	BOOST_CHECK( !is_compressed_file("foo.BZ2") );
 }
 
+BOOST_AUTO_TEST_CASE( test_blacklist_pattern_list )
+{
+	// Basic wildcard matching
+	blacklist_pattern_list blacklist({"*.exe", "potato*", "rutabaga"}, {});
+	BOOST_CHECK(blacklist.match_file("program.exe"));
+	BOOST_CHECK(blacklist.match_file("rutabaga"));
+	BOOST_CHECK(blacklist.match_file("potatoes"));
+	BOOST_CHECK(!blacklist.match_file("notapotato"));
+
+	// ? should match a single character
+	blacklist_pattern_list qmark({"file?.txt"}, {});
+	BOOST_CHECK(qmark.match_file("file1.txt"));
+	BOOST_CHECK(qmark.match_file("fileA.txt"));
+	BOOST_CHECK(!qmark.match_file("file12.txt"));
+
+	// Leading/trailing wildcards
+	blacklist_pattern_list leadtrail({"*secret*"}, {});
+	BOOST_CHECK(leadtrail.match_file("my_secret_file"));
+	BOOST_CHECK(leadtrail.match_file("secret"));
+	BOOST_CHECK(!leadtrail.match_file("public"));
+
+	// Pattern that should match everything
+	blacklist_pattern_list all({"*"}, {});
+	BOOST_CHECK(all.match_file("anything"));
+	BOOST_CHECK(all.match_file(""));
+
+	// Directory pattern matching (match_dir should behave the same)
+	blacklist_pattern_list dirpat({}, {"temp*", "__MACOSX"});
+	BOOST_CHECK(dirpat.match_dir("temp"));
+	BOOST_CHECK(dirpat.match_dir("temp123"));
+	BOOST_CHECK(dirpat.match_dir("__MACOSX"));
+	BOOST_CHECK(dirpat.match_dir("templates"));
+
+	// Matching is case-sensitive, though it probably shouldn't be on Windows
+	blacklist_pattern_list cs({"Readme.TXT"}, {});
+	BOOST_CHECK(cs.match_file("Readme.TXT"));
+	BOOST_CHECK(!cs.match_file("readme.txt"));
+
+	// Patterns with dots and special chars
+	blacklist_pattern_list specials({"*.tar.gz", "backup?.old", "*.cfg"}, {});
+	BOOST_CHECK(specials.match_file("archive.tar.gz"));
+	BOOST_CHECK(specials.match_file("backup1.old"));
+	BOOST_CHECK(!specials.match_file("backup10.old"));
+	BOOST_CHECK(specials.match_file("foo.cfg"));
+
+	// Sanity: nonexistent patterns should not match
+	blacklist_pattern_list none({}, {});
+	BOOST_CHECK(!none.match_file("something.exe"));
+	BOOST_CHECK(!none.match_dir("temp"));
+}
+
+
 BOOST_AUTO_TEST_SUITE_END()
