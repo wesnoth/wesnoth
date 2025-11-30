@@ -477,11 +477,6 @@ protected:
 	int actions_since_save_;
 
 	/**
-	 * Cache of set starting position labels. Necessary for removing them.
-	 */
-	std::set<map_location> starting_position_label_locs_;
-
-	/**
 	 * Refresh flag indicating the map in this context should be completely reloaded by the display
 	 */
 	bool needs_reload_;
@@ -496,8 +491,14 @@ protected:
 	 */
 	bool needs_labels_reset_;
 
-	std::set<map_location> changed_locations_;
 	bool everything_changed_;
+
+	std::set<map_location> changed_locations_;
+
+	/**
+	 * Cache of set starting position labels. Necessary for removing them.
+	 */
+	std::set<map_location> starting_position_label_locs_;
 
 private:
 	std::string addon_id_;

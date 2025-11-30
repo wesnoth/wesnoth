@@ -154,7 +154,7 @@ public:
 	}
 protected:
 	gamemap_base() = default;
-	gamemap_base(int w, int h, terrain_code default_ter = terrain_code());
+	gamemap_base(int w, int h, const terrain_code& default_ter);
 	terrain_map& tiles() {return tiles_;}
 	const terrain_map& tiles() const {return tiles_;}
 private:
@@ -205,9 +205,10 @@ public:
 	 *
 	 * @param data the map data to load.
 	 */
-	gamemap(const std::string& data); // throw(incorrect_map_format_error)
+	gamemap(std::string_view data); // throw(incorrect_map_format_error)
+	gamemap(int w, int h, const terrain_code& default_ter);
 
-	void read(const std::string& data, const bool allow_invalid = true);
+	void read(std::string_view data, const bool allow_invalid = true);
 
 	std::string write() const;
 

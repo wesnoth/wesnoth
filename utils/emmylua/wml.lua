@@ -50,8 +50,8 @@ function wml.clone(cfg) end
 ---Merges two WML tables together
 ---@alias WMLMergeMode
 ---| "'append'" # Tags from the new table are appended to the end of the base table
----| "'replace'" # Tags from the new table replace any other tags of the same name in the base table
----| "'merge'" # Tags from the new table are recursively merged with the respective tag of the saem name in the base table
+---| "'replace'" # Tags from the new table replace any other tags of the same name in the base table, and if there are more tags by that name in the base table than in the new table, the extras are removed
+---| "'merge'" # Tags from the new table are recursively merged with the respective tag of the same name in the base table
 ---@param base WML WML table to use as a base for the merge
 ---@param merge WML The WML table to merge into the base
 ---@param mode WMLMergeMode Merge mode to use for child tags
