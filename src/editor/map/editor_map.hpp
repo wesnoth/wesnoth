@@ -225,6 +225,8 @@ private:
 	{
 	public:
 		explicit selection_mask(const gamemap_base& map)
+			: stride_(map.total_width())
+			, height_(map.total_height())
 		{
 			bitset_.resize(map.total_area());
 		}
@@ -309,8 +311,8 @@ private:
 
 		boost::dynamic_bitset<uint64_t> bitset_;
 
-		/** Match stride to bitset block size. */
-		static constexpr int stride_{64};
+		int stride_{0};
+		int height_{0};
 	};
 
 	/**
