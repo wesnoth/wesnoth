@@ -98,26 +98,6 @@ bool show_difficulty_dialog(load_game_metadata& load_data)
 	return true;
 }
 
-void copy_era(config& cfg)
-{
-	auto replay_start = cfg.optional_child("replay_start");
-	if(!replay_start) {
-		return;
-	}
-
-	auto era = replay_start->optional_child("era");
-	if(!era) {
-		return;
-	}
-
-	auto snapshot = cfg.optional_child("snapshot");
-	if(!snapshot) {
-		return;
-	}
-
-	snapshot->add_child("era", *era);
-}
-
 /** Confirms attempts to load saves from previous game versions. */
 bool check_version_compatibility(const version_info& save_version)
 {
@@ -271,7 +251,6 @@ utils::optional<load_game_metadata> load_interactive_for_multiplayer()
 		return utils::nullopt;
 	}
 
-	copy_era(load_data.load_config);
 	return load_data;
 }
 

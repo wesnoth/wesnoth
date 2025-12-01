@@ -65,6 +65,8 @@ public:
 
 	int do_compare(const formula_callable* callable) const override;
 
+	const terrain_type& get_terrain_type() const { return t_; }
+
 private:
 	const map_location loc_;
 	const terrain_type& t_;

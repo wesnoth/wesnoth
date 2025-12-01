@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-09-21 23:01-0500\n"
+"POT-Creation-Date: 2025-11-17 20:02-0600\n"
 "PO-Revision-Date: 2022-01-13 19:16+0000\n"
 "Last-Translator: GunChleoc, 2021\n"
 "Language-Team: Gaelic, Scottish (https://www.transifex.com/gunchleoc/"
@@ -4179,7 +4179,7 @@ msgstr "Cosgais ghluasaid:"
 #. [tab]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:524
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:1206
-#: src/gui/widgets/unit_preview_pane.cpp:218
+#: src/gui/widgets/unit_preview_pane.cpp:216
 msgid "Attacks"
 msgstr "Ionnsaighean"
 
@@ -4253,7 +4253,7 @@ msgstr ""
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=movement_costs_label
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:908
-#: src/gui/widgets/unit_preview_pane.cpp:151
+#: src/gui/widgets/unit_preview_pane.cpp:150
 msgid "Movement Costs:"
 msgstr "Cosgais ghluasaid:"
 
@@ -7134,8 +7134,8 @@ msgstr "Staid"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=unit_traits
 #: data/gui/themes/default/dialogs/units_dialog.cfg:147
-#: src/gui/widgets/unit_preview_pane.cpp:398
-#: src/gui/widgets/unit_preview_pane.cpp:533
+#: src/gui/widgets/unit_preview_pane.cpp:396
+#: src/gui/widgets/unit_preview_pane.cpp:531
 msgid "Traits"
 msgstr "Feartan"
 
@@ -8623,7 +8623,7 @@ msgid "All Scenarios"
 msgstr "A h-uile cnàmh-sgeul"
 
 #: src/gui/dialogs/statistics_dialog.cpp:174
-#: src/gui/dialogs/statistics_dialog.cpp:334
+#: src/gui/dialogs/statistics_dialog.cpp:309
 msgid "This Turn"
 msgstr "A’ chuairt seo"
 
@@ -8635,7 +8635,7 @@ msgstr "Reataichean nam bualaidhean a-rèir seans bualaidh:"
 msgid "(no attacks have taken place yet)"
 msgstr "(cha deach ionnsaigh sam bith a thoirt fhathast)"
 
-#: src/gui/dialogs/statistics_dialog.cpp:321
+#: src/gui/dialogs/statistics_dialog.cpp:296
 msgid ""
 "stats dialog^Difference of actual outcome to expected outcome, as a "
 "percentage.\n"
@@ -8651,39 +8651,39 @@ msgstr ""
 "’S e an suim (no diofar) eadar an dà àireamh eadar camagan an àireamh de "
 "bhuillean ’gan toirt ann an da-rìribh."
 
-#: src/gui/dialogs/statistics_dialog.cpp:365
+#: src/gui/dialogs/statistics_dialog.cpp:340
 #, fuzzy
 #| msgid "Recruits"
 msgid "stats^Recruits"
 msgstr "Air trusadh"
 
-#: src/gui/dialogs/statistics_dialog.cpp:366
+#: src/gui/dialogs/statistics_dialog.cpp:341
 msgid "Recalls"
 msgstr "Air ais-ghairm"
 
-#: src/gui/dialogs/statistics_dialog.cpp:367
+#: src/gui/dialogs/statistics_dialog.cpp:342
 msgid "Advancements"
 msgstr "Àrdachaidhean"
 
-#: src/gui/dialogs/statistics_dialog.cpp:368
+#: src/gui/dialogs/statistics_dialog.cpp:343
 msgid "Losses"
 msgstr "Air chall"
 
-#: src/gui/dialogs/statistics_dialog.cpp:369
+#: src/gui/dialogs/statistics_dialog.cpp:344
 msgid "Kills"
 msgstr "Air marbhadh"
 
-#: src/gui/dialogs/statistics_dialog.cpp:391
-#: src/gui/dialogs/statistics_dialog.cpp:398
+#: src/gui/dialogs/statistics_dialog.cpp:366
+#: src/gui/dialogs/statistics_dialog.cpp:373
 msgid "Inflicted"
 msgstr "Air a thoirt seachad"
 
-#: src/gui/dialogs/statistics_dialog.cpp:404
-#: src/gui/dialogs/statistics_dialog.cpp:411
+#: src/gui/dialogs/statistics_dialog.cpp:379
+#: src/gui/dialogs/statistics_dialog.cpp:386
 msgid "Taken"
 msgstr "Air gabhail"
 
-#: src/gui/dialogs/statistics_dialog.cpp:452
+#: src/gui/dialogs/statistics_dialog.cpp:427
 msgid "$count|× $name"
 msgstr "$count|× $name"
 
@@ -8691,11 +8691,11 @@ msgstr "$count|× $name"
 msgid "Screenshot"
 msgstr "Glacadh-sgrìn"
 
-#: src/gui/dialogs/title_screen.cpp:399
+#: src/gui/dialogs/title_screen.cpp:396
 msgid "Version $version"
 msgstr "Tionndadh $version"
 
-#: src/gui/dialogs/title_screen.cpp:489 src/hotkey/hotkey_command.cpp:311
+#: src/gui/dialogs/title_screen.cpp:486 src/hotkey/hotkey_command.cpp:311
 #, fuzzy
 #| msgid "Choose Starting Scenario"
 msgid "Choose Test Scenario"
@@ -8932,23 +8932,23 @@ msgstr "Tha [node]id “root” glèidhte airson an toirt gu buil."
 msgid "Unknown builder id for tree view node."
 msgstr "Builder id nach aithne dhuinn airson tree view node."
 
-#: src/gui/widgets/unit_preview_pane.cpp:135
+#: src/gui/widgets/unit_preview_pane.cpp:134
 msgid "Resistances: "
 msgstr "Comasan-seasaimh: "
 
-#: src/gui/widgets/unit_preview_pane.cpp:137
+#: src/gui/widgets/unit_preview_pane.cpp:136
 msgid "(Att / Def)"
 msgstr "(Ionns / Dìon)"
 
-#: src/gui/widgets/unit_preview_pane.cpp:222
+#: src/gui/widgets/unit_preview_pane.cpp:220
 msgid "Remaining: $left/$max"
 msgstr ""
 
-#: src/gui/widgets/unit_preview_pane.cpp:225
+#: src/gui/widgets/unit_preview_pane.cpp:223
 msgid "This unit can attack multiple times per turn."
 msgstr ""
 
-#: src/gui/widgets/unit_preview_pane.cpp:277
+#: src/gui/widgets/unit_preview_pane.cpp:275
 msgid "uses $num attack"
 msgid_plural "uses $num attacks"
 msgstr[0] ""
@@ -8956,40 +8956,40 @@ msgstr[1] ""
 msgstr[2] ""
 msgstr[3] ""
 
-#: src/gui/widgets/unit_preview_pane.cpp:320
-#: src/gui/widgets/unit_preview_pane.cpp:351
-#: src/gui/widgets/unit_preview_pane.cpp:460
-#: src/gui/widgets/unit_preview_pane.cpp:492
+#: src/gui/widgets/unit_preview_pane.cpp:318
+#: src/gui/widgets/unit_preview_pane.cpp:349
+#: src/gui/widgets/unit_preview_pane.cpp:458
+#: src/gui/widgets/unit_preview_pane.cpp:490
 msgid "Lvl $lvl"
 msgstr "Rang $lvl"
 
-#: src/gui/widgets/unit_preview_pane.cpp:358
-#: src/gui/widgets/unit_preview_pane.cpp:371
-#: src/gui/widgets/unit_preview_pane.cpp:499
-#: src/gui/widgets/unit_preview_pane.cpp:516
+#: src/gui/widgets/unit_preview_pane.cpp:356
+#: src/gui/widgets/unit_preview_pane.cpp:369
+#: src/gui/widgets/unit_preview_pane.cpp:497
+#: src/gui/widgets/unit_preview_pane.cpp:514
 msgid "HP: "
 msgstr "PB: "
 
-#: src/gui/widgets/unit_preview_pane.cpp:360
-#: src/gui/widgets/unit_preview_pane.cpp:376
+#: src/gui/widgets/unit_preview_pane.cpp:358
+#: src/gui/widgets/unit_preview_pane.cpp:374
+#: src/gui/widgets/unit_preview_pane.cpp:500
 #: src/gui/widgets/unit_preview_pane.cpp:502
-#: src/gui/widgets/unit_preview_pane.cpp:504
-#: src/gui/widgets/unit_preview_pane.cpp:521
+#: src/gui/widgets/unit_preview_pane.cpp:519
 msgid "XP: "
 msgstr "PE: "
 
-#: src/gui/widgets/unit_preview_pane.cpp:378
-#: src/gui/widgets/unit_preview_pane.cpp:523
+#: src/gui/widgets/unit_preview_pane.cpp:376
+#: src/gui/widgets/unit_preview_pane.cpp:521
 msgid "Experience Modifier: "
 msgstr "Atharraichear eòlais: "
 
-#: src/gui/widgets/unit_preview_pane.cpp:381
-#: src/gui/widgets/unit_preview_pane.cpp:526
+#: src/gui/widgets/unit_preview_pane.cpp:379
+#: src/gui/widgets/unit_preview_pane.cpp:524
 msgid "MP: "
 msgstr "PG: "
 
-#: src/gui/widgets/unit_preview_pane.cpp:408
-#: src/gui/widgets/unit_preview_pane.cpp:547
+#: src/gui/widgets/unit_preview_pane.cpp:406
+#: src/gui/widgets/unit_preview_pane.cpp:545
 msgid "Abilities"
 msgstr "Comasan"
 

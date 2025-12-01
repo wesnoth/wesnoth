@@ -413,7 +413,7 @@ REPORT_GENERATOR(selected_unit_alignment, rc)
 	return unit_alignment(rc, u, hex_to_show_alignment_at);
 }
 
-static config unit_abilities(const unit* u, const map_location& loc)
+static config unit_abilities_report(const unit* u, const map_location& loc)
 {
 	if (!u) return config();
 	config res;
@@ -424,7 +424,7 @@ static config unit_abilities(const unit* u, const map_location& loc)
 	const std::size_t abilities_size = abilities.size();
 	for(std::size_t i = 0; i != abilities_size; ++i) {
 		// Aliases for readability:
-		const auto& [id, base_name, display_name, description] = abilities[i];
+		const auto& [display_name, description, help_id] = abilities[i];
 
 		std::ostringstream str, tooltip;
 
@@ -445,7 +445,7 @@ static config unit_abilities(const unit* u, const map_location& loc)
 
 		tooltip << '\n' << description;
 
-		add_text(res, str.str(), tooltip.str(), "ability_" + id + base_name.base_str());
+		add_text(res, str.str(), tooltip.str(), "ability_" + help_id);
 	}
 
 	return res;
@@ -458,7 +458,7 @@ REPORT_GENERATOR(unit_abilities, rc)
 	const map_location& displayed_unit_hex = rc.screen().displayed_unit_hex();
 	const map_location& hex = (mouseover_hex.valid() && !viewing_team.shrouded(mouseover_hex)) ? mouseover_hex : displayed_unit_hex;
 
-	return unit_abilities(u, hex);
+	return unit_abilities_report(u, hex);
 }
 REPORT_GENERATOR(selected_unit_abilities, rc)
 {
@@ -469,9 +469,9 @@ REPORT_GENERATOR(selected_unit_abilities, rc)
 	const team &viewing_team = rc.screen().viewing_team();
 
 	if (visible_unit && u && visible_unit->id() != u->id() && mouseover_hex.valid() && !viewing_team.shrouded(mouseover_hex))
-		return unit_abilities(u, mouseover_hex);
+		return unit_abilities_report(u, mouseover_hex);
 	else
-		return unit_abilities(u, u->get_location());
+		return unit_abilities_report(u, u->get_location());
 }
 
 
@@ -587,7 +587,7 @@ static config unit_defense(const reports::context& rc, const unit* u, const map_
 	str << span_color(color, def, '%');
 	tooltip << _("Terrain:") << " " << markup::bold(map.get_terrain_info(terrain).description()) << "\n";
 
-	const t_translation::ter_list &underlyings = map.underlying_def_terrain(terrain);
+	const t_translation::ter_list &underlyings = map.underlying_def_terrain(displayed_unit_hex);
 	if (underlyings.size() != 1 || underlyings.front() != terrain)
 	{
 		bool revert = false;
@@ -925,7 +925,7 @@ static int attack_info(const reports::context& rc, const attack_type &at, config
 			bool new_type = seen_types.insert(enemy.type_id()).second;
 			if (new_type) {
 				auto ctx = at.specials_context(u.shared_from_this(), enemy.shared_from_this(), hex, loc, u.side() == rc.screen().playing_team().side(), nullptr);
-				int resistance = enemy.resistance_against(at, false, loc, nullptr);
+				const auto [damage_type, resistance] = weapon->effective_damage_type();
 				resistances[resistance].insert(enemy.type_name());
 			}
 		}
@@ -993,18 +993,18 @@ static int attack_info(const reports::context& rc, const attack_type &at, config
 						at.specials_context(u.shared_from_this(), sec_u->shared_from_this(), hex, sec_u->get_location(), attacking, std::move(sec_u_weapon));
 
 		boost::dynamic_bitset<> active;
-		const std::vector<std::pair<t_string, t_string>> &specials = at.special_tooltips(&active);
+		const auto &specials = at.special_tooltips(&active);
 		const std::size_t specials_size = specials.size();
 		for ( std::size_t i = 0; i != specials_size; ++i )
 		{
 			// Aliases for readability:
-			const t_string &name = specials[i].first;
-			const t_string &description = specials[i].second;
+			const auto& name = specials[i].name;
+			const auto& description = specials[i].description;
 			const color_t &details_color =
 				active[i] ? font::weapon_details_color : font::INACTIVE_COLOR;
 
 			str << span_color(details_color, "  ", "  ", name) << '\n';
-			std::string help_page = "weaponspecial_" + name.base_str();
+			std::string help_page = "weaponspecial_" + specials[i].help_topic_id;
 			tooltip << _("Weapon special:") << " " << markup::bold(name);
 			if (!active[i]) {
 				tooltip << markup::italic(_(" (inactive)"));
@@ -1034,17 +1034,17 @@ static int attack_info(const reports::context& rc, const attack_type &at, config
 	: at.specials_context(u.shared_from_this(), sec_u->shared_from_this(), hex, sec_u->get_location(), attacking, std::move(sec_u_weapon));
 
 		boost::dynamic_bitset<> active;
-		const std::vector<std::pair<t_string, t_string>>& specials = at.abilities_special_tooltips(&active);
+		auto specials = at.abilities_special_tooltips(&active);
 		const std::size_t specials_size = specials.size();
 		for ( std::size_t i = 0; i != specials_size; ++i )
 		{
 			// Aliases for readability:
-			const auto& [name, description] = specials[i];
+			const auto& [name, description, help_topic_id] = specials[i];
 			const color_t& details_color =
 				active[i] ? font::weapon_details_color : font::INACTIVE_COLOR;
 
 			str << span_color(details_color, "  ", "  ", name) << '\n';
-			const std::string help_page = "weaponspecial_" + name.base_str();
+			const std::string help_page = "weaponspecial_" + help_topic_id;
 			tooltip << _("Weapon special:") << " " << markup::bold(name);
 			if (!active[i]) {
 				tooltip << markup::italic(_(" (inactive)"));
@@ -1440,7 +1440,6 @@ static config unit_box_at(const reports::context& rc, const map_location& mouseo
 	}
 
 	const gamemap &map = rc.map();
-	t_translation::terrain_code terrain = map.get_terrain(mouseover_hex);
 
 	//if (t_translation::terrain_matches(terrain, t_translation::ALL_OFF_MAP))
 	//	return config();
@@ -1449,11 +1448,9 @@ static config unit_box_at(const reports::context& rc, const map_location& mouseo
 	//	add_image(cfg, "icons/terrain/terrain_type_keep.png", "");
 	//}
 
-	const t_translation::ter_list& underlying_terrains = map.underlying_union_terrain(terrain);
-
 	std::string bg_terrain_image;
 
-	for (const t_translation::terrain_code& underlying_terrain : underlying_terrains) {
+	for (const t_translation::terrain_code& underlying_terrain : map.underlying_union_terrain(mouseover_hex)) {
 		const std::string& terrain_id = map.get_terrain_info(underlying_terrain).id();
 		bg_terrain_image = "~BLIT(unit_env/terrain/terrain-" + terrain_id + ".png)" + bg_terrain_image;
 	}
@@ -1620,8 +1617,7 @@ REPORT_GENERATOR(terrain_info, rc)
 //		blit_tced_icon(cfg, "keep", high_res);
 //	}
 
-	const t_translation::ter_list& underlying_terrains = map.underlying_union_terrain(terrain);
-	for(const t_translation::terrain_code& underlying_terrain : underlying_terrains) {
+	for(const t_translation::terrain_code& underlying_terrain : map.underlying_union_terrain(mouseover_hex)) {
 		if(t_translation::terrain_matches(underlying_terrain, t_translation::ALL_OFF_MAP)) {
 			continue;
 		}
@@ -1689,7 +1685,7 @@ REPORT_GENERATOR(terrain, rc)
 			str << map.get_terrain_info(terrain).income_description_ally();
 		}
 
-		const std::string& underlying_desc = map.get_underlying_terrain_string(terrain);
+		const std::string& underlying_desc = map.get_underlying_terrain_string(mouseover_hex);
 		if(!underlying_desc.empty()) {
 			str << underlying_desc;
 		}

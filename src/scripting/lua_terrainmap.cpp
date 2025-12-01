@@ -134,12 +134,13 @@ static void simplemerge(t_translation::terrain_code old_t, t_translation::terrai
 	}
 }
 
-void mapgen_gamemap::set_terrain(const map_location& loc, const terrain_code & terrain, const terrain_type_data::merge_mode mode, bool)
+gamemap_base::set_terrain_result mapgen_gamemap::set_terrain(const map_location& loc, const terrain_code & terrain, const terrain_type_data::merge_mode mode, bool)
 {
 	terrain_code old = get_terrain(loc);
 	terrain_code t = terrain;
 	simplemerge(old, t, mode);
 	tiles().get(loc.x + border_size(), loc.y + border_size()) = t;
+	return {t}; // We don't track village changes here
 }
 
 struct lua_map_ref {

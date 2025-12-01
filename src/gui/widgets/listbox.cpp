@@ -267,7 +267,8 @@ grid* listbox::get_row_grid(const unsigned row)
 bool listbox::select_row(const unsigned row, const bool select)
 {
 	if(row >= get_item_count()) {
-		throw std::invalid_argument("invalid listbox index");
+		throw std::invalid_argument("accessing invalid index " + std::to_string(row)
+			+ " >= max " + std::to_string(get_item_count()) + " for listbox ‘" + id() + "’");
 	}
 
 	unsigned int before = generator_->get_selected_item_count();

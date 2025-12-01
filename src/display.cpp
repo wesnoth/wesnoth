@@ -668,8 +668,9 @@ bool display::fogged(const map_location& loc) const
 point display::get_location(const map_location& loc) const
 {
 	return {
-		static_cast<int>(map_area().x + (loc.x + theme_.border().size) * hex_width() - viewport_origin_.x),
-		static_cast<int>(map_area().y + (loc.y + theme_.border().size) * zoom_ - viewport_origin_.y + (is_odd(loc.x) ? zoom_/2 : 0))
+		// Round hex multiplication to ensure consistent spacing at fractional zoom levels.
+		map_area().x - viewport_origin_.x + static_cast<int>(std::round((loc.x + theme_.border().size) * hex_width())),
+		map_area().y - viewport_origin_.y + static_cast<int>(std::round((loc.y + theme_.border().size) * zoom_ + (is_odd(loc.x) ? zoom_ / 2.0 : 0)))
 	};
 }
 

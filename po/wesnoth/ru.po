@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-10-20 20:10-0500\n"
+"POT-Creation-Date: 2025-11-17 20:02-0600\n"
 "PO-Revision-Date: 2024-04-13 23:08+0300\n"
 "Last-Translator: Artem Khrapov <artemkhrapov2001@yandex.ru>\n"
 "Language-Team: https://wiki.wesnoth.org/RussianTranslation\n"
@@ -271,11 +271,107 @@ msgstr ""
 msgid "Display a visual indicator above a defender when an attack misses."
 msgstr ""
 
+#. [message]: speaker=$unit.id|
+#. [message]: speaker=narrator
+#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:22
+#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:45
+#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:46
+msgid "Potion grants steadfast ability and 20% resistance to impact."
+msgstr ""
+
+#. [option]
+#. [button]: id=ok
+#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:24
+#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:100
+#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:171
+#: data/gui/themes/default/dialogs/install_dependencies.cfg:84
+msgid "Yes"
+msgstr "Да"
+
+#. [object]: id={ID}
+#. [item]: id=potion-blue
+#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:28
+#: data/core/editor/items.cfg:546
+msgid "Blue Potion"
+msgstr "Синее зелье"
+
+#. [object]: id={ID}
+#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:30
+msgid "A potion of unknown origin."
+msgstr ""
+
+#. [option]
+#. [button]: id=cancel
+#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:69
+#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:140
+#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:212
+#: data/gui/themes/default/dialogs/install_dependencies.cfg:95
+msgid "No"
+msgstr "Нет"
+
+#. [message]: speaker=$unit.id|
+#. [message]: speaker=narrator
+#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:98
+#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:121
+msgid "This magical branch grants +2 damage to melee attacks."
+msgstr ""
+
+#. [object]: id={ID}
+#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:104
+#, fuzzy
+#| msgid "Bare Branch"
+msgid "Wose Branch"
+msgstr "Голая ветка"
+
+#. [object]: id={ID}
+#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:106
+msgid "The magical branch of some great Wose."
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:169
+msgid "This unit will gain the stun weapon special on melee attacks."
+msgstr ""
+
+#. [object]: id={ID}
+#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:175
+#, fuzzy
+#| msgid "Legends of the North"
+msgid "Echoes of the Earth"
+msgstr "Легенды Севера"
+
+#. [object]: id={ID}
+#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:177
+msgid "Powerful echoes from the bowels of the earth."
+msgstr ""
+
+#. [message]: speaker=$unit.id|
+#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:189
+msgid "The unit gains the stun weapon special on melee attacks."
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:207
+msgid ""
+"After $unit.name| absorbed the stone’s power, the monolith lost its magical "
+"properties."
+msgstr ""
+
+#. [chance_to_hit]: id=unerring
+#: data/campaigns/Dusk_of_Dawn/utils/weapon_specials.cfg:4
+msgid "unerring"
+msgstr ""
+
+#. [chance_to_hit]: id=unerring
+#: data/campaigns/Dusk_of_Dawn/utils/weapon_specials.cfg:5
+msgid "This attack never misses."
+msgstr ""
+
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
 #. [lua]: set_status
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:369
-#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:1057
+#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:955
 msgid "poisoned"
 msgstr "отравлен"
 
@@ -1024,11 +1120,6 @@ msgstr "Орочий флаг"
 msgid "Ornate"
 msgstr "Кувшин"
 
-#. [item]: id=potion-blue
-#: data/core/editor/items.cfg:546
-msgid "Blue Potion"
-msgstr "Синее зелье"
-
 #. [item]: id=potion-green
 #: data/core/editor/items.cfg:553
 msgid "Green Potion"
@@ -1762,19 +1853,19 @@ msgid ""
 msgstr ""
 
 #. [damage]: id=absorb
-#: data/core/macros/deprecated-utils.cfg:416
+#: data/core/macros/deprecated-utils.cfg:415
 msgid "absorb"
 msgstr ""
 
 #. [damage]: id=absorb
-#: data/core/macros/deprecated-utils.cfg:417
+#: data/core/macros/deprecated-utils.cfg:416
 msgid ""
 "This attack puts the unit in good defensive position, and it absorbs some of "
 "the damage dealt by an enemy strike."
 msgstr ""
 
 #. [damage]: id=absorb
-#: data/core/macros/deprecated-utils.cfg:418
+#: data/core/macros/deprecated-utils.cfg:417
 msgid ""
 "This unit can block enemy strikes, so that it takes reduced damage when hit."
 msgstr ""
@@ -4410,16 +4501,6 @@ msgstr "Альтернативный сервер Веснота"
 msgid "Install Dependencies"
 msgstr "Установить зависимости"
 
-#. [button]: id=ok
-#: data/gui/themes/default/dialogs/install_dependencies.cfg:84
-msgid "Yes"
-msgstr "Да"
-
-#. [button]: id=cancel
-#: data/gui/themes/default/dialogs/install_dependencies.cfg:95
-msgid "No"
-msgstr "Нет"
-
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
 #: data/gui/themes/default/dialogs/screenshot_notification.cfg:95
@@ -4715,31 +4796,31 @@ msgstr "Недопустимый уровень устаревания (долж
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:1057
+#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:955
 msgid "female^poisoned"
 msgstr "отравлена"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1064
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:962
 msgid "female^slowed"
 msgstr "замедлена"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1064
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:962
 msgid "slowed"
 msgstr "замедлен"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1070
+#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:968
 msgid "female^petrified"
 msgstr "окаменела"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1070
+#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:968
 msgid "petrified"
 msgstr "окаменел"
 
@@ -5947,11 +6028,11 @@ msgstr ""
 msgid "waiting for^an advancement choice"
 msgstr "выбор продвижения"
 
-#: src/actions/attack.cpp:579 src/actions/attack.cpp:1382
+#: src/actions/attack.cpp:477 src/actions/attack.cpp:1280
 msgid "An invalid attacker weapon got selected."
 msgstr "Выбрано неправильное оружие атакующего."
 
-#: src/actions/attack.cpp:1077
+#: src/actions/attack.cpp:975
 #, fuzzy
 #| msgid "Attacks: "
 msgid "attack^miss"
@@ -7080,7 +7161,7 @@ msgid "Reserved"
 msgstr "Занято"
 
 #: src/game_initialization/create_engine.cpp:74
-#: src/game_initialization/create_engine.cpp:683
+#: src/game_initialization/create_engine.cpp:684
 msgid "Map could not be loaded: "
 msgstr "Карта не может быть загружена: "
 
@@ -7201,7 +7282,7 @@ msgid "mp_game_available_slots^Full"
 msgstr "Все слоты заполнены"
 
 #: src/game_initialization/lobby_data.cpp:369
-#: src/game_initialization/lobby_data.cpp:371 src/savegame.cpp:585
+#: src/game_initialization/lobby_data.cpp:371 src/savegame.cpp:564
 msgid "Turn"
 msgstr "Ход"
 
@@ -7427,7 +7508,7 @@ msgid "No campaigns are available."
 msgstr "Нет доступных кампаний."
 
 #: src/game_launcher.cpp:686 src/game_launcher.cpp:705
-#: src/hotkey/hotkey_handler_sp.cpp:324 src/replay.cpp:664 src/savegame.cpp:187
+#: src/hotkey/hotkey_handler_sp.cpp:324 src/replay.cpp:664 src/savegame.cpp:167
 msgid "The file you have tried to load is corrupt"
 msgstr "Файл, который Вы пытались загрузить, поврежден"
 
@@ -7604,81 +7685,81 @@ msgstr "нет"
 msgid "yes"
 msgstr "да"
 
-#: src/help/help_impl.cpp:386
+#: src/help/help_impl.cpp:301
 msgid "Only available during a scenario."
 msgstr "Доступно только в сценарии."
 
-#: src/help/help_impl.cpp:387 src/help/help_impl.cpp:426
+#: src/help/help_impl.cpp:302 src/help/help_impl.cpp:341
 msgid "Time of Day Schedule"
 msgstr "Распорядок времени суток"
 
-#: src/help/help_impl.cpp:417
+#: src/help/help_impl.cpp:332
 msgid "Lawful Bonus:"
 msgstr "Преимущество Порядочных:"
 
-#: src/help/help_impl.cpp:418
+#: src/help/help_impl.cpp:333
 msgid "Neutral Bonus:"
 msgstr "Преимущество Нейтральных:"
 
-#: src/help/help_impl.cpp:419
+#: src/help/help_impl.cpp:334
 msgid "Chaotic Bonus:"
 msgstr "Преимущество Хаотичных:"
 
-#: src/help/help_impl.cpp:420
+#: src/help/help_impl.cpp:335
 msgid "Liminal Bonus:"
 msgstr "Преимущество Теневых:"
 
-#: src/help/help_impl.cpp:421
+#: src/help/help_impl.cpp:336
 msgid "Schedule"
 msgstr "Расписание"
 
-#: src/help/help_impl.cpp:507
+#: src/help/help_impl.cpp:422
 #, fuzzy
 #| msgid "<header>text='Units with this special attack'</header>"
 msgid "Units with this special attack"
 msgstr "<header>text='Бойцы с этой особой атакой'</header>"
 
-#: src/help/help_impl.cpp:568
+#: src/help/help_impl.cpp:483
 #, fuzzy
 #| msgid "<header>text='Units with this ability'</header>"
 msgid "Units with this ability"
 msgstr "<header>text='Бойцы с этой способностью'</header>"
 
-#: src/help/help_impl.cpp:604
+#: src/help/help_impl.cpp:519
 msgid "Factions"
 msgstr "Фракции"
 
-#: src/help/help_impl.cpp:652
+#: src/help/help_impl.cpp:565
 msgid "Races: "
 msgstr "Расы: "
 
-#: src/help/help_impl.cpp:661 src/help/help_impl.cpp:1109
+#: src/help/help_impl.cpp:574 src/help/help_impl.cpp:1021
 msgid "Alignments: "
 msgstr "Тип: "
 
-#: src/help/help_impl.cpp:668
+#: src/help/help_impl.cpp:581
 msgid "Leaders"
 msgstr "Лидеры"
 
-#: src/help/help_impl.cpp:677
+#: src/help/help_impl.cpp:590
 msgid "Recruits"
 msgstr "Завербовано"
 
-#: src/help/help_impl.cpp:762 src/units/types.cpp:444
+#: src/help/help_impl.cpp:675 src/units/types.cpp:449
 msgid "No description available."
 msgstr "Описание недоступно."
 
-#: src/help/help_impl.cpp:872 src/help/help_impl.cpp:1086
+#: src/help/help_impl.cpp:784 src/help/help_impl.cpp:998
 msgid "race^Miscellaneous"
 msgstr "Разное"
 
-#: src/help/help_impl.cpp:1109
+#: src/help/help_impl.cpp:1021
 msgid "Alignment: "
 msgstr "Тип: "
 
 #. TRANSLATORS: this is expected to say "[Dunefolk are] a group of units, all of whom are Humans",
 #. or "[Quenoth Elves are] a group of units, all of whom are Elves".
-#: src/help/help_impl.cpp:1128
+#: src/help/help_impl.cpp:1040
 #, fuzzy
 #| msgid ""
 #| "This is a group of units, all of whom are <ref>dst='$topic_id' "
@@ -7690,25 +7771,25 @@ msgstr ""
 "Это — группа бойцов, все из которых — <ref>dst='$topic_id' "
 "text='$help_taxonomy'</ref>."
 
-#: src/help/help_impl.cpp:1133
+#: src/help/help_impl.cpp:1045
 #, fuzzy
 #| msgid "<header>text='Subgroups of units within this group'</header>"
 msgid "Subgroups of units within this group"
 msgstr "<header>text='Подгруппы бойцов внутри этой группы'</header>"
 
-#: src/help/help_impl.cpp:1135
+#: src/help/help_impl.cpp:1047
 #, fuzzy
 #| msgid "<header>text='Groups of units within this race'</header>"
 msgid "Groups of units within this race"
 msgstr "<header>text='Группы бойцов среди этой расы'</header>"
 
-#: src/help/help_impl.cpp:1144
+#: src/help/help_impl.cpp:1056
 #, fuzzy
 #| msgid "<header>text='Units of this group'</header>"
 msgid "Units of this group"
 msgstr "<header>text='Бойцы этой группы'</header>"
 
-#: src/help/help_impl.cpp:1146
+#: src/help/help_impl.cpp:1058
 #, fuzzy
 #| msgid "<header>text='Units of this race'</header>"
 msgid "Units of this race"
@@ -9137,11 +9218,11 @@ msgstr "Хаотичные бойцы: "
 msgid "Liminal units:"
 msgstr "Теневые бойцы: "
 
-#: src/reports.cpp:1488
+#: src/reports.cpp:1485
 msgid "Turn Number"
 msgstr "Номер хода"
 
-#: src/reports.cpp:1492
+#: src/reports.cpp:1489
 msgid ""
 "When the game exceeds the number of turns indicated by the second number, it "
 "will end."
@@ -9149,34 +9230,34 @@ msgstr ""
 "Когда количество ходов превысит значение, указанное вторым числом, игра "
 "закончится."
 
-#: src/reports.cpp:1515
+#: src/reports.cpp:1512
 msgid "Gold"
 msgstr "Золото"
 
-#: src/reports.cpp:1515
+#: src/reports.cpp:1512
 msgid ""
 "The amount of gold currently available to recruit and maintain your army."
 msgstr ""
 "Количество золота в настоящее время доступное для найма и содержания вашей "
 "армии."
 
-#: src/reports.cpp:1533
+#: src/reports.cpp:1530
 msgid "The fraction of known villages that your side has captured."
 msgstr "Доля от известных деревень, захваченных вашей стороной."
 
-#: src/reports.cpp:1533
+#: src/reports.cpp:1530
 msgid "Villages"
 msgstr "Деревни"
 
-#: src/reports.cpp:1538
+#: src/reports.cpp:1535
 msgid "The total number of units on your side."
 msgstr "Общее количество бойцов на вашей стороне."
 
-#: src/reports.cpp:1538
+#: src/reports.cpp:1535
 msgid "Units"
 msgstr "Бойцы"
 
-#: src/reports.cpp:1547
+#: src/reports.cpp:1544
 msgid ""
 "The expenses incurred at the end of every turn to maintain your army. The "
 "first number is the amount of gold that will be deducted. It is equal to the "
@@ -9190,15 +9271,15 @@ msgstr ""
 "содержания, в том числе покрытая деревнями — иными словами, количество "
 "золота, которое будет вычтено, если вы потеряете все деревни."
 
-#: src/reports.cpp:1547
+#: src/reports.cpp:1544
 msgid "Upkeep"
 msgstr "Содержание"
 
-#: src/reports.cpp:1577
+#: src/reports.cpp:1574
 msgid "Net Income"
 msgstr "Прибыль"
 
-#: src/reports.cpp:1577
+#: src/reports.cpp:1574
 msgid ""
 "The net amount of gold you gain or lose each turn, taking into account "
 "income from controlled villages and payment of upkeep."
@@ -9207,23 +9288,23 @@ msgstr ""
 "принимая в расчёт доход от деревень под вашей властью и выплаты на "
 "содержание армии."
 
-#: src/reports.cpp:1778
+#: src/reports.cpp:1774
 msgid "Observers:"
 msgstr "Наблюдатели: "
 
-#: src/reports.cpp:1795
+#: src/reports.cpp:1791
 msgid "Clock"
 msgstr "Часы"
 
-#: src/reports.cpp:1806
+#: src/reports.cpp:1802
 msgid "Battery"
 msgstr "Батарея"
 
-#: src/reports.cpp:1850
+#: src/reports.cpp:1846
 msgid "Countdown until your turn automatically ends."
 msgstr "Обратный отсчет до момента пока ваш ход автоматически не закончится."
 
-#: src/reports.cpp:1850
+#: src/reports.cpp:1846
 msgid "Turn Countdown"
 msgstr "Обратный отсчет"
 
@@ -9240,16 +9321,16 @@ msgid "%a %b %d %Y, %H:%M"
 msgstr "%a %b %d %H:%M %Y"
 
 #. TRANSLATORS: This string is used as part of a filename, as in, "HttT-The Elves Besieged replay.gz"
-#: src/save_index.cpp:265 src/savegame.cpp:511
+#: src/save_index.cpp:265 src/savegame.cpp:490
 msgid "replay"
 msgstr "повтор"
 
-#: src/save_index.cpp:343 src/savegame.cpp:66 src/savegame.cpp:547
-#: src/savegame.cpp:549
+#: src/save_index.cpp:343 src/savegame.cpp:66 src/savegame.cpp:526
+#: src/savegame.cpp:528
 msgid "Auto-Save"
 msgstr "Автосохр"
 
-#: src/savegame.cpp:143
+#: src/savegame.cpp:123
 msgid ""
 "This save is from an old, unsupported version ($version_number|) and cannot "
 "be loaded."
@@ -9257,7 +9338,7 @@ msgstr ""
 "Это сохранение из старой, неподдерживаемой версии ($version_number|), и не "
 "может быть загружено."
 
-#: src/savegame.cpp:152
+#: src/savegame.cpp:132
 msgid ""
 "This save is from a different version of the game ($version_number|), and "
 "might not work with this version.\n"
@@ -9289,35 +9370,35 @@ msgstr ""
 "\n"
 "Вы желаете продолжить?"
 
-#: src/savegame.cpp:166 src/savegame.cpp:259
+#: src/savegame.cpp:146 src/savegame.cpp:239
 msgid "Load Game"
 msgstr "Загрузить игру"
 
-#: src/savegame.cpp:259
+#: src/savegame.cpp:239
 msgid "Replays are not supported in multiplayer mode."
 msgstr "Повторы не поддерживаются в многопользовательском режиме."
 
-#: src/savegame.cpp:266
+#: src/savegame.cpp:246
 msgid "This is not a multiplayer save."
 msgstr "Это не мультиплеерное сохранение."
 
-#: src/savegame.cpp:289
+#: src/savegame.cpp:268
 msgid "The game could not be saved: "
 msgstr "Игра не может быть сохранена: "
 
-#: src/savegame.cpp:358
+#: src/savegame.cpp:337
 msgid "Name: "
 msgstr "Название: "
 
-#: src/savegame.cpp:358
+#: src/savegame.cpp:337
 msgid "Save already exists. Do you want to overwrite it?"
 msgstr "Сохранение уже существует. Перезаписать?"
 
-#: src/savegame.cpp:359
+#: src/savegame.cpp:338
 msgid "Overwrite?"
 msgstr "Перезаписать?"
 
-#: src/savegame.cpp:366
+#: src/savegame.cpp:345
 #, fuzzy
 #| msgid ""
 #| "Save names should not end on '.gz' or '.bz2'. Please remove the extension."
@@ -9327,7 +9408,7 @@ msgstr ""
 "Имена сохранений не должны оканчиваться на '.gz' или '.bz2'. Выберите другое "
 "имя."
 
-#: src/savegame.cpp:371
+#: src/savegame.cpp:350
 msgid ""
 "Save names may not end with a dot, or contain two dots or any of the "
 "following characters:\n"
@@ -9337,31 +9418,31 @@ msgstr ""
 "или любой из следующих символов:\n"
 "    \" * / : < > ? \\ | ~"
 
-#: src/savegame.cpp:419
+#: src/savegame.cpp:398
 msgid "Saved"
 msgstr "Сохранено"
 
-#: src/savegame.cpp:419
+#: src/savegame.cpp:398
 msgid "The game has been saved."
 msgstr "Игра успешно сохранена."
 
-#: src/savegame.cpp:451 src/savegame.cpp:468
+#: src/savegame.cpp:430 src/savegame.cpp:447
 msgid "Could not write to file"
 msgstr "Не могу записать в файл"
 
-#: src/savegame.cpp:503
+#: src/savegame.cpp:482
 msgid "Save Replay"
 msgstr "Сохранить повтор"
 
-#: src/savegame.cpp:529
+#: src/savegame.cpp:508
 msgid "Could not auto save the game. Please save the game manually."
 msgstr "Автосохранение игры невозможно. Сохраните игру вручную."
 
-#: src/savegame.cpp:579
+#: src/savegame.cpp:558
 msgid "Save Game"
 msgstr "Сохранить игру"
 
-#: src/savegame.cpp:593
+#: src/savegame.cpp:572
 msgid "Game state is corrupted"
 msgstr "Игра повреждена"
 
@@ -9589,34 +9670,34 @@ msgstr "Время суток-заглушка"
 msgid "This Time of Day is only a Stub!"
 msgstr "Это время суток - всего лишь заглушка!"
 
-#: src/units/abilities.cpp:1052
+#: src/units/abilities.cpp:978
 msgid "Owned: "
 msgstr "Принадлежит: "
 
 #. TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
-#: src/units/abilities.cpp:1056
+#: src/units/abilities.cpp:982
 msgid "Taught: "
 msgstr "Наставляемый: "
 
 #. TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
-#: src/units/abilities.cpp:1060
+#: src/units/abilities.cpp:986
 msgid "Taught: (by an enemy): "
 msgstr "Наставляемый: (врагом): "
 
-#: src/units/abilities.cpp:1073
+#: src/units/abilities.cpp:999
 msgid "Used by opponent: "
 msgstr "Оппонент использует: "
 
-#: src/units/attack_type.cpp:110
+#: src/units/attack_type.cpp:222
 msgid "Accuracy:"
 msgstr "Точность:"
 
-#: src/units/attack_type.cpp:113
+#: src/units/attack_type.cpp:225
 msgid "Parry:"
 msgstr "Парирование:"
 
 #. TRANSLATORS: Current value for WML code set_min_range, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:485
+#: src/units/attack_type.cpp:597
 #, fuzzy
 #| msgid "$number damage"
 #| msgid_plural "$number damage"
@@ -9624,7 +9705,7 @@ msgid "$number min range"
 msgstr "повреждение: $number"
 
 #. TRANSLATORS: Current value for WML code increase_min_range, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:492
+#: src/units/attack_type.cpp:604
 #, fuzzy
 #| msgid "<span color=\"$color\">$number_or_percent</span> damage"
 #| msgid_plural "<span color=\"$color\">$number_or_percent</span> damage"
@@ -9632,7 +9713,7 @@ msgid "<span color=\"$color\">$number_or_percent</span> min range"
 msgstr "<span color=\"$color\">$number_or_percent</span> повреждения"
 
 #. TRANSLATORS: Current value for WML code set_max_range, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:499
+#: src/units/attack_type.cpp:611
 #, fuzzy
 #| msgid "$number damage"
 #| msgid_plural "$number damage"
@@ -9640,7 +9721,7 @@ msgid "$number max range"
 msgstr "повреждение: $number"
 
 #. TRANSLATORS: Current value for WML code increase_max_range, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:506
+#: src/units/attack_type.cpp:618
 #, fuzzy
 #| msgid "<span color=\"$color\">$number_or_percent</span> damage"
 #| msgid_plural "<span color=\"$color\">$number_or_percent</span> damage"
@@ -9648,14 +9729,14 @@ msgid "<span color=\"$color\">$number_or_percent</span> max range"
 msgstr "<span color=\"$color\">$number_or_percent</span> повреждения"
 
 #. TRANSLATORS: Current value for WML code increase_damage, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:513
+#: src/units/attack_type.cpp:625
 msgid "<span color=\"$color\">$number_or_percent</span> damage"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> damage"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> повреждения"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> повреждения"
 msgstr[2] "<span color=\"$color\">$number_or_percent</span> повреждения"
 
-#: src/units/attack_type.cpp:522
+#: src/units/attack_type.cpp:634
 msgid "$number damage"
 msgid_plural "$number damage"
 msgstr[0] "повреждение: $number"
@@ -9663,7 +9744,7 @@ msgstr[1] "повреждение: $number"
 msgstr[2] "повреждение: $number"
 
 #. TRANSLATORS: Current value for WML code increase_attacks, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:531
+#: src/units/attack_type.cpp:643
 msgid "<span color=\"$color\">$number_or_percent</span> strike"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> strikes"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> удар"
@@ -9671,7 +9752,7 @@ msgstr[1] "<span color=\"$color\">$number_or_percent</span> удара"
 msgstr[2] "<span color=\"$color\">$number_or_percent</span> ударов"
 
 #. TRANSLATORS: Current value for WML code set_attacks, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:540
+#: src/units/attack_type.cpp:652
 msgid "$number strike"
 msgid_plural "$number strikes"
 msgstr[0] "$number удар"
@@ -9679,27 +9760,27 @@ msgstr[1] "$number удара"
 msgstr[2] "$number ударов"
 
 #. TRANSLATORS: Current value for WML code set_accuracy, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:549
+#: src/units/attack_type.cpp:661
 msgid "$number| accuracy"
 msgstr "$number| точных ударов"
 
 #. TRANSLATORS: Current value for WML code increase_accuracy, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:556
+#: src/units/attack_type.cpp:668
 msgid "<span color=\"$color\">$number_or_percent|%</span> accuracy"
 msgstr "<span color=\"$color\">$number_or_percent|%</span> точность"
 
 #. TRANSLATORS: Current value for WML code set_parry, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:563
+#: src/units/attack_type.cpp:675
 msgid "$number parry"
 msgstr "$number отражений ударов"
 
 #. TRANSLATORS: Current value for WML code increase_parry, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:570
+#: src/units/attack_type.cpp:682
 msgid "<span color=\"$color\">$number_or_percent</span> parry"
 msgstr "<span color=\"$color\">$number_or_percent</span> отражений ударов"
 
 #. TRANSLATORS: Current value for WML code set_movement_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:577
+#: src/units/attack_type.cpp:689
 msgid "$number movement point"
 msgid_plural "$number movement points"
 msgstr[0] "$number очко движения"
@@ -9707,7 +9788,7 @@ msgstr[1] "$number очка движения"
 msgstr[2] "$number очков движения"
 
 #. TRANSLATORS: Current value for WML code increase_movement_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:586
+#: src/units/attack_type.cpp:698
 msgid "<span color=\"$color\">$number_or_percent</span> movement point"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> movement points"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> очко движения"
@@ -9715,7 +9796,7 @@ msgstr[1] "<span color=\"$color\">$number_or_percent</span> очка движе�
 msgstr[2] "<span color=\"$color\">$number_or_percent</span> очков движения"
 
 #. TRANSLATORS: Current value for WML code set_attacks_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:595
+#: src/units/attack_type.cpp:707
 msgid "$number attack used"
 msgid_plural "$number attacks used"
 msgstr[0] "$number атака потрачена"
@@ -9723,7 +9804,7 @@ msgstr[1] "$number атаки потрачено"
 msgstr[2] "$number атак потрачено"
 
 #. TRANSLATORS: Current value for WML code increase_attacks_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:604
+#: src/units/attack_type.cpp:716
 msgid "<span color=\"$color\">$number_or_percent</span> attack used"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> attacks used"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> атака потрачена"
@@ -9761,78 +9842,78 @@ msgstr "У Вас недостаточно золота, чтобы заверб
 msgid "The $unit_type is not available to recruit."
 msgstr "Нет бойцов для вербовки."
 
-#: src/units/types.cpp:802 src/units/types.cpp:810
+#: src/units/types.cpp:804 src/units/types.cpp:812
 msgid "female^lawful"
 msgstr "порядочная"
 
-#: src/units/types.cpp:804
+#: src/units/types.cpp:806
 msgid "female^neutral"
 msgstr "нейтральная"
 
-#: src/units/types.cpp:806
+#: src/units/types.cpp:808
 msgid "female^chaotic"
 msgstr "хаотичная"
 
-#: src/units/types.cpp:808
+#: src/units/types.cpp:810
 msgid "female^liminal"
 msgstr "теневая"
 
-#: src/units/types.cpp:816 src/units/types.cpp:824
+#: src/units/types.cpp:818 src/units/types.cpp:826
 msgid "lawful"
 msgstr "порядочный"
 
-#: src/units/types.cpp:818
+#: src/units/types.cpp:820
 msgid "neutral"
 msgstr "нейтральный"
 
-#: src/units/types.cpp:820
+#: src/units/types.cpp:822
 msgid "chaotic"
 msgstr "хаотичный"
 
-#: src/units/types.cpp:822
+#: src/units/types.cpp:824
 msgid "liminal"
 msgstr "теневой"
 
-#: src/units/unit.cpp:361
+#: src/units/unit.cpp:364
 #, fuzzy
 #| msgid "This unit has no usable weapons."
 msgid "This unit cannot be dismissed."
 msgstr "Этот боец нет имеет оружия."
 
-#: src/units/unit.cpp:749
+#: src/units/unit.cpp:752
 #, fuzzy
 #| msgid "This unit is invulnerable. It cannot be harmed by any attack."
 msgid "This unit is a leader and cannot be dismissed."
 msgstr "Боец неуязвим. Никакая атака не может нанести ему урон."
 
-#: src/units/unit.cpp:2007
+#: src/units/unit.cpp:2009
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/units/unit.cpp:2013
+#: src/units/unit.cpp:2015
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "<span color=\"$color\">$number_or_percent</span> ЗД"
 
-#: src/units/unit.cpp:2023
+#: src/units/unit.cpp:2025
 msgid "<span color=\"$color\">$number_or_percent</span> move"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> ход"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> хода"
 msgstr[2] "<span color=\"$color\">$number_or_percent</span> ходов"
 
-#: src/units/unit.cpp:2029
+#: src/units/unit.cpp:2031
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "<span color=\"$color\">$number_or_percent</span> обзор"
 
-#: src/units/unit.cpp:2033
+#: src/units/unit.cpp:2035
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "<span color=\"$color\">$number_or_percent</span> помех обзора"
 
-#: src/units/unit.cpp:2038
+#: src/units/unit.cpp:2040
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "<span color=\"$color\">$number_or_percent</span> ОП для продвижения"
 
-#: src/units/unit.cpp:2042
+#: src/units/unit.cpp:2044
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
 msgid_plural ""
 "<span color=\"$color\">$number_or_percent</span> attacks per turn"
@@ -9840,11 +9921,11 @@ msgstr[0] "<span color=\"$color\">$number_or_percent</span> атака за хо
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> атаки за ход"
 msgstr[2] "<span color=\"$color\">$number_or_percent</span> атак за ход"
 
-#: src/units/unit.cpp:2049
+#: src/units/unit.cpp:2051
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "<span color=\"$color\">$number_or_percent</span> стоимость призыва"
 
-#: src/units/unit.cpp:2534
+#: src/units/unit.cpp:2557
 msgid "$effect_description per level"
 msgstr "$effect_description за уровень"
 

@@ -237,11 +237,11 @@ private:
 	t_translation::ter_list def_type_;
 	t_translation::ter_list union_type_;
 
-	int height_adjust_;
-	bool height_adjust_set_;
-
 	double submerge_;
+	int height_adjust_;
+
 	bool submerge_set_;
+	bool height_adjust_set_;
 
 	int light_modification_;
 	int max_light_;
@@ -254,10 +254,14 @@ private:
 	t_string income_description_own_;
 
 	std::string editor_group_;
-
-	bool village_, castle_, keep_;
-
-	bool overlay_, combined_;
 	t_translation::terrain_code editor_default_base_;
-	bool hide_help_, hide_in_editor_, hide_if_impassable_;
+
+	bool village_;
+	bool castle_;
+	bool keep_;
+	bool overlay_;
+	bool combined_;
+	bool hide_help_;
+	bool hide_in_editor_;
+	bool hide_if_impassable_;
 };

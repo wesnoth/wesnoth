@@ -1894,12 +1894,16 @@ void prefs::encounter_recallable_units(const std::vector<team>& teams)
 void prefs::encounter_map_terrain(const gamemap& map)
 {
 	map.for_each_loc([&](const map_location& loc) {
-		const t_translation::terrain_code terrain = map.get_terrain(loc);
-		encountered_terrains().insert(terrain);
-		for(t_translation::terrain_code t : map.underlying_union_terrain(loc)) {
-			encountered_terrains().insert(t);
-		}
+		encounter_map_terrain(map.get_terrain_info(loc));
 	});
+}
+
+void prefs::encounter_map_terrain(const terrain_type& terrain)
+{
+	encountered_terrains().insert(terrain.number());
+	for(const t_translation::terrain_code& t : terrain.union_type()) {
+		encountered_terrains().insert(t);
+	}
 }
 
 void prefs::encounter_all_content(const game_board& gameboard_)

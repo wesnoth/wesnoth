@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-09-21 23:01-0500\n"
+"POT-Creation-Date: 2025-11-17 20:02-0600\n"
 "PO-Revision-Date: 2022-07-14 16:49+0800\n"
 "Last-Translator: 李信融 <magiclen0810@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
@@ -4077,7 +4077,7 @@ msgstr "移動點數消耗："
 #. [tab]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:524
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:1206
-#: src/gui/widgets/unit_preview_pane.cpp:218
+#: src/gui/widgets/unit_preview_pane.cpp:216
 msgid "Attacks"
 msgstr "攻擊次數："
 
@@ -4151,7 +4151,7 @@ msgstr ""
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=movement_costs_label
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:908
-#: src/gui/widgets/unit_preview_pane.cpp:151
+#: src/gui/widgets/unit_preview_pane.cpp:150
 msgid "Movement Costs:"
 msgstr "移動點數消耗："
 
@@ -6969,8 +6969,8 @@ msgstr "狀態"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=unit_traits
 #: data/gui/themes/default/dialogs/units_dialog.cfg:147
-#: src/gui/widgets/unit_preview_pane.cpp:398
-#: src/gui/widgets/unit_preview_pane.cpp:533
+#: src/gui/widgets/unit_preview_pane.cpp:396
+#: src/gui/widgets/unit_preview_pane.cpp:531
 msgid "Traits"
 msgstr "特質"
 
@@ -8419,7 +8419,7 @@ msgid "All Scenarios"
 msgstr "所有章節"
 
 #: src/gui/dialogs/statistics_dialog.cpp:174
-#: src/gui/dialogs/statistics_dialog.cpp:334
+#: src/gui/dialogs/statistics_dialog.cpp:309
 msgid "This Turn"
 msgstr "此回合"
 
@@ -8431,7 +8431,7 @@ msgstr "實際的命中率（擊中機率）："
 msgid "(no attacks have taken place yet)"
 msgstr "（尚未有攻擊發生）"
 
-#: src/gui/dialogs/statistics_dialog.cpp:321
+#: src/gui/dialogs/statistics_dialog.cpp:296
 msgid ""
 "stats dialog^Difference of actual outcome to expected outcome, as a "
 "percentage.\n"
@@ -8445,39 +8445,39 @@ msgstr ""
 "括號中第一個數值是預計的擊中次數。將第一個數值和第二個數值相加或相減，就是實"
 "際的擊中次數。"
 
-#: src/gui/dialogs/statistics_dialog.cpp:365
+#: src/gui/dialogs/statistics_dialog.cpp:340
 #, fuzzy
 #| msgid "Recruits"
 msgid "stats^Recruits"
 msgstr "招募"
 
-#: src/gui/dialogs/statistics_dialog.cpp:366
+#: src/gui/dialogs/statistics_dialog.cpp:341
 msgid "Recalls"
 msgstr "招回"
 
-#: src/gui/dialogs/statistics_dialog.cpp:367
+#: src/gui/dialogs/statistics_dialog.cpp:342
 msgid "Advancements"
 msgstr "升級"
 
-#: src/gui/dialogs/statistics_dialog.cpp:368
+#: src/gui/dialogs/statistics_dialog.cpp:343
 msgid "Losses"
 msgstr "死亡"
 
-#: src/gui/dialogs/statistics_dialog.cpp:369
+#: src/gui/dialogs/statistics_dialog.cpp:344
 msgid "Kills"
 msgstr "擊殺"
 
-#: src/gui/dialogs/statistics_dialog.cpp:391
-#: src/gui/dialogs/statistics_dialog.cpp:398
+#: src/gui/dialogs/statistics_dialog.cpp:366
+#: src/gui/dialogs/statistics_dialog.cpp:373
 msgid "Inflicted"
 msgstr "對敵方"
 
-#: src/gui/dialogs/statistics_dialog.cpp:404
-#: src/gui/dialogs/statistics_dialog.cpp:411
+#: src/gui/dialogs/statistics_dialog.cpp:379
+#: src/gui/dialogs/statistics_dialog.cpp:386
 msgid "Taken"
 msgstr "對我方"
 
-#: src/gui/dialogs/statistics_dialog.cpp:452
+#: src/gui/dialogs/statistics_dialog.cpp:427
 msgid "$count|× $name"
 msgstr "$count|× $name"
 
@@ -8485,11 +8485,11 @@ msgstr "$count|× $name"
 msgid "Screenshot"
 msgstr "螢幕截圖"
 
-#: src/gui/dialogs/title_screen.cpp:399
+#: src/gui/dialogs/title_screen.cpp:396
 msgid "Version $version"
 msgstr "版本 $version"
 
-#: src/gui/dialogs/title_screen.cpp:489 src/hotkey/hotkey_command.cpp:311
+#: src/gui/dialogs/title_screen.cpp:486 src/hotkey/hotkey_command.cpp:311
 #, fuzzy
 #| msgid "Choose Starting Scenario"
 msgid "Choose Test Scenario"
@@ -8720,62 +8720,62 @@ msgstr "[節點]ID「root」是保留給遊戲專用的。"
 msgid "Unknown builder id for tree view node."
 msgstr "樹狀節點有未知建立者ID。"
 
-#: src/gui/widgets/unit_preview_pane.cpp:135
+#: src/gui/widgets/unit_preview_pane.cpp:134
 msgid "Resistances: "
 msgstr "抗性： "
 
-#: src/gui/widgets/unit_preview_pane.cpp:137
+#: src/gui/widgets/unit_preview_pane.cpp:136
 msgid "(Att / Def)"
 msgstr "（攻擊/防禦）"
 
-#: src/gui/widgets/unit_preview_pane.cpp:222
+#: src/gui/widgets/unit_preview_pane.cpp:220
 msgid "Remaining: $left/$max"
 msgstr ""
 
-#: src/gui/widgets/unit_preview_pane.cpp:225
+#: src/gui/widgets/unit_preview_pane.cpp:223
 msgid "This unit can attack multiple times per turn."
 msgstr ""
 
-#: src/gui/widgets/unit_preview_pane.cpp:277
+#: src/gui/widgets/unit_preview_pane.cpp:275
 msgid "uses $num attack"
 msgid_plural "uses $num attacks"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/gui/widgets/unit_preview_pane.cpp:320
-#: src/gui/widgets/unit_preview_pane.cpp:351
-#: src/gui/widgets/unit_preview_pane.cpp:460
-#: src/gui/widgets/unit_preview_pane.cpp:492
+#: src/gui/widgets/unit_preview_pane.cpp:318
+#: src/gui/widgets/unit_preview_pane.cpp:349
+#: src/gui/widgets/unit_preview_pane.cpp:458
+#: src/gui/widgets/unit_preview_pane.cpp:490
 msgid "Lvl $lvl"
 msgstr "Lv $lvl"
 
-#: src/gui/widgets/unit_preview_pane.cpp:358
-#: src/gui/widgets/unit_preview_pane.cpp:371
-#: src/gui/widgets/unit_preview_pane.cpp:499
-#: src/gui/widgets/unit_preview_pane.cpp:516
+#: src/gui/widgets/unit_preview_pane.cpp:356
+#: src/gui/widgets/unit_preview_pane.cpp:369
+#: src/gui/widgets/unit_preview_pane.cpp:497
+#: src/gui/widgets/unit_preview_pane.cpp:514
 msgid "HP: "
 msgstr "生命值："
 
-#: src/gui/widgets/unit_preview_pane.cpp:360
-#: src/gui/widgets/unit_preview_pane.cpp:376
+#: src/gui/widgets/unit_preview_pane.cpp:358
+#: src/gui/widgets/unit_preview_pane.cpp:374
+#: src/gui/widgets/unit_preview_pane.cpp:500
 #: src/gui/widgets/unit_preview_pane.cpp:502
-#: src/gui/widgets/unit_preview_pane.cpp:504
-#: src/gui/widgets/unit_preview_pane.cpp:521
+#: src/gui/widgets/unit_preview_pane.cpp:519
 msgid "XP: "
 msgstr "經驗值："
 
-#: src/gui/widgets/unit_preview_pane.cpp:378
-#: src/gui/widgets/unit_preview_pane.cpp:523
+#: src/gui/widgets/unit_preview_pane.cpp:376
+#: src/gui/widgets/unit_preview_pane.cpp:521
 msgid "Experience Modifier: "
 msgstr "經驗修正："
 
-#: src/gui/widgets/unit_preview_pane.cpp:381
-#: src/gui/widgets/unit_preview_pane.cpp:526
+#: src/gui/widgets/unit_preview_pane.cpp:379
+#: src/gui/widgets/unit_preview_pane.cpp:524
 msgid "MP: "
 msgstr "移動點數："
 
-#: src/gui/widgets/unit_preview_pane.cpp:408
-#: src/gui/widgets/unit_preview_pane.cpp:547
+#: src/gui/widgets/unit_preview_pane.cpp:406
+#: src/gui/widgets/unit_preview_pane.cpp:545
 msgid "Abilities"
 msgstr "技能"
 

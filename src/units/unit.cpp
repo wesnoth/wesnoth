@@ -1533,7 +1533,7 @@ void unit::remove_ability_by_attribute(const config& filter)
 	set_attr_changed(UA_ABILITIES);
 	auto i = abilities_.begin();
 	while (i != abilities_.end()) {
-		if(ability_matches_filter(**i, filter)) {
+		if((**i).matches_filter(filter)) {
 			i = abilities_.erase(i);
 		} else {
 			++i;
@@ -1803,23 +1803,11 @@ int unit::resistance_value(active_ability_list resistance_list, const std::strin
 	return res;
 }
 
-static bool resistance_filter_matches_base(const config& cfg, bool attacker)
+int unit::resistance_against(const std::string& damage_name, bool attacker, const map_location& loc) const
 {
-	if(!(!cfg.has_attribute("active_on") || (attacker && cfg["active_on"] == "offense") || (!attacker && cfg["active_on"] == "defense"))) {
-		return false;
-	}
-
-	return true;
-}
-
-int unit::resistance_against(const std::string& damage_name, bool attacker, const map_location& loc, const_attack_ptr weapon, const const_attack_ptr& opp_weapon) const
-{
-	if(opp_weapon) {
-		return opp_weapon->effective_damage_type().second;
-	}
-	active_ability_list resistance_list = get_abilities_weapons("resistance",loc, std::move(weapon), opp_weapon);
+	active_ability_list resistance_list = get_abilities("resistance", loc);
 	utils::erase_if(resistance_list, [&](const active_ability& i) {
-		return !resistance_filter_matches_base(i.ability_cfg(), attacker);
+		return !i.ability().active_on_matches(attacker);;
 	});
 	return resistance_value(resistance_list, damage_name);
 }
@@ -2093,8 +2081,21 @@ void unit::apply_builtin_effect(const std::string& apply_to, const config& effec
 	} else if(apply_to == "new_attack") {
 		set_attr_changed(UA_ATTACKS);
 		attacks_.emplace_back(new attack_type(effect));
+
+		// extract registry specials and add the corresponding [events]
+		config registry_specials = unit_type_data::add_registry_entries(
+			config{"specials_list", effect["specials_list"]},
+			"specials",
+			unit_types.specials());
+
+		for(const auto [_, special] : registry_specials.all_children_view()) {
+			for(const config& special_event : special.child_range("event")) {
+				events.add_child("event", special_event);
+			}
+		}
+
 		for(const config& specials : effect.child_range("specials")) {
-			for(const auto [key, special] : specials.all_children_view()) {
+			for(const auto [_, special] : specials.all_children_view()) {
 				for(const config& special_event : special.child_range("event")) {
 					events.add_child("event", special_event);
 				}
@@ -2109,8 +2110,11 @@ void unit::apply_builtin_effect(const std::string& apply_to, const config& effec
 			if(a->matches_filter(effect)) {
 				a->apply_effect(effect);
 			}
+
 			for(const config& specials : effect.child_range("set_specials")) {
-				for(const auto [key, special] : specials.all_children_view()) {
+				config full_specials = unit_type_data::add_registry_entries(
+					config{"specials_list", specials["specials_list"]}, "specials", unit_types.specials());
+				for(const auto [_, special] : full_specials.all_children_view()) {
 					for(const config& special_event : special.child_range("event")) {
 						events.add_child("event", special_event);
 					}

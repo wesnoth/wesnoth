@@ -2,7 +2,7 @@ diff --git a/data/schema/core/actionwml.cfg b/data/schema/core/actionwml.cfg
 index 0eff8c99f10..98e94c8cc6c 100644
 --- a/data/schema/core/actionwml.cfg
 +++ b/data/schema/core/actionwml.cfg
-@@ -1445,5 +1445,36 @@
+@@ -1445,5 +1445,42 @@
  			{SIMPLE_KEY y s_unsigned}
  		[/tag]
  	[/tag]
@@ -14,6 +14,13 @@ index 0eff8c99f10..98e94c8cc6c 100644
 +	{DATA_TAG "spread_bandit_villages" 0 infinite any}
 +	{DATA_TAG "bandit_village_capture" 0 infinite any}
 +	# HttT
++	{DATA_TAG "companion_message" 0 infinite any} # also used in TSG
++	{DATA_TAG "multihex_image" 0 infinite any}
++	{DATA_TAG "select_lintanir_boon" 0 infinite any}
++	{DATA_TAG "display_scenario_preview" 0 infinite any}
++	{DATA_TAG "display_overworld_tutorial" 0 infinite any}
++	{DATA_TAG "display_lisar_tutorial" 0 infinite any}
++	# HttTC
 +	{DATA_TAG "show_countdown" 0 infinite any}
 +	# LoW
 +	{DATA_TAG "replace_map_section" 0 infinite any}
@@ -29,7 +36,6 @@ index 0eff8c99f10..98e94c8cc6c 100644
 +	{DATA_TAG "display_skills_dialog" 0 infinite any}
 +	# TSG
 +	{DATA_TAG "display_tip" 0 infinite any}
-+	{DATA_TAG "companion_message" 0 infinite any}
 +	{DATA_TAG "choose_companion" 0 infinite any}
 +	# tutorial
 +	{DATA_TAG "select_character" 0 infinite any}

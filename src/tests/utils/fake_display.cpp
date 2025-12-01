@@ -17,74 +17,35 @@
 
 #include "tests/utils/fake_display.hpp"
 
-#include "game_board.hpp"
-#include "game_config_view.hpp"
-#include "game_display.hpp"
-#include "reports.hpp"
+#include "events.hpp"
 #include "video.hpp"
-
-namespace wb
-{
-class manager;
-}
 
 namespace test_utils
 {
-class fake_display_manager
+namespace
 {
-	static fake_display_manager* manager_;
-
-	config dummy_cfg_;
-	config dummy_cfg2_;
-	game_board dummy_board_;
-	reports dummy_reports;
-	const events::event_context main_event_context_;
-
-	game_display disp_;
-
+class context_manager
+{
 public:
-	static fake_display_manager* get_manager();
-	game_display& get_display();
-
-	fake_display_manager();
-	//		~fake_display_manager();
-};
-
-fake_display_manager* fake_display_manager::manager_ = nullptr;
-
-fake_display_manager* fake_display_manager::get_manager()
-{
-	if(!manager_) {
-		manager_ = new fake_display_manager();
+	context_manager()
+	{
+		video::init(video::fake::no_draw);
 	}
 
-	return manager_;
-}
+private:
+	const events::event_context main_event_context_;
+};
 
-fake_display_manager::fake_display_manager()
-	: dummy_cfg_()
-	, dummy_cfg2_()
-	, dummy_board_(dummy_cfg2_)
-	, main_event_context_()
-	, disp_(dummy_board_, std::shared_ptr<wb::manager>(), dummy_reports, "", dummy_cfg_)
-{
-	video::init(video::fake::no_draw);
-}
+} // namespace
 
-game_display& fake_display_manager::get_display()
+void set_test_resolution(const int width, const int height)
 {
-	return disp_;
-}
-
-game_display& get_fake_display(const int width, const int height)
-{
-	game_display& display = fake_display_manager::get_manager()->get_display();
+	// Single object for the lifetime of the unit tests.
+	static const context_manager main_event_context;
 
 	if(width >= 0 && height >= 0) {
 		video::set_resolution({width, height});
 	}
-
-	return display;
 }
 
 } // namespace test_utils
