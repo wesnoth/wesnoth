@@ -561,7 +561,7 @@ std::string unit_topic_generator::operator()() const {
 		bool start = true;
 
 		for(const auto& ability : type_.abilities_metadata()) {
-			const std::string ref_id = ability_prefix + ability.id + ability.name.base_str();
+			const std::string ref_id = ability_prefix + ability.help_topic_id;
 
 			if(ability.name.empty()) {
 				continue;
@@ -587,7 +587,7 @@ std::string unit_topic_generator::operator()() const {
 		bool start = true;
 
 		for(const auto& ability : type_.adv_abilities_metadata()) {
-			const std::string ref_id = ability_prefix + ability.id + ability.name.base_str();
+			const std::string ref_id = ability_prefix + ability.help_topic_id;
 
 			if(ability.name.empty()) {
 				continue;
@@ -738,15 +738,14 @@ std::string unit_topic_generator::operator()() const {
 
 			// special
 			if(has_special) {
-				std::vector<std::pair<t_string, t_string>> specials = attack.special_tooltips();
+				auto specials = attack.special_tooltips();
 				if(!specials.empty()) {
 					std::stringstream specials_ss;
 					std::string lang_special = "";
 					const std::size_t specials_size = specials.size();
 					for(std::size_t i = 0; i != specials_size; ++i) {
-						const std::string ref_id = std::string("weaponspecial_")
-							+ specials[i].first.base_str();
-						lang_special = (specials[i].first);
+						const std::string ref_id = std::string("weaponspecial_") + specials[i].help_topic_id;
+						lang_special = (specials[i].name);
 						specials_ss << markup::make_link(lang_special, ref_id);
 						if(i+1 != specials_size) {
 							specials_ss << ", "; //comma placed before next special

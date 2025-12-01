@@ -45,14 +45,14 @@ editor_map::editor_map()
 {
 }
 
-editor_map::editor_map(const std::string& data)
+editor_map::editor_map(std::string_view data)
 	: gamemap(data)
 	, selection_()
 {
 	sanity_check();
 }
 
-editor_map editor_map::from_string(const std::string& data)
+editor_map editor_map::from_string(std::string_view data)
 {
 	try {
 		return editor_map(data);
@@ -66,7 +66,7 @@ editor_map editor_map::from_string(const std::string& data)
 }
 
 editor_map::editor_map(std::size_t width, std::size_t height, const t_translation::terrain_code & filler)
-	: gamemap(t_translation::write_game_map(t_translation::ter_map(width + 2, height + 2, filler)))
+	: gamemap(width + 2, height + 2, filler)
 	, selection_()
 {
 	sanity_check();

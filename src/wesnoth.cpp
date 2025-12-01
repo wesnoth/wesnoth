@@ -184,8 +184,8 @@ static void handle_preprocess_string(const commandline_options& cmdline_opts)
 	const utils::ms_optimer timer(
 		[](const auto& timer) { PLAIN_LOG << "preprocessing finished. Took " << timer << " ticks."; });
 
-	const auto output_stream = preprocess_string(*cmdline_opts.preprocess_source_string, "wesnoth", defines_map);
-	std::cout << output_stream.get() << std::endl;
+	const auto input_stream = preprocess_string(*cmdline_opts.preprocess_source_string, "wesnoth", defines_map);
+	std::cout << io::read(*input_stream) << std::endl;
 }
 
 static void handle_preprocess_command(const commandline_options& cmdline_opts)
@@ -812,7 +812,7 @@ static int do_gameloop(commandline_options& cmdline_opts)
 		gui2::show_message(_("Logging Failure"), msg, message::ok_button);
 	}
 
-	game_config_manager config_manager(cmdline_opts);
+	game_config_manager& config_manager = game->config_manager();
 
 	if(game_config::check_migration) {
 		game_config::check_migration = false;

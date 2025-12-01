@@ -46,17 +46,16 @@ const unsigned int attack_predictions::graph_height = 170;
 const unsigned int attack_predictions::graph_max_rows = 10;
 
 attack_predictions::attack_predictions(
-	battle_context& bc, unit_const_ptr attacker, unit_const_ptr defender, const int leadership_bonus)
+	battle_context& bc, unit_const_ptr attacker, unit_const_ptr defender)
 	: modal_dialog(window_id())
 	, attacker_data_(std::move(attacker), bc.get_attacker_combatant(), bc.get_attacker_stats())
 	, defender_data_(std::move(defender), bc.get_defender_combatant(), bc.get_defender_stats())
-	, leadership_bonus_(leadership_bonus)
 {
 }
 
 void attack_predictions::pre_show()
 {
-	set_data(attacker_data_, defender_data_, leadership_bonus_);
+	set_data(attacker_data_, defender_data_);
 	set_data(defender_data_, attacker_data_);
 }
 
@@ -73,7 +72,7 @@ static std::string get_probability_string(const double prob)
 	return ss.str();
 }
 
-void attack_predictions::set_data(const combatant_data& attacker, const combatant_data& defender, int leadership_bonus)
+void attack_predictions::set_data(const combatant_data& attacker, const combatant_data& defender)
 {
 	// Each data widget in this dialog has its id prefixed by either of these identifiers.
 	const std::string widget_id_prefix = attacker.stats_.is_attacker ? "attacker" : "defender";
@@ -192,7 +191,7 @@ void attack_predictions::set_data(const combatant_data& attacker, const combatan
 	ss.str("");
 
 	// Resistance modifier.
-	const int resistance_modifier = defender.unit_->damage_from(*weapon, !attacker.stats_.is_attacker, defender.unit_->get_location(), opp_weapon);
+	const auto [damage_type, resistance_modifier] = weapon->effective_damage_type();
 	if(resistance_modifier != 100) {
 		if(attacker.stats_.is_attacker) {
 			if(resistance_modifier < 100) {
@@ -208,7 +207,7 @@ void attack_predictions::set_data(const combatant_data& attacker, const combatan
 			}
 		}
 
-		ss << string_table["type_" + weapon->effective_damage_type().first];
+		ss << string_table["type_" + damage_type];
 
 		set_label_helper("resis_label", ss.str());
 
@@ -235,13 +234,8 @@ void attack_predictions::set_data(const combatant_data& attacker, const combatan
 		hide_label_helper("tod_modifier");
 	}
 
-	// Leadership bonus.
-	// defender unit won't move before attack so just do calculation here
-	if (leadership_bonus == 0){
-		leadership_bonus = under_leadership(*attacker.unit_, attacker.unit_->get_location(), weapon, opp_weapon);
-	}
-	if(leadership_bonus != 0) {
-		set_label_helper("leadership_modifier", utils::signed_percent(leadership_bonus));
+	if(attacker.stats_.leadership_bonus != 0) {
+		set_label_helper("leadership_modifier", utils::signed_percent(attacker.stats_.leadership_bonus));
 	} else {
 		hide_label_helper("leadership_modifier");
 	}

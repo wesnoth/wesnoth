@@ -122,7 +122,7 @@ UNIT_TYPE_GETTER("traits", traits_map) {
 }
 
 UNIT_TYPE_GETTER("abilities", std::vector<std::string>) {
-	return ut.get_ability_list();
+	return ut.get_ability_id_list();
 }
 
 UNIT_TYPE_GETTER("attacks", lua_index_raw) {

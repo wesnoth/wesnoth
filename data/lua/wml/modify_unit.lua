@@ -72,6 +72,10 @@ function wml_actions.modify_unit(cfg)
 				local unit = wesnoth.units.create(wml.variables[unit_path])
 				wesnoth.wml_actions.set_variable(current_table[2], unit.variables)
 				wml.variables[unit_path] = unit.__cfg
+			elseif current_tag == "set_variables" then
+				local unit = wesnoth.units.create(wml.variables[unit_path])
+				wesnoth.wml_actions.set_variables(current_table[2], unit.variables)
+				wml.variables[unit_path] = unit.__cfg
 			elseif current_tag == "clear_variable" then
 				local unit = wesnoth.units.create(wml.variables[unit_path])
 				wesnoth.wml_actions.clear_variable(current_table[2], unit.variables)

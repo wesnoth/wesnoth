@@ -32,103 +32,6 @@ class unit_animation_component;
 class vconfig;
 struct color_t;
 
-/** Data typedef for active_ability_list. */
-struct active_ability
-{
-	active_ability(const ability_ptr& p_ability, map_location student_loc, map_location teacher_loc)
-		: student_loc(student_loc)
-		, teacher_loc(teacher_loc)
-		, p_ability_(p_ability)
-	{
-	}
-
-	/**
-	 * Used by the formula in the ability.
-	 * The REAL location of the student (not the 'we are assuming the student is at this position' location)
-	 * once active_ability_list can contain abilities from different 'students', as it contains abilities from
-	 * a unit aswell from its opponents (abilities with apply_to= opponent)
-	 */
-	map_location student_loc;
-	/**
-	 * The location of the teacher, that is the unit who owns the ability tags
-	 * (different from student because of [affect_adjacent])
-	 */
-	map_location teacher_loc;
-
-	const config& ability_cfg() const { return p_ability_->cfg(); }
-	const unit_ability_t& ability() const { return *p_ability_; }
-private:
-	/** The contents of the ability tag, never nullptr. */
-	const_ability_ptr p_ability_;
-};
-
-class active_ability_list
-{
-public:
-	active_ability_list(const map_location& loc = map_location()) : cfgs_() , loc_(loc) {}
-
-	// Implemented in unit_abilities.cpp
-	std::pair<int, map_location> highest(const std::string& key, int def=0) const
-	{
-		return get_extremum(key, def, std::less<int>());
-	}
-	std::pair<int, map_location> lowest(const std::string& key, int def=0) const
-	{
-		return get_extremum(key, def, std::greater<int>());
-	}
-
-	template<typename TComp>
-	std::pair<int, map_location> get_extremum(const std::string& key, int def, const TComp& comp) const;
-
-	// The following make this class usable with standard library algorithms and such
-	typedef std::vector<active_ability>::iterator       iterator;
-	typedef std::vector<active_ability>::const_iterator const_iterator;
-
-	iterator       begin()        { return cfgs_.begin(); }
-	const_iterator begin() const  { return cfgs_.begin(); }
-	iterator       end()          { return cfgs_.end();   }
-	const_iterator end()   const  { return cfgs_.end();   }
-
-	// Vector access
-	bool                empty() const  { return cfgs_.empty(); }
-	active_ability&       front()        { return cfgs_.front(); }
-	const active_ability& front() const  { return cfgs_.front(); }
-	active_ability&       back()         { return cfgs_.back();  }
-	const active_ability& back()  const  { return cfgs_.back();  }
-	std::size_t         size()         { return cfgs_.size();  }
-
-	iterator erase(const iterator& erase_it)  { return cfgs_.erase(erase_it); }
-	iterator erase(const iterator& first, const iterator& last)  { return cfgs_.erase(first, last); }
-
-	template<typename... T>
-	void emplace_back(T&&... args) { cfgs_.emplace_back(args...); }
-
-	const map_location& loc() const { return loc_; }
-
-	/** Appends the abilities from @a other to @a this, ignores other.loc() */
-	void append(const active_ability_list& other)
-	{
-		std::copy(other.begin(), other.end(), std::back_inserter(cfgs_ ));
-	}
-
-	/**
-	 * Appends any abilities from @a other for which the given condition returns true to @a this, ignores other.loc().
-	 *
-	 * @param other where to copy the elements from
-	 * @param predicate a single-argument function that takes a reference to an element and returns a bool
-	 */
-	template<typename Predicate>
-	void append_if(const active_ability_list& other, const Predicate& predicate)
-	{
-		std::copy_if(other.begin(), other.end(), std::back_inserter(cfgs_ ), predicate);
-	}
-
-private:
-	// Data
-	std::vector<active_ability> cfgs_;
-	map_location loc_;
-};
-
 /**
  * This class represents a *single* unit of a specific type.
  */
@@ -977,21 +880,6 @@ public:
 	 */
 	void remove_attacks_ai();
 
-	/**
-	 * Calculates the damage this unit would take from a certain attack.
-	 *
-	 * @param attack              The attack to consider.
-	 * @param attacker            Whether this unit should be considered the attacker.
-	 * @param loc                 The unit's location (to resolve [resistance] abilities)
-	 * @param weapon              The weapon to check for any abilities or weapon specials
-	 *
-	 * @returns                   The expected damage.
-	 */
-	int damage_from(const attack_type& attack, bool attacker, const map_location& loc, const_attack_ptr weapon = nullptr) const
-	{
-		return resistance_against(attack, attacker, loc, weapon);
-	}
-
 	/** The maximum number of attacks this unit may perform per turn, usually 1. */
 	int max_attacks() const
 	{
@@ -1061,22 +949,8 @@ public:
 	 * @param damage_name The damage type
 	 * @param attacker True if this unit is on the offensive (to resolve [resistance] abilities)
 	 * @param loc The unit's location (to resolve [resistance] abilities)
-	 * @param weapon The weapon to check for any abilities or weapon specials
-	 * @param opp_weapon The opponent's weapon to check for any abilities or weapon specials
 	 */
-	int resistance_against(const std::string& damage_name, bool attacker, const map_location& loc, const_attack_ptr weapon = nullptr, const const_attack_ptr& opp_weapon = nullptr) const;
-
-	/**
-	 * The unit's resistance against a given attack
-	 * @param atk The attack
-	 * @param attacker True if this unit is on the offensive (to resolve [resistance] abilities)
-	 * @param loc The unit's location (to resolve [resistance] abilities)
-	 * @param weapon The weapon to check for any abilities or weapon specials
-	 */
-	int resistance_against(const attack_type& atk, bool attacker, const map_location& loc, const_attack_ptr weapon = nullptr) const
-	{
-		return resistance_against(atk.type(), attacker, loc , weapon, atk.shared_from_this());
-	}
+	int resistance_against(const std::string& damage_name, bool attacker, const map_location& loc) const;
 
 	/** Gets resistances without any abilities applied. */
 	utils::string_map_res get_base_resistances() const
@@ -1797,14 +1671,6 @@ public:
 	 * @param loc location of the unit checked.
 	 */
 	bool get_self_ability_bool(const unit_ability_t& ab, const map_location& loc) const;
-	/** Checks whether this unit currently possesses a given ability of leadership type
-	 * @return True if the ability @a tag_name is active.
-	 * @param ab the ability checked
-	 * @param loc location of the unit checked.
-	 * @param weapon the attack used by unit checked in this function.
-	 * @param opp_weapon the attack used by opponent to unit checked.
-	 */
-	bool get_self_ability_bool_weapon(const unit_ability_t& ab, const map_location& loc, const const_attack_ptr& weapon = nullptr, const const_attack_ptr& opp_weapon = nullptr) const;
 	/** Checks whether this unit is affected by a given ability, and that that ability is active.
 	 * @return True if the ability @a tag_name is active.
 	 * @param ab the ability checked
@@ -1815,18 +1681,6 @@ public:
 	 * @param dir direction to research a unit distant to @a this.
 	 */
 	bool get_adj_ability_bool(const unit_ability_t& ab, std::size_t dist, int dir, const map_location& loc, const unit& from, const map_location& from_loc) const;
-	/** Checks whether this unit is affected by a given ability of leadership type
-	 * @return True if the ability @a tag_name is active.
-	 * @param ab the ability checked
-	 * @param loc location of the unit checked.
-	 * @param from unit adjacent to @a this is checked in case of [affect_adjacent] abilities.
-	 * @param from_loc location of the @a from unit.
-	 * @param weapon the attack used by unit checked in this function.
-	 * @param opp_weapon the attack used by opponent to unit checked.
-	 * @param dist distance between unit distant and @a this.
-	 * @param dir direction to research a unit distant to @a this.
-	 */
-	bool get_adj_ability_bool_weapon(const unit_ability_t& ab, std::size_t dist, int dir, const map_location& loc, const unit& from, const map_location& from_loc, const const_attack_ptr& weapon, const const_attack_ptr& opp_weapon) const;
 
 	/**
 	 * Gets the unit's active abilities of a particular type if it were on a specified location.
@@ -1873,8 +1727,7 @@ public:
 	 * @returns                   A list of quadruples consisting of (in order) id, base name,
 	 *                            male or female name as appropriate for the unit, and description.
 	 */
-	std::vector<std::tuple<std::string, t_string, t_string, t_string>>
-	ability_tooltips() const;
+	std::vector<unit_ability_t::tooltip_info> ability_tooltips() const;
 
 	/**
 	 * Gets the names and descriptions of this unit's abilities.
@@ -1887,11 +1740,11 @@ public:
 	 * @returns                   A list of quadruples consisting of (in order) id, base name,
 	 *                            male or female name as appropriate for the unit, and description.
 	 */
-	std::vector<std::tuple<std::string, t_string, t_string, t_string>>
+	std::vector<unit_ability_t::tooltip_info>
 	ability_tooltips(boost::dynamic_bitset<>& active_list, const map_location& loc) const;
 
 	/** Get a list of all abilities by ID. */
-	std::vector<std::string> get_ability_list() const;
+	std::vector<std::string> get_ability_id_list() const;
 
 	/**
 	 * Check if the unit has an ability of a specific type.
@@ -1919,53 +1772,7 @@ public:
 	 */
 	void remove_ability_by_attribute(const config& filter);
 
-	/**
-	 * Verify what abilities attributes match with filter.
-	 * @param ab the ability checked
-	 * @param filter the filter used for checking.
-	 */
-	bool ability_matches_filter(const unit_ability_t& ab, const config & filter) const;
-
-
 private:
-
-	/**
-	 * Helper similar to std::unique_lock for detecting when calculations such as abilities
-	 * have entered infinite recursion.
-	 *
-	 * This assumes that there's only a single thread accessing the unit, it's a lightweight
-	 * increment/decrement counter rather than a mutex.
-	 */
-	class recursion_guard {
-		friend class unit;
-		/**
-		 * Only expected to be called in update_variables_recursion(), which handles some of the checks.
-		 */
-		explicit recursion_guard(const unit& u, const config& ability);
-	public:
-		/**
-		 * Construct an empty instance, only useful for extending the lifetime of a
-		 * recursion_guard returned from unit.update_variables_recursion() by
-		 * std::moving it to an instance declared in a larger scope.
-		 */
-		explicit recursion_guard();
-
-		/**
-		 * Returns true if a level of recursion was available at the time when update_variables_recursion()
-		 * created this object.
-		 */
-		operator bool() const;
-
-		recursion_guard(recursion_guard&& other) noexcept;
-		recursion_guard(const recursion_guard& other) = delete;
-		recursion_guard& operator=(recursion_guard&&) noexcept;
-		recursion_guard& operator=(const recursion_guard&) = delete;
-		~recursion_guard();
-	private:
-		std::shared_ptr<const unit> parent;
-	};
-
-	recursion_guard update_variables_recursion(const config& ability) const;
 
 	/**
 	 * Check if an ability is active. Includes checks to prevent excessive recursion.
@@ -2111,12 +1918,6 @@ private:
 
 	std::string role_;
 	attack_list attacks_;
-	/**
-	 * While processing a recursive match, all the filters that are currently being checked, oldest first.
-	 * Each will have an instance of recursion_guard that is currently allocated permission to recurse, and
-	 * which will pop the config off this stack when the recursion_guard is finalized.
-	 */
-	mutable std::vector<const config*> open_queries_;
 
 protected:
 	// TODO: I think we actually consider this to be part of the gamestate, so it might be better if it's not mutable,

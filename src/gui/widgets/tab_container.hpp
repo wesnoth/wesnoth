@@ -55,7 +55,7 @@ public:
 	}
 
 	unsigned get_tab_count() const {
-		return builders_.size();
+		return tab_count_;
 	}
 
 	grid* get_tab_grid(unsigned i)
@@ -88,15 +88,7 @@ private:
 	 */
 	state_t state_;
 
-	std::vector<std::shared_ptr<builder_grid>> builders_;
-	std::vector<widget_data> list_items_;
-
-	/**
-	 * Finishes the building initialization of the widget.
-	 *
-	 * @param generator           Generator for the list
-	 */
-	void finalize(std::unique_ptr<generator_base> generator);
+	int tab_count_;
 
 	/**
 	 * Contains a pointer to the generator.
@@ -110,11 +102,15 @@ private:
 
 	void change_selection();
 
-	void finalize_listbox();
-
 public:
 	/** Static type getter that does not rely on the widget being constructed. */
 	static const std::string& type();
+
+	/** See @ref widget::find. */
+	virtual widget* find(const std::string_view id, const bool must_be_active) override;
+
+	/** See @ref widget::find. */
+	virtual const widget* find(const std::string_view id, const bool must_be_active) const override;
 
 private:
 	/* **** ***** ***** inherited ****** **** */

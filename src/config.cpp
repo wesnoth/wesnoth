@@ -25,6 +25,7 @@
 #include "log.hpp"
 #include "deprecation.hpp"
 #include "game_version.hpp"
+#include "serialization/parser.hpp"
 #include "serialization/string_utils.hpp"
 #include "utils/general.hpp"
 
@@ -1219,37 +1220,7 @@ std::string config::debug() const
 
 std::ostream& operator<<(std::ostream& outstream, const config& cfg)
 {
-	static int i = 0;
-	i++;
-
-	for(const auto& [key, value] : cfg.attribute_range()) {
-		if(value.blank()) {
-			continue;
-		}
-
-		for(int j = 0; j < i - 1; j++) {
-			outstream << '\t';
-		}
-
-		outstream << key << " = " << value << '\n';
-	}
-
-	for(const auto [key, cfg] : cfg.all_children_view()) {
-		for(int j = 0; j < i - 1; ++j) {
-			outstream << '\t';
-		}
-
-		outstream << "[" << key << "]\n";
-		outstream << cfg;
-
-		for(int j = 0; j < i - 1; ++j) {
-			outstream << '\t';
-		}
-
-		outstream << "[/" << key << "]\n";
-	}
-
-	i--;
+	io::write(outstream, cfg);
 	return outstream;
 }
 

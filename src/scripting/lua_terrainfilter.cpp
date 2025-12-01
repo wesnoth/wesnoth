@@ -137,6 +137,14 @@ namespace {
 			parse_rel(part, even, odd);
 		});
 	}
+
+	template<typename Func>
+	auto invoke_with_scoped_arg(lua_State* L, int arg_index, const Func& func)
+	{
+		const auto arg = scoped_lua_argument{L, arg_index};
+		return std::invoke(func);
+	}
+
 	/**
  * TODO: move to a template header.
  * Function that will add to @a result all elements of @a locs, plus all
@@ -159,9 +167,8 @@ static std::set<map_location> luaW_to_locationset(lua_State* L, int index)
 	lua_pushvalue(L, index);
 	std::size_t len = lua_rawlen(L, -1);
 	for(std::size_t i = 0; i != len; ++i) {
-		lua_geti(L, -1, i + 1);
+		const auto arg = scoped_lua_argument(L, i + 1);
 		res.insert(luaW_checklocation(L, -1));
-		lua_pop(L, 1);
 	}
 	lua_pop(L, 1);
 	return res;
@@ -189,9 +196,8 @@ public:
 		LOG_LMG << "creating con filter";
 		std::size_t len = lua_rawlen(L, -1);
 		for(std::size_t i = 1; i != len; ++i) {
-			lua_geti(L, -1, i + 1);
+			const auto arg = scoped_lua_argument(L, i + 1);
 			list_.emplace_back(build_filter(L, res_index, ks));
-			lua_pop(L, 1);
 		}
 	}
 	std::vector<std::unique_ptr<filter_impl>> list_;
@@ -285,13 +291,10 @@ class cached_filter : public filter_impl
 {
 public:
 	cached_filter(lua_State* L, int res_index, known_sets_t& ks)
-		: filter_()
+		: filter_(invoke_with_scoped_arg(L, 2, [&] { return build_filter(L, res_index, ks); }))
 		, cache_()
 	{
 		LOG_LMG << "creating cached filter";
-		lua_geti(L, -1, 2);
-		filter_ = build_filter(L, res_index, ks);
-		lua_pop(L, 1);
 	}
 
 	bool matches(const gamemap_base& m, map_location l) const override
@@ -322,12 +325,9 @@ class x_filter : public filter_impl
 {
 public:
 	x_filter(lua_State* L, int /*res_index*/, known_sets_t&)
-		: filter_()
+		: filter_(invoke_with_scoped_arg(L, 2, [&] { return parse_range(luaW_tostring(L, -1)); }))
 	{
 		LOG_LMG << "creating x filter";
-		lua_geti(L, -1, 2);
-		filter_ = parse_range(luaW_tostring(L, -1));
-		lua_pop(L, 1);
 	}
 	bool matches(const gamemap_base&, map_location l) const override
 	{
@@ -342,12 +342,9 @@ class y_filter : public filter_impl
 {
 public:
 	y_filter(lua_State* L, int /*res_index*/, known_sets_t&)
-	: filter_()
+		: filter_(invoke_with_scoped_arg(L, 2, [&] { return parse_range(luaW_tostring(L, -1)); }))
 	{
 		LOG_LMG << "creating y filter";
-		lua_geti(L, -1, 2);
-		filter_ = parse_range(luaW_tostring(L, -1));
-		lua_pop(L, 1);
 	}
 
 	bool matches(const gamemap_base&, map_location l) const override
@@ -379,13 +376,9 @@ class terrain_filter : public filter_impl
 {
 public:
 	terrain_filter(lua_State* L, int /*res_index*/, known_sets_t&)
-	: filter_()
+		: filter_(invoke_with_scoped_arg(L, 2, [&] { return t_translation::ter_match{luaW_tostring(L, -1)}; }))
 	{
 		LOG_LMG << "creating terrain filter";
-		lua_geti(L, -1, 2);
-		//fixme: use string_view
-		filter_ = t_translation::ter_match(luaW_tostring(L, -1));
-		lua_pop(L, 1);
 	}
 
 	bool matches(const gamemap_base& m, map_location l) const override
@@ -405,7 +398,7 @@ class adjacent_filter : public filter_impl
 {
 public:
 	adjacent_filter(lua_State* L, int res_index, known_sets_t& ks)
-	: filter_()
+		: filter_(invoke_with_scoped_arg(L, 2, [&] { return build_filter(L, res_index, ks); }))
 	{
 		LOG_LMG << "creating adjacent filter";
 		if(luaW_tableget(L, -1, "adjacent")) {
@@ -420,9 +413,6 @@ public:
 			accepted_counts_ = parse_range(luaW_tostring(L, -1));
 			lua_pop(L, 1);
 		}
-		lua_geti(L, -1, 2);
-		filter_ = build_filter(L, res_index, ks);
-		lua_pop(L, 1);
 	}
 
 	bool matches(const gamemap_base& m, map_location l) const override
@@ -529,21 +519,15 @@ class radius_filter : public filter_impl
 public:
 
 	radius_filter(lua_State* L, int res_index, known_sets_t& ks)
-		: radius_()
+		: radius_(invoke_with_scoped_arg(L, 2, [&] { return lua_tointeger(L, -1); }))
 		, filter_radius_()
-		, filter_()
+		, filter_(invoke_with_scoped_arg(L, 3, [&] { return build_filter(L, res_index, ks); }))
 	{
 		LOG_LMG << "creating radius filter";
 		if(luaW_tableget(L, -1, "filter_radius")) {
 			filter_radius_ = build_filter(L, res_index, ks);
 			lua_pop(L, 1);
 		}
-		lua_geti(L, -1, 2);
-		radius_ = lua_tointeger(L, -1);
-		lua_pop(L, 1);
-		lua_geti(L, -1, 3);
-		filter_ = build_filter(L, res_index, ks);
-		lua_pop(L, 1);
 	}
 
 	bool matches(const gamemap_base& m, map_location l) const override
@@ -577,12 +561,9 @@ class formula_filter : public filter_impl
 {
 public:
 	formula_filter(lua_State* L, int, known_sets_t&)
-		: formula_()
+		: formula_(invoke_with_scoped_arg(L, 2, [&] { return luaW_check_formula(L, 1, true); }))
 	{
 		LOG_LMG << "creating formula filter";
-		lua_geti(L, -1, 2);
-		formula_ = luaW_check_formula(L, 1, true);
-		lua_pop(L, 1);
 	}
 	bool matches(const gamemap_base&, map_location l) const override
 	{

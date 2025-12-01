@@ -51,23 +51,6 @@ static bool command_active()
 #endif
 }
 
-mouse_handler_base::mouse_handler_base()
-	: simple_warp_(false)
-	, minimap_scrolling_(false)
-	, dragging_left_(false)
-	, dragging_touch_(false)
-	, dragging_started_(false)
-	, dragging_right_(false)
-	, drag_from_(0, 0)
-	, drag_from_hex_()
-	, last_hex_()
-	, show_menu_(false)
-	, scroll_start_x_(0)
-	, scroll_start_y_(0)
-	, scroll_started_(false)
-{
-}
-
 bool mouse_handler_base::dragging_started() const
 {
 	return dragging_started_;

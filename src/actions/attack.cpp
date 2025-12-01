@@ -96,6 +96,7 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 	, swarm(false)
 	, firststrike(false)
 	, disable(false)
+	, leadership_bonus(0)
 	, experience(up->experience())
 	, max_experience(up->max_experience())
 	, level(up->level())
@@ -199,13 +200,15 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 
 
 	// Leadership bonus.
-	int leader_bonus = under_leadership(u, u_loc, weapon, opp_weapon);
-	if(leader_bonus != 0) {
-		damage_multiplier += leader_bonus;
+	leadership_bonus = under_leadership(u, u_loc, weapon, opp_weapon);
+	if(leadership_bonus != 0) {
+		damage_multiplier += leadership_bonus;
 	}
 
 	// Resistance modifier.
-	damage_multiplier *= opp.damage_from(*weapon, !attacking, opp_loc, opp_weapon);
+
+	const auto [damage_type, resistance_modifier] = weapon->effective_damage_type();
+	damage_multiplier *= resistance_modifier;
 
 	// Compute both the normal and slowed damage.
 	damage = round_damage(base_damage, damage_multiplier, 10000);
@@ -751,6 +754,8 @@ void attack::fire_event(const std::string& n)
 void attack::fire_event_impl(const std::string& n, bool reverse)
 {
 	LOG_NG << "attack: firing '" << n << "' event";
+	// FIXME: this passes nullptr to the specials_context, i assume it's to avoid binding the context to the concrete c++ unit objects in case the unit gets replaced by wml
+	// But that doesn't really work, see the related comment in attack_type::special_active_impl
 
 	// prepare the event data for weapon filtering
 	config ev_data;

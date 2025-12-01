@@ -199,9 +199,12 @@ public:
 
 	struct ability_metadata
 	{
+		//TODO:most of the member of this class seem to be unused.
 		explicit ability_metadata(const config& cfg);
 
 		std::string id;
+
+		std::string help_topic_id;
 
 		t_string name;
 		t_string name_inactive;
@@ -230,7 +233,7 @@ public:
 	bool has_zoc() const { return zoc_; }
 
 	bool has_ability_by_id(const std::string& ability) const;
-	std::vector<std::string> get_ability_list() const;
+	std::vector<std::string> get_ability_id_list() const;
 
 	config::const_child_itors possible_traits() const
 	{ return possible_traits_.child_range("trait"); }
@@ -406,6 +409,7 @@ public:
 	const race_map& races() const { return races_; }
 	const movement_type_map& movement_types() const { return movement_types_; }
 	const std::map<std::string, config>& abilities() const { return abilities_registry_; }
+	const std::map<std::string, config>& specials() const { return specials_registry_; }
 	config_array_view traits() const { return units_cfg().child_range("trait"); }
 
 	static config add_registry_entries(
@@ -444,6 +448,7 @@ private:
 	race_map races_;
 
 	std::map<std::string, config> abilities_registry_;
+	std::map<std::string, config> specials_registry_;
 
 	/** True if [hide_help] contains a 'all=yes' at its root. */
 	bool hide_help_all_;

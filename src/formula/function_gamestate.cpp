@@ -28,11 +28,75 @@
 #include "units/types.hpp"
 #include "units/unit.hpp"
 
+#include "utils/optional_fwd.hpp"
 #include <utility>
 
 namespace wfl {
 
 namespace gamestate {
+
+namespace
+{
+/**
+ * Extracts a terrain_code from the given variant.
+ *
+ * @param loc_var        Variant containing either terrain_callable or location_callable.
+ *                       A plain terrain code string is also accepted.
+ *
+ * @returns              The given location's terrain_code for the given terrain, or nullopt
+ *                       if an invalid variant was given.
+ */
+utils::optional<t_translation::terrain_code> as_terrain_code(const variant& loc_var)
+{
+	if(loc_var.is_string()) {
+		return t_translation::read_terrain_code(loc_var.as_string());
+	}
+
+	else if(auto tc = loc_var.try_convert<terrain_callable>()) {
+		return tc->get_terrain_type().number();
+	}
+
+	else if(auto loc = loc_var.try_convert<location_callable>()) {
+		const gamemap& map = resources::gameboard->map();
+		if(map.on_board(loc->loc())) {
+			return map.get_terrain(loc->loc());
+		}
+	}
+
+	return utils::nullopt;
+}
+
+/**
+ * Gets arbitrary movement type info for a given terrain from either a unit or unit type.
+ *
+ * @param loc_var        Variant containing either terrain_callable or location_callable.
+ *                       A plain terrain code string is also accepted.
+ * @param unit_var       Variant containing either unit_callable or unit_type_callable.
+ * @param getter         Functor of the signature `[](const terrain_code&, const auto&) -> variant`
+ *                       If @a unit_var resolves to a unit_callable, the second argument will be a
+ *                       const @ref unit reference. For unit_type_callable, the argument will be a
+ *                       const @ref movetype reference for that unit type.
+ */
+template<typename F>
+variant get_movement_property(const variant& loc_var, const variant& unit_var, const F& getter)
+{
+	const utils::optional terrain_code = as_terrain_code(loc_var);
+	if(!terrain_code) {
+		return variant();
+	}
+
+	if(auto u_call = unit_var.try_convert<unit_callable>()) {
+		return std::invoke(getter, terrain_code.value(), u_call->get_unit());
+	}
+
+	if(auto u_type = unit_var.try_convert<unit_type_callable>()) {
+		return std::invoke(getter, terrain_code.value(), u_type->get_unit_type().movement_type());
+	}
+
+	return variant();
+}
+
+} // namespace
 
 DEFINE_WFL_FUNCTION(run_file, 1, 1)
 {
@@ -148,44 +212,10 @@ DEFINE_WFL_FUNCTION(defense_on, 2, 2)
 		return variant();
 	}
 
-	auto u_call = u.try_convert<unit_callable>();
-	auto u_type = u.try_convert<unit_type_callable>();
-
-	const auto& tdata = resources::gameboard->map().tdata();
-	t_translation::terrain_code ter;
-
-	if(loc_var.is_string()) {
-		ter = t_translation::read_terrain_code(loc_var.as_string());
-	} else if(auto tc = loc_var.try_convert<terrain_callable>()) {
-		const std::string id = tc->get_value("id").as_string();
-		auto iter = utils::ranges::find(tdata->map(), id,
-			[](const std::pair<t_translation::terrain_code, terrain_type>& p) { return p.second.id(); });
-		if(iter == tdata->map().end()) {
-			return variant();
-		}
-		ter = iter->first;
-	} else if(auto loc = loc_var.try_convert<location_callable>()) {
-		if(!resources::gameboard->map().on_board(loc->loc())) {
-			return variant();
-		}
-		ter = resources::gameboard->map().get_terrain(loc->loc());
-	} else {
-		return variant();
-	}
-
-	if(u_call) {
-		const unit& un = u_call->get_unit();
-
-		return variant(100 - un.defense_modifier(ter));
-	}
-
-	if(u_type) {
-		const unit_type& un = u_type->get_unit_type();
-
-		return variant(100 - un.movement_type().defense_modifier(ter));
-	}
-
-	return variant();
+	return get_movement_property(loc_var, u,
+		[](const t_translation::terrain_code& terrain, const auto& datum) {
+			return variant(100 - datum.defense_modifier(terrain));
+		});
 }
 
 DEFINE_WFL_FUNCTION(chance_to_hit, 2, 2)
@@ -196,44 +226,10 @@ DEFINE_WFL_FUNCTION(chance_to_hit, 2, 2)
 		return variant();
 	}
 
-	auto u_call = u.try_convert<unit_callable>();
-	auto u_type = u.try_convert<unit_type_callable>();
-
-	const auto& tdata = resources::gameboard->map().tdata();
-	t_translation::terrain_code ter;
-
-	if(loc_var.is_string()) {
-		ter = t_translation::read_terrain_code(loc_var.as_string());
-	} else if(auto tc = loc_var.try_convert<terrain_callable>()) {
-		const std::string id = tc->get_value("id").as_string();
-		auto iter = utils::ranges::find(tdata->map(), id,
-			[](const std::pair<t_translation::terrain_code, terrain_type>& p) { return p.second.id(); });
-		if(iter == tdata->map().end()) {
-			return variant();
-		}
-		ter = iter->first;
-	} else if(auto loc = loc_var.try_convert<location_callable>()) {
-		if(!resources::gameboard->map().on_board(loc->loc())) {
-			return variant();
-		}
-		ter = resources::gameboard->map().get_terrain(loc->loc());
-	} else {
-		return variant();
-	}
-
-	if(u_call) {
-		const unit& un = u_call->get_unit();
-
-		return variant(un.defense_modifier((ter)));
-	}
-
-	if(u_type) {
-		const unit_type& un = u_type->get_unit_type();
-
-		return variant(un.movement_type().defense_modifier((ter)));
-	}
-
-	return variant();
+	return get_movement_property(loc_var, u,
+		[](const t_translation::terrain_code& terrain, const auto& datum) {
+			return variant(datum.defense_modifier(terrain));
+		});
 }
 
 DEFINE_WFL_FUNCTION(movement_cost, 2, 2)
@@ -243,45 +239,11 @@ DEFINE_WFL_FUNCTION(movement_cost, 2, 2)
 	if(u.is_null() || loc_var.is_null()) {
 		return variant();
 	}
-	//we can pass to this function either unit_callable or unit_type callable
-	auto u_call = u.try_convert<unit_callable>();
-	auto u_type = u.try_convert<unit_type_callable>();
 
-	const auto& tdata = resources::gameboard->map().tdata();
-	t_translation::terrain_code ter;
-
-	if(loc_var.is_string()) {
-		ter = t_translation::read_terrain_code(loc_var.as_string());
-	} else if(auto tc = loc_var.try_convert<terrain_callable>()) {
-		const std::string id = tc->get_value("id").as_string();
-		auto iter = utils::ranges::find(tdata->map(), id,
-			[](const std::pair<t_translation::terrain_code, terrain_type>& p) { return p.second.id(); });
-		if(iter == tdata->map().end()) {
-			return variant();
-		}
-		ter = iter->first;
-	} else if(auto loc = loc_var.try_convert<location_callable>()) {
-		if(!resources::gameboard->map().on_board(loc->loc())) {
-			return variant();
-		}
-		ter = resources::gameboard->map().get_terrain(loc->loc());
-	} else {
-		return variant();
-	}
-
-	if(u_call) {
-		const unit& un = u_call->get_unit();
-
-		return variant(un.movement_cost(ter));
-	}
-
-	if(u_type) {
-		const unit_type& un = u_type->get_unit_type();
-
-		return variant(un.movement_type().movement_cost(ter));
-	}
-
-	return variant();
+	return get_movement_property(loc_var, u,
+		[](const t_translation::terrain_code& terrain, const auto& datum) {
+			return variant(datum.movement_cost(terrain));
+		});
 }
 
 DEFINE_WFL_FUNCTION(vision_cost, 2, 2)
@@ -291,45 +253,11 @@ DEFINE_WFL_FUNCTION(vision_cost, 2, 2)
 	if(u.is_null() || loc_var.is_null()) {
 		return variant();
 	}
-	//we can pass to this function either unit_callable or unit_type callable
-	auto u_call = u.try_convert<unit_callable>();
-	auto u_type = u.try_convert<unit_type_callable>();
 
-	const auto& tdata = resources::gameboard->map().tdata();
-	t_translation::terrain_code ter;
-
-	if(loc_var.is_string()) {
-		ter = t_translation::read_terrain_code(loc_var.as_string());
-	} else if(auto tc = loc_var.try_convert<terrain_callable>()) {
-		const std::string id = tc->get_value("id").as_string();
-		auto iter = utils::ranges::find(tdata->map(), id,
-			[](const std::pair<t_translation::terrain_code, terrain_type>& p) { return p.second.id(); });
-		if(iter == tdata->map().end()) {
-			return variant();
-		}
-		ter = iter->first;
-	} else if(auto loc = loc_var.try_convert<location_callable>()) {
-		if(!resources::gameboard->map().on_board(loc->loc())) {
-			return variant();
-		}
-		ter = resources::gameboard->map().get_terrain(loc->loc());
-	} else {
-		return variant();
-	}
-
-	if(u_call) {
-		const unit& un = u_call->get_unit();
-
-		return variant(un.vision_cost(ter));
-	}
-
-	if(u_type) {
-		const unit_type& un = u_type->get_unit_type();
-
-		return variant(un.movement_type().vision_cost(ter));
-	}
-
-	return variant();
+	return get_movement_property(loc_var, u,
+		[](const t_translation::terrain_code& terrain, const auto& datum) {
+			return variant(datum.vision_cost(terrain));
+		});
 }
 
 DEFINE_WFL_FUNCTION(jamming_cost, 2, 2)
@@ -339,45 +267,11 @@ DEFINE_WFL_FUNCTION(jamming_cost, 2, 2)
 	if(u.is_null() || loc_var.is_null()) {
 		return variant();
 	}
-	//we can pass to this function either unit_callable or unit_type callable
-	auto u_call = u.try_convert<unit_callable>();
-	auto u_type = u.try_convert<unit_type_callable>();
 
-	const auto& tdata = resources::gameboard->map().tdata();
-	t_translation::terrain_code ter;
-
-	if(loc_var.is_string()) {
-		ter = t_translation::read_terrain_code(loc_var.as_string());
-	} else if(auto tc = loc_var.try_convert<terrain_callable>()) {
-		const std::string id = tc->get_value("id").as_string();
-		auto iter = utils::ranges::find(tdata->map(), id,
-			[](const std::pair<t_translation::terrain_code, terrain_type>& p) { return p.second.id(); });
-		if(iter == tdata->map().end()) {
-			return variant();
-		}
-		ter = iter->first;
-	} else if(auto loc = loc_var.try_convert<location_callable>()) {
-		if(!resources::gameboard->map().on_board(loc->loc())) {
-			return variant();
-		}
-		ter = resources::gameboard->map().get_terrain(loc->loc());
-	} else {
-		return variant();
-	}
-
-	if(u_call) {
-		const unit& un = u_call->get_unit();
-
-		return variant(un.jamming_cost(ter));
-	}
-
-	if(u_type) {
-		const unit_type& un = u_type->get_unit_type();
-
-		return variant(un.movement_type().jamming_cost(ter));
-	}
-
-	return variant();
+	return get_movement_property(loc_var, u,
+		[](const t_translation::terrain_code& terrain, const auto& datum) {
+			return variant(datum.jamming_cost(terrain));
+		});
 }
 
 DEFINE_WFL_FUNCTION(enemy_of, 2, 2)
@@ -546,4 +440,4 @@ gamestate_function_symbol_table::gamestate_function_symbol_table(const std::shar
 	DECLARE_WFL_FUNCTION(is_fogged);
 }
 
-}
+} // namespace wfl

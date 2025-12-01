@@ -346,8 +346,13 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 {
 	std::vector<topic> topics;
 
-	std::map<t_string, std::string> special_description;
-	std::map<t_string, std::set<std::string, string_less>> special_units;
+
+	auto comp = [](const unit_ability_t::tooltip_info& t1, const unit_ability_t::tooltip_info& t2) {
+		return t1.help_topic_id < t2.help_topic_id;
+	};
+	auto special_description = std::set<unit_ability_t::tooltip_info, decltype(comp)>(comp);
+
+	std::map<std::string, std::set<std::string, string_less>> special_units;
 
 	for(const auto& [type_id, type] : unit_types.types()) {
 		// Only show the weapon special if we find it on a unit that
@@ -356,8 +361,8 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 			continue;
 
 		for(const attack_type& atk : type.attacks()) {
-			for(const auto& [name, description] : atk.special_tooltips()) {
-				special_description.emplace(name, description);
+			for(auto& tt_info : atk.special_tooltips()) {
+				special_description.emplace(tt_info);
 
 				if (!type.hide_help()) {
 					//add a link in the list of units having this special
@@ -368,7 +373,7 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 					//we put the translated name at the beginning of the hyperlink,
 					//so the automatic alphabetic sorting of std::set can use it
 					std::string link = markup::make_link(type_name, ref_id);
-					special_units[name].insert(link);
+					special_units[tt_info.help_topic_id].insert(link);
 				}
 			}
 		}
@@ -378,7 +383,9 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 				if(effect["apply_to"] == "new_attack" && effect.has_child("specials")) {
 					for(const auto [key, special] : effect.mandatory_child("specials").all_children_view()) {
 						if(!special["name"].empty()) {
-							special_description.emplace(special["name"].t_str(), special["description"].t_str());
+							std::string topic_id = unit_ability_t::get_help_topic_id(special);
+							//c++20: use emplace
+							special_description.insert({ special["name"].t_str(), special["description"].t_str(), topic_id });
 							if(!type.hide_help()) {
 								//add a link in the list of units having this special
 								std::string type_name = type.type_name();
@@ -388,14 +395,16 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 								//we put the translated name at the beginning of the hyperlink,
 								//so the automatic alphabetic sorting of std::set can use it
 								std::string link = markup::make_link(type_name, ref_id);
-								special_units[special["name"].t_str()].insert(link);
+								special_units[topic_id].insert(link);
 							}
 						}
 					}
 				} else if(effect["apply_to"] == "attack" && effect.has_child("set_specials")) {
 					for(const auto [key, special] : effect.mandatory_child("set_specials").all_children_view()) {
-						if(!special["name"].empty()) {
-							special_description.emplace(special["name"].t_str(), special["description"].t_str());
+						if (!special["name"].empty()) {
+							std::string topic_id = unit_ability_t::get_help_topic_id(special);
+							//c++20: use emplace
+							special_description.insert({special["name"].t_str(), special["description"].t_str(), topic_id});
 							if(!type.hide_help()) {
 								//add a link in the list of units having this special
 								std::string type_name = type.type_name();
@@ -405,7 +414,7 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 								//we put the translated name at the beginning of the hyperlink,
 								//so the automatic alphabetic sorting of std::set can use it
 								std::string link = markup::make_link(type_name, ref_id);
-								special_units[special["name"].t_str()].insert(link);
+								special_units[topic_id].insert(link);
 							}
 						}
 					}
@@ -414,9 +423,9 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 		}
 	}
 
-	for(const auto& [name, description] : special_description) {
+	for(const auto& [name, description, help_topic_id] : special_description) {
 		// use untranslated name to have universal topic id
-		std::string id = "weaponspecial_" + name.base_str();
+		std::string id = "weaponspecial_" + help_topic_id;
 		std::stringstream text;
 		text << description;
 		text << "\n\n" << markup::tag("header", _("Units with this special attack")) << "\n";
@@ -440,20 +449,15 @@ std::vector<topic> generate_ability_topics(const bool sort_generated)
 	std::map<std::string, std::set<std::string, string_less>> ability_units;
 
 	const auto parse = [&](const unit_type& type, const unit_type::ability_metadata& ability) {
-		// NOTE: neither ability names nor ability ids are necessarily unique. Creating
-		// topics for either each unique name or each unique id means certain abilities
-		// will be excluded from help. So... the ability topic ref id is a combination
-		// of id and (untranslated) name. It's rather ugly, but it works.
-		const std::string topic_ref = ability.id + ability.name.base_str();
 
-		ability_topic_data.emplace(topic_ref, &ability);
+		ability_topic_data.emplace(ability.help_topic_id, &ability);
 
 		if(!type.hide_help()) {
 			// Add a link in the list of units with this ability
 			// We put the translated name at the beginning of the hyperlink,
 			// so the automatic alphabetic sorting of std::set can use it
 			const std::string link = markup::make_link(type.type_name(), unit_prefix + type.id());
-			ability_units[topic_ref].insert(link);
+			ability_units[ability.help_topic_id].insert(link);
 		}
 	};
 

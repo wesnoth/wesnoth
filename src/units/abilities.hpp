@@ -17,12 +17,237 @@
 
 #include "map/location.hpp"
 #include "units/ptr.hpp"
+#include "units/race.hpp" // for unit_race::GENDER
 
 
 #include <vector>
 class config;
 
 class active_ability_list;
+
+
+using ability_vector = std::vector<ability_ptr>;
+
+class unit_ability_t
+{
+public:
+
+	enum class active_on_t { offense, defense, both };
+	enum class apply_to_t { self, opponent, attacker, defender, both };
+	enum class affects_allies_t { yes, no, same_side_only };
+
+	enum class affects_t { SELF = 1, OTHER = 2, EITHER = 3 };
+
+	unit_ability_t(std::string tag, config cfg, bool inside_attack);
+
+	static ability_ptr create(std::string tag, config cfg, bool inside_attack) {
+		return std::make_shared<unit_ability_t>(tag, cfg, inside_attack);
+	}
+
+	static void do_compat_fixes(config& cfg, const std::string& tag, bool inside_attack);
+
+	const std::string& tag() const { return tag_; };
+	const std::string& id() const { return id_; };
+	bool in_specials_tag() const { return in_specials_tag_; };
+	const config& cfg() const { return cfg_; };
+
+	active_on_t active_on() const { return active_on_; };
+	apply_to_t apply_to() const { return apply_to_; };
+	double priority() const { return priority_; };
+
+	//has no effect in [specials]
+	affects_allies_t affects_allies() const { return affects_allies_; }
+	//has no effect in [specials]
+	bool affects_self() const { return affects_self_; }
+	//has no effect in [specials]
+	bool affects_enemies() const { return affects_enemies_; }
+
+	struct tooltip_info
+	{
+		t_string name;
+		t_string description;
+		// a unique id used for help topics, generated from name and id.
+		// doesn't include the "ability_" prefix.
+		// TODO: maybe use cfg["unique_id"] at some point?
+		std::string help_topic_id;
+	};
+
+	//Generates a unique id to be used to identify the help page for this ability.
+	static std::string get_help_topic_id(const config& cfg);
+	std::string get_help_topic_id() const;
+
+
+	std::string get_name(bool is_inactive = false, unit_race::GENDER = unit_race::MALE) const;
+	std::string get_description(bool is_inactive = false, unit_race::GENDER = unit_race::MALE) const;
+
+	//checks whether the ability is active according to the active_on= attribute.
+	bool active_on_matches(bool student_is_attacker) const;
+
+
+	//checks whether the ability matches the filter specified in a [filter_special] or [filter_ability]
+	bool matches_filter(const config& filter) const;
+	void write(config& abilities_cfg);
+
+
+	static void parse_vector(const config& abilities_cfg, ability_vector& res, bool inside_attack);
+	static config vector_to_cfg(const ability_vector& abilities);
+	static ability_vector cfg_to_vector(const config& abilities_cfg, bool inside_attack);
+
+
+	static ability_vector filter_tag(const ability_vector& vec, const std::string& tag);
+	static ability_vector clone(const ability_vector& vec);
+
+	/**
+	 * Substitute gettext variables in name and description of abilities and specials
+	 * @param str                  The string in which the substitution is to be done
+	 *
+	 * @return The string `str` with all gettext variables substitutes with corresponding special properties
+	 */
+	std::string substitute_variables(const std::string& str) const;
+
+
+
+	class recursion_guard
+	{
+	public:
+		recursion_guard(const unit_ability_t& parent);
+		recursion_guard(recursion_guard&&) = delete;
+		recursion_guard(const recursion_guard&) = delete;
+		recursion_guard() = delete;
+		~recursion_guard();
+
+		/**
+		 * Returns true if a level of recursion was available at the time when guard_against_recursion()
+		 * created this object.
+		 */
+		operator bool() const;
+		const unit_ability_t* parent;
+	};
+
+	/**
+	 * Tests which might otherwise cause infinite recursion should call this, check that the
+	 * returned object evaluates to true, and then keep the object returned as long as the
+	 * recursion might occur, similar to a reentrant mutex that's limited to a small number of
+	 * reentrances.
+	 *
+	 * This only expects to be called in a single thread
+	 */
+	recursion_guard guard_against_recursion(const unit& u) const;
+//	recursion_guard guard_against_recursion(const attack_type& a) const;
+
+private:
+	std::string tag_;
+	std::string id_;
+	// abilities/specials inside [specials] tag follow a differnt syntax than in [abilities] tags, in paricular [filter_self] inside [specials] is equivalent to [filter_student] in abilities.
+	bool in_specials_tag_;
+	active_on_t active_on_;
+	apply_to_t apply_to_;
+	affects_allies_t affects_allies_;
+	bool affects_self_;
+	bool affects_enemies_;
+	double priority_;
+	config cfg_;
+
+	mutable bool currently_checked_;
+};
+
+
+/** Data typedef for active_ability_list. */
+struct active_ability
+{
+	active_ability(const ability_ptr& p_ability, map_location student_loc, map_location teacher_loc)
+		: student_loc(student_loc)
+		, teacher_loc(teacher_loc)
+		, p_ability_(p_ability)
+	{
+	}
+
+	/**
+	 * Used by the formula in the ability.
+	 * The REAL location of the student (not the 'we are assuming the student is at this position' location)
+	 * once active_ability_list can contain abilities from different 'students', as it contains abilities from
+	 * a unit aswell from its opponents (abilities with apply_to= opponent)
+	 */
+	map_location student_loc;
+	/**
+	 * The location of the teacher, that is the unit who owns the ability tags
+	 * (different from student because of [affect_adjacent])
+	 */
+	map_location teacher_loc;
+
+	const config& ability_cfg() const { return p_ability_->cfg(); }
+	const unit_ability_t& ability() const { return *p_ability_; }
+private:
+	/** The contents of the ability tag, never nullptr. */
+	const_ability_ptr p_ability_;
+};
+
+class active_ability_list
+{
+public:
+	active_ability_list(const map_location& loc = map_location()) : cfgs_(), loc_(loc) {}
+
+	// Implemented in unit_abilities.cpp
+	std::pair<int, map_location> highest(const std::string& key, int def = 0) const
+	{
+		return get_extremum(key, def, std::less<int>());
+	}
+	std::pair<int, map_location> lowest(const std::string& key, int def = 0) const
+	{
+		return get_extremum(key, def, std::greater<int>());
+	}
+
+	template<typename TComp>
+	std::pair<int, map_location> get_extremum(const std::string& key, int def, const TComp& comp) const;
+
+	// The following make this class usable with standard library algorithms and such
+	typedef std::vector<active_ability>::iterator       iterator;
+	typedef std::vector<active_ability>::const_iterator const_iterator;
+
+	iterator       begin() { return cfgs_.begin(); }
+	const_iterator begin() const { return cfgs_.begin(); }
+	iterator       end() { return cfgs_.end(); }
+	const_iterator end()   const { return cfgs_.end(); }
+
+	// Vector access
+	bool                empty() const { return cfgs_.empty(); }
+	active_ability& front() { return cfgs_.front(); }
+	const active_ability& front() const { return cfgs_.front(); }
+	active_ability& back() { return cfgs_.back(); }
+	const active_ability& back()  const { return cfgs_.back(); }
+	std::size_t         size() { return cfgs_.size(); }
+
+	iterator erase(const iterator& erase_it) { return cfgs_.erase(erase_it); }
+	iterator erase(const iterator& first, const iterator& last) { return cfgs_.erase(first, last); }
+
+	template<typename... T>
+	void emplace_back(T&&... args) { cfgs_.emplace_back(args...); }
+
+	const map_location& loc() const { return loc_; }
+
+	/** Appends the abilities from @a other to @a this, ignores other.loc() */
+	void append(const active_ability_list& other)
+	{
+		std::copy(other.begin(), other.end(), std::back_inserter(cfgs_));
+	}
+
+	/**
+	 * Appends any abilities from @a other for which the given condition returns true to @a this, ignores other.loc().
+	 *
+	 * @param other where to copy the elements from
+	 * @param predicate a single-argument function that takes a reference to an element and returns a bool
+	 */
+	template<typename Predicate>
+	void append_if(const active_ability_list& other, const Predicate& predicate)
+	{
+		std::copy_if(other.begin(), other.end(), std::back_inserter(cfgs_), predicate);
+	}
+
+private:
+	// Data
+	std::vector<active_ability> cfgs_;
+	map_location loc_;
+};
 
 namespace unit_abilities
 {
@@ -31,15 +256,6 @@ bool filter_base_matches(const config& cfg, int def);
 enum value_modifier {NOT_USED,SET,ADD,MUL,DIV};
 
 enum EFFECTS { EFFECT_DEFAULT=1, EFFECT_CUMULABLE=2, EFFECT_WITHOUT_CLAMP_MIN_MAX=3 };
-
-/**
- * Substitute gettext variables in name and description of abilities and specials
- * @param str                  The string in which the substitution is to be done
- * @param ab                   The special (for example  [plague][/plague] etc.)
- *
- * @return The string `str` with all gettext variables substitutes with corresponding special properties
- */
-std::string substitute_variables(const std::string& str, const unit_ability_t& ab);
 
 struct individual_effect
 {
@@ -69,6 +285,8 @@ class effect
 		const_iterator end() const
 		{ return effect_list_.end(); }
 	private:
+		/** Part of the constructor, calculates for a group of abilities with equal priority. */
+		void effect_impl(const active_ability_list& list, int def, const const_attack_ptr& att, EFFECTS wham);
 		std::vector<individual_effect> effect_list_;
 		int composite_value_;
 		double composite_double_value_;

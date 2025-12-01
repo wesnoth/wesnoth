@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-10-20 20:10-0500\n"
+"POT-Creation-Date: 2025-11-17 20:02-0600\n"
 "PO-Revision-Date: 2024-11-07 16:01+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nillguine@gmail.com>\n"
 "Language-Team: Turkish <->\n"
@@ -265,11 +265,107 @@ msgstr ""
 msgid "Display a visual indicator above a defender when an attack misses."
 msgstr ""
 
+#. [message]: speaker=$unit.id|
+#. [message]: speaker=narrator
+#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:22
+#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:45
+#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:46
+msgid "Potion grants steadfast ability and 20% resistance to impact."
+msgstr ""
+
+#. [option]
+#. [button]: id=ok
+#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:24
+#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:100
+#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:171
+#: data/gui/themes/default/dialogs/install_dependencies.cfg:84
+msgid "Yes"
+msgstr "Evet"
+
+#. [object]: id={ID}
+#. [item]: id=potion-blue
+#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:28
+#: data/core/editor/items.cfg:546
+msgid "Blue Potion"
+msgstr "Mavi İksir"
+
+#. [object]: id={ID}
+#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:30
+msgid "A potion of unknown origin."
+msgstr ""
+
+#. [option]
+#. [button]: id=cancel
+#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:69
+#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:140
+#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:212
+#: data/gui/themes/default/dialogs/install_dependencies.cfg:95
+msgid "No"
+msgstr "Hayır"
+
+#. [message]: speaker=$unit.id|
+#. [message]: speaker=narrator
+#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:98
+#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:121
+msgid "This magical branch grants +2 damage to melee attacks."
+msgstr ""
+
+#. [object]: id={ID}
+#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:104
+#, fuzzy
+#| msgid "Bare Branch"
+msgid "Wose Branch"
+msgstr "Çıplak Dal"
+
+#. [object]: id={ID}
+#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:106
+msgid "The magical branch of some great Wose."
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:169
+msgid "This unit will gain the stun weapon special on melee attacks."
+msgstr ""
+
+#. [object]: id={ID}
+#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:175
+#, fuzzy
+#| msgid "Legends of the North"
+msgid "Echoes of the Earth"
+msgstr "Kuzey Efsaneleri"
+
+#. [object]: id={ID}
+#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:177
+msgid "Powerful echoes from the bowels of the earth."
+msgstr ""
+
+#. [message]: speaker=$unit.id|
+#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:189
+msgid "The unit gains the stun weapon special on melee attacks."
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:207
+msgid ""
+"After $unit.name| absorbed the stone’s power, the monolith lost its magical "
+"properties."
+msgstr ""
+
+#. [chance_to_hit]: id=unerring
+#: data/campaigns/Dusk_of_Dawn/utils/weapon_specials.cfg:4
+msgid "unerring"
+msgstr ""
+
+#. [chance_to_hit]: id=unerring
+#: data/campaigns/Dusk_of_Dawn/utils/weapon_specials.cfg:5
+msgid "This attack never misses."
+msgstr ""
+
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
 #. [lua]: set_status
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:369
-#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:1057
+#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:955
 msgid "poisoned"
 msgstr "zehirlenmiş"
 
@@ -1018,11 +1114,6 @@ msgstr "Ork Bayrağı"
 msgid "Ornate"
 msgstr "Süs"
 
-#. [item]: id=potion-blue
-#: data/core/editor/items.cfg:546
-msgid "Blue Potion"
-msgstr "Mavi İksir"
-
 #. [item]: id=potion-green
 #: data/core/editor/items.cfg:553
 msgid "Green Potion"
@@ -1754,19 +1845,19 @@ msgid ""
 msgstr ""
 
 #. [damage]: id=absorb
-#: data/core/macros/deprecated-utils.cfg:416
+#: data/core/macros/deprecated-utils.cfg:415
 msgid "absorb"
 msgstr ""
 
 #. [damage]: id=absorb
-#: data/core/macros/deprecated-utils.cfg:417
+#: data/core/macros/deprecated-utils.cfg:416
 msgid ""
 "This attack puts the unit in good defensive position, and it absorbs some of "
 "the damage dealt by an enemy strike."
 msgstr ""
 
 #. [damage]: id=absorb
-#: data/core/macros/deprecated-utils.cfg:418
+#: data/core/macros/deprecated-utils.cfg:417
 msgid ""
 "This unit can block enemy strikes, so that it takes reduced damage when hit."
 msgstr ""
@@ -4340,16 +4431,6 @@ msgstr "Diğer Vesnot Sunucusu"
 msgid "Install Dependencies"
 msgstr "Kurulum Gereksinimleri"
 
-#. [button]: id=ok
-#: data/gui/themes/default/dialogs/install_dependencies.cfg:84
-msgid "Yes"
-msgstr "Evet"
-
-#. [button]: id=cancel
-#: data/gui/themes/default/dialogs/install_dependencies.cfg:95
-msgid "No"
-msgstr "Hayır"
-
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
 #: data/gui/themes/default/dialogs/screenshot_notification.cfg:95
@@ -4636,31 +4717,31 @@ msgstr "Geçersiz kullanım dışı bırakma seviyesi (1-4 arası olmalı)"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:1057
+#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:955
 msgid "female^poisoned"
 msgstr "zehirlendi"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1064
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:962
 msgid "female^slowed"
 msgstr "yavaşlatıldı"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1064
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:962
 msgid "slowed"
 msgstr "yavaşlatıldı"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1070
+#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:968
 msgid "female^petrified"
 msgstr "taşlaştı"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1070
+#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:968
 msgid "petrified"
 msgstr "taşlaştı"
 
@@ -5861,11 +5942,11 @@ msgstr ""
 msgid "waiting for^an advancement choice"
 msgstr "bir terfi seçeneği"
 
-#: src/actions/attack.cpp:579 src/actions/attack.cpp:1382
+#: src/actions/attack.cpp:477 src/actions/attack.cpp:1280
 msgid "An invalid attacker weapon got selected."
 msgstr "Geçersiz bir saldırgan silahı seçildi."
 
-#: src/actions/attack.cpp:1077
+#: src/actions/attack.cpp:975
 #, fuzzy
 #| msgid "Attacks: "
 msgid "attack^miss"
@@ -6967,7 +7048,7 @@ msgid "Reserved"
 msgstr "Kayıtlı"
 
 #: src/game_initialization/create_engine.cpp:74
-#: src/game_initialization/create_engine.cpp:683
+#: src/game_initialization/create_engine.cpp:684
 msgid "Map could not be loaded: "
 msgstr "Harita yüklenemedi: "
 
@@ -7086,7 +7167,7 @@ msgid "mp_game_available_slots^Full"
 msgstr "Dolu"
 
 #: src/game_initialization/lobby_data.cpp:369
-#: src/game_initialization/lobby_data.cpp:371 src/savegame.cpp:585
+#: src/game_initialization/lobby_data.cpp:371 src/savegame.cpp:564
 msgid "Turn"
 msgstr "El"
 
@@ -7307,7 +7388,7 @@ msgid "No campaigns are available."
 msgstr "İşe yarar bir seferberlik yok."
 
 #: src/game_launcher.cpp:686 src/game_launcher.cpp:705
-#: src/hotkey/hotkey_handler_sp.cpp:324 src/replay.cpp:664 src/savegame.cpp:187
+#: src/hotkey/hotkey_handler_sp.cpp:324 src/replay.cpp:664 src/savegame.cpp:167
 msgid "The file you have tried to load is corrupt"
 msgstr "Yüklemeye çalıştığınız dosya bozuk"
 
@@ -7483,81 +7564,81 @@ msgstr "hayır"
 msgid "yes"
 msgstr "evet"
 
-#: src/help/help_impl.cpp:386
+#: src/help/help_impl.cpp:301
 msgid "Only available during a scenario."
 msgstr "Sadece senaryo sırasında var."
 
-#: src/help/help_impl.cpp:387 src/help/help_impl.cpp:426
+#: src/help/help_impl.cpp:302 src/help/help_impl.cpp:341
 msgid "Time of Day Schedule"
 msgstr "Günün Saati Zamanlaması"
 
-#: src/help/help_impl.cpp:417
+#: src/help/help_impl.cpp:332
 msgid "Lawful Bonus:"
 msgstr "Adil Ödülü:"
 
-#: src/help/help_impl.cpp:418
+#: src/help/help_impl.cpp:333
 msgid "Neutral Bonus:"
 msgstr "Tarafsız Ödülü:"
 
-#: src/help/help_impl.cpp:419
+#: src/help/help_impl.cpp:334
 msgid "Chaotic Bonus:"
 msgstr "Kaypak Ödülü:"
 
-#: src/help/help_impl.cpp:420
+#: src/help/help_impl.cpp:335
 msgid "Liminal Bonus:"
 msgstr "İntikalî Ödülü:"
 
-#: src/help/help_impl.cpp:421
+#: src/help/help_impl.cpp:336
 msgid "Schedule"
 msgstr "Program"
 
-#: src/help/help_impl.cpp:507
+#: src/help/help_impl.cpp:422
 #, fuzzy
 #| msgid "<header>text='Units with this special attack'</header>"
 msgid "Units with this special attack"
 msgstr "<header>text='Bu özel saldırıya sahip birimler'</header>"
 
-#: src/help/help_impl.cpp:568
+#: src/help/help_impl.cpp:483
 #, fuzzy
 #| msgid "<header>text='Units with this ability'</header>"
 msgid "Units with this ability"
 msgstr "<header>text='Bu yeteneğe sahip birimler'</header>"
 
-#: src/help/help_impl.cpp:604
+#: src/help/help_impl.cpp:519
 msgid "Factions"
 msgstr "Taraflar"
 
-#: src/help/help_impl.cpp:652
+#: src/help/help_impl.cpp:565
 msgid "Races: "
 msgstr "Irklar: "
 
-#: src/help/help_impl.cpp:661 src/help/help_impl.cpp:1109
+#: src/help/help_impl.cpp:574 src/help/help_impl.cpp:1021
 msgid "Alignments: "
 msgstr "Yönelimler: "
 
-#: src/help/help_impl.cpp:668
+#: src/help/help_impl.cpp:581
 msgid "Leaders"
 msgstr "Liderler"
 
-#: src/help/help_impl.cpp:677
+#: src/help/help_impl.cpp:590
 msgid "Recruits"
 msgstr "Askere alımlar"
 
-#: src/help/help_impl.cpp:762 src/units/types.cpp:444
+#: src/help/help_impl.cpp:675 src/units/types.cpp:449
 msgid "No description available."
 msgstr "Bu konuda bir açıklama yok."
 
-#: src/help/help_impl.cpp:872 src/help/help_impl.cpp:1086
+#: src/help/help_impl.cpp:784 src/help/help_impl.cpp:998
 msgid "race^Miscellaneous"
 msgstr "Çeşitli"
 
-#: src/help/help_impl.cpp:1109
+#: src/help/help_impl.cpp:1021
 msgid "Alignment: "
 msgstr "Yönelim: "
 
 #. TRANSLATORS: this is expected to say "[Dunefolk are] a group of units, all of whom are Humans",
 #. or "[Quenoth Elves are] a group of units, all of whom are Elves".
-#: src/help/help_impl.cpp:1128
+#: src/help/help_impl.cpp:1040
 #, fuzzy
 #| msgid ""
 #| "This is a group of units, all of whom are <ref>dst='$topic_id' "
@@ -7568,25 +7649,25 @@ msgid ""
 msgstr ""
 "Bu birim grubunu <ref>dst='$topic_id' text='$help_taxonomy'</ref> oluşturur."
 
-#: src/help/help_impl.cpp:1133
+#: src/help/help_impl.cpp:1045
 #, fuzzy
 #| msgid "<header>text='Subgroups of units within this group'</header>"
 msgid "Subgroups of units within this group"
 msgstr "<header>text='Bu grubun altındaki birim grupları'</header>"
 
-#: src/help/help_impl.cpp:1135
+#: src/help/help_impl.cpp:1047
 #, fuzzy
 #| msgid "<header>text='Groups of units within this race'</header>"
 msgid "Groups of units within this race"
 msgstr "<header>text='Bu ırkın birim grupları'</header>"
 
-#: src/help/help_impl.cpp:1144
+#: src/help/help_impl.cpp:1056
 #, fuzzy
 #| msgid "<header>text='Units of this group'</header>"
 msgid "Units of this group"
 msgstr "<header>text='Bu grubun birimleri'</header>"
 
-#: src/help/help_impl.cpp:1146
+#: src/help/help_impl.cpp:1058
 #, fuzzy
 #| msgid "<header>text='Units of this race'</header>"
 msgid "Units of this race"
@@ -8991,42 +9072,42 @@ msgstr "Kaypak birimler: "
 msgid "Liminal units:"
 msgstr "İntikalî birimler: "
 
-#: src/reports.cpp:1488
+#: src/reports.cpp:1485
 msgid "Turn Number"
 msgstr "El Numarası"
 
-#: src/reports.cpp:1492
+#: src/reports.cpp:1489
 msgid ""
 "When the game exceeds the number of turns indicated by the second number, it "
 "will end."
 msgstr "Oyun 2. sayının belirttiği tur sayısını aşınca sona erecektir."
 
-#: src/reports.cpp:1515
+#: src/reports.cpp:1512
 msgid "Gold"
 msgstr "Altın"
 
-#: src/reports.cpp:1515
+#: src/reports.cpp:1512
 msgid ""
 "The amount of gold currently available to recruit and maintain your army."
 msgstr "Askere alım ve ordunun bakımı için mevcut altın miktarı."
 
-#: src/reports.cpp:1533
+#: src/reports.cpp:1530
 msgid "The fraction of known villages that your side has captured."
 msgstr "Tarafınızın ele geçirdiği bilinen köylerin oranı."
 
-#: src/reports.cpp:1533
+#: src/reports.cpp:1530
 msgid "Villages"
 msgstr "Köyler"
 
-#: src/reports.cpp:1538
+#: src/reports.cpp:1535
 msgid "The total number of units on your side."
 msgstr "Tarafınızdaki toplam birim sayısı."
 
-#: src/reports.cpp:1538
+#: src/reports.cpp:1535
 msgid "Units"
 msgstr "Birimler"
 
-#: src/reports.cpp:1547
+#: src/reports.cpp:1544
 msgid ""
 "The expenses incurred at the end of every turn to maintain your army. The "
 "first number is the amount of gold that will be deducted. It is equal to the "
@@ -9039,15 +9120,15 @@ msgstr ""
 "toplamdır. İkinci sayı ise köy gelirlerinin kapattıkları da dahil toplam "
 "bakım masrafı — yani köyleriniz olmasaydı eksilecek altın miktarı."
 
-#: src/reports.cpp:1547
+#: src/reports.cpp:1544
 msgid "Upkeep"
 msgstr "Gider"
 
-#: src/reports.cpp:1577
+#: src/reports.cpp:1574
 msgid "Net Income"
 msgstr "Net Gelir"
 
-#: src/reports.cpp:1577
+#: src/reports.cpp:1574
 msgid ""
 "The net amount of gold you gain or lose each turn, taking into account "
 "income from controlled villages and payment of upkeep."
@@ -9055,23 +9136,23 @@ msgstr ""
 "Elinizde bulunan köylerden her el kazandığınız net altın miktarı, ya da "
 "birim bakımı için her el kaybettiğiniz altın miktarı."
 
-#: src/reports.cpp:1778
+#: src/reports.cpp:1774
 msgid "Observers:"
 msgstr "Seyirciler:"
 
-#: src/reports.cpp:1795
+#: src/reports.cpp:1791
 msgid "Clock"
 msgstr "Saat"
 
-#: src/reports.cpp:1806
+#: src/reports.cpp:1802
 msgid "Battery"
 msgstr "Pil"
 
-#: src/reports.cpp:1850
+#: src/reports.cpp:1846
 msgid "Countdown until your turn automatically ends."
 msgstr "Elinizin kendiliğinden bitmesine geri sayım."
 
-#: src/reports.cpp:1850
+#: src/reports.cpp:1846
 msgid "Turn Countdown"
 msgstr "El geri sayımı"
 
@@ -9088,16 +9169,16 @@ msgid "%a %b %d %Y, %H:%M"
 msgstr "%a %d %b %Y, %H:%M"
 
 #. TRANSLATORS: This string is used as part of a filename, as in, "HttT-The Elves Besieged replay.gz"
-#: src/save_index.cpp:265 src/savegame.cpp:511
+#: src/save_index.cpp:265 src/savegame.cpp:490
 msgid "replay"
 msgstr "tekrar"
 
-#: src/save_index.cpp:343 src/savegame.cpp:66 src/savegame.cpp:547
-#: src/savegame.cpp:549
+#: src/save_index.cpp:343 src/savegame.cpp:66 src/savegame.cpp:526
+#: src/savegame.cpp:528
 msgid "Auto-Save"
 msgstr "Otomatik Kayıt"
 
-#: src/savegame.cpp:143
+#: src/savegame.cpp:123
 msgid ""
 "This save is from an old, unsupported version ($version_number|) and cannot "
 "be loaded."
@@ -9105,7 +9186,7 @@ msgstr ""
 "Bu kayıtlı oyun desteklenmeyen ($version_number|) bir sürümden ve "
 "yüklenemedi."
 
-#: src/savegame.cpp:152
+#: src/savegame.cpp:132
 msgid ""
 "This save is from a different version of the game ($version_number|), and "
 "might not work with this version.\n"
@@ -9137,35 +9218,35 @@ msgstr ""
 "\n"
 "Devam etmek istiyor musunuz?"
 
-#: src/savegame.cpp:166 src/savegame.cpp:259
+#: src/savegame.cpp:146 src/savegame.cpp:239
 msgid "Load Game"
 msgstr "Oyun Yükle"
 
-#: src/savegame.cpp:259
+#: src/savegame.cpp:239
 msgid "Replays are not supported in multiplayer mode."
 msgstr "Çok oyunculu kipte yeniden oynatmalar desteklenmiyor."
 
-#: src/savegame.cpp:266
+#: src/savegame.cpp:246
 msgid "This is not a multiplayer save."
 msgstr "Bu çok oyunculu bir oyun kaydı değil."
 
-#: src/savegame.cpp:289
+#: src/savegame.cpp:268
 msgid "The game could not be saved: "
 msgstr "Oyun kaydedilemedi: "
 
-#: src/savegame.cpp:358
+#: src/savegame.cpp:337
 msgid "Name: "
 msgstr "İsim: "
 
-#: src/savegame.cpp:358
+#: src/savegame.cpp:337
 msgid "Save already exists. Do you want to overwrite it?"
 msgstr "Kayıt zaten mevcut. Üzerine yazmak istiyor musun?"
 
-#: src/savegame.cpp:359
+#: src/savegame.cpp:338
 msgid "Overwrite?"
 msgstr "Üzerine yazılsın mı?"
 
-#: src/savegame.cpp:366
+#: src/savegame.cpp:345
 #, fuzzy
 #| msgid ""
 #| "Save names should not end on '.gz' or '.bz2'. Please remove the extension."
@@ -9173,7 +9254,7 @@ msgid ""
 "Save names should not end with ‘.gz’ or ‘.bz2’. Please remove the extension."
 msgstr "Kayıt isimleri ‘.gz’ veya '.bz2.' ile bitemez. Lütfen uzantıyı silin."
 
-#: src/savegame.cpp:371
+#: src/savegame.cpp:350
 msgid ""
 "Save names may not end with a dot, or contain two dots or any of the "
 "following characters:\n"
@@ -9183,31 +9264,31 @@ msgstr ""
 "karakterleri ve iki nokta yanyana içeremez.\n"
 "    \" * / : < > ? \\ | ~"
 
-#: src/savegame.cpp:419
+#: src/savegame.cpp:398
 msgid "Saved"
 msgstr "Kaydedildi"
 
-#: src/savegame.cpp:419
+#: src/savegame.cpp:398
 msgid "The game has been saved."
 msgstr "Oyun kaydedildi."
 
-#: src/savegame.cpp:451 src/savegame.cpp:468
+#: src/savegame.cpp:430 src/savegame.cpp:447
 msgid "Could not write to file"
 msgstr "Dosyaya yazılamadı"
 
-#: src/savegame.cpp:503
+#: src/savegame.cpp:482
 msgid "Save Replay"
 msgstr "Oyun Tekrarını Kaydet"
 
-#: src/savegame.cpp:529
+#: src/savegame.cpp:508
 msgid "Could not auto save the game. Please save the game manually."
 msgstr "Oyun otomatik kaydedilemedi. Lütfen elle kaydedin."
 
-#: src/savegame.cpp:579
+#: src/savegame.cpp:558
 msgid "Save Game"
 msgstr "Oyunu Kaydet"
 
-#: src/savegame.cpp:593
+#: src/savegame.cpp:572
 msgid "Game state is corrupted"
 msgstr "Oyun durumu bozulmuş"
 
@@ -9436,34 +9517,34 @@ msgstr "Taslak Günün Saati"
 msgid "This Time of Day is only a Stub!"
 msgstr "Günün bu saati daha bir taslak!"
 
-#: src/units/abilities.cpp:1052
+#: src/units/abilities.cpp:978
 msgid "Owned: "
 msgstr "Bizimki: "
 
 #. TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
-#: src/units/abilities.cpp:1056
+#: src/units/abilities.cpp:982
 msgid "Taught: "
 msgstr "Öğretilen: "
 
 #. TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
-#: src/units/abilities.cpp:1060
+#: src/units/abilities.cpp:986
 msgid "Taught: (by an enemy): "
 msgstr "Öğretilen (düşman tarafından): "
 
-#: src/units/abilities.cpp:1073
+#: src/units/abilities.cpp:999
 msgid "Used by opponent: "
 msgstr "Rakip tarafından kullanılan: "
 
-#: src/units/attack_type.cpp:110
+#: src/units/attack_type.cpp:222
 msgid "Accuracy:"
 msgstr "İsabetlilik:"
 
-#: src/units/attack_type.cpp:113
+#: src/units/attack_type.cpp:225
 msgid "Parry:"
 msgstr "Savuştur:"
 
 #. TRANSLATORS: Current value for WML code set_min_range, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:485
+#: src/units/attack_type.cpp:597
 #, fuzzy
 #| msgid "$number damage"
 #| msgid_plural "$number damage"
@@ -9471,7 +9552,7 @@ msgid "$number min range"
 msgstr "$number hasar"
 
 #. TRANSLATORS: Current value for WML code increase_min_range, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:492
+#: src/units/attack_type.cpp:604
 #, fuzzy
 #| msgid "<span color=\"$color\">$number_or_percent</span> damage"
 #| msgid_plural "<span color=\"$color\">$number_or_percent</span> damage"
@@ -9479,7 +9560,7 @@ msgid "<span color=\"$color\">$number_or_percent</span> min range"
 msgstr "<span color=\"$color\">$number_or_percent</span> hasar"
 
 #. TRANSLATORS: Current value for WML code set_max_range, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:499
+#: src/units/attack_type.cpp:611
 #, fuzzy
 #| msgid "$number damage"
 #| msgid_plural "$number damage"
@@ -9487,7 +9568,7 @@ msgid "$number max range"
 msgstr "$number hasar"
 
 #. TRANSLATORS: Current value for WML code increase_max_range, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:506
+#: src/units/attack_type.cpp:618
 #, fuzzy
 #| msgid "<span color=\"$color\">$number_or_percent</span> damage"
 #| msgid_plural "<span color=\"$color\">$number_or_percent</span> damage"
@@ -9495,75 +9576,75 @@ msgid "<span color=\"$color\">$number_or_percent</span> max range"
 msgstr "<span color=\"$color\">$number_or_percent</span> hasar"
 
 #. TRANSLATORS: Current value for WML code increase_damage, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:513
+#: src/units/attack_type.cpp:625
 msgid "<span color=\"$color\">$number_or_percent</span> damage"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> damage"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> hasar"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> hasar"
 
-#: src/units/attack_type.cpp:522
+#: src/units/attack_type.cpp:634
 msgid "$number damage"
 msgid_plural "$number damage"
 msgstr[0] "$number hasar"
 msgstr[1] "$number hasar"
 
 #. TRANSLATORS: Current value for WML code increase_attacks, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:531
+#: src/units/attack_type.cpp:643
 msgid "<span color=\"$color\">$number_or_percent</span> strike"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> strikes"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> vuruş"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> vuruş"
 
 #. TRANSLATORS: Current value for WML code set_attacks, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:540
+#: src/units/attack_type.cpp:652
 msgid "$number strike"
 msgid_plural "$number strikes"
 msgstr[0] "$number vuruş"
 msgstr[1] "$number vuruş"
 
 #. TRANSLATORS: Current value for WML code set_accuracy, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:549
+#: src/units/attack_type.cpp:661
 msgid "$number| accuracy"
 msgstr "$number isabetlilik"
 
 #. TRANSLATORS: Current value for WML code increase_accuracy, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:556
+#: src/units/attack_type.cpp:668
 msgid "<span color=\"$color\">$number_or_percent|%</span> accuracy"
 msgstr "<span color=\"$color\">%$number_or_percent</span> isabetlilik"
 
 #. TRANSLATORS: Current value for WML code set_parry, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:563
+#: src/units/attack_type.cpp:675
 msgid "$number parry"
 msgstr "$number savuşturma"
 
 #. TRANSLATORS: Current value for WML code increase_parry, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:570
+#: src/units/attack_type.cpp:682
 msgid "<span color=\"$color\">$number_or_percent</span> parry"
 msgstr "<span color=\"$color\">$number_or_percent</span> savuşturma"
 
 #. TRANSLATORS: Current value for WML code set_movement_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:577
+#: src/units/attack_type.cpp:689
 msgid "$number movement point"
 msgid_plural "$number movement points"
 msgstr[0] "$number hareket"
 msgstr[1] "$number hareket"
 
 #. TRANSLATORS: Current value for WML code increase_movement_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:586
+#: src/units/attack_type.cpp:698
 msgid "<span color=\"$color\">$number_or_percent</span> movement point"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> movement points"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> hareket"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> hareket sayıları"
 
 #. TRANSLATORS: Current value for WML code set_attacks_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:595
+#: src/units/attack_type.cpp:707
 msgid "$number attack used"
 msgid_plural "$number attacks used"
 msgstr[0] "$number saldırı yapıldı"
 msgstr[1] "$number hasar"
 
 #. TRANSLATORS: Current value for WML code increase_attacks_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:604
+#: src/units/attack_type.cpp:716
 msgid "<span color=\"$color\">$number_or_percent</span> attack used"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> attacks used"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> saldırı yapıldı"
@@ -9600,88 +9681,88 @@ msgstr "Bu birimi askere almak için yeterli altınınız yok."
 msgid "The $unit_type is not available to recruit."
 msgstr "Askere alabilecek birimin yok."
 
-#: src/units/types.cpp:802 src/units/types.cpp:810
+#: src/units/types.cpp:804 src/units/types.cpp:812
 msgid "female^lawful"
 msgstr "adil"
 
-#: src/units/types.cpp:804
+#: src/units/types.cpp:806
 msgid "female^neutral"
 msgstr "tarafsız"
 
-#: src/units/types.cpp:806
+#: src/units/types.cpp:808
 msgid "female^chaotic"
 msgstr "kaypak"
 
-#: src/units/types.cpp:808
+#: src/units/types.cpp:810
 msgid "female^liminal"
 msgstr "intikalî"
 
-#: src/units/types.cpp:816 src/units/types.cpp:824
+#: src/units/types.cpp:818 src/units/types.cpp:826
 msgid "lawful"
 msgstr "adil"
 
-#: src/units/types.cpp:818
+#: src/units/types.cpp:820
 msgid "neutral"
 msgstr "tarafsız"
 
-#: src/units/types.cpp:820
+#: src/units/types.cpp:822
 msgid "chaotic"
 msgstr "kaypak"
 
-#: src/units/types.cpp:822
+#: src/units/types.cpp:824
 msgid "liminal"
 msgstr "intikalî"
 
-#: src/units/unit.cpp:361
+#: src/units/unit.cpp:364
 #, fuzzy
 #| msgid "This unit has no usable weapons."
 msgid "This unit cannot be dismissed."
 msgstr "Birimin kullanılabilir bir silahı yok."
 
-#: src/units/unit.cpp:749
+#: src/units/unit.cpp:752
 #, fuzzy
 #| msgid "This unit is invulnerable. It cannot be harmed by any attack."
 msgid "This unit is a leader and cannot be dismissed."
 msgstr "Bu birim yaralanmaz. Hiçbir saldırı ona zarar veremez."
 
-#: src/units/unit.cpp:2007
+#: src/units/unit.cpp:2009
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/units/unit.cpp:2013
+#: src/units/unit.cpp:2015
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "<span color=\"$color\">$number_or_percent</span> YP"
 
-#: src/units/unit.cpp:2023
+#: src/units/unit.cpp:2025
 msgid "<span color=\"$color\">$number_or_percent</span> move"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> hareket"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> hareket"
 
-#: src/units/unit.cpp:2029
+#: src/units/unit.cpp:2031
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "<span color=\"$color\">$number_or_percent</span> görüş"
 
-#: src/units/unit.cpp:2033
+#: src/units/unit.cpp:2035
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "<span color=\"$color\">$number_or_percent</span> sıkıştırma"
 
-#: src/units/unit.cpp:2038
+#: src/units/unit.cpp:2040
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "Terfi için <span color=\"$color\">$number_or_percent</span> TP"
 
-#: src/units/unit.cpp:2042
+#: src/units/unit.cpp:2044
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
 msgid_plural ""
 "<span color=\"$color\">$number_or_percent</span> attacks per turn"
 msgstr[0] "El başına <span color=\"$color\">$number_or_percent</span> saldırı"
 msgstr[1] "El başına <span color=\"$color\">$number_or_percent</span> saldırı"
 
-#: src/units/unit.cpp:2049
+#: src/units/unit.cpp:2051
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "<span color=\"$color\">$number_or_percent</span> çağırma bedeli"
 
-#: src/units/unit.cpp:2534
+#: src/units/unit.cpp:2557
 msgid "$effect_description per level"
 msgstr "seviye başına $effect_description"
 

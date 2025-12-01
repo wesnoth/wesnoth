@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bn\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-10-20 20:10-0500\n"
+"POT-Creation-Date: 2025-11-17 20:02-0600\n"
 "PO-Revision-Date: 2025-07-20 16:54+0530\n"
 "Last-Translator: Subhraman Sarkar <suvrax@gmail.com>\n"
 "Language-Team: Bengali < >\n"
@@ -262,11 +262,107 @@ msgstr ""
 msgid "Display a visual indicator above a defender when an attack misses."
 msgstr ""
 
+#. [message]: speaker=$unit.id|
+#. [message]: speaker=narrator
+#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:22
+#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:45
+#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:46
+msgid "Potion grants steadfast ability and 20% resistance to impact."
+msgstr ""
+
+#. [option]
+#. [button]: id=ok
+#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:24
+#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:100
+#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:171
+#: data/gui/themes/default/dialogs/install_dependencies.cfg:84
+msgid "Yes"
+msgstr "হ্যাঁ"
+
+#. [object]: id={ID}
+#. [item]: id=potion-blue
+#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:28
+#: data/core/editor/items.cfg:546
+msgid "Blue Potion"
+msgstr "নীল তরল"
+
+#. [object]: id={ID}
+#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:30
+msgid "A potion of unknown origin."
+msgstr ""
+
+#. [option]
+#. [button]: id=cancel
+#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:69
+#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:140
+#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:212
+#: data/gui/themes/default/dialogs/install_dependencies.cfg:95
+msgid "No"
+msgstr "না"
+
+#. [message]: speaker=$unit.id|
+#. [message]: speaker=narrator
+#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:98
+#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:121
+msgid "This magical branch grants +2 damage to melee attacks."
+msgstr ""
+
+#. [object]: id={ID}
+#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:104
+#, fuzzy
+#| msgid "Bare Branch"
+msgid "Wose Branch"
+msgstr "পত্রহীন শাখা"
+
+#. [object]: id={ID}
+#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:106
+msgid "The magical branch of some great Wose."
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:169
+msgid "This unit will gain the stun weapon special on melee attacks."
+msgstr ""
+
+#. [object]: id={ID}
+#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:175
+#, fuzzy
+#| msgid "Legends of the North"
+msgid "Echoes of the Earth"
+msgstr "লেজেন্ডস্ অফ নর্থ"
+
+#. [object]: id={ID}
+#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:177
+msgid "Powerful echoes from the bowels of the earth."
+msgstr ""
+
+#. [message]: speaker=$unit.id|
+#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:189
+msgid "The unit gains the stun weapon special on melee attacks."
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:207
+msgid ""
+"After $unit.name| absorbed the stone’s power, the monolith lost its magical "
+"properties."
+msgstr ""
+
+#. [chance_to_hit]: id=unerring
+#: data/campaigns/Dusk_of_Dawn/utils/weapon_specials.cfg:4
+msgid "unerring"
+msgstr ""
+
+#. [chance_to_hit]: id=unerring
+#: data/campaigns/Dusk_of_Dawn/utils/weapon_specials.cfg:5
+msgid "This attack never misses."
+msgstr ""
+
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
 #. [lua]: set_status
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:369
-#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:1057
+#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:955
 msgid "poisoned"
 msgstr "বিষাক্ত"
 
@@ -1015,11 +1111,6 @@ msgstr "ওর্ক পতাকা"
 msgid "Ornate"
 msgstr "অলঙ্কৃত"
 
-#. [item]: id=potion-blue
-#: data/core/editor/items.cfg:546
-msgid "Blue Potion"
-msgstr "নীল তরল"
-
 #. [item]: id=potion-green
 #: data/core/editor/items.cfg:553
 msgid "Green Potion"
@@ -1754,12 +1845,12 @@ msgstr ""
 "এই ইউনিটটির রক্ষণাত্মক কৌশল প্রতিপক্ষের দ্বারা সফল আক্রমণের সম্ভাবনা কমিয়ে দেয় ।"
 
 #. [damage]: id=absorb
-#: data/core/macros/deprecated-utils.cfg:416
+#: data/core/macros/deprecated-utils.cfg:415
 msgid "absorb"
 msgstr "শোষণ"
 
 #. [damage]: id=absorb
-#: data/core/macros/deprecated-utils.cfg:417
+#: data/core/macros/deprecated-utils.cfg:416
 msgid ""
 "This attack puts the unit in good defensive position, and it absorbs some of "
 "the damage dealt by an enemy strike."
@@ -1768,7 +1859,7 @@ msgstr ""
 "দ্বারা হওয়া ক্ষতির কিছুটা শোষণ করে নেয় ।"
 
 #. [damage]: id=absorb
-#: data/core/macros/deprecated-utils.cfg:418
+#: data/core/macros/deprecated-utils.cfg:417
 msgid ""
 "This unit can block enemy strikes, so that it takes reduced damage when hit."
 msgstr ""
@@ -3350,16 +3441,6 @@ msgstr "অন্য ওয়েসনথ সার্ভার"
 msgid "Install Dependencies"
 msgstr "নির্ভরশীলতাগুলি ইনস্টল করুন"
 
-#. [button]: id=ok
-#: data/gui/themes/default/dialogs/install_dependencies.cfg:84
-msgid "Yes"
-msgstr "হ্যাঁ"
-
-#. [button]: id=cancel
-#: data/gui/themes/default/dialogs/install_dependencies.cfg:95
-msgid "No"
-msgstr "না"
-
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
 #: data/gui/themes/default/dialogs/screenshot_notification.cfg:95
@@ -3636,31 +3717,31 @@ msgstr "অবৈধ ডেপ্রিকেশন পর্যায় (1-4-এ�
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:1057
+#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:955
 msgid "female^poisoned"
 msgstr "বিষক্রিয়া"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1064
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:962
 msgid "female^slowed"
 msgstr "ধীরগতি"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:1064
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:962
 msgid "slowed"
 msgstr "ধীরগতি"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1070
+#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:968
 msgid "female^petrified"
 msgstr "প্রস্তরীভূত"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:1070
+#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:968
 msgid "petrified"
 msgstr "প্রস্তরীভূত"
 
@@ -4831,11 +4912,11 @@ msgstr ""
 msgid "waiting for^an advancement choice"
 msgstr "উন্নয়ণ পছন্দের জন্য অপেক্ষা করা হচ্ছে"
 
-#: src/actions/attack.cpp:579 src/actions/attack.cpp:1382
+#: src/actions/attack.cpp:477 src/actions/attack.cpp:1280
 msgid "An invalid attacker weapon got selected."
 msgstr "অবৈধ আক্রমণকারী অস্ত্র নির্বাচিত করা হয়েছে ।"
 
-#: src/actions/attack.cpp:1077
+#: src/actions/attack.cpp:975
 #, fuzzy
 #| msgid "Attacks: "
 msgid "attack^miss"
@@ -5913,7 +5994,7 @@ msgid "Reserved"
 msgstr "সংরক্ষিত"
 
 #: src/game_initialization/create_engine.cpp:74
-#: src/game_initialization/create_engine.cpp:683
+#: src/game_initialization/create_engine.cpp:684
 msgid "Map could not be loaded: "
 msgstr "মানচিত্র খোলা যাচ্ছে না: "
 
@@ -6028,7 +6109,7 @@ msgid "mp_game_available_slots^Full"
 msgstr "ভর্তি"
 
 #: src/game_initialization/lobby_data.cpp:369
-#: src/game_initialization/lobby_data.cpp:371 src/savegame.cpp:585
+#: src/game_initialization/lobby_data.cpp:371 src/savegame.cpp:564
 msgid "Turn"
 msgstr "দান"
 
@@ -6237,7 +6318,7 @@ msgid "No campaigns are available."
 msgstr "কোনো অভিযান নেই ।"
 
 #: src/game_launcher.cpp:686 src/game_launcher.cpp:705
-#: src/hotkey/hotkey_handler_sp.cpp:324 src/replay.cpp:664 src/savegame.cpp:187
+#: src/hotkey/hotkey_handler_sp.cpp:324 src/replay.cpp:664 src/savegame.cpp:167
 msgid "The file you have tried to load is corrupt"
 msgstr "আপনি যে ফাইলটি খোলার চেষ্টা করেছেন তা ত্রুটিযুক্ত"
 
@@ -6404,77 +6485,77 @@ msgstr "না"
 msgid "yes"
 msgstr "হ্যাঁ"
 
-#: src/help/help_impl.cpp:386
+#: src/help/help_impl.cpp:301
 msgid "Only available during a scenario."
 msgstr "শুধুমাত্র ঘটনাক্রমের সময়েই পাওয়া যাবে ।"
 
-#: src/help/help_impl.cpp:387 src/help/help_impl.cpp:426
+#: src/help/help_impl.cpp:302 src/help/help_impl.cpp:341
 msgid "Time of Day Schedule"
 msgstr "দৈনিক সময়সূচী"
 
-#: src/help/help_impl.cpp:417
+#: src/help/help_impl.cpp:332
 msgid "Lawful Bonus:"
 msgstr "নৈতিক অতিরিক্ত:"
 
-#: src/help/help_impl.cpp:418
+#: src/help/help_impl.cpp:333
 msgid "Neutral Bonus:"
 msgstr "নিরপেক্ষ অতিরিক্ত:"
 
-#: src/help/help_impl.cpp:419
+#: src/help/help_impl.cpp:334
 msgid "Chaotic Bonus:"
 msgstr "অনৈতিক অতিরিক্ত:"
 
-#: src/help/help_impl.cpp:420
+#: src/help/help_impl.cpp:335
 msgid "Liminal Bonus:"
 msgstr "মধ্যবর্তী অতিরিক্ত:"
 
-#: src/help/help_impl.cpp:421
+#: src/help/help_impl.cpp:336
 msgid "Schedule"
 msgstr "সময়সূচী"
 
-#: src/help/help_impl.cpp:507
+#: src/help/help_impl.cpp:422
 msgid "Units with this special attack"
 msgstr "এই বিশেষ আক্রমণযুক্ত ইউনিটগুলি"
 
-#: src/help/help_impl.cpp:568
+#: src/help/help_impl.cpp:483
 msgid "Units with this ability"
 msgstr "এই দক্ষতাবিশিষ্ট ইউনিটগুলি"
 
-#: src/help/help_impl.cpp:604
+#: src/help/help_impl.cpp:519
 msgid "Factions"
 msgstr "বিভাগগুলি"
 
-#: src/help/help_impl.cpp:652
+#: src/help/help_impl.cpp:565
 msgid "Races: "
 msgstr "জাতিসমূহ:"
 
-#: src/help/help_impl.cpp:661 src/help/help_impl.cpp:1109
+#: src/help/help_impl.cpp:574 src/help/help_impl.cpp:1021
 msgid "Alignments: "
 msgstr "প্রবণতাগুলি:"
 
-#: src/help/help_impl.cpp:668
+#: src/help/help_impl.cpp:581
 msgid "Leaders"
 msgstr "দলনেতা"
 
-#: src/help/help_impl.cpp:677
+#: src/help/help_impl.cpp:590
 msgid "Recruits"
 msgstr "নিয়োগগুলি"
 
-#: src/help/help_impl.cpp:762 src/units/types.cpp:444
+#: src/help/help_impl.cpp:675 src/units/types.cpp:449
 msgid "No description available."
 msgstr "কোনো বর্ণনা নেই ।"
 
-#: src/help/help_impl.cpp:872 src/help/help_impl.cpp:1086
+#: src/help/help_impl.cpp:784 src/help/help_impl.cpp:998
 msgid "race^Miscellaneous"
 msgstr "বিভিন্ন"
 
-#: src/help/help_impl.cpp:1109
+#: src/help/help_impl.cpp:1021
 msgid "Alignment: "
 msgstr "স্বভাব: "
 
 #. TRANSLATORS: this is expected to say "[Dunefolk are] a group of units, all of whom are Humans",
 #. or "[Quenoth Elves are] a group of units, all of whom are Elves".
-#: src/help/help_impl.cpp:1128
+#: src/help/help_impl.cpp:1040
 msgid ""
 "This is a group of units, all of whom are <ref "
 "dst='$topic_id'>$help_taxonomy</ref>."
@@ -6482,19 +6563,19 @@ msgstr ""
 "এটি ইউনিটদের একটি গোষ্ঠী যাদের সকলে <ref dst='$topic_id'>$help_taxonomy</ref> "
 "।"
 
-#: src/help/help_impl.cpp:1133
+#: src/help/help_impl.cpp:1045
 msgid "Subgroups of units within this group"
 msgstr "এই গোষ্ঠীর মধ্যে থাকা ইউনিটদের উপগোষ্ঠীগুলি"
 
-#: src/help/help_impl.cpp:1135
+#: src/help/help_impl.cpp:1047
 msgid "Groups of units within this race"
 msgstr "এই জাতির মধ্যে থাকা ইউনিটদের গোষ্ঠীগুলি"
 
-#: src/help/help_impl.cpp:1144
+#: src/help/help_impl.cpp:1056
 msgid "Units of this group"
 msgstr "এই গোষ্ঠীর ইউনিটগুলি"
 
-#: src/help/help_impl.cpp:1146
+#: src/help/help_impl.cpp:1058
 msgid "Units of this race"
 msgstr "এই জাতির ইউনিটগুলি"
 
@@ -7822,11 +7903,11 @@ msgstr "অনৈতিক ইউনিট: "
 msgid "Liminal units:"
 msgstr "মধ্যবর্তী ইউনিট: "
 
-#: src/reports.cpp:1488
+#: src/reports.cpp:1485
 msgid "Turn Number"
 msgstr "দান সংখ্যা"
 
-#: src/reports.cpp:1492
+#: src/reports.cpp:1489
 msgid ""
 "When the game exceeds the number of turns indicated by the second number, it "
 "will end."
@@ -7834,34 +7915,34 @@ msgstr ""
 "যখন দ্বিতীয় সংখ্যাটির দ্বারা নির্দেশিত দানগুলি পেরিয়ে যাবে, তখন খেলাটি নিজের "
 "থেকেই শেষ হয়ে যাবে ।"
 
-#: src/reports.cpp:1515
+#: src/reports.cpp:1512
 msgid "Gold"
 msgstr "স্বর্ণ"
 
-#: src/reports.cpp:1515
+#: src/reports.cpp:1512
 msgid ""
 "The amount of gold currently available to recruit and maintain your army."
 msgstr ""
 "বর্তমানে আপনার সেনাবাহিনীতে নিয়োগ এবং তাদের খরচ বহনের জন্য যে পরিমাণ স্বর্ণ "
 "রয়েছে ।"
 
-#: src/reports.cpp:1533
+#: src/reports.cpp:1530
 msgid "The fraction of known villages that your side has captured."
 msgstr "জানা গ্রামের যে ভগ্নাংশ আপনার পক্ষ নিয়ন্ত্রণে আনতে পেরেছে"
 
-#: src/reports.cpp:1533
+#: src/reports.cpp:1530
 msgid "Villages"
 msgstr "গ্রাম"
 
-#: src/reports.cpp:1538
+#: src/reports.cpp:1535
 msgid "The total number of units on your side."
 msgstr "আপনার পক্ষে মোট ইউনিটের সংখ্যা ।"
 
-#: src/reports.cpp:1538
+#: src/reports.cpp:1535
 msgid "Units"
 msgstr "ইউনিট"
 
-#: src/reports.cpp:1547
+#: src/reports.cpp:1544
 msgid ""
 "The expenses incurred at the end of every turn to maintain your army. The "
 "first number is the amount of gold that will be deducted. It is equal to the "
@@ -7875,15 +7956,15 @@ msgstr ""
 "তা সহ — অন্যভাবে বলতে হলে, আপনি সব গ্রামগুলির নিয়ন্ত্রণ হারালে আপনার যে পরিমাণ "
 "খরচ হবে ।"
 
-#: src/reports.cpp:1547
+#: src/reports.cpp:1544
 msgid "Upkeep"
 msgstr "ব্যয়"
 
-#: src/reports.cpp:1577
+#: src/reports.cpp:1574
 msgid "Net Income"
 msgstr "মোট আয়"
 
-#: src/reports.cpp:1577
+#: src/reports.cpp:1574
 msgid ""
 "The net amount of gold you gain or lose each turn, taking into account "
 "income from controlled villages and payment of upkeep."
@@ -7891,23 +7972,23 @@ msgstr ""
 "প্রত্যেকটি নিয়ন্ত্রিত গ্রাম থেকে পাওয়া আয় এবং সেনাদলের জন্য ব্যয় মিলিয়ে, আপনি "
 "প্রত্যেক দানে যে পরিমাণ স্বর্ণ আয় বা ব্যয় করছেন ।"
 
-#: src/reports.cpp:1778
+#: src/reports.cpp:1774
 msgid "Observers:"
 msgstr "দর্শক:"
 
-#: src/reports.cpp:1795
+#: src/reports.cpp:1791
 msgid "Clock"
 msgstr "ঘড়ি"
 
-#: src/reports.cpp:1806
+#: src/reports.cpp:1802
 msgid "Battery"
 msgstr "ব্যাটারি"
 
-#: src/reports.cpp:1850
+#: src/reports.cpp:1846
 msgid "Countdown until your turn automatically ends."
 msgstr "আপনার দান শেষ হওয়া পর্যন্ত বিপরীত গণনা ।"
 
-#: src/reports.cpp:1850
+#: src/reports.cpp:1846
 msgid "Turn Countdown"
 msgstr "দানের বিপরীত গণনা"
 
@@ -7924,16 +8005,16 @@ msgid "%a %b %d %Y, %H:%M"
 msgstr "%H:%M, %a %b %d %Y"
 
 #. TRANSLATORS: This string is used as part of a filename, as in, "HttT-The Elves Besieged replay.gz"
-#: src/save_index.cpp:265 src/savegame.cpp:511
+#: src/save_index.cpp:265 src/savegame.cpp:490
 msgid "replay"
 msgstr "রিপ্লে"
 
-#: src/save_index.cpp:343 src/savegame.cpp:66 src/savegame.cpp:547
-#: src/savegame.cpp:549
+#: src/save_index.cpp:343 src/savegame.cpp:66 src/savegame.cpp:526
+#: src/savegame.cpp:528
 msgid "Auto-Save"
 msgstr "স্বয়ংক্রিয়-সঞ্চয়"
 
-#: src/savegame.cpp:143
+#: src/savegame.cpp:123
 msgid ""
 "This save is from an old, unsupported version ($version_number|) and cannot "
 "be loaded."
@@ -7941,7 +8022,7 @@ msgstr ""
 "এই সঞ্চয়টি একটি পুরোনো, অসমর্থিত সংস্করণ থেকে ($version_number|) এবং খোলা যাবে "
 "না ।"
 
-#: src/savegame.cpp:152
+#: src/savegame.cpp:132
 msgid ""
 "This save is from a different version of the game ($version_number|), and "
 "might not work with this version.\n"
@@ -7973,42 +8054,42 @@ msgstr ""
 "\n"
 "আপনি কি এগিয়ে যেতে চান?"
 
-#: src/savegame.cpp:166 src/savegame.cpp:259
+#: src/savegame.cpp:146 src/savegame.cpp:239
 msgid "Load Game"
 msgstr "খেলা খুলুন"
 
-#: src/savegame.cpp:259
+#: src/savegame.cpp:239
 msgid "Replays are not supported in multiplayer mode."
 msgstr "বহুখেলোয়াড় মোডে রিপ্লে ব্যবহার করা সম্ভব নয় ।"
 
-#: src/savegame.cpp:266
+#: src/savegame.cpp:246
 msgid "This is not a multiplayer save."
 msgstr "এটি একটি বহুখেলোয়াড় সঞ্চয় নয় ।"
 
-#: src/savegame.cpp:289
+#: src/savegame.cpp:268
 msgid "The game could not be saved: "
 msgstr "খেলাটি সঞ্চয় করা যাচ্ছে না: "
 
-#: src/savegame.cpp:358
+#: src/savegame.cpp:337
 msgid "Name: "
 msgstr "নাম: "
 
-#: src/savegame.cpp:358
+#: src/savegame.cpp:337
 msgid "Save already exists. Do you want to overwrite it?"
 msgstr "আগেই সঞ্চয় করা রয়েছে । আপনি কী সেটিকে পাল্টাতে চান?"
 
-#: src/savegame.cpp:359
+#: src/savegame.cpp:338
 msgid "Overwrite?"
 msgstr "পাল্টাবেন?"
 
-#: src/savegame.cpp:366
+#: src/savegame.cpp:345
 msgid ""
 "Save names should not end with ‘.gz’ or ‘.bz2’. Please remove the extension."
 msgstr ""
 "সঞ্চিত ফাইলের নাম ‘.gz’ বা ‘.bz2’-এ শেষ হওয়া উচিত নয় । অনুগ্রহ করে এক্সটেনশনটি "
 "সরান ।"
 
-#: src/savegame.cpp:371
+#: src/savegame.cpp:350
 msgid ""
 "Save names may not end with a dot, or contain two dots or any of the "
 "following characters:\n"
@@ -8018,31 +8099,31 @@ msgstr ""
 "অক্ষরগুলির কোনোটি থাকতে পারবে না :\n"
 "    \" * / : < > ? \\ | ~"
 
-#: src/savegame.cpp:419
+#: src/savegame.cpp:398
 msgid "Saved"
 msgstr "সঞ্চিত"
 
-#: src/savegame.cpp:419
+#: src/savegame.cpp:398
 msgid "The game has been saved."
 msgstr "খেলাটি সঞ্চিত হয়েছে ।"
 
-#: src/savegame.cpp:451 src/savegame.cpp:468
+#: src/savegame.cpp:430 src/savegame.cpp:447
 msgid "Could not write to file"
 msgstr "ফাইলে লেখা যায়নি"
 
-#: src/savegame.cpp:503
+#: src/savegame.cpp:482
 msgid "Save Replay"
 msgstr "রিপ্লে সঞ্চয় করুন"
 
-#: src/savegame.cpp:529
+#: src/savegame.cpp:508
 msgid "Could not auto save the game. Please save the game manually."
 msgstr "খেলাটি স্বয়ংক্রিয়ভাবে সঞ্চয় করা যায়নি । অনুগ্রহ করে আলাদা করে সঞ্চয় করুন ।"
 
-#: src/savegame.cpp:579
+#: src/savegame.cpp:558
 msgid "Save Game"
 msgstr "খেলা সঞ্চয় করুন"
 
-#: src/savegame.cpp:593
+#: src/savegame.cpp:572
 msgid "Game state is corrupted"
 msgstr "খেলার অবস্থা ত্রুটিপূর্ণ"
 
@@ -8267,122 +8348,122 @@ msgstr "ফাঁকা দিনের সময়"
 msgid "This Time of Day is only a Stub!"
 msgstr "দিনের এই সময়টি ফাঁকা"
 
-#: src/units/abilities.cpp:1052
+#: src/units/abilities.cpp:978
 msgid "Owned: "
 msgstr "নিয়ন্ত্রিত: "
 
 #. TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
-#: src/units/abilities.cpp:1056
+#: src/units/abilities.cpp:982
 msgid "Taught: "
 msgstr "জানা: "
 
 #. TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
-#: src/units/abilities.cpp:1060
+#: src/units/abilities.cpp:986
 msgid "Taught: (by an enemy): "
 msgstr "জানা: (শত্রুর দ্বারা): "
 
-#: src/units/abilities.cpp:1073
+#: src/units/abilities.cpp:999
 msgid "Used by opponent: "
 msgstr "প্রতিপক্ষের দ্বারা ব্যবহৃত: "
 
-#: src/units/attack_type.cpp:110
+#: src/units/attack_type.cpp:222
 msgid "Accuracy:"
 msgstr "নির্ভূলতা:"
 
-#: src/units/attack_type.cpp:113
+#: src/units/attack_type.cpp:225
 msgid "Parry:"
 msgstr "প্রত্যাঘাত:"
 
 #. TRANSLATORS: Current value for WML code set_min_range, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:485
+#: src/units/attack_type.cpp:597
 msgid "$number min range"
 msgstr "$number নিম্ন সীমা"
 
 #. TRANSLATORS: Current value for WML code increase_min_range, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:492
+#: src/units/attack_type.cpp:604
 msgid "<span color=\"$color\">$number_or_percent</span> min range"
 msgstr "<span color=\"$color\">$number_or_percent</span> নিম্ন সীমা"
 
 #. TRANSLATORS: Current value for WML code set_max_range, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:499
+#: src/units/attack_type.cpp:611
 msgid "$number max range"
 msgstr "$number উচ্চ সীমা"
 
 #. TRANSLATORS: Current value for WML code increase_max_range, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:506
+#: src/units/attack_type.cpp:618
 msgid "<span color=\"$color\">$number_or_percent</span> max range"
 msgstr "<span color=\"$color\">$number_or_percent</span> উচ্চ সীমা"
 
 #. TRANSLATORS: Current value for WML code increase_damage, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:513
+#: src/units/attack_type.cpp:625
 msgid "<span color=\"$color\">$number_or_percent</span> damage"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> damage"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> ক্ষতি"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> ক্ষতি"
 
-#: src/units/attack_type.cpp:522
+#: src/units/attack_type.cpp:634
 msgid "$number damage"
 msgid_plural "$number damage"
 msgstr[0] "$number ক্ষতি"
 msgstr[1] "$number ক্ষতি"
 
 #. TRANSLATORS: Current value for WML code increase_attacks, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:531
+#: src/units/attack_type.cpp:643
 msgid "<span color=\"$color\">$number_or_percent</span> strike"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> strikes"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> আঘাত"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> আঘাতগুলি"
 
 #. TRANSLATORS: Current value for WML code set_attacks, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:540
+#: src/units/attack_type.cpp:652
 msgid "$number strike"
 msgid_plural "$number strikes"
 msgstr[0] "$number-টি আঘাত"
 msgstr[1] "$number-গুলি আঘাত"
 
 #. TRANSLATORS: Current value for WML code set_accuracy, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:549
+#: src/units/attack_type.cpp:661
 msgid "$number| accuracy"
 msgstr "$number| নির্ভূলতা"
 
 #. TRANSLATORS: Current value for WML code increase_accuracy, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:556
+#: src/units/attack_type.cpp:668
 msgid "<span color=\"$color\">$number_or_percent|%</span> accuracy"
 msgstr "<span color=\"$color\">$number_or_percent|%</span> নির্ভূলতা"
 
 #. TRANSLATORS: Current value for WML code set_parry, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:563
+#: src/units/attack_type.cpp:675
 msgid "$number parry"
 msgstr "$number প্রতিহত"
 
 #. TRANSLATORS: Current value for WML code increase_parry, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:570
+#: src/units/attack_type.cpp:682
 msgid "<span color=\"$color\">$number_or_percent</span> parry"
 msgstr "<span color=\"$color\">$number_or_percent</span> প্রতিহত"
 
 #. TRANSLATORS: Current value for WML code set_movement_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:577
+#: src/units/attack_type.cpp:689
 msgid "$number movement point"
 msgid_plural "$number movement points"
 msgstr[0] "$number-টি স্থানান্তর সংখ্যা"
 msgstr[1] "$number-গুলি স্থানান্তর সংখ্যা"
 
 #. TRANSLATORS: Current value for WML code increase_movement_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:586
+#: src/units/attack_type.cpp:698
 msgid "<span color=\"$color\">$number_or_percent</span> movement point"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> movement points"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> দান সংখ্যা"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> দান সংখ্যাগুলি"
 
 #. TRANSLATORS: Current value for WML code set_attacks_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:595
+#: src/units/attack_type.cpp:707
 msgid "$number attack used"
 msgid_plural "$number attacks used"
 msgstr[0] "$number-টি আক্রমণ ব্যবহৃত"
 msgstr[1] "$number-গুলি আক্রমণ ব্যবহৃত"
 
 #. TRANSLATORS: Current value for WML code increase_attacks_used, documented in https://wiki.wesnoth.org/EffectWML
-#: src/units/attack_type.cpp:604
+#: src/units/attack_type.cpp:716
 msgid "<span color=\"$color\">$number_or_percent</span> attack used"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> attacks used"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> আক্রমণ ব্যবহৃত"
@@ -8418,84 +8499,84 @@ msgstr "আপনার কাছে এই ইউনিটটিকে নি�
 msgid "The $unit_type is not available to recruit."
 msgstr "আপনার কাছে নিয়োগ করার মতো কোনো ইউনিট নেই ।"
 
-#: src/units/types.cpp:802 src/units/types.cpp:810
+#: src/units/types.cpp:804 src/units/types.cpp:812
 msgid "female^lawful"
 msgstr "নৈতিক"
 
-#: src/units/types.cpp:804
+#: src/units/types.cpp:806
 msgid "female^neutral"
 msgstr "নিরপেক্ষ"
 
-#: src/units/types.cpp:806
+#: src/units/types.cpp:808
 msgid "female^chaotic"
 msgstr "অনৈতিক"
 
-#: src/units/types.cpp:808
+#: src/units/types.cpp:810
 msgid "female^liminal"
 msgstr "মধ্যবর্তী"
 
-#: src/units/types.cpp:816 src/units/types.cpp:824
+#: src/units/types.cpp:818 src/units/types.cpp:826
 msgid "lawful"
 msgstr "নৈতিক"
 
-#: src/units/types.cpp:818
+#: src/units/types.cpp:820
 msgid "neutral"
 msgstr "নিরপেক্ষ"
 
-#: src/units/types.cpp:820
+#: src/units/types.cpp:822
 msgid "chaotic"
 msgstr "অনৈতিক"
 
-#: src/units/types.cpp:822
+#: src/units/types.cpp:824
 msgid "liminal"
 msgstr "মধ্যবর্তী"
 
-#: src/units/unit.cpp:361
+#: src/units/unit.cpp:364
 msgid "This unit cannot be dismissed."
 msgstr "এই ইউনিটটি বরখাস্ত করা যাবে না ।"
 
-#: src/units/unit.cpp:749
+#: src/units/unit.cpp:752
 msgid "This unit is a leader and cannot be dismissed."
 msgstr "এই ইউনিটটি একটি দলের নেতা এবং একে বরখাস্ত করা যাবে না ।"
 
-#: src/units/unit.cpp:2007
+#: src/units/unit.cpp:2009
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/units/unit.cpp:2013
+#: src/units/unit.cpp:2015
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "<span color=\"$color\">$number_or_percent</span> জীবন"
 
-#: src/units/unit.cpp:2023
+#: src/units/unit.cpp:2025
 msgid "<span color=\"$color\">$number_or_percent</span> move"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> দান"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> দান"
 
-#: src/units/unit.cpp:2029
+#: src/units/unit.cpp:2031
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "<span color=\"$color\">$number_or_percent</span> দৃষ্টি"
 
-#: src/units/unit.cpp:2033
+#: src/units/unit.cpp:2035
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "<span color=\"$color\">$number_or_percent</span> জ্যামিং"
 
-#: src/units/unit.cpp:2038
+#: src/units/unit.cpp:2040
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "উন্নয়ণের জন্য অভিজ্ঞতা <span color=\"$color\">$number_or_percent</span>"
 
-#: src/units/unit.cpp:2042
+#: src/units/unit.cpp:2044
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
 msgid_plural ""
 "<span color=\"$color\">$number_or_percent</span> attacks per turn"
 msgstr[0] "দান প্রতি <span color=\"$color\">$number_or_percent</span> আক্রমণ"
 msgstr[1] "দান প্রতি <span color=\"$color\">$number_or_percent</span>-টি আক্রমণ"
 
-#: src/units/unit.cpp:2049
+#: src/units/unit.cpp:2051
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "পুনরায় ডাকার মূল্য <span color=\"$color\">$number_or_percent</span>"
 
-#: src/units/unit.cpp:2534
+#: src/units/unit.cpp:2557
 msgid "$effect_description per level"
 msgstr "পর্যায় প্রতি $effect_description"
 

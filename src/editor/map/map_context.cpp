@@ -31,7 +31,6 @@
 #include "serialization/preprocessor.hpp"
 #include "team.hpp"
 #include "units/unit.hpp"
-#include "game_config_view.hpp"
 
 #include <boost/regex.hpp>
 
@@ -61,7 +60,7 @@ namespace {
 	static const int editor_team_default_gold = 100;
 }
 
-map_context::map_context(const editor_map& map, bool pure_map, const config& schedule, const std::string& addon_id)
+map_context::map_context(const editor_map& map, bool pure_map, const std::string& addon_id)
 	: filename_()
 	, map_data_key_()
 	, embedded_(false)
@@ -70,12 +69,12 @@ map_context::map_context(const editor_map& map, bool pure_map, const config& sch
 	, undo_stack_()
 	, redo_stack_()
 	, actions_since_save_(0)
-	, starting_position_label_locs_()
 	, needs_reload_(false)
 	, needs_terrain_rebuild_(false)
 	, needs_labels_reset_(false)
-	, changed_locations_()
 	, everything_changed_(false)
+	, changed_locations_()
+	, starting_position_label_locs_()
 	, addon_id_(addon_id)
 	, previous_cfg_()
 	, scenario_id_()
@@ -88,10 +87,11 @@ map_context::map_context(const editor_map& map, bool pure_map, const config& sch
 	, labels_(nullptr)
 	, units_()
 	, teams_()
-	, tod_manager_(new tod_manager(schedule))
+	, tod_manager_(new tod_manager)
 	, mp_settings_()
 	, game_classification_()
 	, music_tracks_()
+	, last_map_generator_(nullptr)
 {
 }
 
@@ -112,7 +112,7 @@ static std::string get_map_location(const std::string& file_contents, const std:
 	return std::string(v2);
 }
 
-map_context::map_context(const game_config_view& game_config, const std::string& filename, const std::string& addon_id)
+map_context::map_context(const std::string& filename, const std::string& addon_id)
 	: filename_(filename)
 	, map_data_key_()
 	, embedded_(false)
@@ -121,12 +121,12 @@ map_context::map_context(const game_config_view& game_config, const std::string&
 	, undo_stack_()
 	, redo_stack_()
 	, actions_since_save_(0)
-	, starting_position_label_locs_()
 	, needs_reload_(false)
 	, needs_terrain_rebuild_(false)
 	, needs_labels_reset_(false)
-	, changed_locations_()
 	, everything_changed_(false)
+	, changed_locations_()
+	, starting_position_label_locs_()
 	, addon_id_(addon_id)
 	, previous_cfg_()
 	, scenario_id_()
@@ -139,10 +139,11 @@ map_context::map_context(const game_config_view& game_config, const std::string&
 	, labels_(nullptr)
 	, units_()
 	, teams_()
-	, tod_manager_(new tod_manager(game_config.find_mandatory_child("editor_times", "id", "empty")))
+	, tod_manager_(new tod_manager)
 	, mp_settings_()
 	, game_classification_()
 	, music_tracks_()
+	, last_map_generator_(nullptr)
 {
 	/*
 	 * Overview of situations possibly found in the file:
@@ -481,7 +482,7 @@ void map_context::load_scenario()
 	random_time_ = scenario["random_start_time"].to_bool(false);
 
 	if(!scenario["map_data"].str().empty()) {
-		map_ = editor_map::from_string(scenario["map_data"]); // throws on error
+		map_ = editor_map::from_string(scenario["map_data"].str()); // throws on error
 	} else if(!scenario["map_file"].str().empty()) {
 		map_ = editor_map::from_string(filesystem::read_file(filesystem::get_current_editor_dir(addon_id_) + "/maps/" + filesystem::base_name(scenario["map_file"]))); // throws on error
 	} else {
