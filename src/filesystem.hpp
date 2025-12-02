@@ -438,14 +438,13 @@ struct binary_paths_manager
 {
 	binary_paths_manager() = default;
 	binary_paths_manager(const game_config_view& cfg);
+	binary_paths_manager(const binary_paths_manager& o) = delete;
+	binary_paths_manager& operator=(const binary_paths_manager& o) = delete;
 	~binary_paths_manager();
 
 	void set_paths(const game_config_view& cfg);
 
 private:
-	binary_paths_manager(const binary_paths_manager& o);
-	binary_paths_manager& operator=(const binary_paths_manager& o);
-
 	void cleanup();
 
 	std::vector<std::string> paths_;
