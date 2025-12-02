@@ -340,6 +340,7 @@ typedef std::pair<std::string, std::string> trait_data;
 //Helper function for printing a list of trait data
 static void print_trait_list(std::stringstream & ss, const std::vector<trait_data> & l)
 {
+	if(l.empty()) return;
 	std::size_t i = 0;
 	ss << markup::make_link(l[i].first, l[i].second);
 
