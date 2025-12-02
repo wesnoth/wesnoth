@@ -482,7 +482,7 @@ void map_context::load_scenario()
 	random_time_ = scenario["random_start_time"].to_bool(false);
 
 	if(!scenario["map_data"].str().empty()) {
-		map_ = editor_map::from_string(scenario["map_data"]); // throws on error
+		map_ = editor_map::from_string(scenario["map_data"].str()); // throws on error
 	} else if(!scenario["map_file"].str().empty()) {
 		map_ = editor_map::from_string(filesystem::read_file(filesystem::get_current_editor_dir(addon_id_) + "/maps/" + filesystem::base_name(scenario["map_file"]))); // throws on error
 	} else {

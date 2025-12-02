@@ -253,7 +253,7 @@ static filesystem::blacklist_pattern_list read_ignore_patterns(const std::string
 		if (line[l - 1] == '/') { // directory; we strip the last /
 			patterns.add_directory_pattern(line.substr(0, l - 1));
 		} else { // file
-			patterns.add_file_pattern(line);
+			patterns.add_file_pattern(std::move(line));
 		}
 	}
 	return patterns;

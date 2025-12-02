@@ -276,6 +276,9 @@ bool is_filename_case_correct(const std::string& /*fname*/, const boost::iostrea
 
 namespace filesystem
 {
+const std::string map_extension {".map"};
+const std::string mask_extension {".mask"};
+const std::string wml_extension {".cfg"};
 
 const blacklist_pattern_list default_blacklist{
 	{
@@ -1523,10 +1526,6 @@ static void init_binary_paths()
 	}
 }
 
-binary_paths_manager::binary_paths_manager()
-	: paths_()
-{
-}
 
 binary_paths_manager::binary_paths_manager(const game_config_view& cfg)
 	: paths_()

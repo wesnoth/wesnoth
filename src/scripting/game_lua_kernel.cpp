@@ -2046,8 +2046,7 @@ static int intf_eval_conditional(lua_State *L)
  * Finds a path between two locations.
  * - Arg 1: source location. (Or Arg 1: unit.)
  * - Arg 2: destination.
- * - Arg 3: optional cost function or
- *          table (optional fields: ignore_units, ignore_teleport, max_cost, viewing_side).
+ * - Arg 3: optional table (optional fields: ignore_units, ignore_teleport, max_cost, viewing_side, calculate).
  * - Ret 1: array of pairs containing path steps.
  * - Ret 2: path cost.
  */
@@ -2114,7 +2113,7 @@ int game_lua_kernel::intf_find_path(lua_State *L)
 			calc.reset(new lua_pathfind_cost_calculator(L, lua_gettop(L)));
 		}
 		// Don't pop, the lua_pathfind_cost_calculator requires it to stay on the stack.
-	} else {
+	} else if(!lua_isnoneornil(L, arg)) {
 		return luaL_argerror(L, arg, "table expected");
 	}
 
@@ -2194,15 +2193,15 @@ int game_lua_kernel::intf_find_reach(lua_State *L)
 		lua_rawget(L, arg);
 		if (!lua_isnil(L, -1)) {
 			int i = luaL_checkinteger(L, -1);
-			if (i >= 1 && i <= static_cast<int>(teams().size())) viewing_side = i;
-			else {
-				// If there's a unit, we have a valid side, so fall back to legacy behaviour.
-				// If we don't have a unit, legacy behaviour would be a crash, so let's not.
-				if(u) see_all = true;
-				deprecated_message("wesnoth.find_reach with viewing_side=0 (or an invalid side)", DEP_LEVEL::FOR_REMOVAL, {1, 17, 0}, "To consider fogged and hidden units, use ignore_visibility=true instead.");
+			if(board().has_team(i)) {
+				viewing_side = i;
+			} else {
+				return luaL_argerror(L, -1, "invalid viewing side");
 			}
 		}
 		lua_pop(L, 1);
+	} else if(!lua_isnoneornil(L, arg)) {
+		return luaL_argerror(L, arg, "table expected");
 	}
 
 	const team& viewing_team = board().get_team(viewing_side);

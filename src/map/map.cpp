@@ -89,27 +89,31 @@ void gamemap::write_terrain(const map_location &loc, config& cfg) const
 	cfg["terrain"] = t_translation::write_terrain_code(get_terrain(loc));
 }
 
-gamemap::gamemap(const std::string& data)
-	: gamemap_base(1, 1)
-	, tdata_(terrain_type_data::get())
-	, villages_()
+gamemap::gamemap(std::string_view data)
+	: gamemap(1, 1, t_translation::NONE_TERRAIN)
 {
 	DBG_G << "loading map: '" << data << "'";
 	read(data);
 }
 
-gamemap_base::gamemap_base(int w, int h, terrain_code t)
+gamemap::gamemap(int w, int h, const terrain_code& t)
+	: gamemap_base(w, h, t)
+	, tdata_(terrain_type_data::get())
+	, villages_()
+{
+}
+
+gamemap_base::gamemap_base(int w, int h, const terrain_code& t)
 	: tiles_(w, h, t)
 	, starting_positions_()
 {
-
 }
 
 gamemap_base::~gamemap_base()
 {
 }
 
-void gamemap::read(const std::string& data, const bool allow_invalid)
+void gamemap::read(std::string_view data, const bool allow_invalid)
 {
 	tiles() = t_translation::ter_map();
 	villages_.clear();

@@ -577,10 +577,10 @@ WML_HANDLER_FUNCTION(replace_map,, cfg)
 			config file_cfg = mp_sync::get_user_choice("map_data", map_choice(cfg["map_file"].str()));
 			map.read(file_cfg["map_data"].str(), false);
 		} else if(!cfg["map_data"].empty()) {
-			map.read(cfg["map_data"], false);
+			map.read(cfg["map_data"].str(), false);
 		} else {
 			deprecated_message("[replace_map]map=", DEP_LEVEL::INDEFINITE, "1.16", "Use map_data= instead.");
-			map.read(cfg["map"], false);
+			map.read(cfg["map"].str(), false);
 		}
 	} catch(const incorrect_map_format_error&) {
 		const std::string log_map_name = cfg["map"].empty() ? cfg["map_file"] : std::string("from inline data");
@@ -630,111 +630,6 @@ WML_HANDLER_FUNCTION(set_global_variable,,pcfg)
 {
 	if (!resources::controller->is_replay())
 		verify_and_set_global_variable(pcfg);
-}
-
-WML_HANDLER_FUNCTION(set_variables,, cfg)
-{
-	const std::string name = cfg["name"];
-	variable_access_create dest = resources::gamedata->get_variable_access_write(name);
-	if(name.empty()) {
-		ERR_NG << "trying to set a variable with an empty name:\n" << cfg.get_config().debug();
-		return;
-	}
-
-	std::vector<config> data;
-	if(cfg.has_attribute("to_variable"))
-	{
-		try
-		{
-			variable_access_const tovar = resources::gamedata->get_variable_access_read(cfg["to_variable"]);
-			for (const config& c : tovar.as_array())
-			{
-				data.push_back(c);
-			}
-		}
-		catch(const invalid_variablename_exception&)
-		{
-			ERR_NG << "Cannot do [set_variables] with invalid to_variable variable: " << cfg["to_variable"] << " with " << cfg.get_config().debug();
-		}
-	} else {
-		typedef std::pair<std::string, vconfig> vchild;
-		for (const vchild& p : cfg.all_ordered()) {
-			if(p.first == "value") {
-				data.push_back(p.second.get_parsed_config());
-			} else if(p.first == "literal") {
-				data.push_back(p.second.get_config());
-			} else if(p.first == "split") {
-				const vconfig & split_element = p.second;
-
-				std::string split_string=split_element["list"];
-				std::string separator_string=split_element["separator"];
-				std::string key_name=split_element["key"];
-				if(key_name.empty())
-				{
-					key_name="value";
-				}
-
-				bool remove_empty = split_element["remove_empty"].to_bool();
-
-				char* separator = separator_string.empty() ? nullptr : &separator_string[0];
-				if(separator_string.size() > 1){
-					ERR_NG << "[set_variables] [split] separator only supports 1 character, multiple passed: " << split_element["separator"] << " with " << cfg.get_config().debug();
-				}
-
-				std::vector<std::string> split_vector;
-
-				//if no separator is specified, explode the string
-				if(separator == nullptr)
-				{
-					for(std::string::iterator i=split_string.begin(); i!=split_string.end(); ++i)
-					{
-						split_vector.push_back(std::string(1, *i));
-					}
-				}
-				else {
-					split_vector=utils::split(split_string, *separator, remove_empty ? utils::REMOVE_EMPTY | utils::STRIP_SPACES : utils::STRIP_SPACES);
-				}
-
-				for(std::vector<std::string>::iterator i=split_vector.begin(); i!=split_vector.end(); ++i)
-				{
-					data.emplace_back(key_name, *i);
-				}
-			}
-		}
-	}
-	try
-	{
-		const std::string& mode = cfg["mode"];
-		if(mode == "merge")
-		{
-			if(dest.explicit_index() && data.size() > 1)
-			{
-				//merge children into one
-				config merged_children;
-				for (const config &ch : data) {
-					merged_children.append(ch);
-				}
-				data = {merged_children};
-			}
-			dest.merge_array(data);
-		}
-		else if(mode == "insert")
-		{
-			dest.insert_array(data);
-		}
-		else if(mode == "append")
-		{
-			dest.append_array(data);
-		}
-		else /*default if(mode == "replace")*/
-		{
-			dest.replace_array(data);
-		}
-	}
-	catch(const invalid_variablename_exception&)
-	{
-		ERR_NG << "Cannot do [set_variables] with invalid destination variable: " << name << " with " << cfg.get_config().debug();
-	}
 }
 
 /**

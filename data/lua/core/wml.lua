@@ -266,6 +266,18 @@ end
 if wesnoth.kernel_type() ~= "Application Lua Kernel" then
 	--[========[Basic variable access]========]
 
+	function wml.valid_var(value)
+		if type(value) ~= 'string' then return false end
+		for i,component in ipairs(stringx.split(value, '.', {remove_empty = false, strip_spaces = false})) do
+			if not component:match('^[a-zA-Z0-9_]+$') then
+				if not component:match('^([a-zA-Z0-9_]+)(%[%d+%])$') then
+					return false
+				end
+			end
+		end
+		return true
+	end
+
 	-- Get all variables via wml.all_variables (read-only)
 	local get_all_vars_local = wml.get_all_vars
 	setmetatable(wml, {

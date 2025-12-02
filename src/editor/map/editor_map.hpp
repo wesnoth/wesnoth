@@ -77,13 +77,13 @@ public:
 	/**
 	 * Create an editor map from a map data string
 	 */
-	editor_map(const std::string& data);
+	editor_map(std::string_view data);
 
 	/**
 	 * Wrapper around editor_map(cfg, data) that catches possible exceptions
 	 * and wraps them in a editor_map_load_exception
 	 */
-	static editor_map from_string(const std::string& data);
+	static editor_map from_string(std::string_view data);
 
 	/**
 	 * Create an editor map with the given dimensions and filler terrain

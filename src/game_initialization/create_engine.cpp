@@ -677,7 +677,7 @@ void create_engine::init_all_levels()
 			bool add_map = true;
 			std::unique_ptr<gamemap> map;
 			try {
-				map.reset(new gamemap(user_map_data["map_data"]));
+				map.reset(new gamemap(user_map_data["map_data"].str()));
 			} catch (const incorrect_map_format_error& e) {
 				// Set map content to nullptr, so that it fails can_launch_game()
 				map.reset(nullptr);

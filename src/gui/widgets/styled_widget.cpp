@@ -560,7 +560,9 @@ std::string styled_widget::get_label_link(const point& position) const
 {
 	// Without the following line, bounds for links in the case of non-left aligned text
 	// are incorrectly calculated. See issue #8915.
-	get_best_text_size(point(0, 0), get_size());
+	if(!label_.empty()) {
+		get_best_text_size(point(0, 0), get_size());
+	}
 
 	// Text renderer has no idea of the origin of text, i.e., where the resultant
 	// texture will get blitted. To it, every text chunk sent to it starts at (0,0).
