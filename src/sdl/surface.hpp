@@ -17,7 +17,7 @@
 #include "utils/const_clone.hpp"
 #include "utils/span.hpp"
 
-#include <SDL2/SDL_surface.h>
+#include <SDL3/SDL.h>
 
 #include <ostream>
 

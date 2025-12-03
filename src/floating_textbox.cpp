@@ -138,7 +138,7 @@ void floating_textbox::show(
 
 #ifdef __ANDROID__
 	// Show onscreen keyboard
-	SDL_StartTextInput();
+	SDL_StartTextInput(video::get_window());
 #endif
 }
 
