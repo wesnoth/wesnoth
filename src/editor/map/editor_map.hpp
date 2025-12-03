@@ -228,6 +228,8 @@ private:
 			: stride_(map.total_width() + 1)
 			, height_(map.total_height() + 1)
 		{
+			// Note: the bitmask's dimensions are one greater than those of
+			// the map to account for border hexes where x or y could be 0.
 			bitset_.resize(stride_ * height_);
 		}
 
