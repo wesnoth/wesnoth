@@ -225,10 +225,10 @@ private:
 	{
 	public:
 		explicit selection_mask(const gamemap_base& map)
-			: stride_(map.total_width())
-			, height_(map.total_height())
+			: stride_(map.total_width() + 1)
+			, height_(map.total_height() + 1)
 		{
-			bitset_.resize(map.total_area());
+			bitset_.resize(stride_ * height_);
 		}
 
 		/**

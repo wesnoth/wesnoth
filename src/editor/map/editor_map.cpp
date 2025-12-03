@@ -157,13 +157,12 @@ bool editor_map::in_selection(const map_location& loc) const
 
 bool editor_map::add_to_selection(const map_location& loc)
 {
-	return selection_.select(loc);
+	return on_board_with_border(loc) && selection_.select(loc);
 }
 
 void editor_map::set_selection(const std::set<map_location>& area)
 {
 	clear_selection();
-
 	for(const map_location& loc : area) {
 		add_to_selection(loc);
 	}
