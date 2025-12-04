@@ -102,11 +102,6 @@ public:
 	~editor_map();
 
 	/**
-	 * Debugging aid. Check if the widths and heights correspond to the actual map data sizes.
-	 */
-	void sanity_check();
-
-	/**
 	 * Get a contiguous set of tiles having the same terrain as the starting location.
 	 * Useful for flood fill or magic wand selection
 	 * @return a contiguous set of locations that will always contain at least the starting element

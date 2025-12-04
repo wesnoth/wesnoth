@@ -49,7 +49,6 @@ editor_map::editor_map(std::string_view data)
 	: gamemap(data)
 	, selection_(*this)
 {
-	sanity_check();
 }
 
 editor_map editor_map::from_string(std::string_view data)
@@ -69,42 +68,16 @@ editor_map::editor_map(std::size_t width, std::size_t height, const t_translatio
 	: gamemap(width + 2, height + 2, filler)
 	, selection_(*this)
 {
-	sanity_check();
 }
 
 editor_map::editor_map(const gamemap& map)
 	: gamemap(map)
 	, selection_(*this)
 {
-	sanity_check();
 }
 
 editor_map::~editor_map()
 {
-}
-
-void editor_map::sanity_check()
-{
-	int errors = 0;
-	if (total_width() != tiles().w) {
-		ERR_ED << "total_width is " << total_width() << " but tiles().size() is " << tiles().w;
-		++errors;
-	}
-	if (total_height() != tiles().h) {
-		ERR_ED << "total_height is " << total_height() << " but tiles()[0].size() is " << tiles().h;
-		++errors;
-	}
-	if (w() + 2 * border_size() != total_width()) {
-		ERR_ED << "h is " << h() << " and border_size is " << border_size() << " but total_width is " << total_width();
-		++errors;
-	}
-	if (h() + 2 * border_size() != total_height()) {
-		ERR_ED << "w is " << w() << " and border_size is " << border_size() << " but total_height is " << total_height();
-		++errors;
-	}
-	if (errors) {
-		throw editor_map_integrity_error();
-	}
 }
 
 std::set<map_location> editor_map::get_contiguous_terrain_tiles(const map_location& start) const
@@ -289,8 +262,6 @@ void editor_map::resize(int width, int height, int x_offset, int y_offset,
 			villages_.push_back(loc);
 		}
 	});
-
-	sanity_check();
 }
 
 gamemap editor_map::mask_to(const gamemap& target) const
