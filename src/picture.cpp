@@ -646,7 +646,6 @@ static surface get_hexed(const locator& i_locator, bool skip_cache = false)
 		SDL_BlendMode src_blend;
 		SDL_GetSurfaceBlendMode(image, &src_blend);
 		SDL_SetSurfaceBlendMode(image, SDL_BLENDMODE_NONE);
-		
 		// Take the center area of the source image, up to the size of the hex mask,
 		// and copy it, likewise centered, to the temporary surface. If the image is
 		// larger than the hex mask, its center portion will be retained. If instead
