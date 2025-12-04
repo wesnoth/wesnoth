@@ -76,10 +76,6 @@ editor_map::editor_map(const gamemap& map)
 {
 }
 
-editor_map::~editor_map()
-{
-}
-
 std::set<map_location> editor_map::get_contiguous_terrain_tiles(const map_location& start) const
 {
 	t_translation::terrain_code terrain = get_terrain(start);

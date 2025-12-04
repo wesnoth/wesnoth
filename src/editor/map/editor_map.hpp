@@ -97,11 +97,6 @@ public:
 	explicit editor_map(const gamemap& map);
 
 	/**
-	 * editor_map destructor
-	 */
-	~editor_map();
-
-	/**
 	 * Get a contiguous set of tiles having the same terrain as the starting location.
 	 * Useful for flood fill or magic wand selection
 	 * @return a contiguous set of locations that will always contain at least the starting element
