@@ -225,12 +225,10 @@ private:
 	{
 	public:
 		explicit selection_mask(const gamemap_base& map)
-			: stride_(map.total_width() + 1)
-			, height_(map.total_height() + 1)
+			: stride_(map.total_width())
+			, height_(map.total_height())
 		{
-			// Note: the bitmask's dimensions are one greater than those of
-			// the map to account for border hexes where x or y could be 0.
-			bitset_.resize(stride_ * height_);
+			bitset_.resize(map.total_area());
 		}
 
 		/**

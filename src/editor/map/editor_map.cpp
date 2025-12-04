@@ -152,7 +152,7 @@ std::set<map_location> editor_map::set_starting_position_labels(display& disp)
 
 bool editor_map::in_selection(const map_location& loc) const
 {
-	return selection_.selected(loc);
+	return on_board_with_border(loc) && selection_.selected(loc);
 }
 
 bool editor_map::add_to_selection(const map_location& loc)
@@ -180,7 +180,7 @@ std::set<map_location> editor_map::selection_inverse() const
 
 bool editor_map::remove_from_selection(const map_location& loc)
 {
-	return selection_.deselect(loc);
+	return on_board_with_border(loc) && selection_.deselect(loc);
 }
 
 void editor_map::clear_selection()
