@@ -624,18 +624,17 @@ static surface get_hexed(const locator& i_locator, bool skip_cache = false)
 		DBG_IMG << "adjusting [" << image->w << ',' << image->h << ']'
 			<< " image to hex mask: " << i_locator;
 
-		// the fitted surface
-		surface fit(mask->w, mask->h);
+		auto fit = surface(mask->w, mask->h);
 
-		// fill the crop surface with transparency
+		// Fill the crop surface with transparency
 		SDL_FillRect(fit, nullptr, SDL_MapRGBA(fit->format, 0, 0, 0, 0));
 
 		// Returns an area rectangle clamped at the max size of the base surface.
 		// If surf is smaller than base, the result is centered relative to base.
 		const auto centered_intersection = [](const surface& surf, const surface& base) -> rect {
 			return {
-				static_cast<int>(std::max(0, surf->w - base->w) / 2),
-				static_cast<int>(std::max(0, surf->h - base->h) / 2),
+				std::max(0, surf->w - base->w) / 2,
+				std::max(0, surf->h - base->h) / 2,
 				std::min(surf->w, base->w),
 				std::min(surf->h, base->h),
 			};
@@ -647,7 +646,12 @@ static surface get_hexed(const locator& i_locator, bool skip_cache = false)
 		SDL_BlendMode src_blend;
 		SDL_GetSurfaceBlendMode(image, &src_blend);
 		SDL_SetSurfaceBlendMode(image, SDL_BLENDMODE_NONE);
-
+		
+		// Take the center area of the source image, up to the size of the hex mask,
+		// and copy it, likewise centered, to the temporary surface. If the image is
+		// larger than the hex mask, its center portion will be retained. If instead
+		// it's *smaller* than the hex mask, it will be copied wholesale to the temp
+		// surface and render centered in any hex to which it is drawn.
 		sdl_blit(image, &src, fit, &dst);
 		SDL_SetSurfaceBlendMode(image, src_blend);
 
