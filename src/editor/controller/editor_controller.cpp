@@ -503,17 +503,17 @@ bool editor_controller::can_execute_command(const hotkey::ui_command& cmd) const
 	case HOTKEY_EDITOR_AREA_SAVE:
 		return 	!get_current_map_context().is_pure_map() &&
 				!get_current_map_context().get_time_manager()->get_area_ids().empty()
-				&& !get_current_map_context().map().selection().empty();
+				&& get_current_map_context().map().anything_selected();
 
 	case HOTKEY_EDITOR_SELECTION_EXPORT:
 	case HOTKEY_EDITOR_SELECTION_CUT:
 	case HOTKEY_EDITOR_SELECTION_COPY:
 	case HOTKEY_EDITOR_SELECTION_FILL:
-		return !get_current_map_context().map().selection().empty()
+		return get_current_map_context().map().anything_selected()
 				&& !toolkit_->is_mouse_action_set(HOTKEY_EDITOR_CLIPBOARD_PASTE);
 	case HOTKEY_EDITOR_SELECTION_RANDOMIZE:
-		return (get_current_map_context().map().selection().size() > 1
-				&& !toolkit_->is_mouse_action_set(HOTKEY_EDITOR_CLIPBOARD_PASTE));
+		return get_current_map_context().map().num_selected() > 1
+				&& !toolkit_->is_mouse_action_set(HOTKEY_EDITOR_CLIPBOARD_PASTE);
 	case HOTKEY_EDITOR_SELECTION_ROTATE:
 	case HOTKEY_EDITOR_SELECTION_FLIP:
 	case HOTKEY_EDITOR_CLIPBOARD_PASTE:
@@ -528,7 +528,7 @@ bool editor_controller::can_execute_command(const hotkey::ui_command& cmd) const
 	case HOTKEY_EDITOR_SELECT_NONE:
 		return !toolkit_->is_mouse_action_set(HOTKEY_EDITOR_CLIPBOARD_PASTE);
 	case HOTKEY_EDITOR_SELECT_INVERSE:
-		return !get_current_map_context().map().selection().empty()
+		return get_current_map_context().map().anything_selected()
 				&& !get_current_map_context().map().everything_selected()
 				&& !toolkit_->is_mouse_action_set(HOTKEY_EDITOR_CLIPBOARD_PASTE);
 	case HOTKEY_EDITOR_MAP_RESIZE:
@@ -605,7 +605,7 @@ hotkey::action_state editor_controller::get_action_state(const hotkey::ui_comman
 	case HOTKEY_EDITOR_SELECT_ALL:
 		return hotkey::selected_if(get_current_map_context().map().everything_selected());
 	case HOTKEY_EDITOR_SELECT_NONE:
-		return hotkey::selected_if(get_current_map_context().map().selection().empty());
+		return hotkey::selected_if(get_current_map_context().map().nothing_selected());
 	case HOTKEY_EDITOR_TOOL_FILL:
 	case HOTKEY_EDITOR_TOOL_LABEL:
 	case HOTKEY_EDITOR_TOOL_PAINT:
@@ -1328,7 +1328,7 @@ void editor_controller::unit_description()
 
 void editor_controller::copy_selection()
 {
-	if (!get_current_map_context().map().selection().empty()) {
+	if(get_current_map_context().map().anything_selected()) {
 		context_manager_->get_clipboard() = map_fragment(get_current_map_context().map(), get_current_map_context().map().selection());
 		context_manager_->get_clipboard().center_by_mass();
 	}
@@ -1411,12 +1411,13 @@ void editor_controller::add_area()
 void editor_controller::export_selection_coords()
 {
 	std::stringstream ssx, ssy;
-	std::set<map_location>::const_iterator i = get_current_map_context().map().selection().begin();
-	if (i != get_current_map_context().map().selection().end()) {
+	auto selection = get_current_map_context().map().selection();
+	std::set<map_location>::const_iterator i = selection.begin();
+	if (i != selection.end()) {
 		ssx << "x = " << i->wml_x();
 		ssy << "y = " << i->wml_y();
 		++i;
-		while (i != get_current_map_context().map().selection().end()) {
+		while (i != selection.end()) {
 			ssx << ", " << i->wml_x();
 			ssy << ", " << i->wml_y();
 			++i;
