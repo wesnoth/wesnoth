@@ -747,7 +747,7 @@ bool mask_surface(surface& nsurf, const surface& nmask, const std::string& filen
 		}
 	}
 
-	// The result is "empty" iff every post-procedded pixel has an alpha component of zero.
+	// The result is "empty" iff every masked pixel has an alpha component of zero.
 	return surf_alpha_sum == SDL_ALPHA_TRANSPARENT;
 }
 
