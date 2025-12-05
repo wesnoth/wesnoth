@@ -33,6 +33,7 @@
 
 #include <boost/circular_buffer.hpp>
 #include <boost/math/constants/constants.hpp>
+#include <boost/range/combine.hpp>
 
 static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
@@ -726,33 +727,28 @@ bool mask_surface(surface& nsurf, const surface& nmask, const std::string& filen
 		return false;
 	}
 
-	bool empty = true;
+	uint8_t surf_alpha_sum{0};
 	{
 		surface_lock lock(nsurf);
 		const_surface_lock mlock(nmask);
 
-		uint32_t* beg = lock.pixels();
-		uint32_t* end = beg + nsurf.area();
-		const uint32_t* mbeg = mlock.pixels();
-		const uint32_t* mend = mbeg + nmask->w*nmask->h;
+		// Note: any pixels outside the range of the smaller surface are ignored
+		auto zipped_range = boost::combine(lock.pixel_span(), mlock.pixel_span());
 
-		while(beg != end && mbeg != mend) {
-			auto [r, g, b, alpha] = color_t::from_argb_bytes(*beg);
+		for(const auto& [surf_pixel, mask_pixel] : zipped_range) {
+			auto surf_color = color_t::from_argb_bytes(surf_pixel);
+			auto mask_color = color_t::from_argb_bytes(mask_pixel);
 
-			uint8_t malpha = (*mbeg) >> 24;
-			if (alpha > malpha) {
-				alpha = malpha;
-			}
-			if(alpha)
-				empty = false;
+			// Color values are untouched; only alpha is adjusted
+			surf_color.a    = std::min(surf_color.a, mask_color.a);
+			surf_alpha_sum |= surf_color.a;
 
-			*beg = (alpha << 24) + (r << 16) + (g << 8) + b;
-
-			++beg;
-			++mbeg;
+			surf_pixel = surf_color.to_argb_bytes();
 		}
 	}
-	return empty;
+
+	// The result is "empty" iff every post-procedded pixel has an alpha component of zero.
+	return surf_alpha_sum == SDL_ALPHA_TRANSPARENT;
 }
 
 bool in_mask_surface(const surface& nsurf, const surface& nmask)
