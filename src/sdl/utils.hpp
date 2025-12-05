@@ -129,7 +129,7 @@ void adjust_surface_alpha(surface& surf, uint8_t alpha_mod);
 void adjust_surface_alpha_add(surface& surf, int amount);
 
 /** Applies a mask on a surface. */
-void mask_surface(surface& surf, const surface& mask, bool* empty_result = nullptr, const std::string& filename = std::string());
+bool mask_surface(surface& surf, const surface& mask, const std::string& filename = std::string());
 
 /** Check if a surface fit into a mask */
 bool in_mask_surface(const surface& surf, const surface& mask);

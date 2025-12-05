@@ -435,8 +435,7 @@ static surface load_image_sub_file(const image::locator& loc)
 
 		// cut and hex mask, but also check and cache if empty result
 		surface cut = cut_surface(surf, srcrect);
-		bool is_empty = false;
-		mask_surface(cut, get_hexmask(), &is_empty);
+		bool is_empty = mask_surface(cut, get_hexmask());
 
 		// discard empty images to free memory
 		if(is_empty) {
@@ -658,8 +657,7 @@ static surface get_hexed(const locator& i_locator, bool skip_cache = false)
 	}
 
 	// hex cut tiles, also check and cache if empty result
-	bool is_empty = false;
-	mask_surface(image, mask, &is_empty, i_locator.get_filename());
+	bool is_empty = mask_surface(image, mask, i_locator.get_filename());
 	is_empty_hex_.add_to_cache(i_locator, is_empty);
 	return image;
 }
@@ -845,8 +843,7 @@ bool is_empty_hex(const locator& i_locator)
 
 	// Should never reach this point, but let's manually do it anyway.
 	surf = surf.clone();
-	bool is_empty = false;
-	mask_surface(surf, get_hexmask(), &is_empty);
+	bool is_empty = mask_surface(surf, get_hexmask());
 	is_empty_hex_.add_to_cache(i_locator, is_empty);
 	return is_empty;
 }

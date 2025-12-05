@@ -703,14 +703,13 @@ void adjust_surface_alpha_add(surface& nsurf, int amount)
 	}
 }
 
-void mask_surface(surface& nsurf, const surface& nmask, bool* empty_result, const std::string& filename)
+bool mask_surface(surface& nsurf, const surface& nmask, const std::string& filename)
 {
 	if(nsurf == nullptr) {
-		*empty_result = true;
-		return;
+		return true;
 	}
 	if(nmask == nullptr) {
-		return;
+		return false;
 	}
 
 	if (nsurf->w != nmask->w) {
@@ -724,7 +723,7 @@ void mask_surface(surface& nsurf, const surface& nmask, bool* empty_result, cons
 		ss << nsurf->w << "x" << nsurf->h;
 		PLAIN_LOG << ss.str();
 		PLAIN_LOG << "It will not be masked, please use: "<< nmask->w << "x" << nmask->h;
-		return;
+		return false;
 	}
 
 	bool empty = true;
@@ -753,8 +752,7 @@ void mask_surface(surface& nsurf, const surface& nmask, bool* empty_result, cons
 			++mbeg;
 		}
 	}
-	if(empty_result)
-		*empty_result = empty;
+	return empty;
 }
 
 bool in_mask_surface(const surface& nsurf, const surface& nmask)
