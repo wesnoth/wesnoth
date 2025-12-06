@@ -30,6 +30,7 @@
 #include "game_board.hpp"
 #include "game_version.hpp" // for version_info
 #include "gettext.hpp"
+#include "language.hpp"
 #include "lexical_cast.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
@@ -321,7 +322,13 @@ std::string unit_ability_t::substitute_variables(const std::string& str) const {
 	for(const auto& vkey : numeric_keys) {
 		if(cfg().has_attribute(vkey)) {
 			if(vkey == "multiply" || vkey == "divide") {
-				symbols.emplace(vkey, std::to_string(cfg()[vkey].to_double()));
+				const std::string lang_locale = get_language().localename;
+				std::stringstream formatter_str;
+				try {
+					formatter_str.imbue(std::locale{lang_locale});
+				} catch(const std::runtime_error&) {}
+				formatter_str << cfg()[vkey].to_double();
+				symbols.emplace(vkey, formatter_str.str());
 			} else {
 				symbols.emplace(vkey, std::to_string(cfg()[vkey].to_int()));
 			}
