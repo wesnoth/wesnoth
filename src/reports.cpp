@@ -771,7 +771,7 @@ static inline const color_t attack_info_percent_color(int resistance)
 	return game_config::red_to_green(50.0 + resistance * 5.0 / 6.0, false);
 }
 
-static int attack_info(const reports::context& rc, const attack_type &at, config &res, const unit &u, const map_location &hex, const unit* sec_u = nullptr, const_attack_ptr sec_u_weapon = nullptr)
+static int attack_info(const reports::context& rc, const attack_type &at, config &res, const unit &u, const map_location &hex, const unit* sec_u = nullptr, const const_attack_ptr& sec_u_weapon = nullptr)
 {
 	std::ostringstream str, tooltip;
 	int damage = 0;
