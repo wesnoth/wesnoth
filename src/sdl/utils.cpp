@@ -749,7 +749,7 @@ bool mask_surface(surface& nsurf, const surface& nmask, const std::string& filen
 			const auto min_alpha = std::min(surf_alpha, mask_alpha);
 
 			// Clear the alpha bits before writing the new alpha value.
-			surf_pixels[i] &= SDL_ALPHA_MASK;
+			surf_pixels[i] &= ~SDL_ALPHA_MASK;
 			surf_pixels[i] |= min_alpha;
 
 			// This will quickly saturate the leftmost 8 bits,
