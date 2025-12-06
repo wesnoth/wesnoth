@@ -793,12 +793,12 @@ bool in_mask_surface(const surface& nsurf, const surface& nmask)
 
 	// Note: unlike in mask_surface, both ranges here have the same size
 	for(std::size_t i = 0; i < surf_pixels.size(); ++i) {
-		uint8_t surf_alpha = surf_pixels[i] >> SDL_ALPHA_BITSHIFT;
-		uint8_t mask_alpha = mask_pixels[i] >> SDL_ALPHA_BITSHIFT;
+		const uint8_t surf_alpha = surf_pixels[i] >> SDL_ALPHA_BITSHIFT;
+		const uint8_t mask_alpha = mask_pixels[i] >> SDL_ALPHA_BITSHIFT;
 
 		// A non-transparent surface pixel corresponding to a transparent mask pixel
 		if(surf_alpha && mask_alpha == SDL_ALPHA_TRANSPARENT) {
-			return _CMP_FALSE_OS;
+			return false;
 		}
 	}
 
