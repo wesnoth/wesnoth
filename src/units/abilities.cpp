@@ -1868,8 +1868,7 @@ namespace {
 /**
  * Returns whether or not the given special is active for the specified unit,
  * based on the current context (see set_specials_context).
- * @param self_attack       this unit's attack
- * @param other_attack      the other unit's attack
+ * @param self              this combatant
  * @param ab                the ability
  * @param whom              specifies which combatant we care about
  */
