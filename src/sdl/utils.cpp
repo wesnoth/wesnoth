@@ -29,11 +29,15 @@
 #include <cstring>
 #include "utils/span.hpp"
 
+#ifdef __cpp_lib_ranges_zip
+#include <execution>
+#include <ranges>
+#endif
+
 #include <SDL2/SDL_version.h>
 
 #include <boost/circular_buffer.hpp>
 #include <boost/math/constants/constants.hpp>
-#include <boost/range/combine.hpp>
 
 static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
@@ -727,28 +731,31 @@ bool mask_surface(surface& nsurf, const surface& nmask, const std::string& filen
 		return false;
 	}
 
-	uint8_t surf_alpha_sum{0};
+	uint8_t cumulative_alpha{0};
 	{
 		surface_lock lock(nsurf);
 		const_surface_lock mlock(nmask);
 
-		// Note: any pixels outside the range of the smaller surface are ignored
-		auto zipped_range = boost::combine(lock.pixel_span(), mlock.pixel_span());
+		utils::span surf_pixels = lock.pixel_span();
+		utils::span mask_pixels = mlock.pixel_span();
 
-		for(const auto& [surf_pixel, mask_pixel] : zipped_range) {
-			auto surf_color = color_t::from_argb_bytes(surf_pixel);
-			auto mask_color = color_t::from_argb_bytes(mask_pixel);
+		// Note: any pixels outside the range of the smaller surface are ignored.
+		const auto sentinel = std::min(surf_pixels.size(), mask_pixels.size());
 
-			// Color values are untouched; only alpha is adjusted
-			surf_color.a    = std::min(surf_color.a, mask_color.a);
-			surf_alpha_sum |= surf_color.a;
+		for(std::size_t i = 0; i < sentinel; ++i) {
+			auto surf_color = color_t::from_argb_bytes(surf_pixels[i]);
+			auto mask_color = color_t::from_argb_bytes(mask_pixels[i]);
 
-			surf_pixel = surf_color.to_argb_bytes();
+			surf_color.a = std::min(surf_color.a, mask_color.a);
+			surf_pixels[i] = surf_color.to_argb_bytes();
+
+			// This will quickly become bit-saturdated, but we only care if it's ultimately 0.
+			cumulative_alpha |= surf_color.a;
 		}
 	}
 
-	// The result is "empty" iff every masked pixel has an alpha component of zero.
-	return surf_alpha_sum == SDL_ALPHA_TRANSPARENT;
+	// The result is considered empty iff every masked pixel is fully transparent.
+	return cumulative_alpha == SDL_ALPHA_TRANSPARENT;
 }
 
 bool in_mask_surface(const surface& nsurf, const surface& nmask)
@@ -765,28 +772,38 @@ bool in_mask_surface(const surface& nsurf, const surface& nmask)
 		return false;
 	}
 
-	{
-		const_surface_lock lock(nsurf);
-		const_surface_lock mlock(nmask);
+	const_surface_lock lock(nsurf);
+	const_surface_lock mlock(nmask);
 
-		const uint32_t* mbeg = mlock.pixels();
-		const uint32_t* mend = mbeg + nmask->w*nmask->h;
-		const uint32_t* beg = lock.pixels();
-		// no need for 'end', because both surfaces have same size
+#ifdef __cpp_lib_ranges_zip // C++23
+	// Note: unlike in mask_surface, both ranges here have the same size
+	auto zipped = std::views::zip(lock.pixel_span(), mlock.pixel_span());
 
-		while(mbeg != mend) {
-			uint8_t malpha = (*mbeg) >> 24;
-			if(malpha == 0) {
-				uint8_t alpha = (*beg) >> 24;
-				if (alpha)
-					return false;
-			}
-			++mbeg;
-			++beg;
+	return std::none_of(
+		std::execution::par_unseq, zipped.begin(), zipped.end(), [](const auto& pixel_pair) {
+			const auto [surf_pixel, mask_pixel] = pixel_pair;
+
+			// A non-transparent surface pixel corresponding to a transparent mask pixel
+			return (surf_pixel >> SDL_ALPHA_BITSHIFT) != SDL_ALPHA_TRANSPARENT
+				&& (mask_pixel >> SDL_ALPHA_BITSHIFT) == SDL_ALPHA_TRANSPARENT;
+		});
+#else
+	utils::span surf_pixels = lock.pixel_span();
+	utils::span mask_pixels = mlock.pixel_span();
+
+	// Note: unlike in mask_surface, both ranges here have the same size
+	for(std::size_t i = 0; i < surf_pixels.size(); ++i) {
+		uint8_t surf_alpha = surf_pixels[i] >> SDL_ALPHA_BITSHIFT;
+		uint8_t mask_alpha = mask_pixels[i] >> SDL_ALPHA_BITSHIFT;
+
+		// A non-transparent surface pixel corresponding to a transparent mask pixel
+		if(surf_alpha && mask_alpha == SDL_ALPHA_TRANSPARENT) {
+			return _CMP_FALSE_OS;
 		}
 	}
 
 	return true;
+#endif
 }
 
 void light_surface(surface& nsurf, const surface &lightmap)
