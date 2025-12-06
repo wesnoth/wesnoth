@@ -29,11 +29,6 @@
 #include <cstring>
 #include "utils/span.hpp"
 
-#ifdef __cpp_lib_ranges_zip
-#include <execution>
-#include <ranges>
-#endif
-
 #include <SDL2/SDL_version.h>
 
 #include <boost/circular_buffer.hpp>
@@ -779,19 +774,6 @@ bool in_mask_surface(const surface& nsurf, const surface& nmask)
 	const_surface_lock lock(nsurf);
 	const_surface_lock mlock(nmask);
 
-#ifdef __cpp_lib_ranges_zip // C++23
-	// Note: unlike in mask_surface, both ranges here have the same size.
-	auto zipped = std::views::zip(lock.pixel_span(), mlock.pixel_span());
-
-	return std::none_of(
-		std::execution::par_unseq, zipped.begin(), zipped.end(), [](const auto& pixel_pair) {
-			const auto [surf_pixel, mask_pixel] = pixel_pair;
-
-			// A non-transparent surface pixel corresponding to a transparent mask pixel.
-			return (surf_pixel & SDL_ALPHA_MASK) != SDL_ALPHA_TRANSPARENT
-				&& (mask_pixel & SDL_ALPHA_MASK) == SDL_ALPHA_TRANSPARENT;
-		});
-#else
 	utils::span surf_pixels = lock.pixel_span();
 	utils::span mask_pixels = mlock.pixel_span();
 
@@ -807,7 +789,6 @@ bool in_mask_surface(const surface& nsurf, const surface& nmask)
 	}
 
 	return true;
-#endif
 }
 
 void light_surface(surface& nsurf, const surface &lightmap)
