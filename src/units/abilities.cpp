@@ -1005,17 +1005,6 @@ template std::pair<int, map_location> active_ability_list::get_extremum<std::gre
  *
  */
 
- /**
-  * Sets the context under which specials will be checked for being active.
-  * This version is appropriate if both units in a combat are known.
-  * @param[in]  weapon        The weapon being considered.
-  * @param[in]  self          A reference to the unit with this weapon.
-  * @param[in]  other         A reference to the other unit in the combat.
-  * @param[in]  unit_loc      The location of the unit with this weapon.
-  * @param[in]  other_loc     The location of the other unit in the combat.
-  * @param[in]  attacking     Whether or not the unit with this weapon is the attacker.
-  * @param[in]  other_attack  The attack used by the other unit.
-  */
 specials_context_t::specials_context_t(specials_combatant&& att, specials_combatant&& def)
 	: attacker(std::move(att))
 	, defender(std::move(def))
