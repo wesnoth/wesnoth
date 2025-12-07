@@ -1036,8 +1036,9 @@ static bool is_enemy(std::size_t side, std::size_t other_side)
  */
 std::string specials_context_t::describe_weapon_specials(const attack_type& at) const
 {
-	//log_scope("weapon_specials");
-	auto [self, other] = self_and_other(at);
+	auto s_a_o = self_and_other(at);
+	const auto& [self, other] = s_a_o;
+
 	std::vector<std::string> special_names;
 	std::set<std::string> ability_names;
 
@@ -1059,10 +1060,10 @@ std::string specials_context_t::describe_weapon_specials(const attack_type& at) 
 
 		foreach_active_ability(*self.un, self.loc, quick_check,
 			[&](const ability_ptr& p_ab, const unit& source) {
-				if (is_enemy(source.side(), self.un->side())) {
+				if (is_enemy(source.side(), s_a_o.self.un->side())) {
 					return;
 				}
-				if (!is_special_active(self, *p_ab, unit_ability_t::affects_t::SELF)) {
+				if (!is_special_active(s_a_o.self, *p_ab, unit_ability_t::affects_t::SELF)) {
 					return;
 				}
 				ability_names.insert(p_ab->cfg().get_or("name_affected", "name").str());
@@ -1078,8 +1079,9 @@ std::string specials_context_t::describe_weapon_specials(const attack_type& at) 
 
 std::string specials_context_t::describe_weapon_specials_value(const attack_type& at, const std::set<std::string>& checking_tags) const
 {
-	auto [self, other] = self_and_other(at);
-	//log_scope("weapon_specials_value");
+	auto s_a_o = self_and_other(at);
+	const auto& [self, other] = s_a_o;
+
 	std::string res;
 
 	std::set<std::string> wespon_specials;
@@ -1093,13 +1095,13 @@ std::string specials_context_t::describe_weapon_specials_value(const attack_type
 	};
 
 	auto add_to_list = [&](const ability_ptr& p_ab, const specials_combatant& student, const auto& source) {
-		if (&student == &other) {
+		if (&student == &s_a_o.other) {
 			opponents_abilities.insert(p_ab->cfg()["name"].str());
 		} else if constexpr (utils::decayed_is_same<decltype(source), attack_type>) {
 			wespon_specials.insert(p_ab->cfg()["name"].str());
-		} else if (&source == self.un.get()) {
+		} else if (&source == s_a_o.self.un.get()) {
 			abilities_self.insert(p_ab->cfg().get_or("name_affected", "name").str());
-		} else if (!is_enemy(source.side(), self.un->side())) {
+		} else if (!is_enemy(source.side(), s_a_o.self.un->side())) {
 			abilities_allies.insert(p_ab->cfg().get_or("name_affected", "name").str());
 		} else {
 			abilities_enemies.insert(p_ab->cfg().get_or("name_affected", "name").str());
@@ -1349,7 +1351,9 @@ namespace {
 std::vector<unit_ability_t::tooltip_info> specials_context_t::abilities_special_tooltips(const attack_type& at,
 	boost::dynamic_bitset<>& active_list) const
 {
-	auto [self, other] = self_and_other(at);
+	auto s_a_o = self_and_other(at);
+	const auto& [self, other] = s_a_o;
+
 	std::vector<unit_ability_t::tooltip_info> res;
 	active_list.clear();
 	std::set<std::string> checking_name;
@@ -1361,8 +1365,8 @@ std::vector<unit_ability_t::tooltip_info> specials_context_t::abilities_special_
 			return true;
 		},
 		[&](const ability_ptr& p_ab, const unit&) {
-			if (special_tooltip_active(*this, self, *p_ab)) {
-				bool active = is_special_active(self, *p_ab, unit_ability_t::affects_t::SELF);
+			if (special_tooltip_active(*this, s_a_o.self, *p_ab)) {
+				bool active = is_special_active(s_a_o.self, *p_ab, unit_ability_t::affects_t::SELF);
 				const std::string name = p_ab->cfg()["name_affected"];
 				const std::string desc = p_ab->cfg()["description_affected"];
 
@@ -1541,7 +1545,9 @@ bool specials_context_t::has_active_special_id(const attack_type& at, const std:
 
 active_ability_list specials_context_t::get_active_combat_teachers(const attack_type& at) const
 {
-	auto [self, other] = self_and_other(at);
+	auto s_a_o = self_and_other(at);
+	const auto& [self, other] = s_a_o;
+
 	const map_location loc = self.un ? self.un->get_location() : self.loc;
 	active_ability_list res(loc);
 	const std::set<std::string>& checking_tags = abilities_list::all_weapon_tags();
@@ -1552,8 +1558,8 @@ active_ability_list specials_context_t::get_active_combat_teachers(const attack_
 	if (self.un) {
 		foreach_distant_active_ability(*self.un, self.loc, quick_check,
 			[&](const ability_ptr& p_ab, const unit& u_teacher) {
-				if (is_special_active(self, *p_ab, unit_ability_t::affects_t::SELF)) {
-					res.emplace_back(p_ab, self.un->get_location(), u_teacher.get_location());
+				if (is_special_active(s_a_o.self, *p_ab, unit_ability_t::affects_t::SELF)) {
+					res.emplace_back(p_ab, s_a_o.self.un->get_location(), u_teacher.get_location());
 				}
 			}
 		);
@@ -1561,8 +1567,8 @@ active_ability_list specials_context_t::get_active_combat_teachers(const attack_
 	if (other.un) {
 		foreach_distant_active_ability(*other.un, other.loc, quick_check,
 			[&](const ability_ptr& p_ab, const unit& u_teacher) {
-				if (is_special_active(other, *p_ab, unit_ability_t::affects_t::OTHER)) {
-					res.emplace_back(p_ab, other.un->get_location(), u_teacher.get_location());
+				if (is_special_active(s_a_o.other, *p_ab, unit_ability_t::affects_t::OTHER)) {
+					res.emplace_back(p_ab, s_a_o.other.un->get_location(), u_teacher.get_location());
 				}
 			}
 		);
@@ -1596,13 +1602,14 @@ active_ability_list specials_context_t::get_active_specials(const attack_type& a
 
 active_ability_list specials_context_t::get_abilities_weapons(const std::string& tag_name, const unit& un) const
 {
-	auto [self, other] = self_and_other(un);
+	auto s_a_o = self_and_other(un);
+	const auto& [self, other] = s_a_o;
 	//TODO: fall back to un.get_location() ?
 	active_ability_list res = un.get_abilities(tag_name, self.loc);
 
 	utils::erase_if(res, [&](const active_ability& i) {
 		//If no weapon is given, assume the ability is active. this is used by ai code.
-		return !is_special_active(self, i.ability(), unit_ability_t::affects_t::SELF);
+		return !is_special_active(s_a_o.self, i.ability(), unit_ability_t::affects_t::SELF);
 		});
 	return res;
 
