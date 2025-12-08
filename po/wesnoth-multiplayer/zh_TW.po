@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-02-20 02:52 UTC\n"
+"POT-Creation-Date: 2025-12-08 15:31 UTC\n"
 "PO-Revision-Date: 2022-06-01 02:03+0800\n"
 "Last-Translator: 李信融 <magiclen0810@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
@@ -297,13 +297,13 @@ msgstr "納爾迦聯盟"
 #: data/multiplayer/factions/knalgans-default.cfg:13
 msgid ""
 "The <bold>text='Knalgan Alliance'</bold> is a faction of <ref>text='Dwarves' "
-"dst='..race_dwarf'</ref> and their outlaw <ref>text='Human' "
-"dst='..race_human'</ref> allies. Dwarves are an old race who live "
-"underground and have tough, but short, warriors. The outlaws are humans who "
-"are not socially acceptable among others of their race, but have become "
-"allies of the dwarves due to common enemies. This leads to a combination of "
-"tough and defensive dwarves who are only good on certain terrain and humans "
-"who can cover ground that dwarves are not good at fighting in."
+"dst='..race_dwarf'</ref> and their outlaw <ref>text='Human' dst='.."
+"race_human'</ref> allies. Dwarves are an old race who live underground and "
+"have tough, but short, warriors. The outlaws are humans who are not socially "
+"acceptable among others of their race, but have become allies of the dwarves "
+"due to common enemies. This leads to a combination of tough and defensive "
+"dwarves who are only good on certain terrain and humans who can cover ground "
+"that dwarves are not good at fighting in."
 msgstr ""
 "<bold>text='納爾迦聯盟'</bold>是<ref>text='矮人' dst='..race_dwarf'</ref>和流"
 "亡的<ref>text='人類' dst='..race_human'</ref>同盟組成的派系。矮人是居住在地底"
@@ -321,16 +321,16 @@ msgstr "親皇派"
 #: data/multiplayer/factions/loyalists-aoh.cfg:14
 #: data/multiplayer/factions/loyalists-default.cfg:14
 msgid ""
-"The <bold>text='Loyalists'</bold> are a faction of <ref>text='Humans' "
-"dst='..race_human'</ref> who are loyal to the throne of Wesnoth. Humans are "
-"a versatile race who specialize in many different areas. Similarly, the "
+"The <bold>text='Loyalists'</bold> are a faction of <ref>text='Humans' dst='.."
+"race_human'</ref> who are loyal to the throne of Wesnoth. Humans are a "
+"versatile race who specialize in many different areas. Similarly, the "
 "Loyalist faction is a very versatile melee-oriented faction with important "
 "ranged support from bowmen and mages."
 msgstr ""
-"<bold>text='親皇派'</bold>是忠於韋諾王國統治者的<ref>text='人類' "
-"dst='..race_human'</ref>所組成的派系。人類是多才多藝的種族，在許多領域都有專"
-"精。相似地，親皇派是一個非常多樣化並以近戰為導向的派系，重要的遠程支持是來自"
-"弓箭手及法師。"
+"<bold>text='親皇派'</bold>是忠於韋諾王國統治者的<ref>text='人類' dst='.."
+"race_human'</ref>所組成的派系。人類是多才多藝的種族，在許多領域都有專精。相似"
+"地，親皇派是一個非常多樣化並以近戰為導向的派系，重要的遠程支持是來自弓箭手及"
+"法師。"
 
 #. [multiplayer_side]: id=Northerners, type=random, description=<img>src='portraits/orcs/warlord.webp~BG()' align='middle'</img>
 #: data/multiplayer/factions/northerners-aoh.cfg:4
@@ -342,8 +342,8 @@ msgstr "北方民族"
 #: data/multiplayer/factions/northerners-aoh.cfg:16
 #: data/multiplayer/factions/northerners-default.cfg:15
 msgid ""
-"The <bold>text='Northerners'</bold> are a faction of <ref>text='Orcs' "
-"dst='..race_orc'</ref> and their allies who live in the north of the Great "
+"The <bold>text='Northerners'</bold> are a faction of <ref>text='Orcs' dst='.."
+"race_orc'</ref> and their allies who live in the north of the Great "
 "Continent, thus their name. Northerners consist of the warrior orcs race, "
 "the enslaved <ref>text='goblins' dst='..race_goblin'</ref>, "
 "<ref>text='trolls' dst='..race_troll'</ref> who are tricked into combat by "
@@ -367,12 +367,12 @@ msgstr "反抗軍"
 #: data/multiplayer/factions/rebels-aoh.cfg:14
 #: data/multiplayer/factions/rebels-default.cfg:14
 msgid ""
-"The <bold>text='Rebels'</bold> are a faction of <ref>text='Elves' "
-"dst='..race_elf'</ref> and their various forest-dwelling allies. They get "
-"their human name, Rebels, from the time of Heir to the Throne, when they "
-"started the rebellion against the evil Queen Asheviere. Elves are a magical "
-"race that are masters of the bow and are capable of living many years longer "
-"than humans. In harmony with nature, the elves find allies with the "
+"The <bold>text='Rebels'</bold> are a faction of <ref>text='Elves' dst='.."
+"race_elf'</ref> and their various forest-dwelling allies. They get their "
+"human name, Rebels, from the time of Heir to the Throne, when they started "
+"the rebellion against the evil Queen Asheviere. Elves are a magical race "
+"that are masters of the bow and are capable of living many years longer than "
+"humans. In harmony with nature, the elves find allies with the "
 "<ref>text='human' dst='..race_human'</ref> mages, certain "
 "<ref>text='merfolk' dst='..race_merman'</ref>, and tree creatures called "
 "<ref>text='Woses' dst='..race_wose'</ref>. Rebels are best played taking "
@@ -398,15 +398,14 @@ msgstr "不死族"
 #: data/multiplayer/factions/undead-aoh.cfg:14
 #: data/multiplayer/factions/undead-default.cfg:14
 msgid ""
-"The <bold>text='Undead'</bold> are a faction of <ref>text='undead' "
-"dst='..race_undead'</ref> creatures and <ref>text='human' "
-"dst='..race_human'</ref> practitioners of dark arts that usually accompany "
-"them. Often, these “Dark Adepts” are the units that do the most damage for "
-"the faction, but they have a major vulnerability — their practicing of this "
-"forbidden, evil magic has consumed all their energy and so they have no "
-"melee attack at all. The Undead are a very aggressive faction and the most "
-"powerful <ref>text='Default Era' dst='..era_era_default'</ref> faction at "
-"nighttime."
+"The <bold>text='Undead'</bold> are a faction of <ref>text='undead' dst='.."
+"race_undead'</ref> creatures and <ref>text='human' dst='..race_human'</ref> "
+"practitioners of dark arts that usually accompany them. Often, these “Dark "
+"Adepts” are the units that do the most damage for the faction, but they have "
+"a major vulnerability — their practicing of this forbidden, evil magic has "
+"consumed all their energy and so they have no melee attack at all. The "
+"Undead are a very aggressive faction and the most powerful "
+"<ref>text='Default Era' dst='..era_era_default'</ref> faction at nighttime."
 msgstr ""
 "<bold>text='不死族'</bold>是<ref>text='亡靈' dst='..race_undead'</ref>生物和"
 "經常在他們身邊操縱著黑魔法的<ref>text='人類' dst='..race_human'</ref>所組成的"
@@ -1182,7 +1181,7 @@ msgstr "人類"
 #. [objective]: condition=lose
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:114
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:135
-#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:274
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:278
 msgid "Death of your leader"
 msgstr "你的首領死亡"
 
@@ -1293,8 +1292,8 @@ msgstr "呃啊！怎麼會這樣？敗給微不足道的野蠻人！我的神已
 #. [message]: speaker=second_unit
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:229
 msgid ""
-"Cheers of your enemy are the last thing you hear as you slip into "
-"death...their joy fills your last moments with pure hate."
+"Cheers of your enemy are the last thing you hear as you slip into death..."
+"their joy fills your last moments with pure hate."
 msgstr ""
 "敵人的歡呼是你在墮入死亡前最後聽到的聲音……他們的歡樂讓你在臨終之前充滿了完完"
 "全全的憎恨。"
@@ -2188,7 +2187,7 @@ msgstr ""
 #. [side]
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:21
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:54
-#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:73
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:70
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:20
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:42
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:64
@@ -2202,7 +2201,7 @@ msgstr "隊伍1"
 #. [side]
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:32
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:43
-#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:84
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:81
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:31
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:53
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:75
@@ -2594,20 +2593,20 @@ msgid "In this mixed landscape, five armies battle for supremacy."
 msgstr "在這混合了多種地形的地方，5支軍隊為爭奪霸權而戰鬥。"
 
 #. [multiplayer]: id=multiplayer_The_Wilderlands
-#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:57
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:54
 msgid "5p — The Wilderlands"
 msgstr "5p — 蠻荒之地"
 
 # 因為是中文，所以開頭不需要空格。
 #. [multiplayer]: id=multiplayer_The_Wilderlands
 #. [multiplayer]: id=multiplayer_Crusaders_Field
-#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:58
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:55
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:7
 msgid " Recommended setting of 1 gold per village."
 msgstr "建議設定每座村莊提供1枚金幣。"
 
 #. [multiplayer]: id=multiplayer_The_Wilderlands
-#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:58
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:55
 msgid ""
 "A vast region of wild, untamed wilderness, its terrain dotted with forests, "
 "caves, rivers, and the ruins of ancient fortresses."
@@ -2616,42 +2615,42 @@ msgstr ""
 "壘遺跡組成的。"
 
 #. [side]
-#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:95
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:92
 msgid "teamname^Team 3"
 msgstr "隊伍3"
 
 #. [side]
-#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:106
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:103
 msgid "teamname^Team 4"
 msgstr "隊伍4"
 
 #. [side]
-#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:128
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:125
 msgid "teamname^Monsters"
 msgstr "怪物"
 
 #. [objective]: condition=win
-#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:245
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:249
 msgid "Defeat all enemy leaders"
 msgstr "擊敗所有敵方首領"
 
 #. [objective]: condition=win
-#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:264
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:268
 msgid "Defeat all monsters"
 msgstr "擊敗所有怪物"
 
 #. [objective]: condition=win
-#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:282
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:286
 msgid "Defeat the enemy leaders"
 msgstr "擊敗所有敵方首領"
 
 #. [objective]: condition=lose
-#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:287
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:291
 msgid "Death of all your units"
 msgstr "你所有的單位死亡"
 
 #. [note]
-#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:292
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:296
 msgid "You cannot recruit units."
 msgstr "你不能招募單位。"
 

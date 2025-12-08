@@ -169,12 +169,12 @@ evita redirigir la salida registrada a un archivo. Los archivos de registro
 se crean en el directorio de registros en la carpeta de datos de usuario.
 .TP 
 \fB\-\-log\-to\-file\fP
-log output is written to a file. Cancels the effect of \-\-no\-log\-to\-file
-whether implicit or explicit.
+El registro de salida se escribe en un archivo. Anula el efecto de
+\-\-no\-log\-to\-file, ya sea implícito o explícito.
 .TP 
 \fB\-\-wnoconsole\fP
-For Windows, when used with \-\-no\-log\-to\-file, results in output being
-written to cerr/cout instead of CONOUT. Otherwise, does nothing.
+En Windows, cuando se usa junto con \-\-no\-log\-to\-file, hace que la salida se
+escriba en cerr/cout en lugar de CONOUT. De lo contrario, no hace nada.
 .TP 
 \fB\-\-max\-fps\fP\fI\ fps\fP
 el número de fotogramas por segundo que el juego puede mostrar, el valor
@@ -303,9 +303,10 @@ cualquier \fB\-\-nogui.\fP implícito.
 trata los errores de validación como fatales.
 .TP 
 \fB\-t[\fP\fIscenario_id\fP\fB],\ \-\-test[\fP\fI=scenario_id\fP\fB]\fP
-runs the game in a small test scenario. The scenario should be one defined
-with a \fB[test]\fP WML tag. The default is \fBtest\fP.  A demonstration of the
-\fB[micro_ai]\fP feature can be started with \fBmicro_ai_test\fP.
+Ejecuta el juego en un pequeño escenario de prueba. El escenario debe estar
+definido con una etiqueta WML \fB[test]\fP. De forma predeterminada es
+\fBtest\fP. Una demostración de la función \fB[micro_ai]\fP puede iniciarse con
+\fBmicro_ai_test\fP.
 .TP 
 \fB\-\-translations\-over\fP\fI\ percent\fP
 Establece a \fIpercent\fP el estándar para considerar que una traducción está
