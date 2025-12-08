@@ -992,9 +992,11 @@ static int attack_info(const reports::context& rc, const attack_type &at, config
 
 	{
 		//If we have a second unit, do the 2-unit specials_context
-		auto ctx = (sec_u == nullptr)
-			? specials_context_t::make({ u.shared_from_this(), hex, at.shared_from_this() }, { }, attacking)
-			: specials_context_t::make({ u.shared_from_this(), hex, at.shared_from_this() }, { sec_u->shared_from_this(), sec_u->get_location(), sec_u_weapon }, attacking);
+		auto ctx = specials_context_t::make(
+			{ u.shared_from_this(), hex, at.shared_from_this() },
+			{ sec_u ? sec_u->shared_from_this() : nullptr, sec_u ? sec_u->get_location() : map_location(), sec_u_weapon },
+			attacking);
+
 		ctx.set_for_listing(true);
 
 		boost::dynamic_bitset<> active;
@@ -1033,9 +1035,10 @@ static int attack_info(const reports::context& rc, const attack_type &at, config
 	// 'abilities' version of special_tooltips is below.
 	{
 		//If we have a second unit, do the 2-unit specials_context
-		auto ctx = (sec_u == nullptr)
-			? specials_context_t::make({ u.shared_from_this(), hex, at.shared_from_this() }, { }, attacking)
-			: specials_context_t::make({ u.shared_from_this(), hex, at.shared_from_this() }, { sec_u->shared_from_this(), sec_u->get_location(), sec_u_weapon }, attacking);
+		auto ctx = specials_context_t::make(
+			{ u.shared_from_this(), hex, at.shared_from_this() },
+			{ sec_u ? sec_u->shared_from_this() : nullptr, sec_u ? sec_u->get_location() : map_location(), sec_u_weapon },
+			attacking);
 
 		boost::dynamic_bitset<> active;
 		auto specials = ctx.abilities_special_tooltips(at, active);
