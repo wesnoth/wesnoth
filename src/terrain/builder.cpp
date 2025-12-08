@@ -147,9 +147,9 @@ void terrain_builder::tile::rebuild_cache(const std::string& tod, logs* log)
 			assert(anim.get_animation_duration() != 0ms);
 
 			if(variant.random_start < 0ms) {
-				img_list.back().set_animation_time(std::chrono::milliseconds{ri.rand} % img_list.back().get_animation_duration());
+				img_list.back().apply_time_offset(std::chrono::milliseconds{ ri.rand } % img_list.back().get_animation_duration());
 			} else if(variant.random_start > 0ms) {
-				img_list.back().set_animation_time(std::chrono::milliseconds{ri.rand} % variant.random_start);
+				img_list.back().apply_time_offset(std::chrono::milliseconds{ ri.rand } % variant.random_start);
 			}
 
 			if(!animate) {
@@ -330,14 +330,16 @@ bool terrain_builder::update_animation(const map_location& loc)
 	tile& btile = tile_map_[loc];
 
 	for(animated<image::locator>& a : btile.images_background) {
-		if(a.need_update())
+		if(a.need_update()) {
 			changed = true;
-		a.update_last_draw_time();
+			a.advance_to_current_frame();
+		}
 	}
 	for(animated<image::locator>& a : btile.images_foreground) {
-		if(a.need_update())
+		if(a.need_update()) {
 			changed = true;
-		a.update_last_draw_time();
+			a.advance_to_current_frame();
+		}
 	}
 
 	return changed;
