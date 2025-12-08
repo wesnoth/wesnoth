@@ -16,244 +16,235 @@
 
 /**
  * @file animated.tpp
- * Templates related to animations.
+ * Template implementation for frame-based animations.
  */
+
+
+// ============================================================================
+// Static Members
+// ============================================================================
 
 template<typename T>
 const T animated<T>::void_value_ = T();
 
+
+// ============================================================================
+// Construction
+// ============================================================================
+
 template<typename T>
 inline animated<T>::animated(const std::chrono::milliseconds& start_time)
 	: starting_frame_time_(start_time)
-	, does_not_change_(true)
-	, started_(false)
-	, force_next_update_(false)
-	, frames_()
 	, max_animation_time_(0)
-	, start_tick_()
+	, frames_()
+	, current_frame_index_(0)
+	, started_(false)
+	, paused_(false)
+	, finished_(false)
 	, cycles_(false)
-	, acceleration_(1)
-	, last_update_tick_()
-	, current_frame_key_(0)
+	, uses_acceleration_(false)
+	, animation_start_tick_()
+	, next_frame_tick_()
+	, pause_tick_()
+	, is_static_(true)
 {
 }
 
 template<typename T>
 inline animated<T>::animated(const animated<T>::anim_description& cfg, const std::chrono::milliseconds& start_time, bool force_change)
 	: starting_frame_time_(start_time)
-	, does_not_change_(true)
-	, started_(false)
-	, force_next_update_(false)
-	, frames_()
 	, max_animation_time_(0)
-	, start_tick_()
+	, frames_()
+	, current_frame_index_(0)
+	, started_(false)
+	, paused_(false)
+	, finished_(false)
 	, cycles_(false)
-	, acceleration_(1)
-	, last_update_tick_()
-	, current_frame_key_(0)
+	, uses_acceleration_(false)
+	, animation_start_tick_()
+	, next_frame_tick_()
+	, pause_tick_()
+	, is_static_(true)
 {
 	for(const auto& [duration, value] : cfg) {
 		add_frame(duration, value, force_change);
 	}
 }
 
+
+// ============================================================================
+// Frame Management
+// ============================================================================
+
 template<typename T>
 inline void animated<T>::add_frame(const std::chrono::milliseconds& duration, const T& value, bool force_change)
 {
 	// NOTE: We cannot use emplace_back here, because the value may be a reference into the same vector,
 	// which case emplace_back could invalidate it before the new frame is constructed.
-	if(frames_.empty()) {
-		does_not_change_ = !force_change;
-		frames_.push_back(frame{duration, value, starting_frame_time_});
+
+	if(!frames_.empty()) {
+		const auto& last_frame = frames_.back();
+		frames_.push_back(frame{duration, value, last_frame.start_time_ + last_frame.duration_});
+		is_static_ = false;
 	} else {
-		does_not_change_ = false;
-		frames_.push_back(frame{duration, value, frames_.back().start_time_ + frames_.back().duration_});
+		is_static_ = !force_change;
+		frames_.push_back(frame{duration, value, starting_frame_time_});
 	}
 }
 
+
+// ============================================================================
+// Playback Control
+// ============================================================================
+
 template<typename T>
-inline void animated<T>::start_animation(const std::chrono::milliseconds& start_time, bool cycles)
+inline void animated<T>::start_animation(const std::chrono::milliseconds& start_time_offset, bool cycles)
 {
 	started_ = true;
-	last_update_tick_ = get_current_animation_tick();
-	acceleration_ = 1.0; // assume acceleration is 1, this will be fixed at first update_last_draw_time
-	start_tick_ = last_update_tick_ + (starting_frame_time_ - start_time);
+	paused_ = false;
 	cycles_ = cycles;
-	current_frame_key_ = 0;
-	force_next_update_ = !frames_.empty();
+	current_frame_index_ = 0;
+	const auto current_tick = get_current_animation_tick(uses_acceleration_);
+	animation_start_tick_ = current_tick - start_time_offset;
+	if(!frames_.empty()) {
+		next_frame_tick_ = animation_start_tick_ + frames_[0].duration_;
+	}
 }
 
 template<typename T>
-inline void animated<T>::update_last_draw_time(double acceleration)
+inline void animated<T>::pause_animation()
 {
-	if(acceleration > 0 && acceleration_ != acceleration) {
-		auto tmp = tick_to_time(last_update_tick_);
-		acceleration_ = acceleration;
-		start_tick_ = last_update_tick_ + std::chrono::duration_cast<std::chrono::milliseconds>((starting_frame_time_ - tmp) / acceleration_);
+	if(!started_ || paused_) {
+		return;
 	}
+	paused_ = true;
+	pause_tick_ = get_current_animation_tick(uses_acceleration_);
+}
 
-	if(!started_ && start_tick_ != std::chrono::steady_clock::time_point{}) {
-		// animation is paused
-		start_tick_ += get_current_animation_tick() - last_update_tick_;
-	}
-
-	last_update_tick_ = get_current_animation_tick();
-	if(force_next_update_) {
-		force_next_update_ = false;
+template<typename T>
+inline void animated<T>::unpause_animation()
+{
+	if(!paused_) {
 		return;
 	}
 
-	if(does_not_change_) {
-		return;
-	}
+	const auto current_tick = get_current_animation_tick(uses_acceleration_);
+	const auto pause_duration = current_tick - pause_tick_;
 
-	// Always update last_update_tick_, for the animation_time functions to work.
-	if(!started_) {
-		return;
-	}
+	// Shift the timeline forward by the pause duration
+	animation_start_tick_ += pause_duration;
+	next_frame_tick_ += pause_duration;
 
-	if(frames_.empty()) {
-		does_not_change_ = true;
-		return;
-	}
+	paused_ = false;
+	pause_tick_ = {};
+}
 
-	// Check if it's time to move on to the next frame. Might skip multiple frames
-	// if the animation was paused off screen and has now scrolled back on screen.
-	auto animation_time = get_animation_time();
-	const auto end_time = get_end_time();
-	if(cycles_ && animation_time > end_time) {
-		const auto time_in_current_cycle = (animation_time - end_time) % get_animation_duration();
-		const auto time_to_skip = animation_time - time_in_current_cycle;
+template<typename T>
+inline void animated<T>::advance_to_current_frame()
+{
+	const auto current_tick = get_current_animation_tick(uses_acceleration_);
 
-		// Reset start tick to the beginning of the current cycle.
-		start_tick_ += std::chrono::floor<std::chrono::milliseconds>(time_to_skip / acceleration_);
-
-		// We could be anywhere in the cycle. Assume first frame and adjust as needed below.
-		current_frame_key_ = 0;
-		animation_time = time_in_current_cycle;
-	}
-
-	// Update the index key to the appropriate frame for the current animation time.
-	auto iter = frames_.begin() + current_frame_key_;
-	while(std::next(iter) != frames_.end()) {
-		if(std::next(iter)->start_time_ > animation_time) {
-			break;
+	// Fast-forward if the animation is way behind
+	// This handles cases where many full cycles have elapsed (e.g., when the animation is un-updated offscreen)
+	if(current_tick > (next_frame_tick_ + std::chrono::milliseconds{200})) {
+		const auto animation_duration = get_animation_duration();
+		if(current_tick > (next_frame_tick_ + animation_duration)) {
+			if(cycles_) {
+				// Calculate total elapsed time and skip forward in whole cycles
+				const auto elapsed_ms = std::chrono::duration_cast<std::chrono::milliseconds>(current_tick - next_frame_tick_);
+				next_frame_tick_ += (elapsed_ms / animation_duration) * animation_duration; // The int division truncates to whole cycles.
+			} else {
+				// Non-looping animation finished, stay on last frame
+				current_frame_index_ = frames_.size() - 1;
+				finished_ = true;
+				return;
+			}
 		}
-
-		++iter;
 	}
 
-	current_frame_key_ = std::distance(frames_.begin(), iter);
+	// Advance through frames until we reach the current time
+	while(current_tick >= next_frame_tick_) {
+		// Check if we're on the last frame
+		if(current_frame_index_ >= frames_.size() - 1) {
+			if(cycles_) {
+				// Loop back to first frame
+				current_frame_index_ = 0;
+				next_frame_tick_ += frames_[0].duration_;
+			} else {
+				// Non-looping animation finished, stay on last frame
+				finished_ = true;
+				return;
+			}
+		} else {
+			// Move to next frame
+			current_frame_index_++;
+			next_frame_tick_ += frames_[current_frame_index_].duration_;
+		}
+	}
 }
 
-template<typename T>
-inline bool animated<T>::not_started() const
-{
-	return !started_ && start_tick_ == std::chrono::steady_clock::time_point{};
-}
+
+// ============================================================================
+// Playback State Queries
+// ============================================================================
 
 template<typename T>
 inline bool animated<T>::need_update() const
 {
-	if(force_next_update_) {
-		return true;
-	}
-
-	if(does_not_change_) {
+	if(is_static_ || !started_ || paused_ || finished_ || frames_.empty()) {
 		return false;
 	}
-
-	if(frames_.empty()) {
-		return false;
-	}
-
-	if(not_started()) {
-		return false;
-	}
-
-	auto frame_end = std::chrono::floor<std::chrono::milliseconds>(get_current_frame_end_time() / acceleration_);
-	return get_current_animation_tick() > start_tick_ + frame_end;
-}
-
-template<typename T>
-inline bool animated<T>::animation_finished_potential() const
-{
-	if(frames_.empty()) {
-		return true;
-	}
-
-	if(not_started()) {
-		return true;
-	}
-
-	if(cycles_) {
-		return true;
-	}
-
-	if(tick_to_time(get_current_animation_tick()) > get_end_time()) {
-		return true;
-	}
-
-	return false;
+	const auto current_tick = get_current_animation_tick(uses_acceleration_);
+	return current_tick >= next_frame_tick_;
 }
 
 template<typename T>
 inline bool animated<T>::animation_finished() const
 {
-	if(frames_.empty()) {
+	if(finished_ || frames_.empty() || !started_ || cycles_ || (get_elapsed_time() >= get_end_time())) {
 		return true;
 	}
-
-	if(not_started()) {
-		return true;
-	}
-
-	if(cycles_) {
-		return true;
-	}
-
-	if(get_animation_time() > get_end_time()) {
-		return true;
-	}
-
 	return false;
 }
 
-template<typename T>
-inline std::chrono::milliseconds animated<T>::get_animation_time_potential() const
-{
-	if(not_started()) {
-		return starting_frame_time_;
-	}
 
-	return tick_to_time(get_current_animation_tick());
-}
+// ============================================================================
+// Time Queries and Manipulation
+// ============================================================================
 
 template<typename T>
-inline std::chrono::milliseconds animated<T>::get_animation_time() const
+inline std::chrono::milliseconds animated<T>::get_elapsed_time() const
 {
-	if(not_started()) {
-		return starting_frame_time_;
-	}
+	if(!started_) {return starting_frame_time_;}
 
-	auto time = tick_to_time(last_update_tick_);
-	if(time > max_animation_time_ && max_animation_time_ > std::chrono::milliseconds{0}) {
+	// Calculate elapsed time since animation started
+	const auto current_tick = get_current_animation_tick(uses_acceleration_);
+	auto elapsed = current_tick - animation_start_tick_;
+	auto elapsed_ms = std::chrono::duration_cast<std::chrono::milliseconds>(elapsed);
+
+	// Apply maximum time cap if set
+	if(max_animation_time_ > std::chrono::milliseconds{0} && elapsed_ms > max_animation_time_) {
 		return max_animation_time_;
 	}
-	return time;
+
+	return elapsed_ms;
 }
 
 template<typename T>
-inline void animated<T>::set_animation_time(const std::chrono::milliseconds& time)
+inline void animated<T>::apply_time_offset(const std::chrono::milliseconds& time)
 {
-	start_tick_ = last_update_tick_ + std::chrono::floor<std::chrono::milliseconds>((starting_frame_time_ - time) / acceleration_);
+	// Adjust the anchor point to make the current tick correspond to the requested time offset
+	animation_start_tick_ -= time;
 
-	current_frame_key_ = 0;
-	force_next_update_ = true;
+	// Restart animation from beginning; advance_to_current_frame() will sync on next call
+	if(!frames_.empty()) {
+		current_frame_index_ = 0;
+		next_frame_tick_ = animation_start_tick_ + frames_[0].duration_;
+	}
 }
 
 template<typename T>
-inline void animated<T>::set_max_animation_time(const std::chrono::milliseconds& time)
+inline void animated<T>::set_duration_limit(const std::chrono::milliseconds& time)
 {
 	max_animation_time_ = time;
 }
@@ -261,94 +252,7 @@ inline void animated<T>::set_max_animation_time(const std::chrono::milliseconds&
 template<typename T>
 inline std::chrono::milliseconds animated<T>::get_animation_duration() const
 {
-	return get_end_time() - get_begin_time();
-}
-
-template<typename T>
-inline const T& animated<T>::get_current_frame() const
-{
-	if(frames_.empty()) {
-		return void_value_;
-	}
-
-	return frames_[current_frame_key_].value_;
-}
-
-template<typename T>
-inline std::chrono::milliseconds animated<T>::get_current_frame_begin_time() const
-{
-	if(frames_.empty()) {
-		return starting_frame_time_;
-	}
-
-	return frames_[current_frame_key_].start_time_;
-}
-
-template<typename T>
-inline std::chrono::milliseconds animated<T>::get_current_frame_end_time() const
-{
-	if(frames_.empty()) {
-		return starting_frame_time_;
-	}
-
-	return get_current_frame_begin_time() + get_current_frame_duration();
-}
-
-template<typename T>
-inline std::chrono::milliseconds animated<T>::get_current_frame_duration() const
-{
-	if(frames_.empty()) {
-		return std::chrono::milliseconds{0};
-	}
-
-	return frames_[current_frame_key_].duration_;
-}
-
-template<typename T>
-inline std::chrono::milliseconds animated<T>::get_current_frame_time() const
-{
-	if(frames_.empty()) {
-		return std::chrono::milliseconds{0};
-	}
-
-	// FIXME: get_animation_time() use acceleration but get_current_frame_begin_time() doesn't ?
-	return std::max(std::chrono::milliseconds{0}, get_animation_time() - get_current_frame_begin_time());
-}
-
-template<typename T>
-inline const T& animated<T>::get_first_frame() const
-{
-	if(frames_.empty()) {
-		return void_value_;
-	}
-
-	return frames_[0].value_;
-}
-
-template<typename T>
-inline const T& animated<T>::get_frame(std::size_t n) const
-{
-	if(n >= frames_.size()) {
-		return void_value_;
-	}
-
-	return frames_[n].value_;
-}
-
-template<typename T>
-inline const T& animated<T>::get_last_frame() const
-{
-	if(frames_.empty()) {
-		return void_value_;
-	}
-
-	return frames_.back().value_;
-}
-
-template<typename T>
-inline std::size_t animated<T>::get_frames_count() const
-{
-	return frames_.size();
+    return get_end_time() - get_begin_time();
 }
 
 template<typename T>
@@ -358,66 +262,181 @@ inline std::chrono::milliseconds animated<T>::get_begin_time() const
 }
 
 template<typename T>
-inline std::chrono::steady_clock::time_point animated<T>::time_to_tick(const std::chrono::milliseconds& animation_time) const
-{
-	if(not_started()) {
-		return {};
-	}
-
-	return start_tick_ + std::chrono::floor<std::chrono::milliseconds>((animation_time - starting_frame_time_) / acceleration_);
-}
-
-template<typename T>
-inline std::chrono::milliseconds animated<T>::tick_to_time(const std::chrono::steady_clock::time_point& animation_tick) const
-{
-	if(not_started()) {
-		return std::chrono::milliseconds{0};
-	}
-
-	return starting_frame_time_ + std::chrono::floor<std::chrono::milliseconds>((animation_tick - start_tick_) * acceleration_);
-}
-
-template<typename T>
 inline std::chrono::milliseconds animated<T>::get_end_time() const
 {
 	if(frames_.empty()) {
 		return starting_frame_time_;
 	}
-
-	return frames_.back().start_time_ + frames_.back().duration_;
-}
-
-template<typename T>
-void animated<T>::remove_frames_until(const std::chrono::milliseconds& new_starting_time)
-{
-	while(starting_frame_time_ < new_starting_time && !frames_.empty()) {
-		starting_frame_time_ += frames_[0].duration_;
-		frames_.erase(frames_.begin());
-	}
-}
-
-template<typename T>
-inline void animated<T>::set_end_time(const std::chrono::milliseconds& new_ending_time)
-{
-	auto last_start_time = starting_frame_time_;
-	auto current_frame = frames_.cbegin();
-	while(last_start_time < new_ending_time && current_frame != frames_.cend()) {
-		last_start_time += current_frame->duration_;
-		++current_frame;
-	}
-
-	// at this point last_start_time is set to the beginning of the first frame past the end
-	// or set to frames_.end()
-	frames_.erase(current_frame, frames_.end());
-	frames_.back().duration_ += new_ending_time - last_start_time;
+	const auto& last_frame = frames_.back();
+	return last_frame.start_time_ + last_frame.duration_;
 }
 
 template<typename T>
 inline void animated<T>::set_begin_time(const std::chrono::milliseconds& new_begin_time)
 {
-	const auto variation = new_begin_time - starting_frame_time_;
-	starting_frame_time_ += variation;
+	const auto shift = new_begin_time - starting_frame_time_;
+	starting_frame_time_ = new_begin_time;
 	for(auto& frame : frames_) {
-		frame.start_time_ += variation;
+		frame.start_time_ += shift;
+	}
+}
+
+template<typename T>
+inline std::chrono::steady_clock::time_point animated<T>::time_to_tick(const std::chrono::milliseconds& animation_time) const
+{
+	if(!started_) {
+		return {};
+	}
+	return animation_start_tick_ + animation_time;
+}
+
+
+// ============================================================================
+// Frame Queries
+// ============================================================================
+
+template<typename T>
+inline const T& animated<T>::get_current_frame() const
+{
+	if(frames_.empty()) {
+		return void_value_;
+	}
+	return frames_[current_frame_index_].value_;
+}
+
+template<typename T>
+inline std::chrono::milliseconds animated<T>::get_current_frame_begin_time() const
+{
+	if(frames_.empty()) {
+		return starting_frame_time_;
+	}
+	return frames_[current_frame_index_].start_time_;
+}
+
+template<typename T>
+inline std::chrono::milliseconds animated<T>::get_current_frame_end_time() const
+{
+	if(frames_.empty()) {
+		return starting_frame_time_;
+	}
+	const auto& frame = frames_[current_frame_index_];
+	return frame.start_time_ + frame.duration_;
+}
+
+template<typename T>
+inline std::chrono::milliseconds animated<T>::get_time_in_current_frame() const
+{
+	if(frames_.empty() || !started_) {
+		return std::chrono::milliseconds{0};
+	}
+	const auto current_tick = get_current_animation_tick(uses_acceleration_);
+	const auto& frame = frames_[current_frame_index_];
+
+	// For finished non-looping animations, clamp to frame duration
+	const bool is_last_frame = (current_frame_index_ == frames_.size() - 1);
+	if(!cycles_ && is_last_frame && current_tick >= next_frame_tick_) {
+		return frame.duration_;
+	}
+
+	// Calculate how much time has elapsed in this frame
+	const auto time_until_next = next_frame_tick_ - current_tick;
+	const auto time_until_next_ms = std::chrono::duration_cast<std::chrono::milliseconds>(time_until_next);
+	const auto elapsed_in_frame = frame.duration_ - time_until_next_ms;
+
+	// Clamp to valid range [0, duration]
+	if(elapsed_in_frame < std::chrono::milliseconds{0}) {
+		return std::chrono::milliseconds{0};
+	}
+	if(elapsed_in_frame > frame.duration_) {
+		return frame.duration_;
+	}
+
+	return elapsed_in_frame;
+}
+
+template<typename T>
+inline const T& animated<T>::get_first_frame() const
+{
+	if(frames_.empty()) {
+		return void_value_;
+	}
+	return frames_[0].value_;
+}
+
+template<typename T>
+inline const T& animated<T>::get_frame(std::size_t n) const
+{
+	if(n >= frames_.size()) {
+		return void_value_;
+	}
+	return frames_[n].value_;
+}
+
+template<typename T>
+inline const T& animated<T>::get_last_frame() const
+{
+	if(frames_.empty()) {
+		return void_value_;
+	}
+	return frames_.back().value_;
+}
+
+template<typename T>
+inline std::size_t animated<T>::get_frames_count() const
+{
+	return frames_.size();
+}
+
+
+// ============================================================================
+// Protected Methods (for unit_animation)
+// ============================================================================
+
+template<typename T>
+void animated<T>::remove_frames_until(const std::chrono::milliseconds& new_starting_time)
+{
+	std::chrono::milliseconds removed_duration{0};
+
+	// Remove frames from the beginning until we reach the target time
+	while(removed_duration < new_starting_time && !frames_.empty()) {
+		removed_duration += frames_[0].duration_;
+		frames_.erase(frames_.begin());
+	}
+
+	// Adjust the timeline anchor to account for removed frames
+	animation_start_tick_ += removed_duration;
+}
+
+template<typename T>
+inline void animated<T>::set_end_time(const std::chrono::milliseconds& new_ending_time)
+{
+	auto current_time = starting_frame_time_;
+	auto it = frames_.begin();
+
+	while(it != frames_.end()) {
+		auto next_time = current_time + it->duration_;
+
+		// Check if the cut-off point is within this frame
+		if(next_time > new_ending_time) {
+			// Truncate this frame
+			auto new_duration = new_ending_time - current_time;
+			if(new_duration < std::chrono::milliseconds{0}) {
+				new_duration = std::chrono::milliseconds{0};
+			}
+			it->duration_ = new_duration;
+
+			// Erase all SUBSEQUENT frames (keep the current one)
+			frames_.erase(std::next(it), frames_.end());
+			return;
+		}
+
+		// Check if cut-off is exactly at the end of this frame
+		if(next_time == new_ending_time) {
+			frames_.erase(std::next(it), frames_.end());
+			return;
+		}
+
+		current_time = next_time;
+		++it;
 	}
 }
