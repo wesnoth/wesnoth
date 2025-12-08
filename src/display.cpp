@@ -171,7 +171,7 @@ void display::add_overlay(const map_location& loc, overlay&& ov)
 	bool is_anim = false;
 
 	if(items.size() > 1 || ov.image.find(':') != std::string::npos) {
-		// This is an animation string. Reform it into a series of frames, 1 per image. 
+		// This is an animation string. Reform it into a series of frames, 1 per image.
 		is_anim = true;
 		for(const auto& item : items) {
 			auto parts = utils::split(item, ':');
@@ -382,7 +382,9 @@ texture display::get_flag(const map_location& loc)
 	for(const team& t : context().teams()) {
 		if(t.owns_village(loc) && (!fogged(loc) || !viewing_team().is_enemy(t.side()))) {
 			auto& flag = flags_[t.side() - 1];
-			flag.update_last_draw_time();
+			if(flag.need_update()) {
+				flag.advance_to_current_frame();
+			}
 
 			const image::locator& image_flag = animate_map_
 				? flag.get_current_frame()
@@ -2756,7 +2758,7 @@ void display::draw_overlays_at(const map_location& loc)
 				? image::get_lighted_texture(frame, lt)
 				: image::get_texture(frame, image::HEXED);
 		} else { // static image
-			tex = ov.image.find("~NO_TOD_SHIFT") == std::string::npos 
+			tex = ov.image.find("~NO_TOD_SHIFT") == std::string::npos
 				? image::get_lighted_texture(ov.image, lt)
 				: image::get_texture(ov.image, image::HEXED);
 		}
@@ -3129,7 +3131,7 @@ void display::invalidate_animations_location(const map_location& loc)
 void display::invalidate_animations()
 {
 	// There are timing issues with this, but i'm not touching it.
-	new_animation_frame();
+	update_animation_timers(display::get_singleton()->turbo_speed());
 	animate_map_ = prefs::get().animate_map();
 	for(const map_location& loc : get_visible_hexes()) {
 		if(shrouded(loc))
@@ -3147,9 +3149,8 @@ void display::invalidate_animations()
 		// overlay animation (not halos)
 		for(auto& ov : get_overlays()[loc]) {
 			if(ov.is_animated) {
-				bool changed = ov.anim.need_update();
-				ov.anim.update_last_draw_time();
-				if(changed) {
+				if(ov.anim.need_update()) {
+					ov.anim.advance_to_current_frame();
 					invalidate(loc);
 				}
 			}
