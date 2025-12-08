@@ -64,7 +64,7 @@ class halo_impl
 
 		bool expired()     const { return !images_.cycles() && images_.animation_finished(); }
 		bool need_update() const { return images_.need_update(); }
-		bool does_change() const { return !images_.does_not_change(); }
+		bool does_change() const { return !images_.is_static(); }
 
 	private:
 
@@ -236,8 +236,9 @@ bool halo_impl::effect::render()
 	// This should only be set if we actually draw something
 	last_draw_loc_ = {};
 
-	// Update animation frame, even if we didn't actually draw it
-	images_.update_last_draw_time();
+	if(images_.need_update()) {
+		images_.advance_to_current_frame();
+	}
 
 	if(!visible()) {
 		return false;

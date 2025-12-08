@@ -217,7 +217,7 @@ void unit_drawer::redraw_unit(const unit& u) const
 	if(hidden || is_blindfolded || !u.is_visible_to_team(viewing_team_ref, show_everything)) {
 		ac.clear_haloes();
 		if(ac.anim_) {
-			ac.anim_->update_last_draw_time();
+			ac.anim_->try_advance_to_current_frame();
 		}
 		return;
 	}
@@ -230,7 +230,7 @@ void unit_drawer::redraw_unit(const unit& u) const
 	if (ac.refreshing_) return;
 	ac.refreshing_ = true;
 
-	ac.anim_->update_last_draw_time();
+	ac.anim_->try_advance_to_current_frame();
 	frame_parameters params;
 	const t_translation::terrain_code terrain = map.get_terrain(loc);
 	const terrain_type& terrain_info = map.get_terrain_info(terrain);

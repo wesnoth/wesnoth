@@ -39,7 +39,7 @@ std::chrono::steady_clock::time_point get_next_idle_tick()
 
 	const double rate = std::pow(2.0, -prefs::get().idle_anim_rate() / 10.0);
 	const int duration = randomness::rng::default_instance().get_random_int(20000, 39999) * rate;
-	return get_current_animation_tick() + std::chrono::milliseconds{duration};
+	return get_current_animation_tick(false) + std::chrono::milliseconds{duration};
 }
 } // namespace
 
@@ -132,18 +132,18 @@ void unit_animation_component::start_animation(const std::chrono::milliseconds& 
 
 void unit_animation_component::refresh()
 {
-	if (state_ == STATE_FORGET && anim_ && anim_->animation_finished_potential())
+	if (state_ == STATE_FORGET && anim_ && anim_->animation_finished())
 	{
 		set_standing();
 		return;
 	}
 	display &disp = *display::get_singleton();
-	if (state_ != STATE_STANDING || get_current_animation_tick() < next_idling_ ||
+	if (state_ != STATE_STANDING || get_current_animation_tick(false) < next_idling_ ||
 	    !disp.tile_nearly_on_screen(u_.loc_) || u_.incapacitated())
 	{
 		return;
 	}
-	if (get_current_animation_tick() > next_idling_ + 1000ms)
+	if (get_current_animation_tick(false) > next_idling_ + 1000ms)
 	{
 		// prevent all units animating at the same time
 		next_idling_ = get_next_idle_tick();
