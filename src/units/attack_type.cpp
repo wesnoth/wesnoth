@@ -53,10 +53,7 @@ static lg::log_domain log_engine("engine");
 
 
 attack_type::attack_type(const config& cfg)
-	: self_loc_()
-	, other_loc_()
-	, is_attacker_(false)
-	, other_attack_(nullptr)
+	: context_()
 	, description_(cfg["description"].t_str())
 	, id_(cfg["name"])
 	, type_(cfg["type"])
@@ -759,15 +756,17 @@ std::string attack_type::select_replacement_type(const active_ability_list& dama
 
 std::pair<std::string, int> attack_type::select_alternative_type(const active_ability_list& damage_type_list, const active_ability_list& resistance_list) const
 {
+	auto ctx = fallback_context();
+	auto [self, other] = context_->self_and_other(*this);
 	std::map<std::string, int> type_res;
 	int max_res = INT_MIN;
-	if (other_) {
+	if (other.un) {
 		for (auto& i : damage_type_list) {
 			const config& c = i.ability_cfg();
 			if (c.has_attribute("alternative_type")) {
 				std::string type = c["alternative_type"].str();
 				if (type_res.count(type) == 0) {
-					type_res[type] = (*other_).resistance_value(resistance_list, type);
+					type_res[type] = other.un->resistance_value(resistance_list, type);
 					max_res = std::max(max_res, type_res[type]);
 				}
 			}
@@ -792,26 +791,29 @@ std::pair<std::string, int> attack_type::select_alternative_type(const active_ab
  */
 std::pair<std::string, int> attack_type::effective_damage_type() const
 {
+	auto ctx = fallback_context();
+	auto [self, other] = context_->self_and_other(*this);
+	bool is_attacker = &context_->attacker == &self;
 	if (attack_empty()) {
 		return { "", 100 };
 	}
 	active_ability_list resistance_list;
-	if (other_) {
-		resistance_list = (*other_).get_abilities_weapons("resistance", other_loc_, other_attack_, shared_from_this());
+	if (other.un) {
+		resistance_list = context_->get_abilities_weapons("resistance", *other.un);
 		utils::erase_if(resistance_list, [&](const active_ability& i) {
-			return !i.ability().active_on_matches(!is_attacker_);
+			return !i.ability().active_on_matches(!is_attacker);
 		});
 	}
 	active_ability_list damage_type_list = get_specials_and_abilities("damage_type");
-	int res = other_ ? (*other_).resistance_value(resistance_list, type()) : 100;
+	int res = other.un ? other.un->resistance_value(resistance_list, type()) : 100;
 	if (damage_type_list.empty()) {
 		return { type(), res };
 	}
 	std::string replacement_type = select_replacement_type(damage_type_list);
 	std::pair<std::string, int> alternative_type = select_alternative_type(damage_type_list, resistance_list);
 
-	if (other_) {
-		res = replacement_type != type() ? (*other_).resistance_value(resistance_list, replacement_type) : res;
+	if (other.un) {
+		res = replacement_type != type() ? other.un->resistance_value(resistance_list, replacement_type) : res;
 		replacement_type = alternative_type.second > res ? alternative_type.first : replacement_type;
 		res = std::max(res, alternative_type.second);
 	}
@@ -849,7 +851,93 @@ double attack_type::modified_damage() const
 
 int attack_type::modified_chance_to_hit(int cth) const
 {
-	int parry = other_attack_ ? other_attack_->parry() : 0;
+	auto ctx = fallback_context();
+	auto [self, other] = context_->self_and_other(*this);
+	int parry = other.at ? other.at->parry() : 0;
 	cth = std::clamp(cth + accuracy_ - parry, 0, 100);
 	return composite_value(get_specials_and_abilities("chance_to_hit"), cth);
+}
+
+std::unique_ptr<specials_context_t> attack_type::fallback_context(const unit_ptr& self) const
+{
+	if (context_) {
+		return nullptr;
+	} else {
+		map_location loc = self ? self->get_location() : map_location();
+		bool attacking = true;
+		return std::unique_ptr<specials_context_t>(new specials_context_t(specials_context_t::make({ self , loc, shared_from_this() }, {}, attacking)));
+	}
+}
+
+bool attack_type::special_active(const unit_ability_t& ab, AFFECTS whom) const
+{
+	auto ctx = fallback_context();
+	auto [self, other] = context_->self_and_other(*this);
+	return context_->is_special_active(self, ab, whom);
+}
+
+
+active_ability_list attack_type::get_specials_and_abilities(const std::string& special) const
+{
+	auto ctx = fallback_context();
+	auto abil_list = context_->get_active_specials(*this, special);
+
+	// get a list of specials/"specials as abilities" that may potentially overwrite others
+	active_ability_list overwriters = overwrite_special_overwriter(abil_list);
+	if (!abil_list.empty() && !overwriters.empty()) {
+		// remove all abilities that would be overwritten
+		utils::erase_if(abil_list, [&](const active_ability& j) {
+			return (overwrite_special_checking(overwriters, j.ability()));
+			});
+	}
+	return abil_list;
+}
+/**
+ * Returns whether or not @a *this has a special ability with a tag or id equal to
+ * @a special. the Check is for a special ability
+ * active in the current context (see set_specials_context), including
+ * specials obtained from the opponent's attack.
+ */
+bool attack_type::has_special_or_ability(const std::string& special) const
+{
+	auto ctx = fallback_context();
+	return context_->has_active_special(*this, special);
+}
+
+bool attack_type::has_active_special_or_ability_id(const std::string& special) const
+{
+	auto ctx = fallback_context();
+	return context_->has_active_special_id(*this, special);
+}
+
+bool attack_type::has_special_or_ability_with_filter(const config& filter) const
+{
+	if (!filter["active"].to_bool()) {
+		return utils::find_if(specials(), [&](const ability_ptr& p_ab) { return p_ab->matches_filter(filter); });
+	}
+
+	auto ctx = fallback_context();
+	return context_->has_active_special_matching_filter(*this, filter);
+}
+
+
+/**
+ * Returns a vector of names and descriptions for the specials of *this.
+ */
+std::vector<unit_ability_t::tooltip_info> attack_type::special_tooltips() const
+{
+	std::vector<unit_ability_t::tooltip_info> res;
+	for (const auto& p_ab : specials()) {
+		auto name = p_ab->get_name();
+		auto desc = p_ab->get_description();
+
+		if (!name.empty()) {
+			res.AGGREGATE_EMPLACE(
+				name,
+				desc,
+				p_ab->get_help_topic_id()
+			);
+		}
+	}
+	return res;
 }

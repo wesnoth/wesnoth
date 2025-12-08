@@ -165,6 +165,13 @@ inline std::vector<T> from_range(Range&& range)
 	return std::vector<T>(range.begin(), range.end());
 }
 
+/*
+ * convienience function to turn different lambdas into a single function object.
+ */
+template<class... Ts> struct overload : Ts... { using Ts::operator()...; };
+template<class... Ts> overload(Ts...) -> overload<Ts...>;
+
+
 /**
  * Conveniences wrapper for range algorithms.
  *

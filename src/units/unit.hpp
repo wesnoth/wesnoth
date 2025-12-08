@@ -1700,13 +1700,6 @@ public:
 		return get_abilities(tag_name, loc_);
 	}
 
-	active_ability_list get_abilities_weapons(const std::string& tag_name, const map_location& loc, const_attack_ptr weapon = nullptr, const_attack_ptr opp_weapon = nullptr) const;
-
-	active_ability_list get_abilities_weapons(const std::string& tag_name, const_attack_ptr weapon = nullptr, const_attack_ptr opp_weapon = nullptr) const
-	{
-		return get_abilities_weapons(tag_name, loc_, weapon, opp_weapon);
-	}
-
 	config abilities_cfg() const {
 
 		return unit_ability_t::vector_to_cfg(abilities_);

@@ -61,6 +61,9 @@ public:
 	/** Real height of the map, including borders */
 	int total_height() const { return tiles_.h; }
 
+	/** Total square area of the map, including borders. */
+	int total_area() const { return total_width() * total_height(); }
+
 	/** Tell if the map is of 0 size. */
 	bool empty() const
 	{
@@ -193,9 +196,6 @@ public:
 
 	// Also expose this for the same reason:
 	const terrain_type& get_terrain_info(const t_translation::terrain_code & terrain) const;
-
-	/* Get the underlying terrain_type_data object. */
-	const std::shared_ptr<terrain_type_data>& tdata() const { return tdata_; }
 
 	/**
 	 * Loads a map.

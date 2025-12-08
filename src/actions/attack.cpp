@@ -137,12 +137,7 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 	}
 
 	// Get the weapon characteristics as appropriate.
-	auto ctx = weapon->specials_context(up, oppp, u_loc, opp_loc, attacking, opp_weapon);
-	utils::optional<decltype(ctx)> opp_ctx;
-
-	if(opp_weapon) {
-		opp_ctx.emplace(opp_weapon->specials_context(oppp, up, opp_loc, u_loc, !attacking, weapon));
-	}
+	auto ctx = specials_context_t::make({ up, u_loc, weapon }, { oppp, opp_loc, opp_weapon }, attacking);
 
 	slows = weapon->has_special_or_ability("slow") && !opp.get_state("unslowable") ;
 	drains = !opp.get_state("undrainable") && weapon->has_special_or_ability("drains");
@@ -200,7 +195,7 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 
 
 	// Leadership bonus.
-	leadership_bonus = under_leadership(u, u_loc, weapon, opp_weapon);
+	leadership_bonus = under_leadership(u, ctx);
 	if(leadership_bonus != 0) {
 		damage_multiplier += leadership_bonus;
 	}
@@ -763,23 +758,13 @@ void attack::fire_event_impl(const std::string& n, bool reverse)
 	config& d_weapon_cfg = ev_data.add_child(reverse ? "first" : "second");
 
 	// Need these to ensure weapon filters work correctly
-	utils::optional<attack_type::specials_context_t> a_ctx, d_ctx;
+	auto ctx = specials_context_t::make({ nullptr, a_.loc_, a_stats_->weapon }, { nullptr, d_.loc_, d_stats_->weapon }, true);
 
 	if(a_stats_->weapon != nullptr && a_.valid()) {
-		if(d_stats_->weapon != nullptr && d_.valid()) {
-			a_ctx.emplace(a_stats_->weapon->specials_context(nullptr, nullptr, a_.loc_, d_.loc_, true, d_stats_->weapon));
-		} else {
-			a_ctx.emplace(a_stats_->weapon->specials_context(nullptr, a_.loc_, true));
-		}
 		a_stats_->weapon->write(a_weapon_cfg);
 	}
 
 	if(d_stats_->weapon != nullptr && d_.valid()) {
-		if(a_stats_->weapon != nullptr && a_.valid()) {
-			d_ctx.emplace(d_stats_->weapon->specials_context(nullptr, nullptr, d_.loc_, a_.loc_, false, a_stats_->weapon));
-		} else {
-			d_ctx.emplace(d_stats_->weapon->specials_context(nullptr, d_.loc_, false));
-		}
 		d_stats_->weapon->write(d_weapon_cfg);
 	}
 
@@ -1488,9 +1473,16 @@ void attack_unit_and_advance(const map_location& attacker,
 	}
 }
 
-int under_leadership(const unit &u, const map_location& loc, const_attack_ptr weapon, const_attack_ptr opp_weapon)
+int under_leadership(const unit& u, const map_location& loc)
 {
-	active_ability_list abil = u.get_abilities_weapons("leadership", loc, std::move(weapon), std::move(opp_weapon));
+	active_ability_list abil = u.get_abilities("leadership", loc);
+	unit_abilities::effect leader_effect(abil, 0, nullptr, unit_abilities::EFFECT_CUMULABLE);
+	return leader_effect.get_composite_value();
+}
+
+int under_leadership(const unit& u, const specials_context_t& context)
+{
+	active_ability_list abil = context.get_abilities_weapons("leadership", u);
 	unit_abilities::effect leader_effect(abil, 0, nullptr, unit_abilities::EFFECT_CUMULABLE);
 	return leader_effect.get_composite_value();
 }

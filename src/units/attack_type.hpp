@@ -30,6 +30,7 @@
 
 class active_ability_list;
 class unit_type;
+class specials_context_t;
 
 namespace wfl {
 	class map_formula_callable;
@@ -63,10 +64,6 @@ public:
 		return unit_ability_t::vector_to_cfg(specials_);
 	}
 
-	ability_vector specials(const std::string& tag) const {
-		return unit_ability_t::filter_tag(specials_, tag);
-	}
-
 	void set_name(const t_string& value) { description_  = value; set_changed(true); }
 	void set_id(const std::string& value) { id_ = value; set_changed(true); }
 	void set_type(const std::string& value) { type_ = value; set_changed(true); }
@@ -85,19 +82,7 @@ public:
 		specials_ = unit_ability_t::cfg_to_vector(value, true);  set_changed(true);
 	}
 
-
-	// In unit_abilities.cpp:
-
-
-	active_ability_list get_specials(const std::string& special) const;
-
-	std::vector<unit_ability_t::tooltip_info> special_tooltips(boost::dynamic_bitset<>* active_list = nullptr) const;
-	// This returns a list describing all active abilities in the current context, that have the name_affected= set,
-	// in particular it also returns attack-unrelatedabilities if they have name_affected set.
-	std::vector<unit_ability_t::tooltip_info> abilities_special_tooltips(boost::dynamic_bitset<>* active_list) const;
-
-	std::string describe_weapon_specials() const;
-	std::string describe_weapon_specials_value(const std::set<std::string>& checking_tags) const;
+	std::vector<unit_ability_t::tooltip_info> special_tooltips() const;
 
 	/** Returns alignment specified by alignment_ variable.
 	 */
@@ -127,8 +112,6 @@ public:
 	 * @param base_value The value modified or not by function.
 	 */
 	int composite_value(const active_ability_list& abil_list, int base_value) const;
-	/** Returns list for weapon like abilities for each ability type. */
-	active_ability_list get_weapon_ability(const std::string& ability) const;
 	/**
 	 * @param special the tag name to check for
 	 * @return list which contains get_weapon_ability and get_specials list for each ability type, with overwritten items removed
@@ -144,8 +127,9 @@ public:
 	 */
 	bool has_active_special_or_ability_id(const std::string& special) const;
 	/** check if special matche
-	 * @return True if special matche with filter(if 'active' filter is true, check if special active).
-	 * @param filter contain attributes to check(special_id, special_type etc...).
+	 * handles the special_(id/type) attributes in weapon filters.
+	 * @return True if a speical matching the filter was found.
+	 * @param filter contains attributes special_id, special_type, special
 	 */
 	bool has_filter_special_or_ability(const config& filter) const;
 	/**
@@ -221,94 +205,15 @@ public:
 
 	bool special_active(const unit_ability_t& ab, AFFECTS whom) const;
 
-	bool special_tooltip_active(const unit_ability_t& ab) const;
-/** weapon_specials_impl_self and weapon_specials_impl_adj : check if special name can be added.
-	 * @param[in,out] temp_string the string modified and returned
-	 * @param[in] self the unit checked.
-	 * @param[in] self_attack the attack used by unit checked in this function.
-	 * @param[in] other_attack the attack used by opponent to unit checked.
-	 * @param[in] self_loc location of the unit checked.
-	 * @param[in] whom determine if unit affected or not by special ability.
-	 * @param[in,out] checking_name the reference for checking if a name is already added
-	 * @param[in] checking_tags the reference for checking if special ability type can be used
-	 */
-	static void weapon_specials_impl_self(
-		std::string& temp_string,
-		const unit_const_ptr& self,
-		const const_attack_ptr& self_attack,
-		const const_attack_ptr& other_attack,
-		const map_location& self_loc,
-		AFFECTS whom,
-		std::set<std::string>& checking_name,
-		const std::set<std::string>& checking_tags={}
-	);
-
-	static void weapon_specials_impl_adj(
-		std::string& temp_string,
-		const unit_const_ptr& self,
-		const const_attack_ptr& self_attack,
-		const const_attack_ptr& other_attack,
-		const map_location& self_loc,
-		AFFECTS whom,
-		std::set<std::string>& checking_name,
-		const std::set<std::string>& checking_tags={},
-		const std::string& affect_adjacents=""
-	);
-
-
-	static bool special_active_impl(
-		const const_attack_ptr& self_attack,
-		const const_attack_ptr& other_attack,
-		const unit_ability_t& special,
-		AFFECTS whom
-	);
-
-
 	// make more functions proivate after refactoring finished.
-private:
 
 	// Used via specials_context() to control which specials are
 	// considered active.
 	friend class specials_context_t;
-	mutable map_location self_loc_, other_loc_;
-	mutable unit_const_ptr self_;
-	mutable unit_const_ptr other_;
-	mutable bool is_attacker_;
-	mutable const_attack_ptr other_attack_;
-	mutable bool is_for_listing_ = false;
-public:
-	class specials_context_t {
-		std::shared_ptr<const attack_type> parent;
-		friend class attack_type;
-		/** Initialize weapon specials context for listing */
-		explicit specials_context_t(const attack_type& weapon, bool attacking);
-		/** Initialize weapon specials context for a single unit */
-		specials_context_t(const attack_type& weapon, const_attack_ptr other_weapon,
-			unit_const_ptr self, unit_const_ptr other,
-			const map_location& self_loc, const map_location& other_loc,
-			bool attacking);
-		/** Initialize weapon specials context for a pair of units */
-		specials_context_t(const attack_type& weapon, unit_const_ptr self, const map_location& loc, bool attacking);
-		specials_context_t(const specials_context_t&) = delete;
-		bool was_moved = false;
-	public:
-		// Destructor at least needs to be public for all this to work.
-		~specials_context_t();
-		specials_context_t(specials_context_t&&);
-	};
-	// Set up a specials context.
-	// Usage: auto ctx = weapon.specials_context(...);
-	specials_context_t specials_context(unit_const_ptr self, unit_const_ptr other,
-		const map_location& unit_loc, const map_location& other_loc,
-		bool attacking, const_attack_ptr other_attack) const {
-		return specials_context_t(*this, other_attack, self, other, unit_loc, other_loc, attacking);
-	}
-	specials_context_t specials_context(unit_const_ptr self, const map_location& loc, bool attacking = true) const {
-		return specials_context_t(*this, self, loc, attacking);
-	}
-	specials_context_t specials_context_for_listing(bool attacking = true) const {
-		return specials_context_t(*this, attacking);
-	}
+	mutable specials_context_t* context_;
+
+	std::unique_ptr<specials_context_t> fallback_context(const unit_ptr& self = nullptr) const;
+
 	void set_changed(bool value)
 	{
 		changed_ = value;

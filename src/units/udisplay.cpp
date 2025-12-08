@@ -626,12 +626,11 @@ void unit_attack(display * disp, game_board & board,
 	unit &defender = *def;
 	int def_hitpoints = defender.hitpoints();
 	const_attack_ptr weapon = attack.shared_from_this();
-	auto ctx = weapon->specials_context(attacker.shared_from_this(), defender.shared_from_this(), a, b, attacking, secondary_attack);
-	utils::optional<decltype(ctx)> opp_ctx;
 
-	if(secondary_attack) {
-		opp_ctx.emplace(secondary_attack->specials_context(defender.shared_from_this(), attacker.shared_from_this(), b, a, !attacking, weapon));
-	}
+	auto ctx = specials_context_t::make(
+		{ attacker.shared_from_this(), a, weapon },
+		{ defender.shared_from_this(), b, secondary_attack },
+		attacking);
 
 	att->set_facing(a.get_relative_dir(b));
 	def->set_facing(b.get_relative_dir(a));
@@ -661,8 +660,8 @@ void unit_attack(display * disp, game_board & board,
 
 	animator.add_animation(defender.shared_from_this(), defender_anim, def->get_location(), true, text, {255, 0, 0});
 
-	active_ability_list leadership_list = attacker.get_abilities_weapons("leadership", weapon, secondary_attack);
-	active_ability_list resistance_list = defender.get_abilities_weapons("resistance", secondary_attack, weapon);
+	active_ability_list leadership_list = ctx.get_abilities_weapons("leadership", attacker);
+	active_ability_list resistance_list = ctx.get_abilities_weapons("resistance", defender);
 	for(const active_ability& ability : leadership_list) {
 		if(ability.teacher_loc == a) {
 			continue;
@@ -698,10 +697,7 @@ void unit_attack(display * disp, game_board & board,
 			hit_type, weapon, secondary_attack, swing);
 	}
 
-	active_ability_list abilities = att->get_location();
-	for(auto& special : abilities_list::all_weapon_tags()) {
-		abilities.append(weapon->get_weapon_ability(special));
-	}
+	active_ability_list abilities = ctx.get_active_combat_teachers(*weapon);
 
 	for(const active_ability& ability : abilities) {
 		if(ability.teacher_loc == a) {

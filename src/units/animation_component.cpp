@@ -168,8 +168,7 @@ bool unit_animation_component::invalidate (const display & disp)
 	if(get_animation()) {
 		frame_parameters params;
 		const gamemap& map = disp.context().map();
-		const t_translation::terrain_code terrain = map.get_terrain(u_.loc_);
-		const terrain_type& terrain_info = map.get_terrain_info(terrain);
+		const terrain_type& terrain_info = map.get_terrain_info(u_.loc_);
 
 		int height_adjust = static_cast<int>(terrain_info.unit_height_adjust() * disp.get_zoom_factor());
 		if (u_.is_flying() && height_adjust < 0) {

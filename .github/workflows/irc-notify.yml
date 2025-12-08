@@ -37,7 +37,7 @@ jobs:
                 ) || (github.event_name == 'pull_request_target' &&
                   format('{1} {2} PR #{3} for {0}{4}{5}{0}: {6}: {0}{7}{8}{0}', env.COLOR, env.ACTOR, github.event.action, github.event.number, env.PURPLE, github.base_ref, github.event.pull_request.title, env.BLUE, github.event.pull_request.html_url)
                 ) || (github.event_name == 'issues' &&
-                  format('{1} {2} issue {0}{3}#{4}{0}: {5}: {0}{6}{7}{0}', env.COLOR, env.ACTOR, github.event.action, env.PURPLE, github.event.issue.number, github.event.issue.title, env.BLUE, github.event.issue.html_url)
+                  format('{1} {2} issue {0}{3}#{4}{0}{5}: {6}: {0}{7}{8}{0}', env.COLOR, env.ACTOR, github.event.action, env.PURPLE, github.event.issue.number, (github.event.issue.state_reason && github.event.issue.state_reason != 'reopened' && format(' as {0}', github.event.issue.state_reason) || ''), github.event.issue.title, env.BLUE, github.event.issue.html_url)
                 ) || ((github.event_name == 'create' || github.event_name == 'delete') &&
                   format('{1} {2}d {3} {0}{4}{5}{0}', env.COLOR, env.ACTOR, github.event_name, github.event.ref_type, env.PURPLE, github.event.ref)
                 )

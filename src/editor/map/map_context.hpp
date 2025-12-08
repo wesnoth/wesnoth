@@ -92,7 +92,7 @@ public:
 	 * Select the nth tod area.
 	 * @param index of the tod area to select.
 	 */
-	bool select_area(int index);
+	void select_area(int index);
 
 	/** Adds a new side to the map */
 	void new_side();
