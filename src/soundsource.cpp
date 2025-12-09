@@ -21,7 +21,7 @@
 
 namespace soundsource {
 
-using namespace std::literals::chrono_literals;
+using namespace std::chrono_literals;
 const unsigned DEFAULT_CHANCE           = 100;
 const auto DEFAULT_DELAY                = 1000ms;
 
