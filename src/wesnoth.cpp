@@ -1022,12 +1022,12 @@ int main(int argc, char** argv)
 		SDL_SetHint(SDL_HINT_NO_SIGNAL_HANDLERS, "1");
 		atexit(SDL_Quit);
 
-	// Mac's touchpad generates touch events too.
-	// Ignore them until Macs have a touchscreen: https://forums.libsdl.org/viewtopic.php?p=45758
+		// Mac's touchpad generates touch events too.
+		// Ignore them until Macs have a touchscreen: https://forums.libsdl.org/viewtopic.php?p=45758
 #if defined(__APPLE__) && !defined(SDL_PLATFORM_IOS)
-	SDL_EventState(SDL_EVENT_FINGER_MOTION, SDL_DISABLE);
-	SDL_EventState(SDL_EVENT_FINGER_DOWN, SDL_DISABLE);
-	SDL_EventState(SDL_EVENT_FINGER_UP, SDL_DISABLE);
+		SDL_EventState(SDL_EVENT_FINGER_MOTION, SDL_DISABLE);
+		SDL_EventState(SDL_EVENT_FINGER_DOWN, SDL_DISABLE);
+		SDL_EventState(SDL_EVENT_FINGER_UP, SDL_DISABLE);
 #endif
 
 		// declare this here so that it will always be at the front of the event queue.
