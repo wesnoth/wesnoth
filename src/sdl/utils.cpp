@@ -753,7 +753,6 @@ bool mask_surface(surface& nsurf, const surface& nmask, const std::string& filen
 		}
 	}
 
-	// The result is considered empty iff every masked pixel is fully transparent.
 	return cumulative_alpha == 0;
 }
 
@@ -782,7 +781,7 @@ bool in_mask_surface(const surface& nsurf, const surface& nmask)
 		const uint32_t surf_alpha = surf_pixels[i] & SDL_ALPHA_MASK;
 		const uint32_t mask_alpha = mask_pixels[i] & SDL_ALPHA_MASK;
 
-		// A non-masked pixel which would otherwise be masked.
+		// A visible pixel (non-zero alpha) which the mask would otherwise hide.
 		if(surf_alpha && mask_alpha == 0) {
 			return false;
 		}
