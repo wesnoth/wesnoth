@@ -160,18 +160,40 @@ public:
 	bool unit_can_draw_here(const map_location& loc, const unit& unit) const;
 
 	/**
-	 * Functions to add and remove overlays from locations.
-	 *
-	 * An overlay is an image that is displayed on top of the tile.
-	 * One tile may have multiple overlays.
+	 * Adds an overlay to a location.
+	 * An overlay is an image displayed on top of the tile(s).
+	 * One tile may have multiple overlays. And one overlay may spread over multiple tiles.
+	 * Overlays are divided into halos, single-hex and multi-hex. They can be static or animated.
+	 * @param loc The map_location (hex coordinates) where the overlay is anchored.
+     * @param ov An rvalue reference to the overlay object to be added (takes ownership).
 	 */
 	void add_overlay(const map_location& loc, overlay&& ov);
 
-	/** remove_overlay will remove all overlays on a tile. */
+	/** Handles adding a halo overlay. Routes the overlay to the halo manager. */
+	void add_halo_overlay(const map_location& loc, overlay&& ov);
+
+	/** Handles adding a single-hex overlay (both static and animated). */
+	void add_single_hex_overlay(const map_location& loc, overlay&& ov);
+
+	/**
+	 * Handles adding a multi-hex overlay (both static and animated).
+	 * Splits a larger overlay into multiple single-hex child overlays.
+	 * Some of these child hexes may be empty (fully transparent), but that gets optimized for downstream.
+	 */
+	void add_multihex_overlay(const map_location& loc, overlay&& ov);
+
+	/** remove_overlay will remove all overlays on a tile. Including multihex images based on that tile. */
 	void remove_overlay(const map_location& loc);
 
-	/** remove_single_overlay will remove a single overlay from a tile */
+	/** remove_single_overlay will remove a single overlay from a tile. Including multihex image based on that tile. */
 	void remove_single_overlay(const map_location& loc, const std::string& toDelete);
+
+private:
+
+	/** Removes all child overlays associated with a multi-hex parent overlay. */
+	void remove_multihex_children(const overlay& ov);
+
+public:
 
 	/**
 	 * Updates internals that cache map size. This should be called when the map
