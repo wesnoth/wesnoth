@@ -284,18 +284,18 @@ public:
 		is_for_listing = for_listing;
 	}
 
-	struct self_and_other_red_t {
+	struct self_and_other_ref {
 		const specials_combatant& self;
 		const specials_combatant& other;
 	};
 
-	self_and_other_red_t self_and_other(const attack_type& self_att) const
+	self_and_other_ref self_and_other(const attack_type& self_att) const
 	{
-		return &self_att == attacker.at.get() ? self_and_other_red_t{ attacker, defender } : self_and_other_red_t{ defender, attacker };
+		return &self_att == attacker.at.get() ? self_and_other_ref{ attacker, defender } : self_and_other_ref{ defender, attacker };
 	}
-	self_and_other_red_t self_and_other(const unit& self_un) const
+	self_and_other_ref self_and_other(const unit& self_un) const
 	{
-		return &self_un == attacker.un.get() ? self_and_other_red_t{ attacker, defender } : self_and_other_red_t{ defender, attacker };
+		return &self_un == attacker.un.get() ? self_and_other_ref{ attacker, defender } : self_and_other_ref{ defender, attacker };
 	}
 
 	const specials_combatant& other(const specials_combatant& self) const
