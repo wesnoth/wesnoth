@@ -16,6 +16,10 @@
 
 #pragma once
 
+/**
+* A list of most drawing layers that images can be placed on.
+* Halos are the exception, they are drawn with a seperate system ontop of these layers.
+*/
 enum class drawing_layer {
 	/** Terrain drawn behind the unit */
 	terrain_bg,
