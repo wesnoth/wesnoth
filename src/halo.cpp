@@ -48,7 +48,8 @@ class halo_impl
 		effect(
 			int xpos, int ypos,
 			const animated<image::locator>::anim_description& img,
-			const map_location& loc, ORIENTATION, bool infinite
+			const map_location& loc, ORIENTATION, bool infinite, float parallax_r = 1.0f,
+			float z_order = 1.0f, int pixel_offset_x = 0, int pixel_offset_y = 0
 		);
 
 		void set_location(int x, int y);
@@ -65,6 +66,7 @@ class halo_impl
 		bool expired()     const { return !images_.cycles() && images_.animation_finished(); }
 		bool need_update() const { return images_.need_update(); }
 		bool does_change() const { return !images_.does_not_change(); }
+		float get_z_order() const { return z_order_; }
 
 	private:
 
@@ -91,11 +93,24 @@ class halo_impl
 		// The map location the halo is attached to, if any
 		map_location map_loc_ = {-1, -1};
 
+		float parallax_r_ = 1.0f;
+
+		float z_order_ = 0.0f;
+
+		int pixel_offset_x_ = 0;
+
+		int pixel_offset_y_ = 0;
+
 		display* disp = nullptr;
 	};
 
 	std::map<int, effect> haloes;
 	int halo_id{1};
+
+	// Temporary z_order lists for rendering
+	std::vector<effect*> negative_z_halos;
+	std::vector<effect*> default_z_halos;
+	std::vector<effect*> positive_z_halos;
 
 	/**
 	 * Upon unrendering, an invalidation list is send. All haloes in that area and
@@ -118,7 +133,7 @@ class halo_impl
 
 public:
 	int add(int x, int y, const std::string& image, const map_location& loc,
-			ORIENTATION orientation=NORMAL, bool infinite=true);
+			ORIENTATION orientation=NORMAL, bool infinite=true, float parallax_r = 1.0f, float z_order = 0.0f, int pixel_offset_x = 0, int pixel_offset_y = 0);
 
 	/** Set the position of an existing haloing effect, according to its handle. */
 	void set_location(int handle, int x, int y);
@@ -128,17 +143,22 @@ public:
 
 	void update();
 
-	/** Render all halos overlapping the given region */
+	/** Render all halos overlapping the given region, respecting the z_order. */
 	void render(const rect&);
 
 }; //end halo_impl
 
 halo_impl::effect::effect(int xpos, int ypos,
 		const animated<image::locator>::anim_description& img,
-		const map_location& loc, ORIENTATION orientation, bool infinite) :
+		const map_location& loc, ORIENTATION orientation, bool infinite,
+		float parallax_r, float z_order, int pixel_offset_x, int pixel_offset_y):
 	images_(img),
 	orientation_(orientation),
 	map_loc_(loc),
+	parallax_r_(parallax_r),
+	z_order_(z_order),
+	pixel_offset_x_(pixel_offset_x),
+	pixel_offset_y_(pixel_offset_y),
 	disp(display::get_singleton())
 {
 	assert(disp != nullptr);
@@ -175,7 +195,7 @@ void halo_impl::effect::update()
 		// If the halo is attached to a particular map location,
 		// make sure it stays attached.
 		auto [x, y] = disp->get_location_rect(map_loc_).center();
-		set_location(x, y);
+		set_location((x + (zf * pixel_offset_x_)), (y + (zf * pixel_offset_y_)));
 	} else {
 		// It would be good to attach to a position within a hex,
 		// or persistently to an item or unit. That's not the case,
@@ -201,8 +221,21 @@ void halo_impl::effect::update()
 
 	const auto [zero_x, zero_y] = disp->get_location(map_location::ZERO());
 
-	const int xpos = zero_x + abs_mid_.x - w/2;
-	const int ypos = zero_y + abs_mid_.y - h/2;
+	int xpos = zero_x + abs_mid_.x - w / 2;
+	int ypos = zero_y + abs_mid_.y - h / 2;
+
+	if(parallax_r_ != 1.0f) {
+
+		// Radial-from-center parallax.
+		// Moves proportionally to distance from the center of the screen. Max offset at screeen edges, none at center.
+		const rect& screen_map_box = disp->map_outside_area();
+		const int cx = screen_map_box.x + screen_map_box.w / 2;
+		const int cy = screen_map_box.y + screen_map_box.h / 2;
+		const int dx = xpos - cx;
+		const int dy = ypos - cy;
+		xpos += static_cast<int>(dx * (parallax_r_ - 1.0f) * zf);
+		ypos += static_cast<int>(dy * (parallax_r_ - 1.0f) * zf);
+	}
 
 	screen_loc_ = {xpos, ypos, w, h};
 
@@ -286,7 +319,7 @@ void halo_impl::effect::queue_redraw()
 
 
 int halo_impl::add(int x, int y, const std::string& image, const map_location& loc,
-		ORIENTATION orientation, bool infinite)
+		ORIENTATION orientation, bool infinite, float parallax_r, float z_order, int pixel_offset_x, int pixel_offset_y)
 {
 	const int id = halo_id++;
 	DBG_HL << "adding halo " << id;
@@ -308,7 +341,7 @@ int halo_impl::add(int x, int y, const std::string& image, const map_location& l
 		}
 		image_vector.emplace_back(time, image::locator(str));
 	}
-	haloes.try_emplace(id, x, y, image_vector, loc, orientation, infinite);
+	haloes.try_emplace(id, x, y, image_vector, loc, orientation, infinite, parallax_r, z_order, pixel_offset_x, pixel_offset_y);
 	invalidated_haloes.insert(id);
 	if(haloes.find(id)->second.does_change() || !infinite) {
 		changing_haloes.insert(id);
@@ -382,10 +415,52 @@ void halo_impl::render(const rect& region)
 		return;
 	}
 
+	negative_z_halos.clear();
+	default_z_halos.clear();
+	positive_z_halos.clear();
+
+	// Get halos that overlap the render region
 	for(auto& [id, effect] : haloes) {
 		if(region.overlaps(effect.get_draw_location())) {
 			DBG_HL << "drawing intersected halo " << id;
-			effect.render();
+			float z = effect.get_z_order();
+			if(z == 0.0f) {
+				default_z_halos.push_back(&effect);
+			} else if(z < 0.0f) {
+				negative_z_halos.push_back(&effect);
+			} else {
+				positive_z_halos.push_back(&effect);
+			}
+		}
+	}
+	if(negative_z_halos.empty() && default_z_halos.empty() && positive_z_halos.empty()) {
+		return;
+	}
+
+	// Sort by their z_order and render.
+	if(!negative_z_halos.empty()) {
+		std::stable_sort(negative_z_halos.begin(), negative_z_halos.end(), // stable_sort to not change order of same-z_order halos.
+			[](const effect* a, const effect* b) {
+				return a->get_z_order() < b->get_z_order();
+			});
+		for(effect* effect_to_render : negative_z_halos) {
+			effect_to_render->render();
+		}
+	}
+
+	if(!default_z_halos.empty()) {
+		for(effect* effect_to_render : default_z_halos) {
+			effect_to_render->render();
+		}
+	}
+
+	if(!positive_z_halos.empty()) {
+		std::stable_sort(positive_z_halos.begin(), positive_z_halos.end(),
+			[](const effect* a, const effect* b) {
+				return a->get_z_order() < b->get_z_order();
+			});
+		for(effect* effect_to_render : positive_z_halos) {
+			effect_to_render->render();
 		}
 	}
 }
@@ -400,9 +475,9 @@ manager::manager() : impl_(new halo_impl())
 {}
 
 handle manager::add(int x, int y, const std::string& image, const map_location& loc,
-		ORIENTATION orientation, bool infinite)
+		ORIENTATION orientation, bool infinite, float parallax_r, float z_order, int pixel_offset_x, int pixel_offset_y)
 {
-	int new_halo = impl_->add(x,y,image, loc, orientation, infinite);
+	int new_halo = impl_->add(x,y,image, loc, orientation, infinite, parallax_r, z_order, pixel_offset_x, pixel_offset_y);
 	return handle(new halo_record(new_halo, impl_));
 }
 
