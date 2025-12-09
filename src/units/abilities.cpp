@@ -45,12 +45,9 @@
 #include "units/filter.hpp"
 #include "units/map.hpp"
 #include "utils/config_filters.hpp"
-#include "units/filter.hpp"
 #include "units/unit.hpp"
 
 #include <utility>
-
-
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
