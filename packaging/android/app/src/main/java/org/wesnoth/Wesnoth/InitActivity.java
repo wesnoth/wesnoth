@@ -28,10 +28,9 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Enumeration;
-import java.util.LinkedHashMap;
-import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -61,12 +60,13 @@ import androidx.documentfile.provider.DocumentFile;
 
 public class InitActivity extends Activity {
 
-	private final static LinkedHashMap<String, String> packages = new LinkedHashMap<String, String>();
-	private final static String ARCHIVE_URL =
-		"https://sourceforge.net/projects/wesnoth/files/wesnoth/wesnoth-%s/android-data/%s/download";
+	private ArrayList<PackageInfo> packages = new ArrayList<PackageInfo>();
+	private final static String MANIFEST_URL =
+		"https://sourceforge.net/projects/wesnoth/files/wesnoth/wesnoth-%s/android-data/manifest.txt/download";
 	private static String VERSION_ID = BuildConfig.VERSION_NAME;
 
 	private File dataDir;
+	private Properties status;
 
 	private String toSizeString(long bytes) {
 		return String.format("%4.2f MB", (bytes * 1.0f) / (1e6));
@@ -79,10 +79,6 @@ public class InitActivity extends Activity {
 			VERSION_ID = VERSION_ID.substring(0, VERSION_ID.length() - 4);
 		}
 
-		packages.put("Core Data", "master.zip");
-		packages.put("Music", "music.zip");
-		packages.put("Patch", "patch.zip");
-
 		super.onCreate(savedState);
 		setContentView(R.layout.activity_init);
 
@@ -90,10 +86,37 @@ public class InitActivity extends Activity {
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
 		initMainDataDir();
+		
+		status = initStatusFile(dataDir);
+		checkManifest();
 
 		initSettingsMenu();
 
 		doPowerCheckAndStart();
+	}
+
+	private void checkManifest() {
+		long lastModified = Long.parseLong(status.getProperty("manifest.modifed", "0"));
+		String downloadAddr = String.format(MANIFEST_URL, VERSION_ID);
+		Log.d("InitActivity", "Fetching manifest from " + downloadAddr);
+		File manifestFile = new File(dataDir, "manifest.txt");
+		try {
+			lastModified = downloadFile(
+				downloadAddr,
+				manifestFile,
+				"Manifest",
+				lastModified);
+
+			Properties manifest = new Properties();
+			manifest.load(new FileInputStream(manifestFile));
+			for (String pkgid : manifest.getProperty("packages", "").split(",\\s*")) {
+				packages.add(PackageInfo.from(manifest, pkgid));
+			}
+
+			status.setProperty("manifest.modifed", "" + lastModified);
+		} catch (Exception e) {
+			Log.e("Download", "security error", e);
+		}
 	}
 
 	public void onActivityResult(int reqCode, int resCode, Intent intent) {
@@ -197,29 +220,26 @@ public class InitActivity extends Activity {
 
 		Executors.newSingleThreadExecutor().execute(() -> {
 			//TODO Update mechanism when patch is available.
-
-			Properties status = initStatusFile(dataDir);
+			
 			boolean isManual = Boolean.parseBoolean(status.getProperty("manual_install", "false"));
 
 			if (!isManual) {
-				for (Map.Entry<String, String> entry : InitActivity.packages.entrySet()) {
-					String name = entry.getValue();
-					String uiname = entry.getKey();
+				for (PackageInfo info : packages) {
+					String id = info.getId();
 
-					File packageFile = new File(dataDir, name);
-					long lastModified = Long.parseLong(status.getProperty("modified." + name, "0"));
+					File packageFile = new File(dataDir, id);
+					long lastModified = Long.parseLong(status.getProperty(id + ".modified", "0"));
 
 					// Download file
-					final String downloadAddr = String.format(ARCHIVE_URL, VERSION_ID, name);
-					Log.d("InitActivity", "Starting to download " + name + " from " + downloadAddr);
+					Log.d("InitActivity", "Starting to download " + id + " from " + info.getURL());
 					try {
 						lastModified = downloadFile(
-							downloadAddr,
+							info.getURL(),
 							packageFile,
-							uiname,
+							info.getUIName(),
 							lastModified);
 
-						status.setProperty("modified." + name, "" + lastModified);
+						status.setProperty(id + ".modified", "" + lastModified);
 					} catch (Exception e) {
 						Log.e("Download", "security error", e);
 					}
@@ -227,9 +247,9 @@ public class InitActivity extends Activity {
 					// Unpack archive
 					// TODO Checksum verification?
 					if (packageFile.exists()) {
-						Log.d("InitActivity", "Start unpack " + name);
-
-						if (unpackArchive(packageFile, dataDir, uiname)) {
+						Log.d("InitActivity", "Start unpacking " + id);
+						
+						if (unpackArchive(packageFile, dataDir, info.getUIName())) {
 							packageFile.delete();
 						}
 					}
@@ -310,7 +330,7 @@ public class InitActivity extends Activity {
 
 			Properties status = initStatusFile(dataDir);
 
-			if (unpackArchive(uri, dataDir, "Core")) {
+			if (unpackArchive(uri, dataDir, "Custom Data")) {
 				status.setProperty("manual_install", "true");
 				storeStatus(status);
 				runOnUiThread(()-> Toast.makeText(this, "Installed!", Toast.LENGTH_SHORT).show());
@@ -599,5 +619,4 @@ public class InitActivity extends Activity {
 
 		return false;
 	}
-
 }
