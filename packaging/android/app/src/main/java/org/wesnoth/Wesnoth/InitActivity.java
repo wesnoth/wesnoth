@@ -88,7 +88,6 @@ public class InitActivity extends Activity {
 		initMainDataDir();
 		
 		status = initStatusFile(dataDir);
-		checkManifest();
 
 		initSettingsMenu();
 
@@ -96,9 +95,9 @@ public class InitActivity extends Activity {
 	}
 
 	private void checkManifest() {
-		long lastModified = Long.parseLong(status.getProperty("manifest.modifed", "0"));
+		long lastModified = Long.parseLong(status.getProperty("manifest.modified", "0"));
 		String downloadAddr = String.format(MANIFEST_URL, VERSION_ID);
-		Log.d("InitActivity", "Fetching manifest from " + downloadAddr);
+		Log.d("Manifest", "Fetching manifest from " + downloadAddr);
 		File manifestFile = new File(dataDir, "manifest.txt");
 		try {
 			lastModified = downloadFile(
@@ -112,8 +111,12 @@ public class InitActivity extends Activity {
 			for (String pkgid : manifest.getProperty("packages", "").split(",\\s*")) {
 				packages.add(PackageInfo.from(manifest, pkgid));
 			}
+			Log.d("Manifest", "Last Modified: " + lastModified);
+			Log.d("Manifest", "Contents: " + manifest.toString());
+			Log.d("Manifest", "Packages: " + packages.toString());
 
-			status.setProperty("manifest.modifed", "" + lastModified);
+			status.setProperty("manifest.modified", "" + lastModified);
+			Log.d("Manifest", "Fetched and loaded successfully");
 		} catch (Exception e) {
 			Log.e("Download", "security error", e);
 		}
@@ -224,17 +227,20 @@ public class InitActivity extends Activity {
 			boolean isManual = Boolean.parseBoolean(status.getProperty("manual_install", "false"));
 
 			if (!isManual) {
+				checkManifest();
+				
 				for (PackageInfo info : packages) {
 					String id = info.getId();
+					String url = String.format(info.getURL(), info.getVersion());
 
 					File packageFile = new File(dataDir, id);
 					long lastModified = Long.parseLong(status.getProperty(id + ".modified", "0"));
 
 					// Download file
-					Log.d("InitActivity", "Starting to download " + id + " from " + info.getURL());
+					Log.d("InitActivity", "Starting to download " + id + " from " + url);
 					try {
 						lastModified = downloadFile(
-							info.getURL(),
+							url,
 							packageFile,
 							info.getUIName(),
 							lastModified);
