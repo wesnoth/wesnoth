@@ -15,6 +15,8 @@
 
 package org.wesnoth.Wesnoth;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 public class PackageInfo {
@@ -43,6 +45,25 @@ public class PackageInfo {
 		return url;
 	}
 	
+	public int getPatchVersion() {
+		return getPatchVersion(version);
+	}
+	
+	// 0 -> major version, 1 -> minor version, 2 -> patch version
+	public static int getPatchVersion(String version) {
+		List<Integer> versionParts = decodeNumericVersion(version);
+		return versionParts.size() >= 3 ? versionParts.get(2) : 0;
+	}
+	
+	// format: 1.19.18.1 etc.
+	public static List<Integer> decodeNumericVersion(String version) {
+		List<Integer> nversion = new ArrayList<Integer>();
+		for (String part : version.split("\\.")) {
+			nversion.add(Integer.parseInt(part));
+		}
+		return nversion;
+	}
+	
 	public static PackageInfo from(Properties prop, String id) {
 		return new PackageInfo(
 			id,
@@ -50,5 +71,10 @@ public class PackageInfo {
 			prop.getProperty(id + ".version"),
 			prop.getProperty(id + ".url")
 		);
+	}
+	
+	@Override
+	public String toString() {
+		return String.format("Package[id=%s,uiname=%s,version=%s,url=%s]", id, uiname, version, url);
 	}
 }

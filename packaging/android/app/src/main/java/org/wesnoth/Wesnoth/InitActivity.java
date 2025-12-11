@@ -31,6 +31,7 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Enumeration;
+import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -59,11 +60,8 @@ import android.widget.Toast;
 import androidx.documentfile.provider.DocumentFile;
 
 public class InitActivity extends Activity {
-
-	private ArrayList<PackageInfo> packages = new ArrayList<PackageInfo>();
 	private final static String MANIFEST_URL =
 		"https://sourceforge.net/projects/wesnoth/files/wesnoth/wesnoth-%s/android-data/manifest.txt/download";
-	private static String VERSION_ID = BuildConfig.VERSION_NAME;
 
 	private File dataDir;
 	private Properties status;
@@ -74,11 +72,6 @@ public class InitActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedState) {
-		// Delete '+dev', since SF data url doesn't have it.
-		if (VERSION_ID.endsWith("+dev")) {
-			VERSION_ID = VERSION_ID.substring(0, VERSION_ID.length() - 4);
-		}
-
 		super.onCreate(savedState);
 		setContentView(R.layout.activity_init);
 
@@ -94,11 +87,19 @@ public class InitActivity extends Activity {
 		doPowerCheckAndStart();
 	}
 
-	private void checkManifest() {
+	private List<PackageInfo> readManifest() {
+		List<PackageInfo> packages = new ArrayList<>();
 		long lastModified = Long.parseLong(status.getProperty("manifest.modified", "0"));
 		String downloadAddr = String.format(MANIFEST_URL, VERSION_ID);
+		String versionID = BuildConfig.VERSION_NAME;
+		// Delete '+dev', since SF data url doesn't have it.
+		if (versionID.endsWith("+dev")) {
+			versionID = versionID.substring(0, versionID.length() - 4);
+		}
+
 		Log.d("Manifest", "Fetching manifest from " + downloadAddr);
 		File manifestFile = new File(dataDir, "manifest.txt");
+		
 		try {
 			lastModified = downloadFile(
 				downloadAddr,
@@ -120,6 +121,8 @@ public class InitActivity extends Activity {
 		} catch (Exception e) {
 			Log.e("Download", "security error", e);
 		}
+		
+		return packages;
 	}
 
 	public void onActivityResult(int reqCode, int resCode, Intent intent) {
@@ -223,43 +226,45 @@ public class InitActivity extends Activity {
 
 		Executors.newSingleThreadExecutor().execute(() -> {
 			//TODO Update mechanism when patch is available.
-			
-			boolean isManual = Boolean.parseBoolean(status.getProperty("manual_install", "false"));
-
-			if (!isManual) {
-				checkManifest();
+			if (!Boolean.parseBoolean(status.getProperty("manual_install", "false"))) {
 				
-				for (PackageInfo info : packages) {
+				for (PackageInfo info : readManifest()) {
 					String id = info.getId();
 					String url = String.format(info.getURL(), info.getVersion());
 
 					File packageFile = new File(dataDir, id);
 					long lastModified = Long.parseLong(status.getProperty(id + ".modified", "0"));
-
-					// Download file
-					Log.d("InitActivity", "Starting to download " + id + " from " + url);
-					try {
-						lastModified = downloadFile(
-							url,
-							packageFile,
-							info.getUIName(),
-							lastModified);
-
-						status.setProperty(id + ".modified", "" + lastModified);
-					} catch (Exception e) {
-						Log.e("Download", "security error", e);
-					}
-
-					// Unpack archive
-					// TODO Checksum verification?
-					if (packageFile.exists()) {
-						Log.d("InitActivity", "Start unpacking " + id);
-						
-						if (unpackArchive(packageFile, dataDir, info.getUIName())) {
-							packageFile.delete();
+					int oldVersion = PackageInfo.getPatchVersion(status.getProperty(id + ".version", "0"));
+					int newVersion = info.getPatchVersion();
+					
+					Log.d("InitActivity", id + " version: " + oldVersion + " (local), " + newVersion + " (remote)");
+					
+					if (newVersion > oldVersion) {
+						// Download package
+						Log.d("InitActivity", "Starting to download " + id + " from " + url);
+						try {
+							lastModified = downloadFile(url, packageFile, info.getUIName(), lastModified);
+							status.setProperty(id + ".version", "" + info.getVersion());
+							status.setProperty(id + ".modified", "" + lastModified);
+						} catch (Exception e) {
+							Log.e("Download", "security error", e);
 						}
+	
+						// Unpack archive
+						// TODO Checksum verification?
+						if (packageFile.exists()) {
+							Log.d("InitActivity", "Start unpacking " + id);
+							
+							if (unpackArchive(packageFile, dataDir, info.getUIName())) {
+								packageFile.delete();
+							}
+						}
+					} else {
+						Log.d("InitActivity", "No new version for " + id + " found in server, skipping.");
 					}
 				}
+			} else {
+				Log.d("InitActivity", "Manually installed data, automatic updates will not be performed.");
 			}
 
 			extractNetworkCertificate();
