@@ -64,7 +64,7 @@ public class InitActivity extends Activity {
 		"https://sourceforge.net/projects/wesnoth/files/wesnoth/wesnoth-%s/android-data/manifest.txt/download";
 
 	private File dataDir;
-	private Properties status;
+	private Properties status = new Properties();
 
 	private String toSizeString(long bytes) {
 		return String.format("%4.2f MB", (bytes * 1.0f) / (1e6));
@@ -80,7 +80,7 @@ public class InitActivity extends Activity {
 
 		initMainDataDir();
 		
-		status = initStatusFile(dataDir);
+		status = initStatusFile(new File(dataDir, "status.properties"));
 
 		initSettingsMenu();
 
@@ -101,11 +101,7 @@ public class InitActivity extends Activity {
 		File manifestFile = new File(dataDir, "manifest.txt");
 		
 		try {
-			lastModified = downloadFile(
-				downloadAddr,
-				manifestFile,
-				"Manifest",
-				lastModified);
+			lastModified = downloadFile(downloadAddr, manifestFile, lastModified, "Checking Manifest...", true);
 
 			Properties manifest = new Properties();
 			manifest.load(new FileInputStream(manifestFile));
@@ -230,9 +226,9 @@ public class InitActivity extends Activity {
 				
 				for (PackageInfo info : readManifest()) {
 					String id = info.getId();
-					String url = String.format(info.getURL(), info.getVersion());
+					String url = info.getURL();
 
-					File packageFile = new File(dataDir, id);
+					File packageFile = new File(dataDir, id + ".zip");
 					long lastModified = Long.parseLong(status.getProperty(id + ".modified", "0"));
 					int oldVersion = PackageInfo.getPatchVersion(status.getProperty(id + ".version", "0"));
 					int newVersion = info.getPatchVersion();
@@ -243,7 +239,7 @@ public class InitActivity extends Activity {
 						// Download package
 						Log.d("InitActivity", "Starting to download " + id + " from " + url);
 						try {
-							lastModified = downloadFile(url, packageFile, info.getUIName(), lastModified);
+							lastModified = downloadFile(url, packageFile, lastModified, info.getUIName(), false);
 							status.setProperty(id + ".version", "" + info.getVersion());
 							status.setProperty(id + ".modified", "" + lastModified);
 						} catch (Exception e) {
@@ -291,9 +287,8 @@ public class InitActivity extends Activity {
 		finish();
 	}
 
-	private Properties initStatusFile(File dataDir) {
+	private Properties initStatusFile(File statusFile) {
 		Properties status = new Properties();
-		File statusFile = new File(dataDir, "status.properties");
 		try (FileInputStream statusStream = new FileInputStream(statusFile)) {
 			if (statusFile.exists()) {
 				status.load(statusStream);
@@ -339,17 +334,23 @@ public class InitActivity extends Activity {
 		Executors.newSingleThreadExecutor().execute(() -> {
 			runOnUiThread(() -> showProgressScreen());
 
-			Properties status = initStatusFile(dataDir);
-
+			status = initStatusFile(new File(dataDir, "status.properties"));
+			
+			String msg;
 			if (unpackArchive(uri, dataDir, "Custom Data")) {
 				status.setProperty("manual_install", "true");
+				// if we have a custom status.properties bundled inside, merge it with `status`.
+				status.putAll(initStatusFile(new File(dataDir, "status.properties")));
 				storeStatus(status);
-				runOnUiThread(()-> Toast.makeText(this, "Installed!", Toast.LENGTH_SHORT).show());
+				msg = "Installed!";
 			} else {
-				runOnUiThread(()-> Toast.makeText(this, "Installation failed!", Toast.LENGTH_SHORT).show());
+				msg = "Installation failed!";
 			}
 
-			runOnUiThread(() -> recreate());
+			runOnUiThread(() -> {
+				runOnUiThread(()-> Toast.makeText(this, msg, Toast.LENGTH_SHORT).show());
+				recreate();
+			});
 		});
 	}
 
@@ -447,6 +448,7 @@ public class InitActivity extends Activity {
 	private void updateProgress(String progressMsg, int progress) {
 		TextView progressText = (TextView) findViewById(R.id.download_msg);
 		ProgressBar progressBar = (ProgressBar) findViewById(R.id.download_progress);
+		progressBar.setIndeterminate(progress == -1);
 		progressBar.setProgress(progress);
 		progressText.setText(progressMsg);
 	}
@@ -467,14 +469,13 @@ public class InitActivity extends Activity {
 		updateProgress(unpackMsg, progress);
 	}
 
-	private long downloadFile(String url, File destpath, String type, long modified) {
+	private long downloadFile(String url, File destpath, long modified, String typeOrMsg, boolean isCustomMsg) {
 		long newModified = 0;
 		// based on https://stackoverflow.com/a/4896527/22060628
 		Log.d("Download", "URL: " + url);
 
 		try {
-			URL downloadURL = new URL(url);
-			HttpURLConnection conn = (HttpURLConnection) downloadURL.openConnection();
+			HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
 			conn.setRequestProperty("Accept", "*/*");
 			conn.setRequestProperty("User-Agent", "Wget/1.13.4 (linux-gnu)");
 			conn.setRequestMethod("GET");
@@ -487,14 +488,15 @@ public class InitActivity extends Activity {
 				return newModified;
 			}
 
-			final int max = (int) conn.getContentLengthLong();
-			final AtomicInteger progress = new AtomicInteger(0);
-			final AtomicInteger length = new AtomicInteger(0);
 			newModified = conn.getLastModified();
 			// File did not change on server, don't download.
 			if (newModified == modified) {
 				return newModified;
 			}
+			
+			final int max = (int) conn.getContentLengthLong();
+			final AtomicInteger progress = new AtomicInteger(0);
+			final AtomicInteger length = new AtomicInteger(0);
 
 			// TODO rewrite to use copyStream function.
 			byte[] buffer = new byte[8192];
@@ -511,7 +513,13 @@ public class InitActivity extends Activity {
 				length.set(in.read(buffer));
 				while (length.get() > 0) {
 					out.write(buffer, 0, length.get());
-					runOnUiThread(() -> updateDownloadProgress(progress.addAndGet(length.get()), max, type));
+					runOnUiThread(() -> {
+						if (isCustomMsg) {
+							updateProgress(typeOrMsg, -1);
+						} else {
+							updateDownloadProgress(progress.addAndGet(length.get()), max, typeOrMsg);
+						}
+					});
 					length.set(in.read(buffer));
 				}
 			}
