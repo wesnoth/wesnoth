@@ -64,7 +64,7 @@ class halo_impl
 
 		bool expired()     const { return !images_.cycles() && images_.animation_finished(); }
 		bool need_update() const { return images_.need_update(); }
-		bool does_change() const { return !images_.does_not_change(); }
+		bool does_change() const { return !images_.is_static(); }
 
 	private:
 
@@ -81,6 +81,8 @@ class halo_impl
 
 		// The current halo image frame
 		texture tex_ = {};
+		// Track the last used locator to avoid redundant cache lookups
+		image::locator last_locator_ = image::locator();
 		// The current location where the halo will be drawn on the screen
 		rect screen_loc_ = {};
 		// The last drawn location
@@ -188,7 +190,11 @@ void halo_impl::effect::update()
 	}
 
 	// Load texture for current animation frame
-	tex_ = image::get_texture(current_image());
+	const image::locator& loc = current_image();
+	if(loc != last_locator_ || !tex_) {
+		tex_ = image::get_texture(loc);
+		last_locator_ = loc;
+	}
 	if(!tex_) {
 		ERR_HL << "no texture found for current halo animation frame";
 		screen_loc_ = {};
@@ -236,8 +242,9 @@ bool halo_impl::effect::render()
 	// This should only be set if we actually draw something
 	last_draw_loc_ = {};
 
-	// Update animation frame, even if we didn't actually draw it
-	images_.update_last_draw_time();
+	if(images_.need_update()) {
+		images_.advance_to_current_frame();
+	}
 
 	if(!visible()) {
 		return false;
