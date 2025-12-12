@@ -41,8 +41,9 @@ public class PackageInfo {
 		return version;
 	}
 	
+	// any occurance of %s in url will be replaced with version
 	public String getURL() {
-		return url;
+		return String.format(url, version);
 	}
 	
 	public int getPatchVersion() {
