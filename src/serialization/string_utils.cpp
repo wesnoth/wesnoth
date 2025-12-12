@@ -119,14 +119,26 @@ std::vector<std::string> square_parenthetical_split(const std::string& val,
 		const std::string& right,const int flags)
 {
 	std::vector< std::string > res;
+
+	if (val.empty()) {
+		return res;
+	}
+	if (!separator) {
+		ERR_GENERAL << "Separator must be specified for square bracket split function.";
+		return res;
+	}
+	if (left.size() != right.size()) {
+		ERR_GENERAL << "Left and Right Parenthesis lists not same length";
+		return res;
+	}
+
+	std::string lp = left;
+	std::string rp = right;
 	std::vector<char> part;
 	bool in_parenthesis = false;
 	std::vector<std::string::const_iterator> square_left;
 	std::vector<std::string::const_iterator> square_right;
 	std::vector< std::string > square_expansion;
-
-	std::string lp=left;
-	std::string rp=right;
 
 	std::string::const_iterator i1 = val.begin();
 	std::string::const_iterator i2;
@@ -135,19 +147,20 @@ std::vector<std::string> square_parenthetical_split(const std::string& val,
 		while (i1 != val.end() && portable_isspace(*i1))
 			++i1;
 	}
+	if (i1 == val.end()) return res;
 	i2=i1;
 	j1=i1;
 
-	if (i1 == val.end()) return res;
-
-	if (!separator) {
-		ERR_GENERAL << "Separator must be specified for square bracket split function.";
-		return res;
-	}
-
-	if(left.size()!=right.size()){
-		ERR_GENERAL << "Left and Right Parenthesis lists not same length";
-		return res;
+	// If the string contains no animation markers, return the string immediately.
+	// Added since many static images are treated as animations and run through here.
+	const std::string complex_markers = separator + std::string("[");
+	if (val.find_first_of(complex_markers) == std::string::npos)
+	{
+		std::string mutable_val(i1, val.end());
+		if (flags & STRIP_SPACES) {
+			boost::trim_right(mutable_val);
+		}
+		return { mutable_val };
 	}
 
 	while (true) {

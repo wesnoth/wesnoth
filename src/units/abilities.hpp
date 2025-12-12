@@ -284,18 +284,18 @@ public:
 		is_for_listing = for_listing;
 	}
 
-	struct self_and_other_red_t {
+	struct self_and_other_ref {
 		const specials_combatant& self;
 		const specials_combatant& other;
 	};
 
-	self_and_other_red_t self_and_other(const attack_type& self_att) const
+	self_and_other_ref self_and_other(const attack_type& self_att) const
 	{
-		return &self_att == attacker.at.get() ? self_and_other_red_t{ attacker, defender } : self_and_other_red_t{ defender, attacker };
+		return &self_att == attacker.at.get() ? self_and_other_ref{ attacker, defender } : self_and_other_ref{ defender, attacker };
 	}
-	self_and_other_red_t self_and_other(const unit& self_un) const
+	self_and_other_ref self_and_other(const unit& self_un) const
 	{
-		return &self_un == attacker.un.get() ? self_and_other_red_t{ attacker, defender } : self_and_other_red_t{ defender, attacker };
+		return &self_un == attacker.un.get() ? self_and_other_ref{ attacker, defender } : self_and_other_ref{ defender, attacker };
 	}
 
 	const specials_combatant& other(const specials_combatant& self) const
@@ -339,13 +339,11 @@ enum EFFECTS { EFFECT_DEFAULT=1, EFFECT_CUMULABLE=2, EFFECT_WITHOUT_CLAMP_MIN_MA
 
 struct individual_effect
 {
-	individual_effect() : type(NOT_USED), value(0), ability(nullptr),
-		loc(map_location::null_location()) {}
 	void set(value_modifier t, int val, const config& abil,const map_location &l);
-	value_modifier type;
-	int value;
-	const config *ability;
-	map_location loc;
+	value_modifier type{NOT_USED};
+	int value{0};
+	const config* ability{nullptr};
+	map_location loc{map_location::null_location()};
 };
 
 class effect

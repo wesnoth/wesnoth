@@ -279,10 +279,7 @@ void terrain_builder::flush_local_rules()
 void terrain_builder::set_terrain_rules_cfg(const game_config_view& cfg)
 {
 	rules_cfg_ = &cfg;
-	// use the swap trick to clear the rules cache and get a fresh one.
-	// because simple clear() seems to cause some progressive memory degradation.
-	building_ruleset empty;
-	std::swap(building_rules_, empty);
+	building_rules_.clear();
 }
 
 void terrain_builder::reload_map()
