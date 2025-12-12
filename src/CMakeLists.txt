@@ -253,6 +253,7 @@ if(ENABLE_GAME)
 		Boost::coroutine
 		Boost::locale
 		Boost::filesystem
+		Boost::process
 		Fontconfig::Fontconfig
 		SDL2::SDL2
 		SDL2::SDL2main

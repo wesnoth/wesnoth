@@ -57,14 +57,35 @@
 #include "wesnothd_connection_error.hpp"
 #include "wml_exception.hpp" // for wml_exception
 
-#ifdef _WIN32
-#  include <boost/process/windows.hpp>
+#ifdef __APPLE__
+
+//
+// HACK: MacCompileStuff is currently on 1.86, so it could use the v2 API,
+// but we need to update the libs manually to link against boost::process.
+//
+// -- vultraz, 2025-05-12
+//
+#if BOOST_VERSION > 108600
+#error MacCompileStuff has been updated. Remove this bloc kand the accompanying __APPLE__ checks below.
 #endif
-#if BOOST_VERSION >= 108800 // v2 is now default
-#  define BOOST_PROCESS_VERSION 1
-#  include <boost/process/v1/child.hpp>
+#include <boost/process/v1/child.hpp>
+
+#elif BOOST_VERSION >= 108600
+
+// boost::asio (via boost::process) complains about winsock.h otherwise
+#ifdef _WIN32
+#define WIN32_LEAN_AND_MEAN
+#endif
+#include <boost/process/v2/process.hpp>
+
 #else
-#  include <boost/process.hpp>
+
+// process::v1 only. The v1 folders do not exist until 1.86
+#ifdef _WIN32
+#include <boost/process/windows.hpp>
+#endif
+#include <boost/process/child.hpp>
+
 #endif
 
 #include <algorithm> // for copy, max, min, stable_sort
@@ -100,8 +121,6 @@ static lg::log_domain log_network("network");
 
 static lg::log_domain log_enginerefac("enginerefac");
 #define LOG_RG LOG_STREAM(info, log_enginerefac)
-
-namespace bp = boost::process;
 
 game_launcher::game_launcher(const commandline_options& cmdline_opts)
 	: cmdline_opts_(cmdline_opts)
@@ -846,17 +865,26 @@ void game_launcher::start_wesnothd()
 	LOG_GENERAL << "Starting wesnothd";
 	try
 	{
-#ifndef _WIN32
-		bp::child c(wesnothd_program, "-c", config);
+#if !defined(__APPLE__) && BOOST_VERSION >= 108600
+		boost::asio::io_context io_context;
+		auto c = boost::process::v2::process{io_context, wesnothd_program, { "-c", config }};
 #else
-		bp::child c(wesnothd_program, "-c", config, bp::windows::create_no_window);
+#ifndef _WIN32
+		boost::process::child c(wesnothd_program, "-c", config);
+#else
+		boost::process::child c(wesnothd_program, "-c", config, boost::process::windows::create_no_window);
+#endif
 #endif
 		c.detach();
 		// Give server a moment to start up
 		SDL_Delay(50);
 		return;
 	}
-	catch(const bp::process_error& e)
+#if defined(__APPLE__) || BOOST_VERSION < 108600
+	catch(const boost:process::process_error& e)
+#else
+	catch(const std::exception& e)
+#endif
 	{
 		preferences::set_mp_server_program_name("");
 
