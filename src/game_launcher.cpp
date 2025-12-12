@@ -881,7 +881,7 @@ void game_launcher::start_wesnothd()
 		return;
 	}
 #if defined(__APPLE__) || BOOST_VERSION < 108600
-	catch(const boost:process::process_error& e)
+	catch(const boost::process::process_error& e)
 #else
 	catch(const std::exception& e)
 #endif
