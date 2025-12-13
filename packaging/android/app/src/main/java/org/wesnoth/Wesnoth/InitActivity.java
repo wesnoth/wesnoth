@@ -28,9 +28,11 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Enumeration;
-import java.util.LinkedHashMap;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.Executors;
@@ -60,13 +62,11 @@ import android.widget.Toast;
 import androidx.documentfile.provider.DocumentFile;
 
 public class InitActivity extends Activity {
-
-	private final static LinkedHashMap<String, String> packages = new LinkedHashMap<String, String>();
-	private final static String ARCHIVE_URL =
-		"https://sourceforge.net/projects/wesnoth/files/wesnoth/wesnoth-%s/android-data/%s/download";
-	private static String VERSION_ID = BuildConfig.VERSION_NAME;
+	private final static String MANIFEST_URL =
+		"https://sourceforge.net/projects/wesnoth/files/wesnoth/wesnoth-%s/android-data/manifest.txt/download";
 
 	private File dataDir;
+	private Properties status = new Properties();
 
 	private String toSizeString(long bytes) {
 		return String.format("%4.2f MB", (bytes * 1.0f) / (1e6));
@@ -74,15 +74,6 @@ public class InitActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedState) {
-		// Delete '+dev', since SF data url doesn't have it.
-		if (VERSION_ID.endsWith("+dev")) {
-			VERSION_ID = VERSION_ID.substring(0, VERSION_ID.length() - 4);
-		}
-
-		packages.put("Core Data", "master.zip");
-		packages.put("Music", "music.zip");
-		packages.put("Patch", "patch.zip");
-
 		super.onCreate(savedState);
 		setContentView(R.layout.activity_init);
 
@@ -90,10 +81,46 @@ public class InitActivity extends Activity {
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
 		initMainDataDir();
+		
+		status = initStatusFile(new File(dataDir, "status.properties"));
 
 		initSettingsMenu();
 
 		doPowerCheckAndStart();
+	}
+
+	private List<PackageInfo> readManifest() {
+		List<PackageInfo> packages = new ArrayList<>();
+		long lastModified = Long.parseLong(status.getProperty("manifest.modified", "0"));
+		
+		String versionID = BuildConfig.VERSION_NAME;
+		// Delete '+dev', since SF data url doesn't have it.
+		if (versionID.endsWith("+dev")) {
+			versionID = versionID.substring(0, versionID.length() - 4);
+		}
+
+		String downloadAddr = String.format(MANIFEST_URL, versionID);
+		Log.d("Manifest", "Fetching manifest from " + downloadAddr);
+		File manifestFile = new File(dataDir, "manifest.txt");
+		
+		try {
+			lastModified = downloadFile(downloadAddr, manifestFile, lastModified, "Checking Manifest...", true);
+
+			Properties manifest = new Properties();
+			manifest.load(new FileInputStream(manifestFile));
+			for (String pkgid : manifest.getProperty("packages", "").split(",\\s*")) {
+				packages.add(PackageInfo.from(manifest, pkgid));
+			}
+			Log.d("Manifest", "Last Modified: " + lastModified);
+			Log.d("Manifest", "Packages: " + packages.toString());
+
+			status.setProperty("manifest.modified", "" + lastModified);
+			Log.d("Manifest", "Fetched and loaded successfully");
+		} catch (Exception e) {
+			Log.e("Download", "security error", e);
+		}
+		
+		return packages;
 	}
 
 	public void onActivityResult(int reqCode, int resCode, Intent intent) {
@@ -197,43 +224,67 @@ public class InitActivity extends Activity {
 
 		Executors.newSingleThreadExecutor().execute(() -> {
 			//TODO Update mechanism when patch is available.
-
-			Properties status = initStatusFile(dataDir);
-			boolean isManual = Boolean.parseBoolean(status.getProperty("manual_install", "false"));
-
-			if (!isManual) {
-				for (Map.Entry<String, String> entry : InitActivity.packages.entrySet()) {
-					String name = entry.getValue();
-					String uiname = entry.getKey();
-
-					File packageFile = new File(dataDir, name);
-					long lastModified = Long.parseLong(status.getProperty("modified." + name, "0"));
-
-					// Download file
-					final String downloadAddr = String.format(ARCHIVE_URL, VERSION_ID, name);
-					Log.d("InitActivity", "Starting to download " + name + " from " + downloadAddr);
-					try {
-						lastModified = downloadFile(
-							downloadAddr,
-							packageFile,
-							uiname,
-							lastModified);
-
-						status.setProperty("modified." + name, "" + lastModified);
-					} catch (Exception e) {
-						Log.e("Download", "security error", e);
+			if (!Boolean.parseBoolean(status.getProperty("manual_install", "false"))) {
+				HashMap<String, String> excluded = new HashMap<String, String>();
+				
+				for (PackageInfo info : readManifest()) {
+					String id = info.getId();
+					if (excluded.containsKey(id) && excluded.get(id).equals(info.getVersion())) {
+						Log.d("InitActivity", "Not downloading excluded package " + id);
+						continue;
 					}
-
-					// Unpack archive
-					// TODO Checksum verification?
-					if (packageFile.exists()) {
-						Log.d("InitActivity", "Start unpack " + name);
-
-						if (unpackArchive(packageFile, dataDir, uiname)) {
-							packageFile.delete();
+					
+					String url = info.getURL();
+					long lastModified = Long.parseLong(status.getProperty(id + ".modified", "0"));
+					int oldVersion = PackageInfo.getPatchVersion(status.getProperty(id + ".version", "0"));
+					int newVersion = info.getPatchVersion();
+					boolean downloadPkg = newVersion > oldVersion;
+					
+					// Check if dependencies for this package exist, only download if all satisfied
+					for (Map.Entry<String, String> dep : info.getDependencies().entrySet()) {
+						int depOldVersion = PackageInfo.getPatchVersion(status.getProperty(dep.getKey() + ".version", "0"));
+						int depNewVersion = PackageInfo.getPatchVersion(dep.getValue());
+						if (depNewVersion != depOldVersion) {
+							Log.d("InitActivity", "Dependency " + dep.getKey() + "for " + id + " not found");
+							downloadPkg = false;
 						}
 					}
+					
+					Log.d("InitActivity", id + " version: " + oldVersion + " (local), " + newVersion + " (remote)");
+					
+					if (downloadPkg) {
+						
+						File packageFile = new File(dataDir, id + ".zip");
+						
+						// Download package
+						Log.d("InitActivity", "Starting to download " + id + " from " + url);
+						
+						try {
+							lastModified = downloadFile(
+								url, packageFile, lastModified, info.getUIName(), false);
+							
+							status.setProperty(id + ".version", "" + info.getVersion());
+							status.setProperty(id + ".modified", "" + lastModified);
+						} catch (Exception e) {
+							Log.e("Download", "security error", e);
+						}
+	
+						// Unpack archive
+						// TODO Checksum verification?
+						if (packageFile.exists()) {
+							Log.d("InitActivity", "Start unpacking " + id);
+							
+							if (unpackArchive(packageFile, dataDir, info.getUIName())) {
+								excluded.putAll(info.getExcluded());
+								packageFile.delete();
+							}
+						}
+					} else {
+						Log.d("InitActivity", "No new version/dependency unmet for " + id + " found in server, skipping.");
+					}
 				}
+			} else {
+				Log.d("InitActivity", "Manually installed data, automatic updates will not be performed.");
 			}
 
 			extractNetworkCertificate();
@@ -260,9 +311,8 @@ public class InitActivity extends Activity {
 		finish();
 	}
 
-	private Properties initStatusFile(File dataDir) {
+	private Properties initStatusFile(File statusFile) {
 		Properties status = new Properties();
-		File statusFile = new File(dataDir, "status.properties");
 		try (FileInputStream statusStream = new FileInputStream(statusFile)) {
 			if (statusFile.exists()) {
 				status.load(statusStream);
@@ -308,17 +358,23 @@ public class InitActivity extends Activity {
 		Executors.newSingleThreadExecutor().execute(() -> {
 			runOnUiThread(() -> showProgressScreen());
 
-			Properties status = initStatusFile(dataDir);
-
-			if (unpackArchive(uri, dataDir, "Core")) {
+			status = initStatusFile(new File(dataDir, "status.properties"));
+			
+			String msg;
+			if (unpackArchive(uri, dataDir, "Custom Data")) {
 				status.setProperty("manual_install", "true");
+				// if we have a custom status.properties bundled inside, merge it with `status`.
+				status.putAll(initStatusFile(new File(dataDir, "status.properties")));
 				storeStatus(status);
-				runOnUiThread(()-> Toast.makeText(this, "Installed!", Toast.LENGTH_SHORT).show());
+				msg = "Installed!";
 			} else {
-				runOnUiThread(()-> Toast.makeText(this, "Installation failed!", Toast.LENGTH_SHORT).show());
+				msg = "Installation failed!";
 			}
 
-			runOnUiThread(() -> recreate());
+			runOnUiThread(() -> {
+				runOnUiThread(()-> Toast.makeText(this, msg, Toast.LENGTH_SHORT).show());
+				recreate();
+			});
 		});
 	}
 
@@ -416,6 +472,7 @@ public class InitActivity extends Activity {
 	private void updateProgress(String progressMsg, int progress) {
 		TextView progressText = (TextView) findViewById(R.id.download_msg);
 		ProgressBar progressBar = (ProgressBar) findViewById(R.id.download_progress);
+		progressBar.setIndeterminate(progress == -1);
 		progressBar.setProgress(progress);
 		progressText.setText(progressMsg);
 	}
@@ -436,14 +493,13 @@ public class InitActivity extends Activity {
 		updateProgress(unpackMsg, progress);
 	}
 
-	private long downloadFile(String url, File destpath, String type, long modified) {
+	private long downloadFile(String url, File destpath, long modified, String typeOrMsg, boolean isCustomMsg) {
 		long newModified = 0;
 		// based on https://stackoverflow.com/a/4896527/22060628
 		Log.d("Download", "URL: " + url);
 
 		try {
-			URL downloadURL = new URL(url);
-			HttpURLConnection conn = (HttpURLConnection) downloadURL.openConnection();
+			HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
 			conn.setRequestProperty("Accept", "*/*");
 			conn.setRequestProperty("User-Agent", "Wget/1.13.4 (linux-gnu)");
 			conn.setRequestMethod("GET");
@@ -456,14 +512,15 @@ public class InitActivity extends Activity {
 				return newModified;
 			}
 
-			final int max = (int) conn.getContentLengthLong();
-			final AtomicInteger progress = new AtomicInteger(0);
-			final AtomicInteger length = new AtomicInteger(0);
 			newModified = conn.getLastModified();
 			// File did not change on server, don't download.
 			if (newModified == modified) {
 				return newModified;
 			}
+			
+			final int max = (int) conn.getContentLengthLong();
+			final AtomicInteger progress = new AtomicInteger(0);
+			final AtomicInteger length = new AtomicInteger(0);
 
 			// TODO rewrite to use copyStream function.
 			byte[] buffer = new byte[8192];
@@ -480,7 +537,13 @@ public class InitActivity extends Activity {
 				length.set(in.read(buffer));
 				while (length.get() > 0) {
 					out.write(buffer, 0, length.get());
-					runOnUiThread(() -> updateDownloadProgress(progress.addAndGet(length.get()), max, type));
+					runOnUiThread(() -> {
+						if (isCustomMsg) {
+							updateProgress(typeOrMsg, -1);
+						} else {
+							updateDownloadProgress(progress.addAndGet(length.get()), max, typeOrMsg);
+						}
+					});
 					length.set(in.read(buffer));
 				}
 			}
@@ -599,5 +662,4 @@ public class InitActivity extends Activity {
 
 		return false;
 	}
-
 }
