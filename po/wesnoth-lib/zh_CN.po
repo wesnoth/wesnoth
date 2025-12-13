@@ -10,10 +10,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: wesnoth-1.16\n"
+"Project-Id-Version: wesnoth-1.18\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-12-08 09:30-0600\n"
-"PO-Revision-Date: 2025-10-24 12:38+0800\n"
+"PO-Revision-Date: 2025-12-04 15:34+0800\n"
 "Last-Translator: vimacs <vimacs.hacks@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 3.7\n"
+"X-Generator: Poedit 3.8\n"
 
 #. [ai]: id=ai_default_rca
 #: data/ai/ais/ai_default_rca.cfg:9
@@ -890,10 +890,8 @@ msgstr ""
 
 #. [terrain_type]: id=high_canyon_obst
 #: data/core/terrain.cfg:1237
-#, fuzzy
-#| msgid "Unwalkable Overlay"
 msgid "Unwalkable Ravine"
-msgstr "不可行走地形覆盖层"
+msgstr "不可行走的峡谷"
 
 #. [terrain_type]: id=high_border_woods
 #: data/core/terrain.cfg:1251
@@ -1014,14 +1012,12 @@ msgstr "受损的洞穴墙"
 #. [terrain_type]: id=wall_hedge
 #: data/core/terrain.cfg:1435
 msgid "Thick Hedges"
-msgstr ""
+msgstr "厚篱笆"
 
 #. [terrain_type]: id=wall_hedge
 #: data/core/terrain.cfg:1436
-#, fuzzy
-#| msgid "Cave Wall"
 msgid "Hedges Wall"
-msgstr "洞穴墙"
+msgstr "篱笆墙"
 
 #. [terrain_type]: id=wall_stone
 #. [terrain_type]: id=wall_stone_lit
@@ -2241,15 +2237,11 @@ msgstr "<bold>text='轨道'</bold> 用于运输矿石，大多数时候是矮人
 #: data/core/terrain.cfg:3478 data/core/terrain.cfg:3489
 #: data/core/terrain.cfg:3500 data/core/terrain.cfg:3511
 #: data/core/terrain.cfg:3522
-#, fuzzy
-#| msgid "Game created"
 msgid "Deprecated"
-msgstr "游戏已创建"
+msgstr "已弃用"
 
 #. [settings]
 #: data/gui/default.cfg:23
-#, fuzzy
-#| msgid " (Press '$hotkey' for more information)"
 msgid " (Press ‘$hotkey’ for more information)"
 msgstr "（按”$hotkey|”以查看更多信息）"
 
@@ -2939,25 +2931,25 @@ msgstr "论坛"
 #. this is on a button that opens the Wesnoth Discord server webpage
 #: data/gui/window/community_dialog.cfg:82
 msgid "Discord"
-msgstr ""
+msgstr "Discord"
 
 #. [button]: id=irc
 #. this is on a button that opens the Wesnoth IRC webpage. IRC is an acronym for Internet Relay Chat
 #: data/gui/window/community_dialog.cfg:101
 msgid "IRC"
-msgstr ""
+msgstr "IRC"
 
 #. [button]: id=steam
 #. this is on a button that opens the Wesnoth Steam forums webpage
 #: data/gui/window/community_dialog.cfg:120
 msgid "Steam"
-msgstr ""
+msgstr "Steam"
 
 #. [button]: id=reddit
 #. this is on a button that opens the Wesnoth Reddit webpage
 #: data/gui/window/community_dialog.cfg:139
 msgid "Reddit"
-msgstr ""
+msgstr "Reddit"
 
 #. [button]: id=donate
 #. this is on a button that opens the Wesnoth SPI webpage for sending donations
@@ -3148,10 +3140,8 @@ msgstr "仅用于团队"
 
 #. [label]
 #: data/gui/window/editor_choose_addon.cfg:45
-#, fuzzy
-#| msgid "Add-on Details"
 msgid "Add-on selection"
-msgstr "附加组件细节"
+msgstr "附加组件选择"
 
 #. [label]
 #: data/gui/window/editor_choose_addon.cfg:62
@@ -3174,7 +3164,7 @@ msgstr "显示所有"
 #. [toggle_button]: id=show_all
 #: data/gui/window/editor_choose_addon.cfg:184
 msgid "Whether to show all installed add-ons or only your add-ons"
-msgstr ""
+msgstr "显示所有已安装的附加组件还是只有你的组件"
 
 #. [label]
 #: data/gui/window/editor_edit_label.cfg:106
@@ -3214,7 +3204,7 @@ msgstr ""
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:150
 msgid "The name of the add-on displayed in-game."
-msgstr ""
+msgstr "游戏中显示的附加组件名称。"
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:150
@@ -3233,10 +3223,8 @@ msgstr "图标："
 
 #. [button]: id=select_icon
 #: data/gui/window/editor_edit_pbl.cfg:182
-#, fuzzy
-#| msgid "Select None"
 msgid "Select an icon file"
-msgstr "取消选择"
+msgstr "选择一个图标文件"
 
 #. [text_box]: id=icon
 #: data/gui/window/editor_edit_pbl.cfg:195
@@ -3273,7 +3261,7 @@ msgstr ""
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:211
 msgid "Forum thread:"
-msgstr ""
+msgstr "论坛帖子："
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:211
@@ -3294,10 +3282,8 @@ msgstr ""
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:213
-#, fuzzy
-#| msgid "Authenticate"
 msgid "Forum Authentication:"
-msgstr "身份认证"
+msgstr "论坛身份认证："
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:213
@@ -3316,7 +3302,7 @@ msgstr ""
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:214
 msgid "Secondary Authors:"
-msgstr ""
+msgstr "第二作者："
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:215
@@ -3327,7 +3313,7 @@ msgstr ""
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:215
 msgid "Email:"
-msgstr ""
+msgstr "Email:"
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl.cfg:216
@@ -3339,7 +3325,7 @@ msgstr ""
 #. [label]: id=translations_title
 #: data/gui/window/editor_edit_pbl.cfg:274
 msgid "Title"
-msgstr ""
+msgstr "标题"
 
 #. [label]: id=translations_description
 #: data/gui/window/editor_edit_pbl.cfg:291
@@ -3405,12 +3391,12 @@ msgstr "* 标题："
 #. [grid]
 #: data/gui/window/editor_edit_pbl_translation.cfg:98
 msgid "The translation of the add-on’s title."
-msgstr ""
+msgstr "附加组件标题的翻译。"
 
 #. [grid]
 #: data/gui/window/editor_edit_pbl_translation.cfg:99
 msgid "The translation of the add-on’s description."
-msgstr ""
+msgstr "附加组件描述的翻译。"
 
 #. [label]: id=title
 #: data/gui/window/editor_edit_scenario.cfg:42
@@ -4085,20 +4071,16 @@ msgstr "日志文件"
 
 #. [button]: id=open_stderr
 #: data/gui/window/game_version.cfg:623
-#, fuzzy
-#| msgid "Opens the log file, which may contain useful debug information"
 msgid ""
 "Opens the log file pertaining to the current session, which may contain "
 "useful debug information"
-msgstr "打开日志文件，其中可能包含有用的调试信息"
+msgstr "打开与当前会话有关的日志文件，其中可能包含有用的调试信息"
 
 #. [button]: id=run_migrator
 #. button to open the version migration dialog manually to re-migrate add-ons and the preferences file
 #: data/gui/window/game_version.cfg:635
-#, fuzzy
-#| msgid "Crater"
 msgid "Migrate"
-msgstr "火山口"
+msgstr "迁移"
 
 #. [label]
 #: data/gui/window/gamestate_inspector.cfg:16
@@ -5060,7 +5042,7 @@ msgstr "无"
 #. [widget]: id=tab_label
 #: data/gui/window/mp_match_history.cfg:375
 msgid "Info"
-msgstr ""
+msgstr "信息"
 
 #. [widget]: id=tab_label
 #: data/gui/window/mp_match_history.cfg:388
@@ -5077,7 +5059,7 @@ msgstr "模组"
 #. [label]
 #: data/gui/window/mp_match_history.cfg:450
 msgid "Player:"
-msgstr "玩家"
+msgstr "玩家："
 
 #. [text_box]: id=search_player
 #. [text_box]: id=search_game_name
@@ -5091,7 +5073,7 @@ msgstr ""
 #. [label]
 #: data/gui/window/mp_match_history.cfg:474
 msgid "Content Type:"
-msgstr ""
+msgstr "内容类型："
 
 #. [label]
 #: data/gui/window/mp_match_history.cfg:494
@@ -5437,7 +5419,7 @@ msgstr "清除快捷键"
 #. [label]
 #: data/gui/window/preferences/03_display.cfg:15
 msgid "Window size:"
-msgstr ""
+msgstr "窗口大小："
 
 #. [label]: id=help_text
 #: data/gui/window/preferences/03_display.cfg:39
@@ -5819,8 +5801,8 @@ msgid ""
 "If a unit can move but can’t attack, show a two-color orb with the colors "
 "for partially and fully moved."
 msgstr ""
-"若单位能够移动但不能攻击，则显示双色状态球，其中颜色为分别代表“已部分移"
-"动”和“已完全移动”的颜色。"
+"若单位能够移动但不能攻击，则显示双色状态球，其中颜色为分别代表“已部分移动”和"
+"“已完全移动”的颜色。"
 
 #. [grid]
 #: data/gui/window/select_orb_colors.cfg:148
@@ -6813,10 +6795,8 @@ msgid "Attacker vulnerability vs"
 msgstr "进攻方弱点 vs"
 
 #: src/gui/dialogs/campaign_selection.cpp:354
-#, fuzzy
-#| msgid "Campaigns"
 msgid "Missing Campaigns"
-msgstr "战役"
+msgstr "缺失的战役"
 
 #. TRANSLATORS: "more than 15" gives a little leeway to add or remove one without changing the translatable text.
 #. It's already ambiguous, 1.18 has 19 campaigns, if you include the tutorial and multiplayer-only World Conquest.
@@ -6945,7 +6925,7 @@ msgstr "地形改造"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:378
 msgid "No validation errors"
-msgstr ""
+msgstr "无验证错误"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:378
 msgid "Success"
@@ -7073,7 +7053,7 @@ msgstr "韦诺 $version"
 #. TRANSLATORS: "reserve" refers to units on the recall list
 #: src/gui/dialogs/game_load.cpp:235
 msgid "$active active, $reserve reserve"
-msgstr ""
+msgstr "$active 活跃，$reserve 保留"
 
 #: src/gui/dialogs/game_load.cpp:284
 msgid "The selected file is corrupt: "
@@ -7128,10 +7108,8 @@ msgid "controller^Idle"
 msgstr "空闲"
 
 #: src/gui/dialogs/game_stats.cpp:71
-#, fuzzy
-#| msgid "controller^None"
 msgid "controller^Reserved"
-msgstr "无"
+msgstr "保留"
 
 #: src/gui/dialogs/game_stats.cpp:110 src/gui/dialogs/label_settings.cpp:78
 msgid "Unknown"
@@ -7357,8 +7335,8 @@ msgid ""
 "Something is wrong with the addon version check database supporting the "
 "multiplayer lobby. Please report this at https://bugs.wesnoth.org."
 msgstr ""
-"用于支持多人游戏大厅的附加组件版本检查数据库出现了问题。请在http://bugs."
-"wesnoth.org报告此问题。"
+"用于支持多人游戏大厅的附加组件版本检查数据库出现了问题。请在http://"
+"bugs.wesnoth.org报告此问题。"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:872
 msgid "This game is password protected. Join using moderator rights anyway?"
@@ -8329,10 +8307,8 @@ msgid "Item Tool"
 msgstr "物品工具"
 
 #: src/hotkey/hotkey_command.cpp:205
-#, fuzzy
-#| msgid "Left mouse button sets a new item."
 msgid "Left mouse button sets a new item. Right click removes item."
-msgstr "鼠标左键设置一个新物品。"
+msgstr "鼠标左键设置一个新物品。右键移除物品。"
 
 #: src/hotkey/hotkey_command.cpp:206
 msgid ""
@@ -8369,10 +8345,8 @@ msgid "Loyal"
 msgstr "忠诚"
 
 #: src/hotkey/hotkey_command.cpp:215
-#, fuzzy
-#| msgid "Server Information"
 msgid "Show Tool Information"
-msgstr "服务器信息"
+msgstr "显示工具信息"
 
 #: src/hotkey/hotkey_command.cpp:217
 msgid "Toggle Minimap Unit Coding"

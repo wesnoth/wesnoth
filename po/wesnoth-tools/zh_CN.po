@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-02-05 12:06-0600\n"
-"PO-Revision-Date: 2024-11-29 18:27+0800\n"
+"PO-Revision-Date: 2025-12-04 18:01+0800\n"
 "Last-Translator: vimacs <vimacs.hacks@gmail.com>\n"
 "Language-Team: none\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.8\n"
 
 # Translated by ollama with model glm4.
 #: data/tools/GUI.pyw:77
@@ -56,16 +56,15 @@ msgstr "找不到‘{0}’目录。请运行与Wesnoth安装包一同打包的GU
 msgid "Locale {0} not recognized."
 msgstr "区域{0}未识别。"
 
-# Translated by ollama with model glm4.
 #. TRANSLATORS: {0} is the name of command being executed.
 #: data/tools/GUI.pyw:378
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid ""
 "Running: {0}\n"
 "Please wait..."
 msgstr ""
-"跑步：{0}\n"
-"请稍等……"
+"运行中：{0}\n"
+"请稍等…"
 
 #: data/tools/GUI.pyw:392
 msgid "Terminate script"
@@ -104,45 +103,37 @@ msgstr "清除"
 msgid "wmllint mode"
 msgstr "wmllint 模式"
 
-# Translated by ollama with model glm4.
 #. TRANSLATORS: Normal run mode for the WML tool.
 #: data/tools/GUI.pyw:652 data/tools/GUI.pyw:1072
-#, fuzzy
 msgid "Normal"
-msgstr "正常"
+msgstr "普通"
 
 #. TRANSLATORS: Tooltip explanation for normal run mode.
 #: data/tools/GUI.pyw:661 data/tools/GUI.pyw:1081
 msgid "Perform conversion and save changes to file"
 msgstr "执行转换并保存更改到文件"
 
-# Translated by ollama with model glm4.
 #: data/tools/GUI.pyw:664 data/tools/GUI.pyw:1084
-#, fuzzy
 msgid "Dry run"
-msgstr "干运行"
+msgstr "试运行"
 
 #. TRANSLATORS: Tooltip explanation for dry run mode.
 #: data/tools/GUI.pyw:673 data/tools/GUI.pyw:1093
 msgid "Perform conversion without saving changes to file"
 msgstr "执行转换但不保存更改到文件"
 
-# Translated by ollama with model glm4.
 #: data/tools/GUI.pyw:676
-#, fuzzy
 msgid "Clean"
-msgstr "清洁"
+msgstr "清理"
 
 #. TRANSLATORS: Tooltip explanation for clean mode.
 #: data/tools/GUI.pyw:685
 msgid "Delete back-up files"
 msgstr "删除备份文件"
 
-# Translated by ollama with model glm4.
 #: data/tools/GUI.pyw:688
-#, fuzzy
 msgid "Diff"
-msgstr "不同"
+msgstr "差异"
 
 #. TRANSLATORS: Tooltip explanation for diff run mode.
 #: data/tools/GUI.pyw:697
@@ -199,19 +190,15 @@ msgstr "wmllint 选项"
 msgid "Convert EOL characters to Unix format"
 msgstr "将行尾字符转换为 Unix 格式"
 
-# Translated by ollama with model glm4.
 #. TRANSLATORS: 'side=' in this context refers to WML and should not be
 #. translated.
 #: data/tools/GUI.pyw:779
-#, fuzzy
 msgid "Warn about tags without side= keys"
-msgstr "不要提醒没有side=键的标签"
+msgstr "对没有 side= 键的标签产生警告"
 
-# Translated by ollama with model glm4.
 #: data/tools/GUI.pyw:788
-#, fuzzy
 msgid "Disable checks for unknown units"
-msgstr "禁用未知单位的检查"
+msgstr "禁用对未知单位的检查"
 
 #: data/tools/GUI.pyw:797
 msgid "Disable spellchecking"
@@ -227,21 +214,15 @@ msgstr "跳过核心目录"
 msgid "wmlscope options"
 msgstr "wmlscope 选项"
 
-# Translated by ollama with model glm4.
 #: data/tools/GUI.pyw:845
-#, fuzzy
 msgid "Check for duplicate macro definitions"
 msgstr "检查重复的宏定义"
 
-# Translated by ollama with model glm4.
 #: data/tools/GUI.pyw:854
-#, fuzzy
 msgid "Check for duplicate resource files"
 msgstr "检查重复资源文件"
 
-# Translated by ollama with model glm4.
 #: data/tools/GUI.pyw:863
-#, fuzzy
 msgid "Make definition list"
 msgstr "制作定义列表"
 
@@ -271,15 +252,11 @@ msgstr "上报所有具有未类型化形式参数的宏"
 msgid "Show progress"
 msgstr "显示进度"
 
-# Translated by ollama with model glm4.
 #: data/tools/GUI.pyw:928 data/tools/GUI.pyw:1140
-#, fuzzy
 msgid "Exclude file names matching regular expression:"
-msgstr "排除匹配正则表达式的文件名："
+msgstr "排除与正则表达式匹配的文件名："
 
-# Translated by ollama with model glm4.
 #: data/tools/GUI.pyw:946
-#, fuzzy
 msgid "Exclude file names not matching regular expression:"
 msgstr "排除与正则表达式不匹配的文件名："
 
@@ -291,17 +268,13 @@ msgstr "排除与正则表达式不匹配的文件名："
 msgid "Report only on macros referenced in exactly n files:"
 msgstr "仅报告在恰好n个文件中引用的宏："
 
-# Translated by ollama with model glm4.
 #: data/tools/GUI.pyw:986
-#, fuzzy
 msgid "Report macro definitions and usages in file:"
 msgstr "文件中的宏定义和用法报告："
 
-# Translated by ollama with model glm4.
 #: data/tools/GUI.pyw:1004
-#, fuzzy
 msgid "Allow unused macros with names matching regular expression:"
-msgstr "允许与正则表达式匹配名称的未使用宏"
+msgstr "允许名称与正则表达式匹配的未使用的宏："
 
 #: data/tools/GUI.pyw:1066
 msgid "wmlindent mode"
@@ -449,9 +422,7 @@ msgstr ""
 msgid "Warning"
 msgstr "警告"
 
-# Translated by ollama with model glm4.
 #: data/tools/GUI.pyw:1447 data/tools/GUI.pyw:1519
-#, fuzzy
 msgid ""
 "No directory selected.\n"
 "\n"
@@ -459,34 +430,28 @@ msgid ""
 msgstr ""
 "未选择目录。\n"
 "\n"
-"工具只会在Wesnoth核心目录下运行。"
+"该工具只会在韦诺 core 目录下运行。"
 
 #: data/tools/GUI.pyw:1453 data/tools/GUI.pyw:1525 data/tools/GUI.pyw:1561
 #: data/tools/GUI.pyw:1585
 msgid "The selected directory does not exist."
 msgstr "所选目录不存在。"
 
-# Translated by ollama with model glm4.
 #: data/tools/GUI.pyw:1496
-#, fuzzy
 msgid "Invalid value. Value must be an integer in the range 0-999."
 msgstr "无效值。值必须是0到999之间的整数。"
 
-# Translated by ollama with model glm4.
 #: data/tools/GUI.pyw:1554
-#, fuzzy
 msgid ""
 "No directory selected.\n"
 "\n"
 "The tool will be run on the Wesnoth core directory."
 msgstr ""
-"未选择目录\n"
+"未选择目录。\n"
 "\n"
-"工具将在Wesnoth核心目录下运行。"
+"该工具将在韦诺 core 目录下运行。"
 
-# Translated by ollama with model glm4.
 #: data/tools/GUI.pyw:1580
-#, fuzzy
 msgid ""
 "No directory selected.\n"
 "\n"
@@ -494,27 +459,24 @@ msgid ""
 msgstr ""
 "未选择目录。\n"
 "\n"
-"工具将不会运行。"
+"该工具将不会运行。"
 
 #. TRANSLATORS: Dialogue box title.
 #: data/tools/GUI.pyw:1592
 msgid "Overwrite Confirmation"
 msgstr "覆盖确认"
 
-# Translated by ollama with model glm4.
 #. TRANSLATORS: {0} is a placeholder for a file name, and not meant to be modified.
 #: data/tools/GUI.pyw:1594
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid ""
 "File {0} already exists.\n"
 "Do you want to overwrite it?"
 msgstr ""
-"文件{0}已存在。\n"
+"文件 {0} 已存在。\n"
 "您想要覆盖它吗？"
 
-# Translated by ollama with model glm4.
 #: data/tools/GUI.pyw:1599
-#, fuzzy
 msgid ""
 "No output file selected.\n"
 "\n"
@@ -524,15 +486,14 @@ msgstr ""
 "\n"
 "该工具将不会运行。"
 
-# Translated by ollama with model glm4.
 #: data/tools/GUI.pyw:1628
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid ""
 "There was an error while executing {0}.\n"
 "\n"
 "Error code: {1}"
 msgstr ""
-"执行{0}时出现错误。\n"
+"执行 {0} 时出现错误。\n"
 "\n"
 "错误代码：{1}"
 
@@ -540,9 +501,8 @@ msgstr ""
 msgid "Text file"
 msgstr "文本文件"
 
-# Translated by ollama with model glm4.
 #: data/tools/GUI.pyw:1647
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid ""
 "Error while writing to:\n"
 "{0}\n"
@@ -562,7 +522,6 @@ msgstr ""
 msgid "About Maintenance Tools GUI"
 msgstr "关于维护工具图形用户界面"
 
-# Translated by ollama with model glm4.
 #. TRANSLATORS: {0} is a placeholder for Wesnoth's current version, and not meant to be modified.
 #: data/tools/GUI.pyw:1666
 #, fuzzy, python-brace-format
@@ -577,11 +536,11 @@ msgid ""
 "Icons are taken from the Tango Desktop Project (http://"
 "tango.freedesktop.org), and are released in the Public Domain."
 msgstr ""
-"© Elvish_Hunter，2014-2016\n"
+"© Elvish_Hunter, 2014-2016\n"
 "\n"
 "版本：{0}\n"
 "\n"
-"为《wesnoth之战》项目的一部分，在GNU GPL v2许可证下发布。\n"
+"为《韦诺之战》项目的一部分，在GNU GPL v2许可证下发布。\n"
 "\n"
 "图标来自Tango桌面项目（http://tango.freedesktop.org），属于公共领域。"
 

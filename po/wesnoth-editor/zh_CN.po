@@ -12,15 +12,15 @@ msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-05-20 17:25-0500\n"
-"PO-Revision-Date: 2023-09-10 08:31+0800\n"
-"Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
+"PO-Revision-Date: 2025-11-17 14:39+0800\n"
+"Last-Translator: vimacs <vimacs.hacks@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 3.8\n"
 
 #. [brush]: id=brush-1
 #: data/core/editor/brushes.cfg:6
@@ -201,7 +201,7 @@ msgstr "窗口"
 #. [menu]: id=menu-editor-addon
 #: data/themes/editor.cfg:110
 msgid "Add-on"
-msgstr ""
+msgstr "附加组件"
 
 #. [menu]: id=menu-editor-areas
 #: data/themes/editor.cfg:119
@@ -369,10 +369,8 @@ msgstr "错误"
 
 #: src/editor/map/context_manager.cpp:713
 #: src/editor/map/context_manager.cpp:762
-#, fuzzy
-#| msgid "Do you really want to quit?"
 msgid "Do you really want to save $type1 in $type2 folder?"
-msgstr "你真的要退出吗？"
+msgstr "你真的要在 $type2 目录保存 $type1 吗？"
 
 #: src/editor/map/context_manager.cpp:721
 #: src/editor/map/context_manager.cpp:939
@@ -422,14 +420,8 @@ msgid "Map loaded from scenario"
 msgstr "已从场景中载入地图"
 
 #: src/editor/map/context_manager.cpp:992
-#, fuzzy
-#| msgid ""
-#| "Loaded referenced map file:\n"
-#| "$new"
 msgid "Loaded referenced map file:"
-msgstr ""
-"已载入被引用的地图文件：\n"
-"$new"
+msgstr "已载入被引用的地图文件："
 
 #: src/editor/map/editor_map.cpp:146
 #: src/editor/palette/location_palette.cpp:119
@@ -450,7 +442,7 @@ msgstr "空文件"
 
 #: src/editor/map/map_context.cpp:196
 msgid "File does not have .map or .cfg extension"
-msgstr ""
+msgstr "文件没有 .map 或 .cfg 扩展名"
 
 #: src/editor/map/map_context.cpp:242
 msgid ""
@@ -464,21 +456,17 @@ msgstr ""
 
 #: src/editor/map/map_context.cpp:266
 msgid "Failed to load the scenario, attempting to load only the map."
-msgstr ""
+msgstr "加载场景失败，尝试只加载地图。"
 
 #: src/editor/map/map_context.cpp:273
-#, fuzzy
-#| msgid ""
-#| "The map file looks like a scenario, but the map_data value does not point "
-#| "to an existing file"
 msgid ""
 "The map file looks like a scenario, but the map_file value does not point to "
 "an existing file"
-msgstr "此地图文件看起来像是一幕场景，但是map_data的值指向了一个不存在的文件"
+msgstr "此地图文件看起来像是一幕场景，但是 map_file 的值指向了一个不存在的文件"
 
 #: src/editor/map/map_context.cpp:288
 msgid "Unable to parse file to find map data"
-msgstr ""
+msgstr "无法解析文件以找到地图数据"
 
 #: src/editor/map/map_context.cpp:807 src/editor/map/map_context.cpp:846
 #: src/editor/map/map_context.cpp:887
@@ -506,16 +494,12 @@ msgid "Will not work in game without extra care."
 msgstr "除非特别注意，否则不会在游戏中正常工作。"
 
 #: src/editor/palette/item_palette.cpp:32
-#, fuzzy
-#| msgid "Right-click: "
 msgid " | Right-click to remove"
-msgstr "右击："
+msgstr " | 右击以移除"
 
 #: src/editor/palette/item_palette.cpp:32
-#, fuzzy
-#| msgid "Left-click: "
 msgid "Left-click: Place item "
-msgstr "左击："
+msgstr "左击：放置物品 "
 
 #: src/editor/palette/location_palette.cpp:249
 msgid "Go To"
