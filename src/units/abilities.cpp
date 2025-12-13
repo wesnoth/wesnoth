@@ -2052,22 +2052,28 @@ void effect::effect_impl(const active_ability_list& list, int def, const const_a
 	individual_effect set_effect_max;
 	individual_effect set_effect_min;
 	individual_effect set_effect_cum;
+	individual_effect add_effect_cum;
+	individual_effect sub_effect_cum;
+	individual_effect multiply_effect_cum;
+	individual_effect divide_effect_cum;
 	utils::optional<int> max_value = utils::nullopt;
 	utils::optional<int> min_value = utils::nullopt;
 
 	for (const active_ability & ability : list) {
 		const config& cfg = ability.ability_cfg();
 		const std::string& effect_id = cfg[cfg["id"].empty() ? "name" : "id"];
+		bool addable = cfg["addable"].to_bool();
 
 		if (!filter_base_matches(cfg, def))
 			continue;
 
 		if (const config::attribute_value *v = cfg.get("value")) {
+			bool cumulative = cfg["cumulative"].to_bool();
 			int value = individual_value_int(v, def, ability, list.loc(), att);
-			int value_cum = wham != EFFECT_CUMULABLE && cfg["cumulative"].to_bool() ? std::max(def, value) : value;
-			if(set_effect_cum.type != NOT_USED && wham == EFFECT_CUMULABLE && cfg["cumulative"].to_bool()) {
+			int value_cum = wham != EFFECT_CUMULABLE && cumulative ? std::max(def, value) : value;
+			if(set_effect_cum.type != NOT_USED && ((wham == EFFECT_CUMULABLE && cumulative) || addable)) {
 				set_effect_cum.set(SET, set_effect_cum.value + value_cum, ability.ability_cfg(), ability.teacher_loc);
-			} else if(wham == EFFECT_CUMULABLE && cfg["cumulative"].to_bool()) {
+			} else if((wham == EFFECT_CUMULABLE && cumulative) || addable) {
 				set_effect_cum.set(SET, value_cum, ability.ability_cfg(), ability.teacher_loc);
 			} else {
 				assert((set_effect_min.type != NOT_USED) == (set_effect_max.type != NOT_USED));
@@ -2085,7 +2091,6 @@ void effect::effect_impl(const active_ability_list& list, int def, const const_a
 				}
 			}
 		}
-
 		if(wham != EFFECT_WITHOUT_CLAMP_MIN_MAX) {
 			if(const config::attribute_value *v = cfg.get("max_value")) {
 				int value = individual_value_int(v, def, ability, list.loc(), att);
@@ -2096,38 +2101,60 @@ void effect::effect_impl(const active_ability_list& list, int def, const const_a
 				min_value = min_value ? std::max(*min_value, value) : value;
 			}
 		}
-
-		if (const config::attribute_value *v = cfg.get("add")) {
+		if(const config::attribute_value *v = cfg.get("add")) {
 			int add = individual_value_int(v, def, ability, list.loc(), att);
-			std::map<std::string,individual_effect>::iterator add_effect = values_add.find(effect_id);
-			if(add_effect == values_add.end() || add > add_effect->second.value) {
-				values_add[effect_id].set(ADD, add, ability.ability_cfg(), ability.teacher_loc);
+			if(addable && add_effect_cum.type != NOT_USED) {
+				add_effect_cum.set(ADD, add_effect_cum.value + add, ability.ability_cfg(), ability.teacher_loc);
+			} else if(addable) {
+				add_effect_cum.set(ADD, add, ability.ability_cfg(), ability.teacher_loc);
+			} else {
+				std::map<std::string,individual_effect>::iterator add_effect = values_add.find(effect_id);
+				if(add_effect == values_add.end() || add > add_effect->second.value) {
+					values_add[effect_id].set(ADD, add, ability.ability_cfg(), ability.teacher_loc);
+				}
 			}
 		}
-		if (const config::attribute_value *v = cfg.get("sub")) {
+		if(const config::attribute_value *v = cfg.get("sub")) {
 			int sub = - individual_value_int(v, def, ability, list.loc(), att);
-			std::map<std::string,individual_effect>::iterator sub_effect = values_sub.find(effect_id);
-			if(sub_effect == values_sub.end() || sub < sub_effect->second.value) {
-				values_sub[effect_id].set(ADD, sub, ability.ability_cfg(), ability.teacher_loc);
+			if(addable && sub_effect_cum.type != NOT_USED) {
+				sub_effect_cum.set(ADD, sub_effect_cum.value + sub, ability.ability_cfg(), ability.teacher_loc);
+			} else if(addable) {
+				sub_effect_cum.set(ADD, sub, ability.ability_cfg(), ability.teacher_loc);
+			} else {
+				std::map<std::string,individual_effect>::iterator sub_effect = values_sub.find(effect_id);
+				if(sub_effect == values_sub.end() || sub < sub_effect->second.value) {
+					values_sub[effect_id].set(ADD, sub, ability.ability_cfg(), ability.teacher_loc);
+				}
 			}
 		}
-		if (const config::attribute_value *v = cfg.get("multiply")) {
+		if(const config::attribute_value *v = cfg.get("multiply")) {
 			int multiply = individual_value_double(v, def, ability, list.loc(), att);
-			std::map<std::string,individual_effect>::iterator mul_effect = values_mul.find(effect_id);
-			if(mul_effect == values_mul.end() || multiply > mul_effect->second.value) {
-				values_mul[effect_id].set(MUL, multiply, ability.ability_cfg(), ability.teacher_loc);
+			if(addable && multiply_effect_cum.type != NOT_USED)  {
+				multiply_effect_cum.set(MUL, (multiply_effect_cum.value * multiply)/100, ability.ability_cfg(), ability.teacher_loc);
+			} else if(addable) {
+				multiply_effect_cum.set(MUL, multiply, ability.ability_cfg(), ability.teacher_loc);
+			} else {
+				std::map<std::string,individual_effect>::iterator mul_effect = values_mul.find(effect_id);
+				if(mul_effect == values_mul.end() || multiply > mul_effect->second.value) {
+					values_mul[effect_id].set(MUL, multiply, ability.ability_cfg(), ability.teacher_loc);
+				}
 			}
 		}
-		if (const config::attribute_value *v = cfg.get("divide")) {
+		if(const config::attribute_value *v = cfg.get("divide")) {
 			int divide = individual_value_double(v, def, ability, list.loc(), att);
-
 			if (divide == 0) {
 				ERR_NG << "division by zero with divide= in ability/weapon special " << effect_id;
 			}
 			else {
-				std::map<std::string,individual_effect>::iterator div_effect = values_div.find(effect_id);
-				if(div_effect == values_div.end() || divide > div_effect->second.value) {
-					values_div[effect_id].set(DIV, divide, ability.ability_cfg(), ability.teacher_loc);
+				if(addable && divide_effect_cum.type != NOT_USED) {
+					divide_effect_cum.set(DIV, (divide_effect_cum.value * divide)/100, ability.ability_cfg(), ability.teacher_loc);
+				} else if(addable) {
+					divide_effect_cum.set(DIV, divide, ability.ability_cfg(), ability.teacher_loc);
+				} else {
+					std::map<std::string,individual_effect>::iterator div_effect = values_div.find(effect_id);
+					if(div_effect == values_div.end() || divide > div_effect->second.value) {
+						values_div[effect_id].set(DIV, divide, ability.ability_cfg(), ability.teacher_loc);
+					}
 				}
 			}
 		}
@@ -2142,6 +2169,7 @@ void effect::effect_impl(const active_ability_list& list, int def, const const_a
 			effect_list_.push_back(set_effect_min);
 		}
 	}
+
 
 	/* Do multiplication with floating point values rather than integers
 	 * We want two places of precision for each multiplier
@@ -2158,16 +2186,28 @@ void effect::effect_impl(const active_ability_list& list, int def, const const_a
 		multiplier *= val.second.value/100.0;
 		effect_list_.push_back(val.second);
 	}
+	if(multiply_effect_cum.type != NOT_USED) {
+		multiplier *= (multiply_effect_cum.value)/100.0;
+		effect_list_.push_back(multiply_effect_cum);
+	}
 
 	for(const auto& val : values_div) {
 		divisor *= val.second.value/100.0;
 		effect_list_.push_back(val.second);
+	}
+	if(divide_effect_cum.type != NOT_USED) {
+		divisor *= (divide_effect_cum.value)/100.0;
+		effect_list_.push_back(divide_effect_cum);
 	}
 
 	int addition = 0;
 	for(const auto& val : values_add) {
 		addition += val.second.value;
 		effect_list_.push_back(val.second);
+	}
+	if(add_effect_cum.type != NOT_USED) {
+		addition += (add_effect_cum.value);
+		effect_list_.push_back(add_effect_cum);
 	}
 
 	/* Additional and subtraction are independent since Wesnoth 1.19.4. Prior to that, they affected each other.
@@ -2176,6 +2216,10 @@ void effect::effect_impl(const active_ability_list& list, int def, const const_a
 	for(const auto& val : values_sub) {
 		substraction += val.second.value;
 		effect_list_.push_back(val.second);
+	}
+	if(sub_effect_cum.type != NOT_USED) {
+		substraction += (sub_effect_cum.value);
+		effect_list_.push_back(sub_effect_cum);
 	}
 
 	if(set_effect_cum.type != NOT_USED) {
