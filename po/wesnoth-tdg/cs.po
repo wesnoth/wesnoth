@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-11-18 02:02 UTC\n"
-"PO-Revision-Date: 2025-11-11 00:27+0100\n"
+"PO-Revision-Date: 2025-11-21 09:08+0100\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -175,10 +175,8 @@ msgstr "Scénář 2: Krvežíznivý"
 
 #. [achievement_group]
 #: data/campaigns/The_Deceivers_Gambit/achievements.cfg:24
-#, fuzzy
-#| msgid "Complete <i>The Ambassador</i> without any of your units dying."
 msgid "Complete <i>The Ambassador</i> without killing any wose."
-msgstr "Dokonči <i>Velvyslance</i> bez ztráty jediné jednotky."
+msgstr "Dokonči <i>Velvyslance</i> bez zabití jediného stromového člověka."
 
 #. [achievement_group]
 #: data/campaigns/The_Deceivers_Gambit/achievements.cfg:24
@@ -269,10 +267,8 @@ msgstr "Scénář 11: Spojené síly"
 
 #. [achievement_group]
 #: data/campaigns/The_Deceivers_Gambit/achievements.cfg:36
-#, fuzzy
-#| msgid "Destroy all villages in <i>The Traitor</i>."
 msgid "Destroy all three enemy keeps in <i>The Traitor</i>."
-msgstr "Ve <i>Zrádci</i> znič všechny vesnice."
+msgstr "Ve <i>Zrádci</i> znič všechny tři nepřátelské tvrze."
 
 #. [achievement_group]
 #: data/campaigns/The_Deceivers_Gambit/achievements.cfg:36
@@ -320,16 +316,13 @@ msgstr "Kouzelná střela"
 #: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:22
 msgid "Ranged 7x3 fire, <i><ref dst='weaponspecial_magical'>magical</ref></i>."
 msgstr ""
+"Oheň 7x3 na dálku, <i><ref dst='weaponspecial_magical'>magický</ref></i>."
 
 #: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:29
 msgid "Shield"
 msgstr ""
 
 #: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:31
-#, fuzzy
-#| msgid ""
-#| "Spend <span color='#00bbe6' style='italic'>8xp</span> to gain <i>+20% "
-#| "dodge chance</i> until the start of your next turn or until cancelled."
 msgid ""
 "Spend <span color='#00bbe6' style='italic'>8 XP</span> to gain <i>+20% dodge "
 "chance</i> until the start of your next turn or until cancelled."
@@ -376,18 +369,13 @@ msgid "Levitate"
 msgstr "Vznášení se"
 
 #: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:74
-#, fuzzy
-#| msgid ""
-#| "Spend <span color='#00bbe6' style='italic'>8xp</span> to gain <i>flight</"
-#| "i> and the <i><ref dst='ability_skirmisherskirmisher'>skirmisher</ref></"
-#| "i> ability until the start of your next turn or until cancelled."
 msgid ""
 "Spend <span color='#00bbe6' style='italic'>8 XP</span> to gain <i>flight</i> "
 "and the <i><ref dst='ability_skirmisherskirmisher'>skirmisher</ref></i> "
 "ability until the start of your next turn or until cancelled."
 msgstr ""
-"Za <span color='#00bbe6' style='italic'>8 zk. bodů</span> získáš schopnost "
-"<i><létání/i> a <i><ref dst='ability_skirmisherskirmisher'>průbojnost</ref></"
+"Za <span color='#00bbe6' style='italic'>8 zk. bodů</span> získáš schopnosti "
+"<i>létání</i> a <i><ref dst='ability_skirmisherskirmisher'>průbojnost</ref></"
 "i> až do začátku svého dalšího kola nebo do zrušení."
 
 #: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:82
@@ -796,7 +784,7 @@ msgstr ""
 #. [message]: speaker=Delfador
 #: data/campaigns/The_Deceivers_Gambit/scenarios/00_Graduation.cfg:259
 msgid "Levitate? Master, are you sure?"
-msgstr ""
+msgstr "Vznášet se? Mistře, jste si jistý?"
 
 #. [message]: speaker=Methor
 #: data/campaigns/The_Deceivers_Gambit/scenarios/00_Graduation.cfg:263
@@ -863,10 +851,8 @@ msgstr ""
 #. [message]: speaker=Delfador
 #. Delfador has just reached the end of the obstacle course / final exam (and the end of the scenario0
 #: data/campaigns/The_Deceivers_Gambit/scenarios/00_Graduation.cfg:459
-#, fuzzy
-#| msgid "Look at me, I made it! This time just has to be good enough!"
 msgid "Yes! I’ve made it! This time has to be good enough."
-msgstr "Podívejte se na mě, dokázal jsem to! Tentokrát to prostě musí stačit!"
+msgstr "Ano! Dokázal jsem to! Tentokrát to musí stačit."
 
 #. [message]: speaker=Leollyn
 #: data/campaigns/The_Deceivers_Gambit/scenarios/00_Graduation.cfg:464
@@ -2455,18 +2441,12 @@ msgstr ""
 #. [event]
 #: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1637
 #: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1764
-#, fuzzy
-#| msgid ""
-#| "Spend <span color='#00bbe6' style='italic'>8xp</span> to gain <i>flight</"
-#| "i> and the <i><ref dst='ability_skirmisherskirmisher'>skirmisher</ref></"
-#| "i> ability until the start of your next turn or until cancelled."
 msgid ""
 "Spend 8 XP to gain flight and the skirmisher ability until the start of your "
 "next turn or until cancelled."
 msgstr ""
-"Za <span color='#00bbe6' style='italic'>8 zk. bodů</span> získáš schopnost "
-"<i><létání/i> a <i><ref dst='ability_skirmisherskirmisher'>průbojnost</ref></"
-"i> až do začátku svého dalšího kola nebo do zrušení."
+"Za 8 zkušenostních bodů získáš schopnosti létání a průbojnost až do začátku "
+"svého dalšího kola nebo do zrušení."
 
 #. [message]
 #. pale spy meaning Asheviere. Referencing Asheviere resolving to kill Garard, and working with orcs to arrange the events of the next two scenarios
@@ -8299,68 +8279,68 @@ msgstr "Garard II."
 #. [message]: speaker=Delfador
 #: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:514
 msgid "No, it can’t end yet! I have so much left to do..."
-msgstr ""
+msgstr "Ne, ještě to nemůže skončit! Ještě toho musím tolik udělat..."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:525
 msgid "No! Magic, why have you failed me..."
-msgstr ""
+msgstr "Ne! Magie, proč jsi mě zklamala..."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:536
 msgid "If only I had been a little wiser..."
-msgstr ""
+msgstr "Kdybych jen byl trochu moudřejší..."
 
 #. [message]: speaker=Methor
 #: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:548
 msgid "War, pain, death... I tried so hard to change things..."
-msgstr ""
+msgstr "Válka, bolest, smrt... Tolik jsem se snažil věci změnit..."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:560
 msgid "I have failed my kingdom and my duty..."
-msgstr ""
+msgstr "Zklamal jsem své království a nedostál své povinnosti..."
 
 #. [message]: speaker=Garard
 #. reference to Shakespeare's Richard III
 #: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:572
 msgid "A horse! A horse! My kingdom for a horse..."
-msgstr ""
+msgstr "Koně! Koně! Mé království za koně..."
 
 #. [message]: speaker=Asheviere
 #: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:582
 msgid "It’s finally over..."
-msgstr ""
+msgstr "Konečně je po všem..."
 
 #. [message]: speaker=Lionel
 #: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:592
 msgid "Blasted orcs..."
-msgstr ""
+msgstr "Zatracení skřeti..."
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:604
 msgid "Nobody can cheat death forever..."
-msgstr ""
+msgstr "Nikdo nemůže unikat smrti věčně..."
 
 #. [message]: speaker=Chantal
 #: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:615
 msgid "Deoran, I never had a chance to tell you—"
-msgstr ""
+msgstr "Deorane, nikdy jsem neměl příležitost ti říct..."
 
 #. [message]: speaker=Lynyan
 #: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:630
 msgid "Boss, I ain’t feelin’ too hot..."
-msgstr ""
+msgstr "Šéfe, necítím se moc dobře..."
 
 #. [message]: speaker=Lynyan
 #: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:635
 msgid "I ain’t feelin’ too hot..."
-msgstr ""
+msgstr "Necítím se moc dobře..."
 
 #. [message]: speaker=Barin
 #: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:646
 msgid "I shoulda never left my swamp..."
-msgstr ""
+msgstr "Nikdy jsem neměl opustit svůj močál..."
 
 #. [message]: speaker=Kaylan
 #. since he reappears in HttT's blackwater port, he can't die here.
@@ -8369,6 +8349,8 @@ msgid ""
 "I am grievously injured; I can be of no further aid in your quest. Fight on "
 "without me, Delfador!"
 msgstr ""
+"Jsem těžce zraněný, nemohu vám s vaším úkolem dál pomáhat. Bojuj beze mě, "
+"Delfadore!"
 
 #~ msgid ""
 #~ "<i>Levitate!?</i> Why bother with utility spells when fireballs are so "
@@ -8376,13 +8358,3 @@ msgstr ""
 #~ msgstr ""
 #~ "<i>Vznášet se!?</i> Proč se obtěžovat s užitkovými kouzly, když ohnivé "
 #~ "koule jsou mnohem lepší?"
-
-#~ msgid ""
-#~ "<span color='#ad6a61'><i><b>Attack:</b></i></span> Ranged 7x3 fire, "
-#~ "<i>magical</i>."
-#~ msgstr ""
-#~ "<span color='#ad6a61'><i><b>Útok:</b></i></span> Oheň 7x3 na dálku, "
-#~ "<i>magický</i>."
-
-#~ msgid "<span color='#ffffff' size='x-small'>Contingency</span>"
-#~ msgstr "<span color='#ffffff' size='x-small'>Plán B</span>"

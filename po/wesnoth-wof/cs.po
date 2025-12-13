@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-11-18 02:02 UTC\n"
-"PO-Revision-Date: 2025-11-12 22:16+0100\n"
+"PO-Revision-Date: 2025-11-15 08:55+0100\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -45,13 +45,12 @@ msgstr ""
 
 #. [campaign]: id=Winds_of_Fate
 #: data/campaigns/Winds_of_Fate/_main.cfg:22
-#, fuzzy
-#| msgid "<i>Features full recall costs and no gold carryover.</i>"
 msgid ""
 "<i>Features XP-based recall costs and frequent scenarios with no turn limits."
 "</i>"
 msgstr ""
-"<i>Vyznačuje se plnými náklady na povolávání a žádným přenášením zlata.</i>"
+"<i>Vyznačuje se náklady na povolávaní založenými na zkušenostních bodech "
+"a mnohými scénáři bez omezení počtu kol.</i>"
 
 #. [campaign]: id=Winds_of_Fate
 #: data/campaigns/Winds_of_Fate/_main.cfg:23
@@ -1663,10 +1662,8 @@ msgstr "Diváci"
 
 #. [objective]: condition=win
 #: data/campaigns/Winds_of_Fate/scenarios/03_The_Contention.cfg:211
-#, fuzzy
-#| msgid "Hold all villages at the end of turn 18"
 msgid "Hold more villages at the end of turn 24"
-msgstr "Na konci 18. kola budeš držet všechny vesnice"
+msgstr "Na konci 24. kola budeš mít obsazeno více vesnic"
 
 #. [objective]: condition=win
 #: data/campaigns/Winds_of_Fate/scenarios/03_The_Contention.cfg:216
@@ -1675,10 +1672,8 @@ msgstr "Poraz Karron"
 
 #. [objective]: condition=lose
 #: data/campaigns/Winds_of_Fate/scenarios/03_The_Contention.cfg:220
-#, fuzzy
-#| msgid "Not hold all villages at the end of turn 18"
 msgid "Fail to hold more villages at the end of turn 24"
-msgstr "Na konci 18. kola nebudeš držet všechny vesnice"
+msgstr "Na konci 24. kola nebudeš mít obsazeno více vesnic"
 
 #. [objective]: condition=lose
 #: data/campaigns/Winds_of_Fate/scenarios/03_The_Contention.cfg:224
@@ -5932,13 +5927,8 @@ msgstr "Přežij 18 kol"
 #. [note]
 #: data/campaigns/Winds_of_Fate/scenarios/10_Fire_Meets_Steel.cfg:311
 #: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:203
-#, fuzzy
-#| msgid ""
-#| "The new eyrie doubles village income and support and trains veteran "
-#| "recruits"
 msgid "The presence of our new eyrie doubles village income and support"
-msgstr ""
-"Nové útočiště zdvojnásobuje příjmy vesnic a umožňuje verbování veteránů"
+msgstr "Přítomnost našeho nového hnízda zdvojnásobuje příjmy a podporu vesnic."
 
 #. [note]
 #: data/campaigns/Winds_of_Fate/scenarios/10_Fire_Meets_Steel.cfg:314
@@ -7451,17 +7441,13 @@ msgstr "Zzklamal jssem tě, můj draku..."
 
 #. [floating_text]
 #: data/campaigns/Winds_of_Fate/utils/macros.cfg:80
-#, fuzzy
-#| msgid "Intendant"
 msgid "fighter intendant"
-msgstr "Důstojník"
+msgstr "důstojník bojovníků"
 
 #. [floating_text]
 #: data/campaigns/Winds_of_Fate/utils/macros.cfg:108
-#, fuzzy
-#| msgid "Intendant"
 msgid "clasher intendant"
-msgstr "Důstojník"
+msgstr "důstojník rváčů"
 
 #. [floating_text]
 #: data/campaigns/Winds_of_Fate/utils/macros.cfg:208
@@ -7482,29 +7468,6 @@ msgstr "Tento safír umožnuje svému nositeli útočit na dálku chladem!"
 #: data/campaigns/Winds_of_Fate/utils/macros.cfg:222
 msgid "sapphire of ice"
 msgstr "ledový safír"
-
-#~ msgid "Hold the advantage at the end of turn 24"
-#~ msgstr "Na konci 24. kola budeš mít převahu"
-
-#~ msgid "Not hold the advantage at the end of turn 24"
-#~ msgstr "Na konci 24. kola nebudeš mít převahu"
-
-#~ msgid ""
-#~ "Advantage is determined by adding the gold, the value of the drakes on "
-#~ "the field, and five times the income; Right-click to see the current score"
-#~ msgstr ""
-#~ "Převaha je určena sumou zlata, hodnot drakonidů v poli a pětinásobku "
-#~ "příjmu\n"
-#~ "Její aktuální skóre si zobrazíš kliknutím pravým tlačítkem myši"
-
-#~ msgid "Karron will get an income of $side_2.village_gold gold per village"
-#~ msgstr "Za každou vesnici získá Karron příjem $side_2.village_gold zlaté"
-
-#~ msgid "Show Advantage"
-#~ msgstr "Zobraz skóre převahy"
-
-#~ msgid "dialog^Advantage"
-#~ msgstr "Převaha"
 
 #~ msgid "<span size='large'>Resha!</span>"
 #~ msgstr "<span size='large'>Rešo!</span>"
@@ -7546,9 +7509,3 @@ msgstr "ledový safír"
 
 #~ msgid "claws"
 #~ msgstr "drápy"
-
-#~ msgid "<span color='gold'>fighter intendant</span>"
-#~ msgstr "<span color='gold'>důstojník bojovníků</span>"
-
-#~ msgid "<span color='gold'>clasher intendant</span>"
-#~ msgstr "<span color='gold'>důstojník rváčů</span>"
