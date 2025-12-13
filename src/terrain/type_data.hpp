@@ -54,12 +54,12 @@ public:
 	 *
 	 * @returns A pointer to the new terrain database.
 	 */
-	static std::shared_ptr<terrain_type_data> reset(const game_config_view& game_config);
+	static terrain_type_data& reset(const game_config_view& game_config);
 
 	/**
 	 * @returns A pointer to the current terrain database instance.
 	 */
-	static std::shared_ptr<terrain_type_data> get();
+	static terrain_type_data& get();
 
 	/**
 	 * On the first call to this function, parse all of the [terrain_type]s
@@ -164,5 +164,5 @@ public:
 private:
 	tcodeToTerrain_t::const_iterator find_or_create(t_translation::terrain_code) const;
 
-	static inline std::shared_ptr<terrain_type_data> singleton_;
+	static inline std::unique_ptr<terrain_type_data> singleton_;
 };

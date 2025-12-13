@@ -149,17 +149,14 @@ static inline std::string get_mp_tooltip(int total_movement, const std::function
 	std::ostringstream tooltip;
 	tooltip << markup::tag("big", _("Movement Costs:"));
 
-	std::shared_ptr tdata = terrain_type_data::get();
-	if(!tdata) {
-		return "";
-	}
+	terrain_type_data& tdata = terrain_type_data::get();
 
 	for(t_translation::terrain_code terrain : prefs::get().encountered_terrains()) {
 		if(terrain == t_translation::FOGGED || terrain == t_translation::VOID_TERRAIN || t_translation::terrain_matches(terrain, t_translation::ALL_OFF_MAP)) {
 			continue;
 		}
 
-		const terrain_type& info = tdata->get_terrain_info(terrain);
+		const terrain_type& info = tdata.get_terrain_info(terrain);
 		if(info.is_indivisible() && info.is_nonnull()) {
 			terrain_moves.emplace(info.name(), get(terrain));
 		}

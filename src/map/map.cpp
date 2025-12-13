@@ -41,21 +41,21 @@ static lg::log_domain log_config("config");
 /** Gets the list of terrains. */
 const t_translation::ter_list& gamemap::get_terrain_list() const
 {
-	return tdata_->list();
+	return terrain_type_data::get().list();
 }
 
 /** Shortcut to get_terrain_info(get_terrain(loc)). */
 const terrain_type& gamemap::get_terrain_info(const map_location &loc) const
 {
-	return tdata_->get_terrain_info(get_terrain(loc));
+	return terrain_type_data::get().get_terrain_info(get_terrain(loc));
 }
 
 const t_translation::ter_list& gamemap::underlying_mvt_terrain(const map_location& loc) const
-	{ return tdata_->underlying_mvt_terrain(get_terrain(loc)); }
+	{ return terrain_type_data::get().underlying_mvt_terrain(get_terrain(loc)); }
 const t_translation::ter_list& gamemap::underlying_def_terrain(const map_location& loc) const
-	{ return tdata_->underlying_def_terrain(get_terrain(loc)); }
+	{ return terrain_type_data::get().underlying_def_terrain(get_terrain(loc)); }
 const t_translation::ter_list& gamemap::underlying_union_terrain(const map_location& loc) const
-	{ return tdata_->underlying_union_terrain(get_terrain(loc)); }
+	{ return terrain_type_data::get().underlying_union_terrain(get_terrain(loc)); }
 std::string gamemap::get_terrain_string(const map_location& loc) const
 	{ return get_terrain_string(get_terrain(loc)); }
 std::string gamemap::get_terrain_editor_string(const map_location& loc) const
@@ -64,25 +64,25 @@ std::string gamemap::get_underlying_terrain_string(const map_location& loc) cons
 	{ return get_underlying_terrain_string(get_terrain(loc)); }
 
 bool gamemap::is_village(const map_location& loc) const
-	{ return on_board(loc) && tdata_->get_terrain_info((*this)[loc]).is_village(); }
+	{ return on_board(loc) && terrain_type_data::get().get_terrain_info((*this)[loc]).is_village(); }
 int gamemap::gives_healing(const map_location& loc) const
-	{ return on_board(loc) ?  tdata_->get_terrain_info((*this)[loc]).gives_healing() : 0; }
+	{ return on_board(loc) ?  terrain_type_data::get().get_terrain_info((*this)[loc]).gives_healing() : 0; }
 bool gamemap::is_castle(const map_location& loc) const
-	{ return on_board(loc) && tdata_->get_terrain_info((*this)[loc]).is_castle(); }
+	{ return on_board(loc) && terrain_type_data::get().get_terrain_info((*this)[loc]).is_castle(); }
 bool gamemap::is_keep(const map_location& loc) const
-	{ return on_board(loc) && tdata_->get_terrain_info((*this)[loc]).is_keep(); }
+	{ return on_board(loc) && terrain_type_data::get().get_terrain_info((*this)[loc]).is_keep(); }
 
 
-/* Forwarded methods of tdata_ */
+/* Forwarded methods of terrain_type_data */
 std::string gamemap::get_terrain_string(const t_translation::terrain_code & terrain) const
-	{ return tdata_->get_terrain_string(terrain); }
+	{ return terrain_type_data::get().get_terrain_string(terrain); }
 std::string gamemap::get_terrain_editor_string(const t_translation::terrain_code & terrain) const
-	{ return tdata_->get_terrain_editor_string(terrain); }
+	{ return terrain_type_data::get().get_terrain_editor_string(terrain); }
 std::string gamemap::get_underlying_terrain_string(const t_translation::terrain_code& terrain) const
-	{ return tdata_->get_underlying_terrain_string(terrain); }
+	{ return terrain_type_data::get().get_underlying_terrain_string(terrain); }
 
 const terrain_type& gamemap::get_terrain_info(const t_translation::terrain_code & terrain) const
-	{ return tdata_->get_terrain_info(terrain); }
+	{ return terrain_type_data::get().get_terrain_info(terrain); }
 
 void gamemap::write_terrain(const map_location &loc, config& cfg) const
 {
@@ -98,7 +98,6 @@ gamemap::gamemap(std::string_view data)
 
 gamemap::gamemap(int w, int h, const terrain_code& t)
 	: gamemap_base(w, h, t)
-	, tdata_(terrain_type_data::get())
 	, villages_()
 {
 }
@@ -140,7 +139,7 @@ void gamemap::read(std::string_view data, const bool allow_invalid)
 		const t_translation::terrain_code& terrain = (*this)[loc];
 
 		// Is the terrain valid?
-		if(!tdata_->is_known(terrain)) {
+		if(!terrain_type_data::get().is_known(terrain)) {
 			std::stringstream ss;
 			ss << "Unknown tile in map: (" << t_translation::write_terrain_code(terrain) << ") '" << terrain << "'";
 			throw incorrect_map_format_error(ss.str());
@@ -376,7 +375,7 @@ gamemap_base::set_terrain_result gamemap::set_terrain(const map_location& loc,
 		return res;
 	}
 
-	new_terrain = tdata_->merge_terrains(get_terrain(loc), terrain, mode, replace_if_failed);
+	new_terrain = terrain_type_data::get().merge_terrains(get_terrain(loc), terrain, mode, replace_if_failed);
 
 	if(new_terrain == t_translation::NONE_TERRAIN) {
 		return res;
@@ -384,7 +383,7 @@ gamemap_base::set_terrain_result gamemap::set_terrain(const map_location& loc,
 
 	if(on_board(loc)) {
 		const bool old_village = is_village(loc);
-		const bool new_village = tdata_->is_village(new_terrain);
+		const bool new_village = terrain_type_data::get().is_village(new_terrain);
 
 		if(old_village && !new_village) {
 			utils::erase(villages_, loc);

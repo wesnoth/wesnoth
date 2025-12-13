@@ -284,20 +284,19 @@ int movetype::terrain_info::data::calc_value(
 		return params_.default_value;
 	}
 
-	std::shared_ptr tdata = terrain_type_data::get();
-	assert(tdata);
+	terrain_type_data& tdata = terrain_type_data::get();
 
 	// Get a list of underlying terrains.
 	const t_translation::ter_list & underlying = params_.use_move ?
-			tdata->underlying_mvt_terrain(terrain) :
-			tdata->underlying_def_terrain(terrain);
+			tdata.underlying_mvt_terrain(terrain) :
+			tdata.underlying_def_terrain(terrain);
 
 	if (terrain_type::is_indivisible(terrain, underlying))
 	{
 		// This is not an alias; get the value directly.
 		int result = params_.default_value;
 
-		const std::string & id = tdata->get_terrain_info(terrain).id();
+		const std::string & id = tdata.get_terrain_info(terrain).id();
 		if (const config::attribute_value *val = cfg_.get(id)) {
 			// Read the value from our config.
 			result = val->to_int(params_.default_value);

@@ -849,19 +849,15 @@ void generate_era_sections(const config& help_cfg, section & sec, int level)
 
 void generate_terrain_sections(section& sec, int /*level*/)
 {
-	std::shared_ptr tdata = terrain_type_data::get();
-	if (!tdata) {
-		WRN_HP << "When building terrain help sections, couldn't acquire terrain types data, aborting.";
-		return;
-	}
+	terrain_type_data& tdata = terrain_type_data::get();
 
 	std::map<std::string, section> base_map;
 
-	const t_translation::ter_list& t_listi = tdata->list();
+	const t_translation::ter_list& t_listi = tdata.list();
 
 	for (const t_translation::terrain_code& t : t_listi) {
 
-		const terrain_type& info = tdata->get_terrain_info(t);
+		const terrain_type& info = tdata.get_terrain_info(t);
 
 		bool hidden = info.hide_help();
 
@@ -875,9 +871,9 @@ void generate_terrain_sections(section& sec, int /*level*/)
 			std::make_shared<terrain_topic_generator>(info)
 		};
 
-		t_translation::ter_list base_terrains = tdata->underlying_union_terrain(t);
+		t_translation::ter_list base_terrains = tdata.underlying_union_terrain(t);
 		if (info.has_default_base()) {
-			for (const auto base : tdata->underlying_union_terrain(info.default_base())) {
+			for (const auto base : tdata.underlying_union_terrain(info.default_base())) {
 				if (!utils::contains(base_terrains, base)) {
 					base_terrains.emplace_back(base);
 				}
@@ -885,7 +881,7 @@ void generate_terrain_sections(section& sec, int /*level*/)
 		}
 		for (const t_translation::terrain_code& base : base_terrains) {
 
-			const terrain_type& base_info = tdata->get_terrain_info(base);
+			const terrain_type& base_info = tdata.get_terrain_info(base);
 
 			if (!base_info.is_nonnull() || base_info.hide_help())
 				continue;

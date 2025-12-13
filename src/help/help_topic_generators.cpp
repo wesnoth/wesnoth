@@ -101,7 +101,7 @@ typedef t_translation::ter_list::const_iterator ter_iter;
 std::string print_behavior_description(
 	const ter_iter& start,
 	const ter_iter& end,
-	const std::shared_ptr<terrain_type_data>& tdata,
+	const terrain_type_data& tdata,
 	bool first_level = true,
 	bool begin_best = true)
 {
@@ -131,7 +131,7 @@ std::string print_behavior_description(
 				// TRANSLATORS: in a description of an overlay terrain, the terrain that it's placed on
 				names.push_back(_("base terrain"));
 			} else {
-				const terrain_type tt = tdata->get_terrain_info(*i);
+				const terrain_type tt = tdata.get_terrain_info(*i);
 				if(!tt.editor_name().empty())
 					names.push_back(tt.editor_name());
 			}
@@ -147,7 +147,7 @@ std::string print_behavior_description(
 	} else {
 		std::vector<std::string> names;
 		for(ter_iter i = *last_change_pos+1; i != end; ++i) {
-			const terrain_type tt = tdata->get_terrain_info(*i);
+			const terrain_type tt = tdata.get_terrain_info(*i);
 			if(!tt.editor_name().empty())
 				names.push_back(tt.editor_name());
 		}
@@ -219,21 +219,17 @@ std::string terrain_topic_generator::operator()() const {
 		ss << type_.help_topic_text().str() << "\n";
 	}
 
-	std::shared_ptr tdata = terrain_type_data::get();
-	if(!tdata) {
-		WRN_HP << "When building terrain help topics, we couldn't acquire any terrain types data";
-		return ss.str();
-	}
+	terrain_type_data& tdata = terrain_type_data::get();
 
 	if(type_.is_combined()) {
 		ss << "Base terrain: ";
-		const auto base_t = tdata->get_terrain_info(
+		const auto base_t = tdata.get_terrain_info(
 			t_translation::terrain_code(type_.number().base, t_translation::NO_LAYER));
 		ss << markup::make_link(base_t.editor_name(),
 			(base_t.hide_help() ? "." : "") + terrain_prefix + base_t.id());
 		ss << ", ";
 		ss << "Overlay terrain: ";
-		const auto overlay_t = tdata->get_terrain_info(
+		const auto overlay_t = tdata.get_terrain_info(
 			t_translation::terrain_code(t_translation::NO_LAYER, type_.number().overlay));
 		ss << markup::make_link(overlay_t.editor_name(),
 			(overlay_t.hide_help() ? "." : "") + terrain_prefix + overlay_t.id());
@@ -253,7 +249,7 @@ std::string terrain_topic_generator::operator()() const {
 	if(!type_.is_indivisible()) {
 		std::vector<t_string> underlying;
 		for(const auto& underlying_terrain : type_.union_type()) {
-			const terrain_type& base = tdata->get_terrain_info(underlying_terrain);
+			const terrain_type& base = tdata.get_terrain_info(underlying_terrain);
 			if(!base.editor_name().empty()) {
 				underlying.push_back(markup::make_link(base.editor_name(), ".." + terrain_prefix + base.id()));
 			}
@@ -266,7 +262,7 @@ std::string terrain_topic_generator::operator()() const {
 		ss << "\n" << VNGETTEXT("Basic terrain type: $types", "Basic terrain types: $types", underlying.size(), symbols);
 
 		if(type_.has_default_base()) {
-			const terrain_type& base = tdata->get_terrain_info(type_.default_base());
+			const terrain_type& base = tdata.get_terrain_info(type_.default_base());
 
 			symbols.clear();
 			symbols["type"] = markup::make_link(base.editor_name(),
@@ -316,13 +312,13 @@ std::string terrain_topic_generator::operator()() const {
 		ss << (type_.editor_image().empty() ? "Empty" : type_.editor_image());
 		ss << "\n";
 
-		const t_translation::ter_list& underlying_mvt_terrains = tdata->underlying_mvt_terrain(type_.number());
+		const t_translation::ter_list& underlying_mvt_terrains = tdata.underlying_mvt_terrain(type_.number());
 		ss << "\nDebug Mvt Description String:";
 		for(const t_translation::terrain_code& t : underlying_mvt_terrains) {
 			ss << " " << t;
 		}
 
-		const t_translation::ter_list& underlying_def_terrains = tdata->underlying_def_terrain(type_.number());
+		const t_translation::ter_list& underlying_def_terrains = tdata.underlying_def_terrain(type_.number());
 		ss << "\nDebug Def Description String:";
 		for(const t_translation::terrain_code& t : underlying_def_terrains) {
 			ss << " " << t;
@@ -824,100 +820,96 @@ std::string unit_topic_generator::operator()() const {
 	// Terrain Modifiers table
 	//
 	std::stringstream().swap(table_ss);
-	if(std::shared_ptr tdata = terrain_type_data::get()) {
-		// Print the terrain modifier table of the unit.
-		ss << "\n" << markup::tag("header", _("Terrain Modifiers"));
+	terrain_type_data& tdata = terrain_type_data::get();
+	// Print the terrain modifier table of the unit.
+	ss << "\n" << markup::tag("header", _("Terrain Modifiers"));
 
-		// Header row
-		std::stringstream row_ss;
-		row_ss << markup::tag("col", markup::bold(_("Terrain")));
-		row_ss << markup::tag("col", markup::bold(_("Defense")));
-		row_ss << markup::tag("col", markup::bold(_("Movement Cost")));
-		if(has_terrain_defense_caps) { row_ss << markup::tag("col", markup::bold(_("Defense Cap")));  }
-		if(has_vision)               { row_ss << markup::tag("col", markup::bold(_("Vision Cost")));  }
-		if(has_jamming)              { row_ss << markup::tag("col", markup::bold(_("Jamming Cost"))); }
-		table_ss << markup::tag("row", { {"bgcolor", "table_header"} }, row_ss.str());
+	// Header row
+	std::stringstream row_ss;
+	row_ss << markup::tag("col", markup::bold(_("Terrain")));
+	row_ss << markup::tag("col", markup::bold(_("Defense")));
+	row_ss << markup::tag("col", markup::bold(_("Movement Cost")));
+	if(has_terrain_defense_caps) { row_ss << markup::tag("col", markup::bold(_("Defense Cap")));  }
+	if(has_vision)               { row_ss << markup::tag("col", markup::bold(_("Vision Cost")));  }
+	if(has_jamming)              { row_ss << markup::tag("col", markup::bold(_("Jamming Cost"))); }
+	table_ss << markup::tag("row", {{"bgcolor", "table_header"}}, row_ss.str());
 
-		// Organize terrain movetype data
-		std::set<terrain_movement_info> terrain_moves;
-		for(t_translation::terrain_code terrain : prefs::get().encountered_terrains()) {
-			if(terrain == t_translation::FOGGED || terrain == t_translation::VOID_TERRAIN || t_translation::terrain_matches(terrain, t_translation::ALL_OFF_MAP)) {
-				continue;
-			}
-			const terrain_type& info = tdata->get_terrain_info(terrain);
-			const int moves = movement_type.movement_cost(terrain);
-			const bool cannot_move = moves > type_.movement();
-			if(cannot_move && info.hide_if_impassable()) {
-				continue;
-			}
-
-			if(info.is_indivisible() && info.is_nonnull()) {
-				terrain_movement_info movement_info =
-				{
-					info.name(),
-					info.id(),
-					100 - movement_type.defense_modifier(terrain),
-					moves,
-					movement_type.vision_cost(terrain),
-					movement_type.jamming_cost(terrain),
-					movement_type.get_defense().capped(terrain)
-				};
-
-				terrain_moves.insert(movement_info);
-			}
+	// Organize terrain movetype data
+	std::set<terrain_movement_info> terrain_moves;
+	for(t_translation::terrain_code terrain : prefs::get().encountered_terrains()) {
+		if(terrain == t_translation::FOGGED || terrain == t_translation::VOID_TERRAIN || t_translation::terrain_matches(terrain, t_translation::ALL_OFF_MAP)) {
+			continue;
+		}
+		const terrain_type& info = tdata.get_terrain_info(terrain);
+		const int moves = movement_type.movement_cost(terrain);
+		const bool cannot_move = moves > type_.movement();
+		if(cannot_move && info.hide_if_impassable()) {
+			continue;
 		}
 
-		// Add movement table rows
-		odd_row = true;
-		for(const terrain_movement_info& m : terrain_moves)
-		{
-			std::stringstream().swap(row_ss);
-			bool high_res = false;
-			const std::string tc_base = high_res ? "images/buttons/icon-base-32.png" : "images/buttons/icon-base-16.png";
-			const std::string terrain_image = "icons/terrain/terrain_type_" + m.id + (high_res ? "_30.png" : ".png");
-			const std::string final_image = tc_base + "~RC(magenta>" + m.id + ")~BLIT(" + terrain_image + ")";
+		if(info.is_indivisible() && info.is_nonnull()) {
+			terrain_movement_info movement_info =
+			{
+				info.name(),
+				info.id(),
+				100 - movement_type.defense_modifier(terrain),
+				moves,
+				movement_type.vision_cost(terrain),
+				movement_type.jamming_cost(terrain),
+				movement_type.get_defense().capped(terrain)
+			};
 
-			row_ss << markup::tag("col", markup::img(final_image), ' ', markup::make_link(m.name, "..terrain_" + m.id));
-
-			// Defense  -  range: +10 % .. +70 %
-			// passing false to select the more saturated red-to-green scale
-			color_t def_color = game_config::red_to_green(m.defense, false);
-			row_ss << markup::tag("col", markup::span_color(def_color, m.defense, "%"));
-
-			// Movement  -  range: 1 .. 5, movetype::UNREACHABLE=impassable
-			row_ss << markup::tag("col", format_mp_entry(type_.movement(), m.movement_cost));
-
-			// Defense cap
-			if(has_terrain_defense_caps) {
-				if(m.defense_cap) {
-					row_ss << markup::tag("col", markup::span_color(def_color, m.defense, "%"));
-				} else {
-					row_ss << markup::tag("col", markup::span_color("white", font::unicode_figure_dash));
-				}
-			}
-
-			// Vision
-			// uses same formatting as MP
-			if(has_vision) {
-				row_ss << markup::tag("col", format_mp_entry(type_.vision(), m.vision_cost));
-			}
-
-			// Jamming
-			// uses same formatting as MP
-			if(has_jamming) {
-				row_ss << markup::tag("col", format_mp_entry(type_.jamming(), m.jamming_cost));
-			}
-
-			table_ss << markup::tag("row", { {"bgcolor", (odd_row ? "table_row1" : "table_row2")} }, row_ss.str());
-
-			odd_row = !odd_row;
+			terrain_moves.insert(movement_info);
 		}
-
-		ss << markup::tag("table", table_ss.str());
-
-	} else {
-		WRN_HP << "When building unit help topics, we couldn't get the terrain info we need.";
 	}
+
+	// Add movement table rows
+	odd_row = true;
+	for(const terrain_movement_info& m : terrain_moves)
+	{
+		std::stringstream().swap(row_ss);
+		bool high_res = false;
+		const std::string tc_base = high_res ? "images/buttons/icon-base-32.png" : "images/buttons/icon-base-16.png";
+		const std::string terrain_image = "icons/terrain/terrain_type_" + m.id + (high_res ? "_30.png" : ".png");
+		const std::string final_image = tc_base + "~RC(magenta>" + m.id + ")~BLIT(" + terrain_image + ")";
+
+		row_ss << markup::tag("col", markup::img(final_image), ' ', markup::make_link(m.name, "..terrain_" + m.id));
+
+		// Defense  -  range: +10 % .. +70 %
+		// passing false to select the more saturated red-to-green scale
+		color_t def_color = game_config::red_to_green(m.defense, false);
+		row_ss << markup::tag("col", markup::span_color(def_color, m.defense, "%"));
+
+		// Movement  -  range: 1 .. 5, movetype::UNREACHABLE=impassable
+		row_ss << markup::tag("col", format_mp_entry(type_.movement(), m.movement_cost));
+
+		// Defense cap
+		if(has_terrain_defense_caps) {
+			if(m.defense_cap) {
+				row_ss << markup::tag("col", markup::span_color(def_color, m.defense, "%"));
+			} else {
+				row_ss << markup::tag("col", markup::span_color("white", font::unicode_figure_dash));
+			}
+		}
+
+		// Vision
+		// uses same formatting as MP
+		if(has_vision) {
+			row_ss << markup::tag("col", format_mp_entry(type_.vision(), m.vision_cost));
+		}
+
+		// Jamming
+		// uses same formatting as MP
+		if(has_jamming) {
+			row_ss << markup::tag("col", format_mp_entry(type_.jamming(), m.jamming_cost));
+		}
+
+		table_ss << markup::tag("row", {{"bgcolor", (odd_row ? "table_row1" : "table_row2")}}, row_ss.str());
+
+		odd_row = !odd_row;
+	}
+
+	ss << markup::tag("table", table_ss.str());
 
 	return ss.str();
 }

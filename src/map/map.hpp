@@ -249,8 +249,6 @@ private:
 	 */
 	std::string_view strip_legacy_header(std::string_view data) const;
 
-	std::shared_ptr<terrain_type_data> tdata_;
-
 protected:
 	std::vector<map_location> villages_;
 };

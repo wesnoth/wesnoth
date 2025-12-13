@@ -25,15 +25,16 @@
 #define LOG_G LOG_STREAM(info, lg::general())
 #define DBG_G LOG_STREAM(debug, lg::general())
 
-std::shared_ptr<terrain_type_data> terrain_type_data::reset(const game_config_view& game_config)
+terrain_type_data& terrain_type_data::reset(const game_config_view& game_config)
 {
 	singleton_.reset(new terrain_type_data(game_config));
-	return singleton_;
+	return *singleton_;
 }
 
-std::shared_ptr<terrain_type_data> terrain_type_data::get()
+terrain_type_data& terrain_type_data::get()
 {
-	return singleton_;
+	assert(singleton_);
+	return *singleton_;
 }
 
 terrain_type_data::terrain_type_data(const game_config_view & game_config)
