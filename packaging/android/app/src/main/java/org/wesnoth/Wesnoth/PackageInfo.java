@@ -16,19 +16,45 @@
 package org.wesnoth.Wesnoth;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Properties;
 
+import android.util.Log;
+
 public class PackageInfo {
 	private String id, uiname, version, url;
+	private HashMap<String, String> depends, excludes;
 	
-	private PackageInfo(String id, String uiname, String version, String url) {
+	private PackageInfo(String id, String uiname, String version, String url, String deps, String excludes) {
 		this.id = id;
 		this.uiname = uiname;
 		this.version = version;
 		this.url = url;
+		this.depends = parsePackageList(deps);
+		this.excludes = parsePackageList(excludes);
 	}
 	
+	// example `deps` format: core==1.19.19, music==1.19.18
+	private HashMap<String, String> parsePackageList(String depsString) {
+		HashMap<String, String> list = new HashMap<String, String>();
+		if (depsString.isEmpty()) {
+			return list; 
+		}
+		
+		Log.d("PackageInfo", "Parsing: " + depsString);
+		for (String pkg : depsString.split(",\\s*")) {
+			String[] parts = pkg.split("==");
+			Log.d("PackageInfo", "Parts: " + Arrays.asList(parts));
+			if (parts.length >= 2) {
+				//example: list.put("core", "1.19.19")
+				list.put(parts[0].strip(), parts[1].strip());
+			}
+		}
+		return list;
+	}
+
 	public String getId() {
 		return id;
 	}
@@ -50,13 +76,22 @@ public class PackageInfo {
 		return getPatchVersion(version);
 	}
 	
-	// 0 -> major version, 1 -> minor version, 2 -> patch version
+	public HashMap<String, String> getDependencies() {
+		return this.depends;
+	}
+	
+	public HashMap<String, String> getExcluded() {
+		return this.excludes;
+	}
+	
+	// example: 1.19.18.2 -> 18
 	public static int getPatchVersion(String version) {
+		// in versionParts, 0 -> major version, 1 -> minor version, 2 -> patch version
 		List<Integer> versionParts = decodeNumericVersion(version);
 		return versionParts.size() >= 3 ? versionParts.get(2) : 0;
 	}
 	
-	// format: 1.19.18.1 etc.
+	// `version` format: 1.19.18.1 etc.
 	public static List<Integer> decodeNumericVersion(String version) {
 		List<Integer> nversion = new ArrayList<Integer>();
 		for (String part : version.split("\\.")) {
@@ -70,12 +105,15 @@ public class PackageInfo {
 			id,
 			prop.getProperty(id + ".name", id),
 			prop.getProperty(id + ".version"),
-			prop.getProperty(id + ".url")
+			prop.getProperty(id + ".url"),
+			prop.getProperty(id + ".depends", ""),
+			prop.getProperty(id + ".excludes", "")
 		);
 	}
 	
 	@Override
 	public String toString() {
-		return String.format("Package[id=%s,uiname=%s,version=%s,url=%s]", id, uiname, version, url);
+		return String.format("Package[id=%s,uiname=%s,version=%s,url=%s]\n[deps=%s]\n[excl=%s]",
+			id, uiname, version, url, depends, excludes);
 	}
 }

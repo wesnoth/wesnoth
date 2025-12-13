@@ -31,7 +31,9 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Enumeration;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -90,13 +92,14 @@ public class InitActivity extends Activity {
 	private List<PackageInfo> readManifest() {
 		List<PackageInfo> packages = new ArrayList<>();
 		long lastModified = Long.parseLong(status.getProperty("manifest.modified", "0"));
-		String downloadAddr = String.format(MANIFEST_URL, VERSION_ID);
+		
 		String versionID = BuildConfig.VERSION_NAME;
 		// Delete '+dev', since SF data url doesn't have it.
 		if (versionID.endsWith("+dev")) {
 			versionID = versionID.substring(0, versionID.length() - 4);
 		}
 
+		String downloadAddr = String.format(MANIFEST_URL, versionID);
 		Log.d("Manifest", "Fetching manifest from " + downloadAddr);
 		File manifestFile = new File(dataDir, "manifest.txt");
 		
@@ -109,7 +112,6 @@ public class InitActivity extends Activity {
 				packages.add(PackageInfo.from(manifest, pkgid));
 			}
 			Log.d("Manifest", "Last Modified: " + lastModified);
-			Log.d("Manifest", "Contents: " + manifest.toString());
 			Log.d("Manifest", "Packages: " + packages.toString());
 
 			status.setProperty("manifest.modified", "" + lastModified);
@@ -223,23 +225,44 @@ public class InitActivity extends Activity {
 		Executors.newSingleThreadExecutor().execute(() -> {
 			//TODO Update mechanism when patch is available.
 			if (!Boolean.parseBoolean(status.getProperty("manual_install", "false"))) {
+				HashMap<String, String> excluded = new HashMap<String, String>();
 				
 				for (PackageInfo info : readManifest()) {
 					String id = info.getId();
+					if (excluded.containsKey(id) && excluded.get(id).equals(info.getVersion())) {
+						Log.d("InitActivity", "Not downloading excluded package " + id);
+						continue;
+					}
+					
 					String url = info.getURL();
-
-					File packageFile = new File(dataDir, id + ".zip");
 					long lastModified = Long.parseLong(status.getProperty(id + ".modified", "0"));
 					int oldVersion = PackageInfo.getPatchVersion(status.getProperty(id + ".version", "0"));
 					int newVersion = info.getPatchVersion();
+					boolean downloadPkg = newVersion > oldVersion;
+					
+					// Check if dependencies for this package exist, only download if all satisfied
+					for (Map.Entry<String, String> dep : info.getDependencies().entrySet()) {
+						int depOldVersion = PackageInfo.getPatchVersion(status.getProperty(dep.getKey() + ".version", "0"));
+						int depNewVersion = PackageInfo.getPatchVersion(dep.getValue());
+						if (depNewVersion != depOldVersion) {
+							Log.d("InitActivity", "Dependency " + dep.getKey() + "for " + id + " not found");
+							downloadPkg = false;
+						}
+					}
 					
 					Log.d("InitActivity", id + " version: " + oldVersion + " (local), " + newVersion + " (remote)");
 					
-					if (newVersion > oldVersion) {
+					if (downloadPkg) {
+						
+						File packageFile = new File(dataDir, id + ".zip");
+						
 						// Download package
 						Log.d("InitActivity", "Starting to download " + id + " from " + url);
+						
 						try {
-							lastModified = downloadFile(url, packageFile, lastModified, info.getUIName(), false);
+							lastModified = downloadFile(
+								url, packageFile, lastModified, info.getUIName(), false);
+							
 							status.setProperty(id + ".version", "" + info.getVersion());
 							status.setProperty(id + ".modified", "" + lastModified);
 						} catch (Exception e) {
@@ -252,11 +275,12 @@ public class InitActivity extends Activity {
 							Log.d("InitActivity", "Start unpacking " + id);
 							
 							if (unpackArchive(packageFile, dataDir, info.getUIName())) {
+								excluded.putAll(info.getExcluded());
 								packageFile.delete();
 							}
 						}
 					} else {
-						Log.d("InitActivity", "No new version for " + id + " found in server, skipping.");
+						Log.d("InitActivity", "No new version/dependency unmet for " + id + " found in server, skipping.");
 					}
 				}
 			} else {
