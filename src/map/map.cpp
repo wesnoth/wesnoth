@@ -50,12 +50,6 @@ const terrain_type& gamemap::get_terrain_info(const map_location &loc) const
 	return tdata_->get_terrain_info(get_terrain(loc));
 }
 
-const t_translation::ter_list& gamemap::underlying_mvt_terrain(const map_location& loc) const
-	{ return tdata_->underlying_mvt_terrain(get_terrain(loc)); }
-const t_translation::ter_list& gamemap::underlying_def_terrain(const map_location& loc) const
-	{ return tdata_->underlying_def_terrain(get_terrain(loc)); }
-const t_translation::ter_list& gamemap::underlying_union_terrain(const map_location& loc) const
-	{ return tdata_->underlying_union_terrain(get_terrain(loc)); }
 std::string gamemap::get_terrain_string(const map_location& loc) const
 	{ return get_terrain_string(get_terrain(loc)); }
 std::string gamemap::get_terrain_editor_string(const map_location& loc) const

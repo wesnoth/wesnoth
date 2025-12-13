@@ -316,15 +316,13 @@ std::string terrain_topic_generator::operator()() const {
 		ss << (type_.editor_image().empty() ? "Empty" : type_.editor_image());
 		ss << "\n";
 
-		const t_translation::ter_list& underlying_mvt_terrains = tdata->underlying_mvt_terrain(type_.number());
 		ss << "\nDebug Mvt Description String:";
-		for(const t_translation::terrain_code& t : underlying_mvt_terrains) {
+		for(const t_translation::terrain_code& t : type_.mvt_type()) {
 			ss << " " << t;
 		}
 
-		const t_translation::ter_list& underlying_def_terrains = tdata->underlying_def_terrain(type_.number());
 		ss << "\nDebug Def Description String:";
-		for(const t_translation::terrain_code& t : underlying_def_terrains) {
+		for(const t_translation::terrain_code& t : type_.def_type()) {
 			ss << " " << t;
 		}
 
