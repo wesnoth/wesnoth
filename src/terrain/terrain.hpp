@@ -66,11 +66,21 @@ public:
 	t_translation::terrain_code number() const { return number_; }
 
 	/**
-	 * The underlying type of the terrain.
+	 * The underlying movement type of the terrain.
+	 *
+	 * The underlying terrain is the name of the terrain for game-logic purposes.
+	 * I.e. if the terrain is simply an alias, the underlying terrain name
+	 * is the name of the terrain(s) that it's aliased to.
 	 *
 	 * Whether "underlying" means "only the types used in [movetype]" is determined
 	 * by the terrain.cfg file, rather than the .cpp code - in 1.14, the terrain.cfg
 	 * file uses only the [movetype] terrains in its alias lists.
+	 *
+	 * This may start with a t_translation::PLUS or t_translation::MINUS to
+	 * indicate whether the movement should be calculated as a best-of or
+	 * worst-of combination. These may also occur later in the list, however if
+	 * both PLUS and MINUS appear in the list then the values calculated are
+	 * implementation defined behavior.
 	 */
 	const t_translation::ter_list& mvt_type() const { return mvt_type_; }
 	const t_translation::ter_list& def_type() const { return def_type_; }

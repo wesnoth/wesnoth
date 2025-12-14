@@ -101,7 +101,7 @@ typedef t_translation::ter_list::const_iterator ter_iter;
 std::string print_behavior_description(
 	const ter_iter& start,
 	const ter_iter& end,
-	const std::shared_ptr<terrain_type_data>& tdata,
+	const terrain_type_data& tdata,
 	bool first_level = true,
 	bool begin_best = true)
 {
@@ -131,7 +131,7 @@ std::string print_behavior_description(
 				// TRANSLATORS: in a description of an overlay terrain, the terrain that it's placed on
 				names.push_back(_("base terrain"));
 			} else {
-				const terrain_type tt = tdata->get_terrain_info(*i);
+				const terrain_type& tt = tdata.get_terrain_info(*i);
 				if(!tt.editor_name().empty())
 					names.push_back(tt.editor_name());
 			}
@@ -147,7 +147,7 @@ std::string print_behavior_description(
 	} else {
 		std::vector<std::string> names;
 		for(ter_iter i = *last_change_pos+1; i != end; ++i) {
-			const terrain_type tt = tdata->get_terrain_info(*i);
+			const terrain_type& tt = tdata.get_terrain_info(*i);
 			if(!tt.editor_name().empty())
 				names.push_back(tt.editor_name());
 		}
@@ -279,11 +279,11 @@ std::string terrain_topic_generator::operator()() const {
 
 		const t_translation::ter_list& underlying_mvt_terrains = type_.mvt_type();
 		ss << "\n" << _("Movement properties: ");
-		ss << print_behavior_description(underlying_mvt_terrains.begin(), underlying_mvt_terrains.end(), tdata) << "\n";
+		ss << print_behavior_description(underlying_mvt_terrains.begin(), underlying_mvt_terrains.end(), *tdata) << "\n";
 
 		const t_translation::ter_list& underlying_def_terrains = type_.def_type();
 		ss << "\n" << _("Defense properties: ");
-		ss << print_behavior_description(underlying_def_terrains.begin(), underlying_def_terrains.end(), tdata) << "\n";
+		ss << print_behavior_description(underlying_def_terrains.begin(), underlying_def_terrains.end(), *tdata) << "\n";
 	}
 
 	if(game_config::debug) {
@@ -316,15 +316,13 @@ std::string terrain_topic_generator::operator()() const {
 		ss << (type_.editor_image().empty() ? "Empty" : type_.editor_image());
 		ss << "\n";
 
-		const t_translation::ter_list& underlying_mvt_terrains = tdata->underlying_mvt_terrain(type_.number());
 		ss << "\nDebug Mvt Description String:";
-		for(const t_translation::terrain_code& t : underlying_mvt_terrains) {
+		for(const t_translation::terrain_code& t : type_.mvt_type()) {
 			ss << " " << t;
 		}
 
-		const t_translation::ter_list& underlying_def_terrains = tdata->underlying_def_terrain(type_.number());
 		ss << "\nDebug Def Description String:";
-		for(const t_translation::terrain_code& t : underlying_def_terrains) {
+		for(const t_translation::terrain_code& t : type_.def_type()) {
 			ss << " " << t;
 		}
 

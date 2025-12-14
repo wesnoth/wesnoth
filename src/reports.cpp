@@ -581,14 +581,14 @@ static config unit_defense(const reports::context& rc, const unit* u, const map_
 		return config();
 	}
 
-	const t_translation::terrain_code &terrain = map[displayed_unit_hex];
-	int def = 100 - u->defense_modifier(terrain, displayed_unit_hex);
+	const terrain_type& terrain = map.get_terrain_info(displayed_unit_hex);
+	int def = 100 - u->defense_modifier(terrain.number(), displayed_unit_hex);
 	color_t color = game_config::red_to_green(def);
 	str << span_color(color, def, '%');
-	tooltip << _("Terrain:") << " " << markup::bold(map.get_terrain_info(terrain).description()) << "\n";
+	tooltip << _("Terrain:") << " " << markup::bold(terrain.description()) << "\n";
 
-	const t_translation::ter_list &underlyings = map.underlying_def_terrain(displayed_unit_hex);
-	if (underlyings.size() != 1 || underlyings.front() != terrain)
+	const t_translation::ter_list& underlyings = terrain.def_type();
+	if (underlyings.size() != 1 || underlyings.front() != terrain.number())
 	{
 		bool revert = false;
 		for (const t_translation::terrain_code &t : underlyings)
@@ -1457,7 +1457,7 @@ static config unit_box_at(const reports::context& rc, const map_location& mouseo
 
 	std::string bg_terrain_image;
 
-	for (const t_translation::terrain_code& underlying_terrain : map.underlying_union_terrain(mouseover_hex)) {
+	for(const t_translation::terrain_code& underlying_terrain : map.get_terrain_info(mouseover_hex).union_type()) {
 		const std::string& terrain_id = map.get_terrain_info(underlying_terrain).id();
 		bg_terrain_image = "~BLIT(unit_env/terrain/terrain-" + terrain_id + ".png)" + bg_terrain_image;
 	}
@@ -1603,8 +1603,8 @@ REPORT_GENERATOR(terrain_info, rc)
 		return config();
 	}
 
-	t_translation::terrain_code terrain = map.get_terrain(mouseover_hex);
-	if(t_translation::terrain_matches(terrain, t_translation::ALL_OFF_MAP)) {
+	const terrain_type& terrain = map.get_terrain_info(mouseover_hex);
+	if(t_translation::terrain_matches(terrain.number(), t_translation::ALL_OFF_MAP)) {
 		return config();
 	}
 
@@ -1624,7 +1624,7 @@ REPORT_GENERATOR(terrain_info, rc)
 //		blit_tced_icon(cfg, "keep", high_res);
 //	}
 
-	for(const t_translation::terrain_code& underlying_terrain : map.underlying_union_terrain(mouseover_hex)) {
+	for(const t_translation::terrain_code& underlying_terrain : terrain.union_type()) {
 		if(t_translation::terrain_matches(underlying_terrain, t_translation::ALL_OFF_MAP)) {
 			continue;
 		}

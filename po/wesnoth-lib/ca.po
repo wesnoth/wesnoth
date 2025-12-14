@@ -11,45 +11,41 @@ msgstr ""
 "Project-Id-Version: 1.6.0+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-11-17 20:02-0600\n"
-"PO-Revision-Date: 2021-01-16 19:31+0100\n"
-"Last-Translator: Miquel-Àngel Burgos i Fradeja <miquel.angel.burgos@gmail."
-"com>\n"
+"PO-Revision-Date: 2025-12-14 18:11+0100\n"
+"Last-Translator: Arnau Vàzquez Palma <arnauvp@murena.io>\n"
 "Language-Team: Catalan <wesnoth-ca@lists.ettin.org>\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.4.1\n"
+"X-Generator: Poedit 3.8\n"
 
 #. [ai]: id=ai_default_rca
 #: data/ai/ais/ai_default_rca.cfg:9
 msgid "Multiplayer_AI^Default AI (RCA)"
-msgstr ""
+msgstr "IA per defecte (RCA)"
 
 #. [ai]: id=ai_default_rca_1_14
 #: data/ai/ais/ai_default_rca_1_14.cfg:9
 msgid "Multiplayer_AI^Old Default AI (1.14 version)"
-msgstr ""
+msgstr "Antiga IA per defecte (versió 1.14)"
 
 #. [ai]: id=experimental_ai
 #: data/ai/ais/ai_experimental.cfg:11
-#, fuzzy
-#| msgid "Multiplayer Alerts"
 msgid "Multiplayer_AI^Experimental AI"
-msgstr "Alertes multijugador"
+msgstr "IA experimental"
 
 #. [ai]: id=idle_ai
 #: data/ai/ais/idle_ai.cfg:4
-#, fuzzy
-#| msgid "Multiplayer Alerts"
 msgid "Multiplayer_AI^Dev AI: Idle AI"
-msgstr "Alertes multijugador"
+msgstr "IA per desenvolupament: IA passiva"
 
 #. [ai]: id=ai_default_rca_alternate_recruiting
 #: data/ai/dev/ai_default_rca_alternate_recruiting.cfg:10
 msgid "Multiplayer_AI^Dev AI: Default AI (RCA) with Alternate Recruiting"
 msgstr ""
+"IA per desenvolupament: IA per defecte (RCA) amb reclutament alternatiu"
 
 #. [terrain_type]: id=farmer-fence  # AI-animal-proof fences from first scenario
 #. [terrain_type]: id=fence
@@ -166,10 +162,8 @@ msgstr "Pantà"
 
 #. [terrain_type]: id=sea_kelp
 #: data/core/terrain.cfg:135
-#, fuzzy
-#| msgid "Palm Forest"
 msgid "Kelp Forest"
-msgstr "Palmerar"
+msgstr "Bosc de Kelp"
 
 #. [terrain_type]: id=swamp_water_reed
 #: data/core/terrain.cfg:150
@@ -280,10 +274,8 @@ msgstr "Llambordes amb vegetació"
 
 #. [terrain_type]: id=road_icy
 #: data/core/terrain.cfg:294
-#, fuzzy
-#| msgid "Clean Gray Cobbles"
 msgid "Icy Cobbles"
-msgstr "Llambordes grises netes"
+msgstr "Llambordes glaçades"
 
 #. [terrain_type]: id=ice
 #: data/core/terrain.cfg:307
@@ -389,10 +381,8 @@ msgstr "Pedres"
 
 #. [terrain_type]: id=snowbits_small
 #: data/core/terrain.cfg:418
-#, fuzzy
-#| msgid "Snow"
 msgid "Snowbits"
-msgstr "Neu"
+msgstr "Flocs de neu"
 
 #. [terrain_type]: id=mushrooms_small
 #: data/core/terrain.cfg:427
@@ -441,22 +431,18 @@ msgstr "Braser encès"
 
 #. [terrain_type]: id=fence_iron
 #: data/core/terrain.cfg:522
-#, fuzzy
-#| msgid "Fence"
 msgid "Iron Fence"
-msgstr "Tanca"
+msgstr "Tanca de ferro"
 
 #. [terrain_type]: id=fence_palisade
 #: data/core/terrain.cfg:532
 msgid "Palisade"
-msgstr ""
+msgstr "Palissada"
 
 #. [terrain_type]: id=fence_palisade
 #: data/core/terrain.cfg:533
-#, fuzzy
-#| msgid "Wooden Bridge"
 msgid "Wooden Palisade"
-msgstr "Pont de fusta"
+msgstr "Palissada de fusta"
 
 #. [terrain_type]: id=sand_drifts
 #: data/core/terrain.cfg:542
@@ -476,7 +462,7 @@ msgstr "Lliris d'aigua florint"
 #. [terrain_type]: id=seashells
 #: data/core/terrain.cfg:571
 msgid "Seashells"
-msgstr ""
+msgstr "Petxines"
 
 #. [terrain_type]: id=detritus_trash
 #: data/core/terrain.cfg:582
@@ -491,10 +477,8 @@ msgstr "Restes"
 # Hmm, cal el «Window» a l'original?
 #. [terrain_type]: id=wall_windows
 #: data/core/terrain.cfg:601
-#, fuzzy
-#| msgid "Close Window"
 msgid "Window"
-msgstr "Tanca"
+msgstr "Finestra"
 
 #. [terrain_type]: id=great_tree
 #. [terrain_type]: id=great_tree_snowy
@@ -508,10 +492,8 @@ msgstr "Arbre gran"
 
 #. [terrain_type]: id=great_tree_snowy
 #: data/core/terrain.cfg:627
-#, fuzzy
-#| msgid "Great Tree"
 msgid "Snowy Great Tree"
-msgstr "Arbre gran"
+msgstr "Gran arbre nevat"
 
 #. [terrain_type]: id=great_tree_dead
 #: data/core/terrain.cfg:639
@@ -520,10 +502,8 @@ msgstr "Arbre gran mort"
 
 #. [terrain_type]: id=great_tree_dead_oak
 #: data/core/terrain.cfg:651
-#, fuzzy
-#| msgid "Dead Great Tree"
 msgid "Dead Great Oak Tree"
-msgstr "Arbre gran mort"
+msgstr "Gran roure mort"
 
 #. [terrain_type]: id=tropical_forest
 #. [terrain_type]: id=rainforest
@@ -711,10 +691,8 @@ msgstr "Terra de pedra bàsic"
 
 #. [terrain_type]: id=ancient_stone_floor
 #: data/core/terrain.cfg:947
-#, fuzzy
-#| msgid "Stone Floor"
 msgid "Ancient Stone Floor"
-msgstr "Terra de pedra"
+msgstr "Terra de pedra antic"
 
 #. [terrain_type]: id=rug_floor
 #. [terrain_type]: id=rug2_floor
@@ -809,16 +787,23 @@ msgstr "Boscatge de bolets"
 
 #. [terrain_type]: id=fungus_grove_old
 #: data/core/terrain.cfg:1062
-#, fuzzy
-#| msgid "Lit Mushroom Grove"
 msgid "Non-mixed Mushroom Grove"
-msgstr "Boscatge de bolets il·luminat"
+msgstr "Boscatge de bolets no barrejat"
 
 #. [terrain_type]: id=fungus_grove_old
 #. [terrain_type]: id=fungus_beam_old
 #. this hint is only shown in the map editor, the ^Uf, ^Tf and Tb are all terrain codes and should be left as-is
 #. this hint is only shown in the map editor, the ^Uf, ^Tf and Tb are all terrain codes and should be left as-is
 #: data/core/terrain.cfg:1070 data/core/terrain.cfg:1090
+#, fuzzy
+#| msgid ""
+#| "editor^The overlays '^Uf' and '^Ufi' are deprecated because, although the "
+#| "graphics show an overlay with another terrain underneath, the movement "
+#| "and defense stats are purely fungus terrain, ignoring the underlying "
+#| "terrain. The recommended replacements are '^Tf' and '^Tfi' which look the "
+#| "same but have the stats implied by the graphics. For hexes where the "
+#| "stats of purely fungus are wanted, 'Tb' is a mushroom base terrain, which "
+#| "can be used with or without '^Tf' on top."
 msgid ""
 "editor^The overlays ‘^Uf’ and ‘^Ufi’ are deprecated because, although the "
 "graphics show an overlay with another terrain underneath, the movement and "
@@ -828,6 +813,14 @@ msgid ""
 "fungus are wanted, ‘Tb’ is a mushroom base terrain, which can be used with "
 "or without ‘^Tf’ on top."
 msgstr ""
+"Les superposicions '^Uf' i '^Ufi' estan obsoletes perquè, tot i que els "
+"gràfics mostren una superposició amb un altre terreny a sota, les "
+"estadístiques de moviment i defensa són exclusivament de terreny fúngic, "
+"ignorant el terreny subjacent. Les substitucions recomanades són '^Tf' i "
+"'^Tfi', que tenen el mateix aspecte però presenten les estadístiques "
+"implicades pels gràfics. Per a hexàgons on es vulguin les estadístiques de "
+"fong pur, 'Tb' és un terreny de base de bolets, que es pot utilitzar amb o "
+"sense '^Tf' a sobre."
 
 #. [terrain_type]: id=fungus_grove_old
 #. [terrain_type]: id=fungus_beam_old
@@ -841,11 +834,14 @@ msgid ""
 "defense and movement costs are purely based on the unit’s stats for "
 "<italic>text='Fungus'</italic>."
 msgstr ""
+"Les històries dels nans descriuen diferents tipus de bolets — amb alguns "
+"tipus la dificultat de caminar sobre el sòl esponjós no té cap relació amb "
+"el terreny que hi ha a sota, fins i tot quan aquest encara és visible. Els "
+"costos de defensa i de moviment d'aquest terreny es basen exclusivament en "
+"les estadístiques de l'unitat per a <italic>text='Fong'</italic>."
 
 #. [terrain_type]: id=fungus_beam_old
 #: data/core/terrain.cfg:1081
-#, fuzzy
-#| msgid "Lit Mushroom Grove"
 msgid "Lit Non-mixed Mushroom Grove"
 msgstr "Boscatge de bolets il·luminat"
 
@@ -857,7 +853,7 @@ msgstr "Boscatge de bolets il·luminat"
 #. [terrain_type]: id=fungus_floor
 #: data/core/terrain.cfg:1125 data/core/terrain.cfg:1126
 msgid "Mycelium"
-msgstr ""
+msgstr "Miceli"
 
 #. [terrain_type]: id=rocky_cave
 #. [terrain_type]: id=earthy_rocky_cave
@@ -897,10 +893,8 @@ msgstr ""
 
 #. [terrain_type]: id=earthy_rocky_cave
 #: data/core/terrain.cfg:1152
-#, fuzzy
-#| msgid "Rockbound Cave"
 msgid "Earthy Rockbound Cave"
-msgstr "Cova rocosa"
+msgstr "Cova terrosa i rocosa"
 
 #. [terrain_type]: id=mine_rails
 #. [terrain_type]: id=mine_railsdiag1
@@ -913,29 +907,27 @@ msgstr "Raïl de mina"
 #. [terrain_type]: id=high_border
 #: data/core/terrain.cfg:1214
 msgid "Bluff"
-msgstr ""
+msgstr "Penya-segat"
 
 #. [terrain_type]: id=high_canyon
 #: data/core/terrain.cfg:1224
 msgid "Gulch"
-msgstr ""
+msgstr "Barranc"
 
 #. [terrain_type]: id=high_canyon_obst
 #: data/core/terrain.cfg:1235
-#, fuzzy
-#| msgid "Unwalkable Overlay"
 msgid "Unwalkable Ravine"
-msgstr "Superposició impracticable"
+msgstr "Barranc intransitable"
 
 #. [terrain_type]: id=high_border_woods
 #: data/core/terrain.cfg:1249
 msgid "Wooded Bluffs"
-msgstr ""
+msgstr "Penya-segats boscosos"
 
 #. [terrain_type]: id=high_canyon_woods
 #: data/core/terrain.cfg:1259
 msgid "Wooded Gulch"
-msgstr ""
+msgstr "Barranc boscós"
 
 #. [terrain_type]: id=canyon
 #. [terrain_type]: id=chasm_earthy
@@ -1044,21 +1036,18 @@ msgstr "Paret de cova terrosa natural"
 
 #. [terrain_type]: id=cavewall_damaged
 #: data/core/terrain.cfg:1423
-#, fuzzy
-#| msgid "Natural Cave Wall"
 msgid "Damaged Cave Wall"
-msgstr "Paret de cova natural"
+msgstr "Paret de cova danyada"
 
 #. [terrain_type]: id=wall_hedge
 #: data/core/terrain.cfg:1433
 msgid "Thick Hedges"
-msgstr ""
+msgstr "Tanques gruixudes"
 
 #. [terrain_type]: id=wall_hedge
 #: data/core/terrain.cfg:1434
-#, fuzzy
 msgid "Hedges Wall"
-msgstr "Paret de cova"
+msgstr "Paret d’arbustos"
 
 #. [terrain_type]: id=wall_stone
 #. [terrain_type]: id=wall_stone_lit
@@ -1098,52 +1087,38 @@ msgstr "Paret de pedra neta"
 
 #. [terrain_type]: id=wall_stone_ancient
 #: data/core/terrain.cfg:1519
-#, fuzzy
-#| msgid "Lit Stone Wall"
 msgid "Ancient Stone Wall"
-msgstr "Paret de pedra il·luminada"
+msgstr "Antic mur de pedra"
 
 #. [terrain_type]: id=wall_stone_tomb
 #: data/core/terrain.cfg:1529
-#, fuzzy
-#| msgid "Cave Wall"
 msgid "Catacombs Wall"
-msgstr "Paret de cova"
+msgstr "Paret de catacumbes"
 
 #. [terrain_type]: id=wall_stone_tomb
 #: data/core/terrain.cfg:1530
-#, fuzzy
-#| msgid "Clean Stone Wall"
 msgid "Catacombs Stone Wall"
-msgstr "Paret de pedra neta"
+msgstr "Paret de pedra de catacombes"
 
 #. [terrain_type]: id=wall_stone_overgrown
 #: data/core/terrain.cfg:1540
-#, fuzzy
-#| msgid "Overgrown Cobbles"
 msgid "Overgrown Wall"
 msgstr "Llambordes amb vegetació"
 
 #. [terrain_type]: id=wall_stone_overgrown
 #: data/core/terrain.cfg:1541
-#, fuzzy
-#| msgid "Clean Stone Wall"
 msgid "Overgrown Stone Wall"
-msgstr "Paret de pedra neta"
+msgstr "Paret de pedra amb vegetació"
 
 #. [terrain_type]: id=wall_stone_damaged
 #: data/core/terrain.cfg:1552
-#, fuzzy
-#| msgid "Stone Wall"
 msgid "Damaged Stone Wall"
-msgstr "Paret de pedra"
+msgstr "Paret de pedra danyada"
 
 #. [terrain_type]: id=wall_stone_ruins
 #: data/core/terrain.cfg:1562
-#, fuzzy
-#| msgid "Mine Wall"
 msgid "Ruined Wall"
-msgstr "Paret de mina"
+msgstr "Paret en ruïnes"
 
 #. [terrain_type]: id=portal_gate_rusty_sw
 #. [terrain_type]: id=portal_gate_rusty_se
@@ -1371,10 +1346,8 @@ msgstr "Poble de dracs"
 
 #. [terrain_type]: id=drake_snow_village
 #: data/core/terrain.cfg:2051
-#, fuzzy
-#| msgid "Drake Village"
 msgid "Snowy Drake Village"
-msgstr "Poble de dracs"
+msgstr "Poble de Drake nevat"
 
 #. [terrain_type]: id=underground_village
 #: data/core/terrain.cfg:2066
@@ -1529,17 +1502,13 @@ msgstr "Castell elf en ruïnes"
 
 #. [terrain_type]: id=elven_castle_winter
 #: data/core/terrain.cfg:2314
-#, fuzzy
-#| msgid "Elven Castle"
 msgid "Winter Elven Castle"
-msgstr "Castell elf"
+msgstr "Castell elf d’hivern"
 
 #. [terrain_type]: id=dwarven_castle
 #: data/core/terrain.cfg:2326
-#, fuzzy
-#| msgid "Dwarven Castle"
 msgid "Dwarven Underground Castle"
-msgstr "Castell nan"
+msgstr "Castell nan subterrani"
 
 #. [terrain_type]: id=dwarven_castle2
 #: data/core/terrain.cfg:2338
@@ -1548,17 +1517,13 @@ msgstr "Castell nan"
 
 #. [terrain_type]: id=dwarven_castle_ruin
 #: data/core/terrain.cfg:2350
-#, fuzzy
-#| msgid "Dwarven Castle"
 msgid "Dwarven Castle Ruins"
-msgstr "Castell nan"
+msgstr "Castell nan en ruïnes"
 
 #. [terrain_type]: id=dwarven_castle_winter
 #: data/core/terrain.cfg:2362
-#, fuzzy
-#| msgid "Dwarven Castle"
 msgid "Winter Dwarven Castle"
-msgstr "Castell nan"
+msgstr "Castell nan d’hivern"
 
 #. [terrain_type]: id=ruin
 #. [terrain_type]: id=sunkenruin
@@ -1691,15 +1656,11 @@ msgstr "Torre èlfica en ruïnes"
 
 #. [terrain_type]: id=elven_keep_winter
 #: data/core/terrain.cfg:2606
-#, fuzzy
-#| msgid "Elven Keep Ruin"
 msgid "Winter Elven Keep"
-msgstr "Torre èlfica en ruïnes"
+msgstr "Torre de castell èlfica d’hivern"
 
 #. [terrain_type]: id=dwarven_keep
 #: data/core/terrain.cfg:2619
-#, fuzzy
-#| msgid "Dwarven Castle Keep"
 msgid "Dwarven Underground Keep"
 msgstr "Torre de castell de nans"
 
@@ -1710,17 +1671,13 @@ msgstr "Torre de castell de nans"
 
 #. [terrain_type]: id=dwarven_keep_ruin
 #: data/core/terrain.cfg:2645
-#, fuzzy
-#| msgid "Dwarven keep"
 msgid "Dwarven Ruin Keep"
-msgstr "Torrassa nan"
+msgstr "Torre de castell de nans en ruïnes"
 
 #. [terrain_type]: id=dwarven_keep_winter
 #: data/core/terrain.cfg:2658
-#, fuzzy
-#| msgid "Dwarven keep"
 msgid "Winter Dwarven Keep"
-msgstr "Torrassa nan"
+msgstr "Torre de castell de nans d’hivern"
 
 #. [terrain_type]: id=ruined_keep
 #. [terrain_type]: id=sunken_keep
@@ -1877,10 +1834,8 @@ msgstr "Pont de pedra bàsic"
 #. [terrain_type]: id=snow_stone_bridgediag2
 #: data/core/terrain.cfg:2930 data/core/terrain.cfg:2942
 #: data/core/terrain.cfg:2955
-#, fuzzy
-#| msgid "Basic Stone Bridge"
 msgid "Snowy Stone Bridge"
-msgstr "Pont de pedra bàsic"
+msgstr "Pont de pedra nevat"
 
 #. [terrain_type]: id=bridgechasm
 #. [terrain_type]: id=bridgechasmdiag1
@@ -1917,22 +1872,22 @@ msgstr "Pont de taulons"
 #. [terrain_type]: id=mark_high
 #: data/core/terrain.cfg:3140
 msgid "Marker High"
-msgstr ""
+msgstr "Marcador alt"
 
 #. [terrain_type]: id=mark_high2
 #: data/core/terrain.cfg:3150
 msgid "Marker High 2"
-msgstr ""
+msgstr "Marcador alt 2"
 
 #. [terrain_type]: id=mark_low
 #: data/core/terrain.cfg:3160
 msgid "Marker Low"
-msgstr ""
+msgstr "Marcador Baix"
 
 #. [terrain_type]: id=mark_low2
 #: data/core/terrain.cfg:3170
 msgid "Marker Low 2"
-msgstr ""
+msgstr "Marcador Baix 2"
 
 #. [terrain_type]: id=off_map
 #: data/core/terrain.cfg:3182
@@ -1947,7 +1902,7 @@ msgstr "Vora de mapa falsa"
 #. [terrain_type]: id=overlay_artplaceholder
 #: data/core/terrain.cfg:3202
 msgid "Art Placeholder"
-msgstr ""
+msgstr "Espai reservat per l’art"
 
 #. [terrain_type]: id=shroud
 #. [toggle_button]: id=shroud
@@ -1978,18 +1933,6 @@ msgstr "Fong"
 
 #. [terrain_type]: id=fungus
 #: data/core/terrain.cfg:3255
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Mushroom groves'</italic> are vast underground forests of "
-#| "giant mushrooms,\n"
-#| "which thrive in the damp darkness. Most units have trouble negotiating "
-#| "the spongy floor of smaller fungi, but they have plenty of cover behind "
-#| "the larger stalks. Mounted units, however, become completely mired and "
-#| "lack proper freedom of movement in combat. Undead units have a natural "
-#| "affinity for decay and function quite well in mushroom forests.\n"
-#| "\n"
-#| "Most units receive 50% to 60% defense in mushroom groves, whereas cavalry "
-#| "receive only 20%."
 msgid ""
 "<italic>text='Mushroom groves'</italic> are vast underground forests of "
 "giant mushrooms, which thrive in the damp darkness. Most units have trouble "
@@ -2001,17 +1944,16 @@ msgid ""
 "Most units receive 50% to 60% defense in mushroom groves, whereas cavalry "
 "receive only 20%."
 msgstr ""
-"Els <italic>text='boscatges de bolets'</italic> són boscos subterranis "
-"vastos de bolets gegants,\n"
-"que creixen en la foscor humida. La majora d'unitats tenen problemes per a "
-"negociar el terra esponjós de fongs més petits, però tenen una gran "
-"cobertura darrere les tiges més grosses. Les unitats muntades, però, s'hi "
-"enreden completament i manquen d'una llibertat de moviment adequada en "
-"combat. Les unitats no mortes tenen una afinitat natural per la "
-"descomposició i funcionen prou bé en boscos de bolets.\n"
+"<italic>Els 'boscos de bolets'</italic> són vastos boscos subterranis de "
+"bolets gegants que prosperen en la foscor humida. La majoria d'unitats tenen "
+"problemes per moure's pel terra esponjós dels fongs més petits, però tenen "
+"molt de cobert darrere dels peus més grossos. Les unitats muntades, però, "
+"s'enfonsen completament i no tenen prou llibertat de moviment en combat. Les "
+"unitats de no-morts tenen una afinitat natural per la putrefacció i "
+"funcionen força bé en els boscos de bolets.\n"
 "\n"
-"La majoria d'unitats reben entre un 50% i un 60% de defensa en boscatges de "
-"bolets, mentre que la cavalleria només en rep un 20%."
+"La majoria d'unitats reben un 50% a un 60% de defensa als boscos de bolets, "
+"mentre que la cavalleria només en rep un 20%."
 
 #. [terrain_type]: id=cave
 #: data/core/terrain.cfg:3266
@@ -2073,17 +2015,6 @@ msgstr ""
 
 #. [terrain_type]: id=hills
 #: data/core/terrain.cfg:3310
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Hills'</italic> represent any reasonably rough terrain,\n"
-#| "with enough dips and rises in the ground to provide some cover. Hills are "
-#| "difficult for most troops to navigate. Dwarves, trolls, and orcs have "
-#| "enough familiarity with the terrain that they can pass through it without "
-#| "being slowed down. Cavalry have enough trouble navigating the terrain "
-#| "that any defensive aid lent by cover is negated.\n"
-#| "\n"
-#| "Most units have about 50% defense in hills, whereas cavalry are limited "
-#| "to 40%. Dwarves enjoy 60% defense in hills."
 msgid ""
 "<italic>text='Hills'</italic> represent any reasonably rough terrain, with "
 "enough dips and rises in the ground to provide some cover. Hills are "
@@ -2095,17 +2026,17 @@ msgid ""
 "Most units have about 50% defense in hills, whereas cavalry are limited to "
 "40%. Dwarves enjoy 60% defense in hills."
 msgstr ""
-"Els <italic>text='turons'</italic> representen un terreny raonablement "
-"accidentat,\n"
-"amb prou desnivells de terreny per a proporcionar un xic de protecció. Els "
-"turons són difícils de recórrer per a la majoria de tropes. Nans, trols i "
-"orcs tenen prou familiaritat amb el terreny per a poder passar-hi sense "
-"alentir la marxa. La cavalleria té tants problemes per a recórrer el terreny "
-"que l'ajut defensiu de la protecció queda anul·lat.\n"
+"<italic>text='Turons'</italic> representen qualsevol terreny raonablement "
+"accidentat, amb prou baixos i pujades al terra per oferir una mica de "
+"cobertura. Els turons són difícils de travessar per a la majoria de tropes. "
+"Els nans, els trols i els orcs tenen prou familiaritat amb el terreny que hi "
+"poden passar sense alentir-se. La cavalleria té prou problemes per moure's "
+"pel terreny que qualsevol ajuda defensiva que ofereixi la cobertura queda "
+"anul·lada.\n"
 "\n"
-"La majoria d'unitats tenen al voltant del 50% de defensa en turons, mentre "
-"que la cavalleria està limitada al 40%. Els nans gaudeixen d'un 60% de "
-"defensa en turons."
+"La majoria d'unitats tenen un 50% de defensa en turons, mentre que la "
+"cavalleria es limita al 40%. Els nans gaudeixen d'un 60% de defensa en "
+"turons."
 
 #. [terrain_type]: id=swamp_water
 #: data/core/terrain.cfg:3324
@@ -2181,19 +2112,6 @@ msgstr ""
 
 #. [terrain_type]: id=mountains
 #: data/core/terrain.cfg:3366
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Mountains'</italic> are steep enough that units often have "
-#| "to climb over obstacles to move.\n"
-#| "By this nature, they provide a considerable defensive bonus for most "
-#| "troops, but they also severely impede any passage through them. Most "
-#| "cavalry simply cannot enter mountainous terrain; however, elvish cavalry "
-#| "is an exception to this, as are the goblin wolf riders. Both dwarves and "
-#| "trolls are native to mountainous terrain, and have a very easy time "
-#| "getting around.\n"
-#| "\n"
-#| "Most units receive about 60% defense in mountains, whereas Dwarves enjoy "
-#| "70%."
 msgid ""
 "<italic>text='Mountains'</italic> are steep enough that units often have to "
 "climb over obstacles to move.\n"
@@ -2408,10 +2326,8 @@ msgstr ""
 #: data/core/terrain.cfg:3476 data/core/terrain.cfg:3487
 #: data/core/terrain.cfg:3498 data/core/terrain.cfg:3509
 #: data/core/terrain.cfg:3520
-#, fuzzy
-#| msgid "Game created:"
 msgid "Deprecated"
-msgstr "S'ha creat una partida:"
+msgstr "Obsolet"
 
 #. [button]: id=search
 #: data/gui/macros/_initial.cfg:363
@@ -2421,14 +2337,12 @@ msgstr "Cerca"
 
 #. [label]: id=no_options_notice
 #: data/gui/macros/custom_options_tree.cfg:26
-#, fuzzy
-#| msgid "Configure settings for the selected custom modifications."
 msgid ""
 "There are no custom options available for the selected era, game, or "
 "modification."
 msgstr ""
-"Paràmetres de configuració de les modificacions personalitzades "
-"seleccionades."
+"No hi ha opcions personalitzades disponibles per a l'època, el joc o la "
+"modificació seleccionats."
 
 #. [button]: id=reset_option_values
 #. [button]: id=revert_to_defaults
@@ -2449,15 +2363,11 @@ msgstr "Per defecte"
 #. [widget]: id=tab_label
 #: data/gui/macros/player_list_panel.cfg:22
 #: data/gui/themes/default/dialogs/mp_match_history.cfg:388
-#, fuzzy
-#| msgid "Players:"
 msgid "Players"
-msgstr "Jugadors:"
+msgstr "Jugadors"
 
 #. [settings]
 #: data/gui/themes/celes/_main.cfg:25 data/gui/themes/default/_main.cfg:23
-#, fuzzy
-#| msgid " (Press '$hotkey' for more information)"
 msgid " (Press ‘$hotkey’ for more information)"
 msgstr "(Premeu '$hotkey' per a més informació)"
 
@@ -2605,18 +2515,14 @@ msgstr "Descarregueu campanyes, eres o paquets de mapes fets pels usuaris"
 #: data/gui/themes/default/dialogs/achievements_dialog.cfg:80
 #: data/gui/themes/default/dialogs/title_screen.cfg:260
 #: src/hotkey/hotkey_command.cpp:97
-#, fuzzy
-#| msgid "Advancements"
 msgid "Achievements"
-msgstr "Pujades de nivell"
+msgstr "Èxits"
 
 #. [grid]
 #: data/gui/themes/celes/dialogs/title_screen.cfg:293
 #: data/gui/themes/default/dialogs/title_screen.cfg:260
-#, fuzzy
-#| msgid "View: Each Team"
 msgid "View achievements"
-msgstr "Vista: cada equip"
+msgstr "Veure èxits"
 
 #. [grid]
 #: data/gui/themes/celes/dialogs/title_screen.cfg:294
@@ -2636,15 +2542,13 @@ msgstr "Inicieu l'editor de mapes"
 #: data/gui/themes/default/dialogs/game_version.cfg:903
 #: data/gui/themes/default/dialogs/title_screen.cfg:262
 msgid "Community"
-msgstr ""
+msgstr "Comunitat"
 
 #. [grid]
 #: data/gui/themes/celes/dialogs/title_screen.cfg:295
 #: data/gui/themes/default/dialogs/title_screen.cfg:262
-#, fuzzy
-#| msgid "The Battle for Wesnoth"
 msgid "Places to talk about Wesnoth"
-msgstr "La batalla per Wesnoth"
+msgstr "Llocs on comentar sobre Wesnoth"
 
 #. [grid]
 #: data/gui/themes/celes/dialogs/title_screen.cfg:296
@@ -2676,9 +2580,9 @@ msgstr "Ajuda"
 #. [grid]
 #: data/gui/themes/celes/dialogs/title_screen.cfg:297
 #, fuzzy
-#| msgid "Quit the game"
+#| msgid "Change the in-game theme"
 msgid "Visit the in-game help"
-msgstr "Sortiu del joc"
+msgstr "Canvia el tema de la partida"
 
 #. [grid]
 #. [button]: id=cancel
@@ -2706,7 +2610,7 @@ msgstr "Sortiu del joc"
 #: data/gui/themes/default/widgets/button_success.cfg:222
 #: data/gui/themes/default/widgets/button_success.cfg:236
 msgid "page^Copy"
-msgstr "page^Copia"
+msgstr "Copia"
 
 #. [draw]
 #. The heavy checkmark character is available in the DejaVu Sans font, but not in the default Lato font
@@ -2748,14 +2652,12 @@ msgstr "Tanca"
 #. [label]
 #: data/gui/themes/default/dialogs/addon_auth.cfg:41
 msgid "Authenticate"
-msgstr ""
+msgstr "Identificar-se"
 
 #. [label]
 #: data/gui/themes/default/dialogs/addon_auth.cfg:65
-#, fuzzy
-#| msgid "Rename"
 msgid "Username:"
-msgstr "Canvia el nom"
+msgstr "Nom d’usuari:"
 
 #. [label]
 #. [grid]
@@ -2904,10 +2806,8 @@ msgstr "Connecta"
 
 #. [label]
 #: data/gui/themes/default/dialogs/addon_license_prompt.cfg:39
-#, fuzzy
-#| msgid "addons_order^Type ($order)"
 msgid "addons_server^Terms"
-msgstr "addons_order^Tipus ($order)"
+msgstr "Termes del servei"
 
 #. [label]: id=message
 #: data/gui/themes/default/dialogs/addon_license_prompt.cfg:53
@@ -2915,19 +2815,21 @@ msgid ""
 "Before uploading content to this server, you must accept the following "
 "distribution terms by choosing “I Agree”."
 msgstr ""
+"Abans de pujar contingut a aquest servidor, heu d'acceptar els termes de "
+"distribució següents seleccionant \"Estic d'acord\"."
 
 #. [button]: id=ok
 #: data/gui/themes/default/dialogs/addon_license_prompt.cfg:102
 msgid "I Agree"
-msgstr ""
+msgstr "Estic d’acord"
 
 #: data/gui/themes/default/dialogs/addon_manager.cfg:9
 msgid "Traffic between the game and server is not secure"
-msgstr ""
+msgstr "El trànsit entre el joc i el servidor no és segur"
 
 #: data/gui/themes/default/dialogs/addon_manager.cfg:13
 msgid "Traffic between the game and server is encrypted"
-msgstr ""
+msgstr "El trànsit entre el joc i el servidor està xifrat"
 
 #. [label]
 #. [grid]
@@ -2958,12 +2860,12 @@ msgstr "Descàrregues:"
 #. [label]
 #: data/gui/themes/default/dialogs/addon_manager.cfg:299
 msgid "date^Uploaded:"
-msgstr "date^Carregat:"
+msgstr "Publicat:"
 
 #. [label]
 #: data/gui/themes/default/dialogs/addon_manager.cfg:329
 msgid "date^Updated:"
-msgstr "date^Actualitzat:"
+msgstr "Actualitzat:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [scroll_label]: id=description
@@ -2981,10 +2883,8 @@ msgstr "Versió:"
 
 #. [menu_button]: id=version_filter
 #: data/gui/themes/default/dialogs/addon_manager.cfg:471
-#, fuzzy
-#| msgid "Delete add-on from server"
 msgid "Select the add-on version"
-msgstr "Suprimeix el complement del servidor"
+msgstr "Seleccioneu la versió del complement"
 
 #. [label]
 #: data/gui/themes/default/dialogs/addon_manager.cfg:489
@@ -2993,10 +2893,8 @@ msgstr "Lloc web:"
 
 #. [label]
 #: data/gui/themes/default/dialogs/addon_manager.cfg:521
-#, fuzzy
-#| msgid "ID:"
 msgid "Id:"
-msgstr "ID:"
+msgstr "Identificador:"
 
 #. [button]: id=install
 #. [button]: id=single_install
@@ -3047,7 +2945,7 @@ msgstr "Dependències:"
 #: data/gui/themes/default/dialogs/addon_manager.cfg:713
 #: src/gui/dialogs/addon/manager.cpp:1131
 msgid "addon_dependencies^None"
-msgstr "addon_dependencies^Cap"
+msgstr "Cap"
 
 #. [label]
 #. [label]: id=translations_label
@@ -3061,14 +2959,12 @@ msgstr "Traduccions:"
 #: data/gui/themes/default/dialogs/addon_manager.cfg:748
 #: src/gui/dialogs/addon/manager.cpp:1145
 msgid "translations^None"
-msgstr "translations^Cap"
+msgstr "Cap"
 
 #. [text_box]: id=filter
 #: data/gui/themes/default/dialogs/addon_manager.cfg:770
-#, fuzzy
-#| msgid "Filters on addon description, version, type or author."
 msgid "Filters on addon description, version, type or author"
-msgstr "Filtra per descripció, versió, tipus o autor de complement."
+msgstr "Filtra per descripció, versió, tipus o autor del complement"
 
 #. [label]
 #: data/gui/themes/default/dialogs/addon_manager.cfg:791
@@ -3080,7 +2976,7 @@ msgstr "Estat:"
 #: data/gui/themes/default/dialogs/addon_manager.cfg:844
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:209
 msgid "Tags:"
-msgstr ""
+msgstr "Etiquetes:"
 
 #. [label]
 #: data/gui/themes/default/dialogs/addon_manager.cfg:895
@@ -3098,8 +2994,6 @@ msgstr "Gestor de complements"
 #: data/gui/themes/default/dialogs/addon_manager.cfg:1099
 #: src/gui/dialogs/addon/manager.cpp:569 src/gui/dialogs/addon/manager.cpp:836
 #: src/gui/dialogs/addon/manager.cpp:937
-#, fuzzy
-#| msgid "Addon Details"
 msgid "Add-on Details"
 msgstr "Detalls del complement"
 
@@ -3117,7 +3011,7 @@ msgstr "Actualitza-ho tot"
 #: data/gui/themes/default/dialogs/addon_server_info.cfg:41
 #: data/gui/themes/default/dialogs/mp_match_history.cfg:375
 msgid "Info"
-msgstr ""
+msgstr "Informació"
 
 #. [button]: id=cancel
 #: data/gui/themes/default/dialogs/addon_manager.cfg:1148
@@ -3138,16 +3032,16 @@ msgstr ""
 #. [button]: id=admin_delete_addon
 #: data/gui/themes/default/dialogs/addon_server_info.cfg:95
 #, fuzzy
-#| msgid "Delete add-on from server"
+#| msgid "Select the add-on version"
 msgid "Delete selected add-on (admin)"
-msgstr "Suprimeix el complement del servidor"
+msgstr "Seleccioneu la versió del complement"
 
 #. [button]: id=admin_hide_addon
 #: data/gui/themes/default/dialogs/addon_server_info.cfg:113
 #, fuzzy
-#| msgid "Delete add-on from server"
+#| msgid "Select the add-on version"
 msgid "Hide selected add-on (admin)"
-msgstr "Suprimeix el complement del servidor"
+msgstr "Seleccioneu la versió del complement"
 
 #. [button]: id=admin_unhide_addon
 #: data/gui/themes/default/dialogs/addon_server_info.cfg:131
@@ -3244,6 +3138,10 @@ msgid ""
 "package manager, there’s probably a separate package to install the complete "
 "game data."
 msgstr ""
+"Wesnoth normalment inclou més de 15 campanyes principals, fins i tot abans "
+"d'instal·lar cap complement des del servidor. Si heu instal·lat el joc "
+"mitjançant un gestor de paquets, probablement hi ha un paquet separat per "
+"instal·lar totes les dades del joc."
 
 #. [toggle_button]: id=sort_name
 #. [toggle_button]: id=sort_0
@@ -3267,10 +3165,8 @@ msgstr "Ordeneu per nom de campanya complet, per ordre alfabètic"
 
 #. [toggle_button]: id=sort_time
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:260
-#, fuzzy
-#| msgid "Time limit:"
 msgid "Timeline"
-msgstr "Límit de temps:"
+msgstr "Línia temporal"
 
 #. [toggle_button]: id=sort_time
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:261
@@ -3285,8 +3181,10 @@ msgstr ""
 
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:274
+#, fuzzy
+#| msgid "Completed"
 msgid "Not Completed"
-msgstr ""
+msgstr "Completat"
 
 #. [option]
 #. campaigns which the player hasn't beaten, rather than campaigns which the author hasn't finished writing
@@ -3296,8 +3194,10 @@ msgstr ""
 
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:280
+#, fuzzy
+#| msgid "Completed"
 msgid "Completed: Bronze"
-msgstr ""
+msgstr "Completat"
 
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:281
@@ -3307,9 +3207,9 @@ msgstr ""
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:285
 #, fuzzy
-#| msgid "Computer Player"
+#| msgid "Completed"
 msgid "Completed: Silver"
-msgstr "Ordinador"
+msgstr "Completat"
 
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:286
@@ -3318,8 +3218,10 @@ msgstr ""
 
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:290
+#, fuzzy
+#| msgid "Completed"
 msgid "Completed: Gold"
-msgstr ""
+msgstr "Completat"
 
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:291
@@ -3328,8 +3230,10 @@ msgstr ""
 
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:295
+#, fuzzy
+#| msgid "Completed"
 msgid "Completed: All"
-msgstr ""
+msgstr "Completat"
 
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:296
@@ -3346,14 +3250,12 @@ msgstr "Modificacions:"
 #. [label]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:372
 msgid "Combat:"
-msgstr ""
+msgstr "Combat:"
 
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:387
-#, fuzzy
-#| msgid "Default"
 msgid "Default RNG"
-msgstr "Per defecte"
+msgstr "RNG per defecte"
 
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:388
@@ -3367,7 +3269,7 @@ msgstr ""
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:393
 msgid "Predictable RNG"
-msgstr ""
+msgstr "RNG previsible"
 
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:394
@@ -3381,8 +3283,10 @@ msgstr ""
 
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:399
+#, fuzzy
+#| msgid "Predictable RNG"
 msgid "Reduced RNG"
-msgstr ""
+msgstr "RNG previsible"
 
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:400
@@ -3396,27 +3300,23 @@ msgstr ""
 
 #. [label]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:417
-#, fuzzy
-#| msgid "Difficulty: "
 msgid "Difficulty:"
-msgstr "Dificultat: "
+msgstr "Dificultat:"
 
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:431
 msgid "Easy"
-msgstr ""
+msgstr "Fàcil"
 
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:434
-#, fuzzy
-#| msgid "Normal Rug"
 msgid "Normal"
-msgstr "Catifa normal"
+msgstr "Normal"
 
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:437
 msgid "Hard"
-msgstr ""
+msgstr "Dur"
 
 #. [label]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:494
@@ -3429,10 +3329,8 @@ msgstr "Juga una campanya"
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:558
 #: data/gui/themes/default/dialogs/campaign_difficulty.cfg:221
 #: src/gui/dialogs/campaign_selection.cpp:77
-#, fuzzy
-#| msgid "Play"
 msgid "game^Play"
-msgstr "Reprodueix"
+msgstr "Juga"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
@@ -3483,7 +3381,7 @@ msgstr "Pàgina següent"
 #: data/gui/themes/default/dialogs/lua_interpreter.cfg:105
 #: data/gui/themes/default/dialogs/wml_error.cfg:124
 msgid "clipboard^Copy"
-msgstr "clipboard^Copia"
+msgstr "Copia"
 
 #. [button]: id=copy
 #: data/gui/themes/default/dialogs/chat_log.cfg:188
@@ -3513,7 +3411,7 @@ msgstr "Selecciona"
 #: data/gui/themes/default/dialogs/game_version.cfg:48
 #: data/gui/themes/default/dialogs/screenshot_notification.cfg:33
 msgid "filesystem^Copy"
-msgstr "filesystem^Copia"
+msgstr "Copia"
 
 #. [button]: id=copy_
 #. [button]: id=copy
@@ -3531,7 +3429,7 @@ msgstr "Copieu aquest camí al porta-retalls"
 #: data/gui/themes/default/dialogs/game_cache_options.cfg:126
 #: data/gui/themes/default/dialogs/game_version.cfg:64
 msgid "filesystem^Browse"
-msgstr "filesystem^Navega"
+msgstr "Navega"
 
 #. [button]: id=browse_
 #. [button]: id=browse
@@ -3553,9 +3451,9 @@ msgstr "Pàgina anterior"
 #. [button]: id=preview_
 #: data/gui/themes/default/dialogs/custom_tod.cfg:108
 #, fuzzy
-#| msgid "Player joins:"
+#| msgid "Player joins"
 msgid "Play sound"
-msgstr "Un jugador s'hi uneix:"
+msgstr "Un jugador s'hi uneix"
 
 #. [label]
 #: data/gui/themes/default/dialogs/custom_tod.cfg:186
@@ -3719,9 +3617,9 @@ msgstr "Només equip"
 #. [label]
 #: data/gui/themes/default/dialogs/editor_choose_addon.cfg:47
 #, fuzzy
-#| msgid "Addon Details"
+#| msgid "Add-on selection"
 msgid "Add-on Selection"
-msgstr "Detalls del complement"
+msgstr "Selecció del complement"
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_choose_addon.cfg:64
@@ -3730,18 +3628,19 @@ msgid ""
 "New Add-on option is chosen, its ID can be changed via the Change Add-on ID "
 "option."
 msgstr ""
+"Trieu un complement per associar-lo a la sessió actual de l'editor. Si es "
+"tria l'opció Complement nou, se'n pot canviar l'ID mitjançant l'opció Canvia "
+"l'ID del complement."
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_choose_addon.cfg:162
-#, fuzzy
-#| msgid "Show ally orb"
 msgid "Show all"
-msgstr "Mostra l'esfera aliada"
+msgstr "Mostra’ls tots"
 
 #. [toggle_button]: id=show_all
 #: data/gui/themes/default/dialogs/editor_choose_addon.cfg:174
 msgid "Whether to show all installed add-ons or only your add-ons"
-msgstr ""
+msgstr "Si mostrar tots els complements instal·lats o només els teus"
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_label.cfg:106
@@ -3776,36 +3675,34 @@ msgstr "Visible amb vel"
 #. [label]: id=title
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:84
 msgid "Add-on Publishing Setup"
-msgstr ""
+msgstr "Configuració de la publicació de complements"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:150
 msgid "The name of the add-on displayed in-game."
-msgstr ""
+msgstr "El nom del complement mostrat durant el joc"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:150
 msgid "Title:"
-msgstr ""
+msgstr "Títol:"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:151
 msgid "The description of the add-on to display in the add-ons manager."
-msgstr ""
+msgstr "La descripció del complement per mostrar al gestor de complements."
 
 #. [label]: id=icon_label
 #. [grid]: id=grid_atk
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:162
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:661
 msgid "Icon:"
-msgstr ""
+msgstr "Icona:"
 
 #. [button]: id=select_icon
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:182
-#, fuzzy
-#| msgid "Select None"
 msgid "Select an icon file"
-msgstr "No seleccionis res"
+msgstr "Tria un fitxer d’icona"
 
 #. [text_box]: id=icon
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:195
@@ -3813,13 +3710,13 @@ msgid ""
 "The path to the icon image to display in the add-ons manager. Must be an "
 "image from mainline."
 msgstr ""
+"El camí cap a la imatge d'icones per mostrar-lo al gestor de complements. Ha "
+"de ser una imatge de la línia principal."
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:206
-#, fuzzy
-#| msgid "Author"
 msgid "Author:"
-msgstr "Autor"
+msgstr "Autor:"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:206
@@ -3827,11 +3724,13 @@ msgid ""
 "The author of this add-on. If forum authentication is used, this is your "
 "forum username."
 msgstr ""
+"L'autor d'aquest complement. Si s'utilitza l'autenticació al fòrum, aquest "
+"és el teu nom d'usuari del fòrum."
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:207
 msgid "The add-on’s current version. This should be of the form X.Y.Z."
-msgstr ""
+msgstr "La versió actual del complement. Hauria de tenir la forma X.Y.Z."
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:208
@@ -3840,11 +3739,14 @@ msgid ""
 "depends on. The add-on ID is the folder name in your operating system’s file "
 "manager, not the add-on’s name."
 msgstr ""
+"Una coma delimita la llista dels IDs de qualsevol altre complement del qual "
+"depengui aquest complement. L'ID del complement és el nom de la carpeta al "
+"gestor de fitxers del teu sistema operatiu, no el nom del complement."
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:211
 msgid "Forum thread:"
-msgstr ""
+msgstr "Fil del fòrum:"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:211
@@ -3852,21 +3754,23 @@ msgid ""
 "The numeric topic ID of a thread on the Wesnoth forums where players can "
 "post feedback."
 msgstr ""
+"L'ID numèric del tema d'un fil als fòrums de Wesnoth on els jugadors poden "
+"publicar comentaris."
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:212
 msgid "Forum URL"
-msgstr ""
+msgstr "URL del fòrum"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:212
 msgid "The full URL of your feedback thread on the forums."
-msgstr ""
+msgstr "L'URL complet del teu fil de comentaris als fòrums."
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:213
 msgid "Forum Authentication:"
-msgstr ""
+msgstr "Autenticació al fòrum:"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:213
@@ -3874,20 +3778,29 @@ msgid ""
 "Whether to use your forum username and password when uploading or to store "
 "your password and email address in the add-on’s _server.pbl."
 msgstr ""
-
-#. [grid]
-#: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:214
-msgid ""
-"Comma delimited list of forum usernames of other people who are allowed to "
-"upload updates for this add-on or delete this add-on."
-msgstr ""
+"Si vols utilitzar el nom d'usuari i la contrasenya del fòrum quan la puges o "
+"desar la teva contrasenya i adreça de correu electrònic a la _server.pbl del "
+"complement."
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:214
 #, fuzzy
-#| msgid "Author"
+#| msgid ""
+#| "Comma delimited list of forum usernames of other people who are allowed "
+#| "to upload updates for this add-on."
+msgid ""
+"Comma delimited list of forum usernames of other people who are allowed to "
+"upload updates for this add-on or delete this add-on."
+msgstr ""
+"La coma delimita la llista de noms d'usuari del fòrum d'altres persones que "
+"poden pujar actualitzacions per a aquest complement."
+
+#. [grid]
+#: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:214
+#, fuzzy
+#| msgid "Secondary Authors:"
 msgid "Primary Authors:"
-msgstr "Autor"
+msgstr "Autors secundaris:"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:215
@@ -3895,22 +3808,26 @@ msgid ""
 "Comma delimited list of forum usernames of other people who are allowed to "
 "upload updates for this add-on."
 msgstr ""
+"La coma delimita la llista de noms d'usuari del fòrum d'altres persones que "
+"poden pujar actualitzacions per a aquest complement."
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:215
 msgid "Secondary Authors:"
-msgstr ""
+msgstr "Autors secundaris:"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:216
 msgid ""
 "An email address you can be contacted at in case of issues with your add-on."
 msgstr ""
+"Una adreça de correu electrònic a la qual et puguis contactar en cas de "
+"problemes amb el teu complement."
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:216
 msgid "Email:"
-msgstr ""
+msgstr "Email:"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:217
@@ -3918,27 +3835,25 @@ msgid ""
 "The add-on’s current password. Using forum authentication is recommended "
 "instead since this password is not stored securely."
 msgstr ""
+"La contrasenya actual del complement. Es recomana utilitzar l'autenticació "
+"en fòrum, ja que aquesta contrasenya no s'emmagatzema de manera segura."
 
 #. [label]: id=translations_title
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:275
 msgid "Title"
-msgstr ""
+msgstr "Títol"
 
 #. [label]: id=translations_description
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:292
-#, fuzzy
-#| msgid "Description:"
 msgid "Description"
-msgstr "Descripció:"
+msgstr "Descripció"
 
 #. [button]: id=translations_add
 #. [button]: id=server_add
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:407
 #: data/gui/themes/default/dialogs/mp_connect.cfg:270
-#, fuzzy
-#| msgid "Address"
 msgid "Add"
-msgstr "Adreça"
+msgstr "Afegeix"
 
 #. [button]: id=translations_delete
 #. [button]: id=delete_file
@@ -3954,7 +3869,7 @@ msgstr "Suprimeix"
 #. [button]: id=validate
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:452
 msgid "Validate"
-msgstr ""
+msgstr "Validar"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
@@ -3968,24 +3883,18 @@ msgstr "Desa"
 
 #. [label]: id=title
 #: data/gui/themes/default/dialogs/editor_edit_pbl_translation.cfg:69
-#, fuzzy
-#| msgid "Translations:"
 msgid "Translation"
-msgstr "Traduccions:"
+msgstr "Traducció"
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_pbl_translation.cfg:84
-#, fuzzy
-#| msgid "Password Required"
 msgid "* Required"
-msgstr "Es requereix una contrasenya"
+msgstr "(obligatori)"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl_translation.cfg:97
-#, fuzzy
-#| msgid "Language"
 msgid "* Language:"
-msgstr "Idioma"
+msgstr "* Idioma:"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl_translation.cfg:97
@@ -3993,21 +3902,23 @@ msgid ""
 "The POSIX locale name of the translation, such as sv (Swedish) or zh_CN "
 "(Simplified Chinese)."
 msgstr ""
+"El nom local POSIX de la traducció, com ara sv (suec) o zh_CN (xinès "
+"simplificat)."
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl_translation.cfg:98
 msgid "* Title:"
-msgstr ""
+msgstr "* Títol:"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl_translation.cfg:98
 msgid "The translation of the add-on’s title."
-msgstr ""
+msgstr "La traducció del títol del complement."
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl_translation.cfg:99
 msgid "The translation of the add-on’s description."
-msgstr ""
+msgstr "La traducció de la descripció del complement."
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
@@ -4065,10 +3976,8 @@ msgstr "Nom de l'equip:"
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_side.cfg:164
-#, fuzzy
-#| msgid "Recruits:"
 msgid "Recruit list:"
-msgstr "Recluta:"
+msgstr "Llista de reclutes:"
 
 #. [toggle_button]: id=no_leader
 #: data/gui/themes/default/dialogs/editor_edit_side.cfg:218
@@ -4119,17 +4028,17 @@ msgstr "Controlador:"
 #: data/gui/themes/default/dialogs/editor_edit_side.cfg:399
 #: src/gui/dialogs/game_stats.cpp:63
 msgid "controller^Human"
-msgstr "controller^Humà"
+msgstr "Humà"
 
 #. [row]
 #: data/gui/themes/default/dialogs/editor_edit_side.cfg:401
 msgid "controller^AI only"
-msgstr "controller^Només IA"
+msgstr "Només IA"
 
 #. [row]
 #: data/gui/themes/default/dialogs/editor_edit_side.cfg:403
 msgid "controller^None"
-msgstr "controller^Cap"
+msgstr "Cap"
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_side.cfg:422
@@ -4139,17 +4048,17 @@ msgstr "Comparteix la visió:"
 #. [row]
 #: data/gui/themes/default/dialogs/editor_edit_side.cfg:432
 msgid "vision^All"
-msgstr "vision^Tot"
+msgstr "Tot"
 
 #. [row]
 #: data/gui/themes/default/dialogs/editor_edit_side.cfg:434
 msgid "vision^Shroud"
-msgstr "vision^Vel"
+msgstr "Vel"
 
 #. [row]
 #: data/gui/themes/default/dialogs/editor_edit_side.cfg:436
 msgid "vision^None"
-msgstr "vision^Cap"
+msgstr "Cap"
 
 #. [button]: id=load_unit_type
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:174
@@ -4183,7 +4092,7 @@ msgstr "Gènere:"
 #. [row]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:254
 #, fuzzy
-#| msgid "Random"
+#| msgid "gender^Random"
 msgid "gender^Male"
 msgstr "Aleatori"
 
@@ -4286,8 +4195,10 @@ msgstr "Dany"
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:758
+#, fuzzy
+#| msgid "Hits"
 msgid "Hits:"
-msgstr ""
+msgstr "Impactes"
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:786
@@ -4311,8 +4222,9 @@ msgstr "Habilitats"
 #. [label]: id=movetype_label
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:865
 #, fuzzy
+#| msgid "Content Type:"
 msgid "Movetype:"
-msgstr "Connecta"
+msgstr "Tipus de contingut:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=movement_costs_label
@@ -4589,7 +4501,7 @@ msgstr "Camí:"
 #. [button]: id=clean
 #: data/gui/themes/default/dialogs/game_cache_options.cfg:194
 msgid "cache^Clean"
-msgstr "cache^Neteja"
+msgstr "Neteja"
 
 #. [button]: id=clean
 #: data/gui/themes/default/dialogs/game_cache_options.cfg:195
@@ -4599,7 +4511,7 @@ msgstr "Netegeu els fitxers de memòria cau obsolets i no utilitzats"
 #. [button]: id=purge
 #: data/gui/themes/default/dialogs/game_cache_options.cfg:207
 msgid "cache^Purge"
-msgstr "cache^Purga"
+msgstr "Purga"
 
 #. [button]: id=purge
 #: data/gui/themes/default/dialogs/game_cache_options.cfg:208
@@ -4645,7 +4557,7 @@ msgstr "Obre la carpeta de les partides desades"
 #. [menu_button]: id=dirList
 #: data/gui/themes/default/dialogs/game_load.cfg:361
 msgid "Show saves from a different version of Wesnoth"
-msgstr ""
+msgstr "Mostra partides desades d'una versió diferent de Wesnoth"
 
 #. [toggle_button]: id=change_difficulty
 #: data/gui/themes/default/dialogs/game_load.cfg:537
@@ -4885,10 +4797,8 @@ msgstr ""
 #. [button]: id=run_migrator
 #. button to open the version migration dialog manually to re-migrate add-ons and the preferences file
 #: data/gui/themes/default/dialogs/game_version.cfg:355
-#, fuzzy
-#| msgid "Crater"
 msgid "Migrate"
-msgstr "Cràter"
+msgstr "Migrar"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/game_version.cfg:392
@@ -4918,46 +4828,41 @@ msgstr "Memòria cau:"
 #. [grid]
 #: data/gui/themes/default/dialogs/game_version.cfg:402
 msgid "Logs:"
-msgstr ""
+msgstr "Registres:"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/game_version.cfg:404
-#, fuzzy
-#| msgid "Screenshot"
 msgid "Screenshots:"
-msgstr "Captura de pantalla"
+msgstr "Captures de pantalla"
 
 #. [button]: id=open_stderr
 #: data/gui/themes/default/dialogs/game_version.cfg:438
-#, fuzzy
-#| msgid "Open Log File"
 msgid "Log File"
 msgstr "Obre el fitxer de de registre"
 
 #. [button]: id=open_stderr
 #: data/gui/themes/default/dialogs/game_version.cfg:439
-#, fuzzy
-#| msgid "Opens the log file, which may contain useful debug information"
 msgid ""
 "Opens the log file pertaining to the current session, which may contain "
 "useful debug information"
 msgstr ""
-"Obre el fitxer de registre, que pot contenir informació de depuració útil"
+"Obre el fitxer de registre de la sessió actual, que pot contenir informació "
+"de depuració útil"
 
 #. [label]
 #: data/gui/themes/default/dialogs/game_version.cfg:469
 msgid "library^Name"
-msgstr "library^Nom"
+msgstr "Nom"
 
 #. [label]
 #: data/gui/themes/default/dialogs/game_version.cfg:480
 msgid "library^Build version"
-msgstr "library^Versió"
+msgstr "Versió"
 
 #. [label]
 #: data/gui/themes/default/dialogs/game_version.cfg:492
 msgid "library^Runtime version"
-msgstr "library^Versió d'execució"
+msgstr "Versió d'execució"
 
 #. [label]
 #: data/gui/themes/default/dialogs/game_version.cfg:573
@@ -4971,37 +4876,37 @@ msgstr ""
 #. this is on a button that opens the Wesnoth forums webpage
 #: data/gui/themes/default/dialogs/game_version.cfg:653
 msgid "Forums"
-msgstr ""
+msgstr "Fòrums"
 
 #. [button]: id=discord
 #. this is on a button that opens the Wesnoth Discord server webpage
 #: data/gui/themes/default/dialogs/game_version.cfg:672
 msgid "Discord"
-msgstr ""
+msgstr "Discord"
 
 #. [button]: id=irc
 #. this is on a button that opens the Wesnoth IRC webpage. IRC is an acronym for Internet Relay Chat
 #: data/gui/themes/default/dialogs/game_version.cfg:691
 msgid "IRC"
-msgstr ""
+msgstr "IRC"
 
 #. [button]: id=steam
 #. this is on a button that opens the Wesnoth Steam forums webpage
 #: data/gui/themes/default/dialogs/game_version.cfg:710
 msgid "Steam"
-msgstr ""
+msgstr "Steam"
 
 #. [button]: id=reddit
 #. this is on a button that opens the Wesnoth Reddit webpage
 #: data/gui/themes/default/dialogs/game_version.cfg:729
 msgid "Reddit"
-msgstr ""
+msgstr "Reddit"
 
 #. [button]: id=donate
 #. this is on a button that opens the Wesnoth SPI webpage for sending donations
 #: data/gui/themes/default/dialogs/game_version.cfg:748
 msgid "Donate"
-msgstr ""
+msgstr "Donar"
 
 #. [label]: id=description
 #: data/gui/themes/default/dialogs/game_version.cfg:844
@@ -5049,7 +4954,7 @@ msgstr ""
 #. [label]
 #: data/gui/themes/default/dialogs/gamestate_inspector.cfg:16
 msgid "inspector tree item^•"
-msgstr ""
+msgstr "•"
 
 #. [label]
 #: data/gui/themes/default/dialogs/gamestate_inspector.cfg:94
@@ -5148,6 +5053,9 @@ msgid ""
 "including translation. Translations may drift behind or even become "
 "abandoned."
 msgstr ""
+"<i>La Batalla per Wesnoth</i> depèn de voluntaris per al seu "
+"desenvolupament, inclosa la traducció. Les traduccions poden anar amb retard "
+"o fins i tot quedar abandonades."
 
 #. [label]
 #. Beneath the label widget displaying this text there is a widget displaying
@@ -5158,6 +5066,10 @@ msgid ""
 "interface and in-game help only. More complete stats, including details for "
 "each campaign, are available at the following page:"
 msgstr ""
+"<b>Nota:</b> Els percentatges de traducció que es mostren s'apliquen només a "
+"la interfície principal del joc i a l'ajuda del joc. Les estadístiques més "
+"completes, que inclouen detalls de cada campanya, estan disponibles a la "
+"pàgina següent:"
 
 #. [label]
 #. Beneath the label widget displaying this text there is a widget displaying
@@ -5167,11 +5079,13 @@ msgid ""
 "If you are interested in translating the game yourself, please follow the "
 "link below for more information:"
 msgstr ""
+"Si estàs interessat a traduir el joc tu mateix, segueix l'enllaç següent per "
+"a més informació:"
 
 #. [toggle_button]: id=show_all
 #: data/gui/themes/default/dialogs/language_selection.cfg:276
 msgid "Show in-progress or abandoned translations"
-msgstr ""
+msgstr "Mostrar traduccions en curs o abandonades"
 
 #. [label]: id=status
 #: data/gui/themes/default/dialogs/loadscreen.cfg:183
@@ -5180,17 +5094,15 @@ msgstr "S'està carregant..."
 
 #. [widget]: id=tab_label
 #: data/gui/themes/default/dialogs/lobby_main.cfg:75
-#, fuzzy
-#| msgid "General"
 msgid "General Lobby"
-msgstr "General"
+msgstr "Sala comuna"
 
 #. [widget]: id=tab_label
 #. Games which were created by a bot, there's discussion about the meaning and
 #. possibly better names in https://github.com/wesnoth/wesnoth/issues/8148
 #: data/gui/themes/default/dialogs/lobby_main.cfg:88
 msgid "Matchmaking"
-msgstr ""
+msgstr "Emparellament"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [widget]: id=tab_label
@@ -5227,7 +5139,7 @@ msgstr "Places lliures"
 #. [toggle_button]: id=filter_vacant_slots
 #: data/gui/themes/default/dialogs/lobby_main.cfg:478
 msgid "Only show games with vacant slots"
-msgstr ""
+msgstr "Només mostra jocs amb ranures buides"
 
 #. [toggle_button]: id=filter_with_friends
 #. [widget]: id=tab_label
@@ -5239,18 +5151,17 @@ msgstr "Amics"
 #. [toggle_button]: id=filter_with_friends
 #: data/gui/themes/default/dialogs/lobby_main.cfg:491
 msgid "Only show games with friends"
-msgstr ""
+msgstr "Mostra només partides amb amics"
 
 #. [toggle_button]: id=filter_with_ignored
 #: data/gui/themes/default/dialogs/lobby_main.cfg:503
-#, fuzzy
 msgid "Blocked players"
-msgstr "Jugadors:"
+msgstr "Jugadors blocats"
 
 #. [toggle_button]: id=filter_with_ignored
 #: data/gui/themes/default/dialogs/lobby_main.cfg:504
 msgid "Show games that include players you have blocked"
-msgstr ""
+msgstr "Mostra partides que inclouen jugadors que has blocat"
 
 #. [toggle_button]: id=filter_invert
 #: data/gui/themes/default/dialogs/lobby_main.cfg:516
@@ -5288,10 +5199,8 @@ msgstr "Observa"
 #. [widget]: id=tab_label
 #: data/gui/themes/default/dialogs/lobby_main.cfg:588
 #: data/gui/themes/default/dialogs/server_info.cfg:168
-#, fuzzy
-#| msgid "Advancements"
 msgid "Announcements"
-msgstr "Pujades de nivell"
+msgstr "Anuncis"
 
 #. [button]: id=view_profile
 #. [button]: id=type_profile
@@ -5308,7 +5217,7 @@ msgstr "Perfil"
 #: data/gui/themes/default/dialogs/lobby_main.cfg:662
 #: data/gui/themes/default/dialogs/mp_match_history.cfg:299
 msgid "Match History"
-msgstr ""
+msgstr "Història de les partides"
 
 #. [button]: id=quit
 #: data/gui/themes/default/dialogs/lobby_main.cfg:679
@@ -5448,35 +5357,33 @@ msgstr "Opcions de registre"
 
 #. [label]
 #: data/gui/themes/default/dialogs/logging.cfg:192
-#, fuzzy
-#| msgid "Log Cabin"
 msgid "Log Domain"
-msgstr "Cabanya de fusta"
+msgstr "Domini de registre"
 
 #. [row]
 #: data/gui/themes/default/dialogs/logging.cfg:196
 msgid "log_level^Debug"
-msgstr ""
+msgstr "Depuració"
 
 #. [row]
 #: data/gui/themes/default/dialogs/logging.cfg:197
 msgid "log_level^Info"
-msgstr ""
+msgstr "Informació"
 
 #. [row]
 #: data/gui/themes/default/dialogs/logging.cfg:198
 msgid "log_level^Warning"
-msgstr ""
+msgstr "Avís"
 
 #. [row]
 #: data/gui/themes/default/dialogs/logging.cfg:199
 msgid "log_level^Error"
-msgstr ""
+msgstr "Error"
 
 #. [row]
 #: data/gui/themes/default/dialogs/logging.cfg:200
 msgid "log_level^None"
-msgstr ""
+msgstr "Cap"
 
 #. [button]: id=clear
 #: data/gui/themes/default/dialogs/lua_interpreter.cfg:117
@@ -5491,7 +5398,7 @@ msgstr "Neteja l'àrea de registre"
 #. [label]
 #: data/gui/themes/default/dialogs/migrate_version_selection.cfg:40
 msgid "Data Migration"
-msgstr ""
+msgstr "Migració de dades"
 
 #. [label]
 #: data/gui/themes/default/dialogs/migrate_version_selection.cfg:53
@@ -5499,6 +5406,8 @@ msgid ""
 "Choose which version of Wesnoth to import your data from.\n"
 "Some settings will not take effect until Wesnoth is restarted."
 msgstr ""
+"Tria de quina versió de Wesnoth vols importar les teves dades.\n"
+"Algunes configuracions no entraran en vigor fins que Wesnoth es reiniciï."
 
 #. [button]: id=cancel
 #: data/gui/themes/default/dialogs/migrate_version_selection.cfg:127
@@ -5542,10 +5451,8 @@ msgstr "Al vestíbul"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/mp_alerts_options.cfg:184
-#, fuzzy
-#| msgid "Player joins:"
 msgid "Player joins"
-msgstr "Un jugador s'hi uneix:"
+msgstr "Un jugador s'hi uneix"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/mp_alerts_options.cfg:184
@@ -5554,10 +5461,8 @@ msgstr "Quan un jugador s'uneix al vestíbul o a la partida"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/mp_alerts_options.cfg:185
-#, fuzzy
-#| msgid "Player leaves:"
 msgid "Player leaves"
-msgstr "Un jugador marxa:"
+msgstr "Un jugador marxa"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/mp_alerts_options.cfg:185
@@ -5573,17 +5478,13 @@ msgstr "Quan es rep un xiuxiueig"
 #. [grid]
 #: data/gui/themes/default/dialogs/mp_alerts_options.cfg:186
 #: src/gui/dialogs/multiplayer/mp_report.cpp:47
-#, fuzzy
-#| msgid "Whisper:"
 msgid "Whisper"
-msgstr "Xiuxiueig:"
+msgstr "Xiuxiueig"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/mp_alerts_options.cfg:187
-#, fuzzy
-#| msgid "Friend message:"
 msgid "Friend message"
-msgstr "Missatge d'amic:"
+msgstr "Missatge d'amic"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/mp_alerts_options.cfg:187
@@ -5592,10 +5493,8 @@ msgstr "Quan es rep un missatge d'un amic"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/mp_alerts_options.cfg:188
-#, fuzzy
-#| msgid "Public message:"
 msgid "Public message"
-msgstr "Missatge públic:"
+msgstr "Missatge públic"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/mp_alerts_options.cfg:188
@@ -5604,10 +5503,8 @@ msgstr "Quan es rep un missatge públic"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/mp_alerts_options.cfg:189
-#, fuzzy
-#| msgid "Server message:"
 msgid "Server message"
-msgstr "Missatge del servidor:"
+msgstr "Missatge del servidor"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/mp_alerts_options.cfg:189
@@ -5616,10 +5513,8 @@ msgstr "Quan es rep un missatge del servidor"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/mp_alerts_options.cfg:190
-#, fuzzy
-#| msgid "Ready to start:"
 msgid "Ready to start"
-msgstr "A punt per a començar:"
+msgstr "A punt per a començar"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/mp_alerts_options.cfg:190
@@ -5628,10 +5523,8 @@ msgstr "Quan la partida que allotgeu està a punt per a començar"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/mp_alerts_options.cfg:191
-#, fuzzy
-#| msgid "Game has begun:"
 msgid "Game has begun"
-msgstr "La partida ha començat:"
+msgstr "La partida ha començat"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/mp_alerts_options.cfg:191
@@ -5640,10 +5533,8 @@ msgstr "Quan l'amfitrió (no vós) ha iniciat la partida"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/mp_alerts_options.cfg:192
-#, fuzzy
-#| msgid "Turn changed:"
 msgid "Turn changed"
-msgstr "El torn ha canviat:"
+msgstr "El torn ha canviat"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/mp_alerts_options.cfg:192
@@ -5652,10 +5543,8 @@ msgstr "Quan ha començat un torn nou"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/mp_alerts_options.cfg:193
-#, fuzzy
-#| msgid "Game created:"
 msgid "Game created"
-msgstr "S'ha creat una partida:"
+msgstr "S'ha creat una partida"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/mp_alerts_options.cfg:193
@@ -5679,17 +5568,13 @@ msgstr "Canvia el control"
 
 #. [label]
 #: data/gui/themes/default/dialogs/mp_connect.cfg:71
-#, fuzzy
-#| msgid "Log on to the official Wesnoth multiplayer server"
 msgid "Choose or enter the address of a multiplayer server."
-msgstr "Entra al servidor oficial de Wesnoth per partides multijugador"
+msgstr "Tria o introdueix l'adreça d'un servidor multijugador."
 
 #. [label]
 #: data/gui/themes/default/dialogs/mp_connect.cfg:101
-#, fuzzy
-#| msgid "Address"
 msgid "Address:"
-msgstr "Adreça"
+msgstr "Adreça:"
 
 #. [label]: id=address
 #: data/gui/themes/default/dialogs/mp_connect.cfg:176
@@ -5708,15 +5593,13 @@ msgstr "Coincidències aleatòries de faccions:"
 
 #. [label]
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:145
-#, fuzzy
-#| msgid "Allow for mirror matchups when random factions are chosen."
 msgid "Allow for mirror matchups when random factions are chosen"
-msgstr "Permet coincidències de faccions rivals aleatòries."
+msgstr "Permet enfrontaments mirall quan es triïn faccions aleatòries"
 
 #. [option]
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:166
 msgid "Independent"
-msgstr ""
+msgstr "Independent"
 
 #. [option]
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:167
@@ -5726,7 +5609,7 @@ msgstr "Independent: les faccions aleatòries s'assignen independentment"
 #. [option]
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:171
 msgid "No Mirror"
-msgstr ""
+msgstr "Sense mirall"
 
 #. [option]
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:172
@@ -5736,7 +5619,7 @@ msgstr "Sense mirall: cap jugador no tindrà la mateixa facció que un altre"
 #. [option]
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:176
 msgid "No Ally Mirror"
-msgstr ""
+msgstr "Sense mirall aliat"
 
 #. [option]
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:177
@@ -5940,10 +5823,6 @@ msgstr "Nom de la partida:"
 
 #. [text_box]: id=game_password
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:1035
-#, fuzzy
-#| msgid ""
-#| "Set the password that people wanting to join your game as players must "
-#| "enter."
 msgid ""
 "Set the password that people wanting to join your game as players must enter"
 msgstr ""
@@ -5970,8 +5849,6 @@ msgstr "Partides desades"
 
 #. [row]
 #: data/gui/themes/default/dialogs/mp_faction_select.cfg:210
-#, fuzzy
-#| msgid "Random"
 msgid "gender^Random"
 msgstr "Aleatori"
 
@@ -5996,10 +5873,8 @@ msgstr "Reclutes"
 
 #. [label]
 #: data/gui/themes/default/dialogs/mp_faction_select.cfg:338
-#, fuzzy
-#| msgid "Choose Your Faction"
 msgid "Choose Your Leader"
-msgstr "Trieu la vostra facció"
+msgstr "Tria el teu líder"
 
 #. [label]
 #: data/gui/themes/default/dialogs/mp_host_game_prompt.cfg:40
@@ -6027,9 +5902,9 @@ msgstr "Seleccioneu la facció i el líder d'aquest bàndol"
 #: data/gui/themes/default/dialogs/mp_join_game.cfg:155
 #: data/gui/themes/default/dialogs/mp_staging.cfg:157
 #, fuzzy
-#| msgid "Action"
+#| msgid "Faction"
 msgid "Faction:"
-msgstr "Acció"
+msgstr "Facció"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=status_label
@@ -6073,17 +5948,13 @@ msgstr "Nom d'usuari:"
 
 #. [button]: id=replay_download
 #: data/gui/themes/default/dialogs/mp_match_history.cfg:159
-#, fuzzy
-#| msgid "Downloads"
 msgid "Download"
-msgstr "Descàrregues"
+msgstr "Descàrrega"
 
 #. [label]: id=players
 #. [label]: id=modifications
 #: data/gui/themes/default/dialogs/mp_match_history.cfg:185
 #: data/gui/themes/default/dialogs/mp_match_history.cfg:223
-#, fuzzy
-#| msgid "None"
 msgid "None"
 msgstr "Cap"
 
@@ -6096,10 +5967,8 @@ msgstr "Modificacions"
 
 #. [label]
 #: data/gui/themes/default/dialogs/mp_match_history.cfg:450
-#, fuzzy
-#| msgid "Players:"
 msgid "Player:"
-msgstr "Jugadors:"
+msgstr "Jugador:"
 
 #. [text_box]: id=search_player
 #. [text_box]: id=search_game_name
@@ -6108,20 +5977,17 @@ msgstr "Jugadors:"
 #: data/gui/themes/default/dialogs/mp_match_history.cfg:506
 #: data/gui/themes/default/dialogs/mp_match_history.cfg:530
 msgid "Asterisks match all characters"
-msgstr ""
+msgstr "Els asteriscs coincideixen amb tots els caràcters"
 
 #. [label]
 #: data/gui/themes/default/dialogs/mp_match_history.cfg:474
-#, fuzzy
 msgid "Content Type:"
-msgstr "Connecta"
+msgstr "Tipus de contingut:"
 
 #. [label]
 #: data/gui/themes/default/dialogs/mp_match_history.cfg:494
-#, fuzzy
-#| msgid "Team name:"
 msgid "Game name:"
-msgstr "Nom de l'equip:"
+msgstr "Nom del joc:"
 
 #. [label]
 #: data/gui/themes/default/dialogs/mp_method_selection.cfg:137
@@ -6193,43 +6059,37 @@ msgstr "Partida local"
 #. [label]
 #: data/gui/themes/default/dialogs/mp_report.cfg:50
 msgid "* Player being reported:"
-msgstr ""
+msgstr "* Jugador reportat:"
 
 #. [label]
 #: data/gui/themes/default/dialogs/mp_report.cfg:82
 msgid "* Reason for report:"
-msgstr ""
+msgstr "* Raó de l'informe:"
 
 #. [label]
 #: data/gui/themes/default/dialogs/mp_report.cfg:114
 msgid "Location of occurrence:"
-msgstr ""
+msgstr "Lloc d'ocurrència:"
 
 #. [label]
 #: data/gui/themes/default/dialogs/mp_report.cfg:146
-#, fuzzy
-#| msgid "Map Information"
 msgid "Additional information:"
-msgstr "Informació del mapa"
+msgstr "Informació addicional:"
 
 #. [label]
 #: data/gui/themes/default/dialogs/mp_report.cfg:191
 msgid "* required fields"
-msgstr ""
+msgstr "* camps requerits"
 
 #. [menu_button]: id=controller
 #: data/gui/themes/default/dialogs/mp_staging.cfg:253
-#, fuzzy
-#| msgid "Change the side's controller"
 msgid "Change the side’s controller"
 msgstr "Canvia el controlador del bàndol"
 
 #. [menu_button]: id=ai_controller
 #: data/gui/themes/default/dialogs/mp_staging.cfg:269
-#, fuzzy
-#| msgid "Change the AI side's behaviour"
 msgid "Change the AI side’s behaviour"
-msgstr "Canvia el comportament del bàndol de l'IA"
+msgstr "Canviar el comportament del bàndol de la IA"
 
 #. [menu_button]: id=side_team
 #: data/gui/themes/default/dialogs/mp_staging.cfg:296
@@ -6249,7 +6109,7 @@ msgstr "Estic a punt"
 #. [text]
 #: data/gui/themes/default/dialogs/outro.cfg:49
 msgid "Press ESC to skip"
-msgstr ""
+msgstr "Prem ESC per saltar"
 
 #. [widget]: id=label
 #: data/gui/themes/default/dialogs/preferences.cfg:311
@@ -6424,10 +6284,8 @@ msgstr "Filtre:"
 
 #. [text_box]: id=filter
 #: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:50
-#, fuzzy
-#| msgid "Filters on hotkey description."
 msgid "Filters on hotkey description"
-msgstr "Filtra per la descripció de la drecera de teclat."
+msgstr "Filtra per la descripció de la drecera de teclat"
 
 #. [toggle_button]: id=sort_0
 #: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:98
@@ -6445,7 +6303,7 @@ msgstr "Drecera"
 #: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:126
 #: src/gui/dialogs/preferences_dialog.cpp:890
 msgid "game_hotkeys^G"
-msgstr "game_hotkeys^G"
+msgstr "G"
 
 #. [toggle_button]: id=sort_2
 #: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:127
@@ -6458,7 +6316,7 @@ msgstr "Disponible durant una partida"
 #: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:141
 #: src/gui/dialogs/preferences_dialog.cpp:891
 msgid "editor_hotkeys^E"
-msgstr "editor_hotkeys^E"
+msgstr "E"
 
 #. [toggle_button]: id=sort_3
 #: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:142
@@ -6470,10 +6328,8 @@ msgstr "Disponible a l'editor"
 #. Translate M as the initial letter for Main Menu
 #: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:156
 #: src/gui/dialogs/preferences_dialog.cpp:892
-#, fuzzy
-#| msgid "game_hotkeys^G"
 msgid "mainmenu_hotkeys^M"
-msgstr "game_hotkeys^G"
+msgstr "M"
 
 #. [toggle_button]: id=sort_4
 #: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:157
@@ -6493,19 +6349,17 @@ msgstr "Esborra la tecla"
 #. [label]
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:15
 msgid "Window size:"
-msgstr ""
+msgstr "Mida de la finestra:"
 
 #. [label]: id=help_text
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:39
 msgid "Pixel scale multiplier:"
-msgstr ""
+msgstr "Multiplicador d'escala de píxels:"
 
 #. [menu_button]: id=resolution_set
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:73
-#, fuzzy
-#| msgid "Change the buffer size"
 msgid "Change the game window size"
-msgstr "Canvia la mida del buffer"
+msgstr "Canvia la mida de la finestra de joc"
 
 #. [slider]: id=pixel_scale_slider
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:87
@@ -6513,6 +6367,8 @@ msgid ""
 "Set the global pixel scale multiplier. A pixel scale multiplier of 2 will "
 "make everything look twice as large."
 msgstr ""
+"Configura el multiplicador global d'escala de píxels. Un multiplicador a "
+"escala de píxels de 2 farà que tot sembli el doble de gran."
 
 #. [toggle_button]: id=fullscreen
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:102
@@ -6527,17 +6383,19 @@ msgstr "Commuta entre pantalla completa i mode finestra"
 #. [toggle_button]: id=auto_pixel_scale
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:114
 msgid "pixel_scale_multiplier^Automatic scale"
-msgstr ""
+msgstr "Escala automàtica"
 
 #. [toggle_button]: id=auto_pixel_scale
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:115
 msgid "Choose pixel scale multiplier automatically based on current resolution"
 msgstr ""
+"Tria automàticament el multiplicador d'escala de píxels segons la resolució "
+"actual"
 
 #. [toggle_button]: id=vsync
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:129
 msgid "VSync"
-msgstr ""
+msgstr "VSync"
 
 #. [toggle_button]: id=vsync
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:130
@@ -6545,13 +6403,15 @@ msgid ""
 "Reduces tearing by synchronizing rendering with the screen refresh rate "
 "(requires restart to take effect)"
 msgstr ""
+"Redueix el tearing sincronitzant el renderitzat amb la taxa de refresc de la "
+"pantalla (cal reiniciar per fer efecte)"
 
 #. [label]
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:152
 #, fuzzy
-#| msgid "Change the in-game theme"
+#| msgid "Interface theme:"
 msgid "In-game theme:"
-msgstr "Canvia el tema de la partida"
+msgstr "Tema de la interfície:"
 
 #. [menu_button]: id=choose_theme
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:165
@@ -6559,18 +6419,28 @@ msgid ""
 "Change the in-game interface theme. Additional themes may be provided by "
 "community-made add-ons"
 msgstr ""
+"Canvia el tema de la interfície dins del joc. Els temes addicionals poden "
+"ser proporcionats per complements creats per la comunitat"
 
 #. [label]
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:176
+#, fuzzy
+#| msgid "Interface theme:"
 msgid "UI theme:"
-msgstr ""
+msgstr "Tema de la interfície:"
 
 #. [menu_button]: id=choose_gui2_theme
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:192
+#, fuzzy
+#| msgid ""
+#| "Change the in-game interface theme. Additional themes may be provided by "
+#| "community-made add-ons"
 msgid ""
 "Change the UI (GUI2) theme. Additional themes may be provided by community-"
 "made add-ons"
 msgstr ""
+"Canvia el tema de la interfície dins del joc. Els temes addicionals poden "
+"ser proporcionats per complements creats per la comunitat"
 
 #. [button]: id=apply
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:201
@@ -6587,19 +6457,19 @@ msgstr "Mostra el consell del dia següent"
 #. [toggle_button]: id=show_floating_labels
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:236
 msgid "Combat damage indicators"
-msgstr ""
+msgstr "Indicadors de dany en combat"
 
 #. [toggle_button]: id=show_floating_labels
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:237
-#, fuzzy
-#| msgid "Show damage and healing amounts above a unit"
 msgid "Show amount of damage inflicted or healed as fading labels above units"
-msgstr "Mostra els danys i els guariments sobre les unitats"
+msgstr ""
+"Mostra la quantitat de dany infligit o curat com a etiquetes translúcides a "
+"sobre de les unitats"
 
 #. [toggle_button]: id=show_ellipses
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:250
 msgid "Team color indicators"
-msgstr ""
+msgstr "Indicadors de color de l'equip"
 
 #. [toggle_button]: id=show_ellipses
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:251
@@ -6611,7 +6481,7 @@ msgstr "Mostra un cercle de diferent color segons el bàndol de la unitat"
 #. [toggle_button]: id=show_grid
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:264
 msgid "Grid overlay"
-msgstr ""
+msgstr "Superposició de quadrícula"
 
 #. [toggle_button]: id=show_grid
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:265
@@ -6640,10 +6510,8 @@ msgstr "Mostra gràfics d'aigua animats (pot ser lent)"
 
 #. [toggle_button]: id=animate_units_standing
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:330
-#, fuzzy
-#| msgid "Show unit standing animations"
 msgid "Unit standing animations"
-msgstr "Mostra les animacions de les unitats dempeus"
+msgstr "Animacions d'unitat dempeus"
 
 #. [toggle_button]: id=animate_units_standing
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:331
@@ -6652,8 +6520,6 @@ msgstr "Anima contínuament les unitats dempeus al camp de batalla"
 
 #. [toggle_button]: id=animate_units_idle
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:349
-#, fuzzy
-#| msgid "Show unit idle animations"
 msgid "Unit idle animations"
 msgstr "Mostra les animacions de les unitats inactives"
 
@@ -6835,29 +6701,21 @@ msgstr "Trobeu i establiu el camí al servidor MJ per a allotjar partides LAN"
 
 #. [button]: id=add_friend
 #: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:264
-#, fuzzy
-#| msgid ""
-#| "Add this username to your friends list (add optional notes, e.g., "
-#| "'player_name notes on friend')"
 msgid ""
 "Add this username to your friends list (add optional notes, e.g., "
 "‘player_name notes on friend’)"
 msgstr ""
-"Afegeix aquest nom d'usuari a la vostra llista d'amics (amb notes opcionals, "
-"per exemple, «nom_d'usuari notes»)"
+"Afegeix aquest nom d'usuari a la teva llista d'amics (afegeix notes "
+"opcionals, per exemple, 'player_name notes sobre amic')"
 
 #. [button]: id=add_ignored
 #: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:277
-#, fuzzy
-#| msgid ""
-#| "Add this username to your ignore list (add optional reason, e.g., "
-#| "'player_name reason ignored')"
 msgid ""
 "Add this username to your ignore list (add optional reason, e.g., "
 "‘player_name reason ignored’)"
 msgstr ""
-"Afegeix aquest nom d'usuari a la vostra llista d'ignorats (amb un motiu "
-"opcional, per exemple, «nom_d'usuari motiu del bloqueig»)"
+"Afegeix aquest nom d'usuari a la teva llista d'ignorats (afegeix una raó "
+"opcional, per exemple, 'player_name raó ignorada')"
 
 #. [button]: id=remove
 #: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:290
@@ -6866,10 +6724,8 @@ msgstr "Suprimeix aquest usuari de la llista"
 
 #. [label]: id=no_friends_notice
 #: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:311
-#, fuzzy
-#| msgid "You have not befriended or ignored any other players."
 msgid "You have not befriended or blocked any other players."
-msgstr "No heu fet amistat ni ignorat cap altre jugador."
+msgstr "No t'has fet amic ni bloquejat cap altre jugador."
 
 #. [label]
 #: data/gui/themes/default/dialogs/reachmap_options.cfg:101
@@ -6901,7 +6757,7 @@ msgstr ""
 #. [button]: id=open
 #: data/gui/themes/default/dialogs/screenshot_notification.cfg:49
 msgid "filesystem^Open"
-msgstr "filesystem^Obre"
+msgstr "Obre"
 
 #. [button]: id=open
 #: data/gui/themes/default/dialogs/screenshot_notification.cfg:50
@@ -6922,14 +6778,12 @@ msgstr "Tria els colors de les esferes/minimapa"
 #. [grid]
 #: data/gui/themes/default/dialogs/select_orb_colors.cfg:144
 msgid "Show unmoved orb"
-msgstr "Mostra l'esfera no moguda"
+msgstr "Mostra l'esfera d’unitat no moguda"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/select_orb_colors.cfg:147
-#, fuzzy
-#| msgid "Show partial moved orb"
 msgid "Show partially moved orb"
-msgstr "Mostra l'esfera moguda parcialment"
+msgstr "Mostra l'esfera d’unitat parcialment moguda"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/select_orb_colors.cfg:148
@@ -6937,11 +6791,13 @@ msgid ""
 "If a unit can move but can’t attack, show a two-color orb with the colors "
 "for partially and fully moved."
 msgstr ""
+"Si una unitat pot moure's però no pot atacar, mostra una esfera de dos "
+"colors amb els colors per a parcialment i totalment mogut."
 
 #. [grid]
 #: data/gui/themes/default/dialogs/select_orb_colors.cfg:148
 msgid "Use a two-color orb for disengaged units"
-msgstr ""
+msgstr "Utilitza una esfera de dos colors per a unitats desenganxades"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/select_orb_colors.cfg:150
@@ -6957,6 +6813,8 @@ msgstr "Mostra l'esfera aliada"
 #: data/gui/themes/default/dialogs/select_orb_colors.cfg:154
 msgid "During ally’s turn, use a two-color orb to show movement"
 msgstr ""
+"Durant el torn de l'aliat, utilitza una esfera de dos colors per mostrar el "
+"moviment"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/select_orb_colors.cfg:154
@@ -6965,6 +6823,9 @@ msgid ""
 "ally orb color, and the other half shows whether the unit is unmoved, "
 "partially moved or fully moved."
 msgstr ""
+"Durant els torns dels teus aliats, les seves unitats tenen un orbe de dos "
+"colors. Una meitat té el color de l’orbe de l’aliat, i l’altra meitat indica "
+"si la unitat no s’ha mogut, s’ha mogut parcialment o s’ha mogut completament."
 
 #. [grid]
 #: data/gui/themes/default/dialogs/select_orb_colors.cfg:156
@@ -6973,10 +6834,8 @@ msgstr "Mostra l'esfera enemiga"
 
 #. [label]: id=asdf
 #: data/gui/themes/default/dialogs/server_info.cfg:79
-#, fuzzy
-#| msgid "Map Information"
 msgid "Server Information"
-msgstr "Informació del mapa"
+msgstr "Informació del servidor"
 
 #. [label]
 #: data/gui/themes/default/dialogs/sp_options_configure.cfg:44
@@ -7017,16 +6876,21 @@ msgid ""
 "The sum (or difference) of the two numbers in parentheses is the actual "
 "number of hitpoints inflicted/taken."
 msgstr ""
+"Diferència entre el resultat real i el resultat esperat, en percentatge.\n"
+"El primer número entre parèntesis és el nombre esperat de punts de vida "
+"infligits o presos.\n"
+"La suma (o diferència) dels dos nombres entre parèntesis és el nombre real "
+"de punts de vida infligits o presos."
 
 #. [column]
 #: data/gui/themes/default/dialogs/statistics_dialog.cfg:561
 msgid "stats dialog^Ratio of actual to expected"
-msgstr ""
+msgstr "Ràtio entre l'actual i l'esperat"
 
 #. [column]
 #: data/gui/themes/default/dialogs/statistics_dialog.cfg:576
 msgid "Hits"
-msgstr ""
+msgstr "Impactes"
 
 #. [column]
 #: data/gui/themes/default/dialogs/statistics_dialog.cfg:579
@@ -7042,6 +6906,19 @@ msgid ""
 "Green values indicate this side fared better than expected.\n"
 "Red values indicate this side fared worse than expected."
 msgstr ""
+"La probabilitat <i>a priori</i> d'infligir/rebre com a màxim tants cops, en "
+"percentatge.\n"
+"\n"
+"Intuïtivament, això mesura com l'atzar afectava aquest costat.\n"
+"Els valors entre 0 i 50 suggereixen que el nombre d'encerts va ser inferior "
+"al que s'esperava.\n"
+"Els valors entre 50 i 100 suggereixen que el nombre d'encerts va ser "
+"superior al que s'esperava.\n"
+"\n"
+"Els valors verds indiquen que aquest bàndol va tenir millor rendiment del "
+"que s'esperava.\n"
+"Els valors vermells indiquen que aquest bàndol va tenir pitjor rendiment del "
+"que s'esperava."
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
@@ -7206,11 +7083,8 @@ msgstr "Trets"
 
 #. [text_box]: id=filter_box
 #: data/gui/themes/default/dialogs/units_dialog.cfg:405
-#, fuzzy
-#| msgid "Search for unit name, unit type name, unit level, or trait."
 msgid "Search for unit name, unit type name, unit level, or trait"
-msgstr ""
-"Cerqueu per nom d'unitat, nom de tipus d'unitat, nivell d'unitat o tret."
+msgstr "Cerca nom de la unitat, nom del tipus d'unitat, nivell d'unitat o tret"
 
 #. [button]: id=dismiss
 #: data/gui/themes/default/dialogs/units_dialog.cfg:550
@@ -7276,57 +7150,55 @@ msgstr "Missatges en espera"
 
 #: src/build_info.cpp:285
 msgid "feature^Lua console completion"
-msgstr "feature^Compleció de la consola Lua"
+msgstr "Compleció de la consola Lua"
 
 #: src/build_info.cpp:292
 msgid "feature^D-Bus notifications back end"
-msgstr "feature^Rerefons de notificacions D-Bus"
+msgstr "Sistema de notificacions D-Bus"
 
 #: src/build_info.cpp:301
 msgid "feature^Win32 notifications back end"
-msgstr "feature^Rerefons de notificacions Win32"
+msgstr "Sistema de notificacions Win32"
 
 #: src/build_info.cpp:307
 msgid "feature^Cocoa notifications back end"
-msgstr "feature^Rerefons de notificacions Cocoa"
+msgstr "Sistema de notificacions Cocoa"
 
 #: src/build_info.cpp:346 src/desktop/version.cpp:129
 msgid "cpu_architecture^<unknown>"
-msgstr ""
+msgstr "<desconegut>"
 
 #: src/desktop/paths.cpp:96
 msgid "filesystem_path_system^Volumes"
-msgstr "filesystem_path_system^Volums"
+msgstr "Volums"
 
 #: src/desktop/paths.cpp:210
 msgid "filesystem_path_game^Game executables"
-msgstr "filesystem_path_game^Executables del joc"
+msgstr "Executables del joc"
 
 #: src/desktop/paths.cpp:214
 msgid "filesystem_path_game^Game data"
-msgstr "filesystem_path_game^Dades del joc"
+msgstr "Dades del joc"
 
 #: src/desktop/paths.cpp:218
 msgid "filesystem_path_game^User data"
-msgstr "filesystem_path_game^Dades d'usuari"
+msgstr "Dades d'usuari"
 
 #: src/desktop/paths.cpp:222
-#, fuzzy
-#| msgid "filesystem_path_game^Game data"
 msgid "filesystem_path_game^Editor maps"
-msgstr "filesystem_path_game^Dades del joc"
+msgstr "Mapes d’editor"
 
 #: src/desktop/paths.cpp:235
 msgid "filesystem_path_system^Home"
-msgstr "filesystem_path_system^Inici"
+msgstr "Inici"
 
 #: src/desktop/paths.cpp:244
 msgid "filesystem_path_system^Root"
-msgstr "filesystem_path_system^Arrel"
+msgstr "Arrel"
 
 #: src/desktop/version.cpp:413
 msgid "operating_system^<unknown>"
-msgstr "operating_system^<desconegut>"
+msgstr "<desconegut>"
 
 #. TRANSLATORS: This is the language code which will be used
 #. to store and fetch localized non-textual resources, such as images,
@@ -7345,42 +7217,42 @@ msgstr "ca"
 #. TRANSLATORS: Formats a two-element conjunctive list.
 #: src/formula/string_utils.cpp:265
 msgid "conjunct pair^$first and $second"
-msgstr "conjunct pair^$first i $second"
+msgstr "$first i $second"
 
 #. TRANSLATORS: Formats the first two elements of a conjunctive list.
 #: src/formula/string_utils.cpp:268
 msgid "conjunct start^$first, $second"
-msgstr "conjunct start^$first, $second"
+msgstr "$first, $second"
 
 #. TRANSLATORS: Formats successive elements of a conjunctive list.
 #: src/formula/string_utils.cpp:272
 msgid "conjunct mid^$prefix, $next"
-msgstr "conjunct mid^$prefix, $next"
+msgstr "$prefix, $next"
 
 #. TRANSLATORS: Formats the final element of a conjunctive list.
 #: src/formula/string_utils.cpp:275
 msgid "conjunct end^$prefix, and $last"
-msgstr "conjunct end^$prefix i $last"
+msgstr "$prefix i $last"
 
 #. TRANSLATORS: Formats a two-element disjunctive list.
 #: src/formula/string_utils.cpp:283
 msgid "disjunct pair^$first or $second"
-msgstr "disjunct pair^$first o $second"
+msgstr "$first o $second"
 
 #. TRANSLATORS: Formats the first two elements of a disjunctive list.
 #: src/formula/string_utils.cpp:286
 msgid "disjunct start^$first, $second"
-msgstr "disjunct start^$first, $second"
+msgstr "$first, $second"
 
 #. TRANSLATORS: Formats successive elements of a disjunctive list.
 #: src/formula/string_utils.cpp:290
 msgid "disjunct mid^$prefix, $next"
-msgstr "disjunct mid^$prefix, $next"
+msgstr "$prefix, $next"
 
 #. TRANSLATORS: Formats the final element of a disjunctive list.
 #: src/formula/string_utils.cpp:293
 msgid "disjunct end^$prefix, or $last"
-msgstr "disjunct end^$prefix or $last"
+msgstr "$prefix or $last"
 
 #: src/gui/core/canvas.cpp:259
 #, fuzzy
@@ -7389,10 +7261,8 @@ msgid "Image doesn’t fit on canvas."
 msgstr "La imatge no s'ajusta al llenç."
 
 #: src/gui/core/widget_definition.cpp:29
-#, fuzzy
-#| msgid "No state or draw section defined."
 msgid "No draw section defined for state."
-msgstr "No s'ha definit cap estat ni secció de dibuix."
+msgstr "No hi ha cap secció de dibuix definida per a l'estat."
 
 #: src/gui/core/widget_definition.cpp:67 src/gui/core/window_builder.cpp:113
 #, fuzzy
@@ -7409,15 +7279,21 @@ msgstr "No s'ha definit la graella."
 
 #: src/gui/core/window_builder.cpp:201
 #, fuzzy
-#| msgid "A row must have a column."
+#| msgid "Grid '$grid' row $row must have at least one column."
 msgid "Grid ‘$grid’ row $row must have at least one column."
-msgstr "Una fila ha de tenir una columna."
+msgstr "La fila $row de la graella '$grid' ha de tenir almenys una columna."
 
 #: src/gui/core/window_builder.cpp:213
+#, fuzzy
+#| msgid ""
+#| "Grid '$grid' row $row has a differing number of columns ($found found, "
+#| "$expected expected)"
 msgid ""
 "Grid ‘$grid’ row $row has a differing number of columns ($found found, "
 "$expected expected)"
 msgstr ""
+"La fila $row de la graella '$grid' té un nombre diferent de columnes ($found "
+"trobades, $expected esperades)"
 
 #: src/gui/dialogs/achievements_dialog.cpp:97
 msgid "$title ($count/$total)"
@@ -7451,142 +7327,142 @@ msgstr "Es requereix una contrasenya"
 
 #: src/gui/dialogs/addon/manager.cpp:145
 msgid "addons_view^All Add-ons"
-msgstr "addons_view^Tots els complements"
+msgstr "Tots els complements"
 
 #: src/gui/dialogs/addon/manager.cpp:146
 msgid "addons_view^Installed"
-msgstr "addons_view^Instal·lats"
+msgstr "Instal·lats"
 
 #: src/gui/dialogs/addon/manager.cpp:147
 msgid "addons_view^Upgradable"
-msgstr "addons_view^Actualitzables"
+msgstr "Actualitzables"
 
 #: src/gui/dialogs/addon/manager.cpp:148
 msgid "addons_view^Publishable"
-msgstr "addons_view^Publicables"
+msgstr "Publicables"
 
 #: src/gui/dialogs/addon/manager.cpp:149
 msgid "addons_view^Not Installed"
-msgstr "addons_view^No instal·lats"
+msgstr "No instal·lats"
 
 #: src/gui/dialogs/addon/manager.cpp:153
 msgid "addons_of_type^Campaigns"
-msgstr "addons_of_type^Campanyes"
+msgstr "Campanyes"
 
 #: src/gui/dialogs/addon/manager.cpp:154
 msgid "addons_of_type^Scenarios"
-msgstr "addons_of_type^Escenaris"
+msgstr "Escenaris"
 
 #: src/gui/dialogs/addon/manager.cpp:155
 msgid "addons_of_type^SP/MP campaigns"
-msgstr "addons_of_type^Campanyes UJ/MJ"
+msgstr "Campanyes UJ/MJ"
 
 #: src/gui/dialogs/addon/manager.cpp:156
 msgid "addons_of_type^MP campaigns"
-msgstr "addons_of_type^Campanyes MJ"
+msgstr "Campanyes MJ"
 
 #: src/gui/dialogs/addon/manager.cpp:157
 msgid "addons_of_type^MP scenarios"
-msgstr "addons_of_type^Escenaris MJ"
+msgstr "Escenaris MJ"
 
 #: src/gui/dialogs/addon/manager.cpp:158
 msgid "addons_of_type^MP map-packs"
-msgstr "addons_of_type^Paquets de mapes MJ"
+msgstr "Paquets de mapes MJ"
 
 #: src/gui/dialogs/addon/manager.cpp:159
 msgid "addons_of_type^MP eras"
-msgstr "addons_of_type^Eres MJ"
+msgstr "Eres MJ"
 
 #: src/gui/dialogs/addon/manager.cpp:160
 msgid "addons_of_type^MP factions"
-msgstr "addons_of_type^Faccions MJ"
+msgstr "Faccions MJ"
 
 #: src/gui/dialogs/addon/manager.cpp:161
 msgid "addons_of_type^Modifications"
-msgstr "addons_of_type^Modificacions"
+msgstr "Modificacions"
 
 #: src/gui/dialogs/addon/manager.cpp:162
 msgid "addons_of_type^Cores"
-msgstr "addons_of_type^Nuclis"
+msgstr "Nuclis"
 
 #: src/gui/dialogs/addon/manager.cpp:163
 #, fuzzy
 #| msgid "addons_of_type^Cores"
 msgid "addons_of_type^Themes"
-msgstr "addons_of_type^Nuclis"
+msgstr "Nuclis"
 
 #: src/gui/dialogs/addon/manager.cpp:164
 msgid "addons_of_type^Resources"
-msgstr "addons_of_type^Recursos"
+msgstr "Recursos"
 
 #: src/gui/dialogs/addon/manager.cpp:166
 msgid "addons_of_type^Other"
-msgstr "addons_of_type^Altres"
+msgstr "Altres"
 
 #: src/gui/dialogs/addon/manager.cpp:167
 msgid "addons_of_type^Unknown"
-msgstr "addons_of_type^Desconegut"
+msgstr "Desconegut"
 
 #: src/gui/dialogs/addon/manager.cpp:171
 msgid "addons_order^Name ($order)"
-msgstr "addons_order^Nom ($order)"
+msgstr "Nom ($order)"
 
 #: src/gui/dialogs/addon/manager.cpp:174
 msgid "addons_order^Author ($order)"
-msgstr "addons_order^Autor ($order)"
+msgstr "Autor ($order)"
 
 #: src/gui/dialogs/addon/manager.cpp:177
 msgid "addons_order^Size ($order)"
-msgstr "addons_order^Mida ($order)"
+msgstr "Mida ($order)"
 
 #: src/gui/dialogs/addon/manager.cpp:180
 msgid "addons_order^Downloads ($order)"
-msgstr "addons_order^Descàrregues ($order)"
+msgstr "Descàrregues ($order)"
 
 #: src/gui/dialogs/addon/manager.cpp:183
 msgid "addons_order^Type ($order)"
-msgstr "addons_order^Tipus ($order)"
+msgstr "Tipus ($order)"
 
 #: src/gui/dialogs/addon/manager.cpp:186
 msgid "addons_order^Last updated ($datelike_order)"
-msgstr "addons_order^Darrera actualització ($datelike_order)"
+msgstr "Darrera actualització ($datelike_order)"
 
 #: src/gui/dialogs/addon/manager.cpp:189
 msgid "addons_order^First uploaded ($datelike_order)"
-msgstr "addons_order^Primera actualització ($datelike_order)"
+msgstr "Primera versió ($datelike_order)"
 
 #: src/gui/dialogs/addon/manager.cpp:207
 msgid "addon_tag^Cooperative"
-msgstr ""
+msgstr "Cooperatiu"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
 #: src/gui/dialogs/addon/manager.cpp:209
 msgid "addon_tag^All human players are on the same team, versus the AI"
-msgstr ""
+msgstr "Tots els jugadors humans estan al mateix equip, contra la IA"
 
 #: src/gui/dialogs/addon/manager.cpp:210
 msgid "addon_tag^Cosmetic"
-msgstr ""
+msgstr "Cosmetic"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
 #: src/gui/dialogs/addon/manager.cpp:212
 msgid "addon_tag^These make the game look different, without changing gameplay"
 msgstr ""
+"Aquests fan que el joc tingui un aspecte diferent, sense canviar la "
+"jugabilitat"
 
 #: src/gui/dialogs/addon/manager.cpp:213
-#, fuzzy
-#| msgid "Difficulty"
 msgid "addon_tag^Difficulty"
 msgstr "Dificultat"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
 #: src/gui/dialogs/addon/manager.cpp:215
 msgid "addon_tag^Can make campaigns easier or harder"
-msgstr ""
+msgstr "Pot fer que les campanyes siguin més fàcils o més difícils"
 
 #: src/gui/dialogs/addon/manager.cpp:216
 msgid "addon_tag^RNG"
-msgstr ""
+msgstr "RNG"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
 #: src/gui/dialogs/addon/manager.cpp:218
@@ -7594,85 +7470,85 @@ msgid ""
 "addon_tag^Modify the randomness in the combat mechanics, or remove it "
 "entirely"
 msgstr ""
+"Modificar l'aleatorietat en la mecànica de combat, o eliminar-la completament"
 
 #: src/gui/dialogs/addon/manager.cpp:219
 msgid "addon_tag^Survival"
-msgstr ""
+msgstr "Supervivència"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
 #: src/gui/dialogs/addon/manager.cpp:221
 msgid "addon_tag^Fight against waves of enemies"
-msgstr ""
+msgstr "Lluita contra onades d'enemics"
 
 #: src/gui/dialogs/addon/manager.cpp:222
 msgid "addon_tag^Terraforming"
-msgstr ""
+msgstr "Terraformació"
 
 #. TRANSLATORS: tooltip in the drop-down menu for filtering add-ons
 #: src/gui/dialogs/addon/manager.cpp:224
 msgid "addon_tag^Players can change the terrain"
-msgstr ""
+msgstr "Els jugadors poden canviar el terreny"
 
 #: src/gui/dialogs/addon/manager.cpp:248 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Not installed"
-msgstr "addon_state^No instal·lat"
+msgstr "No instal·lat"
 
 #: src/gui/dialogs/addon/manager.cpp:249 src/gui/widgets/addon_list.cpp:103
 msgid "addon_state^Published, not installed"
-msgstr "addon_state^Publicat, no instal·lat"
+msgstr "Publicat, no instal·lat"
 
 #: src/gui/dialogs/addon/manager.cpp:253 src/gui/widgets/addon_list.cpp:111
 msgid "addon_state^Installed"
-msgstr "addon_state^Instal·lat"
+msgstr "Instal·lat"
 
 #: src/gui/dialogs/addon/manager.cpp:254 src/gui/widgets/addon_list.cpp:111
 msgid "addon_state^Published"
-msgstr "addon_state^Publicat"
+msgstr "Publicat"
 
 #: src/gui/dialogs/addon/manager.cpp:258
 msgid "addon_state^Installed, not tracking local version"
-msgstr "addon_state^Instal·lat, no rastrejant la versió local"
+msgstr "Instal·lat, no rastrejant la versió local"
 
 #: src/gui/dialogs/addon/manager.cpp:261
 msgid "addon_state^Published, not tracking local version"
-msgstr "addon_state^Publicat, no rastrejant la versió local"
+msgstr "Publicat, no rastrejant la versió local"
 
 #: src/gui/dialogs/addon/manager.cpp:265
 msgid "addon_state^Installed ($local_version|), upgradable"
-msgstr "addon_state^Instal·lat ($local_version|), actualitzable"
+msgstr "Instal·lat ($local_version|), actualitzable"
 
 #: src/gui/dialogs/addon/manager.cpp:266
 msgid "addon_state^Published ($local_version| installed), upgradable"
-msgstr "addon_state^Publicat ($local_version| instal·lada), actualitzable"
+msgstr "Publicat ($local_version| instal·lada), actualitzable"
 
 #: src/gui/dialogs/addon/manager.cpp:272
 msgid "addon_state^Installed ($local_version|), outdated on server"
-msgstr "addon_state^Instal·lat ($local_version|), obsolet al servidor"
+msgstr "Instal·lat ($local_version|), obsolet al servidor"
 
 #: src/gui/dialogs/addon/manager.cpp:273
 msgid "addon_state^Published ($local_version| installed), outdated on server"
-msgstr ""
-"addon_state^Publicat ($local_version| instal·lada), obsolet al servidor"
+msgstr "Publicat ($local_version| instal·lada), obsolet al servidor"
 
 #: src/gui/dialogs/addon/manager.cpp:279 src/gui/widgets/addon_list.cpp:114
 msgid "addon_state^Installed, not ready to publish"
-msgstr "addon_state^Instal·lat, no a punt per a publicar-se"
+msgstr "Instal·lat, no a punt per a publicar-se"
 
 #: src/gui/dialogs/addon/manager.cpp:280 src/gui/widgets/addon_list.cpp:114
 msgid "addon_state^Ready to publish"
-msgstr "addon_state^A punt per a publicar-se"
+msgstr "A punt per a publicar-se"
 
 #: src/gui/dialogs/addon/manager.cpp:284 src/gui/widgets/addon_list.cpp:126
 msgid "addon_state^Installed, broken"
-msgstr "addon_state^Instal·lat, espatllat"
+msgstr "Instal·lat, espatllat"
 
 #: src/gui/dialogs/addon/manager.cpp:285 src/gui/widgets/addon_list.cpp:126
 msgid "addon_state^Published, broken"
-msgstr "addon_state^Publicat, espatllat"
+msgstr "Publicat, espatllat"
 
 #: src/gui/dialogs/addon/manager.cpp:288 src/gui/widgets/addon_list.cpp:130
 msgid "addon_state^Unknown"
-msgstr "addon_state^Desconegut"
+msgstr "Desconegut"
 
 #: src/gui/dialogs/addon/manager.cpp:454
 msgid "ascending"
@@ -7694,7 +7570,7 @@ msgstr "de més recent a més antic"
 
 #: src/gui/dialogs/addon/manager.cpp:566
 msgid "addons^Back to List"
-msgstr "addons^Torna a la llista"
+msgstr "Torna a la llista"
 
 #: src/gui/dialogs/addon/manager.cpp:578
 msgid "An error occurred while downloading the add-ons list from the server."
@@ -7737,6 +7613,7 @@ msgstr ""
 #: src/gui/dialogs/addon/manager.cpp:987
 msgid "The passphrase attribute cannot be present when forum_auth is used."
 msgstr ""
+"L'atribut de la frase de pas no pot estar present quan s'utilitza forum_auth."
 
 #: src/gui/dialogs/addon/manager.cpp:992
 msgid "Invalid icon path. Make sure the path points to a valid image."
@@ -7746,7 +7623,7 @@ msgstr ""
 
 #: src/gui/dialogs/addon/manager.cpp:998
 msgid "The add-on was rejected by the server:"
-msgstr ""
+msgstr "El complement ha estat rebutjat pel servidor:"
 
 #: src/gui/dialogs/addon/manager.cpp:1025
 msgid ""
@@ -7764,17 +7641,17 @@ msgstr "Voleu desinstal·lar «$addon|»?"
 #. Format reference: https://www.boost.org/doc/libs/1_85_0/doc/html/date_time/date_time_io.html#date_time.format_flags
 #: src/gui/dialogs/addon/manager.cpp:1090
 msgid "%B %d %Y, %I:%M %p"
-msgstr ""
+msgstr "%B %d %Y, %I:%M %p"
 
 #. TRANSLATORS: Month + day of month + year + 24-hour time, eg 'November 02 2021, 13:59'. Format for your locale.
 #. Format reference: https://www.boost.org/doc/libs/1_85_0/doc/html/date_time/date_time_io.html#date_time.format_flags
 #: src/gui/dialogs/addon/manager.cpp:1093
 msgid "%B %d %Y, %H:%M"
-msgstr ""
+msgstr "%B %d %Y, %H:%M"
 
 #: src/gui/dialogs/addon/manager.cpp:1148
 msgid "url^None"
-msgstr "url^Cap"
+msgstr "Cap"
 
 #: src/gui/dialogs/attack_predictions.cpp:121
 msgid "No usable weapon"
@@ -7809,15 +7686,13 @@ msgid "More campaigns..."
 msgstr "Campanya"
 
 #: src/gui/dialogs/campaign_selection.cpp:402
-#, fuzzy
-#| msgid "Campaigns"
 msgid "Missing Campaigns"
-msgstr "Campanyes"
+msgstr "Campanyes que falten"
 
 #: src/gui/dialogs/campaign_selection.cpp:436
 #: src/gui/dialogs/multiplayer/lobby.cpp:435
 msgid "active_modifications^None"
-msgstr "active_modifications^Cap"
+msgstr "Cap"
 
 #: src/gui/dialogs/depcheck_confirm_change.cpp:38
 msgid "$requester requires the following modifications to be enabled:"
@@ -7866,45 +7741,32 @@ msgid ""
 msgstr ""
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:178
-#, fuzzy
-#| msgid "Cores"
 msgid "Core"
-msgstr "Nuclis"
+msgstr "Nucli"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:179
-#, fuzzy
-#| msgid "Campaign"
 msgid "Campaign"
 msgstr "Campanya"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:180
-#, fuzzy
-#| msgid "Campaign"
 msgid "Hybrid Campaign"
-msgstr "Campanya"
+msgstr "Campanya híbrida"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:181
-#, fuzzy
-#| msgid "Multiplayer Campaigns"
 msgid "Multiplayer Campaign"
-msgstr "Campanyes multijugador"
+msgstr "Campanya multijugador"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:182
-#, fuzzy
 msgid "Scenario"
-msgstr "Objectius de l'escenari"
+msgstr "Escenari"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:183
-#, fuzzy
-#| msgid "Multiplayer Alerts"
 msgid "Multiplayer Scenario"
-msgstr "Alertes multijugador"
+msgstr "Escenari multijugador"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:184
-#, fuzzy
-#| msgid "Action"
 msgid "Faction"
-msgstr "Acció"
+msgstr "Facció"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:185
 #: src/gui/dialogs/multiplayer/lobby.cpp:423
@@ -7913,49 +7775,41 @@ msgstr "Era"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:186
 msgid "Map Pack"
-msgstr ""
+msgstr "Paquet de mapes"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:187
-#, fuzzy
-#| msgid "Modifications"
 msgid "Modification"
-msgstr "Modificacions"
+msgstr "Modificació"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:188
 msgid "Media"
-msgstr ""
+msgstr "Mèdia"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:189
 msgid "Theme"
 msgstr "Tema"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:190
-#, fuzzy
-#| msgid "Other Games"
 msgid "Other"
-msgstr "Altres partides"
+msgstr "Altres"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:196
-#, fuzzy
-#| msgid "Properties"
 msgid "Cooperative"
-msgstr "Propietats"
+msgstr "Cooperatiu"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:197
 msgid "Cosmetic"
-msgstr ""
+msgstr "Cosmètic"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:199
 msgid "RNG"
-msgstr ""
+msgstr "RNG"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:200
 msgid "Survival"
-msgstr ""
+msgstr "Supervivència"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:201
-#, fuzzy
-#| msgid "Set Terrain"
 msgid "Terraforming"
 msgstr "Definir el terreny"
 
@@ -7965,17 +7819,15 @@ msgstr ""
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:404
 msgid "No validation errors"
-msgstr ""
+msgstr "Cap error de validació"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:404
 msgid "Success"
-msgstr ""
+msgstr "Èxit"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:434
-#, fuzzy
-#| msgid "Choose Resolution"
 msgid "Choose an icon"
-msgstr "Tria la resolució"
+msgstr "Tria una icona"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:190
 msgid "scout"
@@ -8102,14 +7954,14 @@ msgstr "Marcador nou"
 
 #: src/gui/dialogs/game_cache_options.cpp:95
 msgid "dir_size^Unknown"
-msgstr "dir_size^Desconeguda"
+msgstr "Desconeguda"
 
 #: src/gui/dialogs/game_cache_options.cpp:97
 #: src/gui/dialogs/network_transmission.cpp:46
 #: src/gui/dialogs/network_transmission.cpp:47
 #: src/gui/dialogs/screenshot_notification.cpp:110
 msgid "unit_byte^B"
-msgstr "unit_byte^B"
+msgstr "B"
 
 #: src/gui/dialogs/game_cache_options.cpp:120
 msgid "Cache Cleaned"
@@ -8136,31 +7988,25 @@ msgid "The game data cache could not be purged."
 msgstr "No s'ha pogut purgar completament la memòria cau de dades del joc."
 
 #: src/gui/dialogs/game_load.cpp:73
-#, fuzzy
-#| msgid "Saved Games"
 msgid "No Saved Games"
-msgstr "Partides desades"
+msgstr "No hi ha partides desades"
 
 #: src/gui/dialogs/game_load.cpp:73
-#, fuzzy
-#| msgid "There are no alternative video modes available"
 msgid "There are no saved games to load."
-msgstr "No hi ha modes de vídeo alternatius disponibles"
+msgstr "No hi ha partides desades per carregar."
 
 #: src/gui/dialogs/game_load.cpp:144
 msgid "game_version^Current Version"
-msgstr ""
+msgstr "Versió actual"
 
 #: src/gui/dialogs/game_load.cpp:148
-#, fuzzy
-#| msgid "Version $version"
 msgid "game_version^Wesnoth $version"
-msgstr "Versió $version"
+msgstr "Wesnoth $version"
 
 #. TRANSLATORS: "reserve" refers to units on the recall list
 #: src/gui/dialogs/game_load.cpp:234
 msgid "$active active, $reserve reserve"
-msgstr ""
+msgstr "$active actiu, $reserve en reserva"
 
 #: src/gui/dialogs/game_load.cpp:289
 msgid "The selected file is corrupt: "
@@ -8208,17 +8054,15 @@ msgstr "Modificacions: "
 
 #: src/gui/dialogs/game_stats.cpp:63
 msgid "controller^AI"
-msgstr "controller^IA"
+msgstr "IA"
 
 #: src/gui/dialogs/game_stats.cpp:63
 msgid "controller^Idle"
-msgstr "controller^Inactiu"
+msgstr "Inactiu"
 
 #: src/gui/dialogs/game_stats.cpp:63
-#, fuzzy
-#| msgid "controller^None"
 msgid "controller^Reserved"
-msgstr "controller^Cap"
+msgstr "Reservat"
 
 #: src/gui/dialogs/game_stats.cpp:102 src/gui/dialogs/label_settings.cpp:73
 msgid "Unknown"
@@ -8340,8 +8184,8 @@ msgstr "S'estan descarregant les dades del vestíbul"
 #| msgid "The lua console can only be used in debug mode! (Run ':debug' first)"
 msgid "The lua console can only be used in debug mode! (Run ‘:debug’ first)"
 msgstr ""
-"La consola lua només es pot utilitzar en mode de depuració! (Executeu «:"
-"debug» primer)"
+"La consola lua només es pot utilitzar en mode de depuració! (Executeu "
+"«:debug» primer)"
 
 #: src/gui/dialogs/lua_interpreter.cpp:629
 msgid "lua console"
@@ -8369,10 +8213,8 @@ msgid "Do you really want to log out?"
 msgstr "Segur que voleu tancar la sessió?"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:174
-#, fuzzy
-#| msgid "Incompatible User-made Content."
 msgid "Incompatible User-made Content"
-msgstr "El contingut fet per l'usuari és incompatible."
+msgstr "Contingut incompatible creat per usuaris"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:175
 #, fuzzy
@@ -8390,10 +8232,8 @@ msgstr ""
 "que s'actualitzin els complements de l'amfitrió."
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:190
-#, fuzzy
-#| msgid "Missing User-made Content."
 msgid "Missing User-made Content"
-msgstr "Manca contingut fet per l'usuari."
+msgstr "Contingut fet per usuaris que falta"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:191
 msgid ""
@@ -8415,7 +8255,7 @@ msgstr "$game_name (Era: $era_name)"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:420
 msgid "era_or_mod^not installed"
-msgstr "era_or_mod^no instal·lada"
+msgstr "no instal·lada"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:455
 msgid "Reloaded:"
@@ -8458,9 +8298,14 @@ msgid "lobby"
 msgstr "vestíbul"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:962
+#, fuzzy
+#| msgid ""
+#| "This game doesn't allow observers. Observe using moderator rights anyway?"
 msgid ""
 "This game doesn’t allow observers. Observe using moderator rights anyway?"
 msgstr ""
+"Aquest joc no permet observadors. Observar utilitzant drets de moderador "
+"igualment?"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:973
 msgid ""
@@ -8474,6 +8319,8 @@ msgstr ""
 #: src/gui/dialogs/multiplayer/lobby.cpp:992
 msgid "This game is password protected. Join using moderator rights anyway?"
 msgstr ""
+"Aquest joc està protegit amb contrasenya. Unir-se igualment utilitzant els "
+"drets de moderador?"
 
 #: src/gui/dialogs/multiplayer/mp_alerts_options.cpp:119
 msgid ""
@@ -8488,10 +8335,8 @@ msgid "Side $side"
 msgstr "Bàndol $side"
 
 #: src/gui/dialogs/multiplayer/mp_connect.cpp:183
-#, fuzzy
-#| msgid "Server:"
 msgid "Add Server"
-msgstr "Servidor:"
+msgstr "Afegeix servidor"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:123
 msgid "Scenarios"
@@ -8536,7 +8381,7 @@ msgstr "No hi ha eres disponibles per a aquesta partida."
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:869
 msgid "number of players^$min to $max"
-msgstr "number of players^de $min a $max"
+msgstr "de $min a $max"
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:1022
 msgid "The selected game has no sides!"
@@ -8544,10 +8389,8 @@ msgstr "La partida seleccionada no té cap bàndol!"
 
 #. TRANSLATORS: This sentence will be followed by some details of the error, most likely the "Map could not be loaded" message from create_engine.cpp
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:1029
-#, fuzzy
-#| msgid "The selected game can not be created."
 msgid "The selected game cannot be created."
-msgstr "No es pot crear la partida seleccionada."
+msgstr "El joc seleccionat no es pot crear."
 
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:1102
 msgid "Choose Starting Scenario"
@@ -8587,10 +8430,8 @@ msgid "Lobby"
 msgstr "Vestíbul"
 
 #: src/gui/dialogs/multiplayer/mp_report.cpp:48
-#, fuzzy
-#| msgid "Games"
 msgid "Game"
-msgstr "Partides"
+msgstr "Jugar"
 
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:81
 #, fuzzy
@@ -8680,11 +8521,11 @@ msgstr "Aquest torn"
 
 #: src/gui/dialogs/statistics_dialog.cpp:210
 msgid "Actual hit rates, by chance to hit:"
-msgstr ""
+msgstr "Taxes reals d'encert, per casualitat d'encertar:"
 
 #: src/gui/dialogs/statistics_dialog.cpp:212
 msgid "(no attacks have taken place yet)"
-msgstr ""
+msgstr "(encara no s'han produït atacs)"
 
 #: src/gui/dialogs/statistics_dialog.cpp:296
 msgid ""
@@ -8695,10 +8536,13 @@ msgid ""
 "The sum (or difference) of the two numbers in parentheses is the actual "
 "number of hits inflicted/taken."
 msgstr ""
+"Diferència entre el resultat real i el resultat esperat, en percentatge.\n"
+"El primer número entre parèntesis és el nombre esperat d'impactes infligits "
+"o rebuts.\n"
+"La suma (o diferència) dels dos números entre parèntesis és el nombre real "
+"d'impactes fets o rebuts."
 
 #: src/gui/dialogs/statistics_dialog.cpp:340
-#, fuzzy
-#| msgid "Recruits"
 msgid "stats^Recruits"
 msgstr "Reclutes"
 
@@ -8741,10 +8585,8 @@ msgid "Version $version"
 msgstr "Versió $version"
 
 #: src/gui/dialogs/title_screen.cpp:486 src/hotkey/hotkey_command.cpp:311
-#, fuzzy
-#| msgid "Choose Starting Scenario"
 msgid "Choose Test Scenario"
-msgstr "Trieu l'escenari inicial"
+msgstr "Tria l'escenari de prova"
 
 #: src/gui/dialogs/units_dialog.cpp:239 src/hotkey/hotkey_command.cpp:103
 msgid "Rename Unit"
@@ -8780,13 +8622,11 @@ msgstr "Descarta la unitat"
 
 #: src/gui/dialogs/units_dialog.cpp:430
 msgid "unit_variation^Default Variation"
-msgstr ""
+msgstr "Variant per defecte"
 
 #: src/gui/dialogs/units_dialog.cpp:466
-#, fuzzy
-#| msgid "Delete Unit"
 msgid "Create Unit"
-msgstr "Elimina la unitat"
+msgstr "Crear Unitat"
 
 #: src/gui/dialogs/units_dialog.cpp:537
 msgid "Recruit Unit"
@@ -8826,19 +8666,19 @@ msgstr "No s'ha definit la interfície predeterminada."
 
 #: src/gui/widgets/addon_list.cpp:118
 msgid "addon_state^Installed, upgradable"
-msgstr "addon_state^Instal·lat, actualitzable"
+msgstr "Instal·lat, actualitzable"
 
 #: src/gui/widgets/addon_list.cpp:118
 msgid "addon_state^Published, upgradable"
-msgstr "addon_state^Publicat, actualitzable"
+msgstr "Publicat, actualitzable"
 
 #: src/gui/widgets/addon_list.cpp:122
 msgid "addon_state^Installed, outdated on server"
-msgstr "addon_state^Instal·lat, obsolet al servidor"
+msgstr "Instal·lat, obsolet al servidor"
 
 #: src/gui/widgets/addon_list.cpp:122
 msgid "addon_state^Published, outdated on server"
-msgstr "addon_state^Publicat, obsolet al servidor"
+msgstr "Publicat, obsolet al servidor"
 
 #: src/gui/widgets/addon_list.cpp:295
 msgid "Delete add-on from server"
@@ -8855,18 +8695,14 @@ msgstr "xiuxiueja a $receiver"
 
 #: src/gui/widgets/chatbox.cpp:382
 msgid "Joined <i>$name</i>"
-msgstr ""
+msgstr "S’ha unit <i>$name</i>"
 
 #: src/gui/widgets/chatbox.cpp:388
-#, fuzzy
-#| msgid ""
-#| "Whisper session with <i>“$name”</i> started. If you do not want to "
-#| "receive messages from this user, type <i>/ignore $name</i>"
 msgid ""
 "Started private message with <i>$name</i>. If you do not want to receive "
 "messages from this player, type <i>/ignore $name</i>"
 msgstr ""
-"S'ha iniciat la sessió de xiuxiueig amb <i>«$name»</i>. Si no voleu rebre "
+"S'ha iniciat la sessió de xiuxiueig amb <i>$name</i>. Si no voleu rebre "
 "missatges d'aquest usuari, escriviu <i>/ignore $name</i>"
 
 #: src/gui/widgets/helper.cpp:148
@@ -8876,10 +8712,8 @@ msgid "Mandatory widget ‘$id’ hasn't been defined."
 msgstr "No s'ha definit el giny obligatori «$id»."
 
 #: src/gui/widgets/label.cpp:137 src/gui/widgets/multiline_text.cpp:429
-#, fuzzy
-#| msgid "Copied link!"
 msgid "Open link?"
-msgstr "S'ha copiat l'enllaç."
+msgstr "Obrir l’enllaç?"
 
 #: src/gui/widgets/label.cpp:162
 msgid "Copied link!"
@@ -8919,7 +8753,7 @@ msgstr "No s'admet l'obertura d'enllaços, contacteu amb el vostre empaquetador"
 
 #: src/gui/widgets/multimenu_button.cpp:171
 msgid "multimenu^All Selected"
-msgstr "multimenu^Tots seleccionats"
+msgstr "Tots seleccionats"
 
 #. TRANSLATORS: In a drop-down menu that's a list of toggle-boxes, this becomes part
 #. of the text on the button when many of the boxes are selected. The text becomes
@@ -8933,7 +8767,7 @@ msgstr[1] "$excess altres"
 #: src/gui/widgets/multimenu_button.cpp:181
 #: src/gui/widgets/multimenu_button.cpp:233
 msgid "multimenu^None Selected"
-msgstr "multimenu^Cap seleccionat"
+msgstr "Cap seleccionat"
 
 #: src/gui/widgets/pane.cpp:360
 msgid "Need at least 1 parallel item."
@@ -9171,10 +9005,8 @@ msgid "End Unit Turn"
 msgstr "Fi del torn de la unitat"
 
 #: src/hotkey/hotkey_command.cpp:90
-#, fuzzy
-#| msgid "Scroll Left"
 msgid "Scroll to Leader"
-msgstr "Desplaçament a l'esquerra"
+msgstr "Desplaçar-se al líder"
 
 #: src/hotkey/hotkey_command.cpp:91
 msgid "Undo"
@@ -9205,10 +9037,8 @@ msgid "Map Screenshot"
 msgstr "Captura de pantalla del mapa"
 
 #: src/hotkey/hotkey_command.cpp:100
-#, fuzzy
-#| msgid "Accelerated speed"
 msgid "Toggle Accelerated Speed"
-msgstr "Velocitat accelerada"
+msgstr "Commuta la velocitat accelerada"
 
 #: src/hotkey/hotkey_command.cpp:101
 msgid "Terrain Description"
@@ -9293,10 +9123,8 @@ msgid "Teleport Unit (Debug!)"
 msgstr "Crea una unitat (Debug!)"
 
 #: src/hotkey/hotkey_command.cpp:128
-#, fuzzy
-#| msgid "Scenario Objectives"
 msgid "Objectives"
-msgstr "Objectius de l'escenari"
+msgstr "Objectius"
 
 #: src/hotkey/hotkey_command.cpp:131
 msgid "Pause Network Game"
@@ -9307,8 +9135,6 @@ msgid "Continue Network Game"
 msgstr "Reprèn la partida en xarxa"
 
 #: src/hotkey/hotkey_command.cpp:134
-#, fuzzy
-#| msgid "Quit to Main Menu"
 msgid "Quit to Menu"
 msgstr "Surt al menú principal"
 
@@ -9379,37 +9205,37 @@ msgstr "Finalitza la repetició"
 #. TRANSLATORS: whiteboard menu entry: toggle planning mode
 #: src/hotkey/hotkey_command.cpp:154
 msgid "whiteboard^Planning Mode"
-msgstr "whiteboard^Mode de planificació"
+msgstr "Mode de planificació"
 
 #. TRANSLATORS: whiteboard menu entry: execute planned action
 #: src/hotkey/hotkey_command.cpp:156
 msgid "whiteboard^Execute Action"
-msgstr "whiteboard^Executa l'acció"
+msgstr "Executa l'acció"
 
 #. TRANSLATORS: whiteboard menu entry: execute all planned actions
 #: src/hotkey/hotkey_command.cpp:158
 msgid "whiteboard^Execute All Actions"
-msgstr "whiteboard^Executa totes les accions"
+msgstr "Executa totes les accions"
 
 #. TRANSLATORS: whiteboard menu entry: delete planned action
 #: src/hotkey/hotkey_command.cpp:160
 msgid "whiteboard^Delete Action"
-msgstr "whiteboard^Elimina l'acció"
+msgstr "Elimina l'acció"
 
 #. TRANSLATORS: whiteboard menu entry: move planned action up queue
 #: src/hotkey/hotkey_command.cpp:162
 msgid "whiteboard^Move Action Up"
-msgstr "whiteboard^Mou l'acció cap amunt"
+msgstr "Mou l'acció cap amunt"
 
 #. TRANSLATORS: whiteboard menu entry: move planned action down queue
 #: src/hotkey/hotkey_command.cpp:164
 msgid "whiteboard^Move Action Down"
-msgstr "whiteboard^Mou l'acció cap avall"
+msgstr "Mou l'acció cap avall"
 
 #. TRANSLATORS: whiteboard menu entry: plan as though the chosen unit were dead
 #: src/hotkey/hotkey_command.cpp:166
 msgid "whiteboard^Suppose Dead"
-msgstr "whiteboard^Suposa que és mort"
+msgstr "Suposa que és mort"
 
 #: src/hotkey/hotkey_command.cpp:168
 msgid "Quit to Desktop"
@@ -9461,9 +9287,9 @@ msgstr "Anomena i desa el mapa"
 
 #: src/hotkey/hotkey_command.cpp:187
 #, fuzzy
-#| msgid "Choose Starting Scenario"
+#| msgid "Choose Test Scenario"
 msgid "Convert To Scenario"
-msgstr "Trieu l'escenari inicial"
+msgstr "Tria l'escenari de prova"
 
 #: src/hotkey/hotkey_command.cpp:188
 msgid "Save Scenario As"
@@ -9585,12 +9411,10 @@ msgid "Item Tool"
 msgstr "Eina d'elements"
 
 #: src/hotkey/hotkey_command.cpp:210
-#, fuzzy
-#| msgid "Left mouse button sets or drags a label, right clears."
 msgid "Left mouse button sets a new item. Right click removes item."
 msgstr ""
-"El botó esquerre del ratolí estableix o arrossega una etiqueta; el dret "
-"neteja."
+"El botó esquerre del ratolí estableix un nou objecte. El clic dret elimina "
+"l'objecte."
 
 #: src/hotkey/hotkey_command.cpp:211
 msgid ""
@@ -9629,10 +9453,8 @@ msgid "Loyal"
 msgstr "Lleial"
 
 #: src/hotkey/hotkey_command.cpp:220
-#, fuzzy
-#| msgid "Map Information"
 msgid "Show Tool Information"
-msgstr "Informació del mapa"
+msgstr "Mostra informació de l’eina"
 
 #: src/hotkey/hotkey_command.cpp:222
 msgid "Toggle Minimap Unit Coding"
@@ -9815,19 +9637,17 @@ msgstr "Afegeix una àrea nova"
 
 #: src/hotkey/hotkey_command.cpp:277
 msgid "Add-on Publishing Editor"
-msgstr ""
+msgstr "Editor de publicació de complements"
 
 #: src/hotkey/hotkey_command.cpp:278
-#, fuzzy
-#| msgid "Manage Add-ons"
 msgid "Change Add-on ID"
-msgstr "Gestiona els complements"
+msgstr "Canvia l'ID del complement"
 
 #: src/hotkey/hotkey_command.cpp:279
 #, fuzzy
-#| msgid "Delete add-on from server"
+#| msgid "Select the add-on version"
 msgid "Select active Add-on"
-msgstr "Suprimeix el complement del servidor"
+msgstr "Seleccioneu la versió del complement"
 
 #: src/hotkey/hotkey_command.cpp:280
 #, fuzzy
@@ -9852,10 +9672,8 @@ msgid "Update Shroud Now"
 msgstr "Refresca les zones fosques"
 
 #: src/hotkey/hotkey_command.cpp:288
-#, fuzzy
-#| msgid "Continue Move"
 msgid "Continue Interrupted Move"
-msgstr "Continua movent"
+msgstr "Continuar el moviment interromput"
 
 #: src/hotkey/hotkey_command.cpp:289
 msgid "Find Label or Unit"
@@ -9871,15 +9689,13 @@ msgstr "Parla a tothom"
 
 #: src/hotkey/hotkey_command.cpp:293
 msgid "Help about save-loading"
-msgstr ""
+msgstr "Ajuda sobre desar i carregar partides"
 
 #: src/hotkey/hotkey_command.cpp:293
 msgid "Hint: save-loading is unnecessary"
-msgstr ""
+msgstr "Consell: la càrrega de partides és innecessària"
 
 #: src/hotkey/hotkey_command.cpp:295
-#, fuzzy
-#| msgid "Enter User Command"
 msgid "Enter Command"
 msgstr "Introdueix una ordre d'usuari"
 
@@ -9892,10 +9708,8 @@ msgid "Run Formula"
 msgstr "Executa la fórmula"
 
 #: src/hotkey/hotkey_command.cpp:298
-#, fuzzy
-#| msgid "Player Chat"
 msgid "Clear Chat"
-msgstr "Xat del jugador"
+msgstr "Esborra el xat"
 
 #: src/hotkey/hotkey_command.cpp:300
 msgid "Change Language"
@@ -10021,92 +9835,128 @@ msgid "In section ‘[$section|]’ the mandatory subtag ‘[$tag|]’ is missin
 msgstr ""
 "A la secció «[$section|]», la clau obligatòria «$key|» no està definida."
 
-#~ msgid "Turn dialog"
-#~ msgstr "Habilita els diàlegs"
+#~ msgid "Rocky Sands"
+#~ msgstr "Sorres Rocoses"
+
+#~ msgid "Sands"
+#~ msgstr "Sorra"
+
+#~ msgid "Connected Players"
+#~ msgstr "Jugadors connectats"
+
+#~ msgid "Reloading alters future combat outcomes"
+#~ msgstr "Recarregar altera els resultats futurs dels combats"
+
+#~ msgid "Combat outcomes remain constant when reloading"
+#~ msgstr "Els resultats del combat es mantenen constants quan es recarrega"
+
+#~ msgid "Biased RNG (experimental)"
+#~ msgstr "RNG esbiaixat (experimental)"
+
+#~ msgid ""
+#~ "Combat outcomes are more in line with displayed probabilities and "
+#~ "unaffected by reloading"
+#~ msgstr ""
+#~ "Els resultats del combat s'ajusten més a les probabilitats mostrades i no "
+#~ "es veuen afectats per la recàrrega"
+
+#~ msgid "Add-on ID"
+#~ msgstr "ID del complement"
+
+#~ msgid "Configuration:"
+#~ msgstr "Configuració:"
+
+#~ msgid "Copy the full report to clipboard"
+#~ msgstr "Copia l'informe complet al porta-retalls"
 
 #~ msgid "Battle For Wesnoth Help"
 #~ msgstr "Ajuda de Batalla per Wesnoth"
 
-#, fuzzy
-#~| msgid "Show next tip of the day"
-#~ msgid "Hide tip of the day"
-#~ msgstr "Mostra el consell del dia següent"
+#~ msgid "<b>Faction:</b>"
+#~ msgstr "<b>Facció:</b>"
 
-#~ msgid "Race"
-#~ msgstr "Raça"
+#~ msgid "<b>Gender:</b>"
+#~ msgstr "<b>Gènere:</b>"
 
-#~ msgid "timespan^expired"
-#~ msgstr "timespan^esgotat"
-
-#, fuzzy
-#~| msgid "timespan^$num year"
-#~ msgid "timespan^$num year"
-#~ msgid_plural "timespan^$num years"
-#~ msgstr[0] "timespan^$num any"
-#~ msgstr[1] "timespan^$num any"
-
-#, fuzzy
-#~| msgid "timespan^$num month"
-#~ msgid "timespan^$num month"
-#~ msgid_plural "timespan^$num months"
-#~ msgstr[0] "timespan^$num mes"
-#~ msgstr[1] "timespan^$num mes"
-
-#, fuzzy
-#~| msgid "timespan^$num week"
-#~ msgid "timespan^$num week"
-#~ msgid_plural "timespan^$num weeks"
-#~ msgstr[0] "timespan^$num setmana"
-#~ msgstr[1] "timespan^$num setmana"
-
-#, fuzzy
-#~| msgid "timespan^$num day"
-#~ msgid "timespan^$num day"
-#~ msgid_plural "timespan^$num days"
-#~ msgstr[0] "timespan^$num dia"
-#~ msgstr[1] "timespan^$num dia"
-
-#, fuzzy
-#~| msgid "timespan^$num hour"
-#~ msgid "timespan^$num hour"
-#~ msgid_plural "timespan^$num hours"
-#~ msgstr[0] "timespan^$num hora"
-#~ msgstr[1] "timespan^$num hora"
-
-#, fuzzy
-#~| msgid "timespan^$num minute"
-#~ msgid "timespan^$num minute"
-#~ msgid_plural "timespan^$num minutes"
-#~ msgstr[0] "timespan^$num minut"
-#~ msgstr[1] "timespan^$num minut"
-
-#, fuzzy
-#~| msgid "timespan^$num second"
-#~ msgid "timespan^$num second"
-#~ msgid_plural "timespan^$num seconds"
-#~ msgstr[0] "timespan^$num segon"
-#~ msgstr[1] "timespan^$num segon"
+#~ msgid "Turn dialog"
+#~ msgstr "Habilita els diàlegs"
 
 #~ msgid "Limit FPS"
 #~ msgstr "Limita els FPS"
 
-#, fuzzy
-#~| msgid ""
-#~| "Disabling this increases CPU usage to 100% but may slightly improve "
-#~| "performance at high resolutions"
 #~ msgid ""
 #~ "Disabling this increases CPU usage, but may slightly improve performance "
 #~ "(requires restart to take effect)"
 #~ msgstr ""
-#~ "Desactivar aquesta casella augmenta l'ús de la CPU al 100% però pot "
-#~ "millorar lleugerament el rendiment en resolucions altes"
+#~ "Desactivar això augmenta l'ús de la CPU, però pot millorar lleugerament "
+#~ "el rendiment (cal reiniciar perquè faci efecte)."
 
-#, fuzzy
-#~ msgid "Connected Players"
-#~ msgstr "Jugadors:"
+#~ msgid "View the credits"
+#~ msgstr "Visualitzeu els crèdits"
+
+#~ msgid "filesystem_path_game^User preferences"
+#~ msgstr "Preferències d'usuari"
+
+#~ msgid "--userdata-dir=<relative path that doesn't start with a period>"
+#~ msgstr "--userdata-dir=<camí relatiu que no comença amb punt>"
+
+#~ msgid ""
+#~ "Use an absolute path, or a relative path that starts with a period and a "
+#~ "backslash"
+#~ msgstr ""
+#~ "Utilitza un camí absolut, o un camí relatiu que comenci amb un punt i una "
+#~ "barra inversa"
+
+#~ msgid "--userdata-dir=<relative path>"
+#~ msgstr "--userdata-dir=<camí relatiu>"
+
+#~ msgid ""
+#~ "Use absolute paths. Relative paths are deprecated because they are "
+#~ "interpreted relative to $HOME"
+#~ msgstr ""
+#~ "Fes servir camins absoluts. Els camins relatius queden obsolets perquè "
+#~ "s'interpreten en relació amb $HOME"
 
 #~ msgid "The text contains invalid Pango markup: "
 #~ msgstr "El text conté l'etiquetatge Pango no vàlid: "
+
+#~ msgid "timespan^expired"
+#~ msgstr "expirat"
+
+#~ msgid "timespan^$num year"
+#~ msgid_plural "timespan^$num years"
+#~ msgstr[0] "$num any"
+#~ msgstr[1] "$num anys"
+
+#~ msgid "timespan^$num month"
+#~ msgid_plural "timespan^$num months"
+#~ msgstr[0] "$num mes"
+#~ msgstr[1] "$num mesos"
+
+#~ msgid "timespan^$num week"
+#~ msgid_plural "timespan^$num weeks"
+#~ msgstr[0] "$num setmana"
+#~ msgstr[1] "$num setmanes"
+
+#~ msgid "timespan^$num day"
+#~ msgid_plural "timespan^$num days"
+#~ msgstr[0] "$num dia"
+#~ msgstr[1] "$num dies"
+
+#~ msgid "timespan^$num hour"
+#~ msgid_plural "timespan^$num hours"
+#~ msgstr[0] "$num hora"
+#~ msgstr[1] "$num hores"
+
+#~ msgid "timespan^$num minute"
+#~ msgid_plural "timespan^$num minutes"
+#~ msgstr[0] "$num minut"
+#~ msgstr[1] "$num minuts"
+
+#~ msgid "timespan^$num second"
+#~ msgid_plural "timespan^$num seconds"
+#~ msgstr[0] "$num segon"
+#~ msgstr[1] "$num segons"
 
 #~ msgid "Text has a font size of 0."
 #~ msgstr "La mida del tipus de lletra del text és 0."
@@ -10116,52 +9966,11 @@ msgstr ""
 #~ "No s'ha trobat cap porta-retalls compatible. Contacteu amb el vostre "
 #~ "empaquetador"
 
-#~ msgid "<b>Faction:</b>"
-#~ msgstr "<b>Facció:</b>"
-
-#~ msgid "<b>Gender:</b>"
-#~ msgstr "<b>Gènere:</b>"
-
-#, fuzzy
-#~| msgid "page^Copy"
-#~ msgid "page^✔ Copied"
-#~ msgstr "page^Copia"
-
-#, fuzzy
-#~| msgid "Status"
-#~ msgid "Stats"
-#~ msgstr "Estat"
-
-#~ msgid "Configuration:"
-#~ msgstr "Configuració:"
-
-#~ msgid "filesystem_path_game^User preferences"
-#~ msgstr "filesystem_path_game^Preferències d'usuari"
-
-#~ msgid "Load Map"
-#~ msgstr "Carrega un mapa"
-
-#~ msgid "Copy the full report to clipboard"
-#~ msgstr "Copia l'informe complet al porta-retalls"
-
-#~ msgid "View the credits"
-#~ msgstr "Visualitzeu els crèdits"
-
 #~ msgid "Running on $os"
 #~ msgstr "S'està executant a $os"
 
-#, fuzzy
-#~| msgid "Beach Sands"
-#~ msgid "Rocky Sands"
-#~ msgstr "Sorra de platja"
-
-#~ msgid "Sands"
-#~ msgstr "Sorra"
-
-#, fuzzy
-#~| msgid "Add-ons"
-#~ msgid "Add-on ID"
-#~ msgstr "Complements"
+#~ msgid "Load Map"
+#~ msgstr "Carrega un mapa"
 
 #~ msgid "Choose your preferred language:"
 #~ msgstr "Trieu el vostre idioma:"
@@ -10250,28 +10059,28 @@ msgstr ""
 #~ msgstr "Posició inicial:"
 
 #~ msgid "titlescreen_hotkeys^T"
-#~ msgstr "titlescreen_hotkeys^T"
+#~ msgstr "T"
 
 #~ msgid "timespan^$num years"
-#~ msgstr "timespan^$num anys"
+#~ msgstr "$num anys"
 
 #~ msgid "timespan^$num months"
-#~ msgstr "timespan^$num mesos"
+#~ msgstr "$num mesos"
 
 #~ msgid "timespan^$num weeks"
-#~ msgstr "timespan^$num setmanes"
+#~ msgstr "$num setmanes"
 
 #~ msgid "timespan^$num days"
-#~ msgstr "timespan^$num dies"
+#~ msgstr "$num dies"
 
 #~ msgid "timespan^$num hours"
-#~ msgstr "timespan^$num hores"
+#~ msgstr "$num hores"
 
 #~ msgid "timespan^$num minutes"
-#~ msgstr "timespan^$num minuts"
+#~ msgstr "$num minuts"
 
 #~ msgid "timespan^$num seconds"
-#~ msgstr "timespan^$num segons"
+#~ msgstr "$num segons"
 
 #~ msgid "Selected Game"
 #~ msgstr "Partida seleccionada"
@@ -10310,7 +10119,7 @@ msgstr ""
 #~ msgstr "El text no comença al llenç."
 
 #~ msgid "feature^Legacy bidirectional rendering"
-#~ msgstr "feature^Renderització bidireccional antiga"
+#~ msgstr "Renderització bidireccional antiga"
 
 #~ msgid "The maximum text width is less than 1."
 #~ msgstr "L'amplada màxima del text és inferior a 1."
@@ -10334,13 +10143,13 @@ msgstr ""
 
 #~| msgid "Copy"
 #~ msgid "url^Copy"
-#~ msgstr "url^Copia"
+#~ msgstr "Copia"
 
 #~ msgid "Copy this URL to clipboard"
 #~ msgstr "Copieu aquesta URL al porta-retalls"
 
 #~ msgid "url^Go"
-#~ msgstr "url^Ves-hi"
+#~ msgstr "Ves-hi"
 
 #~ msgid "Visit this URL with a web browser"
 #~ msgstr "Visiteu aquesta URL amb un navegador web"
@@ -10440,7 +10249,7 @@ msgstr ""
 #~ msgstr "Seleccioneu les dades nuclears del joc"
 
 #~ msgid "feature^JPEG screenshots"
-#~ msgstr "feature^Captures de pantalla JPEG"
+#~ msgstr "Captures de pantalla JPEG"
 
 #~ msgid "Number of columns differ."
 #~ msgstr "El nombre de columnes difereix."
@@ -10453,7 +10262,7 @@ msgstr ""
 
 #~| msgid "Version"
 #~ msgid "version^N/A"
-#~ msgstr "version^No disponible"
+#~ msgstr "No disponible"
 
 #~ msgid "Room <i>“$name”</i> joined"
 #~ msgstr "Us heu unit a la sala <i>«$name»</i>"

@@ -875,9 +875,10 @@ void generate_terrain_sections(section& sec, int /*level*/)
 			std::make_shared<terrain_topic_generator>(info)
 		};
 
-		t_translation::ter_list base_terrains = tdata->underlying_union_terrain(t);
+		t_translation::ter_list base_terrains = info.union_type();
+
 		if (info.has_default_base()) {
-			for (const auto base : tdata->underlying_union_terrain(info.default_base())) {
+			for (const auto& base : tdata->get_terrain_info(info.default_base()).union_type()) {
 				if (!utils::contains(base_terrains, base)) {
 					base_terrains.emplace_back(base);
 				}

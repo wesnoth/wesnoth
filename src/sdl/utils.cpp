@@ -726,33 +726,34 @@ bool mask_surface(surface& nsurf, const surface& nmask, const std::string& filen
 		return false;
 	}
 
-	bool empty = true;
+	uint32_t cumulative_alpha{0};
 	{
 		surface_lock lock(nsurf);
 		const_surface_lock mlock(nmask);
 
-		uint32_t* beg = lock.pixels();
-		uint32_t* end = beg + nsurf.area();
-		const uint32_t* mbeg = mlock.pixels();
-		const uint32_t* mend = mbeg + nmask->w*nmask->h;
+		utils::span surf_pixels = lock.pixel_span();
+		utils::span mask_pixels = mlock.pixel_span();
 
-		while(beg != end && mbeg != mend) {
-			auto [r, g, b, alpha] = color_t::from_argb_bytes(*beg);
+		// Note: any pixels outside the range of the smaller surface are ignored.
+		const auto sentinel = std::min(surf_pixels.size(), mask_pixels.size());
 
-			uint8_t malpha = (*mbeg) >> 24;
-			if (alpha > malpha) {
-				alpha = malpha;
-			}
-			if(alpha)
-				empty = false;
+		for(std::size_t i = 0; i < sentinel; ++i) {
+			const uint32_t surf_alpha = surf_pixels[i] & SDL_ALPHA_MASK;
+			const uint32_t mask_alpha = mask_pixels[i] & SDL_ALPHA_MASK;
 
-			*beg = (alpha << 24) + (r << 16) + (g << 8) + b;
+			const auto min_alpha = std::min(surf_alpha, mask_alpha);
 
-			++beg;
-			++mbeg;
+			// Clear the alpha bits before writing the new alpha value.
+			surf_pixels[i] &= ~SDL_ALPHA_MASK;
+			surf_pixels[i] |= min_alpha;
+
+			// This will quickly saturate the leftmost 8 bits,
+			// but we only care whether the final result is 0.
+			cumulative_alpha |= min_alpha;
 		}
 	}
-	return empty;
+
+	return cumulative_alpha == 0;
 }
 
 bool in_mask_surface(const surface& nsurf, const surface& nmask)
@@ -769,24 +770,20 @@ bool in_mask_surface(const surface& nsurf, const surface& nmask)
 		return false;
 	}
 
-	{
-		const_surface_lock lock(nsurf);
-		const_surface_lock mlock(nmask);
+	const_surface_lock lock(nsurf);
+	const_surface_lock mlock(nmask);
 
-		const uint32_t* mbeg = mlock.pixels();
-		const uint32_t* mend = mbeg + nmask->w*nmask->h;
-		const uint32_t* beg = lock.pixels();
-		// no need for 'end', because both surfaces have same size
+	utils::span surf_pixels = lock.pixel_span();
+	utils::span mask_pixels = mlock.pixel_span();
 
-		while(mbeg != mend) {
-			uint8_t malpha = (*mbeg) >> 24;
-			if(malpha == 0) {
-				uint8_t alpha = (*beg) >> 24;
-				if (alpha)
-					return false;
-			}
-			++mbeg;
-			++beg;
+	// Note: unlike in mask_surface, both ranges here have the same size.
+	for(std::size_t i = 0; i < surf_pixels.size(); ++i) {
+		const uint32_t surf_alpha = surf_pixels[i] & SDL_ALPHA_MASK;
+		const uint32_t mask_alpha = mask_pixels[i] & SDL_ALPHA_MASK;
+
+		// A visible pixel (non-zero alpha) which the mask would otherwise hide.
+		if(surf_alpha && mask_alpha == 0) {
+			return false;
 		}
 	}
 

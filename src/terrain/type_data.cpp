@@ -122,50 +122,6 @@ const terrain_type& terrain_type_data::get_terrain_info(const t_translation::ter
 	}
 }
 
-const t_translation::ter_list& terrain_type_data::underlying_mvt_terrain(const t_translation::terrain_code & terrain) const
-{
-	auto i = find_or_create(terrain);
-
-	if(i == tcodeToTerrain_.end()) {
-		// TODO: At least in some cases (for example when this is called from lua) it
-		// seems to make more sense to throw an exception here, same goes for get_terrain_info
-		// and underlying_def_terrain
-		static t_translation::ter_list result(1);
-		result[0] = terrain;
-		return result;
-	} else {
-		return i->second.mvt_type();
-	}
-}
-
-const t_translation::ter_list& terrain_type_data::underlying_def_terrain(const t_translation::terrain_code & terrain) const
-{
-	auto i = find_or_create(terrain);
-
-	if(i == tcodeToTerrain_.end()) {
-		static t_translation::ter_list result(1);
-		result[0] = terrain;
-		return result;
-	} else {
-		return i->second.def_type();
-	}
-}
-
-const t_translation::ter_list& terrain_type_data::underlying_union_terrain(const t_translation::terrain_code & terrain) const
-{
-	auto i = find_or_create(terrain);
-
-	if(i == tcodeToTerrain_.end()) {
-		static t_translation::ter_list result(1);
-		result[0] = terrain;
-		return result;
-	} else {
-		return i->second.union_type();
-	}
-}
-
-
-
 t_string terrain_type_data::get_terrain_string(const t_translation::terrain_code& terrain) const
 {
 	t_string str =
@@ -195,10 +151,9 @@ t_string terrain_type_data::get_terrain_editor_string(const t_translation::terra
 
 t_string terrain_type_data::get_underlying_terrain_string(const t_translation::terrain_code& terrain) const
 {
-	// lazy_initialization() is handled in underlying_union_terrain
 	std::string str;
 
-	const t_translation::ter_list& underlying = underlying_union_terrain(terrain);
+	const t_translation::ter_list& underlying = get_terrain_info(terrain).union_type();
 	assert(!underlying.empty());
 
 	if(underlying.size() > 1 || underlying[0] != terrain) {

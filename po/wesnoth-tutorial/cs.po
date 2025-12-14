@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-11-18 02:02 UTC\n"
-"PO-Revision-Date: 2025-11-04 21:25+0100\n"
+"PO-Revision-Date: 2025-11-22 08:23+0100\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -90,18 +90,18 @@ msgid ""
 "<i>Heir to the Throne, Classic</i> optionally includes the old <i>Battle "
 "Training</i> tutorial. Play <i>Battle Training</i>?"
 msgstr ""
+"<i>Dědic trůnu, klasika</i> volitelně obsahuje starý tutoriál <i>Bojový "
+"výcvik</i>. Chceš <i>Bojový výcvik</i> odehrát?"
 
 #. [option]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:113
 msgid "Yes"
-msgstr ""
+msgstr "Ano"
 
 #. [option]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:118
-#, fuzzy
-#| msgid "Note"
 msgid "No"
-msgstr "Poznámka"
+msgstr "Ne"
 
 #. [objectives]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:149
@@ -382,8 +382,8 @@ msgstr "Tenhle <i>panák</i> bude mít tah?"
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:616
 msgid ""
 "Yes. It’s a magical quintain! If it hits you, it does 3 damage, and has 5 "
-"chances. If it hits every time, you’ll drop from $student_hp to "
-"$($student_hp-15) hitpoints. Brace yourself!"
+"chances. If it hits every time, you’ll drop from $student_hp to $"
+"($student_hp-15) hitpoints. Brace yourself!"
 msgstr ""
 "Ano. Je to kouzelný panák! Když tě zasáhne, ubere 3 body života a má 5 "
 "pokusů. Pokud tě zasáhne pokaždé, zbude ti jen $($student_hp-15) ze "
@@ -2141,8 +2141,8 @@ msgstr ""
 #. [message]: speaker=Galdrad
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1315
 msgid ""
-"Higher level units are powerful, but not invulnerable. We’ll miss you, $unit."
-"name|."
+"Higher level units are powerful, but not invulnerable. We’ll miss you, "
+"$unit.name|."
 msgstr ""
 "Jednotky vyšší úrovně jsou sice silné, ale ne nezranitelné. Budeš nám "
 "chybět, $unit.name|."
@@ -2318,7 +2318,7 @@ msgstr "Agh! Kdo tě teď povede k vítězství?"
 #. [message]: speaker=Galdrad
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1504
 msgid "You have beaten the orcs! Well done."
-msgstr ""
+msgstr "Porazil jsi skřety! Výborně."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1509
@@ -2332,7 +2332,7 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1519
 msgid "Now, continue onwards to play “Heir to the Throne, Classic”..."
-msgstr ""
+msgstr "Nyní přejdi na tažení „Dědic trůnu, klasika“..."
 
 #. [unit_type]: id=Tutorial_Fighter, race=human
 #: data/campaigns/Heir_To_The_Throne_Classic/units/Tutorial_Fighter.cfg:4
@@ -2407,42 +2407,11 @@ msgstr ""
 "<b>u</b>."
 
 #: data/campaigns/Heir_To_The_Throne_Classic/utils/tutorial_utils.cfg:126
-#, fuzzy
-#| msgid "Click a mouse button or press the spacebar to continue..."
 msgid ""
 "\n"
 "\n"
 "<big>Click a mouse button or press the spacebar to continue...</big>"
-msgstr "Pro pokračování klikni myší nebo zmáčkni mezerník..."
-
-#~ msgid "Battle Training — Old Tutorial"
-#~ msgstr "Bojový výcvik – starý tutoriál"
-
-#~ msgid "Tutorial"
-#~ msgstr "Tutoriál"
-
-#~ msgid ""
-#~ "Learn the basics of Wesnoth gameplay with a tutorial.\n"
-#~ "    \n"
-#~ msgstr ""
-#~ "Nauč se v tutoriálu základy hry Wesnoth.\n"
-#~ "    \n"
-
-#~ msgid ""
-#~ "Note: No longer recommended for first-time players. Try <i>The South "
-#~ "Guard</i> instead."
-#~ msgstr ""
-#~ "Poznámka: Pro začínající hráče se již nedoporučuje. Zkus raději <i>Jižní "
-#~ "hlídku</i>."
-
-#~ msgid "Beginner"
-#~ msgstr "Začátečník"
-
-#~ msgid ""
-#~ "You have beaten the orcs! You may want to try one of the novice-level "
-#~ "campaigns next. <i>A Tale of Two Brothers</i> is the easiest and is the "
-#~ "recommended first campaign."
-#~ msgstr ""
-#~ "Porazil jsi skřety! Možná, že pak budeš chtít zkusit jedno z tažení pro "
-#~ "nováčky. Nejjednodušší je <i>Příběh dvou bratrů</i> a je doporučené jako "
-#~ "první."
+msgstr ""
+"\n"
+"\n"
+"<big>Pro pokračování klikni myší nebo zmáčkni mezerník...</big>"
