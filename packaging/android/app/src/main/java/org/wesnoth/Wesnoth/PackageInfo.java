@@ -42,11 +42,9 @@ public class PackageInfo {
 		if (depsString.isEmpty()) {
 			return list; 
 		}
-		
-		Log.d("PackageInfo", "Parsing: " + depsString);
+
 		for (String pkg : depsString.split(",\\s*")) {
 			String[] parts = pkg.split("==");
-			Log.d("PackageInfo", "Parts: " + Arrays.asList(parts));
 			if (parts.length >= 2) {
 				//example: list.put("core", "1.19.19")
 				list.put(parts[0].strip(), parts[1].strip());
@@ -113,7 +111,7 @@ public class PackageInfo {
 	
 	@Override
 	public String toString() {
-		return String.format("Package[id=%s,uiname=%s,version=%s,url=%s]\n[deps=%s]\n[excl=%s]",
+		return String.format("Package[id=%s,uiname=%s,version=%s,url=%s,deps=%s,excl=%s]",
 			id, uiname, version, url, depends, excludes);
 	}
 }
