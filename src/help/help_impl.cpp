@@ -849,7 +849,7 @@ void generate_era_sections(const config& help_cfg, section & sec, int level)
 
 void generate_terrain_sections(section& sec, int /*level*/)
 {
-	std::shared_ptr tdata = terrain_type_data::get();
+	auto tdata = terrain_type_data::get();
 	if (!tdata) {
 		WRN_HP << "When building terrain help sections, couldn't acquire terrain types data, aborting.";
 		return;
