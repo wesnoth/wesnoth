@@ -293,8 +293,6 @@ public class InitActivity extends Activity {
 
 			storeStatus(status);
 
-			runOnUiThread(() -> progressText.setText("Unpacking finished..."));
-
 			Log.d("InitActivity", "Stop unpack");
 
 			// Launch Wesnoth
@@ -360,6 +358,8 @@ public class InitActivity extends Activity {
 		Executors.newSingleThreadExecutor().execute(() -> {
 			runOnUiThread(() -> showProgressScreen());
 
+			initMainDataDir();
+			
 			status = initStatusFile(new File(dataDir, "status.properties"));
 			
 			String msg;
@@ -595,12 +595,15 @@ public class InitActivity extends Activity {
 					out.close();
 				}
 
-				Log.d("Unpack", "Unpacking " + type + ":" + progress.get());
+				Log.d("Unpack", "Unpacking " + type + ": " + progress.get());
 				progress.incrementAndGet();
 			}
-
+			
+			boolean res = applyDeleteList();
+			
 			Log.d("Unpack", "Done unpacking " + type);
-			return true;
+			
+			return res;
 		} catch (ZipException e) {
 			Log.e("Unpack", "ZIP exception", e);
 		} catch (FileNotFoundException e) {
@@ -648,11 +651,15 @@ public class InitActivity extends Activity {
 						new FileOutputStream(new File(destdir, ze.getName())));
 				}
 
-				Log.d("Unpack", "Unpacking " + type + ":" + progress.get() + "/" + max);
+				Log.d("Unpack", "Unpacking " + type + ": " + progress.get() + "/" + max);
 				progress.incrementAndGet();
 			}
 
+			boolean res = applyDeleteList();
+			
 			Log.d("Unpack", "Done unpacking " + type);
+			
+			return res;
 		} catch (ZipException e) {
 			Log.e("Unpack", "ZIP exception", e);
 			return false;
@@ -663,24 +670,34 @@ public class InitActivity extends Activity {
 			Log.e("Unpack", "IO exception", e);
 			return false;
 		}
-		
-		// Delete any files on the deletelist file inside ZIP
+	}
+	
+	/**
+	 * Delete any files on the deletelist file (delete.list on zip root)
+	 * inside ZIP. Deletelist file will be deleted on success.
+	 */
+	private boolean applyDeleteList() {
+		Log.d("InitActivity", "Applying deletelist");
 		File deleteList = new File(dataDir, "delete.list");
 		if (!deleteList.exists()) {
-			 // Unpack finished sucessfully, no deletion needed
+			 // Unpack finished sucessfully and no deletelist, so no deletion needed
+			Log.d("InitActivity", "deletelist " + deleteList.getAbsolutePath() + " not found, skipping");
 			return true;
 		}
 		
 		AtomicInteger progress = new AtomicInteger(1);
-		runOnUiThread(() -> updateProgress("Patching", progress.get()));
+		runOnUiThread(() -> updateProgress("Patching", -1));
 		String line = "";
 		try (BufferedReader reader = Files.newBufferedReader(deleteList.toPath())) {
+			Log.d("Unpack", "Reading deletelist");
 			while ((line = reader.readLine()) != null) {
 				File toDelete = new File(dataDir, line);
 				if (toDelete.exists()) {
 					Log.d("Unpack", "Deleting " + toDelete.getAbsolutePath());
 					toDelete.delete();
-					runOnUiThread(() -> updateProgress("Patching", progress.incrementAndGet()));
+					runOnUiThread(() -> updateProgress("Patching... (" +  progress.incrementAndGet() + ")", -1));
+				} else {
+					Log.d("Unpack", "File " + toDelete.getAbsolutePath() + " doesn't exist.");
 				}
 			}
 			
@@ -688,7 +705,8 @@ public class InitActivity extends Activity {
 		} catch (IOException e) {
 			Log.e("Unpack", "Deleting " + line + " failed.");
 		}
-
+		
+		deleteList.delete();
 		return false;
 	}
 }
