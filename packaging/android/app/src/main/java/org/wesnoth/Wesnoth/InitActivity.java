@@ -29,7 +29,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Enumeration;
@@ -295,8 +294,24 @@ public class InitActivity extends Activity {
 
 			Log.d("InitActivity", "Stop unpack");
 
-			// Launch Wesnoth
-			runOnUiThread(() -> launchWesnoth());
+			if (new File(dataDir, "data").exists()
+				&& new File(dataDir, "fonts").exists()
+				&& new File(dataDir, "sound").exists()
+				&& new File(dataDir, "music").exists())
+			{
+				// Launch Wesnoth
+				runOnUiThread(() -> launchWesnoth());
+			} else {
+				runOnUiThread(() -> {
+					new AlertDialog.Builder(this)
+						.setTitle("Data missing!")
+						.setMessage("Gamedata is missing, please download it to proceed (requires network).")
+						.setPositiveButton("OK", (d, res) -> initialize())
+						.setNegativeButton("Exit", (d, res) -> System.exit(0))
+						.setCancelable(false)
+						.show();
+				});
+			}
 		});
 	}
 
