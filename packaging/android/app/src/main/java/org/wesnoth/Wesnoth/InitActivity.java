@@ -15,6 +15,7 @@
 
 package org.wesnoth.Wesnoth;
 
+import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -28,6 +29,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Enumeration;
@@ -651,13 +653,40 @@ public class InitActivity extends Activity {
 			}
 
 			Log.d("Unpack", "Done unpacking " + type);
-			return true;
 		} catch (ZipException e) {
 			Log.e("Unpack", "ZIP exception", e);
+			return false;
 		} catch (FileNotFoundException e) {
 			Log.e("Unpack", "File not found", e);
+			return false;
 		} catch (IOException e) {
 			Log.e("Unpack", "IO exception", e);
+			return false;
+		}
+		
+		// Delete any files on the deletelist file inside ZIP
+		File deleteList = new File(dataDir, "delete.list");
+		if (!deleteList.exists()) {
+			 // Unpack finished sucessfully, no deletion needed
+			return true;
+		}
+		
+		AtomicInteger progress = new AtomicInteger(1);
+		runOnUiThread(() -> updateProgress("Patching", progress.get()));
+		String line = "";
+		try (BufferedReader reader = Files.newBufferedReader(deleteList.toPath())) {
+			while ((line = reader.readLine()) != null) {
+				File toDelete = new File(dataDir, line);
+				if (toDelete.exists()) {
+					Log.d("Unpack", "Deleting " + toDelete.getAbsolutePath());
+					toDelete.delete();
+					runOnUiThread(() -> updateProgress("Patching", progress.incrementAndGet()));
+				}
+			}
+			
+			return true;
+		} catch (IOException e) {
+			Log.e("Unpack", "Deleting " + line + " failed.");
 		}
 
 		return false;
