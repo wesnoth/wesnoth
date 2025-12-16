@@ -20,10 +20,12 @@ done
 touch patch/delete.list
 for file in `git diff tags/$1..tags/$2 --name-only --diff-filter=D`; do
 	if [[ $file =~ ^(data|images|sounds|music|fonts|translations).* ]]; then
-		echo "$file\n" >> patch/delete.list
+		echo "$file" >> patch/delete.list
 	fi
 done
 
-zip -r patch.zip patch/*
+cd patch
+zip -r ../patch.zip *
+cd ..
 rm -rf patch
 
