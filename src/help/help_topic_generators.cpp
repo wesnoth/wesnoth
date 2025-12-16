@@ -219,7 +219,7 @@ std::string terrain_topic_generator::operator()() const {
 		ss << type_.help_topic_text().str() << "\n";
 	}
 
-	std::shared_ptr tdata = terrain_type_data::get();
+	auto tdata = terrain_type_data::get();
 	if(!tdata) {
 		WRN_HP << "When building terrain help topics, we couldn't acquire any terrain types data";
 		return ss.str();
@@ -822,7 +822,7 @@ std::string unit_topic_generator::operator()() const {
 	// Terrain Modifiers table
 	//
 	std::stringstream().swap(table_ss);
-	if(std::shared_ptr tdata = terrain_type_data::get()) {
+	if(auto tdata = terrain_type_data::get()) {
 		// Print the terrain modifier table of the unit.
 		ss << "\n" << markup::tag("header", _("Terrain Modifiers"));
 

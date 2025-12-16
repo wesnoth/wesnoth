@@ -21,6 +21,7 @@
 #include "config_cache.hpp"
 #include "filesystem.hpp"
 #include "game_config_view.hpp"
+#include "terrain/type_data.hpp"
 #include "utils/optional_fwd.hpp"
 
 class game_classification;
@@ -83,6 +84,8 @@ private:
 	filesystem::binary_paths_manager paths_manager_;
 
 	game_config::config_cache& cache_;
+
+	terrain_type_data tdata_;
 
 	achievements achievements_;
 };

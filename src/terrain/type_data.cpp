@@ -25,14 +25,9 @@
 #define LOG_G LOG_STREAM(info, lg::general())
 #define DBG_G LOG_STREAM(debug, lg::general())
 
-std::shared_ptr<terrain_type_data> terrain_type_data::reset(const game_config_view& game_config)
+terrain_type_data* terrain_type_data::get()
 {
-	singleton_.reset(new terrain_type_data(game_config));
-	return singleton_;
-}
-
-std::shared_ptr<terrain_type_data> terrain_type_data::get()
-{
+	assert(singleton_);
 	return singleton_;
 }
 
@@ -42,6 +37,21 @@ terrain_type_data::terrain_type_data(const game_config_view & game_config)
 	, initialized_(false)
 	, game_config_(game_config)
 {
+	assert(!singleton_);
+	singleton_ = this;
+}
+
+terrain_type_data::~terrain_type_data()
+{
+	assert(singleton_);
+	singleton_ = nullptr;
+}
+
+void terrain_type_data::reset() const
+{
+	terrainList_.clear();
+	tcodeToTerrain_.clear();
+	initialized_ = false;
 }
 
 void terrain_type_data::lazy_initialization() const
