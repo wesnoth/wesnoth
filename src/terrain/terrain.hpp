@@ -84,7 +84,6 @@ public:
 	 */
 	const t_translation::ter_list& mvt_type() const { return mvt_type_; }
 	const t_translation::ter_list& def_type() const { return def_type_; }
-	const t_translation::ter_list& vision_type() const { return vision_type_; }
 	const t_translation::ter_list& union_type() const { return union_type_; }
 
 	/**
@@ -101,8 +100,6 @@ public:
 	 * This is not related to whether the terrain has an overlay. For example,
 	 * Gg^Uf (flat with old mushrooms) is indivisible (it's only Tt), although
 	 * Gg^Tf (flat with new mushrooms) can be divided (in to Gt and Tt).
-	 *
-	 * TODO: should this document vision_type() too?
 	 *
 	 * @param id the terrain
 	 * @param underlying the corresponding mvt_type(), def_type() or union_type()
@@ -243,7 +240,6 @@ private:
 	//This is the internal number used, WML still uses character strings.
 	t_translation::terrain_code number_;
 	t_translation::ter_list mvt_type_;
-	t_translation::ter_list vision_type_;
 	t_translation::ter_list def_type_;
 	t_translation::ter_list union_type_;
 
