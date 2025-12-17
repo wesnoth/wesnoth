@@ -21,6 +21,8 @@
 
 #include <ostream>
 
+struct point;
+
 class surface
 {
 public:
@@ -46,6 +48,9 @@ public:
 	 * this method.
 	 */
 	surface clone() const;
+
+	/** Dimensions of the surface. */
+	point size() const;
 
 	/** Total area of the surface in square pixels. */
 	std::size_t area() const;
