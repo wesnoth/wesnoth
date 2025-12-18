@@ -39,7 +39,6 @@ static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
 
 #include <chrono>
-#include <iostream>
 #include <algorithm>
 
 class PerfTimer {
@@ -105,11 +104,10 @@ public:
 			// Print if 5 seconds have passed since last print
 			if (end - last_print >= std::chrono::seconds(5)) {
 				double ms = accumulated_ns / 1'000'000.0;
-				std::cout << "[PerfTimer]: "
+				PLAIN_LOG << "[PerfTimer]: "
 					<< ms << "ms over "
 					<< call_count << " calls (avg "
-					<< (ms / call_count) << "ms)"
-					<< std::endl;
+					<< (ms / call_count) << "ms)";
 
 				// Reset stats
 				accumulated_ns = 0.0;
@@ -487,6 +485,8 @@ surface scale_surface_sharp(const surface& surf, int w, int h)
 
 void adjust_surface_color(surface& nsurf, int red, int green, int blue)
 {
+//	PerfTimer timer;
+	
 	if(nsurf && (red != 0 || green != 0 || blue != 0)) {
 		surface_lock lock(nsurf);
 		uint32_t* pixels = lock.pixels();
@@ -871,22 +871,15 @@ bool in_mask_surface(const surface& nsurf, const surface& nmask)
 		const uint32_t* mask_ptr = mlock.pixels();
 		std::size_t total_pixels = static_cast<std::size_t>(nmask->w) * static_cast<std::size_t>(nmask->h);
 
-		bool simd_used = false;
+		for (std::size_t i = 0; i < total_pixels; ++i) {
+			const uint32_t mask_alpha = mask_ptr[i] >> 24;
 
-		// Attempt SIMD. Note: If SIMD finds a violation, it sets is_contained=false and returns true.
-		simd_used = in_mask_surface_simd(surf_ptr, mask_ptr, total_pixels, is_contained);
-
-		if (!simd_used) { // SCALAR FALLBACK
-			for (std::size_t i = 0; i < total_pixels; ++i) {
-				const uint32_t mask_alpha = mask_ptr[i] >> 24;
-
-				// If mask is transparent (alpha=0), surface must also be transparent
-				if (mask_alpha == 0) {
-					const uint32_t surf_alpha = surf_ptr[i] >> 24;
-					if (surf_alpha > 0) {
-						is_contained = false;
-						break; // Violation found, exit immediately
-					}
+			// If mask is transparent (alpha=0), surface must also be transparent
+			if (mask_alpha == 0) {
+				const uint32_t surf_alpha = surf_ptr[i] >> 24;
+				if (surf_alpha > 0) {
+					is_contained = false;
+					break; // Violation found, exit immediately
 				}
 			}
 		}
@@ -1421,23 +1414,20 @@ surface rotate_90_surface(const surface& surf, bool clockwise)
 
 void flip_surface(surface& nsurf)
 {
-	if(nsurf) {
+//	PerfTimer timer;
+	
+	if (nsurf) {
 		surface_lock lock(nsurf);
 		uint32_t* const pixels = lock.pixels();
 
-		for (int y = 0; y != nsurf->h; ++y) {
-			uint32_t* const row_ptr = pixels + y * nsurf->w;
+		bool simd_used = flip_image_simd(pixels, nsurf->w, nsurf->h);
 
-			// Attempt SIMD-accelerated row flip
-			if (flip_row_simd(row_ptr, nsurf->w)) {
-				continue;
-			}
-
-			// Fallback: Original scalar flip for the row
-			for (int x = 0; x != nsurf->w / 2; ++x) {
-				const int index1 = x;
-				const int index2 = nsurf->w - x - 1;
-				std::swap(row_ptr[index1], row_ptr[index2]);
+		if (!simd_used) {
+			for (int y = 0; y < nsurf->h; ++y) {
+				uint32_t* const row_ptr = pixels + y * nsurf->w;
+				for (int x = 0; x < nsurf->w / 2; ++x) {
+					std::swap(row_ptr[x], row_ptr[nsurf->w - x - 1]);
+				}
 			}
 		}
 	}
@@ -1497,6 +1487,8 @@ surface get_surface_portion(const surface &src, rect &area)
 
 void apply_surface_opacity(surface& surf, float opacity)
 {
+	
+//	PerfTimer timer;
 	if (surf == nullptr) return;
 
 	// Convert float opacity to integer modifier (0-255)
