@@ -452,7 +452,7 @@ static int process_command_args(commandline_options& cmdline_opts)
 #endif
 		// if a pre-defined path does not exist this will empty it
 		game_config::path = filesystem::normalize_path(game_config::path, true, true);
-		if(game_config::path.empty()) {
+		if(game_config::path.empty() || filesystem::is_empty_directory(game_config::path)) {
 			if(std::string exe_dir = filesystem::get_exe_dir(); !exe_dir.empty()) {
 				if(std::string auto_dir = filesystem::autodetect_game_data_dir(std::move(exe_dir)); !auto_dir.empty()) {
 					if(!cmdline_opts.nobanner) {
