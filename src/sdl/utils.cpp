@@ -486,7 +486,7 @@ surface scale_surface_sharp(const surface& surf, int w, int h)
 void adjust_surface_color(surface& nsurf, int red, int green, int blue)
 {
 //	PerfTimer timer;
-	
+
 	if(nsurf && (red != 0 || green != 0 || blue != 0)) {
 		surface_lock lock(nsurf);
 		uint32_t* pixels = lock.pixels();
@@ -817,7 +817,7 @@ bool mask_surface(surface& nsurf, const surface& nmask, const std::string& filen
 		return false;
 	}
 
-	uint32_t cumulative_alpha{0};
+	bool empty = true;
 	{
 		surface_lock lock(nsurf);
 		const_surface_lock mlock(nmask);
@@ -846,7 +846,7 @@ bool mask_surface(surface& nsurf, const surface& nmask, const std::string& filen
 		}
 	}
 
-	return cumulative_alpha == 0;
+	return empty;
 }
 
 bool in_mask_surface(const surface& nsurf, const surface& nmask)
@@ -1416,7 +1416,7 @@ surface rotate_90_surface(const surface& surf, bool clockwise)
 void flip_surface(surface& nsurf)
 {
 //	PerfTimer timer;
-	
+
 	if (nsurf) {
 		surface_lock lock(nsurf);
 		uint32_t* const pixels = lock.pixels();
@@ -1488,7 +1488,6 @@ surface get_surface_portion(const surface &src, rect &area)
 
 void apply_surface_opacity(surface& surf, float opacity)
 {
-	
 //	PerfTimer timer;
 	if (surf == nullptr) return;
 

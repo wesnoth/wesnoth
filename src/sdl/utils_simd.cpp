@@ -445,7 +445,7 @@
 			uint32x4_t min3 = vreinterpretq_u32_u8(vminq_u8(vreinterpretq_u8_u32(s3), vreinterpretq_u8_u32(m3)));
 
 			// Accumulate "Dirty": We OR the full results into the accumulator.
-			// We don't care about the RGB bits being set here; we will mask them off 
+			// We don't care about the RGB bits being set here; we will mask them off
 			// *outside* the loop. This saves 4 VAND instructions per loop.
 			uint32x4_t acc_tmp0 = vorrq_u32(min0, min1);
 			uint32x4_t acc_tmp1 = vorrq_u32(min2, min3);
@@ -677,7 +677,7 @@
 		// ------------------------------------------------------------
 		// Scalar Remainder (Handles last 0-15 pixels)
 		// ------------------------------------------------------------
-		// Since the scalar logic is simple, we don't need a complex vector remainder 
+		// Since the scalar logic is simple, we don't need a complex vector remainder
 		// for the last few pixels.
 		for (; offset < total_pixels; ++offset) {
 			uint32_t pixel = *ptr;
