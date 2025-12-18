@@ -3,23 +3,25 @@
 # Check number of arguments, print usage message
 if (($# != 2)); then
 	echo "Usage: ./create_patch.sh tag1 tag2"
-	echo "This will checkout tag2, backup any critical files."
 	exit 0
 fi
 
-git checkout $2
-
 mkdir patch
 
-# find out what changed between two given tags
+# find out what changed between two given tags, then copy those files
+# from git into a temporary patch directory.
 for file in `git diff tags/$1..tags/$2 --name-only --diff-filter=AM`; do
 	if [[ $file =~ ^(data|images|sounds|music|fonts|translations).* ]]; then
-		install -Dv "../../$file" "patch/$file"
+		if [[ ! -d `dirname $file` ]]; then
+			mkdir -pv "patch/`dirname $file`"
+		fi
+		
+		git show $2:$file > "patch/$file"
 	fi
 done
 
-# list of files to be deleted during application of patch
-
+# write list of files to be deleted during application of patch into delete.list
+# put it inside patch. This file must be in patch.zip root.
 touch patch/delete.list
 for file in `git diff tags/$1..tags/$2 --name-only --diff-filter=D`; do
 	if [[ $file =~ ^(data|images|sounds|music|fonts|translations).* ]]; then
@@ -31,5 +33,3 @@ cd patch
 zip -r ../patch.zip *
 cd ..
 rm -rf patch
-
-git checkout HEAD@{1}
