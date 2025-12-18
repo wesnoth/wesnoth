@@ -817,7 +817,7 @@ bool mask_surface(surface& nsurf, const surface& nmask, const std::string& filen
 		return false;
 	}
 
-	bool empty = true;
+	uint32_t cumulative_alpha{0};
 	{
 		surface_lock lock(nsurf);
 		const_surface_lock mlock(nmask);
@@ -845,7 +845,8 @@ bool mask_surface(surface& nsurf, const surface& nmask, const std::string& filen
 			}
 		}
 	}
-	return empty;
+
+	return cumulative_alpha == 0;
 }
 
 bool in_mask_surface(const surface& nsurf, const surface& nmask)

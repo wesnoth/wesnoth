@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: unnamed project\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-11-18 02:02 UTC\n"
-"PO-Revision-Date: 2025-05-10 16:43+0200\n"
+"PO-Revision-Date: 2025-12-01 23:47+0100\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <teammail>\n"
 "Language: it\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.2.2\n"
 "X-Poedit-Basepath: ../../../../Sources/wesnoth\n"
 "X-Poedit-SearchPath-0: .\n"
 
@@ -52,13 +52,12 @@ msgstr ""
 
 #. [campaign]: id=Winds_of_Fate
 #: data/campaigns/Winds_of_Fate/_main.cfg:22
-#, fuzzy
-#| msgid "<i>Features full recall costs and no gold carryover.</i>"
 msgid ""
 "<i>Features XP-based recall costs and frequent scenarios with no turn limits."
 "</i>"
 msgstr ""
-"<i>Caratterizzata da costi di richiamo completi e nessun riporto di oro.</i>"
+"<i>Caratterizzata da costi di richiamo basati sui PE e frequenti scenari "
+"senza limiti di turno.</i>"
 
 #. [campaign]: id=Winds_of_Fate
 #: data/campaigns/Winds_of_Fate/_main.cfg:23
@@ -551,18 +550,13 @@ msgstr ""
 
 #. [message]: type=Fire Guardian
 #: data/campaigns/Winds_of_Fate/scenarios/01_The_Hunt.cfg:358
-#, fuzzy
-#| msgid ""
-#| "<span  size='5000' font-style='italic'>Ward thyselves for it has arrived. "
-#| "The grey light that shades the living worlds. The calm wind that snuffs "
-#| "warm souls. The Faerie reached this world.</span>"
 msgid ""
 "Ward thyselves for it has arrived. The grey light that shades the living "
 "worlds. The calm wind that snuffs warm souls. The Faerie reached this world."
 msgstr ""
-"<span  size='5000' font-style='italic'>Ward è arrivato. La luce grigia che "
-"oscura i mondi viventi. Il vento calmo che soffoca le calde anime. Il Regno "
-"delle Fate ha trovato questo mondo.</span>"
+"Ward in persona è arrivato. La luce grigia che oscura i mondi viventi. Il "
+"vento calmo che soffoca le calde anime. Il Regno delle Fate ha trovato "
+"questo mondo."
 
 #. [message]: speaker=Gorlack
 #: data/campaigns/Winds_of_Fate/scenarios/01_The_Hunt.cfg:362
@@ -1716,10 +1710,8 @@ msgstr "Spettatori"
 
 #. [objective]: condition=win
 #: data/campaigns/Winds_of_Fate/scenarios/03_The_Contention.cfg:211
-#, fuzzy
-#| msgid "Hold all villages at the end of turn 18"
 msgid "Hold more villages at the end of turn 24"
-msgstr "Cattura tutti i villaggi alla fine del turno 18"
+msgstr "Controlla il maggior numero di villaggi alla fine del turno 24"
 
 #. [objective]: condition=win
 #: data/campaigns/Winds_of_Fate/scenarios/03_The_Contention.cfg:216
@@ -1728,10 +1720,8 @@ msgstr "Sconfitta di Karron"
 
 #. [objective]: condition=lose
 #: data/campaigns/Winds_of_Fate/scenarios/03_The_Contention.cfg:220
-#, fuzzy
-#| msgid "Not hold all villages at the end of turn 18"
 msgid "Fail to hold more villages at the end of turn 24"
-msgstr "Mancata cattura di tutti i villaggi alla fine del turno 18"
+msgstr "Controlla il minor numero di villaggi alla fine del turno 24"
 
 #. [objective]: condition=lose
 #: data/campaigns/Winds_of_Fate/scenarios/03_The_Contention.cfg:224
@@ -3581,7 +3571,7 @@ msgstr ""
 "No nonnsssenssso! Creature tu visssto chiama ssse ssstesssi ‘uomini’. Sono "
 "goffi, brutali, odiosssi mossstri coperti di pelle umida di rossspo. Sssono "
 "mercenari chiamati dal sssottossuolo del mondo dagli elfi della profonda, "
-"osscura Foressta di Wesssmere.\n"
+"ossscura Foresssta di Wesssmere.\n"
 "\n"
 "Quesssti umani hanno masssacrato tutti i miei simili tranne il mio clan! "
 "Sssulle rovine del mio covo hanno eretto il loro torreggiante Fort Elenssse. "
@@ -5954,10 +5944,8 @@ msgstr ""
 
 #. [message]: speaker=Khrakrahs
 #: data/campaigns/Winds_of_Fate/scenarios/09_Ancestor.cfg:532
-#, fuzzy
-#| msgid "<span color='cyan'>Zedrix, your Heart shall Reveal its Truth.</span>"
 msgid "Zedrix, your Heart shall Reveal its Truth."
-msgstr "<span color='cyan'>Zedrix, il tuo cuore Rivelerà la sua Verità.</span>"
+msgstr "Zedrix, il tuo cuore Rivelerà la sua Verità."
 
 #. [message]: speaker=Zedrix
 #: data/campaigns/Winds_of_Fate/scenarios/09_Ancestor.cfg:543
@@ -6070,14 +6058,10 @@ msgstr "Sopravvivi per 18 turni"
 #. [note]
 #: data/campaigns/Winds_of_Fate/scenarios/10_Fire_Meets_Steel.cfg:311
 #: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:203
-#, fuzzy
-#| msgid ""
-#| "The new eyrie doubles village income and support and trains veteran "
-#| "recruits"
 msgid "The presence of our new eyrie doubles village income and support"
 msgstr ""
-"Il nuovo nido raddoppia le entrate del villaggio e fornisce supporto e "
-"addestramento alle reclute veterane"
+"La presenza del nostro nuovo nido raddoppia le entrate del villaggio e il "
+"suo supporto"
 
 #. [note]
 #: data/campaigns/Winds_of_Fate/scenarios/10_Fire_Meets_Steel.cfg:314
@@ -6376,7 +6360,7 @@ msgstr ""
 "\n"
 "Ascpetta, mi scia che nono ho ancora dato l’ordine...\n"
 "\n"
-"Bene ragazzii, attacco!"
+"Bene ragazzi, all’attacco!"
 
 #. [message]: speaker=Thurdakor
 #. "What's this? How did you get all the way over here?"
@@ -6392,8 +6376,8 @@ msgid ""
 "deep."
 msgstr ""
 "Ammira quali fini hai raggiunto.\n"
-"Non potrai scacciarci da queste cime di quanto noi potremmo cavarti fuori "
-"daigli abissi."
+"Non potrai scacciarci da queste cime più di quanto noi potremmo cavarti "
+"fuori dagli abissi."
 
 #. [message]: speaker=Gorlack
 #: data/campaigns/Winds_of_Fate/scenarios/10_Fire_Meets_Steel.cfg:628
@@ -7639,17 +7623,13 @@ msgstr "Mio drago, vi ho deluso..."
 
 #. [floating_text]
 #: data/campaigns/Winds_of_Fate/utils/macros.cfg:80
-#, fuzzy
-#| msgid "Intendant"
 msgid "fighter intendant"
-msgstr "Intendente"
+msgstr "intendente combattente"
 
 #. [floating_text]
 #: data/campaigns/Winds_of_Fate/utils/macros.cfg:108
-#, fuzzy
-#| msgid "Intendant"
 msgid "clasher intendant"
-msgstr "Intendente"
+msgstr "intendente distruttore"
 
 #. [floating_text]
 #: data/campaigns/Winds_of_Fate/utils/macros.cfg:208

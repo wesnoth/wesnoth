@@ -42,7 +42,6 @@ terrain_type::terrain_type()
 	, help_topic_text_()
 	, number_(t_translation::VOID_TERRAIN)
 	, mvt_type_(1, t_translation::VOID_TERRAIN)
-	, vision_type_(1, t_translation::VOID_TERRAIN)
 	, def_type_(1, t_translation::VOID_TERRAIN)
 	, union_type_(1, t_translation::VOID_TERRAIN)
 	, submerge_(0.0)
@@ -83,7 +82,6 @@ terrain_type::terrain_type(const config& cfg)
 	, help_topic_text_(cfg["help_topic_text"].t_str())
 	, number_(t_translation::read_terrain_code(cfg["string"].str()))
 	, mvt_type_()
-	, vision_type_()
 	, def_type_()
 	, union_type_()
 	, submerge_(cfg["submerge"].to_double())
@@ -136,12 +134,10 @@ terrain_type::terrain_type(const config& cfg)
 
 	mvt_type_.push_back(number_);
 	def_type_.push_back(number_);
-	vision_type_.push_back(number_);
 
 	const t_translation::ter_list& alias = t_translation::read_list(cfg["aliasof"].str());
 	if(!alias.empty()) {
 		mvt_type_ = alias;
-		vision_type_ = alias;
 		def_type_ = alias;
 	}
 
@@ -155,18 +151,8 @@ terrain_type::terrain_type(const config& cfg)
 		def_type_ = def_alias;
 	}
 
-	const t_translation::ter_list& vision_alias = t_translation::read_list(cfg["vision_alias"].str());
-	if(!vision_alias.empty()) {
-		// Vision costs are calculated in movetype.cpp, but they're calculated based on gamemap::underlying_mvt_terrain().
-		// Having vision costs that are different to movement costs is still supported, but having separate aliases seems
-		// an edge case that shouldn't be introduced until we're ready to test it.
-		deprecated_message("vision_alias", DEP_LEVEL::REMOVED, {1, 15, 2}, "vision_alias was never completely implemented, vision is calculated using mvt_alias instead");
-		vision_type_ = vision_alias;
-	}
-
 	union_type_ = mvt_type_;
 	union_type_.insert( union_type_.end(), def_type_.begin(), def_type_.end() );
-	union_type_.insert( union_type_.end(), vision_type_.begin(), vision_type_.end() );
 
 	// remove + and -
 	utils::erase(union_type_, t_translation::MINUS);
@@ -212,7 +198,6 @@ terrain_type::terrain_type(const terrain_type& base, const terrain_type& overlay
 	, help_topic_text_()
 	, number_(t_translation::terrain_code(base.number_.base, overlay.number_.overlay))
 	, mvt_type_(overlay.mvt_type_)
-	, vision_type_(overlay.vision_type_)
 	, def_type_(overlay.def_type_)
 	, union_type_()
 	, submerge_(base.submerge_)
@@ -254,11 +239,9 @@ terrain_type::terrain_type(const terrain_type& base, const terrain_type& overlay
 
 	merge_alias_lists(mvt_type_, base.mvt_type_);
 	merge_alias_lists(def_type_, base.def_type_);
-	merge_alias_lists(vision_type_, base.vision_type_);
 
 	union_type_ = mvt_type_;
 	union_type_.insert( union_type_.end(), def_type_.begin(), def_type_.end() );
-	union_type_.insert( union_type_.end(), vision_type_.begin(), vision_type_.end() );
 
 	// remove + and -
 	utils::erase(union_type_, t_translation::MINUS);
@@ -299,7 +282,6 @@ bool terrain_type::operator==(const terrain_type& other) const {
 		&& editor_name_.base_str() == other.editor_name_.base_str()
 		&& number_                == other.number_
 		&& mvt_type_              == other.mvt_type_
-		&& vision_type_           == other.vision_type_
 		&& def_type_              == other.def_type_
 		&& union_type_            == other.union_type_
 		&& height_adjust_         == other.height_adjust_

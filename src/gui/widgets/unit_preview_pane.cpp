@@ -149,7 +149,7 @@ static inline std::string get_mp_tooltip(int total_movement, const std::function
 	std::ostringstream tooltip;
 	tooltip << markup::tag("big", _("Movement Costs:"));
 
-	std::shared_ptr tdata = terrain_type_data::get();
+	auto tdata = terrain_type_data::get();
 	if(!tdata) {
 		return "";
 	}

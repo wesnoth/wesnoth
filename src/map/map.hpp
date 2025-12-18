@@ -177,9 +177,6 @@ class gamemap : public gamemap_base
 public:
 
 	/* Get info from the terrain_type_data object about the terrain at a location */
-	const t_translation::ter_list& underlying_mvt_terrain(const map_location& loc) const;
-	const t_translation::ter_list& underlying_def_terrain(const map_location& loc) const;
-	const t_translation::ter_list& underlying_union_terrain(const map_location& loc) const;
 	std::string get_terrain_string(const map_location& loc) const;
 	std::string get_terrain_editor_string(const map_location& loc) const;
 	std::string get_underlying_terrain_string(const map_location& loc) const;
@@ -249,7 +246,7 @@ private:
 	 */
 	std::string_view strip_legacy_header(std::string_view data) const;
 
-	std::shared_ptr<terrain_type_data> tdata_;
+	terrain_type_data* tdata_;
 
 protected:
 	std::vector<map_location> villages_;
