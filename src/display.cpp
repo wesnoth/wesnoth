@@ -310,7 +310,9 @@ texture display::get_flag(const map_location& loc)
 	for(const team& t : context().teams()) {
 		if(t.owns_village(loc) && (!fogged(loc) || !viewing_team().is_enemy(t.side()))) {
 			auto& flag = flags_[t.side() - 1];
-			flag.update_last_draw_time();
+			if(flag.need_update()) {
+				flag.advance_to_current_frame();
+			}
 
 			const image::locator& image_flag = animate_map_
 				? flag.get_current_frame()
@@ -3040,7 +3042,7 @@ void display::invalidate_animations_location(const map_location& loc)
 void display::invalidate_animations()
 {
 	// There are timing issues with this, but i'm not touching it.
-	new_animation_frame();
+	update_animation_timers(display::get_singleton()->turbo_speed());
 	animate_map_ = prefs::get().animate_map();
 	if(animate_map_) {
 		for(const map_location& loc : get_visible_hexes()) {
