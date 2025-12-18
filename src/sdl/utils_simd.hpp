@@ -1,6 +1,6 @@
 /*
 	Copyright (C) 2003 - 2025
-	by David White <dave@whitevine.net>
+	by Durzi/mentos987
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -26,34 +26,16 @@
  */
 
  /**
-  * Optimized implementation for mask_surface.
-  * Modifies the alpha channel of the surface pixels based on the mask.
-  *
-  * @param surf_ptr      Pointer to the source surface pixels (start of buffer).
-  * @param mask_ptr      Pointer to the mask surface pixels (start of buffer).
+  * @brief Modifies the alpha channel of the surface pixels based on the mask.
+  * @param surf_ptr      Pointer to the source surface pixels.
+  * @param mask_ptr      Pointer to the mask surface pixels.
   * @param total_pixels  Total number of pixels to process.
   * @param empty         Output parameter: set to false if any resulting pixel is non-transparent.
   * (Should be initialized to true by the caller).
-  *
   * @return              true if a SIMD path was executed (SSE2/NEON).
   * false if the function fell back to scalar or no SIMD was available.
   */
 bool mask_surface_simd(uint32_t* surf_ptr, const uint32_t* mask_ptr, std::size_t total_pixels, bool& empty);
-
-/**
- * Optimized implementation for in_mask_surface.
- * Checks if the surface fits entirely within the non-transparent area of the mask.
- *
- * @param surf_ptr      Pointer to the source surface pixels.
- * @param mask_ptr      Pointer to the mask surface pixels.
- * @param total_pixels  Total number of pixels to process.
- * @param fits          Output parameter: set to false if a mismatch is found.
- * (Should be initialized to true by the caller).
- *
- * @return              true if a SIMD path was executed (SSE2/NEON).
- * false if the function fell back to scalar or no SIMD was available.
- */
-bool in_mask_surface_simd(const uint32_t* surf_ptr, const uint32_t* mask_ptr, std::size_t total_pixels, bool& fits);
 
 /**
  * @brief Applies an alpha modification to the whole surface using SIMD.
@@ -71,9 +53,10 @@ bool apply_surface_opacity_simd(uint32_t* surf_ptr, std::size_t total_pixels, ui
 bool adjust_surface_color_simd(uint32_t* surf_ptr, std::size_t total_pixels, int r, int g, int b);
 
 /**
- * @brief Flips the order of pixels (reverses a row) using SIMD.
- * @param row_ptr Pointer to the start of the pixel row.
- * @param width_total_pixels The width number of pixels in the row.
- * @return true if SIMD optimization was used, false otherwise (e.g., width too small or no SIMD support).
+ * @brief Flips the order of pixels (reverses each row) for an image using SIMD.
+ * @param pixel_pointer Pointer to the start of the image buffer.
+ * @param width The width of the row in pixels.
+ * @param height The number of rows in the image.
+ * @return true if SIMD optimization was used, false otherwise.
  */
-bool flip_row_simd(uint32_t* row_ptr, std::size_t width_total_pixels);
+bool flip_image_simd(uint32_t* pixel_pointer, std::size_t width, std::size_t height);

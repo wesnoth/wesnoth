@@ -1,6 +1,6 @@
 /*
 	Copyright (C) 2003 - 2025
-	by David White <dave@whitevine.net>
+	by Durzi/mentos987
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -15,525 +15,780 @@
 
 // This file contains optimisations for functions in the utils.cpp file.
 // These optimisations are mostly done by parallelizing operations using SIMD and unrolling loops.
-// This file is divided into sections for: platform detection, SIMD traits, SIMD implementations and dispatchers.
+// This file is divided into sections for: platform detection, AVX2 implementations, NEON implementations, and dispatcher functions.
 
 #include "utils_simd.hpp"
 
 // ============================================================================
-// PLATFORM DETECTION,INTRINSICS & SIMD TRAITS SELECTION
+// PLATFORM DETECTION
 // ============================================================================
 
-// Ensure __SSE2__ is defined. Microsoft Visual C++ does not define this macro by default,
-// 64-bit x86 builds (GCC/Clang/MSVC) mandate SSE2 support. Or MSVC 32-bit builds: _M_IX86_FP >= 2 guarantees SSE2 support.
-#if !defined(__SSE2__) && (defined(__x86_64__) || defined(_M_X64) || (defined(_MSC_VER) && defined(_M_IX86_FP) && _M_IX86_FP >= 2))
-#define __SSE2__
-#endif
+// x86/x64 SSE2
+#if defined(__SSE2__) || \
+    defined(_M_X64) || \
+    (defined(_MSC_VER) && defined(_M_IX86_FP) && _M_IX86_FP >= 2) // MSVC 86 does not define __SSE2__ by default, even if supported
 
-#if defined(__SSE2__)
 #include <emmintrin.h>
-#define SIMD_IMPLEMENTED true
+#define SIMD_SSE2 1
+#define SIMD_NEON 0
 
-#elif defined(__ARM_NEON)
+// ARM NEON
+#elif defined(__ARM_NEON) || defined(__aarch64__)
+
 #include <arm_neon.h>
-#define SIMD_IMPLEMENTED true
+#define SIMD_NEON 1
+#define SIMD_SSE2 0
 
+// No SIMD support
 #else
-#define SIMD_IMPLEMENTED false
+#define SIMD_SSE2 0
+#define SIMD_NEON 0
 #endif
 
-namespace {
+// ============================================================================
+// SSE2 IMPLEMENTATIONS
+// ============================================================================
 
-	// ============================================================================
-	// SIMD TRAITS (Abstraction Layer)
-	// ============================================================================
+#if (SIMD_SSE2)
 
-#if defined(__SSE2__)
-	struct SSE2Traits {
-		using type = __m128i; // SSE2's 128-bit integer vector type
-		static constexpr int width = 4; // Number of 32-bit elements (pixels) in the vector
-		static constexpr int vectors_per_loop = 4; // Number of vectors processed in the main unrolled loop
-
-		// -- Lifecycle --
-		static inline type setzero() { return _mm_setzero_si128(); } // Sets all bits in the 128-bit vector to zero
-		static inline type set1(uint32_t v) { return _mm_set1_epi32(v); } // Sets all four 32-bit lanes to the scalar value 'v'
-		static inline type load(const uint32_t* p) { return _mm_loadu_si128(reinterpret_cast<const type*>(p)); } // Loads 16 bytes (4x32-bit) from unaligned memory
-		static inline void store(uint32_t* p, type v) { _mm_storeu_si128(reinterpret_cast<type*>(p), v); } // Stores 16 bytes (4x32-bit) to unaligned memory
-
-		// -- Bitwise Logic --
-		static inline type bitwise_and(type a, type b) { return _mm_and_si128(a, b); } // Bitwise AND of 128-bit vectors
-		static inline type bitwise_or(type a, type b) { return _mm_or_si128(a, b); } // Bitwise OR of 128-bit vectors
-		static inline type bitwise_xor(type a, type b) { return _mm_xor_si128(a, b); } // Bitwise XOR of 128-bit vectors
-
-		// -- Comparison & Checks --
-		static inline type cmpeq_32(type a, type b) { return _mm_cmpeq_epi32(a, b); } // Compares packed 32-bit integers for equality, returns all 1s or all 0s for each lane
-
-		static inline bool check_any_nonzero(type v) { // Returns true if any bit in the vector is set to 1
-			return _mm_movemask_epi8(_mm_cmpeq_epi8(v, _mm_setzero_si128())) != 0xFFFF; // _mm_movemask_epi8 creates a 16-bit mask from the MSB of each byte. If v is all zeros, cmpeq(v, zero) is all ones, movemask is 0xFFFF.
-		}
-
-		// -- Arithmetic --
-		static inline type min_u8(type a, type b) { return _mm_min_epu8(a, b); } // Minimum of packed unsigned 8-bit integers
-		static inline type add_saturated_u8(type a, type b) { return _mm_adds_epu8(a, b); } // Saturated add of packed unsigned 8-bit integers
-		static inline type sub_saturated_u8(type a, type b) { return _mm_subs_epu8(a, b); } // Saturated subtract of packed unsigned 8-bit integers
-		static inline type add_16(type a, type b) { return _mm_add_epi16(a, b); } // Add packed 16-bit integers
-		static inline type mullo_16(type a, type b) { return _mm_mullo_epi16(a, b); } // Multiply packed 16-bit integers (low 16 bits of result)
-
-		// -- Shifts --
-		static inline type srl_32(type a, int i) { return _mm_srli_epi32(a, i); } // Logical right shift packed 32-bit integers by immediate 'i'
-		static inline type sll_32(type a, int i) { return _mm_slli_epi32(a, i); } // Logical left shift packed 32-bit integers by immediate 'i'
-
-		// -- Specialized Composites --
-
-		static inline type reverse_lanes_32(type v) { // Reverses the order of 32-bit lanes: [A, B, C, D] -> [D, C, B, A]
-			return _mm_shuffle_epi32(v, _MM_SHUFFLE(0, 1, 2, 3)); // Shuffles 32-bit lanes based on a control mask
-		}
-
-		static inline type div_255_u16(type v) { // Calculates (v / 255) for 16-bit integers using the fast approximation: (x + 128 + (x >> 8)) >> 8
-			const type c128 = _mm_set1_epi16(128);
-			type tmp = _mm_add_epi16(v, c128);
-			type tmp_div8 = _mm_srli_epi16(v, 8);
-			return _mm_srli_epi16(_mm_add_epi16(tmp, tmp_div8), 8);
-		}
-	};
-#endif
-
-#if defined(__ARM_NEON)
-	struct NeonTraits {
-		using type = uint32x4_t; // NEON's 128-bit vector type containing four 32-bit unsigned integers
-		static constexpr int width = 4; // Number of 32-bit elements (pixels) in the vector
-		static constexpr int vectors_per_loop = 8; // Number of vectors processed in the main unrolled loop
-
-		// Helper casts to reduce visual noise
-		static inline uint32x4_t to_u32(uint8x16_t v) { return vreinterpretq_u32_u8(v); } // Reinterpret 16x8-bit vector as 4x32-bit vector
-		static inline uint32x4_t to_u32(uint16x8_t v) { return vreinterpretq_u32_u16(v); } // Reinterpret 8x16-bit vector as 4x32-bit vector
-		static inline uint8x16_t to_u8(uint32x4_t v) { return vreinterpretq_u8_u32(v); } // Reinterpret 4x32-bit vector as 16x8-bit vector
-		static inline uint16x8_t to_u16(uint32x4_t v) { return vreinterpretq_u16_u32(v); } // Reinterpret 4x32-bit vector as 8x16-bit vector
-
-		// -- Lifecycle --
-		static inline type setzero() { return vdupq_n_u32(0); } // Sets all 32-bit lanes to 0
-		static inline type set1(uint32_t v) { return vdupq_n_u32(v); } // Sets all four 32-bit lanes to the scalar value 'v'
-		static inline type load(const uint32_t* p) { return vld1q_u32(p); } // Loads 16 bytes (4x32-bit) from memory (naturally aligned or unaligned)
-		static inline void store(uint32_t* p, type v) { vst1q_u32(p, v); } // Stores 16 bytes (4x32-bit) to memory
-
-		// -- Bitwise Logic --
-		static inline type bitwise_and(type a, type b) { return vandq_u32(a, b); } // Bitwise AND of 128-bit vectors
-		static inline type bitwise_or(type a, type b) { return vorrq_u32(a, b); } // Bitwise OR of 128-bit vectors
-		static inline type bitwise_xor(type a, type b) { return veorq_u32(a, b); } // Bitwise XOR of 128-bit vectors
-
-		// -- Comparison & Checks --
-		static inline type cmpeq_32(type a, type b) { return vceqq_u32(a, b); } // Compares packed 32-bit integers for equality, returns all 1s or all 0s for each lane
-
-		static inline bool check_any_nonzero(type v) { // Returns true if any bit in the vector is set to 1
-			uint32x2_t tmp = vorr_u32(vget_low_u32(v), vget_high_u32(v)); // Fold 128-bit vector down to a single 32-bit value. Bitwise OR of the two 64-bit halves
-			return vget_lane_u32(vpmax_u32(tmp, tmp), 0) != 0; // Get the max of the two elements and check if it's non-zero
-		}
-
-		// -- Arithmetic --
-		static inline type min_u8(type a, type b) { return to_u32(vminq_u8(to_u8(a), to_u8(b))); } // Minimum of packed unsigned 8-bit integers
-		static inline type add_saturated_u8(type a, type b) { return to_u32(vqaddq_u8(to_u8(a), to_u8(b))); } // Saturated add of packed unsigned 8-bit integers
-		static inline type sub_saturated_u8(type a, type b) { return to_u32(vqsubq_u8(to_u8(a), to_u8(b))); } // Saturated subtract of packed unsigned 8-bit integers
-		static inline type add_16(type a, type b) { return to_u32(vaddq_u16(to_u16(a), to_u16(b))); } // Add packed 16-bit integers
-		static inline type mullo_16(type a, type b) { return to_u32(vmulq_u16(to_u16(a), to_u16(b))); } // Multiply packed 16-bit integers
-
-		// -- Shifts --
-		static inline type srl_32(type a, int i) { return vshlq_u32(a, vdupq_n_s32(-i)); } // Logical right shift packed 32-bit integers by 'i'
-		static inline type sll_32(type a, int i) { return vshlq_u32(a, vdupq_n_s32(i)); } // Logical left shift packed 32-bit integers by 'i'
-
-		// -- Specialized Composites --
-
-		static inline type reverse_lanes_32(type v) {
-			uint32x4_t rev32 = vrev64q_u32(v); // [0,1,2,3] -> [1,0,3,2] .Reverses the order of 32-bit elements in each 64-bit half
-			return vextq_u32(rev32, rev32, 2); // [1,0,3,2] -> [3,2,1,0] (Swap 64-bit halves). Extract vector by shifting/wrapping the elements (moves lane 2 to lane 0, 3 to 1, etc.)
-		}
-
-		static inline type div_255_u16(type v) { // Calculates (v / 255) for 16-bit integers using the fast approximation: (x + 128 + (x >> 8)) >> 8
-			const uint16x8_t c128 = vdupq_n_u16(128);
-			uint16x8_t v16 = to_u16(v);
-			uint16x8_t tmp = vaddq_u16(v16, c128); // Use immediate shift for constant 8
-			uint16x8_t tmp_div8 = vshrq_n_u16(v16, 8); // Logical right shift 16-bit integers by 8
-			uint16x8_t result = vshrq_n_u16(vaddq_u16(tmp, tmp_div8), 8); // Add and then logical right shift by 8
-
-			return to_u32(result);
-		}
-	};
-#endif
-
-	// ============================================================================
-	// SIMD TRAITS SELECTION
-	// ============================================================================
-
-#if defined(__SSE2__)
-	using SimdImplTraits = SSE2Traits;
-#elif defined(__ARM_NEON)
-	using SimdImplTraits = NeonTraits;
-#else
-	struct NoSimdTraits {};
-	using SimdImplTraits = NoSimdTraits;
-#endif
-
-	// ============================================================================
-	// ALGORITHMS (Templated Logic)
-	// ============================================================================
-
-	template <typename Traits>
-	void mask_surface_impl(uint32_t* surf_ptr, const uint32_t* mask_ptr, std::size_t total_pixels, bool& empty)
+	void mask_surface_simd_sse2(uint32_t* surf_ptr, const uint32_t* mask_ptr, std::size_t total_pixels, bool& empty)
 	{
-		using Vec = typename Traits::type;
-		constexpr int N = Traits::vectors_per_loop;
-
-		const Vec rgb_mask = Traits::set1(0x00FFFFFF);
-		const Vec alpha_mask = Traits::set1(0xFF000000);
-		Vec has_alpha_acc = Traits::setzero();
-
+		const __m128i ALPHA_MASK = _mm_set1_epi32(0xFF000000);
+		__m128i alpha_acc = _mm_setzero_si128();
 		std::size_t offset = 0;
-		const std::size_t vec_width = Traits::width;
+		const std::size_t BLOCK = 16;
+		const std::size_t limit = total_pixels & ~(BLOCK - 1);
 
-		// 1. UNROLLED LOOP (N vectors per iteration: SSE2=4×4=16px, NEON=8×4=32px)
-		const std::size_t block_size = vec_width * N;
-		if (total_pixels >= block_size) {
-			const std::size_t limit = total_pixels - block_size;
+		// ------------------------------------------------------------
+		// Main loop (unrolled) Process 16 pixels per iteration (4 vectors)
+		// ------------------------------------------------------------
+		for (; offset < limit; offset += BLOCK) {
+			//Loads and arithmetics are woven to hide memory latency and keep execution ports saturated.
 
-			for (; offset <= limit; offset += block_size) {
-				Vec s[N];
-				Vec m[N];
-				Vec min_v[N];
+			// Stage 1: Load V0/V1 Data
+			__m128i s0 = _mm_loadu_si128(reinterpret_cast<const __m128i*>(surf_ptr + offset + 0));
+			__m128i m0 = _mm_loadu_si128(reinterpret_cast<const __m128i*>(mask_ptr + offset + 0));
+			__m128i s1 = _mm_loadu_si128(reinterpret_cast<const __m128i*>(surf_ptr + offset + 4));
+			__m128i m1 = _mm_loadu_si128(reinterpret_cast<const __m128i*>(mask_ptr + offset + 4));
 
-				// Load
-				for (int i = 0; i < N; ++i) {
-					s[i] = Traits::load(surf_ptr + offset + (i * vec_width));
-					m[i] = Traits::load(mask_ptr + offset + (i * vec_width));
-				}
+			// Stage 2: Calculate New Alpha (min(Surface.Alpha, Mask.Alpha)) for V0/V1
+			__m128i minv0 = _mm_min_epu8(s0, m0);
+			__m128i minv1 = _mm_min_epu8(s1, m1);
 
-				// Process
-				for (int i = 0; i < N; ++i) {
-					// Calculate Min Alpha (masked to keep only alpha bits)
-					min_v[i] = Traits::bitwise_and(Traits::min_u8(s[i], m[i]), alpha_mask);
+			// Stage 3: Load V2/V3 Data
+			__m128i s2 = _mm_loadu_si128(reinterpret_cast<const __m128i*>(surf_ptr + offset + 8));
+			__m128i m2 = _mm_loadu_si128(reinterpret_cast<const __m128i*>(mask_ptr + offset + 8));
+			__m128i s3 = _mm_loadu_si128(reinterpret_cast<const __m128i*>(surf_ptr + offset + 12));
+			__m128i m3 = _mm_loadu_si128(reinterpret_cast<const __m128i*>(mask_ptr + offset + 12));
 
-					// Reconstruct Pixel: (SourceRGB) | (MinAlpha)
-					Vec result = Traits::bitwise_or(Traits::bitwise_and(s[i], rgb_mask), min_v[i]);
-					Traits::store(surf_ptr + offset + (i * vec_width), result);
+			// Stage 4: Process V0, Initiate V2, Process V1, Initiate V3
+			__m128i newa0 = _mm_and_si128(minv0, ALPHA_MASK);       // V0: Isolate new alpha channel
+			__m128i res0 = _mm_or_si128(_mm_and_si128(s0, _mm_set1_epi32(0x00FFFFFF)), newa0); // V0: Result = S0.RGB + newa0.A
+			_mm_storeu_si128(reinterpret_cast<__m128i*>(surf_ptr + offset + 0), res0);
+			__m128i minv2 = _mm_min_epu8(s2, m2); // V2: Calculate new alpha
+			__m128i newa1 = _mm_and_si128(minv1, ALPHA_MASK);       // V1: Isolate new alpha channel
+			__m128i res1 = _mm_or_si128(_mm_and_si128(s1, _mm_set1_epi32(0x00FFFFFF)), newa1); // V1: Result = S1.RGB + newa1.A
+			_mm_storeu_si128(reinterpret_cast<__m128i*>(surf_ptr + offset + 4), res1);
+			__m128i minv3 = _mm_min_epu8(s3, m3); // V3: Calculate new alpha
 
-					// Accumulate alpha check
-					has_alpha_acc = Traits::bitwise_or(has_alpha_acc, min_v[i]);
-				}
+			// Stage 5: Finalize V2/V3 (Combine new alpha with original RGB, then store)
+			__m128i newa2 = _mm_and_si128(minv2, ALPHA_MASK);       // V2: Isolate new alpha channel
+			__m128i res2 = _mm_or_si128(_mm_and_si128(s2, _mm_set1_epi32(0x00FFFFFF)), newa2); // V2: Result = S2.RGB + newa2.A
+			_mm_storeu_si128(reinterpret_cast<__m128i*>(surf_ptr + offset + 8), res2);
+			__m128i newa3 = _mm_and_si128(minv3, ALPHA_MASK);       // V3: Isolate new alpha channel
+			__m128i res3 = _mm_or_si128(_mm_and_si128(s3, _mm_set1_epi32(0x00FFFFFF)), newa3); // V3: Result = S3.RGB + newa3.A
+			_mm_storeu_si128(reinterpret_cast<__m128i*>(surf_ptr + offset + 12), res3);
+
+			// Stage 6: Alpha Reduction (Accumulate all 16 new alpha channels for 'empty' check)
+			__m128i local_alpha = _mm_or_si128(_mm_or_si128(newa0, newa1),
+				_mm_or_si128(newa2, newa3));
+			alpha_acc = _mm_or_si128(alpha_acc, local_alpha);
+		}
+
+		// ------------------------------------------------------------
+		// Vector remainder (4 pixels at a time)
+		// ------------------------------------------------------------
+		for (; offset + 4 <= total_pixels; offset += 4) {
+			__m128i s = _mm_loadu_si128(reinterpret_cast<const __m128i*>(surf_ptr + offset));
+			__m128i m = _mm_loadu_si128(reinterpret_cast<const __m128i*>(mask_ptr + offset));
+			__m128i minv = _mm_min_epu8(s, m);
+			__m128i newa = _mm_and_si128(minv, _mm_set1_epi32(0xFF000000));
+			__m128i res = _mm_or_si128(_mm_and_si128(s, _mm_set1_epi32(0x00FFFFFF)), newa);
+			_mm_storeu_si128(reinterpret_cast<__m128i*>(surf_ptr + offset), res);
+			alpha_acc = _mm_or_si128(alpha_acc, newa);
+		}
+
+		// Alpha accumulator check
+		if (_mm_movemask_epi8(_mm_cmpeq_epi8(alpha_acc, _mm_setzero_si128())) != 0xFFFF)
+			empty = false;
+
+		// ------------------------------------------------------------
+		// Scalar remainder (Handles last 1-3 pixels)
+		// ------------------------------------------------------------
+		for (; offset < total_pixels; ++offset) {
+			uint32_t s = surf_ptr[offset];
+			uint32_t m = mask_ptr[offset];
+			uint32_t sa = s >> 24;
+			uint32_t ma = m >> 24;
+			uint32_t a = (sa < ma) ? sa : ma;
+			if (a > 0) empty = false;
+			surf_ptr[offset] = (a << 24) | (s & 0x00FFFFFF);
+		}
+	}
+
+	void apply_surface_opacity_simd_sse2(uint32_t* surf_ptr, std::size_t total_pixels, uint8_t alpha_mod_scalar)
+	{
+		const __m128i ALPHA_MASK = _mm_set1_epi32(0xFF000000);
+		const __m128i MOD_VEC = _mm_set1_epi16(alpha_mod_scalar);
+		const __m128i C128 = _mm_set1_epi16(128);
+		std::size_t offset = 0;
+		const std::size_t BLOCK = 16;
+		const std::size_t limit = total_pixels - BLOCK;
+
+		// ------------------------------------------------------------
+		// Main loop (unrolled) Process 16 pixels per iteration (4 vectors)
+		// ------------------------------------------------------------
+		for (; offset <= limit; offset += BLOCK) {
+			//Loads and arithmetics are woven to hide memory latency and keep execution ports saturated.
+
+			// 1. Initial Load: Fetch first 8 pixels (V0, V1)
+			__m128i p0 = _mm_loadu_si128(reinterpret_cast<const __m128i*>(surf_ptr + offset + 0));
+			__m128i p1 = _mm_loadu_si128(reinterpret_cast<const __m128i*>(surf_ptr + offset + 4));
+
+			// 2. Begin Alpha Isolation: Shift V0/V1 while fetching remaining 8 pixels (V2, V3)
+			__m128i a0 = _mm_srli_epi32(p0, 24);
+			__m128i p2 = _mm_loadu_si128(reinterpret_cast<const __m128i*>(surf_ptr + offset + 8));
+			__m128i a1 = _mm_srli_epi32(p1, 24);
+			__m128i p3 = _mm_loadu_si128(reinterpret_cast<const __m128i*>(surf_ptr + offset + 12));
+
+			// 3. Transparency Check: Skip the entire 16-pixel block if all alpha channels are zero
+			__m128i combined = _mm_or_si128(_mm_or_si128(p0, p1), _mm_or_si128(p2, p3));
+			if (_mm_movemask_epi8(_mm_cmpeq_epi8(_mm_and_si128(combined, ALPHA_MASK), _mm_setzero_si128())) == 0xFFFF) continue;
+
+			// 4. Apply Modifier: Multiply isolated Alpha (V0/V1) and isolate remaining Alpha (V2/V3)
+			__m128i m0 = _mm_mullo_epi16(a0, MOD_VEC);
+			__m128i a2 = _mm_srli_epi32(p2, 24);
+			__m128i m1 = _mm_mullo_epi16(a1, MOD_VEC);
+			__m128i a3 = _mm_srli_epi32(p3, 24);
+
+			// 5. Normalization: Begin Div-255 for V0/V1 and multiply Alpha for V2/V3
+			__m128i m2 = _mm_mullo_epi16(a2, MOD_VEC);
+			__m128i t0 = _mm_add_epi16(m0, C128);
+			__m128i m3 = _mm_mullo_epi16(a3, MOD_VEC);
+			__m128i t1 = _mm_add_epi16(m1, C128);
+
+			// 6. Complete Normalization: Finalize V0/V1 Alpha results and begin Div-255 for V2/V3
+			__m128i n0 = _mm_srli_epi16(_mm_add_epi16(t0, _mm_srli_epi16(m0, 8)), 8);
+			__m128i t2 = _mm_add_epi16(m2, C128);
+			__m128i n1 = _mm_srli_epi16(_mm_add_epi16(t1, _mm_srli_epi16(m1, 8)), 8);
+			__m128i t3 = _mm_add_epi16(m3, C128);
+
+			// 7. Re-insertion: Merge new Alpha with original RGB for V0/V1 and finalize V2/V3 Alpha
+			__m128i n2 = _mm_srli_epi16(_mm_add_epi16(t2, _mm_srli_epi16(m2, 8)), 8);
+			__m128i new_alpha0 = _mm_slli_epi32(n0, 24);
+			_mm_storeu_si128(reinterpret_cast<__m128i*>(surf_ptr + offset + 0),
+				_mm_or_si128(_mm_and_si128(p0, _mm_set1_epi32(0x00FFFFFF)), new_alpha0));
+			__m128i n3 = _mm_srli_epi16(_mm_add_epi16(t3, _mm_srli_epi16(m3, 8)), 8);
+			__m128i new_alpha1 = _mm_slli_epi32(n1, 24);
+			_mm_storeu_si128(reinterpret_cast<__m128i*>(surf_ptr + offset + 4),
+				_mm_or_si128(_mm_and_si128(p1, _mm_set1_epi32(0x00FFFFFF)), new_alpha1));
+
+			// 8. Final Store: Merge and write-back results for V2/V3
+			__m128i new_alpha2 = _mm_slli_epi32(n2, 24);
+			_mm_storeu_si128(reinterpret_cast<__m128i*>(surf_ptr + offset + 8),
+				_mm_or_si128(_mm_and_si128(p2, _mm_set1_epi32(0x00FFFFFF)), new_alpha2));
+			__m128i new_alpha3 = _mm_slli_epi32(n3, 24);
+			_mm_storeu_si128(reinterpret_cast<__m128i*>(surf_ptr + offset + 12),
+				_mm_or_si128(_mm_and_si128(p3, _mm_set1_epi32(0x00FFFFFF)), new_alpha3));
+		}
+
+		// ------------------------------------------------------------
+		// Single Vector Remainder (4 pixels at a time)
+		// ------------------------------------------------------------
+		for (; offset + 4 <= total_pixels; offset += 4) {
+			__m128i p = _mm_loadu_si128(reinterpret_cast<const __m128i*>(surf_ptr + offset));
+			if (_mm_movemask_epi8(_mm_cmpeq_epi8(_mm_and_si128(p, ALPHA_MASK), _mm_setzero_si128())) == 0xFFFF) continue;
+			__m128i a = _mm_srli_epi32(p, 24);
+			__m128i m = _mm_mullo_epi16(a, MOD_VEC);
+			__m128i newa = _mm_srli_epi16(_mm_add_epi16(_mm_add_epi16(m, C128), _mm_srli_epi16(m, 8)), 8);
+			__m128i new_alpha = _mm_slli_epi32(newa, 24);
+			_mm_storeu_si128(reinterpret_cast<__m128i*>(surf_ptr + offset),
+				_mm_or_si128(_mm_and_si128(p, _mm_set1_epi32(0x00FFFFFF)), new_alpha));
+		}
+
+		// ------------------------------------------------------------
+		// Scalar Remainder (Handles last 1-3 pixels)
+		// ------------------------------------------------------------
+		for (; offset < total_pixels; ++offset) {
+			uint32_t pixel = surf_ptr[offset];
+			uint32_t a = (pixel >> 24);
+			if (a != 0) {
+				uint32_t prod = a * alpha_mod_scalar;
+				uint32_t new_a = (prod + 128 + (prod >> 8)) >> 8;
+				surf_ptr[offset] = (new_a << 24) | (pixel & 0x00FFFFFF);
 			}
 		}
+	}
 
-		// 2. VECTOR REMAINDER LOOP (Process remaining pixels in chunks of 4)
-		for (; offset <= total_pixels - vec_width; offset += vec_width) {
-			Vec s = Traits::load(surf_ptr + offset);
-			Vec m = Traits::load(mask_ptr + offset);
-			Vec min_alpha = Traits::bitwise_and(Traits::min_u8(s, m), alpha_mask);
-			Traits::store(surf_ptr + offset, Traits::bitwise_or(Traits::bitwise_and(s, rgb_mask), min_alpha));
-			has_alpha_acc = Traits::bitwise_or(has_alpha_acc, min_alpha);
+	void adjust_surface_color_simd_sse2(uint32_t* surf_ptr, std::size_t total_pixels, int r, int g, int b)
+	{
+		// Prepare Add/Sub Vectors. Construct masks as 0x00RRGGBB. Alpha (high byte) is 0 to remain untouched.
+		uint32_t add_mask = 0, sub_mask = 0;
+
+		if (r > 0) add_mask |= (static_cast<uint8_t>(r) << 16);
+		else       sub_mask |= (static_cast<uint8_t>(std::abs(r)) << 16);
+
+		if (g > 0) add_mask |= (static_cast<uint8_t>(g) << 8);
+		else       sub_mask |= (static_cast<uint8_t>(std::abs(g)) << 8);
+
+		if (b > 0) add_mask |= static_cast<uint8_t>(b);
+		else       sub_mask |= static_cast<uint8_t>(std::abs(b));
+
+		const __m128i ADD_VEC = _mm_set1_epi32(add_mask);
+		const __m128i SUB_VEC = _mm_set1_epi32(sub_mask);
+
+		std::size_t offset = 0;
+		const std::size_t BLOCK = 16;
+		const std::size_t limit = total_pixels - BLOCK;
+
+		// -------------------------------------------------------------------------
+		// Main loop: 16 pixels per iteration (4 vectors).
+		// -------------------------------------------------------------------------
+		for (; offset <= limit; offset += BLOCK) {
+			//Loads and arithmetic are woven to hide memory latency and keep execution ports saturated.
+
+			// 1. Initial Load: Fetch first 8 pixels
+			__m128i p0 = _mm_loadu_si128(reinterpret_cast<const __m128i*>(surf_ptr + offset + 0));
+			__m128i p1 = _mm_loadu_si128(reinterpret_cast<const __m128i*>(surf_ptr + offset + 4));
+
+			// 2. Begin Subtraction: Process V0/V1 while fetching V2/V3 from memory
+			__m128i res0 = _mm_subs_epu8(p0, SUB_VEC);
+			__m128i p2 = _mm_loadu_si128(reinterpret_cast<const __m128i*>(surf_ptr + offset + 8));
+			__m128i res1 = _mm_subs_epu8(p1, SUB_VEC);
+			__m128i p3 = _mm_loadu_si128(reinterpret_cast<const __m128i*>(surf_ptr + offset + 12));
+
+			// 3. Apply Addition: Perform saturating add for V0/V1 and subtract for V2/V3
+			res0 = _mm_adds_epu8(res0, ADD_VEC);
+			__m128i res2 = _mm_subs_epu8(p2, SUB_VEC);
+			res1 = _mm_adds_epu8(res1, ADD_VEC);
+			__m128i res3 = _mm_subs_epu8(p3, SUB_VEC);
+
+			// 4. Final Addition & Store: Complete V2/V3 and write all results back
+			res2 = _mm_adds_epu8(res2, ADD_VEC);
+			_mm_storeu_si128(reinterpret_cast<__m128i*>(surf_ptr + offset + 0), res0);
+
+			res3 = _mm_adds_epu8(res3, ADD_VEC);
+			_mm_storeu_si128(reinterpret_cast<__m128i*>(surf_ptr + offset + 4), res1);
+
+			_mm_storeu_si128(reinterpret_cast<__m128i*>(surf_ptr + offset + 8), res2);
+			_mm_storeu_si128(reinterpret_cast<__m128i*>(surf_ptr + offset + 12), res3);
 		}
 
-		// Check accumulator
-		if (Traits::check_any_nonzero(has_alpha_acc)) {
+		// -------------------------------------------------------------------------
+		// Single Vector Remainder (4 pixels at a time)
+		// -------------------------------------------------------------------------
+		for (; offset + 4 <= total_pixels; offset += 4) {
+			__m128i p = _mm_loadu_si128(reinterpret_cast<const __m128i*>(surf_ptr + offset));
+			p = _mm_subs_epu8(p, SUB_VEC);
+			p = _mm_adds_epu8(p, ADD_VEC);
+			_mm_storeu_si128(reinterpret_cast<__m128i*>(surf_ptr + offset), p);
+		}
+
+		// -------------------------------------------------------------------------
+		// Scalar Remainder (1-3 pixels)
+		// -------------------------------------------------------------------------
+		for (; offset < total_pixels; ++offset) {
+			uint32_t pixel = surf_ptr[offset];
+			int pr = std::clamp(static_cast<int>((pixel >> 16) & 0xFF) + r, 0, 255);
+			int pg = std::clamp(static_cast<int>((pixel >> 8) & 0xFF) + g, 0, 255);
+			int pb = std::clamp(static_cast<int>(pixel & 0xFF) + b, 0, 255);
+			surf_ptr[offset] = (pixel & 0xFF000000) | (pr << 16) | (pg << 8) | pb;
+		}
+	}
+
+	void flip_image_simd_sse2(uint32_t* pixels, std::size_t width, std::size_t height)
+	{
+		// Prepare constants and 4-row pointers for unrolled vertical processing.
+		const std::size_t half_width = width / 2;                           // Only swap up to the middle pixel
+		std::size_t y = 0;                                                  // Row counter
+		uint32_t* r0 = pixels;
+		uint32_t* r1 = r0 + width;
+		uint32_t* r2 = r1 + width;
+		uint32_t* r3 = r2 + width;
+		const std::size_t stride_x4 = width * 4;
+
+		// Reverses the order of 4 uint32 elements in a 128-bit register.
+		auto reverse_sse2 = [](__m128i v) -> __m128i {
+			return _mm_shuffle_epi32(v, _MM_SHUFFLE(0, 1, 2, 3));           // Reverse 32-bit elements
+		};
+
+		// --- SECTION: 4-ROW STRIPED LOOP ---
+		// Processes blocks of 4 rows at once to maximize cache throughput.
+		for (; y + 4 <= height; y += 4) {
+			std::size_t x = 0;
+
+			// Vectorized horizontal swap: 4 pixels at a time from both ends.
+			for (; x + 4 <= half_width; x += 4) {
+				//Loads and arithmetics are woven to hide memory latency and keep execution ports saturated.
+
+				std::size_t r_idx = width - x - 4;
+
+				// Load Row 0 and Row 1
+				__m128i l0 = _mm_loadu_si128(reinterpret_cast<const __m128i*>(r0 + x));
+				__m128i R0 = _mm_loadu_si128(reinterpret_cast<const __m128i*>(r0 + r_idx));
+				__m128i l1 = _mm_loadu_si128(reinterpret_cast<const __m128i*>(r1 + x));
+				__m128i R1 = _mm_loadu_si128(reinterpret_cast<const __m128i*>(r1 + r_idx));
+
+				// Flip elements so they face the correct way
+				l0 = reverse_sse2(l0);
+				R0 = reverse_sse2(R0);
+				l1 = reverse_sse2(l1);
+				R1 = reverse_sse2(R1);
+
+				// Store swapped results back to memory
+				_mm_storeu_si128(reinterpret_cast<__m128i*>(r0 + x), R0);
+				_mm_storeu_si128(reinterpret_cast<__m128i*>(r0 + r_idx), l0);
+				_mm_storeu_si128(reinterpret_cast<__m128i*>(r1 + x), R1);
+				_mm_storeu_si128(reinterpret_cast<__m128i*>(r1 + r_idx), l1);
+
+				// Repeat for Row 2 and Row 3
+				__m128i l2 = _mm_loadu_si128(reinterpret_cast<const __m128i*>(r2 + x));
+				__m128i R2 = _mm_loadu_si128(reinterpret_cast<const __m128i*>(r2 + r_idx));
+				__m128i l3 = _mm_loadu_si128(reinterpret_cast<const __m128i*>(r3 + x));
+				__m128i R3 = _mm_loadu_si128(reinterpret_cast<const __m128i*>(r3 + r_idx));
+				l2 = reverse_sse2(l2);
+				R2 = reverse_sse2(R2);
+				l3 = reverse_sse2(l3);
+				R3 = reverse_sse2(R3);
+				_mm_storeu_si128(reinterpret_cast<__m128i*>(r2 + x), R2);
+				_mm_storeu_si128(reinterpret_cast<__m128i*>(r2 + r_idx), l2);
+				_mm_storeu_si128(reinterpret_cast<__m128i*>(r3 + x), R3);
+				_mm_storeu_si128(reinterpret_cast<__m128i*>(r3 + r_idx), l3);
+			}
+
+			// Scalar Cleanup: Handle remaining pixels in the middle of these 4 rows.
+			for (; x < half_width; ++x) {
+				std::size_t r_idx = width - 1 - x;
+				std::swap(r0[x], r0[r_idx]);
+				std::swap(r1[x], r1[r_idx]);
+				std::swap(r2[x], r2[r_idx]);
+				std::swap(r3[x], r3[r_idx]);
+			}
+
+			// Advance pointers by 4 full rows to start the next stripe.
+			r0 += stride_x4;
+			r1 += stride_x4;
+			r2 += stride_x4;
+			r3 += stride_x4;
+		}
+
+		// --- SECTION: HEIGHT REMAINDER ---
+		// Handle remaining 1-3 rows if height is not a multiple of 4.
+		for (; y < height; ++y) {
+			std::size_t x = 0;
+			// Vector loop for a single row.
+			for (; x + 4 <= half_width; x += 4) {
+				std::size_t r_idx = width - x - 4;
+				__m128i l = _mm_loadu_si128(reinterpret_cast<__m128i*>(r0 + x));
+				__m128i r = _mm_loadu_si128(reinterpret_cast<__m128i*>(r0 + r_idx));
+
+				l = reverse_sse2(l);
+				r = reverse_sse2(r);
+
+				_mm_storeu_si128(reinterpret_cast<__m128i*>(r0 + x), r);
+				_mm_storeu_si128(reinterpret_cast<__m128i*>(r0 + r_idx), l);
+			}
+			// Scalar loop for the very last few pixels in the middle of the row.
+			for (; x < half_width; ++x) {
+				std::swap(r0[x], r0[width - 1 - x]);
+			}
+			r0 += width;
+		}
+	}
+
+#endif // (SIMD_SSE2)
+
+// ============================================================================
+// NEON IMPLEMENTATIONS
+// ============================================================================
+
+#if (SIMD_NEON)
+
+	void mask_surface_simd_neon(uint32_t* __restrict surf_ptr, const uint32_t* __restrict mask_ptr, std::size_t total_pixels, bool& empty)
+	{
+		const uint32x4_t ALPHA_MASK = vdupq_n_u32(0xFF000000);
+		uint32x4_t alpha_acc = vdupq_n_u32(0);
+
+		std::size_t n_blocks = total_pixels / 16;
+		std::size_t remainder = total_pixels % 16;
+
+		// ------------------------------------------------------------
+		// Main loop: 16 pixels per iteration (4 vectors)
+		// ------------------------------------------------------------
+		while (n_blocks--) {
+			// Load Surface and Mask
+			uint32x4_t s0 = vld1q_u32(surf_ptr);
+			uint32x4_t m0 = vld1q_u32(mask_ptr);
+			uint32x4_t s1 = vld1q_u32(surf_ptr + 4);
+			uint32x4_t m1 = vld1q_u32(mask_ptr + 4);
+			uint32x4_t s2 = vld1q_u32(surf_ptr + 8);
+			uint32x4_t m2 = vld1q_u32(mask_ptr + 8);
+			uint32x4_t s3 = vld1q_u32(surf_ptr + 12);
+			uint32x4_t m3 = vld1q_u32(mask_ptr + 12);
+
+			// Calculate byte-wise minimums.
+			// This calculates min(Alpha_s, Alpha_m) AND min(RGB_s, RGB_m) simultaneously.
+			// We accept that RGB values here are 'garbage' (dirty) for now.
+			uint32x4_t min0 = vreinterpretq_u32_u8(vminq_u8(vreinterpretq_u8_u32(s0), vreinterpretq_u8_u32(m0)));
+			uint32x4_t min1 = vreinterpretq_u32_u8(vminq_u8(vreinterpretq_u8_u32(s1), vreinterpretq_u8_u32(m1)));
+			uint32x4_t min2 = vreinterpretq_u32_u8(vminq_u8(vreinterpretq_u8_u32(s2), vreinterpretq_u8_u32(m2)));
+			uint32x4_t min3 = vreinterpretq_u32_u8(vminq_u8(vreinterpretq_u8_u32(s3), vreinterpretq_u8_u32(m3)));
+
+			// Accumulate "Dirty": We OR the full results into the accumulator.
+			// We don't care about the RGB bits being set here; we will mask them off 
+			// *outside* the loop. This saves 4 VAND instructions per loop.
+			uint32x4_t acc_tmp0 = vorrq_u32(min0, min1);
+			uint32x4_t acc_tmp1 = vorrq_u32(min2, min3);
+			alpha_acc = vorrq_u32(alpha_acc, vorrq_u32(acc_tmp0, acc_tmp1));
+
+			// Select: Keep Original RGB (S) where Mask is 0, keep New Alpha (min) where Mask is 1.
+			vst1q_u32(surf_ptr, vbslq_u32(ALPHA_MASK, min0, s0));
+			vst1q_u32(surf_ptr + 4, vbslq_u32(ALPHA_MASK, min1, s1));
+			vst1q_u32(surf_ptr + 8, vbslq_u32(ALPHA_MASK, min2, s2));
+			vst1q_u32(surf_ptr + 12, vbslq_u32(ALPHA_MASK, min3, s3));
+
+			surf_ptr += 16;
+			mask_ptr += 16;
+		}
+
+		// ------------------------------------------------------------
+		// Vector remainder: Handle blocks of 4 pixels
+		// ------------------------------------------------------------
+		while (remainder >= 4) {
+			uint32x4_t s = vld1q_u32(surf_ptr);
+			uint32x4_t m = vld1q_u32(mask_ptr);
+
+			uint32x4_t min_val = vreinterpretq_u32_u8(vminq_u8(vreinterpretq_u8_u32(s), vreinterpretq_u8_u32(m)));
+
+			alpha_acc = vorrq_u32(alpha_acc, min_val);
+			vst1q_u32(surf_ptr, vbslq_u32(ALPHA_MASK, min_val, s));
+
+			surf_ptr += 4;
+			mask_ptr += 4;
+			remainder -= 4;
+		}
+
+		// ------------------------------------------------------------
+		// Final Accumulator Check
+		// ------------------------------------------------------------
+		// Mask out the "dirty" RGB garbage we accumulated, leaving only Alpha.
+		alpha_acc = vandq_u32(alpha_acc, ALPHA_MASK);
+
+		// Horizontal max across the vector to see if any alpha bit is set
+		if (vmaxvq_u32(alpha_acc) > 0) {
 			empty = false;
 		}
 
-		// 3. SCALAR REMAINDER (Process final 1-3 pixels)
-		if (offset < total_pixels) {
-			std::size_t remaining_pixels = total_pixels - offset;
-			uint32_t* current_surf_ptr = surf_ptr + offset;
-			const uint32_t* current_mask_ptr = mask_ptr + offset;
+		// ------------------------------------------------------------
+		// Scalar remainder: Handle last 1-3 pixels
+		// ------------------------------------------------------------
+		while (remainder > 0) {
+			uint32_t s = *surf_ptr;
+			uint32_t m = *mask_ptr;
 
-			for (std::size_t i = 0; i < remaining_pixels; ++i) {
-				const uint32_t surf_pixel = current_surf_ptr[i];
-				const uint32_t mask_alpha = current_mask_ptr[i] >> 24;
-				const uint32_t surf_alpha = surf_pixel >> 24;
-				const uint32_t alpha = std::min(surf_alpha, mask_alpha);
-				if (alpha > 0) empty = false;
-				current_surf_ptr[i] = (alpha << 24) | (surf_pixel & 0x00FFFFFF);
-			}
+			// Scalar equivalent logic
+			uint32_t sa = s >> 24;
+			uint32_t ma = m >> 24;
+			uint32_t a = (sa < ma) ? sa : ma;
+
+			if (a > 0) empty = false;
+
+			*surf_ptr = (a << 24) | (s & 0x00FFFFFF);
+
+			surf_ptr++;
+			mask_ptr++;
+			remainder--;
 		}
 	}
 
-	template <typename Traits>
-	void in_mask_surface_impl(const uint32_t* surf_ptr, const uint32_t* mask_ptr, std::size_t total_pixels, bool& fits)
+	void apply_surface_opacity_simd_neon(uint32_t* __restrict surf_ptr, std::size_t total_pixels, uint8_t alpha_mod_scalar)
 	{
-		using Vec = typename Traits::type;
-		constexpr int N = Traits::vectors_per_loop;
-
-		const Vec alpha_mask = Traits::set1(0xFF000000);
-		const Vec zero = Traits::setzero();
-		Vec bad_pixels_acc = Traits::setzero();
+		// Prepare constants
+		// We duplicate the scalar into 8-bit lanes for vmull (Long Multiply)
+		const uint8x8_t MOD_VEC_U8 = vdup_n_u8(alpha_mod_scalar);
+		const uint16x8_t C128 = vdupq_n_u16(128);
 
 		std::size_t offset = 0;
-		const std::size_t vec_width = Traits::width;
+		std::size_t limit = total_pixels & ~15; // Limit for 16-pixel blocks
 
-		// 1. UNROLLED LOOP (N vectors per iteration: SSE2=4×4=16px, NEON=8×4=32px)
-		const std::size_t block_size = vec_width * N;
-		if (total_pixels >= block_size) {
-			const std::size_t limit = total_pixels - block_size;
+		// ------------------------------------------------------------
+		// Main loop: Structure of Arrays (16 pixels per iter)
+		// ------------------------------------------------------------
+		uint32_t* __restrict ptr = surf_ptr;
 
-			for (; offset <= limit; offset += block_size) {
-				Vec s[N];
-				Vec m[N];
+		for (; offset < limit; offset += 16) {
+			// 1. Load De-interleaved (Structure of Arrays)
+			// val[0]=R, val[1]=G, val[2]=B, val[3]=A
+			uint8x16x4_t pixels = vld4q_u8(reinterpret_cast<uint8_t*>(ptr));
 
-				// Load
-				for (int i = 0; i < N; ++i) {
-					s[i] = Traits::load(surf_ptr + offset + (i * vec_width));
-					m[i] = Traits::load(mask_ptr + offset + (i * vec_width));
-				}
-
-				// Process, look for "bad" pixels (visible pixels outside the allowed mask area)
-				for (int i = 0; i < N; ++i) {
-					// Logic: Bad if (MaskAlpha == 0) AND (SurfAlpha != 0)
-					Vec mask_zero = Traits::cmpeq_32(Traits::bitwise_and(m[i], alpha_mask), zero);
-					Vec surf_alpha = Traits::bitwise_and(s[i], alpha_mask);
-					Vec bad = Traits::bitwise_and(mask_zero, surf_alpha);
-
-					// Accumulate bad pixels
-					bad_pixels_acc = Traits::bitwise_or(bad_pixels_acc, bad);
-				}
-
-				// Early exit check
-				if (Traits::check_any_nonzero(bad_pixels_acc)) {
-					fits = false;
-					return;
-				}
+			// 2. Optimization: Skip block if all Alpha values are 0
+			// We use AArch64's horizontal max across the alpha vector.
+			if (vmaxvq_u8(pixels.val[3]) == 0) {
+				ptr += 16;
+				continue;
 			}
+
+			// 3. Process Alpha (Low 8 bytes)
+			// vmull_u8 takes 8x8-bit and produces 8x16-bit (Eliminates separate vmovl)
+			uint16x8_t m_low = vmull_u8(vget_low_u8(pixels.val[3]), MOD_VEC_U8);
+
+			// Fast "Divide by 255" approximation: (x + 128 + x>>8) >> 8
+			// This is standard graphics math to map 0..65025 back to 0..255 correctly
+			uint16x8_t n_low = vaddq_u16(m_low, C128);
+			n_low = vaddq_u16(n_low, vshrq_n_u16(m_low, 8));
+			n_low = vshrq_n_u16(n_low, 8);
+
+			// 4. Process Alpha (High 8 bytes)
+			uint16x8_t m_high = vmull_u8(vget_high_u8(pixels.val[3]), MOD_VEC_U8);
+
+			uint16x8_t n_high = vaddq_u16(m_high, C128);
+			n_high = vaddq_u16(n_high, vshrq_n_u16(m_high, 8));
+			n_high = vshrq_n_u16(n_high, 8);
+
+			// 5. Pack back into 8-bit and update ONLY the Alpha channel
+			pixels.val[3] = vcombine_u8(vqmovn_u16(n_low), vqmovn_u16(n_high));
+
+			// 6. Store Interleaved
+			vst4q_u8(reinterpret_cast<uint8_t*>(ptr), pixels);
+
+			ptr += 16;
 		}
 
-		// 2. VECTOR REMAINDER LOOP (Process remaining pixels in chunks of 4)
-		for (; offset <= total_pixels - vec_width; offset += vec_width) {
-			Vec s = Traits::load(surf_ptr + offset);
-			Vec m = Traits::load(mask_ptr + offset);
-			Vec bad = Traits::bitwise_and(Traits::cmpeq_32(Traits::bitwise_and(m, alpha_mask), zero), Traits::bitwise_and(s, alpha_mask));
-			if (Traits::check_any_nonzero(bad)) {
-				fits = false;
-				return;
+		// ------------------------------------------------------------
+		// Vector remainder (4 pixels at a time)
+		// ------------------------------------------------------------
+		for (; offset + 4 <= total_pixels; offset += 4) {
+			// Load as bytes directly for easier manipulation
+			uint8x16_t p_bytes = vld1q_u8(reinterpret_cast<uint8_t*>(ptr));
+
+			// Extract alpha channel (every 4th byte starting at byte 3)
+			// On little-endian RGBA: bytes are [R,G,B,A, R,G,B,A, ...]
+			uint8x8_t alpha = vget_low_u8(vuzpq_u8(p_bytes, p_bytes).val[1]); // Gets bytes 1,3,5,7...
+			alpha = vuzp_u8(alpha, alpha).val[1]; // Gets bytes 3,7,11,15 (the alphas)
+
+			// Quick zero check on the 4 alphas
+			if (vget_lane_u32(vreinterpret_u32_u8(alpha), 0) == 0) {
+				ptr += 4;
+				continue;
 			}
+
+			// Multiply alpha
+			uint16x4_t m = vmull_u8(alpha, MOD_VEC_U8);
+
+			// Normalize
+			uint16x4_t newa = vadd_u16(m, vget_low_u16(C128));
+			newa = vadd_u16(newa, vshr_n_u16(m, 8));
+			newa = vshr_n_u16(newa, 8);
+
+			// Convert back and insert into byte array
+			uint8x8_t newa_u8 = vqmovn_u16(vcombine_u16(newa, newa));
+
+			// Update only alpha bytes using table lookup or manual insertion
+			uint32x4_t p = vld1q_u32(ptr);
+			uint32x4_t new_alpha = vshlq_n_u32(vmovl_u16(vget_low_u16(vmovl_u8(newa_u8))), 24);
+			uint32x4_t res = vorrq_u32(vandq_u32(p, vdupq_n_u32(0x00FFFFFF)), new_alpha);
+
+			vst1q_u32(ptr, res);
+			ptr += 4;
 		}
 
-		// 3. SCALAR REMAINDER (Process final 1-3 pixels)
-		if (offset < total_pixels) {
-			std::size_t remaining_pixels = total_pixels - offset;
-			const uint32_t* current_surf_ptr = surf_ptr + offset;
-			const uint32_t* current_mask_ptr = mask_ptr + offset;
+		// ------------------------------------------------------------
+		// Scalar Remainder
+		// ------------------------------------------------------------
+		for (; offset < total_pixels; ++offset) {
+			uint32_t pixel = *ptr;
+			uint32_t a = (pixel >> 24);
 
-			for (std::size_t i = 0; i < remaining_pixels; ++i) {
-				const uint32_t mask_alpha = current_mask_ptr[i] >> 24;
-				if (mask_alpha == 0) {
-					const uint32_t surf_alpha = current_surf_ptr[i] >> 24;
-					if (surf_alpha > 0) {
-						fits = false;
-						return;
-					}
-				}
+			// Only write if there is alpha to modify
+			if (a != 0) {
+				uint32_t prod = a * alpha_mod_scalar;
+				// The exact same math as the SIMD version
+				uint32_t new_a = (prod + 128 + (prod >> 8)) >> 8;
+				*ptr = (new_a << 24) | (pixel & 0x00FFFFFF);
 			}
+			ptr++;
 		}
 	}
 
-	template <typename Traits>
-	void apply_surface_opacity_impl(uint32_t* surf_ptr, std::size_t total_pixels, uint8_t alpha_mod_scalar)
+	void adjust_surface_color_simd_neon_opt(uint32_t* __restrict surf_ptr, std::size_t total_pixels, int r, int g, int b)
 	{
-		using Vec = typename Traits::type;
-		constexpr int N = Traits::vectors_per_loop;
+		// 1. Pre-calculate Positive and Negative adjustments clamped to [0, 255]
+		// We use ABS() because vqsub handles the subtraction logic.
+		uint8_t r_pos = (r > 0) ? (uint8_t)std::min(r, 255) : 0;
+		uint8_t r_neg = (r < 0) ? (uint8_t)std::min(-r, 255) : 0;
 
-		const Vec rgb_mask = Traits::set1(0x00FFFFFF);
-		const Vec mod_vec = Traits::set1(alpha_mod_scalar);
+		uint8_t g_pos = (g > 0) ? (uint8_t)std::min(g, 255) : 0;
+		uint8_t g_neg = (g < 0) ? (uint8_t)std::min(-g, 255) : 0;
 
-		// Lambda to process a single vector of pixels
-		auto process_vec = [&](Vec pixel) {
-			Vec alpha = Traits::srl_32(pixel, 24); // 1. Isolate Alpha (Shift to LSB)
-			Vec prod = Traits::mullo_16(alpha, mod_vec); // 2. Multiply by Modifier
-			Vec new_alpha = Traits::div_255_u16(prod); // 3. Divide by 255 (Specialized Composite)
-			new_alpha = Traits::sll_32(new_alpha, 24); // 4. Shift back and Combine
-			return Traits::bitwise_or(Traits::bitwise_and(pixel, rgb_mask), new_alpha);
+		uint8_t b_pos = (b > 0) ? (uint8_t)std::min(b, 255) : 0;
+		uint8_t b_neg = (b < 0) ? (uint8_t)std::min(-b, 255) : 0;
+
+		// Broadcast these values into vectors
+		const uint8x16_t R_ADD = vdupq_n_u8(r_pos);
+		const uint8x16_t R_SUB = vdupq_n_u8(r_neg);
+		const uint8x16_t G_ADD = vdupq_n_u8(g_pos);
+		const uint8x16_t G_SUB = vdupq_n_u8(g_neg);
+		const uint8x16_t B_ADD = vdupq_n_u8(b_pos);
+		const uint8x16_t B_SUB = vdupq_n_u8(b_neg);
+
+		std::size_t offset = 0;
+		std::size_t limit = total_pixels & ~15; // Process 16 pixels at a time
+
+		// ------------------------------------------------------------
+		// Main loop: 16 pixels per iteration
+		// ------------------------------------------------------------
+		uint32_t* ptr = surf_ptr;
+
+		for (; offset < limit; offset += 16) {
+			// 1. De-interleave: Loads 64 bytes, splitting into R, G, B, A registers
+			// Note: On Little Endian (Phones), memory is BGRA.
+			// val[0]=Blue, val[1]=Green, val[2]=Red, val[3]=Alpha
+			uint8x16x4_t pixels = vld4q_u8(reinterpret_cast<uint8_t*>(ptr));
+
+			// 2. Blue Channel Math (Apply Add then Sub)
+			// vqadd clamps to 255. vqsub clamps to 0.
+			// If we only have a positive adjustment, SUB is 0 (no-op).
+			pixels.val[0] = vqsubq_u8(vqaddq_u8(pixels.val[0], B_ADD), B_SUB);
+
+			// 3. Green Channel Math
+			pixels.val[1] = vqsubq_u8(vqaddq_u8(pixels.val[1], G_ADD), G_SUB);
+
+			// 4. Red Channel Math
+			pixels.val[2] = vqsubq_u8(vqaddq_u8(pixels.val[2], R_ADD), R_SUB);
+
+			// 5. Alpha Channel (val[3]) is untouched!
+
+			// 6. Interleave and Store
+			vst4q_u8(reinterpret_cast<uint8_t*>(ptr), pixels);
+
+			ptr += 16;
+		}
+
+		// ------------------------------------------------------------
+		// Scalar Remainder (Handles last 0-15 pixels)
+		// ------------------------------------------------------------
+		// Since the scalar logic is simple, we don't need a complex vector remainder 
+		// for the last few pixels.
+		for (; offset < total_pixels; ++offset) {
+			uint32_t pixel = *ptr;
+
+			// Extract components (Little Endian assumed BGRA or RGBA consistency)
+			// We use the same bitshifts as your original scalar loop
+			int pr = static_cast<int>((pixel >> 16) & 0xFF) + r;
+			int pg = static_cast<int>((pixel >> 8) & 0xFF) + g;
+			int pb = static_cast<int>(pixel & 0xFF) + b;
+
+			// Clamp
+			pr = (pr < 0) ? 0 : (pr > 255) ? 255 : pr;
+			pg = (pg < 0) ? 0 : (pg > 255) ? 255 : pg;
+			pb = (pb < 0) ? 0 : (pb > 255) ? 255 : pb;
+
+			// Reassemble (Alpha preserved via masking original pixel)
+			*ptr = (pixel & 0xFF000000) | (pr << 16) | (pg << 8) | pb;
+
+			ptr++;
+		}
+	}
+
+	void flip_image_simd_neon_opt(uint32_t* __restrict pixels, std::size_t width, std::size_t height)
+	{
+		const std::size_t half_width = width / 2;
+		std::size_t y = 0;
+
+		// MUCH faster reverse using VTBL
+		// Reverse index: [12,13,14,15, 8,9,10,11, 4,5,6,7, 0,1,2,3]
+		static const uint8_t mask_data[16] = { 12,13,14,15, 8,9,10,11, 4,5,6,7, 0,1,2,3 };
+		const uint8x16_t reverse_idx = vld1q_u8(mask_data);
+
+		auto reverse_vector_u32 = [&reverse_idx](uint32x4_t v) -> uint32x4_t {
+			uint8x16_t bytes = vreinterpretq_u8_u32(v);
+			uint8x16_t reversed = vqtbl1q_u8(bytes, reverse_idx);
+			return vreinterpretq_u32_u8(reversed);
 			};
 
-		// Standard loop boilerplate
-		std::size_t offset = 0;
-		const std::size_t vec_width = Traits::width;
-		const std::size_t block_size = vec_width * N;
+		// Process 4 rows at a time
+		for (; y + 4 <= height; y += 4) {
+			uint32_t* r0 = pixels + (y + 0) * width;
+			uint32_t* r1 = pixels + (y + 1) * width;
+			uint32_t* r2 = pixels + (y + 2) * width;
+			uint32_t* r3 = pixels + (y + 3) * width;
 
-		// 1. UNROLLED LOOP (N vectors per iteration: SSE2=4×4=16px, NEON=8×4=32px)
-		if (total_pixels >= block_size) {
-			const std::size_t limit = total_pixels - block_size;
-			for (; offset <= limit; offset += block_size) {
-				Vec p[N];
+			std::size_t x = 0;
 
-				//Load
-				for (int i = 0; i < N; ++i) {
-					p[i] = Traits::load(surf_ptr + offset + (i * vec_width));
-				}
+			for (; x + 4 <= half_width; x += 4) {
+				std::size_t r_idx = width - x - 4;
 
-				// Lambda process & Store
-				for (int i = 0; i < N; ++i) {
-					Traits::store(surf_ptr + offset + (i * vec_width), process_vec(p[i]));
-				}
+				// Batch loads to hide latency
+				uint32x4_t L0 = vld1q_u32(r0 + x);
+				uint32x4_t L1 = vld1q_u32(r1 + x);
+				uint32x4_t R0 = vld1q_u32(r0 + r_idx);
+				uint32x4_t R1 = vld1q_u32(r1 + r_idx);
+
+				uint32x4_t L2 = vld1q_u32(r2 + x);
+				uint32x4_t L3 = vld1q_u32(r3 + x);
+				uint32x4_t R2 = vld1q_u32(r2 + r_idx);
+				uint32x4_t R3 = vld1q_u32(r3 + r_idx);
+
+				// Reverse all vectors
+				uint32x4_t revL0 = reverse_vector_u32(L0);
+				uint32x4_t revL1 = reverse_vector_u32(L1);
+				uint32x4_t revR0 = reverse_vector_u32(R0);
+				uint32x4_t revR1 = reverse_vector_u32(R1);
+
+				uint32x4_t revL2 = reverse_vector_u32(L2);
+				uint32x4_t revL3 = reverse_vector_u32(L3);
+				uint32x4_t revR2 = reverse_vector_u32(R2);
+				uint32x4_t revR3 = reverse_vector_u32(R3);
+
+				// Batch stores
+				vst1q_u32(r0 + x, revR0);
+				vst1q_u32(r0 + r_idx, revL0);
+				vst1q_u32(r1 + x, revR1);
+				vst1q_u32(r1 + r_idx, revL1);
+				vst1q_u32(r2 + x, revR2);
+				vst1q_u32(r2 + r_idx, revL2);
+				vst1q_u32(r3 + x, revR3);
+				vst1q_u32(r3 + r_idx, revL3);
+			}
+
+			// Scalar cleanup remains the same
+			for (; x < half_width; ++x) {
+				std::size_t r_idx = width - 1 - x;
+				std::swap(r0[x], r0[r_idx]);
+				std::swap(r1[x], r1[r_idx]);
+				std::swap(r2[x], r2[r_idx]);
+				std::swap(r3[x], r3[r_idx]);
 			}
 		}
 
-		// 2. VECTOR REMAINDER LOOP (Process remaining chunks of 4 pixels)
-		for (; offset <= total_pixels - vec_width; offset += vec_width) {
-			Vec p = Traits::load(surf_ptr + offset);
-			Traits::store(surf_ptr + offset, process_vec(p));
-		}
-
-		// 3. SCALAR REMAINDER (Process final 1-3 pixels)
-		if (offset < total_pixels) {
-			std::size_t remaining_pixels = total_pixels - offset;
-			uint32_t* current_surf_ptr = surf_ptr + offset;
-
-			for (std::size_t i = 0; i < remaining_pixels; ++i) {
-				uint32_t pixel = current_surf_ptr[i];
-				uint8_t a = pixel >> 24;
-				if (a != 0) {
-					uint32_t prod = a * alpha_mod_scalar;
-					uint32_t new_a = (prod + 128 + (prod >> 8)) >> 8;
-					current_surf_ptr[i] = (new_a << 24) | (pixel & 0x00FFFFFF);
-				}
+		// Height remainder remains the same but with faster reverse
+		for (; y < height; ++y) {
+			uint32_t* r = pixels + y * width;
+			std::size_t x = 0;
+			for (; x + 4 <= half_width; x += 4) {
+				std::size_t r_idx = width - x - 4;
+				uint32x4_t L = vld1q_u32(r + x);
+				uint32x4_t R = vld1q_u32(r + r_idx);
+				vst1q_u32(r + x, reverse_vector_u32(R));
+				vst1q_u32(r + r_idx, reverse_vector_u32(L));
 			}
-		}
-	}
-
-	template <typename Traits>
-	void adjust_surface_color_impl(uint32_t* surf_ptr, std::size_t total_pixels, int r, int g, int b)
-	{
-		using Vec = typename Traits::type;
-		constexpr int N = Traits::vectors_per_loop;
-
-		// 1. Prepare Add/Sub Vectors based on the sign of the color delta.
-		// This splits the signed color adjustments (r, g, b) into two masks:
-		// The masks are constructed as 0xAARRGGBB, aligned for byte-wise SIMD operations.
-		uint32_t add_mask_val = 0;
-		uint32_t sub_mask_val = 0;
-
-		if (r > 0) add_mask_val |= (r << 16);
-		else       sub_mask_val |= (static_cast<uint32_t>(std::abs(r)) << 16);
-		if (g > 0) add_mask_val |= (g << 8);
-		else       sub_mask_val |= (static_cast<uint32_t>(std::abs(g)) << 8);
-		if (b > 0) add_mask_val |= static_cast<uint32_t>(b);
-		else       sub_mask_val |= static_cast<uint32_t>(std::abs(b));
-
-		const Vec add_vec = Traits::set1(add_mask_val);
-		const Vec sub_vec = Traits::set1(sub_mask_val);
-
-		std::size_t offset = 0;
-		const std::size_t vec_width = Traits::width;
-
-		// 1. UNROLLED LOOP (N vectors per iteration: SSE2=4×4=16px, NEON=8×4=32px)
-		const std::size_t block_size = vec_width * N;
-		if (total_pixels >= block_size) {
-			const std::size_t limit = total_pixels - block_size;
-			for (; offset <= limit; offset += block_size) {
-				Vec p[N];
-
-				// Load
-				for (int i = 0; i < N; ++i) {
-					p[i] = Traits::load(surf_ptr + offset + (i * vec_width));
-				}
-
-				// Process: subtract negative adjustments, then add positive adjustments (both saturating)
-				for (int i = 0; i < N; ++i) {
-					p[i] = Traits::add_saturated_u8(Traits::sub_saturated_u8(p[i], sub_vec), add_vec);
-					Traits::store(surf_ptr + offset + (i * vec_width), p[i]);
-				}
-			}
-		}
-
-		// 2. VECTOR REMAINDER LOOP (Process remaining chunks of 4 pixels)
-		for (; offset <= total_pixels - vec_width; offset += vec_width) {
-			Vec p = Traits::load(surf_ptr + offset);
-			p = Traits::add_saturated_u8(Traits::sub_saturated_u8(p, sub_vec), add_vec);
-			Traits::store(surf_ptr + offset, p);
-		}
-
-		// 3. SCALAR REMAINDER (Process final 1-3 pixels)
-		if (offset < total_pixels) {
-			std::size_t remaining_pixels = total_pixels - offset;
-			uint32_t* current_surf_ptr = surf_ptr + offset;
-
-			for (std::size_t i = 0; i < remaining_pixels; ++i) {
-				uint32_t pixel = current_surf_ptr[i];
-				uint8_t a = pixel >> 24;
-				uint8_t pr = (pixel >> 16) & 0xFF;
-				uint8_t pg = (pixel >> 8) & 0xFF;
-				uint8_t pb = pixel & 0xFF;
-				pr = std::clamp(static_cast<int>(pr) + r, 0, 255);
-				pg = std::clamp(static_cast<int>(pg) + g, 0, 255);
-				pb = std::clamp(static_cast<int>(pb) + b, 0, 255);
-				current_surf_ptr[i] = (a << 24) | (pr << 16) | (pg << 8) | pb;
+			for (; x < half_width; ++x) {
+				std::swap(r[x], r[width - 1 - x]);
 			}
 		}
 	}
 
-	template<typename Traits>
-	void flip_row_impl(uint32_t* row_ptr, std::size_t width_total_pixels)
-	{
-		using Vec = typename Traits::type;
-		constexpr std::size_t VEC_PPC = Traits::width;
-		constexpr int PAIRS_PER_LOOP = Traits::vectors_per_loop / 2;
-		const std::size_t pairs_to_process = (width_total_pixels / VEC_PPC) / 2;
-
-		uint32_t* left_ptr = row_ptr;
-		uint32_t* right_ptr = row_ptr + width_total_pixels - VEC_PPC;
-		std::size_t i = 0;
-
-		// 1. UNROLLED LOOP (PAIRS_PER_LOOP pairs of vectors per iteration: SSE2=2*2×4=16px, NEON=2*4×4=32px)
-		if (pairs_to_process >= PAIRS_PER_LOOP) {
-			const std::size_t limit = pairs_to_process - PAIRS_PER_LOOP;
-
-			for (; i <= limit; i += PAIRS_PER_LOOP) {
-				Vec l[PAIRS_PER_LOOP];
-				Vec r[PAIRS_PER_LOOP];
-
-				// LOAD
-				for (int p = 0; p < PAIRS_PER_LOOP; ++p) {
-					l[p] = Traits::load(left_ptr + (p * VEC_PPC));
-					r[p] = Traits::load(right_ptr - (p * VEC_PPC));
-				}
-
-				// Process & Store Loop
-				for (int p = 0; p < PAIRS_PER_LOOP; ++p) {
-
-					// REVERSE
-					Vec l_rev = Traits::reverse_lanes_32(l[p]);
-					Vec r_rev = Traits::reverse_lanes_32(r[p]);
-
-					// STORE (Swap sides)
-					Traits::store(left_ptr + (p * VEC_PPC), r_rev);
-					Traits::store(right_ptr - (p * VEC_PPC), l_rev);
-				}
-
-				// ADVANCE POINTERS
-				left_ptr += (VEC_PPC * PAIRS_PER_LOOP);
-				right_ptr -= (VEC_PPC * PAIRS_PER_LOOP);
-			}
-		}
-
-		// 2. VECTOR REMAINDER LOOP (Process remaining single pairs)
-		for (; i < pairs_to_process; ++i) {
-			Vec v_left = Traits::load(left_ptr);
-			Vec v_right = Traits::load(right_ptr);
-			Vec v_left_rev = Traits::reverse_lanes_32(v_left);
-			Vec v_right_rev = Traits::reverse_lanes_32(v_right);
-			Traits::store(left_ptr, v_right_rev);
-			Traits::store(right_ptr, v_left_rev);
-			left_ptr += VEC_PPC;
-			right_ptr -= VEC_PPC;
-		}
-
-		// 3. SCALAR REMAINDER (Handle middle pixels that don't form complete vector pairs)
-		std::size_t pixels_processed = pairs_to_process * VEC_PPC * 2;
-		std::size_t remaining_pixels = width_total_pixels - pixels_processed;
-
-		if (remaining_pixels > 1) {
-			uint32_t* current_row_ptr = left_ptr;
-
-			// Swap the middle section
-			for (std::size_t x = 0; x < remaining_pixels / 2; ++x) {
-				std::swap(current_row_ptr[x], current_row_ptr[remaining_pixels - x - 1]);
-			}
-		}
-
-	}
-
-} // namespace
+#endif // (SIMD_NEON)
 
 // ============================================================================
 // PUBLIC DISPATCHERS
@@ -541,35 +796,64 @@ namespace {
 
 bool mask_surface_simd(uint32_t* surf_ptr, const uint32_t* mask_ptr, std::size_t total_pixels, bool& empty)
 {
-	if (!SIMD_IMPLEMENTED) return false;
-	mask_surface_impl<SimdImplTraits>(surf_ptr, mask_ptr, total_pixels, empty);
-	return true;
-}
-
-bool in_mask_surface_simd(const uint32_t* surf_ptr, const uint32_t* mask_ptr, std::size_t total_pixels, bool& fits)
-{
-	if (!SIMD_IMPLEMENTED) return false;
-	in_mask_surface_impl<SimdImplTraits>(surf_ptr, mask_ptr, total_pixels, fits);
-	return true;
+	if (total_pixels > 63) {
+#if (SIMD_SSE2)
+		mask_surface_simd_sse2(surf_ptr, mask_ptr, total_pixels, empty);
+		return true;
+#elif (SIMD_NEON)
+		mask_surface_simd_neon(surf_ptr, mask_ptr, total_pixels, empty);
+		return true;
+#else
+		return false;
+#endif
+	}
+	return false;
 }
 
 bool apply_surface_opacity_simd(uint32_t* surf_ptr, std::size_t total_pixels, uint8_t alpha_mod)
 {
-	if (!SIMD_IMPLEMENTED) return false;
-	apply_surface_opacity_impl<SimdImplTraits>(surf_ptr, total_pixels, alpha_mod);
-	return true;
+	if (total_pixels > 63) {
+#if (SIMD_SSE2)
+		apply_surface_opacity_simd_sse2(surf_ptr, total_pixels, alpha_mod);
+		return true;
+#elif (SIMD_NEON)
+		apply_surface_opacity_simd_neon(surf_ptr, total_pixels, alpha_mod);
+		return true;
+#else
+		return false;
+#endif
+	}
+	return false;
 }
 
-bool adjust_surface_color_simd(uint32_t* surf_ptr, std::size_t width_total_pixels, int r, int g, int b)
+bool adjust_surface_color_simd(uint32_t* surf_ptr, std::size_t total_pixels, int r, int g, int b)
 {
-	if (!SIMD_IMPLEMENTED) return false;
-	adjust_surface_color_impl<SimdImplTraits>(surf_ptr, width_total_pixels, r, g, b);
-	return true;
+	if (total_pixels > 63) {
+#if (SIMD_SSE2)
+		adjust_surface_color_simd_sse2(surf_ptr, total_pixels, r, g, b);
+		return true;
+#elif (SIMD_NEON)
+		adjust_surface_color_simd_neon(surf_ptr, total_pixels, r, g, b);
+		return true;
+#else
+		return false;
+#endif
+	}
+	return false;
 }
 
-bool flip_row_simd(uint32_t* row_ptr, std::size_t width_total_pixels)
+bool flip_image_simd(uint32_t* pixel_pointer, std::size_t width, std::size_t height)
 {
-	if (!SIMD_IMPLEMENTED) return false;
-	flip_row_impl<SimdImplTraits>(row_ptr, width_total_pixels);
-	return true;
+	if ((width*height) > 63) {
+#if (SIMD_SSE2)
+		flip_image_simd_sse2(pixel_pointer, width, height);
+		return true;
+#elif (SIMD_NEON)
+		flip_image_simd_neon(pixel_pointer, width, height);
+		return true;
+#else
+		return false;
+#endif
+	}
+	return false;
 }
