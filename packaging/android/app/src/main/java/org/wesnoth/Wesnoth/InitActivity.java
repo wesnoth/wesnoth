@@ -264,7 +264,6 @@ public class InitActivity extends Activity {
 							lastModified = downloadFile(
 								url, packageFile, lastModified, info.getUIName(), false);
 							
-							status.setProperty(id + ".version", "" + info.getVersion());
 							status.setProperty(id + ".modified", "" + lastModified);
 						} catch (Exception e) {
 							Log.e("Download", "security error", e);
@@ -276,6 +275,12 @@ public class InitActivity extends Activity {
 							Log.d("InitActivity", "Start unpacking " + id);
 							
 							if (unpackArchive(packageFile, dataDir, info.getUIName())) {
+								status.setProperty(id + ".version", "" + info.getVersion());
+								// this package is already supplying what it excludes,
+								// so mark excluded packages as installed
+								for (Map.Entry<String, String> entry : info.getExcluded().entrySet()) {
+									status.setProperty(entry.getKey() + ".version", entry.getValue().toString());
+								}
 								excluded.putAll(info.getExcluded());
 								packageFile.delete();
 							}
