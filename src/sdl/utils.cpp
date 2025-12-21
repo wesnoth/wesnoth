@@ -1397,9 +1397,6 @@ bool contains_non_transparent_pixel(const Range& span)
 
 rect get_non_transparent_portion(const surface& surf)
 {
-	// Default to "surface is fully opaque".
-	rect res{0, 0, surf->w, surf->h};
-
 	auto lock = const_surface_lock{surf};
 	utils::span pixels = lock.pixel_span();
 
@@ -1418,6 +1415,8 @@ rect get_non_transparent_portion(const surface& surf)
 		auto column_span = remaining_pixels | utils::views::stride(surf->w);
 		return contains_non_transparent_pixel(column_span);
 	};
+
+	rect res;
 
 	// Find the first non-transparent row from the top.
 	for(int y = 0; y < surf->h; ++y) {
@@ -1438,8 +1437,7 @@ rect get_non_transparent_portion(const surface& surf)
 	// Discard fully transparent top and bottom rows.
 	pixels = pixels.subspan(
 		static_cast<std::size_t>(res.y) * surf->w,
-		static_cast<std::size_t>(res.h) * surf->w
-	);
+		static_cast<std::size_t>(res.h) * surf->w);
 
 	// Find the first non-transparent column from the left.
 	for(int x = 0; x < surf->w; ++x) {
