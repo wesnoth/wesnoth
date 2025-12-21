@@ -141,7 +141,7 @@ static std::chrono::system_clock::time_point get_time(const config& speak)
 }
 
 chat_msg::chat_msg(const config &cfg)
-	: color_()
+	: color_() // use default white for observers
 	, nick_()
 	, text_(cfg["message"].str())
 	, time_(get_time(cfg))
@@ -154,10 +154,8 @@ chat_msg::chat_msg(const config &cfg)
 	}
 	int side = cfg["side"].to_int(0);
 	LOG_REPLAY << "side in message: " << side;
-	if (side==0) {
-		color_ = "white";//observers
-	} else {
-		color_ = team::get_side_highlight_pango(side);
+	if(side != 0) {
+		color_ = team::get_side_color(side);
 	}
 }
 

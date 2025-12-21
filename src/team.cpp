@@ -928,13 +928,13 @@ bool shroud_map::copy_from(const std::vector<const shroud_map*>& maps)
 	return cleared;
 }
 
-const color_range team::get_side_color_range(int side)
+color_range team::get_side_color_range(int side)
 {
 	std::string index = get_side_color_id(side);
-	auto gp = game_config::team_rgb_range.find(index);
+	auto iter = game_config::team_rgb_range.find(index);
 
-	if(gp != game_config::team_rgb_range.end()) {
-		return (gp->second);
+	if(iter != game_config::team_rgb_range.end()) {
+		return iter->second;
 	}
 
 	return color_range({255, 0, 0}, {255, 255, 255}, {0, 0, 0}, {255, 0, 0});
@@ -979,7 +979,7 @@ std::string team::get_side_color_id(unsigned side)
 	}
 }
 
-const t_string team::get_side_color_name_for_UI(unsigned side)
+t_string team::get_side_color_name_for_UI(unsigned side)
 {
 	const std::string& color_id = team::get_side_color_id(side);
 	const auto& rgb_name = game_config::team_rgb_name[color_id];
@@ -1009,11 +1009,6 @@ std::string team::get_side_color_id_from_config(const config& cfg)
 
 	// Else, we should have a color id at this point. Return it.
 	return c.str();
-}
-
-std::string team::get_side_highlight_pango(int side)
-{
-	return get_side_color_range(side).mid().to_hex_string();
 }
 
 void team::log_recruitable() const

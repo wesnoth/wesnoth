@@ -391,15 +391,14 @@ public:
 	void set_no_turn_confirmation(bool value) { info_.no_turn_confirmation = value; }
 
 	//function which, when given a 1-based side will return the color used by that side.
-	static const color_range get_side_color_range(int side);
+	static color_range get_side_color_range(int side);
 
 	static color_t get_side_color(int side);
 	static color_t get_minimap_color(int side);
 
 	static std::string get_side_color_id(unsigned side);
-	static const t_string get_side_color_name_for_UI(unsigned side);
+	static t_string get_side_color_name_for_UI(unsigned side);
 	static std::string get_side_color_id_from_config(const config& cfg);
-	static std::string get_side_highlight_pango(int side);
 
 	void log_recruitable() const;
 
