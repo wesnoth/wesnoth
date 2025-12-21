@@ -132,7 +132,7 @@ public:
 	 * RC-map based constructor.
 	 * @param recolor_map The palette switch map.
 	 */
-	rc_modification(const color_range_map& recolor_map)
+	rc_modification(const color_mapping& recolor_map)
 		: rc_map_(recolor_map)
 	{}
 	virtual void operator()(surface& src) const override;
@@ -142,11 +142,11 @@ public:
 
 	bool no_op() const { return rc_map_.empty(); }
 
-	const color_range_map& map() const { return rc_map_;}
-	color_range_map& map() { return rc_map_;}
+	const color_mapping& map() const { return rc_map_;}
+	color_mapping& map() { return rc_map_;}
 
 private:
-	color_range_map rc_map_;
+	color_mapping rc_map_;
 };
 
 /**

@@ -111,7 +111,7 @@ void swap_channels_image(surface& surf, channel r, channel g, channel b, channel
  * @param map_rgb            Map of color values, with the keys corresponding to the
  *                           source palette, and the values to the recolored palette.
  */
-void recolor_image(surface& surf, const color_range_map& map_rgb);
+void recolor_image(surface& surf, const color_mapping& map_rgb);
 
 void brighten_image(surface& surf, int32_t amount);
 

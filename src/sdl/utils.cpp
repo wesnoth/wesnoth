@@ -632,7 +632,7 @@ void swap_channels_image(surface& nsurf, channel r, channel g, channel b, channe
 	}
 }
 
-void recolor_image(surface& nsurf, const color_range_map& map_rgb)
+void recolor_image(surface& nsurf, const color_mapping& map_rgb)
 {
 	if(nsurf == nullptr)
 		return;
@@ -646,7 +646,7 @@ void recolor_image(surface& nsurf, const color_range_map& map_rgb)
 	for(auto& pixel : lock.pixel_span()) {
 		auto color = color_t::from_argb_bytes(pixel);
 
-		// Palette use only RGB channels, so remove alpha
+		// Palette uses only RGB channels, so remove alpha
 		uint8_t old_alpha = color.a;
 		color.a = ALPHA_OPAQUE;
 

@@ -174,7 +174,7 @@ BOOST_AUTO_TEST_CASE(test_tc_modification_decoding)
 	const std::vector<color_t>& old_color = game_config::tc_info("blue");
 	// The first team color is red
 	const color_range& new_color = game_config::color_info("red");
-	color_range_map expected = recolor_range(new_color, old_color);
+	color_mapping expected = generate_color_mapping(new_color, old_color);
 
 	BOOST_CHECK(expected == mod->map());
 }
@@ -205,7 +205,7 @@ BOOST_AUTO_TEST_CASE(test_rc_modification_decoding)
 
 	const std::vector<color_t>& old_color = game_config::tc_info("red");
 	const color_range& new_color = game_config::color_info("blue");
-	color_range_map expected = recolor_range(new_color, old_color);
+	color_mapping expected = generate_color_mapping(new_color, old_color);
 
 	BOOST_CHECK(expected == mod->map());
 }
@@ -237,7 +237,7 @@ BOOST_AUTO_TEST_CASE(test_pal_modification_decoding)
 
 	const std::vector<color_t>& old_palette = game_config::tc_info("000000,005000");
 	const std::vector<color_t>& new_palette = game_config::tc_info("FFFFFF,FF00FF");
-	color_range_map expected;
+	color_mapping expected;
 
 	for(std::size_t i = 0; i < old_palette.size() && i < new_palette.size(); ++i) {
 	environment_setup env_setup;
