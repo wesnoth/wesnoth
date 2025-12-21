@@ -21,12 +21,6 @@
 #include <unordered_map>
 #include <vector>
 
-//These macros interfere with MS VC++
-#ifdef _MSC_VER
-	#undef max
-	#undef min
-#endif
-
 using color_range_map = std::unordered_map<color_t, color_t>;
 
 /**
