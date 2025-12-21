@@ -92,15 +92,6 @@ public:
 		return mid_ == b.mid() && max_ == b.max() && min_ == b.min() && rep_ == b.rep();
 	}
 
-	bool operator<(const color_range& b) const
-	{
-		if(mid_ != b.mid()) { return mid_.to_rgba_bytes() < b.mid().to_rgba_bytes(); }
-		if(max_ != b.max()) { return max_.to_rgba_bytes() < b.max().to_rgba_bytes(); }
-		if(min_ != b.min()) { return min_.to_rgba_bytes() < b.min().to_rgba_bytes(); }
-
-		return rep_.to_rgba_bytes() < b.rep().to_rgba_bytes();
-	}
-
 	/** Return a string describing the color range for debug output. */
 	std::string debug() const;
 
