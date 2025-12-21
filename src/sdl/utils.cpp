@@ -1393,6 +1393,19 @@ bool contains_non_transparent_pixel(const Range& span)
 		[](uint32_t pixel) { return (pixel & SDL_ALPHA_MASK) != 0; });
 }
 
+/**
+ * Calculates the inclusive distance between two array indices.
+ *
+ * For example, two adjacent columns of pixels should have a
+ * distance of two even though their indices are one apart.
+ *
+ * @pre @a i2 > @a i1
+ */
+auto cover_distance(int i1, int i2)
+{
+	return (i2 - i1) + 1;
+}
+
 } // namespace
 
 rect get_non_transparent_portion(const surface& surf)
@@ -1400,19 +1413,15 @@ rect get_non_transparent_portion(const surface& surf)
 	auto lock = const_surface_lock{surf};
 	utils::span pixels = lock.pixel_span();
 
-	const auto row_is_not_transparent = [&](int y) {
-		// Pixel data is stored in row-major order.
-		auto pos = static_cast<std::size_t>(y) * surf->w;
-		utils::span row_span = pixels.subspan(pos, surf->w);
+	const auto row_is_not_transparent = [&](std::size_t y) {
+		utils::span row_span = pixels.subspan(y * surf->w, surf->w);
 		return contains_non_transparent_pixel(row_span);
 	};
 
-	const auto column_is_not_transparent = [&](int x) {
-		// All pixels after the first n in the first remaining row.
-		utils::span remaining_pixels = pixels.subspan(x);
-
-		// Skipping ahead by width yields all pixels in the x'th column.
-		auto column_span = remaining_pixels | utils::views::stride(surf->w);
+	const auto column_is_not_transparent = [&](std::size_t x) {
+		// Striding ahead by width yields all pixels in the x'th column.
+		utils::span offset = pixels.subspan(x);
+		auto column_span = offset | utils::views::stride(surf->w);
 		return contains_non_transparent_pixel(column_span);
 	};
 
@@ -1429,7 +1438,7 @@ rect get_non_transparent_portion(const surface& surf)
 	// Find the first non-transparent row from the bottom.
 	for(int y = surf->h - 1; y >= res.y; --y) {
 		if(row_is_not_transparent(y)) {
-			res.h = (y - res.y) + 1;
+			res.h = cover_distance(res.y, y);
 			break;
 		}
 	}
@@ -1450,7 +1459,7 @@ rect get_non_transparent_portion(const surface& surf)
 	// Find the first non-transparent column from the right.
 	for(int x = surf->w - 1; x >= res.x; --x) {
 		if(column_is_not_transparent(x)) {
-			res.w = (x - res.x) + 1;
+			res.w = cover_distance(res.x, x);
 			break;
 		}
 	}
