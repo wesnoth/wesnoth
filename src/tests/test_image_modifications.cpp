@@ -52,15 +52,18 @@ private:
 	 */
 	void set_up_color_info()
 	{
-		config cfg;
-		cfg.add_child("color_range",
-			       create_color_range("red",
-						  "FF0000,FFFFFF,000000,FF0000",
-						  "Red"));
-		cfg.add_child("color_range",
-			       create_color_range("blue",
-						  "2E419B,FFFFFF,0F0F0F,0000FF",
-						  "Blue"));
+		const auto cfg = config{
+			"color_range", config{
+				"id",   "red",
+				"name", "Red",
+				"rgb",  "FF0000,FFFFFF,000000,FF0000"
+			},
+			"color_range", config{
+				"id",   "blue",
+				"name", "Blue",
+				"rgb",  "2E419B,FFFFFF,0F0F0F,0000FF"
+			}
+		};
 
 		game_config::add_color_info(game_config_view::wrap(cfg));
 	}
@@ -72,35 +75,8 @@ private:
 	 */
 	void set_up_image_paths()
 	{
-		config cfg;
-		game_config_view v = game_config_view::wrap(cfg);
-		cfg.add_child("binary_path",
-			      create_path_config("data/core"));
-
-
-		paths_manager_.set_paths(v);
-	}
-
-	static config create_color_range(const std::string& id,
-				  const std::string& rgb,
-				  const std::string& name)
-	{
-		config cfg;
-
-		cfg["id"] = id;
-		cfg["rgb"] = rgb;
-		cfg["name"] = name;
-
-		return cfg;
-	}
-
-	static config create_path_config(const std::string& path)
-	{
-		config cfg;
-
-		cfg["path"] = path;
-
-		return cfg;
+		const auto cfg = config{"binary_path", config{"path", "data/core"}};
+		paths_manager_.set_paths(game_config_view::wrap(cfg));
 	}
 
 	std::stringstream ignored_stream_;
