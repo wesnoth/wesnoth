@@ -5,33 +5,37 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-07-20 22:54-0500\n"
-"PO-Revision-Date: 2023-05-29 16:27-0500\n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2025-12-20 23:19+0100\n"
+"Last-Translator: Arnau Vàzquez Palma <arnauvp@murena.io>\n"
 "Language-Team: none\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.8\n"
 
 #: data/tools/GUI.pyw:76
 msgid "Open a Graphical User Interface (GUI) to WML Tools"
-msgstr ""
+msgstr "Obre una interfície gràfica d'usuari (GUI) a les eines WML"
 
 #: data/tools/GUI.pyw:80
 msgid ""
 "Launch GUI.pyw in the specified language. Language code is expected as a "
 "POSIX locale name, refer to gettext.wesnoth.org for a full list."
 msgstr ""
+"Llança GUI.pyw en el llenguatge especificat. S'espera que el codi de la "
+"llengua sigui un nom de configuració regional POSIX; consulteu "
+"gettext.wesnoth.org per a una llista completa."
 
 #: data/tools/GUI.pyw:86 data/tools/GUI.pyw:100 data/tools/GUI.pyw:1409
 #: data/tools/GUI.pyw:1458 data/tools/GUI.pyw:1501 data/tools/GUI.pyw:1530
 #: data/tools/GUI.pyw:1566 data/tools/GUI.pyw:1590 data/tools/GUI.pyw:1633
 #: data/tools/GUI.pyw:1652 data/tools/GUI.pyw:1978
 msgid "Error"
-msgstr ""
+msgstr "Error"
 
 #. TRANSLATORS: {0} is "translations", the directory where compiled translation files (.mo) are stored.
 #: data/tools/GUI.pyw:88
@@ -40,12 +44,14 @@ msgid ""
 "‘{0}’ directory not found. Please run the GUI.pyw program packaged with the "
 "Wesnoth installation."
 msgstr ""
+"Directori '{0}' no trobat. Si us plau, executeu el programa GUI.pyw inclòs "
+"amb la instal·lació de Wesnoth."
 
 #. TRANSLATORS: {0} is the language argument entered by the user.
 #: data/tools/GUI.pyw:102
 #, python-brace-format
 msgid "Locale {0} not recognized."
-msgstr ""
+msgstr "No s’ha reconegut la configuració regional {0}."
 
 #. TRANSLATORS: {0} is the name of command being executed.
 #: data/tools/GUI.pyw:383
@@ -54,311 +60,315 @@ msgid ""
 "Running: {0}\n"
 "Please wait..."
 msgstr ""
+"Executant: {0}\n"
+"Si us plau esperi…"
 
 #: data/tools/GUI.pyw:397
 msgid "Terminate script"
-msgstr ""
+msgstr "Interrompre el programa"
 
 #: data/tools/GUI.pyw:448
 msgid "Cut"
-msgstr ""
+msgstr "Retalla"
 
 #: data/tools/GUI.pyw:453
 msgid "Copy"
-msgstr ""
+msgstr "Copia"
 
 #: data/tools/GUI.pyw:459
 msgid "Paste"
-msgstr ""
+msgstr "Enganxa"
 
 #: data/tools/GUI.pyw:465
 msgid "Select All"
-msgstr ""
+msgstr "Selecciona-ho tot"
 
 #: data/tools/GUI.pyw:538
 msgid "Working directory"
-msgstr ""
+msgstr "Directori de treball"
 
 #: data/tools/GUI.pyw:550 data/tools/GUI.pyw:593
 msgid "Browse..."
-msgstr ""
+msgstr "Explora..."
 
 #. TRANSLATORS: Clear button for clearing the directory text box.
 #: data/tools/GUI.pyw:557 data/tools/GUI.pyw:600
 msgid "Clear"
-msgstr ""
+msgstr "Esborrar"
 
 #: data/tools/GUI.pyw:650
 msgid "wmllint mode"
-msgstr ""
+msgstr "Mode wmllint"
 
 #. TRANSLATORS: Normal run mode for the WML tool.
 #: data/tools/GUI.pyw:657 data/tools/GUI.pyw:1077
 msgid "Normal"
-msgstr ""
+msgstr "Normal"
 
 #. TRANSLATORS: Tooltip explanation for normal run mode.
 #: data/tools/GUI.pyw:666 data/tools/GUI.pyw:1086
 msgid "Perform conversion and save changes to file"
-msgstr ""
+msgstr "Realitza la conversió i desa els canvis al fitxer"
 
 #: data/tools/GUI.pyw:669 data/tools/GUI.pyw:1089
 msgid "Dry run"
-msgstr ""
+msgstr "Simulació"
 
 #. TRANSLATORS: Tooltip explanation for dry run mode.
 #: data/tools/GUI.pyw:678 data/tools/GUI.pyw:1098
 msgid "Perform conversion without saving changes to file"
-msgstr ""
+msgstr "Realitza la conversió sense desar els canvis al fitxer"
 
 #: data/tools/GUI.pyw:681
 msgid "Clean"
-msgstr ""
+msgstr "Neteja"
 
 #. TRANSLATORS: Tooltip explanation for clean mode.
 #: data/tools/GUI.pyw:690
 msgid "Delete back-up files"
-msgstr ""
+msgstr "Esborra fitxers de còpia de seguretat"
 
 #: data/tools/GUI.pyw:693
 msgid "Diff"
-msgstr ""
+msgstr "Diferencial"
 
 #. TRANSLATORS: Tooltip explanation for diff run mode.
 #: data/tools/GUI.pyw:702
 msgid "Show differences in converted files"
-msgstr ""
+msgstr "Mostra diferències en fitxers convertits"
 
 #: data/tools/GUI.pyw:705
 msgid "Revert"
-msgstr ""
+msgstr "Reverteix"
 
 #. TRANSLATORS: Tooltip explanation for revert run mode.
 #: data/tools/GUI.pyw:714
 msgid "Revert conversions using back-up files"
-msgstr ""
+msgstr "Reverteix conversions utilitzant fitxers de còpia de seguretat"
 
 #: data/tools/GUI.pyw:717 data/tools/GUI.pyw:1101
 msgid "Verbosity level"
-msgstr ""
+msgstr "Nivell de verbositat"
 
 #. TRANSLATORS: Verbosity level.
 #: data/tools/GUI.pyw:725 data/tools/GUI.pyw:1109
 msgid "Terse"
-msgstr ""
+msgstr "Concís"
 
 #. TRANSLATORS: Verbosity level.
 #: data/tools/GUI.pyw:736
 msgid "Show changes"
-msgstr ""
+msgstr "Mostra canvis"
 
 #. TRANSLATORS: Verbosity level.
 #: data/tools/GUI.pyw:746
 msgid "Name files before processing"
-msgstr ""
+msgstr "Dóna nom als fitxers abans del processament"
 
 #. TRANSLATORS: Verbosity level.
 #: data/tools/GUI.pyw:756
 msgid "Show parse details"
-msgstr ""
+msgstr "Detalls de l'anàlisi"
 
 #: data/tools/GUI.pyw:765
 msgid "wmllint options"
-msgstr ""
+msgstr "Opcions de wmllint"
 
 #. TRANSLATORS: EOL = Special characters marking 'end-of-line'.
 #: data/tools/GUI.pyw:773
 msgid "Convert EOL characters to Unix format"
-msgstr ""
+msgstr "Convertir caràcters EOL a format Unix"
 
 #. TRANSLATORS: 'side=' in this context refers to WML and should not be
 #. translated.
 #: data/tools/GUI.pyw:784
 msgid "Warn about tags without side= keys"
-msgstr ""
+msgstr "Adverteix sobre etiquetes sense claus ‘side=‘"
 
 #: data/tools/GUI.pyw:793
 msgid "Disable checks for unknown units"
-msgstr ""
+msgstr "Desactiva les comprovacions d'unitats desconegudes"
 
 #: data/tools/GUI.pyw:802
 msgid "Disable spellchecking"
-msgstr ""
+msgstr "Desactiva la correcció ortogràfica"
 
 #: data/tools/GUI.pyw:811
 msgid "Skip core directory"
-msgstr ""
+msgstr "Salta el directori principal"
 
 #: data/tools/GUI.pyw:838
 msgid "wmlscope options"
-msgstr ""
+msgstr "Opcions de WMLscope"
 
 #: data/tools/GUI.pyw:850
 msgid "Check for duplicate macro definitions"
-msgstr ""
+msgstr "Comprova si hi ha definicions duplicades de macros"
 
 #: data/tools/GUI.pyw:859
 msgid "Check for duplicate resource files"
-msgstr ""
+msgstr "Comprova si hi ha fitxers de recursos duplicats"
 
 #: data/tools/GUI.pyw:868
 msgid "Make definition list"
-msgstr ""
+msgstr "Fes una llista de definicions"
 
 #: data/tools/GUI.pyw:877
 msgid "List files that will be processed"
-msgstr ""
+msgstr "Llista de fitxers que es processaran"
 
 #: data/tools/GUI.pyw:886
 msgid "Report unresolved macro references"
-msgstr ""
+msgstr "Informa de referències macro no resoltes"
 
 #: data/tools/GUI.pyw:895
 msgid "Extract help from macro definition comments"
-msgstr ""
+msgstr "Extreu ajuda dels comentaris de definició de macros"
 
 #: data/tools/GUI.pyw:904
 msgid "Report all macros with untyped formals"
-msgstr ""
+msgstr "Informa de totes les macros amb formals sense tipificar"
 
 #: data/tools/GUI.pyw:913
 msgid "Show progress"
-msgstr ""
+msgstr "Mostra’n el progrés"
 
 #: data/tools/GUI.pyw:933 data/tools/GUI.pyw:1145
 msgid "Exclude file names matching regular expression:"
-msgstr ""
+msgstr "Exclou els noms dels fitxers que coincideixin amb l'expressió regular:"
 
 #: data/tools/GUI.pyw:951
 msgid "Exclude file names not matching regular expression:"
-msgstr ""
+msgstr "Excloure noms de fitxer que no coincideixin amb l'expressió regular:"
 
 #. TRANSLATORS: 'n' in this context refers to number, as in 'n number of
 #. files'.
 #: data/tools/GUI.pyw:971
 msgid "Report only on macros referenced in exactly n files:"
-msgstr ""
+msgstr "Informa només sobre macros referenciades exactament en n fitxers:"
 
 #: data/tools/GUI.pyw:991
 msgid "Report macro definitions and usages in file:"
-msgstr ""
+msgstr "Informa de les definicions i usos de macros al fitxer:"
 
 #: data/tools/GUI.pyw:1009
 msgid "Allow unused macros with names matching regular expression:"
 msgstr ""
+"Permetre macros no utilitzades amb noms que coincideixin amb expressions "
+"regulars:"
 
 #: data/tools/GUI.pyw:1071
 msgid "wmlindent mode"
-msgstr ""
+msgstr "Mode wmlindent"
 
 #. TRANSLATORS: Verbosity level.
 #: data/tools/GUI.pyw:1119
 msgid "Verbose"
-msgstr ""
+msgstr "Verbós"
 
 #. TRANSLATORS: Verbosity level.
 #: data/tools/GUI.pyw:1129
 msgid "Report unchanged files"
-msgstr ""
+msgstr "Informa dels fitxers sense canvis"
 
 #: data/tools/GUI.pyw:1138
 msgid "wmlindent options"
-msgstr ""
+msgstr "Opcions wmlindent"
 
 #. TRANSLATORS: Option to run 'quietly'.
 #: data/tools/GUI.pyw:1165
 msgid "Quiet mode"
-msgstr ""
+msgstr "Mode silenciós"
 
 #. TRANSLATORS: Tooltip explanation for quiet option.
 #: data/tools/GUI.pyw:1173
 msgid "Do not generate output messages"
-msgstr ""
+msgstr "No generis missatges de sortida"
 
 #: data/tools/GUI.pyw:1193
 msgid "Output directory:"
-msgstr ""
+msgstr "Directori de sortida:"
 
 #: data/tools/GUI.pyw:1199
 msgid "Options"
-msgstr ""
+msgstr "Opcions"
 
 #: data/tools/GUI.pyw:1204
 msgid "Scan subdirectories"
-msgstr ""
+msgstr "Cerca en subcarpetes"
 
 #: data/tools/GUI.pyw:1209
 msgid "Show optional warnings"
-msgstr ""
+msgstr "Mostra advertències opcionals"
 
 #. TRANSLATORS: Also called "Needs work".
 #: data/tools/GUI.pyw:1215
 msgid "Mark all strings as fuzzy"
-msgstr ""
+msgstr "Marca totes les cadenes com a difuses"
 
 #: data/tools/GUI.pyw:1219
 msgid "Advanced options"
-msgstr ""
+msgstr "Mostra les opcions avançades"
 
 #: data/tools/GUI.pyw:1223
 msgid "Package version"
-msgstr ""
+msgstr "Versió del paquet"
 
 #: data/tools/GUI.pyw:1240
 msgid "Initial textdomain:"
-msgstr ""
+msgstr "Domini de text inicial:"
 
 #: data/tools/GUI.pyw:1286 data/tools/GUI.pyw:1392
 msgid "Run wmllint"
-msgstr ""
+msgstr "Executa wmllint"
 
 #: data/tools/GUI.pyw:1293
 msgid "Save as text..."
-msgstr ""
+msgstr "Desa com a text..."
 
 #: data/tools/GUI.pyw:1300
 msgid "Clear output"
-msgstr ""
+msgstr "Neteja la sortida"
 
 #: data/tools/GUI.pyw:1307
 msgid "About..."
-msgstr ""
+msgstr "Sobre el joc"
 
 #: data/tools/GUI.pyw:1314
 msgid "Exit"
-msgstr ""
+msgstr "Sortir"
 
 #: data/tools/GUI.pyw:1330 data/tools/GUI.pyw:1464
 msgid "wmllint"
-msgstr ""
+msgstr "wmllint"
 
 #: data/tools/GUI.pyw:1334 data/tools/GUI.pyw:1536
 msgid "wmlscope"
-msgstr ""
+msgstr "wmlscope"
 
 #: data/tools/GUI.pyw:1338 data/tools/GUI.pyw:1572
 msgid "wmlindent"
-msgstr ""
+msgstr "wmlindent"
 
 #: data/tools/GUI.pyw:1342 data/tools/GUI.pyw:1622
 msgid "wmlxgettext"
-msgstr ""
+msgstr "wmlxgettext"
 
 #: data/tools/GUI.pyw:1345
 msgid "Output"
-msgstr ""
+msgstr "Sortida"
 
 #: data/tools/GUI.pyw:1395
 msgid "Run wmlscope"
-msgstr ""
+msgstr "Executa wmlscope"
 
 #: data/tools/GUI.pyw:1398
 msgid "Run wmlindent"
-msgstr ""
+msgstr "Executa wmlindent"
 
 #: data/tools/GUI.pyw:1401
 msgid "Run wmlxgettext"
-msgstr ""
+msgstr "Executa wmlxgettext"
 
 #: data/tools/GUI.pyw:1409
 msgid ""
@@ -366,6 +376,10 @@ msgid ""
 "\n"
 "Please select a directory or disable the \"Skip core directory\" option."
 msgstr ""
+"No s'ha seleccionat cap directori.\n"
+"\n"
+"Si us plau, seleccioni un directori o desactivi l'opció \"Salta el directori "
+"principal”."
 
 #: data/tools/GUI.pyw:1444 data/tools/GUI.pyw:1516
 msgid ""
@@ -374,12 +388,16 @@ msgid ""
 "\n"
 "The tool will be run only on the Wesnoth core directory."
 msgstr ""
+"S’ha seleccionat el directori principal o un dels seus subdirectoris a la "
+"caixa de selecció de complements.\n"
+"\n"
+"L'eina només s'executarà al directori principal de Wesnoth."
 
 #: data/tools/GUI.pyw:1444 data/tools/GUI.pyw:1452 data/tools/GUI.pyw:1516
 #: data/tools/GUI.pyw:1524 data/tools/GUI.pyw:1559 data/tools/GUI.pyw:1585
 #: data/tools/GUI.pyw:1604
 msgid "Warning"
-msgstr ""
+msgstr "Advertència"
 
 #: data/tools/GUI.pyw:1452 data/tools/GUI.pyw:1524
 msgid ""
@@ -387,15 +405,18 @@ msgid ""
 "\n"
 "The tool will be run only on the Wesnoth core directory."
 msgstr ""
+"No s'ha seleccionat cap directori.\n"
+"\n"
+"L'eina només s'executarà al directori principal de Wesnoth."
 
 #: data/tools/GUI.pyw:1458 data/tools/GUI.pyw:1530 data/tools/GUI.pyw:1566
 #: data/tools/GUI.pyw:1590
 msgid "The selected directory does not exist."
-msgstr ""
+msgstr "El directori seleccionat no existeix."
 
 #: data/tools/GUI.pyw:1501
 msgid "Invalid value. Value must be an integer in the range 0-999."
-msgstr ""
+msgstr "Valor invàlid. El valor ha de ser un enter entre 0 i 999."
 
 #: data/tools/GUI.pyw:1559
 msgid ""
@@ -403,6 +424,9 @@ msgid ""
 "\n"
 "The tool will be run on the Wesnoth core directory."
 msgstr ""
+"No s'ha seleccionat cap directori.\n"
+"\n"
+"L'eina s'executarà al directori principal de Wesnoth."
 
 #: data/tools/GUI.pyw:1585
 msgid ""
@@ -410,11 +434,14 @@ msgid ""
 "\n"
 "The tool will not be run."
 msgstr ""
+"No s'ha seleccionat cap directori.\n"
+"\n"
+"L'eina no s'executarà."
 
 #. TRANSLATORS: Dialogue box title.
 #: data/tools/GUI.pyw:1597
 msgid "Overwrite Confirmation"
-msgstr ""
+msgstr "Confirmació de sobreescriptura"
 
 #. TRANSLATORS: {0} is a placeholder for a file name, and not meant to be modified.
 #: data/tools/GUI.pyw:1599
@@ -423,6 +450,8 @@ msgid ""
 "File {0} already exists.\n"
 "Do you want to overwrite it?"
 msgstr ""
+"El fitxer {0} ja existeix.\n"
+"Vols sobreescriure’l?"
 
 #: data/tools/GUI.pyw:1604
 msgid ""
@@ -430,6 +459,9 @@ msgid ""
 "\n"
 "The tool will not be run."
 msgstr ""
+"No s'ha seleccionat cap fitxer de sortida.\n"
+"\n"
+"L'eina no s'executarà."
 
 #: data/tools/GUI.pyw:1633
 #, python-brace-format
@@ -438,10 +470,13 @@ msgid ""
 "\n"
 "Error code: {1}"
 msgstr ""
+"Hi ha hagut un error en l’execució de {0}.\n"
+"\n"
+"Codi d'error: {1}"
 
 #: data/tools/GUI.pyw:1644
 msgid "Text file"
-msgstr ""
+msgstr "Fitxer de text"
 
 #: data/tools/GUI.pyw:1652
 #, python-brace-format
@@ -453,14 +488,30 @@ msgid ""
 "\n"
 "{2}"
 msgstr ""
+"Error en escriure a:\n"
+"{0}\n"
+"\n"
+"Codi d'error: {1}\n"
+"\n"
+"{2}"
 
 #: data/tools/GUI.pyw:1669
 msgid "About Maintenance Tools GUI"
-msgstr ""
+msgstr "Sobre la interfície gràfica d'eines de manteniment"
 
 #. TRANSLATORS: {0} is a placeholder for Wesnoth's current version, and not meant to be modified.
 #: data/tools/GUI.pyw:1671
-#, python-brace-format
+#, fuzzy, python-brace-format
+#| msgid ""
+#| "© Elvish_Hunter, 2014-2016\n"
+#| "\n"
+#| "Version: {0}\n"
+#| "\n"
+#| "Part of The Battle for Wesnoth project and released under the GNU GPL v2 "
+#| "license\n"
+#| "\n"
+#| "Icons are taken from the Tango Desktop Project (http://"
+#| "tango.freedesktop.org), and are released in the Public Domain."
 msgid ""
 "© Elvish_Hunter, 2014-2025\n"
 "\n"
@@ -472,16 +523,25 @@ msgid ""
 "Icons are taken from the Tango Desktop Project (http://"
 "tango.freedesktop.org), and are released in the Public Domain."
 msgstr ""
+"© Elvish_Hunter, 2014-2016\n"
+"\n"
+"Versió: {0}\n"
+"\n"
+"Part del projecte The Battle for Wesnoth i publicada sota la llicència GNU "
+"GPL v2\n"
+"\n"
+"Les icones provenen del Projecte d'Escriptori Tango (http://"
+"tango.freedesktop.org) i es publiquen en domini públic."
 
 #. TRANSLATORS: Dialogue box title.
 #: data/tools/GUI.pyw:1685
 msgid "Exit Confirmation"
-msgstr ""
+msgstr "Confirmació de sortida"
 
 #: data/tools/GUI.pyw:1686
 msgid "Do you really want to quit?"
-msgstr ""
+msgstr "Realment vols sortir del programa?"
 
 #: data/tools/GUI.pyw:1978
 msgid "This application must be placed into the wesnoth/data/tools directory."
-msgstr ""
+msgstr "Aquesta aplicació s'ha de col·locar al directori wesnoth/data/tools."

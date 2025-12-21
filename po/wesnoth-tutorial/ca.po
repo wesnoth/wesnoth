@@ -11,33 +11,32 @@ msgstr ""
 "Project-Id-Version: 1.5.5+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-11-18 02:02 UTC\n"
-"PO-Revision-Date: 2021-02-08 18:17+0100\n"
-"Last-Translator: Miquel-Àngel Burgos i Fradeja "
-"<miquel.angel.burgos@gmail.com>\n"
+"PO-Revision-Date: 2025-12-20 23:02+0100\n"
+"Last-Translator: Arnau Vàzquez Palma <arnauvp@murena.io>\n"
 "Language-Team: Catalan\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 2.4.1\n"
+"X-Generator: Poedit 3.8\n"
 
 #. [achievement_group]
 #: data/campaigns/Heir_To_The_Throne_Classic/achievements.cfg:3
 #, fuzzy
-#| msgid "Wesnoth Tutorial"
+#| msgid "Tutorial"
 msgid "Old Tutorial"
-msgstr "Tutorial de Wesnoth"
+msgstr "Tutorial"
 
 #. [achievement]: id=completed
 #: data/campaigns/Heir_To_The_Throne_Classic/achievements.cfg:7
 msgid "Completed the Tutorial"
-msgstr ""
+msgstr "Heu completat el tutorial"
 
 #. [achievement]: id=completed
 #: data/campaigns/Heir_To_The_Throne_Classic/achievements.cfg:8
 msgid "Complete the Battle Training."
-msgstr ""
+msgstr "Completa l'entrenament de batalla."
 
 #. [label]
 #: data/campaigns/Heir_To_The_Throne_Classic/gui/character_selection.cfg:19
@@ -46,8 +45,6 @@ msgstr "Seleccioneu un personatge"
 
 #. [label]
 #: data/campaigns/Heir_To_The_Throne_Classic/gui/character_selection.cfg:30
-#, fuzzy
-#| msgid "Who do you want to play?"
 msgid "Who do you want to play as?"
 msgstr "Amb qui us agradaria jugar?"
 
@@ -83,7 +80,7 @@ msgstr "Tutorial de Wesnoth: primera part"
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:27
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:105
 msgid "team_name^Student"
-msgstr "team_name^Estudiant"
+msgstr "Estudiant"
 
 #. [unit]: id=Delfador, type=Elder Mage
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:75
@@ -132,19 +129,14 @@ msgstr "Destruïu un enemic ferotge"
 #. [objective]: condition=lose
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:159
 msgid "Get yourself killed"
-msgstr "Mateu-vos"
+msgstr "Feu que us matin"
 
 #. [disallow_end_turn]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:167
-#, fuzzy
-#| msgid ""
-#| "You cannot end your turn until you have recruited troops and captured a "
-#| "village!"
 msgid ""
 "You cannot end your turn until you have completed the lesson on movement!"
 msgstr ""
-"No podeu acabar el vostre torn fins que no hàgiu reclutat tropes i capturat "
-"un poble!"
+"No podeu acabar el torn fins que no hagueu completat la lliçó de moviment!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:176
@@ -168,51 +160,39 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:192
-#, fuzzy
-#| msgid ""
-#| "For this tutorial, you are playing Konrad. You are standing on the keep, "
-#| "and your mentor Delfador is on the east side of the river. You can move "
-#| "the mouse over a unit to see a summary of its abilities and stats on the "
-#| "right of the screen."
 msgid ""
 "For this tutorial, you are playing as Konrad. You are standing on the keep, "
 "and your mentor Delfador is on the east side of the river. You can move the "
 "mouse over a unit to see a summary of its abilities and stats on the right "
 "of the screen."
 msgstr ""
-"En aquest tutorial, jugareu amb Konrad. Sou a la torre, i el vostre mentor "
-"Delfador és a la riba est del riu. Podeu moure el ratolí sobre una unitat "
-"per a veure'n un resum de les habilitats i estadístiques a la dreta de la "
-"pantalla."
+"En aquest tutorial, jugareu com a Konrad. Esteu dret a la torre, i el vostre "
+"mentor Delfador és a la banda est del riu. Podeu moure el ratolí sobre una "
+"unitat per veure un resum de les seves habilitats i estadístiques a la dreta "
+"de la pantalla."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:200
-#, fuzzy
-#| msgid ""
-#| "For this tutorial, you are playing Li’sar. You are standing on the keep, "
-#| "and your mentor Delfador is on the east side of the river. You can move "
-#| "the mouse over a unit to see a summary of its abilities and stats on the "
-#| "right of the screen."
 msgid ""
 "For this tutorial, you are playing as Li’sar. You are standing on the keep, "
 "and your mentor Delfador is on the east side of the river. You can move the "
 "mouse over a unit to see a summary of its abilities and stats on the right "
 "of the screen."
 msgstr ""
-"En aquest tutorial, jugareu amb Li'sar. Sou a la torre, i el vostre mentor "
-"Delfador és a la riba est del riu. Podeu moure el ratolí sobre una unitat "
-"per a veure'n un resum de les habilitats i estadístiques a la dreta de la "
-"pantalla."
+"En aquest tutorial, jugareu amb Li'sar. Esteu dreta a la torre, i el vostre "
+"mentor Delfador és a la banda est del riu. Podeu moure el ratolí sobre una "
+"unitat per veure un resum de les seves habilitats i estadístiques a la dreta "
+"de la pantalla."
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:206
 msgid "Click on Konrad"
-msgstr "Feu clic a Konrad"
+msgstr "Cliqueu en Konrad"
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:208
 msgid "Click on Li’sar"
-msgstr "Feu clic a Li'sar"
+msgstr "Cliqueu la Li'sar"
 
 #. [then]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:350
@@ -281,7 +261,7 @@ msgstr "Bon dia, Delfador! És hora d'atacar coses?"
 #. [message]: speaker=student
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:437
 msgid "female^Good morning, Delfador! Is it time to attack things?"
-msgstr "female^Bon dia, Delfador! És hora d'atacar coses?"
+msgstr "Bon dia, Delfador! És hora d'atacar coses?"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:442
@@ -296,7 +276,7 @@ msgstr "Heu trobat un orc perquè hi lluiti, eh? Un trol?"
 #. [message]: speaker=student
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:448
 msgid "female^Have you found an orc for me to fight, huh? A troll?"
-msgstr "female^Heu trobat un orc perquè hi lluiti, eh? Un trol?"
+msgstr "Heu trobat un orc perquè hi lluiti, eh? Un trol?"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:453
@@ -316,7 +296,7 @@ msgstr "Un caramot? Voleu que lluiti amb un ninot?"
 #. [message]: speaker=student
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:517
 msgid "female^A quintain? You want me to fight a dummy?"
-msgstr "female^Un caramot? Voleu que lluiti amb un ninot?"
+msgstr "Un caramot? Voleu que lluiti amb un ninot?"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:523
@@ -333,8 +313,8 @@ msgid ""
 "female^Young lady, you have $student_hp hitpoints and a sword. I’m fairly "
 "sure you’ll win."
 msgstr ""
-"female^Joveneta, teniu $student_hp punts d'impacte i una espasa. Estic "
-"gairebé segur que guanyareu."
+"Joveneta, teniu $student_hp punts d'impacte i una espasa. Estic gairebé "
+"segur que guanyareu."
 
 #. [hint_message]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:534
@@ -366,14 +346,8 @@ msgstr ""
 
 #. [disallow_end_turn]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:545
-#, fuzzy
-#| msgid ""
-#| "You cannot end your turn until you have recruited troops and captured a "
-#| "village!"
 msgid "You cannot end your turn until you have attacked the dummy!"
-msgstr ""
-"No podeu acabar el vostre torn fins que no hàgiu reclutat tropes i capturat "
-"un poble!"
+msgstr "No podeu acabar el torn fins que no hagueu atacat el maniquí!"
 
 #. [message]: speaker=student
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:564
@@ -393,7 +367,7 @@ msgstr "Hauria de retirar-me?"
 #. [message]: speaker=student
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:575
 msgid "female^Should I retreat?"
-msgstr "female^Hauria de retirar-me?"
+msgstr "Hauria de retirar-me?"
 
 #. [message]: speaker=Delfador
 #. [message]: speaker=Galdrad
@@ -434,15 +408,6 @@ msgstr "Torns"
 
 #. [hint_message]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:623
-#, fuzzy
-#| msgid ""
-#| "Every turn, each side in a scenario gets a chance to make their move. "
-#| "Once you’ve completed everything you wish to do this turn, click on the "
-#| "<b>End Turn</b> button in the bottom right of the screen. The other "
-#| "teams, whether controlled by the AI or other human players, will then "
-#| "make their move. Some scenarios must be completed in a certain number of "
-#| "turns. You can see what turn it is, and any applicable turn limit, next "
-#| "to the flag icon at the top of the screen."
 msgid ""
 "Every turn, each side in a scenario gets a chance to make their move. Once "
 "you’ve completed everything you wish to do this turn, click on the <b>End "
@@ -471,15 +436,10 @@ msgstr "Finalitzeu el vostre torn"
 
 #. [disallow_end_turn]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:649
-#, fuzzy
-#| msgid ""
-#| "You cannot end your turn until you have recruited troops and captured a "
-#| "village!"
 msgid ""
 "You cannot end your turn until you have completed the lesson on healing!"
 msgstr ""
-"No podeu acabar el vostre torn fins que no hàgiu reclutat tropes i capturat "
-"un poble!"
+"No podeu acabar el torn fins que no hagueu completat la lliçó de curació!"
 
 #. [message]: speaker=student
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:664
@@ -489,8 +449,7 @@ msgstr "Au! Necessito guarir-me! Només em resten $student_hp punts de vida!"
 #. [message]: speaker=student
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:665
 msgid "female^Ouch! I need to heal! Only $student_hp hitpoints left!"
-msgstr ""
-"female^Au! Necessito guarir-me! Només em resten $student_hp punts de vida!"
+msgstr "Au! Necessito guarir-me! Només em resten $student_hp punts de vida!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:670
@@ -537,15 +496,10 @@ msgstr ""
 
 #. [disallow_end_turn]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:718
-#, fuzzy
-#| msgid ""
-#| "You cannot end your turn until you have recruited troops and captured a "
-#| "village!"
 msgid ""
 "You cannot end your turn until you have completed the lesson on recruiting!"
 msgstr ""
-"No podeu acabar el vostre torn fins que no hàgiu reclutat tropes i capturat "
-"un poble!"
+"No podeu acabar el torn fins que no hagueu completat la lliçó de reclutament!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:727
@@ -573,7 +527,7 @@ msgstr "Reclutaré alguns elfs!"
 #. [message]: speaker=student
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:738
 msgid "female^I’ll recruit some elves!"
-msgstr "female^Reclutaré alguns elfs!"
+msgstr "Reclutaré alguns elfs!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:743
@@ -584,7 +538,7 @@ msgid ""
 msgstr ""
 "Una idea esplèndida! Probablement, és millor no intentar atacar el caramot "
 "aquest torn. En canvi, hauríeu de tornar a la torre i reclutar dues unitats; "
-"hi teniu un munt d'or."
+"teniu prou or per a fer-ho."
 
 #. [label]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:748
@@ -608,13 +562,6 @@ msgstr "Reclutament"
 
 #. [hint_message]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:782
-#, fuzzy
-#| msgid ""
-#| "Whenever you’re on a <i>keep</i>, you can <i>recruit</i> units on the "
-#| "castle tiles around it by right-clicking and selecting <b>Recruit</b>. "
-#| "Note that newly recruited units cannot act the turn you recruit them; you "
-#| "will be able to use them next turn. This scenario you have only one type "
-#| "of unit to choose from: the Elvish Fighter."
 msgid ""
 "Whenever you’re on a <i>keep</i>, you can <i>recruit</i> units on the castle "
 "tiles around it by right-clicking and selecting <b>Recruit</b>. Note that "
@@ -625,9 +572,8 @@ msgstr ""
 "Sempre que sou en una <i>torre</i>, podeu <i>reclutar</i> unitats a les "
 "caselles del castell que l'envolten fent clic dret i seleccionant "
 "<b>Recluta</b>. Tingueu en compte que les unitats acabades de reclutar no "
-"poden actuar el torn del reclutament; podreu utilitzar-les el torn següent. "
-"En aquest escenari, només teniu un tipus d'unitat per a triar: el lluitador "
-"elf."
+"poden actuar en aquell mateix torn; podreu utilitzar-les el torn següent. En "
+"aquest escenari, només teniu un tipus d'unitat per a triar: el lluitador elf."
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:785
@@ -664,15 +610,9 @@ msgstr ""
 
 #. [disallow_end_turn]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:854
-#, fuzzy
-#| msgid ""
-#| "You cannot end your turn until you have recruited troops and captured a "
-#| "village!"
 msgid ""
 "You cannot end your turn until you have completed the lesson on attacking!"
-msgstr ""
-"No podeu acabar el vostre torn fins que no hàgiu reclutat tropes i capturat "
-"un poble!"
+msgstr "No podeu acabar el torn fins que no hagueu completat la lliçó d'atac!"
 
 #. [message]: speaker=student
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:863
@@ -685,8 +625,7 @@ msgstr "Ei, el caramot ha recuperat dos punts d'impacte! L'hauria d'atacar!"
 msgid ""
 "female^Hey, the quintain just healed 2 hitpoints! I’d better attack it at "
 "once!"
-msgstr ""
-"female^Ei, el caramot ha recuperat dos punts d'impacte! L'hauria d'atacar!"
+msgstr "Ei, el caramot ha recuperat dos punts d'impacte! L'hauria d'atacar!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:869
@@ -696,10 +635,6 @@ msgstr ""
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:874
-#, fuzzy
-#| msgid ""
-#| "Before you send your fighters against the quintain, you should know they "
-#| "have two kinds of attack..."
 msgid ""
 "Before you send your fighters against the quintain, you should know they "
 "have two kinds of attacks..."
@@ -715,7 +650,7 @@ msgstr "Els diré que usin el que més faci més dany!"
 #. [message]: speaker=student
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:880
 msgid "female^I’ll tell them to use the one that does more damage!"
-msgstr "female^Els diré que usin el que més faci més dany!"
+msgstr "Els diré que usin el que més faci més dany!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:885
@@ -768,22 +703,16 @@ msgstr ""
 #. [message]: speaker=Delfador
 #. a strong elf, so +1 damage
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:948
-#, fuzzy
-#| msgid ""
-#| "Your elf used a sword (5×4; or 5 damage on each hit, with 4 attacks), "
-#| "which is a <i>melee</i> attack. The quintain defended with its melee "
-#| "attack (3×5; or 3 damage on each hit, with 5 attacks). The ranged attack "
-#| "(the bow) would have been safer."
 msgid ""
 "Your elf used a sword (6×4; or 6 damage on each hit, with 4 attacks), which "
 "is a <i>melee</i> attack. The quintain defended with its melee attack (3×5; "
 "or 3 damage on each hit, with 5 attacks). The ranged attack (the bow) would "
 "have been safer."
 msgstr ""
-"El vostre elf ha utilitzat una espasa (5×4; o 5 punts de dany per cada cop, "
-"amb 4 atacs), que és un atac de <i>melé</i>. El caramot s'ha defensat amb el "
-"seu atac de melé (3×5; o 3 punts de dany per cada cop, amb 5 atacs). L'atac "
-"a distància (l'arc) hauria estat més segur."
+"El vostre elf utilitzava una espasa (6×4; o 6 de dany per cada cop, amb 4 "
+"atacs), que és un atac <i>cos a cos</i> . El quintain defensava amb el seu "
+"atac cos a cos (3×5; o 3 de dany per cada cop, amb 5 atacs). L'atac a "
+"distància (l'arc) hauria estat més segur."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:952
@@ -791,6 +720,9 @@ msgid ""
 "Elvish Fighters normally do 5×4 damage with their swords, but this elf has "
 "the <i>strong</i> trait, which increases the damage output of melee attacks."
 msgstr ""
+"Els Guerrers Elfs normalment fan 5×4 de dany amb les seves espases, però "
+"aquest elf té el <i>tret fort</i> , que augmenta el dany dels atacs cos a "
+"cos."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:958
@@ -808,19 +740,14 @@ msgstr ""
 #. [message]: speaker=Delfador
 #. a dextrous elf, so +1 damage
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:979
-#, fuzzy
-#| msgid ""
-#| "Your elf used a bow, which is a <i>ranged</i> attack (3×3; or 3 damage on "
-#| "each hit, with 3 attacks). The quintain has no ranged attack, only a "
-#| "melee attack, so it could not defend itself."
 msgid ""
 "Your elf used a bow, which is a <i>ranged</i> attack (4×3; or 4 damage on "
 "each hit, with 3 attacks). The quintain has no ranged attack, only a melee "
 "attack, so it could not defend itself."
 msgstr ""
-"El vostre elf ha utilitzat un arc, que és un atac <i>a distància</i> (3×3; o "
-"3 punts de dany per cada cop, amb 3 atacs). El caramot no té cap atac a "
-"distància, només un atac de melé, així que no ha pogut defensar-se."
+"El vostre elf ha utilitzat un arc, que és un atac <i>a distància</i> (4×3; o "
+"4 de dany per cada cop, amb 3 atacs). El quintain no té atac a distància, "
+"només un atac cos a cos, així que no es podia defensar."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:983
@@ -828,6 +755,8 @@ msgid ""
 "Elvish Fighters normally do 3×3 damage with their bows, but this elf has the "
 "<i>dextrous</i> trait, which increases the damage output of ranged attacks."
 msgstr ""
+"Els Guerrers Elfs normalment fan 3×3 de dany amb els seus arcs, però aquest "
+"elf té el <i>tret hàbil</i> , que augmenta el dany dels atacs a distància."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:989
@@ -857,9 +786,6 @@ msgstr "Descripcions de les unitats"
 
 #. [hint_message]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1031
-#, fuzzy
-#| msgid ""
-#| "You can right click on a unit to see a detailed <b>Unit Description</b>."
 msgid ""
 "You can right-click on a unit to see a detailed <b>Unit Description</b>."
 msgstr ""
@@ -953,7 +879,7 @@ msgstr "Agh! Aquest entrenament és massa per a mi..."
 #. [message]: speaker=unit
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1095
 msgid "female^Agh! This training is too much for me..."
-msgstr "female^Agh! Aquest entrenament és massa per a mi..."
+msgstr "Agh! Aquest entrenament és massa per a mi..."
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1131
@@ -1016,8 +942,8 @@ msgid ""
 "female^Well, I think I know the basics. Onwards! Maybe I can fight in a real "
 "battle next?"
 msgstr ""
-"female^Bé, crec que ja sé les nocions bàsiques. Endavant! Potser puc lluitar "
-"en una batalla de debò ara?"
+"Bé, crec que ja sé les nocions bàsiques. Endavant! Potser puc lluitar en una "
+"batalla de debò ara?"
 
 #. [hint_message]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1236
@@ -1047,7 +973,7 @@ msgstr "Tutorial de Wesnoth: segona part"
 #. [side]: type=Orcish Warrior, id=Thrag
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:44
 msgid "team_name^Orcs"
-msgstr "team_name^Orcs"
+msgstr "Orcs"
 
 #. [side]: type=Orcish Warrior, id=Thrag
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:48
@@ -1082,23 +1008,23 @@ msgstr "Val més que em retiri abans que m'enxampin amb tan poca salut!"
 #. [event]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:129
 msgid "female^I hope I have a chance to retreat after this!"
-msgstr "female^Tan de bo pugui retirar-me després d'això!"
+msgstr "Tan de bo pugui retirar-me després d'això!"
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:130
 msgid "female^One lucky attack by an Orcish Grunt, and I’m done for!"
-msgstr "female^Un atac afortunat d'un recluta orc i s'ha acabat!"
+msgstr "Un atac afortunat d'un recluta orc i s'ha acabat!"
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:131
 msgid "female^I could make use of some healing in a village."
-msgstr "female^No m'aniria gens malament guarir-me en un poble."
+msgstr "No m'aniria gens malament guarir-me en un poble."
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:132
 msgid ""
 "female^I had better retreat, before I get caught out with such low health!"
-msgstr "female^Val més que em retiri abans que m'enxampin amb tan poca salut!"
+msgstr "Val més que em retiri abans que m'enxampin amb tan poca salut!"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:137
@@ -1126,24 +1052,19 @@ msgid ""
 "You cannot end your turn until you have recruited troops and captured a "
 "village!"
 msgstr ""
-"No podeu acabar el vostre torn fins que no hàgiu reclutat tropes i capturat "
-"un poble!"
+"No podeu acabar el torn fins que no hagueu reclutat tropes i capturat un "
+"poble!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:198
-#, fuzzy
-#| msgid ""
-#| "Welcome back! This is second part of the two-part tutorial. Part 2 will "
-#| "teach you about recalling units, abilities and weapon specials, income "
-#| "and upkeep, long-distance movement, zone of control, and time of day."
 msgid ""
 "Welcome back! This is the second part of the two-part tutorial. Part 2 will "
 "teach you about recalling units, abilities and weapon specials, income and "
 "upkeep, long-distance movement, zone of control, and time of day."
 msgstr ""
-"Us donem la benvinguda de nou! Aquesta és la segona part del tutorial. La "
-"segona part us ensenyarà sobre reincorporació d'unitats, habilitats i armes "
-"especials, ingressos i manteniment, zona de control i moment del dia."
+"Us donem la benvinguda de nou! Aquesta és la segona part del tutorial. Us "
+"ensenyarà sobre reincorporació d'unitats, habilitats i armes especials, "
+"ingressos i manteniment, zona de control i moment del dia."
 
 #. [message]: speaker=student
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:204
@@ -1160,17 +1081,11 @@ msgid ""
 "female^Ho, Galdrad! Has Delfador conjured something else to beat me with? A "
 "flock of scarecrows, perhaps?"
 msgstr ""
-"female^Hola, Galdrad! Ha invocat Delfador alguna cosa més amb la qual "
-"colpejar-me? Potser un grup d'espantalls?"
+"Hola, Galdrad! Ha invocat Delfador alguna cosa més amb la qual colpejar-me? "
+"Potser un grup d'espantalls?"
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:211
-#, fuzzy
-#| msgid ""
-#| "This is no game, Konrad! Orcs have encamped across the river. This is "
-#| "elven country; they are fools to enter here. We Elves are fast and hard "
-#| "to hit in forests. You must defeat their leader so they never threaten us "
-#| "again. I will advise you."
 msgid ""
 "This is no game, Konrad! Orcs have encamped across the river. This is elven "
 "country; they are fools to enter here. We elves are fast and hard to hit in "
@@ -1180,16 +1095,10 @@ msgstr ""
 "Això no és cap joc, Konrad! Uns orcs han acampat a l'altra riba del riu. "
 "Això és territori èlfic; són uns folls d'entrar-hi. Els elfs som ràpids i "
 "difícils de colpejar als boscos. Heu de derrotar-ne el líder perquè mai més "
-"ens amenacin. Jo us hi aconsellaré."
+"ens amenacin. Jo us aconsellaré."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:216
-#, fuzzy
-#| msgid ""
-#| "This is no game, Li’sar! Orcs have encamped across the river. This is "
-#| "elven country; they are fools to enter here. We Elves are fast and hard "
-#| "to hit in forests. You must defeat their leader so they never threaten us "
-#| "again. I will advise you."
 msgid ""
 "This is no game, Li’sar! Orcs have encamped across the river. This is elven "
 "country; they are fools to enter here. We elves are fast and hard to hit in "
@@ -1199,7 +1108,7 @@ msgstr ""
 "Això no és cap joc, Li'sar! Uns orcs han acampat a l'altra riba del riu. "
 "Això és territori èlfic; són uns folls d'entrar-hi. Els elfs som ràpids i "
 "difícils de colpejar als boscos. Heu de derrotar-ne el líder perquè mai més "
-"ens amenacin. Jo us hi aconsellaré."
+"ens amenacin. Jo us aconsellaré."
 
 #. [message]: speaker=student
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:222
@@ -1209,7 +1118,7 @@ msgstr "Què hauria de fer?"
 #. [message]: speaker=student
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:223
 msgid "female^What should I do?"
-msgstr "female^Què hauria de fer?"
+msgstr "Què hauria de fer?"
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:226
@@ -1263,7 +1172,7 @@ msgstr "Som-hi! Ataqueu!"
 #. The "us" in "let's" refers to Galdrad and Li'sar.
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:238
 msgid "female^Let’s go! Attack!"
-msgstr "female^Som-hi! Ataqueu!"
+msgstr "Som-hi! Ataqueu!"
 
 #. [message]: speaker=Galdrad
 #. Addressing Konrad
@@ -1282,8 +1191,8 @@ msgid ""
 "female^Hang on! You need to gather your forces. Or do you intend to fight "
 "the orcs single-handedly?"
 msgstr ""
-"female^Espereu! Heu de reunir les vostres forces. O preteneu lluitar contra "
-"els orcs tota sola?"
+"Espereu! Heu de reunir les vostres forces. O preteneu lluitar contra els "
+"orcs tota sola?"
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:265
@@ -1328,16 +1237,6 @@ msgstr "Reincorporació"
 
 #. [hint_message]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:293
-#, fuzzy
-#| msgid ""
-#| "In addition to recruiting new units each scenario, you can also "
-#| "<i>recall</i> your experienced veterans from previous scenarios, for the "
-#| "cost of 20 gold each. This allows you to build up a formidable army over "
-#| "the course of multiple scenarios by recalling your highest leveled troops "
-#| "or those with good combinations of traits and abilities. To recall a "
-#| "unit, right click while your leader stands on a keep and select the "
-#| "<i>Recall</i> option. Remember to also recruit new troops in addition to "
-#| "recalling old ones."
 msgid ""
 "In addition to recruiting new units each scenario, you can also <i>recall</"
 "i> your experienced veterans from previous scenarios, for the cost of 20 "
@@ -1428,18 +1327,6 @@ msgstr "Atacs especials"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:332
-#, fuzzy
-#| msgid ""
-#| "Weapon specials are special attack modifiers that make certain attacks "
-#| "more powerful. In this case, the Shaman has the Slows special on her "
-#| "entangle attack. When this attack successfully hits an enemy, it will "
-#| "halve the damage they do for one turn. Other weapon specials include "
-#| "First Strike, which allows that attack to always hit first no matter who "
-#| "attacks first, and Magical, which gives that attack a constant 70% chance "
-#| "to hit.\n"
-#| "\n"
-#| "A full list of abilities and weapons specials, along with traits, may be "
-#| "found in the help (default hotkey: <b>F1</b>)."
 msgid ""
 "Weapon specials are special attack modifiers that make certain attacks more "
 "powerful. In this case, the Shaman has the Slows special on her entangle "
@@ -1452,11 +1339,11 @@ msgid ""
 "found in the help (default hotkey: <b>F1</b>)."
 msgstr ""
 "Els atacs especials són modificadors que fan que certs atacs siguin més "
-"poderosos. En aquest cas, la xaman té l'atac especial Enredar, que és "
+"poderosos. En aquest cas, la xaman té l'atac especial ‘Enredar’, que és "
 "alentidor. Quan aquest atac encerta un enemic, reduirà a la meitat el dany "
-"que fan en un torn. Altres atacs especials poden ser Primer cop, que permet "
-"que l'atac sempre colpegi primer, ataqui qui ataqui primer, i Màgic, que "
-"dona a l'atac un 70% de probabilitats constant d'encertar-la.\n"
+"que fan en un torn. Altres atacs especials poden ser ‘Primer cop’, que "
+"permet que l'atac sempre colpegi primer, ataqui qui ataqui primer, i "
+"‘Màgic’, que dona a l'atac un 70% de probabilitats constant d'encertar-la.\n"
 "\n"
 "Podeu trobar una llista completa de les habilitats i atacs especials, "
 "juntament amb els trets, a l'ajuda (drecera de teclat per defecte: <b>F1</"
@@ -1491,12 +1378,6 @@ msgstr ""
 #. [message]: speaker=narrator
 #. one healer is a level one shaman, but the other healer is a druid or (very unlikely) a shyde
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:375
-#, fuzzy
-#| msgid ""
-#| "You now have two healers. Your Druid can heal adjacent units by 8 "
-#| "hitpoints per turn compared to your Shaman's 4. However, each unit can "
-#| "only receive healing from one healer — a unit next to multiple healers is "
-#| "healed by the most advanced one."
 msgid ""
 "You now have two healers. Your Druid can heal adjacent units by 8 hitpoints "
 "per turn compared to your Shaman’s 4. However, each unit can only receive "
@@ -1672,8 +1553,8 @@ msgid ""
 "female^Galdrad, if I go by the ford, I could sneak up near his keep and "
 "dispatch him quickly."
 msgstr ""
-"female^Galdrad, si hi vaig pel gual, podria acostar-me sigil·losament a la "
-"seva torre i eliminar-lo ràpidament."
+"Galdrad, si hi vaig pel gual, podria acostar-me sigil·losament a la seva "
+"torre i eliminar-lo ràpidament."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:594
@@ -1715,8 +1596,7 @@ msgstr "D'acord. Cap al pont, doncs, però aniré amb compte amb la travessa."
 msgid ""
 "female^Alright. The bridge it is, then, but I’ll be careful about the "
 "crossing."
-msgstr ""
-"female^D'acord. Cap al pont, doncs, però aniré amb compte amb la travessa."
+msgstr "D'acord. Cap al pont, doncs, però aniré amb compte amb la travessa."
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:608
@@ -1765,8 +1645,7 @@ msgstr "Crec que em quedaré per la torre per ara, per a reclutar més unitats."
 msgid ""
 "female^I think I’ll stick around the keep for now, in order to recruit more "
 "units."
-msgstr ""
-"female^Crec que em quedaré per la torre per ara, per a reclutar més unitats."
+msgstr "Crec que em quedaré per la torre per ara, per a reclutar més unitats."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:624
@@ -1844,7 +1723,7 @@ msgstr "No ens podem moure al voltant dels orcs?"
 #. "we" refers to Li'sar, Galdrad, and the mixed-gender troops
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:724
 msgid "female^Can’t we just move around the orcs?"
-msgstr "female^No ens podem moure al voltant dels orcs?"
+msgstr "No ens podem moure al voltant dels orcs?"
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:737
@@ -1914,10 +1793,6 @@ msgstr ""
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:786
-#, fuzzy
-#| msgid ""
-#| "If one of your Shamans stands just behind your wounded units, she will "
-#| "heal them each 4 hitpoints at the beginning of the next turn."
 msgid ""
 "If one of your Shamans stands just behind your wounded units, she will heal "
 "each of them 4 hitpoints at the beginning of the next turn."
@@ -1940,9 +1815,8 @@ msgid ""
 "female^One fewer orc to deal with, and our way across the bridge is clear! I "
 "also gained experience from striking the killing blow!"
 msgstr ""
-"female^Un orc menys del qual preocupar-nos, i el nostre camí a través del "
-"pont és lliure! També he guanyat experiència per haver infligit el cop "
-"mortal!"
+"Un orc menys del qual preocupar-nos, i el nostre camí a través del pont és "
+"lliure! També he guanyat experiència per haver infligit el cop mortal!"
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:844
@@ -1991,10 +1865,6 @@ msgstr ""
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:915
-#, fuzzy
-#| msgid ""
-#| "You’re venturing away from your keep. You might need recruit more units, "
-#| "and I doubt the orc leader will let you use his! Careful!"
 msgid ""
 "You’re venturing away from your keep. You might need to recruit more units, "
 "and I doubt the orc leader will let you use his! Careful!"
@@ -2008,6 +1878,9 @@ msgid ""
 "When moving a unit, the percentages shown are the unit’s defense on that "
 "hex. The higher the number, the less likely they are to get hit."
 msgstr ""
+"Quan es mou una unitat, els percentatges mostrats són la defensa de la "
+"unitat en aquell hexàgon. Com més alt sigui el nombre, menys probable és que "
+"els toquin."
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:939
@@ -2128,7 +2001,7 @@ msgstr ""
 #. [hint_message]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1026
 msgid "Speeding Up Animations"
-msgstr ""
+msgstr "Accelerar les animacions"
 
 #. [hint_message]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1027
@@ -2137,6 +2010,10 @@ msgid ""
 "quicker. The <b>acceleration factor</b> can be set, and turned on by "
 "default, in the <b>Preferences</b> menu’s <b>General</b> tab."
 msgstr ""
+"Mantenir premut <b>shift</b> farà que les animacions per moure's i lluitar "
+"siguin més ràpides. El <b>factor d'acceleració</b> es pot configurar, i "
+"activar per defecte, a la pestanya <b>General</b> del menú de "
+"<b>Preferències</b>."
 
 #. [hint_message]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1035
@@ -2145,11 +2022,6 @@ msgstr "Condicions de victòria"
 
 #. [hint_message]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1036
-#, fuzzy
-#| msgid ""
-#| "In this scenario, you only need to defeat the orc leader to win. Victory "
-#| "conditions for a scenario are given under <b>Scenario Objectives</b> in "
-#| "the <b>Menu</b> menu."
 msgid ""
 "In this scenario, you only need to defeat the orc leader to win. Victory "
 "conditions for a scenario are given under <b>Objectives</b> in the <b>Menu</"
@@ -2157,7 +2029,7 @@ msgid ""
 msgstr ""
 "En aquest escenari, només heu de derrotar el líder orc per a guanyar. Les "
 "condicions de victòria d'un escenari apareixen a <b>Objectius de l'escenari</"
-"b> al menú <b>Menú</b>."
+"b> al <b>Menú</b>."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1045
@@ -2172,7 +2044,7 @@ msgstr "Tinc prou or per a reclutar més unitats!"
 #. [message]: speaker=student
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1074
 msgid "female^I have enough gold to recruit more units!"
-msgstr "female^Tinc prou or per a reclutar més unitats!"
+msgstr "Tinc prou or per a reclutar més unitats!"
 
 #. [hint_message]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1083
@@ -2374,9 +2246,9 @@ msgid ""
 "i> ability, and I deal 9 damage each for 4 attacks. Use me to dislodge hard-"
 "to-hit units."
 msgstr ""
-"female^Pujar de nivell m'ha guarit completament! Quan ataqui, sempre tindré "
-"almenys un 60% de probabilitats d'encertar-la amb el meu arc llarg gràcies a "
-"la meva habilitat <i>tirador</i>, i infligeixo 9 punts de dany per 4 atacs. "
+"Pujar de nivell m'ha guarit completament! Quan ataqui, sempre tindré almenys "
+"un 60% de probabilitats d'encertar-la amb el meu arc llarg gràcies a la meva "
+"habilitat <i>tirador</i>, i infligeixo 9 punts de dany per 4 atacs. "
 "Utilitzeu-me per a desallotjar unitats difícil de colpejar."
 
 #. [message]: speaker=unit
@@ -2386,7 +2258,7 @@ msgid ""
 "and I have a special ability: <i>Ambush</i>. I can hide in forests where "
 "enemies can only see me if they are right next to me."
 msgstr ""
-"Pujar de nivell m'ha guarit completament! Soc bo tant amb l'arc com amb "
+"Pujar de nivell m'ha guarit completament! Sóc bo tant amb l'arc com amb "
 "l'espasa, i tinc una habilitat especial: <i>emboscada</i>. Em puc amagar als "
 "boscos on els enemics només em poden veure si són just al meu costat."
 
@@ -2397,9 +2269,9 @@ msgid ""
 "sword, and I have a special ability: <i>Ambush</i>. I can hide in forests "
 "where enemies can only see me if they are right next to me."
 msgstr ""
-"female^Pujar de nivell m'ha guarit completament! Soc bona tant amb l'arc com "
-"amb l'espasa, i tinc una habilitat especial: <i>emboscada</i>. Em puc amagar "
-"als boscos on els enemics només em poden veure si són just al meu costat."
+"Pujar de nivell m'ha guarit completament! Sóc bona tant amb l'arc com amb "
+"l'espasa, i tinc una habilitat especial: <i>emboscada</i>. Em puc amagar als "
+"boscos on els enemics només em poden veure si són just al meu costat."
 
 #. [message]: speaker=unit
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1414
@@ -2409,7 +2281,7 @@ msgid ""
 "than the Elvish Hero, but my ability allows my allies to fight better. First "
 "level units around me do 25% more damage, so position me carefully!"
 msgstr ""
-"Pujar de nivell m'ha guarit completament! Soc bo tant amb l'arc com amb "
+"Pujar de nivell m'ha guarit completament! Sóc bo tant amb l'arc com amb "
 "l'espasa, i tinc una habilitat especial: <i>lideratge</i>. Faig menys dany "
 "que l'heroi elf, però la meva habilitat permet als meus aliats lluitar "
 "millor. Les unitats de primer nivell al meu voltant fan un 25% més de dany, "
@@ -2423,7 +2295,7 @@ msgid ""
 "abilities of the Elvish Captain, my superior fighting skills allow my "
 "attacks to do more damage!"
 msgstr ""
-"Pujar de nivell m'ha guarit completament! Soc especialment bo amb l'espasa, "
+"Pujar de nivell m'ha guarit completament! Sóc especialment bo amb l'espasa, "
 "i infligeixo 8 punts de dany en 4 atacs. Tot i que no tinc les habilitats de "
 "lideratge del capità elf, les meves habilitats de lluita superiors permeten "
 "que els meus atacs facin més dany!"
@@ -2449,10 +2321,10 @@ msgid ""
 "abilities, my fighting skills will allow me to beat the orcs by dealing more "
 "damage!"
 msgstr ""
-"female^Pujar de nivell m'ha guarit completament! He millorat en l'ús de "
-"l'espasa, i infligeixo 9 punts de dany en 4 atacs. Tot i que no tinc cap "
-"habilitat especial, les meves habilitats de lluita em permetran vèncer els "
-"orcs i infligir més dany!"
+"Pujar de nivell m'ha guarit completament! He millorat en l'ús de l'espasa, i "
+"infligeixo 9 punts de dany en 4 atacs. Tot i que no tinc cap habilitat "
+"especial, les meves habilitats de lluita em permetran vèncer els orcs i "
+"infligir més dany!"
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1450
@@ -2469,8 +2341,7 @@ msgstr ""
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1467
 msgid "female^That... was foolish. Next time I should be more careful."
 msgstr ""
-"female^Això... ha estat estúpid. La propera vegada, hauria d'anar amb més "
-"compte."
+"Això... ha estat estúpid. La propera vegada, hauria d'anar amb més compte."
 
 #. [message]: speaker=unit
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1485
@@ -2517,7 +2388,7 @@ msgstr ""
 #. [unit_type]: id=Tutorial_Fighteress, gender=female, race=human
 #: data/campaigns/Heir_To_The_Throne_Classic/units/Tutorial_Fighteress.cfg:4
 msgid "female^Fighter"
-msgstr "female^Lluitadora"
+msgstr "Lluitadora"
 
 #. [unit_type]: id=Quintain, race=mechanical
 #: data/campaigns/Heir_To_The_Throne_Classic/units/Tutorial_Quintain.cfg:4
@@ -2552,7 +2423,7 @@ msgstr ""
 #. [unit_type]: id=Tutorial Warrioress, gender=female, race=human
 #: data/campaigns/Heir_To_The_Throne_Classic/units/Tutorial_Warrioress.cfg:4
 msgid "female^Warrior"
-msgstr "female^Guerrera"
+msgstr "Guerrera"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne_Classic/utils/tutorial_utils.cfg:63
@@ -2569,32 +2440,33 @@ msgstr ""
 "equivoqueu."
 
 #: data/campaigns/Heir_To_The_Throne_Classic/utils/tutorial_utils.cfg:126
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "<big>Click a mouse button or press the spacebar to continue...</big>"
 msgid ""
 "\n"
 "\n"
 "<big>Click a mouse button or press the spacebar to continue...</big>"
 msgstr ""
 "\n"
-"<big>Premeu un botó del ratolí o la tecla espai per continuar...</big>"
+"\n"
+"<big>Feu clic amb un botó del ratolí o prem la barra espaiadora per "
+"continuar...</big>"
 
-#, fuzzy
-#~| msgid "Wesnoth Tutorial"
-#~ msgid "Tutorial"
-#~ msgstr "Tutorial de Wesnoth"
+#~ msgid "Battle Training"
+#~ msgstr "Entrenament de combat"
 
-#, fuzzy
-#~| msgid ""
-#~| "You have beaten the orcs! You may want to try one of the rookie-level "
-#~| "campaigns next, which include strategy hints. <i>A Tale of Two Brothers</"
-#~| "i> is the easiest and is the recommended first campaign."
 #~ msgid ""
-#~ "You have beaten the orcs! You may want to try one of the novice-level "
-#~ "campaigns next. <i>A Tale of Two Brothers</i> is the easiest and is the "
-#~ "recommended first campaign."
+#~ "Learn the basics of Wesnoth gameplay with a tutorial. Recommended for "
+#~ "first-time players."
+#~ msgstr ""
+#~ "Apreneu els conceptes bàsics de la jugabilitat de Wesnoth amb un "
+#~ "tutorial. Recomanat per a jugadors novells."
+
+#~ msgid "Beginner"
+#~ msgstr "Principiant"
+
+#~ msgid ""
+#~ "You have beaten the orcs! You may want to try one of the rookie-level "
+#~ "campaigns next, which include strategy hints. <i>A Tale of Two Brothers</"
+#~ "i> is the easiest and is the recommended first campaign."
 #~ msgstr ""
 #~ "Heu vençut els orcs! Potser voleu provar una de les campanyes de nivell "
 #~ "principiant ara, ja que inclouen consells estratègics. <i>Una història de "
