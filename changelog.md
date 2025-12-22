@@ -4,6 +4,8 @@
 ### Campaigns
 ### Editor
 ### Multiplayer
+   * 5p - The Wilderlands:
+     * Fixed lag during AI turn (issue #10419)
 ### Lua API
 ### Packaging
 ### Terrain
@@ -11,6 +13,7 @@
   * Updated translations: Ancient Greek, Arabic, Bengali, British English, Catalan, Chinese (Simplified), Czech, Finnish, French, Galician, Hungarian, Polish, Spanish
 ### Units
 ### User interface
+  * The load-game dialog can now see the directories used by the development version (1.19.2 and later)
 ### WML Engine
 ### Miscellaneous and Bug Fixes
 
