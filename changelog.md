@@ -13,6 +13,7 @@
 ### User interface
 ### WML Engine
 ### Miscellaneous and Bug Fixes
+   * Fixed giving quick trait to leaders with 4 moves in multiplayer.
 
 ## Version 1.19.18
 ### Campaigns
