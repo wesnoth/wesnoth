@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-editor\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-11-17 20:02-0600\n"
+"POT-Creation-Date: 2025-12-21 21:08-0600\n"
 "PO-Revision-Date: 2024-03-12 17:01+0100\n"
 "Last-Translator: Merijn de Vet\n"
 "Language-Team: Dutch <merijndevet@hotmail.com>\n"
@@ -270,15 +270,15 @@ msgstr "Rang: "
 msgid "Cost: "
 msgstr "Kosten: "
 
-#: src/editor/controller/editor_controller.cpp:185
+#: src/editor/controller/editor_controller.cpp:204
 msgid "Fatal error"
 msgstr "Fatale fout"
 
-#: src/editor/controller/editor_controller.cpp:215
+#: src/editor/controller/editor_controller.cpp:234
 msgid "Do you really want to quit?"
 msgstr "Wil je echt afsluiten?"
 
-#: src/editor/controller/editor_controller.cpp:217
+#: src/editor/controller/editor_controller.cpp:236
 msgid ""
 "Do you really want to quit? Changes to this map since the last save will be "
 "lost."
@@ -286,7 +286,7 @@ msgstr ""
 "Wil je echt afsluiten? Wijzigingen van de kaart sinds de laatste keer "
 "opslaan gaan verloren."
 
-#: src/editor/controller/editor_controller.cpp:219
+#: src/editor/controller/editor_controller.cpp:238
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -294,35 +294,35 @@ msgstr ""
 "Wilt u echt afsluiten? De volgende kaarten zijn gewijzigd en alle "
 "wijzigingen sinds de laatste save gaan verloren:"
 
-#: src/editor/controller/editor_controller.cpp:236
+#: src/editor/controller/editor_controller.cpp:255
 msgid "No editor time-of-day found."
 msgstr "Geen editor tijd-van-dag gevonden."
 
-#: src/editor/controller/editor_controller.cpp:867
+#: src/editor/controller/editor_controller.cpp:886
 #, fuzzy
 #| msgid "Add-on"
 msgid "Add-on Files"
 msgstr "Add-on"
 
-#: src/editor/controller/editor_controller.cpp:880
+#: src/editor/controller/editor_controller.cpp:899
 #, fuzzy
 #| msgid "Clipboard support not found, contact your packager"
 msgid "Opening files is not supported, contact your packager"
 msgstr "Klembordondersteuning niet gevonden, neem contact op met packager"
 
-#: src/editor/controller/editor_controller.cpp:1324
+#: src/editor/controller/editor_controller.cpp:1343
 msgid "Change Unit ID"
 msgstr "Verander Eenheid ID"
 
-#: src/editor/controller/editor_controller.cpp:1325
+#: src/editor/controller/editor_controller.cpp:1344
 msgid "ID:"
 msgstr "ID:"
 
-#: src/editor/controller/editor_controller.cpp:1341
+#: src/editor/controller/editor_controller.cpp:1360
 msgid "Rename Unit"
 msgstr "Hernoem Eenheid"
 
-#: src/editor/controller/editor_controller.cpp:1342
+#: src/editor/controller/editor_controller.cpp:1361
 msgid "Name:"
 msgstr "Naam:"
 
@@ -334,151 +334,156 @@ msgstr ""
 msgid "<span color='red'><span face='DejaVuSans'>✘</span> $msg</span>"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:223
+#: src/editor/map/context_manager.cpp:217
 #, fuzzy
 #| msgid "Map loaded from scenario"
 msgid "Load Map or Scenario"
 msgstr "Kaart geladen uit scenario"
 
-#: src/editor/map/context_manager.cpp:319 src/editor/map/map_context.cpp:1146
+#: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1147
 msgid "New Map"
 msgstr "Nieuwe Kaart"
 
-#: src/editor/map/context_manager.cpp:332 src/editor/map/map_context.cpp:1146
+#: src/editor/map/context_manager.cpp:326 src/editor/map/map_context.cpp:1147
 msgid "New Scenario"
 msgstr "Nieuw Scenario"
 
-#: src/editor/map/context_manager.cpp:380
+#: src/editor/map/context_manager.cpp:371
 msgid "No Recent Files"
 msgstr "Geen Recente Bestanden"
 
-#: src/editor/map/context_manager.cpp:408
+#: src/editor/map/context_manager.cpp:399
 msgid "Unnamed Area"
 msgstr "Naamloos Gebied"
 
-#: src/editor/map/context_manager.cpp:434
+#: src/editor/map/context_manager.cpp:422
 msgid "New Side"
 msgstr "Nieuwe Kant"
 
-#: src/editor/map/context_manager.cpp:473
+#: src/editor/map/context_manager.cpp:461
 msgid "Apply Mask"
 msgstr "Pas Masker Toe"
 
-#: src/editor/map/context_manager.cpp:482
+#: src/editor/map/context_manager.cpp:470
 msgid "Error loading mask"
 msgstr "Fout bij het laden van het masker"
 
-#: src/editor/map/context_manager.cpp:502
+#: src/editor/map/context_manager.cpp:490
 msgid "Identifier:"
 msgstr "Identificatie:"
 
-#: src/editor/map/context_manager.cpp:502
+#: src/editor/map/context_manager.cpp:490
 msgid "Rename Area"
 msgstr "Hernoem Gebied"
 
-#: src/editor/map/context_manager.cpp:516
+#: src/editor/map/context_manager.cpp:504
 msgid "Choose Target Map"
 msgstr "Kies doelkaart"
 
-#: src/editor/map/context_manager.cpp:525
-#: src/editor/map/context_manager.cpp:992
+#: src/editor/map/context_manager.cpp:513
+#: src/editor/map/context_manager.cpp:964
 msgid "Error loading map"
 msgstr "Fout bij het laden van de kaart"
 
-#: src/editor/map/context_manager.cpp:699
+#: src/editor/map/context_manager.cpp:687
 msgid "Save Map As"
 msgstr "Sla Kaart Op Als"
 
-#: src/editor/map/context_manager.cpp:716
-#: src/editor/map/context_manager.cpp:765 src/editor/map/map_context.cpp:273
+#: src/editor/map/context_manager.cpp:704
+#: src/editor/map/context_manager.cpp:753 src/editor/map/map_context.cpp:274
 #: src/editor/palette/location_palette.cpp:263
 msgid "Error"
 msgstr "Fout"
 
-#: src/editor/map/context_manager.cpp:717
-#: src/editor/map/context_manager.cpp:766
+#: src/editor/map/context_manager.cpp:705
 #, fuzzy
 #| msgid "Do you really want to quit?"
-msgid "Do you really want to save $type1 in $type2 folder?"
+msgid "Do you really want to save a map in the scenarios folder?"
 msgstr "Wil je echt afsluiten?"
 
-#: src/editor/map/context_manager.cpp:725
-#: src/editor/map/context_manager.cpp:933
+#: src/editor/map/context_manager.cpp:713
+#: src/editor/map/context_manager.cpp:905
 msgid "This map is already open."
 msgstr "Deze kaart is al geopend."
 
-#: src/editor/map/context_manager.cpp:748
+#: src/editor/map/context_manager.cpp:736
 msgid "Save Scenario As"
 msgstr "Sla Scenario Op Als"
 
-#: src/editor/map/context_manager.cpp:774
+#: src/editor/map/context_manager.cpp:754
+#, fuzzy
+#| msgid "Do you really want to quit?"
+msgid "Do you really want to save a scenario in the maps folder?"
+msgstr "Wil je echt afsluiten?"
+
+#: src/editor/map/context_manager.cpp:762
 msgid "This scenario is already open."
 msgstr "Dit scenario is al geopend."
 
-#: src/editor/map/context_manager.cpp:807
+#: src/editor/map/context_manager.cpp:779
 msgid "No random map generators found."
 msgstr "Geen generator van willekeurige kaarten gevonden."
 
-#: src/editor/map/context_manager.cpp:820
-#: src/editor/map/context_manager.cpp:825
+#: src/editor/map/context_manager.cpp:792
+#: src/editor/map/context_manager.cpp:797
 msgid "Map creation failed."
 msgstr "Kaart aanmaken mislukt."
 
-#: src/editor/map/context_manager.cpp:840
+#: src/editor/map/context_manager.cpp:812
 msgid "Unsaved Changes"
 msgstr "Onopgeslagen wijzigingen"
 
-#: src/editor/map/context_manager.cpp:841
+#: src/editor/map/context_manager.cpp:813
 msgid "Do you want to discard all changes made to the map since the last save?"
 msgstr "Wilt u alle wijzigingen sinds de laatste keer opslaan ongedaan maken?"
 
-#: src/editor/map/context_manager.cpp:894
+#: src/editor/map/context_manager.cpp:866
 msgid "Scenario saved."
 msgstr "Scenario opgeslagen."
 
-#: src/editor/map/context_manager.cpp:909
+#: src/editor/map/context_manager.cpp:881
 #, fuzzy
 #| msgid "Map saved."
 msgid "Map saved"
 msgstr "Kaart opgeslagen."
 
-#: src/editor/map/context_manager.cpp:984
+#: src/editor/map/context_manager.cpp:956
 msgid "Loaded embedded map data"
 msgstr "Ingebedde kaartgegevens geladen"
 
-#: src/editor/map/context_manager.cpp:985
-#: src/editor/map/context_manager.cpp:988
+#: src/editor/map/context_manager.cpp:957
+#: src/editor/map/context_manager.cpp:960
 msgid "Map loaded from scenario"
 msgstr "Kaart geladen uit scenario"
 
-#: src/editor/map/context_manager.cpp:988
+#: src/editor/map/context_manager.cpp:960
 msgid "Loaded referenced map file:"
 msgstr "Geladen gerefereerde kaartbestand:"
 
-#: src/editor/map/editor_map.cpp:146
+#: src/editor/map/editor_map.cpp:110
 #: src/editor/palette/location_palette.cpp:118
 msgid "Player $side_num"
 msgstr "Speler $side_num"
 
-#: src/editor/map/editor_map.cpp:281
+#: src/editor/map/editor_map.cpp:266
 msgid "The size of the target map is different from the current map"
 msgstr "De grootte van de doelkaart verschilt van die van de huidige kaart"
 
-#: src/editor/map/map_context.cpp:186
+#: src/editor/map/map_context.cpp:187
 msgid "File not found"
 msgstr "Bestand niet gevonden"
 
-#: src/editor/map/map_context.cpp:193
+#: src/editor/map/map_context.cpp:194
 msgid "Empty file"
 msgstr "Leeg bestand"
 
-#: src/editor/map/map_context.cpp:202
+#: src/editor/map/map_context.cpp:203
 #, fuzzy
 #| msgid "File does not have .map or .cfg extension"
 msgid "File does not have .map, .cfg, or .mask extension"
 msgstr "Bestand heeft geen .map of .cfg extensie"
 
-#: src/editor/map/map_context.cpp:249
+#: src/editor/map/map_context.cpp:250
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
@@ -486,7 +491,7 @@ msgstr ""
 "Het kaartbestand lijkt op een scenario, maar de map_data waarde wijst niet "
 "naar een bestaand bestand"
 
-#: src/editor/map/map_context.cpp:268
+#: src/editor/map/map_context.cpp:269
 #, fuzzy
 #| msgid ""
 #| "Found the characters '<<' indicating inline lua is present - aborting"
@@ -494,11 +499,11 @@ msgid "Found the characters ‘<<’ indicating inline lua is present — aborti
 msgstr ""
 "De karakters '<<' zijn gevonden, dit duidt op een aanwezige lua - afbreken"
 
-#: src/editor/map/map_context.cpp:273
+#: src/editor/map/map_context.cpp:274
 msgid "Failed to load the scenario, attempting to load only the map."
 msgstr "Niet gelukt om scenario te laden, probeer nu enkel de kaart te laden."
 
-#: src/editor/map/map_context.cpp:280
+#: src/editor/map/map_context.cpp:281
 msgid ""
 "The map file looks like a scenario, but the map_file value does not point to "
 "an existing file"
@@ -506,31 +511,31 @@ msgstr ""
 "Het kaartbestand lijkt op een scenario, maar de map_file waarde wijst niet "
 "naar een bestaand bestand"
 
-#: src/editor/map/map_context.cpp:295
+#: src/editor/map/map_context.cpp:296
 msgid "Unable to parse file to find map data"
 msgstr "Niet in staat om bestand te verwerken om kaart data te vinden"
 
-#: src/editor/map/map_context.cpp:840 src/editor/map/map_context.cpp:880
+#: src/editor/map/map_context.cpp:841 src/editor/map/map_context.cpp:881
 #, fuzzy
 #| msgid "Could not save the scenario: $msg"
 msgid "Could not save time schedule: $msg"
 msgstr "Opslaan van scenario mislukt: $msg"
 
-#: src/editor/map/map_context.cpp:874
+#: src/editor/map/map_context.cpp:875
 #, fuzzy
 #| msgid "Time Schedule Menu"
 msgid "Time schedule saved."
 msgstr "Tijd Schema Menu"
 
-#: src/editor/map/map_context.cpp:920
+#: src/editor/map/map_context.cpp:921
 msgid "Could not save the scenario: $msg"
 msgstr "Opslaan van scenario mislukt: $msg"
 
-#: src/editor/map/map_context.cpp:951
+#: src/editor/map/map_context.cpp:952
 msgid "Could not save into scenario"
 msgstr "Kaart opslaan in scenario mislukt"
 
-#: src/editor/map/map_context.cpp:961
+#: src/editor/map/map_context.cpp:962
 msgid "Could not save the map: $msg"
 msgstr "Kaart opslaan mislukt: $msg"
 

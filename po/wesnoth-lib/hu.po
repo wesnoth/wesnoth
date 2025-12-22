@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu-lib_1.5\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-11-17 20:02-0600\n"
+"POT-Creation-Date: 2025-12-21 21:09-0600\n"
 "PO-Revision-Date: 2025-10-26 02:05+0200\n"
 "Last-Translator: Berda Jenő <big4billy@gmail.com>\n"
 "Language-Team: Hungarian <>\n"
@@ -2334,7 +2334,7 @@ msgstr ""
 #: data/gui/macros/custom_options_tree.cfg:250
 #: data/gui/themes/default/dialogs/mp_alerts_options.cfg:227
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:459
-#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:294
+#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:298
 #: data/gui/themes/default/dialogs/reachmap_options.cfg:160
 #: data/gui/themes/default/dialogs/select_orb_colors.cfg:170
 msgid "Defaults"
@@ -2436,10 +2436,10 @@ msgstr "Új egyjátékos hadjárat indítása"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
 #. [label]
-#. [widget]: id=label
+#. [tab]
 #: data/gui/themes/celes/dialogs/title_screen.cfg:287
 #: data/gui/themes/default/dialogs/mp_method_selection.cfg:55
-#: data/gui/themes/default/dialogs/preferences.cfg:365
+#: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:390
 #: data/gui/themes/default/dialogs/title_screen.cfg:257
 #: src/gui/dialogs/game_load.cpp:363
 msgid "Multiplayer"
@@ -2537,7 +2537,7 @@ msgstr "A játék beállítása"
 #. [label]: id=title
 #: data/gui/themes/celes/dialogs/title_screen.cfg:296
 #: data/gui/themes/default/dialogs/lobby_main.cfg:600
-#: data/gui/themes/default/dialogs/preferences.cfg:213
+#: data/gui/themes/default/dialogs/preferences.cfg:157
 #: data/gui/themes/default/dialogs/title_screen.cfg:263
 #: src/hotkey/hotkey_command.cpp:127
 msgid "Preferences"
@@ -2611,7 +2611,7 @@ msgstr "<b><span font_family='DejaVu Sans'>✔</span> átmásolva</b>"
 #: data/gui/themes/default/dialogs/message.cfg:135
 #: data/gui/themes/default/dialogs/mp_alerts_options.cfg:242
 #: data/gui/themes/default/dialogs/mp_match_history.cfg:601
-#: data/gui/themes/default/dialogs/preferences.cfg:434
+#: data/gui/themes/default/dialogs/preferences.cfg:204
 #: data/gui/themes/default/dialogs/screenshot_notification.cfg:214
 #: data/gui/themes/default/dialogs/server_info.cfg:253
 #: data/gui/themes/default/dialogs/statistics_dialog.cfg:623
@@ -3032,7 +3032,7 @@ msgstr "Válaszd ki az eltávolítandó kiegészítőket."
 #. [button]: id=ok
 #. [button]: id=remove
 #: data/gui/themes/default/dialogs/addon_uninstall_list.cfg:157
-#: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:289
+#: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:290
 msgid "Remove"
 msgstr "Eltávolítás"
 
@@ -3379,7 +3379,7 @@ msgstr "Játékmag betöltése"
 #: data/gui/themes/default/dialogs/core_dialog.cfg:228
 #: data/gui/themes/default/dialogs/language_selection.cfg:293
 #: src/gui/dialogs/editor/custom_tod.cpp:172
-#: src/gui/dialogs/editor/edit_unit.cpp:308
+#: src/gui/dialogs/editor/edit_unit.cpp:303
 #: src/preferences/preferences.cpp:1342
 msgid "Select"
 msgstr "Kiválasztás"
@@ -3528,9 +3528,9 @@ msgstr "Színváltozások előnézete a térképen"
 #: data/gui/themes/default/dialogs/depcheck_confirm_change.cfg:40
 #: src/gui/dialogs/addon/manager.cpp:1029
 #: src/gui/dialogs/editor/custom_tod.cpp:187
-#: src/gui/dialogs/editor/edit_unit.cpp:323
-#: src/gui/dialogs/editor/edit_unit.cpp:1030
-#: src/gui/dialogs/file_dialog.cpp:371 src/gui/dialogs/file_dialog.cpp:799
+#: src/gui/dialogs/editor/edit_unit.cpp:318
+#: src/gui/dialogs/editor/edit_unit.cpp:970 src/gui/dialogs/file_dialog.cpp:371
+#: src/gui/dialogs/file_dialog.cpp:799
 msgid "Confirm"
 msgstr "Megerősítés"
 
@@ -4193,13 +4193,13 @@ msgstr "Egységtípus szerkesztő"
 
 #. [tab]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:1192
+#: data/gui/themes/default/dialogs/preferences/01_general.cfg:226
 msgid "Main Stats"
 msgstr "Fő statisztikák"
 
 #. [tab]
-#. [widget]: id=label
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:1199
-#: data/gui/themes/default/dialogs/preferences.cfg:383
+#: data/gui/themes/default/dialogs/preferences/06_advanced.cfg:148
 msgid "Advanced"
 msgstr "Haladó"
 
@@ -4853,11 +4853,9 @@ msgstr "Nyílt forráskódú, fantasy témájú, körökre osztott stratégiai j
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [tab]
 #. [widget]: id=tab_label
-#. [widget]: id=label
 #: data/gui/themes/default/dialogs/game_version.cfg:879
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:564
-#: data/gui/themes/default/dialogs/preferences.cfg:292
-#: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:402
+#: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:405
 #: data/gui/themes/default/dialogs/server_info.cfg:181
 #: src/hotkey/hotkey_command.cpp:51
 msgid "General"
@@ -5073,9 +5071,9 @@ msgid "Only show games with vacant slots"
 msgstr "Csak szabad helyekkel rendelkező játékok megjelenítése"
 
 #. [toggle_button]: id=filter_with_friends
-#. [widget]: id=tab_label
+#. [tab]
 #: data/gui/themes/default/dialogs/lobby_main.cfg:490
-#: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:415
+#: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:426
 msgid "Friends"
 msgstr "Barátok"
 
@@ -5205,14 +5203,14 @@ msgstr "Információ a játékosról - "
 #. [button]: id=add_to_friends
 #. [button]: id=add_friend
 #: data/gui/themes/default/dialogs/lobby_player_info.cfg:88
-#: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:263
+#: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:264
 msgid "Add Friend"
 msgstr "Felvétel a barátok közé"
 
 #. [button]: id=add_to_ignores
 #. [button]: id=add_ignored
 #: data/gui/themes/default/dialogs/lobby_player_info.cfg:99
-#: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:276
+#: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:277
 msgid "Block"
 msgstr "Blokkolás"
 
@@ -5363,9 +5361,9 @@ msgstr ""
 "ablaka inaktív vagy tálcára van téve) asztali értesítésekkel."
 
 #. [label]
-#. [widget]: id=label
+#. [tab]
 #: data/gui/themes/default/dialogs/mp_alerts_options.cfg:147
-#: data/gui/themes/default/dialogs/preferences.cfg:347
+#: data/gui/themes/default/dialogs/preferences/04_sound.cfg:143
 msgid "Sound"
 msgstr "Hang"
 
@@ -6042,18 +6040,8 @@ msgstr "Készen vagyok"
 msgid "Press ESC to skip"
 msgstr "Nyomjon ESC-et a kihagyáshoz"
 
-#. [widget]: id=label
-#: data/gui/themes/default/dialogs/preferences.cfg:311
-msgid "Hotkeys"
-msgstr "Gyorsbillentyűk"
-
-#. [widget]: id=label
-#: data/gui/themes/default/dialogs/preferences.cfg:329
-msgid "Display"
-msgstr "Kijelző"
-
 #. [button]: id=about
-#: data/gui/themes/default/dialogs/preferences.cfg:419
+#: data/gui/themes/default/dialogs/preferences.cfg:192
 msgid "Display the game version and build information"
 msgstr "A játék verziójára vonatkozó információk megjelenítése"
 
@@ -6204,72 +6192,77 @@ msgstr "Gyorsítótár"
 msgid "Manage the game WML cache"
 msgstr "A játék WML gyorsítótárának kezelése"
 
+#. [tab]
+#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:7
+msgid "Hotkeys"
+msgstr "Gyorsbillentyűk"
+
 #. [label]
-#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:25
+#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:29
 msgid "Filter:"
 msgstr "Szűrés:"
 
 #. [text_box]: id=filter
-#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:50
+#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:54
 msgid "Filters on hotkey description"
 msgstr "Szűrők a gyorsbillentyűk leírásához"
 
 #. [toggle_button]: id=sort_0
-#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:98
+#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:102
 msgid "Action"
 msgstr "Cselekvés"
 
 #. [toggle_button]: id=sort_1
-#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:112
+#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:116
 msgid "Hotkey"
 msgstr "Gyorsbill."
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_2
 #. Translate G as the initial letter for Game
-#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:126
-#: src/gui/dialogs/preferences_dialog.cpp:890
+#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:130
+#: src/gui/dialogs/preferences_dialog.cpp:885
 msgid "game_hotkeys^G"
 msgstr "J"
 
 #. [toggle_button]: id=sort_2
-#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:127
+#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:131
 msgid "Available in game"
 msgstr "Elérhető a játékban"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_3
 #. Translate E as the initial letter for Editor
-#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:141
-#: src/gui/dialogs/preferences_dialog.cpp:891
+#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:145
+#: src/gui/dialogs/preferences_dialog.cpp:886
 msgid "editor_hotkeys^E"
 msgstr "Sz"
 
 #. [toggle_button]: id=sort_3
-#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:142
+#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:146
 msgid "Available in editor"
 msgstr "Elérhető a szerkesztőben"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_4
 #. Translate M as the initial letter for Main Menu
-#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:156
-#: src/gui/dialogs/preferences_dialog.cpp:892
+#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:160
+#: src/gui/dialogs/preferences_dialog.cpp:887
 msgid "mainmenu_hotkeys^M"
 msgstr "M"
 
 #. [toggle_button]: id=sort_4
-#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:157
+#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:161
 msgid "Available at main menu"
 msgstr "Elérhető a főmenüben"
 
 #. [button]: id=btn_add_hotkey
-#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:272
+#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:276
 msgid "Add Hotkey"
 msgstr "Gyorsbillentyű hozzáadása"
 
 #. [button]: id=btn_clear_hotkey
-#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:283
+#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:287
 msgid "Clear Hotkey"
 msgstr "Gyorsbillentyű törlése"
 
@@ -6460,6 +6453,11 @@ msgstr ""
 "Az egység tétlenségekor mutatott animáció megjelenési gyakoriságának "
 "beállítása"
 
+#. [tab]
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:454
+msgid "Display"
+msgstr "Kijelző"
+
 #. [label]
 #: data/gui/themes/default/dialogs/preferences/04_sound.cfg:38
 msgid "Volume:"
@@ -6629,7 +6627,7 @@ msgstr ""
 "játékok készítéséhez)"
 
 #. [button]: id=add_friend
-#: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:264
+#: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:265
 msgid ""
 "Add this username to your friends list (add optional notes, e.g., "
 "‘player_name notes on friend’)"
@@ -6638,7 +6636,7 @@ msgstr ""
 "hozzáadása a „játékos_neve megjegyzés” formában lehetséges)"
 
 #. [button]: id=add_ignored
-#: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:277
+#: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:278
 msgid ""
 "Add this username to your ignore list (add optional reason, e.g., "
 "‘player_name reason ignored’)"
@@ -6647,12 +6645,12 @@ msgstr ""
 "hozzáadása a „játékos_neve mellőzés oka” formában lehetséges)"
 
 #. [button]: id=remove
-#: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:290
+#: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:291
 msgid "Remove this username from your list"
 msgstr "A megadott felhasználó eltávolítása a listáról"
 
 #. [label]: id=no_friends_notice
-#: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:311
+#: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:312
 msgid "You have not befriended or blocked any other players."
 msgstr "Nem jelöltél barátnak, illetve nem blokkolsz egyetlen játékost sem."
 
@@ -7026,7 +7024,7 @@ msgstr "Kiválasztott egység kedvencnek jelölése/törlése"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/themes/default/dialogs/wml_error.cfg:40
-#: src/gui/dialogs/message.cpp:206 src/gui/dialogs/preferences_dialog.cpp:272
+#: src/gui/dialogs/message.cpp:206 src/gui/dialogs/preferences_dialog.cpp:265
 #: src/gui/dialogs/transient_message.cpp:77
 msgid "Error"
 msgstr "Hiba"
@@ -7132,7 +7130,7 @@ msgstr "<ismeretlen>"
 #. other's resources rather than duplicating them. For example,
 #. Swedish (sv) and Danish (da) are such, so Swedish translator could
 #. translate this message as "sv,da", while Danish as "da,sv".
-#: src/filesystem.cpp:1851
+#: src/filesystem.cpp:1850
 msgid "language code for localized resources^en_US"
 msgstr "hu"
 
@@ -7560,23 +7558,23 @@ msgstr "%B %d %Y, %H:%M"
 msgid "url^None"
 msgstr "Nincs"
 
-#: src/gui/dialogs/attack_predictions.cpp:121
+#: src/gui/dialogs/attack_predictions.cpp:120
 msgid "No usable weapon"
 msgstr "Nincs használható fegyver"
 
-#: src/gui/dialogs/attack_predictions.cpp:199
+#: src/gui/dialogs/attack_predictions.cpp:196
 msgid "Defender resistance vs"
 msgstr "Védekező ellenállása vs"
 
-#: src/gui/dialogs/attack_predictions.cpp:201
+#: src/gui/dialogs/attack_predictions.cpp:198
 msgid "Defender vulnerability vs"
 msgstr "Védő sebezhetősége vs"
 
-#: src/gui/dialogs/attack_predictions.cpp:205
+#: src/gui/dialogs/attack_predictions.cpp:202
 msgid "Attacker resistance vs"
 msgstr "Támadó ellenállása vs"
 
-#: src/gui/dialogs/attack_predictions.cpp:207
+#: src/gui/dialogs/attack_predictions.cpp:204
 msgid "Attacker vulnerability vs"
 msgstr "Támadó sebezhetősége vs"
 
@@ -7630,12 +7628,12 @@ msgstr ""
 "Válassz egy másikat."
 
 #: src/gui/dialogs/editor/custom_tod.cpp:171
-#: src/gui/dialogs/editor/edit_unit.cpp:307
+#: src/gui/dialogs/editor/edit_unit.cpp:302
 msgid "Choose File"
 msgstr "Válassz fájlt"
 
 #: src/gui/dialogs/editor/custom_tod.cpp:182
-#: src/gui/dialogs/editor/edit_unit.cpp:318
+#: src/gui/dialogs/editor/edit_unit.cpp:313
 msgid ""
 "This file is outside Wesnoth’s data dirs. Do you wish to copy it into your "
 "add-on?"
@@ -7732,31 +7730,31 @@ msgstr "Siker"
 msgid "Choose an icon"
 msgstr "Válassz egy ikont"
 
-#: src/gui/dialogs/editor/edit_unit.cpp:190
+#: src/gui/dialogs/editor/edit_unit.cpp:187
 msgid "scout"
 msgstr "felderítő"
 
-#: src/gui/dialogs/editor/edit_unit.cpp:191
+#: src/gui/dialogs/editor/edit_unit.cpp:188
 msgid "fighter"
 msgstr "harcos"
 
-#: src/gui/dialogs/editor/edit_unit.cpp:192
+#: src/gui/dialogs/editor/edit_unit.cpp:189
 msgid "archer"
 msgstr "íjász"
 
-#: src/gui/dialogs/editor/edit_unit.cpp:193
+#: src/gui/dialogs/editor/edit_unit.cpp:190
 msgid "mixed fighter"
 msgstr "vegyes harcos"
 
-#: src/gui/dialogs/editor/edit_unit.cpp:194
+#: src/gui/dialogs/editor/edit_unit.cpp:191
 msgid "healer"
 msgstr "gyógyító"
 
-#: src/gui/dialogs/editor/edit_unit.cpp:1029
+#: src/gui/dialogs/editor/edit_unit.cpp:969
 msgid "Unsaved changes will be lost. Do you want to leave?"
 msgstr "A nem mentett változtatások elvesznek. Vissza akarsz lépni?"
 
-#: src/gui/dialogs/editor/edit_unit.cpp:1048
+#: src/gui/dialogs/editor/edit_unit.cpp:988
 msgid "Unit type saved."
 msgstr "Egységtípus mentve."
 
@@ -7972,8 +7970,8 @@ msgstr "nem"
 msgid "yes"
 msgstr "igen"
 
-#: src/gui/dialogs/game_version_dialog.cpp:273
-#: src/gui/dialogs/game_version_dialog.cpp:287 src/gui/widgets/label.cpp:124
+#: src/gui/dialogs/game_version_dialog.cpp:263
+#: src/gui/dialogs/game_version_dialog.cpp:277 src/gui/widgets/label.cpp:124
 msgid "Opening links is not supported, contact your packager"
 msgstr ""
 "Linkek megnyitása nem támogatott, vedd fel a kapcsolatot a csomagod "
@@ -8333,34 +8331,34 @@ msgstr "Várakozás, amíg a játékosok szövetséget választanak..."
 msgid "The End"
 msgstr "VÉGE"
 
-#: src/gui/dialogs/preferences_dialog.cpp:199
+#: src/gui/dialogs/preferences_dialog.cpp:192
 msgid "friend"
 msgstr "barát"
 
-#: src/gui/dialogs/preferences_dialog.cpp:204
+#: src/gui/dialogs/preferences_dialog.cpp:197
 msgid "ignored"
 msgstr "mellőzött"
 
-#: src/gui/dialogs/preferences_dialog.cpp:257
-#: src/gui/dialogs/preferences_dialog.cpp:314
+#: src/gui/dialogs/preferences_dialog.cpp:250
+#: src/gui/dialogs/preferences_dialog.cpp:307
 msgid "No username specified"
 msgstr "Nincs felhasználónév megadva"
 
-#: src/gui/dialogs/preferences_dialog.cpp:272
+#: src/gui/dialogs/preferences_dialog.cpp:265
 msgid "Invalid username"
 msgstr "Érvénytelen felhasználónév"
 
 # Jf: a fordítást javítaní kell, nem nyúltam hozzá, mert nem találtam meg a játékban, hol jelenik meg; elvileg a beállításoknál kéne lennie, de nincs még meg. Vagy kísérleti, vagy ennyire nem látom/találom.
-#: src/gui/dialogs/preferences_dialog.cpp:319
+#: src/gui/dialogs/preferences_dialog.cpp:312
 msgid "Not on friends or ignore lists"
 msgstr "Nem szerepel a barátok vagy mellőzöttek listáján"
 
-#: src/gui/dialogs/preferences_dialog.cpp:936
-#: src/gui/dialogs/preferences_dialog.cpp:1000
+#: src/gui/dialogs/preferences_dialog.cpp:931
+#: src/gui/dialogs/preferences_dialog.cpp:995
 msgid "No hotkey selected"
 msgstr "Nincs kiválasztva gyorsbillentyű"
 
-#: src/gui/dialogs/preferences_dialog.cpp:964
+#: src/gui/dialogs/preferences_dialog.cpp:959
 msgid ""
 "“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\n"
 "Do you wish to reassign it to “<b>$new_hotkey_action|</b>”?"
@@ -8369,15 +8367,15 @@ msgstr ""
 "„<b>$old_hotkey_action|</b>” parancshoz van rendelve.\n"
 "Szeretnéd inkább ehhez a parancshoz rendelni: „<b>$new_hotkey_action|</b>”?"
 
-#: src/gui/dialogs/preferences_dialog.cpp:970
+#: src/gui/dialogs/preferences_dialog.cpp:965
 msgid "Reassign Hotkey"
 msgstr "Gyorsbillentyű megváltoztatása"
 
-#: src/gui/dialogs/preferences_dialog.cpp:987
+#: src/gui/dialogs/preferences_dialog.cpp:982
 msgid "All hotkeys have been reset to their default values."
 msgstr "Minden gyorsbillentyű visszaállt az alapértelmezett beállításra."
 
-#: src/gui/dialogs/preferences_dialog.cpp:987
+#: src/gui/dialogs/preferences_dialog.cpp:982
 msgid "Hotkeys Reset"
 msgstr "Gyorsbillentyűk visszaállítása"
 
@@ -8539,7 +8537,7 @@ msgstr ""
 msgid "This unit cannot be recalled because you do not have enough gold."
 msgstr "Ezt az egységet nem lehet visszahívni, mert nincs elég aranyad."
 
-#: src/gui/gui.cpp:133
+#: src/gui/gui.cpp:129
 msgid "No default gui defined."
 msgstr "Nincs alapértelmezett grafikus felület megadva."
 
@@ -8597,18 +8595,18 @@ msgstr "Hivatkozás megnyitása?"
 msgid "Copied link!"
 msgstr "Hivatkozás másolva!"
 
-#: src/gui/widgets/listbox.cpp:695 src/gui/widgets/multi_page.cpp:224
+#: src/gui/widgets/listbox.cpp:696 src/gui/widgets/multi_page.cpp:224
 msgid ""
 "‘list_data’ must have the same number of columns as the ‘list_definition’."
 msgstr ""
 "A „lista_adat”-ban ugyanannyi oszlopnak kell lennie, mint a "
 "„lista_meghatározás”-ban."
 
-#: src/gui/widgets/listbox.cpp:730 src/gui/widgets/scrollbar_panel.cpp:86
+#: src/gui/widgets/listbox.cpp:731 src/gui/widgets/scrollbar_panel.cpp:86
 msgid "No list defined."
 msgstr "Nincs lista megadva."
 
-#: src/gui/widgets/listbox.cpp:735
+#: src/gui/widgets/listbox.cpp:736
 msgid "A ‘list_definition’ should contain one row."
 msgstr "A „lista_meghatározás”-nak tartalmaznia kell egy sort."
 
@@ -8662,12 +8660,12 @@ msgstr "Az értékek és az „értékcímkék” száma nem egyezik."
 msgid "No stack layers defined."
 msgstr "Nincsenek stack rétegek megadva."
 
-#: src/gui/widgets/styled_widget.cpp:591
+#: src/gui/widgets/styled_widget.cpp:593
 msgid "Found a widget with a helptip and without a tooltip."
 msgstr ""
 "Találtam egy vezérlőeszközt, amelyikhez tartozik szöveg, de súgóbuborék nem."
 
-#: src/gui/widgets/tab_container.cpp:140
+#: src/gui/widgets/tab_container.cpp:172
 msgid "No grid defined for tab container control"
 msgstr "Nincs rács definiálva a laptároló vezérlőhöz"
 

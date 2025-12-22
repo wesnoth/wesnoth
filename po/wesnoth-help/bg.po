@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bg\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-11-17 20:02-0600\n"
+"POT-Creation-Date: 2025-12-21 21:09-0600\n"
 "PO-Revision-Date: 2023-12-05 20:54+0200\n"
 "Last-Translator: Ivan Petrov <vankata_petrov@abv.bg>\n"
 "Language-Team: Bulgarian <bg@li.org>\n"
@@ -121,40 +121,40 @@ msgstr ""
 
 #. [resistance]: id=garak_steadfast
 #. [resistance]: id=steadfast
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:703
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:708
 #: data/core/macros/abilities.cfg:135
 msgid "steadfast"
 msgstr "непоклатимост"
 
 #. [resistance]: id=garak_steadfast
 #. [resistance]: id=steadfast
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:704
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:709
 #: data/core/macros/abilities.cfg:136
 msgid "female^steadfast"
 msgstr "непоклатима"
 
 #. [illuminates]: id=illumination_song_verse
 #. [illuminates]: id=illumination
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:346
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:347
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:362
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:363
 #: data/core/macros/abilities.cfg:244
 msgid "female^illuminates"
 msgstr "озаряване"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:684
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:754
 #: data/core/macros/abilities.cfg:10
 msgid "heals +4"
 msgstr "лекува +4"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:685
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:755
 #: data/core/macros/abilities.cfg:11
 msgid "female^heals +4"
 msgstr "лекува +4"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:686
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:756
 msgid ""
 "Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
 "\n"
@@ -172,27 +172,27 @@ msgstr ""
 
 #. [heals]: id=healing
 #. [heals]
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:690
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:729
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:759
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:760
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:799
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:829
 msgid "This unit is capable of basic healing and slowing dehydration."
 msgstr ""
 "Тази единица е способна на базисно лечение и забавяне на дехидратацията."
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:708
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:778
 #: data/core/macros/abilities.cfg:37
 msgid "heals +8"
 msgstr "лекува +8"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:709
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:779
 #: data/core/macros/abilities.cfg:38
 msgid "female^heals +8"
 msgstr "лекува +8"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:710
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:780
 msgid ""
 "This unit combines herbal remedies with magic to heal units more quickly "
 "than is normally possible on the battlefield.\n"
@@ -211,17 +211,17 @@ msgstr ""
 "някое селище или изцелител."
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:738
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:808
 msgid "heals +12"
 msgstr "лекува +12"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:739
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:809
 msgid "female^heals +12"
 msgstr "лекува +12"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:740
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:810
 msgid ""
 "This unit combines herbal remedies with magic to heal units more quickly "
 "than is normally possible on the battlefield.\n"
@@ -240,13 +240,55 @@ msgstr ""
 "някое селище или изцелител."
 
 #. [heals]
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:765
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:835
 msgid ""
 "This unit is capable of healing those around it, slowing dehydration, and "
 "curing them of poison."
 msgstr ""
 "Тази единица може да лекува съседните единици, да забавя дехидратация и да "
 "изцерява отравяне."
+
+#. [lua]: set_status
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:2127
+#, fuzzy
+#| msgid "female^undead"
+msgid "female^poisoned"
+msgstr "немъртва"
+
+#. [lua]: set_status
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:2127
+#, fuzzy
+#| msgid "poison"
+msgid "poisoned"
+msgstr "отрова"
+
+#. [lua]: set_status
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:2129
+#, fuzzy
+#| msgid "female^slow"
+msgid "female^slowed"
+msgstr "бавна"
+
+#. [lua]: set_status
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:2129
+#, fuzzy
+#| msgid "slow"
+msgid "slowed"
+msgstr "бавен"
+
+#. [lua]: set_status
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:2130
+#, fuzzy
+#| msgid "female^resilient"
+msgid "female^petrified"
+msgstr "издръжлива"
+
+#. [lua]: set_status
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:2130
+#, fuzzy
+#| msgid "petrifies"
+msgid "petrified"
+msgstr "вкаменява"
 
 #. [artifact]
 #. [chance]
@@ -315,7 +357,7 @@ msgstr "прикритие"
 
 #. [drains]: id=drains
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:24
-#: data/core/macros/weapon_specials.cfg:208
+#: data/core/macros/weapon_specials.cfg:209
 msgid "drains"
 msgstr "изпива"
 
@@ -353,7 +395,7 @@ msgstr "присъствие"
 
 #. [poison]: id=poison
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:51
-#: data/core/macros/weapon_specials.cfg:230
+#: data/core/macros/weapon_specials.cfg:231
 msgid "poison"
 msgstr "отрова"
 
@@ -2932,8 +2974,8 @@ msgstr "Начин на игра"
 #. [section]: id=traits_section
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:29 data/core/help.cfg:543
-#: src/help/help_topic_generators.cpp:536
-#: src/help/help_topic_generators.cpp:541
+#: src/help/help_topic_generators.cpp:535
+#: src/help/help_topic_generators.cpp:540
 msgid "Traits"
 msgstr "Качества"
 
@@ -7330,28 +7372,20 @@ msgstr ""
 "открити водни пространства."
 
 #: data/core/macros/special-notes.cfg:12
-msgid ""
-"This unit’s arcane attack deals tremendous damage to magical creatures, and "
-"even some to mundane creatures."
-msgstr ""
-"Мистичната атака на тази единица нанася огромни поражения на магически, а и "
-"на някои обикновени същества."
-
-#: data/core/macros/special-notes.cfg:19
 msgid "This unit is capable of basic healing."
 msgstr "Тази единица е способна на основно лечение."
 
-#: data/core/macros/special-notes.cfg:22
+#: data/core/macros/special-notes.cfg:15
 msgid "This unit is capable of rapid healing."
 msgstr "Тази единица е способна на скоростно лечение."
 
-#: data/core/macros/special-notes.cfg:25
+#: data/core/macros/special-notes.cfg:18
 msgid ""
 "This unit is capable of healing those around it, and curing them of poison."
 msgstr ""
 "Тази единица може да лекува съюзниците около себе си и да изцелява отравяне."
 
-#: data/core/macros/special-notes.cfg:28
+#: data/core/macros/special-notes.cfg:21
 msgid ""
 "This unit is capable of neutralizing the effects of poison in units around "
 "it."
@@ -7359,7 +7393,7 @@ msgstr ""
 "Тази единица е способна на неутрализиране на ефектите от отрова на "
 "съюзниците около себе си."
 
-#: data/core/macros/special-notes.cfg:31
+#: data/core/macros/special-notes.cfg:24
 msgid ""
 "This unit regenerates, which allows it to heal as though always stationed in "
 "a village."
@@ -7367,7 +7401,7 @@ msgstr ""
 "Тази единица се възстановява, което `и позволява да се лекува все едно "
 "винаги се намира в селище."
 
-#: data/core/macros/special-notes.cfg:34
+#: data/core/macros/special-notes.cfg:27
 msgid ""
 "The steadiness of this unit reduces damage from some attacks, but only while "
 "defending."
@@ -7375,7 +7409,7 @@ msgstr ""
 "Непоклатимостта на тази единица намалява пораженията от някои атаки, но само "
 "когато се защитава."
 
-#: data/core/macros/special-notes.cfg:37
+#: data/core/macros/special-notes.cfg:30
 msgid ""
 "The leadership of this unit enables adjacent units of the same side to deal "
 "more damage in combat, though this only applies to units of lower level."
@@ -7383,7 +7417,7 @@ msgstr ""
 "Водачеството на тази единица позволява на съседни единици да се бият по-"
 "добре, но това важи само за единиците от по-ниско ниво."
 
-#: data/core/macros/special-notes.cfg:40
+#: data/core/macros/special-notes.cfg:33
 msgid ""
 "This unit’s skill at skirmishing allows it to ignore enemies’ zones of "
 "control and thus move unhindered around them."
@@ -7391,11 +7425,11 @@ msgstr ""
 "Бързоходството на тази единица позволява да пренебрегва Зоните на Контрол на "
 "враговете си, за да се придвижва необезпокоявана около тях."
 
-#: data/core/macros/special-notes.cfg:43
+#: data/core/macros/special-notes.cfg:36
 msgid "Illumination increases the lighting level in adjacent areas."
 msgstr "Озаряването засилва светлината на съседните области."
 
-#: data/core/macros/special-notes.cfg:46
+#: data/core/macros/special-notes.cfg:39
 msgid ""
 "This unit can use one move to teleport between any two empty villages "
 "controlled by its side."
@@ -7403,7 +7437,7 @@ msgstr ""
 "Тази единица може да се телепортира между всеки две празни селища, които са "
 "под контрол на нейната страна."
 
-#: data/core/macros/special-notes.cfg:49
+#: data/core/macros/special-notes.cfg:42
 msgid ""
 "In woodlands, this unit’s ambush skill renders it invisible to enemies "
 "unless it is immediately adjacent or has revealed itself by attacking."
@@ -7411,11 +7445,11 @@ msgstr ""
 "В горите тази единица влиза в засада, което я прави невидима за враговете, "
 "освен ако застанат точно до нея или тя ги атакува."
 
-#: data/core/macros/special-notes.cfg:52
+#: data/core/macros/special-notes.cfg:45
 msgid "This unit is able to hide at night, leaving no trace of its presence."
 msgstr "Тази единица е в състояние да се скрие безследно през нощта."
 
-#: data/core/macros/special-notes.cfg:55
+#: data/core/macros/special-notes.cfg:48
 msgid ""
 "This unit can hide in villages (with the exception of water villages), and "
 "remain undetected by its enemies, except by those standing next to it."
@@ -7423,20 +7457,20 @@ msgstr ""
 "Единицата може да се крие в селища (освен във водни селища) и да остане "
 "незабелязана за враговете, с изключение на тези, които стоят до нея."
 
-#: data/core/macros/special-notes.cfg:58
+#: data/core/macros/special-notes.cfg:51
 msgid ""
 "This unit can move unseen in deep water, requiring no air from the surface."
 msgstr ""
 "Тази единица може да се движи незабелязано през дълбоки води, без да е нужно "
 "да си поема въздух."
 
-#: data/core/macros/special-notes.cfg:61
+#: data/core/macros/special-notes.cfg:54
 msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a living "
 "unit."
 msgstr "Тази единица получава +1 към максимума си ТЖ, когато убие жив враг."
 
-#: data/core/macros/special-notes.cfg:64
+#: data/core/macros/special-notes.cfg:57
 msgid ""
 "Whenever its berserk attack is used, this unit continues to push the attack "
 "until either it or its enemy lies dead."
@@ -7444,7 +7478,7 @@ msgstr ""
 "Когато атакува с бурна ярост, тази единица продължава атаката докато тя или "
 "врагът падне мъртъв."
 
-#: data/core/macros/special-notes.cfg:67
+#: data/core/macros/special-notes.cfg:60
 msgid ""
 "If there is an enemy of the target on the opposite side of the target while "
 "attacking it, this unit may backstab, inflicting double damage by creeping "
@@ -7453,7 +7487,7 @@ msgstr ""
 "Ако съюзник отвлече вниманието на врага, тази единица може да го нападне в "
 "гръб и му нанесе двойно поражение, като се промъкне зад него."
 
-#: data/core/macros/special-notes.cfg:70
+#: data/core/macros/special-notes.cfg:63
 msgid ""
 "Foes who lose their life to the plague will rise again in unlife, unless "
 "they are standing on a village."
@@ -7461,7 +7495,7 @@ msgstr ""
 "Враговете, които загинат от ефектите на чумата, ще се надигнат като "
 "немъртви, освен ако се намират в селище."
 
-#: data/core/macros/special-notes.cfg:73
+#: data/core/macros/special-notes.cfg:66
 #, fuzzy
 #| msgid ""
 #| "Foes who lose their life to the plague will rise again in unlife, unless "
@@ -7473,7 +7507,7 @@ msgstr ""
 "Враговете, които загинат от ефектите на чумата, ще се надигнат като "
 "немъртви, освен ако се намират в селище."
 
-#: data/core/macros/special-notes.cfg:76
+#: data/core/macros/special-notes.cfg:69
 msgid ""
 "This unit is able to slow its enemies, halving their movement speed and "
 "attack damage until they end a turn."
@@ -7481,14 +7515,14 @@ msgstr ""
 "Тази единици може да забавя враговете си, като намалява наполовина скоростта "
 "им на придвижване и пораженията от атаките им до края на техния ход."
 
-#: data/core/macros/special-notes.cfg:79
+#: data/core/macros/special-notes.cfg:72
 msgid ""
 "The ability to turn the living to stone makes this unit extremely dangerous."
 msgstr ""
 "Способността да превръща живите в камък прави тази единица изключително "
 "опасна."
 
-#: data/core/macros/special-notes.cfg:82
+#: data/core/macros/special-notes.cfg:75
 msgid ""
 "This unit’s marksmanship gives it a high chance of hitting targeted enemies, "
 "but only on the attack."
@@ -7496,7 +7530,7 @@ msgstr ""
 "Точната стрелба на тази единица `и дава висока възможност да уцели враговете "
 "си, но само при нападение."
 
-#: data/core/macros/special-notes.cfg:85
+#: data/core/macros/special-notes.cfg:78
 msgid ""
 "This unit has magical attacks, which always have a high chance of hitting an "
 "opponent."
@@ -7504,7 +7538,7 @@ msgstr ""
 "Тази единица има магически атаки, които винаги имат висока вероятност да "
 "поразят врага."
 
-#: data/core/macros/special-notes.cfg:88
+#: data/core/macros/special-notes.cfg:81
 msgid ""
 "The swarming attacks of this unit become less deadly whenever its members "
 "are wounded."
@@ -7512,7 +7546,7 @@ msgstr ""
 "Масираната атака от тази единица става все по-малко смъртоносна, колкото "
 "нейните членове са ранени."
 
-#: data/core/macros/special-notes.cfg:91
+#: data/core/macros/special-notes.cfg:84
 msgid ""
 "Using a charging attack doubles both damage dealt and received; this does "
 "not affect defensive retaliation."
@@ -7520,14 +7554,14 @@ msgstr ""
 "При щурм се удвояват както нанесените, така и претърпените поражения, без "
 "това да важи при защита."
 
-#: data/core/macros/special-notes.cfg:94
+#: data/core/macros/special-notes.cfg:87
 msgid ""
 "During battle, this unit can drain life from victims to renew its own health."
 msgstr ""
 "По време на битка тази единица може да източи жизнени сили от враговете си, "
 "за да възстанови себе си."
 
-#: data/core/macros/special-notes.cfg:97
+#: data/core/macros/special-notes.cfg:90
 msgid ""
 "The length of this unit’s weapon allows it to strike first in melee, even in "
 "defense."
@@ -7535,7 +7569,7 @@ msgstr ""
 "Заради дължината на своето оръжие, тази единица винаги нанася първия удар, "
 "дори когато се защитава."
 
-#: data/core/macros/special-notes.cfg:100
+#: data/core/macros/special-notes.cfg:93
 msgid ""
 "The victims of this unit’s poison will continually take damage until they "
 "can be cured in town or by a unit which cures."
@@ -7543,7 +7577,7 @@ msgstr ""
 "Жертвите, отровени от тази единица ще търпят поражения, докато не се "
 "излекуват в град или от единица с изцеляване."
 
-#: data/core/macros/special-notes.cfg:103
+#: data/core/macros/special-notes.cfg:96
 msgid ""
 "This unit has a defense cap on certain terrain types — it cannot achieve a "
 "higher defense rating on mixed terrains with such terrain types."
@@ -7553,7 +7587,7 @@ msgstr ""
 
 #. User-visible string, but only shown in the help pages of UMC units that haven't yet been updated to the 1.16 special notes format.
 #. Don't use markup in this, because it's shown by both Pango (in the sidebar's tooltips) and the GUI1 help browser (for unit descriptions).
-#: data/core/macros/special-notes.cfg:122
+#: data/core/macros/special-notes.cfg:115
 msgid ""
 "Special Notes (1.14-style, please update to the new list format to avoid "
 "duplicates):"
@@ -8351,12 +8385,12 @@ msgid ""
 msgstr ""
 
 #. [swarm]: id=swarm
-#: data/core/macros/weapon_specials.cfg:170
+#: data/core/macros/weapon_specials.cfg:171
 msgid "swarm"
 msgstr "масирана атака"
 
 #. [swarm]: id=swarm
-#: data/core/macros/weapon_specials.cfg:171
+#: data/core/macros/weapon_specials.cfg:172
 msgid ""
 "The number of strikes of this attack decreases when the unit is wounded. The "
 "number of strikes is proportional to the percentage of its of maximum HP the "
@@ -8369,12 +8403,12 @@ msgstr ""
 "`и се полагат."
 
 #. [damage]: id=charge
-#: data/core/macros/weapon_specials.cfg:181
+#: data/core/macros/weapon_specials.cfg:182
 msgid "charge"
 msgstr "щурм"
 
 #. [damage]: id=charge
-#: data/core/macros/weapon_specials.cfg:182
+#: data/core/macros/weapon_specials.cfg:183
 msgid ""
 "When used offensively, this attack deals double damage to the target. It "
 "also causes this unit to take double damage from the target’s counterattack."
@@ -8383,24 +8417,24 @@ msgstr ""
 "но единицата също така понася двойни поражения от ответната контраатака."
 
 #. [damage]: id=guard
-#: data/core/macros/weapon_specials.cfg:195
+#: data/core/macros/weapon_specials.cfg:196
 msgid "guard"
 msgstr ""
 
 #. [damage]: id=guard
-#: data/core/macros/weapon_specials.cfg:196
+#: data/core/macros/weapon_specials.cfg:197
 msgid "This attack blocks half of the damage from its target’s strikes."
 msgstr ""
 
 #. [damage]: id=guard
-#: data/core/macros/weapon_specials.cfg:197
+#: data/core/macros/weapon_specials.cfg:198
 msgid ""
 "This unit’s guarding attack can halve incoming damage, but only when used in "
 "combat."
 msgstr ""
 
 #. [drains]: id=drains
-#: data/core/macros/weapon_specials.cfg:209
+#: data/core/macros/weapon_specials.cfg:210
 msgid ""
 "This unit drains health from living units, healing itself for half the "
 "amount of damage it deals (rounded down)."
@@ -8409,18 +8443,18 @@ msgstr ""
 "нанесеното поражение (закръглено надолу)."
 
 #. [firststrike]: id=firststrike
-#: data/core/macros/weapon_specials.cfg:219
+#: data/core/macros/weapon_specials.cfg:220
 msgid "first strike"
 msgstr "първи удар"
 
 #. [firststrike]: id=firststrike
-#: data/core/macros/weapon_specials.cfg:220
+#: data/core/macros/weapon_specials.cfg:221
 msgid ""
 "This unit always strikes first with this attack, even if they are defending."
 msgstr "Тази единица винаги нанася първи удар, дори и да е в защита."
 
 #. [poison]: id=poison
-#: data/core/macros/weapon_specials.cfg:231
+#: data/core/macros/weapon_specials.cfg:232
 msgid ""
 "This attack poisons living targets. Poisoned units lose 8 HP every turn "
 "until they are cured or are reduced to 1 HP. Poison cannot, of itself, kill "
@@ -8431,19 +8465,19 @@ msgstr ""
 "може да убие единица посвоему."
 
 #. [stun]: id=stun
-#: data/core/macros/weapon_specials.cfg:241
+#: data/core/macros/weapon_specials.cfg:242
 msgid "stun"
 msgstr ""
 
 #. [stun]: id=stun
-#: data/core/macros/weapon_specials.cfg:242
+#: data/core/macros/weapon_specials.cfg:243
 msgid ""
 "This attack hits so hard that the opponent is dazed and can no longer "
 "enforce a zone of control. The effect wears off on the opponent’s next turn."
 msgstr ""
 
 #. [stun]: id=stun
-#: data/core/macros/weapon_specials.cfg:243
+#: data/core/macros/weapon_specials.cfg:244
 #, fuzzy
 #| msgid ""
 #| "This unit is able to slow its enemies, halving their movement speed and "
@@ -8455,19 +8489,19 @@ msgstr ""
 "им на придвижване и пораженията от атаките им до края на техния ход."
 
 #. [damage_type]: id=arcane_damage
-#: data/core/macros/weapon_specials.cfg:252
+#: data/core/macros/weapon_specials.cfg:253
 msgid "arcane"
 msgstr ""
 
 #. [damage_type]: id=arcane_damage
-#: data/core/macros/weapon_specials.cfg:253
+#: data/core/macros/weapon_specials.cfg:254
 msgid ""
 "This attack combines the arcane type with the type of weapon used so that "
 "resistance to the arcane type does not penalize the user."
 msgstr ""
 
 #. [damage_type]: id=arcane_damage
-#: data/core/macros/weapon_specials.cfg:254
+#: data/core/macros/weapon_specials.cfg:255
 msgid ""
 "This unit can use the arcane type when the opponent is particularly "
 "sensitive to it in relation to the weapon on which it is applied."
@@ -10351,6 +10385,15 @@ msgstr ""
 "се из цивилизованите светове. Узите се раздвижват само, за да защитят "
 "естествения свят и горите, които считат за свой дом."
 
+#. [language]
+#: data/english.cfg:34
+msgid ""
+"This unit’s arcane attack deals tremendous damage to magical creatures, and "
+"even some to mundane creatures."
+msgstr ""
+"Мистичната атака на тази единица нанася огромни поражения на магически, а и "
+"на някои обикновени същества."
+
 #. [lua]: action
 #: data/lua/feeding.lua:26 data/lua/feeding.lua:39
 msgid "+1 max HP"
@@ -10426,7 +10469,7 @@ msgid ""
 msgstr ""
 
 #: src/help/help_topic_generators.cpp:245
-#: src/help/help_topic_generators.cpp:653
+#: src/help/help_topic_generators.cpp:652
 #, fuzzy
 #| msgid "Special Notes:"
 msgid "Special Notes"
@@ -10456,64 +10499,64 @@ msgstr "Възможности на придвижването: "
 msgid "Defense properties: "
 msgstr "Защитни свойства: "
 
-#: src/help/help_topic_generators.cpp:363
+#: src/help/help_topic_generators.cpp:362
 msgid "Level"
 msgstr "Ниво"
 
-#: src/help/help_topic_generators.cpp:416
+#: src/help/help_topic_generators.cpp:415
 #, fuzzy
 #| msgid "Advances from: "
 msgid "Advances from:"
 msgstr "Повишение от: "
 
-#: src/help/help_topic_generators.cpp:418
+#: src/help/help_topic_generators.cpp:417
 #, fuzzy
 #| msgid "Advances to: "
 msgid "Advances to:"
 msgstr "Повишение към: "
 
-#: src/help/help_topic_generators.cpp:448
+#: src/help/help_topic_generators.cpp:447
 #, fuzzy
 #| msgid "Base unit: "
 msgid "Base unit:"
 msgstr "Основна единица: "
 
-#: src/help/help_topic_generators.cpp:453
+#: src/help/help_topic_generators.cpp:452
 #, fuzzy
 #| msgid "Base units: "
 msgid "Base units:"
 msgstr "Основни единици: "
 
-#: src/help/help_topic_generators.cpp:471
+#: src/help/help_topic_generators.cpp:470
 #, fuzzy
 #| msgid "Variations: "
 msgid "Variations:"
 msgstr "Променливи: "
 
-#: src/help/help_topic_generators.cpp:498
+#: src/help/help_topic_generators.cpp:497
 msgid "race^Miscellaneous"
 msgstr "Разни"
 
-#: src/help/help_topic_generators.cpp:500
+#: src/help/help_topic_generators.cpp:499
 #, fuzzy
 #| msgid "Race: "
 msgid "Race:"
 msgstr "Раса: "
 
-#: src/help/help_topic_generators.cpp:536
-#: src/help/help_topic_generators.cpp:546
+#: src/help/help_topic_generators.cpp:535
+#: src/help/help_topic_generators.cpp:545
 msgid "(1 of):"
 msgid_plural "(random $number of):"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/help/help_topic_generators.cpp:559
+#: src/help/help_topic_generators.cpp:558
 #, fuzzy
 #| msgid "Abilities: "
 msgid "Abilities:"
 msgstr "Умения: "
 
-#: src/help/help_topic_generators.cpp:585
+#: src/help/help_topic_generators.cpp:584
 #, fuzzy
 #| msgid "Ability Upgrades: "
 msgid "Ability Upgrades:"
@@ -10522,127 +10565,127 @@ msgstr "Подобряване на умения: "
 #. TRANSLATORS: This string is used in the help page of a single unit. If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:615
+#: src/help/help_topic_generators.cpp:614
 msgid "HP:"
 msgstr "ТЖ:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit. If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:619
+#: src/help/help_topic_generators.cpp:618
 msgid "Moves:"
 msgstr "Ходове:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:624
+#: src/help/help_topic_generators.cpp:623
 msgid "Vision:"
 msgstr "Видимост:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit. If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:630
+#: src/help/help_topic_generators.cpp:629
 msgid "Jamming:"
 msgstr "Заслепяване:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit. If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:635
+#: src/help/help_topic_generators.cpp:634
 msgid "Cost:"
 msgstr "Цена:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit. If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:639
+#: src/help/help_topic_generators.cpp:638
 msgid "Alignment:"
 msgstr "Уклон:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit. It uses
 #. non-breaking spaces to prevent unpleasant line breaks (issue #3256). In the
 #. translation use non-breaking spaces as appropriate for the target language.
-#: src/help/help_topic_generators.cpp:646
+#: src/help/help_topic_generators.cpp:645
 msgid "Required XP:"
 msgstr "Необходими ТО:"
 
-#: src/help/help_topic_generators.cpp:664
+#: src/help/help_topic_generators.cpp:663
 #, fuzzy
 #| msgid "Attack Type"
 msgid "Attacks"
 msgstr "Вид атака"
 
-#: src/help/help_topic_generators.cpp:667
+#: src/help/help_topic_generators.cpp:666
 #, fuzzy
 #| msgid "Attack Type"
 msgid "Attacks per turn: "
 msgstr "Вид атака"
 
-#: src/help/help_topic_generators.cpp:686
+#: src/help/help_topic_generators.cpp:685
 msgid "Name"
 msgstr ""
 
-#: src/help/help_topic_generators.cpp:687
+#: src/help/help_topic_generators.cpp:686
 msgid "Strikes"
 msgstr "Атаки"
 
-#: src/help/help_topic_generators.cpp:688
+#: src/help/help_topic_generators.cpp:687
 msgid "Range"
 msgstr "Обхват"
 
-#: src/help/help_topic_generators.cpp:689
+#: src/help/help_topic_generators.cpp:688
 msgid "Type"
 msgstr "Вид"
 
-#: src/help/help_topic_generators.cpp:690
+#: src/help/help_topic_generators.cpp:689
 msgid "Special"
 msgstr "Специални"
 
-#: src/help/help_topic_generators.cpp:712
+#: src/help/help_topic_generators.cpp:711
 msgid "uses $num attack"
 msgid_plural "uses $num attacks"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/help/help_topic_generators.cpp:792
+#: src/help/help_topic_generators.cpp:790
 msgid "Resistances"
 msgstr "Устойчивости"
 
-#: src/help/help_topic_generators.cpp:797
+#: src/help/help_topic_generators.cpp:795
 msgid "Attack Type"
 msgstr "Вид атака"
 
-#: src/help/help_topic_generators.cpp:798
+#: src/help/help_topic_generators.cpp:796
 msgid "Resistance"
 msgstr "Устойчивост"
 
-#: src/help/help_topic_generators.cpp:829
+#: src/help/help_topic_generators.cpp:827
 msgid "Terrain Modifiers"
 msgstr "Променливи на терена"
 
-#: src/help/help_topic_generators.cpp:833
+#: src/help/help_topic_generators.cpp:831
 msgid "Terrain"
 msgstr "Терен"
 
-#: src/help/help_topic_generators.cpp:834
+#: src/help/help_topic_generators.cpp:832
 msgid "Defense"
 msgstr "Защита"
 
-#: src/help/help_topic_generators.cpp:835
+#: src/help/help_topic_generators.cpp:833
 msgid "Movement Cost"
 msgstr "Цена за придвижване"
 
-#: src/help/help_topic_generators.cpp:836
+#: src/help/help_topic_generators.cpp:834
 msgid "Defense Cap"
 msgstr "Таван на защита"
 
-#: src/help/help_topic_generators.cpp:837
+#: src/help/help_topic_generators.cpp:835
 msgid "Vision Cost"
 msgstr "Цена за видимост"
 
-#: src/help/help_topic_generators.cpp:838
+#: src/help/help_topic_generators.cpp:836
 msgid "Jamming Cost"
 msgstr "Цена за заслепяване"
 

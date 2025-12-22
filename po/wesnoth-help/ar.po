@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.4.2+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-11-17 20:02-0600\n"
+"POT-Creation-Date: 2025-12-21 21:09-0600\n"
 "PO-Revision-Date: 2025-04-26 09:44+0100\n"
 "Last-Translator: Mejri Ziad <nouveau.dep@gmail.com>\n"
 "Language-Team: none\n"
@@ -113,40 +113,40 @@ msgstr "الوحدات الذكية تتطلب خبرة أقل بنسبة 20% م
 
 #. [resistance]: id=garak_steadfast
 #. [resistance]: id=steadfast
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:703
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:708
 #: data/core/macros/abilities.cfg:135
 msgid "steadfast"
 msgstr "صامد"
 
 #. [resistance]: id=garak_steadfast
 #. [resistance]: id=steadfast
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:704
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:709
 #: data/core/macros/abilities.cfg:136
 msgid "female^steadfast"
 msgstr "صامدة"
 
 #. [illuminates]: id=illumination_song_verse
 #. [illuminates]: id=illumination
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:346
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:347
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:362
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:363
 #: data/core/macros/abilities.cfg:244
 msgid "female^illuminates"
 msgstr "منيرة"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:684
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:754
 #: data/core/macros/abilities.cfg:10
 msgid "heals +4"
 msgstr "يشفي +4"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:685
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:755
 #: data/core/macros/abilities.cfg:11
 msgid "female^heals +4"
 msgstr "تشفي +4"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:686
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:756
 msgid ""
 "Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
 "\n"
@@ -164,26 +164,26 @@ msgstr ""
 
 #. [heals]: id=healing
 #. [heals]
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:690
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:729
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:759
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:760
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:799
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:829
 msgid "This unit is capable of basic healing and slowing dehydration."
 msgstr "هذه الوحدة قادرة على الشفاء الأساسي وإبطاء الجفاف."
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:708
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:778
 #: data/core/macros/abilities.cfg:37
 msgid "heals +8"
 msgstr "يشفي +8"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:709
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:779
 #: data/core/macros/abilities.cfg:38
 msgid "female^heals +8"
 msgstr "تشفي +8"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:710
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:780
 msgid ""
 "This unit combines herbal remedies with magic to heal units more quickly "
 "than is normally possible on the battlefield.\n"
@@ -206,17 +206,17 @@ msgstr ""
 "على رعاية قرية أو وحدة يمكنها العلاج."
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:738
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:808
 msgid "heals +12"
 msgstr "يشفي +12"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:739
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:809
 msgid "female^heals +12"
 msgstr "تشفي +12"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:740
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:810
 msgid ""
 "This unit combines herbal remedies with magic to heal units more quickly "
 "than is normally possible on the battlefield.\n"
@@ -239,11 +239,53 @@ msgstr ""
 "على رعاية قرية أو وحدة يمكنها العلاج."
 
 #. [heals]
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:765
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:835
 msgid ""
 "This unit is capable of healing those around it, slowing dehydration, and "
 "curing them of poison."
 msgstr "هذه الوحدة قادرة على شفاء من حولها وإبطاء الجفاف والشفاء من السموم."
+
+#. [lua]: set_status
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:2127
+#, fuzzy
+#| msgid "female^stunned"
+msgid "female^poisoned"
+msgstr "مصدومة"
+
+#. [lua]: set_status
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:2127
+#, fuzzy
+#| msgid "poison"
+msgid "poisoned"
+msgstr "سم"
+
+#. [lua]: set_status
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:2129
+#, fuzzy
+#| msgid "female^slow"
+msgid "female^slowed"
+msgstr "مبطئة"
+
+#. [lua]: set_status
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:2129
+#, fuzzy
+#| msgid "slow"
+msgid "slowed"
+msgstr "مبطئ"
+
+#. [lua]: set_status
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:2130
+#, fuzzy
+#| msgid "female^resilient"
+msgid "female^petrified"
+msgstr "مرنة"
+
+#. [lua]: set_status
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:2130
+#, fuzzy
+#| msgid "petrifies"
+msgid "petrified"
+msgstr "يحجر"
 
 #. [artifact]
 #. [chance]
@@ -312,7 +354,7 @@ msgstr "تخفي"
 
 #. [drains]: id=drains
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:24
-#: data/core/macros/weapon_specials.cfg:208
+#: data/core/macros/weapon_specials.cfg:209
 msgid "drains"
 msgstr "استنزاف"
 
@@ -350,7 +392,7 @@ msgstr "تسلل"
 
 #. [poison]: id=poison
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:51
-#: data/core/macros/weapon_specials.cfg:230
+#: data/core/macros/weapon_specials.cfg:231
 msgid "poison"
 msgstr "سم"
 
@@ -3106,8 +3148,8 @@ msgstr "قواعد اللعب"
 #. [section]: id=traits_section
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:29 data/core/help.cfg:543
-#: src/help/help_topic_generators.cpp:536
-#: src/help/help_topic_generators.cpp:541
+#: src/help/help_topic_generators.cpp:535
+#: src/help/help_topic_generators.cpp:540
 msgid "Traits"
 msgstr "السمات"
 
@@ -7397,46 +7439,38 @@ msgstr ""
 "الأرواح لديها مقاومة غير عادية للضرر، وتتحرك ببطء شديد فوق المياه المفتوحة."
 
 #: data/core/macros/special-notes.cfg:12
-msgid ""
-"This unit’s arcane attack deals tremendous damage to magical creatures, and "
-"even some to mundane creatures."
-msgstr ""
-"يلحق الهجوم الغامض لهذه الوحدة ضررًا هائلاً بالمخلوقات السحرية، وحتى ببعض "
-"المخلوقات الدنيوية."
-
-#: data/core/macros/special-notes.cfg:19
 msgid "This unit is capable of basic healing."
 msgstr "هذه الوحدة قادرة على الشفاء الأساسي."
 
-#: data/core/macros/special-notes.cfg:22
+#: data/core/macros/special-notes.cfg:15
 msgid "This unit is capable of rapid healing."
 msgstr "هذه الوحدة قادرة على الشفاء السريع."
 
-#: data/core/macros/special-notes.cfg:25
+#: data/core/macros/special-notes.cfg:18
 msgid ""
 "This unit is capable of healing those around it, and curing them of poison."
 msgstr "هذه الوحدة قادرة على شفاء من حولها، وشفاءهم من السموم."
 
-#: data/core/macros/special-notes.cfg:28
+#: data/core/macros/special-notes.cfg:21
 msgid ""
 "This unit is capable of neutralizing the effects of poison in units around "
 "it."
 msgstr "هذه الوحدة قادرة على تحييد تأثيرات السم في الوحدات المحيطة بها."
 
-#: data/core/macros/special-notes.cfg:31
+#: data/core/macros/special-notes.cfg:24
 msgid ""
 "This unit regenerates, which allows it to heal as though always stationed in "
 "a village."
 msgstr ""
 "تتجدد هذه الوحدة مما يسمح لها بالشفاء كما لو كانت متواجدة دائمًا في القرية."
 
-#: data/core/macros/special-notes.cfg:34
+#: data/core/macros/special-notes.cfg:27
 msgid ""
 "The steadiness of this unit reduces damage from some attacks, but only while "
 "defending."
 msgstr "ثبات هذه الوحدة يقلل الضرر من بعض الهجمات، ولكن فقط أثناء الدفاع."
 
-#: data/core/macros/special-notes.cfg:37
+#: data/core/macros/special-notes.cfg:30
 msgid ""
 "The leadership of this unit enables adjacent units of the same side to deal "
 "more damage in combat, though this only applies to units of lower level."
@@ -7445,7 +7479,7 @@ msgstr ""
 "الضرر في القتال، على الرغم من أن هذا ينطبق فقط على الوحدات ذات المستوى "
 "الأدنى."
 
-#: data/core/macros/special-notes.cfg:40
+#: data/core/macros/special-notes.cfg:33
 msgid ""
 "This unit’s skill at skirmishing allows it to ignore enemies’ zones of "
 "control and thus move unhindered around them."
@@ -7453,11 +7487,11 @@ msgstr ""
 "مهارة هذه الوحدة في المناوشات تسمح لها بتجاهل مناطق سيطرة الأعداء وبالتالي "
 "التحرك حولهم دون عوائق."
 
-#: data/core/macros/special-notes.cfg:43
+#: data/core/macros/special-notes.cfg:36
 msgid "Illumination increases the lighting level in adjacent areas."
 msgstr "الإنارة تزيد من مستوى الإضاءة في المناطق المجاورة."
 
-#: data/core/macros/special-notes.cfg:46
+#: data/core/macros/special-notes.cfg:39
 msgid ""
 "This unit can use one move to teleport between any two empty villages "
 "controlled by its side."
@@ -7465,7 +7499,7 @@ msgstr ""
 "يمكن لهذه الوحدة استخدام حركة واحدة للانتقال الفوري بين أي قريتين فارغتين "
 "تسيطر عليهما من جانبها."
 
-#: data/core/macros/special-notes.cfg:49
+#: data/core/macros/special-notes.cfg:42
 msgid ""
 "In woodlands, this unit’s ambush skill renders it invisible to enemies "
 "unless it is immediately adjacent or has revealed itself by attacking."
@@ -7473,11 +7507,11 @@ msgstr ""
 "في الغابات، مهارة الكمين لهذه الوحدة تجعلها غير مرئية للأعداء ما لم تكن "
 "مجاورة مباشرة أو كشفت عن نفسها من خلال الهجوم."
 
-#: data/core/macros/special-notes.cfg:52
+#: data/core/macros/special-notes.cfg:45
 msgid "This unit is able to hide at night, leaving no trace of its presence."
 msgstr "هذه الوحدة قادرة على الاختباء ليلاً دون ترك أي أثر لوجودها."
 
-#: data/core/macros/special-notes.cfg:55
+#: data/core/macros/special-notes.cfg:48
 msgid ""
 "This unit can hide in villages (with the exception of water villages), and "
 "remain undetected by its enemies, except by those standing next to it."
@@ -7485,14 +7519,14 @@ msgstr ""
 "تستطيع هذه الوحدة الاختباء في القرى (باستثناء القرى المائية)، ولا يمكن أن "
 "يكتشفها أعداؤها إلا من يقف بجانبها."
 
-#: data/core/macros/special-notes.cfg:58
+#: data/core/macros/special-notes.cfg:51
 msgid ""
 "This unit can move unseen in deep water, requiring no air from the surface."
 msgstr ""
 "يمكن لهذه الوحدة أن تتحرك بشكل غير مرئي في المياه العميقة، ولا تحتاج إلى "
 "هواء من السطح."
 
-#: data/core/macros/special-notes.cfg:61
+#: data/core/macros/special-notes.cfg:54
 msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a living "
 "unit."
@@ -7500,7 +7534,7 @@ msgstr ""
 "تكتسب هذه الوحدة نقطة إصابة واحدة تضاف إلى الحد الأقصى لها عندما تقتل وحدة "
 "حية."
 
-#: data/core/macros/special-notes.cfg:64
+#: data/core/macros/special-notes.cfg:57
 msgid ""
 "Whenever its berserk attack is used, this unit continues to push the attack "
 "until either it or its enemy lies dead."
@@ -7508,7 +7542,7 @@ msgstr ""
 "كلما تم استخدام هجومها الهائج، تستمر هذه الوحدة في الهجوم حتى تموت هي أو "
 "عدوها."
 
-#: data/core/macros/special-notes.cfg:67
+#: data/core/macros/special-notes.cfg:60
 msgid ""
 "If there is an enemy of the target on the opposite side of the target while "
 "attacking it, this unit may backstab, inflicting double damage by creeping "
@@ -7517,7 +7551,7 @@ msgstr ""
 "إذا كان هناك عدو للهدف على الجانب الآخر من الهدف أثناء مهاجمته، فقد تطعن هذه "
 "الوحدة في الظهر، وتسبب ضررًا مضاعفًا من خلال الزحف خلف ذلك العدو."
 
-#: data/core/macros/special-notes.cfg:70
+#: data/core/macros/special-notes.cfg:63
 msgid ""
 "Foes who lose their life to the plague will rise again in unlife, unless "
 "they are standing on a village."
@@ -7525,7 +7559,7 @@ msgstr ""
 "الأعداء الذين فقدوا حياتهم بسبب الطاعون سوف يقومون مرة أخرى في حالة ميت-حي، "
 "إلا إذا كانوا واقفين في قرية."
 
-#: data/core/macros/special-notes.cfg:73
+#: data/core/macros/special-notes.cfg:66
 msgid ""
 "Foes who lose their life to certain horrors of nature become nourishment for "
 "a rapidly growing larva, unless they are standing in a village."
@@ -7533,7 +7567,7 @@ msgstr ""
 "الأعداء الذين يفقدون حياتهم بسبب أهوال معينة من الطبيعة يصبحون غذاء ليرقة "
 "سريعة النمو، إلا إذا كانوا واقفين في قرية."
 
-#: data/core/macros/special-notes.cfg:76
+#: data/core/macros/special-notes.cfg:69
 msgid ""
 "This unit is able to slow its enemies, halving their movement speed and "
 "attack damage until they end a turn."
@@ -7541,12 +7575,12 @@ msgstr ""
 "هذه الوحدة قادرة على إبطاء أعدائها، وخفض سرعة حركتهم إلى النصف وضرر الهجوم "
 "حتى ينهوا الدور."
 
-#: data/core/macros/special-notes.cfg:79
+#: data/core/macros/special-notes.cfg:72
 msgid ""
 "The ability to turn the living to stone makes this unit extremely dangerous."
 msgstr "القدرة على تحويل الحياة إلى حجر تجعل هذه الوحدة في غاية الخطورة."
 
-#: data/core/macros/special-notes.cfg:82
+#: data/core/macros/special-notes.cfg:75
 msgid ""
 "This unit’s marksmanship gives it a high chance of hitting targeted enemies, "
 "but only on the attack."
@@ -7554,20 +7588,20 @@ msgstr ""
 "مهارة هذه الوحدة في الرماية تمنحها فرصة كبيرة لضرب الأعداء المستهدفين، ولكن "
 "في الهجوم فقط."
 
-#: data/core/macros/special-notes.cfg:85
+#: data/core/macros/special-notes.cfg:78
 msgid ""
 "This unit has magical attacks, which always have a high chance of hitting an "
 "opponent."
 msgstr ""
 "هذه الوحدة لديها هجمات مسحورة، والتي لديها دائمًا فرصة كبيرة لضرب الخصم."
 
-#: data/core/macros/special-notes.cfg:88
+#: data/core/macros/special-notes.cfg:81
 msgid ""
 "The swarming attacks of this unit become less deadly whenever its members "
 "are wounded."
 msgstr "الهجمات الحاشدة لهذه الوحدة تصبح أقل فتكًا كلما أصيب أعضاؤها."
 
-#: data/core/macros/special-notes.cfg:91
+#: data/core/macros/special-notes.cfg:84
 msgid ""
 "Using a charging attack doubles both damage dealt and received; this does "
 "not affect defensive retaliation."
@@ -7575,19 +7609,19 @@ msgstr ""
 "يؤدي استخدام هجوم الشحن إلى مضاعفة الضرر الذي يحدث والضرر الذي يتلقاه "
 "المهاجم؛ وهذا لا يؤثر على الانتقام الدفاعي."
 
-#: data/core/macros/special-notes.cfg:94
+#: data/core/macros/special-notes.cfg:87
 msgid ""
 "During battle, this unit can drain life from victims to renew its own health."
 msgstr ""
 "أثناء المعركة، يمكن لهذه الوحدة أن تستنزف الحياة من الضحايا لتجديد صحتها."
 
-#: data/core/macros/special-notes.cfg:97
+#: data/core/macros/special-notes.cfg:90
 msgid ""
 "The length of this unit’s weapon allows it to strike first in melee, even in "
 "defense."
 msgstr "طول سلاح هذه الوحدة يسمح لها بالضرب أولاً في الالتحام، حتى في الدفاع."
 
-#: data/core/macros/special-notes.cfg:100
+#: data/core/macros/special-notes.cfg:93
 msgid ""
 "The victims of this unit’s poison will continually take damage until they "
 "can be cured in town or by a unit which cures."
@@ -7595,7 +7629,7 @@ msgstr ""
 "سيتعرض ضحايا سم هذه الوحدة للضرر باستمرار حتى يمكن علاجهم في مدينة أو عن "
 "طريق وحدة يمكنها أن تعالجهم."
 
-#: data/core/macros/special-notes.cfg:103
+#: data/core/macros/special-notes.cfg:96
 msgid ""
 "This unit has a defense cap on certain terrain types — it cannot achieve a "
 "higher defense rating on mixed terrains with such terrain types."
@@ -7605,7 +7639,7 @@ msgstr ""
 
 #. User-visible string, but only shown in the help pages of UMC units that haven't yet been updated to the 1.16 special notes format.
 #. Don't use markup in this, because it's shown by both Pango (in the sidebar's tooltips) and the GUI1 help browser (for unit descriptions).
-#: data/core/macros/special-notes.cfg:122
+#: data/core/macros/special-notes.cfg:115
 msgid ""
 "Special Notes (1.14-style, please update to the new list format to avoid "
 "duplicates):"
@@ -8406,12 +8440,12 @@ msgid ""
 msgstr "هجوم هذه الوحدة \"المشحوذ\" أكثر دقة قليلاً من الهجمات الأخرى."
 
 #. [swarm]: id=swarm
-#: data/core/macros/weapon_specials.cfg:170
+#: data/core/macros/weapon_specials.cfg:171
 msgid "swarm"
 msgstr "سرب"
 
 #. [swarm]: id=swarm
-#: data/core/macros/weapon_specials.cfg:171
+#: data/core/macros/weapon_specials.cfg:172
 msgid ""
 "The number of strikes of this attack decreases when the unit is wounded. The "
 "number of strikes is proportional to the percentage of its of maximum HP the "
@@ -8423,12 +8457,12 @@ msgstr ""
 "تمتلك 3/4 من الحد الأقصى لنقاط الصحة على 3/4 من عدد الضربات."
 
 #. [damage]: id=charge
-#: data/core/macros/weapon_specials.cfg:181
+#: data/core/macros/weapon_specials.cfg:182
 msgid "charge"
 msgstr "شحن"
 
 #. [damage]: id=charge
-#: data/core/macros/weapon_specials.cfg:182
+#: data/core/macros/weapon_specials.cfg:183
 msgid ""
 "When used offensively, this attack deals double damage to the target. It "
 "also causes this unit to take double damage from the target’s counterattack."
@@ -8437,17 +8471,17 @@ msgstr ""
 "تلقي هذه الوحدة ضررًا مضاعفًا من الهجوم المضاد للهدف."
 
 #. [damage]: id=guard
-#: data/core/macros/weapon_specials.cfg:195
+#: data/core/macros/weapon_specials.cfg:196
 msgid "guard"
 msgstr "حارس"
 
 #. [damage]: id=guard
-#: data/core/macros/weapon_specials.cfg:196
+#: data/core/macros/weapon_specials.cfg:197
 msgid "This attack blocks half of the damage from its target’s strikes."
 msgstr "يحجب هذا الهجوم نصف الضرر الناتج عن ضربات الهدف."
 
 #. [damage]: id=guard
-#: data/core/macros/weapon_specials.cfg:197
+#: data/core/macros/weapon_specials.cfg:198
 msgid ""
 "This unit’s guarding attack can halve incoming damage, but only when used in "
 "combat."
@@ -8456,7 +8490,7 @@ msgstr ""
 "فقط عند استخدامه في القتال."
 
 #. [drains]: id=drains
-#: data/core/macros/weapon_specials.cfg:209
+#: data/core/macros/weapon_specials.cfg:210
 msgid ""
 "This unit drains health from living units, healing itself for half the "
 "amount of damage it deals (rounded down)."
@@ -8465,18 +8499,18 @@ msgstr ""
 "تسببه (مقربًا للأدنى)."
 
 #. [firststrike]: id=firststrike
-#: data/core/macros/weapon_specials.cfg:219
+#: data/core/macros/weapon_specials.cfg:220
 msgid "first strike"
 msgstr "الضربة الأولى"
 
 #. [firststrike]: id=firststrike
-#: data/core/macros/weapon_specials.cfg:220
+#: data/core/macros/weapon_specials.cfg:221
 msgid ""
 "This unit always strikes first with this attack, even if they are defending."
 msgstr "هذه الوحدة دائمًا هي التي تضرب أولاً بهذا الهجوم، حتى لو كانت دفاعية."
 
 #. [poison]: id=poison
-#: data/core/macros/weapon_specials.cfg:231
+#: data/core/macros/weapon_specials.cfg:232
 msgid ""
 "This attack poisons living targets. Poisoned units lose 8 HP every turn "
 "until they are cured or are reduced to 1 HP. Poison cannot, of itself, kill "
@@ -8487,12 +8521,12 @@ msgstr ""
 "للسم في حد ذاته أن يقتل الوحدة."
 
 #. [stun]: id=stun
-#: data/core/macros/weapon_specials.cfg:241
+#: data/core/macros/weapon_specials.cfg:242
 msgid "stun"
 msgstr "صعقة"
 
 #. [stun]: id=stun
-#: data/core/macros/weapon_specials.cfg:242
+#: data/core/macros/weapon_specials.cfg:243
 msgid ""
 "This attack hits so hard that the opponent is dazed and can no longer "
 "enforce a zone of control. The effect wears off on the opponent’s next turn."
@@ -8501,18 +8535,18 @@ msgstr ""
 "سيطرة. ويزول التأثير في الدور التالي للخصم."
 
 #. [stun]: id=stun
-#: data/core/macros/weapon_specials.cfg:243
+#: data/core/macros/weapon_specials.cfg:244
 msgid ""
 "This unit is able to stun its enemies, disrupting their zones of control."
 msgstr "هذه الوحدة قادرة على صعق أعدائها وتعطيل مناطق سيطرتهم."
 
 #. [damage_type]: id=arcane_damage
-#: data/core/macros/weapon_specials.cfg:252
+#: data/core/macros/weapon_specials.cfg:253
 msgid "arcane"
 msgstr "غامض"
 
 #. [damage_type]: id=arcane_damage
-#: data/core/macros/weapon_specials.cfg:253
+#: data/core/macros/weapon_specials.cfg:254
 msgid ""
 "This attack combines the arcane type with the type of weapon used so that "
 "resistance to the arcane type does not penalize the user."
@@ -8521,7 +8555,7 @@ msgstr ""
 "النوع السحري المستخدم."
 
 #. [damage_type]: id=arcane_damage
-#: data/core/macros/weapon_specials.cfg:254
+#: data/core/macros/weapon_specials.cfg:255
 msgid ""
 "This unit can use the arcane type when the opponent is particularly "
 "sensitive to it in relation to the weapon on which it is applied."
@@ -10129,6 +10163,15 @@ msgstr ""
 "كالحارس، غير مهتم بما يجري في العالم المتحضر، ولن يتحرك إلا للدفاع عن العالم "
 "الطبيعي والغابات التي يسميها وطنه."
 
+#. [language]
+#: data/english.cfg:34
+msgid ""
+"This unit’s arcane attack deals tremendous damage to magical creatures, and "
+"even some to mundane creatures."
+msgstr ""
+"يلحق الهجوم الغامض لهذه الوحدة ضررًا هائلاً بالمخلوقات السحرية، وحتى ببعض "
+"المخلوقات الدنيوية."
+
 #. [lua]: action
 #: data/lua/feeding.lua:26 data/lua/feeding.lua:39
 msgid "+1 max HP"
@@ -10206,7 +10249,7 @@ msgstr ""
 "للقائد الموجود في منطقة متصلة بالتجنيد على هذه السداسية."
 
 #: src/help/help_topic_generators.cpp:245
-#: src/help/help_topic_generators.cpp:653
+#: src/help/help_topic_generators.cpp:652
 msgid "Special Notes"
 msgstr "ملاحظات خاصة"
 
@@ -10236,52 +10279,52 @@ msgstr "خصائص الحركة: "
 msgid "Defense properties: "
 msgstr "خصائص الدفاع: "
 
-#: src/help/help_topic_generators.cpp:363
+#: src/help/help_topic_generators.cpp:362
 msgid "Level"
 msgstr "المستوى"
 
-#: src/help/help_topic_generators.cpp:416
+#: src/help/help_topic_generators.cpp:415
 #, fuzzy
 #| msgid "Advances from: "
 msgid "Advances from:"
 msgstr "يتطور من: "
 
-#: src/help/help_topic_generators.cpp:418
+#: src/help/help_topic_generators.cpp:417
 #, fuzzy
 #| msgid "Advances to: "
 msgid "Advances to:"
 msgstr "يتطور إلى: "
 
-#: src/help/help_topic_generators.cpp:448
+#: src/help/help_topic_generators.cpp:447
 #, fuzzy
 #| msgid "Base unit: "
 msgid "Base unit:"
 msgstr "الوحدة الأساس: "
 
-#: src/help/help_topic_generators.cpp:453
+#: src/help/help_topic_generators.cpp:452
 #, fuzzy
 #| msgid "Base units: "
 msgid "Base units:"
 msgstr "الوحدات الأساس: "
 
-#: src/help/help_topic_generators.cpp:471
+#: src/help/help_topic_generators.cpp:470
 #, fuzzy
 #| msgid "Variations: "
 msgid "Variations:"
 msgstr "التنويعات: "
 
-#: src/help/help_topic_generators.cpp:498
+#: src/help/help_topic_generators.cpp:497
 msgid "race^Miscellaneous"
 msgstr "متنوعة"
 
-#: src/help/help_topic_generators.cpp:500
+#: src/help/help_topic_generators.cpp:499
 #, fuzzy
 #| msgid "Race: "
 msgid "Race:"
 msgstr "العرق: "
 
-#: src/help/help_topic_generators.cpp:536
-#: src/help/help_topic_generators.cpp:546
+#: src/help/help_topic_generators.cpp:535
+#: src/help/help_topic_generators.cpp:545
 msgid "(1 of):"
 msgid_plural "(random $number of):"
 msgstr[0] ""
@@ -10291,13 +10334,13 @@ msgstr[3] ""
 msgstr[4] ""
 msgstr[5] ""
 
-#: src/help/help_topic_generators.cpp:559
+#: src/help/help_topic_generators.cpp:558
 #, fuzzy
 #| msgid "Abilities: "
 msgid "Abilities:"
 msgstr "القدرات: "
 
-#: src/help/help_topic_generators.cpp:585
+#: src/help/help_topic_generators.cpp:584
 #, fuzzy
 #| msgid "Ability Upgrades: "
 msgid "Ability Upgrades:"
@@ -10306,83 +10349,83 @@ msgstr "تطورات القدرات: "
 #. TRANSLATORS: This string is used in the help page of a single unit. If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:615
+#: src/help/help_topic_generators.cpp:614
 msgid "HP:"
 msgstr "نقاط الحياة:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit. If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:619
+#: src/help/help_topic_generators.cpp:618
 msgid "Moves:"
 msgstr "الحركات:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:624
+#: src/help/help_topic_generators.cpp:623
 msgid "Vision:"
 msgstr "الرؤية:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit. If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:630
+#: src/help/help_topic_generators.cpp:629
 msgid "Jamming:"
 msgstr "القفز:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit. If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:635
+#: src/help/help_topic_generators.cpp:634
 msgid "Cost:"
 msgstr "الكلفة:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit. If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:639
+#: src/help/help_topic_generators.cpp:638
 msgid "Alignment:"
 msgstr "التوجه:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit. It uses
 #. non-breaking spaces to prevent unpleasant line breaks (issue #3256). In the
 #. translation use non-breaking spaces as appropriate for the target language.
-#: src/help/help_topic_generators.cpp:646
+#: src/help/help_topic_generators.cpp:645
 msgid "Required XP:"
 msgstr "التجربة المطلوبة:"
 
-#: src/help/help_topic_generators.cpp:664
+#: src/help/help_topic_generators.cpp:663
 msgid "Attacks"
 msgstr "الهجمات"
 
-#: src/help/help_topic_generators.cpp:667
+#: src/help/help_topic_generators.cpp:666
 #, fuzzy
 #| msgid "Attack Type"
 msgid "Attacks per turn: "
 msgstr "نوع الهجوم"
 
-#: src/help/help_topic_generators.cpp:686
+#: src/help/help_topic_generators.cpp:685
 msgid "Name"
 msgstr "الاسم"
 
-#: src/help/help_topic_generators.cpp:687
+#: src/help/help_topic_generators.cpp:686
 msgid "Strikes"
 msgstr "الضربات"
 
-#: src/help/help_topic_generators.cpp:688
+#: src/help/help_topic_generators.cpp:687
 msgid "Range"
 msgstr "المدى"
 
-#: src/help/help_topic_generators.cpp:689
+#: src/help/help_topic_generators.cpp:688
 msgid "Type"
 msgstr "النوع"
 
-#: src/help/help_topic_generators.cpp:690
+#: src/help/help_topic_generators.cpp:689
 msgid "Special"
 msgstr "الخاصية"
 
-#: src/help/help_topic_generators.cpp:712
+#: src/help/help_topic_generators.cpp:711
 msgid "uses $num attack"
 msgid_plural "uses $num attacks"
 msgstr[0] ""
@@ -10392,43 +10435,43 @@ msgstr[3] ""
 msgstr[4] ""
 msgstr[5] ""
 
-#: src/help/help_topic_generators.cpp:792
+#: src/help/help_topic_generators.cpp:790
 msgid "Resistances"
 msgstr "الدفاعات"
 
-#: src/help/help_topic_generators.cpp:797
+#: src/help/help_topic_generators.cpp:795
 msgid "Attack Type"
 msgstr "نوع الهجوم"
 
-#: src/help/help_topic_generators.cpp:798
+#: src/help/help_topic_generators.cpp:796
 msgid "Resistance"
 msgstr "المقاومة"
 
-#: src/help/help_topic_generators.cpp:829
+#: src/help/help_topic_generators.cpp:827
 msgid "Terrain Modifiers"
 msgstr "مغير الأرض"
 
-#: src/help/help_topic_generators.cpp:833
+#: src/help/help_topic_generators.cpp:831
 msgid "Terrain"
 msgstr "الارضية"
 
-#: src/help/help_topic_generators.cpp:834
+#: src/help/help_topic_generators.cpp:832
 msgid "Defense"
 msgstr "الدفاع"
 
-#: src/help/help_topic_generators.cpp:835
+#: src/help/help_topic_generators.cpp:833
 msgid "Movement Cost"
 msgstr "كلفة الحركة"
 
-#: src/help/help_topic_generators.cpp:836
+#: src/help/help_topic_generators.cpp:834
 msgid "Defense Cap"
 msgstr "حدّ الدفاع"
 
-#: src/help/help_topic_generators.cpp:837
+#: src/help/help_topic_generators.cpp:835
 msgid "Vision Cost"
 msgstr "كلفة الرؤية"
 
-#: src/help/help_topic_generators.cpp:838
+#: src/help/help_topic_generators.cpp:836
 msgid "Jamming Cost"
 msgstr "كلفة القفز"
 

@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-11-18 02:02 UTC\n"
+"POT-Creation-Date: 2025-12-22 03:09 UTC\n"
 "PO-Revision-Date: 2025-12-02 00:07+0100\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -232,7 +232,7 @@ msgstr "Scegli un ufficiale che accompagni Deoran:"
 #. [lua]: choose_companion
 #. [event]
 #: data/campaigns/The_South_Guard/lua/popups.lua:160
-#: data/campaigns/The_South_Guard/scenarios/02x_Westin.cfg:473
+#: data/campaigns/The_South_Guard/scenarios/02x_Westin.cfg:472
 #: data/campaigns/The_South_Guard/utils/sg_characters.cfg:76
 msgid "Sir Gerrick"
 msgstr "Ser Gerrick"
@@ -248,7 +248,7 @@ msgstr "Fante Veterano"
 #. [event]
 #: data/campaigns/The_South_Guard/lua/popups.lua:164
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:137
-#: data/campaigns/The_South_Guard/scenarios/02x_Westin.cfg:425
+#: data/campaigns/The_South_Guard/scenarios/02x_Westin.cfg:424
 #: data/campaigns/The_South_Guard/utils/sg_characters.cfg:87
 msgid "Captain Mari"
 msgstr "Capitan Mari"
@@ -263,7 +263,7 @@ msgstr "Schermitrice Veterana"
 #. [lua]: choose_companion
 #. [event]
 #: data/campaigns/The_South_Guard/lua/popups.lua:168
-#: data/campaigns/The_South_Guard/scenarios/02x_Westin.cfg:449
+#: data/campaigns/The_South_Guard/scenarios/02x_Westin.cfg:448
 #: data/campaigns/The_South_Guard/utils/sg_characters.cfg:67
 msgid "Minister Hylas"
 msgstr "Ministro Hylas"
@@ -311,6 +311,20 @@ msgstr ""
 #. [part]
 #. Intro to scenario 1
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:33
+#, fuzzy
+#| msgid ""
+#| "For eight years, the South Guard had defended the farms and homes "
+#| "surrounding the city of Westin, the capital of Wesnoth’s frontier "
+#| "province of Kerlath in the furthermost south. Under the command of Sir "
+#| "Gerrick, the South Guard kept Westin free from danger, having only to "
+#| "quash the occasional bandit or wild creature. Perhaps the only real "
+#| "unease came from the Aethenwood to the west, where the elves lived in "
+#| "reserved aloofness, indifferent to the doings of man. Traversing their "
+#| "land without permission was forbidden, but the elves rarely entered the "
+#| "lands of Kerlath in turn. Even further south in the wildlands, the "
+#| "ancient Black Forest sprawled out in dense gloominess, ominous enough "
+#| "that even the elves eschewed entering, and only a few, scattered outlaws "
+#| "called it their home."
 msgid ""
 "For eight years, the South Guard had defended the farms and homes "
 "surrounding the city of Westin, the capital of Wesnoth’s frontier province "
@@ -322,7 +336,7 @@ msgid ""
 "was forbidden, but the elves rarely entered the lands of Kerlath in turn. "
 "Even further south in the wildlands, the ancient Black Forest sprawled out "
 "in dense gloominess, ominous enough that even the elves eschewed entering, "
-"and only a few, scattered outlaws called it their home."
+"and only a few scattered outlaws called it their home."
 msgstr ""
 "Per otto anni la Guardia del Sud ha difeso le fattorie e le case dei "
 "dintorni di Westin, la capitale della provincia di frontiera di Wesnoth nota "
@@ -520,16 +534,16 @@ msgstr "Schivare gli Attacchi"
 msgid ""
 "In Wesnoth, every attack has a chance to miss.\n"
 "\n"
-"Units on favorable terrain (such as castles, villages, forest, or hills) \n"
-"are more likely to dodge attacks, while units on poor terrain (such as \n"
+"Units on favorable terrain (such as castles, villages, forest, or hills)\n"
+"are more likely to dodge attacks, while units on poor terrain (such as\n"
 "water, sand, or ice) are much easier to hit.\n"
 "\n"
 "Different units receive different benefits from terrain. Most infantry,\n"
-"for example, have 50% dodge in forest — but cavalry only have 30%. \n"
+"for example, have 50% dodge in forest — but cavalry only have 30%.\n"
 "For details, <b><i>right-click on a unit and select “Unit Type "
 "Description.”</i></b>\n"
 "\n"
-"For the most advantageous fights, try to <b><i>position your units on good \n"
+"For the most advantageous fights, try to <b><i>position your units on good\n"
 "terrain</i></b>, and <b><i>attack your enemies while they’re on poor terrain!"
 "</i></b>"
 msgstr ""
@@ -1045,9 +1059,9 @@ msgstr "Zona di Controllo"
 #, fuzzy
 msgid ""
 "The hexes immediately around a unit\n"
-"constitute its <i><b>Zone of Control</b></i>. \n"
-"When an enemy unit enters one of those \n"
-"hexes, they cannot move further that \n"
+"constitute its <i><b>Zone of Control</b></i>.\n"
+"When an enemy unit enters one of those\n"
+"hexes, they cannot move further that\n"
 "turn.\n"
 "\n"
 "Making an attack will also consume all\n"
@@ -1084,8 +1098,12 @@ msgstr ""
 msgid ""
 "Careful, Deoran. Unless you have overwhelming numbers, you may want to "
 "hunker down and hold a defensive position until dawn. Castles and especially "
-"villages (because they heal) make for good defensive positions.\n"
-"\n"
+"villages (because they heal) make for good defensive positions."
+msgstr ""
+
+#. [message]: speaker=Mari
+#: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:1093
+msgid ""
 "Capturing villages will also increase your income, which you can use to "
 "recruit more soldiers."
 msgstr ""
@@ -1312,8 +1330,17 @@ msgstr ""
 msgid ""
 "Let’s find out. Deoran, you and your men deal with this bandit. Anyone who "
 "dies to those zombies will become one themselves, so don’t be stupid and "
-"remember what we practiced:\n"
-"\n"
+"remember what we practiced:"
+msgstr ""
+"Scopriamolo. Deoran, tu e i tuoi uomini sistemate questi banditi. Chiunque "
+"muoia per mano di questi zombi diventerà a sua volta uno di loro, quindi non "
+"fare lo stupido: ricordati di ritirare le tue unità ferite nei villaggi per "
+"curarle."
+
+#. [message]: speaker=Mari
+#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:232
+#, fuzzy
+msgid ""
 "Defend at night, attack at day, and control villages for income. Withdraw "
 "your injured soldiers to villages for healing. And stand on good terrain "
 "like hills, villages, and castles, not bad terrain like water."
@@ -1416,8 +1443,12 @@ msgstr "Sconfiggi Urza Fastik"
 msgid ""
 "Good, we’ve captured a village! The little flag waving from it will serve as "
 "a reminder that it’s under our control. It will remain that way until an "
-"enemy moves into it.\n"
-"\n"
+"enemy moves into it."
+msgstr ""
+
+#. [message]: speaker=Deoran
+#: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:319
+msgid ""
 "Each village we control provides upkeep and generates gold, which I can use "
 "to recruit new soldiers."
 msgstr ""
@@ -1753,10 +1784,9 @@ msgstr ""
 #: data/campaigns/The_South_Guard/scenarios/02x_Westin.cfg:205
 #, fuzzy
 msgid ""
-"Aye, officially these lands belong to th’ Prince Arand; King Garard’s "
-"younger brother. Arand’s been tryin’ to build the place up. Last time he "
-"visited, His Highness said our home might someday be called the Jewel of the "
-"South!"
+"Aye, officially these lands belong to Prince Arand; King Garard’s younger "
+"brother. Arand’s been tryin’ to build the place up. Last time he visited, "
+"His Highness said our home might someday be called the Jewel of the South!"
 msgstr ""
 "Guarda, ufficialmente queste terre appartengono al Principe Arand, il "
 "fratello giovane di Re Garard. Ma il reame è vasto, il principe ha "
@@ -2023,20 +2053,19 @@ msgstr "Tipi di danno e resistenze"
 #. [display_tip]
 #: data/campaigns/The_South_Guard/scenarios/02x_Westin.cfg:382
 msgid ""
-"\n"
-"Each attack in Wesnoth has a damage type: \n"
+"Each attack in Wesnoth has a damage type:\n"
 "blade, pierce, impact, fire, cold, or arcane.\n"
 "\n"
-"Some units have resistances or vulnerabilities \n"
+"Some units have resistances or vulnerabilities\n"
 "to certain types of damage. Walking Corpses,\n"
 "for example, are vulnerable to arcane damage.\n"
 "\n"
-"To see a unit’s resistances, <b><i>right-click on it \n"
+"To see a unit’s resistances, <b><i>right-click on it\n"
 "and select “Unit Type Description.”</i></b>"
 msgstr ""
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/02x_Westin.cfg:400
+#: data/campaigns/The_South_Guard/scenarios/02x_Westin.cfg:399
 msgid ""
 "Well, like I said, I’ve got great damage resistance on account o’ me heavy "
 "armor, an’ I can slow enemies t’ halve both their speed an’ damage. Try not "
@@ -2047,7 +2076,7 @@ msgstr ""
 "velocità che i danni. Vedi di non dimenticartelo questa volta!"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/02x_Westin.cfg:418
+#: data/campaigns/The_South_Guard/scenarios/02x_Westin.cfg:417
 msgid ""
 "I’ve decided: Captain Mari, I’d like you to accompany me on our mission to "
 "the elven vale. Make ready the men — we leave at next dawn!"
@@ -2057,7 +2086,7 @@ msgstr ""
 "luci dell’alba!"
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/02x_Westin.cfg:422
+#: data/campaigns/The_South_Guard/scenarios/02x_Westin.cfg:421
 msgid ""
 "Good luck, Deoran an’ Mari. We’re countin’ on you to stop the bandits an’ "
 "undead!"
@@ -2066,7 +2095,7 @@ msgstr ""
 "che i non-morti!"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/02x_Westin.cfg:442
+#: data/campaigns/The_South_Guard/scenarios/02x_Westin.cfg:441
 msgid ""
 "I’ve decided: Minister Hylas, I’d like you to accompany me on our mission to "
 "the elven vale. Make ready the men — we leave at next dawn!"
@@ -2076,7 +2105,7 @@ msgstr ""
 "luci dell’alba!"
 
 #. [message]: speaker=Sir Gerrick
-#: data/campaigns/The_South_Guard/scenarios/02x_Westin.cfg:446
+#: data/campaigns/The_South_Guard/scenarios/02x_Westin.cfg:445
 msgid ""
 "Good luck, Deoran an’ Hylas. We’re countin’ on you to stop the bandits an’ "
 "undead!"
@@ -2085,7 +2114,7 @@ msgstr ""
 "che i non-morti!"
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_South_Guard/scenarios/02x_Westin.cfg:466
+#: data/campaigns/The_South_Guard/scenarios/02x_Westin.cfg:465
 msgid ""
 "I’ve decided: Sir Gerrick, I’d like you to accompany me on our mission to "
 "the elven vale. Make ready the men — we leave at next dawn!"
@@ -2095,7 +2124,7 @@ msgstr ""
 "luci dell’alba!"
 
 #. [message]: speaker=Mari
-#: data/campaigns/The_South_Guard/scenarios/02x_Westin.cfg:470
+#: data/campaigns/The_South_Guard/scenarios/02x_Westin.cfg:469
 msgid ""
 "Good luck, rookie. We’re counting on you to stop the bandits and undead!"
 msgstr ""
@@ -2782,19 +2811,35 @@ msgid ""
 "Wesnoth has many settings and hotkeys. To see all available options, select "
 "the\n"
 "<b><i>Menu</i></b> or <b><i>Actions</i></b> buttons in the top-left corner. "
-"Here are some of the most useful:\n"
-"\n"
+"Here are some of the most useful:"
+msgstr ""
+
+#. [display_tip]
+#: data/campaigns/The_South_Guard/scenarios/03_Vale_of_Tears.cfg:820
+msgid ""
 "• Before ending your turn, press <b><i>N</i></b> to find units that can "
-"still move or attack.\n"
-"\n"
+"still move or attack."
+msgstr ""
+
+#. [display_tip]
+#: data/campaigns/The_South_Guard/scenarios/03_Vale_of_Tears.cfg:822
+msgid ""
 "• To see which hexes enemies may be able to move to on their turn, press "
-"<b><i>Ctrl+V</i></b>.\n"
-"\n"
+"<b><i>Ctrl+V</i></b>."
+msgstr ""
+
+#. [display_tip]
+#: data/campaigns/The_South_Guard/scenarios/03_Vale_of_Tears.cfg:824
+msgid ""
 "• To see how much gold and income your enemies have, press <b><i>Alt+S</i></"
 "b>. Enemies\n"
 "may also receive additional gold or units as part of scripted events (not "
-"shown).\n"
-"\n"
+"shown)."
+msgstr ""
+
+#. [display_tip]
+#: data/campaigns/The_South_Guard/scenarios/03_Vale_of_Tears.cfg:827
+msgid ""
 "• To change a scenario’s difficulty without restarting the entire campaign, "
 "load a\n"
 "game and check the <b><i>Change Difficulty</i></b> option. This option is "
@@ -6992,8 +7037,8 @@ msgstr ""
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Tides_of_War.cfg:482
 msgid ""
 "You survived $pebbles_defense_length turns last scenario! Deoran starts\n"
-"   with $soldiers.length extra soldiers and $"
-"( ($pebbles_defense_length-36)*3 ) extra gold!"
+"   with $soldiers.length extra soldiers and "
+"$( ($pebbles_defense_length-36)*3 ) extra gold!"
 msgstr ""
 "Sei sopravvissuto ben $pebbles_defense_length turni dell’ultimo scenario! "
 "Deoran inizia\n"
@@ -7994,7 +8039,16 @@ msgstr ""
 msgid ""
 "\n"
 "\n"
-"<big>Click a mouse button or press the spacebar to continue...</big>"
+"<big>"
+msgstr ""
+
+#: data/campaigns/The_South_Guard/utils/_initial.cfg:357
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "<big>Click a mouse button or press the spacebar to continue...</big>"
+msgid "Click a mouse button or press the spacebar to continue..."
 msgstr ""
 "\n"
 "\n"
@@ -8210,9 +8264,9 @@ msgstr ""
 "Ho appena effettuato un <i><b>attacco a distanza</b></i>! Devo trovarmi in "
 "prossimità di questa $second_unit.language_name <i>(Eh, sì, questo è un "
 "pochino diverso da come vengono gestiti gli attacchi a distanza nella "
-"maggior parte degli altri giochi)</i>, ma siccome la "
-"$second_unit.language_name non possiede un’arma per attacchi a distanza, non "
-"è stata in grado di contrattaccare."
+"maggior parte degli altri giochi)</i>, ma siccome la $second_unit."
+"language_name non possiede un’arma per attacchi a distanza, non è stata in "
+"grado di contrattaccare."
 
 #. [message]: speaker=unit
 #. second_unit may be a Thug (always male) or one of its advancements
@@ -8226,9 +8280,9 @@ msgstr ""
 "Ho appena effettuato un <i><b>attacco a distanza</b></i>! Devo trovarmi in "
 "prossimità di questa $second_unit.language_name <i>(Eh, sì, questo è un "
 "pochino diverso da come vengono gestiti gli attacchi a distanza nella "
-"maggior parte degli altri giochi)</i>, ma siccome la "
-"$second_unit.language_name non possiede un’arma per attacchi a distanza, non "
-"è stata in grado di contrattaccare."
+"maggior parte degli altri giochi)</i>, ma siccome la $second_unit."
+"language_name non possiede un’arma per attacchi a distanza, non è stata in "
+"grado di contrattaccare."
 
 #. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/utils/sg_help.cfg:191
@@ -8399,7 +8453,7 @@ msgid ""
 "\n"
 "In this scenario, your allies include Peasants and Woodsmen. \n"
 "Like Walking Corpses, <b><i>Peasants and Woodsmen are level 0 and\n"
-"thus do not do not exert a Zone of Control</i></b>. Enemies can move\n"
+"thus do not exert a Zone of Control</i></b>. Enemies can move\n"
 "around them unhindered."
 msgstr ""
 
@@ -11965,8 +12019,8 @@ msgstr ""
 #~ msgstr ""
 #~ "Cavalcarono velocemente verso nord. Giorno e notte, fuggirono senza "
 #~ "tregua finché non riuscirono a tornare nella provincia di Kerlath. Deoran "
-#~ "e i suoi uomini entrarono nei fortini di guardia del confine di "
-#~ "Wesnoth,con i non-morti alle calcagna."
+#~ "e i suoi uomini entrarono nei fortini di guardia del confine di Wesnoth,"
+#~ "con i non-morti alle calcagna."
 
 #~ msgid ""
 #~ "<i>“These are our terms: no human will be permitted in the forests or "

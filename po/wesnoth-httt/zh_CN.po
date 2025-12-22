@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-11-18 02:02 UTC\n"
+"POT-Creation-Date: 2025-12-21 21:40 UTC\n"
 "PO-Revision-Date: 2024-06-13 12:08+0800\n"
 "Last-Translator: vimacs <vimacs.hacks@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -37,16 +37,33 @@ msgstr "王座继承人"
 msgid "HttTC"
 msgstr "HttT"
 
+# I have translated Wesnoth into two chinese characters counting from the last four characters.
+# Wesnoth = mid(TranslatedString, 9,2)
+# As there are no direct Chinese word for it, I go for the sound.
+# Using "Wei" as the Hanyu Pinying, I choose this one out of probably more than fifty characters.
+# The primary reason is, to Chinese people, "Wei" was once a great state during the era of the Chinese warlords.
+# (The well known book: Romance Of The Three Kindom Classic wrote of this history.)
+# Hence, this word "Wei" conveys to the Chinese memories of war, strategies, betrayal, victories and defeat.
+# The word "nuo" chosen can and has been be used in names. Hence I combine these two characters to describe game Wesnoth, one of war, strategy, victories and defeat.
 #. [campaign]: id=Heir_To_The_Throne_Classic
 #: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:19
+#, fuzzy
+#| msgid ""
+#| "Fight to regain the throne of Wesnoth, of which you are the legitimate "
+#| "heir.\n"
+#| "\n"
 msgid ""
-"Fight to regain the throne of Wesnoth, of which you are the legitimate "
-"heir.\n"
+"Fight to regain the throne of Wesnoth, of which you are the legitimate heir."
+msgstr ""
+"为夺回韦诺的王座而战斗吧，你才是合法的继承人。\n"
 "\n"
+
+#. [campaign]: id=Heir_To_The_Throne_Classic
+#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:21
+msgid ""
 "This is the original version of this classic campaign, preserved for "
 "historical reasons. Also optionally includes the old <i>Battle Training</i> "
-"tutorial.\n"
-"\n"
+"tutorial."
 msgstr ""
 
 #. [campaign]: id=Heir_To_The_Throne_Classic
@@ -8053,8 +8070,12 @@ msgstr ""
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/24_Battle_for_Wesnoth.cfg:238
+#, fuzzy
+#| msgid ""
+#| "Surrender, mother. The land’s blood is spent. I have come to take my "
+#| "rightful place."
 msgid ""
-"Surrender, mother. The land’s blood is spent. I have come to take my "
+"Surrender, Mother. The land’s blood is spent. I have come to take my "
 "rightful place."
 msgstr ""
 "投降吧，母后。这片土地已经流尽了鲜血。我来到这里，只是为了夺回属于我的位置。"
@@ -8869,22 +8890,6 @@ msgid ""
 msgstr ""
 "德法多逃到了艾森丛林，远在韦诺的西南边境之外。在精灵们的保护下，他将科纳德抚"
 "养长大。而与此同时，他只能悲哀地看着艾什薇尔的恐怖统治开始在这片土地上蔓延……"
-
-# I have translated Wesnoth into two chinese characters counting from the last four characters.
-# Wesnoth = mid(TranslatedString, 9,2)
-# As there are no direct Chinese word for it, I go for the sound.
-# Using "Wei" as the Hanyu Pinying, I choose this one out of probably more than fifty characters.
-# The primary reason is, to Chinese people, "Wei" was once a great state during the era of the Chinese warlords.
-# (The well known book: Romance Of The Three Kindom Classic wrote of this history.)
-# Hence, this word "Wei" conveys to the Chinese memories of war, strategies, betrayal, victories and defeat.
-# The word "nuo" chosen can and has been be used in names. Hence I combine these two characters to describe game Wesnoth, one of war, strategy, victories and defeat.
-#~ msgid ""
-#~ "Fight to regain the throne of Wesnoth, of which you are the legitimate "
-#~ "heir.\n"
-#~ "\n"
-#~ msgstr ""
-#~ "为夺回韦诺的王座而战斗吧，你才是合法的继承人。\n"
-#~ "\n"
 
 #~ msgid "Water Serpent"
 #~ msgstr "巨型水蛇"

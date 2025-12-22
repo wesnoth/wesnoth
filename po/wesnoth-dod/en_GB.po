@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-11-19 09:43 UTC\n"
+"POT-Creation-Date: 2025-12-22 03:09 UTC\n"
 "PO-Revision-Date: 2025-11-20 17:31+1100\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: none\n"
@@ -167,7 +167,9 @@ msgstr "Scenario 3: Mushroom Picking"
 
 #. [achievement]: id=dod_mp
 #: data/campaigns/Dusk_of_Dawn/achievements.cfg:49
-msgid "Harvest at least half of the mushrooms groves in <i>Fateful Day</i>."
+#, fuzzy
+#| msgid "Harvest at least half of the mushrooms groves in <i>Fateful Day</i>."
+msgid "Harvest at least half of the mushroom groves in <i>Fateful Day</i>."
 msgstr "Harvest at least half of the mushroom groves in <i>Fateful Day</i>."
 
 #. [achievement]: id=dod_hb
@@ -260,8 +262,8 @@ msgstr "Golden Flame Tribe"
 
 #. [side]
 #: data/campaigns/Dusk_of_Dawn/scenarios/00_Being_Born.cfg:65
-msgid "New Born"
-msgstr "Newborn"
+msgid "Newborn"
+msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dusk_of_Dawn/scenarios/00_Being_Born.cfg:75
@@ -1750,16 +1752,27 @@ msgstr "Great Stone Golem"
 #. [unit_type]: id=Stone Golem, race=monster
 #: data/campaigns/Dusk_of_Dawn/units/Great_Stone_Golem.cfg:17
 #: data/campaigns/Dusk_of_Dawn/units/Stone_Golem.cfg:17
+#, fuzzy
+#| msgid ""
+#| "Legends tell of great stone statues resembling dwarves that come to life "
+#| "through the art of runes to protect the treasures of the bearded people.\n"
+#| "\n"
+#| "But these are just tales. Right?"
 msgid ""
 "Legends tell of great stone statues resembling dwarves that come to life "
-"through the art of runes to protect the treasures of the bearded people.\n"
-"\n"
-"But these are just tales. Right?"
+"through the art of runes to protect the treasures of the bearded people."
 msgstr ""
 "Legends tell of great stone statues resembling dwarves that come to life "
 "through the art of runes to protect the treasures of the bearded people.\n"
 "\n"
 "But these are just tales. Right?"
+
+#. [unit_type]: id=Great Stone Golem, race=monster
+#. [unit_type]: id=Stone Golem, race=monster
+#: data/campaigns/Dusk_of_Dawn/units/Great_Stone_Golem.cfg:19
+#: data/campaigns/Dusk_of_Dawn/units/Stone_Golem.cfg:19
+msgid "But these are just tales. Right?"
+msgstr ""
 
 #. [unit_type]: id=Troll Initiate, race=troll
 #: data/campaigns/Dusk_of_Dawn/units/Initiate.cfg:5
@@ -1836,3 +1849,6 @@ msgstr "Lava"
 #: data/campaigns/Dusk_of_Dawn/utils/schedules.cfg:18
 msgid "Magic Light"
 msgstr "Magic Light"
+
+#~ msgid "New Born"
+#~ msgstr "Newborn"

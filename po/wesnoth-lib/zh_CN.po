@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-11-17 20:02-0600\n"
+"POT-Creation-Date: 2025-12-21 21:09-0600\n"
 "PO-Revision-Date: 2025-03-11 20:22+0800\n"
 "Last-Translator: vimacs <vimacs.hacks@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -2276,7 +2276,7 @@ msgstr "所选中的时代、游戏或模组没有可用的自定义选项。"
 #: data/gui/macros/custom_options_tree.cfg:250
 #: data/gui/themes/default/dialogs/mp_alerts_options.cfg:227
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:459
-#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:294
+#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:298
 #: data/gui/themes/default/dialogs/reachmap_options.cfg:160
 #: data/gui/themes/default/dialogs/select_orb_colors.cfg:170
 msgid "Defaults"
@@ -2386,10 +2386,10 @@ msgstr "开始新的单人战役"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
 #. [label]
-#. [widget]: id=label
+#. [tab]
 #: data/gui/themes/celes/dialogs/title_screen.cfg:287
 #: data/gui/themes/default/dialogs/mp_method_selection.cfg:55
-#: data/gui/themes/default/dialogs/preferences.cfg:365
+#: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:390
 #: data/gui/themes/default/dialogs/title_screen.cfg:257
 #: src/gui/dialogs/game_load.cpp:363
 msgid "Multiplayer"
@@ -2485,7 +2485,7 @@ msgstr "配置游戏的各项设置"
 #. [label]: id=title
 #: data/gui/themes/celes/dialogs/title_screen.cfg:296
 #: data/gui/themes/default/dialogs/lobby_main.cfg:600
-#: data/gui/themes/default/dialogs/preferences.cfg:213
+#: data/gui/themes/default/dialogs/preferences.cfg:157
 #: data/gui/themes/default/dialogs/title_screen.cfg:263
 #: src/hotkey/hotkey_command.cpp:127
 msgid "Preferences"
@@ -2561,7 +2561,7 @@ msgstr ""
 #: data/gui/themes/default/dialogs/message.cfg:135
 #: data/gui/themes/default/dialogs/mp_alerts_options.cfg:242
 #: data/gui/themes/default/dialogs/mp_match_history.cfg:601
-#: data/gui/themes/default/dialogs/preferences.cfg:434
+#: data/gui/themes/default/dialogs/preferences.cfg:204
 #: data/gui/themes/default/dialogs/screenshot_notification.cfg:214
 #: data/gui/themes/default/dialogs/server_info.cfg:253
 #: data/gui/themes/default/dialogs/statistics_dialog.cfg:623
@@ -2982,7 +2982,7 @@ msgstr "选择你希望移除的附加组件。"
 #. [button]: id=ok
 #. [button]: id=remove
 #: data/gui/themes/default/dialogs/addon_uninstall_list.cfg:157
-#: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:289
+#: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:290
 msgid "Remove"
 msgstr "移除"
 
@@ -3307,7 +3307,7 @@ msgstr "读取核心"
 #: data/gui/themes/default/dialogs/core_dialog.cfg:228
 #: data/gui/themes/default/dialogs/language_selection.cfg:293
 #: src/gui/dialogs/editor/custom_tod.cpp:172
-#: src/gui/dialogs/editor/edit_unit.cpp:308
+#: src/gui/dialogs/editor/edit_unit.cpp:303
 #: src/preferences/preferences.cpp:1342
 msgid "Select"
 msgstr "选择"
@@ -3460,9 +3460,9 @@ msgstr ""
 #: data/gui/themes/default/dialogs/depcheck_confirm_change.cfg:40
 #: src/gui/dialogs/addon/manager.cpp:1029
 #: src/gui/dialogs/editor/custom_tod.cpp:187
-#: src/gui/dialogs/editor/edit_unit.cpp:323
-#: src/gui/dialogs/editor/edit_unit.cpp:1030
-#: src/gui/dialogs/file_dialog.cpp:371 src/gui/dialogs/file_dialog.cpp:799
+#: src/gui/dialogs/editor/edit_unit.cpp:318
+#: src/gui/dialogs/editor/edit_unit.cpp:970 src/gui/dialogs/file_dialog.cpp:371
+#: src/gui/dialogs/file_dialog.cpp:799
 msgid "Confirm"
 msgstr "确认"
 
@@ -4146,15 +4146,15 @@ msgstr "地图编辑器"
 
 #. [tab]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:1192
+#: data/gui/themes/default/dialogs/preferences/01_general.cfg:226
 #, fuzzy
 #| msgid "Game Stats"
 msgid "Main Stats"
 msgstr "游戏统计"
 
 #. [tab]
-#. [widget]: id=label
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:1199
-#: data/gui/themes/default/dialogs/preferences.cfg:383
+#: data/gui/themes/default/dialogs/preferences/06_advanced.cfg:148
 msgid "Advanced"
 msgstr "高级"
 
@@ -4798,11 +4798,9 @@ msgstr ""
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [tab]
 #. [widget]: id=tab_label
-#. [widget]: id=label
 #: data/gui/themes/default/dialogs/game_version.cfg:879
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:564
-#: data/gui/themes/default/dialogs/preferences.cfg:292
-#: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:402
+#: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:405
 #: data/gui/themes/default/dialogs/server_info.cfg:181
 #: src/hotkey/hotkey_command.cpp:51
 msgid "General"
@@ -5015,9 +5013,9 @@ msgid "Only show games with vacant slots"
 msgstr "只显示有空闲位置的游戏"
 
 #. [toggle_button]: id=filter_with_friends
-#. [widget]: id=tab_label
+#. [tab]
 #: data/gui/themes/default/dialogs/lobby_main.cfg:490
-#: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:415
+#: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:426
 msgid "Friends"
 msgstr "好友"
 
@@ -5147,14 +5145,14 @@ msgstr "玩家信息 — "
 #. [button]: id=add_to_friends
 #. [button]: id=add_friend
 #: data/gui/themes/default/dialogs/lobby_player_info.cfg:88
-#: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:263
+#: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:264
 msgid "Add Friend"
 msgstr "添加好友"
 
 #. [button]: id=add_to_ignores
 #. [button]: id=add_ignored
 #: data/gui/themes/default/dialogs/lobby_player_info.cfg:99
-#: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:276
+#: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:277
 msgid "Block"
 msgstr "拉黑"
 
@@ -5304,9 +5302,9 @@ msgstr ""
 "是（当游戏窗口处于不活动或最小化的状态时）显示桌面提醒。"
 
 #. [label]
-#. [widget]: id=label
+#. [tab]
 #: data/gui/themes/default/dialogs/mp_alerts_options.cfg:147
-#: data/gui/themes/default/dialogs/preferences.cfg:347
+#: data/gui/themes/default/dialogs/preferences/04_sound.cfg:143
 msgid "Sound"
 msgstr "声音"
 
@@ -5975,18 +5973,8 @@ msgstr "我准备好了"
 msgid "Press ESC to skip"
 msgstr "按ESC跳过"
 
-#. [widget]: id=label
-#: data/gui/themes/default/dialogs/preferences.cfg:311
-msgid "Hotkeys"
-msgstr "快捷键"
-
-#. [widget]: id=label
-#: data/gui/themes/default/dialogs/preferences.cfg:329
-msgid "Display"
-msgstr "显示"
-
 #. [button]: id=about
-#: data/gui/themes/default/dialogs/preferences.cfg:419
+#: data/gui/themes/default/dialogs/preferences.cfg:192
 msgid "Display the game version and build information"
 msgstr "显示游戏版本和构建信息"
 
@@ -6130,72 +6118,77 @@ msgstr "缓存"
 msgid "Manage the game WML cache"
 msgstr "管理游戏的WML缓存"
 
+#. [tab]
+#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:7
+msgid "Hotkeys"
+msgstr "快捷键"
+
 #. [label]
-#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:25
+#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:29
 msgid "Filter:"
 msgstr "筛选："
 
 #. [text_box]: id=filter
-#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:50
+#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:54
 msgid "Filters on hotkey description"
 msgstr "按照热键描述来筛选"
 
 #. [toggle_button]: id=sort_0
-#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:98
+#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:102
 msgid "Action"
 msgstr "动作"
 
 #. [toggle_button]: id=sort_1
-#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:112
+#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:116
 msgid "Hotkey"
 msgstr "快捷键"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_2
 #. Translate G as the initial letter for Game
-#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:126
-#: src/gui/dialogs/preferences_dialog.cpp:890
+#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:130
+#: src/gui/dialogs/preferences_dialog.cpp:885
 msgid "game_hotkeys^G"
 msgstr "G"
 
 #. [toggle_button]: id=sort_2
-#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:127
+#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:131
 msgid "Available in game"
 msgstr "游戏中可用"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_3
 #. Translate E as the initial letter for Editor
-#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:141
-#: src/gui/dialogs/preferences_dialog.cpp:891
+#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:145
+#: src/gui/dialogs/preferences_dialog.cpp:886
 msgid "editor_hotkeys^E"
 msgstr "E"
 
 #. [toggle_button]: id=sort_3
-#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:142
+#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:146
 msgid "Available in editor"
 msgstr "编辑器中可用"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_4
 #. Translate M as the initial letter for Main Menu
-#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:156
-#: src/gui/dialogs/preferences_dialog.cpp:892
+#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:160
+#: src/gui/dialogs/preferences_dialog.cpp:887
 msgid "mainmenu_hotkeys^M"
 msgstr "M"
 
 #. [toggle_button]: id=sort_4
-#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:157
+#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:161
 msgid "Available at main menu"
 msgstr "主菜单中可用"
 
 #. [button]: id=btn_add_hotkey
-#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:272
+#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:276
 msgid "Add Hotkey"
 msgstr "添加快捷键"
 
 #. [button]: id=btn_clear_hotkey
-#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:283
+#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:287
 msgid "Clear Hotkey"
 msgstr "清除快捷键"
 
@@ -6375,6 +6368,11 @@ msgstr "频率："
 msgid "Set the frequency of unit idle animations"
 msgstr "设置单位空闲动画显示频率"
 
+#. [tab]
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:454
+msgid "Display"
+msgstr "显示"
+
 #. [label]
 #: data/gui/themes/default/dialogs/preferences/04_sound.cfg:38
 msgid "Volume:"
@@ -6536,7 +6534,7 @@ msgid "Find and set path to MP server to host LAN games"
 msgstr "查找并设置多人游戏服务器的路径以主建局域网游戏"
 
 #. [button]: id=add_friend
-#: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:264
+#: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:265
 #, fuzzy
 #| msgid ""
 #| "Add this username to your friends list (add optional notes, e.g., "
@@ -6548,7 +6546,7 @@ msgstr ""
 "将此用户名加入你的好友列表中（可添加可选的备注，如：‘玩家名称 好友备注’）"
 
 #. [button]: id=add_ignored
-#: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:277
+#: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:278
 #, fuzzy
 #| msgid ""
 #| "Add this username to your ignore list (add optional reason, e.g., "
@@ -6560,12 +6558,12 @@ msgstr ""
 "将此用户名加入你的忽略列表中（可添加可选的备注，如：‘玩家名称 忽略原因’）"
 
 #. [button]: id=remove
-#: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:290
+#: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:291
 msgid "Remove this username from your list"
 msgstr "将此用户名从列表中移除"
 
 #. [label]: id=no_friends_notice
-#: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:311
+#: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:312
 msgid "You have not befriended or blocked any other players."
 msgstr "你并没有将任何其他玩家加为好友或拉黑。"
 
@@ -6933,7 +6931,7 @@ msgstr ""
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/themes/default/dialogs/wml_error.cfg:40
-#: src/gui/dialogs/message.cpp:206 src/gui/dialogs/preferences_dialog.cpp:272
+#: src/gui/dialogs/message.cpp:206 src/gui/dialogs/preferences_dialog.cpp:265
 #: src/gui/dialogs/transient_message.cpp:77
 msgid "Error"
 msgstr "错误"
@@ -7041,7 +7039,7 @@ msgstr "<未知>"
 #. other's resources rather than duplicating them. For example,
 #. Swedish (sv) and Danish (da) are such, so Swedish translator could
 #. translate this message as "sv,da", while Danish as "da,sv".
-#: src/filesystem.cpp:1851
+#: src/filesystem.cpp:1850
 msgid "language code for localized resources^en_US"
 msgstr "zh_CN"
 
@@ -7477,23 +7475,23 @@ msgstr "%Y-%m-%d %H:%M"
 msgid "url^None"
 msgstr "无"
 
-#: src/gui/dialogs/attack_predictions.cpp:121
+#: src/gui/dialogs/attack_predictions.cpp:120
 msgid "No usable weapon"
 msgstr "没有可用的武器"
 
-#: src/gui/dialogs/attack_predictions.cpp:199
+#: src/gui/dialogs/attack_predictions.cpp:196
 msgid "Defender resistance vs"
 msgstr "防守方抗性 vs"
 
-#: src/gui/dialogs/attack_predictions.cpp:201
+#: src/gui/dialogs/attack_predictions.cpp:198
 msgid "Defender vulnerability vs"
 msgstr "防守方弱点 vs"
 
-#: src/gui/dialogs/attack_predictions.cpp:205
+#: src/gui/dialogs/attack_predictions.cpp:202
 msgid "Attacker resistance vs"
 msgstr "进攻方抗性 vs"
 
-#: src/gui/dialogs/attack_predictions.cpp:207
+#: src/gui/dialogs/attack_predictions.cpp:204
 msgid "Attacker vulnerability vs"
 msgstr "进攻方弱点 vs"
 
@@ -7553,14 +7551,14 @@ msgstr ""
 "请选择一个兼容的模组。"
 
 #: src/gui/dialogs/editor/custom_tod.cpp:171
-#: src/gui/dialogs/editor/edit_unit.cpp:307
+#: src/gui/dialogs/editor/edit_unit.cpp:302
 #, fuzzy
 #| msgid "Choose Test"
 msgid "Choose File"
 msgstr "选择测试"
 
 #: src/gui/dialogs/editor/custom_tod.cpp:182
-#: src/gui/dialogs/editor/edit_unit.cpp:318
+#: src/gui/dialogs/editor/edit_unit.cpp:313
 msgid ""
 "This file is outside Wesnoth’s data dirs. Do you wish to copy it into your "
 "add-on?"
@@ -7655,35 +7653,35 @@ msgstr "成功"
 msgid "Choose an icon"
 msgstr "选择一个图标"
 
-#: src/gui/dialogs/editor/edit_unit.cpp:190
+#: src/gui/dialogs/editor/edit_unit.cpp:187
 msgid "scout"
 msgstr ""
 
-#: src/gui/dialogs/editor/edit_unit.cpp:191
+#: src/gui/dialogs/editor/edit_unit.cpp:188
 msgid "fighter"
 msgstr ""
 
-#: src/gui/dialogs/editor/edit_unit.cpp:192
+#: src/gui/dialogs/editor/edit_unit.cpp:189
 #, fuzzy
 #| msgid "Search"
 msgid "archer"
 msgstr "搜索"
 
-#: src/gui/dialogs/editor/edit_unit.cpp:193
+#: src/gui/dialogs/editor/edit_unit.cpp:190
 msgid "mixed fighter"
 msgstr ""
 
-#: src/gui/dialogs/editor/edit_unit.cpp:194
+#: src/gui/dialogs/editor/edit_unit.cpp:191
 msgid "healer"
 msgstr ""
 
-#: src/gui/dialogs/editor/edit_unit.cpp:1029
+#: src/gui/dialogs/editor/edit_unit.cpp:969
 #, fuzzy
 #| msgid "Save already exists. Do you want to overwrite it?"
 msgid "Unsaved changes will be lost. Do you want to leave?"
 msgstr "存档已经存在。你要覆盖吗？"
 
-#: src/gui/dialogs/editor/edit_unit.cpp:1048
+#: src/gui/dialogs/editor/edit_unit.cpp:988
 msgid "Unit type saved."
 msgstr ""
 
@@ -7901,8 +7899,8 @@ msgstr "否"
 msgid "yes"
 msgstr "是"
 
-#: src/gui/dialogs/game_version_dialog.cpp:273
-#: src/gui/dialogs/game_version_dialog.cpp:287 src/gui/widgets/label.cpp:124
+#: src/gui/dialogs/game_version_dialog.cpp:263
+#: src/gui/dialogs/game_version_dialog.cpp:277 src/gui/widgets/label.cpp:124
 msgid "Opening links is not supported, contact your packager"
 msgstr "不支持打开链接，请联系你的打包者"
 
@@ -8263,33 +8261,33 @@ msgstr "正在等待玩家选择派系……"
 msgid "The End"
 msgstr "完结"
 
-#: src/gui/dialogs/preferences_dialog.cpp:199
+#: src/gui/dialogs/preferences_dialog.cpp:192
 msgid "friend"
 msgstr "好友"
 
-#: src/gui/dialogs/preferences_dialog.cpp:204
+#: src/gui/dialogs/preferences_dialog.cpp:197
 msgid "ignored"
 msgstr "忽略"
 
-#: src/gui/dialogs/preferences_dialog.cpp:257
-#: src/gui/dialogs/preferences_dialog.cpp:314
+#: src/gui/dialogs/preferences_dialog.cpp:250
+#: src/gui/dialogs/preferences_dialog.cpp:307
 msgid "No username specified"
 msgstr "未指定用户名"
 
-#: src/gui/dialogs/preferences_dialog.cpp:272
+#: src/gui/dialogs/preferences_dialog.cpp:265
 msgid "Invalid username"
 msgstr "无效用户名"
 
-#: src/gui/dialogs/preferences_dialog.cpp:319
+#: src/gui/dialogs/preferences_dialog.cpp:312
 msgid "Not on friends or ignore lists"
 msgstr "不在好友或忽略列表上"
 
-#: src/gui/dialogs/preferences_dialog.cpp:936
-#: src/gui/dialogs/preferences_dialog.cpp:1000
+#: src/gui/dialogs/preferences_dialog.cpp:931
+#: src/gui/dialogs/preferences_dialog.cpp:995
 msgid "No hotkey selected"
 msgstr "未选定热键"
 
-#: src/gui/dialogs/preferences_dialog.cpp:964
+#: src/gui/dialogs/preferences_dialog.cpp:959
 msgid ""
 "“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\n"
 "Do you wish to reassign it to “<b>$new_hotkey_action|</b>”?"
@@ -8297,15 +8295,15 @@ msgstr ""
 "“<b>$hotkey_sequence</b>”目前已用于“<b>$old_hotkey_action</b>”。\n"
 "你希望将该快捷键序列重新指定给“<b>$new_hotkey_action|</b>”吗？"
 
-#: src/gui/dialogs/preferences_dialog.cpp:970
+#: src/gui/dialogs/preferences_dialog.cpp:965
 msgid "Reassign Hotkey"
 msgstr "重新指定快捷键"
 
-#: src/gui/dialogs/preferences_dialog.cpp:987
+#: src/gui/dialogs/preferences_dialog.cpp:982
 msgid "All hotkeys have been reset to their default values."
 msgstr "所有快捷键都已被重置为默认值。"
 
-#: src/gui/dialogs/preferences_dialog.cpp:987
+#: src/gui/dialogs/preferences_dialog.cpp:982
 msgid "Hotkeys Reset"
 msgstr "重置快捷键"
 
@@ -8467,7 +8465,7 @@ msgstr "不能召回此单位，因为到此时您的计划中的金币将不足
 msgid "This unit cannot be recalled because you do not have enough gold."
 msgstr "不能召回此单位，因为你的金币不足。"
 
-#: src/gui/gui.cpp:133
+#: src/gui/gui.cpp:129
 msgid "No default gui defined."
 msgstr "没有已定义的默认图形界面。"
 
@@ -8526,7 +8524,7 @@ msgstr "打开链接？"
 msgid "Copied link!"
 msgstr "已复制链接！"
 
-#: src/gui/widgets/listbox.cpp:695 src/gui/widgets/multi_page.cpp:224
+#: src/gui/widgets/listbox.cpp:696 src/gui/widgets/multi_page.cpp:224
 #, fuzzy
 #| msgid ""
 #| "'list_data' must have the same number of columns as the 'list_definition'."
@@ -8534,11 +8532,11 @@ msgid ""
 "‘list_data’ must have the same number of columns as the ‘list_definition’."
 msgstr "“list_data”与“list_definition”中的列数必须一致。"
 
-#: src/gui/widgets/listbox.cpp:730 src/gui/widgets/scrollbar_panel.cpp:86
+#: src/gui/widgets/listbox.cpp:731 src/gui/widgets/scrollbar_panel.cpp:86
 msgid "No list defined."
 msgstr "没有已定义的列表。"
 
-#: src/gui/widgets/listbox.cpp:735
+#: src/gui/widgets/listbox.cpp:736
 #, fuzzy
 #| msgid "A 'list_definition' should contain one row."
 msgid "A ‘list_definition’ should contain one row."
@@ -8596,11 +8594,11 @@ msgstr "value_label的数量与值（value）的数量不匹配。"
 msgid "No stack layers defined."
 msgstr "没有已定义的堆栈层次。"
 
-#: src/gui/widgets/styled_widget.cpp:591
+#: src/gui/widgets/styled_widget.cpp:593
 msgid "Found a widget with a helptip and without a tooltip."
 msgstr "发现有帮助提示但却没有提示小标签的界面构件。"
 
-#: src/gui/widgets/tab_container.cpp:140
+#: src/gui/widgets/tab_container.cpp:172
 #, fuzzy
 #| msgid "No nodes defined for a tree view."
 msgid "No grid defined for tab container control"

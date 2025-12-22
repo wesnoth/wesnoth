@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.11\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-11-18 02:02 UTC\n"
+"POT-Creation-Date: 2025-12-22 03:09 UTC\n"
 "PO-Revision-Date: 2019-02-21 00:57+0000\n"
 "Last-Translator: Andrius Štikonas <andrius@stikonas.eu>\n"
 "Language-Team: Lithuanian <wesnoth-lt@googlegroups.com>\n"
@@ -843,7 +843,7 @@ msgstr ""
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_High_Pass.cfg:164
 msgid ""
-"It is an honor to travel alongside a Loremaster, Angarthing. One cannot "
+"It is an honor to travel alongside a loremaster, Angarthing. One cannot "
 "begin to fathom the secrets of your order."
 msgstr ""
 
@@ -1979,6 +1979,7 @@ msgstr ""
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Underlevels.cfg:278
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Underlevels.cfg:289
 #, fuzzy
 #| msgid ""
 #| "It is Karrag's doing—his will, and his dark magic. I think he has been "
@@ -1996,19 +1997,6 @@ msgid ""
 "Dulcatulos fought with us to the death. How did he not wonder about Karrag "
 "before?"
 msgstr ""
-
-#. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Underlevels.cfg:289
-#, fuzzy
-#| msgid ""
-#| "It is Karrag's doing—his will, and his dark magic. I think he has been "
-#| "casting glamours on all of you ever since he passed over."
-msgid ""
-"It is Karrag’s doing—his will, and his dark magic. I think Karrag has been "
-"casting glamours on all of you ever since he passed over."
-msgstr ""
-"Tai Karago darbas – jo valia ir tamsioji magija. Manau, kad jis skleidė "
-"kerus ant jūsų visų nuo tada, kai pasikeitė."
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Underlevels.cfg:296
@@ -2483,8 +2471,12 @@ msgstr "Aš ir esu jis. Sakyk savo žinią."
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_Epilogue.cfg:195
 msgid ""
 "I have been on your track for weeks. Some time ago the Alliance received a "
-"ragged band of refugees, hailing from a small village west of here.\n"
-"\n"
+"ragged band of refugees, hailing from a small village west of here."
+msgstr ""
+
+#. [message]: speaker=Pelias
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_Epilogue.cfg:197
+msgid ""
 "They told a tale of terror and torment; of masked dwarves and axes in the "
 "night. As Lord Protector of the Alliance and an ally to all free men, Tallin "
 "bids you vanquish this evil."
@@ -2577,9 +2569,12 @@ msgid ""
 "Hit or miss, this attack creates a cloud of cloying, caustic smoke on the "
 "targeted hex. Any unit inside suffers halved chance-to-hit and can no longer "
 "enforce a zone of control. The cloud lasts until the start of this unit’s "
-"next turn.\n"
-"\n"
-"<i>Magical</i> attacks are unaffected by smoke."
+"next turn."
+msgstr ""
+
+#. [dummy]: id=smoke
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Grenadier.cfg:258
+msgid "<i>Magical</i> attacks are unaffected by smoke."
 msgstr ""
 
 #. [dummy]: id=smoke
@@ -2601,11 +2596,15 @@ msgstr "Dvarfų Išminčius"
 msgid ""
 "Upon the person of a fallen dwarf, the arch-mage Ravan (before his fall to "
 "evil) once espied a pouch, carefully sealed and filled — unbeknownst to him "
-"— of a fine black dust.\n"
-"\n"
+"— of a fine black dust."
+msgstr ""
+
+#. [unit_type]: id=Dwarvish Grenadier, race=dwarf
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Grenadier.cfg:294
+msgid ""
 "Arthritic fingers unable to loose the knot that held tight its mouth, Ravan "
 "leaned forward, muttering under his breath an arcane word of opening. Sparks "
-"lept from his fingers—"
+"leapt from his fingers—"
 msgstr ""
 
 #. [attack]: type=blade
@@ -2848,6 +2847,17 @@ msgstr "Aaarrgh! Mano mokiniai... Kas jiems atsitiks?"
 #: data/campaigns/The_Hammer_of_Thursagan/utils/herodeaths.cfg:60
 msgid "At least I die with my axe in my hand..."
 msgstr ""
+
+#, fuzzy
+#~| msgid ""
+#~| "It is Karrag's doing—his will, and his dark magic. I think he has been "
+#~| "casting glamours on all of you ever since he passed over."
+#~ msgid ""
+#~ "It is Karrag’s doing—his will, and his dark magic. I think Karrag has "
+#~ "been casting glamours on all of you ever since he passed over."
+#~ msgstr ""
+#~ "Tai Karago darbas – jo valia ir tamsioji magija. Manau, kad jis skleidė "
+#~ "kerus ant jūsų visų nuo tada, kai pasikeitė."
 
 #~ msgid "Fighter"
 #~ msgstr "Kovotojas"

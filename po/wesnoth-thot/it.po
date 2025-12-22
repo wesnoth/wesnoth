@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-11-18 02:02 UTC\n"
+"POT-Creation-Date: 2025-12-22 03:09 UTC\n"
 "PO-Revision-Date: 2025-12-08 15:18+0100\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <>\n"
@@ -784,8 +784,12 @@ msgstr ""
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/04_High_Pass.cfg:164
+#, fuzzy
+#| msgid ""
+#| "It is an honor to travel alongside a Loremaster, Angarthing. One cannot "
+#| "begin to fathom the secrets of your order."
 msgid ""
-"It is an honor to travel alongside a Loremaster, Angarthing. One cannot "
+"It is an honor to travel alongside a loremaster, Angarthing. One cannot "
 "begin to fathom the secrets of your order."
 msgstr ""
 "Angarthing, è per me un onore poter viaggiare fianco a fianco con un fabbro "
@@ -1889,6 +1893,7 @@ msgstr ""
 
 #. [message]: speaker=Angarthing
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Underlevels.cfg:278
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Underlevels.cfg:289
 msgid ""
 "It is Karrag’s doing—his will, and his dark magic. I think he has been "
 "casting glamours on all of you ever since he passed over."
@@ -1904,15 +1909,6 @@ msgid ""
 msgstr ""
 "Dulcatulos ha combattuto con noi fino alla morte. Come ha fatto a non "
 "interrogarsi prima a proposito di Karrag?"
-
-#. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Underlevels.cfg:289
-msgid ""
-"It is Karrag’s doing—his will, and his dark magic. I think Karrag has been "
-"casting glamours on all of you ever since he passed over."
-msgstr ""
-"È opera di Karrag, della sua forza di volontà, e della sua magia oscura. "
-"Credo che abbia scagliato malie su tutti voi sin dal primo momento."
 
 #. [message]: speaker=Aiglondur
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Underlevels.cfg:296
@@ -2426,10 +2422,37 @@ msgstr "Sono io. Dì quello che hai da dire."
 #. [message]: speaker=Pelias
 #. these are the peasants Aiglondur helped in "Fear"
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_Epilogue.cfg:195
+#, fuzzy
+#| msgid ""
+#| "I have been on your track for weeks. Some time ago the Alliance received "
+#| "a ragged band of refugees, hailing from a small village west of here.\n"
+#| "\n"
+#| "They told a tale of terror and torment; of masked dwarves and axes in the "
+#| "night. As Lord Protector of the Alliance and an ally to all free men, "
+#| "Tallin bids you vanquish this evil."
 msgid ""
 "I have been on your track for weeks. Some time ago the Alliance received a "
-"ragged band of refugees, hailing from a small village west of here.\n"
+"ragged band of refugees, hailing from a small village west of here."
+msgstr ""
+"Sono sulle vostre tracce da settimane. Qualche tempo fa, l’Alleanza ha "
+"accolto un gruppo sbandato di rifugiati, provenienti da un piccolo villaggio "
+"ad ovest di qui.\n"
 "\n"
+"Raccontavano una storia di terrore e tormento, di nani mascherati e asce "
+"nella notte. Come Signore Protettore dell’Alleanza e alleato di tutti gli "
+"uomini liberi, Tallin ti invita a sconfiggere questo male."
+
+#. [message]: speaker=Pelias
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_Epilogue.cfg:197
+#, fuzzy
+#| msgid ""
+#| "I have been on your track for weeks. Some time ago the Alliance received "
+#| "a ragged band of refugees, hailing from a small village west of here.\n"
+#| "\n"
+#| "They told a tale of terror and torment; of masked dwarves and axes in the "
+#| "night. As Lord Protector of the Alliance and an ally to all free men, "
+#| "Tallin bids you vanquish this evil."
+msgid ""
 "They told a tale of terror and torment; of masked dwarves and axes in the "
 "night. As Lord Protector of the Alliance and an ally to all free men, Tallin "
 "bids you vanquish this evil."
@@ -2523,13 +2546,19 @@ msgstr "fumo"
 
 #. [dummy]: id=smoke
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Grenadier.cfg:256
+#, fuzzy
+#| msgid ""
+#| "Hit or miss, this attack creates a cloud of cloying, caustic smoke on the "
+#| "targeted hex. Any unit inside suffers halved chance-to-hit and can no "
+#| "longer enforce a zone of control. The cloud lasts until the start of this "
+#| "unit’s next turn.\n"
+#| "\n"
+#| "<i>Magical</i> attacks are unaffected by smoke."
 msgid ""
 "Hit or miss, this attack creates a cloud of cloying, caustic smoke on the "
 "targeted hex. Any unit inside suffers halved chance-to-hit and can no longer "
 "enforce a zone of control. The cloud lasts until the start of this unit’s "
-"next turn.\n"
-"\n"
-"<i>Magical</i> attacks are unaffected by smoke."
+"next turn."
 msgstr ""
 "Si che vada a segno o meno, questo attacco crea una cortina di fumo caustico "
 "e nauseabondo sull’esagono obiettivo. Qualsiasi unità al suo interno vede "
@@ -2537,6 +2566,11 @@ msgstr ""
 "nube permane fino all’inizio del turno successivo di questa unità\n"
 "\n"
 "Gli attacchi <i>magici</i> non sono influenzati dal fumo."
+
+#. [dummy]: id=smoke
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Grenadier.cfg:258
+msgid "<i>Magical</i> attacks are unaffected by smoke."
+msgstr ""
 
 #. [dummy]: id=smoke
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Grenadier.cfg:259
@@ -2555,14 +2589,43 @@ msgstr "Nano Granatiere"
 
 #. [unit_type]: id=Dwarvish Grenadier, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Grenadier.cfg:292
+#, fuzzy
+#| msgid ""
+#| "Upon the person of a fallen dwarf, the arch-mage Ravan (before his fall "
+#| "to evil) once espied a pouch, carefully sealed and filled — unbeknownst "
+#| "to him — of a fine black dust.\n"
+#| "\n"
+#| "Arthritic fingers unable to loose the knot that held tight its mouth, "
+#| "Ravan leaned forward, muttering under his breath an arcane word of "
+#| "opening. Sparks lept from his fingers—"
 msgid ""
 "Upon the person of a fallen dwarf, the arch-mage Ravan (before his fall to "
 "evil) once espied a pouch, carefully sealed and filled — unbeknownst to him "
-"— of a fine black dust.\n"
+"— of a fine black dust."
+msgstr ""
+"Addosso ad un nano caduto, l’arcimago Ravan (prima della sua conversione al "
+"male) vide una volta una sacca, accuratamente sigillata e riempita, a sua "
+"insaputa, di una sottile polvere nera.\n"
 "\n"
+"Essendo le sue dita artritiche incapaci di sciogliere il nodo che stringeva "
+"l’imboccatura, Ravan si sporse in avanti, mormorando tra sé e sé un arcano "
+"incantesimo di apertura. Dalle dita sprizzarono delle scinti lle—"
+
+#. [unit_type]: id=Dwarvish Grenadier, race=dwarf
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Grenadier.cfg:294
+#, fuzzy
+#| msgid ""
+#| "Upon the person of a fallen dwarf, the arch-mage Ravan (before his fall "
+#| "to evil) once espied a pouch, carefully sealed and filled — unbeknownst "
+#| "to him — of a fine black dust.\n"
+#| "\n"
+#| "Arthritic fingers unable to loose the knot that held tight its mouth, "
+#| "Ravan leaned forward, muttering under his breath an arcane word of "
+#| "opening. Sparks lept from his fingers—"
+msgid ""
 "Arthritic fingers unable to loose the knot that held tight its mouth, Ravan "
 "leaned forward, muttering under his breath an arcane word of opening. Sparks "
-"lept from his fingers—"
+"leapt from his fingers—"
 msgstr ""
 "Addosso ad un nano caduto, l’arcimago Ravan (prima della sua conversione al "
 "male) vide una volta una sacca, accuratamente sigillata e riempita, a sua "
@@ -2796,6 +2859,13 @@ msgstr "Aaarrgh! I miei studenti a casa... che ne sarà di loro..."
 #: data/campaigns/The_Hammer_of_Thursagan/utils/herodeaths.cfg:60
 msgid "At least I die with my axe in my hand..."
 msgstr "Almeno muoio con la mia ascia in mano..."
+
+#~ msgid ""
+#~ "It is Karrag’s doing—his will, and his dark magic. I think Karrag has "
+#~ "been casting glamours on all of you ever since he passed over."
+#~ msgstr ""
+#~ "È opera di Karrag, della sua forza di volontà, e della sua magia oscura. "
+#~ "Credo che abbia scagliato malie su tutti voi sin dal primo momento."
 
 #~ msgid "Fighter"
 #~ msgstr "Combattente"

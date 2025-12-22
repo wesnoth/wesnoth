@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bg\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-11-26 18:08 UTC\n"
+"POT-Creation-Date: 2025-12-22 03:09 UTC\n"
 "PO-Revision-Date: 2021-12-09 19:34+0200\n"
 "Last-Translator: Ivan Petrov <vankata_petrov@abv.bg>\n"
 "Language-Team: Bulgarian <bg@li.org>\n"
@@ -5519,13 +5519,13 @@ msgstr "Добавя 2 ТС"
 
 #. [option]
 #: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:316
-#: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:401
+#: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:410
 msgid "Swiftness"
 msgstr "Бързина"
 
 #. [option]
 #: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:324
-#: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:439
+#: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:448
 msgid "Accuracy"
 msgstr "Точност"
 
@@ -5536,19 +5536,31 @@ msgstr "Точност"
 msgid "Increases ranged weapon accuracy by 20%"
 msgstr "Увеличава точността с далекобойни оръжия с 20%"
 
-#. [option]
+#. [chance_to_hit]: id=accuracy_20
+#: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:332
+#, fuzzy
+#| msgid "Accuracy"
+msgid "accuracy: +20%"
+msgstr "Точност"
+
+#. [chance_to_hit]: id=accuracy_20
 #: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:333
-#: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:478
+msgid "The accuracy of this weapon is increased by 20%"
+msgstr ""
+
+#. [option]
+#: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:342
+#: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:496
 msgid "Force"
 msgstr "Мощ"
 
 #. [option]
-#: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:333
+#: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:342
 msgid "Increases melee weapon damage by 4"
 msgstr "Увеличава вредата на близката атака с 4"
 
 #. [rune_choice]: speaker=unit
-#: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:379
+#: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:388
 #, fuzzy
 #| msgid ""
 #| "This is part of our stash of field runes, we can use them to get a small "
@@ -5564,29 +5576,41 @@ msgstr ""
 "тази?"
 
 #. [option]
-#: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:383
+#: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:392
 msgid "No"
 msgstr "Не"
 
 #. [option]
-#: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:384
+#: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:393
 msgid "Not now."
 msgstr "Не сега."
 
 #. [option]
-#: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:401
+#: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:410
 msgid "Adds 1 MP"
 msgstr "Добавя 1 ТС"
 
 #. [option]
-#: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:439
+#: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:448
 #, fuzzy
 #| msgid "Increases ranged weapon accuracy 10%"
 msgid "Increases ranged weapon accuracy by 10%"
 msgstr "Увеличава точността с далекобойни оръжия с 10%"
 
+#. [chance_to_hit]: id=accuracy_10
+#: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:456
+#, fuzzy
+#| msgid "Accuracy"
+msgid "accuracy: +10%"
+msgstr "Точност"
+
+#. [chance_to_hit]: id=accuracy_10
+#: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:457
+msgid "The accuracy of this weapon is increased of 10%"
+msgstr ""
+
 #. [option]
-#: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:478
+#: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:496
 msgid "Increases melee weapon damage by 2"
 msgstr "Увеличава вредата на близката атака с 2"
 
