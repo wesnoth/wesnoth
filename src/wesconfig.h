@@ -40,7 +40,7 @@
   #undef VERSION
 #endif
 
-#define VERSION "1.19.18+dev"
+#define VERSION "1.19.19"
 
 // Used for the Windows executables' version info resource.
 #define RC_VERSION_MAJOR        1
