@@ -40,6 +40,7 @@ if [[ -f manifest.txt ]]; then
 	mv -fv manifest.txt manifest.txt.old
 fi
 
+# Fixed version code for music intentional, this prevents redownload of same music assets
 cat > manifest.txt <<EOF
 packages=patch,core,music
 patch.name=Patch
@@ -51,6 +52,6 @@ core.name=Core Data
 core.version=$2
 core.url=https://sourceforge.net/projects/wesnoth/files/wesnoth/wesnoth-%s/android-data/master.zip/download
 music.name=Music
-music.version=1.19.18 # Intentional, this prevents redownload of same music assets
+music.version=1.19.18
 music.url=https://sourceforge.net/projects/wesnoth/files/android-music/music.zip/download
 EOF
