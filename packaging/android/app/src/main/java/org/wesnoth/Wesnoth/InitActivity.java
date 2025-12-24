@@ -301,8 +301,8 @@ public class InitActivity extends Activity {
 
 			if (new File(dataDir, "data").exists()
 				&& new File(dataDir, "fonts").exists()
-				&& new File(dataDir, "sound").exists()
-				&& new File(dataDir, "music").exists())
+				&& new File(dataDir, "sounds").exists()
+				&& new File(dataDir, "images").exists())
 			{
 				// Launch Wesnoth
 				runOnUiThread(() -> launchWesnoth());
