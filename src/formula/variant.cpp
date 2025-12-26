@@ -144,55 +144,46 @@ variant::variant()
 variant::variant(int n)
 	: value_(std::make_shared<variant_int>(n))
 {
-	assert(value_.get());
 }
 
 variant::variant(int n, variant::DECIMAL_VARIANT_TYPE)
 	: value_(std::make_shared<variant_decimal>(n))
 {
-	assert(value_.get());
 }
 
 variant::variant(double n, variant::DECIMAL_VARIANT_TYPE)
 	: value_(std::make_shared<variant_decimal>(n))
 {
-	assert(value_.get());
 }
 
 variant::variant(const std::vector<variant>& vec)
 	: value_(std::make_shared<variant_list>(vec))
 {
-	assert(value_.get());
 }
 
 variant::variant(std::vector<variant>&& vec)
 	: value_(std::make_shared<variant_list>(std::move(vec)))
 {
-	assert(value_.get());
 }
 
 variant::variant(const std::string& str)
 	: value_(std::make_shared<variant_string>(str))
 {
-	assert(value_.get());
 }
 
 variant::variant(std::string&& str)
 	: value_(std::make_shared<variant_string>(std::move(str)))
 {
-	assert(value_.get());
 }
 
 variant::variant(const std::map<variant, variant>& map)
 	: value_(std::make_shared<variant_map>(map))
 {
-	assert(value_.get());
 }
 
 variant::variant(std::map<variant, variant>&& map)
 	: value_(std::make_shared<variant_map>(std::move(map)))
 {
-	assert(value_.get());
 }
 
 variant variant::operator[](std::size_t n) const
