@@ -357,6 +357,7 @@ class variant_string : public variant_value_base
 {
 public:
 	explicit variant_string(const std::string& str) : string_(str) {}
+	explicit variant_string(std::string&& str) : string_(std::move(str)) {}
 
 	virtual bool is_empty() const override
 	{
@@ -414,13 +415,19 @@ private:
 template<typename T>
 class variant_container : public variant_value_base
 {
+	// NOTE: add more conditions if this changes.
+	static_assert((std::is_same_v<variant_vector, T> || std::is_same_v<variant_map_raw, T>),
+		"variant_container only accepts vector or map specifications.");
+
 public:
 	explicit variant_container(const T& container)
 		: container_(container)
 	{
-		// NOTE: add more conditions if this changes.
-		static_assert((std::is_same_v<variant_vector, T> || std::is_same_v<variant_map_raw, T>),
-			"variant_container only accepts vector or map specifications.");
+	}
+
+	explicit variant_container(T&& container)
+		: container_(std::move(container))
+	{
 	}
 
 	virtual bool is_empty() const override
@@ -489,6 +496,7 @@ class variant_list : public variant_container<variant_vector>
 {
 public:
 	explicit variant_list(const variant_vector& vec);
+	explicit variant_list(variant_vector&& vec);
 
 	/**
 	 * Applies the provided function to the corresponding variants in this and another list.
@@ -518,7 +526,11 @@ class variant_map : public variant_container<variant_map_raw>
 {
 public:
 	explicit variant_map(const variant_map_raw& map)
-		: variant_container<variant_map_raw>(map)
+		: variant_container(map)
+	{}
+
+	explicit variant_map(variant_map_raw&& map)
+		: variant_container(std::move(map))
 	{}
 
 	virtual bool equals(variant_value_base& other) const override;

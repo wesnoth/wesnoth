@@ -35,8 +35,11 @@ public:
 	variant(int n, DECIMAL_VARIANT_TYPE /*type*/);
 	variant(double n, DECIMAL_VARIANT_TYPE /*type*/);
 	explicit variant(const std::vector<variant>& array);
+	explicit variant(std::vector<variant>&& array);
 	explicit variant(const std::string& str);
+	explicit variant(std::string&& str);
 	explicit variant(const std::map<variant, variant>& map);
+	explicit variant(std::map<variant, variant>&& map);
 	variant(const variant& v) = default;
 	variant(variant&& v) = default;
 
