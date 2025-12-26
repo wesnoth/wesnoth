@@ -127,7 +127,7 @@ DEFINE_WFL_FUNCTION(dir, 1, 1)
 		res.emplace_back(input.name);
 	}
 
-	return variant(res);
+	return variant(std::move(res));
 }
 
 DEFINE_WFL_FUNCTION(if, 2, -1)
@@ -351,7 +351,7 @@ DEFINE_WFL_FUNCTION(tolist, 1, 1)
 		tmp.push_back(*it);
 	}
 
-	return variant(tmp);
+	return variant(std::move(tmp));
 }
 
 DEFINE_WFL_FUNCTION(tomap, 1, 2)
@@ -385,7 +385,7 @@ DEFINE_WFL_FUNCTION(tomap, 1, 2)
 		}
 	}
 
-	return variant(tmp);
+	return variant(std::move(tmp));
 }
 
 DEFINE_WFL_FUNCTION(substring, 2, 3)
@@ -765,7 +765,7 @@ DEFINE_WFL_FUNCTION(get_palette, 1, 1)
 	for(auto clr : colors) {
 		result.emplace_back(std::make_shared<color_callable>(clr));
 	}
-	return variant(result);
+	return variant(std::move(result));
 }
 
 DEFINE_WFL_FUNCTION(clamp, 3, 3)
@@ -839,7 +839,7 @@ DEFINE_WFL_FUNCTION(sort, 1, 2)
 		std::sort(vars.begin(), vars.end(), variant_comparator(args()[1], variables));
 	}
 
-	return variant(vars);
+	return variant(std::move(vars));
 }
 
 DEFINE_WFL_FUNCTION(reverse, 1, 1)
@@ -850,12 +850,12 @@ DEFINE_WFL_FUNCTION(reverse, 1, 1)
 		std::string str = args()[0]->evaluate(variables, fdb).as_string();
 		std::reverse(str.begin(), str.end());
 
-		return variant(str);
+		return variant(std::move(str));
 	} else if(arg.is_list()) {
 		std::vector<variant> list = args()[0]->evaluate(variables, fdb).as_list();
 		std::reverse(list.begin(), list.end());
 
-		return variant(list);
+		return variant(std::move(list));
 	}
 
 	return variant();
@@ -918,10 +918,10 @@ DEFINE_WFL_FUNCTION(filter, 2, 3)
 	}
 
 	if(items.is_map()) {
-		return variant(map_vars);
+		return variant(std::move(map_vars));
 	}
 
-	return variant(list_vars);
+	return variant(std::move(list_vars));
 }
 
 DEFINE_WFL_FUNCTION(find, 2, 3)
@@ -988,10 +988,10 @@ DEFINE_WFL_FUNCTION(map, 2, 3)
 	}
 
 	if(items.is_map()) {
-		return variant(map_vars);
+		return variant(std::move(map_vars));
 	}
 
-	return variant(list_vars);
+	return variant(std::move(list_vars));
 }
 
 DEFINE_WFL_FUNCTION(take_while, 2, 2)
@@ -1007,8 +1007,7 @@ DEFINE_WFL_FUNCTION(take_while, 2, 2)
 		}
 	}
 
-	std::vector<variant> result(items.begin(), it);
-	return variant(result);
+	return variant(std::vector(items.begin(), it));
 }
 
 namespace
@@ -1078,7 +1077,7 @@ DEFINE_WFL_FUNCTION(zip, 1, -1)
 		output.emplace_back(elem);
 	}
 
-	return variant(output);
+	return variant(std::move(output));
 }
 
 DEFINE_WFL_FUNCTION(reduce, 2, 3)
@@ -1113,16 +1112,14 @@ DEFINE_WFL_FUNCTION(sum, 1, 2)
 	const variant items = args()[0]->evaluate(variables, fdb);
 	if(items.num_elements() > 0) {
 		if(items[0].is_list()) {
-			std::vector<variant> tmp;
-			res = variant(tmp);
+			res = variant(std::vector<variant>{});
 			if(args().size() >= 2) {
 				res = args()[1]->evaluate(variables, fdb);
 				if(!res.is_list())
 					return variant();
 			}
 		} else if(items[0].is_map()) {
-			std::map<variant, variant> tmp;
-			res = variant(tmp);
+			res = variant(std::map<variant, variant>{});
 			if(args().size() >= 2) {
 				res = args()[1]->evaluate(variables, fdb);
 				if(!res.is_map())
@@ -1162,7 +1159,7 @@ DEFINE_WFL_FUNCTION(head, 1, 2)
 
 	std::vector<variant> res;
 	std::copy(it, end, std::back_inserter(res));
-	return variant(res);
+	return variant(std::move(res));
 }
 
 DEFINE_WFL_FUNCTION(tail, 1, 2)
@@ -1184,7 +1181,7 @@ DEFINE_WFL_FUNCTION(tail, 1, 2)
 	std::vector<variant> res;
 
 	std::copy(it, items.end(), std::back_inserter(res));
-	return variant(res);
+	return variant(std::move(res));
 }
 
 DEFINE_WFL_FUNCTION(size, 1, 1)
@@ -1371,7 +1368,7 @@ DEFINE_WFL_FUNCTION(adjacent_locs, 1, 1)
 		v.emplace_back(std::make_shared<location_callable>(adj));
 	}
 
-	return variant(v);
+	return variant(std::move(v));
 }
 
 DEFINE_WFL_FUNCTION(locations_in_radius, 2, 2)
@@ -1407,7 +1404,7 @@ DEFINE_WFL_FUNCTION(locations_in_radius, 2, 2)
 		v.emplace_back(std::make_shared<location_callable>(res[n]));
 	}
 
-	return variant(v);
+	return variant(std::move(v));
 }
 
 DEFINE_WFL_FUNCTION(are_adjacent, 2, 2)

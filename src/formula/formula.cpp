@@ -293,7 +293,7 @@ private:
 			res.emplace_back(fcn_name);
 		}
 
-		return variant(res);
+		return variant(std::move(res));
 	}
 
 	function_symbol_table* symbols_;
@@ -315,7 +315,7 @@ private:
 			res.push_back(i->evaluate(variables, add_debug_info(fdb, 0, "[list element]")));
 		}
 
-		return variant(res);
+		return variant(std::move(res));
 	}
 
 	std::vector<expression_ptr> items_;
@@ -367,14 +367,14 @@ public:
 private:
 	variant execute(const formula_callable& variables, formula_debugger*fdb) const
 	{
-		std::map<variant,variant> res;
+		std::map<variant ,variant> res;
 		for(std::vector<expression_ptr>::const_iterator i = items_.begin(); (i != items_.end()) && (i + 1 != items_.end()) ; i += 2) {
 			variant key = (*i)->evaluate(variables, add_debug_info(fdb, 0, "key ->"));
 			variant value = (*(i+1))->evaluate(variables, add_debug_info(fdb, 1, "-> value"));
 			res[key] = value;
 		}
 
-		return variant(res);
+		return variant(std::move(res));
 	}
 
 	std::vector<expression_ptr> items_;
@@ -448,7 +448,7 @@ public:
 				chars.emplace_back(std::string(1, c));
 			}
 
-			return variant(chars);
+			return variant(std::move(chars));
 		} else if(key == "word" || key == "words") {
 			std::vector<variant> words;
 			const std::string& str = string_.as_string();
@@ -460,7 +460,7 @@ public:
 				next_space = str.find_first_not_of(" \t", next_space);
 			} while(next_space != std::string::npos);
 
-			return variant(words);
+			return variant(std::move(words));
 		} else if(key == "item" || key == "items") {
 			std::vector<std::string> split = utils::parenthetical_split(string_.as_string(), ',');
 			std::vector<variant> items;
@@ -469,7 +469,7 @@ public:
 				items.emplace_back(s);
 			}
 
-			return variant(items);
+			return variant(std::move(items));
 		}
 
 		return variant();
