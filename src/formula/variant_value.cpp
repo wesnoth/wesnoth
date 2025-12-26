@@ -294,7 +294,12 @@ template class variant_container<variant_vector>;
 template class variant_container<variant_map_raw>;
 
 variant_list::variant_list(const variant_vector& vec)
-	: variant_container<variant_vector>(vec)
+	: variant_container(vec)
+{
+}
+
+variant_list::variant_list(variant_vector&& vec)
+	: variant_container(std::move(vec))
 {
 }
 
