@@ -247,10 +247,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(disband, child, spectator)
 
 	current_team.recall_list().erase_if_matches_id(unit_id);
 
-	if (old_size == current_team.recall_list().size()) {
-		spectator.error("illegal disband\n");
-		return false;
-	}
+	assert(old_size != current_team.recall_list().size());
 	return true;
 }
 
