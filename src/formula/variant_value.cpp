@@ -225,18 +225,18 @@ std::string variant_container<T>::to_string_impl(bool annotate, bool annotate_em
 
 	bool first_time = true;
 
-	for(const auto& member : container_) {
+	for(const auto& member : container()) {
 		if(!first_time) {
 			ss << ", ";
 		}
 
 		first_time = false;
 
-		ss << to_string_detail(member, mod_func);
+		ss << T::to_string_detail(member, mod_func);
 	}
 
 	// TODO: evaluate if this really needs to be separately conditional.
-	if(annotate_empty && container_.empty()) {
+	if(annotate_empty && is_empty()) {
 		ss << "->";
 	}
 
@@ -268,42 +268,36 @@ std::string variant_container<T>::get_debug_string(formula_seen_stack& seen, boo
 template<typename T>
 boost::iterator_range<variant_iterator> variant_container<T>::make_iterator() const
 {
-	return {variant_iterator(this, get_container().cbegin()), variant_iterator(this, get_container().cend())};
+	return {
+		variant_iterator{this, std::begin(container())},
+		variant_iterator{this, std::end(container())}
+	};
 }
 
 template<typename T>
 void variant_container<T>::iterator_inc(utils::any& iter) const
 {
-	++utils::any_cast<typename T::const_iterator&>(iter);
+	++utils::any_cast<decltype(std::begin(container()))&>(iter);
 }
 
 template<typename T>
 void variant_container<T>::iterator_dec(utils::any& iter) const
 {
-	--utils::any_cast<typename T::const_iterator&>(iter);
+	--utils::any_cast<decltype(std::begin(container()))&>(iter);
 }
 
 template<typename T>
 bool variant_container<T>::iterator_equals(const utils::any& first, const utils::any& second) const
 {
-	return utils::any_cast<typename T::const_iterator>(first) == utils::any_cast<typename T::const_iterator>(second);
+	return utils::any_cast<decltype(std::begin(container()))>(first)
+		== utils::any_cast<decltype(std::begin(container()))>(second);
 }
 
 // Force compilation of the following template instantiations
-template class variant_container<variant_vector>;
-template class variant_container<variant_map_raw>;
+template class variant_container<variant_list>;
+template class variant_container<variant_map>;
 
-variant_list::variant_list(const variant_vector& vec)
-	: variant_container(vec)
-{
-}
-
-variant_list::variant_list(variant_vector&& vec)
-	: variant_container(std::move(vec))
-{
-}
-
-variant variant_list::list_op(value_base_ptr second, const std::function<variant(variant&, variant&)>& op_func)
+variant variant_list::list_op(value_base_ptr second, const std::function<variant(const variant&, const variant&)>& op_func)
 {
 	const auto& other_list = value_cast<variant_list>(std::move(second));
 
@@ -358,7 +352,7 @@ variant variant_list::deref_iterator(const utils::any& iter) const
 	return *utils::any_cast<const variant_vector::const_iterator&>(iter);
 }
 
-std::string variant_map::to_string_detail(const variant_map_raw::value_type& container_val, mod_func_t mod_func) const
+std::string variant_map::to_string_detail(const variant_map_raw::value_type& container_val, mod_func_t mod_func)
 {
 	std::ostringstream ss;
 
