@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: hu-editor_1.5\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-12-21 21:08-0600\n"
-"PO-Revision-Date: 2025-07-15 22:36+0200\n"
+"PO-Revision-Date: 2025-12-28 01:41+0100\n"
 "Last-Translator: Berda Jenő <big4billy@gmail.com>\n"
 "Language-Team: Hungarian <>\n"
 "Language: hu\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Poedit 3.8\n"
 
 #. [brush]: id=brush-1
 #: data/core/editor/brushes.cfg:6
@@ -334,10 +334,8 @@ msgid "<span color='red'><span face='DejaVuSans'>✘</span> $msg</span>"
 msgstr "<span color='red'><span face='DejaVuSans'>✘</span> $msg</span>"
 
 #: src/editor/map/context_manager.cpp:217
-#, fuzzy
-#| msgid "Map loaded from scenario"
 msgid "Load Map or Scenario"
-msgstr "A küldetés térképe betöltődött"
+msgstr "Térkép vagy küldetés betöltése"
 
 #: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1147
 msgid "New Map"
@@ -395,10 +393,8 @@ msgid "Error"
 msgstr "Hiba"
 
 #: src/editor/map/context_manager.cpp:705
-#, fuzzy
-#| msgid "Do you really want to save $type1 in $type2 folder?"
 msgid "Do you really want to save a map in the scenarios folder?"
-msgstr "Valóban el akarod menteni $type1-t a $type2 mappába?"
+msgstr "Valóban el akarsz menteni egy térképet a küldetés mappába?"
 
 #: src/editor/map/context_manager.cpp:713
 #: src/editor/map/context_manager.cpp:905
@@ -410,10 +406,8 @@ msgid "Save Scenario As"
 msgstr "Küldetés mentése másként"
 
 #: src/editor/map/context_manager.cpp:754
-#, fuzzy
-#| msgid "Do you really want to save $type1 in $type2 folder?"
 msgid "Do you really want to save a scenario in the maps folder?"
-msgstr "Valóban el akarod menteni $type1-t a $type2 mappába?"
+msgstr "Valóban el akarsz menteni egy küldetést a térkép mappába?"
 
 #: src/editor/map/context_manager.cpp:762
 msgid "This scenario is already open."
