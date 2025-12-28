@@ -914,7 +914,7 @@ void patch_movetype(movetype& mt,
 			}
 			config_copies.emplace_back(cumulative_values);
 			auto val = std::make_shared<wfl::config_callable>(config_copies.back());
-			original.add(x, val);
+			original.add(x, wfl::variant(val));
 
 			// Allow "flat" to work as "vision_costs.flat" when patching vision_costs, etc
 			if(type_to_patch == x) {
@@ -928,7 +928,7 @@ void patch_movetype(movetype& mt,
 			if(mt_cfg.has_child(x)) {
 				const auto& subtag = mt_cfg.mandatory_child(x);
 				auto val = std::make_shared<wfl::config_callable>(subtag);
-				original.add(x, val);
+				original.add(x, wfl::variant(val));
 
 				// Allow "arcane" to work as well as "resistance.arcane", etc
 				if(type_to_patch == x) {

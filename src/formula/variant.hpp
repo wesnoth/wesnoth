@@ -44,10 +44,9 @@ public:
 	variant(variant&& v) = default;
 
 	template<typename T>
-	variant(std::shared_ptr<T> callable)
+	explicit variant(std::shared_ptr<T> callable)
 		: value_(std::make_shared<variant_callable>(callable))
 	{
-		assert(value_.get());
 	}
 
 	variant& operator=(const variant& v) = default;

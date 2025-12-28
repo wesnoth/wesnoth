@@ -817,7 +817,7 @@ variant team_callable::get_value(const std::string& key) const
 	} else if(key == "recall") {
 		std::vector<variant> result;
 		for(const auto& u : team_.recall_list()) {
-			result.push_back(std::make_shared<unit_callable>(*u));
+			result.emplace_back(std::make_shared<unit_callable>(*u));
 		}
 		return variant(std::move(result));
 	} else if(key == "wml_vars") {
