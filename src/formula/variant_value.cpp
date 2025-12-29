@@ -215,7 +215,7 @@ std::string variant_string::get_serialized_string() const
 }
 
 template<typename T>
-std::string variant_container<T>::to_string_impl(bool annotate, bool annotate_empty, const to_string_op& mod_func) const
+std::string variant_container<T>::to_string_impl(bool annotate, bool annotate_empty, const to_string_op& func) const
 {
 	std::ostringstream ss;
 
@@ -223,6 +223,7 @@ std::string variant_container<T>::to_string_impl(bool annotate, bool annotate_em
 		ss << "[";
 	}
 
+	const auto& writer = T::make_string_writer(func);
 	bool first_time = true;
 
 	for(const auto& member : container()) {
@@ -230,9 +231,7 @@ std::string variant_container<T>::to_string_impl(bool annotate, bool annotate_em
 			ss << ", ";
 		}
 
-		first_time = false;
-
-		ss << T::to_string_detail(member, mod_func);
+		ss << std::invoke(writer, member);
 	}
 
 	// TODO: evaluate if this really needs to be separately conditional.
@@ -350,17 +349,6 @@ bool variant_list::less_than(variant_value_base& other) const
 variant variant_list::deref_iterator(const utils::any& iter) const
 {
 	return *utils::any_cast<const variant_vector::const_iterator&>(iter);
-}
-
-std::string variant_map::to_string_detail(const variant_map_raw::value_type& value, const to_string_op& op)
-{
-	std::ostringstream ss;
-
-	ss << op(value.first);
-	ss << "->";
-	ss << op(value.second);
-
-	return ss.str();
 }
 
 bool variant_map::equals(variant_value_base& other) const
