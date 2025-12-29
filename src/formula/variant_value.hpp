@@ -402,7 +402,7 @@ private:
 };
 
 /**
- * Generalized CRTP interface for container variants.
+ * Generalized interface for container variants.
  */
 template<typename Derived>
 class variant_container : public variant_value_base
@@ -447,18 +447,18 @@ public:
 	virtual bool iterator_equals(const utils::any& first, const utils::any& second) const override;
 
 protected:
-	using mod_func_t = std::function<std::string(const variant&)>;
+	using to_string_op = std::function<std::string(const variant&)>;
 
 private:
 	/**
-	 * Implementation to handle string conversion for @ref string_cast,
-	 * @ref get_serialized_string, and @ref get_debug_string.
+	 * String conversion helper for @ref string_cast, @ref get_serialized_string,
+	 * and @ref get_debug_string.
 	 *
-	 * Derived classes should provide type-specific value handling by
-	 * defining a to_string_detail function which takes the container's
-	 * value_type as its first parameter and a mod_func_t as its second.
+	 * Derived classes should implement container-specific handling by defining a
+	 * static to_string_detail function which takes the container's value_type as
+	 * its first parameter and a to_string_op functor as its second.
 	 */
-	std::string to_string_impl(bool annotate, bool annotate_empty, mod_func_t mod_func) const;
+	std::string to_string_impl(bool annotate, bool annotate_empty, const to_string_op& mod_func) const;
 
 	/** Read-only access to the underlying container. */
 	const auto& container() const
@@ -505,9 +505,9 @@ public:
 
 private:
 	/** Helper for @ref variant_container::to_string_impl. */
-	static std::string to_string_detail(const variant_vector::value_type& container_val, mod_func_t mod_func)
+	static std::string to_string_detail(const variant& value, const to_string_op& op)
 	{
-		return mod_func(container_val);
+		return op(value);
 	}
 
 	variant_vector container_;
@@ -546,7 +546,7 @@ public:
 
 private:
 	/** Helper for @ref variant_container::to_string_impl. */
-	static std::string to_string_detail(const variant_map_raw::value_type& container_val, mod_func_t mod_func);
+	static std::string to_string_detail(const variant_map_raw::value_type& value, const to_string_op& op);
 
 	variant_map_raw container_;
 };

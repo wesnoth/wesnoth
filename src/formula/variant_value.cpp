@@ -215,7 +215,7 @@ std::string variant_string::get_serialized_string() const
 }
 
 template<typename T>
-std::string variant_container<T>::to_string_impl(bool annotate, bool annotate_empty, mod_func_t mod_func) const
+std::string variant_container<T>::to_string_impl(bool annotate, bool annotate_empty, const to_string_op& mod_func) const
 {
 	std::ostringstream ss;
 
@@ -269,28 +269,28 @@ template<typename T>
 boost::iterator_range<variant_iterator> variant_container<T>::make_iterator() const
 {
 	return {
-		variant_iterator{this, std::begin(container())},
-		variant_iterator{this, std::end(container())}
+		variant_iterator{this, std::cbegin(container())},
+		variant_iterator{this, std::cend(container())}
 	};
 }
 
 template<typename T>
 void variant_container<T>::iterator_inc(utils::any& iter) const
 {
-	++utils::any_cast<decltype(std::begin(container()))&>(iter);
+	++utils::any_cast<decltype(std::cbegin(container()))&>(iter);
 }
 
 template<typename T>
 void variant_container<T>::iterator_dec(utils::any& iter) const
 {
-	--utils::any_cast<decltype(std::begin(container()))&>(iter);
+	--utils::any_cast<decltype(std::cbegin(container()))&>(iter);
 }
 
 template<typename T>
 bool variant_container<T>::iterator_equals(const utils::any& first, const utils::any& second) const
 {
-	return utils::any_cast<decltype(std::begin(container()))>(first)
-		== utils::any_cast<decltype(std::begin(container()))>(second);
+	return utils::any_cast<decltype(std::cbegin(container()))>(first)
+		== utils::any_cast<decltype(std::cbegin(container()))>(second);
 }
 
 // Force compilation of the following template instantiations
@@ -352,13 +352,13 @@ variant variant_list::deref_iterator(const utils::any& iter) const
 	return *utils::any_cast<const variant_vector::const_iterator&>(iter);
 }
 
-std::string variant_map::to_string_detail(const variant_map_raw::value_type& container_val, mod_func_t mod_func)
+std::string variant_map::to_string_detail(const variant_map_raw::value_type& value, const to_string_op& op)
 {
 	std::ostringstream ss;
 
-	ss << mod_func(container_val.first);
+	ss << op(value.first);
 	ss << "->";
-	ss << mod_func(container_val.second);
+	ss << op(value.second);
 
 	return ss.str();
 }
