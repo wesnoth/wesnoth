@@ -993,8 +993,8 @@ static int attack_info(const reports::context& rc, const attack_type &at, config
 			str << span_color(font::weapon_details_color, "    ", attacks_used) << "\n";
 
 			const std::string& attacks_used_tooltip = VNGETTEXT(
-				"This attack type uses $num attack",
-				"This attack type uses $num attacks",
+				"This attack uses $num attack point",
+				"This attack uses $num attack points",
 				at.attacks_used(),
 				{ {"num", std::to_string(at.attacks_used())} }
 			);
