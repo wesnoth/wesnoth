@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-12-22 03:09 UTC\n"
-"PO-Revision-Date: 2025-11-17 18:13+0100\n"
+"PO-Revision-Date: 2025-12-28 19:18+0100\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italiano <wesnoth-l10n-it@cirulla.net>\n"
 "Language: it\n"
@@ -14,7 +14,9 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.6\n"
+"X-Poedit-Basepath: ../../../../Sources/wesnoth\n"
+"X-Poedit-SearchPath-0: .\n"
 
 #. [editor_group]: id=the_deceivers_gambit
 #. [campaign]: id=The Deceivers Gambit 1
@@ -180,11 +182,8 @@ msgstr "Scenario 2: Sanguinario"
 
 #. [achievement_group]
 #: data/campaigns/The_Deceivers_Gambit/achievements.cfg:24
-#, fuzzy
-#| msgid "Complete <i>The Ambassador</i> without any of your units dying."
 msgid "Complete <i>The Ambassador</i> without killing any wose."
-msgstr ""
-"Completa <i>L’Ambasciatore</i> senza che muoia nessuna delle tue unità."
+msgstr "Completa <i>L’Ambasciatore</i> senza che muoia nessun wose."
 
 #. [achievement_group]
 #: data/campaigns/The_Deceivers_Gambit/achievements.cfg:24
@@ -208,8 +207,9 @@ msgstr ""
 
 #. [achievement_group]
 #: data/campaigns/The_Deceivers_Gambit/achievements.cfg:26
+#, fuzzy
 msgid "Scenario 5: Hook, Line, and Sinker"
-msgstr "Scenario 5: Bevuta fino in fondo"
+msgstr "Scenario 5: caduto con tutte le scarpe"
 
 #. [achievement_group]
 #: data/campaigns/The_Deceivers_Gambit/achievements.cfg:27
@@ -219,12 +219,12 @@ msgstr ""
 #. [achievement_group]
 #: data/campaigns/The_Deceivers_Gambit/achievements.cfg:27
 msgid "Scenario 6: Royal Privilege"
-msgstr ""
+msgstr "Scenario 6: Privilegio Regale"
 
 #. [achievement_group]
 #: data/campaigns/The_Deceivers_Gambit/achievements.cfg:28
 msgid "Complete <i>The Great River</i> in 20 turns or less."
-msgstr ""
+msgstr "Completa <i>Il Grande Fiume</i> in 20 turni o meno."
 
 #. [achievement_group]
 #: data/campaigns/The_Deceivers_Gambit/achievements.cfg:28
@@ -274,9 +274,8 @@ msgstr ""
 
 #. [achievement_group]
 #: data/campaigns/The_Deceivers_Gambit/achievements.cfg:36
-#, fuzzy
 msgid "Destroy all three enemy keeps in <i>The Traitor</i>."
-msgstr "Sconfiggi tutti i comandanti nemici"
+msgstr "Distrutti tutti e tre gli accampamenti nemici in <i>Il Traditore</i>."
 
 #. [achievement_group]
 #: data/campaigns/The_Deceivers_Gambit/achievements.cfg:36
@@ -334,17 +333,13 @@ msgid "Shield"
 msgstr "Scutum"
 
 #: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:31
-#, fuzzy
-#| msgid ""
-#| "Spend <span color='#00bbe6' style='italic'>8xp</span> to gain <i>+20% "
-#| "dodge chance</i> until the start of your next turn or until cancelled."
 msgid ""
 "Spend <span color='#00bbe6' style='italic'>8 XP</span> to gain <i>+20% dodge "
 "chance</i> until the start of your next turn or until cancelled."
 msgstr ""
-"Consuma <span color='#00bbe6'><i>8xp</i></span> per guadagnare un bonus "
-"<i>+20% schivata</i> fino all’inizio del prossimo turno o finché non viene "
-"cancellato.."
+"Consuma <span color='#00bbe6' style='italic'>8 PE</span> per guadagnare un "
+"bonus <i>+20% schivata</i> fino all’inizio del prossimo turno o finché non "
+"viene cancellato."
 
 #: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:39
 msgid "Panacea"
@@ -357,30 +352,25 @@ msgid ""
 "          attacks, strikes, and damage by its level. <span color='#dd0000' "
 "weight='bold'>Next turn, it dies.</span>"
 msgstr ""
-"Consuma <span color='#00bbe6'><i>8xp</i></span> per curare completamente "
-"l’unità alleata adiacente con meno punti-ferita, e aumenta i suoi\n"
-"           attacchi, colpi e danni a seconda del suo livello. <span "
-"color='#dd0000' weight='bold'>Al prossimo turno, morirà.</span>"
+"Utilizza <span color='#00bbe6' style='italic'>8 PE</span> per curare "
+"completamente l’unità umana alleata adiacente con meno punti-ferita,\n"
+"           e aumentare i suoi attacchi, colpi e danni a seconda del suo "
+"livello. <span color='#dd0000' weight='bold'>Al prossimo turno, morirà.</"
+"span>"
 
 #: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:49
 msgid "Animate Mud"
 msgstr "Limus Animatus"
 
 #: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:51
-#, fuzzy
-#| msgid ""
-#| "Learn to recruit <i>Mudcrawlers</i>. Mudcrawlers gain +100% damage and "
-#| "xp\n"
-#| "               while adjacent to you, but dissolve at the end of each "
-#| "scenario."
 msgid ""
 "Learn to recruit <i><ref dst='unit_Mudcrawler'>Mudcrawlers</ref></i>. "
 "Mudcrawlers gain +100% damage and XP\n"
 "               while adjacent to you, but dissolve at the end of each "
 "scenario."
 msgstr ""
-"Impara a reclutare le <i>Fanghiglie</i>. Le Fanghiglie hanno un bonus +100% "
-"danno e PE\n"
+"Impara a reclutare le <i><ref dst='unit_Mudcrawler'>Fanghiglie</ref></i>. Le "
+"Fanghiglie hanno un bonus +100% danno e PE\n"
 "               se si trovano vicine a te, ma si dissolvono alla fine di ogni "
 "scenario."
 
@@ -401,17 +391,12 @@ msgid "Levitate"
 msgstr "Lævita"
 
 #: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:74
-#, fuzzy
-#| msgid ""
-#| "Spend <span color='#00bbe6' style='italic'>8xp</span> to gain <i>flight</"
-#| "i> and the <i><ref dst='ability_skirmisherskirmisher'>skirmisher</ref></"
-#| "i> ability until the start of your next turn or until cancelled."
 msgid ""
 "Spend <span color='#00bbe6' style='italic'>8 XP</span> to gain <i>flight</i> "
 "and the <i><ref dst='ability_skirmisherskirmisher'>skirmisher</ref></i> "
 "ability until the start of your next turn or until cancelled."
 msgstr ""
-"Consuma <span color='#00bbe6' style='italic'>8pe</span> per ottenere le "
+"Consuma <span color='#00bbe6' style='italic'>8 PE</span> per ottenere le "
 "abilità <i>volare</i> e <i><ref "
 "dst='ability_skirmisherskirmisher'>incursore</ref></i> fino all'inizio del "
 "prossimo scenario o fino alla loro cancellazione."
@@ -421,11 +406,6 @@ msgid "Find Familiar"
 msgstr "Invenio Familio"
 
 #: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:84
-#, fuzzy
-#| msgid ""
-#| "Begin each scenario with your trusty pet raven.\n"
-#| "               Your familiar’s level and xp persist across scenarios, but "
-#| "reset if it dies."
 msgid ""
 "Begin each scenario with your trusty pet raven.\n"
 "               Your familiar’s level and XP persist across scenarios, but "
@@ -440,8 +420,6 @@ msgid "Mnemonic"
 msgstr "Mnemonicus"
 
 #: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:93
-#, fuzzy
-#| msgid "Whenever an adjacent ally gains xp, you gain the same amount of xp."
 msgid "Whenever an adjacent ally gains XP, you gain the same amount of XP."
 msgstr ""
 "Ogni qualvolta una unità adiacente guadagna PE, ne ottieni altrettanti anche "
@@ -475,19 +453,13 @@ msgid "Blizzard"
 msgstr "Nixnivis"
 
 #: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:125
-#, fuzzy
-#| msgid ""
-#| "Spend <span color='#00bbe6' style='italic'>16xp</span> and <span "
-#| "color='#c06a61' style='italic'>your attack</span> to <i><ref "
-#| "dst='weaponspecial_slows'>slow</ref></i> enemy units and freeze terrain "
-#| "in a 3-hex radius."
 msgid ""
 "Spend <span color='#00bbe6' style='italic'>16 XP</span> and <span "
 "color='#c06a61' style='italic'>your attack</span> to <i><ref "
 "dst='weaponspecial_slows'>slow</ref></i> enemy units and freeze terrain in a "
 "3-hex radius."
 msgstr ""
-"Consuma <span color='#00bbe6' style='italic'>16pe</span> e <span "
+"Consuma <span color='#00bbe6' style='italic'>16 PE</span> e <span "
 "color='#c06a61' style='italic'>il tuo attacco</span> per <i><ref "
 "dst='weaponspecial_slows'>rallentare</ref></i> le unità nemiche e congelare "
 "il terreno per un raggio di 3 esagoni."
@@ -497,19 +469,13 @@ msgid "Counterspell"
 msgstr "Contraincanto"
 
 #: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:135
-#, fuzzy
-#| msgid ""
-#| "Spend <span color='#00bbe6' style='italic'>16xp</span> to <i>disallow "
-#| "<ref dst='weaponspecial_magical'>magical</ref> attacks</i> in a 3-hex "
-#| "radius, until cancelled.\n"
-#| "          Disables Delfador’s spells, but not his passive skills."
 msgid ""
 "Spend <span color='#00bbe6' style='italic'>16 XP</span> to <i>disallow <ref "
 "dst='weaponspecial_magical'>magical</ref> attacks</i> in a 3-hex radius, "
 "until cancelled.\n"
 "          Disables Delfador’s spells, but not his passive skills."
 msgstr ""
-"Consuma <span color='#00bbe6' style='italic'>16xp</span> neutralizzare "
+"Consuma <span color='#00bbe6' style='italic'>16 PE</span> per neutralizzare "
 "attacchi <ref dst='weaponspecial_magical'>magici</ref> per un raggio di 3 "
 "esagoni, fintanto che non venga cancellato.\n"
 "          Disabilita gli incantesimi di Delfador, ma non le sue abilità "
@@ -520,14 +486,6 @@ msgid "Polymorph"
 msgstr "Polymorphus"
 
 #: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:145
-#, fuzzy
-#| msgid ""
-#| "Transform into a stoat (<span color='#00bbe6' style='italic'>1xp</span>), "
-#| "bear (<span color='#00bbe6' style='italic'>8xp</span>), crab (<span "
-#| "color='#00bbe6' style='italic'>16xp</span>), or roc (<span "
-#| "color='#00bbe6' style='italic'>32xp</span>). Lasts until cancelled.\n"
-#| "           Replaces Delfador’s attacks, spells, and passives, but does "
-#| "not affect hitpoints."
 msgid ""
 "Transform into a <ref dst='unit_Frost Stoat Poly'>stoat</ref> (<span "
 "color='#00bbe6' style='italic'>1 XP</span>), <ref dst='unit_Cave Bear "
@@ -538,13 +496,15 @@ msgid ""
 "           Replaces Delfador’s attacks, spells, and passives, but does not "
 "affect hitpoints."
 msgstr ""
-"Transforma in un ermellino (<span color='#00bbe6' style='italic'>1pe</"
-"span>), orso (<span color='#00bbe6' style='italic'>8pe</span>), granchio "
-"(<span color='#00bbe6' style='italic'>16pe</span>), o roc (<span "
-"color='#00bbe6' style='italic'>32pe</span>). Persiste finché non "
+"Transforma in un <ref dst='unit_Frost Stoat Poly'>ermellino</ref> (<span "
+"color='#00bbe6' style='italic'>1PE</span>), <ref dst='unit_Cave Bear "
+"Poly'>orso</ref> (<span color='#00bbe6' style='italic'>8 PE</span>), <ref "
+"dst='unit_Giant Crab'>granchio</ref> (<span color='#00bbe6' "
+"style='italic'>16 PE</span>), o <ref dst='unit_Roc'>roc</ref> (<span "
+"color='#00bbe6' style='italic'>32 PE</span>). Persiste finché non "
 "cancellato.\n"
 "           Rimpiazza gli attacchi, gli incantesimi e le abilità passive di "
-"Delfador, ma non influisce qui punti ferita."
+"Delfador, ma non influisce sui punti ferita."
 
 #: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:157
 msgid "Glamour"
@@ -555,7 +515,7 @@ msgid ""
 "Gain the <i><ref dst='ability_leadershipleadership'>leadership</ref></i> "
 "ability."
 msgstr ""
-"Ottieni l’abilità <i><ref dst=’ability_leadershipleadership’>comando</ref></"
+"Ottieni l’abilità <i><ref dst='ability_leadershipleadership'>comando</ref></"
 "i>."
 
 #: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:173
@@ -580,13 +540,6 @@ msgid "Enthrall"
 msgstr "Charme"
 
 #: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:191
-#, fuzzy
-#| msgid ""
-#| "Spend <span color='#00bbe6' style='italic'>48xp</span> and <span "
-#| "color='#c06a61' style='italic'>your attack</span> to magically disguise "
-#| "yourself as an awe-inspiring drake,\n"
-#| "          reducing accuracy and dodge by 10% for enemies in a 2 hex "
-#| "radius. Lasts until cancelled."
 msgid ""
 "Spend <span color='#00bbe6' style='italic'>48 XP</span> and <span "
 "color='#c06a61' style='italic'>your attack</span> to magically disguise "
@@ -594,31 +547,25 @@ msgid ""
 "          reducing accuracy and dodge by 10% for enemies in a 2 hex radius. "
 "Lasts until cancelled."
 msgstr ""
-"Consuma <span color='#00bbe6' style='italic'>48pe</span> e <span "
+"Consuma <span color='#00bbe6' style='italic'>48 PE</span> e <span "
 "color='#c06a61' style='italic'>il tuo attacco</span> per travestirti "
 "magicamente da imponente drago,\n"
-"          riducendo l’accuratezza e le schivata del 10% per i nwmici in un "
-"raggio di for enemies in a 2 esagoni. Persiste finché non cancellato."
+"          riducendo l’accuratezza e le schivata del 10% per i nemici in un "
+"raggio di 2 esagoni. Persiste finché non cancellato."
 
 #: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:199
 msgid "Animate Fire"
 msgstr "Animare Ignem"
 
 #: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:201
-#, fuzzy
-#| msgid ""
-#| "Learn to recruit <i>Fire Guardians</i>. Fire Guardians gain +100% damage "
-#| "and xp\n"
-#| "               while adjacent to you, but dissipate at the end of each "
-#| "scenario."
 msgid ""
 "Learn to recruit <i><ref dst='unit_Fire Guardian'>Fire Guardians</ref></i>. "
 "Fire Guardians gain +100% damage and XP\n"
 "               while adjacent to you, but dissipate at the end of each "
 "scenario."
 msgstr ""
-"Impara a reclutare i <i>Guardiani di Fuoco</i>. I Guardiani di Fuoco hanno "
-"un bonus +100% danno e PE\n"
+"Impara a reclutare i <i><ref dst='unit_Fire Guardian'>Guardiani di Fuoco</"
+"ref></i>. I Guardiani di Fuoco hanno un bonus +100% danno e PE\n"
 "               se si trovano vicine a te, ma si dissolvono alla fine di ogni "
 "scenario."
 
@@ -660,19 +607,13 @@ msgid "Time Dilation"
 msgstr "Dilatatio Temporis"
 
 #: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:242
-#, fuzzy
-#| msgid ""
-#| "Spend <span color='#00bbe6' style='italic'>48xp</span> to grant yourself "
-#| "and all allies double movement and a second attack this turn.\n"
-#| "          When this turn ends, affected units become <ref "
-#| "dst='weaponspecial_slows'>slowed</ref>."
 msgid ""
 "Spend <span color='#00bbe6' style='italic'>48 XP</span> to grant yourself "
 "and all allies double movement and a second attack this turn.\n"
 "          When this turn ends, affected units become <ref "
 "dst='weaponspecial_slows'>slowed</ref>."
 msgstr ""
-"Consuma <span color='#00bbe6' style='italic'>48pe</span> per assicurarti a "
+"Consuma <span color='#00bbe6' style='italic'>48 PE</span> per assicurare a "
 "te e tutti i tuoi alleati il doppio dei movimenti e un secondo attacco in "
 "questo turno,\n"
 "          Quando questo turno finisce, le unità coinvolte risultano  <ref "
@@ -683,13 +624,6 @@ msgid "Cataclysm"
 msgstr "Cataclysmus"
 
 #: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:252
-#, fuzzy
-#| msgid ""
-#| "Spend <span color='#00bbe6' style='italic'>99xp</span> and <span "
-#| "color='#c06a61' style='italic'>your attack</span> to injure everyone in a "
-#| "5-hex radius for ~75% of their\n"
-#| "          current hp. Dries water, melts snow, burns forest, and levels "
-#| "castles/villages."
 msgid ""
 "Spend <span color='#00bbe6' style='italic'>99 XP</span> and <span "
 "color='#c06a61' style='italic'>your attack</span> to blast everything in a 5-"
@@ -697,11 +631,11 @@ msgid ""
 "          to 1 HP. Dries water, melts snow, burns forest, and levels castles/"
 "villages."
 msgstr ""
-"Consuma <span color='#00bbe6' style='italic'>99pe</span> e <span "
-"color='#c06a61' style='italic'>il tuo attacco</span> per infliggere a "
-"chiunque si trovi nel raggio di 5 esagoni \n"
-"          un danno pari al 75% dei loco attuali PF. Prosciuga le acque, "
-"scioglie la neve, brucia le foreste e rade al suolo castelli e villaggi."
+"Consuma <span color='#00bbe6' style='italic'>99 PE</span> e <span "
+"color='#c06a61' style='italic'>il tuo attacco</span> per colpire chiunque si "
+"trovi nel raggio di 5 esagoni. Le unità (ad eccezione di Delfador)\n"
+"         verranno ridotte ad 1 PF. Prosciuga le acque, scioglie la neve, "
+"brucia le foreste e rade al suolo castelli e villaggi."
 
 #. [lua]: display_skills_dialog
 #: data/campaigns/The_Deceivers_Gambit/lua/spellcasting.lua:49
@@ -935,7 +869,7 @@ msgstr ""
 #. [message]: speaker=Delfador
 #: data/campaigns/The_Deceivers_Gambit/scenarios/00_Graduation.cfg:259
 msgid "Levitate? Master, are you sure?"
-msgstr ""
+msgstr "Lævita? Maestro, ne siete certo?"
 
 #. [message]: speaker=Methor
 #: data/campaigns/The_Deceivers_Gambit/scenarios/00_Graduation.cfg:263
@@ -1006,10 +940,8 @@ msgstr ""
 #. [message]: speaker=Delfador
 #. Delfador has just reached the end of the obstacle course / final exam (and the end of the scenario0
 #: data/campaigns/The_Deceivers_Gambit/scenarios/00_Graduation.cfg:459
-#, fuzzy
-#| msgid "Look at me, I made it! This time just has to be good enough!"
 msgid "Yes! I’ve made it! This time has to be good enough."
-msgstr "Guardatemi: ce l’ho fatta! Questa volta deve essere abbastanza buono!"
+msgstr "Guardatemi: ce l’ho fatta! Questa volta deve andare abbastanza bene!"
 
 #. [message]: speaker=Leollyn
 #: data/campaigns/The_Deceivers_Gambit/scenarios/00_Graduation.cfg:464
@@ -1119,8 +1051,8 @@ msgid ""
 "(sigh) Not again! I suppose you’ll have to retry the exam next year... for "
 "the sixth time."
 msgstr ""
-"(sigh) Non di nuovo! Suppongo che dovrò riprovare l’esame il prossimo anno..."
-"per la sesta volta."
+"(sigh) Non di nuovo! Suppongo che dovrò riprovare l’esame il prossimo "
+"anno...per la sesta volta."
 
 #. [scenario]
 #: data/campaigns/The_Deceivers_Gambit/scenarios/01_Stirrings_of_War.cfg:8
@@ -1245,10 +1177,8 @@ msgstr "Non hai sentito nulla?"
 
 #. [message]: speaker=Methor
 #: data/campaigns/The_Deceivers_Gambit/scenarios/01_Stirrings_of_War.cfg:179
-#, fuzzy
-#| msgid "<i>Quiet!</i>"
 msgid "Quiet!"
-msgstr "<i>Silenzio!</i>"
+msgstr "Silenzio!"
 
 #. [message]: speaker=Ozgob
 #. 'stragglers' refers to soldiers (like Delfador and Methor) who are joining Garard's war-camp, but are arriving late
@@ -1257,9 +1187,9 @@ msgid ""
 "“Kill the stragglers”, they says. “You’ll have our best warriors”, they "
 "says. N’ all I get are a bunch o’ lousy goblins? Lousy lazy lying—"
 msgstr ""
-"“Uccidete i ritardatari”, dicono. “Avrai i nostri guerrieri migliori”,"
-"dicono. E tutto quello che ottengo sono un branco di schifosi goblin? "
-"Schifosi pigri bugiardi—"
+"“Uccidete i ritardatari”, dicono. “Avrai i nostri guerrieri "
+"migliori”,dicono. E tutto quello che ottengo sono un branco di schifosi "
+"goblin? Schifosi pigri bugiardi—"
 
 #. [message]: role=gobbo1
 #: data/campaigns/The_Deceivers_Gambit/scenarios/01_Stirrings_of_War.cfg:194
@@ -1268,9 +1198,6 @@ msgstr "Sono qui, sono qui! Umani sulla strada del clan!"
 
 #. [message]: speaker=Ozgob
 #: data/campaigns/The_Deceivers_Gambit/scenarios/01_Stirrings_of_War.cfg:198
-#, fuzzy
-#| msgid ""
-#| "—then grab your spear, you loathsome lout! Don’t let them join their army!"
 msgid ""
 "—then grab your spear, you loathsome lout! Don’t let them link up with the "
 "rest of their army!"
@@ -1382,25 +1309,16 @@ msgid ""
 "The apprentice is the main character of this campaign, but right now he’s "
 "not your leader. Methor is your leader, and he can recruit Mages."
 msgstr ""
+"L'apprendista è il personaggio principale di questa campagna, ma al momento "
+"non è il tuo condottiero: lo è Methor, e lui può reclutare dei Maghi."
 
 #. [object]
 #: data/campaigns/The_Deceivers_Gambit/scenarios/01_Stirrings_of_War.cfg:322
-#, fuzzy
-#| msgid ""
-#| "The apprentice is the main character of this campaign, but right now he’s "
-#| "not your leader. Methor is your leader, and he can recruit mages.\n"
-#| "\n"
-#| "Mages are deadly ranged attackers, with accurate <i>magical</i> attacks "
-#| "that are difficult to dodge. They have few hitpoints and are highly "
-#| "vulnerable in melee combat, so take good care of them!"
 msgid ""
 "Mages are deadly ranged attackers, with accurate <i>magical</i> attacks that "
 "are difficult to dodge. They have few hitpoints and are highly vulnerable in "
 "melee combat, so take good care of them!"
 msgstr ""
-"L’apprendista è il personaggio principale di questa campagna, ma in questo "
-"momento non è il tuo condottiero. Methor lo è e lui può reclutare i maghi.\n"
-"\n"
 "I maghi sono mortali negli attacchi a distanza con degli accurati attacchi "
 "<i>magici</i>, difficili da evitare. Hanno pochi PF e sono molto vulnerabili "
 "nel combattimento corpo a corpo, quindi abbine particolare cura!"
@@ -1431,16 +1349,12 @@ msgstr ""
 #. [message]: speaker=Ozgob
 #. Ozgob has lost most of his goblins ('runts'), and is about to charge at Delfador personally
 #: data/campaigns/The_Deceivers_Gambit/scenarios/01_Stirrings_of_War.cfg:373
-#, fuzzy
-#| msgid ""
-#| "I’ve had it with this! Never send a runt to do a warrior’s job, I’ll "
-#| "bring you down myself!"
 msgid ""
 "I’ve had it with this! Never send a runt to do a warrior’s job. The real "
 "orcs will bring you down ourselves!"
 msgstr ""
 "Ne ho abbastanza di tutto questo! Mai mandare un nanerottolo a fare il "
-"lavoro di un guerriero: lo abbatterò personalmente!"
+"lavoro di un guerriero: verrai abbattuto dai veri orchi in persona!"
 
 #. [message]: speaker=Methor
 #: data/campaigns/The_Deceivers_Gambit/scenarios/01_Stirrings_of_War.cfg:410
@@ -1449,6 +1363,10 @@ msgid ""
 "powerful on the front lines, if we’re ever struggling it’s also important "
 "that I have the chance to recruit new magi from our keep."
 msgstr ""
+"Abbiamo accumulato un grosso quantitativo di oro, apprendista. Sebbene la "
+"mia magia sia potente in prima linea, se se mai dovessimo trovarci in "
+"difficoltà, è altrettanto importante che io abbia la possibilità di "
+"reclutare nuovi maghi dalla nostra fortezza."
 
 #. [message]
 #. Ozgob has died, and any remaining goblins are deserting him
@@ -1498,16 +1416,12 @@ msgstr ""
 
 #. [message]: speaker=Garard
 #: data/campaigns/The_Deceivers_Gambit/scenarios/01_Stirrings_of_War.cfg:479
-#, fuzzy
-#| msgid ""
-#| "A healer? Well, at least you’ve brought some proper numbers with you. "
-#| "Follow me back to camp. We attack on the ’morrow!"
 msgid ""
 "A healer? Well, we’ll have need of your services soon enough. Follow me back "
 "to camp. We attack on the morrow!"
 msgstr ""
-"Un guaritore? Molto bene, almeno hai portato con te un numero adeguato di "
-"uomini. Seguimi all’accampamento: attaccheremo domani!"
+"Un guaritore? Molto bene, avremo presto bisogno dei tuoi servigi. Seguimi "
+"all’accampamento: attaccheremo domani!"
 
 #. [message]: speaker=Garard
 #. Delfador has failed to defeat the goblins. Garard does not respect him.
@@ -1534,7 +1448,7 @@ msgstr "Ora non mi farò mai un nome..."
 #: data/campaigns/The_Deceivers_Gambit/scenarios/12_The_Traitor.cfg:76
 #: data/campaigns/The_Deceivers_Gambit/scenarios/12_The_Traitor.cfg:90
 msgid "Fort Garard"
-msgstr "Fort Garard"
+msgstr "Forte Garard"
 
 #. [side]
 #: data/campaigns/The_Deceivers_Gambit/scenarios/02_Fort_Garard.cfg:33
@@ -1704,7 +1618,6 @@ msgstr ""
 #. Garard's forces have just killed an orc
 #: data/campaigns/The_Deceivers_Gambit/scenarios/02_Fort_Garard.cfg:483
 #, fuzzy
-#| msgid "Then you will die forever!"
 msgid "They fall before us!"
 msgstr "Allora morirai una volta per tutte!"
 
@@ -2036,10 +1949,8 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/The_Deceivers_Gambit/scenarios/03_The_Ambassador.cfg:220
-#, fuzzy
-#| msgid "Defeat Khavur, the goblin leader"
 msgid "Defeat the enemy leader"
-msgstr "Sconfiggi Khavur, il comandante dei goblin"
+msgstr "Sconfiggi il condottiero nemico"
 
 #. [objective]: condition=lose
 #: data/campaigns/The_Deceivers_Gambit/scenarios/03_The_Ambassador.cfg:224
@@ -2181,12 +2092,12 @@ msgstr "Lintanir"
 #. [unit]
 #: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:79
 msgid "Eloreis"
-msgstr ""
+msgstr "Eloreis"
 
 #. [unit]
 #: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:91
 msgid "Parandra"
-msgstr ""
+msgstr "Parandra"
 
 #. [unit]
 #: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:101
@@ -2328,7 +2239,7 @@ msgstr ""
 #. [time]
 #: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:268
 msgid "Midnight"
-msgstr ""
+msgstr "Mezzanotte"
 
 #. [event]
 #: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:278
@@ -2548,7 +2459,7 @@ msgstr ""
 #. [message]
 #: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:646
 msgid "</i>"
-msgstr ""
+msgstr "</i>"
 
 #. [message]
 #. a monster has just drowned in the river, as a result of the player redirecting the river into the beast's hex
@@ -2741,10 +2652,6 @@ msgstr ""
 #: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1638
 #: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1765
 #, fuzzy
-#| msgid ""
-#| "Spend <span color='#00bbe6' style='italic'>8xp</span> to gain <i>flight</"
-#| "i> and the <i><ref dst='ability_skirmisherskirmisher'>skirmisher</ref></"
-#| "i> ability until the start of your next turn or until cancelled."
 msgid ""
 "Spend 8 XP to gain flight and the skirmisher ability until the start of your "
 "next turn or until cancelled."
@@ -2789,11 +2696,6 @@ msgstr ""
 #. [event]
 #: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1764
 #, fuzzy
-#| msgid ""
-#| "Spend <span color='#00bbe6' style='italic'>48xp</span> to grant yourself "
-#| "and all allies double movement and a second attack this turn.\n"
-#| "          When this turn ends, affected units become <ref "
-#| "dst='weaponspecial_slows'>slowed</ref>."
 msgid ""
 "Spend 48 XP to grant yourself and all allies double movement and a second "
 "attack this turn. When this turn ends, affected units become slowed."
@@ -2875,10 +2777,8 @@ msgstr "Khovak"
 
 #. [event]
 #: data/campaigns/The_Deceivers_Gambit/scenarios/05_The_Deceiver.cfg:240
-#, fuzzy
-#| msgid "40 gold"
 msgid "90 gold"
-msgstr "40 mo"
+msgstr "90 mo"
 
 #. [event]
 #: data/campaigns/The_Deceivers_Gambit/scenarios/05_The_Deceiver.cfg:240
@@ -3503,7 +3403,7 @@ msgstr "Il Grande Fiume"
 #. [part]
 #: data/campaigns/The_Deceivers_Gambit/scenarios/07_The_Great_River.cfg:41
 msgid "Part II"
-msgstr ""
+msgstr "Parte II"
 
 #. [part]
 #: data/campaigns/The_Deceivers_Gambit/scenarios/07_The_Great_River.cfg:47
@@ -3579,7 +3479,7 @@ msgstr ""
 #. [event]
 #: data/campaigns/The_Deceivers_Gambit/scenarios/07_The_Great_River.cfg:146
 msgid "Mount Oromore"
-msgstr ""
+msgstr "Monte Oromore"
 
 #. [event]
 #: data/campaigns/The_Deceivers_Gambit/scenarios/07_The_Great_River.cfg:315
@@ -3594,13 +3494,13 @@ msgstr "Ritharran"
 #. [message]: speaker=Delfador
 #: data/campaigns/The_Deceivers_Gambit/scenarios/07_The_Great_River.cfg:338
 msgid "Alright men—"
-msgstr ""
+msgstr "Molto bene uomini—"
 
 #. [message]: speaker=Lynyan
 #. and women
 #: data/campaigns/The_Deceivers_Gambit/scenarios/07_The_Great_River.cfg:343
 msgid "And wom’n!"
-msgstr ""
+msgstr "E donne!"
 
 #. [message]: speaker=Delfador
 #. Delfador is paying these mercenaries himself; they're not wesnoth regulars
@@ -3610,6 +3510,9 @@ msgid ""
 "importantly: you work for cheap. <span size='x-small'>Lousy Eldred wouldn’t "
 "give me any of my veterans.</span>"
 msgstr ""
+"— e donne. Vi ho accuratamente selezionati perché siete veloci, siete "
+"furtivi, e, cosa più importate, costate poco. <span size='x-small'>Quello "
+"spilorcio di Eldred non ha voluo darmi nessuno dei miei veterani.</span>"
 
 #. [message]: speaker=Delfador
 #. cross the Great River. Not at the Ford of Abez, but near.
@@ -4140,7 +4043,7 @@ msgstr ""
 #. [option]
 #: data/campaigns/The_Deceivers_Gambit/scenarios/08_Ruins_of_Saurgrath.cfg:461
 msgid "Attack"
-msgstr ""
+msgstr "Attacco"
 
 #. [message]: speaker=Barin
 #. in this string, $companion_name is female (probably "Lynyan")
@@ -4444,7 +4347,7 @@ msgstr ""
 #. [scenario]
 #: data/campaigns/The_Deceivers_Gambit/scenarios/08x_Field_Hospital.cfg:4
 msgid "Field Hospital"
-msgstr ""
+msgstr "Ospedale da Campo"
 
 #. [message]: speaker=Lionel
 #: data/campaigns/The_Deceivers_Gambit/scenarios/08x_Field_Hospital.cfg:110
@@ -4561,7 +4464,7 @@ msgstr ""
 #: data/campaigns/The_Deceivers_Gambit/scenarios/09_Omaranth.cfg:58
 #: data/campaigns/The_Deceivers_Gambit/scenarios/10_Houses_of_the_Dead.cfg:55
 msgid "Fauna"
-msgstr ""
+msgstr "Fauna"
 
 #. [event]
 #: data/campaigns/The_Deceivers_Gambit/scenarios/09_Omaranth.cfg:89
@@ -4740,7 +4643,6 @@ msgstr ""
 #. [message]: speaker=Delfador
 #: data/campaigns/The_Deceivers_Gambit/scenarios/09_Omaranth.cfg:498
 #, fuzzy
-#| msgid "Oh."
 msgid "Ah."
 msgstr "Oh."
 
@@ -4941,7 +4843,7 @@ msgstr "Le case dei morti"
 #. notice that appears at the beginning of the scenario if you select Brutal difficulty
 #: data/campaigns/The_Deceivers_Gambit/scenarios/10_Houses_of_the_Dead.cfg:93
 msgid "Meanwhile..."
-msgstr ""
+msgstr "Intanto..."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/The_Deceivers_Gambit/scenarios/10_Houses_of_the_Dead.cfg:119
@@ -5226,12 +5128,12 @@ msgstr ""
 #. [option]
 #: data/campaigns/The_Deceivers_Gambit/scenarios/10_Houses_of_the_Dead.cfg:636
 msgid "Open the gate"
-msgstr ""
+msgstr "Apri il cancello"
 
 #. [option]
 #: data/campaigns/The_Deceivers_Gambit/scenarios/10_Houses_of_the_Dead.cfg:641
 msgid "Wait"
-msgstr ""
+msgstr "Attendi"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/The_Deceivers_Gambit/scenarios/10_Houses_of_the_Dead.cfg:731
@@ -6821,7 +6723,7 @@ msgstr ""
 #. [event]
 #: data/campaigns/The_Deceivers_Gambit/scenarios/13_Revelry_Revisited.cfg:614
 msgid "$gold_pickup gold"
-msgstr ""
+msgstr "$gold_pickup mo"
 
 #. [objective]: condition=win
 #: data/campaigns/The_Deceivers_Gambit/scenarios/13_Revelry_Revisited.cfg:629
@@ -7490,7 +7392,6 @@ msgstr ""
 #. said by a male Horseman-line or Cavalryman-line unit
 #: data/campaigns/The_Deceivers_Gambit/scenarios/13x_The_King_is_Dead.cfg:210
 #, fuzzy
-#| msgid "Then, we fight?"
 msgid "Well? Shall we fight?"
 msgstr "Quindi, combattiamo?"
 
@@ -7889,7 +7790,6 @@ msgstr ""
 #. [message]: speaker=Delfador
 #: data/campaigns/The_Deceivers_Gambit/scenarios/14_Long_Live_the_Queen.cfg:1616
 #, fuzzy
-#| msgid "I am Delfador."
 msgid "Nothing? I am Delfador."
 msgstr "Io sono Delfador."
 
@@ -8247,12 +8147,12 @@ msgstr ""
 #. [attack]: type=impact
 #: data/campaigns/The_Deceivers_Gambit/units/Monster_Giant_Crab.cfg:70
 msgid "spit"
-msgstr ""
+msgstr "sputo"
 
 #. [unit_type]: id=Silverback, race=monster
 #: data/campaigns/The_Deceivers_Gambit/units/Monster_Silverback.cfg:8
 msgid "Silverback"
-msgstr ""
+msgstr "Gorilla dal Dorso Argentato"
 
 #. [unit_type]: id=Silverback, race=monster
 #: data/campaigns/The_Deceivers_Gambit/units/Monster_Silverback.cfg:10
@@ -8262,6 +8162,10 @@ msgid ""
 "the eldest of these creatures are said to possess the strength of a dozen "
 "men."
 msgstr ""
+"Le scimmie più grandi sono i Gorilla dal Dorso Argentato, così chiamati per "
+"la loro caratteristica colorazione della pelliccia sulla schiena. Più "
+"piccoli di un orco ma molto più muscolosi, si dice che i più anziani di "
+"queste creature possiedano la forza di una dozzina di uomini."
 
 #. [attack]: type=impact
 #: data/campaigns/The_Deceivers_Gambit/units/Monster_Silverback.cfg:31
@@ -8271,7 +8175,7 @@ msgstr "pugno"
 #. [unit_type]: id=Orcish Adept, race=orc, gender=female
 #: data/campaigns/The_Deceivers_Gambit/units/Orcish_Adept.cfg:5
 msgid "Orcish Adept"
-msgstr "Orco Adepto"
+msgstr "Orchessa Adepta"
 
 #. [unit_type]: id=Orcish Adept, race=orc, gender=female
 #: data/campaigns/The_Deceivers_Gambit/units/Orcish_Adept.cfg:24
@@ -8294,12 +8198,12 @@ msgstr ""
 #: data/campaigns/The_Deceivers_Gambit/units/Orcish_Sorceress.cfg:52
 #: data/campaigns/The_Deceivers_Gambit/utils/spellcasting.cfg:810
 msgid "siphon"
-msgstr ""
+msgstr "Sifone"
 
 #. [unit_type]: id=Orcish Shaman, race=orc, gender=female
 #: data/campaigns/The_Deceivers_Gambit/units/Orcish_Shaman.cfg:5
 msgid "Orcish Shaman"
-msgstr "Orco Sciamano"
+msgstr "Orchessa Sciamana"
 
 #. [unit_type]: id=Orcish Shaman, race=orc, gender=female
 #: data/campaigns/The_Deceivers_Gambit/units/Orcish_Shaman.cfg:24
@@ -8322,7 +8226,7 @@ msgstr ""
 #. [unit_type]: id=Orcish Sorceress, race=orc, gender=female
 #: data/campaigns/The_Deceivers_Gambit/units/Orcish_Sorceress.cfg:5
 msgid "Orcish Sorceress"
-msgstr "Orco Stregone"
+msgstr "Orchessa Stregona"
 
 #. [unit_type]: id=Orcish Sorceress, race=orc, gender=female
 #: data/campaigns/The_Deceivers_Gambit/units/Orcish_Sorceress.cfg:24
@@ -8365,7 +8269,7 @@ msgstr ""
 #. [attack]: type=cold
 #: data/campaigns/The_Deceivers_Gambit/units/Saurian_Devotee.cfg:54
 msgid "curse"
-msgstr ""
+msgstr "maledizione"
 
 #. [unit_type]: id=Saurian Juvenile, race=lizard
 #: data/campaigns/The_Deceivers_Gambit/units/Saurian_Juvenile.cfg:5
@@ -8404,7 +8308,7 @@ msgstr "lancia"
 #. [attack]: type=pierce
 #: data/campaigns/The_Deceivers_Gambit/units/Saurian_Young.cfg:54
 msgid "throwing spear"
-msgstr ""
+msgstr "giavellotto"
 
 #. [message]: speaker={UNIT}
 #: data/campaigns/The_Deceivers_Gambit/utils/macros.cfg:572
@@ -8583,11 +8487,6 @@ msgstr "Massimo dei PE!"
 #. [message]
 #: data/campaigns/The_Deceivers_Gambit/utils/spellcasting.cfg:2431
 #, fuzzy
-#| msgid ""
-#| "Unlike regular units, Delfador does not use XP to advance, and will "
-#| "instead advance automatically over time as he progresses through the "
-#| "story. Delfador’s XP is useful for casting spells, but raising him to "
-#| "maximum XP has no special effect."
 msgid ""
 "Unlike regular units, the apprentice does not use XP to advance, and will "
 "instead advance automatically over time as he progresses through the story. "
@@ -8601,6 +8500,7 @@ msgstr ""
 
 #. [message]
 #: data/campaigns/The_Deceivers_Gambit/utils/spellcasting.cfg:2441
+#, fuzzy
 msgid ""
 "Unlike regular units, Delfador does not use XP to advance, and will instead "
 "advance automatically over time as he progresses through the story. "

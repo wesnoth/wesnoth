@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-12-21 21:09-0600\n"
-"PO-Revision-Date: 2025-10-31 18:53+0100\n"
+"PO-Revision-Date: 2025-12-27 09:21+0100\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italiano <wesnoth-l10n-it@cirulla.net>\n"
 "Language: it\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.4.2\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
 #. [time]: id=underground
@@ -86,7 +86,7 @@ msgstr "leale"
 #: data/campaigns/The_Deceivers_Gambit/scenarios/11_Clan_Blackcrest.cfg:749
 #: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:20
 msgid "Zero upkeep."
-msgstr "Nessun Mantenimento."
+msgstr "Nessun mantenimento."
 
 #. [chance_to_hit]
 #. [chance_to_hit]: id=magical
@@ -256,45 +256,33 @@ msgstr ""
 
 #. [lua]: set_status
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:2127
-#, fuzzy
-#| msgid "female^stunned"
 msgid "female^poisoned"
-msgstr "stordita"
+msgstr "avvelenata"
 
 #. [lua]: set_status
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:2127
-#, fuzzy
-#| msgid "poison"
 msgid "poisoned"
-msgstr "veleno"
+msgstr "avvelenato"
 
 #. [lua]: set_status
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:2129
-#, fuzzy
-#| msgid "female^slow"
 msgid "female^slowed"
-msgstr "lenta"
+msgstr "rallentata"
 
 #. [lua]: set_status
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:2129
-#, fuzzy
-#| msgid "slow"
 msgid "slowed"
-msgstr "lento"
+msgstr "rallentato"
 
 #. [lua]: set_status
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:2130
-#, fuzzy
-#| msgid "female^resilient"
 msgid "female^petrified"
-msgstr "resistente"
+msgstr "pietrificata"
 
 #. [lua]: set_status
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:2130
-#, fuzzy
-#| msgid "petrifies"
 msgid "petrified"
-msgstr "pietrifica"
+msgstr "pietrificato"
 
 #. [artifact]
 #. [chance]
@@ -2656,7 +2644,6 @@ msgstr "Introduzione"
 msgid "Gameplay"
 msgstr "Struttura di gioco"
 
-#. #-#-#-#-#  wesnoth-help.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [section]: id=traits_section
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:29 data/core/help.cfg:543
