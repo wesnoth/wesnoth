@@ -68,6 +68,19 @@ EXEC_EXIFTOOL = args.exiftool_path or shutil.which("exiftool")
 
 if os.name == "posix":
     os.nice(args.nice) # set niceness, not available on Windows
+elif os.name == "nt":
+    # after testing this script on Windows, instead of running correctly,
+    # the command prompt became full of error messages.
+    # This happens because the Windows kernel lacks the fork() method
+    # available in POSIX systems, so multiprocessing is done by spawning
+    # multiple Python interpreters.
+    # To work correctly, this requires that everything which isn't a class
+    # or function definition or a global variable to be guarded inside the
+    # if __name__ == "__main__" block.
+    # Until everything can be moved into that block, corrected and tested,
+    # the only option is to exit here.
+    print("This program cannot run on Windows yet.")
+    sys.exit(0)
 
 input_files=[]
 bad_input_files=[]
