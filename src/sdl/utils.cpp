@@ -22,6 +22,7 @@
 #include "sdl/utils.hpp"
 #include "color.hpp"
 #include "log.hpp"
+#include "utils_simd.hpp"
 #include "xBRZ/xbrz.hpp"
 
 #include <algorithm>
@@ -37,6 +38,86 @@
 
 static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
+
+#include <chrono>
+#include <algorithm>
+
+class PerfTimer {
+	using Clock = std::chrono::steady_clock;
+	using ns = std::chrono::duration<double, std::nano>;
+
+	Clock::time_point start;
+
+	// Simple stats
+	static inline double accumulated_ns = 0.0;
+	static inline long call_count = 0;
+	static inline Clock::time_point last_print = Clock::now();
+	static inline Clock::time_point last_check = Clock::now();
+
+	// Calibration: measures the overhead of Clock::now() call
+	static double calibrate_overhead() {
+		constexpr int N = 10000;
+		double min_overhead = 1e9;
+
+		for (int round = 0; round < 10; ++round) {
+			auto t0 = Clock::now();
+			for (int i = 0; i < N; ++i) {
+				auto start_time = Clock::now();
+				auto end_time = Clock::now();
+				double elapsed = ns(end_time - start_time).count();
+				(void)elapsed;
+			}
+			auto t1 = Clock::now();
+
+			double total = ns(t1 - t0).count();
+			double avg = total / N;
+			min_overhead = std::min(min_overhead, avg);
+		}
+
+		return min_overhead;
+	}
+
+	static inline double clock_overhead_ns = calibrate_overhead();
+
+public:
+	PerfTimer()
+		: start(Clock::now()) {
+	}
+
+	~PerfTimer() {
+		// Capture end time as soon as possible
+		auto end = Clock::now();
+
+		// Calculate elapsed time
+		double elapsed_ns = ns(end - start).count();
+
+		// Subtract the measured overhead
+		elapsed_ns = std::max(0.0, elapsed_ns - clock_overhead_ns);
+
+		// Update stats
+		accumulated_ns += elapsed_ns;
+		call_count++;
+
+		// Check once per second if we should print
+		if (end - last_check >= std::chrono::seconds(1)) {
+			last_check = end;
+
+			// Print if 5 seconds have passed since last print
+			if (end - last_print >= std::chrono::seconds(5)) {
+				double ms = accumulated_ns / 1'000'000.0;
+				PLAIN_LOG << "[PerfTimer]: "
+					<< ms << "ms over "
+					<< call_count << " calls (avg "
+					<< (ms / call_count) << "ms)";
+
+				// Reset stats
+				accumulated_ns = 0.0;
+				call_count = 0;
+				last_print = end;
+			}
+		}
+	}
+};
 
 version_info sdl::get_version()
 {
@@ -405,17 +486,25 @@ surface scale_surface_sharp(const surface& surf, int w, int h)
 
 void adjust_surface_color(surface& nsurf, int red, int green, int blue)
 {
+//	PerfTimer timer;
+
 	if(nsurf && (red != 0 || green != 0 || blue != 0)) {
 		surface_lock lock(nsurf);
+		uint32_t* pixels = lock.pixels();
+		std::size_t count = nsurf.area();
 
-		for(auto& pixel : lock.pixel_span()) {
-			auto [r, g, b, alpha] = color_t::from_argb_bytes(pixel);
+		bool simd_used = adjust_surface_color_simd(pixels, count, red, green, blue);
 
-			r = std::clamp(static_cast<int>(r) + red, 0, 255);
-			g = std::clamp(static_cast<int>(g) + green, 0, 255);
-			b = std::clamp(static_cast<int>(b) + blue, 0, 255);
+		if (!simd_used) {
+			for (auto& pixel : lock.pixel_span()) {
+				auto [r, g, b, alpha] = color_t::from_argb_bytes(pixel);
 
-			pixel = (alpha << 24) + (r << 16) + (g << 8) + b;
+				r = std::clamp(static_cast<int>(r) + red, 0, 255);
+				g = std::clamp(static_cast<int>(g) + green, 0, 255);
+				b = std::clamp(static_cast<int>(b) + blue, 0, 255);
+
+				pixel = (alpha << 24) + (r << 16) + (g << 8) + b;
+			}
 		}
 	}
 }
@@ -706,6 +795,8 @@ void adjust_surface_alpha_add(surface& nsurf, int amount)
 
 bool mask_surface(surface& nsurf, const surface& nmask, const std::string& filename)
 {
+	PerfTimer timer;
+
 	if(nsurf == nullptr) {
 		return true;
 	}
@@ -727,34 +818,36 @@ bool mask_surface(surface& nsurf, const surface& nmask, const std::string& filen
 		return false;
 	}
 
-	uint32_t cumulative_alpha{0};
+	bool empty = true;
 	{
 		surface_lock lock(nsurf);
 		const_surface_lock mlock(nmask);
 
-		utils::span surf_pixels = lock.pixel_span();
-		utils::span mask_pixels = mlock.pixel_span();
+		uint32_t* surf_ptr = lock.pixels();
+		const uint32_t* mask_ptr = mlock.pixels();
+		std::size_t total_pixels = static_cast<std::size_t>(nmask->w) * static_cast<std::size_t>(nmask->h);
 
-		// Note: any pixels outside the range of the smaller surface are ignored.
-		const auto sentinel = std::min(surf_pixels.size(), mask_pixels.size());
+		bool simd_used = false;
 
-		for(std::size_t i = 0; i < sentinel; ++i) {
-			const uint32_t surf_alpha = surf_pixels[i] & SDL_ALPHA_MASK;
-			const uint32_t mask_alpha = mask_pixels[i] & SDL_ALPHA_MASK;
+		// Attempt SIMD (SSE2 or NEON)
+		simd_used = mask_surface_simd(surf_ptr, mask_ptr, total_pixels, empty);
 
-			const auto min_alpha = std::min(surf_alpha, mask_alpha);
+		if (!simd_used) { // SCALAR FALLBACK PATH (Runs only if SIMD was not available/viable)
+			for (std::size_t i = 0; i < total_pixels; ++i) {
+				const uint32_t surf_pixel = surf_ptr[i];
+				const uint32_t mask_alpha = mask_ptr[i] >> 24;
+				const uint32_t surf_alpha = surf_pixel >> 24;
 
-			// Clear the alpha bits before writing the new alpha value.
-			surf_pixels[i] &= ~SDL_ALPHA_MASK;
-			surf_pixels[i] |= min_alpha;
+				const uint32_t alpha = std::min(surf_alpha, mask_alpha);
+				if (alpha) empty = false;
 
-			// This will quickly saturate the leftmost 8 bits,
-			// but we only care whether the final result is 0.
-			cumulative_alpha |= min_alpha;
+				// Write the pixel back with the new alpha
+				surf_ptr[i] = (alpha << 24) | (surf_pixel & 0x00FFFFFF);
+			}
 		}
 	}
 
-	return cumulative_alpha == 0;
+	return empty;
 }
 
 bool in_mask_surface(const surface& nsurf, const surface& nmask)
@@ -771,24 +864,29 @@ bool in_mask_surface(const surface& nsurf, const surface& nmask)
 		return false;
 	}
 
-	const_surface_lock lock(nsurf);
-	const_surface_lock mlock(nmask);
+	bool is_contained = true; // Are all opaque pixels contained inside mask?
+	{
+		const_surface_lock lock(nsurf);
+		const_surface_lock mlock(nmask);
 
-	utils::span surf_pixels = lock.pixel_span();
-	utils::span mask_pixels = mlock.pixel_span();
+		const uint32_t* surf_ptr = lock.pixels();
+		const uint32_t* mask_ptr = mlock.pixels();
+		std::size_t total_pixels = static_cast<std::size_t>(nmask->w) * static_cast<std::size_t>(nmask->h);
 
-	// Note: unlike in mask_surface, both ranges here have the same size.
-	for(std::size_t i = 0; i < surf_pixels.size(); ++i) {
-		const uint32_t surf_alpha = surf_pixels[i] & SDL_ALPHA_MASK;
-		const uint32_t mask_alpha = mask_pixels[i] & SDL_ALPHA_MASK;
+		for (std::size_t i = 0; i < total_pixels; ++i) {
+			const uint32_t mask_alpha = mask_ptr[i] >> 24;
 
-		// A visible pixel (non-zero alpha) which the mask would otherwise hide.
-		if(surf_alpha && mask_alpha == 0) {
-			return false;
+			// If mask is transparent (alpha=0), surface must also be transparent
+			if (mask_alpha == 0) {
+				const uint32_t surf_alpha = surf_ptr[i] >> 24;
+				if (surf_alpha > 0) {
+					is_contained = false;
+					break; // Violation found, exit immediately
+				}
+			}
 		}
 	}
-
-	return true;
+	return is_contained;
 }
 
 void light_surface(surface& nsurf, const surface &lightmap)
@@ -1318,15 +1416,20 @@ surface rotate_90_surface(const surface& surf, bool clockwise)
 
 void flip_surface(surface& nsurf)
 {
-	if(nsurf) {
+//	PerfTimer timer;
+
+	if (nsurf) {
 		surface_lock lock(nsurf);
 		uint32_t* const pixels = lock.pixels();
 
-		for(int y = 0; y != nsurf->h; ++y) {
-			for(int x = 0; x != nsurf->w/2; ++x) {
-				const int index1 = y*nsurf->w + x;
-				const int index2 = (y+1)*nsurf->w - x - 1;
-				std::swap(pixels[index1],pixels[index2]);
+		bool simd_used = flip_image_simd(pixels, nsurf->w, nsurf->h);
+
+		if (!simd_used) {
+			for (int y = 0; y < nsurf->h; ++y) {
+				uint32_t* const row_ptr = pixels + y * nsurf->w;
+				for (int x = 0; x < nsurf->w / 2; ++x) {
+					std::swap(row_ptr[x], row_ptr[nsurf->w - x - 1]);
+				}
 			}
 		}
 	}
@@ -1382,6 +1485,38 @@ surface get_surface_portion(const surface &src, rect &area)
 	SDL_SetSurfaceBlendMode(src, src_blend);
 
 	return dst;
+}
+
+void apply_surface_opacity(surface& surf, float opacity)
+{
+//	PerfTimer timer;
+	if (surf == nullptr) return;
+
+	// Convert float opacity to integer modifier (0-255)
+	uint8_t alpha_mod = float_to_color(opacity);
+	if (alpha_mod == 255) return;
+
+	surface_lock lock(surf);
+	uint32_t* pixels = lock.pixels();
+	std::size_t count = surf.area();
+	bool simd_used = apply_surface_opacity_simd(pixels, count, alpha_mod);
+
+	if (!simd_used) {
+		uint32_t* beg = pixels;
+		uint32_t* end = pixels + count;
+		while (beg != end) {
+			uint32_t pixel = *beg;
+			uint8_t alpha = pixel >> 24;
+			if (alpha) {
+				uint8_t r = (pixel >> 16) & 0xFF;
+				uint8_t g = (pixel >> 8) & 0xFF;
+				uint8_t b = pixel & 0xFF;
+				alpha = color_multiply(alpha, alpha_mod);
+				*beg = (alpha << 24) | (r << 16) | (g << 8) | b;
+			}
+			++beg;
+		}
+	}
 }
 
 namespace
