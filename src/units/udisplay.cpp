@@ -149,12 +149,12 @@ std::chrono::milliseconds move_unit_between(const map_location& a,
 	animator.start_animations();
 	animator.pause_animation();
 	disp.scroll_to_tiles(a, b, game_display::ONSCREEN, true, 0.0, false);
-	animator.restart_animation();
+	animator.unpause_animation();
 
 	// useless now, previous short draw() just did one
 	// new_animation_frame();
 
-	auto target_time = animator.get_animation_time_potential();
+	auto target_time = animator.get_elapsed_time();
 		// target_time must be short to avoid jumpy move
 		// std::cout << "target time: " << target_time << "\n";
 	// we round it to the next multiple of 200 so that movement aligns to hex changes properly
@@ -364,7 +364,7 @@ void unit_movement_animator::proceed_to(const unit_ptr& u, std::size_t path_inde
 				disp_->scroll_to_tiles(locs, game_display::ONSCREEN,
 				                       true, false, 0.0, force_scroll_);
 				if ( temp_unit_ptr_->anim_comp().get_animation() )
-					temp_unit_ptr_->anim_comp().get_animation()->restart_animation();
+					temp_unit_ptr_->anim_comp().get_animation()->unpause_animation();
 			}
 
 			if ( tiles_adjacent(path_[current_], path_[current_+1]) )
@@ -753,13 +753,13 @@ void unit_attack(display * disp, game_board & board,
 			extra_hit_sounds_played = true;
 		}
 
-		auto step_left = (animator.get_end_time() - animator.get_animation_time() ) / 50ms;
+		auto step_left = (animator.get_end_time() - animator.get_elapsed_time() ) / 50ms;
 		if(step_left < 1) step_left = 1;
 		int removed_hp =  damage_left/step_left ;
 		if(removed_hp < 1) removed_hp = 1;
 		defender.take_hit(removed_hp);
 		damage_left -= removed_hp;
-		animator.wait_until(animator.get_animation_time_potential() + 50ms);
+		animator.wait_until(animator.get_elapsed_time() + 50ms);
 	}
 	animator.wait_for_end();
 	// pass the animation back to the real unit
