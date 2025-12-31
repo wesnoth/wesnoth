@@ -18,9 +18,9 @@
    * 5p - The Wilderlands:
      * Fixed lag during AI turn (issue #10419)
 ### Translations
-  * Updated translations: Ancient Greek, Arabic, Bengali, British English, Catalan, Chinese (Simplified), Czech, Finnish, French, Galician, Hungarian, Polish, Spanish
+   * Updated translations: Ancient Greek, Arabic, Bengali, British English, Catalan, Chinese (Simplified), Czech, Finnish, French, Galician, Hungarian, Polish, Spanish
 ### User interface
-  * The load-game dialog can now see the directories used by the development version (1.19.2 and later)
+   * The load-game dialog can now see the directories used by the development version (1.19.2 and later)
 
 ## Version 1.18.5
 ### Editor
