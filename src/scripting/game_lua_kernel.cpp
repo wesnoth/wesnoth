@@ -127,7 +127,6 @@
 #include <utility>                      // for pair
 #include <algorithm>
 #include <vector>                       // for vector, etc
-#include <SDL3/SDL_timer.h>                  // for SDL_GetTicks
 
 #ifdef DEBUG_LUA
 #include "scripting/debug_lua.hpp"

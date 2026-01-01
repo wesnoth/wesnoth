@@ -31,7 +31,6 @@
 #pragma once
 
 #include <chrono>
-#include <cstdint>
 #include <functional>
 
 namespace gui2
