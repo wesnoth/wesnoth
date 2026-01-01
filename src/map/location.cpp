@@ -600,20 +600,3 @@ std::size_t distance_between(const map_location& a, const map_location& b)
 
 	return std::max<int>(hdistance, std::abs(a.y - b.y) + vpenalty + hdistance/2);
 }
-
-/**
- * Gets the distance between two locations as the x,y difference in their locations, not a single number as with distance_between().
- * 
- * @param center the starting location
- * @param other the location to measure the distance to
- * @return a pair representing the x,y difference between the two locations.
- *         A positive x means it's below @a center, a negative x means it's above.
- *         A positive y means it's to the right of @a center, a negative y means it's to the left.
- */
-map_location directional_distance(const map_location& center, const map_location& other)
-{
-	int x = other.x - center.x;
-	int y = other.y - center.y;
-
-	return map_location(x, y);
-}

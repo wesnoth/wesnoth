@@ -21,7 +21,6 @@
 #include "sdl/rect.hpp"
 #include "tstring.hpp"
 
-#include <SDL3/SDL_rect.h>
 #include <map>
 #include <string>
 

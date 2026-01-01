@@ -22,8 +22,6 @@
 #include "utils/general.hpp"
 #include "video.hpp"
 
-#include <SDL3/SDL_timer.h>
-
 #include <thread>
 #include <algorithm>
 #include <vector>

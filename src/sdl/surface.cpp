@@ -40,7 +40,6 @@ void make_neutral(surface& surf)
 	if(surf && surf->format != SDL_PIXELFORMAT_ARGB8888) {
 		surf = surf.clone();
 	}
-	}
 }
 
 } // namespace
