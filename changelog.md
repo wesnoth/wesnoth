@@ -8,7 +8,7 @@
 ### Packaging
 ### Terrain
 ### Translations
-   * Updated translations: Hungarian, Italian, Spanish
+   * Updated translations: German, Hungarian, Italian, Spanish
 ### Units
 ### User interface
 ### WML Engine
