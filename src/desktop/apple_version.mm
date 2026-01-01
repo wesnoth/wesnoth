@@ -19,10 +19,6 @@
 
 #import "game_version.hpp"
 
-#if defined(__APPLE__) && defined(__MACH__) && defined(__ENVIRONMENT_IPHONE_OS_VERSION_MIN_REQUIRED__)
-#define SDL_PLATFORM_IOS (__ENVIRONMENT_IPHONE_OS_VERSION_MIN_REQUIRED__*1000)
-#endif
-
 #import <Foundation/Foundation.h>
 
 #if defined(SDL_PLATFORM_IOS)
