@@ -402,52 +402,29 @@ private:
 };
 
 /**
- * Generalized implementation handling container variants.
- *
- * This class shouldn't usually be used directly. Instead, it's better to
- * create a new derived class specialized to a specific container type.
+ * Generalized interface for container variants.
  */
-template<typename T>
+template<typename Derived>
 class variant_container : public variant_value_base
 {
-	// NOTE: add more conditions if this changes.
-	static_assert((std::is_same_v<variant_vector, T> || std::is_same_v<variant_map_raw, T>),
-		"variant_container only accepts vector or map specifications.");
+protected:
+	/** Only derived classes can instantiate this class. */
+	variant_container() = default;
 
 public:
-	explicit variant_container(const T& container)
-		: container_(container)
-	{
-	}
-
-	explicit variant_container(T&& container)
-		: container_(std::move(container))
-	{
-	}
-
 	virtual bool is_empty() const override
 	{
-		return container_.empty();
+		return container().empty();
 	}
 
 	virtual std::size_t num_elements() const override
 	{
-		return container_.size();
+		return container().size();
 	}
 
 	virtual bool as_bool() const override
 	{
 		return !is_empty();
-	}
-
-	T& get_container()
-	{
-		return container_;
-	}
-
-	const T& get_container() const
-	{
-		return container_;
 	}
 
 	virtual std::string string_cast() const override;
@@ -458,7 +435,7 @@ public:
 
 	bool contains(const variant& member) const
 	{
-		return utils::contains<T, variant>(container_, member);
+		return utils::contains(container(), member);
 	}
 
 	// We implement these here since the interface is the same for all
@@ -470,33 +447,51 @@ public:
 	virtual bool iterator_equals(const utils::any& first, const utils::any& second) const override;
 
 protected:
-	using mod_func_t = std::function<std::string(const variant&)>;
-
-	virtual std::string to_string_detail(const typename T::value_type& value, mod_func_t mod_func) const = 0;
+	using to_string_op = std::function<std::string(const variant&)>;
 
 private:
 	/**
-	 * Implementation to handle string conversion for @ref string_cast, @ref get_serialized_string,
+	 * String conversion helper for @ref string_cast, @ref get_serialized_string,
 	 * and @ref get_debug_string.
 	 *
-	 * Derived classes should provide type-specific value handling by implementing @ref to_string_detail.
+	 * Derived classes should implement container-specific handling by defining a
+	 * static to_string_detail function which takes the container's value_type as
+	 * its first parameter and a to_string_op functor as its second.
 	 */
-	std::string to_string_impl(bool annotate, bool annotate_empty, mod_func_t mod_func) const;
+	std::string to_string_impl(bool annotate, bool annotate_empty, const to_string_op& mod_func) const;
 
-	T container_;
+	/** Read-only access to the underlying container. */
+	const auto& container() const
+	{
+		return static_cast<const Derived&>(*this).get_container();
+	}
 };
 
 
-class variant_list : public variant_container<variant_vector>
+class variant_list : public variant_container<variant_list>
 {
 public:
-	explicit variant_list(const variant_vector& vec);
-	explicit variant_list(variant_vector&& vec);
+	friend class variant_container<variant_list>;
+
+	explicit variant_list(const variant_vector& vec)
+		: container_(vec)
+	{
+	}
+
+	explicit variant_list(variant_vector&& vec)
+		: container_(std::move(vec))
+	{
+	}
+
+	const variant_vector& get_container() const
+	{
+		return container_;
+	}
 
 	/**
 	 * Applies the provided function to the corresponding variants in this and another list.
 	 */
-	variant list_op(value_base_ptr second, const std::function<variant(variant&, variant&)>& op_func);
+	variant list_op(value_base_ptr second, const std::function<variant(const variant&, const variant&)>& op_func);
 
 	virtual bool equals(variant_value_base& other) const override;
 	virtual bool less_than(variant_value_base& other) const override;
@@ -509,23 +504,35 @@ public:
 	virtual variant deref_iterator(const utils::any&) const override;
 
 private:
-	virtual std::string to_string_detail(const variant_vector::value_type& container_val, mod_func_t mod_func) const override
+	/** Helper for @ref variant_container::to_string_impl. */
+	static std::string to_string_detail(const variant& value, const to_string_op& op)
 	{
-		return mod_func(container_val);
+		return op(value);
 	}
+
+	variant_vector container_;
 };
 
 
-class variant_map : public variant_container<variant_map_raw>
+class variant_map : public variant_container<variant_map>
 {
 public:
+	friend class variant_container<variant_map>;
+
 	explicit variant_map(const variant_map_raw& map)
-		: variant_container(map)
-	{}
+		: container_(map)
+	{
+	}
 
 	explicit variant_map(variant_map_raw&& map)
-		: variant_container(std::move(map))
-	{}
+		: container_(std::move(map))
+	{
+	}
+
+	const variant_map_raw& get_container() const
+	{
+		return container_;
+	}
 
 	virtual bool equals(variant_value_base& other) const override;
 	virtual bool less_than(variant_value_base& other) const override;
@@ -538,7 +545,10 @@ public:
 	virtual variant deref_iterator(const utils::any&) const override;
 
 private:
-	virtual std::string to_string_detail(const variant_map_raw::value_type& container_val, mod_func_t mod_func) const override;
+	/** Helper for @ref variant_container::to_string_impl. */
+	static std::string to_string_detail(const variant_map_raw::value_type& value, const to_string_op& op);
+
+	variant_map_raw container_;
 };
 
 } // namespace wfl
