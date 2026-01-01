@@ -1269,6 +1269,14 @@ void unit::set_recruits(const std::vector<std::string>& recruits)
 {
 	unit_types.check_types(recruits);
 	std::set<std::string> recruits_set(recruits.begin(), recruits.end());
+	if(resources::gameboard) {
+		if(resources::gameboard->get_team(side_).is_local_human()) {
+			auto& encountered_units = prefs::get().encountered_units();
+			for(const auto& recruit : recruits_set) {
+				encountered_units.insert(recruit);
+			}
+		}
+	}
 	recruit_list_ = recruits_set;
 }
 
