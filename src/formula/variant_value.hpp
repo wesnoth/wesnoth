@@ -414,12 +414,12 @@ protected:
 public:
 	virtual bool is_empty() const override
 	{
-		return std::empty(container());
+		return container().empty();
 	}
 
 	virtual std::size_t num_elements() const override
 	{
-		return std::size(container());
+		return container().size();
 	}
 
 	virtual bool as_bool() const override
@@ -455,10 +455,10 @@ private:
 	 * and @ref get_debug_string.
 	 *
 	 * Derived classes should implement container-specific handling by defining a
-	 * static make_string_writer function that takes a to_string_op and returns a
-	 * closure adapted to that container's value_type.
+	 * static to_string_detail function which takes the container's value_type as
+	 * its first parameter and a to_string_op functor as its second.
 	 */
-	std::string to_string_impl(bool annotate, bool annotate_empty, const to_string_op& func) const;
+	std::string to_string_impl(bool annotate, bool annotate_empty, const to_string_op& mod_func) const;
 
 	/** Read-only access to the underlying container. */
 	const auto& container() const
@@ -504,15 +504,10 @@ public:
 	virtual variant deref_iterator(const utils::any&) const override;
 
 private:
-	/**
-	 * Helper for @ref variant_container::to_string_impl.
-	 *
-	 * Since @a op already takes a single variant as its input,
-	 * we can simply return the functor unchanged.
-	 */
-	static const to_string_op& make_string_writer(const to_string_op& func)
+	/** Helper for @ref variant_container::to_string_impl. */
+	static std::string to_string_detail(const variant& value, const to_string_op& op)
 	{
-		return func;
+		return op(value);
 	}
 
 	variant_vector container_;
@@ -550,23 +545,8 @@ public:
 	virtual variant deref_iterator(const utils::any&) const override;
 
 private:
-	/**
-	 * Helper for @ref variant_container::to_string_impl.
-	 *
-	 * Returns a closure that adapts @a op to accept an std::map value pair.
-	 */
-	static auto make_string_writer(const to_string_op& func)
-	{
-		return [func](const variant_map_raw::value_type& value) {
-			std::ostringstream ss;
-
-			ss << func(value.first);
-			ss << "->";
-			ss << func(value.second);
-
-			return ss.str();
-		};
-	}
+	/** Helper for @ref variant_container::to_string_impl. */
+	static std::string to_string_detail(const variant_map_raw::value_type& value, const to_string_op& op);
 
 	variant_map_raw container_;
 };
