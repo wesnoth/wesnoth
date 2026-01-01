@@ -708,7 +708,7 @@ private:
 	 * @param side The side information to send.
 	 * @return True if the document was sent, false otherwise.
 	 */
-	bool send_taken_side(simple_wml::document& cfg, const simple_wml::node* side) const;
+	bool send_taken_side(simple_wml::document& cfg, const simple_wml::node& side) const;
 
 	/**
 	 * Figures out which side to take and tells that side to the game owner.
