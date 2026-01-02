@@ -446,6 +446,18 @@ public:
 	virtual void iterator_dec(utils::any&) const override;
 	virtual bool iterator_equals(const utils::any& first, const utils::any& second) const override;
 
+	/** Inherited from variant_value_base. */
+	virtual bool equals(variant_value_base& other) const override
+	{
+		return container_for(*this) == container_for(other);
+	}
+
+	/** Inherited from variant_value_base. */
+	virtual bool less_than(variant_value_base& other) const override
+	{
+		return container_for(*this) < container_for(other);
+	}
+
 protected:
 	using to_string_op = std::function<std::string(const variant&)>;
 
@@ -463,7 +475,13 @@ private:
 	/** Read-only access to the underlying container. */
 	const auto& container() const
 	{
-		return static_cast<const Derived&>(*this).get_container();
+		return container_for(*this);
+	}
+
+	/** Helper to call get_container for the derived class. */
+	static const auto& container_for(const variant_value_base& value)
+	{
+		return static_cast<const Derived&>(value).get_container();
 	}
 };
 
@@ -488,8 +506,6 @@ public:
 		return container_;
 	}
 
-	virtual bool equals(variant_value_base& other) const override;
-	virtual bool less_than(variant_value_base& other) const override;
 
 	virtual formula_variant::type get_type() const override
 	{
@@ -529,8 +545,6 @@ public:
 		return container_;
 	}
 
-	virtual bool equals(variant_value_base& other) const override;
-	virtual bool less_than(variant_value_base& other) const override;
 
 	virtual formula_variant::type get_type() const override
 	{

@@ -297,38 +297,6 @@ bool variant_container<T>::iterator_equals(const utils::any& first, const utils:
 template class variant_container<variant_list>;
 template class variant_container<variant_map>;
 
-bool variant_list::equals(variant_value_base& other) const
-{
-	const auto& other_container = value_ref_cast<variant_list>(other).get_container();
-
-	if(num_elements() != other.num_elements()) {
-		return false;
-	}
-
-	for(std::size_t n = 0; n < num_elements(); ++n) {
-		if(get_container()[n] != other_container[n]) {
-			return false;
-		}
-	}
-
-	return true;
-}
-
-bool variant_list::less_than(variant_value_base& other) const
-{
-	const auto& other_container = value_ref_cast<variant_list>(other).get_container();
-
-	for(std::size_t n = 0; n != num_elements() && n != other.num_elements(); ++n) {
-		if(get_container()[n] < other_container[n]) {
-			return true;
-		} else if(get_container()[n] > other_container[n]) {
-			return false;
-		}
-	}
-
-	return num_elements() < other.num_elements();
-}
-
 variant variant_list::deref_iterator(const utils::any& iter) const
 {
 	return *utils::any_cast<const variant_vector::const_iterator&>(iter);
@@ -343,16 +311,6 @@ std::string variant_map::to_string_detail(const variant_map_raw::value_type& val
 	ss << op(value.second);
 
 	return ss.str();
-}
-
-bool variant_map::equals(variant_value_base& other) const
-{
-	return get_container() == value_ref_cast<variant_map>(other).get_container();
-}
-
-bool variant_map::less_than(variant_value_base& other) const
-{
-	return get_container() < value_ref_cast<variant_map>(other).get_container();
 }
 
 variant variant_map::deref_iterator(const utils::any& iter) const
