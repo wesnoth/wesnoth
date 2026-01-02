@@ -297,24 +297,6 @@ bool variant_container<T>::iterator_equals(const utils::any& first, const utils:
 template class variant_container<variant_list>;
 template class variant_container<variant_map>;
 
-variant variant_list::list_op(value_base_ptr second, const std::function<variant(const variant&, const variant&)>& op_func)
-{
-	const auto& other_list = value_cast<variant_list>(std::move(second));
-
-	if(num_elements() != other_list->num_elements()) {
-		throw type_error("List op requires two lists of the same length");
-	}
-
-	std::vector<variant> res;
-	res.reserve(num_elements());
-
-	for(std::size_t i = 0; i < num_elements(); ++i) {
-		res.push_back(op_func(get_container()[i], other_list->get_container()[i]));
-	}
-
-	return variant(std::move(res));
-}
-
 bool variant_list::equals(variant_value_base& other) const
 {
 	const auto& other_container = value_ref_cast<variant_list>(other).get_container();

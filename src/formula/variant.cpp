@@ -542,28 +542,57 @@ bool variant::operator>(const variant& v) const
 	return v < *this;
 }
 
+namespace implementation
+{
+/**
+ * Applies the provided function to the corresponding variants in both lists.
+ *
+ * @todo Expose this to the public API.
+ */
+template<typename Func>
+variant zip_transform(const variant& v1, const variant& v2, const Func& op_func)
+{
+	const variant_vector& lhs = v1.as_list();
+	const variant_vector& rhs = v2.as_list();
+
+	if(lhs.size() != rhs.size()) {
+		throw type_error("zip_transform requires two lists of the same length");
+	}
+
+	std::vector<variant> res;
+	res.reserve(lhs.size());
+
+	for(std::size_t i = 0; i < lhs.size(); ++i) {
+		res.push_back(std::invoke(op_func, lhs[i], rhs[i]));
+	}
+
+	return variant(std::move(res));
+}
+
+} // namespace implementation
+
 variant variant::list_elements_add(const variant& v) const
 {
 	must_both_be(formula_variant::type::list, v);
-	return value_cast<variant_list>()->list_op(v.value_, std::plus<variant>());
+	return implementation::zip_transform(*this, v, std::plus<variant>{});
 }
 
 variant variant::list_elements_sub(const variant& v) const
 {
 	must_both_be(formula_variant::type::list, v);
-	return value_cast<variant_list>()->list_op(v.value_, std::minus<variant>());
+	return implementation::zip_transform(*this, v, std::minus<variant>{});
 }
 
 variant variant::list_elements_mul(const variant& v) const
 {
 	must_both_be(formula_variant::type::list, v);
-	return value_cast<variant_list>()->list_op(v.value_, std::multiplies<variant>());
+	return implementation::zip_transform(*this, v, std::multiplies<variant>{});
 }
 
 variant variant::list_elements_div(const variant& v) const
 {
 	must_both_be(formula_variant::type::list, v);
-	return value_cast<variant_list>()->list_op(v.value_, std::divides<variant>());
+	return implementation::zip_transform(*this, v, std::divides<variant>{});
 }
 
 variant variant::concatenate(const variant& v) const
