@@ -578,17 +578,22 @@ void render_unit_image(
 		tex.set_color_mod(blendto);
 
 		if(submerge > 0.0) {
+			SDL_FColor fcolor;
+			fcolor.r = blendto.r;
+			fcolor.g = blendto.g;
+			fcolor.b = blendto.b;
+
 			// also draw submerged portion
 			// alpha_mod and color_mod are ignored,
 			// so we have to put them in the smooth shaded vertex data.
 			// This also has to incorporate the existing submerge alpha.
 			blendto.a = uint8_t(data.alpha_verts[0].color.a * blend_ratio);
-			data.alpha_verts[0].color = blendto;
-			data.alpha_verts[1].color = blendto;
+			data.alpha_verts[0].color = fcolor;
+			data.alpha_verts[1].color = fcolor;
 
 			blendto.a = uint8_t(data.alpha_verts[2].color.a * blend_ratio);
-			data.alpha_verts[2].color = blendto;
-			data.alpha_verts[3].color = blendto;
+			data.alpha_verts[2].color = fcolor;
+			data.alpha_verts[3].color = fcolor;
 
 			// set clip for dry part
 			// smooth_shaded doesn't use the clip information so it's fine to set it up front
