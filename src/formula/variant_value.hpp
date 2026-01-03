@@ -54,10 +54,10 @@ static std::shared_ptr<T> value_cast(value_base_ptr ptr)
 
 /** Casts a @ref variant_value_base reference to a new derived type. */
 template<typename T>
-static T& value_ref_cast(variant_value_base& ptr)
+static const T& value_ref_cast(const variant_value_base& ptr)
 {
 	try {
-		return dynamic_cast<T&>(ptr);
+		return dynamic_cast<const T&>(ptr);
 	} catch(const std::bad_cast&) {
 		throw type_error("Could not cast type");
 	}
@@ -115,7 +115,7 @@ public:
 	 * Called to determine if this variant is equal to another _of the same type_.
 	 * This function is _only_ called if get_type() returns the same result for both arguments.
 	 */
-	virtual bool equals(variant_value_base& /*other*/) const
+	virtual bool equals(const variant_value_base& /*other*/) const
 	{
 		return true; // null is equal to null
 	}
@@ -124,7 +124,7 @@ public:
 	 * Called to determine if this variant is less than another _of the same type_.
 	 * This function is _only_ called if get_type() returns the same result for both arguments.
 	 */
-	virtual bool less_than(variant_value_base& /*other*/) const
+	virtual bool less_than(const variant_value_base& /*other*/) const
 	{
 		return false; // null is not less than null
 	}
@@ -206,12 +206,12 @@ public:
 		return value_;
 	}
 
-	virtual bool equals(variant_value_base& other) const override
+	virtual bool equals(const variant_value_base& other) const override
 	{
 		return value_ == value_ref_cast<variant_numeric>(other).value_;
 	}
 
-	virtual bool less_than(variant_value_base& other) const override
+	virtual bool less_than(const variant_value_base& other) const override
 	{
 		return value_ < value_ref_cast<variant_numeric>(other).value_;
 	}
@@ -323,8 +323,8 @@ public:
 
 	virtual std::string get_debug_string(formula_seen_stack& seen, bool verbose) const override;
 
-	virtual bool equals(variant_value_base& other) const override;
-	virtual bool less_than(variant_value_base& other) const override;
+	virtual bool equals(const variant_value_base& other) const override;
+	virtual bool less_than(const variant_value_base& other) const override;
 
 	virtual formula_variant::type get_type() const override
 	{
@@ -382,12 +382,12 @@ public:
 		return string_;
 	}
 
-	virtual bool equals(variant_value_base& other) const override
+	virtual bool equals(const variant_value_base& other) const override
 	{
 		return string_ == value_ref_cast<variant_string>(other).string_;
 	}
 
-	virtual bool less_than(variant_value_base& other) const override
+	virtual bool less_than(const variant_value_base& other) const override
 	{
 		return string_ < value_ref_cast<variant_string>(other).string_;
 	}
@@ -447,13 +447,13 @@ public:
 	virtual bool iterator_equals(const utils::any& first, const utils::any& second) const override;
 
 	/** Inherited from variant_value_base. */
-	virtual bool equals(variant_value_base& other) const override
+	virtual bool equals(const variant_value_base& other) const override
 	{
 		return container_for(*this) == container_for(other);
 	}
 
 	/** Inherited from variant_value_base. */
-	virtual bool less_than(variant_value_base& other) const override
+	virtual bool less_than(const variant_value_base& other) const override
 	{
 		return container_for(*this) < container_for(other);
 	}

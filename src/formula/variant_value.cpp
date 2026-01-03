@@ -143,15 +143,15 @@ std::string variant_callable::get_debug_string(formula_seen_stack& seen, bool ve
 	return ss.str();
 }
 
-bool variant_callable::equals(variant_value_base& other) const
+bool variant_callable::equals(const variant_value_base& other) const
 {
-	variant_callable& other_ref = value_ref_cast<variant_callable>(other);
+	const variant_callable& other_ref = value_ref_cast<variant_callable>(other);
 	return callable_ ? callable_->equals(*other_ref.callable_) : callable_ == other_ref.callable_;
 }
 
-bool variant_callable::less_than(variant_value_base& other) const
+bool variant_callable::less_than(const variant_value_base& other) const
 {
-	variant_callable& other_ref = value_ref_cast<variant_callable>(other);
+	const variant_callable& other_ref = value_ref_cast<variant_callable>(other);
 	return callable_ ? callable_->less(*other_ref.callable_) : other_ref.callable_ != nullptr;
 }
 
