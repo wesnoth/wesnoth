@@ -1100,15 +1100,15 @@ std::string specials_context_t::describe_weapon_specials_value(const attack_type
 
 	auto add_to_list = [&](const ability_ptr& p_ab, const specials_combatant& student, const auto& source) {
 		if (&student == &s_a_o.other) {
-			opponents_abilities.insert(p_ab->cfg()["name"].str());
+			opponents_abilities.insert(p_ab->substitute_variables(p_ab->cfg()["name"].str()));
 		} else if constexpr (utils::decayed_is_same<decltype(source), attack_type>) {
-			wespon_specials.insert(p_ab->cfg()["name"].str());
+			wespon_specials.insert(p_ab->substitute_variables(p_ab->cfg()["name"].str()));
 		} else if (&source == s_a_o.self.un.get()) {
-			abilities_self.insert(p_ab->cfg().get_or("name_affected", "name").str());
+			abilities_self.insert(p_ab->cfg().get_or(p_ab->substitute_variables(p_ab->cfg()["name_affected"].str()), p_ab->substitute_variables(p_ab->cfg()["name"].str())).str());
 		} else if (!is_enemy(source.side(), s_a_o.self.un->side())) {
-			abilities_allies.insert(p_ab->cfg().get_or("name_affected", "name").str());
+			abilities_allies.insert(p_ab->cfg().get_or(p_ab->substitute_variables(p_ab->cfg()["name_affected"].str()), p_ab->substitute_variables(p_ab->cfg()["name"].str())).str());
 		} else {
-			abilities_enemies.insert(p_ab->cfg().get_or("name_affected", "name").str());
+			abilities_enemies.insert(p_ab->cfg().get_or(p_ab->substitute_variables(p_ab->cfg()["name_affected"].str()), p_ab->substitute_variables(p_ab->cfg()["name"].str())).str());
 		}
 	};
 
