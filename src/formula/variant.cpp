@@ -212,7 +212,7 @@ variant variant::operator[](std::size_t n) const
 	}
 
 	try {
-		return value_cast<variant_list>()->get_container().at(n);
+		return as_list().at(n);
 	} catch(const std::out_of_range&) {
 		throw type_error("invalid index");
 	}
@@ -225,7 +225,7 @@ variant variant::operator[](const variant& v) const
 	}
 
 	if(is_map()) {
-		auto& map = value_cast<variant_map>()->get_container();
+		auto& map = as_map();
 
 		auto i = map.find(v);
 		if(i == map.end()) {
@@ -254,7 +254,7 @@ variant variant::operator[](const variant& v) const
 variant variant::get_keys() const
 {
 	std::vector<variant> tmp;
-	for(const auto& [key, value] : value_cast<variant_map>()->get_container()) {
+	for(const auto& [key, value] : as_map()) {
 		tmp.push_back(key);
 	}
 
@@ -264,7 +264,7 @@ variant variant::get_keys() const
 variant variant::get_values() const
 {
 	std::vector<variant> tmp;
-	for(const auto& [key, value] : value_cast<variant_map>()->get_container()) {
+	for(const auto& [key, value] : as_map()) {
 		tmp.push_back(value);
 	}
 
@@ -298,7 +298,7 @@ std::size_t variant::num_elements() const
 variant variant::get_member(const std::string& name) const
 {
 	if(is_callable()) {
-		if(auto obj = value_cast<variant_callable>()->get_callable()) {
+		if(auto obj = as_callable()) {
 			return obj->query_value(name);
 		}
 	}
@@ -359,8 +359,8 @@ const_formula_callable_ptr variant::as_callable() const
 variant variant::operator+(const variant& v) const
 {
 	if(is_list() && v.is_list()) {
-		auto& list = value_cast<variant_list>()->get_container();
-		auto& other_list = v.value_cast<variant_list>()->get_container();
+		auto& list = as_list();
+		auto& other_list = v.as_list();
 
 		std::vector<variant> res;
 		res.reserve(list.size() + other_list.size());
@@ -377,9 +377,9 @@ variant variant::operator+(const variant& v) const
 	}
 
 	if(is_map() && v.is_map()) {
-		std::map<variant, variant> res = value_cast<variant_map>()->get_container();
+		std::map<variant, variant> res = as_map();
 
-		for(const auto& member : v.value_cast<variant_map>()->get_container()) {
+		for(const auto& member : v.as_map()) {
 			res[member.first] = member.second;
 		}
 
