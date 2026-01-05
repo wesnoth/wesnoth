@@ -315,9 +315,8 @@ std::string variant_map::to_string_detail(const variant_map_raw::value_type& val
 
 variant variant_map::deref_iterator(const utils::any& iter) const
 {
-	const variant_map_raw::value_type& p = *utils::any_cast<const variant_map_raw::const_iterator&>(iter);
-	auto the_pair = std::make_shared<key_value_pair>(p.first, p.second);
-	return variant(the_pair);
+	const auto& [key, value] = *utils::any_cast<const variant_map_raw::const_iterator&>(iter);
+	return variant(std::make_shared<key_value_pair>(key, value));
 }
 
 } // namespace wfl
