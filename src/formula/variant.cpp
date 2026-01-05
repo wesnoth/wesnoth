@@ -21,6 +21,7 @@
 
 #include "formatter.hpp"
 #include "formula/function.hpp"
+#include "formula/variant_value.hpp"
 #include "log.hpp"
 
 static lg::log_domain log_scripting_formula("scripting/formula");
@@ -192,6 +193,16 @@ variant::variant(const std::map<variant, variant>& map)
 variant::variant(std::map<variant, variant>&& map)
 	: value_(std::make_shared<variant_map>(std::move(map)))
 {
+}
+
+variant::variant(const_formula_callable_ptr callable)
+	: value_(std::make_shared<variant_callable>(std::move(callable)))
+{
+}
+
+formula_variant::type variant::type() const
+{
+	return value_->get_type();
 }
 
 variant variant::operator[](std::size_t n) const

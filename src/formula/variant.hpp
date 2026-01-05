@@ -16,8 +16,10 @@
 #pragma once
 
 #include "exceptions.hpp"
-#include "formula/variant_value.hpp"
+#include "formula/callable_fwd.hpp"
+#include "formula/formula_variant.hpp"
 
+#include "utils/any.hpp"
 #include <map>
 #include <vector>
 
@@ -25,6 +27,7 @@ namespace wfl
 {
 class formula_callable;
 class variant;
+class variant_value_base;
 class variant_iterator;
 
 struct type_error : public game::error
@@ -50,14 +53,9 @@ public:
 	explicit variant(std::string&& str);
 	explicit variant(const std::map<variant, variant>& map);
 	explicit variant(std::map<variant, variant>&& map);
+	explicit variant(const_formula_callable_ptr callable);
 	variant(const variant& v) = default;
 	variant(variant&& v) = default;
-
-	template<typename T>
-	explicit variant(std::shared_ptr<T> callable)
-		: value_(std::make_shared<variant_callable>(callable))
-	{
-	}
 
 	variant& operator=(const variant& v) = default;
 	variant& operator=(variant&& v) = default;
@@ -114,7 +112,7 @@ public:
 	template<typename T>
 	std::shared_ptr<T> convert_to() const
 	{
-		std::shared_ptr<T> res = std::dynamic_pointer_cast<T>(std::const_pointer_cast<formula_callable>(as_callable()));
+		auto res = try_convert<T>();
 		if(!res) {
 			throw type_error("could not convert type");
 		}
@@ -183,16 +181,10 @@ private:
 
 	void must_both_be(formula_variant::type t, const variant& second) const;
 
-	formula_variant::type type() const
-	{
-		return value_->get_type();
-	}
+	formula_variant::type type() const;
 
-	/**
-	 * Variant value.
-	 * Each of the constructors initialized this with the appropriate helper class.
-	 */
-	value_base_ptr value_;
+	/** @invariant Never null. */
+	std::shared_ptr<variant_value_base> value_;
 };
 
 /**

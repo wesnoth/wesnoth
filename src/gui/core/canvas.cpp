@@ -39,6 +39,7 @@
 #include "sdl/surface.hpp"
 #include "sdl/texture.hpp"
 #include "sdl/utils.hpp" // blur_surface
+#include "utils/general.hpp"
 #include "video.hpp" // read_pixels_low_res, only used for blurring
 #include "wml_exception.hpp"
 
