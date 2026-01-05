@@ -15,6 +15,7 @@
 
 #pragma once
 
+#include "exceptions.hpp"
 #include "formula/variant_value.hpp"
 
 #include <map>
@@ -23,7 +24,16 @@
 namespace wfl
 {
 class formula_callable;
+class variant;
 class variant_iterator;
+
+struct type_error : public game::error
+{
+	explicit type_error(const std::string& str);
+};
+
+/** @throws wfl::type_error for an incorrect type @a t of variant @a v. */
+[[noreturn]] void assert_must_be(formula_variant::type t, const variant& v);
 
 class variant
 {
@@ -89,11 +99,7 @@ public:
 
 	const std::string& as_string() const;
 
-	const_formula_callable_ptr as_callable() const
-	{
-		must_be(formula_variant::type::object);
-		return value_cast<variant_callable>()->get_callable();
-	}
+	const_formula_callable_ptr as_callable() const;
 
 	template<typename T>
 	std::shared_ptr<T> try_convert() const
@@ -165,7 +171,12 @@ private:
 	template<typename T>
 	std::shared_ptr<T> value_cast() const
 	{
-		return wfl::value_cast<T>(value_);
+		auto res = std::dynamic_pointer_cast<T>(value_);
+		if(!res) {
+			assert_must_be(T::value_type, *this);
+		}
+
+		return res;
 	}
 
 	void must_be(formula_variant::type t) const;

@@ -14,7 +14,6 @@
 
 #pragma once
 
-#include "exceptions.hpp"
 #include "formula/callable_fwd.hpp"
 #include "formula_variant.hpp"
 #include "utils/any.hpp"
@@ -44,23 +43,6 @@ class variant;
 using variant_vector = std::vector<variant>;
 using variant_map_raw = std::map<variant, variant>;
 using value_base_ptr = std::shared_ptr<variant_value_base>;
-
-struct type_error : public game::error
-{
-	explicit type_error(const std::string& str);
-};
-
-/** Casts a @ref variant_value_base shared pointer to a new derived type. */
-template<typename T>
-static std::shared_ptr<T> value_cast(value_base_ptr ptr)
-{
-	std::shared_ptr<T> res = std::dynamic_pointer_cast<T>(ptr);
-	if(!res) {
-		throw type_error("Could not cast type");
-	}
-
-	return res;
-}
 
 #define IMPLEMENT_VALUE_TYPE(value)                                                                                    \
 	static constexpr auto value_type = value;                                                                          \

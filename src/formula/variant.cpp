@@ -32,17 +32,18 @@ static lg::log_domain log_scripting_formula("scripting/formula");
 
 namespace wfl
 {
-
+namespace
+{
 // Static value to initialize null variants to ensure its value is never nullptr.
-static value_base_ptr null_value(new variant_value_base);
+const auto null_value = std::make_shared<variant_value_base>();
 
-static std::string variant_type_to_string(formula_variant::type type)
+std::string variant_type_to_string(formula_variant::type type)
 {
 	return formula_variant::get_string(type);
 }
 
 // Small helper function to get a standard type error message.
-static std::string was_expecting(const std::string& message, const variant& v)
+std::string was_expecting(const std::string& message, const variant& v)
 {
 	std::ostringstream ss;
 
@@ -52,9 +53,16 @@ static std::string was_expecting(const std::string& message, const variant& v)
 	return ss.str();
 }
 
+} // namespace
+
 type_error::type_error(const std::string& str) : game::error(str)
 {
 	PLAIN_LOG << "ERROR: " << message << "\n" << call_stack_manager::get();
+}
+
+void assert_must_be(formula_variant::type t, const variant& v)
+{
+	throw type_error(was_expecting(formula_variant::get_string(t), v));
 }
 
 variant_iterator::variant_iterator()
@@ -192,11 +200,9 @@ variant variant::operator[](std::size_t n) const
 		return *this;
 	}
 
-	must_be(formula_variant::type::list);
-
 	try {
 		return value_cast<variant_list>()->get_container().at(n);
-	} catch(std::out_of_range&) {
+	} catch(const std::out_of_range&) {
 		throw type_error("invalid index");
 	}
 }
@@ -236,11 +242,9 @@ variant variant::operator[](const variant& v) const
 
 variant variant::get_keys() const
 {
-	must_be(formula_variant::type::map);
-
 	std::vector<variant> tmp;
-	for(const auto& i : value_cast<variant_map>()->get_container()) {
-		tmp.push_back(i.first);
+	for(const auto& [key, value] : value_cast<variant_map>()->get_container()) {
+		tmp.push_back(key);
 	}
 
 	return variant(std::move(tmp));
@@ -248,11 +252,9 @@ variant variant::get_keys() const
 
 variant variant::get_values() const
 {
-	must_be(formula_variant::type::map);
-
 	std::vector<variant> tmp;
-	for(const auto& i : value_cast<variant_map>()->get_container()) {
-		tmp.push_back(i.second);
+	for(const auto& [key, value] : value_cast<variant_map>()->get_container()) {
+		tmp.push_back(value);
 	}
 
 	return variant(std::move(tmp));
@@ -302,7 +304,6 @@ int variant::as_int(int fallback) const
 	if(is_null())    { return fallback; }
 	if(is_decimal()) { return as_decimal() / 1000; }
 
-	must_be(formula_variant::type::integer);
 	return value_cast<variant_int>()->get_numeric_value();
 }
 
@@ -326,20 +327,22 @@ bool variant::as_bool() const
 
 const std::string& variant::as_string() const
 {
-	must_be(formula_variant::type::string);
 	return value_cast<variant_string>()->get_string();
 }
 
 const std::vector<variant>& variant::as_list() const
 {
-	must_be(formula_variant::type::list);
 	return value_cast<variant_list>()->get_container();
 }
 
 const std::map<variant, variant>& variant::as_map() const
 {
-	must_be(formula_variant::type::map);
 	return value_cast<variant_map>()->get_container();
+}
+
+const_formula_callable_ptr variant::as_callable() const
+{
+	return value_cast<variant_callable>()->get_callable();
 }
 
 variant variant::operator+(const variant& v) const
@@ -624,7 +627,6 @@ variant variant::concatenate(const variant& v) const
 variant variant::build_range(const variant& v) const
 {
 	must_both_be(formula_variant::type::integer, v);
-
 	return value_cast<variant_int>()->build_range_variant(v.as_int());
 }
 
@@ -644,7 +646,7 @@ bool variant::contains(const variant& v) const
 void variant::must_be(formula_variant::type t) const
 {
 	if(type() != t) {
-		throw type_error(was_expecting(variant_type_to_string(t), *this));
+		assert_must_be(t, *this);
 	}
 }
 
