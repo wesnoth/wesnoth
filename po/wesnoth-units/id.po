@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-11-18 02:02 UTC\n"
+"POT-Creation-Date: 2025-12-22 03:09 UTC\n"
 "PO-Revision-Date: 2012-12-31 00:09+0700\n"
 "Last-Translator: Yuris <yuris_wicaksana@yahoo.com>\n"
 "Language-Team: none\n"
@@ -90,6 +90,7 @@ msgstr "gelombang bayangan"
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Lady.cfg:64
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Leader.cfg:65
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Outcast.cfg:64
+#: data/campaigns/Under_the_Burning_Suns/units/other/Orcish_Shaman.cfg:27
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Druid.cfg:29
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Mystic.cfg:29
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Shaman.cfg:29
@@ -304,7 +305,7 @@ msgstr "mencambuk"
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Ranger.cfg:33
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Ranger.cfg:62
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Scout.cfg:27
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:929
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:887
 #: data/core/units/elves/Archer.cfg:23 data/core/units/elves/Avenger.cfg:39
 #: data/core/units/elves/Captain.cfg:34 data/core/units/elves/Champion.cfg:23
 #: data/core/units/elves/Fighter.cfg:22 data/core/units/elves/Hero.cfg:22
@@ -481,7 +482,7 @@ msgstr "badai dingin"
 #: data/campaigns/Under_the_Burning_Suns/units/nagas/Naga_Hunter.cfg:34
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Archer.cfg:40
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Marksman.cfg:43
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:942
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:900
 #: data/core/units/elves/Archer.cfg:32 data/core/units/elves/Avenger.cfg:48
 #: data/core/units/elves/Captain.cfg:43 data/core/units/elves/Champion.cfg:35
 #: data/core/units/elves/Fighter.cfg:31 data/core/units/elves/Hero.cfg:31
@@ -546,6 +547,7 @@ msgstr "cakar"
 #: data/campaigns/Secrets_of_the_Ancients/units/Orcish_Shaman.cfg:36
 #: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman.cfg:35
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:37
+#: data/campaigns/Under_the_Burning_Suns/units/other/Orcish_Shaman.cfg:36
 #: data/core/units/saurians/Augur.cfg:33 data/core/units/saurians/Oracle.cfg:44
 #: data/core/units/saurians/Prophet.cfg:46 data/core/units/saurians/Seer.cfg:34
 #: data/core/units/saurians/Soothsayer.cfg:33
@@ -647,6 +649,7 @@ msgstr "tongkat wabah"
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:301
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:262
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Familiar.cfg:33
+#: data/campaigns/Under_the_Burning_Suns/units/monsters/Scarab.cfg:41
 #: data/core/units/dunefolk/Wyvern_Rider.cfg:23
 #: data/core/units/monsters/Boar.cfg:50
 #: data/core/units/monsters/Boar_Piglet.cfg:50
@@ -1193,6 +1196,36 @@ msgstr "perisai tamparan"
 msgid "fist"
 msgstr "tinju"
 
+#. [unit_type]: id=Wandering Scarab, race=monster
+#: data/campaigns/Under_the_Burning_Suns/units/monsters/Scarab.cfg:4
+msgid "Wandering Scarab"
+msgstr ""
+
+#. [special_note]
+#: data/campaigns/Under_the_Burning_Suns/units/monsters/Scarab.cfg:18
+#: data/core/units/monsters/Scarab.cfg:21
+msgid ""
+"This unit can burrow under loose dirt, sand, or leaves, concealing itself if "
+"it does not change location."
+msgstr ""
+
+#. [unit_type]: id=Wandering Scarab, race=monster
+#: data/campaigns/Under_the_Burning_Suns/units/monsters/Scarab.cfg:22
+msgid ""
+"Wandering Scarabs are large, rugged insects that can grow to be quite large, "
+"making them a threat when they decide to be aggressive. Their primary means "
+"of attack is the large, sharp horn growing from their head. Because of their "
+"large size, armor, and horn, they cannot fly."
+msgstr ""
+
+#. [attack]: type=pierce
+#: data/campaigns/Under_the_Burning_Suns/units/monsters/Scarab.cfg:50
+#: data/core/units/monsters/Scarab.cfg:53
+#, fuzzy
+#| msgid "thorns"
+msgid "horn"
+msgstr "duri-duri"
+
 #. [attack]: type=arcane
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Divine_Avatar.cfg:36
 #: data/core/units/humans/Mage_White.cfg:56
@@ -1212,7 +1245,7 @@ msgstr "duri-duri"
 
 #. [attack]: type=impact
 #. [attack]: type=fire
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Dustbok.cfg:23
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Dustbok.cfg:24
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Tauroch_Flagbearer.cfg:39
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Tauroch_Vanguard.cfg:38
 #: data/core/units/boats/Carrack_Merchant.cfg:30
@@ -1237,51 +1270,19 @@ msgstr "penumbur"
 msgid "bolas"
 msgstr ""
 
-#. [effect]: type=blade
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:157
-msgid "taunting strike"
-msgstr ""
-
-#. [advancement]: id=run_by_taunt
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:184
-msgid "Run By (Taunting strike)"
-msgstr ""
-
-#. [advancement]: id=strength_training
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:202
-msgid "Strength Training"
-msgstr ""
-
-#. [advancement]: id=bowmanship_training
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:214
-msgid "Bowmanship Training"
-msgstr ""
-
-#. [advancement]: id=strong_shots
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:231
-msgid "Strong Shots"
-msgstr ""
-
-#. [advancement]: id=Bowman
-#. [unit_type]: id=Bowman, race=human, gender=male
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:243
-#: data/core/units/humans/Loyalist_Bowman.cfg:4
-msgid "Bowman"
-msgstr "Pemanah"
-
-#. [advancement]: id=piercing_shot
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:260
-msgid "Piercing Shot"
-msgstr ""
-
 #. [effect]: type=pierce
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:268
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:212
 msgid "piercing shot"
 msgstr ""
 
 #. [effect]: type=pierce
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:582
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:528
 msgid "Rain of arrows"
+msgstr ""
+
+#. [effect]: type=pierce
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:570
+msgid "Snipe"
 msgstr ""
 
 #. [unit_type]: id=Blood Bat, race=bats
@@ -4382,6 +4383,11 @@ msgstr ""
 "penombak dan pemanah yang mana mereka merupakan target yang besar. "
 
 #. [unit_type]: id=Bowman, race=human, gender=male
+#: data/core/units/humans/Loyalist_Bowman.cfg:4
+msgid "Bowman"
+msgstr "Pemanah"
+
+#. [unit_type]: id=Bowman, race=human, gender=male
 #: data/core/units/humans/Loyalist_Bowman.cfg:18
 #, fuzzy
 #| msgid ""
@@ -7410,13 +7416,6 @@ msgstr ""
 msgid "Horned Scarab"
 msgstr ""
 
-#. [special_note]
-#: data/core/units/monsters/Scarab.cfg:21
-msgid ""
-"This unit can burrow under loose dirt, sand, or leaves, concealing itself if "
-"it does not change location."
-msgstr ""
-
 #. [unit_type]: id=Horned Scarab, race=monster
 #: data/core/units/monsters/Scarab.cfg:25
 msgid ""
@@ -7425,13 +7424,6 @@ msgid ""
 "of attack is the large, sharp horn growing from their head. Because of their "
 "large size, armor, and horn, they cannot fly."
 msgstr ""
-
-#. [attack]: type=pierce
-#: data/core/units/monsters/Scarab.cfg:53
-#, fuzzy
-#| msgid "thorns"
-msgid "horn"
-msgstr "duri-duri"
 
 #. [unit_type]: id=Sea Serpent, race=monster
 #: data/core/units/monsters/Sea_Serpent.cfg:4

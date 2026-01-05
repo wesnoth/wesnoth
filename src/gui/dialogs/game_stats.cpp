@@ -108,7 +108,7 @@ void game_stats::pre_show()
 				}
 			}
 
-			leader_name = markup::span_color(team::get_side_highlight_pango(team.side()), leader_name);
+			leader_name = markup::span_color(team::get_side_color(team.side()), leader_name);
 		}
 
 		//

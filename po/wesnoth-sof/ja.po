@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-11-26 18:08 UTC\n"
+"POT-Creation-Date: 2025-12-22 03:09 UTC\n"
 "PO-Revision-Date: 2023-12-03 03:44+0000\n"
 "Last-Translator: k konami, 2024\n"
 "Language-Team: Japanese (https://app.transifex.com/wesnoth-jp/teams/60513/"
@@ -4843,13 +4843,13 @@ msgstr "移動力を 2 増やす"
 
 #. [option]
 #: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:316
-#: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:401
+#: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:410
 msgid "Swiftness"
 msgstr "迅速"
 
 #. [option]
 #: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:324
-#: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:439
+#: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:448
 msgid "Accuracy"
 msgstr "正確"
 
@@ -4858,19 +4858,31 @@ msgstr "正確"
 msgid "Increases ranged weapon accuracy by 20%"
 msgstr "遠隔攻撃の命中率を 20 % 上げる"
 
-#. [option]
+#. [chance_to_hit]: id=accuracy_20
+#: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:332
+#, fuzzy
+#| msgid "Accuracy"
+msgid "accuracy: +20%"
+msgstr "正確"
+
+#. [chance_to_hit]: id=accuracy_20
 #: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:333
-#: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:478
+msgid "The accuracy of this weapon is increased by 20%"
+msgstr ""
+
+#. [option]
+#: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:342
+#: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:496
 msgid "Force"
 msgstr "力"
 
 #. [option]
-#: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:333
+#: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:342
 msgid "Increases melee weapon damage by 4"
 msgstr "近接攻撃ダメージを 4 増やす"
 
 #. [rune_choice]: speaker=unit
-#: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:379
+#: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:388
 msgid ""
 "This is part of our stash of field runes, we can use them to get a small "
 "temporary boost. We don’t have very many though, and need to contribute "
@@ -4881,27 +4893,39 @@ msgstr ""
 "いいのか？"
 
 #. [option]
-#: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:383
+#: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:392
 msgid "No"
 msgstr "いいえ"
 
 #. [option]
-#: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:384
+#: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:393
 msgid "Not now."
 msgstr "今はやめる。"
 
 #. [option]
-#: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:401
+#: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:410
 msgid "Adds 1 MP"
 msgstr "移動力を 1 増やす"
 
 #. [option]
-#: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:439
+#: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:448
 msgid "Increases ranged weapon accuracy by 10%"
 msgstr "遠隔攻撃の命中率を 10 % 上げる"
 
+#. [chance_to_hit]: id=accuracy_10
+#: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:456
+#, fuzzy
+#| msgid "Accuracy"
+msgid "accuracy: +10%"
+msgstr "正確"
+
+#. [chance_to_hit]: id=accuracy_10
+#: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:457
+msgid "The accuracy of this weapon is increased of 10%"
+msgstr ""
+
 #. [option]
-#: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:478
+#: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:496
 msgid "Increases melee weapon damage by 2"
 msgstr "近接攻撃ダメージを 2 増やす"
 

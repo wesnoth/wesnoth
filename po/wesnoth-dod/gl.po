@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-11-19 09:43 UTC\n"
+"POT-Creation-Date: 2025-12-22 03:09 UTC\n"
 "PO-Revision-Date: 2025-12-05 13:11+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -167,7 +167,9 @@ msgstr "Escenario 3: Recollida de cogomelos"
 
 #. [achievement]: id=dod_mp
 #: data/campaigns/Dusk_of_Dawn/achievements.cfg:49
-msgid "Harvest at least half of the mushrooms groves in <i>Fateful Day</i>."
+#, fuzzy
+#| msgid "Harvest at least half of the mushrooms groves in <i>Fateful Day</i>."
+msgid "Harvest at least half of the mushroom groves in <i>Fateful Day</i>."
 msgstr ""
 "Colleita polo menos a metade das áreas de cogomelos en <i>Día fatal</i>."
 
@@ -261,8 +263,8 @@ msgstr "Tribo da Chama Dourada"
 
 #. [side]
 #: data/campaigns/Dusk_of_Dawn/scenarios/00_Being_Born.cfg:65
-msgid "New Born"
-msgstr "Recén nacido"
+msgid "Newborn"
+msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dusk_of_Dawn/scenarios/00_Being_Born.cfg:75
@@ -1762,16 +1764,27 @@ msgstr "Gran Gólem de Pedra"
 #. [unit_type]: id=Stone Golem, race=monster
 #: data/campaigns/Dusk_of_Dawn/units/Great_Stone_Golem.cfg:17
 #: data/campaigns/Dusk_of_Dawn/units/Stone_Golem.cfg:17
+#, fuzzy
+#| msgid ""
+#| "Legends tell of great stone statues resembling dwarves that come to life "
+#| "through the art of runes to protect the treasures of the bearded people.\n"
+#| "\n"
+#| "But these are just tales. Right?"
 msgid ""
 "Legends tell of great stone statues resembling dwarves that come to life "
-"through the art of runes to protect the treasures of the bearded people.\n"
-"\n"
-"But these are just tales. Right?"
+"through the art of runes to protect the treasures of the bearded people."
 msgstr ""
 "As lendas falan de grandes estatuas de pedra semellantes a ananos que cobran "
 "vida a través da arte das runas para protexer os tesouros do pobo barbudo.\n"
 "\n"
 "Pero isto son só contos. Non si?"
+
+#. [unit_type]: id=Great Stone Golem, race=monster
+#. [unit_type]: id=Stone Golem, race=monster
+#: data/campaigns/Dusk_of_Dawn/units/Great_Stone_Golem.cfg:19
+#: data/campaigns/Dusk_of_Dawn/units/Stone_Golem.cfg:19
+msgid "But these are just tales. Right?"
+msgstr ""
 
 #. [unit_type]: id=Troll Initiate, race=troll
 #: data/campaigns/Dusk_of_Dawn/units/Initiate.cfg:5
@@ -1848,3 +1861,6 @@ msgstr "Suficiente"
 #: data/campaigns/Dusk_of_Dawn/utils/schedules.cfg:18
 msgid "Magic Light"
 msgstr "Luz máxica"
+
+#~ msgid "New Born"
+#~ msgstr "Recén nacido"

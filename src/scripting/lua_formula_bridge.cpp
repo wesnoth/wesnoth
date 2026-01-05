@@ -53,13 +53,13 @@ public:
 				lua_gettable(mState, table_i);
 				values.push_back(luaW_tofaivariant(mState, -1));
 			}
-			return variant(values);
+			return variant(std::move(values));
 		} else if(key == "__map") {
-			std::map<variant,variant> values;
+			std::map<variant, variant> values;
 			for(lua_pushnil(mState); lua_next(mState, table_i); lua_pop(mState, 1)) {
 				values[luaW_tofaivariant(mState, -2)] = luaW_tofaivariant(mState, -1);
 			}
-			return variant(values);
+			return variant(std::move(values));
 		}
 		lua_pushlstring(mState, key.c_str(), key.size());
 		lua_gettable(mState, table_i);
@@ -135,7 +135,7 @@ void luaW_pushfaivariant(lua_State* L, const variant& val) {
 			lua_settable(L, -3);
 		}
 	} else if(val.is_map()) {
-		typedef std::map<variant,variant>::value_type kv_type;
+		typedef std::map<variant, variant>::value_type kv_type;
 		lua_newtable(L);
 		for(const kv_type& v : val.as_map()) {
 			luaW_pushfaivariant(L, v.first);

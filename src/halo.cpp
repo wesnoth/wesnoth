@@ -81,6 +81,8 @@ class halo_impl
 
 		// The current halo image frame
 		texture tex_ = {};
+		// Track the last used locator to avoid redundant cache lookups
+		image::locator last_locator_ = image::locator();
 		// The current location where the halo will be drawn on the screen
 		rect screen_loc_ = {};
 		// The last drawn location
@@ -188,7 +190,11 @@ void halo_impl::effect::update()
 	}
 
 	// Load texture for current animation frame
-	tex_ = image::get_texture(current_image());
+	const image::locator& loc = current_image();
+	if (loc != last_locator_ || !tex_) {
+		tex_ = image::get_texture(loc);
+		last_locator_ = loc;
+	}
 	if(!tex_) {
 		ERR_HL << "no texture found for current halo animation frame";
 		screen_loc_ = {};

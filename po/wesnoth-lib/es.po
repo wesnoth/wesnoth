@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-11-17 20:02-0600\n"
+"POT-Creation-Date: 2025-12-21 21:09-0600\n"
 "PO-Revision-Date: 2025-08-28 20:30-0300\n"
 "Last-Translator: Sebastián Lecchini<sebas38760@gmail.com>\n"
 "Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
@@ -2363,7 +2363,7 @@ msgstr ""
 #: data/gui/macros/custom_options_tree.cfg:250
 #: data/gui/themes/default/dialogs/mp_alerts_options.cfg:227
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:459
-#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:294
+#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:298
 #: data/gui/themes/default/dialogs/reachmap_options.cfg:160
 #: data/gui/themes/default/dialogs/select_orb_colors.cfg:170
 msgid "Defaults"
@@ -2466,10 +2466,10 @@ msgstr "Empezar una nueva campaña de un sólo jugador"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
 #. [label]
-#. [widget]: id=label
+#. [tab]
 #: data/gui/themes/celes/dialogs/title_screen.cfg:287
 #: data/gui/themes/default/dialogs/mp_method_selection.cfg:55
-#: data/gui/themes/default/dialogs/preferences.cfg:365
+#: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:390
 #: data/gui/themes/default/dialogs/title_screen.cfg:257
 #: src/gui/dialogs/game_load.cpp:363
 msgid "Multiplayer"
@@ -2567,7 +2567,7 @@ msgstr "Configurar los ajustes del juego"
 #. [label]: id=title
 #: data/gui/themes/celes/dialogs/title_screen.cfg:296
 #: data/gui/themes/default/dialogs/lobby_main.cfg:600
-#: data/gui/themes/default/dialogs/preferences.cfg:213
+#: data/gui/themes/default/dialogs/preferences.cfg:157
 #: data/gui/themes/default/dialogs/title_screen.cfg:263
 #: src/hotkey/hotkey_command.cpp:127
 msgid "Preferences"
@@ -2641,7 +2641,7 @@ msgstr "page^<b><span font_family='DejaVu Sans'>✔</span> Copiado</b>"
 #: data/gui/themes/default/dialogs/message.cfg:135
 #: data/gui/themes/default/dialogs/mp_alerts_options.cfg:242
 #: data/gui/themes/default/dialogs/mp_match_history.cfg:601
-#: data/gui/themes/default/dialogs/preferences.cfg:434
+#: data/gui/themes/default/dialogs/preferences.cfg:204
 #: data/gui/themes/default/dialogs/screenshot_notification.cfg:214
 #: data/gui/themes/default/dialogs/server_info.cfg:253
 #: data/gui/themes/default/dialogs/statistics_dialog.cfg:623
@@ -3060,7 +3060,7 @@ msgstr "Marque los complementos que desea eliminar."
 #. [button]: id=ok
 #. [button]: id=remove
 #: data/gui/themes/default/dialogs/addon_uninstall_list.cfg:157
-#: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:289
+#: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:290
 msgid "Remove"
 msgstr "Eliminar"
 
@@ -3406,7 +3406,7 @@ msgstr "Cargar módulo"
 #: data/gui/themes/default/dialogs/core_dialog.cfg:228
 #: data/gui/themes/default/dialogs/language_selection.cfg:293
 #: src/gui/dialogs/editor/custom_tod.cpp:172
-#: src/gui/dialogs/editor/edit_unit.cpp:308
+#: src/gui/dialogs/editor/edit_unit.cpp:303
 #: src/preferences/preferences.cpp:1342
 msgid "Select"
 msgstr "Seleccionar"
@@ -3555,9 +3555,9 @@ msgstr "Previsualizar cambios de color en el mapa"
 #: data/gui/themes/default/dialogs/depcheck_confirm_change.cfg:40
 #: src/gui/dialogs/addon/manager.cpp:1029
 #: src/gui/dialogs/editor/custom_tod.cpp:187
-#: src/gui/dialogs/editor/edit_unit.cpp:323
-#: src/gui/dialogs/editor/edit_unit.cpp:1030
-#: src/gui/dialogs/file_dialog.cpp:371 src/gui/dialogs/file_dialog.cpp:799
+#: src/gui/dialogs/editor/edit_unit.cpp:318
+#: src/gui/dialogs/editor/edit_unit.cpp:970 src/gui/dialogs/file_dialog.cpp:371
+#: src/gui/dialogs/file_dialog.cpp:799
 msgid "Confirm"
 msgstr "Confirmar"
 
@@ -4222,13 +4222,13 @@ msgstr "Editor de tipos de unidad"
 
 #. [tab]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:1192
+#: data/gui/themes/default/dialogs/preferences/01_general.cfg:226
 msgid "Main Stats"
 msgstr "Estadísticas principales"
 
 #. [tab]
-#. [widget]: id=label
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:1199
-#: data/gui/themes/default/dialogs/preferences.cfg:383
+#: data/gui/themes/default/dialogs/preferences/06_advanced.cfg:148
 msgid "Advanced"
 msgstr "Avanzadas"
 
@@ -4884,11 +4884,9 @@ msgstr ""
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [tab]
 #. [widget]: id=tab_label
-#. [widget]: id=label
 #: data/gui/themes/default/dialogs/game_version.cfg:879
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:564
-#: data/gui/themes/default/dialogs/preferences.cfg:292
-#: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:402
+#: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:405
 #: data/gui/themes/default/dialogs/server_info.cfg:181
 #: src/hotkey/hotkey_command.cpp:51
 msgid "General"
@@ -5107,9 +5105,9 @@ msgid "Only show games with vacant slots"
 msgstr "Mostrar unicamente partidas con puestos libres"
 
 #. [toggle_button]: id=filter_with_friends
-#. [widget]: id=tab_label
+#. [tab]
 #: data/gui/themes/default/dialogs/lobby_main.cfg:490
-#: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:415
+#: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:426
 msgid "Friends"
 msgstr "Amigos"
 
@@ -5237,14 +5235,14 @@ msgstr "Inf. de jugador — "
 #. [button]: id=add_to_friends
 #. [button]: id=add_friend
 #: data/gui/themes/default/dialogs/lobby_player_info.cfg:88
-#: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:263
+#: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:264
 msgid "Add Friend"
 msgstr "Añadir a «amigos»"
 
 #. [button]: id=add_to_ignores
 #. [button]: id=add_ignored
 #: data/gui/themes/default/dialogs/lobby_player_info.cfg:99
-#: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:276
+#: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:277
 msgid "Block"
 msgstr "Bloquear"
 
@@ -5396,9 +5394,9 @@ msgstr ""
 "notificaciones de escritorio."
 
 #. [label]
-#. [widget]: id=label
+#. [tab]
 #: data/gui/themes/default/dialogs/mp_alerts_options.cfg:147
-#: data/gui/themes/default/dialogs/preferences.cfg:347
+#: data/gui/themes/default/dialogs/preferences/04_sound.cfg:143
 msgid "Sound"
 msgstr "Sonido"
 
@@ -6075,18 +6073,8 @@ msgstr "Estoy listo"
 msgid "Press ESC to skip"
 msgstr "Pulse ESC para omitir"
 
-#. [widget]: id=label
-#: data/gui/themes/default/dialogs/preferences.cfg:311
-msgid "Hotkeys"
-msgstr "Atajos de teclado"
-
-#. [widget]: id=label
-#: data/gui/themes/default/dialogs/preferences.cfg:329
-msgid "Display"
-msgstr "Imagen"
-
 #. [button]: id=about
-#: data/gui/themes/default/dialogs/preferences.cfg:419
+#: data/gui/themes/default/dialogs/preferences.cfg:192
 msgid "Display the game version and build information"
 msgstr "Muestra la versión del juego e información de compilación"
 
@@ -6237,72 +6225,77 @@ msgstr "Caché"
 msgid "Manage the game WML cache"
 msgstr "Manejo del caché de WML del juego"
 
+#. [tab]
+#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:7
+msgid "Hotkeys"
+msgstr "Atajos de teclado"
+
 #. [label]
-#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:25
+#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:29
 msgid "Filter:"
 msgstr "Filtro:"
 
 #. [text_box]: id=filter
-#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:50
+#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:54
 msgid "Filters on hotkey description"
 msgstr "Filtros para la descripción de los atajos de teclado"
 
 #. [toggle_button]: id=sort_0
-#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:98
+#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:102
 msgid "Action"
 msgstr "Acción"
 
 #. [toggle_button]: id=sort_1
-#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:112
+#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:116
 msgid "Hotkey"
 msgstr "Atajo de teclado"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_2
 #. Translate G as the initial letter for Game
-#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:126
-#: src/gui/dialogs/preferences_dialog.cpp:890
+#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:130
+#: src/gui/dialogs/preferences_dialog.cpp:885
 msgid "game_hotkeys^G"
 msgstr "G"
 
 #. [toggle_button]: id=sort_2
-#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:127
+#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:131
 msgid "Available in game"
 msgstr "Disponible durante la partida"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_3
 #. Translate E as the initial letter for Editor
-#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:141
-#: src/gui/dialogs/preferences_dialog.cpp:891
+#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:145
+#: src/gui/dialogs/preferences_dialog.cpp:886
 msgid "editor_hotkeys^E"
 msgstr "E"
 
 #. [toggle_button]: id=sort_3
-#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:142
+#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:146
 msgid "Available in editor"
 msgstr "Disponible en el editor"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_4
 #. Translate M as the initial letter for Main Menu
-#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:156
-#: src/gui/dialogs/preferences_dialog.cpp:892
+#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:160
+#: src/gui/dialogs/preferences_dialog.cpp:887
 msgid "mainmenu_hotkeys^M"
 msgstr "M"
 
 #. [toggle_button]: id=sort_4
-#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:157
+#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:161
 msgid "Available at main menu"
 msgstr "Disponible en la pantalla de título"
 
 #. [button]: id=btn_add_hotkey
-#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:272
+#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:276
 msgid "Add Hotkey"
 msgstr "Añadir atajo de teclado"
 
 #. [button]: id=btn_clear_hotkey
-#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:283
+#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:287
 msgid "Clear Hotkey"
 msgstr "Eliminar atajo"
 
@@ -6489,6 +6482,11 @@ msgstr "Frecuencia:"
 msgid "Set the frequency of unit idle animations"
 msgstr "Establecer la frecuencia de las animaciones de las unidades inactivas"
 
+#. [tab]
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:454
+msgid "Display"
+msgstr "Imagen"
+
 #. [label]
 #: data/gui/themes/default/dialogs/preferences/04_sound.cfg:38
 msgid "Volume:"
@@ -6656,7 +6654,7 @@ msgstr ""
 "RAL"
 
 #. [button]: id=add_friend
-#: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:264
+#: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:265
 msgid ""
 "Add this username to your friends list (add optional notes, e.g., "
 "‘player_name notes on friend’)"
@@ -6665,7 +6663,7 @@ msgstr ""
 "adicionales, por ejemplo, «nombre nota sobre el amigo»)"
 
 #. [button]: id=add_ignored
-#: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:277
+#: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:278
 msgid ""
 "Add this username to your ignore list (add optional reason, e.g., "
 "‘player_name reason ignored’)"
@@ -6674,12 +6672,12 @@ msgstr ""
 "un motivo, por ejemplo, «nombre motivo para ignorarle»)"
 
 #. [button]: id=remove
-#: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:290
+#: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:291
 msgid "Remove this username from your list"
 msgstr "Eliminar a este usuario de la lista"
 
 #. [label]: id=no_friends_notice
-#: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:311
+#: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:312
 msgid "You have not befriended or blocked any other players."
 msgstr ""
 "Usted no ha añadido a ningún otro jugador a su lista de amigos ni de "
@@ -7058,7 +7056,7 @@ msgstr "Marcar o desmarcar la unidad seleccionada como favorita"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/themes/default/dialogs/wml_error.cfg:40
-#: src/gui/dialogs/message.cpp:206 src/gui/dialogs/preferences_dialog.cpp:272
+#: src/gui/dialogs/message.cpp:206 src/gui/dialogs/preferences_dialog.cpp:265
 #: src/gui/dialogs/transient_message.cpp:77
 msgid "Error"
 msgstr "Error"
@@ -7164,7 +7162,7 @@ msgstr "<desconocido>"
 #. other's resources rather than duplicating them. For example,
 #. Swedish (sv) and Danish (da) are such, so Swedish translator could
 #. translate this message as "sv,da", while Danish as "da,sv".
-#: src/filesystem.cpp:1851
+#: src/filesystem.cpp:1850
 msgid "language code for localized resources^en_US"
 msgstr "es"
 
@@ -7594,23 +7592,23 @@ msgstr "%d %B %Y, %H:%M"
 msgid "url^None"
 msgstr "Ninguna"
 
-#: src/gui/dialogs/attack_predictions.cpp:121
+#: src/gui/dialogs/attack_predictions.cpp:120
 msgid "No usable weapon"
 msgstr "Arma no utilizable"
 
-#: src/gui/dialogs/attack_predictions.cpp:199
+#: src/gui/dialogs/attack_predictions.cpp:196
 msgid "Defender resistance vs"
 msgstr "Resistencia del defensor contra"
 
-#: src/gui/dialogs/attack_predictions.cpp:201
+#: src/gui/dialogs/attack_predictions.cpp:198
 msgid "Defender vulnerability vs"
 msgstr "Vulnerabilidad del defensor contra"
 
-#: src/gui/dialogs/attack_predictions.cpp:205
+#: src/gui/dialogs/attack_predictions.cpp:202
 msgid "Attacker resistance vs"
 msgstr "Resistencia del atacante contra"
 
-#: src/gui/dialogs/attack_predictions.cpp:207
+#: src/gui/dialogs/attack_predictions.cpp:204
 msgid "Attacker vulnerability vs"
 msgstr "Vulnerabilidad del atacante contra"
 
@@ -7664,12 +7662,12 @@ msgstr ""
 "Por favor, seleccione una que sea compatible."
 
 #: src/gui/dialogs/editor/custom_tod.cpp:171
-#: src/gui/dialogs/editor/edit_unit.cpp:307
+#: src/gui/dialogs/editor/edit_unit.cpp:302
 msgid "Choose File"
 msgstr "Elegir archivo"
 
 #: src/gui/dialogs/editor/custom_tod.cpp:182
-#: src/gui/dialogs/editor/edit_unit.cpp:318
+#: src/gui/dialogs/editor/edit_unit.cpp:313
 msgid ""
 "This file is outside Wesnoth’s data dirs. Do you wish to copy it into your "
 "add-on?"
@@ -7766,31 +7764,31 @@ msgstr "Éxito"
 msgid "Choose an icon"
 msgstr "Elegir un icono"
 
-#: src/gui/dialogs/editor/edit_unit.cpp:190
+#: src/gui/dialogs/editor/edit_unit.cpp:187
 msgid "scout"
 msgstr "Explorador"
 
-#: src/gui/dialogs/editor/edit_unit.cpp:191
+#: src/gui/dialogs/editor/edit_unit.cpp:188
 msgid "fighter"
 msgstr "Guerrero"
 
-#: src/gui/dialogs/editor/edit_unit.cpp:192
+#: src/gui/dialogs/editor/edit_unit.cpp:189
 msgid "archer"
 msgstr "Arquero"
 
-#: src/gui/dialogs/editor/edit_unit.cpp:193
+#: src/gui/dialogs/editor/edit_unit.cpp:190
 msgid "mixed fighter"
 msgstr "Guerrero mixto"
 
-#: src/gui/dialogs/editor/edit_unit.cpp:194
+#: src/gui/dialogs/editor/edit_unit.cpp:191
 msgid "healer"
 msgstr "Sanador"
 
-#: src/gui/dialogs/editor/edit_unit.cpp:1029
+#: src/gui/dialogs/editor/edit_unit.cpp:969
 msgid "Unsaved changes will be lost. Do you want to leave?"
 msgstr "Los cambios no guardados se perderán. ¿Desea salir?"
 
-#: src/gui/dialogs/editor/edit_unit.cpp:1048
+#: src/gui/dialogs/editor/edit_unit.cpp:988
 msgid "Unit type saved."
 msgstr "Unidad guardada."
 
@@ -8005,8 +8003,8 @@ msgstr "no"
 msgid "yes"
 msgstr "sí"
 
-#: src/gui/dialogs/game_version_dialog.cpp:273
-#: src/gui/dialogs/game_version_dialog.cpp:287 src/gui/widgets/label.cpp:124
+#: src/gui/dialogs/game_version_dialog.cpp:263
+#: src/gui/dialogs/game_version_dialog.cpp:277 src/gui/widgets/label.cpp:124
 msgid "Opening links is not supported, contact your packager"
 msgstr "No hay soporte para la apertura de enlaces, contacte con su instalador"
 
@@ -8109,8 +8107,8 @@ msgstr "Descargando datos de la sala"
 #: src/gui/dialogs/lua_interpreter.cpp:628
 msgid "The lua console can only be used in debug mode! (Run ‘:debug’ first)"
 msgstr ""
-"¡La consola de lua solo puede usarse en modo depuración! (Ejecute primero "
-"':debug')"
+"¡La consola de lua solo puede usarse en modo depuración! (Ejecute primero ':"
+"debug')"
 
 #: src/gui/dialogs/lua_interpreter.cpp:629
 msgid "lua console"
@@ -8366,33 +8364,33 @@ msgstr "Esperando a que los jugadores elijan facciones..."
 msgid "The End"
 msgstr "Fin"
 
-#: src/gui/dialogs/preferences_dialog.cpp:199
+#: src/gui/dialogs/preferences_dialog.cpp:192
 msgid "friend"
 msgstr "amigo"
 
-#: src/gui/dialogs/preferences_dialog.cpp:204
+#: src/gui/dialogs/preferences_dialog.cpp:197
 msgid "ignored"
 msgstr "ignorado"
 
-#: src/gui/dialogs/preferences_dialog.cpp:257
-#: src/gui/dialogs/preferences_dialog.cpp:314
+#: src/gui/dialogs/preferences_dialog.cpp:250
+#: src/gui/dialogs/preferences_dialog.cpp:307
 msgid "No username specified"
 msgstr "Nombre de usuario sin especificar"
 
-#: src/gui/dialogs/preferences_dialog.cpp:272
+#: src/gui/dialogs/preferences_dialog.cpp:265
 msgid "Invalid username"
 msgstr "Nombre de usuario inválido"
 
-#: src/gui/dialogs/preferences_dialog.cpp:319
+#: src/gui/dialogs/preferences_dialog.cpp:312
 msgid "Not on friends or ignore lists"
 msgstr "Ni en la lista de amigos ni en la de ignorados"
 
-#: src/gui/dialogs/preferences_dialog.cpp:936
-#: src/gui/dialogs/preferences_dialog.cpp:1000
+#: src/gui/dialogs/preferences_dialog.cpp:931
+#: src/gui/dialogs/preferences_dialog.cpp:995
 msgid "No hotkey selected"
 msgstr "No se ha seleccionado ningún atajo de teclado"
 
-#: src/gui/dialogs/preferences_dialog.cpp:964
+#: src/gui/dialogs/preferences_dialog.cpp:959
 msgid ""
 "“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\n"
 "Do you wish to reassign it to “<b>$new_hotkey_action|</b>”?"
@@ -8400,16 +8398,16 @@ msgstr ""
 "«<b>$hotkey_sequence|</b>» se utiliza para «<b>$old_hotkey_action|</b>».\n"
 " ¿Desea reasignarla para «<b>$new_hotkey_action|</b>»?"
 
-#: src/gui/dialogs/preferences_dialog.cpp:970
+#: src/gui/dialogs/preferences_dialog.cpp:965
 msgid "Reassign Hotkey"
 msgstr "Reasignar atajo de teclado"
 
-#: src/gui/dialogs/preferences_dialog.cpp:987
+#: src/gui/dialogs/preferences_dialog.cpp:982
 msgid "All hotkeys have been reset to their default values."
 msgstr ""
 "Todos los atajos de teclado se han restaurado a sus valores predeterminados."
 
-#: src/gui/dialogs/preferences_dialog.cpp:987
+#: src/gui/dialogs/preferences_dialog.cpp:982
 msgid "Hotkeys Reset"
 msgstr "Restaurar los atajos de teclado"
 
@@ -8573,7 +8571,7 @@ msgstr ""
 "No se puede reincorporar esta unidad debido a que no dispone de oro "
 "suficiente."
 
-#: src/gui/gui.cpp:133
+#: src/gui/gui.cpp:129
 msgid "No default gui defined."
 msgstr "No se ha definido una interfaz de usuario predeterminada."
 
@@ -8630,18 +8628,18 @@ msgstr "¿Enlace abierto?"
 msgid "Copied link!"
 msgstr "¡Enlace copiado!"
 
-#: src/gui/widgets/listbox.cpp:695 src/gui/widgets/multi_page.cpp:224
+#: src/gui/widgets/listbox.cpp:696 src/gui/widgets/multi_page.cpp:224
 msgid ""
 "‘list_data’ must have the same number of columns as the ‘list_definition’."
 msgstr ""
 "Los datos de lista («list_data») deben tener el mismo número de columnas que "
 "la definición de lista («list_definition»)."
 
-#: src/gui/widgets/listbox.cpp:730 src/gui/widgets/scrollbar_panel.cpp:86
+#: src/gui/widgets/listbox.cpp:731 src/gui/widgets/scrollbar_panel.cpp:86
 msgid "No list defined."
 msgstr "No se ha definido una lista."
 
-#: src/gui/widgets/listbox.cpp:735
+#: src/gui/widgets/listbox.cpp:736
 msgid "A ‘list_definition’ should contain one row."
 msgstr ""
 "Una definición de lista («list_definition») debe contener al menos una fila."
@@ -8698,11 +8696,11 @@ msgstr ""
 msgid "No stack layers defined."
 msgstr "No se ha definido ninguna pila de capas."
 
-#: src/gui/widgets/styled_widget.cpp:591
+#: src/gui/widgets/styled_widget.cpp:593
 msgid "Found a widget with a helptip and without a tooltip."
 msgstr "Se encontró un widget con ayuda y sin descripción emergente."
 
-#: src/gui/widgets/tab_container.cpp:140
+#: src/gui/widgets/tab_container.cpp:172
 msgid "No grid defined for tab container control"
 msgstr "Sin cuadrícula definida para el control de etiquetas de desplazamiento"
 
@@ -10392,8 +10390,8 @@ msgstr "En la sección «[$section|]», falta el subtipo obligatorio «[$tag|]»
 #~ "necesita dar una contraseña si desea utilizar un nombre de usuario "
 #~ "registrado.\n"
 #~ "\n"
-#~ "El foro de «La batalla por Wesnoth» se encuentra en https://"
-#~ "forums.wesnoth.org/ (sólo en inglés)."
+#~ "El foro de «La batalla por Wesnoth» se encuentra en https://forums."
+#~ "wesnoth.org/ (sólo en inglés)."
 
 #~ msgid "Available at titlescreen"
 #~ msgstr "Disponible en la pantalla de título"

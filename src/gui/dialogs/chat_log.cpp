@@ -127,7 +127,8 @@ public:
 			std::string nick_prefix, nick_suffix;
 
 			if(!raw) {
-				nick_prefix = "<span color=\"" + t.color() + "\">";
+				// FIXME: use markup::span_color
+				nick_prefix = "<span color=\"" + t.color().to_hex_string() + "\">";
 				nick_suffix = "</span> ";
 			} else {
 				nick_suffix = " ";

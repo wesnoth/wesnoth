@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-10-21 01:10 UTC\n"
-"PO-Revision-Date: 2025-10-28 14:28+0200\n"
+"PO-Revision-Date: 2025-11-25 18:30+0100\n"
 "Last-Translator: Jaakko Saarikko <jaakko.saarikko@protonmail.com>\n"
 "Language-Team: none\n"
 "Language: fi\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.7\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:13
@@ -52,8 +52,8 @@ msgid ""
 "as planned. Can you help?"
 msgstr ""
 "Paha manaaja uhkaa pientä Maghren kylää ja sen asukkaita. Kylän velho kutsuu "
-"veljensä apuun, mutta kaikki ei mene suunnitelmien mukaan. Pystytkö sinä "
-"auttamaan?"
+"soturiveljensä apuun, mutta kaikki ei mene suunnitelmien mukaan. Pystytkö "
+"sinä auttamaan?"
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:23
@@ -62,14 +62,14 @@ msgid ""
 "The Grand Knight difficulty is intended for players who’ve already completed "
 "Liberty and Heir to the Throne."
 msgstr ""
-"Tässä kampanjassa on kaksi vaikeustasoa, joiden välillä on suuri ero. "
+"Tässä kampanjassa on kaksi vaikeusastetta, jotka eroavat suuresti. "
 "Mahtiritarin vaikeustaso on tarkoitettu pelaajille, jotka ovat jo "
-"suorittaneet Vapaus ja Valtaistuimen perillinen kampanjat."
+"suorittaneet kampanjat Vapaus ja Valtaistuimen perillinen."
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:25
 msgid "(Novice level, 4 scenarios.)"
-msgstr "(Aloittelijatasoa, 4 skenaariota.)"
+msgstr "(Aloittelijatasoa, 4 skenaariota)"
 
 #. [about]
 #: data/campaigns/Two_Brothers/_main.cfg:32
@@ -104,7 +104,7 @@ msgstr "Ja erityiskiitokset kaikille muille, jotka unohdin mainita."
 #. [scenario]: id=01_Rooting_Out_a_Mage
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:5
 msgid "Rooting Out a Mage"
-msgstr "Velhon kitkeminen"
+msgstr "Velhon häätäminen"
 
 #. [part]
 #. This text is shown with the journey map, showing the village in the foothills along the route between Aldril and Dan’Tonk.
@@ -117,11 +117,11 @@ msgid ""
 "them not. Even merchants were rarely seen, although caravans between Aldril "
 "and Dan’Tonk might send a wagon when called by the beacon tower."
 msgstr ""
-"Maghren kylä etäällä Wesnothin kuningaskunnan läntisillä mailla oli "
-"rauhallinen paikka. Sen asukkaat eivät kummemmin välittäneet muun maailman "
-"menosta. Heitä eivät koskettaneet sodat eikä edes huhut sodista. Jopa "
-"kauppiaita nähtiin harvoin, vaikka Aldrilin ja Dan’Tonkin väliset karavaanit "
-"saattoivat lähettää vaunun merkkitulen kutsuessa."
+"Maghren syrjäkylä Wesnothin kuningaskunnan länsimailla oli ennen rauhaisa "
+"paikka. Sen asukkaat eivät kummemmin tienneet muun maailman menosta. Heitä "
+"eivät koskettaneet sodat eivätkä huhut sodista. Jopa kauppiaita nähtiin "
+"harvoin, vaikka Aldrilin ja Dan’Tonkin väliset karavaanit saattoivat "
+"lähettää vaunun merkkitulen kutsuessa."
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:57
@@ -137,15 +137,14 @@ msgid ""
 "return."
 msgstr ""
 "Sitten koitti päivä, jolloin pimeyden velho asettui alueelle ja alkoi etsiä "
-"ihmisuhreja kutsuakseen paikalle lisää pahuutta.\n"
+"ihmisuhreja manauksilleen.\n"
 "\n"
-"Luurangot ja elävät kuolleet tappoivat naudat ja polttivat pellot. "
-"<i>”Pelätkää ja totelkaa Mordak-maagia!”</i> ne karjuivat karmeilla "
-"äänillään tehdessään ilkeitä töitään. Ihmisiä katosi yksinäisiltä "
-"maatiloilta. Miehet ja naiset alkoivat pelätä öisin ja heidän lapsensa jopa "
-"keskellä kirkkainta päivää. Mutta lähin lordi oli kauempana kuin päivän "
-"ratsastusmatkan päässä, ja viestinviejät, jotka lähetettiin hakemaan hänen "
-"apuaan, eivät palanneet."
+"Luurangot ja zombit tappoivat karjaa ja polttivat pellot. <i>”Pelätkää ja "
+"totelkaa Mordak-velhoa!”</i>, ne karjuivat karmeilla äänillään tehdessään "
+"ilkitöitään. Ihmisiä katosi yksinäisiltä maatiloilta. Miehet ja naiset "
+"alkoivat pelätä öisin, ja heidän lapsensa jopa keskellä kirkasta päivää. "
+"Mutta lähin maaherra oli yli päivämatkan päässä, ja viestinviejät, jotka "
+"lähetettiin hakemaan hänen apuaan, eivät palanneet."
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:63
@@ -158,13 +157,13 @@ msgid ""
 "them down and clean and oil them. He set the smiths of Maghre to making "
 "spearheads and ax-blades for the rest."
 msgstr ""
-"Oli mies nimeltä Baran, joka oli nuorena osoittanut lahjakkuutta magiassa, "
-"käynyt Alduinin saaren velhokoulua ja palannut työskentelemään taikuuden "
-"parissa kotimaahansa. Ihmiset kääntyivät hänen puoleensa ja halusivat hänet "
-"johtajakseen. Siellä täällä talojen seinillä roikkui aseita, joita oli "
-"käytetty sukupolvia sitten. Baran käski kyläläiset ottamaan ne alas, "
-"puhdistamaan ja öljyämään ne. Hän määräsi Maghren sepät takomaan "
-"keihäänkärkiä ja kirveenteriä lopuille kyläläisille."
+"Eräs Baran-niminen mies, joka oli nuorena osoittanut lahjakkuutta velhona, "
+"oli käynyt Alduinin saaren velhokoulua ja palannut synnyinmaahansa "
+"työstämään taikuuttaan. Ihmiset pyysivät häneltä apua ja johtajuutta. Baran "
+"löysi monien talojen seiniltä osin unohdettuja, isien ja isoisien aikaisia "
+"aseita roikkumasta. Hän käski kyläläisiä ottamaan ne, puhdistamaan ja "
+"öljyämään ne. Hän määräsi Maghren sepät takomaan keihäänkärkiä ja "
+"kirveenteriä muille kyläläisille."
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:68
@@ -177,10 +176,9 @@ msgid ""
 msgstr ""
 "Baranilla oli veli nimeltä Arvith, joka myös oli lähtenyt Maghresta onneaan "
 "etsimään. Hän johti pientä hevosmiesjoukkoa, joka oli palkattu vartioimaan "
-"kauppakaravaaneja. Oli onnea, että rauhan aikoina veljekset olivat "
-"keskustelleet merkkitulien käytöstä muuhunkin kuin karavaanien kutsumiseen. "
-"He olivat sopineet viestistä, jolla pystyivät kutsumaan toisiaan hädän "
-"hetkellä. Ja juuri tuon vietsin Baran nyt lähetti."
+"kauppakaravaaneja. Oli onni, että parempina aikoina veljekset olivat "
+"keskustelleet merkkitulien käyttämisestä muunlaiseen viestintään hädän "
+"hetkellä. Baran lähetti tuon viestin."
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:72
@@ -199,14 +197,13 @@ msgstr ""
 "12. Näkijän kukka, 363 WV\n"
 "Ote Baran Maghrelaisen päiväkirjasta\n"
 "\n"
-"Jos vain voisin kohdata tämän ‘Mordakin’! Luulen, että taikuuteni voisi olla "
-"hänen taikuuttaan vahvempaa. Mutta hän piileskelee kukkuloilla "
-"palvelijoidensa vartioimana, ja minä joudun kokoamaan joukkoni pelästyneistä "
-"talonpojista, joilla on aseinaan kirveitä ja nuijia.\n"
+"Jos vain voisin kohdata tämän \"Mordakin\"! Taikani mahtaisi olla vahvempaa "
+"kuin hänen. Mutta hän piileskelee kukkuloilla palvelijoidensa vartioimana, "
+"ja minä kokoan pelokkaita talonpoikia taistelemaan kirveillä ja kepukoilla.\n"
 "\n"
-"Tarvitsen veljeäni, hän oli aina minua parempi sotapäällikkö. Emme ole "
+"Tarvitsen veljeäni. Hän oli aina minua parempi sotapäällikkö. Emme ole "
 "puhuneet Toen Carecin pahan päivän jälkeen. Jos hän ei tule minun takiani, "
-"ehkä hän silti palaa auttamaan kyläämme nyt suurimman hädän hetkellä."
+"ehkä hän palaa auttamaan kyläämme nyt suurimman hädän hetkellä."
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:81
@@ -214,7 +211,7 @@ msgid ""
 "Heeding the call, Arvith gathered such men as he could and hurried to Maghre "
 "to help Baran."
 msgstr ""
-"Huomatessaan avunpyynnön, Arvith keräsi kaikki miehet, jotka vain pystyi, ja "
+"Huomatessaan avunpyynnön Arvith keräsi kaikki miehet, jotka vain pystyi, ja "
 "kiiruhti Maghreen auttamaan Barania."
 
 #. [side]
@@ -300,7 +297,7 @@ msgstr "Surmaa paha velho Mordak"
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:143
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:288
 msgid "Death of Arvith"
-msgstr "Arvith kuolee"
+msgstr "Arvithin kuolema"
 
 #. [objectives]
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:182
@@ -308,13 +305,13 @@ msgid ""
 "Use footpads as fodder to protect your loyal units and attack during the day "
 "to minimize the damage your forces take."
 msgstr ""
-"Käytä rosvoja öisin puolustaaksesi lojaaleja yksiköitäsi, joilla hyökkäät "
-"päivän aikana. Näin vähennät joukkojesi kärsimää vahinkoa."
+"Suojele lojaaleja yksiköitäsi rosvoilla, ja hyökkää päiväsaikaan, jotta "
+"vähennät joukkojesi kärsimää vahinkoa."
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:192
 msgid "Greetings, brother, and welcome home."
-msgstr "Tervehdys veljeni, ja tervetuloa kotiin."
+msgstr "Tervehdys, veljeni, ja tervetuloa kotiin."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:197
@@ -330,7 +327,7 @@ msgstr "Onko siinä kaikki, Arvith? Ymmärrän kyllä, mutta..."
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:207
 msgid "You called, and I came; be content with that. What ails Maghre?"
 msgstr ""
-"Sinä kutsuit ja minä tulin, ole siihen tyytyväinen. Mikä Maghrea vaivaa?"
+"Sinä kutsuit, ja minä tulin. Ole siihen tyytyväinen. Mikä Maghrea vaivaa?"
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:212
@@ -340,11 +337,10 @@ msgid ""
 "itself! The villagers of Maghre have taken up weapons but they are not "
 "trained fighters; we need your men, and you to lead them."
 msgstr ""
-"Pimeyden velho on tullut. Hänen olentonsa kutsuvat häntä Mordakiksi. He ovat "
-"terrorisoineet syrjäisiä maatiloja ja pelkäämme, että pian he hyökkäävät "
-"myös kylään! Maghren kyläläiset ovat ottaneet aseet esiin, mutta heitä ei "
-"ole koulutettu taistelemaan. Me tarvitsemme sinun miehiäsi ja sinua "
-"johtamaan."
+"Pimeyden velho on saapunut. Hänen olentonsa kutsuvat häntä nimellä Mordak. "
+"Ne ovat pitäneet syrjätiloja kauhuissaan, ja me pelkäämme niiden hyökkäävän "
+"pian kylään! Maghren kyläläiset ovat tarttuneet aseisiin, mutta heitä ei ole "
+"koulutettu taisteluun. Me tarvitsemme miehiäsi, ja sinua johtamaan."
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:217
@@ -352,17 +348,16 @@ msgid ""
 "I can feel Mordak’s foul touch on the hidden currents of the earth and air. "
 "He is somewhere due north of here, I would say not more than two days’ ride."
 msgstr ""
-"Voin tuntea Mordakin inhan kosketuksen ilman ja maaperän salaisissa "
-"virtauksissa. Hän on jossakin täältä pohjoiseen, sanoisin että enintään "
-"kahden päivän ratsastusmatkan päässä."
+"Tunnen Mordakin pahan kosketuksen ilman ja maaperän salaisissa virtauksissa. "
+"Hän on jossakin täältä pohjoiseen. Sanoisin, että enintään kahden päivän "
+"ratsastusmatkan päässä."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:222
 msgid ""
 "All right. I will do this for the village. Can you keep the mage off our "
 "backs?"
-msgstr ""
-"Hyvä on. Teen tämän kylän vuoksi. Voitteko pitää velhon poissa häiritsemästä?"
+msgstr "Hyvä on. Teen tämän kylän vuoksi. Voitko pitää velhon meistä loitolla?"
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:227
@@ -372,15 +367,15 @@ msgid ""
 "Mordak himself with magic at an unguarded moment. You shall be the right "
 "hand, I the left... aye, brother?"
 msgstr ""
-"Hiivin mukanani kourallinen parhaita tiedustelijoitamme ja kirvesmiehiämme. "
-"Sillä aikaa, kun sinä kiinnität hänen huomionsa ja tapat hänen olentojaan, "
-"minä yritän kukistaa vartioimattomaksi jääneen Mordakin magialla. Ole sinä "
-"oikea käsi, minä olen vasen... sopiiko tämä, veljeni?"
+"Hiivin mukanani kourallinen parhaita tiedustelijoitamme ja erämiehiämme. "
+"Samalla kun sinä kiinnität hänen huomionsa ja tapat hänen olentojaan, minä "
+"yritän kukistaa vartioimattomaksi jääneen Mordakin magialla. Ole sinä oikea "
+"käsi, minä olen vasen... sopiiko se, veljeni?"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:232
 msgid "... Aye. Just make sure you’re there when we need you."
-msgstr "... Kyllä. Varmista vain, että olet paikalla, kun tarvitsemme sinua."
+msgstr "... Kyllä. Olehan varmasti paikalla, kun tarvitsemme sinua."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:243
@@ -388,7 +383,7 @@ msgid ""
 "Baran should be in position by now. Press them, distract the adept so Baran "
 "can spring his trap!"
 msgstr ""
-"Nyt Baranin pitäisi olla perillä. Painostakaa ja häiritkää heitä, jotta "
+"Nyt Baranin pitäisi olla perillä. Painostakaa ja häiritkää niitä, jotta "
 "Baran saa viritettyä ansansa!"
 
 #. [message]: speaker=Arvith
@@ -407,8 +402,8 @@ msgid ""
 "No... No. This is something else. I’m worried about him... but right now it "
 "means we have to deal with this Mordak ourselves."
 msgstr ""
-"Ei... Ei. Tämä on jotain muuta. Olen huolissani hänen vuokseen... mutta "
-"juuri nyt meidän on itse hoideltava Mordak."
+"Ei... Ei. Tämä on jotain muuta. Olen huolissani hänestä... mutta juuri nyt "
+"meidän on itse hoideltava Mordak."
 
 #. [message]: speaker=unit
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:276
@@ -423,7 +418,7 @@ msgstr "Hyvää työtä, miehet! Mutta mitä on tapahtunut veljelleni?"
 #. [message]: speaker=unit
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:286
 msgid "Worried about him, are you? E-he-he... hergh... gaargh..."
-msgstr "Oletko huolissasi hänestä? E-he-he..hergh...gaargh..."
+msgstr "Oletko huolissasi hänestä? E-he-he... hergh... gaargh..."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:296
@@ -438,13 +433,13 @@ msgid ""
 "Sir, our scouts report that Baran was seen captured and carried away further "
 "north!"
 msgstr ""
-"Herra, tiedustelijamme raportoivat, että Baran kaapattiin ja vietiin "
-"kauemmaksi pohjoiseen!"
+"Herra, tiedustelijamme ilmoittavat, että Baran vietiin vankina kauemmas "
+"pohjoiseen!"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:323
 msgid "That they should dare this! We will give chase at once."
-msgstr "Kuinka he kehtaavat! Perään! Lähdemme takaa-ajoon välittömästi."
+msgstr "Kuinka ne kehtaavat! Lähdemme takaa-ajoon välittömästi."
 
 #. [message]: speaker=Mordak
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:349
@@ -457,20 +452,20 @@ msgid ""
 "My brother, kidnapped? I have failed you, Baran! And even now Mordak’s "
 "forces descend upon the village!"
 msgstr ""
-"Minun veljeni kaapattu? Olen pettänyt sinut, Baran! Ja nyt Mordakin joukot "
-"hyökkäävät kylään!"
+"Minunko veljeni siepattu? Olen pettänyt sinut, Baran! Ja juuri nyt Mordakin "
+"joukot hyökkäävät kylään!"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:370
 msgid "I hear these creatures are nigh-immune to our weapons, let us see!"
 msgstr ""
-"Olen kuullut, että nämä olennot ovat liki haavoittumattomia aseillemme, nyt "
-"näemme sen!"
+"Olen kuullut, että nämä olennot ovat liki haavoittumattomia aseillemme. "
+"Katsotaanpa!"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:386
 msgid "That was not so hard!"
-msgstr "Ei se ollut niin vaikeaa!"
+msgstr "Eipä ollut niin vaikeaa!"
 
 #. [scenario]: id=02_The_Chase
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:5
@@ -480,9 +475,7 @@ msgstr "Takaa-ajo"
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:27
 msgid "Arvith and his band rode north in search of his missing brother."
-msgstr ""
-"Arvith ja hänen joukkonsa ratsastivat pohjoiseen etsimään hänen kadonnutta "
-"veljeään."
+msgstr "Arvith joukkoineen ratsasti pohjoiseen etsimään kadonnutta veljeään."
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:34
@@ -508,19 +501,19 @@ msgstr ""
 "Ote Arvith Maghrelaisen päiväkirjasta\n"
 "\n"
 "Olemme etsineet Barania kolme päivää, emmekä ole löytäneet häntä. Paras "
-"arvaukseni oli mennä pohjoiseen rajamaille, missä elävöittäjän kätyrit "
-"olisivat voineet piilotella, kaikkialla muualla on lähinnä maatiloja. Ensin "
-"ajattelin, että etsiminen voisi olla tuloksetonta, mutta myöhään "
-"ensimmäisenä etsintä päivänä löysimme vähän jälkiä. Osa niistä oli "
-"luurankojalkojen tekemiä, mutta ensimmäisen leirintäalueen jälkeen jäljet "
-"olivat vain raskaita kuormia kantavien miesten jälkiä.\n"
+"arvaukseni oli mennä pohjoisen rajamaille, missä elävöittäjän kätyrit "
+"voisivat piilotella turvallisesti. Kaikkialla muualla on lisää maatiloja. "
+"Aluksi luulin, että etsintä saattaisi olla tuloksetonta, mutta myöhään "
+"ensimmäisenä päivänä löysimme jälkiä. Osa niistä oli luurankojalkojen "
+"tekemiä, mutta niiden ensimmäisen leirintäalueen jälkeen jäljet olivat "
+"peräisin vain raskaita kuormia kantavilta miehiltä.\n"
 "\n"
-"Olemme nyt tarpeeksi lähellä ollaksemme varmoja: nämä jäljet johtavat "
-"Harmaametsään. Niin kauan kuin muistetaan, kukaan Maghresta tai muistakaan "
-"kylistä ei ole mennyt tuohon metsään. Sukupolvien ajan on kerrottu "
-"tarinoita, jotka ovat varoittaneet tuosta metsästä. Ilmeisesti paikassa "
-"kummittelevat kadonneet sielut, jotka janoavat elävien henkeä, ja jokainen, "
-"joka kuolee siellä, on tuomittu liittymään heidän joukkoonsa."
+"Olemme nyt tarpeeksi lähellä ollaksemme varmoja: ne jäljet johtavat "
+"Harmaametsään. Kukaan Maghresta tai muistakaan kylistä ei ole mennyt siihen "
+"metsään miesmuistiin. Siitä metsästä on kerrottu varoittavia tarinoita "
+"sukupolvien ajan. Ilmeisesti paikassa kummittelevat kadonneet sielut, jotka "
+"himoavat elävien henkeä, ja jokainen sinne kuollut on tuomittu liittymään "
+"heidän joukkoonsa."
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:43
@@ -543,16 +536,15 @@ msgstr ""
 "16. Näkijän kukka, 363 WV\n"
 "Ote Arvith Maghrelaisen päiväkirjasta\n"
 "\n"
-"Mutta olen kyllästynyt taikauskoon. Olen nähnyt maailmaa tarpeeksi, joten "
-"pystyn arvaamaan näiden tarinoiden takana piilevän totuuden. Metsä on "
-"haltioiden koti, ja nämä ovat epäystävällisiä, mikäli tarinat pitävät "
-"lainkaan paikkansa. Olen huolissani miehistäni, hevoset eivät taistele hyvin "
-"metsässä, ja haltiat ovat vaarallisempia omalla maallaan. Mutta on asioita, "
-"jotka täytyy tehdä, ja kysymyksiä, jotka kaipaavat vastauksia. Jotain "
-"suurempaa on tekeillä. Yksi kyläläisiä kiusaava elävöittäjä ei ole mitään "
-"uutta, mutta miksi hänen palvelijansa eivät hajaantuneet, kun hän kuoli? "
-"Minne he ovat menossa nyt? Ja kaikkein tärkeintä, miksi he veivät Baranin "
-"mukanaan?\n"
+"Mutta taikausko kyllästyttää. Olen nähnyt maailmaa tarpeeksi, joten arvaan "
+"niiden tarinoiden takana piilevän totuuden. Metsä on haltioiden koti — "
+"epäystävällisten haltioiden, mikäli tarinat pitävät lainkaan paikkansa. Olen "
+"huolissani miehistäni. Hevoset eivät taistele hyvin metsässä, ja haltiat "
+"ovat vaarallisempia omalla maallaan. Mutta on asioita, joita täytyy tehdä, "
+"ja kysymyksiä, jotka kaipaavat vastauksia. Jotain suurempaa on tekeillä. "
+"Kyläläisiä piinaava manaaja ei ole mitään uutta, mutta miksi hänen "
+"palvelijansa eivät hajaantuneet, kun hän kuoli? Minne ne ovat menossa nyt? "
+"Ja kaikkein tärkeintä, miksi he veivät Baranin mukanaan?\n"
 "\n"
 "Sitä paitsi... haluan veljeni takaisin."
 
@@ -569,7 +561,7 @@ msgstr "Nil-Galion"
 #. [side]: type=Dark Adept, id=Muff Toras
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:170
 msgid "Kidnappers"
-msgstr "Kaappaajat"
+msgstr "Sieppaajat"
 
 #. [side]: type=Dark Adept, id=Muff Toras
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:174
@@ -579,17 +571,17 @@ msgstr "Muff Toras"
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:239
 msgid "Fight your way through the woods before the kidnappers escape"
-msgstr "Taistele tiesi metsän läpi, ennen kuin kaappaajat pääsevät pakoon"
+msgstr "Taistele tiesi metsän läpi ennen kuin sieppaajat pääsevät pakoon"
 
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:256
 msgid "Catch the kidnappers"
-msgstr "Ota kaappaajat kiinni"
+msgstr "Ota sieppaajat kiinni"
 
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:266
 msgid "Kill the Dark Adept before more elves arrive"
-msgstr "Tapa pimeydentuntija ennen kuin hänen apujoukkonsa saapuvat"
+msgstr "Tapa pimeyden tuntija ennen kuin lisää haltioita saapuu"
 
 #. [objectives]
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:282
@@ -597,8 +589,8 @@ msgid ""
 "The elvish forces are spread out. Seek to fight them one at a time with "
 "several of your units."
 msgstr ""
-"Haltioiden joukot ovat levittäytyneet. Yritä taistella niitä vastaan yksi "
-"kerrallaan."
+"Haltiajoukot ovat levittäytyneet. Yritä taistella niitä vastaan yksi "
+"kerrallaan usealla yksikölläsi."
 
 #. [objectives]
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:295
@@ -606,23 +598,23 @@ msgid ""
 "Use horsemen or footpads to quickly explore the shrouded woods to locate the "
 "kidnappers."
 msgstr ""
-"Käytä hevosmiehiä ja rosvoja liikkuaksesi nopeasti ja löytääksesi kaappaajat."
+"Tutki metsää ja löydä sieppaajat nopeasti käyttämällä hevosmiehiä tai "
+"rosvoja."
 
 #. [objectives]
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:310
 msgid ""
 "Separate the Dark Adept from his guards and attack in force for an easy kill."
 msgstr ""
-"Erota pimeyden tuntija suojelijoistaan ja hyökkää ylivoimalla hänen "
-"kimppuunsa."
+"Erota pimeyden tuntija vartijoistaan ja hyökkää joukolla hänen kimppuunsa."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:353
 msgid ""
 "Come on, men. A stroll through such lovely green woods, what could be finer?"
 msgstr ""
-"Tulkaa miehet. Mikä voisi olla hienompaa kuin kävely tuollaisen ihastuttavan "
-"vihreän metsän läpi?"
+"Tulkaa, miehet. Mikä olisi hienompaa kuin retkeily tuollaisen ihastuttavan "
+"vihermetsän läpi?"
 
 #. [message]: speaker=Nil-Galion
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:358
@@ -632,7 +624,7 @@ msgstr "Te siellä! Pysähtykää ja kertokaa aikeenne."
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:363
 msgid "We’re chasing after some men who kidnapped my brother!"
-msgstr "Jahtaamme miehiä, jotka kaappasivat veljeni!"
+msgstr "Me jahtaamme miehiä, jotka sieppasivat veljeni!"
 
 #. [message]: speaker=Nil-Galion
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:368
@@ -642,19 +634,17 @@ msgid ""
 "murderer, and rest assured that the grey mages will release all of the souls "
 "that their prisoner’s evil magic has bound to this world."
 msgstr ""
-"Nuo miehet saivat vankinsa kiinni harjoittamasta elävöittämistä. Sinun "
-"vuoksesi toivon, että hän ei ollut veljesi. Oletetaan, että heidän "
-"kaappaamansa mies oli veljesi murhaaja ja he uskoivat harmaiden velhojen "
-"vapauttavan kaikki sielut, jotka heidän vankinsa paha taikuus on sitonut "
-"tähän maailmaan."
+"Ne miehet ottivat vankinsa kiinni elävöittämisen harjoittamisesta. Sinun "
+"vuoksesi toivon, ettei hän ollut veljesi. Mikäli heidän vangitsemansa mies "
+"oli veljesi murhaaja, on varmaa, että harmaavelhot vapauttavat kaikki "
+"sielut, jotka vangin paha taikuus on sitonut tähän maailmaan."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:379
 msgid ""
 "We killed the necromancer on the battlefield! I struck the killing blow "
 "myself."
-msgstr ""
-"Me surmasimme pimeyden tuntijan taistelukentällä! Iskin viimeisen iskun itse."
+msgstr "Me tapoimme elävöittäjän taistelukentällä! Minä tein tappoiskun itse."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:385
@@ -662,8 +652,7 @@ msgid ""
 "We killed the necromancer on the battlefield! I saw the killing blow with my "
 "own eyes."
 msgstr ""
-"Me surmasimme pimeyden tuntijan taistelukentällä. Näin viimeisen iskun omin "
-"silmin."
+"Me tapoimme elävöittäjän taistelukentällä! Minä näin tappoiskun omin silmin."
 
 #. [message]: speaker=Nil-Galion
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:392
@@ -677,14 +666,14 @@ msgid ""
 "Either way, nothing will be gained by your intrusion into our woods. Now "
 "advance no further, for we will defend our land."
 msgstr ""
-"Kuulimme taistelun ääniä kolme päivää sitten, mutta vangitun ohittaessa "
-"meidät haistoimme epäilemättä kamalan kuolon löyhkän. Jos veljesi todella on "
-"vankina, sitten hän on myös pimeyden tuntija. Muista veljesi sellaisena kuin "
-"me kaikki toivomme hänen olleen, ja tiedä, että vangin kohtalo tulee olemaan "
+"Kuulimme taistelun ääniä kolme päivää sitten, mutta kamalasta "
+"kuolonlöyhkästä ei voinut erehtyä vangin ohittaessa meidät. Jos veljesi "
+"todella on vankina, sitten hänkin on elävöittäjä. Muista veljesi sellaisena "
+"kuin me kaikki toivomme hänen olleen, ja tiedä, että vangin kohtalosta tulee "
 "niin kamala kosto kuin vain voi olla.\n"
 "\n"
-"Oli miten oli, ette saavuta mitään, jos tunkeudutte metsäämme. Poistukaa tai "
-"kohdatkaa kuolema."
+"Oli miten oli, te ette voita mitään tunkeutumalla metsäämme. Älkää edetkö, "
+"tai puolustamme maatamme."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:399
@@ -693,7 +682,7 @@ msgid ""
 "observant than these elves. Still, they will not stop me from freeing Baran!"
 msgstr ""
 "Se niistä kummitustarinoista, mutta jopa kummitukset olisivat olleet "
-"tarkkaavaisempia kuin nämä haltiat. Silti he eivät estä minua vapauttamasta "
+"tarkkaavaisempia kuin nuo haltiat. Eivät he silti estä minua vapauttamasta "
 "Barania!"
 
 #. [message]: role=Mercenary
@@ -703,8 +692,8 @@ msgid ""
 "will have us at a disadvantage; our horses will not maneuver well in the "
 "trees."
 msgstr ""
-"Olen iloinen, kun meidän ei tarvitse kohdata kummituksia. Mutta noilla "
-"haltioilla on etulyöntiasema, sillä hevosemme eivät ole tehokkaita "
+"Hyvä, että meidän ei ainakaan tarvitse kohdata kummituksia. Mutta nuo "
+"haltiat saavat meidät alakynteen, sillä hevosemme eivät liiku hyvin "
 "metsikössä."
 
 #. [message]: speaker=Arvith
@@ -714,8 +703,8 @@ msgid ""
 "woods. We have faced and won through greater perils than those amateurs can "
 "offer."
 msgstr ""
-"Pah, pysytelkää vain poluilla. Keihäs- ja jousimiehemme voivat taistella "
-"syvemmällä metsässä. Olemme kohdanneet ja voittaneet suurempiakin vaaroja "
+"Pah, pysytelkää vain poluilla. Keihäs- ja jousimiehemme osaavat taistella "
+"syvemmällä metsässä. Me olemme kohdanneet ja voittaneet suurempiakin vaaroja "
 "kuin nuo amatöörit voivat tarjota."
 
 #. [message]: speaker=second_unit
@@ -731,14 +720,15 @@ msgid ""
 "without arousing the elves’ suspicions. Still, no need for the disguise any "
 "more."
 msgstr ""
-"Kirottua! Jos he olisivat olleet tunnin hitaampia, olisin voinut peittää "
-"jälkemme herättämättä haltioiden huomiota. Noh, enään ei tarvitse naamioitua."
+"Kirottua! Jos he olisivat hidastelleet pari tuntia, olisin voinut peittää "
+"jälkemme herättämättä haltioiden huomiota. No jaa, eipä enää tarvitse "
+"naamioitua."
 
 #. [message]: speaker=Arvith
 #. it's likely that all the elves are already dead, and Arvith is just shouting to the forest
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:498
 msgid "Well, elves? Now do you see who the necromancers are?"
-msgstr "No haltiat? Näettekö nyt, ketkä ovat pimeyden tuntijoita?"
+msgstr "No, haltiat? Näettekö nyt, ketkä ovat elävöittäjiä?"
 
 #. [message]: speaker=messenger_elf
 #. a elven scout rides in from off-map, takes their first look at the situation, and realises that they have no idea what's going on
@@ -748,13 +738,12 @@ msgid ""
 "Council, they can work out who the necromancers are."
 msgstr ""
 "Kuulin taistelun ääntä, mutta en odottanut näkeväni tätä. Ilmoitan tästä "
-"neuvostolle, he saavat päättää, ketkä ovat pimeyden tuntijoita ja ketkä "
-"eivät."
+"neuvostolle. He selvittävät, ketkä elävöittäjät ovat."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:544
 msgid "Come on, men, let’s catch those kidnappers!"
-msgstr "Tulkaa miehet! Napataan nuo kaappaajat!"
+msgstr "Tulkaa, miehet! Napataan ne sieppaajat!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:556
@@ -763,8 +752,8 @@ msgid ""
 "precious brother the mage north with half my men a day since; he will be "
 "safely locked away in our master’s dungeons by now."
 msgstr ""
-"Hah! Olet vanginnut minut, mutta se ei hyödytä sinua yhtään. Lähetin rakkaan "
-"maagiveljesi ja puolet miehistäni pohjoiseen vuorokausi sitten. Nyt hän on "
+"Hah! Vangitsitte minut, mutta se ei teitä hyödytä yhtään. Lähetin rakkaan "
+"velhoveljesi ja puolet miehistäni pohjoiseen vuorokausi sitten. Nyt hän on "
 "jo turvallisesti lukkojen takana mestarimme tyrmässä."
 
 #. [message]: speaker=Arvith
@@ -773,7 +762,7 @@ msgid ""
 "My blade is at your throat. Give us the way to my brother now, or I will "
 "spill your wretched blood on the ground."
 msgstr ""
-"Miekkani terä on kurkullasi. Kerro meille tie veljeni luokse heti tai "
+"Miekkani terä on kurkullasi. Kerro meille tie veljeni luokse heti, tai "
 "vuodatan riivatun veresi maahan."
 
 #. [event]
@@ -823,8 +812,8 @@ msgid ""
 "guards are $first_password_$first_password and "
 "$second_password_$second_password|."
 msgstr ""
-"Kolmen päivän ratsastus koilliseen, hylätyssä linnassa. Vartijoiden "
-"tunnussanat ovat $first_password_$first_password ja "
+"Kolmen päivän ratsastus koilliseen, hylätyssä linnassa. Tunnussanat "
+"vartijoille ovat $first_password_$first_password ja "
 "$second_password_$second_password|."
 
 #. [message]: speaker=Arvith
@@ -839,8 +828,8 @@ msgid ""
 "Captain, what are we riding into? I thought you wanted nothing to do with "
 "Baran any more, not since Toen Caric."
 msgstr ""
-"Kapteeni, mihin oikein ratsastamme? Luulin, ettet halunnut enää olla "
-"tekemisissä Baranin kanssa, et ainakaan Toen Caricin jälkeen."
+"Kapteeni, minne me ratsastamme? Luulin, ettette enää halunneet olla "
+"tekemisissä Baranin kanssa. Ei Toen Caricin jälkeen."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:607
@@ -848,9 +837,8 @@ msgid ""
 "I’m no longer sure. What’s between us remains, but knowing someone else has "
 "lain hands on him changes things. Mount up, and let’s get moving."
 msgstr ""
-"En ole enää varma. Välillämme on edelleen paljon selvittämättömiä asioita, "
-"mutta tilanne on muuttunut nyt kun tiedän jonkun muun kajonneen häneen. "
-"Noustaan ratsaille ja lähdetään liikkeelle."
+"En ole enää varma. Välillämme on kuilu, mutta se, että joku muu on kajonnut "
+"häneen, muuttaa asioita. Noustaan ratsaille ja lähdetään liikkeelle."
 
 #. [event]
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:622
@@ -864,8 +852,7 @@ msgid ""
 "foul undead. Are there more of them to be destroyed?"
 msgstr ""
 "Tervehdys. Olen Brena, kuljeksiva ritari. Näin teidät jahtaamassa ja "
-"taistelemassa saastaisia epäkuolleita vastaan. Onko niitä enemmänkin "
-"tuhottaviksi?"
+"taistelemassa inhoja epäkuolleita vastaan. Onko niitä lisää tuhottaviksi?"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:636
@@ -882,8 +869,8 @@ msgid ""
 "I bear a great hatred towards their kind. I will follow and fight them with "
 "you, if you permit."
 msgstr ""
-"Kannan suurta kaunaa heidänlaisiaan kohtaan. Seuraan sinua ja taistelen "
-"rinnallasi niitä vastaan, jos sallit."
+"Kannan suurta kaunaa niitä kohtaan. Seuraan teitä ja taistelen niitä vastaan "
+"rinnallanne, jos sallitte."
 
 #. [message]: role=Mercenary
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:646
@@ -893,7 +880,7 @@ msgstr "Hän vain hidastaisi meitä!"
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:651
 msgid "It is my place to decide this."
-msgstr "Minun on päätettävä tämä."
+msgstr "Minun on päätettävä tästä."
 
 #. [option]
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:653
@@ -916,8 +903,8 @@ msgid ""
 "Take this, then, for I see that you are on a quest. My comrades will help "
 "you whenever you call for them."
 msgstr ""
-"Siinä tapauksessa ota tämä, sillä näen, että tehtävänne on tärkeä. Toverini "
-"auttavat sinua milloin vain kutsut heitä."
+"Ottakaa sitten tämä, sillä näen, että olette etsintäretkellä. Toverini "
+"auttavat teitä aina, kun kutsutte heitä."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:681
@@ -930,8 +917,8 @@ msgid ""
 "These elves have delayed us too long, the kidnappers’ trail will have faded "
 "by now."
 msgstr ""
-"Haltiat viivyttelivät meitä liian pitkään, kaapparien jäljet ovat kadonneet "
-"jo."
+"Haltiat viivyttelivät meitä liian pitkään. Sieppaajien jäljet ovat jo "
+"kadonneet."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:716
@@ -939,8 +926,8 @@ msgid ""
 "More elves are arriving; even if they believe me, the kidnappers’ trail is "
 "sure to fade before we can follow."
 msgstr ""
-"Haltioita saapuu lisää. Vaikka he uskoisivatkin minua, kaappareiden jäljet "
-"katoavat, ennen kuin ehdimme jatkamaan takaa-ajoa."
+"Haltioita saapuu lisää. Vaikka he uskoisivatkin minua, sieppaajien jäljet "
+"katoavat ennen kuin pääsemme perään."
 
 #. [message]: speaker=Nil-Galion
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:730
@@ -948,13 +935,13 @@ msgid ""
 "Deluded fool, you are rescuing a necromancer. I can only hope that you are "
 "too late, and that our souls will rest in peace."
 msgstr ""
-"Hölmö, pelastatte pimeyden tuntijaa. Voin vain toivoa, ettette ehdi, ja että "
-"sielumme saavat levätä rauhassa."
+"Harhainen hölmö, te pelastatte elävöittäjää. Voin vain toivoa, ettette ehdi "
+"ja että sielumme saavat levätä rauhassa."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:740
 msgid "Follow their back trail!"
-msgstr "Seuratkaa heidän jälkiään!"
+msgstr "Seuratkaa heidän paluujälkiään!"
 
 #. [scenario]: id=03_Guarded_Castle
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:5
@@ -986,22 +973,21 @@ msgstr ""
 "19. Näkijän kukka, 363 WV\n"
 "Ote Rotharik Klaanittoman päiväkirjasta\n"
 "\n"
-"Viimeiset Mordakin palvelijat saapuivat tänään tuoden uutisen hänen "
-"kuolemastaan. Heillä oli mukanaan niin tiukkaan pakattu käärö, että se oli "
-"tuskin tunnistettavissa ihmiseksi. Mordak oli aina ollut holtiton. Tämä koko "
-"epätoivoinen juoni oli ollut hänen ideansa, ja luulisi että voisin syyttää "
-"häntä kaikesta siitä, mitä olemme joutuneet kärsimään, jos sillä olisi vielä "
-"merkitystä. Hän sai myös örkit suuttumaan meille. Mutta silti hän onnistui "
-"saavuttamaan sen, minkä tavoitteekseen asetti. En vieläkään usko kaiken "
-"lopullisuutta, tähän asti olemme aina pärjänneet jotenkin.\n"
+"Viimeiset Mordakin palvelijat saapuivat tänä aamuna tuoden uutisen hänen "
+"kuolemastaan. Ne kantoivat niin tiukkaan sidottua pakkausta, ettei sitä "
+"juuri tunnistanut ihmiseksi. Mordak oli aina ollut holtiton. Tämä koko "
+"epätoivoinen juoni oli hänen ideansa, ja kaipa voisin syyttää häntä kaikesta "
+"kärsimästämme, jos sillä enää olisi väliä. Hän se sai örkitkin vihaisiksi "
+"meille. Mutta hän silti onnistui saavuttamaan tavoitteensa. En vieläkään "
+"usko tapahtuneen lopullisuutta. Tähän asti me olemme aina pärjänneet "
+"jotenkin.\n"
 "\n"
-"Olimme toivoneet voivamme saattaa velhon Tairachiin ja säästää siten omat "
-"henkemme. En tiedä mitä sotapäällikkö tahtoo tästä miehestä, mutta hän "
-"vastaa kuvausta. Uskoisin että Mordakin suunnitelma olisi toiminut "
-"täydellisesti ilman ratsusotureiden väliintuloa. Nyt nekin tulevat tänne "
-"johdossaan tämä mies, jonka huhutaan olevan velhon veli. Jos huhu on totta, "
-"hän ei jätä mitään puolitiehen, enhän minäkään niin tekisi jos heillä "
-"sattuisi olemaan vankinaan Mordak."
+"Olimme toivoneet, että veisimme velhon Tairachiin vastineeksi hengestämme. "
+"En tiedä, mitä se sotapäällikkö tahtoo siitä miehestä, mutta se mies sopii "
+"kuvaukseen. Mordakin suunnitelma olisi kaiketi toiminut täydellisesti ilman "
+"ratsusotureiden väliintuloa. Nyt he tulevat tänne johtajanaan mies, jonka "
+"huhutaan olevan sen velhon veli. Jos se on totta, hän ei jätä mitään "
+"puolitiehen, kuten en minäkään, jos he pitäisivät Mordakia vankina."
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:34
@@ -1022,15 +1008,15 @@ msgstr ""
 "19. Näkijän kukka, 363 WV\n"
 "Ote Rotharik Klaanittoman päiväkirjasta\n"
 "\n"
-"Olen tehnyt voitavani linnoittaakseni tätä surkeaa linnaa. Mukanani tulleet "
-"minulle uskolliset örkit vartioivat portteja, ja olen koonnut palvelijani "
-"linnan sisähuoneisiin. Mutta huonosti tässä käy silti; voitanpa ratsumiehen "
-"tai en, örkit tulevat silti kimppuuni. Niitä on havaittu etsimässä meitä ja "
-"samalla ryöstelemässä ja tuhoamassa pohjoisen maatiloja.\n"
+"Olen tehnyt voitavani vahvistaakseni tätä linnanrotiskoa. Meidän mukana "
+"tulleet örkit vahtivat portteja, ja olen koonnut kaikki palvelijani linnan "
+"sisäiseen pyhäkköön. Mutta huonosti tässä käy. Örkit tulevat silti perääni, "
+"voitanpa sen ratsusoturin taikka en. Örkit ovat haravoineet rajaseutuja ja "
+"ryöstelleet pohjoisen maaseutua etsiessään meitä.\n"
 "\n"
-"Silti jostakin syystä pelkään näitä veljeksiä enemmän. Jos Mordak olisi "
-"täällä, tilanne olisi toisin, mutta meidän parivaljakkomme on rikki ja "
-"heidän ehjä. Heidän välillään on vahva yhteys."
+"Silti jostain syystä pelkään niitä veljeksiä enemmän. Jos Mordak olisi "
+"täällä, tilanne olisi toisin, mutta me olemme hajallaan... ja ne kaksi "
+"miestä ovat ehjiä. Heidän välillään on vahva yhteys."
 
 #. [side]: type=Dark Sorcerer, id=Rotharik
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:86
@@ -1065,7 +1051,7 @@ msgstr "Knago-Brek"
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:163
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:171
 msgid "Castle Guard"
-msgstr "Linnan vartija"
+msgstr "Linnanvartija"
 
 #. [time]: id=indoors_dark_castle
 #. similar string in the wesnoth-help textdomain
@@ -1087,12 +1073,12 @@ msgstr "Pelasta Baran"
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:321
 msgid "Kill the dark sorcerer to get the cell key"
-msgstr "Surmaa pimeyden noita saadaksesi avain tyrmään"
+msgstr "Hanki sellin avain tappamalla pimeyden velho"
 
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:335
 msgid "Move Arvith to the cell with his brother to free him"
-msgstr "Vapauttaaksesi Arvithin veljen liikuta Arvith tyrmään"
+msgstr "Siirrä Arvith veljensä selliin vapauttaaksesi hänet"
 
 #. [objective]: condition=lose
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:348
@@ -1107,8 +1093,8 @@ msgid ""
 "When facing an unknown situation, take into account details from story and "
 "dialog to inform your strategy."
 msgstr ""
-"Tuntemattomassa tilanteessa ota vinkkejä tarinasta parhaan strategian "
-"muodostamiseksi."
+"Tuntemattomassa tilanteessa huomioi vinkkejä tarinasta ja vuoropuheluista "
+"strategiasi muodostamiseksi."
 
 #. [objectives]
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:369
@@ -1116,8 +1102,8 @@ msgid ""
 "The dark sorcerer is a strong unit; attack him with multiple units at once "
 "and try to force him off his keep."
 msgstr ""
-"Pimeyden velho on vahva. Hyökkää hänen kimppuunsa usealla yksiköllä "
-"kerrallaAN ja yritä saada hänet pois linnakkeestaan."
+"Pimeyden velho on vahva. Iske hänen kimppuunsa usealla yksiköllä kerralla ja "
+"pakota hänet pois linnakkeestaan."
 
 #. [objectives]
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:379
@@ -1125,8 +1111,8 @@ msgid ""
 "Markings or decorations on hexes may indicate something to be found. If you "
 "can, it is usually a good idea to investigate."
 msgstr ""
-"Merkinnät tai yksityiskohdat heksoissa saattavat kertoa, että jotain voidaan "
-"löytää. Jos pystyt, on yleensä hyvä idea tutkia näitä yksityiskohtia."
+"Merkinnät tai yksityiskohdat heksoissa voivat vihjata, että jotain voi "
+"löytyä. Jos pystyt, on yleensä hyvä idea tutkia niitä."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:416
@@ -1134,13 +1120,13 @@ msgid ""
 "Arvith and his men halt outside of the castle, gazing for a moment at the "
 "hulking mass of stone looming in the fog. There is movement in the mist."
 msgstr ""
-"Arvith ja hänen miehensä pysähtyvät linnan ulkopuolelle. He tuijottavat "
-"sumun läpi valtavaa kivimassaa sumussa. Sen suunnalla näkyy liikettä."
+"Arvith ja hänen miehensä pysähtyivät linnan ulkopuolelle. He tuijottivat "
+"hetken sumussa häämöttävää valtavaa kivimassaa. Usvassa oli liikettä."
 
 #. [message]: speaker=Guard_leader
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:421
 msgid "Halt! Friend or foe? Give the password."
-msgstr "Seis! Ystävä vai vihamies? Anna tunnussana."
+msgstr "Seis! Ystävä vai vihollinen? Anna tunnussana."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:426
@@ -1178,8 +1164,8 @@ msgid ""
 "The adept didn’t lead us astray after all. I’ll keep my word, distasteful as "
 "it may be; cut him loose, and let’s be rid of him."
 msgstr ""
-"Tuntija ei siltikään johtanut meitä harhaan. Pidän sanani, vaikken pidäkään "
-"siitä. Leikatkaa hänen siteensä ja päästäkää hänet menemään."
+"Tuntija ei sittenkään johtanut meitä harhaan. Pidän sanani, vaikken pidäkään "
+"siitä. Katkaiskaa hänen siteensä ja päästäkää hänet menemään."
 
 #. [message]: speaker=Guard_leader
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:477
@@ -1192,8 +1178,8 @@ msgid ""
 "Haha! We not kill people for long time. Weapon wants blood. We now kill "
 "humans!"
 msgstr ""
-"Haha! Me ei tappaa ihmistä pitkään aikaan. Ase janota verta. Me nyt surmata "
-"ihmiset!"
+"Haha! Ei olla listitty ihmistä pitkään aikaan. Ase tahtoa verta. Me nyt "
+"nirhata ihmiset!"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:500
@@ -1222,9 +1208,7 @@ msgstr "Hyvä kysymys. Kenties veljeni on saanut sen selville."
 #. [message]: speaker=Guard2_leader
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:625
 msgid "Are you our relief arriving? Does this mean we get to leave here now?"
-msgstr ""
-"Oletteko te meidän vaihtojoukkomme? Tarkoittaako tämä sitä, että voimme nyt "
-"poistua?"
+msgstr "Oletteko te meidän vaihtojoukkomme? Eli voimmeko me nyt poistua?"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:630
@@ -1239,7 +1223,7 @@ msgstr "Öö, teidän pitäisi antaa tunnussana."
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:640
 msgid "Oh, of course. I had nearly forgotten."
-msgstr "Niin, tietenkin. Olin melkein unohtaa."
+msgstr "Niinpä tietenkin. Melkein unohdin."
 
 #. [option]
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:643
@@ -1270,7 +1254,7 @@ msgstr "Kiitos! Ärsyttävä pikkumuodollisuus, eikö vain?"
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:675
 msgid "That’s the wrong password! These aren’t our relief! Get them!"
 msgstr ""
-"Tuo oli väärä tunnussana! Nämä eivät ole vaihtojoukkomme! Vangitkaa heidät!"
+"Se oli väärä tunnussana! Nämä eivät ole vaihtojoukkomme! Käykää päälle!"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:683
@@ -1278,23 +1262,23 @@ msgid ""
 "I think I should better support my men at the front to make sure we can free "
 "my brother."
 msgstr ""
-"Luulen, että minun olisi parempi tukea miehiäni rintamalla varmistaakseni, "
-"että voimme vapauttaa veljeni."
+"Mielestäni minun pitäisi tukea miehiäni rintamalla, jotta varmasti "
+"vapautamme veljeni."
 
 #. [message]: speaker=unit
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:695
 msgid "Your hand or Tairach’s, death is still death... (argh)"
-msgstr "Sinun tai Tairachin kädestä, kuolema on silti kuolema... (argh)"
+msgstr "Sinun tai Tairachin kädestä, kuolema kuin kuolema... (argh)"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:705
 msgid "‘Tairach’? Who or what is Tairach?"
-msgstr "‘Tairach’? Kuka tai mikä on Tairach?"
+msgstr "\"Tairach\"? Kuka tai mikä on Tairach?"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:710
 msgid "There’s a key in his robes."
-msgstr "Löysin avaimen hänen taskustaan."
+msgstr "Hänen kaavussaan oli avain."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:720
@@ -1302,17 +1286,17 @@ msgid ""
 "That may well be the key to the cell they’re holding Baran in! I will take "
 "it."
 msgstr ""
-"Se voi hyvinkin olla avain tyrmään, jossa he pitävät Barania! Minä otan sen."
+"Se voi hyvinkin olla avain selliin, jossa he pitävät Barania! Minä otan sen."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:748
 msgid "It may be important, I best take it."
-msgstr "Se voi olla tärkeää, minun on parasta ottaa se."
+msgstr "Se lienee tärkeä. Minun on parasta ottaa se."
 
 #. [message]: speaker=unit
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:766
 msgid "This castle seems as dark as a cave!"
-msgstr "Linna on pimeä kuin luola!"
+msgstr "Linna näyttää pimeältä kuin luola!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:772
@@ -1323,35 +1307,35 @@ msgid ""
 "weaker and enemy units stronger."
 msgstr ""
 "Tässä linnassa vallitsee jatkuva <i>kaoottinen</i> vuorokausi (vastaa "
-"keskiyötä) lukuun ottamatta valaistuja heksoja seinien vieressä (neutraalia "
-"vuorokauden aikaa vastaava). Sijoita yksikkösi tarkasti, sillä muuten omat "
-"joukkosi ovat heikompia ja vihollisen on vahvempia."
+"pysyvää yötä) lukuun ottamatta valaistuja heksoja kiviseinien vieressä "
+"(vastaa neutraalia vuorokaudenaikaa). Sijoita yksikkösi tarkasti, tai muuten "
+"omat joukkosi ovat heikompia ja vihollisen on vahvempia."
 
 #. [message]: speaker=unit
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:792
 msgid "Look what I have found in here! I can count a hundred pieces of gold."
-msgstr "Katsokaa mitä löysin täältä! Tässä on varmasti 100 kultapalaa."
+msgstr "Katsokaa, mitä löysin täältä! Laskin 100 kultapalaa."
 
 #. [message]: speaker=unit
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:806
 msgid "Look what I have found in here! I can count fifty pieces of gold."
-msgstr "Katsokaa mitä löysin täältä! Tässä on varmasti 50 kultapalaa."
+msgstr "Katsokaa, mitä löysin täältä! Laskin 50 kultapalaa."
 
 #. [message]: speaker=unit
 #. The player’s unit stepped in the space between two runes, and a Soulless appeared
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:843
 msgid "What sort of creature have I summoned here?!"
-msgstr "Minkälaisen olennon olen tänne kutsunut?!"
+msgstr "Minkälaisen otuksen olen manannut tänne esiin?!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:873
 msgid "I found Baran. He is in this cell."
-msgstr "Löysin Baranin. Hän on tässä tyrmässä."
+msgstr "Löysin Baranin. Hän on tässä sellissä."
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:884
 msgid "It’s good to see you, Arvith."
-msgstr "Olen iloinen saadessani nähdä sinut, Arvith."
+msgstr "Ilo nähdä sinua, Arvith."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:889
@@ -1362,8 +1346,7 @@ msgstr "Kuin myös, veljeni."
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:895
 msgid ""
 "You must be one of Arvith’s men. Please help me get out of this dungeon."
-msgstr ""
-"Olet varmaan yksi Arvithin miehistä. Auta minut pois tästä vankityrmästä."
+msgstr "Olet varmaan Arvithin miehiä. Auta minut pois tästä vankityrmästä."
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:902
@@ -1372,9 +1355,9 @@ msgid ""
 "enhanced iron gate. It can only be opened with the correct key. You must get "
 "it from him to free me."
 msgstr ""
-"Rotharik, tuo kirottu pimeä noita, on vanginnut minut tämän maagisen "
-"rautaportin taakse. Sen voi avata vain oikealla avaimella. Sinun täytyy "
-"saada se häneltä vapauttaaksesi minut."
+"Se kirottu pimeyden velho Rotharik vangitsi minut tämän lumotun rautaportin "
+"taakse. Sen saa auki vain oikealla avaimella. Teidän täytyy ottaa se "
+"häneltä, jotta vapautatte minut."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:914
@@ -1382,7 +1365,7 @@ msgid ""
 "I have already met, and killed, the sorcerer. Is this the key to which you "
 "referred?"
 msgstr ""
-"Olen jo löytänyt ja tappanut tuon noidan. Onko tämä se avain josta puhut?"
+"Olen jo tavannut ja surmannut sen velhon. Onko tämä se avain, josta puhut?"
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:918
@@ -1390,12 +1373,12 @@ msgid ""
 "Yes, it is. Come, unlock this cell door, and let us depart this place, "
 "brother!"
 msgstr ""
-"Kyllä vain se on. Avaa tämän sellin ovi veli ja lähtekäämme tästä paikasta!"
+"Kyllä se on. Avaa tämän sellin ovi, veli, ja lähtekäämme tästä paikasta!"
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:972
 msgid "Thank you for saving me. I... was not certain you would come."
-msgstr "Kiitos, kun pelastit minut. En... ollut varma että tulisitte."
+msgstr "Kiitos, kun pelastit minut. En... ollut varma, että tulisit."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:977
@@ -1417,7 +1400,8 @@ msgid ""
 "That is as may be. But you are my brother still. And... I never doubted you "
 "would have come for me."
 msgstr ""
-"Saattaa olla. Mutta olet silti veljeni. Ja... olisit tehnyt saman minulle."
+"Saattaa olla. Mutta olet silti veljeni. Ja... olisit epäilemättä tehnyt "
+"saman minulle."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:992
@@ -1425,13 +1409,13 @@ msgid ""
 "It was no great trial, after all. A few elves, one or two dark sorcerers, a "
 "gang of orcs and some undead. Really just a day’s work for the company."
 msgstr ""
-"Eihän tässä mitään... Muutama haltia, pari pimeydennoitaa, örkkejä ja "
+"Eihän tässä mitään... Muutama haltia, pari pimeyden velhoa, örkkejä ja "
 "epäkuolleita. Ihan tavallinen päivätyö meille palkkasotureille."
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:997
 msgid "Thank you for coming to my aid. Let us return to the village."
-msgstr "Kiitos, kun tulitte auttamaan minua. Palatkaamme nyt takaisin kylään."
+msgstr "Kiitos, kun tulit auttamaan minua. Palatkaamme nyt takaisin kylään."
 
 #. [unit]: id=Rotharik, type=Orcish Assassin
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:1031
@@ -1475,18 +1459,17 @@ msgstr ""
 "27. Näkijän kukka, 363 WV\n"
 "Ote Baran Maghrelaisen päiväkirjasta\n"
 "\n"
-"Olen nyt melkein kotona. Viime viikko on ollut täynnä sekavia tunteita. "
-"Vuorotellen iloisia ja surullisia. Oli mahtavaa päästä pois vankityrmästä ja "
-"takaisin aurinkoon ilman pelkoa kuolemasta tai pahemmasta... Mutta kun olin "
-"jättänyt sen taakseni, minua odotti toinen vaikea tehtävä. Sovinnon "
-"tekeminen veljeni kanssa.\n"
+"Melkein kotona nyt. Viime viikko on ollut täynnä sekavia tunteita — iloisia "
+"ja vaikeita vuoron perään. Oli mahtavaa päästä pois vankityrmästä ja "
+"takaisin auringonvaloon ilman pelkoa kuolemasta tai pahemmasta... Mutta kun "
+"olin jättänyt sen taakseni, minua odotti toinen lähes yhtä musertava "
+"tehtävä: sovinnon tekeminen veljeni kanssa.\n"
 "\n"
-"Arne oli jo oikeastaan antanut minulle anteeksi siinä vaiheessa, kun "
-"vapautti minut sellistäni. Silti on kestänyt koko viikko rakentaa takaisin "
-"luottamus, jota aiemmin tunsimme. Onneksi meillä on ollut aikaa palata "
-"rauhallisesti takaisin kylään. Kiersimme Harmaametsän kaukaa, ja matkalla "
-"sen ympäri matkustimme todella kauniin maalaismaiseman läpi. Meillä on ollut "
-"paljon aikaa puhua."
+"Arvith oli jo paljolti antanut minulle anteeksi, kun hän vapautti minut "
+"sellistäni. Silti kesti kokonaisen viikon ennallistaa mukavuudentunne, jota "
+"me ennen tunsimme keskenämme. Onneksi meillä on ollut aikaa palata takaisin "
+"kylään. Me kiersimme Harmaametsän kaukaa, ja matkalla sen ympäri me kuljimme "
+"todella kauniin maalaismaiseman läpi. Me saimme paljon aikaa puhua."
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:34
@@ -1512,21 +1495,21 @@ msgstr ""
 "27. Näkijän kukka, 363 WV\n"
 "Ote Baran Maghrelaisen päiväkirjasta\n"
 "\n"
-"Vaikka olen nyt levollisempi, ajattelen silti usein Toen Caricia. Olisimme "
-"pystyneet torjumaan örkit ilman suuria tappioita. Arvithin suunnittelema "
-"pihtihyökkäys olisi varmasti onnistunut, jos en olisi pilannut sitä. Oli "
-"minulta holtitonta jättää osastoni miehet. Haavoitin vihollisen johtajaa ja "
-"pakotin tämän vetäytymään, mutta hinta siitä oli kallis. Oman osastoni "
-"miehet olisivat selvinneet, jos vain olisin pysynyt heidän luonaan.\n"
+"Vaikka olen nyt levollisempi, ajattelen silti usein Toen Caricia. Me "
+"olisimme pystyneet torjumaan örkit ilman suuria tappioita. Arvithin "
+"suunnittelema pihtihyökkäys olisi varmasti onnistunut, ellen olisi mokannut. "
+"Oli minulta huolimatonta jättää osastoni miehet jälkeen. Haavoitin "
+"sotapäällikköä ja pakotin tämän vetäytymään, mutta hinta siitä oli kallis. "
+"Osastoni miehet olisi voitu pelastaa, jos vain olisin pysynyt heidän "
+"luonaan.\n"
 "\n"
-"En voi syyttää Arvithia siitä, että hän laskee näiden miesten kuolemat minun "
-"viakseni, enkä voi koskaan poistaa sitä vääryyttä mitä olen tehnyt, mutta "
-"uskoisin, että aika parantaa ainakin joitain asioita. Palaamme kylään taas "
-"veljinä.\n"
+"En voi syyttää Arvithia siitä, että hän otti niiden miesten kuolemat "
+"raskaasti, enkä voi koskaan perua tekemääni vääryyttä. Mutta aika taitaa "
+"parantaa joitakin asioita. Palaamme kylään taas veljinä.\n"
 "\n"
-"\n"
-"Mutta minua huolestuttaa vieläkin. Mietin... johtuuko tämä tunne vain ajalta "
-"kun olin lukittuna tyrmään, vai onko se todellista?"
+"Mutta minua huolettaa vieläkin. Johtuukohan... tämä paha aavistus vain "
+"ajalta, jolloin olin lukittuna tyrmässä, vai merkitseekö se jotain "
+"todellista?"
 
 #. [side]: type=Orcish Warlord, id=Tairach
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:87
@@ -1550,8 +1533,8 @@ msgid ""
 "Recruit or Recall some high-move units to be able to see as far as possible "
 "through the fog for approaching units."
 msgstr ""
-"Värvää tai kutsu nopeasti liikkuvia joukkoja nähdäksesi mahdollisimman "
-"kaukaa sumun läpi lähestyvät yksiköt."
+"Värvää tai kutsu nopealiikkeisiä yksiköitä, jotta näet lähestyviä yksiköitä "
+"mahdollisimman kaukaa sumun läpi."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:171
@@ -1559,8 +1542,8 @@ msgid ""
 "There. The village is just across those hills, and already I see men coming "
 "to greet us!"
 msgstr ""
-"Tuolla. Kyläsi on noiden kukkuloiden toisella puolella, ja miehet ovat jo "
-"tulossa tervehtimään meitä!"
+"Tuolla. Kylä on noiden kukkuloiden toisella puolella, ja näen jo miesten "
+"tulevan tervehtimään!"
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:176
@@ -1568,7 +1551,7 @@ msgid ""
 "No, they are fleeing from something. We must find out what is happening over "
 "there!"
 msgstr ""
-"Ei. He pakenevat jotakin. Meidän täytyy saada selville, mitä täällä tapahtuu!"
+"Ei, he pakenevat jotakin. Meidän täytyy saada selville, mitä siellä tapahtuu!"
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:181
@@ -1579,8 +1562,7 @@ msgstr "Miehet! Aseet valmiiksi!"
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:186
 msgid "We should find Reeve Hoban. Maybe he knows what is going on here."
 msgstr ""
-"Meidän pitäisi puhua valtuutettu Reeve Hobanille. Ehkä hän tietää, mitä "
-"täällä tapahtuu."
+"Meidän tulee etsiä Reeve Hoban. Ehkäpä hän tietää, mitä täällä tapahtuu."
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:201
@@ -1596,8 +1578,8 @@ msgstr "Tuo sotaherra! Se on..."
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:211
 msgid "Yes, I’d know that face anywhere. Especially after what you did to it."
 msgstr ""
-"Kyllä, tunnistaisin tuon naaman missä tahansa. Erityisesti sen jälkeen, mitä "
-"sinä teit sille."
+"Kyllä, tunnistaisin tuon naaman missä vain. Etenkin sen jälkeen, mitä sinä "
+"teit sille."
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:216
@@ -1607,28 +1589,27 @@ msgstr "Sotaherra Toen Caricista."
 #. [message]: speaker=Tairach
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:221
 msgid "You! The mage who scarred me with fire! KILL THEM!"
-msgstr "Sinä! Velho joka arpeutti minut tulella! TAPPAKAA HEIDÄT!"
+msgstr "Sinä! Velho, joka arpeutti minua tulella! TAPPAKAA HEIDÄT!"
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:226
 msgid "Let’s finish what we started, brother."
-msgstr "Veljeni, saatetaan loppuun se minkä aloitimme."
+msgstr "Veljeni, viedään loppuun se, minkä aloitimme."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:231
 msgid "Aye. I’ll be the right arm, and you’ll be the left. Let’s go!"
-msgstr "Kyllä. Minä olen oikea käsi, ole sinä vasen. Mennään!"
+msgstr "Kyllä. Minä olen oikea käsi, sinä olet vasen. Mennään!"
 
 #. [message]: speaker=Reeve Hoban
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:250
 msgid "I am glad to see you returned."
-msgstr "Olen iloinen nähdessäni teidän palanneen."
+msgstr "Ilo nähdä, että te palasitte."
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:255
 msgid "No gladder than I am to be here. But what has happened to Maghre?"
-msgstr ""
-"Et iloisempi kuin minä ollessani täällä. Mutta mitä on tapahtunut Maghrelle?"
+msgstr "Et minua iloisempi tänne tultuani. Mutta mitä on tapahtunut Maghrelle?"
 
 #. [message]: speaker=Reeve Hoban
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:260
@@ -1636,7 +1617,7 @@ msgid ""
 "Soon after you departed we were beset by orcs. With half the men of Maghre "
 "gone, we could not stop them."
 msgstr ""
-"Pian lähtösi jälkeen örkit piirittivät meidät. Kun puolet Maghen miehistä "
+"Pian lähtönne jälkeen örkit piirittivät meidät. Kun puolet Maghen miehistä "
 "oli mennyt, emme voineet pysäyttää heitä."
 
 #. [message]: speaker=Reeve Hoban
@@ -1645,7 +1626,7 @@ msgid ""
 "The orcish warlord aims to enslave us. We will not be able to hold out for "
 "much longer."
 msgstr ""
-"Örkkisotaherra haluaa orjuuttaa meidät. Emme pysty pidättelemään heitä "
+"Örkkisotaherra aikoo orjuuttaa meidät. Emme pysty pidättelemään heitä "
 "pitkään."
 
 #. [message]: speaker=Reeve Hoban
@@ -1654,26 +1635,24 @@ msgid ""
 "Have a care, his men are fell fighters and have killed many. Very few remain "
 "who can bear arms, but I will send them to aid you in battle."
 msgstr ""
-"Ole varovainen, hänen miehensä ovat julmia taistelijoita, jotka ovat "
-"tappaneet monia. Hyvin vähän on jäljellä niitä, jotka pystyvät kantamaan "
-"aseita, mutta lähetän heidät auttamaan teitä taistelussa."
+"Pitäkää varanne. Hänen miehensä ovat julmia taistelijoita, jotka ovat "
+"tappaneet monia. Enää harvat voivat kantaa aseita, mutta lähetän heidät "
+"avuksenne taisteluun."
 
 #. [objective]: condition=win
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:284
 msgid "Slay the Orcish Warlord to free the village"
-msgstr "Surmaa örkkisotaherra vapauttaaksesi kylä"
+msgstr "Vapauta kylä surmaamalla örkkisotaherra"
 
 #. [objectives]
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:300
 msgid "You can use Reeve Hoban’s keep to recruit or recall additional units."
-msgstr ""
-"Voit käyttää Reeve Hobanin linnoitusta värvätäksesi tai kutsuaksesi "
-"lisäjoukkoja."
+msgstr "Reeve Hobanin linnakkeella voit värvätä tai kutsua lisäyksiköitä."
 
 #. [message]: speaker=Tairach
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:341
 msgid "Today, you shall pay for disfiguring my face, mage!"
-msgstr "Saat maksaa tänään sen, mitä teit kasvoilleni, velho!"
+msgstr "Tänään saat maksaa naamani runtelemisesta, velho!"
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:346
@@ -1681,8 +1660,8 @@ msgid ""
 "I have already paid with the lives of my men at Toen Caric. It is time I "
 "righted that mistake and finished this once and for all."
 msgstr ""
-"Olen jo maksanut miesteni hengellä Toen Caricissa. On aika korjata tuo virhe "
-"ja saattaa tämä loppuun."
+"Minä olen jo maksanut miesteni hengillä Toen Caricissa. On aika korjata se "
+"virhe ja saattaa tämä päätökseen lopullisesti."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:355
@@ -1690,7 +1669,7 @@ msgid ""
 "It is finished. We’ve defeated him at last. It was good to have you at my "
 "side, Baran."
 msgstr ""
-"Tehtävä on täytetty. Olemme kukistaneet hänet. Oli ilo taistella rinnallasi, "
+"Selvän teki. Me kukistimme hänet vihdoin. Oli hyvä saada sinut rinnalleni, "
 "Baran."
 
 #. [message]: speaker=Baran
@@ -1699,9 +1678,8 @@ msgid ""
 "So much has been destroyed. It will be difficult to repair all that the orcs "
 "and undead have wrecked. And they could come again."
 msgstr ""
-"Niin paljon on tuhottu. Meillä tulee olemaan kovat ajat korjatessamme "
-"örkkien ja epäkuolleiden aiheuttamia tuhoja. Ja he saattavat palata vielä "
-"joskus."
+"Niin paljon on tuhottu. On vaikeaa korjata kaikkea örkkien ja epäkuolleiden "
+"aiheuttamia tuhoja. Ja ne saattavat palata vielä."
 
 #. [message]: speaker=Arvith
 #. "you have my word" is a idiom for promising to do something
@@ -1710,8 +1688,8 @@ msgid ""
 "I must go back to earning my living. But you have my word, little brother; "
 "if you are beset again, I will come."
 msgstr ""
-"Minun on mentävä takaisin ansaitakseni elantoni. Mutta sinulla on sanani, "
-"pikkuveli. Jos joudutte pulaan jälleen, tulen apuun."
+"Minun on palattava ansaitsemaan elantoani. Mutta saat sanani, pikkuveli. Jos "
+"taas joudut pulaan, tulen apuun."
 
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:384
@@ -1729,7 +1707,7 @@ msgstr ""
 #. [scenario]: id=05_Epilogue
 #: data/campaigns/Two_Brothers/scenarios/05_Epilogue.cfg:5
 msgid "A Tale of Two Brothers — Epilogue"
-msgstr "Kahden veljeksen tarina – Loppunäytös"
+msgstr "Kahden veljeksen tarina — Loppunäytös"
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/05_Epilogue.cfg:18
@@ -1750,15 +1728,15 @@ msgstr ""
 "22. Hiljansiemen, 355 WV\n"
 "Ote Arvith Maghrelaisen päiväkirjasta\n"
 "\n"
-"Maghre näyttää paljon paremmalta kuin viime näkemältä. Baran on tehnyt "
-"ihmeitä kahdessa vuodessa. Kylä on rakennettu uudelleen, ja ympäröivä "
-"maaseutu on palautettu kuntoon ja siellä on uusia asukkaita. Vaikka veljeni "
-"on ollut huolissaan, kansamme ei ole kohdannut tänä aikana uusia uhkia.\n"
+"Maghre näyttää paljon paremmalta kuin viime näkemällä. Baran oli tehnyt "
+"ihmeitä kahdessa vuodessa. Kylä on jälleenrakennettu, ja ympäröivä maaseutu "
+"on ennallistettu ja asutettu uudelleen. Veljeni murheista huolimatta "
+"kansamme ei ole kohdannut sinä aikana uusia uhkia.\n"
 "\n"
-"On ollut vaikeaa olla muualla näiden kahden vuoden ajan, mutta minulla ja "
-"Baranilla on kutsumuksemme, ja meillä on ollut vähän tilaisuuksia tavata "
-"uudestaan. Mutta kun palkkasoturit ja minä olimme kulkemassa tämän alueen "
-"läpi uuden isäntämme kanssa, sain tilaisuuden vierailla veljeni luona."
+"On ollut vaikeaa olla poissa näiden kahden vuoden ajan, mutta minulla ja "
+"Baranilla on kutsumuksemme, ja meillä ei juuri ollut tilaisuutta tavata "
+"uudestaan. Mutta kun minä ja seurueeni olimme kulkemassa tämän alueen läpi "
+"uuden isäntämme kanssa, tämä antoi luvan vierailla veljeni luona."
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/05_Epilogue.cfg:27
@@ -1776,10 +1754,10 @@ msgstr ""
 "22. Hiljansiemen, 365 WV\n"
 "Ote Arvith Maghrelaisen päiväkirjasta\n"
 "\n"
-"Isäntäni on haltia. En koskaan uskonut, että ystävystyisin sellaisen kanssa, "
-"mutta hän ei ole niin ylimielinen kuin muut. Kalenz on hänen nimensä. Hän on "
-"nähnyt liikaa pahuutta, sen näkee, kun vain vilkaisee hänen silmiinsä. "
-"Luulenpa, että meidän pitää kohta alkaa ansaita elantomme.\n"
+"Isäntäni on haltia. Enpä uskonut ystävystyväni sellaisen kanssa, mutta hän "
+"ei ole niin ylimielinen kuin muut. Kalenz on hänen nimensä. Hän on nähnyt "
+"liikaa pahaa, sen voin nähdä hänen silmistään. Meidän pitänee kohta ansaita "
+"elantomme.\n"
 "\n"
 "Ennen sitä on kuitenkin hyvä levätä ja nauttia rauhasta."
 
@@ -1790,7 +1768,7 @@ msgstr "Arvith"
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/utils/characters.cfg:21
 msgid "All is lost now that I am dead..."
-msgstr "Kaikki on hukassa nyt, kun minä olen kuollut..."
+msgstr "Kaikki on hukassa nyt, kun minä kuolen..."
 
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/utils/characters.cfg:39

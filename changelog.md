@@ -1,4 +1,4 @@
-## Version 1.19.18+dev
+## Version 1.19.19+dev
 ### Add-ons client
 ### Add-ons server
 ### Campaigns
@@ -8,11 +8,34 @@
 ### Packaging
 ### Terrain
 ### Translations
-   * Updated translations: Bengali, British English, Catalan, Czech, French, Galician, Hungarian, Italian, Spanish
+   * Updated translations: Bengali, German, Hungarian, Italian, Spanish
 ### Units
 ### User interface
 ### WML Engine
 ### Miscellaneous and Bug Fixes
+
+## Version 1.19.19
+### Campaigns
+   * Heir to the Throne
+     * The finale's farm burning difficulty option now explains which option is the standard and which option is especially challenging.
+     * The finale's farm burning difficulty option will now trigger automatically if you miss it.
+     * Once unlocked, Carcyn now also includes a port on the north shore.
+     * Fix Li'sar not using her elite recruits in Crossroads and Siege of Elensefar.
+### Lua API
+   * Add new wml.valid_var function to validate a WML variable path
+   * Bugfix: Indexing a vconfig now returns a table with tag/contents keys
+### Translations
+   * Updated translations: Bengali, British English, Catalan, Czech, French, Finnish, Galician, Hungarian, Italian, Spanish
+### WML Engine
+   * Add a 'priority' attribute to abilities and weapon specials with values (`[chance_to_hit]`, `[damage]`, etc).
+     * Values set by lower priority specials are considered as the base value for higher priority specials' calculations.
+   * Using `[chance_to_hit]` with a negative priority is now preferred over giving weapons `parry` and `accuracy` attributes, as the sidebar UI shows it.
+   * You can now test if a WML variable is empty with `[variable]blank=yes`
+   * It is now possible to place `[set_variables]` (note the plural) in `[modify_side]` and `[modify_unit]`
+### Miscellaneous and Bug Fixes
+   * Fixed giving quick trait to leaders with 4 moves in multiplayer.
+   * Removed the `SPECIAL_NOTES_ARCANE` macro, the note is automatically added to any unit with an arcane attack.
+   * Fixed a crash when a unit has no random traits available.
 
 ## Version 1.19.18
 ### Campaigns

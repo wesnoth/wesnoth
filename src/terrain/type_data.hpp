@@ -46,20 +46,20 @@ private:
 	mutable bool initialized_;
 	const game_config_view & game_config_;
 
-	terrain_type_data(const game_config_view & game_config);
-
 public:
-	/**
-	 * Regenerates the terrain database from the given game config.
-	 *
-	 * @returns A pointer to the new terrain database.
-	 */
-	static std::shared_ptr<terrain_type_data> reset(const game_config_view& game_config);
+	terrain_type_data(const game_config_view & game_config);
+	~terrain_type_data();
 
 	/**
 	 * @returns A pointer to the current terrain database instance.
 	 */
-	static std::shared_ptr<terrain_type_data> get();
+	static terrain_type_data* get();
+
+	/**
+	 * Clears the database and queues reinitialization on the next call to
+	 * @ref lazy_initialization.
+	 */
+	void reset() const;
 
 	/**
 	 * On the first call to this function, parse all of the [terrain_type]s
@@ -133,5 +133,5 @@ public:
 private:
 	tcodeToTerrain_t::const_iterator find_or_create(t_translation::terrain_code) const;
 
-	static inline std::shared_ptr<terrain_type_data> singleton_;
+	static inline terrain_type_data* singleton_{nullptr};
 };

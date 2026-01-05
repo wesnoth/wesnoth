@@ -10,10 +10,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.5.5+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-11-17 20:02-0600\n"
+"POT-Creation-Date: 2025-12-21 21:08-0600\n"
 "PO-Revision-Date: 2021-01-07 16:14+0100\n"
-"Last-Translator: Miquel-Àngel Burgos i Fradeja "
-"<miquel.angel.burgos@gmail.com>\n"
+"Last-Translator: Miquel-Àngel Burgos i Fradeja <miquel.angel.burgos@gmail."
+"com>\n"
 "Language-Team: Catalan <wesnoth-ca@ettin.org>\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
@@ -272,15 +272,15 @@ msgstr "Nivell: "
 msgid "Cost: "
 msgstr "Cost: "
 
-#: src/editor/controller/editor_controller.cpp:185
+#: src/editor/controller/editor_controller.cpp:204
 msgid "Fatal error"
 msgstr "Error fatal"
 
-#: src/editor/controller/editor_controller.cpp:215
+#: src/editor/controller/editor_controller.cpp:234
 msgid "Do you really want to quit?"
 msgstr "Segur que voleu sortir?"
 
-#: src/editor/controller/editor_controller.cpp:217
+#: src/editor/controller/editor_controller.cpp:236
 msgid ""
 "Do you really want to quit? Changes to this map since the last save will be "
 "lost."
@@ -288,7 +288,7 @@ msgstr ""
 "Segur que voleu sortir? Es perdran els canvis fets a aquest mapa des del "
 "darrer desament."
 
-#: src/editor/controller/editor_controller.cpp:219
+#: src/editor/controller/editor_controller.cpp:238
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -296,34 +296,34 @@ msgstr ""
 "Segur que voleu sortir? Els mapes següents han estat modificats i es perdran "
 "tots els canvis des del darrer desament:"
 
-#: src/editor/controller/editor_controller.cpp:236
+#: src/editor/controller/editor_controller.cpp:255
 msgid "No editor time-of-day found."
 msgstr "No s'ha trobat cap editor de moment del dia."
 
-#: src/editor/controller/editor_controller.cpp:867
+#: src/editor/controller/editor_controller.cpp:886
 msgid "Add-on Files"
 msgstr ""
 
-#: src/editor/controller/editor_controller.cpp:880
+#: src/editor/controller/editor_controller.cpp:899
 #, fuzzy
 #| msgid "Clipboard support not found, contact your packager"
 msgid "Opening files is not supported, contact your packager"
 msgstr ""
 "No s'ha trobat cap porta-retalls compatible. Contacteu el vostre empaquetador"
 
-#: src/editor/controller/editor_controller.cpp:1324
+#: src/editor/controller/editor_controller.cpp:1343
 msgid "Change Unit ID"
 msgstr "Canvia l'ID de la unitat"
 
-#: src/editor/controller/editor_controller.cpp:1325
+#: src/editor/controller/editor_controller.cpp:1344
 msgid "ID:"
 msgstr "ID:"
 
-#: src/editor/controller/editor_controller.cpp:1341
+#: src/editor/controller/editor_controller.cpp:1360
 msgid "Rename Unit"
 msgstr "Canvia el nom de la unitat"
 
-#: src/editor/controller/editor_controller.cpp:1342
+#: src/editor/controller/editor_controller.cpp:1361
 msgid "Name:"
 msgstr "Nom:"
 
@@ -335,125 +335,130 @@ msgstr ""
 msgid "<span color='red'><span face='DejaVuSans'>✘</span> $msg</span>"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:223
+#: src/editor/map/context_manager.cpp:217
 #, fuzzy
 #| msgid "Map loaded from scenario"
 msgid "Load Map or Scenario"
 msgstr "S'ha carregat el mapa de l'escenari"
 
-#: src/editor/map/context_manager.cpp:319 src/editor/map/map_context.cpp:1146
+#: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1147
 msgid "New Map"
 msgstr "Mapa nou"
 
-#: src/editor/map/context_manager.cpp:332 src/editor/map/map_context.cpp:1146
+#: src/editor/map/context_manager.cpp:326 src/editor/map/map_context.cpp:1147
 msgid "New Scenario"
 msgstr "Escenari nou"
 
-#: src/editor/map/context_manager.cpp:380
+#: src/editor/map/context_manager.cpp:371
 msgid "No Recent Files"
 msgstr "No hi ha cap fitxer recent"
 
-#: src/editor/map/context_manager.cpp:408
+#: src/editor/map/context_manager.cpp:399
 msgid "Unnamed Area"
 msgstr "Àrea sense nom"
 
-#: src/editor/map/context_manager.cpp:434
+#: src/editor/map/context_manager.cpp:422
 msgid "New Side"
 msgstr "Bàndol nou"
 
-#: src/editor/map/context_manager.cpp:473
+#: src/editor/map/context_manager.cpp:461
 msgid "Apply Mask"
 msgstr "Aplica una màscara"
 
-#: src/editor/map/context_manager.cpp:482
+#: src/editor/map/context_manager.cpp:470
 msgid "Error loading mask"
 msgstr "S'ha produït un error en carregar la màscara"
 
-#: src/editor/map/context_manager.cpp:502
+#: src/editor/map/context_manager.cpp:490
 msgid "Identifier:"
 msgstr "Identificador:"
 
-#: src/editor/map/context_manager.cpp:502
+#: src/editor/map/context_manager.cpp:490
 msgid "Rename Area"
 msgstr "Canvia el nom de l'àrea"
 
-#: src/editor/map/context_manager.cpp:516
+#: src/editor/map/context_manager.cpp:504
 msgid "Choose Target Map"
 msgstr "Tria un mapa de destinació"
 
-#: src/editor/map/context_manager.cpp:525
-#: src/editor/map/context_manager.cpp:992
+#: src/editor/map/context_manager.cpp:513
+#: src/editor/map/context_manager.cpp:964
 msgid "Error loading map"
 msgstr "S'ha produït un error en carregar el mapa"
 
-#: src/editor/map/context_manager.cpp:699
+#: src/editor/map/context_manager.cpp:687
 msgid "Save Map As"
 msgstr "Anomena i desa el mapa"
 
-#: src/editor/map/context_manager.cpp:716
-#: src/editor/map/context_manager.cpp:765 src/editor/map/map_context.cpp:273
+#: src/editor/map/context_manager.cpp:704
+#: src/editor/map/context_manager.cpp:753 src/editor/map/map_context.cpp:274
 #: src/editor/palette/location_palette.cpp:263
 msgid "Error"
 msgstr "Error"
 
-#: src/editor/map/context_manager.cpp:717
-#: src/editor/map/context_manager.cpp:766
+#: src/editor/map/context_manager.cpp:705
 #, fuzzy
 #| msgid "Do you really want to quit?"
-msgid "Do you really want to save $type1 in $type2 folder?"
+msgid "Do you really want to save a map in the scenarios folder?"
 msgstr "Segur que voleu sortir?"
 
-#: src/editor/map/context_manager.cpp:725
-#: src/editor/map/context_manager.cpp:933
+#: src/editor/map/context_manager.cpp:713
+#: src/editor/map/context_manager.cpp:905
 msgid "This map is already open."
 msgstr "Aquest mapa ja és obert."
 
-#: src/editor/map/context_manager.cpp:748
+#: src/editor/map/context_manager.cpp:736
 msgid "Save Scenario As"
 msgstr "Anomena i desa l'escenari"
 
-#: src/editor/map/context_manager.cpp:774
+#: src/editor/map/context_manager.cpp:754
+#, fuzzy
+#| msgid "Do you really want to quit?"
+msgid "Do you really want to save a scenario in the maps folder?"
+msgstr "Segur que voleu sortir?"
+
+#: src/editor/map/context_manager.cpp:762
 msgid "This scenario is already open."
 msgstr "Aquest escenari ja és obert."
 
-#: src/editor/map/context_manager.cpp:807
+#: src/editor/map/context_manager.cpp:779
 msgid "No random map generators found."
 msgstr "No s'ha trobat cap generador de mapes aleatoris."
 
-#: src/editor/map/context_manager.cpp:820
-#: src/editor/map/context_manager.cpp:825
+#: src/editor/map/context_manager.cpp:792
+#: src/editor/map/context_manager.cpp:797
 msgid "Map creation failed."
 msgstr "S'ha produït un error en la creació del mapa."
 
-#: src/editor/map/context_manager.cpp:840
+#: src/editor/map/context_manager.cpp:812
 msgid "Unsaved Changes"
 msgstr "Canvis sense desar"
 
-#: src/editor/map/context_manager.cpp:841
+#: src/editor/map/context_manager.cpp:813
 msgid "Do you want to discard all changes made to the map since the last save?"
 msgstr ""
 "Voleu descartar tots els canvis que heu fet al mapa des del darrer desament?"
 
-#: src/editor/map/context_manager.cpp:894
+#: src/editor/map/context_manager.cpp:866
 msgid "Scenario saved."
 msgstr "S'ha desat l'escenari."
 
-#: src/editor/map/context_manager.cpp:909
+#: src/editor/map/context_manager.cpp:881
 #, fuzzy
 #| msgid "Map saved."
 msgid "Map saved"
 msgstr "S'ha desat el mapa."
 
-#: src/editor/map/context_manager.cpp:984
+#: src/editor/map/context_manager.cpp:956
 msgid "Loaded embedded map data"
 msgstr "S'han carregat les dades de mapa incrustades"
 
-#: src/editor/map/context_manager.cpp:985
-#: src/editor/map/context_manager.cpp:988
+#: src/editor/map/context_manager.cpp:957
+#: src/editor/map/context_manager.cpp:960
 msgid "Map loaded from scenario"
 msgstr "S'ha carregat el mapa de l'escenari"
 
-#: src/editor/map/context_manager.cpp:988
+#: src/editor/map/context_manager.cpp:960
 #, fuzzy
 #| msgid ""
 #| "Loaded referenced map file:\n"
@@ -463,28 +468,28 @@ msgstr ""
 "S'ha carregat el fitxer de mapa referenciat:\n"
 "$new"
 
-#: src/editor/map/editor_map.cpp:146
+#: src/editor/map/editor_map.cpp:110
 #: src/editor/palette/location_palette.cpp:118
 msgid "Player $side_num"
 msgstr "Jugador $side_num"
 
-#: src/editor/map/editor_map.cpp:281
+#: src/editor/map/editor_map.cpp:266
 msgid "The size of the target map is different from the current map"
 msgstr "La mida del mapa de destinació és diferent de la del mapa actual"
 
-#: src/editor/map/map_context.cpp:186
+#: src/editor/map/map_context.cpp:187
 msgid "File not found"
 msgstr "No s'ha trobat el fitxer"
 
-#: src/editor/map/map_context.cpp:193
+#: src/editor/map/map_context.cpp:194
 msgid "Empty file"
 msgstr "Fitxer buit"
 
-#: src/editor/map/map_context.cpp:202
+#: src/editor/map/map_context.cpp:203
 msgid "File does not have .map, .cfg, or .mask extension"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:249
+#: src/editor/map/map_context.cpp:250
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
@@ -492,15 +497,15 @@ msgstr ""
 "El fitxer de mapa sembla ser un escenari, però el valor de map_data no "
 "apunta a un fitxer existent"
 
-#: src/editor/map/map_context.cpp:268
+#: src/editor/map/map_context.cpp:269
 msgid "Found the characters ‘<<’ indicating inline lua is present — aborting"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:273
+#: src/editor/map/map_context.cpp:274
 msgid "Failed to load the scenario, attempting to load only the map."
 msgstr ""
 
-#: src/editor/map/map_context.cpp:280
+#: src/editor/map/map_context.cpp:281
 #, fuzzy
 #| msgid ""
 #| "The map file looks like a scenario, but the map_data value does not point "
@@ -512,31 +517,31 @@ msgstr ""
 "El fitxer de mapa sembla ser un escenari, però el valor de map_data no "
 "apunta a un fitxer existent"
 
-#: src/editor/map/map_context.cpp:295
+#: src/editor/map/map_context.cpp:296
 msgid "Unable to parse file to find map data"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:840 src/editor/map/map_context.cpp:880
+#: src/editor/map/map_context.cpp:841 src/editor/map/map_context.cpp:881
 #, fuzzy
 #| msgid "Could not save the scenario: $msg"
 msgid "Could not save time schedule: $msg"
 msgstr "No s'ha pogut desar l'escenari: $msg"
 
-#: src/editor/map/map_context.cpp:874
+#: src/editor/map/map_context.cpp:875
 #, fuzzy
 #| msgid "Time Schedule Menu"
 msgid "Time schedule saved."
 msgstr "Menú horari"
 
-#: src/editor/map/map_context.cpp:920
+#: src/editor/map/map_context.cpp:921
 msgid "Could not save the scenario: $msg"
 msgstr "No s'ha pogut desar l'escenari: $msg"
 
-#: src/editor/map/map_context.cpp:951
+#: src/editor/map/map_context.cpp:952
 msgid "Could not save into scenario"
 msgstr "No s'ha pogut desar a l'escenari"
 
-#: src/editor/map/map_context.cpp:961
+#: src/editor/map/map_context.cpp:962
 msgid "Could not save the map: $msg"
 msgstr "No s'ha pogut desar el mapa: $msg"
 

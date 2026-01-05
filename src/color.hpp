@@ -34,16 +34,6 @@ constexpr uint32_t SDL_RED_BITSHIFT   = 16;
 constexpr uint32_t SDL_GREEN_BITSHIFT = 8;
 constexpr uint32_t SDL_BLUE_BITSHIFT  = 0;
 
-constexpr uint32_t RGBA_ALPHA_MASK = 0x000000FF;
-constexpr uint32_t RGBA_RED_MASK   = 0xFF000000;
-constexpr uint32_t RGBA_GREEN_MASK = 0x00FF0000;
-constexpr uint32_t RGBA_BLUE_MASK  = 0x0000FF00;
-
-constexpr uint32_t RGBA_ALPHA_BITSHIFT = 0;
-constexpr uint32_t RGBA_RED_BITSHIFT   = 24;
-constexpr uint32_t RGBA_GREEN_BITSHIFT = 16;
-constexpr uint32_t RGBA_BLUE_BITSHIFT  = 8;
-
 constexpr uint8_t ALPHA_OPAQUE = SDL_ALPHA_OPAQUE; // This is always 255 in SDL2
 
 // Functions for manipulating RGB values.
@@ -106,22 +96,6 @@ struct color_t : SDL_Color
 	/**
 	 * Creates a new color_t object from a uint32_t variable.
 	 *
-	 * @param c      A uint32_t variable, in RGBA format.
-	 * @return       A new color_t object.
-	 */
-	static constexpr color_t from_rgba_bytes(uint32_t c)
-	{
-		return {
-			static_cast<uint8_t>((RGBA_RED_MASK   & c) >> RGBA_RED_BITSHIFT),
-			static_cast<uint8_t>((RGBA_GREEN_MASK & c) >> RGBA_GREEN_BITSHIFT),
-			static_cast<uint8_t>((RGBA_BLUE_MASK  & c) >> RGBA_BLUE_BITSHIFT),
-			static_cast<uint8_t>((RGBA_ALPHA_MASK & c) >> RGBA_ALPHA_BITSHIFT),
-		};
-	}
-
-	/**
-	 * Creates a new color_t object from a uint32_t variable.
-	 *
 	 * @param c      A uint32_t variable, in ARGB format.
 	 * @return       A new color_t object.
 	 */
@@ -160,20 +134,6 @@ struct color_t : SDL_Color
 	 *               is prepended.
 	 */
 	std::string to_hex_string() const;
-
-	/**
-	 * Returns the stored color as a uint32_t, in RGBA format.
-	 *
-	 * @return       The new uint32_t object.
-	 */
-	constexpr uint32_t to_rgba_bytes() const
-	{
-		return
-			(static_cast<uint32_t>(r) << RGBA_RED_BITSHIFT) |
-			(static_cast<uint32_t>(g) << RGBA_GREEN_BITSHIFT) |
-			(static_cast<uint32_t>(b) << RGBA_BLUE_BITSHIFT) |
-			(static_cast<uint32_t>(a) << RGBA_ALPHA_BITSHIFT);
-	}
 
 	/**
 	 * Returns the stored color as a uint32_t, an ARGB format.
@@ -301,7 +261,7 @@ namespace std
 	{
 		std::size_t operator()(const color_t& c) const noexcept
 		{
-			return c.to_rgba_bytes();
+			return c.to_argb_bytes();
 		}
 	};
 }

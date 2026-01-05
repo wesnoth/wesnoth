@@ -7,12 +7,13 @@
 # Gustavo Gingins <gusgins@gmail.com>, 2009.
 # Pepe <donpepe1963@gmail.com>, 2014.
 # Toranks <toranksmervat@gmail.com>, 2023.
+# Sebastián Lecchini <sebas38760@gmail.com>, 2025.
 msgid ""
 msgstr ""
-"Project-Id-Version: es\n"
+"Project-Id-Version: wesnoth-sof\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2024-11-26 18:08 UTC\n"
-"PO-Revision-Date: 2025-09-01 18:05-0300\n"
+"POT-Creation-Date: 2025-12-22 03:09 UTC\n"
+"PO-Revision-Date: 2025-12-23 12:26-0300\n"
 "Last-Translator: Sebastián Lecchini<sebas38760@gmail.com>\n"
 "Language-Team: Wesnoth\n"
 "Language: es\n"
@@ -4993,13 +4994,13 @@ msgstr "Añade 2 PM"
 
 #. [option]
 #: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:316
-#: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:401
+#: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:410
 msgid "Swiftness"
 msgstr "celeridad"
 
 #. [option]
 #: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:324
-#: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:439
+#: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:448
 msgid "Accuracy"
 msgstr "Precisión"
 
@@ -5008,19 +5009,29 @@ msgstr "Precisión"
 msgid "Increases ranged weapon accuracy by 20%"
 msgstr "Aumenta la precisión del arma a distancia un 20%"
 
-#. [option]
+#. [chance_to_hit]: id=accuracy_20
+#: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:332
+msgid "accuracy: +20%"
+msgstr "precisión: +20%"
+
+#. [chance_to_hit]: id=accuracy_20
 #: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:333
-#: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:478
+msgid "The accuracy of this weapon is increased by 20%"
+msgstr "La precisión de esta arma aumenta en un 20%."
+
+#. [option]
+#: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:342
+#: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:496
 msgid "Force"
 msgstr "Fuerza"
 
 #. [option]
-#: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:333
+#: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:342
 msgid "Increases melee weapon damage by 4"
 msgstr "Aumenta el daño del arma cuerpo a cuerpo en 4"
 
 #. [rune_choice]: speaker=unit
-#: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:379
+#: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:388
 msgid ""
 "This is part of our stash of field runes, we can use them to get a small "
 "temporary boost. We don’t have very many though, and need to contribute "
@@ -5031,27 +5042,37 @@ msgstr ""
 "necesitamos contribuir con fondos para reemplazarlas. ¿Debería usar esta?"
 
 #. [option]
-#: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:383
+#: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:392
 msgid "No"
 msgstr "No"
 
 #. [option]
-#: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:384
+#: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:393
 msgid "Not now."
 msgstr "No ahora."
 
 #. [option]
-#: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:401
+#: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:410
 msgid "Adds 1 MP"
 msgstr "Añade 1 PM"
 
 #. [option]
-#: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:439
+#: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:448
 msgid "Increases ranged weapon accuracy by 10%"
 msgstr "Aumenta la precisión del arma a distancia un 10%"
 
+#. [chance_to_hit]: id=accuracy_10
+#: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:456
+msgid "accuracy: +10%"
+msgstr "precisión: +10%"
+
+#. [chance_to_hit]: id=accuracy_10
+#: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:457
+msgid "The accuracy of this weapon is increased of 10%"
+msgstr "La precisión de esta arma aumenta en un 10%."
+
 #. [option]
-#: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:478
+#: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:496
 msgid "Increases melee weapon damage by 2"
 msgstr "Aumenta el daño del arma cuerpo a cuerpo en 2"
 

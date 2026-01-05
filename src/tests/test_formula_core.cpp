@@ -47,7 +47,7 @@ class mock_party : public formula_callable {
 				members.emplace_back(i_[n].fake_ptr());
 			}
 
-			return variant(members);
+			return variant(std::move(members));
 		} else if(key == "char") {
 			return variant(c_.fake_ptr());
 		} else {

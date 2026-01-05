@@ -143,7 +143,7 @@ DEFINE_WFL_FUNCTION(adjacent_locs, 1, 1)
 		}
 	}
 
-	return variant(v);
+	return variant(std::move(v));
 }
 
 DEFINE_WFL_FUNCTION(locations_in_radius, 2, 2)
@@ -174,7 +174,7 @@ DEFINE_WFL_FUNCTION(locations_in_radius, 2, 2)
 		}
 	}
 
-	return variant(v);
+	return variant(std::move(v));
 }
 
 DEFINE_WFL_FUNCTION(get_unit_type, 1, 1)

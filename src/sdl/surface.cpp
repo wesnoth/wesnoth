@@ -100,6 +100,15 @@ surface surface::clone() const
 	return surface(SDL_ConvertSurfaceFormat(surface_, SDL_PIXELFORMAT_ARGB8888, 0));
 }
 
+point surface::size() const
+{
+	if(!surface_) {
+		return {};
+	}
+
+	return point{surface_->w, surface_->h};
+}
+
 std::size_t surface::area() const
 {
 	return surface_ ? surface_->w * surface_->h : 0;

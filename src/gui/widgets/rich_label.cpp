@@ -863,18 +863,23 @@ void rich_label::signal_handler_left_button_click(bool& handled)
 	DBG_GUI_RL << "(mouse) " << mouse;
 	DBG_GUI_RL << "link count :" << links_.size();
 
+	std::optional<std::string> click_target;
 	for(const auto& entry : links_) {
-		DBG_GUI_RL << "link " << entry.first;
+		DBG_GUI_RL << "link " << entry.second;
 
 		if(entry.first.contains(mouse)) {
-			DBG_GUI_RL << "Clicked link! dst = " << entry.second;
-			sound::play_UI_sound(settings::sound_button_click);
-			if(link_handler_) {
-				link_handler_(entry.second);
-			} else {
-				DBG_GUI_RL << "No registered link handler found";
-			}
+			click_target = entry.second;
+			break;
+		}
+	}
 
+	if (click_target) {
+		DBG_GUI_RL << "Clicked link! dst = " << *click_target;
+		sound::play_UI_sound(settings::sound_button_click);
+		if(link_handler_) {
+			link_handler_(*click_target);
+		} else {
+			DBG_GUI_RL << "No registered link handler found";
 		}
 	}
 

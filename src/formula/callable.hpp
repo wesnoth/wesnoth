@@ -103,23 +103,23 @@ protected:
 	template<typename T, typename K>
 	static variant convert_map(const std::map<T, K>& input_map)
 	{
-		std::map<variant,variant> tmp;
+		std::map<variant, variant> tmp;
 		for(const auto& p : input_map) {
 			tmp[variant(p.first)] = variant(p.second);
 		}
 
-		return variant(tmp);
+		return variant(std::move(tmp));
 	}
 
 	template<typename T>
 	static variant convert_set(const std::set<T>& input_set)
 	{
-		std::map<variant,variant> tmp;
+		std::map<variant, variant> tmp;
 		for(const auto& elem : input_set) {
 			tmp[variant(elem)] = variant(1);
 		}
 
-		return variant(tmp);
+		return variant(std::move(tmp));
 	}
 
 	template<typename T>
@@ -130,7 +130,7 @@ protected:
 			tmp.emplace_back(elem);
 		}
 
-		return variant(tmp);
+		return variant(std::move(tmp));
 	}
 
 	static inline void add_input(formula_input_vector& inputs, const std::string& key, formula_access access_type = formula_access::read_only)

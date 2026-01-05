@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-11-17 20:02-0600\n"
+"POT-Creation-Date: 2025-12-21 21:09-0600\n"
 "PO-Revision-Date: 2025-12-01 20:58+0100\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
@@ -114,40 +114,40 @@ msgstr "Chytré jednotky potřebují ke svému povýšení o 20 % méně zkuše
 
 #. [resistance]: id=garak_steadfast
 #. [resistance]: id=steadfast
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:703
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:708
 #: data/core/macros/abilities.cfg:135
 msgid "steadfast"
 msgstr "vytrvalý"
 
 #. [resistance]: id=garak_steadfast
 #. [resistance]: id=steadfast
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:704
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:709
 #: data/core/macros/abilities.cfg:136
 msgid "female^steadfast"
 msgstr "vytrvalá"
 
 #. [illuminates]: id=illumination_song_verse
 #. [illuminates]: id=illumination
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:346
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:347
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:362
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:363
 #: data/core/macros/abilities.cfg:244
 msgid "female^illuminates"
 msgstr "osvětluje"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:684
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:754
 #: data/core/macros/abilities.cfg:10
 msgid "heals +4"
 msgstr "léčí +4"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:685
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:755
 #: data/core/macros/abilities.cfg:11
 msgid "female^heals +4"
 msgstr "léčí +4"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:686
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:756
 msgid ""
 "Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
 "\n"
@@ -166,27 +166,27 @@ msgstr ""
 
 #. [heals]: id=healing
 #. [heals]
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:690
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:729
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:759
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:760
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:799
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:829
 msgid "This unit is capable of basic healing and slowing dehydration."
 msgstr ""
 "Tato jednotka dokáže poskytnout základní léčení a zpomalit dehydrataci."
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:708
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:778
 #: data/core/macros/abilities.cfg:37
 msgid "heals +8"
 msgstr "léčí +8"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:709
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:779
 #: data/core/macros/abilities.cfg:38
 msgid "female^heals +8"
 msgstr "léčí +8"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:710
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:780
 msgid ""
 "This unit combines herbal remedies with magic to heal units more quickly "
 "than is normally possible on the battlefield.\n"
@@ -205,17 +205,17 @@ msgstr ""
 "pomoc ve vesnici nebo u jednotky, která dokáže uzdravovat."
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:738
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:808
 msgid "heals +12"
 msgstr "léčí +12"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:739
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:809
 msgid "female^heals +12"
 msgstr "léčí +12"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:740
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:810
 msgid ""
 "This unit combines herbal remedies with magic to heal units more quickly "
 "than is normally possible on the battlefield.\n"
@@ -234,13 +234,55 @@ msgstr ""
 "pomoc ve vesnici nebo u jednotky, která dokáže uzdravovat."
 
 #. [heals]
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:765
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:835
 msgid ""
 "This unit is capable of healing those around it, slowing dehydration, and "
 "curing them of poison."
 msgstr ""
 "Tato jednotka je schopna ty okolo sebe jednak léčit, ale také u nich "
 "zpomalit dehydrataci a uzdravit je z otravy."
+
+#. [lua]: set_status
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:2127
+#, fuzzy
+#| msgid "female^stunned"
+msgid "female^poisoned"
+msgstr "omráčená"
+
+#. [lua]: set_status
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:2127
+#, fuzzy
+#| msgid "poison"
+msgid "poisoned"
+msgstr "otrava"
+
+#. [lua]: set_status
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:2129
+#, fuzzy
+#| msgid "female^slow"
+msgid "female^slowed"
+msgstr "pomalá"
+
+#. [lua]: set_status
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:2129
+#, fuzzy
+#| msgid "slow"
+msgid "slowed"
+msgstr "pomalý"
+
+#. [lua]: set_status
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:2130
+#, fuzzy
+#| msgid "female^resilient"
+msgid "female^petrified"
+msgstr "houževnatá"
+
+#. [lua]: set_status
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:2130
+#, fuzzy
+#| msgid "petrifies"
+msgid "petrified"
+msgstr "zkamenění"
 
 #. [artifact]
 #. [chance]
@@ -309,7 +351,7 @@ msgstr "skrývání"
 
 #. [drains]: id=drains
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:24
-#: data/core/macros/weapon_specials.cfg:208
+#: data/core/macros/weapon_specials.cfg:209
 msgid "drains"
 msgstr "vysátí"
 
@@ -347,7 +389,7 @@ msgstr "noční lovec"
 
 #. [poison]: id=poison
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:51
-#: data/core/macros/weapon_specials.cfg:230
+#: data/core/macros/weapon_specials.cfg:231
 msgid "poison"
 msgstr "otrava"
 
@@ -586,12 +628,12 @@ msgstr "Startovní pozice"
 msgid ""
 "Defines the side leader starting position.\n"
 "This tool sets the side leaders’ default starting locations, and named "
-"special locations. Both types of location are enabled in both <ref "
-"dst='..editor_mode_terrain'>Terrain Editor</ref> and <ref "
-"dst='..editor_mode_scenario'>Scenario Editor</ref> modes. The location names "
-"are shown as a list in the editor palette, clicking on the map will place "
-"that name on a hex, each location can only be placed on a single hex, and "
-"the editor will only allow one location per hex.\n"
+"special locations. Both types of location are enabled in both <ref dst='.."
+"editor_mode_terrain'>Terrain Editor</ref> and <ref dst='.."
+"editor_mode_scenario'>Scenario Editor</ref> modes. The location names are "
+"shown as a list in the editor palette, clicking on the map will place that "
+"name on a hex, each location can only be placed on a single hex, and the "
+"editor will only allow one location per hex.\n"
 "\n"
 "To add named special locations, click “Add” at the bottom of the editor "
 "palette, and enter the name. These names must start with a letter and may "
@@ -614,12 +656,12 @@ msgid ""
 msgstr ""
 "Stanovuje počáteční umístění vůdce dané strany.\n"
 "Tento nástroj nastavuje výchozí umístění vůdců stran a pojmenovaná zvláštní "
-"místa. Oba typy míst jsou povoleny jak v režimu <ref "
-"dst='..editor_mode_terrain'>editoru terénu</ref>, tak <ref "
-"dst='..editor_mode_scenario'>editoru scénáře</ref>. Jména míst jsou "
-"zobrazena jako seznam v paletě editoru, kliknutí do mapy umístí toto jméno "
-"na hex, každé místo může být pouze na jediném hexu a editor umožní jenom "
-"jedno místo na hex.\n"
+"místa. Oba typy míst jsou povoleny jak v režimu <ref dst='.."
+"editor_mode_terrain'>editoru terénu</ref>, tak <ref dst='.."
+"editor_mode_scenario'>editoru scénáře</ref>. Jména míst jsou zobrazena jako "
+"seznam v paletě editoru, kliknutí do mapy umístí toto jméno na hex, každé "
+"místo může být pouze na jediném hexu a editor umožní jenom jedno místo na "
+"hex.\n"
 "\n"
 "Pro přidání pojmenovaných zvlášních míst klikni dole na paletě na „Přidat“ "
 "a vlož jméno. Tato jména musí začínat písmenem a mohou obsahovat čísla "
@@ -663,9 +705,9 @@ msgstr ""
 #: data/core/editor/help.cfg:131
 msgid ""
 "editor^<header>Movement Overlays</header>\n"
-"<img src='terrain/grass/green.png~BLIT(terrain/impassable-"
-"editor.png~O(0.5))'/><img src='terrain/grass/green.png~BLIT(terrain/"
-"unwalkable-editor.png~O(0.5))'/>\n"
+"<img src='terrain/grass/green.png~BLIT(terrain/impassable-editor."
+"png~O(0.5))'/><img src='terrain/grass/green.png~BLIT(terrain/unwalkable-"
+"editor.png~O(0.5))'/>\n"
 "<b>Impassable and Unwalkable</b>\n"
 "\n"
 "While easily noticeable in the editor, these are invisible in the game, so "
@@ -674,9 +716,9 @@ msgid ""
 "respectively."
 msgstr ""
 "<header>Překryvy pro pohyb</header>\n"
-"<img src='terrain/grass/green.png~BLIT(terrain/impassable-"
-"editor.png~O(0.5))'/><img src='terrain/grass/green.png~BLIT(terrain/"
-"unwalkable-editor.png~O(0.5))'/>\n"
+"<img src='terrain/grass/green.png~BLIT(terrain/impassable-editor."
+"png~O(0.5))'/><img src='terrain/grass/green.png~BLIT(terrain/unwalkable-"
+"editor.png~O(0.5))'/>\n"
 "<b>neprostupný a neprůchodný</b>\n"
 "\n"
 "Zatímco jsou v editoru snadno k povšimnutí, ve hře jsou neviditelné, takže "
@@ -690,9 +732,9 @@ msgstr ""
 #: data/core/editor/help.cfg:140
 msgid ""
 "editor^<header>Castle Overlays</header>\n"
-"<img src='terrain/grass/green.png~BLIT(terrain/castle/castle-overlay-"
-"editor.png~O(0.5))'/><img src='terrain/grass/green.png~BLIT(terrain/castle/"
-"keep-overlay-editor.png~O(0.5))'/>\n"
+"<img src='terrain/grass/green.png~BLIT(terrain/castle/castle-overlay-editor."
+"png~O(0.5))'/><img src='terrain/grass/green.png~BLIT(terrain/castle/keep-"
+"overlay-editor.png~O(0.5))'/>\n"
 "Adding either of these overlays to a passable hex allows units to be "
 "recruited onto a hex. The keep also allows a leader to recruit from there.\n"
 "\n"
@@ -703,9 +745,9 @@ msgid ""
 "units being recruited onto them."
 msgstr ""
 "<header>Překryvy pro hrad</header>\n"
-"<img src='terrain/grass/green.png~BLIT(terrain/castle/castle-overlay-"
-"editor.png~O(0.5))'/><img src='terrain/grass/green.png~BLIT(terrain/castle/"
-"keep-overlay-editor.png~O(0.5))'/>\n"
+"<img src='terrain/grass/green.png~BLIT(terrain/castle/castle-overlay-editor."
+"png~O(0.5))'/><img src='terrain/grass/green.png~BLIT(terrain/castle/keep-"
+"overlay-editor.png~O(0.5))'/>\n"
 "Přidání některého z těchto překryvů na prostupné políčko umožňuje na takové "
 "políčko verbovat jednotky. Tvrz navíc dovoluje vůdci, aby odtud verboval.\n"
 "\n"
@@ -889,8 +931,8 @@ msgstr "Zastaralý terén"
 #. The Xol and ^Efs terrains’ help pages aren’t given hyperlinks, because they both have hide_help enabled. Even when on a map with Xol on it, ctrl+t will show the hidden page but the ref still won’t link to it.
 #: data/core/editor/help.cfg:203
 msgid ""
-"editor^<img src='terrain/grass/green.png~BLIT(terrain/deprecated-"
-"editor.png)'/>\n"
+"editor^<img src='terrain/grass/green.png~BLIT(terrain/deprecated-editor."
+"png)'/>\n"
 "The magenta ‘D’ (for “Deprecated”).\n"
 "\n"
 "This is shown in the editor over deprecated terrain codes. Examples are:\n"
@@ -1343,10 +1385,10 @@ msgid ""
 "The map editor saves one file when in terrain mode (a .map) or two files "
 "when in scenario mode (both a .map and a .cfg).\n"
 "\n"
-"Loading a .cfg file has different results depending on the contents of "
-"the .cfg file. For .cfg files that were created by the scenario editor, it "
-"will open the .cfg in the scenario editor. However, for .cfg files that "
-"cannot be opened by the scenario editor, the editor will attempt to find the "
+"Loading a .cfg file has different results depending on the contents of the ."
+"cfg file. For .cfg files that were created by the scenario editor, it will "
+"open the .cfg in the scenario editor. However, for .cfg files that cannot be "
+"opened by the scenario editor, the editor will attempt to find the "
 "scenario’s map data and open the corresponding .map file in terrain-only "
 "mode, as if the .map file was chosen in the file selector. It is recommended "
 "in those cases to simply load the .map file directly instead."
@@ -1556,8 +1598,8 @@ msgid ""
 "\n"
 "• <span face='monospace'>map_file=maps/01_First_Map.map</span> <i>— "
 "supported since Wesnoth 1.14</i>\n"
-"• <span face='monospace'>map_data=&quot;&#0x7B;maps/"
-"01_First_Map.map&#0x7D;&quot;</span> <i>— a WML preprocessor include</i>\n"
+"• <span face='monospace'>map_data=&quot;&#0x7B;maps/01_First_Map.map&#0x7D;"
+"&quot;</span> <i>— a WML preprocessor include</i>\n"
 "\n"
 "The <i>map_file</i> method is preferred over using a preprocessor include."
 msgstr ""
@@ -1582,8 +1624,8 @@ msgstr ""
 "\n"
 "• <span face='monospace'>map_file=maps/01_First_Map.map</span> <i>– "
 "podporováno od Wesnothu 1.14</i>\n"
-"• <span face='monospace'>map_data=&quot;&#0x7B;maps/"
-"01_First_Map.map&#0x7D;&quot;</span> <i>– začleněno WML preprocesorem</i>\n"
+"• <span face='monospace'>map_data=&quot;&#0x7B;maps/01_First_Map.map&#0x7D;"
+"&quot;</span> <i>– začleněno WML preprocesorem</i>\n"
 "\n"
 "Způsobu s <i>map_file</i> je dána přednost před použitím začleňování "
 "preprocesorem."
@@ -2278,8 +2320,8 @@ msgstr ""
 #: data/core/encyclopedia/geography.cfg:194
 msgid ""
 "<header>Notable land features:</header>\n"
-"    • Aethenwood: The largest southern forest, home to reclusive <ref "
-"dst='..race_elf'>elves</ref>.\n"
+"    • Aethenwood: The largest southern forest, home to reclusive <ref dst='.."
+"race_elf'>elves</ref>.\n"
 "    • Vale of Blossoming Trees: An elvish vale at the southern edge of the "
 "Aethenwood. It contains the sacred Isle of Elrath.\n"
 "    • Lake Aelin: An elvish lake at the edge of their territory along the "
@@ -2289,8 +2331,8 @@ msgid ""
 "enter it seldom return."
 msgstr ""
 "<header>Významné krajinné prvky:</header>\n"
-"    • Aethenský les: Největší hvozd na jihu, domov samotářských <ref "
-"dst='..race_elf'>elfů</ref>.\n"
+"    • Aethenský les: Největší hvozd na jihu, domov samotářských <ref dst='.."
+"race_elf'>elfů</ref>.\n"
 "    • Údolí kvetoucích stromů: Elfí údolí na jižním okraji Aethenského lesa. "
 "Nachází se v něm posvátný ostrov Elrath.\n"
 "    • Jezero Aelin: Elfí jezero na pomezí jejich území podél řeky Aethen.\n"
@@ -2502,8 +2544,8 @@ msgstr "Pravidla hry"
 #. [section]: id=traits_section
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:29 data/core/help.cfg:543
-#: src/help/help_topic_generators.cpp:536
-#: src/help/help_topic_generators.cpp:541
+#: src/help/help_topic_generators.cpp:535
+#: src/help/help_topic_generators.cpp:540
 msgid "Traits"
 msgstr "Vlastnosti"
 
@@ -2791,8 +2833,8 @@ msgstr ""
 "Během hry měj na paměti, že můžeš pohybovat myší přes mnoho herních prvků, "
 "jako třeba přes informace zobrazené ve stavovém panelu, aby se ti pro každý "
 "prvek ukázal krátký vysvětlující popis. Užitečné je to zejména v případě, "
-"kdy se poprvé setkáš s něčím novým, například novou <ref "
-"dst='..abilities_section'>schopností</ref>."
+"kdy se poprvé setkáš s něčím novým, například novou <ref dst='.."
+"abilities_section'>schopností</ref>."
 
 #. [topic]: id=..gameplay
 #: data/core/help.cfg:177
@@ -2855,12 +2897,12 @@ msgstr ""
 "Každá ze stran začíná hrát s jedním vůdcem umístěným ve tvrzi hradu. Na "
 "začátku každé bitvy i během ní budeš verbovat <ref dst='..units'>jednotky</"
 "ref> do své armády. Pro verbování je nutné mít umístěného vůdce (např. "
-"v tažení <i>Dědic trůnu</i> je jím Konrád) ve tvrzi <ref "
-"dst='..terrain_castle'>hradu</ref>. Pak můžeš verbovat nováčky buď pomocí "
-"volby menu <b>Naverbovat</b> nebo pravým klikem na políčko a volbou "
-"<b>Naverbovat</b>. Tím se vyvolá menu verbování, které obsahuje seznam "
-"dostupných posil i jejich cenu. Kliknutím na jednotku uvidíš její "
-"statistiku, následným kliknutím na tlačítko <b>Naverbovat</b> ji naverbuješ."
+"v tažení <i>Dědic trůnu</i> je jím Konrád) ve tvrzi <ref dst='.."
+"terrain_castle'>hradu</ref>. Pak můžeš verbovat nováčky buď pomocí volby "
+"menu <b>Naverbovat</b> nebo pravým klikem na políčko a volbou <b>Naverbovat</"
+"b>. Tím se vyvolá menu verbování, které obsahuje seznam dostupných posil i "
+"jejich cenu. Kliknutím na jednotku uvidíš její statistiku, následným "
+"kliknutím na tlačítko <b>Naverbovat</b> ji naverbuješ."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:200
@@ -2882,8 +2924,8 @@ msgid ""
 "Recruited units come with two random <ref dst='..traits_section'>traits</"
 "ref> which modify their statistics."
 msgstr ""
-"Naverbované jednotky přicházejí se dvěma náhodnými <ref "
-"dst='..traits_section'>vlastnostmi</ref>, jež upravují jejich statistiku."
+"Naverbované jednotky přicházejí se dvěma náhodnými <ref dst='.."
+"traits_section'>vlastnostmi</ref>, jež upravují jejich statistiku."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:204
@@ -4156,11 +4198,10 @@ msgstr "Závěr"
 #: data/core/help.cfg:529
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
-"basic strategy, or familiarize yourself with <ref "
-"dst='..traits_section'>traits</ref> and <ref "
-"dst='..abilities_section'>abilities</ref>, but you now know everything you "
-"need to know to play the <i>Heir to the Throne</i> campaign. Have fun, and "
-"good luck!"
+"basic strategy, or familiarize yourself with <ref dst='.."
+"traits_section'>traits</ref> and <ref dst='..abilities_section'>abilities</"
+"ref>, but you now know everything you need to know to play the <i>Heir to "
+"the Throne</i> campaign. Have fun, and good luck!"
 msgstr ""
 "Tím jsme uzavřeli základy Wesnothu. Možná se budeš chtít podívat na základy "
 "strategie nebo se seznámit s <ref dst='..traits_section'>vlastnostmi</ref> a "
@@ -5451,35 +5492,27 @@ msgstr ""
 "velmi pomalu, pohybovat v hlubokých vodách."
 
 #: data/core/macros/special-notes.cfg:12
-msgid ""
-"This unit’s arcane attack deals tremendous damage to magical creatures, and "
-"even some to mundane creatures."
-msgstr ""
-"Nezemský útok této jednotky působí zničující zranění magickým stvořením "
-"a také dost velké poškození těm obyčejným."
-
-#: data/core/macros/special-notes.cfg:19
 msgid "This unit is capable of basic healing."
 msgstr "Tato jednotka dokáže poskytnout základní léčení."
 
-#: data/core/macros/special-notes.cfg:22
+#: data/core/macros/special-notes.cfg:15
 msgid "This unit is capable of rapid healing."
 msgstr "Tato jednotka dokáže poskytnout rychlé léčení."
 
-#: data/core/macros/special-notes.cfg:25
+#: data/core/macros/special-notes.cfg:18
 msgid ""
 "This unit is capable of healing those around it, and curing them of poison."
 msgstr ""
 "Tato jednotka je schopna jednak léčit, ale také uzdravovat okolní jednotky "
 "z otravy."
 
-#: data/core/macros/special-notes.cfg:28
+#: data/core/macros/special-notes.cfg:21
 msgid ""
 "This unit is capable of neutralizing the effects of poison in units around "
 "it."
 msgstr "Tato jednotka dokáže uzdravovat okolní jednotky z otravy."
 
-#: data/core/macros/special-notes.cfg:31
+#: data/core/macros/special-notes.cfg:24
 msgid ""
 "This unit regenerates, which allows it to heal as though always stationed in "
 "a village."
@@ -5487,7 +5520,7 @@ msgstr ""
 "Tato jednotka regeneruje, takže je léčena stejně, jako kdyby byla neustále "
 "ve vesnici."
 
-#: data/core/macros/special-notes.cfg:34
+#: data/core/macros/special-notes.cfg:27
 msgid ""
 "The steadiness of this unit reduces damage from some attacks, but only while "
 "defending."
@@ -5495,7 +5528,7 @@ msgstr ""
 "Vytrvalost umožňuje této jednotce snížit účinky zranění způsobených "
 "některými typy útoků, ale pouze při obraně."
 
-#: data/core/macros/special-notes.cfg:37
+#: data/core/macros/special-notes.cfg:30
 msgid ""
 "The leadership of this unit enables adjacent units of the same side to deal "
 "more damage in combat, though this only applies to units of lower level."
@@ -5504,7 +5537,7 @@ msgstr ""
 "blízkosti způsobovat v boji větší poškození, i když toto platí pouze pro "
 "jednotky s nižší úrovní."
 
-#: data/core/macros/special-notes.cfg:40
+#: data/core/macros/special-notes.cfg:33
 msgid ""
 "This unit’s skill at skirmishing allows it to ignore enemies’ zones of "
 "control and thus move unhindered around them."
@@ -5512,11 +5545,11 @@ msgstr ""
 "Průbojnost umožňuje těmto jednotkám ignorovat oblasti kontroly nepřátelských "
 "jednotek, což jim dovoluje se mezi nimi volně pohybovat."
 
-#: data/core/macros/special-notes.cfg:43
+#: data/core/macros/special-notes.cfg:36
 msgid "Illumination increases the lighting level in adjacent areas."
 msgstr "Osvětlení zvyšuje úroveň světla na přilehlých polích."
 
-#: data/core/macros/special-notes.cfg:46
+#: data/core/macros/special-notes.cfg:39
 msgid ""
 "This unit can use one move to teleport between any two empty villages "
 "controlled by its side."
@@ -5524,7 +5557,7 @@ msgstr ""
 "Tato jednotka se dokáže v okamžiku přemístit z jedné spřátelené vesnice do "
 "druhé."
 
-#: data/core/macros/special-notes.cfg:49
+#: data/core/macros/special-notes.cfg:42
 msgid ""
 "In woodlands, this unit’s ambush skill renders it invisible to enemies "
 "unless it is immediately adjacent or has revealed itself by attacking."
@@ -5532,12 +5565,12 @@ msgstr ""
 "Dovedností této jednotky je schopnost stát se v lesích neviditelnou, dokud "
 "nezaútočí nebo se nepřítel nepostaví hned vedle."
 
-#: data/core/macros/special-notes.cfg:52
+#: data/core/macros/special-notes.cfg:45
 msgid "This unit is able to hide at night, leaving no trace of its presence."
 msgstr ""
 "Ve tmě se může tato jednotka dokonale skrýt a nezanechat po sobě žádné stopy."
 
-#: data/core/macros/special-notes.cfg:55
+#: data/core/macros/special-notes.cfg:48
 msgid ""
 "This unit can hide in villages (with the exception of water villages), and "
 "remain undetected by its enemies, except by those standing next to it."
@@ -5545,14 +5578,14 @@ msgstr ""
 "Tato jednotka se dokáže skrýt ve vesnicích (s výjimkou vodních) a zůstat "
 "nepovšimnuta nepřáteli, pokud se nepostaví těsně vedle ní."
 
-#: data/core/macros/special-notes.cfg:58
+#: data/core/macros/special-notes.cfg:51
 msgid ""
 "This unit can move unseen in deep water, requiring no air from the surface."
 msgstr ""
 "V hluboké vodě se tato jednotka pohybuje neviděna, neboť nepotřebuje dýchat "
 "vzduch."
 
-#: data/core/macros/special-notes.cfg:61
+#: data/core/macros/special-notes.cfg:54
 msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a living "
 "unit."
@@ -5560,7 +5593,7 @@ msgstr ""
 "Vždy, když zabije živého nepřítele, zvyšuje tato jednotka maximum svých "
 "životů o 1."
 
-#: data/core/macros/special-notes.cfg:64
+#: data/core/macros/special-notes.cfg:57
 msgid ""
 "Whenever its berserk attack is used, this unit continues to push the attack "
 "until either it or its enemy lies dead."
@@ -5568,7 +5601,7 @@ msgstr ""
 "Pokaždé, když tato jednotka použije útok „na život a na smrt“, pokračuje "
 "v útoku, dokud ona či její nepřítel nepadne v boji."
 
-#: data/core/macros/special-notes.cfg:67
+#: data/core/macros/special-notes.cfg:60
 msgid ""
 "If there is an enemy of the target on the opposite side of the target while "
 "attacking it, this unit may backstab, inflicting double damage by creeping "
@@ -5579,7 +5612,7 @@ msgstr ""
 "napadené jednotce způsobí dvojnásobná zranění. Platí to však pouze pro útok."
 
 # pův.: "procitnou "
-#: data/core/macros/special-notes.cfg:70
+#: data/core/macros/special-notes.cfg:63
 msgid ""
 "Foes who lose their life to the plague will rise again in unlife, unless "
 "they are standing on a village."
@@ -5588,7 +5621,7 @@ msgstr ""
 "pokud ovšem nestojí na vesnici."
 
 # pův.: "procitnou "
-#: data/core/macros/special-notes.cfg:73
+#: data/core/macros/special-notes.cfg:66
 msgid ""
 "Foes who lose their life to certain horrors of nature become nourishment for "
 "a rapidly growing larva, unless they are standing in a village."
@@ -5596,7 +5629,7 @@ msgstr ""
 "Nepřátelé, kteří přijdou o život díky jistým děsům přírody, se stanou "
 "potravou pro rychle rostoucí larvu, pokud ovšem zrovna nestojí ve vesnici."
 
-#: data/core/macros/special-notes.cfg:76
+#: data/core/macros/special-notes.cfg:69
 msgid ""
 "This unit is able to slow its enemies, halving their movement speed and "
 "attack damage until they end a turn."
@@ -5604,13 +5637,13 @@ msgstr ""
 "Tato jednotka dokáže zpomalit své nepřátele, čímž do konce kola zmenší "
 "jejich pohyb a jimi způsobená poškození na polovinu."
 
-#: data/core/macros/special-notes.cfg:79
+#: data/core/macros/special-notes.cfg:72
 msgid ""
 "The ability to turn the living to stone makes this unit extremely dangerous."
 msgstr ""
 "Schopnost změnit živé tvory v kámen činí tuto jednotku extrémně nebezpečnou."
 
-#: data/core/macros/special-notes.cfg:82
+#: data/core/macros/special-notes.cfg:75
 msgid ""
 "This unit’s marksmanship gives it a high chance of hitting targeted enemies, "
 "but only on the attack."
@@ -5618,7 +5651,7 @@ msgstr ""
 "Střelecké umění dává této jednotce vyšší šanci zasáhnout nepřátele, ale "
 "pouze při útoku."
 
-#: data/core/macros/special-notes.cfg:85
+#: data/core/macros/special-notes.cfg:78
 msgid ""
 "This unit has magical attacks, which always have a high chance of hitting an "
 "opponent."
@@ -5626,7 +5659,7 @@ msgstr ""
 "Tato jednotka používá magické útoky, které mají vždy velkou šanci zasáhnout "
 "protivníka."
 
-#: data/core/macros/special-notes.cfg:88
+#: data/core/macros/special-notes.cfg:81
 msgid ""
 "The swarming attacks of this unit become less deadly whenever its members "
 "are wounded."
@@ -5634,7 +5667,7 @@ msgstr ""
 "Útok hejna se stává méně smrtícím při zranění jednotlivých jedinců v tomto "
 "hejnu."
 
-#: data/core/macros/special-notes.cfg:91
+#: data/core/macros/special-notes.cfg:84
 msgid ""
 "Using a charging attack doubles both damage dealt and received; this does "
 "not affect defensive retaliation."
@@ -5642,12 +5675,12 @@ msgstr ""
 "Útok výpadem zdvojnásobuje velikost poškození jak rozdaného, tak přijatého. "
 "To se nevztahuje na defenzivní protivýpady."
 
-#: data/core/macros/special-notes.cfg:94
+#: data/core/macros/special-notes.cfg:87
 msgid ""
 "During battle, this unit can drain life from victims to renew its own health."
 msgstr "Během boje se dokáže tato jednotka léčit vysátím života z nepřítele."
 
-#: data/core/macros/special-notes.cfg:97
+#: data/core/macros/special-notes.cfg:90
 msgid ""
 "The length of this unit’s weapon allows it to strike first in melee, even in "
 "defense."
@@ -5655,7 +5688,7 @@ msgstr ""
 "Délka zbraně umožňuje této jednotce zaútočit jako první, a to i tehdy, když "
 "se brání."
 
-#: data/core/macros/special-notes.cfg:100
+#: data/core/macros/special-notes.cfg:93
 msgid ""
 "The victims of this unit’s poison will continually take damage until they "
 "can be cured in town or by a unit which cures."
@@ -5663,7 +5696,7 @@ msgstr ""
 "Obětem otráveným jedem této jednotky neustále přibývají zranění, dokud není "
 "oběť uzdravena ve vesnici nebo uzdravovatelem."
 
-#: data/core/macros/special-notes.cfg:103
+#: data/core/macros/special-notes.cfg:96
 msgid ""
 "This unit has a defense cap on certain terrain types — it cannot achieve a "
 "higher defense rating on mixed terrains with such terrain types."
@@ -5674,7 +5707,7 @@ msgstr ""
 
 #. User-visible string, but only shown in the help pages of UMC units that haven't yet been updated to the 1.16 special notes format.
 #. Don't use markup in this, because it's shown by both Pango (in the sidebar's tooltips) and the GUI1 help browser (for unit descriptions).
-#: data/core/macros/special-notes.cfg:122
+#: data/core/macros/special-notes.cfg:115
 msgid ""
 "Special Notes (1.14-style, please update to the new list format to avoid "
 "duplicates):"
@@ -6289,12 +6322,12 @@ msgid ""
 msgstr "„Vybroušený“ útok této jednotky je o něco přesnější než ostatní útoky."
 
 #. [swarm]: id=swarm
-#: data/core/macros/weapon_specials.cfg:170
+#: data/core/macros/weapon_specials.cfg:171
 msgid "swarm"
 msgstr "hejno"
 
 #. [swarm]: id=swarm
-#: data/core/macros/weapon_specials.cfg:171
+#: data/core/macros/weapon_specials.cfg:172
 msgid ""
 "The number of strikes of this attack decreases when the unit is wounded. The "
 "number of strikes is proportional to the percentage of its of maximum HP the "
@@ -6306,12 +6339,12 @@ msgstr ""
 "maximálních životů bude moci využít pouze 3/4 úderů."
 
 #. [damage]: id=charge
-#: data/core/macros/weapon_specials.cfg:181
+#: data/core/macros/weapon_specials.cfg:182
 msgid "charge"
 msgstr "výpad"
 
 #. [damage]: id=charge
-#: data/core/macros/weapon_specials.cfg:182
+#: data/core/macros/weapon_specials.cfg:183
 msgid ""
 "When used offensively, this attack deals double damage to the target. It "
 "also causes this unit to take double damage from the target’s counterattack."
@@ -6321,17 +6354,17 @@ msgstr ""
 "pouze pro ofenzivní použití."
 
 #. [damage]: id=guard
-#: data/core/macros/weapon_specials.cfg:195
+#: data/core/macros/weapon_specials.cfg:196
 msgid "guard"
 msgstr "ochrana"
 
 #. [damage]: id=guard
-#: data/core/macros/weapon_specials.cfg:196
+#: data/core/macros/weapon_specials.cfg:197
 msgid "This attack blocks half of the damage from its target’s strikes."
 msgstr "Tento útok blokuje polovinu zranění způsobeného údery cíle."
 
 #. [damage]: id=guard
-#: data/core/macros/weapon_specials.cfg:197
+#: data/core/macros/weapon_specials.cfg:198
 msgid ""
 "This unit’s guarding attack can halve incoming damage, but only when used in "
 "combat."
@@ -6340,7 +6373,7 @@ msgstr ""
 "pouze pokud je použit v boji."
 
 #. [drains]: id=drains
-#: data/core/macros/weapon_specials.cfg:209
+#: data/core/macros/weapon_specials.cfg:210
 msgid ""
 "This unit drains health from living units, healing itself for half the "
 "amount of damage it deals (rounded down)."
@@ -6349,18 +6382,18 @@ msgstr ""
 "polovinu poranění, jež útokem způsobila (zaokrouhleno dolů)."
 
 #. [firststrike]: id=firststrike
-#: data/core/macros/weapon_specials.cfg:219
+#: data/core/macros/weapon_specials.cfg:220
 msgid "first strike"
 msgstr "první úder"
 
 #. [firststrike]: id=firststrike
-#: data/core/macros/weapon_specials.cfg:220
+#: data/core/macros/weapon_specials.cfg:221
 msgid ""
 "This unit always strikes first with this attack, even if they are defending."
 msgstr "Tato jednotka v souboji vždy udeří první, i když se brání."
 
 #. [poison]: id=poison
-#: data/core/macros/weapon_specials.cfg:231
+#: data/core/macros/weapon_specials.cfg:232
 msgid ""
 "This attack poisons living targets. Poisoned units lose 8 HP every turn "
 "until they are cured or are reduced to 1 HP. Poison cannot, of itself, kill "
@@ -6371,12 +6404,12 @@ msgstr ""
 "jednotku zabít."
 
 #. [stun]: id=stun
-#: data/core/macros/weapon_specials.cfg:241
+#: data/core/macros/weapon_specials.cfg:242
 msgid "stun"
 msgstr "omráčení"
 
 #. [stun]: id=stun
-#: data/core/macros/weapon_specials.cfg:242
+#: data/core/macros/weapon_specials.cfg:243
 msgid ""
 "This attack hits so hard that the opponent is dazed and can no longer "
 "enforce a zone of control. The effect wears off on the opponent’s next turn."
@@ -6385,7 +6418,7 @@ msgstr ""
 "oblast kontroly. Účinek vyprší v dalším kole protivníka."
 
 #. [stun]: id=stun
-#: data/core/macros/weapon_specials.cfg:243
+#: data/core/macros/weapon_specials.cfg:244
 msgid ""
 "This unit is able to stun its enemies, disrupting their zones of control."
 msgstr ""
@@ -6393,12 +6426,12 @@ msgstr ""
 "kontroly."
 
 #. [damage_type]: id=arcane_damage
-#: data/core/macros/weapon_specials.cfg:252
+#: data/core/macros/weapon_specials.cfg:253
 msgid "arcane"
 msgstr "nezemský"
 
 #. [damage_type]: id=arcane_damage
-#: data/core/macros/weapon_specials.cfg:253
+#: data/core/macros/weapon_specials.cfg:254
 msgid ""
 "This attack combines the arcane type with the type of weapon used so that "
 "resistance to the arcane type does not penalize the user."
@@ -6407,7 +6440,7 @@ msgstr ""
 "takže odolnost proti nezemskému uživatele nepoškozuje."
 
 #. [damage_type]: id=arcane_damage
-#: data/core/macros/weapon_specials.cfg:254
+#: data/core/macros/weapon_specials.cfg:255
 msgid ""
 "This unit can use the arcane type when the opponent is particularly "
 "sensitive to it in relation to the weapon on which it is applied."
@@ -8089,6 +8122,15 @@ msgstr ""
 "vyrušit jen když je potřeba, aby se postavil na obranu přírody a lesů, které "
 "jsou jeho domovem."
 
+#. [language]
+#: data/english.cfg:34
+msgid ""
+"This unit’s arcane attack deals tremendous damage to magical creatures, and "
+"even some to mundane creatures."
+msgstr ""
+"Nezemský útok této jednotky působí zničující zranění magickým stvořením "
+"a také dost velké poškození těm obyčejným."
+
 #. [lua]: action
 #: data/lua/feeding.lua:26 data/lua/feeding.lua:39
 msgid "+1 max HP"
@@ -8175,7 +8217,7 @@ msgstr ""
 "do ní samotné verbovat vůdci, který je v tvrzi připojené."
 
 #: src/help/help_topic_generators.cpp:245
-#: src/help/help_topic_generators.cpp:653
+#: src/help/help_topic_generators.cpp:652
 msgid "Special Notes"
 msgstr "Zvláštní rysy"
 
@@ -8202,175 +8244,175 @@ msgstr "Vlastnosti pohybu: "
 msgid "Defense properties: "
 msgstr "Vlastnosti obrany: "
 
-#: src/help/help_topic_generators.cpp:363
+#: src/help/help_topic_generators.cpp:362
 msgid "Level"
 msgstr "Úroveň"
 
-#: src/help/help_topic_generators.cpp:416
+#: src/help/help_topic_generators.cpp:415
 msgid "Advances from:"
 msgstr "Povyšuje z:"
 
-#: src/help/help_topic_generators.cpp:418
+#: src/help/help_topic_generators.cpp:417
 msgid "Advances to:"
 msgstr "Povyšuje na:"
 
-#: src/help/help_topic_generators.cpp:448
+#: src/help/help_topic_generators.cpp:447
 msgid "Base unit:"
 msgstr "Základní jednotka:"
 
-#: src/help/help_topic_generators.cpp:453
+#: src/help/help_topic_generators.cpp:452
 msgid "Base units:"
 msgstr "Základní jednotky:"
 
-#: src/help/help_topic_generators.cpp:471
+#: src/help/help_topic_generators.cpp:470
 msgid "Variations:"
 msgstr "Variace:"
 
-#: src/help/help_topic_generators.cpp:498
+#: src/help/help_topic_generators.cpp:497
 msgid "race^Miscellaneous"
 msgstr "Různé"
 
-#: src/help/help_topic_generators.cpp:500
+#: src/help/help_topic_generators.cpp:499
 msgid "Race:"
 msgstr "Národ:"
 
-#: src/help/help_topic_generators.cpp:536
-#: src/help/help_topic_generators.cpp:546
+#: src/help/help_topic_generators.cpp:535
+#: src/help/help_topic_generators.cpp:545
 msgid "(1 of):"
 msgid_plural "(random $number of):"
 msgstr[0] "(1 z těchto):"
 msgstr[1] "($number náhodné z těchto):"
 msgstr[2] "($number náhodných z těchto):"
 
-#: src/help/help_topic_generators.cpp:559
+#: src/help/help_topic_generators.cpp:558
 msgid "Abilities:"
 msgstr "Schopnosti:"
 
-#: src/help/help_topic_generators.cpp:585
+#: src/help/help_topic_generators.cpp:584
 msgid "Ability Upgrades:"
 msgstr "Vylepšení schopností:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit. If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:615
+#: src/help/help_topic_generators.cpp:614
 msgid "HP:"
 msgstr "Životy:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit. If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:619
+#: src/help/help_topic_generators.cpp:618
 msgid "Moves:"
 msgstr "Kroky:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:624
+#: src/help/help_topic_generators.cpp:623
 msgid "Vision:"
 msgstr "Rozhled:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit. If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:630
+#: src/help/help_topic_generators.cpp:629
 msgid "Jamming:"
 msgstr "Rušení:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit. If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:635
+#: src/help/help_topic_generators.cpp:634
 msgid "Cost:"
 msgstr "Cena:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit. If the translation
 #. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
-#: src/help/help_topic_generators.cpp:639
+#: src/help/help_topic_generators.cpp:638
 msgid "Alignment:"
 msgstr "Příslušnost:"
 
 #. TRANSLATORS: This string is used in the help page of a single unit. It uses
 #. non-breaking spaces to prevent unpleasant line breaks (issue #3256). In the
 #. translation use non-breaking spaces as appropriate for the target language.
-#: src/help/help_topic_generators.cpp:646
+#: src/help/help_topic_generators.cpp:645
 msgid "Required XP:"
 msgstr "Zkušenosti:"
 
-#: src/help/help_topic_generators.cpp:664
+#: src/help/help_topic_generators.cpp:663
 msgid "Attacks"
 msgstr "Útoky"
 
-#: src/help/help_topic_generators.cpp:667
+#: src/help/help_topic_generators.cpp:666
 msgid "Attacks per turn: "
 msgstr "Útoků za kolo: "
 
-#: src/help/help_topic_generators.cpp:686
+#: src/help/help_topic_generators.cpp:685
 msgid "Name"
 msgstr "Název"
 
-#: src/help/help_topic_generators.cpp:687
+#: src/help/help_topic_generators.cpp:686
 msgid "Strikes"
 msgstr "Údery"
 
-#: src/help/help_topic_generators.cpp:688
+#: src/help/help_topic_generators.cpp:687
 msgid "Range"
 msgstr "Dosah"
 
-#: src/help/help_topic_generators.cpp:689
+#: src/help/help_topic_generators.cpp:688
 msgid "Type"
 msgstr "Typ"
 
 # tabulka útoků
-#: src/help/help_topic_generators.cpp:690
+#: src/help/help_topic_generators.cpp:689
 msgid "Special"
 msgstr "Zvláštnosti"
 
-#: src/help/help_topic_generators.cpp:712
+#: src/help/help_topic_generators.cpp:711
 msgid "uses $num attack"
 msgid_plural "uses $num attacks"
 msgstr[0] "používá $num útok"
 msgstr[1] "používá $num útoky"
 msgstr[2] "používá $num útoků"
 
-#: src/help/help_topic_generators.cpp:792
+#: src/help/help_topic_generators.cpp:790
 msgid "Resistances"
 msgstr "Odolnosti"
 
-#: src/help/help_topic_generators.cpp:797
+#: src/help/help_topic_generators.cpp:795
 msgid "Attack Type"
 msgstr "Druh útoku"
 
-#: src/help/help_topic_generators.cpp:798
+#: src/help/help_topic_generators.cpp:796
 msgid "Resistance"
 msgstr "Odolnost"
 
-#: src/help/help_topic_generators.cpp:829
+#: src/help/help_topic_generators.cpp:827
 msgid "Terrain Modifiers"
 msgstr "Vliv terénu"
 
-#: src/help/help_topic_generators.cpp:833
+#: src/help/help_topic_generators.cpp:831
 msgid "Terrain"
 msgstr "Terén"
 
-#: src/help/help_topic_generators.cpp:834
+#: src/help/help_topic_generators.cpp:832
 msgid "Defense"
 msgstr "Obrana"
 
-#: src/help/help_topic_generators.cpp:835
+#: src/help/help_topic_generators.cpp:833
 msgid "Movement Cost"
 msgstr "Bodů pohybu"
 
-#: src/help/help_topic_generators.cpp:836
+#: src/help/help_topic_generators.cpp:834
 msgid "Defense Cap"
 msgstr "Omezení obrany"
 
-#: src/help/help_topic_generators.cpp:837
+#: src/help/help_topic_generators.cpp:835
 msgid "Vision Cost"
 msgstr "Cena rozhledu"
 
-#: src/help/help_topic_generators.cpp:838
+#: src/help/help_topic_generators.cpp:836
 msgid "Jamming Cost"
 msgstr "Cena rušení"

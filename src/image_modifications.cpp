@@ -589,12 +589,12 @@ REGISTER_MOD_PARSER(TC, args)
 		return nullptr;
 	}
 
-	color_range_map rc_map;
+	color_mapping rc_map;
 	try {
 		const color_range& new_color = team::get_side_color_range(side_n);
 		const std::vector<color_t>& old_color = game_config::tc_info(params[1]);
 
-		rc_map = recolor_range(new_color,old_color);
+		rc_map = generate_color_mapping(new_color, old_color);
 	} catch(const config::error& e) {
 		ERR_DP << "caught config::error while processing TC: " << e.message;
 		ERR_DP << "bailing out from TC";
@@ -617,12 +617,12 @@ REGISTER_MOD_PARSER(RC, args)
 	//
 	// recolor source palette to color range
 	//
-	color_range_map rc_map;
+	color_mapping rc_map;
 	try {
 		const color_range& new_color = game_config::color_info(recolor_params[1]);
 		const std::vector<color_t>& old_color = game_config::tc_info(recolor_params[0]);
 
-		rc_map = recolor_range(new_color,old_color);
+		rc_map = generate_color_mapping(new_color, old_color);
 	} catch (const config::error& e) {
 		ERR_DP
 			<< "caught config::error while processing color-range RC: "
@@ -646,7 +646,7 @@ REGISTER_MOD_PARSER(PAL, args)
 	}
 
 	try {
-		color_range_map rc_map;
+		color_mapping rc_map;
 		const std::vector<color_t>& old_palette = game_config::tc_info(remap_params[0]);
 		const std::vector<color_t>& new_palette =game_config::tc_info(remap_params[1]);
 

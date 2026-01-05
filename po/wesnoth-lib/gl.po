@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-11-17 20:02-0600\n"
+"POT-Creation-Date: 2025-12-21 21:09-0600\n"
 "PO-Revision-Date: 2025-10-09 18:04+0200\n"
 "Last-Translator: Adrian Chaves <adrian@chaves.io>\n"
 "Language-Team: Galician <kde-i18n-doc@kde.org>\n"
@@ -2342,7 +2342,7 @@ msgstr ""
 #: data/gui/macros/custom_options_tree.cfg:250
 #: data/gui/themes/default/dialogs/mp_alerts_options.cfg:227
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:459
-#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:294
+#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:298
 #: data/gui/themes/default/dialogs/reachmap_options.cfg:160
 #: data/gui/themes/default/dialogs/select_orb_colors.cfg:170
 msgid "Defaults"
@@ -2444,10 +2444,10 @@ msgstr "Comezar unha campaña ou escenario para un só xogador"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
 #. [label]
-#. [widget]: id=label
+#. [tab]
 #: data/gui/themes/celes/dialogs/title_screen.cfg:287
 #: data/gui/themes/default/dialogs/mp_method_selection.cfg:55
-#: data/gui/themes/default/dialogs/preferences.cfg:365
+#: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:390
 #: data/gui/themes/default/dialogs/title_screen.cfg:257
 #: src/gui/dialogs/game_load.cpp:363
 msgid "Multiplayer"
@@ -2546,7 +2546,7 @@ msgstr "Configurar as opcións do xogo"
 #. [label]: id=title
 #: data/gui/themes/celes/dialogs/title_screen.cfg:296
 #: data/gui/themes/default/dialogs/lobby_main.cfg:600
-#: data/gui/themes/default/dialogs/preferences.cfg:213
+#: data/gui/themes/default/dialogs/preferences.cfg:157
 #: data/gui/themes/default/dialogs/title_screen.cfg:263
 #: src/hotkey/hotkey_command.cpp:127
 msgid "Preferences"
@@ -2620,7 +2620,7 @@ msgstr "páxina^<b><span font_family='DejaVu Sans'>✔</span> Copiada</b>"
 #: data/gui/themes/default/dialogs/message.cfg:135
 #: data/gui/themes/default/dialogs/mp_alerts_options.cfg:242
 #: data/gui/themes/default/dialogs/mp_match_history.cfg:601
-#: data/gui/themes/default/dialogs/preferences.cfg:434
+#: data/gui/themes/default/dialogs/preferences.cfg:204
 #: data/gui/themes/default/dialogs/screenshot_notification.cfg:214
 #: data/gui/themes/default/dialogs/server_info.cfg:253
 #: data/gui/themes/default/dialogs/statistics_dialog.cfg:623
@@ -3040,7 +3040,7 @@ msgstr "Escolle os elementos que queiras eliminar."
 #. [button]: id=ok
 #. [button]: id=remove
 #: data/gui/themes/default/dialogs/addon_uninstall_list.cfg:157
-#: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:289
+#: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:290
 msgid "Remove"
 msgstr "Eliminar"
 
@@ -3393,7 +3393,7 @@ msgstr "Cargar o núcleo"
 #: data/gui/themes/default/dialogs/core_dialog.cfg:228
 #: data/gui/themes/default/dialogs/language_selection.cfg:293
 #: src/gui/dialogs/editor/custom_tod.cpp:172
-#: src/gui/dialogs/editor/edit_unit.cpp:308
+#: src/gui/dialogs/editor/edit_unit.cpp:303
 #: src/preferences/preferences.cpp:1342
 msgid "Select"
 msgstr "Seleccionar"
@@ -3542,9 +3542,9 @@ msgstr "Vista previa dos cambios de cor no mapa"
 #: data/gui/themes/default/dialogs/depcheck_confirm_change.cfg:40
 #: src/gui/dialogs/addon/manager.cpp:1029
 #: src/gui/dialogs/editor/custom_tod.cpp:187
-#: src/gui/dialogs/editor/edit_unit.cpp:323
-#: src/gui/dialogs/editor/edit_unit.cpp:1030
-#: src/gui/dialogs/file_dialog.cpp:371 src/gui/dialogs/file_dialog.cpp:799
+#: src/gui/dialogs/editor/edit_unit.cpp:318
+#: src/gui/dialogs/editor/edit_unit.cpp:970 src/gui/dialogs/file_dialog.cpp:371
+#: src/gui/dialogs/file_dialog.cpp:799
 msgid "Confirm"
 msgstr "Confirmar"
 
@@ -4209,13 +4209,13 @@ msgstr "Editor de tipos de unidade"
 
 #. [tab]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:1192
+#: data/gui/themes/default/dialogs/preferences/01_general.cfg:226
 msgid "Main Stats"
 msgstr "Estatísticas principais"
 
 #. [tab]
-#. [widget]: id=label
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:1199
-#: data/gui/themes/default/dialogs/preferences.cfg:383
+#: data/gui/themes/default/dialogs/preferences/06_advanced.cfg:148
 msgid "Advanced"
 msgstr "Avanzado"
 
@@ -4875,11 +4875,9 @@ msgstr ""
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [tab]
 #. [widget]: id=tab_label
-#. [widget]: id=label
 #: data/gui/themes/default/dialogs/game_version.cfg:879
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:564
-#: data/gui/themes/default/dialogs/preferences.cfg:292
-#: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:402
+#: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:405
 #: data/gui/themes/default/dialogs/server_info.cfg:181
 #: src/hotkey/hotkey_command.cpp:51
 msgid "General"
@@ -5102,9 +5100,9 @@ msgstr "Amosar só os xogos con prazas libres"
 #
 # Está pendente de que permitan traducir a mensaxe de maneira distinta en cada contexto: https://github.com/wesnoth/wesnoth/issues/2836
 #. [toggle_button]: id=filter_with_friends
-#. [widget]: id=tab_label
+#. [tab]
 #: data/gui/themes/default/dialogs/lobby_main.cfg:490
-#: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:415
+#: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:426
 msgid "Friends"
 msgstr "Amigos"
 
@@ -5239,14 +5237,14 @@ msgstr "Información do xogador — "
 #. [button]: id=add_to_friends
 #. [button]: id=add_friend
 #: data/gui/themes/default/dialogs/lobby_player_info.cfg:88
-#: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:263
+#: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:264
 msgid "Add Friend"
 msgstr "Engadir como amigo"
 
 #. [button]: id=add_to_ignores
 #. [button]: id=add_ignored
 #: data/gui/themes/default/dialogs/lobby_player_info.cfg:99
-#: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:276
+#: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:277
 msgid "Block"
 msgstr "Bloquear"
 
@@ -5400,9 +5398,9 @@ msgstr ""
 "quere que se mostren notificacións de escritorio."
 
 #. [label]
-#. [widget]: id=label
+#. [tab]
 #: data/gui/themes/default/dialogs/mp_alerts_options.cfg:147
-#: data/gui/themes/default/dialogs/preferences.cfg:347
+#: data/gui/themes/default/dialogs/preferences/04_sound.cfg:143
 msgid "Sound"
 msgstr "Son"
 
@@ -6086,18 +6084,8 @@ msgstr "Listo"
 msgid "Press ESC to skip"
 msgstr "Preme ESC para saltar"
 
-#. [widget]: id=label
-#: data/gui/themes/default/dialogs/preferences.cfg:311
-msgid "Hotkeys"
-msgstr "Atallos"
-
-#. [widget]: id=label
-#: data/gui/themes/default/dialogs/preferences.cfg:329
-msgid "Display"
-msgstr "Pantalla"
-
 #. [button]: id=about
-#: data/gui/themes/default/dialogs/preferences.cfg:419
+#: data/gui/themes/default/dialogs/preferences.cfg:192
 msgid "Display the game version and build information"
 msgstr "Mostrar a versión do xogo e a información da construción"
 
@@ -6257,23 +6245,28 @@ msgstr "Caché"
 msgid "Manage the game WML cache"
 msgstr "Xestionar a caché WML do xogo"
 
+#. [tab]
+#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:7
+msgid "Hotkeys"
+msgstr "Atallos"
+
 #. [label]
-#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:25
+#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:29
 msgid "Filter:"
 msgstr "Filtro:"
 
 #. [text_box]: id=filter
-#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:50
+#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:54
 msgid "Filters on hotkey description"
 msgstr "Filtros na descrición das teclas de atallo"
 
 #. [toggle_button]: id=sort_0
-#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:98
+#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:102
 msgid "Action"
 msgstr "Acción"
 
 #. [toggle_button]: id=sort_1
-#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:112
+#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:116
 msgid "Hotkey"
 msgstr "Atallo"
 
@@ -6281,13 +6274,13 @@ msgstr "Atallo"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_2
 #. Translate G as the initial letter for Game
-#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:126
-#: src/gui/dialogs/preferences_dialog.cpp:890
+#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:130
+#: src/gui/dialogs/preferences_dialog.cpp:885
 msgid "game_hotkeys^G"
 msgstr "P"
 
 #. [toggle_button]: id=sort_2
-#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:127
+#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:131
 msgid "Available in game"
 msgstr "Dispoñíbel nas partidas"
 
@@ -6295,13 +6288,13 @@ msgstr "Dispoñíbel nas partidas"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_3
 #. Translate E as the initial letter for Editor
-#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:141
-#: src/gui/dialogs/preferences_dialog.cpp:891
+#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:145
+#: src/gui/dialogs/preferences_dialog.cpp:886
 msgid "editor_hotkeys^E"
 msgstr "E"
 
 #. [toggle_button]: id=sort_3
-#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:142
+#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:146
 msgid "Available in editor"
 msgstr "Dispoñíbel no editor"
 
@@ -6309,23 +6302,23 @@ msgstr "Dispoñíbel no editor"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=sort_4
 #. Translate M as the initial letter for Main Menu
-#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:156
-#: src/gui/dialogs/preferences_dialog.cpp:892
+#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:160
+#: src/gui/dialogs/preferences_dialog.cpp:887
 msgid "mainmenu_hotkeys^M"
 msgstr "P"
 
 #. [toggle_button]: id=sort_4
-#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:157
+#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:161
 msgid "Available at main menu"
 msgstr "Dispoñíbel no menú principal"
 
 #. [button]: id=btn_add_hotkey
-#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:272
+#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:276
 msgid "Add Hotkey"
 msgstr "Engadir un atallo"
 
 #. [button]: id=btn_clear_hotkey
-#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:283
+#: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:287
 msgid "Clear Hotkey"
 msgstr "Eliminar o atallo"
 
@@ -6518,6 +6511,11 @@ msgid "Set the frequency of unit idle animations"
 msgstr ""
 "Definir a frecuencia das animacións das unidades que non estean a facer nada"
 
+#. [tab]
+#: data/gui/themes/default/dialogs/preferences/03_display.cfg:454
+msgid "Display"
+msgstr "Pantalla"
+
 #. [label]
 #: data/gui/themes/default/dialogs/preferences/04_sound.cfg:38
 msgid "Volume:"
@@ -6685,7 +6683,7 @@ msgstr ""
 "aloxar partidas na rede local"
 
 #. [button]: id=add_friend
-#: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:264
+#: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:265
 msgid ""
 "Add this username to your friends list (add optional notes, e.g., "
 "‘player_name notes on friend’)"
@@ -6694,7 +6692,7 @@ msgstr ""
 "exemplo, ‘player_name notas sobre o amigo’)."
 
 #. [button]: id=add_ignored
-#: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:277
+#: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:278
 msgid ""
 "Add this username to your ignore list (add optional reason, e.g., "
 "‘player_name reason ignored’)"
@@ -6703,12 +6701,12 @@ msgstr ""
 "opcional, por exemplo, ‘player_name motivo ignorado’)."
 
 #. [button]: id=remove
-#: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:290
+#: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:291
 msgid "Remove this username from your list"
 msgstr "Quitar o usuario da lista."
 
 #. [label]: id=no_friends_notice
-#: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:311
+#: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:312
 msgid "You have not befriended or blocked any other players."
 msgstr "Non te fixeches amigo ou bloqueaches a ningún xogador."
 
@@ -7083,7 +7081,7 @@ msgstr "Marcar/desmarcar a unidade seleccionada como favorita"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/themes/default/dialogs/wml_error.cfg:40
-#: src/gui/dialogs/message.cpp:206 src/gui/dialogs/preferences_dialog.cpp:272
+#: src/gui/dialogs/message.cpp:206 src/gui/dialogs/preferences_dialog.cpp:265
 #: src/gui/dialogs/transient_message.cpp:77
 msgid "Error"
 msgstr "Houbo un erro"
@@ -7189,7 +7187,7 @@ msgstr "<descoñecido>"
 #. other's resources rather than duplicating them. For example,
 #. Swedish (sv) and Danish (da) are such, so Swedish translator could
 #. translate this message as "sv,da", while Danish as "da,sv".
-#: src/filesystem.cpp:1851
+#: src/filesystem.cpp:1850
 msgid "language code for localized resources^en_US"
 msgstr "gl"
 
@@ -7619,23 +7617,23 @@ msgid "url^None"
 msgstr "Ningún"
 
 # Na pantalla de cálculo de danos de combate, este é o valor que aparece para «dano base» cando o defensor non ten arma coa que defenderse (e.g. o atacante usar un ataque a distancia e o defensor non ten ningún a distancia).
-#: src/gui/dialogs/attack_predictions.cpp:121
+#: src/gui/dialogs/attack_predictions.cpp:120
 msgid "No usable weapon"
 msgstr "Sen contraataque"
 
-#: src/gui/dialogs/attack_predictions.cpp:199
+#: src/gui/dialogs/attack_predictions.cpp:196
 msgid "Defender resistance vs"
 msgstr "Resistencia do defensor contra"
 
-#: src/gui/dialogs/attack_predictions.cpp:201
+#: src/gui/dialogs/attack_predictions.cpp:198
 msgid "Defender vulnerability vs"
 msgstr "Vulnerabilidade do defensor contra"
 
-#: src/gui/dialogs/attack_predictions.cpp:205
+#: src/gui/dialogs/attack_predictions.cpp:202
 msgid "Attacker resistance vs"
 msgstr "Resistencia do atacante contra"
 
-#: src/gui/dialogs/attack_predictions.cpp:207
+#: src/gui/dialogs/attack_predictions.cpp:204
 msgid "Attacker vulnerability vs"
 msgstr "Vulnerabilidade do atacante contra"
 
@@ -7690,12 +7688,12 @@ msgstr ""
 
 # Non o vin no contexto.
 #: src/gui/dialogs/editor/custom_tod.cpp:171
-#: src/gui/dialogs/editor/edit_unit.cpp:307
+#: src/gui/dialogs/editor/edit_unit.cpp:302
 msgid "Choose File"
 msgstr "Escolle ficheiro"
 
 #: src/gui/dialogs/editor/custom_tod.cpp:182
-#: src/gui/dialogs/editor/edit_unit.cpp:318
+#: src/gui/dialogs/editor/edit_unit.cpp:313
 msgid ""
 "This file is outside Wesnoth’s data dirs. Do you wish to copy it into your "
 "add-on?"
@@ -7792,31 +7790,31 @@ msgstr "Éxito"
 msgid "Choose an icon"
 msgstr "Escolle unha ícona"
 
-#: src/gui/dialogs/editor/edit_unit.cpp:190
+#: src/gui/dialogs/editor/edit_unit.cpp:187
 msgid "scout"
 msgstr "explorador"
 
-#: src/gui/dialogs/editor/edit_unit.cpp:191
+#: src/gui/dialogs/editor/edit_unit.cpp:188
 msgid "fighter"
 msgstr "Loitador"
 
-#: src/gui/dialogs/editor/edit_unit.cpp:192
+#: src/gui/dialogs/editor/edit_unit.cpp:189
 msgid "archer"
 msgstr "Arqueiro"
 
-#: src/gui/dialogs/editor/edit_unit.cpp:193
+#: src/gui/dialogs/editor/edit_unit.cpp:190
 msgid "mixed fighter"
 msgstr "loitador mixto"
 
-#: src/gui/dialogs/editor/edit_unit.cpp:194
+#: src/gui/dialogs/editor/edit_unit.cpp:191
 msgid "healer"
 msgstr "curandeiro/a"
 
-#: src/gui/dialogs/editor/edit_unit.cpp:1029
+#: src/gui/dialogs/editor/edit_unit.cpp:969
 msgid "Unsaved changes will be lost. Do you want to leave?"
 msgstr "Os cambios non gardados perderanse. Queres saír?"
 
-#: src/gui/dialogs/editor/edit_unit.cpp:1048
+#: src/gui/dialogs/editor/edit_unit.cpp:988
 msgid "Unit type saved."
 msgstr "Tipo de unidade gardado."
 
@@ -8031,8 +8029,8 @@ msgstr "non"
 msgid "yes"
 msgstr "si"
 
-#: src/gui/dialogs/game_version_dialog.cpp:273
-#: src/gui/dialogs/game_version_dialog.cpp:287 src/gui/widgets/label.cpp:124
+#: src/gui/dialogs/game_version_dialog.cpp:263
+#: src/gui/dialogs/game_version_dialog.cpp:277 src/gui/widgets/label.cpp:124
 msgid "Opening links is not supported, contact your packager"
 msgstr ""
 "A funcionalidade de abrir ligazóns non está dispoñíbel, contacte co "
@@ -8398,35 +8396,35 @@ msgid "The End"
 msgstr "Fin"
 
 # «Configuración → Varios xogadores → Lista de amigos».
-#: src/gui/dialogs/preferences_dialog.cpp:199
+#: src/gui/dialogs/preferences_dialog.cpp:192
 msgid "friend"
 msgstr "(amigo)"
 
 # «Configuración → Varios xogadores → Lista de amigos».
-#: src/gui/dialogs/preferences_dialog.cpp:204
+#: src/gui/dialogs/preferences_dialog.cpp:197
 msgid "ignored"
 msgstr "(ignorado)"
 
-#: src/gui/dialogs/preferences_dialog.cpp:257
-#: src/gui/dialogs/preferences_dialog.cpp:314
+#: src/gui/dialogs/preferences_dialog.cpp:250
+#: src/gui/dialogs/preferences_dialog.cpp:307
 msgid "No username specified"
 msgstr "Non se indicou un nome de usuario"
 
 # Mensaxe que aparece nunha xanela ao intentar introducir un nome de usuario incorrecto (por exemplo, un baleiro) na lista de amigos e ignorados, accesible dende «Configuración → Varios xogadores → Lista de amigos».
-#: src/gui/dialogs/preferences_dialog.cpp:272
+#: src/gui/dialogs/preferences_dialog.cpp:265
 msgid "Invalid username"
 msgstr "O nome de usuario non é válido"
 
-#: src/gui/dialogs/preferences_dialog.cpp:319
+#: src/gui/dialogs/preferences_dialog.cpp:312
 msgid "Not on friends or ignore lists"
 msgstr "Nin amigo nin ignorado"
 
-#: src/gui/dialogs/preferences_dialog.cpp:936
-#: src/gui/dialogs/preferences_dialog.cpp:1000
+#: src/gui/dialogs/preferences_dialog.cpp:931
+#: src/gui/dialogs/preferences_dialog.cpp:995
 msgid "No hotkey selected"
 msgstr "Non se seleccionou ningunha tecla de acceso rápido"
 
-#: src/gui/dialogs/preferences_dialog.cpp:964
+#: src/gui/dialogs/preferences_dialog.cpp:959
 msgid ""
 "“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\n"
 "Do you wish to reassign it to “<b>$new_hotkey_action|</b>”?"
@@ -8434,15 +8432,15 @@ msgstr ""
 "«<b>$hotkey_sequence|</b>» emprégase para «<b>$old_hotkey_action|</b>».\n"
 "Queres que pase a estar asignado a «<b>$new_hotkey_action|</b>»?"
 
-#: src/gui/dialogs/preferences_dialog.cpp:970
+#: src/gui/dialogs/preferences_dialog.cpp:965
 msgid "Reassign Hotkey"
 msgstr "Cambiar a acción do atallo"
 
-#: src/gui/dialogs/preferences_dialog.cpp:987
+#: src/gui/dialogs/preferences_dialog.cpp:982
 msgid "All hotkeys have been reset to their default values."
 msgstr "Restablecéronse todos os atallos aos seus valores predeterminados."
 
-#: src/gui/dialogs/preferences_dialog.cpp:987
+#: src/gui/dialogs/preferences_dialog.cpp:982
 msgid "Hotkeys Reset"
 msgstr "Restablecemento dos atallos"
 
@@ -8605,7 +8603,7 @@ msgstr ""
 msgid "This unit cannot be recalled because you do not have enough gold."
 msgstr "Non se pode recordar esta unidade porque non tes ouro suficiente."
 
-#: src/gui/gui.cpp:133
+#: src/gui/gui.cpp:129
 msgid "No default gui defined."
 msgstr "Non se definiu unha interface gráfica predeterminada."
 
@@ -8662,18 +8660,18 @@ msgstr "Abrir ligazón?"
 msgid "Copied link!"
 msgstr "Copiouse a ligazón!"
 
-#: src/gui/widgets/listbox.cpp:695 src/gui/widgets/multi_page.cpp:224
+#: src/gui/widgets/listbox.cpp:696 src/gui/widgets/multi_page.cpp:224
 msgid ""
 "‘list_data’ must have the same number of columns as the ‘list_definition’."
 msgstr ""
 "«list_data» (datos da lista) debe ter o mesmo número de columnas que "
 "«list_definition» (definición da lista)."
 
-#: src/gui/widgets/listbox.cpp:730 src/gui/widgets/scrollbar_panel.cpp:86
+#: src/gui/widgets/listbox.cpp:731 src/gui/widgets/scrollbar_panel.cpp:86
 msgid "No list defined."
 msgstr "Non se definiu ningunha lista."
 
-#: src/gui/widgets/listbox.cpp:735
+#: src/gui/widgets/listbox.cpp:736
 msgid "A ‘list_definition’ should contain one row."
 msgstr "A «list_definition» (definición de lista) debería conter unha fila."
 
@@ -8731,11 +8729,11 @@ msgstr ""
 msgid "No stack layers defined."
 msgstr "Non se definiu ningunha capa da morea."
 
-#: src/gui/widgets/styled_widget.cpp:591
+#: src/gui/widgets/styled_widget.cpp:593
 msgid "Found a widget with a helptip and without a tooltip."
 msgstr "Atopouse un trebello con axuda pero sen explicación."
 
-#: src/gui/widgets/tab_container.cpp:140
+#: src/gui/widgets/tab_container.cpp:172
 msgid "No grid defined for tab container control"
 msgstr "Non se definiu ningunha grade para o control do contedor de lapelas"
 

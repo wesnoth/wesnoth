@@ -52,15 +52,18 @@ private:
 	 */
 	void set_up_color_info()
 	{
-		config cfg;
-		cfg.add_child("color_range",
-			       create_color_range("red",
-						  "FF0000,FFFFFF,000000,FF0000",
-						  "Red"));
-		cfg.add_child("color_range",
-			       create_color_range("blue",
-						  "2E419B,FFFFFF,0F0F0F,0000FF",
-						  "Blue"));
+		const auto cfg = config{
+			"color_range", config{
+				"id",   "red",
+				"name", "Red",
+				"rgb",  "FF0000,FFFFFF,000000,FF0000"
+			},
+			"color_range", config{
+				"id",   "blue",
+				"name", "Blue",
+				"rgb",  "2E419B,FFFFFF,0F0F0F,0000FF"
+			}
+		};
 
 		game_config::add_color_info(game_config_view::wrap(cfg));
 	}
@@ -72,35 +75,8 @@ private:
 	 */
 	void set_up_image_paths()
 	{
-		config cfg;
-		game_config_view v = game_config_view::wrap(cfg);
-		cfg.add_child("binary_path",
-			      create_path_config("data/core"));
-
-
-		paths_manager_.set_paths(v);
-	}
-
-	static config create_color_range(const std::string& id,
-				  const std::string& rgb,
-				  const std::string& name)
-	{
-		config cfg;
-
-		cfg["id"] = id;
-		cfg["rgb"] = rgb;
-		cfg["name"] = name;
-
-		return cfg;
-	}
-
-	static config create_path_config(const std::string& path)
-	{
-		config cfg;
-
-		cfg["path"] = path;
-
-		return cfg;
+		const auto cfg = config{"binary_path", config{"path", "data/core"}};
+		paths_manager_.set_paths(game_config_view::wrap(cfg));
 	}
 
 	std::stringstream ignored_stream_;
@@ -174,7 +150,7 @@ BOOST_AUTO_TEST_CASE(test_tc_modification_decoding)
 	const std::vector<color_t>& old_color = game_config::tc_info("blue");
 	// The first team color is red
 	const color_range& new_color = game_config::color_info("red");
-	color_range_map expected = recolor_range(new_color, old_color);
+	color_mapping expected = generate_color_mapping(new_color, old_color);
 
 	BOOST_CHECK(expected == mod->map());
 }
@@ -205,7 +181,7 @@ BOOST_AUTO_TEST_CASE(test_rc_modification_decoding)
 
 	const std::vector<color_t>& old_color = game_config::tc_info("red");
 	const color_range& new_color = game_config::color_info("blue");
-	color_range_map expected = recolor_range(new_color, old_color);
+	color_mapping expected = generate_color_mapping(new_color, old_color);
 
 	BOOST_CHECK(expected == mod->map());
 }
@@ -237,7 +213,7 @@ BOOST_AUTO_TEST_CASE(test_pal_modification_decoding)
 
 	const std::vector<color_t>& old_palette = game_config::tc_info("000000,005000");
 	const std::vector<color_t>& new_palette = game_config::tc_info("FFFFFF,FF00FF");
-	color_range_map expected;
+	color_mapping expected;
 
 	for(std::size_t i = 0; i < old_palette.size() && i < new_palette.size(); ++i) {
 	environment_setup env_setup;

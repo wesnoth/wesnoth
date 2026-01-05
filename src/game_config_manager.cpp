@@ -59,6 +59,7 @@ game_config_manager::game_config_manager(const commandline_options& cmdline_opts
 	, old_defines_map_()
 	, paths_manager_()
 	, cache_(game_config::config_cache::instance())
+	, tdata_(game_config())
 	, achievements_()
 {
 	assert(!singleton);
@@ -344,7 +345,7 @@ void game_config_manager::load_game_config(bool reload_everything, const game_cl
 
 		set_unit_data();
 		terrain_builder::set_terrain_rules_cfg(game_config());
-		terrain_type_data::reset(game_config());
+		tdata_.reset();
 		::init_strings(game_config());
 		theme::set_known_themes(&game_config());
 

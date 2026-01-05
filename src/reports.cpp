@@ -982,6 +982,25 @@ static int attack_info(const reports::context& rc, const attack_type &at, config
 			add_text(res, flush(str), flush(tooltip));
 		}
 
+		if(at.attacks_used() > 1)
+		{
+			const std::string& attacks_used = VNGETTEXT(
+				"uses $num attack",
+				"uses $num attacks",
+				at.attacks_used(),
+				{ {"num", std::to_string(at.attacks_used())} }
+			);
+			str << span_color(font::weapon_details_color, "    ", attacks_used) << "\n";
+
+			const std::string& attacks_used_tooltip = VNGETTEXT(
+				"This attack uses $num attack point",
+				"This attack uses $num attack points",
+				at.attacks_used(),
+				{ {"num", std::to_string(at.attacks_used())} }
+			);
+			add_text(res, flush(str), attacks_used_tooltip);
+		}
+
 		const std::string &accuracy_parry = at.accuracy_parry_description();
 		if (!accuracy_parry.empty())
 		{
