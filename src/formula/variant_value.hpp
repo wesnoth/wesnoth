@@ -25,6 +25,16 @@
 #include <vector>
 #include <boost/range/iterator_range.hpp>
 
+namespace utils
+{
+template<typename To, typename From>
+inline To& cast_as(To&, From& value)
+{
+	return static_cast<To&>(value);
+}
+
+} // namespace utils
+
 namespace wfl
 {
 class variant_value_base;
@@ -50,17 +60,6 @@ static std::shared_ptr<T> value_cast(value_base_ptr ptr)
 	}
 
 	return res;
-}
-
-/** Casts a @ref variant_value_base reference to a new derived type. */
-template<typename T>
-static const T& value_ref_cast(const variant_value_base& ptr)
-{
-	try {
-		return dynamic_cast<const T&>(ptr);
-	} catch(const std::bad_cast&) {
-		throw type_error("Could not cast type");
-	}
 }
 
 /**
@@ -208,12 +207,12 @@ public:
 
 	virtual bool equals(const variant_value_base& other) const override
 	{
-		return value_ == value_ref_cast<variant_numeric>(other).value_;
+		return value_ == utils::cast_as(*this, other).value_;
 	}
 
 	virtual bool less_than(const variant_value_base& other) const override
 	{
-		return value_ < value_ref_cast<variant_numeric>(other).value_;
+		return value_ < utils::cast_as(*this, other).value_;
 	}
 
 protected:
@@ -384,12 +383,12 @@ public:
 
 	virtual bool equals(const variant_value_base& other) const override
 	{
-		return string_ == value_ref_cast<variant_string>(other).string_;
+		return string_ == utils::cast_as(*this, other).string_;
 	}
 
 	virtual bool less_than(const variant_value_base& other) const override
 	{
-		return string_ < value_ref_cast<variant_string>(other).string_;
+		return string_ < utils::cast_as(*this, other).string_;
 	}
 
 	virtual formula_variant::type get_type() const override
