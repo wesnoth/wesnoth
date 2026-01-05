@@ -62,6 +62,13 @@ static std::shared_ptr<T> value_cast(value_base_ptr ptr)
 	return res;
 }
 
+#define IMPLEMENT_VALUE_TYPE(value)                                                                                    \
+	static constexpr auto value_type = value;                                                                          \
+	formula_variant::type get_type() const override                                                                    \
+	{                                                                                                                  \
+		return value_type;                                                                                             \
+	}
+
 /**
  * Base class for all variant types.
  *
@@ -128,10 +135,13 @@ public:
 		return false; // null is not less than null
 	}
 
+	/** Each 'final' derived class should define a static type flag. */
+	static constexpr auto value_type = formula_variant::type::null;
+
 	/** Returns the id of the variant type */
 	virtual formula_variant::type get_type() const
 	{
-		return formula_variant::type::null;
+		return value_type;
 	}
 
 	/**
@@ -242,10 +252,8 @@ public:
 		return string_cast();
 	}
 
-	virtual formula_variant::type get_type() const override
-	{
-		return formula_variant::type::integer;
-	}
+	/** Required by variant_value_base. */
+	IMPLEMENT_VALUE_TYPE(formula_variant::type::integer)
 };
 
 
@@ -282,10 +290,8 @@ public:
 		return to_string_impl(true);
 	}
 
-	virtual formula_variant::type get_type() const override
-	{
-		return formula_variant::type::decimal;
-	}
+	/** Required by variant_value_base. */
+	IMPLEMENT_VALUE_TYPE(formula_variant::type::decimal)
 
 private:
 	std::string to_string_impl(const bool sign_value) const;
@@ -325,10 +331,8 @@ public:
 	virtual bool equals(const variant_value_base& other) const override;
 	virtual bool less_than(const variant_value_base& other) const override;
 
-	virtual formula_variant::type get_type() const override
-	{
-		return formula_variant::type::object;
-	}
+	/** Required by variant_value_base. */
+	IMPLEMENT_VALUE_TYPE(formula_variant::type::object)
 
 	virtual boost::iterator_range<variant_iterator> make_iterator() const override;
 	virtual variant deref_iterator(const utils::any& iter) const override;
@@ -391,10 +395,8 @@ public:
 		return string_ < utils::cast_as(*this, other).string_;
 	}
 
-	virtual formula_variant::type get_type() const override
-	{
-		return formula_variant::type::string;
-	}
+	/** Required by variant_value_base. */
+	IMPLEMENT_VALUE_TYPE(formula_variant::type::string)
 
 private:
 	std::string string_;
@@ -505,11 +507,8 @@ public:
 		return container_;
 	}
 
-
-	virtual formula_variant::type get_type() const override
-	{
-		return formula_variant::type::list;
-	}
+	/** Required by variant_value_base. */
+	IMPLEMENT_VALUE_TYPE(formula_variant::type::list)
 
 	virtual variant deref_iterator(const utils::any&) const override;
 
@@ -544,11 +543,8 @@ public:
 		return container_;
 	}
 
-
-	virtual formula_variant::type get_type() const override
-	{
-		return formula_variant::type::map;
-	}
+	/** Required by variant_value_base. */
+	IMPLEMENT_VALUE_TYPE(formula_variant::type::map)
 
 	virtual variant deref_iterator(const utils::any&) const override;
 
@@ -558,5 +554,7 @@ private:
 
 	variant_map_raw container_;
 };
+
+#undef IMPLEMENT_VALUE_TYPE
 
 } // namespace wfl
