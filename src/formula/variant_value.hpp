@@ -40,10 +40,6 @@ class variant_value_base;
 class variant_iterator;
 class variant;
 
-using variant_vector = std::vector<variant>;
-using variant_map_raw = std::map<variant, variant>;
-using value_base_ptr = std::shared_ptr<variant_value_base>;
-
 #define IMPLEMENT_VALUE_TYPE(value)                                                                                    \
 	static constexpr auto value_type = value;                                                                          \
 	formula_variant::type get_type() const override                                                                    \
@@ -469,17 +465,17 @@ class variant_list : public variant_container<variant_list>
 public:
 	friend class variant_container<variant_list>;
 
-	explicit variant_list(const variant_vector& vec)
+	explicit variant_list(const std::vector<variant>& vec)
 		: container_(vec)
 	{
 	}
 
-	explicit variant_list(variant_vector&& vec)
+	explicit variant_list(std::vector<variant>&& vec)
 		: container_(std::move(vec))
 	{
 	}
 
-	const variant_vector& get_container() const
+	const std::vector<variant>& get_container() const
 	{
 		return container_;
 	}
@@ -496,7 +492,7 @@ private:
 		return op(value);
 	}
 
-	variant_vector container_;
+	std::vector<variant> container_;
 };
 
 
@@ -505,17 +501,17 @@ class variant_map : public variant_container<variant_map>
 public:
 	friend class variant_container<variant_map>;
 
-	explicit variant_map(const variant_map_raw& map)
+	explicit variant_map(const std::map<variant, variant>& map)
 		: container_(map)
 	{
 	}
 
-	explicit variant_map(variant_map_raw&& map)
+	explicit variant_map(std::map<variant, variant>&& map)
 		: container_(std::move(map))
 	{
 	}
 
-	const variant_map_raw& get_container() const
+	const std::map<variant, variant>& get_container() const
 	{
 		return container_;
 	}
@@ -526,10 +522,10 @@ public:
 	virtual variant deref_iterator(const utils::any&) const override;
 
 private:
-	/** Helper for @ref variant_container::to_string_impl. */
-	static std::string to_string_detail(const variant_map_raw::value_type& value, const to_string_op& op);
+	std::map<variant, variant> container_;
 
-	variant_map_raw container_;
+	/** Helper for @ref variant_container::to_string_impl. */
+	static std::string to_string_detail(const decltype(container_)::value_type& value, const to_string_op& op);
 };
 
 #undef IMPLEMENT_VALUE_TYPE

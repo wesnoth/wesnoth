@@ -299,10 +299,10 @@ template class variant_container<variant_map>;
 
 variant variant_list::deref_iterator(const utils::any& iter) const
 {
-	return *utils::any_cast<const variant_vector::const_iterator&>(iter);
+	return *utils::any_cast<const decltype(std::cbegin(container_))&>(iter);
 }
 
-std::string variant_map::to_string_detail(const variant_map_raw::value_type& value, const to_string_op& op)
+std::string variant_map::to_string_detail(const decltype(container_)::value_type& value, const to_string_op& op)
 {
 	std::ostringstream ss;
 
@@ -315,7 +315,7 @@ std::string variant_map::to_string_detail(const variant_map_raw::value_type& val
 
 variant variant_map::deref_iterator(const utils::any& iter) const
 {
-	const auto& [key, value] = *utils::any_cast<const variant_map_raw::const_iterator&>(iter);
+	const auto& [key, value] = *utils::any_cast<const decltype(std::cbegin(container_))&>(iter);
 	return variant(std::make_shared<key_value_pair>(key, value));
 }
 
