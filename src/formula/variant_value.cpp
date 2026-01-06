@@ -22,6 +22,18 @@
 
 namespace wfl
 {
+namespace implementation
+{
+template<typename Range>
+auto make_iterator_range(const variant_value_base* val, const Range& range) -> boost::iterator_range<variant_iterator>
+{
+	return {
+		variant_iterator{val, std::cbegin(range)},
+		variant_iterator{val, std::cend(range)}
+	};
+}
+
+} // namespace implementation
 
 boost::iterator_range<variant_iterator> variant_value_base::make_iterator() const
 {
@@ -165,7 +177,7 @@ boost::iterator_range<variant_iterator> variant_callable::make_iterator() const
 		callable_->get_inputs(inputs);
 	}
 
-	return {variant_iterator(this, inputs.cbegin()), variant_iterator(this, inputs.cend())};
+	return implementation::make_iterator_range(this, inputs);
 }
 
 variant variant_callable::deref_iterator(const utils::any& iter) const
@@ -268,10 +280,7 @@ std::string variant_container<T>::get_debug_string(formula_seen_stack& seen, boo
 template<typename T>
 boost::iterator_range<variant_iterator> variant_container<T>::make_iterator() const
 {
-	return {
-		variant_iterator{this, std::cbegin(container())},
-		variant_iterator{this, std::cend(container())}
-	};
+	return implementation::make_iterator_range(this, container());
 }
 
 template<typename T>
