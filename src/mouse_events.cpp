@@ -1242,8 +1242,8 @@ void mouse_handler::deselect_hex()
  */
 bool mouse_handler::move_unit_along_current_route()
 {
-	// Copy the current route to ensure it remains valid throughout the animation.
-	const std::vector<map_location> steps = current_route_.steps;
+	// Capture the full intended route before movement modifies or clears it.
+	const pathfind::marked_route intended_route = current_route_;
 
 	// do not show footsteps during movement
 	gui().set_route(nullptr);
@@ -1254,14 +1254,32 @@ bool mouse_handler::move_unit_along_current_route()
 	gui().select_hex(map_location());
 
 	bool interrupted = false;
-	if(steps.size() > 1) {
-		std::size_t num_moves = move_unit_along_route(steps, interrupted);
+	std::size_t num_moves = 0;
 
-		interrupted = interrupted || num_moves + 1 < steps.size();
-		next_unit_ = steps[num_moves];
+	if (intended_route.steps.size() > 1) {
+		num_moves = move_unit_along_route(intended_route.steps, interrupted);
+
+		interrupted = interrupted || num_moves + 1 < intended_route.steps.size();
+		next_unit_ = intended_route.steps[num_moves];
 	}
 
-	// invalid after the move
+	// TRIGGER FLASH-FADE:
+	// If the unit didn't finish the path (0 MP or interruption), visualize the remainder.
+	if (intended_route.steps.size() > num_moves + 1) {
+		pathfind::marked_route remaining_route;
+
+		// Slice the original route from the point where the unit stopped
+		for (auto i = intended_route.steps.begin() + num_moves; i != intended_route.steps.end(); ++i) {
+			remaining_route.steps.push_back(*i);
+			if (auto it = intended_route.marks.find(*i); it != intended_route.marks.end()) {
+				remaining_route.marks[*i] = it->second;
+			}
+		}
+
+		gui().flash_fade_route(remaining_route);
+	}
+
+	// Cleanup state
 	current_paths_ = pathfind::paths();
 	current_route_.steps.clear();
 
