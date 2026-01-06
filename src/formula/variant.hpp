@@ -163,8 +163,6 @@ public:
 		return formula_variant::get_string(type());
 	}
 
-	variant execute_variant(const variant& to_exec);
-
 private:
 	template<typename T>
 	std::shared_ptr<T> value_cast() const
@@ -186,6 +184,11 @@ private:
 	/** @invariant Never null. */
 	std::shared_ptr<variant_value_base> value_;
 };
+
+/**
+ * Executes all action_callables in @a execute using the provided context.
+ */
+variant execute_actions(const variant& execute, const variant& context);
 
 /**
  * Iterator class for the variant.

@@ -326,7 +326,7 @@ void image_shape::draw(wfl::map_formula_callable& variables)
 	}
 
 	// Execute the provided actions for this context.
-	wfl::variant(variables.fake_ptr()).execute_variant(actions_formula_.evaluate(local_variables));
+	wfl::execute_actions(actions_formula_.evaluate(local_variables), wfl::variant(variables.fake_ptr()));
 
 	// If w or h is 0, assume it means the whole image.
 	if (!w) { w = tex.w(); }
@@ -555,7 +555,7 @@ void text_shape::draw(wfl::map_formula_callable& variables)
 	rect dst_rect{x, y, w, h};
 
 	// Execute the provided actions for this context.
-	wfl::variant(variables.fake_ptr()).execute_variant(actions_formula_.evaluate(local_variables));
+	wfl::execute_actions(actions_formula_.evaluate(local_variables), wfl::variant(variables.fake_ptr()));
 
 	texture tex = text_renderer.render_and_get_texture();
 	if(!tex) {

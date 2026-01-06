@@ -17,7 +17,7 @@
 #include <cmath>
 #include <cstring>
 #include <memory>
-#include <stack>
+#include "utils/span.hpp"
 
 #include "formatter.hpp"
 #include "formula/function.hpp"
@@ -700,37 +700,27 @@ std::string variant::to_debug_string(bool verbose, formula_seen_stack* seen) con
 	return value_->get_debug_string(*seen, verbose);
 }
 
-variant variant::execute_variant(const variant& var)
+variant execute_actions(const variant& execute, const variant& context)
 {
-	std::stack<variant> vars;
-	if(var.is_list()) {
-		for(std::size_t n = 1; n <= var.num_elements(); ++n) {
-			vars.push(var[var.num_elements() - n]);
-		}
-	} else {
-		vars.push(var);
-	}
+	// If we don't have a list, try and execute the input variant itself.
+	const auto to_execute = execute.is_list()
+		? utils::span{execute.as_list()}
+		: utils::span{&execute, 1};
 
-	std::vector<variant> made_moves;
+	std::vector<variant> res;
+	res.reserve(to_execute.size());
 
-	while(!vars.empty()) {
-
-		if(vars.top().is_null()) {
-			vars.pop();
+	for(const variant& v : to_execute) {
+		auto action = v.try_convert<action_callable>();
+		if(!action) {
+			WRN_SF << "Could not execute non-action_callable variant: " << v.to_debug_string();
 			continue;
 		}
 
-		if(auto action = vars.top().try_convert<action_callable>()) {
-			variant res = action->execute_self(*this);
-			if(res.is_int() && res.as_bool()) {
-				made_moves.push_back(vars.top());
-			}
-		}
-
-		vars.pop();
+		res.push_back(action->execute_self(context));
 	}
 
-	return variant(std::move(made_moves));
+	return variant(std::move(res));
 }
 
 }

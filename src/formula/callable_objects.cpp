@@ -896,7 +896,7 @@ variant safe_call_callable::execute_self(variant ctxt)
 		 * for example if this formula was executed from the commandline.
 		 */
 		backup_ = get_backup()->evaluate(callable);
-		ctxt.execute_variant(backup_);
+		wfl::execute_actions(backup_, ctxt);
 	}
 	return variant(true);
 }
