@@ -566,8 +566,8 @@ namespace implementation
 template<typename Func>
 variant zip_transform(const variant& v1, const variant& v2, const Func& op_func)
 {
-	const variant_vector& lhs = v1.as_list();
-	const variant_vector& rhs = v2.as_list();
+	const std::vector& lhs = v1.as_list();
+	const std::vector& rhs = v2.as_list();
 
 	if(lhs.size() != rhs.size()) {
 		throw type_error("zip_transform requires two lists of the same length");
