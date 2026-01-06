@@ -416,11 +416,6 @@ public:
 
 	virtual std::string get_debug_string(formula_seen_stack& seen, bool verbose) const override;
 
-	bool contains(const variant& member) const
-	{
-		return utils::contains(container(), member);
-	}
-
 	// We implement these here since the interface is the same for all
 	// specializations and leave the deref function to the derived classes.
 	virtual boost::iterator_range<variant_iterator> make_iterator() const override;

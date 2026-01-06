@@ -643,14 +643,13 @@ variant variant::build_range(const variant& v) const
 
 bool variant::contains(const variant& v) const
 {
-	if(!is_list() && !is_map()) {
+	switch(type()) {
+	case formula_variant::type::list:
+		return utils::contains(as_list(), v);
+	case formula_variant::type::map:
+		return utils::contains(as_map(), v);
+	default:
 		throw type_error(was_expecting("a list or a map", *this));
-	}
-
-	if(is_list()) {
-		return value_cast<variant_list>()->contains(v);
-	} else {
-		return value_cast<variant_map>()->contains(v);
 	}
 }
 
