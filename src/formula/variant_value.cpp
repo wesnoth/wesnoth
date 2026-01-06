@@ -277,20 +277,19 @@ boost::iterator_range<variant_iterator> variant_container<T>::make_iterator() co
 template<typename T>
 void variant_container<T>::iterator_inc(utils::any& iter) const
 {
-	++utils::any_cast<decltype(std::cbegin(container()))&>(iter);
+	++as_container_iterator(iter);
 }
 
 template<typename T>
 void variant_container<T>::iterator_dec(utils::any& iter) const
 {
-	--utils::any_cast<decltype(std::cbegin(container()))&>(iter);
+	--as_container_iterator(iter);
 }
 
 template<typename T>
 bool variant_container<T>::iterator_equals(const utils::any& first, const utils::any& second) const
 {
-	return utils::any_cast<decltype(std::cbegin(container()))>(first)
-		== utils::any_cast<decltype(std::cbegin(container()))>(second);
+	return as_container_iterator(first) == as_container_iterator(second);
 }
 
 // Force compilation of the following template instantiations
@@ -299,7 +298,7 @@ template class variant_container<variant_map>;
 
 variant variant_list::deref_iterator(const utils::any& iter) const
 {
-	return *utils::any_cast<const decltype(std::cbegin(container_))&>(iter);
+	return *as_container_iterator(iter);
 }
 
 std::string variant_map::to_string_detail(const decltype(container_)::value_type& value, const to_string_op& op)
@@ -315,7 +314,7 @@ std::string variant_map::to_string_detail(const decltype(container_)::value_type
 
 variant variant_map::deref_iterator(const utils::any& iter) const
 {
-	const auto& [key, value] = *utils::any_cast<const decltype(std::cbegin(container_))&>(iter);
+	const auto& [key, value] = *as_container_iterator(iter);
 	return variant(std::make_shared<key_value_pair>(key, value));
 }
 
