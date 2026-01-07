@@ -711,6 +711,10 @@ variant execute_actions(const variant& execute, const variant& context)
 	res.reserve(to_execute.size());
 
 	for(const variant& v : to_execute) {
+		if(v.is_null()) {
+			continue;
+		}
+
 		auto action = v.try_convert<action_callable>();
 		if(!action) {
 			WRN_SF << "Could not execute non-action_callable variant: " << v.to_debug_string();
