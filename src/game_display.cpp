@@ -306,11 +306,13 @@ std::vector<texture> footsteps_images(const map_location& loc, const pathfind::m
 	if(u != dc->units().end()) {
 		move_cost = u->movement_cost(dc->map().get_terrain(loc));
 	}
-	int image_number = std::min<int>(move_cost, game_config::foot_speed_prefix.size());
-	if (image_number < 1) {
-		return res; // Invalid movement cost or no images
+
+	// Generate a red tint string based on movement cost.
+	std::string color_mod;
+	if (move_cost > 1) {
+		int reduction = std::min(255, (move_cost - 1) * 85);
+		color_mod = "~CS(0,-" + std::to_string(reduction) + ",-" + std::to_string(reduction) + ")";
 	}
-	const std::string foot_speed_prefix = game_config::foot_speed_prefix[image_number-1];
 
 	texture teleport;
 
@@ -340,9 +342,9 @@ std::vector<texture> footsteps_images(const map_location& loc, const pathfind::m
 			rotate = "~FL(horiz)~FL(vert)";
 		}
 
-		const std::string image = foot_speed_prefix
+		const std::string image = "footsteps/footprint"
 			+ sense + "-" + i->write_direction(dir)
-			+ ".png" + rotate;
+			+ ".png" + rotate + color_mod;
 
 		res.push_back(image::get_texture(image, image::HEXED));
 	}
