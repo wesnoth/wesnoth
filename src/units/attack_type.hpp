@@ -215,6 +215,14 @@ public:
 	bool overwrite_special_checking(active_ability_list& overwriters, const unit_ability_t& ab) const;
 
 	bool special_active(const unit_ability_t& ab, AFFECTS whom) const;
+	/**
+	 * Check whether @a ab is a element owed by self or other.
+	 *
+	 * @return True if element checked is owned by self or other.
+	 * @param ab the ability/special checked
+	 * @param is_self if true, check if element owned by self, else check if owned by opponent.
+	 */
+	bool affect_self_opponent(const unit_ability_t& ab, bool is_self) const;
 
 	// make more functions proivate after refactoring finished.
 

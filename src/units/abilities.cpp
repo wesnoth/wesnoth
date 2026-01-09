@@ -1468,12 +1468,12 @@ bool attack_type::overwrite_special_checking(active_ability_list& overwriters, c
 
 		// if the current overwriter affects one side and the cfg being checked can be overwritten by this overwriter
 		// then check that the current overwriter and the cfg being checked both affect either this unit or its opponent
-		if(affect_side && is_overwritable){
-			if(special_affects_self(j.ability(), is_attacker)){
-				one_side_overwritable = special_affects_self(ab, is_attacker);
+		if(affect_side && is_overwritable) {
+			if(special_affects_self(j.ability(), is_attacker)) {
+				one_side_overwritable = affect_self_opponent(ab, true);
 			}
-			else if(special_affects_opponent(j.ability(), !is_attacker)){
-				one_side_overwritable = special_affects_opponent(ab, !is_attacker);
+			else if(special_affects_opponent(j.ability(), !is_attacker)) {
+				one_side_overwritable = affect_self_opponent(ab, false);
 			}
 		}
 
@@ -1983,46 +1983,53 @@ bool specials_context_t::is_special_active(const specials_combatant& self, const
 	return true;
 }
 
-bool attack_type::affect_side(const unit_ability_t& ov, const unit_ability_t& ab) const
+bool attack_type::affect_self_opponent(const unit_ability_t& ab, bool is_self) const
 {
 	auto ctx = fallback_context();
 	auto [self, other] = context_->self_and_other(*this);
-	unit_const_ptr self_u = self.un;
-    bool is_attacker = &self == &context_->attacker;
+	unit_const_ptr self_u = is_self ? self.un : other.un;
+	const_attack_ptr attack = is_self ? self.at : other.at;
+	const map_location& loc = is_self ? self.loc : other.loc;
+	bool is_attacker = is_self ? &self == &context_->attacker : &other == &context_->attacker;
+	bool affect_self = is_self ? special_affects_self(ab, is_attacker) : special_affects_opponent(ab, is_attacker);
+	if(attack) {
+		for(const auto& p_ab : attack->specials()) {
+			if(ab.tag() == p_ab->tag() && ab.cfg() == p_ab->cfg() && affect_self) {
+				return true;
+			}
+		}
+	}
+	if(self_u) {
+		bool affect_u = false;
+		foreach_active_ability(*self_u, loc,
+		[&](const ability_ptr&) {
+			return true;
+		},
+		[&](const ability_ptr& p_ab, const unit&) {
+			if(ab.tag() == p_ab->tag() && ab.cfg() == p_ab->cfg() && affect_self) {
+				affect_u = true;
+			}
+		});
+		return affect_u;
+	}
+	return false;
+}
+
+bool attack_type::affect_side(const unit_ability_t& ov, const unit_ability_t& ab) const
+{
 	auto has_overwrite_specials = ov.cfg().optional_child("erase_lower_priority");
 	if(has_overwrite_specials) {
 		//If `affect_side` is not equal to `self` or `opponent`, then `[erase_lower_priority]` can erases specials affecting both `self` and `opponent`.
 		if(has_overwrite_specials["affect_side"].str("both") != "self" && has_overwrite_specials["affect_side"].str("both") != "opponent") {
 			return true;
 		}
-		//Otherwise, we compare ab with the list of specials/abilities possessed by the unit or taught to it (apparently the code below also works in this latter case),
-		//and we check that it is applied to self (self, attacker if self is on the offensive or defender if self is on the defensive).
-		//If an element matches, then ab is applied to self; otherwise, it is necessarily applied to the opponent.
-		bool affect_self = false;
-		for(const auto& p_ab : specials()) {
-			if(ab.tag() == p_ab->tag() && ab.cfg() == p_ab->cfg() && special_affects_self(ab, is_attacker)) {
-				affect_self = true;
-				break;
-			}
-		}
-		if(!affect_self && self_u) {
-			foreach_active_ability(*self_u, self.loc,
-			[&](const ability_ptr&) {
-				return true;
-			},
-			[&](const ability_ptr& p_ab, const unit&) {
-				if(ab.tag() == p_ab->tag() && ab.cfg() == p_ab->cfg() && special_affects_self(ab, is_attacker)) {
-					affect_self = true;
-				}
-			});
-		}
 		//Now what affect_self edited, verify what ab matche with affect_side.
 		//If affect_side is applied to self, ab could be erased if it itself applies to self; if affect_side=opponent, ab could be erased if it applies to the opponent.
 		if(has_overwrite_specials["affect_side"].str("both") == "self" ) {
-			return affect_self;
+			return affect_self_opponent(ab, true);
 		}
 		else if(has_overwrite_specials["affect_side"].str("both") == "opponent") {
-			return !affect_self;
+			return affect_self_opponent(ab, false);
 		}
 	}
 	return true;
