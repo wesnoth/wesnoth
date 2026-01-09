@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-12-22 03:08 UTC\n"
-"PO-Revision-Date: 2025-10-22 10:49+1100\n"
+"PO-Revision-Date: 2025-12-22 16:12+1100\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
 "EnglishGBTranslation>\n"
@@ -86,7 +86,7 @@ msgstr "Warrior"
 #. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:30
 msgid "Apocalyptic"
-msgstr ""
+msgstr "Apocalyptic"
 
 #. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:30
@@ -198,7 +198,7 @@ msgstr "Evil"
 #. [side]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:118
 msgid "Animals"
-msgstr ""
+msgstr "Animals"
 
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:128
@@ -666,7 +666,7 @@ msgstr "Maybe they’re hiding in the stables. Let’s go and check."
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:884
 msgid "Wandering Dustboks... A pity they only come to us now."
-msgstr ""
+msgstr "Wandering Dustboks... A pity they only come to us now."
 
 #. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:922
@@ -1400,6 +1400,8 @@ msgid ""
 "A pack of Wandering Scarabs, we can make much needed weapons and armour out "
 "of them."
 msgstr ""
+"A pack of Wandering Scarabs, we can make much needed weapons and armour out "
+"of them."
 
 #. [scenario]: id=02_Across_the_Harsh_Sands, role=Hunting Ogre
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:627
@@ -1783,6 +1785,8 @@ msgid ""
 "Phew, thank goodness that this oasis is here! I was beginning to worry that "
 "it might have been a mirage, but it appears to be real!"
 msgstr ""
+"Phew, thank goodness that this oasis is here! I was beginning to worry that "
+"it might have been a mirage, but it appears to be real!"
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1503
@@ -1791,16 +1795,19 @@ msgid ""
 "who’s to say we might not have encountered a mirage under some other "
 "conditions?"
 msgstr ""
+"Indeed, your caution was warranted; the oasis may be real this time, but "
+"who’s to say we might not have encountered a mirage under some other "
+"conditions?"
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1508
 msgid "It has been known to happen before."
-msgstr ""
+msgstr "It has been known to happen before."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1512
 msgid "I don’t even want to think about something like that. Onwards!"
-msgstr ""
+msgstr "I don’t even want to think about something like that. Onwards!"
 
 #. [message]: speaker=$explorer.id
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1517
@@ -5045,16 +5052,6 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:957
-#, fuzzy
-#| msgid ""
-#| "Any unit that ends its turn on a lava hex, except those who can fly over "
-#| "the lava, will take 25 damage at the beginning of the next turn. This "
-#| "lava damage can kill units. Flying units will just take $heat_damage "
-#| "damage per turn when flying over lava, though they too can die if they "
-#| "spend too much time over it. Also because of the heat in the cavern, all "
-#| "units on cave floor hexes will take $heat_damage damage at the start of "
-#| "each turn. This heat damage can reduce a unit to 1 hit point, but it "
-#| "can’t kill it."
 msgid ""
 "Any unit that ends its turn on a lava hex, except those who can fly over the "
 "lava, will take $lava_damage damage at the beginning of the next turn. This "
@@ -5063,12 +5060,10 @@ msgid ""
 "much time over it."
 msgstr ""
 "Any unit that ends its turn on a lava hex, except those who can fly over the "
-"lava, will take 25 damage at the beginning of the next turn. This lava "
-"damage can kill units. Flying units will just take $heat_damage damage per "
-"turn when flying over lava, though they too can die if they spend too much "
-"time over it. Also because of the heat in the cavern, all units on cave "
-"floor hexes will take $heat_damage damage at the start of each turn. This "
-"heat damage can reduce a unit to 1 hit point, but it can’t kill it."
+"lava, will take $lava_damage damage at the beginning of the next turn. This "
+"lava damage can kill units. Flying units will just take $heat_damage damage "
+"per turn when flying over lava, though they too can die if they spend too "
+"much time over it."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:962
@@ -5078,6 +5073,10 @@ msgid ""
 "reduce a unit to 1 hit point, but, unlike the lava damage, the heat damage "
 "can’t kill the unit."
 msgstr ""
+"Also, because of the heat in the cavern, all units on cave floor hexes will "
+"take $heat_damage damage at the start of each turn. This heat damage can "
+"reduce a unit to 1 hit point, but, unlike the lava damage, the heat damage "
+"can’t kill the unit."
 
 #. [message]: role=Troll High Shaman
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:971
@@ -12987,12 +12986,12 @@ msgstr "Kelur"
 #. [side]: type=Orcish Shaman, id=Zoldak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:164
 msgid "Zoldak"
-msgstr ""
+msgstr "Zoldak"
 
 #. [side]: type=Saurian Seer, id=Tchoyob
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:311
 msgid "Tchoyob"
-msgstr ""
+msgstr "Tchoyob"
 
 #. [unit]: type=Merman Triton, id=Trapped Merman
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:384
@@ -13072,6 +13071,8 @@ msgid ""
 "The jungle here doesn’t want to answer me, as if afraid of indescribable "
 "horrors within it. As much as I love nature, this place frightens me."
 msgstr ""
+"The jungle here doesn’t want to answer me, as if afraid of indescribable "
+"horrors within it. As much as I love nature, this place frightens me."
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:618
@@ -13103,6 +13104,8 @@ msgid ""
 "The trees themselves seem against my presence here. They give me an omnious "
 "feeling as if something bad is going to happen if I stay here."
 msgstr ""
+"The trees themselves seem against my presence here. They give me an ominous "
+"feeling as if something bad is going to happen if I stay here."
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:661
@@ -13167,12 +13170,15 @@ msgid ""
 "This thing... instead of speaking to nature, it controls it! Destroy it, "
 "quickly!"
 msgstr ""
+"This thing... instead of speaking to nature, it controls it! Destroy it, "
+"quickly!"
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:756
 msgid ""
 "This alien thing... Indescribable, yet so vile. It can’t be anything good."
 msgstr ""
+"This alien thing... Indescribable, yet so vile. It can’t be anything good."
 
 #. [message]: speaker=Boyicht
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:773
@@ -13275,11 +13281,14 @@ msgid ""
 "straight away. In any case, feel free to make use of our camp as it seems "
 "that we have common enemies."
 msgstr ""
+"Welcome. I already knew you were coming but I didn’t expect you to arrive "
+"straight away. In any case, feel free to make use of our camp as it seems "
+"that we have common enemies."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1002
 msgid "Thank you Shaman. We will do so. Now, I wonder where the merfolk are?"
-msgstr ""
+msgstr "Thank you Shaman. We will do so. Now, I wonder where the merfolk are?"
 
 #. [message]: speaker=Graghht
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1013
@@ -13287,73 +13296,55 @@ msgid ""
 "Since you enterd our fort, use it for your troops. Get them here quickly and "
 "help us."
 msgstr ""
+"Since you entered our fort, use it for your troops. Get them here quickly "
+"and help us."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1017
-#, fuzzy
-#| msgid ""
-#| "I have captured the keep. This castle is somewhat ruined, but it will "
-#| "serve our purposes. Now, I wonder where the merfolk are?"
 msgid ""
 "Thank you, Sovereign. They will come here soon. Now, I wonder where the "
 "merfolk are?"
 msgstr ""
-"I have captured the keep. This castle is somewhat ruined, but it will serve "
-"our purposes. Now, I wonder where the merfolk are?"
+"Thank you, Sovereign. They will come here soon. Now, I wonder where the "
+"merfolk are?"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1024
-#, fuzzy
-#| msgid ""
-#| "I have captured the keep. This castle is somewhat ruined, but it will "
-#| "serve our purposes. Now, I wonder where the merfolk are?"
 msgid ""
 "I have captured the keep. The castle is not in good condition but at least "
 "it will serve our purposes. Now, I wonder where the merfolk are?"
 msgstr ""
-"I have captured the keep. This castle is somewhat ruined, but it will serve "
-"our purposes. Now, I wonder where the merfolk are?"
+"I have captured the keep. The castle is not in good condition but at least "
+"it will serve our purposes. Now, I wonder where the merfolk are?"
 
 #. [message]: race=merman
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1048
-#, fuzzy
-#| msgid ""
-#| "Fear not, here we are! We have explored the southern half of the island. "
-#| "And except for those lizards you found, and some abandoned villages, it "
-#| "seem to be empty. We captured those villages for you, to help support "
-#| "your troops."
 msgid ""
 "Fear not, here we are! We have explored the southern half of the island. And "
 "we found lizards living there, and some abandoned villages."
 msgstr ""
-"Fear not, here we are! We have explored the southern half of the island. "
-"And, except for those lizards you found and some abandoned villages, it seem "
-"to be empty. We captured those villages for you, to help support your troops."
+"Fear not, here we are! We have explored the southern half of the island. And "
+"we found lizards living there, and some abandoned villages."
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1053
-#, fuzzy
-#| msgid "Thanks, I think we’re going to need all the support we can get."
 msgid ""
 "Thanks, I think that villages are important but right now we’re going to "
 "need all the support we can get to help our new allies here."
-msgstr "Thanks, I think we’re going to need all the support we can get."
+msgstr ""
+"Thanks, I think that villages are important but right now we’re going to "
+"need all the support we can get to help our new allies here."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1106
-#, fuzzy
-#| msgid ""
-#| "Now that we’ve set up a base of operations we should make our way to the "
-#| "black citadel in the mountains at the center of the island. I bet it’s "
-#| "somewhere in the middle of that dark jungle."
 msgid ""
 "Now that we’ve set up a base of operations we should make our way to the "
 "black citadel in the mountains at the center of the island. It should be not "
 "too far away."
 msgstr ""
 "Now that we’ve set up a base of operations we should make our way to the "
-"black citadel in the mountains at the centre of the island. I bet it’s "
-"somewhere in the middle of that dark jungle."
+"black citadel in the mountains at the centre of the island. It should be not "
+"too far away."
 
 #. [message]: speaker=Kelur
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1155
@@ -13362,10 +13353,8 @@ msgstr "Feel the cold touch of death!"
 
 #. [message]: speaker=Tchoyob
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1174
-#, fuzzy
-#| msgid "I will slaughter you all and bathe in your blood!"
 msgid "I will slaughter you all and feast upon your bodies!"
-msgstr "I will slaughter you all and bathe in your blood!"
+msgstr "I will slaughter you all and feast upon your bodies!"
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1193
@@ -13383,23 +13372,23 @@ msgid ""
 "We won’t be controlled any more! We will reclaim this island as rightfully "
 "ours! Destroy the false god! Rebuild legacy of our ancestors!"
 msgstr ""
+"We won’t be controlled any more! We will reclaim this island as rightfully "
+"ours! Destroy the false god! Rebuild the legacy of our ancestors!"
 
 #. [message]: speaker=Graghht
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1235
 msgid "Protect the shaman that gave us freedom! Slaughter our enemies!"
-msgstr ""
+msgstr "Protect the shaman that gave us freedom! Slaughter our enemies!"
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1240
-#, fuzzy
-#| msgid "What are they like?"
 msgid "What are they doing here?"
-msgstr "What are they like?"
+msgstr "What are they doing here?"
 
 #. [message]: speaker=Graghht
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1261
 msgid "Graaaaaaaaaaaaaaaaaaaaaghht!"
-msgstr ""
+msgstr "Graaaaaaaaaaaaaaaaaaaaaghht!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1291
@@ -13412,29 +13401,21 @@ msgstr ""
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1302
-#, fuzzy
-#| msgid ""
-#| "There’s got to be something here. The orc and skeleton must have been "
-#| "guarding some sort of entrance."
 msgid ""
 "There’s got to be something here. The saurian and skeleton must have been "
 "guarding some sort of entrance."
 msgstr ""
-"There’s got to be something here. The orc and skeleton must have been "
+"There’s got to be something here. The saurian and skeleton must have been "
 "guarding some sort of entrance."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1308
-#, fuzzy
-#| msgid ""
-#| "Are you sure? Search carefully. The orc and skeleton must have been "
-#| "guarding some sort of entrance."
 msgid ""
 "Are you sure? Search carefully. The saurian and skeleton must have been "
 "guarding some sort of entrance."
 msgstr ""
-"Are you sure? Search carefully. The orc and skeleton must have been guarding "
-"some sort of entrance."
+"Are you sure? Search carefully. The saurian and skeleton must have been "
+"guarding some sort of entrance."
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1315
@@ -13449,25 +13430,15 @@ msgstr ""
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1328
-#, fuzzy
-#| msgid ""
-#| "Hey, what about the two keys that we found on the bodies of the undead "
-#| "and orc leaders?"
 msgid ""
 "Hey, what about the two keys that we found on the bodies of the undead and "
 "saurian leaders?"
 msgstr ""
 "Hey, what about the two keys that we found on the bodies of the undead and "
-"orc leaders?"
+"saurian leaders?"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1335
-#, fuzzy
-#| msgid ""
-#| "I have an idea. I bet Eloh has given them to those she trusts most. And "
-#| "one orc and one skeleton were guarding the door. The keys must be being "
-#| "held by one of each faction. I bet the leaders would be in charge of such "
-#| "valuable objects."
 msgid ""
 "I have an idea. I bet Eloh has given them to those she trusts most. And one "
 "saurian and one skeleton were guarding the door. The keys must be being held "
@@ -13475,9 +13446,9 @@ msgid ""
 "valuable objects."
 msgstr ""
 "I have an idea. I bet Eloh has given them to those she trusts most. And one "
-"orc and one skeleton were guarding the door. The keys must be being held by "
-"one of each faction. I bet the leaders would be in charge of such valuable "
-"objects."
+"saurian and one skeleton were guarding the door. The keys must be being held "
+"by one of each faction. I bet the leaders would be in charge of such "
+"valuable objects."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1365
@@ -13764,12 +13735,12 @@ msgstr ""
 #. [message]: speaker=Graghht
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1827
 msgid "We are going in to help too!"
-msgstr ""
+msgstr "We are going in to help too!"
 
 #. [message]: speaker=Zoldak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1848
 msgid "Go after them to help too. I will stay here."
-msgstr ""
+msgstr "Go after them to help too. I will stay here."
 
 #. [message]: speaker=Grog
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1872
@@ -15259,10 +15230,8 @@ msgstr "a taller Dust Devil"
 
 #. [advancement]: id=Dust3
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Dust_Devil.cfg:162
-#, fuzzy
-#| msgid "a stronger Dust Devil"
 msgid "a bigger Dust Devil"
-msgstr "a stronger Dust Devil"
+msgstr "a bigger Dust Devil"
 
 #. [unit_type]: id=Flesh Golem, race=monster
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Flesh_Golem.cfg:4
@@ -15827,12 +15796,12 @@ msgstr "sand"
 #. [advancement]: id=natures_aid
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Shyde.cfg:127
 msgid "Connection with Nature"
-msgstr ""
+msgstr "Connection with Nature"
 
 #. [advancement]: id=extra_natures_aid
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Shyde.cfg:175
 msgid "Nature Aid"
-msgstr ""
+msgstr "Nature Aid"
 
 #. [unit_type]: id=Quenoth Sun Singer, race=quenoth, gender=female
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Singer.cfg:5
@@ -16157,10 +16126,8 @@ msgstr "Swordsman"
 
 #. [advancement]: id=strength_training
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:146
-#, fuzzy
-#| msgid "Stamina Training"
 msgid "Strength Training"
-msgstr "Stamina Training"
+msgstr "Strength Training"
 
 #. [advancement]: id=bowmanship_training
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:158
@@ -16170,20 +16137,18 @@ msgstr "Bowmanship Training"
 
 #. [advancement]: id=strong_shots
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:175
-#, fuzzy
-#| msgid "Strong Strikes"
 msgid "Strong Shots"
-msgstr "Strong Strikes"
+msgstr "Strong Shots"
 
 #. [advancement]: id=Bowman
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:187
 msgid "Bowman"
-msgstr ""
+msgstr "Bowman"
 
 #. [advancement]: id=piercing_shot
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:204
 msgid "Piercing Shot"
-msgstr ""
+msgstr "Piercing Shot"
 
 #. [advancement]: id=stronger_grip
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:230
@@ -16231,10 +16196,8 @@ msgstr "Opportunist"
 
 #. [advancement]: id=leading
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:383
-#, fuzzy
-#| msgid "Leader"
 msgid "Leading"
-msgstr "Leader"
+msgstr "Leading"
 
 #. [advancement]: id=accurate_strikes
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:420
@@ -16274,7 +16237,7 @@ msgstr "Twin Arrows"
 #. [advancement]: id=snipe
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:561
 msgid "Snipe"
-msgstr ""
+msgstr "Snipe"
 
 #. [advancement]: id=footwork
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:608
@@ -16687,23 +16650,17 @@ msgstr "This unit has wide-area attacks centred on the caster."
 #. [dummy]: id=blast
 #. weapon special
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:510
-#, fuzzy
-#| msgid "Alastra"
 msgid "blast"
-msgstr "Alastra"
+msgstr "blast"
 
 #. [dummy]: id=blast
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:511
-#, fuzzy
-#| msgid ""
-#| "This weapon, when used offensively, deals damage to all units adjacent to "
-#| "the caster when it hits."
 msgid ""
 "This weapon, when used offensively, deals damage to all units adjacent to "
 "the enemy when it hits."
 msgstr ""
 "This weapon, when used offensively, deals damage to all units adjacent to "
-"the caster when it hits."
+"the enemy when it hits."
 
 #. [dummy]: id=blast
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:513
@@ -16766,7 +16723,7 @@ msgstr "tailwind +"
 #. [chance_to_hit]: id=parrying{VALUE}
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:731
 msgid "parrying($sub)"
-msgstr ""
+msgstr "parrying($sub)"
 
 #. [chance_to_hit]: id=parrying{VALUE}
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:732
@@ -16774,6 +16731,8 @@ msgid ""
 "This unit sees its defense reinforced by $sub% when this weapon is used "
 "offensively"
 msgstr ""
+"This unit sees its defence reinforced by $sub% when this weapon is used "
+"offensively"
 
 #. [special_note]
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:855
@@ -17073,12 +17032,12 @@ msgstr ""
 #. [heals]: id=natures_aid
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1836
 msgid "nature’s aid +2"
-msgstr ""
+msgstr "nature’s aid +2"
 
 #. [heals]: id=natures_aid
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1837
 msgid "female^nature’s aid +2"
-msgstr ""
+msgstr "nature’s aid +2"
 
 #. [heals]: id=natures_aid
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1838
@@ -17086,6 +17045,8 @@ msgid ""
 "All units on this unit’s side, regardless of distance, will heal themselves "
 "for 2 HP when starting their turn in forest or fungus."
 msgstr ""
+"All units on this unit’s side, regardless of distance, will heal themselves "
+"for 2 HP when starting their turn in forest or fungus."
 
 #. [heals]: id=natures_aid
 #. [heals]: id=extra_natures_aid
@@ -17095,6 +17056,8 @@ msgid ""
 "This ability will not cure an affected unit of poison, however, only delay "
 "its effect."
 msgstr ""
+"This ability will not cure an affected unit of poison, however, only delay "
+"its effect."
 
 #. [heals]: id=natures_aid
 #. [heals]: id=extra_natures_aid
@@ -17106,12 +17069,12 @@ msgstr "This unit is capable of basic healing and slowing dehydration."
 #. [heals]: id=extra_natures_aid
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1863
 msgid "nature’s aid +4"
-msgstr ""
+msgstr "nature’s aid +4"
 
 #. [heals]: id=extra_natures_aid
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1864
 msgid "female^nature’s aid +4"
-msgstr ""
+msgstr "nature’s aid +4"
 
 #. [heals]: id=extra_natures_aid
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1865
@@ -17119,16 +17082,18 @@ msgid ""
 "All units on this unit’s side, regardless of distance, will heal themselves "
 "for 4 HP when starting their turn in forest or fungus."
 msgstr ""
+"All units on this unit’s side, regardless of distance, will heal themselves "
+"for 4 HP when starting their turn in forest or fungus."
 
 #. [dummy]: id=corrupting_influence
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1887
 msgid "corrupting influence"
-msgstr ""
+msgstr "corrupting influence"
 
 #. [dummy]: id=corrupting_influence
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1888
 msgid "female^corrupting influence"
-msgstr ""
+msgstr "corrupting influence"
 
 #. [dummy]: id=corrupting_influence
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1889
@@ -17136,6 +17101,8 @@ msgid ""
 "Controls nature to deal 1 point of damage to enemy units standing in forest "
 "or fungus at the beginning of their turn."
 msgstr ""
+"Controls nature to deal 1 point of damage to enemy units standing in forest "
+"or fungus at the beginning of their turn."
 
 #. [dummy]: id=corrupting_influence
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1890
@@ -17143,21 +17110,19 @@ msgid ""
 "Cannot kill a unit, does not grant XP but stacks with other abilities with "
 "the same name."
 msgstr ""
+"Cannot kill a unit, does not grant XP but stacks with other abilities with "
+"the same name."
 
 #. [dummy]: id=corrupting_influence
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1891
-#, fuzzy
-#| msgid "This unit is capable of basic healing and slowing dehydration."
 msgid "This unit is capable of control over nature."
-msgstr "This unit is capable of basic healing and slowing dehydration."
+msgstr "This unit is capable of control over nature."
 
 #. [extra_attack]: id=intercept
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1933
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1934
-#, fuzzy
-#| msgid "pierce"
 msgid "intercept"
-msgstr "pierce"
+msgstr "intercept"
 
 #. [extra_attack]: id=intercept
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1935
@@ -17165,6 +17130,8 @@ msgid ""
 "When an enemy unit enters an adjacent space, the wielder immediately "
 "executes an uncountered intercepting strike with this weapon."
 msgstr ""
+"When an enemy unit enters an adjacent space, the wielder immediately "
+"executes an uncountered intercepting strike with this weapon."
 
 #. [extra_attack]: id=intercept
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1936
@@ -17172,6 +17139,8 @@ msgid ""
 "Delivers a full-power, uncountered attack when enemies move to an adjacent "
 "space. Activates once per turn."
 msgstr ""
+"Delivers a full-power, uncountered attack when enemies move to an adjacent "
+"space. Activates once per turn."
 
 #: data/campaigns/Under_the_Burning_Suns/utils/character-definitions.cfg:5
 msgid "Kaleh"
@@ -18439,30 +18408,30 @@ msgstr "Phantom Keep"
 #~ msgid ""
 #~ "Truth is that $ally_unit.name not know much of sunlight lands. Sun and "
 #~ "stars are scary, everything is open, exposed, no safe places to hide. But "
-#~ "$ally_unit.name cannot go back through all that water. And $ally_unit."
-#~ "name doesn’t know where to find other tunnels back to his home. He is as "
-#~ "lost as elves are."
+#~ "$ally_unit.name cannot go back through all that water. And "
+#~ "$ally_unit.name doesn’t know where to find other tunnels back to his "
+#~ "home. He is as lost as elves are."
 #~ msgstr ""
 #~ "Truth is that $ally_unit.name not know much of sunlight lands. Sun and "
 #~ "stars are scary, everything is open, exposed, no safe places to hide. But "
-#~ "$ally_unit.name cannot go back through all that water. And $ally_unit."
-#~ "name doesn’t know where to find other tunnels back to his home. He is as "
-#~ "lost as elves are."
+#~ "$ally_unit.name cannot go back through all that water. And "
+#~ "$ally_unit.name doesn’t know where to find other tunnels back to his "
+#~ "home. He is as lost as elves are."
 
 #~ msgid ""
 #~ "But $ally_unit.name not afraid. Great leader told $ally_unit.name to "
 #~ "guide and protect elves, and $ally_unit.name will keep his oath. "
 #~ "$ally_unit.name will follow elves wherever they may go and protect them "
 #~ "from danger as best he can. Maybe later, $ally_unit.name will find "
-#~ "another way back down to the caves of his people. But for now, $ally_unit."
-#~ "name will continue to serve and protect you."
+#~ "another way back down to the caves of his people. But for now, "
+#~ "$ally_unit.name will continue to serve and protect you."
 #~ msgstr ""
 #~ "But $ally_unit.name not afraid. Great leader told $ally_unit.name to "
 #~ "guide and protect elves, and $ally_unit.name will keep his oath. "
 #~ "$ally_unit.name will follow elves wherever they may go and protect them "
 #~ "from danger as best he can. Maybe later, $ally_unit.name will find "
-#~ "another way back down to the caves of his people. But for now, $ally_unit."
-#~ "name will continue to serve and protect you."
+#~ "another way back down to the caves of his people. But for now, "
+#~ "$ally_unit.name will continue to serve and protect you."
 
 #~ msgid ""
 #~ "We made it. Outside look strange to $ally_unit.name, $ally_unit.name not "
@@ -18508,14 +18477,14 @@ msgstr "Phantom Keep"
 
 #~ msgid ""
 #~ "No, you don’t have to introduce yourselves. I already know who you are "
-#~ "and why you have been journeying all this way. And I must say, $ally_unit."
-#~ "name, that your recent actions and indeed your presence with these fine "
-#~ "folk speaks well for your people."
+#~ "and why you have been journeying all this way. And I must say, "
+#~ "$ally_unit.name, that your recent actions and indeed your presence with "
+#~ "these fine folk speaks well for your people."
 #~ msgstr ""
 #~ "No, you don’t have to introduce yourselves. I already know who you are "
-#~ "and why you have been journeying all this way. And I must say, $ally_unit."
-#~ "name, that your recent actions and indeed your presence with these fine "
-#~ "folk speaks well for your people."
+#~ "and why you have been journeying all this way. And I must say, "
+#~ "$ally_unit.name, that your recent actions and indeed your presence with "
+#~ "these fine folk speaks well for your people."
 
 #~ msgid "$ally_unit.name says thank you."
 #~ msgstr "$ally_unit.name says thank you."
@@ -18543,13 +18512,15 @@ msgstr "Phantom Keep"
 #~ msgid ""
 #~ "$ally_unit.name not going to just sit here while Kaleh does all the "
 #~ "fighting. Kaleh will need strong fighter like $ally_unit.name. Other "
-#~ "elves may be scared, but $ally_unit.name fear no dark place. $ally_unit."
-#~ "name just hope there still something to smash when he gets there."
+#~ "elves may be scared, but $ally_unit.name fear no dark place. "
+#~ "$ally_unit.name just hope there still something to smash when he gets "
+#~ "there."
 #~ msgstr ""
 #~ "$ally_unit.name not going to just sit here while Kaleh does all the "
 #~ "fighting. Kaleh will need strong fighter like $ally_unit.name. Other "
-#~ "elves may be scared, but $ally_unit.name fear no dark place. $ally_unit."
-#~ "name just hope there still something to smash when he gets there."
+#~ "elves may be scared, but $ally_unit.name fear no dark place. "
+#~ "$ally_unit.name just hope there still something to smash when he gets "
+#~ "there."
 
 #~ msgid "Nym, Zhul, $ally_unit.name, you shouldn’t have."
 #~ msgstr "Nym, Zhul, $ally_unit.name, you shouldn’t have."
@@ -18587,11 +18558,11 @@ msgstr "Phantom Keep"
 #~ "of the island and look out upon the waters, upon the world that we "
 #~ "sacrificed so much to preserve. I remind myself what Zhul said, and they "
 #~ "all believed, that despite all the death and fighting we saw in our "
-#~ "journey, this world was a beautiful and good enough place that $ally_unit."
-#~ "name was willing to sacrifice his life to save it. Looking out over the "
-#~ "waters, and back upon the prosperity of my people, I tell myself it was "
-#~ "worth it. But when I think of the desperate war that his people are "
-#~ "probably still fighting underground, it seems a small consolation."
+#~ "journey, this world was a beautiful and good enough place that "
+#~ "$ally_unit.name was willing to sacrifice his life to save it. Looking out "
+#~ "over the waters, and back upon the prosperity of my people, I tell myself "
+#~ "it was worth it. But when I think of the desperate war that his people "
+#~ "are probably still fighting underground, it seems a small consolation."
 #~ msgstr ""
 #~ "Although I believe that our battle in the black citadel was our finest "
 #~ "hour, I am still haunted by the death of $ally_unit.name in that dark "
@@ -18599,11 +18570,11 @@ msgstr "Phantom Keep"
 #~ "tip of the island and look out upon the waters, upon the world that we "
 #~ "sacrificed so much to preserve. I remind myself what Zhul said, and they "
 #~ "all believed, that despite all the death and fighting we saw in our "
-#~ "journey, this world was a beautiful and good enough place that $ally_unit."
-#~ "name was willing to sacrifice his life to save it. Looking out over the "
-#~ "waters, and back upon the prosperity of my people, I tell myself it was "
-#~ "worth it. But when I think of the desperate war that his people are "
-#~ "probably still fighting underground, it seems a small consolation."
+#~ "journey, this world was a beautiful and good enough place that "
+#~ "$ally_unit.name was willing to sacrifice his life to save it. Looking out "
+#~ "over the waters, and back upon the prosperity of my people, I tell myself "
+#~ "it was worth it. But when I think of the desperate war that his people "
+#~ "are probably still fighting underground, it seems a small consolation."
 
 #~ msgid ""
 #~ "I am saddened by the death of $ally_unit.name, but by saving my life in "
