@@ -42,9 +42,8 @@ msgstr "Σειρά Εξαγώνων ΒΔ με ΝΑ"
 #. [brush]: id=brush-sw-ne
 #: data/core/editor/brushes.cfg:63
 #, fuzzy
-#| msgid "Hex Line SE-NW"
 msgid "Hex Line SW-NE"
-msgstr "Σειρά Εξαγώνων ΝΑ με ΒΔ"
+msgstr "Hex Line SW-NE"
 
 #. [editor_group]: id=all
 #: data/core/editor/terrain-groups.cfg:11
@@ -124,7 +123,7 @@ msgstr "ειδικό"
 #. [editor_group]: id=elevation
 #: data/core/editor/terrain-groups.cfg:115
 msgid "elevation"
-msgstr ""
+msgstr "elevation"
 
 #. [editor_times]: id=empty
 #. Describes a scenario in the editor that has not set a time of day schedule
@@ -135,39 +134,37 @@ msgstr ""
 #. [editor_times]: id=test
 #: data/core/editor/time-of-day.cfg:11
 msgid "Test"
-msgstr ""
+msgstr "Test"
 
 #. [editor_times]: id=default
 #: data/core/editor/time-of-day.cfg:22
 msgid "Default"
-msgstr ""
+msgstr "Προεπιλογή"
 
 #. [editor_times]: id=summer
 #: data/core/editor/time-of-day.cfg:28
 msgid "Summer"
-msgstr ""
+msgstr "Summer"
 
 #. [editor_times]: id=winter
 #: data/core/editor/time-of-day.cfg:34
 msgid "Winter"
-msgstr ""
+msgstr "Winter"
 
 #. [editor_times]: id=24
 #: data/core/editor/time-of-day.cfg:60
 msgid "24 Hour Schedule"
-msgstr ""
+msgstr "24 Hour Schedule"
 
 #. [editor_times]: id=after_the_fall
 #: data/core/editor/time-of-day.cfg:66
 msgid "After the Fall"
-msgstr ""
+msgstr "After the Fall"
 
 #. [theme]: id=editor
 #: data/themes/editor.cfg:11
-#, fuzzy
-#| msgid "Quit Editor"
 msgid "theme^Editor"
-msgstr "Έξοδος από Επεξεργαστή"
+msgstr "Επεξεργαστής"
 
 #. [menu]: id=menu-editor-file, type=turbo
 #: data/themes/editor.cfg:61
@@ -177,7 +174,7 @@ msgstr "Αρχείο"
 #. [menu]: id=menu-editor-recent
 #: data/themes/editor.cfg:72
 msgid "Load Recent"
-msgstr ""
+msgstr "Load Recent"
 
 #. [menu]: id=menu-editor-map
 #: data/themes/editor.cfg:80
@@ -187,14 +184,13 @@ msgstr "Χάρτης"
 #. [menu]: id=menu-unit-facing
 #: data/themes/editor.cfg:88
 msgid "Unit Facing"
-msgstr ""
+msgstr "Unit Facing"
 
 #. [menu]: id=menu-editor-transitions
 #: data/themes/editor.cfg:94
 #, fuzzy
-#| msgid "Delay transition updates"
 msgid "Transition Update"
-msgstr "Καθυστέρηση αναβάθμησης αλλαγών"
+msgstr "Transition Update"
 
 #. [menu]: id=menu-editor-window
 #: data/themes/editor.cfg:101
@@ -204,32 +200,32 @@ msgstr "Άνοιγμα σε Παράθυρο"
 #. [menu]: id=menu-editor-addon
 #: data/themes/editor.cfg:110
 msgid "Add-on"
-msgstr ""
+msgstr "Add-on"
 
 #. [menu]: id=menu-editor-areas
 #: data/themes/editor.cfg:119
 msgid "Areas"
-msgstr ""
+msgstr "Areas"
 
 #. [menu]: id=menu-editor-local-time
 #: data/themes/editor.cfg:127
 msgid "Assign Local Time"
-msgstr ""
+msgstr "Assign Local Time"
 
 #. [menu]: id=menu-editor-local-schedule
 #: data/themes/editor.cfg:133
 msgid "Assign Local Time Schedule"
-msgstr ""
+msgstr "Assign Local Time Schedule"
 
 #. [menu]: id=menu-editor-unit
 #: data/themes/editor.cfg:141
 msgid "Unit"
-msgstr ""
+msgstr "Μονάδα"
 
 #. [menu]: id=menu-editor-side
 #: data/themes/editor.cfg:151
 msgid "Side"
-msgstr ""
+msgstr "Side"
 
 #. [label]: id=villages-icon
 #: data/themes/editor.cfg:168
@@ -239,42 +235,42 @@ msgstr "χωριά"
 #. [label]: id=units-icon
 #: data/themes/editor.cfg:184
 msgid "units"
-msgstr ""
+msgstr "Μονάδες"
 
 #. [menu]: id=switch_time
 #: data/themes/editor.cfg:479
 msgid "Time Schedule Menu"
-msgstr ""
+msgstr "Time Schedule Menu"
 
 #. [menu]: id=menu-playlist
 #: data/themes/editor.cfg:490
 msgid "Playlist"
-msgstr ""
+msgstr "Playlist"
 
 #. [menu]: id=menu-editor-schedule
 #: data/themes/editor.cfg:496
 msgid "Assign Time Schedule"
-msgstr ""
+msgstr "Assign Time Schedule"
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:58
 msgid "Identifier: "
-msgstr ""
+msgstr "Identifier: "
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:60
 msgid "Name: "
-msgstr ""
+msgstr "Name: "
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:62
 msgid "Type: "
-msgstr ""
+msgstr "Type: "
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:63
 msgid "Level: "
-msgstr ""
+msgstr "Level: "
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:64
 msgid "Cost: "
-msgstr ""
+msgstr "Cost: "
 
 #: src/editor/controller/editor_controller.cpp:204
 msgid "Fatal error"
@@ -282,26 +278,23 @@ msgstr "Σοβαρό σφάλμα"
 
 #: src/editor/controller/editor_controller.cpp:234
 msgid "Do you really want to quit?"
-msgstr "Θελετα πραγματικά να αποχωρήσετε;"
+msgstr "Θέλετε πραγματικά να αποχωρήσετε;"
 
 #: src/editor/controller/editor_controller.cpp:236
 #, fuzzy
-#| msgid ""
-#| "Do you really want to quit? Changes in the map since the last save will "
-#| "be lost."
 msgid ""
 "Do you really want to quit? Changes to this map since the last save will be "
 "lost."
 msgstr ""
-"Θελετα πραγματικά να αποχωρήσετε; Τροποποιήσεις στον χάρτη μετά την "
-"τελευταία αποθήκευση δεν θα αποθηκευτούν!"
+"Do you really want to quit? Changes to this map since the last save will be "
+"lost."
 
 #: src/editor/controller/editor_controller.cpp:238
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
 msgstr ""
-"Θελετα πραγματικά να αποχωρήσετε; Οι ακόλουθοι χάρτες ειχαν τροποποιηθεί και "
+"Θέλετε πραγματικά να αποχωρήσετε; Οι ακόλουθοι χάρτες ειχαν τροποποιηθεί και "
 "όλες οι τροποποιήσεις στον χάρτη μετά την τελευταία αποθήκευση θα χαθούν!"
 
 #: src/editor/controller/editor_controller.cpp:255
@@ -310,71 +303,66 @@ msgstr "Δεν βρέθηκε επεξεργαστής ωρας."
 
 #: src/editor/controller/editor_controller.cpp:886
 msgid "Add-on Files"
-msgstr ""
+msgstr "Add-on Files"
 
 #: src/editor/controller/editor_controller.cpp:899
 msgid "Opening files is not supported, contact your packager"
-msgstr ""
+msgstr "Opening files is not supported, contact your packager"
 
 #: src/editor/controller/editor_controller.cpp:1343
 msgid "Change Unit ID"
-msgstr ""
+msgstr "Change Unit ID"
 
 #: src/editor/controller/editor_controller.cpp:1344
 msgid "ID:"
-msgstr ""
+msgstr "ID:"
 
 #: src/editor/controller/editor_controller.cpp:1360
 msgid "Rename Unit"
-msgstr ""
+msgstr "Rename Unit"
 
 #: src/editor/controller/editor_controller.cpp:1361
 msgid "Name:"
-msgstr ""
+msgstr "Name:"
 
 #: src/editor/editor_display.cpp:170
 msgid "<span color='#66ff00'><span face='DejaVuSans'>✔</span> $msg</span>"
-msgstr ""
+msgstr "<span color='#66ff00'><span face='DejaVuSans'>✔</span> $msg</span>"
 
 #: src/editor/editor_display.cpp:172
 msgid "<span color='red'><span face='DejaVuSans'>✘</span> $msg</span>"
-msgstr ""
+msgstr "<span color='red'><span face='DejaVuSans'>✘</span> $msg</span>"
 
 #: src/editor/map/context_manager.cpp:217
 #, fuzzy
-#| msgid "Map loaded from scenario"
 msgid "Load Map or Scenario"
-msgstr "Φόρτωση χάρτη απο τους χάρτες με σενάριο"
+msgstr "Load Map or Scenario"
 
 #: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1147
-#, fuzzy
-#| msgid "(New Map)"
 msgid "New Map"
-msgstr "(Νέος Χάρτης)"
+msgstr "Νέος Χάρτης"
 
 #: src/editor/map/context_manager.cpp:326 src/editor/map/map_context.cpp:1147
 #, fuzzy
-#| msgid "(New Map)"
 msgid "New Scenario"
-msgstr "(Νέος Χάρτης)"
+msgstr "New Scenario"
 
 #: src/editor/map/context_manager.cpp:371
 msgid "No Recent Files"
-msgstr ""
+msgstr "No Recent Files"
 
 #: src/editor/map/context_manager.cpp:399
 msgid "Unnamed Area"
-msgstr ""
+msgstr "Unnamed Area"
 
 #: src/editor/map/context_manager.cpp:422
 #, fuzzy
-#| msgid "(New Map)"
 msgid "New Side"
-msgstr "(Νέος Χάρτης)"
+msgstr "New Side"
 
 #: src/editor/map/context_manager.cpp:461
 msgid "Apply Mask"
-msgstr ""
+msgstr "Apply Mask"
 
 #: src/editor/map/context_manager.cpp:470
 msgid "Error loading mask"
@@ -382,11 +370,11 @@ msgstr "Σφάλμα κατά την φόρτωση συγκάλυψης"
 
 #: src/editor/map/context_manager.cpp:490
 msgid "Identifier:"
-msgstr ""
+msgstr "Identifier:"
 
 #: src/editor/map/context_manager.cpp:490
 msgid "Rename Area"
-msgstr ""
+msgstr "Rename Area"
 
 #: src/editor/map/context_manager.cpp:504
 msgid "Choose Target Map"
@@ -399,21 +387,19 @@ msgstr "Σφάλμα κατά την φόρτωση χάρτη"
 
 #: src/editor/map/context_manager.cpp:687
 #, fuzzy
-#| msgid "Save the Map As"
 msgid "Save Map As"
-msgstr "Αποθήκευση χάρτη ως"
+msgstr "Save Map As"
 
 #: src/editor/map/context_manager.cpp:704
 #: src/editor/map/context_manager.cpp:753 src/editor/map/map_context.cpp:274
 #: src/editor/palette/location_palette.cpp:263
 msgid "Error"
-msgstr ""
+msgstr "Σφάλμα"
 
 #: src/editor/map/context_manager.cpp:705
 #, fuzzy
-#| msgid "Do you really want to quit?"
 msgid "Do you really want to save a map in the scenarios folder?"
-msgstr "Θελετα πραγματικά να αποχωρήσετε;"
+msgstr "Do you really want to save a map in the scenarios folder?"
 
 #: src/editor/map/context_manager.cpp:713
 #: src/editor/map/context_manager.cpp:905
@@ -422,21 +408,18 @@ msgstr "Ο χάρτης ειναι ίδη ανοικτός."
 
 #: src/editor/map/context_manager.cpp:736
 #, fuzzy
-#| msgid "Save the Map As"
 msgid "Save Scenario As"
-msgstr "Αποθήκευση χάρτη ως"
+msgstr "Save Scenario As"
 
 #: src/editor/map/context_manager.cpp:754
 #, fuzzy
-#| msgid "Do you really want to quit?"
 msgid "Do you really want to save a scenario in the maps folder?"
-msgstr "Θελετα πραγματικά να αποχωρήσετε;"
+msgstr "Do you really want to save a scenario in the maps folder?"
 
 #: src/editor/map/context_manager.cpp:762
 #, fuzzy
-#| msgid "This map is already open."
 msgid "This scenario is already open."
-msgstr "Ο χάρτης ειναι ίδη ανοικτός."
+msgstr "This scenario is already open."
 
 #: src/editor/map/context_manager.cpp:779
 msgid "No random map generators found."
@@ -453,24 +436,19 @@ msgstr "Μη αποθηκευμένες τροποποιήσεις"
 
 #: src/editor/map/context_manager.cpp:813
 #, fuzzy
-#| msgid ""
-#| "Do you want to discard all changes you made to the map since the last "
-#| "save?"
 msgid "Do you want to discard all changes made to the map since the last save?"
 msgstr ""
-"Θέλετε να παραμερίσετε όλες τις τροποποιήσεις μετά την τελευταία αποθήκευση;"
+"Do you want to discard all changes made to the map since the last save?"
 
 #: src/editor/map/context_manager.cpp:866
 #, fuzzy
-#| msgid "Map saved."
 msgid "Scenario saved."
-msgstr "Ο χάρτης αποθηκεύτηκε."
+msgstr "Scenario saved."
 
 #: src/editor/map/context_manager.cpp:881
 #, fuzzy
-#| msgid "Map saved."
 msgid "Map saved"
-msgstr "Ο χάρτης αποθηκεύτηκε."
+msgstr "Map saved"
 
 #: src/editor/map/context_manager.cpp:956
 msgid "Loaded embedded map data"
@@ -483,20 +461,14 @@ msgstr "Φόρτωση χάρτη απο τους χάρτες με σενάρι
 
 #: src/editor/map/context_manager.cpp:960
 #, fuzzy
-#| msgid ""
-#| "Loaded referenced map file:\n"
-#| "$new"
 msgid "Loaded referenced map file:"
-msgstr ""
-"Φὀρτωση αρχείου χάρτη που παραπέμπεται:\n"
-"$new"
+msgstr "Loaded referenced map file:"
 
 #: src/editor/map/editor_map.cpp:110
 #: src/editor/palette/location_palette.cpp:118
 #, fuzzy
-#| msgid "Player $player_number"
 msgid "Player $side_num"
-msgstr "Παίκτης $player_number"
+msgstr "Player $side_num"
 
 #: src/editor/map/editor_map.cpp:266
 msgid "The size of the target map is different from the current map"
@@ -510,13 +482,12 @@ msgstr "Αρχείο δεν βρέθηκε"
 
 #: src/editor/map/map_context.cpp:194
 #, fuzzy
-#| msgid "Empty map file"
 msgid "Empty file"
-msgstr "Άδειο αρχείο χάρτη"
+msgstr "Empty file"
 
 #: src/editor/map/map_context.cpp:203
 msgid "File does not have .map, .cfg, or .mask extension"
-msgstr ""
+msgstr "File does not have .map, .cfg, or .mask extension"
 
 #: src/editor/map/map_context.cpp:250
 msgid ""
@@ -528,43 +499,38 @@ msgstr ""
 
 #: src/editor/map/map_context.cpp:269
 msgid "Found the characters ‘<<’ indicating inline lua is present — aborting"
-msgstr ""
+msgstr "Found the characters ‘<<’ indicating inline lua is present — aborting"
 
 #: src/editor/map/map_context.cpp:274
 msgid "Failed to load the scenario, attempting to load only the map."
-msgstr ""
+msgstr "Failed to load the scenario, attempting to load only the map."
 
 #: src/editor/map/map_context.cpp:281
 #, fuzzy
-#| msgid ""
-#| "The map file looks like a scenario, but the map_data value does not point "
-#| "to an existing file"
 msgid ""
 "The map file looks like a scenario, but the map_file value does not point to "
 "an existing file"
 msgstr ""
-"Ο χάρτης μοιάζει σε χάρτη με σενάριο, αλλά η τιμή map_data δεν παραπέμπει σε "
-"ένα υπάρχον αρχείο"
+"The map file looks like a scenario, but the map_file value does not point to "
+"an existing file"
 
 #: src/editor/map/map_context.cpp:296
 msgid "Unable to parse file to find map data"
-msgstr ""
+msgstr "Unable to parse file to find map data"
 
 #: src/editor/map/map_context.cpp:841 src/editor/map/map_context.cpp:881
 #, fuzzy
-#| msgid "Could not save the map: $msg"
 msgid "Could not save time schedule: $msg"
-msgstr "Δεν ήταν δυνατό να αποθηκευτεί ο χάρτης: $msg"
+msgstr "Could not save time schedule: $msg"
 
 #: src/editor/map/map_context.cpp:875
 msgid "Time schedule saved."
-msgstr ""
+msgstr "Time schedule saved."
 
 #: src/editor/map/map_context.cpp:921
 #, fuzzy
-#| msgid "Could not save the map: $msg"
 msgid "Could not save the scenario: $msg"
-msgstr "Δεν ήταν δυνατό να αποθηκευτεί ο χάρτης: $msg"
+msgstr "Could not save the scenario: $msg"
 
 #: src/editor/map/map_context.cpp:952
 msgid "Could not save into scenario"
@@ -588,54 +554,54 @@ msgstr "Δεν θα λειτουργήσει εντός παιχνιδιού χ�
 
 #: src/editor/palette/item_palette.cpp:33
 msgid "Left-click: Place item $item | Right-click to remove"
-msgstr ""
+msgstr "Left-click: Place item $item | Right-click to remove"
 
 #: src/editor/palette/location_palette.cpp:247
 msgid "Go To"
-msgstr ""
+msgstr "Go To"
 
 #: src/editor/palette/location_palette.cpp:254
 msgid "Add"
-msgstr ""
+msgstr "Προσθήκη"
 
 #: src/editor/palette/location_palette.cpp:256
 msgid "New Location Identifier"
-msgstr ""
+msgstr "New Location Identifier"
 
 #: src/editor/palette/location_palette.cpp:264
 msgid "Invalid location id"
-msgstr ""
+msgstr "Invalid location id"
 
 #: src/editor/palette/location_palette.cpp:271
 msgid "Delete"
-msgstr ""
+msgstr "Διαγραφή"
 
 #: src/editor/palette/terrain_palettes.cpp:224
 msgid "Left-click: "
-msgstr ""
+msgstr "Left-click: "
 
 #: src/editor/palette/terrain_palettes.cpp:225
 msgid "Right-click: "
-msgstr ""
+msgstr "Right-click: "
 
 #. TRANSLATORS: Similar behavior applies to shift + right-click. This message specifies left-click
 #. because the logic of whether to show the "overlay only" or "base only" version depends on the
 #. terrain currently selected for the left button.
 #: src/editor/palette/terrain_palettes.cpp:230
 msgid "Shift + left-click: paint overlay layer only"
-msgstr ""
+msgstr "Shift + left-click: paint overlay layer only"
 
 #: src/editor/palette/terrain_palettes.cpp:232
 msgid "Shift + left-click: paint base layer only"
-msgstr ""
+msgstr "Shift + left-click: paint base layer only"
 
 #: src/editor/palette/terrain_palettes.cpp:235
 msgid "Cmd + click: copy terrain"
-msgstr ""
+msgstr "Cmd + click: copy terrain"
 
 #: src/editor/palette/terrain_palettes.cpp:237
 msgid "Ctrl + click: copy terrain"
-msgstr ""
+msgstr "Ctrl + click: copy terrain"
 
 #~ msgid "Player $player_number"
 #~ msgstr "Παίκτης $player_number"
@@ -653,12 +619,10 @@ msgstr ""
 #~ msgstr "(Νέος Χάρτης)"
 
 #, fuzzy
-#~| msgid "(New Map)"
 #~ msgid "(New Scenario)"
 #~ msgstr "(Νέος Χάρτης)"
 
 #, fuzzy
-#~| msgid "Choose a Map to Open"
 #~ msgid "Choose a File to Open"
 #~ msgstr "Επιλέξτε χάρτη για άνοιγμα"
 
@@ -675,7 +639,6 @@ msgstr ""
 #~ msgstr "Έξοδος"
 
 #, fuzzy
-#~| msgid "Battle for Wesnoth Map Editor"
 #~ msgid "The Battle for Wesnoth"
 #~ msgstr "Επεξεργαστής Χάρτων του Battle for Wesnoth"
 
