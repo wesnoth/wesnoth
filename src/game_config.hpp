@@ -152,7 +152,6 @@ namespace game_config
 	extern std::vector<color_t> blue_white_scale;
 	extern std::vector<color_t> blue_white_scale_text;
 
-	extern std::vector<std::string> foot_speed_prefix;
 	extern std::string foot_teleport_enter, foot_teleport_exit;
 
 	/**
