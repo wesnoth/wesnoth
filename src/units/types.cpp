@@ -678,26 +678,6 @@ const std::string& unit_type::flag_rgb() const
 	return flag_rgb_.empty() ? game_config::unit_rgb : flag_rgb_;
 }
 
-bool unit_type::has_random_traits() const
-{
-	if(num_traits() == 0) {
-		return false;
-	}
-
-	for(const auto& cfg : possible_traits()) {
-		const config::attribute_value& availability = cfg["availability"];
-		if(availability.blank()) {
-			return true;
-		}
-
-		if(availability.str() != "musthave") {
-			return true;
-		}
-	}
-
-	return false;
-}
-
 bool unit_type::has_gender_variation(const unit_race::GENDER gender) const
 {
 	return utils::contains(genders_, gender);
