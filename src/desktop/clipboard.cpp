@@ -15,8 +15,8 @@
 
 #include "desktop/clipboard.hpp"
 
-#include <SDL2/SDL_events.h>
-#include <SDL2/SDL_clipboard.h>
+#include <SDL3/SDL_events.h>
+#include <SDL3/SDL_clipboard.h>
 
 #define CLIPBOARD_FUNCS_DEFINED
 
