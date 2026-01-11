@@ -959,7 +959,7 @@ void unit::generate_traits(bool must_have_only)
 		}
 		// No traits available anymore? Break
 		if(candidate_traits.empty()) {
-			if(nb_traits < max_traits) {
+			if(nb_traits < max_traits && !can_recruit()) {  // skip leaders since they don't really get traits anyway
 				WRN_UT << "Could only generate " << nb_traits << " trait(s) (num_traits: " << max_traits << ") for unit type " << type().log_id();
 			}
 			break;
