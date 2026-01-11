@@ -1085,7 +1085,7 @@ void unit_type_data::set_config(const game_config_view& cfg)
 	}
 
 	for(const auto& abil_cfg : cfg.child_range("abilities")) {
-		for(const auto& [key, child_cfg] : abil_cfg.get().all_children_range()) {
+		for(const auto [key, child_cfg] : abil_cfg.get().all_children_range()) {
 			const std::string& id = child_cfg["unique_id"].str(child_cfg["id"]);
 			if(abilities_registry_.find(id) == abilities_registry_.end()) {
 				DBG_UT << "Adding ability ‘" << id << "’ to registry.";
@@ -1097,7 +1097,7 @@ void unit_type_data::set_config(const game_config_view& cfg)
 	}
 
 	for(const auto& sp_cfg : cfg.child_range("weapon_specials")) {
-		for(const auto& [key, child_cfg] : sp_cfg.get().all_children_range()) {
+		for(const auto [key, child_cfg] : sp_cfg.get().all_children_range()) {
 			const std::string& id = child_cfg["unique_id"].str(child_cfg["id"]);
 			if(specials_registry_.find(id) == specials_registry_.end()) {
 				DBG_UT << "Adding weapon special ‘" << id << "’ to registry.";
