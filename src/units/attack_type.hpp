@@ -117,6 +117,11 @@ public:
 	 * @return list which contains get_weapon_ability and get_specials list for each ability type, with overwritten items removed
 	 */
 	active_ability_list get_specials_and_abilities(const std::string& special) const;
+	/**
+	 * @param special the tag name to check for
+	 * @return list which contains get_specials_and_abilities after overwriting by priority= [erase_lower_priority]
+	 */
+	active_ability_list get_specials_and_abilities_no_math(const std::string& special) const;
 	/** used for abilities used like weapon and true specials
 	 * @return True if the ability @a special is active.
 	 * @param special The special being checked.
@@ -132,6 +137,12 @@ public:
 	 * @param filter contains attributes special_id, special_type, special
 	 */
 	bool has_filter_special_or_ability(const config& filter) const;
+	/** check if priority erase special of particuliar side
+	 * @return True if special matche with 'affect_side' attribute.
+	 * @param ov special who can erase special of lower priority
+	 * @param ab special who can be erased of list if match condition.
+	 */
+	bool affect_side(const unit_ability_t& ov, const unit_ability_t& ab) const;
 	/**
 	 * Returns true if this is a dummy attack_type, for example the placeholder that the unit_attack dialog
 	 * uses when a defender has no weapon for a given range.
@@ -204,6 +215,14 @@ public:
 	bool overwrite_special_checking(active_ability_list& overwriters, const unit_ability_t& ab) const;
 
 	bool special_active(const unit_ability_t& ab, AFFECTS whom) const;
+	/**
+	 * Check whether @a ab is a element owed by self or other.
+	 *
+	 * @return True if element checked is owned by self or other.
+	 * @param ab the ability/special checked
+	 * @param is_self if true, check if element owned by self, else check if owned by opponent.
+	 */
+	bool affect_self_opponent(const unit_ability_t& ab, bool is_self) const;
 
 	// make more functions proivate after refactoring finished.
 

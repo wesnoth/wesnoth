@@ -143,7 +143,7 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 	drains = !opp.get_state("undrainable") && weapon->has_special_or_ability("drains");
 	petrifies = !opp.get_state("unpetrifiable") && weapon->has_special_or_ability("petrifies");
 	poisons = !opp.get_state("unpoisonable") && weapon->has_special_or_ability("poison") && !opp.get_state(unit::STATE_POISONED);
-	rounds = weapon->get_specials_and_abilities("berserk").highest("value", 1).first;
+	rounds = weapon->get_specials_and_abilities_no_math("berserk").highest("value", 1).first;
 
 	firststrike = weapon->has_special_or_ability("firststrike");
 
@@ -154,7 +154,7 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 	}
 
 	// Handle plague.
-	active_ability_list plague_specials = weapon->get_specials_and_abilities("plague");
+	active_ability_list plague_specials = weapon->get_specials_and_abilities_no_math("plague");
 	plagues = !opp.get_state("unplagueable") && !plague_specials.empty() &&
 		opp.undead_variation() != "null" && !resources::gameboard->map().is_village(opp_loc);
 
