@@ -22,6 +22,18 @@
 
 namespace wfl
 {
+namespace implementation
+{
+template<typename Range>
+auto make_iterator_range(const variant_value_base* val, const Range& range) -> boost::iterator_range<variant_iterator>
+{
+	return {
+		variant_iterator{val, std::cbegin(range)},
+		variant_iterator{val, std::cend(range)}
+	};
+}
+
+} // namespace implementation
 
 boost::iterator_range<variant_iterator> variant_value_base::make_iterator() const
 {
@@ -145,13 +157,13 @@ std::string variant_callable::get_debug_string(formula_seen_stack& seen, bool ve
 
 bool variant_callable::equals(const variant_value_base& other) const
 {
-	const variant_callable& other_ref = value_ref_cast<variant_callable>(other);
+	const variant_callable& other_ref = utils::cast_as(*this, other);
 	return callable_ ? callable_->equals(*other_ref.callable_) : callable_ == other_ref.callable_;
 }
 
 bool variant_callable::less_than(const variant_value_base& other) const
 {
-	const variant_callable& other_ref = value_ref_cast<variant_callable>(other);
+	const variant_callable& other_ref = utils::cast_as(*this, other);
 	return callable_ ? callable_->less(*other_ref.callable_) : other_ref.callable_ != nullptr;
 }
 
@@ -165,7 +177,7 @@ boost::iterator_range<variant_iterator> variant_callable::make_iterator() const
 		callable_->get_inputs(inputs);
 	}
 
-	return {variant_iterator(this, inputs.cbegin()), variant_iterator(this, inputs.cend())};
+	return implementation::make_iterator_range(this, inputs);
 }
 
 variant variant_callable::deref_iterator(const utils::any& iter) const
@@ -268,29 +280,25 @@ std::string variant_container<T>::get_debug_string(formula_seen_stack& seen, boo
 template<typename T>
 boost::iterator_range<variant_iterator> variant_container<T>::make_iterator() const
 {
-	return {
-		variant_iterator{this, std::cbegin(container())},
-		variant_iterator{this, std::cend(container())}
-	};
+	return implementation::make_iterator_range(this, container());
 }
 
 template<typename T>
 void variant_container<T>::iterator_inc(utils::any& iter) const
 {
-	++utils::any_cast<decltype(std::cbegin(container()))&>(iter);
+	++as_container_iterator(iter);
 }
 
 template<typename T>
 void variant_container<T>::iterator_dec(utils::any& iter) const
 {
-	--utils::any_cast<decltype(std::cbegin(container()))&>(iter);
+	--as_container_iterator(iter);
 }
 
 template<typename T>
 bool variant_container<T>::iterator_equals(const utils::any& first, const utils::any& second) const
 {
-	return utils::any_cast<decltype(std::cbegin(container()))>(first)
-		== utils::any_cast<decltype(std::cbegin(container()))>(second);
+	return as_container_iterator(first) == as_container_iterator(second);
 }
 
 // Force compilation of the following template instantiations
@@ -299,10 +307,10 @@ template class variant_container<variant_map>;
 
 variant variant_list::deref_iterator(const utils::any& iter) const
 {
-	return *utils::any_cast<const variant_vector::const_iterator&>(iter);
+	return *as_container_iterator(iter);
 }
 
-std::string variant_map::to_string_detail(const variant_map_raw::value_type& value, const to_string_op& op)
+std::string variant_map::to_string_detail(const decltype(container_)::value_type& value, const to_string_op& op)
 {
 	std::ostringstream ss;
 
@@ -315,9 +323,8 @@ std::string variant_map::to_string_detail(const variant_map_raw::value_type& val
 
 variant variant_map::deref_iterator(const utils::any& iter) const
 {
-	const variant_map_raw::value_type& p = *utils::any_cast<const variant_map_raw::const_iterator&>(iter);
-	auto the_pair = std::make_shared<key_value_pair>(p.first, p.second);
-	return variant(the_pair);
+	const auto& [key, value] = *as_container_iterator(iter);
+	return variant(std::make_shared<key_value_pair>(key, value));
 }
 
 } // namespace wfl

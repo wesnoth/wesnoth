@@ -523,7 +523,7 @@ struct fai_variant_visitor
 	variant operator()(bool b) const               { return variant(b ? 1 : 0); }
 	variant operator()(int i) const                { return variant(i); }
 	variant operator()(unsigned long long i) const { return variant(i); }
-	variant operator()(double i) const             { return variant(i * 1000, variant::DECIMAL_VARIANT); }
+	variant operator()(double i) const             { return variant(i, variant::DECIMAL_VARIANT); }
 	// TODO: Should comma-separated lists of stuff be returned as a list?
 	// The challenge is to distinguish them from ordinary strings that happen to contain a comma
 	// (or should we assume that such strings will be translatable?).
@@ -896,7 +896,7 @@ variant safe_call_callable::execute_self(variant ctxt)
 		 * for example if this formula was executed from the commandline.
 		 */
 		backup_ = get_backup()->evaluate(callable);
-		ctxt.execute_variant(backup_);
+		wfl::execute_actions(backup_, ctxt);
 	}
 	return variant(true);
 }
