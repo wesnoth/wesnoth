@@ -953,7 +953,7 @@ void unit::generate_traits(bool must_have_only)
 			const std::string& avl = t["availability"];
 			// The trait is still available, mark it as a candidate for randomizing.
 			// For leaders, only traits with availability "any" are considered.
-			if(!must_have_only && (!can_recruit() || avl == "any")) {
+			if(!can_recruit() || avl == "any") {
 				candidate_traits.push_back(&t);
 			}
 		}
