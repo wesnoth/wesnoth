@@ -78,6 +78,7 @@ namespace video
 void render_screen(); // exposed and used only in draw_manager.cpp
 
 // Internal functions
+static void init_sdl_video();
 static void init_window(bool hidden=false);
 static void init_test_window();
 static void init_fake();
@@ -87,8 +88,7 @@ static bool update_test_framebuffer();
 static point draw_offset();
 
 
-void init(fake type)
-{
+static void init_sdl_video() {
 	LOG_DP << "initializing video";
 	if(SDL_WasInit(SDL_INIT_VIDEO)) {
 		throw error("video subsystem already initialized");
@@ -97,18 +97,23 @@ void init(fake type)
 		ERR_DP << "Could not initialize SDL_video: " << SDL_GetError();
 		throw error("Video initialization failed");
 	}
+}
 
+void init(fake type) {
 	switch(type) {
 	case fake::none:
+		init_sdl_video();
 		init_window();
 		break;
 	case fake::no_window:
 		init_fake();
 		break;
 	case fake::no_draw:
+		init_sdl_video();
 		init_test();
 		break;
 	case fake::hide_window:
+		init_sdl_video();
 		init_window(true);
 		break;
 	default:
