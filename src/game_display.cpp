@@ -39,6 +39,7 @@
 #include "synced_context.hpp"
 #include "units/unit.hpp"
 #include "units/drawer.hpp"
+#include "units/types.hpp"
 #include "utils/general.hpp"
 #include "whiteboard/manager.hpp"
 #include "overlay.hpp"
@@ -301,10 +302,16 @@ std::vector<texture> footsteps_images(const map_location& loc, const pathfind::m
 	}
 
 	// Check which footsteps images of game_config we will use
+	std::string foot_speed_prefix;
 	int move_cost = 1;
 	const unit_map::const_iterator u = dc->units().find(route.steps.front());
 	if(u != dc->units().end()) {
 		move_cost = u->movement_cost(dc->map().get_terrain(loc));
+		foot_speed_prefix = u->type().footprint_folder();
+	}
+
+	if (foot_speed_prefix.empty()) {
+		foot_speed_prefix = "footsteps/humanoid/";
 	}
 
 	// Generate a red tint string based on movement cost.
@@ -342,7 +349,7 @@ std::vector<texture> footsteps_images(const map_location& loc, const pathfind::m
 			rotate = "~FL(horiz)~FL(vert)";
 		}
 
-		const std::string image = "footsteps/footprint"
+		const std::string image = foot_speed_prefix + "footprint"
 			+ sense + "-" + i->write_direction(dir)
 			+ ".png" + rotate + color_mod;
 
