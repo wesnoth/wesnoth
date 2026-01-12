@@ -2665,6 +2665,10 @@ void display::draw_overlays_at(const map_location& loc)
 			bool item_visible_for_team = std::find_first_of(team_names.begin(), team_names.end(),
 				current_team_names.begin(), current_team_names.end()) != team_names.end();
 
+			if(ov.halo_handle && ov.halo_handle->valid()) {
+				halo_man_.set_visible_by_team(ov.halo_handle, item_visible_for_team);
+			}
+
 			if(!item_visible_for_team) {
 				continue;
 			}
