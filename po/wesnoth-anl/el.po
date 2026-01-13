@@ -1,30 +1,9 @@
-# translation of el_gr.po to
-# translation of el_gr.po to
-# translation of el_gr.po to
-# translation of el_gr.po to
-# translation of el_gr.po to
-# translation of el_gr.po to
-# translation of el_gr.po to
-# translation of el_gr.po to
-# translation of el_gr.po to
-# translation of el_gr.po to
-# translation of el_gr.po to
-# translation of el_gr.po to
-# translation of el_gr.po to
-# translation of el_gr.po to
-# translation of el_gr.po to
-# translation of el_gr.po to
-# translation of el_gr.po to
-# translation of el_gr.po to
-# translation of el_gr.po to
-# translation of el_gr.po to
-# translation of el_GR.po to
 # Greek translations for Battle for Wesnoth package
 # Copyright (C) 2004 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
-# Automatically generated, 2004.
 # Antonis Geralis <capoiosct@gmail.com>, 2013.
+# Spiros Ioannou <sivann@gmail.com>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: el_gr\n"
@@ -48,9 +27,6 @@ msgstr "4π - Νέα Γη"
 #. [multiplayer]: id=multiplayer_A_New_Land
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:6
 #, fuzzy
-#| msgid ""
-#| "This 4p survival scenario allows you to construct buildings and terraform "
-#| "the land. Use map settings. The recommended starting gold is 100."
 msgid ""
 "This 4p survival scenario allows you to construct buildings and terraform "
 "the land.\n"
@@ -91,7 +67,6 @@ msgstr "Δυτικός"
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:205
 #: data/multiplayer/scenarios/4p_A_New_Land.cfg:238
 #, fuzzy
-#| msgid "teamname^East"
 msgid "teamname^Enemies"
 msgstr "Ανατολικός"
 
@@ -400,7 +375,6 @@ msgstr "Νέα Γη - Βοήθεια"
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_help.cfg:95
 #, fuzzy
-#| msgid "Select a topic."
 msgid "Select a topic:"
 msgstr "Επέλεξε κατηγορία"
 
@@ -534,8 +508,9 @@ msgid ""
 msgstr ""
 "<span color='green'>Διαπραγματεύσεις με τους Νάνους</span>\n"
 "Σου επιτρέπει να στρατολογήσεις μια μονάδα των Νάνων\n"
-"Πρόοδος των διαπραγματεύσεων: $player_$side_number|.leader_option_1."
-"progress|/$player_$side_number|.leader_option_1.target"
+"Πρόοδος των διαπραγματεύσεων: "
+"$player_$side_number|.leader_option_1.progress|/"
+"$player_$side_number|.leader_option_1.target"
 
 #. [option]
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:489
@@ -547,8 +522,9 @@ msgid ""
 msgstr ""
 "<span color='green'>Διαπραγματεύσεις με τα Ξωτικά</span>\n"
 "Σου επιτρέπει να στρατολογήσεις μια μονάδα των Ξωτικών\n"
-"Πρόοδος των διαπραγματεύσεων: $player_$side_number|.leader_option_2."
-"progress|/$player_$side_number|.leader_option_2.target"
+"Πρόοδος των διαπραγματεύσεων: "
+"$player_$side_number|.leader_option_2.progress|/"
+"$player_$side_number|.leader_option_2.target"
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_leader_options.cfg:557
@@ -617,7 +593,6 @@ msgstr ""
 #. Part of the scenario objectives
 #: data/multiplayer/scenarios/ANL_utils/ANL_objectives.cfg:37
 #, fuzzy
-#| msgid "You must survive until turn 25."
 msgid "You must survive until turn 25"
 msgstr "Πρέπει να επιβιώσεις μέχρι τον 25ο γύρο."
 
@@ -653,9 +628,9 @@ msgstr "Έρευνα"
 #. [message]: speaker=unit
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:125
 msgid ""
-"We are currently studying $player_$side_number|.research."
-"target_language_name|. To which end would you have our scholars devote their "
-"minds?\n"
+"We are currently studying "
+"$player_$side_number|.research.target_language_name|. To which end would you "
+"have our scholars devote their minds?\n"
 "\n"
 "Our farms produce $player_$side_number|.farming.gold|g\n"
 "Our mines produce $player_$side_number|.mining.gold|g\n"
@@ -696,8 +671,8 @@ msgstr "γεωργία"
 msgid ""
 "<span color='green'>Mining</span>\n"
 "Miners produce +1 gold\n"
-"Study Progress: $player_$side_number|.mining.progress|/$player_$side_number|."
-"mining.target"
+"Study Progress: $player_$side_number|.mining.progress|/"
+"$player_$side_number|.mining.target"
 msgstr ""
 "<span color='green'>Εξόρυξη Μεταλλευμάτων</span>\n"
 "Εργάτες στα ορυχεία παράγουν +1 χρυσά νομίσματα\n"
@@ -730,20 +705,20 @@ msgstr "πόλεμος"
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:207
 msgid ""
-"$player_$side_number|.name|’s farms now produce $player_$side_number|."
-"farming.gold gold."
+"$player_$side_number|.name|’s farms now produce "
+"$player_$side_number|.farming.gold gold."
 msgstr ""
-"Τα χωράφια του $player_$side_number|.name| παράγουν $player_$side_number|."
-"farming.gold χρυσά νομίσματα."
+"Τα χωράφια του $player_$side_number|.name| παράγουν "
+"$player_$side_number|.farming.gold χρυσά νομίσματα."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:239
 msgid ""
-"$player_$side_number|.name|’s mines now produce $player_$side_number|.mining."
-"gold gold."
+"$player_$side_number|.name|’s mines now produce "
+"$player_$side_number|.mining.gold gold."
 msgstr ""
-"Τα ορυχεία του $player_$side_number|.name| παράγουν $player_$side_number|."
-"mining.gold χρυσά νομίσματα."
+"Τα ορυχεία του $player_$side_number|.name| παράγουν "
+"$player_$side_number|.mining.gold χρυσά νομίσματα."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/ANL_utils/ANL_research_options.cfg:266

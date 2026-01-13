@@ -2,8 +2,8 @@
 # Oto 'tapik' Buchta <tapik@buchtovi.cz>, 2006, 2007.
 # Honza <Honza-mistic@seznam.cz>, 2014.
 # Martin Hrubý <hrubymar10@gmail.com>, 2017 - 2020.
-# Michal Žejdl <lachim@emer.cz>, 2019 - 2025
-# Petr Šlejhar (Septim) <septim@centrum.cz>, 2020 - 2024
+# Michal Žejdl <lachim@emer.cz>, 2019 - 2026
+# Petr Šlejhar (Septim) <septim@centrum.cz>, 2020 - 2025
 # Tereza Žejdlová, 2020.
 #
 msgid ""
@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-12-22 03:08 UTC\n"
-"PO-Revision-Date: 2025-11-04 21:31+0100\n"
+"PO-Revision-Date: 2026-01-07 23:22+0100\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -197,7 +197,7 @@ msgstr "Zlouni"
 #. [side]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:118
 msgid "Animals"
-msgstr ""
+msgstr "Zvířata"
 
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:128
@@ -4993,16 +4993,6 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:957
-#, fuzzy
-#| msgid ""
-#| "Any unit that ends its turn on a lava hex, except those who can fly over "
-#| "the lava, will take 25 damage at the beginning of the next turn. This "
-#| "lava damage can kill units. Flying units will just take $heat_damage "
-#| "damage per turn when flying over lava, though they too can die if they "
-#| "spend too much time over it. Also because of the heat in the cavern, all "
-#| "units on cave floor hexes will take $heat_damage damage at the start of "
-#| "each turn. This heat damage can reduce a unit to 1 hit point, but it "
-#| "can’t kill it."
 msgid ""
 "Any unit that ends its turn on a lava hex, except those who can fly over the "
 "lava, will take $lava_damage damage at the beginning of the next turn. This "
@@ -5011,13 +5001,10 @@ msgid ""
 "much time over it."
 msgstr ""
 "Jakákoliv jednotka končící svůj tah na lávě (s výjimkou těch, kteří mohou "
-"nad lávou přeletět) bude na začátku dalšího kola zraněna o 25 životů. Toto "
-"zranění může jednotky zabít. Létající jednotky budou zraněny jen o "
+"nad lávou létat) bude na začátku dalšího kola zraněna o $lava_damage životů. "
+"Toto zranění může jednotky zabít. Létající jednotky budou zraněny jen o "
 "$heat_damage životů za kolo, ale i ony mohou zemřít, pokud nad lávou stráví "
-"příliš mnoho času. Kvůli strašlivému horku v jeskyni budou na začátku "
-"každého kola jednotky stojící na jeskynních políčkách zraněny o $heat_damage "
-"životů. Toto zranění horkem jednotky nemůže zabít, pouze sníží jejich životy "
-"až na 1 život."
+"příliš mnoho času."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:962
@@ -5027,6 +5014,10 @@ msgid ""
 "reduce a unit to 1 hit point, but, unlike the lava damage, the heat damage "
 "can’t kill the unit."
 msgstr ""
+"Kvůli vysoké teplotě v jeskyni navíc všechny jednotky nacházející se na "
+"polích jeskynní podlahy ztratí na začátku každého tahu $heat_damage životů. "
+"Toto poškození horkem může snížit počet životů jednotky na 1, ale na rozdíl "
+"od poškození lávou ji nemůže zabít."
 
 #. [message]: role=Troll High Shaman
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:971
@@ -12819,12 +12810,12 @@ msgstr "Kelur"
 #. [side]: type=Orcish Shaman, id=Zoldak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:164
 msgid "Zoldak"
-msgstr ""
+msgstr "Zoldak"
 
 #. [side]: type=Saurian Seer, id=Tchoyob
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:311
 msgid "Tchoyob"
-msgstr ""
+msgstr "Tchojob"
 
 #. [unit]: type=Merman Triton, id=Trapped Merman
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:384
@@ -12905,6 +12896,8 @@ msgid ""
 "The jungle here doesn’t want to answer me, as if afraid of indescribable "
 "horrors within it. As much as I love nature, this place frightens me."
 msgstr ""
+"Místní džungle mi nechce odpovídat, jako by se bála nepopsatelných hrůz, "
+"které se v ní skrývají. I když miluji přírodu, toto místo mě děsí."
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:618
@@ -12936,6 +12929,8 @@ msgid ""
 "The trees themselves seem against my presence here. They give me an omnious "
 "feeling as if something bad is going to happen if I stay here."
 msgstr ""
+"Samotné stromy jako by se stavěly proti mé přítomnosti. Vyvolávají ve mně "
+"zlověstný pocit. Jako by se mělo, tomu kdo tu setrvá, stát něco zlého."
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:661
@@ -13000,12 +12995,16 @@ msgid ""
 "This thing... instead of speaking to nature, it controls it! Destroy it, "
 "quickly!"
 msgstr ""
+"Tahle věc... místo aby s přírodou rozmlouvala, tak ji ovládá! Zničte ji, "
+"rychle!"
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:756
 msgid ""
 "This alien thing... Indescribable, yet so vile. It can’t be anything good."
 msgstr ""
+"Tahle věc z jiného světa... Nepopsatelná, a přesto tak odporná. Nemůže to "
+"být nic dobrého."
 
 #. [message]: speaker=Boyicht
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:773
@@ -13111,11 +13110,15 @@ msgid ""
 "straight away. In any case, feel free to make use of our camp as it seems "
 "that we have common enemies."
 msgstr ""
+"Vítej. Věděl jsem, že přijdete, ale nečekal jsem, že dorazíte tak brzy. "
+"Každopádně klidně využijte náš tábor, protože se zdá, že máme společné "
+"nepřátele."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1002
 msgid "Thank you Shaman. We will do so. Now, I wonder where the merfolk are?"
 msgstr ""
+"Děkuji, šamane. Uděláme to. Teď by mě zajímalo, kdepak jsou mořští lidé?"
 
 #. [message]: speaker=Graghht
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1013
@@ -13123,73 +13126,54 @@ msgid ""
 "Since you enterd our fort, use it for your troops. Get them here quickly and "
 "help us."
 msgstr ""
+"Vstoupili jste do naší pevnosti, a proto ji použijte pro své vojáky. Rychle "
+"je sem přiveďte a pomozte nám."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1017
-#, fuzzy
-#| msgid ""
-#| "I have captured the keep. This castle is somewhat ruined, but it will "
-#| "serve our purposes. Now, I wonder where the merfolk are?"
 msgid ""
 "Thank you, Sovereign. They will come here soon. Now, I wonder where the "
 "merfolk are?"
 msgstr ""
-"Obsadil jsem tvrz. Tenhle hrad je trochu rozpadlý, ale poslouží nám. No a "
-"teď, kdepak jsou asi mořští lidé?"
+"Děkuji, monarcho. Brzy sem přijdou. Teď by mě zajímalo, kdepak jsou mořští "
+"lidé?"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1024
-#, fuzzy
-#| msgid ""
-#| "I have captured the keep. This castle is somewhat ruined, but it will "
-#| "serve our purposes. Now, I wonder where the merfolk are?"
 msgid ""
 "I have captured the keep. The castle is not in good condition but at least "
 "it will serve our purposes. Now, I wonder where the merfolk are?"
 msgstr ""
-"Obsadil jsem tvrz. Tenhle hrad je trochu rozpadlý, ale poslouží nám. No a "
-"teď, kdepak jsou asi mořští lidé?"
+"Obsadil jsem tvrz. Tenhle hrad je trochu rozpadlý, ale našim účelům "
+"poslouží. Teď by mě zajímalo, kdepak jsou mořští lidé?"
 
 #. [message]: race=merman
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1048
-#, fuzzy
-#| msgid ""
-#| "Fear not, here we are! We have explored the southern half of the island. "
-#| "And except for those lizards you found, and some abandoned villages, it "
-#| "seem to be empty. We captured those villages for you, to help support "
-#| "your troops."
 msgid ""
 "Fear not, here we are! We have explored the southern half of the island. And "
 "we found lizards living there, and some abandoned villages."
 msgstr ""
-"Nebojte se, tady jsme! Prozkoumali jsme jižní polovinu ostrova. Kromě těch "
-"ještěráků, o které jste se postarali, a pár opuštěných vesnic se zdá "
-"prázdná. Obsadili jsme vám ty vesnice, abyste mohli lépe podporovat jednotky."
+"Nebojte se, tady jsme! Prozkoumali jsme jižní polovinu ostrova. A našli jsme "
+"tam ještěráky a nějaké opuštěné vesnice."
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1053
-#, fuzzy
-#| msgid "Thanks, I think we’re going to need all the support we can get."
 msgid ""
 "Thanks, I think that villages are important but right now we’re going to "
 "need all the support we can get to help our new allies here."
-msgstr "Díky, budeme potřebovat veškerou podporu, jaké se nám dostane."
+msgstr ""
+"Díky, myslím, že vesnice jsou důležité, ale teď budeme potřebovat veškerou "
+"podporu, co lze sehnat, abychom pomohli našim novým spojencům."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1106
-#, fuzzy
-#| msgid ""
-#| "Now that we’ve set up a base of operations we should make our way to the "
-#| "black citadel in the mountains at the center of the island. I bet it’s "
-#| "somewhere in the middle of that dark jungle."
 msgid ""
 "Now that we’ve set up a base of operations we should make our way to the "
 "black citadel in the mountains at the center of the island. It should be not "
 "too far away."
 msgstr ""
-"Teď když jsme se konsolidovali a založili základnu, měli bychom najít cestu "
-"k černé citadele v horách uprostřed ostrova. Vsadím se, že se skrývá někde v "
-"té neprůchodné tmavé džungli."
+"Teď, když jsme si zřídili operační základnu, měli bychom se vydat k černé "
+"citadele v horách uprostřed ostrova. Neměla by být příliš daleko."
 
 # množné číslo?
 #. [message]: speaker=Kelur
@@ -13199,10 +13183,8 @@ msgstr "Pociťte chladný dotek smrti!"
 
 #. [message]: speaker=Tchoyob
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1174
-#, fuzzy
-#| msgid "I will slaughter you all and bathe in your blood!"
 msgid "I will slaughter you all and feast upon your bodies!"
-msgstr "Všechny vás pobiju a budu se koupat ve vaší krvi!"
+msgstr "Všššechny váss pobiju a budu hodovat na vaššich tělech!"
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1193
@@ -13220,18 +13202,18 @@ msgid ""
 "We won’t be controlled any more! We will reclaim this island as rightfully "
 "ours! Destroy the false god! Rebuild legacy of our ancestors!"
 msgstr ""
+"Už nás nikdo nebude ovládat! Získáme zpět tento ostrov, který nám právem "
+"patří! Zničíme falešné bohy! Obnovíme odkaz našich předků!"
 
 #. [message]: speaker=Graghht
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1235
 msgid "Protect the shaman that gave us freedom! Slaughter our enemies!"
-msgstr ""
+msgstr "Ochraňte šamana, který nás osvobodil! Pobijte nepřátele!"
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1240
-#, fuzzy
-#| msgid "What are they like?"
 msgid "What are they doing here?"
-msgstr "A jací jsou?"
+msgstr "Co tady dělají?"
 
 #. [message]: speaker=Graghht
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1261
@@ -13249,28 +13231,20 @@ msgstr ""
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1302
-#, fuzzy
-#| msgid ""
-#| "There’s got to be something here. The orc and skeleton must have been "
-#| "guarding some sort of entrance."
 msgid ""
 "There’s got to be something here. The saurian and skeleton must have been "
 "guarding some sort of entrance."
 msgstr ""
-"Nějaké tam musí být. Skřet a kostlivec museli hlídat nějaký druh vchodu."
+"Něco tady musí být. Ten ještěrák a kostlivec museli střežit něco jako vchod."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1308
-#, fuzzy
-#| msgid ""
-#| "Are you sure? Search carefully. The orc and skeleton must have been "
-#| "guarding some sort of entrance."
 msgid ""
 "Are you sure? Search carefully. The saurian and skeleton must have been "
 "guarding some sort of entrance."
 msgstr ""
-"Opravdu je to jisté? Hledejte pozorně. Skřet a kostlivec museli hlídat "
-"nějaký druh vchodu."
+"Jste si jisti? Hledejte pozorně. Ten ještěrák a kostlivec museli střežit "
+"něco jako vchod."
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1315
@@ -13285,33 +13259,23 @@ msgstr ""
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1328
-#, fuzzy
-#| msgid ""
-#| "Hey, what about the two keys that we found on the bodies of the undead "
-#| "and orc leaders?"
 msgid ""
 "Hey, what about the two keys that we found on the bodies of the undead and "
 "saurian leaders?"
 msgstr ""
-"Co takhle ty dva klíče, které jsme našli u těl vůdců skřetů a nemrtvých?"
+"Hej, a co ty dva klíče, co jsme našli u těl vůdců nemrtvých a ještěráků?"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1335
-#, fuzzy
-#| msgid ""
-#| "I have an idea. I bet Eloh has given them to those she trusts most. And "
-#| "one orc and one skeleton were guarding the door. The keys must be being "
-#| "held by one of each faction. I bet the leaders would be in charge of such "
-#| "valuable objects."
 msgid ""
 "I have an idea. I bet Eloh has given them to those she trusts most. And one "
 "saurian and one skeleton were guarding the door. The keys must be being held "
 "by one of each faction. I bet the leaders would be in charge of such "
 "valuable objects."
 msgstr ""
-"Mám nápad. Vsadím se, že je Eloh dala těm, kterým nejvíc věří. Dveře hlídal "
-"skřet a kostlivec. Klíče musí mít jeden od každé frakce. Vsadím se, že za "
-"takové cenné předměty zodpovídají vůdci."
+"Mám nápad. Vsadím se, že je Eloh dala těm, kterým nejvíc věří. A dveře "
+"hlídal jeden ještěrák a jeden kostlivec. Klíče musel mít jeden z každé "
+"frakce. Vsadím se, že takové cenné předměty by dostali na starost vůdci."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1365
@@ -15069,10 +15033,8 @@ msgstr "vyšší prachový ďábel"
 
 #. [advancement]: id=Dust3
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Dust_Devil.cfg:162
-#, fuzzy
-#| msgid "a stronger Dust Devil"
 msgid "a bigger Dust Devil"
-msgstr "silnější prachový ďábel"
+msgstr "větší prachový ďábel"
 
 #. [unit_type]: id=Flesh Golem, race=monster
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Flesh_Golem.cfg:4
@@ -15967,10 +15929,8 @@ msgstr "Šermíř"
 
 #. [advancement]: id=strength_training
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:146
-#, fuzzy
-#| msgid "Stamina Training"
 msgid "Strength Training"
-msgstr "Výcvik výdrže"
+msgstr "Výcvik síly"
 
 #. [advancement]: id=bowmanship_training
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:158
@@ -15980,10 +15940,8 @@ msgstr "Výcvik lukostřelby"
 
 #. [advancement]: id=strong_shots
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:175
-#, fuzzy
-#| msgid "Strong Strikes"
 msgid "Strong Shots"
-msgstr "Silné údery"
+msgstr "Silné střely"
 
 #. [advancement]: id=Bowman
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:187
@@ -15993,7 +15951,7 @@ msgstr ""
 #. [advancement]: id=piercing_shot
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:204
 msgid "Piercing Shot"
-msgstr ""
+msgstr "Průrazná střela"
 
 #. [advancement]: id=stronger_grip
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:230
@@ -16082,7 +16040,7 @@ msgstr "Dvojité šípy"
 #. [advancement]: id=snipe
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:561
 msgid "Snipe"
-msgstr ""
+msgstr "Odstřelování"
 
 #. [advancement]: id=footwork
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:608
@@ -16494,23 +16452,17 @@ msgstr ""
 #. [dummy]: id=blast
 #. weapon special
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:510
-#, fuzzy
-#| msgid "Alastra"
 msgid "blast"
-msgstr "Alastra"
+msgstr "výbuch"
 
 #. [dummy]: id=blast
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:511
-#, fuzzy
-#| msgid ""
-#| "This weapon, when used offensively, deals damage to all units adjacent to "
-#| "the caster when it hits."
 msgid ""
 "This weapon, when used offensively, deals damage to all units adjacent to "
 "the enemy when it hits."
 msgstr ""
 "Pokud je tato zbraň užita ofenzivně, způsobí při zásahu zranění všem "
-"jednotkám, které sousedí se sesilatelem."
+"jednotkám, které sousedí s nepřítelem."
 
 #. [dummy]: id=blast
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:513
@@ -16960,10 +16912,8 @@ msgstr ""
 #. [extra_attack]: id=intercept
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1933
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1934
-#, fuzzy
-#| msgid "pierce"
 msgid "intercept"
-msgstr "průpich"
+msgstr "zastavení"
 
 #. [extra_attack]: id=intercept
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1935

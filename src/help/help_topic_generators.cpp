@@ -504,7 +504,7 @@ std::string unit_topic_generator::operator()() const {
 	// to their respective topics.
 	if(config::const_child_itors traits = type_.possible_traits()) {
 		std::vector<trait_data> must_have_traits;
-		std::vector<trait_data> random_traits;
+		std::vector<trait_data> possible_random_traits;
 		int must_have_nameless_traits = 0;
 
 		for(const config& trait : traits) {
@@ -526,14 +526,15 @@ std::string unit_topic_generator::operator()() const {
 				continue;
 			}
 			const std::string ref_id = "traits_"+trait["id"].str();
-			((trait["availability"].str() == "musthave") ? must_have_traits : random_traits).emplace_back(lang_trait_name, ref_id);
+			((trait["availability"].str() == "musthave") ? must_have_traits : possible_random_traits).emplace_back(lang_trait_name, ref_id);
 		}
 
-		int nr_random_traits = type_.num_traits() - must_have_traits.size() - must_have_nameless_traits;
+		// minimum of remaining num_traits and possible random traits (if there are insufficient random traits num_traits cannot be fulfilled)
+		int nr_random_traits = std::min(type_.num_traits() - must_have_traits.size() - must_have_nameless_traits, possible_random_traits.size());
 		if(must_have_traits.empty()) {
 			if(nr_random_traits > 0) {
 				ss << _("Traits") << " "<< VNGETTEXT("(1 of):", "(random $number of):", nr_random_traits, utils::string_map{{"number", std::to_string(nr_random_traits)}}) << font::nbsp;
-				print_trait_list(ss, random_traits);
+				print_trait_list(ss, possible_random_traits);
 				ss << "\n";
 			}
 		} else {
@@ -543,7 +544,7 @@ std::string unit_topic_generator::operator()() const {
 				print_trait_list(ss, must_have_traits);
 
 				ss << "\n" << VNGETTEXT("(1 of):", "(random $number of):", nr_random_traits, utils::string_map{{"number", std::to_string(nr_random_traits)}}) << font::nbsp;
-				print_trait_list(ss, random_traits);
+				print_trait_list(ss, possible_random_traits);
 			} else {
 				ss << ":" << font::nbsp;
 				print_trait_list(ss, must_have_traits);

@@ -246,8 +246,6 @@ public:
 	config::const_child_itors events() const
 	{ return get_cfg().child_range("event"); }
 
-	bool has_random_traits() const;
-
 	/**
 	 * The returned vector will not be empty, provided this has been built
 	 * to the HELP_INDEXED status.

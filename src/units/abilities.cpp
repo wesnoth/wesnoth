@@ -1070,7 +1070,8 @@ std::string specials_context_t::describe_weapon_specials(const attack_type& at) 
 				if (!is_special_active(s_a_o.self, *p_ab, unit_ability_t::affects_t::SELF)) {
 					return;
 				}
-				ability_names.insert(p_ab->cfg().get_or("name_affected", "name").str());
+				const std::string& name_affected = p_ab->cfg().get_or("name_affected", "name").str();
+				ability_names.insert(p_ab->substitute_variables(name_affected));
 			});
 	}
 
@@ -1104,11 +1105,14 @@ std::string specials_context_t::describe_weapon_specials_value(const attack_type
 		} else if constexpr (utils::decayed_is_same<decltype(source), attack_type>) {
 			wespon_specials.insert(p_ab->substitute_variables(p_ab->cfg()["name"].str()));
 		} else if (&source == s_a_o.self.un.get()) {
-			abilities_self.insert(p_ab->cfg().get_or(p_ab->substitute_variables(p_ab->cfg()["name_affected"].str()), p_ab->substitute_variables(p_ab->cfg()["name"].str())).str());
+			const std::string& name_affected = p_ab->cfg().get_or("name_affected", "name").str();
+			abilities_self.insert(p_ab->substitute_variables(name_affected));
 		} else if (!is_enemy(source.side(), s_a_o.self.un->side())) {
-			abilities_allies.insert(p_ab->cfg().get_or(p_ab->substitute_variables(p_ab->cfg()["name_affected"].str()), p_ab->substitute_variables(p_ab->cfg()["name"].str())).str());
+			const std::string& name_affected = p_ab->cfg().get_or("name_affected", "name").str();
+			abilities_allies.insert(p_ab->substitute_variables(name_affected));
 		} else {
-			abilities_enemies.insert(p_ab->cfg().get_or(p_ab->substitute_variables(p_ab->cfg()["name_affected"].str()), p_ab->substitute_variables(p_ab->cfg()["name"].str())).str());
+			const std::string& name_affected = p_ab->cfg().get_or("name_affected", "name").str();
+			abilities_enemies.insert(p_ab->substitute_variables(name_affected));
 		}
 	};
 
@@ -1371,8 +1375,8 @@ std::vector<unit_ability_t::tooltip_info> specials_context_t::abilities_special_
 		[&](const ability_ptr& p_ab, const unit&) {
 			if (special_tooltip_active(*this, s_a_o.self, *p_ab)) {
 				bool active = is_special_active(s_a_o.self, *p_ab, unit_ability_t::affects_t::SELF);
-				const std::string name = p_ab->cfg()["name_affected"];
-				const std::string desc = p_ab->cfg()["description_affected"];
+				const std::string name = p_ab->substitute_variables(p_ab->cfg()["name_affected"]);
+				const std::string desc = p_ab->substitute_variables(p_ab->cfg()["description_affected"]);
 
 				if (name.empty() || checking_name.count(name) != 0) {
 					return;
