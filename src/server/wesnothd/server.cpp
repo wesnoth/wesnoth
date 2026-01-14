@@ -209,7 +209,8 @@ const std::string help_msg =
 	" k[ick]ban <mask> <time> <reason>, help, games, metrics,"
 	" [lobby]msg <message>, motd [<message>],"
 	" pm|privatemsg <nickname> <message>, requests, roll <sides>, sample, searchlog <mask>,"
-	" signout, stats, status [<mask>], stopgame <nick> [<reason>], reset_queues, unban <ipmask>\n"
+	" setgamehost <nick>, signout, stats, status [<mask>], stopgame <nick> [<reason>],"
+	" reset_queues, unban <ipmask>\n"
 	"Specific strings (those not in between <> like the command names)"
 	" are case insensitive.";
 
@@ -413,6 +414,7 @@ void server::setup_handlers()
 	SETUP_HANDLER("deny_unregistered_login", &server::dul_handler);
 	SETUP_HANDLER("stopgame", &server::stopgame_handler);
 	SETUP_HANDLER("reset_queues", &server::reset_queues_handler);
+	SETUP_HANDLER("setgamehost", &server::set_game_host_handler);
 
 #undef SETUP_HANDLER
 }
@@ -2163,6 +2165,10 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 	} else if(const simple_wml::node* unban = data.child("unban")) {
 		g.unban_user(*unban, p);
 		return;
+		// If host should be transferred to another player.
+	} else if(const simple_wml::node* transfer_host = data.child("transferhost")) {
+		g.transfer_host(*transfer_host, p);
+		return;
 		// If info is being provided about the game state.
 	} else if(const simple_wml::node* info = data.child("info")) {
 		if(!g.is_player(p)) {
@@ -3250,6 +3256,36 @@ void server::reset_queues_handler(const std::string& /*issuer_name*/,
 	}
 
 	*out << "Reset all queues";
+}
+
+void server::set_game_host_handler(const std::string& issuer_name,
+		const std::string& /*query*/,
+		std::string& parameters,
+		std::ostringstream* out)
+{
+	assert(out != nullptr);
+
+	const auto issuer = player_connections_.project<0>(player_connections_.get<name_t>().find(issuer_name));
+	const std::string nick = parameters.substr(0, parameters.find(' '));
+	const std::string reason = parameters.length() > nick.length() + 1 ? parameters.substr(nick.length() + 1) : "";
+	const auto player = player_connections_.project<0>(player_connections_.get<name_t>().find(nick));
+
+	if(player == player_connections_.get<0>().end()) {
+		*out << "Player '" << nick << "' is not currently logged in.";
+		return;
+	}
+
+	std::shared_ptr<game> g = player->get_game();
+	if(!g) {
+		*out << "Player '" << nick << "' is not currently in a game.";
+		return;
+	}
+
+	*out << "Player '" << nick << "' is in game with id '" << g->id() << ", " << g->db_id()
+		 << "' named '" << g->name() << "'. Setting host to " << nick;
+	simple_wml::document player_wml;
+	player_wml.root().set_attr("username", nick.c_str());
+	g->transfer_host(player_wml.root(), issuer);
 }
 
 void server::delete_game(int gameid, const std::string& reason)
