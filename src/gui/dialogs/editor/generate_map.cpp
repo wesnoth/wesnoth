@@ -13,7 +13,7 @@
 	See the COPYING file for more details.
 */
 
-#define GETTEXT_DOMAIN "wesnoth-editor"
+#define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "gui/dialogs/editor/generate_map.hpp"
 
