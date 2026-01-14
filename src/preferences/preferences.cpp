@@ -1314,10 +1314,6 @@ bool prefs::show_theme_dialog()
 
 	if (action >= 0) {
 		set_theme(themes[action].id);
-		if(display::get_singleton() && resources::gamedata && resources::gamedata->get_theme().empty()) {
-			display::get_singleton()->set_theme(themes[action].id);
-		}
-
 		return true;
 	}
 

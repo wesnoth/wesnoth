@@ -23,11 +23,11 @@
 #include "filesystem.hpp"
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
-#include "game_data.hpp"
 #include "gettext.hpp"
 #include "gui/core/gui_definition.hpp"
 #include "hotkey/hotkey_item.hpp"
 #include "lexical_cast.hpp"
+#include "play_controller.hpp"
 #include "resources.hpp"
 #include "theme.hpp"
 #include "video.hpp"
@@ -1132,11 +1132,11 @@ void preferences_dialog::handle_theme_select()
 
 	const auto selection = theme_list.get_value();
 	const auto& theme = themes_.at(selection);
-	auto* display = display::get_singleton();
 
 	prefs::get().set_theme(theme.id);
-	if(display && resources::gamedata && resources::gamedata->get_theme().empty()) {
-		display->set_theme(theme.id);
+	
+	if(resources::controller) {
+		resources::controller->update_theme();
 	}
 
 }

@@ -379,7 +379,7 @@ public:
 	void clear_redraw_observers();
 
 	theme& get_theme() { return theme_; }
-	void set_theme(const std::string& new_theme);
+	void set_theme(const std::shared_ptr<config>& new_theme);
 
 	/**
 	 * Retrieves a pointer to a theme UI button.
