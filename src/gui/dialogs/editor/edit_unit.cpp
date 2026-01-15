@@ -797,7 +797,7 @@ void editor_edit_unit::update_wml_view() {
 	std::stringstream wml_stream;
 
 	// Textdomain
-	std::string current_textdomain = "wesnoth-"+addon_id_;
+	std::string current_textdomain = "wesnoth-" + addon_id_;
 
 	wml_stream
 	    << "#textdomain " << current_textdomain << "\n"
@@ -806,6 +806,46 @@ void editor_edit_unit::update_wml_view() {
 		<< "#\n";
 
 	config_writer out(wml_stream, false);
+
+	config& utype_cfg = type_cfg_.mandatory_child("unit_type");
+
+	// Update movement, defense and resistance in cfg
+	if (!movement_.empty() && (move_toggles_.size() <= movement_.attribute_count()) && move_toggles_.any())
+	{
+		config& mvt_cfg = utype_cfg.add_child("movement_costs");
+		int i = 0;
+		for (const auto& [key, value] : movement_.attribute_range()) {
+			if (move_toggles_[i] == 1) {
+				mvt_cfg[key] = value;
+			}
+			i++;
+		}
+	}
+
+	if (!defenses_.empty() && def_toggles_.any()  && (def_toggles_.size() <= defenses_.attribute_count()))
+	{
+		config& def_cfg = utype_cfg.add_child("defense");
+		int i = 0;
+		for (const auto& [key, value] : defenses_.attribute_range()) {
+			if (def_toggles_[i] == 1) {
+				def_cfg[key] = value;
+			}
+			i++;
+		}
+	}
+
+	if (!resistances_.empty() && res_toggles_.any()  && (res_toggles_.size() <= resistances_.attribute_count()))
+	{
+		config& res_cfg = utype_cfg.add_child("resistance");
+		int i = 0;
+		for (const auto& [key, value] : resistances_.attribute_range()) {
+			if (res_toggles_[i] == 1) {
+				res_cfg[key] = value;
+			}
+			i++;
+		}
+	}
+
 	out.write(type_cfg_);
 	generated_wml = wml_stream.str();
 	find_widget<scroll_text>("wml_view").set_label(generated_wml);
