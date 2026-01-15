@@ -11,9 +11,6 @@ keratur.png
 perrin.png
    Originally from THoT. No longer used, removed for GitHub #6602.
 
-ratheln.png
-   Originally from THoT. No longer used, removed in GitHub #6593.
-
 righteous-flame-icon.png
    Originally from THoT. No longer used, removed for GitHub #6602.
 
