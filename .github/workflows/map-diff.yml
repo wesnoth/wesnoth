@@ -56,6 +56,7 @@ jobs:
           log 'Compress image...'
           pngquant --verbose --force --output diff_image.png diff_image.png
 
+          ## Write comment body
           log 'Uploading diff_image.png...'
           # https://api.imgur.com/endpoints/image/#image-upload https://apidocs.imgur.com/#c85c9dfc-7487-4de2-9ecd-66f727cf3139
           json=$(curl -s -F image=@diff_image.png https://api.imgur.com/3/upload | tee /dev/stderr)
