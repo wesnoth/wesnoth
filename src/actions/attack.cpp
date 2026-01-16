@@ -422,8 +422,9 @@ battle_context battle_context::choose_attacker_weapon(nonempty_unit_const_ptr at
 	std::vector<battle_context> choices;
 
 	// What options does attacker have?
-	for(std::size_t i = 0; i < attacker->attacks().size(); ++i) {
-		const attack_type& att = attacker->attacks()[i];
+	const auto attacks = attacker->attacks();
+	for(std::size_t i = 0; i < attacks.size(); ++i) {
+		const attack_type& att = attacks[i];
 
 		if(att.attack_weight() <= 0) {
 			continue;
@@ -472,15 +473,17 @@ battle_context battle_context::choose_defender_weapon(nonempty_unit_const_ptr at
 		const combatant* prev_def)
 {
 	log_scope2(log_attack, "choose_defender_weapon");
-	VALIDATE(attacker_weapon < attacker->attacks().size(), _("An invalid attacker weapon got selected."));
+	const auto attackers_attacks = attacker->attacks();
+	VALIDATE(attacker_weapon < attackers_attacks.size(), _("An invalid attacker weapon got selected."));
 
-	const attack_type& att = attacker->attacks()[attacker_weapon];
+	const attack_type& att = attackers_attacks[attacker_weapon];
 	auto no_weapon = [&]() { return battle_context(attacker, attacker_loc, attacker_weapon, defender, defender_loc, -1); };
 	std::vector<battle_context> choices;
 
 	// What options does defender have?
-	for(std::size_t i = 0; i < defender->attacks().size(); ++i) {
-		const attack_type& def = defender->attacks()[i];
+	const auto defenses = defender->attacks();
+	for(std::size_t i = 0; i < defenses.size(); ++i) {
+		const attack_type& def = defenses[i];
 		if(def.range() != att.range() || def.defense_weight() <= 0) {
 			//no need to calculate the battle_context here.
 			continue;
