@@ -203,14 +203,15 @@ std::vector<std::string> square_parenthetical_split(
  * @param v A container with elements.
  * @param s List delimiter.
  */
-template <typename T>
-std::string join(const T& v, const std::string& s = ",")
+template<typename Range>
+std::string join(const Range& v, const std::string& s = ",")
 {
 	std::stringstream str;
+	const auto sentinel = std::end(v);
 
-	for(typename T::const_iterator i = v.begin(); i != v.end(); ++i) {
+	for(auto i = std::begin(v); i != sentinel; ++i) {
 		str << *i;
-		if(std::next(i) != v.end()) {
+		if(std::next(i) != sentinel) {
 			str << s;
 		}
 	}
