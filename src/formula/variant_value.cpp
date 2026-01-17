@@ -15,10 +15,12 @@
 #include "formula/variant.hpp"
 #include "formula/variant_value.hpp"
 
+#include "utils/ranges.hpp"
 #include <utility>
 
 #include "formula/callable.hpp"
 #include "formula/function.hpp"
+#include "serialization/string_utils.hpp"
 
 namespace wfl
 {
@@ -226,61 +228,91 @@ std::string variant_string::get_serialized_string() const
 	return ss.str();
 }
 
-template<typename T>
-std::string variant_container<T>::to_string_impl(bool annotate, bool annotate_empty, const to_string_op& mod_func) const
+namespace implementation
+{
+namespace detail
+{
+template<typename Func>
+std::string serialize_value(const Func& op, const variant& value)
+{
+	return std::invoke(op, value);
+}
+
+template<typename Func>
+std::string serialize_value(const Func& op, const std::pair<variant, variant>& value)
 {
 	std::ostringstream ss;
 
-	if(annotate) {
-		ss << "[";
-	}
-
-	bool first_time = true;
-
-	for(const auto& member : container()) {
-		if(!first_time) {
-			ss << ", ";
-		}
-
-		first_time = false;
-
-		ss << T::to_string_detail(member, mod_func);
-	}
-
-	// TODO: evaluate if this really needs to be separately conditional.
-	if(annotate_empty && is_empty()) {
-		ss << "->";
-	}
-
-	if(annotate) {
-		ss << "]";
-	}
+	ss << std::invoke(op, value.first);
+	ss << "->";
+	ss << std::invoke(op, value.second);
 
 	return ss.str();
 }
 
+template<typename Range, typename Func>
+auto make_serialized_range(const Range& range, const Func& op)
+{
+	return range | utils::views::transform([&op](auto&& value) { return serialize_value(op, value); });
+}
+
+/** WFL empty list literal */
+std::string serialize_empty(const std::vector<variant>&)
+{
+	return "[]";
+}
+
+/** WFL empty map literal */
+std::string serialize_empty(const std::map<variant, variant>&)
+{
+	return "[->]";
+}
+
+} // namespace detail
+
+template<typename Range, typename Func>
+std::string to_string(const Range& range, const Func& op)
+{
+	return utils::join(detail::make_serialized_range(range, op), ", ");
+}
+
+template<typename Range, typename Func>
+std::string as_literal(const Range& range, const Func& op)
+{
+	if(range.empty()) {
+		return detail::serialize_empty(range);
+	}
+
+	std::ostringstream ss;
+	ss << "[" << to_string(range, op) << "]";
+	return ss.str();
+}
+
+} // namespace implementation
+
 template<typename T>
 std::string variant_container<T>::string_cast() const
 {
-	return to_string_impl(false, false, [](const variant& v) { return v.string_cast(); });
+	return implementation::to_string(container_, &variant::string_cast);
 }
 
 template<typename T>
 std::string variant_container<T>::get_serialized_string() const
 {
-	return to_string_impl(true, true,   [](const variant& v) { return v.serialize_to_string(); });
+	return implementation::as_literal(container_, &variant::serialize_to_string);
 }
 
 template<typename T>
 std::string variant_container<T>::get_debug_string(formula_seen_stack& seen, bool verbose) const
 {
-	return to_string_impl(true, false, [&](const variant& v) { return v.to_debug_string(verbose, &seen); });
+	return implementation::as_literal(container_,
+		[&seen, verbose](const variant& v) { return v.to_debug_string(verbose, &seen); });
 }
 
 template<typename T>
 boost::iterator_range<variant_iterator> variant_container<T>::make_iterator() const
 {
-	return implementation::make_iterator_range(this, container());
+	return implementation::make_iterator_range(this, container_);
 }
 
 template<typename T>
@@ -302,23 +334,12 @@ bool variant_container<T>::iterator_equals(const utils::any& first, const utils:
 }
 
 // Force compilation of the following template instantiations
-template class variant_container<variant_list>;
-template class variant_container<variant_map>;
+template class variant_container<std::vector<variant>>;
+template class variant_container<std::map<variant, variant>>;
 
 variant variant_list::deref_iterator(const utils::any& iter) const
 {
 	return *as_container_iterator(iter);
-}
-
-std::string variant_map::to_string_detail(const decltype(container_)::value_type& value, const to_string_op& op)
-{
-	std::ostringstream ss;
-
-	ss << op(value.first);
-	ss << "->";
-	ss << op(value.second);
-
-	return ss.str();
 }
 
 variant variant_map::deref_iterator(const utils::any& iter) const

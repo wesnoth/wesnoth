@@ -383,22 +383,33 @@ private:
 /**
  * Generalized interface for container variants.
  */
-template<typename Derived>
+template<typename Container>
 class variant_container : public variant_value_base
 {
-protected:
-	/** Only derived classes can instantiate this class. */
-	variant_container() = default;
-
 public:
+	explicit variant_container(const Container& c)
+		: container_(c)
+	{
+	}
+
+	explicit variant_container(Container&& c)
+		: container_(std::move(c))
+	{
+	}
+
+	const Container& get_container() const
+	{
+		return container_;
+	}
+
 	virtual bool is_empty() const override
 	{
-		return container().empty();
+		return container_.empty();
 	}
 
 	virtual std::size_t num_elements() const override
 	{
-		return container().size();
+		return container_.size();
 	}
 
 	virtual bool as_bool() const override
@@ -407,9 +418,7 @@ public:
 	}
 
 	virtual std::string string_cast() const override;
-
 	virtual std::string get_serialized_string() const override;
-
 	virtual std::string get_debug_string(formula_seen_stack& seen, bool verbose) const override;
 
 	// We implement these here since the interface is the same for all
@@ -423,124 +432,73 @@ public:
 	/** Inherited from variant_value_base. */
 	virtual bool equals(const variant_value_base& other) const override
 	{
-		return container_for(*this) == container_for(other);
+		return container_ == utils::cast_as(*this, other).container_;
 	}
 
 	/** Inherited from variant_value_base. */
 	virtual bool less_than(const variant_value_base& other) const override
 	{
-		return container_for(*this) < container_for(other);
+		return container_ < utils::cast_as(*this, other).container_;
 	}
 
 protected:
-	using to_string_op = std::function<std::string(const variant&)>;
+	using iterator       = typename Container::iterator;
+	using const_iterator = typename Container::const_iterator;
 
-private:
-	/**
-	 * String conversion helper for @ref string_cast, @ref get_serialized_string,
-	 * and @ref get_debug_string.
-	 *
-	 * Derived classes should implement container-specific handling by defining a
-	 * static to_string_detail function which takes the container's value_type as
-	 * its first parameter and a to_string_op functor as its second.
-	 */
-	std::string to_string_impl(bool annotate, bool annotate_empty, const to_string_op& mod_func) const;
-
-	/** Read-only access to the underlying container. */
-	const auto& container() const
-	{
-		return container_for(*this);
-	}
-
-	/** Helper to call get_container for the derived class. */
-	static const auto& container_for(const variant_value_base& value)
-	{
-		return static_cast<const Derived&>(value).get_container();
-	}
-
-protected:
 	/** Casts opaque @a iter to a mutable const_iterator reference. */
-	decltype(auto) as_container_iterator(utils::any& iter) const
+	static const_iterator& as_container_iterator(utils::any& iter) const
 	{
-		using const_iterator = decltype(std::cbegin(container()));
 		return utils::any_cast<const_iterator&>(iter);
 	}
 
 	/** Casts opaque @a iter to a constant const_iterator reference. */
-	decltype(auto) as_container_iterator(const utils::any& iter) const
+	static const const_iterator& as_container_iterator(const utils::any& iter) const
 	{
-		using const_iterator = decltype(std::cbegin(container()));
 		return utils::any_cast<const const_iterator&>(iter);
 	}
+
+private:
+	Container container_;
 };
 
 
-class variant_list : public variant_container<variant_list>
+class variant_list : public variant_container<std::vector<variant>>
 {
 public:
-	friend class variant_container<variant_list>;
-
 	explicit variant_list(const std::vector<variant>& vec)
-		: container_(vec)
+		: variant_container(vec)
 	{
 	}
 
 	explicit variant_list(std::vector<variant>&& vec)
-		: container_(std::move(vec))
+		: variant_container(std::move(vec))
 	{
-	}
-
-	const std::vector<variant>& get_container() const
-	{
-		return container_;
 	}
 
 	/** Required by variant_value_base. */
 	IMPLEMENT_VALUE_TYPE(formula_variant::type::list)
 
 	virtual variant deref_iterator(const utils::any&) const override;
-
-private:
-	/** Helper for @ref variant_container::to_string_impl. */
-	static std::string to_string_detail(const variant& value, const to_string_op& op)
-	{
-		return op(value);
-	}
-
-	std::vector<variant> container_;
 };
 
 
-class variant_map : public variant_container<variant_map>
+class variant_map : public variant_container<std::map<variant, variant>>
 {
 public:
-	friend class variant_container<variant_map>;
-
 	explicit variant_map(const std::map<variant, variant>& map)
-		: container_(map)
+		: variant_container(map)
 	{
 	}
 
 	explicit variant_map(std::map<variant, variant>&& map)
-		: container_(std::move(map))
+		: variant_container(std::move(map))
 	{
-	}
-
-	const std::map<variant, variant>& get_container() const
-	{
-		return container_;
 	}
 
 	/** Required by variant_value_base. */
 	IMPLEMENT_VALUE_TYPE(formula_variant::type::map)
 
 	virtual variant deref_iterator(const utils::any&) const override;
-
-private:
-	std::map<variant, variant> container_;
-
-	/** Helper for @ref variant_container::to_string_impl. */
-	static std::string to_string_detail(const decltype(container_)::value_type& value, const to_string_op& op);
 };
 
 #undef IMPLEMENT_VALUE_TYPE
