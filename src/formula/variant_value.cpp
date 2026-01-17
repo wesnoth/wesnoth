@@ -44,7 +44,7 @@ variant variant_int::build_range_variant(int limit) const
 		res.emplace_back(i);
 	}
 
-	return variant(res);
+	return variant(std::move(res));
 }
 
 std::string variant_decimal::to_string_impl(const bool sign_value) const
@@ -110,7 +110,7 @@ std::string variant_callable::get_debug_string(formula_seen_stack& seen, bool ve
 
 	if(!callable_) {
 		ss << "null";
-	} else if(std::find(seen.begin(), seen.end(), callable_) == seen.end()) {
+	} else if(!utils::contains(seen, callable_)) {
 		if(!verbose) {
 			seen.push_back(callable_);
 		}
@@ -143,15 +143,15 @@ std::string variant_callable::get_debug_string(formula_seen_stack& seen, bool ve
 	return ss.str();
 }
 
-bool variant_callable::equals(variant_value_base& other) const
+bool variant_callable::equals(const variant_value_base& other) const
 {
-	variant_callable& other_ref = value_ref_cast<variant_callable>(other);
+	const variant_callable& other_ref = value_ref_cast<variant_callable>(other);
 	return callable_ ? callable_->equals(*other_ref.callable_) : callable_ == other_ref.callable_;
 }
 
-bool variant_callable::less_than(variant_value_base& other) const
+bool variant_callable::less_than(const variant_value_base& other) const
 {
-	variant_callable& other_ref = value_ref_cast<variant_callable>(other);
+	const variant_callable& other_ref = value_ref_cast<variant_callable>(other);
 	return callable_ ? callable_->less(*other_ref.callable_) : other_ref.callable_ != nullptr;
 }
 
@@ -215,7 +215,7 @@ std::string variant_string::get_serialized_string() const
 }
 
 template<typename T>
-std::string variant_container<T>::to_string_impl(bool annotate, bool annotate_empty, mod_func_t mod_func) const
+std::string variant_container<T>::to_string_impl(bool annotate, bool annotate_empty, const to_string_op& mod_func) const
 {
 	std::ostringstream ss;
 
@@ -225,18 +225,18 @@ std::string variant_container<T>::to_string_impl(bool annotate, bool annotate_em
 
 	bool first_time = true;
 
-	for(const auto& member : container_) {
+	for(const auto& member : container()) {
 		if(!first_time) {
 			ss << ", ";
 		}
 
 		first_time = false;
 
-		ss << to_string_detail(member, mod_func);
+		ss << T::to_string_detail(member, mod_func);
 	}
 
 	// TODO: evaluate if this really needs to be separately conditional.
-	if(annotate_empty && container_.empty()) {
+	if(annotate_empty && is_empty()) {
 		ss << "->";
 	}
 
@@ -268,110 +268,49 @@ std::string variant_container<T>::get_debug_string(formula_seen_stack& seen, boo
 template<typename T>
 boost::iterator_range<variant_iterator> variant_container<T>::make_iterator() const
 {
-	return {variant_iterator(this, get_container().cbegin()), variant_iterator(this, get_container().cend())};
+	return {
+		variant_iterator{this, std::cbegin(container())},
+		variant_iterator{this, std::cend(container())}
+	};
 }
 
 template<typename T>
 void variant_container<T>::iterator_inc(utils::any& iter) const
 {
-	++utils::any_cast<typename T::const_iterator&>(iter);
+	++utils::any_cast<decltype(std::cbegin(container()))&>(iter);
 }
 
 template<typename T>
 void variant_container<T>::iterator_dec(utils::any& iter) const
 {
-	--utils::any_cast<typename T::const_iterator&>(iter);
+	--utils::any_cast<decltype(std::cbegin(container()))&>(iter);
 }
 
 template<typename T>
 bool variant_container<T>::iterator_equals(const utils::any& first, const utils::any& second) const
 {
-	return utils::any_cast<typename T::const_iterator>(first) == utils::any_cast<typename T::const_iterator>(second);
+	return utils::any_cast<decltype(std::cbegin(container()))>(first)
+		== utils::any_cast<decltype(std::cbegin(container()))>(second);
 }
 
 // Force compilation of the following template instantiations
-template class variant_container<variant_vector>;
-template class variant_container<variant_map_raw>;
-
-variant_list::variant_list(const variant_vector& vec)
-	: variant_container<variant_vector>(vec)
-{
-}
-
-variant variant_list::list_op(value_base_ptr second, const std::function<variant(variant&, variant&)>& op_func)
-{
-	const auto& other_list = value_cast<variant_list>(std::move(second));
-
-	if(num_elements() != other_list->num_elements()) {
-		throw type_error("List op requires two lists of the same length");
-	}
-
-	std::vector<variant> res;
-	res.reserve(num_elements());
-
-	for(std::size_t i = 0; i < num_elements(); ++i) {
-		res.push_back(op_func(get_container()[i], other_list->get_container()[i]));
-	}
-
-	return variant(res);
-}
-
-bool variant_list::equals(variant_value_base& other) const
-{
-	const auto& other_container = value_ref_cast<variant_list>(other).get_container();
-
-	if(num_elements() != other.num_elements()) {
-		return false;
-	}
-
-	for(std::size_t n = 0; n < num_elements(); ++n) {
-		if(get_container()[n] != other_container[n]) {
-			return false;
-		}
-	}
-
-	return true;
-}
-
-bool variant_list::less_than(variant_value_base& other) const
-{
-	const auto& other_container = value_ref_cast<variant_list>(other).get_container();
-
-	for(std::size_t n = 0; n != num_elements() && n != other.num_elements(); ++n) {
-		if(get_container()[n] < other_container[n]) {
-			return true;
-		} else if(get_container()[n] > other_container[n]) {
-			return false;
-		}
-	}
-
-	return num_elements() < other.num_elements();
-}
+template class variant_container<variant_list>;
+template class variant_container<variant_map>;
 
 variant variant_list::deref_iterator(const utils::any& iter) const
 {
 	return *utils::any_cast<const variant_vector::const_iterator&>(iter);
 }
 
-std::string variant_map::to_string_detail(const variant_map_raw::value_type& container_val, mod_func_t mod_func) const
+std::string variant_map::to_string_detail(const variant_map_raw::value_type& value, const to_string_op& op)
 {
 	std::ostringstream ss;
 
-	ss << mod_func(container_val.first);
+	ss << op(value.first);
 	ss << "->";
-	ss << mod_func(container_val.second);
+	ss << op(value.second);
 
 	return ss.str();
-}
-
-bool variant_map::equals(variant_value_base& other) const
-{
-	return get_container() == value_ref_cast<variant_map>(other).get_container();
-}
-
-bool variant_map::less_than(variant_value_base& other) const
-{
-	return get_container() < value_ref_cast<variant_map>(other).get_container();
 }
 
 variant variant_map::deref_iterator(const utils::any& iter) const

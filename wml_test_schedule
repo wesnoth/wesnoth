@@ -270,6 +270,23 @@
 0 harm_unit_kill_yes_experience_no
 0 harm_unit_kill_yes_experience_unset
 0 harm_unit_kill_yes_experience_yes
+0 set_variables_init
+0 set_variables_value
+0 set_variables_literal
+0 set_variables_split_explode
+0 set_variables_split_sep
+0 set_variables_mixed
+0 set_variables_replace
+0 set_variables_replace_explicit
+0 set_variables_insert
+0 set_variables_insert_explicit
+0 set_variables_merge
+0 set_variables_merge_explicit
+0 set_variables_append
+0 set_variables_append_explicit
+0 set_variables_to_variable
+0 set_variables_unit
+0 set_variables_side
 # Terrain mask tests
 0 test_terrain_mask_simple_nop
 0 test_terrain_mask_simple_set
@@ -367,6 +384,7 @@
 0 firststrike_and_laststrike
 0 backstab_active_with_accomplice_behind_bob
 0 backstab_active_with_free_for_all
+0 backstab_active_with_bob_also_backstab
 0 backstab_inactive_with_triangular_formation
 0 backstab_inactive_with_statue_behind_bob
 0 backstab_inactive_with_bobs_ally_behind_bob
@@ -388,7 +406,7 @@
 0 unpetrifiable_status_test
 0 test_force_chance_to_hit_macro_nested
 0 test_force_chance_to_hit_macro_toplevel
-0 trait_exclusion_test
+9 trait_exclusion_test
 0 trait_requirement_test
 0 test_remove_ability_by_filter
 0 test_overwrite_specials_filter
@@ -421,8 +439,6 @@
 0 filter_adjacent_location_count_zero_inactive
 0 filter_adjacent_active
 0 filter_adjacent_inactive
-0 filter_adjacent_student_active
-0 filter_adjacent_student_inactive
 0 filter_adjacent_direction_active
 0 filter_adjacent_direction_inactive
 0 filter_special_id_active
@@ -586,6 +602,7 @@
 0 heal_negative_value
 0 heal_zero
 0 heal_add
+0 heal_add_cumulative
 0 heal_add_divide
 0 heal_add_multiply
 0 heal_add_sub
@@ -601,6 +618,8 @@
 0 heal_multiply_divide
 0 heal_multiply_fraction
 0 heal_no_value
+0 heal_priority_high
+0 heal_priority_low
 0 heal_sub
 0 heal_sub_divide
 0 heal_sub_multiply
@@ -616,11 +635,14 @@
 0 heal_two_cumulative_mixed_same_id
 0 heal_two_cumulative_mixed_unique_id
 0 heal_max_value
+0 heal_wfl_max_value
+0 heal_wfl_min_value
 # regenerate ability tests
 0 regenerate_positive_value
 0 regenerate_negative_value
 0 regenerate_zero
 0 regenerate_add
+0 regenerate_add_cumulative
 0 regenerate_add_divide
 0 regenerate_add_multiply
 0 regenerate_add_sub
@@ -651,10 +673,15 @@
 0 regenerate_two_cumulative_mixed_same_id
 0 regenerate_two_cumulative_mixed_unique_id
 0 regenerate_max_value
+0 regenerate_priority_high
+0 regenerate_priority_low
+0 regenerate_wfl_max_value
+0 regenerate_wfl_min_value
 # resistance ability tests
 0 resistance_negative_value
 0 resistance_zero
 0 resistance_add
+0 resistance_add_cumulative
 0 resistance_add_divide
 0 resistance_add_multiply
 0 resistance_add_sub
@@ -669,6 +696,8 @@
 0 resistance_multiply
 0 resistance_multiply_divide
 0 resistance_multiply_fraction
+0 resistance_priority_high
+0 resistance_priority_low
 0 resistance_no_value
 0 resistance_sub
 0 resistance_sub_divide
@@ -685,6 +714,8 @@
 0 resistance_two_cumulative_mixed_unique_id
 0 resistance_two_cumulative_mixed_unique_id_skeletal
 0 resistance_max_value
+0 resistance_wfl_max_value
+0 resistance_wfl_min_value
 0 resistance_min_value
 0 resistance_cumulative_max_value
 0 resistance_negative_max_value
@@ -701,6 +732,7 @@
 0 leadership_negative_value
 0 leadership_zero
 0 leadership_add
+0 leadership_add_cumulative
 0 leadership_add_divide
 0 leadership_add_multiply
 0 leadership_add_sub
@@ -716,6 +748,8 @@
 0 leadership_multiply_divide
 0 leadership_multiply_fraction
 0 leadership_no_value
+0 leadership_priority_high
+0 leadership_priority_low
 0 leadership_sub
 0 leadership_sub_divide
 0 leadership_sub_multiply
@@ -728,12 +762,15 @@
 0 leadership_two_cumulative_mixed_same_id
 0 leadership_two_cumulative_mixed_unique_id
 0 leadership_max_value
+0 leadership_wfl_max_value
+0 leadership_wfl_min_value
 0 leadership_active_on_offense
 0 leadership_active_on_defense
 # illuminates ability tests
 0 illuminates_active_on_defense
 0 illuminates_active_on_offense
 0 illuminates_add
+0 illuminates_add_cumulative
 0 illuminates_add_divide
 0 illuminates_add_multiply
 0 illuminates_add_sub
@@ -756,6 +793,8 @@
 0 illuminates_negative_value
 0 illuminates_no_max_value
 0 illuminates_no_value
+0 illuminates_priority_high
+0 illuminates_priority_low
 0 illuminates_sub
 0 illuminates_sub_divide
 0 illuminates_sub_multiply
@@ -770,6 +809,7 @@
 0 illuminates_zero
 0 illuminates_value_neutral
 0 illuminates_value_chaotic
+0 illuminates_value_chaotic_distant
 0 illuminates_value_liminal
 0 illuminates_value_day_uncapped
 0 illuminates_value_day_capped
@@ -794,9 +834,12 @@
 0 tunnel_source_teleport_unit_fail
 0 tunnel_source_teleport_unit_succeed
 # attacks ability tests
+0 attacks_priority_high
+0 attacks_priority_low
 9 attacks_negative_value
 0 attacks_zero
 0 attacks_add
+0 attacks_add_cumulative
 0 attacks_add_divide
 0 attacks_add_multiply
 0 attacks_add_sub
@@ -824,6 +867,8 @@
 0 attacks_two_cumulative_mixed_same_id
 0 attacks_two_cumulative_mixed_unique_id
 0 attacks_max_value
+0 attacks_wfl_max_value
+0 attacks_wfl_min_value
 0 attacks_overwrite_specials_one_side
 0 attacks_overwrite_specials_both_sides
 0 attacks_overwrite_specials_two_both_sides
@@ -866,8 +911,11 @@
 0 berserk_overwrite_specials_mixed
 0 berserk_different_values
 # chance_to_hit ability tests
+0 chance_to_hit_priority_high
+0 chance_to_hit_priority_low
 0 chance_to_hit_negative_value
 0 chance_to_hit_add
+0 chance_to_hit_add_cumulative
 0 chance_to_hit_add_divide
 0 chance_to_hit_add_multiply
 0 chance_to_hit_add_sub
@@ -892,15 +940,20 @@
 0 chance_to_hit_two_cumulative_mixed_same_id
 0 chance_to_hit_two_cumulative_mixed_unique_id
 0 chance_to_hit_max_value
+0 chance_to_hit_wfl_max_value
+0 chance_to_hit_wfl_min_value
 0 chance_to_hit_overwrite_specials_one_side
 0 chance_to_hit_overwrite_specials_both_sides
 0 chance_to_hit_overwrite_specials_two_both_sides
 0 chance_to_hit_overwrite_specials_two_one_side
 0 chance_to_hit_overwrite_specials_mixed
 # damage ability tests
+0 damage_priority_high
+0 damage_priority_low
 0 damage_negative_value
 0 damage_zero
 0 damage_add
+0 damage_add_cumulative
 0 damage_add_divide
 0 damage_add_multiply
 0 damage_add_sub
@@ -931,6 +984,8 @@
 0 damage_two_cumulative_mixed_same_id
 0 damage_two_cumulative_mixed_unique_id
 0 damage_max_value
+0 damage_wfl_max_value
+0 damage_wfl_min_value
 0 damage_overwrite_specials_one_side
 0 damage_overwrite_specials_both_sides
 0 damage_overwrite_specials_two_both_sides
@@ -958,6 +1013,37 @@
 0 damage_type_both_same_replacement_best
 0 damage_type_both_same_alternative_best
 0 damage_type_many
+# defense ability tests
+0 defense_negative_value
+0 defense_add
+0 defense_add_cumulative
+0 defense_overwrited_by_chance_to_hit
+0 defense_add_divide
+0 defense_add_multiply
+0 defense_add_sub
+0 defense_affect_allies
+0 defense_affect_allies_distant
+0 defense_affect_self_no
+0 defense_affect_enemies
+0 defense_affect_everybody
+0 defense_divide
+0 defense_multiply
+0 defense_multiply_divide
+0 defense_no_value
+0 defense_sub
+0 defense_sub_divide
+0 defense_sub_multiply
+0 defense_wfl_other
+0 defense_wfl_self
+0 defense_two_cumulative_yes_same_id
+0 defense_two_cumulative_yes_unique_id
+0 defense_two_cumulative_no_same_id
+0 defense_two_cumulative_no_unique_id
+0 defense_two_cumulative_mixed_same_id
+0 defense_two_cumulative_mixed_unique_id
+0 defense_max_value
+0 defense_wfl_max_value
+0 defense_wfl_min_value
 # disable tests
 0 disable_ability
 0 disable_affect_allies
@@ -966,9 +1052,12 @@
 0 disable_affect_enemies
 0 disable_affect_everybody
 # drains ability tests
+0 drains_priority_high
+0 drains_priority_low
 0 drains_negative_value
 0 drains_zero
 0 drains_add
+0 drains_add_cumulative
 0 drains_add_divide
 0 drains_add_multiply
 0 drains_add_sub
@@ -999,6 +1088,8 @@
 0 drains_default_cumulative_no
 0 drains_default_cumulative_both
 0 drains_max_value
+0 drains_wfl_max_value
+0 drains_wfl_min_value
 0 drains_overwrite_specials_one_side
 0 drains_overwrite_specials_both_sides
 0 drains_overwrite_specials_two_both_sides
@@ -1012,9 +1103,12 @@
 0 firststrike_affect_enemies
 0 firststrike_affect_everybody
 # heal_on_hit ability tests
+0 heal_on_hit_priority_high
+0 heal_on_hit_priority_low
 0 heal_on_hit_negative_value
 0 heal_on_hit_zero
 0 heal_on_hit_add
+0 heal_on_hit_add_cumulative
 0 heal_on_hit_add_divide
 0 heal_on_hit_add_multiply
 0 heal_on_hit_add_sub
@@ -1042,6 +1136,8 @@
 0 heal_on_hit_two_cumulative_mixed_same_id
 0 heal_on_hit_two_cumulative_mixed_unique_id
 0 heal_on_hit_max_value
+0 heal_on_hit_wfl_max_value
+0 heal_on_hit_wfl_min_value
 0 heal_on_hit_overwrite_specials_one_side
 0 heal_on_hit_overwrite_specials_both_sides
 0 heal_on_hit_overwrite_specials_two_both_sides

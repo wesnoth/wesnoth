@@ -79,17 +79,17 @@ unit_race::unit_race(const config& cfg)
 	if (plural_name_.empty()) {
 		lg::log_to_chat() << "[race] id='" << id_ << "' is missing a plural_name field.\n";
 		ERR_WML << "[race] id='" << id_ << "' is missing a plural_name field.";
-		plural_name_ = (cfg["name"]);
+		plural_name_ = cfg["name"].t_str();
 	}
 
 	// use "name" if "male_name" or "female_name" aren't available
-	name_[MALE] = cfg["male_name"];
+	name_[MALE] = cfg["male_name"].t_str();
 	if(name_[MALE].empty()) {
-		name_[MALE] = (cfg["name"]);
+		name_[MALE] = cfg["name"].t_str();
 	}
-	name_[FEMALE] = cfg["female_name"];
+	name_[FEMALE] = cfg["female_name"].t_str();
 	if(name_[FEMALE].empty()) {
-		name_[FEMALE] = (cfg["name"]);
+		name_[FEMALE] = cfg["name"].t_str();
 	}
 	if(std::any_of(name_.begin(), name_.end(), [](const auto& n) { return n.empty(); })) {
 		lg::log_to_chat()

@@ -49,9 +49,7 @@ bool isnewline(const char c)
 bool portable_isspace(const char c)
 {
 	// returns true only on ASCII spaces
-	if (static_cast<unsigned char>(c) >= 128)
-		return false;
-	return isnewline(c) || isspace(static_cast<unsigned char>(c));
+	return c == '\r' || c == '\n' || c == ' ' || c == '\t' || c == '\v' || c == '\f';
 }
 
 // Make sure we regard '\r' and '\n' as a space, since Mac, Unix, and DOS
@@ -108,19 +106,39 @@ std::vector<std::string_view> split_view(std::string_view s, const char sep, con
 	return res;
 }
 
+namespace {
+	std::size_t get_padding(std::string_view str)
+	{
+		// A leading '0' signals we want to pad upto the size of the number
+		return (str.size() > 1 && str[0] == '0') ? (str.size() - 1) : 0;
+	}
+}
+
 std::vector<std::string> square_parenthetical_split(const std::string& val,
 		const char separator, const std::string& left,
 		const std::string& right,const int flags)
 {
 	std::vector< std::string > res;
+
+	if (val.empty()) {
+		return res;
+	}
+	if (!separator) {
+		ERR_GENERAL << "Separator must be specified for square bracket split function.";
+		return res;
+	}
+	if (left.size() != right.size()) {
+		ERR_GENERAL << "Left and Right Parenthesis lists not same length";
+		return res;
+	}
+
+	std::string lp = left;
+	std::string rp = right;
 	std::vector<char> part;
 	bool in_parenthesis = false;
 	std::vector<std::string::const_iterator> square_left;
 	std::vector<std::string::const_iterator> square_right;
 	std::vector< std::string > square_expansion;
-
-	std::string lp=left;
-	std::string rp=right;
 
 	std::string::const_iterator i1 = val.begin();
 	std::string::const_iterator i2;
@@ -129,19 +147,20 @@ std::vector<std::string> square_parenthetical_split(const std::string& val,
 		while (i1 != val.end() && portable_isspace(*i1))
 			++i1;
 	}
+	if (i1 == val.end()) return res;
 	i2=i1;
 	j1=i1;
 
-	if (i1 == val.end()) return res;
-
-	if (!separator) {
-		ERR_GENERAL << "Separator must be specified for square bracket split function.";
-		return res;
-	}
-
-	if(left.size()!=right.size()){
-		ERR_GENERAL << "Left and Right Parenthesis lists not same length";
-		return res;
+	// If the string contains no animation markers, return the string immediately.
+	// Added since many static images are treated as animations and run through here.
+	const std::string complex_markers = separator + std::string("[");
+	if (val.find_first_of(complex_markers) == std::string::npos)
+	{
+		std::string mutable_val(i1, val.end());
+		if (flags & STRIP_SPACES) {
+			boost::trim_right(mutable_val);
+		}
+		return { mutable_val };
 	}
 
 	while (true) {
@@ -173,21 +192,15 @@ std::vector<std::string> square_parenthetical_split(const std::string& val,
 						std::string s_begin = piece.substr(0,found_tilde);
 						boost::trim(s_begin);
 						int begin = std::stoi(s_begin);
-						std::size_t padding = 0, padding_end = 0;
-						while (padding<s_begin.size() && s_begin[padding]=='0') {
-							padding++;
-						}
 						std::string s_end = piece.substr(found_tilde+1);
 						boost::trim(s_end);
 						int end = std::stoi(s_end);
-						while (padding_end<s_end.size() && s_end[padding_end]=='0') {
-							padding_end++;
-						}
-						if (padding*padding_end > 0 && s_begin.size() != s_end.size()) {
+
+						std::size_t padding = std::max(get_padding(s_begin), get_padding(s_end));
+						if (padding > 0 && s_begin.size() != s_end.size()) {
 							ERR_GENERAL << "Square bracket padding sizes not matching: "
 										<< s_begin << " and " << s_end <<".";
 						}
-						if (padding_end > padding) padding = padding_end;
 
 						int increment = (end >= begin ? 1 : -1);
 						end+=increment; //include end in expansion
@@ -417,7 +430,6 @@ std::string escape(std::string_view str, const char *special_chars)
 {
 	std::string::size_type pos = str.find_first_of(special_chars);
 	if (pos == std::string::npos) {
-		// Fast path, possibly involving only reference counting.
 		return std::string(str);
 	}
 	std::string res = std::string(str);
@@ -432,7 +444,6 @@ std::string unescape(std::string_view str)
 {
 	std::string::size_type pos = str.find('\\');
 	if (pos == std::string::npos) {
-		// Fast path, possibly involving only reference counting.
 		return std::string(str);
 	}
 	std::string res = std::string(str);

@@ -29,6 +29,7 @@
 #include "serialization/preprocessor.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
+#include "utils/charconv.hpp"
 #include "utils/iterable_pair.hpp"
 #include "game_version.hpp"
 
@@ -217,6 +218,7 @@ server::server(int port,
 		const std::string& config_file)
 	: server_base(port, keep_alive)
 	, ban_manager_()
+	, rng_()
 	, ip_log_()
 	, failed_logins_()
 	, user_handler_(nullptr)
@@ -462,14 +464,14 @@ void server::load_config(bool reload)
 		queue_info_.clear();
 		for(const config& queue : cfg_.mandatory_child("queues").child_range("queue")) {
 			const config& game = queue.mandatory_child("game");
-			queue_info q = queue_info(queue["id"].to_int(), game["scenario"].str(), queue["display_name"].str(), queue["players_required"].to_int(), game);
+			queue_info q = queue_info(queue["id"].to_int(), queue["display_name"].str(), queue["players_required"].to_int(), game);
 			queue_info_.emplace(q.id, q);
 		}
 	} else if(reload && cfg_.has_child("queues")) {
 		std::map<int, queue_info> new_queue_info;
 		for(const config& queue : cfg_.mandatory_child("queues").child_range("queue")) {
 			const config& game = queue.mandatory_child("game");
-			queue_info q = queue_info(queue["id"].to_int(), game["scenario"].str(), queue["display_name"].str(), queue["players_required"].to_int(), game);
+			queue_info q = queue_info(queue["id"].to_int(), queue["display_name"].str(), queue["players_required"].to_int(), game);
 			new_queue_info.emplace(q.id, q);
 		}
 
@@ -480,14 +482,12 @@ void server::load_config(bool reload)
 				simple_wml::node& update = queue_update.root().add_child("queue_update");
 				update.set_attr_int("queue_id", info.id);
 				update.set_attr_dup("action", "add");
-				update.set_attr_dup("scenario_id", info.scenario_id.c_str());
 				update.set_attr_dup("display_name", info.display_name.c_str());
 				update.set_attr_int("players_required", info.players_required);
 
 				send_to_lobby(queue_update);
 			} else if(
 				queue_info_.count(id) == 1 && (
-					info.scenario_id != queue_info_.at(id).scenario_id ||
 					info.display_name != queue_info_.at(id).display_name ||
 					info.players_required != queue_info_.at(id).players_required
 				)
@@ -496,7 +496,6 @@ void server::load_config(bool reload)
 				simple_wml::node& update = queue_update.root().add_child("queue_update");
 				update.set_attr_int("queue_id", info.id);
 				update.set_attr_dup("action", "update");
-				update.set_attr_dup("scenario_id", info.scenario_id.c_str());
 				update.set_attr_dup("display_name", info.display_name.c_str());
 				update.set_attr_int("players_required", info.players_required);
 
@@ -839,7 +838,10 @@ void server::login_client(boost::asio::yield_context yield, SocketPtr socket)
 	}
 
 	simple_wml::node& player_cfg = games_and_users_list_.root().add_child("user");
-	auto [new_player, inserted] = player_connections_.emplace(
+
+	player_iterator new_player;
+	bool inserted;
+	std::tie(new_player, inserted) = player_connections_.emplace(
 		socket,
 		username,
 		player_cfg,
@@ -863,7 +865,6 @@ void server::login_client(boost::asio::yield_context yield, SocketPtr socket)
 	for(const auto& [id, queue] : queue_info_) {
 		simple_wml::node& queue_node = queues_node.add_child("queue");
 		queue_node.set_attr_int("id", queue.id);
-		queue_node.set_attr_dup("scenario_id", queue.scenario_id.c_str());
 		queue_node.set_attr_dup("display_name", queue.display_name.c_str());
 		queue_node.set_attr_int("players_required", queue.players_required);
 		queue_node.set_attr_dup("current_players", utils::join(queue.players_in_queue).c_str());
@@ -1669,7 +1670,7 @@ void server::handle_join_server_queue(player_iterator p, simple_wml::node& data)
 	// if they're not already in the queue, add them
 	queue.players_in_queue.emplace_back(p->info().name());
 	p->info().add_queue(queue.id);
-	LOG_SERVER << p->client_ip() << "\t" << p->name() << "\tincrementing " << queue.scenario_id << " to " << std::to_string(queue.players_in_queue.size()) << "/" << std::to_string(queue.players_required);
+	LOG_SERVER << p->client_ip() << "\t" << p->name() << "\tincrementing " << queue.settings["scenario"] << " to " << std::to_string(queue.players_in_queue.size()) << "/" << std::to_string(queue.players_required);
 
 	send_queue_update(queue);
 
@@ -1682,7 +1683,11 @@ void server::handle_join_server_queue(player_iterator p, simple_wml::node& data)
 		simple_wml::node& create_game_node = create_game_doc.root().add_child("create_game");
 		create_game_node.set_attr_int("queue_id", queue.id);
 		simple_wml::node& game = create_game_node.add_child("game");
-		game.set_attr_dup("scenario", queue.settings["scenario"].str().c_str());
+
+		std::vector<std::string> scenarios = utils::split(queue.settings["scenario"].str());
+		uint32_t index = rng_.get_next_random() % scenarios.size();
+
+		game.set_attr_dup("scenario", scenarios[index].c_str());
 		game.set_attr_dup("era", queue.settings["era"].str().c_str());
 		game.set_attr_int("fog", queue.settings["fog"].to_int());
 		game.set_attr_int("shroud", queue.settings["shroud"].to_int());
@@ -2468,7 +2473,7 @@ void server::sample_handler(
 		return;
 	}
 
-	request_sample_frequency = atoi(parameters.c_str());
+	request_sample_frequency = utils::from_chars<int>(parameters).value_or(0);
 	if(request_sample_frequency <= 0) {
 		*out << "Sampling turned off.";
 	} else {
@@ -3366,7 +3371,7 @@ int main(int argc, char** argv)
 				p = q;
 			}
 		} else if((val == "--port" || val == "-p") && arg + 1 != argc) {
-			port = atoi(argv[++arg]);
+			port = utils::from_chars<int>(argv[++arg]).value_or(0);
 		} else if(val == "--keepalive") {
 			keep_alive = true;
 		} else if(val == "--help" || val == "-h") {
@@ -3405,7 +3410,7 @@ int main(int argc, char** argv)
 			setsid();
 #endif
 		} else if(val == "--request_sample_frequency" && arg + 1 != argc) {
-			wesnothd::request_sample_frequency = atoi(argv[++arg]);
+			wesnothd::request_sample_frequency = utils::from_chars<int>(argv[++arg]).value_or(0);
 		} else {
 			ERR_SERVER << "unknown option: " << val;
 			return 2;

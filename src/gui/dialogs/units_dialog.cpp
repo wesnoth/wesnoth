@@ -367,9 +367,7 @@ void units_dialog::post_show()
 		sort_last.reset();
 	}
 
-	if(get_retval() == retval::OK) {
-		selected_index_ = list.get_selected_row();
-	}
+	selected_index_ = get_retval() == retval::OK ? list.get_selected_row() : -1;
 }
 
 void units_dialog::filter_text_changed(const std::string& text)
@@ -802,9 +800,7 @@ std::unique_ptr<units_dialog> units_dialog::build_recall_dialog(
 			}
 		},
 		[](const auto& unit) {
-			// this allows 0/35, 0/100 etc to be sorted
-			// also sorts 23/35 before 0/35, after which 0/100 comes
-			return unit->experience() + unit->max_experience();
+			return std::tuple(static_cast<int>(unit->experience_to_advance()), unit->max_experience());
 		});
 
 	set_column("unit_traits",

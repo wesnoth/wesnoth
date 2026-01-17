@@ -168,11 +168,11 @@ void aspect_attacks_base::do_attack_analysis(const map_location& loc,
 		bool backstab = false, slow = false;
 		for(const attack_type& a : unit_itor->attacks()) {
 			// For speed, just assume these specials will be active if they are present.
-			if(a.has_special("backstab", true)) {
+			if (utils::find_if(a.specials(), [](const ability_ptr& p_ab) { return p_ab->id() == "backstab"; })) {
 				backstab = true;
 			}
 
-			if(a.has_special("slow", true)) {
+			if (utils::find_if(a.specials(), [](const ability_ptr& p_ab) { return p_ab->tag() == "slow"; })) {
 				slow = true;
 			}
 		}
@@ -335,8 +335,7 @@ void aspect_attacks_base::do_attack_analysis(const map_location& loc,
 int aspect_attacks_base::rate_terrain(const unit& u, const map_location& loc)
 {
 	const gamemap& map_ = resources::gameboard->map();
-	const t_translation::terrain_code terrain = map_.get_terrain(loc);
-	const int defense = u.defense_modifier(terrain);
+	const int defense = u.defense_modifier(map_.get_terrain(loc));
 	int rating = 100 - defense;
 
 	const int healing_value = 10;
@@ -344,11 +343,11 @@ int aspect_attacks_base::rate_terrain(const unit& u, const map_location& loc)
 	const int neutral_village_value = 10;
 	const int enemy_village_value = 15;
 
-	if(map_.gives_healing(terrain) && u.get_ability_bool("regenerate", loc) == false) {
+	if(map_.gives_healing(loc) && u.get_ability_bool("regenerate", loc) == false) {
 		rating += healing_value;
 	}
 
-	if(map_.is_village(terrain)) {
+	if(map_.is_village(loc)) {
 		int owner = resources::gameboard->village_owner(loc);
 
 		if(owner == u.side()) {

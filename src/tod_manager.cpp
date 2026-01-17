@@ -36,7 +36,7 @@ static lg::log_domain log_engine("engine");
 
 tod_manager::tod_manager(const config& scenario_cfg)
 	: currentTime_(0)
-	, times_()
+	, times_(time_of_day::parse_times(scenario_cfg))
 	, areas_()
 	, liminal_bonus_(25)
 	, turn_(scenario_cfg["turn_at"].to_int(1))
@@ -52,7 +52,6 @@ tod_manager::tod_manager(const config& scenario_cfg)
 		random_tod_ = false;
 	}
 
-	time_of_day::parse_times(scenario_cfg, times_);
 	liminal_bonus_ = std::max(25, calculate_best_liminal_bonus(times_));
 
 	if(scenario_cfg.has_attribute("liminal_bonus")) {
@@ -165,12 +164,10 @@ int tod_manager::get_current_area_time(int index) const
 
 int tod_manager::get_current_time(const map_location& loc) const
 {
-	if(loc != map_location::null_location()) {
-		for(auto i = areas_.rbegin(), i_end = areas_.rend();
-			i != i_end; ++i) {
-			if(i->hexes.find(loc) != i->hexes.end()) {
-				return i->currentTime;
-			}
+	for(auto i = areas_.rbegin(), i_end = areas_.rend();
+		i != i_end; ++i) {
+		if(i->hexes.find(loc) != i->hexes.end()) {
+			return i->currentTime;
 		}
 	}
 
@@ -179,12 +176,10 @@ int tod_manager::get_current_time(const map_location& loc) const
 
 const std::vector<time_of_day>& tod_manager::times(const map_location& loc) const
 {
-	if(loc != map_location::null_location()) {
-		for(auto i = areas_.rbegin(), i_end = areas_.rend();
-			i != i_end; ++i) {
-			if(i->hexes.find(loc) != i->hexes.end() && !i->times.empty())
-				return i->times;
-		}
+	for(auto i = areas_.rbegin(), i_end = areas_.rend();
+		i != i_end; ++i) {
+		if(i->hexes.find(loc) != i->hexes.end() && !i->times.empty())
+			return i->times;
 	}
 
 	return times_;
@@ -216,7 +211,7 @@ const time_of_day& tod_manager::get_area_time_of_day(int area_i, int n_turn) con
 	return get_time_of_day_turn(areas_[area_i].times, n_turn, areas_[area_i].currentTime);
 }
 
-const time_of_day tod_manager::get_illuminated_time_of_day(
+time_of_day tod_manager::get_illuminated_time_of_day(
 	const unit_map& units, const gamemap& map, const map_location& loc, int for_turn) const
 {
 	// get ToD ignoring illumination
@@ -233,14 +228,15 @@ const time_of_day tod_manager::get_illuminated_time_of_day(
 		int most_sub = 0;
 
 		// Find the "illuminates" effects from units that can affect loc.
-		std::array<map_location, 7> locs;
-		locs[0] = loc;
-		get_adjacent_tiles(loc, locs.data() + 1); // start at [1]
-
-		for(std::size_t i = 0; i < locs.size(); ++i) {
-			const auto itor = units.find(locs[i]);
-			if(itor != units.end() && !itor->incapacitated()) {
-				unit_ability_list illum = itor->get_abilities("illuminates");
+		for(const unit& u : units) {
+			if(!u.incapacitated()) {
+				const map_location& u_loc = u.get_location();
+				std::size_t distance = distance_between(u_loc, loc);
+				active_ability_list illum = u.get_abilities("illuminates");
+				utils::erase_if(illum, [&](const active_ability& i) {
+					std::size_t radius = i.ability_cfg()["radius"] != "all_map" ? i.ability_cfg()["radius"].to_int(1) : INT_MAX;
+					return distance > radius;
+				});
 				if(!illum.empty()) {
 					unit_abilities::effect illum_effect(illum, terrain_light, nullptr, unit_abilities::EFFECT_WITHOUT_CLAMP_MIN_MAX);
 					const int unit_mod = illum_effect.get_composite_value();
@@ -289,9 +285,7 @@ bool tod_manager::is_start_ToD(const std::string& random_start_time)
 
 void tod_manager::replace_schedule(const config& time_cfg)
 {
-	std::vector<time_of_day> new_scedule;
-	time_of_day::parse_times(time_cfg, new_scedule);
-	replace_schedule(new_scedule, time_cfg["current_time"].to_int(0));
+	replace_schedule(time_of_day::parse_times(time_cfg), time_cfg["current_time"].to_int(0));
 }
 
 void tod_manager::replace_schedule(const std::vector<time_of_day>& schedule, int initial_time)
@@ -302,6 +296,17 @@ void tod_manager::replace_schedule(const std::vector<time_of_day>& schedule, int
 
 	times_ = schedule;
 	currentTime_ = initial_time;
+}
+
+void tod_manager::move_all_areas(int x_offset, int y_offset) {
+	for (auto& area : areas_) {
+		decltype(area.hexes) new_locs;
+		for (auto& loc : area.hexes) {
+			map_location new_loc{ loc.x - x_offset, loc.y - y_offset };
+			new_locs.insert(new_loc);
+		}
+		area.hexes = new_locs;
+	}
 }
 
 void tod_manager::replace_area_locations(int area_index, const std::set<map_location>& locs)
@@ -391,7 +396,7 @@ void tod_manager::add_time_area(const gamemap& map, const config& cfg)
 	area.currentTime = cfg["current_time"].to_int(0);
 	const std::vector<map_location>& locs(map.parse_location_range(area.xsrc, area.ysrc, true));
 	area.hexes.insert(locs.begin(), locs.end());
-	time_of_day::parse_times(cfg, area.times);
+	area.times = time_of_day::parse_times(cfg);
 	has_tod_bonus_changed_ = true;
 }
 
@@ -402,7 +407,7 @@ void tod_manager::add_time_area(const std::string& id, const std::set<map_locati
 	area.id = id;
 	area.hexes = locs;
 	area.currentTime = time_cfg["current_time"].to_int(0);
-	time_of_day::parse_times(time_cfg, area.times);
+	area.times = time_of_day::parse_times(time_cfg);
 	has_tod_bonus_changed_ = true;
 }
 

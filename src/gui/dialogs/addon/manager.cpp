@@ -854,9 +854,13 @@ void addon_manager::install_addon(const addon_info& addon)
 {
 	addon_info versioned_addon = addon;
 	if(addon.id == find_widget<addon_list>("addons").get_selected_addon()->id) {
-		if (menu_button* list = find_widget<menu_button>("version_filter", false, false)) {
-			versioned_addon.current_version = list->get_value_string();
+		widget* parent = this;
+		if(stacked_widget* stk = find_widget<stacked_widget>("main_stack", false, false)) {
+			parent = stk->get_layer_grid(1);
 		}
+		// At this point the version list should always be found, so error if it's not there
+		menu_button& list = parent->find_widget<menu_button>("version_filter");
+		versioned_addon.current_version = list.get_value_string();
 	}
 
 	addons_client::install_result result = client_.install_addon_with_checks(addons_, versioned_addon);
@@ -872,7 +876,7 @@ void addon_manager::install_addon(const addon_info& addon)
 void addon_manager::uninstall_addon(const addon_info& addon)
 {
 	if(have_addon_pbl_info(addon.id) || have_addon_in_vcs_tree(addon.id)) {
-		show_error_message(
+		gui2::show_error_message(
 			_("The following add-on appears to have publishing or version control information stored locally, and will not be removed:")
 			+ " " +	addon.display_title_full());
 		return;
@@ -988,7 +992,7 @@ void addon_manager::publish_addon(const addon_info& addon)
 		gui2::show_error_message(_("Invalid icon path. Make sure the path points to a valid image."));
 	} else if(!client_.request_distribution_terms(server_msg)) {
 		gui2::show_error_message(
-			_("The server responded with an error:") + "\n" + client_.get_last_server_error());
+			_("The server responded with an error:") + "\n" + client_.get_last_server_error(), true);
 	} else if(gui2::dialogs::addon_license_prompt::execute(server_msg)) {
 		if(!client_.upload_addon(addon_id, server_msg, cfg, tracking_info_[addon_id].state == ADDON_INSTALLED_LOCAL_ONLY)) {
 			const std::string& msg = _("The add-on was rejected by the server:") +
@@ -1030,7 +1034,7 @@ void addon_manager::delete_addon(const addon_info& addon)
 
 	std::string server_msg;
 	if(!client_.delete_remote_addon(addon_id, server_msg)) {
-		gui2::show_error_message(_("The server responded with an error:") + "\n" + client_.get_last_server_error());
+		gui2::show_error_message(_("The server responded with an error:") + "\n" + client_.get_last_server_error(), true);
 	} else {
 		// FIXME: translation needed!
 		gui2::show_transient_message(_("Response"), server_msg);
@@ -1186,11 +1190,13 @@ void addon_manager::on_addon_select()
 void addon_manager::on_selected_version_change()
 {
 	widget* parent = this;
+	const addon_info* info = nullptr;
 	if(stacked_widget* stk = find_widget<stacked_widget>("main_stack", false, false)) {
-		parent = stk->get_layer_grid(0);
+		parent = stk->get_layer_grid(1);
+		info = stk->get_layer_grid(0)->find_widget<addon_list>("addons").get_selected_addon();
+	} else {
+		info = find_widget<addon_list>("addons").get_selected_addon();
 	}
-
-	const addon_info* info = parent->find_widget<addon_list>("addons").get_selected_addon();
 
 	if(info == nullptr) {
 		return;

@@ -412,7 +412,7 @@ void server::load_config()
 				throw filesystem::io_exception("The addon '" + addon_id
 					   + "' already exists in the new form! Possible code or filesystem interference!\n");
 			}
-			if(std::find(legacy_addons.begin(), legacy_addons.end(), addon_id) == legacy_addons.end()) {
+			if(!utils::contains(legacy_addons, addon_id)) {
 				throw filesystem::io_exception("No file has been found for the legacy addon '" + addon_id
 					   + "'. Check the file structure!\n");
 			}
@@ -540,7 +540,7 @@ void server::handle_read_from_fifo(const boost::system::error_code& error, std::
 	std::string cmd;
 	std::getline(is, cmd);
 
-	const control_line ctl = cmd;
+	const control_line ctl{cmd};
 
 	if(ctl == "shut_down") {
 		LOG_CS << "Shut down requested by admin, shutting down...";

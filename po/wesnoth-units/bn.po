@@ -1,14 +1,14 @@
 # #-#-#-#-#  wesnoth-units  #-#-#-#-#
 # Bengali translation of Wesnoth.
 # Copyright (C) 2024 Wesnoth development team
-# Subhraman Sarkar <suvrax@gmail.com>, 2024.
+# Subhraman Sarkar <suvrax@gmail.com>, 2024-2026.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: bn\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-07-21 03:54 UTC\n"
-"PO-Revision-Date: 2024-05-31 21:17+0530\n"
+"POT-Creation-Date: 2025-12-22 03:09 UTC\n"
+"PO-Revision-Date: 2026-01-02 11:01+0530\n"
 "Last-Translator: Subhraman Sarkar <suvrax@gmail.com>\n"
 "Language-Team: Bengali < >\n"
 "Language: bn\n"
@@ -39,18 +39,12 @@ msgid "mace"
 msgstr "গদা"
 
 #. [attack]: type=blade
-#. [attack]: type=arcane
 #: data/campaigns/Descent_Into_Darkness/units/Apprentice_Mage.cfg:23
 #: data/campaigns/Descent_Into_Darkness/units/Apprentice_Necromancer.cfg:22
 #: data/campaigns/Descent_Into_Darkness/units/Dark_Mage.cfg:23
 #: data/campaigns/Descent_Into_Darkness/units/Malin_Keshar.cfg:465
 #: data/campaigns/Descent_Into_Darkness/units/Malin_Keshar.cfg:493
 #: data/campaigns/Descent_Into_Darkness/units/Malin_Keshar.cfg:535
-#: data/campaigns/Eastern_Invasion/units/Human_Shadow_Mage.cfg:35
-#: data/campaigns/Liberty/units/Rogue_Mage.cfg:23
-#: data/campaigns/Liberty/units/Shadow_Mage.cfg:32
-#: data/campaigns/The_Deceivers_Gambit/units/Bandit_Rogue_Mage.cfg:27
-#: data/campaigns/The_Deceivers_Gambit/units/Bandit_Shadow_Mage.cfg:30
 #: data/core/units/dunefolk/Falconer.cfg:141
 #: data/core/units/dunefolk/Sky_Hunter.cfg:139
 #: data/core/units/humans/Loyalist_Bowman.cfg:23
@@ -77,14 +71,8 @@ msgstr "শৈত্য প্রবাহ"
 #: data/campaigns/Descent_Into_Darkness/units/Malin_Keshar.cfg:556
 #: data/campaigns/Eastern_Invasion/units/Human_Dacyn_Fallen_Mage.cfg:83
 #: data/campaigns/Eastern_Invasion/units/Human_Dacyn_Twilight_Mage.cfg:85
-#: data/campaigns/Eastern_Invasion/units/Human_Shadow_Lord.cfg:62
-#: data/campaigns/Eastern_Invasion/units/Human_Shadow_Mage.cfg:62
 #: data/campaigns/Eastern_Invasion/units/Undead_Ravanal_Dread_Lich.cfg:109
 #: data/campaigns/Secrets_of_the_Ancients/units/Necro_Ancient_Lich.cfg:56
-#: data/campaigns/The_Deceivers_Gambit/units/Bandit_Arcane_Enforcer.cfg:63
-#: data/campaigns/The_Deceivers_Gambit/units/Bandit_Rogue_Mage.cfg:38
-#: data/campaigns/The_Deceivers_Gambit/units/Bandit_Shadow_Lord.cfg:49
-#: data/campaigns/The_Deceivers_Gambit/units/Bandit_Shadow_Mage.cfg:50
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:101
 #: data/campaigns/Under_the_Burning_Suns/units/undead/Spider_Lich.cfg:47
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:53
@@ -102,6 +90,7 @@ msgstr "ছায়া প্রবাহ"
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Lady.cfg:64
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Leader.cfg:65
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Wesfolk_Outcast.cfg:64
+#: data/campaigns/Under_the_Burning_Suns/units/other/Orcish_Shaman.cfg:27
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Druid.cfg:29
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Mystic.cfg:29
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Shaman.cfg:29
@@ -253,11 +242,12 @@ msgstr "স্পর্শ"
 
 #. [attack]: type=impact
 #: data/campaigns/Eastern_Invasion/units/Human_Dacyn_Twilight_Mage.cfg:73
+#: data/campaigns/Heir_To_The_Throne/units/Dwarvish_Witness.cfg:28
+#: data/campaigns/Heir_To_The_Throne_Classic/units/Tutorial_Quintain.cfg:25
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Annalist.cfg:33
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Loremaster.cfg:36
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Witness.cfg:38
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Loremaster.cfg:35
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Witness.cfg:29
 #: data/campaigns/The_South_Guard/units/MECH_Quintain.cfg:25
-#: data/campaigns/tutorial/units/Quintain.cfg:25
 #: data/core/units/humans/Loyalist_Iron_Mauler.cfg:26
 #: data/core/units/humans/Loyalist_Shock_Trooper.cfg:23
 #: data/core/units/humans/Mage_of_Light.cfg:49
@@ -273,23 +263,37 @@ msgstr "ফ্লেইল"
 #: data/campaigns/Eastern_Invasion/units/Human_Owaec_Horse_Lord.cfg:37
 #: data/campaigns/Eastern_Invasion/units/Human_Owaec_Princeling.cfg:36
 #: data/campaigns/Eastern_Invasion/units/Human_Terraent_Paladin.cfg:38
-#: data/campaigns/Eastern_Invasion/units/Undead_Horse_Barrow_Wight.cfg:48
-#: data/campaigns/Eastern_Invasion/units/Undead_Horse_Pyre_Wight.cfg:45
-#: data/campaigns/Eastern_Invasion/units/Undead_Horse_Pyre_Wight.cfg:57
-#: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:34
-#: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:131
-#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:24
-#: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:20
-#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:25
-#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:34
-#: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:91
-#: data/campaigns/Heir_To_The_Throne/units/Sea_Orc.cfg:38
+#: data/campaigns/Eastern_Invasion/units/Undead_Horse_Barrow_Wight.cfg:57
+#: data/campaigns/Eastern_Invasion/units/Undead_Horse_Pyre_Wight.cfg:54
+#: data/campaigns/Eastern_Invasion/units/Undead_Horse_Pyre_Wight.cfg:66
+#: data/campaigns/Heir_To_The_Throne/units/Human_Konrad_L1.cfg:25
+#: data/campaigns/Heir_To_The_Throne/units/Human_Konrad_L2.cfg:51
+#: data/campaigns/Heir_To_The_Throne/units/Human_Konrad_L3.cfg:53
+#: data/campaigns/Heir_To_The_Throne/units/Human_Konrad_L4.cfg:53
+#: data/campaigns/Heir_To_The_Throne/units/Human_Lisar_Princess.cfg:35
+#: data/campaigns/Heir_To_The_Throne/units/Human_Lisar_Princess.cfg:93
+#: data/campaigns/Heir_To_The_Throne/units/Human_Lisar_Warrior_Princess.cfg:35
+#: data/campaigns/Heir_To_The_Throne/units/Human_Lisar_Warrior_Princess.cfg:132
+#: data/campaigns/Heir_To_The_Throne/units/Orcish_Sea_Orc.cfg:38
+#: data/campaigns/Heir_To_The_Throne/units/Undead_Horse_Barrow_Wight.cfg:57
+#: data/campaigns/Heir_To_The_Throne_Classic/units/Battle_Princess.cfg:34
+#: data/campaigns/Heir_To_The_Throne_Classic/units/Battle_Princess.cfg:131
+#: data/campaigns/Heir_To_The_Throne_Classic/units/Commander.cfg:24
+#: data/campaigns/Heir_To_The_Throne_Classic/units/Fighter.cfg:20
+#: data/campaigns/Heir_To_The_Throne_Classic/units/Lord.cfg:25
+#: data/campaigns/Heir_To_The_Throne_Classic/units/Princess.cfg:34
+#: data/campaigns/Heir_To_The_Throne_Classic/units/Princess.cfg:91
+#: data/campaigns/Heir_To_The_Throne_Classic/units/Sea_Orc.cfg:38
+#: data/campaigns/Heir_To_The_Throne_Classic/units/Tutorial_Fighter.cfg:24
+#: data/campaigns/Heir_To_The_Throne_Classic/units/Tutorial_Fighteress.cfg:25
+#: data/campaigns/Heir_To_The_Throne_Classic/units/Tutorial_Warrior.cfg:25
+#: data/campaigns/Heir_To_The_Throne_Classic/units/Tutorial_Warrioress.cfg:26
 #: data/campaigns/Sceptre_of_Fire/units/Haldric_II.cfg:26
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Commander.cfg:34
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Fighter.cfg:23
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Lord.cfg:35
-#: data/campaigns/The_South_Guard/units/Deoran1_Cavalryman.cfg:64
-#: data/campaigns/The_South_Guard/units/Deoran2_Dragoon.cfg:52
+#: data/campaigns/The_South_Guard/units/Deoran1_Cavalryman.cfg:58
+#: data/campaigns/The_South_Guard/units/Deoran2_Dragoon.cfg:43
 #: data/campaigns/Under_the_Burning_Suns/units/humans/Human_Commander.cfg:36
 #: data/campaigns/Under_the_Burning_Suns/units/nagas/Naga_Hunter.cfg:25
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Archer.cfg:30
@@ -301,11 +305,7 @@ msgstr "ফ্লেইল"
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Ranger.cfg:33
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Ranger.cfg:62
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Scout.cfg:27
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:929
-#: data/campaigns/tutorial/units/Fighter.cfg:24
-#: data/campaigns/tutorial/units/Fighteress.cfg:25
-#: data/campaigns/tutorial/units/Warrior.cfg:25
-#: data/campaigns/tutorial/units/Warrioress.cfg:26
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:887
 #: data/core/units/elves/Archer.cfg:23 data/core/units/elves/Avenger.cfg:39
 #: data/core/units/elves/Captain.cfg:34 data/core/units/elves/Champion.cfg:23
 #: data/core/units/elves/Fighter.cfg:22 data/core/units/elves/Hero.cfg:22
@@ -336,10 +336,9 @@ msgstr "তলোয়ার"
 #: data/campaigns/Eastern_Invasion/units/Human_Gweddry_Frontier_Sergeant.cfg:38
 #: data/campaigns/Eastern_Invasion/units/Human_Gweddry_Veteran_Commander.cfg:55
 #: data/campaigns/Eastern_Invasion/units/Human_Gweddry_Veteran_Lieutenant.cfg:53
-#: data/campaigns/The_Deceivers_Gambit/units/Bandit_Arcane_Enforcer.cfg:52
-#: data/campaigns/The_Deceivers_Gambit/units/Human_Deoran_Mirror.cfg:53
-#: data/campaigns/The_South_Guard/units/Deoran2_Dragoon.cfg:61
-#: data/campaigns/The_South_Guard/units/Deoran3_Cavalier.cfg:53
+#: data/campaigns/The_Deceivers_Gambit/units/Human_Deoran_Mirror.cfg:39
+#: data/campaigns/The_South_Guard/units/Deoran2_Dragoon.cfg:52
+#: data/campaigns/The_South_Guard/units/Deoran3_Cavalier.cfg:44
 #: data/core/units/humans/Loyalist_Cavalier.cfg:45
 #: data/core/units/humans/Loyalist_Dragoon.cfg:63
 #: data/core/units/humans/Loyalist_Duelist.cfg:45
@@ -359,10 +358,11 @@ msgstr "ক্রসবো"
 #. [attack]: type=blade
 #: data/campaigns/Eastern_Invasion/units/Human_Gweddry_Veteran_Commander.cfg:46
 #: data/campaigns/Eastern_Invasion/units/Human_Gweddry_Veteran_Lieutenant.cfg:44
+#: data/campaigns/Heir_To_The_Throne/units/Human_Maddock.cfg:56
 #: data/campaigns/Liberty/units/Maddock.cfg:51
-#: data/campaigns/The_Deceivers_Gambit/units/Human_Deoran_Mirror.cfg:44
+#: data/campaigns/The_Deceivers_Gambit/units/Human_Deoran_Mirror.cfg:30
 #: data/campaigns/The_Deceivers_Gambit/units/Human_Maddock.cfg:54
-#: data/campaigns/The_South_Guard/units/Deoran3_Cavalier.cfg:44
+#: data/campaigns/The_South_Guard/units/Deoran3_Cavalier.cfg:35
 #: data/core/units/humans/Horse_Grand_Knight.cfg:24
 #: data/core/units/humans/Loyalist_Cavalier.cfg:36
 #: data/core/units/humans/Loyalist_General.cfg:44
@@ -410,6 +410,21 @@ msgid ""
 "curious abilities; a Paladin is very powerful in fighting magical or "
 "unnatural things, and most have some skill at medicine and healing."
 msgstr ""
+"উচ্চতম নৈতিক গুণাবলির অধিকারী নাইটদের মধ্যে প্যালাডিনরা তাদের শক্তি কোনো রাজা বা "
+"মুকুটের প্রতি নয়, বরং আদর্শের প্রতি; শিষ্টাচার, এবং সকল কল্যাণকর বিষয়ের "
+"রক্ষণাবেক্ষণের প্রতি, শপথ করে। তারা বিশ্বের বিভিন্ন সেনাবাহিনীতে সেবা করতে পারে, "
+"কিন্তু তাদের প্রথম আনুগত্য প্রায়ই থাকে এমন কিছু গোষ্ঠীর প্রতি যা তারা নিজেরাই প্রতিষ্ঠা "
+"করেছে; গোপন, সন্ন্যাসী গোষ্ঠী, যেগুলো রাজনৈতিক ও সাংস্কৃতিক সীমানা অতিক্রম করে। "
+"শাসকরাও মাঝে মাঝে তাদের প্রতি সতর্ক থাকে, কারণ প্যালাডিনদের আনুগত্য সাধারণত "
+"শাসকদের নৈতিকতার ওপর নির্ভরশীল । এই কারণে অনৈতক উচ্চাকাঙ্ক্ষী শাসকেরা কখনও কখনও "
+"এই গোষ্ঠীগুলিকে বদনাম করে ভেঙে দেওয়ার চেষ্টা করে, অথবা বিরল ক্ষেত্রে, জটিল "
+"প্রতারণা সৃষ্টি করে যাতে এই বিশ্বস্ত সৈন্যরা তাদের সেবায় অটল থাকে।\n"
+"\n"
+"পূর্ণাঙ্গ প্যালাডিনরা সাধারণত ‘গ্র্যান্ড নাইট’দের মতো ভয়ঙ্কর নয়—যারা অধিকাংশ "
+"সেনাবাহিনীতে শ্রেষ্ঠ হিসেবে পরিচিত—তবুও তারা প্রথম শ্রেণির যোদ্ধা। তদুপরি, তাদের "
+"প্রজ্ঞা ও ধর্মনিষ্ঠা এই যোদ্ধা-সন্ন্যাসীদের কিছু বিশেষ ক্ষমতা প্রদান করে; প্যালাডিনরা "
+"জাদুকরী বা অপ্রাকৃত সত্তার বিরুদ্ধে যুদ্ধে অত্যন্ত শক্তিশালী, এবং অধিকাংশেরই চিকিৎসা ও "
+"নিরাময়ের কিছু দক্ষতা থাকে।"
 
 #. [attack]: type=blade
 #: data/campaigns/Eastern_Invasion/units/Ogre_Ancient.cfg:35
@@ -419,8 +434,8 @@ msgid "cleaver"
 msgstr "ছেদক"
 
 #. [attack]: type=impact
-#: data/campaigns/Eastern_Invasion/units/Undead_Horse_Barrow_Wight.cfg:57
-#: data/core/units/undead/Skele_Bone_Knight.cfg:77
+#: data/campaigns/Eastern_Invasion/units/Undead_Horse_Barrow_Wight.cfg:66
+#: data/core/units/undead/Skele_Bone_Knight.cfg:79
 msgid "trample"
 msgstr "চাপা দেওয়া"
 
@@ -435,23 +450,18 @@ msgstr "শীতল ঝঞ্ঝা"
 
 #. [attack]: type=pierce
 #. [attack]: type=fire
-#: data/campaigns/Heir_To_The_Throne/units/Commander.cfg:33
-#: data/campaigns/Heir_To_The_Throne/units/Lord.cfg:34
+#: data/campaigns/Heir_To_The_Throne/units/Human_Konrad_L2.cfg:60
+#: data/campaigns/Heir_To_The_Throne/units/Human_Konrad_L3.cfg:62
+#: data/campaigns/Heir_To_The_Throne/units/Human_Konrad_L4.cfg:62
+#: data/campaigns/Heir_To_The_Throne_Classic/units/Commander.cfg:33
+#: data/campaigns/Heir_To_The_Throne_Classic/units/Lord.cfg:34
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Commander.cfg:43
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Lord.cfg:44
 #: data/campaigns/Under_the_Burning_Suns/units/humans/Human_Commander.cfg:45
 #: data/campaigns/Under_the_Burning_Suns/units/nagas/Naga_Hunter.cfg:34
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Archer.cfg:40
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Marksman.cfg:43
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:942
-#: data/core/units/boats/Elf_Cutter.cfg:99
-#: data/core/units/boats/Elf_Sloop.cfg:99
-#: data/core/units/boats/Orc_Barge.cfg:108
-#: data/core/units/boats/Orc_Battle-Barge.cfg:127
-#: data/core/units/boats/Orc_Rigship.cfg:79
-#: data/core/units/boats/Orc_Warship.cfg:79
-#: data/core/units/boats/Raider_Coastal.cfg:146
-#: data/core/units/boats/Raider_Iron.cfg:153
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:900
 #: data/core/units/elves/Archer.cfg:32 data/core/units/elves/Avenger.cfg:48
 #: data/core/units/elves/Captain.cfg:43 data/core/units/elves/Champion.cfg:35
 #: data/core/units/elves/Fighter.cfg:31 data/core/units/elves/Hero.cfg:31
@@ -477,10 +487,13 @@ msgstr "ধনুক"
 #. [unit_type]: id=SotA Soulless_Gryphon
 #. [attack]: type=pierce
 #. [variation]
-#: data/campaigns/Heir_To_The_Throne/units/Sleeping_Gryphon.cfg:30
+#: data/campaigns/Heir_To_The_Throne/units/Monster_Gryphlet.cfg:29
+#: data/campaigns/Heir_To_The_Throne/units/Monster_Sleeping_Gryphon.cfg:29
+#: data/campaigns/Heir_To_The_Throne_Classic/units/Sleeping_Gryphon.cfg:30
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:160
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:132
-#: data/campaigns/The_Deceivers_Gambit/units/Monster_Crab.cfg:60
+#: data/campaigns/The_Deceivers_Gambit/units/Monster_Giant_Crab.cfg:60
+#: data/campaigns/The_Hammer_of_Thursagan/units/Sleeping_Gryphon.cfg:30
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Crab_Man.cfg:23
 #: data/core/units/drakes/Burner.cfg:29
 #: data/core/units/goblins/Direwolf_Rider.cfg:41
@@ -506,6 +519,19 @@ msgstr "ধনুক"
 #: data/core/units/undead/Spirit_Shadow.cfg:62
 msgid "claws"
 msgstr "নখর"
+
+#. [attack]: type=pierce
+#. [attack]: type=cold
+#: data/campaigns/Heir_To_The_Throne/units/Undead_Vampire_Lady.cfg:40
+#: data/campaigns/Secrets_of_the_Ancients/units/Orcish_Shaman.cfg:36
+#: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman.cfg:35
+#: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:37
+#: data/campaigns/Under_the_Burning_Suns/units/other/Orcish_Shaman.cfg:36
+#: data/core/units/saurians/Augur.cfg:33 data/core/units/saurians/Oracle.cfg:44
+#: data/core/units/saurians/Prophet.cfg:46 data/core/units/saurians/Seer.cfg:34
+#: data/core/units/saurians/Soothsayer.cfg:33
+msgid "curse"
+msgstr "শাপ"
 
 #. [attack]: type=blade
 #: data/campaigns/Secrets_of_the_Ancients/units/Bone_Captain.cfg:32
@@ -558,6 +584,9 @@ msgid ""
 "Though not especially dangerous to a trained soldier, the sight of one’s "
 "former comrades amongst their number is frightening to say the least."
 msgstr ""
+"চলমান শবেরা হলো অন্ধকার জাদুর দ্বারা পুনর্জীবিত মৃতদের দেহ। প্রশিক্ষিত সৈন্যের জন্য "
+"তারা খুব ভয়ংকর না হলেও, নিজের প্রাক্তন সঙ্গীদের এই দেহগুলোর ভিড়ে দেখা, কম করে "
+"বললেও, ভীতিকর নিশ্চয়ই।"
 
 #. [attack]: type=impact
 #: data/campaigns/Secrets_of_the_Ancients/units/Delinquent.cfg:27
@@ -589,17 +618,6 @@ msgstr "মৃত্যু জাদুবিদ"
 msgid "plague staff"
 msgstr "প্লেগের দন্ড"
 
-#. [attack]: type=pierce
-#. [attack]: type=cold
-#: data/campaigns/Secrets_of_the_Ancients/units/Orcish_Shaman.cfg:36
-#: data/campaigns/Son_Of_The_Black_Eye/units/Orcish_Shaman.cfg:35
-#: data/campaigns/The_Rise_Of_Wesnoth/units/Vampire_Lady.cfg:37
-#: data/core/units/saurians/Augur.cfg:33 data/core/units/saurians/Oracle.cfg:44
-#: data/core/units/saurians/Prophet.cfg:46 data/core/units/saurians/Seer.cfg:34
-#: data/core/units/saurians/Soothsayer.cfg:33
-msgid "curse"
-msgstr "শাপ"
-
 #. [unit_type]: id=SotA Walking Corpse_Rat
 #. [unit_type]: id=SotA Soulless_Rat
 #. [attack]: type=blade
@@ -609,6 +627,7 @@ msgstr "শাপ"
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Corpses.cfg:301
 #: data/campaigns/Secrets_of_the_Ancients/units/SotA_Soulless.cfg:262
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Familiar.cfg:33
+#: data/campaigns/Under_the_Burning_Suns/units/monsters/Scarab.cfg:41
 #: data/core/units/dunefolk/Wyvern_Rider.cfg:23
 #: data/core/units/monsters/Boar.cfg:50
 #: data/core/units/monsters/Boar_Piglet.cfg:50
@@ -616,7 +635,7 @@ msgstr "শাপ"
 #: data/core/units/monsters/Dragonfly.cfg:31
 #: data/core/units/monsters/Dragonfly_Grand.cfg:32
 #: data/core/units/monsters/Dragonfly_Naiad.cfg:62
-#: data/core/units/monsters/Fire_Dragon.cfg:33
+#: data/core/units/monsters/Fire_Dragon.cfg:55
 #: data/core/units/monsters/Frost_Stoat.cfg:94
 #: data/core/units/monsters/Giant_Rat.cfg:30
 #: data/core/units/monsters/Icemonax.cfg:62
@@ -645,6 +664,10 @@ msgid ""
 "unwilling corpses. These shamblers are often numerous, but fragile; a touch "
 "of combat can waken them, though, making them far more formidable."
 msgstr ""
+"মৃতদেহকে সচল করার পদ্ধতিটি দুর্ভাগ্যবশত অন্ধকার জাদুর মধ্যে বেশ পরিচিত; এই শিল্পের "
+"অনুশীলনকারীরা প্রায়ই অনিচ্ছুক মৃতদেহ থেকে দাস ও সৈন্য তুলতে এটি ব্যবহার করে। এই "
+"টলমলে প্রাণীরা সাধারণত সংখ্যায় অনেক হলেও ভঙ্গুর; তবে সামান্য লড়াইয়ের স্পর্শই তাদের "
+"জাগিয়ে তুলতে পারে, আর তখন তারা অনেক বেশি ভয়ঙ্কর হয়ে ওঠে।"
 
 #. [unit_type]: id=SotA Soulless_Human
 #. [unit_type]: id=SotA Soulless_Dwarf
@@ -679,66 +702,28 @@ msgstr ""
 msgid "Soulless"
 msgstr "আত্মাহীন"
 
-#. [attack]: type=blade
-#: data/campaigns/The_Deceivers_Gambit/units/Bandit_Arcane_Enforcer.cfg:41
-#: data/core/units/orcs/Ruler.cfg:27 data/core/units/orcs/Sovereign.cfg:28
-#: data/core/units/orcs/Warlord.cfg:30 data/core/units/orcs/Warrior.cfg:38
-msgid "greatsword"
-msgstr "বিরাট তলোয়ার"
+#. [unit_type]: id=Cavalier Commander, race=human
+#. [unit_type]: id=Cavalier, race=human
+#: data/campaigns/The_Deceivers_Gambit/units/Human_Deoran_Mirror.cfg:5
+#: data/campaigns/The_South_Guard/units/Deoran3_Cavalier.cfg:5
+#: data/core/units/humans/Loyalist_Cavalier.cfg:4
+msgid "Cavalier"
+msgstr "শীর্ষ অশ্বারোহী"
 
-#. [unit_type]: id=Shadow Lord, race=human, gender=male,female
-#: data/campaigns/The_Deceivers_Gambit/units/Bandit_Shadow_Lord.cfg:5
-#, fuzzy
-#| msgid "Shadow"
-msgid "Shadow Lord"
-msgstr "ছায়া"
-
-#. [unit_type]: id=Shadow Lord, race=human, gender=male,female
-#: data/campaigns/The_Deceivers_Gambit/units/Bandit_Shadow_Lord.cfg:19
+#. [unit_type]: id=Cavalier Commander, race=human
+#. [unit_type]: id=Cavalier, race=human
+#: data/campaigns/The_Deceivers_Gambit/units/Human_Deoran_Mirror.cfg:25
+#: data/core/units/humans/Loyalist_Cavalier.cfg:20
 msgid ""
-"The fruits of the paths of either light or darkness are well known to magi: "
-"the brilliance of a white mage or the deep gloom of a necromancer. Much less "
-"well known is the art of the Shadow Lord, those few who master a union of "
-"both white and black magic. Though decades of zealous study and self-neglect "
-"have left them drained of strength, these savants have transcended the need "
-"for crude physical weapons, instead channeling their energies into "
-"devastating magical attacks that undercut their enemies’ resistances."
+"Cavaliers are masters at the use of both sword and crossbow from horseback. "
+"Their combination of striking power and mobility is fearsome, and they have "
+"a reputation for dash and aggressiveness to match it. The daring deeds of "
+"Cavaliers are the subject of many a tale and song."
 msgstr ""
-
-#. [attack]: type=blade
-#: data/campaigns/The_Deceivers_Gambit/units/Bandit_Shadow_Lord.cfg:31
-#, fuzzy
-#| msgid "war blade"
-msgid "astral blade"
-msgstr "যুদ্ধের ফলক"
-
-#. [damage_type]: id=cold_damage
-#: data/campaigns/The_Deceivers_Gambit/units/Bandit_Shadow_Lord.cfg:37
-#, fuzzy
-#| msgid "chill wave"
-msgid "chill"
-msgstr "শৈত্য প্রবাহ"
-
-#. [damage_type]: id=cold_damage
-#: data/campaigns/The_Deceivers_Gambit/units/Bandit_Shadow_Lord.cfg:38
-msgid ""
-"This attack can deal either blade or cold damage, depending on which would "
-"be more effective."
-msgstr ""
-
-#. [damage_type]: id=cold_damage
-#: data/campaigns/The_Deceivers_Gambit/units/Bandit_Shadow_Lord.cfg:39
-msgid ""
-"This unit’s melee attack can deal either blade or cold damage, depending on "
-"which would be more effective."
-msgstr ""
-
-#. [female]: gender=female
-#: data/campaigns/The_Deceivers_Gambit/units/Bandit_Shadow_Lord.cfg:87
-#, fuzzy
-#| msgid "female^Dark Horse"
-msgid "female^Shadow Lord"
-msgstr "কালো ঘোড়া"
+"শীর্ষ অশ্বারোহীরা তলোয়ার ও ক্রসবো উভয় অস্ত্রের ব্যবহারে সুদক্ষ। আঘাতের শক্তি ও "
+"গতিশীলতার যে সমন্বয় তারা দেখায়, তা ভয়ঙ্কর, এবং তাদের সাহসী ঝাঁপিয়ে পড়া ও আগ্রাসী "
+"যুদ্ধশৈলীর জন্য তাদের সুনাম রয়েছে। শীর্ষ অশ্বারোহীদের দুঃসাহসিক কার্যকলাপ বহু গল্প ও "
+"গানের বিষয়বস্তু।"
 
 #. [unit_type]: id=Dwarvish Masked Berserker, race=dwarf
 #. [unit_type]: id=Dwarvish Berserker, race=dwarf
@@ -749,6 +734,9 @@ msgid ""
 "rage before combat. These warriors disdain all notion of defense, thinking "
 "only of the unrelenting assaults for which they are legendary."
 msgstr ""
+"ক্ষিপ্তযোদ্ধারা হলো বামনদের একটি বিরল বর্ণ, যারা যুদ্ধে নামার আগে নিজেদের ভয়ঙ্কর "
+"ক্রোধে উন্মত্ত করে তোলে। এই যোদ্ধারা প্রতিরক্ষার সকল ধারণাকে তুচ্ছ করে, এবং শুধুমাত্র "
+"নিরলস আক্রমণের কথাই ভাবে, যে আক্রমণের জন্য তারা কিংবদন্তিতে পরিণত হয়েছে।"
 
 #. [attack]: type=blade
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Berserker.cfg:36
@@ -770,14 +758,21 @@ msgid ""
 "dwarven citadels are both renowned and feared; weapons that have broken the "
 "mightiest of warriors with a single blow."
 msgstr ""
+"ড্রাগনপ্রহরীদের যে নামে ডাকা হয়, যে নাম দিয়েছেন তাদেরই বামন সহোদররা, তার কারণ "
+"স্পষ্ট নয়। কেউ কেউ ধারণা করেন নামটি এসেছে তাদের পছন্দের অস্ত্র থেকে, অদ্ভুত সেই "
+"দণ্ডগুলি, যা আগুন ও মৃত্যু উগরে দেয়। অন্যরা অনুমান করেন যে এমন অস্ত্র এতটাই শক্তিশালী "
+"যে তা সত্যিকারের কোনো ড্রাগনের বিরুদ্ধেও হুমকি হয়ে দাঁড়াতে পারত—যদি এমন প্রাণী "
+"আবারও এই পরিচিত বিশ্বে দেখা দিত। যাই হোক না কেন, এই অস্ত্রগুলোর কারণেই বিরাট "
+"বামন দুর্গগুলোর রক্ষীরা যেমন বিখ্যাত, তেমনি ভীতিপ্রদ; এমন অস্ত্র, যা একটি মাত্র আঘাতে "
+"সবচেয়ে শক্তিশালী যোদ্ধাকেও ভেঙে ফেলতে পারে।"
 
 #. [attack]: type=blade
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Dragonguard.cfg:24
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderer.cfg:29
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderguard.cfg:26
-#: data/core/units/dunefolk/Burner.cfg:32
-#: data/core/units/dunefolk/Firetrooper.cfg:86
-#: data/core/units/dunefolk/Scorcher.cfg:33
+#: data/core/units/dunefolk/Burner.cfg:33
+#: data/core/units/dunefolk/Firetrooper.cfg:87
+#: data/core/units/dunefolk/Scorcher.cfg:34
 #: data/core/units/dwarves/Dragonguard.cfg:38
 #: data/core/units/dwarves/Thunderer.cfg:64
 #: data/core/units/dwarves/Thunderguard.cfg:39
@@ -811,24 +806,27 @@ msgid ""
 "terrain or underground. Their power and endurance more than compensate for "
 "their relatively poor mobility."
 msgstr ""
+"বামন যোদ্ধারা প্রবল যুদ্ধ-কুঠার ও হাতুড়ি ব্যবহার করে, যা তাদের নিকট-সংঘর্ষে ভয়ঙ্কর "
+"প্রতিপক্ষ করে তোলে। পাহাড়ি এলাকা বা ভূগর্ভস্থ স্থানে তারা বিশেষ দক্ষ। তাদের শক্তি ও "
+"সহনশীলতা তাদের তুলনামূলকভাবে কম গতিশীলতার ঘাটতিকে পুরোপুরি পুষিয়ে দেয়।"
 
 #. [attack]: type=blade
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Fighter.cfg:32
-#: data/core/units/dunefolk/Explorer.cfg:35
-#: data/core/units/dunefolk/Rover.cfg:84
-#: data/core/units/dunefolk/Wayfarer.cfg:43
+#: data/core/units/dunefolk/Explorer.cfg:36
+#: data/core/units/dunefolk/Rover.cfg:88
+#: data/core/units/dunefolk/Wayfarer.cfg:44
 #: data/core/units/dwarves/Explorer.cfg:37
 #: data/core/units/dwarves/Fighter.cfg:57
 #: data/core/units/dwarves/Pathfinder.cfg:36
 #: data/core/units/dwarves/Pathfinder.cfg:44
 #: data/core/units/dwarves/Scout.cfg:35 data/core/units/dwarves/Scout.cfg:43
-#: data/core/units/undead/Skele_Bone_Knight.cfg:67
+#: data/core/units/undead/Skele_Bone_Knight.cfg:69
 #: data/core/units/undead/Skele_Death_Squire.cfg:51
 #: data/core/units/undead/Skele_Deathblade.cfg:53
 #: data/core/units/undead/Skele_Draug.cfg:30
 #: data/core/units/undead/Skele_Revenant.cfg:31
 #: data/core/units/undead/Skeleton.cfg:49
-#: data/core/units/undead/Skeleton_Rider.cfg:86
+#: data/core/units/undead/Skeleton_Rider.cfg:87
 msgid "axe"
 msgstr "কুঠার"
 
@@ -857,6 +855,11 @@ msgid ""
 "role is to hold the line, and to take a heavy toll on those who try to break "
 "it. As the line marches forward, they act to secure its hard-won advance."
 msgstr ""
+"বামন জাতি তাদের দৃঢ় দেহগঠনের জন্য বরাবরই খ্যাত, এবং তাদের অনেক যোদ্ধা এই সুবিধাটি "
+"কাজে লাগানোর মতো করে নিজেদের সজ্জিত করে। বামন প্রহরীরা বৃহৎ-ঢাল ও বর্শা নিয়ে "
+"যুদ্ধে অগ্রসর হয়। অধিকাংশ সময়, তাদের কাজ হলো প্রতিরক্ষা-রেখা ধরে রাখা এবং যেসব "
+"শত্রু সেই রেখা ভাঙতে চায় তাদের থেকে কঠোর মূল্য আদায় করা। যখন সেই রেখা ধীরে ধীরে "
+"সামনে এগোয়, তারা তখন কঠিন লড়াইয়ে অর্জিত সেই অগ্রগতিকে ধরে রাখে ।"
 
 #. [attack]: type=pierce
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Guardsman.cfg:28
@@ -942,6 +945,10 @@ msgid ""
 "rather than merely ineffectual. These dwarves are masters of the melee, and "
 "can hold a patch of earth with the single-minded tenacity of an oak."
 msgstr ""
+"তাদের সহযোদ্ধাদের মধ্যে শ্রেষ্ঠ, বামন অতন্দ্র প্রহরীরা তাদের যুদ্ধরেখার প্রকৃত দূর্গস্বরূপ। "
+"তারা যে রেখাকে সুরক্ষিত করে, সেই রেখারর বিরুদ্ধে সরাসরি আক্রমণ চালানো সাধারণত "
+"প্রশ্নের বাইরে; তা শুধু নিস্ফল নয়, আত্মঘাতী হওয়ারই সম্ভাবনা বেশি। এই বামনরা "
+"নিকটযুদ্ধে পারদর্শী, এবং এক টুকরো জমিকে ওকের মতো একরোধাভাবে ধরে রাখতে পারে।"
 
 #. [unit_type]: id=Dwarvish Masked Stalwart, race=dwarf
 #. [unit_type]: id=Dwarvish Stalwart, race=dwarf
@@ -953,6 +960,10 @@ msgid ""
 "ground against all but the most visceral assault. It is a dangerous thing to "
 "lose a foothold to one such as these, for it will not be easily reprised."
 msgstr ""
+"অভিজ্ঞতা ও প্রশিক্ষণের কৌশল রক্ষীসেনাদের যোগ্য সৈনিক করে তোলে। এই অটল যোদ্ধারা "
+"তাদের দক্ষতার সঙ্গে মানানসই অস্ত্রশস্ত্রে সজ্জিত, এবং সবচেয়ে প্রচণ্ড আক্রমণ ছাড়া প্রায় "
+"সব কিছুর বিরুদ্ধেই নিজেদের অবস্থান ধরে রাখতে পারে। এদের মতো কারও কাছে অবস্থান "
+"হারানো বিপজ্জনক, কারণ তা সহজে পুনরুদ্ধার করা যায় না।"
 
 #. [unit_type]: id=Dwarvish Masked Thunderer, race=dwarf
 #. [unit_type]: id=Dwarvish Thunderer, race=dwarf
@@ -999,6 +1010,9 @@ msgid ""
 "wherein they feel neither fear nor pain, and will pay no heed to any wounds "
 "they receive."
 msgstr ""
+"বামনেরা এক প্রাচীন শক্তিশালী যোদ্ধা জাতি । বামন ক্ষিপ্ত লড়াকুরা তাদের মধ্যে সবচেয়ে "
+"ভয়ঙ্কর; যুদ্ধক্ষেত্রে তারা এমন এক অন্ধ ক্রোধের মধ্যে নিজেকে ঢেলে দেয় যেখানে তারা ভয় "
+"বা ব্যথা অনুভব করে না, এবং যে কোনো ক্ষতের প্রতিও তারা কোনো মনোযোগ দেয় না ।"
 
 #. [unit_type]: id=Dwarvish Rune Lord, race=dwarf
 #. [unit_type]: id=Dwarvish Runemaster, race=dwarf
@@ -1022,6 +1036,19 @@ msgid ""
 "than would be expected."
 msgstr ""
 
+#. [unit_type]: id=Grounded Gryphon, race=gryphon
+#. [unit_type]: id=Gryphon, race=gryphon
+#: data/campaigns/The_Hammer_of_Thursagan/units/Sleeping_Gryphon.cfg:21
+#: data/core/units/gryphons/Gryphon.cfg:18
+msgid ""
+"These majestic and powerful creatures are masters of the sky. Gryphons are "
+"both dangerous and wary of other intelligent creatures, and thus should not "
+"be disturbed without a good reason."
+msgstr ""
+"এই অসাধারণ ও শক্তিশালী প্রাণীগুলি আকাশের অধিপতি বলেই পরিচিত। গ্রিফনরা বিপজ্জনক "
+"এবং অন্যান্য বুদ্ধিমান প্রাণীদের থেকে সতর্ক থাকে, তাই যথার্থ কারণ ছাড়া তাদের বিরক্ত "
+"করা উচিত নয়।"
+
 #. [unit_type]: id=Autumn Shyde, race=elf, gender=female
 #. [unit_type]: id=Elvish Shyde, race=elf, gender=female
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Autumn_Shyde.cfg:5
@@ -1042,13 +1069,6 @@ msgstr "অশ্বারোহী সেনা"
 #: data/core/units/humans/Loyalist_Dragoon.cfg:4
 msgid "Dragoon"
 msgstr "অভিজ্ঞ অশ্বারোহী"
-
-#. [unit_type]: id=Cavalier Commander, race=human
-#. [unit_type]: id=Cavalier, race=human
-#: data/campaigns/The_South_Guard/units/Deoran3_Cavalier.cfg:5
-#: data/core/units/humans/Loyalist_Cavalier.cfg:4
-msgid "Cavalier"
-msgstr "শীর্ষ অশ্বারোহী"
 
 #. [attack]: type=impact
 #: data/campaigns/The_South_Guard/units/Gerrick2_Veteran_Infantryman.cfg:31
@@ -1074,6 +1094,34 @@ msgstr "ঢালের আঘাত"
 msgid "fist"
 msgstr "মুষ্টি"
 
+#. [unit_type]: id=Wandering Scarab, race=monster
+#: data/campaigns/Under_the_Burning_Suns/units/monsters/Scarab.cfg:4
+msgid "Wandering Scarab"
+msgstr "ভ্রামমান গুবরেপোকা"
+
+#. [special_note]
+#: data/campaigns/Under_the_Burning_Suns/units/monsters/Scarab.cfg:18
+#: data/core/units/monsters/Scarab.cfg:21
+msgid ""
+"This unit can burrow under loose dirt, sand, or leaves, concealing itself if "
+"it does not change location."
+msgstr ""
+
+#. [unit_type]: id=Wandering Scarab, race=monster
+#: data/campaigns/Under_the_Burning_Suns/units/monsters/Scarab.cfg:22
+msgid ""
+"Wandering Scarabs are large, rugged insects that can grow to be quite large, "
+"making them a threat when they decide to be aggressive. Their primary means "
+"of attack is the large, sharp horn growing from their head. Because of their "
+"large size, armor, and horn, they cannot fly."
+msgstr ""
+
+#. [attack]: type=pierce
+#: data/campaigns/Under_the_Burning_Suns/units/monsters/Scarab.cfg:50
+#: data/core/units/monsters/Scarab.cfg:53
+msgid "horn"
+msgstr "শিঙ"
+
 #. [attack]: type=arcane
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Divine_Avatar.cfg:36
 #: data/core/units/humans/Mage_White.cfg:56
@@ -1092,9 +1140,20 @@ msgid "thorns"
 msgstr "কণ্টক"
 
 #. [attack]: type=impact
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Dustbok.cfg:23
+#. [attack]: type=fire
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Dustbok.cfg:24
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Tauroch_Flagbearer.cfg:39
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Tauroch_Vanguard.cfg:38
+#: data/core/units/boats/Carrack_Merchant.cfg:30
+#: data/core/units/boats/Carrack_Pirate.cfg:26
+#: data/core/units/boats/Derelict_Ship.cfg:23
+#: data/core/units/boats/Elf_Cutter.cfg:26
+#: data/core/units/boats/Elf_Sloop.cfg:27 data/core/units/boats/Fireship.cfg:77
+#: data/core/units/boats/Ghost_Ship.cfg:39
+#: data/core/units/boats/Orc_Rigship.cfg:23
+#: data/core/units/boats/Orc_Warship.cfg:24
+#: data/core/units/boats/Raider_Coastal.cfg:31
+#: data/core/units/boats/Raider_Iron.cfg:32 data/core/units/boats/Skiff.cfg:26
 #: data/core/units/drakes/Enforcer.cfg:44
 #: data/core/units/drakes/Thrasher.cfg:41
 msgid "ram"
@@ -1107,52 +1166,20 @@ msgstr ""
 msgid "bolas"
 msgstr "বোলাস"
 
-#. [effect]: type=blade
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:157
-msgid "taunting strike"
-msgstr ""
-
-#. [advancement]: id=run_by_taunt
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:184
-msgid "Run By (Taunting strike)"
-msgstr ""
-
-#. [advancement]: id=strength_training
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:202
-msgid "Strength Training"
-msgstr "শক্তির প্রশিক্ষণ"
-
-#. [advancement]: id=bowmanship_training
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:214
-msgid "Bowmanship Training"
-msgstr "তিরন্দাজি প্রশিক্ষণ"
-
-#. [advancement]: id=strong_shots
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:231
-msgid "Strong Shots"
-msgstr "শক্তিশালী আঘাত"
-
-#. [advancement]: id=Bowman
-#. [unit_type]: id=Bowman, race=human, gender=male
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:243
-#: data/core/units/humans/Loyalist_Bowman.cfg:4
-msgid "Bowman"
-msgstr "ধনুর্ধর"
-
-#. [advancement]: id=piercing_shot
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:260
-msgid "Piercing Shot"
-msgstr "ভেদ্য আঘাত"
-
 #. [effect]: type=pierce
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:268
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:212
 msgid "piercing shot"
 msgstr "ভেদ্য আঘাত"
 
 #. [effect]: type=pierce
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:582
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:528
 msgid "Rain of arrows"
 msgstr "তীরের বৃষ্টি"
+
+#. [effect]: type=pierce
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:570
+msgid "Snipe"
+msgstr ""
 
 #. [unit_type]: id=Blood Bat, race=bats
 #: data/core/units/bats/Bat_Blood.cfg:4
@@ -1167,11 +1194,15 @@ msgid ""
 "blood of those they attack, thereby gaining some of the health lost by their "
 "victims."
 msgstr ""
+"রক্ত বাদুড়দের এই নাম দেওয়া হয়েছে তাদের লালচে আভা থেকে, যা অনেকে তাদের পছন্দের "
+"খাদ্যের প্রতীক হিসেবে মনে করেন। এই প্রাণীগুলো দ্রুতগামী এবং যাদের আক্রমণ করে তাদের "
+"রক্ত শুষে নিতে পারে, এবং শিকারের হারানো স্বাস্থ্যের একটি অংশ তারা নিজেদের স্বাস্থ্য "
+"পুনরুদ্ধারের কাজে লাগায় ।"
 
 #. [unit_type]: id=Dread Bat, race=bats
 #: data/core/units/bats/Bat_Dread.cfg:4
 msgid "Dread Bat"
-msgstr "ভয়ানক বাদুড়"
+msgstr "ভয়াল বাদুড়"
 
 #. [unit_type]: id=Dread Bat, race=bats
 #: data/core/units/bats/Bat_Dread.cfg:20
@@ -1180,6 +1211,8 @@ msgid ""
 "Bats, gaining the ability to drain not merely the blood but the very life "
 "energy of their victims."
 msgstr ""
+"রক্ত বাদুড়দের মধ্যে সবচেয়ে হিংস্র, শিকারি ও সফলরা ভয়াল বাদুড়ে পরিণত হয়, যারা "
+"তাদের শিকারদের শুধু রক্তই নয়, প্রাণশক্তিও শোষণ করার ক্ষমতা অর্জন করে।"
 
 #. [unit_type]: id=Vampire Bat, race=bats
 #: data/core/units/bats/Bat_Vampire.cfg:4
@@ -1193,84 +1226,131 @@ msgid ""
 "While their fangs are not very powerful, the health of victims is drained "
 "away along with their blood, and given to the Bats."
 msgstr ""
+"রক্তশোষ বাদুড় একধরনের উড়ন্ত প্রাণী, যারা অন্যান্য জীবের রক্ত খেয়ে বেঁচে থাকে। যদিও "
+"তাদের দাঁত খুব শক্তিশালী নয়, তবুও শিকারের রক্তের সঙ্গে তাদের স্বাস্থ্যও শোষিত হয় এবং "
+"তা বাদুড়দের মধ্যে স্থানান্তরিত হয়।"
 
 #. [unit_type]: id=Canoe, race=ship
 #: data/core/units/boats/Canoe.cfg:5
 msgid "Canoe"
-msgstr ""
+msgstr "ক্যানও"
 
 #. [unit_type]: id=Canoe, race=ship
-#: data/core/units/boats/Canoe.cfg:19
+#: data/core/units/boats/Canoe.cfg:33
 msgid ""
 "A Canoe is a small, open-top water vessel commonly used for transportation "
 "or hunting. Their light-weight construction allows them to be carried around "
 "barriers or between unconnected bodies of water. Almost every intelligent "
-"race has some form of canoe."
+"race has some form of Canoe."
+msgstr ""
+"সবচেয়ে হিংস্র, শিকারি এবং সফল রক্ত বাদুড়রা শেষে ভয়ানক বাদুড়ে পরিণত হয়, এবং শুধু "
+"রক্তই নয়, তাদের শিকারদের জীবনীশক্তিও শুষে নেওয়ার ক্ষমতা অর্জন করে।"
+
+#. [unit_type]: id=Merchant Carrack, race=ship
+#: data/core/units/boats/Carrack_Merchant.cfg:4
+msgid "Merchant Carrack"
+msgstr "ব্যবসায়ী ক্যারাক"
+
+#. [unit_type]: id=Merchant Carrack, race=ship
+#: data/core/units/boats/Carrack_Merchant.cfg:21
+msgid ""
+"Merchant Carracks are swift ships with large cargo holds. Though they are "
+"not designed for war, their large and stable deck makes for a good archery "
+"platform, and their spacious holds can carry both medical supplies and "
+"repair equipment."
 msgstr ""
 
-#. [unit_type]: id=Derelict Hulk, race=ship
+#. [attack]: type=pierce
+#: data/core/units/boats/Carrack_Merchant.cfg:43
+#: data/core/units/boats/Orc_Barge.cfg:38
+#: data/core/units/boats/Orc_Battle-Barge.cfg:36
+#: data/core/units/boats/Raider_Coastal.cfg:44
+#: data/core/units/boats/Raider_Iron.cfg:45 data/core/units/boats/Skiff.cfg:40
+msgid "archers"
+msgstr "ধনুর্ধরেরা"
+
+#. [unit_type]: id=Pirate Carrack, race=ship
+#: data/core/units/boats/Carrack_Pirate.cfg:4
+msgid "Pirate Carrack"
+msgstr "জলদস্যু ক্যারাক"
+
+#. [unit_type]: id=Pirate Carrack, race=ship
+#: data/core/units/boats/Carrack_Pirate.cfg:22
+msgid ""
+"Pirate galleons are to transport ships what wolves are to sheep. The pirates "
+"who crew them are more than happy to help relieve other ships of their "
+"weighty cargo, or to fight as privateers in return for coin."
+msgstr ""
+
+#. [attack]: type=pierce
+#: data/core/units/boats/Carrack_Pirate.cfg:39
+msgid "ballistae"
+msgstr "প্রস্তর নিক্ষেপক যন্ত্র"
+
+#. [attack]: type=pierce
+#: data/core/units/boats/Carrack_Pirate.cfg:48
+msgid "grapple"
+msgstr "কুস্তি"
+
+#. [unit_type]: id=Derelict, race=ship
 #: data/core/units/boats/Derelict_Ship.cfg:4
-msgid "Derelict Hulk"
-msgstr ""
+msgid "Derelict"
+msgstr "পরিত্যক্ত জাহাজ"
 
-#. [unit_type]: id=Derelict Hulk, race=ship
+#. [unit_type]: id=Derelict, race=ship
 #. [unit_type]: id=Ghost Ship, race=ship
-#: data/core/units/boats/Derelict_Ship.cfg:18
-#: data/core/units/boats/Ghost_Ship.cfg:30
+#: data/core/units/boats/Derelict_Ship.cfg:19
+#: data/core/units/boats/Ghost_Ship.cfg:35
 msgid ""
 "Derelicts are abandoned wrecks that continue to drift across the seas. Most "
 "are merely ruined ships that will soon sink, but there are tales of others "
 "that haunt certain waterways for generations."
 msgstr ""
 
-#. [attack]: type=impact
-#: data/core/units/boats/Derelict_Ship.cfg:145
-msgid "jetsam"
-msgstr ""
-
 #. [unit_type]: id=Elvish Cutter, race=ship
 #: data/core/units/boats/Elf_Cutter.cfg:5
-#, fuzzy
-#| msgid "Elvish Outrider"
 msgid "Elvish Cutter"
-msgstr "এল্ফ দূর-আরোহী"
+msgstr "এল্ফ কৃন্তক"
 
 #. [unit_type]: id=Elvish Cutter, race=ship
-#. [unit_type]: id=Elvish Sloop, race=ship
-#. [unit_type]: id=Orcish Battle Barge, race=ship
-#. [unit_type]: id=Orcish Rigship, race=ship
-#. [unit_type]: id=Orcish Warship, race=ship
-#: data/core/units/boats/Elf_Cutter.cfg:19
-#: data/core/units/boats/Elf_Sloop.cfg:19
-#: data/core/units/boats/Orc_Battle-Barge.cfg:20
-#: data/core/units/boats/Orc_Rigship.cfg:19
-#: data/core/units/boats/Orc_Warship.cfg:19
-msgid "..."
+#: data/core/units/boats/Elf_Cutter.cfg:18
+msgid ""
+"Elves are not a seafaring race by nature, preferring instead the quiet "
+"solitude of forests. Nevertheless, there is some demand for river trade and "
+"transport, particularly between the enclaves of Wesmere and Lintanir. "
+"Artfully grafted together from still-living trees, these sleek ships can "
+"recover from minor injuries without their crews’ intervention."
 msgstr ""
 
-#. [attack]: type=impact
-#: data/core/units/boats/Elf_Cutter.cfg:108
-#: data/core/units/boats/Elf_Sloop.cfg:111 data/core/units/elves/Druid.cfg:35
-#: data/core/units/elves/Lady.cfg:27 data/core/units/elves/Shyde.cfg:42
-msgid "ensnare"
-msgstr "ফাঁদে ফেলা"
+#. [attack]: type=pierce
+#: data/core/units/boats/Elf_Cutter.cfg:39
+#: data/core/units/boats/Elf_Cutter.cfg:48
+#: data/core/units/boats/Elf_Sloop.cfg:40
+#: data/core/units/boats/Elf_Sloop.cfg:49
+msgid "marksmen"
+msgstr ""
 
 #. [unit_type]: id=Elvish Sloop, race=ship
 #: data/core/units/boats/Elf_Sloop.cfg:5
-#, fuzzy
-#| msgid "Elvish Scout"
 msgid "Elvish Sloop"
-msgstr "এল্ফ সন্ধানী"
+msgstr "এল্ফ ক্ষুদ্রজাহাজ"
+
+#. [unit_type]: id=Elvish Sloop, race=ship
+#: data/core/units/boats/Elf_Sloop.cfg:19
+msgid ""
+"Sleek in the water and festooned with greenery, these mightiest of elvish "
+"ships weather wave and storm with impunity. Such behemoths are only seen in "
+"times of crisis, for their living timber can survive only a handful of years "
+"after being launched."
+msgstr ""
 
 #. [unit_type]: id=Fireship, race=ship
 #: data/core/units/boats/Fireship.cfg:4
-#, fuzzy
-#| msgid "Fire Wisp"
 msgid "Fireship"
-msgstr "ছোটো অগ্নি জীব"
+msgstr "অগ্নিজাহাজ"
 
 #. [unit_type]: id=Fireship, race=ship
-#: data/core/units/boats/Fireship.cfg:18
+#: data/core/units/boats/Fireship.cfg:21
 msgid ""
 "Fireships are generally derelict or doomed ships set ablaze to create chaos "
 "in one last act of belligerence. Their main hazard is fiery collision, but "
@@ -1278,35 +1358,37 @@ msgid ""
 "them, but often they just drift along on unseen winds and currents."
 msgstr ""
 
-#. [attack]: type=fire
-#: data/core/units/boats/Fireship.cfg:170
-msgid "ember"
+#. [dummy]: id=deteriorate
+#: data/core/units/boats/Fireship.cfg:26
+msgid "deteriorate"
 msgstr ""
 
-#. [attack]: type=fire
-#: data/core/units/boats/Fireship.cfg:179
-msgid "crash"
+#. [dummy]: id=deteriorate
+#: data/core/units/boats/Fireship.cfg:27
+msgid ""
+"This unit is deteriorating. It cannot be healed, and loses 10 hitpoints at "
+"the start of each of its turns."
 msgstr ""
+"এই ইউনিটটি ক্ষয়প্রাপ্ত হচ্ছে। এটি সুস্থ হতে পারবে না এবং নিজের প্রতিটি দানের শুরুতে "
+"10 জীবনসংখ্যা হারাবে।"
 
 #. [unit_type]: id=Ghost Ship, race=ship
 #: data/core/units/boats/Ghost_Ship.cfg:16
-#, fuzzy
-#| msgid "Ghost"
 msgid "Ghost Ship"
-msgstr "ভুত"
+msgstr "ভৌতিক জাহাজ"
 
 #. [attack]: type=fire
-#: data/core/units/boats/Ghost_Ship.cfg:191
+#: data/core/units/boats/Ghost_Ship.cfg:52
 #: data/core/units/humans/Mage_Elder.cfg:35
 #: data/core/units/monsters/Raven_Harbinger.cfg:100
 #: data/core/units/monsters/Raven_Omen.cfg:90
 msgid "lightning"
 msgstr "বজ্রপাত"
 
-#. [attack]: type=impact
-#: data/core/units/boats/Ghost_Ship.cfg:203
-msgid "black wind"
-msgstr ""
+#. [attack]: type=cold
+#: data/core/units/boats/Ghost_Ship.cfg:64
+msgid "lost souls"
+msgstr "হারিয়ে যাওয়া আত্মারা"
 
 #. [unit_type]: id=Boat, race=mechanical
 #: data/core/units/boats/Legacy_Boat.cfg:7
@@ -1351,8 +1433,6 @@ msgstr ""
 #. [attack]: type=pierce
 #: data/core/units/boats/Legacy_Pirate_Galleon.cfg:26
 #: data/core/units/boats/Legacy_Transport_Galleon.cfg:26
-#: data/core/units/boats/Pirate_Ship.cfg:169
-#: data/core/units/boats/Transport_Ship.cfg:168
 msgid "ballista"
 msgstr "প্রস্তর নিক্ষেপক যন্ত্র"
 
@@ -1362,9 +1442,7 @@ msgid "Transport Galleon"
 msgstr "পরিবহন জাহাজ"
 
 #. [unit_type]: id=Transport Galleon, race=mechanical
-#. [unit_type]: id=Transport Ship, race=ship
 #: data/core/units/boats/Legacy_Transport_Galleon.cfg:22
-#: data/core/units/boats/Transport_Ship.cfg:20
 msgid ""
 "Transport Galleons are well-armed ships that carry troops. If they reach the "
 "shore, they can land the troops to attack."
@@ -1372,76 +1450,89 @@ msgstr ""
 
 #. [unit_type]: id=Orcish Barge, race=ship
 #: data/core/units/boats/Orc_Barge.cfg:5
-#, fuzzy
-#| msgid "Orcish Archer"
 msgid "Orcish Barge"
-msgstr "ওর্ক ধনুর্ধর"
+msgstr "ওর্ক বজরা"
 
 #. [unit_type]: id=Orcish Barge, race=ship
-#: data/core/units/boats/Orc_Barge.cfg:20
+#: data/core/units/boats/Orc_Barge.cfg:27
 msgid ""
-"Orcish barges are crude constructions, devoid of any of the craftsmanship "
+"Orcish Barges are crude constructions, devoid of any of the craftsmanship "
 "seen in almost any other ship. But what they lack in speed and grace, they "
-"make up for with their rugged utility in navigating rivers and swamps. Their "
-"primary means of movement comes from a large, symmetric sail held at three "
-"points for downwind propulsion. When currents and winds lead to the wrong "
-"direction, the crew must use poles and anchors to move the barge in the "
-"intended direction.\n"
+"make up for with their rugged durability and utility in navigating rivers "
+"and swamps. Their primary means of movement comes from a large, symmetric "
+"sail held at three points for downwind propulsion. When currents and winds "
+"lead to the wrong direction, the crew must use poles and anchors to move the "
+"barge in the intended direction.\n"
 "\n"
-"Barges serve as transports for either supplies or troops, but they have been "
-"used as pickets in larger conflicts. They lack any specific weaponry, but "
-"the crew is equipped with the crude orcish bows that can be deterrent enough "
-"in many situations.\n"
+"Barges serve as transports for either supplies or troops, and when stocked "
+"with medicines can provide a safe space — akin to a village — for wounded "
+"fighters to rest. They lack any specific weaponry and cannot ram, but the "
+"crew is equipped with enough crude orcish bows to provide deterrent.\n"
 "\n"
-"These barges are very ineffective in the high seas, little better than a "
+"These barges are very ineffective in the high seas; little better than a "
 "floating wreck."
 msgstr ""
 
 #. [unit_type]: id=Orcish Battle Barge, race=ship
 #: data/core/units/boats/Orc_Battle-Barge.cfg:5
-#, fuzzy
-#| msgid "Orcish Ruler"
 msgid "Orcish Battle Barge"
-msgstr "ওর্ক শাসক"
+msgstr "ওর্ক যুদ্ধবজরা"
+
+#. [unit_type]: id=Orcish Battle Barge, race=ship
+#: data/core/units/boats/Orc_Battle-Barge.cfg:27
+msgid ""
+"Despite their simplistic design, barges provide a surprising amount of "
+"utility: bulk transport of goods or men, navigability in shallow water or "
+"swamp, and a safe space for wounded fighters to rest. They also provide a "
+"wide, steady platform on which to mount siege equipment, a fact of which "
+"orcs are well aware.\n"
+"\n"
+"These barges are very ineffective in the high seas; little better than a "
+"floating wreck."
+msgstr ""
 
 #. [attack]: type=impact
-#: data/core/units/boats/Orc_Battle-Barge.cfg:118
+#: data/core/units/boats/Orc_Battle-Barge.cfg:45
 msgid "catapult"
 msgstr ""
 
 #. [unit_type]: id=Orcish Rigship, race=ship
 #: data/core/units/boats/Orc_Rigship.cfg:5
-#, fuzzy
-#| msgid "Orcish Nightblade"
 msgid "Orcish Rigship"
-msgstr "ওর্ক রাত্রিফলা"
+msgstr "ওর্কনির্মিত জাহা‌জ"
 
+#. [unit_type]: id=Orcish Rigship, race=ship
+#: data/core/units/boats/Orc_Rigship.cfg:19
+msgid ""
+"Most orcs have little need for sailing vessels, preferring to fight their "
+"battles across the dry peaks and hills of the Heart Mountains. But along the "
+"north-western coast of the Great Continent, in the cities of Bitok and "
+"Tirigaz, orcish shipmakers have been hard at work perfecting their craft. "
+"The so-called “Rigship” is but one of many designs bearing testament to "
+"their skill."
+msgstr ""
+
+#. [attack]: type=pierce
 #. [attack]: type=fire
-#: data/core/units/boats/Orc_Rigship.cfg:88
-#: data/core/units/boats/Orc_Warship.cfg:88
-#, fuzzy
-#| msgid "fire"
-msgid "firebow"
-msgstr "আগুন"
+#: data/core/units/boats/Orc_Rigship.cfg:36
+#: data/core/units/boats/Orc_Rigship.cfg:45
+#: data/core/units/boats/Orc_Warship.cfg:37
+#: data/core/units/boats/Orc_Warship.cfg:46
+msgid "crossbows"
+msgstr "ক্রসবোগুলি"
 
 #. [unit_type]: id=Orcish Warship, race=ship
 #: data/core/units/boats/Orc_Warship.cfg:5
-#, fuzzy
-#| msgid "Orcish Warrior"
 msgid "Orcish Warship"
-msgstr "ওর্ক যোদ্ধা"
+msgstr "ওর্ক যুদ্ধজাহাজ"
 
-#. [unit_type]: id=Pirate Ship, race=ship
-#: data/core/units/boats/Pirate_Ship.cfg:4
-msgid "Pirate Ship"
-msgstr ""
-
-#. [unit_type]: id=Pirate Ship, race=ship
-#: data/core/units/boats/Pirate_Ship.cfg:22
+#. [unit_type]: id=Orcish Warship, race=ship
+#: data/core/units/boats/Orc_Warship.cfg:20
 msgid ""
-"Pirate galleons are to transport ships what wolves are to sheep. The pirates "
-"who crew them are more than happy to help relieve other ships of their "
-"weighty cargo."
+"When orcs first stepped off their ships onto the western shores of the Great "
+"Continent, they found an unspoiled paradise across which to spread. The "
+"shipwrights of the Tirigaz coast have not forgotten that lesson, and devote "
+"significant effort to the construction of newer and ever-better vessels."
 msgstr ""
 
 #. [unit_type]: id=Raft, race=ship
@@ -1450,63 +1541,57 @@ msgid "Raft"
 msgstr ""
 
 #. [unit_type]: id=Raft, race=ship
-#: data/core/units/boats/Raft.cfg:19
+#: data/core/units/boats/Raft.cfg:21
 msgid ""
 "Rafts can be an efficient means of downriver transport, but they can also be "
 "an improvised vessel of desperation, patched together from the wreck of a "
-"larger ship."
+"larger ship.\n"
+"\n"
+"These Rafts are very ineffective in the high seas; little better than a "
+"floating wreck."
 msgstr ""
 
 #. [unit_type]: id=Coastal Raider, race=ship
 #: data/core/units/boats/Raider_Coastal.cfg:4
-#, fuzzy
-#| msgid "Wolf Rider"
 msgid "Coastal Raider"
-msgstr "নেকড়ে আরোহী"
+msgstr "তীরবর্তী লুন্ঠকজাহাজ"
 
 #. [unit_type]: id=Coastal Raider, race=ship
-#: data/core/units/boats/Raider_Coastal.cfg:30
+#: data/core/units/boats/Raider_Coastal.cfg:25
 msgid ""
-"While many larger ships rely on impressive sails to harness the power of the "
+"While Carracks and Cogs rely on impressive sails to harness the power of the "
 "wind, galleys and raiders are propelled by muscle-power of the crew manning "
 "the oars. This has the disadvantage of requiring a larger crew, and it does "
 "limit the speed and efficiency of transport. But these seeming weaknesses "
 "also make the vessel less vulnerable to the whims of weather and the "
 "predations of pirates.\n"
 "\n"
-"Coastal Raider ships are a very basic warship, used by several races to move "
-"armed forces rapidly through shallow and coastal water. They do not possess "
-"any specific armaments, but there are always archers amongst the crew."
+"Coastal Raider ships are a very basic warship, protected against ramming and "
+"used to move armed forces rapidly through shallow and coastal water. They do "
+"not possess any specific armaments, but oared propulsion makes the vessel "
+"much more maneuverable when ramming or beaching."
 msgstr ""
 
 #. [unit_type]: id=Iron Raider, race=ship
 #: data/core/units/boats/Raider_Iron.cfg:4
-#, fuzzy
-#| msgid "Gryphon Rider"
 msgid "Iron Raider"
-msgstr "গ্রিফন আরোহী"
+msgstr "লুন্ঠক লৌহজাহাজ"
 
 #. [unit_type]: id=Iron Raider, race=ship
-#: data/core/units/boats/Raider_Iron.cfg:36
+#: data/core/units/boats/Raider_Iron.cfg:26
 msgid ""
-"While Galleons and Cogs rely on impressive sails to harness the power of the "
+"While Carracks and Cogs rely on impressive sails to harness the power of the "
 "wind, galleys and raiders are propelled by muscle-power of the crew manning "
 "the oars. This has the disadvantage of requiring a larger crew, and it does "
 "limit the speed and efficiency of transport. But these seeming weaknesses "
 "also make the vessel less vulnerable to the whims of weather and the "
 "predations of pirates.\n"
 "\n"
-"Iron Raiders are Coastal Raiders that have been hardened to become tougher "
-"targets and harder hitters, at the expense of speed. They are often used as "
-"front-line escorts of slower cargo ships in rivers and coasts."
+"Iron Raiders are veteran Coastal Raiders that have been hardened to become "
+"tougher targets and harder hitters. They are often used as front-line "
+"escorts of slower cargo ships in rivers and coasts, where their heavy iron "
+"ram proves the most effective."
 msgstr ""
-
-#. [attack]: type=impact
-#: data/core/units/boats/Raider_Iron.cfg:163
-#, fuzzy
-#| msgid "Cavalryman"
-msgid "naval ram"
-msgstr "অশ্বারোহী সেনা"
 
 #. [unit_type]: id=Skiff, race=ship
 #: data/core/units/boats/Skiff.cfg:5
@@ -1516,16 +1601,9 @@ msgstr ""
 #. [unit_type]: id=Skiff, race=ship
 #: data/core/units/boats/Skiff.cfg:22
 msgid ""
-"Propelled by oars or small sails, skiffs are used to travel short distances "
+"Propelled by oars or small sails, Skiffs are used to travel short distances "
 "and in shallows where large ships cannot navigate."
 msgstr ""
-
-#. [unit_type]: id=Transport Ship, race=ship
-#: data/core/units/boats/Transport_Ship.cfg:4
-#, fuzzy
-#| msgid "Transport Galleon"
-msgid "Transport Ship"
-msgstr "পরিবহন জাহাজ"
 
 #. [unit_type]: id=Drake Arbiter, race=drake, gender=male,female
 #: data/core/units/drakes/Arbiter.cfg:4
@@ -1542,6 +1620,12 @@ msgid ""
 "raw heft the massive metal head provides. The thick plate these drakes wear "
 "protects them well against weapons that could slip between their scales."
 msgstr ""
+"ন্যায়রক্ষকরা তাদের বর্ণগত দায়িত্, শৃঙ্খলা ও শাসন প্রতিষ্ঠা, অত্যন্ত গুরুত্বসহকারে পালন "
+"করে। এই দায়িত্ব আরও দক্ষতার সঙ্গে সম্পাদনের জন্য তারা ড্র্যাকদের ঐতিহ্যবাহী হাত-"
+"মাউন্ট করা নখ ত্যাগ করেছে এবং বর্শার বদলে হ্যালবার্ডের ফলক ও কাঁটা গ্রহণ করেছে। "
+"তাদের মতে, চালচলনের ক্ষমতা কিছুটা কমে গেলেও বিশাল ধাতব মাথার নিখাদ ভার যে শক্তি "
+"দেয়, তার জন্য এই মূল্য নিতান্তই ন্যায্য। এই ড্রেকরা যে মোটা লৌহ-বর্ম পরে, তা এমন "
+"অস্ত্রের বিরুদ্ধে তাদের ভালো সুরক্ষা দেয়, যা আঁশের ফাঁক গলে প্রবেশ করতে পারত।"
 
 #. [special_note]
 #: data/core/units/drakes/Arbiter.cfg:20
@@ -1577,6 +1661,10 @@ msgid ""
 "dragons are but legend. The creatures known as ‘Armageddon Drakes’ are "
 "towering things, both immune to and possessed of a tremendous fire."
 msgstr ""
+"তারা বর্ম পরে না থাকলে, কিছু ড্রেককে সত্যিকারের ড্রাগন থেকে আলাদা করা কঠিন হতো, "
+"অন্তত তাদের কাছে, যাদের কাছে ড্রাগন কেবল কিংবদন্তিতে শোনা প্রাণী। ‘প্রলয় ড্রেক’ "
+"নামে পরিচিত এই জীবেরা বিশালদেহী; তারা যেমন বিপুল অগ্নিশক্তির অধিকারী, তেমনি "
+"অগ্নিতে তাদের কোনো ক্ষতি হয় না বললেই চলে।"
 
 #. [attack]: type=blade
 #: data/core/units/drakes/Armageddon.cfg:37 data/core/units/drakes/Fire.cfg:30
@@ -1593,7 +1681,7 @@ msgstr "যুদ্ধের নখর"
 #: data/core/units/drakes/Hurricane.cfg:61
 #: data/core/units/drakes/Inferno.cfg:41 data/core/units/drakes/Sky.cfg:60
 #: data/core/units/drakes/Warrior.cfg:35
-#: data/core/units/monsters/Fire_Dragon.cfg:51
+#: data/core/units/monsters/Fire_Dragon.cfg:73
 #: data/core/units/monsters/Fire_Guardian.cfg:32
 #: data/core/units/monsters/Fire_Wisp.cfg:53
 #: data/core/units/monsters/Fire_Wraith.cfg:60
@@ -1620,6 +1708,12 @@ msgid ""
 "around; Blademasters fiercely protect their fellows’ honor, and no-one would "
 "dispute their right to do so."
 msgstr ""
+"কালো বর্ম যোদ্ধা বর্ণের শ্রেষ্ঠ বিভাগ, অস্ত্রবিশারদদের চিহ্নিত করে। খুব অল্প কয়েকজনই "
+"সেই দক্ষতা ও শক্তির স্তরে পৌঁছাতে পারে, যা যুদ্ধক্ষেত্রে প্রাণ না হারিয়ে এই সর্বোচ্চ "
+"পদে প্রবেশের জন্য প্রয়োজন । অন্য ড্র্যেকরা যোদ্ধা বর্ণকে অবজ্ঞা করলেও, তারা সবসময় "
+"দু’বার দেখে নেয় যেন আশেপাশে বিশারদরা কেউ আছে কী না; কারণ অস্ত্রবিশারদরা তাদের "
+"সহযোদ্ধাদের সম্মান প্রবলভাবে রক্ষা করে, এবং সে অধিকার যে তাদের আছে, এ নিয়ে কেউ "
+"কখনো বিতর্ক করার সাহস করে না।"
 
 #. [attack]: type=blade
 #: data/core/units/drakes/Blademaster.cfg:28
@@ -1646,6 +1740,10 @@ msgid ""
 "coupled with their sheer size and fearsome claws, makes them deadly foes in "
 "combat."
 msgstr ""
+"ড্রেক প্রজ্জ্বালকরা সেই গর্বিত অল্প কয়েকজনের মধ্যে, যাদের শিরায় তাদের প্রাচীন "
+"পূর্বপুরুষদের রক্ত ও শক্তি সবচেয়ে বিশুদ্ধভাবে প্রবাহিত হয়, যা তাদের আগুন নিক্ষেপ করার "
+"ক্ষমতা দেয়। এটি তাদের বিশাল দেহাকৃতি ও ভয়ঙ্কর নখরের সঙ্গে মিলে তাদের যুদ্ধে ভয়ানক "
+"প্রতিপক্ষ করে তোলে।"
 
 #. [female]: gender=female
 #: data/core/units/drakes/Burner.cfg:67
@@ -1672,6 +1770,15 @@ msgid ""
 "particularly good at “resolving” territorial disputes with other drakes and "
 "enforcing the laws of their tribe."
 msgstr ""
+"ড্র্রেকদের মধ্যে সংধর্ষকরা এক অনন্য বর্ণের সদস্য। তাদের মোটা বর্ম, যা বর্শা ও তীরের "
+"বিরুদ্ধে ড্র্যাকদের স্বাভাবিক দুর্বলতা পুষিয়ে দেয়, এতই ভারী ও সীমাবদ্ধকারী যে তারা আর "
+"উড়তে পারে না, এমনকি নিজেদের অন্তর্নিহিত অগ্নি ব্যবহার করার মতো শ্বাসও সঞ্চয় করতে "
+"পারে না। এই অক্ষমতাকে তারা স্বেচ্ছায় গ্রহণ করেছে; নিজেদের ডানা সম্পূর্ণভাবে ঢেকে "
+"ফেলে তারা এ কথাই জোর দিয়ে জানায় যে যুদ্ধে বিজয়ের জন্য তাদের উড্ডয়নের দরকার নেই।\n"
+"\n"
+"এটাই সেই একমাত্র বর্ণ, যাদেরকে নিষমের বাইরে ড্র্যাকদের ঐতিহ্যবাহী ধাতব নখরের "
+"পাশাপাশি বর্শাও ব্যবহারের অনুমতি দেওয়া হয়েছে। তাই তারা অন্য ড্রেকদের সঙ্গে সীমান্ত-"
+"সংঘাত “মেটাতে” এবং নিজেদের গোষ্ঠীর আইন কার্যকর করতে বিশেষভাবে দক্ষ।"
 
 #. [female]: gender=female
 #: data/core/units/drakes/Clasher.cfg:111
@@ -1681,7 +1788,7 @@ msgstr "ড্রেক সংঘর্ষক"
 #. [unit_type]: id=Drake Enforcer, race=drake, gender=male,female
 #: data/core/units/drakes/Enforcer.cfg:4
 msgid "Drake Enforcer"
-msgstr "ড্রেক সম্মুখযোদ্ধা"
+msgstr "ড্রেক নিয়মরক্ষক"
 
 #. [unit_type]: id=Drake Enforcer, race=drake, gender=male,female
 #: data/core/units/drakes/Enforcer.cfg:20
@@ -1693,6 +1800,11 @@ msgid ""
 "careful not to besmirch the honor of the Enforcers, and generally call upon "
 "them to combat only the most pernicious of enemies."
 msgstr ""
+"এনফোর্সারদের জন্য চালচলন ও প্রতারণার কৌশল নয়; বরং তারা ঝাঁপিয়ে পড়ে সেই স্থানে, "
+"যেখানে লড়াই সবচেয়ে তীব্র। কাছাকাছি যুদ্ধে তাদের বর্ম আগুন নিক্ষেপে বাধা দেয় কি না, "
+"তা খুব একটা গুরুত্বপূর্ণ নয়; গুরুত্বপূর্ণ হলো প্রতিটি আঘাতে যে শক্তি তারা কেন্দ্রীভূত করতে "
+"শেখেছে। ড্রেক নেতারা সতর্ক থাকে যেন নিয়মরক্ষকদের সম্মান যেন কোনোভাবে ক্ষুণ্ণ না হয়, "
+"এবং সাধারণত কেবলমাত্র সবচেয়ে ক্ষতিকর শত্রুর বিরুদ্ধেই তাদের ডেকে পাঠানো হয়।"
 
 #. [attack]: type=pierce
 #. [attack]: type=blade
@@ -1720,6 +1832,10 @@ msgid ""
 "Their great strength, coupled with their hardened scales, is rightly "
 "frightening to swordsman of any other race."
 msgstr ""
+"ড্রেক যোদ্ধারা বাঁকানো যুদ্ধ-তলোয়ার ব্যবহার করে এবং তাদের পূর্বপুরুষদের মতোই অগ্নি-"
+"নিক্ষেপের ক্ষমতা রাখে। তারা উড়তেও পারে, যা যেকোনো শত্রুর জন্যই চিন্তার বিষয়। তাদের "
+"অসাধারণ শক্তি এবং কঠোর আঁশ একত্রে অন্য কোনো জাতির অসিচালকদের জন্য যথার্থই ভয়ের "
+"কারণ।"
 
 #. [attack]: type=blade
 #: data/core/units/drakes/Fighter.cfg:25
@@ -1747,6 +1863,11 @@ msgid ""
 "vitality emanates through their skin, scorching their scales to a reddish-"
 "gray."
 msgstr ""
+"প্রজ্জ্বালকদের সর্বোচ্চ পদমর্যাদার জন্য সংরক্ষিত লাল-সোনালি বর্ম পরার অনুমতি এখনো না "
+"পেলেও, আগ্নেয় ড্রেকরা তাদের বর্মে রূপালি অলংকরণ ব্যবহার করে। যদিও তারা সবেমাত্র "
+"নিজেদের জীবনের উদ্দেশ্য হিসেবে অন্তর্নিহিত অগ্নির সাধনা শুরু করেছে, সেই অগ্নিশক্তির "
+"প্রাণশক্তি তাদের দেহ দিয়ে বিকিরিত হয়, আর তাদের আঁশকে দগ্ধ করে লালচে-ধূসর রঙে "
+"রূপান্তরিত করে।"
 
 #. [female]: gender=female
 #: data/core/units/drakes/Fire.cfg:62
@@ -1769,6 +1890,12 @@ msgid ""
 "leader for supremacy, and only if he is sure of the support of his fellow "
 "drakes."
 msgstr ""
+"অগ্নিহৃদয়দের শক্তি একক লড়াইয়ে উচ্চপদস্থ অন্যান্য ড্রেকদের পরাস্ত করার মতো নয়, তবে "
+"তারা যেকোনোভাবেই গোত্রের ভেতর সংঘর্ষ এড়াতে পছন্দ করে। অভিজ্ঞতা এই মর্যাদার প্রতিটি "
+"ড্রেককে তার কর্তৃত্বের সীমা শিখিয়েছে: যাদের সে নেতৃত্ব দেয় তাদের কতটা পর্যন্ত চাপ "
+"দিতে পারে, আর কখন তাদের নিজেদের মতো চলতে দেওয়াই উত্তম। শুধু খুব কম ক্ষেত্রেই কোনো "
+"অগ্নিহৃদয় তার গোত্রের নেতাকে আধিপত্যের জন্য প্রতিদ্বন্দিতা জানায়, এবং শুধু তখনই যখন সে "
+"পরিচিত ড্রেকদের সমর্থনের ব্যাপারে নিশ্চিত থাকে।"
 
 #. [female]: gender=female
 #: data/core/units/drakes/Flameheart.cfg:66
@@ -1789,6 +1916,11 @@ msgid ""
 "they are more often seen leading small war parties or mediating disputes "
 "with a subtle hand."
 msgstr ""
+"তাদের অগ্নিশিখার তাপের জন্য সম্মানিত এবং ব্যক্তিত্বের আকর্ষণের জন্য শ্রদ্ধেয়, অগ্নিশিখা "
+"ড্রেকরা যুদ্ধ ও শান্তি, উভয় সময়েই তাদের জনগণের মহান নেতা হওয়ার আকাঙ্ক্ষা পোষণ করে। "
+"ছোট, বিচ্ছিন্ন কোনো গোত্র কখনো-সখনো কোনো অগ্নিশিখা ড্রেককে নেতা হিসেবে গ্রহণ "
+"করলেও, তাদের বেশি দেখা যায় ছোট যুদ্ধদল পরিচালনা করতে বা সূক্ষ্ম দক্ষতায় বিবাদ "
+"মীমাংসা করতে।"
 
 #. [female]: gender=female
 #: data/core/units/drakes/Flare.cfg:65
@@ -1816,6 +1948,17 @@ msgid ""
 "distance – and if all else fails, he will fight with his feet, keeping his "
 "precious wings as far from the enemy as possible."
 msgstr ""
+"অনেক ড্রেক আঁশের ওপর দিয়ে বয়ে যাওয়া বাতাসের প্রবাহ উপভোগ করে, ফলে তারা উড়ান "
+"গোত্রের হালকা পোশাক পরতে পছন্দ করে। গোত্রের ভূখণ্ডের দূর প্রান্তে দীর্ঘ অভিযানে "
+"বেরোনোই তাদের নেশা, যদিও অন্য ড্রেকরা প্রায়ই ভাবেন—যখন যুদ্ধক্ষেত্রে আরও গৌরব পাওয়া "
+"যায়, তখন শিকারের মতো খাটুনি কেউ কেন বেছে নেবে।\n"
+"\n"
+"সাধারণত গ্লাইডাররা হরিণ, শূকর বা ডলফিনের মতো বড় শিকার ধরে । বর্মের কারণে অন্য "
+"শ্রেণিতে যা করতে পারে না, ড্রেকদের সেই আগুন লক্ষ্য করে নিক্ষেপ করার বংশানুক্রমিক "
+"ক্ষমতা শিকারকে ক্ষতি না করে তাড়ানো ও দলে জড়ো করতে খুবই কাজে লাগে। যদি কোনো উড়ান "
+"ড্রেককে যুদ্ধক্ষেত্রে ডাকা হয়, সে দূর থেকে শত্রুকে বিরক্ত করতেই পছন্দ করে—আর সব ব্যর্থ "
+"হলে, সে পা দিয়ে লড়াই করে, তার মূল্যবান ডানাগুলোকে যতটা সম্ভব শত্রুদের থেকে দূরে "
+"রাখে।"
 
 #. [attack]: type=impact
 #: data/core/units/drakes/Glider.cfg:30 data/core/units/drakes/Hurricane.cfg:52
@@ -1845,6 +1988,12 @@ msgid ""
 "castes has increased their skill in combat, but their greatest strength "
 "still lies in their speed and flight."
 msgstr ""
+"ঘূর্ণিবাত ড্রেকরা তাদের শ্রেণির নীচের সদস্যদেরকে নির্ধারিত সাধারণ শিকার ও সংগ্রহের "
+"কাজ থেকে অনেক উপরে উঠে এসেছে। তারা ড্রেকদের সেনাবাহিনীর অপরিহার্য অংশ, প্রধান "
+"বাহিনীর আগে নজরদারি করে, যুদ্ধক্ষেত্রের জায়গায় বার্তা পৌঁছে দেয় এবং শত্রুর ওপর "
+"সবচেয়ে অপ্রত্যাশিত সময়ে আঘাত করে । অন্যান্য শ্রেণির নতুনদের সঙ্গে—বাধ্যতামূলকভাবে—"
+"প্রশিক্ষণ করার সুযোগ পেয়ে তাদের যুদ্ধে দক্ষতা বেড়েছে ঠিকই, তবে তাদের সবচেয়ে বড় "
+"শক্তি এখনও তাদের গতি এবং উড়ানে নিহিত।"
 
 #. [female]: gender=female
 #: data/core/units/drakes/Hurricane.cfg:101
@@ -1865,6 +2014,11 @@ msgid ""
 "from extensive use of their inner flame, their sculpted red-gold armor "
 "enhancing the illusion that they are, in fact, dragons."
 msgstr ""
+"মহাগ্নি ড্রেকরা তাদের অগ্নি-নিক্ষেপ ক্ষমতার প্রকৃত বিশারদ ও নিজেদের গোষ্ঠীতে তারা "
+"প্রায় তাদের ড্রাগন পূর্বপুরুষদের মতোই সম্মানিত ও ভীতিপ্রদ। তারা নিজেদের সৃষ্ট অগ্নিঝড়ের "
+"মধ্যেও অনাহতভাবে বিচরণ করতে পারে। তাদের আঁশ অন্তর্নিহিত অগ্নির দীর্ঘ ব্যবহারে লালচে "
+"হয়ে ওঠে, আর তাদের খোদাই করা লাল-সোনালি বর্ম এই ভ্রমটিকে আরও জোরদার করে যে তারা "
+"আসলে ড্রাগনই ।"
 
 #. [female]: gender=female
 #: data/core/units/drakes/Inferno.cfg:64
@@ -1885,6 +2039,11 @@ msgid ""
 "tries to bring as much game home as possible, competing to gain the respect "
 "of their tribe."
 msgstr ""
+"আকাশ ড্রেকরা যে হালকা ওজনের চিনেমাটির বর্ম পরে, তা তাদের পদমর্যাদার প্রতীক; "
+"বাতাসের সঙ্গে তাদের সংযোগকে সম্মান জানাতে সেটি রুপালি আস্তরণে মোড়া থাকে। শিকারের "
+"নেতা হিসেবে তারা প্রায়ই দীর্ঘ সময়ের জন্য ঘর থেকে দূরে থাকে। তারা প্রত্যেকে যতটা "
+"সম্ভব বেশি শিকার ঘরে ফিরিয়ে আনার চেষ্টা করে নিজেদের গোত্রের সম্মান অর্জনের "
+"প্রতিযোগিতায় লিপ্ত থাকে।"
 
 #. [female]: gender=female
 #: data/core/units/drakes/Sky.cfg:98
@@ -1906,6 +2065,10 @@ msgid ""
 "are weapons. A Thrasher will gladly fulfill his caste duties, as long as it "
 "can be done on the battlefield."
 msgstr ""
+"বর্মের বাঁধনে নিজেকে আবদ্ধ না রেখে, থ্র্যাশাররা তার ওজনকে শরীরের গতি বাড়াতে কাজে "
+"লাগাতে শিখেছে, ফলে তাদের ছোট বর্শা ও হাতে লাগানো নখরের আঘাতে আরও শক্তি যোগ হয়। "
+"সরঞ্জাম ও দেহ একসত্তা; এমনকি তাদের পুরু হেলমেট এবং তার নিচের মোটা খুলিও অস্ত্র। "
+"যুদ্ধক্ষেত্রে হলে— প্রহারকরা তাদের শ্রেণিগত দায়িত্ব আনন্দের সঙ্গেই পালন করে থাকে ।"
 
 #. [female]: gender=female
 #: data/core/units/drakes/Thrasher.cfg:118
@@ -1928,6 +2091,12 @@ msgid ""
 "bronze plate is the strongest work from the Drake forges, and their halberds "
 "can cleave a human in half."
 msgstr ""
+"সংঘর্ষক গোত্রের বাকি সদস্যদের থেকে রক্ষকদের আলাদা করে চেনা যায় দুটি বিষয়ে: তাদের "
+"ড্রাগন পূর্বপুরুষদের আদলে তৈরি অলঙ্কৃত হেলমেট এবং দায়িত্বে যাওয়ার আগে উজ্জ্বল রঙের "
+"কাপড়ে সযত্নে মোড়ানো তাদের বর্মধারী ডানা। এই পোশাকশৈলী ড্রেক সমাজে তাদের ভূমিকার "
+"প্রতি গর্ব থেকে উদ্ভূত হলেও, এটি মোটেই আনুষ্ঠানিক নয়। তাদের ভারী ব্রোঞ্জের পাত ড্রেক "
+"লৌহকারদের তৈরি সবচেয়ে শক্তিশালী বর্ম, আর তাদের হ্যালবার্ড এক কোপে একজন মানুষকে দুই "
+"ভাগে বিভক্ত করতে পারে।"
 
 #. [special_note]
 #: data/core/units/drakes/Warden.cfg:21
@@ -1935,6 +2104,7 @@ msgid ""
 "Compared to other drakes, Drake Wardens have a higher resistance to ‘pierce’ "
 "attacks."
 msgstr ""
+"অন্যান্য ড্রেকের তুলনায়, ড্রেক রক্ষকদের ‘ভেদক’ আঘাতের প্রতি বেশি প্রতিরোধ ক্ষমতা থাকে।"
 
 #. [female]: gender=female
 #: data/core/units/drakes/Warden.cfg:175
@@ -1956,6 +2126,11 @@ msgid ""
 "plated leather with the traditional war blade mounted on the back of each "
 "hand."
 msgstr ""
+"লড়াকু শ্রেণির ড্রেকরা, যেমন যোদ্ধারা, যেকোনো গোত্রেরই সেনাবাহিনীর ভিত্তি। কোনো "
+"বিশেষ ক্ষমতা বা দক্ষতা তাদের আলাদা করে না; শুধুমাত্র তাদের স্বাভাবিক বলশালী শরীর ও "
+"সামরিক প্রশিক্ষণই শত্রু বাহিনী ছেদ করতে সাহায্য করে। তারা শতাব্দীর পর শতাব্দী ধরে "
+"যেভাবে লড়াই করে এসেছে, একইভাবে লড়াই করে—চিনামাটির-পাতযুক্ত চামড়ার বর্ম পরিধান "
+"করে এবং প্রতিটি হাতের পেছনে ঐতিহ্যবাহী যুদ্ধের তলোয়ার লাগানো থাকে।"
 
 #. [female]: gender=female
 #: data/core/units/drakes/Warrior.cfg:58
@@ -2041,7 +2216,7 @@ msgstr ""
 #: data/core/units/dunefolk/Captain.cfg:30
 #: data/core/units/dunefolk/Paragon.cfg:30
 #: data/core/units/dunefolk/Paragon.cfg:39
-#: data/core/units/dunefolk/Soldier.cfg:26
+#: data/core/units/dunefolk/Soldier.cfg:30
 #: data/core/units/dunefolk/Swordsman.cfg:26
 #: data/core/units/dunefolk/Swordsman.cfg:35
 #: data/core/units/dunefolk/Warmaster.cfg:31
@@ -2067,12 +2242,12 @@ msgid ""
 msgstr ""
 
 #. [attack]: type=fire
-#: data/core/units/dunefolk/Burner.cfg:41
+#: data/core/units/dunefolk/Burner.cfg:42
 msgid "tar bomb"
 msgstr "আলকাতরা বোমা"
 
 #. [female]: gender=female
-#: data/core/units/dunefolk/Burner.cfg:98
+#: data/core/units/dunefolk/Burner.cfg:99
 msgid "female^Dune Burner"
 msgstr "মরু প্রজ্জ্বালিকা"
 
@@ -2117,11 +2292,11 @@ msgstr ""
 
 #. [attack]: type=pierce
 #: data/core/units/dunefolk/Cataphract.cfg:64
-#: data/core/units/dunefolk/Explorer.cfg:44
+#: data/core/units/dunefolk/Explorer.cfg:45
 #: data/core/units/dunefolk/Horse_Archer.cfg:36
-#: data/core/units/dunefolk/Rider.cfg:36 data/core/units/dunefolk/Rover.cfg:93
+#: data/core/units/dunefolk/Rider.cfg:36 data/core/units/dunefolk/Rover.cfg:97
 #: data/core/units/dunefolk/Sunderer.cfg:41
-#: data/core/units/dunefolk/Wayfarer.cfg:52
+#: data/core/units/dunefolk/Wayfarer.cfg:53
 #: data/core/units/dunefolk/Windbolt.cfg:41
 msgid "composite bow"
 msgstr "মিশ্র ধনুক"
@@ -2190,13 +2365,13 @@ msgid ""
 msgstr ""
 
 #. [attack]: type=fire
-#: data/core/units/dunefolk/Firetrooper.cfg:95
-#: data/core/units/dunefolk/Scorcher.cfg:42
+#: data/core/units/dunefolk/Firetrooper.cfg:96
+#: data/core/units/dunefolk/Scorcher.cfg:43
 msgid "flamethrower"
 msgstr "অগ্নিপ্রক্ষেপক"
 
 #. [female]: gender=female
-#: data/core/units/dunefolk/Firetrooper.cfg:149
+#: data/core/units/dunefolk/Firetrooper.cfg:150
 msgid "female^Dune Firetrooper"
 msgstr "মরু অগ্নিসেনা"
 
@@ -2429,7 +2604,7 @@ msgid ""
 msgstr ""
 
 #. [female]: gender=female
-#: data/core/units/dunefolk/Scorcher.cfg:95
+#: data/core/units/dunefolk/Scorcher.cfg:96
 msgid "female^Dune Scorcher"
 msgstr "মরু প্রজ্জ্বালক"
 
@@ -2715,6 +2890,10 @@ msgid ""
 "that is his intent. His skill in runecrafting is unrivaled, and the glyphs "
 "he carves into his weapons and armor deflect the blows of his enemies."
 msgstr ""
+"সব জাদুচিহ্নশিল্পীর মধ্যে সবচেয়ে শক্তিশালী, বামন জাদুচিহ্ন-বিশেষজ্ঞ আহত শত্রুদের প্রায় "
+"সঙ্গে সঙ্গেই ধ্বংস করে এবং খুব কমই তার ইচ্ছাকৃতভাবে করা আঘাত ব্যর্থ হয়। তার "
+"জাদুচিহ্নশিল্পের দক্ষতা অপরাজেয়, এবং তার অস্ত্র ও বর্মে খোদিত চিহ্নগুলো শত্রুদের আঘাত "
+"প্রতিফলিত করে।"
 
 #. [unit_type]: id=Dwarvish Berserker, race=dwarf
 #: data/core/units/dwarves/Berserker.cfg:4
@@ -2742,7 +2921,7 @@ msgstr ""
 #. [unit_type]: id=Dwarvish Explorer, race=dwarf
 #: data/core/units/dwarves/Explorer.cfg:4
 msgid "Dwarvish Explorer"
-msgstr "বামন অভিজ্ঞ সন্ধানী"
+msgstr "বামন অনুসন্ধানকারী"
 
 #. [unit_type]: id=Dwarvish Explorer, race=dwarf
 #: data/core/units/dwarves/Explorer.cfg:23
@@ -2754,6 +2933,11 @@ msgid ""
 "having practiced this skill hunting in the mountains. Their maneuverability "
 "makes them dangerous and tricky foes."
 msgstr ""
+"বামন অনুসন্ধানকারীরা অতুলনীয় জীবনরক্ষাকারী। কেবল তাদের বহনকৃত সরঞ্জাম ব্যবহার করেই "
+"তারা বন ও পাহাড়ে মাসের পর মাস ঘুরে নতুন খনিজ ও ধাতুর খোঁজে লিপ্ত থাকে। নিকট যুদ্ধে "
+"তাদের দক্ষতা কিছু বামনের চেয়ে কম হলেও, পাহাড়ে শিকারের অভ্যাসের কারণে তারা "
+"নিক্ষিপ্ত কুঠারে অদ্বিতীয় দক্ষতা অর্জন করেছে। তাদের দ্রুত চলাফেরার ক্ষমতা তাদেরকে "
+"বিপজ্জনক ও চতুর শত্রুতে পরিণত করে।"
 
 #. [unit_type]: id=Dwarvish Fighter, race=dwarf
 #: data/core/units/dwarves/Fighter.cfg:4
@@ -2778,6 +2962,9 @@ msgid ""
 "target with a thrown hand axe at several paces. Though slow on their feet, "
 "these dwarves are a testament to the prowess of their kin."
 msgstr ""
+"দাঁড়ানো এই বামনরা ঝকঝকে বর্মে আবৃত, যেন পাহাড়ের নিচের রাজা। তারা কুঠার চালনায় ও "
+"নিক্ষেপে দক্ষ, এবং কয়েক ধাপ দূর থেকে হাতে নিক্ষিপ্ত কুঠারে লক্ষ্যভেদ করতে পারে। "
+"পদচারণায় ধীর হলেও, এই বামনরা তাদের সম্প্রদায়ের ক্ষমতার জীবন্ত সাক্ষ্য।"
 
 #. [unit_type]: id=Dwarvish Miner, race=dwarf
 #: data/core/units/dwarves/Miner.cfg:4
@@ -2792,11 +2979,14 @@ msgid ""
 "of weapons or artifacts. Despite their lack of military training, their "
 "weighty pickaxes can deal substantial damage."
 msgstr ""
+"বামন খননকারীরা বামন সমাজের সাধারণ কর্মী। তারা মূল্যবান ধাতুগুলো ভূগর্ভ থেকে বের করে "
+"আনে, তবে কখনও অস্ত্র বা প্রতীকীর নির্মাণে অংশগ্রহণ করে না। তাদের সামরিক প্রশিক্ষণের "
+"অভাব থাকলেও, তাদের ভারী কুঠার যথেষ্ট ক্ষতি করতে সক্ষম।"
 
 #. [attack]: type=pierce
 #: data/core/units/dwarves/Miner.cfg:26
 msgid "pick"
-msgstr "কুঠার"
+msgstr "গাঁইতি"
 
 #. [unit_type]: id=Dwarvish Pathfinder, race=dwarf
 #: data/core/units/dwarves/Pathfinder.cfg:4
@@ -2812,11 +3002,16 @@ msgid ""
 "territory. They are powerful fighters in a melee, and from a distance their "
 "deftly thrown axes can rival the power and accuracy of a human archer."
 msgstr ""
+"এই সাহসী বামনেরা মাঝে মাঝে তাদের গুহা থেকে দীর্ঘ সময় দূরে থেকে সীমান্ত পর্যবেক্ষণ "
+"ও পাহারায় লিপ্ত থাকে। তারা এই সময়টি দখলদারদের নজরে রাখার জন্য কাটায়, এবং বামন "
+"ভূখণ্ডে প্রবেশ করা ডাকাত ও চোরদের সঙ্গে লড়াই করে। নিকট যুদ্ধে তারা শক্তিশালী যোদ্ধা, "
+"এবং দূর থেকে তাদের নিপুণভাবে নিক্ষিপ্ত কুঠারের ক্ষমতা ও নিখুঁততার মানব তীরন্দাজদের "
+"সমান হতেই পারে।"
 
 #. [unit_type]: id=Dwarvish Runesmith, race=dwarf
 #: data/core/units/dwarves/Runesmith.cfg:4
 msgid "Dwarvish Runesmith"
-msgstr "বামন জাদুচিহ্নকার"
+msgstr "বামন জাদুচিহ্নশিল্পী"
 
 #. [unit_type]: id=Dwarvish Runesmith, race=dwarf
 #: data/core/units/dwarves/Runesmith.cfg:23
@@ -2826,6 +3021,9 @@ msgid ""
 "and accuracy, and disrupt the blows of their enemies, causing them to strike "
 "softly, weakly and on the armor of the defender."
 msgstr ""
+"বামন জাদুচিহ্নশিল্পীরা, যারা তাদের কলায় দক্ষ, তাদের অস্ত্র এবং বর্মে জাদুচিহ্ন খোদাই "
+"করে। এই জাদুচিহ্নসমূহ জাদুচিহ্নশিল্পীর আঘাতকে শক্তিশালী ও নিখুঁত করে তোলে, এবং তাদের "
+"শত্রুদের আঘাতকে ব্যাহত করে, ফলে আঘাতগুলো দুর্বল, কোমল এবং রক্ষকের বর্মে লাগে।"
 
 #. [unit_type]: id=Dwarvish Scout, race=dwarf
 #: data/core/units/dwarves/Scout.cfg:4
@@ -2844,6 +3042,13 @@ msgid ""
 "However, they pay for their speed with the poorer protection provided by "
 "their lighter armor."
 msgstr ""
+"যদিও বামনেরা দীর্ঘকায় জাতিদের সঙ্গে দৌড় প্রতিযোগিতায় পারে না, তবুও ভারী বর্ম ছাড়া "
+"তাদের অসীম ধৈর্য ও সহনশীলতা তাদেরকে দ্রুততম যোদ্ধা ব্যাতীত সকলের সঙ্গে তাল মেলাতে "
+"সক্ষম করে। বামন সন্ধানীরা এই ক্ষমতাকে কাজে লাগিয়ে প্রধান বাহিনী থেকে দূরে এগিয়ে "
+"গিয়ে সৈন্যবাহিনীর গতিবিধি ও অবস্থান সম্পর্কে খবর পাঠায়, অথবা গুরুত্বপূর্ণ লক্ষ্যবস্তু "
+"রক্ষা করে। যুদ্ধের বাইরে, তাদের প্রায়শই বামন সম্প্রদায়ের মধ্যে বার্তা পৌঁছে দিতে "
+"ব্যবহার করা হয়। তবে গতির মূল্য হিসেবে তাদের হালকা বর্মের ক্ষতি স্বীকার করে নিতেই "
+"হয় ।"
 
 #. [unit_type]: id=Dwarvish Sentinel, race=dwarf
 #: data/core/units/dwarves/Sentinel.cfg:4
@@ -2864,7 +3069,7 @@ msgstr ""
 #. [unit_type]: id=Dwarvish Stalwart, race=dwarf
 #: data/core/units/dwarves/Stalwart.cfg:4
 msgid "Dwarvish Stalwart"
-msgstr ""
+msgstr "বামন দৃঢ়প্রহরী"
 
 #. [unit_type]: id=Dwarvish Steelclad, race=dwarf
 #: data/core/units/dwarves/Steelclad.cfg:4
@@ -2879,6 +3084,9 @@ msgid ""
 "in the heat of battle, and their mastery of both battleaxe and warhammer "
 "make them imposing foes indeed."
 msgstr ""
+"নালগার লৌহকারদের সবচেয়ে শক্তিশালী পাত ও শৃঙ্খলিত-বর্ম দিয়ে সজ্জিত, লৌহবর্মরা বামন "
+"সেনাবাহিনীর অগ্রদূত। তারা যুদ্ধক্ষেত্রে তাদের সহনশীলতার জন্য খ্যাত, এবং যুদ্ধে তলোয়ার "
+"ও যুদ্ধ-হাতুড়ির দক্ষতা তাদের সত্যিই ভয়ানক প্রতিপক্ষে পরিণত করে।"
 
 #. [unit_type]: id=Dwarvish Thunderer, race=dwarf
 #: data/core/units/dwarves/Thunderer.cfg:4
@@ -2908,7 +3116,7 @@ msgstr ""
 #. [unit_type]: id=Dwarvish Ulfserker, race=dwarf
 #: data/core/units/dwarves/Ulfserker.cfg:4
 msgid "Dwarvish Ulfserker"
-msgstr ""
+msgstr "বামন ক্ষিপ্ত লড়াকু"
 
 #. [unit_type]: id=Elvish Archer, race=elf, gender=male,female
 #: data/core/units/elves/Archer.cfg:4
@@ -2927,6 +3135,12 @@ msgid ""
 "Elvish archers are still effective combatants, especially when fighting from "
 "the safety of their forests."
 msgstr ""
+"প্রধানত খাদ্য সংগ্রাহক এবং শিকারি হিসেবে, অধিকাংশ এল্ফরা ছোটবেলা থেকেই তীরন্দাজি "
+"শেখে। এটি কেবল ব্যবহারিক দক্ষতা নয়; তীরন্দাজি একটি প্রচলিত বিনোদন হিসেবেও, এবং "
+"দর্শক ও অংশগ্রহণকারীদের আনন্দের জন্য বহু প্রতিযোগিতা আয়োজন করা হয়। যুদ্ধের সময় এই "
+"দক্ষতা সহজেই লড়াইয়ে কাজে লাগে, যেখানে অনেক এল্ফরাই তাদের প্রিয় অস্ত্র হিসেবে তীর "
+"ব্যবহার করে। যদিও তারা মানব বা ওর্কদের মতো শক্তপোক্ত নয়, এল্ফ তীরন্দাজরা তবুও "
+"কার্যকর যোদ্ধা, বিশেষ করে যখন তারা নিজেদের বনাঞ্চলের নিরাপত্তা থেকে লড়াই করে।"
 
 #. [female]: gender=female
 #: data/core/units/elves/Archer.cfg:80
@@ -3003,7 +3217,7 @@ msgstr ""
 #. [unit_type]: id=Elvish Druid, race=elf, gender=female
 #: data/core/units/elves/Druid.cfg:4
 msgid "female^Elvish Druid"
-msgstr "এল্ফ বনযাজক"
+msgstr "এল্ফ বনযাজিকা"
 
 #. [unit_type]: id=Elvish Druid, race=elf, gender=female
 #: data/core/units/elves/Druid.cfg:19
@@ -3020,6 +3234,12 @@ msgid ""
 "the druids’ careful tending, the forest kindles their magics in turn, "
 "symbiotically enhancing the already potent powers that these elves possess."
 msgstr ""
+
+#. [attack]: type=impact
+#: data/core/units/elves/Druid.cfg:35 data/core/units/elves/Lady.cfg:27
+#: data/core/units/elves/Shyde.cfg:42
+msgid "ensnare"
+msgstr "ফাঁদ"
 
 #. [unit_type]: id=Elvish Enchantress, race=elf, gender=female
 #: data/core/units/elves/Enchantress.cfg:4
@@ -3045,7 +3265,7 @@ msgstr ""
 #. in game mechanics an upgrade of the Shaman’s slowing “entangle”, but in lore has the different magic style of the Enchantress’s unit description
 #: data/core/units/elves/Enchantress.cfg:37 data/core/units/elves/Sylph.cfg:41
 msgid "ethereal web"
-msgstr ""
+msgstr "অলৌকিক জাল"
 
 #. [attack]: type=arcane
 #: data/core/units/elves/Enchantress.cfg:49
@@ -3586,14 +3806,6 @@ msgstr ""
 msgid "Gryphon"
 msgstr "গ্রিফন"
 
-#. [unit_type]: id=Gryphon, race=gryphon
-#: data/core/units/gryphons/Gryphon.cfg:18
-msgid ""
-"These majestic and powerful creatures are masters of the sky. Gryphons are "
-"both dangerous and wary of other intelligent creatures, and thus should not "
-"be disturbed without a good reason."
-msgstr ""
-
 #. [unit_type]: id=Gryphon Master, race=gryphon
 #: data/core/units/gryphons/Gryphon_Master.cfg:4
 msgid "Gryphon Master"
@@ -3686,6 +3898,11 @@ msgid ""
 msgstr ""
 
 #. [unit_type]: id=Bowman, race=human, gender=male
+#: data/core/units/humans/Loyalist_Bowman.cfg:4
+msgid "Bowman"
+msgstr "ধনুর্ধর"
+
+#. [unit_type]: id=Bowman, race=human, gender=male
 #: data/core/units/humans/Loyalist_Bowman.cfg:18
 msgid ""
 "The use of archery in shooting something other than game was seen from its "
@@ -3693,15 +3910,6 @@ msgid ""
 "immemorial. Usually of humble origins, hailing from the peasantry or "
 "woodsmen, military Bowmen are trained to competence with both a bow and a "
 "short sword, and are very common on the battlefield."
-msgstr ""
-
-#. [unit_type]: id=Cavalier, race=human
-#: data/core/units/humans/Loyalist_Cavalier.cfg:20
-msgid ""
-"Cavaliers are masters at the use of both sword and crossbow from horseback. "
-"Their combination of striking power and mobility is fearsome, and they have "
-"a reputation for dash and aggressiveness to match it. The daring deeds of "
-"Cavaliers are the subject of many a tale and song."
 msgstr ""
 
 #. [unit_type]: id=Cavalryman, race=human
@@ -4680,7 +4888,7 @@ msgstr ""
 #. [attack]: type=impact
 #: data/core/units/merfolk/Brawler.cfg:30
 #: data/core/units/monsters/Cat_Jump.cfg:92
-#: data/core/units/monsters/Fire_Dragon.cfg:42
+#: data/core/units/monsters/Fire_Dragon.cfg:64
 #: data/core/units/monsters/Icemonax_Greater.cfg:72
 msgid "tail"
 msgstr "লেজ"
@@ -5343,7 +5551,7 @@ msgid "Fire Dragon"
 msgstr "অগ্নি ড্রাগন"
 
 #. [unit_type]: id=Fire Dragon, race=monster
-#: data/core/units/monsters/Fire_Dragon.cfg:24
+#: data/core/units/monsters/Fire_Dragon.cfg:46
 msgid ""
 "A dragon is a legendary creature, normally seen only in fantastic tales. "
 "They are very rare, and were it not for the historical events, the "
@@ -5848,13 +6056,6 @@ msgstr ""
 msgid "Horned Scarab"
 msgstr "শিঙযুক্ত গুবরেপোকা"
 
-#. [special_note]
-#: data/core/units/monsters/Scarab.cfg:21
-msgid ""
-"This unit can burrow under loose dirt, sand, or leaves, concealing itself if "
-"it does not change location."
-msgstr ""
-
 #. [unit_type]: id=Horned Scarab, race=monster
 #: data/core/units/monsters/Scarab.cfg:25
 msgid ""
@@ -5863,11 +6064,6 @@ msgid ""
 "of attack is the large, sharp horn growing from their head. Because of their "
 "large size, armor, and horn, they cannot fly."
 msgstr ""
-
-#. [attack]: type=pierce
-#: data/core/units/monsters/Scarab.cfg:53
-msgid "horn"
-msgstr "শিঙ"
 
 #. [unit_type]: id=Sea Serpent, race=monster
 #: data/core/units/monsters/Sea_Serpent.cfg:4
@@ -6519,6 +6715,12 @@ msgid ""
 "inevitably the most shrewd and perceptive among his peers and has won the "
 "respect of his brethren through leadership rather than coercion."
 msgstr ""
+
+#. [attack]: type=blade
+#: data/core/units/orcs/Ruler.cfg:27 data/core/units/orcs/Sovereign.cfg:28
+#: data/core/units/orcs/Warlord.cfg:30 data/core/units/orcs/Warrior.cfg:38
+msgid "greatsword"
+msgstr "বিরাট তলোয়ার"
 
 #. [unit_type]: id=Orcish Slayer, race=orc
 #: data/core/units/orcs/Slayer.cfg:4
@@ -7215,11 +7417,13 @@ msgid "Bone Knight"
 msgstr "অস্থিসার নাইট"
 
 #. [unit_type]: id=Bone Knight, race=undead
-#: data/core/units/undead/Skele_Bone_Knight.cfg:60
+#. [unit_type]: id=Skeleton Rider, race=undead
+#: data/core/units/undead/Skele_Bone_Knight.cfg:62
+#: data/core/units/undead/Skeleton_Rider.cfg:80
 msgid ""
-"Once great warriors across the plains, these mounted riders atop their "
-"skeletal horses were raised from the ground by unholy magic to spread fear "
-"and destruction."
+"Once great warriors thundering across the plains, these mounted riders atop "
+"their skeletal horses were raised from the grave by unholy magic to spread "
+"fear and destruction."
 msgstr ""
 
 #. [unit_type]: id=Bone Shooter, race=undead
@@ -7359,14 +7563,6 @@ msgstr ""
 #: data/core/units/undead/Skeleton_Rider.cfg:5
 msgid "Skeleton Rider"
 msgstr "কঙ্কাল আরোহী"
-
-#. [unit_type]: id=Skeleton Rider, race=undead
-#: data/core/units/undead/Skeleton_Rider.cfg:79
-msgid ""
-"Once great warriors thundering across the plains, these mounted riders atop "
-"their skeletal horses were raised from the grave by unholy magic to spread "
-"fear and destruction."
-msgstr ""
 
 #. [unit_type]: id=Ghost, race=undead
 #: data/core/units/undead/Spirit_Ghost.cfg:4
@@ -7555,6 +7751,53 @@ msgid ""
 "believed to be different from the magic of elves or merfolk. The details of "
 "this craft can only be speculated on by other races."
 msgstr ""
+
+#~ msgid "Strength Training"
+#~ msgstr "শক্তির প্রশিক্ষণ"
+
+#~ msgid "Bowmanship Training"
+#~ msgstr "তিরন্দাজি প্রশিক্ষণ"
+
+#~ msgid "Strong Shots"
+#~ msgstr "শক্তিশালী আঘাত"
+
+#~ msgid "Piercing Shot"
+#~ msgstr "ভেদ্য আঘাত"
+
+#, fuzzy
+#~| msgid "Shadow"
+#~ msgid "Shadow Lord"
+#~ msgstr "ছায়া"
+
+#, fuzzy
+#~| msgid "war blade"
+#~ msgid "astral blade"
+#~ msgstr "যুদ্ধের ফলক"
+
+#, fuzzy
+#~| msgid "chill wave"
+#~ msgid "chill"
+#~ msgstr "শৈত্য প্রবাহ"
+
+#, fuzzy
+#~| msgid "female^Dark Horse"
+#~ msgid "female^Shadow Lord"
+#~ msgstr "কালো ঘোড়া"
+
+#, fuzzy
+#~| msgid "fire"
+#~ msgid "firebow"
+#~ msgstr "আগুন"
+
+#, fuzzy
+#~| msgid "Cavalryman"
+#~ msgid "naval ram"
+#~ msgstr "অশ্বারোহী সেনা"
+
+#, fuzzy
+#~| msgid "Transport Galleon"
+#~ msgid "Transport Ship"
+#~ msgstr "পরিবহন জাহাজ"
 
 #~ msgid "forceful scimitar strike"
 #~ msgstr "তরবারির শক্তিশালী আঘাত"

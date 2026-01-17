@@ -29,7 +29,8 @@
 #include "utils/optional_fwd.hpp"
 
 #include <vector>
-class game_config_view;
+
+class map_generator;
 
 namespace editor {
 
@@ -70,7 +71,7 @@ public:
 	 * empty, indicating a new map.
 	 * Marked "explicit" to avoid automatic conversions.
 	 */
-	explicit map_context(const editor_map& map, bool pure_map, const config& schedule, const std::string& addon_id);
+	explicit map_context(const editor_map& map, bool pure_map, const std::string& addon_id);
 
 	/**
 	 * Create map_context from a map file. If the map cannot be loaded, an
@@ -80,7 +81,7 @@ public:
 	 * inside scenarios do not change the filename, but set the "embedded" flag
 	 * instead.
 	 */
-	map_context(const game_config_view& game_config, const std::string& filename, const std::string& addon_id);
+	map_context(const std::string& filename, const std::string& addon_id);
 
 	/**
 	 * Map context destructor
@@ -91,7 +92,7 @@ public:
 	 * Select the nth tod area.
 	 * @param index of the tod area to select.
 	 */
-	bool select_area(int index);
+	void select_area(int index);
 
 	/** Adds a new side to the map */
 	void new_side();
@@ -209,16 +210,11 @@ public:
 		active_area_ = index;
 	}
 
-	bool is_in_playlist(std::string track_id) {
-		return music_tracks_.find(track_id) != music_tracks_.end();
-	}
+	/** Checks whether the given track is part of current playlist. */
+	bool playlist_contains(const std::shared_ptr<sound::music_track>& track) const;
 
-	void add_to_playlist(const sound::music_track& track) {
-
-		if (music_tracks_.find(track.id()) == music_tracks_.end())
-				music_tracks_.emplace(track.id(), track);
-		else music_tracks_.erase(track.id());
-	}
+	/** Remove the given track from the current playlist if present, else appends it. */
+	void toggle_track(const std::shared_ptr<sound::music_track>& track);
 
 	/**
 	 * Draw a terrain on a single location on the map.
@@ -282,8 +278,6 @@ public:
 	void add_changed_location(const std::set<map_location>& locs);
 	void set_everything_changed();
 	bool everything_changed() const;
-
-	void set_labels(display& disp);
 
 	void clear_starting_position_labels(display& disp);
 
@@ -407,6 +401,16 @@ public:
 		addon_id_ = addon_id;
 	}
 
+	map_generator* last_used_generator() const
+	{
+		return last_map_generator_;
+	}
+
+	void set_last_used_generator(map_generator* generator)
+	{
+		last_map_generator_ = generator;
+	}
+
 protected:
 	/**
 	 * The actual filename of this map. An empty string indicates a new map.
@@ -473,11 +477,6 @@ protected:
 	int actions_since_save_;
 
 	/**
-	 * Cache of set starting position labels. Necessary for removing them.
-	 */
-	std::set<map_location> starting_position_label_locs_;
-
-	/**
 	 * Refresh flag indicating the map in this context should be completely reloaded by the display
 	 */
 	bool needs_reload_;
@@ -492,8 +491,14 @@ protected:
 	 */
 	bool needs_labels_reset_;
 
-	std::set<map_location> changed_locations_;
 	bool everything_changed_;
+
+	std::set<map_location> changed_locations_;
+
+	/**
+	 * Cache of set starting position labels. Necessary for removing them.
+	 */
+	std::set<map_location> starting_position_label_locs_;
 
 private:
 	std::string addon_id_;
@@ -514,16 +519,17 @@ private:
 	mp_game_settings mp_settings_;
 	game_classification game_classification_;
 
-	typedef std::map<std::string, sound::music_track> music_map;
-	music_map music_tracks_;
+	std::list<std::shared_ptr<sound::music_track>> music_tracks_;
 
 	typedef std::map<map_location, std::vector<overlay>> overlay_map;
 	overlay_map overlays_;
 
+	map_generator* last_map_generator_;
+
 public:
 
 	overlay_map& get_overlays() { return overlays_; }
-
+	void set_overlays(overlay_map overlays) { overlays_ = std::move(overlays); }
 };
 
 

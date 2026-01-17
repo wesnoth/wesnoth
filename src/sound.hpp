@@ -62,8 +62,6 @@ void play_music_config(const config &music_node, bool allow_interrupt_current_tr
 // Act on any track list changes from above.
 void commit_music_changes();
 
-// Play this particular music file over and over and over.
-void play_music_repeatedly(const std::string& id);
 // Play this particular music file once, then silence.
 void play_music_once(const std::string& id);
 // Empty the playlist

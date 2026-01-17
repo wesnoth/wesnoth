@@ -99,6 +99,9 @@ std::set<std::string> split_set(std::string_view val, const char c = ',', const 
 
 std::vector<std::string_view> split_view(std::string_view val, const char c = ',', const int flags = REMOVE_EMPTY | STRIP_SPACES);
 
+/** You cannot take a non-owning view to a temporary string! */
+std::vector<std::string_view> split_view(std::string&&) = delete;
+
 /**
  * This function is identical to split(), except it does not split when it otherwise would if the
  * previous character was identical to the parameter 'quote' (i.e. it does not split quoted commas).

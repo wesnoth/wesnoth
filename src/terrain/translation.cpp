@@ -61,8 +61,6 @@ namespace t_translation {
 	 */
 	static terrain_code get_mask_(const terrain_code& terrain);
 
-	static ter_layer string_to_layer_(std::string_view str);
-
 	/**
 	 * Converts a string to a layer.
 	 *
@@ -71,10 +69,7 @@ namespace t_translation {
 	 *
 	 * @return          The converted layer.
 	 */
-	static ter_layer string_to_layer_(const std::string& str)
-	{
-		return string_to_layer_(std::string_view(str));
-	}
+	static ter_layer string_to_layer_(std::string_view str);
 
 	/**
 	 * Converts a terrain string to a number.
@@ -154,29 +149,24 @@ const ter_match ALL_SWAMPS("!,*^V*,*^B*,!,S*"); //excluding swamp villages and b
 
 /***************************************************************************************/
 
-terrain_code::terrain_code(const std::string& b, ter_layer o) :
-	base(string_to_layer_(b)), overlay(o)
-{}
+terrain_code::terrain_code(const std::string& b, ter_layer o)
+	: base(string_to_layer_(b))
+	, overlay(o)
+{
+}
 
-terrain_code::terrain_code(const std::string& b, const std::string& o) :
-	base(string_to_layer_(b)), overlay(string_to_layer_(o))
-{}
+terrain_code::terrain_code(const std::string& b, const std::string& o)
+	: base(string_to_layer_(b))
+	, overlay(string_to_layer_(o))
+{
+}
 
-ter_match::ter_match() :
-	terrain(),
-	mask(),
-	masked_terrain(),
-	has_wildcard(false),
-	is_empty(true)
-{}
-
-ter_match::ter_match(std::string_view str, const ter_layer filler) :
-	terrain(t_translation::read_list(str, filler)),
-	mask(),
-	masked_terrain(),
-	has_wildcard(t_translation::has_wildcard(terrain)),
-	is_empty(terrain.empty())
-
+ter_match::ter_match(std::string_view str, const ter_layer filler)
+	: terrain(t_translation::read_list(str, filler))
+	, mask()
+	, masked_terrain()
+	, has_wildcard(t_translation::has_wildcard(terrain))
+	, is_empty(terrain.empty())
 {
 	mask.resize(terrain.size());
 	masked_terrain.resize(terrain.size());
@@ -187,12 +177,12 @@ ter_match::ter_match(std::string_view str, const ter_layer filler) :
 	}
 }
 
-ter_match::ter_match(const terrain_code& tcode):
-	terrain(ter_list(1, tcode)),
-	mask(),
-	masked_terrain(),
-	has_wildcard(t_translation::has_wildcard(terrain)),
-	is_empty(terrain.empty())
+ter_match::ter_match(const terrain_code& tcode)
+	: terrain(ter_list(1, tcode))
+	, mask()
+	, masked_terrain()
+	, has_wildcard(t_translation::has_wildcard(terrain))
+	, is_empty(terrain.empty())
 {
 	mask.resize(terrain.size());
 	masked_terrain.resize(terrain.size());
@@ -737,31 +727,27 @@ static terrain_code string_to_number_(std::string_view str, const ter_layer fill
 
 static terrain_code string_to_number_(std::string_view str, std::vector<std::string>& start_positions, const ter_layer filler)
 {
-	terrain_code result;
-
 	// Strip the spaces around us
 	// unlike the old implementation this also trims newlines.
 	utils::trim(str);
 	if(str.empty()) {
-		return result;
+		return NONE_TERRAIN;
 	}
 
 	// Split if we have spaces inside
 	std::size_t offset = str.find(' ', 0);
 	while(offset != std::string::npos) {
-		start_positions.push_back(std::string(str.substr(0, offset)));
+		start_positions.emplace_back(str.substr(0, offset));
 		str.remove_prefix(offset + 1);
 		offset = str.find(' ', 0);
 	}
 
 	offset = str.find('^', 0);
-	if(offset !=  std::string::npos) {
-		result = terrain_code { string_to_layer_(str.substr(0, offset)), string_to_layer_(str.substr(offset + 1)) };
+	if(offset != std::string::npos) {
+		return { string_to_layer_(str.substr(0, offset)), string_to_layer_(str.substr(offset + 1)) };
 	} else {
-		result = terrain_code { string_to_layer_(str), filler };
+		return { string_to_layer_(str), filler };
 	}
-
-	return result;
 }
 
 static std::string number_to_string_(terrain_code terrain, const std::vector<std::string>& start_positions)
@@ -821,7 +807,7 @@ static terrain_code string_to_builder_number_(std::string str)
 
 	// Empty string is allowed here, so handle it
 	if(str.empty()) {
-		return terrain_code();
+		return NONE_TERRAIN;
 	}
 
 	const int number = lexical_cast_default(str, -1);

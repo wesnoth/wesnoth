@@ -15,6 +15,7 @@
 
 package org.wesnoth.Wesnoth;
 
+import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -28,9 +29,11 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Enumeration;
-import java.util.LinkedHashMap;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.Executors;
@@ -52,21 +55,19 @@ import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.PopupMenu;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+import androidx.documentfile.provider.DocumentFile;
 
 public class InitActivity extends Activity {
-
-	private final static LinkedHashMap<String, String> packages = new LinkedHashMap<String, String>();
-	private final static String VERSION_ID = "1.19.14";
-	private final static String ARCHIVE_URL =
-		"https://sourceforge.net/projects/wesnoth/files/wesnoth/wesnoth-%s/android-data/%s/download";
+	private final static String MANIFEST_URL =
+		"https://sourceforge.net/projects/wesnoth/files/wesnoth/wesnoth-%s/android-data/manifest.txt/download";
 
 	private File dataDir;
+	private Properties status = new Properties();
 
 	private String toSizeString(long bytes) {
 		return String.format("%4.2f MB", (bytes * 1.0f) / (1e6));
@@ -74,10 +75,6 @@ public class InitActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedState) {
-		packages.put("Core Data", "master.zip");
-		packages.put("Music", "music.zip");
-		packages.put("Patch", "patch.zip");
-
 		super.onCreate(savedState);
 		setContentView(R.layout.activity_init);
 
@@ -85,10 +82,46 @@ public class InitActivity extends Activity {
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
 		initMainDataDir();
+		
+		status = initStatusFile(new File(dataDir, "status.properties"));
 
 		initSettingsMenu();
 
 		doPowerCheckAndStart();
+	}
+
+	private List<PackageInfo> readManifest() {
+		List<PackageInfo> packages = new ArrayList<>();
+		long lastModified = Long.parseLong(status.getProperty("manifest.modified", "0"));
+		
+		String versionID = BuildConfig.VERSION_NAME;
+		// Delete '+dev', since SF data url doesn't have it.
+		if (versionID.endsWith("+dev")) {
+			versionID = versionID.substring(0, versionID.length() - 4);
+		}
+
+		String downloadAddr = String.format(MANIFEST_URL, versionID);
+		Log.d("Manifest", "Fetching manifest from " + downloadAddr);
+		File manifestFile = new File(dataDir, "manifest.txt");
+		
+		try {
+			lastModified = downloadFile(downloadAddr, manifestFile, lastModified, "Checking Manifest...", true);
+
+			Properties manifest = new Properties();
+			manifest.load(new FileInputStream(manifestFile));
+			for (String pkgid : manifest.getProperty("packages", "").split(",\\s*")) {
+				packages.add(PackageInfo.from(manifest, pkgid));
+			}
+			Log.d("Manifest", "Last Modified: " + lastModified);
+			Log.d("Manifest", "Packages: " + packages.toString());
+
+			status.setProperty("manifest.modified", "" + lastModified);
+			Log.d("Manifest", "Fetched and loaded successfully");
+		} catch (Exception e) {
+			Log.e("Download", "security error", e);
+		}
+		
+		return packages;
 	}
 
 	public void onActivityResult(int reqCode, int resCode, Intent intent) {
@@ -99,6 +132,10 @@ public class InitActivity extends Activity {
 			initialize();
 		} else if (reqCode == 2 && resCode == RESULT_OK) {
 			initializeAssetsFromZip(intent.getData());
+		} else if (reqCode == 3 && resCode == RESULT_OK) {
+			importUserData(intent.getData());
+		} else if (reqCode == 4 && resCode == RESULT_OK) {
+			exportUserData(intent.getData());
 		}
 	}
 
@@ -111,10 +148,13 @@ public class InitActivity extends Activity {
 			settingsMenu.setOnMenuItemClickListener(menuItem -> {
 				if (menuItem.getItemId() == R.id.mnuClear) {
 					// TODO do the deleting in another thread
-					clearGameData(dataDir);
+					showClearDataDialog(dataDir);
 					return true;
 				} else if (menuItem.getItemId() == R.id.mnuLocalInstall) {
 					showZIPHelpDialog();
+					return true;
+				} else if (menuItem.getItemId() == R.id.mnuImportExport) {
+					showImportExportDialog();
 					return true;
 				}
 				return false;
@@ -185,58 +225,98 @@ public class InitActivity extends Activity {
 
 		Executors.newSingleThreadExecutor().execute(() -> {
 			//TODO Update mechanism when patch is available.
-
-			Properties status = initStatusFile(dataDir);
-			boolean isManual = Boolean.parseBoolean(status.getProperty("manual_install", "false"));
-
-			if (!isManual) {
-				for (Map.Entry<String, String> entry : InitActivity.packages.entrySet()) {
-					String name = entry.getValue();
-					String uiname = entry.getKey();
-
-					File packageFile = new File(dataDir, name);
-					long lastModified = Long.parseLong(status.getProperty("modified." + name, "0"));
-
-					// Download file
-					if (status.getProperty("unpack." + name, "false").equalsIgnoreCase("false")) {
-						final String downloadAddr = String.format(ARCHIVE_URL, VERSION_ID, name);
-						Log.d("InitActivity", "Starting to download " + name + " from " + downloadAddr);
+			if (!Boolean.parseBoolean(status.getProperty("manual_install", "false"))) {
+				HashMap<String, String> excluded = new HashMap<String, String>();
+				
+				for (PackageInfo info : readManifest()) {
+					String id = info.getId();
+					if (excluded.containsKey(id) && excluded.get(id).equals(info.getVersion())) {
+						Log.d("InitActivity", "Not downloading excluded package " + id);
+						continue;
+					}
+					
+					String url = info.getURL();
+					long lastModified = Long.parseLong(status.getProperty(id + ".modified", "0"));
+					int oldVersion = PackageInfo.getPatchVersion(status.getProperty(id + ".version", "0"));
+					int newVersion = info.getPatchVersion();
+					boolean downloadPkg = newVersion > oldVersion;
+					
+					// Check if dependencies for this package exist, only download if all satisfied
+					for (Map.Entry<String, String> dep : info.getDependencies().entrySet()) {
+						int depOldVersion = PackageInfo.getPatchVersion(status.getProperty(dep.getKey() + ".version", "0"));
+						int depNewVersion = PackageInfo.getPatchVersion(dep.getValue());
+						if (depNewVersion != depOldVersion) {
+							Log.d("InitActivity", "Dependency " + dep.getKey() + "for " + id + " not found");
+							downloadPkg = false;
+						}
+					}
+					
+					Log.d("InitActivity", id + " version: " + oldVersion + " (local), " + newVersion + " (remote)");
+					
+					if (downloadPkg) {
+						
+						File packageFile = new File(dataDir, id + ".zip");
+						
+						// Download package
+						Log.d("InitActivity", "Starting to download " + id + " from " + url);
+						
 						try {
 							lastModified = downloadFile(
-								downloadAddr,
-								packageFile,
-								uiname,
-								lastModified);
-
-							status.setProperty("modified." + name, "" + lastModified);
+								url, packageFile, lastModified, info.getUIName(), false);
+							
+							status.setProperty(id + ".modified", "" + lastModified);
 						} catch (Exception e) {
 							Log.e("Download", "security error", e);
 						}
-
+	
 						// Unpack archive
 						// TODO Checksum verification?
 						if (packageFile.exists()) {
-							Log.d("InitActivity", "Start unpack " + name);
-
-							if (unpackArchive(packageFile, dataDir, uiname)) {
+							Log.d("InitActivity", "Start unpacking " + id);
+							
+							if (unpackArchive(packageFile, dataDir, info.getUIName())) {
+								status.setProperty(id + ".version", "" + info.getVersion());
+								// this package is already supplying what it excludes,
+								// so mark excluded packages as installed
+								for (Map.Entry<String, String> entry : info.getExcluded().entrySet()) {
+									status.setProperty(entry.getKey() + ".version", entry.getValue().toString());
+								}
+								excluded.putAll(info.getExcluded());
 								packageFile.delete();
-								status.setProperty("unpack." + name, "true");
 							}
 						}
+					} else {
+						Log.d("InitActivity", "No new version/dependency unmet for " + id + " found in server, skipping.");
 					}
 				}
+			} else {
+				Log.d("InitActivity", "Manually installed data, automatic updates will not be performed.");
 			}
 
 			extractNetworkCertificate();
 
 			storeStatus(status);
 
-			runOnUiThread(() -> progressText.setText("Unpacking finished..."));
-
 			Log.d("InitActivity", "Stop unpack");
 
-			// Launch Wesnoth
-			runOnUiThread(() -> launchWesnoth());
+			if (new File(dataDir, "data").exists()
+				&& new File(dataDir, "fonts").exists()
+				&& new File(dataDir, "sounds").exists()
+				&& new File(dataDir, "images").exists())
+			{
+				// Launch Wesnoth
+				runOnUiThread(() -> launchWesnoth());
+			} else {
+				runOnUiThread(() -> {
+					new AlertDialog.Builder(this)
+						.setTitle("Data missing!")
+						.setMessage("Gamedata is missing, please download it to proceed (requires network).")
+						.setPositiveButton("OK", (d, res) -> initialize())
+						.setNegativeButton("Exit", (d, res) -> System.exit(0))
+						.setCancelable(false)
+						.show();
+				});
+			}
 		});
 	}
 
@@ -251,9 +331,8 @@ public class InitActivity extends Activity {
 		finish();
 	}
 
-	private Properties initStatusFile(File dataDir) {
+	private Properties initStatusFile(File statusFile) {
 		Properties status = new Properties();
-		File statusFile = new File(dataDir, "status.properties");
 		try (FileInputStream statusStream = new FileInputStream(statusFile)) {
 			if (statusFile.exists()) {
 				status.load(statusStream);
@@ -289,7 +368,7 @@ public class InitActivity extends Activity {
 
 		try (FileOutputStream certStream = new FileOutputStream(certFile)) {
 			certFile.createNewFile();
-			copyStream(getResources().openRawResource(R.raw.cacert), certStream);
+			IOUtils.copyStream(getResources().openRawResource(R.raw.cacert), certStream);
 		} catch (Exception e) {
 			Log.e("InitActivity", "Exception", e);
 		}
@@ -299,21 +378,29 @@ public class InitActivity extends Activity {
 		Executors.newSingleThreadExecutor().execute(() -> {
 			runOnUiThread(() -> showProgressScreen());
 
-			Properties status = initStatusFile(dataDir);
-
-			if (unpackArchive(uri, dataDir, "Core")) {
+			initMainDataDir();
+			
+			status = initStatusFile(new File(dataDir, "status.properties"));
+			
+			String msg;
+			if (unpackArchive(uri, dataDir, "Custom Data")) {
 				status.setProperty("manual_install", "true");
+				// if we have a custom status.properties bundled inside, merge it with `status`.
+				status.putAll(initStatusFile(new File(dataDir, "status.properties")));
 				storeStatus(status);
-				runOnUiThread(()-> Toast.makeText(this, "Installed!", Toast.LENGTH_SHORT).show());
+				msg = "Installed!";
 			} else {
-				runOnUiThread(()-> Toast.makeText(this, "Installation failed!", Toast.LENGTH_SHORT).show());
+				msg = "Installation failed!";
 			}
 
-			runOnUiThread(() -> recreate());
+			runOnUiThread(() -> {
+				runOnUiThread(()-> Toast.makeText(this, msg, Toast.LENGTH_SHORT).show());
+				recreate();
+			});
 		});
 	}
 
-	private void clearGameData(File dataDir) {
+	private void showClearDataDialog(File dataDir) {
 		new AlertDialog.Builder(this)
 			.setTitle("Confirm Deletion")
 			.setMessage("All gamedata will be completely deleted. Are you sure?")
@@ -355,50 +442,86 @@ public class InitActivity extends Activity {
 		Intent inttOpen2 = Intent.createChooser(inttOpen, "Open ZIP file...");
 		startActivityForResult(inttOpen2, 2);
 	}
-
-	private void updateDownloadProgress(int progress, int max, String type) {
+	
+	private void showImportExportDialog() {
+		new AlertDialog.Builder(this)
+			.setTitle("Import/Export User Data")
+			.setMessage("This allows you to import/export your userdata folder, which contains your add-ons, game saves, logs and so on. Intended for advanced users and UMC creators.")
+			.setPositiveButton("Import", (dialog, which) ->
+				// Open directory picker to select import destination
+				startActivityForResult(new Intent(Intent.ACTION_OPEN_DOCUMENT_TREE), 3)
+			)
+			.setNegativeButton("Export", (dialog, which) ->
+				// Open directory picker to select export destination
+				startActivityForResult(new Intent(Intent.ACTION_OPEN_DOCUMENT_TREE), 4)
+			)
+			.setNeutralButton("Cancel", null)
+			.setCancelable(false)
+			.show();
+	}
+	
+	private void importUserData(Uri uri) {
+		Toast.makeText(this, "Importing...", Toast.LENGTH_SHORT).show();
+		Executors.newSingleThreadExecutor().execute(() -> {
+			runOnUiThread(()-> showProgressScreen());
+			DocumentFile targetDir = DocumentFile.fromTreeUri(this, uri);
+			for (DocumentFile child : targetDir.listFiles()) {
+				if (!child.getName().equals("gamedata")) {
+					runOnUiThread(()-> updateProgress("Importing " + child.getName(), 0));
+					IOUtils.copyRecursive(this, child, getExternalFilesDir(null));
+				}
+			}
+			runOnUiThread(()-> showLaunchScreen());
+			runOnUiThread(()-> Toast.makeText(this, "Imported!", Toast.LENGTH_SHORT).show());
+		});
+	}
+	
+	private void exportUserData(Uri uri) {
+		Toast.makeText(this, "Exporting...", Toast.LENGTH_SHORT).show();
+		Executors.newSingleThreadExecutor().execute(() -> {
+			runOnUiThread(()-> showProgressScreen());
+			for (File child : getExternalFilesDir(null).listFiles()) {
+				if (!child.getName().equals("gamedata")) {
+					runOnUiThread(()-> updateProgress("Exporting " + child.getName(), 0));
+					IOUtils.copyRecursive(this, child, uri);
+				}
+			}
+			runOnUiThread(()-> showLaunchScreen());
+			runOnUiThread(()-> Toast.makeText(this, "Exported!", Toast.LENGTH_SHORT).show());
+		});
+	}
+	
+	private void updateProgress(String progressMsg, int progress) {
 		TextView progressText = (TextView) findViewById(R.id.download_msg);
 		ProgressBar progressBar = (ProgressBar) findViewById(R.id.download_progress);
+		progressBar.setIndeterminate(progress == -1);
 		progressBar.setProgress(progress);
-		progressText.setText("Downloading " + type + " ... (" + toSizeString(progress) + "/" + toSizeString(max) + ")");
+		progressText.setText(progressMsg);
+	}
+
+	private void updateDownloadProgress(int progress, int max, String type) {
+		updateProgress(
+			String.format("Downloading %s ... (%s/%s)", type, toSizeString(progress), toSizeString(max)),
+			progress);
 	}
 
 	private void updateUnpackProgress(int progress, int max, String type) {
-		TextView progressText = (TextView) findViewById(R.id.download_msg);
-		ProgressBar progressBar = (ProgressBar) findViewById(R.id.download_progress);
-		progressBar.setProgress(progress);
 		// progress starts from 0 but asset counting starts from 1.
 		// also, when installing from zip the total number of files is
-		// not available, so don't show it in that case.
-		if (max > 0) {
-			progressText.setText("Unpacking " + type + " assets... (" + (progress+1) + "/" + max + ")");
-		} else {
-			progressText.setText("Unpacking " + type + " assets... (" + (progress+1) + ")");
-		}
+		// not available, so don't show max in that case.
+		String unpackMsg = max > 0
+			? String.format("Unpacking %s assets... (%s/%s)", type, progress+1, max)
+			: String.format("Unpacking %s assets... (%s)", type, progress+1);
+		updateProgress(unpackMsg, progress);
 	}
 
-	private void copyStreamNoClose(InputStream in, OutputStream out) throws IOException {
-		byte[] buffer = new byte[8192];
-		int length;
-		while ((length = in.read(buffer)) > 0) {
-			out.write(buffer, 0, length);
-		}
-	}
-
-	private void copyStream(InputStream in, OutputStream out) throws IOException {
-		copyStreamNoClose(in, out);
-		out.close();
-		in.close();
-	}
-
-	private long downloadFile(String url, File destpath, String type, long modified) {
+	private long downloadFile(String url, File destpath, long modified, String typeOrMsg, boolean isCustomMsg) {
 		long newModified = 0;
 		// based on https://stackoverflow.com/a/4896527/22060628
 		Log.d("Download", "URL: " + url);
 
 		try {
-			URL downloadURL = new URL(url);
-			HttpURLConnection conn = (HttpURLConnection) downloadURL.openConnection();
+			HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
 			conn.setRequestProperty("Accept", "*/*");
 			conn.setRequestProperty("User-Agent", "Wget/1.13.4 (linux-gnu)");
 			conn.setRequestMethod("GET");
@@ -411,36 +534,41 @@ public class InitActivity extends Activity {
 				return newModified;
 			}
 
-			final int max = (int) conn.getContentLengthLong();
-			final AtomicInteger progress = new AtomicInteger(0);
-			final AtomicInteger length = new AtomicInteger(0);
 			newModified = conn.getLastModified();
 			// File did not change on server, don't download.
 			if (newModified == modified) {
 				return newModified;
 			}
+			
+			final int max = (int) conn.getContentLengthLong();
+			final AtomicInteger progress = new AtomicInteger(0);
+			final AtomicInteger length = new AtomicInteger(0);
 
 			// TODO rewrite to use copyStream function.
-			DataInputStream in = new DataInputStream(conn.getInputStream());
-			OutputStream out = new FileOutputStream(destpath);
-
 			byte[] buffer = new byte[8192];
+			try (
+				DataInputStream in = new DataInputStream(conn.getInputStream());
+				OutputStream out = new FileOutputStream(destpath))
+			{
+				runOnUiThread(() -> {
+					ProgressBar progressBar = (ProgressBar) findViewById(R.id.download_progress);
+					progressBar.setMax(max);
+					progressBar.setProgress(0);
+				});
 
-			runOnUiThread(() -> {
-				ProgressBar progressBar = (ProgressBar) findViewById(R.id.download_progress);
-				progressBar.setMax(max);
-				progressBar.setProgress(0);
-			});
-
-			length.set(in.read(buffer));
-			while (length.get() > 0) {
-				out.write(buffer, 0, length.get());
-				runOnUiThread(() -> updateDownloadProgress(progress.addAndGet(length.get()), max, type));
 				length.set(in.read(buffer));
+				while (length.get() > 0) {
+					out.write(buffer, 0, length.get());
+					runOnUiThread(() -> {
+						if (isCustomMsg) {
+							updateProgress(typeOrMsg, -1);
+						} else {
+							updateDownloadProgress(progress.addAndGet(length.get()), max, typeOrMsg);
+						}
+					});
+					length.set(in.read(buffer));
+				}
 			}
-
-			out.close();
-			in.close();
 
 			Log.d("Download", "Download success from URL: " + url);
 			return newModified;
@@ -467,7 +595,7 @@ public class InitActivity extends Activity {
 			return false;
 		}
 
-		try (ZipInputStream zf = new ZipInputStream(getContentResolver().openInputStream(uri))) {
+		try (ZipInputStream zf = new ZipInputStream(zipstream)) {
 			AtomicInteger progress = new AtomicInteger(1);
 
 			runOnUiThread(() -> ((ProgressBar) findViewById(R.id.download_progress)).setIndeterminate(true));
@@ -483,16 +611,19 @@ public class InitActivity extends Activity {
 					}
 				} else {
 					FileOutputStream out = new FileOutputStream(new File(destdir, ze.getName()));
-					copyStreamNoClose(zf, out);
+					IOUtils.copyStreamNoClose(zf, out);
 					out.close();
 				}
 
-				Log.d("Unpack", "Unpacking " + type + ":" + progress.get());
+				Log.d("Unpack", "Unpacking " + type + ": " + progress.get());
 				progress.incrementAndGet();
 			}
-
+			
+			boolean res = applyDeleteList();
+			
 			Log.d("Unpack", "Done unpacking " + type);
-			return true;
+			
+			return res;
 		} catch (ZipException e) {
 			Log.e("Unpack", "ZIP exception", e);
 		} catch (FileNotFoundException e) {
@@ -535,26 +666,67 @@ public class InitActivity extends Activity {
 						dir.mkdir();
 					}
 				} else {
-					copyStream(
+					IOUtils.copyStream(
 						zf.getInputStream(ze),
 						new FileOutputStream(new File(destdir, ze.getName())));
 				}
 
-				Log.d("Unpack", "Unpacking " + type + ":" + progress.get() + "/" + max);
+				Log.d("Unpack", "Unpacking " + type + ": " + progress.get() + "/" + max);
 				progress.incrementAndGet();
 			}
 
+			boolean res = applyDeleteList();
+			
 			Log.d("Unpack", "Done unpacking " + type);
-			return true;
+			
+			return res;
 		} catch (ZipException e) {
 			Log.e("Unpack", "ZIP exception", e);
+			return false;
 		} catch (FileNotFoundException e) {
 			Log.e("Unpack", "File not found", e);
+			return false;
 		} catch (IOException e) {
 			Log.e("Unpack", "IO exception", e);
+			return false;
 		}
-
+	}
+	
+	/**
+	 * Delete any files on the deletelist file (delete.list on zip root)
+	 * inside ZIP. Deletelist file will be deleted on success.
+	 */
+	private boolean applyDeleteList() {
+		Log.d("InitActivity", "Applying deletelist");
+		File deleteList = new File(dataDir, "delete.list");
+		if (!deleteList.exists()) {
+			 // Unpack finished sucessfully and no deletelist, so no deletion needed
+			Log.d("InitActivity", "deletelist " + deleteList.getAbsolutePath() + " not found, skipping");
+			return true;
+		}
+		
+		AtomicInteger progress = new AtomicInteger(1);
+		runOnUiThread(() -> updateProgress("Patching", -1));
+		String line = "";
+		try (BufferedReader reader = Files.newBufferedReader(deleteList.toPath())) {
+			Log.d("Unpack", "Reading deletelist");
+			while ((line = reader.readLine()) != null) {
+				File toDelete = new File(dataDir, line);
+				if (toDelete.exists()) {
+					Log.d("Unpack", "Deleting " + toDelete.getAbsolutePath());
+					toDelete.delete();
+					runOnUiThread(() -> updateProgress("Patching... (" +  progress.incrementAndGet() + ")", -1));
+				} else {
+					Log.d("Unpack", "File " + toDelete.getAbsolutePath() + " doesn't exist.");
+				}
+			}
+			
+			return true;
+		} catch (IOException e) {
+			Log.e("Unpack", "Deleting " + line + " failed.");
+		}
+		
+		deleteList.delete();
 		return false;
 	}
-
 }

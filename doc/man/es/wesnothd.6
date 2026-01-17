@@ -103,9 +103,9 @@ Para evitar que los usuarios que no están registrados con \fBuser_handler\fP
 sean usados para acceder. (predeterminado: false)
 .TP 
 \fBdisallow_names\fP
-Names/nicks that are not accepted by the server. \fB*\fP and \fB?\fP from wildcard
-patterns are supported. See \fBglob\fP(7)  for more details.  Default values
-(used if nothing is specified) are:
+Nombres/apodos que no son aceptados por el servidor. \fB*\fP y \fB?\fP funcionan
+como comodines. Vea \fBglob\fP(7) para más detalles. Los valores por defecto
+(usados si no se especifica nada) son:
 \fB*admin*,*admln*,*moderator*,*server*,ai,ai?,computer,human,network,player\fP.
 .TP 
 \fBfifo_path\fP
@@ -246,8 +246,8 @@ El nombre de la tabla en la que wesnothd guardará sus propios datos acerca
 de los jugadores en una partida.
 .TP 
 \fBdb_game_content_info_table\fP
-The name of the table in which wesnothd will save its own data about game
-content (scenario/era/modifications) used in a game.
+El nombre de la tabla en la que wesnothd guardará sus propios datos sobre el
+contenido del juego (escenario/era/modificaciones) utilizado en una partida.
 .TP 
 \fBdb_user_group_table\fP
 El nombre de la tabla en la que sus foros phpBB almacenan los datos de sus
@@ -255,8 +255,8 @@ grupos de usuarios. Generalmente éste será <table\-prefix>_user_group
 (por ej.: phpbb3_user_group).
 .TP 
 \fBdb_tournament_query\fP
-The SQL query to find tournaments to announce on login. Should return
-tournament \fBtitle\fP, \fBstatus\fP and \fBurl\fP.
+La consulta SQL para encontrar torneos que se anunciarán al iniciar
+sesión. Debe devolver el torneo \fBtitle\fP, \fBstatus\fP y \fBurl\fP.
 .TP 
 \fBdb_connection_history_table\fP
 El nombre de la tabla en la que almacenar los tiempos de inicio/cierre de
@@ -278,12 +278,12 @@ El ID del grupo del foro que se considera que tiene autorización para
 moderar.
 .TP 
 \fBforum_admin_group\fP
-The ID of one of the forum groups to be considered as having admin authority
-on the add\-ons server.
+El ID de uno de los grupos del foro que se considera que tiene autoridad de
+administrador en el servidor de complementos.
 .TP 
 \fBsite_admin_group\fP
-The ID of one of the forum groups to be considered as having admin authority
-on the add\-ons server.
+El ID de uno de los grupos del foro que se considera que tiene autoridad de
+administrador en el servidor de complementos.
 .RE
 .
 .SH "ESTADO DE SALIDA"

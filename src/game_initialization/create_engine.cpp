@@ -234,6 +234,7 @@ create_engine::create_engine(saved_game& state)
 	, level_name_filter_()
 	, player_count_filter_(1)
 	, type_map_()
+	, preset_ids_()
 	, user_map_names_()
 	, user_scenario_names_()
 	, eras_()
@@ -488,6 +489,7 @@ void create_engine::prepare_for_other()
 	state_.set_scenario(current_level().data());
 	state_.mp_settings().hash = current_level().data().hash();
 	state_.check_require_scenario();
+	game_config_manager::get()->load_game_config_for_game(state_.classification(), state_.get_scenario_id());
 }
 
 void create_engine::apply_level_filter(const std::string& name)
@@ -675,7 +677,7 @@ void create_engine::init_all_levels()
 			bool add_map = true;
 			std::unique_ptr<gamemap> map;
 			try {
-				map.reset(new gamemap(user_map_data["map_data"]));
+				map.reset(new gamemap(user_map_data["map_data"].str()));
 			} catch (const incorrect_map_format_error& e) {
 				// Set map content to nullptr, so that it fails can_launch_game()
 				map.reset(nullptr);
@@ -750,6 +752,7 @@ void create_engine::init_all_levels()
 
 		if(data) {
 			type_map_[level_type::type::preset].games.emplace_back(new scenario(*data));
+			preset_ids_.emplace_back(preset["id"].to_int());
 		}
 	}
 

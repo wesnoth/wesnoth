@@ -25,8 +25,11 @@
 #include "attack_prediction.hpp"
 #include "units/ptr.hpp"
 #include "units/unit_alignments.hpp"
+#include "utils/optional_fwd.hpp"
+#include "utils/math.hpp"
 
 #include <vector>
+
 
 struct map_location;
 class team;
@@ -35,7 +38,7 @@ class unit_type;
 class unit;
 class unit_map;
 class gamemap;
-
+class specials_context_t;
 /** Calculates the number of blows resulting from swarm. */
 inline unsigned swarm_blows(unsigned min_blows, unsigned max_blows, unsigned hp, unsigned max_hp)
 {
@@ -62,6 +65,7 @@ struct battle_context_unit_stats
 	bool swarm;              /**< Attack has swarm special. */
 	bool firststrike;        /**< Attack has firststrike special. */
 	bool disable;            /**< Attack has disable special. */
+	int leadership_bonus;
 	unsigned int experience, max_experience;
 	unsigned int level;
 
@@ -80,21 +84,15 @@ struct battle_context_unit_stats
 	std::string plague_type; /**< The plague type used by the attack, if any. */
 
 	battle_context_unit_stats(nonempty_unit_const_ptr u,
-			const map_location& u_loc,
-			int u_attack_num,
-			bool attacking,
-			nonempty_unit_const_ptr opp,
-			const map_location& opp_loc,
-			const const_attack_ptr& opp_weapon);
-
-	/** Used by AI for combat analysis, and by statistics_dialog */
-	battle_context_unit_stats(const unit_type* u_type,
-			const_attack_ptr att_weapon,
-			bool attacking,
-			const unit_type* opp_type,
-			const const_attack_ptr& opp_weapon,
-			unsigned int opp_terrain_defense,
-			int lawful_bonus = 0);
+		const map_location& u_loc,
+		int u_attack_num,
+		bool attacking,
+		nonempty_unit_const_ptr opp,
+		const map_location& opp_loc,
+		const const_attack_ptr& opp_weapon,
+		utils::optional<int> opp_terrain_defense = {},
+		utils::optional<int> lawful_bonus = {}
+	);
 
 	~battle_context_unit_stats()
 	{
@@ -106,9 +104,8 @@ struct battle_context_unit_stats
 		return swarm_blows(swarm_min, swarm_max, new_hp, max_hp);
 	}
 
-#if defined(BENCHMARK) || defined(CHECK)
 	/**
-	 * Special constructor for the stand-alone version of attack_prediction.cpp.
+	 * Special constructor for the stand-alone version of attack_prediction.cpp and the statistis dialog.
 	 * (This hardcodes some standard abilities for testing purposes.)
 	 */
 	battle_context_unit_stats(int dmg,
@@ -116,12 +113,12 @@ struct battle_context_unit_stats
 			int hitpoints,
 			int maximum_hp,
 			int hit_chance,
-			bool drain,
-			bool slows,
-			bool slowed,
-			bool berserk,
-			bool first,
-			bool do_swarm)
+			bool drain = false,
+			bool slows = false,
+			bool slowed = false,
+			bool berserk = false,
+			bool first = false,
+			bool do_swarm = false)
 		: weapon(nullptr) // Not used in attack prediction.
 		, attack_num(0) // Not used in attack prediction.
 		, is_attacker(true) // Not used in attack prediction.
@@ -135,8 +132,9 @@ struct battle_context_unit_stats
 		, swarm(do_swarm)
 		, firststrike(first)
 		, disable(false)
+		, leadership_bonus(0)
 		, experience(0) // No units should advance in the attack prediction tests.
-		, max_experience(50) // No units should advance in the attack prediction tests.
+		, max_experience(1000000) // No units should advance in the attack prediction tests.
 		, level(1) // No units should advance in the attack prediction tests.
 		, rounds(berserk ? 30 : 1)
 		, hp(std::max<int>(0, hitpoints))
@@ -159,7 +157,6 @@ struct battle_context_unit_stats
 			hp = max_hp; // Keeps the prob_matrix from going out of bounds.
 		}
 	}
-#endif
 };
 
 /** Computes the statistics of a battle between an attacker and a defender unit. */
@@ -269,7 +266,8 @@ void attack_unit_and_advance(const map_location& attacker,
  *
  * Returns the bonus percentage (possibly 0 if there's no leader adjacent).
  */
-int under_leadership(const unit &u, const map_location& loc, const_attack_ptr weapon = nullptr, const_attack_ptr opp_weapon = nullptr);
+int under_leadership(const unit& u, const map_location& loc);
+int under_leadership(const unit& u, const specials_context_t& loc);
 
 /**
  * Returns the amount that a unit's damage should be multiplied by

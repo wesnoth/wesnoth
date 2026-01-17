@@ -18,6 +18,7 @@
 
 #include "addon/client.hpp"
 #include "color.hpp"
+#include "font/pango/escape.hpp"
 #include "formatter.hpp"
 #include "gettext.hpp"
 #include "gui/core/event/dispatcher.hpp"
@@ -90,7 +91,7 @@ std::string addon_list::colorize_addon_state_string(const std::string& str, ADDO
 		break;
 	}
 
-	return markup::span_color(colorname, str);
+	return markup::span_color(colorname, font::escape_text(str));
 }
 
 std::string addon_list::describe_status(const addon_tracking_info& info)
@@ -143,10 +144,10 @@ void addon_list::addon_action_wrapper(addon_op_func_t& func, const addon_info& a
 	}
 }
 
-const std::string addon_list::display_title_full_shift(const addon_info& addon) const
+const std::string addon_list::display_title_full_shift_markup(const addon_info& addon) const
 {
-	const std::string& local_title = addon.display_title_translated();
-	const std::string& display_title = addon.display_title();
+	const std::string& local_title = font::escape_text(addon.display_title_translated());
+	const std::string& display_title = font::escape_text(addon.display_title());
 	if(local_title.empty()) {
 		return display_title;
 	}
@@ -173,14 +174,17 @@ void addon_list::set_addons(const addons_list& addons)
 			item["label"] = addon.display_icon();
 			data.emplace("icon", item);
 
-			item["label"] = display_title_full_shift(addon);
+			item["label"] = display_title_full_shift_markup(addon);
 			data.emplace("name", item);
 		} else {
-			item["label"] = addon.display_icon() + "~SCALE(72,72)~BLIT(icons/icon-addon-publish.png,8,8)";
-			data.emplace("icon", item);
+			if(!addon.display_icon().empty()) {
+				item["label"] = addon.display_icon() + "~SCALE(72,72)~BLIT(icons/icon-addon-publish.png,8,8)";
+				data.emplace("icon", item);
+			}
 
-			const std::string publish_name = markup::span_color(font::GOOD_COLOR, display_title_full_shift(addon));
-
+			const std::string publish_name = markup::span_color(
+				font::GOOD_COLOR,
+				display_title_full_shift_markup(addon));
 			item["label"] = publish_name;
 			data.emplace("name", item);
 		}
@@ -351,7 +355,7 @@ void addon_list::select_addon(const std::string& id)
 		grid* row = list.get_row_grid(i);
 
 		const label& name_label = row->find_widget<label>("name");
-		if(name_label.get_label().base_str() == display_title_full_shift(info)) {
+		if(name_label.get_label().base_str() == display_title_full_shift_markup(info)) {
 			list.select_row(i);
 		}
 	}

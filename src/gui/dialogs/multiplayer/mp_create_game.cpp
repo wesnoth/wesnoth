@@ -65,7 +65,7 @@ mp_create_game::mp_create_game(saved_game& state, bool local_mode)
 	, options_manager_()
 	, selected_game_index_(-1)
 	, selected_rfm_index_(-1)
-	, use_map_settings_(register_bool( "use_map_settings", true,
+	, use_map_settings_(register_bool("use_map_settings", true,
 		[]() {return prefs::get().mp_use_map_settings();},
 		[](bool v) {prefs::get().set_mp_use_map_settings(v);},
 		std::bind(&mp_create_game::update_map_settings, this)))
@@ -117,6 +117,7 @@ mp_create_game::mp_create_game(saved_game& state, bool local_mode)
 	, mod_list_()
 	, eras_menu_button_()
 	, local_mode_(local_mode)
+	, previous_settings_()
 {
 	level_types_ = {
 		{level_type::type::scenario, _("Scenarios")},
@@ -219,8 +220,16 @@ void mp_create_game::quick_mp_setup(saved_game& state, const config presets)
 	create.get_state().classification().oos_debug = false;
 	params.shuffle_sides = presets["shuffle_sides"].to_bool();
 
-	params.mode = random_faction_mode::type::no_mirror;
+	params.mode = random_faction_mode::get_enum(presets["random_faction_mode"].str()).value_or(random_faction_mode::type::independent);
 	params.name = settings::game_name_default();
+
+	for(const std::string& mod : utils::split(presets["modifications"].str())) {
+		create.active_mods().push_back(mod);
+	}
+
+	if(presets.has_child("options")) {
+		params.options = presets.mandatory_child("options");
+	}
 }
 
 void mp_create_game::pre_show()
@@ -311,7 +320,7 @@ void mp_create_game::pre_show()
 
 		toggle_button& mog_toggle = row_grid->find_widget<toggle_button>("mod_active_state");
 
-		if(std::find(activemods.begin(), activemods.end(), mod->id) != activemods.end()) {
+		if(utils::contains(activemods, mod->id)) {
 			create_engine_.active_mods().push_back(mod->id);
 			mog_toggle.set_value_bool(true);
 		}
@@ -616,7 +625,49 @@ void mp_create_game::on_game_select()
 	options_manager_->update_game_options();
 
 	// Game settings
-	update_map_settings();
+	if(level_types_[find_widget<menu_button>("game_types").get_value()].first != level_type::type::preset) {
+		update_map_settings();
+	} else {
+		if(auto preset = prefs::get().get_game_preset(create_engine_.preset_id_by_index(selected_game))) {
+			use_map_settings_->set_widget_value(preset["use_map_settings"].to_bool());
+			fog_->set_widget_value(preset["fog"].to_bool());
+			shroud_->set_widget_value(preset["shroud"].to_bool());
+			start_time_->set_widget_value(preset["random_start_time"].to_bool());
+			shuffle_sides_->set_widget_value(preset["shuffle_sides"].to_bool());
+			observers_->set_widget_value(preset["observer"].to_bool());
+			turns_->set_widget_value(preset["turns"].to_int());
+			gold_->set_widget_value(preset["village_gold"].to_int());
+			support_->set_widget_value(preset["village_support"].to_int());
+			experience_->set_widget_value(preset["experience_modifier"].to_int());
+			time_limit_->set_widget_value(preset["countdown"].to_bool());
+			init_turn_limit_->set_widget_value(preset["countdown_turn_limit"].to_int());
+			turn_bonus_->set_widget_value(preset["countdown_turn_bonus"].to_int());
+			reservoir_->set_widget_value(preset["countdown_reservoir"].to_int());
+			action_bonus_->set_widget_value(preset["countdown_action_bonus"].to_int());
+
+			random_faction_mode::type mode = random_faction_mode::get_enum(preset["random_faction_mode"].str()).value_or(random_faction_mode::type::independent);
+			find_widget<menu_button>("random_faction_mode").set_selected(static_cast<int>(mode));
+
+			const int era_selection = create_engine_.find_extra_by_id(ng::create_engine::ERA, preset["era"].str());
+			if(era_selection >= 0) {
+				eras_menu_button_->set_selected(era_selection);
+			}
+			on_era_select();
+
+			int i = 0;
+			const auto& activemods = utils::split(preset["modifications"]);
+			for(const auto& mod : create_engine_.get_extras_by_type(ng::create_engine::MOD)) {
+				toggle_button& mod_button = mod_list_->get_row_grid(i)->find_widget<toggle_button>("mod_active_state");
+				mod_button.set_value_bool(utils::contains(activemods, mod->id));
+				on_mod_toggle(mod->id, &mod_button);
+				i++;
+			}
+
+			if(preset->has_child("options")) {
+				options_manager_->set_options(preset->mandatory_child("options"));
+			}
+		}
+	}
 }
 
 void mp_create_game::on_tab_select()
@@ -669,6 +720,10 @@ void mp_create_game::update_games_list()
 
 	display_games_of_type(level_types_[index].first, create_engine_.current_level().id());
 	find_widget<button>("save_preset").set_active(level_types_[index].first == level_type::type::scenario);
+
+	if(level_types_[index].first != level_type::type::preset) {
+		backup_settings();
+	}
 }
 
 void mp_create_game::display_games_of_type(level_type::type type, const std::string& level)
@@ -870,41 +925,57 @@ void mp_create_game::update_map_settings()
 
 void mp_create_game::load_game_callback()
 {
-	savegame::loadgame load(savegame::save_index_class::default_saves_dir(), create_engine_.get_state());
-
-	if(!load.load_multiplayer_game()) {
+	auto load_data = savegame::load_interactive_for_multiplayer();
+	if(!load_data) {
 		return;
 	}
 
-	if(load.data().cancel_orders) {
+	savegame::set_gamestate(create_engine_.get_state(), load_data.value());
+
+	if(load_data->cancel_orders) {
 		create_engine_.get_state().cancel_orders();
 	}
 
 	set_retval(LOAD_GAME);
 }
 
+config mp_create_game::settings_config()
+{
+	config settings;
+
+	settings["scenario"] = create_engine_.current_level().id();
+	settings["era"] = create_engine_.current_era().id;
+	settings["fog"] = fog_->get_widget_value();
+	settings["shroud"] = shroud_->get_widget_value();
+	settings["village_gold"] = gold_->get_widget_value();
+	settings["village_support"] = support_->get_widget_value();
+	settings["experience_modifier"] = experience_->get_widget_value();
+	settings["countdown"] = time_limit_->get_widget_value();
+	settings["countdown_turn_limit"] = init_turn_limit_->get_widget_value();
+	settings["countdown_action_bonus"] = action_bonus_->get_widget_value();
+	settings["countdown_turn_bonus"] = turn_bonus_->get_widget_value();
+	settings["countdown_reservoir"] = reservoir_->get_widget_value();
+	settings["random_start_time"] = start_time_->get_widget_value();
+	settings["shuffle_sides"] = shuffle_sides_->get_widget_value();
+	settings["turns"] = turns_->get_widget_value();
+	settings["observer"] = observers_->get_widget_value();
+	settings["use_map_settings"] = use_map_settings_->get_widget_value();
+	settings["modifications"] = utils::join(create_engine_.active_mods(), ",");
+	settings.add_child("options", options_manager_->get_options_config());
+	random_faction_mode::type type = random_faction_mode::get_enum(selected_rfm_index_).value_or(random_faction_mode::type::independent);
+	settings["random_faction_mode"] = random_faction_mode::get_string(type);
+
+	return settings;
+}
+
 void mp_create_game::save_preset()
 {
-	config preset;
-	preset["scenario"] = create_engine_.current_level().id();
-	preset["era"] = create_engine_.current_era().id;
-	preset["fog"] = fog_->get_widget_value();
-	preset["shroud"] = shroud_->get_widget_value();
-	preset["village_gold"] = gold_->get_widget_value();
-	preset["village_support"] = support_->get_widget_value();
-	preset["experience_modifier"] = experience_->get_widget_value();
-	preset["countdown"] = time_limit_->get_widget_value();
-	preset["countdown_turn_limit"] = init_turn_limit_->get_widget_value();
-	preset["countdown_action_bonus"] = action_bonus_->get_widget_value();
-	preset["countdown_turn_bonus"] = turn_bonus_->get_widget_value();
-	preset["countdown_reservoir"] = reservoir_->get_widget_value();
-	preset["random_start_time"] = start_time_->get_widget_value();
-	preset["shuffle_sides"] = shuffle_sides_->get_widget_value();
-	preset["turns"] = turns_->get_widget_value();
-	preset["observer"] = observers_->get_widget_value();
-	preset["use_map_settings"] = use_map_settings_->get_widget_value();
+	prefs::get().add_game_preset(settings_config());
+}
 
-	prefs::get().add_game_preset(std::move(preset));
+void mp_create_game::backup_settings()
+{
+	previous_settings_ = settings_config();
 }
 
 std::vector<std::string> mp_create_game::get_active_mods()

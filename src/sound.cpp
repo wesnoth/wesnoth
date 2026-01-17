@@ -599,11 +599,13 @@ void stop_UI_sound()
 
 void play_music_once(const std::string& file)
 {
-	set_previous_track(current_track);
-	current_track = std::make_shared<music_track>(file);
-	current_track->set_play_once(true);
-	current_track_index = current_track_list.size();
-	play_music();
+	if(auto track = sound::music_track::create(file)) {
+		set_previous_track(current_track);
+		current_track = std::move(track);
+		current_track->set_play_once(true);
+		current_track_index = current_track_list.size();
+		play_music();
+	}
 }
 
 void empty_playlist()
@@ -640,14 +642,11 @@ static void play_new_music()
 	music_start_time.reset(); // reset status: no start time
 	want_new_music = true;
 
-	if(!prefs::get().music_on() || !mix_ok || !current_track || !current_track->valid()) {
+	if(!prefs::get().music_on() || !mix_ok || !current_track) {
 		return;
 	}
 
 	std::string filename = current_track->file_path();
-	if(auto localized = filesystem::get_localized_path(filename)) {
-		filename = localized.value();
-	}
 
 	auto itor = music_cache.find(filename);
 	if(itor == music_cache.end()) {
@@ -687,28 +686,6 @@ static void play_new_music()
 	want_new_music = false;
 }
 
-void play_music_repeatedly(const std::string& id)
-{
-	// Can happen if scenario doesn't specify.
-	if(id.empty()) {
-		return;
-	}
-
-	current_track_list.clear();
-	current_track_list.emplace_back(new music_track(id));
-
-	std::shared_ptr<music_track> last_track = current_track;
-	current_track = current_track_list.back();
-	current_track_index = 0;
-
-	// If we're already playing it, don't interrupt.
-	if(!last_track || !current_track || *last_track != *current_track) {
-		play_music();
-	}
-
-	last_track.reset();
-}
-
 void play_music_config(const config& music_node, bool allow_interrupt_current_track, int i)
 {
 	//
@@ -719,9 +696,9 @@ void play_music_config(const config& music_node, bool allow_interrupt_current_tr
 	// vultraz 2025-07-19 function has been updated, can someone check again
 	//
 
-	auto track = std::make_shared<music_track>(music_node);
-	if(!track->valid()) {
-		ERR_AUDIO << "cannot open track '" << track->id() << "'; disabled in this playlist.";
+	auto track = sound::music_track::create(music_node);
+	if(!track) {
+		ERR_AUDIO << "cannot open track; disabled in this playlist.";
 		return;
 	}
 
@@ -895,7 +872,7 @@ void reposition_sound(int id, unsigned int distance)
 bool is_sound_playing(int id)
 {
 	audio_lock lock;
-	return std::find(channel_ids.begin(), channel_ids.end(), id) != channel_ids.end();
+	return utils::contains(channel_ids, id);
 }
 
 void stop_sound(int id)
@@ -932,8 +909,7 @@ Mix_Chunk* load_chunk(const std::string& file, channel_group group)
 		bool cache_full = (sound_cache.size() == max_cached_chunks);
 		while(cache_full && it != it_bgn) {
 			// make sure this chunk is not being played before freeing it
-			std::vector<Mix_Chunk*>::iterator ch_end = channel_chunks.end();
-			if(std::find(channel_chunks.begin(), ch_end, (--it)->get_data()) == ch_end) {
+			if(!utils::contains(channel_chunks, (--it)->get_data())) {
 				sound_cache.erase(it);
 				cache_full = false;
 			}

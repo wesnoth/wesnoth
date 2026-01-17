@@ -276,6 +276,9 @@ bool is_filename_case_correct(const std::string& /*fname*/, const boost::iostrea
 
 namespace filesystem
 {
+const std::string map_extension {".map"};
+const std::string mask_extension {".mask"};
+const std::string wml_extension {".cfg"};
 
 const blacklist_pattern_list default_blacklist{
 	{
@@ -945,12 +948,18 @@ std::vector<other_version_dir> find_other_version_saves_dirs()
 		//
 
 #if defined(_WIN32)
-		path = get_user_data_path().parent_path() / ("Wesnoth" + suffix) / "saves";
+		path = get_user_data_path().parent_path() / ("Wesnoth" + suffix);
 #elif defined(_X11)
-		path = get_user_data_path().parent_path() / suffix / "saves";
+		path = get_user_data_path().parent_path() / suffix;
 #elif defined(__APPLE__)
-		path = get_user_data_path().parent_path() / ("Wesnoth_" + suffix) / "saves";
+		path = get_user_data_path().parent_path() / ("Wesnoth_" + suffix);
 #endif
+
+		// 1.19.2 added get_sync_dir() and changed the path to the save directory.
+		if(minor >= 19) {
+			path /= "sync";
+		}
+		path /= "saves";
 
 		if(bfs::exists(path)) {
 			result.emplace_back(suffix, path.string());
@@ -1517,10 +1526,6 @@ static void init_binary_paths()
 	}
 }
 
-binary_paths_manager::binary_paths_manager()
-	: paths_()
-{
-}
 
 binary_paths_manager::binary_paths_manager(const game_config_view& cfg)
 	: paths_()
@@ -1856,6 +1861,17 @@ utils::optional<std::string> get_localized_path(const std::string& file, const s
 	}
 
 	return utils::nullopt;
+}
+
+utils::optional<std::string> get_localized_path(const utils::optional<std::string>& base_path)
+{
+	if(base_path) {
+		if(auto localized = get_localized_path(*base_path)) {
+			return localized;
+		}
+	}
+
+	return base_path;
 }
 
 utils::optional<std::string> get_addon_id_from_path(const std::string& location)

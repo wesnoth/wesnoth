@@ -190,21 +190,18 @@ void flg_manager::resolve_random(randomness::mt_rng& rng, const std::vector<std:
 
 			const std::string& faction_id = faction["id"];
 
-			if(!faction_choices.empty() && std::find(faction_choices.begin(), faction_choices.end(),
-					faction_id) == faction_choices.end()) {
+			if(!faction_choices.empty() && !utils::contains(faction_choices, faction_id)) {
 				continue;
 			}
 
-			if(!faction_excepts.empty() && std::find(faction_excepts.begin(), faction_excepts.end(),
-					faction_id) != faction_excepts.end()) {
+			if(!faction_excepts.empty() && utils::contains(faction_excepts, faction_id)) {
 				continue;
 			}
 
 			// This side is consistent with this random faction, remember as a fallback.
 			fallback_nonrandom_sides.push_back(i);
 
-			if(!avoid.empty() && std::find(avoid.begin(), avoid.end(),
-					faction_id) != avoid.end()) {
+			if(!avoid.empty() && utils::contains(avoid, faction_id)) {
 				continue;
 			}
 
@@ -284,7 +281,7 @@ void flg_manager::update_available_factions()
 		}
 
 		// Add default faction to the top of the list.
-		if(original_faction_ == (*faction)["id"]) {
+		if((*faction)["id"] == original_faction_) {
 			available_factions_.insert(available_factions_.begin(), faction);
 		} else {
 			available_factions_.push_back(faction);
@@ -401,9 +398,7 @@ void flg_manager::update_choosable_leaders()
 	choosable_leaders_ = available_leaders_;
 
 	if(!default_leader_type_.empty() && leader_lock_) {
-		if(std::find(available_leaders_.begin(), available_leaders_.end(),
-			default_leader_type_) != available_leaders_.end()) {
-
+		if(utils::contains(available_leaders_, default_leader_type_)) {
 			choosable_leaders_.clear();
 			choosable_leaders_.push_back(default_leader_type_);
 		}
@@ -425,7 +420,7 @@ void flg_manager::update_choosable_genders()
 			default_gender = choosable_genders_.front();
 		}
 
-		if(std::find(available_genders_.begin(), available_genders_.end(), default_gender) != available_genders_.end()) {
+		if(utils::contains(available_genders_, default_gender)) {
 			choosable_genders_.clear();
 			choosable_genders_.push_back(default_gender);
 		}

@@ -22,8 +22,10 @@
 #include "log.hpp"
 #include "sdl/rect.hpp"
 #include "serialization/string_utils.hpp"
+#include "utils/charconv.hpp"
 #include "wml_exception.hpp"
 #include "game_config_view.hpp"
+
 #include <sstream>
 #include <utility>
 
@@ -41,6 +43,20 @@ const color_t DefaultFontRGB {200, 200, 200};
 _rect ref_rect {0, 0, 0, 0};
 }
 
+static int parse_signed_string(std::string_view expr)
+{
+	if(expr.empty()) {
+		return 0;
+	}
+
+	if(expr[0] == '+') {
+		// charconv doesn't support leading + signs, strip them out
+		expr = expr.substr(1);
+	}
+
+	return utils::from_chars<int>(expr).value_or(0);
+}
+
 static std::size_t compute(std::string expr, std::size_t ref1, std::size_t ref2 = 0)
 {
 	std::size_t ref = 0;
@@ -51,7 +67,7 @@ static std::size_t compute(std::string expr, std::size_t ref1, std::size_t ref2 
 		ref = ref2;
 	}
 
-	return ref + atoi(expr.c_str());
+	return ref + parse_signed_string(expr);
 }
 
 // If x2 or y2 are not specified, use x1 and y1 values
@@ -60,18 +76,18 @@ static _rect read_rect(const config& cfg)
 	_rect rect {0, 0, 0, 0};
 	std::vector<std::string> items = utils::split(cfg["rect"].str());
 	if(items.size() >= 1)
-		rect.x1 = atoi(items[0].c_str());
+		rect.x1 = parse_signed_string(items[0]);
 
 	if(items.size() >= 2)
-		rect.y1 = atoi(items[1].c_str());
+		rect.y1 = parse_signed_string(items[1]);
 
 	if(items.size() >= 3)
-		rect.x2 = atoi(items[2].c_str());
+		rect.x2 = parse_signed_string(items[2]);
 	else
 		rect.x2 = rect.x1;
 
 	if(items.size() >= 4)
-		rect.y2 = atoi(items[3].c_str());
+		rect.y2 = parse_signed_string(items[3]);
 	else
 		rect.y2 = rect.y1;
 

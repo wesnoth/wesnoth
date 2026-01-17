@@ -261,7 +261,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(move, child, spectator)
 	std::vector<map_location> steps;
 
 	try {
-		read_locations(child,steps);
+		steps = read_locations(child);
 	} catch (const std::invalid_argument&) {
 		WRN_REPLAY << "Warning: Path data contained something which could not be parsed to a sequence of locations:" << "\n config = " << child.debug();
 		return false;
@@ -337,12 +337,14 @@ SYNCED_COMMAND_HANDLER_FUNCTION(auto_shroud, child, /*spectator*/)
 	team &current_team = resources::controller->current_team();
 
 	bool active = child["active"].to_bool();
+	bool block_undo = child["block_undo"].to_bool();
 	if(active && !current_team.auto_shroud_updates()) {
-		resources::undo_stack->commit_vision();
+		block_undo |= resources::undo_stack->commit_vision();
 	}
 	current_team.set_auto_shroud_updates(active);
-	if(resources::undo_stack->can_undo()) {
-		resources::undo_stack->add_auto_shroud(active);
+	resources::undo_stack->add_auto_shroud(active);
+	if(block_undo) {
+		synced_context::block_undo();
 	}
 	return true;
 }

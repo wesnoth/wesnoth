@@ -1,5 +1,5 @@
 # set minimum version
-cmake_minimum_required(VERSION 3.14)
+cmake_minimum_required(VERSION 3.21)
 
 project(wesnoth)
 
@@ -53,7 +53,7 @@ option(ENABLE_TESTS "Build unit tests")
 option(ENABLE_NLS "Enable building of translations" ${ENABLE_GAME})
 
 set(BOOST_VERSION "1.70")
-set(BOOST_REQ_COMPONENTS iostreams program_options regex system thread random coroutine locale filesystem graph)
+set(BOOST_REQ_COMPONENTS iostreams program_options regex thread random coroutine locale filesystem graph)
 
 if(ENABLE_TESTS)
   list(APPEND BOOST_REQ_COMPONENTS unit_test_framework)
@@ -485,7 +485,7 @@ if(NOT MSVC)
 # End setting profiler build options
 # #
 else()
-	set(CMAKE_CXX_FLAGS "/W3 /WX /wd4503 /wd4351 /wd4250 /wd4244 /wd4267 /we4239 /wd4275 /EHsc /utf-8 /Zc:__cplusplus" CACHE STRING "Global flags used by the CXX compiler during all builds." FORCE)
+	set(CMAKE_CXX_FLAGS "/W3 /WX /wd4351 /wd4250 /wd4244 /wd4267 /we4239 /we4189 /we4100 /wd4275 /EHsc /utf-8 /Zc:__cplusplus" CACHE STRING "Global flags used by the CXX compiler during all builds." FORCE)
 	set(CMAKE_C_FLAGS "/WX" CACHE STRING "Global flags used by the C compiler during all builds." FORCE)
 	add_compile_definitions(_WIN32_WINNT=0x0A00 _CRT_SECURE_NO_WARNINGS _WINSOCK_DEPRECATED_NO_WARNINGS NOMINMAX _MSVC_STL_HARDENING=1 _MSVC_STL_DESTRUCTOR_TOMBSTONES=1)
 

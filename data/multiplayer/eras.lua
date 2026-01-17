@@ -5,7 +5,7 @@ local res = {}
 res.quick_4mp_leaders = function(args)
 	local make_4mp_leaders_quick = wml.variables["make_4mp_leaders_quick"]
 	if make_4mp_leaders_quick == nil then
-		make_4mp_leaders_quick = wesnoth.scenario.mp_settings and (wesnoth.scenario.campaign == "")
+		make_4mp_leaders_quick = wesnoth.scenario.campaign == nil
 	end
 	if not make_4mp_leaders_quick then
 		return
@@ -13,7 +13,7 @@ res.quick_4mp_leaders = function(args)
 
 	local trait_quick = args[1][2]
 	for i, unit in ipairs(wesnoth.units.find_on_map { canrecruit = true, T.filter_wml { max_moves = 4 } }) do
-		if not unit.variables.dont_make_me_quick then
+		if not unit.variables.dont_make_me_quick and not wesnoth.sides[unit.side].variables.dont_make_me_quick then
 			unit:add_modification("trait", trait_quick )
 			unit.moves = unit.max_moves
 			unit.hitpoints = unit.max_hitpoints
@@ -24,7 +24,7 @@ end
 function res.turns_over_advantage()
 	local show_turns_over_advantage = wml.variables["show_turns_over_advantage"]
 	if show_turns_over_advantage == nil then
-		show_turns_over_advantage = wesnoth.scenario.campaign == ""
+		show_turns_over_advantage = wesnoth.scenario.campaign == nil
 	end
 	if not show_turns_over_advantage then
 		return

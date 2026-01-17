@@ -53,7 +53,6 @@
 
 #include <algorithm>                    // for find, count, max, fill_n
 #include <cmath>                       // for sqrt
-#include <cstdlib>                     // for abs
 #include <ctime>                       // for time
 #include <iterator>                     // for back_inserter
 #include <ostream>                      // for operator<<, basic_ostream, etc
@@ -973,8 +972,7 @@ const map_location& readonly_context_impl::nearest_keep(const map_location& loc)
 double readonly_context_impl::power_projection(const map_location& loc, const move_map& dstsrc) const
 {
 	map_location used_locs[6];
-	int ratings[6];
-	std::fill_n(ratings, 0, 6);
+	int ratings[6]{};
 	int num_used_locs = 0;
 
 	const auto locs = get_adjacent_tiles(loc);
@@ -1045,7 +1043,7 @@ double readonly_context_impl::power_projection(const map_location& loc, const mo
 				}
 			}
 
-			int64_t village_bonus = map_.is_village(terrain) ? 3 : 2;
+			int64_t village_bonus = map_.is_village(locs[i]) ? 3 : 2;
 			int64_t defense = 100 - un.defense_modifier(terrain);
 			int64_t rating_64 = hp * defense * most_damage * village_bonus / 200;
 			int rating = rating_64;

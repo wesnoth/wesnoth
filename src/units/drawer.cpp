@@ -232,8 +232,7 @@ void unit_drawer::redraw_unit(const unit& u) const
 
 	ac.anim_->update_last_draw_time();
 	frame_parameters params;
-	const t_translation::terrain_code terrain = map.get_terrain(loc);
-	const terrain_type& terrain_info = map.get_terrain_info(terrain);
+	const terrain_type& terrain_info = map.get_terrain_info(loc);
 
 	// do not set to 0 so we can distinguish the flying from the "not on submerge terrain"
 	// instead use -1.0 (as in "negative depth", it will be ignored by rendering)
@@ -405,8 +404,7 @@ void unit_drawer::redraw_unit(const unit& u) const
 	// Smooth unit movements from terrain of different elevation.
 	// Do this separately from above so that the health bar doesn't go up and down.
 
-	const t_translation::terrain_code terrain_dst = map.get_terrain(dst);
-	const terrain_type& terrain_dst_info = map.get_terrain_info(terrain_dst);
+	const terrain_type& terrain_dst_info = map.get_terrain_info(dst);
 
 	// height_adjust_unit is not scaled by zoom_factor here otherwise it results in a squared offset that results in #5974
 	// It appears the tiles and units are scaled together somewhere else

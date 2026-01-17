@@ -60,14 +60,13 @@ static int intf_load_wml(lua_State* L)
 		int n = lua_tointeger(L, -1);
 		lua_pop(L, 1);
 		for(int i = 0; i < n; i++) {
-			lua_geti(L, 2, i);
+			const auto arg = scoped_lua_argument{L, 2, i};
 			if(!lua_isstring(L, -1)) {
 				return luaL_argerror(L, 2, "expected bool or array of strings");
 			}
 			std::string define = lua_tostring(L, -1);
-			lua_pop(L, 1);
 			if(!define.empty()) {
-				defines_map.emplace(define, preproc_define(define));
+				defines_map.try_emplace(define, define);
 			}
 		}
 	} else if(!lua_isnoneornil(L, 2)) {
@@ -82,7 +81,7 @@ static int intf_load_wml(lua_State* L)
 	std::string wml_file = filesystem::get_wml_location(file).value();
 	filesystem::scoped_istream stream;
 	if(preprocess) {
-		stream = preprocess_file(wml_file, &defines_map);
+		stream = preprocess_file(wml_file, defines_map);
 	} else {
 		stream.reset(new std::ifstream(wml_file));
 	}

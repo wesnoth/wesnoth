@@ -21,7 +21,6 @@
 #include "utils/math.hpp"
 #include "game_version.hpp"
 
-#include <cstdlib>
 #include <string>
 
 struct rect;
@@ -112,7 +111,7 @@ void swap_channels_image(surface& surf, channel r, channel g, channel b, channel
  * @param map_rgb            Map of color values, with the keys corresponding to the
  *                           source palette, and the values to the recolored palette.
  */
-void recolor_image(surface& surf, const color_range_map& map_rgb);
+void recolor_image(surface& surf, const color_mapping& map_rgb);
 
 void brighten_image(surface& surf, int32_t amount);
 
@@ -130,7 +129,7 @@ void adjust_surface_alpha(surface& surf, uint8_t alpha_mod);
 void adjust_surface_alpha_add(surface& surf, int amount);
 
 /** Applies a mask on a surface. */
-void mask_surface(surface& surf, const surface& mask, bool* empty_result = nullptr, const std::string& filename = std::string());
+bool mask_surface(surface& surf, const surface& mask, const std::string& filename = std::string());
 
 /** Check if a surface fit into a mask */
 bool in_mask_surface(const surface& surf, const surface& mask);

@@ -426,13 +426,13 @@ BOOST_AUTO_TEST_CASE( utils_square_parenthetical_split )
 		BOOST_CHECK_EQUAL_COLLECTIONS(split.begin(), split.end(), expect.begin(), expect.end());
 	}
 	{
-		auto split = utils::square_parenthetical_split("q[1~5]");
-		std::array expect = {"q1", "q2", "q3", "q4", "q5"};
+		auto split = utils::square_parenthetical_split("q[0~5]");
+		std::array expect = {"q0", "q1", "q2", "q3", "q4", "q5"};
 		BOOST_CHECK_EQUAL_COLLECTIONS(split.begin(), split.end(), expect.begin(), expect.end());
 	}
 	{
-		auto split = utils::square_parenthetical_split("q[5~1]");
-		std::array expect = {"q5", "q4", "q3", "q2", "q1"};
+		auto split = utils::square_parenthetical_split("q[5~0]");
+		std::array expect = {"q5", "q4", "q3", "q2", "q1", "q0"};
 		BOOST_CHECK_EQUAL_COLLECTIONS(split.begin(), split.end(), expect.begin(), expect.end());
 	}
 	{
@@ -443,6 +443,16 @@ BOOST_AUTO_TEST_CASE( utils_square_parenthetical_split )
 	{
 		auto split = utils::square_parenthetical_split("q[007~012]");
 		std::array expect = {"q007", "q008", "q009", "q010", "q011", "q012"};
+		BOOST_CHECK_EQUAL_COLLECTIONS(split.begin(), split.end(), expect.begin(), expect.end());
+	}
+	{
+		auto split = utils::square_parenthetical_split("q[095~100]");
+		std::array expect = {"q095", "q096", "q097", "q098", "q099", "q100"};
+		BOOST_CHECK_EQUAL_COLLECTIONS(split.begin(), split.end(), expect.begin(), expect.end());
+	}
+	{
+		auto split = utils::square_parenthetical_split("q[095~098]");
+		std::array expect = {"q095", "q096", "q097", "q098"};
 		BOOST_CHECK_EQUAL_COLLECTIONS(split.begin(), split.end(), expect.begin(), expect.end());
 	}
 	{

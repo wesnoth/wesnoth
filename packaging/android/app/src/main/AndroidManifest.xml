@@ -3,8 +3,6 @@
      com.gamemaker.game
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    android:versionName="1.19.14+dev"
-    android:versionCode="11914"
     android:installLocation="auto">
 
     <!-- OpenGL ES 2.0 -->
@@ -29,7 +27,7 @@
     <!-- External mouse input events -->
     <uses-feature
         android:name="android.hardware.type.pc"
-        android:required="true" />
+        android:required="false" />
 
     <!-- Audio recording support -->
     <!-- if you want to capture audio, uncomment this. -->

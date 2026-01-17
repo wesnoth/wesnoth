@@ -1,0 +1,316 @@
+.\" This program is free software; you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation; either version 2 of the License, or
+.\" (at your option) any later version.
+.\"
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program; if not, write to the Free Software
+.\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+.\"
+.
+.\"*******************************************************************
+.\"
+.\" This file was generated with po4a. Translate the source file.
+.\"
+.\"*******************************************************************
+.TH WESNOTHD 6 2022 wesnothd "Servizo de rede para partidas con varios xogadores de A batalla polo Noroeste"
+.
+.SH NOME
+.
+wesnothd — Servizo de rede para partidas con varios xogadores de A batalla
+polo \fBNoroeste\fP.
+.
+.SH SINOPSE
+.
+\fBwesnothd\fP [\|\fB\-dvw\fP\|] [\|\fB\-c\fP \fIpath\fP\|] [\|\fB\-p\fP \fIport\fP\|]
+.br
+\fBwesnothd\fP \fB\-V\fP
+.
+.SH DESCRICIÓN
+.
+Xestiona partidas de A batalla polo Noroeste con varios xogadores. Véxanse
+en «https://www.wesnoth.org/wiki/ServerAdministration» (en inglés) as ordes
+que acepta o servidor a través do cliente wesnoth (/query […]) ou do fifo.
+.
+.SH OPCIÓNS
+.
+.TP 
+\fB\-c\ \fP\fIpath\fP\fB,\ \-\-config\fP\fI\ camiño\fP
+Indícalle a wesnothd onde atopar o ficheiro de configuración a usar. Véxase
+a sintaxe máis adiante na sección de \fBSERVER CONFIG\fP. Pódese recargar a
+configuración enviando SIGHUP ao proceso do servidor.
+.TP 
+\fB\-d, \-\-daemon\fP
+Executa wesnothd coma un servizo.
+.TP 
+\fB\-h, \-\-help\fP
+Indica as funcións das opcións de liña de ordes.
+.TP 
+\fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIdomain1\fP\fB,\fP\fIdomain2\fP\fB,\fP\fI...\fP
+define o nivel de gravidade dos dominios de rexistro.  Pódese usar \fBall\fP
+para coincidir con calquera dominio de rexistro. Niveis dispoñibles:
+\fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP. Por defecto, úsase o nivel
+\fBerror\fP e o nivel \fBinfo\fP para o dominio \fBserver\fP.
+.TP 
+\fB\-p\ \fP\fIporto\fP\fB,\ \-\-port\fP\fI\ porto\fP
+Asocia o servidor ao porto especificado. O porto predeterminado é o
+\fB15000\fP.
+.TP 
+\fB\-V, \-\-version\fP
+mostra o número de versión e sae.
+.TP 
+\fB\-v, \-\-verbose\fP
+Activa o rexistro da depuración.
+.
+.SH "CONFIGURACIÓN DO SERVIDOR"
+.
+.SS "A sintaxe xeral é a seguinte:"
+.
+.P
+[\fItag\fP]
+.IP
+\fIkey\fP="\fIvalue\fP"
+.IP
+\fIkey\fP="\fIvalue\fP,\fIvalue\fP,..."
+.P
+[/\fItag\fP]
+.
+.SS "Claves globais:"
+.
+.TP 
+\fBallow_remote_shutdown\fP
+Se se lle dá o valor \fBno\fP («non», valor predeterminado), as solicitudes de
+apagado e reinicio ignoraranse salvo que procedan do fifo.  Co valor \fByes\fP
+(«si») permitirase o apagado remoto por medio dunha «/query» realizada por
+un administrador.
+.TP 
+\fBban_save_file\fP
+Ruta completa ou relativa a un ficheiro —comprimido con gzip— que o servidor
+poida ler e escribir. As vedas hanse gardar neste ficheiro e leranse de novo
+cando se inicie o servidor.
+.TP 
+\fBconnections_allowed\fP
+O número de conexións permitidas desde un mesmo enderezo IP. \fB0\fP equivale a
+infinitas. (o valor predeterminado é \fB5\fP)
+.TP 
+\fBdeny_unregistered_login\fP
+Indica se se debe evitar que inicien sesión os usuarios que non están
+rexistrados co \fBuser_handler\fP que se está utilizando. (predeterminado:
+false)
+.TP 
+\fBdisallow_names\fP
+Nomes/alcumes que o servidor non acepta. Admítense \fB*\fP e \fB?\fP dos patróns
+de comodíns. Consulta \fBglob\fP(7)  para obter máis detalles.  Os valores
+predeterminados (úsanse se non se especifica nada) son:
+\fB*admin*,*admln*,*moderator*,*server*,ai,ai?,computer,human,network,player\fP.
+.TP 
+\fBfifo_path\fP
+A ruta ao fifo polo que se poden enviar ordes ao servidor (equivalente ao
+/query … desde wesnoth).  Se non se especifica outra cousa, úsase por
+defecto a ruta en tempo de compilación (por defecto:
+\fB/var/run/wesnothd/socket\fP).
+.TP 
+\fBid\fP
+O ID do servidor cando se utiliza a funcionalidade de base de datos para
+almacenar información do xogo. Xeralmente é a versión major.minor dos
+clientes aceptados, como 1.16 ou 1.17.
+.TP 
+\fBmax_messages\fP
+O número máximo de mensaxes permitidas en \fBmessages_time_period\fP (\fB4\fP de
+maneira predeterminada).
+.TP 
+\fBmessages_time_period\fP
+O período de tempo (en segundos) que se usa para detectar os envíos masivos
+de mensaxes (\fB10\fP segundos de maneira predeterminada)
+.TP 
+\fBmotd\fP
+A mensaxe do día.
+.TP 
+\fBpasswd\fP
+O contrasinal que se utiliza para obter privilexios de administrador —por
+medio de \fB/query admin \fP\fIpassword\fP).
+.TP 
+\fBreplay_save_path\fP
+O directorio no que o servidor garda as repeticións das partidas (non
+esquezas a barra inclinada ao final, «/»). O seu valor predeterminado é
+«`'», o directorio no que se iniciou o wesnothd.
+.TP 
+\fBrestart_command\fP
+A orde que utiliza o servidor para iniciar outro proceso de servidor por
+medio da orde \fBrestart\fP. (Só se pode establecer mediante o fifo. Véxase a
+opción \fBallow_remote_shutdown\fP.)
+.TP 
+\fBsave_replays\fP
+Determina se o servidor gardará as repeticións das partidas
+automaticamente. O seu valor predeterminado é \fBfalse\fP («non»).
+.TP 
+\fBtls_enabled\fP
+Activa o uso de TLS. Se é verdadeiro, tamén require que se configuren as 3
+opcións seguintes.
+.TP 
+\fBtls_fullchain\fP
+Cadea completa de certificados TLS en formato .pem
+.TP 
+\fBchave_privada_tls\fP
+clave privada para TLS en formato .pem
+.TP 
+\fBtls_dh\fP
+Parámetros TLS DH, como ficheiro .pem. Xerar con \fBopenssl dhparam \-out filename.pem 4096\fP
+.TP 
+\fBversions_accepted\fP
+Unha lista separada por comas de cadeas de versión que o servidor
+aceptará. Pódense empregar os comodíns de patróns \fB*\fP e \fB?\fP. O seu valor
+predeterminado será a versión do xogo correspondente.
+.br
+Por exemplo: \fBversions_accepted="*"\fP aceptará calquera versión.
+.
+.SS "Etiquetas globais:"
+.
+.P
+\fB[redirect]\fP Unha etiqueta para especificar un servidor ao que redirixir
+determinadas versións do cliente. Non se usa se \fBversions_accepted\fP non
+está definido.
+.RS
+.TP 
+\fBhost\fP
+O enderezo do servidor ao que dirixir os clientes.
+.TP 
+\fBport\fP
+O porto da conexión.
+.TP 
+\fBversion\fP
+Unha lista separada por comas de versións a dirixir. Compórtase do mesmo
+xeito que \fBversions_accepted\fP no referente aos comodíns de patróns.
+.RE
+.P
+\fB[ban_time]\fP é unha etiqueta para definir palabras clave axeitadas para
+duracións de vedas temporais.
+.RS
+.TP 
+\fBname\fP
+O nome a usar para referirse á veda.
+.TP 
+\fBtime\fP
+A duración.  O formato é «%d[%s[%d%s[…]]]», onde %s será «s» (segundos), «m»
+(minutos), «h» (horas), «D» (días), «M» (meses) ou «Y» (anos), e %d será un
+número.  Se non se fornece un modificador de tempo, interpretarase a
+cantidade indicada como minutos.  Por exemplo: \fBtime="1D12h30m"\fP é unha
+expulsión de 1 día, 12 horas e 30 minutos.
+.RE
+.P
+\fB[proxy]\fP é unha etiqueta para que o servidor actúe coma proxy e dirixa as
+solicitudes dos clientes conectados ao servidor indicado.  Acepta as mesmas
+claves que \fB[redirect]\fP.
+.RE
+.P
+\fB[user_handler]\fP Configura o xestor de usuarios. Se non hai ningunha
+sección \fB[user_handler]\fP presente na configuración, o servidor executarase
+sen ningún servizo de rexistro de alcumes. Todas as táboas adicionais
+necesarias para que o \fBforum_user_handler\fP funcione pódense atopar en
+table_definitions.sql no repositorio de código fonte de Wesnoth. Require a
+compatibilidade con MySQL activada. Para cmake isto é \fBENABLE_MYSQL\fP e para
+scons isto é \fBforum_user_handler.\fP
+.RS
+.TP 
+\fBdb_host\fP
+O nome de host do servidor da base de datos
+.TP 
+\fBdb_name\fP
+O nome da base de datos
+.TP 
+\fBdb_user\fP
+O nome do usuario co que iniciar sesión na base de datos
+.TP 
+\fBdb_password\fP
+O contrasinal deste usuario
+.TP 
+\fBdb_users_table\fP
+O nome da táboa na que o teu foro phpbb garda os datos dos usuarios. O máis
+probable é que sexa <prefixo\-da\-táboa>_usuarios (por exemplo,
+phpbb3_usuarios).
+.TP 
+\fBdb_extra_table\fP
+O nome da táboa na que wesnothd gardará os seus propios datos sobre os
+usuarios.
+.TP 
+\fBdb_game_info_table\fP
+O nome da táboa na que wesnothd gardará os seus propios datos sobre os
+xogos.
+.TP 
+\fBdb_game_player_info_table\fP
+O nome da táboa na que wesnothd gardará os seus propios datos sobre os
+xogadores dunha partida.
+.TP 
+\fBdb_connection_history_table\fP
+O nome da táboa na que wesnothd gardará os seus propios datos sobre o
+contido do xogo (escenario/era/modificacións) usado nunha partida.
+.TP 
+\fBdb_user_group_table\fP
+O nome da táboa na que o teu foro phpbb garda os datos do grupo de
+usuarios. O máis probable é que sexa
+<prefixo\-da\-táboa>_grupo_de_usuarios (por exemplo,
+phpbb3_grupo_de_usuarios).
+.TP 
+\fBdb_tournament_query\fP
+A consulta SQL para atopar torneos que se anunciarán ao iniciar
+sesión. Debería devolver torneo \fBtitle\fP, \fBstatus\fP e \fBurl\fP.
+.TP 
+\fBdb_connection_history_table\fP
+O nome da táboa na que almacenar as horas de inicio de sesión/saída. Tamén
+se usa para relacionar IP cos usuarios e viceversa.
+.TP 
+\fBdb_topics_table\fP
+O nome da táboa na que o teu foro phpbb garda a información do tema (fío). O
+máis probable é que sexa <prefixo\-da\-táboa>_temas (por exemplo,
+phpbb3_temas).
+.TP 
+\fBdb_banlist_table\fP
+O nome da táboa na que o teu foro phpbb garda os datos de prohibicións de
+usuarios. O máis probable é que sexa <prefixo\-da\-táboa>_banlist (por
+exemplo, phpbb3_banlist).
+.TP 
+\fBmp_mod_group\fP
+O ID do grupo do foro que se considera que ten autoridade de moderación.
+.TP 
+\fBforum_admin_group\fP
+O ID dun dos grupos do foro que se considerará con autoridade de
+administrador no servidor de complementos.
+.TP 
+\fBsite_admin_group\fP
+O ID dun dos grupos do foro que se considerará con autoridade de
+administrador no servidor de complementos.
+.RE
+.
+.SH "ESTADO AO SAÍR"
+.
+Cando o servidor se apague correctamente o estado ao saír será «0». Será «2»
+de houber un erro coa liña de ordes.
+.
+.SH AUTORES
+.
+Autor orixinal: David White <davidnwhite@verizon.net>. Modificacións
+posteriores: Nils Kneuper <crazy\-ivanovic@gmx.net>, ott
+<ott@gaon.net>, Soliton <soliton.de@gmail.com> e Thomas
+Baumhauer <thomas.baumhauer@gmail.com>. Autor orixinal desta axuda:
+Cyril Bouthors <cyril@bouthors.org>.
+.br
+Visite o sitio web oficial: https://www.wesnoth.org/
+.
+.SH "DEREITOS DE AUTOR"
+.
+Dereitos reservados 2003\-2025 David White <davidnwhite@verizon.net>
+.br
+Isto é software libre. Este software está protexido polos termos da versión
+2 da licenza GNU GPL, tal e como foi publicada pola Free Software
+Foundation.  Non existe NINGUNHA garantía. Nin sequera para o seu USO
+COMERCIAL ou ADECUACIÓN PARA UN PROPÓSITO PARTICULAR.
+.
+.SH "VÉXASE TAMÉN"
+.
+\fBwesnoth\fP(6)
+

@@ -45,13 +45,21 @@ namespace utf8 {
 
 	/**
 	 * Codepoint index corresponding to the nth character in a UTF-8 string.
-	 *
+	 * @throw invalid_utf8_exception if the string is not a valid UTF-8 string.
+	 * The checking is partial. No matter what is in between, it will iterate from first byte
+	 * of a character to the next first byte of the following character.
 	 * @return str.length() if there are less than @p index characters.
 	 */
 	std::size_t index(std::string_view str, const std::size_t index);
 
-	/** Length in characters of a UTF-8 string. */
+	/**
+	 * Length in characters of a UTF-8 string.
+	 * @throw invalid_utf8_exception if the string is not a valid UTF-8 string.
+	 * The checking is partial. No matter what is in between, it will iterate from first byte
+	 * of a character to the next first byte of the following character.
+	 */
 	std::size_t size(std::string_view str);
+	std::size_t size(const std::string::const_iterator& start, const std::string::const_iterator& end);
 
 	/** Insert a UTF-8 string at the specified position. */
 	std::string& insert(std::string& str, const std::size_t pos, const std::string& insert) ;

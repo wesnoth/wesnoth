@@ -23,6 +23,7 @@
 #include "log.hpp"
 #include "resources.hpp"
 #include "serialization/string_utils.hpp"
+#include "utils/general.hpp"
 
 static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
@@ -154,7 +155,7 @@ manager::~manager()
 void manager::add_events(const config::const_child_itors& cfgs, game_lua_kernel& lk, const std::string& type)
 {
 	if(!type.empty()) {
-		if(std::find(unit_wml_ids_.begin(), unit_wml_ids_.end(), type) != unit_wml_ids_.end()) {
+		if(utils::contains(unit_wml_ids_, type)) {
 			return;
 		}
 

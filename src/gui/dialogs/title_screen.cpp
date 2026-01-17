@@ -52,6 +52,7 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "help/help.hpp"
+#include "quit_confirmation.hpp"
 #include "sdl/surface.hpp"
 #include "serialization/unicode.hpp"
 #include "video.hpp"
@@ -86,15 +87,29 @@ title_screen::~title_screen()
 {
 }
 
-void title_screen::register_button(const std::string& id, hotkey::HOTKEY_COMMAND hk, const std::function<void()>& callback)
+void title_screen::register_button(
+	const std::string& id,
+	hotkey::HOTKEY_COMMAND hk,
+	const std::function<void()>& callback)
+{
+	register_button(id, hk, callback, callback);
+}
+
+void title_screen::register_button(
+	const std::string& id,
+	hotkey::HOTKEY_COMMAND hk,
+	const std::function<void()>& callback_btn,
+	const std::function<void()>& callback_hotkey)
 {
 	if(hk != hotkey::HOTKEY_NULL) {
-		register_hotkey(hk, [callback](auto&&...) { callback(); return true; });
+		register_hotkey(hk, [callback_hotkey](auto&&...) { callback_hotkey(); return true; });
 	}
 
 	try {
 		button& btn = find_widget<button>(id);
-		connect_signal_mouse_left_click(btn, [callback](auto&&...) { std::invoke(callback); });
+		connect_signal_mouse_left_click(btn, [callback_btn](auto&&...) {
+			std::invoke(callback_btn);
+		});
 	} catch(const wml_exception& e) {
 		ERR_GUI_P << e.user_message;
 		prefs::get().set_gui2_theme("default");
@@ -245,10 +260,7 @@ void title_screen::init_callbacks()
 	//
 	// Help
 	//
-	register_button("help", hotkey::HOTKEY_HELP, []() {
-		help::help_manager help_manager(&game_config_manager::get()->game_config());
-		help::show_help();
-	});
+	register_button("help", hotkey::HOTKEY_HELP, [] { help::show_help(); });
 
 	//
 	// About
@@ -281,11 +293,11 @@ void title_screen::init_callbacks()
 	// Load game
 	//
 	register_button("load", hotkey::HOTKEY_LOAD_GAME, [this]() {
-		if(game_.load_game()) {
+		if(game_.load_game_prompt()) {
 			// Suspend drawing of the title screen,
 			// so it doesn't flicker in between loading screens.
 			hide();
-			set_retval(LAUNCH_GAME);
+			set_retval(LOAD_GAME);
 		}
 	});
 
@@ -338,7 +350,13 @@ void title_screen::init_callbacks()
 	//
 	// Quit
 	//
+#ifdef __ANDROID__
+	register_button("quit", hotkey::HOTKEY_QUIT_TO_DESKTOP,
+		[this]() { set_retval(QUIT_GAME); },
+		[this]() { quit_confirmation().quit_to_desktop(); });
+#else
 	register_button("quit", hotkey::HOTKEY_QUIT_TO_DESKTOP, [this]() { set_retval(QUIT_GAME); });
+#endif
 	// A sanity check, exit immediately if the .cfg file didn't have a "quit" button.
 	find_widget<button>("quit", false, true);
 

@@ -28,9 +28,9 @@ namespace gui2::dialogs
 class game_load : public modal_dialog
 {
 public:
-	game_load(const game_config_view& cache_config, savegame::load_game_metadata& data);
+	game_load(savegame::load_game_metadata& data);
 
-	static bool execute(const game_config_view& cache_config, savegame::load_game_metadata& data);
+	static bool execute(savegame::load_game_metadata& data);
 
 private:
 	virtual void pre_show() override;

@@ -36,10 +36,10 @@ config read_and_validate(const std::string& path)
 try {
 	preproc_map defines;
 #ifdef __ANDROID__
-	defines["ANDROID"] = preproc_define();
+	defines.try_emplace("ANDROID");
 #endif
 	schema_validation::schema_validator validator{filesystem::get_wml_location("schema/gui.cfg").value()};
-	return io::read(*preprocess_file(path, &defines), &validator);
+	return io::read(*preprocess_file(path, defines), &validator);
 
 } catch(const utils::bad_optional_access&) {
 	FAIL("GUI2: schema/gui.cfg not found.");
@@ -84,12 +84,8 @@ try {
  */
 void parse(const std::string& full_path, bool is_core)
 {
-#if __cpp_range_based_for >= 202211L // lifetime extension of temporaries
-	for(const config& def : read_and_validate(full_path).child_range("gui")) {
-#else
 	config cfg = read_and_validate(full_path);
 	for(const config& def : cfg.child_range("gui")) {
-#endif
 		const bool is_default = def["id"] == "default";
 
 		if(is_default && !is_core) {

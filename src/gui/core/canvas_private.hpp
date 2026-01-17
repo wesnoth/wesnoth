@@ -195,13 +195,7 @@ private:
 	typed_formula<unsigned> w_; /**< The width of the image. */
 	typed_formula<unsigned> h_; /**< The height of the image. */
 
-	/**
-	 * Name of the image.
-	 *
-	 * This value is only used when the image name is a formula. If it isn't a
-	 * formula the image will be loaded in the constructor. If it's a formula it
-	 * will be loaded every draw cycles. This allows 'changing' images.
-	 */
+	/** String to pass to the image loader. May be a Data URI, may include Image Path Functions. */
 	typed_formula<std::string> image_name_;
 
 	/**
@@ -230,6 +224,11 @@ private:
 
 	// TODO: use a typed_formula?
 	wfl::formula actions_formula_;
+
+	/**
+	 * Prevents duplicate error logs when an image can't be loaded.
+	 */
+	bool failure_logged_;
 
 	static void dimension_validation(unsigned value, const std::string& name, const std::string& key);
 };

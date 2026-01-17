@@ -109,7 +109,6 @@
 #include "units/ptr.hpp"                // for unit_const_ptr, unit_ptr
 #include "units/types.hpp"              // for unit_type_data, unit_types, etc
 #include "utils/general.hpp"
-#include "utils/scope_exit.hpp"
 #include "variable.hpp"                 // for vconfig, etc
 #include "variable_info.hpp"
 #include "video.hpp"                    // only for faked
@@ -215,6 +214,11 @@ std::vector<int> game_lua_kernel::get_sides_vector(const vconfig& cfg)
 
 	side_filter filter(sides.str(), &game_state_);
 	return filter.get_teams();
+}
+
+scoped_lua_argument game_lua_kernel::push_wml_events_table(lua_State* L) const
+{
+	return {L, LUA_REGISTRYINDEX, EVENT_TABLE};
 }
 
 namespace {
@@ -1097,8 +1101,9 @@ int game_lua_kernel::impl_get_terrain_info(lua_State *L)
 {
 	char const *m = luaL_checkstring(L, 2);
 	t_translation::terrain_code t = t_translation::read_terrain_code(m);
-	if (t == t_translation::NONE_TERRAIN || !board().map().tdata()->is_known(t)) return 0;
-	const terrain_type& info = board().map().tdata()->get_terrain_info(t);
+	if (t == t_translation::NONE_TERRAIN) return 0;
+	const terrain_type& info = map().get_terrain_info(t);
+	if (!info.is_nonnull()) return 0;
 
 	lua_newtable(L);
 	lua_pushstring(L, info.id().c_str());
@@ -1128,7 +1133,7 @@ int game_lua_kernel::impl_get_terrain_info(lua_State *L)
 	lua_newtable(L);
 	int idx = 1;
 	for (const auto& terrain : info.mvt_type()) {
-		const terrain_type& base = board().map().tdata()->get_terrain_info(terrain);
+		const terrain_type& base = map().get_terrain_info(terrain);
 		if (!base.id().empty()) {
 			lua_pushstring(L, t_translation::write_terrain_code(base.number()).c_str());
 			lua_rawseti(L, -2, idx++);
@@ -1140,7 +1145,7 @@ int game_lua_kernel::impl_get_terrain_info(lua_State *L)
 	lua_newtable(L);
 	idx = 1;
 	for (const auto& terrain : info.def_type()) {
-		const terrain_type& base = board().map().tdata()->get_terrain_info(terrain);
+		const terrain_type& base = map().get_terrain_info(terrain);
 		if (!base.id().empty()) {
 			lua_pushstring(L, t_translation::write_terrain_code(base.number()).c_str());
 			lua_rawseti(L, -2, idx++);
@@ -1157,7 +1162,7 @@ int game_lua_kernel::impl_get_terrain_info(lua_State *L)
  */
 int game_lua_kernel::impl_get_terrain_list(lua_State *L)
 {
-	auto codes = board().map().tdata()->list();
+	const auto& codes = map().get_terrain_list();
 	std::vector<std::string> terrains;
 	terrains.reserve(codes.size());
 	for(auto code : codes) {
@@ -1180,7 +1185,7 @@ int game_lua_kernel::intf_get_time_of_day(lua_State *L)
 	map_location loc = map_location();
 
 	if(luaW_tolocation(L, 1, loc)) {
-		if(!board().map().on_board_with_border(loc)) {
+		if(!map().on_board_with_border(loc)) {
 			return luaL_argerror(L, 1, "coordinates are not on board");
 		}
 	} else if(lua_isstring(L, 1)) {
@@ -1208,7 +1213,7 @@ int game_lua_kernel::intf_get_time_of_day(lua_State *L)
 	}
 
 	const time_of_day& tod = consider_illuminates ?
-		tod_man().get_illuminated_time_of_day(board().units(), board().map(), loc, for_turn) :
+		tod_man().get_illuminated_time_of_day(units(), map(), loc, for_turn) :
 		tod_man().get_time_of_day(loc, for_turn);
 
 	luaW_push_tod(L, tod);
@@ -1224,7 +1229,7 @@ int game_lua_kernel::intf_get_time_of_day(lua_State *L)
 int game_lua_kernel::intf_get_village_owner(lua_State *L)
 {
 	map_location loc = luaW_checklocation(L, 1);
-	if (!board().map().is_village(loc))
+	if (!map().is_village(loc))
 		return 0;
 
 	int side = board().village_owner(loc);
@@ -1241,7 +1246,7 @@ int game_lua_kernel::intf_get_village_owner(lua_State *L)
 int game_lua_kernel::intf_set_village_owner(lua_State *L)
 {
 	map_location loc = luaW_checklocation(L, 1);
-	if(!board().map().is_village(loc)) {
+	if(!map().is_village(loc)) {
 		return 0;
 	}
 
@@ -1303,7 +1308,7 @@ int game_lua_kernel::intf_get_mouseover_tile(lua_State *L)
 	}
 
 	const map_location &loc = game_display_->mouseover_hex();
-	if (!board().map().on_board(loc)) return 0;
+	if (!map().on_board(loc)) return 0;
 	lua_pushinteger(L, loc.wml_x());
 	lua_pushinteger(L, loc.wml_y());
 	return 2;
@@ -1321,7 +1326,7 @@ int game_lua_kernel::intf_get_selected_tile(lua_State *L)
 	}
 
 	const map_location &loc = game_display_->selected_hex();
-	if (!board().map().on_board(loc)) return 0;
+	if (!map().on_board(loc)) return 0;
 	lua_pushinteger(L, loc.wml_x());
 	lua_pushinteger(L, loc.wml_y());
 	return 2;
@@ -2042,8 +2047,7 @@ static int intf_eval_conditional(lua_State *L)
  * Finds a path between two locations.
  * - Arg 1: source location. (Or Arg 1: unit.)
  * - Arg 2: destination.
- * - Arg 3: optional cost function or
- *          table (optional fields: ignore_units, ignore_teleport, max_cost, viewing_side).
+ * - Arg 3: optional table (optional fields: ignore_units, ignore_teleport, max_cost, viewing_side, calculate).
  * - Ret 1: array of pairs containing path steps.
  * - Ret 2: path cost.
  */
@@ -2074,13 +2078,12 @@ int game_lua_kernel::intf_find_path(lua_State *L)
 
 	dst = luaW_checklocation(L, arg);
 
-	if (!board().map().on_board(src))
+	if (!map().on_board(src))
 		return luaL_argerror(L, 1, "invalid location");
-	if (!board().map().on_board(dst))
+	if (!map().on_board(dst))
 		return luaL_argerror(L, arg, "invalid location");
 	++arg;
 
-	const gamemap &map = board().map();
 	bool ignore_units = false, see_all = false, ignore_teleport = false;
 	double stop_at = 10000;
 	std::unique_ptr<pathfind::cost_calculator> calc;
@@ -2093,17 +2096,14 @@ int game_lua_kernel::intf_find_path(lua_State *L)
 
 		stop_at = luaW_table_get_def<double>(L, arg, "max_cost", stop_at);
 
-
 		lua_pushstring(L, "viewing_side");
 		lua_rawget(L, arg);
 		if (!lua_isnil(L, -1)) {
 			int i = luaL_checkinteger(L, -1);
-			if (i >= 1 && i <= static_cast<int>(teams().size())) viewing_side = i;
-			else {
-				// If there's a unit, we have a valid side, so fall back to legacy behaviour.
-				// If we don't have a unit, legacy behaviour would be a crash, so let's not.
-				if(u) see_all = true;
-				deprecated_message("wesnoth.paths.find_path with viewing_side=0 (or an invalid side)", DEP_LEVEL::FOR_REMOVAL, {1, 17, 0}, "To consider fogged and hidden units, use ignore_visibility=true instead.");
+			if(board().has_team(i)) {
+				viewing_side = i;
+			} else {
+				return luaL_argerror(L, -1, "invalid viewing side");
 			}
 		}
 		lua_pop(L, 1);
@@ -2114,11 +2114,8 @@ int game_lua_kernel::intf_find_path(lua_State *L)
 			calc.reset(new lua_pathfind_cost_calculator(L, lua_gettop(L)));
 		}
 		// Don't pop, the lua_pathfind_cost_calculator requires it to stay on the stack.
-	}
-	else if (lua_isfunction(L, arg))
-	{
-		deprecated_message("wesnoth.paths.find_path with cost_function as last argument", DEP_LEVEL::FOR_REMOVAL, {1, 17, 0}, "Use calculate=cost_function inside the path options table instead.");
-		calc.reset(new lua_pathfind_cost_calculator(L, arg));
+	} else if(!lua_isnoneornil(L, arg)) {
+		return luaL_argerror(L, arg, "table expected");
 	}
 
 	pathfind::teleport_map teleport_locations;
@@ -2138,10 +2135,10 @@ int game_lua_kernel::intf_find_path(lua_State *L)
 		}
 
 		calc.reset(new pathfind::shortest_path_calculator(*u, board().get_team(viewing_side),
-			teams(), map, ignore_units, false, see_all));
+			teams(), map(), ignore_units, false, see_all));
 	}
 
-	pathfind::plain_route res = pathfind::a_star_search(src, dst, stop_at, *calc, map.w(), map.h(),
+	pathfind::plain_route res = pathfind::a_star_search(src, dst, stop_at, *calc, map().w(), map().h(),
 		&teleport_locations);
 
 	int nb = res.steps.size();
@@ -2197,15 +2194,15 @@ int game_lua_kernel::intf_find_reach(lua_State *L)
 		lua_rawget(L, arg);
 		if (!lua_isnil(L, -1)) {
 			int i = luaL_checkinteger(L, -1);
-			if (i >= 1 && i <= static_cast<int>(teams().size())) viewing_side = i;
-			else {
-				// If there's a unit, we have a valid side, so fall back to legacy behaviour.
-				// If we don't have a unit, legacy behaviour would be a crash, so let's not.
-				if(u) see_all = true;
-				deprecated_message("wesnoth.find_reach with viewing_side=0 (or an invalid side)", DEP_LEVEL::FOR_REMOVAL, {1, 17, 0}, "To consider fogged and hidden units, use ignore_visibility=true instead.");
+			if(board().has_team(i)) {
+				viewing_side = i;
+			} else {
+				return luaL_argerror(L, -1, "invalid viewing side");
 			}
 		}
 		lua_pop(L, 1);
+	} else if(!lua_isnoneornil(L, arg)) {
+		return luaL_argerror(L, arg, "table expected");
 	}
 
 	const team& viewing_team = board().get_team(viewing_side);
@@ -4950,8 +4947,8 @@ namespace {
  */
 int game_lua_kernel::impl_theme_item(lua_State *L, const std::string& m)
 {
-	reports::context temp_context = reports::context(board(), *game_display_, tod_man(), play_controller_.get_whiteboard(), play_controller_.get_mouse_handler_base());
-	luaW_pushconfig(L, reports_.generate_report(m.c_str(), temp_context , true));
+	auto temp_context = reports::context(board(), *game_display_, tod_man(), play_controller_.get_whiteboard(), play_controller_.get_mouse_handler_base());
+	luaW_pushconfig(L, reports_.generate_builtin_report(m.c_str(), temp_context));
 	return 1;
 }
 
@@ -5268,7 +5265,6 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 	, game_state_(gs)
 	, play_controller_(pc)
 	, reports_(reports_object)
-	, level_lua_()
 	, EVENT_TABLE(LUA_NOREF)
 	, queued_events_()
 	, map_locked_(0)
@@ -5735,8 +5731,6 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 void game_lua_kernel::initialize(const config& level)
 {
 	lua_State *L = mState;
-	assert(level_lua_.empty());
-	level_lua_.append_children(level, "lua");
 
 	//Create the races table.
 	cmd_log_ << "Adding races table...\n";
@@ -5754,7 +5748,7 @@ void game_lua_kernel::initialize(const config& level)
 	for (const config &cfg : game_lua_kernel::preload_scripts) {
 		run_lua_tag(cfg);
 	}
-	for (const config &cfg : level_lua_.child_range("lua")) {
+	for (const config &cfg : level.child_range("lua")) {
 		run_lua_tag(cfg);
 	}
 }
@@ -6079,11 +6073,8 @@ static int intf_run_event_wml(lua_State* L)
 int game_lua_kernel::save_wml_event()
 {
 	lua_State* L = mState;
-	lua_geti(L, LUA_REGISTRYINDEX, EVENT_TABLE);
+	const auto events = push_wml_events_table(L);
 	int evtIdx = lua_gettop(L);
-	ON_SCOPE_EXIT(L) {
-		lua_pop(L, 1);
-	};
 	lua_pushcfunction(L, intf_run_event_wml);
 	return luaL_ref(L, evtIdx);
 }
@@ -6091,11 +6082,8 @@ int game_lua_kernel::save_wml_event()
 int game_lua_kernel::save_wml_event(const std::string& name, const std::string& id, const std::string& code)
 {
 	lua_State* L = mState;
-	lua_geti(L, LUA_REGISTRYINDEX, EVENT_TABLE);
+	const auto events = push_wml_events_table(L);
 	int evtIdx = lua_gettop(L);
-	ON_SCOPE_EXIT(L) {
-		lua_pop(L, 1);
-	};
 	std::ostringstream lua_name;
 	lua_name << "event ";
 	if(name.empty()) {
@@ -6117,11 +6105,8 @@ int game_lua_kernel::save_wml_event(int idx)
 {
 	lua_State* L = mState;
 	idx = lua_absindex(L, idx);
-	lua_geti(L, LUA_REGISTRYINDEX, EVENT_TABLE);
+	const auto events = push_wml_events_table(L);
 	int evtIdx = lua_gettop(L);
-	ON_SCOPE_EXIT(L) {
-		lua_pop(L, 1);
-	};
 	lua_pushvalue(L, idx);
 	return luaL_ref(L, evtIdx);
 }
@@ -6129,18 +6114,14 @@ int game_lua_kernel::save_wml_event(int idx)
 void game_lua_kernel::clear_wml_event(int ref)
 {
 	lua_State* L = mState;
-	lua_geti(L, LUA_REGISTRYINDEX, EVENT_TABLE);
+	const auto events = push_wml_events_table(L);
 	luaL_unref(L, -1, ref);
-	lua_pop(L, 1);
 }
 
 bool game_lua_kernel::run_wml_event(int ref, const vconfig& args, const game_events::queued_event& ev, bool* out)
 {
 	lua_State* L = mState;
-	lua_geti(L, LUA_REGISTRYINDEX, EVENT_TABLE);
-	ON_SCOPE_EXIT(L) {
-		lua_pop(L, 1);
-	};
+	const auto events = push_wml_events_table(L);
 	lua_geti(L, -1, ref);
 	if(lua_isnil(L, -1)) return false;
 	luaW_pushvconfig(L, args);

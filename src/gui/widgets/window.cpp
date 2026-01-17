@@ -250,7 +250,6 @@ window::window(const builder_window::window_resolution& definition)
 	, status_(status::NEW)
 	, show_mode_(show_mode::none)
 	, retval_(retval::NONE)
-	, owner_(nullptr)
 	, need_layout_(true)
 	, variables_()
 	, invalidate_layout_blocked_(false)
@@ -806,7 +805,7 @@ void window::add_linked_widget(const std::string& id, widget* wgt)
 	}
 
 	std::vector<widget*>& widgets = linked_size_[id].widgets;
-	if(std::find(widgets.begin(), widgets.end(), wgt) == widgets.end()) {
+	if(!utils::contains(widgets, wgt)) {
 		widgets.push_back(wgt);
 	}
 }
@@ -823,9 +822,7 @@ void window::remove_linked_widget(const std::string& id, const widget* wgt)
 
 	if(itor != widgets.end()) {
 		widgets.erase(itor);
-
-		assert(std::find(widgets.begin(), widgets.end(), wgt)
-			   == widgets.end());
+		assert(!utils::contains(widgets, wgt));
 	}
 }
 
@@ -899,19 +896,19 @@ void window::layout()
 	}
 	catch(const layout_exception_resize_failed&)
 	{
-
 		/** @todo implement the scrollbars on the window. */
 
 		std::stringstream sstr;
-		sstr << __FILE__ << ":" << __LINE__ << " in function '" << __func__
-			 << "' found the following problem: Failed to size window;"
-			 << " wanted size " << get_best_size() << " available size "
-			 << maximum_width << ',' << maximum_height << " screen size "
-			 << settings::screen_width << ',' << settings::screen_height << '.';
+		sstr << __FILE__ << ":" << __LINE__ << " in function ‘" << __func__
+		     << "’ found the following problem: Failed to size window with id ‘" << id()
+		     << "’; wanted size " << get_best_size() << ", available size ("
+		     << maximum_width << ',' << maximum_height << "), screen size ("
+		     << settings::screen_width << ',' << settings::screen_height << ").";
 
-		throw wml_exception(_("Failed to show a dialog, "
-							   "which doesn’t fit on the screen."),
-							 sstr.str());
+		throw wml_exception(
+			_("Failed to show a dialog, which doesn’t fit on the screen."),
+			sstr.str(),
+			wml_exception::error_type::GUI_LAYOUT_FAILURE);
 	}
 
 	/****** Validate click dismiss status. *****/
@@ -935,20 +932,19 @@ void window::layout()
 		}
 		catch(const layout_exception_resize_failed&)
 		{
-
 			/** @todo implement the scrollbars on the window. */
 
 			std::stringstream sstr;
-			sstr << __FILE__ << ":" << __LINE__ << " in function '" << __func__
-				 << "' found the following problem: Failed to size window;"
-				 << " wanted size " << get_best_size() << " available size "
-				 << maximum_width << ',' << maximum_height << " screen size "
-				 << settings::screen_width << ',' << settings::screen_height
-				 << '.';
+			sstr << __FILE__ << ":" << __LINE__ << " in function ‘" << __func__
+			     << "’ found the following problem: Failed to size window with id ‘" << id()
+			     << "’; wanted size " << get_best_size() << ", available size ("
+			     << maximum_width << ',' << maximum_height << "), screen size ("
+			     << settings::screen_width << ',' << settings::screen_height << ").";
 
-			throw wml_exception(_("Failed to show a dialog, "
-								   "which doesn’t fit on the screen."),
-								 sstr.str());
+			throw wml_exception(
+				_("Failed to show a dialog, which doesn’t fit on the screen."),
+				sstr.str(),
+				wml_exception::error_type::GUI_LAYOUT_FAILURE);
 		}
 	}
 
@@ -1226,7 +1222,7 @@ void window::remove_from_keyboard_chain(widget* widget)
 
 void window::add_to_tab_order(widget* widget, int at)
 {
-	if(std::find(tab_order.begin(), tab_order.end(), widget) != tab_order.end()) {
+	if(utils::contains(tab_order, widget)) {
 		return;
 	}
 	assert(event_distributor_);
@@ -1303,7 +1299,7 @@ void window::signal_handler_sdl_key_down(const event::ui_event event,
 				handled = true;
 			}
 		}
-	} else if(key == SDLK_ESCAPE && !escape_disabled_) {
+	} else if((key == SDLK_ESCAPE || key == SDLK_AC_BACK) && !escape_disabled_) {
 		set_retval(retval::CANCEL);
 		handled = true;
 	} else if(key == SDLK_SPACE) {

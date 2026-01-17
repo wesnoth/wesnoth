@@ -215,7 +215,7 @@ builder_multi_page::builder_multi_page(const config& cfg)
 			data.emplace_back();
 			for(const auto& [key, value] : column.attribute_range())
 			{
-				data.back()[key] = value;
+				data.back()[key] = value.t_str();
 			}
 			++col;
 		}

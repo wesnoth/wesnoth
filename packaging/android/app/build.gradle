@@ -5,13 +5,27 @@ plugins {
 android {
     namespace 'org.wesnoth.Wesnoth'
     compileSdk 35
+    ndkVersion '26.3.11579264'
 
     defaultConfig {
         applicationId "org.wesnoth.Wesnoth"
         minSdk 23
         targetSdk 35
-        versionCode 11914
-        versionName "1.19.14+dev"
+        versionCode 1191900 // version 1.xx.yy, patch zz
+        versionName "1.19.19+dev"
+    }
+
+    buildFeatures {
+        buildConfig true
+    }
+    
+    signingConfigs {
+        release {
+            storeFile = file("wesnoth.keystore")
+            storePassword System.getenv("SIGNING_STORE_PASSWORD")
+            keyAlias System.getenv("SIGNING_KEY_ALIAS")
+            keyPassword System.getenv("SIGNING_KEY_PASSWORD")
+        }
     }
 
     buildTypes {
@@ -27,10 +41,12 @@ android {
             ndk {
                 debugSymbolLevel 'NONE'
             }
+            signingConfig signingConfigs.release
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -44,8 +60,18 @@ android {
             universalApk false
         }
     }
+    
+    // Use custom APK versionCode for each ABI
+    def abiCodes = ['armeabi-v7a': 1, 'arm64-v8a': 2, 'x86': 3, 'x86_64': 4]
+    applicationVariants.all { variant ->
+        variant.outputs.each { output ->
+            def abiCode = abiCodes.get(output.getFilter(com.android.build.OutputFile.ABI), 0)
+            output.versionCodeOverride = defaultConfig.versionCode * 1000 + abiCode
+        }
+    }
 
     dependencies {
         implementation "androidx.core:core:1.16.0"
+        implementation "androidx.documentfile:documentfile:1.1.0"
     }
 }

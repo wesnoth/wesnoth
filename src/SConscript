@@ -37,7 +37,8 @@ for environ in [test_env, client_env, env]:
 # if not windows, then set FIFODIR and WESNOTH_PATH defines, and configure the locale and preferences locations
     if environ["PLATFORM"] != "win32":
         environ.Append(CPPDEFINES = "FIFODIR='\"$fifodir\"'")
-        environ.Append(CPPDEFINES = "WESNOTH_PATH='\"$datadir\"'")
+        if environ["PLATFORM"] != "android":
+            environ.Append(CPPDEFINES = "WESNOTH_PATH='\"$datadir\"'")
         if env['localedirname']:
             environ.Append(CPPDEFINES = "LOCALEDIR='\"$localedirname\"'")
             if not os.path.isabs(env['localedirname']):

@@ -141,7 +141,7 @@ play_controller::play_controller(const config& level, saved_game& state_of_game)
 	, whiteboard_manager_()
 	, plugins_context_()
 	, labels_manager_(new font::floating_label_context())
-	, help_manager_(&game_config_)
+	, help_manager_(help::help_manager::get_instance())
 	, mouse_handler_(*this)
 	, menu_handler_(*this)
 	, hotkey_handler_(new hotkey_handler(*this, saved_game_))
@@ -840,7 +840,7 @@ bool play_controller::have_keyboard_focus()
 
 void play_controller::process_focus_keydown_event(const SDL_Event& event)
 {
-	if(event.key.keysym.sym == SDLK_ESCAPE) {
+	if(event.key.keysym.sym == SDLK_ESCAPE || event.key.keysym.sym == SDLK_AC_BACK) {
 		menu_handler_.get_textbox().close();
 	} else if(event.key.keysym.sym == SDLK_TAB) {
 		tab();
@@ -935,8 +935,7 @@ void play_controller::save_map()
 
 void play_controller::load_game()
 {
-	savegame::loadgame load(savegame::save_index_class::default_saves_dir(), saved_game_);
-	load.load_game_ingame();
+	savegame::load_interactive_by_exception();
 }
 
 void play_controller::undo()
@@ -1151,7 +1150,6 @@ void play_controller::start_game()
 		set_scontext_synced sync;
 
 		// So that the code knows it can send choices immidiateley
-		// todo: im not sure whetrh this is actually needed.
 		synced_context::block_undo();
 		fire_prestart();
 		if(is_regular_game_end()) {

@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "POT-Creation-Date: 2025-04-27 22:22-0500\n"
-"PO-Revision-Date: 2023-01-15 10:17+0100\n"
-"Last-Translator: Toranks <toranksmervat@gmail.com>\n"
+"PO-Revision-Date: 2025-09-01 15:42-0300\n"
+"Last-Translator: Sebastián Lecchini<sebas38760@gmail.com>\n"
 "Language-Team: Wesnoth\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
@@ -113,10 +113,8 @@ msgstr "OPCIONES"
 
 #. type: TP
 #: doc/man/wesnoth.6:45
-#, fuzzy, no-wrap
-#| msgid "B<--noaddons>"
 msgid "B<--addon-info>"
-msgstr "B<--noaddons>"
+msgstr "B<--addon-info>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:48
@@ -124,6 +122,8 @@ msgid ""
 "Shows a button on the add-ons manager to query the add-ons server for "
 "various information."
 msgstr ""
+"Muestra un botón en el gestor de complementos para consultar al servidor de "
+"complementos y obtener información diversa."
 
 #. type: TP
 #: doc/man/wesnoth.6:48
@@ -206,12 +206,12 @@ msgstr "B<--clock>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:72
-#, fuzzy
-#| msgid "Adds the option to show a clock for testing the drawing timer."
 msgid ""
 "Adds the option to show a clock for testing the drawing timer. Also adds the "
 "option for showing the GUI Test Dialog."
-msgstr "Añade la opción de mostrar un reloj para probar el tiempo de trazado."
+msgstr ""
+"Añade la opción de mostrar un reloj para probar el temporizador de dibujo. "
+"También añade la opción de mostrar el Diálogo de Prueba de la Interfaz."
 
 #. type: TP
 #: doc/man/wesnoth.6:72
@@ -221,10 +221,8 @@ msgstr "B<--core>I<\\ id_modulo>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:75
-#, fuzzy
-#| msgid "overrides the loaded core with the one whose id is specified."
 msgid "Overrides the loaded core with the one whose id is specified."
-msgstr "reemplaza el módulo cargado con aquel cuya id se especifica."
+msgstr "Reemplaza el módulo cargado con aquel cuya id se especifica."
 
 #. type: TP
 #: doc/man/wesnoth.6:75
@@ -238,6 +236,9 @@ msgid ""
 "Overrides the data directory with the one specified. The data directory is "
 "the one that contains subdirectories 'data', 'fonts', 'images' and others."
 msgstr ""
+"Sobrescribe el directorio de datos con el que se especifique. El directorio "
+"de datos es aquel que contiene los subdirectorios 'data', 'fonts', 'images' "
+"y otros."
 
 #. type: TP
 #: doc/man/wesnoth.6:78
@@ -291,10 +292,8 @@ msgstr "deshabilita llamadas obsoletas de Lua API"
 
 #. type: TP
 #: doc/man/wesnoth.6:92
-#, fuzzy, no-wrap
-#| msgid "B<-D,--diff>I<\\ left-file>B<\\ >I<right-file>"
 msgid "B<-D,\\ --diff>I<\\ left-file>B<\\ >I<right-file>"
-msgstr "B<-D,--diff>I<\\ left-file>B<\\ >I<right-file>"
+msgstr "B<-D,\\ --diff>I<\\ left-file>B<\\ >I<right-file>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:98
@@ -405,13 +404,6 @@ msgstr "B<--log->I<nivel>B<=>I<dominio1>B<,>I<dominio2>B<,>I<...>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:151
-#, fuzzy
-#| msgid ""
-#| "sets the severity level of the log domains.  B<all> can be used to match "
-#| "any log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
-#| "B<debug>,\\ B<none>.  By default the B<warning> level is used for most "
-#| "domains, but B<deprecation> defaults to B<none> unless combined with the "
-#| "B<-d> option."
 msgid ""
 "sets the severity level of the log domains. The wildcard B<*> may be used to "
 "match a subset of domains, e.g. gui/* or conf* or * (the latter matches all "
@@ -420,12 +412,13 @@ msgid ""
 "B<deprecation> defaults to B<none> unless combined with the B<-d> option.  "
 "This option can be specified multiple times."
 msgstr ""
-"establece el nivel de gravedad del registro de los dominios. B<all> puede "
-"utilizarse para coincidir con cualquier registro de un dominio. Los niveles "
-"disponibles son: B<error>,\\ B<warning>,\\ B<info>,\\ B<debug>,\\ B<none>. "
-"Por omisión se utiliza el nivel B<warning> para la mayoría de los dominios, "
-"pero B<deprecation> equivale por omisión a B<none> a no ser que se combine "
-"con la opción B<-d>."
+"Establece el nivel de severidad de los dominios de registro. El comodín B<*> "
+"puede usarse para coincidir con un subconjunto de dominios, por ejemplo gui/"
+"* o conf* o * (este último coincide con todos los dominios). Niveles "
+"disponibles: B<error>,\\ B<warning>,\\ B<info>,\\ B<debug>,\\ B<none>. Por "
+"defecto, el nivel B<warning> se usa para la mayoría de los dominios, pero "
+"B<deprecation> tiene como valor por defecto B<none> a menos que se combine "
+"con la opción B<-d>. Esta opción puede especificarse varias veces."
 
 #. type: TP
 #: doc/man/wesnoth.6:151
@@ -441,27 +434,20 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:154
-#, fuzzy, no-wrap
-#| msgid "B<--log-strict>"
 msgid "B<--log-strict>I<\\ level>"
-msgstr "B<--log-strict>"
+msgstr "B<--log-strict>I<\\ level>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:163
-#, fuzzy
-#| msgid ""
-#| "sets the strict level of the logger. Any messages sent to log domains of "
-#| "this level or more severe will cause the unit test to fail regardless of "
-#| "the victory result. Only relevant when used with B<-u>."
 msgid ""
 "sets the strict I<level> of the logger. Any messages sent to log domains of "
 "this I<level> or more severe will cause the unit test to fail regardless of "
 "the victory result. Only relevant when used with B<-u>."
 msgstr ""
-"establece el nivel de precisión del registro. Cualquier mensaje enviado a "
-"los dominios de registro con este nivel o mayor causará un fallo en el "
-"análisis de la unidad a pesar de un resultado victorioso. Solo es relevante "
-"cuando se usa con B<-u>."
+"Establece el nivel estricto I<level> del registrador. Cualquier mensaje "
+"enviado a dominios de registro de este I<level> o más severo provocará que "
+"la prueba unitaria falle independientemente del resultado de la victoria. "
+"Solo es relevante cuando se usa con B<-u>."
 
 #. type: TP
 #: doc/man/wesnoth.6:163
@@ -486,24 +472,20 @@ msgstr "B<--no-log-to-file>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:171
-#, fuzzy
-#| msgid ""
-#| "prevents redirecting logged output to a file. Log files are created in "
-#| "the logs directory under the userdata folder."
 msgid ""
 "prevents redirecting logged output to a file. The environment variable "
 "WESNOTH_NO_LOG_FILE can also be set as an alternative. Log files are created "
 "in the logs directory under the userdata folder."
 msgstr ""
-"evita redirigir la salida registrada a un archivo. Los archivos de registro "
-"se crean en el directorio de registros en la carpeta de datos de usuario."
+"Evita redirigir la salida registrada a un archivo. También se puede "
+"establecer la variable de entorno WESNOTH_NO_LOG_FILE como alternativa. Los "
+"archivos de registro se crean en el directorio de registros dentro de la "
+"carpeta de datos de usuario."
 
 #. type: TP
 #: doc/man/wesnoth.6:171
-#, fuzzy, no-wrap
-#| msgid "B<--no-log-to-file>"
 msgid "B<--log-to-file>"
-msgstr "B<--no-log-to-file>"
+msgstr "B<--log-to-file>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:174
@@ -511,13 +493,13 @@ msgid ""
 "log output is written to a file. Cancels the effect of --no-log-to-file "
 "whether implicit or explicit."
 msgstr ""
+"La salida del registro se escribe en un archivo. Cancela el efecto de --no-"
+"log-to-file, ya sea implícito o explícito."
 
 #. type: TP
 #: doc/man/wesnoth.6:174
-#, fuzzy, no-wrap
-#| msgid "B<--no-log-to-file>"
 msgid "B<--no-log-sanitize>"
-msgstr "B<--no-log-to-file>"
+msgstr "B<--no-log-sanitize>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:177
@@ -525,13 +507,13 @@ msgid ""
 "disables the anonymization that's normally applied when logging, for example "
 "replacing usernames with USER."
 msgstr ""
+"Desactiva la anonimización que normalmente se aplica al registrar datos, por "
+"ejemplo, reemplazando los nombres de usuario con USER."
 
 #. type: TP
 #: doc/man/wesnoth.6:177
-#, fuzzy, no-wrap
-#| msgid "B<--noaddons>"
 msgid "B<--wnoconsole>"
-msgstr "B<--noaddons>"
+msgstr "B<--wnoconsole>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:180
@@ -539,6 +521,8 @@ msgid ""
 "For Windows, when used with --no-log-to-file, results in output being "
 "written to cerr/cout instead of CONOUT. Otherwise, does nothing."
 msgstr ""
+"En Windows, cuando se usa con --no-log-to-file, hace que la salida se "
+"escriba en cerr/cout en lugar de CONOUT. De lo contrario, no hace nada."
 
 #. type: TP
 #: doc/man/wesnoth.6:180
@@ -720,27 +704,19 @@ msgstr "B<--plugin>I<\\ script>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:239
-#, fuzzy
-#| msgid ""
-#| "(experimental) load a I<script> which defines a Wesnoth plugin. Similar "
-#| "to B<--script>, but Lua file should return a function which will be run "
-#| "as a coroutine and periodically woken up with updates."
 msgid ""
 "load a I<script> which defines a Wesnoth plugin. Lua file should return a "
 "function which will be run as a coroutine and periodically woken up with "
 "updates."
 msgstr ""
-"(experimental) carga un I<script> que define una extensión para Wesnoth. "
-"Similar a B<--script>, pero el fichero Lua debería devolver una función que "
-"se ejecutará como una corutina que se activará periódicamente con "
-"actualizaciones."
+"(experimental) carga un I<script> que define un complemento para Wesnoth. El "
+"archivo Lua debe devolver una función que se ejecutará como una corutina y "
+"será activada periódicamente con actualizaciones."
 
 #. type: TP
 #: doc/man/wesnoth.6:239
-#, fuzzy, no-wrap
-#| msgid "B<-P,--patch>I<\\ base-file>B<\\ >I<patch-file>"
 msgid "B<-P,\\ --patch>I<\\ base-file>B<\\ >I<patch-file>"
-msgstr "B<-P,--patch>I<\\ base-file>B<\\ >I<patch-file>"
+msgstr "B<-P,\\ --patch>I<\\ base-file>B<\\ >I<patch-file>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:244
@@ -783,15 +759,13 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:254
-#, fuzzy, no-wrap
-#| msgid "B<--preprocess-input-macros>I<\\ source-file>"
 msgid "B<--preprocess-string>I<\\ source-string>"
-msgstr "B<--preprocess-input-macros>I<\\ source-file>"
+msgstr "B<--preprocess-string>I<\\ source-string>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:257
 msgid "preprocesses a given string and writes the output to stdout."
-msgstr ""
+msgstr "Preprocesa una cadena dada y escribe la salida en stdout."
 
 #. type: TP
 #: doc/man/wesnoth.6:257
@@ -801,19 +775,14 @@ msgstr "B<--preprocess-defines=>I<DEFINE1>B<,>I<DEFINE2>B<,>I<...>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:266
-#, fuzzy
-#| msgid ""
-#| "comma separated list of defines to be used by the B<--preprocess> "
-#| "command. If B<SKIP_CORE> is in the define list the \"data/core\" "
-#| "directory won't be preprocessed."
 msgid ""
 "comma separated list of defines to be used by the B<--preprocess> or B<--"
 "preprocess-string> command. If B<SKIP_CORE> is in the define list the \"data/"
 "core\" directory won't be preprocessed."
 msgstr ""
-"lista separada por comas de definiciones que van a ser usadas por el comando "
-"B<--preprocess>. Si B<SKIP_CORE> está en la lista, el directorio «data/core» "
-"no se preprocesará."
+"Lista separada por comas de definiciones que se usarán con el comando B<--"
+"preprocess> o B<--preprocess-string>. Si B<SKIP_CORE> está en la lista, el "
+"directorio «data/core» no se preprocesará."
 
 #. type: TP
 #: doc/man/wesnoth.6:266
@@ -823,17 +792,14 @@ msgstr "B<--preprocess-input-macros>I<\\ source-file>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:275
-#, fuzzy
-#| msgid ""
-#| "used only by the B<--preprocess> command. Specifies a file that contains "
-#| "B<[preproc_define]>s to be included before preprocessing."
 msgid ""
 "used only by the B<--preprocess> or B<--preprocess-string> command. "
 "Specifies a file that contains B<[preproc_define]>s to be included before "
 "preprocessing."
 msgstr ""
-"sólo utilizado por el comando B<--preprocess>. Especifica un archivo que "
-"contiene B<[preproc_define]>s para ser incluido antes de la operación."
+"Solo se usa con el comando B<--preprocess> o B<--preprocess-string>. "
+"Especifica un archivo que contiene B<[preproc_define]>s que se incluirán "
+"antes del preprocesamiento."
 
 #. type: TP
 #: doc/man/wesnoth.6:275
@@ -843,13 +809,6 @@ msgstr "B<--preprocess-output-macros[>I<=target-file>B<]>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:288
-#, fuzzy
-#| msgid ""
-#| "used only by the B<--preprocess> command. Will output all preprocessed "
-#| "macros in the target file. If the file is not specified the output will "
-#| "be file '_MACROS_.cfg' in the target directory of preprocess's command. "
-#| "The output file can be passed to B<--preprocess-input-macros>.  This "
-#| "switch should be typed before the B<--preprocess> command."
 msgid ""
 "used only by the B<--preprocess> command (But not by the B<--preprocess-"
 "string> command). Will output all preprocessed macros in the target file. If "
@@ -858,11 +817,12 @@ msgid ""
 "B<--preprocess-input-macros>.  This switch should be typed before the B<--"
 "preprocess> command."
 msgstr ""
-"sólo utilizado con el comando B<--preprocess>. Escribirá todas las macros "
-"preprocesadas en el archivo especificado. Si omite el nombre de archivo, se "
-"utilizará el archivo «_MACROS_.cfg» en el directorio de destino del comando "
-"preprocess. El archivo de salida puede ser enviado a B<--preprocess-input-"
-"macros>. Esta opción debe preceder al comando B<--preprocess>."
+"Solo se usa con el comando B<--preprocess> (no con B<--preprocess-string>). "
+"Escribirá todas las macros preprocesadas en el archivo de destino. Si no se "
+"especifica archivo, la salida será el archivo «_MACROS_.cfg» en el "
+"directorio de destino del comando preprocess. El archivo de salida puede ser "
+"pasado a B<--preprocess-input-macros>. Esta opción debe colocarse antes del "
+"comando B<--preprocess>."
 
 #. type: TP
 #: doc/man/wesnoth.6:288
@@ -885,8 +845,8 @@ msgstr "B<--render-image>I<\\ image>B<\\ >I<output>"
 #: doc/man/wesnoth.6:296
 msgid ""
 "takes a valid wesnoth 'image path string' with image path functions, and "
-"outputs to a .png file. Image path functions are documented at https://wiki."
-"wesnoth.org/ImagePathFunctionWML."
+"outputs to a .png file. Image path functions are documented at https://"
+"wiki.wesnoth.org/ImagePathFunctionWML."
 msgstr ""
 "toma una 'cadena de dirección de imágen' válida de wesnoth con funciones de "
 "direccionado de imágen, y genera un archivo .png. Las funciones de "
@@ -985,20 +945,14 @@ msgstr "B<-t[>I<scenario_id>B<],\\ --test[>I<=scenario_id>B<]>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:335
-#, fuzzy
-#| msgid ""
-#| "runs the game in a small test scenario. The scenario should be one "
-#| "defined with a B<[test]> WML tag. The default is B<test>.  A "
-#| "demonstration of the B<[micro_ai]> feature can be started with "
-#| "B<micro_ai_test>.  Implies B<--nogui>."
 msgid ""
 "runs the game in a small test scenario. The scenario should be one defined "
 "with a B<[test]> WML tag. The default is B<test>.  A demonstration of the "
 "B<[micro_ai]> feature can be started with B<micro_ai_test>."
 msgstr ""
-"ejecuta el juego en un pequeño escenario de prueba. El escenario debería de "
-"ser alguno definido con una etiqueta WML B<[test]>. Por omisión es B<test>. "
-"Una demostración de la característica B<[micro_ai]> puede ser iniciada con "
+"Ejecuta el juego en un pequeño escenario de prueba. El escenario debe estar "
+"definido con una etiqueta WML B<[test]>. Por defecto es B<test>. Una "
+"demostración de la función B<[micro_ai]> puede iniciarse con "
 "B<micro_ai_test>. Implica B<--nogui>."
 
 #. type: TP
@@ -1050,17 +1004,13 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnoth.6:350
-#, fuzzy, no-wrap
-#| msgid "B<-S,--use-schema>I<\\ path>"
 msgid "B<-S,\\ --use-schema>I<\\ path>"
-msgstr "B<-S,--use-schema>I<\\ path>"
+msgstr "B<-S,\\ --use-schema>I<\\ path>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:354
-#, fuzzy
-#| msgid "sets the WML schema for use with B<-V,--validate>."
 msgid "sets the WML schema for use with B<-V,\\ --validate>."
-msgstr "configura el patrón WML para su uso con B<-V,--validate>."
+msgstr "configura el patrón WML para su uso con B<-V,\\ --validate>."
 
 #. type: TP
 #: doc/man/wesnoth.6:354
@@ -1144,10 +1094,8 @@ msgstr "valida el núcleo WML mientras se está jugando."
 
 #. type: TP
 #: doc/man/wesnoth.6:380
-#, fuzzy, no-wrap
-#| msgid "B<--validate-schema \\ path>"
 msgid "B<--validate-schema>I<\\ path>"
-msgstr "B<--validate-schema \\ path>"
+msgstr "B<--validate-schema>I<\\ path>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:383
@@ -1462,11 +1410,11 @@ msgstr "Escrito por David White E<lt>davidnwhite@verizon.netE<gt>."
 #. type: Plain text
 #: doc/man/wesnoth.6:497
 msgid ""
-"Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon."
-"netE<gt> and Soliton E<lt>soliton.de@gmail.comE<gt>."
+"Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott "
+"E<lt>ott@gaon.netE<gt> and Soliton E<lt>soliton.de@gmail.comE<gt>."
 msgstr ""
-"Editado por Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon."
-"netE<gt> y Soliton E<lt>soliton.de@gmail.comE<gt>."
+"Editado por Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott "
+"E<lt>ott@gaon.netE<gt> y Soliton E<lt>soliton.de@gmail.comE<gt>."
 
 #. type: Plain text
 #: doc/man/wesnoth.6:499
@@ -1490,12 +1438,9 @@ msgstr "COPYRIGHT"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:505 doc/man/wesnothd.6:286
-#, fuzzy
-#| msgid ""
-#| "Copyright \\(co 2003-2022 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgid "Copyright \\(co 2003-2025 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr ""
-"Copyright \\(co 2003-2021 David White E<lt>davidnwhite@verizon.netE<gt>"
+"Copyright \\(co 2003-2025 David White E<lt>davidnwhite@verizon.netE<gt>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:508 doc/man/wesnothd.6:289
@@ -1557,14 +1502,9 @@ msgstr ""
 
 #. type: Plain text
 #: doc/man/wesnothd.6:32
-#, fuzzy
-#| msgid ""
-#| "B<wesnothd> [\\|B<-dv>\\|] [\\|B<-c> I<path>\\|] [\\|B<-p> I<port>\\|] "
-#| "[\\|B<-t> I<number>\\|] [\\|B<-T> I<number>\\|]"
 msgid "B<wesnothd> [\\|B<-dvw>\\|] [\\|B<-c> I<path>\\|] [\\|B<-p> I<port>\\|]"
 msgstr ""
-"B<wesnothd> [\\|B<-dv>\\|] [\\|B<-c> I<ruta>\\|] [\\|B<-p> I<puerto>\\|] [\\|"
-"B<-t> I<número>\\|] [\\|B<-T> I<número>\\|]"
+"B<wesnothd> [\\|B<-dvw>\\|] [\\|B<-c> I<path>\\|] [\\|B<-p> I<port>\\|]"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:35
@@ -1776,22 +1716,16 @@ msgstr "B<disallow_names>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:118
-#, fuzzy
-#| msgid ""
-#| "Names/nicks that are not accepted by the server. B<*> and B<?> from "
-#| "wildcard patterns are supported. See B<glob>(7)  for more details.  "
-#| "Default values (used if nothing is specified) are: B<*admin*,*admln*,"
-#| "*server*,ai,ai?,computer,human,network,player>."
 msgid ""
 "Names/nicks that are not accepted by the server. B<*> and B<?> from wildcard "
 "patterns are supported. See B<glob>(7)  for more details.  Default values "
-"(used if nothing is specified) are: B<*admin*,*admln*,*moderator*,*server*,"
-"ai,ai?,computer,human,network,player>."
+"(used if nothing is specified) are: "
+"B<*admin*,*admln*,*moderator*,*server*,ai,ai?,computer,human,network,player>."
 msgstr ""
-"Nombres/ápodos rechazados por el servidor. B<*> y B<?> sirven de comodines. "
-"Vea B<glob>(7) para más detalles. Los valores por defecto (utilizados si no "
-"especifica nada) son: B<*admin*,*admln*,*server*,ai,ai?,computer,human,"
-"network,player>."
+"Nombres/apodos que no son aceptados por el servidor. B<*> y B<?> funcionan "
+"como comodines. Vea B<glob>(7) para más detalles. Los valores por defecto "
+"(usados si no se especifica nada) son: "
+"B<*admin*,*admln*,*moderator*,*server*,ai,ai?,computer,human,network,player>."
 
 #. type: TP
 #: doc/man/wesnothd.6:118
@@ -2232,23 +2166,17 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnothd.6:242
-#, fuzzy, no-wrap
-#| msgid "B<db_game_info_table>"
 msgid "B<db_game_content_info_table>"
-msgstr "B<db_game_info_table>"
+msgstr "B<db_game_content_info_table>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:245
-#, fuzzy
-#| msgid ""
-#| "The name of the table in which wesnothd will save its own data about the "
-#| "modifications used in a game."
 msgid ""
 "The name of the table in which wesnothd will save its own data about game "
 "content (scenario/era/modifications) used in a game."
 msgstr ""
-"El nombre de la tabla en la que wesnothd guardará sus propios datos acerca "
-"de las modificaciones usadas en una partida."
+"El nombre de la tabla en la que wesnothd guardará sus propios datos sobre el "
+"contenido del juego (escenario/era/modificaciones) utilizado en una partida."
 
 #. type: TP
 #: doc/man/wesnothd.6:245
@@ -2269,10 +2197,8 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnothd.6:248
-#, fuzzy, no-wrap
-#| msgid "B<db_name>"
 msgid "B<db_tournament_query>"
-msgstr "B<db_name>"
+msgstr "B<db_tournament_query>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:251
@@ -2280,6 +2206,8 @@ msgid ""
 "The SQL query to find tournaments to announce on login. Should return "
 "tournament B<title>, B<status> and B<url>."
 msgstr ""
+"La consulta SQL para encontrar torneos que se anunciarán al iniciar sesión. "
+"Debe devolver el torneo B<title>, B<status> y B<url>."
 
 #. type: TP
 #: doc/man/wesnothd.6:251
@@ -2347,29 +2275,22 @@ msgstr ""
 
 #. type: TP
 #: doc/man/wesnothd.6:263
-#, fuzzy, no-wrap
-#| msgid "B<mp_mod_group>"
 msgid "B<forum_admin_group>"
-msgstr "B<mp_mod_group>"
+msgstr "B<forum_admin_group>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:266 doc/man/wesnothd.6:269
-#, fuzzy
-#| msgid ""
-#| "The ID of the forum group to be considered as having moderation authority."
 msgid ""
 "The ID of one of the forum groups to be considered as having admin authority "
 "on the add-ons server."
 msgstr ""
-"El ID del grupo del foro que se considera que tiene autorización para "
-"moderar."
+"El ID de uno de los grupos del foro que se considera que tiene autoridad de "
+"administrador en el servidor de complementos."
 
 #. type: TP
 #: doc/man/wesnothd.6:266
-#, fuzzy, no-wrap
-#| msgid "B<mp_mod_group>"
 msgid "B<site_admin_group>"
-msgstr "B<mp_mod_group>"
+msgstr "B<site_admin_group>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:274
@@ -2386,15 +2307,15 @@ msgstr ""
 msgid ""
 "Written by David White E<lt>davidnwhite@verizon.netE<gt>.  Edited by Nils "
 "Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt>, "
-"Soliton E<lt>soliton.de@gmail.comE<gt> and Thomas Baumhauer E<lt>thomas."
-"baumhauer@gmail.comE<gt>.  This manual page was originally written by Cyril "
-"Bouthors E<lt>cyril@bouthors.orgE<gt>."
+"Soliton E<lt>soliton.de@gmail.comE<gt> and Thomas Baumhauer "
+"E<lt>thomas.baumhauer@gmail.comE<gt>.  This manual page was originally "
+"written by Cyril Bouthors E<lt>cyril@bouthors.orgE<gt>."
 msgstr ""
 "Escrito por David White E<lt>davidnwhite@verizon.netE<gt>.  Editado por Nils "
 "Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt>, "
-"Soliton E<lt>soliton.de@gmail.comE<gt> y Thomas Baumhauer E<lt>thomas."
-"baumhauer@gmail.comE<gt>.  Esta página de manual fue originalmente escrita "
-"por Cyril Bouthors E<lt>cyril@bouthors.orgE<gt>."
+"Soliton E<lt>soliton.de@gmail.comE<gt> y Thomas Baumhauer "
+"E<lt>thomas.baumhauer@gmail.comE<gt>.  Esta página de manual fue "
+"originalmente escrita por Cyril Bouthors E<lt>cyril@bouthors.orgE<gt>."
 
 #. type: Plain text
 #: doc/man/wesnothd.6:293
@@ -2599,8 +2520,8 @@ msgstr "B<wesnoth>(6)"
 #~ "compresses a file in gzip format, stores it as I<infile>.gz and removes "
 #~ "I<infile>."
 #~ msgstr ""
-#~ "comprime un archivo en formato gzip, lo guarda como I<archivo_de_entrada>."
-#~ "gz y elimina I<archivo_de_entrada>."
+#~ "comprime un archivo en formato gzip, lo guarda como "
+#~ "I<archivo_de_entrada>.gz y elimina I<archivo_de_entrada>."
 
 #, no-wrap
 #~ msgid "2021"

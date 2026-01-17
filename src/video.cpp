@@ -24,6 +24,7 @@
 #include "sdl/texture.hpp"
 #include "sdl/utils.hpp"
 #include "sdl/window.hpp"
+#include "utils/general.hpp"
 
 #ifdef TARGET_OS_OSX
 #include "desktop/apple_video.hpp"
@@ -65,6 +66,7 @@ point test_resolution_ = {1024, 768}; /**< resolution for unit tests */
 int refresh_rate_ = 0;
 point game_canvas_size_ = {0, 0};
 int pixel_scale_ = 1;
+int max_scale_ = 1;
 rect input_area_ = {};
 
 } // anon namespace
@@ -232,10 +234,10 @@ bool update_framebuffer()
 
 	// Find max valid pixel scale at current output size.
 	point osize(window->get_output_size());
-	int max_scale = std::min(
+	max_scale_ = std::min(
 		osize.x / pref_constants::min_window_width,
 		osize.y / pref_constants::min_window_height);
-	max_scale = std::min(max_scale, pref_constants::max_pixel_scale);
+	max_scale_ = std::min(max_scale_, pref_constants::max_pixel_scale);
 
 	// Determine best pixel scale according to preference and window size
 	int scale = 1;
@@ -244,14 +246,14 @@ bool update_framebuffer()
 		int def_scale = std::min(
 			osize.x / pref_constants::def_window_width,
 			osize.y / pref_constants::def_window_height);
-		scale = std::min(max_scale, def_scale);
+		scale = std::min(max_scale_, def_scale);
 		// Otherwise reduce to keep below the max window size (1920x1080).
 		int min_scale = std::min(
 			osize.x / (pref_constants::max_window_width+1) + 1,
 			osize.y / (pref_constants::max_window_height+1) + 1);
 		scale = std::max(scale, min_scale);
 	} else {
-		scale = std::min(max_scale, prefs::get().pixel_scale());
+		scale = std::min(max_scale_, prefs::get().pixel_scale());
 	}
 	// Cache it for easy access.
 	if (pixel_scale_ != scale) {
@@ -326,7 +328,7 @@ bool update_framebuffer()
 		// Translate active_area into display coordinates as input_area_
 		input_area_ = {
 			(active_area.origin() * wsize) / osize,
-			(active_area.origin() * wsize) / osize
+			(active_area.size() * wsize) / osize
 		};
 		LOG_DP << "input area: " << input_area_;
 	}
@@ -357,6 +359,11 @@ void init_test_window()
 
 void init_window(bool hidden)
 {
+#ifdef __ANDROID__
+	prefs::get().set_fullscreen(true);
+	SDL_SetHint(SDL_HINT_RENDER_DRIVER, "opengles");
+#endif
+
 	// Position
 	const int x = prefs::get().fullscreen() ? SDL_WINDOWPOS_UNDEFINED : SDL_WINDOWPOS_CENTERED;
 	const int y = prefs::get().fullscreen() ? SDL_WINDOWPOS_UNDEFINED : SDL_WINDOWPOS_CENTERED;
@@ -377,10 +384,6 @@ void init_window(bool hidden)
 	} else if(prefs::get().maximized()) {
 		window_flags |= SDL_WINDOW_MAXIMIZED;
 	}
-
-#ifdef __ANDROID__
-	SDL_SetHint(SDL_HINT_RENDER_DRIVER, "opengles");
-#endif
 
 	if(hidden) {
 		LOG_DP << "hiding main window";
@@ -495,6 +498,11 @@ rect input_area()
 int get_pixel_scale()
 {
 	return pixel_scale_;
+}
+
+int get_max_pixel_scale()
+{
+	return max_scale_;
 }
 
 int native_refresh_rate()
@@ -768,7 +776,7 @@ std::vector<point> get_available_resolutions(const bool include_current)
 		}
 	}
 
-	if(std::find(result.begin(), result.end(), min_res) == result.end()) {
+	if(!utils::contains(result, min_res)) {
 		result.push_back(min_res);
 	}
 

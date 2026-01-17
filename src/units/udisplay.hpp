@@ -42,13 +42,13 @@ namespace unit_display
  * If control over how far the unit moves is not needed, move_unit() may
  * be a more convenient interface.
  */
-class unit_mover {
+class unit_movement_animator {
 public:
-	unit_mover(const unit_mover&) = delete;
-	unit_mover& operator=(const unit_mover&) = delete;
+	unit_movement_animator(const unit_movement_animator&) = delete;
+	unit_movement_animator& operator=(const unit_movement_animator&) = delete;
 
-	explicit unit_mover(const std::vector<map_location>& path, bool animate=true, bool force_scroll=false);
-	~unit_mover();
+	explicit unit_movement_animator(const std::vector<map_location>& path, bool animate=true, bool force_scroll=false);
+	~unit_movement_animator();
 
 	void start(const unit_ptr& u);
 	void proceed_to(const unit_ptr& u, std::size_t path_index, bool update=false, bool wait=true);

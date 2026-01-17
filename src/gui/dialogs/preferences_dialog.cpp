@@ -50,10 +50,10 @@
 #include "gui/widgets/grid.hpp"
 #include "gui/widgets/image.hpp"
 #include "gui/widgets/label.hpp"
-#include "gui/widgets/listbox.hpp"
 #include "gui/widgets/slider.hpp"
-#include "gui/widgets/stacked_widget.hpp"
 #include "gui/widgets/status_label_helper.hpp"
+#include "gui/widgets/stacked_widget.hpp"
+#include "gui/widgets/tab_container.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/window.hpp"
@@ -78,13 +78,6 @@ template<typename W>
 void disable_widget_on_toggle_inverted(window& window, widget& w, const std::string& id)
 {
 	window.find_widget<W>(id).set_active(!dynamic_cast<selectable_item&>(w).get_value_bool());
-}
-
-// Ensure the specified index is between 0 and one less than the max
-// number of pager layers (since get_layer_count returns one-past-end).
-int index_in_pager_range(const int first, const stacked_widget& pager)
-{
-	return std::clamp<int>(first, 0, pager.get_layer_count() - 1);
 }
 
 // Helper to make it easier to immediately apply sound toggles immediately.
@@ -434,6 +427,7 @@ void preferences_dialog::initialize_callbacks()
 
 	// Set the value label transform function.
 	find_widget<slider>("turbo_slider").set_value_labels(
+		// TODO: this should probably be a locale dependent string (use comma/dot depending on language)
 		[this](int pos, int /*max*/)->t_string { return lexical_cast<std::string>(accl_speeds_[pos]); }
 	);
 
@@ -491,10 +485,11 @@ void preferences_dialog::initialize_callbacks()
 	//
 
 	/* FULLSCREEN TOGGLE */
-	toggle_button& toggle_fullscreen =
-			find_widget<toggle_button>("fullscreen");
-
+	toggle_button& toggle_fullscreen = find_widget<toggle_button>("fullscreen");
 	toggle_fullscreen.set_value(prefs::get().fullscreen());
+#ifdef __ANDROID__
+	toggle_fullscreen.set_active(false);
+#endif
 
 	// We bind a special callback function, so setup_single_toggle() is not used
 	connect_signal_mouse_left_click(toggle_fullscreen,
@@ -504,7 +499,11 @@ void preferences_dialog::initialize_callbacks()
 	menu_button& res_list = find_widget<menu_button>("resolution_set");
 
 	res_list.set_use_markup(true);
+#ifdef __ANDROID__
+	res_list.set_active(false);
+#else
 	res_list.set_active(!prefs::get().fullscreen());
+#endif
 
 	set_resolution_list(res_list);
 
@@ -519,8 +518,8 @@ void preferences_dialog::initialize_callbacks()
 		[]() {return prefs::get().pixel_scale();},
 		[](int v) {prefs::get().set_pixel_scale(v);});
 
-	slider& ps_slider =
-		find_widget<slider>("pixel_scale_slider");
+	slider& ps_slider = find_widget<slider>("pixel_scale_slider");
+	ps_slider.set_value_range(1, video::get_max_pixel_scale());
 	connect_signal_mouse_left_release(ps_slider,
 		[this](auto&&...) { apply_pixel_scale(); });
 
@@ -529,6 +528,11 @@ void preferences_dialog::initialize_callbacks()
 		[]() {return prefs::get().auto_pixel_scale();},
 		[](bool v) {prefs::get().set_auto_pixel_scale(v);},
 		[&](widget& w) { disable_widget_on_toggle_inverted<slider>(*this, w, "pixel_scale_slider"); }, true);
+
+	if (video::get_max_pixel_scale() <= 1) {
+		find_widget<slider>("pixel_scale_slider").set_active(false);
+		find_widget<toggle_button>("auto_pixel_scale").set_active(false);
+	}
 
 	toggle_button& auto_ps_toggle =
 		find_widget<toggle_button>("auto_pixel_scale");
@@ -634,6 +638,8 @@ void preferences_dialog::initialize_callbacks()
 	// MULTIPLAYER PANEL
 	//
 
+	/* GENERAL TAB */
+
 	/* CHAT LINES */
 	register_integer("chat_lines", true,
 		[]() {return prefs::get().chat_lines();},
@@ -665,9 +671,18 @@ void preferences_dialog::initialize_callbacks()
 		prefs::get().set_lobby_joins(val);
 	});
 
-	/* FRIENDS LIST */
-	listbox& friends_list = find_widget<listbox>("friends_list");
+	/* ALERTS */
+	connect_signal_mouse_left_click(find_widget<button>("mp_alerts"),
+		[](auto&&...) { mp_alerts_options::display(); });
 
+	/* SET WESNOTHD PATH */
+	connect_signal_mouse_left_click(find_widget<button>("mp_wesnothd"),
+		[](auto&&...) { prefs::get().show_wesnothd_server_search(); });
+
+
+	/* FRIENDS TAB */
+
+	listbox& friends_list = find_widget<listbox>("friends_list");
 	friends_list.clear();
 
 	for(const auto& entry : prefs::get().get_acquaintances()) {
@@ -689,15 +704,6 @@ void preferences_dialog::initialize_callbacks()
 
 	connect_signal_notify_modified(friends_list,
 		[&, this](auto&&...) { on_friends_list_select(friends_list, textbox); });
-
-	/* ALERTS */
-	connect_signal_mouse_left_click(find_widget<button>("mp_alerts"),
-		[](auto&&...) { mp_alerts_options::display(); });
-
-	/* SET WESNOTHD PATH */
-	connect_signal_mouse_left_click(find_widget<button>("mp_wesnothd"),
-		[](auto&&...) { prefs::get().show_wesnothd_server_search(); });
-
 
 	//
 	// ADVANCED PANEL
@@ -1082,15 +1088,6 @@ void preferences_dialog::on_advanced_prefs_list_select(listbox& list)
 	}
 }
 
-void preferences_dialog::initialize_tabs(listbox& selector)
-{
-	//
-	// MULTIPLAYER TABS
-	//
-	connect_signal_notify_modified(selector,
-		[this](auto&&...) { on_tab_select(); });
-}
-
 void preferences_dialog::pre_show()
 {
 	set_always_save_fields(true);
@@ -1103,55 +1100,9 @@ void preferences_dialog::pre_show()
 	// These need to be set here in pre_show, once the fields are initialized. For some reason, this
 	// is not the case for those in Advanced
 	//
-
 	gui2::bind_default_status_label(find_widget<slider>("max_saves_slider"));
 	gui2::bind_default_status_label(find_widget<slider>("turbo_slider"));
 	gui2::bind_default_status_label(find_widget<slider>("pixel_scale_slider"));
-
-	listbox& selector = find_widget<listbox>("selector");
-	stacked_widget& pager = find_widget<stacked_widget>("pager");
-
-	pager.set_find_in_all_layers(true);
-
-	connect_signal_notify_modified(selector,
-		[this](auto&&...) { on_page_select(); });
-
-	keyboard_capture(&selector);
-
-	VALIDATE(selector.get_item_count() == pager.get_layer_count(),
-		"The preferences pager and its selector listbox do not have the same number of items.");
-
-	const int main_index = index_in_pager_range(initial_index_.first, pager);
-
-	// Loops through each pager layer and checks if it has both a tab bar
-	// and stack. If so, it initializes the options for the former and
-	// selects the specified layer of the latter.
-	for(unsigned int i = 0; i < pager.get_layer_count(); ++i) {
-		listbox* tab_selector = pager.get_layer_grid(i)->find_widget<listbox>("tab_selector", false, false);
-
-		stacked_widget* tab_pager = pager.get_layer_grid(i)->find_widget<stacked_widget>("tab_pager", false, false);
-
-		if(tab_pager && tab_selector) {
-			const int ii = static_cast<int>(i);
-			const int tab_index = index_in_pager_range(initial_index_.second, *tab_pager);
-			const int to_select = (ii == main_index ? tab_index : 0);
-
-			// Initialize tabs for this page
-			initialize_tabs(*tab_selector);
-
-			tab_selector->select_row(to_select);
-			tab_pager->select_layer(to_select);
-		}
-	}
-
-	// Finally, select the initial main page
-	selector.select_row(main_index);
-	pager.select_layer(main_index);
-}
-
-void preferences_dialog::set_visible_page(unsigned int page, const std::string& pager_id)
-{
-	find_widget<stacked_widget>(pager_id).select_layer(page);
 }
 
 // Special fullsceen callback
@@ -1199,20 +1150,6 @@ void preferences_dialog::handle_gui2_theme_select()
 		prefs::get().set_gui2_theme(gui2_themes_.at(selected_theme));
 		set_retval(gui2::dialogs::title_screen::RELOAD_UI);
 	}
-}
-
-void preferences_dialog::on_page_select()
-{
-	const int selected_row =
-		std::max(0, find_widget<listbox>("selector").get_selected_row());
-	set_visible_page(static_cast<unsigned int>(selected_row), "pager");
-}
-
-void preferences_dialog::on_tab_select()
-{
-	const int selected_row =
-		std::max(0, find_widget<listbox>("tab_selector").get_selected_row());
-	set_visible_page(static_cast<unsigned int>(selected_row), "tab_pager");
 }
 
 void preferences_dialog::post_show()

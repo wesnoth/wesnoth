@@ -21,6 +21,8 @@
 
 #include <ostream>
 
+struct point;
+
 class surface
 {
 public:
@@ -47,6 +49,9 @@ public:
 	 */
 	surface clone() const;
 
+	/** Dimensions of the surface. */
+	point size() const;
+
 	/** Total area of the surface in square pixels. */
 	std::size_t area() const;
 
@@ -60,6 +65,28 @@ private:
 };
 
 std::ostream& operator<<(std::ostream& stream, const surface& surf);
+
+namespace surface_helper
+{
+/**
+ * Returns a read-only view over to @a surf's underlying pixel array.
+ */
+inline auto pixel_span(const surface& surf)
+{
+	auto* pixels = reinterpret_cast<const uint32_t*>(surf->pixels);
+	return utils::span{pixels, surf.area()};
+}
+
+/**
+ * Returns a mutable per-pixel view over @a surf's underlying pixel array.
+ */
+inline auto pixel_span(surface& surf)
+{
+	auto* pixels = reinterpret_cast<uint32_t*>(surf->pixels);
+	return utils::span{pixels, surf.area()};
+}
+
+} // namespace surface_helper
 
 /**
  * Helper class for pinning SDL surfaces into memory.
@@ -94,7 +121,7 @@ public:
 
 	utils::span<pixel_t> pixel_span() const
 	{
-		return { pixels(), surface_.area() };
+		return surface_helper::pixel_span(surface_);
 	}
 
 private:

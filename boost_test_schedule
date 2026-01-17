@@ -9,7 +9,6 @@ test_gui2/modal_dialog_test_campaign_difficulty
 test_gui2/modal_dialog_test_chat_log
 test_gui2/modal_dialog_test_editor_choose_addon
 test_gui2/modal_dialog_test_core_selection
-test_gui2/modal_dialog_test_custom_tod
 test_gui2/modal_dialog_test_depcheck_confirm_change
 test_gui2/modal_dialog_test_depcheck_select_new
 test_gui2/modal_dialog_test_edit_label
@@ -84,7 +83,6 @@ test_config/add_child_NonEmptyThis_newOrExistingKey_lOrRValue_AppendAndReturnNew
 test_preproc_defines
 test_config_cache_defaults
 config_cache/test_load_config
-config_cache/test_non_clean_config_loading
 config_cache/test_macrosubstitution
 config_cache/test_transaction
 config_cache/test_define_loading
@@ -99,6 +97,7 @@ filesystem/test_fs_binary_path
 filesystem/test_fs_wml_path
 filesystem/test_fs_search
 filesystem/test_fs_fluff
+filesystem/test_blacklist_pattern_list
 formula_core/test_formula_basic_arithmetic
 formula_core/test_formula_basic_logic
 formula_core/test_formula_callable
@@ -172,21 +171,22 @@ test_lexical_cast_throw<unsigned long long>
 test_lexical_cast_throw<float>
 test_lexical_cast_throw<double>
 test_lexical_cast_throw<long double>
-test_lexical_arethmetic_signed<signed char>
-test_lexical_arethmetic_signed<short>
-test_lexical_arethmetic_signed<int>
-test_lexical_arethmetic_signed<long>
-test_lexical_arethmetic_signed<long long>
-test_lexical_arethmetic_signed<unsigned char>
-test_lexical_arethmetic_signed<unsigned short>
-test_lexical_arethmetic_signed<unsigned int>
-test_lexical_arethmetic_signed<unsigned long>
-test_lexical_arethmetic_signed<unsigned long long>
-test_lexical_arethmetic_signed<float>
-test_lexical_arethmetic_signed<double>
-test_lexical_arethmetic_signed<long double>
+test_lexical_arithmetic_signed<signed char>
+test_lexical_arithmetic_signed<short>
+test_lexical_arithmetic_signed<int>
+test_lexical_arithmetic_signed<long>
+test_lexical_arithmetic_signed<long long>
+test_lexical_arithmetic_signed<unsigned char>
+test_lexical_arithmetic_signed<unsigned short>
+test_lexical_arithmetic_signed<unsigned int>
+test_lexical_arithmetic_signed<unsigned long>
+test_lexical_arithmetic_signed<unsigned long long>
+test_lexical_arithmetic_signed<float>
+test_lexical_arithmetic_signed<double>
+test_lexical_arithmetic_signed<long double>
 test_lexical_cast_bool
 test_lexical_cast_result
+test_lua_ptr
 test_map_location/map_location_characterization_test_radial_mode
 test_map_location/reality_check_vector_negation
 test_map_location/reality_check_get_direction
@@ -243,6 +243,8 @@ sdl/test_scale_sharp_nullptr
 sdl/test_scale_sharp_zero
 sdl/test_scale_sharp_round
 sdl/test_scale_sharp_fractional
+sdl/test_transparent_clip
+sdl/test_transparent_clip_no_alpha
 test_serialization_utils_and_unicode/utils_join_test
 test_serialization_utils_and_unicode/utils_split_test
 test_serialization_utils_and_unicode/utils_quoted_split_test

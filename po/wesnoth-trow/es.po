@@ -16,9 +16,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-03-17 04:21 UTC\n"
-"PO-Revision-Date: 2023-01-19 10:24+0100\n"
-"Last-Translator: Toranks <toranksmervat@gmail.com>\n"
+"POT-Creation-Date: 2025-08-19 15:14 UTC\n"
+"PO-Revision-Date: 2025-08-28 19:50-0300\n"
+"Last-Translator: Sebastián Lecchini <sebas38760@gmail.com>\n"
 "Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
@@ -71,12 +71,6 @@ msgstr "Señor"
 
 #. [campaign]: id=The_Rise_of_Wesnoth
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:24
-#, fuzzy
-#| msgid ""
-#| "Lead Prince Haldric through the destruction of the Green Isle and across "
-#| "the Ocean to establish the very kingdom of Wesnoth itself. The "
-#| "confrontation with Lich-Lord Jevyan awaits...\n"
-#| "\n"
 msgid ""
 "Lead Prince Haldric through the destruction of the Green Isle and across the "
 "Ocean to establish the very Kingdom of Wesnoth itself. The confrontation "
@@ -4066,7 +4060,7 @@ msgstr "Dracos"
 #. [side]: type=Drake Flameheart, id=Garash
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:68
 msgid "Garash"
-msgstr ""
+msgstr "Garash"
 
 #. [side]: type=Drake Flameheart, id=Merkush
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:96
@@ -4108,10 +4102,6 @@ msgstr "No creo que la diplomacia vaya a funcionar."
 
 #. [message]: speaker=Garash
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:220
-#, fuzzy
-#| msgid ""
-#| "Ssso humansss, you’ve come to trouble usss again. Prepare to die! For the "
-#| "glory of the Lords of Morogor!"
 msgid ""
 "So, prey, you have come to trouble us again. Prepare to die! For the glory "
 "of Morogor!"
@@ -7170,11 +7160,6 @@ msgstr ""
 
 #. [unit_type]: id=Familiar, race=undead
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Familiar.cfg:17
-#, fuzzy
-#| msgid ""
-#| "Powerful magic users sometimes have familiars, creatures which have had a "
-#| "spirit or minor demon drawn into them. A familiar may act as a spy or "
-#| "messenger for its master."
 msgid ""
 "Powerful magic users sometimes have Familiars, creatures which have had a "
 "spirit or minor demon drawn into them. A familiar may act as a spy or "
@@ -7188,25 +7173,23 @@ msgstr ""
 #. [unit_type]: id=Jevyan Cloaked, race=undead
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Jevyan.cfg:5
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Jevyan_Cloaked.cfg:5
-#, fuzzy
-#| msgid "Lich-Lord Caror"
 msgid "Lich Lord"
-msgstr "Señor Liche Caror"
+msgstr "Señor Liche"
 
 #. [attack]: type=arcane
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Jevyan.cfg:34
 msgid "touch"
-msgstr ""
+msgstr "toque"
 
 #. [attack]: type=cold
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Jevyan.cfg:46
 msgid "chill tempest"
-msgstr ""
+msgstr "ola de frío"
 
 #. [attack]: type=arcane
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Jevyan.cfg:58
 msgid "shadow wave"
-msgstr ""
+msgstr "onda sombría"
 
 #. [unit_type]: id=Noble Commander, race=human, gender=male
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Commander.cfg:4
@@ -7387,17 +7370,16 @@ msgstr "distraer"
 #. [skirmisher]: id=distract
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-abilities.cfg:7
 msgid ""
-"This unit negates enemy Zones of Control around itself for allied units (but "
-"not for itself)."
+"Allies adjacent to this unit are not affected by enemy Zones of Control."
 msgstr ""
-"Esta unidad anula las Zonas de Control enemigas alrededor de sí misma para "
-"unidades aliadas (pero no para sí misma)."
+"Los aliados adyacentes a esta unidad no se ven afectados por las Zonas de "
+"Control enemigas."
 
 #. [skirmisher]: id=distract
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-abilities.cfg:8
 msgid ""
-"This unit is capable of distracting opponents, allowing allied units to "
-"trespass their Zones of Control and move unhindered around them."
+"This unit is capable of distracting opponents, allowing adjacent allies to "
+"ignore enemy Zones of Control."
 msgstr ""
 "Esta unidad es capaz de distraer oponentes, permitiendo a las unidades "
 "aliadas traspasar sus Zonas de Control y avanzar sin obstáculos a su "
@@ -7532,6 +7514,13 @@ msgid ""
 msgstr ""
 "Eso son excelentes noticias. Ahora somos el doble. Terminemos lo que tenemos "
 "entre manos."
+
+#~ msgid ""
+#~ "This unit negates enemy Zones of Control around itself for allied units "
+#~ "(but not for itself)."
+#~ msgstr ""
+#~ "Esta unidad anula las Zonas de Control enemigas alrededor de sí misma "
+#~ "para unidades aliadas (pero no para sí misma)."
 
 #~ msgid "Gerrick"
 #~ msgstr "Gerrick"

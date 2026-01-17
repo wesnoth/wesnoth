@@ -18,6 +18,7 @@
 #include "terrain/terrain.hpp"
 
 #include <map>
+#include <memory>
 
 class game_config_view;
 
@@ -47,6 +48,18 @@ private:
 
 public:
 	terrain_type_data(const game_config_view & game_config);
+	~terrain_type_data();
+
+	/**
+	 * @returns A pointer to the current terrain database instance.
+	 */
+	static terrain_type_data* get();
+
+	/**
+	 * Clears the database and queues reinitialization on the next call to
+	 * @ref lazy_initialization.
+	 */
+	void reset() const;
 
 	/**
 	 * On the first call to this function, parse all of the [terrain_type]s
@@ -69,37 +82,6 @@ public:
 	 */
 	const terrain_type& get_terrain_info(const t_translation::terrain_code & terrain) const;
 
-	/**
-	 * The underlying movement type of the terrain.
-	 *
-	 * The underlying terrain is the name of the terrain for game-logic purposes.
-	 * I.e. if the terrain is simply an alias, the underlying terrain name
-	 * is the name of the terrain(s) that it's aliased to.
-	 *
-	 * Whether "underlying" means "only the types used in [movetype]" is determined
-	 * by the terrain.cfg file, rather than the .cpp code - in 1.14, the terrain.cfg
-	 * file uses only the [movetype] terrains in its alias lists.
-	 *
-	 * This may start with a t_translation::PLUS or t_translation::MINUS to
-	 * indicate whether the movement should be calculated as a best-of or
-	 * worst-of combination. These may also occur later in the list, however if
-	 * both PLUS and MINUS appear in the list then the values calculated are
-	 * implementation defined behavior.
-	 */
-	const t_translation::ter_list& underlying_mvt_terrain(const t_translation::terrain_code & terrain) const;
-	/**
-	 * The underlying defense type of the terrain. See the notes for underlying_mvt_terrain.
-	 */
-	const t_translation::ter_list& underlying_def_terrain(const t_translation::terrain_code & terrain) const;
-	/**
-	 * Unordered set of all terrains used in either underlying_mvt_terrain or
-	 * underlying_def_terrain. This does not include any PLUSes or MINUSes.
-	 *
-	 * May also include the aliasof and vision_alias terrains, however
-	 * vision_alias is deprecated and aliasof should probably match the
-	 * movement and defense terrains.
-	 */
-	const t_translation::ter_list& underlying_union_terrain(const t_translation::terrain_code & terrain) const;
 	/**
 	 * Get a formatted terrain name -- terrain (underlying terrains)
 	 */
@@ -150,4 +132,6 @@ public:
 
 private:
 	tcodeToTerrain_t::const_iterator find_or_create(t_translation::terrain_code) const;
+
+	static inline terrain_type_data* singleton_{nullptr};
 };

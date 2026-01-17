@@ -21,6 +21,7 @@
 #include "serialization/schema/tag.hpp"
 #include "serialization/string_utils.hpp"
 #include "formatter.hpp"
+#include "utils/general.hpp"
 
 namespace schema_validation
 {
@@ -125,7 +126,7 @@ const wml_key* wml_tag::find_key(const std::string& name, const config& match, b
 const wml_key* wml_tag::find_key(const std::string& name, const config& match, bool ignore_super, std::vector<const wml_tag*>& visited) const
 {
 	// Returns nullptr if a super cycle is detected.
-	if(std::find(visited.begin(), visited.end(), this) != visited.end()) {
+	if(utils::contains(visited, this)) {
 		return nullptr;
 	}
 
@@ -195,7 +196,7 @@ const wml_tag* wml_tag::find_tag(const std::string& fullpath, const wml_tag& roo
 const wml_tag* wml_tag::find_tag(const std::string& fullpath, const wml_tag& root, const config& match, bool ignore_super, std::vector<const wml_tag*>& visited) const
 {
 	// Returns nullptr if a super cycle is detected.
-	if(std::find(visited.begin(), visited.end(), this) != visited.end()) {
+	if(utils::contains(visited, this)) {
 		return nullptr;
 	}
 

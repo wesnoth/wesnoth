@@ -353,7 +353,8 @@ public:
 	/** Merge a WML shroud map with the shroud data of this player. */
 	void merge_shroud_map_data(const std::string& shroud_data) { shroud_.merge(shroud_data); }
 
-	bool knows_about_team(std::size_t index) const;
+	/** Whether @a other's count of villages, units, upkeep and income should be visible in the status table. */
+	bool knows_upkeep(const team &other) const;
 	/** Records hexes that were cleared of fog via WML. */
 	void add_fog_override(const std::set<map_location> &hexes) { fog_clearer_.insert(hexes.begin(), hexes.end()); }
 	/** Removes the record of hexes that were cleared of fog via WML. */
@@ -390,15 +391,14 @@ public:
 	void set_no_turn_confirmation(bool value) { info_.no_turn_confirmation = value; }
 
 	//function which, when given a 1-based side will return the color used by that side.
-	static const color_range get_side_color_range(int side);
+	static color_range get_side_color_range(int side);
 
 	static color_t get_side_color(int side);
 	static color_t get_minimap_color(int side);
 
 	static std::string get_side_color_id(unsigned side);
-	static const t_string get_side_color_name_for_UI(unsigned side);
+	static t_string get_side_color_name_for_UI(unsigned side);
 	static std::string get_side_color_id_from_config(const config& cfg);
-	static std::string get_side_highlight_pango(int side);
 
 	void log_recruitable() const;
 

@@ -127,7 +127,7 @@ DEFINE_WFL_FUNCTION(dir, 1, 1)
 		res.emplace_back(input.name);
 	}
 
-	return variant(res);
+	return variant(std::move(res));
 }
 
 DEFINE_WFL_FUNCTION(if, 2, -1)
@@ -351,7 +351,7 @@ DEFINE_WFL_FUNCTION(tolist, 1, 1)
 		tmp.push_back(*it);
 	}
 
-	return variant(tmp);
+	return variant(std::move(tmp));
 }
 
 DEFINE_WFL_FUNCTION(tomap, 1, 2)
@@ -385,7 +385,7 @@ DEFINE_WFL_FUNCTION(tomap, 1, 2)
 		}
 	}
 
-	return variant(tmp);
+	return variant(std::move(tmp));
 }
 
 DEFINE_WFL_FUNCTION(substring, 2, 3)
@@ -765,7 +765,7 @@ DEFINE_WFL_FUNCTION(get_palette, 1, 1)
 	for(auto clr : colors) {
 		result.emplace_back(std::make_shared<color_callable>(clr));
 	}
-	return variant(result);
+	return variant(std::move(result));
 }
 
 DEFINE_WFL_FUNCTION(clamp, 3, 3)
@@ -839,7 +839,7 @@ DEFINE_WFL_FUNCTION(sort, 1, 2)
 		std::sort(vars.begin(), vars.end(), variant_comparator(args()[1], variables));
 	}
 
-	return variant(vars);
+	return variant(std::move(vars));
 }
 
 DEFINE_WFL_FUNCTION(reverse, 1, 1)
@@ -850,12 +850,12 @@ DEFINE_WFL_FUNCTION(reverse, 1, 1)
 		std::string str = args()[0]->evaluate(variables, fdb).as_string();
 		std::reverse(str.begin(), str.end());
 
-		return variant(str);
+		return variant(std::move(str));
 	} else if(arg.is_list()) {
 		std::vector<variant> list = args()[0]->evaluate(variables, fdb).as_list();
 		std::reverse(list.begin(), list.end());
 
-		return variant(list);
+		return variant(std::move(list));
 	}
 
 	return variant();
@@ -918,10 +918,10 @@ DEFINE_WFL_FUNCTION(filter, 2, 3)
 	}
 
 	if(items.is_map()) {
-		return variant(map_vars);
+		return variant(std::move(map_vars));
 	}
 
-	return variant(list_vars);
+	return variant(std::move(list_vars));
 }
 
 DEFINE_WFL_FUNCTION(find, 2, 3)
@@ -988,10 +988,10 @@ DEFINE_WFL_FUNCTION(map, 2, 3)
 	}
 
 	if(items.is_map()) {
-		return variant(map_vars);
+		return variant(std::move(map_vars));
 	}
 
-	return variant(list_vars);
+	return variant(std::move(list_vars));
 }
 
 DEFINE_WFL_FUNCTION(take_while, 2, 2)
@@ -1007,8 +1007,7 @@ DEFINE_WFL_FUNCTION(take_while, 2, 2)
 		}
 	}
 
-	std::vector<variant> result(items.begin(), it);
-	return variant(result);
+	return variant(std::vector(items.begin(), it));
 }
 
 namespace
@@ -1078,7 +1077,7 @@ DEFINE_WFL_FUNCTION(zip, 1, -1)
 		output.emplace_back(elem);
 	}
 
-	return variant(output);
+	return variant(std::move(output));
 }
 
 DEFINE_WFL_FUNCTION(reduce, 2, 3)
@@ -1113,16 +1112,14 @@ DEFINE_WFL_FUNCTION(sum, 1, 2)
 	const variant items = args()[0]->evaluate(variables, fdb);
 	if(items.num_elements() > 0) {
 		if(items[0].is_list()) {
-			std::vector<variant> tmp;
-			res = variant(tmp);
+			res = variant(std::vector<variant>{});
 			if(args().size() >= 2) {
 				res = args()[1]->evaluate(variables, fdb);
 				if(!res.is_list())
 					return variant();
 			}
 		} else if(items[0].is_map()) {
-			std::map<variant, variant> tmp;
-			res = variant(tmp);
+			res = variant(std::map<variant, variant>{});
 			if(args().size() >= 2) {
 				res = args()[1]->evaluate(variables, fdb);
 				if(!res.is_map())
@@ -1162,7 +1159,7 @@ DEFINE_WFL_FUNCTION(head, 1, 2)
 
 	std::vector<variant> res;
 	std::copy(it, end, std::back_inserter(res));
-	return variant(res);
+	return variant(std::move(res));
 }
 
 DEFINE_WFL_FUNCTION(tail, 1, 2)
@@ -1184,7 +1181,7 @@ DEFINE_WFL_FUNCTION(tail, 1, 2)
 	std::vector<variant> res;
 
 	std::copy(it, items.end(), std::back_inserter(res));
-	return variant(res);
+	return variant(std::move(res));
 }
 
 DEFINE_WFL_FUNCTION(size, 1, 1)
@@ -1305,25 +1302,32 @@ DEFINE_WFL_FUNCTION(pair, 2, 2)
 
 DEFINE_WFL_FUNCTION(distance_between, 2, 2)
 {
-	const map_location loc1 = args()[0]
-		->evaluate(variables, add_debug_info(fdb, 0, "distance_between:location_A"))
-		.convert_to<location_callable>()
-		->loc();
+	map_location loc1, loc2;
+	if (auto loc_c = args()[0]->evaluate(variables, add_debug_info(fdb, 0, "distance_between:location_A")).try_convert<location_callable>()) {
+		loc1 = loc_c->loc();
+	}
 
-	const map_location loc2 = args()[1]
-		->evaluate(variables, add_debug_info(fdb, 1, "distance_between:location_B"))
-		.convert_to<location_callable>()
-		->loc();
+	if (auto loc_c = args()[1]->evaluate(variables, add_debug_info(fdb, 1, "distance_between:location_B")).try_convert<location_callable>()) {
+		loc2 = loc_c->loc();
+	}
+
+	if (!loc1.valid() || !loc2.valid()) {
+		return variant();
+	}
 
 	return variant(distance_between(loc1, loc2));
 }
 
 DEFINE_WFL_FUNCTION(nearest_loc, 2, 2)
 {
-	const map_location loc = args()[0]
-		->evaluate(variables, add_debug_info(fdb, 0, "nearest_loc:location"))
-		.convert_to<location_callable>()
-		->loc();
+	map_location loc;
+	if (auto loc_c = args()[0]->evaluate(variables, add_debug_info(fdb, 0, "nearest_loc:location")).try_convert<location_callable>()) {
+		loc = loc_c->loc();
+	}
+
+	if(!loc.valid()) {
+		return variant();
+	}
 
 	const std::vector<variant> locations = args()[1]
 		->evaluate(variables, add_debug_info(fdb, 1, "nearest_loc:locations"))
@@ -1350,22 +1354,33 @@ DEFINE_WFL_FUNCTION(nearest_loc, 2, 2)
 
 DEFINE_WFL_FUNCTION(adjacent_locs, 1, 1)
 {
-	const map_location loc = args()[0]
-		->evaluate(variables, add_debug_info(fdb, 0, "adjacent_locs:location"))
-		.convert_to<location_callable>()
-		->loc();
+	map_location loc;
+	if (auto loc_c = args()[0]->evaluate(variables, add_debug_info(fdb, 0, "adjacent_locs:location")).try_convert<location_callable>()) {
+		loc = loc_c->loc();
+	}
+
+	if(!loc.valid()) {
+		return variant();
+	}
 
 	std::vector<variant> v;
 	for(const map_location& adj : get_adjacent_tiles(loc)) {
 		v.emplace_back(std::make_shared<location_callable>(adj));
 	}
 
-	return variant(v);
+	return variant(std::move(v));
 }
 
 DEFINE_WFL_FUNCTION(locations_in_radius, 2, 2)
 {
-	const map_location loc = args()[0]->evaluate(variables, fdb).convert_to<location_callable>()->loc();
+	map_location loc;
+	if (auto loc_c = args()[0]->evaluate(variables, fdb).try_convert<location_callable>()) {
+		loc = loc_c->loc();
+	}
+
+	if(!loc.valid()) {
+		return variant();
+	}
 
 	int range = args()[1]->evaluate(variables, fdb).as_int();
 
@@ -1389,45 +1404,51 @@ DEFINE_WFL_FUNCTION(locations_in_radius, 2, 2)
 		v.emplace_back(std::make_shared<location_callable>(res[n]));
 	}
 
-	return variant(v);
+	return variant(std::move(v));
 }
 
 DEFINE_WFL_FUNCTION(are_adjacent, 2, 2)
 {
-	const map_location loc1 = args()[0]
-		->evaluate(variables, add_debug_info(fdb, 0, "are_adjacent:location_A"))
-		.convert_to<location_callable>()
-		->loc();
+	map_location loc1, loc2;
+	if (auto loc_c = args()[0]->evaluate(variables, add_debug_info(fdb, 0, "are_adjacent:location_A")).try_convert<location_callable>()) {
+		loc1 = loc_c->loc();
+	}
 
-	const map_location loc2 = args()[1]
-		->evaluate(variables, add_debug_info(fdb, 1, "are_adjacent:location_B"))
-		.convert_to<location_callable>()
-		->loc();
+	if (auto loc_c = args()[1]->evaluate(variables, add_debug_info(fdb, 1, "are_adjacent:location_B")).try_convert<location_callable>()) {
+		loc2 = loc_c->loc();
+	}
+
+	if (!loc1.valid() || !loc2.valid()) {
+		return variant();
+	}
 
 	return variant(tiles_adjacent(loc1, loc2) ? 1 : 0);
 }
 
 DEFINE_WFL_FUNCTION(relative_dir, 2, 2)
 {
-	const map_location loc1 = args()[0]
-		->evaluate(variables, add_debug_info(fdb, 0, "relative_dir:location_A"))
-		.convert_to<location_callable>()
-		->loc();
+	map_location loc1, loc2;
+	if (auto loc_c = args()[0]->evaluate(variables, add_debug_info(fdb, 0, "relative_dir:location_A")).try_convert<location_callable>()) {
+		loc1 = loc_c->loc();
+	}
 
-	const map_location loc2 = args()[1]
-		->evaluate(variables, add_debug_info(fdb, 1, "relative_dir:location_B"))
-		.convert_to<location_callable>()
-		->loc();
+	if (auto loc_c = args()[1]->evaluate(variables, add_debug_info(fdb, 1, "relative_dir:location_B")).try_convert<location_callable>()) {
+		loc2 = loc_c->loc();
+	}
+
+	if (!loc1.valid() || !loc2.valid()) {
+		return variant();
+	}
 
 	return variant(map_location::write_direction(loc1.get_relative_dir(loc2)));
 }
 
 DEFINE_WFL_FUNCTION(direction_from, 2, 3)
 {
-	const map_location loc = args()[0]
-		->evaluate(variables, add_debug_info(fdb, 0, "direction_from:location"))
-		.convert_to<location_callable>()
-		->loc();
+	map_location loc;
+	if (auto loc_c = args()[0]->evaluate(variables, add_debug_info(fdb, 0, "direction_from:location")).try_convert<location_callable>()) {
+		loc = loc_c->loc();
+	}
 
 	const std::string dir_str =
 		args()[1]->evaluate(variables, add_debug_info(fdb, 1, "direction_from:dir")).as_string();
@@ -1436,20 +1457,26 @@ DEFINE_WFL_FUNCTION(direction_from, 2, 3)
 		? args()[2]->evaluate(variables, add_debug_info(fdb, 2, "direction_from:count")).as_int()
 		: 1;
 
+	if (!loc.valid()) {
+		return variant();
+	}
 	return variant(std::make_shared<location_callable>(loc.get_direction(map_location::parse_direction(dir_str), n)));
 }
 
 DEFINE_WFL_FUNCTION(rotate_loc_around, 2, 3)
 {
-	const map_location center = args()[0]
-		->evaluate(variables, add_debug_info(fdb, 0, "direction_from:center"))
-		.convert_to<location_callable>()
-		->loc();
+	map_location center, loc;
+	if (auto loc_c = args()[0]->evaluate(variables, add_debug_info(fdb, 0, "direction_from:center")).try_convert<location_callable>()) {
+		center = loc_c->loc();
+	}
 
-	const map_location loc = args()[1]
-		->evaluate(variables, add_debug_info(fdb, 1, "direction_from:location"))
-		.convert_to<location_callable>()
-		->loc();
+	if (auto loc_c = args()[1]->evaluate(variables, add_debug_info(fdb, 1, "direction_from:location")).try_convert<location_callable>()) {
+		loc = loc_c->loc();
+	}
+
+	if (!center.valid() || !loc.valid()) {
+		return variant();
+	}
 
 	int n = args().size() == 3
 		? args()[2]->evaluate(variables, add_debug_info(fdb, 2, "direction_from:count")).as_int()

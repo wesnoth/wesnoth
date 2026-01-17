@@ -372,7 +372,7 @@ void manager::try_modification_by_id(const std::string& id, bool activate, bool 
 	std::vector<std::string> mods_copy = mods_;
 
 	if(activate) {
-		if(std::find(mods_copy.begin(), mods_copy.end(), id) == mods_copy.end()) {
+		if(!utils::contains(mods_copy, id) ) {
 			mods_copy.push_back(id);
 		}
 	} else {
@@ -440,13 +440,12 @@ int manager::get_scenario_index() const
 
 bool manager::is_modification_active(int index) const
 {
-	std::string id = depinfo_.mandatory_child("modification", index)["id"];
-	return std::find(mods_.begin(), mods_.end(), id) != mods_.end();
+	return utils::contains(mods_, depinfo_.mandatory_child("modification", index)["id"].str());
 }
 
 bool manager::is_modification_active(const std::string& id) const
 {
-	return std::find(mods_.begin(), mods_.end(), id) != mods_.end();
+	return utils::contains(mods_, id);
 }
 
 bool manager::enable_mods_dialog(const std::vector<std::string>& mods, const std::string& requester)

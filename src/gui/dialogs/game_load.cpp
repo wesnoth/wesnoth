@@ -22,6 +22,7 @@
 #include "formatter.hpp"
 #include "formula/string_utils.hpp"
 #include "game_config.hpp"
+#include "game_config_manager.hpp"
 #include "gettext.hpp"
 #include "gui/auxiliary/field.hpp"
 #include "gui/dialogs/game_delete.hpp"
@@ -56,7 +57,7 @@ namespace gui2::dialogs
 
 REGISTER_DIALOG(game_load)
 
-bool game_load::execute(const game_config_view& cache_config, savegame::load_game_metadata& data)
+bool game_load::execute(savegame::load_game_metadata& data)
 {
 	if(savegame::save_index_class::default_saves_dir()->get_saves_list().empty()) {
 		bool found_files = false;
@@ -74,10 +75,10 @@ bool game_load::execute(const game_config_view& cache_config, savegame::load_gam
 		}
 	}
 
-	return game_load(cache_config, data).show();
+	return game_load(data).show();
 }
 
-game_load::game_load(const game_config_view& cache_config, savegame::load_game_metadata& data)
+game_load::game_load(savegame::load_game_metadata& data)
 	: modal_dialog(window_id())
 	, filename_(data.filename)
 	, save_index_manager_(data.manager)
@@ -86,7 +87,7 @@ game_load::game_load(const game_config_view& cache_config, savegame::load_game_m
 	, cancel_orders_(register_bool("cancel_orders", true, data.cancel_orders))
 	, summary_(data.summary)
 	, games_()
-	, cache_config_(cache_config)
+	, cache_config_(game_config_manager::get()->game_config())
 {
 }
 
@@ -186,7 +187,7 @@ void game_load::display_savegame_internal(const savegame::save_info& game)
 			.set_map_data(summary_["map_data"]);
 
 	find_widget<label>("lblScenario")
-			.set_label(summary_["label"]);
+			.set_label(summary_["label"].t_str());
 
 	listbox& leader_list = find_widget<listbox>("leader_list");
 
@@ -223,14 +224,14 @@ void game_load::display_savegame_internal(const savegame::save_info& game)
 		item["label"] = leader_image;
 		data.emplace("imgLeader", item);
 
-		item["label"] = leader["leader_name"];
+		item["label"] = leader["leader_name"].t_str();
 		data.emplace("leader_name", item);
 
-		item["label"] = leader["gold"];
+		item["label"] = leader["gold"].str();
 		data.emplace("leader_gold", item);
 
 		// TRANSLATORS: "reserve" refers to units on the recall list
-		item["label"] = VGETTEXT("$active active, $reserve reserve", {{"active", leader["units"]}, {"reserve", leader["recall_units"]}});
+		item["label"] = VGETTEXT("$active active, $reserve reserve", {{"active", leader["units"].str()}, {"reserve", leader["recall_units"].str()}});
 		data.emplace("leader_troops", item);
 
 		leader_list.add_row(data);
@@ -254,7 +255,7 @@ void game_load::display_savegame_internal(const savegame::save_info& game)
 	toggle_button& cancel_orders_toggle     = dynamic_cast<toggle_button&>(*cancel_orders_->get_widget());
 	toggle_button& change_difficulty_toggle = dynamic_cast<toggle_button&>(*change_difficulty_->get_widget());
 
-	const bool is_replay = savegame::loadgame::is_replay_save(summary_);
+	const bool is_replay = savegame::is_replay_save(summary_);
 	const bool is_scenario_start = summary_["turn"].empty();
 
 	// Always toggle show_replay on if the save is a replay
@@ -340,16 +341,11 @@ void game_load::evaluate_summary_string(std::stringstream& str, const config& cf
 	if(campaign_type_enum) {
 		switch(*campaign_type_enum) {
 			case campaign_type::type::scenario: {
-				const config* campaign = nullptr;
-				if(!campaign_id.empty()) {
-					if(auto c = cache_config_.find_child("campaign", "id", campaign_id)) {
-						campaign = c.ptr();
-					}
-				}
-
+				const auto campaign = cache_config_.find_child("campaign", "id", campaign_id);
 				utils::string_map symbols;
-				if(campaign != nullptr) {
-					symbols["campaign_name"] = (*campaign)["name"];
+
+				if(campaign) {
+					symbols["campaign_name"] = (*campaign)["name"].t_str();
 				} else {
 					// Fallback to nontranslatable campaign id.
 					symbols["campaign_name"] = "(" + campaign_id + ")";
@@ -358,7 +354,7 @@ void game_load::evaluate_summary_string(std::stringstream& str, const config& cf
 				str << VGETTEXT("Campaign: $campaign_name", symbols);
 
 				// Display internal id for debug purposes if we didn't above
-				if(game_config::debug && (campaign != nullptr)) {
+				if(game_config::debug && campaign) {
 					str << '\n' << "(" << campaign_id << ")";
 				}
 				break;
@@ -379,7 +375,7 @@ void game_load::evaluate_summary_string(std::stringstream& str, const config& cf
 
 	str << "\n";
 
-	if(savegame::loadgame::is_replay_save(cfg_summary)) {
+	if(savegame::is_replay_save(cfg_summary)) {
 		str << _("Replay");
 	} else if(!cfg_summary["turn"].empty()) {
 		str << _("Turn") << " " << cfg_summary["turn"];
@@ -391,18 +387,11 @@ void game_load::evaluate_summary_string(std::stringstream& str, const config& cf
 		switch (*campaign_type_enum) {
 		case campaign_type::type::scenario:
 		case campaign_type::type::multiplayer: {
-			const config* campaign = nullptr;
-			if (!campaign_id.empty()) {
-				if (auto c = cache_config_.find_child("campaign", "id", campaign_id)) {
-					campaign = c.ptr();
-				}
-			}
-
 			// 'SCENARIO' or SP should only ever be campaigns
 			// 'MULTIPLAYER' may be a campaign with difficulty or single scenario without difficulty
 			// For the latter do not show the difficulty - even though it will be listed as
 			// NORMAL -> Medium in the save file it should not be considered valid (GitHub Issue #5321)
-			if (campaign != nullptr) {
+			if(auto campaign = cache_config_.find_child("campaign", "id", campaign_id)) {
 				str << "\n" << _("Difficulty: ");
 				try {
 					const config& difficulty = campaign->find_mandatory_child("difficulty", "define", cfg_summary["difficulty"]);

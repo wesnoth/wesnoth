@@ -16,6 +16,7 @@
 #pragma once
 
 #include "config.hpp"
+#include "mt_rng.hpp"
 #include "server/common/user_handler.hpp"
 #include "server/wesnothd/metrics.hpp"
 #include "server/wesnothd/ban.hpp"
@@ -105,6 +106,7 @@ public:
 
 private:
 	wesnothd::ban_manager ban_manager_;
+	randomness::mt_rng rng_;
 
 	struct connection_log
 	{
@@ -135,9 +137,8 @@ private:
 
 	struct queue_info
 	{
-		queue_info(int id, const std::string& scenario_id, const std::string& name, int required, config game)
+		queue_info(int id, const std::string& name, int required, config game)
 		: id(id)
-		, scenario_id(scenario_id)
 		, display_name(name)
 		, players_required(required)
 		, players_in_queue()
@@ -147,7 +148,6 @@ private:
 		}
 
 		int id;
-		std::string scenario_id;
 		std::string display_name;
 		std::size_t players_required;
 		std::vector<std::string> players_in_queue;

@@ -30,6 +30,7 @@
 #include "map/map.hpp"
 #include "save_index.hpp"
 #include "saved_game.hpp"
+#include "savegame.hpp"
 #include "resources.hpp"
 #include "replay.hpp"
 
@@ -316,34 +317,33 @@ bool playsingle_controller::hotkey_handler::can_execute_command(const hotkey::ui
 
 void playsingle_controller::hotkey_handler::load_autosave(const std::string& filename, bool start_replay)
 {
-	if(!start_replay) {
-		play_controller::hotkey_handler::load_autosave(filename);
-	}
-	auto invalid_save_file = [this, filename](const std::string& msg){
-		if(playsingle_controller_.is_networked_mp()) {
-			gui2::show_error_message(msg);
-		} else {
-			const int res = gui2::show_message("", msg + _("Do you want to load it anyway?"), gui2::dialogs::message::yes_no_buttons);
-			if(res != gui2::retval::CANCEL) {
-				play_controller::hotkey_handler::load_autosave(filename);
-			}
-		}
-	};
-
 	config savegame;
-	std::string error_log;
-	savegame::read_save_file(filesystem::get_saves_dir(), filename, savegame, &error_log);
-
-	if(!error_log.empty()) {
-		invalid_save_file(_("The file you have tried to load is corrupt: '") + error_log);
+	try {
+		savegame = savegame::read_save_file(filesystem::get_saves_dir(), filename);
+	} catch(const game::load_game_failed& e) {
+		gui2::show_error_message(_("The file you have tried to load is corrupt") + "\n\n" + e.what());
 		return;
 	}
+
+	// TODO: look into loading autosaves by resetting the gamestate. Since we're going
+	// back a turn, we don't strictly need to exit the game and reload the game config.
+	// Perhaps we could neverage the replay system directly instead of autosave files?
+	if(!start_replay) {
+#ifdef __cpp_designated_initializers
+		throw savegame::load_game_exception({ .load_config = std::move(savegame) });
+#else
+		savegame::load_game_metadata payload;
+		payload.load_config = std::move(savegame);
+		throw savegame::load_game_exception(std::move(payload));
+#endif
+	}
+
 	if(savegame.child_or_empty("snapshot")["replay_pos"].to_int(-1) < 0 ) {
-		invalid_save_file(_("The file you have tried to load has no replay information. "));
+		gui2::show_error_message(_("The file you have tried to load has no replay information."));
 		return;
 	}
 	if(!playsingle_controller_.get_saved_game().get_replay().is_ancestor(savegame.child_or_empty("replay"))) {
-		invalid_save_file(_("The file you have tried to load is not from the current session."));
+		gui2::show_error_message(_("The file you have tried to load is not from the current session."));
 		return;
 	}
 

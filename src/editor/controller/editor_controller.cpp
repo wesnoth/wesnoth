@@ -47,6 +47,7 @@
 #include "cursor.hpp"
 #include "desktop/clipboard.hpp"
 #include "floating_label.hpp"
+#include "generators/map_create.hpp"
 #include "gettext.hpp"
 #include "picture.hpp"
 #include "quit_confirmation.hpp"
@@ -59,11 +60,47 @@
 
 #include <functional>
 
-namespace {
-static std::vector<std::string> saved_windows_;
+namespace editor
+{
+namespace
+{
+auto parse_editor_music(const config_array_view& editor_music_range)
+{
+	std::vector<std::shared_ptr<sound::music_track>> tracks;
+
+	for(const config& editor_music : editor_music_range) {
+		for(const config& music : editor_music.child_range("music")) {
+			if(auto track = sound::music_track::create(music)) {
+				tracks.push_back(std::move(track));
+			}
+		}
+	}
+
+	if(tracks.empty()) {
+		ERR_ED << "No editor music defined";
+	}
+
+	return tracks;
 }
 
-namespace editor {
+auto parse_map_generators(const config_array_view& multiplayer_tag_range)
+{
+	std::vector<std::unique_ptr<map_generator>> generators;
+
+	for(const config& i : multiplayer_tag_range) {
+		if(i["map_generation"].empty() && i["scenario_generation"].empty()) {
+			continue;
+		}
+
+		if(const auto generator_cfg = i.optional_child("generator")) {
+			generators.emplace_back(create_map_generator(i["map_generation"].str(i["scenario_generation"]), generator_cfg.value()));
+		}
+	}
+
+	return generators;
+}
+
+} // namespace
 
 std::string editor_controller::current_addon_id_ = "";
 
@@ -75,14 +112,15 @@ editor_controller::editor_controller(bool clear_id)
 	, reports_(new reports())
 	, gui_(new editor_display(*this, *reports_))
 	, tods_()
-	, context_manager_(new context_manager(*gui_.get(), game_config_, clear_id ? "" : editor_controller::current_addon_id_))
+	, context_manager_(new context_manager(*gui_.get(), clear_id ? "" : editor_controller::current_addon_id_))
 	, toolkit_(nullptr)
 	, tooltip_manager_()
 	, floating_label_manager_(nullptr)
-	, help_manager_(nullptr)
+	, help_manager_(help::help_manager::get_instance())
 	, do_quit_(false)
 	, quit_mode_(EXIT_ERROR)
-	, music_tracks_()
+	, music_tracks_(parse_editor_music(game_config_.child_range("editor_music")))
+	, map_generators_(parse_map_generators(game_config_.child_range("multiplayer")))
 {
 	if(clear_id) {
 		editor_controller::current_addon_id_ = "";
@@ -90,10 +128,8 @@ editor_controller::editor_controller(bool clear_id)
 
 	init_gui();
 	toolkit_.reset(new editor_toolkit(*gui_.get(), game_config_, *context_manager_.get()));
-	help_manager_.reset(new help::help_manager(&game_config_));
 	context_manager_->locs_ = toolkit_->get_palette_manager()->location_palette_.get();
 	init_tods(game_config_);
-	init_music(game_config_);
 	get_current_map_context().set_starting_position_labels(gui());
 	cursor::set(cursor::NORMAL);
 
@@ -147,25 +183,6 @@ void editor_controller::init_tods(const game_config_view& game_config)
 
 	if (tods_.empty()) {
 		ERR_ED << "No editor time-of-day defined";
-	}
-}
-
-void editor_controller::init_music(const game_config_view& game_config)
-{
-	const std::string tag_name = "editor_music";
-	if (game_config.child_range(tag_name).size() == 0) {
-		ERR_ED << "No editor music defined";
-	}
-	else {
-		for (const config& editor_music : game_config.child_range(tag_name)) {
-			for (const config& music : editor_music.child_range("music")) {
-				sound::music_track track(music);
-				if (track.file_path().empty())
-					WRN_ED << "Music track " << track.id() << " not found.";
-				else
-					music_tracks_.emplace_back(music);
-			}
-		}
 	}
 }
 
@@ -322,7 +339,6 @@ bool editor_controller::can_execute_command(const hotkey::ui_command& cmd) const
 			case menu_type::load_mru:
 			case menu_type::palette:
 			case menu_type::area:
-			case menu_type::addon:
 			case menu_type::side:
 			case menu_type::time:
 			case menu_type::schedule:
@@ -487,17 +503,17 @@ bool editor_controller::can_execute_command(const hotkey::ui_command& cmd) const
 	case HOTKEY_EDITOR_AREA_SAVE:
 		return 	!get_current_map_context().is_pure_map() &&
 				!get_current_map_context().get_time_manager()->get_area_ids().empty()
-				&& !get_current_map_context().map().selection().empty();
+				&& get_current_map_context().map().anything_selected();
 
 	case HOTKEY_EDITOR_SELECTION_EXPORT:
 	case HOTKEY_EDITOR_SELECTION_CUT:
 	case HOTKEY_EDITOR_SELECTION_COPY:
 	case HOTKEY_EDITOR_SELECTION_FILL:
-		return !get_current_map_context().map().selection().empty()
+		return get_current_map_context().map().anything_selected()
 				&& !toolkit_->is_mouse_action_set(HOTKEY_EDITOR_CLIPBOARD_PASTE);
 	case HOTKEY_EDITOR_SELECTION_RANDOMIZE:
-		return (get_current_map_context().map().selection().size() > 1
-				&& !toolkit_->is_mouse_action_set(HOTKEY_EDITOR_CLIPBOARD_PASTE));
+		return get_current_map_context().map().num_selected() > 1
+				&& !toolkit_->is_mouse_action_set(HOTKEY_EDITOR_CLIPBOARD_PASTE);
 	case HOTKEY_EDITOR_SELECTION_ROTATE:
 	case HOTKEY_EDITOR_SELECTION_FLIP:
 	case HOTKEY_EDITOR_CLIPBOARD_PASTE:
@@ -512,7 +528,7 @@ bool editor_controller::can_execute_command(const hotkey::ui_command& cmd) const
 	case HOTKEY_EDITOR_SELECT_NONE:
 		return !toolkit_->is_mouse_action_set(HOTKEY_EDITOR_CLIPBOARD_PASTE);
 	case HOTKEY_EDITOR_SELECT_INVERSE:
-		return !get_current_map_context().map().selection().empty()
+		return get_current_map_context().map().anything_selected()
 				&& !get_current_map_context().map().everything_selected()
 				&& !toolkit_->is_mouse_action_set(HOTKEY_EDITOR_CLIPBOARD_PASTE);
 	case HOTKEY_EDITOR_MAP_RESIZE:
@@ -589,7 +605,7 @@ hotkey::action_state editor_controller::get_action_state(const hotkey::ui_comman
 	case HOTKEY_EDITOR_SELECT_ALL:
 		return hotkey::selected_if(get_current_map_context().map().everything_selected());
 	case HOTKEY_EDITOR_SELECT_NONE:
-		return hotkey::selected_if(get_current_map_context().map().selection().empty());
+		return hotkey::selected_if(get_current_map_context().map().nothing_selected());
 	case HOTKEY_EDITOR_TOOL_FILL:
 	case HOTKEY_EDITOR_TOOL_LABEL:
 	case HOTKEY_EDITOR_TOOL_PAINT:
@@ -631,17 +647,15 @@ hotkey::action_state editor_controller::get_action_state(const hotkey::ui_comman
 			return hotkey::action_state::stateless;
 		case menu_type::area:
 			return hotkey::selected_if(index == get_current_map_context().get_active_area());
-		case menu_type::addon:
-			return hotkey::action_state::stateless;
 		case menu_type::side:
 			return hotkey::selected_if(static_cast<std::size_t>(index) == gui_->playing_team_index());
 		case menu_type::time:
-			return hotkey::selected_if(index ==	get_current_map_context().get_time_manager()->get_current_time());
+			return hotkey::selected_if(index == get_current_map_context().get_time_manager()->get_current_time());
 		case menu_type::local_time:
-			return hotkey::selected_if(index ==	get_current_map_context().get_time_manager()->get_current_area_time(
+			return hotkey::selected_if(index == get_current_map_context().get_time_manager()->get_current_area_time(
 				get_current_map_context().get_active_area()));
 		case menu_type::music:
-			return hotkey::on_if(get_current_map_context().is_in_playlist(music_tracks_[index].id()));
+			return hotkey::on_if(get_current_map_context().playlist_contains(music_tracks_[index]));
 		case menu_type::schedule:
 			{
 				tods_map::const_iterator it = tods_.begin();
@@ -721,8 +735,6 @@ bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool p
 				gui_->scroll_to_tiles({ area.begin(), area.end() });
 				return true;
 			}
-		case menu_type::addon:
-			return true;
 		case menu_type::time:
 			{
 				get_current_map_context().set_starting_time(index);
@@ -737,8 +749,8 @@ bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool p
 		case menu_type::music:
 			{
 				//TODO mark the map as changed
-				sound::play_music_once(music_tracks_[index].id());
-				get_current_map_context().add_to_playlist(music_tracks_[index]);
+				sound::play_music_once(music_tracks_[index]->id());
+				get_current_map_context().toggle_track(music_tracks_[index]);
 				return true;
 			}
 		case menu_type::schedule:
@@ -859,7 +871,7 @@ bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool p
 		return true;
 
 	case HOTKEY_EDITOR_SELECT_ADDON:
-		initialize_addon();
+		select_addon();
 		return true;
 
 	case HOTKEY_EDITOR_OPEN_ADDON:
@@ -1059,7 +1071,7 @@ bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool p
 		}
 		return true;
 	case HOTKEY_EDITOR_MAP_GENERATE:
-		context_manager_->generate_map_dialog();
+		context_manager_->generate_map_dialog(map_generators_);
 		return true;
 	case HOTKEY_EDITOR_MAP_APPLY_MASK:
 		context_manager_->apply_mask_dialog();
@@ -1149,12 +1161,19 @@ bool editor_controller::do_execute_command(const hotkey::ui_command& cmd, bool p
 	}
 }
 
-bool editor_controller::initialize_addon() {
-	if(current_addon_id_.empty()) {
-		// editor::initialize_addon can return empty id in case of failure
-		current_addon_id_ = editor::initialize_addon();
-	}
+void editor_controller::select_addon()
+{
+	current_addon_id_ = editor::initialize_addon();
 	context_manager_->set_addon_id(current_addon_id_);
+}
+
+bool editor_controller::initialize_addon()
+{
+	if(current_addon_id_.empty()) {
+		select_addon();
+	}
+
+	// current_addon_id_ could be empty if editor::initialize_addon failed
 	return !current_addon_id_.empty();
 }
 
@@ -1228,10 +1247,6 @@ void editor_controller::show_menu(const std::vector<config>& items_arg, const po
 		context_manager_->expand_areas_menu(generated);
 	}
 
-	else if(first_id == "editor-pbl") {
-		active_menu_ = menu_type::addon;
-	}
-
 	else if(first_id == "editor-switch-time") {
 		active_menu_ = menu_type::time;
 		context_manager_->expand_time_menu(generated);
@@ -1253,8 +1268,8 @@ void editor_controller::show_menu(const std::vector<config>& items_arg, const po
 	else if(first_id == "editor-playlist") {
 		active_menu_ = menu_type::music;
 		std::transform(music_tracks_.begin(), music_tracks_.end(), std::back_inserter(generated),
-			[](const sound::music_track& track) {
-				return config{"label", track.title().empty() ? track.id() : track.title()};
+			[](const std::shared_ptr<sound::music_track>& track) {
+				return config{"label", track->title().empty() ? track->id() : track->title()};
 			});
 	}
 
@@ -1313,7 +1328,7 @@ void editor_controller::unit_description()
 
 void editor_controller::copy_selection()
 {
-	if (!get_current_map_context().map().selection().empty()) {
+	if(get_current_map_context().map().anything_selected()) {
 		context_manager_->get_clipboard() = map_fragment(get_current_map_context().map(), get_current_map_context().map().selection());
 		context_manager_->get_clipboard().center_by_mass();
 	}
@@ -1396,12 +1411,13 @@ void editor_controller::add_area()
 void editor_controller::export_selection_coords()
 {
 	std::stringstream ssx, ssy;
-	std::set<map_location>::const_iterator i = get_current_map_context().map().selection().begin();
-	if (i != get_current_map_context().map().selection().end()) {
+	auto selection = get_current_map_context().map().selection();
+	std::set<map_location>::const_iterator i = selection.begin();
+	if (i != selection.end()) {
 		ssx << "x = " << i->wml_x();
 		ssy << "y = " << i->wml_y();
 		++i;
-		while (i != get_current_map_context().map().selection().end()) {
+		while (i != selection.end()) {
 			ssx << ", " << i->wml_x();
 			ssy << ", " << i->wml_y();
 			++i;
@@ -1620,4 +1636,4 @@ std::vector<std::string> editor_controller::additional_actions_pressed()
 	return toolkit_->get_palette_manager()->active_palette().action_pressed();
 }
 
-} //end namespace editor
+} // end namespace editor

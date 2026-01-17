@@ -31,7 +31,6 @@
 #include "serialization/preprocessor.hpp"
 #include "team.hpp"
 #include "units/unit.hpp"
-#include "game_config_view.hpp"
 
 #include <boost/regex.hpp>
 
@@ -61,7 +60,7 @@ namespace {
 	static const int editor_team_default_gold = 100;
 }
 
-map_context::map_context(const editor_map& map, bool pure_map, const config& schedule, const std::string& addon_id)
+map_context::map_context(const editor_map& map, bool pure_map, const std::string& addon_id)
 	: filename_()
 	, map_data_key_()
 	, embedded_(false)
@@ -70,12 +69,12 @@ map_context::map_context(const editor_map& map, bool pure_map, const config& sch
 	, undo_stack_()
 	, redo_stack_()
 	, actions_since_save_(0)
-	, starting_position_label_locs_()
 	, needs_reload_(false)
 	, needs_terrain_rebuild_(false)
 	, needs_labels_reset_(false)
-	, changed_locations_()
 	, everything_changed_(false)
+	, changed_locations_()
+	, starting_position_label_locs_()
 	, addon_id_(addon_id)
 	, previous_cfg_()
 	, scenario_id_()
@@ -88,10 +87,11 @@ map_context::map_context(const editor_map& map, bool pure_map, const config& sch
 	, labels_(nullptr)
 	, units_()
 	, teams_()
-	, tod_manager_(new tod_manager(schedule))
+	, tod_manager_(new tod_manager)
 	, mp_settings_()
 	, game_classification_()
 	, music_tracks_()
+	, last_map_generator_(nullptr)
 {
 }
 
@@ -112,7 +112,7 @@ static std::string get_map_location(const std::string& file_contents, const std:
 	return std::string(v2);
 }
 
-map_context::map_context(const game_config_view& game_config, const std::string& filename, const std::string& addon_id)
+map_context::map_context(const std::string& filename, const std::string& addon_id)
 	: filename_(filename)
 	, map_data_key_()
 	, embedded_(false)
@@ -121,12 +121,12 @@ map_context::map_context(const game_config_view& game_config, const std::string&
 	, undo_stack_()
 	, redo_stack_()
 	, actions_since_save_(0)
-	, starting_position_label_locs_()
 	, needs_reload_(false)
 	, needs_terrain_rebuild_(false)
 	, needs_labels_reset_(false)
-	, changed_locations_()
 	, everything_changed_(false)
+	, changed_locations_()
+	, starting_position_label_locs_()
 	, addon_id_(addon_id)
 	, previous_cfg_()
 	, scenario_id_()
@@ -139,10 +139,11 @@ map_context::map_context(const game_config_view& game_config, const std::string&
 	, labels_(nullptr)
 	, units_()
 	, teams_()
-	, tod_manager_(new tod_manager(game_config.find_mandatory_child("editor_times", "id", "empty")))
+	, tod_manager_(new tod_manager)
 	, mp_settings_()
 	, game_classification_()
 	, music_tracks_()
+	, last_map_generator_(nullptr)
 {
 	/*
 	 * Overview of situations possibly found in the file:
@@ -481,7 +482,7 @@ void map_context::load_scenario()
 	random_time_ = scenario["random_start_time"].to_bool(false);
 
 	if(!scenario["map_data"].str().empty()) {
-		map_ = editor_map::from_string(scenario["map_data"]); // throws on error
+		map_ = editor_map::from_string(scenario["map_data"].str()); // throws on error
 	} else if(!scenario["map_file"].str().empty()) {
 		map_ = editor_map::from_string(filesystem::read_file(filesystem::get_current_editor_dir(addon_id_) + "/maps/" + filesystem::base_name(scenario["map_file"]))); // throws on error
 	} else {
@@ -517,7 +518,7 @@ void map_context::load_scenario()
 		}
 
 		for(const config& music : evt.child_range("music")) {
-			music_tracks_.emplace(music["name"], sound::music_track(music));
+			music_tracks_.emplace_back(sound::music_track::create(music));
 		}
 
 		for(config& a_unit : evt.child_range("unit")) {
@@ -528,9 +529,23 @@ void map_context::load_scenario()
 	previous_cfg_ = scen;
 }
 
-bool map_context::select_area(int index)
+void map_context::select_area(int index)
 {
-	return map_.set_selection(tod_manager_->get_area_by_index(index));
+	map_.set_selection(tod_manager_->get_area_by_index(index));
+}
+
+bool map_context::playlist_contains(const std::shared_ptr<sound::music_track>& track) const
+{
+	return utils::contains(music_tracks_, track);
+}
+
+void map_context::toggle_track(const std::shared_ptr<sound::music_track>& track)
+{
+	if(playlist_contains(track)) {
+		music_tracks_.remove(track);
+	} else {
+		music_tracks_.push_back(track);
+	}
 }
 
 void map_context::draw_terrain(const t_translation::terrain_code& terrain, const map_location& loc, bool one_layer_only)
@@ -684,24 +699,24 @@ config map_context::to_config()
 	// write out all the scenario data below
 
 	// [time]s and [time_area]s
-	// put the [time_area]s into the event to keep as much editor-specific stuff separated in its own event as possible
 	config times = tod_manager_->to_config(current_textdomain);
-	times.remove_attribute("turn_at");
-	times.remove_attribute("it_is_a_new_turn");
-	if(scenario["turns"].to_int() == -1) {
+
+	// TODO: random_start_time is written separately above. Should we use the value from the ToD manager?
+	times.remove_attributes("turn_at", "it_is_a_new_turn", "random_start_time");
+
+	if(times["turns"].to_int() == -1) {
 		times.remove_attribute("turns");
-	} else {
-		scenario["turns"] = times["turns"];
 	}
 
-	for(const config& time : times.child_range("time")) {
-		config& t = scenario.add_child("time");
-		t.append(time);
+	if(times["current_time"].to_int() == 0) {
+		times.remove_attribute("current_time");
 	}
-	for(const config& time_area : times.child_range("time_area")) {
-		config& t = event.add_child("time_area");
-		t.append(time_area);
-	}
+
+	scenario.merge_attributes(times);
+	scenario.append_children_by_move(times, "time");
+
+	// put the [time_area]s into the event to keep as much editor-specific stuff separated in its own event as possible
+	event.append_children_by_move(times, "time_area");
 
 	// [label]s
 	labels_.write(event);
@@ -730,13 +745,13 @@ config map_context::to_config()
 	}
 
 	// [music]s
-	for(const music_map::value_type& track : music_tracks_) {
-		track.second.write(event, true);
+	for(const auto& track : music_tracks_) {
+		track->write(event, true);
 	}
 
 	// [unit]s
 	preproc_map traits_map;
-	preprocess_file(game_config::path + "/data/core/macros/traits.cfg", &traits_map);
+	preprocess_file(game_config::path + "/data/core/macros/traits.cfg", traits_map);
 
 	for(const auto& unit : units_) {
 		config& u = event.add_child("unit");
@@ -762,8 +777,7 @@ config map_context::to_config()
 
 		config& mods = u.add_child("modifications");
 		if(unit.loyal()) {
-			config trait_loyal = io::read(preprocess_string("{TRAIT_LOYAL}", &traits_map, "wesnoth-help"));
-			mods.append(std::move(trait_loyal));
+			mods.append(io::read(*preprocess_string("{TRAIT_LOYAL}", "wesnoth-help", traits_map)));
 		}
 		//TODO this entire block could also be replaced by unit.write(u, true)
 		//however, the resultant config is massive and contains many attributes we don't need.
@@ -818,8 +832,8 @@ void map_context::save_schedule(const std::string& schedule_id, const std::strin
 			/* If exists, read the schedule.cfg
 			 * and insert [editor_times] block at correct place */
 			preproc_map editor_map;
-			editor_map["EDITOR"] = preproc_define("true");
-			schedule = io::read(*preprocess_file(schedule_path, &editor_map));
+			editor_map.try_emplace("EDITOR");
+			schedule = io::read(*preprocess_file(schedule_path, editor_map));
 		}
 	} catch(const filesystem::io_exception& e) {
 		utils::string_map symbols;

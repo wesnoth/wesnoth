@@ -101,7 +101,7 @@ typedef t_translation::ter_list::const_iterator ter_iter;
 std::string print_behavior_description(
 	const ter_iter& start,
 	const ter_iter& end,
-	const std::shared_ptr<terrain_type_data>& tdata,
+	const terrain_type_data& tdata,
 	bool first_level = true,
 	bool begin_best = true)
 {
@@ -131,7 +131,7 @@ std::string print_behavior_description(
 				// TRANSLATORS: in a description of an overlay terrain, the terrain that it's placed on
 				names.push_back(_("base terrain"));
 			} else {
-				const terrain_type tt = tdata->get_terrain_info(*i);
+				const terrain_type& tt = tdata.get_terrain_info(*i);
 				if(!tt.editor_name().empty())
 					names.push_back(tt.editor_name());
 			}
@@ -147,7 +147,7 @@ std::string print_behavior_description(
 	} else {
 		std::vector<std::string> names;
 		for(ter_iter i = *last_change_pos+1; i != end; ++i) {
-			const terrain_type tt = tdata->get_terrain_info(*i);
+			const terrain_type& tt = tdata.get_terrain_info(*i);
 			if(!tt.editor_name().empty())
 				names.push_back(tt.editor_name());
 		}
@@ -219,8 +219,7 @@ std::string terrain_topic_generator::operator()() const {
 		ss << type_.help_topic_text().str() << "\n";
 	}
 
-	std::shared_ptr<terrain_type_data> tdata = load_terrain_types_data();
-
+	auto tdata = terrain_type_data::get();
 	if(!tdata) {
 		WRN_HP << "When building terrain help topics, we couldn't acquire any terrain types data";
 		return ss.str();
@@ -280,11 +279,11 @@ std::string terrain_topic_generator::operator()() const {
 
 		const t_translation::ter_list& underlying_mvt_terrains = type_.mvt_type();
 		ss << "\n" << _("Movement properties: ");
-		ss << print_behavior_description(underlying_mvt_terrains.begin(), underlying_mvt_terrains.end(), tdata) << "\n";
+		ss << print_behavior_description(underlying_mvt_terrains.begin(), underlying_mvt_terrains.end(), *tdata) << "\n";
 
 		const t_translation::ter_list& underlying_def_terrains = type_.def_type();
 		ss << "\n" << _("Defense properties: ");
-		ss << print_behavior_description(underlying_def_terrains.begin(), underlying_def_terrains.end(), tdata) << "\n";
+		ss << print_behavior_description(underlying_def_terrains.begin(), underlying_def_terrains.end(), *tdata) << "\n";
 	}
 
 	if(game_config::debug) {
@@ -317,15 +316,13 @@ std::string terrain_topic_generator::operator()() const {
 		ss << (type_.editor_image().empty() ? "Empty" : type_.editor_image());
 		ss << "\n";
 
-		const t_translation::ter_list& underlying_mvt_terrains = tdata->underlying_mvt_terrain(type_.number());
 		ss << "\nDebug Mvt Description String:";
-		for(const t_translation::terrain_code& t : underlying_mvt_terrains) {
+		for(const t_translation::terrain_code& t : type_.mvt_type()) {
 			ss << " " << t;
 		}
 
-		const t_translation::ter_list& underlying_def_terrains = tdata->underlying_def_terrain(type_.number());
 		ss << "\nDebug Def Description String:";
-		for(const t_translation::terrain_code& t : underlying_def_terrains) {
+		for(const t_translation::terrain_code& t : type_.def_type()) {
 			ss << " " << t;
 		}
 
@@ -341,6 +338,7 @@ typedef std::pair<std::string, std::string> trait_data;
 //Helper function for printing a list of trait data
 static void print_trait_list(std::stringstream & ss, const std::vector<trait_data> & l)
 {
+	if(l.empty()) return;
 	std::size_t i = 0;
 	ss << markup::make_link(l[i].first, l[i].second);
 
@@ -382,14 +380,16 @@ std::string unit_topic_generator::operator()() const {
 	}
 
 	// Unit Images
-	ss << markup::img(formatter()
-		<< male_type.image() << "~RC(" << male_type.flag_rgb() << ">red)"
-		<< (screen_width >= 1200 ? "~SCALE_SHARP(200%,200%)" : ""));
-
-	if(female_type.image() != male_type.image()) {
+	if(!male_type.image().empty()) {
 		ss << markup::img(formatter()
-			<< female_type.image() << "~RC(" << female_type.flag_rgb() << ">red)"
+			<< male_type.image() << "~RC(" << male_type.flag_rgb() << ">red)"
 			<< (screen_width >= 1200 ? "~SCALE_SHARP(200%,200%)" : ""));
+
+		if(!female_type.image().empty() && female_type.image() != male_type.image()) {
+			ss << markup::img(formatter()
+				<< female_type.image() << "~RC(" << female_type.flag_rgb() << ">red)"
+				<< (screen_width >= 1200 ? "~SCALE_SHARP(200%,200%)" : ""));
+		}
 	}
 
 	ss << "\n";
@@ -504,7 +504,7 @@ std::string unit_topic_generator::operator()() const {
 	// to their respective topics.
 	if(config::const_child_itors traits = type_.possible_traits()) {
 		std::vector<trait_data> must_have_traits;
-		std::vector<trait_data> random_traits;
+		std::vector<trait_data> possible_random_traits;
 		int must_have_nameless_traits = 0;
 
 		for(const config& trait : traits) {
@@ -526,33 +526,30 @@ std::string unit_topic_generator::operator()() const {
 				continue;
 			}
 			const std::string ref_id = "traits_"+trait["id"].str();
-			((trait["availability"].str() == "musthave") ? must_have_traits : random_traits).emplace_back(lang_trait_name, ref_id);
+			((trait["availability"].str() == "musthave") ? must_have_traits : possible_random_traits).emplace_back(lang_trait_name, ref_id);
 		}
 
-		bool line1 = !must_have_traits.empty();
-		bool line2 = !random_traits.empty() && type_.num_traits() > must_have_traits.size();
-
-		if(line1) {
+		// minimum of remaining num_traits and possible random traits (if there are insufficient random traits num_traits cannot be fulfilled)
+		int nr_random_traits = std::min(type_.num_traits() - must_have_traits.size() - must_have_nameless_traits, possible_random_traits.size());
+		if(must_have_traits.empty()) {
+			if(nr_random_traits > 0) {
+				ss << _("Traits") << " "<< VNGETTEXT("(1 of):", "(random $number of):", nr_random_traits, utils::string_map{{"number", std::to_string(nr_random_traits)}}) << font::nbsp;
+				print_trait_list(ss, possible_random_traits);
+				ss << "\n";
+			}
+		} else {
 			ss << _("Traits");
-			if(line2) {
+			if(nr_random_traits > 0) {
 				ss << "\n(" << must_have_traits.size() << "):" << font::nbsp;
 				print_trait_list(ss, must_have_traits);
 
-				ss << "\n" << "("
-				   << (type_.num_traits() - must_have_traits.size() - must_have_nameless_traits)
-				   << "):" << font::nbsp;
-				print_trait_list(ss, random_traits);
+				ss << "\n" << VNGETTEXT("(1 of):", "(random $number of):", nr_random_traits, utils::string_map{{"number", std::to_string(nr_random_traits)}}) << font::nbsp;
+				print_trait_list(ss, possible_random_traits);
 			} else {
 				ss << ":" << font::nbsp;
 				print_trait_list(ss, must_have_traits);
 			}
 			ss << "\n";
-		} else {
-			if(line2) {
-				ss << _("Traits") << " (" << (type_.num_traits() - must_have_nameless_traits) << "):" << font::nbsp;
-				print_trait_list(ss, random_traits);
-				ss << "\n";
-			}
 		}
 	}
 
@@ -564,7 +561,7 @@ std::string unit_topic_generator::operator()() const {
 		bool start = true;
 
 		for(const auto& ability : type_.abilities_metadata()) {
-			const std::string ref_id = ability_prefix + ability.id + ability.name.base_str();
+			const std::string ref_id = ability_prefix + ability.help_topic_id;
 
 			if(ability.name.empty()) {
 				continue;
@@ -590,7 +587,7 @@ std::string unit_topic_generator::operator()() const {
 		bool start = true;
 
 		for(const auto& ability : type_.adv_abilities_metadata()) {
-			const std::string ref_id = ability_prefix + ability.id + ability.name.base_str();
+			const std::string ref_id = ability_prefix + ability.help_topic_id;
 
 			if(ability.name.empty()) {
 				continue;
@@ -741,15 +738,14 @@ std::string unit_topic_generator::operator()() const {
 
 			// special
 			if(has_special) {
-				std::vector<std::pair<t_string, t_string>> specials = attack.special_tooltips();
+				auto specials = attack.special_tooltips();
 				if(!specials.empty()) {
 					std::stringstream specials_ss;
 					std::string lang_special = "";
 					const std::size_t specials_size = specials.size();
 					for(std::size_t i = 0; i != specials_size; ++i) {
-						const std::string ref_id = std::string("weaponspecial_")
-							+ specials[i].first.base_str();
-						lang_special = (specials[i].first);
+						const std::string ref_id = std::string("weaponspecial_") + specials[i].help_topic_id;
+						lang_special = (specials[i].name);
 						specials_ss << markup::make_link(lang_special, ref_id);
 						if(i+1 != specials_size) {
 							specials_ss << ", "; //comma placed before next special
@@ -827,7 +823,7 @@ std::string unit_topic_generator::operator()() const {
 	// Terrain Modifiers table
 	//
 	std::stringstream().swap(table_ss);
-	if(std::shared_ptr<terrain_type_data> tdata = load_terrain_types_data()) {
+	if(auto tdata = terrain_type_data::get()) {
 		// Print the terrain modifier table of the unit.
 		ss << "\n" << markup::tag("header", _("Terrain Modifiers"));
 

@@ -184,5 +184,9 @@ $NDK/ndk-build SUPPORT_WEBP=true APP_ABI="$ARCHS"
 for lib in libs/*/*.so
 do
 	instdir=$(basename $(dirname $lib))
-	cp $lib $PREFIXDIR/$instdir/lib/
+	# Only copy if instdir is in ARCHS
+	if [[ " $ARCHS " == *" $instdir "* ]]; then
+		mkdir -p "$PREFIXDIR/$instdir/lib"
+		cp "$lib" "$PREFIXDIR/$instdir/lib/"
+	fi
 done

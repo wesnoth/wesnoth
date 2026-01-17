@@ -24,7 +24,6 @@
 #include "filesystem.hpp"          // for get_user_data_dir, etc
 #include "game_classification.hpp" // for game_classification, etc
 #include "game_config.hpp"         // for path, etc
-#include "game_config_manager.hpp" // for game_config_manager
 #include "game_initialization/multiplayer.hpp"  // for start_client, etc
 #include "game_initialization/playcampaign.hpp" // for play_game, etc
 #include "game_initialization/singleplayer.hpp" // for sp_create_mode
@@ -82,7 +81,6 @@
 #endif
 
 #include <algorithm> // for copy, max, min, stable_sort
-#include <cstdlib>   // for system
 #include <new>
 #include <thread>
 #include <utility> // for pair
@@ -114,6 +112,7 @@ static lg::log_domain log_enginerefac("enginerefac");
 
 game_launcher::game_launcher(const commandline_options& cmdline_opts)
 	: cmdline_opts_(cmdline_opts)
+	, config_manager_(cmdline_opts)
 	, font_manager_()
 	, image_manager_()
 	, main_event_context_()
@@ -128,7 +127,7 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts)
 	, multiplayer_server_()
 	, jump_to_multiplayer_(false)
 	, jump_to_campaign_{}
-	, jump_to_editor_(false)
+	, jump_to_editor_()
 	, load_data_()
 {
 	bool no_music = false;
@@ -170,20 +169,26 @@ game_launcher::game_launcher(const commandline_options& cmdline_opts)
 	if(cmdline_opts_.debug_dot_level)
 		gui2::debug_layout_graph::set_level(*cmdline_opts_.debug_dot_level);
 #endif
-	if(cmdline_opts_.editor) {
-		jump_to_editor_ = true;
-		if(!cmdline_opts_.editor->empty()) {
-			load_data_ = savegame::load_game_metadata{
-				savegame::save_index_class::default_saves_dir(), *cmdline_opts_.editor};
-		}
-	}
+	if(cmdline_opts_.editor)
+		jump_to_editor_ = cmdline_opts_.editor;
 	if(cmdline_opts_.fps)
 		prefs::get().set_show_fps(true);
 	if(cmdline_opts_.fullscreen)
 		prefs::get().set_fullscreen(true);
-	if(cmdline_opts_.load)
+	if(cmdline_opts_.load) {
+#ifdef __cpp_aggregate_paren_init
+		load_data_.emplace(
+			savegame::save_index_class::default_saves_dir(), *cmdline_opts_.load);
+#else
 		load_data_ = savegame::load_game_metadata{
 			savegame::save_index_class::default_saves_dir(), *cmdline_opts_.load};
+#endif
+		try {
+			load_data_->read_file();
+		} catch(const game::load_game_failed&) {
+			load_data_.reset();
+		}
+	}
 	if(cmdline_opts_.max_fps) {
 		prefs::get().set_refresh_rate(std::clamp(*cmdline_opts_.max_fps, 1, 1000));
 	}
@@ -367,7 +372,7 @@ bool game_launcher::init_lua_script()
 
 			/* Cancel all "jumps" to editor / campaign / multiplayer */
 			jump_to_multiplayer_ = false;
-			jump_to_editor_ = false;
+			jump_to_editor_ = utils::nullopt;
 			jump_to_campaign_.jump = false;
 
 			std::string full_plugin((std::istreambuf_iterator<char>(*sf)), std::istreambuf_iterator<char>());
@@ -451,7 +456,7 @@ bool game_launcher::play_test()
 
 	set_test(test_scenarios_.at(0));
 
-	game_config_manager::get()->load_game_config_for_game(state_.classification(), state_.get_scenario_id());
+	config_manager_.load_game_config_for_game(state_.classification(), state_.get_scenario_id());
 
 	try {
 		campaign_controller ccontroller(state_);
@@ -532,7 +537,7 @@ game_launcher::unit_test_result game_launcher::unit_test()
 
 game_launcher::unit_test_result game_launcher::single_unit_test()
 {
-	game_config_manager::get()->load_game_config_for_game(state_.classification(), state_.get_scenario_id());
+	config_manager_.load_game_config_for_game(state_.classification(), state_.get_scenario_id());
 
 	level_result::type game_res = level_result::type::fail;
 	try {
@@ -559,10 +564,16 @@ game_launcher::unit_test_result game_launcher::single_unit_test()
 	savegame::replay_savegame save(state_, compression::format::none);
 	save.save_game_automatic(false, "unit_test_replay");
 
+#ifdef __cpp_aggregate_paren_init
+	load_data_.emplace(
+		savegame::save_index_class::default_saves_dir(), save.filename(), "", true, true, false);
+#else
 	load_data_ = savegame::load_game_metadata{
 		savegame::save_index_class::default_saves_dir(), save.filename(), "", true, true, false};
+#endif
+	load_data_->read_file();
 
-	if(!load_game()) {
+	if(!load_prepared_game()) {
 		PLAIN_LOG << "Failed to load the replay!";
 		return unit_test_result::TEST_FAIL_LOADING_REPLAY; // failed to load replay
 	}
@@ -612,9 +623,9 @@ bool game_launcher::play_screenshot_mode()
 		return true;
 	}
 
-	game_config_manager::get()->load_game_config_for_editor();
+	config_manager_.load_game_config_for_editor();
 
-	::init_textdomains(game_config_manager::get()->game_config());
+	::init_textdomains(config_manager_.game_config());
 
 	editor::start(false, screenshot_map_, true, screenshot_filename_);
 	return false;
@@ -630,7 +641,7 @@ bool game_launcher::play_render_image_mode()
 	DBG_GENERAL << "Current campaign type: " << campaign_type::get_string(state_.classification().type);
 
 	try {
-		game_config_manager::get()->load_game_config_for_game(state_.classification(), state_.get_scenario_id());
+		config_manager_.load_game_config_for_game(state_.classification(), state_.get_scenario_id());
 	} catch(const config::error& e) {
 		PLAIN_LOG << "Error loading game config: " << e.what();
 		return false;
@@ -656,29 +667,19 @@ bool game_launcher::has_load_data() const
 	return load_data_.has_value();
 }
 
-bool game_launcher::load_game()
+savegame::load_game_metadata game_launcher::extract_load_data()
 {
-	assert(game_config_manager::get());
+	return std::exchange(load_data_, utils::nullopt).value();
+}
 
+bool game_launcher::load_game_prompt()
+{
 	DBG_GENERAL << "Current campaign type: " << campaign_type::get_string(state_.classification().type);
+	assert(!load_data_);
 
-	savegame::loadgame load(savegame::save_index_class::default_saves_dir(), state_);
-	if(load_data_) {
-		load.data() = std::move(*load_data_);
-		clear_loaded_game();
-	}
-
+	// FIXME: evaluate which of these damn catch blocks are still necessary
 	try {
-		if(!load.load_game()) {
-			return false;
-		}
-
-		load.set_gamestate();
-		try {
-			game_config_manager::get()->load_game_config_for_game(state_.classification(), state_.get_scenario_id());
-		} catch(const config::error&) {
-			return false;
-		}
+		load_data_ = savegame::load_interactive();
 
 	} catch(const config::error& e) {
 		if(e.message.empty()) {
@@ -709,23 +710,32 @@ bool game_launcher::load_game()
 		return false;
 	}
 
-	play_replay_ = load.data().show_replay;
-	LOG_CONFIG << "is middle game savefile: " << (state_.is_mid_game_save() ? "yes" : "no");
-	LOG_CONFIG << "show replay: " << (play_replay_ ? "yes" : "no");
-	// in case load.data().show_replay && state_.is_start_of_scenario
+	// If the player canceled loading, we won't have any load data at this point
+	return has_load_data();
+}
+
+bool game_launcher::load_prepared_game()
+{
+	auto load_data = extract_load_data();
+	savegame::set_gamestate(state_, load_data);
+
+	play_replay_ = load_data.show_replay;
+
+	// in case show_replay && is_start_of_scenario
 	// there won't be any turns to replay, but the
 	// user gets to watch the intro sequence again ...
-
-	if(!state_.is_start_of_scenario() && load.data().show_replay) {
+	if(load_data.show_replay && !state_.is_start_of_scenario()) {
 		state_.statistics().clear_current_scenario();
 	}
 
-	if(state_.classification().is_multiplayer()) {
-		state_.unify_controllers();
+	if(load_data.cancel_orders) {
+		state_.cancel_orders();
 	}
 
-	if(load.data().cancel_orders) {
-		state_.cancel_orders();
+	try {
+		config_manager_.load_game_config_for_game(state_.classification(), state_.get_scenario_id());
+	} catch(const config::error&) {
+		return false;
 	}
 
 	return true;
@@ -777,12 +787,10 @@ bool game_launcher::goto_multiplayer()
 bool game_launcher::goto_editor()
 {
 	if(jump_to_editor_) {
-		jump_to_editor_ = false;
+		// If no filename was specified, this will be an empty string.
+		const std::string to_open = std::exchange(jump_to_editor_, utils::nullopt).value();
 
-		const std::string to_open = load_data_ ? filesystem::normalize_path(load_data_->filename) : "";
-		clear_loaded_game();
-
-		if(start_editor(to_open) == editor::EXIT_QUIT_TO_DESKTOP) {
+		if(start_editor(filesystem::normalize_path(to_open)) == editor::EXIT_QUIT_TO_DESKTOP) {
 			return false;
 		}
 	}
@@ -870,9 +878,9 @@ bool game_launcher::play_multiplayer(mp_mode mode)
 			}
 		}
 
-		// create_engine already calls game_config_manager::get()->load_config but maybe its better to have MULTIPLAYER
+		// create_engine already calls config_manager_.load_config but maybe its better to have MULTIPLAYER
 		// defined while we are in the lobby.
-		game_config_manager::get()->load_game_config_for_create(true);
+		config_manager_.load_game_config_for_create(true);
 
 		events::discard_input(); // prevent the "keylogger" effect
 		cursor::set(cursor::NORMAL);
@@ -950,7 +958,7 @@ bool game_launcher::play_multiplayer_commandline()
 
 	DBG_MP << "starting multiplayer game from the commandline";
 
-	game_config_manager::get()->load_game_config_for_create(true);
+	config_manager_.load_game_config_for_create(true);
 
 	events::discard_input(); // prevent the "keylogger" effect
 	cursor::set(cursor::NORMAL);
@@ -996,7 +1004,7 @@ void game_launcher::launch_game(reload_mode reload)
 
 		if(reload == reload_mode::RELOAD_DATA) {
 			try {
-				game_config_manager::get()->load_game_config_for_game(
+				config_manager_.load_game_config_for_game(
 					state_.classification(), state_.get_scenario_id());
 			} catch(const config::error&) {
 				return;
@@ -1036,9 +1044,9 @@ editor::EXIT_STATUS game_launcher::start_editor(const std::string& filename)
 {
 	editor::EXIT_STATUS res = editor::EXIT_STATUS::EXIT_NORMAL;
 	while(true) {
-		game_config_manager::get()->load_game_config_for_editor();
+		config_manager_.load_game_config_for_editor();
 
-		::init_textdomains(game_config_manager::get()->game_config());
+		::init_textdomains(config_manager_.game_config());
 
 		res = editor::start(res != editor::EXIT_RELOAD_DATA, filename);
 
@@ -1046,7 +1054,7 @@ editor::EXIT_STATUS game_launcher::start_editor(const std::string& filename)
 			return res;
 		}
 
-		game_config_manager::get()->reload_changed_game_config();
+		config_manager_.reload_changed_game_config();
 	}
 
 	return editor::EXIT_ERROR; // not supposed to happen

@@ -215,30 +215,37 @@ BOOST_AUTO_TEST_CASE(test_config_attribute_value)
 	BOOST_CHECK_EQUAL(x_str, "123456789123");
 
 // check heterogeneous comparison
-	c["x"] = 987654321;
-	BOOST_CHECK_EQUAL(c["x"], 987654321);
+	using namespace std::literals;
+
 	c["x"] = "1";
 	BOOST_CHECK_EQUAL(c["x"], "1");
 	c["x"] = 222;
 	BOOST_CHECK_EQUAL(c["x"], "222");
+	BOOST_CHECK_EQUAL(c["x"], "222"s);
 	c["x"] = "test";
-	BOOST_CHECK_EQUAL(c["x"], "test");
-	c["x"] = "33333";
-	BOOST_CHECK_EQUAL(c["x"], 33333);
-	c["x"] = "yes";
-	BOOST_CHECK_EQUAL(c["x"], true);
+	BOOST_CHECK_EQUAL(c["x"], "test"sv);
 	c["x"] = false;
 	BOOST_CHECK_EQUAL(c["x"], "no");
-	c["x"] = 1.23456789;
-	BOOST_CHECK_EQUAL(c["x"], 1.23456789);
-#if 1 // FIXME: this should work. it doesn't work. looks like it's getting stored as 9.8765432099999995
-	c["x"] = "9.87654321";
-	BOOST_CHECK_EQUAL(c["x"], 9.87654321);
-#endif
+	BOOST_CHECK_EQUAL(c["x"], "false");
+	c["x"] = 9.87654321;
+	BOOST_CHECK_EQUAL(c["x"], "9.87654321");
+	BOOST_CHECK_EQUAL(c["x"], t_string{"9.87654321"});
+	BOOST_CHECK_EQUAL(c["x"], config_attribute_value::create("9.87654321"));
 	c["x"] = "sfvsdgdsfg";
-	BOOST_CHECK_NE(c["x"], 0);
-	BOOST_CHECK_NE(c["x"], true);
+	BOOST_CHECK_EQUAL(c["x"], "sfvsdgdsfg");
+	BOOST_CHECK_EQUAL(c["x"], "sfvsdgdsfg"s);
+	BOOST_CHECK_EQUAL(c["x"], "sfvsdgdsfg"sv);
+	BOOST_CHECK_EQUAL(c["x"], t_string{"sfvsdgdsfg"});
 	BOOST_CHECK_NE(c["x"], "a random string");
+
+	// reversed order heterogenous comparison
+	c["x"] = 9.87654321;
+	BOOST_CHECK_EQUAL("9.87654321", c["x"]);
+	BOOST_CHECK_EQUAL(t_string{"9.87654321"}, c["x"]);
+	BOOST_CHECK_EQUAL(config_attribute_value::create("9.87654321"), c["x"]);
+	BOOST_CHECK_NE("1.23456789", c["x"]);
+	BOOST_CHECK_NE("1.23456789"s, c["x"]);
+	BOOST_CHECK_NE("1.23456789"sv, c["x"]);
 
 	// blank != "" test.
 	c.clear();
@@ -266,6 +273,11 @@ BOOST_AUTO_TEST_CASE(test_config_attribute_value)
 
 BOOST_AUTO_TEST_CASE(test_variable_info)
 {
+	// Returns the integer value of the given variable in the config
+	const auto scalar_value = [](const std::string& var, const config& cfg) {
+		return variable_access_const{var, cfg}.as_scalar().to_int();
+	};
+
 	config c;
 	{
 		variable_access_const access("", c);
@@ -303,13 +315,13 @@ BOOST_AUTO_TEST_CASE(test_variable_info)
 		config c2;
 		variable_access_create access("a.b[0].c[1].d.e.f[2].g", c2);
 		access.as_scalar() = 84;
-		BOOST_CHECK_EQUAL(variable_access_const("a.length", c2).as_scalar(), 1);
-		BOOST_CHECK_EQUAL(variable_access_const("a.b.length", c2).as_scalar(), 1);
-		BOOST_CHECK_EQUAL(variable_access_const("a.b.c.length", c2).as_scalar(), 2);
-		BOOST_CHECK_EQUAL(variable_access_const("a.b.c[1].d.e.f.length", c2).as_scalar(), 3);
+		BOOST_CHECK_EQUAL(scalar_value("a.length", c2), 1);
+		BOOST_CHECK_EQUAL(scalar_value("a.b.length", c2), 1);
+		BOOST_CHECK_EQUAL(scalar_value("a.b.c.length", c2), 2);
+		BOOST_CHECK_EQUAL(scalar_value("a.b.c[1].d.e.f.length", c2), 3);
 		// we set g as a scalar
-		BOOST_CHECK_EQUAL(variable_access_const("a.b.c[1].d.e.f[2].g.length", c2).as_scalar(), 0);
-		BOOST_CHECK_EQUAL(variable_access_const("a.b.c[1].d.e.f[2].g", c2).as_scalar(), 84);
+		BOOST_CHECK_EQUAL(scalar_value("a.b.c[1].d.e.f[2].g.length", c2), 0);
+		BOOST_CHECK_EQUAL(scalar_value("a.b.c[1].d.e.f[2].g", c2), 84);
 	}
 	{
 		config c2;
@@ -347,10 +359,10 @@ BOOST_AUTO_TEST_CASE(test_variable_info)
 		[tag1]
 		[/tag1]
 		*/
-		BOOST_CHECK_EQUAL(variable_access_const("tag1.length", nonempty).as_scalar(), 3);
-		BOOST_CHECK_EQUAL(variable_access_const("tag1.tag2.length", nonempty).as_scalar(), 0);
-		BOOST_CHECK_EQUAL(variable_access_const("tag1[1].tag2.length", nonempty).as_scalar(), 3);
-		BOOST_CHECK_EQUAL(variable_access_const("tag1[1].tag2[2].atribute1", nonempty).as_scalar().to_int(), 88);
+		BOOST_CHECK_EQUAL(scalar_value("tag1.length", nonempty), 3);
+		BOOST_CHECK_EQUAL(scalar_value("tag1.tag2.length", nonempty), 0);
+		BOOST_CHECK_EQUAL(scalar_value("tag1[1].tag2.length", nonempty), 3);
+		BOOST_CHECK_EQUAL(scalar_value("tag1[1].tag2[2].atribute1", nonempty), 88);
 		int count = 0;
 		for([[maybe_unused]] const config& child : variable_access_const("tag1", nonempty).as_array()) {
 			++count;

@@ -244,6 +244,7 @@ image_shape::image_shape(const config& cfg, wfl::action_function_symbol_table& f
 	, resize_mode_(get_resize_mode(cfg["resize_mode"]))
 	, mirror_(cfg.get_old_attribute("mirror", "vertical_mirror", "image"))
 	, actions_formula_(cfg["actions"], &functions)
+	, failure_logged_(false)
 {
 	const std::string& debug = (cfg["debug"]);
 	if(!debug.empty()) {
@@ -264,15 +265,16 @@ void image_shape::draw(wfl::map_formula_callable& variables)
 {
 	DBG_GUI_D << "Image: draw.";
 
-	/**
-	 * @todo formulas are now recalculated every draw cycle which is a  bit
-	 * silly unless there has been a resize. So to optimize we should use an
-	 * extra flag or do the calculation in a separate routine.
-	 */
+	// The name will be passed to the texture loading code on each draw, any caching is left to the
+	// image loading code itself. A name can point to a different image file due to i18n support,
+	// even when the image_name_ isn't a formula.
 	const std::string& name = image_name_(variables);
 
 	if(name.empty()) {
-		DBG_GUI_D << "Image: name is empty or contains invalid formula, will not be drawn.";
+		if(!failure_logged_) {
+			DBG_GUI_D << "Image: name is empty or contains invalid formula, will not be drawn.";
+			failure_logged_ = true;
+		}
 		return;
 	}
 
@@ -287,7 +289,10 @@ void image_shape::draw(wfl::map_formula_callable& variables)
 	texture tex = image::get_texture(image::locator(name), scale_quality);
 
 	if(!tex) {
-		ERR_GUI_D << "Image: '" << name << "' not found and won't be drawn.";
+		if(!failure_logged_) {
+			ERR_GUI_D << "Image: '" << name << "' not found and won't be drawn.";
+			failure_logged_ = true;
+		}
 		return;
 	}
 

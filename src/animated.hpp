@@ -139,7 +139,7 @@ private:
 	bool cycles_;
 	double acceleration_;
 	std::chrono::steady_clock::time_point last_update_tick_;
-	int current_frame_key_;
+	std::size_t current_frame_key_;
 };
 
 // NOTE: this needs to be down here or the templates won't build.

@@ -24,8 +24,8 @@ public:
 	replay_recorder_base();
 	~replay_recorder_base();
 
-	void swap(replay_recorder_base& other);
-	void swap(replay_recorder_base&& other) {swap(other);}
+	void swap(replay_recorder_base& other) noexcept;
+	void swap(replay_recorder_base&& other) noexcept { swap(other); }
 	int get_pos() const;
 
 	int size() const;
@@ -64,4 +64,4 @@ protected:
 };
 
 /** Implement non-member swap function for std::swap (calls @ref replay_recorder_base::swap). */
-void swap(replay_recorder_base& lhs, replay_recorder_base& rhs);
+void swap(replay_recorder_base& lhs, replay_recorder_base& rhs) noexcept;

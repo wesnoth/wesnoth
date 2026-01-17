@@ -247,13 +247,15 @@ std::size_t rich_label::get_split_location(std::string_view text, const point& p
 	return len;
 }
 
-void rich_label::set_dom(const config& dom) {
+void rich_label::set_dom(const config& dom)
+{
 	std::tie(shapes_, size_) = get_parsed_text(dom, point(0,0), init_w_, true);
 	update_canvas();
 	queue_redraw();
 }
 
-void rich_label::set_label(const t_string& text) {
+void rich_label::set_label(const t_string& text)
+{
 	set_dom(markup::parse_text(text));
 }
 
@@ -581,7 +583,7 @@ std::pair<config, point> rich_label::get_parsed_text(
 
 				DBG_GUI_RL << key << ": dst=" << child["dst"];
 
-			} else if(std::find(format_tags.begin(), format_tags.end(), key) != format_tags.end()) {
+			} else if(utils::contains(format_tags, key)) {
 				// TODO only the formatting tags here support nesting
 
 				add_text_with_attribute(*curr_item, line, key);
@@ -861,18 +863,23 @@ void rich_label::signal_handler_left_button_click(bool& handled)
 	DBG_GUI_RL << "(mouse) " << mouse;
 	DBG_GUI_RL << "link count :" << links_.size();
 
+	std::optional<std::string> click_target;
 	for(const auto& entry : links_) {
-		DBG_GUI_RL << "link " << entry.first;
+		DBG_GUI_RL << "link " << entry.second;
 
 		if(entry.first.contains(mouse)) {
-			DBG_GUI_RL << "Clicked link! dst = " << entry.second;
-			sound::play_UI_sound(settings::sound_button_click);
-			if(link_handler_) {
-				link_handler_(entry.second);
-			} else {
-				DBG_GUI_RL << "No registered link handler found";
-			}
+			click_target = entry.second;
+			break;
+		}
+	}
 
+	if (click_target) {
+		DBG_GUI_RL << "Clicked link! dst = " << *click_target;
+		sound::play_UI_sound(settings::sound_button_click);
+		if(link_handler_) {
+			link_handler_(*click_target);
+		} else {
+			DBG_GUI_RL << "No registered link handler found";
 		}
 	}
 

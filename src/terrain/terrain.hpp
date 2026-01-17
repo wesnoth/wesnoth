@@ -66,15 +66,24 @@ public:
 	t_translation::terrain_code number() const { return number_; }
 
 	/**
-	 * The underlying type of the terrain.
+	 * The underlying movement type of the terrain.
+	 *
+	 * The underlying terrain is the name of the terrain for game-logic purposes.
+	 * I.e. if the terrain is simply an alias, the underlying terrain name
+	 * is the name of the terrain(s) that it's aliased to.
 	 *
 	 * Whether "underlying" means "only the types used in [movetype]" is determined
 	 * by the terrain.cfg file, rather than the .cpp code - in 1.14, the terrain.cfg
 	 * file uses only the [movetype] terrains in its alias lists.
+	 *
+	 * This may start with a t_translation::PLUS or t_translation::MINUS to
+	 * indicate whether the movement should be calculated as a best-of or
+	 * worst-of combination. These may also occur later in the list, however if
+	 * both PLUS and MINUS appear in the list then the values calculated are
+	 * implementation defined behavior.
 	 */
 	const t_translation::ter_list& mvt_type() const { return mvt_type_; }
 	const t_translation::ter_list& def_type() const { return def_type_; }
-	const t_translation::ter_list& vision_type() const { return vision_type_; }
 	const t_translation::ter_list& union_type() const { return union_type_; }
 
 	/**
@@ -91,8 +100,6 @@ public:
 	 * This is not related to whether the terrain has an overlay. For example,
 	 * Gg^Uf (flat with old mushrooms) is indivisible (it's only Tt), although
 	 * Gg^Tf (flat with new mushrooms) can be divided (in to Gt and Tt).
-	 *
-	 * TODO: should this document vision_type() too?
 	 *
 	 * @param id the terrain
 	 * @param underlying the corresponding mvt_type(), def_type() or union_type()
@@ -233,15 +240,14 @@ private:
 	//This is the internal number used, WML still uses character strings.
 	t_translation::terrain_code number_;
 	t_translation::ter_list mvt_type_;
-	t_translation::ter_list vision_type_;
 	t_translation::ter_list def_type_;
 	t_translation::ter_list union_type_;
 
-	int height_adjust_;
-	bool height_adjust_set_;
-
 	double submerge_;
+	int height_adjust_;
+
 	bool submerge_set_;
+	bool height_adjust_set_;
 
 	int light_modification_;
 	int max_light_;
@@ -254,10 +260,14 @@ private:
 	t_string income_description_own_;
 
 	std::string editor_group_;
-
-	bool village_, castle_, keep_;
-
-	bool overlay_, combined_;
 	t_translation::terrain_code editor_default_base_;
-	bool hide_help_, hide_in_editor_, hide_if_impassable_;
+
+	bool village_;
+	bool castle_;
+	bool keep_;
+	bool overlay_;
+	bool combined_;
+	bool hide_help_;
+	bool hide_in_editor_;
+	bool hide_if_impassable_;
 };

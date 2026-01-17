@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.5.0+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-07-21 03:54 UTC\n"
+"POT-Creation-Date: 2025-10-21 01:10 UTC\n"
 "PO-Revision-Date: 2024-01-26 18:02+0100\n"
 "Last-Translator: Mejri Ziad <nouveau.dep@gmail.com>\n"
 "Language-Team: none\n"
@@ -227,15 +227,15 @@ msgstr "الأطراف $winners مترابطون."
 msgid "dialog^Turns Over"
 msgstr "إنتهى الدور"
 
-#. [multiplayer_side]: id=Drakes, type=random, description=<img src='portraits/drakes/inferno.webp~BG()' align='middle' float='yes'/><clear/>
+#. [multiplayer_side]: id=Drakes, type=random
 #: data/multiplayer/factions/drakes-aoh.cfg:4
 #: data/multiplayer/factions/drakes-default.cfg:4
 msgid "Drakes"
 msgstr "درايك"
 
-#. [multiplayer_side]: id=Drakes, type=random, description=<img src='portraits/drakes/inferno.webp~BG()' align='middle' float='yes'/><clear/>
-#: data/multiplayer/factions/drakes-aoh.cfg:12
-#: data/multiplayer/factions/drakes-default.cfg:12
+#. [multiplayer_side]: id=Drakes, type=random
+#: data/multiplayer/factions/drakes-aoh.cfg:13
+#: data/multiplayer/factions/drakes-default.cfg:13
 #, fuzzy
 #| msgid ""
 #| "The <bold>text='Drakes'</bold> are a faction of dragon-like "
@@ -246,7 +246,6 @@ msgstr "درايك"
 #| "faction has high mobility but low defense, leading to unusual tactics for "
 #| "a <ref>text='Default Era' dst='..era_era_default'</ref> faction."
 msgid ""
-"\n"
 "The <b>Drakes</b> are a faction of dragon-like <ref dst='.."
 "race_drake'>Drakes</ref> and their lizard <ref dst='..race_lizard'>Saurian</"
 "ref> allies. Drakes are descendants of dragons, but smaller in size. "
@@ -262,15 +261,15 @@ msgstr ""
 "يتمتع فصيل درايك بحركة عالية ولكن دفاع منخفض ، مما يؤدي إلى تكتيكات غير "
 "عادية في <ref>text='العصر القياسي' dst='..era_era_default'</ref> كفصيلة."
 
-#. [multiplayer_side]: id=Dunefolk, type=random, description=<img src='portraits/dunefolk/herbalist.webp~BG()' align='middle' float='yes'/><clear/>
+#. [multiplayer_side]: id=Dunefolk, type=random
 #: data/multiplayer/factions/dunefolk-aoh.cfg:4
 #: data/multiplayer/factions/dunefolk-default.cfg:4
 msgid "Dunefolk"
 msgstr "قوم الواحات"
 
-#. [multiplayer_side]: id=Dunefolk, type=random, description=<img src='portraits/dunefolk/herbalist.webp~BG()' align='middle' float='yes'/><clear/>
-#: data/multiplayer/factions/dunefolk-aoh.cfg:12
-#: data/multiplayer/factions/dunefolk-default.cfg:12
+#. [multiplayer_side]: id=Dunefolk, type=random
+#: data/multiplayer/factions/dunefolk-aoh.cfg:13
+#: data/multiplayer/factions/dunefolk-default.cfg:13
 #, fuzzy
 #| msgid ""
 #| "The <bold>text='Dunefolk'</bold> are a faction of humans from the deserts "
@@ -281,7 +280,6 @@ msgstr "قوم الواحات"
 #| "than those of the Loyalist faction, they make up for this with high "
 #| "mobility — especially on hilly terrains."
 msgid ""
-"\n"
 "The <b>Dunefolk</b> are a faction of humans from the deserts and hills of "
 "the southern lands. The Dunefolk specialize in using terrain features to "
 "coordinate attacks at dawn or dusk. Their ranks boast lawful and liminal "
@@ -298,15 +296,15 @@ msgstr ""
 "وحدات قوم الصحراء تميل إلى أن تكون أكثر تكلفة من تلك الخاصة بالفصيل الموالي، "
 "إلا أنها تعوض عن ذلك بحركة عالية - خاصة على التضاريس الجبلية."
 
-#. [multiplayer_side]: id=Knalgan Alliance, type=random, description=<img src='portraits/dwarves/ulfserker.webp~BG()' align='middle' float='yes'/><clear/>
+#. [multiplayer_side]: id=Knalgan Alliance, type=random
 #: data/multiplayer/factions/knalgans-aoh.cfg:4
 #: data/multiplayer/factions/knalgans-default.cfg:4
 msgid "Knalgan Alliance"
 msgstr "تحالف كنالجان"
 
-#. [multiplayer_side]: id=Knalgan Alliance, type=random, description=<img src='portraits/dwarves/ulfserker.webp~BG()' align='middle' float='yes'/><clear/>
-#: data/multiplayer/factions/knalgans-aoh.cfg:11
-#: data/multiplayer/factions/knalgans-default.cfg:11
+#. [multiplayer_side]: id=Knalgan Alliance, type=random
+#: data/multiplayer/factions/knalgans-aoh.cfg:12
+#: data/multiplayer/factions/knalgans-default.cfg:12
 #, fuzzy
 #| msgid ""
 #| "The <bold>text='Knalgan Alliance'</bold> is a faction of "
@@ -319,7 +317,6 @@ msgstr "تحالف كنالجان"
 #| "on certain terrain and humans who can cover ground that dwarves are not "
 #| "good at fighting in."
 msgid ""
-"\n"
 "The <b>Knalgan Alliance</b> is a faction of <ref dst='..race_dwarf'>Dwarves</"
 "ref> and their outlaw <ref dst='..race_human'>Human</ref> allies. Dwarves "
 "are an old race who live underground and have tough, but short, warriors. "
@@ -337,15 +334,15 @@ msgstr ""
 "إلى مزيج من الأقزام الأقوياء والدفاعيين الذين يجيدون فقط تضاريس معينة والبشر "
 "الذين يمكنهم تغطية الأرض التي لا يجيد الأقزام القتال فيها."
 
-#. [multiplayer_side]: id=Loyalists, type=random, description=<img src='portraits/humans/grand-knight.webp~BG()' align='middle' float='yes'/><clear/>
+#. [multiplayer_side]: id=Loyalists, type=random
 #: data/multiplayer/factions/loyalists-aoh.cfg:4
 #: data/multiplayer/factions/loyalists-default.cfg:4
 msgid "Loyalists"
 msgstr "الموالون"
 
-#. [multiplayer_side]: id=Loyalists, type=random, description=<img src='portraits/humans/grand-knight.webp~BG()' align='middle' float='yes'/><clear/>
-#: data/multiplayer/factions/loyalists-aoh.cfg:12
-#: data/multiplayer/factions/loyalists-default.cfg:12
+#. [multiplayer_side]: id=Loyalists, type=random
+#: data/multiplayer/factions/loyalists-aoh.cfg:13
+#: data/multiplayer/factions/loyalists-default.cfg:13
 #, fuzzy
 #| msgid ""
 #| "The <bold>text='Loyalists'</bold> are a faction of <ref>text='Humans' "
@@ -354,7 +351,6 @@ msgstr "الموالون"
 #| "the Loyalist faction is a very versatile melee-oriented faction with "
 #| "important ranged support from bowmen and mages."
 msgid ""
-"\n"
 "The <b>Loyalists</b> are a faction of <ref dst='..race_human'>Humans</ref> "
 "who are loyal to the throne of Wesnoth. Humans are a versatile race who "
 "specialize in many different areas. Similarly, the Loyalist faction is a "
@@ -367,15 +363,15 @@ msgstr ""
 "متعدد الاستخدامات وموجه نحو الإلتحام ويحظى بدعم متنوع مهم من رماة السهام "
 "والسحرة."
 
-#. [multiplayer_side]: id=Northerners, type=random, description=<img src='portraits/orcs/warlord.webp~BG()' align='middle' float='yes'/><clear/>
+#. [multiplayer_side]: id=Northerners, type=random
 #: data/multiplayer/factions/northerners-aoh.cfg:4
 #: data/multiplayer/factions/northerners-default.cfg:4
 msgid "Northerners"
 msgstr "الشماليون"
 
-#. [multiplayer_side]: id=Northerners, type=random, description=<img src='portraits/orcs/warlord.webp~BG()' align='middle' float='yes'/><clear/>
-#: data/multiplayer/factions/northerners-aoh.cfg:12
-#: data/multiplayer/factions/northerners-default.cfg:11
+#. [multiplayer_side]: id=Northerners, type=random
+#: data/multiplayer/factions/northerners-aoh.cfg:13
+#: data/multiplayer/factions/northerners-default.cfg:12
 #, fuzzy
 #| msgid ""
 #| "The <bold>text='Northerners'</bold> are a faction of <ref>text='Orcs' "
@@ -387,7 +383,6 @@ msgstr "الشماليون"
 #| "The Northerners play best by taking advantage of having many low-cost and "
 #| "high HP soldiers."
 msgid ""
-"\n"
 "The <b>Northerners</b> are a faction of <ref dst='..race_orc'>Orcs</ref> and "
 "their allies who live in the north of the Great Continent, thus their name. "
 "Northerners consist of the warrior orcs race, the enslaved <ref dst='.."
@@ -404,15 +399,15 @@ msgstr ""
 "<ref>text='الأفععوانيون' dst='..race_naga'</ref>. يلعب الشماليون بشكل أفضل "
 "من خلال الاستفادة من وجود العديد من الجنود منخفضي التكلفة وذوي الصحة العالية."
 
-#. [multiplayer_side]: id=Rebels, type=random, description=<img src='portraits/elves/druid.webp~BG()' align='middle' float='yes'/><clear/>
+#. [multiplayer_side]: id=Rebels, type=random
 #: data/multiplayer/factions/rebels-aoh.cfg:4
 #: data/multiplayer/factions/rebels-default.cfg:4
 msgid "Rebels"
 msgstr "المتمردون"
 
-#. [multiplayer_side]: id=Rebels, type=random, description=<img src='portraits/elves/druid.webp~BG()' align='middle' float='yes'/><clear/>
-#: data/multiplayer/factions/rebels-aoh.cfg:12
-#: data/multiplayer/factions/rebels-default.cfg:12
+#. [multiplayer_side]: id=Rebels, type=random
+#: data/multiplayer/factions/rebels-aoh.cfg:13
+#: data/multiplayer/factions/rebels-default.cfg:13
 #, fuzzy
 #| msgid ""
 #| "The <bold>text='Rebels'</bold> are a faction of <ref>text='Elves' dst='.."
@@ -427,7 +422,6 @@ msgstr "المتمردون"
 #| "advantage of their high forest defense, mastery of ranged attacks, and "
 #| "the elves’ neutral alignment."
 msgid ""
-"\n"
 "The <b>Rebels</b> are a faction of <ref dst='..race_elf'>Elves</ref> and "
 "their various forest-dwelling allies. They get their human name, Rebels, "
 "from the time of Heir to the Throne, when they started the rebellion against "
@@ -449,15 +443,15 @@ msgstr ""
 "الأفضل لعب المتمردين للاستفادة من دفاعهم العالي في الغابات، وإتقان الهجمات "
 "بعيدة المدى، والانحياز المحايد لللإلفيين."
 
-#. [multiplayer_side]: id=Undead, type=random, description=<img src='portraits/undead/spectre.webp~BG()' align='middle' float='yes'/><clear/>
+#. [multiplayer_side]: id=Undead, type=random
 #: data/multiplayer/factions/undead-aoh.cfg:4
 #: data/multiplayer/factions/undead-default.cfg:4
 msgid "Undead"
 msgstr "الموتى الأحياء"
 
-#. [multiplayer_side]: id=Undead, type=random, description=<img src='portraits/undead/spectre.webp~BG()' align='middle' float='yes'/><clear/>
-#: data/multiplayer/factions/undead-aoh.cfg:12
-#: data/multiplayer/factions/undead-default.cfg:12
+#. [multiplayer_side]: id=Undead, type=random
+#: data/multiplayer/factions/undead-aoh.cfg:13
+#: data/multiplayer/factions/undead-default.cfg:13
 #, fuzzy
 #| msgid ""
 #| "The <bold>text='Undead'</bold> are a faction of <ref>text='undead' dst='.."
@@ -470,7 +464,6 @@ msgstr "الموتى الأحياء"
 #| "<ref>text='Default Era' dst='..era_era_default'</ref> faction at "
 #| "nighttime."
 msgid ""
-"\n"
 "The <b>Undead</b> are a faction of <ref dst='..race_undead'>undead</ref> "
 "creatures and <ref dst='..race_human'>human</ref> practitioners of dark arts "
 "that usually accompany them. Often, these “Dark Adepts” are the units that "
@@ -1276,59 +1269,59 @@ msgstr ""
 "صحيح."
 
 #. [side]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:21
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:33
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:22
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:34
 msgid "teamname^Revolt"
 msgstr "الثورة"
 
 #. [side]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:50
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:76
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:51
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:77
 msgid "teamname^Human"
 msgstr "البشر"
 
 #. [then]
 #. [objective]: condition=lose
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:114
-#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:135
-#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:274
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:115
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:136
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:278
 msgid "Death of your leader"
 msgstr "وفاة قائدك"
 
 #. [then]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:115
-#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:136
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:116
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:137
 msgid ""
 "Since your team has only one leader, the enemy waves will not be at full "
 "strength."
 msgstr "بما أن فريقك لديه قائد واحد فقط، فإن موجات العدو لن تكون بكامل قوتها."
 
 #. [else]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:118
-#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:143
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:119
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:144
 msgid "Death of both of your team’s leaders"
 msgstr "وفاة كلا قادة فريقك"
 
 #. [else]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:119
-#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:144
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:120
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:145
 msgid ""
 "Since your team has two leaders, the enemy waves will be at full strength."
 msgstr "بما أن فريقك لديه قائدان، فإن موجات العدو ستكون بكامل قوتها."
 
 #. [objective]: condition=win
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:146
-#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:171
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:133
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:157
 msgid "Survive and defeat all enemy waves"
 msgstr "البقاء على قيد الحياة وهزيمة كل موجات العدو"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:166
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:153
 msgid "Dark Forecast — a random survival scenario"
 msgstr "توقعات مظلمة – سيناريو نجاة عشوائي"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:169
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:156
 msgid ""
 "Your aim is to survive the spawning waves of units and defeat the final "
 "archenemies.\n"
@@ -1371,12 +1364,12 @@ msgstr ""
 "• تطبيق WML"
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:188
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:175
 msgid "So this is the accursed valley — a land ours for the taking."
 msgstr "فهذا هو الوادي الملعون - أرض لنا لنأخذها."
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:192
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:179
 msgid ""
 "The inhabitants are rumored to be a strange alliance of man and beast, and "
 "our claim is not going to be unopposed. We must be prepared for the "
@@ -1386,21 +1379,21 @@ msgstr ""
 "بسهولة. يجب أن نكون مستعدين لمفاجآت هذه الأرض."
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:196
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:183
 msgid ""
 "Then let us discover what lies in waiting and teach them not to oppose our "
 "claim."
 msgstr "إذن دعونا نكتشف ما ينتظرنا ونعلمهم ألا يعارضوا مطالبنا."
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:215
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:202
 msgid ""
 "Ugh! How can this be? Defeated by mere barbarians! My gods have forsaken "
 "me..."
 msgstr "قرف! كيف يمكن أن يكون هذا؟ اهزم من قبل مجرد برابرة! لقد تركتني آلهتي.."
 
 #. [message]: speaker=second_unit
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:229
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:216
 msgid ""
 "Cheers of your enemy are the last thing you hear as you slip into death..."
 "their joy fills your last moments with pure hate."
@@ -1409,7 +1402,7 @@ msgstr ""
 "الأخيرة بالكراهية الخالصة."
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:251
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:238
 msgid ""
 "The enemy cheers as a dark mist rises from the land, engulfing you. As "
 "ghostly wisps drain away your will, you realize that your time in this land "
@@ -1420,8 +1413,8 @@ msgstr ""
 
 #. [slider]: id=enemey_gold_factor
 #. [slider]: id=enemy_gold_factor
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:264
-#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:311
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:251
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:297
 msgid "Changes the gold worth of the enemy spawns by a certain percentage"
 msgstr "تغيير القيمة الذهبية لانتشار العدو بنسبة معينة"
 
@@ -1726,31 +1719,31 @@ msgstr ""
 "مطلوبة حتى يعمل السيناريو بشكل صحيح. بواسطة Lord-Knightmare."
 
 #. [side]
-#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:25
-#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:38
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:26
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:39
 msgid "teamname^Invaders"
 msgstr "الغزاة"
 
 #. [side]
-#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:56
-#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:83
-#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:107
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:57
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:84
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:108
 #: data/multiplayer/scenarios/Test_Elevation_Test.cfg:45
 msgid "teamname^Defenders"
 msgstr "المدافعون"
 
 #. [label]
-#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:189
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:175
 msgid "Healing Keep"
 msgstr "معسكر الشفاء"
 
 #. [message]: speaker=narrator
-#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:213
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:199
 msgid "Isle of Mists — a random survival scenario"
 msgstr "جزيرة الضباب – سيناريو نجاة عشوائي"
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:220
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:206
 msgid ""
 "You arrive near a mystic shrine, where the apparitions of ancient armies are "
 "forever trapped and doomed to eternally cleanse the isle of all interlopers."
@@ -1759,7 +1752,7 @@ msgstr ""
 "الجزيرة إلى الأبد من جميع المتطفلين."
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:224
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:210
 msgid ""
 "Phantom armies approach on the horizon. If we defeat them all, they may be "
 "released from this timeless prison."
@@ -1768,17 +1761,17 @@ msgstr ""
 "هذا السجن الخالد."
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:228
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:214
 msgid "Let us prepare ourselves for the coming battle."
 msgstr "دعونا نجهز أنفسنا للمعركة القادمة."
 
 #. [message]: speaker=unit
-#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:247
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:233
 msgid "How can this be? My gods have forsaken me..."
 msgstr "كيف يمكن لهذا أن يحدث؟ لقد تركتني آلهتي.."
 
 #. [message]: speaker=second_unit
-#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:261
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:247
 msgid ""
 "As the cold grasp of death draws nearer, you feel your spirit being "
 "separated from your body. You realize that you will soon be doomed to the "
@@ -1788,7 +1781,7 @@ msgstr ""
 "سيكون محكومًا عليك قريبًا بنفس مصير حراس الضريح الشبحيين."
 
 #. [message]
-#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:283
+#: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:269
 msgid ""
 "A dark mist rises from the land, draining your senses and your will away. "
 "You dimly realize that you will soon join the other ghosts as another "
@@ -1936,8 +1929,13 @@ msgstr "تمثال سولا"
 
 #. [unit]: gender=female
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:101
+#, fuzzy
+#| msgid ""
+#| "A stone-carved likeness of Sulla the Great, also known as Sulla the Just, "
+#| "Sulla the Tyrant, Empress of the Sinking Tower, Lady of the Walking "
+#| "Glacier, Sulla the Incinerator, Sulla the Proud and Sulla the Righteous."
 msgid ""
-"A stone-carved likeness of Sulla the Great, also known as Sulla the Just, "
+"A stone-carved likeness of Aether Mage Sulla, also known as Sulla the Just, "
 "Sulla the Tyrant, Empress of the Sinking Tower, Lady of the Walking Glacier, "
 "Sulla the Incinerator, Sulla the Proud and Sulla the Righteous."
 msgstr ""
@@ -2306,7 +2304,7 @@ msgstr ""
 #. [side]
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:21
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:54
-#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:73
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:70
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:20
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:42
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:64
@@ -2320,7 +2318,7 @@ msgstr "الفريق 1"
 #. [side]
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:32
 #: data/multiplayer/scenarios/4p_Blue_Water_Province.cfg:43
-#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:84
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:81
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:31
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:53
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:75
@@ -2713,19 +2711,19 @@ msgid "In this mixed landscape, five armies battle for supremacy."
 msgstr "في هذا المشهد المختلط، تتقاتل خمسة جيوش من أجل التفوق."
 
 #. [multiplayer]: id=multiplayer_The_Wilderlands
-#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:57
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:54
 msgid "5p — The Wilderlands"
 msgstr "5ل - الأراضي البرية"
 
 #. [multiplayer]: id=multiplayer_The_Wilderlands
 #. [multiplayer]: id=multiplayer_Crusaders_Field
-#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:58
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:55
 #: data/multiplayer/scenarios/6p_Crusaders_Field.cfg:7
 msgid " Recommended setting of 1 gold per village."
 msgstr " يوصى بإعداد قطعة ذهبية واحدة لكل قرية."
 
 #. [multiplayer]: id=multiplayer_The_Wilderlands
-#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:58
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:55
 msgid ""
 "A vast region of wild, untamed wilderness, its terrain dotted with forests, "
 "caves, rivers, and the ruins of ancient fortresses."
@@ -2734,42 +2732,42 @@ msgstr ""
 "وأطلال الحصون القديمة."
 
 #. [side]
-#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:95
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:92
 msgid "teamname^Team 3"
 msgstr "الفريق 3"
 
 #. [side]
-#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:106
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:103
 msgid "teamname^Team 4"
 msgstr "الفريق 4"
 
 #. [side]
-#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:128
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:125
 msgid "teamname^Monsters"
 msgstr "الوحوش"
 
 #. [objective]: condition=win
-#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:245
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:249
 msgid "Defeat all enemy leaders"
 msgstr "هزيمة جميع قادة العدو"
 
 #. [objective]: condition=win
-#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:264
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:268
 msgid "Defeat all monsters"
 msgstr "هزيمة جميع الوحوش"
 
 #. [objective]: condition=win
-#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:282
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:286
 msgid "Defeat the enemy leaders"
 msgstr "هزيمة قادة العدو"
 
 #. [objective]: condition=lose
-#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:287
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:291
 msgid "Death of all your units"
 msgstr "موت جميع وحداتك"
 
 #. [note]
-#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:292
+#: data/multiplayer/scenarios/5p_The_Wilderlands.cfg:296
 msgid "You cannot recruit units."
 msgstr "لا يمكنك تجنيد الوحدات."
 

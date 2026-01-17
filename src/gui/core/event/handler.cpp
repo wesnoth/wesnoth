@@ -526,9 +526,7 @@ void sdl_event_handler::handle_window_event(const SDL_Event& event)
 
 void sdl_event_handler::connect(dispatcher* dispatcher)
 {
-	assert(std::find(dispatchers_.begin(), dispatchers_.end(), dispatcher)
-		   == dispatchers_.end());
-
+	assert(!utils::contains(dispatchers_, dispatcher));
 	DBG_GUI_E << "adding dispatcher " << static_cast<void*>(dispatcher);
 
 	if(dispatchers_.empty()) {
@@ -562,8 +560,7 @@ void sdl_event_handler::disconnect(dispatcher* disp)
 	//activate();
 
 	/***** Validate post conditions. *****/
-	assert(std::find(dispatchers_.begin(), dispatchers_.end(), disp)
-		   == dispatchers_.end());
+	assert(!utils::contains(dispatchers_, disp));
 
 	if(dispatchers_.empty()) {
 		LOG_GUI_E << "deleting unused dispatcher event context";

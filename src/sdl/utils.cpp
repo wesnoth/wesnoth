@@ -27,6 +27,7 @@
 #include <algorithm>
 #include <cassert>
 #include <cstring>
+#include "utils/ranges.hpp"
 #include "utils/span.hpp"
 
 #include <SDL2/SDL_version.h>
@@ -631,7 +632,7 @@ void swap_channels_image(surface& nsurf, channel r, channel g, channel b, channe
 	}
 }
 
-void recolor_image(surface& nsurf, const color_range_map& map_rgb)
+void recolor_image(surface& nsurf, const color_mapping& map_rgb)
 {
 	if(nsurf == nullptr)
 		return;
@@ -645,7 +646,7 @@ void recolor_image(surface& nsurf, const color_range_map& map_rgb)
 	for(auto& pixel : lock.pixel_span()) {
 		auto color = color_t::from_argb_bytes(pixel);
 
-		// Palette use only RGB channels, so remove alpha
+		// Palette uses only RGB channels, so remove alpha
 		uint8_t old_alpha = color.a;
 		color.a = ALPHA_OPAQUE;
 
@@ -703,14 +704,13 @@ void adjust_surface_alpha_add(surface& nsurf, int amount)
 	}
 }
 
-void mask_surface(surface& nsurf, const surface& nmask, bool* empty_result, const std::string& filename)
+bool mask_surface(surface& nsurf, const surface& nmask, const std::string& filename)
 {
 	if(nsurf == nullptr) {
-		*empty_result = true;
-		return;
+		return true;
 	}
 	if(nmask == nullptr) {
-		return;
+		return false;
 	}
 
 	if (nsurf->w != nmask->w) {
@@ -724,37 +724,37 @@ void mask_surface(surface& nsurf, const surface& nmask, bool* empty_result, cons
 		ss << nsurf->w << "x" << nsurf->h;
 		PLAIN_LOG << ss.str();
 		PLAIN_LOG << "It will not be masked, please use: "<< nmask->w << "x" << nmask->h;
-		return;
+		return false;
 	}
 
-	bool empty = true;
+	uint32_t cumulative_alpha{0};
 	{
 		surface_lock lock(nsurf);
 		const_surface_lock mlock(nmask);
 
-		uint32_t* beg = lock.pixels();
-		uint32_t* end = beg + nsurf.area();
-		const uint32_t* mbeg = mlock.pixels();
-		const uint32_t* mend = mbeg + nmask->w*nmask->h;
+		utils::span surf_pixels = lock.pixel_span();
+		utils::span mask_pixels = mlock.pixel_span();
 
-		while(beg != end && mbeg != mend) {
-			auto [r, g, b, alpha] = color_t::from_argb_bytes(*beg);
+		// Note: any pixels outside the range of the smaller surface are ignored.
+		const auto sentinel = std::min(surf_pixels.size(), mask_pixels.size());
 
-			uint8_t malpha = (*mbeg) >> 24;
-			if (alpha > malpha) {
-				alpha = malpha;
-			}
-			if(alpha)
-				empty = false;
+		for(std::size_t i = 0; i < sentinel; ++i) {
+			const uint32_t surf_alpha = surf_pixels[i] & SDL_ALPHA_MASK;
+			const uint32_t mask_alpha = mask_pixels[i] & SDL_ALPHA_MASK;
 
-			*beg = (alpha << 24) + (r << 16) + (g << 8) + b;
+			const auto min_alpha = std::min(surf_alpha, mask_alpha);
 
-			++beg;
-			++mbeg;
+			// Clear the alpha bits before writing the new alpha value.
+			surf_pixels[i] &= ~SDL_ALPHA_MASK;
+			surf_pixels[i] |= min_alpha;
+
+			// This will quickly saturate the leftmost 8 bits,
+			// but we only care whether the final result is 0.
+			cumulative_alpha |= min_alpha;
 		}
 	}
-	if(empty_result)
-		*empty_result = empty;
+
+	return cumulative_alpha == 0;
 }
 
 bool in_mask_surface(const surface& nsurf, const surface& nmask)
@@ -771,24 +771,20 @@ bool in_mask_surface(const surface& nsurf, const surface& nmask)
 		return false;
 	}
 
-	{
-		const_surface_lock lock(nsurf);
-		const_surface_lock mlock(nmask);
+	const_surface_lock lock(nsurf);
+	const_surface_lock mlock(nmask);
 
-		const uint32_t* mbeg = mlock.pixels();
-		const uint32_t* mend = mbeg + nmask->w*nmask->h;
-		const uint32_t* beg = lock.pixels();
-		// no need for 'end', because both surfaces have same size
+	utils::span surf_pixels = lock.pixel_span();
+	utils::span mask_pixels = mlock.pixel_span();
 
-		while(mbeg != mend) {
-			uint8_t malpha = (*mbeg) >> 24;
-			if(malpha == 0) {
-				uint8_t alpha = (*beg) >> 24;
-				if (alpha)
-					return false;
-			}
-			++mbeg;
-			++beg;
+	// Note: unlike in mask_surface, both ranges here have the same size.
+	for(std::size_t i = 0; i < surf_pixels.size(); ++i) {
+		const uint32_t surf_alpha = surf_pixels[i] & SDL_ALPHA_MASK;
+		const uint32_t mask_alpha = mask_pixels[i] & SDL_ALPHA_MASK;
+
+		// A visible pixel (non-zero alpha) which the mask would otherwise hide.
+		if(surf_alpha && mask_alpha == 0) {
+			return false;
 		}
 	}
 
@@ -1390,69 +1386,83 @@ surface get_surface_portion(const surface &src, rect &area)
 
 namespace
 {
-constexpr bool not_alpha(uint32_t pixel)
+template<typename Range>
+bool contains_non_transparent_pixel(const Range& span)
 {
-	return (pixel >> 24) != 0x00;
-}
+	return std::any_of(span.begin(), span.end(),
+		[](uint32_t pixel) { return (pixel & SDL_ALPHA_MASK) != 0; });
 }
 
-rect get_non_transparent_portion(const surface& nsurf)
+/**
+ * Calculates the inclusive distance between two array indices.
+ *
+ * For example, two adjacent columns of pixels should have a
+ * distance of two even though their indices are one apart.
+ *
+ * @pre @a i2 > @a i1
+ */
+auto cover_distance(int i1, int i2)
 {
-	rect res {0,0,0,0};
+	return (i2 - i1) + 1;
+}
 
-	const_surface_lock lock(nsurf);
-	const uint32_t* const pixels = lock.pixels();
+} // namespace
 
-	int n;
-	for(n = 0; n != nsurf->h; ++n) {
-		const uint32_t* const start_row = pixels + n*nsurf->w;
-		const uint32_t* const end_row = start_row + nsurf->w;
+rect get_non_transparent_portion(const surface& surf)
+{
+	auto lock = const_surface_lock{surf};
+	utils::span pixels = lock.pixel_span();
 
-		if(std::find_if(start_row,end_row,not_alpha) != end_row)
+	const auto row_is_not_transparent = [&](std::size_t y) {
+		utils::span row_span = pixels.subspan(y * surf->w, surf->w);
+		return contains_non_transparent_pixel(row_span);
+	};
+
+	const auto column_is_not_transparent = [&](std::size_t x) {
+		// Striding ahead by width yields all pixels in the x'th column.
+		utils::span offset = pixels.subspan(x);
+		auto column_span = offset | utils::views::stride(surf->w);
+		return contains_non_transparent_pixel(column_span);
+	};
+
+	rect res;
+
+	// Find the first non-transparent row from the top.
+	for(int y = 0; y < surf->h; ++y) {
+		if(row_is_not_transparent(y)) {
+			res.y = y;
 			break;
-	}
-
-	res.y = n;
-
-	for(n = 0; n != nsurf->h-res.y; ++n) {
-		const uint32_t* const start_row = pixels + (nsurf->h-n-1)*nsurf->w;
-		const uint32_t* const end_row = start_row + nsurf->w;
-
-		if(std::find_if(start_row,end_row,not_alpha) != end_row)
-			break;
-	}
-
-	// The height is the height of the surface,
-	// minus the distance from the top and
-	// the distance from the bottom.
-	res.h = nsurf->h - res.y - n;
-
-	for(n = 0; n != nsurf->w; ++n) {
-		int y;
-		for(y = 0; y != nsurf->h; ++y) {
-			const uint32_t pixel = pixels[y*nsurf->w + n];
-			if(not_alpha(pixel))
-				break;
 		}
-
-		if(y != nsurf->h)
-			break;
 	}
 
-	res.x = n;
-
-	for(n = 0; n != nsurf->w-res.x; ++n) {
-		int y;
-		for(y = 0; y != nsurf->h; ++y) {
-			const uint32_t pixel = pixels[y*nsurf->w + nsurf->w - n - 1];
-			if(not_alpha(pixel))
-				break;
+	// Find the first non-transparent row from the bottom.
+	for(int y = surf->h - 1; y >= res.y; --y) {
+		if(row_is_not_transparent(y)) {
+			res.h = cover_distance(res.y, y);
+			break;
 		}
-
-		if(y != nsurf->h)
-			break;
 	}
 
-	res.w = nsurf->w - res.x - n;
+	// Discard fully transparent top and bottom rows.
+	pixels = pixels.subspan(
+		static_cast<std::size_t>(res.y) * surf->w,
+		static_cast<std::size_t>(res.h) * surf->w);
+
+	// Find the first non-transparent column from the left.
+	for(int x = 0; x < surf->w; ++x) {
+		if(column_is_not_transparent(x)) {
+			res.x = x;
+			break;
+		}
+	}
+
+	// Find the first non-transparent column from the right.
+	for(int x = surf->w - 1; x >= res.x; --x) {
+		if(column_is_not_transparent(x)) {
+			res.w = cover_distance(res.x, x);
+			break;
+		}
+	}
+
 	return res;
 }

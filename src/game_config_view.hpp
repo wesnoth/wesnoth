@@ -39,18 +39,18 @@ public:
 		return game_config_view(cfg);
 	}
 
-	config_array_view child_range(config_key_type key) const;
+	config_array_view child_range(std::string_view key) const;
 
-	optional_const_config find_child(config_key_type key, const std::string &name, const std::string &value) const;
-	const config& find_mandatory_child(config_key_type key, const std::string &name, const std::string &value) const;
+	optional_const_config find_child(std::string_view key, const std::string &name, const std::string &value) const;
+	const config& find_mandatory_child(std::string_view key, const std::string &name, const std::string &value) const;
 
-	// const config& child(config_key_type key) const;
-	const config& mandatory_child(config_key_type key) const;
-	optional_const_config optional_child(config_key_type key) const;
+	// const config& child(std::string_view key) const;
+	const config& mandatory_child(std::string_view key) const;
+	optional_const_config optional_child(std::string_view key) const;
 
-	const config& child_or_empty(config_key_type key) const;
+	const config& child_or_empty(std::string_view key) const;
 
-	game_config_view merged_children_view(config_key_type key) const;
+	game_config_view merged_children_view(std::string_view key) const;
 
 
 	config_array_view& data()

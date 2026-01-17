@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.18\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-03-17 04:21 UTC\n"
+"POT-Creation-Date: 2025-08-19 15:14 UTC\n"
 "PO-Revision-Date: 2024-05-21 18:22+0800\n"
 "Last-Translator: vimacs <vimacs.hacks@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -6853,18 +6853,18 @@ msgstr "分心"
 #. [skirmisher]: id=distract
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-abilities.cfg:7
 msgid ""
-"This unit negates enemy Zones of Control around itself for allied units (but "
-"not for itself)."
+"Allies adjacent to this unit are not affected by enemy Zones of Control."
 msgstr ""
-"分心:\n"
-"该单位使敌人在他周围的形成的ZoC(控制区域)对友军失效。但他自己仍然要受到敌人"
-"ZoC限制。"
 
 #. [skirmisher]: id=distract
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-abilities.cfg:8
+#, fuzzy
+#| msgid ""
+#| "This unit is capable of distracting opponents, allowing allied units to "
+#| "trespass their Zones of Control and move unhindered around them."
 msgid ""
-"This unit is capable of distracting opponents, allowing allied units to "
-"trespass their Zones of Control and move unhindered around them."
+"This unit is capable of distracting opponents, allowing adjacent allies to "
+"ignore enemy Zones of Control."
 msgstr ""
 "该单位拥有转移对手注意力的能力，可以让友军进入敌人的控制区域并不受阻碍地在对"
 "手周围移动。"
@@ -6992,6 +6992,14 @@ msgstr "这确实是个好消息。我们的人数增加了一倍。现在继续
 
 #~ msgid "Gerrick"
 #~ msgstr "格瑞克"
+
+#~ msgid ""
+#~ "This unit negates enemy Zones of Control around itself for allied units "
+#~ "(but not for itself)."
+#~ msgstr ""
+#~ "分心:\n"
+#~ "该单位使敌人在他周围的形成的ZoC(控制区域)对友军失效。但他自己仍然要受到敌"
+#~ "人ZoC限制。"
 
 #~ msgid "Southbay Guard"
 #~ msgstr "南湾守卫"

@@ -20,9 +20,9 @@
 
 #include "movetype.hpp"
 
-#include "game_config_manager.hpp"
 #include "log.hpp"
 #include "terrain/translation.hpp"
+#include "terrain/type_data.hpp"
 
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
@@ -284,24 +284,19 @@ int movetype::terrain_info::data::calc_value(
 		return params_.default_value;
 	}
 
-	std::shared_ptr<terrain_type_data> tdata;
-	if (game_config_manager::get()){
-		tdata = game_config_manager::get()->terrain_types(); //This permits to get terrain info in unit help pages from the help in title screen, even if there is no residual gamemap object
-	}
-	assert(tdata);
+	const terrain_type& ter_info = terrain_type_data::get()->get_terrain_info(terrain);
 
 	// Get a list of underlying terrains.
-	const t_translation::ter_list & underlying = params_.use_move ?
-			tdata->underlying_mvt_terrain(terrain) :
-			tdata->underlying_def_terrain(terrain);
+	const t_translation::ter_list& underlying = params_.use_move
+		? ter_info.mvt_type()
+		: ter_info.def_type();
 
 	if (terrain_type::is_indivisible(terrain, underlying))
 	{
 		// This is not an alias; get the value directly.
 		int result = params_.default_value;
 
-		const std::string & id = tdata->get_terrain_info(terrain).id();
-		if (const config::attribute_value *val = cfg_.get(id)) {
+		if (const config::attribute_value *val = cfg_.get(ter_info.id())) {
 			// Read the value from our config.
 			result = val->to_int(params_.default_value);
 			if ( params_.eval != nullptr )
@@ -729,7 +724,7 @@ utils::string_map_res movetype::resistances::damage_table() const
 	utils::string_map_res result;
 
 	for(const auto& [key, value] : cfg_.attribute_range()) {
-		result[key] = value;
+		result[key] = value.t_str();
 	}
 
 	return result;
@@ -812,7 +807,7 @@ movetype::movetype(const config & cfg) :
 	flying_ = cfg["flying"].to_bool(flying_);
 
 	for(const config& sn : cfg.child_range("special_note")) {
-		special_notes_.push_back(sn["note"]);
+		special_notes_.push_back(sn["note"].t_str());
 	}
 }
 

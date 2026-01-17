@@ -16,9 +16,9 @@
 #pragma once
 
 #include "editor/editor_common.hpp"
-
 #include "map/map.hpp"
 
+#include <boost/dynamic_bitset.hpp>
 
 namespace editor {
 
@@ -77,13 +77,13 @@ public:
 	/**
 	 * Create an editor map from a map data string
 	 */
-	editor_map(const std::string& data);
+	editor_map(std::string_view data);
 
 	/**
 	 * Wrapper around editor_map(cfg, data) that catches possible exceptions
 	 * and wraps them in a editor_map_load_exception
 	 */
-	static editor_map from_string(const std::string& data);
+	static editor_map from_string(std::string_view data);
 
 	/**
 	 * Create an editor map with the given dimensions and filler terrain
@@ -95,16 +95,6 @@ public:
 	 * copied. Marked "explicit" to avoid potentially harmful automatic conversions.
 	 */
 	explicit editor_map(const gamemap& map);
-
-	/**
-	 * editor_map destructor
-	 */
-	~editor_map();
-
-	/**
-	 * Debugging aid. Check if the widths and heights correspond to the actual map data sizes.
-	 */
-	void sanity_check();
 
 	/**
 	 * Get a contiguous set of tiles having the same terrain as the starting location.
@@ -140,12 +130,17 @@ public:
 	 * Select the given area.
 	 * @param area to select.
 	 */
-	bool set_selection(const std::set<map_location>& area);
+	void set_selection(const std::set<map_location>& area);
 
 	/**
 	 * Return the selection set.
 	 */
-	const std::set<map_location>& selection() const { return selection_; }
+	std::set<map_location> selection() const;
+
+	/**
+	 * Returns a set of all hexes *not* currently selected.
+	 */
+	std::set<map_location> selection_inverse() const;
 
 	/**
 	 * Clear the selection
@@ -168,6 +163,25 @@ public:
 	bool everything_selected() const;
 
 	/**
+	 * @return true if at least one location is selected, false otherwise
+	 */
+	bool anything_selected() const;
+
+	/**
+	 * @return true if at no selections are selected, false otherwise
+	 */
+	bool nothing_selected() const;
+
+	/**
+	 * @return the number of locations selected.
+	 *
+	 * @note This is more efficient than checking selection().size() since
+	 * it avoids allocating a full map_location set and simply queries the
+	 * number of engaged bits in the underlying bitset.
+	 */
+	std::size_t num_selected() const;
+
+	/**
 	 * Resize the map. If the filler is NONE, the border terrain will be copied
 	 * when expanding, otherwise the filler terrain will be inserted there
 	 */
@@ -186,7 +200,7 @@ public:
 	 */
 	bool same_size_as(const gamemap& other) const;
 
-protected:
+private:
 	//helper functions for resizing
 	void expand_right(int count, const t_translation::terrain_code & filler);
 	void expand_left(int count, const t_translation::terrain_code & filler);
@@ -197,10 +211,104 @@ protected:
 	void shrink_top(int count);
 	void shrink_bottom(int count);
 
+	class selection_mask
+	{
+	public:
+		explicit selection_mask(const gamemap_base& map)
+			: stride_(map.total_width())
+			, height_(map.total_height())
+		{
+			bitset_.resize(map.total_area());
+		}
+
+		/**
+		 * Marks @a loc as selected.
+		 * @returns true if the location was previously deselected.
+		 */
+		bool select(const map_location& loc)
+		{
+			return bitset_.test_set(get_index(loc), true) == false;
+		}
+
+		/**
+		 * Marks @a loc as unselected.
+		 * @returns true if the location was previously selected.
+		 */
+		bool deselect(const map_location& loc)
+		{
+			return bitset_.test_set(get_index(loc), false) == true;
+		}
+
+		bool selected(const map_location& loc) const
+		{
+			return bitset_.test(get_index(loc));
+		}
+
+		void select_all()
+		{
+			bitset_.set();
+		}
+
+		void deselect_all()
+		{
+			bitset_.reset();
+		}
+
+		void invert()
+		{
+			bitset_.flip();
+		}
+
+		selection_mask inverted() const
+		{
+			auto res = selection_mask{*this};
+			res.invert();
+			return res;
+		}
+
+		static std::set<map_location> get_locations(const selection_mask& mask)
+		{
+			std::set<map_location> res;
+
+			for(std::size_t i = 0; i < mask.bitset_.size(); ++i) {
+				if(mask.bitset_.test(i)) {
+					res.emplace(mask.get_location(i));
+				}
+			}
+
+			return res;
+		}
+
+		/** Read-only access to the underlying bitset. */
+		const boost::dynamic_bitset<uint64_t>& mask() const
+		{
+			return bitset_;
+		}
+
+	private:
+		/** Indexes @a loc to its corresponding bitflag using row-major ordering. */
+		std::size_t get_index(const map_location& loc) const
+		{
+			return static_cast<std::size_t>(loc.wml_y()) * stride_ + loc.wml_x();
+		}
+
+		/** Gets the corresponding map_location for bit index @a i. */
+		map_location get_location(std::size_t i) const
+		{
+			auto pos = std::div(i, stride_);
+			return {pos.rem, pos.quot, wml_loc{}};
+		}
+
+		boost::dynamic_bitset<uint64_t> bitset_;
+
+		int stride_{0};
+		int height_{0};
+	};
+
 	/**
 	 * The selected hexes
 	 */
-	std::set<map_location> selection_;
+	selection_mask selection_;
 };
 
 

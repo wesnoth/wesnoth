@@ -128,7 +128,7 @@ std::map<std::string, int> addons_client::get_addon_count_by_type()
 	}
 
 	if(is_error_response(response)) {
-		gui2::show_error_message(_("The server responded with an error:") + "\n" + get_last_server_error());
+		gui2::show_error_message(_("The server responded with an error:") + "\n" + get_last_server_error(), true);
 		return counts;
 	}
 
@@ -146,7 +146,7 @@ config addons_client::get_addon_downloads_by_version(const std::string& addon)
 	wait_for_transfer_done(_("Requesting add-on downloads by version..."));
 
 	if(is_error_response(response)) {
-		gui2::show_error_message(_("The server responded with an error:") + "\n" + get_last_server_error());
+		gui2::show_error_message(_("The server responded with an error:") + "\n" + get_last_server_error(), true);
 		config dummy;
 		return dummy;
 	}
@@ -164,7 +164,7 @@ config addons_client::get_forum_auth_usage()
 	wait_for_transfer_done(_("Requesting forum_auth usage..."));
 
 	if(is_error_response(response)) {
-		gui2::show_error_message(_("The server responded with an error:") + "\n" + get_last_server_error());
+		gui2::show_error_message(_("The server responded with an error:") + "\n" + get_last_server_error(), true);
 		config dummy;
 		return dummy;
 	}
@@ -182,7 +182,7 @@ config addons_client::get_addon_admins()
 	wait_for_transfer_done(_("Requesting list of admins..."));
 
 	if(is_error_response(response)) {
-		gui2::show_error_message(_("The server responded with an error:") + "\n" + get_last_server_error());
+		gui2::show_error_message(_("The server responded with an error:") + "\n" + get_last_server_error(), true);
 		config dummy;
 		return dummy;
 	}
@@ -202,7 +202,7 @@ config addons_client::get_hidden_addons(const std::string& username, const std::
 	wait_for_transfer_done(_("Getting list of hidden add-ons..."));
 
 	if(is_error_response(response)) {
-		gui2::show_error_message(_("The server responded with an error:") + "\n" + get_last_server_error());
+		gui2::show_error_message(_("The server responded with an error:") + "\n" + get_last_server_error(), true);
 		config dummy;
 		return dummy;
 	}
@@ -223,7 +223,7 @@ bool addons_client::hide_addon(const std::string& addon, const std::string& user
 	wait_for_transfer_done(_("Hiding add-on..."));
 
 	if(is_error_response(response)) {
-		gui2::show_error_message(_("The server responded with an error:") + "\n" + get_last_server_error());
+		gui2::show_error_message(_("The server responded with an error:") + "\n" + get_last_server_error(), true);
 		return false;
 	}
 
@@ -243,7 +243,7 @@ bool addons_client::unhide_addon(const std::string& addon, const std::string& us
 	wait_for_transfer_done(_("Unhiding add-on..."));
 
 	if(is_error_response(response)) {
-		gui2::show_error_message(_("The server responded with an error:") + "\n" + get_last_server_error());
+		gui2::show_error_message(_("The server responded with an error:") + "\n" + get_last_server_error(), true);
 		return false;
 	}
 
@@ -569,11 +569,12 @@ bool addons_client::try_fetch_addon(const addon_info & addon)
 	if(!(
 		download_addon(archive, addon.id, addon.display_title_full(), addon.current_version, !is_addon_installed(addon.id)) &&
 		install_addon(archive, addon)
-		)) {
+		))
+	{
 		const std::string& server_error = get_last_server_error();
 		if(!server_error.empty()) {
 			gui2::show_error_message(
-				_("The server responded with an error:") + "\n" + server_error);
+				_("The server responded with an error:") + "\n" + server_error, true);
 		}
 		return false;
 	} else {

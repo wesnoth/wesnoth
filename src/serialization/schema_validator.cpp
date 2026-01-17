@@ -277,7 +277,7 @@ bool schema_validator::read_config_file(const std::string& filename)
 			validator.reset(new schema_self_validator());
 		}
 		preproc_map preproc(game_config::config_cache::instance().get_preproc_map());
-		filesystem::scoped_istream stream = preprocess_file(filename, &preproc);
+		filesystem::scoped_istream stream = preprocess_file(filename, preproc);
 		cfg = io::read(*stream, validator.get());
 	} catch(const config::error& e) {
 		ERR_VL << "Failed to read file " << filename << ":\n" << e.what();
@@ -518,7 +518,7 @@ utils::optional<std::map<std::string, wml_key>> schema_validator::find_mandatory
 	const wml_tag* tag, const config& cfg, std::vector<const wml_tag*>& visited) const
 {
 	// Return an empty optional if a super cycle is detected.
-	if(std::find(visited.begin(), visited.end(), tag) != visited.end()) {
+	if(utils::contains(visited, tag)) {
 		return utils::nullopt;
 	}
 
@@ -572,7 +572,7 @@ void schema_validator::validate_mandatory_keys(const std::map<std::string, wml_k
 	std::vector<const wml_tag*>& visited)
 {
 	// Skip validation if a super cycle is detected.
-	if(std::find(visited.begin(), visited.end(), tag) != visited.end()) {
+	if(utils::contains(visited, tag)) {
 		return;
 	}
 

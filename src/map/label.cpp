@@ -22,6 +22,7 @@
 #include "game_data.hpp"
 #include "resources.hpp"
 #include "tooltips.hpp"
+#include "utils/general.hpp"
 
 /**
  * Our definition of map labels being obscured is if the tile is obscured,
@@ -391,8 +392,8 @@ void terrain_label::read(const config& cfg)
 
 	std::string tmp_color = cfg["color"];
 
-	text_ = cfg["text"];
-	tooltip_ = cfg["tooltip"];
+	text_ = cfg["text"].t_str();
+	tooltip_ = cfg["tooltip"].t_str();
 	team_name_ = cfg["team_name"].str();
 	visible_in_fog_ = cfg["visible_in_fog"].to_bool(true);
 	visible_in_shroud_ = cfg["visible_in_shroud"].to_bool();
@@ -577,19 +578,15 @@ bool terrain_label::hidden() const
 	std::string creator = "side:" + std::to_string(creator_ + 1);
 	const std::vector<std::string>& hidden_categories = disp->context().hidden_label_categories();
 
-	if(std::find(hidden_categories.begin(), hidden_categories.end(), category) != hidden_categories.end()) {
+	if(utils::contains(hidden_categories, category)) {
 		return true;
 	}
 
-	if(creator_ >= 0 &&
-		std::find(hidden_categories.begin(), hidden_categories.end(), creator) != hidden_categories.end())
-	{
+	if(creator_ >= 0 && utils::contains(hidden_categories, creator)) {
 		return true;
 	}
 
-	if(!team_name().empty() &&
-		std::find(hidden_categories.begin(), hidden_categories.end(), "team") != hidden_categories.end())
-	{
+	if(!team_name().empty() && utils::contains(hidden_categories, "team")) {
 		return true;
 	}
 

@@ -29,7 +29,6 @@
 #include "team.hpp"
 
 #include <array>
-#include <cstdlib>
 
 static lg::log_domain log_config("config");
 #define LOG_CF LOG_STREAM(info, log_config)
@@ -828,7 +827,7 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine, const
 	// Initialize team and color.
 	unsigned team_name_index = 0;
 	for(const connect_engine::team_data_pod& data : parent_.team_data_) {
-		if(data.team_name == cfg["team_name"]) {
+		if(cfg["team_name"] == data.team_name) {
 			break;
 		}
 
@@ -970,17 +969,18 @@ config side_engine::new_config() const
 
 	if(parent_.params_.saved_game != saved_game_mode::type::midgame) {
 
-		if(!flg_.leader_lock()) {
-			if(controller_ != CNTR_EMPTY) {
+		if(controller_ != CNTR_EMPTY) {
+			if(!flg_.leader_lock()) {
 				auto& leader = res.child_or_add("leader");
 				leader["type"] = flg_.current_leader();
 				leader["gender"] = flg_.current_gender();
 				LOG_MP << "side_engine::new_config: side=" << index_ + 1 << " type=" << leader["type"]
 					   << " gender=" << leader["gender"];
-			} else if(!controller_lock_) {
-				//if controller_lock_ == false and controller_ == CNTR_EMPTY, this means the user disalbles this side, so remove it's leader.
-				res.remove_children("leader");
 			}
+		} else if(!controller_lock_) {
+			// if controller_lock_ == false and controller_ == CNTR_EMPTY, this means the user disalbles this side,
+			// so remove it's leader.
+			res.remove_children("leader");
 		}
 
 		const std::string& new_team_name = parent_.team_data_[team_].team_name;

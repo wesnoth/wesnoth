@@ -27,7 +27,10 @@ class mapgen_gamemap : public gamemap_base {
 public:
 	explicit mapgen_gamemap(std::string_view data);
 	mapgen_gamemap(int w, int h, terrain_code);
-	void set_terrain(const map_location& loc, const terrain_code & terrain, const terrain_type_data::merge_mode mode = terrain_type_data::BOTH, bool replace_if_failed = false) override;
+	gamemap_base::set_terrain_result set_terrain(const map_location& loc,
+		const terrain_code& terrain,
+		const terrain_type_data::merge_mode mode = terrain_type_data::BOTH,
+		bool replace_if_failed = false) override;
 
 	template<typename F>
 	void for_each_loc(const F& f) const

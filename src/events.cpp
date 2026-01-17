@@ -97,10 +97,7 @@ void context::add_handler(sdl_handler* ptr)
 
 bool context::has_handler(const sdl_handler* ptr) const
 {
-	if(handlers.cend() != std::find(handlers.cbegin(), handlers.cend(), ptr)) {
-		return true;
-	}
-	return staging_handlers.cend() != std::find(staging_handlers.cbegin(), staging_handlers.cend(), ptr);
+	return utils::contains(handlers, ptr) || utils::contains(staging_handlers, ptr);
 }
 
 bool context::remove_handler(sdl_handler* ptr)

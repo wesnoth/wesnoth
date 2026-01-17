@@ -20,10 +20,12 @@
 
 #pragma once
 
+#include "color.hpp"
 #include "map/location.hpp"
 
 #include <chrono>
 #include <iterator>
+
 class replay_recorder_base;
 class terrain_label;
 class config;
@@ -32,12 +34,12 @@ class chat_msg {
 public:
 	const std::string &text() const { return text_; }
 	const std::string &nick() const { return nick_; }
-	const std::string &color() const { return color_; }
+	const color_t& color() const { return color_; }
 	const auto& time() const { return time_; }
 	chat_msg(const config &cfg);
 	virtual ~chat_msg();
 private:
-	std::string color_;
+	color_t color_;
 	std::string nick_;
 	std::string text_;
 	std::chrono::system_clock::time_point time_;

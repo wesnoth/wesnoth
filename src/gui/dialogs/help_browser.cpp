@@ -17,6 +17,8 @@
 
 #include "gui/dialogs/help_browser.hpp"
 
+#include "font/pango/escape.hpp"
+#include "font/standard_colors.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/rich_label.hpp"
@@ -27,6 +29,7 @@
 #include "gui/widgets/tree_view_node.hpp"
 #include "gui/widgets/window.hpp"
 #include "help/help.hpp"
+#include "serialization/markup.hpp"
 #include "serialization/string_utils.hpp"
 #include "utils/ci_searcher.hpp"
 
@@ -41,7 +44,7 @@ namespace gui2::dialogs
 namespace
 {
 	int win_w = 0;
-	int tree_w = 0;
+	int rl_init_w = 0;
 }
 
 REGISTER_DIALOG(help_browser)
@@ -59,7 +62,6 @@ help_browser::help_browser(const help::section& toplevel, const std::string& ini
 	} else {
 		initial_topic_.insert(0, "-");
 	}
-	help::init_help();
 }
 
 void help_browser::pre_show()
@@ -70,6 +72,7 @@ void help_browser::pre_show()
 	button& next_button = find_widget<button>("next");
 
 	rich_label& topic_text = find_widget<rich_label>("topic_text");
+	panel& topic_panel = find_widget<panel>("topic_panel");
 
 	next_button.set_active(false);
 	back_button.set_active(false);
@@ -86,24 +89,27 @@ void help_browser::pre_show()
 	toggle_button& contents = find_widget<toggle_button>("contents");
 
 	contents.set_value(true);
-	topic_tree.set_visible(true);
+	topic_panel.set_visible(true);
 	connect_signal_mouse_left_click(contents, [&](auto&&...) {
-		auto parent = topic_text.get_window();
+		auto parent = topic_panel.get_window();
 		// Cache the initial values, get_best_size() keeps changing
+		// initial width of the window
 		if ((parent != nullptr) && (win_w == 0)) {
 			win_w = parent->get_best_size().x;
 		}
-		if (tree_w == 0) {
-			tree_w = topic_tree.get_best_size().x;
+
+		// initial width of the rich label
+		if(rl_init_w == 0) {
+			rl_init_w = topic_text.get_width();
 		}
 
 		// Set RL's width and reshow
-		bool is_contents_visible = (topic_tree.get_visible() == widget::visibility::visible);
-		if (topic_text.get_window()) {
-			topic_text.set_width(win_w - (is_contents_visible ? 0 : tree_w) - 20 /* Padding */);
-			show_topic(history_.at(history_pos_), false);
+		bool is_contents_visible = (topic_panel.get_visible() == widget::visibility::visible);
+		if (parent) {
+			topic_text.set_width(is_contents_visible ? win_w : rl_init_w);
+			show_topic(history_.at(history_pos_), false, true);
 		}
-		topic_tree.set_visible(!is_contents_visible);
+		topic_panel.set_visible(!is_contents_visible);
 		invalidate_layout();
 	});
 
@@ -111,7 +117,7 @@ void help_browser::pre_show()
 	add_to_keyboard_chain(&filter);
 	filter.on_modified([this](const auto& box) { update_list(box.text()); });
 
-	topic_text.register_link_callback(std::bind(&help_browser::show_topic, this, std::placeholders::_1, true));
+	topic_text.register_link_callback(std::bind(&help_browser::show_topic, this, std::placeholders::_1, true, false));
 
 	connect_signal_notify_modified(topic_tree, std::bind(&help_browser::on_topic_select, this));
 
@@ -122,12 +128,9 @@ void help_browser::pre_show()
 	tree_view_node* initial_node = topic_tree.find_widget<tree_view_node>(initial_topic_, false, false);
 	if(initial_node) {
 		initial_node->select_node(true);
-	} else {
-		ERR_HP << "Help browser tried to show topic with id '" << initial_topic_
-		       << "' but that topic could not be found." << std::endl;
 	}
 
-	on_topic_select();
+	show_topic(initial_topic_);
 }
 
 void help_browser::update_list(const std::string& filter_text) {
@@ -159,6 +162,10 @@ bool help_browser::add_topics_for_section(const help::section& parent_section, t
 	}
 
 	for(const help::topic& topic : parent_section.topics) {
+		if (topic.id[0] == '.') {
+			continue;
+		}
+
 		if ((match(topic.id) || match(topic.title)) && (topic.id.compare(0, 2, "..") != 0)) {
 			add_topic(topic.id, topic.title, false, parent_node);
 			topics_added = true;
@@ -183,8 +190,15 @@ tree_view_node& help_browser::add_topic(const std::string& topic_id, const std::
 	return new_node;
 }
 
-void help_browser::show_topic(std::string topic_id, bool add_to_history)
+void help_browser::show_topic(std::string topic_id, bool add_to_history, bool reshow)
 {
+	if(reshow) {
+		const help::topic* topic = help::find_topic(toplevel_, topic_id);
+		find_widget<rich_label>("topic_text").set_dom(topic->text.parsed_text());
+		invalidate_layout();
+		return;
+	}
+
 	if(topic_id.empty() || topic_id == current_topic_) {
 		return;
 	} else {
@@ -217,11 +231,20 @@ void help_browser::show_topic(std::string topic_id, bool add_to_history)
 			topic_id_temp.insert(0, "-");
 		}
 		tree_view& topic_tree = find_widget<tree_view>("topic_tree");
-		tree_view_node& selected_node = topic_tree.find_widget<tree_view_node>(topic_id_temp);
-		selected_node.select_node(true, false);
+		tree_view_node* selected_node = topic_tree.find_widget<tree_view_node>(topic_id_temp, false, false);
+		if(selected_node) {
+			selected_node->select_node(true, false);
+		}
 
 		find_widget<label>("topic_title").set_label(topic->title);
-		find_widget<rich_label>("topic_text").set_dom(topic->text.parsed_text());
+		try {
+			find_widget<rich_label>("topic_text").set_dom(topic->text.parsed_text());
+		} catch(const markup::parse_error& e) {
+			find_widget<rich_label>("topic_text").set_label(
+				markup::span_color(font::BAD_COLOR,
+					"Error parsing markup in help page with ID: " + topic->id + "\n"
+					+ font::escape_text(e.message)));
+		}
 
 		invalidate_layout();
 	}
