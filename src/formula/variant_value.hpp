@@ -446,13 +446,13 @@ protected:
 	using const_iterator = typename Container::const_iterator;
 
 	/** Casts opaque @a iter to a mutable const_iterator reference. */
-	static const_iterator& as_container_iterator(utils::any& iter) const
+	static const_iterator& as_container_iterator(utils::any& iter)
 	{
 		return utils::any_cast<const_iterator&>(iter);
 	}
 
 	/** Casts opaque @a iter to a constant const_iterator reference. */
-	static const const_iterator& as_container_iterator(const utils::any& iter) const
+	static const const_iterator& as_container_iterator(const utils::any& iter)
 	{
 		return utils::any_cast<const const_iterator&>(iter);
 	}
