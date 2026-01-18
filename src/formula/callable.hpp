@@ -84,11 +84,9 @@ public:
 		return !query_value(key).is_null();
 	}
 
-	// Note: this function should NOT overwrite str, but append text to it!
-	// TODO: return str instead of taking str.
-	void serialize(std::string& str) const
+	std::string serialize() const
 	{
-		serialize_to_string(str);
+		return serialize_to_string();
 	}
 
 	void subscribe_dtor(callable_die_subscriber* d) const {
@@ -156,9 +154,7 @@ protected:
 		return this < callable ? -1 : (this == callable ? 0 : 1);
 	}
 
-	// Note: this function should NOT overwrite str, but append text to it!
-	// TODO: return string not take string
-	virtual void serialize_to_string(std::string& /*str*/) const
+	virtual std::string serialize_to_string() const
 	{
 		throw type_error("Tried to serialize type which cannot be serialized");
 	}

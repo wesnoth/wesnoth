@@ -68,11 +68,11 @@ int location_callable::do_compare(const formula_callable* callable) const
 	return loc_.do_compare(other_loc);
 }
 
-void location_callable::serialize_to_string(std::string& str) const
+std::string location_callable::serialize_to_string() const
 {
-	std::ostringstream s;
-	s << "loc(" << (loc_.wml_x()) << "," << (loc_.wml_y()) << ")";
-	str += s.str();
+	std::ostringstream ss;
+	ss << "loc(" << (loc_.wml_x()) << "," << (loc_.wml_y()) << ")";
+	return ss.str();
 }
 
 attack_type_callable::attack_type_callable(const attack_type& attack) : att_(attack.shared_from_this())

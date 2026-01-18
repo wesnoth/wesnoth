@@ -1529,13 +1529,15 @@ void key_value_pair::get_inputs(formula_input_vector& inputs) const
 	add_input(inputs, "value");
 }
 
-void key_value_pair::serialize_to_string(std::string& str) const
+std::string key_value_pair::serialize_to_string() const
 {
-	str += "pair(";
-	str += key_.serialize_to_string();
-	str += ",";
-	str += value_.serialize_to_string();
-	str += ")";
+	std::ostringstream ss;
+	ss << "pair(";
+	ss << key_.serialize_to_string();
+	ss << ",";
+	ss << value_.serialize_to_string();
+	ss << ")";
+	return ss.str();
 }
 
 formula_function_expression::formula_function_expression(const std::string& name,

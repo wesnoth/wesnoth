@@ -100,7 +100,8 @@ variant_callable::variant_callable(const_formula_callable_ptr callable)
 	}
 }
 
-variant_callable::~variant_callable() {
+variant_callable::~variant_callable()
+{
 	if(callable_) {
 		callable_->unsubscribe_dtor(this);
 	}
@@ -108,13 +109,11 @@ variant_callable::~variant_callable() {
 
 std::string variant_callable::get_serialized_string() const
 {
-	// TODO: make serialize return a string.
-	std::string str;
 	if(callable_) {
-		callable_->serialize(str);
+		return callable_->serialize();
 	}
 
-	return str;
+	return {};
 }
 
 std::string variant_callable::get_debug_string(formula_seen_stack& seen, bool verbose) const
