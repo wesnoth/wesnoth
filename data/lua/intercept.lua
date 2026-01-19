@@ -136,7 +136,7 @@ for iter,e in ipairs(enemies) do
             set_status("slows","slowed", _"slowed", _"female^slowed", "slowed.wav")
             set_status("petrifies","petrified", _"petrified", _"female^petrified", "petrified.ogg")
             if add_tab then
-                text2 = "     " .. text2)
+                text2 = "     " .. text2
             end
 
             animator:add(e, "attack", "hit",{with_bars = true, primary = w, secondary = w2, text = text,color={0,255,0}})
