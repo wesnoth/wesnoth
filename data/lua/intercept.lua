@@ -25,7 +25,7 @@ for iter = #enemies, 1, -1 do
     if not e.variables.intercept_used then
         e.variables.intercept_used = 0
     end
-    if special.uses_per_turn and special.uses_per_turn <= e.variables.intercept_used then
+    if special.uses_per_turn and special.uses_per_turn ~= -1 and special.uses_per_turn <= e.variables.intercept_used then
         table.remove(enemies,iter)
     end
 end
@@ -85,7 +85,7 @@ for iter,e in ipairs(enemies) do
         local w = e.attacks[attacking_weapon]
 
         local strike_limit = wml.find_child(w.specials,{id="intercept"}).strike_limit
-        if not strike_limit or strike_limit > e_stats.num_blows then
+        if not strike_limit or strike_limit == -1 or strike_limit > e_stats.num_blows then
             strike_limit = e_stats.num_blows
         end
         last_strike = strike_number >= strike_limit
