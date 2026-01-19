@@ -335,6 +335,7 @@ void editor_edit_unit::select_file(const std::string& default_dir, const std::st
 void editor_edit_unit::load_unit_type() {
 	const auto& all_type_list = unit_types.types_list();
 	const auto& type_select = gui2::dialogs::units_dialog::build_create_dialog(all_type_list);
+	type_select->set_ok_label("Load");
 
 	if (!type_select->show() && !type_select->is_selected()) {
 		return;
@@ -376,6 +377,17 @@ void editor_edit_unit::load_unit_type() {
 			unit_alignments::get_string(type->alignment()));
 
 	update_image("unit_image");
+
+	boost::dynamic_bitset<> enabled_abilities(abilities_list_.size());
+	for (size_t i = 0; i < abilities_list_.size(); i++) {
+		for (auto special : type->abilities()) {
+			const std::string id = special->cfg()["unique_id"].str(special->id());
+			if (abilities_list_[i]["label"] == id) {
+				enabled_abilities[i] = true;
+			}
+		}
+	}
+	find_widget<multimenu_button>("abilities_list").select_options(enabled_abilities);
 
 	find_widget<text_box>("path_small_profile_image").set_value(type->small_profile());
 
@@ -436,7 +448,6 @@ void editor_edit_unit::load_unit_type() {
 	for(const auto& atk : type->attacks())
 	{
 		config attack;
-		boost::dynamic_bitset<> enabled(specials_list_.size());
 		attack["name"] = atk.id();
 		attack["description"] = atk.name().base_str();
 		attack["icon"] = atk.icon();
@@ -444,7 +455,19 @@ void editor_edit_unit::load_unit_type() {
 		attack["damage"] = atk.damage();
 		attack["number"] = atk.num_attacks();
 		attack["type"] = atk.type();
-		attacks_.push_back(std::make_pair(enabled, attack));
+
+		boost::dynamic_bitset<> enabled_specials(specials_list_.size());
+
+		for (size_t i = 0; i < specials_list_.size(); i++) {
+			for (auto special : atk.specials()) {
+				const std::string id = special->cfg()["unique_id"].str(special->id());
+				if (specials_list_[i]["label"] == id) {
+					enabled_specials[i] = true;
+				}
+			}
+		}
+
+		attacks_.push_back(std::make_pair(enabled_specials, attack));
 	}
 
 	if (!type->attacks().empty()) {
