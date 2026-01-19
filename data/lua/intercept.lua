@@ -43,7 +43,6 @@ for iter,e in ipairs(enemies) do
             break
         end
     end
-    local attacking_weapon=i
     local loc = e.loc
     local loc2 = u.loc
     local __, __, e_stats, u_stats = wesnoth.simulate_combat(e,attacking_weapon, u)
