@@ -7,7 +7,7 @@ local function has_intercept_ability(u) --helper function for filtering
     --end
     for _, attack in ipairs(u.attacks) do
          local special = wml.find_child(attack.specials,{id="intercept"})
-          if special and (not special.uses_per_turn or not u.variables.intercept_used or special.uses_per_turn > u.variables.intercept_used) then
+          if special and (not special.uses_per_turn or special.uses_per_turn == -1 or not u.variables.intercept_used or special.uses_per_turn > u.variables.intercept_used) then
             return true
           end
     end
