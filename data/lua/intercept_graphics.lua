@@ -1,8 +1,3 @@
-if rawget(_G, "intercept_graphic_loaded") ~= nil then -- because of the double loading event isn't ideal, we have to keep this check
-    return
-end
-
-intercept_graphic_loaded = true
 local halo_id = "misc/new-battle.png"
 local halo_locations = {}
 
