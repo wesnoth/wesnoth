@@ -1,6 +1,4 @@
-## Version 1.19.19+dev
-### Add-ons client
-### Add-ons server
+## Version 1.19.20
 ### Campaigns
    * Dusk of Dawn
      * Remove custom "Troll Earth-Shaker" Rocklobber advancement to avoid confusing beginners.
@@ -11,19 +9,10 @@
      * S13 "Revelry, Revisited": added more dialogue between the orcs and humans.
    * The Hammer of Thursagan
      * The first scenario is now slightly easier.
-### Editor
-### Multiplayer
-### Lua API
-### Packaging
 ### Terrain
    * Added graphics for rails going over water and chasm.
-   * 
 ### Translations
    * Updated translations: Bengali, British English, Czech, French, German, Greek, Hungarian, Italian, Spanish
-### Units
-### User interface
-### WML Engine
-### Miscellaneous and Bug Fixes
 
 ## Version 1.19.19
 ### Campaigns
