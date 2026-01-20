@@ -2,11 +2,22 @@
 ### Add-ons client
 ### Add-ons server
 ### Campaigns
+   * Dusk of Dawn
+     * Remove custom "Troll Earth-Shaker" Rocklobber advancement to avoid confusing beginners.
+   * Eastern Invasion
+     * Add weather effects to several scenarios.
+   * The Deceivers Gambit
+     * S13 "Revelry, Revisited": fixed way too many enemies spawning after many turns had elapsed.
+     * S13 "Revelry, Revisited": added more dialogue between the orcs and humans.
+   * The Hammer of Thursagan
+     * The first scenario is now slightly easier.
 ### Editor
 ### Multiplayer
 ### Lua API
 ### Packaging
 ### Terrain
+   * Added graphics for rails going over water and chasm.
+   * 
 ### Translations
    * Updated translations: Bengali, British English, Czech, French, German, Greek, Hungarian, Italian, Spanish
 ### Units
