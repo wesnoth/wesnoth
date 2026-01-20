@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bn\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-12-21 21:09-0600\n"
+"POT-Creation-Date: 2026-01-20 11:31-0600\n"
 "PO-Revision-Date: 2025-07-20 16:54+0530\n"
 "Last-Translator: Subhraman Sarkar <suvrax@gmail.com>\n"
 "Language-Team: Bengali < >\n"
@@ -23,11 +23,6 @@ msgstr ""
 #: data/_main.cfg:22
 msgid "Custom"
 msgstr "নিজস্ব"
-
-#. [editor_group]: id=urban_jungle
-#: data/_main.cfg:65
-msgid "Urban Jungle (Internal)"
-msgstr "শহুরে জঙ্গল (আভ্যন্তরীণ)"
 
 #. [advanced_preference]: type=combo
 #: data/advanced_preferences.cfg:4
@@ -362,7 +357,7 @@ msgstr ""
 #. [unstore_unit]
 #. [lua]: set_status
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:369
-#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:945
+#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:948
 msgid "poisoned"
 msgstr "বিষাক্ত"
 
@@ -3404,9 +3399,7 @@ msgid "Shroud"
 msgstr "ছায়া"
 
 #. [color_range]: id=urbanjungle
-#. [terrain_type]: id=urbanjungle
-#: data/core/team-colors.cfg:256 data/internal/Urban_Jungle/terrain.cfg:6
-#: data/internal/Urban_Jungle/terrain.cfg:7
+#: data/core/team-colors.cfg:256
 msgid "Urban"
 msgstr "শহর"
 
@@ -3796,28 +3789,6 @@ msgstr "Lohit Bengali"
 msgid "WesScript"
 msgstr "কোনো বর্ণনা নেই ।"
 
-#. [terrain_type]: id=urbanjungle
-#: data/internal/Urban_Jungle/terrain.cfg:8
-msgid ""
-"Densely packed structures are less suitable for garrison than traditional "
-"villages, providing no income or healing. They are difficult to navigate "
-"quickly, but offer significant protection."
-msgstr ""
-"ঘনবিন্যস্ত গঠনগুলি সাধারণ গ্রামগুলির তুলনায় সেনাছাউনির জন্য কম উপযুক্ত, কারণ তা থেকে "
-"কোনও আয় বা চিকিৎসা পাওয়া যায় না । এগুলির মধ্যে দ্রুত চলাচল করা কঠিন, তবে "
-"উল্লেখযোগ্য সুরক্ষা সরবরাহ করে।"
-
-#. [terrain_type]: id=urbanjungleA
-#. [terrain_type]: id=urbanjungle{ID}
-#: data/internal/Urban_Jungle/terrain.cfg:15
-#: data/internal/Urban_Jungle/terrain.cfg:16
-#: data/internal/Urban_Jungle/terrain.cfg:17
-#: data/internal/Urban_Jungle/terrain.cfg:30
-#: data/internal/Urban_Jungle/terrain.cfg:31
-#: data/internal/Urban_Jungle/terrain.cfg:32
-msgid "Urban Jungle"
-msgstr "শহুরে জঙ্গল"
-
 #. [time]: id=dawn_noweather
 #: data/internal/Weather/_main.cfg:143
 msgid "Dawn"
@@ -4048,31 +4019,31 @@ msgstr "অবৈধ ডেপ্রিকেশন পর্যায় (1-4-এ�
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:945
+#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:948
 msgid "female^poisoned"
 msgstr "বিষক্রিয়া"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:952
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:955
 msgid "female^slowed"
 msgstr "ধীরগতি"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:952
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:955
 msgid "slowed"
 msgstr "ধীরগতি"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:958
+#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:961
 msgid "female^petrified"
 msgstr "প্রস্তরীভূত"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:958
+#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:961
 msgid "petrified"
 msgstr "প্রস্তরীভূত"
 
@@ -5243,11 +5214,11 @@ msgstr ""
 msgid "waiting for^an advancement choice"
 msgstr "উন্নয়ণ পছন্দের জন্য অপেক্ষা করা হচ্ছে"
 
-#: src/actions/attack.cpp:475 src/actions/attack.cpp:1270
+#: src/actions/attack.cpp:477 src/actions/attack.cpp:1273
 msgid "An invalid attacker weapon got selected."
 msgstr "অবৈধ আক্রমণকারী অস্ত্র নির্বাচিত করা হয়েছে ।"
 
-#: src/actions/attack.cpp:965
+#: src/actions/attack.cpp:968
 #, fuzzy
 #| msgid "Attacks: "
 msgid "attack^miss"
@@ -8031,7 +8002,7 @@ msgstr "স্বভাব: "
 msgid "Ability:"
 msgstr "দক্ষতা: "
 
-#: src/reports.cpp:443 src/reports.cpp:1017 src/reports.cpp:1057
+#: src/reports.cpp:443 src/reports.cpp:1036 src/reports.cpp:1076
 msgid " (inactive)"
 msgstr " (নিস্ক্রিয়)"
 
@@ -8083,13 +8054,13 @@ msgstr "জ্যামিং:"
 msgid "Movement Costs:"
 msgstr "স্থানান্তরের মূল্য:"
 
-#: src/reports.cpp:822 src/reports.cpp:1149 src/reports.cpp:1161
+#: src/reports.cpp:822 src/reports.cpp:1168 src/reports.cpp:1180
 #, fuzzy
 #| msgid "Weapon: "
 msgid "Weapon:"
 msgstr "অস্ত্র: "
 
-#: src/reports.cpp:823 src/reports.cpp:1150
+#: src/reports.cpp:823 src/reports.cpp:1169
 #, fuzzy
 #| msgid "Damage: "
 msgid "Damage:"
@@ -8107,7 +8078,7 @@ msgstr "মূল ক্ষতি: "
 msgid "With specials:"
 msgstr "বিশেষত্ব সহ: "
 
-#: src/reports.cpp:832 src/reports.cpp:1374
+#: src/reports.cpp:832 src/reports.cpp:1393
 msgid "Time of day:"
 msgstr "দিনের সময়:"
 
@@ -8177,68 +8148,83 @@ msgstr "ক্ষতির প্রকৃতি: "
 msgid "Damage versus:"
 msgstr "বনাম ক্ষতি: "
 
-#: src/reports.cpp:1015 src/reports.cpp:1055
+#: src/reports.cpp:988
+#, fuzzy
+#| msgid "$number attack used"
+#| msgid_plural "$number attacks used"
+msgid "uses $num attack"
+msgid_plural "uses $num attacks"
+msgstr[0] "$number-টি আক্রমণ ব্যবহৃত"
+msgstr[1] "$number-গুলি আক্রমণ ব্যবহৃত"
+
+#: src/reports.cpp:996
+msgid "This attack uses $num attack point"
+msgid_plural "This attack uses $num attack points"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/reports.cpp:1034 src/reports.cpp:1074
 #, fuzzy
 #| msgid "Weapon special: "
 msgid "Weapon special:"
 msgstr "অস্ত্রের বিশেষত্ব: "
 
-#: src/reports.cpp:1132
+#: src/reports.cpp:1151
 msgid "weapon^None"
 msgstr "নেই"
 
-#: src/reports.cpp:1162
+#: src/reports.cpp:1181
 msgid "Total damage"
 msgstr "মোট ক্ষতি"
 
-#: src/reports.cpp:1220
+#: src/reports.cpp:1239
 msgid "Attack"
 msgid_plural "Attacks"
 msgstr[0] "আক্রমণ"
 msgstr[1] "আক্রমণগুলি"
 
 #. TRANSLATORS: This string is shown in the sidebar beneath the word "Attacks" when a unit can attack multiple times per turn
-#: src/reports.cpp:1227
+#: src/reports.cpp:1246
 msgid "Remaining: $left/$max"
 msgstr "বাকি: $left/$max"
 
-#: src/reports.cpp:1231
+#: src/reports.cpp:1250
 msgid "This unit can attack multiple times per turn."
 msgstr "এই ইউনিটটি একই দানে একধিকবার আক্রমণ করতে পারে ।"
 
-#: src/reports.cpp:1323
+#: src/reports.cpp:1342
 msgid "Time of day schedule:"
 msgstr "দিনের সময়সূচী:"
 
-#: src/reports.cpp:1375 src/reports.cpp:1429
+#: src/reports.cpp:1394 src/reports.cpp:1448
 #, fuzzy
 #| msgid "Lawful units: "
 msgid "Lawful units:"
 msgstr "নৈতিক ইউনিট: "
 
-#: src/reports.cpp:1377 src/reports.cpp:1431
+#: src/reports.cpp:1396 src/reports.cpp:1450
 #, fuzzy
 #| msgid "Neutral units: "
 msgid "Neutral units:"
 msgstr "নিরপেক্ষ ইউনিট: "
 
-#: src/reports.cpp:1378 src/reports.cpp:1432
+#: src/reports.cpp:1397 src/reports.cpp:1451
 #, fuzzy
 #| msgid "Chaotic units: "
 msgid "Chaotic units:"
 msgstr "অনৈতিক ইউনিট: "
 
-#: src/reports.cpp:1380 src/reports.cpp:1434
+#: src/reports.cpp:1399 src/reports.cpp:1453
 #, fuzzy
 #| msgid "Liminal units: "
 msgid "Liminal units:"
 msgstr "মধ্যবর্তী ইউনিট: "
 
-#: src/reports.cpp:1492
+#: src/reports.cpp:1511
 msgid "Turn Number"
 msgstr "দান সংখ্যা"
 
-#: src/reports.cpp:1496
+#: src/reports.cpp:1515
 msgid ""
 "When the game exceeds the number of turns indicated by the second number, it "
 "will end."
@@ -8246,34 +8232,34 @@ msgstr ""
 "যখন দ্বিতীয় সংখ্যাটির দ্বারা নির্দেশিত দানগুলি পেরিয়ে যাবে, তখন খেলাটি নিজের "
 "থেকেই শেষ হয়ে যাবে ।"
 
-#: src/reports.cpp:1519
+#: src/reports.cpp:1538
 msgid "Gold"
 msgstr "স্বর্ণ"
 
-#: src/reports.cpp:1519
+#: src/reports.cpp:1538
 msgid ""
 "The amount of gold currently available to recruit and maintain your army."
 msgstr ""
 "বর্তমানে আপনার সেনাবাহিনীতে নিয়োগ এবং তাদের খরচ বহনের জন্য যে পরিমাণ স্বর্ণ "
 "রয়েছে ।"
 
-#: src/reports.cpp:1537
+#: src/reports.cpp:1556
 msgid "The fraction of known villages that your side has captured."
 msgstr "জানা গ্রামের যে ভগ্নাংশ আপনার পক্ষ নিয়ন্ত্রণে আনতে পেরেছে"
 
-#: src/reports.cpp:1537
+#: src/reports.cpp:1556
 msgid "Villages"
 msgstr "গ্রাম"
 
-#: src/reports.cpp:1542
+#: src/reports.cpp:1561
 msgid "The total number of units on your side."
 msgstr "আপনার পক্ষে মোট ইউনিটের সংখ্যা ।"
 
-#: src/reports.cpp:1542
+#: src/reports.cpp:1561
 msgid "Units"
 msgstr "ইউনিট"
 
-#: src/reports.cpp:1551
+#: src/reports.cpp:1570
 msgid ""
 "The expenses incurred at the end of every turn to maintain your army. The "
 "first number is the amount of gold that will be deducted. It is equal to the "
@@ -8287,15 +8273,15 @@ msgstr ""
 "তা সহ — অন্যভাবে বলতে হলে, আপনি সব গ্রামগুলির নিয়ন্ত্রণ হারালে আপনার যে পরিমাণ "
 "খরচ হবে ।"
 
-#: src/reports.cpp:1551
+#: src/reports.cpp:1570
 msgid "Upkeep"
 msgstr "ব্যয়"
 
-#: src/reports.cpp:1581
+#: src/reports.cpp:1600
 msgid "Net Income"
 msgstr "মোট আয়"
 
-#: src/reports.cpp:1581
+#: src/reports.cpp:1600
 msgid ""
 "The net amount of gold you gain or lose each turn, taking into account "
 "income from controlled villages and payment of upkeep."
@@ -8303,23 +8289,23 @@ msgstr ""
 "প্রত্যেকটি নিয়ন্ত্রিত গ্রাম থেকে পাওয়া আয় এবং সেনাদলের জন্য ব্যয় মিলিয়ে, আপনি "
 "প্রত্যেক দানে যে পরিমাণ স্বর্ণ আয় বা ব্যয় করছেন ।"
 
-#: src/reports.cpp:1781
+#: src/reports.cpp:1800
 msgid "Observers:"
 msgstr "দর্শক:"
 
-#: src/reports.cpp:1798
+#: src/reports.cpp:1817
 msgid "Clock"
 msgstr "ঘড়ি"
 
-#: src/reports.cpp:1809
+#: src/reports.cpp:1828
 msgid "Battery"
 msgstr "ব্যাটারি"
 
-#: src/reports.cpp:1853
+#: src/reports.cpp:1872
 msgid "Countdown until your turn automatically ends."
 msgstr "আপনার দান শেষ হওয়া পর্যন্ত বিপরীত গণনা ।"
 
-#: src/reports.cpp:1853
+#: src/reports.cpp:1872
 msgid "Turn Countdown"
 msgstr "দানের বিপরীত গণনা"
 
@@ -8679,21 +8665,21 @@ msgstr "ফাঁকা দিনের সময়"
 msgid "This Time of Day is only a Stub!"
 msgstr "দিনের এই সময়টি ফাঁকা"
 
-#: src/units/abilities.cpp:1127
+#: src/units/abilities.cpp:1131
 msgid "Owned: "
 msgstr "নিয়ন্ত্রিত: "
 
 #. TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
-#: src/units/abilities.cpp:1129
+#: src/units/abilities.cpp:1133
 msgid "Taught: "
 msgstr "জানা: "
 
 #. TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
-#: src/units/abilities.cpp:1131
+#: src/units/abilities.cpp:1135
 msgid "Taught: (by an enemy): "
 msgstr "জানা: (শত্রুর দ্বারা): "
 
-#: src/units/abilities.cpp:1132
+#: src/units/abilities.cpp:1136
 msgid "Used by opponent: "
 msgstr "প্রতিপক্ষের দ্বারা ব্যবহৃত: "
 
@@ -8830,35 +8816,35 @@ msgstr "আপনার কাছে এই ইউনিটটিকে নি�
 msgid "The $unit_type is not available to recruit."
 msgstr "আপনার কাছে নিয়োগ করার মতো কোনো ইউনিট নেই ।"
 
-#: src/units/types.cpp:805 src/units/types.cpp:813
+#: src/units/types.cpp:785 src/units/types.cpp:793
 msgid "female^lawful"
 msgstr "নৈতিক"
 
-#: src/units/types.cpp:807
+#: src/units/types.cpp:787
 msgid "female^neutral"
 msgstr "নিরপেক্ষ"
 
-#: src/units/types.cpp:809
+#: src/units/types.cpp:789
 msgid "female^chaotic"
 msgstr "অনৈতিক"
 
-#: src/units/types.cpp:811
+#: src/units/types.cpp:791
 msgid "female^liminal"
 msgstr "মধ্যবর্তী"
 
-#: src/units/types.cpp:819 src/units/types.cpp:827
+#: src/units/types.cpp:799 src/units/types.cpp:807
 msgid "lawful"
 msgstr "নৈতিক"
 
-#: src/units/types.cpp:821
+#: src/units/types.cpp:801
 msgid "neutral"
 msgstr "নিরপেক্ষ"
 
-#: src/units/types.cpp:823
+#: src/units/types.cpp:803
 msgid "chaotic"
 msgstr "অনৈতিক"
 
-#: src/units/types.cpp:825
+#: src/units/types.cpp:805
 msgid "liminal"
 msgstr "মধ্যবর্তী"
 
@@ -8870,44 +8856,44 @@ msgstr "এই ইউনিটটি বরখাস্ত করা যাব�
 msgid "This unit is a leader and cannot be dismissed."
 msgstr "এই ইউনিটটি একটি দলের নেতা এবং একে বরখাস্ত করা যাবে না ।"
 
-#: src/units/unit.cpp:1997
+#: src/units/unit.cpp:2008
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/units/unit.cpp:2003
+#: src/units/unit.cpp:2014
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "<span color=\"$color\">$number_or_percent</span> জীবন"
 
-#: src/units/unit.cpp:2013
+#: src/units/unit.cpp:2024
 msgid "<span color=\"$color\">$number_or_percent</span> move"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> দান"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> দান"
 
-#: src/units/unit.cpp:2019
+#: src/units/unit.cpp:2030
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "<span color=\"$color\">$number_or_percent</span> দৃষ্টি"
 
-#: src/units/unit.cpp:2023
+#: src/units/unit.cpp:2034
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "<span color=\"$color\">$number_or_percent</span> জ্যামিং"
 
-#: src/units/unit.cpp:2028
+#: src/units/unit.cpp:2039
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "উন্নয়ণের জন্য অভিজ্ঞতা <span color=\"$color\">$number_or_percent</span>"
 
-#: src/units/unit.cpp:2032
+#: src/units/unit.cpp:2043
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
 msgid_plural ""
 "<span color=\"$color\">$number_or_percent</span> attacks per turn"
 msgstr[0] "দান প্রতি <span color=\"$color\">$number_or_percent</span> আক্রমণ"
 msgstr[1] "দান প্রতি <span color=\"$color\">$number_or_percent</span>-টি আক্রমণ"
 
-#: src/units/unit.cpp:2039
+#: src/units/unit.cpp:2050
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "পুনরায় ডাকার মূল্য <span color=\"$color\">$number_or_percent</span>"
 
-#: src/units/unit.cpp:2545
+#: src/units/unit.cpp:2556
 msgid "$effect_description per level"
 msgstr "পর্যায় প্রতি $effect_description"
 
@@ -8968,6 +8954,21 @@ msgstr "$player-এর জন্য পরিকল্পনা লুকোন"
 #: src/whiteboard/manager.cpp:1140
 msgid "Whiteboard Options"
 msgstr "হোয়াইটবোর্ড অপশনগুলি"
+
+#~ msgid "Urban Jungle (Internal)"
+#~ msgstr "শহুরে জঙ্গল (আভ্যন্তরীণ)"
+
+#~ msgid ""
+#~ "Densely packed structures are less suitable for garrison than traditional "
+#~ "villages, providing no income or healing. They are difficult to navigate "
+#~ "quickly, but offer significant protection."
+#~ msgstr ""
+#~ "ঘনবিন্যস্ত গঠনগুলি সাধারণ গ্রামগুলির তুলনায় সেনাছাউনির জন্য কম উপযুক্ত, কারণ তা "
+#~ "থেকে কোনও আয় বা চিকিৎসা পাওয়া যায় না । এগুলির মধ্যে দ্রুত চলাচল করা কঠিন, তবে "
+#~ "উল্লেখযোগ্য সুরক্ষা সরবরাহ করে।"
+
+#~ msgid "Urban Jungle"
+#~ msgstr "শহুরে জঙ্গল"
 
 #~ msgid "Oldania ADF Std"
 #~ msgstr "Lohit Bengali"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-12-22 03:09 UTC\n"
+"POT-Creation-Date: 2026-01-20 17:31 UTC\n"
 "PO-Revision-Date: 2025-12-27 09:52+0100\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italiano <wesnoth-l10n-it@cirulla.net>\n"
@@ -16,21 +16,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.4.2\n"
-
-#. [achievement_group]
-#: data/campaigns/Heir_To_The_Throne_Classic/achievements.cfg:3
-msgid "Old Tutorial"
-msgstr "Vecchia Guida"
-
-#. [achievement]: id=completed
-#: data/campaigns/Heir_To_The_Throne_Classic/achievements.cfg:7
-msgid "Completed the Tutorial"
-msgstr "Completa la guida"
-
-#. [achievement]: id=completed
-#: data/campaigns/Heir_To_The_Throne_Classic/achievements.cfg:8
-msgid "Complete the Battle Training."
-msgstr "Completa l’addestramento da battaglia."
 
 #. [label]
 #: data/campaigns/Heir_To_The_Throne_Classic/gui/character_selection.cfg:19
@@ -391,8 +376,8 @@ msgstr "Cosa? Quel <i>fantoccio</i> ha il suo turno?"
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:616
 msgid ""
 "Yes. It’s a magical quintain! If it hits you, it does 3 damage, and has 5 "
-"chances. If it hits every time, you’ll drop from $student_hp to $"
-"($student_hp-15) hitpoints. Brace yourself!"
+"chances. If it hits every time, you’ll drop from $student_hp to "
+"$($student_hp-15) hitpoints. Brace yourself!"
 msgstr ""
 "Certo che sì: è una quintana magica! Ora, questa quintana ha 5 possibilità "
 "di colpirti e causa 3 punti di danno per colpo. Se andrà a segno ogni volta, "
@@ -2242,8 +2227,8 @@ msgstr ""
 #. [message]: speaker=Galdrad
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1315
 msgid ""
-"Higher level units are powerful, but not invulnerable. We’ll miss you, "
-"$unit.name|."
+"Higher level units are powerful, but not invulnerable. We’ll miss you, $unit."
+"name|."
 msgstr ""
 "Le unità di livello più alto sono sì potenti, ma non invulnerabili. Addio, "
 "$unit.name|."
@@ -2520,6 +2505,15 @@ msgstr ""
 #: data/campaigns/Heir_To_The_Throne_Classic/utils/tutorial_utils.cfg:128
 msgid "Click a mouse button or press the spacebar to continue..."
 msgstr "Premi un tasto del mouse o la barra spaziatrice per continuare..."
+
+#~ msgid "Old Tutorial"
+#~ msgstr "Vecchia Guida"
+
+#~ msgid "Completed the Tutorial"
+#~ msgstr "Completa la guida"
+
+#~ msgid "Complete the Battle Training."
+#~ msgstr "Completa l’addestramento da battaglia."
 
 #~ msgid "Battle Training — Old Tutorial"
 #~ msgstr "Addestramento da Battaglia - Vecchia Guida"

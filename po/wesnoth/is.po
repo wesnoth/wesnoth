@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.7.0-dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-12-21 21:09-0600\n"
+"POT-Creation-Date: 2026-01-20 11:31-0600\n"
 "PO-Revision-Date: 2009-06-15 15:08-0000\n"
 "Last-Translator: Gabríel A. Pétursson <gabrielp@simnet.is>\n"
 "Language-Team: \n"
@@ -26,11 +26,6 @@ msgstr ""
 #| msgid "Commands"
 msgid "Custom"
 msgstr "Skipanir"
-
-#. [editor_group]: id=urban_jungle
-#: data/_main.cfg:65
-msgid "Urban Jungle (Internal)"
-msgstr ""
 
 #. [advanced_preference]: type=combo
 #: data/advanced_preferences.cfg:4
@@ -357,7 +352,7 @@ msgstr ""
 #. [unstore_unit]
 #. [lua]: set_status
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:369
-#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:945
+#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:948
 msgid "poisoned"
 msgstr "eitraður"
 
@@ -3801,9 +3796,7 @@ msgid "Shroud"
 msgstr "Hyl"
 
 #. [color_range]: id=urbanjungle
-#. [terrain_type]: id=urbanjungle
-#: data/core/team-colors.cfg:256 data/internal/Urban_Jungle/terrain.cfg:6
-#: data/internal/Urban_Jungle/terrain.cfg:7
+#: data/core/team-colors.cfg:256
 msgid "Urban"
 msgstr ""
 
@@ -4118,25 +4111,6 @@ msgstr ""
 msgid "WesScript"
 msgstr "Engin lýsing til staðar."
 
-#. [terrain_type]: id=urbanjungle
-#: data/internal/Urban_Jungle/terrain.cfg:8
-msgid ""
-"Densely packed structures are less suitable for garrison than traditional "
-"villages, providing no income or healing. They are difficult to navigate "
-"quickly, but offer significant protection."
-msgstr ""
-
-#. [terrain_type]: id=urbanjungleA
-#. [terrain_type]: id=urbanjungle{ID}
-#: data/internal/Urban_Jungle/terrain.cfg:15
-#: data/internal/Urban_Jungle/terrain.cfg:16
-#: data/internal/Urban_Jungle/terrain.cfg:17
-#: data/internal/Urban_Jungle/terrain.cfg:30
-#: data/internal/Urban_Jungle/terrain.cfg:31
-#: data/internal/Urban_Jungle/terrain.cfg:32
-msgid "Urban Jungle"
-msgstr ""
-
 #. [time]: id=dawn_noweather
 #: data/internal/Weather/_main.cfg:143
 msgid "Dawn"
@@ -4392,32 +4366,32 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:945
+#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:948
 msgid "female^poisoned"
 msgstr "eitruð"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:952
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:955
 msgid "female^slowed"
 msgstr "hægð"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:952
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:955
 msgid "slowed"
 msgstr "hægður"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:958
+#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:961
 #, fuzzy
 msgid "female^petrified"
 msgstr "eitruð"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:958
+#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:961
 msgid "petrified"
 msgstr ""
 
@@ -5604,12 +5578,12 @@ msgstr ""
 msgid "waiting for^an advancement choice"
 msgstr "Eflingar"
 
-#: src/actions/attack.cpp:475 src/actions/attack.cpp:1270
+#: src/actions/attack.cpp:477 src/actions/attack.cpp:1273
 #, fuzzy
 msgid "An invalid attacker weapon got selected."
 msgstr "Ógilt tímabil valið"
 
-#: src/actions/attack.cpp:965
+#: src/actions/attack.cpp:968
 #, fuzzy
 msgid "attack^miss"
 msgstr "Árásaraðili"
@@ -8678,7 +8652,7 @@ msgstr "Stilling: "
 msgid "Ability:"
 msgstr "Hæfileikar: "
 
-#: src/reports.cpp:443 src/reports.cpp:1017 src/reports.cpp:1057
+#: src/reports.cpp:443 src/reports.cpp:1036 src/reports.cpp:1076
 msgid " (inactive)"
 msgstr ""
 
@@ -8734,12 +8708,12 @@ msgstr "Viðvörun: "
 msgid "Movement Costs:"
 msgstr "Kostnaður Hreyfingar"
 
-#: src/reports.cpp:822 src/reports.cpp:1149 src/reports.cpp:1161
+#: src/reports.cpp:822 src/reports.cpp:1168 src/reports.cpp:1180
 #, fuzzy
 msgid "Weapon:"
 msgstr "Drægi vopns: "
 
-#: src/reports.cpp:823 src/reports.cpp:1150
+#: src/reports.cpp:823 src/reports.cpp:1169
 #, fuzzy
 msgid "Damage:"
 msgstr "Meiðsl"
@@ -8754,7 +8728,7 @@ msgstr "Samtals meiðsl"
 msgid "With specials:"
 msgstr "Sérhæfileikar vopna"
 
-#: src/reports.cpp:832 src/reports.cpp:1374
+#: src/reports.cpp:832 src/reports.cpp:1393
 #, fuzzy
 msgid "Time of day:"
 msgstr "Tími dags"
@@ -8814,20 +8788,35 @@ msgstr "tegund meiðsls: "
 msgid "Damage versus:"
 msgstr "tegund meiðsls: "
 
-#: src/reports.cpp:1015 src/reports.cpp:1055
+#: src/reports.cpp:988
+#, fuzzy
+#| msgid "damage"
+#| msgid_plural "damage"
+msgid "uses $num attack"
+msgid_plural "uses $num attacks"
+msgstr[0] "meiðsl"
+msgstr[1] "meiðsl"
+
+#: src/reports.cpp:996
+msgid "This attack uses $num attack point"
+msgid_plural "This attack uses $num attack points"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/reports.cpp:1034 src/reports.cpp:1074
 #, fuzzy
 msgid "Weapon special:"
 msgstr "Sérhæfileikar vopna"
 
-#: src/reports.cpp:1132
+#: src/reports.cpp:1151
 msgid "weapon^None"
 msgstr ""
 
-#: src/reports.cpp:1162
+#: src/reports.cpp:1181
 msgid "Total damage"
 msgstr "Samtals meiðsl"
 
-#: src/reports.cpp:1220
+#: src/reports.cpp:1239
 #, fuzzy
 #| msgid "Attacker"
 msgid "Attack"
@@ -8836,82 +8825,82 @@ msgstr[0] "Árásaraðili"
 msgstr[1] "Árásaraðili"
 
 #. TRANSLATORS: This string is shown in the sidebar beneath the word "Attacks" when a unit can attack multiple times per turn
-#: src/reports.cpp:1227
+#: src/reports.cpp:1246
 msgid "Remaining: $left/$max"
 msgstr ""
 
-#: src/reports.cpp:1231
+#: src/reports.cpp:1250
 #, fuzzy
 #| msgid "This is not a multiplayer save"
 msgid "This unit can attack multiple times per turn."
 msgstr "Þetta er ekki vistun úr fjölspilunarleik"
 
-#: src/reports.cpp:1323
+#: src/reports.cpp:1342
 #, fuzzy
 msgid "Time of day schedule:"
 msgstr "Tími dags"
 
-#: src/reports.cpp:1375 src/reports.cpp:1429
+#: src/reports.cpp:1394 src/reports.cpp:1448
 #, fuzzy
 #| msgid "Lawful units: "
 msgid "Lawful units:"
 msgstr "Réttmætar einingar: "
 
-#: src/reports.cpp:1377 src/reports.cpp:1431
+#: src/reports.cpp:1396 src/reports.cpp:1450
 #, fuzzy
 #| msgid "Neutral units: "
 msgid "Neutral units:"
 msgstr "Náttúrulegar einingar: "
 
-#: src/reports.cpp:1378 src/reports.cpp:1432
+#: src/reports.cpp:1397 src/reports.cpp:1451
 #, fuzzy
 #| msgid "Chaotic units: "
 msgid "Chaotic units:"
 msgstr "Ringulreiðar einingar: "
 
-#: src/reports.cpp:1380 src/reports.cpp:1434
+#: src/reports.cpp:1399 src/reports.cpp:1453
 #, fuzzy
 msgid "Liminal units:"
 msgstr "Réttmætar einingar: "
 
-#: src/reports.cpp:1492
+#: src/reports.cpp:1511
 #, fuzzy
 #| msgid "Turn "
 msgid "Turn Number"
 msgstr "Umferð "
 
-#: src/reports.cpp:1496
+#: src/reports.cpp:1515
 msgid ""
 "When the game exceeds the number of turns indicated by the second number, it "
 "will end."
 msgstr ""
 
-#: src/reports.cpp:1519
+#: src/reports.cpp:1538
 msgid "Gold"
 msgstr "Gull"
 
-#: src/reports.cpp:1519
+#: src/reports.cpp:1538
 msgid ""
 "The amount of gold currently available to recruit and maintain your army."
 msgstr ""
 
-#: src/reports.cpp:1537
+#: src/reports.cpp:1556
 msgid "The fraction of known villages that your side has captured."
 msgstr ""
 
-#: src/reports.cpp:1537
+#: src/reports.cpp:1556
 msgid "Villages"
 msgstr "Þorp"
 
-#: src/reports.cpp:1542
+#: src/reports.cpp:1561
 msgid "The total number of units on your side."
 msgstr ""
 
-#: src/reports.cpp:1542
+#: src/reports.cpp:1561
 msgid "Units"
 msgstr "Einingar"
 
-#: src/reports.cpp:1551
+#: src/reports.cpp:1570
 msgid ""
 "The expenses incurred at the end of every turn to maintain your army. The "
 "first number is the amount of gold that will be deducted. It is equal to the "
@@ -8920,39 +8909,39 @@ msgid ""
 "amount of gold that would be deducted if you lost all villages."
 msgstr ""
 
-#: src/reports.cpp:1551
+#: src/reports.cpp:1570
 msgid "Upkeep"
 msgstr "Viðhald"
 
-#: src/reports.cpp:1581
+#: src/reports.cpp:1600
 #, fuzzy
 #| msgid "Income"
 msgid "Net Income"
 msgstr "Tekjur"
 
-#: src/reports.cpp:1581
+#: src/reports.cpp:1600
 msgid ""
 "The net amount of gold you gain or lose each turn, taking into account "
 "income from controlled villages and payment of upkeep."
 msgstr ""
 
-#: src/reports.cpp:1781
+#: src/reports.cpp:1800
 msgid "Observers:"
 msgstr "Áhorfendur"
 
-#: src/reports.cpp:1798
+#: src/reports.cpp:1817
 msgid "Clock"
 msgstr ""
 
-#: src/reports.cpp:1809
+#: src/reports.cpp:1828
 msgid "Battery"
 msgstr ""
 
-#: src/reports.cpp:1853
+#: src/reports.cpp:1872
 msgid "Countdown until your turn automatically ends."
 msgstr ""
 
-#: src/reports.cpp:1853
+#: src/reports.cpp:1872
 msgid "Turn Countdown"
 msgstr ""
 
@@ -9317,23 +9306,23 @@ msgstr "Tími dags"
 msgid "This Time of Day is only a Stub!"
 msgstr ""
 
-#: src/units/abilities.cpp:1127
+#: src/units/abilities.cpp:1131
 #, fuzzy
 #| msgid "slowed: "
 msgid "Owned: "
 msgstr "hægðar: "
 
 #. TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
-#: src/units/abilities.cpp:1129
+#: src/units/abilities.cpp:1133
 msgid "Taught: "
 msgstr ""
 
 #. TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
-#: src/units/abilities.cpp:1131
+#: src/units/abilities.cpp:1135
 msgid "Taught: (by an enemy): "
 msgstr ""
 
-#: src/units/abilities.cpp:1132
+#: src/units/abilities.cpp:1136
 msgid "Used by opponent: "
 msgstr ""
 
@@ -9515,38 +9504,38 @@ msgstr "Þú hefur ekki nægt gull til að ráða þessa einingu."
 msgid "The $unit_type is not available to recruit."
 msgstr "Þú hefur engar einingar til að ráða."
 
-#: src/units/types.cpp:805 src/units/types.cpp:813
+#: src/units/types.cpp:785 src/units/types.cpp:793
 msgid "female^lawful"
 msgstr "réttmæt"
 
-#: src/units/types.cpp:807
+#: src/units/types.cpp:787
 msgid "female^neutral"
 msgstr "hlutlaus"
 
-#: src/units/types.cpp:809
+#: src/units/types.cpp:789
 msgid "female^chaotic"
 msgstr "ringulreið"
 
-#: src/units/types.cpp:811
+#: src/units/types.cpp:791
 #, fuzzy
 msgid "female^liminal"
 msgstr "dygg"
 
-#: src/units/types.cpp:819 src/units/types.cpp:827
+#: src/units/types.cpp:799 src/units/types.cpp:807
 #, fuzzy
 #| msgid "female^lawful"
 msgid "lawful"
 msgstr "réttmæt"
 
-#: src/units/types.cpp:821
+#: src/units/types.cpp:801
 msgid "neutral"
 msgstr "hlutlaus"
 
-#: src/units/types.cpp:823
+#: src/units/types.cpp:803
 msgid "chaotic"
 msgstr "ringulreiður"
 
-#: src/units/types.cpp:825
+#: src/units/types.cpp:805
 #, fuzzy
 msgid "liminal"
 msgstr "dygg"
@@ -9566,17 +9555,17 @@ msgstr ""
 "Þessi eining er ósýnileg. Hún getur ekki verið séð eða gert árás á af "
 "óvinaeiningum."
 
-#: src/units/unit.cpp:1997
+#: src/units/unit.cpp:2008
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/units/unit.cpp:2003
+#: src/units/unit.cpp:2014
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "hverja lotu"
 
-#: src/units/unit.cpp:2013
+#: src/units/unit.cpp:2024
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> move"
@@ -9584,25 +9573,25 @@ msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "hverja lotu"
 msgstr[1] "hverja lotu"
 
-#: src/units/unit.cpp:2019
+#: src/units/unit.cpp:2030
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "hverja lotu"
 
-#: src/units/unit.cpp:2023
+#: src/units/unit.cpp:2034
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "hverja lotu"
 
-#: src/units/unit.cpp:2028
+#: src/units/unit.cpp:2039
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "hverja lotu"
 
-#: src/units/unit.cpp:2032
+#: src/units/unit.cpp:2043
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
@@ -9611,13 +9600,13 @@ msgid_plural ""
 msgstr[0] "hverja lotu"
 msgstr[1] "hverja lotu"
 
-#: src/units/unit.cpp:2039
+#: src/units/unit.cpp:2050
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "hverja lotu"
 
-#: src/units/unit.cpp:2545
+#: src/units/unit.cpp:2556
 #, fuzzy
 #| msgid "$attack_list|: $effect_description"
 msgid "$effect_description per level"

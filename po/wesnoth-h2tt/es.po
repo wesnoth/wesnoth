@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-h2tt_es\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-12-22 03:09 UTC\n"
+"POT-Creation-Date: 2026-01-20 17:31 UTC\n"
 "PO-Revision-Date: 2025-12-23 11:10-0300\n"
 "Last-Translator: Sebastián Lecchini <sebas38760@gmail.com>\n"
 "Language-Team: es\n"
@@ -54,7 +54,9 @@ msgstr "(Nivel intermedio, 14 escenarios.)"
 
 #. [campaign]: id=Heir 2 The Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:71
-msgid "1x enemies, 16 scenarios"
+#, fuzzy
+#| msgid "1x enemies, 16 scenarios"
+msgid "1x enemies, 15 scenarios"
 msgstr "1x enemigos, 16 escenarios"
 
 #. [campaign]: id=Heir 2 The Throne
@@ -74,7 +76,9 @@ msgstr "Normal"
 
 #. [campaign]: id=Heir 2 The Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:73
-msgid "3x enemies, 12 scenarios"
+#, fuzzy
+#| msgid "3x enemies, 12 scenarios"
+msgid "3x enemies, 13 scenarios"
 msgstr "3x enemigos, 12 escenarios"
 
 #. [campaign]: id=Heir 2 The Throne
@@ -84,8 +88,10 @@ msgstr "Difícil"
 
 #. [campaign]: id=Heir 2 The Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:74
-msgid "4x enemies, 10 scenarios"
-msgstr "4x enemigos, 10 escenarios"
+#, fuzzy
+#| msgid "3x enemies, 12 scenarios"
+msgid "4x enemies, 12 scenarios"
+msgstr "3x enemigos, 12 escenarios"
 
 #. [campaign]: id=Heir 2 The Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:74
@@ -208,7 +214,9 @@ msgstr ""
 
 #. [achievement_group]
 #: data/campaigns/Heir_To_The_Throne/achievements.cfg:34
-msgid "Complete <i>The Siege of Elensefar</i> on Nightmare difficulty."
+#, fuzzy
+#| msgid "Complete <i>The Siege of Elensefar</i> on Nightmare difficulty."
+msgid "Complete <i>The Siege of Elensefar</i> on Deadly difficulty."
 msgstr "Completa <i>El Asedio de Elensefar</i> en dificultad Pesadilla."
 
 #. [achievement_group]
@@ -4122,12 +4130,12 @@ msgstr ""
 #: data/campaigns/Heir_To_The_Throne/overworld/00d_sceptre_scenarios.cfg:234
 msgid ""
 "I have not located the Sceptre yet, but I am making progress. I shall send a "
-"messenger once we are ready to retrieve it — perhaps in $"
-"( $bm_milestone_scepter - $bm_turns ) battles’ time."
+"messenger once we are ready to retrieve it — perhaps in "
+"$( $bm_milestone_scepter - $bm_turns ) battles’ time."
 msgstr ""
 "Aún no he localizado el Cetro, pero estoy progresando. Enviaré un mensajero "
-"una vez que estemos listos para recuperarlo — tal vez en $"
-"( $bm_milestone_scepter - $bm_turns ) batallas."
+"una vez que estemos listos para recuperarlo — tal vez en "
+"$( $bm_milestone_scepter - $bm_turns ) batallas."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/overworld/00d_sceptre_scenarios.cfg:239
@@ -14068,8 +14076,10 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Northern_Winter.cfg:240
-msgid "Gather ingredients until turns run out:"
-msgstr "Recolecta ingredientes hasta que se acaben los turnos:"
+#, fuzzy
+#| msgid "Pillage as much gold as you can before turns run out"
+msgid "Gather as many ingredients as you can before turns run out:"
+msgstr "Saquea tanto oro como puedas antes de que se acaben los turnos"
 
 #. [objective]: condition=win
 #. [objective]: condition=win, description=<span strikethrough='true'>
@@ -18805,9 +18815,9 @@ msgid ""
 "distance?! ...I’d be elated to see you, if you weren’t so clearly marching "
 "in rapport with the traitor prince. This is a surprise."
 msgstr ""
-"¡Alteza, la Princesa de Wesnoth! ¿Puedes ser tú, allá a lo "
-"lejos?! ...Estaría encantada de verte, si no estuvieras marchando tan "
-"claramente en sintonía con el príncipe traidor. Esto es una sorpresa."
+"¡Alteza, la Princesa de Wesnoth! ¿Puedes ser tú, allá a lo lejos?! ..."
+"Estaría encantada de verte, si no estuvieras marchando tan claramente en "
+"sintonía con el príncipe traidor. Esto es una sorpresa."
 
 #. [message]: speaker=Lisar
 #: data/campaigns/Heir_To_The_Throne/scenarios/41_Snow_Plains.cfg:197
@@ -22698,12 +22708,12 @@ msgid "Injured Lieutenant"
 msgstr "Teniente Herido"
 
 #. [dummy]: id=smoke
-#: data/campaigns/Heir_To_The_Throne/units/Human_Jeniver.cfg:250
+#: data/campaigns/Heir_To_The_Throne/units/Human_Jeniver.cfg:245
 msgid "smoke"
 msgstr "humo"
 
 #. [dummy]: id=smoke
-#: data/campaigns/Heir_To_The_Throne/units/Human_Jeniver.cfg:251
+#: data/campaigns/Heir_To_The_Throne/units/Human_Jeniver.cfg:246
 msgid ""
 "Hit or miss, this attack creates a cloud of cloying, caustic smoke on the "
 "targeted hex. Any unit inside suffers halved chance-to-hit and can no longer "
@@ -22718,12 +22728,12 @@ msgstr ""
 "Los ataques <i>mágicos</i> no se ven afectados por el humo."
 
 #. [dummy]: id=smoke
-#: data/campaigns/Heir_To_The_Throne/units/Human_Jeniver.cfg:253
+#: data/campaigns/Heir_To_The_Throne/units/Human_Jeniver.cfg:248
 msgid "<i>Magical</i> attacks are unaffected by smoke."
 msgstr "Los ataques <i>mágicos</i> no se ven afectados por el humo."
 
 #. [dummy]: id=smoke
-#: data/campaigns/Heir_To_The_Throne/units/Human_Jeniver.cfg:254
+#: data/campaigns/Heir_To_The_Throne/units/Human_Jeniver.cfg:249
 msgid ""
 "This unit’s attacks create clouds of caustic smoke, halving chance-to-hit "
 "and nullifying zone of control for any unit caught inside."
@@ -22733,12 +22743,12 @@ msgstr ""
 "cualquier unidad atrapada dentro."
 
 #. [unit_type]: id=Alchemist, race=human
-#: data/campaigns/Heir_To_The_Throne/units/Human_Jeniver.cfg:273
+#: data/campaigns/Heir_To_The_Throne/units/Human_Jeniver.cfg:268
 msgid "Alchemist"
 msgstr "Alquimista"
 
 #. [unit_type]: id=Alchemist, race=human
-#: data/campaigns/Heir_To_The_Throne/units/Human_Jeniver.cfg:287
+#: data/campaigns/Heir_To_The_Throne/units/Human_Jeniver.cfg:282
 msgid ""
 "In contrast with more overtly magical fields of scholarship, practitioners "
 "of alchemy are concerned with the study of physical matter — especially "
@@ -22749,7 +22759,7 @@ msgstr ""
 "especialmente hierbas, minerales y los cuatro humores."
 
 #. [unit_type]: id=Alchemist, race=human
-#: data/campaigns/Heir_To_The_Throne/units/Human_Jeniver.cfg:289
+#: data/campaigns/Heir_To_The_Throne/units/Human_Jeniver.cfg:284
 msgid ""
 "The ultimate aim of such practice is, of course, the transmutation of lead "
 "into gold. Though several have claimed to have achieved this milestone in "
@@ -22764,22 +22774,22 @@ msgstr ""
 "ojos de las órdenes más tradicionales de la magia."
 
 #. [dummy]: id=transmutation
-#: data/campaigns/Heir_To_The_Throne/units/Human_Jeniver.cfg:296
+#: data/campaigns/Heir_To_The_Throne/units/Human_Jeniver.cfg:291
 msgid "transmutation"
 msgstr "transmutación"
 
 #. [dummy]: id=transmutation
-#: data/campaigns/Heir_To_The_Throne/units/Human_Jeniver.cfg:297
+#: data/campaigns/Heir_To_The_Throne/units/Human_Jeniver.cfg:292
 msgid "This unit generates 4 gold each turn."
 msgstr "Esta unidad genera 4 de oro cada turno."
 
 #. [attack]: type=fire
-#: data/campaigns/Heir_To_The_Throne/units/Human_Jeniver.cfg:304
+#: data/campaigns/Heir_To_The_Throne/units/Human_Jeniver.cfg:299
 msgid "flashpowder"
 msgstr "pólvora relámpago"
 
 #. [attack]: type=pierce
-#: data/campaigns/Heir_To_The_Throne/units/Human_Jeniver.cfg:316
+#: data/campaigns/Heir_To_The_Throne/units/Human_Jeniver.cfg:311
 msgid "blowgun"
 msgstr "cerbatana"
 
@@ -23687,8 +23697,14 @@ msgid ""
 "Ah, insultin’ these dead’uns is jus’ no fun. They cannae understand me..."
 msgstr "Ah, insultar a estos muertos no es divertido. No pueden entenderme..."
 
+#. [message]: speaker=Ulfdain
+#. And stay down!
+#: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:525
+msgid "An’ stay down!"
+msgstr ""
+
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:522
+#: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:537
 msgid ""
 "Ulfdain, how did you find yourself in Wesnoth? Delfador always told me that "
 "the dwarves preferred to keep their own company in Knalga, except for their "
@@ -23699,7 +23715,7 @@ msgstr ""
 "amigos humanos en las Puertas."
 
 #. [message]: speaker=Ulfdain
-#: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:526
+#: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:541
 msgid ""
 "Aye, tha’s true. Not the most outgoin’ o’ folks, we dwarves ain’t. Heads "
 "harder than a’ troll’s half th’ time, and more stubborn too! But t’ tell ye "
@@ -23712,7 +23728,7 @@ msgstr ""
 "yo haya oído."
 
 #. [message]: speaker=Ulfdain
-#: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:530
+#: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:545
 msgid ""
 "Ah’m ashamed to admit it, Konrad, but I left. An Ulfserker ain’t afeared o’ "
 "no troll or orc, but watchin’ my home slowly fall to pieces around me? My "
@@ -23725,7 +23741,7 @@ msgstr ""
 "en busca de una vida mejor en otro lugar."
 
 #. [message]: speaker=Ulfdain
-#: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:534
+#: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:549
 msgid ""
 "An ye see how that ended up. A great galumphing gallow-fool I’ve been. If ye "
 "hadn’t helped me miners and I when ye did..."
@@ -23734,7 +23750,7 @@ msgstr ""
 "a mis mineros y a mí cuando lo hiciste..."
 
 #. [message]: speaker=Ulfdain
-#: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:547
+#: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:562
 msgid ""
 "This fight’s good an’ all, but when’re we getting t’ Weldyn? Ah cannae wait "
 "to show tha’ dew-beatin’ gobermouch excuse for a queen exactly what I think "
@@ -23745,7 +23761,7 @@ msgstr ""
 "lo que pienso de ella!"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:552
+#: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:567
 msgid ""
 "We shall find ourselves in Weldyn sooner rather than later, I suspect. We "
 "have come a long way together since you first joined us, Ulfdain — now even "
@@ -23756,7 +23772,7 @@ msgstr ""
 "incluso la princesa está de nuestro lado!"
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:557
+#: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:572
 msgid ""
 "I appreciate the enthusiasm, but we’re in no state to confront Asheviere "
 "anytime soon! For now we should focus on surviving and building up our "
@@ -23767,7 +23783,7 @@ msgstr ""
 "fortalecernos."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:574
+#: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:589
 msgid ""
 "You are an alchemist, Jeniver? That is a brave choice, for your craft is not "
 "looked kindly upon by Alduin. There are some who think it hogwash and "
@@ -23778,7 +23794,7 @@ msgstr ""
 "y superstición."
 
 #. [message]: speaker=Jeniver
-#: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:578
+#: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:593
 msgid ""
 "Superstition?! No, no, no! That’s a common misconception, born of— of— dumb "
 "ignorance! Alchemy is just— it’s the future! There’s so much for us to "
@@ -23789,7 +23805,7 @@ msgstr ""
 "aprender, es—!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:582
+#: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:597
 msgid ""
 "No offense meant, my lady. Perhaps we can discuss your studies in more depth "
 "at another time."
@@ -23798,7 +23814,7 @@ msgstr ""
 "profundidad en otro momento."
 
 #. [message]: speaker=Jeniver
-#: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:612
+#: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:627
 msgid ""
 "Oh! Is that another giant spider? I could use some more spider poison, err, "
 "venom — I suppose it’s not really poison — for my blowdarts. Can you kill "
@@ -23809,36 +23825,36 @@ msgstr ""
 "para mí?"
 
 #. [message]: speaker=Jeniver
-#: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:620
+#: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:635
 msgid "Wonderful, the spider is dead! Just, ah, just give me a moment here..."
 msgstr "¡Maravilloso, la araña está muerta! Solo, ah, dame un momento aquí..."
 
 #. [object]
-#: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:702
+#: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:717
 msgid "Improved Blowgun"
 msgstr "Cerbatana Mejorada"
 
 #. [object]
-#: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:703
+#: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:718
 msgid "Jeniver’s “<i>blowgun</i>” attack can now be used twice each turn!"
 msgstr ""
 "¡El ataque de “<i>cerbatana</i>” de Jeniver ahora se puede usar dos veces "
 "por turno!"
 
 #. [object]
-#: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:723
+#: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:738
 msgid "Improved Flashpowder"
 msgstr "Pólvora Relámpago Mejorada"
 
 #. [object]
-#: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:724
+#: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:739
 msgid "Jeniver’s “<i>flashpowder</i>” attack can now be used twice each turn!"
 msgstr ""
 "¡El ataque de “<i>pólvora relámpago</i>” de Jeniver ahora se puede usar dos "
 "veces por turno!"
 
 #. [message]: speaker=Jeniver
-#: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:741
+#: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:756
 msgid ""
 "Konrad, I had no idea you had a troll with you! What was his name? Dosh? "
 "Dosh, CAN. YOU. UNDERSTAND. ME?"
@@ -23847,12 +23863,12 @@ msgstr ""
 "¿Dosh? Dosh, ¿PUEDES. ENTENDERME?"
 
 #. [message]: speaker=Dosh
-#: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:745
+#: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:760
 msgid "Dere sometin’ wrong wit’ your head, girl? You talkin’ real funny."
 msgstr "¿Hay algo malo con tu cabeza, chica? Hablas muy raro."
 
 #. [message]: speaker=Jeniver
-#: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:749
+#: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:764
 msgid ""
 "Oh! Oh, well then, Dosh, can I trouble you for a few pieces of your flesh? "
 "It’ll grow back, I’m sure. I have this, err, theory I want to try with "
@@ -23863,7 +23879,7 @@ msgstr ""
 "probar con regeneración, verás..."
 
 #. [message]: speaker=Dosh
-#: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:753
+#: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:768
 msgid ""
 "You want some pieces of Dosh? Dere definitely sometin’ wrong wit’ your head. "
 "But okay. Here you go."
@@ -23872,7 +23888,7 @@ msgstr ""
 "cabeza. Pero está bien. Aquí tienes."
 
 #. [message]: speaker=Jeniver
-#: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:777
+#: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:792
 msgid ""
 "Oh, a troll! Err, Konrad, you know, they say trolls have amazing powers of "
 "regeneration... in fact, I have something of a theory about the curative "
@@ -23883,7 +23899,7 @@ msgstr ""
 "propiedades curativas de la carne de troll..."
 
 #. [message]: speaker=Jeniver
-#: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:788
+#: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:803
 msgid ""
 "The troll’s dead? Oh, wonderful— yes, yes there’s something I’ve been "
 "meaning to try with regeneration..."
@@ -23892,7 +23908,7 @@ msgstr ""
 "queriendo probar con regeneración..."
 
 #. [message]: speaker=Jeniver
-#: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:803
+#: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:818
 msgid ""
 "Mix with one vial of frostbone... infusion of boar... heat over an open "
 "flame..."
@@ -23901,12 +23917,12 @@ msgstr ""
 "fuego abierto..."
 
 #. [message]: speaker=Jeniver
-#: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:816
+#: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:831
 msgid "Oh! Oh Light, that’s foul! That stings! It blew up in my face!"
 msgstr "¡Oh! ¡Oh Luz, qué asqueroso! ¡Pica! ¡Explotó en mi cara!"
 
 #. [message]: speaker=Jeniver
-#: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:820
+#: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:835
 msgid ""
 "I was— well, I was <b><i>trying</i></b> to unlock the secrets of the rapid "
 "curation of venoms; the curing of poison and bolstering of the body and so-"
@@ -23918,7 +23934,7 @@ msgstr ""
 "con mis métodos."
 
 #. [message]: speaker=Jeniver
-#: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:824
+#: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:839
 msgid ""
 "Although, if you could someday find some other regenerating creature for me "
 "to take a sample of..."
@@ -23928,7 +23944,7 @@ msgstr ""
 
 #. [message]: speaker=Ulfdain
 #. "from below" implying that dwarves believe that they end up in some underworld after death
-#: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:854
+#: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:869
 msgid ""
 "Ah can’t believe yer expecting me to fight side-by-side with some half-wit, "
 "bog-handed, mumblecrest o’ a troll, Konrad. I kin feel my ancestors laughin’ "
@@ -23939,7 +23955,7 @@ msgstr ""
 "riendo de mí desde abajo!"
 
 #. [message]: speaker=Dosh
-#: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:858
+#: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:873
 msgid ""
 "Hey, who you calling... uhh... thing. Not like Dosh been killin’ hundred "
 "dwarves or nothin’ like that."
@@ -23948,7 +23964,7 @@ msgstr ""
 "enanos o algo por el estilo."
 
 #. [message]: speaker=Dosh
-#: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:862
+#: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:877
 msgid ""
 "Dosh only ever kill two, small ones, an’ dey not even fight back. Dwarves "
 "not hard to kill. You probably not hard either."
@@ -23957,7 +23973,7 @@ msgstr ""
 "difíciles de matar. Tú probablemente tampoco."
 
 #. [message]: speaker=Konrad
-#: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:866
+#: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:881
 msgid ""
 "Enough, both of you! Behave, or you’ll find yourselves needing to fight me, "
 "too."
@@ -23966,7 +23982,7 @@ msgstr ""
 "también."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:879
+#: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:894
 msgid ""
 "I am not well-accustomed to fighting alongside trolls, Dosh. In the past I "
 "have fought against your kind instead. I hope there will be no tension "
@@ -23977,7 +23993,7 @@ msgstr ""
 "nosotros."
 
 #. [message]: speaker=Dosh
-#: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:883
+#: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:898
 msgid ""
 "Nah, Dosh excited to be fightin’ with Delfador. Da orcs and trolls all be "
 "telling stories about all da big battles you fought back when. Now soon dey "
@@ -23988,12 +24004,12 @@ msgstr ""
 "contarán historias sobre Dosh también!"
 
 #. [message]: speaker=Dosh
-#: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:898
+#: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:913
 msgid "You bad troll, bad! Bad trolls be getting hit with big sticks!"
 msgstr "¡Troll malo, malo! ¡Los trolls malos reciben golpes con palos grandes!"
 
 #. [message]: speaker=Lisar
-#: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:915
+#: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:930
 msgid ""
 "I never thought I’d be fighting alongside the very wizard who killed my "
 "brother. I never had a chance to meet him. Thanks to you."
@@ -24002,7 +24018,7 @@ msgstr ""
 "Nunca tuve la oportunidad de conocerlo. Gracias a ti."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:919
+#: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:934
 msgid ""
 "You never had a chance to meet your father, either. I think Garard would be "
 "proud of you. You have his skill with the sword."
@@ -24011,7 +24027,7 @@ msgstr ""
 "estaría orgulloso de ti. Tienes su habilidad con la espada."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:923
+#: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:938
 msgid ""
 "But as for your brother... I have no doubt that Asheviere puffed Eldred up "
 "with flattery and lies, but it was his hand and his hand alone that slew the "
@@ -24022,7 +24038,7 @@ msgstr ""
 "rey. Tu hermano selló su propio destino ese día, Li’sar."
 
 #. [message]: speaker=Lisar
-#: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:927
+#: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:942
 msgid ""
 "Save your breath. You’re not making this any easier. Let’s just do what "
 "needs to be done."
@@ -24031,7 +24047,7 @@ msgstr ""
 "hacer."
 
 #. [message]: speaker=Lisar
-#: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:942
+#: data/campaigns/Heir_To_The_Throne/utils/smalltalk.cfg:957
 msgid "A powerful magic awakens in my hands. Behold the Sceptre of Fire!"
 msgstr ""
 "Un poderoso magia despierta en mis manos. ¡Contemplen el Cetro de Fuego!"
@@ -24654,6 +24670,12 @@ msgid ""
 msgstr ""
 "Delfador es un líder y puede reclutar elementales cuando está en una "
 "fortaleza."
+
+#~ msgid "4x enemies, 10 scenarios"
+#~ msgstr "4x enemigos, 10 escenarios"
+
+#~ msgid "Gather ingredients until turns run out:"
+#~ msgstr "Recolecta ingredientes hasta que se acaben los turnos:"
 
 #~ msgid ""
 #~ "Burning farms will reduce Asheviere’s income and her allies’ "

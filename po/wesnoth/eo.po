@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.18\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-12-21 21:09-0600\n"
+"POT-Creation-Date: 2026-01-20 11:31-0600\n"
 "PO-Revision-Date: 2025-05-14 18:12-0300\n"
 "Last-Translator: Mariano Street <mctpyt@proton.me>\n"
 "Language-Team: Esperanto <https://wiki.wesnoth.org/Esperanto_translation>\n"
@@ -23,11 +23,6 @@ msgstr ""
 #: data/_main.cfg:22
 msgid "Custom"
 msgstr "Propra"
-
-#. [editor_group]: id=urban_jungle
-#: data/_main.cfg:65
-msgid "Urban Jungle (Internal)"
-msgstr ""
 
 #. [advanced_preference]: type=combo
 #: data/advanced_preferences.cfg:4
@@ -372,7 +367,7 @@ msgstr ""
 #. [unstore_unit]
 #. [lua]: set_status
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:369
-#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:945
+#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:948
 msgid "poisoned"
 msgstr "venenita"
 
@@ -4022,9 +4017,7 @@ msgid "Shroud"
 msgstr "Vualo"
 
 #. [color_range]: id=urbanjungle
-#. [terrain_type]: id=urbanjungle
-#: data/core/team-colors.cfg:256 data/internal/Urban_Jungle/terrain.cfg:6
-#: data/internal/Urban_Jungle/terrain.cfg:7
+#: data/core/team-colors.cfg:256
 msgid "Urban"
 msgstr ""
 
@@ -4343,25 +4336,6 @@ msgstr "DejaVu Sans Mono"
 msgid "WesScript"
 msgstr "Ne disponeblas priskribo."
 
-#. [terrain_type]: id=urbanjungle
-#: data/internal/Urban_Jungle/terrain.cfg:8
-msgid ""
-"Densely packed structures are less suitable for garrison than traditional "
-"villages, providing no income or healing. They are difficult to navigate "
-"quickly, but offer significant protection."
-msgstr ""
-
-#. [terrain_type]: id=urbanjungleA
-#. [terrain_type]: id=urbanjungle{ID}
-#: data/internal/Urban_Jungle/terrain.cfg:15
-#: data/internal/Urban_Jungle/terrain.cfg:16
-#: data/internal/Urban_Jungle/terrain.cfg:17
-#: data/internal/Urban_Jungle/terrain.cfg:30
-#: data/internal/Urban_Jungle/terrain.cfg:31
-#: data/internal/Urban_Jungle/terrain.cfg:32
-msgid "Urban Jungle"
-msgstr ""
-
 #. [time]: id=dawn_noweather
 #: data/internal/Weather/_main.cfg:143
 msgid "Dawn"
@@ -4607,32 +4581,32 @@ msgstr "Malaktualiga nivelo nevalidas (devus esti 1–4)"
 # undead
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:945
+#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:948
 msgid "female^poisoned"
 msgstr "venenita"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:952
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:955
 msgid "female^slowed"
 msgstr "malrapidigita"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:952
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:955
 msgid "slowed"
 msgstr "malrapidigita"
 
 # undead
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:958
+#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:961
 msgid "female^petrified"
 msgstr "ŝtonigita"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:958
+#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:961
 msgid "petrified"
 msgstr "ŝtonigita"
 
@@ -5795,11 +5769,11 @@ msgstr ""
 msgid "waiting for^an advancement choice"
 msgstr "antaŭiga elekto"
 
-#: src/actions/attack.cpp:475 src/actions/attack.cpp:1270
+#: src/actions/attack.cpp:477 src/actions/attack.cpp:1273
 msgid "An invalid attacker weapon got selected."
 msgstr "Nevalida armilo de atakanto elektiĝis."
 
-#: src/actions/attack.cpp:965
+#: src/actions/attack.cpp:968
 #, fuzzy
 #| msgid "Attacks: "
 msgid "attack^miss"
@@ -8656,7 +8630,7 @@ msgstr "Aparteno: "
 msgid "Ability:"
 msgstr "Kapablo: "
 
-#: src/reports.cpp:443 src/reports.cpp:1017 src/reports.cpp:1057
+#: src/reports.cpp:443 src/reports.cpp:1036 src/reports.cpp:1076
 msgid " (inactive)"
 msgstr " (neaktiva)"
 
@@ -8708,13 +8682,13 @@ msgstr ""
 msgid "Movement Costs:"
 msgstr "Movkostoj:"
 
-#: src/reports.cpp:822 src/reports.cpp:1149 src/reports.cpp:1161
+#: src/reports.cpp:822 src/reports.cpp:1168 src/reports.cpp:1180
 #, fuzzy
 #| msgid "Weapon: "
 msgid "Weapon:"
 msgstr "Armilo: "
 
-#: src/reports.cpp:823 src/reports.cpp:1150
+#: src/reports.cpp:823 src/reports.cpp:1169
 #, fuzzy
 #| msgid "Damage: "
 msgid "Damage:"
@@ -8732,7 +8706,7 @@ msgstr "Baza damaĝo: "
 msgid "With specials:"
 msgstr "Kun specialaĵoj: "
 
-#: src/reports.cpp:832 src/reports.cpp:1374
+#: src/reports.cpp:832 src/reports.cpp:1393
 msgid "Time of day:"
 msgstr "Tagtempo:"
 
@@ -8800,100 +8774,115 @@ msgstr "Damaĝospeco: "
 msgid "Damage versus:"
 msgstr "Damaĝo kontraŭ: "
 
-#: src/reports.cpp:1015 src/reports.cpp:1055
+#: src/reports.cpp:988
+#, fuzzy
+#| msgid "$number attack used"
+#| msgid_plural "$number attacks used"
+msgid "uses $num attack"
+msgid_plural "uses $num attacks"
+msgstr[0] "1 atako uzotaj"
+msgstr[1] "$nmuber atakoj uzotaj"
+
+#: src/reports.cpp:996
+msgid "This attack uses $num attack point"
+msgid_plural "This attack uses $num attack points"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/reports.cpp:1034 src/reports.cpp:1074
 #, fuzzy
 #| msgid "Weapon special: "
 msgid "Weapon special:"
 msgstr "Armilspecialaĵo: "
 
-#: src/reports.cpp:1132
+#: src/reports.cpp:1151
 msgid "weapon^None"
 msgstr "Neniu"
 
-#: src/reports.cpp:1162
+#: src/reports.cpp:1181
 msgid "Total damage"
 msgstr "Tuta damaĝo"
 
-#: src/reports.cpp:1220
+#: src/reports.cpp:1239
 msgid "Attack"
 msgid_plural "Attacks"
 msgstr[0] "Atako"
 msgstr[1] "Atakoj"
 
 #. TRANSLATORS: This string is shown in the sidebar beneath the word "Attacks" when a unit can attack multiple times per turn
-#: src/reports.cpp:1227
+#: src/reports.cpp:1246
 msgid "Remaining: $left/$max"
 msgstr "Restas: $left/$max"
 
-#: src/reports.cpp:1231
+#: src/reports.cpp:1250
 msgid "This unit can attack multiple times per turn."
 msgstr "Ĉi tiu unuo povas ataki plurfoje povice."
 
-#: src/reports.cpp:1323
+#: src/reports.cpp:1342
 msgid "Time of day schedule:"
 msgstr "Tagtempa horaro:"
 
-#: src/reports.cpp:1375 src/reports.cpp:1429
+#: src/reports.cpp:1394 src/reports.cpp:1448
 #, fuzzy
 #| msgid "Lawful units: "
 msgid "Lawful units:"
 msgstr "Laŭleĝaj unuoj:"
 
-#: src/reports.cpp:1377 src/reports.cpp:1431
+#: src/reports.cpp:1396 src/reports.cpp:1450
 #, fuzzy
 #| msgid "Neutral units: "
 msgid "Neutral units:"
 msgstr "Neŭtralaj unuoj:"
 
-#: src/reports.cpp:1378 src/reports.cpp:1432
+#: src/reports.cpp:1397 src/reports.cpp:1451
 #, fuzzy
 #| msgid "Chaotic units: "
 msgid "Chaotic units:"
 msgstr "Ĥaosaj unuoj:"
 
-#: src/reports.cpp:1380 src/reports.cpp:1434
+#: src/reports.cpp:1399 src/reports.cpp:1453
 #, fuzzy
 #| msgid "Liminal units: "
 msgid "Liminal units:"
 msgstr "Liminaj unuoj:"
 
-#: src/reports.cpp:1492
+#: src/reports.cpp:1511
 msgid "Turn Number"
 msgstr "Vicnumero"
 
-#: src/reports.cpp:1496
+#: src/reports.cpp:1515
 msgid ""
 "When the game exceeds the number of turns indicated by the second number, it "
 "will end."
 msgstr ""
 "Kiam la ludo superon la vicnombron indikitan de la dua numero, ĝi finiĝos."
 
-#: src/reports.cpp:1519
+#: src/reports.cpp:1538
 msgid "Gold"
 msgstr "Oro"
 
-#: src/reports.cpp:1519
+#: src/reports.cpp:1538
 msgid ""
 "The amount of gold currently available to recruit and maintain your army."
 msgstr "La orkvanto nun disponebla por varbi kaj subteni vian armeon."
 
-#: src/reports.cpp:1537
+#: src/reports.cpp:1556
 msgid "The fraction of known villages that your side has captured."
 msgstr "La frakcio de konataj vilaĝoj, kiujn via flanko kaptis."
 
-#: src/reports.cpp:1537
+#: src/reports.cpp:1556
 msgid "Villages"
 msgstr "Vilaĝoj"
 
-#: src/reports.cpp:1542
+#: src/reports.cpp:1561
 msgid "The total number of units on your side."
 msgstr "La tuta nombro de unuoj ĉe via flanko."
 
-#: src/reports.cpp:1542
+#: src/reports.cpp:1561
 msgid "Units"
 msgstr "Unuoj"
 
-#: src/reports.cpp:1551
+#: src/reports.cpp:1570
 msgid ""
 "The expenses incurred at the end of every turn to maintain your army. The "
 "first number is the amount of gold that will be deducted. It is equal to the "
@@ -8902,37 +8891,37 @@ msgid ""
 "amount of gold that would be deducted if you lost all villages."
 msgstr ""
 
-#: src/reports.cpp:1551
+#: src/reports.cpp:1570
 msgid "Upkeep"
 msgstr "Elspezo"
 
-#: src/reports.cpp:1581
+#: src/reports.cpp:1600
 msgid "Net Income"
 msgstr "Neta enspezo"
 
-#: src/reports.cpp:1581
+#: src/reports.cpp:1600
 msgid ""
 "The net amount of gold you gain or lose each turn, taking into account "
 "income from controlled villages and payment of upkeep."
 msgstr ""
 
-#: src/reports.cpp:1781
+#: src/reports.cpp:1800
 msgid "Observers:"
 msgstr "Spektantoj:"
 
-#: src/reports.cpp:1798
+#: src/reports.cpp:1817
 msgid "Clock"
 msgstr "Horloĝo"
 
-#: src/reports.cpp:1809
+#: src/reports.cpp:1828
 msgid "Battery"
 msgstr "Baterio"
 
-#: src/reports.cpp:1853
+#: src/reports.cpp:1872
 msgid "Countdown until your turn automatically ends."
 msgstr ""
 
-#: src/reports.cpp:1853
+#: src/reports.cpp:1872
 msgid "Turn Countdown"
 msgstr ""
 
@@ -9282,21 +9271,21 @@ msgstr "Ĝerma tagtempo"
 msgid "This Time of Day is only a Stub!"
 msgstr "Ĉi tiu tagtempo estas nur ĝermo!"
 
-#: src/units/abilities.cpp:1127
+#: src/units/abilities.cpp:1131
 msgid "Owned: "
 msgstr "Posedata: "
 
 #. TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
-#: src/units/abilities.cpp:1129
+#: src/units/abilities.cpp:1133
 msgid "Taught: "
 msgstr "Alinstruita: "
 
 #. TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
-#: src/units/abilities.cpp:1131
+#: src/units/abilities.cpp:1135
 msgid "Taught: (by an enemy): "
 msgstr "Alinstruita (de malamiko): "
 
-#: src/units/abilities.cpp:1132
+#: src/units/abilities.cpp:1136
 msgid "Used by opponent: "
 msgstr "Uzata de kontraŭulo: "
 
@@ -9447,36 +9436,36 @@ msgstr "Vi ne havas sufiĉe da oro por varbi ĉi tiun unuon."
 msgid "The $unit_type is not available to recruit."
 msgstr "Vi ne povas varbi milit-unuojn"
 
-#: src/units/types.cpp:805 src/units/types.cpp:813
+#: src/units/types.cpp:785 src/units/types.cpp:793
 msgid "female^lawful"
 msgstr "laŭleĝa"
 
 # undead
-#: src/units/types.cpp:807
+#: src/units/types.cpp:787
 msgid "female^neutral"
 msgstr "neŭtrala"
 
-#: src/units/types.cpp:809
+#: src/units/types.cpp:789
 msgid "female^chaotic"
 msgstr "ĥaosa"
 
-#: src/units/types.cpp:811
+#: src/units/types.cpp:791
 msgid "female^liminal"
 msgstr "limina"
 
-#: src/units/types.cpp:819 src/units/types.cpp:827
+#: src/units/types.cpp:799 src/units/types.cpp:807
 msgid "lawful"
 msgstr "laŭleĝa"
 
-#: src/units/types.cpp:821
+#: src/units/types.cpp:801
 msgid "neutral"
 msgstr "neŭtrala"
 
-#: src/units/types.cpp:823
+#: src/units/types.cpp:803
 msgid "chaotic"
 msgstr "kaosema"
 
-#: src/units/types.cpp:825
+#: src/units/types.cpp:805
 msgid "liminal"
 msgstr "limina"
 
@@ -9492,45 +9481,45 @@ msgstr "Ĉi tiu unuo ne havas uzeblan armilon."
 msgid "This unit is a leader and cannot be dismissed."
 msgstr "Ĉi tiu unuo estas nevundebla. Neniu atako povas vundi ĝin."
 
-#: src/units/unit.cpp:1997
+#: src/units/unit.cpp:2008
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/units/unit.cpp:2003
+#: src/units/unit.cpp:2014
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "<span color=\\\"$color\\\">$number_or_percent</span> VP"
 
-#: src/units/unit.cpp:2013
+#: src/units/unit.cpp:2024
 msgid "<span color=\"$color\">$number_or_percent</span> move"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> movo"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> movoj"
 
-#: src/units/unit.cpp:2019
+#: src/units/unit.cpp:2030
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "<span color=\"\\$color\\\">$number_or_percent</span> vido"
 
-#: src/units/unit.cpp:2023
+#: src/units/unit.cpp:2034
 #, fuzzy
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "por turno"
 
-#: src/units/unit.cpp:2028
+#: src/units/unit.cpp:2039
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "<span color=\"$color\">$number_or_percent> SP ĝis antaŭiĝo"
 
-#: src/units/unit.cpp:2032
+#: src/units/unit.cpp:2043
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
 msgid_plural ""
 "<span color=\"$color\">$number_or_percent</span> attacks per turn"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> atako povice"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> atakoj povice"
 
-#: src/units/unit.cpp:2039
+#: src/units/unit.cpp:2050
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "<span color=\"$color\">$number_or_percent</span> de realvoka kosto"
 
-#: src/units/unit.cpp:2545
+#: src/units/unit.cpp:2556
 msgid "$effect_description per level"
 msgstr "$effect_description ponivele"
 

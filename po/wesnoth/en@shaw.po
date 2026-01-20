@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en@shaw\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-12-21 21:09-0600\n"
+"POT-Creation-Date: 2026-01-20 11:31-0600\n"
 "PO-Revision-Date: 2009-10-11 21:15-0400\n"
 "Last-Translator: Arc Riley <arcriley@ubuntu.com>\n"
 "Language-Team: Shavian English <ubuntu-l10n-en-shaw@lists.launchpad.net>\n"
@@ -28,11 +28,6 @@ msgstr ""
 #| msgid "Commands"
 msgid "Custom"
 msgstr "𐑒𐑩𐑥𐑭𐑯𐑛𐑟"
-
-#. [editor_group]: id=urban_jungle
-#: data/_main.cfg:65
-msgid "Urban Jungle (Internal)"
-msgstr ""
 
 #. [advanced_preference]: type=combo
 #: data/advanced_preferences.cfg:4
@@ -365,7 +360,7 @@ msgstr ""
 #. [unstore_unit]
 #. [lua]: set_status
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:369
-#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:945
+#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:948
 msgid "poisoned"
 msgstr "𐑐𐑶𐑟𐑩𐑯𐑛"
 
@@ -3807,9 +3802,7 @@ msgid "Shroud"
 msgstr "𐑖𐑮𐑬𐑛"
 
 #. [color_range]: id=urbanjungle
-#. [terrain_type]: id=urbanjungle
-#: data/core/team-colors.cfg:256 data/internal/Urban_Jungle/terrain.cfg:6
-#: data/internal/Urban_Jungle/terrain.cfg:7
+#: data/core/team-colors.cfg:256
 msgid "Urban"
 msgstr ""
 
@@ -4126,25 +4119,6 @@ msgstr ""
 msgid "WesScript"
 msgstr "𐑛𐑦𐑕𐑒𐑮𐑦𐑐𐑖𐑩𐑯"
 
-#. [terrain_type]: id=urbanjungle
-#: data/internal/Urban_Jungle/terrain.cfg:8
-msgid ""
-"Densely packed structures are less suitable for garrison than traditional "
-"villages, providing no income or healing. They are difficult to navigate "
-"quickly, but offer significant protection."
-msgstr ""
-
-#. [terrain_type]: id=urbanjungleA
-#. [terrain_type]: id=urbanjungle{ID}
-#: data/internal/Urban_Jungle/terrain.cfg:15
-#: data/internal/Urban_Jungle/terrain.cfg:16
-#: data/internal/Urban_Jungle/terrain.cfg:17
-#: data/internal/Urban_Jungle/terrain.cfg:30
-#: data/internal/Urban_Jungle/terrain.cfg:31
-#: data/internal/Urban_Jungle/terrain.cfg:32
-msgid "Urban Jungle"
-msgstr ""
-
 #. [time]: id=dawn_noweather
 #: data/internal/Weather/_main.cfg:143
 msgid "Dawn"
@@ -4399,31 +4373,31 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:945
+#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:948
 msgid "female^poisoned"
 msgstr "𐑐𐑶𐑟𐑩𐑯𐑛"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:952
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:955
 msgid "female^slowed"
 msgstr "𐑕𐑤𐑴𐑛"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:952
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:955
 msgid "slowed"
 msgstr "𐑕𐑤𐑴𐑛"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:958
+#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:961
 msgid "female^petrified"
 msgstr "𐑐𐑧𐑑𐑮𐑩𐑓𐑲𐑛"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:958
+#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:961
 msgid "petrified"
 msgstr "𐑐𐑧𐑑𐑮𐑩𐑓𐑲𐑛"
 
@@ -5573,11 +5547,11 @@ msgstr ""
 msgid "waiting for^an advancement choice"
 msgstr "𐑩𐑛𐑝𐑨𐑯𐑕𐑥𐑩𐑯𐑑𐑕"
 
-#: src/actions/attack.cpp:475 src/actions/attack.cpp:1270
+#: src/actions/attack.cpp:477 src/actions/attack.cpp:1273
 msgid "An invalid attacker weapon got selected."
 msgstr "𐑩𐑯 𐑦𐑯𐑝𐑨𐑤𐑦𐑛 𐑩𐑑𐑨𐑒𐑻 𐑢𐑧𐑐𐑩𐑯 𐑜𐑪𐑑 𐑕𐑩𐑤𐑧𐑒𐑑𐑩𐑛."
 
-#: src/actions/attack.cpp:965
+#: src/actions/attack.cpp:968
 #, fuzzy
 msgid "attack^miss"
 msgstr "𐑩𐑑𐑨𐑒𐑻"
@@ -8619,7 +8593,7 @@ msgstr "𐑩𐑤𐑲𐑯𐑥𐑩𐑯𐑑: "
 msgid "Ability:"
 msgstr "𐑩𐑚𐑦𐑤𐑦𐑑𐑦𐑟: "
 
-#: src/reports.cpp:443 src/reports.cpp:1017 src/reports.cpp:1057
+#: src/reports.cpp:443 src/reports.cpp:1036 src/reports.cpp:1076
 msgid " (inactive)"
 msgstr ""
 
@@ -8675,12 +8649,12 @@ msgstr "𐑢𐑹𐑯𐑦𐑙: "
 msgid "Movement Costs:"
 msgstr "𐑥𐑵𐑝𐑥𐑩𐑯𐑑 𐑒𐑪𐑕𐑑"
 
-#: src/reports.cpp:822 src/reports.cpp:1149 src/reports.cpp:1161
+#: src/reports.cpp:822 src/reports.cpp:1168 src/reports.cpp:1180
 #, fuzzy
 msgid "Weapon:"
 msgstr "𐑢𐑧𐑐𐑩𐑯 𐑮𐑱𐑯𐑡: "
 
-#: src/reports.cpp:823 src/reports.cpp:1150
+#: src/reports.cpp:823 src/reports.cpp:1169
 #, fuzzy
 msgid "Damage:"
 msgstr "𐑛𐑨𐑥𐑦𐑡"
@@ -8695,7 +8669,7 @@ msgstr "𐑑𐑴𐑑𐑩𐑤 𐑛𐑨𐑥𐑦𐑡"
 msgid "With specials:"
 msgstr "𐑢𐑧𐑐𐑩𐑯 𐑕𐑐𐑧𐑖𐑩𐑤𐑟"
 
-#: src/reports.cpp:832 src/reports.cpp:1374
+#: src/reports.cpp:832 src/reports.cpp:1393
 #, fuzzy
 msgid "Time of day:"
 msgstr "𐑑𐑲𐑥 𐑝 𐑛𐑱"
@@ -8757,20 +8731,35 @@ msgstr "𐑛𐑨𐑥𐑦𐑡 𐑑𐑲𐑐: "
 msgid "Damage versus:"
 msgstr "𐑛𐑨𐑥𐑦𐑡 𐑑𐑲𐑐: "
 
-#: src/reports.cpp:1015 src/reports.cpp:1055
+#: src/reports.cpp:988
+#, fuzzy
+#| msgid "damage"
+#| msgid_plural "damage"
+msgid "uses $num attack"
+msgid_plural "uses $num attacks"
+msgstr[0] "𐑛𐑨𐑥𐑦𐑡"
+msgstr[1] "𐑛𐑨𐑥𐑦𐑡"
+
+#: src/reports.cpp:996
+msgid "This attack uses $num attack point"
+msgid_plural "This attack uses $num attack points"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/reports.cpp:1034 src/reports.cpp:1074
 #, fuzzy
 msgid "Weapon special:"
 msgstr "𐑢𐑧𐑐𐑩𐑯 𐑕𐑐𐑧𐑖𐑩𐑤𐑟"
 
-#: src/reports.cpp:1132
+#: src/reports.cpp:1151
 msgid "weapon^None"
 msgstr ""
 
-#: src/reports.cpp:1162
+#: src/reports.cpp:1181
 msgid "Total damage"
 msgstr "𐑑𐑴𐑑𐑩𐑤 𐑛𐑨𐑥𐑦𐑡"
 
-#: src/reports.cpp:1220
+#: src/reports.cpp:1239
 #, fuzzy
 #| msgid "Attacker"
 msgid "Attack"
@@ -8779,82 +8768,82 @@ msgstr[0] "𐑩𐑑𐑨𐑒𐑻"
 msgstr[1] "𐑩𐑑𐑨𐑒𐑻"
 
 #. TRANSLATORS: This string is shown in the sidebar beneath the word "Attacks" when a unit can attack multiple times per turn
-#: src/reports.cpp:1227
+#: src/reports.cpp:1246
 msgid "Remaining: $left/$max"
 msgstr ""
 
-#: src/reports.cpp:1231
+#: src/reports.cpp:1250
 #, fuzzy
 #| msgid "This is not a multiplayer save"
 msgid "This unit can attack multiple times per turn."
 msgstr "𐑞𐑦𐑕 𐑦𐑟 𐑯𐑪𐑑 𐑩 𐑥𐑩𐑤𐑑𐑰𐑐𐑤𐑱𐑻 𐑕𐑱𐑝"
 
-#: src/reports.cpp:1323
+#: src/reports.cpp:1342
 #, fuzzy
 msgid "Time of day schedule:"
 msgstr "𐑑𐑲𐑥 𐑝 𐑛𐑱"
 
-#: src/reports.cpp:1375 src/reports.cpp:1429
+#: src/reports.cpp:1394 src/reports.cpp:1448
 #, fuzzy
 #| msgid "Lawful units: "
 msgid "Lawful units:"
 msgstr "𐑤𐑷𐑓𐑫𐑤 𐑿𐑯𐑦𐑑𐑕: "
 
-#: src/reports.cpp:1377 src/reports.cpp:1431
+#: src/reports.cpp:1396 src/reports.cpp:1450
 #, fuzzy
 #| msgid "Neutral units: "
 msgid "Neutral units:"
 msgstr "𐑯𐑵𐑑𐑮𐑩𐑤 𐑿𐑯𐑦𐑑𐑕: "
 
-#: src/reports.cpp:1378 src/reports.cpp:1432
+#: src/reports.cpp:1397 src/reports.cpp:1451
 #, fuzzy
 #| msgid "Chaotic units: "
 msgid "Chaotic units:"
 msgstr "𐑒𐑱𐑭𐑑𐑦𐑒 𐑿𐑯𐑦𐑑𐑕: "
 
-#: src/reports.cpp:1380 src/reports.cpp:1434
+#: src/reports.cpp:1399 src/reports.cpp:1453
 #, fuzzy
 msgid "Liminal units:"
 msgstr "𐑤𐑷𐑓𐑫𐑤 𐑿𐑯𐑦𐑑𐑕: "
 
-#: src/reports.cpp:1492
+#: src/reports.cpp:1511
 #, fuzzy
 #| msgid "Turn "
 msgid "Turn Number"
 msgstr "𐑑𐑻𐑯 "
 
-#: src/reports.cpp:1496
+#: src/reports.cpp:1515
 msgid ""
 "When the game exceeds the number of turns indicated by the second number, it "
 "will end."
 msgstr ""
 
-#: src/reports.cpp:1519
+#: src/reports.cpp:1538
 msgid "Gold"
 msgstr "𐑜𐑴𐑤𐑛"
 
-#: src/reports.cpp:1519
+#: src/reports.cpp:1538
 msgid ""
 "The amount of gold currently available to recruit and maintain your army."
 msgstr ""
 
-#: src/reports.cpp:1537
+#: src/reports.cpp:1556
 msgid "The fraction of known villages that your side has captured."
 msgstr ""
 
-#: src/reports.cpp:1537
+#: src/reports.cpp:1556
 msgid "Villages"
 msgstr "𐑝𐑦𐑤𐑦𐑡𐑦𐑟"
 
-#: src/reports.cpp:1542
+#: src/reports.cpp:1561
 msgid "The total number of units on your side."
 msgstr ""
 
-#: src/reports.cpp:1542
+#: src/reports.cpp:1561
 msgid "Units"
 msgstr "𐑿𐑯𐑦𐑑𐑕"
 
-#: src/reports.cpp:1551
+#: src/reports.cpp:1570
 msgid ""
 "The expenses incurred at the end of every turn to maintain your army. The "
 "first number is the amount of gold that will be deducted. It is equal to the "
@@ -8863,39 +8852,39 @@ msgid ""
 "amount of gold that would be deducted if you lost all villages."
 msgstr ""
 
-#: src/reports.cpp:1551
+#: src/reports.cpp:1570
 msgid "Upkeep"
 msgstr "𐑳𐑐𐑒𐑰𐑐"
 
-#: src/reports.cpp:1581
+#: src/reports.cpp:1600
 #, fuzzy
 #| msgid "Income"
 msgid "Net Income"
 msgstr "𐑦𐑯𐑒𐑳𐑥"
 
-#: src/reports.cpp:1581
+#: src/reports.cpp:1600
 msgid ""
 "The net amount of gold you gain or lose each turn, taking into account "
 "income from controlled villages and payment of upkeep."
 msgstr ""
 
-#: src/reports.cpp:1781
+#: src/reports.cpp:1800
 msgid "Observers:"
 msgstr "𐑩𐑚𐑟𐑻𐑝𐑼𐑟:"
 
-#: src/reports.cpp:1798
+#: src/reports.cpp:1817
 msgid "Clock"
 msgstr ""
 
-#: src/reports.cpp:1809
+#: src/reports.cpp:1828
 msgid "Battery"
 msgstr ""
 
-#: src/reports.cpp:1853
+#: src/reports.cpp:1872
 msgid "Countdown until your turn automatically ends."
 msgstr ""
 
-#: src/reports.cpp:1853
+#: src/reports.cpp:1872
 msgid "Turn Countdown"
 msgstr ""
 
@@ -9262,23 +9251,23 @@ msgstr "𐑑𐑲𐑥 𐑝 𐑛𐑱"
 msgid "This Time of Day is only a Stub!"
 msgstr ""
 
-#: src/units/abilities.cpp:1127
+#: src/units/abilities.cpp:1131
 #, fuzzy
 #| msgid "slowed: "
 msgid "Owned: "
 msgstr "𐑕𐑤𐑴𐑛: "
 
 #. TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
-#: src/units/abilities.cpp:1129
+#: src/units/abilities.cpp:1133
 msgid "Taught: "
 msgstr ""
 
 #. TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
-#: src/units/abilities.cpp:1131
+#: src/units/abilities.cpp:1135
 msgid "Taught: (by an enemy): "
 msgstr ""
 
-#: src/units/abilities.cpp:1132
+#: src/units/abilities.cpp:1136
 msgid "Used by opponent: "
 msgstr ""
 
@@ -9461,38 +9450,38 @@ msgstr "𐑿 𐑛𐑴𐑯𐑑 𐑣𐑨𐑝 𐑦𐑯𐑳𐑓 𐑜𐑴𐑤𐑛 �
 msgid "The $unit_type is not available to recruit."
 msgstr "𐑿 𐑣𐑨𐑝 𐑯𐑴 𐑿𐑯𐑦𐑑𐑕 𐑩𐑝𐑱𐑤𐑩𐑚𐑩𐑤 𐑑 𐑮𐑩𐑒𐑮𐑵𐑑."
 
-#: src/units/types.cpp:805 src/units/types.cpp:813
+#: src/units/types.cpp:785 src/units/types.cpp:793
 msgid "female^lawful"
 msgstr "𐑤𐑷𐑓𐑫𐑤"
 
-#: src/units/types.cpp:807
+#: src/units/types.cpp:787
 msgid "female^neutral"
 msgstr "𐑯𐑵𐑑𐑮𐑩𐑤"
 
-#: src/units/types.cpp:809
+#: src/units/types.cpp:789
 msgid "female^chaotic"
 msgstr "𐑒𐑱𐑭𐑑𐑦𐑒"
 
-#: src/units/types.cpp:811
+#: src/units/types.cpp:791
 #, fuzzy
 msgid "female^liminal"
 msgstr "𐑤𐑶𐑩𐑤"
 
-#: src/units/types.cpp:819 src/units/types.cpp:827
+#: src/units/types.cpp:799 src/units/types.cpp:807
 #, fuzzy
 #| msgid "female^lawful"
 msgid "lawful"
 msgstr "𐑤𐑷𐑓𐑫𐑤"
 
-#: src/units/types.cpp:821
+#: src/units/types.cpp:801
 msgid "neutral"
 msgstr "𐑯𐑵𐑑𐑮𐑩𐑤"
 
-#: src/units/types.cpp:823
+#: src/units/types.cpp:803
 msgid "chaotic"
 msgstr "𐑒𐑱𐑭𐑑𐑦𐑒"
 
-#: src/units/types.cpp:825
+#: src/units/types.cpp:805
 #, fuzzy
 msgid "liminal"
 msgstr "𐑤𐑶𐑩𐑤"
@@ -9510,17 +9499,17 @@ msgstr "𐑯𐑴 𐑿𐑟𐑩𐑚𐑩𐑤 𐑢𐑧𐑐𐑩𐑯"
 msgid "This unit is a leader and cannot be dismissed."
 msgstr "𐑞𐑦𐑕 𐑿𐑯𐑦𐑑 𐑦𐑟 𐑦𐑯𐑝𐑦𐑕𐑦𐑚𐑩𐑤. 𐑦𐑑 𐑒𐑨𐑯𐑪𐑑 𐑚𐑰 𐑕𐑰𐑯 𐑹 𐑩𐑑𐑨𐑒𐑑 𐑚𐑲 𐑧𐑯𐑩𐑥𐑦 𐑿𐑯𐑦𐑑𐑕."
 
-#: src/units/unit.cpp:1997
+#: src/units/unit.cpp:2008
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/units/unit.cpp:2003
+#: src/units/unit.cpp:2014
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "𐑐𐑻 𐑑𐑻𐑯"
 
-#: src/units/unit.cpp:2013
+#: src/units/unit.cpp:2024
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> move"
@@ -9528,25 +9517,25 @@ msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "𐑐𐑻 𐑑𐑻𐑯"
 msgstr[1] "𐑐𐑻 𐑑𐑻𐑯"
 
-#: src/units/unit.cpp:2019
+#: src/units/unit.cpp:2030
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "𐑐𐑻 𐑑𐑻𐑯"
 
-#: src/units/unit.cpp:2023
+#: src/units/unit.cpp:2034
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "𐑐𐑻 𐑑𐑻𐑯"
 
-#: src/units/unit.cpp:2028
+#: src/units/unit.cpp:2039
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "𐑐𐑻 𐑑𐑻𐑯"
 
-#: src/units/unit.cpp:2032
+#: src/units/unit.cpp:2043
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
@@ -9555,13 +9544,13 @@ msgid_plural ""
 msgstr[0] "𐑐𐑻 𐑑𐑻𐑯"
 msgstr[1] "𐑐𐑻 𐑑𐑻𐑯"
 
-#: src/units/unit.cpp:2039
+#: src/units/unit.cpp:2050
 #, fuzzy
 #| msgid "per turn"
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "𐑐𐑻 𐑑𐑻𐑯"
 
-#: src/units/unit.cpp:2545
+#: src/units/unit.cpp:2556
 msgid "$effect_description per level"
 msgstr "$effect_description 𐑐𐑻 𐑤𐑧𐑝𐑩𐑤"
 

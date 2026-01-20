@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1-dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-12-22 03:09 UTC\n"
+"POT-Creation-Date: 2026-01-20 17:31 UTC\n"
 "PO-Revision-Date: 2012-09-28 12:24+0100\n"
 "Last-Translator: galicae <nikolaspapadop@yahoo.com>\n"
 "Language-Team: none\n"
@@ -12,22 +12,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 1.5.3\n"
-
-#. [achievement_group]
-#: data/campaigns/Heir_To_The_Throne_Classic/achievements.cfg:3
-#, fuzzy
-msgid "Old Tutorial"
-msgstr "Εκμάθηση του Γουέσνοθ"
-
-#. [achievement]: id=completed
-#: data/campaigns/Heir_To_The_Throne_Classic/achievements.cfg:7
-msgid "Completed the Tutorial"
-msgstr ""
-
-#. [achievement]: id=completed
-#: data/campaigns/Heir_To_The_Throne_Classic/achievements.cfg:8
-msgid "Complete the Battle Training."
-msgstr ""
 
 #. [label]
 #: data/campaigns/Heir_To_The_Throne_Classic/gui/character_selection.cfg:19
@@ -378,8 +362,8 @@ msgstr "Σειρά του ΣΚΙΑΧΤΡΟΥ;"
 #, fuzzy
 msgid ""
 "Yes. It’s a magical quintain! If it hits you, it does 3 damage, and has 5 "
-"chances. If it hits every time, you’ll drop from $student_hp to $"
-"($student_hp-15) hitpoints. Brace yourself!"
+"chances. If it hits every time, you’ll drop from $student_hp to "
+"$($student_hp-15) hitpoints. Brace yourself!"
 msgstr ""
 "Ναι. Είναι ένα μαγικό ανδρείκελο. \n"
 "Τώρα, το ανδρείκελο έχει πέντε ευκαιρίες να σε χτυπήσει, και κάθε χτύπημα "
@@ -1635,8 +1619,8 @@ msgid ""
 "i> and cannot move further that turn. To move your troops onto that island "
 "without wading slowly through the water, you’ll have to kill the Grunt."
 msgstr ""
-"Όχι. Όταν βρεθείς δίπλα σε μια εχθρική μονάδα, είσαι στην 'Ζώνη ελέγχου' "
-"της,και δεν μπορείς να κουνηθείς περισσότερο σ' αυτόν τον γύρο.\n"
+"Όχι. Όταν βρεθείς δίπλα σε μια εχθρική μονάδα, είσαι στην 'Ζώνη ελέγχου' της,"
+"και δεν μπορείς να κουνηθείς περισσότερο σ' αυτόν τον γύρο.\n"
 "Για να μετακινήσεις τα στρατεύματά σου στο νησί δίχως να περάσεις από το "
 "νερό, θα πρέπει να τον σκοτώσεις."
 
@@ -2045,8 +2029,8 @@ msgstr ""
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1315
 #, fuzzy
 msgid ""
-"Higher level units are powerful, but not invulnerable. We’ll miss you, "
-"$unit.name|."
+"Higher level units are powerful, but not invulnerable. We’ll miss you, $unit."
+"name|."
 msgstr ""
 "Οι μονάδες δευτέρου επιπέδου είναι δυνατές, αλλά όχι ανίκητες. Έχε γεια, "
 "$deadguy.name|!"
@@ -2311,6 +2295,10 @@ msgid "Click a mouse button or press the spacebar to continue..."
 msgstr ""
 "\n"
 "*Αριστερό κλικ ή για συνέχεια..."
+
+#, fuzzy
+#~ msgid "Old Tutorial"
+#~ msgstr "Εκμάθηση του Γουέσνοθ"
 
 #, fuzzy
 #~| msgid "Wesnoth Tutorial"
