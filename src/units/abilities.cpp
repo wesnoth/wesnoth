@@ -1431,22 +1431,25 @@ active_ability_list attack_type::overwrite_special_overwriter(active_ability_lis
 		});
 		// remove any that need to be overwritten
 		utils::erase_if(overwriters, [&](const active_ability& i) {
-			return (overwrite_special_checking(overwriters, i.ability()));
+			return (overwrite_special_checking(overwriters, i));
 		});
 	}
 	return overwriters;
 }
 
-bool attack_type::overwrite_special_checking(active_ability_list& overwriters, const unit_ability_t& ab) const
+bool attack_type::overwrite_special_checking(active_ability_list& overwriters, const active_ability& i) const
 {
 	auto ctx = fallback_context();
 	auto [self, other] = context_->self_and_other(*this);
-	bool is_attacker = &self == &context_->attacker;
 	if(overwriters.empty()){
 		return false;
 	}
 
+	const unit_ability_t& ab = i.ability();
+	const map_location& loc = i.student_loc;
+
 	for(const auto& j : overwriters) {
+		const map_location& ov_loc = j.student_loc;
 		// whether the overwriter affects a single side
 		bool affect_side = (j.ability_cfg()["overwrite_specials"] == "one_side");
 		// the overwriter's priority, default of 0
@@ -1464,12 +1467,12 @@ bool attack_type::overwrite_special_checking(active_ability_list& overwriters, c
 
 		// if the current overwriter affects one side and the cfg being checked can be overwritten by this overwriter
 		// then check that the current overwriter and the cfg being checked both affect either this unit or its opponent
-		if(affect_side && is_overwritable){
-			if(special_affects_self(j.ability(), is_attacker)){
-				one_side_overwritable = special_affects_self(ab, is_attacker);
+		if(affect_side && is_overwritable) {
+			if(ov_loc == self.loc) {
+				one_side_overwritable = loc == self.loc;
 			}
-			else if(special_affects_opponent(j.ability(), !is_attacker)){
-				one_side_overwritable = special_affects_opponent(ab, !is_attacker);
+			else if(other.un && (ov_loc == other.loc)) {
+				one_side_overwritable = loc == other.loc;
 			}
 		}
 

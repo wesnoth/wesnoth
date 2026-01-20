@@ -887,7 +887,7 @@ active_ability_list attack_type::get_specials_and_abilities(const std::string& s
 	if (!abil_list.empty() && !overwriters.empty()) {
 		// remove all abilities that would be overwritten
 		utils::erase_if(abil_list, [&](const active_ability& j) {
-			return (overwrite_special_checking(overwriters, j.ability()));
+			return (overwrite_special_checking(overwriters, j));
 			});
 	}
 	return abil_list;
