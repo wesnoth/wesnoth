@@ -2,6 +2,8 @@
 ### Add-ons client
 ### Add-ons server
 ### Campaigns
+   * Dusk of Dawn
+     * S02 "A Dream": remove "fearless" trait, but spawn more higher-level woses instead.
 ### Editor
 ### Multiplayer
 ### Lua API
