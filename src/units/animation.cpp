@@ -29,6 +29,7 @@
 #include "utils/charconv.hpp"
 #include "utils/general.hpp"
 #include "variable.hpp"
+#include "game_events/action_wml.cpp"
 
 #include <algorithm>
 #include <thread>
@@ -1039,9 +1040,13 @@ void unit_animation::start_animation(const std::chrono::milliseconds& start_time
 	, const color_t text_color
 	, const bool accelerate)
 {
-	unit_anim_.accelerate = accelerate;
-	src_ = src;
-	dst_ = dst;
+	if(need_process_) {
+		unit_anim_.accelerate = accelerate;
+	} else {
+		unit_anim_.accelerate = accelerate;
+		src_ = src;
+		dst_ = dst;
+	}
 
 	unit_anim_.start_animation(start_time);
 
@@ -1062,6 +1067,16 @@ void unit_animation::update_parameters(const map_location& src, const map_locati
 {
 	src_ = src;
 	dst_ = dst;
+}
+
+void unit_animation::update_needproc(bool need_process)
+{
+	need_process_ = need_process;
+}
+
+bool unit_animation::need_process() const
+{
+	return need_process_;
 }
 
 void unit_animation::pause_animation()
@@ -1306,16 +1321,45 @@ void unit_animator::add_animation(unit_const_ptr animated_unit
 		, const strike_result::type hit_type
 		, const const_attack_ptr& attack
 		, const const_attack_ptr& second_attack
-		, int value2)
+		, int value2
+		, bool need_process
+		, unit_ptr move_unit_p
+		, bool use_lockstep
+		, bool coherence)
 {
 	if(!animated_unit) return;
 
-	const unit_animation* anim =
-		animated_unit->anim_comp().choose_animation(src, event, dst, value, hit_type, attack, second_attack, value2);
-	if(!anim) return;
+	const unit_animation* anim = move_unit_p ? nullptr
+											 : animated_unit->anim_comp().choose_animation(src, event, dst, value,
+												   hit_type, attack, second_attack, value2, need_process);
+	if(anim) {
+		start_time_ = std::max(start_time_, anim->get_begin_time());
+	} else if(!move_unit_p)
+		return;
 
-	start_time_ = std::max(start_time_, anim->get_begin_time());
-	animated_units_.AGGREGATE_EMPLACE(std::move(animated_unit), anim, text, text_color, src, with_bars);
+	auto&& au_rvalue = std::move(animated_unit);
+	if(need_process) {
+		if(move_unit_p != nullptr) {
+			// Process movement animation
+			if(!animated_units_.empty() && animated_units_[animated_units_.size() - 1].is_movement) {
+				if(!use_lockstep) {
+					last_movement_serino_++;
+				}
+				animated_units_.AGGREGATE_EMPLACE(au_rvalue, anim, text, text_color, src, with_bars,
+					au_rvalue->facing(), dst, src.get_relative_dir(dst), move_unit_p, true, last_movement_serino_, coherence);
+			} else {
+				last_movement_serino_ = 0;
+				animated_units_.AGGREGATE_EMPLACE(au_rvalue, anim, text, text_color, src, with_bars,
+					au_rvalue->facing(), dst, src.get_relative_dir(dst), move_unit_p, true, last_movement_serino_, coherence);
+			}
+		} else {
+			// Process non-movement animation
+			animated_units_.AGGREGATE_EMPLACE(
+				au_rvalue, anim, text, text_color, src, with_bars, au_rvalue->facing(), dst, src.get_relative_dir(dst));
+		}
+	} else{
+		animated_units_.AGGREGATE_EMPLACE(au_rvalue, anim, text, text_color, src, with_bars);
+	}
 }
 
 void unit_animator::add_animation(unit_const_ptr animated_unit
@@ -1329,6 +1373,196 @@ void unit_animator::add_animation(unit_const_ptr animated_unit
 
 	start_time_ = std::max(start_time_, anim->get_begin_time());
 	animated_units_.AGGREGATE_EMPLACE(std::move(animated_unit), anim, text, text_color, src, with_bars);
+}
+
+bool unit_animator::move_unit_fake(int& index_movement_anim)
+{
+	const std::string tag = "move_unit_fake";
+	game_events::wml_action::map m = game_events::wml_action::registry();// m[tag] is call wml func by tag.
+	game_display* screen_p = game_display::get_singleton();
+	display* disp = display::get_singleton();
+	bool result;
+	bool coherent_moving = false;
+	map_location u_initial_loc;
+	while (index_movement_anim < animated_units_.size() && animated_units_[index_movement_anim].is_movement)
+	{
+		if(index_movement_anim + 1 < animated_units_.size()
+			&& animated_units_[index_movement_anim].serial_no == animated_units_[index_movement_anim + 1].serial_no) {
+			return true;
+		}
+		auto& anim = animated_units_[index_movement_anim];
+		auto* last_anim_p = index_movement_anim > 0 ? &animated_units_[index_movement_anim - 1] : nullptr;
+		// only when start location and animated unit are the same with what in last animation, should the next movement animation run in coherence.
+		coherent_moving = last_anim_p && anim.coherence && last_anim_p->is_movement
+			&& last_anim_p->move_up == anim.move_up && last_anim_p->src == anim.src;
+		unit_ptr& m_up = anim.move_up;
+		unit& m_u = *m_up;
+		map_location& m_src = coherent_moving ? last_anim_p->move_dst : anim.src;
+		map_location& m_dst = anim.move_dst;
+		// when running the animation, loc of the real unit could be different from m_src, and the former is needed
+		u_initial_loc = m_u.get_location();
+		m_u.set_hidden(true);
+		// temporarily changes the unit location to make space.
+		if (coherent_moving){
+			m_u.set_location(last_anim_p->move_dst);
+		} else {
+			m_u.set_location(map_location::null_location());
+		}
+		disp->invalidate(u_initial_loc);
+		m_dst = find_vacant_tile(m_dst, pathfind::VACANT_ANY, m_up.get());
+		config cfg;
+		cfg["type"] = m_u.type().id();
+		cfg["gender"] = m_u.gender();
+		cfg["variation"] = m_u.variation();
+		cfg["side"] = m_u.side();
+		cfg["x"] = std::to_string(m_src.wml_x()) + "," + std::to_string(m_dst.wml_x());
+		cfg["y"] = std::to_string(m_src.wml_y()) + "," + std::to_string(m_dst.wml_y());
+		cfg["force_scroll"] = true;
+		vconfig vcfg = vconfig(cfg);
+		m[tag]({"","",map_location(),map_location(),config()},vcfg);
+		result = screen_p->maybe_rebuild();
+		if (!result){
+			screen_p->invalidate_all();
+		}
+		m_u.set_location(u_initial_loc);
+		index_movement_anim++;
+	}
+	disp->update();
+	return index_movement_anim < animated_units_.size() && animated_units_[index_movement_anim].is_movement;
+}
+
+bool unit_animator::move_units_fake(int& index, const int& size)
+{
+	if(size < 1) {
+		if(index < animated_units_.size()) {
+			return animated_units_[index].is_movement;
+		} else {
+			return false;
+		}
+	}
+	const int start = index;
+	int temp_index = index;
+	const std::string tag = "move_units_fake";
+	game_events::wml_action::map m = game_events::wml_action::registry(); // m[tag] is call wml func by tag.
+	game_display* screen_p = game_display::get_singleton();
+	display* disp = display::get_singleton();
+	bool result;
+	bool coherent_moving = false;
+	std::vector<std::vector<std::reference_wrapper<anim_elem>>> processed_anim_queues;
+
+	while(temp_index < animated_units_.size() && temp_index < start + size) {
+		auto& anim = animated_units_[temp_index];
+		// either create a new vector when fail to match existing unit, or append to last matched unit vector.
+		bool new_queue = true;
+		for(auto iter = processed_anim_queues.begin(); iter != processed_anim_queues.cend(); iter++) {
+			auto& sorted_anim = (*iter)[0].get();
+			if(sorted_anim.move_up == anim.move_up) {
+				(*iter).emplace_back(std::ref(anim));
+				new_queue = false;
+				break;
+			}
+		}
+		if(new_queue) {
+			processed_anim_queues.emplace_back(std::vector<std::reference_wrapper<anim_elem>>{std::ref(anim)});
+		}
+		temp_index++;
+	}
+	anim_elem* last_anim_p = nullptr;
+	std::vector<std::vector<config>> uconfig_queues;
+	std::vector<std::pair<std::reference_wrapper<unit_ptr>, map_location>> initial_uloc_pairs;
+	// generate configs judged if the moving can be coherent
+	for(auto& vec : processed_anim_queues) {
+		std::vector<config> judged_uconfigs;
+		for(auto iter = vec.begin(); iter != vec.cend(); iter++) {
+			auto& anim = (*iter).get();
+			coherent_moving
+				= last_anim_p && anim.coherence && last_anim_p->move_up == anim.move_up && last_anim_p->src == anim.src;
+			unit_ptr& m_up = anim.move_up;
+			unit& m_u = *m_up;
+			map_location& m_src = coherent_moving ? last_anim_p->move_dst : anim.src;
+			map_location& m_dst = anim.move_dst;
+
+			bool pair_found = false;
+			for (auto& elem : initial_uloc_pairs) {
+				if (elem.first.get() == m_up) {
+					pair_found = true;
+					break;
+				}
+			}
+			if (!pair_found) {
+				initial_uloc_pairs.emplace_back(std::ref(m_up), m_u.get_location());
+			}
+
+			m_u.set_hidden(true);
+			if(coherent_moving) {
+				m_u.set_location(last_anim_p->move_dst);
+			} else {
+				m_u.set_location(map_location::null_location());
+			}
+			disp->invalidate(m_u.get_location());
+			m_dst = find_vacant_tile(m_dst, pathfind::VACANT_ANY, m_up.get());
+			config cfg;
+			cfg["type"] = m_u.type().id();
+			cfg["gender"] = m_u.gender();
+			cfg["variation"] = m_u.variation();
+			cfg["side"] = m_u.side();
+			cfg["x"] = std::to_string(m_src.wml_x()) + "," + std::to_string(m_dst.wml_x());
+			cfg["y"] = std::to_string(m_src.wml_y()) + "," + std::to_string(m_dst.wml_y());
+			judged_uconfigs.emplace_back(cfg);
+			last_anim_p = &anim;
+		}
+		uconfig_queues.emplace_back(judged_uconfigs);
+	}
+	// reset locations so that when the animated units are reverted from hidden, they will show up on screen normally.
+	for (auto iter = initial_uloc_pairs.begin(); iter != initial_uloc_pairs.cend(); iter++) {
+		auto& uloc = *(iter);
+		unit& m_u = *(uloc.first.get());
+		m_u.set_location(uloc.second);
+		m_u.anim_comp().set_standing();
+	}
+	// generate the needed fake_units by extracting one from each unit's config sequence
+	while(!uconfig_queues.empty()) {
+		config cfg;
+		for(auto index = 0; index < uconfig_queues.size(); index++) {
+			auto& vec = uconfig_queues[index];
+			if(vec.empty()) {
+				uconfig_queues.erase(uconfig_queues.begin() + index);
+				index--;
+				continue;
+			}
+			cfg.add_child("fake_unit", vec[0]);
+			vec.erase(vec.begin());
+		}
+		cfg["force_scroll"] = true;
+		vconfig vcfg = vconfig(cfg);
+		m[tag]({"", "", map_location(), map_location(), config()}, vcfg);
+		result = screen_p->maybe_rebuild();
+		if(!result) {
+			screen_p->invalidate_all();
+		}
+	}
+	index += size;
+	return index < animated_units_.size() && animated_units_[index].is_movement;
+}
+
+void unit_animator::move_units_fake_queue(int& index_movement_anim)
+{
+	// check which tag to use.
+	int simu_size;
+	while ((move_unit_fake(index_movement_anim)))
+	{
+		// Indicates how many animations are actually expected to run simultaneously. There will at least be two here.
+		simu_size = 2;
+		const int& serino = animated_units_[index_movement_anim].serial_no;
+		int serino_tocompare = animated_units_[index_movement_anim + simu_size].serial_no;
+		while(serino == serino_tocompare) {
+			simu_size++;
+			serino_tocompare = animated_units_[index_movement_anim + simu_size].serial_no;
+		}
+		if(!move_units_fake(index_movement_anim, simu_size)) {
+			break;
+		}
+	}
 }
 
 bool unit_animator::has_animation(const unit_const_ptr& animated_unit
@@ -1375,7 +1609,7 @@ void unit_animator::start_animations()
 	auto begin_time = std::chrono::milliseconds::max();
 
 	for(const auto& anim : animated_units_) {
-		if(anim.my_unit->anim_comp().get_animation()) {
+		if(!anim.is_movement && anim.my_unit->anim_comp().get_animation()) {
 			if(anim.animation) {
 				begin_time = std::min(begin_time, anim.animation->get_begin_time());
 			} else  {
@@ -1383,15 +1617,63 @@ void unit_animator::start_animations()
 			}
 		}
 	}
-
-	for(auto& anim : animated_units_) {
+	int index = 0;
+	while(index < animated_units_.size()) {
+		unit_animator::anim_elem& anim = animated_units_[index];
+		if(anim.is_movement) {
+			wait_for_end();
+			move_units_fake_queue(index);
+			continue;
+		}
 		if(anim.animation) {
-			anim.my_unit->anim_comp().start_animation(begin_time, anim.animation, anim.with_bars, anim.text, anim.text_color);
+			// temporarily changing the animated unit's facing to match expected animation.
+			if (anim.changed_facing != map_location::direction::indeterminate){
+				anim.my_unit->set_facing(anim.changed_facing);
+				display* disp = display::get_singleton();
+				disp->invalidate(anim.my_unit->get_location());
+				disp->update();
+			}
+
+			anim.my_unit->anim_comp().start_animation(
+				begin_time, anim.animation, anim.with_bars, anim.text, anim.text_color);
+			// mark anim set to nptr this is why crash
 			anim.animation = nullptr;
 		} else {
-			anim.my_unit->anim_comp().get_animation()->update_parameters(anim.src, anim.src.get_direction(anim.my_unit->facing()));
+			anim.my_unit->anim_comp().get_animation()->update_parameters(
+				anim.src, anim.src.get_direction(anim.my_unit->facing()));
+		}
+		index++;
+	}
+}
+
+void unit_animator::revert_facing()
+{
+	display* disp = display::get_singleton();
+	for(auto& anim : animated_units_) {
+		anim.my_unit->set_hidden(false);
+		if(anim.original_facing != map_location::direction::indeterminate) {
+			anim.my_unit->set_facing(anim.original_facing);
 		}
 	}
+	disp->invalidate_all();
+	disp->update();
+}
+
+const map_location& unit_animator::get_unit_last_move_anim_dst(const unit_const_ptr ucp) const
+{
+	if (animated_units_.empty()) {
+		return map_location::null_location();
+	}
+	for (auto iter = animated_units_.end() - 1; iter >= animated_units_.begin(); iter--) {
+		auto& anim = *iter;
+		if (anim.is_movement && ucp == anim.my_unit) {
+			return anim.move_dst;
+		}
+		if (iter == animated_units_.begin()) {
+			break;
+		}
+	}
+	return map_location::null_location();
 }
 
 bool unit_animator::would_end() const
