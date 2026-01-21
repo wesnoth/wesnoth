@@ -7,6 +7,7 @@
 ### Editor
 ### Multiplayer
 ### Lua API
+   * add_overlay_text now accepts a padding parameter
 ### Packaging
 ### Terrain
 ### Translations
