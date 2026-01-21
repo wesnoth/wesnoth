@@ -41,7 +41,7 @@
 #include "picture.hpp"
 #include "serialization/binary_or_text.hpp"
 #include "serialization/parser.hpp"
-#include "serialization/preprocessor.hpp"
+#include "serialization/string_utils.hpp"
 #include "units/types.hpp"
 
 #include <boost/algorithm/string/replace.hpp>
@@ -59,18 +59,12 @@ editor_edit_unit::editor_edit_unit(const game_config_view& game_config, const st
 	, game_config_(game_config)
 	, addon_id_(addon_id)
 {
-	//TODO some weapon specials can have args (PLAGUE_TYPE)
-	io::read(*preprocess_file(game_config::path+"/data/core/macros/weapon_specials.cfg", specials_map_));
-	for (const auto& x : specials_map_) {
-		specials_list_.emplace_back("label", x.first, "checkbox", false);
+	for (const auto& [id, cfg] : unit_types.specials()) {
+		specials_list_.emplace_back("label", id, "checkbox", false);
 	}
 
-	io::read(*preprocess_file(game_config::path+"/data/core/macros/abilities.cfg", abilities_map_));
-	for (const auto& x : abilities_map_) {
-		// Don't add any macros that have INTERNAL
-		if (x.first.find("INTERNAL") == std::string::npos) {
-			abilities_list_.emplace_back("label", x.first, "checkbox", false);
-		}
+	for (const auto& [id, cfg] : unit_types.abilities()) {
+		abilities_list_.emplace_back("label", id, "checkbox", false);
 	}
 
 	connect_signal<event::SDL_KEY_DOWN>(std::bind(
@@ -341,6 +335,7 @@ void editor_edit_unit::select_file(const std::string& default_dir, const std::st
 void editor_edit_unit::load_unit_type() {
 	const auto& all_type_list = unit_types.types_list();
 	const auto& type_select = gui2::dialogs::units_dialog::build_create_dialog(all_type_list);
+	type_select->set_ok_label("Load");
 
 	if (!type_select->show() && !type_select->is_selected()) {
 		return;
@@ -382,6 +377,17 @@ void editor_edit_unit::load_unit_type() {
 			unit_alignments::get_string(type->alignment()));
 
 	update_image("unit_image");
+
+	boost::dynamic_bitset<> enabled_abilities(abilities_list_.size());
+	for (size_t i = 0; i < abilities_list_.size(); i++) {
+		for (auto special : type->abilities()) {
+			const std::string id = special->cfg()["unique_id"].str(special->id());
+			if (abilities_list_[i]["label"] == id) {
+				enabled_abilities[i] = true;
+			}
+		}
+	}
+	find_widget<multimenu_button>("abilities_list").select_options(enabled_abilities);
 
 	find_widget<text_box>("path_small_profile_image").set_value(type->small_profile());
 
@@ -442,7 +448,6 @@ void editor_edit_unit::load_unit_type() {
 	for(const auto& atk : type->attacks())
 	{
 		config attack;
-		boost::dynamic_bitset<> enabled(specials_list_.size());
 		attack["name"] = atk.id();
 		attack["description"] = atk.name().base_str();
 		attack["icon"] = atk.icon();
@@ -450,7 +455,19 @@ void editor_edit_unit::load_unit_type() {
 		attack["damage"] = atk.damage();
 		attack["number"] = atk.num_attacks();
 		attack["type"] = atk.type();
-		attacks_.push_back(std::make_pair(enabled, attack));
+
+		boost::dynamic_bitset<> enabled_specials(specials_list_.size());
+
+		for (size_t i = 0; i < specials_list_.size(); i++) {
+			for (auto special : atk.specials()) {
+				const std::string id = special->cfg()["unique_id"].str(special->id());
+				if (specials_list_[i]["label"] == id) {
+					enabled_specials[i] = true;
+				}
+			}
+		}
+
+		attacks_.push_back(std::make_pair(enabled_specials, attack));
 	}
 
 	if (!type->attacks().empty()) {
@@ -539,24 +556,33 @@ void editor_edit_unit::save_unit_type() {
 		}
 	}
 
+	std::vector<std::string> selected_abilities;
 	const auto& abilities_states = find_widget<multimenu_button>("abilities_list").get_toggle_states();
 	if (abilities_states.any()) {
-		unsigned int i = 0;
-		sel_abilities_.clear();
-		for (const auto& x : abilities_map_) {
-			if (i >= abilities_states.size()) {
-				break;
+		for (size_t i = 0; i < abilities_states.size(); i++) {
+			if (abilities_states[i]) {
+				selected_abilities.push_back(abilities_list_[i]["label"]);
 			}
-
-			if (abilities_states[i] == true) {
-				sel_abilities_.push_back(x.first);
-			}
-
-			i++;
 		}
 	}
+	if (!selected_abilities.empty()) {
+		utype["abilities_list"] = utils::join(selected_abilities);
+	}
 
-	// Note : attacks and abilities are not written to the config, since they have macros.
+	// Page 3 (Attacks)
+
+	for (const auto& [special_bits, cfg] : attacks_) {
+		config& atk = utype.add_child("attack", cfg);
+		std::vector<std::string> selected_specials;
+		for (size_t i = 0; i < special_bits.size(); i++) {
+			if (special_bits[i]) {
+				selected_specials.push_back(specials_list_[i]["label"]);
+			}
+		}
+		if (!selected_specials.empty()) {
+			atk["specials_list"] = utils::join(selected_specials);
+		}
+	}
 }
 
 void editor_edit_unit::update_resistances() {
@@ -637,8 +663,7 @@ void editor_edit_unit::store_attack() {
 		return;
 	}
 
-	config& attack = attacks_.at(selected_attack_-1).second;
-
+	config attack;
 	attack["name"] = find_widget<text_box>("atk_id_box").get_value();
 	attack["description"] = t_string(find_widget<text_box>("atk_name_box").get_value(), current_textdomain);
 	attack["icon"] = find_widget<text_box>("path_attack_image").get_value();
@@ -647,7 +672,10 @@ void editor_edit_unit::store_attack() {
 	attack["number"] = find_widget<slider>("dmg_num_box").get_value();
 	attack["range"] = find_widget<combobox>("range_list").get_value();
 
-	attacks_.at(selected_attack_-1).first = find_widget<multimenu_button>("weapon_specials_list").get_toggle_states();
+	attacks_.at(selected_attack_-1) = {
+		find_widget<multimenu_button>("weapon_specials_list").get_toggle_states(),
+		attack
+	};
 }
 
 void editor_edit_unit::update_attacks() {
@@ -688,7 +716,7 @@ void editor_edit_unit::update_index() {
 		atk_list.set_selected(selected_attack_-1, false);
 	}
 
-	//Set index
+	// Set index
 	const std::string new_index_str = formatter() << selected_attack_ << "/" << attacks_.size();
 	find_widget<label>("atk_number").set_label(new_index_str);
 }
@@ -698,7 +726,6 @@ void editor_edit_unit::add_attack() {
 	std::string current_textdomain = "wesnoth-"+addon_id_;
 
 	config attack;
-
 	attack["name"] = find_widget<text_box>("atk_id_box").get_value();
 	attack["description"] = t_string(find_widget<text_box>("atk_name_box").get_value(), current_textdomain);
 	attack["icon"] = find_widget<text_box>("path_attack_image").get_value();
@@ -786,15 +813,6 @@ void editor_edit_unit::load_movetype() {
 	}
 }
 
-void editor_edit_unit::write_macro(std::ostream& out, unsigned level, const std::string& macro_name)
-{
-	for(unsigned i = 0; i < level; i++)
-	{
-		out << "\t";
-	}
-	out << "{" << macro_name << "}\n";
-}
-
 void editor_edit_unit::update_wml_view() {
 	store_attack();
 	save_unit_type();
@@ -802,7 +820,7 @@ void editor_edit_unit::update_wml_view() {
 	std::stringstream wml_stream;
 
 	// Textdomain
-	std::string current_textdomain = "wesnoth-"+addon_id_;
+	std::string current_textdomain = "wesnoth-" + addon_id_;
 
 	wml_stream
 	    << "#textdomain " << current_textdomain << "\n"
@@ -810,108 +828,49 @@ void editor_edit_unit::update_wml_view() {
 		<< "# This file was generated using the scenario editor.\n"
 		<< "#\n";
 
+	config_writer out(wml_stream, false);
+
+	config& utype_cfg = type_cfg_.mandatory_child("unit_type");
+
+	// Update movement, defense and resistance in cfg
+	if (!movement_.empty() && (move_toggles_.size() <= movement_.attribute_count()) && move_toggles_.any())
 	{
-		config_writer out(wml_stream, false);
-		int level = 0;
-
-		out.open_child("unit_type");
-
-		level++;
-		for (const auto& [key, value] : type_cfg_.mandatory_child("unit_type").attribute_range()) {
-			io::write_key_val(wml_stream, key, value, level, current_textdomain);
-		}
-
-		// Abilities
-		if (!sel_abilities_.empty()) {
-			out.open_child("abilities");
-			level++;
-			for (const std::string& ability : sel_abilities_) {
-				write_macro(wml_stream, level, ability);
+		config& mvt_cfg = utype_cfg.add_child("movement_costs");
+		int i = 0;
+		for (const auto& [key, value] : movement_.attribute_range()) {
+			if (move_toggles_[i] == 1) {
+				mvt_cfg[key] = value;
 			}
-			level--;
-			out.close_child("abilities");
+			i++;
 		}
-
-		// Attacks
-		if (!attacks_.empty()) {
-			for (const auto& atk : attacks_) {
-				out.open_child("attack");
-				level++;
-				for (const auto& [key, value] : atk.second.attribute_range()) {
-					if (!value.empty()) {
-						io::write_key_val(wml_stream, key, value, level, current_textdomain);
-					}
-				}
-
-				if(atk.first.any()) {
-					out.open_child("specials");
-					level++;
-					int i = 0;
-					for (const auto& attr : specials_map_) {
-						if (atk.first[i]) {
-							write_macro(wml_stream, level, attr.first);
-						}
-						i++;
-					}
-					level--;
-					out.close_child("specials");
-
-				}
-				level--;
-				out.close_child("attack");
-			}
-		}
-
-		if (!movement_.empty() && (move_toggles_.size() <= movement_.attribute_count()) && move_toggles_.any())
-		{
-			out.open_child("movement_costs");
-			level++;
-			int i = 0;
-			for (const auto& [key, value] : movement_.attribute_range()) {
-				if (move_toggles_[i] == 1) {
-					io::write_key_val(wml_stream, key, value, level, current_textdomain);
-				}
-				i++;
-			}
-			level--;
-			out.close_child("movement_costs");
-		}
-
-		if (!defenses_.empty() && def_toggles_.any()  && (def_toggles_.size() <= defenses_.attribute_count()))
-		{
-			out.open_child("defense");
-			level++;
-			int i = 0;
-			for (const auto& [key, value] : defenses_.attribute_range()) {
-				if (def_toggles_[i] == 1) {
-					io::write_key_val(wml_stream, key, value, level, current_textdomain);
-				}
-				i++;
-			}
-			level--;
-			out.close_child("defense");
-		}
-
-		if (!resistances_.empty() && res_toggles_.any()  && (res_toggles_.size() <= resistances_.attribute_count()))
-		{
-			out.open_child("resistance");
-			level++;
-			int i = 0;
-			for (const auto& [key, value] : resistances_.attribute_range()) {
-				if (res_toggles_[i] == 1) {
-					io::write_key_val(wml_stream, key, value, level, current_textdomain);
-				}
-				i++;
-			}
-			level--;
-			out.close_child("resistance");
-		}
-
-		out.close_child("unit_type");
 	}
 
-	generated_wml = wml_stream.str();
+	if (!defenses_.empty() && def_toggles_.any()  && (def_toggles_.size() <= defenses_.attribute_count()))
+	{
+		config& def_cfg = utype_cfg.add_child("defense");
+		int i = 0;
+		for (const auto& [key, value] : defenses_.attribute_range()) {
+			if (def_toggles_[i] == 1) {
+				def_cfg[key] = value;
+			}
+			i++;
+		}
+	}
 
+	if (!resistances_.empty() && res_toggles_.any()  && (res_toggles_.size() <= resistances_.attribute_count()))
+	{
+		config& res_cfg = utype_cfg.add_child("resistance");
+		int i = 0;
+		for (const auto& [key, value] : resistances_.attribute_range()) {
+			if (res_toggles_[i] == 1) {
+				res_cfg[key] = value;
+			}
+			i++;
+		}
+	}
+
+	out.write(type_cfg_);
+	generated_wml = wml_stream.str();
 	find_widget<scroll_text>("wml_view").set_label(generated_wml);
 }
 
