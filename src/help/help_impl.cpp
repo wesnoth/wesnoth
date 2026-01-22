@@ -429,7 +429,7 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 		std::stringstream text;
 		text << description;
 		text << "\n\n" << markup::tag("header", _("Units with this special attack")) << "\n";
-		for(const std::string& type_id : special_units[name]) {
+		for(const std::string& type_id : special_units[help_topic_id]) {
 			text << font::unicode_bullet << " " << type_id << "\n";
 		}
 
