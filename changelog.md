@@ -4,6 +4,11 @@
 ### Campaigns
    * Dusk of Dawn
      * S02 "A Dream": remove "fearless" trait, but spawn more higher-level woses instead.
+   * The Hammer of Thursagan
+     * Shortened turn limits on several long scenarios.
+     * Decreased player gold from 100 to 80 on most scenarios.
+     * S08 "The Siege of Kal Kartha": increased enemy gold.
+     * S10 "The Underlevels": reduced number of villages, and increased Karrag's income.
 ### Editor
 ### Multiplayer
 ### Lua API
