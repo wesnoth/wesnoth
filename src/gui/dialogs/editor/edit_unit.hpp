@@ -46,7 +46,6 @@ private:
 
 	config type_cfg_;
 	config resistances_, defenses_, movement_;
-	preproc_map specials_map_, abilities_map_;
 
 	/**
 	 * Used to control checkboxes for various resistances, defences, etc.
@@ -58,9 +57,6 @@ private:
 	std::vector<config> specials_list_, abilities_list_;
 
 	std::vector<std::pair<boost::dynamic_bitset<>, config>> attacks_;
-
-	/** Need this because can't store macros in config */
-	std::vector<std::string> sel_abilities_, sel_specials_;
 
 	/** Generated WML */
 	std::string generated_wml;
@@ -77,9 +73,6 @@ private:
 
 	/** Save Unit Type data to cfg */
 	void save_unit_type();
-
-	/** Write macro to a stream at specified tab level */
-	void write_macro(std::ostream& out, unsigned level, const std::string& macro_name);
 
 	/** Update wml preview */
 	void update_wml_view();
@@ -130,7 +123,7 @@ private:
 	/** Utility method to check if ID contains any invalid characters */
 	bool check_id(const std::string& id);
 
-	void set_selected_from_string(menu_button& list, std::vector<config> values, std::string item) {
+	void set_selected_from_string(menu_button& list, std::vector<config> values, const std::string& item) {
 		for (unsigned i = 0; i < values.size(); ++i) {
 			if(values.at(i)["label"] == item) {
 				list.set_selected(i);
@@ -139,7 +132,7 @@ private:
 		}
 	}
 
-	void set_selected_from_string(combobox& list, std::vector<config> values, std::string item) {
+	void set_selected_from_string(combobox& list, std::vector<config> values, const std::string& item) {
 		for (unsigned i = 0; i < values.size(); ++i) {
 			if(values.at(i)["label"] == item) {
 				list.set_selected(i);

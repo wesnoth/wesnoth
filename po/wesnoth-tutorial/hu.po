@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu-tutorial\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-12-22 03:09 UTC\n"
+"POT-Creation-Date: 2026-01-20 17:31 UTC\n"
 "PO-Revision-Date: 2025-12-28 01:43+0100\n"
 "Last-Translator: Berda Jenő <big4billy@gmail.com>\n"
 "Language-Team: Hungarian <>\n"
@@ -22,21 +22,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.8\n"
-
-#. [achievement_group]
-#: data/campaigns/Heir_To_The_Throne_Classic/achievements.cfg:3
-msgid "Old Tutorial"
-msgstr "Régi gyakorlatok"
-
-#. [achievement]: id=completed
-#: data/campaigns/Heir_To_The_Throne_Classic/achievements.cfg:7
-msgid "Completed the Tutorial"
-msgstr "Befejezted a gyakorlatokat"
-
-#. [achievement]: id=completed
-#: data/campaigns/Heir_To_The_Throne_Classic/achievements.cfg:8
-msgid "Complete the Battle Training."
-msgstr "Fejezd be a harci kiképzést."
 
 #. [label]
 #: data/campaigns/Heir_To_The_Throne_Classic/gui/character_selection.cfg:19
@@ -389,8 +374,8 @@ msgstr "Ennek a <i>madárijesztőnek</i> is van köre?"
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:616
 msgid ""
 "Yes. It’s a magical quintain! If it hits you, it does 3 damage, and has 5 "
-"chances. If it hits every time, you’ll drop from $student_hp to $"
-"($student_hp-15) hitpoints. Brace yourself!"
+"chances. If it hits every time, you’ll drop from $student_hp to "
+"$($student_hp-15) hitpoints. Brace yourself!"
 msgstr ""
 "Persze. Ez egy mágikus homokzsák! Most a homokzsáknak 5 lehetősége van arra, "
 "hogy megüssön, egy-egy ütés 3 pontot sebez. Ha minden esetben eltalál, akkor "
@@ -2161,8 +2146,8 @@ msgstr ""
 #. [message]: speaker=Galdrad
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1315
 msgid ""
-"Higher level units are powerful, but not invulnerable. We’ll miss you, "
-"$unit.name|."
+"Higher level units are powerful, but not invulnerable. We’ll miss you, $unit."
+"name|."
 msgstr ""
 "A magasabb szintű egységek erősek, de nem sebezhetetlenek. Hiányozni fogsz, "
 "$unit.name|."
@@ -2435,6 +2420,15 @@ msgid "Click a mouse button or press the spacebar to continue..."
 msgstr ""
 "Kattints egy egérgombbal, vagy nyomd meg a szóköz billentyűt a "
 "folytatáshoz..."
+
+#~ msgid "Old Tutorial"
+#~ msgstr "Régi gyakorlatok"
+
+#~ msgid "Completed the Tutorial"
+#~ msgstr "Befejezted a gyakorlatokat"
+
+#~ msgid "Complete the Battle Training."
+#~ msgstr "Fejezd be a harci kiképzést."
 
 #~ msgid "Battle Training — Old Tutorial"
 #~ msgstr "Harci kiképzés — Régi gyakorlatok"
@@ -2911,8 +2905,8 @@ msgstr ""
 #~ "a new $recruit.language_name|! Now try again..."
 #~ msgstr ""
 #~ "Nem! Azt mondtam, hogy <i>hívd vissza</i> $recall_name1 nevű egységedet "
-#~ "az utóbbi ütközetből, nem pedig, hogy toborozz egy új "
-#~ "$recruit.language_name| egységet! Próbáld meg újra..."
+#~ "az utóbbi ütközetből, nem pedig, hogy toborozz egy új $recruit."
+#~ "language_name| egységet! Próbáld meg újra..."
 
 #~ msgid "Right click on the tile east of you and recall $recall_name2"
 #~ msgstr ""

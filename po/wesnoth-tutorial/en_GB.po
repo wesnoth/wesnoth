@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-12-22 03:09 UTC\n"
+"POT-Creation-Date: 2026-01-20 17:31 UTC\n"
 "PO-Revision-Date: 2025-12-22 16:04+1100\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
@@ -19,21 +19,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.4.2\n"
-
-#. [achievement_group]
-#: data/campaigns/Heir_To_The_Throne_Classic/achievements.cfg:3
-msgid "Old Tutorial"
-msgstr "Old Tutorial"
-
-#. [achievement]: id=completed
-#: data/campaigns/Heir_To_The_Throne_Classic/achievements.cfg:7
-msgid "Completed the Tutorial"
-msgstr "Completed the Tutorial"
-
-#. [achievement]: id=completed
-#: data/campaigns/Heir_To_The_Throne_Classic/achievements.cfg:8
-msgid "Complete the Battle Training."
-msgstr "Complete the Battle Training."
 
 #. [label]
 #: data/campaigns/Heir_To_The_Throne_Classic/gui/character_selection.cfg:19
@@ -386,12 +371,12 @@ msgstr "The <i>dummy</i> gets a turn?"
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:616
 msgid ""
 "Yes. It’s a magical quintain! If it hits you, it does 3 damage, and has 5 "
-"chances. If it hits every time, you’ll drop from $student_hp to $"
-"($student_hp-15) hitpoints. Brace yourself!"
+"chances. If it hits every time, you’ll drop from $student_hp to "
+"$($student_hp-15) hitpoints. Brace yourself!"
 msgstr ""
 "Yes. It’s a magical quintain! If it hits you, it does 3 damage, and has 5 "
-"chances. If it hits every time, you’ll drop from $student_hp to $"
-"($student_hp-15) hit-points. Brace yourself!"
+"chances. If it hits every time, you’ll drop from $student_hp to "
+"$($student_hp-15) hit-points. Brace yourself!"
 
 #. [hint_message]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:622
@@ -2151,11 +2136,11 @@ msgstr ""
 #. [message]: speaker=Galdrad
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1315
 msgid ""
-"Higher level units are powerful, but not invulnerable. We’ll miss you, "
-"$unit.name|."
+"Higher level units are powerful, but not invulnerable. We’ll miss you, $unit."
+"name|."
 msgstr ""
-"Higher level units are powerful, but not invulnerable. We’ll miss you, "
-"$unit.name|."
+"Higher level units are powerful, but not invulnerable. We’ll miss you, $unit."
+"name|."
 
 #. [message]: speaker=Galdrad
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1329
@@ -2417,6 +2402,15 @@ msgstr ""
 #: data/campaigns/Heir_To_The_Throne_Classic/utils/tutorial_utils.cfg:128
 msgid "Click a mouse button or press the spacebar to continue..."
 msgstr "Click a mouse button or press the space-bar to continue..."
+
+#~ msgid "Old Tutorial"
+#~ msgstr "Old Tutorial"
+
+#~ msgid "Completed the Tutorial"
+#~ msgstr "Completed the Tutorial"
+
+#~ msgid "Complete the Battle Training."
+#~ msgstr "Complete the Battle Training."
 
 #~ msgid "Battle Training — Old Tutorial"
 #~ msgstr "Battle Training — Old Tutorial"

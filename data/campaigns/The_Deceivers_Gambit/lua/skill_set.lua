@@ -28,7 +28,7 @@ local skill_set = {
             id          = "skill_shield",
             label       = label(_"Shield"),
             image       = "icons/shield.png",
-            description = header_spell().._"Spend <span color='#00bbe6' style='italic'>8 XP</span> to gain <i>+20% dodge chance</i> until the start of your next turn or until cancelled.",
+            description = header_spell().._"Spend <span color='#00bbe6' style='italic'>8 XP</span> to gain an additional <i>20% terrain defense</i> (chance to evade) until the start\n          of your next turn or until cancelled.",
             xp_cost=8, --XP is also used in S04
         },
         -------------------------
@@ -188,7 +188,7 @@ local skill_set = {
             id          = "skill_illusion",
             label       = label(_"Enthrall"),
             image       = "icons/illusion.png",
-            description = header_spell().._"Spend <span color='#00bbe6' style='italic'>48 XP</span> and <span color='#c06a61' style='italic'>your attack</span> to magically disguise yourself as an awe-inspiring drake,\n          reducing accuracy and dodge by 10% for enemies in a 2 hex radius. Lasts until cancelled.",
+            description = header_spell().._"Spend <span color='#00bbe6' style='italic'>48 XP</span> and <span color='#c06a61' style='italic'>your attack</span> to magically disguise yourself as an awe-inspiring drake.\n          Enemies in a 2-hex radius suffer a -10% penalty to both their terrain defense\n          (chance to evade) and chance to hit (except for magical attacks). Lasts until cancelled.",
             xp_cost=48, atk_cost=1,
         },
         -------------------------

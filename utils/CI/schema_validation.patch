@@ -2,7 +2,7 @@ diff --git a/data/schema/core/actionwml.cfg b/data/schema/core/actionwml.cfg
 index 0eff8c99f10..98e94c8cc6c 100644
 --- a/data/schema/core/actionwml.cfg
 +++ b/data/schema/core/actionwml.cfg
-@@ -1445,5 +1445,42 @@
+@@ -1445,5 +1445,40 @@
  			{SIMPLE_KEY y s_unsigned}
  		[/tag]
  	[/tag]
@@ -11,8 +11,6 @@ index 0eff8c99f10..98e94c8cc6c 100644
 +	# EI
 +	{DATA_TAG "item_dialog" 0 infinite any}
 +	{DATA_TAG "item_dialog_musttake" 0 infinite any}
-+	{DATA_TAG "spread_bandit_villages" 0 infinite any}
-+	{DATA_TAG "bandit_village_capture" 0 infinite any}
 +	# HttT
 +	{DATA_TAG "companion_message" 0 infinite any} # also used in TSG
 +	{DATA_TAG "multihex_image" 0 infinite any}
