@@ -26,6 +26,8 @@
      * Remove custom "Troll Earth-Shaker" Rocklobber advancement to avoid confusing beginners.
    * Eastern Invasion
      * Add weather effects to several scenarios.
+   * Heir to the Throne
+     * S30 "The Sceptre of Fire": made Li'sar more difficult to assassinate with Fire Wraiths. This strategy should still be possible, but it should now require more significant investment.
    * The Deceivers Gambit
      * S13 "Revelry, Revisited": fixed way too many enemies spawning after many turns had elapsed.
      * S13 "Revelry, Revisited": added more dialogue between the orcs and humans.
