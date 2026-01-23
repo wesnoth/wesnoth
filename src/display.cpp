@@ -667,10 +667,12 @@ bool display::fogged(const map_location& loc) const
 
 point display::get_location(const map_location& loc) const
 {
+	// Two possible regressions to be aware of when changing this code:
+	// https://github.com/wesnoth/wesnoth/issues/10903 (faulty hex offset) and
+	// https://github.com/wesnoth/wesnoth/issues/10676 (Grid overlay flickering)
 	return {
-		// Round hex multiplication to ensure consistent spacing at fractional zoom levels.
-		map_area().x - viewport_origin_.x + static_cast<int>(std::round((loc.x + theme_.border().size) * hex_width())),
-		map_area().y - viewport_origin_.y + static_cast<int>(std::round((loc.y + theme_.border().size) * zoom_ + (is_odd(loc.x) ? zoom_ / 2.0 : 0)))
+		map_area().x - viewport_origin_.x + static_cast<int>(std::ceil((loc.x + theme_.border().size) * hex_width())),
+		map_area().y - viewport_origin_.y + static_cast<int>(std::ceil((loc.y + theme_.border().size) * zoom_ + (is_odd(loc.x) ? zoom_ / 2.0 : 0.0)))
 	};
 }
 
