@@ -9,6 +9,9 @@
      * Decreased player gold from 100 to 80 on most scenarios.
      * S08 "The Siege of Kal Kartha": increased enemy gold.
      * S10 "The Underlevels": reduced number of villages, and increased Karrag's income.
+   * Heir to the Throne
+     * S30 "The Sceptre of Fire": made Li'sar more difficult to assassinate with Fire Wraiths. This strategy should still be possible, but it should now require more significant investment.
+     * S30 "The Sceptre of Fire": Delfador can now continue recruiting even while searching for the Sceptre.
 ### Editor
 ### Multiplayer
 ### Lua API
@@ -26,8 +29,6 @@
      * Remove custom "Troll Earth-Shaker" Rocklobber advancement to avoid confusing beginners.
    * Eastern Invasion
      * Add weather effects to several scenarios.
-   * Heir to the Throne
-     * S30 "The Sceptre of Fire": made Li'sar more difficult to assassinate with Fire Wraiths. This strategy should still be possible, but it should now require more significant investment.
    * The Deceivers Gambit
      * S13 "Revelry, Revisited": fixed way too many enemies spawning after many turns had elapsed.
      * S13 "Revelry, Revisited": added more dialogue between the orcs and humans.
