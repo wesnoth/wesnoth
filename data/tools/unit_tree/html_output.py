@@ -777,8 +777,7 @@ class HTMLOutput:
                     anames.append(name)
         abilities_list = u.get_text_val("abilities_list")
         if abilities_list:
-            abilities_list = abilities_list.split(",")
-            for ability_ref in abilities_list:
+            for ability_ref in abilities_list.split(","):
                 ability_ref = ability_ref.strip()
                 # TODO load translatable name from self.wesnoth.(new implementation in helpers.py)
                 anames.append(ability_ref)
