@@ -150,6 +150,15 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
+"Επιτρέπει στη μονάδα να θεραπεύει γειτονικές συμμαχικές μονάδες στην αρχή "
+"της σειράς μας.\n"
+"\n"
+"Μια μονάδα που φροντίζεται από αυτόν τον θεραπευτή μπορεί να θεραπευτεί "
+"μέχρι 4 HP ανά σειρά, ή να σταματήσει το δηλητήριο από το να έχει αποτέλεσμα "
+"για αυτή τη σειρά.\n"
+"Μια δηλητηριασμένη μονάδα δεν μπορεί να θεραπευτεί από το δηλητήριό της από "
+"θεραπευτή, και πρέπει να αναζητήσει τη φροντίδα ενός χωριού ή μιας μονάδας "
+"που μπορεί να θεραπεύσει."
 
 #. [heals]: id=healing
 #. [heals]
@@ -183,6 +192,15 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
+"Αυτή η μονάδα συνδυάζει βοτανικά θεραπευτικά με μαγεία για να θεραπεύει "
+"μονάδες πιο γρήγορα από ό,τι είναι κανονικά δυνατό στο πεδίο της μάχης.\n"
+"\n"
+"Μια μονάδα που φροντίζεται από αυτόν τον θεραπευτή μπορεί να θεραπευτεί "
+"μέχρι 8 HP ανά σειρά, ή να σταματήσει το δηλητήριο από το να έχει αποτέλεσμα "
+"για αυτή τη σειρά.\n"
+"Μια δηλητηριασμένη μονάδα δεν μπορεί να θεραπευτεί από το δηλητήριό της από "
+"θεραπευτή, και πρέπει να αναζητήσει τη φροντίδα ενός χωριού ή μιας μονάδας "
+"που μπορεί να θεραπεύσει."
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:781
@@ -549,12 +567,12 @@ msgstr "Εργαλείο Αρχικών Τοποθεσιών"
 msgid ""
 "Defines the side leader starting position.\n"
 "This tool sets the side leaders’ default starting locations, and named "
-"special locations. Both types of location are enabled in both <ref dst='.."
-"editor_mode_terrain'>Terrain Editor</ref> and <ref dst='.."
-"editor_mode_scenario'>Scenario Editor</ref> modes. The location names are "
-"shown as a list in the editor palette, clicking on the map will place that "
-"name on a hex, each location can only be placed on a single hex, and the "
-"editor will only allow one location per hex.\n"
+"special locations. Both types of location are enabled in both <ref "
+"dst='..editor_mode_terrain'>Terrain Editor</ref> and <ref "
+"dst='..editor_mode_scenario'>Scenario Editor</ref> modes. The location names "
+"are shown as a list in the editor palette, clicking on the map will place "
+"that name on a hex, each location can only be placed on a single hex, and "
+"the editor will only allow one location per hex.\n"
 "\n"
 "To add named special locations, click “Add” at the bottom of the editor "
 "palette, and enter the name. These names must start with a letter and may "
@@ -596,9 +614,9 @@ msgstr ""
 #: data/core/editor/help.cfg:131
 msgid ""
 "editor^<header>Movement Overlays</header>\n"
-"<img src='terrain/grass/green.png~BLIT(terrain/impassable-editor."
-"png~O(0.5))'/><img src='terrain/grass/green.png~BLIT(terrain/unwalkable-"
-"editor.png~O(0.5))'/>\n"
+"<img src='terrain/grass/green.png~BLIT(terrain/impassable-"
+"editor.png~O(0.5))'/><img src='terrain/grass/green.png~BLIT(terrain/"
+"unwalkable-editor.png~O(0.5))'/>\n"
 "<b>Impassable and Unwalkable</b>\n"
 "\n"
 "While easily noticeable in the editor, these are invisible in the game, so "
@@ -613,9 +631,9 @@ msgstr ""
 #: data/core/editor/help.cfg:140
 msgid ""
 "editor^<header>Castle Overlays</header>\n"
-"<img src='terrain/grass/green.png~BLIT(terrain/castle/castle-overlay-editor."
-"png~O(0.5))'/><img src='terrain/grass/green.png~BLIT(terrain/castle/keep-"
-"overlay-editor.png~O(0.5))'/>\n"
+"<img src='terrain/grass/green.png~BLIT(terrain/castle/castle-overlay-"
+"editor.png~O(0.5))'/><img src='terrain/grass/green.png~BLIT(terrain/castle/"
+"keep-overlay-editor.png~O(0.5))'/>\n"
 "Adding either of these overlays to a passable hex allows units to be "
 "recruited onto a hex. The keep also allows a leader to recruit from there.\n"
 "\n"
@@ -764,8 +782,8 @@ msgstr "Ξεπερασμένο Έδαφος"
 #. The Xol and ^Efs terrains’ help pages aren’t given hyperlinks, because they both have hide_help enabled. Even when on a map with Xol on it, ctrl+t will show the hidden page but the ref still won’t link to it.
 #: data/core/editor/help.cfg:203
 msgid ""
-"editor^<img src='terrain/grass/green.png~BLIT(terrain/deprecated-editor."
-"png)'/>\n"
+"editor^<img src='terrain/grass/green.png~BLIT(terrain/deprecated-"
+"editor.png)'/>\n"
 "The magenta ‘D’ (for “Deprecated”).\n"
 "\n"
 "This is shown in the editor over deprecated terrain codes. Examples are:\n"
@@ -1056,10 +1074,10 @@ msgid ""
 "The map editor saves one file when in terrain mode (a .map) or two files "
 "when in scenario mode (both a .map and a .cfg).\n"
 "\n"
-"Loading a .cfg file has different results depending on the contents of the ."
-"cfg file. For .cfg files that were created by the scenario editor, it will "
-"open the .cfg in the scenario editor. However, for .cfg files that cannot be "
-"opened by the scenario editor, the editor will attempt to find the "
+"Loading a .cfg file has different results depending on the contents of "
+"the .cfg file. For .cfg files that were created by the scenario editor, it "
+"will open the .cfg in the scenario editor. However, for .cfg files that "
+"cannot be opened by the scenario editor, the editor will attempt to find the "
 "scenario’s map data and open the corresponding .map file in terrain-only "
 "mode, as if the .map file was chosen in the file selector. It is recommended "
 "in those cases to simply load the .map file directly instead."
@@ -1209,8 +1227,8 @@ msgid ""
 "\n"
 "• <span face='monospace'>map_file=maps/01_First_Map.map</span> <i>— "
 "supported since Wesnoth 1.14</i>\n"
-"• <span face='monospace'>map_data=&quot;&#0x7B;maps/01_First_Map.map&#0x7D;"
-"&quot;</span> <i>— a WML preprocessor include</i>\n"
+"• <span face='monospace'>map_data=&quot;&#0x7B;maps/"
+"01_First_Map.map&#0x7D;&quot;</span> <i>— a WML preprocessor include</i>\n"
 "\n"
 "The <i>map_file</i> method is preferred over using a preprocessor include."
 msgstr ""
@@ -1362,6 +1380,9 @@ msgid ""
 "rivers eventually flow to it. Far to the west in the Great Ocean is a huge "
 "archipelago called <ref dst='morogor'>Morogor</ref>."
 msgstr ""
+"Βρίσκεται στα δυτικά της <ref dst='great_continent'>ηπείρου</ref> και όλοι "
+"οι ποταμοί τελικά ρέουν σε αυτόν. Μακριά στα δυτικά στον Μέγα Ωκεανό υπάρχει "
+"ένα τεράστιο αρχιπέλαγος που ονομάζεται <ref dst='morogor'>Morogor</ref>."
 
 #. [topic]: id=great_ocean
 #. Great Ocean
@@ -1412,6 +1433,8 @@ msgid ""
 "A bigger island lying in the <ref dst='great_ocean'>Great Ocean</ref>, "
 "formerly home to the Islefolk and Wesfolk."
 msgstr ""
+"Ένα μεγαλύτερο νησί που βρίσκεται στον <ref dst='great_ocean'>Μέγα Ωκεανό</"
+"ref>, παλαιότερα κατοικία των Νησιωτών και των Wesfolk."
 
 #. [topic]: id=green_isle
 #. Geography of the Green Isle
@@ -1469,6 +1492,9 @@ msgid ""
 "ref> lies. Its west coast is surrounded by the <ref dst='great_ocean'>Great "
 "Ocean</ref>."
 msgstr ""
+"Η ήπειρος στην οποία βρίσκεται το <ref dst='kingdom_wesnoth'>Βασίλειο του "
+"Wesnoth</ref>. Η δυτική ακτή της περιβάλλεται από τον <ref "
+"dst='great_ocean'>Μέγα Ωκεανό</ref>."
 
 #. [topic]: id=irdya
 #: data/core/encyclopedia/geography.cfg:100
@@ -1687,8 +1713,8 @@ msgstr ""
 #: data/core/encyclopedia/geography.cfg:194
 msgid ""
 "<header>Notable land features:</header>\n"
-"    • Aethenwood: The largest southern forest, home to reclusive <ref dst='.."
-"race_elf'>elves</ref>.\n"
+"    • Aethenwood: The largest southern forest, home to reclusive <ref "
+"dst='..race_elf'>elves</ref>.\n"
 "    • Vale of Blossoming Trees: An elvish vale at the southern edge of the "
 "Aethenwood. It contains the sacred Isle of Elrath.\n"
 "    • Lake Aelin: An elvish lake at the edge of their territory along the "
@@ -1904,6 +1930,11 @@ msgid ""
 "new aspects of the game. For more detailed information on special situations "
 "and exceptions, follow the included links."
 msgstr ""
+"Οι ακόλουθες σελίδες περιγράφουν όλα όσα χρειάζεται να γνωρίζετε για να "
+"παίξετε Wesnoth. Καθώς παίζετε, νέες πληροφορίες προστίθενται στις διάφορες "
+"κατηγορίες καθώς συναντάτε νέες πτυχές του παιχνιδιού. Για πιο λεπτομερείς "
+"πληροφορίες σε ειδικές καταστάσεις και εξαιρέσεις, ακολουθήστε τους "
+"συμπεριλαμβανόμενους συνδέσμους."
 
 #. [topic]: id=about_game
 #: data/core/help.cfg:105
@@ -1950,6 +1981,9 @@ msgid ""
 "sides in multiplayer games.\n"
 "\n"
 msgstr ""
+"Μια φατρία είναι μια συλλογή μονάδων και ηγετών. Οι φατρίες ανατίθενται σε "
+"πλευρές σε παιχνίδια πολλών παικτών.\n"
+"\n"
 
 #. [topic]: id=..eras_section
 #: data/core/help.cfg:129
@@ -2042,6 +2076,11 @@ msgid ""
 "encounter new elements, such as <ref dst='..abilities_section'>abilities</"
 "ref>, for the first time."
 msgstr ""
+"Ενώ παίζετε, έχετε υπόψη ότι μπορείτε να τοποθετείτε το ποντίκι πάνω από "
+"πολλά στοιχεία στο παιχνίδι, όπως τις πληροφορίες που εμφανίζονται στο "
+"παράθυρο κατάστασης, για να δείτε μια σύντομη περιγραφή που εξηγεί κάθε "
+"στοιχείο. Αυτό είναι ιδιαίτερα χρήσιμο όταν συναντάτε νέα στοιχεία, όπως "
+"<ref dst='..abilities_section'>ικανότητες</ref>, για πρώτη φορά."
 
 #. [topic]: id=..gameplay
 #: data/core/help.cfg:177
@@ -2073,6 +2112,11 @@ msgid ""
 "save options or (if you are in a multiplayer game) chatting with other "
 "players before pressing that button to advance."
 msgstr ""
+"Όταν κερδίζετε ένα σενάριο, ο χάρτης γκριζάρει και το κουμπί <b>Τέλος "
+"Σειράς</b> αλλάζει σε <b>Τέλος Σεναρίου</b>. Μπορείτε τώρα να κάνετε "
+"πράγματα όπως να αλλάξετε τις επιλογές αποθήκευσής σας ή (αν είστε σε "
+"παιχνίδι πολλών παικτών) να συνομιλήσετε με άλλους παίκτες πριν πατήσετε "
+"αυτό το κουμπί για να προχωρήσετε."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:197
@@ -2108,8 +2152,9 @@ msgid ""
 "Recruited units come with two random <ref dst='..traits_section'>traits</"
 "ref> which modify their statistics."
 msgstr ""
-"Οι στρατολογημένες μονάδες έρχονται με δύο τυχαία <ref dst='.."
-"traits_section'>χαρακτηριστικά</ref> που τροποποιούν τα στατιστικά τους."
+"Οι στρατολογημένες μονάδες έρχονται με δύο τυχαία <ref "
+"dst='..traits_section'>χαρακτηριστικά</ref> που τροποποιούν τα στατιστικά "
+"τους."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:204
@@ -2118,6 +2163,9 @@ msgid ""
 "Recalling costs a standard 20 gold and presents you with a list of all "
 "surviving units from previous scenarios."
 msgstr ""
+"Σε μεταγενέστερα σενάρια, μπορείτε επίσης να κάνετε Ανάκληση επιζώντων από "
+"προηγούμενες μάχες. Η Ανάκληση κοστίζει τυπικά 20 χρυσό και σας παρουσιάζει "
+"μια λίστα με όλες τις επιζώσες μονάδες από προηγούμενα σενάρια."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:206
@@ -2126,6 +2174,9 @@ msgid ""
 "support. See <ref dst='income_and_upkeep'>income and upkeep</ref> for more "
 "information."
 msgstr ""
+"Οι μονάδες όχι μόνο κοστίζουν χρυσό για Στρατολόγηση ή Ανάκληση, απαιτούν "
+"επίσης χρήματα για υποστήριξη. Δείτε <ref dst='income_and_upkeep'>εισόδημα "
+"και συντήρηση</ref> για περισσότερες πληροφορίες."
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:213
@@ -2140,6 +2191,10 @@ msgid ""
 "gold over from one scenario to the next. There are two aspects to this; "
 "<i>income</i> and <i>upkeep</i>."
 msgstr ""
+"Στο Wesnoth, δεν αρκεί απλά να στρατολογήσετε μονάδες και να πολεμήσετε. "
+"Πρέπει να προσέχετε και το χρυσό σας, ειδικά σε εκστρατείες, όπου μπορείτε "
+"να μεταφέρετε επιπλέον χρυσό από ένα σενάριο στο επόμενο. Υπάρχουν δύο "
+"πτυχές σε αυτό· <i>εισόδημα</i> και <i>συντήρηση</i>."
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:216
@@ -2189,6 +2244,13 @@ msgid ""
 "<i>loyal</i> trait. The unit you are playing (such as Konrad) will almost "
 "always be a leader."
 msgstr ""
+"Υπάρχουν δύο σημαντικές εξαιρέσεις στη συντήρηση: μονάδες με το "
+"χαρακτηριστικό πιστών και ηγέτες δεν επιφέρουν ποτέ συντήρηση. Μονάδες με "
+"τις οποίες ξεκινάτε το σενάριο (όπως ο Delfador), ή μονάδες που σας "
+"ενώνονται κατά τη διάρκεια ενός σεναρίου (όπως ο ιππέας στο δεύτερο σενάριο "
+"του <i>Heir to the Throne</i>) συνήθως θα έχουν το χαρακτηριστικό <i>πιστών</"
+"i>. Η μονάδα με την οποία παίζετε (όπως ο Konrad) θα είναι σχεδόν πάντα "
+"ηγέτης."
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:233
@@ -2203,6 +2265,11 @@ msgid ""
 "<i>experience points</i> (XP). A freshly recruited unit starts with no "
 "experience points, and gains experience by fighting enemies."
 msgstr ""
+"Κάθε μονάδα έχει έναν συγκεκριμένο αριθμό <i>πόντων ζωής</i> (HP). Αν οι "
+"πόντοι ζωής μιας μονάδας πέσουν κάτω από 1, η μονάδα πεθαίνει. Κάθε μονάδα "
+"έχει επίσης έναν συγκεκριμένο αριθμό <i>πόντων εμπειρίας</i> (XP). Μια "
+"φρεσκοστρατολογημένη μονάδα ξεκινά χωρίς πόντους εμπειρίας, και κερδίζει "
+"εμπειρία πολεμώντας εχθρούς."
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:238
@@ -2223,6 +2290,10 @@ msgid ""
 "experience bar, which turns white as the unit is about to <ref "
 "dst='advancement'>advance</ref>."
 msgstr ""
+"Οι πόντοι ζωής επίσης υποδεικνύονται από μια μπάρα ενέργειας δίπλα σε κάθε "
+"μονάδα, η οποία είναι πράσινη, κίτρινη ή κόκκινη. Μια μονάδα με τουλάχιστον "
+"1 πόντο εμπειρίας έχει μια μπλε μπάρα εμπειρίας, η οποία γίνεται λευκή καθώς "
+"η μονάδα πρόκειται να <ref dst='advancement'>εξελιχθεί</ref>."
 
 #. [topic]: id=advancement
 #: data/core/help.cfg:247
@@ -2714,6 +2785,9 @@ msgid ""
 "are vulnerable to impact and fire damage, and extremely vulnerable to arcane "
 "damage."
 msgstr ""
+"Για παράδειγμα, οι σκελετοί είναι πολύ ανθεκτικοί σε ζημιά λεπίδας και "
+"τρυπήματος, αλλά είναι ευάλωτοι σε ζημιά πρόσκρουσης και φωτιάς, και "
+"εξαιρετικά ευάλωτοι σε ζημιά απόκρυφων."
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:380
@@ -2853,6 +2927,8 @@ msgid ""
 "• <span weight='heavy' size='15'>CHAOTIC</span> units get +25% damage at "
 "night, and −25% in daytime."
 msgstr ""
+"• Οι <span weight='heavy' size='15'>ΧΑΟΤΙΚΕΣ</span> μονάδες παίρνουν +25% "
+"ζημιά τη νύχτα, και −25% τη μέρα."
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:471
@@ -2955,6 +3031,10 @@ msgid ""
 "features such as <ref dst='terrain_lava'>lava</ref> change the time of day "
 "bonus around them."
 msgstr ""
+"Τέλος, μονάδες με την ικανότητα <ref "
+"dst='ability_illuminationilluminates'>φωτίζει</ref> και χαρακτηριστικά "
+"εδάφους όπως η <ref dst='terrain_lava'>λάβα</ref> αλλάζουν το μπόνους ώρας "
+"ημέρας γύρω τους."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:508
@@ -2975,6 +3055,8 @@ msgid ""
 "• <b>Resting</b>: A unit which neither moves, attacks, nor is attacked will "
 "heal 2 HP in its next turn."
 msgstr ""
+"• <b>Ανάπαυση</b>: Μια μονάδα που ούτε κινείται, ούτε επιτίθεται, ούτε "
+"δέχεται επίθεση θα θεραπευτεί 2 HP στην επόμενη σειρά της."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:512
@@ -2983,6 +3065,9 @@ msgid ""
 "dst='terrain_oasis'>oasis</ref> will heal 8HP. If the unit is poisoned, the "
 "poison will be cured instead."
 msgstr ""
+"• <b>Χωριά</b>: Μια μονάδα που ξεκινά μια σειρά σε χωριό ή <ref "
+"dst='terrain_oasis'>όαση</ref> θα θεραπευτεί 8HP. Αν η μονάδα είναι "
+"δηλητηριασμένη, το δηλητήριο θα θεραπευτεί αντί αυτού."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:513
@@ -3024,6 +3109,10 @@ msgid ""
 "regeneration, healing and curing cannot combine with each other: the best "
 "option will be used. Finally, units heal fully between scenarios."
 msgstr ""
+"Η ανάπαυση μπορεί να συνδυαστεί με άλλες μορφές θεραπείας, αλλά τα χωριά, η "
+"αναγέννηση, η θεραπεία και η θεραπεία δεν μπορούν να συνδυαστούν μεταξύ "
+"τους: θα χρησιμοποιηθεί η καλύτερη επιλογή. Τέλος, οι μονάδες θεραπεύονται "
+"πλήρως μεταξύ σεναρίων."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:520
@@ -3049,11 +3138,18 @@ msgstr "Σύνοψη "
 #: data/core/help.cfg:529
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
-"basic strategy, or familiarize yourself with <ref dst='.."
-"traits_section'>traits</ref> and <ref dst='..abilities_section'>abilities</"
-"ref>, but you now know everything you need to know to play the <i>Heir to "
-"the Throne</i> campaign. Have fun, and good luck!"
+"basic strategy, or familiarize yourself with <ref "
+"dst='..traits_section'>traits</ref> and <ref "
+"dst='..abilities_section'>abilities</ref>, but you now know everything you "
+"need to know to play the <i>Heir to the Throne</i> campaign. Have fun, and "
+"good luck!"
 msgstr ""
+"Αυτό ολοκληρώνει τα βασικά του Wesnoth. Μπορεί να θέλετε να διαβάσετε για "
+"βασική στρατηγική, ή να εξοικειωθείτε με τα <ref "
+"dst='..traits_section'>χαρακτηριστικά</ref> και τις <ref "
+"dst='..abilities_section'>ικανότητες</ref>, αλλά τώρα γνωρίζετε όλα όσα "
+"χρειάζεστε για να παίξετε την εκστρατεία <i>Heir to the Throne</i>. Καλή "
+"διασκέδαση, και καλή τύχη!"
 
 #. [topic]: id=license
 #: data/core/help.cfg:534
@@ -3120,6 +3216,10 @@ msgid ""
 "There are many more besides these — a list of the terrain types you have "
 "discovered can be found at the end of this page."
 msgstr ""
+"Οι βασικοί τύποι εδάφους περιλαμβάνουν Επίπεδο, Λόφους, Βουνά, Άμμους, Νερό "
+"και Βάλτους. Υπάρχουν πολλοί περισσότεροι εκτός από αυτούς — μια λίστα με "
+"τους τύπους εδάφους που έχετε ανακαλύψει μπορεί να βρεθεί στο τέλος αυτής "
+"της σελίδας."
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:568
@@ -3178,6 +3278,10 @@ msgid ""
 "its hex and checking the terrain type icons displayed in the upper right "
 "(under the default theme)."
 msgstr ""
+"Μπορείτε να δείτε από ποιους βασικούς τύπους αποτελείται ένα μικτό έδαφος "
+"τοποθετώντας το ποντίκι πάνω από το εξάγωνό του και ελέγχοντας τα εικονίδια "
+"τύπου εδάφους που εμφανίζονται στην πάνω δεξιά γωνία (κάτω από το "
+"προεπιλεγμένο θέμα)."
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:586
@@ -3236,6 +3340,8 @@ msgid ""
 "The game supports different types of add-on content, which are not all "
 "available in every gameplay mode."
 msgstr ""
+"Το παιχνίδι υποστηρίζει διαφορετικούς τύπους περιεχομένου πρόσθετων, που δεν "
+"είναι όλοι διαθέσιμοι σε κάθε λειτουργία παιχνιδιού."
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:620
@@ -3250,6 +3356,10 @@ msgid ""
 "and regular campaigns are available from the <i>Campaigns</i> menu at the "
 "title screen."
 msgstr ""
+"Οι εκστρατείες μονού παίκτη είναι συλλογές σεναρίων που ταιριάζουν μαζί για "
+"να πουν μια ιστορία. Τόσο τα αυτόνομα σενάρια—αν προορίζονται να παιχτούν ως "
+"τέτοια—όσο και οι κανονικές εκστρατείες είναι διαθέσιμες από το μενού "
+"<i>Εκστρατείες</i> στην οθόνη τίτλου."
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:624
@@ -3292,8 +3402,8 @@ msgid ""
 "You can see what eras you have loaded in the <ref dst='..eras_section'>eras</"
 "ref> of the help."
 msgstr ""
-"Μπορείτε να δείτε ποιες εποχές έχετε φορτώσει στις <ref dst='.."
-"eras_section'>εποχές</ref> της βοήθειας."
+"Μπορείτε να δείτε ποιες εποχές έχετε φορτώσει στις <ref "
+"dst='..eras_section'>εποχές</ref> της βοήθειας."
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:636
@@ -3434,8 +3544,8 @@ msgstr ""
 #: data/core/help.cfg:698
 msgid "Debug mode is turned off by quitting the game or :nodebug."
 msgstr ""
-"Η λειτουργία αποσφαλμάτωσης απενεργοποιείται με έξοδο από το παιχνίδι ή με :"
-"nodebug."
+"Η λειτουργία αποσφαλμάτωσης απενεργοποιείται με έξοδο από το παιχνίδι ή "
+"με :nodebug."
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:701
@@ -3635,8 +3745,8 @@ msgid ""
 "Modifies the specified property of the selected unit. Example: :unit "
 "hitpoints=100"
 msgstr ""
-"Τροποποιεί την καθορισμένη ιδιότητα της επιλεγμένης μονάδας. Παράδειγμα: :"
-"unit hitpoints=100"
+"Τροποποιεί την καθορισμένη ιδιότητα της επιλεγμένης μονάδας. "
+"Παράδειγμα: :unit hitpoints=100"
 
 #. [topic]: id=debug_commands
 #. The example text is a command and should not be translated.
@@ -6759,8 +6869,8 @@ msgstr "Κόστος Παρεμβολής"
 #~ " Γιά αρχή είναι καλύτερα να πατήσεις τό κουμπί "
 #~ "<italic>text='Φροντιστήριο'</italic>  στό βασικό μενού. Αυτό σε βγάζει σέ "
 #~ "διαδραστικό φροντηστήριο πού θα σου διδάξει τά βασικά γιά τό Γουέσνοθ. "
-#~ "Κατόπιν συνιστάται νά παίξεις πρώτα την εκστρατεία Διάδοχος του Θρόνου -"
-#~ "πάτησε τό κουμπί <italic>text='Εκστρατείες'</italic>  καί μετά   "
+#~ "Κατόπιν συνιστάται νά παίξεις πρώτα την εκστρατεία Διάδοχος του Θρόνου "
+#~ "-πάτησε τό κουμπί <italic>text='Εκστρατείες'</italic>  καί μετά   "
 #~ "<italic>text='Διάδοχος του Θρόνου'</italic>. Μιάς καί η Μάχη γιά τό "
 #~ "Γουέσνοθ μπορεί νά είναι αρκετά δύσκολη, ίσως θές νά ξεκινήσεις με τό "
 #~ "επίπεδο δυσκολίας <italic>text='Εύκολο'</italic>."
