@@ -19,7 +19,7 @@
 ### Packaging
 ### Terrain
 ### Translations
-   * Updated translations: Bengali, Greek
+   * Updated translations: Bengali, French, Greek
 ### Units
 ### User interface
 ### WML Engine
