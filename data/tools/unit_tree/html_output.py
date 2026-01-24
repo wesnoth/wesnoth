@@ -965,8 +965,7 @@ class HTMLOutput:
                                             s.append(sname)
                                 specials_list = attack.get_text_val("specials_list")
                                 if specials_list:
-                                    specials_list = specials_list.split(",")
-                                    for special_ref in specials_list:
+                                    for special_ref in specials_list.split(","):
                                         special_ref = specials_ref.strip()
                                         # TODO load translatable name from self.wesnoth.(new implementation in helpers.py)
                                         s.append(special_ref)
@@ -1251,6 +1250,12 @@ class HTMLOutput:
                         sname = T(special, "name")
                         if sname:
                             s.append(cleantext(sname, quote=False))
+                specials_list = attack.get_text_val("specials_list")
+                if specials_list:
+                    for special_ref in specials_list.split(","):
+                        special_ref = specials_ref.strip()
+                        # TODO load translatable name from self.wesnoth.(new implementation in helpers.py)
+                        s.append(cleantext(special_ref, quote=False))
                 accuracy = attack.get_text_val("accuracy", default="0")
                 parry = attack.get_text_val("parry", default="0")
                 if accuracy != "0":
