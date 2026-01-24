@@ -315,6 +315,9 @@ public:
 	bool has_active_special_id(const attack_type& at, const std::string& id) const;
 	bool has_active_special_matching_filter(const attack_type& at, const config& filter) const;
 
+	static bool has_active_ability_id(const unit& un, map_location loc, const std::string& id);
+	static bool has_active_ability_matching_filter(const unit& un, map_location loc, const config& filter);
+
 	bool is_special_active(const specials_combatant& wep, const unit_ability_t& ab, unit_ability_t::affects_t whom) const;
 
 	void add_formula_context(wfl::map_formula_callable& callable) const;
