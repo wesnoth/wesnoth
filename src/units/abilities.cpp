@@ -1854,6 +1854,26 @@ bool specials_context_t::has_active_special_matching_filter(const attack_type& a
 	return foreach_active_special(*this, self, quick_check, return_true, skip_adjacent);
 }
 
+bool specials_context_t::has_active_ability_matching_filter(const unit& un, map_location loc, const config& filter)
+{
+	bool skip_adjacent = !filter["affect_adjacent"].to_bool(true);
+
+	auto quick_check = [&](const ability_ptr& p_ab) {
+		return p_ab->matches_filter(filter);
+	};
+
+	return foreach_active_ability(un, loc, quick_check, return_true, skip_adjacent);
+}
+
+bool specials_context_t::has_active_ability_id(const unit& un, map_location loc, const std::string& id)
+{
+	auto quick_check = [&](const ability_ptr& p_ab) {
+		return p_ab->id() == id;
+	};
+
+	return foreach_active_ability(un, loc, quick_check, return_true);
+}
+
 namespace {
 	class temporary_facing
 	{
