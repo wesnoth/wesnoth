@@ -308,4 +308,39 @@ private:
 using map_formula_callable_ptr = std::shared_ptr<map_formula_callable>;
 using const_map_formula_callable_ptr = std::shared_ptr<const map_formula_callable>;
 
+template<typename T, typename... Args>
+variant make_callable(Args&&... args)
+{
+	return variant{std::make_shared<T>(std::forward<Args>(args)...)};
+}
+
+#ifdef __cpp_concepts
+template<typename T>
+requires std::is_pointer_v<T>
+auto callable_cast(const variant& v)
+#else
+template<typename T>
+auto callable_cast(const variant& v) -> std::enable_if_t<std::is_pointer_v<T>, std::shared_ptr<const std::remove_pointer_t<T>>
+#endif
+{
+	return std::dynamic_pointer_cast<const std::remove_pointer_t<T>>(v.as_callable());
+}
+
+#ifdef __cpp_concepts
+template<typename T>
+requires std::is_reference_v<T>
+auto callable_cast(const variant& v)
+#else
+template<typename T>
+auto callable_cast(const variant& v) -> std::enable_if_t<std::is_reference_v<T>, const std::remove_reference_t<T>>
+#endif
+{
+	auto ptr = callable_cast<std::remove_reference_t<T>*>(v);
+	if(!ptr) {
+		throw type_error{"could not convert type"};
+	}
+
+	return *ptr;
+}
+
 } // namespace wfl

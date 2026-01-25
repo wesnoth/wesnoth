@@ -224,12 +224,12 @@ variant unit_callable::get_value(const std::string& key) const
 			return variant();
 		}
 
-		return variant(std::make_shared<location_callable>(loc_));
+		return make_callable<location_callable>(loc_);
 	} else if(key == "terrain") {
 		if(loc_ == map_location::null_location()) {
 			return variant();
 		}
-		return variant(std::make_shared<terrain_callable>(*resources::gameboard, loc_));
+		return make_callable<terrain_callable>(*resources::gameboard, loc_);
 	} else if(key == "id") {
 		return variant(u_.id());
 	} else if(key == "type") {
@@ -351,7 +351,7 @@ variant unit_callable::get_value(const std::string& key) const
 	} else if(key == "healthy") {
 		return variant(u_.is_healthy());
 	} else if(key == "wml_vars") {
-		return variant(std::make_shared<config_callable>(u_.variables()));
+		return make_callable<config_callable>(u_.variables());
 	} else if(key == "n"      || key == "s"       || key == "ne"      || key == "se"      || key == "nw" || key == "sw" ||
 	          key == "lawful" || key == "neutral" || key == "chaotic" || key == "liminal" ||
 	          key == "male"   || key == "female")
@@ -616,7 +616,7 @@ variant terrain_callable::get_value(const std::string& key) const
 	} else if(key == "y") {
 		return variant(loc_.wml_y());
 	} else if(key == "loc") {
-		return variant(std::make_shared<location_callable>(loc_));
+		return make_callable<location_callable>(loc_);
 	} else if(key == "id") {
 		return variant(std::string(t_.id()));
 	} else if(key == "name") {
@@ -821,7 +821,7 @@ variant team_callable::get_value(const std::string& key) const
 		}
 		return variant(std::move(result));
 	} else if(key == "wml_vars") {
-		return variant(std::make_shared<config_callable>(team_.variables()));
+		return make_callable<config_callable>(team_.variables());
 	}
 
 	return variant();
@@ -846,17 +846,14 @@ void set_var_callable::get_inputs(formula_input_vector& inputs) const
 
 variant set_var_callable::execute_self(variant ctxt)
 {
-	//if(infinite_loop_guardian_.set_var_check()) {
-	if(auto obj = ctxt.try_convert<formula_callable>()) {
+	if(auto obj = callable_cast<formula_callable*>(ctxt)) {
 		LOG_SF << "Setting variable: " << key_ << " -> " << value_.to_debug_string();
-		obj->mutate_value(key_, value_);
+		std::const_pointer_cast<formula_callable>(obj)->mutate_value(key_, value_);
 		return variant(true);
 	}
-	//}
-	//too many calls in a row - possible infinite loop
-	ERR_SF << "ERROR #" << 5001 << " while executing 'set_var' formula function";
 
-	return variant(std::make_shared<safe_call_result>(fake_ptr(), 5001));
+	ERR_SF << "ERROR #" << 5001 << " while executing 'set_var' formula function";
+	return make_callable<safe_call_result>(fake_ptr(), 5001);
 }
 
 variant safe_call_callable::get_value(const std::string& key) const
@@ -879,11 +876,11 @@ void safe_call_callable::get_inputs(formula_input_vector& inputs) const
 variant safe_call_callable::execute_self(variant ctxt)
 {
 	variant res;
-	if(auto action = main_.try_convert<action_callable>()) {
-		res = action->execute_self(ctxt);
+	if(auto action = callable_cast<action_callable*>(main_)) {
+		res = std::const_pointer_cast<action_callable>(action)->execute_self(ctxt);
 	}
 
-	if(res.try_convert<safe_call_result>()) {
+	if(callable_cast<safe_call_result*>(res)) {
 		/* If we have safe_call formula and either an error occurred, or the current action
 		 * was not recognized, then evaluate backup formula from safe_call and execute it
 		 * during the next loop
@@ -912,7 +909,7 @@ variant safe_call_result::get_value(const std::string& key) const
 
 		return variant();
 	} else if(key == "current_loc" && current_unit_location_ != map_location()) {
-		return variant(std::make_shared<location_callable>(current_unit_location_));
+		return make_callable<location_callable>(current_unit_location_);
 	}
 
 	return variant();
@@ -959,7 +956,7 @@ variant gamestate_callable::get_value(const std::string &key) const
 		}
 		return variant(std::move(vars));
 	} else if(key == "map") {
-		return variant(std::make_shared<gamemap_callable>(*resources::gameboard));
+		return make_callable<gamemap_callable>(*resources::gameboard);
 	}
 
 	return variant();
@@ -985,28 +982,28 @@ variant event_callable::get_value(const std::string &key) const
 	} else if(key == "event_id") {
 		return variant(event_info.id);
 	} else if(key == "loc") {
-		return variant(std::make_shared<location_callable>(event_info.loc1));
+		return make_callable<location_callable>(event_info.loc1);
 	} else if(key == "second_loc") {
-		return variant(std::make_shared<location_callable>(event_info.loc2));
+		return make_callable<location_callable>(event_info.loc2);
 	} else if(key == "event_data") {
-		return variant(std::make_shared<config_callable>(event_info.data));
+		return make_callable<config_callable>(event_info.data);
 	} else if(key == "unit") {
 		if(auto u1 = event_info.loc1.get_unit()) {
-			return variant(std::make_shared<unit_callable>(*u1));
+			return make_callable<unit_callable>(*u1);
 		}
 	} else if(key == "second_unit") {
 		if(auto u2 = event_info.loc2.get_unit()) {
-			return variant(std::make_shared<unit_callable>(*u2));
+			return make_callable<unit_callable>(*u2);
 		}
 	} else if(key == "weapon") {
 		if(event_info.data.has_child("first")) {
 			first_weapon = std::make_shared<attack_type>(event_info.data.mandatory_child("first"));
-			return variant(std::make_shared<attack_type_callable>(*first_weapon));
+			return make_callable<attack_type_callable>(*first_weapon);
 		}
 	} else if(key == "second_weapon") {
 		if(event_info.data.has_child("second")) {
 			second_weapon = std::make_shared<attack_type>(event_info.data.mandatory_child("second"));
-			return variant(std::make_shared<attack_type_callable>(*second_weapon));
+			return make_callable<attack_type_callable>(*second_weapon);
 		}
 	}
 
