@@ -715,13 +715,13 @@ variant execute_actions(const variant& execute, const variant& context)
 			continue;
 		}
 
-		auto action = v.try_convert<action_callable>();
+		auto action = callable_cast<action_callable*>(v);
 		if(!action) {
 			WRN_SF << "Could not execute non-action_callable variant: " << v.to_debug_string();
 			continue;
 		}
 
-		res.push_back(action->execute_self(context));
+		res.push_back(std::const_pointer_cast<action_callable>(action)->execute_self(context));
 	}
 
 	return variant(std::move(res));
