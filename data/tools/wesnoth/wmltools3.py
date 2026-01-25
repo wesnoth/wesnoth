@@ -1061,8 +1061,8 @@ class CrossRef:
                                             self.mark_matching_resources(pattern, fn,n+1)
                                         else:
                                             candidates = []
-                                            postix = os.sep + name
-                                            for _, trial, defn in self.postfix_files_range(postix):
+                                            postfix = os.sep + name
+                                            for _, trial, defn in self.postfix_files_range(postfix):
                                                 if self.visible_from(defn, fn, n):
                                                     key = trial
                                                     defn.append(fn, n+1)
@@ -1086,8 +1086,8 @@ class CrossRef:
                                     if attack_name and not have_icon:
                                         candidates = []
                                         key = None
-                                        postix = os.sep + default_icon
-                                        for _, trial, defn in self.postfix_files_range(postix):
+                                        postfix = os.sep + default_icon
+                                        for _, trial, defn in self.postfix_files_range(postfix):
                                             if self.visible_from(defn, fn, n):
                                                 key = trial
                                                 defn.append(fn, n+1)
