@@ -11,13 +11,13 @@ if x1 ~= c.unit_x or y1 ~= c.unit_y then
 end
 local u = wesnoth.units.get(x1,y1)
 
-local enemies = wesnoth.units.find_on_map({{"filter_adjacent",{id=u.id, is_enemy = true}},{"has_attack",{special_id = "intercept"}}})
+local enemies = wesnoth.units.find_on_map({{"filter_adjacent",{id=u.id, is_enemy = true}},{"has_attack",{special_type = "intercept"}}}) --TODO just active weapons
 
 for iter = #enemies, 1, -1 do
     local e = enemies[iter]
     local special
-    for i = 1, #e.attacks do
-        special = wml.find_child(e.attacks[i].specials, {id="intercept"})
+	for _, attack in ipairs(u.attacks) do
+        special = wml.child_array(attack.specials,"intercept")[1]
         if special then
             break
         end
@@ -37,8 +37,8 @@ local sheath_weapon = wesnoth.units.create_animator()
 
 for iter,e in ipairs(enemies) do
     local attacking_weapon
-    for i = 1, #e.attacks do
-        if wml.find_child(e.attacks[i].specials, {id="intercept"}) then
+    for i, attack in ipairs(u.attacks) do
+        if wml.child_array(attack.specials,"intercept")[1] then
             attacking_weapon = i
             break
         end
@@ -67,8 +67,8 @@ animator:clear()
 for iter,e in ipairs(enemies) do
     e.variables.intercept_used = e.variables.intercept_used and e.variables.intercept_used + 1 or 1
     local attacking_weapon
-    for i = 1, #e.attacks do
-        if wml.find_child(e.attacks[i].specials, {id="intercept"}) then
+    for i, attack in ipairs(u.attacks) do
+        if wml.child_array(attack.specials,"intercept")[1] then
             attacking_weapon = i
             break
         end
@@ -84,7 +84,7 @@ for iter,e in ipairs(enemies) do
         local __, __, e_stats, u_stats = wesnoth.simulate_combat(e,attacking_weapon, u)-- Defensive specials of enemy weapon do apply, but enemy doesn't fight back - makes sence for things like shield block
         local w = e.attacks[attacking_weapon]
 
-        local strike_limit = wml.find_child(w.specials,{id="intercept"}).strike_limit
+        local strike_limit = wml.child_array(w.specials,"intercept")[1].strike_limit
         if not strike_limit or strike_limit == -1 or strike_limit > e_stats.num_blows then
             strike_limit = e_stats.num_blows
         end
