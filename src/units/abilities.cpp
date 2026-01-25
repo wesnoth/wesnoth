@@ -865,10 +865,10 @@ void attack_type::add_formula_context(wfl::map_formula_callable& callable) const
 void specials_context_t::add_formula_context(wfl::map_formula_callable& callable) const
 {
 	if(const unit_const_ptr & att = attacker.un) {
-		callable.add("attacker", wfl::variant(std::make_shared<wfl::unit_callable>(*att)));
+		callable.add("attacker", wfl::make_callable<wfl::unit_callable>(*att));
 	}
 	if(const unit_const_ptr & def = defender.un) {
-		callable.add("defender", wfl::variant(std::make_shared<wfl::unit_callable>(*def)));
+		callable.add("defender", wfl::make_callable<wfl::unit_callable>(*def));
 	}
 }
 
@@ -922,10 +922,10 @@ T get_single_ability_value(const config::attribute_value& v, T def, const active
 					att->add_formula_context(callable);
 				}
 				if (auto uptr = units.find_unit_ptr(ability_info.student_loc)) {
-					callable.add("student", wfl::variant(std::make_shared<wfl::unit_callable>(*uptr)));
+					callable.add("student", wfl::make_callable<wfl::unit_callable>(*uptr));
 				}
 				if (auto uptr = units.find_unit_ptr(receiver_loc)) {
-					callable.add("other", wfl::variant(std::make_shared<wfl::unit_callable>(*uptr)));
+					callable.add("other", wfl::make_callable<wfl::unit_callable>(*uptr));
 				}
 				return formula_handler(wfl::formula(s, new wfl::gamestate_function_symbol_table, true), callable);
 			} catch(const wfl::formula_error& e) {

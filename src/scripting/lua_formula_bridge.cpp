@@ -144,7 +144,7 @@ void luaW_pushfaivariant(lua_State* L, const variant& val) {
 		}
 	} else if(val.is_callable()) {
 		// First try a few special cases
-		if(auto u_ref = val.try_convert<unit_callable>()) {
+		if(auto u_ref = callable_cast<unit_callable*>(val)) {
 			const unit& u = u_ref->get_unit();
 			unit_map::iterator un_it = resources::gameboard->units().find(u.get_location());
 			if(&*un_it == &u) {
@@ -152,16 +152,16 @@ void luaW_pushfaivariant(lua_State* L, const variant& val) {
 			} else {
 				luaW_pushunit(L, u.side(), u.underlying_id());
 			}
-		} else if(auto ut_ref = val.try_convert<unit_type_callable>()) {
+		} else if(auto ut_ref = callable_cast<unit_type_callable*>(val)) {
 			const unit_type& ut = ut_ref->get_unit_type();
 			luaW_pushunittype(L, ut);
-		} else if(auto atk_ref = val.try_convert<attack_type_callable>()) {
+		} else if(auto atk_ref = callable_cast<attack_type_callable*>(val)) {
 			const auto& atk = atk_ref->get_attack_type();
 			luaW_pushweapon(L, atk.shared_from_this());
-		} else if(auto team_ref = val.try_convert<team_callable>()) {
+		} else if(auto team_ref = callable_cast<team_callable*>(val)) {
 			auto t = team_ref->get_team();
 			luaW_pushteam(L, t);
-		} else if(auto loc_ref = val.try_convert<location_callable>()) {
+		} else if(auto loc_ref = callable_cast<location_callable*>(val)) {
 			luaW_pushlocation(L, loc_ref->loc());
 		} else {
 			// If those fail, convert generically to a map
@@ -192,7 +192,7 @@ variant luaW_tofaivariant(lua_State* L, int i) {
 		case LUA_TSTRING:
 			return variant(lua_tostring(L, i));
 		case LUA_TTABLE:
-			return variant(std::make_shared<lua_callable>(L, i));
+			return make_callable<lua_callable>(L, i);
 		case LUA_TUSERDATA:
 			static t_string tstr;
 			static vconfig vcfg = vconfig::unconstructed_vconfig();
@@ -200,17 +200,17 @@ variant luaW_tofaivariant(lua_State* L, int i) {
 			if(luaW_totstring(L, i, tstr)) {
 				return variant(tstr.str());
 			} else if(luaW_tovconfig(L, i, vcfg)) {
-				return variant(std::make_shared<config_callable>(vcfg.get_parsed_config()));
+				return make_callable<config_callable>(vcfg.get_parsed_config());
 			} else if(unit* u = luaW_tounit(L, i)) {
-				return variant(std::make_shared<unit_callable>(*u));
+				return make_callable<unit_callable>(*u);
 			} else if(const unit_type* ut = luaW_tounittype(L, i)) {
-				return variant(std::make_shared<unit_type_callable>(*ut));
+				return make_callable<unit_type_callable>(*ut);
 			} else if(const_attack_ptr atk = luaW_toweapon(L, i)) {
-				return variant(std::make_shared<attack_type_callable>(*atk));
+				return make_callable<attack_type_callable>(*atk);
 			} else if(team* t = luaW_toteam(L, i)) {
-				return variant(std::make_shared<team_callable>(*t));
+				return make_callable<team_callable>(*t);
 			} else if(luaW_tolocation(L, i, loc)) {
-				return variant(std::make_shared<location_callable>(loc));
+				return make_callable<location_callable>(loc);
 			}
 			break;
 	}

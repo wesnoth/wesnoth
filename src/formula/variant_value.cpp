@@ -344,7 +344,7 @@ variant variant_list::deref_iterator(const utils::any& iter) const
 variant variant_map::deref_iterator(const utils::any& iter) const
 {
 	const auto& [key, value] = *as_container_iterator(iter);
-	return variant(std::make_shared<key_value_pair>(key, value));
+	return make_callable<key_value_pair>(key, value);
 }
 
 } // namespace wfl

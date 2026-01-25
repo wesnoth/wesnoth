@@ -99,27 +99,6 @@ public:
 
 	const_formula_callable_ptr as_callable() const;
 
-	template<typename T>
-	std::shared_ptr<T> try_convert() const
-	{
-		if(!is_callable()) {
-			return nullptr;
-		}
-
-		return std::dynamic_pointer_cast<T>(std::const_pointer_cast<formula_callable>(as_callable()));
-	}
-
-	template<typename T>
-	std::shared_ptr<T> convert_to() const
-	{
-		auto res = try_convert<T>();
-		if(!res) {
-			throw type_error("could not convert type");
-		}
-
-		return res;
-	}
-
 	variant operator+(const variant&) const;
 	variant operator-(const variant&) const;
 	variant operator*(const variant&) const;
