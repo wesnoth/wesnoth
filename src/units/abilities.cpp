@@ -831,14 +831,6 @@ bool unit::has_ability_type(const std::string& ability) const
 	return !abilities(ability).empty();
 }
 
-//these two functions below are used in order to add to the unit
-//a second set of halo encoded in the abilities (like illuminates halo in [illuminates] ability for example)
-static void add_string_to_vector(std::vector<std::string>& image_list, const config& cfg, const std::string& attribute_name)
-{
-	if(!utils::contains(image_list, cfg[attribute_name].str())) {
-		image_list.push_back(cfg[attribute_name].str());
-	}
-}
 
 std::vector<std::string> unit::halo_or_icon_abilities(const std::string& image_type) const
 {
@@ -851,29 +843,27 @@ std::vector<std::string> unit::halo_or_icon_abilities(const std::string& image_t
 		std::string& attr_image_;
 	} quick_check { attr_image };
 
-	std::vector<std::string> image_list;
+
+	//todoc++23: use std::flat_set
+	std::set<std::string> image_list;
 	for(const auto& p_ab : abilities()){
 		bool is_active = ability_active(*p_ab, loc_);
 		//Add halo/overlay to owner of ability if active and affect_self is true.
 		if( !p_ab->cfg()[attr_image].str().empty() && is_active && ability_affects_self(*p_ab, loc_)){
-			add_string_to_vector(image_list, p_ab->cfg(), attr_image);
+			image_list.insert(p_ab->cfg()[attr_image].str());
 		}
 		//Add halo/overlay to owner of ability who affect adjacent only if active.
 		if(!p_ab->cfg()[image_type + "_image_self"].str().empty() && is_active){
-			add_string_to_vector(image_list, p_ab->cfg(), image_type + "_image_self");
+			image_list.insert(p_ab->cfg()[image_type + "_image_self"].str());
 		}
 	}
 
 	foreach_distant_active_ability(*this, loc_, quick_check,
 		[&](const ability_ptr& p_ab, const unit&) {
-			add_string_to_vector(image_list, p_ab->cfg(), image_type + "_image");
+			image_list.insert(p_ab->cfg()[attr_image].str());
 		});
 
-	//rearranges vector alphabetically when its size equals or exceeds two.
-	if(image_list.size() >= 2){
-		std::sort(image_list.begin(), image_list.end());
-	}
-	return image_list;
+	return std::vector(image_list.begin(), image_list.end());
 }
 
 void attack_type::add_formula_context(wfl::map_formula_callable& callable) const
