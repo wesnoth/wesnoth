@@ -234,17 +234,16 @@ static std::chrono::steady_clock::time_point last_stale_check_time = std::chrono
 static void prune_stale_intermediate_cache()
 {
 	std::chrono::steady_clock::time_point now = std::chrono::steady_clock::now();
-	if (now - last_stale_check_time >= std::chrono::seconds(11)) // Check once per 11 seconds.
+	if(now - last_stale_check_time >= std::chrono::seconds(11)) // Check once per 11 seconds.
 	{
 		last_stale_check_time = now;
-		while (!intermediate_surface_lru_list_.empty()) {
+		while(!intermediate_surface_lru_list_.empty()) {
 			std::pair<image::locator, IntermediateCacheEntry>& lru_item = intermediate_surface_lru_list_.back();
-			if (now - lru_item.second.last_access > INTERMEDIATE_CACHE_TTL) { // If expired, evict it.
+			if(now - lru_item.second.last_access > INTERMEDIATE_CACHE_TTL) { // If expired, evict it.
 				intermediate_surface_cache_size_ -= lru_item.second.size_bytes;
 				intermediate_surface_lookup_.erase(lru_item.first);
 				intermediate_surface_lru_list_.pop_back();
-			}
-			else { // Found first non-stale item, stop.
+			} else { // Found first non-stale item, stop.
 				break;
 			}
 		}
@@ -256,7 +255,7 @@ static void prune_stale_intermediate_cache()
  */
 static void prune_oversized_intermediate_cache(size_t space_needed = 0)
 {
-	while ((intermediate_surface_cache_size_ + space_needed) > MAX_INTERMEDIATE_CACHE_SIZE && !intermediate_surface_lru_list_.empty())
+	while((intermediate_surface_cache_size_ + space_needed) > MAX_INTERMEDIATE_CACHE_SIZE && !intermediate_surface_lru_list_.empty())
 	{
 		// Evict from the back (least recently used).
 		std::pair<image::locator, IntermediateCacheEntry>& lru_item = intermediate_surface_lru_list_.back();
@@ -273,7 +272,7 @@ static void prune_oversized_intermediate_cache(size_t space_needed = 0)
 static surface find_in_intermediate_cache(const image::locator& key)
 {
 	IntermediateCacheLookupMap::iterator it = intermediate_surface_lookup_.find(key);
-	if (it == intermediate_surface_lookup_.end()) {
+	if(it == intermediate_surface_lookup_.end()) {
 		return nullptr; // Cache miss.
 	}
 	std::list<std::pair<image::locator, IntermediateCacheEntry>>::iterator lru_it = it->second; // Cache hit.
@@ -287,15 +286,15 @@ static surface find_in_intermediate_cache(const image::locator& key)
  */
 static void add_to_intermediate_cache(const image::locator& key, const surface& surf)
 {
-	if (!surf) {
+	if(!surf) {
 		return;
 	}
 	size_t size_bytes = surf->h * surf->pitch;
-	if (size_bytes > MAX_INTERMEDIATE_CACHE_SIZE) { // Image is too big to cache.
+	if(size_bytes > MAX_INTERMEDIATE_CACHE_SIZE) { // Image is too big to cache.
 		return;
 	}
 
-	if (intermediate_surface_lookup_.find(key) == intermediate_surface_lookup_.end()) {
+	if(intermediate_surface_lookup_.find(key) == intermediate_surface_lookup_.end()) {
 		prune_oversized_intermediate_cache(size_bytes); // Prune cache before adding to ensure we have space
 		intermediate_surface_lru_list_.emplace_front(key, IntermediateCacheEntry{ surf, size_bytes, std::chrono::steady_clock::now() });
 		intermediate_surface_lookup_[key] = intermediate_surface_lru_list_.begin();
@@ -505,29 +504,29 @@ static surface load_image_sub_file(const image::locator& loc)
 
 	//Handle images with modifications.
 	modification_queue mods = modification::decode(loc.get_modifications()); // Decode modifications (if any)
-	if (!mods.empty()) {
+	if(!mods.empty()) {
 
 		// If this is a cutout of a larger image, first try to find the uncut modified image in our intermediate cache
 		image::locator intermediate_cache_key;
-		if (loc.get_loc().valid()) {
+		if(loc.get_loc().valid()) {
 			intermediate_cache_key = image::locator(loc.get_filename(), loc.get_modifications());
 			surf = find_in_intermediate_cache(intermediate_cache_key);
 		}
 
 		// If not found in intermediate_cache, create it.
-		if (surf == nullptr) {
+		if(surf == nullptr) {
 			surf = get_surface(loc.get_filename(), UNSCALED).clone(); // Clone base image.
-			if (surf == nullptr) {
+			if(surf == nullptr) {
 				return nullptr;
 			}
-			while (!mods.empty()) {
+			while(!mods.empty()) {
 				try {
 					std::invoke(mods.top(), surf);
 				}
-				catch (const image::modification::imod_exception& e) { // Log modification errors
+				catch(const image::modification::imod_exception& e) { // Log modification errors
 					std::ostringstream ss;
 					ss << "\n";
-					for (const std::string& mod_name : utils::parenthetical_split(loc.get_modifications(), '~')) {
+					for(const std::string& mod_name : utils::parenthetical_split(loc.get_modifications(), '~')) {
 						ss << "\t" << mod_name << "\n";
 					}
 					ERR_CFG << "Failed to apply a modification to an image:\n"
@@ -537,14 +536,14 @@ static surface load_image_sub_file(const image::locator& loc)
 				}
 				mods.pop();
 			}
-			if (loc.get_loc().valid()) { // Cache intermediate images that are likely to be used in further cutouts, other cases are cached elsewhere.
+			if(loc.get_loc().valid()) { // Cache intermediate images that are likely to be used in further cutouts, other cases are cached elsewhere.
 				add_to_intermediate_cache(intermediate_cache_key, surf);
 			}
 		}
 	}
 	else { // No modifications: reuse base (cached) surface directly.
 		surf = get_surface(loc.get_filename(), UNSCALED);
-		if (surf == nullptr) {
+		if(surf == nullptr) {
 			return nullptr;
 		}
 	}
@@ -558,7 +557,7 @@ static surface load_image_sub_file(const image::locator& loc)
 			tile_size
 		);
 
-		if (loc.get_center_x() >= 0 && loc.get_center_y() >= 0) {
+		if(loc.get_center_x() >= 0 && loc.get_center_y() >= 0) {
 			srcrect.x += surf->w / 2 - loc.get_center_x();
 			srcrect.y += surf->h / 2 - loc.get_center_y();
 		}
