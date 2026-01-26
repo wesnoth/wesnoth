@@ -216,7 +216,7 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 	// Compute drain amounts only if draining is possible.
 	if(drains) {
 		// Compute the drain percent (with 50% as the base for backward compatibility)
-		drain_percent = weapon->composite_value(weapon->get_specials_and_abilities("drains"), 50);
+		drain_percent = weapon->composite_value(weapon->get_specials_and_abilities("drains"), 0);
 	}
 
 	// Add heal_on_hit (the drain constant)
