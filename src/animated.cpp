@@ -13,25 +13,47 @@
 	See the COPYING file for more details.
 */
 
-/**
- * @file
- * Template instantiations for wesnoth-game.
- */
+/** @file animated.cpp
+ * Global timeline management for the animation system.
+ * Maintains two parallel timelines:
+ * - Normal timeline: Updated at real wall-clock rate
+ * - Accelerated timeline: Can be sped up/slowed down
+ * Call update_animation_timers() once per frame before advancing animations. */
 
 #include "animated.hpp"
 
 // Put these here to ensure that there's only
-// one instance of the current_ticks variable
+// one instance of the normal_timeline/accelerated_timeline variables
 namespace {
-	std::chrono::steady_clock::time_point current_ticks;
+
+	// Current time point on the normal (real-time) timeline
+	std::chrono::steady_clock::time_point normal_timeline = std::chrono::steady_clock::now();
+
+	// Current time point on the accelerated timeline (for unit movement, etc.)
+	std::chrono::steady_clock::time_point accelerated_timeline = normal_timeline;
+
+	std::chrono::steady_clock::time_point old_normal_timeline = normal_timeline;
 }
 
-void new_animation_frame()
+void update_animation_timers(double acceleration)
 {
-	current_ticks = std::chrono::steady_clock::now();
+	// Update normal timeline to current wall-clock time
+	old_normal_timeline = normal_timeline;
+	normal_timeline = std::chrono::steady_clock::now();
+
+	// Update accelerated timeline based on elapsed time and acceleration factor
+	const auto elapsed = normal_timeline - old_normal_timeline;
+	if(acceleration != 1.0) {
+		const auto accelerated_elapsed = std::chrono::duration_cast<std::chrono::steady_clock::duration>(
+			elapsed * acceleration
+		);
+		accelerated_timeline += accelerated_elapsed;
+	} else {
+		accelerated_timeline += elapsed;
+	}
 }
 
-std::chrono::steady_clock::time_point get_current_animation_tick()
+std::chrono::steady_clock::time_point get_current_animation_tick(bool uses_acceleration)
 {
-	return current_ticks;
+	return uses_acceleration ? accelerated_timeline : normal_timeline;
 }
