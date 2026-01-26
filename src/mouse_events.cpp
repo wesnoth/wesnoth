@@ -1256,7 +1256,7 @@ bool mouse_handler::move_unit_along_current_route()
 	bool interrupted = false;
 	std::size_t num_moves = 0;
 
-	if (intended_route.steps.size() > 1) {
+	if(intended_route.steps.size() > 1) {
 		num_moves = move_unit_along_route(intended_route.steps, interrupted);
 
 		interrupted = interrupted || num_moves + 1 < intended_route.steps.size();
@@ -1265,13 +1265,11 @@ bool mouse_handler::move_unit_along_current_route()
 
 	// TRIGGER FLASH-FADE:
 	// If the unit didn't finish the path (0 MP or interruption), visualize the remainder.
-	if (intended_route.steps.size() > num_moves + 1) {
+	if(intended_route.steps.size() > num_moves + 1) {
 		pathfind::marked_route remaining_route;
-
-		// Slice the original route from the point where the unit stopped
-		for (auto i = intended_route.steps.begin() + num_moves; i != intended_route.steps.end(); ++i) {
+		for(auto i = intended_route.steps.begin() + num_moves; i != intended_route.steps.end(); ++i) {
 			remaining_route.steps.push_back(*i);
-			if (auto it = intended_route.marks.find(*i); it != intended_route.marks.end()) {
+			if(auto it = intended_route.marks.find(*i); it != intended_route.marks.end()) {
 				remaining_route.marks[*i] = it->second;
 			}
 		}
