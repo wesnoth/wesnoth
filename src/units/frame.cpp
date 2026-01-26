@@ -814,11 +814,11 @@ std::set<map_location> unit_frame::get_overlaped_hex(const std::chrono::millisec
 
 		//Get the image we are using, either diagonal or not
 		const map_location::direction direction = src.get_relative_dir(dst);
-		if (direction != map_location::direction::north && direction != map_location::direction::south) {
+		if(direction != map_location::direction::north && direction != map_location::direction::south) {
 			image_loc = current_data.image_diagonal.clone(current_data.image_mod);
 			cache.is_diagonal = true;
 		}
-		if (image_loc.is_void() || image_loc.get_filename().empty()) {
+		if(image_loc.is_void() || image_loc.get_filename().empty()) {
 			image_loc = current_data.image.clone(current_data.image_mod);
 			cache.is_diagonal = false;
 		}
@@ -831,12 +831,12 @@ std::set<map_location> unit_frame::get_overlaped_hex(const std::chrono::millisec
 			direction == map_location::direction::north_west ||
 			direction == map_location::direction::north ||
 			direction == map_location::direction::north_east);
-		if (!current_data.auto_hflip) { cache.facing_west = false; }
-		if (!current_data.auto_vflip) { cache.facing_north = true; }
-	}else {
-		if (cache.is_diagonal) {
+		if(!current_data.auto_hflip) { cache.facing_west = false; }
+		if(!current_data.auto_vflip) { cache.facing_north = true; }
+	} else {
+		if(cache.is_diagonal) {
 			image_loc = current_data.image_diagonal.clone(current_data.image_mod);
-		}else {
+		} else {
 			image_loc = current_data.image.clone(current_data.image_mod);
 		}
 	}
@@ -845,8 +845,7 @@ std::set<map_location> unit_frame::get_overlaped_hex(const std::chrono::millisec
 	if(tmp_offset == 0 && current_data.x == 0 && current_data.y == 0 && current_data.directional_x == 0 && current_data.directional_y == 0 && image::is_in_hex(image_loc)) {
 		//Single hex image that isnt moving to another hex and has no offset. Current_frame_hexes already has src inserted.
 		//is_in_hex() is a heavy function that caches its results, so we avoid calling it for permutations.
-	}
-	else {
+	} else {
 		int w = 0, h = 0;
 		if(!image_loc.is_void() && !image_loc.get_filename().empty()) {
 			const point s = image::get_size(image_loc);
@@ -868,13 +867,13 @@ std::set<map_location> unit_frame::get_overlaped_hex(const std::chrono::millisec
 			r.y = y + disp_zoom * (current_data.y - h / 2);
 			r.w = int(w * disp_zoom);
 			r.h = int(h * disp_zoom);
-			if (current_data.directional_x != 0) { r.x += int(current_data.directional_x) * disp_zoom * (cache.facing_west ? -1 : 1); } //Add any offsets in the direction the unit is facing.
-			if (current_data.directional_y != 0) { r.y += int(current_data.directional_y) * disp_zoom * (cache.facing_north ? 1 : -1); }
+			if(current_data.directional_x != 0) { r.x += int(current_data.directional_x) * disp_zoom * (cache.facing_west ? -1 : 1); } //Add any offsets in the direction the unit is facing.
+			if(current_data.directional_y != 0) { r.y += int(current_data.directional_y) * disp_zoom * (cache.facing_north ? 1 : -1); }
 
 			//Rectangle built. Get the hexes it overlaps.
-			if (r == cache.previous_rect) {
+			if(r == cache.previous_rect) {
 				current_frame_hexes.insert(cache.previous_hexes.begin(), cache.previous_hexes.end());
-			}else {
+			} else {
 				display::rect_of_hexes underlying_hex = disp->hexes_under_rect(r);
 				current_frame_hexes.insert(underlying_hex.begin(), underlying_hex.end());
 			}
