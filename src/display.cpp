@@ -2591,7 +2591,7 @@ void display::draw_hex(const map_location& loc)
 		// a stringstream, a temp string, and attempting to trim it for every hex even
 		// when none of these flags are set. This gives us a temp object with all bits
 		// past the first three zeroed out.
-		if((std::as_const(debug_flags_) << (__NUM_DEBUG_FLAGS - DEBUG_FOREGROUND)).none()) {
+		if((std::as_const(debug_flags_) << (NUM_DEBUG_FLAGS - DEBUG_FOREGROUND)).none()) {
 			return;
 		}
 

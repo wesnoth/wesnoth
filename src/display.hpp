@@ -909,7 +909,7 @@ public:
 		DEBUG_BENCHMARK,
 
 		/** Dummy entry to size the bitmask. Keep this last! */
-		__NUM_DEBUG_FLAGS
+		NUM_DEBUG_FLAGS
 	};
 
 	bool debug_flag_set(DEBUG_FLAG flag) const
@@ -929,7 +929,7 @@ public:
 
 private:
 	/** Currently set debug flags. */
-	std::bitset<__NUM_DEBUG_FLAGS> debug_flags_;
+	std::bitset<NUM_DEBUG_FLAGS> debug_flags_;
 
 	/** Maps the list of arrows for each location */
 	std::map<map_location, std::list<arrow*>> arrows_map_;
