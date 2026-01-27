@@ -244,16 +244,14 @@ public:
 	static bool outside_area(const rect& area, const int x,const int y);
 
 	/**
-	 * Function which returns the width of a hex in pixels,
-	 * up to where the next hex starts.
-	 * (i.e. not entirely from tip to tip -- use hex_size()
-	 * to get the distance from tip to tip)
+	 * Function which returns the "average" width of a hex in pixels,
+	 * up to where the next hex starts (half a hex up/down on the y axis).
 	 */
 	static int hex_width() { return (zoom_*3)/4; }
 
 	/**
 	 * Function which returns the size of a hex in pixels
-	 * (from top tip to bottom tip or left edge to right edge).
+	 * (from left tip to right tip or top edge to bottom edge).
 	 */
 	static int hex_size(){ return zoom_; }
 
