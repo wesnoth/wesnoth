@@ -16,10 +16,7 @@
 #ifdef __APPLE__
 
 #include "apple_battery_info.hpp"
-
-#if defined(__APPLE__) && defined(__MACH__) && defined(__ENVIRONMENT_IPHONE_OS_VERSION_MIN_REQUIRED__)
-#define __IPHONEOS__ (__ENVIRONMENT_IPHONE_OS_VERSION_MIN_REQUIRED__*1000)
-#endif
+#include "global.hpp"
 
 #if defined(__IPHONEOS__)
 

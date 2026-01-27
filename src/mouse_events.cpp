@@ -915,13 +915,11 @@ void mouse_handler::select_or_action(bool browse)
 	  (clicked_u->side() == side_num_ && clicked_u->id() != selected_u->id()))
 	) {
 		select_hex(last_hex_, false);
-	}
-#ifdef __ANDROID__
-	else if (clicked_u && clicked_u->side() != side_num_) {
+#ifdef TOUCHSCREEN
+	} else if (clicked_u && clicked_u->side() != side_num_) {
 		select_hex(last_hex_, false);
-	}
 #endif
-	else {
+	} else {
 		move_action(browse);
 	}
 	teleport_selected_ = false;
@@ -1124,7 +1122,6 @@ void mouse_handler::move_action(bool browse)
 void mouse_handler::touch_action(const map_location touched_hex, bool browse)
 {
 	unit_map::iterator unit = find_unit(touched_hex);
-#ifdef __ANDROID__
 	if(touched_hex.valid() && unit.valid() && !unit->get_hidden()) {
 		if(touched_hex == selected_hex_) {
 			deselect_hex();
@@ -1132,11 +1129,6 @@ void mouse_handler::touch_action(const map_location touched_hex, bool browse)
 			select_or_action(browse);
 		}
 	}
-#else
-	if(touched_hex.valid() && unit.valid() && !unit->get_hidden()) {
-		select_or_action(browse);
-	}
-#endif
 }
 
 void mouse_handler::select_hex(const map_location& hex, const bool browse, const bool highlight, const bool fire_event, const bool force_unhighlight)
