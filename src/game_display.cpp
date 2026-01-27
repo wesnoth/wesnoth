@@ -39,6 +39,7 @@
 #include "synced_context.hpp"
 #include "units/unit.hpp"
 #include "units/drawer.hpp"
+#include "units/types.hpp"
 #include "utils/general.hpp"
 #include "whiteboard/manager.hpp"
 #include "overlay.hpp"
@@ -69,7 +70,62 @@ game_display::game_display(game_board& board,
 	, chat_man_(new display_chat_manager(*this))
 	, mode_(RUNNING)
 	, needs_rebuild_(false)
+	, flash_fade_route_()
+	, flash_fade_route_start_time_()
+	, flash_fade_route_active_(false)
 {
+}
+
+void game_display::update_flash_fade_route()
+{
+	if(!flash_fade_route_active_) {
+		return;
+	}
+
+	auto now = std::chrono::steady_clock::now();
+	auto elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(now - flash_fade_route_start_time_);
+
+	// Clean expired footpath
+	if(elapsed >= FLASH_FADE_ROUTE_TOTAL_DURATION) {
+		for(const auto& step : flash_fade_route_.steps) {
+			invalidate(step);
+		}
+
+		flash_fade_route_active_ = false;
+		flash_fade_route_.steps.clear();
+		flash_fade_route_.marks.clear();
+		return;
+	}
+
+	// Trigger redraw of active path
+	for(const auto& step : flash_fade_route_.steps) {
+		invalidate(step);
+	}
+}
+
+void game_display::flash_fade_route(const pathfind::marked_route& remaining_route)
+{
+	// Clear existing flash fading footprints from the screen
+	if(flash_fade_route_active_) {
+		for(const auto& step : flash_fade_route_.steps) {
+			invalidate(step);
+		}
+	}
+
+	// Reset the fading route data
+	flash_fade_route_.steps = remaining_route.steps;
+	flash_fade_route_.marks = remaining_route.marks;
+
+	// Start the animation cycle
+	if(!flash_fade_route_.steps.empty()) {
+		flash_fade_route_active_ = true;
+		flash_fade_route_start_time_ = std::chrono::steady_clock::now();
+
+		// Trigger a redraw for all hexes in the new route
+		for(const auto& step : flash_fade_route_.steps) {
+			invalidate(step);
+		}
+	}
 }
 
 game_display::~game_display()
@@ -168,6 +224,7 @@ void game_display::update()
 
 	if (std::shared_ptr<wb::manager> w = wb_.lock()) {
 		w->pre_draw();
+		update_flash_fade_route();
 	}
 	process_reachmap_changes();
 	/**
@@ -245,16 +302,24 @@ std::vector<texture> footsteps_images(const map_location& loc, const pathfind::m
 	}
 
 	// Check which footsteps images of game_config we will use
+	std::string foot_speed_prefix;
 	int move_cost = 1;
 	const unit_map::const_iterator u = dc->units().find(route.steps.front());
 	if(u != dc->units().end()) {
 		move_cost = u->movement_cost(dc->map().get_terrain(loc));
+		foot_speed_prefix = u->type().footprint_folder();
 	}
-	int image_number = std::min<int>(move_cost, game_config::foot_speed_prefix.size());
-	if (image_number < 1) {
-		return res; // Invalid movement cost or no images
+
+	if(foot_speed_prefix.empty()) {
+		foot_speed_prefix = "footsteps/humanoid/";
 	}
-	const std::string foot_speed_prefix = game_config::foot_speed_prefix[image_number-1];
+
+	// Generate a red tint string based on movement cost.
+	std::string color_mod;
+	if(move_cost > 1) {
+		int reduction = std::min(255, (move_cost - 1) * 85);
+		color_mod = "~CS(0,-" + std::to_string(reduction) + ",-" + std::to_string(reduction) + ")";
+	}
 
 	texture teleport;
 
@@ -284,9 +349,9 @@ std::vector<texture> footsteps_images(const map_location& loc, const pathfind::m
 			rotate = "~FL(horiz)~FL(vert)";
 		}
 
-		const std::string image = foot_speed_prefix
+		const std::string image = foot_speed_prefix + "footprint"
 			+ sense + "-" + i->write_direction(dir)
-			+ ".png" + rotate;
+			+ ".png" + rotate + color_mod;
 
 		res.push_back(image::get_texture(image, image::HEXED));
 	}
@@ -296,6 +361,51 @@ std::vector<texture> footsteps_images(const map_location& loc, const pathfind::m
 
 	return res;
 }
+
+struct flash_fade_step_renderer
+{
+	std::vector<texture> images;
+	std::chrono::steady_clock::time_point start_time;
+
+	void operator()(const rect& dest) const {
+		auto now = std::chrono::steady_clock::now();
+		auto elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(now - start_time);
+
+		if(elapsed < game_display::FLASH_FADE_ROUTE_FLASH_DURATION) {
+			// PHASE 1: White Flash (Additive)
+			float intensity = 1.0f - (static_cast<float>(elapsed.count()) /
+				game_display::FLASH_FADE_ROUTE_FLASH_DURATION.count());
+			uint8_t flash_val = static_cast<uint8_t>(intensity * 255);
+
+			for(texture t : images) {
+				draw::blit(t, dest); // Base
+
+				t.set_blend_mode(SDL_BLENDMODE_ADD);
+				t.set_alpha_mod(flash_val);
+				draw::blit(t, dest); // Additive pass
+				draw::blit(t, dest); // Additive pass
+
+				t.set_blend_mode(SDL_BLENDMODE_BLEND);
+				t.set_alpha_mod(255);
+			}
+		}
+		else if(elapsed < game_display::FLASH_FADE_ROUTE_TOTAL_DURATION) {
+			// PHASE 2: Alpha Fade
+			auto fade_elapsed = elapsed - game_display::FLASH_FADE_ROUTE_FLASH_DURATION;
+			float progress = static_cast<float>(fade_elapsed.count()) /
+				game_display::FLASH_FADE_ROUTE_FADE_DURATION.count();
+
+			uint8_t alpha = static_cast<uint8_t>((1.0f - progress) * 255);
+
+			for(texture t : images) {
+				t.set_alpha_mod(alpha);
+				draw::blit(t, dest);
+				t.set_alpha_mod(255);
+			}
+		}
+	}
+};
+
 } //anonymous namespace
 
 void game_display::draw_hex(const map_location& loc)
@@ -361,10 +471,13 @@ void game_display::draw_hex(const map_location& loc)
 		}
 	}
 
+	// Check if Whiteboard is active to avoid overlapping path visualizations.
 	if(std::shared_ptr<wb::manager> w = wb_.lock()) {
 		w->draw_hex(loc);
 
 		if(!(w->is_active() && w->has_temp_move())) {
+
+			// Draw standard footsteps for the current turn's route.
 			std::vector<texture> footstepImages = footsteps_images(loc, route_, dc_);
 			if(!footstepImages.empty()) {
 				drawing_buffer_add(drawing_layer::footsteps, loc, [images = std::move(footstepImages)](const rect& dest) {
@@ -372,6 +485,15 @@ void game_display::draw_hex(const map_location& loc)
 						draw::blit(t, dest);
 					}
 				});
+			}
+
+			// Draw the flash fade effect for queued (future turn) moves.
+			if(flash_fade_route_active_ && !flash_fade_route_.steps.empty()) {
+				std::vector<texture> images = footsteps_images(loc, flash_fade_route_, dc_);
+				if(!images.empty()) {
+					drawing_buffer_add(drawing_layer::footsteps, loc,
+						flash_fade_step_renderer{ std::move(images), flash_fade_route_start_time_ });
+				}
 			}
 		}
 	}
