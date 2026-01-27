@@ -18,7 +18,7 @@
 	Edited a lot for Wesnoth by Ben Anderman <ben@happyspork.com>
 */
 
-#import "SDL.h"
+#import <SDL3/SDL.h>
 #import "SDLMain.h"
 #include <vector>
 
@@ -39,9 +39,9 @@ static std::vector<char*> gArgs;
 - (void)terminate:(id)sender
 {
 	(void) sender;
-	/* Post a SDL_QUIT event */
+	/* Post a SDL_EVENT_QUIT event */
 	SDL_Event event;
-	event.type = SDL_QUIT;
+	event.type = SDL_EVENT_QUIT;
 	SDL_PushEvent(&event);
 }
 
