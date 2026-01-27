@@ -483,28 +483,8 @@ void pad_modification::operator()(surface& src) const
  */
 void o_modification::operator()(surface& src) const
 {
-	if(src) {
-		uint8_t alpha_mod = float_to_color(opacity_);
-
-		surface_lock lock(src);
-		uint32_t* beg = lock.pixels();
-		uint32_t* end = beg + src.area();
-
-		while(beg != end) {
-			uint8_t alpha = (*beg) >> 24;
-
-			if(alpha) {
-				uint8_t r, g, b;
-				r = (*beg) >> 16;
-				g = (*beg) >> 8;
-				b = (*beg);
-
-				alpha = color_multiply(alpha, alpha_mod);
-				*beg = (alpha << 24) + (r << 16) + (g << 8) + b;
-			}
-
-			++beg;
-		}
+	if (src) {
+		apply_surface_opacity(src, opacity_);
 	}
 }
 
