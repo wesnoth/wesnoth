@@ -1,7 +1,5 @@
 local _ = wesnoth.textdomain "wesnoth-tsg"
 
--- https://wiki.wesnoth.org/LuaAPI/types/widget
-
 -- metatable for GUI tags
 local T = wml.tag
 
