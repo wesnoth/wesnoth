@@ -133,6 +133,14 @@ public:
 	 */
 	bool has_filter_special_or_ability(const config& filter) const;
 	/**
+	 * Check whether @a ab is a element owed by self or other.
+	 *
+	 * @return True if element checked match with [erase_lower_priority]affect_side=
+	 * @param overwrite_filter the [erase_lower_priority] filter
+	 * @param i the ability/special checked
+	 */
+	bool affect_self_opponent(const config& overwrite_filter, const active_ability& i) const;
+	/**
 	 * Returns true if this is a dummy attack_type, for example the placeholder that the unit_attack dialog
 	 * uses when a defender has no weapon for a given range.
 	 */
