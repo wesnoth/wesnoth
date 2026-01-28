@@ -2,8 +2,16 @@
 
 set -xeu
 
-cd mingw
-docker build -t mingw-wesnoth .
+cd mingw || exit
+
 rm -rf ../mingwbuild
-mkdir ../mingwbuild
-docker run -v "$PWD"/../../..:/wesnoth -v "$PWD"/../mingwbuild:/output --tmpfs /build -u "$(id -u)" mingw-wesnoth
+mkdir ../mingwbuild || exit
+
+docker run -v "$PWD"/../../..:/wesnoth -v "$PWD"/../mingwbuild:/output --tmpfs /build -u "$(id -u)" wesnoth/wesnoth:mingw-master sh -c 'cd /output &&
+ scons -j $(nproc) arch=x86-64 prefix=/msys64/mingw64 gtkdir=/msys64/mingw64 host=x86_64-w64-mingw32 -Y /wesnoth force_color=true &&
+ python3 /wesnoth/utils/dockerbuilds/mingw/get_dlls.py &&
+ rm -rf packaging &&
+ ln -sf /wesnoth/doc /wesnoth/packaging /wesnoth/data /wesnoth/fonts /wesnoth/images /wesnoth/sounds /wesnoth/README.md /wesnoth/copyright /wesnoth/COPYING /wesnoth/changelog.md /wesnoth/cwesnoth.cmd . &&
+ cp /usr/x86_64-w64-mingw32/bin/libssp-0.dll . &&
+ scons -Y /wesnoth windows-installer &&
+ rm packaging/windows/*.o'
