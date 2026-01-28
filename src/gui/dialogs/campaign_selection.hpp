@@ -65,7 +65,7 @@ public:
 	}
 
 private:
-	/** Called when another campaign is selected. */
+	/** Called when an item in the left-hand pane (the tree view) is selected. */
 	void campaign_selected();
 
 	/** Called when the difficulty selection changes. */
@@ -108,9 +108,6 @@ private:
 	bool currently_sorted_asc_;
 
 	std::vector<std::string> last_search_words_;
-
-	inline const static std::string missing_campaign_ = "////missing-campaign////";
-	inline const static std::string addons_ = "////addons////";
 
 	std::vector<std::string> mod_ids_;
 };
