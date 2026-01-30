@@ -45,12 +45,11 @@ class TestCase:
         return "TestCase<{status}, {name}>".format(status=self.status, name=self.name)
 
 class TestResultAccumulator:
-    passed = []
-    skipped = []
-    failed = []
-    crashed = []
-    
     def __init__(self, total):
+        self.passed = []
+        self.skipped = []
+        self.failed = []
+        self.crashed = []
         self.total = total
     
     def pass_test(self, batch):
