@@ -24,6 +24,7 @@
      * S01 "The Hunt": fewer forest lions.
      * S06 "Landfall": tweak enemy starting gold
      * S08 "Overlook": more consistent enemy spawn recognition
+     * S09 "Ancestor": add wind ambience by Alexandr Zhelanov
      * S11 "Crosswind": fix issues with non-clasher units attempting to read their secrets
 ### Editor
 ### Multiplayer
