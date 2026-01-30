@@ -13,6 +13,13 @@
      * S02 "Flight of the Elves": fix Konrad winning after killing only 2 enemy leaders, instead of all of them.
      * S30 "The Sceptre of Fire": made Li'sar more difficult to assassinate with Fire Wraiths. This strategy should still be possible, but it should now require more significant investment.
      * S30 "The Sceptre of Fire": Delfador can now continue recruiting even while searching for the Sceptre.
+   * Winds of Fate
+     * Lower recall costs further.
+     * Adjust and replace some characters that tie-in with the other campaigns.
+     * S01 "The Hunt": fewer forest lions.
+     * S06 "Landfall": tweak enemy starting gold
+     * S08 "Overlook": more consistent enemy spawn recognition
+     * S11 "Crosswind": fix issues with non-clasher units attempting to read their secrets
 ### Editor
 ### Multiplayer
 ### Lua API
