@@ -96,7 +96,8 @@ public:
 		type_ = LOCATION_C;
 	}
 
-	void serialize_to_string(std::string& str) const override;
+	/** Inherited from formula_callable. */
+	std::string serialize_to_string() const override;
 
 	const map_location& loc() const { return loc_; }
 
