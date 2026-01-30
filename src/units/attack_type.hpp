@@ -242,6 +242,7 @@ private:
 	int parry_;
 	ability_vector specials_;
 	bool changed_;
+	mutable bool accuracy_parry_checked_;
 };
 
 using attack_list = std::vector<attack_ptr>;

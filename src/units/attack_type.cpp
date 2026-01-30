@@ -72,6 +72,7 @@ attack_type::attack_type(const config& cfg)
 	, parry_(cfg["parry"].to_int())
 	, specials_()
 	, changed_(true)
+	, accuracy_parry_checked_(false)
 {
 	config specials_cfg = unit_type_data::add_registry_entries(cfg, "specials", unit_types.specials());
 	unit_ability_t::parse_vector(specials_cfg, specials_, true);
@@ -107,6 +108,13 @@ std::string attack_type::accuracy_parry_tooltip() const
 {
 	if(accuracy_ == 0 && parry_ == 0) {
 		return "";
+	}
+
+	if(!accuracy_parry_checked_ && (accuracy_ != 0 || parry_ != 0)) {
+		accuracy_parry_checked_ = true;
+		deprecated_message("accuracy and parry", DEP_LEVEL::INDEFINITE, "", "Use special [chance_to_hit] with 'priority' lower what zero instead.");
+	} else if(accuracy_ == 0 && parry_ == 0 && accuracy_parry_checked_) {
+		accuracy_parry_checked_ = false;
 	}
 
 	std::stringstream tooltip;
@@ -854,6 +862,12 @@ int attack_type::modified_chance_to_hit(int cth) const
 	auto ctx = fallback_context();
 	auto [self, other] = context_->self_and_other(*this);
 	int parry = other.at ? other.at->parry() : 0;
+	if(!accuracy_parry_checked_ && (accuracy_ != 0 || parry != 0)) {
+		accuracy_parry_checked_ = true;
+		deprecated_message("accuracy and parry", DEP_LEVEL::INDEFINITE, "", "Use special [chance_to_hit] with 'priority' lower what zero instead.");
+	} else if(accuracy_ == 0 && parry == 0 && accuracy_parry_checked_) {
+		accuracy_parry_checked_ = false;
+	}
 	cth = std::clamp(cth + accuracy_ - parry, 0, 100);
 	return composite_value(get_specials_and_abilities("chance_to_hit"), cth);
 }
