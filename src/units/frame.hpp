@@ -63,6 +63,7 @@ struct frame_parameters
 	double blend_ratio = 0.0;
 	double highlight_ratio = 1.0;
 	double offset = 0.0;
+	double parallax = 1.0;
 	double submerge = 0.0;
 
 	int x = 0;
@@ -96,6 +97,7 @@ public:
 	frame_builder& blend(const std::string& blend_ratio, const color_t blend_color);
 	frame_builder& highlight(const std::string& highlight);
 	frame_builder& offset(const std::string& offset);
+	frame_builder& parallax(const std::string& parallax);
 	frame_builder& submerge(const std::string& submerge);
 	frame_builder& x(const std::string& x);
 	frame_builder& y(const std::string& y);
@@ -127,6 +129,7 @@ private:
 	std::string blend_ratio_;
 	std::string highlight_ratio_;
 	std::string offset_;
+	std::string parallax_;
 	std::string submerge_;
 	std::string x_;
 	std::string y_;
@@ -190,6 +193,7 @@ private:
 	progressive_double blend_ratio_;
 	progressive_double highlight_ratio_;
 	progressive_double offset_;
+	progressive_double parallax_;
 	progressive_double submerge_;
 	progressive_int x_;
 	progressive_int y_;
