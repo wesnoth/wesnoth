@@ -38,7 +38,7 @@ function wc2_invest.initialize()
 		if wc2_scenario.is_human_side(side_num) then
 			if not wc2_invest.has_items(side_num) then
 				side.variables["wc2.items_left"] = table.concat(all_items, ",")
-				wc2_invest.add_items(side_num, 9)
+				wc2_invest.add_items(side_num, wml.variables["custom_artifact_invest_options"])
 			else
 				wc2_invest.add_items(side_num, 1)
 			end
