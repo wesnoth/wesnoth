@@ -76,9 +76,9 @@ config_writer::~config_writer()
 	}
 }
 
-void config_writer::write(const config& cfg)
+void config_writer::write(const config& cfg, bool strong_quotes)
 {
-	io::write(out_, cfg, level_);
+	io::write(out_, cfg, level_, strong_quotes);
 }
 
 void config_writer::write_child(const std::string& key, const config& cfg)
