@@ -314,7 +314,7 @@ void mouse_motion::start_hover_timer(widget* widget, const point& coordinate)
 {
 	assert(widget);
 
-#ifdef __IPHONEOS__
+#ifdef SDL_PLATFORM_IOS
 	// Guessing a crash location in a nasty stack in gui2::execute_timer.
 	// Either this or a long-touch menu.
 	// Remove this when the crash in gui2::execute_timer() and gui2::timer_callback() is gone and try again.
@@ -457,7 +457,7 @@ void mouse_button<I>::initialize_state(int32_t button_state)
 	last_clicked_widget_ = nullptr;
 	focus_ = nullptr;
 	// SDL_BUTTON_LEFT, SDL_BUTTON_MIDDLE, and SDL_BUTTON_RIGHT correspond to 1,2,3
-	is_down_ = button_state & SDL_BUTTON(I + 1);
+	is_down_ = button_state & SDL_BUTTON_MASK(I + 1);
 }
 
 template<std::size_t I>
@@ -606,12 +606,6 @@ distributor::distributor(widget& owner,const dispatcher::queue_position queue_po
 	, keyboard_focus_(nullptr)
 	, keyboard_focus_chain_()
 {
-	if(SDL_WasInit(SDL_INIT_TIMER) == 0) {
-		if(SDL_InitSubSystem(SDL_INIT_TIMER) == -1) {
-			assert(false);
-		}
-	}
-
 	owner_.connect_signal<event::SDL_KEY_DOWN>(
 		std::bind(&distributor::signal_handler_sdl_key_down,
 			this,

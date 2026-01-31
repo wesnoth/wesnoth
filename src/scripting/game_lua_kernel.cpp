@@ -3324,7 +3324,7 @@ int game_lua_kernel::intf_play_sound(lua_State *L)
 	if (play_controller_.is_skipping_replay()) return 0;
 	char const *m = luaL_checkstring(L, 1);
 	int repeats = luaL_optinteger(L, 2, 0);
-	sound::play_sound(m, sound::SOUND_FX, repeats);
+	sound::play_sound(m, sound_tracks::type::sound_fx, repeats);
 	return 0;
 }
 
@@ -3356,7 +3356,7 @@ int game_lua_kernel::intf_set_achievement(lua_State *L)
 						achieve.current_progress_ = -1;
 					}
 					if(achieve.sound_path_ != "") {
-						sound::play_sound(achieve.sound_path_, sound::SOUND_FX);
+						sound::play_sound(achieve.sound_path_, sound_tracks::type::sound_fx);
 					}
 					// show the achievement popup
 					luaW_getglobal(L, "gui", "show_popup");

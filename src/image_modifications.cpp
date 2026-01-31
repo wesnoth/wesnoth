@@ -528,7 +528,7 @@ void bl_modification::operator()(surface& src) const
 void background_modification::operator()(surface& src) const
 {
 	surface ret = src.clone();
-	SDL_FillRect(ret, nullptr, SDL_MapRGBA(ret->format, color_.r, color_.g, color_.b, color_.a));
+	SDL_FillSurfaceRect(ret, nullptr, SDL_MapSurfaceRGBA(ret, color_.r, color_.g, color_.b, color_.a));
 	sdl_blit(src, nullptr, ret, nullptr);
 	src = ret;
 }
