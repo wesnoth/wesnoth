@@ -171,6 +171,7 @@ class WesnothList:
         self.race_lookup = {}
         self.terrain_lookup = {}
         self.movetype_lookup = {}
+        # includes weapon specials since they have same structure
         self.ability_registry_lookup = {}
         self.era_lookup = {}
         self.campaign_lookup = {}
@@ -324,8 +325,7 @@ class WesnothList:
             for registry in getall(registry_tag):
                 for ability in registry.get_all(tag=""):
                     rid = ability.get_text_val("unique_id", ability.get_text_val("id"))
-                    name = ability.get_text_val("name")
-                    if rid is not None and name is not None:
+                    if rid is not None:
                         self.ability_registry_lookup[rid] = ability
 
         # Store race/movetype/faction of each unit for easier access later.
