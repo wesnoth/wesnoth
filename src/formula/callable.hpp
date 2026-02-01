@@ -320,7 +320,7 @@ requires std::is_pointer_v<T>
 auto callable_cast(const variant& v)
 #else
 template<typename T>
-auto callable_cast(const variant& v) -> std::enable_if_t<std::is_pointer_v<T>, std::shared_ptr<const std::remove_pointer_t<T>>
+auto callable_cast(const variant& v) -> std::enable_if_t<std::is_pointer_v<T>, std::shared_ptr<const std::remove_pointer_t<T>>>
 #endif
 {
 	return std::dynamic_pointer_cast<const std::remove_pointer_t<T>>(v.as_callable());
