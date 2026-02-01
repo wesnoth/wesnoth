@@ -663,8 +663,6 @@ std::pair<config, point> rich_label::get_parsed_text(
 
 					if(len > 0) {
 						// first part of the text
-						// get_split_location always splits at word bounds.
-						// substr(len) will include a space, so we skip that.
 						(*curr_item)["text"] = full_text.substr(0, len);
 					}
 
@@ -688,10 +686,12 @@ std::pair<config, point> rich_label::get_parsed_text(
 					wrap_mode = false;
 
 					if (len > 0) {
-						// rest of the text
+						// layout rest of the text
 						curr_item = &(text_dom.add_child("text"));
 						default_text_config(curr_item, pos, init_width - pos.x);
 						tmp_h = get_text_size(*curr_item, init_width).y;
+						// get_split_location always splits at word bounds,
+						// so substr(len) will include a space. we skip that.
 						add_text_with_attribute(*curr_item, full_text.substr(len+1));
 					}
 				} else if((float_size.y > 0) && (text_size.y < float_size.y)) {
