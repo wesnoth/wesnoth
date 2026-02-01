@@ -171,6 +171,7 @@ class WesnothList:
         self.race_lookup = {}
         self.terrain_lookup = {}
         self.movetype_lookup = {}
+        self.ability_registry_lookup = {}
         self.era_lookup = {}
         self.campaign_lookup = {}
         self.parser = wmlparser3.Parser(wesnoth_exe, config_dir, data_dir)
@@ -318,6 +319,14 @@ class WesnothList:
             mtname = movetype.get_text_val("name")
             if mtname is None: continue
             self.movetype_lookup[mtname] = movetype
+        
+        for registry_tag in ["abilities", "weapon_specials"]:
+            for registry in getall(registry_tag):
+                for ability in registry.get_all(tag=""):
+                    rid = ability.get_text_val("unique_id", ability.get_text_val("id"))
+                    name = ability.get_text_val("name")
+                    if rid is not None and name is not None:
+                        self.ability_registry_lookup[rid] = ability
 
         # Store race/movetype/faction of each unit for easier access later.
         for unit in newunits:
