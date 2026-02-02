@@ -302,7 +302,9 @@ jobs:
           path: projectfiles/Xcode/Wesnoth_${{ matrix.cfg }}.dmg
       - name: Run WML tests
         if: matrix.cfg == 'Release'
-        run: ./run_wml_tests -g -c -t 30 -bt 350 -p "projectfiles/Xcode/build/$CFG/The Battle for Wesnoth.app/Contents/MacOS/The Battle for Wesnoth" -a=--userdata-dir="$PWD/ud"
+        run: |
+          "projectfiles/Xcode/build/$CFG/The Battle for Wesnoth.app/Contents/MacOS/The Battle for Wesnoth" --userdata-dir="$PWD/ud" -u test_return
+          ./run_wml_tests -g -c -t 30 -bt 350 -p "projectfiles/Xcode/build/$CFG/The Battle for Wesnoth.app/Contents/MacOS/The Battle for Wesnoth" -a=--userdata-dir="$PWD/ud"
       - name: Upload userdata files from WML unit tests (logs, replays)
         if: matrix.cfg == 'Release' && (success() || failure())
         uses: actions/upload-artifact@v4

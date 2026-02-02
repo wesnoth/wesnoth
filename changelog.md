@@ -18,14 +18,23 @@
      * S30 "The Sceptre of Fire": made Li'sar more difficult to assassinate with Fire Wraiths. This strategy should still be possible, but it should now require more significant investment.
      * S30 "The Sceptre of Fire": Delfador can now continue recruiting even while searching for the Sceptre.
      * S47, S48, and S50: A few enemy units will now defect when the Sceptre is first used against human opponents.
+   * Winds of Fate
+     * Lower recall costs further.
+     * Adjust and replace some characters that tie-in with the other campaigns.
+     * S01 "The Hunt": fewer forest lions.
+     * S06 "Landfall": tweak enemy starting gold
+     * S08 "Overlook": more consistent enemy spawn recognition
+     * S11 "Crosswind": fix issues with non-clasher units attempting to read their secrets
 ### Editor
 ### Multiplayer
 ### Lua API
 ### Packaging
 ### Terrain
 ### Translations
-   * Updated translations: Bengali, British English, French, Greek, Italian, Spanish
+   * Updated translations: Bengali, British English, Chinese (Simplified), French, Greek, Hungarian, Italian, Spanish
 ### Units
+   * All ships with ram attacks:
+     * Removed the "naval" weapon special, allowing them to ram targets on coastal land.
 ### User interface
 ### WML Engine
 ### Miscellaneous and Bug Fixes

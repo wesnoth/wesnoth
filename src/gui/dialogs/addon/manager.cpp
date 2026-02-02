@@ -988,7 +988,7 @@ void addon_manager::publish_addon(const addon_info& addon)
 		return;
 	}
 
-	if(!::image::exists(cfg["icon"].str())) {
+	if(!cfg["icon"].empty() && !::image::exists(cfg["icon"].str())) {
 		gui2::show_error_message(_("Invalid icon path. Make sure the path points to a valid image."));
 	} else if(!client_.request_distribution_terms(server_msg)) {
 		gui2::show_error_message(
