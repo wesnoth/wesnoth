@@ -794,113 +794,97 @@ void unit_frame::redraw(const std::chrono::milliseconds& frame_time, bool on_sta
 }
 
 std::set<map_location> unit_frame::get_overlaped_hex(const std::chrono::milliseconds& frame_time, const map_location& src, const map_location& dst,
-		const frame_parameters& animation_val, const frame_parameters& engine_val) const
+		const frame_parameters& animation_val, const frame_parameters& engine_val, frame_redraw_cache& cache) const
 {
-	display* disp = display::get_singleton();
+	// Returns a set of hexes requiring redraw: current frame overlap + last frame cleanup.
+	// dst is the hex a unit is facing or moving to. src is base hex.
 
-	const auto [xsrc, ysrc] = disp->get_location(src);
-	const auto [xdst, ydst] = disp->get_location(dst);
-	const map_location::direction direction = src.get_relative_dir(dst);
+	display* disp = display::get_singleton();
+	std::set<map_location> result = cache.previous_hexes; // Start with last redrawn hexes, so that we can clean the last frame.
+	std::set<map_location> current_frame_hexes;
+	current_frame_hexes.insert(src);
+	rect r{ 0, 0, 0, 0 };
 
 	const frame_parameters current_data = merge_parameters(frame_time, animation_val, engine_val);
-
 	double tmp_offset = current_data.offset;
-	const int d2 = display::get_singleton()->hex_size() / 2;
-
 	image::locator image_loc;
-	if(direction != map_location::direction::north && direction != map_location::direction::south) {
-		image_loc = current_data.image_diagonal.clone(current_data.image_mod);
-	}
 
-	if(image_loc.is_void() || image_loc.get_filename().empty()) { // invalid diag image, or not diagonal
-		image_loc = current_data.image.clone(current_data.image_mod);
-	}
+	if (!cache.initialized) {
+		cache.initialized = true;
 
-	// We always invalidate our own hex because we need to be called at redraw time even
-	// if we don't draw anything in the hex itself
-	std::set<map_location> result;
-	if(tmp_offset == 0 && current_data.x == 0 && current_data.directional_x == 0 && image::is_in_hex(image_loc)) {
-		result.insert(src);
+		//Get the image we are using, either diagonal or not
+		const map_location::direction direction = src.get_relative_dir(dst);
+		if(direction != map_location::direction::north && direction != map_location::direction::south) {
+			image_loc = current_data.image_diagonal.clone(current_data.image_mod);
+			cache.is_diagonal = true;
+		}
+		if(image_loc.is_void() || image_loc.get_filename().empty()) {
+			image_loc = current_data.image.clone(current_data.image_mod);
+			cache.is_diagonal = false;
+		}
 
-		bool facing_north = (
+		//Get the unit facing
+		cache.facing_west = (
+			direction == map_location::direction::north_west ||
+			direction == map_location::direction::south_west);
+		cache.facing_north = (
 			direction == map_location::direction::north_west ||
 			direction == map_location::direction::north ||
 			direction == map_location::direction::north_east);
-
-		if(!current_data.auto_vflip) { facing_north = true; }
-
-		int my_y = current_data.y;
-		if(facing_north) {
-			my_y += current_data.directional_y;
+		if(!current_data.auto_hflip) { cache.facing_west = false; }
+		if(!current_data.auto_vflip) { cache.facing_north = true; }
+	} else {
+		if(cache.is_diagonal) {
+			image_loc = current_data.image_diagonal.clone(current_data.image_mod);
 		} else {
-			my_y -= current_data.directional_y;
+			image_loc = current_data.image.clone(current_data.image_mod);
 		}
+	}
 
-		if(my_y < 0) {
-			result.insert(src.get_direction(map_location::direction::north));
-			result.insert(src.get_direction(map_location::direction::north_east));
-			result.insert(src.get_direction(map_location::direction::north_west));
-		} else if(my_y > 0) {
-			result.insert(src.get_direction(map_location::direction::south));
-			result.insert(src.get_direction(map_location::direction::south_east));
-			result.insert(src.get_direction(map_location::direction::south_west));
-		}
+	//Handle multi-hex and single-hex.
+	if(tmp_offset == 0 && current_data.x == 0 && current_data.y == 0 && current_data.directional_x == 0 && current_data.directional_y == 0 && image::is_in_hex(image_loc)) {
+		//Single hex image that isnt moving to another hex and has no offset. Current_frame_hexes already has src inserted.
+		//is_in_hex() is a heavy function that caches its results, so we avoid calling it for permutations.
 	} else {
 		int w = 0, h = 0;
-
 		if(!image_loc.is_void() && !image_loc.get_filename().empty()) {
 			const point s = image::get_size(image_loc);
 			w = s.x;
 			h = s.y;
 		}
 
+		// Build a rectangle the size and place of the frame. Use it to get the hexes it overlaps.
 		if(w != 0 || h != 0) {
-			// TODO: unduplicate this code
-			const int x = static_cast<int>(tmp_offset * xdst + (1.0 - tmp_offset) * xsrc) + d2;
-			const int y = static_cast<int>(tmp_offset * ydst + (1.0 - tmp_offset) * ysrc) + d2;
+			const int hex_radius = disp->hex_size() / 2;
+			const point src_coords = disp->get_location(src),
+				dst_coords = disp->get_location(dst);
+			const int xsrc = src_coords.x, ysrc = src_coords.y,
+				xdst = dst_coords.x, ydst = dst_coords.y;
+			const int x = static_cast<int>(tmp_offset * xdst + (1.0 - tmp_offset) * xsrc) + hex_radius; //Current center point on a line between src and dst.
+			const int y = static_cast<int>(tmp_offset * ydst + (1.0 - tmp_offset) * ysrc) + hex_radius;
 			const double disp_zoom = display::get_singleton()->get_zoom_factor();
+			r.x = x + disp_zoom * (current_data.x - w / 2); //Get upper-left corner of rectangle
+			r.y = y + disp_zoom * (current_data.y - h / 2);
+			r.w = int(w * disp_zoom);
+			r.h = int(h * disp_zoom);
+			if(current_data.directional_x != 0) { r.x += int(current_data.directional_x) * disp_zoom * (cache.facing_west ? -1 : 1); } //Add any offsets in the direction the unit is facing.
+			if(current_data.directional_y != 0) { r.y += int(current_data.directional_y) * disp_zoom * (cache.facing_north ? 1 : -1); }
 
-			bool facing_west = (
-				direction == map_location::direction::north_west ||
-				direction == map_location::direction::south_west);
-
-			bool facing_north = (
-				direction == map_location::direction::north_west ||
-				direction == map_location::direction::north ||
-				direction == map_location::direction::north_east);
-
-			if(!current_data.auto_hflip) { facing_west = false; }
-			if(!current_data.auto_vflip) { facing_north = true; }
-
-			int my_x = x + disp_zoom * (current_data.x - w / 2);
-			int my_y = y + disp_zoom * (current_data.y - h / 2);
-
-			if(facing_west) {
-				my_x -= current_data.directional_x * disp_zoom;
+			//Rectangle built. Get the hexes it overlaps.
+			if(r == cache.previous_rect) {
+				current_frame_hexes.insert(cache.previous_hexes.begin(), cache.previous_hexes.end());
 			} else {
-				my_x += current_data.directional_x * disp_zoom;
+				display::rect_of_hexes underlying_hex = disp->hexes_under_rect(r);
+				current_frame_hexes.insert(underlying_hex.begin(), underlying_hex.end());
 			}
-
-			if(facing_north) {
-				my_y += current_data.directional_y * disp_zoom;
-			} else {
-				my_y -= current_data.directional_y * disp_zoom;
-			}
-
-			// Check if our underlying hexes are invalidated. If we need to update ourselves because we changed,
-			// invalidate our hexes and return whether or not was successful.
-			const rect r {my_x, my_y, int(w * disp_zoom), int(h * disp_zoom)};
-			display::rect_of_hexes underlying_hex = disp->hexes_under_rect(r);
-
-			result.insert(src);
-			result.insert(underlying_hex.begin(), underlying_hex.end());
-		} else {
-			// We have no "redraw surface" but we still need to invalidate our own hex in case we have a halo
-			// and/or sound that needs a redraw.
-			result.insert(src);
-			result.insert(dst);
 		}
 	}
+
+	result.insert(current_frame_hexes.begin(), current_frame_hexes.end());
+
+	// Cache for next time we update this animation/image
+	cache.previous_hexes = std::move(current_frame_hexes);
+	cache.previous_rect = r;
 
 	return result;
 }
