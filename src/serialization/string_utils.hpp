@@ -333,6 +333,28 @@ inline std::string wml_escape_string(std::string_view str)
 	return res;
 }
 
+/** Format @a str as a strongly quoted WML value. Occurances of `<<` are double quoted separately */
+inline std::string wml_escape_strong(const std::string& str)
+{
+	std::string res;
+	std::size_t i = str.find(">>");
+	if(i == std::string::npos) {
+		return str;
+	}
+
+	res.append(str, 0, i);
+	res.append(">>\">>\"<<");
+	std::size_t j;
+	while((j = str.find(">>", i + 2)) != std::string::npos) {
+		res.append(str, i + 2, j - (i + 2));
+		res.append(">>\">>\"<<");
+		i = j;
+	}
+	res.append(str, i + 2);
+
+	return res;
+}
+
 /** Prepends a configurable set of characters with a backslash */
 std::string escape(std::string_view str, const char *special_chars);
 

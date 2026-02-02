@@ -30,14 +30,15 @@ config read(const std::string& in, abstract_validator* validator = nullptr); // 
 config read_gz(std::istream& in, abstract_validator* validator = nullptr);
 config read_bz2(std::istream& in, abstract_validator* validator = nullptr);
 
-void write(std::ostream& out, const configr_of& cfg, unsigned int level = 0);
+void write(std::ostream& out, const configr_of& cfg, unsigned int level = 0, bool strong_quotes = false);
 void write_gz(std::ostream& out, const configr_of& cfg);
 void write_bz2(std::ostream& out, const configr_of& cfg);
 void write_key_val(std::ostream& out,
 		const std::string& key,
 		const config::attribute_value& value,
 		unsigned level,
-		std::string& textdomain);
+		std::string& textdomain,
+		bool strong_quotes);
 void write_open_child(std::ostream& out, const std::string& child, unsigned int level);
 void write_close_child(std::ostream& out, const std::string& child, unsigned int level);
 

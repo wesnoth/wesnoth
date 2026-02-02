@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-12-21 21:09-0600\n"
+"POT-Creation-Date: 2026-01-20 11:31-0600\n"
 "PO-Revision-Date: 2025-07-25 23:04+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
@@ -300,8 +300,8 @@ msgid ""
 "identical. See <ref>dst='..terrain_sand' text='sand'</ref>."
 msgstr ""
 "<italic>text='Pouště'</italic> mají poněkud odlišné složení než malé jámy "
-"s pískem nebo pláže, hru ale ovlivňují obdobně. Podívej se na "
-"<ref>dst='..terrain_sand' text='písek'</ref>."
+"s pískem nebo pláže, hru ale ovlivňují obdobně. Podívej se na <ref>dst='.."
+"terrain_sand' text='písek'</ref>."
 
 #. [terrain_type]: id=sand_beach
 #. [terrain_type]: id=sand
@@ -7017,6 +7017,31 @@ msgstr "<span font_family='DejaVu Sans'>✔</span> Zkopírováno"
 msgid "Messages waiting"
 msgstr "Čekající zprávy"
 
+#. [terrain_type]: id=urbanjungle
+#: data/internal/Urban_Jungle/terrain.cfg:8
+#: data/internal/Urban_Jungle/terrain.cfg:9
+msgid "Urban"
+msgstr ""
+
+#. [terrain_type]: id=urbanjungle
+#: data/internal/Urban_Jungle/terrain.cfg:10
+msgid ""
+"Densely packed structures are less suitable for garrison than traditional "
+"villages, providing no income or healing. They are difficult to navigate "
+"quickly, but offer significant protection."
+msgstr ""
+
+#. [terrain_type]: id=urbanjungleA
+#. [terrain_type]: id=urbanjungle{ID}
+#: data/internal/Urban_Jungle/terrain.cfg:17
+#: data/internal/Urban_Jungle/terrain.cfg:18
+#: data/internal/Urban_Jungle/terrain.cfg:19
+#: data/internal/Urban_Jungle/terrain.cfg:32
+#: data/internal/Urban_Jungle/terrain.cfg:33
+#: data/internal/Urban_Jungle/terrain.cfg:34
+msgid "Urban Jungle"
+msgstr ""
+
 #: src/build_info.cpp:285
 msgid "feature^Lua console completion"
 msgstr "Doplňování v Lua konzoli"
@@ -8133,8 +8158,8 @@ msgid ""
 "multiplayer lobby. Please report this at https://bugs.wesnoth.org."
 msgstr ""
 "S databází pro ověření verze rozšíření, která je potřebná pro čekárnu hry "
-"více hráčů, není něco v pořádku. Prosím nahlas to na https://"
-"bugs.wesnoth.org."
+"více hráčů, není něco v pořádku. Prosím nahlas to na https://bugs.wesnoth."
+"org."
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:992
 msgid "This game is password protected. Join using moderator rights anyway?"

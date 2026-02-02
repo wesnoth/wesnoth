@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-12-21 21:09-0600\n"
+"POT-Creation-Date: 2026-01-20 11:31-0600\n"
 "PO-Revision-Date: 2025-12-28 18:07+0100\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -32,11 +32,6 @@ msgstr ""
 #: data/_main.cfg:22
 msgid "Custom"
 msgstr "Personalizzata"
-
-#. [editor_group]: id=urban_jungle
-#: data/_main.cfg:65
-msgid "Urban Jungle (Internal)"
-msgstr "Giungla Urbana (interno)"
 
 #. [advanced_preference]: type=combo
 #: data/advanced_preferences.cfg:4
@@ -386,7 +381,7 @@ msgstr "Questo attacco va sempre a segno."
 #. [unstore_unit]
 #. [lua]: set_status
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:369
-#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:945
+#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:948
 msgid "poisoned"
 msgstr "avvelenato"
 
@@ -3412,9 +3407,7 @@ msgid "Shroud"
 msgstr "Oscurità"
 
 #. [color_range]: id=urbanjungle
-#. [terrain_type]: id=urbanjungle
-#: data/core/team-colors.cfg:256 data/internal/Urban_Jungle/terrain.cfg:6
-#: data/internal/Urban_Jungle/terrain.cfg:7
+#: data/core/team-colors.cfg:256
 msgid "Urban"
 msgstr "Urbano"
 
@@ -3805,28 +3798,6 @@ msgstr "DejaVu Sans Mono"
 msgid "WesScript"
 msgstr "WesScript"
 
-#. [terrain_type]: id=urbanjungle
-#: data/internal/Urban_Jungle/terrain.cfg:8
-msgid ""
-"Densely packed structures are less suitable for garrison than traditional "
-"villages, providing no income or healing. They are difficult to navigate "
-"quickly, but offer significant protection."
-msgstr ""
-"Le strutture densamente popolate sono meno adatte ad un presidio rispetto ai "
-"villaggi tradizionali, poiché non forniscono entrate o cure. Sono difficili "
-"da attraversare rapidamente, ma offrono una protezione significativa."
-
-#. [terrain_type]: id=urbanjungleA
-#. [terrain_type]: id=urbanjungle{ID}
-#: data/internal/Urban_Jungle/terrain.cfg:15
-#: data/internal/Urban_Jungle/terrain.cfg:16
-#: data/internal/Urban_Jungle/terrain.cfg:17
-#: data/internal/Urban_Jungle/terrain.cfg:30
-#: data/internal/Urban_Jungle/terrain.cfg:31
-#: data/internal/Urban_Jungle/terrain.cfg:32
-msgid "Urban Jungle"
-msgstr "Giungla Urbana"
-
 #. [time]: id=dawn_noweather
 #: data/internal/Weather/_main.cfg:143
 msgid "Dawn"
@@ -4079,31 +4050,31 @@ msgstr "Livello di deprecazione non valido (deve essere compreso tra 1 e 4)"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:945
+#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:948
 msgid "female^poisoned"
 msgstr "avvelenata"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:952
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:955
 msgid "female^slowed"
 msgstr "rallentata"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:952
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:955
 msgid "slowed"
 msgstr "rallentato"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:958
+#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:961
 msgid "female^petrified"
 msgstr "pietrificata"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:958
+#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:961
 msgid "petrified"
 msgstr "pietrificato"
 
@@ -5336,11 +5307,11 @@ msgstr ""
 msgid "waiting for^an advancement choice"
 msgstr "una scelta di avanzamento"
 
-#: src/actions/attack.cpp:475 src/actions/attack.cpp:1270
+#: src/actions/attack.cpp:477 src/actions/attack.cpp:1273
 msgid "An invalid attacker weapon got selected."
 msgstr "È stata selezionata un’arma di attacco non valida."
 
-#: src/actions/attack.cpp:965
+#: src/actions/attack.cpp:968
 msgid "attack^miss"
 msgstr "mancato"
 
@@ -8219,7 +8190,7 @@ msgstr "Allineamento:"
 msgid "Ability:"
 msgstr "Abilità:"
 
-#: src/reports.cpp:443 src/reports.cpp:1017 src/reports.cpp:1057
+#: src/reports.cpp:443 src/reports.cpp:1036 src/reports.cpp:1076
 msgid " (inactive)"
 msgstr " (inattivo)"
 
@@ -8263,11 +8234,11 @@ msgstr "disturbo:"
 msgid "Movement Costs:"
 msgstr "Costi di movimento:"
 
-#: src/reports.cpp:822 src/reports.cpp:1149 src/reports.cpp:1161
+#: src/reports.cpp:822 src/reports.cpp:1168 src/reports.cpp:1180
 msgid "Weapon:"
 msgstr "Arma:"
 
-#: src/reports.cpp:823 src/reports.cpp:1150
+#: src/reports.cpp:823 src/reports.cpp:1169
 msgid "Damage:"
 msgstr "Danno:"
 
@@ -8279,7 +8250,7 @@ msgstr "Danno base:"
 msgid "With specials:"
 msgstr "Arma con attacchi speciali:"
 
-#: src/reports.cpp:832 src/reports.cpp:1374
+#: src/reports.cpp:832 src/reports.cpp:1393
 msgid "Time of day:"
 msgstr "Periodo della giornata:"
 
@@ -8327,58 +8298,73 @@ msgstr "Tipo di danno:"
 msgid "Damage versus:"
 msgstr "Danno contro:"
 
-#: src/reports.cpp:1015 src/reports.cpp:1055
+#: src/reports.cpp:988
+#, fuzzy
+#| msgid "$number attack used"
+#| msgid_plural "$number attacks used"
+msgid "uses $num attack"
+msgid_plural "uses $num attacks"
+msgstr[0] "$number attacco utilizzato"
+msgstr[1] "$number attacchi utilizzati"
+
+#: src/reports.cpp:996
+msgid "This attack uses $num attack point"
+msgid_plural "This attack uses $num attack points"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/reports.cpp:1034 src/reports.cpp:1074
 msgid "Weapon special:"
 msgstr "Attacchi speciali dell’arma:"
 
-#: src/reports.cpp:1132
+#: src/reports.cpp:1151
 msgid "weapon^None"
 msgstr "nessuna"
 
-#: src/reports.cpp:1162
+#: src/reports.cpp:1181
 msgid "Total damage"
 msgstr "Danno totale"
 
-#: src/reports.cpp:1220
+#: src/reports.cpp:1239
 msgid "Attack"
 msgid_plural "Attacks"
 msgstr[0] "Attacco"
 msgstr[1] "Attacchi"
 
 #. TRANSLATORS: This string is shown in the sidebar beneath the word "Attacks" when a unit can attack multiple times per turn
-#: src/reports.cpp:1227
+#: src/reports.cpp:1246
 msgid "Remaining: $left/$max"
 msgstr "Rimanenti: $left/$max"
 
-#: src/reports.cpp:1231
+#: src/reports.cpp:1250
 msgid "This unit can attack multiple times per turn."
 msgstr "Questa unità può attaccare diverse volte ad ogni turno."
 
-#: src/reports.cpp:1323
+#: src/reports.cpp:1342
 msgid "Time of day schedule:"
 msgstr "Programma del Periodo della giornata:"
 
-#: src/reports.cpp:1375 src/reports.cpp:1429
+#: src/reports.cpp:1394 src/reports.cpp:1448
 msgid "Lawful units:"
 msgstr "Unità legali:"
 
-#: src/reports.cpp:1377 src/reports.cpp:1431
+#: src/reports.cpp:1396 src/reports.cpp:1450
 msgid "Neutral units:"
 msgstr "Unità neutrali:"
 
-#: src/reports.cpp:1378 src/reports.cpp:1432
+#: src/reports.cpp:1397 src/reports.cpp:1451
 msgid "Chaotic units:"
 msgstr "Unità caotiche:"
 
-#: src/reports.cpp:1380 src/reports.cpp:1434
+#: src/reports.cpp:1399 src/reports.cpp:1453
 msgid "Liminal units:"
 msgstr "Unità liminali:"
 
-#: src/reports.cpp:1492
+#: src/reports.cpp:1511
 msgid "Turn Number"
 msgstr "Turni"
 
-#: src/reports.cpp:1496
+#: src/reports.cpp:1515
 msgid ""
 "When the game exceeds the number of turns indicated by the second number, it "
 "will end."
@@ -8386,34 +8372,34 @@ msgstr ""
 "Il gioco finirà quando verranno giocati un numero di turni pari a quello "
 "indicato nella secondo valore."
 
-#: src/reports.cpp:1519
+#: src/reports.cpp:1538
 msgid "Gold"
 msgstr "Oro"
 
-#: src/reports.cpp:1519
+#: src/reports.cpp:1538
 msgid ""
 "The amount of gold currently available to recruit and maintain your army."
 msgstr ""
 "Il quantitativo di oro attualmente disponibile per reclutare e mantenere l "
 "tua armata."
 
-#: src/reports.cpp:1537
+#: src/reports.cpp:1556
 msgid "The fraction of known villages that your side has captured."
 msgstr "La frazione dei villaggi conosciuti che la tua squadra ha catturato."
 
-#: src/reports.cpp:1537
+#: src/reports.cpp:1556
 msgid "Villages"
 msgstr "Villaggi"
 
-#: src/reports.cpp:1542
+#: src/reports.cpp:1561
 msgid "The total number of units on your side."
 msgstr "Il numero totale di unità della tua squadra."
 
-#: src/reports.cpp:1542
+#: src/reports.cpp:1561
 msgid "Units"
 msgstr "Unità"
 
-#: src/reports.cpp:1551
+#: src/reports.cpp:1570
 msgid ""
 "The expenses incurred at the end of every turn to maintain your army. The "
 "first number is the amount of gold that will be deducted. It is equal to the "
@@ -8428,15 +8414,15 @@ msgstr ""
 "coperto dai villaggi. In altre parole, il quantitativo di oro che sarebbe "
 "dedotto se tu perdessi tutti i villaggi."
 
-#: src/reports.cpp:1551
+#: src/reports.cpp:1570
 msgid "Upkeep"
 msgstr "Mantenimento"
 
-#: src/reports.cpp:1581
+#: src/reports.cpp:1600
 msgid "Net Income"
 msgstr "Entrate"
 
-#: src/reports.cpp:1581
+#: src/reports.cpp:1600
 msgid ""
 "The net amount of gold you gain or lose each turn, taking into account "
 "income from controlled villages and payment of upkeep."
@@ -8445,23 +8431,23 @@ msgstr ""
 "degli introiti dei villaggi da te controllati e dell’oro necessario per il "
 "mantenimento delle unità."
 
-#: src/reports.cpp:1781
+#: src/reports.cpp:1800
 msgid "Observers:"
 msgstr "Osservatori:"
 
-#: src/reports.cpp:1798
+#: src/reports.cpp:1817
 msgid "Clock"
 msgstr "Orologio"
 
-#: src/reports.cpp:1809
+#: src/reports.cpp:1828
 msgid "Battery"
 msgstr "Batteria"
 
-#: src/reports.cpp:1853
+#: src/reports.cpp:1872
 msgid "Countdown until your turn automatically ends."
 msgstr "Conto alla rovescia fino alla fine automatica dei turni."
 
-#: src/reports.cpp:1853
+#: src/reports.cpp:1872
 msgid "Turn Countdown"
 msgstr "Conto alla rovescia dei turni"
 
@@ -8835,21 +8821,21 @@ msgstr "Bozza del periodo della giornata"
 msgid "This Time of Day is only a Stub!"
 msgstr "Questo periodo della giornata è soltanto una bozza!"
 
-#: src/units/abilities.cpp:1127
+#: src/units/abilities.cpp:1131
 msgid "Owned: "
 msgstr "Posseduta da: "
 
 #. TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
-#: src/units/abilities.cpp:1129
+#: src/units/abilities.cpp:1133
 msgid "Taught: "
 msgstr "Appresa: "
 
 #. TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
-#: src/units/abilities.cpp:1131
+#: src/units/abilities.cpp:1135
 msgid "Taught: (by an enemy): "
 msgstr "Appresa: (da un nemico): "
 
-#: src/units/abilities.cpp:1132
+#: src/units/abilities.cpp:1136
 msgid "Used by opponent: "
 msgstr "Usata da un avversario: "
 
@@ -8987,35 +8973,35 @@ msgstr "Non hai abbastanza monete d’oro per reclutare questa unità."
 msgid "The $unit_type is not available to recruit."
 msgstr "Le unità di tipo $unit_type non sono reclutabili."
 
-#: src/units/types.cpp:805 src/units/types.cpp:813
+#: src/units/types.cpp:785 src/units/types.cpp:793
 msgid "female^lawful"
 msgstr "legale"
 
-#: src/units/types.cpp:807
+#: src/units/types.cpp:787
 msgid "female^neutral"
 msgstr "neutrale"
 
-#: src/units/types.cpp:809
+#: src/units/types.cpp:789
 msgid "female^chaotic"
 msgstr "caotica"
 
-#: src/units/types.cpp:811
+#: src/units/types.cpp:791
 msgid "female^liminal"
 msgstr "liminale"
 
-#: src/units/types.cpp:819 src/units/types.cpp:827
+#: src/units/types.cpp:799 src/units/types.cpp:807
 msgid "lawful"
 msgstr "legale"
 
-#: src/units/types.cpp:821
+#: src/units/types.cpp:801
 msgid "neutral"
 msgstr "neutrale"
 
-#: src/units/types.cpp:823
+#: src/units/types.cpp:803
 msgid "chaotic"
 msgstr "caotico"
 
-#: src/units/types.cpp:825
+#: src/units/types.cpp:805
 msgid "liminal"
 msgstr "liminale"
 
@@ -9027,44 +9013,44 @@ msgstr "Quest’unità non può essere congedata."
 msgid "This unit is a leader and cannot be dismissed."
 msgstr "Quest’unità è un condottiero e pertanto non può congedata."
 
-#: src/units/unit.cpp:1997
+#: src/units/unit.cpp:2008
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
-#: src/units/unit.cpp:2003
+#: src/units/unit.cpp:2014
 msgid "<span color=\"$color\">$number_or_percent</span> HP"
 msgstr "<span color=\"$color\">$number_or_percent</span> PF"
 
-#: src/units/unit.cpp:2013
+#: src/units/unit.cpp:2024
 msgid "<span color=\"$color\">$number_or_percent</span> move"
 msgid_plural "<span color=\"$color\">$number_or_percent</span> moves"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> mossa"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> mosse"
 
-#: src/units/unit.cpp:2019
+#: src/units/unit.cpp:2030
 msgid "<span color=\"$color\">$number_or_percent</span> vision"
 msgstr "<span color=\"$color\">$number_or_percent</span> visuale"
 
-#: src/units/unit.cpp:2023
+#: src/units/unit.cpp:2034
 msgid "<span color=\"$color\">$number_or_percent</span> jamming"
 msgstr "<span color=\"$color\">$number_or_percent</span> disturbo"
 
-#: src/units/unit.cpp:2028
+#: src/units/unit.cpp:2039
 msgid "<span color=\"$color\">$number_or_percent</span> XP to advance"
 msgstr "<span color=\"$color\">$number_or_percent</span> PE per avanzare"
 
-#: src/units/unit.cpp:2032
+#: src/units/unit.cpp:2043
 msgid "<span color=\"$color\">$number_or_percent</span> attack per turn"
 msgid_plural ""
 "<span color=\"$color\">$number_or_percent</span> attacks per turn"
 msgstr[0] "<span color=\"$color\">$number_or_percent</span> attacco per turno"
 msgstr[1] "<span color=\"$color\">$number_or_percent</span> attacchi per turno"
 
-#: src/units/unit.cpp:2039
+#: src/units/unit.cpp:2050
 msgid "<span color=\"$color\">$number_or_percent</span> cost to recall"
 msgstr "<span color=\"$color\">$number_or_percent</span> costo di richiamo"
 
-#: src/units/unit.cpp:2545
+#: src/units/unit.cpp:2556
 msgid "$effect_description per level"
 msgstr "$effect_description per livello"
 
@@ -9126,6 +9112,22 @@ msgstr "Nascondi i piani di $player"
 #: src/whiteboard/manager.cpp:1140
 msgid "Whiteboard Options"
 msgstr "Opzioni della lavagna"
+
+#~ msgid "Urban Jungle (Internal)"
+#~ msgstr "Giungla Urbana (interno)"
+
+#~ msgid ""
+#~ "Densely packed structures are less suitable for garrison than traditional "
+#~ "villages, providing no income or healing. They are difficult to navigate "
+#~ "quickly, but offer significant protection."
+#~ msgstr ""
+#~ "Le strutture densamente popolate sono meno adatte ad un presidio rispetto "
+#~ "ai villaggi tradizionali, poiché non forniscono entrate o cure. Sono "
+#~ "difficili da attraversare rapidamente, ma offrono una protezione "
+#~ "significativa."
+
+#~ msgid "Urban Jungle"
+#~ msgstr "Giungla Urbana"
 
 #~ msgid "Oldania ADF Std"
 #~ msgstr "Oldania ADF Std"

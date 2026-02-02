@@ -1,0 +1,321 @@
+.\" This program is free software; you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation; either version 2 of the License, or
+.\" (at your option) any later version.
+.\"
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program; if not, write to the Free Software
+.\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+.\"
+.
+.\"*******************************************************************
+.\"
+.\" This file was generated with po4a. Translate the source file.
+.\"
+.\"*******************************************************************
+.TH WESNOTHD 6 2022 wesnothd "Harc Wesnothért többjátékos hálózati démon"
+.
+.SH NÉV
+.
+wesnothd \- Harc \fBWesnoth\fPért többjátékos hálózati démon
+.
+.SH ÁTTEKINTÉS
+.
+\fBwesnothd\fP [\|\fB\-dvw\fP\|] [\|\fB\-c\fP \fIpath\fP\|] [\|\fB\-p\fP \fIport\fP\|]
+.br
+\fBwesnothd\fP \fB\-V\fP
+.
+.SH LEÍRÁS
+.
+A Harc Wesnothért többjátékos mérkőzéseit kezeli. A klienstől (/query ...)
+vagy a fifoból érkező elfogadott parancsokról itt tájékozódhatsz:
+https://www.wesnoth.org/wiki/ServerAdministration .
+.
+.SH BEÁLLÍTÁSOK
+.
+.TP 
+\fB\-c\ \fP\fIútvonal\fP\fB,\ \-\-config\fP\fI\ útvonal\fP
+megadja a wesnothd programnak, hogy hol keresse a konfigurációs fájlt. A
+szintaxisról lásd alább a \fBKISZOLGÁLÓ BEÁLLÍTÁSA\fP részt. A konfigurációt
+újratöltheted SIGHUP küldésével a kiszolgálói folyamatnak.
+.TP 
+\fB\-d, \-\-daemon\fP
+démon szolgáltatásként futtatja a wesnothd programot.
+.TP 
+\fB\-h, \-\-help\fP
+kiírja, hogy mire jók az egyes parancssori opciók.
+.TP 
+\fB\-\-log\-\fP\fIszint\fP\fB=\fP\fItartomány1\fP\fB,\fP\fItartomány2\fP\fB,\fP\fI...\fP
+beállítja a naplózási tartomány szintjét. Az \fBall\fP minden naplózási
+tartományra illeszkedik. Beállítható szintek: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP. Alapértelmezettként az \fBerror\fP szint van beállítva, míg
+a \fBserver\fP tartományhoz az \fBinfo\fP szint tartozik.
+.TP 
+\fB\-p\ \fP\fIport\fP\fB,\ \-\-port\fP\fI\ port\fP
+a megadott portra köti a kiszolgálót. Ha nincs más meghatározva, akkor a
+\fB15000\fP\-es port lesz használatban.
+.TP 
+\fB\-V, \-\-version\fP
+kiírja a verziószámot, majd kilép.
+.TP 
+\fB\-v, \-\-verbose\fP
+bekapcsolja a debug szintű naplózást.
+.
+.SH "KISZOLGÁLÓ BEÁLLÍTÁSA"
+.
+.SS "Az általános szintaxis a következő:"
+.
+.P
+[\fInyitó tag\fP]
+.IP
+\fIkulcs\fP="\fIérték\fP"
+.IP
+\fIkulcs\fP="\fIérték\fP,\fIérték\fP,..."
+.P
+[/\fIzáró tag\fP]
+.
+.SS "Globális kulcsok:"
+.
+.TP 
+\fBallow_remote_shutdown\fP
+Ha \fBno\fP értékre van állítva (alapértelmezetten így van), akkor a shut_down
+és restart kéréseket figyelmen kívül hagyja, hacsak azok nem a fifon
+keresztül érkeznek. Állítsd \fByes\fP értékre, ha engedélyezni akarod a távoli
+leállítást egy rendszergazdai /query kérésen keresztül.
+.TP 
+\fBban_save_file\fP
+Teljes, vagy relatív elérési út egy gzippel tömörített fájlhoz, amit a
+szerver olvasni és írni is tud. A tiltások ebbe a fájlba mentődnek, és innen
+lesznek kiolvasva szerver indításánál.
+.TP 
+\fBconnections_allowed\fP
+Az azonos IP címről engedélyezett párhuzamos kapcsolatok száma. \fB0\fP esetén
+korlátlan.(alapértelmezett: \fB5\fP)
+.TP 
+\fBdeny_unregistered_login\fP
+Megakadályozza a \fBuser_handler\fP\-rel nem regisztrált felhasználók
+bejelentkezését. (alapbeállítás: hamis)
+.TP 
+\fBdisallow_names\fP
+Azok a nevek/becenevek, melyeket a kiszolgáló visszautasít. A \fB*\fP és \fB?\fP
+helyettesítő minták is használhatóak. Lásd a \fBglob\fP(7) részt a
+részletekért. Alapértelmezett értékek (ha más nincsen megadva):
+\fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
+.TP 
+\fBfifo_path\fP
+A fifo elérési útvonala, amibe szerver parancsokat írathatsz ki (ugyanaz
+mint /query ... a wesnothban). Ha nincs meghatározva, alapértelmezettként a
+fordításnál meghatározott értékkel egyezik meg
+(\fB/var/run/wesnothd/socket\fP).
+.TP 
+\fBid\fP
+A szerverazonosító a játékinformáció tárolási adatbázis
+működéséhez. Általában az elfogadott kliensek fő\-és alverziószámai, mint
+például 1.16 vagy 1.17.
+.TP 
+\fBmax_messages\fP
+A megadott időtartam (\fBmessages_time_period\fP) alatt küldhető üzenetek
+száma. (alapértelmezett: \fB4\fP)
+.TP 
+\fBmessages_time_period\fP
+Az az időtartam (másodpercekben), mely fölött az ismételten megjelenő
+üzenetek „elárasztó üzenet”\-ként lesznek azonosítva. (alapértelmezett: \fB10\fP
+másodperc)
+.TP 
+\fBmotd\fP
+Az aznapra szánt üzenet.
+.TP 
+\fBpasswd\fP
+A jelszó, amivel adminisztrátori jogok nyerhetőek (a \fB/query admin\fP\fIpassword\fP lekérdezésen keresztül).
+.TP 
+\fBreplay_save_path\fP
+A könyvtár, ahol a kiszolgáló a játékok visszajátszásait tárolja. (Ne
+feledkezz meg a záró "/" jelről!) Alapértelmezetten ez az a könyvtár,
+ahonnan a wesnothd elindult.
+.TP 
+\fBrestart_command\fP
+A parancs, amivel a szerver új kiszolgálói folyamatot indít a \fBrestart\fP
+paranccsal. (Csak a fifon keresztül adható ki. Lásd a
+\fBallow_remote_shutdown\fP beállításokat.)
+.TP 
+\fBsave_replays\fP
+Meghatározza, hogy a kiszolgáló elmenti\-e automatikusan a játékokról készült
+visszajátszást (alapértelmezett: \fBfalse\fP).
+.TP 
+\fBtls_enabled\fP
+TLS titkosítási protokoll használatának bekapcsolása. Ha igaz, további három
+opció megadását igényli.
+.TP 
+\fBtls_fullchain\fP
+Teljes TLS tanúsítási lánc .pem formátumban
+.TP 
+\fBtls_private_key\fP
+privát TLS titkosítási kulcs .pem formátumban
+.TP 
+\fBtls_dh\fP
+TLS DH titkosítási kulcs cserélő paraméterek .pem fájlban. Generálása:
+\fBopenssl dhparam \-out filename.pem 4096\fP
+.TP 
+\fBversions_accepted\fP
+Egy vesszőkkel elválasztott lista azokról a verziószámokról, amelyeket a
+kiszolgáló elfogad. A \fB*\fP és \fB?\fP jelzések is használhatóak
+(alapértelmezetten csak az adott verzióval megegyező elfogadott).
+.br
+Példa: \fBversions_accepted="*"\fP bármilyen verziót elfogad.
+.
+.SS "Globális tagek:"
+.
+.P
+\fB[redirect]\fP Címke bizonyos kliens verziók átirányításához egy másik,
+megadott kiszolgálóra. Nem használt, ha a \fBversions_accepted\fP nincs
+beállítva.
+.RS
+.TP 
+\fBhost\fP
+A kiszolgáló címe, ahova az átirányítás mutat.
+.TP 
+\fBport\fP
+A port, amelyen csatlakozni lehet hozzá.
+.TP 
+\fBversion\fP
+Egy vesszőkkel elválasztott lista azokról a verziószámokról, amelyeket a
+kiszolgáló átirányít. A különleges jelzések ( „*” és „?”) a
+\fBversions_accepted\fP\-hez hasonlóan használhatóak.
+.RE
+.P
+\fB[ban_time]\fP Az átmeneti tiltási idők kényelmes, kulcsszavas
+meghatározásához használható.
+.RS
+.TP 
+\fBname\fP
+A név, amivel a tiltási időre hivatkozunk.
+.TP 
+\fBtime\fP
+Az időhossz meghatározás. A formátum a következő: %d[%s[%d%s[...]]], ahol %s
+lehet: s (másodpercek), m (percek), h (órák), D (napok), M (hónapok) vagy Y
+(évek), és %d egy szám. Ha nincs meghatározva a mértékegység, akkor
+percekként (m) lesz értelmezve. Példa: \fBtime="1D12h30m"\fP egy 1 napos, 12
+órás és 30 perces tiltási időt határoz meg.
+.RE
+.P
+\fB[proxy]\fP Proxyként való viselkedés, azaz a bejövő kliens kapcsolatok
+továbbítása a megadott kiszolgáló felé. Ugyanazokat az értékeket fogadja el,
+mint a \fB[redirect]\fP.
+.RE
+.P
+\fB[user_handler]\fP Beállítja a felhasználókezelőt. Ha nincs \fB[user_handler]\fP
+rész a szerver konfigurálásában, akkor felhasználónév\-kezelés nélkül fog
+futni. Minden további tábla, amely a  \fBforum_user_handler\fP működéséhez
+szükséges, a Wesnoth forrás adattárban (repository), a table_definitions.sql
+fájlban található. Bekapcsolt mysql támogatást igényel. A cmake számára ez a
+\fBENABLE_MYSQL\fP, a scons számára pedig a \fBforum_user_handler\fP
+.RS
+.TP 
+\fBdb_host\fP
+Az adatbázis szerver kiszolgálóneve
+.TP 
+\fBdb_name\fP
+Az adatbázis neve
+.TP 
+\fBdb_user\fP
+A felhasználónév, mellyel az adatbázisba jelentkezel be
+.TP 
+\fBdb_passwd\fP
+Ennek a felhasználónak a jelszava
+.TP 
+\fBdb_users_table\fP
+Az adattábla neve, amibe a phpbb fórumod elmenti a felhasználó adatait. Ez
+valószínűleg <tábla\-előtag>_users lesz (pl. phpbb3_users).
+.TP 
+\fBdb_extra_table\fP
+Az adattábla neve, melybe a wesnothd menteni fogja a saját felhasználó
+adatait.
+.TP 
+\fBdb_game_info_table\fP
+Az adattábla neve, melybe a wesnothd menteni fogja a saját adatait a
+játékokra vonatkozóan.
+.TP 
+\fBdb_game_player_info_table\fP
+Az adattábla neve, melybe a wesnothd menteni fogja a saját adatait a
+játékosokra vonatkozóan.
+.TP 
+\fBdb_game_content_info_table\fP
+Az adattábla neve, melybe a wesnothd menteni fogja a saját adatait a játék
+tartalmára vonatkozóan (küldetés/kor/módosítók).
+.TP 
+\fBdb_user_group_table\fP
+Az adattábla neve, amibe a phpbb fórumod elmenti a felhasználó\-csoport
+adatait. Ez valószínűséggel <tábla\-előtag>_user_group lesz
+(pl. phpbb3_users).
+.TP 
+\fBdb_tournament_query\fP
+Az SQL lekérdezés a belépéskor kihirdetett versenyek kereséséhez. A versenyt
+a következők szerint adja vissza: \fBtitle\fP, \fBstatus\fP and \fBurl\fP.
+.TP 
+\fBdb_connection_history_table\fP
+Az adattábla neve, melyben a belépések/kilépések időpontjait
+tárolja. Használatos az IP\-címek felhasználókhoz rendeléséhez is oda\-vissza.
+.TP 
+\fBdb_topics_table\fP
+Az adattábla neve, amibe a phpbb fórumod elmenti a témakör (beszédfolyam)
+információit. Ez valószínűséggel <tábla\-előtag>_topics lesz
+(pl. phpbb3_users).
+.TP 
+\fBdb_banlist_table\fP
+Az adattábla, amibe a phpbb fórumod elmenti a felhasználói kitiltások
+adatait. Ez valószínűséggel <tábla\-előtag>_banlist lesz
+(pl. phpbb3_users).
+.TP 
+\fBmp_mod_group\fP
+A fórumcsoport azonosítója, melynek moderálási hatásköre van.
+.TP 
+\fBforum_admin_group\fP
+A fórumcsoport azonosítója, melynek adminisztrátori hatásköre van a
+kiegészítő szerveren.
+.TP 
+\fBsite_admin_group\fP
+A fórumcsoport azonosítója, melynek adminisztrátori hatásköre van a
+kiegészítő szerveren.
+.RE
+.
+.SH "BEFEJEZÉSI ÁLLAPOT"
+.
+A befejezési állapot értéke 0, ha a kiszolgálót szabályosan sikerült
+leállítani. Ha a befejezési állapot értéke 2, akkor a parancssori opciókkal
+van gond.
+.
+.SH SZERZŐ
+.
+Írta: David White <davidnwhite@verizon.net>.  Szerkesztették: Nils
+Kneuper <crazy\-ivanovic@gmx.net>, ott <ott@gaon.net> és
+Soliton <soliton.de@gmail.com> és Thomas Baumhauer
+<thomas. baumhauer@gmail.com>. Ennek a dokumentumnak az eredetijét
+Cyril Bouthors <cyril@bouthors.org> írta.
+Magyarra fordították: Gilluin <gilluin@citromail.hu>, Széll Tamás
+<tomi@digiflex.hu>, Pintér Csaba, Kádár\-Németh Krisztián
+<krisztian.kad@gmail.com> és Udvari Gábor
+<gabor.udvari@gmail.com>.
+.br
+Látogasd meg a hivatalos honlapot: https://www.wesnoth.org/ illetve a magyar
+közösségi portált: http://wesnoth.fsf.hu/
+.
+.SH "SZERZŐI JOGOK"
+.
+A szerzői jogok \(co 2003\-2025 David White\-ot
+<davidnwhite@verizon.net> illetik meg
+.br
+Ez egy szabad szoftver; terjeszthető illetve módosítható a GNU Általános
+Közreadási Feltételek dokumentumában \- 2. vagy későbbi verzió \- leírtak
+szerint , melyet a Szabad Szoftver Alapítvány ad ki. Ez a program abban a
+reményben kerül közreadásra, hogy hasznos lesz, de minden egyéb GARANCIA
+NÉLKÜL, az eladhatóságra, vagy valamely célra való alkalmazhatóságra való
+származtatott garanciát is beleértve.
+.
+.SH "LÁSD MÉG"
+.
+\fBwesnoth\fP(6)
+

@@ -8,7 +8,7 @@ https://sourceforge.net/projects/libpng/files/libpng16/1.6.39/libpng-1.6.39.tar.
 https://sourceforge.net/projects/freetype/files/freetype2/2.13.0/freetype-2.13.0.tar.xz
 https://github.com/PCRE2Project/pcre2/releases/download/pcre2-10.42/pcre2-10.42.tar.bz2
 https://github.com/libffi/libffi/releases/download/v3.4.4/libffi-3.4.4.tar.gz
-https://download.gnome.org/sources/glib/2.76/glib-2.76.1.tar.xz
+https://download.gnome.org/sources/glib/2.82/glib-2.82.1.tar.xz
 https://www.cairographics.org/releases/pixman-0.42.2.tar.gz
 https://github.com/libexpat/libexpat/releases/download/R_2_5_0/expat-2.5.0.tar.xz
 https://www.freedesktop.org/software/fontconfig/release/fontconfig-2.14.2.tar.xz

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.18\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-12-22 03:09 UTC\n"
+"POT-Creation-Date: 2026-01-20 17:31 UTC\n"
 "PO-Revision-Date: 2025-05-26 15:31+0800\n"
 "Last-Translator: vimacs <vimacs.hacks@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
@@ -22,23 +22,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
 "X-Generator: Poedit 3.4.4\n"
-
-#. [achievement_group]
-#: data/campaigns/Heir_To_The_Throne_Classic/achievements.cfg:3
-#, fuzzy
-#| msgid "Tutorial"
-msgid "Old Tutorial"
-msgstr "教程"
-
-#. [achievement]: id=completed
-#: data/campaigns/Heir_To_The_Throne_Classic/achievements.cfg:7
-msgid "Completed the Tutorial"
-msgstr "完成教程"
-
-#. [achievement]: id=completed
-#: data/campaigns/Heir_To_The_Throne_Classic/achievements.cfg:8
-msgid "Complete the Battle Training."
-msgstr "完成战斗训练。"
 
 #. [label]
 #: data/campaigns/Heir_To_The_Throne_Classic/gui/character_selection.cfg:19
@@ -374,8 +357,8 @@ msgstr "这<b>假人</b>也有进攻回合？"
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:616
 msgid ""
 "Yes. It’s a magical quintain! If it hits you, it does 3 damage, and has 5 "
-"chances. If it hits every time, you’ll drop from $student_hp to "
-"$($student_hp-15) hitpoints. Brace yourself!"
+"chances. If it hits every time, you’ll drop from $student_hp to $"
+"($student_hp-15) hitpoints. Brace yourself!"
 msgstr ""
 "是啊，这是一个魔法刺靶！如果它命中你，那么会造成3点伤害，而它有5次机会。如果"
 "它每次都命中，那么你的生命值会从$student_hp|降到 $($student_hp-15)。打起精神"
@@ -2003,8 +1986,8 @@ msgstr "我们会怀念$unit.name|的，不过至少她不是我们的老兵里�
 #. [message]: speaker=Galdrad
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1315
 msgid ""
-"Higher level units are powerful, but not invulnerable. We’ll miss you, $unit."
-"name|."
+"Higher level units are powerful, but not invulnerable. We’ll miss you, "
+"$unit.name|."
 msgstr "高级单位是很强大，但并不是无敌的。我们会想念你的，$unit.name|。"
 
 #. [message]: speaker=Galdrad
@@ -2250,35 +2233,30 @@ msgstr ""
 "\n"
 "<big>点击鼠标按钮或者按空格键继续……</big>"
 
-#, fuzzy
-#~| msgid "Battle Training"
-#~ msgid "Battle Training — Old Tutorial"
+#~ msgid "Battle Training"
 #~ msgstr "战斗训练"
 
 #~ msgid "Tutorial"
 #~ msgstr "教程"
 
-#, fuzzy
-#~| msgid ""
-#~| "Learn the basics of Wesnoth gameplay with a tutorial. Recommended for "
-#~| "first-time players."
 #~ msgid ""
-#~ "Learn the basics of Wesnoth gameplay with a tutorial.\n"
-#~ "    \n"
+#~ "Learn the basics of Wesnoth gameplay with a tutorial. Recommended for "
+#~ "first-time players."
 #~ msgstr "通过教程，学习韦诺的基础玩法。推荐第一次游玩的玩家游玩此教程。"
 
 #~ msgid "Beginner"
 #~ msgstr "初学者"
 
-#, fuzzy
-#~| msgid ""
-#~| "You have beaten the orcs! You may want to try one of the rookie-level "
-#~| "campaigns next, which include strategy hints. <i>A Tale of Two Brothers</"
-#~| "i> is the easiest and is the recommended first campaign."
+#~ msgid "Completed the Tutorial"
+#~ msgstr "完成教程"
+
+#~ msgid "Complete the Battle Training."
+#~ msgstr "完成战斗训练。"
+
 #~ msgid ""
-#~ "You have beaten the orcs! You may want to try one of the novice-level "
-#~ "campaigns next. <i>A Tale of Two Brothers</i> is the easiest and is the "
-#~ "recommended first campaign."
+#~ "You have beaten the orcs! You may want to try one of the rookie-level "
+#~ "campaigns next, which include strategy hints. <i>A Tale of Two Brothers</"
+#~ "i> is the easiest and is the recommended first campaign."
 #~ msgstr ""
 #~ "你击败了兽人！接下去你或许可以试试看几个菜鸟级别的战役之一，这些战役里有策"
 #~ "略提示。<b>兄弟传说</b>是最简单的战役，也是推荐给新手的第一个战役。"

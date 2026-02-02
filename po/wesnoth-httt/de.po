@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.18\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-12-21 21:40 UTC\n"
+"POT-Creation-Date: 2026-01-20 17:31 UTC\n"
 "PO-Revision-Date: 2024-03-04 17:34+0100\n"
 "Last-Translator: Severin Glöckner <severin.gloeckner@stud.htwk-leipzig.de>\n"
 "Language-Team: irc://irc.libera.chat/#wesnoth-de\n"
@@ -20,21 +20,23 @@ msgstr ""
 "X-Generator: Poedit 3.4.2\n"
 
 #. [campaign]: id=Heir_To_The_Throne_Classic
-#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:9
+#. [achievement_group]
+#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:12
+#: data/campaigns/Heir_To_The_Throne_Classic/achievements.cfg:3
 #, fuzzy
 #| msgid "Heir to the Throne"
 msgid "Heir to the Throne, Classic"
 msgstr "Der Thronerbe"
 
 #. [campaign]: id=Heir_To_The_Throne_Classic
-#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:12
+#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:15
 #, fuzzy
 #| msgid "HttT"
 msgid "HttTC"
 msgstr "HttT"
 
 #. [campaign]: id=Heir_To_The_Throne_Classic
-#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:19
+#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:22
 #, fuzzy
 #| msgid ""
 #| "Fight to regain the throne of Wesnoth, of which you are the legitimate "
@@ -47,7 +49,7 @@ msgstr ""
 "\n"
 
 #. [campaign]: id=Heir_To_The_Throne_Classic
-#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:21
+#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:24
 msgid ""
 "This is the original version of this classic campaign, preserved for "
 "historical reasons. Also optionally includes the old <i>Battle Training</i> "
@@ -55,62 +57,72 @@ msgid ""
 msgstr ""
 
 #. [campaign]: id=Heir_To_The_Throne_Classic
-#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:23
+#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:26
 msgid "(Novice level, 23 scenarios.)"
 msgstr "(Einstufung: Einfach, 23 Szenarien)"
 
 #. [campaign]: id=Heir_To_The_Throne_Classic
-#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:25
+#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:28
 msgid "Easy"
 msgstr "Einfach"
 
 #. [campaign]: id=Heir_To_The_Throne_Classic
-#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:25
+#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:28
 #: data/campaigns/Heir_To_The_Throne_Classic/units/Fighter.cfg:4
 msgid "Fighter"
 msgstr "Krieger"
 
 #. [campaign]: id=Heir_To_The_Throne_Classic
-#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:26
+#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:29
 #: data/campaigns/Heir_To_The_Throne_Classic/units/Commander.cfg:4
 msgid "Commander"
 msgstr "Feldherr"
 
 #. [campaign]: id=Heir_To_The_Throne_Classic
-#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:26
+#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:29
 msgid "Normal"
 msgstr "Normal"
 
 #. [campaign]: id=Heir_To_The_Throne_Classic
-#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:27
+#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:30
 msgid "Challenging"
 msgstr "Herausfordernd"
 
 #. [campaign]: id=Heir_To_The_Throne_Classic
-#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:27
+#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:30
 #: data/campaigns/Heir_To_The_Throne_Classic/units/Lord.cfg:4
 msgid "Lord"
 msgstr "Fürst"
 
 #. [about]
-#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:34
+#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:37
 msgid "Campaign Design"
 msgstr "Kampagnengestaltung"
 
 #. [about]
-#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:40
+#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:43
 msgid "Campaign Maintenance"
 msgstr "Betreuung"
 
 #. [about]
-#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:53
+#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:56
 msgid "Artwork and Graphics Design"
 msgstr "Grafik"
 
 #. [about]
-#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:77
+#: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:80
 msgid "Miscellaneous"
 msgstr "Verschiedenes"
+
+#. [achievement]: id=completed
+#: data/campaigns/Heir_To_The_Throne_Classic/achievements.cfg:7
+msgid "Trained for Battle"
+msgstr ""
+
+#. [achievement]: id=completed
+#: data/campaigns/Heir_To_The_Throne_Classic/achievements.cfg:8
+msgid "Complete the old <i>Battle Training</i> tutorial."
+msgstr ""
 
 #. [scenario]: id=01_The_Elves_Besieged
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/01_The_Elves_Besieged.cfg:4

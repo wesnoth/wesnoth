@@ -1,18 +1,52 @@
-## Version 1.19.19+dev
+## Version 1.19.20+dev
 ### Add-ons client
 ### Add-ons server
 ### Campaigns
+   * Dusk of Dawn
+     * S02 "A Dream": remove "fearless" trait, but spawn more higher-level woses instead.
+   * The Hammer of Thursagan
+     * Shortened turn limits on several long scenarios.
+     * Decreased player gold from 100 to 80 on most scenarios.
+     * S08 "The Siege of Kal Kartha": increased enemy gold.
+     * S10 "The Underlevels": reduced number of villages, and increased Karrag's income.
+   * Heir to the Throne
+     * S02 "Flight of the Elves": fix Konrad winning after killing only 2 enemy leaders, instead of all of them.
+     * S30 "The Sceptre of Fire": made Li'sar more difficult to assassinate with Fire Wraiths. This strategy should still be possible, but it should now require more significant investment.
+     * S30 "The Sceptre of Fire": Delfador can now continue recruiting even while searching for the Sceptre.
+   * Winds of Fate
+     * Lower recall costs further.
+     * Adjust and replace some characters that tie-in with the other campaigns.
+     * S01 "The Hunt": fewer forest lions.
+     * S06 "Landfall": tweak enemy starting gold
+     * S08 "Overlook": more consistent enemy spawn recognition
+     * S11 "Crosswind": fix issues with non-clasher units attempting to read their secrets
 ### Editor
 ### Multiplayer
 ### Lua API
 ### Packaging
 ### Terrain
 ### Translations
-   * Updated translations: Bengali, British English, Czech, French, German, Greek, Hungarian, Italian, Spanish
+   * Updated translations: Bengali, British English, Chinese (Simplified), French, Greek, Hungarian, Italian, Spanish
 ### Units
 ### User interface
 ### WML Engine
 ### Miscellaneous and Bug Fixes
+
+## Version 1.19.20
+### Campaigns
+   * Dusk of Dawn
+     * Remove custom "Troll Earth-Shaker" Rocklobber advancement to avoid confusing beginners.
+   * Eastern Invasion
+     * Add weather effects to several scenarios.
+   * The Deceivers Gambit
+     * S13 "Revelry, Revisited": fixed way too many enemies spawning after many turns had elapsed.
+     * S13 "Revelry, Revisited": added more dialogue between the orcs and humans.
+   * The Hammer of Thursagan
+     * The first scenario is now slightly easier.
+### Terrain
+   * Added graphics for rails going over water and chasm.
+### Translations
+   * Updated translations: Bengali, British English, Czech, French, German, Greek, Hungarian, Italian, Spanish
 
 ## Version 1.19.19
 ### Campaigns

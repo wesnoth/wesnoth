@@ -1,0 +1,458 @@
+.\" This program is free software; you can redistribute it and/or modify
+.\" it under the terms of the GNU General Public License as published by
+.\" the Free Software Foundation; either version 2 of the License, or
+.\" (at your option) any later version.
+.\"
+.\" This program is distributed in the hope that it will be useful,
+.\" but WITHOUT ANY WARRANTY; without even the implied warranty of
+.\" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+.\" GNU General Public License for more details.
+.\"
+.\" You should have received a copy of the GNU General Public License
+.\" along with this program; if not, write to the Free Software
+.\" Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+.\"
+.
+.\"*******************************************************************
+.\"
+.\" This file was generated with po4a. Translate the source file.
+.\"
+.\"*******************************************************************
+.TH WESNOTH 6 2022 wesnoth "Harc Wesnothért"
+.
+.SH NÉV
+wesnoth \- Harc Wesnothért, egy körökre osztott stratégiai játék fantázia
+témával
+.
+.SH ÁTTEKINTÉS
+.
+\fBwesnoth\fP [\fIBEÁLLÍTÁSOK\fP] [\fIADATELÉRÉS_ÚTVONALA\fP]
+.
+.SH LEÍRÁS
+.
+A Harc \fBWesnoth\fPért egy körökre osztott stratégiai játék.
+
+Győzd le az összes ellenséges vezért egy jól összeállított sereggel, ügyelve
+az erőforrásaidra, úgymint: aranyad, illetve falvaid. Minden egységnek
+megvannak a maga erősségei és gyengéi; ahhoz, hogy nyerj, hozd ki seregedből
+a legjobbat, miközben ellenfeleidnek ugyanezt ne tedd lehetővé. Ahogy az
+egységek tapasztalatot szereznek, új képességekre tesznek szert, és egyre
+erősebbé válnak. Játssz a saját anyanyelveden, mérettesd meg ügyességedet az
+okos számítógépes ellenfél ellen, vagy csatlakozz a Wesnoth on\-line
+játékosainak nagy közösségéhez! Hozd létre a saját egységeidet, pályáidat,
+hadjárataidat, és oszd meg őket másokkal is.
+.
+.SH BEÁLLÍTÁSOK
+.
+.TP 
+\fB\-\-addon\-info\fP
+Egy gombot jelenít meg a kiegészítő kezelőben a kiegészítő szerver
+lekérdezéséhez különféle információkért.
+.TP 
+\fB\-\-all\-translations\fP
+Az összes fordítás mutatása a játékbeli nyelvválasztó listában, akkor is, ha
+nem elég teljesek.
+.TP 
+\fB\-c[\fP\fIhadjárat_azonosító\fP\fB],\ \-\-campaign[\fP\fI=hadjárat_azonosító\fP\fB]\fP
+közvetlenül a \fIhadjárat_azonosító\fP azonosítójú hadjáratra megy. Ha nincs
+azonosító megadva, egy választómenü fog megjelenni.
+.TP 
+\fB\-\-campaign\-difficulty[\fP\fI=nehézség\fP\fB]\fP
+A megadott hadjárat nehézségi foka (1\-től egészen a max\-ig). Ha nincs
+megadva, akkor megjelenik a nehézségválasztó menü.
+.TP 
+\fB\-\-campaign\-scenario\fP\fI\ küldetés_azonosító\fP
+A megadott hadjáraton belüli küldetés azonosítója. Alapértelmezetten az első
+küldetés.
+.TP 
+\fB\-\-campaign\-skip\-story\fP
+Átugorja a [story] képernyőket és dialógusokat a \fBstart\fP esemény végéig.
+.TP 
+\fB\-\-clock\fP
+Hozzáadja a rajzolási időzítő teszteléséhez az óra kijelzésének
+lehetőségét. Hozzáadja még a GUI Teszt Dialógus kijelzésének lehetőségét is.
+.TP 
+\fB\-\-core\fP\fI\ mag_azonosító\fP
+a megadott azonosítójú játékmagot tölti be az alapértelmezett helyett.
+.TP 
+\fB\-\-data\-dir\fP\fI\ könyvtár\fP
+Felülbírálja az adatkönyvtárt a megadottal. Az adatkönyvtár tartalmazza a
+\&'data', 'fonts', 'images' és más alkönyvtárakat.
+.TP 
+\fB\-\-data\-path\fP
+kiírja az adatkönyvtár útvonalát, majd kilép.
+.TP 
+\fB\-d, \-\-debug\fP
+kibővített parancssori beállításokat tesz lehetővé a játékban (további
+információkért a parancssori módról lásd a Wikit a
+https://www.wesnoth.org/wiki/CommandMode címen).
+.TP 
+\fB\-\-debug\-lua\fP
+bekapcsol néhány Lua hibakeresési mechanizmust
+.TP 
+\fB\-\-strict\-lua\fP
+nem engedélyezi az elavult Lua API hívásokat
+.TP 
+\fB\-D,\ \-\-diff\fP\fI\ baloldali\-fájl\fP\fB\ \fP\fIjobboldali\-fájl\fP
+összevet két WML fájlt, de nincs előfeldolgozás (ehhez előbb ezen kell
+keresztül futtatni őket: \fB\-p\fP). Kimenete az alapértelmezett kimeneten
+DiffWML\-ként, illetve fájlba, melyet a \fI\-\-output\fP határoz meg.
+.TP 
+\fB\-e[\fP\fIfájl\fP\fB],\ \-\-editor[\fP\fI=fájl\fP\fB]\fP
+közvetlenül indítja a játékon belüli térképszerkesztőt. Ha a \fIfájl\fP változó
+meg van adva, akkor egyenértékű az \fB\-l\fP \fB\-\-load\fP opcióval.
+.TP 
+\fB\-\-fps\fP
+a képernyő sarkában megjeleníti az éppen futó játék képkockáinak számát
+másodpercenként, továbbá mindezeket az értékeket fájlba is kiírja az
+userdata könyvtárban.
+.TP 
+\fB\-f, \-\-fullscreen\fP
+a játékot teljes képernyős módban indítja el.
+.TP 
+\fB\-h, \-\-help\fP
+megjeleníti a parancssori lehetőségek rövid leírását az alapértelmezett
+kimeneten, majd kilép.
+.TP 
+\fB\-l,\ \-\-load\fP\fI\ fájl\fP
+betölti a \fIfájl\fP elmentést az alapértelmezett mentések könyvtárból. Ha az
+\fB\-e\fP vagy \fB\-\-editor\fP opciók szintén meg vannak adva, akkor elindítja a
+térképszerkesztőt a \fIfájl\fP mentésben található térképpel. Ha az elérési
+útvonal egy könyvtárra mutat, a szerkesztő egy térképbetöltési
+párbeszédablakot fog nyitni.
+.TP 
+\fB\-L,\ \-\-language\fP\fI\ nyelv\fP
+a \fInyelv\fP (szimbólum) nyelvet használja ebben a munkamenetben. Például:
+\fB\-\-language ang_GB@latin\fP
+.TP 
+\fB\-\-log\-\fP\fIszint\fP\fB=\fP\fItartomány1\fP\fB,\fP\fItartomány2\fP\fB,\fP\fI...\fP
+beállítja a naplózási tartományok szintjét. Az \fB*\fP helyettesítő karaktersor
+minden naplózási tartományra illeszkedik, pl. gui/* vagy conf* vagy *
+(utóbbi az összes tartománnyal egyezik). Beállítható szintek: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP,\ \fBnone\fP. A legtöbb naplózási tartomány a
+\fBwarning\fP szintet használja alapértelmezettként, de a \fBdeprecation\fP
+alapértelmezése a \fBnone\fP, kivéve ha a \fB\-d\fP opció is meg van adva. Ez az
+opció többször is megadható.
+.TP 
+\fB\-\-log\-precise\fP
+nagyobb pontossággal mutatja az időbélyegeket a naplófájlban.
+.TP 
+\fB\-\-log\-strict\fP\fI\ szint\fP
+a naplózó szigorúsági szintjét állítja be erre: \fIlevel\fP. Bármely, a
+megadottnál súlyosabb fokozatú naplóüzenet a unit teszt hibáját fogja
+okozni, függetlenül a győzelemtől. Csak az \fB\-u\fP opcióval együtt van
+értelme.
+.TP 
+\fB\-\-logdomains[\fP\fI=szűrő\fP\fB]\fP
+kilistázza a létező naplózási tartományokat (a \fIszűrő\fP\-nek megfelelően, ha
+az meg van adva) és kilép
+.TP 
+\fB\-\-no\-log\-to\-file\fP
+megakadályozza a fájlba történő naplózást. A WESNOTH_NO_LOG_FILE környezeti
+változó is beállítható alternatív megoldásként. A naplófájlok alapvetően a
+naplókönyvtárban jönnek létre az userdata mappában.
+.TP 
+\fB\-\-log\-to\-file\fP
+a naplózási kimenet írása fájlba történik. Ezt a működést érvényteleníti a
+\-\-no\-log\-to\-file paraméter.
+.TP 
+\fB\-\-no\-log\-sanitize\fP
+kikapcsolja az alapbeállításként alkalmazott anonimizálást a naplózáskor,
+azaz nem cseréli le a felhasználóneveket USER karaktersorra.
+.TP 
+\fB\-\-wnoconsole\fP
+Windows esetén, ha a \-\-no\-log\-to\-file kapcsolóval együtt alkalmazzák, akkor
+az eredmények a kimeneten cerr/cout\-ba íródnak ki CONOUT
+helyett. Máskülönben nem csinál semmit.
+.TP 
+\fB\-\-max\-fps\fP\fI\ fps\fP
+a másodpercenkénti képkockák legmagasabb értéke, ennek értéke \fB1\fP és
+\fB1000\fP között kell legyen, alapértelmezetten a monitor frissítési
+frekvenciája.
+.TP 
+\fB\-m, \-\-multiplayer\fP
+a játékot többjátékos üzemmódban indítja el. A \fB\-\-multiplayer\fP kapcsolóval
+használható egyéb opciókat bővebben lásd alább.
+.TP 
+\fB\-\-mp\-test\fP
+többjátékos tesztküldetések betöltése.
+.TP 
+\fB\-\-new\-widgets\fP
+az új WIP widget eszköztár bekapcsolása. Még nagyon kísérleti funkció,
+kérjük ne küldj hibajelentést erről, mert a legtöbbet ismerjük. A
+programkönyvtár nagy része stabilnak tekinthető és működik e nélkül a
+kapcsoló nélkül is.
+.TP 
+\fB\-\-noaddons\fP
+letiltja a felhasználói kiegészítők betöltését.
+.TP 
+\fB\-\-nocache\fP
+letiltja a játék gyorsítótárát.
+.TP 
+\fB\-\-nogui\fP
+grafikus felület nélkül indítja a játékot. Csak a \fB\-\-multiplayer\fP,
+\fB\-\-screenshot\fP vagy \fB\-\-plugin\fP opciókkal együtt működik.
+.TP 
+\fB\-\-nobanner\fP
+letiltja az indítási főcímet.
+.TP 
+\fB\-\-nomusic\fP
+a játékot zene nélkül indítja el.
+.TP 
+\fB\-\-noreplaycheck\fP
+ne próbálja meg ellenőrizni a unit teszt visszajátszását. Csak az \fB\-u\fP
+opcióval együtt értelmes.
+.TP 
+\fB\-\-nosound\fP
+a játékot hangok nélkül indítja el.
+.TP 
+\fB\-\-output\fP\fI\ fájl\fP
+kimenet a megadott fájlba. Eltéréskezelő műveletekhez alkalmazható.
+.TP 
+\fB\-\-password\fP\fI\ jelszó\fP
+a \fIjelszó\fP használata szerverhez csatlakozásnál, más beállítások figyelmen
+kívül hagyásával.Nem biztonságos.
+.TP 
+\fB\-\-plugin\fP\fI\ script\fP
+betölt egy \fIscript\fP fájlt, mely meghatároz egy Wesnoth plugint. A Lua
+fájlnak egy olyan függvényt kell visszaadnia, amely társrutinként fut, és
+időszakosan frissítésekkel éleszthető fel.
+.TP 
+\fB\-P,\ \-\-patch\fP\fI\ alap\-fájl\fP\fB\ \fP\fIpatch\-fájl\fP
+egy DiffWML patch\-et alkalmaz egy WML fájlon, előfeldolgozás nélkül. A
+patchelt WML kimenete az alapértelmezett kimeneten, illetve fájlba, melyet a
+\fI\-\-output\fP határoz meg.
+.TP 
+\fB\-p,\ \-\-preprocess\fP\fI\ forrás\-fájl/könyvtár\fP\fB\ \fP\fIcél\-könyvtár\fP
+előfeldolgozza a megadott fájlt vagy könyvtárat. Minden fájlhoz egy egyszerű
+\&.cfg fájl és egy előfeldolgozott .cfg fájl lesz a cél könyvtárba írva. Ha
+könyvtár lett megadva, akkor rekurzívan lesz feldolgozva az ismert
+előfeldolgozó szabályok szerint. A beépített makrók a „data/core/macros”
+könyvtárból a megadottak előtt kerülnek feldolgozásra. Például: \fB\-p ~/wesnoth/data/campaigns/tutorial ~/eredmény.\fP Az előfeldolgozó részleteiről
+a https://wiki.wesnoth.org/PreprocessorRef#Command\-line_preprocessor címen
+található információ.
+.TP 
+\fB\-\-preprocess\-string\fP\fI\ forrás\-szöveg\fP
+a megadott szöveget előfeldolgozza és ennek kimenetét kiírja stdout\-ra.
+.TP 
+\fB\-\-preprocess\-defines=\fP\fIDEFINÍCIÓ1\fP\fB,\fP\fIDEFINÍCIÓ2\fP\fB,\fP\fI...\fP
+a \fB\-\-preprocess\fP vagy a \fB\-\-preprocess\-string\fP parancs által használandó
+definíciók vesszővel elválasztott listája. Ha a \fBSKIP_CORE\fP szerepel a
+definíciók közt, akkor a „data/core” könyvtár nem lesz előfeldolgozva.
+.TP 
+\fB\-\-preprocess\-input\-macros\fP\fI\ forrás\-fájl\fP
+kizárólag a \fB\-\-preprocess\fP, illetve a \fB\-\-preprocess\-string\fP parancs
+használja. Egy fájlt ad meg, ami az előfeldolgozás előtt beolvasott
+\fB[preproc_define]\fP szabályokat tartalmaz.
+.TP 
+\fB\-\-preprocess\-output\-macros[\fP\fI=cél\-fájl\fP\fB]\fP
+kizárólag a \fB\-\-preprocess\fP parancs (de a \fB\-\-preprocess\-string\fP nem)
+használja. Kilistázza a célfájlban lévő összes feldolgozott makrót. Ha a
+célfájl nincs megadva, akkor a preprocess parancsban megadott célkönyvtárban
+lévő „_MACROS_.cfg” fájl lesz az alapértelmezett. A kimeneti fájl
+használható a \fB\-\-preprocess\-input\-macros\fP paranccsal. Ezt a kapcsolót a
+\fB\-\-preprocess\fP parancs előtt kell kiadni.
+.TP 
+\fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
+beállítja a képernyő felbontását. Példa: \fB\-r\fP \fB800x600\fP.
+.TP 
+\fB\-\-render\-image\fP\fI\ kép\fP\fB\ \fP\fIkimenet\fP
+egy érvényes wesnoth „kép útvonal sztring”\-et vár kép útvonal függvényekkel
+és kiír egy .png fájlt. A kép útvonal függvények dokumentációja a
+https://wiki.wesnoth.org/ImagePathFunctionWML oldalon található.
+.TP 
+\fB\-R,\ \-\-report\fP
+inicializálja a játék könyvtárakat, kiír a hibabejelentésekhez használható
+fordítási információkat, majd kilép.
+.TP 
+\fB\-\-rng\-seed\fP\fI\ érték\fP
+az \fIérték\fP számot használja a véletlen generátor kezdőértékéül. Például:
+\fB\-\-rng\-seed\fP \fB0\fP.
+.TP 
+\fB\-\-screenshot\fP\fI\ térkép\fP\fB\ \fP\fIkimenet\fP
+képernyőkép mentése a megadott \fItérkép\fP\-ről \fIkimenet\fP\-be, a képernyő
+inicializálása nélkül.
+.TP 
+\fB\-s[\fP\fIkiszolgáló\fP\fB],\ \-\-server[\fP\fI=kiszolgáló\fP\fB]\fP
+csatlakozik a megadott kiszolgálóhoz, ha létezik ilyen, ellenkező esetben a
+beállításokban elsőként megadott kiszolgálóhoz csatlakozik. Például:
+\fB\-\-server\fP \fBserver.wesnoth.org\fP.
+.TP 
+\fB\-\-showgui\fP
+grafikus felülettel futtatja a játékot, minden implicit \fB\-\-nogui\fP opció
+hatását felülírva.
+.TP 
+\fB\-\-strict\-validation\fP
+az érvényességi hibákat végzetes hibaként kezeli.
+.TP 
+\fB\-t[\fP\fIküldetés_azonosító\fP\fB],\ \-\-test[\fP\fI=küldetés_azonosító\fP\fB]\fP
+egy kis teszt küldetést futtat. A küldetést egy \fB[teszt]\fP WML címkével kell
+definiálni. Az alapértelmezés a \fBtest\fP. A \fB[micro_ai]\fP funkció bemutatása
+a \fBmicro_ai_test\fP\-tel indítható.
+.TP 
+\fB\-\-translations\-over\fP\fI\ százalék\fP
+\fIszázalék\fP megadja, hogy egy fordításnak legalább hány százalékban kell
+teljesnek lennie a játékbeli nyelvválasztó képernyőn való megjelenéshez. Az
+érvényes értékek 0\-tól 100\-ig terjednek.
+.TP 
+\fB\-u,\ \-\-unit\fP\fI\ küldetés\-azonosító\fP
+futtatja a megadott teszt küldetést unit tesztként. Magába foglalja a
+\fB\-\-nogui\fP opciót.
+.TP 
+\fB\-\-unsafe\-scripts\fP
+elérhetővé teszi a \fBpackage\fP csomagot a lua szkriptek számára, így azok
+tetszőleges csomagot betölthetnek. Ne tedd ezt nem megbízható szkriptek
+esetén! A művelet a lua szkripteknek a wesnoth alapprogrammal azonos
+jogosultságokat ad.
+.TP 
+\fB\-S,\ \-\-use\-schema\fP\fI\ útvonal\fP
+a WML séma beállítása a \fB\-V,\ \-\-validate\fP használatához.
+.TP 
+\fB\-\-userdata\-dir\fP\fI\ név\fP
+a felhasználói adatok könyvtárát \fInév\fP\-re állítja a $HOME könyvtárban vagy
+Windows alatt a "Dokumentumok\eMy Games" könyvtárban. A $HOME és
+"Dokumentumok\eMy Games" könyvtárakon kívüli abszolút útvonal is
+megadható. Windows rendszeren a folyamat munkakönyvtárához képest relatív
+könyvtár is megadható ".\e" vagy "..\e" kezdetű útvonal használatával.
+.TP 
+\fB\-\-userdata\-path\fP
+kiírja a játék felhasználói adatait tartalmazó könyvtár nevét, majd kilép.
+.TP 
+\fB\-\-username\fP\fI\ felhasználónév\fP
+\fIusername\fP használata a szerverhez kapcsolódáskor, minden más beállítás
+figyelmen kívül hagyva.
+.TP 
+\fB\-\-validate\fP\fI\ útvonal\fP
+hitelesíti a fájlt a WML séma szerint.
+.TP 
+\fB\-\-validate\-addon\fP\fI\ kiegészítő_azonosító\fP
+hitelesíti a megadott kiegészítő WML\-jét, mialatt játszol.
+.TP 
+\fB\-\-validate\-core\fP
+hitelesíti a központi WML\-t, mialatt játszol.
+.TP 
+\fB\-\-validate\-schema\fP\fI\ útvonal\fP
+hitelesíti a fájlt, mint WML sémát.
+.TP 
+\fB\-\-validcache\fP
+feltételezi, hogy a gyorsítótár érvényes. (veszélyes)
+.TP 
+\fB\-v, \-\-version\fP
+kiírja a játék verziószámát, majd kilép.
+.TP 
+\fB\-\-simple\-version\fP
+semmi mást nem csinál, mint kiírja a játék verziószámát, majd kilép.
+.TP 
+\fB\-w, \-\-windowed\fP
+a játékot ablakos módban indítja el.
+.TP 
+\fB\-\-with\-replay\fP
+visszajátssza a \fB\-\-load\fP kapcsolóval betöltött játszmát.
+.
+.SH "Opciók \-\-multiplayer módban"
+.
+A csapatokra vonatkozó többjátékos opciókat a következőképpen jelöljük:
+\fIszám\fP, ahol a \fIszám\fP helyére a csapat számát kell beírni. Ez általában 1
+vagy 2, de függ a kiválasztott pályán lévő játékosok maximális számától.
+.TP 
+\fB\-\-ai_config\fP\fI\ szám\fP\fB:\fP\fIérték\fP
+kiválaszt egy konfigurációs fájlt a számmal jelölt fél mesterséges
+intelligenciájának.
+.TP 
+\fB\-\-algorithm\fP\fI\ szám\fP\fB:\fP\fIérték\fP
+kiválaszt egy nem\-standard algoritmust, amelyet az oldalt vezérlő MI fog
+használni. Az algoritmust egy \fB[mi]\fP tag adja meg, amely lehet egy a
+beépítettek közül (a „data/ai/ais” vagy „data/ai/dev” könyvtárból) vagy egy
+kiegészítő által definiált. Használható értékek például: \fBidle_ai\fP és
+\fBexperimental_ai\fP.
+.TP 
+\fB\-\-controller\fP\fI\ szám\fP\fB:\fP\fIérték\fP
+megadja az adott csapat irányítóját. Lehetséges értékek: \fBhuman\fP (ember),
+\fBai\fP (mesterséges intelligencia) és \fBnull\fP.
+.TP 
+\fB\-\-era\fP\fI\ érték\fP
+ezzel az opcióval kiválaszthatod, hogy melyik korszakban szeretnél játszani
+a \fBDefault\fP (alapértelmezett) korszak helyett. A korszakot egy azonosítóval
+adhatod meg. A korszakok leírásai a \fBdata/multiplayer/eras.cfg\fP fájlban
+találhatóak.
+.TP 
+\fB\-\-exit\-at\-end\fP
+a mérkőzés után azonnal kilép, nem jelenít meg semmilyen győzelmet vagy
+vereséget jelző üzenetet, ami a felhasználótól a küldetés vége gomb
+megnyomását kívánná meg. Ez szkriptelt teljesítménymérés esetén lehet
+hasznos.
+.TP 
+\fB\-\-ignore\-map\-settings\fP
+az alapértelmezett térképbeállításokat használja a térkép saját beállításai
+helyett.
+.TP 
+\fB\-\-label\fP\fI\ címke\fP
+beállítja az \fIlabel\fP címkét a mesterséges intelligenciák számára.
+.TP 
+\fB\-\-multiplayer\-repeat\fP\fI\ érték\fP
+\fIérték\fP alkalommal megismétel egy többjátékos meccset. Legjobb a \fB\-\-nogui\fP
+opcióval együtt használni, szkriptelhető teljesítményméréshez.
+.TP 
+\fB\-\-parm\fP\fI\ szám\fP\fB:\fP\fInév\fP\fB:\fP\fIérték\fP
+további paramétereket ad meg az adott csapatnak. Ez a paraméter függ a
+\fB\-\-controller\fP és a \fB\-\-algorithm\fP kapcsolóknak megadott értékektől. Ezt
+általában csak a saját mesterséges intelligenciát fejlesztők használják (még
+nem készült hozzá teljes dokumentáció).
+.TP 
+\fB\-\-scenario\fP\fI\ érték\fP
+kiválaszt egy többjátékos pályát. Az alapértelmezett pálya azonosítója a
+\fBmultiplayer_The_Freelands\fP (Szabad földek).
+.TP 
+\fB\-\-side\fP\fI\ szám\fP\fB:\fP\fIérték\fP
+választani lehet az aktuálisan beállított korszak fajai közül az adott
+csapatnak. A fajokat egy azonosító jelöli. A fajok leírásai a
+data/multiplayer.cfg fájlban találhatóak.
+.TP 
+\fB\-\-turns\fP\fI\ érték\fP
+megadja az adott játszma köreinek maximális számát. Alapértelmezetten nincs
+kör korlát.
+.
+.SH "BEFEJEZÉSI ÁLLAPOT"
+.
+A szabályos kilépési kód értéke 0. Ha a kilépési kód 1, az arra utal, hogy
+valamely összetevőt (SDL, videó, betűtípusok, stb.) nem sikerült
+elindítani. Ha a kilépési kód 2, akkor a parancssori opciókkal van gond.
+.br
+Unit tesztek futtatásakor (a \fB\ \-u\fP opcióval) a kilépési kód más lesz. A 0
+érték azt jelenti, hogy a teszt sikeres volt, az 1, hogy sikertelen. A 3 azt
+jelenti, hogy a teszt ugyan sikeres volt, de a visszajátszás fájl
+érvénytelen. A 4 azt jelenti, hogy a teszt sikeres volt, de hibák vannak a
+visszajátszásban. Az utóbbi két érték csak akkor fordul elő, ha a
+\fB\-\-noreplaycheck\fP opció nem lett megadva.
+.
+.SH SZERZŐ
+.
+Írta: David White <davidnwhite@verizon.net>.
+.br
+Szerkesztették: Nils Kneuper <crazy\-ivanovic@gmx.net>, ott
+<ott@gaon.net> és Soliton <soliton.de@gmail.com>.
+Magyarra fordították: Gilluin <gilluin@citromail.hu>, Széll Tamás
+<tomi@digiflex.hu>, Pintér Csaba, Kádár\-Németh Krisztián
+<krisztian.kad@gmail.com> és Udvari Gábor
+<gabor.udvari@gmail.com>.
+.br
+Ennek a dokumentumnak az eredetijét Cyril Bouthors
+<cyril@bouthors.org> írta.
+.br
+Látogasd meg a hivatalos honlapot: https://www.wesnoth.org/ illetve a magyar
+közösségi portált: http://wesnoth.fsf.hu/
+.
+.SH "SZERZŐI JOGOK"
+.
+A szerzői jogok \(co 2003\-2025 David White\-ot
+<davidnwhite@verizon.net> illetik meg
+.br
+Ez egy szabad szoftver; terjeszthető illetve módosítható a GNU Általános
+Közreadási Feltételek dokumentumában \- 2. vagy későbbi verzió \- leírtak
+szerint , melyet a Szabad Szoftver Alapítvány ad ki. Ez a program abban a
+reményben kerül közreadásra, hogy hasznos lesz, de minden egyéb GARANCIA
+NÉLKÜL, az eladhatóságra, vagy valamely célra való alkalmazhatóságra való
+származtatott garanciát is beleértve.
+.
+.SH "LÁSD MÉG"
+.
+\fBwesnothd\fP(6)
