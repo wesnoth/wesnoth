@@ -79,6 +79,8 @@ struct submerge_data
 	std::array<SDL_Vertex, 4> alpha_verts;
 };
 
+typedef std::map<map_location,unsigned int> reach_map;
+
 class gamemap;
 
 /**
@@ -872,7 +874,6 @@ public: //operations for the arrow framework
 protected:
 
 	// Tiles lit for showing where unit(s) can reach
-	typedef std::map<map_location,unsigned int> reach_map;
 	reach_map reach_map_;
 	reach_map reach_map_old_;
 	bool reach_map_changed_;
