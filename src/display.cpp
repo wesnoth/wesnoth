@@ -3157,7 +3157,7 @@ void display::process_reachmap_changes()
 			invalidate(reach_old->first);
 		}
 	}
-		reach_map_old_ = reach_map_;
+	reach_map_old_ = reach_map_;
 	reach_map_changed_ = false;
 	map_location center;
 
