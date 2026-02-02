@@ -16,7 +16,7 @@ local enemies = wesnoth.units.find_on_map({{"filter_adjacent",{id=u.id, is_enemy
 for iter = #enemies, 1, -1 do
     local e = enemies[iter]
     local special
-	for _, attack in ipairs(u.attacks) do
+	for _, attack in ipairs(e.attacks) do
         special = wml.child_array(attack.specials,"intercept")[1]
         if special then
             break
@@ -37,7 +37,7 @@ local sheath_weapon = wesnoth.units.create_animator()
 
 for iter,e in ipairs(enemies) do
     local attacking_weapon
-    for i, attack in ipairs(u.attacks) do
+    for i, attack in ipairs(e.attacks) do
         if wml.child_array(attack.specials,"intercept")[1] then
             attacking_weapon = i
             break
@@ -67,7 +67,7 @@ animator:clear()
 for iter,e in ipairs(enemies) do
     e.variables.intercept_used = e.variables.intercept_used and e.variables.intercept_used + 1 or 1
     local attacking_weapon
-    for i, attack in ipairs(u.attacks) do
+    for i, attack in ipairs(e.attacks) do
         if wml.child_array(attack.specials,"intercept")[1] then
             attacking_weapon = i
             break
@@ -81,7 +81,7 @@ for iter,e in ipairs(enemies) do
         u.facing = wesnoth.map.get_relative_dir(u.x, u.y,e.x, e.y)
         local loc = e.loc
         local loc2 = u.loc
-        local __, __, e_stats, u_stats = wesnoth.simulate_combat(e,attacking_weapon, u)-- Defensive specials of enemy weapon do apply, but enemy doesn't fight back - makes sence for things like shield block
+        local __, __, e_stats, u_stats = wesnoth.simulate_combat(e,attacking_weapon, u)-- Defensive specials of enemy weapon do apply, but enemy doesn't fight back - makes sense for things like shield block
         local w = e.attacks[attacking_weapon]
 
         local strike_limit = wml.child_array(w.specials,"intercept")[1].strike_limit
