@@ -28,6 +28,8 @@
 ### Translations
    * Updated translations: Bengali, British English, Chinese (Simplified), French, Greek, Hungarian, Italian, Spanish
 ### Units
+   * All ships with ram attacks:
+     * Removed the "naval" weapon special, allowing them to ram targets on coastal land.
 ### User interface
 ### WML Engine
 ### Miscellaneous and Bug Fixes
