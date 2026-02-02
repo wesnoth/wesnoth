@@ -50,5 +50,5 @@ wesnoth.game_events.reachmap_updated = function(x,y,r)
 		halos_for_unit(u,r)
 	end
 	wml.fire("redraw")
-    return old_reachmap_updated(x,y)
+    return old_reachmap_updated(x,y,r)
 end
