@@ -468,7 +468,7 @@ bool luaW_copy_upvalues(lua_State* L, const config& cfg)
 					for(const auto& cfg : children) {
 						names.push_back(cfg["name"]);
 					}
-					luaW_push_namedtuple(L, names);
+					lua_named_tuple_builder{ names }.push(L);
 					for(const auto& cfg : children) {
 						luaW_pushscalar(L, cfg["value"]);
 						lua_rawseti(L, -2, lua_rawlen(L, -2) + 1);

@@ -475,7 +475,7 @@ static int intf_named_tuple(lua_State* L)
 	auto names = lua_check<std::vector<std::string>>(L, 2);
 	lua_len(L, 1);
 	int len = luaL_checkinteger(L, -1);
-	luaW_push_namedtuple(L, names);
+	lua_named_tuple_builder{ names }.push(L);
 	for(int i = 1; i <= std::max<int>(len, names.size()); i++) {
 		lua_geti(L, 1, i);
 		lua_seti(L, -2, i);
@@ -1412,11 +1412,13 @@ int lua_kernel_base::intf_kernel_type(lua_State* L)
 	return 1;
 }
 static void push_color_palette(lua_State* L, const std::vector<color_t>& palette) {
+	static const lua_named_tuple_builder tuple_builder{ {"r", "g", "b", "a"} };
+
 	lua_createtable(L, palette.size(), 1);
 	lua_rotate(L, -2, 1); // swap new table with previous element on stack
 	lua_setfield(L, -2, "name");
 	for(std::size_t i = 0; i < palette.size(); i++) {
-		luaW_push_namedtuple(L, {"r", "g", "b", "a"});
+		tuple_builder.push(L);
 		lua_pushinteger(L, palette[i].r);
 		lua_rawseti(L, -2, 1);
 		lua_pushinteger(L, palette[i].g);
