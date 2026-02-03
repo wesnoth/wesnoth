@@ -46,6 +46,7 @@
 #include "units/map.hpp"
 #include "utils/config_filters.hpp"
 #include "units/unit.hpp"
+#include "variable.hpp" // vconfig
 
 #include <utility>
 
@@ -775,6 +776,7 @@ bool unit::ability_active_impl(const unit_ability_t& ab,const map_location& loc)
 	bool illuminates = ab.tag() == "illuminates";
 
 	if(auto afilter = ab.cfg().optional_child("filter")) {
+		scoped_ability_info ability("ability", ab);
 		if(!unit_filter(vconfig(*afilter)).set_use_flat_tod(illuminates).matches(*this, loc)) {
 			return false;
 		}
@@ -810,6 +812,7 @@ bool unit::ability_affects_adjacent(const unit_ability_t& ab, std::size_t dist, 
 			}
 		}
 		auto filter = i.optional_child("filter");
+		scoped_ability_info ability("ability", ab);
 		if (!filter || //filter tag given
 			unit_filter(vconfig(*filter)).set_use_flat_tod(illuminates).matches(*this, loc, from) ) {
 			return true;
@@ -823,6 +826,7 @@ bool unit::ability_affects_self(const unit_ability_t& ab, const map_location& lo
 	auto filter = ab.cfg().optional_child("filter_self");
 	bool affect_self = ab.affects_self();
 	if (!filter || !affect_self) return affect_self;
+	scoped_ability_info ability("ability", ab);
 	return unit_filter(vconfig(*filter)).set_use_flat_tod(ab.tag() == "illuminates").matches(*this, loc);
 }
 
@@ -1994,6 +1998,24 @@ bool specials_context_t::is_special_active(const specials_combatant& self, const
 	//then the type of special must be entered to avoid calling
 	//the function of this special in matches_filter()
 	//In apply_to=both case, ab.tag() must be checked in all filter because special applied to both self and opponent.
+
+	utils::optional<config> first_weapon_cfg, second_weapon_cfg;
+	utils::optional<scoped_weapon_info> first_weapon, second_weapon;
+
+	if(self.at) { // Is this mandatory? I think it should be guaranteed
+		first_weapon_cfg = self.at->to_config();  // Store the config
+		first_weapon.emplace("weapon", *first_weapon_cfg);  // Pass the stored config
+	}
+
+	// Currently this will be nil outside combat (naturaly), this may leave some specials rendered "inactive" while outside of combat
+	// while it's not a big deal it might be needed to be addressed in the future (presumably with a way for filter to tell whether it's in combat)
+	if(other.at) { // Mandatory, when we evaluate outside of combat(tooltips)/ enemy has no weapon in combat
+		second_weapon_cfg = other.at->to_config();  // Store the config
+		second_weapon.emplace("second_weapon", *second_weapon_cfg);  // Pass the stored config
+	}
+
+	scoped_ability_info special("special", ab);
+	
 	bool applied_both = ab.apply_to() == unit_ability_t::apply_to_t::both;
 	const std::string& filter_self = ab.in_specials_tag() ? "filter_self" : "filter_student";
 
