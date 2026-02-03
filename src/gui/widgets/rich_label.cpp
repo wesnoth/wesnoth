@@ -655,15 +655,17 @@ std::pair<config, point> rich_label::get_parsed_text(
 				if(wrap_mode && (float_size.y > 0) && (text_size.y > float_size.y)) {
 					DBG_GUI_RL << "wrap start";
 
-					std::size_t len = get_split_location((*curr_item)["text"].str(), point(init_width - float_size.x, float_size.y * video::get_pixel_scale()));
+					const std::string full_text = (*curr_item)["text"].str();
+
+					std::size_t len = get_split_location(full_text, point(init_width - float_size.x, float_size.y * video::get_pixel_scale()));
+
 					DBG_GUI_RL << "wrap around area: " << float_size;
 
-					std::string removed_part = (*curr_item)["text"].str().substr(len+1);
+					if(len > 0) {
+						// first part of the text
+						(*curr_item)["text"] = full_text.substr(0, len);
+					}
 
-					// first part of the text
-					// get_split_location always splits at word bounds.
-					// substr(len) will include a space, so we skip that.
-					(*curr_item)["text"] = (*curr_item)["text"].str().substr(0, len);
 					(*curr_item)["maximum_width"] = init_width - float_size.x;
 					float_size = point(0,0);
 
@@ -683,12 +685,15 @@ std::pair<config, point> rich_label::get_parsed_text(
 					x = origin.x;
 					wrap_mode = false;
 
-					// rest of the text
-					curr_item = &(text_dom.add_child("text"));
-					default_text_config(curr_item, pos, init_width - pos.x);
-					tmp_h = get_text_size(*curr_item, init_width).y;
-					add_text_with_attribute(*curr_item, removed_part);
-
+					if (len > 0) {
+						// layout rest of the text
+						curr_item = &(text_dom.add_child("text"));
+						default_text_config(curr_item, pos, init_width - pos.x);
+						tmp_h = get_text_size(*curr_item, init_width).y;
+						// get_split_location always splits at word bounds,
+						// so substr(len) will include a space. we skip that.
+						add_text_with_attribute(*curr_item, full_text.substr(len+1));
+					}
 				} else if((float_size.y > 0) && (text_size.y < float_size.y)) {
 					//TODO padding?
 					// text height less than floating image's height, don't split
