@@ -60,6 +60,8 @@ image_dirs = [
     os.path.join("data", "campaigns", "Liberty", "images", "portraits"),
     os.path.join("data", "campaigns", "Liberty", "images", "maps"),
     os.path.join("data", "campaigns", "Liberty", "images", "story"),
+    os.path.join("data", "campaigns", "Of_Pearls_and_Pirates", "images", "maps"),
+    os.path.join("data", "campaigns", "Of_Pearls_and_Pirates", "images", "portraits"),
     os.path.join("data", "campaigns", "Northern_Rebirth", "images", "maps"),
     os.path.join("data", "campaigns", "Northern_Rebirth", "images", "portraits"),
     os.path.join("data", "campaigns", "Sceptre_of_Fire", "images", "maps"),
