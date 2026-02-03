@@ -775,6 +775,16 @@ class HTMLOutput:
                 # complex ones.
                 if name:
                     anames.append(name)
+        abilities_list = u.get_text_val("abilities_list")
+        if abilities_list:
+            for ability_ref in abilities_list.split(","):
+                ability_ref = ability_ref.strip()
+                if ability_ref in self.wesnoth.ability_registry_lookup:
+                    aname = T(self.wesnoth.ability_registry_lookup[ability_ref], "name")
+                    if aname:
+                        anames.append(aname)
+                else:
+                    anames.append(special_ref)
         return anames
 
     def get_recursive_attacks(self, this_unit):
@@ -956,6 +966,16 @@ class HTMLOutput:
                                         sname = T(special, "name")
                                         if sname:
                                             s.append(sname)
+                                specials_list = attack.get_text_val("specials_list")
+                                if specials_list:
+                                    for special_ref in specials_list.split(","):
+                                        special_ref = special_ref.strip()
+                                        if special_ref in self.wesnoth.ability_registry_lookup:
+                                            sname = T(self.wesnoth.ability_registry_lookup[special_ref], "name")
+                                            if sname:
+                                                s.append(sname)
+                                        else:
+                                            s.append(special_ref)
                                 accuracy = attack.get_text_val("accuracy", default="0")
                                 parry = attack.get_text_val("parry", default="0")
                                 if accuracy != "0":
@@ -1237,6 +1257,16 @@ class HTMLOutput:
                         sname = T(special, "name")
                         if sname:
                             s.append(cleantext(sname, quote=False))
+                specials_list = attack.get_text_val("specials_list")
+                if specials_list:
+                    for special_ref in specials_list.split(","):
+                        special_ref = special_ref.strip()
+                        if special_ref in self.wesnoth.ability_registry_lookup:
+                            sname = T(self.wesnoth.ability_registry_lookup[special_ref], "name")
+                            if sname:
+                                s.append(cleantext(sname, quote=False))
+                        else:
+                            s.append(cleantext(special_ref, quote=False))
                 accuracy = attack.get_text_val("accuracy", default="0")
                 parry = attack.get_text_val("parry", default="0")
                 if accuracy != "0":
