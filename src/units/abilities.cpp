@@ -2015,7 +2015,7 @@ bool specials_context_t::is_special_active(const specials_combatant& self, const
 	}
 
 	scoped_ability_info special("special", ab);
-	
+
 	bool applied_both = ab.apply_to() == unit_ability_t::apply_to_t::both;
 	const std::string& filter_self = ab.in_specials_tag() ? "filter_self" : "filter_student";
 
