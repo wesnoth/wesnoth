@@ -22,12 +22,12 @@ CKey::CKey() :
 
 bool CKey::operator[](int k) const
 {
-	return key_list[SDL_GetScancodeFromKey(k)] > 0;
+	return key_list[SDL_GetScancodeFromKey(k, nullptr)];
 }
 
 bool CKey::is_uncomposable(const SDL_KeyboardEvent &event) {
 
-	switch (event.keysym.sym) {
+	switch (event.key) {
 		case SDLK_RETURN:
 		case SDLK_AC_BACK:
 		case SDLK_ESCAPE:

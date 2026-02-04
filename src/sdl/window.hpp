@@ -22,7 +22,7 @@
 
 #include "sdl/point.hpp"
 
-#include <SDL2/SDL_video.h>
+#include <SDL3/SDL_video.h>
 
 #include <string>
 
@@ -58,20 +58,15 @@ public:
 	 * The function calls SDL_CreateWindow and SDL_CreateRenderer.
 	 *
 	 * @param title               Used as title for SDL_CreateWindow.
-	 * @param x                   Used as x for SDL_CreateWindow.
-	 * @param y                   Used as y for SDL_CreateWindow.
 	 * @param w                   Used as w for SDL_CreateWindow.
 	 * @param h                   Used as x for SDL_CreateWindow.
 	 * @param window_flags        Used as flags for SDL_CreateWindow.
 	 * @param render_flags        Used as flags for SDL_CreateRenderer.
 	 */
 	window(const std::string& title,
-			const int x,
-			const int y,
 			const int w,
 			const int h,
-			const uint32_t window_flags,
-			const uint32_t render_flags);
+			const uint32_t window_flags);
 
 	~window();
 
@@ -176,7 +171,7 @@ public:
 	 * will be scaled as if the window were also of this size. For best
 	 * results this should be an integer fraction of the window size.
 	 *
-	 * This is a wrapper for SDL_RenderSetLogicalSize.
+	 * This is a wrapper for SDL_SetRenderLogicalPresentation.
 	 *
 	 * @param w              Width of the window's rendering surface
 	 * @param h              Height of the window's rendering surface
@@ -188,7 +183,6 @@ public:
 	void get_logical_size(int& w, int& h) const;
 
 	/** The current pixel format of the renderer. */
-	uint32_t pixel_format();
 
 	/***** ***** ***** Conversion operators. ***** ***** *****/
 
@@ -207,9 +201,6 @@ private:
 
 	/** The SDL_Window we own. */
 	SDL_Window* window_;
-
-	/** The preferred pixel format for the renderer. */
-	uint32_t pixel_format_;
 };
 
 } // namespace sdl

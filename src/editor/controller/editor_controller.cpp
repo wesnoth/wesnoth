@@ -1477,10 +1477,10 @@ void editor_controller::mouse_motion(int x, int y, const bool /*browse*/,
 		// last_undo is a non-owning pointer. Although it could have other uses, it seems to be
 		// mainly (only?) used for printing debugging information.
 		auto last_undo = get_current_map_context().last_undo_action();
-		if (dragging_left_ && (sdl::get_mouse_button_mask() & SDL_BUTTON(1)) != 0) {
+		if (dragging_left_ && (sdl::get_mouse_button_mask() & SDL_BUTTON_MASK(1)) != 0) {
 			if (!get_current_map_context().map().on_board_with_border(hex_clicked)) return;
 			a = get_mouse_action().drag_left(*gui_, x, y, partial, last_undo);
-		} else if (dragging_right_ && (sdl::get_mouse_button_mask() & SDL_BUTTON(3)) != 0) {
+		} else if (dragging_right_ && (sdl::get_mouse_button_mask() & SDL_BUTTON_MASK(3)) != 0) {
 			if (!get_current_map_context().map().on_board_with_border(hex_clicked)) return;
 			a = get_mouse_action().drag_right(*gui_, x, y, partial, last_undo);
 		}
@@ -1636,4 +1636,4 @@ std::vector<std::string> editor_controller::additional_actions_pressed()
 	return toolkit_->get_palette_manager()->active_palette().action_pressed();
 }
 
-} // end namespace editor
+} //end namespace editor

@@ -329,8 +329,8 @@ bool text_box::history_down()
 
 void text_box::handle_key_tab(SDL_Keymod modifier, bool& handled)
 {
-	if(modifier & KMOD_CTRL) {
-		if(!(modifier & KMOD_SHIFT)) {
+	if(modifier & SDL_KMOD_CTRL) {
+		if(!(modifier & SDL_KMOD_SHIFT)) {
 			handled = history_up();
 		} else {
 			handled = history_down();

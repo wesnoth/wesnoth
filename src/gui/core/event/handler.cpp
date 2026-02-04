@@ -76,7 +76,7 @@ static unsigned event_poll_interval = 0;
  *
  * @returns                       The new timer interval, 0 to stop.
  */
-static uint32_t timer_sdl_draw_event(uint32_t, void*)
+static uint32_t timer_sdl_draw_event(void*, SDL_TimerID, uint32_t)
 {
 	// DBG_GUI_E << "Pushing draw event in queue.";
 
@@ -349,12 +349,6 @@ sdl_event_handler::sdl_event_handler()
 	, dispatchers_()
 	, keyboard_focus_(nullptr)
 {
-	if(SDL_WasInit(SDL_INIT_TIMER) == 0) {
-		if(SDL_InitSubSystem(SDL_INIT_TIMER) == -1) {
-			assert(false);
-		}
-	}
-
 // The event context is created now we join it.
 #ifdef ENABLE
 	join();
@@ -378,29 +372,29 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 	uint8_t button = event.button.button;
 
 	switch(event.type) {
-		case SDL_MOUSEMOTION:
+		case SDL_EVENT_MOUSE_MOTION:
 #ifdef MOUSE_TOUCH_EMULATION
 			// There's no finger motion when it's not down.
 			if (event.motion.state != 0)
 #endif
 			{
-				mouse(SDL_MOUSE_MOTION, {event.motion.x, event.motion.y});
+				mouse(SDL_MOUSE_MOTION, {static_cast<int>(event.motion.x), static_cast<int>(event.motion.y)});
 			}
 			break;
 
-		case SDL_MOUSEBUTTONDOWN:
+		case SDL_EVENT_MOUSE_BUTTON_DOWN:
 			{
-				mouse_button_down({event.button.x, event.button.y}, button);
+				mouse_button_down({static_cast<int>(event.button.x), static_cast<int>(event.button.y)}, button);
 			}
 			break;
 
-		case SDL_MOUSEBUTTONUP:
+		case SDL_EVENT_MOUSE_BUTTON_UP:
 			{
-				mouse_button_up({event.button.x, event.button.y}, button);
+				mouse_button_up({static_cast<int>(event.button.x), static_cast<int>(event.button.y)}, button);
 			}
 			break;
 
-		case SDL_MOUSEWHEEL:
+		case SDL_EVENT_MOUSE_WHEEL:
 			mouse_wheel(get_mouse_position(), event.wheel.x, event.wheel.y);
 			break;
 
@@ -420,50 +414,45 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 			close_window(event.user.code);
 			break;
 
-		case SDL_JOYBUTTONDOWN:
+		case SDL_EVENT_JOYSTICK_BUTTON_DOWN:
 			button_down(event);
 			break;
 
-		case SDL_JOYBUTTONUP:
+		case SDL_EVENT_JOYSTICK_BUTTON_UP:
 			break;
 
-		case SDL_JOYAXISMOTION:
+		case SDL_EVENT_JOYSTICK_AXIS_MOTION:
 			break;
 
-		case SDL_JOYHATMOTION:
+		case SDL_EVENT_JOYSTICK_HAT_MOTION:
 			hat_motion(event);
 			break;
 
-		case SDL_KEYDOWN:
+		case SDL_EVENT_KEY_DOWN:
 			key_down(event);
 			break;
 
-		case SDL_WINDOWEVENT:
-			switch(event.window.event) {
-				// Always precedes SDL_WINDOWEVENT_RESIZED, but the latter does not always
-				// happen; in particular when we change the game resolution via
-				// SDL_SetWindowSize() <https://github.com/wesnoth/wesnoth/issues/7436>
-				case SDL_WINDOWEVENT_SIZE_CHANGED:
-					video_resize(video::game_canvas_size());
-					break;
-
-				case SDL_WINDOWEVENT_ENTER:
-				case SDL_WINDOWEVENT_FOCUS_GAINED:
-					activate();
-					break;
-			}
-
+		// Always precedes SDL_EVENT_WINDOW_RESIZED, but the latter does not always
+		// happen; in particular when we change the game resolution via
+		// SDL_SetWindowSize() <https://github.com/wesnoth/wesnoth/issues/7436>
+		case SDL_EVENT_WINDOW_PIXEL_SIZE_CHANGED:
+			video_resize(video::game_canvas_size());
 			break;
 
-		case SDL_TEXTINPUT:
+		case SDL_EVENT_WINDOW_MOUSE_ENTER:
+		case SDL_EVENT_WINDOW_FOCUS_GAINED:
+			activate();
+			break;
+
+		case SDL_EVENT_TEXT_INPUT:
 			key_down(event);
 			break;
 
-		case SDL_TEXTEDITING:
+		case SDL_EVENT_TEXT_EDITING:
 			text_editing(event.edit.text, event.edit.start, event.edit.length);
 			break;
 
-		case SDL_FINGERMOTION:
+		case SDL_EVENT_FINGER_MOTION:
 			{
 				point c = video::game_canvas_size();
 				touch_motion(
@@ -473,39 +462,22 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 			}
 			break;
 
-		case SDL_FINGERUP:
+		case SDL_EVENT_FINGER_UP:
 			{
 				point c = video::game_canvas_size();
 				touch_up(point(event.tfinger.x * c.x, event.tfinger.y * c.y));
 			}
 			break;
 
-		case SDL_FINGERDOWN:
+		case SDL_EVENT_FINGER_DOWN:
 			{
 				point c = video::game_canvas_size();
 				touch_down(point(event.tfinger.x * c.x, event.tfinger.y * c.y));
 			}
 			break;
 
-		case SDL_MULTIGESTURE:
-			{
-				point c = video::game_canvas_size();
-				touch_multi_gesture(
-					point(event.mgesture.x * c.x, event.mgesture.y * c.y),
-					event.mgesture.dTheta, event.mgesture.dDist,
-					event.mgesture.numFingers
-				);
-			}
-			break;
-
-#if(defined(_X11) && !defined(__APPLE__)) || defined(_WIN32)
-		case SDL_SYSWMEVENT:
-			/* DO NOTHING */
-			break;
-#endif
-
 		// Silently ignored events.
-		case SDL_KEYUP:
+		case SDL_EVENT_KEY_UP:
 			break;
 
 		default:
@@ -768,10 +740,10 @@ void sdl_event_handler::key_down(const SDL_Event& event)
 		done = hotkey_pressed(hk);
 	}
 	if(!done) {
-		if(event.type == SDL_TEXTINPUT) {
+		if(event.type == SDL_EVENT_TEXT_INPUT) {
 			text_input(event.text.text);
 		} else {
-			key_down(event.key.keysym.sym, static_cast<SDL_Keymod>(event.key.keysym.mod), "");
+			key_down(event.key.key, static_cast<SDL_Keymod>(event.key.mod), "");
 		}
 	}
 }
@@ -891,8 +863,8 @@ void init_mouse_location()
 	point mouse = get_mouse_position();
 
 	SDL_Event event{};
-	event.type = SDL_MOUSEMOTION;
-	event.motion.type = SDL_MOUSEMOTION;
+	event.type = SDL_EVENT_MOUSE_MOTION;
+	event.motion.type = SDL_EVENT_MOUSE_MOTION;
 	event.motion.x = mouse.x;
 	event.motion.y = mouse.y;
 

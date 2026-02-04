@@ -12,14 +12,14 @@
 	See the COPYING file for more details.
 */
 
-#include <SDL2/SDL_image.h>
+#include <SDL3_image/SDL_image.h>
 #include <stdlib.h>
 
 int main(int, char** argv)
 {
-    SDL_RWops *src = SDL_RWFromFile(argv[1], "rb");
+    SDL_IOStream *src = SDL_IOFromFile(argv[1], "rb");
     if (src == nullptr) {
         exit(2);
     }
-    exit(!IMG_isJPG(src));
+    exit(!IMG_isWEBP(src));
 }

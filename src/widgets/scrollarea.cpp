@@ -151,7 +151,7 @@ void scrollarea::handle_event(const SDL_Event& event)
 	if (mouse_locked() || hidden())
 		return;
 
-	if (event.type == SDL_MOUSEWHEEL) {
+	if (event.type == SDL_EVENT_MOUSE_WHEEL) {
 		const SDL_MouseWheelEvent &ev = event.wheel;
 		if (inner_location().contains(sdl::get_mouse_location())) {
 			if (ev.y > 0) {
@@ -162,11 +162,11 @@ void scrollarea::handle_event(const SDL_Event& event)
 		}
 	}
 
-	if (event.type == SDL_FINGERUP) {
+	if (event.type == SDL_EVENT_FINGER_UP) {
 		swipe_dy_ = 0;
 	}
 
-	if (event.type == SDL_FINGERDOWN || event.type == SDL_FINGERMOTION) {
+	if (event.type == SDL_EVENT_FINGER_DOWN || event.type == SDL_EVENT_FINGER_MOTION) {
 		// These events are given as a proportion of the full game canvas.
 		// 0.0 is top/left edge, 1.0 is bottom/right edge.
 		// Thus first convert them to game pixels.
@@ -175,13 +175,13 @@ void scrollarea::handle_event(const SDL_Event& event)
 		auto ty = static_cast<int>(event.tfinger.y * canvas_size.y);
 		auto dy = static_cast<int>(event.tfinger.dy * canvas_size.y);
 
-		if (event.type == SDL_FINGERDOWN) {
+		if (event.type == SDL_EVENT_FINGER_DOWN) {
 			swipe_dy_ = 0;
 			swipe_origin_.x = tx;
 			swipe_origin_.y = ty;
 		}
 
-		if (event.type == SDL_FINGERMOTION) {
+		if (event.type == SDL_EVENT_FINGER_MOTION) {
 
 			swipe_dy_ += dy;
 			if (scrollbar_.get_max_position() == 0) {

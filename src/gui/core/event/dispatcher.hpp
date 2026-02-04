@@ -19,7 +19,7 @@
 #include "hotkey/hotkey_command.hpp"
 #include "utils/general.hpp"
 
-#include <SDL2/SDL_events.h>
+#include <SDL3/SDL_events.h>
 
 #include <functional>
 #include <list>
