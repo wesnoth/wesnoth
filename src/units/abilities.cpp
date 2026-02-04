@@ -776,7 +776,7 @@ bool unit::ability_active_impl(const unit_ability_t& ab,const map_location& loc)
 	bool illuminates = ab.tag() == "illuminates";
 
 	if(auto afilter = ab.cfg().optional_child("filter")) {
-		scoped_ability_info ability("ability", ab);
+		scoped_ability_info ability_info{"ability", ab};
 		if(!unit_filter(vconfig(*afilter)).set_use_flat_tod(illuminates).matches(*this, loc)) {
 			return false;
 		}
@@ -812,7 +812,7 @@ bool unit::ability_affects_adjacent(const unit_ability_t& ab, std::size_t dist, 
 			}
 		}
 		auto filter = i.optional_child("filter");
-		scoped_ability_info ability("ability", ab);
+		scoped_ability_info ability_info{"ability", ab};
 		if (!filter || //filter tag given
 			unit_filter(vconfig(*filter)).set_use_flat_tod(illuminates).matches(*this, loc, from) ) {
 			return true;
@@ -2014,7 +2014,7 @@ bool specials_context_t::is_special_active(const specials_combatant& self, const
 		second_weapon.emplace("second_weapon", *second_weapon_cfg);  // Pass the stored config
 	}
 
-	scoped_ability_info special("special", ab);
+	scoped_ability_info ability_info{"ability", ab}; //through it's in [special], it's named "ability" to avoid confusion, when the special is passed by a leadership-like effect
 
 	bool applied_both = ab.apply_to() == unit_ability_t::apply_to_t::both;
 	const std::string& filter_self = ab.in_specials_tag() ? "filter_self" : "filter_student";
