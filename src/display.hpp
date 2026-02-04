@@ -76,7 +76,7 @@ struct submerge_data
 {
 	rect unsub_src;
 	rect unsub_dest;
-	std::array<SDL_Vertex, 4> alpha_verts;
+	std::array<SDL_Vertex, 4> alpha_verts{};
 };
 
 class gamemap;
