@@ -314,12 +314,11 @@ void addon_list::set_addons(const addons_list& addons)
 const addon_info* addon_list::get_selected_addon() const
 {
 	const listbox& list = get_grid().find_widget<const listbox>("addons");
-
-	try {
-		return addon_vector_.at(list.get_selected_row());
-	} catch(const std::out_of_range&) {
+	size_t selected_row = static_cast<size_t>(list.get_selected_row());
+	if (selected_row >= addon_vector_.size()) {
 		return nullptr;
 	}
+	return addon_vector_[selected_row];
 }
 
 std::string addon_list::get_remote_addon_id()
