@@ -877,7 +877,7 @@ void addon_manager::uninstall_addon(const addon_info& addon)
 {
 	if(have_addon_pbl_info(addon.id) || have_addon_in_vcs_tree(addon.id)) {
 		gui2::show_error_message(
-			_("The following add-on appears to have publishing or version control information stored locally, and will not be removed:")
+			_("manager_dialog^The following add-on appears to have publishing or version control information stored locally, and will not be removed:")
 			+ " " +	addon.display_title_full());
 		return;
 	}
@@ -885,7 +885,7 @@ void addon_manager::uninstall_addon(const addon_info& addon)
 	bool success = remove_local_addon(addon.id);
 
 	if(!success) {
-		gui2::show_error_message(_("The following add-on could not be deleted properly:") + " " + addon.display_title_full());
+		gui2::show_error_message(_("manager_dialog^The following add-on could not be deleted properly:") + " " + addon.display_title_full());
 	} else {
 		need_wml_cache_refresh_ = true;
 
