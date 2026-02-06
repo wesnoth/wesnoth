@@ -956,6 +956,8 @@ unit_animation::particle::particle(const config& cfg, const std::string& frame_s
 	if(!parameters_.does_not_change()) {
 		force_change();
 	}
+
+	set_uses_acceleration(accelerate);
 }
 
 bool unit_animation::need_update() const
@@ -993,22 +995,16 @@ bool unit_animation::animation_finished() const
 	return true;
 }
 
-bool unit_animation::animation_finished_potential() const
+// Advances the frame of main animation and sub-animations if they need updating
+void unit_animation::try_advance_to_current_frame()
 {
-	if(!unit_anim_.animation_finished_potential()) return false;
-	for(const auto& anim : sub_anims_) {
-		if(!anim.second.animation_finished_potential()) return false;
+	if(unit_anim_.need_update()) {
+		unit_anim_.advance_to_current_frame();
 	}
-
-	return true;
-}
-
-void unit_animation::update_last_draw_time()
-{
-	double acceleration = unit_anim_.accelerate ? display::get_singleton()->turbo_speed() : 1.0;
-	unit_anim_.update_last_draw_time(acceleration);
 	for(auto& anim : sub_anims_) {
-		anim.second.update_last_draw_time(acceleration);
+		if(anim.second.need_update()) {
+			anim.second.advance_to_current_frame();
+		}
 	}
 }
 
@@ -1040,6 +1036,7 @@ void unit_animation::start_animation(const std::chrono::milliseconds& start_time
 	, const bool accelerate)
 {
 	unit_anim_.accelerate = accelerate;
+	unit_anim_.set_uses_acceleration(accelerate);
 	src_ = src;
 	dst_ = dst;
 
@@ -1049,11 +1046,13 @@ void unit_animation::start_animation(const std::chrono::milliseconds& start_time
 		particle crude_build;
 		crude_build.add_frame(1ms, frame_builder());
 		crude_build.add_frame(1ms, frame_builder().text(text, text_color), true);
+		crude_build.set_uses_acceleration(accelerate);
 		sub_anims_["_add_text"] = crude_build;
 	}
 
 	for(auto& anim : sub_anims_) {
 		anim.second.accelerate = accelerate;
+		anim.second.set_uses_acceleration(accelerate);
 		anim.second.start_animation(start_time);
 	}
 }
@@ -1073,12 +1072,12 @@ void unit_animation::pause_animation()
 	}
 }
 
-void unit_animation::restart_animation()
+void unit_animation::unpause_animation()
 {
-	unit_anim_.restart_animation();
+	unit_anim_.unpause_animation();
 
 	for(auto& anim : sub_anims_) {
-		anim.second.restart_animation();
+		anim.second.unpause_animation();
 	}
 }
 
@@ -1249,7 +1248,7 @@ std::ostream& operator<<(std::ostream& outstream, const unit_animation& u_animat
 void unit_animation::particle::redraw(const frame_parameters& value,const map_location& src, const map_location& dst, halo::manager& halo_man)
 {
 	const unit_frame& current_frame = get_current_frame();
-	const auto animation_time = get_animation_time();
+	const auto animation_time = get_elapsed_time();
 	const frame_parameters default_val = parameters_.parameters(animation_time - get_begin_time());
 
 	// Everything is relative to the first frame in an attack/defense/etc. block.
@@ -1264,9 +1263,9 @@ void unit_animation::particle::redraw(const frame_parameters& value,const map_lo
 	// For sound frames we want the first time variable set only after the frame has started.
 	if(get_current_frame_begin_time() != last_frame_begin_time_ && animation_time >= get_current_frame_begin_time()) {
 		last_frame_begin_time_ = get_current_frame_begin_time();
-		current_frame.redraw(get_current_frame_time(), true, in_scope_of_frame, src, dst, halo_id_, halo_man, default_val, value);
+		current_frame.redraw(get_time_in_current_frame(), true, in_scope_of_frame, src, dst, halo_id_, halo_man, default_val, value);
 	} else {
-		current_frame.redraw(get_current_frame_time(), false, in_scope_of_frame, src, dst, halo_id_, halo_man, default_val, value);
+		current_frame.redraw(get_time_in_current_frame(), false, in_scope_of_frame, src, dst, halo_id_, halo_man, default_val, value);
 	}
 }
 
@@ -1278,8 +1277,8 @@ void unit_animation::particle::clear_halo()
 std::set<map_location> unit_animation::particle::get_overlaped_hex(const frame_parameters& value, const map_location& src, const map_location& dst)
 {
 	const unit_frame& current_frame = get_current_frame();
-	const frame_parameters default_val = parameters_.parameters(get_animation_time() - get_begin_time());
-	return current_frame.get_overlaped_hex(get_current_frame_time(), src, dst, default_val,value);
+	const frame_parameters default_val = parameters_.parameters(get_elapsed_time() - get_begin_time());
+	return current_frame.get_overlaped_hex(get_time_in_current_frame(), src, dst, default_val,value);
 }
 
 unit_animation::particle::~particle()
@@ -1290,6 +1289,7 @@ unit_animation::particle::~particle()
 void unit_animation::particle::start_animation(const std::chrono::milliseconds& start_time)
 {
 	halo_id_.reset();
+	set_uses_acceleration(accelerate);
 	parameters_.override(get_animation_duration());
 	animated<unit_frame>::start_animation(start_time,cycles_);
 	last_frame_begin_time_ = get_begin_time() - 1ms;
@@ -1360,7 +1360,7 @@ void unit_animator::replace_anim_if_invalid(const unit_const_ptr& animated_unit
 	if(!animated_unit) return;
 
 	if(animated_unit->anim_comp().get_animation() &&
-		!animated_unit->anim_comp().get_animation()->animation_finished_potential() &&
+		!animated_unit->anim_comp().get_animation()->animation_finished() &&
 		 animated_unit->anim_comp().get_animation()->matches(
 			src, dst, animated_unit, event, value, hit_type, attack, second_attack, value2) > unit_animation::MATCH_FAIL)
 	{
@@ -1398,7 +1398,7 @@ bool unit_animator::would_end() const
 {
 	bool finished = true;
 	for(const auto& anim : animated_units_) {
-		finished &= anim.my_unit->anim_comp().get_animation()->animation_finished_potential();
+		finished &= anim.my_unit->anim_comp().get_animation()->animation_finished();
 	}
 
 	return finished;
@@ -1411,29 +1411,36 @@ void unit_animator::wait_until(const std::chrono::milliseconds& animation_time) 
 	}
 	// important to set a max animation time so that the time does not go past this value for movements.
 	// fix for bug #1565
-	animated_units_[0].my_unit->anim_comp().get_animation()->set_max_animation_time(animation_time);
+	animated_units_[0].my_unit->anim_comp().get_animation()->set_duration_limit(animation_time);
 
-	display* disp = display::get_singleton();
-	double speed = disp->turbo_speed();
+	const auto speed = display::get_singleton()->turbo_speed();
 
 	resources::controller->play_slice();
 
 	using std::chrono::steady_clock;
-	auto end_tick = animated_units_[0].my_unit->anim_comp().get_animation()->time_to_tick(animation_time);
 
-	while(steady_clock::now() < end_tick - std::min(std::chrono::floor<std::chrono::milliseconds>(20ms / speed), 20ms)) {
-		auto rest = std::chrono::floor<std::chrono::milliseconds>((animation_time - get_animation_time()) * speed);
-		std::this_thread::sleep_for(std::clamp(rest, 0ms, 10ms));
+	// Sleep, effectivly pausing the game until the animation reach the target time
+	while(true) {
+		auto current_anim_time = get_elapsed_time();
+		if(current_anim_time >= animation_time) {
+			break;
+		}
+		auto remaining_ms = animation_time - current_anim_time;
+		auto wait_ms = std::chrono::duration_cast<std::chrono::milliseconds>(
+			remaining_ms / speed
+		);
+		if(wait_ms == 0ms) {
+			break;
+		}
 
+		// Sleep in small slices to allow input processing
+		auto sleep_slice = std::min(wait_ms, 20ms);
+		std::this_thread::sleep_for(sleep_slice);
 		resources::controller->play_slice();
-		end_tick = animated_units_[0].my_unit->anim_comp().get_animation()->time_to_tick(animation_time);
+		update_animation_timers(speed);
 	}
 
-	auto rest = std::max<steady_clock::duration>(0ms, end_tick - steady_clock::now() + 5ms);
-	std::this_thread::sleep_for(rest);
-
-	new_animation_frame();
-	animated_units_[0].my_unit->anim_comp().get_animation()->set_max_animation_time(0ms);
+	animated_units_[0].my_unit->anim_comp().get_animation()->set_duration_limit(0ms);
 }
 
 void unit_animator::wait_for_end() const
@@ -1446,25 +1453,17 @@ void unit_animator::wait_for_end() const
 
 		finished = true;
 		for(const auto& anim : animated_units_) {
-			finished &= anim.my_unit->anim_comp().get_animation()->animation_finished_potential();
+			finished &= anim.my_unit->anim_comp().get_animation()->animation_finished();
 		}
 	}
 }
 
-std::chrono::milliseconds unit_animator::get_animation_time() const
+std::chrono::milliseconds unit_animator::get_elapsed_time() const
 {
 	if(animated_units_.empty()) {
 		return 0ms;
 	}
-	return animated_units_[0].my_unit->anim_comp().get_animation()->get_animation_time() ;
-}
-
-std::chrono::milliseconds unit_animator::get_animation_time_potential() const
-{
-	if(animated_units_.empty()) {
-		return 0ms;
-	}
-	return animated_units_[0].my_unit->anim_comp().get_animation()->get_animation_time_potential() ;
+	return animated_units_[0].my_unit->anim_comp().get_animation()->get_elapsed_time() ;
 }
 
 std::chrono::milliseconds unit_animator::get_end_time() const
@@ -1488,11 +1487,11 @@ void unit_animator::pause_animation()
 	}
 }
 
-void unit_animator::restart_animation()
+void unit_animator::unpause_animation()
 {
 	for(const auto& anim : animated_units_) {
 		if(anim.my_unit->anim_comp().get_animation()) {
-			anim.my_unit->anim_comp().get_animation()->restart_animation();
+			anim.my_unit->anim_comp().get_animation()->unpause_animation();
 		}
 	}
 }
