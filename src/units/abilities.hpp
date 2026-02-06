@@ -354,7 +354,7 @@ struct individual_effect
 class effect
 {
 	public:
-		effect(active_ability_list list, int def, const specials_context_t* ctx = nullptr, EFFECTS wham = EFFECT_DEFAULT);
+		effect(active_ability_list list, int def, const const_attack_ptr& attacker = const_attack_ptr(), EFFECTS wham = EFFECT_DEFAULT);
 		// Provide read-only access to the effect list:
 		typedef std::vector<individual_effect>::const_iterator iterator;
 		typedef std::vector<individual_effect>::const_iterator const_iterator;
@@ -369,7 +369,7 @@ class effect
 		{ return effect_list_.end(); }
 	private:
 		/** Part of the constructor, calculates for a group of abilities with equal priority. */
-		void effect_impl(const active_ability_list& list, int def, const specials_context_t* ctx, EFFECTS wham);
+		void effect_impl(const active_ability_list& list, int def, const const_attack_ptr& att, EFFECTS wham);
 		std::vector<individual_effect> effect_list_;
 		int composite_value_;
 		double composite_double_value_;
