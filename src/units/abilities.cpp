@@ -1326,46 +1326,6 @@ std::vector<unit_ability_t::tooltip_info> specials_context_t::special_tooltips(c
 }
 
 namespace {
-	/**
-	 * Returns whether or not the given special is active for the specified unit disregarding other units,
-	 * based on the current context (see specials_context).
-	 * @param ab                the ability/special
-	 */
-	bool special_tooltip_active(const specials_context_t& context, const specials_context_t::specials_combatant& self, const unit_ability_t& ab)
-	{
-		bool is_for_listing = context.is_for_listing;
-
-		auto& other = context.other(self);
-		bool is_attacker = &self == &context.attacker;
-		//log_scope("special_tooltip_active");
-
-		//here 'active_on' and checking of opponent weapon shouldn't implemented
-		//because other_attack_ don't exist in sidebar display.
-		//'apply_to' and some filters like [filter_student] are checked for know if
-		//special must be displayed in sidebar.
-
-		//only special who affect self are valid here.
-		bool whom_is_self = special_affects_self(ab, is_attacker);
-		if (!whom_is_self)
-			return false;
-
-		//this part of checking is similar to special_active but not the same.
-		//"filter_opponent" is not checked here, and "filter_attacker/defender" only
-		//if attacker/defender is self_.
-		bool applied_both = ab.apply_to() == unit_ability_t::apply_to_t::both;
-
-		if (!special_unit_matches(self.un, other.un, self.loc, self.at, ab, is_for_listing, "filter_student", applied_both || whom_is_self))
-			return false;
-		bool applied_to_attacker = applied_both || (whom_is_self && is_attacker);
-		if (is_attacker && !special_unit_matches(self.un, other.un, self.loc, self.at, ab, is_for_listing, "filter_attacker", applied_to_attacker))
-			return false;
-		bool applied_to_defender = applied_both || (whom_is_self && !is_attacker);
-		if (!is_attacker && !special_unit_matches(self.un, other.un, self.loc, self.at, ab, is_for_listing, "filter_defender", applied_to_defender))
-			return false;
-
-		return true;
-	}
-
 }
 
 
@@ -1386,18 +1346,16 @@ std::vector<unit_ability_t::tooltip_info> specials_context_t::abilities_special_
 			return true;
 		},
 		[&](const ability_ptr& p_ab, const unit&) {
-			if (special_tooltip_active(*this, s_a_o.self, *p_ab)) {
-				bool active = is_special_active(s_a_o.self, *p_ab, unit_ability_t::affects_t::SELF);
-				const std::string name = p_ab->substitute_variables(p_ab->cfg()["name_affected"]);
-				const std::string desc = p_ab->substitute_variables(p_ab->cfg()["description_affected"]);
+			bool active = is_special_active(s_a_o.self, *p_ab, unit_ability_t::affects_t::SELF);
+			const std::string name = p_ab->substitute_variables(p_ab->cfg()["name_affected"]);
+			const std::string desc = p_ab->substitute_variables(p_ab->cfg()["description_affected"]);
 
-				if (name.empty() || checking_name.count(name) != 0) {
-					return;
-				}
-				res.AGGREGATE_EMPLACE(name, desc, p_ab->get_help_topic_id());
-				checking_name.insert(name);
-				active_list.push_back(active);
+			if (name.empty() || checking_name.count(name) != 0) {
+				return;
 			}
+			res.AGGREGATE_EMPLACE(name, desc, p_ab->get_help_topic_id());
+			checking_name.insert(name);
+			active_list.push_back(active);
 		});
 	return res;
 }
