@@ -182,6 +182,7 @@ public:
 	const std::string& small_profile() const { return small_profile_; }
 	const std::string& big_profile() const { return profile_; }
 	std::string halo() const { return get_cfg()["halo"]; }
+	std::string footprint_folder() const { return get_cfg()["footprint_folder"]; }
 	std::string ellipse() const { return get_cfg()["ellipse"]; }
 	bool generate_name() const { return get_cfg()["generate_name"].to_bool(true); }
 	const std::vector<unit_animation>& animations() const;
