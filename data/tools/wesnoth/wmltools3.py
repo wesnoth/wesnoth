@@ -648,6 +648,7 @@ class CrossRef:
     macro_reference = re.compile(r"\{([A-Z_][A-Za-z0-9_:]*)(?!\.)\b")
     file_reference = re.compile(r"([A-Za-z0-9{}.][A-Za-z0-9_/+{}.@\-\[\],~\*]*?\.(" + "|".join(resource_extensions) + r"))((~[A-Z]+\(.*\))*)(:([0-9]+|\[[0-9,*~]*\]))?")
     tag_parse = re.compile(r"\s*([a-z_]+)\s*=(.*)")
+    postfix_parse = re.compile(r"[a-zA-Z0-9/\+\-\.]*$")
     def postfix_files_range(self, postfix):
         "Get the range of strings and definitions to consider for the given postfix"
         if postfix:
@@ -665,7 +666,7 @@ class CrossRef:
         while ".*.*" in pattern:
             pattern = pattern.replace(".*.*", ".*")
         # we'll use the literal tail (if any) as a quick pre-filter
-        postfix = pattern[pattern.rfind('*')+1:]
+        postfix = CrossRef.postfix_parse.search(pattern).group(0)
         # insert necessary escape sequences and markers
         pattern = pattern.replace("+", r"\+")
         pattern = os.sep + pattern + "$"
