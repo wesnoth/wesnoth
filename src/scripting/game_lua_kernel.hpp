@@ -32,7 +32,9 @@ namespace ai { class lua_ai_context; }
 class game_display;
 class game_state;
 class game_board;
+class attack_type;
 class unit_map;
+class unit_type;
 class gamemap;
 class team;
 class game_data;
@@ -190,6 +192,7 @@ class game_lua_kernel : public lua_kernel_base
 	int intf_get_fog_or_shroud(lua_State *L, bool fog);
 	int intf_log_replay(lua_State* L);
 	int intf_zoom(lua_State* L);
+	bool run_wml_filter_internal(const std::string&, const std::string&, int nargs);
 
 	//private helpers
 	std::string synced_state();
@@ -234,11 +237,15 @@ public:
 	void set_wml_condition(const std::string&, bool(*)(const vconfig&));
 	bool run_wml_action(const std::string&, const vconfig&,
 		const game_events::queued_event&);
-	bool run_filter(char const *name, const unit& u);
-	bool run_filter(char const *name, const map_location& l);
+	bool run_filter(char const *name, const unit& u, const map_location& loc, const unit* other_unit);
+	bool run_filter(char const *name, const map_location& l, const unit* ref_unit);
 	bool run_filter(char const *name, const team& t);
 	bool run_filter(char const *name, int nArgs);
 	bool run_wml_conditional(const std::string&, const vconfig&);
+	bool run_wml_filter(const std::string&, const vconfig&, const map_location& loc, const unit* ref_unit);
+	bool run_wml_filter(const std::string&, const vconfig&, const unit& u, const map_location& loc, const unit* other_unit);
+	bool run_wml_filter(const std::string&, const vconfig&, const team& side);
+	bool run_wml_filter(const std::string&, const config&, const attack_type& weapon);
 	/**
 	 * Store a WML event in the Lua registry, as a function.
 	 * Uses a default function that interprets ActionWML.

@@ -16,9 +16,6 @@
 
 #include "enum_base.hpp"
 
-namespace unit_filter_impl
-{
-
 struct conditional_type_defines
 {
 	static constexpr const char* const filter_and = "and";
@@ -28,5 +25,3 @@ struct conditional_type_defines
 	ENUM_AND_ARRAY(filter_and, filter_or, filter_not)
 };
 using conditional_type = string_enums::enum_base<conditional_type_defines>;
-
-}

@@ -28,6 +28,7 @@
 #include "play_controller.hpp"
 #include "resources.hpp"
 #include "synced_context.hpp"
+#include "units/conditional_type.hpp"
 #include "units/unit.hpp"
 #include "units/filter.hpp"
 #include "units/map.hpp"
@@ -248,7 +249,22 @@ bool side_filter::match_internal(const team &t) const
 			}
 		}
 	}
-
+	
+	for (auto child : cfg_.all_ordered()) {
+		if (conditional_type::get_enum(child.first)) {
+			continue;
+		} else if (child.first == "has_unit" || child.first == "has_enemy" || child.first == "has_ally") {
+			continue;
+		} else if (child.first == "enemy_of" || child.first == "allied_with") {
+			if (resources::filter_con) {
+				if (game_lua_kernel* lk = resources::filter_con->get_lua_kernel()) {
+					if (!lk->run_wml_filter(child.first, child.second, t)) {
+						return false;
+					}
+				}
+			}
+		}
+	}
 
 	return true;
 }

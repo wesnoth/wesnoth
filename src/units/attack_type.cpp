@@ -19,14 +19,18 @@
  */
 
 #include "units/attack_type.hpp"
+#include "units/conditional_type.hpp"
 #include "units/types.hpp"
 #include "units/unit.hpp"
+#include "filter_context.hpp"
 #include "formula/callable_objects.hpp"
 #include "formula/formula.hpp"
 #include "formula/string_utils.hpp"
 #include "formula/function_gamestate.hpp"
+#include "resources.hpp"
 #include "deprecation.hpp"
 #include "game_version.hpp"
+#include "scripting/game_lua_kernel.hpp"
 
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
@@ -269,9 +273,21 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 
 	//children filter_special are checked later,
 	//but only when the function doesn't return earlier
-	if(auto sub_filter_special = filter.optional_child("filter_special")) {
-		if(!attack.has_special_or_ability_with_filter(*sub_filter_special)) {
-			return false;
+	for(auto child : filter.all_children_range()) {
+		if(conditional_type::get_enum(child.key)) {
+			continue;
+		} else if(child.key == "filter_special") {
+			if(!attack.has_special_or_ability_with_filter(child.cfg)) {
+				return false;
+			}
+		} else {
+			if(resources::filter_con) {
+				if(game_lua_kernel* lk = resources::filter_con->get_lua_kernel()) {
+					if(!lk->run_wml_filter(child.key, child.cfg, attack)) {
+						return false;
+					}
+				}
+			}
 		}
 	}
 
