@@ -1195,9 +1195,9 @@ static color_t hp_color_impl(int hitpoints, int max_hitpoints)
 		: 0.0;
 
 	if(1.0 == unit_energy) {
-		return {33, 225, 0};
+		return {33, 255, 100};
 	} else if(unit_energy > 1.0) {
-		return {100, 255, 100};
+		return {140, 255, 140};
 	} else if(unit_energy >= 0.75) {
 		return {170, 255, 0};
 	} else if(unit_energy >= 0.5) {
