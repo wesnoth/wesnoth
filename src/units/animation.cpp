@@ -496,16 +496,30 @@ void unit_animation::fill_initial_animations(std::vector<unit_animation>& animat
 		}
 	}
 
-	const std::string default_image = cfg["image"];
-
-	if(animation_base.empty()) {
-		animation_base.push_back(unit_animation(0ms, frame_builder().image(default_image).duration(1ms), "", unit_animation::DEFAULT_ANIM));
+	// Build default image - prefer [default_frame] tag if there is one
+	std::string default_image;
+	frame_builder default_frame_builder;
+	if (auto df_cfg = cfg.optional_child("default_frame")) {
+		default_frame_builder = frame_builder(*df_cfg); // Use existing frame_builder constructor - it parses everything
+		default_image = (*df_cfg)["image"].str();
 	}
 
-	animations.push_back(unit_animation(0ms, frame_builder().image(default_image).duration(1ms), "_disabled_", 0));
-	animations.push_back(unit_animation(0ms,
-		frame_builder().image(default_image).duration(300ms).blend("0.0~0.3:100,0.3~0.0:200", {255,255,255}),
-		"_disabled_selected_", 0));
+	// If no custom [default_image], use simple builder with image= attribute
+	if (default_image.empty()) {
+		default_image = cfg["image"].str();
+		default_frame_builder = frame_builder();
+		default_frame_builder.image(default_image).duration(1ms);
+	}
+
+	if(animation_base.empty()) {
+		animation_base.push_back(unit_animation(0ms, default_frame_builder, "", unit_animation::DEFAULT_ANIM));
+	}
+
+	// Use default_frame_builder for disabled/selected animations
+	animations.push_back(unit_animation(0ms, default_frame_builder, "_disabled_", 0));
+	frame_builder selected_builder = default_frame_builder;
+	selected_builder.duration(300ms).blend("0.0~0.3:100,0.3~0.0:200", { 255,255,255 });
+	animations.push_back(unit_animation(0ms, selected_builder, "_disabled_selected_", 0));
 
 	for(const auto& base : animation_base) {
 		animations.push_back(base);
