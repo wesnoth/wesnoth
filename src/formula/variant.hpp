@@ -154,8 +154,6 @@ private:
 		return res;
 	}
 
-	void must_be(formula_variant::type t) const;
-
 	void must_both_be(formula_variant::type t, const variant& second) const;
 
 	formula_variant::type type() const;
