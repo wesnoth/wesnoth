@@ -2118,7 +2118,10 @@ void unit::apply_builtin_effect(const std::string& apply_to, const config& effec
 	} else if(apply_to == "attack") {
 		set_attr_changed(UA_ATTACKS);
 		for(const attack_ptr& a : attacks_) {
-			if(a->matches_filter(effect)) {
+			auto filter = effect;
+			filter.remove_children("set_specials");
+			filter.remove_children("remove_specials");
+			if(a->matches_filter(filter)) {
 				a->apply_effect(effect);
 			}
 
