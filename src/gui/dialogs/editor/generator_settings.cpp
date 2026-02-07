@@ -22,6 +22,7 @@
 #include "gui/widgets/slider.hpp"
 #include "gui/widgets/status_label_helper.hpp"
 #include "gettext.hpp"
+#include "formula/string_utils.hpp"
 
 #include <functional>
 
