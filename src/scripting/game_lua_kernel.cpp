@@ -4825,8 +4825,16 @@ int game_lua_kernel::intf_add_time_area(lua_State * L)
 		times = cfg.get_parsed_config();
 	} else {
 		id = luaL_checkstring(L, 1);
-		if(!lua_isnoneornil(L, 3))
-			times = luaW_checkconfig(L, 3);
+		if(!lua_isnoneornil(L, 3)) {
+			// Third argument can be either a config with [time] children,
+			// or an array of the contents of those children.
+			if(!luaW_toconfig(L, 3, times)) {
+				auto timeData = lua_check<std::vector<config>>(L, 3);
+				for(const auto& t : timeData) {
+					times.add_child("time", t);
+				}
+			}
+		}
 		vconfig cfg{config()};
 		if(luaW_tovconfig(L, 2, cfg)) {
 			// Second argument is a location filter
@@ -4834,7 +4842,7 @@ int game_lua_kernel::intf_add_time_area(lua_State * L)
 			filter.get_locations(locs, true);
 		} else {
 			// Second argument is an array of locations
-			luaW_check_locationset(L, 2);
+			locs = luaW_check_locationset(L, 2);
 		}
 	}
 
