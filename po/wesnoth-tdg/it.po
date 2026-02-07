@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2026-01-20 17:31 UTC\n"
-"PO-Revision-Date: 2026-01-16 20:35+0100\n"
+"PO-Revision-Date: 2026-01-30 18:10+0100\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italiano <wesnoth-l10n-it@cirulla.net>\n"
 "Language: it\n"
@@ -310,7 +310,7 @@ msgstr ""
 #. [achievement_group]
 #: data/campaigns/The_Deceivers_Gambit/achievements.cfg:38
 msgid "Scenario 14: Armchair General"
-msgstr "Scenario 14: General Divanato"
+msgstr "Scenario 14: Generale Divanato"
 
 #: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:7
 msgid "Attack:"
@@ -504,7 +504,7 @@ msgid ""
 "           Replaces Delfador’s attacks, spells, and passives, but does not "
 "affect hitpoints."
 msgstr ""
-"Transforma in un <ref dst='unit_Frost Stoat Poly'>ermellino</ref> (<span "
+"Trasforma in un <ref dst='unit_Frost Stoat Poly'>ermellino</ref> (<span "
 "color='#00bbe6' style='italic'>1PE</span>), <ref dst='unit_Cave Bear "
 "Poly'>orso</ref> (<span color='#00bbe6' style='italic'>8 PE</span>), <ref "
 "dst='unit_Giant Crab'>granchio</ref> (<span color='#00bbe6' "
@@ -1277,7 +1277,7 @@ msgstr "Morte di Methor o dell’Apprendista"
 #. [note]
 #: data/campaigns/The_Deceivers_Gambit/scenarios/01_Stirrings_of_War.cfg:332
 msgid "Defeat a Goblin Rouser to rout their entourage."
-msgstr ""
+msgstr "Sconfiggi un Goblin Alfiere per scompaginare i loro ranghi."
 
 #. [object]
 #: data/campaigns/The_Deceivers_Gambit/scenarios/01_Stirrings_of_War.cfg:345
@@ -1364,22 +1364,18 @@ msgstr "Fuggire per salvare la pelle!"
 
 #. [scenario]
 #: data/campaigns/The_Deceivers_Gambit/scenarios/01_Stirrings_of_War.cfg:495
-#, fuzzy
-#| msgid "Run away! Back to the swamp!"
 msgid "Run! Flee back to the swamp!"
 msgstr "Fuggiamo! Torniamo nella palude!"
 
 #. [scenario]
 #: data/campaigns/The_Deceivers_Gambit/scenarios/01_Stirrings_of_War.cfg:496
 msgid "Noooo, $unit.name!"
-msgstr ""
+msgstr "Noooo, $unit.name!"
 
 #. [scenario]
 #: data/campaigns/The_Deceivers_Gambit/scenarios/01_Stirrings_of_War.cfg:497
-#, fuzzy
-#| msgid "Run away, $unit.name’s dead!"
 msgid "Flee, flee! $unit.name’s dead!"
-msgstr "Fuggiamo, $unit.name è morto!"
+msgstr "Fuggiamo, fuggiamo! $unit.name è morto!"
 
 #. [message]: speaker=Ozgob
 #. said in response to goblins running away from the fight
@@ -1400,16 +1396,12 @@ msgstr ""
 #. [message]: speaker=Ozgob
 #. Ozgob has lost most of his goblins ('runts'), and is about to charge at Delfador personally
 #: data/campaigns/The_Deceivers_Gambit/scenarios/01_Stirrings_of_War.cfg:543
-#, fuzzy
-#| msgid ""
-#| "I’ve had it with this! Never send a runt to do a warrior’s job. The real "
-#| "orcs will bring you down ourselves!"
 msgid ""
 "I’ve had it with this! Never send a runt to do a warrior’s job. I’ll bring "
 "you down myself!"
 msgstr ""
 "Ne ho abbastanza di tutto questo! Mai mandare un nanerottolo a fare il "
-"lavoro di un guerriero: verrai abbattuto dai veri orchi in persona!"
+"lavoro di un guerriero: ti abbatterò io da solo!"
 
 #. [message]: speaker=Methor
 #: data/campaigns/The_Deceivers_Gambit/scenarios/01_Stirrings_of_War.cfg:580
@@ -4287,10 +4279,8 @@ msgstr "Uno qualsiasi dei nemici raggiunge il margine occidentale della mappa"
 
 #. [object]
 #: data/campaigns/The_Deceivers_Gambit/scenarios/07_The_Great_River.cfg:923
-#, fuzzy
-#| msgid "Casting Spells:"
 msgid "Reselecting Spells:"
-msgstr "Lanciare Incantesimi:"
+msgstr "Riselezione Incantesimi:"
 
 #. [object]
 #: data/campaigns/The_Deceivers_Gambit/scenarios/07_The_Great_River.cfg:924
@@ -4299,6 +4289,9 @@ msgid ""
 "couldn’t have anticipated at the scenario’s start), you now have the option "
 "to change your spells."
 msgstr ""
+"Poiché gli obiettivi dello scenario sono cambiati significativamente (in un "
+"modo che non avresti potuto anticipare all’inizio dello scenario), hai la "
+"possibilità di cambiare i tuoi incantesimi."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/The_Deceivers_Gambit/scenarios/07_The_Great_River.cfg:936
@@ -6529,8 +6522,8 @@ msgid ""
 msgstr ""
 "Sei sicura di essere pronta per questa battaglia, $companion_name? Sei una "
 "fuorilegge, non un soldato, e la tua banda ha già versato più sangue di "
-"quanto ti abbia pagato. Non mentirò dicendo che il tuo aiuto non è "
-"necessario, ma non dovrei nemmeno darlo per scontato."
+"quanto ti abbia pagato. Non mentirò dicendo che non abbiamo bisogno del tuo "
+"aiuto, ma non dovrei nemmeno darlo per scontato."
 
 #. [message]: speaker=Delfador
 #. in this string, $companion_name is male
@@ -8504,6 +8497,8 @@ msgid ""
 "Yeah, I want revenge for our defeat and humiliation! It’s time for heads to "
 "roll!"
 msgstr ""
+"Sì, voglio vendicarmi della nostra sconfitta e umiliazione! È ora che "
+"qualcuno paghi!"
 
 #. [message]: speaker=Eldred
 #: data/campaigns/The_Deceivers_Gambit/scenarios/13_Revelry_Revisited.cfg:1156
@@ -8518,25 +8513,20 @@ msgstr ""
 
 #. [message]
 #: data/campaigns/The_Deceivers_Gambit/scenarios/13_Revelry_Revisited.cfg:1204
-#, fuzzy
-#| msgid ""
-#| "Eldred has betrayed our strife to the orcish clans! With grunts swarming "
-#| "along the riverbank, the road east to Delfador is no longer safe. There "
-#| "will be no more escape that way."
 msgid ""
 "Eldred has betrayed Wesnoth’s strife to the orcish clans. With grunts "
 "swarming along the riverbank, the road east to Delfador is no longer safe. "
 "There can be no more escape."
 msgstr ""
-"Eldred ha tradito la nostra causa rivelandola ai clan degli orchi! Con i "
-"soldati che brulicano lungo la riva del fiume, la strada verso est per "
-"ricongiungersi con Delfador non è più sicura. Non sarà più possibile fuggire "
-"da quella parte."
+"Eldred ha tradito la causa di Wesnoth e ha rivelato i nostri piani ai clan "
+"degli orchi! Con i soldati che brulicano lungo la riva del fiume, la strada "
+"verso est per ricongiungersi con Delfador non è più sicura. Non sarà più "
+"possibile fuggire da quella parte."
 
 #. [message]
 #: data/campaigns/The_Deceivers_Gambit/scenarios/13_Revelry_Revisited.cfg:1209
 msgid "The orcs are back! There’s hordes of them!"
-msgstr ""
+msgstr "Gli orchi sono tornati! Ce ne sono intere orde!"
 
 #. [message]: speaker=Eldred
 #: data/campaigns/The_Deceivers_Gambit/scenarios/13_Revelry_Revisited.cfg:1213
@@ -8544,16 +8534,19 @@ msgid ""
 "At ease, soldier. We’ve made a deal. They’re here to help us fight the "
 "rebels."
 msgstr ""
+"Rilassati, soldato. Abbiamo fatto un accordo. Sono qui per aiutarci a "
+"combattere i ribelli."
 
 #. [message]
 #: data/campaigns/The_Deceivers_Gambit/scenarios/13_Revelry_Revisited.cfg:1218
 msgid "We’re working with orcs? But, your father—"
-msgstr ""
+msgstr "Stiamo collaborando con gli orchi? Ma vostro padre..."
 
 #. [message]: speaker=Eldred
 #: data/campaigns/The_Deceivers_Gambit/scenarios/13_Revelry_Revisited.cfg:1222
 msgid "My father is <i><b>dead</b></i>, soldier. Let the beasts through."
 msgstr ""
+"Mio padre è <i><b>morto</b></i>, soldato. Lascia passare quelle bestie."
 
 #. [objective]: condition=win
 #: data/campaigns/The_Deceivers_Gambit/scenarios/13_Revelry_Revisited.cfg:1232
@@ -8566,7 +8559,7 @@ msgstr ""
 #. "trog" is a made-up slur referring to an orc
 #: data/campaigns/The_Deceivers_Gambit/scenarios/13_Revelry_Revisited.cfg:1271
 msgid "Filthy trog. I don’t trust you, whatever Eldred says."
-msgstr ""
+msgstr "Sporco troglodita. Non mi fido di te, qualunque cosa dica Eldred."
 
 #. [message]: speaker=unit
 #: data/campaigns/The_Deceivers_Gambit/scenarios/13_Revelry_Revisited.cfg:1275
@@ -8575,6 +8568,9 @@ msgid ""
 "pillage any town that resists his rule, so keep your mouth shut or your home "
 "will be next."
 msgstr ""
+"Sei fortunato che il tuo capo ci paghi, pappamolle. Abbiamo carta bianca per "
+"saccheggiare qualsiasi città che si opponga alla sua reggenza, quindi tieni "
+"la bocca chiusa o la prossima sarà casa tua."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_Deceivers_Gambit/scenarios/13_Revelry_Revisited.cfg:1342
@@ -10299,7 +10295,7 @@ msgid ""
 "breathtaking! ...now how long until I’m allowed to cast them too?"
 msgstr ""
 "Congratulazioni per la tua specializzazione, $unit.name! Quelle palle di "
-"fuoco sono incedibili!.. chissà quanto dovrò aspettare io prima che mi sia "
+"fuoco sono incedibili! Chissà quanto dovrò aspettare io prima che mi sia "
 "permesso lanciarle..."
 
 #. [message]: speaker=Delfador

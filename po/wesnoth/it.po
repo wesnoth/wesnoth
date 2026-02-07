@@ -9,13 +9,13 @@
 # Alessio D'Ascanio <otaku@fastwebnet.it>, 2004, 2005.
 # Luciano Montanaro <mikelima@cirulla.net>, 2006, 2007, 2008, 2009, 2010, 2011.
 # Luciano Montanaro <mikelima@gmail.com>, 2012.
-# Antonio Rosella <arosella@yahoo.com>, 2012-2025.
+# Antonio Rosella <arosella@yahoo.com>, 2012-2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2026-01-20 11:31-0600\n"
-"PO-Revision-Date: 2025-12-28 18:07+0100\n"
+"PO-Revision-Date: 2026-01-30 16:51+0100\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.6\n"
+"X-Generator: Poedit 3.4.2\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-Basepath: ../../../../../Sources/wesnoth\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -2885,7 +2885,8 @@ msgstr ""
 "{starting_vowel}{consonnant}{vowel}{ending_consonnant}|{prefix} "
 "{starting_consonnant}{vowel}{ending_consonnant}|{starting_vowel}{consonnant}"
 "{vowel}{consonnant}{ending_vowel}\n"
-"prefix=Benedetta|Dorata|Impavida|Possente|Fortunata|Vecchia|La|La|Valorosa\n"
+"prefix=Benedetta |Dorata |Impavida |Possente |Fortunata |Vecchia |La |La |"
+"Valorosa \n"
 "prefix_vowel=Benedetta |Dorata |Impavida |Possente |Fortunata |Vecchia |L’|"
 "L’|Valorosa \n"
 "starting_consonnant=B|C|Cr|D|F|G|H|Kh|L|M|N|P|R|S|T|Th|V\n"
@@ -8299,19 +8300,16 @@ msgid "Damage versus:"
 msgstr "Danno contro:"
 
 #: src/reports.cpp:988
-#, fuzzy
-#| msgid "$number attack used"
-#| msgid_plural "$number attacks used"
 msgid "uses $num attack"
 msgid_plural "uses $num attacks"
-msgstr[0] "$number attacco utilizzato"
+msgstr[0] "un attacco utilizzato"
 msgstr[1] "$number attacchi utilizzati"
 
 #: src/reports.cpp:996
 msgid "This attack uses $num attack point"
 msgid_plural "This attack uses $num attack points"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Questo attacco utilizza un punto attacco"
+msgstr[1] "Questo attacco utilizza $num punti attacco"
 
 #: src/reports.cpp:1034 src/reports.cpp:1074
 msgid "Weapon special:"
