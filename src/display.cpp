@@ -2454,6 +2454,8 @@ void display::draw_invalidated()
 		drawer.emplace(*this);
 	}
 
+	std::vector<rect> to_invalidate;
+	to_invalidate.reserve(invalidated_.size());
 	for(const map_location& loc : invalidated_) {
 		rect hex_rect = get_location_rect(loc);
 		if(!hex_rect.overlaps(clip_rect)) {
@@ -2470,8 +2472,9 @@ void display::draw_invalidated()
 			}
 		}
 
-		draw_manager::invalidate_region(hex_rect.intersect(clip_rect));
+		to_invalidate.push_back(hex_rect.intersect(clip_rect));
 	}
+	draw_manager::invalidate_regions(std::move(to_invalidate));
 
 	invalidated_hexes_ += invalidated_.size();
 }
