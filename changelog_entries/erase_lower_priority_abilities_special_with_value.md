@@ -1,4 +1,5 @@
 ### WML Engine
    * Because priority= allows to change order of calculations without exclude some of them(we have ever cth = base_cth + add1 + add2) a [suppress_lower_priority] subtag will be added to abilities and specials who don't return boolean values, which can not only erase lower-priority abilities corresponding to the filter, much like overwrite_specials=[overwrite], but unlike the latter, it's not limited to special weapons, but also applies to abilities like `[heals], [regenerate], or [leadership], among others..
      * Add to [suppress_lower_priority] an affect_side attribute to suppress special abilities affecting a unit applied to a particular side (apply_to=self or opponent) and which discriminates special abilities that affect self/student from special abilities belonging to the opponent, even if apply_to=attacker/defender is used (for specials only).
+     * Add a priority attribute to [suppress_lower_priority] to remove abilities without having a higher priority and avoid an unwanted order of calculations.
    * The use of 'overwrite_specials' attribute and [overwrite] subtag in specials are deprecated

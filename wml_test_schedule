@@ -612,6 +612,7 @@
 0 heal_affect_everybody
 0 heal_divide
 0 heal_add_suppress_lower_priority
+0 heal_add_suppress_lower_priority_priority
 0 heal_high_fraction
 0 heal_low_fraction
 0 heal_multiply
@@ -653,6 +654,7 @@
 0 regenerate_affect_everybody
 0 regenerate_divide
 0 regenerate_add_suppress_lower_priority
+0 regenerate_add_suppress_lower_priority_priority
 0 regenerate_high_fraction
 0 regenerate_low_fraction
 0 regenerate_multiply
@@ -693,6 +695,7 @@
 0 resistance_affect_everybody
 0 resistance_divide
 0 resistance_add_suppress_lower_priority
+0 resistance_add_suppress_lower_priority_priority
 0 resistance_high_fraction
 0 resistance_low_fraction
 0 resistance_multiply
@@ -745,6 +748,7 @@
 0 leadership_affect_everybody
 0 leadership_divide
 0 leadership_add_suppress_lower_priority
+0 leadership_add_suppress_lower_priority_priority
 0 leadership_high_fraction
 0 leadership_low_fraction
 0 leadership_multiply
@@ -784,6 +788,7 @@
 0 illuminates_affect_self_no
 0 illuminates_divide
 0 illuminates_add_suppress_lower_priority
+0 illuminates_add_suppress_lower_priority_priority
 0 illuminates_high_fraction
 0 illuminates_low_fraction
 0 illuminates_max_value
@@ -845,6 +850,7 @@
 0 attacks_add
 0 attacks_add_cumulative
 0 attacks_add_suppress_lower_priority
+0 attacks_add_suppress_lower_priority_priority
 0 attacks_add_suppress_lower_priority_affect_side_failed
 0 attacks_add_suppress_lower_priority_affect_side_succeed
 0 attacks_add_divide
@@ -891,6 +897,7 @@
 0 berserk_affect_everybody
 0 berserk_divide
 0 berserk_suppress_lower_priority
+0 berserk_suppress_lower_priority_priority
 0 berserk_suppress_lower_priority_fail
 0 berserk_without_suppress_lower_priority
 0 berserk_high_fraction
@@ -917,6 +924,7 @@
 0 chance_to_hit_negative_value
 0 chance_to_hit_add
 0 chance_to_hit_add_suppress_lower_priority
+0 chance_to_hit_add_suppress_lower_priority_priority
 0 chance_to_hit_add_suppress_lower_priority_affect_side_failed
 0 chance_to_hit_add_suppress_lower_priority_affect_side_succeed
 0 chance_to_hit_add_cumulative
@@ -955,6 +963,7 @@
 0 damage_add
 0 damage_add_cumulative
 0 damage_add_suppress_lower_priority
+0 damage_add_suppress_lower_priority_priority
 0 damage_add_suppress_lower_priority_affect_side_failed
 0 damage_add_suppress_lower_priority_affect_side_succeed
 0 damage_add_divide
@@ -1014,11 +1023,13 @@
 0 damage_type_many
 0 damage_type_many_priority
 0 damage_type_many_suppress_lower_priority
+0 damage_type_many_suppress_lower_priority_priority
 # defense ability tests
 0 defense_negative_value
 0 defense_add
 0 defense_add_cumulative
 0 defense_add_suppress_lower_priority
+0 defense_add_suppress_lower_priority_priority
 0 defense_overwrited_by_chance_to_hit
 0 defense_add_divide
 0 defense_add_multiply
@@ -1061,6 +1072,7 @@
 0 drains_add
 0 drains_add_cumulative
 0 drains_add_suppress_lower_priority
+0 drains_add_suppress_lower_priority_priority
 0 drains_add_suppress_lower_priority_affect_side_failed
 0 drains_add_suppress_lower_priority_affect_side_succeed
 0 drains_add_divide
@@ -1111,6 +1123,7 @@
 0 heal_on_hit_add
 0 heal_on_hit_add_cumulative
 0 heal_on_hit_add_suppress_lower_priority
+0 heal_on_hit_add_suppress_lower_priority_priority
 0 heal_on_hit_add_suppress_lower_priority_affect_side_failed
 0 heal_on_hit_add_suppress_lower_priority_affect_side_succeed
 0 heal_on_hit_add_divide
@@ -1192,6 +1205,7 @@
 0 swarm_attacks_min_negative
 0 swarm_attacks_min_wfl
 0 swarm_suppress_lower_priority
+0 swarm_suppress_lower_priority_priority
 0 swarm_without_suppress_lower_priority
 0 swarm_min_max_zero
 0 swarm_no_min_no_max

@@ -130,6 +130,7 @@ unit_ability_t::unit_ability_t(std::string tag, config cfg, bool inside_attack)
 	, affects_self_(true)
 	, affects_enemies_(false)
 	, priority_(cfg["priority"].to_double(0.00))
+	, suppress_priority_(DBL_MIN)
 	, cfg_(std::move(cfg))
 	, currently_checked_(false)
 {
@@ -163,6 +164,10 @@ unit_ability_t::unit_ability_t(std::string tag, config cfg, bool inside_attack)
 	}
 	affects_self_ = cfg_["affect_self"].to_bool(true);
 	affects_enemies_ = cfg_["affect_enemies"].to_bool(false);
+
+	if(auto suppress_lower_priority = cfg_.optional_child("suppress_lower_priority")) {
+		suppress_priority_ = suppress_lower_priority["priority"].to_double(DBL_MIN);
+	}
 }
 
 void unit_ability_t::do_compat_fixes(config& cfg, const std::string& tag, bool inside_attack)
@@ -1473,7 +1478,7 @@ bool attack_type::overwrite_special_checking(active_ability_list& overwriters, c
 		auto overwrite_specials = j.ability_cfg().optional_child("overwrite");
 		double priority = overwrite_specials ? overwrite_specials["priority"].to_double(0) : 0.00;
 		// overwrite_specials cannot overwrite specials with higher priority.
-		if(ab.priority() > priority) {
+		if((ab.priority() || ab.suppress_priority()) > priority) {
 			continue;
 		}
 		// the cfg being checked for whether it will be overwritten
@@ -1677,8 +1682,6 @@ namespace
 			return false;
 		if(filter.has_attribute("divide") && no_value_weapon_abilities_check)
 			return false;
-		if(filter.has_attribute("priority") && (no_value_weapon_abilities_check && abilities_list::no_weapon_boolean_or_math_tags().count(tag_name) == 0))
-			return false;
 
 		bool all_engine =  abilities_list::no_weapon_math_tags().count(tag_name) != 0 || abilities_list::weapon_math_tags().count(tag_name) != 0 || abilities_list::ability_value_tags().count(tag_name) != 0 || abilities_list::ability_no_value_tags().count(tag_name) != 0;
 		if(filter.has_attribute("replacement_type") && tag_name != "damage_type" && all_engine)
@@ -1744,16 +1747,6 @@ namespace
 
 		if(!string_matches_if_present(filter, cfg, "active_on", "both"))
 			return false;
-
-		if(abilities_list::weapon_math_tags().count(tag_name) != 0 || abilities_list::ability_value_tags().count(tag_name) != 0 || abilities_list::no_weapon_boolean_or_math_tags().count(tag_name) != 0) {
-			if(!double_matches_if_present(filter, cfg, "priority", 0.00)) {
-				return false;
-			}
-		} else {
-			if(!double_matches_if_present(filter, cfg, "priority")) {
-				return false;
-			}
-		}
 
 		//value, add, sub multiply and divide check values of attribute used in engines abilities(default value of 'value' can be checked when not specified)
 		//who return numericals value but can also check in non-engine abilities(in last case if 'value' not specified none value can matches)
@@ -2051,7 +2044,9 @@ namespace
 		for(const auto& j : overwriters) {
 			bool effect_matches = false;
 			auto overwrite_filter = j.ability_cfg().optional_child("suppress_lower_priority");
-			if(overwrite_filter && j.ability().priority() > ab.priority()) {
+			double ov_priority = std::max(j.ability().suppress_priority(), j.ability().priority());
+			double ab_priority = std::max(ab.suppress_priority(), ab.priority());
+			if(overwrite_filter && ov_priority > ab_priority) {
 				bool affect_side = true;
 				if(att) {
 					// Use to differentiate between between the special abilities possessed by the unit and those used by the opponent to debuff/buff it,
@@ -2070,8 +2065,8 @@ namespace
 	void edit_list(active_ability_list& abil_list, const const_attack_ptr& att)
 	{
 		utils::sort_if(abil_list,[](const active_ability& i, const active_ability& j){
-			double l = i.ability().priority();
-			double r = j.ability().priority();
+			double l = std::max(i.ability().suppress_priority(), i.ability().priority());
+			double r = std::max(j.ability().suppress_priority(), j.ability().priority());
 			return l > r;
 		});
 		utils::erase_if(abil_list, [&](const active_ability& i) {
