@@ -5633,30 +5633,30 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 	set_wml_condition("have_unit", &game_events::builtin_conditions::have_unit);
 	set_wml_condition("have_location", &game_events::builtin_conditions::have_location);
 	set_wml_condition("variable", &game_events::builtin_conditions::variable_matches);
-	
+
 	// Create the wml_filters table
 	cmd_log_ << "Adding wml_filters table...\n";
-	
+
 	lua_getglobal(L, "wesnoth");
 	lua_newtable(L);
 	lua_setfield(L, -2, "wml_filters");
 	lua_pop(L, 1);
-	
+
 	luaW_getglobal(L, "wesnoth", "wml_filters");
 	lua_newtable(L);
 	lua_setfield(L, -2, "unit");
 	lua_pop(L, 1);
-	
+
 	luaW_getglobal(L, "wesnoth", "wml_filters");
 	lua_newtable(L);
 	lua_setfield(L, -2, "location");
 	lua_pop(L, 1);
-	
+
 	luaW_getglobal(L, "wesnoth", "wml_filters");
 	lua_newtable(L);
 	lua_setfield(L, -2, "side");
 	lua_pop(L, 1);
-	
+
 	luaW_getglobal(L, "wesnoth", "wml_filters");
 	lua_newtable(L);
 	lua_setfield(L, -2, "weapon");
@@ -6105,7 +6105,7 @@ bool game_lua_kernel::run_wml_filter_internal(const std::string& type, const std
 		ERR_WML << "unknown " << type << " filter wml: [" << cmd << "]";
 		return true;
 	}
-	
+
 	// Function was pushed last, but needs to be below the arguments, so bubble it down.
 	lua_rotate(L, lua_gettop(L) - nargs, 1);
 

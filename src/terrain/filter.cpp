@@ -354,7 +354,7 @@ bool terrain_filter::match_internal(const map_location& loc, const unit* ref_uni
 			return false;
 		}
 	}
-	
+
 	// Handle custom Lua-defined filters
 	for(auto child : cfg_.all_ordered()) {
 		if(conditional_type::get_enum(child.first) || boost::starts_with(child.first, "filter")) {

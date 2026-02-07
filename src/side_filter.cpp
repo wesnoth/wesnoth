@@ -249,7 +249,7 @@ bool side_filter::match_internal(const team &t) const
 			}
 		}
 	}
-	
+
 	for (auto child : cfg_.all_ordered()) {
 		if (conditional_type::get_enum(child.first)) {
 			continue;
