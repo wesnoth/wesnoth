@@ -130,6 +130,7 @@ unit_ability_t::unit_ability_t(std::string tag, config cfg, bool inside_attack)
 	, affects_self_(true)
 	, affects_enemies_(false)
 	, priority_(cfg["priority"].to_double(0.00))
+	, suppress_priority_(cfg["suppress_priority"].to_double(0.00))
 	, cfg_(std::move(cfg))
 	, currently_checked_(false)
 {
@@ -227,6 +228,10 @@ void unit_ability_t::do_compat_fixes(config& cfg, const std::string& tag, bool i
 		}
 		cfg.remove_children("filter_second_weapon");
 		cfg.remove_children("filter_weapon");
+	}
+
+	if (!cfg["overwrite_specials"].blank() || cfg.optional_child("overwrite")) {
+		deprecated_message("overwrite_specials= or [overwrite] in weapon specials", DEP_LEVEL::INDEFINITE, "", "Use suppress_priority= with [filter_lower_priority] instead.");
 	}
 }
 
@@ -917,7 +922,7 @@ private:
 };
 
 template<typename T, typename TFuncFormula>
-T get_single_ability_value(const config::attribute_value& v, T def, const active_ability& ability_info, const map_location& receiver_loc, const specials_context_t* ctx, const TFuncFormula& formula_handler)
+T get_single_ability_value(const config::attribute_value& v, T def, const active_ability& ability_info, const map_location& receiver_loc, const const_attack_ptr& att, const TFuncFormula& formula_handler)
 {
 	return v.apply_visitor(get_ability_value_visitor(def, [&](const std::string& s) {
 
@@ -930,8 +935,8 @@ T get_single_ability_value(const config::attribute_value& v, T def, const active
 					return def;
 				}
 				wfl::map_formula_callable callable(std::make_shared<wfl::unit_callable>(*u_itor));
-				if(ctx) {
-					ctx->add_formula_context(callable);
+				if(att) {
+					att->add_formula_context(callable);
 				}
 				if (auto uptr = units.find_unit_ptr(ability_info.student_loc)) {
 					callable.add("student", wfl::variant(std::make_shared<wfl::unit_callable>(*uptr)));
@@ -964,7 +969,7 @@ std::pair<int,map_location> active_ability_list::get_extremum(const std::string&
 	int stack = 0;
 	for (const active_ability& p : cfgs_)
 	{
-		int value = std::round(get_single_ability_value(p.ability_cfg()[key], static_cast<double>(def), p, loc(), nullptr, [&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
+		int value = std::round(get_single_ability_value(p.ability_cfg()[key], static_cast<double>(def), p, loc(), const_attack_ptr(), [&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
 			return std::round(formula.evaluate(callable).as_int());
 		}));
 
@@ -1468,6 +1473,10 @@ bool attack_type::overwrite_special_checking(active_ability_list& overwriters, c
 		// the overwriter's priority, default of 0
 		auto overwrite_specials = j.ability_cfg().optional_child("overwrite");
 		double priority = overwrite_specials ? overwrite_specials["priority"].to_double(0) : 0.00;
+		// overwrite_specials cannot overwrite specials with higher priority.
+		if(ab.suppress_priority() > priority) {
+			continue;
+		}
 		// the cfg being checked for whether it will be overwritten
 		auto has_overwrite_specials = ab.cfg().optional_child("overwrite");
 		// if the overwriter's priority is greater than 0, then true if the cfg being checked has a higher priority
@@ -1671,6 +1680,8 @@ namespace
 			return false;
 		if(filter.has_attribute("priority") && no_value_weapon_abilities_check)
 			return false;
+		if(filter.has_attribute("suppress_priority") && (no_value_weapon_abilities_check && abilities_list::no_weapon_boolean_or_math_tags().count(tag_name) == 0))
+			return false;
 
 		bool all_engine =  abilities_list::no_weapon_math_tags().count(tag_name) != 0 || abilities_list::weapon_math_tags().count(tag_name) != 0 || abilities_list::ability_value_tags().count(tag_name) != 0 || abilities_list::ability_no_value_tags().count(tag_name) != 0;
 		if(filter.has_attribute("replacement_type") && tag_name != "damage_type" && all_engine)
@@ -1728,6 +1739,9 @@ namespace
 		if(!bool_matches_if_present(filter, cfg, "cumulative", false))
 			return false;
 
+		if (!cfg["overwrite_specials"].blank() || cfg.optional_child("overwrite")) {
+			deprecated_message("overwrite_specials= or [overwrite] in weapon specials", DEP_LEVEL::INDEFINITE, "", "Use suppress_priority= with [filter_lower_priority] instead.");
+		}
 		if(!string_matches_if_present(filter, cfg, "overwrite_specials", "none"))
 			return false;
 
@@ -1740,6 +1754,15 @@ namespace
 			}
 		} else {
 			if(!double_matches_if_present(filter, cfg, "priority")) {
+				return false;
+			}
+		}
+		if(abilities_list::weapon_math_tags().count(tag_name) != 0 || abilities_list::ability_value_tags().count(tag_name) != 0 || abilities_list::no_weapon_boolean_or_math_tags().count(tag_name) != 0) {
+			if(!double_matches_if_present(filter, cfg, "suppress_priority", 0.00)) {
+				return false;
+			}
+		} else {
+			if(!double_matches_if_present(filter, cfg, "suppress_priority")) {
 				return false;
 			}
 		}
@@ -2015,6 +2038,85 @@ bool specials_context_t::is_special_active(const specials_combatant& self, const
 	return true;
 }
 
+bool attack_type::affect_self_opponent(const config& overwrite_filter, const active_ability& overwrited) const
+{
+	auto ctx = fallback_context();
+	auto [self, other] = context_->self_and_other(*this);
+	const map_location& loc = overwrited.student_loc;
+	if(overwrite_filter["affect_side"].str("both") == "self" ) {
+		return (loc == self.loc);
+	} else if(other.un && overwrite_filter["affect_side"].str("both") == "opponent") {
+		return (loc == other.loc);
+	}
+	return true;
+}
+
+namespace
+{
+	bool priority_checking(active_ability_list& overwriters, const active_ability& overwrited, const const_attack_ptr& att)
+	{
+		if(overwriters.empty()){
+			return false;
+		}
+		const unit_ability_t& ab = overwrited.ability();
+
+		for(const auto& j : overwriters) {
+			bool effect_matches = false;
+			auto overwrite_filter = j.ability_cfg().optional_child("filter_lower_priority");
+			if(j.ability().suppress_priority() > ab.suppress_priority()) {
+				bool affect_side = true;
+				if(overwrite_filter) {
+					if(att) {
+						// Used to differentiate between between the special abilities possessed by the unit and those used by the opponent to debuff/buff it,
+						// even when `apply_to=attacker/defender` is used instead of `apply_to=self/opponent`.
+						affect_side = att->affect_self_opponent(*overwrite_filter, overwrited);
+					}
+					effect_matches = affect_side && common_matches_filter(ab.cfg(), ab.tag(), *overwrite_filter);
+				} else {
+					return true;
+				}
+			}
+			if(effect_matches) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	void edit_list(active_ability_list& abil_list, const const_attack_ptr& att)
+	{
+		utils::sort_if(abil_list,[](const active_ability& i, const active_ability& j){
+			double l = i.ability().suppress_priority();
+			double r = j.ability().suppress_priority();
+			return l > r;
+		});
+		utils::erase_if(abil_list, [&](const active_ability& i) {
+			return (priority_checking(abil_list, i, att));
+		});
+	}
+}
+
+active_ability_list attack_type::get_specials_and_abilities(const std::string& special) const
+{
+	auto ctx = fallback_context();
+	auto abil_list = context_->get_active_specials(*this, special);
+
+	// get a list of specials/"specials as abilities" that may potentially overwrite others
+	active_ability_list overwriters = overwrite_special_overwriter(abil_list);
+	if (!abil_list.empty() && !overwriters.empty()) {
+		// remove all abilities that would be overwritten
+		utils::erase_if(abil_list, [&](const active_ability& j) {
+			return (overwrite_special_checking(overwriters, j));
+			});
+	}
+	//if special type is "berserk", "plague", "swarm" or 'damage_type", then edit_list must be called here
+	//because effect() not called for these type of specials.
+	if(abilities_list::no_weapon_boolean_or_math_tags().count(special) != 0) {
+		edit_list(abil_list, shared_from_this());
+	}
+	return abil_list;
+}
+
 namespace unit_abilities
 {
 
@@ -2045,27 +2147,28 @@ bool filter_base_matches(const config& cfg, int def)
 	return true;
 }
 
-static int individual_value_int(const config::attribute_value *v, int def, const active_ability & ability, const map_location& loc, const specials_context_t* ctx) {
-	int value = std::round(get_single_ability_value(*v, static_cast<double>(def), ability, loc, ctx, [&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
+static int individual_value_int(const config::attribute_value *v, int def, const active_ability & ability, const map_location& loc, const const_attack_ptr& att) {
+	int value = std::round(get_single_ability_value(*v, static_cast<double>(def), ability, loc, att, [&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
 		callable.add("base_value", wfl::variant(def));
 		return std::round(formula.evaluate(callable).as_int());
 	}));
 	return value;
 }
 
-static int individual_value_double(const config::attribute_value *v, int def, const active_ability & ability, const map_location& loc, const specials_context_t* ctx) {
-	int value = std::round(get_single_ability_value(*v, static_cast<double>(def), ability, loc, ctx, [&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
+static int individual_value_double(const config::attribute_value *v, int def, const active_ability & ability, const map_location& loc, const const_attack_ptr& att) {
+	int value = std::round(get_single_ability_value(*v, static_cast<double>(def), ability, loc, att, [&](const wfl::formula& formula, wfl::map_formula_callable& callable) {
 		callable.add("base_value", wfl::variant(def));
 		return formula.evaluate(callable).as_decimal() / 1000.0 ;
 	}) * 100);
 	return value;
 }
 
-effect::effect(const active_ability_list& list, int def, const specials_context_t* ctx, EFFECTS wham) :
+effect::effect(active_ability_list list, int def, const const_attack_ptr& att, EFFECTS wham) :
 	effect_list_(),
 	composite_value_(def),
 	composite_double_value_(def)
 {
+	edit_list(list, att);
 	std::map<double, active_ability_list> base_list;
 	for(const active_ability& i : list) {
 		double priority = i.ability().priority();
@@ -2076,12 +2179,12 @@ effect::effect(const active_ability_list& list, int def, const specials_context_
 	}
 	int value = def;
 	for(auto base : base_list) {
-		effect::effect_impl(base.second, value, ctx, wham);
+		effect::effect_impl(base.second, value, att, wham);
 		value = composite_value_;
 	}
 }
 
-void effect::effect_impl(const active_ability_list& list, int def, const specials_context_t* ctx, EFFECTS wham )
+void effect::effect_impl(const active_ability_list& list, int def, const const_attack_ptr& att, EFFECTS wham )
 {
 	int value_set = def;
 	std::map<std::string,individual_effect> values_add;
@@ -2103,7 +2206,7 @@ void effect::effect_impl(const active_ability_list& list, int def, const special
 			continue;
 
 		if (const config::attribute_value *v = cfg.get("value")) {
-			int value = individual_value_int(v, def, ability, list.loc(), ctx);
+			int value = individual_value_int(v, def, ability, list.loc(), att);
 			int value_cum = wham != EFFECT_CUMULABLE && cfg["cumulative"].to_bool() ? std::max(def, value) : value;
 			if(set_effect_cum.type != NOT_USED && wham == EFFECT_CUMULABLE && cfg["cumulative"].to_bool()) {
 				set_effect_cum.set(SET, set_effect_cum.value + value_cum, ability.ability_cfg(), ability.teacher_loc);
@@ -2128,38 +2231,38 @@ void effect::effect_impl(const active_ability_list& list, int def, const special
 
 		if(wham != EFFECT_WITHOUT_CLAMP_MIN_MAX) {
 			if(const config::attribute_value *v = cfg.get("max_value")) {
-				int value = individual_value_int(v, def, ability, list.loc(), ctx);
+				int value = individual_value_int(v, def, ability, list.loc(), att);
 				max_value = max_value ? std::min(*max_value, value) : value;
 			}
 			if(const config::attribute_value *v = cfg.get("min_value")) {
-				int value = individual_value_int(v, def, ability, list.loc(), ctx);
+				int value = individual_value_int(v, def, ability, list.loc(), att);
 				min_value = min_value ? std::max(*min_value, value) : value;
 			}
 		}
 
 		if (const config::attribute_value *v = cfg.get("add")) {
-			int add = individual_value_int(v, def, ability, list.loc(), ctx);
+			int add = individual_value_int(v, def, ability, list.loc(), att);
 			std::map<std::string,individual_effect>::iterator add_effect = values_add.find(effect_id);
 			if(add_effect == values_add.end() || add > add_effect->second.value) {
 				values_add[effect_id].set(ADD, add, ability.ability_cfg(), ability.teacher_loc);
 			}
 		}
 		if (const config::attribute_value *v = cfg.get("sub")) {
-			int sub = - individual_value_int(v, def, ability, list.loc(), ctx);
+			int sub = - individual_value_int(v, def, ability, list.loc(), att);
 			std::map<std::string,individual_effect>::iterator sub_effect = values_sub.find(effect_id);
 			if(sub_effect == values_sub.end() || sub < sub_effect->second.value) {
 				values_sub[effect_id].set(ADD, sub, ability.ability_cfg(), ability.teacher_loc);
 			}
 		}
 		if (const config::attribute_value *v = cfg.get("multiply")) {
-			int multiply = individual_value_double(v, def, ability, list.loc(), ctx);
+			int multiply = individual_value_double(v, def, ability, list.loc(), att);
 			std::map<std::string,individual_effect>::iterator mul_effect = values_mul.find(effect_id);
 			if(mul_effect == values_mul.end() || multiply > mul_effect->second.value) {
 				values_mul[effect_id].set(MUL, multiply, ability.ability_cfg(), ability.teacher_loc);
 			}
 		}
 		if (const config::attribute_value *v = cfg.get("divide")) {
-			int divide = individual_value_double(v, def, ability, list.loc(), ctx);
+			int divide = individual_value_double(v, def, ability, list.loc(), att);
 
 			if (divide == 0) {
 				ERR_NG << "division by zero with divide= in ability/weapon special " << effect_id;
