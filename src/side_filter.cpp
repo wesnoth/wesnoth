@@ -256,6 +256,8 @@ bool side_filter::match_internal(const team &t) const
 		} else if (child.first == "has_unit" || child.first == "has_enemy" || child.first == "has_ally") {
 			continue;
 		} else if (child.first == "enemy_of" || child.first == "allied_with") {
+			continue;
+		} else {
 			if (resources::filter_con) {
 				if (game_lua_kernel* lk = resources::filter_con->get_lua_kernel()) {
 					if (!lk->run_wml_filter(child.first, child.second, t)) {

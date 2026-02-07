@@ -6149,7 +6149,7 @@ bool game_lua_kernel::run_wml_filter(const std::string& cmd, const vconfig& cfg,
 	lua_State* L = mState;
 	luaW_pushvconfig(L, cfg);
 	luaW_pushteam(L, const_cast<team&>(side));
-	return run_wml_filter_internal("location", cmd, 2);
+	return run_wml_filter_internal("side", cmd, 2);
 }
 
 bool game_lua_kernel::run_wml_filter(const std::string& cmd, const config& cfg, const attack_type& weapon)
