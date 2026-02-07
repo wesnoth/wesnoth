@@ -4,6 +4,8 @@
 ### Campaigns
    * Dusk of Dawn
      * S02 "A Dream": remove "fearless" trait, but spawn more higher-level woses instead.
+   * Eastern Invasion
+     * S09 "Castle in the Ice": slightly reduce number of wolves and drakes.
    * The Hammer of Thursagan
      * Shortened turn limits on several long scenarios.
      * Decreased player gold from 100 to 80 on most scenarios.
