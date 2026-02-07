@@ -359,21 +359,7 @@ const_formula_callable_ptr variant::as_callable() const
 variant variant::operator+(const variant& v) const
 {
 	if(is_list() && v.is_list()) {
-		auto& list = as_list();
-		auto& other_list = v.as_list();
-
-		std::vector<variant> res;
-		res.reserve(list.size() + other_list.size());
-
-		for(const auto& member : list) {
-			res.push_back(member);
-		}
-
-		for(const auto& member : other_list) {
-			res.push_back(member);
-		}
-
-		return variant(std::move(res));
+		return concatenate(v);
 	}
 
 	if(is_map() && v.is_map()) {
@@ -583,6 +569,20 @@ variant zip_transform(const variant& v1, const variant& v2, const Func& op_func)
 	return variant(std::move(res));
 }
 
+variant concat_lists(const variant& v1, const variant& v2)
+{
+	const std::vector<variant>& lhs = v1.as_list();
+	const std::vector<variant>& rhs = v2.as_list();
+
+	std::vector<variant> res;
+	res.reserve(lhs.size() + rhs.size());
+
+	std::copy(lhs.begin(), lhs.end(), std::back_inserter(res));
+	std::copy(rhs.begin(), rhs.end(), std::back_inserter(res));
+
+	return variant(std::move(res));
+}
+
 } // namespace implementation
 
 variant variant::list_elements_add(const variant& v) const
@@ -611,25 +611,12 @@ variant variant::list_elements_div(const variant& v) const
 
 variant variant::concatenate(const variant& v) const
 {
-	if(is_list()) {
-		v.must_be(formula_variant::type::list);
+	if(is_list() && v.is_list()) {
+		return implementation::concat_lists(*this, v);
+	}
 
-		std::vector<variant> res;
-		res.reserve(num_elements() + v.num_elements());
-
-		for(std::size_t i = 0; i < num_elements(); ++i) {
-			res.push_back((*this)[i]);
-		}
-
-		for(std::size_t i = 0; i < v.num_elements(); ++i) {
-			res.push_back(v[i]);
-		}
-
-		return variant(std::move(res));
-	} else if(is_string()) {
-		v.must_be(formula_variant::type::string);
-		std::string res = as_string() + v.as_string();
-		return variant(res);
+	if(is_string() && v.is_string()) {
+		return variant(as_string() + v.as_string());
 	}
 
 	throw type_error(was_expecting("a list or a string", *this));
@@ -650,13 +637,6 @@ bool variant::contains(const variant& v) const
 		return utils::contains(as_map(), v);
 	default:
 		throw type_error(was_expecting("a list or a map", *this));
-	}
-}
-
-void variant::must_be(formula_variant::type t) const
-{
-	if(type() != t) {
-		assert_must_be(t, *this);
 	}
 }
 
