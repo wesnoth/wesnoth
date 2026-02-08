@@ -6196,14 +6196,20 @@ bool game_lua_kernel::run_wml_filter(const std::string& cmd, const vconfig& cfg,
  * @param cmd The filter tag being evaluated.
  * @param cfg The contents of the filter tag.
  * @param weapon The weapon currently being matched.
+ * @param owner The unit that the weapon belongs to (optional).
  * @returns Whether the filter passed.
  */
-bool game_lua_kernel::run_wml_filter(const std::string& cmd, const config& cfg, const attack_type& weapon)
+bool game_lua_kernel::run_wml_filter(const std::string& cmd, const config& cfg, const attack_type& weapon, const unit* owner)
 {
 	lua_State* L = mState;
 	luaW_pushconfig(L, cfg);
 	luaW_pushweapon(L, weapon.shared_from_this());
-	return run_wml_filter_internal("weapon", cmd, 2);
+	if(owner) {
+		luaW_pushunit(L, const_cast<unit*>(owner)->shared_from_this());
+	} else {
+		lua_pushnil(L);
+	}
+	return run_wml_filter_internal("weapon", cmd, 3);
 }
 
 static int intf_run_event_wml(lua_State* L)

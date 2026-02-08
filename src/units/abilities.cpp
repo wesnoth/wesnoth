@@ -1278,7 +1278,7 @@ namespace { // Helpers for attack_type::special_active()
 		// Check for a weapon match.
 		if (!filter_weapon.empty()) {
 			std::string check_if_recursion = applies_to_checked ? ab.tag() : "";
-			if ( !weapon || !weapon->matches_filter(filter_weapon, check_if_recursion) )
+			if ( !weapon || !weapon->matches_filter(filter_weapon, u.get(), check_if_recursion) )
 				return false;
 		}
 

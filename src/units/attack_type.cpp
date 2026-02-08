@@ -20,9 +20,12 @@
 
 #include "units/attack_type.hpp"
 #include "units/conditional_type.hpp"
+#include "units/map.hpp"
 #include "units/types.hpp"
 #include "units/unit.hpp"
+#include "display_context.hpp"
 #include "filter_context.hpp"
+#include "team.hpp"
 #include "formula/callable_objects.hpp"
 #include "formula/formula.hpp"
 #include "formula/string_utils.hpp"
@@ -31,6 +34,7 @@
 #include "deprecation.hpp"
 #include "game_version.hpp"
 #include "scripting/game_lua_kernel.hpp"
+#include "variable.hpp"
 
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
@@ -162,7 +166,7 @@ bool attack_type::has_filter_special_or_ability(const config& filter) const
  * Returns whether or not *this matches the given @a filter, ignoring the
  * complexities introduced by [and], [or], and [not].
  */
-static bool matches_simple_filter(const attack_type & attack, const config & filter, const std::string& check_if_recursion)
+static bool matches_simple_filter(const attack_type & attack, const config & filter, const unit* owner, const std::string& check_if_recursion)
 {
 	const std::set<std::string> filter_range = utils::split_set(filter["range"].str());
 	const std::string& filter_min_range = filter["min_range"];
@@ -283,7 +287,7 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 		} else {
 			if(resources::filter_con) {
 				if(game_lua_kernel* lk = resources::filter_con->get_lua_kernel()) {
-					if(!lk->run_wml_filter(child.key, child.cfg, attack)) {
+					if(!lk->run_wml_filter(child.key, child.cfg, attack, owner)) {
 						return false;
 					}
 				}
@@ -293,7 +297,12 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 
 	if (!filter_formula.empty()) {
 		try {
-			const wfl::attack_type_callable callable(attack);
+			const wfl::attack_type_callable self(attack);
+			wfl::map_formula_callable backup;
+			if(owner) {
+				backup.add("owner", wfl::variant(std::make_shared<wfl::unit_callable>(*owner)));
+			}
+			const wfl::formula_callable_with_backup callable(self, backup);
 			wfl::gamestate_function_symbol_table symbols;
 			const wfl::formula form(filter_formula, &symbols);
 			if(!form.evaluate(callable).as_bool()) {
@@ -314,25 +323,40 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 /**
  * Returns whether or not *this matches the given @a filter.
  */
-bool attack_type::matches_filter(const config& filter, const std::string& check_if_recursion) const
+bool attack_type::matches_filter(const config& filter, const unit* owner, const std::string& check_if_recursion) const
 {
+	utils::optional<scoped_xy_unit> unitvar_map;
+	utils::optional<scoped_recall_unit> unitvar_recall;
+	if(owner && resources::filter_con) {
+		const auto& dc = resources::filter_con->get_disp_context();
+		const auto& umap = dc.units();
+		if(umap.find_unit_ptr(owner->get_location())) {
+			// On map
+			unitvar_map.emplace("owner_unit", owner->get_location(), umap);
+		} else {
+			// On recall
+			const auto& t = dc.get_team(owner->side());
+			int index = t.recall_list().find_index(owner->id());
+			unitvar_recall.emplace("owner_unit", t.save_id(), index);
+		}
+	}
 	// Handle the basic filter.
-	bool matches = matches_simple_filter(*this, filter, check_if_recursion);
+	bool matches = matches_simple_filter(*this, filter, owner, check_if_recursion);
 
 	// Handle [and], [or], and [not] with in-order precedence
 	for(const auto [key, condition_cfg] : filter.all_children_view() )
 	{
 		// Handle [and]
 		if ( key == "and" )
-			matches = matches && matches_filter(condition_cfg, check_if_recursion);
+			matches = matches && matches_filter(condition_cfg, owner, check_if_recursion);
 
 		// Handle [or]
 		else if ( key == "or" )
-			matches = matches || matches_filter(condition_cfg, check_if_recursion);
+			matches = matches || matches_filter(condition_cfg, owner, check_if_recursion);
 
 		// Handle [not]
 		else if ( key == "not" )
-			matches = matches && !matches_filter(condition_cfg, check_if_recursion);
+			matches = matches && !matches_filter(condition_cfg, owner, check_if_recursion);
 	}
 
 	return matches;

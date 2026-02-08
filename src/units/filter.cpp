@@ -772,7 +772,7 @@ void unit_filter_compound::fill(const vconfig& cfg)
 			else if (child.first == "has_attack") {
 				create_child(child.second, [](const vconfig& c, const unit_filter_args& args) {
 					for(const attack_type& a : args.u.attacks()) {
-						if(a.matches_filter(c.get_parsed_config())) {
+						if(a.matches_filter(c.get_parsed_config(), &args.u)) {
 							return true;
 						}
 					}

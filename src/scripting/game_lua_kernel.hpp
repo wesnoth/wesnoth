@@ -245,7 +245,7 @@ public:
 	bool run_wml_filter(const std::string&, const vconfig&, const map_location& loc, const unit* ref_unit);
 	bool run_wml_filter(const std::string&, const vconfig&, const unit& u, const map_location& loc, const unit* other_unit);
 	bool run_wml_filter(const std::string&, const vconfig&, const team& side);
-	bool run_wml_filter(const std::string&, const config&, const attack_type& weapon);
+	bool run_wml_filter(const std::string&, const config&, const attack_type& weapon, const unit* owner);
 	/**
 	 * Store a WML event in the Lua registry, as a function.
 	 * Uses a default function that interprets ActionWML.
