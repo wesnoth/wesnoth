@@ -99,7 +99,7 @@ tree_view_node::tree_view_node(const std::string& id,
 			std::bind(&tree_view_node::signal_handler_label_left_button_click, this, std::placeholders::_2, std::placeholders::_3, std::placeholders::_4),
 			event::dispatcher::front_pre_child);
 
-		if(!get_tree_view().selected_item_) {
+		if(get_tree_view().has_minimum() && !get_tree_view().selected_item_) {
 			get_tree_view().selected_item_ = this;
 			label_->set_value(true);
 		}
