@@ -6099,9 +6099,12 @@ bool game_lua_kernel::run_wml_conditional(const std::string& cmd, const vconfig&
 /**
  * Evaluates a WML filter.
  *
+ * Usage: Push the arguments to the filter onto the Lua stack, then call this function.
+ *
+ * @param type The type of filter being evaluated. One of "unit", "location", "weapon", "side".
+ * @param cmd The filter tag being evaluated.
+ * @param nargs The number of arguments to be passed to the filter function.
  * @returns Whether the filter passed.
- * @note    @a cfg should be either volatile or long-lived since the Lua
- *          code may grab it for an arbitrarily long time.
  */
 bool game_lua_kernel::run_wml_filter_internal(const std::string& type, const std::string& cmd, int nargs)
 {
@@ -6125,6 +6128,15 @@ bool game_lua_kernel::run_wml_filter_internal(const std::string& type, const std
 	return luaW_toboolean(L, -1);
 }
 
+/**
+ * Evaluates a WML location filter.
+ *
+ * @param cmd The filter tag being evaluated.
+ * @param cfg The contents of the filter tag.
+ * @param loc The location currently being matched.
+ * @param ref_unit An optional reference unit, for $teleport_unit.
+ * @returns Whether the filter passed.
+ */
 bool game_lua_kernel::run_wml_filter(const std::string& cmd, const vconfig& cfg, const map_location& loc, const unit* ref_unit)
 {
 	lua_State* L = mState;
@@ -6138,6 +6150,16 @@ bool game_lua_kernel::run_wml_filter(const std::string& cmd, const vconfig& cfg,
 	return run_wml_filter_internal("location", cmd, 3);
 }
 
+/**
+ * Evaluates a WML unit filter.
+ *
+ * @param cmd The filter tag being evaluated.
+ * @param cfg The contents of the filter tag.
+ * @param u The unit currently being matched.
+ * @param loc The location currently being matched (usually but not always the unit's current location).
+ * @param other_unit An optional second unit, for $other_unit
+ * @returns Whether the filter passed.
+ */
 bool game_lua_kernel::run_wml_filter(const std::string& cmd, const vconfig& cfg, const unit& u, const map_location& loc, const unit* other_unit)
 {
 	lua_State* L = mState;
@@ -6152,6 +6174,14 @@ bool game_lua_kernel::run_wml_filter(const std::string& cmd, const vconfig& cfg,
 	return run_wml_filter_internal("unit", cmd, 4);
 }
 
+/**
+ * Evaluates a WML side filter.
+ *
+ * @param cmd The filter tag being evaluated.
+ * @param cfg The contents of the filter tag.
+ * @param side The side currently being matched.
+ * @returns Whether the filter passed.
+ */
 bool game_lua_kernel::run_wml_filter(const std::string& cmd, const vconfig& cfg, const team& side)
 {
 	lua_State* L = mState;
@@ -6160,6 +6190,14 @@ bool game_lua_kernel::run_wml_filter(const std::string& cmd, const vconfig& cfg,
 	return run_wml_filter_internal("side", cmd, 2);
 }
 
+/**
+ * Evaluates a WML location filter.
+ *
+ * @param cmd The filter tag being evaluated.
+ * @param cfg The contents of the filter tag.
+ * @param weapon The weapon currently being matched.
+ * @returns Whether the filter passed.
+ */
 bool game_lua_kernel::run_wml_filter(const std::string& cmd, const config& cfg, const attack_type& weapon)
 {
 	lua_State* L = mState;
