@@ -35,6 +35,8 @@
 #include "formula/callable_objects.hpp"
 #include "formula/formula.hpp"
 #include "formula/function_gamestate.hpp"
+#include "deprecation.hpp"
+#include "game_version.hpp"
 
 static lg::log_domain log_engine_sf("engine/side_filter");
 #define ERR_NG LOG_STREAM(err, log_engine_sf)
@@ -242,6 +244,7 @@ bool side_filter::match_internal(const team &t) const
 	}
 
 	if (cfg_.has_attribute("lua_function")) {
+		deprecated_message("lua_function", DEP_LEVEL::INDEFINITE, "1.23", "Please define a custom filter tag in wesnoth.wml_filters.side instead.");
 		std::string lua_function = cfg_["lua_function"].str();
 		if (!lua_function.empty() && fc_->get_lua_kernel()) {
 			if (!fc_->get_lua_kernel()->run_filter(lua_function.c_str(), t)) {

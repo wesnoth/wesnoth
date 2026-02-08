@@ -35,6 +35,8 @@
 #include "scripting/game_lua_kernel.hpp"
 #include "units/conditional_type.hpp"
 #include "units/unit_alignments.hpp"
+#include "deprecation.hpp"
+#include "game_version.hpp"
 
 #include <boost/range/adaptor/transformed.hpp>
 #include <boost/algorithm/string.hpp>
@@ -104,6 +106,7 @@ bool terrain_filter::match_internal(const map_location& loc, const unit* ref_uni
 
 	std::string lua_function = cfg_["lua_function"];
 	if (!lua_function.empty() && fc_->get_lua_kernel()) {
+		deprecated_message("lua_function", DEP_LEVEL::INDEFINITE, "1.23", "Please define a custom filter tag in wesnoth.wml_filters.location instead.");
 		if (!fc_->get_lua_kernel()->run_filter(lua_function.c_str(), loc, ref_unit)) {
 			return false;
 		}
