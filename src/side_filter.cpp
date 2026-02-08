@@ -118,93 +118,6 @@ bool side_filter::match_internal(const team &t) const
 		}
 	}
 
-	//Allow filtering on units
-	if(cfg_.has_child("has_unit")) {
-		const vconfig & ufilt_cfg = cfg_.child("has_unit");
-		if (!ufilter_) {
-			ufilter_.reset(new unit_filter(ufilt_cfg.make_safe()));
-			ufilter_->set_use_flat_tod(flat_);
-		}
-		bool found = false;
-		for(const unit &u : fc_->get_disp_context().units()) {
-			if (u.side() != t.side()) {
-				continue;
-			}
-			if (ufilter_->matches(u)) {
-				found = true;
-				break;
-			}
-		}
-		if(!found && ufilt_cfg["search_recall_list"].to_bool(false)) {
-			for(const unit_const_ptr u : t.recall_list()) {
-				scoped_recall_unit this_unit("this_unit", t.save_id_or_number(), t.recall_list().find_index(u->id()));
-				if(ufilter_->matches(*u)) {
-					found = true;
-					break;
-				}
-			}
-		}
-		if (!found) {
-			return false;
-		}
-	}
-
-	const vconfig& enemy_of = cfg_.child("enemy_of");
-	if(!enemy_of.null()) {
-		if (!enemy_filter_)
-			enemy_filter_.reset(new side_filter(enemy_of, fc_));
-		const std::vector<int>& teams = enemy_filter_->get_teams();
-		if(teams.empty()) return false;
-		for(const int side : teams) {
-			if(!fc_->get_disp_context().get_team(side).is_enemy(t.side()))
-				return false;
-		}
-	}
-
-	const vconfig& allied_with = cfg_.child("allied_with");
-	if(!allied_with.null()) {
-		if (!allied_filter_)
-			allied_filter_.reset(new side_filter(allied_with, fc_));
-		const std::vector<int>& teams = allied_filter_->get_teams();
-		if(teams.empty()) return false;
-		for(const int side : teams) {
-			if(fc_->get_disp_context().get_team(side).is_enemy(t.side()))
-				return false;
-		}
-	}
-
-	const vconfig& has_enemy = cfg_.child("has_enemy");
-	if(!has_enemy.null()) {
-		if (!has_enemy_filter_)
-			has_enemy_filter_.reset(new side_filter(has_enemy, fc_));
-		const std::vector<int>& teams = has_enemy_filter_->get_teams();
-		bool found = false;
-		for(const int side : teams) {
-			if(fc_->get_disp_context().get_team(side).is_enemy(t.side()))
-			{
-				found = true;
-				break;
-			}
-		}
-		if (!found) return false;
-	}
-
-	const vconfig& has_ally = cfg_.child("has_ally");
-	if(!has_ally.null()) {
-		if (!has_ally_filter_)
-			has_ally_filter_.reset(new side_filter(has_ally, fc_));
-		const std::vector<int>& teams = has_ally_filter_->get_teams();
-		bool found = false;
-		for(const int side : teams) {
-			if(!fc_->get_disp_context().get_team(side).is_enemy(t.side()))
-			{
-				found = true;
-				break;
-			}
-		}
-		if (!found) return false;
-	}
-
 
 	const config::attribute_value cfg_controller = cfg_["controller"];
 	if (!cfg_controller.blank())
@@ -255,10 +168,6 @@ bool side_filter::match_internal(const team &t) const
 
 	for (auto child : cfg_.all_ordered()) {
 		if (conditional_type::get_enum(child.first)) {
-			continue;
-		} else if (child.first == "has_unit" || child.first == "has_enemy" || child.first == "has_ally") {
-			continue;
-		} else if (child.first == "enemy_of" || child.first == "allied_with") {
 			continue;
 		} else {
 			if (resources::filter_con) {
