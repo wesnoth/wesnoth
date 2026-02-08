@@ -114,6 +114,7 @@
 #include "video.hpp"                    // only for faked
 #include "whiteboard/manager.hpp"       // for whiteboard
 #include "deprecation.hpp"
+#include "display.hpp"
 
 #include <functional>                   // for bind_t, bind
 #include <array>
@@ -5201,6 +5202,7 @@ CALLBACK_GETTER("on_save", config);
 CALLBACK_GETTER("on_mouse_action", void);
 CALLBACK_GETTER("on_mouse_button", bool);
 CALLBACK_GETTER("on_mouse_move", void);
+CALLBACK_GETTER("reachmap_updated", void);
 }
 
 static int impl_game_events_dir(lua_State* L) {
@@ -6289,6 +6291,38 @@ void game_lua_kernel::mouse_over_hex_callback(const map_location& loc)
 	lua_push(L, loc.wml_x());
 	lua_push(L, loc.wml_y());
 	luaW_pcall(L, 2, 0, false);
+	return;
+}
+
+void game_lua_kernel::reachmap_updated_callback(const map_location& loc, const reach_map& reach_map)
+{
+	lua_State *L = mState;
+
+	if(!impl_get_callback(L, "reachmap_updated")) {
+		return;
+	}
+	lua_push(L, loc.wml_x());
+	lua_push(L, loc.wml_y());
+
+	// Create the main table
+	lua_createtable(L, reach_map.size(), 0);
+
+	int index = 1;
+	for(const auto& entry : reach_map) {
+		const map_location& l = entry.first;
+
+		// Create coordinate pair table {x, y}
+		lua_createtable(L, 2, 0);
+		lua_push(L, l.wml_x());
+		lua_rawseti(L, -2, 1);
+		lua_push(L, l.wml_y());
+		lua_rawseti(L, -2, 2);
+
+		// Add to main table
+		lua_rawseti(L, -2, index++);
+	}
+
+	luaW_pcall(L, 3, 0, false);
 	return;
 }
 
