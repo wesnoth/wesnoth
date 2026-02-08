@@ -52,6 +52,8 @@ class halo_impl
 		);
 
 		void set_location(int x, int y);
+		void set_visible_by_team(bool visible);
+
 		rect get_draw_location();
 
 		/** Whether the halo is currently visible */
@@ -93,6 +95,8 @@ class halo_impl
 		// The map location the halo is attached to, if any
 		map_location map_loc_ = {-1, -1};
 
+		bool visible_by_team_ = true;
+
 		display* disp = nullptr;
 	};
 
@@ -124,6 +128,9 @@ public:
 
 	/** Set the position of an existing haloing effect, according to its handle. */
 	void set_location(int handle, int x, int y);
+
+	/** Set whether to show the halo based on the currently displayed team. */
+	void set_visible_by_team(int handle, bool visible);
 
 	/** Remove the halo with the given handle. */
 	void remove(int handle);
@@ -161,6 +168,11 @@ void halo_impl::effect::set_location(int x, int y)
 		DBG_HL << "setting halo location " << new_center;
 		abs_mid_ = new_center;
 	}
+}
+
+void halo_impl::effect::set_visible_by_team(bool visible)
+{
+	visible_by_team_ = visible;
 }
 
 rect halo_impl::effect::get_draw_location()
@@ -222,6 +234,10 @@ void halo_impl::effect::update()
 
 bool halo_impl::effect::visible()
 {
+	if(!visible_by_team_) {
+		return false;
+	}
+
 	// Source is shrouded
 	// The halo will be completely obscured here, even if it would
 	// technically be large enough to peek out of the shroud.
@@ -330,6 +346,14 @@ void halo_impl::set_location(int handle, int x, int y)
 	}
 }
 
+void halo_impl::set_visible_by_team(int handle, bool visible)
+{
+	const std::map<int,effect>::iterator itor = haloes.find(handle);
+	if(itor != haloes.end()) {
+		itor->second.set_visible_by_team(visible);
+	}
+}
+
 void halo_impl::remove(int handle)
 {
 	// Silently ignore invalid haloes.
@@ -416,6 +440,12 @@ handle manager::add(int x, int y, const std::string& image, const map_location& 
 void manager::set_location(const handle & h, int x, int y)
 {
 	impl_->set_location(h->id_,x,y);
+}
+
+/** Set whether to show the halo based on the currently displayed team. */
+void manager::set_visible_by_team(const handle & h, bool visible)
+{
+	impl_->set_visible_by_team(h->id_, visible);
 }
 
 /** Remove the halo with the given handle. */
