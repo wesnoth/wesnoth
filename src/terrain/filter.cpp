@@ -33,9 +33,13 @@
 #include "formula/formula.hpp"
 #include "formula/function_gamestate.hpp"
 #include "scripting/game_lua_kernel.hpp"
+#include "units/conditional_type.hpp"
 #include "units/unit_alignments.hpp"
+#include "deprecation.hpp"
+#include "game_version.hpp"
 
 #include <boost/range/adaptor/transformed.hpp>
+#include <boost/algorithm/string.hpp>
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
@@ -102,7 +106,8 @@ bool terrain_filter::match_internal(const map_location& loc, const unit* ref_uni
 
 	std::string lua_function = cfg_["lua_function"];
 	if (!lua_function.empty() && fc_->get_lua_kernel()) {
-		if (!fc_->get_lua_kernel()->run_filter(lua_function.c_str(), loc)) {
+		deprecated_message("lua_function", DEP_LEVEL::INDEFINITE, "1.23", "Please define a custom filter tag in wesnoth.wml_filters.location instead.");
+		if (!fc_->get_lua_kernel()->run_filter(lua_function.c_str(), loc, ref_unit)) {
 			return false;
 		}
 	}
@@ -345,12 +350,23 @@ bool terrain_filter::match_internal(const map_location& loc, const unit* ref_uni
 			if(!form.evaluate(callable).as_bool()) {
 				return false;
 			}
-			return true;
 		} catch(const wfl::formula_error& e) {
 			lg::log_to_chat() << "Formula error in location filter: " << e.type << " at " << e.filename << ':' << e.line << ")\n";
 			ERR_WML << "Formula error in location filter: " << e.type << " at " << e.filename << ':' << e.line << ")";
 			// Formulae with syntax errors match nothing
 			return false;
+		}
+	}
+
+	// Handle custom Lua-defined filters
+	for(auto child : cfg_.all_ordered()) {
+		if(conditional_type::get_enum(child.first) || boost::starts_with(child.first, "filter")) {
+			continue;
+		}
+		if(game_lua_kernel* lk = fc_->get_lua_kernel()) {
+			if(!lk->run_wml_filter(child.first, child.second, loc, ref_unit)) {
+				return false;
+			}
 		}
 	}
 

@@ -1248,10 +1248,8 @@ namespace { // Helpers for attack_type::special_active()
 			return true;
 
 		const config& filter = ab.cfg();
-		const config& filter_backstab = filter;
 
-		auto filter_child = filter_backstab.optional_child(child_tag);
-		if ( !filter_child )
+		if ( !filter.has_child(child_tag) )
 			// The special does not filter on this unit, so we pass.
 			return true;
 
@@ -1260,7 +1258,15 @@ namespace { // Helpers for attack_type::special_active()
 			return false;
 		}
 
-		unit_filter ufilt{vconfig(*filter_child)};
+		// Remove the [filter_weapon] tag if it exists,
+		// to avoid passing it to the unit filter.
+		config filter_child = filter.mandatory_child(child_tag);
+		config filter_weapon;
+		if(auto filt = filter_child.optional_child("filter_weapon")) {
+			filter_weapon.swap(*filt);
+			filter_child.remove_children("filter_weapon");
+		}
+		unit_filter ufilt{vconfig(filter_child)};
 
 		// If the other unit doesn't exist, try matching without it
 
@@ -1270,9 +1276,9 @@ namespace { // Helpers for attack_type::special_active()
 			return false;
 		}
 		// Check for a weapon match.
-		if (auto filter_weapon = filter_child->optional_child("filter_weapon") ) {
+		if (!filter_weapon.empty()) {
 			std::string check_if_recursion = applies_to_checked ? ab.tag() : "";
-			if ( !weapon || !weapon->matches_filter(*filter_weapon, check_if_recursion) )
+			if ( !weapon || !weapon->matches_filter(filter_weapon, u.get(), check_if_recursion) )
 				return false;
 		}
 

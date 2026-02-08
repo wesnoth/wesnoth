@@ -102,6 +102,7 @@
 #include "tod_manager.hpp"              // for tod_manager
 #include "tstring.hpp"                  // for t_string, operator+
 #include "units/unit.hpp"                 // for unit
+#include "units/attack_type.hpp"
 #include "units/animation_component.hpp"  // for unit_animation_component
 #include "units/udisplay.hpp"
 #include "units/filter.hpp"
@@ -4824,8 +4825,16 @@ int game_lua_kernel::intf_add_time_area(lua_State * L)
 		times = cfg.get_parsed_config();
 	} else {
 		id = luaL_checkstring(L, 1);
-		if(!lua_isnoneornil(L, 3))
-			times = luaW_checkconfig(L, 3);
+		if(!lua_isnoneornil(L, 3)) {
+			// Third argument can be either a config with [time] children,
+			// or an array of the contents of those children.
+			if(!luaW_toconfig(L, 3, times)) {
+				auto timeData = lua_check<std::vector<config>>(L, 3);
+				for(const auto& t : timeData) {
+					times.add_child("time", t);
+				}
+			}
+		}
 		vconfig cfg{config()};
 		if(luaW_tovconfig(L, 2, cfg)) {
 			// Second argument is a location filter
@@ -4833,7 +4842,7 @@ int game_lua_kernel::intf_add_time_area(lua_State * L)
 			filter.get_locations(locs, true);
 		} else {
 			// Second argument is an array of locations
-			luaW_check_locationset(L, 2);
+			locs = luaW_check_locationset(L, 2);
 		}
 	}
 
@@ -5633,6 +5642,34 @@ game_lua_kernel::game_lua_kernel(game_state & gs, play_controller & pc, reports 
 	set_wml_condition("have_location", &game_events::builtin_conditions::have_location);
 	set_wml_condition("variable", &game_events::builtin_conditions::variable_matches);
 
+	// Create the wml_filters table
+	cmd_log_ << "Adding wml_filters table...\n";
+
+	lua_getglobal(L, "wesnoth");
+	lua_newtable(L);
+	lua_setfield(L, -2, "wml_filters");
+	lua_pop(L, 1);
+
+	luaW_getglobal(L, "wesnoth", "wml_filters");
+	lua_newtable(L);
+	lua_setfield(L, -2, "unit");
+	lua_pop(L, 1);
+
+	luaW_getglobal(L, "wesnoth", "wml_filters");
+	lua_newtable(L);
+	lua_setfield(L, -2, "location");
+	lua_pop(L, 1);
+
+	luaW_getglobal(L, "wesnoth", "wml_filters");
+	lua_newtable(L);
+	lua_setfield(L, -2, "side");
+	lua_pop(L, 1);
+
+	luaW_getglobal(L, "wesnoth", "wml_filters");
+	lua_newtable(L);
+	lua_setfield(L, -2, "weapon");
+	lua_pop(L, 1);
+
 	// Create the effects table.
 	cmd_log_ << "Adding effects table...\n";
 
@@ -6059,6 +6096,122 @@ bool game_lua_kernel::run_wml_conditional(const std::string& cmd, const vconfig&
 	return b;
 }
 
+/**
+ * Evaluates a WML filter.
+ *
+ * Usage: Push the arguments to the filter onto the Lua stack, then call this function.
+ *
+ * @param type The type of filter being evaluated. One of "unit", "location", "weapon", "side".
+ * @param cmd The filter tag being evaluated.
+ * @param nargs The number of arguments to be passed to the filter function.
+ * @returns Whether the filter passed.
+ */
+bool game_lua_kernel::run_wml_filter_internal(const std::string& type, const std::string& cmd, int nargs)
+{
+	lua_State* L = mState;
+
+	// If an invalid filter tag is used, consider it a pass.
+	if(!luaW_getglobal(L, "wesnoth", "wml_filters", type, cmd)) {
+		lg::log_to_chat() << "unknown " << type << " filter wml: [" << cmd << "]\n";
+		ERR_WML << "unknown " << type << " filter wml: [" << cmd << "]";
+		return true;
+	}
+
+	// Function was pushed last, but needs to be below the arguments, so bubble it down.
+	lua_rotate(L, lua_gettop(L) - nargs, 1);
+
+	// Any runtime error is considered a fail.
+	if(!luaW_pcall(L, nargs, 1, true)) {
+		return false;
+	}
+
+	return luaW_toboolean(L, -1);
+}
+
+/**
+ * Evaluates a WML location filter.
+ *
+ * @param cmd The filter tag being evaluated.
+ * @param cfg The contents of the filter tag.
+ * @param loc The location currently being matched.
+ * @param ref_unit An optional reference unit, for $teleport_unit.
+ * @returns Whether the filter passed.
+ */
+bool game_lua_kernel::run_wml_filter(const std::string& cmd, const vconfig& cfg, const map_location& loc, const unit* ref_unit)
+{
+	lua_State* L = mState;
+	luaW_pushvconfig(L, cfg);
+	luaW_pushlocation(L, loc);
+	if(ref_unit) {
+		luaW_pushunit(L, const_cast<unit*>(ref_unit)->shared_from_this());
+	} else {
+		lua_pushnil(L);
+	}
+	return run_wml_filter_internal("location", cmd, 3);
+}
+
+/**
+ * Evaluates a WML unit filter.
+ *
+ * @param cmd The filter tag being evaluated.
+ * @param cfg The contents of the filter tag.
+ * @param u The unit currently being matched.
+ * @param loc The location currently being matched (usually but not always the unit's current location).
+ * @param other_unit An optional second unit, for $other_unit
+ * @returns Whether the filter passed.
+ */
+bool game_lua_kernel::run_wml_filter(const std::string& cmd, const vconfig& cfg, const unit& u, const map_location& loc, const unit* other_unit)
+{
+	lua_State* L = mState;
+	luaW_pushvconfig(L, cfg);
+	luaW_pushunit(L, const_cast<unit&>(u).shared_from_this());
+	luaW_pushlocation(L, loc);
+	if(other_unit) {
+		luaW_pushunit(L, const_cast<unit*>(other_unit)->shared_from_this());
+	} else {
+		lua_pushnil(L);
+	}
+	return run_wml_filter_internal("unit", cmd, 4);
+}
+
+/**
+ * Evaluates a WML side filter.
+ *
+ * @param cmd The filter tag being evaluated.
+ * @param cfg The contents of the filter tag.
+ * @param side The side currently being matched.
+ * @returns Whether the filter passed.
+ */
+bool game_lua_kernel::run_wml_filter(const std::string& cmd, const vconfig& cfg, const team& side)
+{
+	lua_State* L = mState;
+	luaW_pushvconfig(L, cfg);
+	luaW_pushteam(L, const_cast<team&>(side));
+	return run_wml_filter_internal("side", cmd, 2);
+}
+
+/**
+ * Evaluates a WML location filter.
+ *
+ * @param cmd The filter tag being evaluated.
+ * @param cfg The contents of the filter tag.
+ * @param weapon The weapon currently being matched.
+ * @param owner The unit that the weapon belongs to (optional).
+ * @returns Whether the filter passed.
+ */
+bool game_lua_kernel::run_wml_filter(const std::string& cmd, const config& cfg, const attack_type& weapon, const unit* owner)
+{
+	lua_State* L = mState;
+	luaW_pushconfig(L, cfg);
+	luaW_pushweapon(L, weapon.shared_from_this());
+	if(owner) {
+		luaW_pushunit(L, const_cast<unit*>(owner)->shared_from_this());
+	} else {
+		lua_pushnil(L);
+	}
+	return run_wml_filter_internal("weapon", cmd, 3);
+}
+
 static int intf_run_event_wml(lua_State* L)
 {
 	int argIdx = lua_gettop(L);
@@ -6141,11 +6294,16 @@ bool game_lua_kernel::run_wml_event(int ref, const vconfig& args, const game_eve
 * Runs a script from a location filter.
 * The script is an already compiled function given by its name.
 */
-bool game_lua_kernel::run_filter(char const *name, const map_location& l)
+bool game_lua_kernel::run_filter(char const *name, const map_location& l, const unit* u)
 {
 	lua_pushinteger(mState, l.wml_x());
 	lua_pushinteger(mState, l.wml_y());
-	return run_filter(name, 2);
+	if(u) {
+		luaW_pushunit(mState, const_cast<unit*>(u)->shared_from_this());
+	} else {
+		lua_pushnil(mState);
+	}
+	return run_filter(name, 3);
 }
 
 /**
@@ -6163,15 +6321,21 @@ bool game_lua_kernel::run_filter(char const *name, const team& t)
 * Runs a script from a unit filter.
 * The script is an already compiled function given by its name.
 */
-bool game_lua_kernel::run_filter(char const *name, const unit& u)
+bool game_lua_kernel::run_filter(char const *name, const unit& u, const map_location& loc, const unit* u2)
 {
 	lua_State *L = mState;
 	lua_unit* lu = luaW_pushlocalunit(L, const_cast<unit&>(u));
 	// stack: unit
 	// put the unit to the stack twice to prevent gc.
 	lua_pushvalue(L, -1);
-	// stack: unit, unit
-	bool res = run_filter(name, 1);
+	luaW_pushlocation(L, loc);
+	if(u2) {
+		luaW_pushunit(mState, const_cast<unit*>(u2)->shared_from_this());
+	} else {
+		lua_pushnil(mState);
+	}
+	// stack: unit, unit, loc, unit?
+	bool res = run_filter(name, 3);
 	// stack: unit
 	lu->clear_ref();
 	lua_pop(L, 1);

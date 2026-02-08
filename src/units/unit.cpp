@@ -1996,7 +1996,7 @@ std::string unit::describe_builtin_effect(const std::string& apply_to, const con
 		std::vector<t_string> attack_names;
 		if(!description.empty()) {
 			for(const attack_ptr& a : attacks_) {
-				if(a->matches_filter(effect)) {
+				if(a->matches_filter(effect, this)) {
 					attack_names.emplace_back(a->name(), "wesnoth-units");
 				}
 			}
@@ -2114,11 +2114,14 @@ void unit::apply_builtin_effect(const std::string& apply_to, const config& effec
 		}
 	} else if(apply_to == "remove_attacks") {
 		set_attr_changed(UA_ATTACKS);
-		utils::erase_if(attacks_, [&effect](const attack_ptr& a) { return a->matches_filter(effect); });
+		utils::erase_if(attacks_, [&effect, u = this](const attack_ptr& a) { return a->matches_filter(effect, u); });
 	} else if(apply_to == "attack") {
 		set_attr_changed(UA_ATTACKS);
 		for(const attack_ptr& a : attacks_) {
-			if(a->matches_filter(effect)) {
+			auto filter = effect;
+			filter.remove_children("set_specials");
+			filter.remove_children("remove_specials");
+			if(a->matches_filter(filter, this)) {
 				a->apply_effect(effect);
 			}
 
