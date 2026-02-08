@@ -4178,8 +4178,14 @@ int game_lua_kernel::intf_add_tile_overlay(lua_State *L)
 			team_name,
 			cfg["name"], // Name is treated as the ID
 			cfg["visible_in_fog"].to_bool(true),
+			cfg["multihex"].to_bool(false),
 			cfg["submerge"].to_double(0),
-			cfg["z_order"].to_double(0)
+			cfg["parallax"].to_double(1.0),
+			cfg["layer"].to_int(0),
+			cfg["z_order"].to_double(0),
+			std::chrono::milliseconds(cfg["duration"].to_int(0)),
+			cfg["pixel_offset_x"].to_int(0),
+			cfg["pixel_offset_y"].to_int(0)
 		));
 	}
 	return 0;

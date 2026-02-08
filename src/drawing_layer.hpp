@@ -16,6 +16,10 @@
 
 #pragma once
 
+/**
+* A list of drawing layers that images should be placed on to keep order.
+* Halos are the exception, they are drawn with a seperate system ontop of these layers.
+*/
 enum class drawing_layer {
 	/** Terrain drawn behind the unit */
 	terrain_bg,
