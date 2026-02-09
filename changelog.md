@@ -4,13 +4,41 @@
 ### Campaigns
    * Dusk of Dawn
      * S02 "A Dream": remove "fearless" trait, but spawn more higher-level woses instead.
+   * Eastern Invasion
+     * S09 "Castle in the Ice": slightly reduce number of wolves and drakes.
+   * The Hammer of Thursagan
+     * Shortened turn limits on several long scenarios.
+     * Decreased player gold from 100 to 80 on most scenarios.
+     * S08 "The Siege of Kal Kartha": increased enemy gold.
+     * S10 "The Underlevels": reduced number of villages, and increased Karrag's income.
+   * Heir to the Throne
+     * Fixed a serious issue where the "Replacement Weapons" tweak would trigger on all sides' recruits, not just Konrad's.
+     * Moremirmu: significantly increased hitpoints, but decreased speed and damage.
+     * S02 "Flight of the Elves": fixed Konrad winning after killing only 2 enemy leaders, instead of all of them.
+     * S07 "Muff Malal's Peninsula": Moremirmu is now in a safer position, and much less likely to get bad RNG and die early.
+     * S22 "Glamdrol": allying with the Stoneskins now costs less gold, but Konrad will lose if he doesn't pillage enough gold to meet his pledge.
+     * S30 "The Sceptre of Fire": made Li'sar more difficult to assassinate with Fire Wraiths. This strategy should still be possible, but it should now require more significant investment.
+     * S30 "The Sceptre of Fire": Delfador can now continue recruiting even while searching for the Sceptre.
+     * S47, S48, and S50: A few enemy units will now defect when the Sceptre is first used against human opponents.
+   * Winds of Fate
+     * Lower recall costs further.
+     * Adjust and replace some characters that tie-in with the other campaigns.
+     * S01 "The Hunt": fewer forest lions.
+     * S06 "Landfall": tweak enemy starting gold
+     * S08 "Overlook": more consistent enemy spawn recognition
+     * S09 "Ancestor": add wind ambience by Alexandr Zhelanov
+     * S11 "Crosswind": fix issues with non-clasher units attempting to read their secrets
 ### Editor
 ### Multiplayer
 ### Lua API
 ### Packaging
 ### Terrain
 ### Translations
+   * Updated translations: Bengali, British English, Chinese (Simplified), French, Greek, Hungarian, Italian, Spanish
 ### Units
+   * Ships:
+     * Adjusted gold costs for most ships.
+     * Removed the "naval" weapon special, allowing ships to ram targets on coastal land.
 ### User interface
 ### WML Engine
 ### Miscellaneous and Bug Fixes

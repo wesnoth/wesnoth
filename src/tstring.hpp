@@ -31,6 +31,7 @@ public:
 	public:
 		explicit walker(const t_string_base& string);
 
+		operator std::string() const              { return std::string(string_.data() + begin_, end_ - begin_); }
 		operator std::string_view() const         { return std::string_view(string_.data() + begin_, end_ - begin_); }
 
 		void next()                               { begin_ = end_; update(); }

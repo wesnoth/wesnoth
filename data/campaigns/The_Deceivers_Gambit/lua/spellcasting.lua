@@ -334,12 +334,13 @@ function wml_actions.display_skills_dialog(cfg)
     end
 end
 
-
 -------------------------
 -- DETECT DOUBLECLICKS
 -------------------------
 local last_click = os.clock()
-wesnoth.game_events.on_mouse_action = function(x,y)
+
+local old_on_mouse_action = wesnoth.game_events.on_mouse_action
+wesnoth.game_events.on_mouse_action = function(x,y,button,event)
     local selected_unit = wesnoth.units.find_on_map{ x=x, y=y }
     if (not selected_unit[1] or selected_unit[1].id~='Delfador') then return end
 
@@ -354,14 +355,17 @@ wesnoth.game_events.on_mouse_action = function(x,y)
     else
         last_click = os.clock()
     end
+    return old_on_mouse_action(x,y,button,event)
 end
 
 -------------------------
 -- DETECT MOUSEMOVES
 -------------------------
 function wml_actions.listen_for_mousemove(cfg)
-    wesnoth.game_events.on_mouse_move = function(x,y)
-         wesnoth.game_events.fire('mousemove_synced', x, y)
-         wesnoth.game_events.on_mouse_move = nil --only trigger once
+    local old_on_mouse_move = wesnoth.game_events.on_mouse_move
+    wesnoth.game_events.on_mouse_move = function(x,y,button,event)
+        wesnoth.game_events.fire('mousemove_synced', x, y)
+        wesnoth.game_events.on_mouse_move = old_on_mouse_move --only trigger 'mousemove_synced' once
+        return old_on_mouse_move(x,y,button,event)
     end
 end

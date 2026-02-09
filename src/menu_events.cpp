@@ -727,7 +727,11 @@ type_gender_variation choose_unit()
 	}
 
 	auto info = type_gender_variation(nullptr, unit_race::NUM_GENDERS, "");
-	if (!create_dlg->show() && !create_dlg->is_selected()) {
+	if(!create_dlg->show()) {
+		return info;
+	}
+
+	if(!create_dlg->is_selected()) {
 		return info;
 	}
 

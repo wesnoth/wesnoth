@@ -496,11 +496,12 @@ class write_key_val_visitor
 #endif
 {
 public:
-	write_key_val_visitor(std::ostream& out, unsigned level, std::string& textdomain, const std::string& key)
+	write_key_val_visitor(std::ostream& out, unsigned level, std::string& textdomain, const std::string& key, bool strong_quotes)
 		: out_(out)
 		, level_(level)
 		, textdomain_(textdomain)
 		, key_(key)
+		, strong_quotes_(strong_quotes)
 	{
 	}
 
@@ -530,7 +531,11 @@ public:
 	void operator()(const std::string& s) const
 	{
 		indent();
-		out_ << key_ << '=' << '"' << utils::wml_escape_string(s) << '"' << '\n';
+		if(strong_quotes_) {
+			out_ << key_ << '=' << "<<" << utils::wml_escape_strong(s) << ">>" << '\n';
+		} else {
+			out_ << key_ << '=' << '"' << utils::wml_escape_string(s) << '"' << '\n';
+		}
 	}
 
 	void operator()(const t_string& s) const;
@@ -547,6 +552,7 @@ private:
 	const unsigned level_;
 	std::string& textdomain_;
 	const std::string& key_;
+	bool strong_quotes_;
 };
 
 /**
@@ -583,7 +589,11 @@ void write_key_val_visitor::operator()(const t_string& value) const
 			out_ << '_';
 		}
 
-		out_ << '"' << utils::wml_escape_string(w) << '"';
+		if(strong_quotes_) {
+			out_ << "<<" << utils::wml_escape_strong(w) << ">>";
+		} else {
+			out_ << '"' << utils::wml_escape_string(w) << '"';
+		}
 		first = false;
 	}
 
@@ -668,9 +678,10 @@ void write_key_val(std::ostream& out,
 		const std::string& key,
 		const config::attribute_value& value,
 		unsigned level,
-		std::string& textdomain)
+		std::string& textdomain,
+		bool strong_quotes)
 {
-	value.apply_visitor(write_key_val_visitor(out, level, textdomain, key));
+	value.apply_visitor(write_key_val_visitor(out, level, textdomain, key, strong_quotes));
 }
 
 void write_open_child(std::ostream& out, const std::string& child, unsigned int level)
@@ -683,7 +694,7 @@ void write_close_child(std::ostream& out, const std::string& child, unsigned int
 	out << std::string(level, '\t') << "[/" << child << "]\n";
 }
 
-static void write_internal(const config& cfg, std::ostream& out, std::string& textdomain, std::size_t tab = 0)
+static void write_internal(const config& cfg, std::ostream& out, std::string& textdomain, std::size_t tab = 0, bool strong_quotes = false)
 {
 	if(tab > max_recursion_levels) {
 		throw config::error("Too many recursion levels in config write");
@@ -695,7 +706,7 @@ static void write_internal(const config& cfg, std::ostream& out, std::string& te
 			continue;
 		}
 
-		write_key_val(out, key, value, tab, textdomain);
+		write_key_val(out, key, value, tab, textdomain, strong_quotes);
 	}
 
 	for(const auto [key, item_cfg] : cfg.all_children_view()) {
@@ -705,19 +716,19 @@ static void write_internal(const config& cfg, std::ostream& out, std::string& te
 		}
 
 		write_open_child(out, key, tab);
-		write_internal(item_cfg, out, textdomain, tab + 1);
+		write_internal(item_cfg, out, textdomain, tab + 1, strong_quotes);
 		write_close_child(out, key, tab);
 	}
 }
 
-static void write_internal(const configr_of& cfg, std::ostream& out, std::string& textdomain, std::size_t tab = 0)
+static void write_internal(const configr_of& cfg, std::ostream& out, std::string& textdomain, std::size_t tab = 0, bool strong_quotes = false)
 {
 	if(tab > max_recursion_levels) {
 		throw config::error("Too many recursion levels in config write");
 	}
 
 	if(cfg.data_) {
-		write_internal(*cfg.data_, out, textdomain, tab);
+		write_internal(*cfg.data_, out, textdomain, tab, strong_quotes);
 	}
 
 	for(const auto& pair : cfg.subtags_) {
@@ -729,15 +740,15 @@ static void write_internal(const configr_of& cfg, std::ostream& out, std::string
 		}
 
 		write_open_child(out, *pair.first, tab);
-		write_internal(*pair.second, out, textdomain, tab + 1);
+		write_internal(*pair.second, out, textdomain, tab + 1, strong_quotes);
 		write_close_child(out, *pair.first, tab);
 	}
 }
 
-void write(std::ostream& out, const configr_of& cfg, unsigned int level)
+void write(std::ostream& out, const configr_of& cfg, unsigned int level, bool strong_quotes)
 {
 	std::string textdomain = PACKAGE;
-	write_internal(cfg, out, textdomain, level);
+	write_internal(cfg, out, textdomain, level, strong_quotes);
 }
 
 template<typename Compressor>

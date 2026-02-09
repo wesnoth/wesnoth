@@ -692,7 +692,7 @@ void attack_type::write(config& cfg) const
 
 int attack_type::composite_value(const active_ability_list& abil_list, int base_value) const
 {
-	return unit_abilities::effect(abil_list, base_value, shared_from_this()).get_composite_value();
+	return unit_abilities::effect(abil_list, base_value, context_).get_composite_value();
 }
 
 
@@ -846,7 +846,7 @@ std::pair<std::string, std::set<std::string>> attack_type::damage_types() const
  */
 double attack_type::modified_damage() const
 {
-	return unit_abilities::effect(get_specials_and_abilities("damage"), damage(), shared_from_this()).get_composite_double_value();
+	return unit_abilities::effect(get_specials_and_abilities("damage"), damage(), context_).get_composite_double_value();
 }
 
 int attack_type::modified_chance_to_hit(int cth) const
@@ -887,7 +887,7 @@ active_ability_list attack_type::get_specials_and_abilities(const std::string& s
 	if (!abil_list.empty() && !overwriters.empty()) {
 		// remove all abilities that would be overwritten
 		utils::erase_if(abil_list, [&](const active_ability& j) {
-			return (overwrite_special_checking(overwriters, j.ability()));
+			return (overwrite_special_checking(overwriters, j));
 			});
 	}
 	return abil_list;

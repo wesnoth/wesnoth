@@ -330,7 +330,7 @@ public:
 	 * @return the converted scenario config
 	 */
 	config convert_scenario(const config& old_scenario);
-	void load_scenario();
+	bool load_scenario();
 
 	config to_config();
 

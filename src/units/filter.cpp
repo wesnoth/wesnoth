@@ -412,38 +412,7 @@ void unit_filter_compound::fill(const vconfig& cfg)
 			[](const config::attribute_value& c) { return utils::split_set(c.str()); },
 			[](const std::set<std::string>& abilities, const unit_filter_args& args)
 			{
-				const unit_map& units = args.context().get_disp_context().units();
-				for(const auto& p_ab : args.u.abilities()) {
-					if(abilities.count(p_ab->id()) != 0 && args.u.get_self_ability_bool(*p_ab, args.loc)) {
-						return true;
-					}
-				}
-
-				for(const unit& unit : units) {
-					if(!unit.max_ability_radius() || unit.incapacitated() || unit.underlying_id() == args.u.underlying_id()) {
-						continue;
-					}
-					const map_location& from_loc = unit.get_location();
-					std::size_t distance = distance_between(from_loc, args.loc);
-					if(distance > unit.max_ability_radius()) {
-						continue;
-					}
-					utils::optional<int> dir;
-					const auto adjacent = get_adjacent_tiles(from_loc);
-					for(std::size_t j = 0; j < adjacent.size(); ++j) {
-						bool adj_or_dist = distance != 1 ? distance_between(adjacent[j], args.loc) == (distance - 1) : adjacent[j] == args.loc;
-						if(adj_or_dist) {
-							dir = j;
-							break;
-						}
-					}
-					for(const auto& p_ab : unit.abilities()) {
-						if(abilities.count(p_ab->id()) != 0 && args.u.get_adj_ability_bool(*p_ab, distance, *dir, args.loc, unit, from_loc)) {
-							return true;
-						}
-					}
-				}
-				return false;
+				return utils::find_if(abilities, [&](const std::string& abilitiy_id) { return specials_context_t::has_active_ability_id(args.u, args.loc, abilitiy_id);  });
 			}
 		);
 
@@ -794,41 +763,7 @@ void unit_filter_compound::fill(const vconfig& cfg)
 							}
 						}
 					} else {
-						const unit_map& units = args.context().get_disp_context().units();
-						for(const ability_ptr& p_ab : args.u.abilities()) {
-							if(p_ab->matches_filter(c.get_parsed_config())) {
-								if (args.u.get_self_ability_bool(*p_ab, args.loc)) {
-									return true;
-								}
-							}
-						}
-
-						if(c.get_parsed_config()["affect_adjacent"].to_bool(true)) {
-							for(const unit& unit : units) {
-								if(!unit.max_ability_radius() || unit.incapacitated() || unit.underlying_id() == args.u.underlying_id()) {
-									continue;
-								}
-								const map_location& from_loc = unit.get_location();
-								std::size_t distance = distance_between(from_loc, args.loc);
-								if(distance > unit.max_ability_radius()) {
-									continue;
-								}
-								utils::optional<int> dir;
-								const auto adjacent = get_adjacent_tiles(from_loc);
-								for(std::size_t j = 0; j < adjacent.size(); ++j) {
-									bool adj_or_dist = distance != 1 ? distance_between(adjacent[j], args.loc) == (distance - 1) : adjacent[j] == args.loc;
-									if(adj_or_dist) {
-										dir = j;
-										break;
-									}
-								}
-								for(const ability_ptr& p_ab : unit.abilities()) {
-									if(args.u.get_adj_ability_bool(*p_ab, distance, *dir, args.loc, unit, from_loc)) {
-										return true;
-									}
-								}
-							}
-						}
+						return specials_context_t::has_active_ability_matching_filter(args.u, args.loc, c.get_parsed_config());
 					}
 				return false;
 				});

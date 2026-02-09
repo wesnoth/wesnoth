@@ -199,9 +199,9 @@ public:
 	 *
 	 * @return True if element checked is overwritable.
 	 * @param overwriters list used for check if element is overwritable.
-	 * @param ab the ability/special checked
+	 * @param i the ability/special checked
 	 */
-	bool overwrite_special_checking(active_ability_list& overwriters, const unit_ability_t& ab) const;
+	bool overwrite_special_checking(active_ability_list& overwriters, const active_ability& i) const;
 
 	bool special_active(const unit_ability_t& ab, AFFECTS whom) const;
 

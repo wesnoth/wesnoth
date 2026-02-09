@@ -10,13 +10,13 @@
 # Javier C.H. <javier_los_herejes@hotmail.com>, 2012.
 # Pepe <donpepe1963@gmail.com>, 2014.
 # Toranks <toranksmervat@gmail.com>, 2023.
-# Sebastián Lecchini <sebas38760@gmail.com>, 2025.
+# Sebastián Lecchini <sebas38760@gmail.com>, 2025, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-utbs\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2026-01-20 17:31 UTC\n"
-"PO-Revision-Date: 2025-12-23 20:42-0300\n"
+"PO-Revision-Date: 2026-01-23 15:33-0300\n"
 "Last-Translator: Sebastián Lecchini <sebas38760@gmail.com>\n"
 "Language-Team: Wesnoth\n"
 "Language: es\n"
@@ -1435,6 +1435,8 @@ msgstr ""
 msgid ""
 "It’s a pack of Wandering Scarabs! They must’ve been burrowed under the sand."
 msgstr ""
+"¡Es una manada de Escarabajos Errantes! Debían estar enterrados bajo la "
+"arena."
 
 #. [scenario]: id=02_Across_the_Harsh_Sands, role=Hunting Ogre
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:627
@@ -13385,16 +13387,12 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:644
-#, fuzzy
-#| msgid ""
-#| "The trees themselves seem against my presence here. They give me an "
-#| "omnious feeling as if something bad is going to happen if I stay here."
 msgid ""
 "The trees themselves seem against my presence here. They give me an ominous "
 "feeling as if something bad is going to happen if I stay here."
 msgstr ""
-"Los árboles mismos parecen oponerse a mi presencia aquí. Me transmiten una "
-"sensación ominosa, como si algo malo fuera a pasar si me quedo aquí."
+"Los propios árboles parecen oponerse a mi presencia aquí. Me transmiten una "
+"sensación ominosa, como si algo malo fuera a suceder si me quedo aquí."
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:661
@@ -13588,15 +13586,11 @@ msgstr ""
 
 #. [message]: speaker=Graghht
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1013
-#, fuzzy
-#| msgid ""
-#| "Since you enterd our fort, use it for your troops. Get them here quickly "
-#| "and help us."
 msgid ""
 "Since you entered our fort, use it for your troops. Get them here quickly "
 "and help us."
 msgstr ""
-"Ya que han entrado en nuestra fortaleza, úsenla para sus tropas. Tráiganlas "
+"Ya que han entrado en nuestro fuerte, úselo para sus tropas. Tráiganlas aquí "
 "rápido y ayúdennos."
 
 #. [message]: speaker=Kaleh
@@ -13669,10 +13663,6 @@ msgstr "Graghht"
 
 #. [message]: speaker=Graghht
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1231
-#, fuzzy
-#| msgid ""
-#| "We won’t be controlled any more! We will reclaim this island as "
-#| "rightfully ours! Destroy the false god! Rebuild legacy of our ancestors!"
 msgid ""
 "We won’t be controlled any more! We will reclaim this island as rightfully "
 "ours! Destroy the false god! Rebuild the legacy of our ancestors!"
@@ -17049,7 +17039,7 @@ msgstr "viento a favor +"
 #. [chance_to_hit]: id=parry_offense_only_{VALUE}
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:693
 msgid "parry offense only: + $sub%"
-msgstr ""
+msgstr "parada solo en ataque: + $sub%"
 
 #. [chance_to_hit]: id=parry_offense_only_{VALUE}
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:694
@@ -17062,21 +17052,13 @@ msgstr ""
 
 #. [chance_to_hit]: id=parry{VALUE}
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:705
-#, fuzzy
-#| msgid "parrying($sub)"
 msgid "parry: + ($sub)"
-msgstr "parada($sub)"
+msgstr "parada: + ($sub)"
 
 #. [chance_to_hit]: id=parry{VALUE}
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:706
-#, fuzzy
-#| msgid ""
-#| "This unit sees its defense reinforced by $sub% when this weapon is used "
-#| "offensively"
 msgid "This unit sees its defense reinforced by $sub% when this weapon is used"
-msgstr ""
-"Esta unidad ve reforzada su defensa en $sub% cuando esta arma se usa "
-"ofensivamente"
+msgstr "Esta unidad ve reforzada su defensa en $sub% cuando se usa esta arma"
 
 #. [special_note]
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:828
@@ -17383,6 +17365,9 @@ msgid ""
 "decreases the chance of being hit by them by 10% each, until the end of the "
 "fight."
 msgstr ""
+"Al atacar, cada golpe exitoso aumenta en un 10% la probabilidad de acertar "
+"al oponente y reduce en un 10% la probabilidad de ser alcanzado por él, "
+"hasta el final del combate."
 
 #. [heals]: id=natures_aid
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1841
@@ -18873,9 +18858,9 @@ msgstr "Torreón fantasma"
 #~ msgid ""
 #~ "Truth is that $ally_unit.name not know much of sunlight lands. Sun and "
 #~ "stars are scary, everything is open, exposed, no safe places to hide. But "
-#~ "$ally_unit.name cannot go back through all that water. And $ally_unit."
-#~ "name doesn’t know where to find other tunnels back to his home. He is as "
-#~ "lost as elves are."
+#~ "$ally_unit.name cannot go back through all that water. And "
+#~ "$ally_unit.name doesn’t know where to find other tunnels back to his "
+#~ "home. He is as lost as elves are."
 #~ msgstr ""
 #~ "Cierto es que Nog no sabe mucho de las tierras soleadas. Soles y "
 #~ "estrellas asustan, todo es abierto, expuesto, no hay lugares seguros para "
@@ -18889,8 +18874,8 @@ msgstr "Torreón fantasma"
 #~ "guide and protect elves, and $ally_unit.name will keep his oath. "
 #~ "$ally_unit.name will follow elves wherever they may go and protect them "
 #~ "from danger as best he can. Maybe later, $ally_unit.name will find "
-#~ "another way back down to the caves of his people. But for now, $ally_unit."
-#~ "name will continue to serve and protect you."
+#~ "another way back down to the caves of his people. But for now, "
+#~ "$ally_unit.name will continue to serve and protect you."
 #~ msgstr ""
 #~ "Pero Nog no está asustado. Gran Líder dijo a Nog guiar y proteger elfos, "
 #~ "y Nog mantendrá su juramento. Nog seguirá elfos adonde quiera que vayan y "
@@ -18948,9 +18933,9 @@ msgstr "Torreón fantasma"
 #, fuzzy
 #~ msgid ""
 #~ "No, you don’t have to introduce yourselves. I already know who you are "
-#~ "and why you have been journeying all this way. And I must say, $ally_unit."
-#~ "name, that your recent actions and indeed your presence with these fine "
-#~ "folk speaks well for your people."
+#~ "and why you have been journeying all this way. And I must say, "
+#~ "$ally_unit.name, that your recent actions and indeed your presence with "
+#~ "these fine folk speaks well for your people."
 #~ msgstr ""
 #~ "No, no hace falta que os presentéis. Ya sé quiénes sois y porqué habéis "
 #~ "estado viajando tan largo trecho. Y debo decir, Jarl, que tanto tus "
@@ -18987,8 +18972,9 @@ msgstr "Torreón fantasma"
 #~ msgid ""
 #~ "$ally_unit.name not going to just sit here while Kaleh does all the "
 #~ "fighting. Kaleh will need strong fighter like $ally_unit.name. Other "
-#~ "elves may be scared, but $ally_unit.name fear no dark place. $ally_unit."
-#~ "name just hope there still something to smash when he gets there."
+#~ "elves may be scared, but $ally_unit.name fear no dark place. "
+#~ "$ally_unit.name just hope there still something to smash when he gets "
+#~ "there."
 #~ msgstr ""
 #~ "Nog no va a quedarse aquí sentado mientras Kaleh hace todo el combate. "
 #~ "Kaleh necesitará a un fuerte luchador como Nog. Otros elfos pueden estar "
@@ -19034,11 +19020,11 @@ msgstr "Torreón fantasma"
 #~ "of the island and look out upon the waters, upon the world that we "
 #~ "sacrificed so much to preserve. I remind myself what Zhul said, and they "
 #~ "all believed, that despite all the death and fighting we saw in our "
-#~ "journey, this world was a beautiful and good enough place that $ally_unit."
-#~ "name was willing to sacrifice his life to save it. Looking out over the "
-#~ "waters, and back upon the prosperity of my people, I tell myself it was "
-#~ "worth it. But when I think of the desperate war that his people are "
-#~ "probably still fighting underground, it seems a small consolation."
+#~ "journey, this world was a beautiful and good enough place that "
+#~ "$ally_unit.name was willing to sacrifice his life to save it. Looking out "
+#~ "over the waters, and back upon the prosperity of my people, I tell myself "
+#~ "it was worth it. But when I think of the desperate war that his people "
+#~ "are probably still fighting underground, it seems a small consolation."
 #~ msgstr ""
 #~ "Aunque creo que nuestra batalla en la ciudadela negra fue nuestra mejor "
 #~ "hora, sigo atormentado por la muerte de Jarl en ese oscuro lugar. Por eso "

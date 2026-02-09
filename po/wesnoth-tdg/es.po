@@ -1,12 +1,12 @@
 # translation of es.po to Spanish
 # Spanish translations for Battle for Wesnoth package.
-# Sebastián Lecchini <sebas38760@gmail.com>, 2025.
+# Sebastián Lecchini <sebas38760@gmail.com>, 2025, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-tdg\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2026-01-20 17:31 UTC\n"
-"PO-Revision-Date: 2025-12-23 19:59-0300\n"
+"PO-Revision-Date: 2026-01-23 15:17-0300\n"
 "Last-Translator: Sebastián Lecchini <sebas38760@gmail.com>\n"
 "Language-Team: es\n"
 "Language: es\n"
@@ -24,7 +24,7 @@ msgstr ""
 #: data/campaigns/The_Deceivers_Gambit/achievements.cfg:18
 #: data/campaigns/The_Deceivers_Gambit/scenarios/01_Stirrings_of_War.cfg:19
 msgid "The Deceiver’s Gambit"
-msgstr "El Gambito del Embaucador"
+msgstr "El Gambito de la Corona"
 
 #: data/campaigns/The_Deceivers_Gambit/_main.cfg:62
 msgid "1x enemies, 70% XP"
@@ -112,12 +112,12 @@ msgid ""
 "The Deceiver’s Gambit II"
 msgstr ""
 "Historia continuada en:\n"
-"El Gambito del Embaucador II"
+"El Gambito de la Corona II"
 
 #. [campaign]: id=The Deceivers Gambit 2
 #: data/campaigns/The_Deceivers_Gambit/_main.cfg:160
 msgid "The Deceiver’s Gambit II"
-msgstr "El Gambito del Embaucador II"
+msgstr "El Gambito de la Corona II"
 
 #. [campaign]: id=The Deceivers Gambit 2
 #: data/campaigns/The_Deceivers_Gambit/_main.cfg:172
@@ -1278,7 +1278,7 @@ msgstr "Muerte de Methor o del Aprendiz"
 #. [note]
 #: data/campaigns/The_Deceivers_Gambit/scenarios/01_Stirrings_of_War.cfg:332
 msgid "Defeat a Goblin Rouser to rout their entourage."
-msgstr ""
+msgstr "Derrota a un Portaestandarte Goblin para dispersar a su escolta."
 
 #. [object]
 #: data/campaigns/The_Deceivers_Gambit/scenarios/01_Stirrings_of_War.cfg:345
@@ -1364,22 +1364,18 @@ msgstr "¡Corran por sus vidas!"
 
 #. [scenario]
 #: data/campaigns/The_Deceivers_Gambit/scenarios/01_Stirrings_of_War.cfg:495
-#, fuzzy
-#| msgid "Run away! Back to the swamp!"
 msgid "Run! Flee back to the swamp!"
-msgstr "¡Corran! ¡De vuelta al pantano!"
+msgstr "¡Corran! ¡Huyan de vuelta al pantano!"
 
 #. [scenario]
 #: data/campaigns/The_Deceivers_Gambit/scenarios/01_Stirrings_of_War.cfg:496
 msgid "Noooo, $unit.name!"
-msgstr ""
+msgstr "¡Noooo, $unit.name!"
 
 #. [scenario]
 #: data/campaigns/The_Deceivers_Gambit/scenarios/01_Stirrings_of_War.cfg:497
-#, fuzzy
-#| msgid "Run away, $unit.name’s dead!"
 msgid "Flee, flee! $unit.name’s dead!"
-msgstr "¡Corran, $unit.name ha muerto!"
+msgstr "¡Huyan, huyan! ¡$unit.name ha muerto!"
 
 #. [message]: speaker=Ozgob
 #. said in response to goblins running away from the fight
@@ -1400,16 +1396,12 @@ msgstr ""
 #. [message]: speaker=Ozgob
 #. Ozgob has lost most of his goblins ('runts'), and is about to charge at Delfador personally
 #: data/campaigns/The_Deceivers_Gambit/scenarios/01_Stirrings_of_War.cfg:543
-#, fuzzy
-#| msgid ""
-#| "I’ve had it with this! Never send a runt to do a warrior’s job. The real "
-#| "orcs will bring you down ourselves!"
 msgid ""
 "I’ve had it with this! Never send a runt to do a warrior’s job. I’ll bring "
 "you down myself!"
 msgstr ""
-"¡Ya estoy harto! Nunca se envía a un enano a hacer el trabajo de un "
-"guerrero. ¡Los orcos de verdad los aplastaremos nosotros mismos!"
+"¡Ya estoy harto de esto! Nunca mandes a un enclenque a hacer el trabajo de "
+"un guerrero. ¡Yo mismo te haré caer!"
 
 #. [message]: speaker=Methor
 #: data/campaigns/The_Deceivers_Gambit/scenarios/01_Stirrings_of_War.cfg:580
@@ -4251,10 +4243,8 @@ msgstr "Cualquier enemigo alcanza el borde oeste del mapa"
 
 #. [object]
 #: data/campaigns/The_Deceivers_Gambit/scenarios/07_The_Great_River.cfg:923
-#, fuzzy
-#| msgid "Casting Spells:"
 msgid "Reselecting Spells:"
-msgstr "Lanzar hechizos:"
+msgstr "Reselección de hechizos:"
 
 #. [object]
 #: data/campaigns/The_Deceivers_Gambit/scenarios/07_The_Great_River.cfg:924
@@ -4263,6 +4253,9 @@ msgid ""
 "couldn’t have anticipated at the scenario’s start), you now have the option "
 "to change your spells."
 msgstr ""
+"Debido a que los objetivos del escenario han cambiado de forma significativa "
+"(de una manera que no podías anticipar al inicio del escenario), ahora "
+"tienes la opción de cambiar tus hechizos."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/The_Deceivers_Gambit/scenarios/07_The_Great_River.cfg:936
@@ -8425,6 +8418,8 @@ msgid ""
 "Yeah, I want revenge for our defeat and humiliation! It’s time for heads to "
 "roll!"
 msgstr ""
+"¡Sí, quiero venganza por nuestra derrota y humillación! ¡Es hora de que "
+"rueden cabezas!"
 
 #. [message]: speaker=Eldred
 #: data/campaigns/The_Deceivers_Gambit/scenarios/13_Revelry_Revisited.cfg:1156
@@ -8439,24 +8434,19 @@ msgstr ""
 
 #. [message]
 #: data/campaigns/The_Deceivers_Gambit/scenarios/13_Revelry_Revisited.cfg:1204
-#, fuzzy
-#| msgid ""
-#| "Eldred has betrayed our strife to the orcish clans! With grunts swarming "
-#| "along the riverbank, the road east to Delfador is no longer safe. There "
-#| "will be no more escape that way."
 msgid ""
 "Eldred has betrayed Wesnoth’s strife to the orcish clans. With grunts "
 "swarming along the riverbank, the road east to Delfador is no longer safe. "
 "There can be no more escape."
 msgstr ""
-"¡Eldred ha traicionado nuestra lucha a los clanes orcos! Con gruñidos "
-"llenando las riberas del río, el camino al este hacia Delfador ya no es "
-"seguro. No habrá más escape por ese camino."
+"¡Eldred ha traicionado la lucha de Wesnoth ante los clanes orcos! Con los "
+"orcos infestando las riberas del río, el camino al este hacia Delfador ya no "
+"es seguro. No queda ninguna vía de escape."
 
 #. [message]
 #: data/campaigns/The_Deceivers_Gambit/scenarios/13_Revelry_Revisited.cfg:1209
 msgid "The orcs are back! There’s hordes of them!"
-msgstr ""
+msgstr "¡Los orcos han vuelto! ¡Hay hordas de ellos!"
 
 #. [message]: speaker=Eldred
 #: data/campaigns/The_Deceivers_Gambit/scenarios/13_Revelry_Revisited.cfg:1213
@@ -8464,16 +8454,18 @@ msgid ""
 "At ease, soldier. We’ve made a deal. They’re here to help us fight the "
 "rebels."
 msgstr ""
+"Calma, soldado. Hemos llegado a un acuerdo. Están aquí para ayudarnos a "
+"luchar contra los rebeldes."
 
 #. [message]
 #: data/campaigns/The_Deceivers_Gambit/scenarios/13_Revelry_Revisited.cfg:1218
 msgid "We’re working with orcs? But, your father—"
-msgstr ""
+msgstr "¿Estamos trabajando con orcos? Pero tu padre—"
 
 #. [message]: speaker=Eldred
 #: data/campaigns/The_Deceivers_Gambit/scenarios/13_Revelry_Revisited.cfg:1222
 msgid "My father is <i><b>dead</b></i>, soldier. Let the beasts through."
-msgstr ""
+msgstr "Mi padre está <i><b>muerto</b></i>, soldado. Deja pasar a las bestias."
 
 #. [objective]: condition=win
 #: data/campaigns/The_Deceivers_Gambit/scenarios/13_Revelry_Revisited.cfg:1232
@@ -8486,7 +8478,7 @@ msgstr ""
 #. "trog" is a made-up slur referring to an orc
 #: data/campaigns/The_Deceivers_Gambit/scenarios/13_Revelry_Revisited.cfg:1271
 msgid "Filthy trog. I don’t trust you, whatever Eldred says."
-msgstr ""
+msgstr "Asqueroso trog. No confío en ti, diga lo que diga Eldred."
 
 #. [message]: speaker=unit
 #: data/campaigns/The_Deceivers_Gambit/scenarios/13_Revelry_Revisited.cfg:1275
@@ -8495,6 +8487,9 @@ msgid ""
 "pillage any town that resists his rule, so keep your mouth shut or your home "
 "will be next."
 msgstr ""
+"Tienes suerte de que tu jefe nos esté pagando, enclenque. Tenemos vía libre "
+"para saquear cualquier pueblo que se resista a su dominio, así que cierra la "
+"boca o tu hogar será el siguiente."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_Deceivers_Gambit/scenarios/13_Revelry_Revisited.cfg:1342
@@ -8523,7 +8518,7 @@ msgid ""
 "Agony! My arm goes limp, I can fight no longer. This may be cutting things "
 "rather closer than I had planned, but what’s done is done."
 msgstr ""
-"¡Agonía! Mi brazo queda inmóvil, no puedo luchar más. Puede que esto haya "
+"¡Agonía! Mi brazo se queda inmóvil, no puedo luchar más. Puede que esto haya "
 "sido más arriesgado de lo planeado, pero lo hecho, hecho está."
 
 #. [message]: speaker=Deoran
@@ -11013,7 +11008,7 @@ msgstr ""
 #~ "<span font_family='WesScript' size='90000'>\n"
 #~ "\n"
 #~ "\n"
-#~ "<i>El Gambito del Embaucador </i></span>"
+#~ "<i>El Gambito de la Corona </i></span>"
 
 #~ msgid "<i>Quiet!</i> <span size='small'>Do you hear that?</span>"
 #~ msgstr "<i>¡Silencio!</i> <span size='small'>¿Escuchas eso?</span>"

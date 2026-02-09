@@ -229,19 +229,24 @@ def list_contents():
             except Exception as e:
                 q.put(("e", e))
 
-        q = multiprocessing.Queue()
-        p = multiprocessing.Process(target=f, args=(options, wml, defines, q))
-        p.start()
-        try:
-            s, local.wesnoth = q.get(timeout=TIMEOUT)
-        except queue.Empty:
-            p.terminate()
-            raise
-        #print("local", s, local.wesnoth)
-        p.join()
-        if s == "e":
-            remote_exception = local.wesnoth
-            raise remote_exception
+        if os.name != 'nt':
+            q = multiprocessing.Queue()
+            p = multiprocessing.Process(target=f, args=(options, wml, defines, q))
+            p.start()
+            try:
+                s, local.wesnoth = q.get(timeout=TIMEOUT)
+            except queue.Empty:
+                p.terminate()
+                raise
+            #print("local", s, local.wesnoth)
+            p.join()
+            if s == "e":
+                remote_exception = local.wesnoth
+                raise remote_exception
+        else:
+            # multiprocessing does not work on windows
+            q = multiprocessing.Queue()
+            f(options, wml, defines, q)
 
     def get_version(addon):
         parser = get_info(addon)

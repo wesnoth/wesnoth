@@ -627,7 +627,10 @@ bool game_launcher::play_screenshot_mode()
 
 	::init_textdomains(config_manager_.game_config());
 
-	editor::start(false, screenshot_map_, true, screenshot_filename_);
+	editor::EXIT_STATUS res = editor::start(false, screenshot_map_, true, screenshot_filename_);
+	if (res != editor::EXIT_NORMAL) {
+		PLAIN_LOG << "Error while taking screenshot of map: " << screenshot_map_;
+	}
 	return false;
 }
 

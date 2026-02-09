@@ -119,6 +119,7 @@ validate_campaign "Heir_To_The_Throne_Classic" "CAMPAIGN_HEIR_TO_THE_THRONE"    
 validate_campaign "Legend_of_Wesmere"          "CAMPAIGN_LOW"                     "EASY" "NORMAL" "HARD"             || RET=1
 validate_campaign "Liberty"                    "CAMPAIGN_LIBERTY"                 "EASY" "NORMAL" "HARD"             || RET=1
 validate_campaign "Northern_Rebirth"           "CAMPAIGN_NORTHERN_REBIRTH"        "EASY" "NORMAL" "HARD"             || RET=1
+validate_campaign "Of_Pearls_and_Pirates"      "CAMPAIGN_PEARLS_AND_PIRATES"      "EASY" "NORMAL" "HARD" "NIGHTMARE" || RET=1
 validate_campaign "Sceptre_of_Fire"            "CAMPAIGN_SCEPTRE_FIRE"            "EASY" "NORMAL" "HARD"             || RET=1
 validate_campaign "Secrets_of_the_Ancients"    "CAMPAIGN_SECRETS_OF_THE_ANCIENTS" "EASY" "NORMAL" "HARD"             || RET=1
 validate_campaign "Son_Of_The_Black_Eye"       "CAMPAIGN_SON_OF_THE_BLACK_EYE"    "EASY" "NORMAL" "HARD"             || RET=1
