@@ -362,6 +362,10 @@ static int process_command_args(commandline_options& cmdline_opts)
 		lg::set_log_sanitize(false);
 	}
 
+	if(cmdline_opts.no_simd) {
+		game_config::no_simd = true;
+	}
+
 	if(cmdline_opts.usercache_dir) {
 		filesystem::set_cache_dir(*cmdline_opts.usercache_dir);
 	}
