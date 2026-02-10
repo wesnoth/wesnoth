@@ -71,7 +71,7 @@ std::string tag(std::string_view tag, const tag_attributes& attrs, Args&&... dat
 	std::string input = (formatter() << ... << data);
 	if(input.empty()) return {};
 	std::stringstream ss;
-	ss << "<" << tag << " ";
+	ss << "<" << tag << (attrs.empty() ? "" : " ");
 	for (const auto& [key, value] : attrs) {
 		ss << key << "='" << value << "' ";
 	}
@@ -228,6 +228,8 @@ private:
  * text. Each markup item is a separate part while the text between
  * markups are separate parts.
  */
-config parse_text(const std::string &text);
+config parse_text(const std::string& text);
+
+std::string help_to_pango_markup(const std::string& help_markup);
 
 } // namespace markup

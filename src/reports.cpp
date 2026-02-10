@@ -193,8 +193,9 @@ static config unit_type(const unit* u)
 	if(!u) return config();
 
 	std::ostringstream tooltip;
-	tooltip << _("Type:") << " " << markup::bold(u->type_name()) << "\n"
-	        << u->unit_description();
+	tooltip << _("Type:") << " "
+	        << markup::bold(font::escape_text(u->type_name())) << "\n"
+	        << markup::help_to_pango_markup(u->unit_description());
 	if(const auto& notes = u->unit_special_notes(); !notes.empty()) {
 		tooltip << "\n\n" << _("Special Notes:") << '\n';
 		for(const auto& note : notes) {

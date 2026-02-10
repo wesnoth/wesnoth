@@ -15,6 +15,7 @@
 #include "serialization/markup.hpp"
 
 #include "config.hpp"
+#include "font/pango/escape.hpp"
 #include "formatter.hpp"
 #include "game_config.hpp"
 #include "gettext.hpp"
@@ -24,6 +25,7 @@
 #include "utils/general.hpp"
 
 #include <algorithm>
+#include <sstream>
 
 namespace markup {
 
@@ -462,6 +464,79 @@ config parse_text(const std::string& text)
 		throw e;
 	}
 	return res;
+}
+
+static std::string config_to_pango_markup(const std::string& orig_tagname, const config& cfg) {
+	std::stringstream text;
+
+	std::string tagname;
+	if (orig_tagname == "bold" || orig_tagname == "b") {
+		tagname = "b";
+	} else if (orig_tagname == "italic" || orig_tagname == "i") {
+		tagname = "i";
+	} else if (orig_tagname == "underline" || orig_tagname == "u" || orig_tagname == "ref") {
+		tagname = "u"; // <ref> tags will be shown as pango underline
+	} else if (orig_tagname == "format" || orig_tagname == "header" || orig_tagname == "h") {
+		tagname = "span";
+	} else if (orig_tagname == "img") {
+		return ""; // ignore
+	} else if (orig_tagname == "table") {
+		text << "\n";
+		for (const auto& row : cfg.child_range("row")) {
+			for (const auto& cell : row.child_range("col")) {
+				text << config_to_pango_markup("col", cell) << " ";
+			}
+			text << "\n";
+		}
+		return text.str();
+	} else {
+		// Anything that does not match any preceding if blocks
+		// gets its inner text extracted and returned, no special handling.
+		// This also handles plain text [text] blocks.
+		return font::escape_text(cfg["text"].str());
+	}
+
+	// Inner text content
+	if(cfg.has_attribute("text")) {
+		text << font::escape_text(cfg["text"].str());
+	}
+
+	// Tag specific formatting attributes
+	tag_attributes attrs;
+	if (orig_tagname == "span" || orig_tagname == "format") {
+		for(const auto& [key, val] : cfg.attribute_range()) {
+			attrs.emplace_back(key, val.str());
+		}
+	} else if (orig_tagname == "header" || orig_tagname == "h") {
+		attrs.emplace_back("weight", "heavy");
+		attrs.emplace_back("color", "white");
+		attrs.emplace_back("size", "large");
+	}
+
+	// Nested tags
+	for(const auto& [tagname, cfg] : cfg.all_children_view()) {
+		text << config_to_pango_markup(tagname, cfg);
+	}
+
+	return markup::tag_attr(tagname, attrs, text.str());
+}
+
+std::string help_to_pango_markup(const std::string& help_markup) {
+	const config& help_cfg = parse_text(help_markup);
+	std::stringstream pango_text;
+	std::string prev_tagname = "";
+	for(const auto& [tagname, child_cfg] : help_cfg.all_children_view()) {
+		// Two consecutive [text] blocks mean two paragraphs of text.
+		// Reinserting the paragraph break.
+		if(prev_tagname == "text" && tagname == "text") {
+			pango_text << "\n";
+		}
+
+		pango_text << config_to_pango_markup(tagname, child_cfg);
+
+		prev_tagname = tagname;
+	}
+	return pango_text.str();
 }
 
 }
