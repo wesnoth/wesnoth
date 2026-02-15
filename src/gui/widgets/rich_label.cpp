@@ -72,7 +72,7 @@ rich_label::rich_label(const implementation::builder_rich_label& builder)
 	, font_size_(font::SIZE_NORMAL)
 	, can_shrink_(true)
 	, text_alpha_(ALPHA_OPAQUE)
-	, init_w_(builder.width(get_screen_size_variables()))
+	, init_w_(0)
 	, size_(0, 0)
 	, padding_(builder.padding)
 {
@@ -185,7 +185,7 @@ void rich_label::add_link(
 
 	DBG_GUI_RL << "add_link: " << name << "->" << dest;
 	DBG_GUI_RL << "origin: " << origin;
-	DBG_GUI_RL << "width=" << img_width;
+	DBG_GUI_RL << "width: " << img_width;
 
 	point t_start, t_end;
 
@@ -249,6 +249,7 @@ std::size_t rich_label::get_split_location(std::string_view text, const point& p
 
 void rich_label::set_dom(const config& dom)
 {
+	dom_ = dom;
 	std::tie(shapes_, size_) = get_parsed_text(dom, point(0,0), init_w_, true);
 	update_canvas();
 	queue_redraw();
@@ -257,6 +258,29 @@ void rich_label::set_dom(const config& dom)
 void rich_label::set_label(const t_string& text)
 {
 	set_dom(markup::parse_text(text));
+}
+
+void rich_label::request_reduce_width(const unsigned maximum_width)
+{
+	if(maximum_width != static_cast<unsigned>(size_.x)) {
+		init_w_ = maximum_width;
+		set_dom(dom_);
+	}
+	styled_widget::request_reduce_width(maximum_width);
+}
+
+point rich_label::calculate_best_size() const
+{
+	return size_;
+}
+
+void rich_label::place(const point& origin, const point& size)
+{
+	if(size.x != size_.x) {
+		init_w_ = size.x;
+		set_dom(dom_);
+	}
+	styled_widget::place(origin, size);
 }
 
 std::pair<config, point> rich_label::get_parsed_text(
@@ -979,7 +1003,6 @@ builder_rich_label::builder_rich_label(const config& cfg)
 	: builder_styled_widget(cfg)
 	, text_alignment(decode_text_alignment(cfg["text_alignment"]))
 	, link_aware(cfg["link_aware"].to_bool(true))
-	, width(cfg["width"], 500)
 	, padding(cfg["padding"].to_int(5))
 {
 }
