@@ -188,33 +188,17 @@ public:
 	 */
 	std::pair<std::string, int> select_alternative_type(const active_ability_list& damage_type_list, const active_ability_list& resistance_list) const;
 	/**
-	 * Filter a list of abilities or weapon specials, removing any entries that don't own
-	 * the overwrite_specials attributes.
-	 *
-	 * @param overwriters list that may have overwrite_specials attributes.
-	 */
-	active_ability_list overwrite_special_overwriter(active_ability_list overwriters) const;
-	/**
-	 * Check whether @a cfg would be overwritten by any element of @a overwriters.
-	 *
-	 * @return True if element checked is overwritable.
-	 * @param overwriters list used for check if element is overwritable.
-	 * @param i the ability/special checked
-	 */
-	bool overwrite_special_checking(active_ability_list& overwriters, const active_ability& i) const;
-
-	/**
 	 * Check whether @a overwrited would be overwritten by any element of @a overwriters.
 	 *
 	 * @return True if element checked is overwritable.
 	 * @param overwriters list used for check if element is overwritable.
 	 * @param overwrited the ability/special checked
 	 */
-	bool priority_checking(active_ability_list& overwriters, const active_ability& overwrited) const;
+	bool overwrite_special_checking(active_ability_list& overwriters, const active_ability& overwrited) const;
 
 	bool special_active(const unit_ability_t& ab, AFFECTS whom) const;
 
-	// make more functions proivate after refactoring finished.
+	// make more functions private after refactoring finished.
 
 	// Used via specials_context() to control which specials are
 	// considered active.

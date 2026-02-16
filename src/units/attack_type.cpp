@@ -876,30 +876,22 @@ bool attack_type::special_active(const unit_ability_t& ab, AFFECTS whom) const
 	return context_->is_special_active(self, ab, whom);
 }
 
+
 active_ability_list attack_type::get_specials_and_abilities(const std::string& special) const
 {
 	auto ctx = fallback_context();
 	auto abil_list = context_->get_active_specials(*this, special);
 
-	// get a list of specials/"specials as abilities" that may potentially overwrite others
-	active_ability_list overwriters = overwrite_special_overwriter(abil_list);
-	if (!abil_list.empty() && !overwriters.empty()) {
-		// remove all abilities that would be overwritten
-		utils::erase_if(abil_list, [&](const active_ability& j) {
-			return (overwrite_special_checking(overwriters, j));
-			});
-	}
 	utils::sort_if(abil_list,[](const active_ability& i, const active_ability& j){
 		double l = i.ability().suppress_special_priority();
 		double r = j.ability().suppress_special_priority();
 		return l > r;
 	});
 	utils::erase_if(abil_list, [&](const active_ability& i) {
-		return (priority_checking(abil_list, i));
+		return (overwrite_special_checking(abil_list, i));
 	});
 	return abil_list;
 }
-
 /**
  * Returns whether or not @a *this has a special ability with a tag or id equal to
  * @a special. the Check is for a special ability
