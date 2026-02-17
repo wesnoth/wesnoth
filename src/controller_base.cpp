@@ -91,7 +91,9 @@ void controller_base::long_touch_callback(int x, int y)
 
 void controller_base::handle_event(const SDL_Event& event)
 {
-	if(gui2::is_in_dialog()) {
+	// Allow SDL_KEYUP events to be processed even if a dialog is open,
+	// so that scroll state can be properly reset when keys are released.
+	if(gui2::is_in_dialog() && event.type != SDL_KEYUP) {
 		return;
 	}
 
