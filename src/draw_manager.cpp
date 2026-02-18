@@ -82,7 +82,10 @@ void invalidate_regions(std::vector<rect>&& regions)
 			return lhs.x < rhs.x;
 		});
 
-	// merge adjacent rectangles (mark consumed rects by zero width)
+	// Merge adjacent rectangles (mark consumed rects by zero width).
+	// We only need to consider regions that touch or overlap along the X axis;
+	// all others will have a cover larger than the sum of the individual areas.
+	// Since REGIONS have been sorted by X the relevant range is a sliding window.
 	for (auto dest = regions.begin(), end = regions.end(); dest != end; ++dest) {
 		// skip merged rectangles
 		if (dest->w) {
@@ -91,9 +94,14 @@ void invalidate_regions(std::vector<rect>&& regions)
 				if (source->x > dest->x + dest->w) {
 					break;
 				}
-				if (source->w && source->y <= dest->y + dest->h) {
+				// Quick check:
+				// Only non-empty regions that have no gap along the Y axis might
+				// get merged (otherwise, minimal_cover is larger than SOURCE+DEST)
+				if (   source->w
+					&& source->y <= dest->y + dest->h
+					&& source->y + source->h >= dest->y) {
 					rect m = source->minimal_cover(*dest);
-					// is also covers the case, where one side contains the other
+					// this also covers the case of one side containing the other
 					if (m.area() <= source->area() + dest->area()) {
 						*dest = m;
 						source->w = 0;
