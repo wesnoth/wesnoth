@@ -10,7 +10,7 @@
      * Shortened turn limits on several long scenarios.
      * Decreased player gold from 100 to 80 on most scenarios.
      * S08 "The Siege of Kal Kartha": increased enemy gold.
-     * S10 "The Underlevels": reduced number of villages, and increased Karrag's income.
+     * S10 "The Underlevels": Karrag can now be optionally fought before you kill all other leaders, and the scenario has been rebalanced accordingly.
    * Heir to the Throne
      * Fixed a serious issue where the "Replacement Weapons" tweak would trigger on all sides' recruits, not just Konrad's.
      * Moremirmu: significantly increased hitpoints, but decreased speed and damage.
