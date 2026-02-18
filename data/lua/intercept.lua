@@ -1,7 +1,7 @@
 --attacker is e
 --defender is u
 
-local _ = wesnoth.textdomain "wesnoth-help" -- !! This takes away "_" as commonly used unused variable !!
+local _ = wesnoth.textdomain "wesnoth" -- !! This takes away "_" as commonly used unused variable !!
 
 local c = wesnoth.current.event_context
 local x1 = c.x1
