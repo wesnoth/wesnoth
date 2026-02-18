@@ -112,12 +112,7 @@ void invalidate_regions(std::vector<rect>&& regions)
 	}
 
 	// eliminate zero-width (merged) rectangles
-	regions.erase(
-		std::copy_if(regions.begin(), regions.end(), regions.begin(),
-			[](const rect& r) {
-				return r.w > 0;
-			}),
-		regions.end());
+	utils::erase_if(regions, [](const rect& r) { return r.w <= 0; });
 
 	// check if we had any non-empty regions to begin with
 	if (!regions.empty()) {
