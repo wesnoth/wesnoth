@@ -26,6 +26,8 @@
 #include "draw.hpp"
 #include "draw_manager.hpp"
 #include "font/text.hpp"
+#include "font/attributes.hpp"
+#include "font/font_options.hpp"
 #include "formatter.hpp"
 #include "gettext.hpp"
 #include "gui/auxiliary/typed_formula.hpp"
@@ -240,7 +242,7 @@ image_shape::image_shape(const config& cfg, wfl::action_function_symbol_table& f
 	, y_(cfg["y"])
 	, w_(cfg["w"])
 	, h_(cfg["h"])
-	, image_name_(cfg["name"])
+	, image_name_(cfg["name"], "")  // avoid ambiguous ctor error
 	, resize_mode_(get_resize_mode(cfg["resize_mode"]))
 	, mirror_(cfg.get_old_attribute("mirror", "vertical_mirror", "image"))
 	, actions_formula_(cfg["actions"], &functions)
@@ -250,6 +252,24 @@ image_shape::image_shape(const config& cfg, wfl::action_function_symbol_table& f
 	if(!debug.empty()) {
 		DBG_GUI_P << "Image: found debug message '" << debug << "'.";
 	}
+}
+
+image_shape::image_shape(
+	const std::string& img_path,
+	const unsigned x,
+	const unsigned y,
+	const unsigned w,
+	const unsigned h)
+	: shape()
+	, x_(x)
+	, y_(y)
+	, w_(w)
+	, h_(h)
+	, image_name_("(" + img_path + ")", img_path) // avoid ambiguous ctor error
+	, resize_mode_(get_resize_mode("scale_sharp"))
+	, mirror_("false")
+	, actions_formula_("")
+{
 }
 
 void image_shape::dimension_validation(unsigned value, const std::string& name, const std::string& key)
@@ -481,6 +501,41 @@ text_shape::text_shape(const config& cfg, wfl::action_function_symbol_table& fun
 		DBG_GUI_P << "Text: found debug message '" << debug << "'.";
 	}
 }
+
+text_shape::text_shape(
+	font::family_class family,
+	const unsigned size,
+	font::pango_text::FONT_STYLE style,
+	const std::string& align,
+	const color_t& font_color,
+	const t_string& text,
+	const std::string& width,
+	font::attribute_list&& attrs)
+	: rect_bounded_shape(config{})
+	, font_family_(family)
+	, font_size_(size)
+	, font_style_(style)
+	, text_alignment_(align)
+	, color_(font_color)
+	, text_(text)
+	, parse_text_as_formula_(false)
+	, text_markup_(false)
+	, link_aware_(false)
+	, link_color_(font::YELLOW_COLOR)
+	, maximum_width_(width)
+	, characters_per_line_(-1)
+	, maximum_height_(-1)
+	, highlight_start_("")
+	, highlight_end_("")
+	, highlight_color_(color_t::from_hex_string("215380"))
+	, line_spacing_(font::get_line_spacing_factor())
+	, outline_(false)
+	, actions_formula_("")
+	, text_attributes_(std::move(attrs))
+{
+}
+
+
 
 void text_shape::draw(wfl::map_formula_callable& variables)
 {

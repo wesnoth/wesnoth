@@ -60,6 +60,8 @@ public:
 	 */
 	explicit typed_formula(const std::string& str, const T value = T());
 
+	explicit typed_formula(T value);
+
 	/**
 	 * Returns the value, can only be used if the data is no formula.
 	 *
@@ -146,6 +148,12 @@ typed_formula<T>::typed_formula(const std::string& str, const T value)
 	} else {
 		convert(str);
 	}
+}
+
+template<typename T>
+typed_formula<T>::typed_formula(const T value)
+	: formula_(), value_(value)
+{
 }
 
 template<typename T>

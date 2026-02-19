@@ -187,6 +187,13 @@ public:
 	 */
 	image_shape(const config& cfg, wfl::action_function_symbol_table& functions);
 
+	image_shape(
+		const std::string& img_path,
+		const unsigned x,
+		const unsigned y,
+		const unsigned w,
+		const unsigned h);
+
 	void draw(wfl::map_formula_callable& variables) override;
 
 private:
@@ -243,6 +250,16 @@ public:
 	 * @param functions           WFL functions to execute.
 	 */
 	explicit text_shape(const config& cfg, wfl::action_function_symbol_table& functions);
+
+	explicit text_shape(
+		font::family_class family,
+		const unsigned size,
+		font::pango_text::FONT_STYLE style,
+		const std::string& align,
+		const color_t& font_color,
+		const t_string& text,
+		const std::string& width,
+		font::attribute_list&& attrs);
 
 	void draw(wfl::map_formula_callable& variables) override;
 

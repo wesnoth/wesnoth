@@ -53,6 +53,8 @@ public:
 	class shape
 	{
 	public:
+		explicit shape() : immutable_(false) {}
+
 		explicit shape(const config& cfg) : immutable_(cfg["immutable"].to_bool(false))
 		{
 		}
@@ -125,6 +127,12 @@ public:
 	{
 		clear_shapes(force);
 		parse_cfg(cfg);
+	}
+
+	void set_shapes(const std::vector<std::unique_ptr<shape>>& shapes, const bool force = false)
+	{
+		clear_shapes(force);
+		shapes_ = shapes;
 	}
 
 	/**
