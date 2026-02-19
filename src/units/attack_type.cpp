@@ -876,6 +876,67 @@ bool attack_type::special_active(const unit_ability_t& ab, AFFECTS whom) const
 	return context_->is_special_active(self, ab, whom);
 }
 
+namespace {
+	bool overwrite_special_affects(const unit_ability_t& ab)
+	{
+		const std::string& apply_to = ab.cfg()["overwrite_specials"];
+		return (apply_to == "one_side" || apply_to == "both_sides");
+	}
+}
+
+bool attack_type::overwrite_special_checking(active_ability_list& overwriters, const active_ability& overwrited) const
+{
+	auto ctx = fallback_context();
+	auto [self, other] = context_->self_and_other(*this);
+	const map_location& loc = overwrited.student_loc;
+	if(overwriters.empty()){
+		return false;
+	}
+	const unit_ability_t& ab = overwrited.ability();
+
+	for(const auto& j : overwriters) {
+		if(j.ability().suppress_special_priority() <= ab.suppress_special_priority()) {
+			continue;
+		}
+
+		// substitute [overwrite_specials] config to deprecated "overwrite_specials" attributes config if special hasn't already [overwrite_specials].
+		config cfg = j.ability_cfg();
+		if(!cfg.optional_child("overwrite_specials") && overwrite_special_affects(j.ability())) {
+			const std::string& affect_side = j.student_loc == self.loc ? "self" : "opponent";
+			config& overwrite_specials = cfg.child_or_add("overwrite_specials");
+			overwrite_specials["affect_side"] = cfg["overwrite_specials"] == "one_side" ? affect_side : "both";
+			config& filter_special = overwrite_specials.child_or_add("filter_special");
+			if(auto overwrite = cfg.optional_child("overwrite")) {
+				if(auto filter_specials = (*overwrite).optional_child("filter_specials")) {
+					filter_special = *filter_specials;
+				} else if(auto experimental_filter_specials = (*overwrite).optional_child("experimental_filter_specials")) {
+					deprecated_message("experimental_filter_specials", DEP_LEVEL::INDEFINITE, "", "Use filter_specials instead.");
+					filter_special = *experimental_filter_specials;
+				}
+			}
+		}
+		cfg.remove_attribute("overwrite_specials");
+
+		bool effect_matches = false;
+		auto overwrite_filter = cfg.optional_child("overwrite_specials");
+		if(overwrite_filter) {
+			bool affect_side = true;
+			//the location of the fighters is used to differentiate the specials applied to 'self' from those applied to 'opponent'
+			//in all cases including 'apply_to=attacker/defender'
+			if((*overwrite_filter)["affect_side"].str("both") == "self" ) {
+				affect_side = loc == self.loc;
+			} else if(other.un && (*overwrite_filter)["affect_side"].str("both") == "opponent") {
+				affect_side = loc == other.loc;
+			}
+			auto filter_abilities_specials = (*overwrite_filter).optional_child("filter_special");
+			effect_matches = filter_abilities_specials ? affect_side && ab.matches_filter(*filter_abilities_specials) : affect_side;
+		}
+		if(effect_matches) {
+			return true;
+		}
+	}
+	return false;
+}
 
 active_ability_list attack_type::get_specials_and_abilities(const std::string& special) const
 {
