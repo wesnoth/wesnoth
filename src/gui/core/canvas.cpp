@@ -103,6 +103,21 @@ rectangle_shape::rectangle_shape(const config& cfg)
 	}
 }
 
+rectangle_shape::rectangle_shape(
+	const unsigned x,
+	const unsigned y,
+	const unsigned w,
+	const unsigned h,
+	const unsigned thickness,
+	const color_t& border_color,
+	const color_t& fill_color)
+	: rect_bounded_shape(x, y, w, h)
+	, border_thickness_(thickness)
+	, border_color_(border_color)
+	, fill_color_(fill_color)
+{
+}
+
 void rectangle_shape::draw(wfl::map_formula_callable& variables)
 {
 	const rect area {
@@ -539,7 +554,17 @@ text_shape::text_shape(
 	text_ = text;
 }
 
+void text_shape::set_text(const std::string& text) {
+	text_ = text;
+}
 
+void text_shape::set_wrap_width(const unsigned wrap_width) {
+	maximum_width_.set_value(wrap_width);
+}
+
+void text_shape::set_attributes(font::attribute_list&& attrs) {
+	text_attributes_ = std::move(attrs);
+}
 
 void text_shape::draw(wfl::map_formula_callable& variables)
 {

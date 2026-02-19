@@ -13,6 +13,7 @@
 	See the COPYING file for more details.
 */
 
+#include "color.hpp"
 #include "gui/core/canvas.hpp"
 #include "gui/auxiliary/typed_formula.hpp"
 
@@ -94,6 +95,15 @@ public:
 	 * @param cfg                 The config object to define the rectangle.
 	 */
 	explicit rectangle_shape(const config& cfg);
+
+	explicit rectangle_shape(
+		const unsigned x,
+		const unsigned y,
+		const unsigned w,
+		const unsigned h,
+		const unsigned thickness,
+		const color_t& border_color,
+		const color_t& fill_color = color_t::null_color());
 
 	void draw(wfl::map_formula_callable& variables) override;
 
@@ -274,6 +284,10 @@ public:
 		const t_string& text,
 		const std::string& width,
 		font::attribute_list&& attrs);
+
+	void set_text(const std::string& text);
+	void set_wrap_width(const unsigned wrap_width);
+	void set_attributes(font::attribute_list&& attrs);
 
 	void draw(wfl::map_formula_callable& variables) override;
 

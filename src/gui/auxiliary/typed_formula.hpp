@@ -62,6 +62,9 @@ public:
 
 	explicit typed_formula(T value);
 
+	/** Set the default value for this object */
+	void set_value(T value) { value_ = value; }
+
 	/**
 	 * Returns the value, can only be used if the data is no formula.
 	 *
