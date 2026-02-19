@@ -55,6 +55,16 @@ private:
 class rect_bounded_shape : public canvas::shape
 {
 protected:
+
+	explicit rect_bounded_shape(unsigned x, unsigned y, unsigned w, unsigned h)
+		: shape()
+		, x_(x)
+		, y_(y)
+		, w_(w)
+		, h_(h)
+	{
+	}
+
 	/**
 	 * Constructor.
 	 *
@@ -157,7 +167,7 @@ public:
 	 */
 	explicit circle_shape(const config& cfg);
 
-	void draw( wfl::map_formula_callable& variables) override;
+	void draw(wfl::map_formula_callable& variables) override;
 
 private:
 	typed_formula<unsigned> x_; /**< The center x coordinate of the circle. */
@@ -252,6 +262,10 @@ public:
 	explicit text_shape(const config& cfg, wfl::action_function_symbol_table& functions);
 
 	explicit text_shape(
+		const unsigned x,
+		const unsigned y,
+		const unsigned w,
+		const unsigned h,
 		font::family_class family,
 		const unsigned size,
 		font::pango_text::FONT_STYLE style,

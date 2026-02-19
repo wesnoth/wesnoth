@@ -503,6 +503,10 @@ text_shape::text_shape(const config& cfg, wfl::action_function_symbol_table& fun
 }
 
 text_shape::text_shape(
+	const unsigned x,
+	const unsigned y,
+	const unsigned w,
+	const unsigned h,
 	font::family_class family,
 	const unsigned size,
 	font::pango_text::FONT_STYLE style,
@@ -511,13 +515,12 @@ text_shape::text_shape(
 	const t_string& text,
 	const std::string& width,
 	font::attribute_list&& attrs)
-	: rect_bounded_shape(config{})
+	: rect_bounded_shape(x, y, w, h)
 	, font_family_(family)
 	, font_size_(size)
 	, font_style_(style)
 	, text_alignment_(align)
 	, color_(font_color)
-	, text_(text)
 	, parse_text_as_formula_(false)
 	, text_markup_(false)
 	, link_aware_(false)
@@ -533,6 +536,7 @@ text_shape::text_shape(
 	, actions_formula_("")
 	, text_attributes_(std::move(attrs))
 {
+	text_ = text;
 }
 
 
