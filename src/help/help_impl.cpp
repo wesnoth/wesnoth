@@ -68,16 +68,16 @@ const std::string era_prefix = "era_";
 const std::string variation_prefix = "variation_";
 const std::string ability_prefix = "ability_";
 
-bool section_is_referenced(const std::string &section_id, const config &cfg)
+bool section_is_referenced(const std::string& section_id, const config& cfg)
 {
-	if (auto toplevel = cfg.optional_child("toplevel"))
+	if(auto toplevel = cfg.optional_child("toplevel"))
 	{
 		if(utils::contains(utils::quoted_split(toplevel["sections"]), section_id)) {
 			return true;
 		}
 	}
 
-	for (const config &section : cfg.child_range("section"))
+	for(const config& section : cfg.child_range("section"))
 	{
 		if(utils::contains(utils::quoted_split(section["sections"]), section_id)) {
 			return true;
@@ -86,16 +86,16 @@ bool section_is_referenced(const std::string &section_id, const config &cfg)
 	return false;
 }
 
-bool topic_is_referenced(const std::string &topic_id, const config &cfg)
+bool topic_is_referenced(const std::string& topic_id, const config& cfg)
 {
-	if (auto toplevel = cfg.optional_child("toplevel"))
+	if(auto toplevel = cfg.optional_child("toplevel"))
 	{
 		if(utils::contains(utils::quoted_split(toplevel["topics"]), topic_id)) {
 			return true;
 		}
 	}
 
-	for (const config &section : cfg.child_range("section"))
+	for(const config& section : cfg.child_range("section"))
 	{
 		if(utils::contains(utils::quoted_split(section["topics"]), topic_id)) {
 			return true;
@@ -106,14 +106,14 @@ bool topic_is_referenced(const std::string &topic_id, const config &cfg)
 
 section parse_config_internal(const config& help_cfg, const config& section_cfg, int level)
 {
-	if (level > max_section_level) {
+	if(level > max_section_level) {
 		PLAIN_LOG << "Maximum section depth has been reached. Maybe circular dependency?";
 		return section{};
 	}
 	const std::vector<std::string> sections = utils::quoted_split(section_cfg["sections"]);
 	std::string id = level == 0 ? "toplevel" : section_cfg["id"].str();
-	if (level != 0) {
-		if (!is_valid_id(id)) {
+	if(level != 0) {
+		if(!is_valid_id(id)) {
 			std::stringstream ss;
 			ss << "Invalid ID, used for internal purpose: '" << id << "'";
 			throw parse_error(ss.str());
@@ -125,7 +125,7 @@ section parse_config_internal(const config& help_cfg, const config& section_cfg,
 	sec.title = title;
 	// Find all child sections.
 	for(const std::string& sec_id : sections) {
-		if (auto child_cfg = help_cfg.find_child("section", "id", sec_id))
+		if(auto child_cfg = help_cfg.find_child("section", "id", sec_id))
 		{
 			sec.add_section(parse_config_internal(help_cfg, *child_cfg, level + 1));
 		}
@@ -138,23 +138,23 @@ section parse_config_internal(const config& help_cfg, const config& section_cfg,
 	}
 
 	generate_sections(help_cfg, section_cfg["sections_generator"], sec, level);
-	if (section_cfg["sort_sections"] == "yes") {
+	if(section_cfg["sort_sections"] == "yes") {
 		sec.sections.sort(section_less());
 	}
 
 	bool sort_topics = false;
 	bool sort_generated = true;
 
-	if (section_cfg["sort_topics"] == "yes") {
+	if(section_cfg["sort_topics"] == "yes") {
 		sort_topics = true;
 		sort_generated = false;
-	} else if (section_cfg["sort_topics"] == "no") {
+	} else if(section_cfg["sort_topics"] == "no") {
 		sort_topics = false;
 		sort_generated = false;
-	} else if (section_cfg["sort_topics"] == "generated") {
+	} else if(section_cfg["sort_topics"] == "generated") {
 		sort_topics = false;
 		sort_generated = true;
-	} else if (!section_cfg["sort_topics"].empty()) {
+	} else if(!section_cfg["sort_topics"].empty()) {
 		std::stringstream ss;
 		ss << "Invalid sort option: '" << section_cfg["sort_topics"] << "'";
 		throw parse_error(ss.str());
@@ -165,12 +165,12 @@ section parse_config_internal(const config& help_cfg, const config& section_cfg,
 
 	// Find all topics in this section.
 	for(const std::string& topic_id : utils::quoted_split(section_cfg["topics"])) {
-		if (auto topic_cfg = help_cfg.find_child("topic", "id", topic_id))
+		if(auto topic_cfg = help_cfg.find_child("topic", "id", topic_id))
 		{
 			std::string text = topic_cfg["text"];
 			text += generate_topic_text(topic_cfg["generator"], help_cfg, sec);
 			topic child_topic(topic_cfg["title"], topic_cfg["id"], text);
-			if (!is_valid_id(child_topic.id)) {
+			if(!is_valid_id(child_topic.id)) {
 				std::stringstream ss;
 				ss << "Invalid ID, used for internal purpose: '" << id << "'";
 				throw parse_error(ss.str());
@@ -185,7 +185,7 @@ section parse_config_internal(const config& help_cfg, const config& section_cfg,
 		}
 	}
 
-	if (sort_topics) {
+	if(sort_topics) {
 		std::sort(topics.begin(),topics.end(), title_less());
 		std::sort(generated_topics.begin(),
 			generated_topics.end(), title_less());
@@ -211,27 +211,27 @@ section parse_config(const config& cfg)
 	}
 }
 
-std::vector<topic> generate_topics(const bool sort_generated,const std::string &generator)
+std::vector<topic> generate_topics(const bool sort_generated,const std::string& generator)
 {
 	std::vector<topic> res;
-	if (generator.empty()) {
+	if(generator.empty()) {
 		return res;
 	}
 
-	if (generator == "abilities") {
+	if(generator == "abilities") {
 		res = generate_ability_topics(sort_generated);
-	} else if (generator == "weapon_specials") {
+	} else if(generator == "weapon_specials") {
 		res = generate_weapon_special_topics(sort_generated);
-	} else if (generator == "time_of_days") {
+	} else if(generator == "time_of_days") {
 		res = generate_time_of_day_topics(sort_generated);
-	} else if (generator == "traits") {
+	} else if(generator == "traits") {
 		res = generate_trait_topics(sort_generated);
 	} else {
 		std::vector<std::string> parts = utils::split(generator, ':', utils::STRIP_SPACES);
-		if (parts.size() > 1 && parts[0] == "units") {
-			res = generate_unit_topics(sort_generated, parts[1]);
-		} else if (parts[0] == "era" && parts.size()>1) {
-			res = generate_era_topics(sort_generated, parts[1]);
+		if(parts.size() > 1 && parts[0] == "units") {
+			res = generate_unit_topics(parts[1], sort_generated);
+		} else if(parts[0] == "era" && parts.size()>1) {
+			res = generate_era_topics(parts[1], sort_generated);
 		} else {
 			WRN_HP << "Found a topic generator that I didn't recognize: " << generator;
 		}
@@ -240,34 +240,34 @@ std::vector<topic> generate_topics(const bool sort_generated,const std::string &
 	return res;
 }
 
-void generate_sections(const config& help_cfg, const std::string &generator, section &sec, int level)
+void generate_sections(const config& help_cfg, const std::string& generator, section& sec, int level)
 {
-	if (generator == "races") {
+	if(generator == "races") {
 		generate_races_sections(help_cfg, sec, level);
-	} else if (generator == "terrains") {
+	} else if(generator == "terrains") {
 		generate_terrain_sections(sec, level);
-	} else if (generator == "eras") {
+	} else if(generator == "eras") {
 		DBG_HP << "Generating eras...";
 		generate_era_sections(help_cfg, sec, level);
 	} else 	{
 		std::vector<std::string> parts = utils::split(generator, ':', utils::STRIP_SPACES);
-		if (parts.size() > 1 && parts[0] == "units") {
+		if(parts.size() > 1 && parts[0] == "units") {
 			generate_unit_sections(help_cfg, sec, level, true, parts[1]);
-		} else if (generator.size() > 0) {
+		} else if(generator.size() > 0) {
 			WRN_HP << "Found a section generator that I didn't recognize: " << generator;
 		}
 	}
 }
 
-std::string generate_topic_text(const std::string &generator, const config& help_cfg, const section &sec)
+std::string generate_topic_text(const std::string& generator, const config& help_cfg, const section& sec)
 {
 	std::string empty_string = "";
-	if (generator.empty()) {
+	if(generator.empty()) {
 		return empty_string;
 	} else {
 		std::vector<std::string> parts = utils::split(generator, ':');
-		if (parts.size() > 1 && parts[0] == "contents") {
-			if (parts[1] == "generated") {
+		if(parts.size() > 1 && parts[0] == "contents") {
+			if(parts[1] == "generated") {
 				return generate_contents_links(sec);
 			} else {
 				return generate_contents_links(parts[1], help_cfg);
@@ -279,7 +279,7 @@ std::string generate_topic_text(const std::string &generator, const config& help
 
 const config& topic_text::parsed_text() const
 {
-	if (generator_) {
+	if(generator_) {
 		parsed_text_ = markup::parse_text((*generator_)());
 		// This caches the result, so doesn't need the generator any more
 		generator_.reset();
@@ -297,14 +297,14 @@ std::vector<topic> generate_time_of_day_topics(const bool /*sort_generated*/)
 	std::vector<topic> topics;
 	std::stringstream toplevel;
 
-	if (!resources::tod_manager) {
+	if(!resources::tod_manager) {
 		toplevel << _("Only available during a scenario.");
 		topics.emplace_back(_("Time of Day Schedule"), "..schedule", toplevel.str());
 		return topics;
 	}
 
 	const std::vector<time_of_day>& times = resources::tod_manager->times();
-	for (const time_of_day& time : times)
+	for(const time_of_day& time : times)
 	{
 		const std::string id = "time_of_day_" + time.id;
 		const std::string image = markup::img(time.image);
@@ -357,14 +357,14 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 	for(const auto& [type_id, type] : unit_types.types()) {
 		// Only show the weapon special if we find it on a unit that
 		// detailed description should be shown about.
-		if (description_type(type) != FULL_DESCRIPTION)
+		if(description_type(type) != FULL_DESCRIPTION)
 			continue;
 
 		for(const attack_type& atk : type.attacks()) {
 			for(auto& tt_info : atk.special_tooltips()) {
 				special_description.emplace(tt_info);
 
-				if (!type.hide_help()) {
+				if(!type.hide_help()) {
 					//add a link in the list of units having this special
 					std::string type_name = type.type_name();
 					//check for variations (walking corpse/soulless etc)
@@ -401,7 +401,7 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 					}
 				} else if(effect["apply_to"] == "attack" && effect.has_child("set_specials")) {
 					for(const auto [key, special] : effect.mandatory_child("set_specials").all_children_view()) {
-						if (!special["name"].empty()) {
+						if(!special["name"].empty()) {
 							std::string topic_id = unit_ability_t::get_help_topic_id(special);
 							//c++20: use emplace
 							special_description.insert({special["name"].t_str(), special["description"].t_str(), topic_id});
@@ -436,7 +436,7 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 		topics.emplace_back(name, id, text.str());
 	}
 
-	if (sort_generated)
+	if(sort_generated)
 		std::sort(topics.begin(), topics.end(), title_less());
 	return topics;
 }
@@ -450,7 +450,7 @@ std::vector<topic> generate_ability_topics(const bool sort_generated)
 
 	const auto parse = [&](const unit_type& type, const unit_type::ability_metadata& ability) {
 
-		ability_topic_data.emplace(ability.help_topic_id, &ability);
+		ability_topic_data.emplace(ability.help_topic_id,& ability);
 
 		if(!type.hide_help()) {
 			// Add a link in the list of units with this ability
@@ -479,7 +479,7 @@ std::vector<topic> generate_ability_topics(const bool sort_generated)
 	}
 
 	for(const auto& a : ability_topic_data) {
-		if (a.second->name.empty()) {
+		if(a.second->name.empty()) {
 			continue;
 		}
 		std::ostringstream text;
@@ -500,7 +500,7 @@ std::vector<topic> generate_ability_topics(const bool sort_generated)
 	return topics;
 }
 
-std::vector<topic> generate_era_topics(const bool sort_generated, const std::string & era_id)
+std::vector<topic> generate_era_topics(const std::string& era_id, const bool sort_generated)
 {
 	std::vector<topic> topics;
 
@@ -509,13 +509,13 @@ std::vector<topic> generate_era_topics(const bool sort_generated, const std::str
 		topics = generate_faction_topics(*era, sort_generated);
 
 		std::vector<std::string> faction_links;
-		for (const topic & t : topics) {
+		for(const topic & t : topics) {
 			faction_links.push_back(markup::make_link(t.title, t.id));
 		}
 
 		std::stringstream text;
 		const config::attribute_value& description = era["description"];
-		if (!description.empty()) {
+		if(!description.empty()) {
 			text << description.t_str() << "\n";
 			text << "\n";
 		}
@@ -523,7 +523,7 @@ std::vector<topic> generate_era_topics(const bool sort_generated, const std::str
 		text << markup::tag("header", _("Factions")) << "\n";
 
 		std::sort(faction_links.begin(), faction_links.end());
-		for (const std::string &link : faction_links) {
+		for(const std::string& link : faction_links) {
 			text << font::unicode_bullet << " " << link << "\n";
 		}
 
@@ -532,18 +532,18 @@ std::vector<topic> generate_era_topics(const bool sort_generated, const std::str
 	return topics;
 }
 
-std::vector<topic> generate_faction_topics(const config & era, const bool sort_generated)
+std::vector<topic> generate_faction_topics(const config& era, const bool sort_generated)
 {
 	std::vector<topic> topics;
-	for (const config &f : era.child_range("multiplayer_side")) {
+	for(const config& f : era.child_range("multiplayer_side")) {
 		const std::string& id = f["id"];
-		if (id == "Random")
+		if(id == "Random")
 			continue;
 
 		std::stringstream text;
 
 		const config::attribute_value& description = f["description"];
-		if (!description.empty()) {
+		if(!description.empty()) {
 			text << description.t_str() << "\n";
 			text << "\n";
 		}
@@ -552,19 +552,19 @@ std::vector<topic> generate_faction_topics(const config & era, const bool sort_g
 		std::set<std::string> races;
 		std::set<std::string> alignments;
 
-		for (const std::string & u_id : recruit_ids) {
-			if (const unit_type * t = unit_types.find(u_id, unit_type::HELP_INDEXED)) {
+		for(const std::string & u_id : recruit_ids) {
+			if(const unit_type* t = unit_types.find(u_id, unit_type::HELP_INDEXED)) {
 				assert(t);
-				const unit_type & type = *t;
+				const unit_type& type = *t;
 
-				if (const unit_race *r = unit_types.find_race(type.race_id())) {
+				if(const unit_race* r = unit_types.find_race(type.race_id())) {
 					races.insert(markup::make_link(r->plural_name(), std::string("..") + race_prefix + r->id()));
 				}
 				alignments.insert(markup::make_link(type.alignment_description(type.alignment(), type.genders().front()), "time_of_day"));
 			}
 		}
 
-		if (!races.empty()) {
+		if(!races.empty()) {
 			std::set<std::string>::iterator it = races.begin();
 			text << _("Races: ") << *(it++);
 			while(it != races.end()) {
@@ -573,7 +573,7 @@ std::vector<topic> generate_faction_topics(const config & era, const bool sort_g
 			text << "\n\n";
 		}
 
-		if (!alignments.empty()) {
+		if(!alignments.empty()) {
 			std::set<std::string>::iterator it = alignments.begin();
 			text << _("Alignments: ") << *(it++);
 			while(it != alignments.end()) {
@@ -585,7 +585,7 @@ std::vector<topic> generate_faction_topics(const config & era, const bool sort_g
 		text << markup::tag("header", _("Leaders")) << "\n";
 		const std::vector<std::string> leaders =
 				make_unit_links_list( utils::split(f["leader"]), true );
-		for (const std::string &link : leaders) {
+		for(const std::string& link : leaders) {
 			text << font::unicode_bullet << " " << link << "\n";
 		}
 
@@ -594,7 +594,7 @@ std::vector<topic> generate_faction_topics(const config & era, const bool sort_g
 		text << markup::tag("header", _("Recruits")) << "\n";
 		const std::vector<std::string> recruit_links =
 				make_unit_links_list( recruit_ids, true );
-		for (const std::string &link : recruit_links) {
+		for(const std::string& link : recruit_links) {
 			text << font::unicode_bullet << " " << link << "\n";
 		}
 
@@ -602,7 +602,7 @@ std::vector<topic> generate_faction_topics(const config & era, const bool sort_g
 		const std::string ref_id = faction_prefix + era["id"].str() + "_" + id;
 		topics.emplace_back(name, ref_id, text.str());
 	}
-	if (sort_generated)
+	if(sort_generated)
 		std::sort(topics.begin(), topics.end(), title_less());
 	return topics;
 }
@@ -615,7 +615,7 @@ std::vector<topic> generate_trait_topics(const bool sort_generated)
 	std::map<std::string, const config> trait_list;
 
 	// The global traits that are direct children of a [units] tag
-	for (const config & trait : unit_types.traits()) {
+	for(const config & trait : unit_types.traits()) {
 		trait_list.emplace(trait["id"], trait);
 	}
 
@@ -640,8 +640,8 @@ std::vector<topic> generate_trait_topics(const bool sort_generated)
 		// but that unmerged unit_type_data.traits() isn't available. We're forced to use
 		// possible_traits() instead which returns all of the traits, including the ones that units
 		// with ignore_race_traits=no have inherited from their [race] tag.
-		if (desc_type == FULL_DESCRIPTION || desc_type == HIDDEN_BUT_SHOW_MACROS) {
-			for (const config& trait : type.possible_traits()) {
+		if(desc_type == FULL_DESCRIPTION || desc_type == HIDDEN_BUT_SHOW_MACROS) {
+			for(const config& trait : type.possible_traits()) {
 				trait_list.emplace(trait["id"], trait);
 			}
 		}
@@ -653,7 +653,7 @@ std::vector<topic> generate_trait_topics(const bool sort_generated)
 	// traits themselves don't propagate down those links, so if the trait is interesting w.r.t. the
 	// discovered units then their own race will already include it.
 	for(const auto& race_id : races) {
-		if(const unit_race *r = unit_types.find_race(race_id)) {
+		if(const unit_race* r = unit_types.find_race(race_id)) {
 			for(const config & trait : r->additional_traits()) {
 				trait_list.emplace(trait["id"], trait);
 			}
@@ -666,14 +666,14 @@ std::vector<topic> generate_trait_topics(const bool sort_generated)
 		const config& trait = a.second;
 
 		std::string name = trait["male_name"].str();
-		if (name.empty()) name = trait["female_name"].str();
-		if (name.empty()) name = trait["name"].str();
-		if (name.empty()) continue; // Hidden trait
+		if(name.empty()) name = trait["female_name"].str();
+		if(name.empty()) name = trait["name"].str();
+		if(name.empty()) continue; // Hidden trait
 
 		std::stringstream text;
-		if (!trait["help_text"].empty()) {
+		if(!trait["help_text"].empty()) {
 			text << trait["help_text"];
-		} else if (!trait["description"].empty()) {
+		} else if(!trait["description"].empty()) {
 			text << trait["description"];
 		} else {
 			text << _("No description available.");
@@ -683,7 +683,7 @@ std::vector<topic> generate_trait_topics(const bool sort_generated)
 		topics.emplace_back(name, id, text.str());
 	}
 
-	if (sort_generated)
+	if(sort_generated)
 		std::sort(topics.begin(), topics.end(), title_less());
 	return topics;
 }
@@ -693,16 +693,16 @@ std::string make_unit_link(const std::string& type_id)
 {
 	std::string link;
 
-	const unit_type *type = unit_types.find(type_id, unit_type::HELP_INDEXED);
-	if (!type) {
+	const unit_type* type = unit_types.find(type_id, unit_type::HELP_INDEXED);
+	if(!type) {
 		PLAIN_LOG << "Unknown unit type : " << type_id;
 		// don't return an hyperlink (no page)
 		// instead show the id (as hint)
 		link = type_id;
-	} else if (!type->hide_help()) {
+	} else if(!type->hide_help()) {
 		std::string name = type->type_name();
 		std::string ref_id;
-		if (description_type(*type) == FULL_DESCRIPTION) {
+		if(description_type(*type) == FULL_DESCRIPTION) {
 			const std::string section_prefix = type->show_variations_in_help() ? ".." : "";
 			ref_id = section_prefix + unit_prefix + type->id();
 		} else {
@@ -718,13 +718,13 @@ std::string make_unit_link(const std::string& type_id)
 std::vector<std::string> make_unit_links_list(const std::vector<std::string>& type_id_list, bool ordered)
 {
 	std::vector<std::string> links_list;
-	for (const std::string &type_id : type_id_list) {
+	for(const std::string& type_id : type_id_list) {
 		std::string unit_link = make_unit_link(type_id);
-		if (!unit_link.empty())
+		if(!unit_link.empty())
 			links_list.push_back(unit_link);
 	}
 
-	if (ordered)
+	if(ordered)
 		std::sort(links_list.begin(), links_list.end());
 
 	return links_list;
@@ -830,7 +830,7 @@ void generate_races_sections(const config& help_cfg, section& sec, int level)
 void generate_era_sections(const config& help_cfg, section & sec, int level)
 {
 	for(const config& era : game_config_manager::get()->game_config().child_range("era")) {
-		if (era["hide_help"].to_bool()) {
+		if(era["hide_help"].to_bool()) {
 			continue;
 		}
 
@@ -850,7 +850,7 @@ void generate_era_sections(const config& help_cfg, section & sec, int level)
 void generate_terrain_sections(section& sec, int /*level*/)
 {
 	auto tdata = terrain_type_data::get();
-	if (!tdata) {
+	if(!tdata) {
 		WRN_HP << "When building terrain help sections, couldn't acquire terrain types data, aborting.";
 		return;
 	}
@@ -859,13 +859,13 @@ void generate_terrain_sections(section& sec, int /*level*/)
 
 	const t_translation::ter_list& t_listi = tdata->list();
 
-	for (const t_translation::terrain_code& t : t_listi) {
+	for(const t_translation::terrain_code& t : t_listi) {
 
 		const terrain_type& info = tdata->get_terrain_info(t);
 
 		bool hidden = info.hide_help();
 
-		if (prefs::get().encountered_terrains().find(t)
+		if(prefs::get().encountered_terrains().find(t)
 				== prefs::get().encountered_terrains().end() && !info.is_overlay())
 			hidden = true;
 
@@ -877,18 +877,18 @@ void generate_terrain_sections(section& sec, int /*level*/)
 
 		t_translation::ter_list base_terrains = info.union_type();
 
-		if (info.has_default_base()) {
-			for (const auto& base : tdata->get_terrain_info(info.default_base()).union_type()) {
-				if (!utils::contains(base_terrains, base)) {
+		if(info.has_default_base()) {
+			for(const auto& base : tdata->get_terrain_info(info.default_base()).union_type()) {
+				if(!utils::contains(base_terrains, base)) {
 					base_terrains.emplace_back(base);
 				}
 			}
 		}
-		for (const t_translation::terrain_code& base : base_terrains) {
+		for(const t_translation::terrain_code& base : base_terrains) {
 
 			const terrain_type& base_info = tdata->get_terrain_info(base);
 
-			if (!base_info.is_nonnull() || base_info.hide_help())
+			if(!base_info.is_nonnull() || base_info.hide_help())
 				continue;
 
 			section& base_section = base_map[base_info.id()];
@@ -896,39 +896,39 @@ void generate_terrain_sections(section& sec, int /*level*/)
 			base_section.id = terrain_prefix + base_info.id();
 			base_section.title = base_info.editor_name();
 
-			if (base_info.id() == info.id())
+			if(base_info.id() == info.id())
 				terrain_topic.id = ".." + terrain_prefix + info.id();
 			base_section.topics.push_back(terrain_topic);
 		}
 	}
 
 	std::vector<section> sorted_sections;
-	for (const auto& pair : base_map) {
+	for(const auto& pair : base_map) {
         sorted_sections.push_back(pair.second);
     }
 
 	std::sort(sorted_sections.begin(), sorted_sections.end(), section_less());
 
-    for (const section& s : sorted_sections) {
+    for(const section& s : sorted_sections) {
         sec.add_section(s);
     }
 }
 
 void generate_unit_sections(const config& /*help_cfg*/, section& sec, int /*level*/, const bool /*sort_generated*/, const std::string& race)
 {
-	for (const unit_type_data::unit_type_map::value_type &i : unit_types.types()) {
-		const unit_type &type = i.second;
+	for(const unit_type_data::unit_type_map::value_type& i : unit_types.types()) {
+		const unit_type& type = i.second;
 
-		if (type.race_id() != race)
+		if(type.race_id() != race)
 			continue;
 
-		if (!type.show_variations_in_help())
+		if(!type.show_variations_in_help())
 			continue;
 
 		section base_unit;
-		for (const std::string &variation_id : type.variations()) {
+		for(const std::string& variation_id : type.variations()) {
 			// TODO: Do we apply encountered stuff to variations?
-			const unit_type &var_type = type.get_variation(variation_id);
+			const unit_type& var_type = type.get_variation(variation_id);
 			const std::string topic_name = var_type.variation_name();
 			const std::string var_ref = hidden_symbol(var_type.hide_help()) + variation_prefix + var_type.id() + "_" + variation_id;
 
@@ -945,22 +945,22 @@ void generate_unit_sections(const config& /*help_cfg*/, section& sec, int /*leve
 	}
 }
 
-std::vector<topic> generate_unit_topics(const bool sort_generated, const std::string& race)
+std::vector<topic> generate_unit_topics(const std::string& race, const bool sort_generated)
 {
 	std::vector<topic> topics;
 	std::set<std::string, string_less> race_units;
 	std::set<std::string, string_less> race_topics;
 	std::set<std::string> alignments;
 
-	for (const unit_type_data::unit_type_map::value_type &i : unit_types.types())
+	for(const unit_type_data::unit_type_map::value_type& i : unit_types.types())
 	{
-		const unit_type &type = i.second;
+		const unit_type& type = i.second;
 
-		if (type.race_id() != race)
+		if(type.race_id() != race)
 			continue;
 
 		UNIT_DESCRIPTION_TYPE desc_type = description_type(type);
-		if (desc_type != FULL_DESCRIPTION)
+		if(desc_type != FULL_DESCRIPTION)
 			continue;
 
 		const std::string debug_suffix = (game_config::debug ? " (" + type.id() + ")" : "");
@@ -969,7 +969,7 @@ std::vector<topic> generate_unit_topics(const bool sort_generated, const std::st
 		const std::string ref_id = hidden_symbol(type.hide_help()) + real_prefix + unit_prefix +  type.id();
 		topics.emplace_back(type_name, ref_id, std::make_shared<unit_topic_generator>(type));
 
-		if (!type.hide_help()) {
+		if(!type.hide_help()) {
 			// we also record an hyperlink of this unit
 			// in the list used for the race topic
 			std::string link = markup::make_link(type_name, ref_id);
@@ -984,12 +984,12 @@ std::vector<topic> generate_unit_topics(const bool sort_generated, const std::st
 	std::string race_name;
 	std::string race_description;
 	std::string race_help_taxonomy;
-	if (const unit_race *r = unit_types.find_race(race)) {
+	if(const unit_race* r = unit_types.find_race(race)) {
 		race_name = r->plural_name();
 		race_description = r->description();
 		race_help_taxonomy = r->help_taxonomy();
-		// if (description.empty()) description =  _("No description Available");
-		for (const config &additional_topic : r->additional_topics())
+		// if(description.empty()) description =  _("No description Available");
+		for(const config& additional_topic : r->additional_topics())
 		  {
 		    std::string id = additional_topic["id"];
 		    std::string title = additional_topic["title"];
@@ -1006,9 +1006,9 @@ std::vector<topic> generate_unit_topics(const bool sort_generated, const std::st
 
 	// Find any other races whose [race]help_taxonomy points to the current race
 	std::map<std::string, t_string> subgroups;
-	for (const auto &r : unit_types.races()) {
-		if (r.second.help_taxonomy() == race) {
-			if (!r.second.plural_name().empty())
+	for(const auto& r : unit_types.races()) {
+		if(r.second.help_taxonomy() == race) {
+			if(!r.second.plural_name().empty())
 				subgroups[r.first] = r.second.plural_name();
 			else
 				subgroups[r.first] = r.first;
@@ -1017,11 +1017,11 @@ std::vector<topic> generate_unit_topics(const bool sort_generated, const std::st
 
 	std::stringstream text;
 
-	if (!race_description.empty()) {
+	if(!race_description.empty()) {
 		text << race_description << "\n\n";
 	}
 
-	if (!alignments.empty()) {
+	if(!alignments.empty()) {
 		std::set<std::string>::iterator it = alignments.begin();
 		text << (alignments.size() > 1 ? _("Alignments: ") : _("Alignment: ")) << *(it++);
 		while(it != alignments.end()) {
@@ -1030,10 +1030,10 @@ std::vector<topic> generate_unit_topics(const bool sort_generated, const std::st
 		text << "\n\n";
 	}
 
-	if (!race_help_taxonomy.empty()) {
+	if(!race_help_taxonomy.empty()) {
 		utils::string_map symbols;
 		symbols["topic_id"] = "..race_"+race_help_taxonomy;
-		if (const unit_race *r = unit_types.find_race(race_help_taxonomy)) {
+		if(const unit_race* r = unit_types.find_race(race_help_taxonomy)) {
 			symbols["help_taxonomy"] = r->plural_name();
 		} else {
 			// Fall back to using showing the race id for the race that we couldn't find.
@@ -1045,49 +1045,49 @@ std::vector<topic> generate_unit_topics(const bool sort_generated, const std::st
 		text << VGETTEXT("This is a group of units, all of whom are <ref dst='$topic_id'>$help_taxonomy</ref>.", symbols) << "\n\n";
 	}
 
-	if (!subgroups.empty()) {
-		if (!race_help_taxonomy.empty()) {
+	if(!subgroups.empty()) {
+		if(!race_help_taxonomy.empty()) {
 			text << markup::tag("header", _("Subgroups of units within this group")) << "\n";
 		} else {
 			text << markup::tag("header", _("Groups of units within this race")) << "\n";
 		}
-		for (const auto &sg : subgroups) {
+		for(const auto& sg : subgroups) {
 			text << font::unicode_bullet << " " << markup::make_link(sg.second, "..race_" + sg.first) << "\n";
 		}
 		text << "\n";
 	}
 
-	if (!race_help_taxonomy.empty()) {
+	if(!race_help_taxonomy.empty()) {
 		text << markup::tag("header", _("Units of this group")) << "\n";
 	} else {
 		text << markup::tag("header", _("Units of this race")) << "\n";
 	}
-	for (const auto &u : race_units) {
+	for(const auto& u : race_units) {
 		text << font::unicode_bullet << " " << u << "\n";
 	}
 
 	topics.emplace_back(race_name, race_id, text.str());
 
-	if (sort_generated)
+	if(sort_generated)
 		std::sort(topics.begin(), topics.end(), title_less());
 
 	return topics;
 }
 
-UNIT_DESCRIPTION_TYPE description_type(const unit_type &type)
+UNIT_DESCRIPTION_TYPE description_type(const unit_type& type)
 {
-	if (game_config::debug || prefs::get().show_all_units_in_help()	||
+	if(game_config::debug || prefs::get().show_all_units_in_help()	||
 			hotkey::is_scope_active(hotkey::SCOPE_EDITOR) ) {
 		return FULL_DESCRIPTION;
 	}
 
-	const std::set<std::string> &encountered_units = prefs::get().encountered_units();
-	if (encountered_units.find(type.id()) != encountered_units.end()) {
+	const std::set<std::string>& encountered_units = prefs::get().encountered_units();
+	if(encountered_units.find(type.id()) != encountered_units.end()) {
 		return FULL_DESCRIPTION;
 	}
 
 	// See the docs of HIDDEN_BUT_SHOW_MACROS
-	if (type.id() == "Fog Clearer") {
+	if(type.id() == "Fog Clearer") {
 		return HIDDEN_BUT_SHOW_MACROS;
 	}
 
@@ -1097,7 +1097,7 @@ UNIT_DESCRIPTION_TYPE description_type(const unit_type &type)
 std::string generate_contents_links(const std::string& section_name, const config& help_cfg)
 {
 	auto section_cfg = help_cfg.find_child("section", "id", section_name);
-	if (!section_cfg) {
+	if(!section_cfg) {
 		return std::string();
 	}
 
@@ -1111,14 +1111,14 @@ std::string generate_contents_links(const std::string& section_name, const confi
 
 	// Find all topics in this section.
 	for(const std::string& topic : topics) {
-		if (auto topic_cfg = help_cfg.find_child("topic", "id", topic)) {
+		if(auto topic_cfg = help_cfg.find_child("topic", "id", topic)) {
 			std::string id = topic_cfg["id"];
-			if (is_visible_id(id))
+			if(is_visible_id(id))
 				topics_links.emplace_back(topic_cfg["title"], id);
 		}
 	}
 
-	if (section_cfg["sort_topics"] == "yes") {
+	if(section_cfg["sort_topics"] == "yes") {
 		std::sort(topics_links.begin(),topics_links.end());
 	}
 
@@ -1130,19 +1130,19 @@ std::string generate_contents_links(const std::string& section_name, const confi
 	return res.str();
 }
 
-std::string generate_contents_links(const section &sec)
+std::string generate_contents_links(const section& sec)
 {
 	std::stringstream res;
 
-	for (auto &s : sec.sections) {
-		if (is_visible_id(s.id)) {
+	for(auto& s : sec.sections) {
+		if(is_visible_id(s.id)) {
 			std::string link = markup::make_link(s.title, ".."+s.id);
 			res << font::unicode_bullet << " " << link << "\n";
 		}
 	}
 
 	for(const topic& t : sec.topics) {
-		if (is_visible_id(t.id)) {
+		if(is_visible_id(t.id)) {
 			std::string link = markup::make_link(t.title, t.id);
 			res << font::unicode_bullet << " " << link << "\n";
 		}
@@ -1150,27 +1150,27 @@ std::string generate_contents_links(const section &sec)
 	return res.str();
 }
 
-bool topic::operator==(const topic &t) const
+bool topic::operator==(const topic& t) const
 {
 	return t.id == id;
 }
 
-bool topic::operator<(const topic &t) const
+bool topic::operator<(const topic& t) const
 {
 	return id < t.id;
 }
 
-bool section::operator==(const section &sec) const
+bool section::operator==(const section& sec) const
 {
 	return sec.id == id;
 }
 
-bool section::operator<(const section &sec) const
+bool section::operator<(const section& sec) const
 {
 	return id < sec.id;
 }
 
-void section::add_section(const section &s)
+void section::add_section(const section& s)
 {
 	sections.emplace_back(s);
 }
@@ -1186,41 +1186,41 @@ void section::clear()
 	sections.clear();
 }
 
-const topic *find_topic(const section &sec, const std::string &id)
+const topic* find_topic(const section& sec, const std::string& id)
 {
 	topic_list::const_iterator tit =
 		std::find_if(sec.topics.begin(), sec.topics.end(), has_id(id));
-	if (tit != sec.topics.end()) {
+	if(tit != sec.topics.end()) {
 		return &(*tit);
 	}
-	for (const auto &s : sec.sections) {
+	for(const auto& s : sec.sections) {
 		const auto t = find_topic(s, id);
-		if (t != nullptr) {
+		if(t != nullptr) {
 			return t;
 		}
 	}
 	return nullptr;
 }
 
-const section *find_section(const section &sec, const std::string &id)
+const section* find_section(const section& sec, const std::string& id)
 {
 	const auto sit =
 		std::find_if(sec.sections.begin(), sec.sections.end(), has_id(id));
-	if (sit != sec.sections.end()) {
+	if(sit != sec.sections.end()) {
 		return &*sit;
 	}
-	for (const auto &subsection : sec.sections) {
+	for(const auto& subsection : sec.sections) {
 		const auto s = find_section(subsection, id);
-		if (s != nullptr) {
+		if(s != nullptr) {
 			return s;
 		}
 	}
 	return nullptr;
 }
 
-section *find_section(section &sec, const std::string &id)
+section* find_section(section& sec, const std::string& id)
 {
-	return const_cast<section *>(find_section(const_cast<const section &>(sec), id));
+	return const_cast<section*>(find_section(const_cast<const section&>(sec), id));
 }
 
 std::pair<section, section> generate_contents()
@@ -1282,7 +1282,7 @@ std::string hidden_symbol(bool hidden) {
 	return (hidden ? "." : "");
 }
 
-bool is_visible_id(const std::string &id) {
+bool is_visible_id(const std::string& id) {
 	return (id.empty() || id[0] != '.');
 }
 
@@ -1291,20 +1291,20 @@ bool is_visible_id(const std::string &id) {
  * sections. Some IDs are special, such as toplevel and may not be
  * be defined in the config.
  */
-bool is_valid_id(const std::string &id) {
-	if (id == "toplevel") {
+bool is_valid_id(const std::string& id) {
+	if(id == "toplevel") {
 		return false;
 	}
-	if (id.compare(0, unit_prefix.length(), unit_prefix) == 0 || id.compare(hidden_symbol().length(), unit_prefix.length(), unit_prefix) == 0) {
+	if(id.compare(0, unit_prefix.length(), unit_prefix) == 0 || id.compare(hidden_symbol().length(), unit_prefix.length(), unit_prefix) == 0) {
 		return false;
 	}
-	if (id.compare(0, 8, "ability_") == 0) {
+	if(id.compare(0, 8, "ability_") == 0) {
 		return false;
 	}
-	if (id.compare(0, 14, "weaponspecial_") == 0) {
+	if(id.compare(0, 14, "weaponspecial_") == 0) {
 		return false;
 	}
-	if (id == "hidden") {
+	if(id == "hidden") {
 		return false;
 	}
 	return true;

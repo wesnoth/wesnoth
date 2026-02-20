@@ -1,6 +1,6 @@
 /*
 	Copyright (C) 2024 - 2025
-	by Subhraman Sarkar (babaissarkar) <suvrax@gmail.com>
+	by Subhraman Sarkar (babaissarkar) <sbmskmm@protonmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -238,6 +238,8 @@ private:
 	unsigned init_w_;
 	point size_;
 
+	config dom_;
+
 	/** Padding */
 	int padding_;
 
@@ -276,7 +278,11 @@ private:
 		return font::get_text_renderer().get_cursor_position(offset);
 	}
 
-	point calculate_best_size() const override { return size_; };
+	point calculate_best_size() const override;
+
+	void request_reduce_width(const unsigned maximum_width) override;
+
+	void place(const point& origin, const point& size) override;
 
 public:
 	/** Static type getter that does not rely on the widget being constructed. */
@@ -344,7 +350,6 @@ struct builder_rich_label : public builder_styled_widget
 
 	PangoAlignment text_alignment;
 	bool link_aware;
-	typed_formula<unsigned> width;
 	unsigned padding;
 };
 

@@ -2210,12 +2210,14 @@ int game_lua_kernel::intf_find_reach(lua_State *L)
 	pathfind::paths res(*u, ignore_units, !ignore_teleport,
 		viewing_team, additional_turns, see_all, ignore_units);
 
+	static const lua_named_tuple_builder tuple_builder{ {"x", "y", "moves_left"} };
+
 	int nb = res.destinations.size();
 	lua_createtable(L, nb, 0);
 	for (int i = 0; i < nb; ++i)
 	{
 		pathfind::paths::step &s = res.destinations[i];
-		luaW_push_namedtuple(L, {"x", "y", "moves_left"});
+		tuple_builder.push(L);
 		lua_pushinteger(L, s.curr.wml_x());
 		lua_rawseti(L, -2, 1);
 		lua_pushinteger(L, s.curr.wml_y());
@@ -2263,9 +2265,11 @@ int game_lua_kernel::intf_find_vision_range(lua_State *L)
 	actions::create_jamming_map(jamming_map, resources::gameboard->get_team(u->side()));
 	pathfind::vision_path res(*u, u->get_location(), jamming_map);
 
+	static const lua_named_tuple_builder tuple_builder{ {"x", "y", "vision_left"} };
+
 	lua_createtable(L, res.destinations.size() + res.edges.size(), 0);
 	for(const auto& d : res.destinations) {
-		luaW_push_namedtuple(L, {"x", "y", "vision_left"});
+		tuple_builder.push(L);
 		lua_pushinteger(L, d.curr.wml_x());
 		lua_rawseti(L, -2, 1);
 		lua_pushinteger(L, d.curr.wml_y());
@@ -2275,7 +2279,7 @@ int game_lua_kernel::intf_find_vision_range(lua_State *L)
 		lua_rawseti(L, -2, lua_rawlen(L, -2) + 1);
 	}
 	for(const auto& e : res.edges) {
-		luaW_push_namedtuple(L, {"x", "y", "vision_left"});
+		tuple_builder.push(L);
 		lua_pushinteger(L, e.wml_x());
 		lua_rawseti(L, -2, 1);
 		lua_pushinteger(L, e.wml_y());
@@ -2482,11 +2486,13 @@ int game_lua_kernel::intf_find_cost_map(lua_State *L)
 	}
 
 	// create return value
+	static const lua_named_tuple_builder tuple_builder{ {"x", "y", "cost", "reach"} };
+
 	lua_createtable(L, location_set.size(), 0);
 	int counter = 1;
 	for (const map_location& loc : location_set)
 	{
-		luaW_push_namedtuple(L, {"x", "y", "cost", "reach"});
+		tuple_builder.push(L);
 
 		lua_pushinteger(L, loc.wml_x());
 		lua_rawseti(L, -2, 1);

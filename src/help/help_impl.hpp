@@ -79,7 +79,7 @@ class topic_text
 public:
 	explicit topic_text(std::shared_ptr<topic_generator> g):
 		parsed_text_(),
-		generator_(g)
+		generator_(std::move(g))
 	{
 	}
 
@@ -89,15 +89,15 @@ public:
 /** A topic contains a title, an id and some text. */
 struct topic
 {
-	topic(const std::string &_title, const std::string &_id, const std::string &_text)
-		: title(_title), id(_id), text(std::make_shared<text_topic_generator>(_text)) {}
-	topic(const std::string &_title, const std::string &_id, std::shared_ptr<topic_generator> g)
-		: title(_title), id(_id), text(std::move(g)) {}
+	topic(const std::string& topic_title, const std::string& topic_id, const std::string& text)
+		: title(topic_title), id(topic_id), text(std::make_shared<text_topic_generator>(text)) {}
+	topic(const std::string& topic_title, const std::string& topic_id, std::shared_ptr<topic_generator> g)
+		: title(topic_title), id(topic_id), text(std::move(g)) {}
 	/** Two topics are equal if their IDs are equal. */
-	bool operator==(const topic &) const;
-	bool operator!=(const topic &t) const { return !operator==(t); }
+	bool operator==(const topic& ) const;
+	bool operator!=(const topic& t) const { return !operator==(t); }
 	/** Comparison on the ID. */
-	bool operator<(const topic &) const;
+	bool operator<(const topic& ) const;
 	std::string title, id;
 	mutable topic_text text;
 };
@@ -109,12 +109,12 @@ typedef std::list<topic> topic_list;
 /** A section contains topics and sections along with title and ID. */
 struct section {
 	/** Two sections are equal if their IDs are equal. */
-	bool operator==(const section &) const;
+	bool operator==(const section&) const;
 	/** Comparison on the ID. */
-	bool operator<(const section &) const;
+	bool operator<(const section&) const;
 
 	/** Allocate memory for and add the section. */
-	void add_section(const section &s);
+	void add_section(const section& s);
 	void add_section(section&& s);
 
 	void clear();
@@ -130,10 +130,10 @@ struct section {
 class has_id
 {
 public:
-	has_id(const std::string &id) : id_(id) {}
-	bool operator()(const topic &t) { return t.id == id_; }
-	bool operator()(const section &s) { return s.id == id_; }
-	bool operator()(const section *s) { return s != nullptr && s->id == id_; }
+	has_id(const std::string& id) : id_(id) {}
+	bool operator()(const topic& t) { return t.id == id_; }
+	bool operator()(const section& s) { return s.id == id_; }
+	bool operator()(const section* s) { return s != nullptr && s->id == id_; }
 private:
 	const std::string id_;
 };
@@ -142,7 +142,7 @@ private:
 class title_less
 {
 public:
-	bool operator()(const topic &t1, const topic &t2)
+	bool operator()(const topic& t1, const topic& t2)
 	{
 		return translation::compare(t1.title, t2.title) < 0;
 	}
@@ -161,7 +161,7 @@ public:
 class string_less
 {
 public:
-	bool operator() (const std::string &s1, const std::string &s2) const {
+	bool operator() (const std::string& s1, const std::string& s2) const {
 		return translation::compare(s1, s2) < 0;
 	}
 };
@@ -171,11 +171,11 @@ public:
 // see.
 
 /** Dispatch generators to their appropriate functions. */
-void generate_sections(const config& help_cfg, const std::string &generator, section &sec, int level);
-std::vector<topic> generate_topics(const bool sort_topics,const std::string &generator);
-std::string generate_topic_text(const std::string &generator, const config& help_cfg, const section &sec);
+void generate_sections(const config& help_cfg, const std::string& generator, section& sec, int level);
+std::vector<topic> generate_topics(const bool sort_topics,const std::string& generator);
+std::string generate_topic_text(const std::string& generator, const config& help_cfg, const section& sec);
 std::string generate_contents_links(const std::string& section_name, const config& help_cfg);
-std::string generate_contents_links(const section &sec);
+std::string generate_contents_links(const section& sec);
 
 /** Thrown when the help system fails to parse something. */
 struct parse_error : public game::error
@@ -192,10 +192,10 @@ std::string make_unit_link(const std::string& type_id);
 std::vector<std::string> make_unit_links_list(
 		const std::vector<std::string>& type_id_list, bool ordered = false);
 
-void generate_races_sections(const config& help_cfg, section &sec, int level);
-void generate_terrain_sections(section &sec, int level);
-std::vector<topic> generate_unit_topics(const bool, const std::string& race);
-void generate_unit_sections(const config& help_cfg, section &sec, int level, const bool, const std::string& race);
+void generate_races_sections(const config& help_cfg, section& sec, int level);
+void generate_terrain_sections(section& sec, int level);
+std::vector<topic> generate_unit_topics(const std::string& race, const bool sort_generated);
+void generate_unit_sections(const config& help_cfg, section& sec, int level, const bool, const std::string& race);
 enum UNIT_DESCRIPTION_TYPE {
 	FULL_DESCRIPTION,
 	/** Ignore this unit for documentation purposes. */
@@ -216,15 +216,15 @@ enum UNIT_DESCRIPTION_TYPE {
  * about units that should not be shown, for example due to not being
  * encountered.
  */
-UNIT_DESCRIPTION_TYPE description_type(const unit_type &type);
-std::vector<topic> generate_ability_topics(const bool);
+UNIT_DESCRIPTION_TYPE description_type(const unit_type& type);
+std::vector<topic> generate_ability_topics(const bool sort_generated);
 std::vector<topic> generate_time_of_day_topics(const bool);
-std::vector<topic> generate_weapon_special_topics(const bool);
+std::vector<topic> generate_weapon_special_topics(const bool sort_generated);
 
-void generate_era_sections(const config& help_cfg, section &sec, int level);
-std::vector<topic> generate_faction_topics(const config &, const bool);
-std::vector<topic> generate_era_topics(const bool, const std::string & era_id);
-std::vector<topic> generate_trait_topics(const bool);
+void generate_era_sections(const config& help_cfg, section& sec, int level);
+std::vector<topic> generate_faction_topics(const config& era, const bool sort_generated);
+std::vector<topic> generate_era_topics(const std::string& era_id, const bool sort_generated);
+std::vector<topic> generate_trait_topics(const bool sort_generated);
 
 /**
  * Generate the help contents from the configurations given to the manager.
@@ -245,27 +245,27 @@ section parse_config_internal(const config& help_cfg, const config& section_cfg,
  * Return true if the section with id section_id is referenced from
  * another section in the config, or the toplevel.
  */
-bool section_is_referenced(const std::string &section_id, const config &cfg);
+bool section_is_referenced(const std::string& section_id, const config& cfg);
 /**
  * Return true if the topic with id topic_id is referenced from
  * another section in the config, or the toplevel.
  */
-bool topic_is_referenced(const std::string &topic_id, const config &cfg);
+bool topic_is_referenced(const std::string& topic_id, const config& cfg);
 
 /**
  * Search for the topic with the specified identifier in the section
  * and its subsections. Return the found topic, or nullptr if none could
  * be found.
  */
-const topic *find_topic(const section &sec, const std::string &id);
+const topic* find_topic(const section& sec, const std::string& id);
 
 /**
  * Search for the section with the specified identifier in the section
  * and its subsections. Return the found section or nullptr if none could
  * be found.
  */
-const section *find_section(const section &sec, const std::string &id);
-section *find_section(section &sec, const std::string &id);
+const section* find_section(const section& sec, const std::string& id);
+section* find_section(section& sec, const std::string& id);
 
 extern const int max_section_level;
 // The topic to open by default when opening the help dialog.
@@ -282,13 +282,13 @@ extern const std::string ability_prefix;
 // id starting with '.' are hidden
 std::string hidden_symbol(bool hidden = true);
 
-bool is_visible_id(const std::string &id);
+bool is_visible_id(const std::string& id);
 
 /**
  * Return true if the id is valid for user defined topics and
  * sections. Some IDs are special, such as toplevel and may not be
  * be defined in the config.
  */
-bool is_valid_id(const std::string &id);
+bool is_valid_id(const std::string& id);
 
 } // end namespace help

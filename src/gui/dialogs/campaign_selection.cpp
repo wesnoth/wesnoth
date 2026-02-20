@@ -37,6 +37,16 @@
 namespace gui2::dialogs
 {
 
+namespace
+{
+	// These arbitary strings are used instead of a campaign id for the special pages
+	// which can appear in the right-hand pane. The data for those pages is loaded
+	// from the tree_view's WML via ids hardcoded in pre_show().
+	const std::string PAGE_ID_GET_ADDONS = "////addons////";
+	const std::string PAGE_ID_LANDING_PAGE = "////landing-page////";
+	const std::string PAGE_ID_MISSING_CAMPAIGNS = "////missing-campaign////";
+};
+
 REGISTER_DIALOG(campaign_selection)
 
 campaign_selection::campaign_selection(ng::create_engine& eng)
@@ -59,31 +69,29 @@ campaign_selection::campaign_selection(ng::create_engine& eng)
 void campaign_selection::campaign_selected()
 {
 	tree_view& tree = find_widget<tree_view>("campaign_tree");
-	if(tree.empty()) {
-		return;
-	}
-
-	assert(tree.selected_item());
-
-	const std::string& campaign_id = tree.selected_item()->id();
+	const std::string& campaign_id = tree.selected_item() ? tree.selected_item()->id() : PAGE_ID_LANDING_PAGE;
 	if(campaign_id.empty()) {
 		return;
 	}
 
-	auto iter = std::find(page_ids_.begin(), page_ids_.end(), campaign_id);
+	const bool can_proceed = campaign_id != PAGE_ID_MISSING_CAMPAIGNS && campaign_id != PAGE_ID_LANDING_PAGE;
+	const bool actual_campaign = can_proceed && campaign_id != PAGE_ID_GET_ADDONS;
 
 	button& ok_button = find_widget<button>("proceed");
-	ok_button.set_active(campaign_id != missing_campaign_);
-	ok_button.set_label((campaign_id == addons_) ? _("game^Get Add-ons") : _("game^Play"));
+	ok_button.set_active(can_proceed);
+	ok_button.set_label((campaign_id == PAGE_ID_GET_ADDONS) ? _("game^Get Add-ons") : _("game^Play"));
 
-	const int choice = std::distance(page_ids_.begin(), iter);
+	auto iter = std::find(page_ids_.begin(), page_ids_.end(), campaign_id);
 	if(iter == page_ids_.end()) {
 		return;
 	}
+	const int choice = std::distance(page_ids_.begin(), iter);
 
 	multi_page& pages = find_widget<multi_page>("campaign_details");
 	pages.select_page(choice);
 
+	// The engine bounds-checks this and silently selects the first campaign if choice points to one
+	// of the non-campaign pages.
 	engine_.set_current_level(choice);
 
 	styled_widget& background = find_widget<styled_widget>("campaign_background");
@@ -97,9 +105,9 @@ void campaign_selection::campaign_selected()
 	auto diff_config_range = engine_.current_level().data().child_range("difficulty");
 	const std::size_t difficulty_count = diff_config_range.size();
 
-	diff_menu.set_active(difficulty_count > 1);
-
-	if(diff_config_range.empty()) {
+	if(diff_config_range.empty() || !actual_campaign) {
+		// Cosmetic bug: this leaves the difficulties of a previously-selected campaign visible
+		diff_menu.set_active(false);
 		return;
 	}
 
@@ -152,6 +160,7 @@ void campaign_selection::campaign_selected()
 		++n;
 	}
 
+	diff_menu.set_active(true);
 	diff_menu.set_values(entry_list);
 	diff_menu.set_selected(selection);
 }
@@ -210,10 +219,10 @@ void campaign_selection::sort_campaigns(campaign_selection::CAMPAIGN_ORDER order
 
 	// Remember which campaign was selected...
 	std::string was_selected;
-	if(!tree.empty()) {
+	if(tree.selected_item()) {
 		was_selected = tree.selected_item()->id();
-		tree.clear();
 	}
+	tree.clear();
 
 	boost::dynamic_bitset<> show_items;
 	show_items.resize(levels.size(), true);
@@ -381,19 +390,26 @@ void campaign_selection::pre_show()
 	}
 
 	//
-	// Addon Manager link
+	// Special-purpose pages that appear as if they were campaigns.
 	//
+
+	// The intro page is shown if nothing is selected in the tree_view, it isn't in the tree itself
+	pages.add_page("no_campaign_selected", -1, widget_data{});
+	page_ids_.push_back(PAGE_ID_LANDING_PAGE);
+
+	// Addon Manager link
 	config addons;
 	addons["icon"] = "icons/icon-game.png~BLIT(icons/icon-addon-publish.png)";
 	addons["name"] = _("More campaigns...");
 	addons["completed"] = false;
-	addons["id"] = addons_;
+	addons["id"] = PAGE_ID_GET_ADDONS;
 
 	add_campaign_to_tree(addons);
 
 	pages.add_page("go_download_more_stuff", -1, widget_data{});
-	page_ids_.push_back(addons_);
+	page_ids_.push_back(PAGE_ID_GET_ADDONS);
 
+	// The data directory has few (or none) of the mainline campaigns
 	std::vector<std::string> dirs;
 	filesystem::get_files_in_dir(game_config::path + "/data/campaigns", nullptr, &dirs);
 	if(dirs.size() <= 15) {
@@ -401,12 +417,12 @@ void campaign_selection::pre_show()
 		missing["icon"] = "units/unknown-unit.png";
 		missing["name"] = _("Missing Campaigns");
 		missing["completed"] = false;
-		missing["id"] = missing_campaign_;
+		missing["id"] = PAGE_ID_MISSING_CAMPAIGNS;
 
 		add_campaign_to_tree(missing);
 
 		pages.add_page("missing_campaign_warning", -1, widget_data{});
-		page_ids_.push_back(missing_campaign_);
+		page_ids_.push_back(PAGE_ID_MISSING_CAMPAIGNS);
 	}
 
 	//
@@ -528,14 +544,13 @@ void campaign_selection::proceed()
 {
 	tree_view& tree = find_widget<tree_view>("campaign_tree");
 
-	if(tree.empty()) {
+	if(tree.empty() || !tree.selected_item()) {
 		return;
 	}
 
-	assert(tree.selected_item());
 	const std::string& campaign_id = tree.selected_item()->id();
 	if(!campaign_id.empty()) {
-		if (campaign_id == addons_) {
+		if (campaign_id == PAGE_ID_GET_ADDONS) {
 			set_retval(OPEN_ADDON_MANAGER);
 		} else {
 			auto iter = std::find(page_ids_.begin(), page_ids_.end(), campaign_id);

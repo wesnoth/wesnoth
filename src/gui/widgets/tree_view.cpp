@@ -38,6 +38,7 @@ tree_view::tree_view(const implementation::builder_tree_view& builder)
 	: scrollbar_container(builder, type())
 	, node_definitions_(builder.nodes)
 	, indentation_step_size_(builder.indentation_step_size)
+	, has_minimum_(builder.has_minimum)
 	, need_layout_(false)
 	, root_node_(nullptr)
 	, selected_item_(nullptr)
@@ -278,6 +279,7 @@ namespace implementation
 builder_tree_view::builder_tree_view(const config& cfg)
 	: builder_scrollbar_container(cfg)
 	, indentation_step_size(cfg["indentation_step_size"].to_unsigned())
+	, has_minimum(cfg["has_minimum"].to_bool(true))
 	, nodes()
 {
 	for(const auto& node : cfg.child_range("node")) {
