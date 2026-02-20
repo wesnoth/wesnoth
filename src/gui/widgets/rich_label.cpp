@@ -132,61 +132,14 @@ std::pair<std::size_t, std::size_t> rich_label::add_text(tshape_ptr& tptr, const
 	return { start, end };
 }
 
-void rich_label::add_attribute(
-	font::attribute_list& text_attributes,
-	const std::string& name,
-	const std::string& extra_data,
-	std::size_t start,
-	std::size_t end)
-{
-	if(name.empty()) {
-		return;
-	}
-
-	// Attributes with start == end set won't do anything, so skip
-	if (start == end) {
-		WRN_GUI_D << "attribute " << name << " has equal start and end indices, will not be added.";
-		return;
-	}
-
-	if (name == "color" || name == "fgcolor" || name == "foreground") {
-		add_attribute_fg_color(text_attributes, start, end, extra_data.empty() ? font::NORMAL_COLOR : font::string_to_color(extra_data));
-	} else if (name == "bgcolor" || name == "background") {
-		add_attribute_bg_color(text_attributes, start, end, extra_data.empty() ? font::GOOD_COLOR : font::string_to_color(extra_data));
-	} else if (name == "font_size" || name == "size") {
-		add_attribute_size(text_attributes, start, end, std::stoi(extra_data));
-	} else if (name == "font_family" || name == "face") {
-		add_attribute_font_family(text_attributes, start, end, font::decode_family_class(extra_data));
-	} else if (name == "weight") {
-		add_attribute_weight(text_attributes, start, end, decode_text_weight(extra_data));
-	} else if (name == "style") {
-		add_attribute_style(text_attributes, start, end, decode_text_style(extra_data));
-	} else if (name == "bold" || name == "b") {
-		add_attribute_weight(text_attributes, start, end, PANGO_WEIGHT_BOLD);
-	} else if (name == "italic" || name == "i") {
-		add_attribute_style(text_attributes, start, end, PANGO_STYLE_ITALIC);
-	} else if (name == "underline" || name == "u") {
-		add_attribute_underline(text_attributes, start, end, PANGO_UNDERLINE_SINGLE);
-	} else if (name == "line_height") {
-		add_attribute_line_height(text_attributes, start, end, std::stod(extra_data));
-	} else if (name == "image") { // An inline image that behave as a custom text glyph
-		add_attribute_image_shape(text_attributes, start, end, extra_data);
-	} else {
-		// Unsupported formatting or normal text
-		add_attribute_weight(text_attributes, start, end, PANGO_WEIGHT_NORMAL);
-		add_attribute_style(text_attributes, start, end, PANGO_STYLE_NORMAL);
-	}
-}
-
 std::pair<std::size_t, std::size_t> rich_label::add_text_with_attribute(
 	tshape_ptr& tptr,
-	font::attribute_list& attrs,
 	const std::string& text,
 	const std::string& attr_name,
 	const std::string& extra_data)
 {
 	const auto [start, end] = add_text(tptr, text);
-	add_attribute(attrs, attr_name, extra_data, start, end);
+	tptr->add_attribute(attr_name, extra_data, start, end);
 	return { start, end };
 }
 
@@ -578,9 +531,11 @@ std::pair<std::vector<rich_label::shape_ptr>, point> rich_label::get_parsed_text
 			}
 
 			if (curr_item == nullptr || new_text_block) {
-				auto tshape = new_text_shape(pos, init_width - pos.x - float_size.x);
-				curr_item = &tshape;
-				new_text_block = false;
+				if (new_text_block) {
+					shapes.emplace_back(curr_item.release());
+				}
+
+				curr_item = new_text_shape(pos, init_width - pos.x - float_size.x);
 				new_text_block = false;
 			}
 
@@ -588,7 +543,7 @@ std::pair<std::vector<rich_label::shape_ptr>, point> rich_label::get_parsed_text
 			int tmp_h = get_text_size(curr_item, init_width - (x == 0 ? float_size.x : x)).y;
 
 			if(is_text && key == "text") {
-				add_text_with_attribute(*curr_item, "\n\n");
+				add_text_with_attribute(curr_item, "\n\n");
 			}
 
 			is_text = false;
@@ -601,48 +556,48 @@ std::pair<std::vector<rich_label::shape_ptr>, point> rich_label::get_parsed_text
 				// the text size is calculated wrongly as being decreased.
 				// Workaround: append a zero width space always in front of the image.
 				add_text(curr_item, "\u200b");
-				add_text_with_attribute(*curr_item, "\ufffc", "image", child["src"]);
+				add_text_with_attribute(curr_item, "\ufffc", "image", child["src"]);
 
 				DBG_GUI_RL << key << ": src=" << child["src"];
 
 			} else if(key == "ref") {
 
-				add_link(*curr_item, line, child["dst"], point(x + origin.x, prev_blk_height), float_size.x);
+				add_link(curr_item, line, child["dst"], point(x + origin.x, prev_blk_height), float_size.x);
 
 				DBG_GUI_RL << key << ": dst=" << child["dst"];
 
 			} else if(utils::contains(format_tags, key)) {
 				// TODO only the formatting tags here support nesting
 
-				add_text_with_attribute(*curr_item, line, key);
+				add_text_with_attribute(curr_item, line, key);
 
 				// Calculate the location of the nested children
 				setup_text_renderer(curr_item, init_w_ - origin.x - float_size.x);
-				point child_origin = origin + get_xy_from_offset(utf8::size((*curr_item)["text"].str()));
+				point child_origin = origin + get_xy_from_offset(utf8::size(curr_item->get_text()));
 				child_origin.y += prev_blk_height;
 
-				config parsed_children = get_parsed_text(child, child_origin, init_width).first;
+				// config parsed_children = get_parsed_text(child, child_origin, init_width).first;
 
-				for(const auto [parsed_key, parsed_cfg] : parsed_children.all_children_view()) {
-					if(parsed_key == "text") {
-						const auto [start, end] = add_text(*curr_item, parsed_cfg["text"]);
-						for (const config& attr : parsed_cfg.child_range("attribute")) {
-							add_attribute(*curr_item, attr["name"], attr["value"], start + attr["start"].to_int(), start + attr["end"].to_int());
-						}
-						add_attribute(*curr_item, key, "", start, end);
-					} else {
-						text_dom.add_child(parsed_key, parsed_cfg);
-					}
-				}
+				// for(const auto [parsed_key, parsed_cfg] : parsed_children.all_children_view()) {
+				// 	if(parsed_key == "text") {
+				// 		const auto [start, end] = add_text(*curr_item, parsed_cfg["text"]);
+				// 		for (const config& attr : parsed_cfg.child_range("attribute")) {
+				// 			add_attribute(*curr_item, attr["name"], attr["value"], start + attr["start"].to_int(), start + attr["end"].to_int());
+				// 		}
+				// 		add_attribute(*curr_item, key, "", start, end);
+				// 	} else {
+				// 		text_dom.add_child(parsed_key, parsed_cfg);
+				// 	}
+				// }
 
 				DBG_GUI_RL << key << ": text=" << gui2::debug_truncate(line);
 
 			} else if(key == "header" || key == "h") {
 
 				const auto [start, end] = add_text(curr_item, line);
-				add_attribute(attrs, "weight", "heavy", start, end);
-				add_attribute(attrs, "color", "white", start, end);
-				add_attribute(attrs, "size", std::to_string(font::SIZE_TITLE - 2), start, end);
+				curr_item->add_attribute("weight", "heavy", start, end);
+				curr_item->add_attribute("color", "white", start, end);
+				curr_item->add_attribute("size", std::to_string(font::SIZE_TITLE - 2), start, end);
 
 				DBG_GUI_RL << key << ": text=" << line;
 
@@ -651,8 +606,8 @@ std::pair<std::vector<rich_label::shape_ptr>, point> rich_label::get_parsed_text
 				line = "&" + child["name"].str() + ";";
 
 				const auto [start, end] = add_text(curr_item, line);
-				add_attribute(attrs, "face",  "monospace", start, end);
-				add_attribute(attrs, "color", "red", start, end);
+				curr_item->add_attribute("face",  "monospace", start, end);
+				curr_item->add_attribute("color", "red", start, end);
 
 				DBG_GUI_RL << key << ": text=" << line;
 
@@ -664,7 +619,7 @@ std::pair<std::vector<rich_label::shape_ptr>, point> rich_label::get_parsed_text
 
 				for (const auto& [key, value] : child.attribute_range()) {
 					if (key != "text") {
-						add_attribute(attrs, key, value, start, end);
+						curr_item->add_attribute(key, value, start, end);
 						DBG_GUI_RL << key << "=" << value;
 					}
 				}
@@ -715,11 +670,12 @@ std::pair<std::vector<rich_label::shape_ptr>, point> rich_label::get_parsed_text
 
 					if (len > 0) {
 						// layout rest of the text
+						shapes.emplace_back(curr_item.release());
 						curr_item = new_text_shape(pos, init_width - pos.x);
 						tmp_h = get_text_size(curr_item, init_width).y;
 						// get_split_location always splits at word bounds,
 						// so substr(len) will include a space. we skip that.
-						add_text_with_attribute(*curr_item, full_text.substr(len+1));
+						add_text_with_attribute(curr_item, full_text.substr(len+1));
 					}
 				} else if((float_size.y > 0) && (text_size.y < float_size.y)) {
 					//TODO padding?
@@ -759,25 +715,24 @@ std::pair<std::vector<rich_label::shape_ptr>, point> rich_label::get_parsed_text
 		DBG_GUI_RL << "-----------";
 	} // for loop ends
 
-	if(w == 0) {
-		w = init_width;
-	}
-
 	// DEBUG: draw boxes around links
 	#if LINK_DEBUG_BORDER
 	if(finalize) {
 		for(const auto& entry : links_) {
-			config& link_rect_cfg = text_dom.add_child("rectangle");
-			link_rect_cfg["x"] = entry.first.x;
-			link_rect_cfg["y"] = entry.first.y;
-			link_rect_cfg["w"] = entry.first.w;
-			link_rect_cfg["h"] = entry.first.h;
-			link_rect_cfg["border_thickness"] = 1;
-			link_rect_cfg["border_color"] = "255, 180, 0, 255";
+			shapes.emplace_back(std::make_unique<rectangle_shape>(
+				entry.first.x, entry.first.y, entry.first.w, entry.first.h,
+				color_t::from_rgba_string("255, 180, 0, 255")));
 		}
 	}
 	#endif
 
+	if(curr_item != nullptr) {
+		shapes.emplace_back(curr_item.release());
+	}
+
+	if(w == 0) {
+		w = init_width;
+	}
 	// TODO float and a mix of floats and images and tables
 	h = std::max(static_cast<unsigned>(img_size.y), h);
 

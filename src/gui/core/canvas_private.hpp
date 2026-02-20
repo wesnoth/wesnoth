@@ -289,8 +289,8 @@ public:
 
 	t_string get_text() const;
 	void set_text(const t_string& text);
+	void add_attribute(const std::string& attr_name, const std::string& extra_data = "", std::size_t start = 0, std::size_t end = 0);
 	void set_wrap_width(const unsigned wrap_width);
-	void set_attributes(font::attribute_list&& attrs);
 
 	void draw(wfl::map_formula_callable& variables) override;
 

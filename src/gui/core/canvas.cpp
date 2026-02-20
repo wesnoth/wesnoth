@@ -558,8 +558,49 @@ void text_shape::set_wrap_width(const unsigned wrap_width) {
 	maximum_width_.set_value(wrap_width);
 }
 
-void text_shape::set_attributes(font::attribute_list&& attrs) {
-	text_attributes_ = std::move(attrs);
+void text_shape::add_attribute(
+	const std::string& name,
+	const std::string& extra_data,
+	std::size_t start,
+	std::size_t end)
+{
+	if(name.empty()) {
+		return;
+	}
+
+	// Attributes with start == end set won't do anything, so skip
+	if (start == end) {
+		WRN_GUI_D << "attribute " << name << " has equal start and end indices, will not be added.";
+		return;
+	}
+
+	if (name == "color" || name == "fgcolor" || name == "foreground") {
+		add_attribute_fg_color(text_attributes_, start, end, extra_data.empty() ? font::NORMAL_COLOR : font::string_to_color(extra_data));
+	} else if (name == "bgcolor" || name == "background") {
+		add_attribute_bg_color(text_attributes_, start, end, extra_data.empty() ? font::GOOD_COLOR : font::string_to_color(extra_data));
+	} else if (name == "font_size" || name == "size") {
+		add_attribute_size(text_attributes_, start, end, std::stoi(extra_data));
+	} else if (name == "font_family" || name == "face") {
+		add_attribute_font_family(text_attributes_, start, end, font::decode_family_class(extra_data));
+	} else if (name == "weight") {
+		add_attribute_weight(text_attributes_, start, end, decode_text_weight(extra_data));
+	} else if (name == "style") {
+		add_attribute_style(text_attributes_, start, end, decode_text_style(extra_data));
+	} else if (name == "bold" || name == "b") {
+		add_attribute_weight(text_attributes_, start, end, PANGO_WEIGHT_BOLD);
+	} else if (name == "italic" || name == "i") {
+		add_attribute_style(text_attributes_, start, end, PANGO_STYLE_ITALIC);
+	} else if (name == "underline" || name == "u") {
+		add_attribute_underline(text_attributes_, start, end, PANGO_UNDERLINE_SINGLE);
+	} else if (name == "line_height") {
+		add_attribute_line_height(text_attributes_, start, end, std::stod(extra_data));
+	} else if (name == "image") { // An inline image that behave as a custom text glyph
+		add_attribute_image_shape(text_attributes_, start, end, extra_data);
+	} else {
+		// Unsupported formatting or normal text
+		add_attribute_weight(text_attributes_, start, end, PANGO_WEIGHT_NORMAL);
+		add_attribute_style(text_attributes_, start, end, PANGO_STYLE_NORMAL);
+	}
 }
 
 void text_shape::draw(wfl::map_formula_callable& variables)

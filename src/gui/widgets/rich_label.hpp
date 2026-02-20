@@ -256,15 +256,18 @@ private:
 	std::unique_ptr<gui2::text_shape> new_text_shape(const point& pos, const int max_width);
 
 	std::pair<std::size_t, std::size_t> add_text(tshape_ptr& curr_item, const std::string& text);
-	void add_attribute(font::attribute_list& attrs, const std::string& attr_name, const std::string& extra_data = "", std::size_t start = 0, std::size_t end = 0);
 	std::pair<std::size_t, std::size_t> add_text_with_attribute(
 		tshape_ptr& tptr,
-		font::attribute_list& attrs,
 		const std::string& text,
 		const std::string& attr_name = "",
 		const std::string& extra_data = "");
 
-	void add_link(config& curr_item, const std::string& name, const std::string& dest, const point& origin, int img_width);
+	void add_link(
+		tshape_ptr& tptr,
+		const std::string& name,
+		const std::string& dest,
+		const point& origin,
+		int img_width);
 
 	/** size calculation functions */
 	wfl::map_formula_callable setup_text_renderer(tshape_ptr& tptr, unsigned width) const;
