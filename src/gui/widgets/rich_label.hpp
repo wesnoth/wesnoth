@@ -235,10 +235,6 @@ private:
 		return can_shrink_;
 	}
 
-	/** Final list of shapes to be drawn on the canvas. */
-	// config shapes_;
-	std::vector<shape_ptr> shapes_;
-
 	/** Width and height of the canvas */
 	unsigned init_w_;
 	point size_;

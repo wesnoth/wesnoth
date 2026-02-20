@@ -221,7 +221,9 @@ void rich_label::set_dom(const config& dom)
 {
 	dom_ = dom;
 	auto [shapes, size] = get_parsed_text(dom, point(0,0), init_w_, true);
-	shapes_ = std::move(shapes);
+	for(canvas& tmp : get_canvases()) {
+		tmp.set_shapes(std::move(shapes), true);
+	}
 	size_ = size;
 	update_canvas();
 	queue_redraw();
@@ -796,7 +798,6 @@ std::unique_ptr<gui2::text_shape> rich_label::new_text_shape(
 void rich_label::update_canvas()
 {
 	for(canvas& tmp : get_canvases()) {
-		tmp.set_shapes(std::move(shapes_), true);
 		tmp.set_variable("width", wfl::variant(init_w_));
 		tmp.set_variable("padding", wfl::variant(padding_));
 		// Disable ellipsization so that text wrapping can work

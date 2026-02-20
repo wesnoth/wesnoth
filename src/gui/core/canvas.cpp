@@ -278,7 +278,7 @@ image_shape::image_shape(
 	, y_(y)
 	, w_("(image_width)")
 	, h_("(image_height)")
-	, image_name_("(" + img_path + ")", img_path) // avoid ambiguous ctor error
+	, image_name_(img_path, img_path) // avoid ambiguous ctor error
 	, resize_mode_(get_resize_mode("scale_sharp"))
 	, mirror_("false")
 	, actions_formula_("")
@@ -789,6 +789,10 @@ void canvas::draw()
 
 	// Draw items
 	for(auto& shape : shapes_) {
+		if (shape == nullptr) {
+			continue;
+		}
+
 		const lg::scope_logger inner_scope_logging_object__{log_gui_draw, "Canvas: draw shape."};
 		shape->draw(variables_);
 	}
