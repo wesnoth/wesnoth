@@ -129,7 +129,7 @@ public:
 		parse_cfg(cfg);
 	}
 
-	void set_shapes(std::vector<std::unique_ptr<shape>> shapes, const bool force = false)
+	void set_shapes(std::vector<std::unique_ptr<shape>>&& shapes, const bool force = false)
 	{
 		clear_shapes(force);
 		shapes_ = std::move(shapes);

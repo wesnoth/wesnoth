@@ -102,6 +102,7 @@ wfl::map_formula_callable rich_label::setup_text_renderer(tshape_ptr& tptr, unsi
 {
 	// Set up fake render to calculate text position
 	wfl::map_formula_callable variables;
+	variables.add("text", wfl::variant(tptr->get_text()));
 	variables.add("width", wfl::variant(width));
 	variables.add("text_wrap_mode", wfl::variant(PANGO_ELLIPSIZE_NONE));
 	variables.add("fake_draw", wfl::variant(true));
@@ -125,10 +126,10 @@ point rich_label::get_image_size(const std::string& path) const
 
 std::pair<std::size_t, std::size_t> rich_label::add_text(tshape_ptr& tptr, const std::string& text)
 {
-	const auto& attr = tptr->get_text();
-	std::size_t start = attr.str().size();
-	tptr->set_text(attr.str() + text);
-	std::size_t end = attr.str().size();
+	const auto& old_text = tptr->get_text();
+	std::size_t start = old_text.size();
+	tptr->set_text(old_text + text);
+	std::size_t end = tptr->get_text().size();
 	return { start, end };
 }
 
@@ -219,7 +220,9 @@ std::size_t rich_label::get_split_location(std::string_view text, const point& p
 void rich_label::set_dom(const config& dom)
 {
 	dom_ = dom;
-	std::tie(shapes_, size_) = get_parsed_text(dom, point(0,0), init_w_, true);
+	auto [shapes, size] = get_parsed_text(dom, point(0,0), init_w_, true);
+	shapes_ = std::move(shapes);
+	size_ = size;
 	update_canvas();
 	queue_redraw();
 }
@@ -311,7 +314,7 @@ std::pair<std::vector<rich_label::shape_ptr>, point> rich_label::get_parsed_text
 				float_pos.y += float_size.y;
 			}
 
-			shapes.emplace_back(child["src"], float_pos.x, pos.y + float_pos.y);
+			shapes.emplace_back(std::make_unique<image_shape>(child["src"], float_pos.x, pos.y + float_pos.y));
 
 			float_size.x = curr_img_size.x + padding_;
 			float_size.y += curr_img_size.y + padding_;
@@ -489,8 +492,10 @@ std::pair<std::vector<rich_label::shape_ptr>, point> rich_label::get_parsed_text
 					}
 
 					// attach data
-					auto [table_elem, size] = get_parsed_text(col_cfg, text_pos, col_widths[col_idx]);
-					shapes.insert(std::end(shapes), std::begin(table_elem), std::end(table_elem));
+					auto [table_shapes, size] = get_parsed_text(col_cfg, text_pos, col_widths[col_idx]);
+					for(auto&& shape_ptr : table_shapes) {
+						shapes.emplace_back(shape_ptr.release());
+					}
 					pos.x += col_widths[col_idx];
 					pos.x += col_paddings[1];
 
@@ -740,7 +745,7 @@ std::pair<std::vector<rich_label::shape_ptr>, point> rich_label::get_parsed_text
 	// DBG_GUI_RL << "[\n" << text_dom.debug() << "]\n";
 
 	DBG_GUI_RL << "Width: " << w << " Height: " << h << " Origin: " << origin;
-	return { shapes, point(w, h - origin.y) };
+	return { std::move(shapes), point(w, h - origin.y) };
 } // function ends
 
 // void rich_label::default_text_config(
@@ -791,7 +796,7 @@ std::unique_ptr<gui2::text_shape> rich_label::new_text_shape(
 void rich_label::update_canvas()
 {
 	for(canvas& tmp : get_canvases()) {
-		tmp.set_shapes(shapes_, true);
+		tmp.set_shapes(std::move(shapes_), true);
 		tmp.set_variable("width", wfl::variant(init_w_));
 		tmp.set_variable("padding", wfl::variant(padding_));
 		// Disable ellipsization so that text wrapping can work
