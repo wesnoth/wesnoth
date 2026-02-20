@@ -108,8 +108,8 @@ rectangle_shape::rectangle_shape(
 	const unsigned y,
 	const unsigned w,
 	const unsigned h,
-	const unsigned thickness,
 	const color_t& border_color,
+	const unsigned thickness,
 	const color_t& fill_color)
 	: rect_bounded_shape(x, y, w, h)
 	, border_thickness_(thickness)
@@ -272,14 +272,12 @@ image_shape::image_shape(const config& cfg, wfl::action_function_symbol_table& f
 image_shape::image_shape(
 	const std::string& img_path,
 	const unsigned x,
-	const unsigned y,
-	const unsigned w,
-	const unsigned h)
+	const unsigned y)
 	: shape()
 	, x_(x)
 	, y_(y)
-	, w_(w)
-	, h_(h)
+	, w_("(image_width)")
+	, h_("(image_height)")
 	, image_name_("(" + img_path + ")", img_path) // avoid ambiguous ctor error
 	, resize_mode_(get_resize_mode("scale_sharp"))
 	, mirror_("false")
@@ -520,22 +518,17 @@ text_shape::text_shape(const config& cfg, wfl::action_function_symbol_table& fun
 text_shape::text_shape(
 	const unsigned x,
 	const unsigned y,
-	const unsigned w,
-	const unsigned h,
 	font::family_class family,
 	const unsigned size,
 	font::pango_text::FONT_STYLE style,
 	const std::string& align,
-	const color_t& font_color,
-	const t_string& text,
-	const std::string& width,
-	font::attribute_list&& attrs)
-	: rect_bounded_shape(x, y, w, h)
+	const unsigned width)
+	: rect_bounded_shape(x, y, "(text_width)", "(text_height)")
 	, font_family_(family)
 	, font_size_(size)
 	, font_style_(style)
 	, text_alignment_(align)
-	, color_(font_color)
+	, color_(font::NORMAL_COLOR)
 	, parse_text_as_formula_(false)
 	, text_markup_(false)
 	, link_aware_(false)
@@ -549,12 +542,15 @@ text_shape::text_shape(
 	, line_spacing_(font::get_line_spacing_factor())
 	, outline_(false)
 	, actions_formula_("")
-	, text_attributes_(std::move(attrs))
+	, text_attributes_()
 {
-	text_ = text;
 }
 
-void text_shape::set_text(const std::string& text) {
+t_string text_shape::get_text() const {
+	return text_.t_str();
+}
+
+void text_shape::set_text(const t_string& text) {
 	text_ = text;
 }
 

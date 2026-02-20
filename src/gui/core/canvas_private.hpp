@@ -66,6 +66,15 @@ protected:
 	{
 	}
 
+	explicit rect_bounded_shape(unsigned x, unsigned y, const std::string& w_f, const std::string& h_f)
+		: shape()
+		, x_(x)
+		, y_(y)
+		, w_(w_f)
+		, h_(h_f)
+	{
+	}
+
 	/**
 	 * Constructor.
 	 *
@@ -101,8 +110,8 @@ public:
 		const unsigned y,
 		const unsigned w,
 		const unsigned h,
-		const unsigned thickness,
 		const color_t& border_color,
+		const unsigned thickness = 1,
 		const color_t& fill_color = color_t::null_color());
 
 	void draw(wfl::map_formula_callable& variables) override;
@@ -210,9 +219,7 @@ public:
 	image_shape(
 		const std::string& img_path,
 		const unsigned x,
-		const unsigned y,
-		const unsigned w,
-		const unsigned h);
+		const unsigned y);
 
 	void draw(wfl::map_formula_callable& variables) override;
 
@@ -274,18 +281,14 @@ public:
 	explicit text_shape(
 		const unsigned x,
 		const unsigned y,
-		const unsigned w,
-		const unsigned h,
 		font::family_class family,
 		const unsigned size,
 		font::pango_text::FONT_STYLE style,
 		const std::string& align,
-		const color_t& font_color,
-		const t_string& text,
-		const std::string& width,
-		font::attribute_list&& attrs);
+		const unsigned width);
 
-	void set_text(const std::string& text);
+	t_string get_text() const;
+	void set_text(const t_string& text);
 	void set_wrap_width(const unsigned wrap_width);
 	void set_attributes(font::attribute_list&& attrs);
 
