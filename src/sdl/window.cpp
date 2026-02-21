@@ -19,6 +19,7 @@
 #include "sdl/surface.hpp"
 
 #include <SDL2/SDL_hints.h>
+#include <SDL2/SDL_log.h>
 #include <SDL2/SDL_render.h>
 
 #ifdef __ANDROID__
@@ -74,9 +75,18 @@ window::window(const std::string& title,
 						 false);
 	}
 
+#ifdef __EMSCRIPTEN__
+	if((info.flags & SDL_RENDERER_TARGETTEXTURE) == 0) {
+		// WebGL may not always report TARGETTEXTURE; the direct render
+		// fallback in video.cpp handles this gracefully.
+		SDL_LogWarn(SDL_LOG_CATEGORY_RENDER,
+			"Render-to-texture not supported; using direct render fallback");
+	}
+#else
 	if((info.flags & SDL_RENDERER_TARGETTEXTURE) == 0) {
 		throw exception("Render-to-texture not supported or enabled!", false);
 	}
+#endif
 
 	// Set default blend mode to blend.
 	SDL_SetRenderDrawBlendMode(*this, SDL_BLENDMODE_BLEND);

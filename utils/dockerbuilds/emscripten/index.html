@@ -89,6 +89,17 @@
       } catch (_err) {
         // Ignore if browser prevents overriding.
       }
+
+      // Force preserveDrawingBuffer on all WebGL contexts (needed for
+      // Playwright screenshots and pixel probes).
+      const _origGetContext = HTMLCanvasElement.prototype.getContext;
+      HTMLCanvasElement.prototype.getContext = function (type, attrs) {
+        if (type === "webgl" || type === "webgl2") {
+          attrs = Object.assign({}, attrs || {}, { preserveDrawingBuffer: true });
+        }
+        return _origGetContext.call(this, type, attrs);
+      };
+
       const canvas = document.getElementById("canvas");
       const statusEl = document.getElementById("status");
       const logEl = document.getElementById("log");
@@ -160,22 +171,13 @@
       window.Module = {
         arguments: ["--no-log-to-file", "--noaddons", "--nosound", "--windowed", "--resolution=1280x720", "--data-dir=/", "--userdata-dir=/userdata"],
         canvas,
+        // Set ENV before Emscripten loads to avoid ASSERTIONS guard.
+        ENV: { SDL_AUDIODRIVER: "dummy", SDL_VIDEO_HIGHDPI_DISABLED: "1" },
         locateFile: (path) => path,
         mainScriptUrlOrBlob: "wesnoth.js",
         preRun: [
           () => {
-            Module.ENV = Module.ENV || {};
-            Module.ENV.SDL_AUDIODRIVER = "dummy";
-            Module.ENV.SDL_RENDER_DRIVER = "software";
-            Module.ENV.SDL_VIDEO_HIGHDPI_DISABLED = "1";
-            if (typeof ENV === "object") {
-              ENV.SDL_AUDIODRIVER = "dummy";
-              ENV.SDL_RENDER_DRIVER = "software";
-              ENV.SDL_VIDEO_HIGHDPI_DISABLED = "1";
-            }
-            const activeAudio = (typeof ENV === "object" ? ENV.SDL_AUDIODRIVER : null) || Module.ENV.SDL_AUDIODRIVER;
-            const activeRenderer = (typeof ENV === "object" ? ENV.SDL_RENDER_DRIVER : null) || Module.ENV.SDL_RENDER_DRIVER;
-            log(`preRun ENV SDL_AUDIODRIVER=${activeAudio} SDL_RENDER_DRIVER=${activeRenderer}`);
+            log(`preRun ENV SDL_AUDIODRIVER=${Module.ENV.SDL_AUDIODRIVER}`);
           },
         ],
         postRun: [
@@ -202,6 +204,19 @@
           log("onRuntimeInitialized");
           canvas.focus();
           hideStatusLater();
+
+          // Quick pixel probe after game should be rendering.
+          setTimeout(() => {
+            try {
+              const gl = _origGetContext.call(canvas, "webgl2") || _origGetContext.call(canvas, "webgl");
+              if (!gl) { log("[probe] no GL context"); return; }
+              const px = new Uint8Array(4);
+              gl.readPixels(640, 360, 1, 1, gl.RGBA, gl.UNSIGNED_BYTE, px);
+              log(`[probe] center pixel: rgba(${px[0]},${px[1]},${px[2]},${px[3]})`);
+            } catch (e) {
+              log(`[probe] error: ${e.message}`);
+            }
+          }, 10000);
         },
         onAbort: (what) => {
           log(`aborted: ${what}`);

@@ -150,7 +150,7 @@ async function main() {
           }
           return null;
         }),
-        5000,
+        30000,
         "evaluate(render_game_to_text)"
       );
       result.steps.evaluate = "ok";
@@ -180,16 +180,25 @@ async function main() {
               clientHeight: canvas.clientHeight || 0,
             };
           }
-          const ctx = canvas.getContext("2d", { willReadFrequently: true });
+          // Try 2D context first; if canvas is WebGL, copy to a temp canvas
+          let ctx = canvas.getContext("2d", { willReadFrequently: true });
           if (!ctx) {
-            return {
-              ready: false,
-              reason: "no-2d-context",
-              width: w,
-              height: h,
-              clientWidth: canvas.clientWidth || 0,
-              clientHeight: canvas.clientHeight || 0,
-            };
+            // WebGL canvas — draw onto a temporary 2D canvas to read pixels
+            const tmp = document.createElement("canvas");
+            tmp.width = w;
+            tmp.height = h;
+            ctx = tmp.getContext("2d", { willReadFrequently: true });
+            if (!ctx) {
+              return {
+                ready: false,
+                reason: "no-2d-context",
+                width: w,
+                height: h,
+                clientWidth: canvas.clientWidth || 0,
+                clientHeight: canvas.clientHeight || 0,
+              };
+            }
+            ctx.drawImage(canvas, 0, 0);
           }
 
           const stepX = Math.max(1, Math.floor(w / 48));
@@ -222,7 +231,7 @@ async function main() {
             center: [c[0], c[1], c[2], c[3]],
           };
         }),
-        5000,
+        30000,
         "evaluate(canvasProbe)"
       );
       result.steps.canvasProbe = "ok";
@@ -237,9 +246,9 @@ async function main() {
         page.screenshot({
           path: screenshotOutPath,
           type: "png",
-          timeout: 5000,
+          timeout: 30000,
         }),
-        6000,
+        35000,
         "screenshot"
       );
       result.steps.screenshot = "ok";

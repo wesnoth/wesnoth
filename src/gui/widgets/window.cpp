@@ -62,6 +62,10 @@
 
 #include <SDL2/SDL_timer.h>
 
+#ifdef __EMSCRIPTEN__
+#include <emscripten.h>
+#endif
+
 #include <algorithm>
 #include <functional>
 
@@ -570,6 +574,13 @@ int window::show(const unsigned auto_close_timeout)
 
 			// Update the display. This will rate limit to vsync.
 			events::draw();
+
+#ifdef __EMSCRIPTEN__
+			// Yield to the browser event loop so the page stays responsive.
+			// Without this, the modal dialog loop blocks the main thread
+			// indefinitely under ASYNCIFY.
+			emscripten_sleep(0);
+#endif
 		}
 	}
 	catch(...)

@@ -64,11 +64,19 @@ rm -rf "${output_dir}"
 mkdir -p "${output_dir}" || exit
 mkdir -p "${vcpkg_cache_dir}" || exit
 
+# Clear build volume so each experiment starts fresh (replaces old --tmpfs behavior).
+# Using a Docker volume instead of --tmpfs frees RAM for the wasm-opt ASYNCIFY pass.
+build_vol="${WESNOTH_BUILD_VOL:-wesnoth-web-build}"
+docker volume rm "${build_vol}" >/dev/null 2>&1 || true
+docker volume create "${build_vol}" >/dev/null 2>&1 || true
+# Fix permissions: the volume starts as root-owned; chown to the build user.
+docker run --rm -v "${build_vol}":/build busybox chown "$(id -u):$(id -g)" /build
+
 docker run --rm \
     -v "$PWD"/../../..:/wesnoth \
     -v "$PWD"/"${output_dir}":/output \
     -v "$PWD"/"${vcpkg_cache_dir}":/vcpkg-cache \
-    --tmpfs /build:exec,mode=1777 \
+    -v "${build_vol}":/build \
     --entrypoint /wesnoth/utils/dockerbuilds/emscripten/build-web.sh \
     -u "$(id -u):$(id -g)" \
     -e HOME=/tmp \
@@ -146,10 +154,25 @@ hash_file() {
     fi
 }
 
+copy_tree() {
+    src="$1"
+    dst="$2"
+    mkdir -p "${dst}" || exit
+    if command -v rsync >/dev/null 2>&1; then
+        rsync -a --delete "${src}/" "${dst}/"
+    else
+        rm -rf "${dst}"
+        mkdir -p "${dst}" || exit
+        cp -a "${src}/." "${dst}/"
+    fi
+}
+
 timestamp_utc="$(date -u +%Y%m%dT%H%M%SZ)"
 history_dir="${repo_root}/output/web-build-history"
 mkdir -p "${history_dir}" || exit
 history_file="${history_dir}/${experiment_id}-${timestamp_utc}.txt"
+bundle_root="${repo_root}/output/web-build-bundles"
+bundle_dir="${bundle_root}/${experiment_id}-${timestamp_utc}"
 output_dir_abs="$(CDPATH= cd -- "${output_dir}" && pwd)"
 
 {
@@ -157,6 +180,7 @@ output_dir_abs="$(CDPATH= cd -- "${output_dir}" && pwd)"
     echo "experiment_id=${experiment_id}"
     echo "experiment_note=${experiment_note}"
     echo "experiment_env_file=${experiment_env_file}"
+    echo "bundle_dir=${bundle_dir}"
     echo "git_branch=$(git -C "${repo_root}" rev-parse --abbrev-ref HEAD 2>/dev/null || echo unknown)"
     echo "git_commit=$(git -C "${repo_root}" rev-parse --short HEAD 2>/dev/null || echo unknown)"
     echo "output_dir=${output_dir_abs}"
@@ -182,3 +206,10 @@ output_dir_abs="$(CDPATH= cd -- "${output_dir}" && pwd)"
 } > "${history_file}"
 
 echo "build_history_file=${history_file}"
+mkdir -p "${bundle_dir}" || exit
+copy_tree "${output_dir_abs}" "${bundle_dir}/build"
+cp -f "${history_file}" "${bundle_dir}/build-history.txt"
+if [ -f "${experiment_env_file}" ]; then
+    cp -f "${experiment_env_file}" "${bundle_dir}/experiment.env"
+fi
+echo "build_bundle_dir=${bundle_dir}"

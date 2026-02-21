@@ -437,17 +437,22 @@ void init_window(bool hidden)
 
 	PLAIN_LOG << "Setting mode to " << w << "x" << h;
 
+	PLAIN_LOG << "[web-debug] set_minimum_size...";
 	window->set_minimum_size(pref_constants::min_window_width, pref_constants::min_window_height);
 
+	PLAIN_LOG << "[web-debug] SDL_GetCurrentDisplayMode...";
 	SDL_DisplayMode currentDisplayMode;
 	SDL_GetCurrentDisplayMode(window->get_display_index(), &currentDisplayMode);
 	refresh_rate_ = currentDisplayMode.refresh_rate != 0 ? currentDisplayMode.refresh_rate : 60;
+	PLAIN_LOG << "[web-debug] refresh_rate=" << refresh_rate_;
 
 #ifdef __ANDROID__
 	window->set_size(w, h);
 #endif
 
+	PLAIN_LOG << "[web-debug] update_framebuffer...";
 	update_framebuffer();
+	PLAIN_LOG << "[web-debug] update_framebuffer done";
 }
 
 bool has_window()
