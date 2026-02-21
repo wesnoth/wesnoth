@@ -789,33 +789,25 @@ static int do_gameloop(commandline_options& cmdline_opts)
 		PLAIN_LOG << "could not initialize display";
 		return 1;
 	}
-	PLAIN_LOG << "[web-debug] init_video() done";
 
 	check_fpu();
 	const cursor::manager cursor_manager;
 	cursor::set(cursor::WAIT);
-	PLAIN_LOG << "[web-debug] cursor set, about to gui2::init()";
 
 #if(defined(_X11) && !defined(__APPLE__)) || defined(_WIN32)
 	SDL_EventState(SDL_SYSWMEVENT, SDL_ENABLE);
 #endif
 
 	gui2::init();
-	PLAIN_LOG << "[web-debug] gui2::init() done";
 	gui2::switch_theme(prefs::get().gui2_theme());
-	PLAIN_LOG << "[web-debug] gui2::switch_theme() done";
-	PLAIN_LOG << "[web-debug] creating gui_event_manager...";
 	const gui2::event::manager gui_event_manager;
-	PLAIN_LOG << "[web-debug] gui_event_manager created";
 
 	// if the log directory is not writable, then this is the error condition so show the error message.
 	// if the log directory is writable, then there's no issue.
 	// if the optional isn't set, then logging to file has been disabled, so there's no issue.
-	PLAIN_LOG << "[web-debug] checking log_dir_writable...";
 #ifdef __EMSCRIPTEN__
 	// On Emscripten, skip the log directory check to avoid a modal dialog
 	// that blocks forever in headless environments.
-	PLAIN_LOG << "[web-debug] skipping log dir check on Emscripten";
 #else
 	if(!lg::log_dir_writable().value_or(true)) {
 		utils::string_map symbols;
@@ -826,26 +818,19 @@ static int do_gameloop(commandline_options& cmdline_opts)
 #endif
 
 	game_config_manager& config_manager = game->config_manager();
-	PLAIN_LOG << "[web-debug] config_manager obtained";
 
 	if(game_config::check_migration) {
-		PLAIN_LOG << "[web-debug] running migration...";
 		game_config::check_migration = false;
 #ifdef __EMSCRIPTEN__
 		// Skip migration dialog on Emscripten — it would block headless
-		PLAIN_LOG << "[web-debug] skipping migration on Emscripten";
 #else
 		migrate_version_selection::execute();
 #endif
 	}
 
-	PLAIN_LOG << "[web-debug] about to loading_screen::display()";
 	loading_screen::display([&res, &config_manager, &cmdline_opts]() {
-		PLAIN_LOG << "[web-debug] inside loading_screen lambda";
 		loading_screen::progress(loading_stage::load_config);
-		PLAIN_LOG << "[web-debug] about to init_game_config()";
 		res = config_manager.init_game_config(game_config_manager::NO_FORCE_RELOAD);
-		PLAIN_LOG << "[web-debug] init_game_config() returned " << res;
 
 		if(res == false) {
 			PLAIN_LOG << "could not initialize game config";
@@ -853,10 +838,7 @@ static int do_gameloop(commandline_options& cmdline_opts)
 		}
 
 		loading_screen::progress(loading_stage::init_fonts);
-		PLAIN_LOG << "[web-debug] about to load_font_config()";
-
 		res = font::load_font_config();
-		PLAIN_LOG << "[web-debug] load_font_config() returned " << res;
 		if(res == false) {
 			PLAIN_LOG << "could not re-initialize fonts for the current language";
 			return;
@@ -864,10 +846,8 @@ static int do_gameloop(commandline_options& cmdline_opts)
 
 		if(!game_config::no_addons && !cmdline_opts.noaddons)  {
 			loading_screen::progress(loading_stage::refresh_addons);
-			PLAIN_LOG << "[web-debug] about to refresh_addon_version_info_cache()";
 			refresh_addon_version_info_cache();
 		}
-		PLAIN_LOG << "[web-debug] loading_screen lambda done";
 	});
 
 	if(res == false) {
@@ -956,7 +936,6 @@ static int do_gameloop(commandline_options& cmdline_opts)
 		const font::floating_label_context label_manager;
 
 		cursor::set(cursor::NORMAL);
-		PLAIN_LOG << "[web-debug] about to get_gameloop_action (title screen)";
 
 		switch(get_gameloop_action(*game)) {
 		case title_screen::QUIT_GAME:

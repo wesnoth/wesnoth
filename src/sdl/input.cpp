@@ -21,6 +21,10 @@
 #include <SDL2/SDL_mouse.h>
 #include <SDL2/SDL_keyboard.h>
 
+#ifdef __EMSCRIPTEN__
+#include <emscripten/html5.h>
+#endif
+
 namespace sdl
 {
 
@@ -32,6 +36,16 @@ uint32_t get_mouse_state(int *x, int *y)
 		return buttons;
 	}
 
+#ifdef __EMSCRIPTEN__
+	// On Emscripten, SDL2 already scales mouse coordinates from CSS pixel
+	// space to the canvas backing store (see SDL_emscriptenevents.c).
+	// The native input_area translation assumes desktop windowing semantics
+	// (letterboxing offsets, window vs output size) that don't apply here
+	// and can cause double-scaling if input_area_ drifts from the backing
+	// store size on a resize event. Bypass it entirely: SDL2's coordinates
+	// are already in game-canvas space.
+	(void)0;
+#else
 	// The game canvas may be offset inside the window,
 	// as well as potentially having a different size.
 	rect input_area = video::input_area();
@@ -42,6 +56,7 @@ uint32_t get_mouse_state(int *x, int *y)
 	point canvas_size = video::game_canvas_size();
 	*x = (*x * canvas_size.x) / input_area.w;
 	*y = (*y * canvas_size.y) / input_area.h;
+#endif
 
 	return buttons;
 }

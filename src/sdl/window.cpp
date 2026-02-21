@@ -227,7 +227,22 @@ int window::get_display_index()
 void window::set_logical_size(int w, int h)
 {
 	SDL_Renderer* r = SDL_GetRenderer(window_);
+#ifdef __EMSCRIPTEN__
+	// SDL_RenderSetLogicalSize must be completely disabled on Emscripten.
+	// It calls SDL_GetRendererOutputSize internally, which always returns
+	// the WINDOW (canvas) size, not the current render target texture size.
+	// When rendering to a dialog texture buffer of size WxH, it computes
+	// letterboxing to fit WxH into the 1280x720 canvas — producing wrong
+	// scale factors and viewport offsets that corrupt all drawing.
+	// For screen rendering, it produces a non-zero viewport offset due to
+	// integer rounding in the letterbox calculation.
+	// Explicitly disable it so viewport and scale stay at their defaults.
+	SDL_RenderSetLogicalSize(r, 0, 0);
+	(void)w;
+	(void)h;
+#else
 	SDL_RenderSetLogicalSize(r, w, h);
+#endif
 }
 
 void window::set_logical_size(const point& p)
@@ -239,14 +254,30 @@ point window::get_logical_size() const
 {
 	SDL_Renderer* r = SDL_GetRenderer(window_);
 	int w, h;
+#ifdef __EMSCRIPTEN__
+	// On Emscripten, logical size is disabled (0,0) when rendering to the
+	// screen (see set_logical_size). In that case, return the output size.
 	SDL_RenderGetLogicalSize(r, &w, &h);
+	if (w == 0 && h == 0) {
+		SDL_GetRendererOutputSize(r, &w, &h);
+	}
+#else
+	SDL_RenderGetLogicalSize(r, &w, &h);
+#endif
 	return {w, h};
 }
 
 void window::get_logical_size(int& w, int& h) const
 {
 	SDL_Renderer* r = SDL_GetRenderer(window_);
+#ifdef __EMSCRIPTEN__
 	SDL_RenderGetLogicalSize(r, &w, &h);
+	if (w == 0 && h == 0) {
+		SDL_GetRendererOutputSize(r, &w, &h);
+	}
+#else
+	SDL_RenderGetLogicalSize(r, &w, &h);
+#endif
 }
 
 uint32_t window::pixel_format()

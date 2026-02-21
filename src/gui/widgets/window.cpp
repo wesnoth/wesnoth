@@ -24,6 +24,7 @@
 
 #include "config.hpp"
 #include "draw.hpp"
+#include "draw_manager.hpp"
 #include "events.hpp"
 #include "formula/callable.hpp"
 #include "formula/string_utils.hpp"
@@ -527,6 +528,17 @@ int window::show(const unsigned auto_close_timeout)
 
 	// Make sure we display at least once in all cases.
 	events::draw();
+
+#ifdef __EMSCRIPTEN__
+	// On desktop, SDL_WINDOWEVENT_EXPOSED fires on window creation and
+	// triggers draw_manager::invalidate_all(). On Emscripten/WebGL, this
+	// event doesn't fire, so the first events::draw() above may complete
+	// with no invalidated regions (queue_redraw() can be a no-op if the
+	// widget isn't yet placed). Force a full invalidation and redraw to
+	// ensure the first frame renders completely.
+	draw_manager::invalidate_all();
+	events::draw();
+#endif
 
 	if(auto_close_timeout) {
 		SDL_Event event;

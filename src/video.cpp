@@ -236,7 +236,13 @@ bool update_framebuffer()
 	// Non-integer scales are not currently supported.
 	// This option makes things neater when window size is not a perfect
 	// multiple of logical size, which can happen when manually resizing.
+#ifndef __EMSCRIPTEN__
+	// On Emscripten, the canvas backing store IS the output — there is no
+	// window manager that can resize the output independently. Integer
+	// scaling adds no value and can introduce viewport offset artifacts
+	// in SDL2's WebGL renderer.
 	SDL_RenderSetIntegerScale(*window, SDL_TRUE);
+#endif
 
 	// Find max valid pixel scale at current output size.
 	point osize(window->get_output_size());
@@ -416,12 +422,13 @@ void init_window(bool hidden)
 	}
 
 	uint32_t renderer_flags = SDL_RENDERER_ACCELERATED | SDL_RENDERER_TARGETTEXTURE;
-#ifdef __EMSCRIPTEN__
-	// WebGL render targets are unstable in this port; render directly to the
-	// window backbuffer unless a future fix re-enables target textures.
-	renderer_flags = SDL_RENDERER_ACCELERATED;
-	emscripten_direct_render_fallback_ = true;
-#endif
+	// Note: Emscripten previously disabled SDL_RENDERER_TARGETTEXTURE and
+	// forced emscripten_direct_render_fallback_ = true because render targets
+	// were unstable under PROXY_TO_PTHREAD (WebGL state was unreliable across
+	// threads). With ASYNCIFY (main thread rendering), WebGL framebuffer
+	// objects work correctly. If texture creation still fails at runtime,
+	// the fallback logic in update_framebuffer() and window::update_render_textures()
+	// will activate automatically.
 
 	if(prefs::get().vsync()) {
 		LOG_DP << "VSYNC on";
@@ -437,22 +444,17 @@ void init_window(bool hidden)
 
 	PLAIN_LOG << "Setting mode to " << w << "x" << h;
 
-	PLAIN_LOG << "[web-debug] set_minimum_size...";
 	window->set_minimum_size(pref_constants::min_window_width, pref_constants::min_window_height);
 
-	PLAIN_LOG << "[web-debug] SDL_GetCurrentDisplayMode...";
 	SDL_DisplayMode currentDisplayMode;
 	SDL_GetCurrentDisplayMode(window->get_display_index(), &currentDisplayMode);
 	refresh_rate_ = currentDisplayMode.refresh_rate != 0 ? currentDisplayMode.refresh_rate : 60;
-	PLAIN_LOG << "[web-debug] refresh_rate=" << refresh_rate_;
 
 #ifdef __ANDROID__
 	window->set_size(w, h);
 #endif
 
-	PLAIN_LOG << "[web-debug] update_framebuffer...";
 	update_framebuffer();
-	PLAIN_LOG << "[web-debug] update_framebuffer done";
 }
 
 bool has_window()

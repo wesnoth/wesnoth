@@ -12,75 +12,25 @@
       height: 100%;
       overflow: hidden;
       background: #000;
-      color: #ddd;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
-    }
-
-    #root {
-      position: fixed;
-      inset: 0;
       display: flex;
-      align-items: center;
       justify-content: center;
-      background: #000;
+      align-items: center;
     }
 
     #canvas {
-      width: 1280px;
-      height: 720px;
-      max-width: 100vw;
-      max-height: 100vh;
+      display: block;
       outline: none;
-      image-rendering: auto;
-      background: #000;
-    }
-
-    #status {
-      position: fixed;
-      top: 8px;
-      left: 8px;
-      z-index: 10;
-      max-width: calc(100vw - 16px);
-      padding: 6px 8px;
-      background: rgba(0, 0, 0, 0.6);
-      color: #d8d8d8;
-      font-size: 12px;
-      line-height: 1.3;
-      border-radius: 4px;
-      pointer-events: none;
-      white-space: pre-wrap;
-    }
-
-    #status.hidden {
-      display: none;
-    }
-
-    #log {
-      position: fixed;
-      left: 8px;
-      right: 8px;
-      bottom: 8px;
-      max-height: 30vh;
-      overflow: auto;
-      z-index: 11;
-      margin: 0;
-      padding: 6px 8px;
-      background: rgba(0, 0, 0, 0.72);
-      color: #9ee2ff;
-      border-radius: 4px;
-      font-size: 11px;
-      line-height: 1.35;
-      white-space: pre-wrap;
-      pointer-events: none;
+      /* No CSS width/height override — let the canvas display at its native
+         backing-store size (1280x720). On Emscripten, SDL2 uses
+         getBoundingClientRect() for SDL_GetWindowSize. If CSS stretches the
+         canvas beyond the backing store, SDL reports the CSS size for GUI
+         layout but renders to the smaller backing store, causing mismatched
+         dialog sizing. Keeping CSS size == backing store avoids this. */
     }
   </style>
 </head>
 <body>
-  <div id="status">booting...</div>
-  <div id="root">
-    <canvas id="canvas" width="1280" height="720" tabindex="0" aria-label="Wesnoth game canvas"></canvas>
-  </div>
-  <pre id="log"></pre>
+  <canvas id="canvas" width="1280" height="720" tabindex="0" aria-label="Wesnoth game canvas"></canvas>
 
   <script>
     (() => {
@@ -101,24 +51,10 @@
       };
 
       const canvas = document.getElementById("canvas");
-      const statusEl = document.getElementById("status");
-      const logEl = document.getElementById("log");
       const bootTime = performance.now();
-
       const now = () => ((performance.now() - bootTime) / 1000).toFixed(2);
-      const appendLog = (line) => {
-        logEl.textContent += line + "\n";
-        logEl.scrollTop = logEl.scrollHeight;
-      };
-      const setStatus = (text) => {
-        statusEl.textContent = text;
-      };
-      const log = (text) => {
-        const line = `[${now()}s] ${text}`;
-        console.log(line);
-        appendLog(line);
-        setStatus(text);
-      };
+      const log = (text) => console.log(`[${now()}s] ${text}`);
+
       const formatReason = (reason) => {
         if (reason && typeof reason === "object" && "message" in reason) {
           return String(reason.message);
@@ -150,7 +86,6 @@
 
       window.render_game_to_text = () =>
         JSON.stringify({
-          status: statusEl.textContent,
           canvas: {
             width: canvas.width,
             height: canvas.height,
@@ -164,46 +99,27 @@
         // Native game loop is driven by Emscripten main loop.
       };
 
-      const hideStatusLater = () => {
-        setTimeout(() => statusEl.classList.add("hidden"), 4000);
-      };
-
       window.Module = {
-        arguments: ["--no-log-to-file", "--noaddons", "--nosound", "--windowed", "--resolution=1280x720", "--data-dir=/", "--userdata-dir=/userdata"],
+        arguments: ["--no-log-to-file", "--noaddons", "--windowed", "--resolution=1280x720", "--data-dir=/", "--userdata-dir=/userdata"],
         canvas,
-        // Set ENV before Emscripten loads to avoid ASSERTIONS guard.
-        ENV: { SDL_AUDIODRIVER: "dummy", SDL_VIDEO_HIGHDPI_DISABLED: "1" },
+        ENV: { SDL_VIDEO_HIGHDPI_DISABLED: "1" },
         locateFile: (path) => path,
         mainScriptUrlOrBlob: "wesnoth.js",
-        preRun: [
-          () => {
-            log(`preRun ENV SDL_AUDIODRIVER=${Module.ENV.SDL_AUDIODRIVER}`);
-          },
-        ],
-        postRun: [
-          () => {
-            log("postRun");
-          },
-        ],
-        print: (text) => {
-          log(String(text));
-        },
+        preRun: [() => log("preRun")],
+        postRun: [() => log("postRun")],
+        print: (text) => log(String(text)),
         printErr: (text) => {
-          log(`stderr ${String(text)}`);
-          console.error(text);
+          console.warn(`[${now()}s] ${String(text)}`);
         },
         setStatus: (text) => {
-          if (text) {
-            log(text);
-          }
+          if (text) log(text);
         },
         monitorRunDependencies: (left) => {
-          log(`run dependencies: ${left}`);
+          if (left === 0) log("all dependencies ready");
         },
         onRuntimeInitialized: () => {
           log("onRuntimeInitialized");
           canvas.focus();
-          hideStatusLater();
 
           // Quick pixel probe after game should be rendering.
           setTimeout(() => {
@@ -218,13 +134,16 @@
             }
           }, 10000);
         },
-        onAbort: (what) => {
-          log(`aborted: ${what}`);
-        },
-        onExit: (code) => {
-          log(`onExit: ${code}`);
-        },
+        onAbort: (what) => log(`aborted: ${what}`),
+        onExit: (code) => log(`onExit: ${code}`),
       };
+
+      // Resume AudioContext on first user gesture (browser autoplay policy).
+      document.addEventListener("click", () => {
+        if (typeof Module !== "undefined" && Module.SDL2 && Module.SDL2.audioContext) {
+          Module.SDL2.audioContext.resume();
+        }
+      }, { once: true });
 
       log(`crossOriginIsolated=${globalThis.crossOriginIsolated === true}`);
       log("loader booted");
@@ -233,7 +152,6 @@
         .then(() => loadScript("wesnoth.js"))
         .catch((error) => {
           console.error(error);
-          setStatus(error.message);
         });
     })();
   </script>

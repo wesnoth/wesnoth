@@ -161,10 +161,13 @@ private:
 
 #ifdef __EMSCRIPTEN__
 	/**
-	 * WebGL target textures can fail on some browser/worker combinations.
-	 * If that happens, render this window directly in expose().
+	 * WebGL target textures can fail on some browser/driver combinations.
+	 * If that happens at runtime, the code in update_render_textures()
+	 * sets this to false and falls back to direct rendering in expose().
+	 * Default is true since ASYNCIFY keeps main() on the browser main
+	 * thread where WebGL FBOs are fully functional.
 	 */
-	bool use_render_buffer_ = false;
+	bool use_render_buffer_ = true;
 #endif
 
 	/** The part of the window (if any) currently marked for rerender. */
