@@ -1,0 +1,40 @@
+diff --git a/util/cairo-script/meson.build b/util/cairo-script/meson.build
+index 4d41073..de8f14d 100644
+--- a/util/cairo-script/meson.build
++++ b/util/cairo-script/meson.build
+@@ -47,19 +47,21 @@ pkgmod.generate(libcairoscript,
+ 
+ meson.override_dependency('cairo-script-interpreter', libcairoscript_dep)
+ 
+-csi_replay_exe = executable('csi-replay', csi_replay_sources,
+-  include_directories: [incbase],
+-  dependencies: deps + [libcairo_dep, libcairoscript_dep],
+-)
+-
+-csi_exec_exe = executable('csi-exec', csi_exec_sources,
+-  include_directories: [incbase],
+-  dependencies: deps + [libcairo_dep, libcairoscript_dep],
+-)
+-
+-if feature_conf.get('CAIRO_HAS_SCRIPT_SURFACE', 0) == 1 and conf.get('HAVE_LIBGEN_H', 0) == 1
+-  csi_trace_exe = executable('csi-trace', csi_trace_sources,
++if host_machine.system() != 'emscripten'
++  csi_replay_exe = executable('csi-replay', csi_replay_sources,
+     include_directories: [incbase],
+     dependencies: deps + [libcairo_dep, libcairoscript_dep],
+   )
++
++  csi_exec_exe = executable('csi-exec', csi_exec_sources,
++    include_directories: [incbase],
++    dependencies: deps + [libcairo_dep, libcairoscript_dep],
++  )
++
++  if feature_conf.get('CAIRO_HAS_SCRIPT_SURFACE', 0) == 1 and conf.get('HAVE_LIBGEN_H', 0) == 1
++    csi_trace_exe = executable('csi-trace', csi_trace_sources,
++      include_directories: [incbase],
++      dependencies: deps + [libcairo_dep, libcairoscript_dep],
++    )
++  endif
+ endif
+ 
+ install_headers(cairoscript_interpreter_headers, subdir: 'cairo')

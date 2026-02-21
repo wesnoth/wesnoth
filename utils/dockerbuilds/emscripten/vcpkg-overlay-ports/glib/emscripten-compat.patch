@@ -1,0 +1,243 @@
+diff --git a/girepository/girepository.c b/girepository/girepository.c
+index 1c816d1..bf4cd77 100644
+--- a/girepository/girepository.c
++++ b/girepository/girepository.c
+@@ -1900,7 +1900,16 @@ gi_repository_enumerate_versions (GIRepository *repository,
+         g_ptr_array_add (versions, g_strdup (loaded_version));
+     }
+ 
+-  ret = (char **) g_ptr_array_steal (versions, n_versions_out);
++  if (n_versions_out)
++    {
++      gsize n_versions = 0;
++      ret = (char **) g_ptr_array_steal (versions, &n_versions);
++      *n_versions_out = (size_t)n_versions;
++    }
++  else
++    {
++      ret = (char **) g_ptr_array_steal (versions, NULL);
++    }
+   g_ptr_array_unref (g_steal_pointer (&versions));
+ 
+   return ret;
+diff --git a/girepository/gitypelib.c b/girepository/gitypelib.c
+index 184ffd0..50cdf69 100644
+--- a/girepository/gitypelib.c
++++ b/girepository/gitypelib.c
+@@ -2350,8 +2350,9 @@ gi_typelib_new_from_bytes (GBytes *bytes,
+                            GError **error)
+ {
+   GITypelib *meta;
+-  size_t len;
+-  const uint8_t *data = g_bytes_get_data (bytes, &len);
++  gsize len_g = 0;
++  const uint8_t *data = g_bytes_get_data (bytes, &len_g);
++  size_t len = (size_t)len_g;
+ 
+   if (!validate_header_basic (data, len, error))
+     return NULL;
+diff --git a/glib/deprecated/gcompletion.c b/glib/deprecated/gcompletion.c
+index fa09a97..5ed288f 100644
+--- a/glib/deprecated/gcompletion.c
++++ b/glib/deprecated/gcompletion.c
+@@ -112,6 +112,16 @@
+ static void completion_check_cache (GCompletion* cmp,
+ 				    gchar**	 new_prefix);
+ 
++#ifdef __EMSCRIPTEN__
++static gint
++g_completion_strncmp_emscripten (const gchar *s1,
++				 const gchar *s2,
++				 guint        n)
++{
++  return strncmp (s1, s2, (size_t)n);
++}
++#endif
++
+ /**
+  * g_completion_new:
+  * @func: the function to be called to return the string representing
+@@ -133,7 +143,11 @@ g_completion_new (GCompletionFunc func)
+   gcomp->cache = NULL;
+   gcomp->prefix = NULL;
+   gcomp->func = func;
++#ifdef __EMSCRIPTEN__
++  gcomp->strncmp_func = g_completion_strncmp_emscripten;
++#else
+   gcomp->strncmp_func = strncmp;
++#endif
+ 
+   return gcomp;
+ }
+diff --git a/glib/gconvert.c b/glib/gconvert.c
+index 367e9b4..58b83a7 100644
+--- a/glib/gconvert.c
++++ b/glib/gconvert.c
+@@ -186,7 +186,20 @@ g_iconv (GIConv   converter,
+ {
+   iconv_t cd = (iconv_t)converter;
+ 
++#ifdef __EMSCRIPTEN__
++  size_t inleft = inbytes_left ? (size_t)*inbytes_left : 0;
++  size_t outleft = outbytes_left ? (size_t)*outbytes_left : 0;
++  size_t result = iconv (cd,
++			 inbuf, inbytes_left ? &inleft : NULL,
++			 outbuf, outbytes_left ? &outleft : NULL);
++  if (inbytes_left)
++    *inbytes_left = (gsize)inleft;
++  if (outbytes_left)
++    *outbytes_left = (gsize)outleft;
++  return (gsize)result;
++#else
+   return iconv (cd, inbuf, inbytes_left, outbuf, outbytes_left);
++#endif
+ }
+ 
+ /**
+diff --git a/glib/gmem.c b/glib/gmem.c
+index 8d30712..ac3a34d 100644
+--- a/glib/gmem.c
++++ b/glib/gmem.c
+@@ -68,13 +68,44 @@
+  */
+ 
+ /* --- variables --- */
++#ifdef __EMSCRIPTEN__
++static gpointer
++g_mem_vtable_malloc_emscripten (gsize n_bytes)
++{
++  return malloc ((size_t)n_bytes);
++}
++
++static gpointer
++g_mem_vtable_realloc_emscripten (gpointer mem,
++				 gsize    n_bytes)
++{
++  return realloc (mem, (size_t)n_bytes);
++}
++
++static gpointer
++g_mem_vtable_calloc_emscripten (gsize n_blocks,
++				gsize n_block_bytes)
++{
++  return calloc ((size_t)n_blocks, (size_t)n_block_bytes);
++}
++#endif
++
+ static GMemVTable glib_mem_vtable = {
++#ifdef __EMSCRIPTEN__
++  g_mem_vtable_malloc_emscripten,
++  g_mem_vtable_realloc_emscripten,
++  free,
++  g_mem_vtable_calloc_emscripten,
++  g_mem_vtable_malloc_emscripten,
++  g_mem_vtable_realloc_emscripten,
++#else
+   malloc,
+   realloc,
+   free,
+   calloc,
+   malloc,
+   realloc,
++#endif
+ };
+ 
+ /* --- functions --- */
+diff --git a/glib/gspawn-posix.c b/glib/gspawn-posix.c
+index 9f4fba8..70f8bc7 100644
+--- a/glib/gspawn-posix.c
++++ b/glib/gspawn-posix.c
+@@ -1206,11 +1206,16 @@ do_posix_spawn (gboolean              intermediate_child,
+   if (envp == NULL)
+     envp = (const gchar * const *) environ;
+ 
++#if defined(__EMSCRIPTEN__)
++  /* emscripten does not provide posix_spawnp(). */
++  r = posix_spawn (&pid, argv[0], &file_actions, &attr, (char * const *) argv_pass, (char * const *) envp);
++#else
+   /* Don't search when it contains a slash. */
+   if (!search_path || strchr (argv[0], '/') != NULL)
+     r = posix_spawn (&pid, argv[0], &file_actions, &attr, (char * const *) argv_pass, (char * const *) envp);
+   else
+     r = posix_spawnp (&pid, argv[0], &file_actions, &attr, (char * const *) argv_pass, (char * const *) envp);
++#endif
+ 
+   if (r == 0 && child_pid != NULL)
+     *child_pid = pid;
+diff --git a/gio/gthreadedresolver.c b/gio/gthreadedresolver.c
+index ecd4b0e..0a4f0e2 100644
+--- a/gio/gthreadedresolver.c
++++ b/gio/gthreadedresolver.c
+@@ -1376,7 +1376,7 @@ free_records (GList *records)
+   g_list_free_full (records, (GDestroyNotify) g_variant_unref);
+ }
+ 
+-#if defined(G_OS_UNIX)
++#if defined(G_OS_UNIX) && !defined(__EMSCRIPTEN__)
+ #ifdef __BIONIC__
+ #ifndef C_IN
+ #define C_IN 1
+@@ -1393,7 +1393,13 @@ do_lookup_records (const gchar          *rrname,
+ {
+   GList *records;
+ 
+-#if defined(G_OS_UNIX)
++#if defined(__EMSCRIPTEN__)
++  g_set_error_literal (error,
++                       G_RESOLVER_ERROR,
++                       G_RESOLVER_ERROR_INTERNAL,
++                       _("DNS resolver records are not supported on this platform"));
++  records = NULL;
++#elif defined(G_OS_UNIX)
+   gint len = 512;
+   gint herr;
+   GByteArray *answer;
+diff --git a/meson.build b/meson.build
+index dab1d61..ae4d2f1 100644
+--- a/meson.build
++++ b/meson.build
+@@ -300,6 +300,11 @@ glib_conf.set('ENABLE_NLS', 1)
+ 
+ glib_conf.set('_GNU_SOURCE', 1)
+ 
++if host_system == 'emscripten'
++  add_project_arguments('-pthread', language: 'c')
++  add_project_link_arguments('-pthread', language: 'c')
++endif
++
+ if host_system in ['windows', 'darwin']
+   # Poll doesn't work on devices on Windows, and macOS's poll() implementation is known to be broken
+   glib_conf.set('BROKEN_POLL', true)
+@@ -885,7 +890,7 @@ if host_system != 'windows' and cc.has_function('posix_memalign', prefix: '#inc
+ endif
+ 
+ # Check that posix_spawn() is usable; must use header
+-if cc.has_function('posix_spawn', prefix : '#include <spawn.h>')
++if host_system != 'emscripten' and cc.has_function('posix_spawn', prefix : '#include <spawn.h>')
+   glib_conf.set('HAVE_POSIX_SPAWN', 1)
+ endif
+ 
+@@ -2152,10 +2157,10 @@ else
+   if cc.has_header_symbol('pthread.h', 'pthread_cond_timedwait_relative_np')
+     glib_conf.set('HAVE_PTHREAD_COND_TIMEDWAIT_RELATIVE_NP', 1)
+   endif
+-  if cc.has_header_symbol('pthread.h', 'pthread_getname_np', prefix : pthread_prefix)
++  if host_system != 'emscripten' and cc.has_header_symbol('pthread.h', 'pthread_getname_np', prefix : pthread_prefix)
+     glib_conf.set('HAVE_PTHREAD_GETNAME_NP', 1)
+   endif
+-  if cc.has_header_symbol('pthread.h', 'pthread_getaffinity_np', prefix : pthread_prefix)
++  if host_system != 'emscripten' and cc.has_header_symbol('pthread.h', 'pthread_getaffinity_np', prefix : pthread_prefix)
+     glib_conf.set('HAVE_PTHREAD_GETAFFINITY_NP', 1)
+   endif
+ 
+@@ -2727,7 +2732,9 @@ subdir('gthread')
+ subdir('gmodule')
+ subdir('gio')
+ subdir('girepository')
+-subdir('fuzzing')
++if host_system != 'emscripten'
++  subdir('fuzzing')
++endif
+ if get_option('tests')
+   subdir('tests')
+ endif
