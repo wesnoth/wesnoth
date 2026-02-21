@@ -46,6 +46,12 @@ function classifyResult(consoleEvents, canvasProbe, stateText) {
   if (/LZ4 not present/i.test(joined)) {
     return "FAIL_LZ4_MISMATCH";
   }
+  if (/Suspending is not a constructor/i.test(joined)) {
+    return "FAIL_JSPI_NOT_SUPPORTED";
+  }
+  if (/trying to suspend without.*promising/i.test(joined)) {
+    return "FAIL_JSPI_SUSPEND_ERROR";
+  }
   if (/postRun/.test(joined) && !/Setting mode to/.test(joined)) {
     return "FAIL_POSTRUN_EARLY";
   }
@@ -93,7 +99,14 @@ async function main() {
 
   const browser = await chromium.launch({
     headless: true,
-    args: ["--disable-dev-shm-usage", "--no-sandbox"],
+    args: [
+      "--disable-dev-shm-usage",
+      "--no-sandbox",
+      // Enable JSPI (WebAssembly JS Promise Integration) for builds that use
+      // -sJSPI instead of ASYNCIFY.  Shipped by default in Chrome 137+ but
+      // needs a flag on older bundled Chromium versions.
+      "--enable-features=WebAssemblyJSPromiseIntegration",
+    ],
   });
 
   try {

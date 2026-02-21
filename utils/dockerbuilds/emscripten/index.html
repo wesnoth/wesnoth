@@ -138,12 +138,18 @@
         onExit: (code) => log(`onExit: ${code}`),
       };
 
-      // Resume AudioContext on first user gesture (browser autoplay policy).
-      document.addEventListener("click", () => {
+      // Resume AudioContext on user gestures (browser autoplay policy).
+      // Not {once: true} — the context can re-suspend if the tab loses focus.
+      function resumeAudioContext() {
         if (typeof Module !== "undefined" && Module.SDL2 && Module.SDL2.audioContext) {
-          Module.SDL2.audioContext.resume();
+          var ctx = Module.SDL2.audioContext;
+          if (ctx.state === "suspended") {
+            ctx.resume();
+          }
         }
-      }, { once: true });
+      }
+      document.addEventListener("click", resumeAudioContext);
+      document.addEventListener("keydown", resumeAudioContext);
 
       log(`crossOriginIsolated=${globalThis.crossOriginIsolated === true}`);
       log("loader booted");

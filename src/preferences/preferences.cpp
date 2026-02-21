@@ -694,7 +694,8 @@ std::size_t prefs::sound_buffer_size()
 {
 	// Sounds don't sound good on Windows unless the buffer size is 4k,
 	// but this seems to cause crashes on other systems...
-	#ifdef _WIN32
+	#if defined(_WIN32) || defined(__EMSCRIPTEN__)
+		// Emscripten needs a larger buffer to tolerate ASYNCIFY yield latency.
 		const std::size_t buf_size = 4096;
 	#else
 		const std::size_t buf_size = 1024;

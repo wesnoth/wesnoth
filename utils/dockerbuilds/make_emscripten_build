@@ -72,11 +72,50 @@ docker volume create "${build_vol}" >/dev/null 2>&1 || true
 # Fix permissions: the volume starts as root-owned; chown to the build user.
 docker run --rm -v "${build_vol}":/build busybox chown "$(id -u):$(id -g)" /build
 
+# For non-pthreads builds, create a pkg-config wrapper that strips -pthread
+# flags from output.  Meson-based vcpkg packages (pixman, fontconfig,
+# harfbuzz) call dependency('threads') which bakes -pthread into their
+# .pc files.  This cascades to downstream link tests (pango) causing
+# "wasm-ld: --shared-memory is disallowed" errors.
+#
+# We bind-mount the wrapper over the real pkg-config binary so the meson
+# cross-file (which hardcodes /bin/pkg-config) transparently uses it.
+_pkgconfig_bind_mounts=""
+if [ "$use_pthreads" != "1" ]; then
+    echo "Creating pkg-config wrapper to strip -pthread for non-pthreads build"
+    # Copy real pkg-config from Docker image into vcpkg-cache (writable).
+    # Must use --entrypoint to override the image's default entrypoint.
+    docker run --rm --entrypoint /bin/cat "${docker_image}" /usr/bin/pkg-config \
+        > "${vcpkg_cache_dir}/pkg-config.real"
+    chmod +x "${vcpkg_cache_dir}/pkg-config.real"
+
+    # Create wrapper that calls the real binary and strips -pthread from output
+    # when querying wasm32-emscripten packages.
+    cat > "${vcpkg_cache_dir}/pkg-config-wrapper" << 'PKGWRAP'
+#!/bin/bash
+output=$(/vcpkg-cache/pkg-config.real "$@")
+rc=$?
+if [ -n "${PKG_CONFIG_PATH:-}" ]; then
+    case "$PKG_CONFIG_PATH" in
+        *wasm32-emscripten*)
+            printf '%s\n' "$output" | sed 's/-pthread//g; s/-sPTHREAD_POOL_SIZE=[0-9]*//g'
+            exit $rc
+            ;;
+    esac
+fi
+printf '%s\n' "$output"
+exit $rc
+PKGWRAP
+    chmod +x "${vcpkg_cache_dir}/pkg-config-wrapper"
+    _pkgconfig_bind_mounts="-v ${vcpkg_cache_dir}/pkg-config-wrapper:/usr/bin/pkg-config:ro"
+fi
+
 docker run --rm \
     -v "$PWD"/../../..:/wesnoth \
     -v "$PWD"/"${output_dir}":/output \
     -v "$PWD"/"${vcpkg_cache_dir}":/vcpkg-cache \
     -v "${build_vol}":/build \
+    ${_pkgconfig_bind_mounts} \
     --entrypoint /wesnoth/utils/dockerbuilds/emscripten/build-web.sh \
     -u "$(id -u):$(id -g)" \
     -e HOME=/tmp \

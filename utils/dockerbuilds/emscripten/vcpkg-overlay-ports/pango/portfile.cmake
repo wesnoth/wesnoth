@@ -11,6 +11,7 @@ vcpkg_extract_source_archive(SOURCE_PATH
     PATCHES
         relax-gi-requirement.diff
         emscripten-gsize-compat.patch
+        emscripten-sync-fontconfig.patch
 )
 
 if("introspection" IN_LIST FEATURES)

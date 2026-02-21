@@ -550,17 +550,17 @@ int window::show(const unsigned auto_close_timeout)
 		delay_event(event, auto_close_timeout);
 	}
 
-	try
-	{
-		// According to the comment in the next loop, we need to pump() once
-		// before we know which mouse buttons are down. Assume they're all
-		// down, otherwise there's a race condition when the MOUSE_UP gets
-		// processed in the first pump(), which immediately closes the window.
-		bool mouse_button_state_initialized = false;
-		mouse_button_state_ = std::numeric_limits<uint32_t>::max();
+	// According to the comment in the next loop, we need to pump() once
+	// before we know which mouse buttons are down. Assume they're all
+	// down, otherwise there's a race condition when the MOUSE_UP gets
+	// processed in the first pump(), which immediately closes the window.
+	bool mouse_button_state_initialized = false;
+	mouse_button_state_ = std::numeric_limits<uint32_t>::max();
 
-		// Start our loop, drawing will happen here as well.
-		for(status_ = status::SHOWING; status_ != status::CLOSED;) {
+	// Start our loop, drawing will happen here as well.
+	for(status_ = status::SHOWING; status_ != status::CLOSED;) {
+		try
+		{
 			// Process and handle all pending events.
 			events::pump();
 
@@ -586,21 +586,27 @@ int window::show(const unsigned auto_close_timeout)
 
 			// Update the display. This will rate limit to vsync.
 			events::draw();
+		}
+		catch(...)
+		{
+			// TODO: is this even necessary? What are we catching?
+			DBG_DP << "Caught general exception in show(): " << utils::get_unknown_exception_type();
+			hide();
+			throw;
+		}
 
 #ifdef __EMSCRIPTEN__
-			// Yield to the browser event loop so the page stays responsive.
-			// Without this, the modal dialog loop blocks the main thread
-			// indefinitely under ASYNCIFY.
-			emscripten_sleep(0);
+		// Yield to the browser event loop so the page stays responsive.
+		// Without this, the modal dialog loop blocks the main thread
+		// indefinitely under ASYNCIFY/JSPI.
+		//
+		// IMPORTANT: This MUST be outside the try/catch block.  With JSPI,
+		// emscripten_sleep() suspends the WASM stack via WebAssembly.Suspending.
+		// C++ exception trampolines (invoke_*) are JS frames that JSPI cannot
+		// suspend through.  Keeping the sleep outside try/catch avoids the
+		// invoke_* → Suspending → SuspendError chain.
+		emscripten_sleep(0);
 #endif
-		}
-	}
-	catch(...)
-	{
-		// TODO: is this even necessary? What are we catching?
-		DBG_DP << "Caught general exception in show(): " << utils::get_unknown_exception_type();
-		hide();
-		throw;
 	}
 
 	if(text_box_base* tb = dynamic_cast<text_box_base*>(event_distributor_->keyboard_focus())) {

@@ -62,18 +62,20 @@ if(EMSCRIPTEN)
 	list(REMOVE_ITEM BOOST_OPTIONAL_COMPONENTS process)
 	# Boost.Asio's thread+signal blocker path does not support emscripten cleanly.
 	add_compile_definitions(BOOST_ASIO_DISABLE_THREADS)
-	add_compile_options(-fexceptions)
-	set(WESNOTH_EMSCRIPTEN_ASSERTIONS "2" CACHE STRING "Emscripten ASSERTIONS level")
+	# Use native WASM exception handling.  JS-based exceptions (-fexceptions)
+	# create invoke_* JS trampolines for every try/catch block.  JSPI cannot
+	# suspend through JS frames, so native WASM EH is required.  The vcpkg
+	# overlay triplet (wasm32-emscripten.cmake) ensures dependencies are also
+	# built with -fwasm-exceptions for consistent exception/setjmp handling.
+	add_compile_options(-fwasm-exceptions)
+	set(WESNOTH_EMSCRIPTEN_ASSERTIONS "0" CACHE STRING "Emscripten ASSERTIONS level")
 	add_link_options(
 		-sWASM=1
 		-sASSERTIONS=${WESNOTH_EMSCRIPTEN_ASSERTIONS}
 		-sALLOW_MEMORY_GROWTH=1
 		-sFORCE_FILESYSTEM=1
-		-sDISABLE_EXCEPTION_CATCHING=0
 		-sEMULATE_FUNCTION_POINTER_CASTS=1
 		-sBINARYEN_EXTRA_PASSES=--pass-arg=max-func-params@64
-		-sEXPORT_EXCEPTION_HANDLING_HELPERS=1
-		-sEXCEPTION_STACK_TRACES=1
 	)
 	option(WESNOTH_EMSCRIPTEN_PTHREADS "Build with Emscripten pthread/shared-memory flags" OFF)
 	if(WESNOTH_EMSCRIPTEN_PTHREADS)
@@ -82,6 +84,18 @@ if(EMSCRIPTEN)
 		add_link_options(-pthread)
 		# Avoid link failures from too-small default shared memory.
 		add_link_options(-sINITIAL_MEMORY=67108864)
+	else()
+		# Create a no-op Threads::Threads target.  Many vcpkg packages (OpenSSL,
+		# Boost, WebP, liblzma, wavpack) unconditionally add Threads::Threads to
+		# their link interfaces.  On Emscripten without pthreads this injects a
+		# stray -pthread flag that is incompatible with JSPI (DYNCALLS conflict).
+		# By pre-defining a stub target we satisfy all references harmlessly.
+		set(Threads_FOUND TRUE)
+		set(CMAKE_THREAD_LIBS_INIT "")
+		set(CMAKE_USE_PTHREADS_INIT FALSE)
+		if(NOT TARGET Threads::Threads)
+			add_library(Threads::Threads INTERFACE IMPORTED)
+		endif()
 	endif()
 endif()
 

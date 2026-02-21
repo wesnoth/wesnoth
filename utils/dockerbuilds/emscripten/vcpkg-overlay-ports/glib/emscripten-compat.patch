@@ -196,28 +196,33 @@ diff --git a/meson.build b/meson.build
 index dab1d61..ae4d2f1 100644
 --- a/meson.build
 +++ b/meson.build
-@@ -300,6 +300,11 @@ glib_conf.set('ENABLE_NLS', 1)
- 
- glib_conf.set('_GNU_SOURCE', 1)
- 
-+if host_system == 'emscripten'
-+  add_project_arguments('-pthread', language: 'c')
-+  add_project_link_arguments('-pthread', language: 'c')
-+endif
-+
- if host_system in ['windows', 'darwin']
-   # Poll doesn't work on devices on Windows, and macOS's poll() implementation is known to be broken
-   glib_conf.set('BROKEN_POLL', true)
-@@ -885,7 +890,7 @@ if host_system != 'windows' and cc.has_function('posix_memalign', prefix: '#inc
+@@ -885,7 +885,7 @@ if host_system != 'windows' and cc.has_function('posix_memalign', prefix: '#inc
  endif
- 
+
  # Check that posix_spawn() is usable; must use header
 -if cc.has_function('posix_spawn', prefix : '#include <spawn.h>')
 +if host_system != 'emscripten' and cc.has_function('posix_spawn', prefix : '#include <spawn.h>')
    glib_conf.set('HAVE_POSIX_SPAWN', 1)
  endif
- 
-@@ -2152,10 +2157,10 @@ else
+
+@@ -2133,7 +2133,15 @@ if host_system == 'windows' and not get_option('force_posix_threads')
+   glibconfig_conf.set('g_threads_impl_def', 'WIN32')
+   glib_conf.set('THREADS_WIN32', 1)
+ else
+-  thread_dep = dependency('threads')
++  if host_system == 'emscripten'
++    # Emscripten provides pthread stubs without the -pthread flag.  Using
++    # -pthread enables SharedArrayBuffer / atomics mode which is incompatible
++    # with single-threaded builds and JSPI.  Use an empty dependency so glib
++    # compiles against the no-op stubs without forcing shared-memory linking.
++    thread_dep = declare_dependency()
++  else
++    thread_dep = dependency('threads')
++  endif
+   threads_implementation = 'posix'
+   pthread_prefix = '''
+       #ifndef _GNU_SOURCE
+@@ -2152,10 +2160,10 @@ else
    if cc.has_header_symbol('pthread.h', 'pthread_cond_timedwait_relative_np')
      glib_conf.set('HAVE_PTHREAD_COND_TIMEDWAIT_RELATIVE_NP', 1)
    endif
@@ -229,8 +234,8 @@ index dab1d61..ae4d2f1 100644
 +  if host_system != 'emscripten' and cc.has_header_symbol('pthread.h', 'pthread_getaffinity_np', prefix : pthread_prefix)
      glib_conf.set('HAVE_PTHREAD_GETAFFINITY_NP', 1)
    endif
- 
-@@ -2727,7 +2732,9 @@ subdir('gthread')
+
+@@ -2727,7 +2735,9 @@ subdir('gthread')
  subdir('gmodule')
  subdir('gio')
  subdir('girepository')
@@ -241,3 +246,45 @@ index dab1d61..ae4d2f1 100644
  if get_option('tests')
    subdir('tests')
  endif
+diff --git a/glib/gthread-posix.c b/glib/gthread-posix.c
+--- a/glib/gthread-posix.c
++++ b/glib/gthread-posix.c
+@@ -771,6 +771,19 @@ g_system_thread_new (GThreadFunc proxy,
+       return NULL;
+     }
+
+-  posix_check_err (ret, "pthread_create");
++#ifdef __EMSCRIPTEN__
++  /* Emscripten's non-pthreads stub returns ENOTSUP for pthread_create.
++   * Treat any failure as non-fatal so callers (e.g. g_thread_pool) can
++   * degrade gracefully instead of aborting the process. */
++  if (ret != 0)
++    {
++      g_set_error (error, G_THREAD_ERROR, G_THREAD_ERROR_AGAIN,
++                   "Error creating thread: %s", g_strerror (ret));
++      g_slice_free (GThreadPosix, thread);
++      return NULL;
++    }
++#else
++  posix_check_err (ret, "pthread_create");
++#endif
+
+   g_mutex_init (&thread->lock);
+diff --git a/glib/gthread.c b/glib/gthread.c
+--- a/glib/gthread.c
++++ b/glib/gthread.c
+@@ -1355,4 +1355,13 @@ g_thread_new (const gchar *name,
+   if G_UNLIKELY (thread == NULL)
+-    g_error ("creating thread '%s': %s", name ? name : "", error->message);
++    {
++#ifdef __EMSCRIPTEN__
++      g_warning ("creating thread '%s': %s (threads not available)",
++                 name ? name : "", error->message);
++      g_error_free (error);
++      return NULL;
++#else
++      g_error ("creating thread '%s': %s", name ? name : "", error->message);
++#endif
++    }
+
+   return thread;
