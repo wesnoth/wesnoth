@@ -39,7 +39,7 @@
 #include <boost/iostreams/device/file_descriptor.hpp>
 #include <boost/iostreams/stream.hpp>
 
-#if !defined(_WIN32) && !defined(__APPLE__)
+#if !defined(_WIN32) && !defined(__APPLE__) && !defined(__EMSCRIPTEN__)
 
 #if BOOST_VERSION >= 108600
 #include <boost/process/v2/environment.hpp>
@@ -1023,6 +1023,9 @@ std::string get_exe_path()
 		return get_cwd() + "/The Battle for Wesnoth";
 	}
 #else
+#if defined(__EMSCRIPTEN__)
+	return get_cwd() + "/wesnoth";
+#else
 	// first check /proc
 	if(bfs::exists("/proc/")) {
 		bfs::path self_exe("/proc/self/exe");
@@ -1059,6 +1062,7 @@ std::string get_exe_path()
 
 	// return the current working directory
 	return get_cwd() + "/wesnoth";
+#endif
 #endif
 }
 

@@ -24,14 +24,26 @@
 
 #include <boost/nondet_random.hpp>
 
+#include <chrono>
 #include <sstream>
 #include <iomanip>
 
 namespace seed_rng {
 
 	uint32_t next_seed() {
+#if defined(__EMSCRIPTEN__)
+		// boost::random_device may fail to open entropy sources in wasm runtimes.
+		// Use a simple time-based fallback seed for web builds.
+		const auto now = std::chrono::high_resolution_clock::now().time_since_epoch().count();
+		uint64_t mixed = static_cast<uint64_t>(now);
+		mixed ^= mixed >> 33;
+		mixed *= 0xff51afd7ed558ccdULL;
+		mixed ^= mixed >> 33;
+		return static_cast<uint32_t>(mixed);
+#else
 		static boost::random_device rnd_;
 		return rnd_();
+#endif
 	}
 
 	std::string next_seed_str() {

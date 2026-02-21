@@ -638,6 +638,12 @@ void window::update_render_textures()
 	point draw = get_size();
 	point render = draw * video::get_pixel_scale();
 
+#ifdef __EMSCRIPTEN__
+	if(!use_render_buffer_) {
+		return;
+	}
+#endif
+
 	// Check that the render buffer size is correct.
 	point buf_raw = render_buffer_.get_raw_size();
 	point buf_draw = render_buffer_.draw_size();
@@ -651,6 +657,14 @@ void window::update_render_textures()
 	if(raw_size_changed) {
 		LOG_DP << "regenerating window render buffer as " << render;
 		render_buffer_ = texture(render.x, render.y, SDL_TEXTUREACCESS_TARGET);
+#ifdef __EMSCRIPTEN__
+		if(!render_buffer_) {
+			WRN_DP << "web fallback: failed to create window render buffer, "
+			       << "switching window to direct rendering";
+			use_render_buffer_ = false;
+			return;
+		}
+#endif
 	}
 	if(raw_size_changed || draw_size_changed) {
 		LOG_DP << "updating window render buffer draw size to " << draw;
@@ -660,6 +674,14 @@ void window::update_render_textures()
 	// Clear the entire texture.
 	{
 		auto setter = draw::set_render_target(render_buffer_);
+#ifdef __EMSCRIPTEN__
+		if(video::get_render_target() != render_buffer_) {
+			WRN_DP << "web fallback: failed to bind window render buffer, "
+			       << "switching window to direct rendering";
+			use_render_buffer_ = false;
+			return;
+		}
+#endif
 		draw::clear();
 	}
 
@@ -691,6 +713,15 @@ void window::render()
 {
 	// Ensure our render texture is correctly sized.
 	update_render_textures();
+
+#ifdef __EMSCRIPTEN__
+	// In direct mode, expose() draws this window directly without buffering.
+	if(!use_render_buffer_) {
+		awaiting_rerender_ = {};
+		deferred_regions_.clear();
+		return;
+	}
+#endif
 
 	// Mark regions that were previously deferred for rerender and repaint.
 	for(auto& region : deferred_regions_) {
@@ -724,6 +755,14 @@ bool window::expose(const rect& region)
 	if (dst.empty()) {
 		return false;
 	}
+
+#ifdef __EMSCRIPTEN__
+	if(!use_render_buffer_) {
+		auto clip_setter = draw::override_clip(dst);
+		draw();
+		return true;
+	}
+#endif
 
 	// Blit from the pre-rendered buffer.
 	rect src = dst;

@@ -49,6 +49,8 @@
 #include "wesnothd_connection_error.hpp"
 #include "wml_exception.hpp" // for wml_exception
 
+#if !defined(__EMSCRIPTEN__)
+
 #ifdef __APPLE__
 #include <TargetConditionals.h>
 
@@ -82,6 +84,8 @@
 #include <boost/process/child.hpp>
 
 #endif
+
+#endif // !defined(__EMSCRIPTEN__)
 
 #include <algorithm> // for copy, max, min, stable_sort
 #include <new>
@@ -808,6 +812,8 @@ void game_launcher::start_wesnothd()
 {
 #if defined(__APPLE__) && TARGET_OS_IPHONE
 	throw game::mp_server_error("Starting MP server is not supported on iOS builds.");
+#elif defined(__EMSCRIPTEN__)
+	throw game::mp_server_error("Embedded wesnothd is not supported on web builds.");
 #else
 	std::string wesnothd_program = "";
 	if(!prefs::get().get_mp_server_program_name().empty()) {
