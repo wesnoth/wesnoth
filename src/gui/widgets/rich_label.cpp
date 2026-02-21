@@ -750,37 +750,11 @@ std::pair<std::vector<rich_label::shape_ptr>, point> rich_label::get_parsed_text
 	return { std::move(shapes), point(w, h - origin.y) };
 } // function ends
 
-// void rich_label::default_text_config(
-// 	config* txt_ptr,
-// 	const point& pos,
-// 	const int max_width,
-// 	const t_string& text)
-// {
-// 	if(txt_ptr != nullptr) {
-// 		(*txt_ptr)["text"] = text;
-// 		(*txt_ptr)["color"] = text_color_enabled_.to_rgba_string();
-// 		(*txt_ptr)["font_family"] = font_family_;
-// 		(*txt_ptr)["font_size"] = font_size_;
-// 		(*txt_ptr)["font_style"] = font_style_;
-// 		(*txt_ptr)["text_alignment"] = encode_text_alignment(get_text_alignment());
-// 		(*txt_ptr)["line_spacing"] = 0;
-// 		(*txt_ptr)["x"] = pos.x;
-// 		(*txt_ptr)["y"] = pos.y;
-// 		(*txt_ptr)["w"] = "(text_width)";
-// 		(*txt_ptr)["h"] = "(text_height)";
-// 		(*txt_ptr)["maximum_width"] = max_width;
-// 		(*txt_ptr)["parse_text_as_formula"] = false;
-// 		add_attribute(*txt_ptr,
-// 			"line_height",
-// 			std::to_string(font::get_line_spacing_factor()));
-// 	}
-// }
-
 std::unique_ptr<gui2::text_shape> rich_label::new_text_shape(
 	const point& pos,
 	const int max_width)
 {
-	return std::make_unique<gui2::text_shape>(
+	auto tshape = std::make_unique<gui2::text_shape>(
 		pos.x,
 		pos.y,
 		font::decode_family_class(font_family_),
@@ -790,9 +764,8 @@ std::unique_ptr<gui2::text_shape> rich_label::new_text_shape(
 		max_width
 	);
 
-	// 	add_attribute(*txt_ptr,
-	// 		"line_height",
-	// 		std::to_string(font::get_line_spacing_factor()));
+	tshape->add_attribute("line_height", std::to_string(font::get_line_spacing_factor()));
+	return tshape;
 }
 
 void rich_label::update_canvas()

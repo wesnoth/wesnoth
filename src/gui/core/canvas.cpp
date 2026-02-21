@@ -539,7 +539,7 @@ text_shape::text_shape(
 	, highlight_start_("")
 	, highlight_end_("")
 	, highlight_color_(color_t::from_hex_string("215380"))
-	, line_spacing_(font::get_line_spacing_factor())
+	, line_spacing_(0)
 	, outline_(false)
 	, actions_formula_("")
 	, text_attributes_()

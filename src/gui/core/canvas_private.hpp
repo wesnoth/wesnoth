@@ -285,11 +285,15 @@ public:
 		const unsigned size,
 		font::pango_text::FONT_STYLE style,
 		const std::string& align,
-		const unsigned width);
+		const unsigned wrap_width);
 
 	t_string get_text() const;
 	void set_text(const t_string& text);
-	void add_attribute(const std::string& attr_name, const std::string& extra_data = "", std::size_t start = 0, std::size_t end = 0);
+	void add_attribute(
+		const std::string& attr_name,
+		const std::string& extra_data = "",
+		std::size_t start = PANGO_ATTR_INDEX_FROM_TEXT_BEGINNING,
+		std::size_t end = PANGO_ATTR_INDEX_TO_TEXT_END);
 	void set_wrap_width(const unsigned wrap_width);
 
 	void draw(wfl::map_formula_callable& variables) override;
