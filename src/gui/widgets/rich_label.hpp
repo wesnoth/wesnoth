@@ -16,7 +16,6 @@
 #pragma once
 
 #include "color.hpp"
-#include "font/attributes.hpp"
 #include "gui/widgets/styled_widget.hpp"
 
 #include "gui/core/canvas_private.hpp"

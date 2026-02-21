@@ -17,7 +17,6 @@
 
 #include "gui/widgets/rich_label.hpp"
 
-#include "gettext.hpp"
 #include "gui/core/log.hpp"
 #include "gui/core/widget_definition.hpp"
 #include "gui/core/register_widget.hpp"
@@ -25,9 +24,7 @@
 
 #include "cursor.hpp"
 #include "picture.hpp"
-#include "font/attributes.hpp"
 #include "font/constants.hpp"
-#include "font/font_options.hpp"
 #include "font/sdl_ttf_compat.hpp"
 #include "log.hpp"
 #include "serialization/markup.hpp"
