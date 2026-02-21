@@ -147,6 +147,13 @@
             ctx.resume();
           }
         }
+        // Resume Web Audio music context (separate from SDL2's ScriptProcessorNode context).
+        if (typeof Module !== "undefined" && Module._webAudio && Module._webAudio.ctx) {
+          var ctx = Module._webAudio.ctx;
+          if (ctx.state === "suspended") {
+            ctx.resume();
+          }
+        }
       }
       document.addEventListener("click", resumeAudioContext);
       document.addEventListener("keydown", resumeAudioContext);

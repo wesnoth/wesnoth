@@ -25,6 +25,9 @@
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_mixer.h>
+#ifdef __EMSCRIPTEN__
+#include "sound_emscripten.hpp"
+#endif
 
 #include <list>
 #include <string>
@@ -79,6 +82,26 @@ unsigned max_cached_chunks = 256;
 
 std::map<Mix_Chunk*, int> chunk_usage;
 } // end anon namespace
+
+// ---------------------------------------------------------------------------
+// Music backend wrappers.  On Emscripten these forward to Web Audio API
+// (immune to main-thread stalls); on native they call SDL2_mixer directly.
+// ---------------------------------------------------------------------------
+#ifdef __EMSCRIPTEN__
+static bool music_is_playing() { return sound::emscripten::is_playing(); }
+static bool music_is_fading() { return sound::emscripten::is_fading(); }
+static void music_fade_out(int ms) { sound::emscripten::fade_out(ms); }
+static void music_halt() { sound::emscripten::halt(); }
+static void music_pause() { sound::emscripten::pause(); }
+static void music_resume() { sound::emscripten::resume(); }
+#else
+static bool music_is_playing() { return Mix_PlayingMusic() != 0; }
+static bool music_is_fading() { return Mix_FadingMusic() != MIX_NO_FADING; }
+static void music_fade_out(int ms) { Mix_FadeOutMusic(ms); }
+static void music_halt() { Mix_HaltMusic(); }
+static void music_pause() { Mix_PauseMusic(); }
+static void music_resume() { Mix_ResumeMusic(); }
+#endif
 
 static void increment_chunk_usage(Mix_Chunk* mcp)
 {
@@ -554,8 +577,10 @@ void reset_sound()
 void stop_music()
 {
 	if(mix_ok) {
-		Mix_FadeOutMusic(500);
+		music_fade_out(500);
+#ifndef __EMSCRIPTEN__
 		Mix_HookMusicFinished([]() { unload_music = true; });
+#endif
 	}
 }
 
@@ -648,6 +673,16 @@ static void play_new_music()
 
 	std::string filename = current_track->file_path();
 
+#ifdef __EMSCRIPTEN__
+	LOG_AUDIO << "Playing track '" << filename << "' (Web Audio)";
+	auto fading_time = no_fading ? 0ms : current_track->ms_before();
+	auto bytes = filesystem::read_file_binary(filename);
+	if(bytes.empty()) {
+		ERR_AUDIO << "Could not read music file '" << filename << "'";
+		return;
+	}
+	sound::emscripten::play(filename.c_str(), bytes.data(), bytes.size(), fading_time.count());
+#else
 	auto itor = music_cache.find(filename);
 	if(itor == music_cache.end()) {
 		LOG_AUDIO << "attempting to insert track '" << filename << "' into cache";
@@ -682,6 +717,7 @@ static void play_new_music()
 	if(res < 0) {
 		ERR_AUDIO << "Could not play music: " << Mix_GetError() << " " << filename << " ";
 	}
+#endif
 
 	want_new_music = false;
 }
@@ -752,7 +788,7 @@ void play_music_config(const config& music_node, bool allow_interrupt_current_tr
 
 void music_thinker::process()
 {
-	if(Mix_FadingMusic() != MIX_NO_FADING) {
+	if(music_is_fading()) {
 		// Do not block everything while fading.
 		return;
 	}
@@ -761,7 +797,7 @@ void music_thinker::process()
 		// TODO: rethink the music_thinker design, especially the use of fade_out_time
 		auto now = std::chrono::steady_clock::now();
 
-		if(!music_start_time && !current_track_list.empty() && !Mix_PlayingMusic()) {
+		if(!music_start_time && !current_track_list.empty() && !music_is_playing()) {
 			// Pick next track, add ending time to its start time.
 			set_previous_track(current_track);
 			current_track = choose_track();
@@ -775,8 +811,8 @@ void music_thinker::process()
 		}
 
 		if(want_new_music) {
-			if(Mix_PlayingMusic()) {
-				Mix_FadeOutMusic(fade_out_time.count());
+			if(music_is_playing()) {
+				music_fade_out(fade_out_time.count());
 				return;
 			}
 
@@ -786,11 +822,11 @@ void music_thinker::process()
 	}
 
 	if(unload_music) {
+#ifndef __EMSCRIPTEN__
 		// The custom shared_ptr deleter (Mix_FreeMusic) will handle the freeing of each track.
 		music_cache.clear();
-
 		Mix_HookMusicFinished(nullptr);
-
+#endif
 		unload_music = false;
 	}
 }
@@ -805,10 +841,10 @@ void music_muter::handle_window_event(const SDL_Event& event)
 {
 	if(prefs::get().stop_music_in_background() && prefs::get().music_on()) {
 		if(event.window.event == SDL_WINDOWEVENT_FOCUS_GAINED) {
-			Mix_ResumeMusic();
+			music_resume();
 		} else if(event.window.event == SDL_WINDOWEVENT_FOCUS_LOST) {
-			if(Mix_PlayingMusic()) {
-				Mix_PauseMusic();
+			if(music_is_playing()) {
+				music_pause();
 			}
 		}
 	}
@@ -1057,22 +1093,33 @@ void play_UI_sound(const std::string& files)
 
 int get_music_volume()
 {
+#ifdef __EMSCRIPTEN__
+	return sound::emscripten::get_volume();
+#else
 	if(mix_ok) {
 		return Mix_VolumeMusic(-1);
 	}
-
 	return 0;
+#endif
 }
 
 void set_music_volume(int vol)
 {
+#ifdef __EMSCRIPTEN__
+	if(vol >= 0) {
+		if(vol > MIX_MAX_VOLUME) {
+			vol = MIX_MAX_VOLUME;
+		}
+		sound::emscripten::set_volume(vol);
+	}
+#else
 	if(mix_ok && vol >= 0) {
 		if(vol > MIX_MAX_VOLUME) {
 			vol = MIX_MAX_VOLUME;
 		}
-
 		Mix_VolumeMusic(vol);
 	}
+#endif
 }
 
 int get_sound_volume()
