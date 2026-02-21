@@ -280,7 +280,7 @@ image_shape::image_shape(
 	, h_("(image_height)")
 	, image_name_(img_path, img_path) // avoid ambiguous ctor error
 	, resize_mode_(get_resize_mode("scale_sharp"))
-	, mirror_("false")
+	, mirror_(false)
 	, actions_formula_("")
 {
 }
@@ -534,7 +534,7 @@ text_shape::text_shape(
 	, link_aware_(false)
 	, link_color_(font::YELLOW_COLOR)
 	, maximum_width_(width)
-	, characters_per_line_(-1)
+	, characters_per_line_(0)
 	, maximum_height_(-1)
 	, highlight_start_("")
 	, highlight_end_("")
