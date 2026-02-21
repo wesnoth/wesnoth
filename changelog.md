@@ -13,6 +13,7 @@
      * S10 "The Underlevels": Karrag can now be optionally fought before you kill all other leaders, and the scenario has been rebalanced accordingly.
    * Heir to the Throne
      * Fixed a serious issue where the "Replacement Weapons" tweak would trigger on all sides' recruits, not just Konrad's.
+     * If Konrad reaches Elensefar while Delfador is still with him, the player is no longer forced to give up Delfador in return for his raven.
      * Moremirmu: significantly increased hitpoints, but decreased speed and damage.
      * S01 "The Elves Besieged": added a turn limit and rebalanced enemies.
      * S02 "Flight of the Elves": fixed Konrad winning after killing only 2 enemy leaders, instead of all of them.
