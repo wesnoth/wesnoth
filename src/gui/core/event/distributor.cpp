@@ -544,12 +544,19 @@ void mouse_button<I>::signal_handler_sdl_button_up(
 	// will reach here with mouse_captured_ == false.
 	widget* mouse_over = owner_.find_at(coordinate, true);
 	if(mouse_captured_) {
+#ifdef __EMSCRIPTEN__
+		// On Emscripten, SDL_GetMouseState() can desync across ASYNCIFY yields
+		// in nested event loops (dropdown menus). Force-release capture on any
+		// button-up event to prevent permanent capture.
+		mouse_captured_ = false;
+#else
 		const unsigned mask
 			= SDL_BUTTON_LMASK | SDL_BUTTON_MMASK | SDL_BUTTON_RMASK | SDL_BUTTON_X1MASK | SDL_BUTTON_X2MASK;
 
 		if((sdl::get_mouse_button_mask() & mask) == 0) {
 			mouse_captured_ = false;
 		}
+#endif
 
 		if(mouse_focus_ == mouse_over) {
 			mouse_button_click(mouse_focus_);
