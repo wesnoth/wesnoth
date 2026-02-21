@@ -18,6 +18,7 @@
      * Jeniver: increased gold generation from 4 to 5, increased blowgun damage from 4 to 5.
      * S01 "The Elves Besieged": added a turn limit and rebalanced enemies.
      * S02 "Flight of the Elves": fixed Konrad winning after killing only 2 enemy leaders, instead of all of them.
+     * S03 "Blackwater Port": Haldiel and Simyr are now loyal companions, but killing all enemy leaders is very much harder.
      * S07 "Muff Malal's Peninsula": Moremirmu is now in a safer position, and much less likely to get bad RNG and die early.
      * S22 "Glamdrol": allying with the Stoneskins now costs less gold, but Konrad will lose if he doesn't pillage enough gold to meet his pledge.
      * S30 "The Sceptre of Fire": made Li'sar more difficult to assassinate with Fire Wraiths. This strategy should still be possible, but it should now require more significant investment.
