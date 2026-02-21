@@ -21,7 +21,8 @@
      * S22 "Glamdrol": allying with the Stoneskins now costs less gold, but Konrad will lose if he doesn't pillage enough gold to meet his pledge.
      * S30 "The Sceptre of Fire": made Li'sar more difficult to assassinate with Fire Wraiths. This strategy should still be possible, but it should now require more significant investment.
      * S30 "The Sceptre of Fire": Delfador can now continue recruiting even while searching for the Sceptre.
-     * S47, S48, and S50: A few enemy units will now defect when the Sceptre is first used against human opponents.
+     * S47, S48, and S50: a few enemy units will now defect when the Sceptre is first used against human opponents.
+     * S50 "The Battle for Wesnoth": added an epilogue for Blackwing the raven.
    * Winds of Fate
      * Lower recall costs further.
      * Adjust and replace some characters that tie-in with the other campaigns.
