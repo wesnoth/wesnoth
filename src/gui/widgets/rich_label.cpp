@@ -493,14 +493,15 @@ std::pair<std::vector<rich_label::shape_ptr>, point> rich_label::get_parsed_text
 					// attach data
 					auto [table_shapes, size] = get_parsed_text(col_cfg, text_pos, col_widths[col_idx]);
 					for(auto&& shape_ptr : table_shapes) {
-						shapes.emplace_back(shape_ptr.release());
+						shapes.emplace_back(std::move(shape_ptr));
 					}
 					pos.x += col_widths[col_idx];
 					pos.x += col_paddings[1];
 
-					// TODO: fixup needed
-					// auto [_, end_cfg] = text_dom.all_children_view().back();
-					// end_cfg["maximum_width"] = col_widths[col_idx];
+					shape_ptr& shape = shapes.back();
+					if(auto* tshape = dynamic_cast<text_shape*>(shape.get())) {
+						tshape->set_wrap_width(col_widths[col_idx]);
+					}
 
 					DBG_GUI_RL << "jump to next column";
 
@@ -536,7 +537,7 @@ std::pair<std::vector<rich_label::shape_ptr>, point> rich_label::get_parsed_text
 
 			if (curr_item == nullptr || new_text_block) {
 				if (new_text_block) {
-					shapes.emplace_back(curr_item.release());
+					shapes.emplace_back(std::move(curr_item));
 				}
 
 				curr_item = new_text_shape(pos, init_width - pos.x - float_size.x);
@@ -674,7 +675,7 @@ std::pair<std::vector<rich_label::shape_ptr>, point> rich_label::get_parsed_text
 
 					if (len > 0) {
 						// layout rest of the text
-						shapes.emplace_back(curr_item.release());
+						shapes.emplace_back(std::move(curr_item));
 						curr_item = new_text_shape(pos, init_width - pos.x);
 						tmp_h = get_text_size(curr_item, init_width).y;
 						// get_split_location always splits at word bounds,
@@ -731,7 +732,7 @@ std::pair<std::vector<rich_label::shape_ptr>, point> rich_label::get_parsed_text
 	#endif
 
 	if(curr_item != nullptr) {
-		shapes.emplace_back(curr_item.release());
+		shapes.emplace_back(std::move(curr_item));
 	}
 
 	if(w == 0) {
