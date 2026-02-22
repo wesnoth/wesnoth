@@ -4,7 +4,7 @@ set -xeu
 
 script_dir="$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)"
 repo_root="$(CDPATH= cd -- "${script_dir}/../.." && pwd)"
-experiment_env_file="${WESNOTH_EXPERIMENT_ENV_FILE:-${script_dir}/current_experiment.env}"
+experiment_env_file="${WESNOTH_EXPERIMENT_ENV_FILE:-${script_dir}/emscripten/current_experiment.env}"
 if [ -f "${experiment_env_file}" ]; then
     # shellcheck disable=SC1090
     . "${experiment_env_file}"
@@ -183,7 +183,7 @@ if [ "${package_data}" = "1" ]; then
 fi
 
 cp -f ./index.html "${output_dir}"/index.html
-cp -f ../serve_coi.py "${output_dir}"/serve_coi.py
+cp -f ./serve_coi.py "${output_dir}"/serve_coi.py
 
 hash_file() {
     if command -v sha256sum >/dev/null 2>&1; then
