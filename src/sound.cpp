@@ -418,6 +418,21 @@ struct audio_lock
 	}
 };
 
+#ifdef __EMSCRIPTEN__
+// Drain the Web Audio SFX finished-channel queue so C++ bookkeeping
+// (channel_chunks / channel_ids) stays in sync with JS-side state.
+void wa_sfx_drain_finished_queue()
+{
+	int ch;
+	while((ch = sound::emscripten::sfx::drain_finished()) >= 0) {
+		if(ch < static_cast<int>(sound::channel_chunks.size())) {
+			sound::channel_chunks[ch] = nullptr;
+			sound::channel_ids[ch] = -1;
+		}
+	}
+}
+#endif
+
 } // end of anonymous namespace
 
 namespace sound
@@ -587,6 +602,11 @@ void stop_music()
 void stop_sound()
 {
 	if(mix_ok) {
+#ifdef __EMSCRIPTEN__
+		emscripten::sfx::halt_group(SOUND_SOURCES);
+		emscripten::sfx::halt_group(SOUND_FX);
+		wa_sfx_drain_finished_queue();
+#endif
 		Mix_HaltGroup(SOUND_SOURCES);
 		Mix_HaltGroup(SOUND_FX);
 
@@ -602,6 +622,11 @@ void stop_sound()
 void stop_bell()
 {
 	if(mix_ok) {
+#ifdef __EMSCRIPTEN__
+		emscripten::sfx::halt_group(SOUND_BELL);
+		emscripten::sfx::halt_group(SOUND_TIMER);
+		wa_sfx_drain_finished_queue();
+#endif
 		Mix_HaltGroup(SOUND_BELL);
 		Mix_HaltGroup(SOUND_TIMER);
 
@@ -614,6 +639,10 @@ void stop_bell()
 void stop_UI_sound()
 {
 	if(mix_ok) {
+#ifdef __EMSCRIPTEN__
+		emscripten::sfx::halt_group(SOUND_UI);
+		wa_sfx_drain_finished_queue();
+#endif
 		Mix_HaltGroup(SOUND_UI);
 
 		sound_cache.remove_if([](const sound_cache_chunk& c) {
@@ -891,6 +920,22 @@ void write_music_play_list(config& snapshot)
 
 void reposition_sound(int id, unsigned int distance)
 {
+#ifdef __EMSCRIPTEN__
+	wa_sfx_drain_finished_queue();
+	for(unsigned ch = 0; ch < channel_ids.size(); ++ch) {
+		if(channel_ids[ch] != id) {
+			continue;
+		}
+		if(distance >= DISTANCE_SILENT) {
+			emscripten::sfx::halt_channel(ch);
+			channel_chunks[ch] = nullptr;
+			channel_ids[ch] = -1;
+		} else {
+			emscripten::sfx::set_distance(ch, distance);
+		}
+	}
+	return;
+#endif
 	audio_lock lock;
 	for(unsigned ch = 0; ch < channel_ids.size(); ++ch) {
 		if(channel_ids[ch] != id) {
@@ -907,6 +952,10 @@ void reposition_sound(int id, unsigned int distance)
 
 bool is_sound_playing(int id)
 {
+#ifdef __EMSCRIPTEN__
+	wa_sfx_drain_finished_queue();
+	return utils::contains(channel_ids, id);
+#endif
 	audio_lock lock;
 	return utils::contains(channel_ids, id);
 }
@@ -993,6 +1042,42 @@ void play_sound_internal(const std::string& files,
 		return;
 	}
 
+#ifdef __EMSCRIPTEN__
+	wa_sfx_drain_finished_queue();
+
+	std::string file = pick_one(files);
+	if(file.empty()) return;
+
+	int channel = sound::emscripten::sfx::find_free_channel(static_cast<int>(group));
+	if(channel == -1) {
+		LOG_AUDIO << "All Web Audio channels for group(" << group << ") are busy, skipping.";
+		return;
+	}
+
+	const auto filename = filesystem::get_binary_file_location("sounds", file);
+	if(!filename) {
+		ERR_AUDIO << "Could not locate sound file '" << file << "'.";
+		return;
+	}
+	const auto localized = filesystem::get_localized_path(filename.value());
+	const std::string& resolved = localized.value_or(filename.value());
+
+	auto bytes = filesystem::read_file_binary(resolved);
+	if(bytes.empty()) {
+		ERR_AUDIO << "Could not read sound file '" << resolved << "'";
+		return;
+	}
+
+	sound::emscripten::sfx::play(
+		resolved.c_str(), bytes.data(), bytes.size(),
+		channel, static_cast<int>(group),
+		static_cast<int>(distance), static_cast<int>(repeats),
+		static_cast<int>(fadein_ticks.count()),
+		static_cast<int>(loop_ticks.count()));
+
+	channel_ids[channel] = id;
+	channel_chunks[channel] = nullptr;  // no Mix_Chunk* in Web Audio path
+#else
 	audio_lock lock;
 
 	// find a free channel in the desired group
@@ -1049,6 +1134,7 @@ void play_sound_internal(const std::string& files,
 
 	// reserve the channel's chunk from being freed, since it is playing
 	channel_chunks[res] = chunk;
+#endif
 }
 
 } // end anon namespace
@@ -1138,6 +1224,10 @@ void set_sound_volume(int vol)
 			vol = MIX_MAX_VOLUME;
 		}
 
+#ifdef __EMSCRIPTEN__
+		emscripten::sfx::set_group_volume(SOUND_SOURCES, vol);
+		emscripten::sfx::set_group_volume(SOUND_FX, vol);
+#endif
 		// Bell, timer and UI have separate channels which we can't set up from this
 		for(unsigned i = 0; i < n_of_channels; ++i) {
 			if(!(i >= UI_sound_channel_start && i <= UI_sound_channel_last) && i != bell_channel
@@ -1158,6 +1248,10 @@ void set_bell_volume(int vol)
 			vol = MIX_MAX_VOLUME;
 		}
 
+#ifdef __EMSCRIPTEN__
+		emscripten::sfx::set_group_volume(SOUND_BELL, vol);
+		emscripten::sfx::set_group_volume(SOUND_TIMER, vol);
+#endif
 		Mix_Volume(bell_channel, vol);
 		Mix_Volume(timer_channel, vol);
 	}
@@ -1170,6 +1264,9 @@ void set_UI_volume(int vol)
 			vol = MIX_MAX_VOLUME;
 		}
 
+#ifdef __EMSCRIPTEN__
+		emscripten::sfx::set_group_volume(SOUND_UI, vol);
+#endif
 		for(unsigned i = UI_sound_channel_start; i <= UI_sound_channel_last; ++i) {
 			Mix_Volume(i, vol);
 		}

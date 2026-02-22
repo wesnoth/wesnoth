@@ -63,6 +63,47 @@ void set_volume(int vol);
  */
 int get_volume();
 
+namespace sfx {
+
+/**
+ * Play a sound effect via Web Audio API (browser audio thread).
+ * @param filename  Cache key (resolved file path)
+ * @param data      Raw audio file bytes (pointer into WASM heap)
+ * @param len       Length in bytes
+ * @param channel   SDL_mixer channel index (0-31)
+ * @param group     Channel group (SOUND_SOURCES=0 .. SOUND_FX=4)
+ * @param distance  Distance attenuation 0-255 (255 = silent)
+ * @param repeats   -1 = loop forever, 0 = play once, N = play N+1 times
+ * @param fadein_ms Fade-in duration in milliseconds (0 = no fade)
+ * @param loop_ms   Auto-stop after this many ms (0 = play to end)
+ */
+void play(const char* filename, const uint8_t* data, std::size_t len,
+          int channel, int group, int distance, int repeats,
+          int fadein_ms, int loop_ms);
+
+/** Stop a single channel immediately. */
+void halt_channel(int channel);
+
+/** Stop all channels in a group. */
+void halt_group(int group);
+
+/** Update distance attenuation on a playing channel. */
+void set_distance(int channel, int distance);
+
+/** Set volume for an entire group. @param vol SDL 0-128 */
+void set_group_volume(int group, int vol);
+
+/** True if the channel has an active AudioBufferSourceNode. */
+bool is_channel_playing(int channel);
+
+/** Pop the next finished channel from the queue. @return channel or -1 */
+int drain_finished();
+
+/** Find a free (idle) channel in the given group. @return channel or -1 */
+int find_free_channel(int group);
+
+} // namespace sfx
+
 } // namespace emscripten
 } // namespace sound
 
