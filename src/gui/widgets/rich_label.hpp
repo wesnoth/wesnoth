@@ -249,10 +249,9 @@ private:
 	/** Create template for text config that can be shown in canvas */
 	std::unique_ptr<gui2::text_shape> new_text_shape(const point& pos, const int max_width);
 
-	std::pair<std::size_t, std::size_t> add_text(tshape_ptr& curr_item, const std::string& text);
 	std::pair<std::size_t, std::size_t> add_text_with_attribute(
 		tshape_ptr& tptr,
-		const std::string& text,
+		const t_string& text,
 		const std::string& attr_name = "",
 		const std::string& extra_data = "");
 

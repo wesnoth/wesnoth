@@ -289,11 +289,14 @@ public:
 
 	t_string get_text() const;
 	void set_text(const t_string& text);
+	std::pair<std::size_t, std::size_t> add_text(const t_string& text);
 	void add_attribute(
 		const std::string& attr_name,
 		const std::string& extra_data = "",
 		std::size_t start = PANGO_ATTR_INDEX_FROM_TEXT_BEGINNING,
 		std::size_t end = PANGO_ATTR_INDEX_TO_TEXT_END);
+	void add_attributes(font::attribute_list&& other_attrs);
+	void add_attributes_from(text_shape& tshape2, const unsigned attr_start);
 	void set_wrap_width(const unsigned wrap_width);
 
 	void draw(wfl::map_formula_callable& variables) override;

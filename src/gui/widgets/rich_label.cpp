@@ -121,22 +121,13 @@ point rich_label::get_image_size(const std::string& path) const
 	return ::image::get_size(::image::locator{path});
 }
 
-std::pair<std::size_t, std::size_t> rich_label::add_text(tshape_ptr& tptr, const std::string& text)
-{
-	const auto& old_text = tptr->get_text();
-	std::size_t start = old_text.size();
-	tptr->set_text(old_text + text);
-	std::size_t end = tptr->get_text().size();
-	return { start, end };
-}
-
 std::pair<std::size_t, std::size_t> rich_label::add_text_with_attribute(
 	tshape_ptr& tptr,
-	const std::string& text,
+	const t_string& text,
 	const std::string& attr_name,
 	const std::string& extra_data)
 {
-	const auto [start, end] = add_text(tptr, text);
+	const auto [start, end] = tptr->add_text(text);
 	tptr->add_attribute(attr_name, extra_data, start, end);
 	return { start, end };
 }
@@ -218,9 +209,11 @@ void rich_label::set_dom(const config& dom)
 {
 	dom_ = dom;
 	auto [shapes, size] = get_parsed_text(dom, point(0,0), init_w_, true);
-	for(canvas& tmp : get_canvases()) {
-		tmp.set_shapes(std::move(shapes), true);
-	}
+	// FIXME: because of move semantics, we can set shapes to only one canvas
+	// However, this means one of the state will have an empty canvas.
+	// Also `get_parsed_text()` is heavy, so we don't want to run it multiple times
+	// unless really needed.
+	get_canvas(0).set_shapes(std::move(shapes), true);
 	size_ = size;
 	update_canvas();
 	queue_redraw();
@@ -531,11 +524,11 @@ std::pair<std::vector<rich_label::shape_ptr>, point> rich_label::get_parsed_text
 		} else {
 			std::string line = child["text"];
 
-			if (!finalize && (line.empty() && key == "text")) {
+			if(!finalize && (line.empty() && key == "text")) {
 				continue;
 			}
 
-			if (curr_item == nullptr || new_text_block) {
+			if(curr_item == nullptr || new_text_block) {
 				if (new_text_block) {
 					shapes.emplace_back(std::move(curr_item));
 				}
@@ -554,13 +547,13 @@ std::pair<std::vector<rich_label::shape_ptr>, point> rich_label::get_parsed_text
 			is_text = false;
 			is_image = false;
 
-			if (key == "inline_image") {
+			if(key == "inline_image") {
 
 				// Inline image is rendered as a custom text glyph (pango shape attribute)
 				// FIXME: If linebreak (\n) is followed by an inline image
 				// the text size is calculated wrongly as being decreased.
 				// Workaround: append a zero width space always in front of the image.
-				add_text(curr_item, "\u200b");
+				curr_item->add_text("\u200b");
 				add_text_with_attribute(curr_item, "\ufffc", "image", child["src"]);
 
 				DBG_GUI_RL << key << ": src=" << child["src"];
@@ -581,25 +574,23 @@ std::pair<std::vector<rich_label::shape_ptr>, point> rich_label::get_parsed_text
 				point child_origin = origin + get_xy_from_offset(utf8::size(curr_item->get_text()));
 				child_origin.y += prev_blk_height;
 
-				// config parsed_children = get_parsed_text(child, child_origin, init_width).first;
-
-				// for(const auto [parsed_key, parsed_cfg] : parsed_children.all_children_view()) {
-				// 	if(parsed_key == "text") {
-				// 		const auto [start, end] = add_text(*curr_item, parsed_cfg["text"]);
-				// 		for (const config& attr : parsed_cfg.child_range("attribute")) {
-				// 			add_attribute(*curr_item, attr["name"], attr["value"], start + attr["start"].to_int(), start + attr["end"].to_int());
-				// 		}
-				// 		add_attribute(*curr_item, key, "", start, end);
-				// 	} else {
-				// 		text_dom.add_child(parsed_key, parsed_cfg);
-				// 	}
-				// }
+				auto [child_shapes, _] = get_parsed_text(child, child_origin, init_width);
+				for(auto&& shape : child_shapes) {
+					if(auto* tshape = dynamic_cast<text_shape*>(shape.get())) {
+						const auto [start, end] = curr_item->add_text(tshape->get_text());
+						curr_item->add_attributes_from(*tshape, start);
+						curr_item->add_attribute(key, "", start, end);
+						PLAIN_LOG << "[nested] start: " << start << ", end: " << end;
+					} else {
+						shapes.emplace_back(std::move(shape));
+					}
+				}
 
 				DBG_GUI_RL << key << ": text=" << gui2::debug_truncate(line);
 
 			} else if(key == "header" || key == "h") {
 
-				const auto [start, end] = add_text(curr_item, line);
+				const auto [start, end] = curr_item->add_text(line);
 				curr_item->add_attribute("weight", "heavy", start, end);
 				curr_item->add_attribute("color", "white", start, end);
 				curr_item->add_attribute("size", std::to_string(font::SIZE_TITLE - 2), start, end);
@@ -610,7 +601,7 @@ std::pair<std::vector<rich_label::shape_ptr>, point> rich_label::get_parsed_text
 
 				line = "&" + child["name"].str() + ";";
 
-				const auto [start, end] = add_text(curr_item, line);
+				const auto [start, end] = curr_item->add_text(line);
 				curr_item->add_attribute("face",  "monospace", start, end);
 				curr_item->add_attribute("color", "red", start, end);
 
@@ -618,7 +609,7 @@ std::pair<std::vector<rich_label::shape_ptr>, point> rich_label::get_parsed_text
 
 			} else if(key == "span" || key == "format") {
 
-				const auto [start, end] = add_text(curr_item, line);
+				const auto [start, end] = curr_item->add_text(line);
 				DBG_GUI_RL << "span/format: text=" << line;
 				DBG_GUI_RL << "attributes:";
 
@@ -633,7 +624,7 @@ std::pair<std::vector<rich_label::shape_ptr>, point> rich_label::get_parsed_text
 
 				DBG_GUI_RL << "text: text=" << gui2::debug_truncate(line) << "...";
 
-				add_text(curr_item, line);
+				curr_item->add_text(line);
 
 				point text_size = get_text_size(curr_item, init_width - (x == 0 ? float_size.x : x));
 

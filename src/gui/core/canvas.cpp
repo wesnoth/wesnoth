@@ -554,6 +554,15 @@ void text_shape::set_text(const t_string& text) {
 	text_ = text;
 }
 
+std::pair<std::size_t, std::size_t> text_shape::add_text(const t_string& text)
+{
+	t_string old_text = get_text();
+	std::size_t start = old_text.size();
+	set_text(old_text + text);
+	std::size_t end = start + text.size();
+	return { start, end };
+}
+
 void text_shape::set_wrap_width(const unsigned wrap_width) {
 	maximum_width_.set_value(wrap_width);
 }
@@ -601,6 +610,11 @@ void text_shape::add_attribute(
 		add_attribute_weight(text_attributes_, start, end, PANGO_WEIGHT_NORMAL);
 		add_attribute_style(text_attributes_, start, end, PANGO_STYLE_NORMAL);
 	}
+}
+
+void text_shape::add_attributes_from(text_shape& tshape2, const unsigned attr_start)
+{
+	text_attributes_.splice_into(tshape2.text_attributes_, attr_start);
 }
 
 void text_shape::draw(wfl::map_formula_callable& variables)
