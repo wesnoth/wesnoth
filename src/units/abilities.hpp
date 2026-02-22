@@ -71,8 +71,7 @@ public:
 		t_string name;
 		t_string description;
 		// a unique id used for help topics, generated from name and id.
-		// doesn't include the "ability_" prefix.
-		// TODO: maybe use cfg["unique_id"] at some point?
+		// doesn't include the "ability_" prefix. Derived from cfg["unique_id"].
 		std::string help_topic_id;
 	};
 

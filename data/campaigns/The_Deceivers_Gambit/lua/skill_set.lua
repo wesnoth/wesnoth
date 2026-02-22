@@ -71,7 +71,7 @@ local skill_set = {
             id          = "skill_levitate",
             label       = label(_"Levitate"),
             image       = "icons/levitate.png",
-            description = header_spell().._"Spend <span color='#00bbe6' style='italic'>8 XP</span> to gain <i>flight</i> and the <i><ref dst='ability_skirmisherskirmisher'>skirmisher</ref></i> ability until the start of your next turn or until cancelled.",
+            description = header_spell().._"Spend <span color='#00bbe6' style='italic'>8 XP</span> to gain <i>flight</i> and the <i><ref dst='ability_skirmisher'>skirmisher</ref></i> ability until the start of your next turn or until cancelled.",
             xp_cost=8, --XP=8 is also used in S04
         },
         -------------------------
@@ -156,7 +156,7 @@ local skill_set = {
             id          = "skill_glamour",
             label       = label(_"Glamour"),
             image       = "icons/glamour.png",
-            description = header_passive().._"Gain the <i><ref dst='ability_leadershipleadership'>leadership</ref></i> ability.",
+            description = header_passive().._"Gain the <i><ref dst='ability_leadership'>leadership</ref></i> ability.",
         },
     },
     --###############################

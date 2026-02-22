@@ -233,16 +233,12 @@ void unit_ability_t::do_compat_fixes(config& cfg, const std::string& tag, bool i
 
 std::string unit_ability_t::get_help_topic_id(const config& cfg)
 {
-	// NOTE: neither ability names nor ability ids are necessarily unique. Creating
-	// topics for either each unique name or each unique id means certain abilities
-	// will be excluded from help. So... the ability topic ref id is a combination
-	// of id and (untranslated) name. It's rather ugly, but it works.
-	return cfg["id"].str() + cfg["name"].t_str().base_str();
+	return cfg["unique_id"].str(cfg["id"].str());
 }
 
 std::string unit_ability_t::get_help_topic_id() const
 {
-	return id() + cfg()["name"].t_str().base_str();
+	return get_help_topic_id(cfg());
 }
 
 
