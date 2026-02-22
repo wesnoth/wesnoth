@@ -64,7 +64,7 @@ definitions:
 
 # Generate a reference page for the utility macros.
 macro-reference.html: helpheader.html helptrailer.html wmlscope
-	@{ cat helpheader.html; ./wmlscope --extracthelp --exclude data/scenarios --exclude data/tutorial --exclude data/campaigns $(DATA)/core/macros/; cat helptrailer.html; } > $(DEST)/macro-reference.html
+	@{ cat helpheader.html; ./wmlscope --extracthelp $(DATA)/core/macros/; cat helptrailer.html; } > $(DEST)/macro-reference.html
 
 # Report on unchecked macro calls
 unchecked:
@@ -91,7 +91,7 @@ bindings:
 
 # Look at the difficulty-rank order of the campaigns
 rank:
-	@awk -F= '$$1 ~ "^[[:blank:]]*rank$$" { n=split(FILENAME, f, "/"); print $$2, "\t", f[n-1] }' $(DATA)/campaigns/*/_main.cfg | sort -n
+	@awk -F '=| *#' '$$1 ~ "^[[:blank:]]*rank$$" { n=split(FILENAME, f, "/"); print $$2 "\t" f[n-1] }' $(DATA)/campaigns/*/_main.cfg | sort -n
 
 # For performing test lifts of mainline
 lift:
