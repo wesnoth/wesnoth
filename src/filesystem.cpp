@@ -50,7 +50,7 @@
 #endif
 
 #ifdef __ANDROID__
-#include <SDL2/SDL_system.h>
+#include <SDL3/SDL_system.h>
 #endif
 
 #ifdef _WIN32

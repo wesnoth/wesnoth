@@ -25,7 +25,7 @@
 #include "gettext.hpp"
 #include "serialization/markup.hpp"
 
-#include <SDL2/SDL_timer.h>
+#include <SDL3/SDL_timer.h>
 
 #include <functional>
 #include <sstream>

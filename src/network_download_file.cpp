@@ -20,7 +20,7 @@
 #include "log.hpp"
 
 #ifdef __ANDROID__
-#include <SDL2/SDL_system.h>
+#include <SDL3/SDL_system.h>
 #endif
 
 #include <curl/curl.h>

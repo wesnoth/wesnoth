@@ -26,8 +26,8 @@
 
 #include <boost/logic/tribool.hpp>
 
-#include <SDL2/SDL_events.h>
-#include <SDL2/SDL_mouse.h>
+#include <SDL3/SDL_events.h>
+#include <SDL3/SDL_mouse.h>
 
 #include <array>
 #include <memory>

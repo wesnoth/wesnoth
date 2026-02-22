@@ -623,7 +623,7 @@ static surface get_hexed(const locator& i_locator, bool skip_cache = false)
 		auto fit = surface(mask->w, mask->h);
 
 		// Fill the crop surface with transparency
-		SDL_FillRect(fit, nullptr, SDL_MapRGBA(fit->format, 0, 0, 0, 0));
+		SDL_FillSurfaceRect(fit, nullptr, SDL_MapSurfaceRGBA(fit, 0, 0, 0, 0));
 
 		// Returns an area rectangle clamped at the max size of the base surface.
 		// If surf is smaller than base, the result is centered relative to base.

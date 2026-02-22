@@ -30,7 +30,7 @@
 #include "utils/ranges.hpp"
 #include "utils/span.hpp"
 
-#include <SDL2/SDL_version.h>
+#include <SDL3/SDL_version.h>
 
 #include <boost/circular_buffer.hpp>
 #include <boost/math/constants/constants.hpp>
