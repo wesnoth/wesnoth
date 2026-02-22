@@ -269,7 +269,6 @@ std::pair<std::vector<rich_label::shape_ptr>, point> rich_label::get_parsed_text
 
 	std::vector<shape_ptr> shapes;
 	std::unique_ptr<gui2::text_shape> curr_item = nullptr;
-	font::attribute_list attrs;
 
 	bool is_text = false;
 	bool is_image = false;
