@@ -14,6 +14,7 @@
    * Heir to the Throne
      * Fixed a serious issue where the "Replacement Weapons" tweak would trigger on all sides' recruits, not just Konrad's.
      * Moremirmu: significantly increased hitpoints, but decreased speed and damage.
+     * S01 "The Elves Besieged": added a turn limit and rebalanced enemies.
      * S02 "Flight of the Elves": fixed Konrad winning after killing only 2 enemy leaders, instead of all of them.
      * S07 "Muff Malal's Peninsula": Moremirmu is now in a safer position, and much less likely to get bad RNG and die early.
      * S22 "Glamdrol": allying with the Stoneskins now costs less gold, but Konrad will lose if he doesn't pillage enough gold to meet his pledge.

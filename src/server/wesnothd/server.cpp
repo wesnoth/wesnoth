@@ -1643,10 +1643,15 @@ void server::handle_join_game(player_iterator player, simple_wml::node& join)
 	}
 
 	// remove from any queues they may have joined
-	for(int q : player->info().get_queues()) {
-		queue_info& queue = queue_info_.at(q);
-		if(!queue.players_in_queue.empty()) {
-			queue.players_in_queue.erase(std::remove(queue.players_in_queue.begin(), queue.players_in_queue.end(), player->info().name()));
+	for(int q_index : player->info().get_queues()) {
+		queue_info& queue = queue_info_.at(q_index);
+		std::vector<std::string>& p_queue = queue.players_in_queue;
+		if(p_queue.empty()) {
+			continue;
+		}
+		std::vector<std::string>::iterator i = std::remove(p_queue.begin(), p_queue.end(), player->name());
+		if(i != p_queue.end()) {
+			p_queue.erase(i, p_queue.end());
 			send_queue_update(queue);
 		}
 	}
@@ -1853,9 +1858,12 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 			std::size_t joined_count = 1;
 			for(const std::string& name : info.players_in_queue) {
 				auto player_ptr = player_connections_.get<name_t>().find(name);
+				if(player_ptr == player_connections_.get<name_t>().end()) {
+					continue;
+				}
 
 				// player is still connected and not in a game, tell them to join
-				if(player_ptr != player_connections_.get<name_t>().end() && !player_ptr->get_game()) {
+				if(!player_ptr->get_game()) {
 					simple_wml::document join_game_doc;
 					simple_wml::node& join_game_node = join_game_doc.root().add_child("join_game");
 					join_game_node.set_attr_int("id", game_id);

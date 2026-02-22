@@ -867,7 +867,7 @@ def xmlify(tree, verbose=False, depth=0):
 if __name__ == "__main__":
     import argparse, subprocess
 
-    argumentparser = argparse.ArgumentParser("usage: %(prog)s [options]")
+    argumentparser = argparse.ArgumentParser()
     argumentparser.add_argument("-p", "--path",  help = "specify wesnoth data path")
     argumentparser.add_argument("-C", "--color", action = "store_true",
         help = "use colored output")
