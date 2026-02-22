@@ -100,7 +100,7 @@ if(LIBDBUS_FOUND)
 endif()
 
 if(EMSCRIPTEN)
-	set(wesnoth_game_sources ${wesnoth_game_sources} sound_emscripten.cpp filesystem_emscripten.cpp)
+	set(wesnoth_game_sources ${wesnoth_game_sources} sound_emscripten.cpp filesystem_emscripten.cpp network_asio_emscripten.cpp)
 endif()
 
 

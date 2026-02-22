@@ -116,8 +116,9 @@
       };
 
       window.Module = {
-        arguments: ["--no-log-to-file", "--noaddons", "--windowed", "--resolution=1280x720", "--data-dir=/", "--userdata-dir=/userdata"],
+        arguments: ["--no-log-to-file", "--windowed", "--resolution=1280x720", "--data-dir=/", "--userdata-dir=/userdata"],
         canvas,
+        wsProxyUrl: "ws://localhost:8041",
         ENV: { SDL_VIDEO_HIGHDPI_DISABLED: "1" },
         locateFile: (path) => path,
         mainScriptUrlOrBlob: "wesnoth.js",
