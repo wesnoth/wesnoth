@@ -27,6 +27,7 @@
          layout but renders to the smaller backing store, causing mismatched
          dialog sizing. Keeping CSS size == backing store avoids this. */
     }
+
   </style>
 </head>
 <body>
@@ -105,7 +106,18 @@
         ENV: { SDL_VIDEO_HIGHDPI_DISABLED: "1" },
         locateFile: (path) => path,
         mainScriptUrlOrBlob: "wesnoth.js",
-        preRun: [() => log("preRun")],
+        preRun: [() => {
+          log("preRun: mounting IDBFS at /userdata");
+          try { FS.mkdir('/userdata'); } catch(e) {}
+          FS.mount(IDBFS, {}, '/userdata');
+
+          Module.addRunDependency('idbfs-populate');
+          FS.syncfs(true, function(err) {
+            if (err) console.error('[IDBFS] populate error:', err);
+            else log("IDBFS: populated from IndexedDB");
+            Module.removeRunDependency('idbfs-populate');
+          });
+        }],
         postRun: [() => log("postRun")],
         print: (text) => log(String(text)),
         printErr: (text) => {
@@ -158,6 +170,16 @@
       document.addEventListener("click", resumeAudioContext);
       document.addEventListener("keydown", resumeAudioContext);
 
+      // Best-effort persist on page close — the explicit sync-after-save
+      // in C++ covers the critical path; this is a safety net.
+      window.addEventListener('beforeunload', function() {
+        if (typeof FS !== 'undefined' && FS.syncfs) {
+          FS.syncfs(false, function(err) {
+            if (err) console.error('[IDBFS] beforeunload sync error:', err);
+          });
+        }
+      });
+
       log(`crossOriginIsolated=${globalThis.crossOriginIsolated === true}`);
       log("loader booted");
 
@@ -167,6 +189,210 @@
           console.error(error);
         });
     })();
+
+    // ── Store-only ZIP builder/reader ──────────────────────────────────
+    // No external dependencies.  Store-only (compression method 0) since
+    // Wesnoth saves are already gzip-compressed.
+
+    function buildStoreZip(files) {
+      // files: { "relative/path": Uint8Array, ... }
+      var entries = Object.keys(files);
+      // Calculate total size: local headers + data + central dir + EOCD
+      var centralDir = [];
+      var parts = [];
+      var offset = 0;
+
+      for (var i = 0; i < entries.length; i++) {
+        var name = entries[i];
+        var data = files[name];
+        var nameBytes = new TextEncoder().encode(name);
+        var crc = crc32(data);
+
+        // Local file header (30 + nameLen + data)
+        var lh = new Uint8Array(30 + nameBytes.length);
+        var lv = new DataView(lh.buffer);
+        lv.setUint32(0, 0x04034b50, true);  // signature
+        lv.setUint16(4, 20, true);           // version needed
+        lv.setUint16(6, 0, true);            // flags
+        lv.setUint16(8, 0, true);            // compression: store
+        lv.setUint16(10, 0, true);           // mod time
+        lv.setUint16(12, 0, true);           // mod date
+        lv.setUint32(14, crc, true);         // crc32
+        lv.setUint32(18, data.length, true); // compressed size
+        lv.setUint32(22, data.length, true); // uncompressed size
+        lv.setUint16(26, nameBytes.length, true); // name length
+        lv.setUint16(28, 0, true);           // extra length
+        lh.set(nameBytes, 30);
+
+        parts.push(lh);
+        parts.push(data);
+
+        // Central directory entry (46 + nameLen)
+        var cd = new Uint8Array(46 + nameBytes.length);
+        var cv = new DataView(cd.buffer);
+        cv.setUint32(0, 0x02014b50, true);  // signature
+        cv.setUint16(4, 20, true);           // version made by
+        cv.setUint16(6, 20, true);           // version needed
+        cv.setUint16(8, 0, true);            // flags
+        cv.setUint16(10, 0, true);           // compression: store
+        cv.setUint16(12, 0, true);           // mod time
+        cv.setUint16(14, 0, true);           // mod date
+        cv.setUint32(16, crc, true);         // crc32
+        cv.setUint32(20, data.length, true); // compressed size
+        cv.setUint32(24, data.length, true); // uncompressed size
+        cv.setUint16(28, nameBytes.length, true); // name length
+        cv.setUint16(30, 0, true);           // extra length
+        cv.setUint16(32, 0, true);           // comment length
+        cv.setUint16(34, 0, true);           // disk number
+        cv.setUint16(36, 0, true);           // internal attrs
+        cv.setUint32(38, 0, true);           // external attrs
+        cv.setUint32(42, offset, true);      // local header offset
+        cd.set(nameBytes, 46);
+        centralDir.push(cd);
+
+        offset += 30 + nameBytes.length + data.length;
+      }
+
+      var centralOffset = offset;
+      var centralSize = 0;
+      for (var j = 0; j < centralDir.length; j++) {
+        parts.push(centralDir[j]);
+        centralSize += centralDir[j].length;
+      }
+
+      // End of central directory record (22 bytes)
+      var eocd = new Uint8Array(22);
+      var ev = new DataView(eocd.buffer);
+      ev.setUint32(0, 0x06054b50, true);         // signature
+      ev.setUint16(4, 0, true);                   // disk number
+      ev.setUint16(6, 0, true);                   // central dir disk
+      ev.setUint16(8, entries.length, true);       // entries on disk
+      ev.setUint16(10, entries.length, true);      // total entries
+      ev.setUint32(12, centralSize, true);         // central dir size
+      ev.setUint32(16, centralOffset, true);       // central dir offset
+      ev.setUint16(20, 0, true);                   // comment length
+      parts.push(eocd);
+
+      // Concatenate all parts
+      var total = 0;
+      for (var k = 0; k < parts.length; k++) total += parts[k].length;
+      var result = new Uint8Array(total);
+      var pos = 0;
+      for (var k = 0; k < parts.length; k++) {
+        result.set(parts[k], pos);
+        pos += parts[k].length;
+      }
+      return result;
+    }
+
+    function readStoreZip(data) {
+      // Returns [{name: string, data: Uint8Array}, ...]
+      // Only supports store (method 0) entries — warns on compressed entries.
+      var dv = new DataView(data.buffer, data.byteOffset, data.byteLength);
+      var entries = [];
+      var pos = 0;
+      while (pos + 30 <= data.length) {
+        var sig = dv.getUint32(pos, true);
+        if (sig !== 0x04034b50) break; // not a local file header
+        var method = dv.getUint16(pos + 8, true);
+        var nameLen = dv.getUint16(pos + 26, true);
+        var extraLen = dv.getUint16(pos + 28, true);
+        var compSize = dv.getUint32(pos + 18, true);
+        var name = new TextDecoder().decode(data.subarray(pos + 30, pos + 30 + nameLen));
+        if (method !== 0) {
+          console.warn('[import] skipping compressed entry (method ' + method + '): ' + name);
+          pos += 30 + nameLen + extraLen + compSize;
+          continue;
+        }
+        var fileData = data.slice(pos + 30 + nameLen + extraLen, pos + 30 + nameLen + extraLen + compSize);
+        if (name.length > 0 && !name.endsWith('/')) {
+          entries.push({ name: name, data: new Uint8Array(fileData) });
+        }
+        pos += 30 + nameLen + extraLen + compSize;
+      }
+      return entries;
+    }
+
+    function crc32(buf) {
+      // Standard CRC-32 (ISO 3309)
+      if (!crc32.table) {
+        var t = new Uint32Array(256);
+        for (var i = 0; i < 256; i++) {
+          var c = i;
+          for (var j = 0; j < 8; j++) c = (c & 1) ? (0xEDB88320 ^ (c >>> 1)) : (c >>> 1);
+          t[i] = c;
+        }
+        crc32.table = t;
+      }
+      var crc = 0xFFFFFFFF;
+      for (var i = 0; i < buf.length; i++) crc = crc32.table[(crc ^ buf[i]) & 0xFF] ^ (crc >>> 8);
+      return (crc ^ 0xFFFFFFFF) >>> 0;
+    }
+
+    // ── Export / Import ────────────────────────────────────────────────
+
+    function wesnothExportSaves() {
+      var files = {};
+      function readRecursive(dir, prefix) {
+        try {
+          FS.readdir(dir).filter(function(e) { return e !== '.' && e !== '..'; }).forEach(function(name) {
+            var path = dir + '/' + name;
+            var stat = FS.stat(path);
+            if (FS.isDir(stat.mode)) {
+              readRecursive(path, prefix + name + '/');
+            } else {
+              files[prefix + name] = FS.readFile(path);
+            }
+          });
+        } catch(e) {}
+      }
+      readRecursive('/userdata', '');
+
+      if (Object.keys(files).length === 0) {
+        alert('No save data found.');
+        return;
+      }
+
+      var zipData = buildStoreZip(files);
+      var blob = new Blob([zipData], {type: 'application/zip'});
+      var a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'wesnoth-userdata-' + new Date().toISOString().slice(0,10) + '.zip';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setTimeout(function() { URL.revokeObjectURL(a.href); }, 5000);
+    }
+
+    function wesnothImportSaves() {
+      var input = document.createElement('input');
+      input.type = 'file';
+      input.accept = '.zip';
+      input.onchange = function() {
+        if (!input.files || !input.files[0]) return;
+        var reader = new FileReader();
+        reader.onload = function() {
+          var entries = readStoreZip(new Uint8Array(reader.result));
+          entries.forEach(function(entry) {
+            var parts = entry.name.split('/');
+            var dir = '/userdata';
+            for (var i = 0; i < parts.length - 1; i++) {
+              dir += '/' + parts[i];
+              try { FS.mkdir(dir); } catch(e) {}
+            }
+            FS.writeFile('/userdata/' + entry.name, entry.data);
+          });
+
+          FS.syncfs(false, function(err) {
+            if (err) console.error('[import] sync error:', err);
+            alert('Saves imported (' + entries.length + ' files). Reload the page to use them.');
+          });
+        };
+        reader.readAsArrayBuffer(input.files[0]);
+      };
+      input.click();
+    }
+
   </script>
 </body>
 </html>

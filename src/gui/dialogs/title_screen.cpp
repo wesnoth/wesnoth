@@ -58,6 +58,10 @@
 #include "video.hpp"
 #include "wml_exception.hpp"
 
+#ifdef __EMSCRIPTEN__
+#include "filesystem_emscripten.hpp"
+#endif
+
 #include <algorithm>
 #include <functional>
 
@@ -300,6 +304,23 @@ void title_screen::init_callbacks()
 			set_retval(LOAD_GAME);
 		}
 	});
+
+	//
+	// Export / Import saves (web port only)
+	//
+#ifdef __EMSCRIPTEN__
+	register_button("export_saves", hotkey::HOTKEY_NULL,
+		[] { filesystem::emscripten::export_saves(); });
+	register_button("import_saves", hotkey::HOTKEY_NULL,
+		[] { filesystem::emscripten::import_saves(); });
+#else
+	if(auto btn = find_widget<button>("export_saves", false, false)) {
+		btn->set_visible(widget::visibility::hidden);
+	}
+	if(auto btn = find_widget<button>("import_saves", false, false)) {
+		btn->set_visible(widget::visibility::hidden);
+	}
+#endif
 
 	//
 	// Addons

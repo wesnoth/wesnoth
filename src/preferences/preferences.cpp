@@ -42,6 +42,10 @@
 #include "units/unit.hpp"
 #include "video.hpp"
 
+#ifdef __EMSCRIPTEN__
+#include "filesystem_emscripten.hpp"
+#endif
+
 #include <sys/stat.h> // for setting the permissions of the preferences file
 #include <boost/algorithm/string.hpp>
 
@@ -412,6 +416,10 @@ void prefs::write_preferences()
 			ERR_FS << "error setting permissions of unsynced preferences file '" << filesystem::get_unsynced_prefs_file() << "'";
 		}
 	}
+#endif
+
+#ifdef __EMSCRIPTEN__
+	filesystem::emscripten::syncfs();
 #endif
 }
 

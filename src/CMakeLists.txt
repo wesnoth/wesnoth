@@ -99,6 +99,11 @@ if(LIBDBUS_FOUND)
 	set(wesnoth_game_sources ${wesnoth_game_sources} desktop/dbus_features.cpp)
 endif()
 
+if(EMSCRIPTEN)
+	set(wesnoth_game_sources ${wesnoth_game_sources} sound_emscripten.cpp filesystem_emscripten.cpp)
+endif()
+
+
 # Depending on the flag create a real file or an empty dummy.
 #
 # Since the code is executed every build run of Wesnoth we need to make sure
