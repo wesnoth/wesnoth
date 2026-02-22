@@ -13,3 +13,5 @@ global=false
 -- don't show unused variables
 unused=false
 exclude_files={"src/modules/lua/testes/*.lua"}
+-- allow __ to be used for ignored return values, by disabling warnings about redefining a variable called __
+ignore={"411/^__$"}
