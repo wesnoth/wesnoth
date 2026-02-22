@@ -21,6 +21,7 @@
      * S03 "Blackwater Port": Haldiel and Simyr are now loyal companions, but killing all enemy leaders is much harder.
      * S06 "The Isle of Alduin": Elrian is now a loyal companion, but the scenario requires you to choose between gaining Elrian or learning to recruit Mages.
      * S07 "Muff Malal's Peninsula": Moremirmu is now in a safer position, and much less likely to get bad RNG and die early.
+     * S15a "Valley of Death I": added a new item reward, to 1) make this scenario a more viable pick and 2) allow for item-heavy playthroughs.
      * S22 "Glamdrol": allying with the Stoneskins now costs less gold, but Konrad will lose if he doesn't pillage enough gold to meet his pledge.
      * S30 "The Sceptre of Fire": made Li'sar more difficult to assassinate with Fire Wraiths. This strategy should still be possible, but it should now require more significant investment.
      * S30 "The Sceptre of Fire": Delfador can now continue recruiting even while searching for the Sceptre.
