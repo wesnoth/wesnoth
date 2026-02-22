@@ -16,7 +16,7 @@
      * If Konrad reaches Elensefar while Delfador is still with him, the player is no longer forced to give up Delfador in return for his raven.
      * Moremirmu: significantly increased hitpoints, but decreased speed and damage.
      * Jeniver: increased gold generation from 4 to 5, increased blowgun damage from 4 to 5.
-     * S02 "Flight of the Elves": fixed Konrad winning after killing only 2 enemy leaders, instead of all of them.
+     * S02 "Flight of the Elves": made enemy gold more predictable. Fixed Konrad winning after killing only 2 enemy leaders, instead of all of them.
      * S03 "Blackwater Port": Haldiel and Simyr are now loyal companions, but killing all enemy leaders is very much harder.
      * S06 "The Isle of Alduin": Elrian is now a loyal companion, but the scenario is now harder and offers less early finish gold.
      * S07 "Muff Malal's Peninsula": Moremirmu is now in a safer position, and much less likely to get bad RNG and die early.
