@@ -73,6 +73,21 @@
           document.body.appendChild(script);
         });
 
+      // ── Prevent browser defaults that shadow game input ──────────
+      // Right-click: suppress browser context menu so Wesnoth's shows.
+      canvas.addEventListener("contextmenu", (event) => {
+        event.preventDefault();
+      });
+      // Middle-click: suppress browser autoscroll mode.
+      canvas.addEventListener("mousedown", (event) => {
+        if (event.button === 1) event.preventDefault();
+      });
+      // Wheel on canvas: prevent Ctrl+scroll zoom (page scroll is already
+      // impossible because body has overflow:hidden).
+      canvas.addEventListener("wheel", (event) => {
+        if (event.ctrlKey || event.metaKey) event.preventDefault();
+      }, { passive: false });
+
       window.addEventListener("keydown", (event) => {
         if (["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", " "].includes(event.key)) {
           event.preventDefault();
