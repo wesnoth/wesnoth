@@ -15,6 +15,60 @@
 
 #pragma once
 
+#ifdef __EMSCRIPTEN__
+
+// ── Emscripten build: WebSocket-based wesnothd_connection ──────────────
+
+#include "configr_assign.hpp"
+#include "wesnothd_connection_error.hpp"
+
+#include <memory>
+#include <queue>
+#include <list>
+#include <string>
+
+class config;
+
+struct ws_wesnothd_impl;
+
+class wesnothd_connection
+{
+public:
+	using error = wesnothd_connection_error;
+
+	wesnothd_connection(const wesnothd_connection&) = delete;
+	wesnothd_connection& operator=(const wesnothd_connection&) = delete;
+
+	~wesnothd_connection();
+
+	wesnothd_connection(const std::string& host, const std::string& service);
+
+	void send_data(const configr_of& request);
+	bool receive_data(config& result);
+	bool wait_and_receive_data(config& data);
+	void wait_for_handshake();
+
+	bool using_tls() const { return false; }
+
+	void cancel();
+	void stop();
+
+	std::size_t bytes_to_write() const;
+	std::size_t bytes_written() const;
+	std::size_t bytes_to_read() const;
+	std::size_t bytes_read() const;
+
+	bool has_data_received() const;
+	bool is_sending_data() const;
+
+private:
+	std::unique_ptr<ws_wesnothd_impl> impl_;
+};
+
+#else
+
+// ── Native build: Boost.Asio TCP/TLS wesnothd_connection ───────────────
+
 #ifdef _WIN32
 
 #ifdef INADDR_ANY
@@ -200,3 +254,5 @@ private:
 	std::size_t bytes_to_read_;
 	std::size_t bytes_read_;
 };
+
+#endif // __EMSCRIPTEN__

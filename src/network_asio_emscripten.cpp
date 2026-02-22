@@ -52,6 +52,10 @@ static lg::log_domain log_network("network");
 //
 // State lives on Module._wsConns keyed by integer ID.
 // Callbacks buffer received data in JS arrays; C++ drains via wa_ws_recv.
+//
+// NOTE: EM_JS functions cannot be shared across translation units in a
+// static archive (the linker won't extract __em_js__ symbols on demand).
+// These are duplicated in wesnothd_connection_emscripten.cpp.
 
 EM_JS(char*, wa_get_ws_proxy_url, (), {
 	var url = Module.wsProxyUrl || "ws://localhost:8041";
@@ -127,8 +131,6 @@ EM_JS(int, wa_ws_recv_available, (int id), {
 	return conn ? conn.recvLen : 0;
 });
 
-// Copy up to maxLen bytes from the JS receive buffer into the C++ heap.
-// Returns number of bytes copied.
 EM_JS(int, wa_ws_recv, (int id, uint8_t* buf, int maxLen), {
 	var conn = Module._wsConns ? Module._wsConns[id] : null;
 	if (!conn) return 0;
