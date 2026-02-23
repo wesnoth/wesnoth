@@ -1521,11 +1521,15 @@ void server::handle_create_game(player_iterator player, simple_wml::node& create
 
 	create_game.copy_into(g.level().root());
 
-	// remove from any queues they may have joined
-	for(int q : player->info().get_queues()) {
-		queue_info& queue = queue_info_.at(q);
-		if(!queue.players_in_queue.empty()) {
-			queue.players_in_queue.erase(std::remove(queue.players_in_queue.begin(), queue.players_in_queue.end(), player->info().name()));
+	for(int q_index : player->info().get_queues()) {
+		queue_info& queue = queue_info_.at(q_index);
+		std::vector<std::string>& p_queue = queue.players_in_queue;
+		if(p_queue.empty()) {
+			continue;
+		}
+		std::vector<std::string>::iterator i = std::remove(p_queue.begin(), p_queue.end(), player->name());
+		if(i != p_queue.end()) {
+			p_queue.erase(i, p_queue.end());
 			send_queue_update(queue);
 		}
 	}
@@ -1732,7 +1736,7 @@ void server::handle_leave_server_queue(player_iterator p, simple_wml::node& data
 
 	// if they're in the queue, remove them
 	if(utils::contains(queue.players_in_queue, p->info().name())) {
-		queue.players_in_queue.erase(std::remove(queue.players_in_queue.begin(), queue.players_in_queue.end(), p->info().name()));
+		queue.players_in_queue.erase(std::remove(queue.players_in_queue.begin(), queue.players_in_queue.end(), p->info().name()), queue.players_in_queue.end());
 		p->info().clear_queues();
 
 		send_queue_update(queue);
@@ -1856,6 +1860,7 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 
 			queue_info& info = queue_info_.at(queue_id);
 			std::size_t joined_count = 1;
+			DBG_SERVER << p->client_ip() << " queue " << queue_id << " players in queue: " << utils::join(info.players_in_queue);
 			for(const std::string& name : info.players_in_queue) {
 				auto player_ptr = player_connections_.get<name_t>().find(name);
 				if(player_ptr == player_connections_.get<name_t>().end()) {
@@ -1868,14 +1873,6 @@ void server::handle_player_in_game(player_iterator p, simple_wml::document& data
 					simple_wml::node& join_game_node = join_game_doc.root().add_child("join_game");
 					join_game_node.set_attr_int("id", game_id);
 					send_to_player(player_ptr->socket(), join_game_doc);
-				}
-
-				// remove them from any queues they joined
-				for(int queue : player_ptr->info().get_queues()) {
-					queue_info& other_queue = queue_info_.at(queue);
-					if(!other_queue.players_in_queue.empty()) {
-						other_queue.players_in_queue.erase(std::remove(other_queue.players_in_queue.begin(), other_queue.players_in_queue.end(), player_ptr->info().name()));
-					}
 				}
 
 				joined_count++;
@@ -2289,7 +2286,8 @@ void server::remove_player(player_iterator iter)
 
 	for(auto& [id, queue] : queue_info_) {
 		if(!queue.players_in_queue.empty()) {
-			queue.players_in_queue.erase(std::remove(queue.players_in_queue.begin(), queue.players_in_queue.end(), iter->info().name()));
+			std::vector<std::string>& p_queue = queue.players_in_queue;
+			p_queue.erase(std::remove(p_queue.begin(), p_queue.end(), iter->info().name()), p_queue.end());
 		}
 		send_queue_update(queue, iter);
 	}
