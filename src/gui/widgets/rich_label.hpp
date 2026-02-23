@@ -61,11 +61,11 @@ public:
 		return link_color_;
 	}
 
-	virtual void set_active(const bool active) override;
+	virtual void set_active(const bool) override;
 
 	virtual bool get_active() const override
 	{
-		return state_ != DISABLED;
+		return true; // Always enabled
 	}
 
 	virtual unsigned get_state() const override
@@ -157,10 +157,7 @@ private:
 	 *
 	 * Note the order of the states must be the same as defined in settings.hpp.
 	 */
-	enum state_t {
-		ENABLED,
-		DISABLED,
-	};
+	enum state_t { ENABLED }; // Always enabled
 
 	void set_state(const state_t state);
 

@@ -775,11 +775,9 @@ void rich_label::set_text_alpha(unsigned short alpha)
 	}
 }
 
-void rich_label::set_active(const bool active)
+void rich_label::set_active(const bool /*active*/)
 {
-	if(get_active() != active) {
-		set_state(active ? ENABLED : DISABLED);
-	}
+	set_state(ENABLED); // Always enabled
 }
 
 void rich_label::set_link_aware(bool link_aware)
