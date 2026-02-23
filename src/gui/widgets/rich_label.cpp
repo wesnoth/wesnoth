@@ -95,21 +95,21 @@ color_t rich_label::get_color(const std::string& color)
 	return (iter != predef_colors_.end()) ? iter->second : font::string_to_color(color);
 }
 
-wfl::map_formula_callable rich_label::setup_text_renderer(tshape_ptr& tptr, unsigned width) const
+wfl::map_formula_callable rich_label::setup_text_renderer(text_shape& tshape, unsigned width) const
 {
 	// Set up fake render to calculate text position
 	wfl::map_formula_callable variables;
-	variables.add("text", wfl::variant(tptr->get_text()));
+	variables.add("text", wfl::variant(tshape.get_text()));
 	variables.add("width", wfl::variant(width));
 	variables.add("text_wrap_mode", wfl::variant(PANGO_ELLIPSIZE_NONE));
 	variables.add("fake_draw", wfl::variant(true));
-	tptr->draw(variables);
+	tshape.draw(variables);
 	return variables;
 }
 
-point rich_label::get_text_size(tshape_ptr& tptr, unsigned width) const
+point rich_label::get_text_size(text_shape& tshape, unsigned width) const
 {
-	wfl::map_formula_callable variables = setup_text_renderer(tptr, width);
+	wfl::map_formula_callable variables = setup_text_renderer(tshape, width);
 	return {
 		variables.query_value("text_width").as_int(),
 		variables.query_value("text_height").as_int()
@@ -122,18 +122,18 @@ point rich_label::get_image_size(const std::string& path) const
 }
 
 std::pair<std::size_t, std::size_t> rich_label::add_text_with_attribute(
-	tshape_ptr& tptr,
+	text_shape& tshape,
 	const t_string& text,
 	const std::string& attr_name,
 	const std::string& extra_data)
 {
-	const auto [start, end] = tptr->add_text(text);
-	tptr->add_attribute(attr_name, extra_data, start, end);
+	const auto [start, end] = tshape.add_text(text);
+	tshape.add_attribute(attr_name, extra_data, start, end);
 	return { start, end };
 }
 
 void rich_label::add_link(
-	tshape_ptr& tptr,
+	text_shape& tshape,
 	const std::string& name,
 	const std::string& dest,
 	const point& origin,
@@ -147,15 +147,15 @@ void rich_label::add_link(
 
 	point t_start, t_end;
 
-	setup_text_renderer(tptr, init_w_ - origin.x - img_width);
-	t_start = origin + get_xy_from_offset(utf8::size(tptr->get_text()));
+	setup_text_renderer(tshape, init_w_ - origin.x - img_width);
+	t_start = origin + get_xy_from_offset(utf8::size(tshape.get_text()));
 	DBG_GUI_RL << "link text start:" << t_start;
 
 	std::string link_text = name.empty() ? dest : name;
-	add_text_with_attribute(tptr, link_text, "color", link_color_.to_hex_string());
+	add_text_with_attribute(tshape, link_text, "color", link_color_.to_hex_string());
 
-	setup_text_renderer(tptr, init_w_ - origin.x - img_width);
-	t_end.x = origin.x + get_xy_from_offset(utf8::size(tptr->get_text())).x;
+	setup_text_renderer(tshape, init_w_ - origin.x - img_width);
+	t_end.x = origin.x + get_xy_from_offset(utf8::size(tshape.get_text())).x;
 	DBG_GUI_RL << "link text end:" << t_end;
 
 	// TODO link after right aligned images
@@ -537,10 +537,10 @@ std::pair<std::vector<rich_label::shape_ptr>, point> rich_label::get_parsed_text
 			}
 
 			// }---------- TEXT TAGS -----------{
-			int tmp_h = get_text_size(curr_item, init_width - (x == 0 ? float_size.x : x)).y;
+			int tmp_h = get_text_size(*curr_item, init_width - (x == 0 ? float_size.x : x)).y;
 
 			if(is_text && key == "text") {
-				add_text_with_attribute(curr_item, "\n\n");
+				add_text_with_attribute(*curr_item, "\n\n");
 			}
 
 			is_text = false;
@@ -553,23 +553,23 @@ std::pair<std::vector<rich_label::shape_ptr>, point> rich_label::get_parsed_text
 				// the text size is calculated wrongly as being decreased.
 				// Workaround: append a zero width space always in front of the image.
 				curr_item->add_text("\u200b");
-				add_text_with_attribute(curr_item, "\ufffc", "image", child["src"]);
+				add_text_with_attribute(*curr_item, "\ufffc", "image", child["src"]);
 
 				DBG_GUI_RL << key << ": src=" << child["src"];
 
 			} else if(key == "ref") {
 
-				add_link(curr_item, line, child["dst"], point(x + origin.x, prev_blk_height), float_size.x);
+				add_link(*curr_item, line, child["dst"], point(x + origin.x, prev_blk_height), float_size.x);
 
 				DBG_GUI_RL << key << ": dst=" << child["dst"];
 
 			} else if(utils::contains(format_tags, key)) {
 				// TODO only the formatting tags here support nesting
 
-				add_text_with_attribute(curr_item, line, key);
+				add_text_with_attribute(*curr_item, line, key);
 
 				// Calculate the location of the nested children
-				setup_text_renderer(curr_item, init_w_ - origin.x - float_size.x);
+				setup_text_renderer(*curr_item, init_w_ - origin.x - float_size.x);
 				point child_origin = origin + get_xy_from_offset(utf8::size(curr_item->get_text()));
 				child_origin.y += prev_blk_height;
 
@@ -625,7 +625,7 @@ std::pair<std::vector<rich_label::shape_ptr>, point> rich_label::get_parsed_text
 
 				curr_item->add_text(line);
 
-				point text_size = get_text_size(curr_item, init_width - (x == 0 ? float_size.x : x));
+				point text_size = get_text_size(*curr_item, init_width - (x == 0 ? float_size.x : x));
 
 				is_text = true;
 
@@ -648,7 +648,7 @@ std::pair<std::vector<rich_label::shape_ptr>, point> rich_label::get_parsed_text
 					float_size = point(0,0);
 
 					// Height update
-					int ah = get_text_size(curr_item, init_width - float_size.x).y;
+					int ah = get_text_size(*curr_item, init_width - float_size.x).y;
 					if(tmp_h > ah) {
 						tmp_h = 0;
 					}
@@ -667,10 +667,10 @@ std::pair<std::vector<rich_label::shape_ptr>, point> rich_label::get_parsed_text
 						// layout rest of the text
 						shapes.emplace_back(std::move(curr_item));
 						curr_item = new_text_shape(pos, init_width - pos.x);
-						tmp_h = get_text_size(curr_item, init_width).y;
+						tmp_h = get_text_size(*curr_item, init_width).y;
 						// get_split_location always splits at word bounds,
 						// so substr(len) will include a space. we skip that.
-						add_text_with_attribute(curr_item, full_text.substr(len+1));
+						add_text_with_attribute(*curr_item, full_text.substr(len+1));
 					}
 				} else if((float_size.y > 0) && (text_size.y < float_size.y)) {
 					//TODO padding?
@@ -684,7 +684,7 @@ std::pair<std::vector<rich_label::shape_ptr>, point> rich_label::get_parsed_text
 				}
 			}
 
-			point size = get_text_size(curr_item, init_width - (x == 0 ? float_size.x : x));
+			point size = get_text_size(*curr_item, init_width - (x == 0 ? float_size.x : x));
 			// update text size and widget height
 			if(tmp_h > size.y) {
 				tmp_h = 0;

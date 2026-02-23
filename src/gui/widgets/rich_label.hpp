@@ -139,7 +139,6 @@ public:
 	}
 
 	typedef std::unique_ptr<canvas::shape> shape_ptr;
-	typedef std::unique_ptr<gui2::text_shape> tshape_ptr;
 
 	// Given a parsed config from help markup,
 	// layout it into a config that can be understood by canvas
@@ -250,21 +249,21 @@ private:
 	std::unique_ptr<gui2::text_shape> new_text_shape(const point& pos, const int max_width);
 
 	std::pair<std::size_t, std::size_t> add_text_with_attribute(
-		tshape_ptr& tptr,
+		text_shape& tshape,
 		const t_string& text,
 		const std::string& attr_name = "",
 		const std::string& extra_data = "");
 
 	void add_link(
-		tshape_ptr& tptr,
+		text_shape& tshape,
 		const std::string& name,
 		const std::string& dest,
 		const point& origin,
 		int img_width);
 
 	/** size calculation functions */
-	wfl::map_formula_callable setup_text_renderer(tshape_ptr& tptr, unsigned width) const;
-	point get_text_size(tshape_ptr& tptr, unsigned width) const;
+	wfl::map_formula_callable setup_text_renderer(text_shape& tshape, unsigned width) const;
+	point get_text_size(text_shape& tshape, unsigned width) const;
 	point get_image_size(const std::string& path) const;
 
 	std::size_t get_split_location(std::string_view text, const point& pos);
