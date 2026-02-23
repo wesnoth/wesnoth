@@ -934,7 +934,6 @@ rich_label_definition::resolution::resolution(const config& cfg)
 
 	// Note the order should be the same as the enum state_t is rich_label.hpp.
 	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_enabled", missing_mandatory_wml_tag("rich_label_definition][resolution", "state_enabled")));
-	state.emplace_back(VALIDATE_WML_CHILD(cfg, "state_disabled", missing_mandatory_wml_tag("rich_label_definition][resolution", "state_disabled")));
 }
 
 // }---------- BUILDER -----------{
