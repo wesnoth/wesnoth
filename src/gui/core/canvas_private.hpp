@@ -278,9 +278,8 @@ public:
 	 */
 	explicit text_shape(const config& cfg, wfl::action_function_symbol_table& functions);
 
-	explicit text_shape(
-		const unsigned x,
-		const unsigned y,
+	text_shape(
+		const point& origin,
 		font::family_class family,
 		const unsigned size,
 		font::pango_text::FONT_STYLE style,

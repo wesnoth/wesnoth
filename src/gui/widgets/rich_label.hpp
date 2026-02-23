@@ -246,7 +246,7 @@ private:
 	color_t get_color(const std::string& color);
 
 	/** Create template for text config that can be shown in canvas */
-	std::unique_ptr<gui2::text_shape> new_text_shape(const point& pos, const int max_width);
+	std::unique_ptr<gui2::text_shape> new_text_shape(const point& origin, const int max_width);
 
 	std::pair<std::size_t, std::size_t> add_text_with_attribute(
 		text_shape& tshape,

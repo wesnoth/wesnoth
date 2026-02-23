@@ -739,12 +739,11 @@ std::pair<std::vector<rich_label::shape_ptr>, point> rich_label::get_parsed_text
 } // function ends
 
 std::unique_ptr<gui2::text_shape> rich_label::new_text_shape(
-	const point& pos,
+	const point& origin,
 	const int max_width)
 {
 	auto tshape = std::make_unique<gui2::text_shape>(
-		pos.x,
-		pos.y,
+		origin,
 		font::decode_family_class(font_family_),
 		font_size_,
 		decode_font_style(font_style_),

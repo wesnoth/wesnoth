@@ -516,14 +516,13 @@ text_shape::text_shape(const config& cfg, wfl::action_function_symbol_table& fun
 }
 
 text_shape::text_shape(
-	const unsigned x,
-	const unsigned y,
+	const point& origin,
 	font::family_class family,
 	const unsigned size,
 	font::pango_text::FONT_STYLE style,
 	const std::string& align,
 	const unsigned width)
-	: rect_bounded_shape(x, y, "(text_width)", "(text_height)")
+	: rect_bounded_shape(origin.x, origin.y, "(text_width)", "(text_height)")
 	, font_family_(family)
 	, font_size_(size)
 	, font_style_(style)
