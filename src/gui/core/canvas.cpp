@@ -802,10 +802,7 @@ void canvas::draw()
 
 	// Draw items
 	for(auto& shape : shapes_) {
-		if (shape == nullptr) {
-			continue;
-		}
-
+		assert(shape);
 		const lg::scope_logger inner_scope_logging_object__{log_gui_draw, "Canvas: draw shape."};
 		shape->draw(variables_);
 	}

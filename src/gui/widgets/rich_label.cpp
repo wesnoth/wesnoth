@@ -528,7 +528,7 @@ std::pair<std::vector<rich_label::shape_ptr>, point> rich_label::get_parsed_text
 			}
 
 			if(curr_item == nullptr || new_text_block) {
-				if (new_text_block) {
+				if (new_text_block && curr_item != nullptr) {
 					shapes.emplace_back(std::move(curr_item));
 				}
 
