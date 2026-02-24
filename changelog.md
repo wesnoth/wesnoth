@@ -14,6 +14,7 @@
    * Heir to the Throne
      * Fixed a serious issue where the "Replacement Weapons" tweak would trigger on all sides' recruits, not just Konrad's.
      * If Konrad reaches Elensefar while Delfador is still with him, the player is no longer forced to give up Delfador in return for his raven.
+     * If Konrad completes his first battle without gaining any recruits, Delfador now gifts Konrad his raven.
      * Moremirmu: significantly increased hitpoints, but decreased speed and damage.
      * Jeniver: increased gold generation from 4 to 5, increased blowgun damage from 4 to 5.
      * S01 "The Elves Besieged": added a turn limit and rebalanced enemies.
