@@ -67,6 +67,7 @@ const std::string faction_prefix = "faction_";
 const std::string era_prefix = "era_";
 const std::string variation_prefix = "variation_";
 const std::string ability_prefix = "ability_";
+const std::string weaponspecial_prefix = "weaponspecial_";
 
 bool section_is_referenced(const std::string& section_id, const config& cfg)
 {
@@ -211,7 +212,7 @@ section parse_config(const config& cfg)
 	}
 }
 
-std::vector<topic> generate_topics(const bool sort_generated,const std::string& generator)
+std::vector<topic> generate_topics(const bool sort_generated, const std::string& generator)
 {
 	std::vector<topic> res;
 	if(generator.empty()) {
@@ -424,8 +425,7 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 	}
 
 	for(const auto& [name, description, help_topic_id] : special_description) {
-		// use untranslated name to have universal topic id
-		std::string id = "weaponspecial_" + help_topic_id;
+		std::string id = weaponspecial_prefix + help_topic_id;
 		std::stringstream text;
 		text << description;
 		text << "\n\n" << markup::tag("header", _("Units with this special attack")) << "\n";
@@ -688,7 +688,6 @@ std::vector<topic> generate_trait_topics(const bool sort_generated)
 	return topics;
 }
 
-
 std::string make_unit_link(const std::string& type_id)
 {
 	std::string link;
@@ -709,7 +708,7 @@ std::string make_unit_link(const std::string& type_id)
 			ref_id = unknown_unit_topic;
 			name += " (?)";
 		}
-		link =  markup::make_link(name, ref_id);
+		link = markup::make_link(name, ref_id);
 	} // if hide_help then link is an empty string
 
 	return link;
@@ -1298,10 +1297,10 @@ bool is_valid_id(const std::string& id) {
 	if(id.compare(0, unit_prefix.length(), unit_prefix) == 0 || id.compare(hidden_symbol().length(), unit_prefix.length(), unit_prefix) == 0) {
 		return false;
 	}
-	if(id.compare(0, 8, "ability_") == 0) {
+	if(id.compare(0, ability_prefix.length(), ability_prefix) == 0) {
 		return false;
 	}
-	if(id.compare(0, 14, "weaponspecial_") == 0) {
+	if(id.compare(0, weaponspecial_prefix.length(), weaponspecial_prefix) == 0) {
 		return false;
 	}
 	if(id == "hidden") {
