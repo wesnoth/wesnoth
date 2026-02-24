@@ -17,6 +17,7 @@
      * If Konrad completes his first battle without gaining any recruits, Delfador now gifts Konrad his raven.
      * Moremirmu: significantly increased hitpoints, but decreased speed and damage.
      * Jeniver: increased gold generation from 4 to 5, increased blowgun damage from 4 to 5.
+     * Clarify and expand a number of dialogue hints relating to special events and interactions.
      * S01 "The Elves Besieged": added a turn limit and rebalanced enemies.
      * S02 "Flight of the Elves": made enemy gold more predictable. Fixed Konrad winning after killing only 2 enemy leaders, instead of all of them.
      * S03 "Blackwater Port": Haldiel and Simyr are now loyal companions, but killing all enemy leaders is much harder.
