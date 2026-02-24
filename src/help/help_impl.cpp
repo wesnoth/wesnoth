@@ -467,7 +467,7 @@ std::vector<topic> generate_ability_topics(const bool sort_generated)
 
 	const auto parse = [&](const unit_type& type, const unit_type::ability_metadata& ability) {
 
-		ability_topic_data.emplace(ability.help_topic_id,& ability);
+		ability_topic_data.emplace(ability.help_topic_id, &ability);
 
 		if(!type.hide_help()) {
 			// Add a link in the list of units with this ability
@@ -631,6 +631,12 @@ std::vector<topic> generate_trait_topics(const bool sort_generated)
 	// there are duplicates with the same id, it takes the first one encountered.
 	std::map<std::string, const config> trait_list;
 
+	// A map that stores which unit types have a particular trait
+	std::map<std::string, std::set<std::string, string_less>> trait_units;
+
+	// A map that stores which race have a particular trait
+	std::map<std::string, std::set<std::string, string_less>> trait_races;
+
 	// The global traits that are direct children of a [units] tag
 	for(const config& trait : unit_types.traits()) {
 		trait_list.emplace(trait["id"], trait);
@@ -659,6 +665,14 @@ std::vector<topic> generate_trait_topics(const bool sort_generated)
 		if(desc_type == FULL_DESCRIPTION || desc_type == HIDDEN_BUT_SHOW_MACROS) {
 			for(const config& trait : type.possible_traits()) {
 				trait_list.emplace(trait["id"], trait);
+
+				const std::string link_unittype = markup::make_link(type.type_name(), unit_prefix + type.id());
+				trait_units[trait["id"]].insert(link_unittype);
+
+				const std::string link_race = markup::make_link(
+					type.race()->plural_name(),
+					".." + race_prefix + type.race_id());
+				trait_races[trait["id"]].insert(link_race);
 			}
 		}
 	}
@@ -693,6 +707,37 @@ std::vector<topic> generate_trait_topics(const bool sort_generated)
 		} else {
 			text << _("No description available.");
 		}
+
+		text << "\n\n" << markup::tag("header", _("Units with this trait")) << "\n";
+
+		unsigned i = 0;
+		for(const auto& link : trait_units[trait_id]) {
+			// Too many units can horribly slow down the page or crash it
+			if (i < 20) {
+				text << font::unicode_bullet << " " << link << "\n";
+				i++;
+			} else {
+				// TODO convert to a link to rest of units on another page
+				text << font::unicode_bullet << " ...\n";
+				break;
+			}
+		}
+
+		text << "\n" << markup::tag("header", _("Races with this trait")) << "\n";
+
+		i = 0;
+		for(const auto& link : trait_races[trait_id]) {
+			// Too many units can horribly slow down the page or crash it
+			if (i < 20) {
+				text << font::unicode_bullet << " " << link << "\n";
+				i++;
+			} else {
+				// TODO convert to a link to rest of units on another page
+				text << font::unicode_bullet << " ...\n";
+				break;
+			}
+		}
+
 		text << "\n\n";
 
 		add_topic(topics, name, id, text.str());
