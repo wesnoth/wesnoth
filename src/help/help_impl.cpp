@@ -293,6 +293,23 @@ static std::string time_of_day_bonus_colored(const int time_of_day_bonus)
 	return markup::span_color((time_of_day_bonus > 0 ? "green" : (time_of_day_bonus < 0 ? "red" : "white")), time_of_day_bonus);
 }
 
+static void add_topic(
+	std::vector<topic>& topics,
+	const std::string& topic_name,
+	const std::string& topic_id,
+	const std::string& contents)
+{
+	auto itor = std::find_if(topics.begin(), topics.end(), [&topic_id](const topic& t){
+		return t.id == topic_id;
+	});
+
+	if(itor != topics.end()) {
+		WRN_HP << "Adding Help page with duplicate id " << topic_id;
+	}
+
+	topics.emplace_back(topic_name, topic_id, contents);
+}
+
 std::vector<topic> generate_time_of_day_topics(const bool /*sort_generated*/)
 {
 	std::vector<topic> topics;
@@ -300,7 +317,7 @@ std::vector<topic> generate_time_of_day_topics(const bool /*sort_generated*/)
 
 	if(!resources::tod_manager) {
 		toplevel << _("Only available during a scenario.");
-		topics.emplace_back(_("Time of Day Schedule"), "..schedule", toplevel.str());
+		add_topic(topics, _("Time of Day Schedule"), "..schedule", toplevel.str());
 		return topics;
 	}
 
@@ -336,10 +353,10 @@ std::vector<topic> generate_time_of_day_topics(const bool /*sort_generated*/)
 			 << image_liminal << _("Liminal Bonus:") << ' ' << time_of_day_bonus_colored(liminal_bonus) << '\n' << '\n'
 			 << markup::make_link(_("Schedule"), "..schedule");
 
-		topics.emplace_back(time.name.str(), id, text.str());
+		add_topic(topics, time.name.str(), id, text.str());
 	}
 
-	topics.emplace_back(_("Time of Day Schedule"), "..schedule", markup::tag("table", toplevel.str()));
+	add_topic(topics, _("Time of Day Schedule"), "..schedule", markup::tag("table", toplevel.str()));
 	return topics;
 }
 
@@ -433,7 +450,7 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 			text << font::unicode_bullet << " " << type_id << "\n";
 		}
 
-		topics.emplace_back(name, id, text.str());
+		add_topic(topics, name, id, text.str());
 	}
 
 	if(sort_generated)
@@ -490,7 +507,7 @@ std::vector<topic> generate_ability_topics(const bool sort_generated)
 			text << font::unicode_bullet << " " << u << "\n";
 		}
 
-		topics.emplace_back(a.second->name, ability_prefix + a.first, text.str());
+		add_topic(topics, a.second->name, ability_prefix + a.first, text.str());
 	}
 
 	if(sort_generated) {
@@ -527,7 +544,7 @@ std::vector<topic> generate_era_topics(const std::string& era_id, const bool sor
 			text << font::unicode_bullet << " " << link << "\n";
 		}
 
-		topics.emplace_back(era["name"], ".." + era_prefix + era["id"].str(), text.str());
+		add_topic(topics, era["name"], ".." + era_prefix + era["id"].str(), text.str());
 	}
 	return topics;
 }
@@ -600,7 +617,7 @@ std::vector<topic> generate_faction_topics(const config& era, const bool sort_ge
 
 		const std::string name = f["name"];
 		const std::string ref_id = faction_prefix + era["id"].str() + "_" + id;
-		topics.emplace_back(name, ref_id, text.str());
+		add_topic(topics, name, ref_id, text.str());
 	}
 	if(sort_generated)
 		std::sort(topics.begin(), topics.end(), title_less());
@@ -680,7 +697,7 @@ std::vector<topic> generate_trait_topics(const bool sort_generated)
 		}
 		text << "\n\n";
 
-		topics.emplace_back(name, id, text.str());
+		add_topic(topics, name, id, text.str());
 	}
 
 	if(sort_generated)
@@ -994,7 +1011,7 @@ std::vector<topic> generate_unit_topics(const std::string& race, const bool sort
 		    std::string title = additional_topic["title"];
 		    std::string text = additional_topic["text"];
 		    //topic additional_topic(title, id, text);
-		    topics.emplace_back(title,id,text);
+		    add_topic(topics, title,id,text);
 			std::string link = markup::make_link(title, id);
 			race_topics.insert(link);
 		  }
@@ -1065,7 +1082,7 @@ std::vector<topic> generate_unit_topics(const std::string& race, const bool sort
 		text << font::unicode_bullet << " " << u << "\n";
 	}
 
-	topics.emplace_back(race_name, race_id, text.str());
+	add_topic(topics, race_name, race_id, text.str());
 
 	if(sort_generated)
 		std::sort(topics.begin(), topics.end(), title_less());
