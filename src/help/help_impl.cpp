@@ -770,29 +770,11 @@ std::vector<topic> generate_trait_topics(const bool sort_generated)
 			continue;
 		}
 
-		if(!trait_units[trait_id].empty()) {
-			text << "\n\n" << markup::tag("header", _("Units with this trait")) << "\n";
+		if(!trait_races[trait_id].empty()) {
+			text << "\n\n" << markup::tag("header", _("Races with this trait")) << "\n";
 		}
 
 		unsigned i = 0;
-		for(const auto& link : trait_units[trait_id]) {
-			// Too many units can horribly slow down the page or crash it, so we paginate.
-			if (i < PAGE_LIMIT) {
-				text << font::unicode_bullet << " " << link << "\n";
-				i++;
-			} else {
-				// continuation pages, accessible only via the links
-				text << markup::make_link(_("Next") + " &gt;&gt;", "." + id + "_units_2") << "\n";
-				add_remaining_pages(topics, name, id, "_units", trait_units[trait_id]);
-				break;
-			}
-		}
-
-		if(!trait_races[trait_id].empty()) {
-			text << "\n" << markup::tag("header", _("Races with this trait")) << "\n";
-		}
-
-		i = 0;
 		for(const auto& race_id : trait_races[trait_id]) {
 			// Too many units can horribly slow down the page or crash it, so we paginate.
 			if (i < PAGE_LIMIT) {
@@ -804,6 +786,24 @@ std::vector<topic> generate_trait_topics(const bool sort_generated)
 				// continuation pages, accessible only via the links
 				text << markup::make_link(_("Next") + " &gt;&gt;",  "." + id + "_races_2") << "\n";
 				add_remaining_pages(topics, name, id, "_races", trait_races[trait_id]);
+				break;
+			}
+		}
+
+		if(!trait_units[trait_id].empty()) {
+			text << "\n" << markup::tag("header", _("Units with this trait")) << "\n";
+		}
+
+		i = 0;
+		for(const auto& link : trait_units[trait_id]) {
+			// Too many units can horribly slow down the page or crash it, so we paginate.
+			if (i < PAGE_LIMIT) {
+				text << font::unicode_bullet << " " << link << "\n";
+				i++;
+			} else {
+				// continuation pages, accessible only via the links
+				text << markup::make_link(_("Next") + " &gt;&gt;", "." + id + "_units_2") << "\n";
+				add_remaining_pages(topics, name, id, "_units", trait_units[trait_id]);
 				break;
 			}
 		}
