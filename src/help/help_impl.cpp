@@ -725,10 +725,8 @@ std::vector<topic> generate_trait_topics(const bool sort_generated)
 
 		// Handle [unit_type][trait]s.
 		//
-		// It would be better if we only looked at the traits that are specific to the unit_type,
-		// but that unmerged unit_type_data.traits() isn't available. We're forced to use
-		// possible_traits() instead which returns all of the traits, including the ones that units
-		// with ignore_race_traits=no have inherited from their [race] tag.
+		// but the unmerged unit_type_data.traits() isn't easily available currently.
+		// As a workaround we use possible_traits() instead which returns all traits.
 		if(desc_type == FULL_DESCRIPTION || desc_type == HIDDEN_BUT_SHOW_MACROS) {
 			for(const config& trait : type.possible_traits()) {
 				trait_list.emplace(trait["id"], trait);
