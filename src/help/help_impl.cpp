@@ -633,6 +633,7 @@ void add_remaining_pages(
 	std::vector<topic>& topics,
 	const std::string& topic_name,
 	const std::string& topic_id,
+	const std::string& suffix,
 	const std::set<std::string, string_less>& list)
 {
 	const size_t rem = list.size() % PAGE_LIMIT;
@@ -645,7 +646,7 @@ void add_remaining_pages(
 		// Page 1 is visible in Help Browser sidebar, but continuation pages are hidden
 		std::string prev_id = topic_id;
 		if(page_num > 2) {
-			prev_id = "." + topic_id + "_" + std::to_string(page_num - 1);
+			prev_id = "." + topic_id + suffix + "_" + std::to_string(page_num - 1);
 		}
 
 		text << markup::make_link("&lt;&lt; " + _("Previous"),  prev_id)
@@ -661,12 +662,12 @@ void add_remaining_pages(
 		// Pages other than the last page have "Next Page" link
 		if(page_num != page_count) {
 			text << "\n"
-				 << markup::make_link(_("Next") + " &gt;&gt;", "." + topic_id + "_" + std::to_string(page_num + 1))
+				 << markup::make_link(_("Next") + " &gt;&gt;", "." + topic_id + suffix + "_" + std::to_string(page_num + 1))
 				 << "\n";
 		}
 
 		std::string new_topic_name = formatter() << topic_name << " (" << page_num << "/" << page_count << ")";
-		add_topic(topics, new_topic_name, "." + topic_id + "_" + std::to_string(page_num), text.str());
+		add_topic(topics, new_topic_name, "." + topic_id + suffix + "_" + std::to_string(page_num), text.str());
 	}
 }
 
@@ -766,8 +767,8 @@ std::vector<topic> generate_trait_topics(const bool sort_generated)
 				i++;
 			} else {
 				// continuation pages, accessible only via the links
-				text << markup::make_link(_("Next") + " &gt;&gt;", "." + id + "_2") << "\n";
-				add_remaining_pages(topics, name,  id, trait_units[trait_id]);
+				text << markup::make_link(_("Next") + " &gt;&gt;", "." + id + "_units_2") << "\n";
+				add_remaining_pages(topics, name, id, "_units", trait_units[trait_id]);
 				break;
 			}
 		}
@@ -782,8 +783,8 @@ std::vector<topic> generate_trait_topics(const bool sort_generated)
 				i++;
 			} else {
 				// continuation pages, accessible only via the links
-				text << markup::make_link(_("Next") + " &gt;&gt;",  "." + id + "_2") << "\n";
-				add_remaining_pages(topics, name, id, trait_races[trait_id]);
+				text << markup::make_link(_("Next") + " &gt;&gt;",  "." + id + "_races_2") << "\n";
+				add_remaining_pages(topics, name, id, "_races", trait_races[trait_id]);
 				break;
 			}
 		}
