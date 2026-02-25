@@ -39,86 +39,6 @@
 static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
 
-#include <chrono>
-#include <algorithm>
-
-class PerfTimer {
-	using Clock = std::chrono::steady_clock;
-	using ns = std::chrono::duration<double, std::nano>;
-
-	Clock::time_point start;
-
-	// Simple stats
-	static inline double accumulated_ns = 0.0;
-	static inline long call_count = 0;
-	static inline Clock::time_point last_print = Clock::now();
-	static inline Clock::time_point last_check = Clock::now();
-
-	// Calibration: measures the overhead of Clock::now() call
-	static double calibrate_overhead() {
-		constexpr int N = 10000;
-		double min_overhead = 1e9;
-
-		for (int round = 0; round < 10; ++round) {
-			auto t0 = Clock::now();
-			for (int i = 0; i < N; ++i) {
-				auto start_time = Clock::now();
-				auto end_time = Clock::now();
-				double elapsed = ns(end_time - start_time).count();
-				(void)elapsed;
-			}
-			auto t1 = Clock::now();
-
-			double total = ns(t1 - t0).count();
-			double avg = total / N;
-			min_overhead = std::min(min_overhead, avg);
-		}
-
-		return min_overhead;
-	}
-
-	static inline double clock_overhead_ns = calibrate_overhead();
-
-public:
-	PerfTimer()
-		: start(Clock::now()) {
-	}
-
-	~PerfTimer() {
-		// Capture end time as soon as possible
-		auto end = Clock::now();
-
-		// Calculate elapsed time
-		double elapsed_ns = ns(end - start).count();
-
-		// Subtract the measured overhead
-		elapsed_ns = std::max(0.0, elapsed_ns - clock_overhead_ns);
-
-		// Update stats
-		accumulated_ns += elapsed_ns;
-		call_count++;
-
-		// Check once per second if we should print
-		if (end - last_check >= std::chrono::seconds(1)) {
-			last_check = end;
-
-			// Print if 5 seconds have passed since last print
-			if (end - last_print >= std::chrono::seconds(5)) {
-				double ms = accumulated_ns / 1'000'000.0;
-				PLAIN_LOG << "[PerfTimer]: "
-					<< ms << "ms over "
-					<< call_count << " calls (avg "
-					<< (ms / call_count) << "ms)";
-
-				// Reset stats
-				accumulated_ns = 0.0;
-				call_count = 0;
-				last_print = end;
-			}
-		}
-	}
-};
-
 version_info sdl::get_version()
 {
 	SDL_version sdl_version;
@@ -486,8 +406,6 @@ surface scale_surface_sharp(const surface& surf, int w, int h)
 
 void adjust_surface_color(surface& nsurf, int red, int green, int blue)
 {
-//	PerfTimer timer;
-
 	if(nsurf && (red != 0 || green != 0 || blue != 0)) {
 		// Attempt SIMD
 		std::size_t simd_processed = simd::is_enabled() ? adjust_surface_color_simd(nsurf, red, green, blue) : 0;
@@ -791,8 +709,6 @@ void adjust_surface_alpha_add(surface& nsurf, int amount)
 
 bool mask_surface(surface& nsurf, const surface& nmask, const std::string& filename)
 {
-	PerfTimer timer;
-
 	if(nsurf == nullptr) {
 		return true;
 	}
@@ -1400,8 +1316,6 @@ surface rotate_90_surface(const surface& surf, bool clockwise)
 
 void flip_surface(surface& nsurf)
 {
-//	PerfTimer timer;
-
 	if(nsurf) {
 
 		// Attempt SIMD
@@ -1477,7 +1391,6 @@ surface get_surface_portion(const surface &src, rect &area)
 
 void apply_surface_opacity(surface& surf, float opacity)
 {
-//	PerfTimer timer;
 	if(surf == nullptr) return;
 
 	// Convert float opacity to integer modifier (0-255)
