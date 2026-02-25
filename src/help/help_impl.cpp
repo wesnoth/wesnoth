@@ -737,7 +737,7 @@ std::vector<topic> generate_trait_topics(const bool sort_generated)
 
 				if(!utils::contains(global_traits, trait["id"])
 					&& is_racial_trait
-					&& type.id() != "Fog Clearer")
+					&& desc_type != HIDDEN_BUT_SHOW_MACROS)
 				{
 					const std::string link_unittype = markup::make_link(type.type_name(), unit_prefix + type.id());
 					trait_units[trait["id"]].insert(link_unittype);
