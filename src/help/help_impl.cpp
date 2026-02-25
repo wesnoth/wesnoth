@@ -680,6 +680,8 @@ std::vector<topic> generate_trait_topics(const bool sort_generated)
 	// there are duplicates with the same id, it takes the first one encountered.
 	std::map<std::string, const config> trait_list;
 
+	std::set<std::string, string_less> global_traits;
+
 	// A map that stores which unit types have a particular trait
 	std::map<std::string, std::set<std::string, string_less>> trait_units;
 
@@ -689,21 +691,37 @@ std::vector<topic> generate_trait_topics(const bool sort_generated)
 	// The global traits that are direct children of a [units] tag
 	for(const config& trait : unit_types.traits()) {
 		trait_list.emplace(trait["id"], trait);
+		global_traits.insert(trait["id"]);
 	}
 
-	// Search for discovered unit types
+	// Search for discovered races
 	std::set<std::string> races;
 	for(const auto& [_, type] : unit_types.types()) {
 		UNIT_DESCRIPTION_TYPE desc_type = description_type(type);
-
-		// Remember which races have been discovered.
-		//
-		// For unit types, unit_type::possible_traits() usually includes racial traits; however it's
-		// possible that all discovered units of a race have ignore_race_traits=yes, and so we still
-		// need to loop over the [race] tags looking for more traits.
 		if(desc_type == FULL_DESCRIPTION) {
 			races.insert(type.race_id());
 		}
+	}
+
+	// Race traits
+	//
+	// For traits, assume we don't discover additional races via the [race]help_taxonomy= links. The
+	// traits themselves don't propagate down those links, so if the trait is interesting w.r.t. the
+	// discovered units then their own race will already include it.
+	for(const auto& race_id : races) {
+		if(const unit_race* r = unit_types.find_race(race_id)) {
+			for(const config& trait : r->additional_traits()) {
+				if(!utils::contains(global_traits, trait["id"])) {
+					trait_list.emplace(trait["id"], trait);
+					trait_races[trait["id"]].insert(race_id);
+				}
+			}
+		}
+	}
+
+	// Search for discovered unit types
+	for(const auto& [_, type] : unit_types.types()) {
+		UNIT_DESCRIPTION_TYPE desc_type = description_type(type);
 
 		// Handle [unit_type][trait]s.
 		//
@@ -714,27 +732,16 @@ std::vector<topic> generate_trait_topics(const bool sort_generated)
 		if(desc_type == FULL_DESCRIPTION || desc_type == HIDDEN_BUT_SHOW_MACROS) {
 			for(const config& trait : type.possible_traits()) {
 				trait_list.emplace(trait["id"], trait);
+				auto it = trait_races.find(trait["id"]);
+				const bool is_racial_trait = it == trait_races.end() || it->second.find(type.race_id()) == it->second.end();
 
-				const std::string link_unittype = markup::make_link(type.type_name(), unit_prefix + type.id());
-				trait_units[trait["id"]].insert(link_unittype);
-
-				const std::string link_race = markup::make_link(
-					type.race()->plural_name(),
-					".." + race_prefix + type.race_id());
-				trait_races[trait["id"]].insert(link_race);
-			}
-		}
-	}
-
-	// Race traits, even those that duplicate a global trait (which will be dropped by emplace()).
-	//
-	// For traits, assume we don't discover additional races via the [race]help_taxonomy= links. The
-	// traits themselves don't propagate down those links, so if the trait is interesting w.r.t. the
-	// discovered units then their own race will already include it.
-	for(const auto& race_id : races) {
-		if(const unit_race* r = unit_types.find_race(race_id)) {
-			for(const config& trait : r->additional_traits()) {
-				trait_list.emplace(trait["id"], trait);
+				if(!utils::contains(global_traits, trait["id"])
+					&& is_racial_trait
+					&& type.id() != "Fog Clearer")
+				{
+					const std::string link_unittype = markup::make_link(type.type_name(), unit_prefix + type.id());
+					trait_units[trait["id"]].insert(link_unittype);
+				}
 			}
 		}
 	}
@@ -757,7 +764,15 @@ std::vector<topic> generate_trait_topics(const bool sort_generated)
 			text << _("No description available.");
 		}
 
-		text << "\n\n" << markup::tag("header", _("Units with this trait")) << "\n";
+		if(utils::contains(global_traits, trait_id)) {
+			text << "\n\n" << markup::italic( _("This is a global trait."));
+			add_topic(topics, name, id, text.str());
+			continue;
+		}
+
+		if(!trait_units[trait_id].empty()) {
+			text << "\n\n" << markup::tag("header", _("Units with this trait")) << "\n";
+		}
 
 		unsigned i = 0;
 		for(const auto& link : trait_units[trait_id]) {
@@ -773,13 +788,17 @@ std::vector<topic> generate_trait_topics(const bool sort_generated)
 			}
 		}
 
-		text << "\n" << markup::tag("header", _("Races with this trait")) << "\n";
+		if(!trait_races[trait_id].empty()) {
+			text << "\n" << markup::tag("header", _("Races with this trait")) << "\n";
+		}
 
 		i = 0;
-		for(const auto& link : trait_races[trait_id]) {
+		for(const auto& race_id : trait_races[trait_id]) {
 			// Too many units can horribly slow down the page or crash it, so we paginate.
 			if (i < PAGE_LIMIT) {
-				text << font::unicode_bullet << " " << link << "\n";
+				const unit_race* r = unit_types.find_race(race_id);
+				const std::string link_race = markup::make_link(r->plural_name(), ".." + race_prefix + race_id);
+				text << font::unicode_bullet << " " << link_race << "\n";
 				i++;
 			} else {
 				// continuation pages, accessible only via the links
