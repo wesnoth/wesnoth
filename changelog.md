@@ -13,14 +13,22 @@
      * S10 "The Underlevels": Karrag can now be optionally fought before you kill all other leaders, and the scenario has been rebalanced accordingly.
    * Heir to the Throne
      * Fixed a serious issue where the "Replacement Weapons" tweak would trigger on all sides' recruits, not just Konrad's.
+     * If Konrad reaches Elensefar while Delfador is still with him, the player is no longer forced to give up Delfador in return for his raven.
+     * If Konrad completes his first battle without gaining any recruits, Delfador now gifts Konrad his raven.
      * Moremirmu: significantly increased hitpoints, but decreased speed and damage.
+     * Jeniver: increased gold generation from 4 to 5, increased blowgun damage from 4 to 5.
+     * Clarify and expand a number of dialogue hints relating to special events and interactions.
      * S01 "The Elves Besieged": added a turn limit and rebalanced enemies.
-     * S02 "Flight of the Elves": fixed Konrad winning after killing only 2 enemy leaders, instead of all of them.
+     * S02 "Flight of the Elves": made enemy gold more predictable. Fixed Konrad winning after killing only 2 enemy leaders, instead of all of them.
+     * S03 "Blackwater Port": Haldiel and Simyr are now loyal companions, but killing all enemy leaders is much harder.
+     * S06 "The Isle of Alduin": Elrian is now a loyal companion, but the scenario requires you to choose between gaining Elrian or learning to recruit Mages.
      * S07 "Muff Malal's Peninsula": Moremirmu is now in a safer position, and much less likely to get bad RNG and die early.
+     * S15a "Valley of Death I": added a new item reward, to 1) make this scenario a more viable pick and 2) allow for item-heavy playthroughs.
      * S22 "Glamdrol": allying with the Stoneskins now costs less gold, but Konrad will lose if he doesn't pillage enough gold to meet his pledge.
      * S30 "The Sceptre of Fire": made Li'sar more difficult to assassinate with Fire Wraiths. This strategy should still be possible, but it should now require more significant investment.
      * S30 "The Sceptre of Fire": Delfador can now continue recruiting even while searching for the Sceptre.
-     * S47, S48, and S50: A few enemy units will now defect when the Sceptre is first used against human opponents.
+     * S47, S48, and S50: a few enemy units will now defect when the Sceptre is first used against human opponents.
+     * S50 "The Battle for Wesnoth": added an epilogue for Blackwing the raven.
    * Winds of Fate
      * Lower recall costs further.
      * Adjust and replace some characters that tie-in with the other campaigns.

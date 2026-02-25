@@ -67,6 +67,7 @@ const std::string faction_prefix = "faction_";
 const std::string era_prefix = "era_";
 const std::string variation_prefix = "variation_";
 const std::string ability_prefix = "ability_";
+const std::string weaponspecial_prefix = "weaponspecial_";
 
 bool section_is_referenced(const std::string& section_id, const config& cfg)
 {
@@ -211,7 +212,7 @@ section parse_config(const config& cfg)
 	}
 }
 
-std::vector<topic> generate_topics(const bool sort_generated,const std::string& generator)
+std::vector<topic> generate_topics(const bool sort_generated, const std::string& generator)
 {
 	std::vector<topic> res;
 	if(generator.empty()) {
@@ -292,6 +293,23 @@ static std::string time_of_day_bonus_colored(const int time_of_day_bonus)
 	return markup::span_color((time_of_day_bonus > 0 ? "green" : (time_of_day_bonus < 0 ? "red" : "white")), time_of_day_bonus);
 }
 
+static void add_topic(
+	std::vector<topic>& topics,
+	const std::string& topic_name,
+	const std::string& topic_id,
+	const std::string& contents)
+{
+	auto itor = std::find_if(topics.begin(), topics.end(), [&topic_id](const topic& t){
+		return t.id == topic_id;
+	});
+
+	if(itor != topics.end()) {
+		WRN_HP << "Adding Help page with duplicate id " << topic_id;
+	}
+
+	topics.emplace_back(topic_name, topic_id, contents);
+}
+
 std::vector<topic> generate_time_of_day_topics(const bool /*sort_generated*/)
 {
 	std::vector<topic> topics;
@@ -299,7 +317,7 @@ std::vector<topic> generate_time_of_day_topics(const bool /*sort_generated*/)
 
 	if(!resources::tod_manager) {
 		toplevel << _("Only available during a scenario.");
-		topics.emplace_back(_("Time of Day Schedule"), "..schedule", toplevel.str());
+		add_topic(topics, _("Time of Day Schedule"), "..schedule", toplevel.str());
 		return topics;
 	}
 
@@ -335,10 +353,10 @@ std::vector<topic> generate_time_of_day_topics(const bool /*sort_generated*/)
 			 << image_liminal << _("Liminal Bonus:") << ' ' << time_of_day_bonus_colored(liminal_bonus) << '\n' << '\n'
 			 << markup::make_link(_("Schedule"), "..schedule");
 
-		topics.emplace_back(time.name.str(), id, text.str());
+		add_topic(topics, time.name.str(), id, text.str());
 	}
 
-	topics.emplace_back(_("Time of Day Schedule"), "..schedule", markup::tag("table", toplevel.str()));
+	add_topic(topics, _("Time of Day Schedule"), "..schedule", markup::tag("table", toplevel.str()));
 	return topics;
 }
 
@@ -424,8 +442,7 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 	}
 
 	for(const auto& [name, description, help_topic_id] : special_description) {
-		// use untranslated name to have universal topic id
-		std::string id = "weaponspecial_" + help_topic_id;
+		std::string id = weaponspecial_prefix + help_topic_id;
 		std::stringstream text;
 		text << description;
 		text << "\n\n" << markup::tag("header", _("Units with this special attack")) << "\n";
@@ -433,7 +450,7 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 			text << font::unicode_bullet << " " << type_id << "\n";
 		}
 
-		topics.emplace_back(name, id, text.str());
+		add_topic(topics, name, id, text.str());
 	}
 
 	if(sort_generated)
@@ -450,7 +467,7 @@ std::vector<topic> generate_ability_topics(const bool sort_generated)
 
 	const auto parse = [&](const unit_type& type, const unit_type::ability_metadata& ability) {
 
-		ability_topic_data.emplace(ability.help_topic_id,& ability);
+		ability_topic_data.emplace(ability.help_topic_id, &ability);
 
 		if(!type.hide_help()) {
 			// Add a link in the list of units with this ability
@@ -490,7 +507,7 @@ std::vector<topic> generate_ability_topics(const bool sort_generated)
 			text << font::unicode_bullet << " " << u << "\n";
 		}
 
-		topics.emplace_back(a.second->name, ability_prefix + a.first, text.str());
+		add_topic(topics, a.second->name, ability_prefix + a.first, text.str());
 	}
 
 	if(sort_generated) {
@@ -509,7 +526,7 @@ std::vector<topic> generate_era_topics(const std::string& era_id, const bool sor
 		topics = generate_faction_topics(*era, sort_generated);
 
 		std::vector<std::string> faction_links;
-		for(const topic & t : topics) {
+		for(const topic& t : topics) {
 			faction_links.push_back(markup::make_link(t.title, t.id));
 		}
 
@@ -527,7 +544,7 @@ std::vector<topic> generate_era_topics(const std::string& era_id, const bool sor
 			text << font::unicode_bullet << " " << link << "\n";
 		}
 
-		topics.emplace_back(era["name"], ".." + era_prefix + era["id"].str(), text.str());
+		add_topic(topics, era["name"], ".." + era_prefix + era["id"].str(), text.str());
 	}
 	return topics;
 }
@@ -552,7 +569,7 @@ std::vector<topic> generate_faction_topics(const config& era, const bool sort_ge
 		std::set<std::string> races;
 		std::set<std::string> alignments;
 
-		for(const std::string & u_id : recruit_ids) {
+		for(const std::string& u_id : recruit_ids) {
 			if(const unit_type* t = unit_types.find(u_id, unit_type::HELP_INDEXED)) {
 				assert(t);
 				const unit_type& type = *t;
@@ -600,12 +617,61 @@ std::vector<topic> generate_faction_topics(const config& era, const bool sort_ge
 
 		const std::string name = f["name"];
 		const std::string ref_id = faction_prefix + era["id"].str() + "_" + id;
-		topics.emplace_back(name, ref_id, text.str());
+		add_topic(topics, name, ref_id, text.str());
 	}
 	if(sort_generated)
 		std::sort(topics.begin(), topics.end(), title_less());
 	return topics;
 }
+
+namespace {
+const unsigned PAGE_LIMIT = 20;
+
+// Page 1 is already done by caller, this function generates
+// the rest of pages, starting with Page 2.
+void add_remaining_pages(
+	std::vector<topic>& topics,
+	const std::string& topic_name,
+	const std::string& topic_id,
+	const std::string& suffix,
+	const std::set<std::string, string_less>& list)
+{
+	const size_t rem = list.size() % PAGE_LIMIT;
+	const size_t page_count = list.size() / PAGE_LIMIT + (rem != 0 ? 1 : 0);
+	auto it = std::next(list.begin(), PAGE_LIMIT);
+
+	for(size_t page_num = 2; page_num <= page_count; page_num++) {
+		std::stringstream text;
+
+		// Page 1 is visible in Help Browser sidebar, but continuation pages are hidden
+		std::string prev_id = topic_id;
+		if(page_num > 2) {
+			prev_id = "." + topic_id + suffix + "_" + std::to_string(page_num - 1);
+		}
+
+		text << markup::make_link("&lt;&lt; " + _("Previous"),  prev_id)
+			 << "\n\n";
+
+		for(size_t row = 0; row < PAGE_LIMIT; row++) {
+			if(it != list.end()) {
+				text << font::unicode_bullet << " " << *it << "\n";
+				std::advance(it, 1);
+			}
+		}
+
+		// Pages other than the last page have "Next Page" link
+		if(page_num != page_count) {
+			text << "\n"
+				 << markup::make_link(_("Next") + " &gt;&gt;", "." + topic_id + suffix + "_" + std::to_string(page_num + 1))
+				 << "\n";
+		}
+
+		std::string new_topic_name = formatter() << topic_name << " (" << page_num << "/" << page_count << ")";
+		add_topic(topics, new_topic_name, "." + topic_id + suffix + "_" + std::to_string(page_num), text.str());
+	}
+}
+
+} // end anon namespace
 
 std::vector<topic> generate_trait_topics(const bool sort_generated)
 {
@@ -614,56 +680,73 @@ std::vector<topic> generate_trait_topics(const bool sort_generated)
 	// there are duplicates with the same id, it takes the first one encountered.
 	std::map<std::string, const config> trait_list;
 
+	std::set<std::string, string_less> global_traits;
+
+	// A map that stores which unit types have a particular trait
+	std::map<std::string, std::set<std::string, string_less>> trait_units;
+
+	// A map that stores which race have a particular trait
+	std::map<std::string, std::set<std::string, string_less>> trait_races;
+
 	// The global traits that are direct children of a [units] tag
-	for(const config & trait : unit_types.traits()) {
+	for(const config& trait : unit_types.traits()) {
 		trait_list.emplace(trait["id"], trait);
+		global_traits.insert(trait["id"]);
 	}
 
-	// Search for discovered unit types
+	// Search for discovered races
 	std::set<std::string> races;
-	for(const auto& i : unit_types.types()) {
-		const unit_type& type = i.second;
+	for(const auto& [_, type] : unit_types.types()) {
 		UNIT_DESCRIPTION_TYPE desc_type = description_type(type);
-
-		// Remember which races have been discovered.
-		//
-		// For unit types, unit_type::possible_traits() usually includes racial traits; however it's
-		// possible that all discovered units of a race have ignore_race_traits=yes, and so we still
-		// need to loop over the [race] tags looking for more traits.
 		if(desc_type == FULL_DESCRIPTION) {
 			races.insert(type.race_id());
 		}
-
-		// Handle [unit_type][trait]s.
-		//
-		// It would be better if we only looked at the traits that are specific to the unit_type,
-		// but that unmerged unit_type_data.traits() isn't available. We're forced to use
-		// possible_traits() instead which returns all of the traits, including the ones that units
-		// with ignore_race_traits=no have inherited from their [race] tag.
-		if(desc_type == FULL_DESCRIPTION || desc_type == HIDDEN_BUT_SHOW_MACROS) {
-			for(const config& trait : type.possible_traits()) {
-				trait_list.emplace(trait["id"], trait);
-			}
-		}
 	}
 
-	// Race traits, even those that duplicate a global trait (which will be dropped by emplace()).
+	// Race traits
 	//
 	// For traits, assume we don't discover additional races via the [race]help_taxonomy= links. The
 	// traits themselves don't propagate down those links, so if the trait is interesting w.r.t. the
 	// discovered units then their own race will already include it.
 	for(const auto& race_id : races) {
 		if(const unit_race* r = unit_types.find_race(race_id)) {
-			for(const config & trait : r->additional_traits()) {
+			for(const config& trait : r->additional_traits()) {
+				if(!utils::contains(global_traits, trait["id"])) {
+					trait_list.emplace(trait["id"], trait);
+					trait_races[trait["id"]].insert(race_id);
+				}
+			}
+		}
+	}
+
+	// Search for discovered unit types
+	for(const auto& [_, type] : unit_types.types()) {
+		UNIT_DESCRIPTION_TYPE desc_type = description_type(type);
+
+		// Handle [unit_type][trait]s.
+		//
+		// but the unmerged unit_type_data.traits() isn't easily available currently.
+		// As a workaround we use possible_traits() instead which returns all traits.
+		if(desc_type == FULL_DESCRIPTION || desc_type == HIDDEN_BUT_SHOW_MACROS) {
+			for(const config& trait : type.possible_traits()) {
 				trait_list.emplace(trait["id"], trait);
+				auto it = trait_races.find(trait["id"]);
+				const bool is_not_racial_trait = it == trait_races.end() || it->second.find(type.race_id()) == it->second.end();
+
+				if(!utils::contains(global_traits, trait["id"])
+					&& is_not_racial_trait
+					&& desc_type != HIDDEN_BUT_SHOW_MACROS)
+				{
+					const std::string link_unittype = markup::make_link(type.type_name(), unit_prefix + type.id());
+					trait_units[trait["id"]].insert(link_unittype);
+				}
 			}
 		}
 	}
 
 	std::vector<topic> topics;
-	for(auto& a : trait_list) {
-		std::string id = "traits_" + a.first;
-		const config& trait = a.second;
+	for(auto& [trait_id, trait] : trait_list) {
+		std::string id = "traits_" + trait_id;
 
 		std::string name = trait["male_name"].str();
 		if(name.empty()) name = trait["female_name"].str();
@@ -678,16 +761,62 @@ std::vector<topic> generate_trait_topics(const bool sort_generated)
 		} else {
 			text << _("No description available.");
 		}
+
+		if(utils::contains(global_traits, trait_id)) {
+			text << "\n\n" << markup::italic( _("This is a global trait."));
+			add_topic(topics, name, id, text.str());
+			continue;
+		}
+
+		text << "\n";
+
+		if(!trait_races[trait_id].empty()) {
+			text << "\n" << markup::tag("header", _("Races with this trait")) << "\n";
+		}
+
+		unsigned i = 0;
+		for(const auto& race_id : trait_races[trait_id]) {
+			// Too many units can horribly slow down the page or crash it, so we paginate.
+			if (i < PAGE_LIMIT) {
+				const unit_race* r = unit_types.find_race(race_id);
+				const std::string link_race = markup::make_link(r->plural_name(), ".." + race_prefix + race_id);
+				text << font::unicode_bullet << " " << link_race << "\n";
+				i++;
+			} else {
+				// continuation pages, accessible only via the links
+				text << markup::make_link(_("Next") + " &gt;&gt;",  "." + id + "_races_2") << "\n";
+				add_remaining_pages(topics, name, id, "_races", trait_races[trait_id]);
+				break;
+			}
+		}
+
+		if(!trait_units[trait_id].empty()) {
+			text << "\n" << markup::tag("header", _("Units with this trait")) << "\n";
+		}
+
+		i = 0;
+		for(const auto& link : trait_units[trait_id]) {
+			// Too many units can horribly slow down the page or crash it, so we paginate.
+			if (i < PAGE_LIMIT) {
+				text << font::unicode_bullet << " " << link << "\n";
+				i++;
+			} else {
+				// continuation pages, accessible only via the links
+				text << markup::make_link(_("Next") + " &gt;&gt;", "." + id + "_units_2") << "\n";
+				add_remaining_pages(topics, name, id, "_units", trait_units[trait_id]);
+				break;
+			}
+		}
+
 		text << "\n\n";
 
-		topics.emplace_back(name, id, text.str());
+		add_topic(topics, name, id, text.str());
 	}
 
 	if(sort_generated)
 		std::sort(topics.begin(), topics.end(), title_less());
 	return topics;
 }
-
 
 std::string make_unit_link(const std::string& type_id)
 {
@@ -709,7 +838,7 @@ std::string make_unit_link(const std::string& type_id)
 			ref_id = unknown_unit_topic;
 			name += " (?)";
 		}
-		link =  markup::make_link(name, ref_id);
+		link = markup::make_link(name, ref_id);
 	} // if hide_help then link is an empty string
 
 	return link;
@@ -827,7 +956,7 @@ void generate_races_sections(const config& help_cfg, section& sec, int level)
 	}
 }
 
-void generate_era_sections(const config& help_cfg, section & sec, int level)
+void generate_era_sections(const config& help_cfg, section& sec, int level)
 {
 	for(const config& era : game_config_manager::get()->game_config().child_range("era")) {
 		if(era["hide_help"].to_bool()) {
@@ -995,7 +1124,7 @@ std::vector<topic> generate_unit_topics(const std::string& race, const bool sort
 		    std::string title = additional_topic["title"];
 		    std::string text = additional_topic["text"];
 		    //topic additional_topic(title, id, text);
-		    topics.emplace_back(title,id,text);
+		    add_topic(topics, title,id,text);
 			std::string link = markup::make_link(title, id);
 			race_topics.insert(link);
 		  }
@@ -1066,7 +1195,7 @@ std::vector<topic> generate_unit_topics(const std::string& race, const bool sort
 		text << font::unicode_bullet << " " << u << "\n";
 	}
 
-	topics.emplace_back(race_name, race_id, text.str());
+	add_topic(topics, race_name, race_id, text.str());
 
 	if(sort_generated)
 		std::sort(topics.begin(), topics.end(), title_less());
@@ -1298,10 +1427,10 @@ bool is_valid_id(const std::string& id) {
 	if(id.compare(0, unit_prefix.length(), unit_prefix) == 0 || id.compare(hidden_symbol().length(), unit_prefix.length(), unit_prefix) == 0) {
 		return false;
 	}
-	if(id.compare(0, 8, "ability_") == 0) {
+	if(id.compare(0, ability_prefix.length(), ability_prefix) == 0) {
 		return false;
 	}
-	if(id.compare(0, 14, "weaponspecial_") == 0) {
+	if(id.compare(0, weaponspecial_prefix.length(), weaponspecial_prefix) == 0) {
 		return false;
 	}
 	if(id == "hidden") {

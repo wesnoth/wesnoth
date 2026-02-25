@@ -2,13 +2,13 @@
 # Luciano Montanaro <mikelima@cirulla.net>, 2005, 2006, 2007, 2011.
 # Silvia Montanaro, 2006.
 # Luciano Montanaro <mikelima@gmail.com>, 2012.
-# Antonio Rosella <arosella@yahoo.com>, 2012-2025.
+# Antonio Rosella <arosella@yahoo.com>, 2012-2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2026-01-20 17:31 UTC\n"
-"PO-Revision-Date: 2025-12-27 09:49+0100\n"
+"PO-Revision-Date: 2026-02-12 15:12+0100\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <wesnoth-l10n-it@cirulla.net>\n"
 "Language: it\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.6\n"
 
 #. [campaign]: id=Under_the_Burning_Suns
 #. [editor_group]: id=utbs
@@ -1419,6 +1419,7 @@ msgstr ""
 msgid ""
 "It’s a pack of Wandering Scarabs! They must’ve been burrowed under the sand."
 msgstr ""
+"Un branco di Scarabei Erranti! Dovevano essere sepolti sotto la sabbia."
 
 #. [scenario]: id=02_Across_the_Harsh_Sands, role=Hunting Ogre
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:627
@@ -13317,10 +13318,6 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:644
-#, fuzzy
-#| msgid ""
-#| "The trees themselves seem against my presence here. They give me an "
-#| "omnious feeling as if something bad is going to happen if I stay here."
 msgid ""
 "The trees themselves seem against my presence here. They give me an ominous "
 "feeling as if something bad is going to happen if I stay here."
@@ -13520,10 +13517,6 @@ msgstr ""
 
 #. [message]: speaker=Graghht
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1013
-#, fuzzy
-#| msgid ""
-#| "Since you enterd our fort, use it for your troops. Get them here quickly "
-#| "and help us."
 msgid ""
 "Since you entered our fort, use it for your troops. Get them here quickly "
 "and help us."
@@ -13601,10 +13594,6 @@ msgstr "Graghht"
 
 #. [message]: speaker=Graghht
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1231
-#, fuzzy
-#| msgid ""
-#| "We won’t be controlled any more! We will reclaim this island as "
-#| "rightfully ours! Destroy the false god! Rebuild legacy of our ancestors!"
 msgid ""
 "We won’t be controlled any more! We will reclaim this island as rightfully "
 "ours! Destroy the false god! Rebuild the legacy of our ancestors!"
@@ -17001,7 +16990,7 @@ msgstr "vento a favore +"
 #. [chance_to_hit]: id=parry_offense_only_{VALUE}
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:693
 msgid "parry offense only: + $sub%"
-msgstr ""
+msgstr "parata solo in attacco: + $sub%"
 
 #. [chance_to_hit]: id=parry_offense_only_{VALUE}
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:694
@@ -17014,21 +17003,15 @@ msgstr ""
 
 #. [chance_to_hit]: id=parry{VALUE}
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:705
-#, fuzzy
-#| msgid "parrying($sub)"
 msgid "parry: + ($sub)"
-msgstr "parata($sub)"
+msgstr "parata: + ($sub)"
 
 #. [chance_to_hit]: id=parry{VALUE}
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:706
-#, fuzzy
-#| msgid ""
-#| "This unit sees its defense reinforced by $sub% when this weapon is used "
-#| "offensively"
 msgid "This unit sees its defense reinforced by $sub% when this weapon is used"
 msgstr ""
-"La difesa di questa unità viene rinforzata da $sub% quando quest’arma viene "
-"usata in attacco"
+"La difesa di questa unità viene rinforzata da $sub% quando viene usata "
+"quest’arma"
 
 #. [special_note]
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:828
@@ -17334,6 +17317,9 @@ msgid ""
 "decreases the chance of being hit by them by 10% each, until the end of the "
 "fight."
 msgstr ""
+"In attacco, ogni colpo andato a segno aumenta del 10% le possibilità di "
+"colpire il proprio avversario e diminuisce del 10% quelle di essere colpito, "
+"fino al termine del combattimento."
 
 #. [heals]: id=natures_aid
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1841
@@ -17351,7 +17337,7 @@ msgid ""
 "All units on this unit’s side, regardless of distance, will heal themselves "
 "for 2 HP when starting their turn in forest or fungus."
 msgstr ""
-"Tutte le unità della stessa di questa unità, a prescindere dalla distanza, "
+"Tutte le unità della stessa squadra di questa, a prescindere dalla distanza, "
 "saranno in grado di auto-curarsi di 2 PF quando iniziano il proprio turno in "
 "un esagono di tipo foresta o funghi."
 
