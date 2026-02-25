@@ -768,8 +768,10 @@ std::vector<topic> generate_trait_topics(const bool sort_generated)
 			continue;
 		}
 
+		text << "\n";
+
 		if(!trait_races[trait_id].empty()) {
-			text << "\n\n" << markup::tag("header", _("Races with this trait")) << "\n";
+			text << "\n" << markup::tag("header", _("Races with this trait")) << "\n";
 		}
 
 		unsigned i = 0;
