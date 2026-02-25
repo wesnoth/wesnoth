@@ -624,6 +624,54 @@ std::vector<topic> generate_faction_topics(const config& era, const bool sort_ge
 	return topics;
 }
 
+namespace {
+const unsigned PAGE_LIMIT = 20;
+
+// Page 1 is already done by caller, this function generates
+// the rest of pages, starting with Page 2.
+void add_remaining_pages(
+	std::vector<topic>& topics,
+	const std::string& topic_name,
+	const std::string& topic_id,
+	const std::set<std::string, string_less>& list)
+{
+	const size_t rem = list.size() % PAGE_LIMIT;
+	const size_t page_count = list.size() / PAGE_LIMIT + (rem != 0 ? 1 : 0);
+	auto it = std::next(list.begin(), PAGE_LIMIT);
+
+	for(size_t page_num = 2; page_num <= page_count; page_num++) {
+		std::stringstream text;
+
+		// Page 1 is visible in Help Browser sidebar, but continuation pages are hidden
+		std::string prev_id = topic_id;
+		if(page_num > 2) {
+			prev_id = "." + topic_id + "_" + std::to_string(page_num - 1);
+		}
+
+		text << markup::make_link("&lt;&lt; " + _("Previous"),  prev_id)
+			 << "\n\n";
+
+		for(size_t row = 0; row < PAGE_LIMIT; row++) {
+			if(it != list.end()) {
+				text << font::unicode_bullet << " " << *it << "\n";
+				std::advance(it, 1);
+			}
+		}
+
+		// Pages other than the last page have "Next Page" link
+		if(page_num != page_count) {
+			text << "\n"
+				 << markup::make_link(_("Next") + " &gt;&gt;", "." + topic_id + "_" + std::to_string(page_num + 1))
+				 << "\n";
+		}
+
+		std::string new_topic_name = formatter() << topic_name << " (" << page_num << "/" << page_count << ")";
+		add_topic(topics, new_topic_name, "." + topic_id + "_" + std::to_string(page_num), text.str());
+	}
+}
+
+} // end anon namespace
+
 std::vector<topic> generate_trait_topics(const bool sort_generated)
 {
 	// All traits that could be assigned to at least one discovered or HIDDEN_BUT_SHOW_MACROS unit.
@@ -712,13 +760,14 @@ std::vector<topic> generate_trait_topics(const bool sort_generated)
 
 		unsigned i = 0;
 		for(const auto& link : trait_units[trait_id]) {
-			// Too many units can horribly slow down the page or crash it
-			if (i < 20) {
+			// Too many units can horribly slow down the page or crash it, so we paginate.
+			if (i < PAGE_LIMIT) {
 				text << font::unicode_bullet << " " << link << "\n";
 				i++;
 			} else {
-				// TODO convert to a link to rest of units on another page
-				text << font::unicode_bullet << " ...\n";
+				// continuation pages, accessible only via the links
+				text << markup::make_link(_("Next") + " &gt;&gt;", "." + id + "_2") << "\n";
+				add_remaining_pages(topics, name,  id, trait_units[trait_id]);
 				break;
 			}
 		}
@@ -727,13 +776,14 @@ std::vector<topic> generate_trait_topics(const bool sort_generated)
 
 		i = 0;
 		for(const auto& link : trait_races[trait_id]) {
-			// Too many units can horribly slow down the page or crash it
-			if (i < 20) {
+			// Too many units can horribly slow down the page or crash it, so we paginate.
+			if (i < PAGE_LIMIT) {
 				text << font::unicode_bullet << " " << link << "\n";
 				i++;
 			} else {
-				// TODO convert to a link to rest of units on another page
-				text << font::unicode_bullet << " ...\n";
+				// continuation pages, accessible only via the links
+				text << markup::make_link(_("Next") + " &gt;&gt;",  "." + id + "_2") << "\n";
+				add_remaining_pages(topics, name, id, trait_races[trait_id]);
 				break;
 			}
 		}
