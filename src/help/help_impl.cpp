@@ -733,10 +733,10 @@ std::vector<topic> generate_trait_topics(const bool sort_generated)
 			for(const config& trait : type.possible_traits()) {
 				trait_list.emplace(trait["id"], trait);
 				auto it = trait_races.find(trait["id"]);
-				const bool is_racial_trait = it == trait_races.end() || it->second.find(type.race_id()) == it->second.end();
+				const bool is_not_racial_trait = it == trait_races.end() || it->second.find(type.race_id()) == it->second.end();
 
 				if(!utils::contains(global_traits, trait["id"])
-					&& is_racial_trait
+					&& is_not_racial_trait
 					&& desc_type != HIDDEN_BUT_SHOW_MACROS)
 				{
 					const std::string link_unittype = markup::make_link(type.type_name(), unit_prefix + type.id());
