@@ -484,14 +484,11 @@ std::pair<std::vector<rich_label::shape_ptr>, point> rich_label::get_parsed_text
 
 					// append child shapes to toplevel shape list
 					std::vector<shape_ptr> table_shapes = get_parsed_text(col_cfg, text_pos, col_widths[col_idx]).first;
-					for(auto&& shape_ptr : table_shapes) {
-						shapes.emplace_back(std::move(shape_ptr));
-					}
+					std::move(table_shapes.begin(), table_shapes.end(), std::back_inserter(shapes));
 					pos.x += col_widths[col_idx];
 					pos.x += col_paddings[1];
 
-					shape_ptr& shape = shapes.back();
-					if(auto* tshape = dynamic_cast<text_shape*>(shape.get())) {
+					if(auto* tshape = dynamic_cast<text_shape*>(shapes.back().get())) {
 						tshape->set_wrap_width(col_widths[col_idx]);
 					}
 
