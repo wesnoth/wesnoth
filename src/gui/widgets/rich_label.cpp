@@ -482,8 +482,8 @@ std::pair<std::vector<rich_label::shape_ptr>, point> rich_label::get_parsed_text
 						text_pos.x += col_widths[col_idx] - cell_sizes[row_idx][col_idx].x;
 					}
 
-					// attach data
-					auto [table_shapes, size] = get_parsed_text(col_cfg, text_pos, col_widths[col_idx]);
+					// append child shapes to toplevel shape list
+					std::vector<shape_ptr> table_shapes = get_parsed_text(col_cfg, text_pos, col_widths[col_idx]).first;
 					for(auto&& shape_ptr : table_shapes) {
 						shapes.emplace_back(std::move(shape_ptr));
 					}
@@ -716,7 +716,7 @@ std::pair<std::vector<rich_label::shape_ptr>, point> rich_label::get_parsed_text
 		for(const auto& entry : links_) {
 			shapes.emplace_back(std::make_unique<rectangle_shape>(
 				entry.first.x, entry.first.y, entry.first.w, entry.first.h,
-				color_t::from_rgba_string("255, 180, 0, 255")));
+				color_t(255, 180, 0, 255)));
 		}
 	}
 	#endif
