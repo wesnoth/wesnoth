@@ -267,12 +267,11 @@ image_shape::image_shape(const config& cfg, wfl::action_function_symbol_table& f
 }
 
 image_shape::image_shape(
-	const std::string& img_path,
-	const unsigned x,
-	const unsigned y)
+	const point& origin,
+	const std::string& img_path)
 	: shape()
-	, x_(x)
-	, y_(y)
+	, x_(origin.x)
+	, y_(origin.y)
 	, w_("(image_width)")
 	, h_("(image_height)")
 	, image_name_(img_path, img_path) // avoid ambiguous ctor error

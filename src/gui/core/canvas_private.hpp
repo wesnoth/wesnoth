@@ -214,9 +214,8 @@ public:
 	image_shape(const config& cfg, wfl::action_function_symbol_table& functions);
 
 	image_shape(
-		const std::string& img_path,
-		const unsigned x,
-		const unsigned y);
+		const point& origin,
+		const std::string& img_path);
 
 	void draw(wfl::map_formula_callable& variables) override;
 
