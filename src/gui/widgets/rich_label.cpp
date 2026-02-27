@@ -230,7 +230,12 @@ void rich_label::add_link(
 
 std::size_t rich_label::get_split_location(std::string_view text, const point& pos)
 {
-	std::size_t len = get_offset_from_xy(pos);
+	int offset = get_offset_from_xy(pos);
+	if(offset <= 0) {
+		return 0;
+	}
+
+	std::size_t len = static_cast<size_t>(offset);
 	if (len >= text.size() - 1) {
 		return text.size() - 1;
 	}
