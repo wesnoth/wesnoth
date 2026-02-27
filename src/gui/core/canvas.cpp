@@ -104,14 +104,11 @@ rectangle_shape::rectangle_shape(const config& cfg)
 }
 
 rectangle_shape::rectangle_shape(
-	const unsigned x,
-	const unsigned y,
-	const unsigned w,
-	const unsigned h,
+	const rect& bounds,
 	const color_t& border_color,
 	const unsigned thickness,
 	const color_t& fill_color)
-	: rect_bounded_shape(x, y, w, h)
+	: rect_bounded_shape(bounds)
 	, border_thickness_(thickness)
 	, border_color_(border_color)
 	, fill_color_(fill_color)
@@ -522,7 +519,7 @@ text_shape::text_shape(
 	font::pango_text::FONT_STYLE style,
 	const std::string& align,
 	const unsigned width)
-	: rect_bounded_shape(origin.x, origin.y, "(text_width)", "(text_height)")
+	: rect_bounded_shape(origin, "(text_width)", "(text_height)")
 	, font_family_(family)
 	, font_size_(size)
 	, font_style_(style)

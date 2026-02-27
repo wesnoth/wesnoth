@@ -57,19 +57,19 @@ class rect_bounded_shape : public canvas::shape
 {
 protected:
 
-	explicit rect_bounded_shape(unsigned x, unsigned y, unsigned w, unsigned h)
+	explicit rect_bounded_shape(const rect& bounds)
 		: shape()
-		, x_(x)
-		, y_(y)
-		, w_(w)
-		, h_(h)
+		, x_(bounds.x)
+		, y_(bounds.y)
+		, w_(bounds.w)
+		, h_(bounds.h)
 	{
 	}
 
-	explicit rect_bounded_shape(unsigned x, unsigned y, const std::string& w_f, const std::string& h_f)
+	explicit rect_bounded_shape(const point& origin, const std::string& w_f, const std::string& h_f)
 		: shape()
-		, x_(x)
-		, y_(y)
+		, x_(origin.x)
+		, y_(origin.y)
 		, w_(w_f)
 		, h_(h_f)
 	{
@@ -105,11 +105,8 @@ public:
 	 */
 	explicit rectangle_shape(const config& cfg);
 
-	explicit rectangle_shape(
-		const unsigned x,
-		const unsigned y,
-		const unsigned w,
-		const unsigned h,
+	rectangle_shape(
+		const rect& bounds,
 		const color_t& border_color,
 		const unsigned thickness = 1,
 		const color_t& fill_color = color_t::null_color());
@@ -229,7 +226,7 @@ private:
 	typed_formula<unsigned> w_; /**< The width of the image. */
 	typed_formula<unsigned> h_; /**< The height of the image. */
 
-	/** String to pass to the image loader. May be a Data URI, may include Image Path Functions. */
+	/** Image path from which the image will be loaded. May also be a Data URI, and may include Image Path Functions. */
 	typed_formula<std::string> image_name_;
 
 	/**
