@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-01-20 11:31-0600\n"
-"PO-Revision-Date: 2026-01-30 17:14+0100\n"
+"POT-Creation-Date: 2026-02-25 19:03-0600\n"
+"PO-Revision-Date: 2026-02-26 18:31+0100\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italiano <wesnoth-l10n-it@cirulla.net>\n"
 "Language: it\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.6\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
 #. [time]: id=underground
@@ -55,14 +55,14 @@ msgstr "impavido"
 #: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:244
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:6
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:48
-#: data/core/macros/weapon_specials.cfg:68
+#: data/core/macros/weapon_specials.cfg:71
 msgid "plague"
 msgstr "contagio"
 
 #. [plague]: id=SotA_plague, type=null # prevents normal corpse, and allows SotA code to handle it
 #. [plague]: id=plague, type=Walking Corpse
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:7
-#: data/core/macros/weapon_specials.cfg:69
+#: data/core/macros/weapon_specials.cfg:72
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a "
 "Walking Corpse on the same side as the unit with the Plague attack. This "
@@ -76,7 +76,7 @@ msgstr ""
 #. [trait]: id=loyal
 #: data/campaigns/The_Deceivers_Gambit/scenarios/00_Graduation.cfg:112
 #: data/campaigns/The_Deceivers_Gambit/scenarios/11_Clan_Blackcrest.cfg:748
-#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:19
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:20
 #: data/core/macros/traits.cfg:12
 msgid "loyal"
 msgstr "leale"
@@ -84,14 +84,14 @@ msgstr "leale"
 #. [trait]: id=loyal_dummy
 #: data/campaigns/The_Deceivers_Gambit/scenarios/00_Graduation.cfg:113
 #: data/campaigns/The_Deceivers_Gambit/scenarios/11_Clan_Blackcrest.cfg:749
-#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:20
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:21
 msgid "Zero upkeep."
 msgstr "Nessun mantenimento."
 
 #. [chance_to_hit]
 #. [chance_to_hit]: id=magical
 #: data/campaigns/The_Deceivers_Gambit/scenarios/14_Long_Live_the_Queen.cfg:1299
-#: data/core/macros/weapon_specials.cfg:117
+#: data/core/macros/weapon_specials.cfg:120
 msgid ""
 "This attack always has a 70% chance to hit regardless of the defensive "
 "ability of the unit being attacked."
@@ -102,19 +102,19 @@ msgstr ""
 #. [chance_to_hit]
 #. [chance_to_hit]: id=magical
 #: data/campaigns/The_Deceivers_Gambit/scenarios/14_Long_Live_the_Queen.cfg:1299
-#: data/core/macros/weapon_specials.cfg:116
+#: data/core/macros/weapon_specials.cfg:119
 msgid "magical"
 msgstr "magico"
 
 #. [trait]: id=intelligent_dummy
 #. [trait]: id=intelligent
-#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:24
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:25
 #: data/core/macros/traits.cfg:190
 msgid "intelligent"
 msgstr "intelligente"
 
 #. [trait]: id=intelligent_dummy
-#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:25
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:26
 msgid "Intelligent units require 20% less experience than usual to advance."
 msgstr ""
 "Le unità intelligenti necessitano del 20% d’esperienza in meno del consueto "
@@ -123,14 +123,14 @@ msgstr ""
 #. [resistance]: id=garak_steadfast
 #. [resistance]: id=steadfast
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:708
-#: data/core/macros/abilities.cfg:136
+#: data/core/macros/abilities.cfg:139
 msgid "steadfast"
 msgstr "fermezza"
 
 #. [resistance]: id=garak_steadfast
 #. [resistance]: id=steadfast
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:709
-#: data/core/macros/abilities.cfg:137
+#: data/core/macros/abilities.cfg:140
 msgid "female^steadfast"
 msgstr "fermezza"
 
@@ -138,46 +138,46 @@ msgstr "fermezza"
 #. [illuminates]: id=illumination
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:324
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:325
-#: data/core/macros/abilities.cfg:245
+#: data/core/macros/abilities.cfg:248
 msgid "female^illuminates"
 msgstr "illumina"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:727
-#: data/core/macros/abilities.cfg:10
+#: data/core/macros/abilities.cfg:13
 msgid "heals +4"
 msgstr "guarisce +4"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:728
-#: data/core/macros/abilities.cfg:11
+#: data/core/macros/abilities.cfg:14
 msgid "female^heals +4"
 msgstr "guarisce +4"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:729
+#: data/core/macros/abilities.cfg:15
 msgid ""
 "Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
 "\n"
 "A unit cared for by this healer may heal up to 4 HP per turn, or stop poison "
 "from taking effect for that turn.\n"
-"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
-"care of a village or a unit that can cure."
+"This ability will not cure an affected unit of poison, however, only delay "
+"its effect."
 msgstr ""
 "Permette all’unità di guarire le unità alleate adiacenti all’inizio del "
 "turno.\n"
 "\n"
 "L’unità di cui si occupa il guaritore potrà recuperare fino a 4 PF per "
 "turno, oppure vedrà annullati per quel turno gli effetti del veleno.\n"
-"I guaritori non possono curare dal veleno un’unità avvelenata, perciò questa "
-"dovrà cercare l’assistenza di un villaggio o di un’unità con l’abilità "
-"“cura”."
+"Questa abilità non permette di curare un’unità avvelenata, ma soltanto di "
+"ritardare gli effetti del veleno."
 
 #. [heals]: id=healing
 #. [heals]
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:733
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:772
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:802
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:803
 msgid "This unit is capable of basic healing and slowing dehydration."
 msgstr ""
 "Quest’unità è in grado di fornire cure di primo soccorso e rallentare la "
@@ -185,35 +185,35 @@ msgstr ""
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:751
-#: data/core/macros/abilities.cfg:37
+#: data/core/macros/abilities.cfg:40
 msgid "heals +8"
 msgstr "guarisce +8"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:752
-#: data/core/macros/abilities.cfg:38
+#: data/core/macros/abilities.cfg:41
 msgid "female^heals +8"
 msgstr "guarisce +8"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:753
+#: data/core/macros/abilities.cfg:42
 msgid ""
 "This unit combines herbal remedies with magic to heal units more quickly "
 "than is normally possible on the battlefield.\n"
 "\n"
 "A unit cared for by this healer may heal up to 8 HP per turn, or stop poison "
 "from taking effect for that turn.\n"
-"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
-"care of a village or a unit that can cure."
+"This ability will not cure an affected unit of poison, however, only delay "
+"its effect."
 msgstr ""
 "Quest’unità combina rimedi a base di erbe con la magia per guarire le unità "
 "più velocemente di quanto sia normalmente possibile sul campo di battaglia.\n"
 "\n"
 "L’unità di cui si occupa il guaritore potrà recuperare fino a 8 PF per turno "
 "oppure vedrà annullati per quel turno gli effetti del veleno.\n"
-"I guaritori non possono curare dal veleno un’unità avvelenata, perciò questa "
-"dovrà cercare l’assistenza di un villaggio o di un’unità con l’abilità "
-"“cura”."
+"Questa abilità non permette di curare un’unità avvelenata, ma di soltanto "
+"ritardare gli effetti del veleno."
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:781
@@ -226,27 +226,27 @@ msgid "female^heals +12"
 msgstr "guarisce +12"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:783
+#. only exists in UtBS, but is the same wording as heals+8 with a bigger number
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:784
 msgid ""
 "This unit combines herbal remedies with magic to heal units more quickly "
 "than is normally possible on the battlefield.\n"
 "\n"
 "A unit cared for by this healer may heal up to 12 HP per turn, or stop "
 "poison from taking effect for that turn.\n"
-"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
-"care of a village or a unit that can cure."
+"This ability will not cure an affected unit of poison, however, only delay "
+"its effect."
 msgstr ""
 "Quest’unità combina rimedi a base di erbe con la magia per guarire le unità "
 "più velocemente di quanto sia normalmente possibile sul campo di battaglia.\n"
 "\n"
 "L’unità di cui si occupa il guaritore potrà recuperare fino a 12 PF per "
 "turno oppure vedrà annullati per quel turno gli effetti del veleno.\n"
-"I guaritori non possono curare dal veleno un’unità avvelenata, perciò questa "
-"dovrà cercare l’assistenza di un villaggio o di un’unità con l’abilità "
-"“cura”."
+"Questa abilità non permette di curare un’unità avvelenata, ma soltanto di "
+"ritardare gli effetti del veleno."
 
 #. [heals]
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:808
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:809
 msgid ""
 "This unit is capable of healing those around it, slowing dehydration, and "
 "curing them of poison."
@@ -255,32 +255,32 @@ msgstr ""
 "disidratazione e di curarle dal veleno."
 
 #. [lua]: set_status
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:2132
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:2133
 msgid "female^poisoned"
 msgstr "avvelenata"
 
 #. [lua]: set_status
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:2132
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:2133
 msgid "poisoned"
 msgstr "avvelenato"
 
 #. [lua]: set_status
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:2134
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:2135
 msgid "female^slowed"
 msgstr "rallentata"
 
 #. [lua]: set_status
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:2134
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:2135
 msgid "slowed"
 msgstr "rallentato"
 
 #. [lua]: set_status
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:2135
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:2136
 msgid "female^petrified"
 msgstr "pietrificata"
 
 #. [lua]: set_status
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:2135
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:2136
 msgid "petrified"
 msgstr "pietrificato"
 
@@ -289,7 +289,7 @@ msgstr "pietrificato"
 #. [teleport]: id=teleport
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:699
 #: data/campaigns/World_Conquest/resources/data/training.cfg:786
-#: data/core/macros/abilities.cfg:260
+#: data/core/macros/abilities.cfg:263
 msgid "teleport"
 msgstr "teletrasporto"
 
@@ -297,7 +297,7 @@ msgstr "teletrasporto"
 #. [regenerate]: id=regenerates
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:760
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:54
-#: data/core/macros/abilities.cfg:99
+#: data/core/macros/abilities.cfg:102
 msgid "regenerates"
 msgstr "rigenerazione"
 
@@ -311,27 +311,27 @@ msgstr "Recupera sempre PF come se riposasse"
 #. [chance]
 #. [damage]: id=backstab
 #: data/campaigns/World_Conquest/resources/data/training.cfg:439
-#: data/core/macros/weapon_specials.cfg:31
+#: data/core/macros/weapon_specials.cfg:34
 msgid "backstab"
 msgstr "attacco alle spalle"
 
 #. [chance]
 #. [dummy]: id=feeding
 #: data/campaigns/World_Conquest/resources/data/training.cfg:501
-#: data/core/macros/abilities.cfg:415
+#: data/core/macros/abilities.cfg:418
 msgid "feeding"
 msgstr "nutrimento"
 
 #. [chance]
 #. [leadership]: id=leadership
 #: data/campaigns/World_Conquest/resources/data/training.cfg:528
-#: data/core/macros/abilities.cfg:206
+#: data/core/macros/abilities.cfg:209
 msgid "leadership"
 msgstr "comando"
 
 #. [hides]: id=ambush
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:12
-#: data/core/macros/abilities.cfg:292
+#: data/core/macros/abilities.cfg:295
 msgid "ambush"
 msgstr "imboscata"
 
@@ -345,13 +345,13 @@ msgstr "Caverna"
 
 #. [hides]: id=concealment
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:21
-#: data/core/macros/abilities.cfg:355
+#: data/core/macros/abilities.cfg:358
 msgid "concealment"
 msgstr "occultamento"
 
 #. [drains]: id=drains
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:24
-#: data/core/macros/weapon_specials.cfg:209
+#: data/core/macros/weapon_specials.cfg:183
 msgid "drains"
 msgstr "assorbi"
 
@@ -374,7 +374,7 @@ msgstr "Colline"
 # provo "colpo preciso" per tradurre "marksman" (att. speciale): v. Glossario generale sul WIF
 #. [chance_to_hit]: id=marksman
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:39
-#: data/core/macros/weapon_specials.cfg:102
+#: data/core/macros/weapon_specials.cfg:105
 msgid "marksman"
 msgstr "colpo preciso"
 
@@ -384,13 +384,13 @@ msgstr "Campo di funghi"
 
 #. [hides]: id=nightstalk
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:45
-#: data/core/macros/abilities.cfg:335 data/core/macros/abilities.cfg:336
+#: data/core/macros/abilities.cfg:338
 msgid "nightstalk"
 msgstr "agguato notturno"
 
 #. [poison]: id=poison
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:51
-#: data/core/macros/weapon_specials.cfg:231
+#: data/core/macros/weapon_specials.cfg:205
 msgid "poison"
 msgstr "veleno"
 
@@ -400,13 +400,13 @@ msgstr "Sabbia"
 
 #. [skirmisher]: id=skirmisher
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:60
-#: data/core/macros/abilities.cfg:226
+#: data/core/macros/abilities.cfg:229
 msgid "skirmisher"
 msgstr "incursore"
 
 #. [slow]: id=slow
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:63
-#: data/core/macros/weapon_specials.cfg:80
+#: data/core/macros/weapon_specials.cfg:83
 msgid "slows"
 msgstr "rallenta"
 
@@ -416,7 +416,7 @@ msgstr "Palude"
 
 #. [heals]: id=curing
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:69
-#: data/core/macros/abilities.cfg:63
+#: data/core/macros/abilities.cfg:66
 msgid "cures"
 msgstr "cura"
 
@@ -3346,8 +3346,7 @@ msgid ""
 "immediately surrounding it, and any enemy unit entering those hexes "
 "immediately ends its movement. Learning how to use zones of control to your "
 "advantage is an important part of Wesnoth, as only <ref "
-"dst='ability_skirmisherskirmisher'>skirmishers</ref> can ignore zones of "
-"control."
+"dst='ability_skirmisher'>skirmishers</ref> can ignore zones of control."
 msgstr ""
 "Un’altra cosa da tenere a mente durante gli spostamenti sono le <i>zone di "
 "controllo</i>. Ad eccezione di quelle di livello 0, ogni unità genera una "
@@ -4257,15 +4256,14 @@ msgstr ""
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:501
 msgid ""
-"Finally, units with the <ref "
-"dst='ability_illuminationilluminates'>illuminates</ref> ability and terrain "
-"features such as <ref dst='terrain_lava'>lava</ref> change the time of day "
-"bonus around them."
+"Finally, units with the <ref dst='ability_illumination'>illuminates</ref> "
+"ability and terrain features such as <ref dst='terrain_lava'>lava</ref> "
+"change the time of day bonus around them."
 msgstr ""
-"Infine, unità con l’abilita <ref "
-"dst='ability_illuminationilluminates'>illumina</ref> and alcuni tipo di "
-"terreno con caratteristiche particolari, tipo <ref dst='terrain_lava'>lava</"
-"ref> cambiano intorno a loro i bonus legati al periodo della giornata."
+"Infine, unità con l’abilita <ref dst='ability_illumination'>illumina</ref> "
+"and alcuni tipo di terreno con caratteristiche particolari, tipo <ref "
+"dst='terrain_lava'>lava</ref> cambiano intorno a loro i bonus legati al "
+"periodo della giornata."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:508
@@ -4306,39 +4304,39 @@ msgstr ""
 #. [topic]: id=healing
 #: data/core/help.cfg:513
 msgid ""
-"• <ref dst='ability_regeneratesregenerates'>Regeneration</ref>: Certain "
-"units (such as trolls) will automatically heal 8HP every turn. If the unit "
-"is poisoned, the poison will be cured instead."
+"• <ref dst='ability_regenerates_8'>Regeneration</ref>: Certain units (such "
+"as trolls) will automatically heal 8HP every turn. If the unit is poisoned, "
+"the poison will be cured instead."
 msgstr ""
-"• <ref dst='ability_regeneratesregenerates'>Rigenerazione</ref>: alcune "
-"unità (come i troll) recuperano automaticamente 8 PF ad ogni turno. Se "
-"l’unità è avvelenata, verrà invece eliminato il veleno."
+"• <ref dst='ability_regenerates_8'>Rigenerazione</ref>: alcune unità (come i "
+"troll) recuperano automaticamente 8 PF ad ogni turno. Se l’unità è "
+"avvelenata, verrà invece eliminato il veleno."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:514
 msgid ""
-"• <b>Healing units</b>: Units with the <ref dst='ability_healingheals "
-"+4'>Heals</ref> ability will heal each allied adjacent unit, usually <ref "
-"dst='ability_healingheals +4'>4HP</ref> or <ref dst='ability_healingheals "
-"+8'>8HP</ref> per turn, or prevent Poison from causing that unit damage."
+"• <b>Healing units</b>: Units with the <ref dst='ability_heals_4'>Heals</"
+"ref> ability will heal each allied adjacent unit, usually <ref "
+"dst='ability_heals_4'>4HP</ref> or <ref dst='ability_heals_8'>8HP</ref> per "
+"turn, or prevent Poison from causing that unit damage."
 msgstr ""
 "• <b>Unità guaritrici</b>: le unità con l’abilità <ref "
-"dst='ability_healingheals +4'>guarire</ref> guariranno tutte le unità "
-"alleate adiacenti, in genere di <ref dst='ability_healingheals +4'>4PF</ref> "
-"o <ref dst='ability_healingheals +8'>8PF</ref> per turno, oppure "
-"contrasteranno i danni causati dal veleno su tali unità."
+"dst='ability_heals_4'>guarire</ref> guariranno tutte le unità alleate "
+"adiacenti, in genere di <ref dst='ability_heals_4'>4PF</ref> o <ref "
+"dst='ability_heals_8'>8PF</ref> per turno, oppure contrasteranno i danni "
+"causati dal veleno su tali unità."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:515
 msgid ""
-"• <b>Curing units</b>: Units with the <ref dst='ability_curingcures'>cures</"
-"ref> ability will cure Poison in all allied adjacent units (in preference to "
+"• <b>Curing units</b>: Units with the <ref dst='ability_cures'>cures</ref> "
+"ability will cure Poison in all allied adjacent units (in preference to "
 "healing, if it has that ability as well)."
 msgstr ""
 "• <b>Unità curatrici</b>: le unità con l’abilità <ref "
-"dst='ability_curingcures'>cura</ref> cureranno dal veleno tutte le unità "
-"alleate adiacenti (con priorità rispetto alla guarigione, se l’unità "
-"possiede anche quest’abilità)."
+"dst='ability_cures'>cura</ref> guariranno dal veleno tutte le unità alleate "
+"adiacenti (con priorità rispetto alla guarigione, se l’unità possiede anche "
+"quest’abilità)."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:516
@@ -5173,50 +5171,13 @@ msgid "Makes the selected unit level up N times. Example: :unit advances=2"
 msgstr ""
 "Fa avanzare di N livelli l’unità selezionata. Esempio: :unit advances=2"
 
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:12
-msgid ""
-"Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
-"\n"
-"A unit cared for by this healer may heal up to 4 HP per turn, or stop poison "
-"from taking effect for that turn.\n"
-"This ability will not cure an affected unit of poison, however, only delay "
-"its effect."
-msgstr ""
-"Permette all’unità di guarire le unità alleate adiacenti all’inizio del "
-"turno.\n"
-"\n"
-"L’unità di cui si occupa il guaritore potrà recuperare fino a 4 PF per "
-"turno, oppure vedrà annullati per quel turno gli effetti del veleno.\n"
-"Questa abilità non permette di curare un’unità avvelenata, ma soltanto di "
-"ritardare gli effetti del veleno."
-
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:39
-msgid ""
-"This unit combines herbal remedies with magic to heal units more quickly "
-"than is normally possible on the battlefield.\n"
-"\n"
-"A unit cared for by this healer may heal up to 8 HP per turn, or stop poison "
-"from taking effect for that turn.\n"
-"This ability will not cure an affected unit of poison, however, only delay "
-"its effect."
-msgstr ""
-"Quest’unità combina rimedi a base di erbe con la magia per guarire le unità "
-"più velocemente di quanto sia normalmente possibile sul campo di battaglia.\n"
-"\n"
-"L’unità di cui si occupa il guaritore potrà recuperare fino a 8 PF per turno "
-"oppure vedrà annullati per quel turno gli effetti del veleno.\n"
-"Questa abilità non permette di curare un’unità avvelenata, ma di soltanto "
-"ritardare gli effetti del veleno."
-
 #. [heals]: id=curing
-#: data/core/macros/abilities.cfg:64
+#: data/core/macros/abilities.cfg:67
 msgid "female^cures"
 msgstr "cura"
 
 #. [heals]: id=curing
-#: data/core/macros/abilities.cfg:65
+#: data/core/macros/abilities.cfg:68
 msgid ""
 "A curer can cure a unit of poison, although that unit will receive no "
 "additional healing on the turn it is cured of the poison."
@@ -5225,12 +5186,12 @@ msgstr ""
 "guarita ulteriormente nello stesso turno in cui viene curata dal veleno."
 
 #. [regenerate]: id=regenerates
-#: data/core/macros/abilities.cfg:100
+#: data/core/macros/abilities.cfg:103
 msgid "female^regenerates"
 msgstr "rigenerazione"
 
 #. [regenerate]: id=regenerates
-#: data/core/macros/abilities.cfg:101
+#: data/core/macros/abilities.cfg:104
 msgid ""
 "The unit will heal itself 8 HP per turn. If it is poisoned, it will remove "
 "the poison instead of healing."
@@ -5239,17 +5200,17 @@ msgstr ""
 "il veleno anziché curarsi."
 
 #. [regenerate]: id=regenerates
-#: data/core/macros/abilities.cfg:114
+#: data/core/macros/abilities.cfg:117
 msgid "regenerates +4"
 msgstr "rigenera +4"
 
 #. [regenerate]: id=regenerates
-#: data/core/macros/abilities.cfg:115
+#: data/core/macros/abilities.cfg:118
 msgid "female^regenerates +4"
 msgstr "rigenera +4"
 
 #. [regenerate]: id=regenerates
-#: data/core/macros/abilities.cfg:116
+#: data/core/macros/abilities.cfg:119
 msgid ""
 "The unit will heal itself 4 HP per turn. If it is poisoned, it will remove "
 "the poison instead of healing."
@@ -5258,7 +5219,7 @@ msgstr ""
 "il veleno anziché curarsi."
 
 #. [regenerate]: id=regenerates
-#: data/core/macros/abilities.cfg:117
+#: data/core/macros/abilities.cfg:120
 msgid ""
 "This unit heals itself each turn, though not as much as if stationed in a "
 "village."
@@ -5267,7 +5228,7 @@ msgstr ""
 "trovasse sempre in un villaggio."
 
 #. [resistance]: id=steadfast
-#: data/core/macros/abilities.cfg:138
+#: data/core/macros/abilities.cfg:141
 msgid ""
 "This unit’s resistances are doubled, up to a maximum of 50%, when defending. "
 "Vulnerabilities are not affected."
@@ -5276,17 +5237,17 @@ msgstr ""
 "l’unità è in fase difensiva. Le vulnerabilità non vengono modificate."
 
 #. [chance_to_hit]: id=diversion
-#: data/core/macros/abilities.cfg:151
+#: data/core/macros/abilities.cfg:154
 msgid "diversion"
 msgstr "distrazione"
 
 #. [chance_to_hit]: id=diversion
-#: data/core/macros/abilities.cfg:152
+#: data/core/macros/abilities.cfg:155
 msgid "female^diversion"
 msgstr "distrazione"
 
 #. [chance_to_hit]: id=diversion
-#: data/core/macros/abilities.cfg:153
+#: data/core/macros/abilities.cfg:156
 msgid ""
 "If there is an enemy of the target on the opposite side of the target, this "
 "unit diverts the target’s attention and reduces its chance to hit by 20%."
@@ -5296,7 +5257,7 @@ msgstr ""
 "colpire del 20%."
 
 #. [chance_to_hit]: id=diversion
-#: data/core/macros/abilities.cfg:154
+#: data/core/macros/abilities.cfg:157
 msgid ""
 "If there is an enemy of the target on the opposite side of the target while "
 "attacking it, this unit diverts the target’s attention and reduces its "
@@ -5307,26 +5268,26 @@ msgstr ""
 "possibilità che la colpisca."
 
 #. [chance_to_hit]: id=diversion
-#: data/core/macros/abilities.cfg:155
+#: data/core/macros/abilities.cfg:158
 msgid "accuracy:"
 msgstr "accuratezza:"
 
 #. [chance_to_hit]: id=diversion
-#: data/core/macros/abilities.cfg:156
+#: data/core/macros/abilities.cfg:159
 msgid ""
 "A nearby enemy’s <i>diversion</i> ability is reducing this attack’s accuracy "
 "by 20%."
 msgstr ""
-"L'abilità <i>distrazione</i> di un nemico vicino sta riducendo la precisione "
+"L’abilità <i>distrazione</i> di un nemico vicino sta riducendo la precisione "
 "di questo attacco del 20%."
 
 #. [leadership]: id=leadership
-#: data/core/macros/abilities.cfg:207
+#: data/core/macros/abilities.cfg:210
 msgid "female^leadership"
 msgstr "comando"
 
 #. [leadership]: id=leadership
-#: data/core/macros/abilities.cfg:208
+#: data/core/macros/abilities.cfg:211
 msgid ""
 "This unit can lead other troops in battle.\n"
 "\n"
@@ -5339,12 +5300,12 @@ msgstr ""
 "bonus danni del 25% per ogni differenza di livello."
 
 #. [skirmisher]: id=skirmisher
-#: data/core/macros/abilities.cfg:227
+#: data/core/macros/abilities.cfg:230
 msgid "female^skirmisher"
 msgstr "incursore"
 
 #. [skirmisher]: id=skirmisher
-#: data/core/macros/abilities.cfg:228
+#: data/core/macros/abilities.cfg:231
 msgid ""
 "This unit is skilled in moving past enemies quickly, and ignores all enemy "
 "Zones of Control."
@@ -5353,12 +5314,12 @@ msgstr ""
 "tutte le zone di controllo nemiche."
 
 #. [illuminates]: id=illumination
-#: data/core/macros/abilities.cfg:244
+#: data/core/macros/abilities.cfg:247
 msgid "illuminates"
 msgstr "illumina"
 
 #. [illuminates]: id=illumination
-#: data/core/macros/abilities.cfg:246
+#: data/core/macros/abilities.cfg:249
 msgid ""
 "This unit illuminates the surrounding area, making lawful units fight "
 "better, and chaotic units fight worse.\n"
@@ -5373,12 +5334,12 @@ msgstr ""
 "tramonto come di giorno."
 
 #. [teleport]: id=teleport
-#: data/core/macros/abilities.cfg:261
+#: data/core/macros/abilities.cfg:264
 msgid "female^teleport"
 msgstr "teletrasporto"
 
 #. [teleport]: id=teleport
-#: data/core/macros/abilities.cfg:262
+#: data/core/macros/abilities.cfg:265
 msgid ""
 "This unit may teleport between any two empty villages owned by its side "
 "using one of its moves."
@@ -5387,12 +5348,12 @@ msgstr ""
 "dalla propria squadra, usando uno dei suoi punti movimento."
 
 #. [hides]: id=ambush
-#: data/core/macros/abilities.cfg:293
+#: data/core/macros/abilities.cfg:296
 msgid "female^ambush"
 msgstr "imboscata"
 
 #. [hides]: id=ambush
-#: data/core/macros/abilities.cfg:294
+#: data/core/macros/abilities.cfg:297
 msgid ""
 "This unit can hide in forest, and remain undetected by its enemies.\n"
 "\n"
@@ -5409,17 +5370,17 @@ msgstr ""
 "movimento rimanenti."
 
 #. [hides]: id=burrow
-#: data/core/macros/abilities.cfg:313
+#: data/core/macros/abilities.cfg:316
 msgid "burrow"
 msgstr "nascosto"
 
 #. [hides]: id=burrow
-#: data/core/macros/abilities.cfg:314
+#: data/core/macros/abilities.cfg:317
 msgid "female^burrow"
 msgstr "nascosta"
 
 #. [hides]: id=burrow
-#: data/core/macros/abilities.cfg:315
+#: data/core/macros/abilities.cfg:318
 msgid ""
 "This unit can hide in forest or sand if it is resting (has not moved for a "
 "turn), and remain undetected by its enemies.\n"
@@ -5438,7 +5399,7 @@ msgstr ""
 "immediatamente tutti i punti movimento rimanenti."
 
 #. [hides]: id=burrow
-#: data/core/macros/abilities.cfg:319
+#: data/core/macros/abilities.cfg:322
 msgid ""
 "This unit can burrow under loose dirt, sand, or leaves, concealing itself if "
 "it does not change location."
@@ -5447,7 +5408,12 @@ msgstr ""
 "occultata a patto che non si muova."
 
 #. [hides]: id=nightstalk
-#: data/core/macros/abilities.cfg:337
+#: data/core/macros/abilities.cfg:339
+msgid "female^nightstalk"
+msgstr "agguato notturno"
+
+#. [hides]: id=nightstalk
+#: data/core/macros/abilities.cfg:340
 msgid ""
 "The unit becomes invisible during night.\n"
 "\n"
@@ -5462,12 +5428,12 @@ msgstr ""
 "quest’unità perde immediatamente tutti i punti movimento rimanenti."
 
 #. [hides]: id=concealment
-#: data/core/macros/abilities.cfg:356
+#: data/core/macros/abilities.cfg:359
 msgid "female^concealment"
 msgstr "occultamento"
 
 #. [hides]: id=concealment
-#: data/core/macros/abilities.cfg:357
+#: data/core/macros/abilities.cfg:360
 msgid ""
 "This unit can hide in villages, and remain undetected by its enemies, except "
 "by those standing next to it.\n"
@@ -5485,17 +5451,17 @@ msgstr ""
 "rimanenti."
 
 #. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:375
+#: data/core/macros/abilities.cfg:378
 msgid "submerge"
 msgstr "immersione"
 
 #. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:376
+#: data/core/macros/abilities.cfg:379
 msgid "female^submerge"
 msgstr "immersione"
 
 #. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:377
+#: data/core/macros/abilities.cfg:380
 msgid ""
 "This unit can hide in deep water, and remain undetected by its enemies.\n"
 "\n"
@@ -5512,17 +5478,17 @@ msgstr ""
 "rimanenti."
 
 #. [hides]: id=swamp_lurk
-#: data/core/macros/abilities.cfg:395
+#: data/core/macros/abilities.cfg:398
 msgid "swamp lurk"
 msgstr "agguato palustre"
 
 #. [hides]: id=swamp_lurk
-#: data/core/macros/abilities.cfg:396
+#: data/core/macros/abilities.cfg:399
 msgid "female^swamp lurk"
 msgstr "agguato palustre"
 
 #. [hides]: id=swamp_lurk
-#: data/core/macros/abilities.cfg:397
+#: data/core/macros/abilities.cfg:400
 msgid ""
 "This unit can hide in swamp, and remain undetected by its enemies.\n"
 "\n"
@@ -5539,12 +5505,12 @@ msgstr ""
 "rimanenti."
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:416
+#: data/core/macros/abilities.cfg:419
 msgid "female^feeding"
 msgstr "nutrimento"
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:417
+#: data/core/macros/abilities.cfg:420
 msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a unit, "
 "except units that are immune to plague."
@@ -6484,29 +6450,29 @@ msgstr ""
 "ponte, un’oasi o un villaggio/castello acquatico."
 
 #. [disable]: id=unwieldy
-#: data/core/macros/weapon_specials.cfg:7
+#: data/core/macros/weapon_specials.cfg:10
 msgid "unwieldy"
 msgstr "ingombrante"
 
 #. [disable]: id=unwieldy
-#: data/core/macros/weapon_specials.cfg:8
+#: data/core/macros/weapon_specials.cfg:11
 msgid "This attack can only be used offensively."
 msgstr "Questo attacco può essere utilizzato soltanto offensivamente."
 
 #. [disable]: id=unwieldy
-#: data/core/macros/weapon_specials.cfg:10
+#: data/core/macros/weapon_specials.cfg:13
 msgid "This unit has an unwieldy weapon, which cannot be used defensively."
 msgstr ""
 "Questa unità utilizza un’arma ingombrante che non può essere utilizzata come "
 "difesa."
 
 #. [berserk]: id=berserk
-#: data/core/macros/weapon_specials.cfg:19
+#: data/core/macros/weapon_specials.cfg:22
 msgid "berserk"
 msgstr "furia"
 
 #. [berserk]: id=berserk
-#: data/core/macros/weapon_specials.cfg:20
+#: data/core/macros/weapon_specials.cfg:23
 msgid ""
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the combatants is slain, or 30 rounds of attacks have occurred."
@@ -6516,7 +6482,7 @@ msgstr ""
 "al termine della trentesima serie di attacchi."
 
 #. [damage]: id=backstab
-#: data/core/macros/weapon_specials.cfg:32
+#: data/core/macros/weapon_specials.cfg:35
 msgid ""
 "When used offensively, this attack deals double damage if there is an enemy "
 "of the target on the opposite side of the target, and that unit is not "
@@ -6528,12 +6494,12 @@ msgstr ""
 "comunque paralizzata)."
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
-#: data/core/macros/weapon_specials.cfg:53
+#: data/core/macros/weapon_specials.cfg:56
 msgid "plague ($type)"
 msgstr "contagio ($type)"
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
-#: data/core/macros/weapon_specials.cfg:54
+#: data/core/macros/weapon_specials.cfg:57
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a $type "
 "on the same side as the unit with the Plague attack. This doesn’t work on "
@@ -6544,7 +6510,7 @@ msgstr ""
 "Non funziona sui non-morti e sulle unità nei villaggi."
 
 #. [slow]: id=slow
-#: data/core/macros/weapon_specials.cfg:81
+#: data/core/macros/weapon_specials.cfg:84
 msgid ""
 "This attack slows the target until it ends a turn. Slow halves the damage "
 "caused by attacks and the movement cost for a slowed unit is doubled. A unit "
@@ -6558,12 +6524,12 @@ msgstr ""
 "lumaca nella barra laterale."
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/weapon_specials.cfg:91
+#: data/core/macros/weapon_specials.cfg:94
 msgid "petrifies"
 msgstr "pietrifica"
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/weapon_specials.cfg:92
+#: data/core/macros/weapon_specials.cfg:95
 msgid ""
 "This attack petrifies the target, turning it to stone. Units that have been "
 "petrified may not move or attack."
@@ -6572,48 +6538,25 @@ msgstr ""
 "possono muoversi né attaccare."
 
 #. [chance_to_hit]: id=marksman
-#: data/core/macros/weapon_specials.cfg:103
+#: data/core/macros/weapon_specials.cfg:106
 msgid ""
 "When used offensively, this attack always has at least a 60% chance to hit."
 msgstr ""
 "Usato in fase offensiva, questo attacco ha sempre una probabilità di colpire "
 "pari almeno al 60%."
 
-#. [dummy]: id=naval
-#: data/core/macros/weapon_specials.cfg:129
-msgid "naval"
-msgstr "rostro"
-
-#. [dummy]: id=naval
-#: data/core/macros/weapon_specials.cfg:130
-msgid ""
-"This attack can only be used when both the attacker and the defender are in "
-"water or swamp."
-msgstr ""
-"Questo attacco può essere usato soltanto quando sia l’attaccante che il "
-"difensore si trovano in acqua o in una palude."
-
-#. [dummy]: id=naval
-#: data/core/macros/weapon_specials.cfg:131
-msgid ""
-"This unit has an attack that can only be used when both the attacker and the "
-"defender are in water or swamp."
-msgstr ""
-"Questa unità possiede un attacco che può essere usato soltanto quando sia "
-"l’attaccante che il difensore si trovano in acqua o in una palude."
-
 #. [chance_to_hit]: id=honed
-#: data/core/macros/weapon_specials.cfg:158
+#: data/core/macros/weapon_specials.cfg:132
 msgid "honed"
 msgstr "affinato"
 
 #. [chance_to_hit]: id=honed
-#: data/core/macros/weapon_specials.cfg:159
+#: data/core/macros/weapon_specials.cfg:133
 msgid "This attack is 10% more accurate than other attacks."
 msgstr "Questo attacco è più preciso del 10% rispetto agli altri."
 
 #. [chance_to_hit]: id=honed
-#: data/core/macros/weapon_specials.cfg:160
+#: data/core/macros/weapon_specials.cfg:134
 msgid ""
 "This unit’s “honed” attack is slightly more accurate than other attacks."
 msgstr ""
@@ -6621,12 +6564,12 @@ msgstr ""
 "agli altri attacchi."
 
 #. [swarm]: id=swarm
-#: data/core/macros/weapon_specials.cfg:171
+#: data/core/macros/weapon_specials.cfg:145
 msgid "swarm"
 msgstr "sciame"
 
 #. [swarm]: id=swarm
-#: data/core/macros/weapon_specials.cfg:172
+#: data/core/macros/weapon_specials.cfg:146
 msgid ""
 "The number of strikes of this attack decreases when the unit is wounded. The "
 "number of strikes is proportional to the percentage of its of maximum HP the "
@@ -6639,12 +6582,12 @@ msgstr ""
 "PF massimi otterrà 3/4 del numero di colpi totali."
 
 #. [damage]: id=charge
-#: data/core/macros/weapon_specials.cfg:182
+#: data/core/macros/weapon_specials.cfg:156
 msgid "charge"
 msgstr "carica"
 
 #. [damage]: id=charge
-#: data/core/macros/weapon_specials.cfg:183
+#: data/core/macros/weapon_specials.cfg:157
 msgid ""
 "When used offensively, this attack deals double damage to the target. It "
 "also causes this unit to take double damage from the target’s counterattack."
@@ -6654,17 +6597,17 @@ msgstr ""
 "contrattacco nemico."
 
 #. [damage]: id=guard
-#: data/core/macros/weapon_specials.cfg:196
+#: data/core/macros/weapon_specials.cfg:170
 msgid "guard"
 msgstr "guardia"
 
 #. [damage]: id=guard
-#: data/core/macros/weapon_specials.cfg:197
+#: data/core/macros/weapon_specials.cfg:171
 msgid "This attack blocks half of the damage from its target’s strikes."
 msgstr "Questo attacco dimezza il danno dei colpi del bersaglio."
 
 #. [damage]: id=guard
-#: data/core/macros/weapon_specials.cfg:198
+#: data/core/macros/weapon_specials.cfg:172
 msgid ""
 "This unit’s guarding attack can halve incoming damage, but only when used in "
 "combat."
@@ -6673,7 +6616,7 @@ msgstr ""
 "potenziali in arrivo, ma soltanto se usata in combattimento."
 
 #. [drains]: id=drains
-#: data/core/macros/weapon_specials.cfg:210
+#: data/core/macros/weapon_specials.cfg:184
 msgid ""
 "This unit drains health from living units, healing itself for half the "
 "amount of damage it deals (rounded down)."
@@ -6683,12 +6626,12 @@ msgstr ""
 "difetto)."
 
 #. [firststrike]: id=firststrike
-#: data/core/macros/weapon_specials.cfg:220
+#: data/core/macros/weapon_specials.cfg:194
 msgid "first strike"
 msgstr "attacco improvviso"
 
 #. [firststrike]: id=firststrike
-#: data/core/macros/weapon_specials.cfg:221
+#: data/core/macros/weapon_specials.cfg:195
 msgid ""
 "This unit always strikes first with this attack, even if they are defending."
 msgstr ""
@@ -6696,7 +6639,7 @@ msgstr ""
 "fase difensiva."
 
 #. [poison]: id=poison
-#: data/core/macros/weapon_specials.cfg:232
+#: data/core/macros/weapon_specials.cfg:206
 msgid ""
 "This attack poisons living targets. Poisoned units lose 8 HP every turn "
 "until they are cured or are reduced to 1 HP. Poison cannot, of itself, kill "
@@ -6707,12 +6650,12 @@ msgstr ""
 "veleno non può uccidere da solo un’unità."
 
 #. [stun]: id=stun
-#: data/core/macros/weapon_specials.cfg:242
+#: data/core/macros/weapon_specials.cfg:216
 msgid "stun"
 msgstr "stordimento"
 
 #. [stun]: id=stun
-#: data/core/macros/weapon_specials.cfg:243
+#: data/core/macros/weapon_specials.cfg:217
 msgid ""
 "This attack hits so hard that the opponent is dazed and can no longer "
 "enforce a zone of control. The effect wears off on the opponent’s next turn."
@@ -6722,7 +6665,7 @@ msgstr ""
 "al turno successivo del bersaglio."
 
 #. [stun]: id=stun
-#: data/core/macros/weapon_specials.cfg:244
+#: data/core/macros/weapon_specials.cfg:218
 msgid ""
 "This unit is able to stun its enemies, disrupting their zones of control."
 msgstr ""
@@ -6730,12 +6673,12 @@ msgstr ""
 "controllo."
 
 #. [damage_type]: id=arcane_damage
-#: data/core/macros/weapon_specials.cfg:253
+#: data/core/macros/weapon_specials.cfg:227
 msgid "arcane"
 msgstr "arcano"
 
 #. [damage_type]: id=arcane_damage
-#: data/core/macros/weapon_specials.cfg:254
+#: data/core/macros/weapon_specials.cfg:228
 msgid ""
 "This attack combines the arcane type with the type of weapon used so that "
 "resistance to the arcane type does not penalize the user."
@@ -6745,7 +6688,7 @@ msgstr ""
 "l’utilizzatore."
 
 #. [damage_type]: id=arcane_damage
-#: data/core/macros/weapon_specials.cfg:255
+#: data/core/macros/weapon_specials.cfg:229
 msgid ""
 "This unit can use the arcane type when the opponent is particularly "
 "sensitive to it in relation to the weapon on which it is applied."
@@ -8815,6 +8758,79 @@ msgstr "Costo di visione"
 #: src/help/help_topic_generators.cpp:837
 msgid "Jamming Cost"
 msgstr "Costo di disturbo"
+
+#~ msgid ""
+#~ "Allows the unit to heal adjacent allied units at the beginning of our "
+#~ "turn.\n"
+#~ "\n"
+#~ "A unit cared for by this healer may heal up to 4 HP per turn, or stop "
+#~ "poison from taking effect for that turn.\n"
+#~ "A poisoned unit cannot be cured of its poison by a healer, and must seek "
+#~ "the care of a village or a unit that can cure."
+#~ msgstr ""
+#~ "Permette all’unità di guarire le unità alleate adiacenti all’inizio del "
+#~ "turno.\n"
+#~ "\n"
+#~ "L’unità di cui si occupa il guaritore potrà recuperare fino a 4 PF per "
+#~ "turno, oppure vedrà annullati per quel turno gli effetti del veleno.\n"
+#~ "I guaritori non possono curare dal veleno un’unità avvelenata, perciò "
+#~ "questa dovrà cercare l’assistenza di un villaggio o di un’unità con "
+#~ "l’abilità “cura”."
+
+#~ msgid ""
+#~ "This unit combines herbal remedies with magic to heal units more quickly "
+#~ "than is normally possible on the battlefield.\n"
+#~ "\n"
+#~ "A unit cared for by this healer may heal up to 8 HP per turn, or stop "
+#~ "poison from taking effect for that turn.\n"
+#~ "A poisoned unit cannot be cured of its poison by a healer, and must seek "
+#~ "the care of a village or a unit that can cure."
+#~ msgstr ""
+#~ "Quest’unità combina rimedi a base di erbe con la magia per guarire le "
+#~ "unità più velocemente di quanto sia normalmente possibile sul campo di "
+#~ "battaglia.\n"
+#~ "\n"
+#~ "L’unità di cui si occupa il guaritore potrà recuperare fino a 8 PF per "
+#~ "turno oppure vedrà annullati per quel turno gli effetti del veleno.\n"
+#~ "I guaritori non possono curare dal veleno un’unità avvelenata, perciò "
+#~ "questa dovrà cercare l’assistenza di un villaggio o di un’unità con "
+#~ "l’abilità “cura”."
+
+#~ msgid ""
+#~ "This unit combines herbal remedies with magic to heal units more quickly "
+#~ "than is normally possible on the battlefield.\n"
+#~ "\n"
+#~ "A unit cared for by this healer may heal up to 12 HP per turn, or stop "
+#~ "poison from taking effect for that turn.\n"
+#~ "A poisoned unit cannot be cured of its poison by a healer, and must seek "
+#~ "the care of a village or a unit that can cure."
+#~ msgstr ""
+#~ "Quest’unità combina rimedi a base di erbe con la magia per guarire le "
+#~ "unità più velocemente di quanto sia normalmente possibile sul campo di "
+#~ "battaglia.\n"
+#~ "\n"
+#~ "L’unità di cui si occupa il guaritore potrà recuperare fino a 12 PF per "
+#~ "turno oppure vedrà annullati per quel turno gli effetti del veleno.\n"
+#~ "I guaritori non possono curare dal veleno un’unità avvelenata, perciò "
+#~ "questa dovrà cercare l’assistenza di un villaggio o di un’unità con "
+#~ "l’abilità “cura”."
+
+#~ msgid "naval"
+#~ msgstr "rostro"
+
+#~ msgid ""
+#~ "This attack can only be used when both the attacker and the defender are "
+#~ "in water or swamp."
+#~ msgstr ""
+#~ "Questo attacco può essere usato soltanto quando sia l’attaccante che il "
+#~ "difensore si trovano in acqua o in una palude."
+
+#~ msgid ""
+#~ "This unit has an attack that can only be used when both the attacker and "
+#~ "the defender are in water or swamp."
+#~ msgstr ""
+#~ "Questa unità possiede un attacco che può essere usato soltanto quando sia "
+#~ "l’attaccante che il difensore si trovano in acqua o in una palude."
 
 #~ msgid "Due to the diversion, the accuracy of this attack is reduced by 20%."
 #~ msgstr ""

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.4+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-01-20 11:31-0600\n"
+"POT-Creation-Date: 2026-02-25 19:03-0600\n"
 "PO-Revision-Date: 2012-09-03 17:27+0100\n"
 "Last-Translator: Nino <nino.gunjaca@zg.t-com.hr>\n"
 "Language-Team: none\n"
@@ -349,13 +349,13 @@ msgstr ""
 msgid "Load Map or Scenario"
 msgstr "Mapa učitana iz scenarija"
 
-#: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1147
+#: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1141
 #, fuzzy
 #| msgid "(New Map)"
 msgid "New Map"
 msgstr "(Nova Mapa)"
 
-#: src/editor/map/context_manager.cpp:326 src/editor/map/map_context.cpp:1147
+#: src/editor/map/context_manager.cpp:326 src/editor/map/map_context.cpp:1141
 #, fuzzy
 #| msgid "(New Map)"
 msgid "New Scenario"
@@ -409,7 +409,7 @@ msgid "Save Map As"
 msgstr "Spremi mapu kao"
 
 #: src/editor/map/context_manager.cpp:704
-#: src/editor/map/context_manager.cpp:753 src/editor/map/map_context.cpp:274
+#: src/editor/map/context_manager.cpp:753 src/editor/map/map_context.cpp:228
 #: src/editor/palette/location_palette.cpp:263
 msgid "Error"
 msgstr ""
@@ -506,71 +506,74 @@ msgstr "Igrač $player_number"
 msgid "The size of the target map is different from the current map"
 msgstr "Veličina označene mape je veća od ove mape"
 
-#: src/editor/map/map_context.cpp:187
+#: src/editor/map/map_context.cpp:188
 msgid "File not found"
 msgstr "Fajl nije pronađen"
 
-#: src/editor/map/map_context.cpp:194
+#: src/editor/map/map_context.cpp:195
 #, fuzzy
 #| msgid "Empty map file"
 msgid "Empty file"
 msgstr "Prazni fajl mape"
 
-#: src/editor/map/map_context.cpp:203
+#: src/editor/map/map_context.cpp:204
 msgid "File does not have .map, .cfg, or .mask extension"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:250
+#: src/editor/map/map_context.cpp:227
 msgid ""
-"The map file looks like a scenario, but the map_data value does not point to "
-"an existing file"
-msgstr ""
-"Fajl mape izgleda kao scenarij,ali map_data ne pokazuje na postojeći fajl"
-
-#: src/editor/map/map_context.cpp:269
-msgid "Found the characters ‘<<’ indicating inline lua is present — aborting"
+"Failed to load the scenario: $error\n"
+"\n"
+"Attempting to load only the map."
 msgstr ""
 
-#: src/editor/map/map_context.cpp:274
-msgid "Failed to load the scenario, attempting to load only the map."
-msgstr ""
-
-#: src/editor/map/map_context.cpp:281
+#: src/editor/map/map_context.cpp:253
 #, fuzzy
 #| msgid ""
 #| "The map file looks like a scenario, but the map_data value does not point "
 #| "to an existing file"
 msgid ""
-"The map file looks like a scenario, but the map_file value does not point to "
+"The file looks like a scenario, but the map_data attribute does not point to "
 "an existing file"
 msgstr ""
 "Fajl mape izgleda kao scenarij,ali map_data ne pokazuje na postojeći fajl"
 
-#: src/editor/map/map_context.cpp:296
-msgid "Unable to parse file to find map data"
+#: src/editor/map/map_context.cpp:268
+#, fuzzy
+#| msgid ""
+#| "The map file looks like a scenario, but the map_data value does not point "
+#| "to an existing file"
+msgid ""
+"The file looks like a scenario, but the map_file attribute does not point to "
+"an existing file"
+msgstr ""
+"Fajl mape izgleda kao scenarij,ali map_data ne pokazuje na postojeći fajl"
+
+#: src/editor/map/map_context.cpp:448
+msgid "Confirm"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:841 src/editor/map/map_context.cpp:881
+#: src/editor/map/map_context.cpp:835 src/editor/map/map_context.cpp:875
 #, fuzzy
 #| msgid "Could not save the map: $msg"
 msgid "Could not save time schedule: $msg"
 msgstr "Nije bilo moguće spremiti mapu: $msg"
 
-#: src/editor/map/map_context.cpp:875
+#: src/editor/map/map_context.cpp:869
 msgid "Time schedule saved."
 msgstr ""
 
-#: src/editor/map/map_context.cpp:921
+#: src/editor/map/map_context.cpp:915
 #, fuzzy
 #| msgid "Could not save the map: $msg"
 msgid "Could not save the scenario: $msg"
 msgstr "Nije bilo moguće spremiti mapu: $msg"
 
-#: src/editor/map/map_context.cpp:952
+#: src/editor/map/map_context.cpp:946
 msgid "Could not save into scenario"
 msgstr "Nije bilo moguće spremiti u scenarij"
 
-#: src/editor/map/map_context.cpp:962
+#: src/editor/map/map_context.cpp:956
 msgid "Could not save the map: $msg"
 msgstr "Nije bilo moguće spremiti mapu: $msg"
 

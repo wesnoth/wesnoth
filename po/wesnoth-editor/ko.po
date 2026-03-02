@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-01-20 11:31-0600\n"
+"POT-Creation-Date: 2026-02-25 19:03-0600\n"
 "PO-Revision-Date: 2011-11-14 21:31+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
@@ -343,11 +343,11 @@ msgstr ""
 msgid "Load Map or Scenario"
 msgstr "시나리오에서 로드된 맵"
 
-#: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1147
+#: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1141
 msgid "New Map"
 msgstr "새로운 맵"
 
-#: src/editor/map/context_manager.cpp:326 src/editor/map/map_context.cpp:1147
+#: src/editor/map/context_manager.cpp:326 src/editor/map/map_context.cpp:1141
 msgid "New Scenario"
 msgstr "새로운 시나리오"
 
@@ -395,7 +395,7 @@ msgid "Save Map As"
 msgstr "다른 이름으로 맵 저장"
 
 #: src/editor/map/context_manager.cpp:704
-#: src/editor/map/context_manager.cpp:753 src/editor/map/map_context.cpp:274
+#: src/editor/map/context_manager.cpp:753 src/editor/map/map_context.cpp:228
 #: src/editor/palette/location_palette.cpp:263
 msgid "Error"
 msgstr "에러"
@@ -480,69 +480,72 @@ msgstr "$side_num 번 플레이어"
 msgid "The size of the target map is different from the current map"
 msgstr "선택한 맵의 사이즈가 현재 맵의 사이즈와 다릅니다."
 
-#: src/editor/map/map_context.cpp:187
+#: src/editor/map/map_context.cpp:188
 msgid "File not found"
 msgstr "파일이 발견되지 않습니다"
 
-#: src/editor/map/map_context.cpp:194
+#: src/editor/map/map_context.cpp:195
 msgid "Empty file"
 msgstr "빈 파일"
 
-#: src/editor/map/map_context.cpp:203
+#: src/editor/map/map_context.cpp:204
 msgid "File does not have .map, .cfg, or .mask extension"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:250
+#: src/editor/map/map_context.cpp:227
 msgid ""
-"The map file looks like a scenario, but the map_data value does not point to "
-"an existing file"
-msgstr ""
-"맵 파일이 시나리오처럼 보이지만map_data 값이 기존 파일을 지목하지 않습니다"
-
-#: src/editor/map/map_context.cpp:269
-msgid "Found the characters ‘<<’ indicating inline lua is present — aborting"
+"Failed to load the scenario: $error\n"
+"\n"
+"Attempting to load only the map."
 msgstr ""
 
-#: src/editor/map/map_context.cpp:274
-msgid "Failed to load the scenario, attempting to load only the map."
-msgstr ""
-
-#: src/editor/map/map_context.cpp:281
+#: src/editor/map/map_context.cpp:253
 #, fuzzy
 #| msgid ""
 #| "The map file looks like a scenario, but the map_data value does not point "
 #| "to an existing file"
 msgid ""
-"The map file looks like a scenario, but the map_file value does not point to "
+"The file looks like a scenario, but the map_data attribute does not point to "
 "an existing file"
 msgstr ""
 "맵 파일이 시나리오처럼 보이지만map_data 값이 기존 파일을 지목하지 않습니다"
 
-#: src/editor/map/map_context.cpp:296
-msgid "Unable to parse file to find map data"
+#: src/editor/map/map_context.cpp:268
+#, fuzzy
+#| msgid ""
+#| "The map file looks like a scenario, but the map_data value does not point "
+#| "to an existing file"
+msgid ""
+"The file looks like a scenario, but the map_file attribute does not point to "
+"an existing file"
+msgstr ""
+"맵 파일이 시나리오처럼 보이지만map_data 값이 기존 파일을 지목하지 않습니다"
+
+#: src/editor/map/map_context.cpp:448
+msgid "Confirm"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:841 src/editor/map/map_context.cpp:881
+#: src/editor/map/map_context.cpp:835 src/editor/map/map_context.cpp:875
 #, fuzzy
 #| msgid "Could not save the scenario: $msg"
 msgid "Could not save time schedule: $msg"
 msgstr "시나리오를 저장 할 수 없습니다: $msg"
 
-#: src/editor/map/map_context.cpp:875
+#: src/editor/map/map_context.cpp:869
 #, fuzzy
 #| msgid "Time Schedule Menu"
 msgid "Time schedule saved."
 msgstr "시간 스케줄 메뉴"
 
-#: src/editor/map/map_context.cpp:921
+#: src/editor/map/map_context.cpp:915
 msgid "Could not save the scenario: $msg"
 msgstr "시나리오를 저장 할 수 없습니다: $msg"
 
-#: src/editor/map/map_context.cpp:952
+#: src/editor/map/map_context.cpp:946
 msgid "Could not save into scenario"
 msgstr "시나리오 안에 저장 할 수 없습니다"
 
-#: src/editor/map/map_context.cpp:962
+#: src/editor/map/map_context.cpp:956
 msgid "Could not save the map: $msg"
 msgstr "맵을 저장 할 수 없습니다: $msg"
 

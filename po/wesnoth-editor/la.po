@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth-editor 1.2\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-01-20 11:31-0600\n"
+"POT-Creation-Date: 2026-02-25 19:03-0600\n"
 "PO-Revision-Date: 2013-06-23 02:19-0000\n"
 "Last-Translator: Thomas Hockings <elprofesh@gmail.com>\n"
 "Language-Team: Latin <http://wiki.wesnoth.org/LatinTranslation>\n"
@@ -349,13 +349,13 @@ msgstr ""
 msgid "Load Map or Scenario"
 msgstr "Charta ab scaenario arcessita"
 
-#: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1147
+#: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1141
 #, fuzzy
 #| msgid "(New Map)"
 msgid "New Map"
 msgstr "(Charta Nova)"
 
-#: src/editor/map/context_manager.cpp:326 src/editor/map/map_context.cpp:1147
+#: src/editor/map/context_manager.cpp:326 src/editor/map/map_context.cpp:1141
 #, fuzzy
 #| msgid "(New Side)"
 msgid "New Scenario"
@@ -411,7 +411,7 @@ msgid "Save Map As"
 msgstr "Chartam Servare ut..."
 
 #: src/editor/map/context_manager.cpp:704
-#: src/editor/map/context_manager.cpp:753 src/editor/map/map_context.cpp:274
+#: src/editor/map/context_manager.cpp:753 src/editor/map/map_context.cpp:228
 #: src/editor/palette/location_palette.cpp:263
 msgid "Error"
 msgstr ""
@@ -508,73 +508,76 @@ msgstr "Lusor $player_number"
 msgid "The size of the target map is different from the current map"
 msgstr "Magnitudo chartae electae dissimilis chartae praesenti est"
 
-#: src/editor/map/map_context.cpp:187
+#: src/editor/map/map_context.cpp:188
 msgid "File not found"
 msgstr "Fasciculus non inventus est"
 
-#: src/editor/map/map_context.cpp:194
+#: src/editor/map/map_context.cpp:195
 #, fuzzy
 #| msgid "Empty map file"
 msgid "Empty file"
 msgstr "Fasciculus inanis chartae"
 
-#: src/editor/map/map_context.cpp:203
+#: src/editor/map/map_context.cpp:204
 msgid "File does not have .map, .cfg, or .mask extension"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:250
+#: src/editor/map/map_context.cpp:227
 msgid ""
-"The map file looks like a scenario, but the map_data value does not point to "
-"an existing file"
-msgstr ""
-"Fasciculus chartae scaenarium esse videtur, sed numerus map_data fasciculum "
-"verum non indicat"
-
-#: src/editor/map/map_context.cpp:269
-msgid "Found the characters ‘<<’ indicating inline lua is present — aborting"
+"Failed to load the scenario: $error\n"
+"\n"
+"Attempting to load only the map."
 msgstr ""
 
-#: src/editor/map/map_context.cpp:274
-msgid "Failed to load the scenario, attempting to load only the map."
-msgstr ""
-
-#: src/editor/map/map_context.cpp:281
+#: src/editor/map/map_context.cpp:253
 #, fuzzy
 #| msgid ""
 #| "The map file looks like a scenario, but the map_data value does not point "
 #| "to an existing file"
 msgid ""
-"The map file looks like a scenario, but the map_file value does not point to "
+"The file looks like a scenario, but the map_data attribute does not point to "
 "an existing file"
 msgstr ""
 "Fasciculus chartae scaenarium esse videtur, sed numerus map_data fasciculum "
 "verum non indicat"
 
-#: src/editor/map/map_context.cpp:296
-msgid "Unable to parse file to find map data"
+#: src/editor/map/map_context.cpp:268
+#, fuzzy
+#| msgid ""
+#| "The map file looks like a scenario, but the map_data value does not point "
+#| "to an existing file"
+msgid ""
+"The file looks like a scenario, but the map_file attribute does not point to "
+"an existing file"
+msgstr ""
+"Fasciculus chartae scaenarium esse videtur, sed numerus map_data fasciculum "
+"verum non indicat"
+
+#: src/editor/map/map_context.cpp:448
+msgid "Confirm"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:841 src/editor/map/map_context.cpp:881
+#: src/editor/map/map_context.cpp:835 src/editor/map/map_context.cpp:875
 #, fuzzy
 #| msgid "Could not save the map: $msg"
 msgid "Could not save time schedule: $msg"
 msgstr "Non potest ut charta servetur: $msg"
 
-#: src/editor/map/map_context.cpp:875
+#: src/editor/map/map_context.cpp:869
 msgid "Time schedule saved."
 msgstr ""
 
-#: src/editor/map/map_context.cpp:921
+#: src/editor/map/map_context.cpp:915
 #, fuzzy
 #| msgid "Could not save the map: $msg"
 msgid "Could not save the scenario: $msg"
 msgstr "Non potest ut charta servetur: $msg"
 
-#: src/editor/map/map_context.cpp:952
+#: src/editor/map/map_context.cpp:946
 msgid "Could not save into scenario"
 msgstr "Non potest ut ad scaenarium servetur"
 
-#: src/editor/map/map_context.cpp:962
+#: src/editor/map/map_context.cpp:956
 msgid "Could not save the map: $msg"
 msgstr "Non potest ut charta servetur: $msg"
 

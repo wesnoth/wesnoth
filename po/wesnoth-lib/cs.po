@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-01-20 11:31-0600\n"
+"POT-Creation-Date: 2026-02-25 19:03-0600\n"
 "PO-Revision-Date: 2026-01-22 20:10+0100\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
@@ -300,8 +300,8 @@ msgid ""
 "identical. See <ref>dst='..terrain_sand' text='sand'</ref>."
 msgstr ""
 "<italic>text='Pouště'</italic> mají poněkud odlišné složení než malé jámy "
-"s pískem nebo pláže, hru ale ovlivňují obdobně. Podívej se na "
-"<ref>dst='..terrain_sand' text='písek'</ref>."
+"s pískem nebo pláže, hru ale ovlivňují obdobně. Podívej se na <ref>dst='.."
+"terrain_sand' text='písek'</ref>."
 
 #. [terrain_type]: id=sand_beach
 #. [terrain_type]: id=sand
@@ -2579,7 +2579,7 @@ msgstr "<b><span font_family='DejaVu Sans'>✔</span> Zkopírováno</b>"
 #: data/gui/themes/default/dialogs/game_version.cfg:991
 #: data/gui/themes/default/dialogs/gamestate_inspector.cfg:398
 #: data/gui/themes/default/dialogs/generator_settings.cfg:190
-#: data/gui/themes/default/dialogs/help_browser.cfg:296
+#: data/gui/themes/default/dialogs/help_browser.cfg:295
 #: data/gui/themes/default/dialogs/lobby_player_info.cfg:292
 #: data/gui/themes/default/dialogs/lua_interpreter.cfg:130
 #: data/gui/themes/default/dialogs/message.cfg:135
@@ -2671,7 +2671,7 @@ msgstr "OK"
 #: data/gui/themes/default/dialogs/addon_connect.cfg:206
 #: data/gui/themes/default/dialogs/addon_license_prompt.cfg:113
 #: data/gui/themes/default/dialogs/addon_uninstall_list.cfg:170
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:569
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:623
 #: data/gui/themes/default/dialogs/campaign_difficulty.cfg:234
 #: data/gui/themes/default/dialogs/core_dialog.cfg:241
 #: data/gui/themes/default/dialogs/custom_tod.cfg:524
@@ -2717,7 +2717,7 @@ msgstr "OK"
 #: data/gui/themes/default/dialogs/theme_list.cfg:155
 #: data/gui/themes/default/dialogs/tod_new_schedule.cfg:139
 #: data/gui/themes/default/dialogs/unit_attack.cfg:233
-#: data/gui/themes/default/dialogs/units_dialog.cfg:623
+#: data/gui/themes/default/dialogs/units_dialog.cfg:622
 #: src/gui/dialogs/units_dialog.cpp:79 src/hotkey/hotkey_command.cpp:79
 msgid "Cancel"
 msgstr "Zrušit"
@@ -3065,7 +3065,104 @@ msgid "Defender"
 msgstr "Obránce"
 
 #. [label]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:191
+#. The campaign_landing^ strings are shown in the right-hand panel when the campaign menu is opened.
+#. This one is the page title, shown in bold.
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:205
+msgid "campaign_landing^Welcome to Wesnoth v1.20"
+msgstr ""
+
+#. [label]
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:207
+msgid ""
+"campaign_landing^<b>If you’re new to Wesnoth</b>, the opening story arc "
+"starts with <span color='#e1e119' style='italic'>The South Guard</span> and "
+"follows the campaigns in the order that they’re listed on the left, "
+"concluding half a century later with <span color='#e1e119' "
+"style='italic'>Heir to the Throne</span>. The intended way to learn both the "
+"story and the game mechanics is to play the campaigns in that order."
+msgstr ""
+
+#. [label]
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:209
+msgid ""
+"campaign_landing^<b>If you’re a returning player</b>, you’ll notice a number "
+"of changes since v1.18:"
+msgstr ""
+
+#. [label]
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:211
+msgid ""
+"campaign_landing^<span color='#e1e119' style='italic'>Heir to the Throne</"
+"span> now features an open world with 33 branching scenarios, each awarding "
+"Konrad unique recruits, companions, or items. The original campaign is still "
+"available as <i>Heir to the Throne, Classic</i>."
+msgstr ""
+
+#. [label]
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:213
+msgid ""
+"campaign_landing^<span color='#e1e119' style='italic'>The Deceiver’s Gambit</"
+"span> replaces <i>Delfador’s Memoirs</i>. Follow a young mage from the "
+"shores of Alduin to the halls of the King as they war against the fierce "
+"orcs of the north. Choose between 23 magic spells as you bear witness to the "
+"rise of a tyrant."
+msgstr ""
+
+#. [label]
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:215
+msgid ""
+"campaign_landing^<span color='#e1e119' style='italic'>Dusk of Dawn</span> is "
+"our first troll campaign. Lead the Golden Flame Tribe out from the bowels of "
+"Irdya and up to the surface world — but beware what awaits you there."
+msgstr ""
+
+#. [label]
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:217
+msgid ""
+"campaign_landing^<span color='#e1e119' style='italic'>Of Pearls and Pirates</"
+"span> is a new beginner-oriented campaign set in a sleepy fishing town on "
+"the Bay of Pearls. When corsairs strike, the villagers must join forces with "
+"the local merfolk and take the fight to the pirates."
+msgstr ""
+
+#. [label]
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:219
+msgid ""
+"campaign_landing^<span color='#e1e119' style='italic'>The South Guard</span> "
+"has been significantly revised, and now replaces the classic <i>Battle "
+"Training</i> tutorial. For players nostalgic for Delfador's tutelage, the "
+"original tutorial is still available as part of <i>Heir to the Throne, "
+"Classic</i>."
+msgstr ""
+
+#. [label]
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:221
+msgid ""
+"campaign_landing^<span color='#e1e119' style='italic'>The Hammer of "
+"Thursagan</span> has been enhanced with story adjustments, improved enemy "
+"AI, a new Thunderer advancement, a redesign of <i>High Pass</i>, and the re-"
+"addition of the formerly removed <i>Mages and Drakes</i>."
+msgstr ""
+
+#. [label]
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:223
+msgid ""
+"campaign_landing^<span color='#e1e119' style='italic'>Winds of Fate</span> "
+"has been rebalanced with much lower recall costs, redesigned wildlife "
+"spawners and AI, and a much larger mid-campaign battle. Several characters "
+"and dialogue sequences were changed for better continuity with other "
+"campaigns."
+msgstr ""
+
+#. [label]
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:225
+msgid ""
+"campaign_landing^For a full list of changes, consult our official changelog "
+"at https://www.wesnoth.org/start/1.20/"
+msgstr ""
+
+#. [label]
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:245
 msgid ""
 "In addition to the mainline campaigns, Wesnoth also has an ever-growing list "
 "of add-on content created by other players available via the Add-ons server, "
@@ -3080,7 +3177,9 @@ msgstr ""
 "vyzkoušej!"
 
 #. [label]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:208
+#. "more than 15" gives a little leeway to add or remove one without changing the translatable text.
+#. It's already ambiguous, 1.18 has 19 campaigns, if you include the tutorial and multiplayer-only World Conquest.
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:262
 msgid ""
 "Wesnoth normally includes more than 15 mainline campaigns, even before "
 "installing any from the add-ons server. If you’ve installed the game via a "
@@ -3097,7 +3196,7 @@ msgstr ""
 #. [label]: id=name
 #. [label]
 #. [toggle_button]: id=unit_name
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:248
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:302
 #: data/gui/themes/default/dialogs/game_load.cfg:170
 #: data/gui/themes/default/dialogs/mp_connect.cfg:159
 #: data/gui/themes/default/dialogs/mp_faction_select.cfg:33
@@ -3108,95 +3207,95 @@ msgid "Name"
 msgstr "Název"
 
 #. [toggle_button]: id=sort_name
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:249
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:303
 msgid "Sort by full campaign name in alphabetical order"
 msgstr "Řadit dle jména tažení v abecedním pořadí"
 
 #. [toggle_button]: id=sort_time
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:260
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:314
 msgid "Timeline"
 msgstr "Časová osa"
 
 #. [toggle_button]: id=sort_time
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:261
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:315
 msgid "Sort in approximate chronological order of story events"
 msgstr "Řadit dle přibližného chronologického rozložení událostí v příběhu"
 
 #. [multimenu_button]: id=filter_completion
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:271
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:325
 msgid "Filter by campaign completion status"
 msgstr "Filtrovat podle stavu dokončení tažení"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:274
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:328
 msgid "Not Completed"
 msgstr "Nedokončeno"
 
 #. [option]
 #. campaigns which the player hasn't beaten, rather than campaigns which the author hasn't finished writing
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:276
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:330
 msgid "Show campaigns not completed by player"
 msgstr "Ukázat hráčem nedokončená tažení"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:280
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:334
 msgid "Completed: Bronze"
 msgstr "Dokončeno: bronz"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:281
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:335
 msgid "Show campaigns completed at easiest difficulty"
 msgstr "Ukázat tažení dokončená na nejlehčí obtížnost"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:285
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:339
 msgid "Completed: Silver"
 msgstr "Dokončeno: stříbro"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:286
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:340
 msgid "Show campaigns completed at intermediate difficulties"
 msgstr "Ukázat tažení dokončená na prostřední obtížnosti"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:290
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:344
 msgid "Completed: Gold"
 msgstr "Dokončeno: zlato"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:291
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:345
 msgid "Show campaigns completed at hardest difficulty"
 msgstr "Ukázat tažení dokončená na nejtěžší obtížnost"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:295
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:349
 msgid "Completed: All"
 msgstr "Dokončeno: vše"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:296
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:350
 msgid "Show completed campaigns"
 msgstr "Ukázat dokončená tažení"
 
 #. [label]
 #. [label]: id=mods_header
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:347
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:401
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:209
 msgid "Modifications:"
 msgstr "Rozšíření:"
 
 #. [label]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:372
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:426
 msgid "Combat:"
 msgstr "Souboj:"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:387
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:441
 msgid "Default RNG"
 msgstr "Výchozí GNČ"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:388
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:442
 msgid ""
 "Pure, unbiased randomness; the way Wesnoth is intended to be played.\n"
 "\n"
@@ -3210,12 +3309,12 @@ msgstr ""
 "dvakrát minout."
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:393
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:447
 msgid "Predictable RNG"
 msgstr "Předvídatelný GNČ"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:394
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:448
 msgid ""
 "Identical to Default RNG, except loading a saved game will not change the "
 "outcome of an attack.\n"
@@ -3230,12 +3329,12 @@ msgstr ""
 "dřívější uložení a provedeš stejný útok znovu. Oba údery stejně zasáhnou."
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:399
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:453
 msgid "Reduced RNG"
 msgstr "Omezený GNČ"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:400
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:454
 msgid ""
 "Hits and misses are much more consistent. This tends to make small-scale "
 "engagements easier to plan.\n"
@@ -3250,36 +3349,36 @@ msgstr ""
 "a alespoň jednou mineš."
 
 #. [label]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:417
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:471
 msgid "Difficulty:"
 msgstr "Obtížnost:"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:431
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:485
 msgid "Easy"
 msgstr "Lehká"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:434
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:488
 msgid "Normal"
 msgstr "Normální"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:437
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:491
 msgid "Hard"
 msgstr "Těžká"
 
 #. [label]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:494
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:548
 msgid "Play a Campaign"
 msgstr "Hrát tažení"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=proceed
 #. [button]: id=ok
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:558
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:612
 #: data/gui/themes/default/dialogs/campaign_difficulty.cfg:221
-#: src/gui/dialogs/campaign_selection.cpp:77
+#: src/gui/dialogs/campaign_selection.cpp:82
 msgid "game^Play"
 msgstr "Hrát"
 
@@ -3350,7 +3449,7 @@ msgstr "Načíst jádro"
 #: data/gui/themes/default/dialogs/core_dialog.cfg:228
 #: data/gui/themes/default/dialogs/language_selection.cfg:293
 #: src/gui/dialogs/editor/custom_tod.cpp:172
-#: src/gui/dialogs/editor/edit_unit.cpp:303
+#: src/gui/dialogs/editor/edit_unit.cpp:297
 #: src/preferences/preferences.cpp:1342
 msgid "Select"
 msgstr "Vybrat"
@@ -3499,8 +3598,8 @@ msgstr "Ukázat změny barev na mapě"
 #: data/gui/themes/default/dialogs/depcheck_confirm_change.cfg:40
 #: src/gui/dialogs/addon/manager.cpp:1029
 #: src/gui/dialogs/editor/custom_tod.cpp:187
-#: src/gui/dialogs/editor/edit_unit.cpp:318
-#: src/gui/dialogs/editor/edit_unit.cpp:970 src/gui/dialogs/file_dialog.cpp:371
+#: src/gui/dialogs/editor/edit_unit.cpp:312
+#: src/gui/dialogs/editor/edit_unit.cpp:929 src/gui/dialogs/file_dialog.cpp:371
 #: src/gui/dialogs/file_dialog.cpp:799
 msgid "Confirm"
 msgstr "Potvrdit"
@@ -5750,14 +5849,14 @@ msgstr "Náhodné"
 #. [row]
 #. [toggle_button]: id=male_toggle
 #: data/gui/themes/default/dialogs/mp_faction_select.cfg:212
-#: data/gui/themes/default/dialogs/units_dialog.cfg:498
+#: data/gui/themes/default/dialogs/units_dialog.cfg:497
 msgid "Male"
 msgstr "Muž"
 
 #. [row]
 #. [toggle_button]: id=female_toggle
 #: data/gui/themes/default/dialogs/mp_faction_select.cfg:214
-#: data/gui/themes/default/dialogs/units_dialog.cfg:509
+#: data/gui/themes/default/dialogs/units_dialog.cfg:508
 msgid "Female"
 msgstr "Žena"
 
@@ -6906,7 +7005,7 @@ msgstr "Napadni nepřítele"
 #. Filled five pointed star, used as favorite unit marker
 #. Filled five pointed star, used as favorite unit marker
 #: data/gui/themes/default/dialogs/units_dialog.cfg:24
-#: data/gui/themes/default/dialogs/units_dialog.cfg:574
+#: data/gui/themes/default/dialogs/units_dialog.cfg:573
 msgid "★"
 msgstr "★"
 
@@ -6951,22 +7050,22 @@ msgid "Traits"
 msgstr "Vlastnosti"
 
 #. [text_box]: id=filter_box
-#: data/gui/themes/default/dialogs/units_dialog.cfg:405
+#: data/gui/themes/default/dialogs/units_dialog.cfg:404
 msgid "Search for unit name, unit type name, unit level, or trait"
 msgstr "Hledat jméno, typ, úroveň nebo vlastnost jednotky"
 
 #. [button]: id=dismiss
-#: data/gui/themes/default/dialogs/units_dialog.cfg:550
+#: data/gui/themes/default/dialogs/units_dialog.cfg:549
 msgid "Dismiss"
 msgstr "Propustit"
 
 #. [button]: id=rename
-#: data/gui/themes/default/dialogs/units_dialog.cfg:561
+#: data/gui/themes/default/dialogs/units_dialog.cfg:560
 msgid "Rename"
 msgstr "Přejmenovat"
 
 #. [button]: id=mark_favorite
-#: data/gui/themes/default/dialogs/units_dialog.cfg:575
+#: data/gui/themes/default/dialogs/units_dialog.cfg:574
 msgid "Mark/unmark the selected unit as favorite"
 msgstr "Označit/odznačit vybranou jednotku jako oblíbenou"
 
@@ -7549,19 +7648,19 @@ msgstr "Odolnost útočníka vs."
 msgid "Attacker vulnerability vs"
 msgstr "Zranitelnost útočníka vs."
 
-#: src/gui/dialogs/campaign_selection.cpp:77
+#: src/gui/dialogs/campaign_selection.cpp:82
 msgid "game^Get Add-ons"
 msgstr "Získat rozšíření"
 
-#: src/gui/dialogs/campaign_selection.cpp:388
+#: src/gui/dialogs/campaign_selection.cpp:403
 msgid "More campaigns..."
 msgstr "Další tažení..."
 
-#: src/gui/dialogs/campaign_selection.cpp:402
+#: src/gui/dialogs/campaign_selection.cpp:418
 msgid "Missing Campaigns"
 msgstr "Chybějící tažení"
 
-#: src/gui/dialogs/campaign_selection.cpp:436
+#: src/gui/dialogs/campaign_selection.cpp:452
 #: src/gui/dialogs/multiplayer/lobby.cpp:435
 msgid "active_modifications^None"
 msgstr "Žádné"
@@ -7599,12 +7698,12 @@ msgstr ""
 "Prosím vyber nějakou slučitelnou."
 
 #: src/gui/dialogs/editor/custom_tod.cpp:171
-#: src/gui/dialogs/editor/edit_unit.cpp:302
+#: src/gui/dialogs/editor/edit_unit.cpp:296
 msgid "Choose File"
 msgstr "Vybrat soubor"
 
 #: src/gui/dialogs/editor/custom_tod.cpp:182
-#: src/gui/dialogs/editor/edit_unit.cpp:313
+#: src/gui/dialogs/editor/edit_unit.cpp:307
 msgid ""
 "This file is outside Wesnoth’s data dirs. Do you wish to copy it into your "
 "add-on?"
@@ -7701,31 +7800,31 @@ msgstr "Úspěch"
 msgid "Choose an icon"
 msgstr "Vybrat ikonu"
 
-#: src/gui/dialogs/editor/edit_unit.cpp:187
+#: src/gui/dialogs/editor/edit_unit.cpp:181
 msgid "scout"
 msgstr "zvěd"
 
-#: src/gui/dialogs/editor/edit_unit.cpp:188
+#: src/gui/dialogs/editor/edit_unit.cpp:182
 msgid "fighter"
 msgstr "bojovník"
 
-#: src/gui/dialogs/editor/edit_unit.cpp:189
+#: src/gui/dialogs/editor/edit_unit.cpp:183
 msgid "archer"
 msgstr "střelec"
 
-#: src/gui/dialogs/editor/edit_unit.cpp:190
+#: src/gui/dialogs/editor/edit_unit.cpp:184
 msgid "mixed fighter"
 msgstr "všestranný bojovník"
 
-#: src/gui/dialogs/editor/edit_unit.cpp:191
+#: src/gui/dialogs/editor/edit_unit.cpp:185
 msgid "healer"
 msgstr "léčitel"
 
-#: src/gui/dialogs/editor/edit_unit.cpp:969
+#: src/gui/dialogs/editor/edit_unit.cpp:928
 msgid "Unsaved changes will be lost. Do you want to leave?"
 msgstr "Neuložené změny budou ztraceny. Chceš odejít?"
 
-#: src/gui/dialogs/editor/edit_unit.cpp:988
+#: src/gui/dialogs/editor/edit_unit.cpp:947
 msgid "Unit type saved."
 msgstr "Typ jednotky uložen."
 
@@ -8161,8 +8260,8 @@ msgid ""
 "multiplayer lobby. Please report this at https://bugs.wesnoth.org."
 msgstr ""
 "S databází pro ověření verze rozšíření, která je potřebná pro čekárnu hry "
-"více hráčů, není něco v pořádku. Prosím nahlas to na https://"
-"bugs.wesnoth.org."
+"více hráčů, není něco v pořádku. Prosím nahlas to na https://bugs.wesnoth."
+"org."
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:992
 msgid "This game is password protected. Join using moderator rights anyway?"
@@ -8630,12 +8729,12 @@ msgstr "Nalezen grafický prvek s nápovědou bez bublinkové nápovědy."
 msgid "No grid defined for tab container control"
 msgstr "Pro ovládací prvek kontejneru s kartami není definována mřížka"
 
-#: src/gui/widgets/tree_view.cpp:287
+#: src/gui/widgets/tree_view.cpp:289
 msgid "No nodes defined for a tree view."
 msgstr "Pro stromové zobrazení nejsou stanoveny žádné uzly."
 
 # Vzorná kryptohláška!
-#: src/gui/widgets/tree_view.cpp:317
+#: src/gui/widgets/tree_view.cpp:319
 msgid "[node]id ‘root’ is reserved for the implementation."
 msgstr "[node]id „root“ je vyhrazen implementací."
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.0\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-01-20 11:31-0600\n"
+"POT-Creation-Date: 2026-02-25 19:03-0600\n"
 "PO-Revision-Date: 2005-08-10 17:05+0200\n"
 "Last-Translator: Mikel Olasagasti <hey_neken@mundurat.net>\n"
 "Language-Team: Basque\n"
@@ -340,11 +340,11 @@ msgstr ""
 msgid "Load Map or Scenario"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1147
+#: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1141
 msgid "New Map"
 msgstr ""
 
-#: src/editor/map/context_manager.cpp:326 src/editor/map/map_context.cpp:1147
+#: src/editor/map/context_manager.cpp:326 src/editor/map/map_context.cpp:1141
 #, fuzzy
 #| msgid "Save the Map As"
 msgid "New Scenario"
@@ -397,7 +397,7 @@ msgid "Save Map As"
 msgstr "Gorde mapa honela"
 
 #: src/editor/map/context_manager.cpp:704
-#: src/editor/map/context_manager.cpp:753 src/editor/map/map_context.cpp:274
+#: src/editor/map/context_manager.cpp:753 src/editor/map/map_context.cpp:228
 #: src/editor/palette/location_palette.cpp:263
 msgid "Error"
 msgstr ""
@@ -480,64 +480,63 @@ msgstr ""
 msgid "The size of the target map is different from the current map"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:187
+#: src/editor/map/map_context.cpp:188
 msgid "File not found"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:194
+#: src/editor/map/map_context.cpp:195
 msgid "Empty file"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:203
+#: src/editor/map/map_context.cpp:204
 msgid "File does not have .map, .cfg, or .mask extension"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:250
+#: src/editor/map/map_context.cpp:227
 msgid ""
-"The map file looks like a scenario, but the map_data value does not point to "
+"Failed to load the scenario: $error\n"
+"\n"
+"Attempting to load only the map."
+msgstr ""
+
+#: src/editor/map/map_context.cpp:253
+msgid ""
+"The file looks like a scenario, but the map_data attribute does not point to "
 "an existing file"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:269
-msgid "Found the characters ‘<<’ indicating inline lua is present — aborting"
-msgstr ""
-
-#: src/editor/map/map_context.cpp:274
-msgid "Failed to load the scenario, attempting to load only the map."
-msgstr ""
-
-#: src/editor/map/map_context.cpp:281
+#: src/editor/map/map_context.cpp:268
 msgid ""
-"The map file looks like a scenario, but the map_file value does not point to "
+"The file looks like a scenario, but the map_file attribute does not point to "
 "an existing file"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:296
-msgid "Unable to parse file to find map data"
+#: src/editor/map/map_context.cpp:448
+msgid "Confirm"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:841 src/editor/map/map_context.cpp:881
+#: src/editor/map/map_context.cpp:835 src/editor/map/map_context.cpp:875
 #, fuzzy
 #| msgid "Could not save the map: $msg"
 msgid "Could not save time schedule: $msg"
 msgstr "Ezin izan da mapa gorde: $msg"
 
-#: src/editor/map/map_context.cpp:875
+#: src/editor/map/map_context.cpp:869
 msgid "Time schedule saved."
 msgstr ""
 
-#: src/editor/map/map_context.cpp:921
+#: src/editor/map/map_context.cpp:915
 #, fuzzy
 #| msgid "Could not save the map: $msg"
 msgid "Could not save the scenario: $msg"
 msgstr "Ezin izan da mapa gorde: $msg"
 
-#: src/editor/map/map_context.cpp:952
+#: src/editor/map/map_context.cpp:946
 #, fuzzy
 msgid "Could not save into scenario"
 msgstr "Ezin izan da mapa gorde: $msg"
 
-#: src/editor/map/map_context.cpp:962
+#: src/editor/map/map_context.cpp:956
 msgid "Could not save the map: $msg"
 msgstr "Ezin izan da mapa gorde: $msg"
 

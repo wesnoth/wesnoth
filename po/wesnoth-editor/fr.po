@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth_Editor-1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-01-20 11:31-0600\n"
+"POT-Creation-Date: 2026-02-25 19:03-0600\n"
 "PO-Revision-Date: 2024-02-12 21:24+0100\n"
 "Last-Translator: demario\n"
 "Language-Team: français <wesnoth@ml.free.fr>\n"
@@ -351,11 +351,11 @@ msgstr ""
 msgid "Load Map or Scenario"
 msgstr "Carte chargée depuis le scénario"
 
-#: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1147
+#: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1141
 msgid "New Map"
 msgstr "Nouvelle carte"
 
-#: src/editor/map/context_manager.cpp:326 src/editor/map/map_context.cpp:1147
+#: src/editor/map/context_manager.cpp:326 src/editor/map/map_context.cpp:1141
 msgid "New Scenario"
 msgstr "Nouveau scénario"
 
@@ -401,16 +401,16 @@ msgid "Save Map As"
 msgstr "Enregistrer la carte sous"
 
 #: src/editor/map/context_manager.cpp:704
-#: src/editor/map/context_manager.cpp:753 src/editor/map/map_context.cpp:274
+#: src/editor/map/context_manager.cpp:753 src/editor/map/map_context.cpp:228
 #: src/editor/palette/location_palette.cpp:263
 msgid "Error"
 msgstr "Erreur"
 
 #: src/editor/map/context_manager.cpp:705
 #, fuzzy
-#| msgid "Do you really want to quit?"
+#| msgid "Do you really want to save $type1 in $type2 folder?"
 msgid "Do you really want to save a map in the scenarios folder?"
-msgstr "Voulez-vous vraiment quitter ?"
+msgstr "Voulez-vous vraiment sauvegarder les $type1 dans le dossier $type2 ?"
 
 #: src/editor/map/context_manager.cpp:713
 #: src/editor/map/context_manager.cpp:905
@@ -423,9 +423,9 @@ msgstr "Sauvegarder le scénario sous"
 
 #: src/editor/map/context_manager.cpp:754
 #, fuzzy
-#| msgid "Do you really want to quit?"
+#| msgid "Do you really want to save $type1 in $type2 folder?"
 msgid "Do you really want to save a scenario in the maps folder?"
-msgstr "Voulez-vous vraiment quitter ?"
+msgstr "Voulez-vous vraiment sauvegarder les $type1 dans le dossier $type2 ?"
 
 #: src/editor/map/context_manager.cpp:762
 msgid "This scenario is already open."
@@ -484,74 +484,78 @@ msgstr ""
 "La taille de la carte de destination est différente de celle de la carte "
 "actuelle"
 
-#: src/editor/map/map_context.cpp:187
+#: src/editor/map/map_context.cpp:188
 msgid "File not found"
 msgstr "Fichier non trouvé"
 
-#: src/editor/map/map_context.cpp:194
+#: src/editor/map/map_context.cpp:195
 msgid "Empty file"
 msgstr "Fichier vide"
 
-#: src/editor/map/map_context.cpp:203
+#: src/editor/map/map_context.cpp:204
 #, fuzzy
 #| msgid "File does not have .map or .cfg extension"
 msgid "File does not have .map, .cfg, or .mask extension"
 msgstr "Ce fichier n'a ni une extension .map ni .cfg"
 
-#: src/editor/map/map_context.cpp:250
+#: src/editor/map/map_context.cpp:227
+#, fuzzy
+#| msgid "Failed to load the scenario, attempting to load only the map."
 msgid ""
-"The map file looks like a scenario, but the map_data value does not point to "
+"Failed to load the scenario: $error\n"
+"\n"
+"Attempting to load only the map."
+msgstr "Le chargement du scénario a échoué, seule la carte sera chargée."
+
+#: src/editor/map/map_context.cpp:253
+#, fuzzy
+#| msgid ""
+#| "The map file looks like a scenario, but the map_data value does not point "
+#| "to an existing file"
+msgid ""
+"The file looks like a scenario, but the map_data attribute does not point to "
 "an existing file"
 msgstr ""
 "Ce fichier ressemble à un scénario, mais la valeur de map_data n'indique pas "
 "un nom de fichier existant."
 
-#: src/editor/map/map_context.cpp:269
+#: src/editor/map/map_context.cpp:268
 #, fuzzy
 #| msgid ""
-#| "Found the characters '<<' indicating inline lua is present - aborting"
-msgid "Found the characters ‘<<’ indicating inline lua is present — aborting"
-msgstr ""
-"Les caractères '<<' dans le fichier trahissent la présence de code lua – "
-"abandon"
-
-#: src/editor/map/map_context.cpp:274
-msgid "Failed to load the scenario, attempting to load only the map."
-msgstr "Le chargement du scénario a échoué, seule la carte sera chargée."
-
-#: src/editor/map/map_context.cpp:281
+#| "The map file looks like a scenario, but the map_file value does not point "
+#| "to an existing file"
 msgid ""
-"The map file looks like a scenario, but the map_file value does not point to "
+"The file looks like a scenario, but the map_file attribute does not point to "
 "an existing file"
 msgstr ""
 "Ce fichier ressemble à un scénario, mais la valeur de map_file n'indique pas "
 "un fichier existant."
 
-#: src/editor/map/map_context.cpp:296
-msgid "Unable to parse file to find map data"
-msgstr "Les données de la carte n'ont pas pu être trouvées dans ce fichier"
+#: src/editor/map/map_context.cpp:448
+msgid "Confirm"
+msgstr ""
 
-#: src/editor/map/map_context.cpp:841 src/editor/map/map_context.cpp:881
+#: src/editor/map/map_context.cpp:835 src/editor/map/map_context.cpp:875
 #, fuzzy
 #| msgid "Could not save the scenario: $msg"
 msgid "Could not save time schedule: $msg"
 msgstr "Impossible de sauvegarder le scénario : $msg"
 
-#: src/editor/map/map_context.cpp:875
+#: src/editor/map/map_context.cpp:869
 #, fuzzy
 #| msgid "Time Schedule Menu"
 msgid "Time schedule saved."
 msgstr "Menu du système horaire"
 
-#: src/editor/map/map_context.cpp:921
+#: src/editor/map/map_context.cpp:915
 msgid "Could not save the scenario: $msg"
 msgstr "Impossible de sauvegarder le scénario : $msg"
 
-#: src/editor/map/map_context.cpp:952
+#: src/editor/map/map_context.cpp:946
 msgid "Could not save into scenario"
 msgstr "Impossible de sauvegarder dans le scénario"
 
-#: src/editor/map/map_context.cpp:962
+#: src/editor/map/map_context.cpp:956
 msgid "Could not save the map: $msg"
 msgstr "Impossible de sauvegarder la carte : $msg"
 
@@ -569,9 +573,9 @@ msgstr "Ne fonctionnera pas dans le jeu sans travail supplémentaire."
 
 #: src/editor/palette/item_palette.cpp:33
 #, fuzzy
-#| msgid "Right-click: "
+#| msgid " | Right-click to remove"
 msgid "Left-click: Place item $item | Right-click to remove"
-msgstr "Clic droit :"
+msgstr " | Clic droit pour effacer"
 
 #: src/editor/palette/location_palette.cpp:247
 msgid "Go To"
@@ -623,20 +627,23 @@ msgstr "Ctrl + clic : copier le terrain"
 #~ msgid "Load Map"
 #~ msgstr "Charger une carte"
 
+#~ msgid ""
+#~ "Found the characters '<<' indicating inline lua is present - aborting"
+#~ msgstr ""
+#~ "Les caractères '<<' dans le fichier trahissent la présence de code lua – "
+#~ "abandon"
+
+#~ msgid "Unable to parse file to find map data"
+#~ msgstr "Les données de la carte n'ont pas pu être trouvées dans ce fichier"
+
+#~ msgid "Left-click: Place item "
+#~ msgstr "Clic gauche : placer les objets"
+
 #~ msgid "Choose File"
 #~ msgstr "Sélectionner un fichier"
 
 #~ msgid "Select"
 #~ msgstr "Sélectionner"
-
-#, fuzzy
-#~| msgid "Left-click: "
-#~ msgid "Left-click: Place item "
-#~ msgstr "Clic gauche :"
-
-#~ msgid "Clipboard support not found, contact your packager"
-#~ msgstr ""
-#~ "Pas de prise en charge du presse-papier, contactez votre empaqueteur"
 
 #~ msgid "player^None"
 #~ msgstr "Aucun"

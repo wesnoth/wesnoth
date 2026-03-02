@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.18\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-11-18 02:02 UTC\n"
+"POT-Creation-Date: 2026-02-26 01:04 UTC\n"
 "PO-Revision-Date: 2025-05-13 00:26-0300\n"
 "Last-Translator: Mariano Street <mctpyt@proton.me>\n"
 "Language-Team: Esperanto <https://wiki.wesnoth.org/Esperanto_translation>\n"
@@ -2726,9 +2726,15 @@ msgstr ""
 
 #. [leadership]: id=forcefield
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:249
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:250
 msgid "forcefield"
 msgstr ""
+
+#. [leadership]: id=forcefield
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:250
+#, fuzzy
+#| msgid "female^epic"
+msgid "female^forcefield"
+msgstr "epopea"
 
 #. [leadership]: id=forcefield
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:251
@@ -2988,9 +2994,15 @@ msgstr ""
 
 #. [berserk]: id=wct_fury
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:624
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:625
 msgid "fury"
 msgstr ""
+
+#. [berserk]: id=wct_fury
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:625
+#, fuzzy
+#| msgid "female^heroic"
+msgid "female^fury"
+msgstr "heroa"
 
 #. [berserk]: id=wct_fury
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:626
@@ -3036,9 +3048,15 @@ msgstr ""
 
 #. [illuminates]: id=darkness
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:674
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:675
 msgid "darkness"
 msgstr ""
+
+#. [illuminates]: id=darkness
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:675
+#, fuzzy
+#| msgid "female^legendary"
+msgid "female^darkness"
+msgstr "legenda"
 
 #. [illuminates]: id=darkness
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:676
@@ -3050,9 +3068,15 @@ msgstr ""
 
 #. [dummy]: id=wc2_corruption
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:681
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:682
 msgid "corruption"
 msgstr ""
+
+#. [dummy]: id=wc2_corruption
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:682
+#, fuzzy
+#| msgid "female^epic"
+msgid "female^corruption"
+msgstr "epopea"
 
 #. [dummy]: id=wc2_corruption
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:683
@@ -3138,9 +3162,15 @@ msgstr ""
 
 #. [leadership]: id=banner
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:784
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:785
 msgid "banner"
 msgstr ""
+
+#. [leadership]: id=banner
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:785
+#, fuzzy
+#| msgid "female^heroic"
+msgid "female^banner"
+msgstr "heroa"
 
 #. [leadership]: id=banner
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:786
@@ -3321,7 +3351,6 @@ msgstr "$range|: $special|"
 #. [skirmisher]: id=distract
 #: data/campaigns/World_Conquest/resources/data/training.cfg:378
 #: data/campaigns/World_Conquest/resources/data/training.cfg:403
-#: data/campaigns/World_Conquest/resources/data/training.cfg:404
 msgid "distract"
 msgstr ""
 
@@ -3329,14 +3358,27 @@ msgstr ""
 #. [resistance]: id=tenacity
 #: data/campaigns/World_Conquest/resources/data/training.cfg:390
 #: data/campaigns/World_Conquest/resources/data/training.cfg:427
-#: data/campaigns/World_Conquest/resources/data/training.cfg:428
 msgid "tenacity"
 msgstr ""
+
+#. [skirmisher]: id=distract
+#: data/campaigns/World_Conquest/resources/data/training.cfg:404
+#, fuzzy
+#| msgid "female^epic"
+msgid "female^distract"
+msgstr "epopea"
 
 #. [skirmisher]: id=distract
 #: data/campaigns/World_Conquest/resources/data/training.cfg:405
 msgid "Allied units ignore enemy zones of control adjacent to this unit."
 msgstr ""
+
+#. [resistance]: id=tenacity
+#: data/campaigns/World_Conquest/resources/data/training.cfg:428
+#, fuzzy
+#| msgid "female^legendary"
+msgid "female^tenacity"
+msgstr "legenda"
 
 #. [resistance]: id=tenacity
 #: data/campaigns/World_Conquest/resources/data/training.cfg:429

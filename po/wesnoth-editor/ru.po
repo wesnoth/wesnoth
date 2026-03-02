@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-editor\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-01-20 11:31-0600\n"
+"POT-Creation-Date: 2026-02-25 19:03-0600\n"
 "PO-Revision-Date: 2024-04-07 16:36+0300\n"
 "Last-Translator: Artem Khrapov <artemkhrapov2001@yandex.ru>\n"
 "Language-Team: https://wiki.wesnoth.org/RussianTranslation\n"
@@ -358,11 +358,11 @@ msgstr ""
 msgid "Load Map or Scenario"
 msgstr "Карта загружена из сценария"
 
-#: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1147
+#: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1141
 msgid "New Map"
 msgstr "Новая карта"
 
-#: src/editor/map/context_manager.cpp:326 src/editor/map/map_context.cpp:1147
+#: src/editor/map/context_manager.cpp:326 src/editor/map/map_context.cpp:1141
 msgid "New Scenario"
 msgstr "Новый сценарий"
 
@@ -408,7 +408,7 @@ msgid "Save Map As"
 msgstr "Сохранить карту как"
 
 #: src/editor/map/context_manager.cpp:704
-#: src/editor/map/context_manager.cpp:753 src/editor/map/map_context.cpp:274
+#: src/editor/map/context_manager.cpp:753 src/editor/map/map_context.cpp:228
 #: src/editor/palette/location_palette.cpp:263
 msgid "Error"
 msgstr "Ошибка"
@@ -489,74 +489,78 @@ msgstr "Игрок $side_num"
 msgid "The size of the target map is different from the current map"
 msgstr "Размер целевой карты отличается от размера текущей"
 
-#: src/editor/map/map_context.cpp:187
+#: src/editor/map/map_context.cpp:188
 msgid "File not found"
 msgstr "Файл не найден"
 
-#: src/editor/map/map_context.cpp:194
+#: src/editor/map/map_context.cpp:195
 msgid "Empty file"
 msgstr "Файл пуст"
 
-#: src/editor/map/map_context.cpp:203
+#: src/editor/map/map_context.cpp:204
 #, fuzzy
 #| msgid "File does not have .map or .cfg extension"
 msgid "File does not have .map, .cfg, or .mask extension"
 msgstr "Файл не имеет разрешения .map или .cfg"
 
-#: src/editor/map/map_context.cpp:250
+#: src/editor/map/map_context.cpp:227
+#, fuzzy
+#| msgid "Failed to load the scenario, attempting to load only the map."
 msgid ""
-"The map file looks like a scenario, but the map_data value does not point to "
+"Failed to load the scenario: $error\n"
+"\n"
+"Attempting to load only the map."
+msgstr "Ошибка загрузки сценария. Попытка загрузить только карту."
+
+#: src/editor/map/map_context.cpp:253
+#, fuzzy
+#| msgid ""
+#| "The map file looks like a scenario, but the map_data value does not point "
+#| "to an existing file"
+msgid ""
+"The file looks like a scenario, but the map_data attribute does not point to "
 "an existing file"
 msgstr ""
 "Файл карты похож на сценарий, но значение map_data не указывает на "
 "существующий файл"
 
-#: src/editor/map/map_context.cpp:269
+#: src/editor/map/map_context.cpp:268
 #, fuzzy
 #| msgid ""
-#| "Found the characters '<<' indicating inline lua is present - aborting"
-msgid "Found the characters ‘<<’ indicating inline lua is present — aborting"
-msgstr ""
-"Найдена последовательность \"<<\", присущая встроенному lua-коду — загрузка "
-"прекращена"
-
-#: src/editor/map/map_context.cpp:274
-msgid "Failed to load the scenario, attempting to load only the map."
-msgstr "Ошибка загрузки сценария. Попытка загрузить только карту."
-
-#: src/editor/map/map_context.cpp:281
+#| "The map file looks like a scenario, but the map_file value does not point "
+#| "to an existing file"
 msgid ""
-"The map file looks like a scenario, but the map_file value does not point to "
+"The file looks like a scenario, but the map_file attribute does not point to "
 "an existing file"
 msgstr ""
 "Файл карты похож на сценарий, но значение map_file не указывает на "
 "существующий файл"
 
-#: src/editor/map/map_context.cpp:296
-msgid "Unable to parse file to find map data"
-msgstr "Из файла не удаётся выделить данные карты"
+#: src/editor/map/map_context.cpp:448
+msgid "Confirm"
+msgstr ""
 
-#: src/editor/map/map_context.cpp:841 src/editor/map/map_context.cpp:881
+#: src/editor/map/map_context.cpp:835 src/editor/map/map_context.cpp:875
 #, fuzzy
 #| msgid "Could not save the scenario: $msg"
 msgid "Could not save time schedule: $msg"
 msgstr "Невозможно сохранить сценарий: $msg"
 
-#: src/editor/map/map_context.cpp:875
+#: src/editor/map/map_context.cpp:869
 #, fuzzy
 #| msgid "Time Schedule Menu"
 msgid "Time schedule saved."
 msgstr "Меню расписания"
 
-#: src/editor/map/map_context.cpp:921
+#: src/editor/map/map_context.cpp:915
 msgid "Could not save the scenario: $msg"
 msgstr "Невозможно сохранить сценарий: $msg"
 
-#: src/editor/map/map_context.cpp:952
+#: src/editor/map/map_context.cpp:946
 msgid "Could not save into scenario"
 msgstr "Невозможно сохранить сценарий"
 
-#: src/editor/map/map_context.cpp:962
+#: src/editor/map/map_context.cpp:956
 msgid "Could not save the map: $msg"
 msgstr "Невозможно сохранить карту: $msg"
 
@@ -624,6 +628,18 @@ msgstr "Cmd + щелчок: копировать местность"
 #: src/editor/palette/terrain_palettes.cpp:237
 msgid "Ctrl + click: copy terrain"
 msgstr "Ctrl + щелчок: копировать местность"
+
+#, fuzzy
+#~| msgid ""
+#~| "Found the characters '<<' indicating inline lua is present - aborting"
+#~ msgid ""
+#~ "Found the characters ‘<<’ indicating inline lua is present — aborting"
+#~ msgstr ""
+#~ "Найдена последовательность \"<<\", присущая встроенному lua-коду — "
+#~ "загрузка прекращена"
+
+#~ msgid "Unable to parse file to find map data"
+#~ msgstr "Из файла не удаётся выделить данные карты"
 
 #~ msgid "Load Map"
 #~ msgstr "Загрузить Карту"

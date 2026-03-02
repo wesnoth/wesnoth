@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.18 - wesnoth-editor\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-01-20 11:31-0600\n"
+"POT-Creation-Date: 2026-02-25 19:03-0600\n"
 "PO-Revision-Date: 2024-12-03 10:19+0100\n"
 "Last-Translator: Wuzzy <Wuzzy@disroot.org>\n"
 "Language-Team: German <irc://irc.libera.chat/#wesnoth-de>\n"
@@ -344,11 +344,11 @@ msgstr "<span color='red'><span face='DejaVuSans'>✘</span> $msg</span>"
 msgid "Load Map or Scenario"
 msgstr "Karte aus Szenario geladen"
 
-#: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1147
+#: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1141
 msgid "New Map"
 msgstr "Neue Karte"
 
-#: src/editor/map/context_manager.cpp:326 src/editor/map/map_context.cpp:1147
+#: src/editor/map/context_manager.cpp:326 src/editor/map/map_context.cpp:1141
 msgid "New Scenario"
 msgstr "Neues Szenario"
 
@@ -394,7 +394,7 @@ msgid "Save Map As"
 msgstr "Karte speichern unter"
 
 #: src/editor/map/context_manager.cpp:704
-#: src/editor/map/context_manager.cpp:753 src/editor/map/map_context.cpp:274
+#: src/editor/map/context_manager.cpp:753 src/editor/map/map_context.cpp:228
 #: src/editor/palette/location_palette.cpp:263
 msgid "Error"
 msgstr "Fehler"
@@ -473,64 +473,72 @@ msgstr "Spieler $side_num"
 msgid "The size of the target map is different from the current map"
 msgstr "Die Größe der Ziel-Karte weicht von der aktuellen Karte ab"
 
-#: src/editor/map/map_context.cpp:187
+#: src/editor/map/map_context.cpp:188
 msgid "File not found"
 msgstr "Datei nicht gefunden"
 
-#: src/editor/map/map_context.cpp:194
+#: src/editor/map/map_context.cpp:195
 msgid "Empty file"
 msgstr "Leere Datei"
 
-#: src/editor/map/map_context.cpp:203
+#: src/editor/map/map_context.cpp:204
 msgid "File does not have .map, .cfg, or .mask extension"
 msgstr "Datei hat keine .map-, .cfg- oder .mask-Dateiendung"
 
-#: src/editor/map/map_context.cpp:250
+#: src/editor/map/map_context.cpp:227
+#, fuzzy
+#| msgid "Failed to load the scenario, attempting to load only the map."
 msgid ""
-"The map file looks like a scenario, but the map_data value does not point to "
+"Failed to load the scenario: $error\n"
+"\n"
+"Attempting to load only the map."
+msgstr "Szenario-Laden schlug fehl. Versuche nur die Karte zu laden."
+
+#: src/editor/map/map_context.cpp:253
+#, fuzzy
+#| msgid ""
+#| "The map file looks like a scenario, but the map_data value does not point "
+#| "to an existing file"
+msgid ""
+"The file looks like a scenario, but the map_data attribute does not point to "
 "an existing file"
 msgstr ""
 "Diese Karte scheint eine Szenario Datei zu sein, doch der Wert für "
 "»map_data« verweist nicht auf eine existierende Datei"
 
-#: src/editor/map/map_context.cpp:269
-msgid "Found the characters ‘<<’ indicating inline lua is present — aborting"
-msgstr ""
-"Die Zeichen „<<“ gefunden, was auf eingebettetes Lua hindeutet – Abbruch"
-
-#: src/editor/map/map_context.cpp:274
-msgid "Failed to load the scenario, attempting to load only the map."
-msgstr "Szenario-Laden schlug fehl. Versuche nur die Karte zu laden."
-
-#: src/editor/map/map_context.cpp:281
+#: src/editor/map/map_context.cpp:268
+#, fuzzy
+#| msgid ""
+#| "The map file looks like a scenario, but the map_file value does not point "
+#| "to an existing file"
 msgid ""
-"The map file looks like a scenario, but the map_file value does not point to "
+"The file looks like a scenario, but the map_file attribute does not point to "
 "an existing file"
 msgstr ""
 "Die Kartendatei scheint eine Szenario zu sein, doch der »map_file«-Wert "
 "verweist nicht auf eine existierende Datei"
 
-#: src/editor/map/map_context.cpp:296
-msgid "Unable to parse file to find map data"
-msgstr "Konnte Datei nicht parsen, um Karten-Daten zu finden"
+#: src/editor/map/map_context.cpp:448
+msgid "Confirm"
+msgstr "Bestätigen"
 
-#: src/editor/map/map_context.cpp:841 src/editor/map/map_context.cpp:881
+#: src/editor/map/map_context.cpp:835 src/editor/map/map_context.cpp:875
 msgid "Could not save time schedule: $msg"
 msgstr "Der Zeitplan konnte nicht gespeichert werden: $msg"
 
-#: src/editor/map/map_context.cpp:875
+#: src/editor/map/map_context.cpp:869
 msgid "Time schedule saved."
 msgstr "Zeitplan gespeichert."
 
-#: src/editor/map/map_context.cpp:921
+#: src/editor/map/map_context.cpp:915
 msgid "Could not save the scenario: $msg"
 msgstr "Das Szenario konnte nicht gespeichert werden: $msg"
 
-#: src/editor/map/map_context.cpp:952
+#: src/editor/map/map_context.cpp:946
 msgid "Could not save into scenario"
 msgstr "Konnte nicht in das Szenario gespeichert werden"
 
-#: src/editor/map/map_context.cpp:962
+#: src/editor/map/map_context.cpp:956
 msgid "Could not save the map: $msg"
 msgstr "Die Karte konnte nicht gespeichert werden: $msg"
 
@@ -599,6 +607,14 @@ msgstr "Cmd + Mausklick: Gelände kopieren"
 msgid "Ctrl + click: copy terrain"
 msgstr "Strg + Mausklick: Gelände kopieren"
 
+#~ msgid ""
+#~ "Found the characters ‘<<’ indicating inline lua is present — aborting"
+#~ msgstr ""
+#~ "Die Zeichen „<<“ gefunden, was auf eingebettetes Lua hindeutet – Abbruch"
+
+#~ msgid "Unable to parse file to find map data"
+#~ msgstr "Konnte Datei nicht parsen, um Karten-Daten zu finden"
+
 #~ msgid "Load Map"
 #~ msgstr "Lade Karte"
 
@@ -614,9 +630,6 @@ msgstr "Strg + Mausklick: Gelände kopieren"
 #~ msgstr ""
 #~ "Diese Datei befindet sich außerhalb Wesnoths Datenverzeichnissen. Möchtet "
 #~ "Ihr sie in Euer Add-on kopieren?"
-
-#~ msgid "Confirm"
-#~ msgstr "Bestätigen"
 
 #, fuzzy
 #~ msgid "Left-click: Place item "

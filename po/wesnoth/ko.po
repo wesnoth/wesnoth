@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-01-20 11:31-0600\n"
+"POT-Creation-Date: 2026-02-25 19:03-0600\n"
 "PO-Revision-Date: 2019-09-30 13:37+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
@@ -268,101 +268,16 @@ msgstr ""
 msgid "Display a visual indicator above a defender when an attack misses."
 msgstr ""
 
-#. [message]: speaker=$unit.id|
-#. [message]: speaker=narrator
-#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:22
-#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:45
-#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:46
-msgid "Potion grants steadfast ability and 20% resistance to impact."
+#. [advanced_preference]: type=boolean
+#: data/advanced_preferences.cfg:200
+msgid "SIMD acceleration"
 msgstr ""
 
-#. [option]
-#. [button]: id=ok
-#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:24
-#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:100
-#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:171
-#: data/gui/themes/default/dialogs/install_dependencies.cfg:84
-#, fuzzy
-#| msgid "yes"
-msgid "Yes"
-msgstr "있음"
-
-#. [object]: id={ID}
-#. [item]: id=potion-blue
-#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:28
-#: data/core/editor/items.cfg:546
-msgid "Blue Potion"
-msgstr "파랑 물약"
-
-#. [object]: id={ID}
-#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:30
-msgid "A potion of unknown origin."
-msgstr ""
-
-#. [option]
-#. [button]: id=cancel
-#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:69
-#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:140
-#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:212
-#: data/gui/themes/default/dialogs/install_dependencies.cfg:95
-#, fuzzy
-msgid "No"
-msgstr "없음"
-
-#. [message]: speaker=$unit.id|
-#. [message]: speaker=narrator
-#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:98
-#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:121
-msgid "This magical branch grants +2 damage to melee attacks."
-msgstr ""
-
-#. [object]: id={ID}
-#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:104
-msgid "Wose Branch"
-msgstr ""
-
-#. [object]: id={ID}
-#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:106
-msgid "The magical branch of some great Wose."
-msgstr ""
-
-#. [message]: speaker=narrator
-#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:169
-msgid "This unit will gain the stun weapon special on melee attacks."
-msgstr ""
-
-#. [object]: id={ID}
-#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:175
-#, fuzzy
-#| msgid "Legends of the North"
-msgid "Echoes of the Earth"
-msgstr "북부의 전설"
-
-#. [object]: id={ID}
-#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:177
-msgid "Powerful echoes from the bowels of the earth."
-msgstr ""
-
-#. [message]: speaker=$unit.id|
-#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:189
-msgid "The unit gains the stun weapon special on melee attacks."
-msgstr ""
-
-#. [message]: speaker=narrator
-#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:207
+#. [advanced_preference]: type=boolean
+#: data/advanced_preferences.cfg:201
 msgid ""
-"After $unit.name| absorbed the stone’s power, the monolith lost its magical "
-"properties."
-msgstr ""
-
-#. [chance_to_hit]: id=unerring
-#: data/campaigns/Dusk_of_Dawn/utils/weapon_specials.cfg:4
-msgid "unerring"
-msgstr ""
-
-#. [chance_to_hit]: id=unerring
-#: data/campaigns/Dusk_of_Dawn/utils/weapon_specials.cfg:5
-msgid "This attack never misses."
+"Use hardware acceleration (SSE2/NEON) for faster image processing on the "
+"CPU. Try disabling this if you experience graphical glitches or crashes."
 msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
@@ -1159,6 +1074,11 @@ msgstr "오크 국기"
 #: data/core/editor/items.cfg:532 data/core/editor/items.cfg:539
 msgid "Ornate"
 msgstr "화려한"
+
+#. [item]: id=potion-blue
+#: data/core/editor/items.cfg:546
+msgid "Blue Potion"
+msgstr "파랑 물약"
 
 #. [item]: id=potion-green
 #: data/core/editor/items.cfg:553
@@ -3965,7 +3885,7 @@ msgstr "여행하는 음악가"
 
 #. [music]
 #. [time]: id=underground_noweather
-#: data/core/macros/sound-utils.cfg:331 data/internal/Weather/_main.cfg:222
+#: data/core/macros/sound-utils.cfg:331 data/internal/Weather/_main.cfg:230
 msgid "Underground"
 msgstr "지하"
 
@@ -4571,6 +4491,19 @@ msgstr "Wesnoth 대체 서버"
 msgid "Install Dependencies"
 msgstr "설치 종속"
 
+#. [button]: id=ok
+#: data/gui/themes/default/dialogs/install_dependencies.cfg:84
+#, fuzzy
+#| msgid "yes"
+msgid "Yes"
+msgstr "있음"
+
+#. [button]: id=cancel
+#: data/gui/themes/default/dialogs/install_dependencies.cfg:95
+#, fuzzy
+msgid "No"
+msgstr "없음"
+
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
 #: data/gui/themes/default/dialogs/screenshot_notification.cfg:95
@@ -4596,44 +4529,44 @@ msgid "WesScript"
 msgstr "설명"
 
 #. [time]: id=dawn_noweather
-#: data/internal/Weather/_main.cfg:143
+#: data/internal/Weather/_main.cfg:151
 msgid "Dawn"
 msgstr "새벽"
 
 #. [time]: id=morning_noweather
-#: data/internal/Weather/_main.cfg:154
+#: data/internal/Weather/_main.cfg:162
 #, fuzzy
 #| msgid "Morning"
 msgid "Morning"
 msgstr "경고"
 
 #. [time]: id=midday_noweather
-#: data/internal/Weather/_main.cfg:162
+#: data/internal/Weather/_main.cfg:170
 msgid "Midday"
 msgstr ""
 
 #. [time]: id=afternoon_noweather
-#: data/internal/Weather/_main.cfg:170
+#: data/internal/Weather/_main.cfg:178
 msgid "Afternoon"
 msgstr "오후"
 
 #. [time]: id=dusk_noweather
-#: data/internal/Weather/_main.cfg:178
+#: data/internal/Weather/_main.cfg:186
 msgid "Dusk"
 msgstr "황혼"
 
 #. [time]: id=first_watch_noweather
-#: data/internal/Weather/_main.cfg:189
+#: data/internal/Weather/_main.cfg:197
 msgid "First Watch"
 msgstr "초경"
 
 #. [time]: id=midnight_noweather
-#: data/internal/Weather/_main.cfg:200
+#: data/internal/Weather/_main.cfg:208
 msgid "Midnight"
 msgstr ""
 
 #. [time]: id=second_watch_noweather
-#: data/internal/Weather/_main.cfg:211
+#: data/internal/Weather/_main.cfg:219
 msgid "Second Watch"
 msgstr "삼경"
 
@@ -4888,8 +4821,8 @@ msgstr "치료불가"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
-#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:3749
-#: src/scripting/game_lua_kernel.cpp:3784
+#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:3755
+#: src/scripting/game_lua_kernel.cpp:3790
 msgid "input"
 msgstr "입력"
 
@@ -5171,7 +5104,7 @@ msgid "def"
 msgstr "방어도"
 
 #. [unit_level]: id=unit-level
-#: data/themes/default.cfg:408
+#: data/themes/default.cfg:409
 #, fuzzy
 #| msgid "statuspanel^level"
 msgid "statuspanel^lvl"
@@ -6790,7 +6723,7 @@ msgstr "$nick 사용자 정보를 요구하기"
 msgid "(A) — admin command"
 msgstr "(A) — 관리자 명령"
 
-#: src/chat_command_handler.hpp:58 src/menu_events.cpp:1209
+#: src/chat_command_handler.hpp:58 src/menu_events.cpp:1213
 msgid "(admin only)"
 msgstr "(관지라 전용)"
 
@@ -6918,7 +6851,7 @@ msgstr "버전 정보를 표시합니다."
 msgid "Request information about a nickname."
 msgstr "대화명에 대한 정보를 요구합니다."
 
-#: src/chat_command_handler.hpp:121 src/menu_events.cpp:1259
+#: src/chat_command_handler.hpp:121 src/menu_events.cpp:1263
 msgid "Clear chat history."
 msgstr "채팅 이력을 소거합니다."
 
@@ -7161,7 +7094,7 @@ msgid_plural ""
 "Please report this to the respective authors or maintainers of these add-ons."
 msgstr[0] "이 주소의 제작자나 유지자에게 보고해 주십시오."
 
-#: src/game_events/pump.cpp:389 src/game_launcher.cpp:947
+#: src/game_events/pump.cpp:389 src/game_launcher.cpp:950
 msgid "Error: "
 msgstr "에러: "
 
@@ -7548,20 +7481,20 @@ msgstr "로그인 시도를 너무 많이 했습니다"
 msgid "Password hashing failed."
 msgstr ""
 
-#: src/game_initialization/playcampaign.cpp:150 src/game_launcher.cpp:900
+#: src/game_initialization/playcampaign.cpp:150 src/game_launcher.cpp:903
 msgid "The game could not be loaded: "
 msgstr "로드가 안됩니다: "
 
-#: src/game_initialization/playcampaign.cpp:156 src/game_launcher.cpp:902
+#: src/game_initialization/playcampaign.cpp:156 src/game_launcher.cpp:905
 msgid "Error while playing the game: "
 msgstr "게임을 하는 중 오류 발생: "
 
-#: src/game_initialization/playcampaign.cpp:159 src/game_launcher.cpp:939
+#: src/game_initialization/playcampaign.cpp:159 src/game_launcher.cpp:942
 msgid "The game map could not be loaded: "
 msgstr "게임 지도를 불러올 수 없음: "
 
-#: src/game_initialization/playcampaign.cpp:162 src/game_launcher.cpp:904
-#: src/game_launcher.cpp:1025
+#: src/game_initialization/playcampaign.cpp:162 src/game_launcher.cpp:907
+#: src/game_launcher.cpp:1028
 msgid "Map generator error: "
 msgstr "지도 생성기 오류:"
 
@@ -7590,28 +7523,28 @@ msgstr "불분명한 시나리오: '$scenario|'"
 msgid "No campaigns are available."
 msgstr "가능한 캠패인 없음"
 
-#: src/game_launcher.cpp:686 src/game_launcher.cpp:705
+#: src/game_launcher.cpp:689 src/game_launcher.cpp:708
 #: src/hotkey/hotkey_handler_sp.cpp:324 src/replay.cpp:662 src/savegame.cpp:167
 msgid "The file you have tried to load is corrupt"
 msgstr "로드하려는 파일이 손상되었습니다"
 
-#: src/game_launcher.cpp:688 src/game_launcher.cpp:707
+#: src/game_launcher.cpp:691 src/game_launcher.cpp:710
 msgid "The file you have tried to load is corrupt: '"
 msgstr "로드하려는 파일이 손상되었습니다: '"
 
-#: src/game_launcher.cpp:697
+#: src/game_launcher.cpp:700
 msgid "File I/O Error while reading the game"
 msgstr "게임 읽기 중 파일 I/O 오류"
 
-#: src/game_launcher.cpp:699
+#: src/game_launcher.cpp:702
 msgid "File I/O Error while reading the game: '"
 msgstr "게임 읽기 중 파일 I/O 오류: '"
 
-#: src/game_launcher.cpp:898
+#: src/game_launcher.cpp:901
 msgid "Error while starting server: "
 msgstr "서버를 시작하는 중 오류 발생: "
 
-#: src/game_launcher.cpp:920
+#: src/game_launcher.cpp:923
 #, fuzzy
 #| msgid "Connection timed out"
 msgid "Connection failed: "
@@ -7785,122 +7718,151 @@ msgstr "없음"
 msgid "yes"
 msgstr "있음"
 
-#: src/help/help_impl.cpp:301
+#: src/help/help_impl.cpp:319
 msgid "Only available during a scenario."
 msgstr "시나리오 중에만 사용 가능."
 
-#: src/help/help_impl.cpp:302 src/help/help_impl.cpp:341
+#: src/help/help_impl.cpp:320 src/help/help_impl.cpp:359
 #, fuzzy
 #| msgid "Time of day: "
 msgid "Time of Day Schedule"
 msgstr "시간 스케줄: "
 
-#: src/help/help_impl.cpp:332
+#: src/help/help_impl.cpp:350
 #, fuzzy
 #| msgid "Lawful units: "
 msgid "Lawful Bonus:"
 msgstr "주행성 유닛: "
 
-#: src/help/help_impl.cpp:333
+#: src/help/help_impl.cpp:351
 #, fuzzy
 #| msgid "Neutral units: "
 msgid "Neutral Bonus:"
 msgstr "시간대 중립: "
 
-#: src/help/help_impl.cpp:334
+#: src/help/help_impl.cpp:352
 #, fuzzy
 #| msgid "Chaotic units: "
 msgid "Chaotic Bonus:"
 msgstr "야행성 유닛: "
 
-#: src/help/help_impl.cpp:335
+#: src/help/help_impl.cpp:353
 #, fuzzy
 msgid "Liminal Bonus:"
 msgstr "주행성 유닛:"
 
-#: src/help/help_impl.cpp:336
+#: src/help/help_impl.cpp:354
 msgid "Schedule"
 msgstr "스케줄"
 
-#: src/help/help_impl.cpp:431
+#: src/help/help_impl.cpp:448
 #, fuzzy
 #| msgid "<header>text='Units having this special attack'</header>"
 msgid "Units with this special attack"
 msgstr "이 특수 공격을 가진 유닛들"
 
-#: src/help/help_impl.cpp:487
+#: src/help/help_impl.cpp:504
 #, fuzzy
 #| msgid "<header>text='Units having this ability'</header>"
 msgid "Units with this ability"
 msgstr "이 능력을 가진 유닛들"
 
-#: src/help/help_impl.cpp:523
+#: src/help/help_impl.cpp:540
 msgid "Factions"
 msgstr "당파"
 
-#: src/help/help_impl.cpp:569
+#: src/help/help_impl.cpp:586
 #, fuzzy
 #| msgid "Race: "
 msgid "Races: "
 msgstr "종족: "
 
-#: src/help/help_impl.cpp:578 src/help/help_impl.cpp:1026
+#: src/help/help_impl.cpp:595 src/help/help_impl.cpp:1155
 #, fuzzy
 #| msgid "Alignment: "
 msgid "Alignments: "
 msgstr "선호시간대: "
 
-#: src/help/help_impl.cpp:585
+#: src/help/help_impl.cpp:602
 #, fuzzy
 #| msgid "Leaders:"
 msgid "Leaders"
 msgstr "대장:"
 
-#: src/help/help_impl.cpp:594
+#: src/help/help_impl.cpp:611
 msgid "Recruits"
 msgstr "소집"
 
-#: src/help/help_impl.cpp:679 src/units/types.cpp:450
+#: src/help/help_impl.cpp:652
+msgid "Previous"
+msgstr ""
+
+#: src/help/help_impl.cpp:665 src/help/help_impl.cpp:787
+#: src/help/help_impl.cpp:805
+#, fuzzy
+#| msgid "Next Turn"
+msgid "Next"
+msgstr "다음 턴"
+
+#: src/help/help_impl.cpp:762 src/units/types.cpp:450
 #, fuzzy
 #| msgid "No objectives available"
 msgid "No description available."
 msgstr "가능한 목표 없음"
 
-#: src/help/help_impl.cpp:788 src/help/help_impl.cpp:1003
+#: src/help/help_impl.cpp:766
+#, fuzzy
+#| msgid "This is the last scenario."
+msgid "This is a global trait."
+msgstr "이번 시나리오가 마지막입니다."
+
+#: src/help/help_impl.cpp:774
+#, fuzzy
+#| msgid "<header>text='Units having this ability'</header>"
+msgid "Races with this trait"
+msgstr "이 능력을 가진 유닛들"
+
+#: src/help/help_impl.cpp:794
+#, fuzzy
+#| msgid "<header>text='Units having this ability'</header>"
+msgid "Units with this trait"
+msgstr "이 능력을 가진 유닛들"
+
+#: src/help/help_impl.cpp:917 src/help/help_impl.cpp:1132
 msgid "race^Miscellaneous"
 msgstr "기타"
 
-#: src/help/help_impl.cpp:1026
+#: src/help/help_impl.cpp:1155
 msgid "Alignment: "
 msgstr "선호시간대: "
 
 #. TRANSLATORS: this is expected to say "[Dunefolk are] a group of units, all of whom are Humans",
 #. or "[Quenoth Elves are] a group of units, all of whom are Elves".
-#: src/help/help_impl.cpp:1045
+#: src/help/help_impl.cpp:1174
 msgid ""
 "This is a group of units, all of whom are <ref "
 "dst='$topic_id'>$help_taxonomy</ref>."
 msgstr ""
 
-#: src/help/help_impl.cpp:1050
+#: src/help/help_impl.cpp:1179
 #, fuzzy
 #| msgid "<header>text='Units having this ability'</header>"
 msgid "Subgroups of units within this group"
 msgstr "이 능력을 가진 유닛들"
 
-#: src/help/help_impl.cpp:1052
+#: src/help/help_impl.cpp:1181
 #, fuzzy
 #| msgid "<header>text='Units of this race'</header>"
 msgid "Groups of units within this race"
 msgstr "<header>text='이 종족 소속 유닛'</header>"
 
-#: src/help/help_impl.cpp:1061
+#: src/help/help_impl.cpp:1190
 #, fuzzy
 #| msgid "<header>text='Units of this race'</header>"
 msgid "Units of this group"
 msgstr "<header>text='이 종족 소속 유닛'</header>"
 
-#: src/help/help_impl.cpp:1063
+#: src/help/help_impl.cpp:1192
 #, fuzzy
 #| msgid "<header>text='Units of this race'</header>"
 msgid "Units of this race"
@@ -7962,11 +7924,11 @@ msgstr "시작 준비 완료"
 msgid "(press $hotkey to deactivate)"
 msgstr "(계속 이동하려면 $hotkey 키를 누르세요)"
 
-#: src/hotkey/hotkey_handler_sp.cpp:156 src/menu_events.cpp:2098
+#: src/hotkey/hotkey_handler_sp.cpp:156 src/menu_events.cpp:2102
 msgid "Planning mode activated!"
 msgstr "계획 모드 활성"
 
-#: src/hotkey/hotkey_handler_sp.cpp:158 src/menu_events.cpp:2101
+#: src/hotkey/hotkey_handler_sp.cpp:158 src/menu_events.cpp:2105
 msgid "Planning mode deactivated!"
 msgstr "계획 모드 비활성"
 
@@ -8201,153 +8163,153 @@ msgstr "이름 붙이기"
 msgid "Name:"
 msgstr "이름:"
 
-#: src/menu_events.cpp:855
+#: src/menu_events.cpp:859
 #, fuzzy
 #| msgid "Clear all orders"
 msgid "Clear Labels"
 msgstr "라벨 지우기"
 
-#: src/menu_events.cpp:856
+#: src/menu_events.cpp:860
 #, fuzzy
 #| msgid "Are you sure you want to remove the add-on '$addon|'?"
 msgid "Are you sure you want to clear map labels?"
 msgstr "추가 기능 '$addon|'을 정말로 삭제하시겠습니까?"
 
-#: src/menu_events.cpp:1060
+#: src/menu_events.cpp:1064
 msgid "Search"
 msgstr "탐색"
 
-#: src/menu_events.cpp:1200
+#: src/menu_events.cpp:1204
 msgid "(D) — debug only, (N) — network only, (A) — admin only"
 msgstr "(D) - 디버그 전용, (N) - 네트워크 전용, (A) - 방장 전용"
 
-#: src/menu_events.cpp:1207
+#: src/menu_events.cpp:1211
 msgid "(debug command)"
 msgstr "(디버그 명령어)"
 
-#: src/menu_events.cpp:1208
+#: src/menu_events.cpp:1212
 msgid "(network only)"
 msgstr "(네트워크 전용)"
 
-#: src/menu_events.cpp:1210
+#: src/menu_events.cpp:1214
 msgid "(not during other events)"
 msgstr "(다른 이벤트 중이 아닌 경우.)"
 
-#: src/menu_events.cpp:1240
+#: src/menu_events.cpp:1244
 msgid "Refresh gui."
 msgstr "gui 를 새로고침하다."
 
-#: src/menu_events.cpp:1241
+#: src/menu_events.cpp:1245
 msgid "Switch a side to/from AI control."
 msgstr "진영의 조작을 AI 또는 수동으로 바꿉니다."
 
 #. TRANSLATORS: These are the arguments accepted by the "droid" command,
 #. which must be a side-number and then optionally one of "on", "off" or "full".
 #. As with the command's name, "on", "off" and "full" are hardcoded, and shouldn't change in the translation.
-#: src/menu_events.cpp:1245
+#: src/menu_events.cpp:1249
 msgid ""
 "[<side> [on/off/full]]\n"
 "“on” = enable but retain vision, “full” = as if it’s controlled by another "
 "player"
 msgstr ""
 
-#: src/menu_events.cpp:1246
+#: src/menu_events.cpp:1250
 msgid "Change terrain type of current hex"
 msgstr ""
 
 #. TRANSLATORS: [both|base|overlay] are hardcoded literal arguments and shouldn't be translated.
-#: src/menu_events.cpp:1248
+#: src/menu_events.cpp:1252
 msgid "<terrain type> [both|base|overlay]"
 msgstr ""
 
-#: src/menu_events.cpp:1249
+#: src/menu_events.cpp:1253
 msgid "Switch a side to/from idle state."
 msgstr "진영의 대기 상태를 전환하겠습니다."
 
 #. TRANSLATORS: These are the arguments accepted by the "idle" command,
 #. which must be a side-number and then optionally "on" or "off".
 #. As with the command's name, "on" and "off" are hardcoded, and shouldn't change in the translation.
-#: src/menu_events.cpp:1253
+#: src/menu_events.cpp:1257
 #, fuzzy
 #| msgid "command_idle^[<side> [on/off]]"
 msgid "command_idle^[<side> [on/off]]"
 msgstr "command_idle^[<side> [on/off]]"
 
-#: src/menu_events.cpp:1254
+#: src/menu_events.cpp:1258
 msgid "Change the in-game theme."
 msgstr ""
 
-#: src/menu_events.cpp:1256
+#: src/menu_events.cpp:1260
 msgid "<side> <nickname>"
 msgstr "<진영> <대화명>"
 
-#: src/menu_events.cpp:1256
+#: src/menu_events.cpp:1260
 msgid "Assign control of a side to a different player or observer."
 msgstr "진영의 조작권을 다른 플레이어 또는 관전자에게 할당합니다."
 
-#: src/menu_events.cpp:1257
+#: src/menu_events.cpp:1261
 msgid "Query the controller status of a side."
 msgstr "진영의 컨트롤러 상태를 문의합니다."
 
-#: src/menu_events.cpp:1258
+#: src/menu_events.cpp:1262
 msgid "<side>"
 msgstr "<진영>"
 
-#: src/menu_events.cpp:1260
+#: src/menu_events.cpp:1264
 msgid "Debug foreground terrain."
 msgstr "메인 지형을 디버깅합니다."
 
-#: src/menu_events.cpp:1262
+#: src/menu_events.cpp:1266
 msgid "Debug layers from terrain under the mouse."
 msgstr "마우스 아래의 지형 레이어를 디버깅합니다."
 
-#: src/menu_events.cpp:1263
+#: src/menu_events.cpp:1267
 #, fuzzy
 #| msgid "Show fps (Frames Per Second)."
 msgid "Display and log fps (Frames Per Second)."
 msgstr "fps를 표시한다"
 
-#: src/menu_events.cpp:1264
+#: src/menu_events.cpp:1268
 msgid ""
 "Similar to the ‘fps’ command, but also forces everything to redraw instead "
 "of only things that have changed."
 msgstr ""
 
-#: src/menu_events.cpp:1265
+#: src/menu_events.cpp:1269
 msgid "Save game."
 msgstr "게임을 저장한다."
 
-#: src/menu_events.cpp:1267
+#: src/menu_events.cpp:1271
 msgid "Quit game."
 msgstr "게임을 종료한다."
 
-#: src/menu_events.cpp:1270
+#: src/menu_events.cpp:1274
 msgid "Save and quit."
 msgstr "저장하고 종료한다."
 
-#: src/menu_events.cpp:1272
+#: src/menu_events.cpp:1276
 msgid "Ignore replay errors."
 msgstr "반복 오류를 무시한다"
 
-#: src/menu_events.cpp:1273
+#: src/menu_events.cpp:1277
 msgid "Disable autosaves."
 msgstr "자동 저장을 비활성한다"
 
-#: src/menu_events.cpp:1275
+#: src/menu_events.cpp:1279
 msgid "<id>"
 msgstr "<id>"
 
-#: src/menu_events.cpp:1275
+#: src/menu_events.cpp:1279
 #, fuzzy
 #| msgid "Advance to the next scenario, or scenario identified by 'id'"
 msgid "Advance to the next scenario, or scenario identified by ‘id’"
 msgstr "다음 시나리오 또는 \"id\"로 식별되는 시나리오로 진행합니다."
 
-#: src/menu_events.cpp:1277
+#: src/menu_events.cpp:1281
 msgid "Choose next scenario"
 msgstr "다음 시나리오를 선택합니다."
 
-#: src/menu_events.cpp:1280
+#: src/menu_events.cpp:1284
 msgid ""
 "Change turn number (and time of day), or increase by one if no number is "
 "specified."
@@ -8355,11 +8317,11 @@ msgstr ""
 "턴수(그리고 게임내 시각)를 변경합니다.만약 값이 지정되지 않는다면 1턴씩 진행"
 "하겠습니다."
 
-#: src/menu_events.cpp:1280
+#: src/menu_events.cpp:1284
 msgid "[turn]"
 msgstr "[턴]"
 
-#: src/menu_events.cpp:1283
+#: src/menu_events.cpp:1287
 msgid ""
 "Change turn limit, or turn the turn limit off if no number is specified or "
 "it’s −1."
@@ -8367,68 +8329,68 @@ msgstr ""
 "턴 제한을 변경합니다.만약 턴 수를 지정되지 않았거나-1이 지정되어 있다면 턴 제"
 "한을 해제합니다."
 
-#: src/menu_events.cpp:1283
+#: src/menu_events.cpp:1287
 msgid "[limit]"
 msgstr "[제한]"
 
-#: src/menu_events.cpp:1285
+#: src/menu_events.cpp:1289
 msgid "Turn debug mode on."
 msgstr "디버깅 모드를 활성화 합니다."
 
-#: src/menu_events.cpp:1286
+#: src/menu_events.cpp:1290
 msgid "Turn debug mode off."
 msgstr "디버깅 모드를 비활성화 합니다."
 
-#: src/menu_events.cpp:1288 src/menu_events.cpp:1292
+#: src/menu_events.cpp:1292 src/menu_events.cpp:1296
 msgid "<command>[;<command>...]"
 msgstr "<command>[;<command>...]"
 
-#: src/menu_events.cpp:1288
+#: src/menu_events.cpp:1292
 msgid "Execute a Lua statement."
 msgstr "Lua 명령문을 실행합니다."
 
-#: src/menu_events.cpp:1290
+#: src/menu_events.cpp:1294
 msgid "Grant higher privileges to Lua scripts."
 msgstr "실행에 특권이 필요한 Lua 스크립트를 허용합니다."
 
-#: src/menu_events.cpp:1291
+#: src/menu_events.cpp:1295
 msgid "Set the command used by the custom command hotkey"
 msgstr "커스텀 커맨드 핫키로 호출하는 커맨드를 설정합니다."
 
-#: src/menu_events.cpp:1294
+#: src/menu_events.cpp:1298
 msgid "Invoke a dialog allowing changing control of MP sides."
 msgstr "멀티 플레이어 게임에서, 진영을 변경하기 위한 다이얼로그를 기동합니다."
 
-#: src/menu_events.cpp:1295
+#: src/menu_events.cpp:1299
 msgid "Launch the gamestate inspector"
 msgstr "게임 상태 인스펙터를 기동합니다."
 
-#: src/menu_events.cpp:1297
+#: src/menu_events.cpp:1301
 msgid "<name>[=<command>]"
 msgstr "<name>[=<command>]"
 
-#: src/menu_events.cpp:1297
+#: src/menu_events.cpp:1301
 msgid "Set or show alias to a command"
 msgstr "Set or show alias to a command"
 
-#: src/menu_events.cpp:1299 src/menu_events.cpp:1304
+#: src/menu_events.cpp:1303 src/menu_events.cpp:1308
 msgid "<var>=<value>"
 msgstr "<var>=<value>"
 
-#: src/menu_events.cpp:1299
+#: src/menu_events.cpp:1303
 msgid "Set a scenario variable."
 msgstr "시나리오 변수를 설정한다"
 
-#: src/menu_events.cpp:1300
+#: src/menu_events.cpp:1304
 msgid "<var>"
 msgstr "<var>"
 
-#: src/menu_events.cpp:1300
+#: src/menu_events.cpp:1304
 msgid "Show a scenario variable."
 msgstr "시나리오 변수를 표시한다"
 
 #. TRANSLATORS: Do not translate the word "advances"; it is a hardcoded literal argument.
-#: src/menu_events.cpp:1303
+#: src/menu_events.cpp:1307
 #, fuzzy
 #| msgid "Modify a unit variable. (Only top level keys are supported.)"
 msgid ""
@@ -8436,208 +8398,208 @@ msgid ""
 "advances=<number>.)"
 msgstr "유닛 변수를 변경합니다(적용 되는 것은 최대 레벨 뿐입니다)"
 
-#: src/menu_events.cpp:1310
+#: src/menu_events.cpp:1314
 msgid "Discover all units in help."
 msgstr "도움말의 모든 유닛을 발견으로 합니다."
 
-#: src/menu_events.cpp:1311
+#: src/menu_events.cpp:1315
 #, fuzzy
 #| msgid "'Undiscover' all units in help."
 msgid "‘Undiscover’ all units in help."
 msgstr "도움말의 모든 유닛을 미발견으로 합니다."
 
-#: src/menu_events.cpp:1312
+#: src/menu_events.cpp:1316
 msgid "<unit type id>"
 msgstr ""
 
-#: src/menu_events.cpp:1312
+#: src/menu_events.cpp:1316
 msgid "Create a unit."
 msgstr "유닛을 생성합니다"
 
-#: src/menu_events.cpp:1313
+#: src/menu_events.cpp:1317
 msgid "Toggle fog for the current player."
 msgstr "현재의 플레이어의 안개를 바꿉니다."
 
-#: src/menu_events.cpp:1314
+#: src/menu_events.cpp:1318
 msgid "Toggle shroud for the current player."
 msgstr "현재의 플레이어의 장막을 바꿉니다."
 
-#: src/menu_events.cpp:1315
+#: src/menu_events.cpp:1319
 msgid "<amount>"
 msgstr ""
 
-#: src/menu_events.cpp:1315
+#: src/menu_events.cpp:1319
 msgid "Give gold to the current player."
 msgstr "현재의 플레이어에 골드를 줍니다."
 
-#: src/menu_events.cpp:1316
+#: src/menu_events.cpp:1320
 #, fuzzy
 #| msgid "<nickname>"
 msgid "<event name>"
 msgstr "<대화명>"
 
-#: src/menu_events.cpp:1316
+#: src/menu_events.cpp:1320
 msgid "Fire a game event."
 msgstr "게임 이벤트를 일으킵니다."
 
-#: src/menu_events.cpp:1319
+#: src/menu_events.cpp:1323
 msgid "Toggle overlaying of x,y coordinates on hexes."
 msgstr "헥스상의 x,y 좌표 표시를 바꿉니다."
 
-#: src/menu_events.cpp:1322
+#: src/menu_events.cpp:1326
 msgid "Toggle overlaying of terrain codes on hexes."
 msgstr "헥스상의 지형 코드 표시를 바꿉니다."
 
-#: src/menu_events.cpp:1325
+#: src/menu_events.cpp:1329
 msgid "Toggle overlaying of number of bitmaps on hexes."
 msgstr "헥스상의 비트맵수의 표시를 바꿉니다."
 
-#: src/menu_events.cpp:1327
+#: src/menu_events.cpp:1331
 msgid "Toggle planning mode."
 msgstr "계획 모드를 바꿉니다."
 
-#: src/menu_events.cpp:1330
+#: src/menu_events.cpp:1334
 msgid "Access whiteboard options dialog."
 msgstr "행동 예정 설정 다이얼로그를 엽니다."
 
-#: src/menu_events.cpp:1443
+#: src/menu_events.cpp:1447
 msgid "Could not find label or unit containing the string ‘$search’."
 msgstr "‘$search’를 포함한 라벨이나 유닛은 발견되지 않았습니다."
 
-#: src/menu_events.cpp:1491
+#: src/menu_events.cpp:1495
 #, fuzzy
 #| msgid "Can't droid invalid side: '$side'."
 msgid "Can’t droid invalid side: ‘$side’."
 msgstr "무효한 진영 '$side' 를 컴퓨터에 조작시킬 수 없습니다."
 
-#: src/menu_events.cpp:1494
+#: src/menu_events.cpp:1498
 #, fuzzy
 #| msgid "Can't droid networked side: '$side'."
 msgid "Can’t droid networked side: ‘$side’."
 msgstr "네트워크 진영 '$side' 를 컴퓨터에 조작시킬 수 없습니다."
 
-#: src/menu_events.cpp:1506 src/menu_events.cpp:1522 src/menu_events.cpp:1554
+#: src/menu_events.cpp:1510 src/menu_events.cpp:1526 src/menu_events.cpp:1558
 msgid ""
 "It is not allowed to change a side from AI to human control when it’s not "
 "your turn."
 msgstr ""
 
-#: src/menu_events.cpp:1516 src/menu_events.cpp:1572
+#: src/menu_events.cpp:1520 src/menu_events.cpp:1576
 #, fuzzy
 #| msgid "Side '$side' controller is now controlled by: AI."
 msgid "Side ‘$side’ controller is now controlled by: AI."
 msgstr "진영 '$side' 는 AI에 의해 조작됩니다."
 
-#: src/menu_events.cpp:1518
+#: src/menu_events.cpp:1522
 #, fuzzy
 #| msgid "Side '$side' is already droided."
 msgid "Side ‘$side’ is already droided."
 msgstr "진영 '$side' 는 이미 컴퓨터에 조작되어 있습니다."
 
-#: src/menu_events.cpp:1532 src/menu_events.cpp:1564
+#: src/menu_events.cpp:1536 src/menu_events.cpp:1568
 #, fuzzy
 #| msgid "Side '$side' controller is now controlled by: human."
 msgid "Side ‘$side’ controller is now controlled by: human."
 msgstr "진영 '$side' 는 인간에 의해 조작됩니다."
 
-#: src/menu_events.cpp:1534
+#: src/menu_events.cpp:1538
 #, fuzzy
 #| msgid "Side '$side' is already droided."
 msgid "Side ‘$side’ is already not droided."
 msgstr "진영 '$side' 는 이미 컴퓨터에 조작되어 있습니다."
 
-#: src/menu_events.cpp:1538
+#: src/menu_events.cpp:1542
 msgid ""
 "It is not allowed to change a side from human to AI control when it’s not "
 "your turn."
 msgstr ""
 
-#: src/menu_events.cpp:1548
+#: src/menu_events.cpp:1552
 #, fuzzy
 #| msgid "Side '$side' controller is now controlled by: AI."
 msgid "Side ‘$side’ controller is now fully controlled by: AI."
 msgstr "진영 '$side' 는 AI에 의해 조작됩니다."
 
-#: src/menu_events.cpp:1550
+#: src/menu_events.cpp:1554
 #, fuzzy
 #| msgid "Side '$side' is already droided."
 msgid "Side ‘$side’ is already fully AI controlled."
 msgstr "진영 '$side' 는 이미 컴퓨터에 조작되어 있습니다."
 
-#: src/menu_events.cpp:1575
+#: src/menu_events.cpp:1579
 msgid ""
 "Invalid action provided for side ‘$side’. Valid actions are: on, off, full."
 msgstr ""
 
-#: src/menu_events.cpp:1584
+#: src/menu_events.cpp:1588
 #, fuzzy
 #| msgid "Side '$side' is already droided."
 msgid "Side ‘$side’ is not a human or AI player."
 msgstr "진영 '$side' 는 이미 컴퓨터에 조작되어 있습니다."
 
-#: src/menu_events.cpp:1621
+#: src/menu_events.cpp:1625
 #, fuzzy
 #| msgid "Can't idle invalid side: '$side'."
 msgid "Can’t idle invalid side: ‘$side’."
 msgstr "무효한 진영 '$side' 를 대기상태로 할 수 없습니다."
 
-#: src/menu_events.cpp:1626
+#: src/menu_events.cpp:1630
 #, fuzzy
 #| msgid "Can't idle networked side: '$side'."
 msgid "Can’t idle networked side: ‘$side’."
 msgstr "네트워크상의 진영 '$side' 는 대기상태로 할 수 없습니다."
 
-#: src/menu_events.cpp:1631
+#: src/menu_events.cpp:1635
 #, fuzzy
 #| msgid "Can't idle local ai side: '$side'."
 msgid "Can’t idle local ai side: ‘$side’."
 msgstr "로컬 AI 진영 '$side' 는 대기 상태로 할 수 없습니다."
 
-#: src/menu_events.cpp:1677
+#: src/menu_events.cpp:1681
 #, fuzzy
 #| msgid "Can't change control of invalid side: '$side'."
 msgid "Can’t change control of invalid side: ‘$side’."
 msgstr "무효한 진영 '$side' 의 컨트롤을 변경할 수 없습니다."
 
-#: src/menu_events.cpp:1687
+#: src/menu_events.cpp:1691
 #, fuzzy
 #| msgid "Can't change control of out-of-bounds side: '$side'."
 msgid "Can’t change control of out-of-bounds side: ‘$side’."
 msgstr "규정외의 진영 '$side' 의 컨트롤을 변경할 수 없습니다."
 
-#: src/menu_events.cpp:1704
+#: src/menu_events.cpp:1708
 #, fuzzy
 #| msgid "Can't query control of invalid side: '$side'."
 msgid "Can’t query control of invalid side: ‘$side’."
 msgstr "무효한 진영 '$side' 의 컨트롤을 확인할 수 없습니다."
 
-#: src/menu_events.cpp:1711
+#: src/menu_events.cpp:1715
 #, fuzzy
 #| msgid "Can't query control of out-of-bounds side: '$side'."
 msgid "Can’t query control of out-of-bounds side: ‘$side’."
 msgstr "규정외의 진영 '$side' 의 컨트롤을 확인할 수 없습니다."
 
-#: src/menu_events.cpp:1833
+#: src/menu_events.cpp:1837
 msgid "Choose Scenario (Debug!)"
 msgstr "시나리오 선택 (디버그!)"
 
-#: src/menu_events.cpp:1869
+#: src/menu_events.cpp:1873
 msgid "Debug mode activated!"
 msgstr "디버그 모드가 켜졌습니다!"
 
-#: src/menu_events.cpp:1872
+#: src/menu_events.cpp:1876
 msgid "Debug mode not available in network games"
 msgstr "네트워크 게임에서는 디버그 모드를 쓸 수 없습니다"
 
-#: src/menu_events.cpp:1879
+#: src/menu_events.cpp:1883
 msgid "Debug mode deactivated!"
 msgstr "디버그 모드가 꺼졌습니다!"
 
-#: src/menu_events.cpp:1899
+#: src/menu_events.cpp:1903
 msgid "WARNING! Unsafe Lua Mode"
 msgstr "경고! 안전하지 않은 Lua Mode"
 
-#: src/menu_events.cpp:1900
+#: src/menu_events.cpp:1904
 msgid ""
 "Executing Lua code in in this manner opens your computer to potential "
 "security breaches from any malicious add-ons or other programs you may have "
@@ -8650,19 +8612,19 @@ msgstr ""
 "\"\n"
 "지금부터 하고자 하는 것의 의미를 이해하고 있지 않으면, 속행하지 말아 주세요."
 
-#: src/menu_events.cpp:1905
+#: src/menu_events.cpp:1909
 msgid "Unsafe mode enabled!"
 msgstr "Unsafe mode enabled!"
 
-#: src/menu_events.cpp:1954
+#: src/menu_events.cpp:1958
 msgid "Variable not found"
 msgstr "변수를 찾을수 없습니다"
 
-#: src/menu_events.cpp:1987
+#: src/menu_events.cpp:1991
 msgid "Debug command ‘unit: $unit’ failed: no unit selected or hovered over."
 msgstr ""
 
-#: src/menu_events.cpp:2005
+#: src/menu_events.cpp:2009
 #, fuzzy
 #| msgid ""
 #| "Invalid alignment: '$alignment', needs to be one of lawful, neutral, "
@@ -8674,23 +8636,23 @@ msgstr ""
 "무효한 얼라인먼트: '$alignment' 는 질서, 중립, 혼돈, 박명 중 어느 것이어야 합"
 "니다."
 
-#: src/menu_events.cpp:2031
+#: src/menu_events.cpp:2035
 msgid "Do you wish to clear all of your discovered units from help?"
 msgstr "도움말에서 발견된 유닛의 정보를 삭제합니까? "
 
-#: src/menu_events.cpp:2045
+#: src/menu_events.cpp:2049
 msgid "Invalid unit type"
 msgstr "무효한 유닛 타입"
 
-#: src/menu_events.cpp:2052
+#: src/menu_events.cpp:2056
 msgid "Invalid location"
 msgstr "무효한 장소"
 
-#: src/menu_events.cpp:2127
+#: src/menu_events.cpp:2131
 msgid "prompt^Command:"
 msgstr "명령"
 
-#: src/menu_events.cpp:2153
+#: src/menu_events.cpp:2157
 #, fuzzy
 #| msgid "prompt^Command:"
 msgid "prompt^Formula:"
@@ -9020,7 +8982,7 @@ msgstr "정말 종료하시겠습니까?"
 msgid "Type:"
 msgstr "유형: "
 
-#: src/reports.cpp:199
+#: src/reports.cpp:200
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -9032,39 +8994,39 @@ msgstr ""
 "\n"
 "특별히 참고할 것:"
 
-#: src/reports.cpp:223
+#: src/reports.cpp:224
 #, fuzzy
 #| msgid "Race: "
 msgid "Race:"
 msgstr "종족: "
 
-#: src/reports.cpp:242
+#: src/reports.cpp:243
 msgid "Side: <b>$side_name</b> ($color_name)"
 msgstr ""
 
-#: src/reports.cpp:320
+#: src/reports.cpp:321
 #, fuzzy
 #| msgid "Trait: "
 msgid "Trait:"
 msgstr "특성: "
 
-#: src/reports.cpp:343
+#: src/reports.cpp:344
 #, fuzzy
 #| msgid "invisible: "
 msgid "invisible:"
 msgstr "투명:"
 
-#: src/reports.cpp:344
+#: src/reports.cpp:345
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
 msgstr "이 유닛은 투명합니다. 적은 이 유닛을 보거나 공격할 수 없습니다."
 
-#: src/reports.cpp:347
+#: src/reports.cpp:348
 #, fuzzy
 #| msgid "slowed: "
 msgid "slowed:"
 msgstr "둔화:"
 
-#: src/reports.cpp:348
+#: src/reports.cpp:349
 msgid ""
 "This unit has been slowed. It will only deal half its normal damage when "
 "attacking and its movement cost is doubled."
@@ -9072,13 +9034,13 @@ msgstr ""
 "이 유닛은 둔화되었습니다. 공격시 기본 데미지의 절반만을 입히게 되며 이동력 소"
 "모가 2배가 됩니다."
 
-#: src/reports.cpp:351
+#: src/reports.cpp:352
 #, fuzzy
 #| msgid "poisoned: "
 msgid "poisoned:"
 msgstr "중독:"
 
-#: src/reports.cpp:352
+#: src/reports.cpp:353
 msgid ""
 "This unit is poisoned. It will lose 8 HP every turn until it can seek a cure "
 "to the poison in a village or from a friendly unit with the ‘cures’ "
@@ -9092,208 +9054,222 @@ msgstr ""
 "\n"
 "독 데미지로 HP는 1까지만 감소합니다.독 피해만으로 사망하지는 않습니다."
 
-#: src/reports.cpp:355
+#: src/reports.cpp:356
 #, fuzzy
 #| msgid "petrified: "
 msgid "petrified:"
 msgstr "석화:"
 
-#: src/reports.cpp:356
+#: src/reports.cpp:357
 msgid "This unit has been petrified. It may not move or attack."
 msgstr "이 유닛은 석화되었습니다. 움직이거나 공격할 수 없습니다."
 
-#: src/reports.cpp:359
+#: src/reports.cpp:360
 #, fuzzy
 #| msgid "unhealable"
 msgid "unhealable:"
 msgstr "치료불가"
 
-#: src/reports.cpp:360
+#: src/reports.cpp:361
 msgid ""
 "This unit is unhealable. It cannot be healed by healers or villages and "
 "doesn’t benefit from resting."
 msgstr ""
 
-#: src/reports.cpp:363
+#: src/reports.cpp:364
 #, fuzzy
 #| msgid "invisible: "
 msgid "invulnerable:"
 msgstr "투명:"
 
-#: src/reports.cpp:364
+#: src/reports.cpp:365
 #, fuzzy
 #| msgid ""
 #| "This unit is invisible. It cannot be seen or attacked by enemy units."
 msgid "This unit is invulnerable. It cannot be harmed by any attack."
 msgstr "이 유닛은 투명합니다. 적은 이 유닛을 보거나 공격할 수 없습니다."
 
-#: src/reports.cpp:394 src/reports.cpp:979
+#: src/reports.cpp:395 src/reports.cpp:993
 #, fuzzy
 #| msgid "Alignment: "
 msgid "Alignment:"
 msgstr "선호시간대: "
 
-#: src/reports.cpp:441
+#: src/reports.cpp:442
 #, fuzzy
 #| msgid "Ability: "
 msgid "Ability:"
 msgstr "능력: "
 
-#: src/reports.cpp:443 src/reports.cpp:1036 src/reports.cpp:1076
+#: src/reports.cpp:444 src/reports.cpp:1050 src/reports.cpp:1090
 msgid " (inactive)"
 msgstr "(행동하지 않는)"
 
-#: src/reports.cpp:507
+#: src/reports.cpp:508
 #, fuzzy
 #| msgid "Resistances: "
 msgid "Resistances:"
 msgstr "저항력: "
 
-#: src/reports.cpp:509
+#: src/reports.cpp:510
 msgid "(Att / Def)"
 msgstr "(공격 / 방어)"
 
-#: src/reports.cpp:538
+#: src/reports.cpp:539
 #, fuzzy
 #| msgid "Experience Modifier: "
 msgid "Experience Modifier:"
 msgstr "경험치 수정: "
 
-#: src/reports.cpp:588
+#: src/reports.cpp:589
 #, fuzzy
 #| msgid "Terrain: "
 msgid "Terrain:"
 msgstr "지형: "
 
-#: src/reports.cpp:605
+#: src/reports.cpp:606
 msgid "maximum^max."
 msgstr "최대"
 
-#: src/reports.cpp:605
+#: src/reports.cpp:606
 msgid "minimum^min."
 msgstr "최소"
 
-#: src/reports.cpp:610
+#: src/reports.cpp:611
 #, fuzzy
 #| msgid "Defense: "
 msgid "Defense:"
 msgstr "방어도: "
 
-#: src/reports.cpp:645 src/reports.cpp:646
+#. TRANSLATORS: single-letter abbreviation of "vision", fits in a small space on the sidebar
+#: src/reports.cpp:646
+#, fuzzy
+#| msgid "Version: "
+msgid "vision^V:"
+msgstr "저장 파일 버전:"
+
+#: src/reports.cpp:647
 #, fuzzy
 #| msgid "Version: "
 msgid "vision:"
 msgstr "저장 파일 버전:"
 
-#: src/reports.cpp:650 src/reports.cpp:651
+#. TRANSLATORS: single-letter abbreviation of "jamming", fits in a small space on the sidebar
+#: src/reports.cpp:669
+#, fuzzy
+#| msgid "Programming"
+msgid "jamming^J:"
+msgstr "방해"
+
+#: src/reports.cpp:670
 #, fuzzy
 #| msgid "Programming"
 msgid "jamming:"
 msgstr "방해"
 
-#: src/reports.cpp:680
+#: src/reports.cpp:694
 #, fuzzy
 #| msgid "Movement Cost"
 msgid "Movement Costs:"
 msgstr "소모 이동력"
 
-#: src/reports.cpp:822 src/reports.cpp:1168 src/reports.cpp:1180
+#: src/reports.cpp:836 src/reports.cpp:1182 src/reports.cpp:1194
 #, fuzzy
 #| msgid "Weapon: "
 msgid "Weapon:"
 msgstr "무기 이름: "
 
-#: src/reports.cpp:823 src/reports.cpp:1169
+#: src/reports.cpp:837 src/reports.cpp:1183
 #, fuzzy
 #| msgid "Damage: "
 msgid "Damage:"
 msgstr "무기 위력: "
 
-#: src/reports.cpp:827
+#: src/reports.cpp:841
 #, fuzzy
 #| msgid "Base damage: "
 msgid "Base damage:"
 msgstr "기본 위력: "
 
-#: src/reports.cpp:829 src/reports.cpp:863 src/reports.cpp:873
+#: src/reports.cpp:843 src/reports.cpp:877 src/reports.cpp:887
 #, fuzzy
 #| msgid "Weapon special: "
 msgid "With specials:"
 msgstr "무기 능력: "
 
-#: src/reports.cpp:832 src/reports.cpp:1393
+#: src/reports.cpp:846 src/reports.cpp:1407
 #, fuzzy
 #| msgid "Time of day: "
 msgid "Time of day:"
 msgstr "시간대: "
 
-#: src/reports.cpp:836
+#: src/reports.cpp:850
 #, fuzzy
 #| msgid "Leadership: "
 msgid "Leadership:"
 msgstr "통솔력 영향: "
 
-#: src/reports.cpp:840
+#: src/reports.cpp:854
 #, fuzzy
 #| msgid "Slowed: "
 msgid "Slowed:"
 msgstr "둔화: "
 
-#: src/reports.cpp:844
+#: src/reports.cpp:858
 #, fuzzy
 #| msgid "Attacks: "
 msgid "Attacks:"
 msgstr "공격 회수: "
 
-#: src/reports.cpp:848
+#: src/reports.cpp:862
 #, fuzzy
 #| msgid "Turn bonus: "
 msgid "Max swarm bonus:"
 msgstr "최대 무리 보너스: "
 
-#: src/reports.cpp:849 src/reports.cpp:868
+#: src/reports.cpp:863 src/reports.cpp:882
 #, fuzzy
 #| msgid "Swarm: "
 msgid "Swarm:"
 msgstr "무리:"
 
-#: src/reports.cpp:850 src/reports.cpp:861 src/reports.cpp:872
+#: src/reports.cpp:864 src/reports.cpp:875 src/reports.cpp:886
 #, fuzzy
 #| msgid "Base attacks: "
 msgid "Base attacks:"
 msgstr "기본 공격:"
 
-#: src/reports.cpp:856
+#: src/reports.cpp:870
 #, fuzzy
 #| msgid "Special"
 msgid "Specials:"
 msgstr "특수능력"
 
-#: src/reports.cpp:866
+#: src/reports.cpp:880
 #, fuzzy
 #| msgid "Subject to swarm: "
 msgid "Subject to swarm:"
 msgstr "군집할 대상:"
 
-#: src/reports.cpp:906
+#: src/reports.cpp:920
 #, fuzzy
 #| msgid "Weapon range: "
 msgid "Weapon range:"
 msgstr "공격 범위: "
 
-#: src/reports.cpp:907
+#: src/reports.cpp:921
 #, fuzzy
 #| msgid "Damage type: "
 msgid "Damage type:"
 msgstr "공격 속성: "
 
-#: src/reports.cpp:908
+#: src/reports.cpp:922
 #, fuzzy
 #| msgid "Damage versus: "
 msgid "Damage versus:"
 msgstr "대상별 피해량: "
 
-#: src/reports.cpp:988
+#: src/reports.cpp:1002
 #, fuzzy
 #| msgid "$number damage"
 #| msgid_plural "$number damage"
@@ -9301,26 +9277,26 @@ msgid "uses $num attack"
 msgid_plural "uses $num attacks"
 msgstr[0] "$number 데미지"
 
-#: src/reports.cpp:996
+#: src/reports.cpp:1010
 msgid "This attack uses $num attack point"
 msgid_plural "This attack uses $num attack points"
 msgstr[0] ""
 
-#: src/reports.cpp:1034 src/reports.cpp:1074
+#: src/reports.cpp:1048 src/reports.cpp:1088
 #, fuzzy
 #| msgid "Weapon special: "
 msgid "Weapon special:"
 msgstr "무기 능력: "
 
-#: src/reports.cpp:1151
+#: src/reports.cpp:1165
 msgid "weapon^None"
 msgstr "없음"
 
-#: src/reports.cpp:1181
+#: src/reports.cpp:1195
 msgid "Total damage"
 msgstr "총 데미지"
 
-#: src/reports.cpp:1239
+#: src/reports.cpp:1253
 #, fuzzy
 #| msgid "Attacker"
 msgid "Attack"
@@ -9328,52 +9304,52 @@ msgid_plural "Attacks"
 msgstr[0] "공격"
 
 #. TRANSLATORS: This string is shown in the sidebar beneath the word "Attacks" when a unit can attack multiple times per turn
-#: src/reports.cpp:1246
+#: src/reports.cpp:1260
 msgid "Remaining: $left/$max"
 msgstr ""
 
-#: src/reports.cpp:1250
+#: src/reports.cpp:1264
 #, fuzzy
 #| msgid "Multiplayer"
 msgid "This unit can attack multiple times per turn."
 msgstr "멀티 플레이어 게임의 세이브 데이터가 아닙니다."
 
-#: src/reports.cpp:1342
+#: src/reports.cpp:1356
 #, fuzzy
 #| msgid "Time of day: "
 msgid "Time of day schedule:"
 msgstr "시간 스케줄: "
 
-#: src/reports.cpp:1394 src/reports.cpp:1448
+#: src/reports.cpp:1408 src/reports.cpp:1462
 #, fuzzy
 #| msgid "Lawful units: "
 msgid "Lawful units:"
 msgstr "주행성 유닛: "
 
-#: src/reports.cpp:1396 src/reports.cpp:1450
+#: src/reports.cpp:1410 src/reports.cpp:1464
 #, fuzzy
 #| msgid "Neutral units: "
 msgid "Neutral units:"
 msgstr "시간대 중립: "
 
-#: src/reports.cpp:1397 src/reports.cpp:1451
+#: src/reports.cpp:1411 src/reports.cpp:1465
 #, fuzzy
 #| msgid "Chaotic units: "
 msgid "Chaotic units:"
 msgstr "야행성 유닛: "
 
-#: src/reports.cpp:1399 src/reports.cpp:1453
+#: src/reports.cpp:1413 src/reports.cpp:1467
 #, fuzzy
 msgid "Liminal units:"
 msgstr "주행성 유닛:"
 
-#: src/reports.cpp:1511
+#: src/reports.cpp:1525
 #, fuzzy
 #| msgid "Turn "
 msgid "Turn Number"
 msgstr "턴 수"
 
-#: src/reports.cpp:1515
+#: src/reports.cpp:1529
 #, fuzzy
 #| msgid ""
 #| "When the game reaches the number of turns indicated by the second number, "
@@ -9383,32 +9359,32 @@ msgid ""
 "will end."
 msgstr "턴 수가 2번째 숫자에 도달한 경우 게임은 종료합니다."
 
-#: src/reports.cpp:1538
+#: src/reports.cpp:1552
 msgid "Gold"
 msgstr "자금"
 
-#: src/reports.cpp:1538
+#: src/reports.cpp:1552
 msgid ""
 "The amount of gold currently available to recruit and maintain your army."
 msgstr "군대를 모집하고 유지하기 위해 현재 사용할 수 있는 금의 양."
 
-#: src/reports.cpp:1556
+#: src/reports.cpp:1570
 msgid "The fraction of known villages that your side has captured."
 msgstr "당신 세력의 마을이 점령당했다."
 
-#: src/reports.cpp:1556
+#: src/reports.cpp:1570
 msgid "Villages"
 msgstr "마을 수"
 
-#: src/reports.cpp:1561
+#: src/reports.cpp:1575
 msgid "The total number of units on your side."
 msgstr "당신 세력의 총 유닛 수입니다"
 
-#: src/reports.cpp:1561
+#: src/reports.cpp:1575
 msgid "Units"
 msgstr "유닛"
 
-#: src/reports.cpp:1570
+#: src/reports.cpp:1584
 msgid ""
 "The expenses incurred at the end of every turn to maintain your army. The "
 "first number is the amount of gold that will be deducted. It is equal to the "
@@ -9417,39 +9393,39 @@ msgid ""
 "amount of gold that would be deducted if you lost all villages."
 msgstr ""
 
-#: src/reports.cpp:1570
+#: src/reports.cpp:1584
 msgid "Upkeep"
 msgstr "유지비"
 
-#: src/reports.cpp:1600
+#: src/reports.cpp:1614
 #, fuzzy
 #| msgid "Income"
 msgid "Net Income"
 msgstr "수입"
 
-#: src/reports.cpp:1600
+#: src/reports.cpp:1614
 msgid ""
 "The net amount of gold you gain or lose each turn, taking into account "
 "income from controlled villages and payment of upkeep."
 msgstr ""
 
-#: src/reports.cpp:1800
+#: src/reports.cpp:1814
 msgid "Observers:"
 msgstr "관찰자:"
 
-#: src/reports.cpp:1817
+#: src/reports.cpp:1831
 msgid "Clock"
 msgstr "시계"
 
-#: src/reports.cpp:1828
+#: src/reports.cpp:1842
 msgid "Battery"
 msgstr "배터리"
 
-#: src/reports.cpp:1872
+#: src/reports.cpp:1886
 msgid "Countdown until your turn automatically ends."
 msgstr "당신의 차례가 자동으로 끝날 때까지 카운트다운 한다."
 
-#: src/reports.cpp:1872
+#: src/reports.cpp:1886
 msgid "Turn Countdown"
 msgstr "턴 카운트다운"
 
@@ -9814,23 +9790,23 @@ msgstr "시간대"
 msgid "This Time of Day is only a Stub!"
 msgstr "이 시간은 단지 일부분일 뿐이다!"
 
-#: src/units/abilities.cpp:1131
+#: src/units/abilities.cpp:1140
 #, fuzzy
 #| msgid "slowed: "
 msgid "Owned: "
 msgstr "둔화:"
 
 #. TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
-#: src/units/abilities.cpp:1133
+#: src/units/abilities.cpp:1142
 msgid "Taught: "
 msgstr ""
 
 #. TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
-#: src/units/abilities.cpp:1135
+#: src/units/abilities.cpp:1144
 msgid "Taught: (by an enemy): "
 msgstr ""
 
-#: src/units/abilities.cpp:1136
+#: src/units/abilities.cpp:1145
 msgid "Used by opponent: "
 msgstr ""
 
@@ -10155,6 +10131,11 @@ msgstr "$player 의 계획을 숨기기."
 #: src/whiteboard/manager.cpp:1140
 msgid "Whiteboard Options"
 msgstr "행동 예정 옵션"
+
+#, fuzzy
+#~| msgid "Legends of the North"
+#~ msgid "Echoes of the Earth"
+#~ msgstr "북부의 전설"
 
 #~ msgid "Oldania ADF Std"
 #~ msgstr "Oldania ADF Std"

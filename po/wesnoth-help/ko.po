@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-01-20 11:31-0600\n"
+"POT-Creation-Date: 2026-02-25 19:03-0600\n"
 "PO-Revision-Date: 2013-10-25 16:24+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
@@ -47,14 +47,14 @@ msgstr "용맹한"
 #: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:244
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:6
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:48
-#: data/core/macros/weapon_specials.cfg:68
+#: data/core/macros/weapon_specials.cfg:71
 msgid "plague"
 msgstr "역병"
 
 #. [plague]: id=SotA_plague, type=null # prevents normal corpse, and allows SotA code to handle it
 #. [plague]: id=plague, type=Walking Corpse
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:7
-#: data/core/macros/weapon_specials.cfg:69
+#: data/core/macros/weapon_specials.cfg:72
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a "
 "Walking Corpse on the same side as the unit with the Plague attack. This "
@@ -67,7 +67,7 @@ msgstr ""
 #. [trait]: id=loyal
 #: data/campaigns/The_Deceivers_Gambit/scenarios/00_Graduation.cfg:112
 #: data/campaigns/The_Deceivers_Gambit/scenarios/11_Clan_Blackcrest.cfg:748
-#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:19
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:20
 #: data/core/macros/traits.cfg:12
 msgid "loyal"
 msgstr "심복"
@@ -75,7 +75,7 @@ msgstr "심복"
 #. [trait]: id=loyal_dummy
 #: data/campaigns/The_Deceivers_Gambit/scenarios/00_Graduation.cfg:113
 #: data/campaigns/The_Deceivers_Gambit/scenarios/11_Clan_Blackcrest.cfg:749
-#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:20
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:21
 #, fuzzy
 #| msgid "Zero upkeep"
 msgid "Zero upkeep."
@@ -84,7 +84,7 @@ msgstr "유지비 없음"
 #. [chance_to_hit]
 #. [chance_to_hit]: id=magical
 #: data/campaigns/The_Deceivers_Gambit/scenarios/14_Long_Live_the_Queen.cfg:1299
-#: data/core/macros/weapon_specials.cfg:117
+#: data/core/macros/weapon_specials.cfg:120
 msgid ""
 "This attack always has a 70% chance to hit regardless of the defensive "
 "ability of the unit being attacked."
@@ -95,33 +95,33 @@ msgstr ""
 #. [chance_to_hit]
 #. [chance_to_hit]: id=magical
 #: data/campaigns/The_Deceivers_Gambit/scenarios/14_Long_Live_the_Queen.cfg:1299
-#: data/core/macros/weapon_specials.cfg:116
+#: data/core/macros/weapon_specials.cfg:119
 msgid "magical"
 msgstr "마법"
 
 #. [trait]: id=intelligent_dummy
 #. [trait]: id=intelligent
-#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:24
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:25
 #: data/core/macros/traits.cfg:190
 msgid "intelligent"
 msgstr "영리한"
 
 #. [trait]: id=intelligent_dummy
-#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:25
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:26
 msgid "Intelligent units require 20% less experience than usual to advance."
 msgstr "영리한 유닛은 승급하는데 필요한 경험치가 원래의 경우보다 20% 적습니다."
 
 #. [resistance]: id=garak_steadfast
 #. [resistance]: id=steadfast
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:708
-#: data/core/macros/abilities.cfg:136
+#: data/core/macros/abilities.cfg:139
 msgid "steadfast"
 msgstr "철벽"
 
 #. [resistance]: id=garak_steadfast
 #. [resistance]: id=steadfast
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:709
-#: data/core/macros/abilities.cfg:137
+#: data/core/macros/abilities.cfg:140
 msgid "female^steadfast"
 msgstr "철벽"
 
@@ -129,31 +129,41 @@ msgstr "철벽"
 #. [illuminates]: id=illumination
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:324
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:325
-#: data/core/macros/abilities.cfg:245
+#: data/core/macros/abilities.cfg:248
 msgid "female^illuminates"
 msgstr "광휘"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:727
-#: data/core/macros/abilities.cfg:10
+#: data/core/macros/abilities.cfg:13
 msgid "heals +4"
 msgstr "치료 +4"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:728
-#: data/core/macros/abilities.cfg:11
+#: data/core/macros/abilities.cfg:14
 msgid "female^heals +4"
 msgstr "치료 +4"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:729
+#: data/core/macros/abilities.cfg:15
+#, fuzzy
+#| msgid ""
+#| "Allows the unit to heal adjacent allied units at the beginning of our "
+#| "turn.\n"
+#| "\n"
+#| "A unit cared for by this healer may heal up to 4 HP per turn, or stop "
+#| "poison from taking effect for that turn.\n"
+#| "A poisoned unit cannot be cured of its poison by a healer, and must seek "
+#| "the care of a village or a unit that can cure."
 msgid ""
 "Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
 "\n"
 "A unit cared for by this healer may heal up to 4 HP per turn, or stop poison "
 "from taking effect for that turn.\n"
-"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
-"care of a village or a unit that can cure."
+"This ability will not cure an affected unit of poison, however, only delay "
+"its effect."
 msgstr ""
 "당신의 턴이 시작할때 근처의 아군 및 동맹 유닛을 치료할 수 있습니다.\n"
 "\n"
@@ -166,7 +176,7 @@ msgstr ""
 #. [heals]
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:733
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:772
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:802
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:803
 #, fuzzy
 #| msgid " This unit is capable of basic healing."
 msgid "This unit is capable of basic healing and slowing dehydration."
@@ -174,26 +184,36 @@ msgstr " 이 유닛은 기본적인 치료를 할 수 있습니다."
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:751
-#: data/core/macros/abilities.cfg:37
+#: data/core/macros/abilities.cfg:40
 msgid "heals +8"
 msgstr "치료 +8"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:752
-#: data/core/macros/abilities.cfg:38
+#: data/core/macros/abilities.cfg:41
 msgid "female^heals +8"
 msgstr "치료 +8"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:753
+#: data/core/macros/abilities.cfg:42
+#, fuzzy
+#| msgid ""
+#| "This unit combines herbal remedies with magic to heal units more quickly "
+#| "than is normally possible on the battlefield.\n"
+#| "\n"
+#| "A unit cared for by this healer may heal up to 8 HP per turn, or stop "
+#| "poison from taking effect for that turn.\n"
+#| "A poisoned unit cannot be cured of its poison by a healer, and must seek "
+#| "the care of a village or a unit that can cure."
 msgid ""
 "This unit combines herbal remedies with magic to heal units more quickly "
 "than is normally possible on the battlefield.\n"
 "\n"
 "A unit cared for by this healer may heal up to 8 HP per turn, or stop poison "
 "from taking effect for that turn.\n"
-"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
-"care of a village or a unit that can cure."
+"This ability will not cure an affected unit of poison, however, only delay "
+"its effect."
 msgstr ""
 "이 유닛은 약초의 처방과 마법을 결합하여 전장의 일반적인 치료보다 더 빠른 회복"
 "효과를 낼 수 있습니다.\n"
@@ -218,7 +238,8 @@ msgid "female^heals +12"
 msgstr "치료 +4"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:783
+#. only exists in UtBS, but is the same wording as heals+8 with a bigger number
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:784
 #, fuzzy
 #| msgid ""
 #| "This unit combines herbal remedies with magic to heal units more quickly "
@@ -234,8 +255,8 @@ msgid ""
 "\n"
 "A unit cared for by this healer may heal up to 12 HP per turn, or stop "
 "poison from taking effect for that turn.\n"
-"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
-"care of a village or a unit that can cure."
+"This ability will not cure an affected unit of poison, however, only delay "
+"its effect."
 msgstr ""
 "이 유닛은 약초의 처방과 마법을 결합하여 전장의 일반적인 치료보다 더 빠른 회복"
 "효과를 낼 수 있습니다.\n"
@@ -246,7 +267,7 @@ msgstr ""
 "있는 유닛에 의지해야 합니다."
 
 #. [heals]
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:808
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:809
 #, fuzzy
 #| msgid ""
 #| " This unit is capable of healing those around it, and curing them of "
@@ -257,42 +278,42 @@ msgid ""
 msgstr " 이 유닛은 주변의 유닛들을 치료하며, 독을 치유할 수 있습니다."
 
 #. [lua]: set_status
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:2132
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:2133
 #, fuzzy
 #| msgid "female^undead"
 msgid "female^poisoned"
 msgstr "언데드"
 
 #. [lua]: set_status
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:2132
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:2133
 #, fuzzy
 #| msgid "poison"
 msgid "poisoned"
 msgstr "중독"
 
 #. [lua]: set_status
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:2134
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:2135
 #, fuzzy
 #| msgid "female^slow"
 msgid "female^slowed"
 msgstr "둔한"
 
 #. [lua]: set_status
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:2134
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:2135
 #, fuzzy
 #| msgid "slow"
 msgid "slowed"
 msgstr "둔한"
 
 #. [lua]: set_status
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:2135
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:2136
 #, fuzzy
 #| msgid "female^resilient"
 msgid "female^petrified"
 msgstr "튼튼한"
 
 #. [lua]: set_status
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:2135
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:2136
 #, fuzzy
 #| msgid "petrifies"
 msgid "petrified"
@@ -303,7 +324,7 @@ msgstr "석화"
 #. [teleport]: id=teleport
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:699
 #: data/campaigns/World_Conquest/resources/data/training.cfg:786
-#: data/core/macros/abilities.cfg:260
+#: data/core/macros/abilities.cfg:263
 msgid "teleport"
 msgstr "전이"
 
@@ -311,7 +332,7 @@ msgstr "전이"
 #. [regenerate]: id=regenerates
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:760
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:54
-#: data/core/macros/abilities.cfg:99
+#: data/core/macros/abilities.cfg:102
 msgid "regenerates"
 msgstr "재생"
 
@@ -325,27 +346,27 @@ msgstr "항상 휴식 회복을 받는다"
 #. [chance]
 #. [damage]: id=backstab
 #: data/campaigns/World_Conquest/resources/data/training.cfg:439
-#: data/core/macros/weapon_specials.cfg:31
+#: data/core/macros/weapon_specials.cfg:34
 msgid "backstab"
 msgstr "뒷치기"
 
 #. [chance]
 #. [dummy]: id=feeding
 #: data/campaigns/World_Conquest/resources/data/training.cfg:501
-#: data/core/macros/abilities.cfg:415
+#: data/core/macros/abilities.cfg:418
 msgid "feeding"
 msgstr "식귀"
 
 #. [chance]
 #. [leadership]: id=leadership
 #: data/campaigns/World_Conquest/resources/data/training.cfg:528
-#: data/core/macros/abilities.cfg:206
+#: data/core/macros/abilities.cfg:209
 msgid "leadership"
 msgstr "통솔"
 
 #. [hides]: id=ambush
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:12
-#: data/core/macros/abilities.cfg:292
+#: data/core/macros/abilities.cfg:295
 msgid "ambush"
 msgstr "기습"
 
@@ -359,13 +380,13 @@ msgstr "동굴"
 
 #. [hides]: id=concealment
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:21
-#: data/core/macros/abilities.cfg:355
+#: data/core/macros/abilities.cfg:358
 msgid "concealment"
 msgstr "은폐"
 
 #. [drains]: id=drains
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:24
-#: data/core/macros/weapon_specials.cfg:209
+#: data/core/macros/weapon_specials.cfg:183
 msgid "drains"
 msgstr "흡수"
 
@@ -387,7 +408,7 @@ msgstr "언덕"
 
 #. [chance_to_hit]: id=marksman
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:39
-#: data/core/macros/weapon_specials.cfg:102
+#: data/core/macros/weapon_specials.cfg:105
 msgid "marksman"
 msgstr "저격"
 
@@ -397,13 +418,13 @@ msgstr "버섯 숲"
 
 #. [hides]: id=nightstalk
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:45
-#: data/core/macros/abilities.cfg:335 data/core/macros/abilities.cfg:336
+#: data/core/macros/abilities.cfg:338
 msgid "nightstalk"
 msgstr "암습"
 
 #. [poison]: id=poison
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:51
-#: data/core/macros/weapon_specials.cfg:231
+#: data/core/macros/weapon_specials.cfg:205
 msgid "poison"
 msgstr "중독"
 
@@ -413,13 +434,13 @@ msgstr "모래 지대"
 
 #. [skirmisher]: id=skirmisher
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:60
-#: data/core/macros/abilities.cfg:226
+#: data/core/macros/abilities.cfg:229
 msgid "skirmisher"
 msgstr "척후"
 
 #. [slow]: id=slow
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:63
-#: data/core/macros/weapon_specials.cfg:80
+#: data/core/macros/weapon_specials.cfg:83
 msgid "slows"
 msgstr "둔화"
 
@@ -429,7 +450,7 @@ msgstr "늪"
 
 #. [heals]: id=curing
 #: data/campaigns/World_Conquest/resources/strings/mainline.cfg:69
-#: data/core/macros/abilities.cfg:63
+#: data/core/macros/abilities.cfg:66
 msgid "cures"
 msgstr "해독"
 
@@ -2759,8 +2780,7 @@ msgid ""
 "immediately surrounding it, and any enemy unit entering those hexes "
 "immediately ends its movement. Learning how to use zones of control to your "
 "advantage is an important part of Wesnoth, as only <ref "
-"dst='ability_skirmisherskirmisher'>skirmishers</ref> can ignore zones of "
-"control."
+"dst='ability_skirmisher'>skirmishers</ref> can ignore zones of control."
 msgstr ""
 "\n"
 "\n"
@@ -3638,10 +3658,9 @@ msgstr ""
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:501
 msgid ""
-"Finally, units with the <ref "
-"dst='ability_illuminationilluminates'>illuminates</ref> ability and terrain "
-"features such as <ref dst='terrain_lava'>lava</ref> change the time of day "
-"bonus around them."
+"Finally, units with the <ref dst='ability_illumination'>illuminates</ref> "
+"ability and terrain features such as <ref dst='terrain_lava'>lava</ref> "
+"change the time of day bonus around them."
 msgstr ""
 
 #. [topic]: id=healing
@@ -3698,9 +3717,9 @@ msgstr ""
 #| "<ref>dst='ability_regenerates' text='Regeneration'</ref>: Certain units "
 #| "(such as trolls) will automatically heal 8HP every turn."
 msgid ""
-"• <ref dst='ability_regeneratesregenerates'>Regeneration</ref>: Certain "
-"units (such as trolls) will automatically heal 8HP every turn. If the unit "
-"is poisoned, the poison will be cured instead."
+"• <ref dst='ability_regenerates_8'>Regeneration</ref>: Certain units (such "
+"as trolls) will automatically heal 8HP every turn. If the unit is poisoned, "
+"the poison will be cured instead."
 msgstr ""
 "\n"
 "<ref>dst='ability_regenerates' text='재생'</ref>: 트롤 같은 특정 유닛은 매 "
@@ -3717,10 +3736,10 @@ msgstr ""
 #| "ref> or <ref>dst='ability_heals +8' text='8HP'</ref> per turn, or prevent "
 #| "Poison from causing that unit damage."
 msgid ""
-"• <b>Healing units</b>: Units with the <ref dst='ability_healingheals "
-"+4'>Heals</ref> ability will heal each allied adjacent unit, usually <ref "
-"dst='ability_healingheals +4'>4HP</ref> or <ref dst='ability_healingheals "
-"+8'>8HP</ref> per turn, or prevent Poison from causing that unit damage."
+"• <b>Healing units</b>: Units with the <ref dst='ability_heals_4'>Heals</"
+"ref> ability will heal each allied adjacent unit, usually <ref "
+"dst='ability_heals_4'>4HP</ref> or <ref dst='ability_heals_8'>8HP</ref> per "
+"turn, or prevent Poison from causing that unit damage."
 msgstr ""
 "\n"
 "<italic>text='유닛 치료'</italic>: <ref>dst='ability_heals +4' text='치료'</"
@@ -3738,8 +3757,8 @@ msgstr ""
 #| "all allied adjacent units (in preference to healing, if it has that "
 #| "ability as well)."
 msgid ""
-"• <b>Curing units</b>: Units with the <ref dst='ability_curingcures'>cures</"
-"ref> ability will cure Poison in all allied adjacent units (in preference to "
+"• <b>Curing units</b>: Units with the <ref dst='ability_cures'>cures</ref> "
+"ability will cure Poison in all allied adjacent units (in preference to "
 "healing, if it has that ability as well)."
 msgstr ""
 "\n"
@@ -4525,67 +4544,13 @@ msgstr ""
 msgid "Makes the selected unit level up N times. Example: :unit advances=2"
 msgstr ""
 
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:12
-#, fuzzy
-#| msgid ""
-#| "Allows the unit to heal adjacent allied units at the beginning of our "
-#| "turn.\n"
-#| "\n"
-#| "A unit cared for by this healer may heal up to 4 HP per turn, or stop "
-#| "poison from taking effect for that turn.\n"
-#| "A poisoned unit cannot be cured of its poison by a healer, and must seek "
-#| "the care of a village or a unit that can cure."
-msgid ""
-"Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
-"\n"
-"A unit cared for by this healer may heal up to 4 HP per turn, or stop poison "
-"from taking effect for that turn.\n"
-"This ability will not cure an affected unit of poison, however, only delay "
-"its effect."
-msgstr ""
-"당신의 턴이 시작할때 근처의 아군 및 동맹 유닛을 치료할 수 있습니다.\n"
-"\n"
-"이 치료사가 돌보는 유닛은 턴당 HP 4를 회복하며, 중독되었을 경우 그 턴에는 독"
-"의 영향을 받지 않습니다.\n"
-"중독된 유닛은 치료사에 의해 치유되지 않기 때문에 마을의 능력이나 치유능력이 "
-"있는 유닛에 의지해야 합니다."
-
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:39
-#, fuzzy
-#| msgid ""
-#| "This unit combines herbal remedies with magic to heal units more quickly "
-#| "than is normally possible on the battlefield.\n"
-#| "\n"
-#| "A unit cared for by this healer may heal up to 8 HP per turn, or stop "
-#| "poison from taking effect for that turn.\n"
-#| "A poisoned unit cannot be cured of its poison by a healer, and must seek "
-#| "the care of a village or a unit that can cure."
-msgid ""
-"This unit combines herbal remedies with magic to heal units more quickly "
-"than is normally possible on the battlefield.\n"
-"\n"
-"A unit cared for by this healer may heal up to 8 HP per turn, or stop poison "
-"from taking effect for that turn.\n"
-"This ability will not cure an affected unit of poison, however, only delay "
-"its effect."
-msgstr ""
-"이 유닛은 약초의 처방과 마법을 결합하여 전장의 일반적인 치료보다 더 빠른 회복"
-"효과를 낼 수 있습니다.\n"
-"\n"
-"이 치료사가 돌보는 유닛은 턴당 HP 8를 회복하며, 중독되었을 경우 그 턴에는 독"
-"의 영향을 받지 않습니다.\n"
-"중독된 유닛은 치료사에 의해 치유되지 않기 때문에 마을의 능력이나 치유능력이 "
-"있는 유닛에 의지해야 합니다."
-
 #. [heals]: id=curing
-#: data/core/macros/abilities.cfg:64
+#: data/core/macros/abilities.cfg:67
 msgid "female^cures"
 msgstr "해독"
 
 #. [heals]: id=curing
-#: data/core/macros/abilities.cfg:65
+#: data/core/macros/abilities.cfg:68
 msgid ""
 "A curer can cure a unit of poison, although that unit will receive no "
 "additional healing on the turn it is cured of the poison."
@@ -4594,12 +4559,12 @@ msgstr ""
 "회복 효과를 받지 못합니다."
 
 #. [regenerate]: id=regenerates
-#: data/core/macros/abilities.cfg:100
+#: data/core/macros/abilities.cfg:103
 msgid "female^regenerates"
 msgstr "재생"
 
 #. [regenerate]: id=regenerates
-#: data/core/macros/abilities.cfg:101
+#: data/core/macros/abilities.cfg:104
 msgid ""
 "The unit will heal itself 8 HP per turn. If it is poisoned, it will remove "
 "the poison instead of healing."
@@ -4608,21 +4573,21 @@ msgstr ""
 "다."
 
 #. [regenerate]: id=regenerates
-#: data/core/macros/abilities.cfg:114
+#: data/core/macros/abilities.cfg:117
 #, fuzzy
 #| msgid "regenerates"
 msgid "regenerates +4"
 msgstr "재생"
 
 #. [regenerate]: id=regenerates
-#: data/core/macros/abilities.cfg:115
+#: data/core/macros/abilities.cfg:118
 #, fuzzy
 #| msgid "female^regenerates"
 msgid "female^regenerates +4"
 msgstr "재생"
 
 #. [regenerate]: id=regenerates
-#: data/core/macros/abilities.cfg:116
+#: data/core/macros/abilities.cfg:119
 #, fuzzy
 #| msgid ""
 #| "The unit will heal itself 8 HP per turn. If it is poisoned, it will "
@@ -4635,7 +4600,7 @@ msgstr ""
 "다."
 
 #. [regenerate]: id=regenerates
-#: data/core/macros/abilities.cfg:117
+#: data/core/macros/abilities.cfg:120
 #, fuzzy
 #| msgid ""
 #| " This unit regenerates, which allows it to heal as though always "
@@ -4648,7 +4613,7 @@ msgstr ""
 "합니다."
 
 #. [resistance]: id=steadfast
-#: data/core/macros/abilities.cfg:138
+#: data/core/macros/abilities.cfg:141
 msgid ""
 "This unit’s resistances are doubled, up to a maximum of 50%, when defending. "
 "Vulnerabilities are not affected."
@@ -4657,19 +4622,19 @@ msgstr ""
 "않습니다."
 
 #. [chance_to_hit]: id=diversion
-#: data/core/macros/abilities.cfg:151
+#: data/core/macros/abilities.cfg:154
 msgid "diversion"
 msgstr ""
 
 #. [chance_to_hit]: id=diversion
-#: data/core/macros/abilities.cfg:152
+#: data/core/macros/abilities.cfg:155
 #, fuzzy
 #| msgid "female^leadership"
 msgid "female^diversion"
 msgstr "통솔"
 
 #. [chance_to_hit]: id=diversion
-#: data/core/macros/abilities.cfg:153
+#: data/core/macros/abilities.cfg:156
 #, fuzzy
 #| msgid ""
 #| " If there is an enemy of the target on the opposite side of the target "
@@ -4683,7 +4648,7 @@ msgstr ""
 "서 몰래 움직여 뒷치기로 두 배의 피해를 줄 수 있습니다."
 
 #. [chance_to_hit]: id=diversion
-#: data/core/macros/abilities.cfg:154
+#: data/core/macros/abilities.cfg:157
 #, fuzzy
 #| msgid ""
 #| " If there is an enemy of the target on the opposite side of the target "
@@ -4698,24 +4663,24 @@ msgstr ""
 "서 몰래 움직여 뒷치기로 두 배의 피해를 줄 수 있습니다."
 
 #. [chance_to_hit]: id=diversion
-#: data/core/macros/abilities.cfg:155
+#: data/core/macros/abilities.cfg:158
 msgid "accuracy:"
 msgstr ""
 
 #. [chance_to_hit]: id=diversion
-#: data/core/macros/abilities.cfg:156
+#: data/core/macros/abilities.cfg:159
 msgid ""
 "A nearby enemy’s <i>diversion</i> ability is reducing this attack’s accuracy "
 "by 20%."
 msgstr ""
 
 #. [leadership]: id=leadership
-#: data/core/macros/abilities.cfg:207
+#: data/core/macros/abilities.cfg:210
 msgid "female^leadership"
 msgstr "통솔"
 
 #. [leadership]: id=leadership
-#: data/core/macros/abilities.cfg:208
+#: data/core/macros/abilities.cfg:211
 msgid ""
 "This unit can lead other troops in battle.\n"
 "\n"
@@ -4724,24 +4689,24 @@ msgid ""
 msgstr ""
 
 #. [skirmisher]: id=skirmisher
-#: data/core/macros/abilities.cfg:227
+#: data/core/macros/abilities.cfg:230
 msgid "female^skirmisher"
 msgstr "척후"
 
 #. [skirmisher]: id=skirmisher
-#: data/core/macros/abilities.cfg:228
+#: data/core/macros/abilities.cfg:231
 msgid ""
 "This unit is skilled in moving past enemies quickly, and ignores all enemy "
 "Zones of Control."
 msgstr "이 유닛은 빠르게 적을 지나가는 데 능숙하여 적의 ZOC를 무시합니다."
 
 #. [illuminates]: id=illumination
-#: data/core/macros/abilities.cfg:244
+#: data/core/macros/abilities.cfg:247
 msgid "illuminates"
 msgstr "광휘"
 
 #. [illuminates]: id=illumination
-#: data/core/macros/abilities.cfg:246
+#: data/core/macros/abilities.cfg:249
 msgid ""
 "This unit illuminates the surrounding area, making lawful units fight "
 "better, and chaotic units fight worse.\n"
@@ -4756,12 +4721,12 @@ msgstr ""
 "것 같은 효과를 받습니다."
 
 #. [teleport]: id=teleport
-#: data/core/macros/abilities.cfg:261
+#: data/core/macros/abilities.cfg:264
 msgid "female^teleport"
 msgstr "전이"
 
 #. [teleport]: id=teleport
-#: data/core/macros/abilities.cfg:262
+#: data/core/macros/abilities.cfg:265
 msgid ""
 "This unit may teleport between any two empty villages owned by its side "
 "using one of its moves."
@@ -4770,12 +4735,12 @@ msgstr ""
 "전이하고자 하는 마을은 비어있어야 합니다."
 
 #. [hides]: id=ambush
-#: data/core/macros/abilities.cfg:293
+#: data/core/macros/abilities.cfg:296
 msgid "female^ambush"
 msgstr "기습"
 
 #. [hides]: id=ambush
-#: data/core/macros/abilities.cfg:294
+#: data/core/macros/abilities.cfg:297
 msgid ""
 "This unit can hide in forest, and remain undetected by its enemies.\n"
 "\n"
@@ -4790,19 +4755,19 @@ msgstr ""
 "다."
 
 #. [hides]: id=burrow
-#: data/core/macros/abilities.cfg:313
+#: data/core/macros/abilities.cfg:316
 msgid "burrow"
 msgstr ""
 
 #. [hides]: id=burrow
-#: data/core/macros/abilities.cfg:314
+#: data/core/macros/abilities.cfg:317
 #, fuzzy
 #| msgid "female^slow"
 msgid "female^burrow"
 msgstr "둔한"
 
 #. [hides]: id=burrow
-#: data/core/macros/abilities.cfg:315
+#: data/core/macros/abilities.cfg:318
 #, fuzzy
 #| msgid ""
 #| "This unit can hide in forest, and remain undetected by its enemies.\n"
@@ -4825,14 +4790,19 @@ msgstr ""
 "다."
 
 #. [hides]: id=burrow
-#: data/core/macros/abilities.cfg:319
+#: data/core/macros/abilities.cfg:322
 msgid ""
 "This unit can burrow under loose dirt, sand, or leaves, concealing itself if "
 "it does not change location."
 msgstr ""
 
 #. [hides]: id=nightstalk
-#: data/core/macros/abilities.cfg:337
+#: data/core/macros/abilities.cfg:339
+msgid "female^nightstalk"
+msgstr "암습"
+
+#. [hides]: id=nightstalk
+#: data/core/macros/abilities.cfg:340
 msgid ""
 "The unit becomes invisible during night.\n"
 "\n"
@@ -4846,12 +4816,12 @@ msgstr ""
 "장 먼저 발견한 적은 즉시 모든 이동력을 상실합니다."
 
 #. [hides]: id=concealment
-#: data/core/macros/abilities.cfg:356
+#: data/core/macros/abilities.cfg:359
 msgid "female^concealment"
 msgstr "은폐"
 
 #. [hides]: id=concealment
-#: data/core/macros/abilities.cfg:357
+#: data/core/macros/abilities.cfg:360
 #, fuzzy
 #| msgid ""
 #| "This unit can hide in villages (with the exception of water villages), "
@@ -4876,17 +4846,17 @@ msgstr ""
 "다. 가장 먼저 이 유닛을 발견한 적은 즉시 모든 이동력을 상실합니다."
 
 #. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:375
+#: data/core/macros/abilities.cfg:378
 msgid "submerge"
 msgstr "잠수"
 
 #. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:376
+#: data/core/macros/abilities.cfg:379
 msgid "female^submerge"
 msgstr "잠수"
 
 #. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:377
+#: data/core/macros/abilities.cfg:380
 msgid ""
 "This unit can hide in deep water, and remain undetected by its enemies.\n"
 "\n"
@@ -4900,19 +4870,19 @@ msgstr ""
 "이 유닛을 처음 발견한 적은 즉시 모든 이동력을 상실합니다."
 
 #. [hides]: id=swamp_lurk
-#: data/core/macros/abilities.cfg:395
+#: data/core/macros/abilities.cfg:398
 msgid "swamp lurk"
 msgstr ""
 
 #. [hides]: id=swamp_lurk
-#: data/core/macros/abilities.cfg:396
+#: data/core/macros/abilities.cfg:399
 #, fuzzy
 #| msgid "female^weak"
 msgid "female^swamp lurk"
 msgstr "약한"
 
 #. [hides]: id=swamp_lurk
-#: data/core/macros/abilities.cfg:397
+#: data/core/macros/abilities.cfg:400
 #, fuzzy
 #| msgid ""
 #| "This unit can hide in forest, and remain undetected by its enemies.\n"
@@ -4934,12 +4904,12 @@ msgstr ""
 "다."
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:416
+#: data/core/macros/abilities.cfg:419
 msgid "female^feeding"
 msgstr "식귀"
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:417
+#: data/core/macros/abilities.cfg:420
 #, fuzzy
 #| msgid ""
 #| "This unit gains 1 hitpoint added to its maximum whenever it kills a "
@@ -6110,27 +6080,27 @@ msgid ""
 msgstr ""
 
 #. [disable]: id=unwieldy
-#: data/core/macros/weapon_specials.cfg:7
+#: data/core/macros/weapon_specials.cfg:10
 msgid "unwieldy"
 msgstr ""
 
 #. [disable]: id=unwieldy
-#: data/core/macros/weapon_specials.cfg:8
+#: data/core/macros/weapon_specials.cfg:11
 msgid "This attack can only be used offensively."
 msgstr ""
 
 #. [disable]: id=unwieldy
-#: data/core/macros/weapon_specials.cfg:10
+#: data/core/macros/weapon_specials.cfg:13
 msgid "This unit has an unwieldy weapon, which cannot be used defensively."
 msgstr ""
 
 #. [berserk]: id=berserk
-#: data/core/macros/weapon_specials.cfg:19
+#: data/core/macros/weapon_specials.cfg:22
 msgid "berserk"
 msgstr "광전사"
 
 #. [berserk]: id=berserk
-#: data/core/macros/weapon_specials.cfg:20
+#: data/core/macros/weapon_specials.cfg:23
 msgid ""
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the combatants is slain, or 30 rounds of attacks have occurred."
@@ -6139,7 +6109,7 @@ msgstr ""
 "때까지 강제로 전투를 계속합니다."
 
 #. [damage]: id=backstab
-#: data/core/macros/weapon_specials.cfg:32
+#: data/core/macros/weapon_specials.cfg:35
 msgid ""
 "When used offensively, this attack deals double damage if there is an enemy "
 "of the target on the opposite side of the target, and that unit is not "
@@ -6150,14 +6120,14 @@ msgstr ""
 "로든 마비되는 것)여서는 안됩니다."
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
-#: data/core/macros/weapon_specials.cfg:53
+#: data/core/macros/weapon_specials.cfg:56
 #, fuzzy
 #| msgid "plague"
 msgid "plague ($type)"
 msgstr "역병"
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
-#: data/core/macros/weapon_specials.cfg:54
+#: data/core/macros/weapon_specials.cfg:57
 #, fuzzy
 #| msgid ""
 #| "When a unit is killed by a Plague attack, that unit is replaced with a "
@@ -6172,7 +6142,7 @@ msgstr ""
 "됩니다. 이 공격은 언데드나 마을에 있는 유닛에는 통하지 않습니다."
 
 #. [slow]: id=slow
-#: data/core/macros/weapon_specials.cfg:81
+#: data/core/macros/weapon_specials.cfg:84
 msgid ""
 "This attack slows the target until it ends a turn. Slow halves the damage "
 "caused by attacks and the movement cost for a slowed unit is doubled. A unit "
@@ -6184,12 +6154,12 @@ msgstr ""
 "이드바 정보에 달팽이 마크가 붙습니다."
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/weapon_specials.cfg:91
+#: data/core/macros/weapon_specials.cfg:94
 msgid "petrifies"
 msgstr "석화"
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/weapon_specials.cfg:92
+#: data/core/macros/weapon_specials.cfg:95
 msgid ""
 "This attack petrifies the target, turning it to stone. Units that have been "
 "petrified may not move or attack."
@@ -6197,54 +6167,35 @@ msgstr ""
 "이 공격은 목표를 석화시킵니다. 석화된 유닛은 움직이거나 공격할 수 없습니다."
 
 #. [chance_to_hit]: id=marksman
-#: data/core/macros/weapon_specials.cfg:103
+#: data/core/macros/weapon_specials.cfg:106
 msgid ""
 "When used offensively, this attack always has at least a 60% chance to hit."
 msgstr ""
 "방어가 아닌 공격에 이 무기를 사용하면 항상 60% 이상의 명중률을 갖습니다."
 
-#. [dummy]: id=naval
-#: data/core/macros/weapon_specials.cfg:129
-msgid "naval"
-msgstr ""
-
-#. [dummy]: id=naval
-#: data/core/macros/weapon_specials.cfg:130
-msgid ""
-"This attack can only be used when both the attacker and the defender are in "
-"water or swamp."
-msgstr ""
-
-#. [dummy]: id=naval
-#: data/core/macros/weapon_specials.cfg:131
-msgid ""
-"This unit has an attack that can only be used when both the attacker and the "
-"defender are in water or swamp."
-msgstr ""
-
 #. [chance_to_hit]: id=honed
-#: data/core/macros/weapon_specials.cfg:158
+#: data/core/macros/weapon_specials.cfg:132
 msgid "honed"
 msgstr ""
 
 #. [chance_to_hit]: id=honed
-#: data/core/macros/weapon_specials.cfg:159
+#: data/core/macros/weapon_specials.cfg:133
 msgid "This attack is 10% more accurate than other attacks."
 msgstr ""
 
 #. [chance_to_hit]: id=honed
-#: data/core/macros/weapon_specials.cfg:160
+#: data/core/macros/weapon_specials.cfg:134
 msgid ""
 "This unit’s “honed” attack is slightly more accurate than other attacks."
 msgstr ""
 
 #. [swarm]: id=swarm
-#: data/core/macros/weapon_specials.cfg:171
+#: data/core/macros/weapon_specials.cfg:145
 msgid "swarm"
 msgstr "난무"
 
 #. [swarm]: id=swarm
-#: data/core/macros/weapon_specials.cfg:172
+#: data/core/macros/weapon_specials.cfg:146
 msgid ""
 "The number of strikes of this attack decreases when the unit is wounded. The "
 "number of strikes is proportional to the percentage of its of maximum HP the "
@@ -6256,12 +6207,12 @@ msgstr ""
 "도 30%가 됩니다."
 
 #. [damage]: id=charge
-#: data/core/macros/weapon_specials.cfg:182
+#: data/core/macros/weapon_specials.cfg:156
 msgid "charge"
 msgstr "돌격"
 
 #. [damage]: id=charge
-#: data/core/macros/weapon_specials.cfg:183
+#: data/core/macros/weapon_specials.cfg:157
 msgid ""
 "When used offensively, this attack deals double damage to the target. It "
 "also causes this unit to take double damage from the target’s counterattack."
@@ -6270,24 +6221,24 @@ msgstr ""
 "니다. 하지만 목표물이 반격할때 받는 데미지도 두 배가 됩니다."
 
 #. [damage]: id=guard
-#: data/core/macros/weapon_specials.cfg:196
+#: data/core/macros/weapon_specials.cfg:170
 msgid "guard"
 msgstr ""
 
 #. [damage]: id=guard
-#: data/core/macros/weapon_specials.cfg:197
+#: data/core/macros/weapon_specials.cfg:171
 msgid "This attack blocks half of the damage from its target’s strikes."
 msgstr ""
 
 #. [damage]: id=guard
-#: data/core/macros/weapon_specials.cfg:198
+#: data/core/macros/weapon_specials.cfg:172
 msgid ""
 "This unit’s guarding attack can halve incoming damage, but only when used in "
 "combat."
 msgstr ""
 
 #. [drains]: id=drains
-#: data/core/macros/weapon_specials.cfg:210
+#: data/core/macros/weapon_specials.cfg:184
 msgid ""
 "This unit drains health from living units, healing itself for half the "
 "amount of damage it deals (rounded down)."
@@ -6296,19 +6247,19 @@ msgstr ""
 "니다.(소수점 이하 내림)"
 
 #. [firststrike]: id=firststrike
-#: data/core/macros/weapon_specials.cfg:220
+#: data/core/macros/weapon_specials.cfg:194
 msgid "first strike"
 msgstr "선공"
 
 #. [firststrike]: id=firststrike
-#: data/core/macros/weapon_specials.cfg:221
+#: data/core/macros/weapon_specials.cfg:195
 msgid ""
 "This unit always strikes first with this attack, even if they are defending."
 msgstr ""
 "이 유닛은 항상 이 공격으로 선공할 수 있으며, 이것은 방어시에도 적용됩니다."
 
 #. [poison]: id=poison
-#: data/core/macros/weapon_specials.cfg:232
+#: data/core/macros/weapon_specials.cfg:206
 #, fuzzy
 #| msgid ""
 #| "This attack poisons living targets. Poisoned units lose 8 HP every turn "
@@ -6323,19 +6274,19 @@ msgstr ""
 "때까지 매 턴 HP 8을 잃게 됩니다. 독만으로는 유닛을 죽일 수 없습니다."
 
 #. [stun]: id=stun
-#: data/core/macros/weapon_specials.cfg:242
+#: data/core/macros/weapon_specials.cfg:216
 msgid "stun"
 msgstr ""
 
 #. [stun]: id=stun
-#: data/core/macros/weapon_specials.cfg:243
+#: data/core/macros/weapon_specials.cfg:217
 msgid ""
 "This attack hits so hard that the opponent is dazed and can no longer "
 "enforce a zone of control. The effect wears off on the opponent’s next turn."
 msgstr ""
 
 #. [stun]: id=stun
-#: data/core/macros/weapon_specials.cfg:244
+#: data/core/macros/weapon_specials.cfg:218
 #, fuzzy
 #| msgid ""
 #| " This unit is able to slow its enemies, halving their movement speed and "
@@ -6347,19 +6298,19 @@ msgstr ""
 "니다."
 
 #. [damage_type]: id=arcane_damage
-#: data/core/macros/weapon_specials.cfg:253
+#: data/core/macros/weapon_specials.cfg:227
 msgid "arcane"
 msgstr ""
 
 #. [damage_type]: id=arcane_damage
-#: data/core/macros/weapon_specials.cfg:254
+#: data/core/macros/weapon_specials.cfg:228
 msgid ""
 "This attack combines the arcane type with the type of weapon used so that "
 "resistance to the arcane type does not penalize the user."
 msgstr ""
 
 #. [damage_type]: id=arcane_damage
-#: data/core/macros/weapon_specials.cfg:255
+#: data/core/macros/weapon_specials.cfg:229
 msgid ""
 "This unit can use the arcane type when the opponent is particularly "
 "sensitive to it in relation to the weapon on which it is applied."
@@ -7902,6 +7853,65 @@ msgstr ""
 msgid "Jamming Cost"
 msgstr ""
 
+#~ msgid ""
+#~ "Allows the unit to heal adjacent allied units at the beginning of our "
+#~ "turn.\n"
+#~ "\n"
+#~ "A unit cared for by this healer may heal up to 4 HP per turn, or stop "
+#~ "poison from taking effect for that turn.\n"
+#~ "A poisoned unit cannot be cured of its poison by a healer, and must seek "
+#~ "the care of a village or a unit that can cure."
+#~ msgstr ""
+#~ "당신의 턴이 시작할때 근처의 아군 및 동맹 유닛을 치료할 수 있습니다.\n"
+#~ "\n"
+#~ "이 치료사가 돌보는 유닛은 턴당 HP 4를 회복하며, 중독되었을 경우 그 턴에는 "
+#~ "독의 영향을 받지 않습니다.\n"
+#~ "중독된 유닛은 치료사에 의해 치유되지 않기 때문에 마을의 능력이나 치유능력"
+#~ "이 있는 유닛에 의지해야 합니다."
+
+#~ msgid ""
+#~ "This unit combines herbal remedies with magic to heal units more quickly "
+#~ "than is normally possible on the battlefield.\n"
+#~ "\n"
+#~ "A unit cared for by this healer may heal up to 8 HP per turn, or stop "
+#~ "poison from taking effect for that turn.\n"
+#~ "A poisoned unit cannot be cured of its poison by a healer, and must seek "
+#~ "the care of a village or a unit that can cure."
+#~ msgstr ""
+#~ "이 유닛은 약초의 처방과 마법을 결합하여 전장의 일반적인 치료보다 더 빠른 "
+#~ "회복효과를 낼 수 있습니다.\n"
+#~ "\n"
+#~ "이 치료사가 돌보는 유닛은 턴당 HP 8를 회복하며, 중독되었을 경우 그 턴에는 "
+#~ "독의 영향을 받지 않습니다.\n"
+#~ "중독된 유닛은 치료사에 의해 치유되지 않기 때문에 마을의 능력이나 치유능력"
+#~ "이 있는 유닛에 의지해야 합니다."
+
+#, fuzzy
+#~| msgid ""
+#~| "This unit combines herbal remedies with magic to heal units more quickly "
+#~| "than is normally possible on the battlefield.\n"
+#~| "\n"
+#~| "A unit cared for by this healer may heal up to 8 HP per turn, or stop "
+#~| "poison from taking effect for that turn.\n"
+#~| "A poisoned unit cannot be cured of its poison by a healer, and must seek "
+#~| "the care of a village or a unit that can cure."
+#~ msgid ""
+#~ "This unit combines herbal remedies with magic to heal units more quickly "
+#~ "than is normally possible on the battlefield.\n"
+#~ "\n"
+#~ "A unit cared for by this healer may heal up to 12 HP per turn, or stop "
+#~ "poison from taking effect for that turn.\n"
+#~ "A poisoned unit cannot be cured of its poison by a healer, and must seek "
+#~ "the care of a village or a unit that can cure."
+#~ msgstr ""
+#~ "이 유닛은 약초의 처방과 마법을 결합하여 전장의 일반적인 치료보다 더 빠른 "
+#~ "회복효과를 낼 수 있습니다.\n"
+#~ "\n"
+#~ "이 치료사가 돌보는 유닛은 턴당 HP 8를 회복하며, 중독되었을 경우 그 턴에는 "
+#~ "독의 영향을 받지 않습니다.\n"
+#~ "중독된 유닛은 치료사에 의해 치유되지 않기 때문에 마을의 능력이나 치유능력"
+#~ "이 있는 유닛에 의지해야 합니다."
+
 #, fuzzy
 #~| msgid "<header>text='Units of this race'</header>"
 #~ msgid ""
@@ -8348,9 +8358,6 @@ msgstr ""
 
 #~ msgid "race+female^Khalifate Human"
 #~ msgstr "인간"
-
-#~ msgid "female^nightstalk"
-#~ msgstr "암습"
 
 #~ msgid ""
 #~ "When a unit is killed by a Plague attack, that unit is replaced with a "

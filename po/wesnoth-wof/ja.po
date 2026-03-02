@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-11-18 02:02 UTC\n"
+"POT-Creation-Date: 2026-02-26 01:03 UTC\n"
 "PO-Revision-Date: 2023-12-03 03:44+0000\n"
 "Last-Translator: RatArmy, 2025\n"
 "Language-Team: Japanese (https://app.transifex.com/wesnoth-jp/teams/60513/"
@@ -114,11 +114,16 @@ msgstr "グラフィック"
 
 #. [about]
 #: data/campaigns/Winds_of_Fate/about.cfg:38
+msgid "Sound"
+msgstr ""
+
+#. [about]
+#: data/campaigns/Winds_of_Fate/about.cfg:46
 msgid "Alpha Testing"
 msgstr "アルファテスト"
 
 #. [about]
-#: data/campaigns/Winds_of_Fate/about.cfg:78
+#: data/campaigns/Winds_of_Fate/about.cfg:86
 msgid "Based on Wings of Victory by:"
 msgstr "原作『Wings of Victory』に基づく："
 
@@ -131,7 +136,9 @@ msgstr "狩り"
 #. In this campaign, the drake narrator and other drake characters speak with the Morogor dialect, which has some unique syntax and terms.
 #. The file data/campaigns/Winds_of_Fate/story/Morogor_Dialect.txt has details about how these drakes speak in English, as well as a glossary for the campaign.
 #: data/campaigns/Winds_of_Fate/scenarios/01_The_Hunt.cfg:20
-msgid "From the skies above, the glider caste felt the Winds of Fate."
+#, fuzzy
+#| msgid "From the skies above, the glider caste felt the Winds of Fate."
+msgid "From the skies above, the glider caste felt the Winds."
 msgstr "高空から、滑空者系統のドレークは運命の風を感じていた。"
 
 #. [part]
@@ -1519,10 +1526,18 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Winds_of_Fate/scenarios/02x_Victory_Feast.cfg:72
+#, fuzzy
+#| msgid ""
+#| "Perilous that way is.\n"
+#| "A wide stretch of sea unexceptional flyers might cross with fortune from "
+#| "the Winds of Fate.\n"
+#| "\n"
+#| "Then only a cluster of shoals to rest them, which might be slid past "
+#| "unnoticed with perilous ease."
 msgid ""
 "Perilous that way is.\n"
 "A wide stretch of sea unexceptional flyers might cross with fortune from the "
-"Winds of Fate.\n"
+"Winds.\n"
 "\n"
 "Then only a cluster of shoals to rest them, which might be slid past "
 "unnoticed with perilous ease."
@@ -4213,13 +4228,20 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Winds_of_Fate/scenarios/06x_Winds_of_Fate.cfg:169
+#, fuzzy
+#| msgid ""
+#| "Speak no more of your fears!\n"
+#| "\n"
+#| "So many challenges have we overcome.\n"
+#| "So many foes vanquished.\n"
+#| "Yet still you feel not how we shift the Winds of Fate by the force of our "
+#| "Will."
 msgid ""
 "Speak no more of your fears!\n"
 "\n"
 "So many challenges have we overcome.\n"
 "So many foes vanquished.\n"
-"Yet still you feel not how we shift the Winds of Fate by the force of our "
-"Will."
+"Yet still you feel not how we shift the Winds by the force of our Will."
 msgstr ""
 "臆病風などもうたくさんだ！\n"
 "\n"
@@ -4241,10 +4263,23 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Winds_of_Fate/scenarios/06x_Winds_of_Fate.cfg:185
+#, fuzzy
+#| msgid ""
+#| "Nay!\n"
+#| "\n"
+#| "We are not merely tossed about by the Winds of Fate.\n"
+#| "We <b>shape</b> them.\n"
+#| "\n"
+#| "We fumble not for a Windpath.\n"
+#| "We make it.\n"
+#| "\n"
+#| "Feel the world as it should be with all the fire of your heart.\n"
+#| "With no room left for <i>fear</i>.\n"
+#| "With all your Willful heart, make that world be!"
 msgid ""
 "Nay!\n"
 "\n"
-"We are not merely tossed about by the Winds of Fate.\n"
+"We are not merely tossed about by the Winds.\n"
 "We <b>shape</b> them.\n"
 "\n"
 "We fumble not for a Windpath.\n"
@@ -4554,10 +4589,19 @@ msgstr ""
 
 #. [message]: speaker=Salennea
 #: data/campaigns/Winds_of_Fate/scenarios/07_Harvest.cfg:377
+#, fuzzy
+#| msgid ""
+#| "This is my castle Saethrania — the Castle of Sharing.\n"
+#| "\n"
+#| "You may make an abode of castle Gliinoler — the Castle of Caring.\n"
+#| "\n"
+#| "My attendants will bestow whatever form of floral nourishment you most "
+#| "desire. Mayhap Bread of the Locust Fruit softened with Milk of the Hazel "
+#| "and sweetened with Sap of the Birch?"
 msgid ""
-"This is my castle Saethrania — the Castle of Sharing.\n"
+"This is my castle Saethrania — the Castle of Virtue.\n"
 "\n"
-"You may make an abode of castle Gliinoler — the Castle of Caring.\n"
+"You may make an abode of castle Gliinoler — the Castle of Sacrifice.\n"
 "\n"
 "My attendants will bestow whatever form of floral nourishment you most "
 "desire. Mayhap Bread of the Locust Fruit softened with Milk of the Hazel and "
@@ -4686,12 +4730,23 @@ msgstr ""
 "有している技術は・・・"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Winds_of_Fate/scenarios/07_Harvest.cfg:468
+#: data/campaigns/Winds_of_Fate/scenarios/07_Harvest.cfg:469
+#, fuzzy
+#| msgid ""
+#| "28th day of Greenleaf\n"
+#| "\n"
+#| "...now that I have found a powerful ally in Lord Vanar of the far side, "
+#| "the days of Lady Dionli are nigh over. I need only complete a single "
+#| "small ritual for him, the details of which he shall provide to me after I "
+#| "gather the necessary elements. I list them here so as not to forget:\n"
+#| "— A slab of cold black granite.\n"
+#| "— One of my fair young handmaidens.\n"
+#| "— A twisted metal dagger that menaces with spikes of..."
 msgid ""
 "28th day of Greenleaf\n"
 "\n"
-"...now that I have found a powerful ally in Lord Vanar of the far side, the "
-"days of Lady Dionli are nigh over. I need only complete a single small "
+"...now that I have found a powerful ally in Lord Zhangor of the far side, "
+"the days of Lady Dionli are nigh over. I need only complete a single small "
 "ritual for him, the details of which he shall provide to me after I gather "
 "the necessary elements. I list them here so as not to forget:\n"
 "— A slab of cold black granite.\n"
@@ -4709,11 +4764,19 @@ msgstr ""
 "—— 威嚇的な棘で装飾されたねじれた短剣・・・"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Winds_of_Fate/scenarios/07_Harvest.cfg:477
+#: data/campaigns/Winds_of_Fate/scenarios/07_Harvest.cfg:478
+#, fuzzy
+#| msgid ""
+#| "29th day of Greenleaf\n"
+#| "\n"
+#| "...how was I to know Vanar’s ritual would involve blood sacrifice?! Oh, "
+#| "if only the wicked “Lady” Dionli had not put me in this unenviable "
+#| "position. Now I shall need another unsalaried novice handmaiden willing "
+#| "to work for “experience”..."
 msgid ""
 "29th day of Greenleaf\n"
 "\n"
-"...how was I to know Vanar’s ritual would involve blood sacrifice?! Oh, if "
+"...how was I to know Zhangor’s ritual would involve blood sacrifice?! Oh, if "
 "only the wicked “Lady” Dionli had not put me in this unenviable position. "
 "Now I shall need another unsalaried novice handmaiden willing to work for "
 "“experience”..."
@@ -4725,11 +4788,19 @@ msgstr ""
 "うひとり、「経験」を積みたがっている無垢な侍女を雇い入れる必要が・・・"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Winds_of_Fate/scenarios/07_Harvest.cfg:483
+#: data/campaigns/Winds_of_Fate/scenarios/07_Harvest.cfg:484
+#, fuzzy
+#| msgid ""
+#| "1st day of Leaffall\n"
+#| "\n"
+#| "...still more of these dreadful rituals must be completed before Vanar "
+#| "can place a curse upon my usurper. Yet if I stop now, everything I have "
+#| "sacrificed— <i>everyone</i> I have sacrificed —shall have been in vain! I "
+#| "owe it to them to continue..."
 msgid ""
 "1st day of Leaffall\n"
 "\n"
-"...still more of these dreadful rituals must be completed before Vanar can "
+"...still more of these dreadful rituals must be completed before Zhangor can "
 "place a curse upon my usurper. Yet if I stop now, everything I have "
 "sacrificed— <i>everyone</i> I have sacrificed —shall have been in vain! I "
 "owe it to them to continue..."
@@ -4742,7 +4813,7 @@ msgstr ""
 "めにも、この儀式を続けて・・・"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Winds_of_Fate/scenarios/07_Harvest.cfg:489
+#: data/campaigns/Winds_of_Fate/scenarios/07_Harvest.cfg:490
 msgid ""
 "13th day of Leaffall\n"
 "\n"
@@ -4758,12 +4829,22 @@ msgstr ""
 "ルフ以外の<i>「栄誉ある賓客」</i>を新たに招く必要が・・・"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Winds_of_Fate/scenarios/07_Harvest.cfg:496
+#: data/campaigns/Winds_of_Fate/scenarios/07_Harvest.cfg:497
+#, fuzzy
+#| msgid ""
+#| "31st day of Leaffall\n"
+#| "\n"
+#| "...those saurians may smell of the swamp they crawl from, but they shall "
+#| "make a worthy sacrifice to Vanar! I have extended a formal invitation to "
+#| "Arinexis, a saurian ambassador, or what passes for one amongst their "
+#| "primitive and malodorous kind. I shall show this saurian and its "
+#| "entourage every courtesy and tempt them with all the delights of elvish "
+#| "cuisine— seasoned with Shavings of the Yew..."
 msgid ""
 "31st day of Leaffall\n"
 "\n"
 "...those saurians may smell of the swamp they crawl from, but they shall "
-"make a worthy sacrifice to Vanar! I have extended a formal invitation to "
+"make a worthy sacrifice to Zhangor! I have extended a formal invitation to "
 "Arinexis, a saurian ambassador, or what passes for one amongst their "
 "primitive and malodorous kind. I shall show this saurian and its entourage "
 "every courtesy and tempt them with all the delights of elvish cuisine— "
@@ -4778,47 +4859,38 @@ msgstr ""
 "し・・・"
 
 #. [scenario]: id=07_Harvest
-#: data/campaigns/Winds_of_Fate/scenarios/07_Harvest.cfg:504
+#: data/campaigns/Winds_of_Fate/scenarios/07_Harvest.cfg:505
 msgid "$unit.name finds a shiny sapphire. Do you want this unit to take it?"
 msgstr ""
 "$unit.name は輝くサファイアを見つけました。このユニットに持たせますか？"
 
 #. [scenario]: id=07_Harvest
-#: data/campaigns/Winds_of_Fate/scenarios/07_Harvest.cfg:505
+#: data/campaigns/Winds_of_Fate/scenarios/07_Harvest.cfg:506
 msgid "Sapphire of Ice^Take it"
 msgstr "持たせる"
 
 #. [scenario]: id=07_Harvest
-#: data/campaigns/Winds_of_Fate/scenarios/07_Harvest.cfg:506
+#: data/campaigns/Winds_of_Fate/scenarios/07_Harvest.cfg:507
 msgid "Sapphire of Ice^Leave it"
 msgstr "そのままにする"
 
 #. [scenario]: id=07_Harvest
-#: data/campaigns/Winds_of_Fate/scenarios/07_Harvest.cfg:507
+#: data/campaigns/Winds_of_Fate/scenarios/07_Harvest.cfg:508
 msgid ""
 "$unit.name finds a shiny sapphire. But only a speaking unit can take it!"
 msgstr ""
 "$unit.name は輝くサファイアを見つけましたが、言葉を話すユニットでなければ拾得"
 "できません！"
 
-#. [message]: speaker=narrator
-#: data/campaigns/Winds_of_Fate/scenarios/07_Harvest.cfg:519
-msgid ""
-"This tree has been debarked by repeated scratching from animals of some "
-"kind. It smells strongly of a fig tree yet it is clearly an oak."
-msgstr ""
-"この木は何らかの動物によって繰り返し引っ掻かれて樹皮が剥がれている。イチジク"
-"の強い香りを放つが、それは明らかにオークの木である。"
-
 #. [message]: speaker=Salennea
-#: data/campaigns/Winds_of_Fate/scenarios/07_Harvest.cfg:534
+#: data/campaigns/Winds_of_Fate/scenarios/07_Harvest.cfg:523
 msgid ""
 "Might I tempt you with some of the finest floral refreshments of elvish "
 "cuisine?"
 msgstr "お花を使った最高のエルフ料理にお誘いしてもよろしゅうございますか？"
 
 #. [message]: speaker=Arinexis
-#: data/campaigns/Winds_of_Fate/scenarios/07_Harvest.cfg:538
+#: data/campaigns/Winds_of_Fate/scenarios/07_Harvest.cfg:527
 msgid ""
 "Sssalennea, has your Ka’lian ruled to formally apologize to our Sssaurian "
 "Empire for sssetting loossse your human minions upon usssss?"
@@ -4827,7 +4899,7 @@ msgstr ""
 "<small>シシ</small>したことにきちんと謝ったのか？"
 
 #. [message]: speaker=Salennea
-#: data/campaigns/Winds_of_Fate/scenarios/07_Harvest.cfg:544
+#: data/campaigns/Winds_of_Fate/scenarios/07_Harvest.cfg:533
 msgid ""
 "The Ka’lian neither confirms nor denies any involvement.\n"
 "\n"
@@ -4840,26 +4912,26 @@ msgstr ""
 "にもぜひそうして頂きたいと願っております！"
 
 #. [message]: speaker=Arinexis
-#: data/campaigns/Winds_of_Fate/scenarios/07_Harvest.cfg:550
+#: data/campaigns/Winds_of_Fate/scenarios/07_Harvest.cfg:539
 msgid "Oh we will move on, we will..."
 msgstr "ああ、<small>ササ</small>先のことを、<small>ササ</small>先の・・・"
 
 #. [message]: speaker=Arinexis
-#: data/campaigns/Winds_of_Fate/scenarios/07_Harvest.cfg:554
+#: data/campaigns/Winds_of_Fate/scenarios/07_Harvest.cfg:543
 msgid "...as sssoon as we have finished with you here."
 msgstr ""
 "・・・ここでの<small>シシ</small>仕事が終わったら<small>スス</small>すぐに"
 "な。"
 
 #. [message]: speaker=Arinexis
-#: data/campaigns/Winds_of_Fate/scenarios/07_Harvest.cfg:558
+#: data/campaigns/Winds_of_Fate/scenarios/07_Harvest.cfg:547
 msgid "Gorlack, pray position your hunters well and then let usss attack!"
 msgstr ""
 "Gorlack <small>ササ</small>様、ハンターを良いところに配置<small>シシ</small>"
 "したら、<small>スス</small>すぐに攻撃を！"
 
 #. [message]: speaker=Salennea
-#: data/campaigns/Winds_of_Fate/scenarios/07_Harvest.cfg:574
+#: data/campaigns/Winds_of_Fate/scenarios/07_Harvest.cfg:563
 msgid ""
 "Nay! This is a thing too terrible to foresee. Vonel, save me from these "
 "monsters!"
@@ -4868,7 +4940,7 @@ msgstr ""
 "たちから私を守りなさい！"
 
 #. [message]: speaker=Vonel
-#: data/campaigns/Winds_of_Fate/scenarios/07_Harvest.cfg:579
+#: data/campaigns/Winds_of_Fate/scenarios/07_Harvest.cfg:568
 msgid ""
 "I am coming to save you, m’Lady!\n"
 "\n"
@@ -4879,7 +4951,7 @@ msgstr ""
 "伝書鳩を飛ばして、この危機を Ka’lian に伝えろ！"
 
 #. [message]: speaker=Nomeon
-#: data/campaigns/Winds_of_Fate/scenarios/07_Harvest.cfg:587
+#: data/campaigns/Winds_of_Fate/scenarios/07_Harvest.cfg:576
 msgid ""
 "Lady Salennea loosed them to the wilds this morning for sake of their well "
 "being...\n"
@@ -4891,21 +4963,21 @@ msgstr ""
 "私が自ら報告に参ります！"
 
 #. [message]: speaker=Vonel
-#: data/campaigns/Winds_of_Fate/scenarios/07_Harvest.cfg:594
+#: data/campaigns/Winds_of_Fate/scenarios/07_Harvest.cfg:583
 msgid "Nay, I need you here to defend this march until your dying bre—"
 msgstr "待て、お前はこの国境の防衛に必要だ。ここを死守して ——"
 
 #. [message]: speaker=Vonel
 #. [message]: speaker=Zedrix
 #. [message]: speaker=Arinexis
-#: data/campaigns/Winds_of_Fate/scenarios/07_Harvest.cfg:607
+#: data/campaigns/Winds_of_Fate/scenarios/07_Harvest.cfg:596
 #: data/campaigns/Winds_of_Fate/scenarios/09_Ancestor.cfg:526
 #: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:381
 msgid "..."
 msgstr "・・・"
 
 #. [message]: speaker=Salennea
-#: data/campaigns/Winds_of_Fate/scenarios/07_Harvest.cfg:626
+#: data/campaigns/Winds_of_Fate/scenarios/07_Harvest.cfg:615
 msgid ""
 "You have slain me, Vonel. Your bias and slander against these gentle giants "
 "imbued them with a terrible yet justifiable wrath!"
@@ -4914,7 +4986,7 @@ msgstr ""
 "が、恐ろしくも正当な復讐心を彼らに抱かせたのです！"
 
 #. [message]: speaker=Vonel
-#: data/campaigns/Winds_of_Fate/scenarios/07_Harvest.cfg:630
+#: data/campaigns/Winds_of_Fate/scenarios/07_Harvest.cfg:619
 msgid ""
 "If only I had listened to you, my Lady... <small><i>my princess</i></"
 "small> ...\n"
@@ -4927,7 +4999,7 @@ msgstr ""
 "嫌だぁぁぁぁぁぁぁ！"
 
 #. [message]: speaker=Gorlack
-#: data/campaigns/Winds_of_Fate/scenarios/07_Harvest.cfg:640
+#: data/campaigns/Winds_of_Fate/scenarios/07_Harvest.cfg:629
 msgid ""
 "Flight, spread forth.\n"
 "Seize all this jungle offers us.\n"
@@ -4965,10 +5037,10 @@ msgstr "期限が過ぎても、彼らは現れなかった・・・"
 msgid "Strange Creatures"
 msgstr "奇妙な生き物"
 
-#. [leader]: id=Avatar of Nova, type=Ancient Lich
+#. [leader]: id=Lich-Lord Selmar, type=Ancient Lich
 #: data/campaigns/Winds_of_Fate/scenarios/08_Overlook.cfg:74
-msgid "Avatar of Nova"
-msgstr "Nova の化身"
+msgid "Lich-Lord Selmar"
+msgstr ""
 
 #. [side]
 #: data/campaigns/Winds_of_Fate/scenarios/08_Overlook.cfg:107
@@ -5185,6 +5257,29 @@ msgstr ""
 "\n"
 "残りは洞窟に入れ！"
 
+#. [message]: race=drake
+#: data/campaigns/Winds_of_Fate/scenarios/08_Overlook.cfg:500
+msgid "Such a sickly looking creature."
+msgstr "ずいぶん弱そうな生き物だ。"
+
+#. [message]: speaker=Zedrix
+#: data/campaigns/Winds_of_Fate/scenarios/08_Overlook.cfg:504
+msgid ""
+"That is a ssskeletoid — humans’ true and ssstrongessst form. Every human "
+"that dies sssomeday rises again as one of those."
+msgstr ""
+"<small>ソソ</small>それは骨人間 —— 人間の本当の<small>ササ</small>最強の形で"
+"<small>スス</small>す。<small>シシ</small>死んだ人間はいつか<small>ソソ</"
+"small>その形で蘇るので<small>スス</small>す。"
+
+#. [message]: speaker=Arinexis
+#: data/campaigns/Winds_of_Fate/scenarios/08_Overlook.cfg:508
+msgid ""
+"Unlesss you burn, crush or eat the bones firssssst. Never leave the bones!"
+msgstr ""
+"<small>シシ</small>しっかり骨を燃や<small>シシ</small>したり、砕いたり、食っ"
+"たり<small>シシ</small>しなければ。骨を残<small>シシ</small>してはいけない！"
+
 #. [message]: speaker=narrator
 #. "Lodestone Mines of Golden Wolf Clan"
 #. "Year of Work 368, 7th Month"
@@ -5192,8 +5287,33 @@ msgstr ""
 #. "Had the boys put up gates to keep those elves out for now.
 #. "If they do come back with an army we cannot handle, we have flashpowder (gunpowder) kegs around the load bearing walls. Those elves are so impressed with that cute "magic" of theirs— think of the looks on their faces when they see dwarven knowhow at work!"
 #. "Still, our woodcutters cannot harvest any more mushroom fodder out of the forest without elves chipping away at them and the lodestone mines are nearly to the end of their (ore) veins.
-#. "Maybe I should trade this cave to that strange "Nova" creature after all. Whatever it be I do not care; if the elves ever come back then they can deal with it."
-#: data/campaigns/Winds_of_Fate/scenarios/08_Overlook.cfg:505
+#. "Maybe I should trade this cave to that strange "lich" creature after all. Whatever it be I do not care; if the elves ever come back then they can deal with it."
+#: data/campaigns/Winds_of_Fate/scenarios/08_Overlook.cfg:529
+#, fuzzy
+#| msgid ""
+#| "Lodestane Mines of Gyldanwolf Clan\n"
+#| "\n"
+#| "Year of Wirk 368, 7th Month\n"
+#| "\n"
+#| "They elves wur back in the mushroom croft again, making dolly threats tae "
+#| "the laddies in that fancy tongue of thairs. Said thay wid attack if we "
+#| "gather ony mair wood tae feed oor mushrooms, it does nae even maiter if "
+#| "it be juist the pine!\n"
+#| "\n"
+#| "Hud the laddies pat up gates tae keep they elves oot fur now.\n"
+#| "\n"
+#| "If thay dae come back with an airmie we cannae handle, we hae flashpowder "
+#| "kegs aroond the load bearing walls. They elves ur sae impressed with that "
+#| "cute “magic” of thairs— think of the looks oan thair faces whin thay see "
+#| "dwarven kencraft at wirk!\n"
+#| "\n"
+#| "Still, oor woodcutters cannae harvest ony mair mushroom fodder oot of the "
+#| "forest withoot elves chipping away at thaim and the lodestane mines ur "
+#| "nearly tae the end of thair veins.\n"
+#| "\n"
+#| "Mibbie ah shuid trade this cave tae that streenge “Nova” cratur efter "
+#| "all. Whit ever it be ah dae nae care; if the elves ever come back then "
+#| "thay kin deal with it."
 msgid ""
 "Lodestane Mines of Gyldanwolf Clan\n"
 "\n"
@@ -5215,7 +5335,7 @@ msgid ""
 "forest withoot elves chipping away at thaim and the lodestane mines ur "
 "nearly tae the end of thair veins.\n"
 "\n"
-"Mibbie ah shuid trade this cave tae that streenge “Nova” cratur efter all. "
+"Mibbie ah shuid trade this cave tae that streenge “lich” cratur efter all. "
 "Whit ever it be ah dae nae care; if the elves ever come back then thay kin "
 "deal with it."
 msgstr ""
@@ -5241,71 +5361,68 @@ msgstr ""
 "がもしんねぇ。あいつの正体が何だろうが知ったこっちゃねぇし、エルフどもが戻っ"
 "てきたら、どうにがすんだろう。"
 
-#. [message]: speaker=Avatar of Nova
-#: data/campaigns/Winds_of_Fate/scenarios/08_Overlook.cfg:548
-msgid "Is that you again, Khrakrahs?"
+#. [message]: speaker=Lich-Lord Selmar
+#: data/campaigns/Winds_of_Fate/scenarios/08_Overlook.cfg:579
+#, fuzzy
+#| msgid "Is that you again, Khrakrahs?"
+msgid "Come to test your luck again, Khrakrahs?"
 msgstr "またお前なのか、Khrakrahs ？"
 
 #. [message]: speaker=Zedrix
-#: data/campaigns/Winds_of_Fate/scenarios/08_Overlook.cfg:552
+#: data/campaigns/Winds_of_Fate/scenarios/08_Overlook.cfg:583
 msgid "It is to his ssstronger brother, Shek’kahan, that you ssspeak!"
 msgstr "お前が話<small>スス</small>すよりもっと強い兄弟の Shek’kahan だ。"
 
-#. [message]: speaker=Avatar of Nova
-#: data/campaigns/Winds_of_Fate/scenarios/08_Overlook.cfg:558
-msgid "As you say."
-msgstr "なるほど。"
-
-#. [message]: speaker=Gorlack
-#: data/campaigns/Winds_of_Fate/scenarios/08_Overlook.cfg:562
+#. [message]: speaker=Lich-Lord Selmar
+#: data/campaigns/Winds_of_Fate/scenarios/08_Overlook.cfg:589
 msgid ""
-"I shall have passage through this mountain.\n"
-"\n"
-"You are advised to move aside."
+"So much the better then. Ah, and he has brought many friends, I see. You "
+"shall all make fine additions to my new legion. The only question is — will "
+"you serve willingly?"
 msgstr ""
-"俺はこの山を通過したい。\n"
-"\n"
-"道を譲ることを勧める。"
 
-#. [message]: speaker=Avatar of Nova
-#: data/campaigns/Winds_of_Fate/scenarios/08_Overlook.cfg:570
+#. [message]: speaker=Arinexis
+#: data/campaigns/Winds_of_Fate/scenarios/08_Overlook.cfg:593
 msgid ""
-"You have no means to threaten me. Even if you destroyed this grim avatar of "
-"mine, presently speaking to you, I would continue acting through my others "
-"in far off places.\n"
-"\n"
-"Now, I must resume my work and you must leave..."
+"We sssaurians will never ssserve the likesss of a human monssster or your "
+"elf massstersss!"
 msgstr ""
-"私を脅しても意味は無い。いまお前と話しているこの恐るべき私の化身を破壊したと"
-"しても、私は別の場所にいる化身を使って行動を続けられる。\n"
-"\n"
-"さて、私は仕事を再開せねばならず、お前はここを去る・・・"
 
-#. [message]: speaker=Avatar of Nova
-#: data/campaigns/Winds_of_Fate/scenarios/08_Overlook.cfg:578
+#. [message]: speaker=Lich-Lord Selmar
+#: data/campaigns/Winds_of_Fate/scenarios/08_Overlook.cfg:599
 msgid ""
-"Wait... what is that behind you?\n"
-"\n"
-"<i>Faerie</i> creatures have followed you...\n"
-"\n"
-"If they come much closer <b><u>It</u></b> will see what has been created "
-"here.\n"
-"The Faerie World sees and feels through the senses of all the simpler beings "
-"it has transmuted. And if it only glimpses my work in this early phase, we "
-"may lose our world’s best hope against it."
+"Elf masters? Foolish little toad, I have not crossed half this world at the "
+"summons of mere tree-lords. They have something that should be mine and I am "
+"here to claim it. With the coming of the new moon, my portal to the land of "
+"the giants will open and its outpouring deluge shall sweep the elves from "
+"Wesmere. No living thing will remain standing between me and the Ruby of "
+"Fire."
 msgstr ""
-"待て・・・背後にいるのは何だ？\n"
-"\n"
-"<i>精霊</i>たちがお前に付き従っているのか・・・\n"
-"\n"
-"もし彼らがさらに近づいたら、<b><u>それ</u></b>はここで作られているものに感付"
-"くかも知れん。\n"
-"精霊の世界は、全ての存在をより単純なものに変容させ、その感覚を通じて知覚し、"
-"感じ取る。まだ初期段階にある私の仕事が見られたら、それに対抗する世界最大の希"
-"望を失うかも知れん。"
+
+#. [message]: speaker=Arinexis
+#: data/campaigns/Winds_of_Fate/scenarios/08_Overlook.cfg:603
+msgid ""
+"You hatched your plan too late, human. We already sssacked Wesssmere, the "
+"elves are dealt with."
+msgstr ""
+
+#. [message]: speaker=Lich-Lord Selmar
+#: data/campaigns/Winds_of_Fate/scenarios/08_Overlook.cfg:609
+msgid ""
+"You could never have done such a feat with even tenfold your motley warband. "
+"Wait... what is all that clamour behind you...?"
+msgstr ""
+
+#. [message]: speaker=Lich-Lord Selmar
+#: data/campaigns/Winds_of_Fate/scenarios/08_Overlook.cfg:615
+msgid ""
+"Fools, you have led the entire host of Wesmere to this secluded place! My "
+"plan will become clear to them if they so much as glimpse my unfinished "
+"portal with their faerie sight."
+msgstr ""
 
 #. [message]: speaker=Resha
-#: data/campaigns/Winds_of_Fate/scenarios/08_Overlook.cfg:587
+#: data/campaigns/Winds_of_Fate/scenarios/08_Overlook.cfg:619
 msgid ""
 "The Faerie...\n"
 "\n"
@@ -5319,30 +5436,51 @@ msgstr ""
 "それは我らの最も古い記憶に語られている恐ろしい言葉だ。\n"
 "その完全な意味を教えろ。"
 
-#. [message]: speaker=Avatar of Nova
-#: data/campaigns/Winds_of_Fate/scenarios/08_Overlook.cfg:597
+#. [message]: speaker=Lich-Lord Selmar
+#: data/campaigns/Winds_of_Fate/scenarios/08_Overlook.cfg:629
 msgid ""
-"There is <b><u>no</u></b> time for that!\n"
-"\n"
-"Faerie creatures are chasing you; you must leave the way you came or they "
-"will follow you here."
+"It is a thing far beyond your crude comprehension; a world of powerful "
+"magics with minds all their own. And right now, you have their full "
+"attention, so begone! Leave the way you came and they may yet follow you "
+"away from my lair!"
 msgstr ""
-"その時間は最早<b><u>無い</u></b>！\n"
-"\n"
-"精霊が追って来ている。お前たちが辿ってきた道を離れぬ限り、彼らはここまで付い"
-"てくる。"
 
 #. [message]: speaker=Resha
-#: data/campaigns/Winds_of_Fate/scenarios/08_Overlook.cfg:603
+#: data/campaigns/Winds_of_Fate/scenarios/08_Overlook.cfg:633
+#, fuzzy
+#| msgid ""
+#| "Gorlack, it is an ancient terror that hunts us.\n"
+#| "You must get our flight through this mountain at any cost."
 msgid ""
-"Gorlack, it is an ancient terror that hunts us.\n"
+"Gorlack, it is an ancient foe that hunts us.\n"
 "You must get our flight through this mountain at any cost."
 msgstr ""
 "Gorlack 、それは我らを狩る古代の恐怖だ。\n"
 "あなたはどんな犠牲を払ってでも、この山を抜けて飛族を逃さねばならない。"
 
+#. [message]: speaker=Gorlack
+#: data/campaigns/Winds_of_Fate/scenarios/08_Overlook.cfg:638
+#, fuzzy
+#| msgid ""
+#| "I shall have passage through this mountain.\n"
+#| "\n"
+#| "You are advised to move aside."
+msgid ""
+"I shall have passage through this mountain. You are advised to move aside."
+msgstr ""
+"俺はこの山を通過したい。\n"
+"\n"
+"道を譲ることを勧める。"
+
+#. [message]: speaker=Lich-Lord Selmar
+#: data/campaigns/Winds_of_Fate/scenarios/08_Overlook.cfg:644
+msgid ""
+"Proceed any further and you shall pass only to the land of the dead, where I "
+"am lord and master."
+msgstr ""
+
 #. [message]: speaker=Arinexis
-#: data/campaigns/Winds_of_Fate/scenarios/08_Overlook.cfg:608
+#: data/campaigns/Winds_of_Fate/scenarios/08_Overlook.cfg:648
 msgid ""
 "<i>*flicks tongue*</i>\n"
 "\n"
@@ -5356,111 +5494,21 @@ msgstr ""
 "ス</small>す。<small>ソソ</small>それが山を抜ける道で<small>スス</small>す。"
 "あの門を破らなければならない！ い<small>ソソ</small>そいで、ドラゴンたち！"
 
-#. [message]: speaker=Avatar of Nova
-#: data/campaigns/Winds_of_Fate/scenarios/08_Overlook.cfg:630
+#. [message]: speaker=Lich-Lord Selmar
+#: data/campaigns/Winds_of_Fate/scenarios/08_Overlook.cfg:667
 msgid ""
-"Stop!\n"
-"\n"
-"I am using nearly all my Focus to spellbind these Faerie creatures from "
-"seeing the true nature of this place. I cannot hope to drive back an army of "
-"dragons at the same time!\n"
-"\n"
-"You leave me no choice but to destroy my creation to save its secret."
+"You fire breathing meddlers are a nuisance in any century. A curse upon you "
+"all, may your worst plans reach fruition so your descendants remember you "
+"with shame!"
 msgstr ""
-"やめろ！\n"
-"\n"
-"私はほぼ全ての意識を集中して呪文を詠唱し、この地の真の姿を精霊に悟られぬよう"
-"している。同時にドラゴンの軍隊を追い払うことは望めぬのだ！\n"
-"\n"
-"秘密を保持するために、我が創造物を破壊するしかなくなるではないか。"
-
-#. [message]: speaker=Avatar of Nova
-#: data/campaigns/Winds_of_Fate/scenarios/08_Overlook.cfg:640
-msgid ""
-"Yet even a disenchantment on such a scale will take all my remaining "
-"Focus...\n"
-"\n"
-"I ask you for a truce.\n"
-"I know you have no idea what is at stake here, but please, at least grant me "
-"this."
-msgstr ""
-"この程度の解呪でさえも、残りの集中力が奪われる・・・\n"
-"\n"
-"休戦を求める。\n"
-"この地に迫る危機が何かは分からぬと思うが、少なくともこれだけは聞き入れて欲し"
-"い。"
-
-#. [message]: speaker=Gorlack
-#: data/campaigns/Winds_of_Fate/scenarios/08_Overlook.cfg:647
-msgid "You will..."
-msgstr "お前を・・・"
-
-#. [option]
-#: data/campaigns/Winds_of_Fate/scenarios/08_Overlook.cfg:649
-msgid "have your truce."
-msgstr "信じよう。"
-
-#. [message]: speaker=Avatar of Nova
-#: data/campaigns/Winds_of_Fate/scenarios/08_Overlook.cfg:665
-msgid "Thank you, Gorlack and Resha."
-msgstr "礼を言う、Gorlack と Resha 。"
 
 #. [message]: speaker=Resha
-#: data/campaigns/Winds_of_Fate/scenarios/08_Overlook.cfg:669
-msgid ""
-"Our names are known to you, yet we have given them not...\n"
-"\n"
-"There is something familiar of you... from a Memory long ago—"
-msgstr ""
-"我らの名前が知られている、まだ名乗っていないのに・・・\n"
-"\n"
-"お前は何か見覚えがあるような・・・はるか昔の記憶から ——"
-
-#. [message]: speaker=Avatar of Nova
-#: data/campaigns/Winds_of_Fate/scenarios/08_Overlook.cfg:677
-msgid "The gate blocking your passage is no more. Hurry, there is little time."
-msgstr "通用門を開放してやろう。急げ、時間が無い。"
-
-#. [option]
-#: data/campaigns/Winds_of_Fate/scenarios/08_Overlook.cfg:682
-msgid "meet your doom."
-msgstr "破滅させる。"
-
-#. [message]: speaker=Gorlack
-#: data/campaigns/Winds_of_Fate/scenarios/08_Overlook.cfg:686
-msgid "Your chance for clemency has expired."
-msgstr "恩赦の期限はもう過ぎている。"
-
-#. [message]: race=drake
-#: data/campaigns/Winds_of_Fate/scenarios/08_Overlook.cfg:715
-msgid "Such a sickly looking creature."
-msgstr "ずいぶん弱そうな生き物だ。"
-
-#. [message]: speaker=Zedrix
-#: data/campaigns/Winds_of_Fate/scenarios/08_Overlook.cfg:719
-msgid ""
-"That is a ssskeletoid — humans’ true and ssstrongessst form. Every human "
-"that dies sssomeday rises again as one of those."
-msgstr ""
-"<small>ソソ</small>それは骨人間 —— 人間の本当の<small>ササ</small>最強の形で"
-"<small>スス</small>す。<small>シシ</small>死んだ人間はいつか<small>ソソ</"
-"small>その形で蘇るので<small>スス</small>す。"
-
-#. [message]: speaker=Arinexis
-#: data/campaigns/Winds_of_Fate/scenarios/08_Overlook.cfg:723
-msgid ""
-"Unlesss you burn, crush or eat the bones firssssst. Never leave the bones!"
-msgstr ""
-"<small>シシ</small>しっかり骨を燃や<small>シシ</small>したり、砕いたり、食っ"
-"たり<small>シシ</small>しなければ。骨を残<small>シシ</small>してはいけない！"
-
-#. [message]: speaker=Resha
-#: data/campaigns/Winds_of_Fate/scenarios/08_Overlook.cfg:740
+#: data/campaigns/Winds_of_Fate/scenarios/08_Overlook.cfg:705
 msgid "Nay. Gorlack, I shall not depart this cave before you!"
 msgstr "否。Gorlack 、あなたより先にこの洞窟を出るわけにはいかない！"
 
 #. [message]: speaker=Gorlack
-#: data/campaigns/Winds_of_Fate/scenarios/08_Overlook.cfg:754
+#: data/campaigns/Winds_of_Fate/scenarios/08_Overlook.cfg:719
 msgid ""
 "Those two saurians do not keep pace...\n"
 "\n"
@@ -5471,7 +5519,7 @@ msgstr ""
 "だが、こんなところに奴らを置き去りにするわけにはいかない。"
 
 #. [message]: speaker=Resha
-#: data/campaigns/Winds_of_Fate/scenarios/08_Overlook.cfg:799
+#: data/campaigns/Winds_of_Fate/scenarios/08_Overlook.cfg:764
 msgid ""
 "Go on, my friend.\n"
 "I shall make sure none follow.\n"
@@ -5484,18 +5532,18 @@ msgstr ""
 "この洞窟から出てくれ。"
 
 #. [message]: speaker=Gorlack
-#: data/campaigns/Winds_of_Fate/scenarios/08_Overlook.cfg:808
+#: data/campaigns/Winds_of_Fate/scenarios/08_Overlook.cfg:773
 msgid "Nay, there is no time, we leave now."
 msgstr "否、時間が無い、早く来るんだ。"
 
 #. [message]: speaker=Resha
-#: data/campaigns/Winds_of_Fate/scenarios/08_Overlook.cfg:812
+#: data/campaigns/Winds_of_Fate/scenarios/08_Overlook.cfg:777
 msgid "Tell Karron I always regretted taking her place."
 msgstr ""
 "Karron に伝えて欲しい、彼女の地位を奪ったことを私は常に後悔していたと。"
 
 #. [message]: speaker=Gorlack
-#: data/campaigns/Winds_of_Fate/scenarios/08_Overlook.cfg:818
+#: data/campaigns/Winds_of_Fate/scenarios/08_Overlook.cfg:783
 msgid ""
 "Resha, we leave this cave together.\n"
 "Just like we did the first one."
@@ -5504,18 +5552,20 @@ msgstr ""
 "あの洞窟と同じように。"
 
 #. [message]: speaker=Resha
-#: data/campaigns/Winds_of_Fate/scenarios/08_Overlook.cfg:823
+#: data/campaigns/Winds_of_Fate/scenarios/08_Overlook.cfg:788
 msgid "Farewell my friend..."
 msgstr "さらば、我が友よ・・・"
 
 #. [message]: speaker=Gorlack
-#: data/campaigns/Winds_of_Fate/scenarios/08_Overlook.cfg:829
+#: data/campaigns/Winds_of_Fate/scenarios/08_Overlook.cfg:794
 msgid "Resha..."
 msgstr "Resha ・・・"
 
 #. [message]: speaker=Resha
-#: data/campaigns/Winds_of_Fate/scenarios/08_Overlook.cfg:854
-msgid "My wings catch the Winds of Fate..."
+#: data/campaigns/Winds_of_Fate/scenarios/08_Overlook.cfg:819
+#, fuzzy
+#| msgid "My wings catch the Winds of Fate..."
+msgid "My wings catch the Winds..."
 msgstr "我が翼は運命の風を捉える・・・"
 
 #. [part]
@@ -5616,33 +5666,33 @@ msgstr ""
 #. [message]: speaker=narrator
 #. "Back next spring." As in the season after winter and before summer.
 #. "Back next spring." As in the season after winter and before summer.
-#: data/campaigns/Winds_of_Fate/scenarios/09_Ancestor.cfg:205
+#: data/campaigns/Winds_of_Fate/scenarios/09_Ancestor.cfg:204
 #: data/campaigns/Winds_of_Fate/scenarios/10_Fire_Meets_Steel.cfg:587
 msgid "‘ BAK NEKST SPRING ’"
 msgstr "「来春に戻る」"
 
 #. [message]: type=Dragonfly Naiad
-#: data/campaigns/Winds_of_Fate/scenarios/09_Ancestor.cfg:220
+#: data/campaigns/Winds_of_Fate/scenarios/09_Ancestor.cfg:219
 msgid "(<i>chirp chirp</i>)"
 msgstr "（<i>チッチッ</i>）"
 
 #. [unit]: id=Khrakrahs, type=Fire Dragon
-#: data/campaigns/Winds_of_Fate/scenarios/09_Ancestor.cfg:251
+#: data/campaigns/Winds_of_Fate/scenarios/09_Ancestor.cfg:250
 msgid "Khrakrahs"
 msgstr "Khrakrahs"
 
 #. [attack]: type=blade
-#: data/campaigns/Winds_of_Fate/scenarios/09_Ancestor.cfg:259
+#: data/campaigns/Winds_of_Fate/scenarios/09_Ancestor.cfg:258
 msgid "bite"
 msgstr "噛みつき"
 
 #. [attack]: type=impact
-#: data/campaigns/Winds_of_Fate/scenarios/09_Ancestor.cfg:268
+#: data/campaigns/Winds_of_Fate/scenarios/09_Ancestor.cfg:267
 msgid "tail"
 msgstr "尾"
 
 #. [attack]: type=fire
-#: data/campaigns/Winds_of_Fate/scenarios/09_Ancestor.cfg:277
+#: data/campaigns/Winds_of_Fate/scenarios/09_Ancestor.cfg:276
 msgid "fire breath"
 msgstr "炎の息吹"
 
@@ -5684,10 +5734,18 @@ msgstr ""
 
 #. [message]: speaker=Khrakrahs
 #: data/campaigns/Winds_of_Fate/scenarios/09_Ancestor.cfg:357
+#, fuzzy
+#| msgid ""
+#| "I know you are here, weakling Shek’kahan! You know better than to intrude "
+#| "upon my domain! Even if I must search this entire valley, I will find "
+#| "your hiding place.\n"
+#| "\n"
+#| "Fly, my pets! Sweep this place of every scaleless beast so I will have no "
+#| "distraction."
 msgid ""
 "I know you are here, weakling Shek’kahan! You know better than to intrude "
-"upon my domain! Even if I must search this entire valley, I will find your "
-"hiding place.\n"
+"upon my domain, Brother! Even if I must search this entire valley, I will "
+"find your hiding place.\n"
 "\n"
 "Fly, my pets! Sweep this place of every scaleless beast so I will have no "
 "distraction."
@@ -5737,7 +5795,9 @@ msgstr "我は戻る。"
 
 #. [message]: speaker=Khrakrahs
 #: data/campaigns/Winds_of_Fate/scenarios/09_Ancestor.cfg:470
-msgid "Show yourself!"
+#, fuzzy
+#| msgid "Show yourself!"
+msgid "Show yourself, Brother!"
 msgstr "姿を見せろ！"
 
 #. [message]: speaker=Zedrix
@@ -5813,8 +5873,14 @@ msgstr "<span color='cyan'>Zedrix 、お前の心は真実を明かさねばな�
 
 #. [message]: speaker=Zedrix
 #: data/campaigns/Winds_of_Fate/scenarios/09_Ancestor.cfg:543
+#, fuzzy
+#| msgid ""
+#| "Khrakrahs... Shek’kahan is dead. He fell protecting his domain and humble "
+#| "sssubjectsss...\n"
+#| "\n"
+#| "... of which I am all that is left."
 msgid ""
-"Khrakrahs... Shek’kahan is dead. He fell protecting his domain and humble "
+"Khrakrahs... your brother is dead. He fell protecting his domain and humble "
 "sssubjectsss...\n"
 "\n"
 "... of which I am all that is left."
@@ -5831,12 +5897,19 @@ msgstr "ならば、それが真実だ・・・"
 
 #. [message]: speaker=Khrakrahs
 #: data/campaigns/Winds_of_Fate/scenarios/09_Ancestor.cfg:557
+#, fuzzy
+#| msgid ""
+#| "It was nigh every season he would intrude upon my domain or me his. Each "
+#| "time, there was such a glorious battle between us as to impart even the "
+#| "clouds with fright. I must not have challenged him enough that he grew "
+#| "weak, vulnerable. Now another great battle between us there will never "
+#| "be. Now there is only me."
 msgid ""
 "It was nigh every season he would intrude upon my domain or me his. Each "
-"time, there was such a glorious battle between us as to impart even the "
-"clouds with fright. I must not have challenged him enough that he grew weak, "
-"vulnerable. Now another great battle between us there will never be. Now "
-"there is only me."
+"time, there was such a glorious battle between us, the sons of Drugis, as to "
+"impart even the clouds with fright. I must not have challenged him enough "
+"that he grew weak, vulnerable. Now another great battle between us there "
+"will never be. Now there is only me."
 msgstr ""
 "殆ど全ての季節毎に、我らは互いの領域を侵し合った。その度に、我らの間には卓越"
 "した闘いが起こり、雲さえも恐怖に怯えた。奴が非力で脆弱になったのは、我の挑戦"
@@ -6765,8 +6838,17 @@ msgstr ""
 "な！"
 
 #. [message]: speaker=unit
-#: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:537
-#: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:584
+#: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:539
+msgid "???"
+msgstr ""
+
+#. [message]: speaker=unit
+#: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:553
+msgid "Thisss ssstone has drake markingsss, maybe one of them can read it."
+msgstr ""
+
+#. [message]: speaker=unit
+#: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:570
 msgid ""
 "This firescale is engraved with a clasher Secret...\n"
 "\n"
@@ -6777,7 +6859,7 @@ msgstr ""
 "粉砕者系統なら意味が分かるかも知れない。"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:552
+#: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:585
 msgid ""
 "―  The Descent of Parapathos  ―\n"
 "\n"
@@ -6861,7 +6943,7 @@ msgstr ""
 "——「動乱の時代」の64世紀——"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:599
+#: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:613
 msgid ""
 "―  The Contest of the Automata  ―\n"
 "\n"
@@ -6944,12 +7026,12 @@ msgstr ""
 "——「伝説の時代」の31世紀——"
 
 #. [message]: speaker=Karron
-#: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:625
+#: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:639
 msgid "Gliders, engage!"
 msgstr "滑空者たちよ、参戦せよ！"
 
 #. [message]: speaker=Karron
-#: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:651
+#: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:665
 msgid ""
 "Burners...\n"
 "\n"
@@ -6960,7 +7042,7 @@ msgstr ""
 "今だ！"
 
 #. [message]: speaker=Gorlack
-#: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:753
+#: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:767
 msgid ""
 "Karron.\n"
 "\n"
@@ -6971,27 +7053,27 @@ msgstr ""
 "俺の選んだ風道はひとりの友を救った・・・もうひとりの友を切り捨てて・・・"
 
 #. [message]: speaker=Arinexis
-#: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:769
+#: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:783
 msgid "You win, I go... I run."
 msgstr "お前の勝ちだ、あたいは・・・逃げる。"
 
 #. [message]: speaker=Karron
-#: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:797
+#: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:811
 msgid "You have one last victory over me... finish it."
 msgstr "私に対する最後の勝利を得たな・・・殺せ。"
 
 #. [message]: speaker=Gorlack
-#: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:803
+#: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:817
 msgid "Nay."
 msgstr "否。"
 
 #. [message]: speaker=Karron
-#: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:807
+#: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:821
 msgid "......"
 msgstr "・・・・・・"
 
 #. [message]: speaker=Gorlack
-#: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:813
+#: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:827
 msgid ""
 "Karron, I banish you from this Greatland, from these far lands of the east.\n"
 "Not as the victor vanquishing a rival as it was in the contention...\n"
@@ -7004,7 +7086,7 @@ msgstr ""
 "いずれ訪れる動乱から、お前を守ることを願う友として。"
 
 #. [message]: speaker=Gorlack
-#: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:822
+#: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:836
 msgid ""
 "I strove to prevent a war between the flights.\n"
 "Yet I only traded that for a war of an unknown kind.\n"
@@ -7024,12 +7106,12 @@ msgstr ""
 "獲物との戦争になるだろう。"
 
 #. [message]: speaker=Karron
-#: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:832
+#: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:846
 msgid "Prey can no more make war on us than could the clouds."
 msgstr "獲物が我らと戦争をするなど、雲と戦うよりも難しいことだ。"
 
 #. [message]: speaker=Gorlack
-#: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:838
+#: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:852
 msgid ""
 "They already have, as we all witnessed.\n"
 "\n"
@@ -7047,7 +7129,7 @@ msgstr ""
 "北を喫した後だ。"
 
 #. [message]: speaker=Gorlack
-#: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:848
+#: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:862
 msgid ""
 "Verily, these creatures are fellow contenders for dominance over the world "
 "itself.\n"
@@ -7061,7 +7143,7 @@ msgstr ""
 "この偉大なる闘技会において。"
 
 #. [message]: speaker=Gorlack
-#: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:857
+#: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:871
 msgid ""
 "We shall need allies from amongst the noble creatures of this land.\n"
 "Like our gentle saurians.\n"
@@ -7079,18 +7161,18 @@ msgstr ""
 "この偉大なる闘技会には、千年の時を要するだろう。"
 
 #. [message]: speaker=Gorlack
-#: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:868
+#: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:882
 msgid ""
 "By this Windpath alone shall we reascend to dominate the world once again."
 msgstr "これこそが、我らが再び世界の支配者となるための風道なのだ。"
 
 #. [message]: speaker=Karron
-#: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:872
+#: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:886
 msgid "Gorlack, I do not feel this... Windpath beneath my wings..."
 msgstr "Gorlack 、私はそれを・・・風道を翼の下に感じられない・・・"
 
 #. [message]: speaker=Gorlack
-#: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:878
+#: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:892
 msgid ""
 "Because you are still fearless, my friend.\n"
 "That is why I banish you west, away from this crisis.\n"
@@ -7107,7 +7189,7 @@ msgstr ""
 "滑空者の「口承の記憶」を道案内にして。"
 
 #. [message]: speaker=Karron
-#: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:887
+#: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:901
 msgid ""
 "Gorlack, let both our flights head west.\n"
 "\n"
@@ -7118,7 +7200,7 @@ msgstr ""
 "ともにこの冒険に挑もうではないか、本来そうあるべきだったように。"
 
 #. [message]: speaker=Gorlack
-#: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:895
+#: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:909
 msgid ""
 "I am sorry, Karron.\n"
 "Our Windpaths shall never cross as you hoped.\n"
@@ -7135,7 +7217,7 @@ msgstr ""
 "ばならぬのだ。"
 
 #. [message]: speaker=Karron
-#: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:903
+#: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:917
 msgid ""
 "So it must be...\n"
 "\n"
@@ -7146,7 +7228,7 @@ msgstr ""
 "内なる炎が暗き道を照らさんことを。"
 
 #. [message]: speaker=Gorlack
-#: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:911
+#: data/campaigns/Winds_of_Fate/scenarios/11_Crosswind.cfg:925
 msgid "May your wings catch the winds to soar."
 msgstr "舞い上がる風をその翼が捉えんことを。"
 
@@ -7458,24 +7540,139 @@ msgid "clasher intendant"
 msgstr "副官"
 
 #. [floating_text]
-#: data/campaigns/Winds_of_Fate/utils/macros.cfg:208
+#: data/campaigns/Winds_of_Fate/utils/macros.cfg:209
 msgid "+$amount experience"
 msgstr "XP $amount 獲得"
 
 #. [object]
-#: data/campaigns/Winds_of_Fate/utils/macros.cfg:216
+#: data/campaigns/Winds_of_Fate/utils/macros.cfg:217
 msgid "Sapphire of Ice"
 msgstr "氷のサファイア"
 
 #. [object]
-#: data/campaigns/Winds_of_Fate/utils/macros.cfg:218
+#: data/campaigns/Winds_of_Fate/utils/macros.cfg:219
 msgid "This sapphire grants the bearer a ranged cold attack!"
 msgstr "このサファイアの持ち主は冷気属性の遠隔攻撃ができます！"
 
 #. [effect]: type=cold
-#: data/campaigns/Winds_of_Fate/utils/macros.cfg:222
+#: data/campaigns/Winds_of_Fate/utils/macros.cfg:223
 msgid "sapphire of ice"
 msgstr "氷のサファイア"
+
+#~ msgid ""
+#~ "This tree has been debarked by repeated scratching from animals of some "
+#~ "kind. It smells strongly of a fig tree yet it is clearly an oak."
+#~ msgstr ""
+#~ "この木は何らかの動物によって繰り返し引っ掻かれて樹皮が剥がれている。イチジ"
+#~ "クの強い香りを放つが、それは明らかにオークの木である。"
+
+#~ msgid "Avatar of Nova"
+#~ msgstr "Nova の化身"
+
+#~ msgid "As you say."
+#~ msgstr "なるほど。"
+
+#~ msgid ""
+#~ "You have no means to threaten me. Even if you destroyed this grim avatar "
+#~ "of mine, presently speaking to you, I would continue acting through my "
+#~ "others in far off places.\n"
+#~ "\n"
+#~ "Now, I must resume my work and you must leave..."
+#~ msgstr ""
+#~ "私を脅しても意味は無い。いまお前と話しているこの恐るべき私の化身を破壊した"
+#~ "としても、私は別の場所にいる化身を使って行動を続けられる。\n"
+#~ "\n"
+#~ "さて、私は仕事を再開せねばならず、お前はここを去る・・・"
+
+#~ msgid ""
+#~ "Wait... what is that behind you?\n"
+#~ "\n"
+#~ "<i>Faerie</i> creatures have followed you...\n"
+#~ "\n"
+#~ "If they come much closer <b><u>It</u></b> will see what has been created "
+#~ "here.\n"
+#~ "The Faerie World sees and feels through the senses of all the simpler "
+#~ "beings it has transmuted. And if it only glimpses my work in this early "
+#~ "phase, we may lose our world’s best hope against it."
+#~ msgstr ""
+#~ "待て・・・背後にいるのは何だ？\n"
+#~ "\n"
+#~ "<i>精霊</i>たちがお前に付き従っているのか・・・\n"
+#~ "\n"
+#~ "もし彼らがさらに近づいたら、<b><u>それ</u></b>はここで作られているものに感"
+#~ "付くかも知れん。\n"
+#~ "精霊の世界は、全ての存在をより単純なものに変容させ、その感覚を通じて知覚"
+#~ "し、感じ取る。まだ初期段階にある私の仕事が見られたら、それに対抗する世界最"
+#~ "大の希望を失うかも知れん。"
+
+#~ msgid ""
+#~ "There is <b><u>no</u></b> time for that!\n"
+#~ "\n"
+#~ "Faerie creatures are chasing you; you must leave the way you came or they "
+#~ "will follow you here."
+#~ msgstr ""
+#~ "その時間は最早<b><u>無い</u></b>！\n"
+#~ "\n"
+#~ "精霊が追って来ている。お前たちが辿ってきた道を離れぬ限り、彼らはここまで付"
+#~ "いてくる。"
+
+#~ msgid ""
+#~ "Stop!\n"
+#~ "\n"
+#~ "I am using nearly all my Focus to spellbind these Faerie creatures from "
+#~ "seeing the true nature of this place. I cannot hope to drive back an army "
+#~ "of dragons at the same time!\n"
+#~ "\n"
+#~ "You leave me no choice but to destroy my creation to save its secret."
+#~ msgstr ""
+#~ "やめろ！\n"
+#~ "\n"
+#~ "私はほぼ全ての意識を集中して呪文を詠唱し、この地の真の姿を精霊に悟られぬよ"
+#~ "うしている。同時にドラゴンの軍隊を追い払うことは望めぬのだ！\n"
+#~ "\n"
+#~ "秘密を保持するために、我が創造物を破壊するしかなくなるではないか。"
+
+#~ msgid ""
+#~ "Yet even a disenchantment on such a scale will take all my remaining "
+#~ "Focus...\n"
+#~ "\n"
+#~ "I ask you for a truce.\n"
+#~ "I know you have no idea what is at stake here, but please, at least grant "
+#~ "me this."
+#~ msgstr ""
+#~ "この程度の解呪でさえも、残りの集中力が奪われる・・・\n"
+#~ "\n"
+#~ "休戦を求める。\n"
+#~ "この地に迫る危機が何かは分からぬと思うが、少なくともこれだけは聞き入れて欲"
+#~ "しい。"
+
+#~ msgid "You will..."
+#~ msgstr "お前を・・・"
+
+#~ msgid "have your truce."
+#~ msgstr "信じよう。"
+
+#~ msgid "Thank you, Gorlack and Resha."
+#~ msgstr "礼を言う、Gorlack と Resha 。"
+
+#~ msgid ""
+#~ "Our names are known to you, yet we have given them not...\n"
+#~ "\n"
+#~ "There is something familiar of you... from a Memory long ago—"
+#~ msgstr ""
+#~ "我らの名前が知られている、まだ名乗っていないのに・・・\n"
+#~ "\n"
+#~ "お前は何か見覚えがあるような・・・はるか昔の記憶から ——"
+
+#~ msgid ""
+#~ "The gate blocking your passage is no more. Hurry, there is little time."
+#~ msgstr "通用門を開放してやろう。急げ、時間が無い。"
+
+#~ msgid "meet your doom."
+#~ msgstr "破滅させる。"
+
+#~ msgid "Your chance for clemency has expired."
+#~ msgstr "恩赦の期限はもう過ぎている。"
 
 #~ msgid "Hold the advantage at the end of turn 24"
 #~ msgstr "24ターン終了時に優位を保つ"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-wc\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-11-18 02:02 UTC\n"
+"POT-Creation-Date: 2026-02-26 01:04 UTC\n"
 "PO-Revision-Date: 2024-09-16 20:16+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nillguine@gmail.com>\n"
 "Language-Team: Turkish <->\n"
@@ -3172,8 +3172,14 @@ msgstr ""
 
 #. [leadership]: id=forcefield
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:249
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:250
 msgid "forcefield"
+msgstr "güç alanı"
+
+#. [leadership]: id=forcefield
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:250
+#, fuzzy
+#| msgid "forcefield"
+msgid "female^forcefield"
 msgstr "güç alanı"
 
 #. [leadership]: id=forcefield
@@ -3463,9 +3469,15 @@ msgstr ""
 
 #. [berserk]: id=wct_fury
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:624
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:625
 msgid "fury"
 msgstr "öfke"
+
+#. [berserk]: id=wct_fury
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:625
+#, fuzzy
+#| msgid "female^heroic"
+msgid "female^fury"
+msgstr "kahramanlık"
 
 #. [berserk]: id=wct_fury
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:626
@@ -3517,8 +3529,14 @@ msgstr ""
 
 #. [illuminates]: id=darkness
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:674
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:675
 msgid "darkness"
+msgstr "karanlık"
+
+#. [illuminates]: id=darkness
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:675
+#, fuzzy
+#| msgid "darkness"
+msgid "female^darkness"
 msgstr "karanlık"
 
 #. [illuminates]: id=darkness
@@ -3534,8 +3552,14 @@ msgstr ""
 
 #. [dummy]: id=wc2_corruption
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:681
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:682
 msgid "corruption"
+msgstr "yozlaşma"
+
+#. [dummy]: id=wc2_corruption
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:682
+#, fuzzy
+#| msgid "corruption"
+msgid "female^corruption"
 msgstr "yozlaşma"
 
 #. [dummy]: id=wc2_corruption
@@ -3628,9 +3652,15 @@ msgstr ""
 
 #. [leadership]: id=banner
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:784
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:785
 msgid "banner"
 msgstr "sancak"
+
+#. [leadership]: id=banner
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:785
+#, fuzzy
+#| msgid "female^trained"
+msgid "female^banner"
+msgstr "eğitimli"
 
 #. [leadership]: id=banner
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:786
@@ -3846,7 +3876,6 @@ msgstr "$range|: $special|"
 #. [skirmisher]: id=distract
 #: data/campaigns/World_Conquest/resources/data/training.cfg:378
 #: data/campaigns/World_Conquest/resources/data/training.cfg:403
-#: data/campaigns/World_Conquest/resources/data/training.cfg:404
 msgid "distract"
 msgstr "şaşırtma"
 
@@ -3854,9 +3883,15 @@ msgstr "şaşırtma"
 #. [resistance]: id=tenacity
 #: data/campaigns/World_Conquest/resources/data/training.cfg:390
 #: data/campaigns/World_Conquest/resources/data/training.cfg:427
-#: data/campaigns/World_Conquest/resources/data/training.cfg:428
 msgid "tenacity"
 msgstr "azim"
+
+#. [skirmisher]: id=distract
+#: data/campaigns/World_Conquest/resources/data/training.cfg:404
+#, fuzzy
+#| msgid "distract"
+msgid "female^distract"
+msgstr "şaşırtma"
 
 #. [skirmisher]: id=distract
 #: data/campaigns/World_Conquest/resources/data/training.cfg:405
@@ -3864,6 +3899,13 @@ msgid "Allied units ignore enemy zones of control adjacent to this unit."
 msgstr ""
 "Müttefik birimler, bu birimin yanındaki düşman birimlerin etki alanlarını "
 "yoksayar."
+
+#. [resistance]: id=tenacity
+#: data/campaigns/World_Conquest/resources/data/training.cfg:428
+#, fuzzy
+#| msgid "female^legendary"
+msgid "female^tenacity"
+msgstr "efsanevi"
 
 #. [resistance]: id=tenacity
 #: data/campaigns/World_Conquest/resources/data/training.cfg:429

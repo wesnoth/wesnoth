@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-01-20 11:31-0600\n"
+"POT-Creation-Date: 2026-02-25 19:03-0600\n"
 "PO-Revision-Date: 2017-05-31 13:43+0000\n"
 "Last-Translator: GunChleoc, 2021\n"
 "Language-Team: Gaelic, Scottish (https://www.transifex.com/gunchleoc/"
@@ -350,11 +350,11 @@ msgstr ""
 msgid "Load Map or Scenario"
 msgstr "Mapa air luchdadh bho chnàmh-sgeul"
 
-#: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1147
+#: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1141
 msgid "New Map"
 msgstr "Mapa ùr"
 
-#: src/editor/map/context_manager.cpp:326 src/editor/map/map_context.cpp:1147
+#: src/editor/map/context_manager.cpp:326 src/editor/map/map_context.cpp:1141
 msgid "New Scenario"
 msgstr "Cnàmh-sgeul ùr"
 
@@ -400,7 +400,7 @@ msgid "Save Map As"
 msgstr "Sàbhail am mapa mar"
 
 #: src/editor/map/context_manager.cpp:704
-#: src/editor/map/context_manager.cpp:753 src/editor/map/map_context.cpp:274
+#: src/editor/map/context_manager.cpp:753 src/editor/map/map_context.cpp:228
 #: src/editor/palette/location_palette.cpp:263
 msgid "Error"
 msgstr "Mearachd"
@@ -487,71 +487,74 @@ msgstr "Cluicheadair $side_num"
 msgid "The size of the target map is different from the current map"
 msgstr "Tha meud a’ mhapa amais eadar-dhealaichte bhon mhapa seo"
 
-#: src/editor/map/map_context.cpp:187
+#: src/editor/map/map_context.cpp:188
 msgid "File not found"
 msgstr "Cha deach am faidhle a lorg"
 
-#: src/editor/map/map_context.cpp:194
+#: src/editor/map/map_context.cpp:195
 msgid "Empty file"
 msgstr "Faidhle falamh"
 
-#: src/editor/map/map_context.cpp:203
+#: src/editor/map/map_context.cpp:204
 msgid "File does not have .map, .cfg, or .mask extension"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:250
+#: src/editor/map/map_context.cpp:227
 msgid ""
-"The map file looks like a scenario, but the map_data value does not point to "
-"an existing file"
-msgstr ""
-"Tha coltas cnàmh-sgeòil air an fhaidhle mapa seo, ach chan eil an luach "
-"map_data a’ tomhadh ri faidhle a tha ann"
-
-#: src/editor/map/map_context.cpp:269
-msgid "Found the characters ‘<<’ indicating inline lua is present — aborting"
+"Failed to load the scenario: $error\n"
+"\n"
+"Attempting to load only the map."
 msgstr ""
 
-#: src/editor/map/map_context.cpp:274
-msgid "Failed to load the scenario, attempting to load only the map."
-msgstr ""
-
-#: src/editor/map/map_context.cpp:281
+#: src/editor/map/map_context.cpp:253
 #, fuzzy
 #| msgid ""
 #| "The map file looks like a scenario, but the map_data value does not point "
 #| "to an existing file"
 msgid ""
-"The map file looks like a scenario, but the map_file value does not point to "
+"The file looks like a scenario, but the map_data attribute does not point to "
 "an existing file"
 msgstr ""
 "Tha coltas cnàmh-sgeòil air an fhaidhle mapa seo, ach chan eil an luach "
 "map_data a’ tomhadh ri faidhle a tha ann"
 
-#: src/editor/map/map_context.cpp:296
-msgid "Unable to parse file to find map data"
+#: src/editor/map/map_context.cpp:268
+#, fuzzy
+#| msgid ""
+#| "The map file looks like a scenario, but the map_data value does not point "
+#| "to an existing file"
+msgid ""
+"The file looks like a scenario, but the map_file attribute does not point to "
+"an existing file"
+msgstr ""
+"Tha coltas cnàmh-sgeòil air an fhaidhle mapa seo, ach chan eil an luach "
+"map_data a’ tomhadh ri faidhle a tha ann"
+
+#: src/editor/map/map_context.cpp:448
+msgid "Confirm"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:841 src/editor/map/map_context.cpp:881
+#: src/editor/map/map_context.cpp:835 src/editor/map/map_context.cpp:875
 #, fuzzy
 #| msgid "Could not save the scenario: $msg"
 msgid "Could not save time schedule: $msg"
 msgstr "Cha b' urrainn dhuinn an cnàmh-sgeul a shàbhaladh: $msg"
 
-#: src/editor/map/map_context.cpp:875
+#: src/editor/map/map_context.cpp:869
 #, fuzzy
 #| msgid "Time Schedule Menu"
 msgid "Time schedule saved."
 msgstr "Clàr-taice nan sgeidealan ama"
 
-#: src/editor/map/map_context.cpp:921
+#: src/editor/map/map_context.cpp:915
 msgid "Could not save the scenario: $msg"
 msgstr "Cha b' urrainn dhuinn an cnàmh-sgeul a shàbhaladh: $msg"
 
-#: src/editor/map/map_context.cpp:952
+#: src/editor/map/map_context.cpp:946
 msgid "Could not save into scenario"
 msgstr "Cha b' urrainn dhuinn sàbhaladh dhan chnàmh-sgeul"
 
-#: src/editor/map/map_context.cpp:962
+#: src/editor/map/map_context.cpp:956
 msgid "Could not save the map: $msg"
 msgstr "Cha b' urrainn dhuinn am mapa a shàbhaladh: $msg"
 

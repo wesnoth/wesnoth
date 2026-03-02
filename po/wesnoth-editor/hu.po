@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu-editor_1.5\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-01-20 11:31-0600\n"
+"POT-Creation-Date: 2026-02-25 19:03-0600\n"
 "PO-Revision-Date: 2025-12-28 01:41+0100\n"
 "Last-Translator: Berda Jenő <big4billy@gmail.com>\n"
 "Language-Team: Hungarian <>\n"
@@ -342,11 +342,11 @@ msgstr "<span color='red'><span face='DejaVuSans'>✘</span> $msg</span>"
 msgid "Load Map or Scenario"
 msgstr "Térkép vagy küldetés betöltése"
 
-#: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1147
+#: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1141
 msgid "New Map"
 msgstr "Új térkép"
 
-#: src/editor/map/context_manager.cpp:326 src/editor/map/map_context.cpp:1147
+#: src/editor/map/context_manager.cpp:326 src/editor/map/map_context.cpp:1141
 msgid "New Scenario"
 msgstr "Új küldetés"
 
@@ -392,7 +392,7 @@ msgid "Save Map As"
 msgstr "Térkép mentése másként"
 
 #: src/editor/map/context_manager.cpp:704
-#: src/editor/map/context_manager.cpp:753 src/editor/map/map_context.cpp:274
+#: src/editor/map/context_manager.cpp:753 src/editor/map/map_context.cpp:228
 #: src/editor/palette/location_palette.cpp:263
 msgid "Error"
 msgstr "Hiba"
@@ -467,64 +467,72 @@ msgstr "$side_num. oldal"
 msgid "The size of the target map is different from the current map"
 msgstr "A cél térkép mérete különbözik a jelenlegi térkép méretétől"
 
-#: src/editor/map/map_context.cpp:187
+#: src/editor/map/map_context.cpp:188
 msgid "File not found"
 msgstr "A fájl nem található"
 
-#: src/editor/map/map_context.cpp:194
+#: src/editor/map/map_context.cpp:195
 msgid "Empty file"
 msgstr "Üres térképfájl"
 
-#: src/editor/map/map_context.cpp:203
+#: src/editor/map/map_context.cpp:204
 msgid "File does not have .map, .cfg, or .mask extension"
 msgstr "A fájlnak nincs .map, .cfg, vagy .mask kiterjesztése"
 
-#: src/editor/map/map_context.cpp:250
+#: src/editor/map/map_context.cpp:227
+#, fuzzy
+#| msgid "Failed to load the scenario, attempting to load only the map."
 msgid ""
-"The map file looks like a scenario, but the map_data value does not point to "
+"Failed to load the scenario: $error\n"
+"\n"
+"Attempting to load only the map."
+msgstr ""
+"A küldetés betöltése sikertelen, megpróbáljuk csak a térképet betölteni."
+
+#: src/editor/map/map_context.cpp:253
+#, fuzzy
+#| msgid ""
+#| "The map file looks like a scenario, but the map_data value does not point "
+#| "to an existing file"
+msgid ""
+"The file looks like a scenario, but the map_data attribute does not point to "
 "an existing file"
 msgstr ""
 "Ez a térkép egy pályának tűnik, de a map_data nem mutat egy létező fájlra sem"
 
-#: src/editor/map/map_context.cpp:269
-msgid "Found the characters ‘<<’ indicating inline lua is present — aborting"
-msgstr ""
-"Beépített Lua szkriptre utaló karaktersort (‘<<’) találtunk — folyamat leáll"
-
-#: src/editor/map/map_context.cpp:274
-msgid "Failed to load the scenario, attempting to load only the map."
-msgstr ""
-"A küldetés betöltése sikertelen, megpróbáljuk csak a térképet betölteni."
-
-#: src/editor/map/map_context.cpp:281
+#: src/editor/map/map_context.cpp:268
+#, fuzzy
+#| msgid ""
+#| "The map file looks like a scenario, but the map_file value does not point "
+#| "to an existing file"
 msgid ""
-"The map file looks like a scenario, but the map_file value does not point to "
+"The file looks like a scenario, but the map_file attribute does not point to "
 "an existing file"
 msgstr ""
 "Ez a térképfájl egy küldetésnek tűnik, de a map_file értéke nem mutat egy "
 "létező fájlra sem"
 
-#: src/editor/map/map_context.cpp:296
-msgid "Unable to parse file to find map data"
-msgstr "A fájlt nem lehet feldolgozni a térképadatok megkereséséhez"
+#: src/editor/map/map_context.cpp:448
+msgid "Confirm"
+msgstr ""
 
-#: src/editor/map/map_context.cpp:841 src/editor/map/map_context.cpp:881
+#: src/editor/map/map_context.cpp:835 src/editor/map/map_context.cpp:875
 msgid "Could not save time schedule: $msg"
 msgstr "A napszakot nem lehetett elmenteni: $msg"
 
-#: src/editor/map/map_context.cpp:875
+#: src/editor/map/map_context.cpp:869
 msgid "Time schedule saved."
 msgstr "Időütemezés mentve."
 
-#: src/editor/map/map_context.cpp:921
+#: src/editor/map/map_context.cpp:915
 msgid "Could not save the scenario: $msg"
 msgstr "A következő pályát nem lehet elmenteni: $msg"
 
-#: src/editor/map/map_context.cpp:952
+#: src/editor/map/map_context.cpp:946
 msgid "Could not save into scenario"
 msgstr "Nem sikerült a pályába menteni"
 
-#: src/editor/map/map_context.cpp:962
+#: src/editor/map/map_context.cpp:956
 msgid "Could not save the map: $msg"
 msgstr "A következő pályát nem lehet elmenteni: $msg"
 
@@ -591,6 +599,15 @@ msgstr "Cmd + egérgomb: terep másolása"
 #: src/editor/palette/terrain_palettes.cpp:237
 msgid "Ctrl + click: copy terrain"
 msgstr "Ctrl + egérgomb: terep másolása"
+
+#~ msgid ""
+#~ "Found the characters ‘<<’ indicating inline lua is present — aborting"
+#~ msgstr ""
+#~ "Beépített Lua szkriptre utaló karaktersort (‘<<’) találtunk — folyamat "
+#~ "leáll"
+
+#~ msgid "Unable to parse file to find map data"
+#~ msgstr "A fájlt nem lehet feldolgozni a térképadatok megkereséséhez"
 
 #~ msgid "Load Map"
 #~ msgstr "Térkép betöltése"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.5-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-01-20 11:31-0600\n"
+"POT-Creation-Date: 2026-02-25 19:03-0600\n"
 "PO-Revision-Date: 2025-09-27 14:04+0200\n"
 "Last-Translator: Jarom <jaromirb@op.pl>\n"
 "Language-Team: none\n"
@@ -342,11 +342,11 @@ msgstr "<span color='red'><span face='DejaVuSans'>✘</span> $msg</span>"
 msgid "Load Map or Scenario"
 msgstr "Załaduj mapę lub scenariusz"
 
-#: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1147
+#: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1141
 msgid "New Map"
 msgstr "Nowa mapa"
 
-#: src/editor/map/context_manager.cpp:326 src/editor/map/map_context.cpp:1147
+#: src/editor/map/context_manager.cpp:326 src/editor/map/map_context.cpp:1141
 msgid "New Scenario"
 msgstr "Nowy scenariusz"
 
@@ -392,7 +392,7 @@ msgid "Save Map As"
 msgstr "Zapisz mapę jako"
 
 #: src/editor/map/context_manager.cpp:704
-#: src/editor/map/context_manager.cpp:753 src/editor/map/map_context.cpp:274
+#: src/editor/map/context_manager.cpp:753 src/editor/map/map_context.cpp:228
 #: src/editor/palette/location_palette.cpp:263
 msgid "Error"
 msgstr "Błąd"
@@ -470,66 +470,73 @@ msgstr "Gracz $side_num"
 msgid "The size of the target map is different from the current map"
 msgstr "Rozmiar mapy docelowej jest inny niż mapy obecnie załadowanej"
 
-#: src/editor/map/map_context.cpp:187
+#: src/editor/map/map_context.cpp:188
 msgid "File not found"
 msgstr "Nie znaleziono pliku"
 
-#: src/editor/map/map_context.cpp:194
+#: src/editor/map/map_context.cpp:195
 msgid "Empty file"
 msgstr "Pusty plik mapy"
 
-#: src/editor/map/map_context.cpp:203
+#: src/editor/map/map_context.cpp:204
 msgid "File does not have .map, .cfg, or .mask extension"
 msgstr "Plik nie ma rozszerzenia .map, .cfg ani .mask"
 
-#: src/editor/map/map_context.cpp:250
+#: src/editor/map/map_context.cpp:227
+#, fuzzy
+#| msgid "Failed to load the scenario, attempting to load only the map."
 msgid ""
-"The map file looks like a scenario, but the map_data value does not point to "
+"Failed to load the scenario: $error\n"
+"\n"
+"Attempting to load only the map."
+msgstr ""
+"Nie udało się wczytać scenariusza, podejmowanie próby wczytania samej mapy."
+
+#: src/editor/map/map_context.cpp:253
+#, fuzzy
+#| msgid ""
+#| "The map file looks like a scenario, but the map_data value does not point "
+#| "to an existing file"
+msgid ""
+"The file looks like a scenario, but the map_data attribute does not point to "
 "an existing file"
 msgstr ""
 "Plik mapy wygląda na scenariusz, ale wartość map_data nie wskazuje na "
 "istniejący plik"
 
-#: src/editor/map/map_context.cpp:269
-msgid "Found the characters ‘<<’ indicating inline lua is present — aborting"
-msgstr ""
-"Znaleziono znaki \"<<\" wskazujące, że w pliku znajdują się fragmenty lua — "
-"operacja została przerwana"
-
-#: src/editor/map/map_context.cpp:274
-msgid "Failed to load the scenario, attempting to load only the map."
-msgstr ""
-"Nie udało się wczytać scenariusza, podejmowanie próby wczytania samej mapy."
-
-#: src/editor/map/map_context.cpp:281
+#: src/editor/map/map_context.cpp:268
+#, fuzzy
+#| msgid ""
+#| "The map file looks like a scenario, but the map_file value does not point "
+#| "to an existing file"
 msgid ""
-"The map file looks like a scenario, but the map_file value does not point to "
+"The file looks like a scenario, but the map_file attribute does not point to "
 "an existing file"
 msgstr ""
 "Plik mapy wygląda na scenariusz, ale wartość map_file nie wskazuje na "
 "istniejący plik"
 
-#: src/editor/map/map_context.cpp:296
-msgid "Unable to parse file to find map data"
-msgstr "Nie udało się przeszukać pliku w celu znalezienia danych mapy"
+#: src/editor/map/map_context.cpp:448
+msgid "Confirm"
+msgstr ""
 
-#: src/editor/map/map_context.cpp:841 src/editor/map/map_context.cpp:881
+#: src/editor/map/map_context.cpp:835 src/editor/map/map_context.cpp:875
 msgid "Could not save time schedule: $msg"
 msgstr "Zapisanie schematu pory dnia nie powiodło się: $msg"
 
-#: src/editor/map/map_context.cpp:875
+#: src/editor/map/map_context.cpp:869
 msgid "Time schedule saved."
 msgstr "Zapisano schemat pory dnia."
 
-#: src/editor/map/map_context.cpp:921
+#: src/editor/map/map_context.cpp:915
 msgid "Could not save the scenario: $msg"
 msgstr "Zapisanie scenariusza nie powiodło się: $msg"
 
-#: src/editor/map/map_context.cpp:952
+#: src/editor/map/map_context.cpp:946
 msgid "Could not save into scenario"
 msgstr "Zapisanie do scenariusza nie powiodło się"
 
-#: src/editor/map/map_context.cpp:962
+#: src/editor/map/map_context.cpp:956
 msgid "Could not save the map: $msg"
 msgstr "Zapisanie mapy nie powiodło się: $msg"
 
@@ -595,6 +602,15 @@ msgstr "Cmd + kliknięcie: skopiuj teren"
 #: src/editor/palette/terrain_palettes.cpp:237
 msgid "Ctrl + click: copy terrain"
 msgstr "Ctrl + kliknięcie: skopiuj teren"
+
+#~ msgid ""
+#~ "Found the characters ‘<<’ indicating inline lua is present — aborting"
+#~ msgstr ""
+#~ "Znaleziono znaki \"<<\" wskazujące, że w pliku znajdują się fragmenty lua "
+#~ "— operacja została przerwana"
+
+#~ msgid "Unable to parse file to find map data"
+#~ msgstr "Nie udało się przeszukać pliku w celu znalezienia danych mapy"
 
 #~ msgid "Load Map"
 #~ msgstr "Otwórz mapę"

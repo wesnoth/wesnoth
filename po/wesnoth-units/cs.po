@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-01-20 17:31 UTC\n"
+"POT-Creation-Date: 2026-02-26 01:03 UTC\n"
 "PO-Revision-Date: 2026-02-08 07:12+0100\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
@@ -47,6 +47,7 @@ msgstr "palcát"
 #: data/campaigns/Descent_Into_Darkness/units/Malin_Keshar.cfg:465
 #: data/campaigns/Descent_Into_Darkness/units/Malin_Keshar.cfg:493
 #: data/campaigns/Descent_Into_Darkness/units/Malin_Keshar.cfg:535
+#: data/campaigns/Of_Pearls_and_Pirates/units/Thea1.cfg:21
 #: data/core/units/dunefolk/Falconer.cfg:138
 #: data/core/units/dunefolk/Sky_Hunter.cfg:136
 #: data/core/units/humans/Loyalist_Bowman.cfg:23
@@ -75,7 +76,7 @@ msgstr "vlna mrazu"
 #: data/campaigns/Eastern_Invasion/units/Human_Dacyn_Twilight_Mage.cfg:85
 #: data/campaigns/Eastern_Invasion/units/Undead_Ravanal_Dread_Lich.cfg:109
 #: data/campaigns/Secrets_of_the_Ancients/units/Necro_Ancient_Lich.cfg:56
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:101
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:111
 #: data/campaigns/Under_the_Burning_Suns/units/undead/Spider_Lich.cfg:47
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:47
 #: data/core/units/undead/Necro_Dark_Adept.cfg:39
@@ -291,6 +292,8 @@ msgstr "řemdih"
 #: data/campaigns/Heir_To_The_Throne_Classic/units/Tutorial_Fighteress.cfg:25
 #: data/campaigns/Heir_To_The_Throne_Classic/units/Tutorial_Warrior.cfg:25
 #: data/campaigns/Heir_To_The_Throne_Classic/units/Tutorial_Warrioress.cfg:26
+#: data/campaigns/Of_Pearls_and_Pirates/units/Thea2.cfg:24
+#: data/campaigns/Of_Pearls_and_Pirates/units/Thea3.cfg:24
 #: data/campaigns/Sceptre_of_Fire/units/Haldric_II.cfg:26
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Commander.cfg:34
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Fighter.cfg:23
@@ -445,7 +448,7 @@ msgstr "dupot"
 #. [attack]: type=cold
 #: data/campaigns/Eastern_Invasion/units/Undead_Ravanal_Dread_Lich.cfg:96
 #: data/campaigns/Secrets_of_the_Ancients/units/Necro_Ancient_Lich.cfg:44
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:89
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:99
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:37
 #: data/core/units/undead/Necro_Lich.cfg:40
 msgid "chill tempest"
@@ -458,6 +461,7 @@ msgstr "mrazivá bouře"
 #: data/campaigns/Heir_To_The_Throne/units/Human_Konrad_L4.cfg:62
 #: data/campaigns/Heir_To_The_Throne_Classic/units/Commander.cfg:33
 #: data/campaigns/Heir_To_The_Throne_Classic/units/Lord.cfg:34
+#: data/campaigns/Of_Pearls_and_Pirates/units/Thea1.cfg:30
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Commander.cfg:43
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Noble_Lord.cfg:44
 #: data/campaigns/Under_the_Burning_Suns/units/humans/Human_Commander.cfg:45
@@ -535,6 +539,178 @@ msgstr "drápy"
 #: data/core/units/saurians/Soothsayer.cfg:31
 msgid "curse"
 msgstr "prokletí"
+
+#. [unit_type]: id=Pirate Flagship, race=ship
+#: data/campaigns/Of_Pearls_and_Pirates/units/Pirate_Flagship.cfg:9
+#, fuzzy
+#| msgid "Pirate Ship"
+msgid "Pirate Flagship"
+msgstr "Pirátská loď"
+
+#. [unit_type]: id=Pirate Flagship, race=ship
+#. [unit_type]: id=Pirate Carrack, race=ship
+#: data/campaigns/Of_Pearls_and_Pirates/units/Pirate_Flagship.cfg:24
+#: data/core/units/boats/Carrack_Pirate.cfg:22
+msgid ""
+"Pirate galleons are to transport ships what wolves are to sheep. The pirates "
+"who crew them are more than happy to help relieve other ships of their "
+"weighty cargo, or to fight as privateers in return for coin."
+msgstr ""
+"Pirátské galeony jsou pro dopravní lodě tím, čím jsou vlci pro ovečky. "
+"Posádka pirátské galeony ochotně pomůže jiným lodím od jejich těžkého "
+"nákladu, aby se od té tíhy nepotopily, nebo si ráda přivydělá pod korzárskou "
+"vlajkou."
+
+#. [attack]: type=impact
+#. [attack]: type=fire
+#: data/campaigns/Of_Pearls_and_Pirates/units/Pirate_Flagship.cfg:28
+#: data/campaigns/Of_Pearls_and_Pirates/units/Pirate_Skiff.cfg:30
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Dustbok.cfg:24
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Tauroch_Flagbearer.cfg:39
+#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Tauroch_Vanguard.cfg:38
+#: data/core/units/boats/Carrack_Merchant.cfg:27
+#: data/core/units/boats/Carrack_Pirate.cfg:26
+#: data/core/units/boats/Derelict_Ship.cfg:23
+#: data/core/units/boats/Elf_Cutter.cfg:24
+#: data/core/units/boats/Elf_Sloop.cfg:25 data/core/units/boats/Fireship.cfg:77
+#: data/core/units/boats/Ghost_Ship.cfg:39
+#: data/core/units/boats/Orc_Rigship.cfg:23
+#: data/core/units/boats/Orc_Warship.cfg:24
+#: data/core/units/boats/Raider_Coastal.cfg:31
+#: data/core/units/boats/Raider_Iron.cfg:32 data/core/units/boats/Skiff.cfg:26
+#: data/core/units/drakes/Enforcer.cfg:44
+#: data/core/units/drakes/Thrasher.cfg:41
+msgid "ram"
+msgstr "náraz"
+
+#. [attack]: type=pierce
+#: data/campaigns/Of_Pearls_and_Pirates/units/Pirate_Flagship.cfg:38
+#: data/core/units/boats/Carrack_Pirate.cfg:36
+msgid "ballistae"
+msgstr "balisty"
+
+#. [attack]: type=pierce
+#: data/campaigns/Of_Pearls_and_Pirates/units/Pirate_Flagship.cfg:47
+#: data/core/units/boats/Carrack_Pirate.cfg:45
+msgid "grapple"
+msgstr "lodní hák"
+
+#. [unit_type]: id=Pirate Skiff, race=ship
+#: data/campaigns/Of_Pearls_and_Pirates/units/Pirate_Skiff.cfg:9
+#, fuzzy
+#| msgid "Pirate Ship"
+msgid "Pirate Skiff"
+msgstr "Pirátská loď"
+
+#. [unit_type]: id=Pirate Skiff, race=ship
+#. [unit_type]: id=Skiff, race=ship
+#: data/campaigns/Of_Pearls_and_Pirates/units/Pirate_Skiff.cfg:26
+#: data/core/units/boats/Skiff.cfg:22
+msgid ""
+"Propelled by oars or small sails, Skiffs are used to travel short distances "
+"and in shallows where large ships cannot navigate."
+msgstr ""
+"Lodice poháněné vesly nebo malou plachtou bývají využity pro cestování na "
+"kratší vzdálenosti a na mělčinách, kam se velké námořní koráby nemohou "
+"odvážit."
+
+#. [attack]: type=pierce
+#: data/campaigns/Of_Pearls_and_Pirates/units/Pirate_Skiff.cfg:41
+#: data/core/units/boats/Carrack_Merchant.cfg:37
+#: data/core/units/boats/Orc_Barge.cfg:36
+#: data/core/units/boats/Orc_Battle-Barge.cfg:36
+#: data/core/units/boats/Raider_Coastal.cfg:41
+#: data/core/units/boats/Raider_Iron.cfg:42 data/core/units/boats/Skiff.cfg:37
+msgid "archers"
+msgstr "lukostřelci"
+
+#. [unit_type]: id=Bowman Thea, race=human, gender=female
+#. [unit_type]: id=Bowman, race=human, gender=male
+#: data/campaigns/Of_Pearls_and_Pirates/units/Thea1.cfg:4
+#: data/core/units/humans/Loyalist_Bowman.cfg:4
+msgid "Bowman"
+msgstr "Lučištník"
+
+#. [unit_type]: id=Bowman Thea, race=human, gender=female
+#. [unit_type]: id=Bowman, race=human, gender=male
+#: data/campaigns/Of_Pearls_and_Pirates/units/Thea1.cfg:17
+#: data/core/units/humans/Loyalist_Bowman.cfg:18
+msgid ""
+"The use of archery in shooting something other than game was seen from its "
+"inception, and archers have been indispensable in warfare since time "
+"immemorial. Usually of humble origins, hailing from the peasantry or "
+"woodsmen, military Bowmen are trained to competence with both a bow and a "
+"short sword, and are very common on the battlefield."
+msgstr ""
+"Použití lučištníků na střílení něčeho jiného než je zvěř a ptactvo je známé "
+"odedávna a tak jsou již od nepaměti nepostradatelní ve válčení. Obvykle "
+"pocházejí z rodin skromných rolníků nebo lesáků. Lukostřelci mají dispozice "
+"jak pro boj s luky, tak i krátkými meči a jsou na válečném poli obvyklou "
+"jednotkou."
+
+#. [unit_type]: id=Longbowman Thea, race=human, gender=female
+#. [unit_type]: id=Longbowman, race=human, gender=male
+#: data/campaigns/Of_Pearls_and_Pirates/units/Thea2.cfg:4
+#: data/core/units/humans/Loyalist_Longbowman.cfg:4
+msgid "Longbowman"
+msgstr "Střelec s dlouhým lukem"
+
+#. [unit_type]: id=Longbowman Thea, race=human, gender=female
+#. [unit_type]: id=Longbowman, race=human, gender=male
+#: data/campaigns/Of_Pearls_and_Pirates/units/Thea2.cfg:18
+#: data/core/units/humans/Loyalist_Longbowman.cfg:19
+msgid ""
+"Longbows are fearsome weapons, but too difficult for beginning archers to "
+"wield. It takes great strength to draw one, and the added range and power it "
+"confers remain useless unless one has good aim with the weapon. Longbowmen "
+"carry their weapons as a badge of pride, and most bowmen look forward to the "
+"day they can begin using one."
+msgstr ""
+"Obávané dlouhé luky nejsou používány začátečníky jednoduše kvůli fyzikálním "
+"zákonům. K natáhnutí luku je potřeba obrovské síly a přidaný dosah a síla "
+"takové zbraně jsou k ničemu, ledaže střelec umí dobře s takovou zbraní "
+"mířit, což začátečníci většinou nedokáží. Lučištníci z velkých luků nosí "
+"svou zbraň s pýchou a většina lučištníků se těší na den, kdy jej budou "
+"schopni používat."
+
+#. [attack]: type=pierce
+#: data/campaigns/Of_Pearls_and_Pirates/units/Thea2.cfg:33
+#: data/campaigns/Of_Pearls_and_Pirates/units/Thea3.cfg:33
+#: data/core/units/elves/Marksman.cfg:38
+#: data/core/units/elves/Sharpshooter.cfg:33
+#: data/core/units/humans/Loyalist_Longbowman.cfg:34
+#: data/core/units/humans/Loyalist_Master_Bowman.cfg:34
+msgid "longbow"
+msgstr "dlouhý luk"
+
+#. [unit_type]: id=Master Bowman Thea, race=human, gender=female
+#. [unit_type]: id=Master Bowman, race=human, gender=male
+#: data/campaigns/Of_Pearls_and_Pirates/units/Thea3.cfg:4
+#: data/core/units/humans/Loyalist_Master_Bowman.cfg:4
+msgid "Master Bowman"
+msgstr "Mistr lučištník"
+
+#. [unit_type]: id=Master Bowman Thea, race=human, gender=female
+#. [unit_type]: id=Master Bowman, race=human, gender=male
+#: data/campaigns/Of_Pearls_and_Pirates/units/Thea3.cfg:18
+#: data/core/units/humans/Loyalist_Master_Bowman.cfg:19
+msgid ""
+"Master Bowmen have reached the zenith of their art, inasmuch as any human is "
+"capable. Armed with both a sword, and a great yew bow, these warriors crown "
+"battalions of archers with their presence, bringing down many a foe with "
+"their well-aimed shots. Their skill with the sword is also not to be "
+"discounted; they are easily as good with it as any novice swordsman. Of the "
+"many races in the world, only the elves surpass humanity in archery, and "
+"their human counterparts have speculated, perhaps in envy, that this is only "
+"by dint of age."
+msgstr ""
+"Mistři lučištníci dosáhli vrcholu svých schopností ve svém oboru. Vyzbrojeni "
+"jak mečem, tak velkým tisovým lukem, tito bojovníci jsou špičkou každého "
+"praporu lučištníků, likvidujíce mnohé nepřátele svými přesnými zásahy. "
+"Jejich schopnosti s mečem by také neměly být zlehčovány; jsou s ním stejně "
+"dobří, jako kterýkoliv šermíř začátečník. Ze všech ras světa jen elfové "
+"překonávají lidstvo ve střelbě z luku a mnozí lidé si stejně myslí, možná ze "
+"závisti, že to je dáno jen díky jejich vysokému věku."
 
 #. [attack]: type=blade
 #: data/campaigns/Secrets_of_the_Ancients/units/Bone_Captain.cfg:32
@@ -633,6 +809,7 @@ msgstr "hůl nákazy"
 #: data/core/units/dunefolk/Wyvern_Rider.cfg:23
 #: data/core/units/monsters/Boar.cfg:50
 #: data/core/units/monsters/Boar_Piglet.cfg:50
+#: data/core/units/monsters/Cat_Redtail.cfg:92
 #: data/core/units/monsters/Crocodile.cfg:144
 #: data/core/units/monsters/Dragonfly.cfg:31
 #: data/core/units/monsters/Dragonfly_Grand.cfg:32
@@ -841,7 +1018,7 @@ msgstr "sekera"
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Fighter.cfg:40
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Lord.cfg:37
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Steelclad.cfg:37
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:32
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:42
 #: data/core/units/dwarves/Arcanister.cfg:29
 #: data/core/units/dwarves/Fighter.cfg:65 data/core/units/dwarves/Lord.cfg:57
 #: data/core/units/dwarves/Runemaster.cfg:29
@@ -1042,7 +1219,7 @@ msgstr ""
 
 #. [unit_type]: id=Dwarvish Rune Lord, race=dwarf
 #. [unit_type]: id=Dwarvish Runemaster, race=dwarf
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:7
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:16
 #: data/core/units/dwarves/Runemaster.cfg:5
 msgid "Dwarvish Runemaster"
 msgstr "Trpasličí mistr run"
@@ -1050,8 +1227,8 @@ msgstr "Trpasličí mistr run"
 #. [unit_type]: id=Dwarvish Rune Lord, race=dwarf
 #. [unit_type]: id=Undead Dwarvish Rune Lord
 #. [unit_type]: id=Dwarvish Runemaster, race=dwarf
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:27
-#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:79
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:37
+#: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Rune_Lord.cfg:89
 #: data/core/units/dwarves/Runemaster.cfg:24
 msgid ""
 "Except for those with almost supernatural skill, the highest rank a "
@@ -1146,26 +1323,6 @@ msgstr "paprsek světla"
 #: data/core/units/elves/Druid.cfg:43 data/core/units/elves/Shyde.cfg:48
 msgid "thorns"
 msgstr "ostny"
-
-#. [attack]: type=impact
-#. [attack]: type=fire
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Dustbok.cfg:24
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Tauroch_Flagbearer.cfg:39
-#: data/campaigns/Under_the_Burning_Suns/units/quenoth/Tauroch_Vanguard.cfg:38
-#: data/core/units/boats/Carrack_Merchant.cfg:27
-#: data/core/units/boats/Carrack_Pirate.cfg:26
-#: data/core/units/boats/Derelict_Ship.cfg:23
-#: data/core/units/boats/Elf_Cutter.cfg:24
-#: data/core/units/boats/Elf_Sloop.cfg:25 data/core/units/boats/Fireship.cfg:77
-#: data/core/units/boats/Ghost_Ship.cfg:39
-#: data/core/units/boats/Orc_Rigship.cfg:23
-#: data/core/units/boats/Orc_Warship.cfg:24
-#: data/core/units/boats/Raider_Coastal.cfg:31
-#: data/core/units/boats/Raider_Iron.cfg:32 data/core/units/boats/Skiff.cfg:26
-#: data/core/units/drakes/Enforcer.cfg:44
-#: data/core/units/drakes/Thrasher.cfg:41
-msgid "ram"
-msgstr "náraz"
 
 #. [attack]: type=impact
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Pathfinder.cfg:42
@@ -1276,41 +1433,10 @@ msgstr ""
 "lukostřelbu a v jejich prostorném podpalubí lze přepravovat jak lékařské "
 "zásoby, tak opravárenské vybavení."
 
-#. [attack]: type=pierce
-#: data/core/units/boats/Carrack_Merchant.cfg:40
-#: data/core/units/boats/Orc_Barge.cfg:36
-#: data/core/units/boats/Orc_Battle-Barge.cfg:34
-#: data/core/units/boats/Raider_Coastal.cfg:44
-#: data/core/units/boats/Raider_Iron.cfg:45 data/core/units/boats/Skiff.cfg:40
-msgid "archers"
-msgstr "lukostřelci"
-
 #. [unit_type]: id=Pirate Carrack, race=ship
 #: data/core/units/boats/Carrack_Pirate.cfg:4
 msgid "Pirate Carrack"
 msgstr "Pirátská karaka"
-
-#. [unit_type]: id=Pirate Carrack, race=ship
-#: data/core/units/boats/Carrack_Pirate.cfg:22
-msgid ""
-"Pirate galleons are to transport ships what wolves are to sheep. The pirates "
-"who crew them are more than happy to help relieve other ships of their "
-"weighty cargo, or to fight as privateers in return for coin."
-msgstr ""
-"Pirátské galeony jsou pro dopravní lodě tím, čím jsou vlci pro ovečky. "
-"Posádka pirátské galeony ochotně pomůže jiným lodím od jejich těžkého "
-"nákladu, aby se od té tíhy nepotopily, nebo si ráda přivydělá pod korzárskou "
-"vlajkou."
-
-#. [attack]: type=pierce
-#: data/core/units/boats/Carrack_Pirate.cfg:39
-msgid "ballistae"
-msgstr "balisty"
-
-#. [attack]: type=pierce
-#: data/core/units/boats/Carrack_Pirate.cfg:48
-msgid "grapple"
-msgstr "lodní hák"
 
 #. [unit_type]: id=Derelict, race=ship
 #: data/core/units/boats/Derelict_Ship.cfg:4
@@ -1351,10 +1477,10 @@ msgstr ""
 "posádky."
 
 #. [attack]: type=pierce
-#: data/core/units/boats/Elf_Cutter.cfg:37
-#: data/core/units/boats/Elf_Cutter.cfg:46
-#: data/core/units/boats/Elf_Sloop.cfg:38
-#: data/core/units/boats/Elf_Sloop.cfg:47
+#: data/core/units/boats/Elf_Cutter.cfg:34
+#: data/core/units/boats/Elf_Cutter.cfg:43
+#: data/core/units/boats/Elf_Sloop.cfg:35
+#: data/core/units/boats/Elf_Sloop.cfg:44
 msgid "marksmen"
 msgstr "ostrostřelci"
 
@@ -1414,7 +1540,7 @@ msgid "Ghost Ship"
 msgstr "Loď duchů"
 
 #. [attack]: type=fire
-#: data/core/units/boats/Ghost_Ship.cfg:52
+#: data/core/units/boats/Ghost_Ship.cfg:49
 #: data/core/units/humans/Mage_Elder.cfg:35
 #: data/core/units/monsters/Raven_Harbinger.cfg:100
 #: data/core/units/monsters/Raven_Omen.cfg:90
@@ -1422,7 +1548,7 @@ msgid "lightning"
 msgstr "blesk"
 
 #. [attack]: type=cold
-#: data/core/units/boats/Ghost_Ship.cfg:62
+#: data/core/units/boats/Ghost_Ship.cfg:59
 msgid "lost souls"
 msgstr "ztracené duše"
 
@@ -1544,7 +1670,7 @@ msgid "Orcish Battle Barge"
 msgstr "Skřetí bitevní bárka"
 
 #. [unit_type]: id=Orcish Battle Barge, race=ship
-#: data/core/units/boats/Orc_Battle-Barge.cfg:28
+#: data/core/units/boats/Orc_Battle-Barge.cfg:30
 msgid ""
 "Despite their simplistic design, barges provide a surprising amount of "
 "utility: bulk transport of goods or men, navigability in shallow water or "
@@ -1565,7 +1691,7 @@ msgstr ""
 "vrak."
 
 #. [attack]: type=impact
-#: data/core/units/boats/Orc_Battle-Barge.cfg:43
+#: data/core/units/boats/Orc_Battle-Barge.cfg:45
 msgid "catapult"
 msgstr "katapult"
 
@@ -1592,10 +1718,10 @@ msgstr ""
 
 #. [attack]: type=pierce
 #. [attack]: type=fire
-#: data/core/units/boats/Orc_Rigship.cfg:36
-#: data/core/units/boats/Orc_Rigship.cfg:45
-#: data/core/units/boats/Orc_Warship.cfg:37
-#: data/core/units/boats/Orc_Warship.cfg:46
+#: data/core/units/boats/Orc_Rigship.cfg:33
+#: data/core/units/boats/Orc_Rigship.cfg:42
+#: data/core/units/boats/Orc_Warship.cfg:34
+#: data/core/units/boats/Orc_Warship.cfg:43
 msgid "crossbows"
 msgstr "kuše"
 
@@ -1678,18 +1804,26 @@ msgstr "Okovaná veslice"
 
 #. [unit_type]: id=Iron Raider, race=ship
 #: data/core/units/boats/Raider_Iron.cfg:26
+#, fuzzy
+#| msgid ""
+#| "While Carracks and Cogs rely on impressive sails to harness the power of "
+#| "the wind, galleys and raiders are propelled by muscle-power of the crew "
+#| "manning the oars. This has the disadvantage of requiring a larger crew, "
+#| "and it does limit the speed and efficiency of transport. But these "
+#| "seeming weaknesses also make the vessel less vulnerable to the whims of "
+#| "weather and the predations of pirates.\n"
+#| "\n"
+#| "Iron Raiders are veteran Coastal Raiders that have been hardened to "
+#| "become tougher targets and harder hitters. They are often used as front-"
+#| "line escorts of slower cargo ships in rivers and coasts, where their "
+#| "heavy iron ram proves the most effective."
 msgid ""
 "While Carracks and Cogs rely on impressive sails to harness the power of the "
 "wind, galleys and raiders are propelled by muscle-power of the crew manning "
 "the oars. This has the disadvantage of requiring a larger crew, and it does "
 "limit the speed and efficiency of transport. But these seeming weaknesses "
 "also make the vessel less vulnerable to the whims of weather and the "
-"predations of pirates.\n"
-"\n"
-"Iron Raiders are veteran Coastal Raiders that have been hardened to become "
-"tougher targets and harder hitters. They are often used as front-line "
-"escorts of slower cargo ships in rivers and coasts, where their heavy iron "
-"ram proves the most effective."
+"predations of pirates."
 msgstr ""
 "Zatímco karaky a kogy závisí na mohutném plachtoví, aby využily sílu větru, "
 "galéry a veslice jsou poháněny silou svalů mužstva, které obsluhuje vesla. "
@@ -1702,20 +1836,19 @@ msgstr ""
 "přední doprovod pomalejších nákladních lodí na řekách a při pobřežích, kde "
 "se jejich silný okovaný kloun ukazuje jako nejúčinnější."
 
+#. [unit_type]: id=Iron Raider, race=ship
+#: data/core/units/boats/Raider_Iron.cfg:28
+msgid ""
+"Iron Raiders are veteran Coastal Raiders that have been hardened to become "
+"tougher targets and harder hitters. They are often used as front-line "
+"escorts of slower cargo ships in rivers and coasts, where their heavy iron "
+"bow allows them to ram foes without fear of self-inflicted damage."
+msgstr ""
+
 #. [unit_type]: id=Skiff, race=ship
 #: data/core/units/boats/Skiff.cfg:5
 msgid "Skiff"
 msgstr "Lodice"
-
-#. [unit_type]: id=Skiff, race=ship
-#: data/core/units/boats/Skiff.cfg:22
-msgid ""
-"Propelled by oars or small sails, Skiffs are used to travel short distances "
-"and in shallows where large ships cannot navigate."
-msgstr ""
-"Lodice poháněné vesly nebo malou plachtou bývají využity pro cestování na "
-"kratší vzdálenosti a na mělčinách, kam se velké námořní koráby nemohou "
-"odvážit."
 
 #. [unit_type]: id=Drake Arbiter, race=drake, gender=male,female
 #: data/core/units/drakes/Arbiter.cfg:4
@@ -4021,14 +4154,6 @@ msgstr ""
 "podivuhodné dovednosti přichází za cenu nerozvíjení bojových dovedností na "
 "blízko."
 
-#. [attack]: type=pierce
-#: data/core/units/elves/Marksman.cfg:38
-#: data/core/units/elves/Sharpshooter.cfg:33
-#: data/core/units/humans/Loyalist_Longbowman.cfg:34
-#: data/core/units/humans/Loyalist_Master_Bowman.cfg:34
-msgid "longbow"
-msgstr "dlouhý luk"
-
 #. [female]: gender=female
 #: data/core/units/elves/Marksman.cfg:87
 msgid "female^Elvish Marksman"
@@ -4268,7 +4393,7 @@ msgstr ""
 #. [attack]: type=impact
 #: data/core/units/elves/Shaman.cfg:40 data/core/units/elves/Sorceress.cfg:36
 #: data/core/units/monsters/Caribe_Hunter.cfg:122
-#: data/core/units/wose/Wose_Shaman.cfg:40
+#: data/core/units/wose/Wose_Shaman.cfg:43
 msgid "entangle"
 msgstr "zamotání"
 
@@ -4716,26 +4841,6 @@ msgstr ""
 "pěchotě, která nedrží formaci, musí si však dávat pozor na kopiníky a "
 "lučištníky, pro které jsou díky své velikosti snadnými cíli."
 
-#. [unit_type]: id=Bowman, race=human, gender=male
-#: data/core/units/humans/Loyalist_Bowman.cfg:4
-msgid "Bowman"
-msgstr "Lučištník"
-
-#. [unit_type]: id=Bowman, race=human, gender=male
-#: data/core/units/humans/Loyalist_Bowman.cfg:18
-msgid ""
-"The use of archery in shooting something other than game was seen from its "
-"inception, and archers have been indispensable in warfare since time "
-"immemorial. Usually of humble origins, hailing from the peasantry or "
-"woodsmen, military Bowmen are trained to competence with both a bow and a "
-"short sword, and are very common on the battlefield."
-msgstr ""
-"Použití lučištníků na střílení něčeho jiného než je zvěř a ptactvo je známé "
-"odedávna a tak jsou již od nepaměti nepostradatelní ve válčení. Obvykle "
-"pocházejí z rodin skromných rolníků nebo lesáků. Lukostřelci mají dispozice "
-"jak pro boj s luky, tak i krátkými meči a jsou na válečném poli obvyklou "
-"jednotkou."
-
 #. [unit_type]: id=Cavalryman, race=human
 #: data/core/units/humans/Loyalist_Cavalryman.cfg:19
 msgid ""
@@ -5018,52 +5123,6 @@ msgstr ""
 "cvičeni jak v boji s mečem, tak ve střelbě kuší. Nevynikají ale ani v jednom "
 "a také jsou o něco méně odolní než válečníci jiných ras. To je však více než "
 "vyváženo jejich vynikajícími znalostmi a výcvikem ve vojenské strategii."
-
-#. [unit_type]: id=Longbowman, race=human, gender=male
-#: data/core/units/humans/Loyalist_Longbowman.cfg:4
-msgid "Longbowman"
-msgstr "Střelec s dlouhým lukem"
-
-#. [unit_type]: id=Longbowman, race=human, gender=male
-#: data/core/units/humans/Loyalist_Longbowman.cfg:19
-msgid ""
-"Longbows are fearsome weapons, but too difficult for beginning archers to "
-"wield. It takes great strength to draw one, and the added range and power it "
-"confers remain useless unless one has good aim with the weapon. Longbowmen "
-"carry their weapons as a badge of pride, and most bowmen look forward to the "
-"day they can begin using one."
-msgstr ""
-"Obávané dlouhé luky nejsou používány začátečníky jednoduše kvůli fyzikálním "
-"zákonům. K natáhnutí luku je potřeba obrovské síly a přidaný dosah a síla "
-"takové zbraně jsou k ničemu, ledaže střelec umí dobře s takovou zbraní "
-"mířit, což začátečníci většinou nedokáží. Lučištníci z velkých luků nosí "
-"svou zbraň s pýchou a většina lučištníků se těší na den, kdy jej budou "
-"schopni používat."
-
-#. [unit_type]: id=Master Bowman, race=human, gender=male
-#: data/core/units/humans/Loyalist_Master_Bowman.cfg:4
-msgid "Master Bowman"
-msgstr "Mistr lučištník"
-
-#. [unit_type]: id=Master Bowman, race=human, gender=male
-#: data/core/units/humans/Loyalist_Master_Bowman.cfg:19
-msgid ""
-"Master Bowmen have reached the zenith of their art, inasmuch as any human is "
-"capable. Armed with both a sword, and a great yew bow, these warriors crown "
-"battalions of archers with their presence, bringing down many a foe with "
-"their well-aimed shots. Their skill with the sword is also not to be "
-"discounted; they are easily as good with it as any novice swordsman. Of the "
-"many races in the world, only the elves surpass humanity in archery, and "
-"their human counterparts have speculated, perhaps in envy, that this is only "
-"by dint of age."
-msgstr ""
-"Mistři lučištníci dosáhli vrcholu svých schopností ve svém oboru. Vyzbrojeni "
-"jak mečem, tak velkým tisovým lukem, tito bojovníci jsou špičkou každého "
-"praporu lučištníků, likvidujíce mnohé nepřátele svými přesnými zásahy. "
-"Jejich schopnosti s mečem by také neměly být zlehčovány; jsou s ním stejně "
-"dobří, jako kterýkoliv šermíř začátečník. Ze všech ras světa jen elfové "
-"překonávají lidstvo ve střelbě z luku a mnozí lidé si stejně myslí, možná ze "
-"závisti, že to je dáno jen díky jejich vysokému věku."
 
 #. [unit_type]: id=Master at Arms, race=human
 #: data/core/units/humans/Loyalist_Master_at_Arms.cfg:4
@@ -5547,13 +5606,27 @@ msgstr "Bílý mág"
 
 #. [unit_type]: id=White Mage, race=human, gender=male,female
 #: data/core/units/humans/Mage_White.cfg:19
+#, fuzzy
+#| msgid ""
+#| "Some magi, as they learn about the world around them, and learn the truth "
+#| "of the suffering and squalor in which humanity too often lives, find that "
+#| "they cannot bring themselves to be cloistered into a life of study. These "
+#| "men and women give up the life of a mage, and join monastic orders, "
+#| "dedicating the skills they have been given to the good of all. After "
+#| "their ordination, they often travel the world, ministering to sickness "
+#| "and injury.\n"
+#| "\n"
+#| "Though not trained for combat, they are a potent ally against magical or "
+#| "unnatural things."
 msgid ""
-"Some magi, as they learn about the world around them, and learn the truth of "
-"the suffering and squalor in which humanity too often lives, find that they "
-"cannot bring themselves to be cloistered into a life of study. These men and "
-"women give up the life of a mage, and join monastic orders, dedicating the "
-"skills they have been given to the good of all. After their ordination, they "
-"often travel the world, ministering to sickness and injury.\n"
+"Some magi, as they learn about the world and the truth of the suffering and "
+"squalor in which humanity too often lives, find that they cannot bring "
+"themselves to be cloistered into a life of theoretical study. Instead, these "
+"men and women dedicate their skills to the good of all, studying healing and "
+"purification to refine their magic into a tool of lifegiving. They are often "
+"seen traveling the world, ministering to the sick and injured. Repeated use "
+"of the same spells slowly causes their magic to turn white, earning them the "
+"title by which they are known.\n"
 "\n"
 "Though not trained for combat, they are a potent ally against magical or "
 "unnatural things."
@@ -5590,10 +5663,22 @@ msgstr "Mág světla"
 
 #. [unit_type]: id=Mage of Light, race=human, gender=male,female
 #: data/core/units/humans/Mage_of_Light.cfg:20
+#, fuzzy
+#| msgid ""
+#| "After years of experience, the most devout of white magi develop vast "
+#| "spiritual powers. By strict devotion to the path of the light, they can "
+#| "call upon its aid to chase away the shadows of the night.\n"
+#| "\n"
+#| "Following a strict code of piety and honor, these men and women work "
+#| "tirelessly to bring life and order to the troubled world in which they "
+#| "live."
 msgid ""
 "After years of experience, the most devout of white magi develop vast "
-"spiritual powers. By strict devotion to the path of the light, they can call "
-"upon its aid to chase away the shadows of the night.\n"
+"magical powers related to healing and purification. By strict devotion to "
+"this path, they can also call upon its aid to chase away the shadows of the "
+"night. Their great dedication to the path of good or ‘white’ magic is often "
+"visible as an illuminating halo around their bodies; a symbol of hope to "
+"which people often flock when all else fails to banish the terrors of life.\n"
 "\n"
 "Following a strict code of piety and honor, these men and women work "
 "tirelessly to bring life and order to the troubled world in which they live."
@@ -6063,8 +6148,10 @@ msgstr ""
 "a ocasy než na jiné zbraně."
 
 #. [attack]: type=impact
+#. [attack]: type=fire
 #: data/core/units/merfolk/Brawler.cfg:30
 #: data/core/units/monsters/Cat_Jump.cfg:88
+#: data/core/units/monsters/Cat_Redtail.cfg:101
 #: data/core/units/monsters/Fire_Dragon.cfg:62
 #: data/core/units/monsters/Icemonax_Greater.cfg:72
 msgid "tail"
@@ -6750,6 +6837,23 @@ msgstr ""
 "ocase a který je pro ně hlavní útočnou zbraní. Jejich jednání je většinou "
 "vedeno instinktem, ale někdy je rafinovanější krotitelé používají jako "
 "zabijáky."
+
+#. [unit_type]: id=Redtail Cat, race=cats
+#: data/core/units/monsters/Cat_Redtail.cfg:4
+msgid "Redtail Cat"
+msgstr ""
+
+#. [unit_type]: id=Redtail Cat, race=cats
+#: data/core/units/monsters/Cat_Redtail.cfg:33
+msgid ""
+"Redtail cats are powerful predators who generally lurk in the foothills and "
+"forests, but roam far in their hunts, so they have been encountered in many "
+"unexpected places. Their most distinguishing feature is the almost flame-"
+"like, coloration of their tail, which distracts from the dark body and its "
+"dangerous teeth and claws. Likely due to their coloration and nimble "
+"maneuvering, common folklore says these cats are actually malevolent fire "
+"spirits, and heralds of bad luck."
+msgstr ""
 
 # Nechávám bažinný, protože močálový mi nezní dobře.
 #. [unit_type]: id=Swamp Lizard, race=monster
@@ -9734,7 +9838,7 @@ msgstr ""
 #. [attack]: type=impact
 #: data/core/units/wose/Ancient.cfg:31 data/core/units/wose/Elder.cfg:46
 #: data/core/units/wose/Wose.cfg:26 data/core/units/wose/Wose_Sapling.cfg:26
-#: data/core/units/wose/Wose_Shaman.cfg:31
+#: data/core/units/wose/Wose_Shaman.cfg:34
 msgid "crush"
 msgstr "rozdrcení"
 
@@ -9832,7 +9936,7 @@ msgstr "Stromový šaman"
 
 # Slovosled jsem hodně zpřeházel, neboť mi to přišlo ladnější.
 #. [unit_type]: id=Wose Shaman, race=wose
-#: data/core/units/wose/Wose_Shaman.cfg:18
+#: data/core/units/wose/Wose_Shaman.cfg:21
 msgid ""
 "In flooded and humid woodlands, accessible only to their reclusive "
 "inhabitants, travelers tell of the mysterious Wose Shamans, who are said to "
@@ -9939,9 +10043,6 @@ msgstr ""
 
 #~ msgid "firebow"
 #~ msgstr "ohnivý luk"
-
-#~ msgid "Pirate Ship"
-#~ msgstr "Pirátská loď"
 
 #~ msgid "naval ram"
 #~ msgstr "kloun"

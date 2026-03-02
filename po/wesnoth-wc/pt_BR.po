@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-11-18 02:02 UTC\n"
+"POT-Creation-Date: 2026-02-26 01:04 UTC\n"
 "PO-Revision-Date: 2023-01-13 17:16-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: none\n"
@@ -3215,8 +3215,14 @@ msgstr ""
 
 #. [leadership]: id=forcefield
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:249
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:250
 msgid "forcefield"
+msgstr "campo de força"
+
+#. [leadership]: id=forcefield
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:250
+#, fuzzy
+#| msgid "forcefield"
+msgid "female^forcefield"
 msgstr "campo de força"
 
 #. [leadership]: id=forcefield
@@ -3515,9 +3521,15 @@ msgstr ""
 
 #. [berserk]: id=wct_fury
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:624
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:625
 msgid "fury"
 msgstr "fúria"
+
+#. [berserk]: id=wct_fury
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:625
+#, fuzzy
+#| msgid "female^heroic"
+msgid "female^fury"
+msgstr "heroica"
 
 #. [berserk]: id=wct_fury
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:626
@@ -3572,8 +3584,14 @@ msgstr ""
 
 #. [illuminates]: id=darkness
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:674
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:675
 msgid "darkness"
+msgstr "escuridão"
+
+#. [illuminates]: id=darkness
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:675
+#, fuzzy
+#| msgid "darkness"
+msgid "female^darkness"
 msgstr "escuridão"
 
 #. [illuminates]: id=darkness
@@ -3590,8 +3608,14 @@ msgstr ""
 
 #. [dummy]: id=wc2_corruption
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:681
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:682
 msgid "corruption"
+msgstr "corrupção"
+
+#. [dummy]: id=wc2_corruption
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:682
+#, fuzzy
+#| msgid "corruption"
+msgid "female^corruption"
 msgstr "corrupção"
 
 #. [dummy]: id=wc2_corruption
@@ -3688,9 +3712,15 @@ msgstr ""
 
 #. [leadership]: id=banner
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:784
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:785
 msgid "banner"
 msgstr "estandarte"
+
+#. [leadership]: id=banner
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:785
+#, fuzzy
+#| msgid "female^trained"
+msgid "female^banner"
+msgstr "treinada"
 
 #. [leadership]: id=banner
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:786
@@ -3916,7 +3946,6 @@ msgstr "$range|: $special|"
 #. [skirmisher]: id=distract
 #: data/campaigns/World_Conquest/resources/data/training.cfg:378
 #: data/campaigns/World_Conquest/resources/data/training.cfg:403
-#: data/campaigns/World_Conquest/resources/data/training.cfg:404
 msgid "distract"
 msgstr "distrair"
 
@@ -3924,9 +3953,15 @@ msgstr "distrair"
 #. [resistance]: id=tenacity
 #: data/campaigns/World_Conquest/resources/data/training.cfg:390
 #: data/campaigns/World_Conquest/resources/data/training.cfg:427
-#: data/campaigns/World_Conquest/resources/data/training.cfg:428
 msgid "tenacity"
 msgstr "tenacidade"
+
+#. [skirmisher]: id=distract
+#: data/campaigns/World_Conquest/resources/data/training.cfg:404
+#, fuzzy
+#| msgid "distract"
+msgid "female^distract"
+msgstr "distrair"
 
 #. [skirmisher]: id=distract
 #: data/campaigns/World_Conquest/resources/data/training.cfg:405
@@ -3934,6 +3969,13 @@ msgid "Allied units ignore enemy zones of control adjacent to this unit."
 msgstr ""
 "Unidades aliadas ignoram zonas de controle inimigas adjacentes a esta "
 "unidade."
+
+#. [resistance]: id=tenacity
+#: data/campaigns/World_Conquest/resources/data/training.cfg:428
+#, fuzzy
+#| msgid "female^legendary"
+msgid "female^tenacity"
+msgstr "lendária"
 
 #. [resistance]: id=tenacity
 #: data/campaigns/World_Conquest/resources/data/training.cfg:429

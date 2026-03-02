@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-10-21 01:10 UTC\n"
+"POT-Creation-Date: 2026-02-26 01:04 UTC\n"
 "PO-Revision-Date: 2026-01-18 08:55+0100\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
@@ -78,31 +78,36 @@ msgid "(Novice level, 7 scenarios.)"
 msgstr "(Úroveň nováček, 7 scénářů.)"
 
 #. [campaign]: id=Liberty
-#: data/campaigns/Liberty/_main.cfg:30
+#. this campaign is not a direct continuation of the story and characters, but is next chronologically and is the recommended next campaign
+#: data/campaigns/Liberty/_main.cfg:32
+#, fuzzy
+#| msgid ""
+#| "Story continued in:\n"
+#| "Heir to the Throne"
 msgid ""
-"Story continued in:\n"
-"Heir to the Throne"
+"The saga continues in\n"
+"<i>Heir to the Throne</i>"
 msgstr ""
 "Příběh pokračuje v tažení:\n"
 "Dědic trůnu"
 
 #. [about]
-#: data/campaigns/Liberty/_main.cfg:34
+#: data/campaigns/Liberty/_main.cfg:36
 msgid "Original Campaign Design"
 msgstr "Původní návrh tažení"
 
 #. [about]
-#: data/campaigns/Liberty/_main.cfg:40
+#: data/campaigns/Liberty/_main.cfg:42
 msgid "Latest Rewrite"
 msgstr "Aktualizované vydání"
 
 #. [about]
-#: data/campaigns/Liberty/_main.cfg:46
+#: data/campaigns/Liberty/_main.cfg:48
 msgid "Campaign Maintenance"
 msgstr "Správa tažení"
 
 #. [about]
-#: data/campaigns/Liberty/_main.cfg:56
+#: data/campaigns/Liberty/_main.cfg:58
 msgid "Artwork and Graphics Design"
 msgstr "Návrh a tvorba grafiky"
 
@@ -882,22 +887,22 @@ msgid "Aye, outlaws."
 msgstr "Jo, psanci."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:521
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:528
 msgid "Your units — formerly <i>neutral</i> — are now <i>chaotic</i>!"
 msgstr "Tvé jednotky – dříve <i>neutrální</i> – jsou nyní <i>chaotické</i>!"
 
 #. [message]: speaker=Reinforcement Knight
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:555
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:562
 msgid "At your order, Captain."
 msgstr "Na váš rozkaz, kapitáne."
 
 #. [message]: speaker=Tarwen
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:559
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:566
 msgid "Slay them all."
 msgstr "Všechny je pobijte."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:563
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:570
 msgid ""
 "Curses! Their reinforcements has arrived. We gots no chance to fight ‘em off "
 "now..."

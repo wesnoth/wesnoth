@@ -280,7 +280,7 @@ std::string get_map_file(const std::string& name) {
 		// Consult [binary_path] for maps as well.
 		map_location = filesystem::get_binary_file_location("maps", name);
 	}
-	return map_location ? map_location.value() : filesystem::get_legacy_editor_dir() + "/maps/" + name;
+	return map_location ? map_location.value() : filesystem::get_legacy_editor_dir() + "/maps/" + base_name(name);
 }
 
 std::string read_map(const std::string& name)
@@ -301,7 +301,7 @@ std::string read_scenario(const std::string& name)
 	}
 
 	if(res.empty()) {
-		res = read_file(get_legacy_editor_dir() + "/scenarios/" + name);
+		res = read_file(get_legacy_editor_dir() + "/scenarios/" + base_name(name));
 	}
 
 	return res;

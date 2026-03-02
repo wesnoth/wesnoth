@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.18\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-01-20 11:31-0600\n"
+"POT-Creation-Date: 2026-02-25 19:03-0600\n"
 "PO-Revision-Date: 2024-03-03 22:06+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
@@ -341,11 +341,11 @@ msgstr ""
 msgid "Load Map or Scenario"
 msgstr "已從章節中讀取地圖"
 
-#: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1147
+#: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1141
 msgid "New Map"
 msgstr "新地圖"
 
-#: src/editor/map/context_manager.cpp:326 src/editor/map/map_context.cpp:1147
+#: src/editor/map/context_manager.cpp:326 src/editor/map/map_context.cpp:1141
 msgid "New Scenario"
 msgstr "新章節"
 
@@ -391,7 +391,7 @@ msgid "Save Map As"
 msgstr "儲存地圖至"
 
 #: src/editor/map/context_manager.cpp:704
-#: src/editor/map/context_manager.cpp:753 src/editor/map/map_context.cpp:274
+#: src/editor/map/context_manager.cpp:753 src/editor/map/map_context.cpp:228
 #: src/editor/palette/location_palette.cpp:263
 msgid "Error"
 msgstr "錯誤"
@@ -470,69 +470,75 @@ msgstr "玩家 $side_num"
 msgid "The size of the target map is different from the current map"
 msgstr "目標地圖尺寸與當前地圖不同"
 
-#: src/editor/map/map_context.cpp:187
+#: src/editor/map/map_context.cpp:188
 msgid "File not found"
 msgstr "找不到檔案"
 
-#: src/editor/map/map_context.cpp:194
+#: src/editor/map/map_context.cpp:195
 msgid "Empty file"
 msgstr "空白檔案"
 
-#: src/editor/map/map_context.cpp:203
+#: src/editor/map/map_context.cpp:204
 #, fuzzy
 #| msgid "File does not have .map or .cfg extension"
 msgid "File does not have .map, .cfg, or .mask extension"
 msgstr "不存在 .map 或 .cfg 副檔名的檔案"
 
-#: src/editor/map/map_context.cpp:250
+#: src/editor/map/map_context.cpp:227
+#, fuzzy
+#| msgid "Failed to load the scenario, attempting to load only the map."
 msgid ""
-"The map file looks like a scenario, but the map_data value does not point to "
+"Failed to load the scenario: $error\n"
+"\n"
+"Attempting to load only the map."
+msgstr "章節讀取失敗，指讀取到地圖。"
+
+#: src/editor/map/map_context.cpp:253
+#, fuzzy
+#| msgid ""
+#| "The map file looks like a scenario, but the map_data value does not point "
+#| "to an existing file"
+msgid ""
+"The file looks like a scenario, but the map_data attribute does not point to "
 "an existing file"
 msgstr "這個地圖檔案像是一個章節，但是「map_data」的值連結到一個不存在的檔案"
 
-#: src/editor/map/map_context.cpp:269
+#: src/editor/map/map_context.cpp:268
 #, fuzzy
 #| msgid ""
-#| "Found the characters '<<' indicating inline lua is present - aborting"
-msgid "Found the characters ‘<<’ indicating inline lua is present — aborting"
-msgstr "發現字串 '<<' 表示內嵌 Lua 的存在 - 正在中止"
-
-#: src/editor/map/map_context.cpp:274
-msgid "Failed to load the scenario, attempting to load only the map."
-msgstr "章節讀取失敗，指讀取到地圖。"
-
-#: src/editor/map/map_context.cpp:281
+#| "The map file looks like a scenario, but the map_file value does not point "
+#| "to an existing file"
 msgid ""
-"The map file looks like a scenario, but the map_file value does not point to "
+"The file looks like a scenario, but the map_file attribute does not point to "
 "an existing file"
 msgstr ""
 "這個地圖檔案像是一個章節，但是這個「map_file」的值連結到一個不存在的檔案"
 
-#: src/editor/map/map_context.cpp:296
-msgid "Unable to parse file to find map data"
-msgstr "無法解析檔案來查找地圖資料"
+#: src/editor/map/map_context.cpp:448
+msgid "Confirm"
+msgstr ""
 
-#: src/editor/map/map_context.cpp:841 src/editor/map/map_context.cpp:881
+#: src/editor/map/map_context.cpp:835 src/editor/map/map_context.cpp:875
 #, fuzzy
 #| msgid "Could not save the scenario: $msg"
 msgid "Could not save time schedule: $msg"
 msgstr "無法儲存章節：$msg"
 
-#: src/editor/map/map_context.cpp:875
+#: src/editor/map/map_context.cpp:869
 #, fuzzy
 #| msgid "Time Schedule Menu"
 msgid "Time schedule saved."
 msgstr "時段選單"
 
-#: src/editor/map/map_context.cpp:921
+#: src/editor/map/map_context.cpp:915
 msgid "Could not save the scenario: $msg"
 msgstr "無法儲存章節：$msg"
 
-#: src/editor/map/map_context.cpp:952
+#: src/editor/map/map_context.cpp:946
 msgid "Could not save into scenario"
 msgstr "無法儲存章節"
 
-#: src/editor/map/map_context.cpp:962
+#: src/editor/map/map_context.cpp:956
 msgid "Could not save the map: $msg"
 msgstr "無法儲存地圖：$msg"
 
@@ -602,6 +608,16 @@ msgstr "cmd + 左鍵或右鍵：選擇地形"
 #: src/editor/palette/terrain_palettes.cpp:237
 msgid "Ctrl + click: copy terrain"
 msgstr "ctrl + 左鍵或右鍵：選擇地形"
+
+#, fuzzy
+#~| msgid ""
+#~| "Found the characters '<<' indicating inline lua is present - aborting"
+#~ msgid ""
+#~ "Found the characters ‘<<’ indicating inline lua is present — aborting"
+#~ msgstr "發現字串 '<<' 表示內嵌 Lua 的存在 - 正在中止"
+
+#~ msgid "Unable to parse file to find map data"
+#~ msgstr "無法解析檔案來查找地圖資料"
 
 #~ msgid "Load Map"
 #~ msgstr "載入地圖"

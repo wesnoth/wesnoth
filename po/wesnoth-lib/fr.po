@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth_Lib-1.12\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-01-20 11:31-0600\n"
+"POT-Creation-Date: 2026-02-25 19:03-0600\n"
 "PO-Revision-Date: 2024-06-05 14:43+0100\n"
 "Last-Translator: Thierry <ameilthi@gmail.com>\n"
 "Language-Team: French <wesnothfr@lists.tuxfamily.org>\n"
@@ -2416,7 +2416,7 @@ msgstr "Afficher l'astuce du jour suivante"
 #, fuzzy
 #| msgid "Next Tip of the Day"
 msgid "Tip of the Day"
-msgstr "Astuce du jour suivante"
+msgstr "Astuce du jour"
 
 #. [button]: id=toggle_tip_panel
 #. [toggle_button]: id=show_tips
@@ -2425,7 +2425,7 @@ msgstr "Astuce du jour suivante"
 #, fuzzy
 #| msgid "Show next tip of the day"
 msgid "Show tip of the day"
-msgstr "Afficher l'astuce du jour suivante"
+msgstr "Afficher l'astuce du jour"
 
 #. [button]: id=about
 #: data/gui/themes/celes/dialogs/title_screen.cfg:229
@@ -2646,7 +2646,7 @@ msgstr ""
 #: data/gui/themes/default/dialogs/game_version.cfg:991
 #: data/gui/themes/default/dialogs/gamestate_inspector.cfg:398
 #: data/gui/themes/default/dialogs/generator_settings.cfg:190
-#: data/gui/themes/default/dialogs/help_browser.cfg:296
+#: data/gui/themes/default/dialogs/help_browser.cfg:295
 #: data/gui/themes/default/dialogs/lobby_player_info.cfg:292
 #: data/gui/themes/default/dialogs/lua_interpreter.cfg:130
 #: data/gui/themes/default/dialogs/message.cfg:135
@@ -2738,7 +2738,7 @@ msgstr "OK"
 #: data/gui/themes/default/dialogs/addon_connect.cfg:206
 #: data/gui/themes/default/dialogs/addon_license_prompt.cfg:113
 #: data/gui/themes/default/dialogs/addon_uninstall_list.cfg:170
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:569
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:623
 #: data/gui/themes/default/dialogs/campaign_difficulty.cfg:234
 #: data/gui/themes/default/dialogs/core_dialog.cfg:241
 #: data/gui/themes/default/dialogs/custom_tod.cfg:524
@@ -2784,7 +2784,7 @@ msgstr "OK"
 #: data/gui/themes/default/dialogs/theme_list.cfg:155
 #: data/gui/themes/default/dialogs/tod_new_schedule.cfg:139
 #: data/gui/themes/default/dialogs/unit_attack.cfg:233
-#: data/gui/themes/default/dialogs/units_dialog.cfg:623
+#: data/gui/themes/default/dialogs/units_dialog.cfg:622
 #: src/gui/dialogs/units_dialog.cpp:79 src/hotkey/hotkey_command.cpp:79
 msgid "Cancel"
 msgstr "Annuler"
@@ -3050,7 +3050,7 @@ msgstr ""
 #, fuzzy
 #| msgid "Select the add-on version"
 msgid "Delete selected add-on (admin)"
-msgstr "Sélectionne la version de l'extension"
+msgstr "Supprimer l'extension sélectionnée (admin)"
 
 #. [button]: id=admin_hide_addon
 #: data/gui/themes/default/dialogs/addon_server_info.cfg:113
@@ -3137,7 +3137,104 @@ msgid "Defender"
 msgstr "Défenseur"
 
 #. [label]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:191
+#. The campaign_landing^ strings are shown in the right-hand panel when the campaign menu is opened.
+#. This one is the page title, shown in bold.
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:205
+msgid "campaign_landing^Welcome to Wesnoth v1.20"
+msgstr ""
+
+#. [label]
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:207
+msgid ""
+"campaign_landing^<b>If you’re new to Wesnoth</b>, the opening story arc "
+"starts with <span color='#e1e119' style='italic'>The South Guard</span> and "
+"follows the campaigns in the order that they’re listed on the left, "
+"concluding half a century later with <span color='#e1e119' "
+"style='italic'>Heir to the Throne</span>. The intended way to learn both the "
+"story and the game mechanics is to play the campaigns in that order."
+msgstr ""
+
+#. [label]
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:209
+msgid ""
+"campaign_landing^<b>If you’re a returning player</b>, you’ll notice a number "
+"of changes since v1.18:"
+msgstr ""
+
+#. [label]
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:211
+msgid ""
+"campaign_landing^<span color='#e1e119' style='italic'>Heir to the Throne</"
+"span> now features an open world with 33 branching scenarios, each awarding "
+"Konrad unique recruits, companions, or items. The original campaign is still "
+"available as <i>Heir to the Throne, Classic</i>."
+msgstr ""
+
+#. [label]
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:213
+msgid ""
+"campaign_landing^<span color='#e1e119' style='italic'>The Deceiver’s Gambit</"
+"span> replaces <i>Delfador’s Memoirs</i>. Follow a young mage from the "
+"shores of Alduin to the halls of the King as they war against the fierce "
+"orcs of the north. Choose between 23 magic spells as you bear witness to the "
+"rise of a tyrant."
+msgstr ""
+
+#. [label]
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:215
+msgid ""
+"campaign_landing^<span color='#e1e119' style='italic'>Dusk of Dawn</span> is "
+"our first troll campaign. Lead the Golden Flame Tribe out from the bowels of "
+"Irdya and up to the surface world — but beware what awaits you there."
+msgstr ""
+
+#. [label]
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:217
+msgid ""
+"campaign_landing^<span color='#e1e119' style='italic'>Of Pearls and Pirates</"
+"span> is a new beginner-oriented campaign set in a sleepy fishing town on "
+"the Bay of Pearls. When corsairs strike, the villagers must join forces with "
+"the local merfolk and take the fight to the pirates."
+msgstr ""
+
+#. [label]
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:219
+msgid ""
+"campaign_landing^<span color='#e1e119' style='italic'>The South Guard</span> "
+"has been significantly revised, and now replaces the classic <i>Battle "
+"Training</i> tutorial. For players nostalgic for Delfador's tutelage, the "
+"original tutorial is still available as part of <i>Heir to the Throne, "
+"Classic</i>."
+msgstr ""
+
+#. [label]
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:221
+msgid ""
+"campaign_landing^<span color='#e1e119' style='italic'>The Hammer of "
+"Thursagan</span> has been enhanced with story adjustments, improved enemy "
+"AI, a new Thunderer advancement, a redesign of <i>High Pass</i>, and the re-"
+"addition of the formerly removed <i>Mages and Drakes</i>."
+msgstr ""
+
+#. [label]
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:223
+msgid ""
+"campaign_landing^<span color='#e1e119' style='italic'>Winds of Fate</span> "
+"has been rebalanced with much lower recall costs, redesigned wildlife "
+"spawners and AI, and a much larger mid-campaign battle. Several characters "
+"and dialogue sequences were changed for better continuity with other "
+"campaigns."
+msgstr ""
+
+#. [label]
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:225
+msgid ""
+"campaign_landing^For a full list of changes, consult our official changelog "
+"at https://www.wesnoth.org/start/1.20/"
+msgstr ""
+
+#. [label]
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:245
 msgid ""
 "In addition to the mainline campaigns, Wesnoth also has an ever-growing list "
 "of add-on content created by other players available via the Add-ons server, "
@@ -3147,7 +3244,9 @@ msgid ""
 msgstr ""
 
 #. [label]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:208
+#. "more than 15" gives a little leeway to add or remove one without changing the translatable text.
+#. It's already ambiguous, 1.18 has 19 campaigns, if you include the tutorial and multiplayer-only World Conquest.
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:262
 msgid ""
 "Wesnoth normally includes more than 15 mainline campaigns, even before "
 "installing any from the add-ons server. If you’ve installed the game via a "
@@ -3164,7 +3263,7 @@ msgstr ""
 #. [label]: id=name
 #. [label]
 #. [toggle_button]: id=unit_name
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:248
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:302
 #: data/gui/themes/default/dialogs/game_load.cfg:170
 #: data/gui/themes/default/dialogs/mp_connect.cfg:159
 #: data/gui/themes/default/dialogs/mp_faction_select.cfg:33
@@ -3175,27 +3274,27 @@ msgid "Name"
 msgstr "Nom"
 
 #. [toggle_button]: id=sort_name
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:249
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:303
 msgid "Sort by full campaign name in alphabetical order"
 msgstr "Trier par le nom complet de la campagne par ordre alphabétique"
 
 #. [toggle_button]: id=sort_time
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:260
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:314
 msgid "Timeline"
 msgstr "Chronologie"
 
 #. [toggle_button]: id=sort_time
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:261
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:315
 msgid "Sort in approximate chronological order of story events"
 msgstr "Trier par ordre chronologique approximatif des évènement de l'histoire"
 
 #. [multimenu_button]: id=filter_completion
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:271
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:325
 msgid "Filter by campaign completion status"
 msgstr ""
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:274
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:328
 #, fuzzy
 #| msgid "Completed"
 msgid "Not Completed"
@@ -3203,77 +3302,77 @@ msgstr "Réalisé"
 
 #. [option]
 #. campaigns which the player hasn't beaten, rather than campaigns which the author hasn't finished writing
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:276
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:330
 msgid "Show campaigns not completed by player"
 msgstr ""
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:280
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:334
 #, fuzzy
 #| msgid "Completed"
 msgid "Completed: Bronze"
 msgstr "Réalisé"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:281
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:335
 msgid "Show campaigns completed at easiest difficulty"
 msgstr ""
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:285
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:339
 #, fuzzy
 #| msgid "Completed"
 msgid "Completed: Silver"
 msgstr "Réalisé"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:286
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:340
 msgid "Show campaigns completed at intermediate difficulties"
 msgstr ""
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:290
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:344
 #, fuzzy
 #| msgid "Completed"
 msgid "Completed: Gold"
 msgstr "Réalisé"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:291
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:345
 msgid "Show campaigns completed at hardest difficulty"
 msgstr ""
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:295
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:349
 #, fuzzy
 #| msgid "Completed"
 msgid "Completed: All"
 msgstr "Réalisé"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:296
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:350
 msgid "Show completed campaigns"
 msgstr ""
 
 #. [label]
 #. [label]: id=mods_header
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:347
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:401
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:209
 msgid "Modifications:"
 msgstr "Modifications :"
 
 #. [label]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:372
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:426
 msgid "Combat:"
 msgstr "Combat :"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:387
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:441
 msgid "Default RNG"
 msgstr "RNG par défaut"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:388
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:442
 msgid ""
 "Pure, unbiased randomness; the way Wesnoth is intended to be played.\n"
 "\n"
@@ -3282,12 +3381,12 @@ msgid ""
 msgstr ""
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:393
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:447
 msgid "Predictable RNG"
 msgstr "RNG prévisible"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:394
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:448
 msgid ""
 "Identical to Default RNG, except loading a saved game will not change the "
 "outcome of an attack.\n"
@@ -3297,14 +3396,14 @@ msgid ""
 msgstr ""
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:399
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:453
 #, fuzzy
 #| msgid "Predictable RNG"
 msgid "Reduced RNG"
 msgstr "RNG prévisible"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:400
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:454
 msgid ""
 "Hits and misses are much more consistent. This tends to make small-scale "
 "engagements easier to plan.\n"
@@ -3314,36 +3413,36 @@ msgid ""
 msgstr ""
 
 #. [label]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:417
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:471
 msgid "Difficulty:"
 msgstr "Difficulté : "
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:431
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:485
 msgid "Easy"
 msgstr "Facile"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:434
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:488
 msgid "Normal"
 msgstr "Normale"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:437
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:491
 msgid "Hard"
 msgstr "Difficile"
 
 #. [label]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:494
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:548
 msgid "Play a Campaign"
 msgstr "Jouer une campagne"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=proceed
 #. [button]: id=ok
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:558
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:612
 #: data/gui/themes/default/dialogs/campaign_difficulty.cfg:221
-#: src/gui/dialogs/campaign_selection.cpp:77
+#: src/gui/dialogs/campaign_selection.cpp:82
 msgid "game^Play"
 msgstr "Jouer"
 
@@ -3414,7 +3513,7 @@ msgstr "Charger le noyau"
 #: data/gui/themes/default/dialogs/core_dialog.cfg:228
 #: data/gui/themes/default/dialogs/language_selection.cfg:293
 #: src/gui/dialogs/editor/custom_tod.cpp:172
-#: src/gui/dialogs/editor/edit_unit.cpp:303
+#: src/gui/dialogs/editor/edit_unit.cpp:297
 #: src/preferences/preferences.cpp:1342
 msgid "Select"
 msgstr "Sélectionner"
@@ -3567,8 +3666,8 @@ msgstr ""
 #: data/gui/themes/default/dialogs/depcheck_confirm_change.cfg:40
 #: src/gui/dialogs/addon/manager.cpp:1029
 #: src/gui/dialogs/editor/custom_tod.cpp:187
-#: src/gui/dialogs/editor/edit_unit.cpp:318
-#: src/gui/dialogs/editor/edit_unit.cpp:970 src/gui/dialogs/file_dialog.cpp:371
+#: src/gui/dialogs/editor/edit_unit.cpp:312
+#: src/gui/dialogs/editor/edit_unit.cpp:929 src/gui/dialogs/file_dialog.cpp:371
 #: src/gui/dialogs/file_dialog.cpp:799
 msgid "Confirm"
 msgstr "Confirmer"
@@ -4286,7 +4385,7 @@ msgstr "Quitter l'éditeur"
 #, fuzzy
 #| msgid "Game Stats"
 msgid "Main Stats"
-msgstr "Statistiques du jeu"
+msgstr "Stats essentielles"
 
 #. [tab]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:1199
@@ -4759,8 +4858,9 @@ msgstr ""
 
 #. [label]
 #: data/gui/themes/default/dialogs/game_version.cfg:150
+#, fuzzy
 msgid "<span font_family='DejaVu Sans'>✦</span> <b>Running on:</b>"
-msgstr ""
+msgstr "<span font_family='DejaVu Sans'>✦</span> <b>Propulsé par:</b>"
 
 #. [label]
 #: data/gui/themes/default/dialogs/game_version.cfg:179
@@ -4770,48 +4870,59 @@ msgstr ""
 #. [label]
 #: data/gui/themes/default/dialogs/game_version.cfg:207
 msgid "<span font_family='DejaVu Sans'>✦</span> <b>Homepage:</b>"
-msgstr ""
+msgstr "<span font_family='DejaVu Sans'>✦</span> <b>Site officiel :</b>"
 
 #. [label]
 #: data/gui/themes/default/dialogs/game_version.cfg:239
 msgid "<span font_family='DejaVu Sans'>✦</span> <b>Wiki:</b>"
-msgstr ""
+msgstr "<span font_family='DejaVu Sans'>✦</span> <b>Wiki:</b>"
 
 #. [label]
 #: data/gui/themes/default/dialogs/game_version.cfg:279
 msgid ""
 "<i><span font_family='DejaVu Sans'>➤</span> Copy a full report here:</i>"
 msgstr ""
+"<i><span font_family='DejaVu Sans'>➤</span> Copier ici le rapport complet:</"
+"i>"
 
 #. [label]
 #: data/gui/themes/default/dialogs/game_version.cfg:299
+#, fuzzy
 msgid ""
 "<i><span font_family='DejaVu Sans'>➤</span> Report an issue or request a "
 "feature:</i>"
 msgstr ""
+"<i><span font_family='DejaVu Sans'>➤</span> Signaler un problème ou demander "
+"une fonctionnalité:</i>"
 
 #. [button]: id=issue
 #: data/gui/themes/default/dialogs/game_version.cfg:312
+#, fuzzy
 msgid "Report Issue"
-msgstr ""
+msgstr " Signaler un incident"
 
 #. [label]
 #: data/gui/themes/default/dialogs/game_version.cfg:321
+#, fuzzy
 msgid "<i><span font_family='DejaVu Sans'>➤</span> View Game Manual:</i>"
-msgstr ""
+msgstr "<i><span font_family='DejaVu Sans'>➤</span> Voir le manuel du jeu:</i>"
 
 #. [button]: id=view_manual
 #. button to open the game manual in the platform's browser.
 #: data/gui/themes/default/dialogs/game_version.cfg:334
+#, fuzzy
 msgid "View Manual"
-msgstr ""
+msgstr "Voir le manuel"
 
 #. [label]
 #: data/gui/themes/default/dialogs/game_version.cfg:342
+#, fuzzy
 msgid ""
 "<i><span font_family='DejaVu Sans'>➤</span> Re-open the version migrator "
 "dialog:</i>"
 msgstr ""
+"<i><span font_family='DejaVu Sans'>➤</span> Réouvrir l’assistant de "
+"migration:</i>"
 
 #. [button]: id=run_migrator
 #. button to open the version migration dialog manually to re-migrate add-ons and the preferences file
@@ -4929,8 +5040,10 @@ msgstr "Donations"
 
 #. [label]: id=description
 #: data/gui/themes/default/dialogs/game_version.cfg:844
+#, fuzzy
 msgid "An open source, turn-based strategy game with a high fantasy theme."
 msgstr ""
+"Un jeu libre de stratégie au tour par tour sur un thème midiéval fantastique"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [tab]
@@ -4965,8 +5078,9 @@ msgstr "Crédits"
 
 #. [button]: id=license
 #: data/gui/themes/default/dialogs/game_version.cfg:972
+#, fuzzy
 msgid "License"
-msgstr ""
+msgstr " Licence "
 
 #. [label]
 #: data/gui/themes/default/dialogs/gamestate_inspector.cfg:16
@@ -5884,14 +5998,14 @@ msgstr "Aléatoire"
 #. [row]
 #. [toggle_button]: id=male_toggle
 #: data/gui/themes/default/dialogs/mp_faction_select.cfg:212
-#: data/gui/themes/default/dialogs/units_dialog.cfg:498
+#: data/gui/themes/default/dialogs/units_dialog.cfg:497
 msgid "Male"
 msgstr "Masculin"
 
 #. [row]
 #. [toggle_button]: id=female_toggle
 #: data/gui/themes/default/dialogs/mp_faction_select.cfg:214
-#: data/gui/themes/default/dialogs/units_dialog.cfg:509
+#: data/gui/themes/default/dialogs/units_dialog.cfg:508
 msgid "Female"
 msgstr "Féminin"
 
@@ -6203,8 +6317,9 @@ msgstr "Ne pas autoriser les mouvements automatiques en début de tour"
 
 #. [toggle_button]: id=show_turn_dialog
 #: data/gui/themes/default/dialogs/preferences/01_general.cfg:114
+#, fuzzy
 msgid "Turn prompt"
-msgstr ""
+msgstr "Notification de début de tour"
 
 #. [toggle_button]: id=show_turn_dialog
 #: data/gui/themes/default/dialogs/preferences/01_general.cfg:115
@@ -7065,7 +7180,7 @@ msgstr "Attaquer l'ennemi"
 #. Filled five pointed star, used as favorite unit marker
 #. Filled five pointed star, used as favorite unit marker
 #: data/gui/themes/default/dialogs/units_dialog.cfg:24
-#: data/gui/themes/default/dialogs/units_dialog.cfg:574
+#: data/gui/themes/default/dialogs/units_dialog.cfg:573
 msgid "★"
 msgstr ""
 
@@ -7110,24 +7225,24 @@ msgid "Traits"
 msgstr "Capacités"
 
 #. [text_box]: id=filter_box
-#: data/gui/themes/default/dialogs/units_dialog.cfg:405
+#: data/gui/themes/default/dialogs/units_dialog.cfg:404
 msgid "Search for unit name, unit type name, unit level, or trait"
 msgstr ""
 "Recherche à partir du nom de l'unité, de son type, de son niveau ou de ses "
 "capacités"
 
 #. [button]: id=dismiss
-#: data/gui/themes/default/dialogs/units_dialog.cfg:550
+#: data/gui/themes/default/dialogs/units_dialog.cfg:549
 msgid "Dismiss"
 msgstr "Renvoyer"
 
 #. [button]: id=rename
-#: data/gui/themes/default/dialogs/units_dialog.cfg:561
+#: data/gui/themes/default/dialogs/units_dialog.cfg:560
 msgid "Rename"
 msgstr "Renommer"
 
 #. [button]: id=mark_favorite
-#: data/gui/themes/default/dialogs/units_dialog.cfg:575
+#: data/gui/themes/default/dialogs/units_dialog.cfg:574
 msgid "Mark/unmark the selected unit as favorite"
 msgstr ""
 
@@ -7355,10 +7470,8 @@ msgid "$title ($count/$total)"
 msgstr ""
 
 #: src/gui/dialogs/achievements_dialog.cpp:138
-#, fuzzy
-#| msgid "Completed"
 msgid "Completed $count/$total"
-msgstr "Réalisé"
+msgstr ""
 
 #: src/gui/dialogs/addon/addon_server_info.cpp:95
 #: src/gui/dialogs/addon/addon_server_info.cpp:120
@@ -7733,23 +7846,23 @@ msgstr "Résistance de l'attaquant contre"
 msgid "Attacker vulnerability vs"
 msgstr "Vulnérabilité de l'attaquant contre"
 
-#: src/gui/dialogs/campaign_selection.cpp:77
+#: src/gui/dialogs/campaign_selection.cpp:82
 #, fuzzy
 #| msgid "Remove Add-ons"
 msgid "game^Get Add-ons"
 msgstr "Supprimer les extensions"
 
-#: src/gui/dialogs/campaign_selection.cpp:388
+#: src/gui/dialogs/campaign_selection.cpp:403
 #, fuzzy
 #| msgid "Campaigns"
 msgid "More campaigns..."
 msgstr "Campagnes"
 
-#: src/gui/dialogs/campaign_selection.cpp:402
+#: src/gui/dialogs/campaign_selection.cpp:418
 msgid "Missing Campaigns"
 msgstr "Campagnes manquantes"
 
-#: src/gui/dialogs/campaign_selection.cpp:436
+#: src/gui/dialogs/campaign_selection.cpp:452
 #: src/gui/dialogs/multiplayer/lobby.cpp:435
 msgid "active_modifications^None"
 msgstr "Aucune"
@@ -7791,14 +7904,14 @@ msgstr ""
 "Merci d'en sélectionner une compatible."
 
 #: src/gui/dialogs/editor/custom_tod.cpp:171
-#: src/gui/dialogs/editor/edit_unit.cpp:302
+#: src/gui/dialogs/editor/edit_unit.cpp:296
 #, fuzzy
 #| msgid "Choose Player"
 msgid "Choose File"
 msgstr "Choisir un joueur"
 
 #: src/gui/dialogs/editor/custom_tod.cpp:182
-#: src/gui/dialogs/editor/edit_unit.cpp:313
+#: src/gui/dialogs/editor/edit_unit.cpp:307
 msgid ""
 "This file is outside Wesnoth’s data dirs. Do you wish to copy it into your "
 "add-on?"
@@ -7893,37 +8006,37 @@ msgstr "Succès"
 msgid "Choose an icon"
 msgstr "Choix de l'icône"
 
-#: src/gui/dialogs/editor/edit_unit.cpp:187
+#: src/gui/dialogs/editor/edit_unit.cpp:181
 msgid "scout"
 msgstr ""
 
-#: src/gui/dialogs/editor/edit_unit.cpp:188
+#: src/gui/dialogs/editor/edit_unit.cpp:182
 #, fuzzy
 #| msgid "Right"
 msgid "fighter"
 msgstr "Droit"
 
-#: src/gui/dialogs/editor/edit_unit.cpp:189
+#: src/gui/dialogs/editor/edit_unit.cpp:183
 #, fuzzy
 #| msgid "Search"
 msgid "archer"
 msgstr "Rechercher"
 
-#: src/gui/dialogs/editor/edit_unit.cpp:190
+#: src/gui/dialogs/editor/edit_unit.cpp:184
 msgid "mixed fighter"
 msgstr ""
 
-#: src/gui/dialogs/editor/edit_unit.cpp:191
+#: src/gui/dialogs/editor/edit_unit.cpp:185
 msgid "healer"
 msgstr ""
 
-#: src/gui/dialogs/editor/edit_unit.cpp:969
+#: src/gui/dialogs/editor/edit_unit.cpp:928
 #, fuzzy
 #| msgid "Save already exists. Do you want to overwrite it?"
 msgid "Unsaved changes will be lost. Do you want to leave?"
 msgstr "La sauvegarde existe déjà. Voulez-vous la remplacer ?"
 
-#: src/gui/dialogs/editor/edit_unit.cpp:988
+#: src/gui/dialogs/editor/edit_unit.cpp:947
 msgid "Unit type saved."
 msgstr ""
 
@@ -8872,11 +8985,11 @@ msgstr "Widget avec une aide contextuelle sans support détecté."
 msgid "No grid defined for tab container control"
 msgstr "Pas de grille définie pour l'arborescence."
 
-#: src/gui/widgets/tree_view.cpp:287
+#: src/gui/widgets/tree_view.cpp:289
 msgid "No nodes defined for a tree view."
 msgstr "Pas de nœuds définis dans l'arborescence."
 
-#: src/gui/widgets/tree_view.cpp:317
+#: src/gui/widgets/tree_view.cpp:319
 #, fuzzy
 #| msgid "[node]id 'root' is reserved for the implementation."
 msgid "[node]id ‘root’ is reserved for the implementation."
@@ -9346,20 +9459,16 @@ msgid "New Scenario"
 msgstr "Nouveau scénario"
 
 #: src/hotkey/hotkey_command.cpp:184
-#, fuzzy
-#| msgid "Edit Scenario"
 msgid "Load Map/Scenario"
-msgstr "Modifier le scénario"
+msgstr "Charger Carte/Scénario"
 
 #: src/hotkey/hotkey_command.cpp:186
 msgid "Save Map As"
 msgstr "Sauvegarder la carte sous"
 
 #: src/hotkey/hotkey_command.cpp:187
-#, fuzzy
-#| msgid "Choose Test Scenario"
 msgid "Convert To Scenario"
-msgstr "Choisissez le scénario de test"
+msgstr "Convertir en scénario"
 
 #: src/hotkey/hotkey_command.cpp:188
 msgid "Save Scenario As"
@@ -9480,10 +9589,8 @@ msgid "Item Tool"
 msgstr "Outil d'objet"
 
 #: src/hotkey/hotkey_command.cpp:210
-#, fuzzy
-#| msgid "Left mouse button sets a new item."
 msgid "Left mouse button sets a new item. Right click removes item."
-msgstr "Les clic gauche place un nouvel objet."
+msgstr "Le clic gauche place un nouvel objet. Le clic droit les efface."
 
 #: src/hotkey/hotkey_command.cpp:211
 msgid ""
@@ -9522,10 +9629,8 @@ msgid "Loyal"
 msgstr "Fidèle"
 
 #: src/hotkey/hotkey_command.cpp:220
-#, fuzzy
-#| msgid "Server Information"
 msgid "Show Tool Information"
-msgstr "Information du serveur"
+msgstr "Information des outils"
 
 #: src/hotkey/hotkey_command.cpp:222
 msgid "Toggle Minimap Unit Coding"
@@ -9719,16 +9824,12 @@ msgid "Change Add-on ID"
 msgstr "Changer l'identifiant de l'extension"
 
 #: src/hotkey/hotkey_command.cpp:279
-#, fuzzy
-#| msgid "Select the add-on version"
 msgid "Select active Add-on"
-msgstr "Sélectionne la version de l'extension"
+msgstr "Sélectionne l'extension"
 
 #: src/hotkey/hotkey_command.cpp:280
-#, fuzzy
-#| msgid "Open saves folder"
 msgid "Open Add-on folder"
-msgstr "Ouvrir le répertoire des sauvegardes"
+msgstr "Ouvrir le répertoire des extensions"
 
 #: src/hotkey/hotkey_command.cpp:283
 msgid "Edit Side"
@@ -9912,22 +10013,91 @@ msgstr ""
 "Dans la section « [$section|] » la clé obligatoire « $key » n'est pas "
 "renseignée."
 
-#~ msgid "Turn dialog"
-#~ msgstr "Message en début de tour"
+#~ msgid "Rocky Sands"
+#~ msgstr "Sables pierreux"
+
+#~ msgid "Sands"
+#~ msgstr "Sable"
+
+#~ msgid "Connected Players"
+#~ msgstr "Joueurs connectés"
+
+#~ msgid "Reloading alters future combat outcomes"
+#~ msgstr "Le rechargement altère l'issue des prochains combats"
+
+#~ msgid "Combat outcomes remain constant when reloading"
+#~ msgstr "L'issue des combats reste constante lors d'un rechargement"
+
+#~ msgid "Biased RNG (experimental)"
+#~ msgstr "RNG biaisé (expérimental)"
+
+#~ msgid ""
+#~ "Combat outcomes are more in line with displayed probabilities and "
+#~ "unaffected by reloading"
+#~ msgstr ""
+#~ "L'issue des combats est plus en phase avec les probabilités affichées et "
+#~ "n'est pas affectée par un rechargement"
+
+#~ msgid "Add-on ID"
+#~ msgstr "Identifiant de l'extension"
+
+#~ msgid "Configuration:"
+#~ msgstr "Configuration :"
+
+#~ msgid "Copy the full report to clipboard"
+#~ msgstr "Copier ce rapport dans le presse-papier"
 
 #~ msgid "Battle For Wesnoth Help"
 #~ msgstr "Afficher l'aide de Bataille pour Wesnoth"
 
-#~ msgid "Completed"
-#~ msgstr "Réalisé"
+#~ msgid "<b>Faction:</b>"
+#~ msgstr "<b>Faction :</b>"
 
-#, fuzzy
-#~| msgid "Show next tip of the day"
-#~ msgid "Hide tip of the day"
-#~ msgstr "Afficher l'astuce du jour suivante"
+#~ msgid "<b>Gender:</b>"
+#~ msgstr "<b>Genre : </b>"
 
-#~ msgid "Race"
-#~ msgstr "Race"
+#~ msgid "Turn dialog"
+#~ msgstr "Message en début de tour"
+
+#~ msgid "Limit FPS"
+#~ msgstr "Limiter le nombre d'image par seconde"
+
+#~ msgid ""
+#~ "Disabling this increases CPU usage, but may slightly improve performance "
+#~ "(requires restart to take effect)"
+#~ msgstr ""
+#~ "Désactiver cette option augmente l'usage du CPU, mais peut améliorer "
+#~ "sensiblement les performances (nécessite un redémarrage pour prendre "
+#~ "effet)"
+
+#~ msgid "View the credits"
+#~ msgstr "Voir les crédits"
+
+#~ msgid "filesystem_path_game^User preferences"
+#~ msgstr "Préférences utilisateur"
+
+#~ msgid "--userdata-dir=<relative path that doesn't start with a period>"
+#~ msgstr "--userdata-dir=<chemin relatif qui ne commence par par un point>"
+
+#~ msgid ""
+#~ "Use an absolute path, or a relative path that starts with a period and a "
+#~ "backslash"
+#~ msgstr ""
+#~ "Utilise un chemin absolu ou relatif qui commence par un point et une "
+#~ "barre oblique"
+
+#~ msgid "--userdata-dir=<relative path>"
+#~ msgstr "--userdata-dir=<chemin relatif>"
+
+#~ msgid ""
+#~ "Use absolute paths. Relative paths are deprecated because they are "
+#~ "interpreted relative to $HOME"
+#~ msgstr ""
+#~ "Utilisez des chemin absolus. Les chemins relatifs sont dépréciés car ils "
+#~ "sont interprétés relativement à la variable $HOME"
+
+#~ msgid "The text contains invalid Pango markup: "
+#~ msgstr "Le texte contient une balise Pango invalide : "
 
 #~ msgid "timespan^expired"
 #~ msgstr "expiré"
@@ -9967,23 +10137,6 @@ msgstr ""
 #~ msgstr[0] "$num seconde"
 #~ msgstr[1] "$num secondes"
 
-#~ msgid "Limit FPS"
-#~ msgstr "Limiter le nombre d'image par seconde"
-
-#~ msgid ""
-#~ "Disabling this increases CPU usage, but may slightly improve performance "
-#~ "(requires restart to take effect)"
-#~ msgstr ""
-#~ "Désactiver cette option augmente l'usage du CPU, mais peut améliorer "
-#~ "sensiblement les performances (nécessite un redémarrage pour prendre "
-#~ "effet)"
-
-#~ msgid "Connected Players"
-#~ msgstr "Joueurs connectés"
-
-#~ msgid "The text contains invalid Pango markup: "
-#~ msgstr "Le texte contient une balise Pango invalide : "
-
 #~ msgid "Text has a font size of 0."
 #~ msgstr "Le texte a une taille de police de 0."
 
@@ -9992,84 +10145,11 @@ msgstr ""
 #~ "Le support du presse-papier n'a pas été trouvé, contactez votre "
 #~ "empaqueteur"
 
-#~ msgid "<b>Faction:</b>"
-#~ msgstr "<b>Faction :</b>"
-
-#~ msgid "<b>Gender:</b>"
-#~ msgstr "<b>Genre : </b>"
-
-#, fuzzy
-#~| msgid "page^Copy"
-#~ msgid "page^✔ Copied"
-#~ msgstr "Copier"
-
-#, fuzzy
-#~| msgid "Status"
-#~ msgid "Stats"
-#~ msgstr "Statut"
-
-#~ msgid "Configuration:"
-#~ msgstr "Configuration :"
-
-#~ msgid "filesystem_path_game^User preferences"
-#~ msgstr "Préférences utilisateur"
-
-#~ msgid "--userdata-dir=<relative path that doesn't start with a period>"
-#~ msgstr "--userdata-dir=<chemin relatif qui ne commence par par un point>"
-
-#~ msgid ""
-#~ "Use an absolute path, or a relative path that starts with a period and a "
-#~ "backslash"
-#~ msgstr ""
-#~ "Utilise un chemin absolu ou relatif qui commence par un point et une "
-#~ "barre oblique"
-
-#~ msgid "--userdata-dir=<relative path>"
-#~ msgstr "--userdata-dir=<chemin relatif>"
-
-#~ msgid ""
-#~ "Use absolute paths. Relative paths are deprecated because they are "
-#~ "interpreted relative to $HOME"
-#~ msgstr ""
-#~ "Utilisez des chemin absolus. Les chemins relatifs sont dépréciés car ils "
-#~ "sont interprétés relativement à la variable $HOME"
+#~ msgid "Running on $os"
+#~ msgstr "Exécuté sous $os"
 
 #~ msgid "Load Map"
 #~ msgstr "Charger une carte"
-
-#~ msgid "Rocky Sands"
-#~ msgstr "Sables pierreux"
-
-#~ msgid "Sands"
-#~ msgstr "Sable"
-
-#~ msgid "Reloading alters future combat outcomes"
-#~ msgstr "Le rechargement altère l'issue des prochains combats"
-
-#~ msgid "Combat outcomes remain constant when reloading"
-#~ msgstr "L'issue des combats reste constante lors d'un rechargement"
-
-#~ msgid "Biased RNG (experimental)"
-#~ msgstr "RNG biaisé (expérimental)"
-
-#~ msgid ""
-#~ "Combat outcomes are more in line with displayed probabilities and "
-#~ "unaffected by reloading"
-#~ msgstr ""
-#~ "L'issue des combats est plus en phase avec les probabilités affichées et "
-#~ "n'est pas affectée par un rechargement"
-
-#~ msgid "Add-on ID"
-#~ msgstr "Identifiant de l'extension"
-
-#~ msgid "Copy the full report to clipboard"
-#~ msgstr "Copier ce rapport dans le presse-papier"
-
-#~ msgid "View the credits"
-#~ msgstr "Voir les crédits"
-
-#~ msgid "Running on $os"
-#~ msgstr "Exécuté sous $os"
 
 #~ msgid "Choose your preferred language:"
 #~ msgstr "Choisissez votre langue préférée :"

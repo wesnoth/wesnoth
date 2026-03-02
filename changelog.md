@@ -1,11 +1,44 @@
-## Version 1.19.20+dev
+## Version 1.19.21+dev
 ### Add-ons client
 ### Add-ons server
 ### Campaigns
+### Editor
+### Multiplayer
+### Lua API
+### Packaging
+### Terrain
+### Translations
+   * Updated translations: British English, French, Hungarian, Italian
+### Units
+### User interface
+### WML Engine
+### Miscellaneous and Bug Fixes
+
+## Version 1.19.21
+### Campaigns
+   * A Tale of Two Brothers
+     * Add achievements and relevant code.
+   * Dead Water
+     * S05 "Tirigaz": the orcs now use real ship units, instead of static images. Orcish gold reduced to compensate.
    * Dusk of Dawn
      * S02 "A Dream": remove "fearless" trait, but spawn more higher-level woses instead.
    * Eastern Invasion
+     * S02 "Escape Tunnel": Now uses the core Dwarvish Miner unit, instead of a modified 8 gold version.
+     * S04b "Ill Humours": AI Dunefolk are no longer immune to the swamp's poison (although their AI shouldn't let them move into poison range regardless).
+     * S04b "Ill Humours": Gweddry now gains control of the Dunefolk villages when they switch sides.
+     * S05 "Northern Outpost": Randomness no longer influences the minimum/maximum number of bandits who spawn.
+     * S06b "Soradoc": Removed a mechanic that wasn't explained in the objectives - Yannic will no longer be rescued automatically after you've defeated three enemy leaders.
+     * S07a "Capturing the Ogres": Gweddry can no longer gain gold, in addition to his preexisting 0 upkeep.
+     * S07a "Capturing the Ogres": Ogres will now become more aggressive after 10 turns, preventing an infinite turn gold/XP exploit.
+     * S07b "Ogre Crossing": Suriving AI ogres now flee if Grug is killed.
+     * S07b "Ogre Crossing": Objectives now explain that the ogres will join you once you reach the north shore.
      * S09 "Castle in the Ice": slightly reduce number of wolves and drakes.
+     * S10 "Dark Sanctuary": Orc spawn now scale even further after many turns have elapsed (especially on Skirmish/Easy difficulty), making infinite survival impossible.
+     * S11 "Captured": Reinforcement orcs now use income, not a one-time gold boost.
+     * S11 "Captured": The Skirmisher ability no longer lets you to bypass the orcish guards.
+     * S11 "Captured": Dacyn can no longer be healed without alerting the orcs.
+     * S13 "Spoils of War": Changed dialogue to clarify what's going on before the scenario start.
+     * S13 "Spoils of War": Owaec can no longer recall units (he's separated from the army), even if you manage to claim a keep.
    * The Hammer of Thursagan
      * Shortened turn limits on several long scenarios.
      * Decreased player gold from 100 to 80 on most scenarios.
@@ -29,6 +62,14 @@
      * S30 "The Sceptre of Fire": Delfador can now continue recruiting even while searching for the Sceptre.
      * S47, S48, and S50: a few enemy units will now defect when the Sceptre is first used against human opponents.
      * S50 "The Battle for Wesnoth": added an epilogue for Blackwing the raven.
+   * Heir to the Throne, Classic
+     * Fix unachievable tutorial achievement.
+   * Of Pearls and Pirates
+     * Added to mainline.
+     * This is a new peasants + merfolk campaign, and an extension to the tutorial.
+     * 5 scenarios, novice level.
+   * Son of the Black-Eye
+     * Jetto now starts as Orcish Slayer.
    * Winds of Fate
      * Lower recall costs further.
      * Adjust and replace some characters that tie-in with the other campaigns.
@@ -37,20 +78,23 @@
      * S08 "Overlook": more consistent enemy spawn recognition
      * S09 "Ancestor": add wind ambience by Alexandr Zhelanov
      * S11 "Crosswind": fix issues with non-clasher units attempting to read their secrets
-### Editor
-### Multiplayer
-### Lua API
-### Packaging
-### Terrain
 ### Translations
    * Updated translations: Bengali, British English, Chinese (Simplified), Czech, French, Greek, Hungarian, Italian, Spanish
 ### Units
    * Ships:
      * Adjusted gold costs for most ships.
      * Removed the "naval" weapon special, allowing ships to ram targets on coastal land.
+   * Wose Shaman
+     * Hitpoints: 56hp -> 60hp
+     * Cost: 27g -> 31g
+     * Swamp defense: 30% -> 40%
+     * Melee damage: 12-2 impact -> 14-2 impact
+     * Ranged damage: 11-2 impact slows -> 6-3 impact slows
+   * Added the Redtail Cat.
 ### User interface
-### WML Engine
-### Miscellaneous and Bug Fixes
+   * The campaign menu now has a landing page instead of defaulting to the first campaign (PR #10825)
+   * Abbreviated “vision” and “jamming” in the sidebar, so that the number fits on-screen
+   * Fixed the in-game help not showing a list of units with a particular weapon special.
 
 ## Version 1.19.20
 ### Campaigns

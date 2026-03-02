@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-01-20 17:31 UTC\n"
+"POT-Creation-Date: 2026-02-26 01:04 UTC\n"
 "PO-Revision-Date: 2026-01-23 22:11+0100\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
@@ -75,7 +75,7 @@ msgstr "Různá grafika"
 #. [campaign]: id=The Deceivers Gambit 1
 #. [campaign]: id=The Deceivers Gambit 2
 #: data/campaigns/The_Deceivers_Gambit/_main.cfg:135
-#: data/campaigns/The_Deceivers_Gambit/_main.cfg:161
+#: data/campaigns/The_Deceivers_Gambit/_main.cfg:162
 msgid "TDG"
 msgstr "PG"
 
@@ -103,21 +103,25 @@ msgid "(Intermediate level, 7 scenarios.)"
 msgstr "(Úroveň pokročilý hráč, 7 scénářů.)"
 
 #. [campaign]: id=The Deceivers Gambit 1
-#: data/campaigns/The_Deceivers_Gambit/_main.cfg:151
+#: data/campaigns/The_Deceivers_Gambit/_main.cfg:152
+#, fuzzy
+#| msgid ""
+#| "Story continued in:\n"
+#| "The Deceiver’s Gambit II"
 msgid ""
-"Story continued in:\n"
-"The Deceiver’s Gambit II"
+"The saga continues in\n"
+"<i>The Deceiver’s Gambit II</i>"
 msgstr ""
 "Příběh pokračuje v tažení:\n"
 "Podvodníkův gambit II"
 
 #. [campaign]: id=The Deceivers Gambit 2
-#: data/campaigns/The_Deceivers_Gambit/_main.cfg:160
+#: data/campaigns/The_Deceivers_Gambit/_main.cfg:161
 msgid "The Deceiver’s Gambit II"
 msgstr "Podvodníkův gambit II"
 
 #. [campaign]: id=The Deceivers Gambit 2
-#: data/campaigns/The_Deceivers_Gambit/_main.cfg:172
+#: data/campaigns/The_Deceivers_Gambit/_main.cfg:173
 msgid ""
 "As losses continue to mount, Delfador embarks on a dangerous mission behind "
 "enemy lines. The journey will be perilous, but what awaits at its end will "
@@ -130,18 +134,17 @@ msgstr ""
 "    \n"
 
 #. [campaign]: id=The Deceivers Gambit 2
-#: data/campaigns/The_Deceivers_Gambit/_main.cfg:174
+#: data/campaigns/The_Deceivers_Gambit/_main.cfg:175
 msgid "(Intermediate level, 8 scenarios.)"
 msgstr "(Úroveň pokročilý hráč, 8 scénářů.)"
 
 #. [campaign]: id=The Deceivers Gambit 2
-#: data/campaigns/The_Deceivers_Gambit/_main.cfg:175
+#. this campaign is not a direct continuation of the story and characters, but is next chronologically and is the recommended next campaign
+#: data/campaigns/The_Deceivers_Gambit/_main.cfg:178
 msgid ""
-"Story continued in:\n"
-"“Asheviere’s Dogs”"
+"The saga continues in\n"
+"<i>Liberty</i>"
 msgstr ""
-"Příběh pokračuje v tažení:\n"
-"„Ašvířini psi“"
 
 #. [achievement_group]
 #: data/campaigns/The_Deceivers_Gambit/achievements.cfg:21
@@ -323,9 +326,14 @@ msgid "Shield"
 msgstr ""
 
 #: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:31
+#, fuzzy
+#| msgid ""
+#| "Spend <span color='#00bbe6' style='italic'>8 XP</span> to gain <i>+20% "
+#| "dodge chance</i> until the start of your next turn or until cancelled."
 msgid ""
-"Spend <span color='#00bbe6' style='italic'>8 XP</span> to gain <i>+20% dodge "
-"chance</i> until the start of your next turn or until cancelled."
+"Spend <span color='#00bbe6' style='italic'>8 XP</span> to gain an additional "
+"<i>20% terrain defense</i> (chance to evade) until the start\n"
+"          of your next turn or until cancelled."
 msgstr ""
 "Za <span color='#00bbe6' style='italic'>8 zk. bodů</span> získáš <i>+20 % "
 "šance na úhyb</i> až do začátku svého dalšího kola nebo do zrušení."
@@ -369,10 +377,15 @@ msgid "Levitate"
 msgstr "Vznášení se"
 
 #: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:74
+#, fuzzy
+#| msgid ""
+#| "Spend <span color='#00bbe6' style='italic'>8 XP</span> to gain <i>flight</"
+#| "i> and the <i><ref dst='ability_skirmisherskirmisher'>skirmisher</ref></"
+#| "i> ability until the start of your next turn or until cancelled."
 msgid ""
 "Spend <span color='#00bbe6' style='italic'>8 XP</span> to gain <i>flight</i> "
-"and the <i><ref dst='ability_skirmisherskirmisher'>skirmisher</ref></i> "
-"ability until the start of your next turn or until cancelled."
+"and the <i><ref dst='ability_skirmisher'>skirmisher</ref></i> ability until "
+"the start of your next turn or until cancelled."
 msgstr ""
 "Za <span color='#00bbe6' style='italic'>8 zk. bodů</span> získáš schopnosti "
 "<i>létání</i> a <i><ref dst='ability_skirmisherskirmisher'>průbojnost</ref></"
@@ -462,9 +475,7 @@ msgid "Glamour"
 msgstr ""
 
 #: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:159
-msgid ""
-"Gain the <i><ref dst='ability_leadershipleadership'>leadership</ref></i> "
-"ability."
+msgid "Gain the <i><ref dst='ability_leadership'>leadership</ref></i> ability."
 msgstr ""
 
 #: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:173
@@ -489,8 +500,10 @@ msgstr ""
 msgid ""
 "Spend <span color='#00bbe6' style='italic'>48 XP</span> and <span "
 "color='#c06a61' style='italic'>your attack</span> to magically disguise "
-"yourself as an awe-inspiring drake,\n"
-"          reducing accuracy and dodge by 10% for enemies in a 2 hex radius. "
+"yourself as an awe-inspiring drake.\n"
+"          Enemies in a 2-hex radius suffer a -10% penalty to both their "
+"terrain defense\n"
+"          (chance to evade) and chance to hit (except for magical attacks). "
 "Lasts until cancelled."
 msgstr ""
 
@@ -1190,7 +1203,7 @@ msgstr ""
 #: data/campaigns/The_Deceivers_Gambit/scenarios/01_Stirrings_of_War.cfg:392
 msgid ""
 "Mages are deadly ranged attackers, with accurate <i>magical</i> attacks that "
-"are difficult to dodge. They have few hitpoints and are highly vulnerable in "
+"are difficult to evade. They have few hitpoints and are highly vulnerable in "
 "melee combat, so take good care of them!"
 msgstr ""
 
@@ -1632,10 +1645,10 @@ msgstr ""
 #. [side]
 #. [unit]: type={TYPE}
 #: data/campaigns/The_Deceivers_Gambit/scenarios/02_Fort_Garard.cfg:724
-#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1637
-#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1672
-#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1733
-#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1763
+#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1636
+#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1671
+#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1732
+#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1762
 #: data/campaigns/The_Deceivers_Gambit/scenarios/07_The_Great_River.cfg:306
 #: data/campaigns/The_Deceivers_Gambit/scenarios/10_Houses_of_the_Dead.cfg:20
 #: data/campaigns/The_Deceivers_Gambit/scenarios/11_Clan_Blackcrest.cfg:1014
@@ -1952,13 +1965,13 @@ msgstr ""
 
 #. [unit]
 #: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:101
-#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1285
+#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1284
 msgid "Kalenz"
 msgstr ""
 
 #. [unit]
 #: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:111
-#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1301
+#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1300
 msgid "Chantal"
 msgstr ""
 
@@ -2152,7 +2165,7 @@ msgstr ""
 #. [note]
 #: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:429
 #: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:465
-#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1377
+#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1376
 msgid "Kalenz and Chantal will not follow you to the next scenario."
 msgstr ""
 
@@ -2326,7 +2339,7 @@ msgid "Void"
 msgstr ""
 
 #. [message]: speaker=Delfador
-#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1131
+#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1128
 msgid "What was that?!"
 msgstr ""
 
@@ -2338,107 +2351,107 @@ msgstr ""
 
 #. [message]
 #. the player's units have just been transported into a strange realm, and aren't sure what's going on. Kalenz probably knows more than anybody else, and is calling out to see where Elende is (and what exactly she's doing)
-#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1268
+#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1267
 msgid "Elende!"
 msgstr ""
 
 #. [message]
-#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1273
+#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1272
 msgid "Elende, I come with friends, seeking foresight! Deoran and Del—"
 msgstr ""
 
 #. [message]
 #. immediately after this, magically created "mirror image" units of younger/older versions of Kalenz, Chantal, and Deoran appear
-#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1279
+#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1278
 msgid ""
 "I know who you are, Delfador of Alduin. But how well do you know yourselves?"
 msgstr ""
 
 #. [unit]
-#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1317
-#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:62
+#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1316
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:65
 msgid "Deoran"
 msgstr "Deoran"
 
 #. [message]
 #. referencing the mirror image of Deoran
-#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1333
+#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1332
 msgid "Deoran, is that... you? You look so much younger."
 msgstr ""
 
 #. [message]
-#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1337
+#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1336
 msgid "What’s going on?! Kalenz, is this normal?"
 msgstr ""
 
 #. [objective]: condition=win
-#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1363
+#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1362
 msgid "Defeat all enemies"
 msgstr ""
 
 #. [objective]: condition=lose
 #. if reduced to 0 hp, Delfador doesn't die. Instead, he's kicked out of the mirror world, and fails the scenario
-#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1368
+#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1367
 msgid "Loss of Delfador"
 msgstr ""
 
 #. [note]
-#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1380
+#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1379
 msgid ""
 "In this strange world, fate guides every strike. <i>(attacks never miss)</i>"
 msgstr ""
 
 #. [event]
-#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1406
+#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1405
 msgid ""
 "The mortal world beckons; tell me the rest of the prophecy when next we meet!"
 msgstr ""
 
 #. [event]
-#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1407
+#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1406
 msgid "Elende, I hope you know what you’re doing. Good luck, the rest of you!"
 msgstr ""
 
 #. [event]
-#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1408
+#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1407
 msgid ""
 "Owww! Elende, it’s very rude to banish someone without their permission!"
 msgstr ""
 
 #. [message]: speaker=Delfador
 #. Delfador has just been reduced to 0hp, and been "kicked out" of Elenede's "mirror realm" or wherever she was giving the prophecy
-#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1416
+#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1415
 msgid "Hey, stop—"
 msgstr ""
 
 #. [time]
-#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1433
-#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1910
+#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1432
+#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1909
 msgid "Dawn"
 msgstr ""
 
 #. [message]: speaker=Delfador
 #. Delfador has missed the ending of the prophecy, and the player loses the scenario
-#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1457
+#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1456
 msgid "I didn’t get to finish hearing everything..."
 msgstr ""
 
 #. [message]
 #. spoken by Elende (through Kalenz's mirror image), referencing Legend of Wesmere's invisibility potion and Landar
-#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1487
+#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1486
 msgid ""
 "Lich’s eye and brother’s bone; what have you sacrificed to save your people, "
 "Kalenz? Your greatest fear stands before you... ahead of you?"
 msgstr ""
 
 #. [message]
-#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1491
+#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1490
 msgid "That was long ago, Elende! This is about the humans’ story, not mine."
 msgstr ""
 
 #. [message]
 #. spoken by Elende (through Deoran's mirror image), referencing his exile. I intend "nation" more in the "people" sense than the "country" sense.
-#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1522
+#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1521
 msgid ""
 "Deoran the exile returns home; returns to a nation that scorned him, ignored "
 "his counsel and cast him away. What will become of the life he has built "
@@ -2446,7 +2459,7 @@ msgid ""
 msgstr ""
 
 #. [message]
-#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1526
+#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1525
 msgid ""
 "I know my duty! A captain of Wesnoth will never entertain doubts of loyalty, "
 "whether to his country or his King."
@@ -2454,49 +2467,49 @@ msgstr ""
 
 #. [message]
 #. spoken by Elende (through Chantal's mirror image), referencing Cleodil's historic death and foreshadowing Deoran's upcoming death
-#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1539
+#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1538
 msgid "Chantal—"
 msgstr ""
 
 #. [message]
-#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1543
+#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1542
 msgid ""
 "I already know what you’re going to say Elende! Don’t you dare; I will when "
 "I’m ready."
 msgstr ""
 
 #. [message]
-#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1549
+#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1548
 msgid ""
 "Then you may soon understand some measure of your great-grandfather’s bygone "
 "sorrows..."
 msgstr ""
 
 #. [message]
-#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1628
-#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1862
-#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1869
+#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1627
+#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1861
+#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1868
 msgid "Elende"
 msgstr ""
 
 #. [message]
 #. Elende reaveals that she's the one who gave the weird prophecy thing to Delfador at Alduin, even though she wasn't physically there
-#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1631
+#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1630
 msgid ""
 "And what of the fire mage? Young but ambitious, brilliant yet foolish. It "
 "has been many moons since I spoke to you at Alduin."
 msgstr ""
 
 #. [message]
-#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1635
+#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1634
 msgid ""
 "That was you, back at graduation? I knew I heard a voice! Master Leollyn "
 "thought I was going crazy..."
 msgstr ""
 
 #. [event]
-#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1638
-#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1765
+#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1637
+#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1764
 msgid ""
 "Spend 8 XP to gain flight and the skirmisher ability until the start of your "
 "next turn or until cancelled."
@@ -2506,7 +2519,7 @@ msgstr ""
 
 #. [message]
 #. pale spy meaning Asheviere. Referencing Asheviere resolving to kill Garard, and working with orcs to arrange the events of the next two scenarios
-#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1668
+#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1667
 msgid ""
 "I see secrets in the dark; a pale spy slips their bonds. A death, a "
 "deceiver. Ringed swords, cold blood, false friends."
@@ -2514,21 +2527,21 @@ msgstr ""
 
 #. [message]
 #. referencing Delfador's adventures in scenarios 8-10, where he works with (or kills) poachers to fight saurians, then fights undead and a ghost given the appearance of a living drake.
-#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1729
+#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1728
 msgid ""
 "The dark swamp looms. Purses and poachers, mirror and smoke. A figure of "
 "shadow cloaked in the spirits of the dead. Battles won while wars are lost."
 msgstr ""
 
 #. [event]
-#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1734
+#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1733
 msgid ""
 "Spend 16 XP to disallow magical attacks in a 3-hex radius, until cancelled."
 msgstr ""
 
 #. [message]
 #. referencing the civil war when Asheviere takes power
-#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1759
+#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1758
 msgid ""
 "Brother against brother, father against child. From the barren throne will "
 "rise an angel of ashes; both great and terrible alike. The delicate balance "
@@ -2537,7 +2550,7 @@ msgid ""
 msgstr ""
 
 #. [event]
-#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1764
+#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1763
 msgid ""
 "Spend 48 XP to grant yourself and all allies double movement and a second "
 "attack this turn. When this turn ends, affected units become slowed."
@@ -2545,7 +2558,7 @@ msgstr ""
 
 #. [message]
 #. referncing the future events of HttT; Konrad and Li'Sar retriving the sceptre of fire
-#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1855
+#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1854
 msgid ""
 "Black soot rains over Weldyn. The line of kings sundered; the ruby of the "
 "wesfolk restored. The nameless son and the ashen daughter."
@@ -2553,7 +2566,7 @@ msgstr ""
 
 #. [message]
 #. referencing Delfador's choice in S10x
-#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1865
+#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1864
 msgid ""
 "But this fate is not the only path. Mage of Alduin, you stand at a knot in "
 "the strands, a nexus of the shards. For one brief moment, you will possess "
@@ -2563,7 +2576,7 @@ msgstr ""
 
 #. [message]
 #. referencing Delfador's choice in S10x. He can either listen to a drunk Garard and kill Garard's brother Arand based on false reports of a betrayal, or refuse, stay with Garard, and find out more about Arand before attacking
-#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1872
+#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1871
 msgid ""
 "When that moment comes, remember... endeavor to bestow not destruction with "
 "that fire that you possess, but the gleaming light of truth instead. Quench "
@@ -2571,13 +2584,13 @@ msgid ""
 msgstr ""
 
 #. [message]
-#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1876
+#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1875
 msgid "But, what? I don’t understa—"
 msgstr ""
 
 #. [message]: speaker=Delfador
 #. Delfador previously said "But, what? I don’t understa—", but has now been kicked out of Elende's 'mirror world' and is back in the normal world. The scenario is over.
-#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1932
+#: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1931
 msgid "—nd what you’re saying..."
 msgstr ""
 
@@ -4297,7 +4310,7 @@ msgstr ""
 #: data/campaigns/The_Deceivers_Gambit/scenarios/10_Houses_of_the_Dead.cfg:786
 #: data/campaigns/The_Deceivers_Gambit/scenarios/11_Clan_Blackcrest.cfg:311
 #: data/campaigns/The_Deceivers_Gambit/scenarios/11_Clan_Blackcrest.cfg:398
-#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:147
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:151
 msgid "Omaranth"
 msgstr "Omarant"
 
@@ -7543,7 +7556,7 @@ msgstr ""
 #. [message]: speaker=Eldred
 #: data/campaigns/The_Deceivers_Gambit/scenarios/14_Long_Live_the_Queen.cfg:837
 msgid ""
-"They say this elixir came all the way from the old continent, Delfador. "
+"They say this elixir came all the way from the Old Continent, Delfador. "
 "Persuading Malal to give it up wasn’t easy.\n"
 "\n"
 "You like magic so much? Once I drink from Jevyan’s Cup, I’ll have enough "
@@ -7570,8 +7583,8 @@ msgstr ""
 #: data/campaigns/The_Deceivers_Gambit/scenarios/14_Long_Live_the_Queen.cfg:1470
 #: data/campaigns/The_Deceivers_Gambit/scenarios/14_Long_Live_the_Queen.cfg:1525
 #: data/campaigns/The_Deceivers_Gambit/scenarios/14_Long_Live_the_Queen.cfg:1544
-#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:90
-#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:99
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:94
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:103
 msgid "Eldred"
 msgstr "Eldred"
 
@@ -8370,118 +8383,125 @@ msgid ""
 "if only Methor would award me mine too ...in red, of course."
 msgstr ""
 
-#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:48
-#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:55
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:49
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:57
 msgid "Methor"
 msgstr "Methor"
 
-#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:72
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:76
 msgid "Arand"
 msgstr "Arand"
 
-#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:81
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:85
 msgid "Asheviere"
 msgstr "Ašvíra"
 
-#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:109
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:113
 msgid "Lionel"
 msgstr "Lionel"
 
-#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:123
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:127
 msgid "Lord Maddock"
 msgstr "Lord Maddok"
 
-#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:131
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:135
 msgid "Colonel Dommel"
 msgstr "Plukovník Dommel"
 
-#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:139
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:143
 msgid "Kestrel"
 msgstr "Kestrel"
 
-#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:171
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:175
 msgid "Iliah-Malal"
 msgstr "Iliah-Malal"
 
-#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:208
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:212
 msgid "Garard II"
 msgstr "Garard II."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:513
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:514
 msgid "No, it can’t end yet! I have so much left to do..."
 msgstr "Ne, ještě to nemůže skončit! Ještě toho musím tolik udělat..."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:524
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:525
 msgid "No! Magic, why have you failed me..."
 msgstr "Ne! Magie, proč jsi mě zklamala..."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:535
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:536
 msgid "If only I had been a little wiser..."
 msgstr "Kdybych jen byl trochu moudřejší..."
 
 #. [message]: speaker=Methor
-#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:547
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:548
 msgid "War, pain, death... I tried so hard to change things..."
 msgstr "Válka, bolest, smrt... Tolik jsem se snažil věci změnit..."
 
 #. [message]: speaker=Deoran
-#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:559
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:560
 msgid "I have failed my kingdom and my duty..."
 msgstr "Zklamal jsem své království a nedostál své povinnosti..."
 
 #. [message]: speaker=Garard
 #. reference to Shakespeare's Richard III
-#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:571
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:572
 msgid "A horse! A horse! My kingdom for a horse..."
 msgstr "Koně! Koně! Mé království za koně..."
 
 #. [message]: speaker=Asheviere
-#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:581
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:582
 msgid "It’s finally over..."
 msgstr "Konečně je po všem..."
 
 #. [message]: speaker=Lionel
-#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:591
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:592
 msgid "Blasted orcs..."
 msgstr "Zatracení skřeti..."
 
 #. [message]: speaker=Kalenz
-#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:603
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:604
 msgid "Nobody can cheat death forever..."
 msgstr "Nikdo nemůže unikat smrti věčně..."
 
 #. [message]: speaker=Chantal
-#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:614
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:615
 msgid "Deoran, I never had a chance to tell you—"
 msgstr "Deorane, nikdy jsem neměl příležitost ti říct..."
 
 #. [message]: speaker=Lynyan
-#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:629
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:630
 msgid "Boss, I ain’t feelin’ too hot..."
 msgstr "Šéfe, necítím se moc dobře..."
 
 #. [message]: speaker=Lynyan
-#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:634
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:635
 msgid "I ain’t feelin’ too hot..."
 msgstr "Necítím se moc dobře..."
 
 #. [message]: speaker=Barin
-#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:645
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:646
 msgid "I shoulda never left my swamp..."
 msgstr "Nikdy jsem neměl opustit svůj močál..."
 
 #. [message]: speaker=Kaylan
 #. since he reappears in HttT's blackwater port, he can't die here.
-#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:655
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:656
 msgid ""
 "I am grievously injured; I can be of no further aid in your quest. Fight on "
 "without me, Delfador!"
 msgstr ""
 "Jsem těžce zraněný, nemohu vám s vaším úkolem dál pomáhat. Bojuj beze mě, "
 "Delfadore!"
+
+#~ msgid ""
+#~ "Story continued in:\n"
+#~ "“Asheviere’s Dogs”"
+#~ msgstr ""
+#~ "Příběh pokračuje v tažení:\n"
+#~ "„Ašvířini psi“"
 
 #~ msgid ""
 #~ "<i>Levitate!?</i> Why bother with utility spells when fireballs are so "

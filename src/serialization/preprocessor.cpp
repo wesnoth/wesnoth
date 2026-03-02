@@ -1832,7 +1832,7 @@ void preprocess_resource(const std::string& res_name,
 			LOG_PREPROC << "writing cfg file: " << preproc_res_name;
 
 			filesystem::create_directory_if_missing_recursive(filesystem::directory_name(preproc_res_name));
-			io::write(*filesystem::ostream_file(preproc_res_name), cfg);
+			io::write(*filesystem::ostream_file(preproc_res_name), cfg, 0, true);
 		}
 
 		// Write the plain cfg file

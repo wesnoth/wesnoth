@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-editor\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-01-20 11:31-0600\n"
+"POT-Creation-Date: 2026-02-25 19:03-0600\n"
 "PO-Revision-Date: 2024-11-07 16:16+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nillguine@gmail.com>\n"
 "Language-Team: Turkish <->\n"
@@ -346,11 +346,11 @@ msgstr ""
 msgid "Load Map or Scenario"
 msgstr "Harita senaryodan yüklendi"
 
-#: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1147
+#: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1141
 msgid "New Map"
 msgstr "Yeni Harita"
 
-#: src/editor/map/context_manager.cpp:326 src/editor/map/map_context.cpp:1147
+#: src/editor/map/context_manager.cpp:326 src/editor/map/map_context.cpp:1141
 msgid "New Scenario"
 msgstr "Yeni Senaryo"
 
@@ -396,7 +396,7 @@ msgid "Save Map As"
 msgstr "Haritayı Şöyle Kaydet"
 
 #: src/editor/map/context_manager.cpp:704
-#: src/editor/map/context_manager.cpp:753 src/editor/map/map_context.cpp:274
+#: src/editor/map/context_manager.cpp:753 src/editor/map/map_context.cpp:228
 #: src/editor/palette/location_palette.cpp:263
 msgid "Error"
 msgstr "Hata"
@@ -477,74 +477,78 @@ msgstr "$side_num. taraf oyuncusu"
 msgid "The size of the target map is different from the current map"
 msgstr "Hedef harita bundan farklı boyutlarda"
 
-#: src/editor/map/map_context.cpp:187
+#: src/editor/map/map_context.cpp:188
 msgid "File not found"
 msgstr "Dosya bulunamadı"
 
-#: src/editor/map/map_context.cpp:194
+#: src/editor/map/map_context.cpp:195
 msgid "Empty file"
 msgstr "Boş dosya"
 
-#: src/editor/map/map_context.cpp:203
+#: src/editor/map/map_context.cpp:204
 #, fuzzy
 #| msgid "File does not have .map or .cfg extension"
 msgid "File does not have .map, .cfg, or .mask extension"
 msgstr "Dosyanın .map veya .cfg uzantısı yok"
 
-#: src/editor/map/map_context.cpp:250
+#: src/editor/map/map_context.cpp:227
+#, fuzzy
+#| msgid "Failed to load the scenario, attempting to load only the map."
 msgid ""
-"The map file looks like a scenario, but the map_data value does not point to "
+"Failed to load the scenario: $error\n"
+"\n"
+"Attempting to load only the map."
+msgstr "Senaryo yüklenemedi, yalnızca harita yüklenmeye çalışılıyor."
+
+#: src/editor/map/map_context.cpp:253
+#, fuzzy
+#| msgid ""
+#| "The map file looks like a scenario, but the map_data value does not point "
+#| "to an existing file"
+msgid ""
+"The file looks like a scenario, but the map_data attribute does not point to "
 "an existing file"
 msgstr ""
 "Harita dosyası bir senaryo gibi görünüyor, fakat map_data değeri mevcut bir "
 "dosyaya ait değil"
 
-#: src/editor/map/map_context.cpp:269
+#: src/editor/map/map_context.cpp:268
 #, fuzzy
 #| msgid ""
-#| "Found the characters '<<' indicating inline lua is present - aborting"
-msgid "Found the characters ‘<<’ indicating inline lua is present — aborting"
-msgstr ""
-"Satır içi lua'nın varlığını gösteren '<<' karakterleri bulundu - iptal "
-"ediliyor"
-
-#: src/editor/map/map_context.cpp:274
-msgid "Failed to load the scenario, attempting to load only the map."
-msgstr "Senaryo yüklenemedi, yalnızca harita yüklenmeye çalışılıyor."
-
-#: src/editor/map/map_context.cpp:281
+#| "The map file looks like a scenario, but the map_file value does not point "
+#| "to an existing file"
 msgid ""
-"The map file looks like a scenario, but the map_file value does not point to "
+"The file looks like a scenario, but the map_file attribute does not point to "
 "an existing file"
 msgstr ""
 "Harita dosyası bir senaryo gibi görünüyor, fakat map_file değeri mevcut bir "
 "dosyaya ait değil"
 
-#: src/editor/map/map_context.cpp:296
-msgid "Unable to parse file to find map data"
-msgstr "Harita verilerini bulmak için dosya ayrıştırılamıyor"
+#: src/editor/map/map_context.cpp:448
+msgid "Confirm"
+msgstr ""
 
-#: src/editor/map/map_context.cpp:841 src/editor/map/map_context.cpp:881
+#: src/editor/map/map_context.cpp:835 src/editor/map/map_context.cpp:875
 #, fuzzy
 #| msgid "Could not save the scenario: $msg"
 msgid "Could not save time schedule: $msg"
 msgstr "Senaryo kaydedilemedi: $msg"
 
-#: src/editor/map/map_context.cpp:875
+#: src/editor/map/map_context.cpp:869
 #, fuzzy
 #| msgid "Time Schedule Menu"
 msgid "Time schedule saved."
 msgstr "Zaman Çizelgesi Menüsü"
 
-#: src/editor/map/map_context.cpp:921
+#: src/editor/map/map_context.cpp:915
 msgid "Could not save the scenario: $msg"
 msgstr "Senaryo kaydedilemedi: $msg"
 
-#: src/editor/map/map_context.cpp:952
+#: src/editor/map/map_context.cpp:946
 msgid "Could not save into scenario"
 msgstr "Senaryoya kaydedilemedi"
 
-#: src/editor/map/map_context.cpp:962
+#: src/editor/map/map_context.cpp:956
 msgid "Could not save the map: $msg"
 msgstr "Harita kaydedilemedi: $msg"
 
@@ -612,6 +616,18 @@ msgstr "Cmd + tıklama: araziyi kopyalar"
 #: src/editor/palette/terrain_palettes.cpp:237
 msgid "Ctrl + click: copy terrain"
 msgstr "Ctrl + tıklama: araziyi kopyalar"
+
+#, fuzzy
+#~| msgid ""
+#~| "Found the characters '<<' indicating inline lua is present - aborting"
+#~ msgid ""
+#~ "Found the characters ‘<<’ indicating inline lua is present — aborting"
+#~ msgstr ""
+#~ "Satır içi lua'nın varlığını gösteren '<<' karakterleri bulundu - iptal "
+#~ "ediliyor"
+
+#~ msgid "Unable to parse file to find map data"
+#~ msgstr "Harita verilerini bulmak için dosya ayrıştırılamıyor"
 
 #~ msgid "Load Map"
 #~ msgstr "Harita yükle"

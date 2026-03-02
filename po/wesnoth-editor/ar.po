@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.4.2+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-01-20 11:31-0600\n"
+"POT-Creation-Date: 2026-02-25 19:03-0600\n"
 "PO-Revision-Date: 2025-03-23 10:29+0100\n"
 "Last-Translator: Mejri Ziad <nouveau.dep@gmail.com>\n"
 "Language-Team: none\n"
@@ -341,11 +341,11 @@ msgstr "<span color='red'><span face='DejaVuSans'>✘</span> $msg</span>"
 msgid "Load Map or Scenario"
 msgstr "تم تحميل الخريطة من السيناريو"
 
-#: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1147
+#: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1141
 msgid "New Map"
 msgstr "خريطة جديدة"
 
-#: src/editor/map/context_manager.cpp:326 src/editor/map/map_context.cpp:1147
+#: src/editor/map/context_manager.cpp:326 src/editor/map/map_context.cpp:1141
 msgid "New Scenario"
 msgstr "إنشاء سيناريو  جديد"
 
@@ -391,7 +391,7 @@ msgid "Save Map As"
 msgstr "حفظ الخريطة ك"
 
 #: src/editor/map/context_manager.cpp:704
-#: src/editor/map/context_manager.cpp:753 src/editor/map/map_context.cpp:274
+#: src/editor/map/context_manager.cpp:753 src/editor/map/map_context.cpp:228
 #: src/editor/palette/location_palette.cpp:263
 msgid "Error"
 msgstr "خطأ"
@@ -468,61 +468,70 @@ msgstr "اللاعب رقم $side_num"
 msgid "The size of the target map is different from the current map"
 msgstr "حجم الخريطة الهدف يختلف عن الخريطة الحالية"
 
-#: src/editor/map/map_context.cpp:187
+#: src/editor/map/map_context.cpp:188
 msgid "File not found"
 msgstr "لم يتم العثور على الملف"
 
-#: src/editor/map/map_context.cpp:194
+#: src/editor/map/map_context.cpp:195
 msgid "Empty file"
 msgstr "ملف فارغ"
 
-#: src/editor/map/map_context.cpp:203
+#: src/editor/map/map_context.cpp:204
 msgid "File does not have .map, .cfg, or .mask extension"
 msgstr "لا يحتوي الملف على امتداد .map أو .cfg أو .mask"
 
-#: src/editor/map/map_context.cpp:250
+#: src/editor/map/map_context.cpp:227
+#, fuzzy
+#| msgid "Failed to load the scenario, attempting to load only the map."
 msgid ""
-"The map file looks like a scenario, but the map_data value does not point to "
-"an existing file"
-msgstr ""
-"يبدو ملف الخريطة كسيناريو ، لكن قيمة بيانات الخريطة لا تشير إلى ملف موجود"
-
-#: src/editor/map/map_context.cpp:269
-msgid "Found the characters ‘<<’ indicating inline lua is present — aborting"
-msgstr "وجود علامة '<<' يعني وجود برمجة بلغة lua — إيقاف التحميل"
-
-#: src/editor/map/map_context.cpp:274
-msgid "Failed to load the scenario, attempting to load only the map."
+"Failed to load the scenario: $error\n"
+"\n"
+"Attempting to load only the map."
 msgstr "فشل تحميل السيناريو. محاولة تحميل الخريطة فقط."
 
-#: src/editor/map/map_context.cpp:281
+#: src/editor/map/map_context.cpp:253
+#, fuzzy
+#| msgid ""
+#| "The map file looks like a scenario, but the map_data value does not point "
+#| "to an existing file"
 msgid ""
-"The map file looks like a scenario, but the map_file value does not point to "
+"The file looks like a scenario, but the map_data attribute does not point to "
 "an existing file"
 msgstr ""
 "يبدو ملف الخريطة كسيناريو ، لكن قيمة بيانات الخريطة لا تشير إلى ملف موجود"
 
-#: src/editor/map/map_context.cpp:296
-msgid "Unable to parse file to find map data"
-msgstr "عدم قدرة على إيجاد معلومات الخريطة"
+#: src/editor/map/map_context.cpp:268
+#, fuzzy
+#| msgid ""
+#| "The map file looks like a scenario, but the map_file value does not point "
+#| "to an existing file"
+msgid ""
+"The file looks like a scenario, but the map_file attribute does not point to "
+"an existing file"
+msgstr ""
+"يبدو ملف الخريطة كسيناريو ، لكن قيمة بيانات الخريطة لا تشير إلى ملف موجود"
 
-#: src/editor/map/map_context.cpp:841 src/editor/map/map_context.cpp:881
+#: src/editor/map/map_context.cpp:448
+msgid "Confirm"
+msgstr ""
+
+#: src/editor/map/map_context.cpp:835 src/editor/map/map_context.cpp:875
 msgid "Could not save time schedule: $msg"
 msgstr "تعذر حفظ الجدول الزمني: $msg"
 
-#: src/editor/map/map_context.cpp:875
+#: src/editor/map/map_context.cpp:869
 msgid "Time schedule saved."
 msgstr "تم حفظ الجدول الزمني."
 
-#: src/editor/map/map_context.cpp:921
+#: src/editor/map/map_context.cpp:915
 msgid "Could not save the scenario: $msg"
 msgstr "تعذر حفظ السيناريو: $msg"
 
-#: src/editor/map/map_context.cpp:952
+#: src/editor/map/map_context.cpp:946
 msgid "Could not save into scenario"
 msgstr "لا يمكن الحفظ في السيناريو"
 
-#: src/editor/map/map_context.cpp:962
+#: src/editor/map/map_context.cpp:956
 msgid "Could not save the map: $msg"
 msgstr "تعذر حفظ الخريطة: $msg"
 
@@ -588,6 +597,13 @@ msgstr "Cmd + النقر: نسخ التضاريس"
 #: src/editor/palette/terrain_palettes.cpp:237
 msgid "Ctrl + click: copy terrain"
 msgstr "Ctrl + النقر: نسخ التضاريس"
+
+#~ msgid ""
+#~ "Found the characters ‘<<’ indicating inline lua is present — aborting"
+#~ msgstr "وجود علامة '<<' يعني وجود برمجة بلغة lua — إيقاف التحميل"
+
+#~ msgid "Unable to parse file to find map data"
+#~ msgstr "عدم قدرة على إيجاد معلومات الخريطة"
 
 #~ msgid "Load Map"
 #~ msgstr "تحميل خريطة"

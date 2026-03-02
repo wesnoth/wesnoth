@@ -3,14 +3,14 @@
 # Copyright (C) Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
-# Antonio Rosella <arosella@yahoo.com>, 2021-2025.
+# Antonio 'Antro' Rosella <arosella@yahoo.com>, 2021-2026.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-11-18 02:02 UTC\n"
-"PO-Revision-Date: 2025-08-02 14:42+0200\n"
+"POT-Creation-Date: 2026-02-26 01:04 UTC\n"
+"PO-Revision-Date: 2026-02-27 18:36+0100\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: none\n"
 "Language: it\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.4.4\n"
+"X-Generator: Poedit 3.6\n"
 
 #. [era]: id=world_conquest_era
 #: data/campaigns/World_Conquest/_main.cfg:41
@@ -2693,8 +2693,12 @@ msgstr ""
 
 #. [leadership]: id=forcefield
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:249
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:250
 msgid "forcefield"
+msgstr "campo di forza"
+
+#. [leadership]: id=forcefield
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:250
+msgid "female^forcefield"
 msgstr "campo di forza"
 
 #. [leadership]: id=forcefield
@@ -2993,8 +2997,12 @@ msgstr ""
 
 #. [berserk]: id=wct_fury
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:624
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:625
 msgid "fury"
+msgstr "furia"
+
+#. [berserk]: id=wct_fury
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:625
+msgid "female^fury"
 msgstr "furia"
 
 #. [berserk]: id=wct_fury
@@ -3049,8 +3057,12 @@ msgstr ""
 
 #. [illuminates]: id=darkness
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:674
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:675
 msgid "darkness"
+msgstr "oscurità"
+
+#. [illuminates]: id=darkness
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:675
+msgid "female^darkness"
 msgstr "oscurità"
 
 #. [illuminates]: id=darkness
@@ -3067,8 +3079,12 @@ msgstr ""
 
 #. [dummy]: id=wc2_corruption
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:681
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:682
 msgid "corruption"
+msgstr "corruzione"
+
+#. [dummy]: id=wc2_corruption
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:682
+msgid "female^corruption"
 msgstr "corruzione"
 
 #. [dummy]: id=wc2_corruption
@@ -3164,8 +3180,12 @@ msgstr ""
 
 #. [leadership]: id=banner
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:784
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:785
 msgid "banner"
+msgstr "stendardo"
+
+#. [leadership]: id=banner
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:785
+msgid "female^banner"
 msgstr "stendardo"
 
 #. [leadership]: id=banner
@@ -3387,7 +3407,6 @@ msgstr "$range|: $special|"
 #. [skirmisher]: id=distract
 #: data/campaigns/World_Conquest/resources/data/training.cfg:378
 #: data/campaigns/World_Conquest/resources/data/training.cfg:403
-#: data/campaigns/World_Conquest/resources/data/training.cfg:404
 msgid "distract"
 msgstr "distrazione"
 
@@ -3395,9 +3414,13 @@ msgstr "distrazione"
 #. [resistance]: id=tenacity
 #: data/campaigns/World_Conquest/resources/data/training.cfg:390
 #: data/campaigns/World_Conquest/resources/data/training.cfg:427
-#: data/campaigns/World_Conquest/resources/data/training.cfg:428
 msgid "tenacity"
 msgstr "tenacia"
+
+#. [skirmisher]: id=distract
+#: data/campaigns/World_Conquest/resources/data/training.cfg:404
+msgid "female^distract"
+msgstr "distrazione"
 
 #. [skirmisher]: id=distract
 #: data/campaigns/World_Conquest/resources/data/training.cfg:405
@@ -3405,6 +3428,11 @@ msgid "Allied units ignore enemy zones of control adjacent to this unit."
 msgstr ""
 "Tutte le unità alleate ignorano la zona di controllo dei nemici vicini a "
 "questa unità."
+
+#. [resistance]: id=tenacity
+#: data/campaigns/World_Conquest/resources/data/training.cfg:428
+msgid "female^tenacity"
+msgstr "tenacia"
 
 #. [resistance]: id=tenacity
 #: data/campaigns/World_Conquest/resources/data/training.cfg:429

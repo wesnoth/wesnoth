@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-01-20 11:31-0600\n"
+"POT-Creation-Date: 2026-02-25 19:03-0600\n"
 "PO-Revision-Date: 2026-01-23 22:36+0100\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
@@ -339,11 +339,11 @@ msgstr "<span color='red'><span face='DejaVuSans'>✘</span> $msg</span>"
 msgid "Load Map or Scenario"
 msgstr "Načíst mapu nebo scénář"
 
-#: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1147
+#: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1141
 msgid "New Map"
 msgstr "Nová mapa"
 
-#: src/editor/map/context_manager.cpp:326 src/editor/map/map_context.cpp:1147
+#: src/editor/map/context_manager.cpp:326 src/editor/map/map_context.cpp:1141
 msgid "New Scenario"
 msgstr "Nový scénář"
 
@@ -389,7 +389,7 @@ msgid "Save Map As"
 msgstr "Uložit mapu jako"
 
 #: src/editor/map/context_manager.cpp:704
-#: src/editor/map/context_manager.cpp:753 src/editor/map/map_context.cpp:274
+#: src/editor/map/context_manager.cpp:753 src/editor/map/map_context.cpp:228
 #: src/editor/palette/location_palette.cpp:263
 msgid "Error"
 msgstr "Chyba"
@@ -462,63 +462,72 @@ msgstr "Hráč $side_num"
 msgid "The size of the target map is different from the current map"
 msgstr "Velikost cílové mapy je odlišná od současné mapy"
 
-#: src/editor/map/map_context.cpp:187
+#: src/editor/map/map_context.cpp:188
 msgid "File not found"
 msgstr "Soubor nebyl nalezen"
 
-#: src/editor/map/map_context.cpp:194
+#: src/editor/map/map_context.cpp:195
 msgid "Empty file"
 msgstr "Prázdný soubor"
 
-#: src/editor/map/map_context.cpp:203
+#: src/editor/map/map_context.cpp:204
 msgid "File does not have .map, .cfg, or .mask extension"
 msgstr "Soubor nemá příponu .map, .cfg nebo .mask"
 
-#: src/editor/map/map_context.cpp:250
+#: src/editor/map/map_context.cpp:227
+#, fuzzy
+#| msgid "Failed to load the scenario, attempting to load only the map."
 msgid ""
-"The map file looks like a scenario, but the map_data value does not point to "
+"Failed to load the scenario: $error\n"
+"\n"
+"Attempting to load only the map."
+msgstr "Nepodařilo se načíst scénář, pokouším se nahrát pouze mapu."
+
+#: src/editor/map/map_context.cpp:253
+#, fuzzy
+#| msgid ""
+#| "The map file looks like a scenario, but the map_data value does not point "
+#| "to an existing file"
+msgid ""
+"The file looks like a scenario, but the map_data attribute does not point to "
 "an existing file"
 msgstr ""
 "Soubor mapy se zdá být scénářem, ale klíč map_data není odkazem na "
 "existující soubor"
 
-#: src/editor/map/map_context.cpp:269
-msgid "Found the characters ‘<<’ indicating inline lua is present — aborting"
-msgstr "Nalezeny znaky „<<“ naznačující přítomnost inline lua – končím"
-
-#: src/editor/map/map_context.cpp:274
-msgid "Failed to load the scenario, attempting to load only the map."
-msgstr "Nepodařilo se načíst scénář, pokouším se nahrát pouze mapu."
-
-#: src/editor/map/map_context.cpp:281
+#: src/editor/map/map_context.cpp:268
+#, fuzzy
+#| msgid ""
+#| "The map file looks like a scenario, but the map_file value does not point "
+#| "to an existing file"
 msgid ""
-"The map file looks like a scenario, but the map_file value does not point to "
+"The file looks like a scenario, but the map_file attribute does not point to "
 "an existing file"
 msgstr ""
 "Soubor mapy vypadá jako scénář, ale hodnota map_file neodkazuje na "
 "existující soubor"
 
-#: src/editor/map/map_context.cpp:296
-msgid "Unable to parse file to find map data"
-msgstr "Nedokážu rozebrat soubor a najít mapová data"
+#: src/editor/map/map_context.cpp:448
+msgid "Confirm"
+msgstr "Potvrdit"
 
-#: src/editor/map/map_context.cpp:841 src/editor/map/map_context.cpp:881
+#: src/editor/map/map_context.cpp:835 src/editor/map/map_context.cpp:875
 msgid "Could not save time schedule: $msg"
 msgstr "Nelze uložit rozvrh dne: $msg"
 
-#: src/editor/map/map_context.cpp:875
+#: src/editor/map/map_context.cpp:869
 msgid "Time schedule saved."
 msgstr "Rozvrh dne uložen."
 
-#: src/editor/map/map_context.cpp:921
+#: src/editor/map/map_context.cpp:915
 msgid "Could not save the scenario: $msg"
 msgstr "Nepodařilo se uložit scénář: $msg"
 
-#: src/editor/map/map_context.cpp:952
+#: src/editor/map/map_context.cpp:946
 msgid "Could not save into scenario"
 msgstr "Nebylo možno uložit do scénáře"
 
-#: src/editor/map/map_context.cpp:962
+#: src/editor/map/map_context.cpp:956
 msgid "Could not save the map: $msg"
 msgstr "Nepodařilo se uložit mapu: $msg"
 
@@ -585,6 +594,13 @@ msgstr "Cmd + kliknutí: kopírovat terén"
 msgid "Ctrl + click: copy terrain"
 msgstr "Ctrl + kliknutí: kopírovat terén"
 
+#~ msgid ""
+#~ "Found the characters ‘<<’ indicating inline lua is present — aborting"
+#~ msgstr "Nalezeny znaky „<<“ naznačující přítomnost inline lua – končím"
+
+#~ msgid "Unable to parse file to find map data"
+#~ msgstr "Nedokážu rozebrat soubor a najít mapová data"
+
 #~ msgid "Choose File"
 #~ msgstr "Vybrat soubor"
 
@@ -597,6 +613,3 @@ msgstr "Ctrl + kliknutí: kopírovat terén"
 #~ msgstr ""
 #~ "Tento soubor se nachází mimo adresáře s daty Wesnothu. Chceš jej "
 #~ "zkopírovat do svého rozšíření?"
-
-#~ msgid "Confirm"
-#~ msgstr "Potvrdit"

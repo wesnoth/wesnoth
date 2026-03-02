@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-01-20 17:31 UTC\n"
-"PO-Revision-Date: 2026-01-21 14:13+1100\n"
+"POT-Creation-Date: 2026-02-26 01:03 UTC\n"
+"PO-Revision-Date: 2026-02-27 17:53+1100\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: none\n"
 "Language: en_GB\n"
@@ -65,7 +65,7 @@ msgstr "Spark"
 #. [campaign]: id=Dusk_of_Dawn
 #. [modify_unit]: id=FE
 #: data/campaigns/Dusk_of_Dawn/_main.cfg:27
-#: data/campaigns/Dusk_of_Dawn/scenarios/02_A_Dream.cfg:1449
+#: data/campaigns/Dusk_of_Dawn/scenarios/02_A_Dream.cfg:1418
 #: data/campaigns/Dusk_of_Dawn/scenarios/03_Fateful_Day.cfg:1147
 msgid "Flame"
 msgstr "Flame"
@@ -426,7 +426,7 @@ msgstr "Defeat the Inner Flame and Ash Flame leaders"
 #. [objective]: condition=lose
 #: data/campaigns/Dusk_of_Dawn/scenarios/01_First_Steps.cfg:170
 #: data/campaigns/Dusk_of_Dawn/scenarios/02_A_Dream.cfg:173
-#: data/campaigns/Dusk_of_Dawn/scenarios/02_A_Dream.cfg:1170
+#: data/campaigns/Dusk_of_Dawn/scenarios/02_A_Dream.cfg:1155
 #: data/campaigns/Dusk_of_Dawn/scenarios/03_Fateful_Day.cfg:298
 #: data/campaigns/Dusk_of_Dawn/scenarios/03_Fateful_Day.cfg:648
 #: data/campaigns/Dusk_of_Dawn/scenarios/Secret.cfg:99
@@ -476,7 +476,7 @@ msgstr "S s s s...!"
 
 #. [message]: speaker=OL
 #: data/campaigns/Dusk_of_Dawn/scenarios/01_First_Steps.cfg:482
-#: data/campaigns/Dusk_of_Dawn/scenarios/02_A_Dream.cfg:1302
+#: data/campaigns/Dusk_of_Dawn/scenarios/02_A_Dream.cfg:1271
 #: data/campaigns/Dusk_of_Dawn/scenarios/Secret.cfg:617
 #: data/campaigns/Dusk_of_Dawn/utils/defeat.cfg:27
 msgid "Ougl?"
@@ -533,20 +533,20 @@ msgstr ""
 #: data/campaigns/Dusk_of_Dawn/scenarios/01_First_Steps.cfg:877
 msgid ""
 "There is an open trapdoor in the ruined dwarven castle. Do you want to go "
-"through it and play the bonus level?"
+"through it and play the bonus puzzle level?"
 msgstr ""
 "There is an open trapdoor in the ruined dwarven castle. Do you want to go "
-"through it and play the bonus level?"
+"through it and play the bonus puzzle level?"
 
 #. [option]
 #: data/campaigns/Dusk_of_Dawn/scenarios/01_First_Steps.cfg:879
-msgid "I will play the bonus scenario."
-msgstr "I will play the bonus scenario."
+msgid "I will play the bonus puzzle scenario."
+msgstr "I will play the bonus puzzle scenario."
 
 #. [option]
 #: data/campaigns/Dusk_of_Dawn/scenarios/01_First_Steps.cfg:890
-msgid "I don’t want to play the bonus scenario."
-msgstr "I don’t want to play the bonus scenario."
+msgid "I don’t want to play the bonus puzzle scenario."
+msgstr "I don’t want to play the bonus puzzle scenario."
 
 #. [scenario]: id=02_A_Dream
 #: data/campaigns/Dusk_of_Dawn/scenarios/02_A_Dream.cfg:5
@@ -603,13 +603,13 @@ msgstr "Ommm the Oldest"
 
 #. [objective]: condition=win
 #: data/campaigns/Dusk_of_Dawn/scenarios/02_A_Dream.cfg:169
-#: data/campaigns/Dusk_of_Dawn/scenarios/02_A_Dream.cfg:1166
+#: data/campaigns/Dusk_of_Dawn/scenarios/02_A_Dream.cfg:1151
 msgid "Survive until turns run out"
 msgstr "Survive until turns run out"
 
 #. [note]
 #: data/campaigns/Dusk_of_Dawn/scenarios/02_A_Dream.cfg:183
-#: data/campaigns/Dusk_of_Dawn/scenarios/02_A_Dream.cfg:1184
+#: data/campaigns/Dusk_of_Dawn/scenarios/02_A_Dream.cfg:1169
 msgid ""
 "If a Fire Guardian or Fire Wraith moves on a forest or grass tile it will "
 "partially burn down. Enter a tile twice to completely burn it down."
@@ -619,7 +619,7 @@ msgstr ""
 
 #. [note]
 #: data/campaigns/Dusk_of_Dawn/scenarios/02_A_Dream.cfg:187
-#: data/campaigns/Dusk_of_Dawn/scenarios/02_A_Dream.cfg:1188
+#: data/campaigns/Dusk_of_Dawn/scenarios/02_A_Dream.cfg:1173
 msgid ""
 "The grove area has a special time of day: Mystic Light, which gives lawful "
 "units bonus +25%, and chaotic -25%."
@@ -629,7 +629,7 @@ msgstr ""
 
 #. [note]
 #: data/campaigns/Dusk_of_Dawn/scenarios/02_A_Dream.cfg:191
-#: data/campaigns/Dusk_of_Dawn/scenarios/02_A_Dream.cfg:1192
+#: data/campaigns/Dusk_of_Dawn/scenarios/02_A_Dream.cfg:1177
 msgid "Woses teleport from the castle through the Great Trees."
 msgstr "Woses teleport from the castle through the Great Trees."
 
@@ -685,7 +685,7 @@ msgstr "Ammm the Maple"
 
 #. [message]: speaker=AM
 #: data/campaigns/Dusk_of_Dawn/scenarios/02_A_Dream.cfg:760
-#: data/campaigns/Dusk_of_Dawn/scenarios/02_A_Dream.cfg:1287
+#: data/campaigns/Dusk_of_Dawn/scenarios/02_A_Dream.cfg:1256
 msgid "A m m m...?"
 msgstr "A m m m...?"
 
@@ -724,25 +724,18 @@ msgstr "Ougl...?"
 msgid "There was nothing left for the trolls to do but defend themselves."
 msgstr "There was nothing left for the trolls to do but defend themselves."
 
-#. [message]: speaker=narrator
-#: data/campaigns/Dusk_of_Dawn/scenarios/02_A_Dream.cfg:850
-msgid ""
-"Units recruited by an enemy leader are always assigned the fearless trait."
-msgstr ""
-"Units recruited by an enemy leader are always assigned the fearless trait."
-
 #. [unit]: type=Wild Saurian, id=RE
-#: data/campaigns/Dusk_of_Dawn/scenarios/02_A_Dream.cfg:1094
+#: data/campaigns/Dusk_of_Dawn/scenarios/02_A_Dream.cfg:1079
 msgid "Refumee the Swampling"
 msgstr "Refumee the Swampling"
 
 #. [message]: speaker=RE
-#: data/campaigns/Dusk_of_Dawn/scenarios/02_A_Dream.cfg:1116
+#: data/campaigns/Dusk_of_Dawn/scenarios/02_A_Dream.cfg:1101
 msgid "S y s y...!"
 msgstr "S y s y...!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Dusk_of_Dawn/scenarios/02_A_Dream.cfg:1127
+#: data/campaigns/Dusk_of_Dawn/scenarios/02_A_Dream.cfg:1112
 msgid ""
 "The Saurian’s speech meant nothing to Ougl, but Ougl felt that he could "
 "trust and rely on her. He felt that the swamp dweller was not hostile and "
@@ -753,12 +746,12 @@ msgstr ""
 "wanted to support him."
 
 #. [message]: speaker=RE
-#: data/campaigns/Dusk_of_Dawn/scenarios/02_A_Dream.cfg:1139
+#: data/campaigns/Dusk_of_Dawn/scenarios/02_A_Dream.cfg:1124
 msgid "S y s y..."
 msgstr "S y s y..."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Dusk_of_Dawn/scenarios/02_A_Dream.cfg:1155
+#: data/campaigns/Dusk_of_Dawn/scenarios/02_A_Dream.cfg:1140
 msgid ""
 "The young trolls spotted a huge tree within the underground forest. This was "
 "one of the great woses, the guardians of the grove, and it glared menacingly "
@@ -769,7 +762,7 @@ msgstr ""
 "at the stone creatures who it believed were threatening saplings."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Dusk_of_Dawn/scenarios/02_A_Dream.cfg:1161
+#: data/campaigns/Dusk_of_Dawn/scenarios/02_A_Dream.cfg:1146
 msgid ""
 "Ougl was quick to guess that the death of any Elder Wose would only further "
 "enrage the treefolk, and resolved to keep his distance from them."
@@ -778,12 +771,12 @@ msgstr ""
 "enrage the treefolk, and resolved to keep his distance from them."
 
 #. [objective]: condition=lose
-#: data/campaigns/Dusk_of_Dawn/scenarios/02_A_Dream.cfg:1174
+#: data/campaigns/Dusk_of_Dawn/scenarios/02_A_Dream.cfg:1159
 msgid "Death of any of the Elder Woses located on the Great Trees"
 msgstr "Death of any of the Elder Woses located on the Great Trees"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Dusk_of_Dawn/scenarios/02_A_Dream.cfg:1206
+#: data/campaigns/Dusk_of_Dawn/scenarios/02_A_Dream.cfg:1191
 msgid ""
 "With the death of one of the three great guardians of the grove, the woses "
 "went into a frenzy. The trolls, helpless in the face of these strange new "
@@ -794,12 +787,12 @@ msgstr ""
 "creatures, knew it was their end."
 
 #. [message]: speaker=OM
-#: data/campaigns/Dusk_of_Dawn/scenarios/02_A_Dream.cfg:1276
+#: data/campaigns/Dusk_of_Dawn/scenarios/02_A_Dream.cfg:1245
 msgid "O m m m...!!"
 msgstr "O m m m...!!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Dusk_of_Dawn/scenarios/02_A_Dream.cfg:1282
+#: data/campaigns/Dusk_of_Dawn/scenarios/02_A_Dream.cfg:1251
 msgid ""
 "As the sound of battle echoed through the grove, a great old tree finally "
 "began to stir."
@@ -808,14 +801,14 @@ msgstr ""
 "began to stir."
 
 #. [message]: speaker=OM
-#: data/campaigns/Dusk_of_Dawn/scenarios/02_A_Dream.cfg:1297
-#: data/campaigns/Dusk_of_Dawn/scenarios/02_A_Dream.cfg:1307
-#: data/campaigns/Dusk_of_Dawn/scenarios/02_A_Dream.cfg:1387
+#: data/campaigns/Dusk_of_Dawn/scenarios/02_A_Dream.cfg:1266
+#: data/campaigns/Dusk_of_Dawn/scenarios/02_A_Dream.cfg:1276
+#: data/campaigns/Dusk_of_Dawn/scenarios/02_A_Dream.cfg:1356
 msgid "O m m m..."
 msgstr "O m m m..."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Dusk_of_Dawn/scenarios/02_A_Dream.cfg:1350
+#: data/campaigns/Dusk_of_Dawn/scenarios/02_A_Dream.cfg:1319
 msgid ""
 "The awakened Wose Shaman spoke to Ougl in a strange way, and Ougl "
 "understood. The Wose’s name was Ommm, and it was the leader of the tree folk."
@@ -824,7 +817,7 @@ msgstr ""
 "understood. The Wose’s name was Ommm, and it was the leader of the tree folk."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Dusk_of_Dawn/scenarios/02_A_Dream.cfg:1361
+#: data/campaigns/Dusk_of_Dawn/scenarios/02_A_Dream.cfg:1330
 msgid ""
 "Ommm used a mysterious magic to see the purpose of the troll’s journey, and "
 "whether they had evil intentions towards the green grove."
@@ -833,7 +826,7 @@ msgstr ""
 "whether they had evil intentions towards the green grove."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Dusk_of_Dawn/scenarios/02_A_Dream.cfg:1367
+#: data/campaigns/Dusk_of_Dawn/scenarios/02_A_Dream.cfg:1336
 msgid ""
 "It soon realized that the trolls were not to blame for the unfortunate "
 "skirmish."
@@ -842,17 +835,17 @@ msgstr ""
 "skirmish."
 
 #. [message]: speaker=OM
-#: data/campaigns/Dusk_of_Dawn/scenarios/02_A_Dream.cfg:1372
+#: data/campaigns/Dusk_of_Dawn/scenarios/02_A_Dream.cfg:1341
 msgid "O m m m...?"
 msgstr "O m m m...?"
 
 #. [message]: speaker=OL
-#: data/campaigns/Dusk_of_Dawn/scenarios/02_A_Dream.cfg:1382
+#: data/campaigns/Dusk_of_Dawn/scenarios/02_A_Dream.cfg:1351
 msgid "Ougl..."
 msgstr "Ougl..."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Dusk_of_Dawn/scenarios/02_A_Dream.cfg:1393
+#: data/campaigns/Dusk_of_Dawn/scenarios/02_A_Dream.cfg:1362
 msgid ""
 "Ougl wanted to travel further upwards, but the Wose Shaman advised him "
 "against it. The woses warned that the surface held many creatures who were "
@@ -863,7 +856,7 @@ msgstr ""
 "not guided by goodness of heart, but by the law of strength."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Dusk_of_Dawn/scenarios/02_A_Dream.cfg:1399
+#: data/campaigns/Dusk_of_Dawn/scenarios/02_A_Dream.cfg:1368
 msgid ""
 "But Ougl had seen green lands now, and he began to dream of seeing more. The "
 "higher he climbed, the more green there would be."
@@ -872,7 +865,7 @@ msgstr ""
 "higher he climbed, the more green there would be."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Dusk_of_Dawn/scenarios/02_A_Dream.cfg:1416
+#: data/campaigns/Dusk_of_Dawn/scenarios/02_A_Dream.cfg:1385
 msgid ""
 "After some thought, the Wose Shaman agreed to give the trolls directions to "
 "the surface. But the trolls were to first plant new trees in place of the "
@@ -883,7 +876,7 @@ msgstr ""
 "ones that had fallen during the battle."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Dusk_of_Dawn/scenarios/02_A_Dream.cfg:1425
+#: data/campaigns/Dusk_of_Dawn/scenarios/02_A_Dream.cfg:1394
 msgid ""
 "After some thought, the Wose Shaman agreed to give the trolls directions to "
 "the surface, but again warned Ougl that sometimes dreams are better left in "
@@ -1210,11 +1203,11 @@ msgstr "The troll suddenly feels an overwhelming rage."
 #. [note]
 #: data/campaigns/Dusk_of_Dawn/scenarios/03_Fateful_Day.cfg:669
 msgid ""
-"Trolls who move onto mushroom terrain will destroy the mushrooms and gain "
-"the <i>berserk</i> special on melee attacks."
+"In this scenario, trolls entering mushroom terrain will destroy the "
+"mushrooms and gain berserk on their melee attacks."
 msgstr ""
-"Trolls who move on to mushroom terrain will destroy the mushrooms and gain "
-"the <i>berserk</i> special on melee attacks."
+"In this scenario, trolls entering mushroom terrain will destroy the "
+"mushrooms and gain berserk on their melee attacks."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dusk_of_Dawn/scenarios/03_Fateful_Day.cfg:686
@@ -1806,6 +1799,88 @@ msgstr "sickle"
 msgid "Ougl...!"
 msgstr "Ougl...!"
 
+#. [message]: speaker=$unit.id|
+#. [message]: speaker=narrator
+#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:24
+#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:47
+msgid "Potion grants steadfast ability and 20% resistance to impact."
+msgstr "Potion grants steadfast ability and 20% resistance to impact."
+
+#. [option]
+#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:26
+#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:102
+#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:173
+msgid "Yes"
+msgstr "Yes"
+
+#. [object]: id={ID}
+#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:30
+msgid "Blue Potion"
+msgstr "Blue Potion"
+
+#. [object]: id={ID}
+#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:32
+msgid "A potion of unknown origin."
+msgstr "A potion of unknown origin."
+
+#. [message]: speaker=$unit.id|
+#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:48
+msgid "female^Potion grants steadfast ability and 20% resistance to impact."
+msgstr "Potion grants steadfast ability and 20% resistance to impact."
+
+#. [option]
+#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:71
+#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:142
+#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:214
+msgid "No"
+msgstr "No"
+
+#. [message]: speaker=$unit.id|
+#. [message]: speaker=narrator
+#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:100
+#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:123
+msgid "This magical branch grants +2 damage to melee attacks."
+msgstr "This magical branch grants +2 damage to melee attacks."
+
+#. [object]: id={ID}
+#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:106
+msgid "Wose Branch"
+msgstr "Wose Branch"
+
+#. [object]: id={ID}
+#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:108
+msgid "The magical branch of some great Wose."
+msgstr "The magical branch of some great Wose."
+
+#. [message]: speaker=narrator
+#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:171
+msgid "This unit will gain the stun weapon special on melee attacks."
+msgstr "This unit will gain the stun weapon special on melee attacks."
+
+#. [object]: id={ID}
+#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:177
+msgid "Echoes of the Earth"
+msgstr "Echoes of the Earth"
+
+#. [object]: id={ID}
+#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:179
+msgid "Powerful echoes from the bowels of the earth."
+msgstr "Powerful echoes from the bowels of the earth."
+
+#. [message]: speaker=$unit.id|
+#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:191
+msgid "The unit gains the stun weapon special on melee attacks."
+msgstr "The unit gains the stun weapon special on melee attacks."
+
+#. [message]: speaker=narrator
+#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:209
+msgid ""
+"After $unit.name| absorbed the stone’s power, the monolith lost its magical "
+"properties."
+msgstr ""
+"After $unit.name| absorbed the stone’s power, the monolith lost its magical "
+"properties."
+
 #. [time]: id=lava
 #: data/campaigns/Dusk_of_Dawn/utils/schedules.cfg:6
 msgid "Lava"
@@ -1815,6 +1890,21 @@ msgstr "Lava"
 #: data/campaigns/Dusk_of_Dawn/utils/schedules.cfg:18
 msgid "Magic Light"
 msgstr "Magic Light"
+
+#. [chance_to_hit]: id=unerring
+#: data/campaigns/Dusk_of_Dawn/utils/weapon_specials.cfg:6
+msgid "unerring"
+msgstr "unerring"
+
+#. [chance_to_hit]: id=unerring
+#: data/campaigns/Dusk_of_Dawn/utils/weapon_specials.cfg:7
+msgid "This attack never misses."
+msgstr "This attack never misses."
+
+#~ msgid ""
+#~ "Units recruited by an enemy leader are always assigned the fearless trait."
+#~ msgstr ""
+#~ "Units recruited by an enemy leader are always assigned the fearless trait."
 
 #~ msgid "Troll Earth-Shaker"
 #~ msgstr "Troll Earth-Shaker"

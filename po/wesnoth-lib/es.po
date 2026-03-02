@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-01-20 11:31-0600\n"
+"POT-Creation-Date: 2026-02-25 19:03-0600\n"
 "PO-Revision-Date: 2026-01-23 13:52-0300\n"
 "Last-Translator: Sebastián Lecchini<sebas38760@gmail.com>\n"
 "Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
@@ -2636,7 +2636,7 @@ msgstr "page^<b><span font_family='DejaVu Sans'>✔</span> Copiado</b>"
 #: data/gui/themes/default/dialogs/game_version.cfg:991
 #: data/gui/themes/default/dialogs/gamestate_inspector.cfg:398
 #: data/gui/themes/default/dialogs/generator_settings.cfg:190
-#: data/gui/themes/default/dialogs/help_browser.cfg:296
+#: data/gui/themes/default/dialogs/help_browser.cfg:295
 #: data/gui/themes/default/dialogs/lobby_player_info.cfg:292
 #: data/gui/themes/default/dialogs/lua_interpreter.cfg:130
 #: data/gui/themes/default/dialogs/message.cfg:135
@@ -2728,7 +2728,7 @@ msgstr "Aceptar"
 #: data/gui/themes/default/dialogs/addon_connect.cfg:206
 #: data/gui/themes/default/dialogs/addon_license_prompt.cfg:113
 #: data/gui/themes/default/dialogs/addon_uninstall_list.cfg:170
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:569
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:623
 #: data/gui/themes/default/dialogs/campaign_difficulty.cfg:234
 #: data/gui/themes/default/dialogs/core_dialog.cfg:241
 #: data/gui/themes/default/dialogs/custom_tod.cfg:524
@@ -2774,7 +2774,7 @@ msgstr "Aceptar"
 #: data/gui/themes/default/dialogs/theme_list.cfg:155
 #: data/gui/themes/default/dialogs/tod_new_schedule.cfg:139
 #: data/gui/themes/default/dialogs/unit_attack.cfg:233
-#: data/gui/themes/default/dialogs/units_dialog.cfg:623
+#: data/gui/themes/default/dialogs/units_dialog.cfg:622
 #: src/gui/dialogs/units_dialog.cpp:79 src/hotkey/hotkey_command.cpp:79
 msgid "Cancel"
 msgstr "Cancelar"
@@ -3121,7 +3121,104 @@ msgid "Defender"
 msgstr "Defensor"
 
 #. [label]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:191
+#. The campaign_landing^ strings are shown in the right-hand panel when the campaign menu is opened.
+#. This one is the page title, shown in bold.
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:205
+msgid "campaign_landing^Welcome to Wesnoth v1.20"
+msgstr ""
+
+#. [label]
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:207
+msgid ""
+"campaign_landing^<b>If you’re new to Wesnoth</b>, the opening story arc "
+"starts with <span color='#e1e119' style='italic'>The South Guard</span> and "
+"follows the campaigns in the order that they’re listed on the left, "
+"concluding half a century later with <span color='#e1e119' "
+"style='italic'>Heir to the Throne</span>. The intended way to learn both the "
+"story and the game mechanics is to play the campaigns in that order."
+msgstr ""
+
+#. [label]
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:209
+msgid ""
+"campaign_landing^<b>If you’re a returning player</b>, you’ll notice a number "
+"of changes since v1.18:"
+msgstr ""
+
+#. [label]
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:211
+msgid ""
+"campaign_landing^<span color='#e1e119' style='italic'>Heir to the Throne</"
+"span> now features an open world with 33 branching scenarios, each awarding "
+"Konrad unique recruits, companions, or items. The original campaign is still "
+"available as <i>Heir to the Throne, Classic</i>."
+msgstr ""
+
+#. [label]
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:213
+msgid ""
+"campaign_landing^<span color='#e1e119' style='italic'>The Deceiver’s Gambit</"
+"span> replaces <i>Delfador’s Memoirs</i>. Follow a young mage from the "
+"shores of Alduin to the halls of the King as they war against the fierce "
+"orcs of the north. Choose between 23 magic spells as you bear witness to the "
+"rise of a tyrant."
+msgstr ""
+
+#. [label]
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:215
+msgid ""
+"campaign_landing^<span color='#e1e119' style='italic'>Dusk of Dawn</span> is "
+"our first troll campaign. Lead the Golden Flame Tribe out from the bowels of "
+"Irdya and up to the surface world — but beware what awaits you there."
+msgstr ""
+
+#. [label]
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:217
+msgid ""
+"campaign_landing^<span color='#e1e119' style='italic'>Of Pearls and Pirates</"
+"span> is a new beginner-oriented campaign set in a sleepy fishing town on "
+"the Bay of Pearls. When corsairs strike, the villagers must join forces with "
+"the local merfolk and take the fight to the pirates."
+msgstr ""
+
+#. [label]
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:219
+msgid ""
+"campaign_landing^<span color='#e1e119' style='italic'>The South Guard</span> "
+"has been significantly revised, and now replaces the classic <i>Battle "
+"Training</i> tutorial. For players nostalgic for Delfador's tutelage, the "
+"original tutorial is still available as part of <i>Heir to the Throne, "
+"Classic</i>."
+msgstr ""
+
+#. [label]
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:221
+msgid ""
+"campaign_landing^<span color='#e1e119' style='italic'>The Hammer of "
+"Thursagan</span> has been enhanced with story adjustments, improved enemy "
+"AI, a new Thunderer advancement, a redesign of <i>High Pass</i>, and the re-"
+"addition of the formerly removed <i>Mages and Drakes</i>."
+msgstr ""
+
+#. [label]
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:223
+msgid ""
+"campaign_landing^<span color='#e1e119' style='italic'>Winds of Fate</span> "
+"has been rebalanced with much lower recall costs, redesigned wildlife "
+"spawners and AI, and a much larger mid-campaign battle. Several characters "
+"and dialogue sequences were changed for better continuity with other "
+"campaigns."
+msgstr ""
+
+#. [label]
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:225
+msgid ""
+"campaign_landing^For a full list of changes, consult our official changelog "
+"at https://www.wesnoth.org/start/1.20/"
+msgstr ""
+
+#. [label]
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:245
 msgid ""
 "In addition to the mainline campaigns, Wesnoth also has an ever-growing list "
 "of add-on content created by other players available via the Add-ons server, "
@@ -3136,7 +3233,9 @@ msgstr ""
 "medios adicionales y diversos contenidos! ¡No dudes en probarlo!"
 
 #. [label]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:208
+#. "more than 15" gives a little leeway to add or remove one without changing the translatable text.
+#. It's already ambiguous, 1.18 has 19 campaigns, if you include the tutorial and multiplayer-only World Conquest.
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:262
 msgid ""
 "Wesnoth normally includes more than 15 mainline campaigns, even before "
 "installing any from the add-ons server. If you’ve installed the game via a "
@@ -3153,7 +3252,7 @@ msgstr ""
 #. [label]: id=name
 #. [label]
 #. [toggle_button]: id=unit_name
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:248
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:302
 #: data/gui/themes/default/dialogs/game_load.cfg:170
 #: data/gui/themes/default/dialogs/mp_connect.cfg:159
 #: data/gui/themes/default/dialogs/mp_faction_select.cfg:33
@@ -3164,95 +3263,95 @@ msgid "Name"
 msgstr "Nombre"
 
 #. [toggle_button]: id=sort_name
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:249
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:303
 msgid "Sort by full campaign name in alphabetical order"
 msgstr "Ordenar alfabéticamente por el nombre completo de la campaña"
 
 #. [toggle_button]: id=sort_time
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:260
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:314
 msgid "Timeline"
 msgstr "Línea temporal"
 
 #. [toggle_button]: id=sort_time
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:261
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:315
 msgid "Sort in approximate chronological order of story events"
 msgstr "Ordenar por el orden cronológico aproximado de los eventos históricos"
 
 #. [multimenu_button]: id=filter_completion
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:271
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:325
 msgid "Filter by campaign completion status"
 msgstr "Filtrar por estado de finalización de la campaña"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:274
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:328
 msgid "Not Completed"
 msgstr "No Completado"
 
 #. [option]
 #. campaigns which the player hasn't beaten, rather than campaigns which the author hasn't finished writing
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:276
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:330
 msgid "Show campaigns not completed by player"
 msgstr "Mostrar campañas no completadas por el jugador"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:280
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:334
 msgid "Completed: Bronze"
 msgstr "Completado: Bronce"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:281
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:335
 msgid "Show campaigns completed at easiest difficulty"
 msgstr "Mostrar campañas completadas en la dificultad más fácil"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:285
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:339
 msgid "Completed: Silver"
 msgstr "Completado: Plata"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:286
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:340
 msgid "Show campaigns completed at intermediate difficulties"
 msgstr "Mostrar campañas completadas en dificultades intermedias"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:290
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:344
 msgid "Completed: Gold"
 msgstr "Completado: Oro"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:291
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:345
 msgid "Show campaigns completed at hardest difficulty"
 msgstr "Mostrar campañas completadas en la dificultad más alta"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:295
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:349
 msgid "Completed: All"
 msgstr "Completado: Todo"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:296
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:350
 msgid "Show completed campaigns"
 msgstr "Mostrar campañas completadas"
 
 #. [label]
 #. [label]: id=mods_header
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:347
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:401
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:209
 msgid "Modifications:"
 msgstr "Modificaciones:"
 
 #. [label]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:372
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:426
 msgid "Combat:"
 msgstr "Combate:"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:387
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:441
 msgid "Default RNG"
 msgstr "GNA predeterminada"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:388
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:442
 msgid ""
 "Pure, unbiased randomness; the way Wesnoth is intended to be played.\n"
 "\n"
@@ -3266,12 +3365,12 @@ msgstr ""
 "fallar dos veces."
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:393
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:447
 msgid "Predictable RNG"
 msgstr "GNA predecible"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:394
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:448
 msgid ""
 "Identical to Default RNG, except loading a saved game will not change the "
 "outcome of an attack.\n"
@@ -3287,12 +3386,12 @@ msgstr ""
 "golpes seguirán acertando."
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:399
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:453
 msgid "Reduced RNG"
 msgstr "RNG reducido"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:400
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:454
 msgid ""
 "Hits and misses are much more consistent. This tends to make small-scale "
 "engagements easier to plan.\n"
@@ -3307,36 +3406,36 @@ msgstr ""
 "menos una vez y fallarás al menos una vez."
 
 #. [label]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:417
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:471
 msgid "Difficulty:"
 msgstr "Dificultad:"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:431
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:485
 msgid "Easy"
 msgstr "Fácil"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:434
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:488
 msgid "Normal"
 msgstr "Normal"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:437
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:491
 msgid "Hard"
 msgstr "Difícil"
 
 #. [label]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:494
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:548
 msgid "Play a Campaign"
 msgstr "Jugar una campaña"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=proceed
 #. [button]: id=ok
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:558
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:612
 #: data/gui/themes/default/dialogs/campaign_difficulty.cfg:221
-#: src/gui/dialogs/campaign_selection.cpp:77
+#: src/gui/dialogs/campaign_selection.cpp:82
 msgid "game^Play"
 msgstr "Jugar"
 
@@ -3407,7 +3506,7 @@ msgstr "Cargar módulo"
 #: data/gui/themes/default/dialogs/core_dialog.cfg:228
 #: data/gui/themes/default/dialogs/language_selection.cfg:293
 #: src/gui/dialogs/editor/custom_tod.cpp:172
-#: src/gui/dialogs/editor/edit_unit.cpp:303
+#: src/gui/dialogs/editor/edit_unit.cpp:297
 #: src/preferences/preferences.cpp:1342
 msgid "Select"
 msgstr "Seleccionar"
@@ -3556,8 +3655,8 @@ msgstr "Previsualizar cambios de color en el mapa"
 #: data/gui/themes/default/dialogs/depcheck_confirm_change.cfg:40
 #: src/gui/dialogs/addon/manager.cpp:1029
 #: src/gui/dialogs/editor/custom_tod.cpp:187
-#: src/gui/dialogs/editor/edit_unit.cpp:318
-#: src/gui/dialogs/editor/edit_unit.cpp:970 src/gui/dialogs/file_dialog.cpp:371
+#: src/gui/dialogs/editor/edit_unit.cpp:312
+#: src/gui/dialogs/editor/edit_unit.cpp:929 src/gui/dialogs/file_dialog.cpp:371
 #: src/gui/dialogs/file_dialog.cpp:799
 msgid "Confirm"
 msgstr "Confirmar"
@@ -5818,14 +5917,14 @@ msgstr "Aleatorio"
 #. [row]
 #. [toggle_button]: id=male_toggle
 #: data/gui/themes/default/dialogs/mp_faction_select.cfg:212
-#: data/gui/themes/default/dialogs/units_dialog.cfg:498
+#: data/gui/themes/default/dialogs/units_dialog.cfg:497
 msgid "Male"
 msgstr "Masculino"
 
 #. [row]
 #. [toggle_button]: id=female_toggle
 #: data/gui/themes/default/dialogs/mp_faction_select.cfg:214
-#: data/gui/themes/default/dialogs/units_dialog.cfg:509
+#: data/gui/themes/default/dialogs/units_dialog.cfg:508
 msgid "Female"
 msgstr "Femenino"
 
@@ -6990,7 +7089,7 @@ msgstr "Atacar enemigo"
 #. Filled five pointed star, used as favorite unit marker
 #. Filled five pointed star, used as favorite unit marker
 #: data/gui/themes/default/dialogs/units_dialog.cfg:24
-#: data/gui/themes/default/dialogs/units_dialog.cfg:574
+#: data/gui/themes/default/dialogs/units_dialog.cfg:573
 msgid "★"
 msgstr "★"
 
@@ -7035,22 +7134,22 @@ msgid "Traits"
 msgstr "Rasgos"
 
 #. [text_box]: id=filter_box
-#: data/gui/themes/default/dialogs/units_dialog.cfg:405
+#: data/gui/themes/default/dialogs/units_dialog.cfg:404
 msgid "Search for unit name, unit type name, unit level, or trait"
 msgstr "Búsqueda por nombre, tipo, nivel o rasgo de unidad"
 
 #. [button]: id=dismiss
-#: data/gui/themes/default/dialogs/units_dialog.cfg:550
+#: data/gui/themes/default/dialogs/units_dialog.cfg:549
 msgid "Dismiss"
 msgstr "Descartar"
 
 #. [button]: id=rename
-#: data/gui/themes/default/dialogs/units_dialog.cfg:561
+#: data/gui/themes/default/dialogs/units_dialog.cfg:560
 msgid "Rename"
 msgstr "Renombrar"
 
 #. [button]: id=mark_favorite
-#: data/gui/themes/default/dialogs/units_dialog.cfg:575
+#: data/gui/themes/default/dialogs/units_dialog.cfg:574
 msgid "Mark/unmark the selected unit as favorite"
 msgstr "Marcar o desmarcar la unidad seleccionada como favorita"
 
@@ -7641,19 +7740,19 @@ msgstr "Resistencia del atacante contra"
 msgid "Attacker vulnerability vs"
 msgstr "Vulnerabilidad del atacante contra"
 
-#: src/gui/dialogs/campaign_selection.cpp:77
+#: src/gui/dialogs/campaign_selection.cpp:82
 msgid "game^Get Add-ons"
 msgstr "Obtener complementos"
 
-#: src/gui/dialogs/campaign_selection.cpp:388
+#: src/gui/dialogs/campaign_selection.cpp:403
 msgid "More campaigns..."
 msgstr "Más campañas..."
 
-#: src/gui/dialogs/campaign_selection.cpp:402
+#: src/gui/dialogs/campaign_selection.cpp:418
 msgid "Missing Campaigns"
 msgstr "Campañas faltantes"
 
-#: src/gui/dialogs/campaign_selection.cpp:436
+#: src/gui/dialogs/campaign_selection.cpp:452
 #: src/gui/dialogs/multiplayer/lobby.cpp:435
 msgid "active_modifications^None"
 msgstr "Ninguna"
@@ -7691,12 +7790,12 @@ msgstr ""
 "Por favor, seleccione una que sea compatible."
 
 #: src/gui/dialogs/editor/custom_tod.cpp:171
-#: src/gui/dialogs/editor/edit_unit.cpp:302
+#: src/gui/dialogs/editor/edit_unit.cpp:296
 msgid "Choose File"
 msgstr "Elegir archivo"
 
 #: src/gui/dialogs/editor/custom_tod.cpp:182
-#: src/gui/dialogs/editor/edit_unit.cpp:313
+#: src/gui/dialogs/editor/edit_unit.cpp:307
 msgid ""
 "This file is outside Wesnoth’s data dirs. Do you wish to copy it into your "
 "add-on?"
@@ -7793,31 +7892,31 @@ msgstr "Éxito"
 msgid "Choose an icon"
 msgstr "Elegir un icono"
 
-#: src/gui/dialogs/editor/edit_unit.cpp:187
+#: src/gui/dialogs/editor/edit_unit.cpp:181
 msgid "scout"
 msgstr "Explorador"
 
-#: src/gui/dialogs/editor/edit_unit.cpp:188
+#: src/gui/dialogs/editor/edit_unit.cpp:182
 msgid "fighter"
 msgstr "Guerrero"
 
-#: src/gui/dialogs/editor/edit_unit.cpp:189
+#: src/gui/dialogs/editor/edit_unit.cpp:183
 msgid "archer"
 msgstr "Arquero"
 
-#: src/gui/dialogs/editor/edit_unit.cpp:190
+#: src/gui/dialogs/editor/edit_unit.cpp:184
 msgid "mixed fighter"
 msgstr "Guerrero mixto"
 
-#: src/gui/dialogs/editor/edit_unit.cpp:191
+#: src/gui/dialogs/editor/edit_unit.cpp:185
 msgid "healer"
 msgstr "Sanador"
 
-#: src/gui/dialogs/editor/edit_unit.cpp:969
+#: src/gui/dialogs/editor/edit_unit.cpp:928
 msgid "Unsaved changes will be lost. Do you want to leave?"
 msgstr "Los cambios no guardados se perderán. ¿Desea salir?"
 
-#: src/gui/dialogs/editor/edit_unit.cpp:988
+#: src/gui/dialogs/editor/edit_unit.cpp:947
 msgid "Unit type saved."
 msgstr "Unidad guardada."
 
@@ -8136,8 +8235,8 @@ msgstr "Descargando datos de la sala"
 #: src/gui/dialogs/lua_interpreter.cpp:628
 msgid "The lua console can only be used in debug mode! (Run ‘:debug’ first)"
 msgstr ""
-"¡La consola de lua solo puede usarse en modo depuración! (Ejecute primero "
-"':debug')"
+"¡La consola de lua solo puede usarse en modo depuración! (Ejecute primero ':"
+"debug')"
 
 #: src/gui/dialogs/lua_interpreter.cpp:629
 msgid "lua console"
@@ -8733,11 +8832,11 @@ msgstr "Se encontró un widget con ayuda y sin descripción emergente."
 msgid "No grid defined for tab container control"
 msgstr "Sin cuadrícula definida para el control de etiquetas de desplazamiento"
 
-#: src/gui/widgets/tree_view.cpp:287
+#: src/gui/widgets/tree_view.cpp:289
 msgid "No nodes defined for a tree view."
 msgstr "No hay nodos definidos para la vista de árbol."
 
-#: src/gui/widgets/tree_view.cpp:317
+#: src/gui/widgets/tree_view.cpp:319
 msgid "[node]id ‘root’ is reserved for the implementation."
 msgstr "La id. de [node] «root» está reservada para el despliegue."
 
@@ -10413,8 +10512,8 @@ msgstr "En la sección «[$section|]», falta el subtipo obligatorio «[$tag|]»
 #~ "necesita dar una contraseña si desea utilizar un nombre de usuario "
 #~ "registrado.\n"
 #~ "\n"
-#~ "El foro de «La batalla por Wesnoth» se encuentra en https://"
-#~ "forums.wesnoth.org/ (sólo en inglés)."
+#~ "El foro de «La batalla por Wesnoth» se encuentra en https://forums."
+#~ "wesnoth.org/ (sólo en inglés)."
 
 #~ msgid "Available at titlescreen"
 #~ msgstr "Disponible en la pantalla de título"
