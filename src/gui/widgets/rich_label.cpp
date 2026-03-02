@@ -305,7 +305,7 @@ std::pair<std::vector<rich_label::shape_ptr>, point> rich_label::get_parsed_text
 				float_pos.y += float_size.y;
 			}
 
-			shapes.emplace_back(std::make_unique<image_shape>(child["src"], float_pos.x, pos.y + float_pos.y));
+			shapes.emplace_back(std::make_unique<image_shape>(point{float_pos.x, pos.y + float_pos.y}, child["src"]));
 
 			float_size.x = curr_img_size.x + padding_;
 			float_size.y += curr_img_size.y + padding_;
@@ -445,7 +445,9 @@ std::pair<std::vector<rich_label::shape_ptr>, point> rich_label::get_parsed_text
 				if(!row["bgcolor"].blank()) {
 					unsigned width = std::accumulate(col_widths.begin(), col_widths.end(), 0) + 2*(row_paddings[0] + row_paddings[1])*columns;
 					unsigned height = row_paddings[0] + row_heights[row_idx] + row_paddings[1];
-					shapes.emplace_back(std::make_unique<rectangle_shape>(origin.x, pos.y, width, height, get_color(row["bgcolor"].str())));
+					shapes.emplace_back(std::make_unique<rectangle_shape>(
+						rect{origin.x, pos.y, static_cast<int>(width), static_cast<int>(height)},
+						get_color(row["bgcolor"].str())));
 				}
 
 				row_paddings = get_padding(row["padding"]);
