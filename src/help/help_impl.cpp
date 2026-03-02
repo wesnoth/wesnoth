@@ -787,7 +787,9 @@ std::vector<topic> generate_trait_topics(const bool sort_generated)
 			// Too many units can horribly slow down the page or crash it, so we paginate.
 			if (i < PAGE_LIMIT) {
 				const unit_type& type = unit_types.types().at(type_id);
-				const std::string link_unittype = markup::make_link(type.type_name(), unit_prefix + type.id());
+				const std::string section_prefix = type.show_variations_in_help() ? ".." : "";
+				std::string ref_id = section_prefix + unit_prefix + type.id();
+				const std::string link_unittype = markup::make_link(type.type_name(), ref_id);
 				text << font::unicode_bullet << " " << link_unittype << "\n";
 				i++;
 			} else {
