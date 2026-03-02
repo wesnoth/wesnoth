@@ -203,6 +203,11 @@ void attack::draw_hex(const map_location& hex)
 		return;
 	}
 
+	const bool is_ranged = distance_between(get_dest_hex(), target_hex_) > 1;
+	if(is_ranged && hex == get_dest_hex()) {
+		return; // Don't draw the src part for ranged attacks.
+	}
+
 	//@todo: replace this by either the use of transparency + drawing_layer::attack_indicator,
 	//or a dedicated layer
 	const drawing_layer layer = drawing_layer::footsteps;
