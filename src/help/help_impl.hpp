@@ -188,6 +188,7 @@ struct parse_error : public game::error
  * return empty string if this unit is hidden. If not yet discovered add the (?) suffix
  */
 std::string make_unit_link(const std::string& type_id);
+std::string make_unit_link(const unit_type* type);
 /** return a list of hyperlinks to unit's pages (ordered or not) */
 std::vector<std::string> make_unit_links_list(
 		const std::vector<std::string>& type_id_list, bool ordered = false);
