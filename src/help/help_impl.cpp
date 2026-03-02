@@ -674,7 +674,9 @@ std::vector<topic> generate_trait_topics(const bool sort_generated)
 	// The global traits that are direct children of a [units] tag
 	for(const config& trait : unit_types.traits()) {
 		trait_list.emplace(trait["id"], trait);
-		global_traits.insert(trait["id"]);
+		if(!global_traits.insert(trait["id"]).second) {
+			WRN_HP << "Duplicate global trait ‘" << trait["id"] << "’ detected, help page not added again.";
+		}
 	}
 
 	// Search for discovered races
@@ -696,7 +698,9 @@ std::vector<topic> generate_trait_topics(const bool sort_generated)
 			for(const config& trait : r->additional_traits()) {
 				if(!utils::contains(global_traits, trait["id"])) {
 					trait_list.emplace(trait["id"], trait);
-					trait_races[trait["id"]].insert(race_id);
+					if(!trait_races[trait["id"]].insert(race_id).second) {
+						WRN_HP << "Duplicate trait ‘" << trait["id"] << "’ detected in race ‘" << r->id() << "’, help page not added again.";
+					}
 				}
 			}
 		}
@@ -720,8 +724,9 @@ std::vector<topic> generate_trait_topics(const bool sort_generated)
 					&& !utils::contains(global_traits, trait["id"])
 					&& is_not_racial_trait)
 				{
-					const std::string link_unittype = markup::make_link(type.type_name(), unit_prefix + type.id());
-					trait_units[trait["id"]].insert(link_unittype);
+					if(!trait_units[trait["id"]].insert(type.id()).second) {
+						WRN_HP << "Duplicate trait ‘" << trait["id"] << "’ detected in unit type ‘" << type.id() << "’, help page not added again.";
+					}
 				}
 			}
 		}
@@ -746,7 +751,7 @@ std::vector<topic> generate_trait_topics(const bool sort_generated)
 		}
 
 		if(utils::contains(global_traits, trait_id)) {
-			text << "\n\n" << markup::italic( _("This is a global trait."));
+			text << "\n\n" << markup::italic(_("This is a global trait."));
 			topics.emplace_back(name, id, text.str());
 			continue;
 		}
@@ -778,10 +783,12 @@ std::vector<topic> generate_trait_topics(const bool sort_generated)
 		}
 
 		i = 0;
-		for(const auto& link : trait_units[trait_id]) {
+		for(const auto& type_id : trait_units[trait_id]) {
 			// Too many units can horribly slow down the page or crash it, so we paginate.
 			if (i < PAGE_LIMIT) {
-				text << font::unicode_bullet << " " << link << "\n";
+				const unit_type& type = unit_types.types().at(type_id);
+				const std::string link_unittype = markup::make_link(type.type_name(), unit_prefix + type.id());
+				text << font::unicode_bullet << " " << link_unittype << "\n";
 				i++;
 			} else {
 				// continuation pages, accessible only via the links
@@ -848,8 +855,7 @@ void generate_races_sections(const config& help_cfg, section& sec, int level)
 	std::set<std::string, string_less> visible_races;
 
 	// Calculate which races have been discovered, from the list of discovered unit types.
-	for(const auto& i : unit_types.types()) {
-		const unit_type& type = i.second;
+	for(const auto& [_, type] : unit_types.types()) {
 		UNIT_DESCRIPTION_TYPE desc_type = description_type(type);
 		if(desc_type == FULL_DESCRIPTION) {
 			races.insert(type.race_id());
@@ -996,6 +1002,7 @@ void generate_terrain_sections(section& sec, int /*level*/)
 				}
 			}
 		}
+
 		for(const t_translation::terrain_code& base : base_terrains) {
 
 			const terrain_type& base_info = tdata->get_terrain_info(base);
@@ -1016,14 +1023,14 @@ void generate_terrain_sections(section& sec, int /*level*/)
 
 	std::vector<section> sorted_sections;
 	for(const auto& pair : base_map) {
-        sorted_sections.push_back(pair.second);
-    }
+		sorted_sections.push_back(pair.second);
+	}
 
 	std::sort(sorted_sections.begin(), sorted_sections.end(), section_less());
 
-    for(const section& s : sorted_sections) {
-        sec.add_section(s);
-    }
+	for(const section& s : sorted_sections) {
+		sec.add_section(s);
+	}
 }
 
 void generate_unit_sections(const config& /*help_cfg*/, section& sec, int /*level*/, const bool /*sort_generated*/, const std::string& race)
@@ -1064,10 +1071,8 @@ std::vector<topic> generate_unit_topics(const std::string& race, const bool sort
 	std::set<std::string, string_less> race_topics;
 	std::set<std::string> alignments;
 
-	for(const unit_type_data::unit_type_map::value_type& i : unit_types.types())
+	for(const auto& [_, type] : unit_types.types())
 	{
-		const unit_type& type = i.second;
-
 		if(type.race_id() != race)
 			continue;
 
@@ -1091,7 +1096,7 @@ std::vector<topic> generate_unit_topics(const std::string& race, const bool sort
 		}
 	}
 
-	//generate the hidden race description topic
+	// generate the hidden race description topic
 	std::string race_id = "..race_"+race;
 	std::string race_name;
 	std::string race_description;
@@ -1102,15 +1107,15 @@ std::vector<topic> generate_unit_topics(const std::string& race, const bool sort
 		race_help_taxonomy = r->help_taxonomy();
 		// if(description.empty()) description =  _("No description Available");
 		for(const config& additional_topic : r->additional_topics())
-		  {
-		    std::string id = additional_topic["id"];
-		    std::string title = additional_topic["title"];
-		    std::string text = additional_topic["text"];
-		    //topic additional_topic(title, id, text);
-		    topics.emplace_back(title,id,text);
+		{
+			std::string id = additional_topic["id"];
+			std::string title = additional_topic["title"];
+			std::string text = additional_topic["text"];
+			//topic additional_topic(title, id, text);
+			topics.emplace_back(title, id, text);
 			std::string link = markup::make_link(title, id);
 			race_topics.insert(link);
-		  }
+		}
 	} else {
 		race_name = _ ("race^Miscellaneous");
 		// description =  _("Here put the description of the Miscellaneous race");
