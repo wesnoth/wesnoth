@@ -45,8 +45,8 @@ def shell_out(wesnoth_exe, com):
 
 def symlink(f, t, name):
     if os.path.exists(os.path.join(f, name + ".cfg")):
-        os.symlink(os.path.join(f, name + ".cfg"), os.path.join(t, name + ".cfg"))
-    os.symlink(os.path.join(f, name), os.path.join(t, name))
+        os.symlink(os.path.abspath(os.path.join(f, name + ".cfg")), os.path.join(t, name + ".cfg"))
+    os.symlink(os.path.abspath(os.path.join(f, name)), os.path.join(t, name))
 
 def rm_symlink(f, name):
     if os.path.exists(os.path.join(f, name + ".cfg")):
