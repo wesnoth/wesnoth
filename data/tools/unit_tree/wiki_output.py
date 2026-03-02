@@ -37,7 +37,7 @@ def main():
         sys.stderr.write("Parsing " + name + "...\n")
         campaign.name = name
         all_campaigns[campaign.get_text_val("id")] = campaign
-        wesnoth.parser.parse_text("{campaigns}", ",".join(campaign_defines))
+        wesnoth.parser.parse_text("{themes}{campaigns}", ",".join(campaign_defines))
         punits[name] = wesnoth.parser.get_all(tag = "units")
         punits[name] += wesnoth.parser.get_all(tag = "+units")
 
@@ -58,8 +58,6 @@ def main():
     for campaign, unitslists in list(punits.items()):
         for unitlist in unitslists:
             for unit in unitlist.get_all(tag = "unit_type"):
-                if unit.get_text_val("do_not_list") in ["yes", "true"]: continue
-                if unit.get_text_val("hide_help") in ["yes", "true"]: continue
                 unit.id = unit.get_text_val("id")
                 if unit.id is None:
                     continue
@@ -96,6 +94,14 @@ def main():
         a = unit.get_text_val("advances_to")
         if not a or a == "null": unit.advances_to = []
         else: unit.advances_to = [x.strip() for x in a.split(",")]
+
+    # Get rid of units with either `do_not_list` or `hide_help` enabled
+    for aid, unit in list(all_units.items()):
+        if (
+                base_val(unit, "do_not_list") in ["yes", "true"] or
+                base_val(unit, "hide_help") in ["yes", "true"]
+            ):
+            del all_units[aid]
 
     # Find children and parents of all units.
     for unit in list(all_units.values()):
@@ -134,7 +140,7 @@ def main():
 
     races = sorted(units_per_race.keys())
 
-    def w(x): sys.stdout.write(x.encode("utf8") + "\n")
+    def w(x): sys.stdout.write(x + "\n")
 
     # Now output the units list per race/campaign.
     for race in races:
