@@ -583,7 +583,6 @@ std::pair<std::vector<rich_label::shape_ptr>, point> rich_label::get_parsed_text
 						const auto [start, end] = curr_item->add_text(tshape->get_text());
 						curr_item->add_attributes_from(*tshape, start);
 						curr_item->add_attribute(key, "", start, end);
-						PLAIN_LOG << "[nested] start: " << start << ", end: " << end;
 					} else {
 						shapes.emplace_back(std::move(shape));
 					}
@@ -703,10 +702,6 @@ std::pair<std::vector<rich_label::shape_ptr>, point> rich_label::get_parsed_text
 			img_size = point(0,0);
 		}
 
-		// fixme: alternative needed
-		// if(curr_item) {
-		// 	DBG_GUI_RL << "Item:\n" << curr_item->debug();
-		// }
 		DBG_GUI_RL << "X: " << x;
 		DBG_GUI_RL << "Prev block height: " << prev_blk_height << " Current text block height: " << text_height;
 		DBG_GUI_RL << "Height: " << h;
@@ -734,9 +729,6 @@ std::pair<std::vector<rich_label::shape_ptr>, point> rich_label::get_parsed_text
 	}
 	// TODO float and a mix of floats and images and tables
 	h = std::max(static_cast<unsigned>(img_size.y), h);
-
-	// fixme: replacement needed
-	// DBG_GUI_RL << "[\n" << text_dom.debug() << "]\n";
 
 	DBG_GUI_RL << "Width: " << w << " Height: " << h << " Origin: " << origin;
 	return { std::move(shapes), point(w, h - origin.y) };

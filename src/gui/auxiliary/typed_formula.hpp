@@ -62,7 +62,7 @@ public:
 
 	explicit typed_formula(T value);
 
-	/** Set the default value for this object */
+	/** Set the value for this object */
 	void set_value(T value) { value_ = value; }
 
 	/**
