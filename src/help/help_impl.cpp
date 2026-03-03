@@ -347,6 +347,9 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 	};
 	auto special_description = std::set<unit_ability_t::tooltip_info, decltype(comp)>(comp);
 
+	// a map used to check weapon special uniqueness
+	std::map<std::string, std::string> specials_check_map;
+
 	std::map<std::string, std::set<std::string, string_less>> special_units;
 
 	for(const auto& [type_id, type] : unit_types.types()) {
@@ -358,6 +361,12 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 		for(const attack_type& atk : type.attacks()) {
 			for(auto& tt_info : atk.special_tooltips()) {
 				special_description.emplace(tt_info);
+				const auto& [itor, is_added] = specials_check_map.emplace(tt_info.help_topic_id, tt_info.name.base_str());
+				if(!is_added && itor->second != tt_info.name.base_str()) {
+					WRN_HP << "Duplicate weapon special with help id ‘" << tt_info.help_topic_id << "’ but different name ‘"
+						<< tt_info.name.base_str() << "’ != ‘" << itor->second << "’ detected, help page not added again.";
+				}
+
 				if(!type.hide_help()) {
 					special_units[tt_info.help_topic_id].insert(make_unit_link(&type));
 				}
@@ -367,22 +376,40 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 		for(const config& adv : type.modification_advancements()) {
 			for(const config& effect : adv.child_range("effect")) {
 				if(effect["apply_to"] == "new_attack" && effect.has_child("specials")) {
-					for(const auto [key, special] : effect.mandatory_child("specials").all_children_view()) {
+					for(const auto [_, special] : effect.mandatory_child("specials").all_children_view()) {
 						if(!special["name"].empty()) {
 							std::string topic_id = unit_ability_t::get_help_topic_id(special);
+							const t_string& name = special["name"].t_str();
+
 							//c++20: use emplace
-							special_description.insert({ special["name"].t_str(), special["description"].t_str(), topic_id });
+							special_description.insert({ name, special["description"].t_str(), topic_id });
+
+							const auto& [itor, is_added] = specials_check_map.emplace(topic_id, name.base_str());
+							if(!is_added && itor->second != name.base_str()) {
+								WRN_HP << "Duplicate weapon special with help id ‘" << topic_id << "’ but different name ‘"
+									<< name.base_str() << "’ != ‘" << itor->second << "’ detected, help page not added again.";
+							}
+
 							if(!type.hide_help()) {
 								special_units[topic_id].insert(make_unit_link(&type));
 							}
 						}
 					}
 				} else if(effect["apply_to"] == "attack" && effect.has_child("set_specials")) {
-					for(const auto [key, special] : effect.mandatory_child("set_specials").all_children_view()) {
+					for(const auto [_, special] : effect.mandatory_child("set_specials").all_children_view()) {
 						if(!special["name"].empty()) {
 							std::string topic_id = unit_ability_t::get_help_topic_id(special);
+							const t_string& name = special["name"].t_str();
+
 							//c++20: use emplace
-							special_description.insert({special["name"].t_str(), special["description"].t_str(), topic_id});
+							special_description.insert({ name, special["description"].t_str(), topic_id });
+
+							const auto& [itor, is_added] = specials_check_map.emplace(topic_id, name.base_str());
+							if(!is_added && itor->second != name.base_str()) {
+								WRN_HP << "Duplicate weapon special with help id ‘" << topic_id << "’ but different name ‘"
+									<< name.base_str() << "’ != ‘" << itor->second << "’ detected, help page not added again.";
+							}
+
 							if(!type.hide_help()) {
 								special_units[topic_id].insert(make_unit_link(&type));
 							}
@@ -398,8 +425,8 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 		std::stringstream text;
 		text << description;
 		text << "\n\n" << markup::tag("header", _("Units with this special attack")) << "\n";
-		for(const std::string& type_id : special_units[help_topic_id]) {
-			text << font::unicode_bullet << " " << type_id << "\n";
+		for(const std::string& type_link : special_units[help_topic_id]) {
+			text << font::unicode_bullet << " " << type_link << "\n";
 		}
 
 		topics.emplace_back(name, id, text.str());
@@ -418,7 +445,11 @@ std::vector<topic> generate_ability_topics(const bool sort_generated)
 	std::map<std::string, std::set<std::string, string_less>> ability_units;
 
 	const auto parse = [&](const unit_type& type, const unit_type::ability_metadata& ability) {
-		ability_topic_data.emplace(ability.help_topic_id, ability);
+		const auto& [itor, is_added] = ability_topic_data.emplace(ability.help_topic_id, ability);
+		if(!is_added && itor->second.name.base_str() != ability.name.base_str()) {
+			WRN_HP << "Duplicate ability with help id ‘" << ability.help_topic_id << "’ but different name ‘"
+				<< ability.name.base_str() << "’ != ‘" << itor->second.name.base_str() << "’ detected, help page not added again.";
+		}
 
 		if(!type.hide_help()) {
 			ability_units[ability.help_topic_id].insert(make_unit_link(&type));
