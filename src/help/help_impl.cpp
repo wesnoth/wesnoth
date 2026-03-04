@@ -226,7 +226,7 @@ std::vector<topic> generate_topics(const bool sort_generated, const std::string&
 		std::vector<std::string> parts = utils::split(generator, ':', utils::STRIP_SPACES);
 		if(parts.size() > 1 && parts[0] == "units") {
 			res = generate_unit_topics(parts[1], sort_generated);
-		} else if(parts[0] == "era" && parts.size()>1) {
+		} else if(parts[0] == "era" && parts.size() > 1) {
 			res = generate_era_topics(parts[1], sort_generated);
 		} else {
 			WRN_HP << "Found a topic generator that I didn't recognize: " << generator;
@@ -530,6 +530,8 @@ std::vector<topic> generate_era_topics(const std::string& era_id, const bool sor
 std::vector<topic> generate_faction_topics(const config& era, const bool sort_generated)
 {
 	std::vector<topic> topics;
+	std::set<std::string> faction_help_ids;
+
 	for(const config& f : era.child_range("multiplayer_side")) {
 		const std::string& id = f["id"];
 		if(id == "Random")
@@ -595,6 +597,10 @@ std::vector<topic> generate_faction_topics(const config& era, const bool sort_ge
 
 		const std::string name = f["name"];
 		const std::string ref_id = faction_prefix + era["id"].str() + "_" + id;
+		const bool is_added = faction_help_ids.insert(ref_id).second;
+		if(!is_added) {
+			WRN_HP << "Duplicate faction with id ‘" << id << "’, (help id ‘" << ref_id << "’) detected.";
+		}
 		topics.emplace_back(name, ref_id, text.str());
 	}
 	if(sort_generated)
@@ -942,20 +948,24 @@ void generate_races_sections(const config& help_cfg, section& sec, int level)
 
 void generate_era_sections(const config& help_cfg, section& sec, int level)
 {
+	std::set<std::string> era_ids;
 	for(const config& era : game_config_manager::get()->game_config().child_range("era")) {
 		if(era["hide_help"].to_bool()) {
 			continue;
 		}
-
-		DBG_HP << "Adding help section: " << era["id"].str();
 
 		config section_cfg;
 		section_cfg["id"] = era_prefix + era["id"].str();
 		section_cfg["title"] = era["name"];
 		section_cfg["generator"] = "era:" + era["id"].str();
 
+		const bool is_added = era_ids.insert(section_cfg["id"]).second;
+		if(is_added) {
+			DBG_HP << "Adding help section: " << era["id"].str();
+		} else {
+			WRN_HP << "Duplicate era with id ‘" << era["id"] << "’, (help id ‘" << section_cfg["id"] << "’) detected";
+		}
 		DBG_HP << section_cfg.debug();
-
 		sec.add_section(parse_config_internal(help_cfg, section_cfg, level + 1));
 	}
 }
