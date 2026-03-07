@@ -25,7 +25,7 @@ def main():
 
     all_campaigns = {}
     sys.stderr.write("Parsing campaigns...\n")
-    wesnoth.parser.parse_text("{campaigns}", ",".join(base_defines))
+    wesnoth.parser.parse_text("{themes}{campaigns}", ",".join(base_defines))
     campaigns = wesnoth.parser.get_all(tag = "campaign")
     for campaign in campaigns:
         campaign_defines = base_defines[:]
