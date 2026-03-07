@@ -11,12 +11,13 @@
 # Jorge Barroso <jorge.barroso.11@gmail.com>, 2014.
 # Pepe <donpepe1963@gmail.com>, 2014.
 # Toranks <toranksmervat@gmail.com>, 2023.
+# Sebastián Lecchini <sebas38760@gmail.com>, 2026.
 msgid ""
 msgstr ""
-"Project-Id-Version: es\n"
+"Project-Id-Version: wesnoth-tb\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2026-02-26 01:03 UTC\n"
-"PO-Revision-Date: 2025-10-21 20:56-0300\n"
+"PO-Revision-Date: 2026-03-04 14:12-0300\n"
 "Last-Translator: Sebastián Lecchini <sebas38760@gmail.com>\n"
 "Language-Team: es\n"
 "Language: es\n"
@@ -119,27 +120,27 @@ msgstr ""
 #. [achievement]: id=heroes_of_maghre
 #: data/campaigns/Two_Brothers/achievements.cfg:8
 msgid "Heroes of Maghre"
-msgstr ""
+msgstr "Héroes de Maghre"
 
 #. [achievement]: id=heroes_of_maghre
 #: data/campaigns/Two_Brothers/achievements.cfg:9
 msgid "Complete <i>Rooting Out a Mage</i> without recruiting."
-msgstr ""
+msgstr "Completa <i>Erradicando a un Mago</i> sin reclutar."
 
 #. [achievement]: id=treasure
 #: data/campaigns/Two_Brothers/achievements.cfg:15
 msgid "Treasure"
-msgstr ""
+msgstr "Tesoro"
 
 #. [achievement]: id=treasure
 #: data/campaigns/Two_Brothers/achievements.cfg:16
 msgid "Find the chest of gold in <i>Guarded Castle</i>."
-msgstr ""
+msgstr "Encuentra el cofre de oro en <i>Castillo custodiado</i>."
 
 #. [achievement]: id=baran_returns
 #: data/campaigns/Two_Brothers/achievements.cfg:22
 msgid "Baran Returns"
-msgstr ""
+msgstr "El regreso de Baran"
 
 #. [achievement]: id=baran_returns
 #: data/campaigns/Two_Brothers/achievements.cfg:23
@@ -147,17 +148,19 @@ msgid ""
 "Complete <i>Return to the Village</i> by defeating the enemy leader with "
 "Baran."
 msgstr ""
+"Completa <i>Retorno a la Aldea</i> derrotando al líder enemigo con Baran."
 
 #. [achievement]: id=arvith_the_great_knight
 #: data/campaigns/Two_Brothers/achievements.cfg:29
 msgid "Arvith the Great Knight"
-msgstr ""
+msgstr "Arvith, el Gran Caballero"
 
 #. [achievement]: id=arvith_the_great_knight
 #: data/campaigns/Two_Brothers/achievements.cfg:30
 msgid ""
 "Advance Arvith into a Grand Knight or a Paladin before the campaign ends."
 msgstr ""
+"Asciende a Arvith a Gran Caballero o Paladín antes de que termine la campaña."
 
 #. [scenario]: id=01_Rooting_Out_a_Mage
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:5
@@ -438,14 +441,20 @@ msgstr ""
 "encuentre desprevenido. Tú serás la mano derecha, yo la izquierda... ¿sí, "
 "hermano?"
 
-# Esta cadena está llena de pequeñas cosas que le dan fuerza; se salta el trato de respeto (voseo), es un lenguaje muy "seco" digno de hermanos reñidos, y además le dice a su hermano que no es, por poco, inútil.
+# Esta cadena está llena de pequeñas cosas que le dan fuerza; se salta el
+# trato de respeto (voseo), es un lenguaje muy "seco" digno de hermanos
+# reñidos, y además le dice a su hermano que no es, por poco, inútil.
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:232
 msgid "... Aye. Just make sure you’re there when we need you."
 msgstr "... Sí. Sólo asegúrate de estar ahí cuando te necesitemos."
 
-# Para esta cadena, suponemos que "adept" es un insulto, degrada al mago, por esa razón se ha escogido "neófito" como traducción.
-# Helkion: me parece buena la traducción como "neófito", pero creo que habría que añadirle comillas para dejar ver al lector que se trata de una forma peyorativa. Si no, para muchos jugadores pasará desapercibido y otros en cambio pueden pensar que se trata de un error de traducción.
+# Para esta cadena, suponemos que "adept" es un insulto, degrada al mago, por
+# esa razón se ha escogido "neófito" como traducción.
+# Helkion: me parece buena la traducción como "neófito", pero creo que habría
+# que añadirle comillas para dejar ver al lector que se trata de una forma
+# peyorativa. Si no, para muchos jugadores pasará desapercibido y otros en
+# cambio pueden pensar que se trata de un error de traducción.
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:252
 msgid ""
@@ -512,7 +521,8 @@ msgstr ""
 msgid "That they should dare this! We will give chase at once."
 msgstr "¡A eso se han atrevido! Les daremos caza de inmediato."
 
-# Helkion: He cambiado el voseo por el tuteo porque creo que entre el mago oscuro y Arvith no hay ni cortesía ni mucho menos respeto.
+# Helkion: He cambiado el voseo por el tuteo porque creo que entre el mago
+# oscuro y Arvith no hay ni cortesía ni mucho menos respeto.
 #. [message]: speaker=Mordak
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:373
 msgid "Your brother’s plan to ambush me has failed. He is our prisoner now."
@@ -753,7 +763,11 @@ msgstr ""
 "De todas formas, nada se ganará con vuestra intromisión en nuestros bosques. "
 "No avancéis más o tendremos que defender nuestras tierras."
 
-# Aquí Arvith descubre que realmente los rumores acerca del bosque Gris no eran más que un bulo, historias para asustar a los niños; es una cadena confusa ya que aparece tras la conversación con los elfos (que se han tragado el bulo que les dijeron los captores de Baran). Pero Arvith se refiere a lo que ha estado escribiendo en su diario.
+# Aquí Arvith descubre que realmente los rumores acerca del bosque Gris no
+# eran más que un bulo, historias para asustar a los niños; es una cadena
+# confusa ya que aparece tras la conversación con los elfos (que se han
+# tragado el bulo que les dijeron los captores de Baran). Pero Arvith se
+# refiere a lo que ha estado escribiendo en su diario.
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:399
 msgid ""
@@ -967,7 +981,8 @@ msgstr "Me corresponde a mí decidir eso."
 msgid "Oh, all right then. Come along with us."
 msgstr "Oh, está bien entonces. Venid con nosotros."
 
-# Aunque suene algo extraño, cooperar, como sinónimo de ayudar, es una buena alternativa.
+# Aunque suene algo extraño, cooperar, como sinónimo de ayudar, es una buena
+# alternativa.
 #. [message]: speaker=Brena
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:657
 msgid "Thank you. My comrades and I will help you on your noble quest."
@@ -1652,7 +1667,10 @@ msgstr "No, huyen de algo. ¡Tenemos que averiguar qué está pasando!"
 msgid "Men! Ready your arms!"
 msgstr "¡Hombres! ¡Preparen sus armas!"
 
-# El maybe en este contexto no es tan literal como "quizá", se supone que Reeve Hoban es un conocido del pueblo, y precisamente son los del pueblo los que huyen... simplemente es una forma de no asegurar que, de hecho, sabe algo.
+# El maybe en este contexto no es tan literal como "quizá", se supone que
+# Reeve Hoban es un conocido del pueblo, y precisamente son los del pueblo los
+# que huyen... simplemente es una forma de no asegurar que, de hecho, sabe
+# algo.
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:186
 msgid "We should find Reeve Hoban. Maybe he knows what is going on here."
@@ -1675,14 +1693,18 @@ msgstr ""
 "Sin duda, reconocería ese rostro en cualquier parte. Sobre todo después de "
 "cómo se lo dejaste."
 
-# Quiero entender que Toen Caric es el lugar desde donde probiene ese señor de la guerra.
+# Quiero entender que Toen Caric es el lugar desde donde probiene ese señor de
+# la guerra.
 #. [message]: speaker=Baran
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:216
 msgid "The warlord from Toen Caric."
 msgstr "El señor de la guerra de Toen Caric."
 
-# La marco como difusa, porque quizá sea modificada (especialmente debido a la parte que queda sólo en mayúsculas, que creo que es algo que se está quitando de wesnoth).
-# Helkion: Como la parte en mayúsculas se supone que aporta un mayor énfasis, he añadido un signo de admiración más.
+# La marco como difusa, porque quizá sea modificada (especialmente debido a la
+# parte que queda sólo en mayúsculas, que creo que es algo que se está
+# quitando de wesnoth).
+# Helkion: Como la parte en mayúsculas se supone que aporta un mayor énfasis,
+# he añadido un signo de admiración más.
 #. [message]: speaker=Tairach
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:221
 msgid "You! The mage who scarred me with fire! KILL THEM!"
@@ -1693,7 +1715,9 @@ msgstr "¡Tú! ¡El mago que me desfiguró con fuego! ¡¡Matadlos a todos!!"
 msgid "Let’s finish what we started, brother."
 msgstr "Acabemos lo que hace tiempo comenzamos, hermano."
 
-# Esta cadena cierra al fin el tema inicial de la enemistad entre los hermanos con una caden a similar a la del inicio; por ello, ha de asemejarse al máximo a tal cadena.
+# Esta cadena cierra al fin el tema inicial de la enemistad entre los hermanos
+# con una caden a similar a la del inicio; por ello, ha de asemejarse al
+# máximo a tal cadena.
 #. [message]: speaker=Arvith
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:231
 msgid "Aye. I’ll be the right arm, and you’ll be the left. Let’s go!"
@@ -1727,7 +1751,8 @@ msgstr ""
 "El señor de la guerra orco pretende esclavizarnos. No seremos capaces de "
 "resistir mucho más tiempo."
 
-# Helkion: Quizá, refiriéndose como este caso a "orcos", la traducción de "men" como "hombres", aun siendo literal, no sea la más adecuada.
+# Helkion: Quizá, refiriéndose como este caso a "orcos", la traducción de
+# "men" como "hombres", aun siendo literal, no sea la más adecuada.
 #. [message]: speaker=Reeve Hoban
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:270
 msgid ""
@@ -1824,7 +1849,7 @@ msgid ""
 "But as the company and I are passing through this part of the kingdom with a "
 "new patron, I have asked leave of him to visit my brother and he gave it."
 msgstr ""
-"22 de fructidor, 365 AñW\n"
+"22 de Semillas dormidas, 365 AñW\n"
 "Extracto del diario de Arvith de Maghre\n"
 "\n"
 "Maghre tiene mucho mejor aspecto que la última vez que la vi. Baran ha hecho "
@@ -1852,7 +1877,7 @@ msgid ""
 "\n"
 "In the meantime, though, it’s good to relax and enjoy the peace."
 msgstr ""
-"22 de fructidor, 365 AñW\n"
+"22 de Semillas dormidas, 365 AñW\n"
 "Extracto del diario de Arvith de Maghre\n"
 "\n"
 "Este patrón es, entre otras cosas, un elfo. Jamás creí que pudiera hacer "

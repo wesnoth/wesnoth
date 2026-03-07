@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-tsg\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2026-02-26 01:04 UTC\n"
-"PO-Revision-Date: 2026-01-23 15:23-0300\n"
+"PO-Revision-Date: 2026-03-04 13:59-0300\n"
 "Last-Translator: Sebastián Lecchini<sebas38760@gmail.com>\n"
 "Language-Team: es\n"
 "Language: es\n"
@@ -28,10 +28,8 @@ msgstr ""
 #. Adding “Start Here” is meant to attract players looking for a tutorial, without dissuading players who'd skip something that’s purely a tutorial.
 #. Translations can’t be much longer than the English string, otherwise the left column of the campaign dialog becomes noticeably wide.
 #: data/campaigns/The_South_Guard/_main.cfg:34
-#, fuzzy
-#| msgid "The South Guard — Tutorial"
 msgid "The South Guard — Start Here"
-msgstr "La Guardia del Sur — Tutorial"
+msgstr "La Guardia del Sur — Empieza aquí"
 
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:35
@@ -69,6 +67,8 @@ msgid ""
 "The saga continues in\n"
 "<i>Of Pearls and Pirates</i>"
 msgstr ""
+"La saga continúa en\n"
+"<i>Perlas y Piratas</i>"
 
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:57
@@ -332,14 +332,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:35
-#, fuzzy
-#| msgid ""
-#| "For eight years all was well, the guard having only to quash the "
-#| "occasional bandit or wild creature. Perhaps the only real unease came "
-#| "from the Aethenwood to the west, where the elves lived in reserved "
-#| "aloofness, indifferent to the doings of man. Traversing their land "
-#| "without permission was forbidden, but the elves rarely entered the lands "
-#| "of men in turn."
 msgid ""
 "For eight years all was well, the Guard having only to quash the occasional "
 "bandit or wild creature. Perhaps the only real unease came from the "
@@ -347,9 +339,9 @@ msgid ""
 "indifferent to the doings of man. Traversing their land without permission "
 "was forbidden, but the elves rarely entered the lands of men in turn."
 msgstr ""
-"Durante ocho años todo marchó bien, y la guardia solo tuvo que sofocar a "
+"Durante ocho años todo marchó bien, y la Guardia solo tuvo que sofocar a "
 "algún bandido ocasional o criatura salvaje. Tal vez la única inquietud real "
-"provenía del Bosque de Edén al oeste, donde los elfos vivían en un reservado "
+"provenía del Bosque Edén al oeste, donde los elfos vivían en un reservado "
 "aislamiento, indiferentes a los asuntos de los humanos. Atravesar sus "
 "tierras sin permiso estaba prohibido, pero los elfos rara vez entraban en "
 "las tierras de los hombres."
@@ -357,12 +349,6 @@ msgstr ""
 #. [part]
 #. Intro to scenario 1
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:40
-#, fuzzy
-#| msgid ""
-#| "Over time, in the absence of pressing danger, the South Guard grew "
-#| "complacent and lazy. Reports to the capital slowed, and in the spring of "
-#| "the ninth year, ceased altogether. Displeased with the guard’s conduct, "
-#| "the Crown decided to send someone to investigate..."
 msgid ""
 "Over time, in the absence of pressing danger, the South Guard grew "
 "complacent and lazy. Reports to the capital slowed, and in the spring of the "
@@ -372,7 +358,7 @@ msgstr ""
 "Con el paso del tiempo, y ante la ausencia de un peligro inmediato, la "
 "Guardia del Sur se volvió complaciente y descuidada. Los informes a la "
 "capital se hicieron cada vez más escasos y, en la primavera del noveno año, "
-"cesaron por completo. Disconforme con la conducta de la guardia, la Corona "
+"cesaron por completo. Disconforme con la conducta de la Guardia, la Corona "
 "decidió enviar a alguien a investigar..."
 
 #. [side]
@@ -520,11 +506,6 @@ msgstr "<i>(Se inclina)</i> Un placer conocerla, capitana."
 
 #. [message]
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:308
-#, fuzzy
-#| msgid ""
-#| "Wondering about those percentages that appear on the ground when you move "
-#| "a unit? That’s your soldiers’ terrain defense — their <i><b>chance to "
-#| "dodge</b></i> enemy attacks."
 msgid ""
 "Wondering about those percentages that appear on the ground when you move a "
 "unit? That’s your soldiers’ terrain defense — their <i><b>chance to evade</"
@@ -532,34 +513,15 @@ msgid ""
 msgstr ""
 "¿Te preguntas por esos porcentajes que aparecen en el suelo cuando mueves "
 "una unidad? Esa es la defensa en el terreno de tus soldados — su "
-"<i><b>probabilidad de esquivar</b></i> ataques enemigos."
+"<i><b>probabilidad de evadir</b></i> ataques enemigos."
 
 #. [display_tip]
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:311
-#, fuzzy
-#| msgid "Dodging Attacks"
 msgid "Evading Attacks"
-msgstr "Esquivar ataques"
+msgstr "Evadir ataques"
 
 #. [display_tip]
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:313
-#, fuzzy
-#| msgid ""
-#| "In Wesnoth, every attack has a chance to miss.\n"
-#| "\n"
-#| "Units on favorable terrain (such as castles, villages, forest, or hills)\n"
-#| "are more likely to dodge attacks, while units on poor terrain (such as\n"
-#| "water, sand, or ice) are much easier to hit.\n"
-#| "\n"
-#| "Different units receive different benefits from terrain. Most infantry,\n"
-#| "for example, have 50% dodge in forest — but cavalry only have 30%.\n"
-#| "For details, <b><i>right-click on a unit and select “Unit Type "
-#| "Description.”</i></b>\n"
-#| "\n"
-#| "For the most advantageous fights, try to <b><i>position your units on "
-#| "good\n"
-#| "terrain</i></b>, and <b><i>attack your enemies while they’re on poor "
-#| "terrain!</i></b>"
 msgid ""
 "In Wesnoth, every attack has a chance to miss.\n"
 "\n"
@@ -576,24 +538,25 @@ msgid ""
 "terrain</i></b>, and <b><i>attack your enemies while they’re on poor terrain!"
 "</i></b>"
 msgstr ""
-"En Wesnoth, cada ataque tiene una posibilidad de fallar.\n"
+"En Wesnoth, cada ataque tiene una probabilidad de fallar.\n"
 "\n"
 "Las unidades en terreno favorable (como castillos, aldeas, bosques o "
 "colinas)\n"
-"tienen más probabilidades de esquivar ataques, mientras que las unidades en "
+"tienen más probabilidades de evadir ataques, mientras que las unidades en "
 "terreno desfavorable (como\n"
 "agua, arena o hielo) son mucho más fáciles de golpear.\n"
 "\n"
 "Diferentes unidades reciben distintos beneficios del terreno. La mayoría de "
 "la infantería,\n"
-"por ejemplo, tiene un 50 % de esquiva en bosque, pero la caballería solo un "
+"por ejemplo, tiene un 50 % de evasión en bosque — pero la caballería solo un "
 "30 %.\n"
 "Para más detalles, <b><i>haz clic derecho sobre una unidad y selecciona "
-"“Descripción del tipo de unidad”.</i></b>\n"
+"«Descripción del tipo de unidad».</i></b>\n"
 "\n"
-"Para las peleas más ventajosas, intenta <b><i>posicionar tus unidades en "
-"buen terreno</i></b>\n"
-"y <b><i>atacar a tus enemigos mientras estén en terreno desfavorable!</i></b>"
+"Para los combates más ventajosos, intenta <b><i>posicionar tus unidades en "
+"buen\n"
+"terreno</i></b>, y <b><i>atacar a tus enemigos mientras estén en terreno "
+"desfavorable!</i></b>"
 
 #. [message]: speaker=Mari
 #. Mari is speaking sarcastically, and poking fun at game tutorials. Deoran is a trained soldier and obviously knows how to ride his horse and swing a sword - but the player needs to be taught how to move and attack
@@ -1436,15 +1399,10 @@ msgstr ""
 #. [display_tip]
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:272
 msgid "Recalling Veterans"
-msgstr ""
+msgstr "Reincorporar veteranos"
 
 #. [display_tip]
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:274
-#, fuzzy
-#| msgid ""
-#| "Press <b>Alt+R</b> (or right-click on Deoran) to <i>recall</i> veteran "
-#| "soldiers from the previous scenario. Recalling a veteran only ever costs "
-#| "20 gold, no matter how powerful (or weak) they are."
 msgid ""
 "Press <b>Alt+R</b> (or right-click on Deoran) to <i>recall</i> veteran "
 "soldiers\n"
@@ -1458,45 +1416,22 @@ msgstr ""
 
 #. [display_tip]
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:278
-#, fuzzy
-#| msgid ""
-#| "Recalling and leveling-up soldiers is very important. By recalling "
-#| "veterans every scenario and building up their experience, over time you "
-#| "can create a very powerful army.\n"
-#| "\n"
-#| "If you wish to recruit new soldiers, you can still do so by pressing "
-#| "<b>Ctrl+R</b>. <b>Ctrl+R</b> to recruit, <b>Alt+R</b> to recall."
 msgid ""
 "Recalling and leveling-up soldiers is very important. By recalling\n"
 "veterans every scenario and building up their experience, over\n"
 "time you can create a very powerful army."
 msgstr ""
-"Reincorporar y subir de nivel soldados es muy importante. Al reincorporar "
-"veteranos en cada escenario y aumentar su experiencia, con el tiempo puedes "
-"crear un ejército muy poderoso.\n"
-"\n"
-"Si deseas reclutar nuevos soldados, aún puedes hacerlo presionando "
-"<b>Ctrl+R</b>. <b>Ctrl+R</b> para reclutar, <b>Alt+R</b> para reincorporar."
+"Reincorporar y subir de nivel soldados es muy importante. Al reincorporar\n"
+"veteranos en cada escenario y aumentar su experiencia, con el\n"
+"tiempo puedes crear un ejército muy poderoso."
 
 #. [display_tip]
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:282
-#, fuzzy
-#| msgid ""
-#| "Recalling and leveling-up soldiers is very important. By recalling "
-#| "veterans every scenario and building up their experience, over time you "
-#| "can create a very powerful army.\n"
-#| "\n"
-#| "If you wish to recruit new soldiers, you can still do so by pressing "
-#| "<b>Ctrl+R</b>. <b>Ctrl+R</b> to recruit, <b>Alt+R</b> to recall."
 msgid ""
 "If you wish to recruit new soldiers, you can still do so by pressing\n"
 "<b>Ctrl+R</b>. <b>Ctrl+R</b> to recruit, <b>Alt+R</b> to recall."
 msgstr ""
-"Reincorporar y subir de nivel soldados es muy importante. Al reincorporar "
-"veteranos en cada escenario y aumentar su experiencia, con el tiempo puedes "
-"crear un ejército muy poderoso.\n"
-"\n"
-"Si deseas reclutar nuevos soldados, aún puedes hacerlo presionando "
+"Si deseas reclutar nuevos soldados, aún puedes hacerlo presionando\n"
 "<b>Ctrl+R</b>. <b>Ctrl+R</b> para reclutar, <b>Alt+R</b> para reincorporar."
 
 #. [objective]: condition=win
@@ -1617,21 +1552,15 @@ msgstr ""
 
 #. [message]
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:484
-#, fuzzy
-#| msgid ""
-#| "Most of your units have only a 20% chance to dodge when standing in "
-#| "shallow water, while in encampment terrain most of the bandits have 60%. "
-#| "Fighting with your units on poor terrain isn’t always a bad idea, but it "
-#| "is often not worth the disadvantage to your troops."
 msgid ""
 "Most of your units have only a 20% chance to evade when standing in shallow "
 "water, while in encampment terrain most of the bandits have 60%. Fighting "
 "with your units on poor terrain isn’t always a bad idea, but it is often not "
 "worth the disadvantage to your troops."
 msgstr ""
-"La mayoría de tus unidades solo tiene un 20% de probabilidad de esquivar al "
+"La mayoría de tus unidades solo tiene un 20 % de probabilidad de evadir al "
 "estar en agua poco profunda, mientras que en terreno de campamento la "
-"mayoría de los bandidos tiene 60%. Luchar con tus unidades en terreno "
+"mayoría de los bandidos tiene 60 %. Luchar con tus unidades en terreno "
 "desfavorable no siempre es mala idea, pero a menudo no vale la desventaja "
 "para tus tropas."
 
@@ -1944,35 +1873,25 @@ msgstr "Hola, novato. Sí, nunca tuviste la oportunidad de verme luchar."
 
 #. [message]: speaker=Mari
 #: data/campaigns/The_South_Guard/scenarios/02x_Westin.cfg:267
-#, fuzzy
-#| msgid ""
-#| "Well, I’m a survivor. Fast-moving, light on my feet; good at dodging, "
-#| "good at stabbing. Hard to pin down, whether in an attack or in an escape."
 msgid ""
 "Well, I’m a survivor. Fast-moving, light on my feet; good at evading, good "
 "at stabbing. Hard to pin down, whether in an attack or in an escape."
 msgstr ""
 "Bueno, soy una sobreviviente. Me muevo rápido, ligera de pies; buena "
-"esquivando, buena apuñalando. Difícil de atrapar, ya sea en un ataque o al "
+"evadiendo, buena apuñalando. Difícil de atrapar, ya sea en un ataque o al "
 "escapar."
 
 #. [message]
 #: data/campaigns/The_South_Guard/scenarios/02x_Westin.cfg:271
-#, fuzzy
-#| msgid ""
-#| "Mari has unusually high terrain defenses (her chance to dodge enemy "
-#| "attacks). Her <i><b>skirmisher</b></i> ability lets her ignore enemies’ "
-#| "Zone of Control — she can move freely around enemy units without being "
-#| "stopped."
 msgid ""
 "Mari has unusually high terrain defenses (her chance to evade enemy "
 "attacks). Her <i><b>skirmisher</b></i> ability lets her ignore enemies’ Zone "
 "of Control — she can move freely around enemy units without being stopped."
 msgstr ""
-"Mari tiene defensas de terreno inusualmente altas (su probabilidad de "
-"esquivar ataques enemigos). Su habilidad <i><b>escuadrera</b></i> le permite "
-"ignorar la Zona de Control de los enemigos — puede moverse libremente "
-"alrededor de las unidades enemigas sin ser detenida."
+"Mari tiene defensas de terreno inusualmente altas (su probabilidad de evadir "
+"ataques enemigos). Su habilidad <i><b>hostigadora</b></i> le permite ignorar "
+"la Zona de Control de los enemigos — puede moverse libremente alrededor de "
+"las unidades enemigas sin ser detenida."
 
 #. [message]: speaker=Mari
 #: data/campaigns/The_South_Guard/scenarios/02x_Westin.cfg:275
@@ -2010,18 +1929,13 @@ msgstr ""
 
 #. [message]: speaker=Mari
 #: data/campaigns/The_South_Guard/scenarios/02x_Westin.cfg:292
-#, fuzzy
-#| msgid ""
-#| "I already told you, didn’t I? Pay attention this time — I’ve got a sword "
-#| "and sling, skill at dodging attacks, and can move freely around enemies "
-#| "without being stopped."
 msgid ""
 "I already told you, didn’t I? Pay attention this time — I’ve got a sword and "
 "sling, skill at evading attacks, and can move freely around enemies without "
 "being stopped."
 msgstr ""
 "Ya te lo dije, ¿no? Presta atención esta vez — tengo espada y honda, "
-"habilidad para esquivar ataques, y puedo moverme libremente alrededor de los "
+"habilidad para evadir ataques, y puedo moverme libremente alrededor de los "
 "enemigos sin ser detenida."
 
 #. [message]: speaker=Minister Hylas
@@ -2593,8 +2507,9 @@ msgid ""
 "the South Guard, then you are not to blame."
 msgstr ""
 "¿Qué ha pasado? ¡Ustedes, humanos, han matado a mis amigos, tomado a nuestro "
-"sabio, y me han encarcelado aquí durante estas largas y terribles lunas! ..."
-"pero si realmente son de la Guardia Sur, entonces no tienen la culpa."
+"sabio, y me han encarcelado aquí durante estas largas y terribles "
+"lunas! ...pero si realmente son de la Guardia Sur, entonces no tienen la "
+"culpa."
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/03_Vale_of_Tears.cfg:483
@@ -7101,13 +7016,13 @@ msgstr ""
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Tides_of_War.cfg:482
 msgid ""
 "You survived $pebbles_defense_length turns last scenario! Deoran starts\n"
-"   with $soldiers.length extra soldiers and "
-"$( ($pebbles_defense_length-36)*3 ) extra gold!"
+"   with $soldiers.length extra soldiers and $"
+"( ($pebbles_defense_length-36)*3 ) extra gold!"
 msgstr ""
 "¡Has sobrevivido $pebbles_defense_length turnos en el escenario anterior! "
 "Deoran empieza\n"
-"   con $soldiers.length soldados adicionales y "
-"$( ($pebbles_defense_length-36)*3 ) de oro extra!"
+"   con $soldiers.length soldados adicionales y $"
+"( ($pebbles_defense_length-36)*3 ) de oro extra!"
 
 #. [else]
 #. $pebbles_defense_length will be 3 or greater. $soldiers.length will be 3 or greater
@@ -7853,6 +7768,8 @@ msgid ""
 "Congratulations! You’ve completed <i>The South Guard</i> and should now "
 "understand the fundamentals of Wesnoth."
 msgstr ""
+"¡Felicidades! Has completado <i>La Guardia del Sur</i> y ahora deberías "
+"entender los fundamentos de Wesnoth."
 
 #. [message]
 #: data/campaigns/The_South_Guard/scenarios/06x_Epilogue.cfg:340
@@ -7862,6 +7779,10 @@ msgid ""
 "follows different characters. <i>Of Pearls and Pirates</i> also includes "
 "some minor tutorial elements, and leads into a broader story arc."
 msgstr ""
+"La siguiente campaña recomendada (y la siguiente cronológicamente) es "
+"<i>Perlas y Piratas</i>, ambientada en una pequeña aldea costera y centrada "
+"en distintos personajes. <i>Perlas y Piratas</i> también incluye algunos "
+"elementos menores de tutorial y conduce a un arco narrativo más amplio."
 
 #. [message]
 #: data/campaigns/The_South_Guard/scenarios/06x_Epilogue.cfg:342
@@ -7870,6 +7791,9 @@ msgid ""
 "novice-level Wesnoth campaigns, like <i>A Tale of Two Brothers</i> or "
 "<i>Dusk of Dawn</i>."
 msgstr ""
+"O, para jugar en otro punto de la cronología de Wesnoth, prueba una de las "
+"otras campañas de nivel inicial, como <i>Una historia de dos hermanos</i> o "
+"<i>El Ocaso del Amanecer</i>."
 
 #. [unit_type]: id=Cavalryman Commander, race=human
 #: data/campaigns/The_South_Guard/units/Deoran1_Cavalryman.cfg:35
@@ -8377,18 +8301,13 @@ msgstr ""
 #. [message]: speaker=unit
 #. $consecutive_misses will be 3 or higher. Alternatively, can be translated along the lines of "I missed all my strikes!"
 #: data/campaigns/The_South_Guard/utils/sg_help.cfg:308
-#, fuzzy
-#| msgid ""
-#| "I missed all $consecutive_misses strikes! I tried my best, but this enemy "
-#| "had a high chance to dodge. I might have had better odds attacking a "
-#| "different enemy."
 msgid ""
 "I missed all $consecutive_misses strikes! I tried my best, but this enemy "
 "had a high chance to evade. I might have had better odds attacking a "
 "different enemy."
 msgstr ""
 "¡Fallé todos mis $consecutive_misses golpes! Hice lo mejor que pude, pero "
-"este enemigo tenía una alta probabilidad de esquivar. Tal vez hubiera tenido "
+"este enemigo tenía una alta probabilidad de evadir. Tal vez hubiera tenido "
 "mejores probabilidades atacando a un enemigo diferente."
 
 #. [message]: speaker=unit
@@ -8459,39 +8378,28 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/utils/sg_help.cfg:380
-#, fuzzy
-#| msgid ""
-#| "I missed all $consecutive_misses strikes, even though my enemy had a low "
-#| "chance to dodge! That’s unlucky, but bad luck happens just as often as "
-#| "good luck — a good commander knows how to plan around both!"
 msgid ""
 "I missed all $consecutive_misses strikes, even though my enemy had a low "
 "chance to evade! That’s unlucky, but bad luck happens just as often as good "
 "luck — a good commander knows how to plan around both!"
 msgstr ""
-"¡Fallé todos mis $consecutive_misses ataques, a pesar de que mi enemigo "
-"tenía baja probabilidad de esquivar! Eso es mala suerte, pero la mala suerte "
-"ocurre con la misma frecuencia que la buena — un buen comandante sabe cómo "
-"planear en torno a ambas."
+"¡Fallé todos mis $consecutive_misses golpes, aunque mi enemigo tenía baja "
+"probabilidad de evadir! Es mala suerte, pero la mala suerte ocurre con la "
+"misma frecuencia que la buena — un buen comandante sabe cómo planificar "
+"teniendo en cuenta ambas."
 
 #. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/utils/sg_help.cfg:403
-#, fuzzy
-#| msgid ""
-#| "I hit all $consecutive_hits strikes, even though my enemy had a high "
-#| "chance to dodge! Luck works both ways — sometimes I miss strikes when I "
-#| "was likely to hit, but sometimes I also hit strikes that I was likely to "
-#| "miss — like now!"
 msgid ""
 "I hit all $consecutive_hits strikes, even though my enemy had a high chance "
 "to evade! Luck works both ways — sometimes I miss strikes when I was likely "
 "to hit, but sometimes I also hit strikes that I was likely to miss — like "
 "now!"
 msgstr ""
-"Acerté todos mis $consecutive_hits ataques, aunque mi enemigo tenía alta "
-"probabilidad de esquivar. La suerte funciona en ambos sentidos — a veces "
-"fallo ataques que probablemente acertaría, pero otras veces acierto ataques "
-"que probablemente fallaría — ¡como ahora!"
+"¡Acerté todos mis $consecutive_hits golpes, aunque mi enemigo tenía alta "
+"probabilidad de evadir! La suerte funciona en ambos sentidos — a veces fallo "
+"golpes que probablemente acertaría, pero otras veces acierto golpes que "
+"probablemente fallaría — ¡como ahora!"
 
 #. [display_tip]
 #: data/campaigns/The_South_Guard/utils/sg_help.cfg:413
@@ -8712,7 +8620,7 @@ msgstr ""
 #~ "“The Deceiver’s Gambit”"
 #~ msgstr ""
 #~ "La historia continúa en:\n"
-#~ "«El Gambito de la Corona»"
+#~ "«El Gambito de la Engañadora»"
 
 #~ msgid ""
 #~ "Congratulations! You’ve completed “The South Guard” and should now "
@@ -8728,7 +8636,7 @@ msgstr ""
 #~ "entender los fundamentos de Wesnoth.\n"
 #~ "\n"
 #~ "Para jugar otra campaña de estilo moderno y ver la vida posterior de "
-#~ "Deoran, continúa la historia con “El Gambito de la Corona”.\n"
+#~ "Deoran, continúa la historia con “El Gambito de la Engañadora”.\n"
 #~ "\n"
 #~ "O si buscas una experiencia más tradicional de Wesnoth, prueba “Un Cuento "
 #~ "Sobre Dos Hermanos”."

@@ -12,10 +12,10 @@
 # Sebastián Lecchini <sebas38760@gmail.com>, 2025, 2026.
 msgid ""
 msgstr ""
-"Project-Id-Version: es\n"
+"Project-Id-Version: wesnoth-editor\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2026-02-25 19:03-0600\n"
-"PO-Revision-Date: 2025-01-23 13:54-0300\n"
+"PO-Revision-Date: 2026-03-04 20:35-0300\n"
 "Last-Translator: Sebastián Lecchini<sebas38760@gmail.com>\n"
 "Language-Team: es\n"
 "Language: es\n"
@@ -487,41 +487,33 @@ msgid "File does not have .map, .cfg, or .mask extension"
 msgstr "El archivo no tiene extensión .map, .cfg, o .mask"
 
 #: src/editor/map/map_context.cpp:227
-#, fuzzy
-#| msgid "Failed to load the scenario, attempting to load only the map."
 msgid ""
 "Failed to load the scenario: $error\n"
 "\n"
 "Attempting to load only the map."
-msgstr "No se pudo cargar el escenario, intentando cargar solo el mapa."
+msgstr ""
+"No se pudo cargar el escenario: $error\n"
+"/nIntentando cargar solo el mapa."
 
 #: src/editor/map/map_context.cpp:253
-#, fuzzy
-#| msgid ""
-#| "The map file looks like a scenario, but the map_data value does not point "
-#| "to an existing file"
 msgid ""
 "The file looks like a scenario, but the map_data attribute does not point to "
 "an existing file"
 msgstr ""
-"El mapa parece un escenario, pero el valor de map_data no apunta a un "
-"archivo existente"
+"El archivo parece un escenario, pero el atributo map_data no apunta a un "
+"archivo existente."
 
 #: src/editor/map/map_context.cpp:268
-#, fuzzy
-#| msgid ""
-#| "The map file looks like a scenario, but the map_file value does not point "
-#| "to an existing file"
 msgid ""
 "The file looks like a scenario, but the map_file attribute does not point to "
 "an existing file"
 msgstr ""
-"El mapa parece un escenario, pero el valor de map_data no apunta a un "
-"archivo existente"
+"El archivo parece un escenario, pero el atributo map_file no apunta a un "
+"archivo existente."
 
 #: src/editor/map/map_context.cpp:448
 msgid "Confirm"
-msgstr ""
+msgstr "Confirmar"
 
 #: src/editor/map/map_context.cpp:835 src/editor/map/map_context.cpp:875
 msgid "Could not save time schedule: $msg"

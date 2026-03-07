@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-tdg\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2026-02-26 01:04 UTC\n"
-"PO-Revision-Date: 2026-01-23 15:17-0300\n"
+"PO-Revision-Date: 2026-03-04 14:04-0300\n"
 "Last-Translator: Sebastián Lecchini <sebas38760@gmail.com>\n"
 "Language-Team: es\n"
 "Language: es\n"
@@ -24,7 +24,7 @@ msgstr ""
 #: data/campaigns/The_Deceivers_Gambit/achievements.cfg:18
 #: data/campaigns/The_Deceivers_Gambit/scenarios/01_Stirrings_of_War.cfg:19
 msgid "The Deceiver’s Gambit"
-msgstr "El Gambito de la Corona"
+msgstr "El Gambito de la Engañadora"
 
 #: data/campaigns/The_Deceivers_Gambit/_main.cfg:62
 msgid "1x enemies, 70% XP"
@@ -78,7 +78,7 @@ msgstr "Gráficos varios"
 #: data/campaigns/The_Deceivers_Gambit/_main.cfg:135
 #: data/campaigns/The_Deceivers_Gambit/_main.cfg:162
 msgid "TDG"
-msgstr "EGdE"
+msgstr "EGdlE"
 
 #. [campaign]: id=The Deceivers Gambit 1
 #: data/campaigns/The_Deceivers_Gambit/_main.cfg:146
@@ -107,21 +107,17 @@ msgstr "(Nivel intermedio, 7 escenarios.)"
 
 #. [campaign]: id=The Deceivers Gambit 1
 #: data/campaigns/The_Deceivers_Gambit/_main.cfg:152
-#, fuzzy
-#| msgid ""
-#| "Story continued in:\n"
-#| "The Deceiver’s Gambit II"
 msgid ""
 "The saga continues in\n"
 "<i>The Deceiver’s Gambit II</i>"
 msgstr ""
-"Historia continuada en:\n"
-"El Gambito de la Corona II"
+"La saga continúa en\n"
+"<i>El Gambito de la Engañadora II</i>"
 
 #. [campaign]: id=The Deceivers Gambit 2
 #: data/campaigns/The_Deceivers_Gambit/_main.cfg:161
 msgid "The Deceiver’s Gambit II"
-msgstr "El Gambito de la Corona II"
+msgstr "El Gambito de la Engañadora II"
 
 #. [campaign]: id=The Deceivers Gambit 2
 #: data/campaigns/The_Deceivers_Gambit/_main.cfg:173
@@ -149,6 +145,8 @@ msgid ""
 "The saga continues in\n"
 "<i>Liberty</i>"
 msgstr ""
+"La saga continúa en\n"
+"<i>Libertad</i>"
 
 #. [achievement_group]
 #: data/campaigns/The_Deceivers_Gambit/achievements.cfg:21
@@ -335,19 +333,15 @@ msgid "Shield"
 msgstr "Escudo"
 
 #: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:31
-#, fuzzy
-#| msgid ""
-#| "Spend <span color='#00bbe6' style='italic'>8 XP</span> to gain <i>+20% "
-#| "dodge chance</i> until the start of your next turn or until cancelled."
 msgid ""
 "Spend <span color='#00bbe6' style='italic'>8 XP</span> to gain an additional "
 "<i>20% terrain defense</i> (chance to evade) until the start\n"
 "          of your next turn or until cancelled."
 msgstr ""
-"<span color='#6ca364'><i><b>Hechizo:</b></i></span> Gasta <span "
-"color='#00bbe6' style='italic'>8 PX</span> para obtener <i>+20% de "
-"probabilidad de esquivar</i> hasta el inicio de tu próximo turno o hasta que "
-"se cancele."
+"Gasta <span color='#00bbe6' style='italic'>8 PX</span> para obtener un "
+"<i>20% adicional de defensa en terreno</i> (probabilidad de evadir) hasta el "
+"inicio\n"
+"          de tu próximo turno o hasta que se cancele."
 
 #: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:39
 msgid "Panacea"
@@ -400,20 +394,14 @@ msgid "Levitate"
 msgstr "Levitar"
 
 #: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:74
-#, fuzzy
-#| msgid ""
-#| "Spend <span color='#00bbe6' style='italic'>8 XP</span> to gain <i>flight</"
-#| "i> and the <i><ref dst='ability_skirmisherskirmisher'>skirmisher</ref></"
-#| "i> ability until the start of your next turn or until cancelled."
 msgid ""
 "Spend <span color='#00bbe6' style='italic'>8 XP</span> to gain <i>flight</i> "
 "and the <i><ref dst='ability_skirmisher'>skirmisher</ref></i> ability until "
 "the start of your next turn or until cancelled."
 msgstr ""
-"<span color='#6ca364'><i><b>Hechizo:</b></i></span> Gasta <span "
-"color='#00bbe6' style='italic'>8 PX</span> para obtener <i>vuelo</i> y la "
-"habilidad <i><ref dst='ability_skirmisherskirmisher'>hostigador</ref></i> "
-"hasta el inicio de tu próximo turno o hasta que se cancele."
+"Gasta <span color='#00bbe6' style='italic'>8 PX</span> para obtener "
+"<i>vuelo</i> y la habilidad <i><ref dst='ability_skirmisher'>hostigador</"
+"ref></i> hasta el inicio de tu próximo turno o hasta que se cancele."
 
 #: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:82
 msgid "Find Familiar"
@@ -528,14 +516,9 @@ msgid "Glamour"
 msgstr "Glamour"
 
 #: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:159
-#, fuzzy
-#| msgid ""
-#| "Gain the <i><ref dst='ability_leadershipleadership'>leadership</ref></i> "
-#| "ability."
 msgid "Gain the <i><ref dst='ability_leadership'>leadership</ref></i> ability."
 msgstr ""
-"Obtienes la habilidad <i><ref dst='ability_leadershipleadership'>liderazgo</"
-"ref></i>."
+"Obtienes la habilidad <i><ref dst='ability_leadership'>liderazgo</ref></i>."
 
 #: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:173
 msgid ""
@@ -560,13 +543,6 @@ msgid "Enthrall"
 msgstr "Fascinar"
 
 #: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:191
-#, fuzzy
-#| msgid ""
-#| "Spend <span color='#00bbe6' style='italic'>48 XP</span> and <span "
-#| "color='#c06a61' style='italic'>your attack</span> to magically disguise "
-#| "yourself as an awe-inspiring drake,\n"
-#| "          reducing accuracy and dodge by 10% for enemies in a 2 hex "
-#| "radius. Lasts until cancelled."
 msgid ""
 "Spend <span color='#00bbe6' style='italic'>48 XP</span> and <span "
 "color='#c06a61' style='italic'>your attack</span> to magically disguise "
@@ -576,12 +552,13 @@ msgid ""
 "          (chance to evade) and chance to hit (except for magical attacks). "
 "Lasts until cancelled."
 msgstr ""
-"<span color='#6ca364'><i><b>Hechizo:</b></i></span> Gasta <span "
-"color='#00bbe6' style='italic'>48 PX</span> y <span color='#c06a61' "
-"style='italic'>tu ataque</span> para disfrazarte mágicamente como un draco "
-"imponente,\n"
-"          reduciendo la precisión y la evasión un 10% para los enemigos en "
-"un radio de 2 hexágonos. Dura hasta que se cancele."
+"Gasta <span color='#00bbe6' style='italic'>48 PX</span> y <span "
+"color='#c06a61' style='italic'>tu ataque</span> para disfrazarte mágicamente "
+"como un draco imponente.\n"
+"          Los enemigos en un radio de 2 hexágonos sufren una penalización de "
+"-10% tanto a su defensa en terreno\n"
+"          (probabilidad de evadir) como a su probabilidad de impactar "
+"(excepto ataques mágicos). Dura hasta que se cancele."
 
 #: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:199
 msgid "Animate Fire"
@@ -1125,7 +1102,7 @@ msgid ""
 msgstr ""
 "El amor del rey residía en la espada y el escudo, en la batalla y la sangre. "
 "Insatisfecho con una vida de languidez entre las propiedades de Weldyn, "
-"Garard puso su mirada en los orcos de las Montañas del Corazón, cuyas "
+"Garard puso su mirada en los orcos de las Montañas Profundas, cuyas "
 "incursiones habían sido por mucho tiempo una molestia a lo largo de su "
 "frontera norte."
 
@@ -1359,19 +1336,14 @@ msgstr ""
 
 #. [object]
 #: data/campaigns/The_Deceivers_Gambit/scenarios/01_Stirrings_of_War.cfg:392
-#, fuzzy
-#| msgid ""
-#| "Mages are deadly ranged attackers, with accurate <i>magical</i> attacks "
-#| "that are difficult to dodge. They have few hitpoints and are highly "
-#| "vulnerable in melee combat, so take good care of them!"
 msgid ""
 "Mages are deadly ranged attackers, with accurate <i>magical</i> attacks that "
 "are difficult to evade. They have few hitpoints and are highly vulnerable in "
 "melee combat, so take good care of them!"
 msgstr ""
 "Los magos son atacantes a distancia letales, con ataques <i>mágicos</i> "
-"precisos que son difíciles de esquivar. Tienen pocos puntos de vida y son "
-"muy vulnerables en combate cuerpo a cuerpo, ¡así que cuídalos bien!"
+"precisos que son difíciles de evadir. Tienen pocos puntos de vida y son muy "
+"vulnerables en combate cuerpo a cuerpo, ¡así que cuídalos bien!"
 
 #. [message]
 #: data/campaigns/The_Deceivers_Gambit/scenarios/01_Stirrings_of_War.cfg:405
@@ -6729,9 +6701,8 @@ msgstr ""
 "Wesnoth, segundo de su nombre!\n"
 "\n"
 "¡Y en ese nombre, por el Reino de Wesnoth, anexo estas tierras desde el Gran "
-"Río en el sur hasta las estribaciones de las Montañas del Corazón en el "
-"norte! ¡Ustedes, orcos, caerán ante nuestras espadas como el trigo ante la "
-"guadaña!"
+"Río en el sur hasta las estribaciones de las Montañas Profundas en el norte! "
+"¡Ustedes, orcos, caerán ante nuestras espadas como el trigo ante la guadaña!"
 
 #. [message]: speaker=Garard
 #: data/campaigns/The_Deceivers_Gambit/scenarios/11_Clan_Blackcrest.cfg:964
@@ -9209,13 +9180,6 @@ msgstr ""
 
 #. [message]: speaker=Eldred
 #: data/campaigns/The_Deceivers_Gambit/scenarios/14_Long_Live_the_Queen.cfg:837
-#, fuzzy
-#| msgid ""
-#| "They say this elixir came all the way from the old continent, Delfador. "
-#| "Persuading Malal to give it up wasn’t easy.\n"
-#| "\n"
-#| "You like magic so much? Once I drink from Jevyan’s Cup, I’ll have enough "
-#| "magic to turn you all to dust!"
 msgid ""
 "They say this elixir came all the way from the Old Continent, Delfador. "
 "Persuading Malal to give it up wasn’t easy.\n"
@@ -9223,7 +9187,7 @@ msgid ""
 "You like magic so much? Once I drink from Jevyan’s Cup, I’ll have enough "
 "magic to turn you all to dust!"
 msgstr ""
-"Dicen que este elixir vino desde el viejo continente, Delfador. Convencer a "
+"Dicen que este elixir vino desde el Viejo Continente, Delfador. Convencer a "
 "Malal de entregarlo no fue fácil.\n"
 "\n"
 "¿Te gusta tanto la magia? Una vez que beba de la Copa de Jevyan, ¡tendré "
@@ -11051,7 +11015,7 @@ msgstr ""
 #~ "<span font_family='WesScript' size='90000'>\n"
 #~ "\n"
 #~ "\n"
-#~ "<i>El Gambito de la Corona </i></span>"
+#~ "<i>El Gambito de la Engañadora </i></span>"
 
 #~ msgid "<i>Quiet!</i> <span size='small'>Do you hear that?</span>"
 #~ msgstr "<i>¡Silencio!</i> <span size='small'>¿Escuchas eso?</span>"

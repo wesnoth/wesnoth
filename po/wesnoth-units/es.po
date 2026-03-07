@@ -19,10 +19,10 @@
 # Sebastián Lecchini <sebas38760@gmail.com>, 2025, 2026.
 msgid ""
 msgstr ""
-"Project-Id-Version: es\n"
+"Project-Id-Version: wesnoth-units\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2026-02-26 01:03 UTC\n"
-"PO-Revision-Date: 2026-02-13 19:56-0300\n"
+"PO-Revision-Date: 2026-03-04 20:59-0300\n"
 "Last-Translator: Sebastián Lecchini <sebas38760@gmail.com>\n"
 "Language-Team: es\n"
 "Language: es\n"
@@ -76,7 +76,7 @@ msgstr "espada corta"
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:57
 #: data/core/units/undead/Necromancer.cfg:39
 msgid "chill wave"
-msgstr "ola de frío"
+msgstr "onda de frío"
 
 #. [attack]: type=arcane
 #: data/campaigns/Descent_Into_Darkness/units/Apprentice_Necromancer.cfg:43
@@ -465,7 +465,7 @@ msgstr "pisotear"
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:37
 #: data/core/units/undead/Necro_Lich.cfg:40
 msgid "chill tempest"
-msgstr "ola de frío"
+msgstr "tempestad de helada"
 
 #. [attack]: type=pierce
 #. [attack]: type=fire
@@ -555,10 +555,8 @@ msgstr "maldición"
 
 #. [unit_type]: id=Pirate Flagship, race=ship
 #: data/campaigns/Of_Pearls_and_Pirates/units/Pirate_Flagship.cfg:9
-#, fuzzy
-#| msgid "Fireship"
 msgid "Pirate Flagship"
-msgstr "Barco incendiario"
+msgstr "Buque insignia pirata"
 
 #. [unit_type]: id=Pirate Flagship, race=ship
 #. [unit_type]: id=Pirate Carrack, race=ship
@@ -610,10 +608,8 @@ msgstr "garfio"
 
 #. [unit_type]: id=Pirate Skiff, race=ship
 #: data/campaigns/Of_Pearls_and_Pirates/units/Pirate_Skiff.cfg:9
-#, fuzzy
-#| msgid "Pirate Carrack"
 msgid "Pirate Skiff"
-msgstr "Carraca pirata"
+msgstr "Esquife pirata"
 
 #. [unit_type]: id=Pirate Skiff, race=ship
 #. [unit_type]: id=Skiff, race=ship
@@ -1826,19 +1822,6 @@ msgstr "Galera reforzada"
 
 #. [unit_type]: id=Iron Raider, race=ship
 #: data/core/units/boats/Raider_Iron.cfg:26
-#, fuzzy
-#| msgid ""
-#| "While Carracks and Cogs rely on impressive sails to harness the power of "
-#| "the wind, galleys and raiders are propelled by muscle-power of the crew "
-#| "manning the oars. This has the disadvantage of requiring a larger crew, "
-#| "and it does limit the speed and efficiency of transport. But these "
-#| "seeming weaknesses also make the vessel less vulnerable to the whims of "
-#| "weather and the predations of pirates.\n"
-#| "\n"
-#| "Iron Raiders are veteran Coastal Raiders that have been hardened to "
-#| "become tougher targets and harder hitters. They are often used as front-"
-#| "line escorts of slower cargo ships in rivers and coasts, where their "
-#| "heavy iron ram proves the most effective."
 msgid ""
 "While Carracks and Cogs rely on impressive sails to harness the power of the "
 "wind, galleys and raiders are propelled by muscle-power of the crew manning "
@@ -1853,13 +1836,7 @@ msgstr ""
 "desventaja de requerir una tripulación más grande y limita la velocidad y la "
 "eficiencia del transporte. Pero estas aparentes debilidades también hacen a "
 "la nave menos vulnerable a los caprichos del clima y a la depredación de los "
-"piratas.\n"
-"\n"
-"Las Galeras reforzadas son Dromones costeros veteranos que han sido "
-"endurecidos para convertirse en objetivos más resistentes y en atacantes más "
-"poderosos. A menudo se usan como escoltas de primera línea de barcos de "
-"carga más lentos en ríos y costas, donde su pesado espolón de hierro resulta "
-"más efectivo."
+"piratas."
 
 #. [unit_type]: id=Iron Raider, race=ship
 #: data/core/units/boats/Raider_Iron.cfg:28
@@ -1869,6 +1846,11 @@ msgid ""
 "escorts of slower cargo ships in rivers and coasts, where their heavy iron "
 "bow allows them to ram foes without fear of self-inflicted damage."
 msgstr ""
+"Las Galeras reforzadas son Dromones costeros veteranos que han sido "
+"endurecidos para convertirse en objetivos más resistentes y en atacantes más "
+"poderosos. A menudo se usan como escoltas de primera línea de barcos de "
+"carga más lentos en ríos y costas, donde su pesado espolón de hierro resulta "
+"más efectivo."
 
 #. [unit_type]: id=Skiff, race=ship
 #: data/core/units/boats/Skiff.cfg:5
@@ -4701,7 +4683,8 @@ msgstr ""
 "equipan con una larga lanza para compensar su corto alcance, y una mejor "
 "armadura para proteger sus diminutos cuerpos."
 
-# Caballero no parece correcto para un goblin en un lobo. En un caballo aún, aunque no sea un personaje muy caballeresco.
+# Caballero no parece correcto para un goblin en un lobo. En un caballo aún,
+# aunque no sea un personaje muy caballeresco.
 #. [unit_type]: id=Goblin Knight, race=wolf
 #: data/core/units/goblins/Knight.cfg:4
 msgid "Goblin Knight"
@@ -5777,18 +5760,6 @@ msgstr "Mago blanco"
 
 #. [unit_type]: id=White Mage, race=human, gender=male,female
 #: data/core/units/humans/Mage_White.cfg:19
-#, fuzzy
-#| msgid ""
-#| "Some magi, as they learn about the world around them, and learn the truth "
-#| "of the suffering and squalor in which humanity too often lives, find that "
-#| "they cannot bring themselves to be cloistered into a life of study. These "
-#| "men and women give up the life of a mage, and join monastic orders, "
-#| "dedicating the skills they have been given to the good of all. After "
-#| "their ordination, they often travel the world, ministering to sickness "
-#| "and injury.\n"
-#| "\n"
-#| "Though not trained for combat, they are a potent ally against magical or "
-#| "unnatural things."
 msgid ""
 "Some magi, as they learn about the world and the truth of the suffering and "
 "squalor in which humanity too often lives, find that they cannot bring "
@@ -5802,13 +5773,14 @@ msgid ""
 "Though not trained for combat, they are a potent ally against magical or "
 "unnatural things."
 msgstr ""
-"Algunos magos, a medida que aprenden sobre el mundo que los rodea, y "
-"aprenden la verdad sobre el sufrimiento y la miseria en la que la humanidad "
-"vive normalmente, encuentran inaceptable enclaustrarse en una vida de "
-"estudio. Estos hombres y mujeres abandonan la vida tradicional de un mago y "
-"se unen a órdenes monásticas, dedicando al bien de todos las habilidades con "
-"que han sido dotados. Después de ser ordenados, a menudo viajan por el "
-"mundo, atendiendo a los enfermos y heridos.\n"
+"Algunos magos, al aprender sobre el mundo y la verdad del sufrimiento y la "
+"miseria en la que la humanidad vive con demasiada frecuencia, descubren que "
+"no pueden resignarse a una vida encerrada en el estudio teórico. En cambio, "
+"estos hombres y mujeres dedican sus habilidades al bien de todos, estudiando "
+"sanación y purificación para convertir su magia en una herramienta que da "
+"vida. A menudo se los ve viajando por el mundo, atendiendo a enfermos y "
+"heridos. El uso repetido de los mismos hechizos hace que su magia se vuelva "
+"blanca con el tiempo, lo que les da el título por el que se los conoce.\n"
 "\n"
 "Aunque no están entrenados para el combate, son un poderoso aliado contra lo "
 "mágico o antinatural."
@@ -5834,15 +5806,6 @@ msgstr "Mago de luz"
 
 #. [unit_type]: id=Mage of Light, race=human, gender=male,female
 #: data/core/units/humans/Mage_of_Light.cfg:20
-#, fuzzy
-#| msgid ""
-#| "After years of experience, the most devout of white magi develop vast "
-#| "spiritual powers. By strict devotion to the path of the light, they can "
-#| "call upon its aid to chase away the shadows of the night.\n"
-#| "\n"
-#| "Following a strict code of piety and honor, these men and women work "
-#| "tirelessly to bring life and order to the troubled world in which they "
-#| "live."
 msgid ""
 "After years of experience, the most devout of white magi develop vast "
 "magical powers related to healing and purification. By strict devotion to "
@@ -5854,13 +5817,17 @@ msgid ""
 "Following a strict code of piety and honor, these men and women work "
 "tirelessly to bring life and order to the troubled world in which they live."
 msgstr ""
-"Tras años de experiencia, los magos blancos más devotos desarrollan vastos "
-"poderes espirituales. Mediante una estricta devoción al camino de la luz, "
-"pueden invocar su ayuda para ahuyentar las sombras de la noche.\n"
+"Tras años de experiencia, los magos blancos más devotos desarrollan grandes "
+"poderes mágicos relacionados con la sanación y la purificación. Con una "
+"estricta dedicación a este camino, también pueden invocar su ayuda para "
+"ahuyentar las sombras de la noche. Su gran devoción al camino de la magia "
+"buena o «blanca» suele verse como un halo luminoso alrededor de sus cuerpos, "
+"un símbolo de esperanza al que la gente suele acudir cuando todo lo demás "
+"falla para alejar los terrores de la vida.\n"
 "\n"
 "Siguiendo un estricto código de piedad y honor, estos hombres y mujeres "
-"trabajan incansablemente para traer vida y orden al caótico mundo en el que "
-"viven."
+"trabajan incansablemente para traer vida y orden al mundo turbulento en el "
+"que viven."
 
 #. [special_note]
 #: data/core/units/humans/Mage_of_Light.cfg:24
@@ -6416,7 +6383,8 @@ msgstr "chorro de agua"
 msgid "Merman Entangler"
 msgstr "Enredador sirénido"
 
-# No estoy muy contento con la frase de los especialistas y el combate pero no se me ocurre otra.
+# No estoy muy contento con la frase de los especialistas y el combate pero no
+# se me ocurre otra.
 # También me falta el último comentario, que no entiendo.
 #. [unit_type]: id=Merman Entangler, race=merman
 #: data/core/units/merfolk/Entangler.cfg:19
@@ -7047,7 +7015,7 @@ msgstr ""
 #. [unit_type]: id=Redtail Cat, race=cats
 #: data/core/units/monsters/Cat_Redtail.cfg:4
 msgid "Redtail Cat"
-msgstr ""
+msgstr "Gato cola roja"
 
 #. [unit_type]: id=Redtail Cat, race=cats
 #: data/core/units/monsters/Cat_Redtail.cfg:33
@@ -7060,6 +7028,14 @@ msgid ""
 "maneuvering, common folklore says these cats are actually malevolent fire "
 "spirits, and heralds of bad luck."
 msgstr ""
+"Los gatos cola roja son poderosos depredadores que normalmente acechan en "
+"las colinas y los bosques, pero recorren grandes distancias durante sus "
+"cacerías, por lo que han sido encontrados en muchos lugares inesperados. Su "
+"rasgo más distintivo es la coloración de su cola, casi como una llama, que "
+"distrae del cuerpo oscuro y de sus peligrosos dientes y garras. "
+"Probablemente debido a su coloración y a sus ágiles movimientos, el folclore "
+"popular dice que estos gatos son en realidad espíritus de fuego malignos y "
+"presagios de mala suerte."
 
 #. [unit_type]: id=Swamp Lizard, race=monster
 #: data/core/units/monsters/Crocodile.cfg:13
@@ -7183,15 +7159,20 @@ msgstr ""
 "qué las libélulas gigantes generalmente se encuentran solo cerca de ríos, "
 "lagos y calas."
 
-# Me gusta más veterano que anciano. Anciano da una imagen de decrepitud que no creo sea la adecuada.
+# Me gusta más veterano que anciano. Anciano da una imagen de decrepitud que
+# no creo sea la adecuada.
 #. [unit_type]: id=Elder Falcon, race=falcon
 #: data/core/units/monsters/Elder_Falcon.cfg:4
 msgid "Elder Falcon"
 msgstr "Halcón veterano"
 
-# Espreon dice: «Los halcones ... soportan ... cicatrices » -> «Los halcones ... llevan ... cicatrices»
-# Para mí la descripción en inglés enfoque en el hecho de que los halcones *han* sufrido físicamente al proteger a sus amos y que esa es la razón por la cual tienen esas cicatrices — no que toleran las cicatrices.
-# Pepe: en general, los guerreros lucen cicatrices, algunos como muestra de valor. En este caso, al ser animales, igual no son tan orgullosos.
+# Espreon dice: «Los halcones ... soportan ... cicatrices » -> «Los halcones
+# ... llevan ... cicatrices»
+# Para mí la descripción en inglés enfoque en el hecho de que los halcones
+# *han* sufrido físicamente al proteger a sus amos y que esa es la razón por
+# la cual tienen esas cicatrices — no que toleran las cicatrices.
+# Pepe: en general, los guerreros lucen cicatrices, algunos como muestra de
+# valor. En este caso, al ser animales, igual no son tan orgullosos.
 #. [unit_type]: id=Elder Falcon, race=falcon
 #: data/core/units/monsters/Elder_Falcon.cfg:19
 msgid ""
@@ -9781,7 +9762,8 @@ msgstr ""
 "saber cuál es su propósito o el de sus enemigos. Tan sólo los mueve la "
 "maldad nacida de su existencia vacía y atormentada."
 
-# Caballero no parece correcto para un goblin en un lobo. En un caballo aún, aunque no sea un personaje muy caballeresco.
+# Caballero no parece correcto para un goblin en un lobo. En un caballo aún,
+# aunque no sea un personaje muy caballeresco.
 #. [unit_type]: id=Bone Knight, race=undead
 #: data/core/units/undead/Skele_Bone_Knight.cfg:5
 msgid "Bone Knight"
@@ -10310,7 +10292,7 @@ msgstr ""
 
 #, fuzzy
 #~ msgid "chill"
-#~ msgstr "ola de frío"
+#~ msgstr "onda de frío"
 
 #~ msgid "female^Shadow Lord"
 #~ msgstr "Señora de las Sombras"
@@ -11161,7 +11143,8 @@ msgstr ""
 #~ "través de las lineas de batalla para lanzar una lluvia de flechas sobre "
 #~ "el enemigo."
 
-# Aunque caballero es un nombre a modo de burla, lobero es más corto y manejable
+# Aunque caballero es un nombre a modo de burla, lobero es más corto y
+# manejable
 #~ msgid ""
 #~ "The Goblin ‘Knights’ have little in common with the men who share that "
 #~ "title, and the title is bestowed in mockery by their enemies. The "
@@ -11646,7 +11629,6 @@ msgstr ""
 #~ msgid "lightning bolt"
 #~ msgstr "relámpago"
 
-#, fuzzy
 #~ msgid ""
 #~ "The drakes who master the use of war blades are sworn into a special "
 #~ "order. The mark of their initiation is the black-and-white warpaint they "
@@ -11656,7 +11638,6 @@ msgstr ""
 #~ "especial. La marca de su iniciación es la pintura negra y blanca que "
 #~ "muestran en la batalla."
 
-#, fuzzy
 #~ msgid ""
 #~ "The great fire-drakes are masters of their internal flame. Clad in "
 #~ "shining armor, they belch columns of flame at any who oppose them, a "
@@ -11732,7 +11713,6 @@ msgstr ""
 #~ "motivos de llamas, es una marca de su casta, orgullosa y poderosa, del "
 #~ "ideal al que aspiran sus congéneres."
 
-#, fuzzy
 #~ msgid ""
 #~ "Sky drakes are truly the kings of the sky. The momentum of their terrible "
 #~ "stooping dive and their fire breath combine into a terrible weapon. By "
@@ -11746,7 +11726,6 @@ msgstr ""
 #~ "precisión a posiciones que de otra manera serían de gran ventaja "
 #~ "defensiva para sus enemigos."
 
-#, fuzzy
 #~ msgid ""
 #~ "Drake Warriors wield war blades with great skill, and possess the fire "
 #~ "breathing skills of their ancestors. The great strength of their kind "

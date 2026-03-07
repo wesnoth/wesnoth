@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-dod\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2026-02-26 01:03 UTC\n"
-"PO-Revision-Date: 2026-01-23 15:28-0300\n"
+"PO-Revision-Date: 2026-03-04 20:29-0300\n"
 "Last-Translator: Sebastián Lecchini\n"
 "Language-Team: es\n"
 "Language: es\n"
@@ -31,7 +31,7 @@ msgid ""
 "Deep underneath the Heart Mountains, a new tribe of trolls awakens. Help "
 "them grow and eventually fulfill Ougl Firstborn’s biggest dream."
 msgstr ""
-"En lo profundo de las Montañas del Corazón, una nueva tribu de trolls "
+"En lo profundo de las Montañas Profundas, una nueva tribu de trolls "
 "despierta. Ayúdales a crecer y finalmente cumplir el mayor sueño de Ougl el "
 "Primogénito."
 
@@ -196,9 +196,9 @@ msgid ""
 "the largest mountain range in the known world, forming a natural wall that "
 "splits the Northlands in two."
 msgstr ""
-"Las Montañas del Corazón llevan la palabra Corazón en su nombre por una "
-"razón. Esta es la cadena montañosa más grande del mundo conocido, formando "
-"una pared natural que divide las Tierras del Norte en dos."
+"Las Montañas Profundas reciben su nombre por una razón. Es la cordillera más "
+"grande del mundo conocido y forma una muralla natural que divide las Tierras "
+"del Norte en dos."
 
 #. [part]
 #: data/campaigns/Dusk_of_Dawn/scenarios/00_Being_Born.cfg:24
@@ -270,7 +270,7 @@ msgstr "Recién nacido"
 #. [message]: speaker=narrator
 #: data/campaigns/Dusk_of_Dawn/scenarios/00_Being_Born.cfg:75
 msgid "One day in the Heart Mountains."
-msgstr "Un día en las Montañas del Corazón."
+msgstr "Un día en las Montañas Profundas."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dusk_of_Dawn/scenarios/00_Being_Born.cfg:101
@@ -540,30 +540,22 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dusk_of_Dawn/scenarios/01_First_Steps.cfg:877
-#, fuzzy
-#| msgid ""
-#| "There is an open trapdoor in the ruined dwarven castle. Do you want to go "
-#| "through it and play the bonus level?"
 msgid ""
 "There is an open trapdoor in the ruined dwarven castle. Do you want to go "
 "through it and play the bonus puzzle level?"
 msgstr ""
 "Hay una trampilla abierta en el castillo enano en ruinas. ¿Quieres pasar por "
-"ella y jugar el nivel adicional?"
+"ella y jugar el nivel de rompecabezas adicional?"
 
 #. [option]
 #: data/campaigns/Dusk_of_Dawn/scenarios/01_First_Steps.cfg:879
-#, fuzzy
-#| msgid "I will play the bonus scenario."
 msgid "I will play the bonus puzzle scenario."
-msgstr "Jugaré el escenario adicional."
+msgstr "Jugaré el escenario de rompecabezas adicional."
 
 #. [option]
 #: data/campaigns/Dusk_of_Dawn/scenarios/01_First_Steps.cfg:890
-#, fuzzy
-#| msgid "I don’t want to play the bonus scenario."
 msgid "I don’t want to play the bonus puzzle scenario."
-msgstr "No quiero jugar el escenario adicional."
+msgstr "No quiero jugar el escenario de rompecabezas adicional."
 
 #. [scenario]: id=02_A_Dream
 #: data/campaigns/Dusk_of_Dawn/scenarios/02_A_Dream.cfg:5
@@ -1228,16 +1220,12 @@ msgstr "El trol de repente siente una ira abrumadora."
 
 #. [note]
 #: data/campaigns/Dusk_of_Dawn/scenarios/03_Fateful_Day.cfg:669
-#, fuzzy
-#| msgid ""
-#| "Trolls who move onto mushroom terrain will destroy the mushrooms and gain "
-#| "the <i>berserk</i> special on melee attacks."
 msgid ""
 "In this scenario, trolls entering mushroom terrain will destroy the "
 "mushrooms and gain berserk on their melee attacks."
 msgstr ""
-"Los trolls que se muevan a terreno de hongos destruirán los hongos y "
-"obtendrán el especial <i>berserk</i> en ataques cuerpo a cuerpo."
+"En este escenario, los trolls que entren en terreno de hongos destruirán los "
+"hongos y obtendrán Frenesí en sus ataques cuerpo a cuerpo."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Dusk_of_Dawn/scenarios/03_Fateful_Day.cfg:686
@@ -1849,7 +1837,7 @@ msgstr "La poción otorga la habilidad firme y 20% de resistencia al impacto."
 #: data/campaigns/Dusk_of_Dawn/utils/items.cfg:102
 #: data/campaigns/Dusk_of_Dawn/utils/items.cfg:173
 msgid "Yes"
-msgstr ""
+msgstr "Sí"
 
 #. [object]: id={ID}
 #: data/campaigns/Dusk_of_Dawn/utils/items.cfg:30
@@ -1863,8 +1851,6 @@ msgstr "Una poción de origen desconocido."
 
 #. [message]: speaker=$unit.id|
 #: data/campaigns/Dusk_of_Dawn/utils/items.cfg:48
-#, fuzzy
-#| msgid "Potion grants steadfast ability and 20% resistance to impact."
 msgid "female^Potion grants steadfast ability and 20% resistance to impact."
 msgstr "La poción otorga la habilidad firme y 20% de resistencia al impacto."
 
@@ -1873,7 +1859,7 @@ msgstr "La poción otorga la habilidad firme y 20% de resistencia al impacto."
 #: data/campaigns/Dusk_of_Dawn/utils/items.cfg:142
 #: data/campaigns/Dusk_of_Dawn/utils/items.cfg:214
 msgid "No"
-msgstr ""
+msgstr "No"
 
 #. [message]: speaker=$unit.id|
 #. [message]: speaker=narrator
