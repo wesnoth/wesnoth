@@ -576,9 +576,10 @@ void play_controller::do_init_side()
 
 void play_controller::init_side_end()
 {
-	if(	did_tod_sound_this_turn_) {
+	if(!did_tod_sound_this_turn_) {
 		did_tod_sound_this_turn_ = true;
 		const time_of_day& tod = gamestate().tod_manager_.get_time_of_day();
+		LOG_NG << "playing ToD sound: " << tod.sounds;
 		sound::play_sound(tod.sounds, sound::SOUND_SOURCES);
 	}
 	whiteboard_manager_->on_init_side();
