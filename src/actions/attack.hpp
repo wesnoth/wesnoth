@@ -65,6 +65,7 @@ struct battle_context_unit_stats
 	bool swarm;              /**< Attack has swarm special. */
 	bool firststrike;        /**< Attack has firststrike special. */
 	bool disable;            /**< Attack has disable special. */
+	bool can_advance;        /**< The unit can advance */
 	int leadership_bonus;
 	unsigned int experience, max_experience;
 	unsigned int level;

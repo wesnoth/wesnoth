@@ -1945,7 +1945,7 @@ void no_death_fight(const battle_context_unit_stats& stats,
 		}
 	}
 
-	if(!levelup_considered) {
+	if(!levelup_considered || !stats.can_advance) { // we assume that the unit full-heals if it advances
 		return;
 	}
 
@@ -2024,7 +2024,7 @@ void one_strike_fight(const battle_context_unit_stats& stats,
 		}
 	}
 
-	if(!levelup_considered) {
+	if(!levelup_considered || !stats.can_advance) { // we assume that the unit full-heals if it advances
 		return;
 	}
 
@@ -2218,7 +2218,7 @@ void complex_fight(attack_prediction_mode mode,
 		matrix->remove_petrify_distortion_b(opp_stats.damage, opp_stats.slow_damage, stats.hp);
 	}
 
-	if(levelup_considered) {
+	if(levelup_considered && stats.can_advance) { // we assume that the unit full-heals if it advances
 		if(stats.experience + game_config::combat_xp(opp_stats.level) >= stats.max_experience) {
 			matrix->forced_levelup_a();
 		} else if(stats.experience + game_config::kill_xp(opp_stats.level) >= stats.max_experience) {
