@@ -515,7 +515,7 @@ static std::string config_to_pango_markup(const std::string& orig_tagname, const
 	}
 
 	// Nested tags
-	for(const auto& [tagname, cfg] : cfg.all_children_view()) {
+	for(const auto [tagname, cfg] : cfg.all_children_view()) {
 		text << config_to_pango_markup(tagname, cfg);
 	}
 
@@ -527,7 +527,7 @@ std::string help_to_pango_markup(const std::string& help_markup) {
 		const config& help_cfg = parse_text(help_markup);
 		std::stringstream pango_text;
 		std::string prev_tagname = "";
-		for(const auto& [tagname, child_cfg] : help_cfg.all_children_view()) {
+		for(const auto [tagname, child_cfg] : help_cfg.all_children_view()) {
 			// Two consecutive [text] blocks mean two paragraphs of text.
 			// Reinserting the paragraph break.
 			if(prev_tagname == "text" && tagname == "text") {
