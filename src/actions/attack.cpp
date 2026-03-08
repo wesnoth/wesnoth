@@ -228,6 +228,7 @@ battle_context_unit_stats::battle_context_unit_stats(nonempty_unit_const_ptr up,
 	weapon->modified_attacks(swarm_min, swarm_max);
 	swarm = swarm_min != swarm_max;
 	num_blows = calc_blows(hp);
+	can_advance = u.advances();
 }
 
 
