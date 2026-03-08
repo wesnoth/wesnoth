@@ -670,7 +670,7 @@ void editor_edit_unit::store_attack() {
 	attack["type"] = find_widget<combobox>("attack_type_list").get_value();
 	attack["damage"] = find_widget<slider>("dmg_box").get_value();
 	attack["number"] = find_widget<slider>("dmg_num_box").get_value();
-	attack["range"] = find_widget<combobox>("range_list").get_value();
+	attack["range"] = find_widget<combobox>("range_list").get_selected() == 1 ? "ranged" : "melee";
 
 	attacks_.at(selected_attack_-1) = {
 		find_widget<multimenu_button>("weapon_specials_list").get_toggle_states(),
@@ -732,7 +732,7 @@ void editor_edit_unit::add_attack() {
 	attack["type"] = find_widget<combobox>("attack_type_list").get_value();
 	attack["damage"] = find_widget<slider>("dmg_box").get_value();
 	attack["number"] = find_widget<slider>("dmg_num_box").get_value();
-	attack["range"] = find_widget<combobox>("range_list").get_value();
+	attack["range"] = find_widget<combobox>("range_list").get_selected() == 1 ? "ranged" : "melee";
 
 	selected_attack_++;
 
