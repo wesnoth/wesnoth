@@ -2479,12 +2479,12 @@ void combatant::fight(combatant& opponent, bool levelup_considered)
 	slowed = std::min(std::accumulate(summary[1].begin(), summary[1].end(), 0.0), 1.0);
 	opponent.slowed = std::min(std::accumulate(opponent.summary[1].begin(), opponent.summary[1].end(), 0.0), 1.0);
 
-	if(u_.experience + game_config::combat_xp(opponent.u_.level) >= u_.max_experience) {
-		// We'll level up after the battle -> slow/poison will go away
+	// We'll level up after the battle and assume that full-heals -> slow/poison will go away
+	if(u_.can_advance && u_.experience + game_config::combat_xp(opponent.u_.level) >= u_.max_experience) {
 		poisoned = 0.0;
 		slowed = 0.0;
 	}
-	if(opponent.u_.experience + game_config::combat_xp(u_.level) >= opponent.u_.max_experience) {
+	if(opponent.u_.can_advance && opponent.u_.experience + game_config::combat_xp(u_.level) >= opponent.u_.max_experience) {
 		opponent.poisoned = 0.0;
 		opponent.slowed = 0.0;
 	}
