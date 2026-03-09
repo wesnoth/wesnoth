@@ -1281,6 +1281,7 @@
 		B5BB6C800F89435300444FBF /* log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A020EC62181008DD061 /* log.cpp */; };
 		B5BB6C820F89437400444FBF /* color_range.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599AAA0EC62181008DD061 /* color_range.cpp */; };
 		B5BB6C860F8943F600444FBF /* config_cache.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599AA40EC62181008DD061 /* config_cache.cpp */; };
+		B5BB6D040F8949CF00444FBF /* wesnothd in Copy Game Server */ = {isa = PBXBuildFile; fileRef = B5BB6B4B0F890FBA00444FBF /* wesnothd */; platformFilters = (macos, ); settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		B5BB6EFE0F93B83500444FBF /* SDLMain.nib in Resources */ = {isa = PBXBuildFile; fileRef = B5BB6EFD0F93B83500444FBF /* SDLMain.nib */; };
 		B5CE46F912A0417D00D665EE /* side_filter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5CE46F712A0417D00D665EE /* side_filter.cpp */; };
 		B7344A69B44FC3CFB1DE78BB /* markup.hpp in Headers */ = {isa = PBXBuildFile; fileRef = D7B540678519F0EBD7C19A17 /* markup.hpp */; };
@@ -1490,6 +1491,13 @@
 			remoteGlobalIDString = 9107AE131DB32862001927B0;
 			remoteInfo = liblua;
 		};
+		B5BB6DA40F93899E00444FBF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B5BB6B4A0F890FBA00444FBF;
+			remoteInfo = "Wesnoth MP Server";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -1558,6 +1566,17 @@
 				91A41F901CA22A98008B10D5 /* libreadline.8.2.dylib in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B5BB6CFC0F8948FB00444FBF /* Copy Game Server */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 6;
+			files = (
+				B5BB6D040F8949CF00444FBF /* wesnothd in Copy Game Server */,
+			);
+			name = "Copy Game Server";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -5200,12 +5219,14 @@
 				8D11072E0486CEB800E47090 /* Frameworks */,
 				8D1107290486CEB800E47090 /* Resources */,
 				B5599E8F0EC64D18008DD061 /* Copy Frameworks */,
+				B5BB6CFC0F8948FB00444FBF /* Copy Game Server */,
 				91C2A6EB1B843AA900346948 /* Copy Translations (if present) */,
 				46A24B12BA682B189938E298 /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				B5BB6DA50F93899E00444FBF /* PBXTargetDependency */,
 				9107AE391DB3295A001927B0 /* PBXTargetDependency */,
 			);
 			name = "The Battle for Wesnoth";
@@ -6642,6 +6663,14 @@
 			isa = PBXTargetDependency;
 			target = 9107AE131DB32862001927B0 /* liblua */;
 			targetProxy = 9107AE3A1DB3295E001927B0 /* PBXContainerItemProxy */;
+		};
+		B5BB6DA50F93899E00444FBF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			platformFilters = (
+				macos,
+			);
+			target = B5BB6B4A0F890FBA00444FBF /* wesnothd */;
+			targetProxy = B5BB6DA40F93899E00444FBF /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
