@@ -983,7 +983,7 @@ static int do_gameloop(commandline_options& cmdline_opts)
 #define error_exit(res) return res
 #endif
 
-#ifdef __APPLE__
+#if defined(__APPLE__) && !defined(__IPHONEOS__)
 extern "C" int wesnoth_main(int argc, char** argv);
 int wesnoth_main(int argc, char** argv)
 #else

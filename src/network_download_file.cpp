@@ -19,11 +19,17 @@
 #include "gui/dialogs/message.hpp"
 #include "log.hpp"
 
+#if defined(__APPLE__)
+#include <TargetConditionals.h>
+#endif
+
 #ifdef __ANDROID__
 #include <SDL2/SDL_system.h>
 #endif
 
+#if !(defined(__APPLE__) && TARGET_OS_IPHONE)
 #include <curl/curl.h>
+#endif
 
 static lg::log_domain log_network("network");
 #define ERR_NW LOG_STREAM(err, log_network)
@@ -55,6 +61,12 @@ namespace network
 
 	bool download(const std::string& url, const std::string& local_path)
 	{
+#if defined(__APPLE__) && TARGET_OS_IPHONE
+		(void)url;
+		(void)local_path;
+		ERR_NW << "Downloading files is currently disabled for iOS builds.";
+		return false;
+#else
 		std::unique_ptr<CURL, decltype(&curl_easy_cleanup)> curl(curl_easy_init(), curl_easy_cleanup);
 		std::string buffer;
 		// curl doesn't initialize the error buffer until version 7.60.0, which isn't currently available on all supported macOS versions
@@ -107,5 +119,6 @@ namespace network
 			return false;
 		}
 		return true;
+#endif
 	}
 }
