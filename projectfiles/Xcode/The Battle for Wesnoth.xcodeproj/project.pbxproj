@@ -245,6 +245,7 @@
 		46BED4D52050611600842FA5 /* crypt_blowfish.c in Sources */ = {isa = PBXBuildFile; fileRef = 46BED4D1205060EA00842FA5 /* crypt_blowfish.c */; };
 		46BFFC79258256C700643800 /* license_prompt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46BFFC77258256C700643800 /* license_prompt.cpp */; };
 		46BFFC7E258257C800643800 /* license_prompt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46BFFC77258256C700643800 /* license_prompt.cpp */; };
+		46CAC4CC29BD07E3004763BE /* libcurl.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 46CAC4CB29BD07C0004763BE /* libcurl.tbd */; };
 		46CAC4CD29BF235C004763BE /* libcurl.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 46CAC4CB29BD07C0004763BE /* libcurl.tbd */; };
 		46CAC4CE29BF23CC004763BE /* mt_rng.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC64D7641A085F120092EF75 /* mt_rng.cpp */; };
 		46CAC4CF29BF23DF004763BE /* seed_rng.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC64D75F1A085CE60092EF75 /* seed_rng.cpp */; };
@@ -665,6 +666,7 @@
 		80724CBB88A3B6C36D1E3199 /* spritesheet_generator.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3D284B9A81882806D8B25006 /* spritesheet_generator.hpp */; };
 		87744447951D17AA38BE5F48 /* mp_report.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 58C649488B3014E6F7254B62 /* mp_report.cpp */; };
 		8C704B6F99C824A4073EEBEE /* prompt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 67044415B63F5888193BD7A6 /* prompt.cpp */; };
+		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 		8E1D442FB4DA43385F58F77F /* combobox.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B3534BCB9BB2673B5E513D67 /* combobox.hpp */; };
 		900000000000000000000009 /* match_history.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4685A5F925B4501E006FD3A1 /* match_history.cpp */; };
 		903F959F1ED5496700F1BDD3 /* hash.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE8AD121359A600CFBDAB /* hash.cpp */; };
@@ -1405,6 +1407,7 @@
 		ECA563871A47BA36006278A5 /* hotkey_handler_mp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECA563831A47BA36006278A5 /* hotkey_handler_mp.cpp */; };
 		ECA563891A47BA36006278A5 /* hotkey_handler_sp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECA563851A47BA36006278A5 /* hotkey_handler_sp.cpp */; };
 		ECA5638A1A47BA36006278A5 /* hotkey_handler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECA563861A47BA36006278A5 /* hotkey_handler.cpp */; };
+		ECA9E7471CA20AA800A947D6 /* libreadline.8.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ECA9E7461CA20AA800A947D6 /* libreadline.8.2.dylib */; };
 		ECAB84551B0C1934001A3EB7 /* shroud_clearing_action.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECAB844E1B0C1933001A3EB7 /* shroud_clearing_action.cpp */; };
 		ECAB84561B0C1934001A3EB7 /* undo_action.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECAB844F1B0C1933001A3EB7 /* undo_action.cpp */; };
 		ECAB84571B0C1934001A3EB7 /* undo_dismiss_action.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECAB84501B0C1933001A3EB7 /* undo_dismiss_action.cpp */; };
