@@ -15,7 +15,7 @@
 
 #ifdef __APPLE__
 #include <TargetConditionals.h>
-#ifdef TARGET_OS_OSX
+#if TARGET_OS_OSX
 
 #include "apple_video.hpp"
 
@@ -38,5 +38,23 @@ namespace apple {
 } // end namespace apple
 } // end namespace desktop
 
-#endif //end TARGET_OS_OSX
+#elif TARGET_OS_IOS
+
+#include "apple_video.hpp"
+
+#import <UIKit/UIKit.h>
+
+namespace desktop {
+namespace apple {
+	CGFloat get_scale_factor(int display_index) {
+		NSArray<UIScreen*>* screens = [UIScreen screens];
+		if(display_index >= 0 && static_cast<NSUInteger>(display_index) < screens.count) {
+			return screens[display_index].scale;
+		}
+		return UIScreen.mainScreen.scale;
+	}
+} // end namespace apple
+} // end namespace desktop
+
+#endif //end TARGET_OS_OSX / TARGET_OS_IOS
 #endif //end __APPLE__
