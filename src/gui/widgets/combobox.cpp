@@ -257,7 +257,7 @@ void combobox::handle_key_up_arrow(SDL_Keymod /*modifier*/, bool& handled)
 {
 	DBG_GUI_E << LOG_SCOPE_HEADER;
 	handled = true;
-	if (selected_ > 1) {
+	if (selected_ > 0) {
 		set_selected(selected_ - 1, true);
 	}
 }
@@ -271,19 +271,32 @@ void combobox::handle_key_down_arrow(SDL_Keymod /*modifier*/, bool& handled)
 	}
 }
 
+std::string combobox::get_preset_value(const size_t index) const
+{
+	auto row_cfg = values_[index];
+	return row_cfg.has_attribute("value") ? row_cfg["value"] : row_cfg["label"];
+}
+
 void combobox::set_values(const std::vector<::config>& values, unsigned selected)
 {
 	assert(selected < values.size());
 	assert(selected_ < values_.size());
 
-	if(values[selected]["label"] != values_[selected_]["label"]) {
-		queue_redraw();
-	}
-
 	values_ = values;
 	selected_ = selected;
 
-	text_box_base::set_value(values_[selected_]["label"]);
+	std::string new_value = get_preset_value(selected_);
+	if(text_box_base::get_value() != new_value) {
+		text_box_base::set_value(new_value);
+		queue_redraw();
+	}
+}
+
+int combobox::get_selected() const
+{
+	std::string value = text_box_base::get_value();
+	std::string last_selected = get_preset_value(selected_);
+	return value == last_selected ? selected_ : -1;
 }
 
 void combobox::set_selected(unsigned selected, bool fire_event)
@@ -297,7 +310,7 @@ void combobox::set_selected(unsigned selected, bool fire_event)
 
 	selected_ = selected;
 
-	text_box_base::set_value(values_[selected_]["label"]);
+	text_box_base::set_value(get_preset_value(selected_));
 	if (fire_event) {
 		fire(event::NOTIFY_MODIFIED, *this, nullptr);
 	}

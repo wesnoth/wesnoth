@@ -670,14 +670,7 @@ void editor_edit_unit::store_attack() {
 	attack["type"] = find_widget<combobox>("attack_type_list").get_value();
 	attack["damage"] = find_widget<slider>("dmg_box").get_value();
 	attack["number"] = find_widget<slider>("dmg_num_box").get_value();
-	const std::string range_val = find_widget<combobox>("range_list").get_value();
-	if (range_val == "Ranged" || range_val == "ranged") {
-		attack["range"] = "ranged";
-	} else if (range_val == "Melee" || range_val == "melee") {
-		attack["range"] = "melee";
-	} else {
-		attack["range"] = range_val;
-	}
+	attack["range"] = find_widget<combobox>("range_list").get_value();
 
 	attacks_.at(selected_attack_-1) = {
 		find_widget<multimenu_button>("weapon_specials_list").get_toggle_states(),
@@ -739,14 +732,7 @@ void editor_edit_unit::add_attack() {
 	attack["type"] = find_widget<combobox>("attack_type_list").get_value();
 	attack["damage"] = find_widget<slider>("dmg_box").get_value();
 	attack["number"] = find_widget<slider>("dmg_num_box").get_value();
-	const std::string range_val = find_widget<combobox>("range_list").get_value();
-	if (range_val == "Ranged" || range_val == "ranged") {
-		attack["range"] = "ranged";
-	} else if (range_val == "Melee" || range_val == "melee") {
-		attack["range"] = "melee";
-	} else {
-		attack["range"] = range_val;
-	}
+	attack["range"] = find_widget<combobox>("range_list").get_value();
 
 	selected_attack_++;
 

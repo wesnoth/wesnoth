@@ -93,7 +93,12 @@ public:
 
 	void set_values(const std::vector<::config>& values, unsigned selected = 0);
 	void set_selected(unsigned selected, bool fire_event = true);
-	unsigned get_selected() const { return selected_; }
+
+	/**
+	 * Returned last selected entry's index or
+	 * -1 if typed value that does not matches any preset value.
+	 */
+	int get_selected() const;
 
 protected:
 	/* **** ***** ***** ***** layout functions ***** ***** ***** **** */
@@ -167,6 +172,12 @@ private:
 	std::vector<::config> values_;
 
 	unsigned selected_;
+
+	/**
+	 * Get the `index`-th value from the preset values that area
+	 * shown in the dropdown.
+	 */
+	std::string get_preset_value(const size_t index) const;
 
 	/**
 	 * Inherited from text_box_base.
