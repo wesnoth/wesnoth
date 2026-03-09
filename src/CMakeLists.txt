@@ -88,6 +88,7 @@ if(APPLE)
 	set(wesnoth_game_sources
 		${wesnoth_game_sources}
 		desktop/apple_battery_info.mm
+		desktop/apple_icloud.mm
 		desktop/apple_notification.mm
 		desktop/apple_version.mm
 		desktop/apple_video.mm

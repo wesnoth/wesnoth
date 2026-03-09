@@ -22,6 +22,7 @@
 #include "filesystem.hpp"
 
 #include "config.hpp"
+#include "desktop/apple_icloud.hpp"
 #include "game_config_view.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
@@ -679,6 +680,168 @@ const std::string& get_version_path_suffix()
 	}
 #endif
 
+std::string filesystem::detail::legacy_ios_saves_dir(const std::string& sdl_pref_path)
+{
+	return (bfs::path(sdl_pref_path) / ".wesnoth1.13" / "saves").string();
+}
+
+std::vector<filesystem::detail::ios_legacy_save_migration> filesystem::detail::find_legacy_ios_save_migrations(
+	const std::string& sdl_pref_path,
+	const std::string& current_saves_dir)
+{
+	std::vector<ios_legacy_save_migration> migrations;
+	if(sdl_pref_path.empty() || current_saves_dir.empty()) {
+		return migrations;
+	}
+
+	const bfs::path legacy_saves_dir = legacy_ios_saves_dir(sdl_pref_path);
+	if(!bfs::is_directory(legacy_saves_dir)) {
+		return migrations;
+	}
+
+	error_code ec;
+	bfs::directory_iterator end;
+	for(bfs::directory_iterator it(legacy_saves_dir, ec); it != end; it.increment(ec)) {
+		if(ec) {
+			ERR_FS << "Unable to enumerate legacy iOS saves at " << legacy_saves_dir.string() << ": " << ec.message();
+			return {};
+		}
+
+		if(!bfs::is_regular_file(it->path())) {
+			continue;
+		}
+
+		const bfs::path target = bfs::path(current_saves_dir) / it->path().filename();
+		if(bfs::exists(target)) {
+			continue;
+		}
+
+		migrations.push_back({it->path().string(), target.string()});
+	}
+
+	return migrations;
+}
+
+#if defined(WESNOTH_BOOST_OS_IOS)
+static std::string get_default_ios_user_data_dir()
+{
+	if(const auto icloud_documents_dir = desktop::apple::get_icloud_drive_documents_dir()) {
+		LOG_FS << "Using iCloud Drive userdata directory: " << *icloud_documents_dir;
+		return *icloud_documents_dir;
+	}
+
+	char* sdl_pref_path = SDL_GetPrefPath("wesnoth.org", "iWesnoth");
+	if(sdl_pref_path) {
+		std::string fallback_path = sdl_pref_path;
+		SDL_free(sdl_pref_path);
+		WRN_FS << "iCloud Drive userdata directory unavailable; falling back to local SDL prefs at " << fallback_path;
+		return fallback_path;
+	}
+
+	WRN_FS << "iCloud Drive userdata directory unavailable and SDL_GetPrefPath failed; falling back to ~/.wesnoth" << get_version_path_suffix();
+	return "~/.wesnoth" + get_version_path_suffix();
+}
+
+static void migrate_legacy_ios_saves()
+{
+	char* sdl_pref_path = SDL_GetPrefPath("wesnoth.org", "iWesnoth");
+	if(!sdl_pref_path) {
+		return;
+	}
+
+	const std::string pref_path = sdl_pref_path;
+	SDL_free(sdl_pref_path);
+
+	const bfs::path legacy_saves_dir = filesystem::detail::legacy_ios_saves_dir(pref_path);
+	const auto migrations = filesystem::detail::find_legacy_ios_save_migrations(pref_path, get_saves_dir());
+	if(migrations.empty()) {
+		return;
+	}
+
+	bool migrated_any = false;
+	error_code ec;
+	for(const auto& migration : migrations) {
+		bfs::copy_file(migration.source, migration.target, bfs::copy_option::none, ec);
+		if(ec) {
+			ERR_FS << "Unable to copy legacy iOS save " << migration.source << " to " << migration.target << ": " << ec.message();
+			ec.clear();
+			continue;
+		}
+
+		bfs::remove(migration.source, ec);
+		if(ec) {
+			WRN_FS << "Copied legacy iOS save but could not remove source " << migration.source << ": " << ec.message();
+			ec.clear();
+		}
+
+		migrated_any = true;
+	}
+
+	if(migrated_any) {
+		LOG_FS << "Migrated legacy iOS saves from " << legacy_saves_dir.string() << " to " << get_saves_dir();
+	}
+
+	if(bfs::is_directory(legacy_saves_dir) && bfs::is_empty(legacy_saves_dir, ec)) {
+		bfs::remove(legacy_saves_dir, ec);
+		if(ec) {
+			WRN_FS << "Unable to remove empty legacy iOS save directory " << legacy_saves_dir.string() << ": " << ec.message();
+		}
+	}
+}
+
+static void migrate_ios_save_directory_layout()
+{
+	const bfs::path saves_dir = bfs::path(get_saves_dir());
+	const bfs::path sync_saves_dir = bfs::path(get_sync_dir()) / "saves";
+
+	if(saves_dir == sync_saves_dir || !bfs::is_directory(sync_saves_dir)) {
+		return;
+	}
+
+	bool migrated_any = false;
+	error_code ec;
+	bfs::directory_iterator end;
+	bfs::directory_iterator it(sync_saves_dir, ec);
+	if(ec) {
+		ERR_FS << "Unable to inspect legacy iOS save directory at " << sync_saves_dir.string() << ": " << ec.message();
+		return;
+	}
+
+	for(; it != end; it.increment(ec)) {
+		if(ec) {
+			ERR_FS << "Unable to enumerate legacy iOS save directory at " << sync_saves_dir.string() << ": " << ec.message();
+			return;
+		}
+
+		const bfs::path source = it->path();
+		const bfs::path target = saves_dir / source.filename();
+		if(bfs::exists(target)) {
+			continue;
+		}
+
+		bfs::rename(source, target, ec);
+		if(ec) {
+			ERR_FS << "Unable to migrate iOS save " << source.string() << " to " << target.string() << ": " << ec.message();
+			ec.clear();
+			continue;
+		}
+
+		migrated_any = true;
+	}
+
+	if(migrated_any) {
+		LOG_FS << "Migrated iOS saves from " << sync_saves_dir.string() << " to " << saves_dir.string();
+	}
+
+	if(bfs::is_empty(sync_saves_dir, ec)) {
+		bfs::remove(sync_saves_dir, ec);
+		if(ec) {
+			WRN_FS << "Unable to remove empty legacy iOS save directory " << sync_saves_dir.string() << ": " << ec.message();
+		}
+	}
+}
+#endif
+
 
 static void setup_user_data_dir()
 {
@@ -706,6 +869,11 @@ static void setup_user_data_dir()
 	create_directory_if_missing(get_saves_dir());
 	create_directory_if_missing(get_wml_persist_dir());
 	create_directory_if_missing(get_logs_dir());
+
+#if defined(WESNOTH_BOOST_OS_IOS)
+	migrate_legacy_ios_saves();
+	migrate_ios_save_directory_layout();
+#endif
 
 	if(file_exists(get_unsynced_prefs_file()) && !file_exists(get_synced_prefs_file())) {
 		copy_file(get_unsynced_prefs_file(), get_synced_prefs_file());
@@ -751,16 +919,10 @@ void set_user_data_dir(std::string newprefdir)
 	if(newprefdir.empty()) {
 #ifdef _WIN32
 		newprefdir = "~/Wesnoth" + get_version_path_suffix();
+#elif defined(WESNOTH_BOOST_OS_IOS)
+		newprefdir = get_default_ios_user_data_dir();
 #elif defined(__APPLE__)
 		newprefdir = "~/Library/Application Support/Wesnoth_"+get_version_path_suffix();
-#elif defined(WESNOTH_BOOST_OS_IOS)
-		char* sdl_pref_path = SDL_GetPrefPath("wesnoth.org", "iWesnoth");
-		if(sdl_pref_path) {
-			newprefdir = std::string(sdl_pref_path);
-			SDL_free(sdl_pref_path);
-		} else {
-			newprefdir = "~/.wesnoth" + get_version_path_suffix();
-		}
 #elif defined(__ANDROID__)
 		newprefdir = SDL_AndroidGetExternalStoragePath();
 #else
