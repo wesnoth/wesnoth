@@ -1280,7 +1280,6 @@
 		B5BB6C800F89435300444FBF /* log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A020EC62181008DD061 /* log.cpp */; };
 		B5BB6C820F89437400444FBF /* color_range.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599AAA0EC62181008DD061 /* color_range.cpp */; };
 		B5BB6C860F8943F600444FBF /* config_cache.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599AA40EC62181008DD061 /* config_cache.cpp */; };
-		B5BB6D040F8949CF00444FBF /* wesnothd in Copy Game Server */ = {isa = PBXBuildFile; fileRef = B5BB6B4B0F890FBA00444FBF /* wesnothd */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		B5BB6EFE0F93B83500444FBF /* SDLMain.nib in Resources */ = {isa = PBXBuildFile; fileRef = B5BB6EFD0F93B83500444FBF /* SDLMain.nib */; };
 		B5CE46F912A0417D00D665EE /* side_filter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5CE46F712A0417D00D665EE /* side_filter.cpp */; };
 		B7344A69B44FC3CFB1DE78BB /* markup.hpp in Headers */ = {isa = PBXBuildFile; fileRef = D7B540678519F0EBD7C19A17 /* markup.hpp */; };
@@ -1490,13 +1489,6 @@
 			remoteGlobalIDString = 9107AE131DB32862001927B0;
 			remoteInfo = liblua;
 		};
-		B5BB6DA40F93899E00444FBF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B5BB6B4A0F890FBA00444FBF;
-			remoteInfo = "Wesnoth MP Server";
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -1565,17 +1557,6 @@
 				91A41F901CA22A98008B10D5 /* libreadline.8.2.dylib in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B5BB6CFC0F8948FB00444FBF /* Copy Game Server */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 6;
-			files = (
-				B5BB6D040F8949CF00444FBF /* wesnothd in Copy Game Server */,
-			);
-			name = "Copy Game Server";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -5212,22 +5193,20 @@
 		8D1107260486CEB800E47090 /* The Battle for Wesnoth */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "The Battle for Wesnoth" */;
-			buildPhases = (
-				46B626461D635BC900863502 /* Update Revision.h */,
-				8D11072C0486CEB800E47090 /* Sources */,
-				8D11072E0486CEB800E47090 /* Frameworks */,
-				8D1107290486CEB800E47090 /* Resources */,
-				B5599E8F0EC64D18008DD061 /* Copy Frameworks */,
-				B5BB6CFC0F8948FB00444FBF /* Copy Game Server */,
-				91C2A6EB1B843AA900346948 /* Copy Translations (if present) */,
-				46A24B12BA682B189938E298 /* Headers */,
-			);
+				buildPhases = (
+					46B626461D635BC900863502 /* Update Revision.h */,
+					8D11072C0486CEB800E47090 /* Sources */,
+					8D11072E0486CEB800E47090 /* Frameworks */,
+					8D1107290486CEB800E47090 /* Resources */,
+					B5599E8F0EC64D18008DD061 /* Copy Frameworks */,
+					91C2A6EB1B843AA900346948 /* Copy Translations (if present) */,
+					46A24B12BA682B189938E298 /* Headers */,
+				);
 			buildRules = (
 			);
-			dependencies = (
-				B5BB6DA50F93899E00444FBF /* PBXTargetDependency */,
-				9107AE391DB3295A001927B0 /* PBXTargetDependency */,
-			);
+				dependencies = (
+					9107AE391DB3295A001927B0 /* PBXTargetDependency */,
+				);
 			name = "The Battle for Wesnoth";
 			productInstallPath = "$(HOME)/Applications";
 			productName = Wesnoth;
@@ -6663,11 +6642,6 @@
 			target = 9107AE131DB32862001927B0 /* liblua */;
 			targetProxy = 9107AE3A1DB3295E001927B0 /* PBXContainerItemProxy */;
 		};
-		B5BB6DA50F93899E00444FBF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B5BB6B4A0F890FBA00444FBF /* wesnothd */;
-			targetProxy = B5BB6DA40F93899E00444FBF /* PBXContainerItemProxy */;
-		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
@@ -6763,6 +6737,13 @@
 					"HAVE_LIBPNG=1",
 					"HAVE_HISTORY=1",
 				);
+				"GCC_PREPROCESSOR_DEFINITIONS[sdk=iphone*]" = (
+					"LOCALEDIR=\\\"translations\\\"",
+					"LUA_USE_MACOSX=1",
+					"LUA_USE_IOS=1",
+					"HAVE_LIBPNG=1",
+					"HAVE_HISTORY=1",
+				);
 				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -6776,6 +6757,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = /Applications;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_CLASSIC_1000 = "";
 				LD_CLASSIC_1100 = "";
 				LD_CLASSIC_1200 = "";
@@ -6803,7 +6785,17 @@
 				PRODUCT_BUNDLE_IDENTIFIER = org.wesnoth.Wesnoth;
 				PRODUCT_NAME = "The Battle for Wesnoth";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				"EXCLUDED_SOURCE_FILE_NAMES[sdk=iphone*]" = (
+					SDLMain.mm,
+					apple_video.mm,
+					apple_version.mm,
+					apple_notification.mm,
+					apple_battery_info.mm,
+				);
 				SKIP_INSTALL = NO;
+				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WARNING_CFLAGS = "";
 				WRAPPER_EXTENSION = app;
 			};
@@ -6907,6 +6899,10 @@
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				EXECUTABLE_PREFIX = lib;
+				"GCC_PREPROCESSOR_DEFINITIONS[sdk=iphone*]" = (
+					"$(inherited)",
+					"LUA_USE_IOS=1",
+				);
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
 					"-include",
@@ -6926,6 +6922,10 @@
 				CLANG_WARN_IMPLICIT_SIGN_CONVERSION = NO;
 				COPY_PHASE_STRIP = NO;
 				EXECUTABLE_PREFIX = lib;
+				"GCC_PREPROCESSOR_DEFINITIONS[sdk=iphone*]" = (
+					"$(inherited)",
+					"LUA_USE_IOS=1",
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				OTHER_CPLUSPLUSFLAGS = (
@@ -6948,6 +6948,10 @@
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				EXECUTABLE_PREFIX = lib;
+				"GCC_PREPROCESSOR_DEFINITIONS[sdk=iphone*]" = (
+					"$(inherited)",
+					"LUA_USE_IOS=1",
+				);
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
 					"-include",
@@ -7173,6 +7177,14 @@
 					"HAVE_HISTORY=1",
 					"LOAD_REVISION=1",
 				);
+				"GCC_PREPROCESSOR_DEFINITIONS[sdk=iphone*]" = (
+					"LOCALEDIR=\\\"translations\\\"",
+					"LUA_USE_MACOSX=1",
+					"LUA_USE_IOS=1",
+					"HAVE_LIBPNG=1",
+					"HAVE_HISTORY=1",
+					"LOAD_REVISION=1",
+				);
 				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -7186,6 +7198,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = /Applications;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_CLASSIC_1000 = "";
 				LD_CLASSIC_1100 = "";
 				LD_CLASSIC_1200 = "";
@@ -7212,7 +7225,17 @@
 				PRODUCT_BUNDLE_IDENTIFIER = org.wesnoth.Wesnoth;
 				PRODUCT_NAME = "The Battle for Wesnoth";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				"EXCLUDED_SOURCE_FILE_NAMES[sdk=iphone*]" = (
+					SDLMain.mm,
+					apple_video.mm,
+					apple_version.mm,
+					apple_notification.mm,
+					apple_battery_info.mm,
+				);
 				SKIP_INSTALL = NO;
+				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -7245,6 +7268,13 @@
 					"HAVE_LIBPNG=1",
 					"HAVE_HISTORY=1",
 				);
+				"GCC_PREPROCESSOR_DEFINITIONS[sdk=iphone*]" = (
+					"LOCALEDIR=\\\"translations\\\"",
+					"LUA_USE_MACOSX=1",
+					"LUA_USE_IOS=1",
+					"HAVE_LIBPNG=1",
+					"HAVE_HISTORY=1",
+				);
 				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -7258,6 +7288,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = /Applications;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_CLASSIC_1000 = "";
 				LD_CLASSIC_1100 = "";
 				LD_CLASSIC_1200 = "";
@@ -7285,7 +7316,17 @@
 				PRODUCT_BUNDLE_IDENTIFIER = org.wesnoth.Wesnoth;
 				PRODUCT_NAME = "The Battle for Wesnoth";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				"EXCLUDED_SOURCE_FILE_NAMES[sdk=iphone*]" = (
+					SDLMain.mm,
+					apple_video.mm,
+					apple_version.mm,
+					apple_notification.mm,
+					apple_battery_info.mm,
+				);
 				SKIP_INSTALL = NO;
+				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WARNING_CFLAGS = "";
 				WRAPPER_EXTENSION = app;
 			};

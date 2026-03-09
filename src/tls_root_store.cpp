@@ -19,6 +19,7 @@
 #ifdef _WIN32
 #include <wincrypt.h>
 #elif defined(__APPLE__)
+#include <TargetConditionals.h>
 #include <Security/Security.h>
 #elif defined(__ANDROID__)
 #include "filesystem.hpp"
@@ -55,7 +56,7 @@ void load_tls_root_certs(boost::asio::ssl::context &ctx)
 	CertCloseStore(hStore, 0);
 
 	SSL_CTX_set_cert_store(ctx.native_handle(), store);
-#elif defined(__APPLE__)
+#elif defined(__APPLE__) && !TARGET_OS_IPHONE
 	X509_STORE *store = X509_STORE_new();
 	CFArrayRef certs = NULL;
 	// copy all system certs
@@ -101,6 +102,8 @@ void load_tls_root_certs(boost::asio::ssl::context &ctx)
 
 	CFRelease(certs);
 	SSL_CTX_set_cert_store(ctx.native_handle(), store);
+#elif defined(__APPLE__) && TARGET_OS_IPHONE
+	ctx.set_default_verify_paths();
 #elif defined(__ANDROID__)
 	ctx.load_verify_file(game_config::path +  "/certificates/cacert.pem");
 #else

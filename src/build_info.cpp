@@ -42,12 +42,18 @@
 #include <boost/predef.h>
 #include <boost/version.hpp>
 
+#if defined(__APPLE__)
+#include <TargetConditionals.h>
+#endif
+
 #ifndef __APPLE__
 #include <openssl/crypto.h>
 #include <openssl/opensslv.h>
 #endif
 
+#if !(defined(__APPLE__) && TARGET_OS_IPHONE)
 #include <curl/curl.h>
+#endif
 
 #include <pango/pangocairo.h>
 
@@ -246,21 +252,27 @@ version_table_manager::version_table_manager()
 	names[LIB_CRYPTO] = "OpenSSL/libcrypto";
 #endif
 
-	//
-	// libcurl
-	//
+		//
+		// libcurl
+		//
 
-	compiled[LIB_CURL] = format_version(
-		(LIBCURL_VERSION_NUM & 0xFF0000) >> 16,
-		(LIBCURL_VERSION_NUM & 0x00FF00) >> 8,
-		LIBCURL_VERSION_NUM & 0x0000FF);
-	curl_version_info_data *curl_ver = curl_version_info(CURLVERSION_NOW);
-	if(curl_ver && curl_ver->version) {
-		linked[LIB_CURL] = curl_ver->version;
-	}
-	// This is likely to upset somebody out there, but the cURL authors
-	// consistently call it 'libcurl' (all lowercase) in all documentation.
-	names[LIB_CURL] = "libcurl";
+#if defined(__APPLE__) && TARGET_OS_IPHONE
+		compiled[LIB_CURL] = "unavailable";
+		linked[LIB_CURL] = "unavailable";
+		names[LIB_CURL] = "libcurl";
+#else
+		compiled[LIB_CURL] = format_version(
+			(LIBCURL_VERSION_NUM & 0xFF0000) >> 16,
+			(LIBCURL_VERSION_NUM & 0x00FF00) >> 8,
+			LIBCURL_VERSION_NUM & 0x0000FF);
+		curl_version_info_data *curl_ver = curl_version_info(CURLVERSION_NOW);
+		if(curl_ver && curl_ver->version) {
+			linked[LIB_CURL] = curl_ver->version;
+		}
+		// This is likely to upset somebody out there, but the cURL authors
+		// consistently call it 'libcurl' (all lowercase) in all documentation.
+		names[LIB_CURL] = "libcurl";
+#endif
 
 	//
 	// Cairo
