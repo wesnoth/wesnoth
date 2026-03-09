@@ -22,34 +22,30 @@
 #if TARGET_OS_IOS
 
 #import <Foundation/Foundation.h>
-#import <dispatch/dispatch.h>
 
 namespace desktop {
 namespace apple {
 
 utils::optional<std::string> get_icloud_drive_documents_dir()
 {
-	__block NSString* documents_path = nil;
-
 	@autoreleasepool {
 		NSString* bundle_identifier = [[NSBundle mainBundle] bundleIdentifier];
 		if(bundle_identifier.length == 0) {
 			return utils::nullopt;
 		}
 
+		if([[NSFileManager defaultManager] ubiquityIdentityToken] == nil) {
+			return utils::nullopt;
+		}
+
 		NSString* container_identifier = [@"iCloud." stringByAppendingString:bundle_identifier];
+		NSURL* container_url =
+			[[NSFileManager defaultManager] URLForUbiquityContainerIdentifier:container_identifier];
+		if(container_url == nil) {
+			return utils::nullopt;
+		}
 
-		dispatch_sync(dispatch_get_global_queue(QOS_CLASS_UTILITY, 0), ^{
-			@autoreleasepool {
-				NSURL* container_url =
-					[[NSFileManager defaultManager] URLForUbiquityContainerIdentifier:container_identifier];
-				if(container_url != nil) {
-					NSURL* documents_url = [container_url URLByAppendingPathComponent:@"Documents" isDirectory:YES];
-					documents_path = [documents_url path];
-				}
-			}
-		});
-
+		NSString* documents_path = [[container_url URLByAppendingPathComponent:@"Documents" isDirectory:YES] path];
 		if(documents_path.length == 0) {
 			return utils::nullopt;
 		}
