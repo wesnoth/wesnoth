@@ -49,7 +49,11 @@
 #include "wesnothd_connection_error.hpp"
 #include "wml_exception.hpp" // for wml_exception
 
-#if defined(LUA_USE_IOS)
+#if defined(__APPLE__)
+#include <TargetConditionals.h>
+#endif
+
+#if defined(__APPLE__) && TARGET_OS_IPHONE
 
 // iOS builds do not launch a bundled wesnothd process.
 
@@ -807,7 +811,7 @@ bool game_launcher::goto_editor()
 
 void game_launcher::start_wesnothd()
 {
-#if defined(LUA_USE_IOS)
+#if defined(__APPLE__) && TARGET_OS_IPHONE
 	throw game::mp_server_error("Starting MP server is not supported on iOS builds.");
 #else
 	std::string wesnothd_program = "";
@@ -826,9 +830,15 @@ void game_launcher::start_wesnothd()
 	LOG_GENERAL << "Starting wesnothd";
 	try
 	{
-#if BOOST_VERSION >= 108600 && (!defined(__APPLE__) || defined(LUA_USE_IOS))
-			boost::asio::io_context io_context;
-			auto c = boost::process::v2::process{io_context, wesnothd_program, { "-c", config }};
+#if defined(__APPLE__)
+#ifndef _WIN32
+		boost::process::child c(wesnothd_program, "-c", config);
+#else
+		boost::process::child c(wesnothd_program, "-c", config, boost::process::windows::create_no_window);
+#endif
+#elif BOOST_VERSION >= 108600
+		boost::asio::io_context io_context;
+		auto c = boost::process::v2::process{io_context, wesnothd_program, { "-c", config }};
 #else
 #ifndef _WIN32
 		boost::process::child c(wesnothd_program, "-c", config);
@@ -842,10 +852,10 @@ void game_launcher::start_wesnothd()
 		std::this_thread::sleep_for(50ms);
 		return;
 	}
-#if (defined(__APPLE__) && !defined(LUA_USE_IOS)) || BOOST_VERSION < 108600
-		catch(const boost::process::process_error& e)
+#if defined(__APPLE__) || BOOST_VERSION < 108600
+	catch(const boost::process::process_error& e)
 #else
-		catch(const std::exception& e)
+	catch(const std::exception& e)
 #endif
 	{
 		prefs::get().set_mp_server_program_name("");
