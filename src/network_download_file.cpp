@@ -46,6 +46,13 @@ namespace network
 	}
 
 	void gui_download(const std::string& url, const std::string& local_path) {
+#if defined(__APPLE__) && TARGET_OS_IPHONE
+		(void)url;
+		(void)local_path;
+		gui2::show_message(_("Download unavailable"), _("Standalone file downloads are not currently supported on iOS."), gui2::dialogs::message::button_style::auto_close);
+		return;
+#endif
+
 		if(filesystem::file_exists(local_path)) {
 			const int res = gui2::show_message(_("Confirm overwrite"), _("Overwrite existing file?"), gui2::dialogs::message::yes_no_buttons);
 			if(res != gui2::retval::OK) {
@@ -64,7 +71,7 @@ namespace network
 #if defined(__APPLE__) && TARGET_OS_IPHONE
 		(void)url;
 		(void)local_path;
-		ERR_NW << "Downloading files is currently disabled for iOS builds.";
+		ERR_NW << "Standalone file downloads are currently disabled for iOS builds.";
 		return false;
 #else
 		std::unique_ptr<CURL, decltype(&curl_easy_cleanup)> curl(curl_easy_init(), curl_easy_cleanup);
