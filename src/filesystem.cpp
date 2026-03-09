@@ -761,7 +761,7 @@ static void migrate_legacy_ios_saves()
 	bool migrated_any = false;
 	error_code ec;
 	for(const auto& migration : migrations) {
-		bfs::copy_file(migration.source, migration.target, bfs::copy_option::none, ec);
+		bfs::copy_file(migration.source, migration.target, bfs::copy_options::none, ec);
 		if(ec) {
 			ERR_FS << "Unable to copy legacy iOS save " << migration.source << " to " << migration.target << ": " << ec.message();
 			ec.clear();
