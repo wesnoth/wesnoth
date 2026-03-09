@@ -49,11 +49,15 @@
 #include "wesnothd_connection_error.hpp"
 #include "wml_exception.hpp" // for wml_exception
 
-#ifdef __APPLE__
+#if defined(LUA_USE_IOS)
+
+// iOS builds do not launch a bundled wesnothd process.
+
+#elif defined(__APPLE__)
 
 //
 // HACK: MacCompileStuff is currently on 1.86, so it could use the v2 API,
-// but we need to update the libs manually to link against boost::process.
+// but macOS packaging still links against the old boost::process v1 layout.
 //
 // -- vultraz, 2025-05-12
 //
@@ -803,6 +807,9 @@ bool game_launcher::goto_editor()
 
 void game_launcher::start_wesnothd()
 {
+#if defined(LUA_USE_IOS)
+	throw game::mp_server_error("Starting MP server is not supported on iOS builds.");
+#else
 	std::string wesnothd_program = "";
 	if(!prefs::get().get_mp_server_program_name().empty()) {
 		wesnothd_program = prefs::get().get_mp_server_program_name();
@@ -819,9 +826,9 @@ void game_launcher::start_wesnothd()
 	LOG_GENERAL << "Starting wesnothd";
 	try
 	{
-#if !defined(__APPLE__) && BOOST_VERSION >= 108600
-		boost::asio::io_context io_context;
-		auto c = boost::process::v2::process{io_context, wesnothd_program, { "-c", config }};
+#if BOOST_VERSION >= 108600 && (!defined(__APPLE__) || defined(LUA_USE_IOS))
+			boost::asio::io_context io_context;
+			auto c = boost::process::v2::process{io_context, wesnothd_program, { "-c", config }};
 #else
 #ifndef _WIN32
 		boost::process::child c(wesnothd_program, "-c", config);
@@ -835,10 +842,10 @@ void game_launcher::start_wesnothd()
 		std::this_thread::sleep_for(50ms);
 		return;
 	}
-#if defined(__APPLE__) || BOOST_VERSION < 108600
-	catch(const boost::process::process_error& e)
+#if (defined(__APPLE__) && !defined(LUA_USE_IOS)) || BOOST_VERSION < 108600
+		catch(const boost::process::process_error& e)
 #else
-	catch(const std::exception& e)
+		catch(const std::exception& e)
 #endif
 	{
 		prefs::get().set_mp_server_program_name("");
@@ -847,6 +854,7 @@ void game_launcher::start_wesnothd()
 		WRN_GENERAL << "Failed to start server " << wesnothd_program << ":\n" << e.what();
 		throw game::mp_server_error("Starting MP server failed!");
 	}
+#endif
 }
 
 bool game_launcher::play_multiplayer(mp_mode mode)
