@@ -135,19 +135,12 @@ private:
 	unsigned const ICON_SIZE = 25;
 
 	/**
-	 * The x offset in the widget where the text starts.
+	 * The x, y offset in the widget where the text starts.
 	 *
 	 * This value is needed to translate a location in the widget to a location
 	 * in the text.
 	 */
-	unsigned text_x_offset_;
-
-	/**
-	 * The y offset in the widget where the text starts.
-	 *
-	 * Needed to determine whether a click is on the text.
-	 */
-	unsigned text_y_offset_;
+	point text_offset_;
 
 	/**
 	 * The height of the text itself.

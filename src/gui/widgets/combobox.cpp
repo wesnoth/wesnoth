@@ -18,10 +18,8 @@
 #include "gui/widgets/combobox.hpp"
 
 #include "cursor.hpp"
-#include "gettext.hpp"
 #include "gui/core/log.hpp"
 #include "gui/core/register_widget.hpp"
-#include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "serialization/unicode.hpp"
 #include "wml_exception.hpp"
@@ -42,8 +40,7 @@ REGISTER_WIDGET(combobox)
 combobox::combobox(const implementation::builder_combobox& builder)
 	: text_box_base(builder, type())
 	, max_input_length_(builder.max_input_length)
-	, text_x_offset_(0)
-	, text_y_offset_(0)
+	, text_offset_{0, 0}
 	, text_height_(0)
 	, dragging_(false)
 	, hint_text_(builder.hint_text)
@@ -147,8 +144,8 @@ void combobox::update_canvas()
 	{
 
 		tmp.set_variable("text", wfl::variant(get_value()));
-		tmp.set_variable("text_x_offset", wfl::variant(text_x_offset_));
-		tmp.set_variable("text_y_offset", wfl::variant(text_y_offset_));
+		tmp.set_variable("text_x_offset", wfl::variant(text_offset_.x));
+		tmp.set_variable("text_y_offset", wfl::variant(text_offset_.y));
 		tmp.set_variable("text_maximum_width", wfl::variant(max_width));
 		tmp.set_variable("text_maximum_height", wfl::variant(max_height));
 
@@ -203,18 +200,17 @@ void combobox::handle_mouse_selection(point mouse, const bool start_selection)
 	mouse.x -= get_x();
 	mouse.y -= get_y();
 	// FIXME we don't test for overflow in width
-	if(mouse.x < static_cast<int>(text_x_offset_)
-	   || mouse.y < static_cast<int>(text_y_offset_)
-	   || mouse.y >= static_cast<int>(text_y_offset_ + text_height_)) {
+	if(mouse.x < text_offset_.x
+	   || mouse.y < text_offset_.y
+	   || mouse.y >= text_offset_.y + static_cast<int>(text_height_)) {
 		return;
 	}
 
-	int offset = get_column_line(point(mouse.x - text_x_offset_, mouse.y - text_y_offset_)).x;
+	int offset = get_column_line(mouse - text_offset_).x;
 
 	if(offset < 0) {
 		return;
 	}
-
 
 	set_cursor(offset, !start_selection);
 	update_canvas();
@@ -234,8 +230,10 @@ void combobox::update_offsets()
 	variables.add("width", wfl::variant(get_width()));
 	variables.add("text_font_height", wfl::variant(text_height_));
 
-	text_x_offset_ = conf->text_x_offset(variables);
-	text_y_offset_ = conf->text_y_offset(variables);
+	text_offset_ = {
+		static_cast<int>(conf->text_x_offset(variables)),
+		static_cast<int>(conf->text_y_offset(variables))
+	};
 
 	// Since this variable doesn't change set it here instead of in update_canvas().
 	for(auto & tmp : get_canvases())
