@@ -830,13 +830,7 @@ void game_launcher::start_wesnothd()
 	LOG_GENERAL << "Starting wesnothd";
 	try
 	{
-#if defined(__APPLE__)
-#ifndef _WIN32
-		boost::process::child c(wesnothd_program, "-c", config);
-#else
-		boost::process::child c(wesnothd_program, "-c", config, boost::process::windows::create_no_window);
-#endif
-#elif BOOST_VERSION >= 108600
+#if !defined(__APPLE__) && BOOST_VERSION >= 108600
 		boost::asio::io_context io_context;
 		auto c = boost::process::v2::process{io_context, wesnothd_program, { "-c", config }};
 #else

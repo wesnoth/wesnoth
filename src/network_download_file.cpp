@@ -45,10 +45,8 @@ namespace network
 		return amount;
 	}
 
-	void gui_download(const std::string& url, const std::string& local_path) {
+	void gui_download([[maybe_unused]] const std::string& url, [[maybe_unused]] const std::string& local_path) {
 #if defined(__APPLE__) && TARGET_OS_IPHONE
-		(void)url;
-		(void)local_path;
 		gui2::show_message(_("Download unavailable"), _("Standalone file downloads are not currently supported on iOS."), gui2::dialogs::message::button_style::auto_close);
 		return;
 #endif
@@ -66,11 +64,9 @@ namespace network
 		}
 	}
 
-	bool download(const std::string& url, const std::string& local_path)
+	bool download([[maybe_unused]] const std::string& url, [[maybe_unused]] const std::string& local_path)
 	{
 #if defined(__APPLE__) && TARGET_OS_IPHONE
-		(void)url;
-		(void)local_path;
 		ERR_NW << "Standalone file downloads are currently disabled for iOS builds.";
 		return false;
 #else
