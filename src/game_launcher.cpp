@@ -49,16 +49,10 @@
 #include "wesnothd_connection_error.hpp"
 #include "wml_exception.hpp" // for wml_exception
 
-#if defined(__APPLE__)
+#ifdef __APPLE__
 #include <TargetConditionals.h>
-#endif
 
-#if defined(__APPLE__) && TARGET_OS_IPHONE
-
-// iOS builds do not launch a bundled wesnothd process.
-
-#elif defined(__APPLE__)
-
+#if !TARGET_OS_IPHONE
 //
 // HACK: MacCompileStuff is currently on 1.86, so it could use the v2 API,
 // but macOS packaging still links against the old boost::process v1 layout.
@@ -69,6 +63,7 @@
 #error MacCompileStuff has been updated. Remove this block and the accompanying __APPLE__ checks below.
 #endif
 #include <boost/process/v1/child.hpp>
+#endif
 
 #elif BOOST_VERSION >= 108600
 
