@@ -92,9 +92,8 @@ void editor_edit_unit::pre_show() {
 	alignments.set_values(align_list_);
 
 	menu_button& races = find_widget<menu_button>("race_list");
-	for(const race_map::value_type& i : unit_types.races()) {
-		const std::string& race_name = i.second.id();
-		race_list_.emplace_back("label", race_name, "icon", i.second.get_icon_path_stem() + "_30.png");
+	for(const auto& [_, race] : unit_types.races()) {
+		race_list_.emplace_back("label", race.id(), "icon", race.get_icon_path_stem() + "_30.png");
 	}
 
 	if (!race_list_.empty()) {
@@ -137,8 +136,8 @@ void editor_edit_unit::pre_show() {
 	//
 
 	menu_button& movetypes = find_widget<menu_button>("movetype_list");
-	for(const auto& mt : unit_types.movement_types()) {
-		movetype_list_.emplace_back("label", mt.first);
+	for(const auto& [name, _] : unit_types.movement_types()) {
+		movetype_list_.emplace_back("label", name);
 	}
 
 	if (!movetype_list_.empty()) {
