@@ -3,7 +3,7 @@ index f774ba2..f488b7f 100644
 --- a/gettext-runtime/intl/langprefs.c
 +++ b/gettext-runtime/intl/langprefs.c
 @@ -38,6 +38,11 @@ extern void _nl_locale_name_canonicalize (char *name);
- 
+
  #if defined _WIN32
  # define WIN32_NATIVE
 +# if defined(WINAPI_FAMILY_PARTITION)
@@ -12,7 +12,7 @@ index f774ba2..f488b7f 100644
 +#  endif
 +# endif
  #endif
- 
+
  #ifdef WIN32_NATIVE
 diff --git a/gettext-runtime/intl/gnulib-lib/localcharset.c b/gettext-runtime/intl/gnulib-lib/localcharset.c
 index ec75427..9e063e4 100644
@@ -26,14 +26,14 @@ index ec75427..9e063e4 100644
 +#  define WINAPI_FAMILY_PARTITION(x) (0)
 +# endif
  #endif
- 
+
  #if defined __EMX__
 @@ -912,6 +915,8 @@ locale_charset (void)
      /* The canonical name cannot be determined.  */
      codeset = "";
- 
+
 +# elif WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP)
 +    codeset = "";
  # elif defined WINDOWS_NATIVE
- 
+
    char buf[2 + 10 + 1];
