@@ -45,33 +45,32 @@ public:
 		max_input_length_ = length;
 	}
 
-    std::size_t get_max_input_length() const
-    {
-        return max_input_length_;
-    }
+	std::size_t get_max_input_length() const
+	{
+		return max_input_length_;
+	}
 
-    void set_hint_text(const std::string& text)
-    {
-        hint_text_ = text;
-        update_canvas();
-    }
+	void set_hint_text(const std::string& text)
+	{
+		hint_text_ = text;
+		update_canvas();
+	}
 
-    std::string get_hint_text() const
-    {
-        return hint_text_;
-    }
+	std::string get_hint_text() const
+	{
+		return hint_text_;
+	}
 
-    void set_hint_image(const std::string& image)
-    {
-        hint_image_ = image;
-        update_canvas();
-    }
+	void set_hint_image(const std::string& image)
+	{
+		hint_image_ = image;
+		update_canvas();
+	}
 
-    std::string get_hint_image() const
-    {
-        return hint_image_;
-    }
-
+	std::string get_hint_image() const
+	{
+		return hint_image_;
+	}
 
 	void set_hint_data(const std::string& text, const std::string& image)
 	{
