@@ -105,6 +105,10 @@
 #define main SDL_main
 #endif
 
+#ifdef __APPLE__
+#include <TargetConditionals.h>
+#endif
+
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 #include "gui/widgets/debug.hpp"
 #endif
@@ -983,7 +987,7 @@ static int do_gameloop(commandline_options& cmdline_opts)
 #define error_exit(res) return res
 #endif
 
-#if defined(__APPLE__) && !defined(__IPHONEOS__)
+#if defined(__APPLE__) && !TARGET_OS_IPHONE
 extern "C" int wesnoth_main(int argc, char** argv);
 int wesnoth_main(int argc, char** argv)
 #else
@@ -1033,7 +1037,7 @@ int main(int argc, char** argv)
 
 		// Mac's touchpad generates touch events too.
 		// Ignore them until Macs have a touchscreen: https://forums.libsdl.org/viewtopic.php?p=45758
-#if defined(__APPLE__) && !defined(__IPHONEOS__)
+#if defined(__APPLE__) && !TARGET_OS_IPHONE
 		SDL_EventState(SDL_FINGERMOTION, SDL_DISABLE);
 		SDL_EventState(SDL_FINGERDOWN, SDL_DISABLE);
 		SDL_EventState(SDL_FINGERUP, SDL_DISABLE);
