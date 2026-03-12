@@ -52,14 +52,15 @@ option(ENABLE_MYSQL "Enable building MP/add-ons servers with mysql support" OFF)
 option(ENABLE_TESTS "Build unit tests")
 option(ENABLE_NLS "Enable building of translations" ${ENABLE_GAME})
 
-set(BOOST_VERSION "1.70")
+# The next line is the minimum version of Boost. The version that's actually found will be put in Boost_VERSION.
+set(MIN_USABLE_BOOST_VERSION "1.70")
 set(BOOST_REQ_COMPONENTS iostreams program_options regex thread random coroutine locale filesystem graph)
 
 if(ENABLE_TESTS)
   list(APPEND BOOST_REQ_COMPONENTS unit_test_framework)
 endif()
 
-find_package(Boost ${BOOST_VERSION} REQUIRED CONFIG COMPONENTS ${BOOST_REQ_COMPONENTS}
+find_package(Boost ${MIN_USABLE_BOOST_VERSION} REQUIRED CONFIG COMPONENTS ${BOOST_REQ_COMPONENTS}
                                            OPTIONAL_COMPONENTS charconv process)
 
 if(NOT WIN32)
