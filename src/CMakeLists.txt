@@ -237,6 +237,20 @@ if(ENABLE_GAME)
 		add_executable(wesnoth wesnoth.cpp)
 	endif()
 
+	set(BOOST_LIBS
+		Boost::iostreams
+		Boost::program_options
+		Boost::regex
+		Boost::random
+		Boost::coroutine
+		Boost::locale
+		Boost::filesystem
+	)
+
+	if(boost_system_DIR)
+		list(APPEND BOOST_LIBS Boost::system)
+	endif()
+
 	target_link_libraries(wesnoth
 		wesnoth-common
 		${WIDGETS_LIB}
@@ -245,14 +259,7 @@ if(ENABLE_GAME)
 		${game-external-libs}
 		OpenSSL::Crypto
 		OpenSSL::SSL
-		Boost::iostreams
-		Boost::program_options
-		Boost::regex
-		Boost::system
-		Boost::random
-		Boost::coroutine
-		Boost::locale
-		Boost::filesystem
+		${BOOST_LIBS}
 		Fontconfig::Fontconfig
 		SDL2::SDL2
 		SDL2::SDL2main
@@ -335,20 +342,27 @@ if(ENABLE_SERVER)
 		target_link_libraries(wesnothd mariadbclientpp)
 	endif()
 
+	set(BOOST_LIBS
+		Boost::iostreams
+		Boost::program_options
+		Boost::regex
+		Boost::random
+		Boost::coroutine
+		Boost::locale
+		Boost::filesystem
+	)
+
+	if(boost_system_DIR)
+		list(APPEND BOOST_LIBS Boost::system)
+	endif()
+
 	target_link_libraries(wesnothd
 		wesnoth-common
 		${common-external-libs}
 		${MYSQL_LIBS}
 		OpenSSL::Crypto
 		OpenSSL::SSL
-		Boost::iostreams
-		Boost::program_options
-		Boost::regex
-		Boost::system
-		Boost::random
-		Boost::coroutine
-		Boost::locale
-		Boost::filesystem
+		${BOOST_LIBS}
 	)
 	if(MSVC)
 		target_link_options(wesnothd PRIVATE /WX)
@@ -375,13 +389,7 @@ if(ENABLE_CAMPAIGN_SERVER)
 		target_link_libraries(campaignd mariadbclientpp)
 	endif()
 
-	target_link_libraries(
-		campaignd
-		wesnoth-common
-		${common-external-libs}
-		${MYSQL_LIBS}
-		OpenSSL::Crypto
-		OpenSSL::SSL
+	set(BOOST_LIBS
 		Boost::iostreams
 		Boost::program_options
 		Boost::regex
@@ -390,6 +398,20 @@ if(ENABLE_CAMPAIGN_SERVER)
 		Boost::coroutine
 		Boost::locale
 		Boost::filesystem
+	)
+
+	if(boost_system_DIR)
+		list(APPEND BOOST_LIBS Boost::system)
+	endif()
+
+	target_link_libraries(
+		campaignd
+		wesnoth-common
+		${common-external-libs}
+		${MYSQL_LIBS}
+		OpenSSL::Crypto
+		OpenSSL::SSL
+		${BOOST_LIBS}
 	)
 	if(MSVC)
 		target_link_options(campaignd PRIVATE /WX)
