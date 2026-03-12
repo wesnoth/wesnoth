@@ -38,7 +38,7 @@ void free_surface(surface& surf)
 void make_neutral(surface& surf)
 {
 	if(surf && surf->format != SDL_PIXELFORMAT_ARGB8888) {
-		surf = surf.clone();
+		surf = surface(SDL_ConvertSurface(surf, SDL_PIXELFORMAT_ARGB8888));
 	}
 }
 
@@ -100,7 +100,7 @@ surface surface::clone() const
         return {};
     }
 	// Use SDL_ConvertSurfaceFormat to make a copy
-	return surface(SDL_ConvertSurface(surface_, SDL_PIXELFORMAT_ARGB8888));
+	return surface(SDL_DuplicateSurface(surface_));
 }
 
 point surface::size() const
