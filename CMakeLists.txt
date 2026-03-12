@@ -52,7 +52,24 @@ option(ENABLE_MYSQL "Enable building MP/add-ons servers with mysql support" OFF)
 option(ENABLE_TESTS "Build unit tests")
 option(ENABLE_NLS "Enable building of translations" ${ENABLE_GAME})
 
-set(BOOST_VERSION "1.67")
+# The next line is the minimum version of Boost. The version that's actually found will be put in Boost_VERSION.
+set(MIN_USABLE_BOOST_VERSION "1.67")
+set(BOOST_REQ_COMPONENTS iostreams program_options regex thread random coroutine locale filesystem graph)
+
+if(ENABLE_TESTS)
+	list(APPEND BOOST_REQ_COMPONENTS unit_test_framework)
+endif()
+
+find_package(Boost ${MIN_USABLE_BOOST_VERSION} REQUIRED CONFIG COMPONENTS ${BOOST_REQ_COMPONENTS}
+	OPTIONAL_COMPONENTS charconv process system)
+
+# Boost System became header-only with a stub library in 1.69, and the library was removed in 1.90.
+# The reason for checking for 1.70 is because Wesnoth 1.19.10 bumped the min version to 1.70.
+# If you have exactly 1.69 but don't have Boost System, we haven't tested Wesnoth with that config;
+# installing the libboost-system-dev package is probably quicker than wondering whether there are bugs.
+if(${Boost_VERSION} VERSION_LESS "1.70" AND NOT boost_system_DIR)
+	message(FATAL_ERROR "Old version of Boost, but couldn't find the boost_system component")
+endif()
 
 if(NOT WIN32)
 	set(Lua_FIND_VERSION_MAJOR 5)
@@ -93,7 +110,6 @@ if(APPLE)
 	find_library(SECURITY_LIBRARY Security REQUIRED)
 endif()
 
-find_package(Boost ${BOOST_VERSION} REQUIRED COMPONENTS iostreams program_options regex system thread random coroutine locale filesystem graph)
 find_package(ICU REQUIRED COMPONENTS data i18n uc)
 
 # no, gettext executables are not required when NLS is deactivated
@@ -543,10 +559,6 @@ if(ENABLE_GAME OR ENABLE_TESTS)
 	pkg_check_modules(PANGOCAIRO REQUIRED pangocairo>=1.44.0)
 	pkg_check_modules(PANGO REQUIRED pango>=1.44.0)
 	pkg_check_modules(LIBREADLINE readline)
-endif()
-
-if(ENABLE_TESTS)
-	find_package( Boost ${BOOST_VERSION} REQUIRED COMPONENTS unit_test_framework )
 endif()
 
 if(ENABLE_GAME)
