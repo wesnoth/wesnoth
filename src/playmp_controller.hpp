@@ -19,6 +19,13 @@
 #include "playsingle_controller.hpp"
 
 struct mp_game_metadata;
+
+enum class player_category {
+    friend_player,  
+    ignore,
+    offender         
+};
+
 class playmp_controller : public playsingle_controller
 {
 public:
@@ -94,4 +101,7 @@ private:
 	/// Information about our connection to the multiplayer server.
 	/// null when we are not connected to the multiplayer server
 	mp_game_metadata* mp_info_;
+
+	std::map<std::string, player_category> player_categories_;
+
 };
