@@ -55,6 +55,7 @@
 #include "utils/general.hpp"
 #include "video.hpp"
 #include "whiteboard/manager.hpp"
+#include "scripting/game_lua_kernel.hpp"
 
 #include <boost/algorithm/string/trim.hpp>
 
@@ -3158,14 +3159,17 @@ void display::process_reachmap_changes()
 	}
 	reach_map_old_ = reach_map_;
 	reach_map_changed_ = false;
+	map_location center;
 
 	// Make sure there are teams before trying to access units.
 	if(!context().teams().empty()){
 		// Update the reachmap-context team, the selected unit's team shall override the displayed unit's.
 		if(context().units().count(selectedHex_)) {
 			reach_map_team_index_ = context().get_visible_unit(selectedHex_, viewing_team())->side();
+			center = selectedHex_;
 		} else if(context().get_visible_unit(mouseoverHex_, viewing_team()) != nullptr){
 			reach_map_team_index_ = context().get_visible_unit(mouseoverHex_, viewing_team())->side();
+			center = mouseoverHex_;
 		} else {
 			/**
 			 * If no unit is selected or displayed, the reachmap-context team should failsafe to
@@ -3175,6 +3179,10 @@ void display::process_reachmap_changes()
 			reach_map_team_index_ = viewing_team_index_;
 		}
 		DBG_DP << "Updated reachmap context team index to " << std::to_string(reach_map_team_index_);
+	}
+
+	if(game_lua_kernel* lk = resources::controller->gamestate().lua_kernel_.get()) {
+		lk->reachmap_updated_callback(center, reach_map_);
 	}
 }
 
