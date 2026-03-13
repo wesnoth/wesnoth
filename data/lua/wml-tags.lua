@@ -701,7 +701,12 @@ function wml_actions.time_area(cfg)
 	if cfg.remove then
 		wml_actions.remove_time_area(cfg)
 	else
-		wesnoth.map.place_area(cfg.id or '', cfg, cfg)
+		local id = cfg.id or ''
+		local schedule = wml.child_array(cfg, "time")
+		local clone = wml.literal(cfg)
+		wml.remove_children(clone, "time")
+		clone.id = nil
+		wesnoth.map.place_area(id, wml.tovconfig(clone), schedule)
 	end
 end
 

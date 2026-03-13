@@ -19,6 +19,7 @@
 ---@field max_range integer
 ---@field min_range integer
 ---@field specials WMLTable
+---@field matches fun(attack:unit_weapon, filter:WMLTable, unit:unit?):boolean
 ---@field __cfg WMLTable
 
 ---Defines a unit type

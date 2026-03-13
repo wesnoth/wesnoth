@@ -11,6 +11,10 @@ function wesnoth.wml_actions.kill(cfg)
 	local secondary_unit = wml.get_child(cfg, "secondary_unit")
 	local killer_loc = {0, 0}
 	if secondary_unit then
+		-- Remove it from the main config
+		cfg = wml.literal(cfg)
+		wml.remove_children(cfg, 'secondary_unit')
+		cfg = wml.tovconfig(cfg)
 		secondary_unit = wesnoth.units.find_on_map(secondary_unit)[1]
 		if cfg.fire_event then
 			if secondary_unit then

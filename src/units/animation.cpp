@@ -465,7 +465,7 @@ int unit_animation::matches(const map_location& loc, const map_location& second_
 	}
 
 	for(const auto& iter : primary_attack_filter_) {
-		if(!attack->matches_filter(iter)) return MATCH_FAIL;
+		if(!attack->matches_filter(iter, my_unit.get())) return MATCH_FAIL;
 		result++;
 	}
 
@@ -476,7 +476,7 @@ int unit_animation::matches(const map_location& loc, const map_location& second_
 	}
 
 	for(const auto& iter : secondary_attack_filter_) {
-		if(!second_attack->matches_filter(iter)) return MATCH_FAIL;
+		if(!second_attack->matches_filter(iter, my_unit.get())) return MATCH_FAIL;
 		result++;
 	}
 

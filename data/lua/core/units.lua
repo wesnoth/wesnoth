@@ -33,7 +33,7 @@ if wesnoth.kernel_type() == "Game Lua Kernel" then
 	---@return integer? #The index of the matching attack in the unit's attack list
 	function wesnoth.units.find_attack(unit, filter)
 		for i, atk in ipairs(unit.attacks) do
-			if atk:matches(filter) then return atk, i end
+			if atk:matches(filter, unit) then return atk, i end
 		end
 	end
 

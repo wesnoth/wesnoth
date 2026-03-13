@@ -141,6 +141,17 @@ wesnoth.wml_actions = {}
 ---@type table<string, fun(cfg:WML):boolean>
 wesnoth.wml_conditionals = {}
 
+wesnoth.wml_filters = {
+	---@type table<string, fun(cfg:vconfig, u:unit,loc:location,other_unit:unit?):boolean>
+	unit = {},
+	---@type table<string, fun(cfg:vconfig, loc:location):boolean>
+	location = {},
+	---@type table<string, fun(cfg:vconfig, side:side):boolean>
+	side = {},
+	---@type table<string, fun(cfg:WMLTable, weapon:unit_weapon):boolean>
+	weapon = {},
+}
+
 ---@type table<string, fun(unit:unit, cfg:WML)>
 wesnoth.effects = {}
 
