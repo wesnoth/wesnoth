@@ -663,103 +663,135 @@ display::overlay_map& game_display::get_overlays()
 
 std::vector<texture> game_display::get_reachmap_images(const map_location& loc) const
 {
-	std::vector<std::string> names;
-	const auto adjacent = get_adjacent_tiles(loc);
+	std::vector<texture> res;
+	res.reserve(12);
 
+	// 1. Categorize adjacent tiles
+	const auto adjacent = get_adjacent_tiles(loc);
 	enum visibility { REACH = 0, ENEMY = 1, CLEAR = 2 };
 	std::array<visibility, 6> tiles;
+	const team& reach_team = resources::gameboard->get_team(display::reach_map_team_index_);
+	const bool same_team = (display::reach_map_team_index_ == display::viewing_team_index_);
+	int reachable_count = 0;
 
 	for(int i = 0; i < 6; ++i) {
-		// look for units adjacent to loc
-		std::string test_location = std::to_string(adjacent[i].x) + "," + std::to_string(adjacent[i].y);
 		const unit *u = context().get_visible_unit(adjacent[i], viewing_team());
+		const std::string test_location = std::to_string(adjacent[i].x) + "," + std::to_string(adjacent[i].y);
+
 		if(reach_map_.find(adjacent[i]) != reach_map_.end()) {
-			DBG_DP << test_location << " is REACHABLE";
 			tiles[i] = REACH;
-		}
-		/**
-		 * Make sure there is a unit selected or displayed when drawing the reachmap with enemy detection.
-		 * Enemy detection needs to be "disabled" when the reach_map_team_index_ failsafes to viewing_team_index.
-		 */
-		else if(display::reach_map_team_index_ == display::viewing_team_index_) {
-			DBG_DP << test_location << " is NOT REACHABLE";
+			reachable_count++;
+			DBG_DP << test_location << " is REACHABLE";
+		} else if(same_team) {
 			tiles[i] = CLEAR;
-		}
-		// Grab the reachmap-context team index updated in "display::process_reachmap_changes()" and test for adjacent enemy units
-		else if(u != nullptr && !u->incapacitated() && resources::gameboard->get_team(display::reach_map_team_index_).is_enemy(u->side())) {
-			DBG_DP << test_location << " has an attackable ENEMY";
+			DBG_DP << test_location << " is NOT REACHABLE (viewing team failsafe)";
+		} else if(u != nullptr && !u->incapacitated() && reach_team.is_enemy(u->side())) {
 			tiles[i] = ENEMY;
+			DBG_DP << test_location << " has an attackable ENEMY";
 		} else {
-			DBG_DP << test_location << " is NOT REACHABLE";
 			tiles[i] = CLEAR;
+			DBG_DP << test_location << " is NOT REACHABLE";
 		}
 	}
 
-	// Find out if location is in the inner part of reachmap (surrounded by reach)
-	int s;
-	for(s = 0; s != 6; ++s) {
-		if(tiles[s] != REACH) {
-			break;
-		}
+	// 2. Prepare image string prefix and suffixes (mods)
+	int base_opacity = prefs::get().reach_map_border_opacity();
+	const t_translation::terrain_code& tcode = resources::gameboard->map().get_terrain(loc);
+	std::string tid = t_translation::write_terrain_code(tcode);
+	size_t caret_pos = tid.find('^');
+
+	if(caret_pos != std::string::npos) {
+		tid.resize(caret_pos);
+	}
+	if(tid == "Aa" || tid == "Ha" || tid == "Ms") { // Snow tiles
+		base_opacity = std::min(100, static_cast<int>(base_opacity * 1.5));
 	}
 
-	if(s == 6) {
-		// Completely surrounded by reach. This may have a special graphic.
-		DBG_DP << "Tried completely surrounding";
-		std::string name = game_config::reach_map_prefix + "-all.png";
-		if(image::exists(name)) {
-			names.push_back(std::move(name));
+	const int enemy_opacity = std::min(100, static_cast<int>(prefs::get().reach_map_border_opacity() * 1.5));
+	const std::string base_suffix = "~RC(magenta>" + prefs::get().reach_map_color() + ")~O(" + std::to_string(base_opacity) + "%)";
+	const std::string enemy_suffix = "~RC(magenta>" + prefs::get().reach_map_enemy_color() + ")~O(" + std::to_string(enemy_opacity) + "%)";
+	const std::string& prefix = game_config::reach_map_prefix;
+
+	// 3. Handle inner tiles (the ones with no borders on them)
+	if(reachable_count == 6) {
+		std::string filename = prefix + "-inner.png";
+		if(image::exists(filename)) { // "-inner.png" -- Does not currently exist (1.19.19), UMC can add.
+			res.push_back(image::get_texture(filename + base_suffix, image::HEXED));
 		}
+		return res;
 	}
 
-	// Find all the directions overlap occurs from
-	for(int i = 0, cap1 = 0; cap1 != 6; ++cap1) {
-		if(tiles[i] != REACH) {
-			std::ostringstream stream;
-			std::string suffix;
-			std::string name;
-			stream << game_config::reach_map_prefix;
+	// 4. Draw border line sections
+	for(int i = 0; i < 6; ++i) {
+		if(tiles[i] == REACH) continue;
 
-			std::string color = prefs::get().reach_map_color();
-			std::string enemy_color = prefs::get().reach_map_enemy_color();
-			std::string border_opacity = std::to_string(prefs::get().reach_map_border_opacity());
+		int next = (i + 1) % 6;
+		int prev = (i == 0) ? 5 : i - 1;
 
-			if(tiles[i] == ENEMY) {
-				suffix = ".png~RC(magenta>"+enemy_color+")~O("+border_opacity+"%)";
+		// Helper lambda to add image if it exists
+		auto add_image_checked = [&](const std::string& partial_name, const std::string& flips, bool near_enemy) {
+			std::string base_path = prefix + partial_name + ".png";
+			std::string full_variant = base_path + flips + (near_enemy ? enemy_suffix : base_suffix);
+			res.push_back(image::get_texture(full_variant, image::HEXED));
+			if(image::exists(base_path)) {
+				DBG_DP << "Pushing: " << full_variant;
 			} else {
-				suffix = ".png~RC(magenta>"+color+")~O("+border_opacity+"%)";
+				DBG_DP << "Image does not exist: " << base_path << " on " << loc;
 			}
+		};
 
-			for(int cap2 = 0; tiles[i] != REACH && cap2 != 6; i = (i + 1) % 6, ++cap2) {
-				stream << "-" << map_location::write_direction(map_location::direction{i});
-				if(!image::exists(stream.str() + ".png")) {
-					DBG_DP << "Image does not exist: " << stream.str() + ".png on " << loc;
-					// If we don't have any surface at all,
-					// then move onto the next overlapped area
-					if(name.empty()) {
-						i = (i + 1) % 6;
-					}
-					break;
-				} else {
-					name = stream.str();
-				}
-			}
-
-			if(!name.empty()) {
-				names.push_back(name + suffix);
-			}
-		} else {
-			i = (i + 1) % 6;
+		// --- A. Straight Border Sections ---
+		std::string base_img, border_flips;
+		switch(i) {
+			case 0: base_img = "-n";  break;
+			case 1: base_img = "-ne"; break;
+			case 2: base_img = "-ne"; border_flips = "~FL(vert)";      break;
+			case 3: base_img = "-n";  border_flips = "~FL(vert)";      break;
+			case 4: base_img = "-ne"; border_flips = "~FL(horizvert)"; break;
+			case 5: base_img = "-ne"; border_flips = "~FL(horiz)";     break;
 		}
-	}
+		add_image_checked(base_img, border_flips, (tiles[i] == ENEMY));
 
-	// now get the textures
-	std::vector<texture> res;
+		// --- B. Next Vertex (Bend going into next hex) ---
+		if(tiles[next] == REACH) {
+			std::string cnv_img, cnv_flips;
+			switch(i) {
+				case 0: cnv_img = "-concave-ne-to-w";  break;
+				case 1: cnv_img = "-concave-w-to-ne";  cnv_flips = "~FL(horiz)";     break;
+				case 2: cnv_img = "-concave-ne-to-se"; cnv_flips = "~FL(vert)";      break;
+				case 3: cnv_img = "-concave-ne-to-w";  cnv_flips = "~FL(horizvert)"; break;
+				case 4: cnv_img = "-concave-w-to-ne";  cnv_flips = "~FL(vert)";      break;
+				case 5: cnv_img = "-concave-ne-to-se"; cnv_flips = "~FL(horiz)";     break;
+			}
+			add_image_checked(cnv_img, cnv_flips, (tiles[i] == ENEMY));
+		}
 
-	for(const std::string& name : names) {
-		DBG_DP << "Pushing: " << name;
-		if(texture tex = image::get_texture(name, image::HEXED)) {
-			res.push_back(std::move(tex));
+		// --- C. Previous Vertex (Bend coming from previous hex) ---
+		if(tiles[prev] == REACH) {
+			std::string cnv_img, cnv_flips;
+			switch(i) {
+				case 0: cnv_img = "-concave-ne-to-w";  cnv_flips = "~FL(horiz)";     break;
+				case 1: cnv_img = "-concave-ne-to-se"; break;
+				case 2: cnv_img = "-concave-w-to-ne";  cnv_flips = "~FL(horizvert)"; break;
+				case 3: cnv_img = "-concave-ne-to-w";  cnv_flips = "~FL(vert)";      break;
+				case 4: cnv_img = "-concave-ne-to-se"; cnv_flips = "~FL(horizvert)"; break;
+				case 5: cnv_img = "-concave-w-to-ne";  break;
+			}
+			add_image_checked(cnv_img, cnv_flips, (tiles[i] == ENEMY));
+		}
+
+		// --- D. Convex Corners (Bend staying on same hex) ---
+		if(tiles[next] != REACH) {
+			std::string cvx_img, cvx_flips;
+			switch(i) {
+				case 0: cvx_img = "-convex-ne"; break;
+				case 1: cvx_img = "-convex-e";  break;
+				case 2: cvx_img = "-convex-ne"; cvx_flips = "~FL(vert)";      break;
+				case 3: cvx_img = "-convex-ne"; cvx_flips = "~FL(horizvert)"; break;
+				case 4: cvx_img = "-convex-e";  cvx_flips = "~FL(horiz)";     break;
+				case 5: cvx_img = "-convex-ne"; cvx_flips = "~FL(horiz)";     break;
+			}
+			add_image_checked(cvx_img, cvx_flips, (tiles[i] == ENEMY || tiles[next] == ENEMY));
 		}
 	}
 
