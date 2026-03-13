@@ -16,9 +16,11 @@
 
 #pragma once
 
+#include <boost/dynamic_bitset.hpp>
 #include "config.hpp"
 #include "map/location.hpp"
 #include "variable_info.hpp"
+#include "units/abilities.hpp"
 
 #include <utility>
 
@@ -236,7 +238,7 @@ private:
 	bool activated_;
 };
 
-class scoped_weapon_info : public scoped_wml_variable
+class scoped_weapon_info : public scoped_wml_variable //it might be a good idea to store copy of the data - just like scoped_ability_info does
 {
 public:
 	scoped_weapon_info(const std::string& var_name, optional_const_config data)
@@ -244,6 +246,16 @@ public:
 	void activate();
 private:
 	optional_const_config data_;
+};
+
+class scoped_ability_info : public scoped_wml_variable
+{
+public:
+	scoped_ability_info(const std::string& var_name, const unit_ability_t& ability)
+		: scoped_wml_variable(var_name), cfg_(ability.cfg()) {}
+	void activate();
+private:
+	config cfg_;  // Stores a copy of the config
 };
 
 class scoped_xy_unit : public scoped_wml_variable
