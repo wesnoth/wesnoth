@@ -97,7 +97,7 @@
 
 /** Helper class, don't construct this directly. */
 struct wml_exception final
-	: public lua_jailbreak_exception
+	: public std::exception
 {
 	enum class error_type {
 		INVALID_WML = 0,
@@ -113,7 +113,6 @@ struct wml_exception final
 		, dev_message(dev_msg)
 		, type(error_type)
 	{
-		this->store();
 	}
 
 	~wml_exception() noexcept {}
@@ -142,8 +141,6 @@ struct wml_exception final
 	 * Shows the error in a dialog.
 	 */
 	void show() const;
-private:
-	IMPLEMENT_LUA_JAILBREAK_EXCEPTION(wml_exception)
 };
 
 /**
