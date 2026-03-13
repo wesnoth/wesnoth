@@ -617,6 +617,7 @@ public:
 	PREF_GETTER_SETTER(game_created_notif, bool, true)
 	PREF_GETTER_SETTER(editor_help_text_shown, bool, true)
 	PREF_GETTER_SETTER(show_attack_miss_indicator, bool, false)
+	PREF_GETTER_SETTER(simd_enabled, bool, true)
 #undef PREF_GETTER_SETTER
 	void clear_mp_alert_prefs();
 
@@ -871,6 +872,7 @@ private:
 		prefs_list::font_scale,
 		prefs_list::bell_volume,
 		prefs_list::music_volume,
+		prefs_list::simd_enabled,
 		prefs_list::sound_volume,
 		prefs_list::ui_volume,
 		prefs_list::fullscreen,

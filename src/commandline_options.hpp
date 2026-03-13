@@ -149,6 +149,8 @@ public:
 	bool nobanner;
 	/** True if --nomusic was given on the command line. Disables music. */
 	bool nomusic;
+	/** True if --no-simd was given on the command line. Disables SIMD hardware acceleration. */
+	bool no_simd;
 	/** True if --nosound was given on the command line. Disables sound. */
 	bool nosound;
 	/** True if --new-widgets was given on the command line. Hidden option to enable the new widget toolkit. */

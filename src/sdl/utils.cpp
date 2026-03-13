@@ -22,6 +22,7 @@
 #include "sdl/utils.hpp"
 #include "color.hpp"
 #include "log.hpp"
+#include "utils_simd.hpp"
 #include "xBRZ/xbrz.hpp"
 
 #include <algorithm>
@@ -406,15 +407,17 @@ surface scale_surface_sharp(const surface& surf, int w, int h)
 void adjust_surface_color(surface& nsurf, int red, int green, int blue)
 {
 	if(nsurf && (red != 0 || green != 0 || blue != 0)) {
+		// Attempt SIMD
+		std::size_t simd_processed = simd::is_enabled() ? adjust_surface_color_simd(nsurf, red, green, blue) : 0;
+
+		// SCALAR fallback: process remaining pixels (either all pixels if SIMD unavailable, or just the remainder)
 		surface_lock lock(nsurf);
-
-		for(auto& pixel : lock.pixel_span()) {
+		utils::span pixel_span = lock.pixel_span();
+		for(auto& pixel : pixel_span.subspan(simd_processed)) {
 			auto [r, g, b, alpha] = color_t::from_argb_bytes(pixel);
-
 			r = std::clamp(static_cast<int>(r) + red, 0, 255);
 			g = std::clamp(static_cast<int>(g) + green, 0, 255);
 			b = std::clamp(static_cast<int>(b) + blue, 0, 255);
-
 			pixel = (alpha << 24) + (r << 16) + (g << 8) + b;
 		}
 	}
@@ -713,7 +716,7 @@ bool mask_surface(surface& nsurf, const surface& nmask, const std::string& filen
 		return false;
 	}
 
-	if (nsurf->w != nmask->w) {
+	if(nsurf->w != nmask->w) {
 		// we don't support efficiently different width.
 		// (different height is not a real problem)
 		// This function is used on all hexes and usually only for that
@@ -729,31 +732,26 @@ bool mask_surface(surface& nsurf, const surface& nmask, const std::string& filen
 
 	uint32_t cumulative_alpha{0};
 	{
+		// Attempt SIMD
+		bool simd_empty = true;
+		std::size_t simd_processed = simd::is_enabled() ? mask_surface_simd(nsurf, nmask, simd_empty) : 0;
+		if(simd_processed > 0) {
+			cumulative_alpha = simd_empty ? 0 : 1;
+		}
+
+		// SCALAR fallback: process remaining pixels (either all pixels if SIMD unavailable, or just the remainder)
 		surface_lock lock(nsurf);
 		const_surface_lock mlock(nmask);
-
-		utils::span surf_pixels = lock.pixel_span();
-		utils::span mask_pixels = mlock.pixel_span();
-
-		// Note: any pixels outside the range of the smaller surface are ignored.
-		const auto sentinel = std::min(surf_pixels.size(), mask_pixels.size());
-
-		for(std::size_t i = 0; i < sentinel; ++i) {
-			const uint32_t surf_alpha = surf_pixels[i] & SDL_ALPHA_MASK;
-			const uint32_t mask_alpha = mask_pixels[i] & SDL_ALPHA_MASK;
-
-			const auto min_alpha = std::min(surf_alpha, mask_alpha);
-
-			// Clear the alpha bits before writing the new alpha value.
-			surf_pixels[i] &= ~SDL_ALPHA_MASK;
-			surf_pixels[i] |= min_alpha;
-
-			// This will quickly saturate the leftmost 8 bits,
-			// but we only care whether the final result is 0.
+		const utils::span surf_px = lock.pixel_span();
+		const utils::span mask_px = mlock.pixel_span();
+		const utils::span surf_sub = surf_px.subspan(simd_processed);
+		const utils::span mask_sub = mask_px.subspan(simd_processed);
+		for(std::size_t i = 0; i < surf_sub.size(); ++i) {
+			const uint32_t min_alpha = std::min(surf_sub[i] & SDL_ALPHA_MASK, mask_sub[i] & SDL_ALPHA_MASK);
+			surf_sub[i] = (surf_sub[i] & ~SDL_ALPHA_MASK) | min_alpha;
 			cumulative_alpha |= min_alpha;
 		}
 	}
-
 	return cumulative_alpha == 0;
 }
 
@@ -1319,14 +1317,21 @@ surface rotate_90_surface(const surface& surf, bool clockwise)
 void flip_surface(surface& nsurf)
 {
 	if(nsurf) {
+
+		// Attempt SIMD
+		std::size_t simd_x_processed = simd::is_enabled() ? flip_image_simd(nsurf) : 0;
+
+		// SCALAR fallback: process remaining columns (either all if SIMD unavailable, or just the remainder)
 		surface_lock lock(nsurf);
 		uint32_t* const pixels = lock.pixels();
-
-		for(int y = 0; y != nsurf->h; ++y) {
-			for(int x = 0; x != nsurf->w/2; ++x) {
-				const int index1 = y*nsurf->w + x;
-				const int index2 = (y+1)*nsurf->w - x - 1;
-				std::swap(pixels[index1],pixels[index2]);
+		const std::size_t width = static_cast<std::size_t>(nsurf->w);
+		const std::size_t height = static_cast<std::size_t>(nsurf->h);
+		const std::size_t half_width = width / 2;
+		for(std::size_t y = 0; y < height; ++y) {
+			for(std::size_t x = simd_x_processed; x < half_width; ++x) {
+				const std::size_t index1 = y * width + x;
+				const std::size_t index2 = y * width + (width - x - 1);
+				std::swap(pixels[index1], pixels[index2]);
 			}
 		}
 	}
@@ -1382,6 +1387,30 @@ surface get_surface_portion(const surface &src, rect &area)
 	SDL_SetSurfaceBlendMode(src, src_blend);
 
 	return dst;
+}
+
+void apply_surface_opacity(surface& surf, float opacity)
+{
+	if(surf == nullptr) return;
+
+	// Convert float opacity to integer modifier (0-255)
+	uint8_t alpha_mod = float_to_color(opacity);
+	if(alpha_mod == 255) return;
+
+	// Attempt SIMD
+	std::size_t simd_processed = simd::is_enabled() ? apply_surface_opacity_simd(surf, alpha_mod) : 0;
+
+	// SCALAR fallback: process remaining pixels (either all pixels if SIMD unavailable, or just the remainder)
+	surface_lock lock(surf);
+	utils::span pixel_span = lock.pixel_span();
+	for(auto& pixel : pixel_span.subspan(simd_processed)) {
+		uint8_t alpha = pixel >> 24;
+		if(alpha) {
+			auto [r, g, b, old_alpha] = color_t::from_argb_bytes(pixel);
+			alpha = color_multiply(old_alpha, alpha_mod);
+			pixel = (alpha << 24) | (r << 16) | (g << 8) | b;
+		}
+	}
 }
 
 namespace
