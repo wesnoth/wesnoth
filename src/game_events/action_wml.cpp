@@ -381,6 +381,7 @@ WML_HANDLER_FUNCTION(move_units_fake,, cfg)
 	LOG_NG << "Processing [move_units_fake]";
 
 	const bool force_scroll = cfg["force_scroll"].to_bool();
+	const bool parallel = cfg["parallel"].to_bool(false);
 	const vconfig::child_list unit_cfgs = cfg.get_children("fake_unit");
 	std::size_t num_units = unit_cfgs.size();
 	std::vector<fake_unit_ptr > units;
@@ -388,7 +389,7 @@ WML_HANDLER_FUNCTION(move_units_fake,, cfg)
 	std::vector<std::vector<map_location>> paths;
 	paths.reserve(num_units);
 
-	LOG_NG << "Moving " << num_units << " units";
+	LOG_NG << "Moving " << num_units << " units (parallel=" << (parallel ? "yes" : "no") << ")";
 
 	std::size_t longest_path = 0;
 
@@ -410,19 +411,62 @@ WML_HANDLER_FUNCTION(move_units_fake,, cfg)
 
 	LOG_NG << "Units placed, longest path is " << longest_path << " long";
 
-	std::vector<map_location> path_step(2);
-	path_step.resize(2);
-	for(std::size_t step = 1; step < longest_path; ++step) {
-		DBG_NG << "Doing step " << step << "...";
-		for(std::size_t un = 0; un < num_units; ++un) {
-			if(step >= paths[un].size() || paths[un][step - 1] == paths[un][step])
-				continue;
-			DBG_NG << "Moving unit " << un << ", doing step " << step;
-			path_step[0] = paths[un][step - 1];
-			path_step[1] = paths[un][step];
-			unit_display::move_unit(path_step, units[un].get_unit_ptr(), true, map_location::direction::indeterminate, force_scroll);
-			units[un]->set_location(path_step[1]);
-			units[un]->anim_comp().set_standing(false);
+	if(!parallel) {
+		// Serially move each unit step by step, waiting for each to finish before starting the next.
+		std::vector<map_location> path_step(2);
+		path_step.resize(2);
+		for(std::size_t step = 1; step < longest_path; ++step) {
+			DBG_NG << "Doing step " << step << "...";
+			for(std::size_t un = 0; un < num_units; ++un) {
+				if(step >= paths[un].size() || paths[un][step - 1] == paths[un][step])
+					continue;
+				DBG_NG << "Moving unit " << un << ", doing step " << step;
+				path_step[0] = paths[un][step - 1];
+				path_step[1] = paths[un][step];
+				unit_display::move_unit(path_step, units[un].get_unit_ptr(), true, map_location::direction::indeterminate, force_scroll);
+				units[un]->set_location(path_step[1]);
+				units[un]->anim_comp().set_standing(false);
+			}
+		}
+	} else {
+		// Parallel movement: Lockstep hex-by-hex processing.
+		DBG_NG << "Parallel movement: initializing " << num_units << " animators.";
+		std::vector<std::unique_ptr<unit_display::unit_movement_animator>> animators;
+		animators.reserve(num_units);
+		std::size_t max_steps = 0;
+		for(std::size_t i = 0; i < num_units; ++i)
+			max_steps = std::max(max_steps, paths[i].size() > 1 ? paths[i].size() - 1 : std::size_t(0));
+
+		// 1. Create animators and kick off the first movement for all units simultaneously.
+		for(std::size_t i = 0; i < num_units; ++i) {
+			animators.push_back(std::make_unique<unit_display::unit_movement_animator>(paths[i], true, force_scroll));
+			animators[i]->start(units[i].get_unit_ptr());
+			if(paths[i].size() > 1) {
+				animators[i]->proceed_to(units[i].get_unit_ptr(), 1, false, false);
+				DBG_NG << "Unit " << i << " started movement (path length " << paths[i].size()-1 << ")";
+			}
+		}
+
+		// 2. Lockstep loop: wait for all units to reach step N, update them, then kick off step N+1.
+		for(std::size_t step = 1; step <= max_steps; ++step) {
+			for(std::size_t i = 0; i < num_units; ++i) {
+				if(step >= paths[i].size()) continue; // This unit's has reached its final destination, skip it.
+				animators[i]->wait_for_anims();
+				DBG_NG << "Unit " << i << " arrived at hex " << step << " (" << paths[i][step] << ")";
+				units[i]->set_location(paths[i][step]);
+				if(step + 1 < paths[i].size()) {
+					animators[i]->proceed_to(units[i].get_unit_ptr(), step + 1, false, false);
+				} else {
+					DBG_NG << "Unit " << i << " reached its final destination.";
+					units[i]->anim_comp().set_standing(true);
+				}
+			}
+		}
+
+		// 3. Finalization: Perform heavy cleanup only after all units have stopped.
+		DBG_NG << "All units stopped. Finalizing states.";
+		for(std::size_t i = 0; i < num_units; ++i) {
+			animators[i]->finish(units[i].get_unit_ptr());
 		}
 	}
 
