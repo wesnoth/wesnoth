@@ -1271,6 +1271,18 @@ bool is_directory(const std::string& fname)
 	return is_directory_internal(bfs::path(fname));
 }
 
+bool is_empty_directory(const std::string& path)
+{
+	error_code ec;
+	bool is_empty = bfs::is_empty(bfs::path(path), ec);
+	if(ec) {
+		LOG_FS << "Failed to check if directory " << path << " is empty: " << ec.message();
+		return false;
+	}
+
+	return is_empty;
+}
+
 bool file_exists(const std::string& name)
 {
 	return file_exists(bfs::path(name));
