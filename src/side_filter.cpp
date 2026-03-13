@@ -34,6 +34,7 @@
 #include "formula/callable_objects.hpp"
 #include "formula/formula.hpp"
 #include "formula/function_gamestate.hpp"
+#include "utils/general.hpp"
 
 static lg::log_domain log_engine_sf("engine/side_filter");
 #define ERR_NG LOG_STREAM(err, log_engine_sf)
