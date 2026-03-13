@@ -17,7 +17,7 @@
  * Manage the unit-palette in the editor.
  */
 
-#define GETTEXT_DOMAIN "wesnoth-editor"
+#define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "editor/palette/unit_palette.hpp"
 

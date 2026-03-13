@@ -584,7 +584,7 @@ class HTMLOutput:
         if not self.is_era:
             add_menu("races_menu", _("Race", "wesnoth-lib"))
 
-            add_menuitem('mainline.html', _("all", "wesnoth-editor"))
+            add_menuitem('mainline.html', _("all", "wesnoth-lib"))
 
             r = {}, {}
             for u in list(self.wesnoth.unit_lookup.values()):
