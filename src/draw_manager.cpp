@@ -58,6 +58,84 @@ static bool expose();
 static void wait_for_vsync();
 static void tidy_drawables();
 
+void invalidate_regions(std::vector<rect>&& regions)
+{
+	// allow us to assume at least one entry further down
+	if (regions.empty()) {
+		return;
+	}
+
+	if (drawing_) {
+		ERR_DM << "Attempted to invalidate region " << regions.front()
+			<< " and " << regions.size() - 1 << " more during draw";
+		throw game::error("invalidate during draw");
+	}
+
+	// In some cases, we already have some invalidated regions.
+	// Be sure to include them in our optimization.
+	regions.insert(regions.end(),
+				   invalidated_regions_.begin(), invalidated_regions_.end());
+
+	// sort ranges by left edge
+	std::sort(regions.begin(), regions.end(),
+		[](const rect& lhs, const rect& rhs) {
+			return lhs.x < rhs.x;
+		});
+
+	// Merge adjacent rectangles (mark consumed rects by zero width).
+	// We only need to consider regions that touch or overlap along the X axis;
+	// all others will have a cover larger than the sum of the individual areas.
+	// Since REGIONS have been sorted by X the relevant range is a sliding window.
+	for (auto dest = regions.begin(), end = regions.end(); dest != end; ++dest) {
+		// skip merged rectangles
+		if (dest->w) {
+			for (auto source = dest + 1; source != end; ++source) {
+				// stop if the left edges are past the right of DEST
+				if (source->x > dest->x + dest->w) {
+					break;
+				}
+				// Quick check:
+				// Only non-empty regions that have no gap along the Y axis might
+				// get merged (otherwise, minimal_cover is larger than SOURCE+DEST)
+				if (   source->w
+					&& source->y <= dest->y + dest->h
+					&& source->y + source->h >= dest->y) {
+					rect m = source->minimal_cover(*dest);
+					// this also covers the case of one side containing the other
+					if (m.area() <= source->area() + dest->area()) {
+						*dest = m;
+						source->w = 0;
+					}
+				}
+			}
+		}
+	}
+
+	// eliminate zero-width (merged) rectangles
+	utils::erase_if(regions, [](const rect& r) { return r.w <= 0; });
+
+	// check if we had any non-empty regions to begin with
+	if (!regions.empty()) {
+		// maybe, merge all rects
+		rect progressive_cover = regions[0];
+		int64_t cumulative_area = regions[0].area();
+		for (size_t i = 1; i < regions.size(); ++i) {
+			auto& r = regions[i];
+
+			cumulative_area += r.area();
+			progressive_cover.expand_to_cover(r);
+		}
+
+		if (cumulative_area >= progressive_cover.area()) {
+			regions.clear();
+			regions.push_back(progressive_cover);
+		}
+
+		// just using the incoming REGIONS vector is cheaper than copying it
+		invalidated_regions_ = std::move(regions);
+	}
+}
+
 void invalidate_region(const rect& region)
 {
 	if (drawing_) {
