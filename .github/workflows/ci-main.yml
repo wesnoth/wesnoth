@@ -192,10 +192,11 @@ jobs:
           mv mingwbuild/wesnoth*-win64.exe "wesnoth-$version-win64.exe"
 
       - name: Upload Source
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: Source
           path: wesnoth-*.tar.bz2
+          archive: false
 
       - name: Upload Windows-Installer
         uses: actions/upload-artifact@v4
