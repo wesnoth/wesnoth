@@ -10,7 +10,7 @@ MANIFEST_ROOT="$ROOT_DIR/utils/ios/vcpkg"
 IOS_DEPS_BASE="$ROOT_DIR/projectfiles/Xcode/temp/iOSCompileStuff-${IOS_TAG}"
 VCPKG_INSTALL_ROOT="$IOS_DEPS_BASE/vcpkg_installed"
 IOS_PREFIX="$IOS_DEPS_BASE/${IOS_TRIPLET}"
-VCPKG_ROOT="${VCPKG_ROOT:-$ROOT_DIR/projectfiles/Xcode/temp/vcpkg-codex-ios}"
+VCPKG_ROOT="${VCPKG_ROOT:-$ROOT_DIR/projectfiles/Xcode/temp/vcpkg-ios}"
 
 OPENSSL_VERSION="${OPENSSL_VERSION:-3.6.1}"
 OPENSSL_TARBALL="$IOS_DEPS_BASE/downloads/openssl-${OPENSSL_VERSION}.tar.gz"
@@ -30,6 +30,9 @@ need_cmd cmake
 need_cmd curl
 need_cmd perl
 need_cmd make
+need_cmd rsync
+need_cmd tar
+need_cmd ar
 need_cmd xcrun
 
 mkdir -p "$IOS_DEPS_BASE" "$IOS_DEPS_BASE/downloads" "$IOS_DEPS_BASE/build"

@@ -4,7 +4,7 @@ This README describes the way to create the wesnoth release packages for macOS.
 ## iOS status
 The default Xcode dependency workflow in this directory remains macOS-oriented.
 
-For the iOS simulator bring-up workflow in this fork, use:
+For the iOS simulator dependency bootstrap and audit workflow, use:
 
 - `utils/ios/build_ios_sim_deps.sh`
 - `utils/ios/audit_xcode_ios_linkage.sh`

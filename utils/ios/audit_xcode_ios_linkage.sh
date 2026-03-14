@@ -6,6 +6,17 @@ PROJECT_PATH="$ROOT_DIR/projectfiles/Xcode/The Battle for Wesnoth.xcodeproj"
 SCHEME_NAME="The Battle for Wesnoth"
 LOG_FILE="${1:-}"
 
+need_cmd() {
+	if ! command -v "$1" >/dev/null 2>&1; then
+		echo "Error: missing required command: $1" >&2
+		exit 1
+	fi
+}
+
+need_cmd xcodebuild
+need_cmd xcrun
+need_cmd rg
+
 if [[ -z "$LOG_FILE" ]]; then
 	LOG_FILE="$(mktemp -t wesnoth-ios-link-audit.XXXXXX.log)"
 	echo "Using temporary log: $LOG_FILE"
