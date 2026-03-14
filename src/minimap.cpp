@@ -52,7 +52,7 @@ std::function<rect(rect)> prep_minimap_for_rendering(
 	const bool preferences_minimap_unit_coding    = prefs::get().minimap_movement_coding();
 
 	auto get_scale = [&](){
-		const int size_max = std::max(map.h(), map.w())
+		const int size_max = std::max(map.h(), map.w());
 		if(!preferences_minimap_draw_terrain || !preferences_minimap_terrain_coding) {
 			return 4;
 		} else if(size_max > 60) {
