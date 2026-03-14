@@ -52,7 +52,7 @@
 #include "utils/context_free_grammar_generator.hpp"
 #include "utils/scope_exit.hpp"
 
-#include <SDL2/SDL_timer.h>
+#include <SDL3/SDL_timer.h>
 
 #include <cstring>
 #include <string>

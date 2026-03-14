@@ -36,7 +36,7 @@
 
 #include <numeric>
 
-#include <SDL2/SDL_timer.h>
+#include <SDL3/SDL_timer.h>
 
 static lg::log_domain log_ai_testing_ai_default("ai/ca/testing_ai_default");
 #define DBG_AI_TESTING_AI_DEFAULT LOG_STREAM(debug, log_ai_testing_ai_default)

@@ -23,7 +23,7 @@
 #include "preferences/preferences.hpp"
 #include "log.hpp"
 
-#include <SDL2/SDL_keyboard.h>
+#include <SDL3/SDL_keyboard.h>
 #include <ctime>
 
 static lg::log_domain log_display("display");
@@ -138,7 +138,7 @@ void floating_textbox::show(
 
 #ifdef __ANDROID__
 	// Show onscreen keyboard
-	SDL_StartTextInput();
+	SDL_StartTextInput(video::get_window());
 #endif
 }
 
