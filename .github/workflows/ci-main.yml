@@ -42,7 +42,7 @@ jobs:
         run: doxygen doc/doxygen/Doxyfile
 
   copyright: # check takes a bit longer and does not need to run in docker (sound/music only)
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     steps:
       - { uses: actions/checkout@v4, with: { fetch-depth: 50 } }
 
@@ -368,7 +368,7 @@ jobs:
 
 # run after all other jobs have completed to check overall build status
   notification:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     needs: [checks, copyright, ubuntu, steam-runtime, mingw, flatpak, translations, macos-intel, windows]
     if: failure() && github.event_name == 'push'
 
