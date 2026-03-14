@@ -51,7 +51,19 @@ std::function<rect(rect)> prep_minimap_for_rendering(
 	const bool preferences_minimap_draw_units     = prefs::get().minimap_draw_units();
 	const bool preferences_minimap_unit_coding    = prefs::get().minimap_movement_coding();
 
-	const int scale = (preferences_minimap_draw_terrain && preferences_minimap_terrain_coding) ? 24 : 4;
+	auto get_scale = [&](){
+		const int size_max = std::max(map.h(), map.w())
+		if(!preferences_minimap_draw_terrain || !preferences_minimap_terrain_coding) {
+			return 4;
+		} else if(size_max > 60) {
+			return 8;
+		} else if(size_max > 40) {
+			return 16;
+		} else {
+			return 24;
+		}
+	};
+	const int scale = get_scale();
 
 	DBG_DP << "Creating minimap: " << static_cast<int>(map.w() * scale * 0.75) << ", " << map.h() * scale;
 
