@@ -60,6 +60,9 @@ set(BOOST_OPTIONAL_COMPONENTS charconv process)
 if(EMSCRIPTEN)
 	# boost-process is not supported on wasm targets.
 	list(REMOVE_ITEM BOOST_OPTIONAL_COMPONENTS process)
+	# boost-coroutine depends on Boost.Context stack-switching which is
+	# unavailable on wasm32 (no ucontext/fibers).
+	list(REMOVE_ITEM BOOST_REQ_COMPONENTS coroutine)
 	# Boost.Asio's thread+signal blocker path does not support emscripten cleanly.
 	add_compile_definitions(BOOST_ASIO_DISABLE_THREADS)
 	# Use native WASM exception handling.  JS-based exceptions (-fexceptions)

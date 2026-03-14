@@ -24,7 +24,11 @@ set(VCPKG_CMAKE_SYSTEM_NAME Emscripten)
 set(VCPKG_CHAINLOAD_TOOLCHAIN_FILE "${EMSCRIPTEN_ROOT}/cmake/Modules/Platform/Emscripten.cmake")
 
 # Force atomics-capable objects/libraries for SharedArrayBuffer pthread builds.
-set(_WESNOTH_PTHREAD_FLAG "-pthread -matomics -mbulk-memory")
+# Also enable native WASM exceptions (-fwasm-exceptions) which automatically
+# switches setjmp/longjmp to the WASM-native implementation.  Without this,
+# C libraries (freetype, cairo) emit calls to emscripten_longjmp (legacy JS
+# runtime) that are undefined when the application links with -fwasm-exceptions.
+set(_WESNOTH_PTHREAD_FLAG "-pthread -matomics -mbulk-memory -fwasm-exceptions")
 set(VCPKG_C_FLAGS "${VCPKG_C_FLAGS} ${_WESNOTH_PTHREAD_FLAG}")
 set(VCPKG_CXX_FLAGS "${VCPKG_CXX_FLAGS} ${_WESNOTH_PTHREAD_FLAG}")
 set(VCPKG_LINKER_FLAGS "${VCPKG_LINKER_FLAGS} ${_WESNOTH_PTHREAD_FLAG}")
