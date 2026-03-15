@@ -11,6 +11,9 @@ IOS_DEPS_BASE="$ROOT_DIR/projectfiles/Xcode/temp/iOSCompileStuff-${IOS_TAG}"
 VCPKG_INSTALL_ROOT="$IOS_DEPS_BASE/vcpkg_installed"
 IOS_PREFIX="$IOS_DEPS_BASE/${IOS_TRIPLET}"
 VCPKG_ROOT="${VCPKG_ROOT:-$ROOT_DIR/projectfiles/Xcode/temp/vcpkg-ios}"
+OVERLAY_PORTS_ROOT="$IOS_DEPS_BASE/overlay-ports"
+GETTEXT_OVERLAY_PORT="$OVERLAY_PORTS_ROOT/gettext-libintl"
+GETTEXT_PORT_PATCH="$MANIFEST_ROOT/patches/gettext-libintl-ios.patch"
 
 OPENSSL_VERSION="${OPENSSL_VERSION:-3.6.1}"
 OPENSSL_TARBALL="$IOS_DEPS_BASE/downloads/openssl-${OPENSSL_VERSION}.tar.gz"
@@ -50,13 +53,24 @@ if [[ "$(git -C "$VCPKG_ROOT" rev-parse --is-shallow-repository 2>/dev/null || e
 	git -C "$VCPKG_ROOT" fetch --unshallow
 fi
 
+if [[ ! -f "$GETTEXT_PORT_PATCH" ]]; then
+	echo "Error: gettext overlay patch not found at: $GETTEXT_PORT_PATCH" >&2
+	exit 1
+fi
+
+echo "==> Preparing gettext-libintl overlay from the current vcpkg port"
+rm -rf "$GETTEXT_OVERLAY_PORT"
+mkdir -p "$OVERLAY_PORTS_ROOT"
+rsync -a "$VCPKG_ROOT/ports/gettext-libintl/" "$GETTEXT_OVERLAY_PORT/"
+git -C "$GETTEXT_OVERLAY_PORT" apply "$GETTEXT_PORT_PATCH"
+
 echo "==> Installing iOS simulator dependencies via vcpkg"
 "$VCPKG_ROOT/vcpkg" install \
 	--x-manifest-root="$MANIFEST_ROOT" \
 	--triplet="$IOS_TRIPLET" \
 	--x-install-root="$VCPKG_INSTALL_ROOT" \
 	--overlay-triplets="$MANIFEST_ROOT/triplets" \
-	--overlay-ports="$MANIFEST_ROOT/overlay-ports"
+	--overlay-ports="$OVERLAY_PORTS_ROOT"
 
 mkdir -p "$IOS_PREFIX/include" "$IOS_PREFIX/lib"
 
