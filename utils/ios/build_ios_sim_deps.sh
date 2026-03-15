@@ -15,11 +15,7 @@ OVERLAY_PORTS_ROOT="$IOS_DEPS_BASE/overlay-ports"
 GETTEXT_OVERLAY_PORT="$OVERLAY_PORTS_ROOT/gettext-libintl"
 GETTEXT_PORT_PATCH="$MANIFEST_ROOT/patches/gettext-libintl-ios.patch"
 
-OPENSSL_VERSION="${OPENSSL_VERSION:-3.6.1}"
-OPENSSL_TARBALL="$IOS_DEPS_BASE/downloads/openssl-${OPENSSL_VERSION}.tar.gz"
-OPENSSL_SRC_ROOT="$IOS_DEPS_BASE/build"
 IOS_ACTIVATE_XCODE_LINKS="${IOS_ACTIVATE_XCODE_LINKS:-1}"
-IOS_REBUILD_OPENSSL="${IOS_REBUILD_OPENSSL:-0}"
 
 need_cmd() {
 	if ! command -v "$1" >/dev/null 2>&1; then
@@ -30,15 +26,11 @@ need_cmd() {
 
 need_cmd git
 need_cmd cmake
-need_cmd curl
-need_cmd perl
-need_cmd make
 need_cmd rsync
-need_cmd tar
 need_cmd ar
 need_cmd xcrun
 
-mkdir -p "$IOS_DEPS_BASE" "$IOS_DEPS_BASE/downloads" "$IOS_DEPS_BASE/build"
+mkdir -p "$IOS_DEPS_BASE"
 
 if [[ ! -x "$VCPKG_ROOT/vcpkg" ]]; then
 	echo "==> Bootstrapping vcpkg at $VCPKG_ROOT"
@@ -69,49 +61,10 @@ echo "==> Installing iOS simulator dependencies via vcpkg"
 mkdir -p "$IOS_PREFIX/include" "$IOS_PREFIX/lib"
 
 # Sync vcpkg-managed headers/libs into the Xcode iOS dependency prefix.
-rsync -a "$VCPKG_INSTALL_ROOT/$IOS_TRIPLET/include/" "$IOS_PREFIX/include/"
-rsync -a "$VCPKG_INSTALL_ROOT/$IOS_TRIPLET/lib/" "$IOS_PREFIX/lib/"
+rsync -a --delete "$VCPKG_INSTALL_ROOT/$IOS_TRIPLET/include/" "$IOS_PREFIX/include/"
+rsync -a --delete "$VCPKG_INSTALL_ROOT/$IOS_TRIPLET/lib/" "$IOS_PREFIX/lib/"
 
 SDK_PATH="$(xcrun --sdk iphonesimulator --show-sdk-path)"
-CPU_COUNT="$(sysctl -n hw.ncpu 2>/dev/null || echo 8)"
-
-if [[ "$IOS_REBUILD_OPENSSL" == "1" || ! -f "$IOS_PREFIX/lib/libssl.a" || ! -f "$IOS_PREFIX/lib/libcrypto.a" ]]; then
-	if [[ ! -f "$OPENSSL_TARBALL" ]]; then
-		echo "==> Downloading OpenSSL ${OPENSSL_VERSION}"
-		curl -L "https://github.com/openssl/openssl/archive/refs/tags/openssl-${OPENSSL_VERSION}.tar.gz" -o "$OPENSSL_TARBALL"
-	fi
-
-	OPENSSL_TOPDIR="$(tar -tzf "$OPENSSL_TARBALL" | head -n 1 | cut -d/ -f1)"
-	OPENSSL_SRC_DIR="$OPENSSL_SRC_ROOT/$OPENSSL_TOPDIR"
-
-	rm -rf "$OPENSSL_SRC_DIR"
-	tar -xzf "$OPENSSL_TARBALL" -C "$OPENSSL_SRC_ROOT"
-
-	echo "==> Building OpenSSL ${OPENSSL_VERSION} for iOS simulator"
-	(
-		cd "$OPENSSL_SRC_DIR"
-		export CC="$(xcrun --sdk iphonesimulator -f clang)"
-		export CFLAGS="-arch arm64 -isysroot $SDK_PATH -mios-simulator-version-min=${IOS_DEPLOYMENT_TARGET}"
-		export CXXFLAGS="$CFLAGS"
-		export LDFLAGS="$CFLAGS"
-		perl ./Configure \
-			ios64-xcrun \
-			no-ui \
-			no-asm \
-			no-shared \
-			no-module \
-			no-apps \
-			no-tests \
-			no-docs \
-			--openssldir=/etc/ssl \
-			--libdir=lib \
-			--prefix="$IOS_PREFIX"
-		make -j"$CPU_COUNT" build_sw
-		make install_sw
-	)
-else
-	echo "==> Reusing existing OpenSSL from $IOS_PREFIX/lib"
-fi
 
 # Framework file refs in the legacy Xcode project still point at .dylib filenames.
 # Generate compatibility symlinks to static archives for iOS simulator linking.
