@@ -155,6 +155,9 @@ src/test
 error*.log
 boost_test_result.xml
 *build*.sh
+!projectfiles/Xcode/ios/build_ios_deps.sh
+projectfiles/Xcode/Headers.iOS
+projectfiles/Xcode/lib.iOS
 boost_tests.log
 
 # translations
