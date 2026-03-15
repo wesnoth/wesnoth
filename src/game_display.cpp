@@ -377,11 +377,14 @@ void game_display::draw_hex(const map_location& loc)
 	}
 
 	// Draw the attack direction indicator
+	const bool is_ranged = distance_between(attack_indicator_src_, attack_indicator_dst_) > 1;
 	if(on_map && loc == attack_indicator_src_) {
-		drawing_buffer_add(drawing_layer::attack_indicator, loc,
-			[tex = image::get_texture("misc/attack-indicator-src-" + attack_indicator_direction() + ".png", image::HEXED)](const rect& dest)
-		 	{ draw::blit(tex, dest); }
-		);
+		if(!is_ranged) { // Don't draw the src part for ranged attacks.
+			drawing_buffer_add(drawing_layer::attack_indicator, loc,
+				[tex = image::get_texture("misc/attack-indicator-src-" + attack_indicator_direction() + ".png", image::HEXED)](const rect& dest)
+		 		{ draw::blit(tex, dest); }
+			);
+		}
 	} else if(on_map && loc == attack_indicator_dst_) {
 		drawing_buffer_add(drawing_layer::attack_indicator, loc,
 			[tex = image::get_texture("misc/attack-indicator-dst-" + attack_indicator_direction() + ".png", image::HEXED)](const rect& dest)

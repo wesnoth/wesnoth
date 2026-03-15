@@ -1058,10 +1058,11 @@ void unit_animation::start_animation(const std::chrono::milliseconds& start_time
 	}
 }
 
-void unit_animation::update_parameters(const map_location& src, const map_location& dst)
+void unit_animation::update_parameters(const map_location& src, const map_location& dst, const map_location& dst_missile)
 {
 	src_ = src;
 	dst_ = dst;
+	dst_missile_ = dst_missile;
 }
 
 void unit_animation::pause_animation()
@@ -1082,6 +1083,23 @@ void unit_animation::restart_animation()
 	}
 }
 
+void unit_animation::get_sub_anim_coords(const std::string& name,
+	map_location& out_src,
+	map_location& out_dst) const
+{
+	// For real ranged missile animations (distance > 1), shift the missile's source
+	// to the hex adjacent to the target, so the end of the flight is shown rather than the start.
+	if(name.find("missile_") == 0 &&
+		dst_missile_ != map_location::null_location() && distance_between(src_, dst_missile_) > 1)
+	{
+		out_src = dst_missile_.get_direction(dst_missile_.get_relative_dir(src_));
+		out_dst = dst_missile_;
+	} else {
+		out_src = src_;
+		out_dst = dst_;
+	}
+}
+
 void unit_animation::redraw(frame_parameters& value, halo::manager& halo_man)
 {
 	invalidated_ = false;
@@ -1092,7 +1110,9 @@ void unit_animation::redraw(frame_parameters& value, halo::manager& halo_man)
 
 	value.primary_frame = false;
 	for(auto& anim : sub_anims_) {
-		anim.second.redraw(value, src_, dst_, halo_man);
+		map_location s, d;
+		get_sub_anim_coords(anim.first, s, d);
+		anim.second.redraw(value, s, d, halo_man);
 	}
 }
 
@@ -1119,7 +1139,9 @@ bool unit_animation::invalidate(frame_parameters& value)
 			value.primary_frame = false;
 
 			for(auto& anim : sub_anims_) {
-				std::set<map_location> tmp = anim.second.get_overlaped_hex(value, src_, dst_);
+				map_location s, d;
+				get_sub_anim_coords(anim.first, s, d);
+				std::set<map_location> tmp = anim.second.get_overlaped_hex(value, s, d);
 				overlaped_hex_.insert(tmp.begin(), tmp.end());
 			}
 		} else {
@@ -1315,7 +1337,7 @@ void unit_animator::add_animation(unit_const_ptr animated_unit
 	if(!anim) return;
 
 	start_time_ = std::max(start_time_, anim->get_begin_time());
-	animated_units_.AGGREGATE_EMPLACE(std::move(animated_unit), anim, text, text_color, src, with_bars);
+	animated_units_.AGGREGATE_EMPLACE(std::move(animated_unit), anim, text, text_color, src, dst, with_bars);
 }
 
 void unit_animator::add_animation(unit_const_ptr animated_unit
@@ -1328,7 +1350,7 @@ void unit_animator::add_animation(unit_const_ptr animated_unit
 	if(!animated_unit || !anim) return;
 
 	start_time_ = std::max(start_time_, anim->get_begin_time());
-	animated_units_.AGGREGATE_EMPLACE(std::move(animated_unit), anim, text, text_color, src, with_bars);
+	animated_units_.AGGREGATE_EMPLACE(std::move(animated_unit), anim, text, text_color, src, map_location::null_location(), with_bars);
 }
 
 bool unit_animator::has_animation(const unit_const_ptr& animated_unit
@@ -1364,7 +1386,7 @@ void unit_animator::replace_anim_if_invalid(const unit_const_ptr& animated_unit
 		 animated_unit->anim_comp().get_animation()->matches(
 			src, dst, animated_unit, event, value, hit_type, attack, second_attack, value2) > unit_animation::MATCH_FAIL)
 	{
-		animated_units_.AGGREGATE_EMPLACE(animated_unit, nullptr, text, text_color, src, with_bars);
+		animated_units_.AGGREGATE_EMPLACE(animated_unit, nullptr, text, text_color, src, dst, with_bars);
 	} else {
 		add_animation(animated_unit,event,src,dst,value,with_bars,text,text_color,hit_type,attack,second_attack,value2);
 	}
@@ -1388,9 +1410,8 @@ void unit_animator::start_animations()
 		if(anim.animation) {
 			anim.my_unit->anim_comp().start_animation(begin_time, anim.animation, anim.with_bars, anim.text, anim.text_color);
 			anim.animation = nullptr;
-		} else {
-			anim.my_unit->anim_comp().get_animation()->update_parameters(anim.src, anim.src.get_direction(anim.my_unit->facing()));
 		}
+		anim.my_unit->anim_comp().get_animation()->update_parameters(anim.src, anim.src.get_direction(anim.my_unit->facing()), anim.dst_missile);
 	}
 }
 
