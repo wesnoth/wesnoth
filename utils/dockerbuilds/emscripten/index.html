@@ -1,530 +1,611 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <title>The Battle for Wesnoth - Web</title>
-  <style>
-    html,
-    body {
-      margin: 0;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      background: #000;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
+    <title>The Battle for Wesnoth - Web</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: #000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
 
-    #canvas {
-      display: block;
-      outline: none;
-      /* No CSS width/height override — let the canvas display at its native
+      #canvas {
+        display: block;
+        outline: none;
+        /* No CSS width/height override — let the canvas display at its native
          backing-store size (1280x720). On Emscripten, SDL2 uses
          getBoundingClientRect() for SDL_GetWindowSize. If CSS stretches the
          canvas beyond the backing store, SDL reports the CSS size for GUI
          layout but renders to the smaller backing store, causing mismatched
          dialog sizing. Keeping CSS size == backing store avoids this. */
-    }
+      }
 
-    /* ── Loading overlay ─────────────────────────────────────────── */
-    #loading-overlay {
-      position: fixed;
-      inset: 0;
-      z-index: 1000;
-      background: #1a1a2e;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      transition: opacity 0.5s ease;
-    }
-    #loading-overlay.fade-out {
-      opacity: 0;
-      pointer-events: none;
-    }
-    #loading-message {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      font-size: 16px;
-      font-style: italic;
-      color: #c8b8a0;
-      margin-bottom: 20px;
-      height: 24px;
-      text-align: center;
-      transition: opacity 0.4s ease;
-    }
-    #loading-bar-track {
-      width: 320px;
-      height: 14px;
-      background: #2a2a4a;
-      border-radius: 7px;
-      overflow: hidden;
-      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4);
-    }
-    #loading-bar-fill {
-      width: 0%;
-      height: 100%;
-      background: linear-gradient(90deg, #e87979, #e8a079);
-      border-radius: 7px;
-      transition: width 0.3s ease;
-    }
-    #loading-phase {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      font-size: 13px;
-      color: #8a8aaa;
-      margin-top: 12px;
-      text-align: center;
-    }
-
-  </style>
-</head>
-<body>
-  <!-- ── Loading overlay (renders before any JS) ──────────────── -->
-  <div id="loading-overlay">
-         src="data:image/png;base64,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" />
-    <div id="loading-message">Loading game data...</div>
-    <div id="loading-bar-track">
-      <div id="loading-bar-fill"></div>
+      /* ── Loading overlay ─────────────────────────────────────────── */
+      #loading-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 1000;
+        background: #1a1a2e;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: opacity 0.5s ease;
+      }
+      #loading-overlay.fade-out {
+        opacity: 0;
+        pointer-events: none;
+      }
+      #loading-message {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          sans-serif;
+        font-size: 16px;
+        font-style: italic;
+        color: #c8b8a0;
+        margin-bottom: 20px;
+        height: 24px;
+        text-align: center;
+        transition: opacity 0.4s ease;
+      }
+      #loading-bar-track {
+        width: 320px;
+        height: 14px;
+        background: #2a2a4a;
+        border-radius: 7px;
+        overflow: hidden;
+        box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4);
+      }
+      #loading-bar-fill {
+        width: 0%;
+        height: 100%;
+        background: linear-gradient(90deg, #e87979, #e8a079);
+        border-radius: 7px;
+        transition: width 0.3s ease;
+      }
+      #loading-phase {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          sans-serif;
+        font-size: 13px;
+        color: #8a8aaa;
+        margin-top: 12px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ── Loading overlay (renders before any JS) ──────────────── -->
+    <div id="loading-overlay">
+      <div id="loading-message">Loading game data...</div>
+      <div id="loading-bar-track">
+        <div id="loading-bar-fill"></div>
+      </div>
+      <div id="loading-phase">Initializing...</div>
     </div>
-    <div id="loading-phase">Initializing...</div>
-  </div>
 
-  <canvas id="canvas" width="1280" height="720" tabindex="0" aria-label="Wesnoth game canvas"></canvas>
+    <canvas
+      id="canvas"
+      width="1280"
+      height="720"
+      tabindex="0"
+      aria-label="Wesnoth game canvas"
+    ></canvas>
 
-  <script>
-    (() => {
-      try {
-        Object.defineProperty(window, "devicePixelRatio", { value: 1, configurable: true });
-      } catch (_err) {
-        // Ignore if browser prevents overriding.
-      }
-
-      // Force preserveDrawingBuffer on all WebGL contexts (needed for
-      // Playwright screenshots and pixel probes).
-      const _origGetContext = HTMLCanvasElement.prototype.getContext;
-      HTMLCanvasElement.prototype.getContext = function (type, attrs) {
-        if (type === "webgl" || type === "webgl2") {
-          attrs = Object.assign({}, attrs || {}, { preserveDrawingBuffer: true });
-        }
-        return _origGetContext.call(this, type, attrs);
-      };
-
-      const canvas = document.getElementById("canvas");
-      const bootTime = performance.now();
-      const now = () => ((performance.now() - bootTime) / 1000).toFixed(2);
-      const log = (text) => console.log(`[${now()}s] ${text}`);
-
-      // ── Loading overlay controller ────────────────────────────────
-      const overlay = document.getElementById("loading-overlay");
-      const barFill = document.getElementById("loading-bar-fill");
-      const phaseEl = document.getElementById("loading-phase");
-      const messageEl = document.getElementById("loading-message");
-
-      const loadingMessages = [
-        "Loading game data...",
-        "Gathering troops and polishing swords...",
-        "Setting up camp... almost ready!",
-        "Loading maps and marshaling forces...",
-        "Consulting the Oracle of Wesnoth...",
-        "Sharpening pixels and tuning trebuchets...",
-        "Convincing the orcs to cooperate...",
-      ];
-      let msgIndex = 0;
-      const msgInterval = setInterval(() => {
-        msgIndex = (msgIndex + 1) % loadingMessages.length;
-        messageEl.style.opacity = "0";
-        setTimeout(() => {
-          messageEl.textContent = loadingMessages[msgIndex];
-          messageEl.style.opacity = "1";
-        }, 400);
-      }, 4000);
-
-      function updateLoadingBar(pct, phase) {
-        barFill.style.width = pct + "%";
-        if (phase) phaseEl.textContent = phase;
-      }
-
-      function dismissOverlay() {
-        clearInterval(msgInterval);
-        updateLoadingBar(100, "Let's go!");
-        setTimeout(() => {
-          overlay.classList.add("fade-out");
-          overlay.addEventListener("transitionend", () => {
-            overlay.style.display = "none";
-          }, { once: true });
-        }, 300);
-      }
-
-      const formatReason = (reason) => {
-        if (reason && typeof reason === "object" && "message" in reason) {
-          return String(reason.message);
-        }
-        return String(reason);
-      };
-
-      const loadScript = (src) =>
-        new Promise((resolve, reject) => {
-          const script = document.createElement("script");
-          script.src = src;
-          script.async = false;
-          script.onload = resolve;
-          script.onerror = () => reject(new Error(`Failed to load ${src}`));
-          document.body.appendChild(script);
-        });
-
-      // ── Prevent browser defaults that shadow game input ──────────
-      // Right-click: suppress browser context menu so Wesnoth's shows.
-      canvas.addEventListener("contextmenu", (event) => {
-        event.preventDefault();
-      });
-      // Middle-click: suppress browser autoscroll mode.
-      canvas.addEventListener("mousedown", (event) => {
-        if (event.button === 1) event.preventDefault();
-      });
-      // Wheel on canvas: prevent Ctrl+scroll zoom (page scroll is already
-      // impossible because body has overflow:hidden).
-      canvas.addEventListener("wheel", (event) => {
-        if (event.ctrlKey || event.metaKey) event.preventDefault();
-      }, { passive: false });
-
-      window.addEventListener("keydown", (event) => {
-        if (["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", " "].includes(event.key)) {
-          event.preventDefault();
-        }
-      });
-      window.addEventListener("error", (event) => {
-        log(`window error: ${event.message}`);
-      });
-      window.addEventListener("unhandledrejection", (event) => {
-        log(`unhandledrejection: ${formatReason(event.reason)}`);
-      });
-
-      window.render_game_to_text = () =>
-        JSON.stringify({
-          canvas: {
-            width: canvas.width,
-            height: canvas.height,
-            clientWidth: canvas.clientWidth,
-            clientHeight: canvas.clientHeight,
-          },
-          crossOriginIsolated: globalThis.crossOriginIsolated === true,
-        });
-
-      window.advanceTime = (_ms) => {
-        // Native game loop is driven by Emscripten main loop.
-      };
-
-      window.Module = {
-        arguments: ["--no-log-to-file", "--windowed", "--resolution=1280x720", "--data-dir=/", "--userdata-dir=/userdata"],
-        canvas,
-        wsProxyUrl: "ws://localhost:8041",
-        ENV: { SDL_VIDEO_HIGHDPI_DISABLED: "1" },
-        locateFile: (path) => path,
-        mainScriptUrlOrBlob: "wesnoth.js",
-        preRun: [() => {
-          log("preRun: mounting IDBFS at /userdata");
-          try { FS.mkdir('/userdata'); } catch(e) {}
-          FS.mount(IDBFS, {}, '/userdata');
-
-          Module.addRunDependency('idbfs-populate');
-          FS.syncfs(true, function(err) {
-            if (err) console.error('[IDBFS] populate error:', err);
-            else log("IDBFS: populated from IndexedDB");
-            Module.removeRunDependency('idbfs-populate');
-          });
-        }],
-        postRun: [() => log("postRun")],
-        print: (text) => log(String(text)),
-        printErr: (text) => {
-          console.warn(`[${now()}s] ${String(text)}`);
-        },
-        setStatus: (text) => {
-          if (text) log(text);
-          if (!text) return;
-          // Emscripten data download: "Downloading data... (X/Y)"
-          const match = text.match(/\((\d+)\/(\d+)\)/);
-          if (match) {
-            const loaded = parseInt(match[1], 10);
-            const total = parseInt(match[2], 10);
-            const pct = total > 0 ? Math.min(90, Math.round((loaded / total) * 90)) : 0;
-            updateLoadingBar(pct, `Downloading game data... ${Math.round((loaded / total) * 100)}%`);
-          } else if (text.includes("complete")) {
-            updateLoadingBar(92, "Compiling engine...");
-          }
-        },
-        monitorRunDependencies: (left) => {
-          if (left === 0) {
-            log("all dependencies ready");
-            updateLoadingBar(95, "Resolving dependencies...");
-          }
-        },
-        onRuntimeInitialized: () => {
-          log("onRuntimeInitialized");
-          updateLoadingBar(98, "Starting game...");
-          setTimeout(dismissOverlay, 500);
-          canvas.focus();
-
-          // Quick pixel probe after game should be rendering.
-          setTimeout(() => {
-            try {
-              const gl = _origGetContext.call(canvas, "webgl2") || _origGetContext.call(canvas, "webgl");
-              if (!gl) { log("[probe] no GL context"); return; }
-              const px = new Uint8Array(4);
-              gl.readPixels(640, 360, 1, 1, gl.RGBA, gl.UNSIGNED_BYTE, px);
-              log(`[probe] center pixel: rgba(${px[0]},${px[1]},${px[2]},${px[3]})`);
-            } catch (e) {
-              log(`[probe] error: ${e.message}`);
-            }
-          }, 10000);
-        },
-        onAbort: (what) => log(`aborted: ${what}`),
-        onExit: (code) => log(`onExit: ${code}`),
-      };
-
-      // Resume AudioContext on user gestures (browser autoplay policy).
-      // Not {once: true} — the context can re-suspend if the tab loses focus.
-      function resumeAudioContext() {
-        if (typeof Module !== "undefined" && Module.SDL2 && Module.SDL2.audioContext) {
-          var ctx = Module.SDL2.audioContext;
-          if (ctx.state === "suspended") {
-            ctx.resume();
-          }
-        }
-        // Resume Web Audio music context (separate from SDL2's ScriptProcessorNode context).
-        if (typeof Module !== "undefined" && Module._webAudio && Module._webAudio.ctx) {
-          var ctx = Module._webAudio.ctx;
-          if (ctx.state === "suspended") {
-            ctx.resume();
-          }
-        }
-      }
-      document.addEventListener("click", resumeAudioContext);
-      document.addEventListener("keydown", resumeAudioContext);
-
-      // Best-effort persist on page close — the explicit sync-after-save
-      // in C++ covers the critical path; this is a safety net.
-      window.addEventListener('beforeunload', function() {
-        if (typeof FS !== 'undefined' && FS.syncfs) {
-          FS.syncfs(false, function(err) {
-            if (err) console.error('[IDBFS] beforeunload sync error:', err);
-          });
-        }
-      });
-
-      log(`crossOriginIsolated=${globalThis.crossOriginIsolated === true}`);
-      log("loader booted");
-
-      loadScript("wesnoth.data.js")
-        .then(() => loadScript("wesnoth.js"))
-        .catch((error) => {
-          console.error(error);
-        });
-    })();
-
-    // ── Store-only ZIP builder/reader ──────────────────────────────────
-    // No external dependencies.  Store-only (compression method 0) since
-    // Wesnoth saves are already gzip-compressed.
-
-    function buildStoreZip(files) {
-      // files: { "relative/path": Uint8Array, ... }
-      var entries = Object.keys(files);
-      // Calculate total size: local headers + data + central dir + EOCD
-      var centralDir = [];
-      var parts = [];
-      var offset = 0;
-
-      for (var i = 0; i < entries.length; i++) {
-        var name = entries[i];
-        var data = files[name];
-        var nameBytes = new TextEncoder().encode(name);
-        var crc = crc32(data);
-
-        // Local file header (30 + nameLen + data)
-        var lh = new Uint8Array(30 + nameBytes.length);
-        var lv = new DataView(lh.buffer);
-        lv.setUint32(0, 0x04034b50, true);  // signature
-        lv.setUint16(4, 20, true);           // version needed
-        lv.setUint16(6, 0, true);            // flags
-        lv.setUint16(8, 0, true);            // compression: store
-        lv.setUint16(10, 0, true);           // mod time
-        lv.setUint16(12, 0, true);           // mod date
-        lv.setUint32(14, crc, true);         // crc32
-        lv.setUint32(18, data.length, true); // compressed size
-        lv.setUint32(22, data.length, true); // uncompressed size
-        lv.setUint16(26, nameBytes.length, true); // name length
-        lv.setUint16(28, 0, true);           // extra length
-        lh.set(nameBytes, 30);
-
-        parts.push(lh);
-        parts.push(data);
-
-        // Central directory entry (46 + nameLen)
-        var cd = new Uint8Array(46 + nameBytes.length);
-        var cv = new DataView(cd.buffer);
-        cv.setUint32(0, 0x02014b50, true);  // signature
-        cv.setUint16(4, 20, true);           // version made by
-        cv.setUint16(6, 20, true);           // version needed
-        cv.setUint16(8, 0, true);            // flags
-        cv.setUint16(10, 0, true);           // compression: store
-        cv.setUint16(12, 0, true);           // mod time
-        cv.setUint16(14, 0, true);           // mod date
-        cv.setUint32(16, crc, true);         // crc32
-        cv.setUint32(20, data.length, true); // compressed size
-        cv.setUint32(24, data.length, true); // uncompressed size
-        cv.setUint16(28, nameBytes.length, true); // name length
-        cv.setUint16(30, 0, true);           // extra length
-        cv.setUint16(32, 0, true);           // comment length
-        cv.setUint16(34, 0, true);           // disk number
-        cv.setUint16(36, 0, true);           // internal attrs
-        cv.setUint32(38, 0, true);           // external attrs
-        cv.setUint32(42, offset, true);      // local header offset
-        cd.set(nameBytes, 46);
-        centralDir.push(cd);
-
-        offset += 30 + nameBytes.length + data.length;
-      }
-
-      var centralOffset = offset;
-      var centralSize = 0;
-      for (var j = 0; j < centralDir.length; j++) {
-        parts.push(centralDir[j]);
-        centralSize += centralDir[j].length;
-      }
-
-      // End of central directory record (22 bytes)
-      var eocd = new Uint8Array(22);
-      var ev = new DataView(eocd.buffer);
-      ev.setUint32(0, 0x06054b50, true);         // signature
-      ev.setUint16(4, 0, true);                   // disk number
-      ev.setUint16(6, 0, true);                   // central dir disk
-      ev.setUint16(8, entries.length, true);       // entries on disk
-      ev.setUint16(10, entries.length, true);      // total entries
-      ev.setUint32(12, centralSize, true);         // central dir size
-      ev.setUint32(16, centralOffset, true);       // central dir offset
-      ev.setUint16(20, 0, true);                   // comment length
-      parts.push(eocd);
-
-      // Concatenate all parts
-      var total = 0;
-      for (var k = 0; k < parts.length; k++) total += parts[k].length;
-      var result = new Uint8Array(total);
-      var pos = 0;
-      for (var k = 0; k < parts.length; k++) {
-        result.set(parts[k], pos);
-        pos += parts[k].length;
-      }
-      return result;
-    }
-
-    function readStoreZip(data) {
-      // Returns [{name: string, data: Uint8Array}, ...]
-      // Only supports store (method 0) entries — warns on compressed entries.
-      var dv = new DataView(data.buffer, data.byteOffset, data.byteLength);
-      var entries = [];
-      var pos = 0;
-      while (pos + 30 <= data.length) {
-        var sig = dv.getUint32(pos, true);
-        if (sig !== 0x04034b50) break; // not a local file header
-        var method = dv.getUint16(pos + 8, true);
-        var nameLen = dv.getUint16(pos + 26, true);
-        var extraLen = dv.getUint16(pos + 28, true);
-        var compSize = dv.getUint32(pos + 18, true);
-        var name = new TextDecoder().decode(data.subarray(pos + 30, pos + 30 + nameLen));
-        if (method !== 0) {
-          console.warn('[import] skipping compressed entry (method ' + method + '): ' + name);
-          pos += 30 + nameLen + extraLen + compSize;
-          continue;
-        }
-        var fileData = data.slice(pos + 30 + nameLen + extraLen, pos + 30 + nameLen + extraLen + compSize);
-        if (name.length > 0 && !name.endsWith('/')) {
-          entries.push({ name: name, data: new Uint8Array(fileData) });
-        }
-        pos += 30 + nameLen + extraLen + compSize;
-      }
-      return entries;
-    }
-
-    function crc32(buf) {
-      // Standard CRC-32 (ISO 3309)
-      if (!crc32.table) {
-        var t = new Uint32Array(256);
-        for (var i = 0; i < 256; i++) {
-          var c = i;
-          for (var j = 0; j < 8; j++) c = (c & 1) ? (0xEDB88320 ^ (c >>> 1)) : (c >>> 1);
-          t[i] = c;
-        }
-        crc32.table = t;
-      }
-      var crc = 0xFFFFFFFF;
-      for (var i = 0; i < buf.length; i++) crc = crc32.table[(crc ^ buf[i]) & 0xFF] ^ (crc >>> 8);
-      return (crc ^ 0xFFFFFFFF) >>> 0;
-    }
-
-    // ── Export / Import ────────────────────────────────────────────────
-
-    function wesnothExportSaves() {
-      var files = {};
-      function readRecursive(dir, prefix) {
+    <script>
+      (() => {
         try {
-          FS.readdir(dir).filter(function(e) { return e !== '.' && e !== '..'; }).forEach(function(name) {
-            var path = dir + '/' + name;
-            var stat = FS.stat(path);
-            if (FS.isDir(stat.mode)) {
-              readRecursive(path, prefix + name + '/');
-            } else {
-              files[prefix + name] = FS.readFile(path);
-            }
+          Object.defineProperty(window, "devicePixelRatio", {
+            value: 1,
+            configurable: true,
           });
-        } catch(e) {}
-      }
-      readRecursive('/userdata', '');
+        } catch (_err) {
+          // Ignore if browser prevents overriding.
+        }
 
-      if (Object.keys(files).length === 0) {
-        alert('No save data found.');
-        return;
-      }
-
-      var zipData = buildStoreZip(files);
-      var blob = new Blob([zipData], {type: 'application/zip'});
-      var a = document.createElement('a');
-      a.href = URL.createObjectURL(blob);
-      a.download = 'wesnoth-userdata-' + new Date().toISOString().slice(0,10) + '.zip';
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      setTimeout(function() { URL.revokeObjectURL(a.href); }, 5000);
-    }
-
-    function wesnothImportSaves() {
-      var input = document.createElement('input');
-      input.type = 'file';
-      input.accept = '.zip';
-      input.onchange = function() {
-        if (!input.files || !input.files[0]) return;
-        var reader = new FileReader();
-        reader.onload = function() {
-          var entries = readStoreZip(new Uint8Array(reader.result));
-          entries.forEach(function(entry) {
-            var parts = entry.name.split('/');
-            var dir = '/userdata';
-            for (var i = 0; i < parts.length - 1; i++) {
-              dir += '/' + parts[i];
-              try { FS.mkdir(dir); } catch(e) {}
-            }
-            FS.writeFile('/userdata/' + entry.name, entry.data);
-          });
-
-          FS.syncfs(false, function(err) {
-            if (err) console.error('[import] sync error:', err);
-            alert('Saves imported (' + entries.length + ' files). Reload the page to use them.');
-          });
+        // Force preserveDrawingBuffer on all WebGL contexts (needed for
+        // Playwright screenshots and pixel probes).
+        const _origGetContext = HTMLCanvasElement.prototype.getContext;
+        HTMLCanvasElement.prototype.getContext = function (type, attrs) {
+          if (type === "webgl" || type === "webgl2") {
+            attrs = Object.assign({}, attrs || {}, {
+              preserveDrawingBuffer: true,
+            });
+          }
+          return _origGetContext.call(this, type, attrs);
         };
-        reader.readAsArrayBuffer(input.files[0]);
-      };
-      input.click();
-    }
 
-  </script>
-</body>
+        const canvas = document.getElementById("canvas");
+        const bootTime = performance.now();
+        const now = () => ((performance.now() - bootTime) / 1000).toFixed(2);
+        const log = (text) => console.log(`[${now()}s] ${text}`);
+
+        // ── Loading overlay controller ────────────────────────────────
+        const overlay = document.getElementById("loading-overlay");
+        const barFill = document.getElementById("loading-bar-fill");
+        const phaseEl = document.getElementById("loading-phase");
+        const messageEl = document.getElementById("loading-message");
+
+        const loadingMessages = [
+          "Loading game data...",
+          "Gathering troops and polishing swords...",
+          "Setting up camp... almost ready!",
+          "Loading maps and marshaling forces...",
+          "Consulting the Oracle of Wesnoth...",
+          "Sharpening pixels and tuning trebuchets...",
+          "Convincing the orcs to cooperate...",
+        ];
+        let msgIndex = 0;
+        const msgInterval = setInterval(() => {
+          msgIndex = (msgIndex + 1) % loadingMessages.length;
+          messageEl.style.opacity = "0";
+          setTimeout(() => {
+            messageEl.textContent = loadingMessages[msgIndex];
+            messageEl.style.opacity = "1";
+          }, 400);
+        }, 4000);
+
+        function updateLoadingBar(pct, phase) {
+          barFill.style.width = pct + "%";
+          if (phase) phaseEl.textContent = phase;
+        }
+
+        function dismissOverlay() {
+          clearInterval(msgInterval);
+          updateLoadingBar(100, "Let's go!");
+          setTimeout(() => {
+            overlay.classList.add("fade-out");
+            overlay.addEventListener(
+              "transitionend",
+              () => {
+                overlay.style.display = "none";
+              },
+              { once: true }
+            );
+          }, 300);
+        }
+
+        const formatReason = (reason) => {
+          if (reason && typeof reason === "object" && "message" in reason) {
+            return String(reason.message);
+          }
+          return String(reason);
+        };
+
+        const loadScript = (src) =>
+          new Promise((resolve, reject) => {
+            const script = document.createElement("script");
+            script.src = src;
+            script.async = false;
+            script.onload = resolve;
+            script.onerror = () => reject(new Error(`Failed to load ${src}`));
+            document.body.appendChild(script);
+          });
+
+        // ── Prevent browser defaults that shadow game input ──────────
+        // Right-click: suppress browser context menu so Wesnoth's shows.
+        canvas.addEventListener("contextmenu", (event) => {
+          event.preventDefault();
+        });
+        // Middle-click: suppress browser autoscroll mode.
+        canvas.addEventListener("mousedown", (event) => {
+          if (event.button === 1) event.preventDefault();
+        });
+        // Wheel on canvas: prevent Ctrl+scroll zoom (page scroll is already
+        // impossible because body has overflow:hidden).
+        canvas.addEventListener(
+          "wheel",
+          (event) => {
+            if (event.ctrlKey || event.metaKey) event.preventDefault();
+          },
+          { passive: false }
+        );
+
+        window.addEventListener("keydown", (event) => {
+          if (
+            ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", " "].includes(
+              event.key
+            )
+          ) {
+            event.preventDefault();
+          }
+        });
+        window.addEventListener("error", (event) => {
+          log(`window error: ${event.message}`);
+        });
+        window.addEventListener("unhandledrejection", (event) => {
+          log(`unhandledrejection: ${formatReason(event.reason)}`);
+        });
+
+        window.render_game_to_text = () =>
+          JSON.stringify({
+            canvas: {
+              width: canvas.width,
+              height: canvas.height,
+              clientWidth: canvas.clientWidth,
+              clientHeight: canvas.clientHeight,
+            },
+            crossOriginIsolated: globalThis.crossOriginIsolated === true,
+          });
+
+        window.advanceTime = (_ms) => {
+          // Native game loop is driven by Emscripten main loop.
+        };
+
+        window.Module = {
+          arguments: [
+            "--no-log-to-file",
+            "--windowed",
+            "--resolution=1280x720",
+            "--data-dir=/",
+            "--userdata-dir=/userdata",
+          ],
+          canvas,
+          wsProxyUrl: "ws://localhost:8041",
+          ENV: { SDL_VIDEO_HIGHDPI_DISABLED: "1" },
+          locateFile: (path) => path,
+          mainScriptUrlOrBlob: "wesnoth.js",
+          preRun: [
+            () => {
+              log("preRun: mounting IDBFS at /userdata");
+              try {
+                FS.mkdir("/userdata");
+              } catch (e) {}
+              FS.mount(IDBFS, {}, "/userdata");
+
+              Module.addRunDependency("idbfs-populate");
+              FS.syncfs(true, function (err) {
+                if (err) console.error("[IDBFS] populate error:", err);
+                else log("IDBFS: populated from IndexedDB");
+                Module.removeRunDependency("idbfs-populate");
+              });
+            },
+          ],
+          postRun: [() => log("postRun")],
+          print: (text) => log(String(text)),
+          printErr: (text) => {
+            console.warn(`[${now()}s] ${String(text)}`);
+          },
+          setStatus: (text) => {
+            if (text) log(text);
+            if (!text) return;
+            // Emscripten data download: "Downloading data... (X/Y)"
+            const match = text.match(/\((\d+)\/(\d+)\)/);
+            if (match) {
+              const loaded = parseInt(match[1], 10);
+              const total = parseInt(match[2], 10);
+              const pct =
+                total > 0 ? Math.min(90, Math.round((loaded / total) * 90)) : 0;
+              updateLoadingBar(
+                pct,
+                `Downloading game data... ${Math.round(
+                  (loaded / total) * 100
+                )}%`
+              );
+            } else if (text.includes("complete")) {
+              updateLoadingBar(92, "Compiling engine...");
+            }
+          },
+          monitorRunDependencies: (left) => {
+            if (left === 0) {
+              log("all dependencies ready");
+              updateLoadingBar(95, "Resolving dependencies...");
+            }
+          },
+          onRuntimeInitialized: () => {
+            log("onRuntimeInitialized");
+            updateLoadingBar(98, "Starting game...");
+            setTimeout(dismissOverlay, 500);
+            canvas.focus();
+
+            // Quick pixel probe after game should be rendering.
+            setTimeout(() => {
+              try {
+                const gl =
+                  _origGetContext.call(canvas, "webgl2") ||
+                  _origGetContext.call(canvas, "webgl");
+                if (!gl) {
+                  log("[probe] no GL context");
+                  return;
+                }
+                const px = new Uint8Array(4);
+                gl.readPixels(640, 360, 1, 1, gl.RGBA, gl.UNSIGNED_BYTE, px);
+                log(
+                  `[probe] center pixel: rgba(${px[0]},${px[1]},${px[2]},${px[3]})`
+                );
+              } catch (e) {
+                log(`[probe] error: ${e.message}`);
+              }
+            }, 10000);
+          },
+          onAbort: (what) => log(`aborted: ${what}`),
+          onExit: (code) => log(`onExit: ${code}`),
+        };
+
+        // Resume AudioContext on user gestures (browser autoplay policy).
+        // Not {once: true} — the context can re-suspend if the tab loses focus.
+        function resumeAudioContext() {
+          if (
+            typeof Module !== "undefined" &&
+            Module.SDL2 &&
+            Module.SDL2.audioContext
+          ) {
+            var ctx = Module.SDL2.audioContext;
+            if (ctx.state === "suspended") {
+              ctx.resume();
+            }
+          }
+          // Resume Web Audio music context (separate from SDL2's ScriptProcessorNode context).
+          if (
+            typeof Module !== "undefined" &&
+            Module._webAudio &&
+            Module._webAudio.ctx
+          ) {
+            var ctx = Module._webAudio.ctx;
+            if (ctx.state === "suspended") {
+              ctx.resume();
+            }
+          }
+        }
+        document.addEventListener("click", resumeAudioContext);
+        document.addEventListener("keydown", resumeAudioContext);
+
+        // Best-effort persist on page close — the explicit sync-after-save
+        // in C++ covers the critical path; this is a safety net.
+        window.addEventListener("beforeunload", function () {
+          if (typeof FS !== "undefined" && FS.syncfs) {
+            FS.syncfs(false, function (err) {
+              if (err) console.error("[IDBFS] beforeunload sync error:", err);
+            });
+          }
+        });
+
+        log(`crossOriginIsolated=${globalThis.crossOriginIsolated === true}`);
+        log("loader booted");
+
+        loadScript("wesnoth.data.js")
+          .then(() => loadScript("wesnoth.js"))
+          .catch((error) => {
+            console.error(error);
+          });
+      })();
+
+      // ── Store-only ZIP builder/reader ──────────────────────────────────
+      // No external dependencies.  Store-only (compression method 0) since
+      // Wesnoth saves are already gzip-compressed.
+
+      function buildStoreZip(files) {
+        // files: { "relative/path": Uint8Array, ... }
+        var entries = Object.keys(files);
+        // Calculate total size: local headers + data + central dir + EOCD
+        var centralDir = [];
+        var parts = [];
+        var offset = 0;
+
+        for (var i = 0; i < entries.length; i++) {
+          var name = entries[i];
+          var data = files[name];
+          var nameBytes = new TextEncoder().encode(name);
+          var crc = crc32(data);
+
+          // Local file header (30 + nameLen + data)
+          var lh = new Uint8Array(30 + nameBytes.length);
+          var lv = new DataView(lh.buffer);
+          lv.setUint32(0, 0x04034b50, true); // signature
+          lv.setUint16(4, 20, true); // version needed
+          lv.setUint16(6, 0, true); // flags
+          lv.setUint16(8, 0, true); // compression: store
+          lv.setUint16(10, 0, true); // mod time
+          lv.setUint16(12, 0, true); // mod date
+          lv.setUint32(14, crc, true); // crc32
+          lv.setUint32(18, data.length, true); // compressed size
+          lv.setUint32(22, data.length, true); // uncompressed size
+          lv.setUint16(26, nameBytes.length, true); // name length
+          lv.setUint16(28, 0, true); // extra length
+          lh.set(nameBytes, 30);
+
+          parts.push(lh);
+          parts.push(data);
+
+          // Central directory entry (46 + nameLen)
+          var cd = new Uint8Array(46 + nameBytes.length);
+          var cv = new DataView(cd.buffer);
+          cv.setUint32(0, 0x02014b50, true); // signature
+          cv.setUint16(4, 20, true); // version made by
+          cv.setUint16(6, 20, true); // version needed
+          cv.setUint16(8, 0, true); // flags
+          cv.setUint16(10, 0, true); // compression: store
+          cv.setUint16(12, 0, true); // mod time
+          cv.setUint16(14, 0, true); // mod date
+          cv.setUint32(16, crc, true); // crc32
+          cv.setUint32(20, data.length, true); // compressed size
+          cv.setUint32(24, data.length, true); // uncompressed size
+          cv.setUint16(28, nameBytes.length, true); // name length
+          cv.setUint16(30, 0, true); // extra length
+          cv.setUint16(32, 0, true); // comment length
+          cv.setUint16(34, 0, true); // disk number
+          cv.setUint16(36, 0, true); // internal attrs
+          cv.setUint32(38, 0, true); // external attrs
+          cv.setUint32(42, offset, true); // local header offset
+          cd.set(nameBytes, 46);
+          centralDir.push(cd);
+
+          offset += 30 + nameBytes.length + data.length;
+        }
+
+        var centralOffset = offset;
+        var centralSize = 0;
+        for (var j = 0; j < centralDir.length; j++) {
+          parts.push(centralDir[j]);
+          centralSize += centralDir[j].length;
+        }
+
+        // End of central directory record (22 bytes)
+        var eocd = new Uint8Array(22);
+        var ev = new DataView(eocd.buffer);
+        ev.setUint32(0, 0x06054b50, true); // signature
+        ev.setUint16(4, 0, true); // disk number
+        ev.setUint16(6, 0, true); // central dir disk
+        ev.setUint16(8, entries.length, true); // entries on disk
+        ev.setUint16(10, entries.length, true); // total entries
+        ev.setUint32(12, centralSize, true); // central dir size
+        ev.setUint32(16, centralOffset, true); // central dir offset
+        ev.setUint16(20, 0, true); // comment length
+        parts.push(eocd);
+
+        // Concatenate all parts
+        var total = 0;
+        for (var k = 0; k < parts.length; k++) total += parts[k].length;
+        var result = new Uint8Array(total);
+        var pos = 0;
+        for (var k = 0; k < parts.length; k++) {
+          result.set(parts[k], pos);
+          pos += parts[k].length;
+        }
+        return result;
+      }
+
+      function readStoreZip(data) {
+        // Returns [{name: string, data: Uint8Array}, ...]
+        // Only supports store (method 0) entries — warns on compressed entries.
+        var dv = new DataView(data.buffer, data.byteOffset, data.byteLength);
+        var entries = [];
+        var pos = 0;
+        while (pos + 30 <= data.length) {
+          var sig = dv.getUint32(pos, true);
+          if (sig !== 0x04034b50) break; // not a local file header
+          var method = dv.getUint16(pos + 8, true);
+          var nameLen = dv.getUint16(pos + 26, true);
+          var extraLen = dv.getUint16(pos + 28, true);
+          var compSize = dv.getUint32(pos + 18, true);
+          var name = new TextDecoder().decode(
+            data.subarray(pos + 30, pos + 30 + nameLen)
+          );
+          if (method !== 0) {
+            console.warn(
+              "[import] skipping compressed entry (method " +
+                method +
+                "): " +
+                name
+            );
+            pos += 30 + nameLen + extraLen + compSize;
+            continue;
+          }
+          var fileData = data.slice(
+            pos + 30 + nameLen + extraLen,
+            pos + 30 + nameLen + extraLen + compSize
+          );
+          if (name.length > 0 && !name.endsWith("/")) {
+            entries.push({ name: name, data: new Uint8Array(fileData) });
+          }
+          pos += 30 + nameLen + extraLen + compSize;
+        }
+        return entries;
+      }
+
+      function crc32(buf) {
+        // Standard CRC-32 (ISO 3309)
+        if (!crc32.table) {
+          var t = new Uint32Array(256);
+          for (var i = 0; i < 256; i++) {
+            var c = i;
+            for (var j = 0; j < 8; j++)
+              c = c & 1 ? 0xedb88320 ^ (c >>> 1) : c >>> 1;
+            t[i] = c;
+          }
+          crc32.table = t;
+        }
+        var crc = 0xffffffff;
+        for (var i = 0; i < buf.length; i++)
+          crc = crc32.table[(crc ^ buf[i]) & 0xff] ^ (crc >>> 8);
+        return (crc ^ 0xffffffff) >>> 0;
+      }
+
+      // ── Export / Import ────────────────────────────────────────────────
+
+      function wesnothExportSaves() {
+        var files = {};
+        function readRecursive(dir, prefix) {
+          try {
+            FS.readdir(dir)
+              .filter(function (e) {
+                return e !== "." && e !== "..";
+              })
+              .forEach(function (name) {
+                var path = dir + "/" + name;
+                var stat = FS.stat(path);
+                if (FS.isDir(stat.mode)) {
+                  readRecursive(path, prefix + name + "/");
+                } else {
+                  files[prefix + name] = FS.readFile(path);
+                }
+              });
+          } catch (e) {}
+        }
+        readRecursive("/userdata", "");
+
+        if (Object.keys(files).length === 0) {
+          alert("No save data found.");
+          return;
+        }
+
+        var zipData = buildStoreZip(files);
+        var blob = new Blob([zipData], { type: "application/zip" });
+        var a = document.createElement("a");
+        a.href = URL.createObjectURL(blob);
+        a.download =
+          "wesnoth-userdata-" + new Date().toISOString().slice(0, 10) + ".zip";
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        setTimeout(function () {
+          URL.revokeObjectURL(a.href);
+        }, 5000);
+      }
+
+      function wesnothImportSaves() {
+        var input = document.createElement("input");
+        input.type = "file";
+        input.accept = ".zip";
+        input.onchange = function () {
+          if (!input.files || !input.files[0]) return;
+          var reader = new FileReader();
+          reader.onload = function () {
+            var entries = readStoreZip(new Uint8Array(reader.result));
+            entries.forEach(function (entry) {
+              var parts = entry.name.split("/");
+              var dir = "/userdata";
+              for (var i = 0; i < parts.length - 1; i++) {
+                dir += "/" + parts[i];
+                try {
+                  FS.mkdir(dir);
+                } catch (e) {}
+              }
+              FS.writeFile("/userdata/" + entry.name, entry.data);
+            });
+
+            FS.syncfs(false, function (err) {
+              if (err) console.error("[import] sync error:", err);
+              alert(
+                "Saves imported (" +
+                  entries.length +
+                  " files). Reload the page to use them."
+              );
+            });
+          };
+          reader.readAsArrayBuffer(input.files[0]);
+        };
+        input.click();
+      }
+    </script>
+  </body>
 </html>
