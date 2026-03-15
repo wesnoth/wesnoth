@@ -91,14 +91,12 @@ std::map<Mix_Chunk*, int> chunk_usage;
 static bool music_is_playing() { return sound::emscripten::is_playing(); }
 static bool music_is_fading() { return sound::emscripten::is_fading(); }
 static void music_fade_out(int ms) { sound::emscripten::fade_out(ms); }
-static void music_halt() { sound::emscripten::halt(); }
 static void music_pause() { sound::emscripten::pause(); }
 static void music_resume() { sound::emscripten::resume(); }
 #else
 static bool music_is_playing() { return Mix_PlayingMusic() != 0; }
 static bool music_is_fading() { return Mix_FadingMusic() != MIX_NO_FADING; }
 static void music_fade_out(int ms) { Mix_FadeOutMusic(ms); }
-static void music_halt() { Mix_HaltMusic(); }
 static void music_pause() { Mix_PauseMusic(); }
 static void music_resume() { Mix_ResumeMusic(); }
 #endif
