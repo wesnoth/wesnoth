@@ -31,6 +31,10 @@
 #include <array>
 #include <string>
 
+#ifndef _WIN32
+# include <unistd.h>  // for isatty
+#endif
+
 namespace po = boost::program_options;
 
 class two_strings : public std::pair<std::string,std::string> {};
@@ -161,7 +165,13 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 #endif
 	, no_log_sanitize(false)
 	, log_to_file(false)
-	, no_log_to_file(false)
+	, no_log_to_file(
+#ifdef _WIN32
+					 false
+#else
+					 isatty(STDOUT_FILENO) // default to no log file if stdout is a tty
+#endif
+	  )
 	, translation_percent()
 	, args_(args.begin() + 1, args.end())
 	, args0_(*args.begin())
