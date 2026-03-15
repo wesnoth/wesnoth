@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 1.6.10\n"
+"X-Generator: Poedit 3.8\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -283,10 +283,14 @@ msgstr ""
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:201
+#, fuzzy
 msgid ""
 "Use hardware acceleration (SSE2/NEON) for faster image processing on the "
 "CPU. Try disabling this if you experience graphical glitches or crashes."
 msgstr ""
+"Utiliser l’accélération matérielle (SSE2/NEON) pour un traitement d’images "
+"plus rapide sur le CPU. Désactivez cette option si vous rencontrez des "
+"anomalies graphiques ou des plantages."
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
@@ -1791,10 +1795,13 @@ msgstr ""
 
 #. [chance_to_hit]: id=deflect
 #: data/core/macros/deprecated-utils.cfg:402
+#, fuzzy
 msgid ""
 "This unit’s defensive techniques reduce the chance of a successful enemy "
 "attack."
 msgstr ""
+"Les techniques défensives de cette unité réduisent les chances qu’une "
+"attaque ennemie réussisse."
 
 #. [damage]: id=absorb
 #: data/core/macros/deprecated-utils.cfg:415
@@ -1803,16 +1810,22 @@ msgstr ""
 
 #. [damage]: id=absorb
 #: data/core/macros/deprecated-utils.cfg:416
+#, fuzzy
 msgid ""
 "This attack puts the unit in good defensive position, and it absorbs some of "
 "the damage dealt by an enemy strike."
 msgstr ""
+"Cette attaque place l’unité en bonne position défensive et lui permet "
+"d’absorber une partie des dégâts infligés par une attaque ennemie."
 
 #. [damage]: id=absorb
 #: data/core/macros/deprecated-utils.cfg:417
+#, fuzzy
 msgid ""
 "This unit can block enemy strikes, so that it takes reduced damage when hit."
 msgstr ""
+"Cette unité peut bloquer les attaques ennemies, réduisant ainsi les dégâts "
+"qu’elle subit."
 
 #. [message]: speaker=narrator
 #: data/core/macros/items.cfg:23
@@ -3867,6 +3880,7 @@ msgstr "Ajoute +1 aux dégâts à distance."
 #. [message]: speaker=narrator
 #. newlines at the end are deliberate, and function as spacers before the [option]s
 #: data/internal/resources/AMLAs/_main.cfg:357
+#, fuzzy
 msgid ""
 "Congratulations, your $unit.language_name has leveled up... but they’re "
 "already at their max level!\n"
@@ -3883,6 +3897,23 @@ msgid ""
 "experience bars</b></span>, they’ll only get +3 max hp when they level up.\n"
 "\n"
 msgstr ""
+"Félicitations, votre $unit.language_name a gagné un niveau… mais cette unité "
+"est déjà au niveau maximum !\n"
+"\n"
+"Dans ce cas, <span color='#0D87B6'><b>certaines campagnes</b></span> — comme "
+"celle-ci — vous permettent de choisir un bonus mineur en points de vie ou en "
+"dégâts. Ces bonus sont appelés « PANM » : « progressions après le niveau "
+"maximum ». Si vos unités au niveau maximum ont des <span "
+"color='#0D87B6'><b>barres d’expérience bleues</b></span>, cela signifie que "
+"ces PANM sont disponibles.\n"
+"\n"
+"<span color='#9608CF'><b><i>D’autres campagnes</i></b></span> n’offrent pas "
+"ces options de PANM et donnent à la place toujours +3 PV maximum aux unités "
+"ayant atteint le niveau maximum lorsqu’elles montent de niveau. Si vos "
+"unités au niveau maximum ont des <span color='#9608CF'><b>barres "
+"d’expérience violettes</b></span>, elles ne recevront que +3 PV maximum à "
+"chaque montée de niveau.\n"
+"\n"
 
 #. [option]
 #: data/internal/resources/AMLAs/_main.cfg:365
@@ -5284,12 +5315,18 @@ msgstr ""
 
 #. [tip]
 #: data/tips.cfg:281
+#, fuzzy
 msgid ""
 "Nearly every hotkey can be customized in the <b>Preferences</b> > "
 "<b>Hotkeys</b> tab. Rebinding frequently used actions (Undo, Show Enemy "
 "Moves, End Turn, Recruit/Recall) to comfortable keys can noticeably speed up "
 "your turns and improve your quality of life."
 msgstr ""
+"Presque tous les raccourcis clavier peuvent être personnalisés dans l’onglet "
+"<b>Préférences</b> > <b>Raccourcis clavier</b>. Réattribuer les actions les "
+"plus utilisées (Annuler, Afficher les déplacements ennemis, Terminer le "
+"tour, Recruter/Rappeler) à des touches confortables peut accélérer vos tours "
+"et améliorer votre expérience de jeu."
 
 #. TRANSLATORS: In networked games, when one player has the choice
 #. between multiple advancements of a unit, this text is sent to
@@ -5437,8 +5474,9 @@ msgid "The server responded with an error:"
 msgstr "Le serveur a renvoyé une erreur :"
 
 #: src/addon/client.cpp:146
+#, fuzzy
 msgid "Requesting add-on downloads by version..."
-msgstr ""
+msgstr "Récupération des téléchargements de l’extension par version…"
 
 #: src/addon/client.cpp:164
 #, fuzzy
@@ -5932,8 +5970,9 @@ msgstr ""
 "précédemment."
 
 #: src/addon/validation.cpp:510
+#, fuzzy
 msgid "The add-on’s icon’s file size is too large."
-msgstr ""
+msgstr "La taille du fichier de l’icône de l’extension est trop grande."
 
 #: src/addon/validation.cpp:519
 msgid "Unspecified server error."
@@ -6062,8 +6101,9 @@ msgstr ""
 "Retirer/rendre la parole à tous les observateurs (alterne entre les deux)."
 
 #: src/chat_command_handler.hpp:92
+#, fuzzy
 msgid "Measure roundtrip packet time between client and server."
-msgstr ""
+msgstr "Mesurer le temps de transit des paquets entre le client et le serveur."
 
 #: src/chat_command_handler.hpp:94
 msgid ""
@@ -7037,8 +7077,9 @@ msgid "Recruits"
 msgstr "Recrues"
 
 #: src/help/help_impl.cpp:652
+#, fuzzy
 msgid "Previous"
-msgstr ""
+msgstr "Précédent"
 
 #: src/help/help_impl.cpp:665 src/help/help_impl.cpp:787
 #: src/help/help_impl.cpp:805
