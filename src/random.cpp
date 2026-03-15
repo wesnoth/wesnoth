@@ -15,7 +15,12 @@
 
 #include "random.hpp"
 #include "log.hpp"
+
+#ifdef __EMSCRIPTEN__
 #include "seed_rng.hpp"
+#else
+#include <boost/random/random_device.hpp>
+#endif
 
 #include <cassert>
 #include <limits>
@@ -37,7 +42,15 @@ namespace {
 		rng_default()
 			: gen_()
 		{
+#ifdef __EMSCRIPTEN__
 			gen_.seed(seed_rng::next_seed());
+#else
+			/* Note: do not replace this with std::random_device.
+			 * @cbeck88 told in IRC (2016-10-16) that std::random_device
+			 * is very poorly implemented in MinGW. */
+			boost::random_device entropy_source;
+			gen_.seed(entropy_source());
+#endif
 		}
 	protected:
 		virtual uint32_t next_random_impl()

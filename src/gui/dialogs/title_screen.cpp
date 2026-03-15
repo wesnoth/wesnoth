@@ -315,10 +315,10 @@ void title_screen::init_callbacks()
 		[] { filesystem::emscripten::import_saves(); });
 #else
 	if(auto btn = find_widget<button>("export_saves", false, false)) {
-		btn->set_visible(widget::visibility::hidden);
+		btn->set_visible(widget::visibility::invisible);
 	}
 	if(auto btn = find_widget<button>("import_saves", false, false)) {
-		btn->set_visible(widget::visibility::hidden);
+		btn->set_visible(widget::visibility::invisible);
 	}
 #endif
 
