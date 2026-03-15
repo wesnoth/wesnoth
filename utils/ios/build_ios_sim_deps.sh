@@ -43,14 +43,8 @@ mkdir -p "$IOS_DEPS_BASE" "$IOS_DEPS_BASE/downloads" "$IOS_DEPS_BASE/build"
 if [[ ! -x "$VCPKG_ROOT/vcpkg" ]]; then
 	echo "==> Bootstrapping vcpkg at $VCPKG_ROOT"
 	rm -rf "$VCPKG_ROOT"
-	git clone --depth 1 https://github.com/microsoft/vcpkg "$VCPKG_ROOT"
+	git clone https://github.com/microsoft/vcpkg "$VCPKG_ROOT"
 	"$VCPKG_ROOT/bootstrap-vcpkg.sh" -disableMetrics
-fi
-
-# Some manifests reference historical trees outside a depth-1 clone.
-if [[ "$(git -C "$VCPKG_ROOT" rev-parse --is-shallow-repository 2>/dev/null || echo false)" == "true" ]]; then
-	echo "==> Expanding shallow vcpkg clone for versioned port checkout"
-	git -C "$VCPKG_ROOT" fetch --unshallow
 fi
 
 if [[ ! -f "$GETTEXT_PORT_PATCH" ]]; then
