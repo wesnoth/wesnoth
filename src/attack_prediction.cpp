@@ -1945,7 +1945,7 @@ void no_death_fight(const battle_context_unit_stats& stats,
 		}
 	}
 
-	if(!levelup_considered) {
+	if(!levelup_considered || !stats.can_advance) { // we assume that the unit full-heals if it advances
 		return;
 	}
 
@@ -2024,7 +2024,7 @@ void one_strike_fight(const battle_context_unit_stats& stats,
 		}
 	}
 
-	if(!levelup_considered) {
+	if(!levelup_considered || !stats.can_advance) { // we assume that the unit full-heals if it advances
 		return;
 	}
 
@@ -2218,7 +2218,7 @@ void complex_fight(attack_prediction_mode mode,
 		matrix->remove_petrify_distortion_b(opp_stats.damage, opp_stats.slow_damage, stats.hp);
 	}
 
-	if(levelup_considered) {
+	if(levelup_considered && stats.can_advance) { // we assume that the unit full-heals if it advances
 		if(stats.experience + game_config::combat_xp(opp_stats.level) >= stats.max_experience) {
 			matrix->forced_levelup_a();
 		} else if(stats.experience + game_config::kill_xp(opp_stats.level) >= stats.max_experience) {
@@ -2479,12 +2479,12 @@ void combatant::fight(combatant& opponent, bool levelup_considered)
 	slowed = std::min(std::accumulate(summary[1].begin(), summary[1].end(), 0.0), 1.0);
 	opponent.slowed = std::min(std::accumulate(opponent.summary[1].begin(), opponent.summary[1].end(), 0.0), 1.0);
 
-	if(u_.experience + game_config::combat_xp(opponent.u_.level) >= u_.max_experience) {
+	if(u_.can_advance && u_.experience + game_config::combat_xp(opponent.u_.level) >= u_.max_experience) {
 		// We'll level up after the battle -> slow/poison will go away
 		poisoned = 0.0;
 		slowed = 0.0;
 	}
-	if(opponent.u_.experience + game_config::combat_xp(u_.level) >= opponent.u_.max_experience) {
+	if(opponent.u_.can_advance && opponent.u_.experience + game_config::combat_xp(u_.level) >= opponent.u_.max_experience) {
 		opponent.poisoned = 0.0;
 		opponent.slowed = 0.0;
 	}
