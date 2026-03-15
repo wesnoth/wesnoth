@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2024-05-26 02:28 UTC\n"
-"PO-Revision-Date: 2022-09-08 09:25-0300\n"
+"PO-Revision-Date: 2026-03-07 10:25-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: none\n"
 "Language: pt_BR\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.6\n"
 
 #. [campaign]: id=Tutorial
 #: data/campaigns/tutorial/_main.cfg:11
@@ -49,14 +49,12 @@ msgstr "Iniciante"
 #. [achievement]: id=completed
 #: data/campaigns/tutorial/achievements.cfg:7
 msgid "Completed the Tutorial"
-msgstr ""
+msgstr "Tutorial Concluído"
 
 #. [achievement]: id=completed
 #: data/campaigns/tutorial/achievements.cfg:8
-#, fuzzy
-#| msgid "Battle Training"
 msgid "Complete the Battle Training."
-msgstr "Treinamento de Batalha"
+msgstr "Complete o Treinamento de Batalha."
 
 #. [label]
 #: data/campaigns/tutorial/gui/character_selection.cfg:19
@@ -535,8 +533,8 @@ msgstr "O <i>boneco de treino</i> tem vez?"
 #: data/campaigns/tutorial/scenarios/01_Tutorial_part_1.cfg:574
 msgid ""
 "Yes. It’s a magical quintain! If it hits you, it does 3 damage, and has 5 "
-"chances. If it hits every time, you’ll drop from $student_hp to "
-"$($student_hp-15) hitpoints. Brace yourself!"
+"chances. If it hits every time, you’ll drop from $student_hp to $"
+"($student_hp-15) hitpoints. Brace yourself!"
 msgstr ""
 "Sim, ele é um estafermo mágico! Se ele acertar, ele causará 3 pontos de "
 "dano, e ele tem 5 tentativas. Se ele acertar todas as cinco tentativas, seu "
@@ -2380,6 +2378,9 @@ msgid ""
 "When moving a unit, the percentages shown are the unit’s defense on that "
 "hex. The higher the number, the less likely they are to get hit."
 msgstr ""
+"Ao mover uma unidade, a porcentagem que aparece indica a defesa de uma "
+"unidade em umd ado hexágono. Quanto maior o n´mero, menor a chance da "
+"unidade ser acertada."
 
 #
 # File: data/campaigns/tutorial/scenarios/2_Tutorial.cfg, line: 1229
@@ -2743,8 +2744,8 @@ msgstr ""
 #. [message]: speaker=Galdrad
 #: data/campaigns/tutorial/scenarios/02_Tutorial_part_2.cfg:1314
 msgid ""
-"Higher level units are powerful, but not invulnerable. We’ll miss you, $unit."
-"name|."
+"Higher level units are powerful, but not invulnerable. We’ll miss you, "
+"$unit.name|."
 msgstr ""
 "Unidades de níveis maiores são fortes, mas não são invulneráveis. Sentiremos "
 "sua falta, $unit.name|."
@@ -4037,9 +4038,9 @@ msgstr ""
 #~ "survives its counter-attack! I’d better grab more villages and move "
 #~ "everyone closer for next turn."
 #~ msgstr ""
-#~ "Nenhuma outra unidade pode alcançar aquele orc. Espero que minha $unit."
-#~ "language_name sobreviva o seu contra-ataque! É melhor pegar mais aldeias "
-#~ "e avançar com todo mundo até o próximo turno."
+#~ "Nenhuma outra unidade pode alcançar aquele orc. Espero que minha "
+#~ "$unit.language_name sobreviva o seu contra-ataque! É melhor pegar mais "
+#~ "aldeias e avançar com todo mundo até o próximo turno."
 
 #
 # File: data/campaigns/tutorial/scenarios/2_Tutorial.cfg, line: 1155

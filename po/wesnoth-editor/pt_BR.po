@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-05-20 17:25-0500\n"
-"PO-Revision-Date: 2022-01-07 15:09-0300\n"
+"PO-Revision-Date: 2026-03-06 20:43-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: Portuguese/Brazil\n"
 "Language: pt_BR\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 2.4.3\n"
+"X-Generator: Poedit 3.6\n"
 
 #
 # File: data/core/editor/brushes.cfg, line: 6
@@ -202,7 +202,7 @@ msgstr "especial"
 #. [editor_group]: id=elevation
 #: data/core/editor/terrain-groups.cfg:115
 msgid "elevation"
-msgstr ""
+msgstr "Elevação"
 
 #. [editor_times]: id=empty
 #. Describes a scenario in the editor that has not set a time of day schedule
@@ -305,7 +305,7 @@ msgstr "Janela"
 #. [menu]: id=menu-editor-addon
 #: data/themes/editor.cfg:110
 msgid "Add-on"
-msgstr ""
+msgstr "Add-on"
 
 #
 # File: data/themes/editor.cfg, line: 115
@@ -587,10 +587,8 @@ msgstr "Erro"
 # File: src/editor/editor_controller.cpp, line: 203
 #: src/editor/map/context_manager.cpp:713
 #: src/editor/map/context_manager.cpp:762
-#, fuzzy
-#| msgid "Do you really want to quit?"
 msgid "Do you really want to save $type1 in $type2 folder?"
-msgstr "Você realmente deseja sair?"
+msgstr "Você realmente deseja salvar $type1 na pasta $type2?"
 
 #
 # File: src/editor/map/context_manager.cpp, line: 623
@@ -702,14 +700,8 @@ msgstr "Mapa carregado do cenário"
 # File: src/editor/map/context_manager.cpp, line: 690
 # File: src/editor/map/context_manager.cpp, line: 690
 #: src/editor/map/context_manager.cpp:992
-#, fuzzy
-#| msgid ""
-#| "Loaded referenced map file:\n"
-#| "$new"
 msgid "Loaded referenced map file:"
-msgstr ""
-"Arquivo de mapa referência carregado:\n"
-"$new"
+msgstr "Arquivo de mapa referência carregado:"
 
 #: src/editor/map/editor_map.cpp:146
 #: src/editor/palette/location_palette.cpp:119
@@ -742,7 +734,7 @@ msgstr "Arquivo vazio"
 
 #: src/editor/map/map_context.cpp:196
 msgid "File does not have .map or .cfg extension"
-msgstr ""
+msgstr "O arquivo não tem extensão .map nem .cfg"
 
 #
 # File: src/editor/map/map_context.cpp, line: 119
@@ -837,16 +829,12 @@ msgid "Will not work in game without extra care."
 msgstr "Não vai funcionar no jogo sem cuidados extras."
 
 #: src/editor/palette/item_palette.cpp:32
-#, fuzzy
-#| msgid "Right-click: "
 msgid " | Right-click to remove"
-msgstr "Botão-direito: "
+msgstr " | Botão-direito para remover"
 
 #: src/editor/palette/item_palette.cpp:32
-#, fuzzy
-#| msgid "Left-click: "
 msgid "Left-click: Place item "
-msgstr "Botão-esquerdo: "
+msgstr "Botão-esquerdo: Coloca um item "
 
 #: src/editor/palette/location_palette.cpp:249
 msgid "Go To"
