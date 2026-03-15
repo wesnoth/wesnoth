@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2026-02-26 01:03 UTC\n"
-"PO-Revision-Date: 2026-02-08 07:12+0100\n"
+"PO-Revision-Date: 2026-03-11 23:00+0100\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -542,10 +542,8 @@ msgstr "prokletí"
 
 #. [unit_type]: id=Pirate Flagship, race=ship
 #: data/campaigns/Of_Pearls_and_Pirates/units/Pirate_Flagship.cfg:9
-#, fuzzy
-#| msgid "Pirate Ship"
 msgid "Pirate Flagship"
-msgstr "Pirátská loď"
+msgstr "Pirátská vlajková loď"
 
 #. [unit_type]: id=Pirate Flagship, race=ship
 #. [unit_type]: id=Pirate Carrack, race=ship
@@ -597,10 +595,8 @@ msgstr "lodní hák"
 
 #. [unit_type]: id=Pirate Skiff, race=ship
 #: data/campaigns/Of_Pearls_and_Pirates/units/Pirate_Skiff.cfg:9
-#, fuzzy
-#| msgid "Pirate Ship"
 msgid "Pirate Skiff"
-msgstr "Pirátská loď"
+msgstr "Pirátská lodice"
 
 #. [unit_type]: id=Pirate Skiff, race=ship
 #. [unit_type]: id=Skiff, race=ship
@@ -1804,19 +1800,6 @@ msgstr "Okovaná veslice"
 
 #. [unit_type]: id=Iron Raider, race=ship
 #: data/core/units/boats/Raider_Iron.cfg:26
-#, fuzzy
-#| msgid ""
-#| "While Carracks and Cogs rely on impressive sails to harness the power of "
-#| "the wind, galleys and raiders are propelled by muscle-power of the crew "
-#| "manning the oars. This has the disadvantage of requiring a larger crew, "
-#| "and it does limit the speed and efficiency of transport. But these "
-#| "seeming weaknesses also make the vessel less vulnerable to the whims of "
-#| "weather and the predations of pirates.\n"
-#| "\n"
-#| "Iron Raiders are veteran Coastal Raiders that have been hardened to "
-#| "become tougher targets and harder hitters. They are often used as front-"
-#| "line escorts of slower cargo ships in rivers and coasts, where their "
-#| "heavy iron ram proves the most effective."
 msgid ""
 "While Carracks and Cogs rely on impressive sails to harness the power of the "
 "wind, galleys and raiders are propelled by muscle-power of the crew manning "
@@ -1829,12 +1812,7 @@ msgstr ""
 "galéry a veslice jsou poháněny silou svalů mužstva, které obsluhuje vesla. "
 "To má tu nevýhodu, že je třeba větší posádky, a omezuje to rychlost "
 "a účinnost přepravy. Tyto zdánlivé nedostatky však také činí plavidlo méně "
-"zranitelným vůči rozmarům počasí a drancování pirátů.\n"
-"\n"
-"Okované veslice jsou dlouho sloužící pobřežní veslice, které byly vyztuženy, "
-"aby se staly odolnějšími cíli a tvrdšími úderníky. Často se používají jako "
-"přední doprovod pomalejších nákladních lodí na řekách a při pobřežích, kde "
-"se jejich silný okovaný kloun ukazuje jako nejúčinnější."
+"zranitelným vůči rozmarům počasí a drancování pirátů."
 
 #. [unit_type]: id=Iron Raider, race=ship
 #: data/core/units/boats/Raider_Iron.cfg:28
@@ -1844,6 +1822,11 @@ msgid ""
 "escorts of slower cargo ships in rivers and coasts, where their heavy iron "
 "bow allows them to ram foes without fear of self-inflicted damage."
 msgstr ""
+"Okované veslice jsou dlouho sloužící pobřežní veslice, které byly vyztuženy, "
+"aby se staly odolnějšími cíli a tvrdšími úderníky. Často se používají jako "
+"přední doprovod pomalejších nákladních lodí na řekách a při pobřežích, kde "
+"jim jejich silná okovaná příď umožňuje narážet do nepřátel bez obav "
+"z vlastního poškození."
 
 #. [unit_type]: id=Skiff, race=ship
 #: data/core/units/boats/Skiff.cfg:5
@@ -5606,18 +5589,6 @@ msgstr "Bílý mág"
 
 #. [unit_type]: id=White Mage, race=human, gender=male,female
 #: data/core/units/humans/Mage_White.cfg:19
-#, fuzzy
-#| msgid ""
-#| "Some magi, as they learn about the world around them, and learn the truth "
-#| "of the suffering and squalor in which humanity too often lives, find that "
-#| "they cannot bring themselves to be cloistered into a life of study. These "
-#| "men and women give up the life of a mage, and join monastic orders, "
-#| "dedicating the skills they have been given to the good of all. After "
-#| "their ordination, they often travel the world, ministering to sickness "
-#| "and injury.\n"
-#| "\n"
-#| "Though not trained for combat, they are a potent ally against magical or "
-#| "unnatural things."
 msgid ""
 "Some magi, as they learn about the world and the truth of the suffering and "
 "squalor in which humanity too often lives, find that they cannot bring "
@@ -5631,16 +5602,17 @@ msgid ""
 "Though not trained for combat, they are a potent ally against magical or "
 "unnatural things."
 msgstr ""
-"Někteří mágové po tom, co prohlédnou pravdu o světě kolem nich, o světě "
-"plném utrpení a špíny, ve které lidstvo až moc často přežívá, zjistí, že "
-"nemohou již dále pokračovat ve svých studiích v izolaci. Tito muži a ženy se "
-"zřeknou života mágů a připojí své síly ke klášterním řádům, zasvěcujíc své "
-"umění k činům pro dobro všech. Po vysvěcení cestují po světě a pomáhají "
-"nemocným a zraněným.\n"
+"Někteří mágové poté, co se dozví o světě a pravdě o utrpení a špíně, v nichž "
+"lidé příliš často žijí, zjistí, že nemohou pokračovat v uzavřeném životě "
+"teoretických studií. Místo toho tito muži a ženy zasvětí své schopnosti "
+"dobru všech, studujíce léčení a očišťování, aby zdokonalili svou magii "
+"a učinili ji životodárným nástrojem. Často je lze spatřit, jak cestují po "
+"světě a pomáhají nemocným a zraněným. Opakované používání stejných kouzel "
+"pomalu způsobuje, že se jejich magie stává bílou, což jim vyneslo titul, pod "
+"kterým jsou známí.\n"
 "\n"
-"I když nejsou cvičeni pro boj, existuje nepřítel, proti němuž jsou zdatnými "
-"spojenci. V případě potřeby přivolají síly světla k zahnání zplozenců temnot "
-"a přízraků ze světa živých."
+"Ačkoli nejsou cvičeni pro boj, bývají silnými spojenci proti magickým nebo "
+"nepřirozeným věcem."
 
 #. [special_note]
 #: data/core/units/humans/Mage_White.cfg:23
@@ -5663,15 +5635,6 @@ msgstr "Mág světla"
 
 #. [unit_type]: id=Mage of Light, race=human, gender=male,female
 #: data/core/units/humans/Mage_of_Light.cfg:20
-#, fuzzy
-#| msgid ""
-#| "After years of experience, the most devout of white magi develop vast "
-#| "spiritual powers. By strict devotion to the path of the light, they can "
-#| "call upon its aid to chase away the shadows of the night.\n"
-#| "\n"
-#| "Following a strict code of piety and honor, these men and women work "
-#| "tirelessly to bring life and order to the troubled world in which they "
-#| "live."
 msgid ""
 "After years of experience, the most devout of white magi develop vast "
 "magical powers related to healing and purification. By strict devotion to "
@@ -5683,12 +5646,16 @@ msgid ""
 "Following a strict code of piety and honor, these men and women work "
 "tirelessly to bring life and order to the troubled world in which they live."
 msgstr ""
-"Po letech zkušeností jsou ti nejoddanější z bílých mágů odměněni obrovskými "
-"spirituálními silami. Plná oddanost cestě světla jim umožňuje čerpat z jeho "
-"sil v zahánění stínů noci. \n"
+"Po letech zkušeností si ti nejzanícenější z bílých mágů osvojí obrovské "
+"magické schopnosti související s uzdravováním a očišťováním. Díky přísné "
+"oddanosti této cestě se mohou také spolehnout na její pomoc a zahnat stíny "
+"noci. Jejich obětavé následování cesty dobra nebo „bílé“ magie je často "
+"viditelné jako jasná svatozář kolem jejich těl. Znak naděje, ke kterému se "
+"lidé často přimknou, když v boji proti hrůzám života vše ostatní selže.\n"
 "\n"
-"Tito muži a ženy, kteří se řídí přísným kodexem zbožnosti a cti, neúnavně "
-"přináší život a pořádek do zkoušeného světa, ve kterém žijí."
+"Tito muži a ženy, kteří se řídí přísným zákonem zbožnosti a cti, neúnavně "
+"pracují na tom, aby do rozbouřeného světa, ve kterém žijí, vnesli život "
+"a pořádek."
 
 #. [special_note]
 #: data/core/units/humans/Mage_of_Light.cfg:24
@@ -6841,7 +6808,7 @@ msgstr ""
 #. [unit_type]: id=Redtail Cat, race=cats
 #: data/core/units/monsters/Cat_Redtail.cfg:4
 msgid "Redtail Cat"
-msgstr ""
+msgstr "Kočka červenoocasá"
 
 #. [unit_type]: id=Redtail Cat, race=cats
 #: data/core/units/monsters/Cat_Redtail.cfg:33
@@ -6854,6 +6821,13 @@ msgid ""
 "maneuvering, common folklore says these cats are actually malevolent fire "
 "spirits, and heralds of bad luck."
 msgstr ""
+"Kočky červenoocasé jsou silné šelmy, které obvykle číhají v podhůří "
+"a lesích, ale při lovu se pohybují daleko, takže se s nimi setkáváme na "
+"mnoha nečekaných místech. Jejich nejcharakterističtějším znakem je téměř "
+"plamenné zbarvení ocasu, které odvádí pozornost od tmavého těla "
+"a nebezpečných zubů a drápů. Pravděpodobně díky svému zbarvení a hbitému "
+"manévrování jsou tyto kočky podle lidových pověstí ve skutečnosti zlovolnými "
+"ohnivými duchy a zvěstovateli neštěstí."
 
 # Nechávám bažinný, protože močálový mi nezní dobře.
 #. [unit_type]: id=Swamp Lizard, race=monster

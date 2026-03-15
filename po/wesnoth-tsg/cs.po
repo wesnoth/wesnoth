@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2026-02-26 01:04 UTC\n"
-"PO-Revision-Date: 2026-01-25 21:18+0100\n"
+"PO-Revision-Date: 2026-03-08 22:26+0100\n"
 "Last-Translator: Septim <septim@centrum.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -230,7 +230,7 @@ msgstr "Zakázat vyskakovací a dialogová okna s tipy"
 #. [lua]: choose_companion
 #: data/campaigns/The_South_Guard/lua/popups.lua:137
 msgid "Choose an officer to accompany Deoran:"
-msgstr ""
+msgstr "Vyber si důstojníka, který bude Deorana doprovázet:"
 
 #. [lua]: choose_companion
 #. [event]
@@ -278,24 +278,18 @@ msgstr "Bílý mág"
 
 #. [lua]: choose_companion
 #: data/campaigns/The_South_Guard/lua/popups.lua:178
-#, fuzzy
-#| msgid "Sir Gerrick"
 msgid "Leave with Sir Gerrick"
-msgstr "Sir Gerrick"
+msgstr "Bude to sir Gerrick"
 
 #. [lua]: choose_companion
 #: data/campaigns/The_South_Guard/lua/popups.lua:179
-#, fuzzy
-#| msgid "Captain Mari"
 msgid "Leave with Captain Mari"
-msgstr "Kapitánka Mari"
+msgstr "Bude to kapitánka Mari"
 
 #. [lua]: choose_companion
 #: data/campaigns/The_South_Guard/lua/popups.lua:180
-#, fuzzy
-#| msgid "Minister Hylas"
 msgid "Leave with Minister Hylas"
-msgstr "Purkmistr Hylas"
+msgstr "Bude to purkmistr Hylas"
 
 #. [scenario]: id=01_Born_to_the_Banner
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:11
@@ -329,14 +323,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:35
-#, fuzzy
-#| msgid ""
-#| "For eight years all was well, the guard having only to quash the "
-#| "occasional bandit or wild creature. Perhaps the only real unease came "
-#| "from the Aethenwood to the west, where the elves lived in reserved "
-#| "aloofness, indifferent to the doings of man. Traversing their land "
-#| "without permission was forbidden, but the elves rarely entered the lands "
-#| "of men in turn."
 msgid ""
 "For eight years all was well, the Guard having only to quash the occasional "
 "bandit or wild creature. Perhaps the only real unease came from the "
@@ -353,12 +339,6 @@ msgstr ""
 #. [part]
 #. Intro to scenario 1
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:40
-#, fuzzy
-#| msgid ""
-#| "Over time, in the absence of pressing danger, the South Guard grew "
-#| "complacent and lazy. Reports to the capital slowed, and in the spring of "
-#| "the ninth year, ceased altogether. Displeased with the guard’s conduct, "
-#| "the Crown decided to send someone to investigate..."
 msgid ""
 "Over time, in the absence of pressing danger, the South Guard grew "
 "complacent and lazy. Reports to the capital slowed, and in the spring of the "
@@ -367,7 +347,7 @@ msgid ""
 msgstr ""
 "Bez hrozícího nebezpečí Jižní hlídka v průběhu času zlenivěla, spokojená "
 "sama se sebou. Hlášení do hlavního města se zpožďovala a na jaře devátého "
-"roku ustala úplně. Koruna, nespokojená s takovým chováním hlídky, se "
+"roku ustala úplně. Koruna, nespokojená s takovým chováním Hlídky, se "
 "rozhodla poslat někoho, aby to prošetřil..."
 
 #. [side]
@@ -437,31 +417,22 @@ msgstr "Pohov, poručíku. Jsme čerstvě z akademie, že?"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:182
-#, fuzzy
-#| msgid ""
-#| "Yes ma’am. —sir. And as the prince ordered, I’ve brought with me a "
-#| "contingent of fresh soldiers to reinforce Westin’s faltering South Guard!"
 msgid ""
 "Yes ma’am. —sir. And as His Majesty ordered, I’ve brought with me a "
 "contingent of fresh soldiers to reinforce Westin’s faltering South Guard!"
 msgstr ""
-"Ano, paní. ... veliteli. A jak princ nařídil, přivedl jsem s sebou jednotku "
-"čerstvých vojáků k posílení slábnoucí westinské Jižní hlídky!"
+"Ano, paní. ... veliteli. A jak Jeho Veličenstvo nařídilo, přivedl jsem s "
+"sebou jednotku čerstvých vojáků k posílení slábnoucí westinské Jižní hlídky!"
 
 #. [message]: speaker=Mari
 #. Mari is somewhat sarcastic and not particularly emotive. She can come across as somewhat cold.
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:187
-#, fuzzy
-#| msgid ""
-#| "I’m Mari. Got the same orders as you; guess Prince Arand wanted an "
-#| "officer with experience to keep an eye on you and your “fresh” company. "
-#| "Can’t imagine why."
 msgid ""
 "I’m Mari. Got the same orders as you; guess someone wanted an officer with "
 "experience to keep an eye on you and your “fresh” company. Can’t imagine why."
 msgstr ""
-"Jsem Mari. Dostala jsem stejné rozkazy jako ty. Princ Arand zřejmě chtěl "
-"zkušeného důstojníka, který by na tebe a tvou „čerstvou“ jednotku dohlížel. "
+"Jsem Mari. Dostala jsem stejné rozkazy jako ty. Někdo zřejmě chtěl zkušeného "
+"důstojníka, který by na tebe a tu tvou „čerstvou“ jednotku dohlédnul. "
 "Netuším proč."
 
 #. [message]: speaker=Mari
@@ -474,7 +445,7 @@ msgstr "No, rozkazy jsou rozkazy. Pojď sem, Deorane, podíváme se na tebe blí
 #. [option]
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:196
 msgid "On my way!"
-msgstr ""
+msgstr "Hned tam budu!"
 
 #. [option]
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:205
@@ -520,11 +491,6 @@ msgstr "<i>(Ukloní se)</i> Je mi potěšením se s vámi seznámit, kapitánko.
 
 #. [message]
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:308
-#, fuzzy
-#| msgid ""
-#| "Wondering about those percentages that appear on the ground when you move "
-#| "a unit? That’s your soldiers’ terrain defense — their <i><b>chance to "
-#| "dodge</b></i> enemy attacks."
 msgid ""
 "Wondering about those percentages that appear on the ground when you move a "
 "unit? That’s your soldiers’ terrain defense — their <i><b>chance to evade</"
@@ -536,30 +502,11 @@ msgstr ""
 
 #. [display_tip]
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:311
-#, fuzzy
-#| msgid "Dodging Attacks"
 msgid "Evading Attacks"
 msgstr "Uhýbání útokům"
 
 #. [display_tip]
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:313
-#, fuzzy
-#| msgid ""
-#| "In Wesnoth, every attack has a chance to miss.\n"
-#| "\n"
-#| "Units on favorable terrain (such as castles, villages, forest, or hills)\n"
-#| "are more likely to dodge attacks, while units on poor terrain (such as\n"
-#| "water, sand, or ice) are much easier to hit.\n"
-#| "\n"
-#| "Different units receive different benefits from terrain. Most infantry,\n"
-#| "for example, have 50% dodge in forest — but cavalry only have 30%.\n"
-#| "For details, <b><i>right-click on a unit and select “Unit Type "
-#| "Description.”</i></b>\n"
-#| "\n"
-#| "For the most advantageous fights, try to <b><i>position your units on "
-#| "good\n"
-#| "terrain</i></b>, and <b><i>attack your enemies while they’re on poor "
-#| "terrain!</i></b>"
 msgid ""
 "In Wesnoth, every attack has a chance to miss.\n"
 "\n"
@@ -586,10 +533,11 @@ msgstr ""
 "jsou mnohem snadněji zasažitelné.\n"
 "\n"
 "Různé jednotky získávají různé výhody z terénu.\n"
-"Většina pěchoty má například 50% šanci se vyhnout útoku v lese,\n"
-"ale kavalérie ji má pouze 30%.\n"
+"Většina pěchoty má například 50% šanci se vyhnout\n"
+"útoku v lese, ale kavalérie ji má pouze 30%.\n"
 "Podrobnosti si u jednotky zobrazíš <b><i>kliknutím\n"
-"pravým tlačítkem myši a výběrem možnosti „Popis typu jednotky“.</i></b>\n"
+"pravým tlačítkem myši a výběrem možnosti\n"
+"„Popis typu jednotky“.</i></b>\n"
 "\n"
 "Pro co nejvýhodnější bojové situace se snaž\n"
 "<b><i>umístit své jednotky v dobrém terénu</i></b>\n"
@@ -842,6 +790,7 @@ msgid ""
 "...he’s fine. Just out cold, and of no use to you for the rest of our "
 "journey."
 msgstr ""
+"... je v pořádku. Jen je v bezvědomí a po zbytek cesty vám nebude k ničemu."
 
 #. [message]: speaker=second_unit
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:762
@@ -989,8 +938,8 @@ msgid ""
 "Besides, it only took $quintain_killers.length of you to deal with my dummy. "
 "What’s a dozen muscly bandits compared to that?"
 msgstr ""
-"Kromě toho, vypořádat se s mou figurínou ti trvalo jen $quintain_killers."
-"length kol. Co je proti tomu tucet svalnatých banditů?"
+"Kromě toho, vypořádat se s mou figurínou ti trvalo jen "
+"$quintain_killers.length kol. Co je proti tomu tucet svalnatých banditů?"
 
 #. [message]: speaker=Mari
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:945
@@ -1018,6 +967,8 @@ msgid ""
 "You may toggle tips on or off at any time during the campaign by right-"
 "clicking anywhere and selecting “Tips: On/Off” in the menu."
 msgstr ""
+"Kdykoli během tažení můžeš zapnout nebo vypnout herní tipy kliknutím pravým "
+"tlačítkem myši kamkoli a výběrem možnosti „Tipy: Zapnuto/Vypnuto“ v nabídce."
 
 #. [message]
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:964
@@ -1027,6 +978,11 @@ msgid ""
 "\n"
 "Because you skipped the tutorial, tips are currently off."
 msgstr ""
+"Kdykoli během tažení můžeš zapnout nebo vypnout herní tipy kliknutím pravým "
+"tlačítkem myši kamkoli a výběrem možnosti „Tipy: Zapnuto/Vypnuto“ v "
+"nabídce.\n"
+"\n"
+"Protože jsi přeskočil/a tutoriál, tipy jsou momentálně vypnuté."
 
 #. [message]: speaker=Mari
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:995
@@ -1046,17 +1002,17 @@ msgstr "... sebeobrana se nepočítá."
 #. [set_menu_item]: id=tutorial_toggle_on
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:1015
 msgid "Tip Dialogue &amp; Popups Are On"
-msgstr ""
+msgstr "Vyskakovací dialogová okna s tipy jsou zapnutá"
 
 #. [set_menu_item]: id=tutorial_toggle_off
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:1027
 msgid "Tip Dialogue &amp; Popups Are Off"
-msgstr ""
+msgstr "Vyskakovací dialogová okna s tipy jsou vypnutá"
 
 #. [message]
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:1047
 msgid "Stop right there! Not one hair further or I’ll bash your head in!"
-msgstr ""
+msgstr "Okamžitě zastav! Ani o krok dál, nebo ti rozbiju hlavu!"
 
 #. [display_tip]
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:1050
@@ -1152,6 +1108,18 @@ msgid ""
 "effects by mousing over the right-side\n"
 "panel."
 msgstr ""
+"S každým tahem se mění denní doba,\n"
+"což ovlivňuje sílu útoků jednotek.\n"
+"\n"
+"V tomto tažení\n"
+"<i><b>bude většina tvých jednotek\n"
+"nejsmrtelnější během dne,\n"
+"zatímco většina tvých nepřátel\n"
+"bude nejnebezpečnější v noci.</b></i>\n"
+"\n"
+"Aktuální denní dobu a její účinky\n"
+"můžeš zjistit,\n"
+"když najedeš myší na pravý panel."
 
 #. [message]: speaker=Urza Mathin
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:1160
@@ -1159,6 +1127,8 @@ msgid ""
 "Ha, this will be an easy victory! These soldiers’ young commander must be a "
 "fool, for he fights my thugs at night while I am strong and he is weak."
 msgstr ""
+"Ha, tohle bude snadný vítězství! Ten mladý velitel vojáků musí být blázen, "
+"protože bojuje s mými lupiči v noci, kdy je slabý, zatímco já silný."
 
 #. [message]: speaker=Mari
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:1188
@@ -1166,6 +1136,8 @@ msgid ""
 "Get a move on, rookie! I’m sure those bandits have called for reinforcements "
 "— you’re running out of time to finish them off."
 msgstr ""
+"Pohni, nováčku! Jsem si jistá, že ti bandité zavolali posily. Dochází ti "
+"čas, abys je dorazil."
 
 #. [message]: speaker=Urza Mathin
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:1210
@@ -1302,6 +1274,9 @@ msgid ""
 "brothers must have been waiting on the road for travelers, ambushing "
 "civilians and raising their corpses as minions."
 msgstr ""
+"Další z bratrů Urzů, který rozšiřuje své řady nemrtvými. Bratři zřejmě "
+"číhali na cestě na pocestné, přepadali civilisty a oživovali jejich mrtvoly "
+"jako své přisluhovače."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:224
@@ -1309,6 +1284,9 @@ msgid ""
 "I know banditry is not uncommon in the lawless south, but necromancy!? Where "
 "is the rest of the South Guard? How have things gotten so far out of control?"
 msgstr ""
+"Uvědomuji si, že lupičství není na bezprávném jihu nic neobvyklého, ale "
+"nekromancie!? Kde je zbytek Jižní hlídky? Jak se věci mohly tak vymknout "
+"kontrole?"
 
 #. [message]: speaker=Mari
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:230
@@ -1317,6 +1295,9 @@ msgid ""
 "dies to those zombies will become one themselves, so don’t be stupid and "
 "remember what we practiced:"
 msgstr ""
+"Pojďme to zjistit. Deorane, ty a tví muži se s tímhle banditou vypořádejte. "
+"Každý, kdo zemře kvůli těm zombiím, se sám stane jednou z nich, takže nebuď "
+"hloupý a pamatuj si, co jsme cvičili:"
 
 #. [message]: speaker=Mari
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:232
@@ -1325,6 +1306,10 @@ msgid ""
 "your injured soldiers to villages for healing. And stand on good terrain "
 "like hills, villages, and castles, not bad terrain like water."
 msgstr ""
+"V noci se braňte, ve dne útočte a ovládejte vesnice, abyste měli příjem. "
+"Stahujte své zraněné vojáky do vesnic, aby se uzdravili. A zůstávejte na "
+"dobrém terénu, jako jsou kopce, vesnice a hrady, ne na nevýhodném terénu, "
+"jako je voda."
 
 #. [message]: speaker=Mari
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:238
@@ -1332,6 +1317,9 @@ msgid ""
 "Let’s find out. Deoran, you and your men deal with this bandit. Anyone who "
 "dies to those zombies will become one themselves, so don’t be stupid."
 msgstr ""
+"Pojďme to zjistit. Deorane, ty a tví muži se s tímhle banditou vypořádejte. "
+"Každý, kdo zemře kvůli těm zombiím, se sám stane jednou z nich, takže nebuď "
+"hloupý."
 
 #. [message]: speaker=Mari
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:245
@@ -1340,12 +1328,15 @@ msgid ""
 "better know what’s going on here. If we’re lucky, I’ll return with "
 "reinforcements."
 msgstr ""
+"Mezitím se proplížím kolem a spojím se s Westinem. Někdo ve městě by měl "
+"vědět, co se tady děje. Pokud budeme mít štěstí, vrátím se s posilami."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:249
 msgid ""
 "Going alone? That sounds dangerous. What happened to staying an observer?"
 msgstr ""
+"Půjdeš sama? To zní nebezpečně. Copak se stalo s tím pasivním pozorovatelem?"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:259
@@ -1354,6 +1345,9 @@ msgid ""
 "shouldn’t count on it. I may only be a junior commander, but this outlaw "
 "underestimates me if he thinks I can’t beat him on my own."
 msgstr ""
+"Dobrá tedy. Doufám, že se Mari vrátí se zbytkem Jižní hlídky, ale neměl bych "
+"na to spoléhat. Možná jsem jen nižší velitel, ale tenhle psanec mě "
+"podceňuje, pokud si myslí, že ho sám neporazím."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:269
@@ -1362,11 +1356,14 @@ msgid ""
 "veteran soldiers from the last battle, I may wish to recall them so they can "
 "continue to gain experience and eventually gain a promotion."
 msgstr ""
+"Protože s každým bojem získáváme zkušenosti a sílíme! Pokud mám nějaké "
+"veterány z poslední bitvy, možná bych je mohl chtít povolat, aby mohli i "
+"nadále získávat zkušenosti a nakonec dosáhnout povýšení."
 
 #. [display_tip]
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:272
 msgid "Recalling Veterans"
-msgstr ""
+msgstr "Povolávání veteránů"
 
 #. [display_tip]
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:274
@@ -1504,6 +1501,8 @@ msgid ""
 "Hey, that’s not fair! I spent ages fortifying the road, you can’t just go "
 "around!"
 msgstr ""
+"Hej, to není fér! Strávil jsem věky zpevňováním silnice, nemůžeš ji jen tak "
+"obejít!"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:543
@@ -1511,11 +1510,13 @@ msgid ""
 "I had better hurry and finish off this bandit! If I take too long he may "
 "decide to flee, and then I’ll never get the chance to find out what he knows!"
 msgstr ""
+"Raději si pospíším a dorazím toho banditu! Pokud to bude trvat příliš "
+"dlouho, může se rozhodnout uprchnout a já pak nikdy nezjistím, co ví!"
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:571
 msgid "We’ve caught you at last, you outlaw! Prepare to meet your end!"
-msgstr ""
+msgstr "Konečně jsme tě dostali, psanče! Připrav se na svou smrt!"
 
 #. [message]: speaker=Urza Fastik
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:575
@@ -1523,6 +1524,8 @@ msgid ""
 "Gah, more soldiers from Westin... Forget this, I’m getting out of here while "
 "I still have the chance!"
 msgstr ""
+"Sakra, další vojáci z Westinu... Kašlu na to, mizím odsud, dokud ještě mám "
+"šanci!"
 
 #. [message]: speaker=Mari
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:581
@@ -1530,6 +1533,8 @@ msgid ""
 "He’s gone! Good work defeating these undead, Deoran, but their leader has "
 "escaped..."
 msgstr ""
+"Je pryč! Dobrá práce, Deorane, porazil jsi ty nemrtvé. Ale jejich vůdce "
+"unikl..."
 
 #. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:600
@@ -1537,6 +1542,8 @@ msgid ""
 "Even with the power of darkness at my command... No, I can’t die yet! I— I "
 "can still escape!"
 msgstr ""
+"I přes to, že mi byla síla temnoty k mání... Ne, ještě nemůžu umřít! Já... "
+"já ještě můžu utéct!"
 
 #. [message]: speaker=Sir Gerrick
 #. "clap you in irons" means "put you in jail"
@@ -1544,11 +1551,13 @@ msgstr ""
 msgid ""
 "Not so fast, outlaw — we’ve caught you at last! Time to clap you in irons."
 msgstr ""
+"Ne tak rychle, psanče..., konečně jsme tě dostali! Je čas zjistit, jak ti "
+"sluší pouta."
 
 #. [message]: speaker=Urza Fastik
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:636
 msgid "Urgh! Get these chains... off me..."
-msgstr ""
+msgstr "Ugh! Sundejte ze mě... ty řetězy..."
 
 #. [message]: speaker=Mari
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:653
@@ -1556,6 +1565,8 @@ msgid ""
 "Minister, don’t let him die! This is our best chance to finally get some "
 "answers."
 msgstr ""
+"Nenechte ho zemřít, purkmistře! Tohle je naše nejlepší šance konečně dostat "
+"nějaké odpovědi."
 
 #. [message]
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:663
@@ -1563,6 +1574,8 @@ msgid ""
 "Mari, you’ve returned! And these must be the South Guard officers we were "
 "sent here to meet."
 msgstr ""
+"Mari, vrátila ses! A tohle musí být představitelé Jižní hlídky, za kterými "
+"jsme sem byli posláni."
 
 #. [message]: speaker=Minister Hylas
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:667
@@ -1570,6 +1583,8 @@ msgid ""
 "Minister Hylas, archivist and local medic. A pleasure to make your "
 "acquaintance, Lieutenant Deoran."
 msgstr ""
+"Purkmistr Hylas, archivář a místní zdravotník. Je mi potěšením se s vámi "
+"seznámit, poručíku Deorane."
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:671
@@ -1578,6 +1593,9 @@ msgid ""
 "ain’t the time for talk — let’s get this prisoner back t’ town, and finally "
 "get some answers out o’ him."
 msgstr ""
+"Jo, a já jsem sir Gerrick, velitel pěchoty Jižní hlídky! Ale dost řečí..., "
+"pojďme dostat toho vězně zpátky do města a konečně z něj vypáčit nějaké "
+"odpovědi."
 
 #. [scenario]: id=02x_Westin
 #: data/campaigns/The_South_Guard/scenarios/02x_Westin.cfg:5
@@ -1594,7 +1612,7 @@ msgstr "Westin"
 #. [event]
 #: data/campaigns/The_South_Guard/scenarios/02x_Westin.cfg:95
 msgid "Town Crier"
-msgstr ""
+msgstr "Městský vyvolávač"
 
 #. [message]: speaker=Minister Hylas
 #: data/campaigns/The_South_Guard/scenarios/02x_Westin.cfg:144
@@ -1611,6 +1629,11 @@ msgid ""
 "powers, the location of another Urza brother, or something else entirely, I "
 "cannot say."
 msgstr ""
+"Kromě této jediné informace musím bohužel oznámit, že Urza Fastik zůstává "
+"stejně nepřístupný jako v první den, kdy jsme sem dorazili.\n"
+"\n"
+"Zda se „Údolí kvetoucích stromů“ vztahuje k zdroji jeho temných sil, k místu "
+"pobytu jiného z bratrů Urzů nebo k něčemu úplně jinému, nedokážu říci."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/02x_Westin.cfg:155
@@ -1620,6 +1643,10 @@ msgid ""
 "bandits... I hear they’re aloof even with regards to the king. Can we not "
 "learn more from our captive?"
 msgstr ""
+"Údolí... není to náhodou exkláva v Aethenském lese? Nedokážu si představit, "
+"že by tamní elfové měli cokoli společného s nekromancií nebo že by někdy "
+"nabízeli pomoc banditům... Slyšel jsem, že se staví odtažitě i ke králi. "
+"Nemůžeme se od našeho zajatce dozvědět víc?"
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/02x_Westin.cfg:159
@@ -1628,6 +1655,9 @@ msgid ""
 "roughing it. Lives are at stake, an’ too much coddling ain’t getting us "
 "nowhere."
 msgstr ""
+"Však tvrdím, že s ním zacházíme moc laskavě. Chlap jako Fastik, ten je na "
+"drsné chování zvyklý. V sázce jsou životy a přemíra rozmazlování nás nikam "
+"nedostane."
 
 #. [message]: speaker=Minister Hylas
 #: data/campaigns/The_South_Guard/scenarios/02x_Westin.cfg:163
@@ -1636,6 +1666,9 @@ msgid ""
 "illuminate. Now deprived of the dark magic that once suffused him, his very "
 "mind has begun to fade away."
 msgstr ""
+"Obávám se, že v jeho duši je zkaženost, temnější, než dokáže i mé světlo "
+"proniknout. Teď, když je zbaven temné magie, která ho kdysi prostupovala, "
+"začíná jeho mysl slábnout."
 
 #. [message]: speaker=Minister Hylas
 #: data/campaigns/The_South_Guard/scenarios/02x_Westin.cfg:167
@@ -1643,6 +1676,8 @@ msgid ""
 "Even were he willing, I am not sure he remembers anything other than what he "
 "has already told us."
 msgstr ""
+"I kdyby chtěl, nejsem si jistý, jestli si pamatuje něco jiného, než co nám "
+"už řekl."
 
 #. [message]: speaker=Mari
 #: data/campaigns/The_South_Guard/scenarios/02x_Westin.cfg:181
@@ -1650,6 +1685,8 @@ msgid ""
 "Hey, everyone. I’m done cleaning up the last of Fastik’s mess, but no trace "
 "of the other two brothers."
 msgstr ""
+"Zdravím všechny. Dokončila jsem „úklid“ zbývajícího nepořádku po Fastikovi, "
+"ale po dalších dvou bratrech ani stopy."
 
 #. [message]: speaker=Mari
 #: data/campaigns/The_South_Guard/scenarios/02x_Westin.cfg:201
@@ -1657,6 +1694,8 @@ msgid ""
 "Thanks, Hylas. Shouldn’t there be a duke or prince or something around here? "
 "How did things get this bad?"
 msgstr ""
+"Díky, Hylasi. Neměl by tu být nějaký vévoda nebo princ nebo někdo takový? "
+"Jak se to mohlo takhle zvrtnout?"
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/02x_Westin.cfg:205
@@ -1665,6 +1704,10 @@ msgid ""
 "brother. Arand’s been tryin’ to build the place up. Last time he visited, "
 "His Highness said our home might someday be called the Jewel of the South!"
 msgstr ""
+"Ano, oficiálně tato země patří princi Arandovi, mladšímu bratrovi krále "
+"Gararda. Arand se snaží toto místo pozvednout. Když nás Jeho Výsost "
+"naposledy navštívila, řekla, že náš domov by se jednoho dne mohl nazývat "
+"Klenotem Jihu!"
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/02x_Westin.cfg:209
@@ -2134,11 +2177,14 @@ msgid ""
 "Half-alive echo? Was this something to help protect the valley from "
 "intruders?"
 msgstr ""
+"To vůbec nebyli skuteční elfové! Byla to nějaká... předem vytvořená iluze? "
+"Napůl živá ozvěna? Bylo tohle něco, co mělo pomoci chránit údolí před "
+"vetřelci?"
 
 #. [companion_message]
 #: data/campaigns/The_South_Guard/scenarios/03_Vale_of_Tears.cfg:378
 msgid "If that’s what it was, it didn’t work. Look!"
-msgstr ""
+msgstr "Ať to bylo, co to bylo, nefungovalo to. Podívej!"
 
 #. [companion_message]
 #: data/campaigns/The_South_Guard/scenarios/03_Vale_of_Tears.cfg:379
@@ -2153,7 +2199,7 @@ msgstr ""
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/03_Vale_of_Tears.cfg:391
 msgid "Undead! In an elven valley?? And a caged elf, too!"
-msgstr ""
+msgstr "Nemrtvý! V elfím údolí?? A ještě k tomu elf v kleci!"
 
 #. [companion_message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/03_Vale_of_Tears.cfg:395
@@ -5828,8 +5874,8 @@ msgstr ""
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Tides_of_War.cfg:482
 msgid ""
 "You survived $pebbles_defense_length turns last scenario! Deoran starts\n"
-"   with $soldiers.length extra soldiers and "
-"$( ($pebbles_defense_length-36)*3 ) extra gold!"
+"   with $soldiers.length extra soldiers and $"
+"( ($pebbles_defense_length-36)*3 ) extra gold!"
 msgstr ""
 
 #. [else]
@@ -6531,18 +6577,6 @@ msgstr ""
 
 #. [unit_type]: id=Cavalryman Commander, race=human
 #: data/campaigns/The_South_Guard/units/Deoran1_Cavalryman.cfg:35
-#, fuzzy
-#| msgid ""
-#| "At scarcely 17 or 18 years of age, squires are not yet full knights, but "
-#| "still have the knowledge and skill to master their mounts whilst in full "
-#| "panoply. Talented squires are sometimes given command of small units in "
-#| "Wesnoth’s army, where they gain experience with fellow troops and honing "
-#| "their prowess in battle.\n"
-#| "\n"
-#| "<span color='#c7c7c7'><i>If you’re a veteran player, you’ll notice that "
-#| "Deoran is based off the Cavalryman, but lacks the Cavalryman’s blade and "
-#| "impact resistances. This was done to simplify the unit, so as not to "
-#| "overwhelm new players.</i></span>"
 msgid ""
 "At scarcely 17 or 18 years of age, squires are not yet full knights, but "
 "still have the knowledge and skill to master their mounts whilst in full "
@@ -6554,12 +6588,7 @@ msgstr ""
 "ale přesto mají znalosti a dovednosti, aby v plné zbroji zvládli své koně. "
 "Nadaní panoši někdy dostanou na povel malé jednotky ve wesnothském vojsku, "
 "kde získávají zkušenost se spolubojovníky a zdokonalují svou zdatnost "
-"v bitvě.\n"
-"\n"
-"<span color='#c7c7c7'><i>Pokud jsi zkušený hráč, jistě sis všiml, že Deoran "
-"vychází z kaveleristy, ale postrádá jeho odolnost proti útoku čepelí "
-"a úderem. To bylo uděláno pro zjednodušení jednotky, aby to nezatěžovalo "
-"nové hráče.</i></span>"
+"v bitvě."
 
 #. [unit_type]: id=Cavalryman Commander, race=human
 #. [unit_type]: id=Dragoon Commander, race=human
@@ -6572,6 +6601,9 @@ msgid ""
 "Cavalryman, but lacks the Cavalryman’s blade and impact resistances. This "
 "was done to simplify the unit, so as not to overwhelm new players."
 msgstr ""
+"Pokud jsi zkušený hráč, jistě sis všiml, že Deoran vychází z kaveleristy, "
+"ale postrádá jeho odolnost proti útoku čepelí a úderem. To bylo uděláno pro "
+"zjednodušení jednotky, aby to nezatěžovalo nové hráče."
 
 #. [unit_type]: id=Dragoon Commander, race=human
 #: data/campaigns/The_South_Guard/units/Deoran2_Dragoon.cfg:26
@@ -6653,10 +6685,11 @@ msgstr "kůsa"
 msgid "Master Infantryman"
 msgstr "Kapitán pěchoty"
 
+# Podle typu jednotky jde o tu klec, ne o jejího obyvatele.
 #. [unit_type]: id=Cage, race=mechanical
 #: data/campaigns/The_South_Guard/units/MECH_Cage.cfg:5
 msgid "Caged Elf"
-msgstr "Elf v kleci"
+msgstr "Klec na elfy"
 
 #. [unit_type]: id=Cage, race=mechanical
 #: data/campaigns/The_South_Guard/units/MECH_Cage.cfg:10
@@ -6664,11 +6697,13 @@ msgid ""
 "A small cage of sturdy metal bars. Prolonged occupancy would be highly "
 "unpleasant."
 msgstr ""
+"Malá klec z pevných kovových tyčí. Dlouhodobé pobývání v ní by mohlo být "
+"velmi nepříjemné."
 
 #. [unit_type]: id=Quintain, race=mechanical
 #: data/campaigns/The_South_Guard/units/MECH_Quintain.cfg:4
 msgid "Quintain"
-msgstr ""
+msgstr "Panák"
 
 #. [unit_type]: id=Quintain, race=mechanical
 #: data/campaigns/The_South_Guard/units/MECH_Quintain.cfg:17
@@ -6676,11 +6711,13 @@ msgid ""
 "Quintains are used to practice swordplay and jousting on. It would be "
 "extremely unusual to be attacked by one."
 msgstr ""
+"Panáci se používají k výcviku boje s mečem a k tréninku před turnaji. Bylo "
+"by extrémně neobvyklé, kdyby panák sám od sebe někoho napadl."
 
 #. [unit_type]: id=Statue, race=mechanical
 #: data/campaigns/The_South_Guard/units/MECH_Statue.cfg:4
 msgid "Statue"
-msgstr ""
+msgstr "Socha"
 
 #. [unit_type]: id=Statue, race=mechanical
 #: data/campaigns/The_South_Guard/units/MECH_Statue.cfg:20
@@ -6688,6 +6725,8 @@ msgid ""
 "A life-sized statue made of heavy Dulatus granite. This one is carved in the "
 "likeness of Garard II, the current king of Wesnoth."
 msgstr ""
+"Socha v životní velikosti vyrobená z těžké žuly darované trpaslíky. Tato je "
+"vytesána do podoby Gararda II., současného krále Wesnothu."
 
 #. [unit_type]: id=Trapdoor, race=mechanical
 #: data/campaigns/The_South_Guard/units/MECH_Trapdoor.cfg:5
@@ -6731,17 +6770,17 @@ msgstr ""
 #. [unit_type]: id=King of Wesnoth, race=human
 #: data/campaigns/The_South_Guard/units/NPC_Garard.cfg:17
 msgid "King of Wesnoth"
-msgstr ""
+msgstr "Král Wesnothu"
 
 #. [attack]
 #: data/campaigns/The_South_Guard/units/NPC_Garard.cfg:39
 msgid "longsword"
-msgstr ""
+msgstr "dlouhý meč"
 
 #. [attack]
 #: data/campaigns/The_South_Guard/units/NPC_Garard.cfg:46
 msgid "lance"
-msgstr ""
+msgstr "dřevec"
 
 #. [unit_type]: id=Townsfolk, race=human, gender=male,female
 #: data/campaigns/The_South_Guard/units/NPC_Townsfolk.cfg:4
@@ -6845,7 +6884,7 @@ msgstr "Ochutnej chladnou ocel!"
 #. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/utils/sg_characters.cfg:225
 msgid "Yeah... I should’ve figured I wouldn’t get a happy ending..."
-msgstr ""
+msgstr "Jasně... Mělo mě napadnout, že nedopadnu dobře..."
 
 #. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/utils/sg_characters.cfg:244
@@ -6872,6 +6911,11 @@ msgid ""
 "For a full description of what one of your units can do, <b><i>right-click "
 "it and select “Unit Type Description.”</i></b>"
 msgstr ""
+"Jedna z tvých jednotek dosáhla maximálního počtu zkušeností a povýšila! Nyní "
+"je výrazně silnější a byla plně vyléčena!\n"
+"\n"
+"Úplný popis toho, co která z tvých jednotek dokáže, zobrazíš <b><i>kliknutím "
+"na ni pravým tlačítkem myši a výběrem možnosti „Popis typu jednotky“</i></b>."
 
 #. [display_tip]
 #: data/campaigns/The_South_Guard/utils/sg_help.cfg:94

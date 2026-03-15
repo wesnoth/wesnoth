@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2026-02-25 19:03-0600\n"
-"PO-Revision-Date: 2026-01-23 22:36+0100\n"
+"PO-Revision-Date: 2026-03-12 19:42+0100\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -475,37 +475,30 @@ msgid "File does not have .map, .cfg, or .mask extension"
 msgstr "Soubor nemá příponu .map, .cfg nebo .mask"
 
 #: src/editor/map/map_context.cpp:227
-#, fuzzy
-#| msgid "Failed to load the scenario, attempting to load only the map."
 msgid ""
 "Failed to load the scenario: $error\n"
 "\n"
 "Attempting to load only the map."
-msgstr "Nepodařilo se načíst scénář, pokouším se nahrát pouze mapu."
+msgstr ""
+"Nepodařilo se načíst scénář: $error\n"
+"\n"
+"Pokouším se načíst pouze mapu."
 
 #: src/editor/map/map_context.cpp:253
-#, fuzzy
-#| msgid ""
-#| "The map file looks like a scenario, but the map_data value does not point "
-#| "to an existing file"
 msgid ""
 "The file looks like a scenario, but the map_data attribute does not point to "
 "an existing file"
 msgstr ""
-"Soubor mapy se zdá být scénářem, ale klíč map_data není odkazem na "
-"existující soubor"
+"Soubor vypadá jako scénář, ale atribut map_data neodkazuje na existující "
+"soubor"
 
 #: src/editor/map/map_context.cpp:268
-#, fuzzy
-#| msgid ""
-#| "The map file looks like a scenario, but the map_file value does not point "
-#| "to an existing file"
 msgid ""
 "The file looks like a scenario, but the map_file attribute does not point to "
 "an existing file"
 msgstr ""
-"Soubor mapy vypadá jako scénář, ale hodnota map_file neodkazuje na "
-"existující soubor"
+"Soubor vypadá jako scénář, ale atribut map_file neodkazuje na existující "
+"soubor"
 
 #: src/editor/map/map_context.cpp:448
 msgid "Confirm"
