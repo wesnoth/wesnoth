@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2026-02-25 19:03-0600\n"
-"PO-Revision-Date: 2022-01-07 15:09-0300\n"
+"PO-Revision-Date: 2026-03-06 20:43-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: Portuguese/Brazil\n"
 "Language: pt_BR\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 2.4.3\n"
+"X-Generator: Poedit 3.6\n"
 
 #
 # File: data/core/editor/brushes.cfg, line: 6
@@ -202,7 +202,7 @@ msgstr "especial"
 #. [editor_group]: id=elevation
 #: data/core/editor/terrain-groups.cfg:115
 msgid "elevation"
-msgstr ""
+msgstr "Elevação"
 
 #. [editor_times]: id=empty
 #. Describes a scenario in the editor that has not set a time of day schedule
@@ -310,7 +310,7 @@ msgstr "Janela"
 #. [menu]: id=menu-editor-addon
 #: data/themes/editor.cfg:110
 msgid "Add-on"
-msgstr ""
+msgstr "Add-on"
 
 #
 # File: data/themes/editor.cfg, line: 115
@@ -463,8 +463,10 @@ msgid "No editor time-of-day found."
 msgstr "Nenhum editor de período do dia foi encontrado."
 
 #: src/editor/controller/editor_controller.cpp:886
+#, fuzzy
+#| msgid "Add-on"
 msgid "Add-on Files"
-msgstr ""
+msgstr "Add-on"
 
 #: src/editor/controller/editor_controller.cpp:899
 #, fuzzy
@@ -626,9 +628,9 @@ msgstr "Erro"
 # File: src/editor/editor_controller.cpp, line: 203
 #: src/editor/map/context_manager.cpp:705
 #, fuzzy
-#| msgid "Do you really want to quit?"
+#| msgid "Do you really want to save $type1 in $type2 folder?"
 msgid "Do you really want to save a map in the scenarios folder?"
-msgstr "Você realmente deseja sair?"
+msgstr "Você realmente deseja salvar $type1 na pasta $type2?"
 
 #
 # File: src/editor/map/context_manager.cpp, line: 623
@@ -656,9 +658,9 @@ msgstr "Salvar Cenário Como"
 # File: src/editor/editor_controller.cpp, line: 203
 #: src/editor/map/context_manager.cpp:754
 #, fuzzy
-#| msgid "Do you really want to quit?"
+#| msgid "Do you really want to save $type1 in $type2 folder?"
 msgid "Do you really want to save a scenario in the maps folder?"
-msgstr "Você realmente deseja sair?"
+msgstr "Você realmente deseja salvar $type1 na pasta $type2?"
 
 #
 # File: src/editor/map/context_manager.cpp, line: 623
@@ -752,14 +754,8 @@ msgstr "Mapa carregado do cenário"
 # File: src/editor/map/context_manager.cpp, line: 690
 # File: src/editor/map/context_manager.cpp, line: 690
 #: src/editor/map/context_manager.cpp:960
-#, fuzzy
-#| msgid ""
-#| "Loaded referenced map file:\n"
-#| "$new"
 msgid "Loaded referenced map file:"
-msgstr ""
-"Arquivo de mapa referência carregado:\n"
-"$new"
+msgstr "Arquivo de mapa referência carregado:"
 
 #: src/editor/map/editor_map.cpp:110
 #: src/editor/palette/location_palette.cpp:118
@@ -791,8 +787,10 @@ msgid "Empty file"
 msgstr "Arquivo vazio"
 
 #: src/editor/map/map_context.cpp:204
+#, fuzzy
+#| msgid "File does not have .map or .cfg extension"
 msgid "File does not have .map, .cfg, or .mask extension"
-msgstr ""
+msgstr "O arquivo não tem extensão .map nem .cfg"
 
 #: src/editor/map/map_context.cpp:227
 msgid ""
@@ -909,9 +907,9 @@ msgstr "Não vai funcionar no jogo sem cuidados extras."
 
 #: src/editor/palette/item_palette.cpp:33
 #, fuzzy
-#| msgid "Right-click: "
+#| msgid " | Right-click to remove"
 msgid "Left-click: Place item $item | Right-click to remove"
-msgstr "Botão-direito: "
+msgstr " | Botão-direito para remover"
 
 #: src/editor/palette/location_palette.cpp:247
 msgid "Go To"
@@ -963,21 +961,14 @@ msgstr "Ctrl + clique: copia o terreno"
 #~ msgid "Load Map"
 #~ msgstr "Carregar Mapa"
 
+#~ msgid "Left-click: Place item "
+#~ msgstr "Botão-esquerdo: Coloca um item "
+
 #~ msgid "Choose File"
 #~ msgstr "Escolher Arquivo"
 
 #~ msgid "Select"
 #~ msgstr "Selecionar"
-
-#, fuzzy
-#~| msgid "Left-click: "
-#~ msgid "Left-click: Place item "
-#~ msgstr "Botão-esquerdo: "
-
-#~ msgid "Clipboard support not found, contact your packager"
-#~ msgstr ""
-#~ "Suporte para Área de Tranferência não encontrado, entre em contato com o "
-#~ "seu gestor de pacotes"
 
 #
 # File: src/gui/dialogs/editor_set_starting_position.cpp, line: 86

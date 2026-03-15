@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2026-02-26 01:04 UTC\n"
-"PO-Revision-Date: 2022-08-12 17:23-0300\n"
+"PO-Revision-Date: 2026-03-06 20:28-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: none\n"
 "Language: pt_BR\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.6\n"
 
 #. [campaign]: id=Liberty
 #. [achievement_group]
@@ -111,8 +111,10 @@ msgstr ""
 
 #. [achievement]: id=liberty_nameless
 #: data/campaigns/Liberty/achievements.cfg:14
+#, fuzzy
+#| msgid "The Nameless General"
 msgid "The Nameless Guard"
-msgstr ""
+msgstr "O general sem nome"
 
 #. [achievement]: id=liberty_nameless
 #: data/campaigns/Liberty/achievements.cfg:15
@@ -122,7 +124,7 @@ msgstr ""
 #. [achievement]: id=liberty_iron
 #: data/campaigns/Liberty/achievements.cfg:21
 msgid "Harper vs. Goliath"
-msgstr ""
+msgstr "Harper vs. Golias"
 
 #. [achievement]: id=liberty_iron
 #: data/campaigns/Liberty/achievements.cfg:22
@@ -132,10 +134,8 @@ msgstr ""
 #. [achievement]: id=liberty_hunter
 #. this is the achievement for the scenario The Hunters
 #: data/campaigns/Liberty/achievements.cfg:29
-#, fuzzy
-#| msgid "Peasant Hunter"
 msgid "Perfect Hunter"
-msgstr "Camponês Caçador"
+msgstr "Caçador Perfeito"
 
 #. [achievement]: id=liberty_hunter
 #: data/campaigns/Liberty/achievements.cfg:30
@@ -709,10 +709,8 @@ msgstr "Veja, cavaleiros se aproximam."
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:157
-#, fuzzy
-#| msgid "Stand fast, nephew."
 msgid "Stand fast, Harper."
-msgstr "Aguente firme, sobrinho."
+msgstr "Aguente firme, Harper."
 
 #. [message]: speaker=Tarwen
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:170
@@ -1646,9 +1644,9 @@ msgstr ""
 #. [modify_unit]
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:865
 #, fuzzy
-#| msgid "Kestrel"
+#| msgid "General Kestrel"
 msgid "Kestrel"
-msgstr "Kestrel"
+msgstr "General Kestrel"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:872
@@ -1813,17 +1811,13 @@ msgstr "Hans"
 
 #. [objective]: condition=win
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:153
-#, fuzzy
-#| msgid "Enter the Grey Woods"
 msgid "Enter the Grey Woods with Hans"
-msgstr "Entre no Bosque Cinzento"
+msgstr "Entre no Bosque Cinzento com Hans"
 
 #. [objective]: condition=lose
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:165
-#, fuzzy
-#| msgid "Death of Harper"
 msgid "Death of Hans"
-msgstr "Morte de Harper"
+msgstr "Morte de Hans"
 
 #. [note]
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:170
@@ -3566,9 +3560,6 @@ msgstr "Mas o que?"
 
 #~ msgid "Jasken"
 #~ msgstr "Jasken"
-
-#~ msgid "Port of Elensefar"
-#~ msgstr "Porto de Elensefar"
 
 #~ msgid "Defeat the enemy general"
 #~ msgstr "Derrote o general inimigo"
