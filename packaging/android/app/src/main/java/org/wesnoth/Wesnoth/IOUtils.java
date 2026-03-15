@@ -80,13 +80,20 @@ public class IOUtils {
 
 				DocumentFile newFile = targetParent.createFile(getMimeType(sourceName), sourceName);
 				if (newFile == null) {
+					Log.e("Import/Export copy", "Cannot create file " + sourceName + " for writing.");
 					return;
 				}
 
 				InputStream in = context.getContentResolver().openInputStream(source.getUri());
 				OutputStream out = context.getContentResolver().openOutputStream(newFile.getUri());
 
-				if (in == null || out == null) {
+				if (in == null) {
+					Log.e("Import/Export copy", "Cannot open file " + source.getUri() + " for reading.");
+					return;
+				}
+				
+				if (out == null) {
+					Log.e("Import/Export copy", "Cannot open file " + newFile.getUri() + " for writing.");
 					return;
 				}
 
