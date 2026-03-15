@@ -36,6 +36,34 @@
       "description": "Target Windows (64-bit) with the Visual Studio development environment. (RelWithDebInfo)",
       "inherits": "x64-Debug",
       "cacheVariables": { "CMAKE_BUILD_TYPE": "RelWithDebInfo" }
+    },
+    {
+      "name": "web-emscripten-base",
+      "description": "Base preset for building Wesnoth with Emscripten.",
+      "hidden": true,
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/out/build/${presetName}",
+      "installDir": "${sourceDir}/out/install/${presetName}",
+      "toolchainFile": "$env{EMSCRIPTEN}/cmake/Modules/Platform/Emscripten.cmake",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "RelWithDebInfo",
+        "CMAKE_EXECUTABLE_SUFFIX": ".html",
+        "ENABLE_SERVER": "OFF",
+        "ENABLE_CAMPAIGN_SERVER": "OFF",
+        "ENABLE_TESTS": "OFF",
+        "ENABLE_NLS": "OFF",
+        "ENABLE_POT_UPDATE_TARGET": "OFF",
+        "ENABLE_DISPLAY_REVISION": "OFF",
+        "ENABLE_NOTIFICATIONS": "OFF",
+        "ENABLE_DESKTOP_ENTRY": "OFF",
+        "ENABLE_APPDATA_FILE": "OFF"
+      }
+    },
+    {
+      "name": "web-emscripten",
+      "displayName": "Web Emscripten",
+      "description": "Build Wesnoth for WebAssembly (JSPI, no pthreads).",
+      "inherits": "web-emscripten-base"
     }
   ]
 }

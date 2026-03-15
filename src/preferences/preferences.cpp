@@ -42,6 +42,10 @@
 #include "units/unit.hpp"
 #include "video.hpp"
 
+#ifdef __EMSCRIPTEN__
+#include "filesystem_emscripten.hpp"
+#endif
+
 #include <sys/stat.h> // for setting the permissions of the preferences file
 #include <boost/algorithm/string.hpp>
 
@@ -413,6 +417,10 @@ void prefs::write_preferences()
 		}
 	}
 #endif
+
+#ifdef __EMSCRIPTEN__
+	filesystem::emscripten::syncfs();
+#endif
 }
 
 void prefs::clear_credentials()
@@ -694,7 +702,8 @@ std::size_t prefs::sound_buffer_size()
 {
 	// Sounds don't sound good on Windows unless the buffer size is 4k,
 	// but this seems to cause crashes on other systems...
-	#ifdef _WIN32
+	#if defined(_WIN32) || defined(__EMSCRIPTEN__)
+		// Emscripten needs a larger buffer to tolerate ASYNCIFY yield latency.
 		const std::size_t buf_size = 4096;
 	#else
 		const std::size_t buf_size = 1024;

@@ -15,6 +15,75 @@
 
 #pragma once
 
+#include "exceptions.hpp"
+
+#include <memory>
+#include <string>
+
+class config;
+
+#ifdef __EMSCRIPTEN__
+
+// ── Emscripten build: WebSocket-based connection via proxy ──────────────
+
+namespace network_asio
+{
+struct error : public game::error
+{
+	error(const std::string& msg)
+		: game::error(msg)
+	{
+	}
+};
+
+struct ws_connection_impl;
+
+/** A class that represents a connection to a server via WebSocket proxy. */
+class connection
+{
+public:
+	/**
+	 * Constructor.
+	 *
+	 * @param host    Name of the host to connect to
+	 * @param service Service identifier such as "15019"
+	 */
+	connection(const std::string& host, const std::string& service);
+	~connection();
+
+	void transfer(const config& request, config& response);
+
+	/** Handle all pending asynchronous events and return */
+	std::size_t poll();
+
+	/**
+	 * Run event loop until all operations complete.
+	 * On Emscripten, yields to the browser via emscripten_sleep.
+	 */
+	void run();
+
+	void cancel();
+
+	/** True if connected and no high-level operation is in progress */
+	bool done() const;
+
+	/** Always false on Emscripten (TLS is handled by the proxy) */
+	bool using_tls() const;
+
+	std::size_t bytes_to_write() const;
+	std::size_t bytes_written() const;
+	std::size_t bytes_to_read() const;
+	std::size_t bytes_read() const;
+
+private:
+	std::unique_ptr<ws_connection_impl> impl_;
+};
+}
+
+#else
+
+// ── Native build: Boost.Asio TCP/TLS connection ────────────────────────
+
 #ifdef _WIN32
 
 #ifdef INADDR_ANY
@@ -31,15 +100,12 @@
 
 #endif
 
-#include "exceptions.hpp"
 #include "utils/variant.hpp"
 
 #include <boost/asio/io_context.hpp>
 #include <boost/asio/ip/tcp.hpp>
 #include <boost/asio/streambuf.hpp>
 #include <boost/asio/ssl.hpp>
-
-class config;
 
 namespace network_asio
 {
@@ -174,3 +240,5 @@ private:
 	std::size_t bytes_read_;
 };
 }
+
+#endif // __EMSCRIPTEN__

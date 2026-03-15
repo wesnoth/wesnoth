@@ -1,0 +1,61 @@
+diff --git a/pango/pangofc-fontmap.c b/pango/pangofc-fontmap.c
+--- a/pango/pangofc-fontmap.c
++++ b/pango/pangofc-fontmap.c
+@@ -1348,19 +1348,34 @@
+ static void
+ start_fontconfig_thread (PangoFcFontMap *fcfontmap)
+ {
++#ifdef __EMSCRIPTEN__
++  /* Run fontconfig init synchronously.  JSPI is incompatible with
++   * Web Worker pthreads, so the background fontconfig thread cannot
++   * be used.  FC_MATCH / FC_SORT are also handled inline. */
++  g_mutex_lock (&fc_init_mutex);
++  if (fc_initialized == DEFAULT_CONFIG_NOT_INITIALIZED)
++    {
++      fc_initialized = DEFAULT_CONFIG_INITIALIZING;
++      FcInit ();
++      fc_initialized = DEFAULT_CONFIG_INITIALIZED;
++      g_cond_broadcast (&fc_init_cond);
++    }
++  g_mutex_unlock (&fc_init_mutex);
++#else
+   GThread *thread;
+ 
+   g_mutex_lock (&fc_init_mutex);
+ 
+   thread = g_thread_new ("[pango] fontconfig", fc_thread_func, g_async_queue_ref (fcfontmap->priv->queue));
+   g_thread_unref (thread);
+ 
+   if (fc_initialized == DEFAULT_CONFIG_NOT_INITIALIZED)
+     {
+       fc_initialized = DEFAULT_CONFIG_INITIALIZING;
+ 
+       g_async_queue_push (fcfontmap->priv->queue, thread_data_new (FC_INIT, NULL));
+     }
+ 
+   g_mutex_unlock (&fc_init_mutex);
++#endif
+ }
+@@ -1587,5 +1601,9 @@
+   g_cond_init (&pats->cond);
+ 
+-  g_async_queue_push (fontmap->priv->queue, thread_data_new (FC_MATCH, pats));
++#ifdef __EMSCRIPTEN__
++  match_in_thread (thread_data_new (FC_MATCH, pats));
++#else
++  g_async_queue_push (fontmap->priv->queue, thread_data_new (FC_MATCH, pats));
++#endif
+ 
+   g_hash_table_insert (fontmap->priv->patterns_hash, pats->pattern, pats);
+@@ -1730,6 +1748,10 @@
+       before = PANGO_TRACE_CURRENT_TIME;
+ 
+       if (!pats->fontset)
+-        g_async_queue_push (pats->fontmap->priv->queue, thread_data_new (FC_SORT, pats));
++#ifdef __EMSCRIPTEN__
++        sort_in_thread (thread_data_new (FC_SORT, pats));
++#else
++        g_async_queue_push (pats->fontmap->priv->queue, thread_data_new (FC_SORT, pats));
++#endif
+ 
+       g_mutex_lock (&pats->mutex);

@@ -805,18 +805,27 @@ static int do_gameloop(commandline_options& cmdline_opts)
 	// if the log directory is not writable, then this is the error condition so show the error message.
 	// if the log directory is writable, then there's no issue.
 	// if the optional isn't set, then logging to file has been disabled, so there's no issue.
+#ifdef __EMSCRIPTEN__
+	// On Emscripten, skip the log directory check to avoid a modal dialog
+	// that blocks forever in headless environments.
+#else
 	if(!lg::log_dir_writable().value_or(true)) {
 		utils::string_map symbols;
 		symbols["logdir"] = filesystem::get_logs_dir();
 		std::string msg = VGETTEXT("Unable to create log files in directory $logdir. This is often caused by incorrect folder permissions, anti-virus software restricting folder access, or using OneDrive to manage your My Documents folder.", symbols);
 		gui2::show_message(_("Logging Failure"), msg, message::ok_button);
 	}
+#endif
 
 	game_config_manager& config_manager = game->config_manager();
 
 	if(game_config::check_migration) {
 		game_config::check_migration = false;
+#ifdef __EMSCRIPTEN__
+		// Skip migration dialog on Emscripten — it would block headless
+#else
 		migrate_version_selection::execute();
+#endif
 	}
 
 	loading_screen::display([&res, &config_manager, &cmdline_opts]() {
@@ -829,7 +838,6 @@ static int do_gameloop(commandline_options& cmdline_opts)
 		}
 
 		loading_screen::progress(loading_stage::init_fonts);
-
 		res = font::load_font_config();
 		if(res == false) {
 			PLAIN_LOG << "could not re-initialize fonts for the current language";
@@ -838,7 +846,6 @@ static int do_gameloop(commandline_options& cmdline_opts)
 
 		if(!game_config::no_addons && !cmdline_opts.noaddons)  {
 			loading_screen::progress(loading_stage::refresh_addons);
-
 			refresh_addon_version_info_cache();
 		}
 	});

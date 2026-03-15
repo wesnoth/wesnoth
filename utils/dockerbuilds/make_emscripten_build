@@ -1,0 +1,254 @@
+#!/bin/sh
+
+set -xeu
+
+script_dir="$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)"
+repo_root="$(CDPATH= cd -- "${script_dir}/../.." && pwd)"
+experiment_env_file="${WESNOTH_EXPERIMENT_ENV_FILE:-${script_dir}/emscripten/current_experiment.env}"
+if [ -f "${experiment_env_file}" ]; then
+    # shellcheck disable=SC1090
+    . "${experiment_env_file}"
+fi
+
+cd "${script_dir}/emscripten" || exit
+
+docker_image="${DOCKERLOCALIMAGE:-wesnoth/wesnoth:emscripten}"
+output_dir="${OUTPUT_DIR:-${EXP_OUTPUT_DIR:-../emscriptenbuild}}"
+vcpkg_cache_dir="${VCPKG_CACHE_DIR:-${EXP_VCPKG_CACHE_DIR:-../emscripten-vcpkg-cache}}"
+experiment_id="${WESNOTH_EXPERIMENT_ID:-${EXP_ID:-UNSET}}"
+experiment_note="${WESNOTH_EXPERIMENT_NOTE:-${EXP_DESCRIPTION:-}}"
+use_pthreads="${WESNOTH_USE_PTHREADS:-${EXP_WESNOTH_USE_PTHREADS:-1}}"
+proxy_to_pthread="${WESNOTH_PROXY_TO_PTHREAD:-${EXP_WESNOTH_PROXY_TO_PTHREAD:-1}}"
+pthread_pool_size="${WESNOTH_PTHREAD_POOL_SIZE:-${EXP_WESNOTH_PTHREAD_POOL_SIZE:-4}}"
+package_data="${WESNOTH_PACKAGE_DATA:-${EXP_WESNOTH_PACKAGE_DATA:-1}}"
+data_lz4="${WESNOTH_DATA_LZ4:-${EXP_WESNOTH_DATA_LZ4:-auto}}"
+use_vcpkg="${WESNOTH_USE_VCPKG:-${EXP_WESNOTH_USE_VCPKG:-1}}"
+vcpkg_root="${WESNOTH_VCPKG_ROOT:-${EXP_WESNOTH_VCPKG_ROOT:-/vcpkg-cache/vcpkg}}"
+vcpkg_install_root="${WESNOTH_VCPKG_INSTALL_ROOT:-${EXP_WESNOTH_VCPKG_INSTALL_ROOT:-/vcpkg-cache/installed}}"
+vcpkg_host_triplet="${WESNOTH_VCPKG_HOST_TRIPLET:-${EXP_WESNOTH_VCPKG_HOST_TRIPLET:-}}"
+vcpkg_allow_unsupported="${WESNOTH_VCPKG_ALLOW_UNSUPPORTED:-${EXP_WESNOTH_VCPKG_ALLOW_UNSUPPORTED:-0}}"
+vcpkg_overlay_ports="${WESNOTH_VCPKG_OVERLAY_PORTS:-${EXP_WESNOTH_VCPKG_OVERLAY_PORTS:-/wesnoth/utils/dockerbuilds/emscripten/vcpkg-overlay-ports}}"
+vcpkg_overlay_triplets="${WESNOTH_VCPKG_OVERLAY_TRIPLETS:-${EXP_WESNOTH_VCPKG_OVERLAY_TRIPLETS:-/wesnoth/utils/dockerbuilds/emscripten/vcpkg-overlay-triplets}}"
+vcpkg_binary_cache="${WESNOTH_VCPKG_BINARY_CACHE:-${EXP_WESNOTH_VCPKG_BINARY_CACHE:-/vcpkg-cache/archives}}"
+vcpkg_binary_sources="${WESNOTH_VCPKG_BINARY_SOURCES:-${EXP_WESNOTH_VCPKG_BINARY_SOURCES:-}}"
+parallel_jobs="${WESNOTH_PARALLEL_JOBS:-${EXP_WESNOTH_PARALLEL_JOBS:-}}"
+cmake_build_type="${WESNOTH_CMAKE_BUILD_TYPE:-${EXP_WESNOTH_CMAKE_BUILD_TYPE:-}}"
+extra_em_flags="${WESNOTH_EXTRA_EM_FLAGS:-${EXP_WESNOTH_EXTRA_EM_FLAGS:-}}"
+extra_em_link_flags="${WESNOTH_EXTRA_EM_LINK_FLAGS:-${EXP_WESNOTH_EXTRA_EM_LINK_FLAGS:-}}"
+extra_cmake_args="${WESNOTH_EXTRA_CMAKE_ARGS:-${EXP_WESNOTH_EXTRA_CMAKE_ARGS:-}}"
+boost_dir="${WESNOTH_BOOST_DIR:-${EXP_WESNOTH_BOOST_DIR:-}}"
+cmake_prefix_path="${WESNOTH_CMAKE_PREFIX_PATH:-${EXP_WESNOTH_CMAKE_PREFIX_PATH:-}}"
+vcpkg_target_triplet_override="${WESNOTH_VCPKG_TARGET_TRIPLET:-${EXP_WESNOTH_VCPKG_TARGET_TRIPLET:-}}"
+allow_untracked_experiment="${WESNOTH_ALLOW_UNTRACKED_EXPERIMENT:-0}"
+
+if [ -n "${vcpkg_target_triplet_override}" ]; then
+    vcpkg_target_triplet="${vcpkg_target_triplet_override}"
+elif [ "$use_pthreads" = "1" ]; then
+    vcpkg_target_triplet="wasm32-emscripten-pthreads"
+else
+    vcpkg_target_triplet="wasm32-emscripten"
+fi
+
+echo "experiment_id=${experiment_id}"
+echo "experiment_note=${experiment_note}"
+echo "experiment_env_file=${experiment_env_file}"
+echo "resolved_flags=WESNOTH_USE_PTHREADS=${use_pthreads} WESNOTH_PROXY_TO_PTHREAD=${proxy_to_pthread} WESNOTH_CMAKE_BUILD_TYPE=${cmake_build_type} WESNOTH_EXTRA_EM_FLAGS=${extra_em_flags} WESNOTH_EXTRA_CMAKE_ARGS=${extra_cmake_args}"
+
+if [ "${experiment_id}" = "UNSET" ] && [ "${allow_untracked_experiment}" != "1" ]; then
+    echo "ERROR: experiment ID is unset. Update ${experiment_env_file} (EXP_ID=E##) before building." >&2
+    echo "Set WESNOTH_ALLOW_UNTRACKED_EXPERIMENT=1 only for temporary local debugging." >&2
+    exit 1
+fi
+
+rm -rf "${output_dir}"
+mkdir -p "${output_dir}" || exit
+mkdir -p "${vcpkg_cache_dir}" || exit
+
+# Clear build volume so each experiment starts fresh (replaces old --tmpfs behavior).
+# Using a Docker volume instead of --tmpfs frees RAM for the wasm-opt ASYNCIFY pass.
+build_vol="${WESNOTH_BUILD_VOL:-wesnoth-web-build}"
+docker volume rm "${build_vol}" >/dev/null 2>&1 || true
+docker volume create "${build_vol}" >/dev/null 2>&1 || true
+# Fix permissions: the volume starts as root-owned; chown to the build user.
+docker run --rm -v "${build_vol}":/build busybox chown "$(id -u):$(id -g)" /build
+
+# For non-pthreads builds, create a pkg-config wrapper that strips -pthread
+# flags from output.  Meson-based vcpkg packages (pixman, fontconfig,
+# harfbuzz) call dependency('threads') which bakes -pthread into their
+# .pc files.  This cascades to downstream link tests (pango) causing
+# "wasm-ld: --shared-memory is disallowed" errors.
+#
+# We bind-mount the wrapper over the real pkg-config binary so the meson
+# cross-file (which hardcodes /bin/pkg-config) transparently uses it.
+_pkgconfig_bind_mounts=""
+if [ "$use_pthreads" != "1" ]; then
+    echo "Creating pkg-config wrapper to strip -pthread for non-pthreads build"
+    # Copy real pkg-config from Docker image into vcpkg-cache (writable).
+    # Must use --entrypoint to override the image's default entrypoint.
+    docker run --rm --entrypoint /bin/cat "${docker_image}" /usr/bin/pkg-config \
+        > "${vcpkg_cache_dir}/pkg-config.real"
+    chmod +x "${vcpkg_cache_dir}/pkg-config.real"
+
+    # Create wrapper that calls the real binary and strips -pthread from output
+    # when querying wasm32-emscripten packages.
+    cat > "${vcpkg_cache_dir}/pkg-config-wrapper" << 'PKGWRAP'
+#!/bin/bash
+output=$(/vcpkg-cache/pkg-config.real "$@")
+rc=$?
+if [ -n "${PKG_CONFIG_PATH:-}" ]; then
+    case "$PKG_CONFIG_PATH" in
+        *wasm32-emscripten*)
+            printf '%s\n' "$output" | sed 's/-pthread//g; s/-sPTHREAD_POOL_SIZE=[0-9]*//g'
+            exit $rc
+            ;;
+    esac
+fi
+printf '%s\n' "$output"
+exit $rc
+PKGWRAP
+    chmod +x "${vcpkg_cache_dir}/pkg-config-wrapper"
+    _pkgconfig_bind_mounts="-v ${vcpkg_cache_dir}/pkg-config-wrapper:/usr/bin/pkg-config:ro"
+fi
+
+docker run --rm \
+    -v "$PWD"/../../..:/wesnoth \
+    -v "$PWD"/"${output_dir}":/output \
+    -v "$PWD"/"${vcpkg_cache_dir}":/vcpkg-cache \
+    -v "${build_vol}":/build \
+    ${_pkgconfig_bind_mounts} \
+    --entrypoint /wesnoth/utils/dockerbuilds/emscripten/build-web.sh \
+    -u "$(id -u):$(id -g)" \
+    -e HOME=/tmp \
+    -e XDG_CACHE_HOME=/tmp/.cache \
+    -e WESNOTH_USE_PTHREADS="${use_pthreads}" \
+    -e WESNOTH_PROXY_TO_PTHREAD="${proxy_to_pthread}" \
+    -e WESNOTH_PTHREAD_POOL_SIZE="${pthread_pool_size}" \
+    -e WESNOTH_USE_VCPKG="${use_vcpkg}" \
+    -e WESNOTH_VCPKG_ROOT="${vcpkg_root}" \
+    -e WESNOTH_VCPKG_INSTALL_ROOT="${vcpkg_install_root}" \
+    -e WESNOTH_VCPKG_TARGET_TRIPLET="${vcpkg_target_triplet}" \
+    -e WESNOTH_VCPKG_HOST_TRIPLET="${vcpkg_host_triplet}" \
+    -e WESNOTH_VCPKG_ALLOW_UNSUPPORTED="${vcpkg_allow_unsupported}" \
+    -e WESNOTH_VCPKG_OVERLAY_PORTS="${vcpkg_overlay_ports}" \
+    -e WESNOTH_VCPKG_OVERLAY_TRIPLETS="${vcpkg_overlay_triplets}" \
+    -e WESNOTH_VCPKG_BINARY_CACHE="${vcpkg_binary_cache}" \
+    -e WESNOTH_VCPKG_BINARY_SOURCES="${vcpkg_binary_sources}" \
+    -e WESNOTH_PARALLEL_JOBS="${parallel_jobs}" \
+    -e WESNOTH_CMAKE_BUILD_TYPE="${cmake_build_type}" \
+    -e WESNOTH_EXTRA_EM_FLAGS="${extra_em_flags}" \
+    -e WESNOTH_EXTRA_EM_LINK_FLAGS="${extra_em_link_flags}" \
+    -e WESNOTH_EXTRA_CMAKE_ARGS="${extra_cmake_args}" \
+    -e WESNOTH_BOOST_DIR="${boost_dir}" \
+    -e WESNOTH_CMAKE_PREFIX_PATH="${cmake_prefix_path}" \
+    "${docker_image}"
+
+if [ "${package_data}" = "1" ]; then
+    if [ "${data_lz4}" = "auto" ]; then
+        case " ${extra_em_flags} ${extra_em_link_flags} " in
+            *" -sLZ4=1 "*) data_lz4="1" ;;
+            *) data_lz4="0" ;;
+        esac
+    fi
+
+    if [ "${data_lz4}" = "1" ]; then
+        docker run --rm \
+            -v "$PWD"/../../..:/wesnoth \
+            -v "$PWD"/"${output_dir}":/out \
+            --entrypoint python3 \
+            "${docker_image}" \
+            /emsdk/upstream/emscripten/tools/file_packager.py \
+            /out/wesnoth.data \
+            --js-output=/out/wesnoth.data.js \
+            --use-preload-cache \
+            --lz4 \
+            --preload /wesnoth/data@/data \
+            --preload /wesnoth/images@/images \
+            --preload /wesnoth/fonts@/fonts \
+            --preload /wesnoth/sounds@/sounds
+    else
+        docker run --rm \
+            -v "$PWD"/../../..:/wesnoth \
+            -v "$PWD"/"${output_dir}":/out \
+            --entrypoint python3 \
+            "${docker_image}" \
+            /emsdk/upstream/emscripten/tools/file_packager.py \
+            /out/wesnoth.data \
+            --js-output=/out/wesnoth.data.js \
+            --use-preload-cache \
+            --preload /wesnoth/data@/data \
+            --preload /wesnoth/images@/images \
+            --preload /wesnoth/fonts@/fonts \
+            --preload /wesnoth/sounds@/sounds
+    fi
+fi
+
+cp -f ./index.html "${output_dir}"/index.html
+cp -f ./serve_coi.py "${output_dir}"/serve_coi.py
+
+hash_file() {
+    if command -v sha256sum >/dev/null 2>&1; then
+        sha256sum "$1" | awk '{print $1}'
+    else
+        shasum -a 256 "$1" | awk '{print $1}'
+    fi
+}
+
+copy_tree() {
+    src="$1"
+    dst="$2"
+    mkdir -p "${dst}" || exit
+    if command -v rsync >/dev/null 2>&1; then
+        rsync -a --delete "${src}/" "${dst}/"
+    else
+        rm -rf "${dst}"
+        mkdir -p "${dst}" || exit
+        cp -a "${src}/." "${dst}/"
+    fi
+}
+
+timestamp_utc="$(date -u +%Y%m%dT%H%M%SZ)"
+history_dir="${repo_root}/output/web-build-history"
+mkdir -p "${history_dir}" || exit
+history_file="${history_dir}/${experiment_id}-${timestamp_utc}.txt"
+bundle_root="${repo_root}/output/web-build-bundles"
+bundle_dir="${bundle_root}/${experiment_id}-${timestamp_utc}"
+output_dir_abs="$(CDPATH= cd -- "${output_dir}" && pwd)"
+
+{
+    echo "timestamp_utc=${timestamp_utc}"
+    echo "experiment_id=${experiment_id}"
+    echo "experiment_note=${experiment_note}"
+    echo "experiment_env_file=${experiment_env_file}"
+    echo "bundle_dir=${bundle_dir}"
+    echo "git_branch=$(git -C "${repo_root}" rev-parse --abbrev-ref HEAD 2>/dev/null || echo unknown)"
+    echo "git_commit=$(git -C "${repo_root}" rev-parse --short HEAD 2>/dev/null || echo unknown)"
+    echo "output_dir=${output_dir_abs}"
+    echo "docker_image=${docker_image}"
+    echo "WESNOTH_USE_PTHREADS=${use_pthreads}"
+    echo "WESNOTH_PROXY_TO_PTHREAD=${proxy_to_pthread}"
+    echo "WESNOTH_PTHREAD_POOL_SIZE=${pthread_pool_size}"
+    echo "WESNOTH_CMAKE_BUILD_TYPE=${cmake_build_type}"
+    echo "WESNOTH_EXTRA_CMAKE_ARGS=${extra_cmake_args}"
+    echo "WESNOTH_EXTRA_EM_FLAGS=${extra_em_flags}"
+    echo "WESNOTH_EXTRA_EM_LINK_FLAGS=${extra_em_link_flags}"
+    echo "WESNOTH_PACKAGE_DATA=${package_data}"
+    echo "WESNOTH_DATA_LZ4=${data_lz4}"
+    echo "WESNOTH_VCPKG_TARGET_TRIPLET=${vcpkg_target_triplet}"
+    for artifact in index.html wesnoth.js wesnoth.wasm wesnoth.data wesnoth.data.js serve_coi.py; do
+        artifact_path="${output_dir_abs}/${artifact}"
+        if [ -f "${artifact_path}" ]; then
+            echo "${artifact}.sha256=$(hash_file "${artifact_path}")"
+        else
+            echo "${artifact}.sha256=missing"
+        fi
+    done
+} > "${history_file}"
+
+echo "build_history_file=${history_file}"
+mkdir -p "${bundle_dir}" || exit
+copy_tree "${output_dir_abs}" "${bundle_dir}/build"
+cp -f "${history_file}" "${bundle_dir}/build-history.txt"
+if [ -f "${experiment_env_file}" ]; then
+    cp -f "${experiment_env_file}" "${bundle_dir}/experiment.env"
+fi
+echo "build_bundle_dir=${bundle_dir}"

@@ -55,13 +55,59 @@ option(ENABLE_NLS "Enable building of translations" ${ENABLE_GAME})
 # The next line is the minimum version of Boost. The version that's actually found will be put in Boost_VERSION.
 set(MIN_USABLE_BOOST_VERSION "1.70")
 set(BOOST_REQ_COMPONENTS iostreams program_options regex thread random coroutine locale filesystem graph)
+set(BOOST_OPTIONAL_COMPONENTS charconv process)
+
+if(EMSCRIPTEN)
+	# boost-process is not supported on wasm targets.
+	list(REMOVE_ITEM BOOST_OPTIONAL_COMPONENTS process)
+	# boost-coroutine depends on Boost.Context stack-switching which is
+	# unavailable on wasm32 (no ucontext/fibers).
+	list(REMOVE_ITEM BOOST_REQ_COMPONENTS coroutine)
+	# Boost.Asio's thread+signal blocker path does not support emscripten cleanly.
+	add_compile_definitions(BOOST_ASIO_DISABLE_THREADS)
+	# Use native WASM exception handling.  JS-based exceptions (-fexceptions)
+	# create invoke_* JS trampolines for every try/catch block.  JSPI cannot
+	# suspend through JS frames, so native WASM EH is required.  The vcpkg
+	# overlay triplet (wasm32-emscripten.cmake) ensures dependencies are also
+	# built with -fwasm-exceptions for consistent exception/setjmp handling.
+	add_compile_options(-fwasm-exceptions)
+	set(WESNOTH_EMSCRIPTEN_ASSERTIONS "0" CACHE STRING "Emscripten ASSERTIONS level")
+	add_link_options(
+		-sWASM=1
+		-sASSERTIONS=${WESNOTH_EMSCRIPTEN_ASSERTIONS}
+		-sALLOW_MEMORY_GROWTH=1
+		-sFORCE_FILESYSTEM=1
+		-sEMULATE_FUNCTION_POINTER_CASTS=1
+		-sBINARYEN_EXTRA_PASSES=--pass-arg=max-func-params@64
+	)
+	option(WESNOTH_EMSCRIPTEN_PTHREADS "Build with Emscripten pthread/shared-memory flags" OFF)
+	if(WESNOTH_EMSCRIPTEN_PTHREADS)
+		# Ensure every object is built with atomics/bulk-memory for shared memory.
+		add_compile_options(-pthread)
+		add_link_options(-pthread)
+		# Avoid link failures from too-small default shared memory.
+		add_link_options(-sINITIAL_MEMORY=67108864)
+	else()
+		# Create a no-op Threads::Threads target.  Many vcpkg packages (OpenSSL,
+		# Boost, WebP, liblzma, wavpack) unconditionally add Threads::Threads to
+		# their link interfaces.  On Emscripten without pthreads this injects a
+		# stray -pthread flag that is incompatible with JSPI (DYNCALLS conflict).
+		# By pre-defining a stub target we satisfy all references harmlessly.
+		set(Threads_FOUND TRUE)
+		set(CMAKE_THREAD_LIBS_INIT "")
+		set(CMAKE_USE_PTHREADS_INIT FALSE)
+		if(NOT TARGET Threads::Threads)
+			add_library(Threads::Threads INTERFACE IMPORTED)
+		endif()
+	endif()
+endif()
 
 if(ENABLE_TESTS)
   list(APPEND BOOST_REQ_COMPONENTS unit_test_framework)
 endif()
 
 find_package(Boost ${MIN_USABLE_BOOST_VERSION} REQUIRED CONFIG COMPONENTS ${BOOST_REQ_COMPONENTS}
-                                           OPTIONAL_COMPONENTS charconv process)
+                                           OPTIONAL_COMPONENTS ${BOOST_OPTIONAL_COMPONENTS})
 
 if(NOT WIN32)
 	set(Lua_FIND_VERSION_MAJOR 5)

@@ -7,7 +7,13 @@
     "sdl2",
     {
       "name": "sdl2-image",
-      "features": [ "libjpeg-turbo", "libwebp" ]
+      "features": [ "libjpeg-turbo", "libwebp" ],
+      "platform": "!emscripten"
+    },
+    {
+      "name": "sdl2-image",
+      "features": [ "libwebp" ],
+      "platform": "emscripten"
     },
     "libwebp",
     "sdl2-mixer",
@@ -43,9 +49,15 @@
     "boost-ptr-container",
     "boost-spirit",
     "boost-test",
-    "boost-process",
+    {
+      "name": "boost-process",
+      "platform": "!emscripten"
+    },
     "boost-multi-array",
-    "boost-coroutine",
+    {
+      "name": "boost-coroutine",
+      "platform": "!emscripten"
+    },
     {
       "name": "curl",
       "features": [ "openssl" ]

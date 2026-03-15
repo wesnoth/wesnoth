@@ -69,6 +69,10 @@ int pixel_scale_ = 1;
 int max_scale_ = 1;
 rect input_area_ = {};
 
+#ifdef __EMSCRIPTEN__
+bool emscripten_direct_render_fallback_ = false;
+#endif
+
 } // anon namespace
 
 namespace video
@@ -129,6 +133,9 @@ void deinit()
 	image::flush_cache();
 	render_texture_.reset();
 	current_render_target_.reset();
+#ifdef __EMSCRIPTEN__
+	emscripten_direct_render_fallback_ = false;
+#endif
 
 	// Destroy the window, and thus also the renderer.
 	window.reset();
@@ -208,7 +215,6 @@ bool update_test_framebuffer()
 
 	// The render texture is always the render target in this case.
 	force_render_target(render_texture_);
-
 	return changed;
 }
 
@@ -230,7 +236,13 @@ bool update_framebuffer()
 	// Non-integer scales are not currently supported.
 	// This option makes things neater when window size is not a perfect
 	// multiple of logical size, which can happen when manually resizing.
+#ifndef __EMSCRIPTEN__
+	// On Emscripten, the canvas backing store IS the output — there is no
+	// window manager that can resize the output independently. Integer
+	// scaling adds no value and can introduce viewport offset artifacts
+	// in SDL2's WebGL renderer.
 	SDL_RenderSetIntegerScale(*window, SDL_TRUE);
+#endif
 
 	// Find max valid pixel scale at current output size.
 	point osize(window->get_output_size());
@@ -302,7 +314,11 @@ bool update_framebuffer()
 			render_texture_.set_draw_size(lsize);
 		}
 	}
-	if (!render_texture_) {
+	if (!render_texture_
+#ifdef __EMSCRIPTEN__
+		&& !emscripten_direct_render_fallback_
+#endif
+	) {
 		LOG_DP << "creating offscreen render texture";
 		render_texture_.assign(SDL_CreateTexture(
 			*window,
@@ -313,10 +329,25 @@ bool update_framebuffer()
 		// This isn't really necessary, but might be nice to have attached
 		render_texture_.set_draw_size(lsize);
 		changed = true;
+#ifdef __EMSCRIPTEN__
+		if (!render_texture_) {
+			WRN_DP << "render texture creation failed on web, "
+			       << "falling back to direct window rendering";
+			emscripten_direct_render_fallback_ = true;
+		}
+#endif
 	}
 
 	// Assign the render texture now. It will be used for all drawing.
+#ifdef __EMSCRIPTEN__
+	if (emscripten_direct_render_fallback_) {
+		force_render_target({});
+	} else {
+		force_render_target(render_texture_);
+	}
+#else
 	force_render_target(render_texture_);
+#endif
 
 	// By default input area is the same as the window area.
 	input_area_ = {{}, wsize};
@@ -391,6 +422,13 @@ void init_window(bool hidden)
 	}
 
 	uint32_t renderer_flags = SDL_RENDERER_ACCELERATED | SDL_RENDERER_TARGETTEXTURE;
+	// Note: Emscripten previously disabled SDL_RENDERER_TARGETTEXTURE and
+	// forced emscripten_direct_render_fallback_ = true because render targets
+	// were unstable under PROXY_TO_PTHREAD (WebGL state was unreliable across
+	// threads). With ASYNCIFY (main thread rendering), WebGL framebuffer
+	// objects work correctly. If texture creation still fails at runtime,
+	// the fallback logic in update_framebuffer() and window::update_render_textures()
+	// will activate automatically.
 
 	if(prefs::get().vsync()) {
 		LOG_DP << "VSYNC on";
@@ -453,12 +491,18 @@ point game_canvas_size()
 
 point draw_size()
 {
+#ifdef __EMSCRIPTEN__
+	if (emscripten_direct_render_fallback_ && !current_render_target_) {
+		return game_canvas_size_;
+	}
+#endif
 	return current_render_target_.draw_size();
 }
 
 rect draw_area()
 {
-	return {0, 0, current_render_target_.w(), current_render_target_.h()};
+	point size = draw_size();
+	return {0, 0, size.x, size.y};
 }
 
 point draw_offset()
@@ -470,6 +514,9 @@ point draw_offset()
 	// so we just have to base our calculation on the known behaviour.
 	point osize = output_size();
 	point dsize = draw_size();
+	if (dsize.x <= 0 || dsize.y <= 0) {
+		return {};
+	}
 	point scale = osize / dsize;
 	return (osize - (scale * dsize)) / 2;
 }
@@ -483,8 +530,13 @@ rect output_area()
 rect to_output(const rect& r)
 {
 	// Multiply r by integer scale, adding draw_offset to the position.
-	point dsize = current_render_target_.draw_size();
-	point osize = current_render_target_.get_raw_size();
+	point dsize = draw_size();
+	point osize = current_render_target_
+		? current_render_target_.get_raw_size()
+		: output_size();
+	if (dsize.x <= 0 || dsize.y <= 0 || osize.x <= 0 || osize.y <= 0) {
+		return r;
+	}
 	point pos = (r.origin() * (osize / dsize)) + draw_offset();
 	point size = r.size() * (osize / dsize);
 	return {pos, size};
@@ -522,14 +574,34 @@ int current_refresh_rate()
 
 void force_render_target(const texture& t)
 {
-	if (SDL_SetRenderTarget(get_renderer(), t)) {
+	texture target = t;
+#ifdef __EMSCRIPTEN__
+	if (emscripten_direct_render_fallback_ && target) {
+		target.reset();
+	}
+#endif
+	if (SDL_SetRenderTarget(get_renderer(), target)) {
+#ifdef __EMSCRIPTEN__
+		if (target) {
+			WRN_DP << "failed to set render target on web; "
+			       << "falling back to direct window rendering";
+			WRN_DP << "last SDL error: " << SDL_GetError();
+			emscripten_direct_render_fallback_ = true;
+			render_texture_.reset();
+			if (SDL_SetRenderTarget(get_renderer(), nullptr) == 0) {
+				current_render_target_ = {};
+				window->set_logical_size(game_canvas_size_);
+				return;
+			}
+		}
+#endif
 		ERR_DP << "failed to set render target to "
-			<< static_cast<void*>(t.get()) << ' '
-			<< t.draw_size() << " / " << t.get_raw_size();
+			<< static_cast<void*>(target.get()) << ' '
+			<< target.draw_size() << " / " << target.get_raw_size();
 		ERR_DP << "last SDL error: " << SDL_GetError();
 		throw error("failed to set render target");
 	}
-	current_render_target_ = t;
+	current_render_target_ = target;
 
 	if (testing_) {
 		return;
@@ -537,17 +609,17 @@ void force_render_target(const texture& t)
 
 	// The scale factor gets reset when the render target changes,
 	// so make sure it gets set back appropriately.
-	if (!t) {
+	if (!target) {
 		DBG_DP << "rendering to window / screen";
 		window->set_logical_size(game_canvas_size_);
-	} else if (t == render_texture_) {
+	} else if (target == render_texture_) {
 		DBG_DP << "rendering to primary buffer";
 		window->set_logical_size(game_canvas_size_);
 	} else {
 		DBG_DP << "rendering to custom target "
-			<< static_cast<void*>(t.get()) << ' '
-			<< t.draw_size() << " / " << t.get_raw_size();
-		window->set_logical_size(t.w(), t.h());
+			<< static_cast<void*>(target.get()) << ' '
+			<< target.draw_size() << " / " << target.get_raw_size();
+		window->set_logical_size(target.w(), target.h());
 	}
 }
 
@@ -563,7 +635,7 @@ void reset_render_target()
 
 texture get_render_target()
 {
-#ifndef __ANDROID__
+#if !defined(__ANDROID__) && !defined(__EMSCRIPTEN__)
 	// This should always be up-to-date, but assert for sanity.
 	assert(current_render_target_ == SDL_GetRenderTarget(get_renderer()));
 #endif
@@ -585,6 +657,13 @@ void render_screen()
 		return;
 	}
 
+#ifdef __EMSCRIPTEN__
+	if (emscripten_direct_render_fallback_) {
+		SDL_RenderPresent(*window);
+		return;
+	}
+#endif
+
 	// This should only ever be called when the main render texture is the
 	// current render target. It could be adapted otherwise... but let's not.
 	if(SDL_GetRenderTarget(*window) != render_texture_) {
@@ -598,14 +677,18 @@ void render_screen()
 	// Clear the render target so we're drawing to the window.
 	clear_render_target();
 
-	// Use fully transparent black to clear the window backbuffer
+	// Use fully transparent black to clear the window backbuffer.
 	SDL_SetRenderDrawColor(*window, 0u, 0u, 0u, 0u);
 
 	// Clear the window backbuffer before rendering the render texture.
-	SDL_RenderClear(*window);
+	if(SDL_RenderClear(*window) != 0) {
+		ERR_DP << "failed to clear window backbuffer: " << SDL_GetError();
+	}
 
 	// Copy the render texture to the window.
-	SDL_RenderCopy(*window, render_texture_, nullptr, nullptr);
+	if(SDL_RenderCopy(*window, render_texture_, nullptr, nullptr) != 0) {
+		ERR_DP << "failed to copy render texture to window: " << SDL_GetError();
+	}
 
 	// Finalize and display the frame.
 	SDL_RenderPresent(*window);

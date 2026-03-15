@@ -1,0 +1,11 @@
+--- a/utils/viewer-render.c
++++ b/utils/viewer-render.c
+@@ -917,7 +917,7 @@
+   GError *error = NULL;
+   GError *parse_error = NULL;
+   GOptionContext *context;
+-  size_t len;
++  gsize len;
+   const PangoViewer **viewer;
+ 
+   context = g_option_context_new ("- FILE");

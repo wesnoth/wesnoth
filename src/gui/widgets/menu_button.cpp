@@ -155,6 +155,14 @@ void menu_button::signal_handler_left_button_click(const event::ui_event event, 
 		set_selected(selected, true);
 	}
 
+#ifdef __EMSCRIPTEN__
+	// Release mouse capture after modal dropdown closes — on Emscripten,
+	// the automatic release in distributor may not fire due to ASYNCIFY desync.
+	if(window* w = get_window()) {
+		w->mouse_capture(false);
+	}
+#endif
+
 	handled = true;
 }
 

@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
+    <title>The Battle for Wesnoth - Web</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: #000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      #canvas {
+        display: block;
+        outline: none;
+        /* No CSS width/height override — let the canvas display at its native
+         backing-store size (1280x720). On Emscripten, SDL2 uses
+         getBoundingClientRect() for SDL_GetWindowSize. If CSS stretches the
+         canvas beyond the backing store, SDL reports the CSS size for GUI
+         layout but renders to the smaller backing store, causing mismatched
+         dialog sizing. Keeping CSS size == backing store avoids this. */
+      }
+
+      /* ── Loading overlay ─────────────────────────────────────────── */
+      #loading-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 1000;
+        background: #1a1a2e;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: opacity 0.5s ease;
+      }
+      #loading-overlay.fade-out {
+        opacity: 0;
+        pointer-events: none;
+      }
+      #loading-message {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          sans-serif;
+        font-size: 16px;
+        font-style: italic;
+        color: #c8b8a0;
+        margin-bottom: 20px;
+        height: 24px;
+        text-align: center;
+        transition: opacity 0.4s ease;
+      }
+      #loading-bar-track {
+        width: 320px;
+        height: 14px;
+        background: #2a2a4a;
+        border-radius: 7px;
+        overflow: hidden;
+        box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4);
+      }
+      #loading-bar-fill {
+        width: 0%;
+        height: 100%;
+        background: linear-gradient(90deg, #e87979, #e8a079);
+        border-radius: 7px;
+        transition: width 0.3s ease;
+      }
+      #loading-phase {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          sans-serif;
+        font-size: 13px;
+        color: #8a8aaa;
+        margin-top: 12px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ── Loading overlay (renders before any JS) ──────────────── -->
+    <div id="loading-overlay">
+      <div id="loading-message">Loading game data...</div>
+      <div id="loading-bar-track">
+        <div id="loading-bar-fill"></div>
+      </div>
+      <div id="loading-phase">Initializing...</div>
+    </div>
+
+    <canvas
+      id="canvas"
+      width="1280"
+      height="720"
+      tabindex="0"
+      aria-label="Wesnoth game canvas"
+    ></canvas>
+
+    <script>
+      (() => {
+        try {
+          Object.defineProperty(window, "devicePixelRatio", {
+            value: 1,
+            configurable: true,
+          });
+        } catch (_err) {
+          // Ignore if browser prevents overriding.
+        }
+
+        // Force preserveDrawingBuffer on all WebGL contexts (needed for
+        // Playwright screenshots and pixel probes).
+        const _origGetContext = HTMLCanvasElement.prototype.getContext;
+        HTMLCanvasElement.prototype.getContext = function (type, attrs) {
+          if (type === "webgl" || type === "webgl2") {
+            attrs = Object.assign({}, attrs || {}, {
+              preserveDrawingBuffer: true,
+            });
+          }
+          return _origGetContext.call(this, type, attrs);
+        };
+
+        const canvas = document.getElementById("canvas");
+        const bootTime = performance.now();
+        const now = () => ((performance.now() - bootTime) / 1000).toFixed(2);
+        const log = (text) => console.log(`[${now()}s] ${text}`);
+
+        // ── Loading overlay controller ────────────────────────────────
+        const overlay = document.getElementById("loading-overlay");
+        const barFill = document.getElementById("loading-bar-fill");
+        const phaseEl = document.getElementById("loading-phase");
+        const messageEl = document.getElementById("loading-message");
+
+        const loadingMessages = [
+          "Loading game data...",
+          "Gathering troops and polishing swords...",
+          "Setting up camp... almost ready!",
+          "Loading maps and marshaling forces...",
+          "Consulting the Oracle of Wesnoth...",
+          "Sharpening pixels and tuning trebuchets...",
+          "Convincing the orcs to cooperate...",
+        ];
+        let msgIndex = 0;
+        const msgInterval = setInterval(() => {
+          msgIndex = (msgIndex + 1) % loadingMessages.length;
+          messageEl.style.opacity = "0";
+          setTimeout(() => {
+            messageEl.textContent = loadingMessages[msgIndex];
+            messageEl.style.opacity = "1";
+          }, 400);
+        }, 4000);
+
+        function updateLoadingBar(pct, phase) {
+          barFill.style.width = pct + "%";
+          if (phase) phaseEl.textContent = phase;
+        }
+
+        function dismissOverlay() {
+          clearInterval(msgInterval);
+          updateLoadingBar(100, "Let's go!");
+          setTimeout(() => {
+            overlay.classList.add("fade-out");
+            overlay.addEventListener(
+              "transitionend",
+              () => {
+                overlay.style.display = "none";
+              },
+              { once: true }
+            );
+          }, 300);
+        }
+
+        const formatReason = (reason) => {
+          if (reason && typeof reason === "object" && "message" in reason) {
+            return String(reason.message);
+          }
+          return String(reason);
+        };
+
+        const loadScript = (src) =>
+          new Promise((resolve, reject) => {
+            const script = document.createElement("script");
+            script.src = src;
+            script.async = false;
+            script.onload = resolve;
+            script.onerror = () => reject(new Error(`Failed to load ${src}`));
+            document.body.appendChild(script);
+          });
+
+        // ── Prevent browser defaults that shadow game input ──────────
+        // Right-click: suppress browser context menu so Wesnoth's shows.
+        canvas.addEventListener("contextmenu", (event) => {
+          event.preventDefault();
+        });
+        // Middle-click: suppress browser autoscroll mode.
+        canvas.addEventListener("mousedown", (event) => {
+          if (event.button === 1) event.preventDefault();
+        });
+        // Wheel on canvas: prevent Ctrl+scroll zoom (page scroll is already
+        // impossible because body has overflow:hidden).
+        canvas.addEventListener(
+          "wheel",
+          (event) => {
+            if (event.ctrlKey || event.metaKey) event.preventDefault();
+          },
+          { passive: false }
+        );
+
+        window.addEventListener("keydown", (event) => {
+          if (
+            ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(
+              event.key
+            )
+          ) {
+            event.preventDefault();
+          }
+        });
+        window.addEventListener("error", (event) => {
+          log(`window error: ${event.message}`);
+        });
+        window.addEventListener("unhandledrejection", (event) => {
+          log(`unhandledrejection: ${formatReason(event.reason)}`);
+        });
+
+        window.render_game_to_text = () =>
+          JSON.stringify({
+            canvas: {
+              width: canvas.width,
+              height: canvas.height,
+              clientWidth: canvas.clientWidth,
+              clientHeight: canvas.clientHeight,
+            },
+            crossOriginIsolated: globalThis.crossOriginIsolated === true,
+          });
+
+        window.advanceTime = (_ms) => {
+          // Native game loop is driven by Emscripten main loop.
+        };
+
+        window.Module = {
+          arguments: [
+            "--no-log-to-file",
+            "--windowed",
+            "--resolution=1280x720",
+            "--data-dir=/",
+            "--userdata-dir=/userdata",
+          ],
+          canvas,
+          wsProxyUrl: "ws://localhost:8041",
+          ENV: { SDL_VIDEO_HIGHDPI_DISABLED: "1" },
+          locateFile: (path) => path,
+          mainScriptUrlOrBlob: "wesnoth.js",
+          preRun: [
+            () => {
+              log("preRun: mounting IDBFS at /userdata");
+              try {
+                FS.mkdir("/userdata");
+              } catch (e) {}
+              FS.mount(IDBFS, {}, "/userdata");
+
+              Module.addRunDependency("idbfs-populate");
+              FS.syncfs(true, function (err) {
+                if (err) console.error("[IDBFS] populate error:", err);
+                else log("IDBFS: populated from IndexedDB");
+                Module.removeRunDependency("idbfs-populate");
+              });
+            },
+          ],
+          postRun: [() => log("postRun")],
+          print: (text) => log(String(text)),
+          printErr: (text) => {
+            console.warn(`[${now()}s] ${String(text)}`);
+          },
+          setStatus: (text) => {
+            if (text) log(text);
+            if (!text) return;
+            // Emscripten data download: "Downloading data... (X/Y)"
+            const match = text.match(/\((\d+)\/(\d+)\)/);
+            if (match) {
+              const loaded = parseInt(match[1], 10);
+              const total = parseInt(match[2], 10);
+              const pct =
+                total > 0 ? Math.min(90, Math.round((loaded / total) * 90)) : 0;
+              updateLoadingBar(
+                pct,
+                `Downloading game data... ${Math.round(
+                  (loaded / total) * 100
+                )}%`
+              );
+            } else if (text.includes("complete")) {
+              updateLoadingBar(92, "Compiling engine...");
+            }
+          },
+          monitorRunDependencies: (left) => {
+            if (left === 0) {
+              log("all dependencies ready");
+              updateLoadingBar(95, "Resolving dependencies...");
+            }
+          },
+          onRuntimeInitialized: () => {
+            log("onRuntimeInitialized");
+            updateLoadingBar(98, "Starting game...");
+            setTimeout(dismissOverlay, 500);
+            canvas.focus();
+
+            // Quick pixel probe after game should be rendering.
+            setTimeout(() => {
+              try {
+                const gl =
+                  _origGetContext.call(canvas, "webgl2") ||
+                  _origGetContext.call(canvas, "webgl");
+                if (!gl) {
+                  log("[probe] no GL context");
+                  return;
+                }
+                const px = new Uint8Array(4);
+                gl.readPixels(640, 360, 1, 1, gl.RGBA, gl.UNSIGNED_BYTE, px);
+                log(
+                  `[probe] center pixel: rgba(${px[0]},${px[1]},${px[2]},${px[3]})`
+                );
+              } catch (e) {
+                log(`[probe] error: ${e.message}`);
+              }
+            }, 10000);
+          },
+          onAbort: (what) => log(`aborted: ${what}`),
+          onExit: (code) => log(`onExit: ${code}`),
+        };
+
+        // Resume AudioContext on user gestures (browser autoplay policy).
+        // Not {once: true} — the context can re-suspend if the tab loses focus.
+        function resumeAudioContext() {
+          if (
+            typeof Module !== "undefined" &&
+            Module.SDL2 &&
+            Module.SDL2.audioContext
+          ) {
+            var ctx = Module.SDL2.audioContext;
+            if (ctx.state === "suspended") {
+              ctx.resume();
+            }
+          }
+          // Resume Web Audio music context (separate from SDL2's ScriptProcessorNode context).
+          if (
+            typeof Module !== "undefined" &&
+            Module._webAudio &&
+            Module._webAudio.ctx
+          ) {
+            var ctx = Module._webAudio.ctx;
+            if (ctx.state === "suspended") {
+              ctx.resume();
+            }
+          }
+        }
+        document.addEventListener("click", resumeAudioContext);
+        document.addEventListener("keydown", resumeAudioContext);
+
+        // Best-effort persist on page close — the explicit sync-after-save
+        // in C++ covers the critical path; this is a safety net.
+        window.addEventListener("beforeunload", function () {
+          if (typeof FS !== "undefined" && FS.syncfs) {
+            FS.syncfs(false, function (err) {
+              if (err) console.error("[IDBFS] beforeunload sync error:", err);
+            });
+          }
+        });
+
+        log(`crossOriginIsolated=${globalThis.crossOriginIsolated === true}`);
+        log("loader booted");
+
+        loadScript("wesnoth.data.js")
+          .then(() => loadScript("wesnoth.js"))
+          .catch((error) => {
+            console.error(error);
+          });
+      })();
+
+      // ── Store-only ZIP builder/reader ──────────────────────────────────
+      // No external dependencies.  Store-only (compression method 0) since
+      // Wesnoth saves are already gzip-compressed.
+
+      function buildStoreZip(files) {
+        // files: { "relative/path": Uint8Array, ... }
+        var entries = Object.keys(files);
+        // Calculate total size: local headers + data + central dir + EOCD
+        var centralDir = [];
+        var parts = [];
+        var offset = 0;
+
+        for (var i = 0; i < entries.length; i++) {
+          var name = entries[i];
+          var data = files[name];
+          var nameBytes = new TextEncoder().encode(name);
+          var crc = crc32(data);
+
+          // Local file header (30 + nameLen + data)
+          var lh = new Uint8Array(30 + nameBytes.length);
+          var lv = new DataView(lh.buffer);
+          lv.setUint32(0, 0x04034b50, true); // signature
+          lv.setUint16(4, 20, true); // version needed
+          lv.setUint16(6, 0, true); // flags
+          lv.setUint16(8, 0, true); // compression: store
+          lv.setUint16(10, 0, true); // mod time
+          lv.setUint16(12, 0, true); // mod date
+          lv.setUint32(14, crc, true); // crc32
+          lv.setUint32(18, data.length, true); // compressed size
+          lv.setUint32(22, data.length, true); // uncompressed size
+          lv.setUint16(26, nameBytes.length, true); // name length
+          lv.setUint16(28, 0, true); // extra length
+          lh.set(nameBytes, 30);
+
+          parts.push(lh);
+          parts.push(data);
+
+          // Central directory entry (46 + nameLen)
+          var cd = new Uint8Array(46 + nameBytes.length);
+          var cv = new DataView(cd.buffer);
+          cv.setUint32(0, 0x02014b50, true); // signature
+          cv.setUint16(4, 20, true); // version made by
+          cv.setUint16(6, 20, true); // version needed
+          cv.setUint16(8, 0, true); // flags
+          cv.setUint16(10, 0, true); // compression: store
+          cv.setUint16(12, 0, true); // mod time
+          cv.setUint16(14, 0, true); // mod date
+          cv.setUint32(16, crc, true); // crc32
+          cv.setUint32(20, data.length, true); // compressed size
+          cv.setUint32(24, data.length, true); // uncompressed size
+          cv.setUint16(28, nameBytes.length, true); // name length
+          cv.setUint16(30, 0, true); // extra length
+          cv.setUint16(32, 0, true); // comment length
+          cv.setUint16(34, 0, true); // disk number
+          cv.setUint16(36, 0, true); // internal attrs
+          cv.setUint32(38, 0, true); // external attrs
+          cv.setUint32(42, offset, true); // local header offset
+          cd.set(nameBytes, 46);
+          centralDir.push(cd);
+
+          offset += 30 + nameBytes.length + data.length;
+        }
+
+        var centralOffset = offset;
+        var centralSize = 0;
+        for (var j = 0; j < centralDir.length; j++) {
+          parts.push(centralDir[j]);
+          centralSize += centralDir[j].length;
+        }
+
+        // End of central directory record (22 bytes)
+        var eocd = new Uint8Array(22);
+        var ev = new DataView(eocd.buffer);
+        ev.setUint32(0, 0x06054b50, true); // signature
+        ev.setUint16(4, 0, true); // disk number
+        ev.setUint16(6, 0, true); // central dir disk
+        ev.setUint16(8, entries.length, true); // entries on disk
+        ev.setUint16(10, entries.length, true); // total entries
+        ev.setUint32(12, centralSize, true); // central dir size
+        ev.setUint32(16, centralOffset, true); // central dir offset
+        ev.setUint16(20, 0, true); // comment length
+        parts.push(eocd);
+
+        // Concatenate all parts
+        var total = 0;
+        for (var k = 0; k < parts.length; k++) total += parts[k].length;
+        var result = new Uint8Array(total);
+        var pos = 0;
+        for (var k = 0; k < parts.length; k++) {
+          result.set(parts[k], pos);
+          pos += parts[k].length;
+        }
+        return result;
+      }
+
+      function readStoreZip(data) {
+        // Returns [{name: string, data: Uint8Array}, ...]
+        // Only supports store (method 0) entries — warns on compressed entries.
+        var dv = new DataView(data.buffer, data.byteOffset, data.byteLength);
+        var entries = [];
+        var pos = 0;
+        while (pos + 30 <= data.length) {
+          var sig = dv.getUint32(pos, true);
+          if (sig !== 0x04034b50) break; // not a local file header
+          var method = dv.getUint16(pos + 8, true);
+          var nameLen = dv.getUint16(pos + 26, true);
+          var extraLen = dv.getUint16(pos + 28, true);
+          var compSize = dv.getUint32(pos + 18, true);
+          var name = new TextDecoder().decode(
+            data.subarray(pos + 30, pos + 30 + nameLen)
+          );
+          if (method !== 0) {
+            console.warn(
+              "[import] skipping compressed entry (method " +
+                method +
+                "): " +
+                name
+            );
+            pos += 30 + nameLen + extraLen + compSize;
+            continue;
+          }
+          var fileData = data.slice(
+            pos + 30 + nameLen + extraLen,
+            pos + 30 + nameLen + extraLen + compSize
+          );
+          if (name.length > 0 && !name.endsWith("/")) {
+            entries.push({ name: name, data: new Uint8Array(fileData) });
+          }
+          pos += 30 + nameLen + extraLen + compSize;
+        }
+        return entries;
+      }
+
+      function crc32(buf) {
+        // Standard CRC-32 (ISO 3309)
+        if (!crc32.table) {
+          var t = new Uint32Array(256);
+          for (var i = 0; i < 256; i++) {
+            var c = i;
+            for (var j = 0; j < 8; j++)
+              c = c & 1 ? 0xedb88320 ^ (c >>> 1) : c >>> 1;
+            t[i] = c;
+          }
+          crc32.table = t;
+        }
+        var crc = 0xffffffff;
+        for (var i = 0; i < buf.length; i++)
+          crc = crc32.table[(crc ^ buf[i]) & 0xff] ^ (crc >>> 8);
+        return (crc ^ 0xffffffff) >>> 0;
+      }
+
+      // ── Export / Import ────────────────────────────────────────────────
+
+      function wesnothExportSaves() {
+        var files = {};
+        function readRecursive(dir, prefix) {
+          try {
+            FS.readdir(dir)
+              .filter(function (e) {
+                return e !== "." && e !== "..";
+              })
+              .forEach(function (name) {
+                var path = dir + "/" + name;
+                var stat = FS.stat(path);
+                if (FS.isDir(stat.mode)) {
+                  readRecursive(path, prefix + name + "/");
+                } else {
+                  files[prefix + name] = FS.readFile(path);
+                }
+              });
+          } catch (e) {}
+        }
+        readRecursive("/userdata", "");
+
+        if (Object.keys(files).length === 0) {
+          alert("No save data found.");
+          return;
+        }
+
+        var zipData = buildStoreZip(files);
+        var blob = new Blob([zipData], { type: "application/zip" });
+        var a = document.createElement("a");
+        a.href = URL.createObjectURL(blob);
+        a.download =
+          "wesnoth-userdata-" + new Date().toISOString().slice(0, 10) + ".zip";
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        setTimeout(function () {
+          URL.revokeObjectURL(a.href);
+        }, 5000);
+      }
+
+      function wesnothImportSaves() {
+        var input = document.createElement("input");
+        input.type = "file";
+        input.accept = ".zip";
+        input.onchange = function () {
+          if (!input.files || !input.files[0]) return;
+          var reader = new FileReader();
+          reader.onload = function () {
+            var entries = readStoreZip(new Uint8Array(reader.result));
+            entries.forEach(function (entry) {
+              var parts = entry.name.split("/");
+              var dir = "/userdata";
+              for (var i = 0; i < parts.length - 1; i++) {
+                dir += "/" + parts[i];
+                try {
+                  FS.mkdir(dir);
+                } catch (e) {}
+              }
+              FS.writeFile("/userdata/" + entry.name, entry.data);
+            });
+
+            FS.syncfs(false, function (err) {
+              if (err) console.error("[import] sync error:", err);
+              alert(
+                "Saves imported (" +
+                  entries.length +
+                  " files). Reload the page to use them."
+              );
+            });
+          };
+          reader.readAsArrayBuffer(input.files[0]);
+        };
+        input.click();
+      }
+    </script>
+  </body>
+</html>

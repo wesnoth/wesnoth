@@ -43,6 +43,10 @@
 #include "utils/optimer.hpp"
 #include "video.hpp" // only for faked
 
+#ifdef __EMSCRIPTEN__
+#include "filesystem_emscripten.hpp"
+#endif
+
 #include <iomanip>
 
 static lg::log_domain log_engine("engine");
@@ -398,7 +402,6 @@ bool savegame::save_game(const std::string& filename)
 			gui2::show_transient_message(_("Saved"), _("The game has been saved."));
 		}
 
-		return true;
 	} catch(const game::save_game_failed& e) {
 		ERR_SAVE << error_message_ << e.message;
 		gui2::show_error_message(error_message_ + e.message);
@@ -407,6 +410,11 @@ bool savegame::save_game(const std::string& filename)
 		// maybe show a yes-no dialog for "disable autosaves now"?
 		return false;
 	};
+
+#ifdef __EMSCRIPTEN__
+	filesystem::emscripten::syncfs();
+#endif
+	return true;
 }
 
 void savegame::write_game_to_disk(const std::string& filename)
