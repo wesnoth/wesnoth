@@ -9,7 +9,7 @@ on:
 
 jobs:
   checks: # checks that don't need a wesnoth binary
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     container:
       image: wesnoth/wesnoth:2404-master
       options: --tty # docker create options
@@ -234,7 +234,7 @@ jobs:
           path: wesnoth.flatpak
 
   translations:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     container:
       image: wesnoth/wesnoth:2404-master
       env:
