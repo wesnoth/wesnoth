@@ -379,7 +379,7 @@ void units_dialog::filter_text_changed(const std::string& text)
 
 	// Disable rename and dismiss buttons if no units are shown
 	find_widget<button>("rename").set_active(shown > 0);
-	// Also keep dismiss disabled during another player's turn
+	// Also keep dismiss disabled during planning mode, regardless of player.
 	const bool can_dismiss = shown > 0
 		&& !(resources::whiteboard->is_active());
 	find_widget<button>("dismiss").set_active(can_dismiss);
