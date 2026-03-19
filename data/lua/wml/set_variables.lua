@@ -16,6 +16,7 @@ function wesnoth.wml_actions.set_variables(cfg, variables)
 				settings = wml.tostring(wml.literal(cfg))
 			}))
 		end
+		-- TODO cfg.to_variable is allowed to refer to container variable (for example array element) instead of array, but wml.array_access.get does not support that
 		data = wml.array_access.get(cfg.to_variable, variables)
 	else
 		for i,child in ipairs(cfg) do
@@ -85,7 +86,7 @@ function wesnoth.wml_actions.set_variables(cfg, variables)
 				data = {wml.tag.value(data_merged)}
 			elseif mode == "replace" then
 				-- For replace mode, any elements after the explicit index are pushed up but otherwise left untouched
-				for i = 2, #merge_with do
+				for i = idx, #merge_with do
 					table.insert(data, merge_with[i])
 				end
 			end
