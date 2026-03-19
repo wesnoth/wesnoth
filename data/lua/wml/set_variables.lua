@@ -1,5 +1,5 @@
 
-function wesnoth.wml_actions.set_variables(cfg, variables)
+function wesnoth.wml_actions.experimental_set_variables(cfg, variables)
 	local name = cfg.name or wml.error "trying to set a variable with an empty name"
 	if not wml.valid_var(name) then
 		wml.error(stringx.vformat("Cannot do [set_variables] with invalid destination variable: $varname with $settings", {
