@@ -1391,6 +1391,10 @@
 		EC64D7671A085F2F0092EF75 /* seed_rng.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC64D75F1A085CE60092EF75 /* seed_rng.cpp */; };
 		EC669C261DFC95AF00172EED /* surface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC669C251DFC95AF00172EED /* surface.cpp */; };
 		EC6C6B8B1D77CB0800807ED1 /* libpcre.1.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 91C554661D77A545002DB0C8 /* libpcre.1.dylib */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		4F8A5D1130B1A10000A1D001 /* libbz2.1.0.ios.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 4F8A5D0130B1A10000A1D001 /* libbz2.1.0.ios.dylib */; platformFilters = (ios, ); settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		4F8A5D1230B1A10000A1D001 /* libexpat.1.ios.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 4F8A5D0230B1A10000A1D001 /* libexpat.1.ios.dylib */; platformFilters = (ios, ); settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		4F8A5D1330B1A10000A1D001 /* libiconv.2.ios.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 4F8A5D0330B1A10000A1D001 /* libiconv.2.ios.dylib */; platformFilters = (ios, ); settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		4F8A5D1430B1A10000A1D001 /* libz.1.ios.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 4F8A5D0430B1A10000A1D001 /* libz.1.ios.dylib */; platformFilters = (ios, ); settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		EC74C11F197576F500B85A1A /* notifications.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC74C119197576F500B85A1A /* notifications.cpp */; };
 		EC74C120197576F500B85A1A /* open.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC74C11B197576F500B85A1A /* open.cpp */; };
 		EC8174671FB4284E00A8ED00 /* random.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC0680271EA920A300EEE03B /* random.cpp */; };
@@ -1463,6 +1467,7 @@
 		F46C5DCF13A5074C00DD0816 /* commandline_options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F46C5DCB13A5074C00DD0816 /* commandline_options.cpp */; };
 		F46C5DD413A5089100DD0816 /* lua_object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F46C5DD313A5089100DD0816 /* lua_object.cpp */; };
 		F480CD1F14034E6D007175D6 /* mapbuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F480CD1D14034E6D007175D6 /* mapbuilder.cpp */; };
+		46F1280130AF6D4F00B5AC11 /* liblua.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9107AE141DB32862001927B0 /* liblua.a */; platformFilters = (ios, ); };
 		F4D2A99614DAED0E00CAFF31 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4D2A99514DAED0E00CAFF31 /* CoreFoundation.framework */; };
 		F4D2A9D514DAED4200CAFF31 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4D2A99514DAED0E00CAFF31 /* CoreFoundation.framework */; };
 		F4D2DECB14DCA1D000CAFF31 /* client.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D2DECA14DCA1D000CAFF31 /* client.cpp */; };
@@ -1523,11 +1528,13 @@
 				46CD12BC2777A64000A59D05 /* libboost_coroutine-mt.dylib in Copy Frameworks */,
 				468A5BC1258CD8CC004A80EF /* libboost_locale-mt.dylib in Copy Frameworks */,
 				91B6220A1B76C0A600B00E0F /* libcairo.2.dylib in Copy Frameworks */,
+				4F8A5D1130B1A10000A1D001 /* libbz2.1.0.ios.dylib in Copy Frameworks */,
 				91B6220C1B76C0A600B00E0F /* libffi.8.dylib in Copy Frameworks */,
 				91B6220D1B76C0A600B00E0F /* libfontconfig.1.dylib in Copy Frameworks */,
 				46081FF22B2F1046006ACAD7 /* libwebpdemux.2.dylib in Copy Frameworks */,
 				468A5BC6258CD8D3004A80EF /* libboost_thread-mt.dylib in Copy Frameworks */,
 				91B6220E1B76C0A600B00E0F /* libfreetype.6.dylib in Copy Frameworks */,
+				4F8A5D1230B1A10000A1D001 /* libexpat.1.ios.dylib in Copy Frameworks */,
 				46515C402569CE2900084CE2 /* libssl.1.1.dylib in Copy Frameworks */,
 				91B6220F1B76C0A600B00E0F /* libglib-2.0.0.dylib in Copy Frameworks */,
 				4690FBC72884727800986A47 /* libboost_atomic-mt.dylib in Copy Frameworks */,
@@ -1545,6 +1552,7 @@
 				468A5BBF258CD8C9004A80EF /* libboost_filesystem-mt.dylib in Copy Frameworks */,
 				468A5BC0258CD8CB004A80EF /* libboost_iostreams-mt.dylib in Copy Frameworks */,
 				462311AC2D047D8300DAE465 /* libboost_charconv-mt.dylib in Copy Frameworks */,
+				4F8A5D1330B1A10000A1D001 /* libiconv.2.ios.dylib in Copy Frameworks */,
 				468A5BC3258CD8CF004A80EF /* libboost_regex-mt.dylib in Copy Frameworks */,
 				915C68F51DF1F90F00594B07 /* libintl.8.dylib in Copy Frameworks */,
 				4674EEA124CD207F007C18CE /* libgio-2.0.0.dylib in Copy Frameworks */,
@@ -1564,6 +1572,7 @@
 				46081FEF2B2F0FFD006ACAD7 /* libpcre2-8.0.dylib in Copy Frameworks */,
 				4674EE9D24CD1E64007C18CE /* libfribidi.0.dylib in Copy Frameworks */,
 				91A41F901CA22A98008B10D5 /* libreadline.8.2.dylib in Copy Frameworks */,
+				4F8A5D1430B1A10000A1D001 /* libz.1.ios.dylib in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2852,6 +2861,10 @@
 		EC5C243018EF07B4001FA499 /* libpangoft2-1.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libpangoft2-1.0.0.dylib"; path = "lib/libpangoft2-1.0.0.dylib"; sourceTree = "<group>"; };
 		EC5C243118EF07B4001FA499 /* libpng16.16.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libpng16.16.dylib; path = lib/libpng16.16.dylib; sourceTree = "<group>"; };
 		EC5C243A18EF07B4001FA499 /* libz.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.dylib; path = /usr/lib/libz.1.dylib; sourceTree = "<absolute>"; };
+		4F8A5D0130B1A10000A1D001 /* libbz2.1.0.ios.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libbz2.1.0.ios.dylib; path = lib/libbz2.1.0.dylib; sourceTree = "<group>"; };
+		4F8A5D0230B1A10000A1D001 /* libexpat.1.ios.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libexpat.1.ios.dylib; path = lib/libexpat.1.dylib; sourceTree = "<group>"; };
+		4F8A5D0330B1A10000A1D001 /* libiconv.2.ios.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.2.ios.dylib; path = lib/libiconv.2.dylib; sourceTree = "<group>"; };
+		4F8A5D0430B1A10000A1D001 /* libz.1.ios.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.ios.dylib; path = lib/libz.1.dylib; sourceTree = "<group>"; };
 		EC5C70BB19EEB54900432CF4 /* filesystem_common.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = filesystem_common.cpp; sourceTree = "<group>"; };
 		EC5C70C019EEB58300432CF4 /* mp_ui_alerts.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mp_ui_alerts.cpp; sourceTree = "<group>"; };
 		EC64D75F1A085CE60092EF75 /* seed_rng.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = seed_rng.cpp; sourceTree = "<group>"; };
@@ -3004,6 +3017,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46F1280130AF6D4F00B5AC11 /* liblua.a in Frameworks */,
 				468A5BAF258CD3F8004A80EF /* libboost_random-mt.dylib in Frameworks */,
 				46406DF1230DA73E0069492E /* Security.framework in Frameworks */,
 				ECA9E7471CA20AA800A947D6 /* libreadline.8.2.dylib in Frameworks */,
@@ -6763,6 +6777,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = x86_64;
 				"EXCLUDED_SOURCE_FILE_NAMES[sdk=iphone*]" = SDLMain.mm;
+				"EXCLUDED_ARCHS[sdk=iphoneos*]" = arm64e;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"LOCALEDIR=\\\"translations\\\"",
@@ -6775,7 +6790,6 @@
 					"LUA_USE_MACOSX=1",
 					"LUA_USE_IOS=1",
 					"HAVE_LIBPNG=1",
-					"HAVE_HISTORY=1",
 					"XML_STATIC=1",
 					"PCRE2_STATIC=1",
 				);
@@ -6792,18 +6806,20 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				"HEADER_SEARCH_PATHS[sdk=iphone*]" = (
 					"$(PROJECT_DIR)/../../src",
-					"$(PROJECT_DIR)/temp/iOSCompileStuff-v0.0.1/arm64-ios-simulator-wesnoth/include",
-					"$(PROJECT_DIR)/temp/iOSCompileStuff-v0.0.1/arm64-ios-simulator-wesnoth/include/SDL2",
-					"$(PROJECT_DIR)/temp/iOSCompileStuff-v0.0.1/arm64-ios-simulator-wesnoth/include/cairo",
-					"$(PROJECT_DIR)/temp/iOSCompileStuff-v0.0.1/arm64-ios-simulator-wesnoth/include/glib-2.0",
-					"$(PROJECT_DIR)/temp/iOSCompileStuff-v0.0.1/arm64-ios-simulator-wesnoth/include/harfbuzz",
-					"$(PROJECT_DIR)/temp/iOSCompileStuff-v0.0.1/arm64-ios-simulator-wesnoth/include/pango-1.0",
-					"$(PROJECT_DIR)/temp/iOSCompileStuff-v0.0.1/arm64-ios-simulator-wesnoth/lib/glib-2.0/include",
+					"$(PROJECT_DIR)/temp/iOSCompileStuff-v0.0.1/$(WESNOTH_IOS_TRIPLET)/include",
+					"$(PROJECT_DIR)/temp/iOSCompileStuff-v0.0.1/$(WESNOTH_IOS_TRIPLET)/include/SDL2",
+					"$(PROJECT_DIR)/temp/iOSCompileStuff-v0.0.1/$(WESNOTH_IOS_TRIPLET)/include/cairo",
+					"$(PROJECT_DIR)/temp/iOSCompileStuff-v0.0.1/$(WESNOTH_IOS_TRIPLET)/include/glib-2.0",
+					"$(PROJECT_DIR)/temp/iOSCompileStuff-v0.0.1/$(WESNOTH_IOS_TRIPLET)/include/harfbuzz",
+					"$(PROJECT_DIR)/temp/iOSCompileStuff-v0.0.1/$(WESNOTH_IOS_TRIPLET)/include/pango-1.0",
+					"$(PROJECT_DIR)/temp/iOSCompileStuff-v0.0.1/$(WESNOTH_IOS_TRIPLET)/lib/glib-2.0/include",
 				);
 				INFOPLIST_FILE = Info.plist;
 				"INFOPLIST_FILE[sdk=iphone*]" = "Info-iOS.plist";
 				INSTALL_PATH = /Applications;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				"WESNOTH_IOS_TRIPLET[sdk=iphoneos*]" = "arm64-ios-wesnoth";
+				"WESNOTH_IOS_TRIPLET[sdk=iphonesimulator*]" = "arm64-ios-simulator-wesnoth";
 				LD_CLASSIC_1000 = "";
 				LD_CLASSIC_1100 = "";
 				LD_CLASSIC_1200 = "";
@@ -6811,9 +6827,14 @@
 				LD_CLASSIC_1400 = "";
 				LD_CLASSIC_1500 = "-ld_classic";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=iphone*]" = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				"FRAMEWORK_SEARCH_PATHS[sdk=iphone*]" = (
+					"$(BUILT_PRODUCTS_DIR)",
+					"$(PROJECT_DIR)/temp/iOSCompileStuff-v0.0.1/$(WESNOTH_IOS_TRIPLET)/lib",
+				);
 				"LIBRARY_SEARCH_PATHS[sdk=iphone*]" = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/temp/iOSCompileStuff-v0.0.1/arm64-ios-simulator-wesnoth/lib",
+					"$(BUILT_PRODUCTS_DIR)",
+					"$(PROJECT_DIR)/temp/iOSCompileStuff-v0.0.1/$(WESNOTH_IOS_TRIPLET)/lib",
 				);
 				LLVM_LTO = YES_THIN;
 				OTHER_CFLAGS = (
@@ -6833,7 +6854,6 @@
 					"$(LD_CLASSIC_$(XCODE_VERSION_MAJOR))",
 				);
 				"OTHER_LDFLAGS[sdk=iphone*]" = (
-					"-llua",
 					"-lboost_atomic",
 					"-lboost_charconv",
 					"-lboost_chrono",
@@ -6874,7 +6894,6 @@
 					"-lwebp",
 					"-lsharpyuv",
 					"-lSDL2_mixer",
-					"-lSDL2",
 					"-lSDL2main",
 					"-lvorbisfile",
 					"-lvorbis",
@@ -7039,6 +7058,7 @@
 					"$(inherited)",
 					"LUA_USE_IOS=1",
 				);
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
 					"-include",
@@ -7046,6 +7066,7 @@
 				);
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = lua;
+				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator";
 			};
 			name = SignedRelease;
 		};
@@ -7064,6 +7085,7 @@
 					"LUA_USE_IOS=1",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
 					"-include",
@@ -7071,6 +7093,7 @@
 				);
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = lua;
+				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator";
 			};
 			name = Debug;
 		};
@@ -7088,6 +7111,7 @@
 					"$(inherited)",
 					"LUA_USE_IOS=1",
 				);
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
 					"-include",
@@ -7095,6 +7119,7 @@
 				);
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = lua;
+				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator";
 			};
 			name = Release;
 		};
@@ -7307,6 +7332,7 @@
 				ENABLE_HARDENED_RUNTIME = NO;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = x86_64;
 				"EXCLUDED_SOURCE_FILE_NAMES[sdk=iphone*]" = SDLMain.mm;
+				"EXCLUDED_ARCHS[sdk=iphoneos*]" = arm64e;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -7321,7 +7347,6 @@
 					"LUA_USE_MACOSX=1",
 					"LUA_USE_IOS=1",
 					"HAVE_LIBPNG=1",
-					"HAVE_HISTORY=1",
 					"LOAD_REVISION=1",
 					"XML_STATIC=1",
 					"PCRE2_STATIC=1",
@@ -7339,18 +7364,20 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				"HEADER_SEARCH_PATHS[sdk=iphone*]" = (
 					"$(PROJECT_DIR)/../../src",
-					"$(PROJECT_DIR)/temp/iOSCompileStuff-v0.0.1/arm64-ios-simulator-wesnoth/include",
-					"$(PROJECT_DIR)/temp/iOSCompileStuff-v0.0.1/arm64-ios-simulator-wesnoth/include/SDL2",
-					"$(PROJECT_DIR)/temp/iOSCompileStuff-v0.0.1/arm64-ios-simulator-wesnoth/include/cairo",
-					"$(PROJECT_DIR)/temp/iOSCompileStuff-v0.0.1/arm64-ios-simulator-wesnoth/include/glib-2.0",
-					"$(PROJECT_DIR)/temp/iOSCompileStuff-v0.0.1/arm64-ios-simulator-wesnoth/include/harfbuzz",
-					"$(PROJECT_DIR)/temp/iOSCompileStuff-v0.0.1/arm64-ios-simulator-wesnoth/include/pango-1.0",
-					"$(PROJECT_DIR)/temp/iOSCompileStuff-v0.0.1/arm64-ios-simulator-wesnoth/lib/glib-2.0/include",
+					"$(PROJECT_DIR)/temp/iOSCompileStuff-v0.0.1/$(WESNOTH_IOS_TRIPLET)/include",
+					"$(PROJECT_DIR)/temp/iOSCompileStuff-v0.0.1/$(WESNOTH_IOS_TRIPLET)/include/SDL2",
+					"$(PROJECT_DIR)/temp/iOSCompileStuff-v0.0.1/$(WESNOTH_IOS_TRIPLET)/include/cairo",
+					"$(PROJECT_DIR)/temp/iOSCompileStuff-v0.0.1/$(WESNOTH_IOS_TRIPLET)/include/glib-2.0",
+					"$(PROJECT_DIR)/temp/iOSCompileStuff-v0.0.1/$(WESNOTH_IOS_TRIPLET)/include/harfbuzz",
+					"$(PROJECT_DIR)/temp/iOSCompileStuff-v0.0.1/$(WESNOTH_IOS_TRIPLET)/include/pango-1.0",
+					"$(PROJECT_DIR)/temp/iOSCompileStuff-v0.0.1/$(WESNOTH_IOS_TRIPLET)/lib/glib-2.0/include",
 				);
 				INFOPLIST_FILE = Info.plist;
 				"INFOPLIST_FILE[sdk=iphone*]" = "Info-iOS.plist";
 				INSTALL_PATH = /Applications;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				"WESNOTH_IOS_TRIPLET[sdk=iphoneos*]" = "arm64-ios-wesnoth";
+				"WESNOTH_IOS_TRIPLET[sdk=iphonesimulator*]" = "arm64-ios-simulator-wesnoth";
 				LD_CLASSIC_1000 = "";
 				LD_CLASSIC_1100 = "";
 				LD_CLASSIC_1200 = "";
@@ -7358,9 +7385,14 @@
 				LD_CLASSIC_1400 = "";
 				LD_CLASSIC_1500 = "-ld_classic";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=iphone*]" = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				"FRAMEWORK_SEARCH_PATHS[sdk=iphone*]" = (
+					"$(BUILT_PRODUCTS_DIR)",
+					"$(PROJECT_DIR)/temp/iOSCompileStuff-v0.0.1/$(WESNOTH_IOS_TRIPLET)/lib",
+				);
 				"LIBRARY_SEARCH_PATHS[sdk=iphone*]" = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/temp/iOSCompileStuff-v0.0.1/arm64-ios-simulator-wesnoth/lib",
+					"$(BUILT_PRODUCTS_DIR)",
+					"$(PROJECT_DIR)/temp/iOSCompileStuff-v0.0.1/$(WESNOTH_IOS_TRIPLET)/lib",
 				);
 				OTHER_CFLAGS = (
 					"-Wall",
@@ -7379,7 +7411,6 @@
 					"$(LD_CLASSIC_$(XCODE_VERSION_MAJOR))",
 				);
 				"OTHER_LDFLAGS[sdk=iphone*]" = (
-					"-llua",
 					"-lboost_atomic",
 					"-lboost_charconv",
 					"-lboost_chrono",
@@ -7420,7 +7451,6 @@
 					"-lwebp",
 					"-lsharpyuv",
 					"-lSDL2_mixer",
-					"-lSDL2",
 					"-lSDL2main",
 					"-lvorbisfile",
 					"-lvorbis",
@@ -7506,6 +7536,7 @@
 				ENABLE_HARDENED_RUNTIME = NO;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = x86_64;
 				"EXCLUDED_SOURCE_FILE_NAMES[sdk=iphone*]" = SDLMain.mm;
+				"EXCLUDED_ARCHS[sdk=iphoneos*]" = arm64e;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"LOCALEDIR=\\\"translations\\\"",
@@ -7518,7 +7549,6 @@
 					"LUA_USE_MACOSX=1",
 					"LUA_USE_IOS=1",
 					"HAVE_LIBPNG=1",
-					"HAVE_HISTORY=1",
 					"XML_STATIC=1",
 					"PCRE2_STATIC=1",
 				);
@@ -7535,18 +7565,20 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				"HEADER_SEARCH_PATHS[sdk=iphone*]" = (
 					"$(PROJECT_DIR)/../../src",
-					"$(PROJECT_DIR)/temp/iOSCompileStuff-v0.0.1/arm64-ios-simulator-wesnoth/include",
-					"$(PROJECT_DIR)/temp/iOSCompileStuff-v0.0.1/arm64-ios-simulator-wesnoth/include/SDL2",
-					"$(PROJECT_DIR)/temp/iOSCompileStuff-v0.0.1/arm64-ios-simulator-wesnoth/include/cairo",
-					"$(PROJECT_DIR)/temp/iOSCompileStuff-v0.0.1/arm64-ios-simulator-wesnoth/include/glib-2.0",
-					"$(PROJECT_DIR)/temp/iOSCompileStuff-v0.0.1/arm64-ios-simulator-wesnoth/include/harfbuzz",
-					"$(PROJECT_DIR)/temp/iOSCompileStuff-v0.0.1/arm64-ios-simulator-wesnoth/include/pango-1.0",
-					"$(PROJECT_DIR)/temp/iOSCompileStuff-v0.0.1/arm64-ios-simulator-wesnoth/lib/glib-2.0/include",
+					"$(PROJECT_DIR)/temp/iOSCompileStuff-v0.0.1/$(WESNOTH_IOS_TRIPLET)/include",
+					"$(PROJECT_DIR)/temp/iOSCompileStuff-v0.0.1/$(WESNOTH_IOS_TRIPLET)/include/SDL2",
+					"$(PROJECT_DIR)/temp/iOSCompileStuff-v0.0.1/$(WESNOTH_IOS_TRIPLET)/include/cairo",
+					"$(PROJECT_DIR)/temp/iOSCompileStuff-v0.0.1/$(WESNOTH_IOS_TRIPLET)/include/glib-2.0",
+					"$(PROJECT_DIR)/temp/iOSCompileStuff-v0.0.1/$(WESNOTH_IOS_TRIPLET)/include/harfbuzz",
+					"$(PROJECT_DIR)/temp/iOSCompileStuff-v0.0.1/$(WESNOTH_IOS_TRIPLET)/include/pango-1.0",
+					"$(PROJECT_DIR)/temp/iOSCompileStuff-v0.0.1/$(WESNOTH_IOS_TRIPLET)/lib/glib-2.0/include",
 				);
 				INFOPLIST_FILE = Info.plist;
 				"INFOPLIST_FILE[sdk=iphone*]" = "Info-iOS.plist";
 				INSTALL_PATH = /Applications;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				"WESNOTH_IOS_TRIPLET[sdk=iphoneos*]" = "arm64-ios-wesnoth";
+				"WESNOTH_IOS_TRIPLET[sdk=iphonesimulator*]" = "arm64-ios-simulator-wesnoth";
 				LD_CLASSIC_1000 = "";
 				LD_CLASSIC_1100 = "";
 				LD_CLASSIC_1200 = "";
@@ -7554,9 +7586,14 @@
 				LD_CLASSIC_1400 = "";
 				LD_CLASSIC_1500 = "-ld_classic";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=iphone*]" = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				"FRAMEWORK_SEARCH_PATHS[sdk=iphone*]" = (
+					"$(BUILT_PRODUCTS_DIR)",
+					"$(PROJECT_DIR)/temp/iOSCompileStuff-v0.0.1/$(WESNOTH_IOS_TRIPLET)/lib",
+				);
 				"LIBRARY_SEARCH_PATHS[sdk=iphone*]" = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/temp/iOSCompileStuff-v0.0.1/arm64-ios-simulator-wesnoth/lib",
+					"$(BUILT_PRODUCTS_DIR)",
+					"$(PROJECT_DIR)/temp/iOSCompileStuff-v0.0.1/$(WESNOTH_IOS_TRIPLET)/lib",
 				);
 				LLVM_LTO = YES_THIN;
 				OTHER_CFLAGS = (
@@ -7576,7 +7613,6 @@
 					"$(LD_CLASSIC_$(XCODE_VERSION_MAJOR))",
 				);
 				"OTHER_LDFLAGS[sdk=iphone*]" = (
-					"-llua",
 					"-lboost_atomic",
 					"-lboost_charconv",
 					"-lboost_chrono",
@@ -7617,7 +7653,6 @@
 					"-lwebp",
 					"-lsharpyuv",
 					"-lSDL2_mixer",
-					"-lSDL2",
 					"-lSDL2main",
 					"-lvorbisfile",
 					"-lvorbis",
