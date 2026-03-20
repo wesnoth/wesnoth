@@ -16,6 +16,7 @@ function wesnoth.wml_actions.set_variables(cfg, variables)
 				settings = wml.tostring(wml.literal(cfg))
 			}))
 		end
+        -- TODO cfg.to_variable is allowed to refer to container variable (for example array element) instead of array, but wml.array_access.get does not support that
 		data = wml.array_access.get(cfg.to_variable, variables)
 	else
 		for i,child in ipairs(cfg) do
@@ -26,7 +27,7 @@ function wesnoth.wml_actions.set_variables(cfg, variables)
 			elseif child.tag == "split" then
 				local to_split = child.contents.list
 				local separator = child.contents.separator
-				local key_name = child.contents.key
+				local key_name = child.contents.key or "value"
 				local remove_empty = child.contents.remove_empty
 				if separator then
 					if #separator > 1 then
@@ -80,7 +81,7 @@ function wesnoth.wml_actions.set_variables(cfg, variables)
 					table.insert(tail, merge_with[i])
 				end
 			end
-			
+
 			if mode == "merge" then
 				-- For merge mode, all the values are merged (by append) together before being merged into the specific element
 				local data_merged = {}
@@ -90,7 +91,7 @@ function wesnoth.wml_actions.set_variables(cfg, variables)
 				data_merged = wml.merge(merge_with[idx].contents, data_merged, mode)
 				data = {wml.tag.value(data_merged)}
 			end
-			
+
 			-- If we started at a specific index, add back everything that came before and after
 			local merged = {}
 			for i = 1, #head do
