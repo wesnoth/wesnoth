@@ -16,7 +16,6 @@ function wesnoth.wml_actions.set_variables(cfg, variables)
 				settings = wml.tostring(wml.literal(cfg))
 			}))
 		end
-		-- TODO cfg.to_variable is allowed to refer to container variable (for example array element) instead of array, but wml.array_access.get does not support that
 		data = wml.array_access.get(cfg.to_variable, variables)
 	else
 		for i,child in ipairs(cfg) do
@@ -71,42 +70,42 @@ function wesnoth.wml_actions.set_variables(cfg, variables)
 		if explicit_idx then
 			-- Note: idx is a WML index, so it starts at 0, not 1
 			idx = idx + 1
-            -- merge: add head, merge new element(s) with current element, add tail
-            -- replace: add head, add new element(s), add tail
+			-- merge: add head, merge new element(s) with current element, add tail
+			-- replace: add head, add new element(s), add tail
 			for i = 1, #merge_with do
-                if i < idx then
-                    head[i] = merge_with[i]
-                end
-                if i > idx then
-                    table.insert(tail, merge_with[i])
-                end
+				if i < idx then
+					head[i] = merge_with[i]
+				end
+				if i > idx then
+					table.insert(tail, merge_with[i])
+				end
 			end
 			
 			if mode == "merge" then
-				-- For merge mode, all the values are merged together before being merged into the specific element
+				-- For merge mode, all the values are merged (by append) together before being merged into the specific element
 				local data_merged = {}
 				for i = 1, #data do
 					data_merged = wml.merge(data_merged, data[i].contents, "append")
 				end
-                data_merged = wml.merge(merge_with[idx].contents, data_merged, "append") -- TODO really append?
+				data_merged = wml.merge(merge_with[idx].contents, data_merged, mode)
 				data = {wml.tag.value(data_merged)}
 			end
-            
-            -- If we started at a specific index, add back everything that came before and after
-            local merged = {}
-            for i = 1, #head do
-                table.insert(merged, head[i])
-            end
-            for i = 1, #data do
-                table.insert(merged, data[i])
-            end
-            for i = 1, #tail do
-                table.insert(merged, tail[i])
-            end
-            wml.array_access.set(realvar, wml.child_array(merged, 'value'), variables)
-        else
-            local merged = wml.merge(merge_with, data, mode)
-            wml.array_access.set(realvar, wml.child_array(merged, 'value'), variables)
+			
+			-- If we started at a specific index, add back everything that came before and after
+			local merged = {}
+			for i = 1, #head do
+				table.insert(merged, head[i])
+			end
+			for i = 1, #data do
+				table.insert(merged, data[i])
+			end
+			for i = 1, #tail do
+				table.insert(merged, tail[i])
+			end
+			wml.array_access.set(realvar, wml.child_array(merged, 'value'), variables)
+		else
+			local merged = wml.merge(merge_with, data, mode)
+			wml.array_access.set(realvar, wml.child_array(merged, 'value'), variables)
 		end
 	elseif mode == "append" then
 		local insert_into = wml.array_access.get(realvar, variables)
