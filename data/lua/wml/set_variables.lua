@@ -104,8 +104,10 @@ function wesnoth.wml_actions.set_variables(cfg, variables)
 			end
 			wml.array_access.set(realvar, wml.child_array(merged, 'value'), variables)
 		else
-			local merged = wml.merge(merge_with, data, mode)
-			wml.array_access.set(realvar, wml.child_array(merged, 'value'), variables)
+			if mode == "merge" then
+				data = wml.merge(merge_with, data, mode)
+			end
+			wml.array_access.set(realvar, wml.child_array(data, 'value'), variables)
 		end
 	elseif mode == "append" then
 		local insert_into = wml.array_access.get(realvar, variables)
