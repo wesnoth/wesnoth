@@ -219,7 +219,7 @@ function display_skills_dialog(selecting)
                             elseif (wesnoth.units.find_on_map{ id='Delfador', T.filter_location{radius=3, T.filter{id='delfador_mirror3'}} }[1]) then   -- mirror delfador counterspell
                                 dialog2[buttonid].label = small and _"<span size='small'>Counterspelled</span>" or _"<span>  Blocked by\n Counterspell</span>"
                                 dialog2[buttonid].enabled = false
-                            elseif (wml.variables['counterspell_active']) then -- delfador counterspell
+                            elseif (wml.variables['counterspell_active'] and not wesnoth.units.find_on_map{ id='delfador_mirror3' }) then -- delfador counterspell
                                 dialog2[buttonid].label = small and _"<span size='small'>Counterspelled</span>" or _"<span>  Blocked by\n Counterspell</span>"
                                 dialog2[buttonid].enabled = false
                             elseif (skill.xp_cost and skill.xp_cost>delfador.experience) then
