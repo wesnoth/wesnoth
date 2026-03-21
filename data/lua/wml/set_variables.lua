@@ -16,7 +16,7 @@ function wesnoth.wml_actions.set_variables(cfg, variables)
 				settings = wml.tostring(wml.literal(cfg))
 			}))
 		end
-        -- TODO cfg.to_variable is allowed to refer to container variable (for example array element) instead of array, but wml.array_access.get does not support that
+		-- TODO cfg.to_variable is allowed to refer to container variable (for example array element) instead of array, but wml.array_access.get does not support that
 		data = wml.array_access.get(cfg.to_variable, variables)
 	else
 		for i,child in ipairs(cfg) do
@@ -118,6 +118,9 @@ function wesnoth.wml_actions.set_variables(cfg, variables)
 		wml.array_access.set(realvar, insert_into, variables);
 	elseif mode == "insert" then
 		local insert_into = wml.array_access.get(realvar, variables)
+		while #insert_into < 0 + idx do
+			table.insert(insert_into, {})
+		end
 		for i = 1, #data do
 			table.insert(insert_into, idx + i, data[i])
 		end
