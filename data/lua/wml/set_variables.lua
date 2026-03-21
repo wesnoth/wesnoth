@@ -88,10 +88,16 @@ function wesnoth.wml_actions.set_variables(cfg, variables)
 				for i = 1, #data do
 					data_merged = wml.merge(data_merged, data[i].contents, "append")
 				end
-				-- TODO verify with c++ version whether empty containers should be created when idx is past end
 				local merge_contents = merge_with[idx] and merge_with[idx].contents or {}
 				data_merged = wml.merge(merge_contents, data_merged, mode)
-				data = {wml.tag.value(data_merged)}
+				data = {}
+				-- empty containers should be created when idx is past end of original data
+				local padding_needed = idx - #merge_with - 1
+				while padding_needed > 0 do
+					table.insert(data, wml.tag.value{})
+					padding_needed = padding_needed - 1
+				end
+				table.insert(data, wml.tag.value(data_merged))
 			end
 
 			-- If we started at a specific index, add back everything that came before and after
