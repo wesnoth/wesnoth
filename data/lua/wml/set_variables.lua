@@ -83,12 +83,14 @@ function wesnoth.wml_actions.set_variables(cfg, variables)
 			end
 
 			if mode == "merge" then
-				-- For merge mode, all the values are merged (by append) together before being merged into the specific element
+				-- For merge mode, all [value] and [literal] tags are joined together before being merged into the specific element
 				local data_merged = {}
 				for i = 1, #data do
 					data_merged = wml.merge(data_merged, data[i].contents, "append")
 				end
-				data_merged = wml.merge(merge_with[idx].contents, data_merged, mode)
+				-- TODO verify with c++ version whether empty containers should be created when idx is past end
+				local merge_contents = merge_with[idx] and merge_with[idx].contents or {}
+				data_merged = wml.merge(merge_contents, data_merged, mode)
 				data = {wml.tag.value(data_merged)}
 			end
 
