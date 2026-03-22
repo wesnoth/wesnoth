@@ -1,5 +1,6 @@
 ### Campaigns
    * Liberty
+     * S04 "Unlawful Orders": Kestrel's keep no longer gets blocked by his Lieutenant on turn 4.
      * S04 "Unlawful Orders": fix enemy soldiers having names.
    * The Deceivers Gambit
      * S04 "The Sylvan Seer": Silverback image is now smaller at lower difficulties.
