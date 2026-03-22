@@ -16,8 +16,13 @@ function wesnoth.wml_actions.set_variables(cfg, variables)
 				settings = wml.tostring(wml.literal(cfg))
 			}))
 		end
-		-- TODO cfg.to_variable is allowed to refer to container variable (for example array element) instead of array, but wml.array_access.get does not support that
-		data = wml.array_access.get(cfg.to_variable, variables)
+		-- cfg.to_variable is allowed to refer to container variable (for example array element) instead of array, but wml.array_access.get does not support that
+		local variables_proxy = variables or wml.variables
+		if variables_proxy[cfg.to_variable .. ".length"] then
+			data = wml.array_access.get(cfg.to_variable, variables)
+		else
+			data = {variables_proxy[cfg.to_variable]}
+		end
 	else
 		for i,child in ipairs(cfg) do
 			if child.tag == "value" then
@@ -90,14 +95,14 @@ function wesnoth.wml_actions.set_variables(cfg, variables)
 				end
 				local merge_contents = merge_with[idx] and merge_with[idx].contents or {}
 				data_merged = wml.merge(merge_contents, data_merged, mode)
-				data = {}
-				-- empty containers should be created when idx is past end of original data
-				local padding_needed = idx - #merge_with - 1
-				while padding_needed > 0 do
-					table.insert(data, wml.tag.value{})
-					padding_needed = padding_needed - 1
-				end
-				table.insert(data, wml.tag.value(data_merged))
+				data = {wml.tag.value(data_merged)}
+			end
+			
+			-- empty containers should be created when idx is past end of original data
+			local padding_needed = idx - #merge_with - 1
+			while padding_needed > 0 do
+				table.insert(data, 1, wml.tag.value{})
+				padding_needed = padding_needed - 1
 			end
 
 			-- If we started at a specific index, add back everything that came before and after
