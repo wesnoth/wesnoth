@@ -1,4 +1,6 @@
 ### Campaigns
+   * Liberty
+     * S04 "Unlawful Orders": fix enemy soldiers having names.
    * The Deceivers Gambit
      * S04 "The Sylvan Seer": Silverback image is now smaller at lower difficulties.
      * S04 "The Sylvan Seer": fix Delfador being counterspelled even when outside the counterspell AOE.
