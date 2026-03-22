@@ -9,6 +9,7 @@
      * S05 "The Deceiver": fix your first recall being non-undoable.
      * S05 "The Deceiver": Garard now waits one more turn before attacking the orcs.
      * S10 "Houses of the Dead": Malal's zombie spawns now scale over time.
+     * S14 "Long Live the Queen": Wesnoth now autosaves at the start of the boss fight.
      * S14 "Long Live the Queen": boss fight terrain now uses cobble instead of tile hexes, to be easier to distinguish through the red tint.
      * S14 "Long Live the Queen": fix Delfador's magical attacks sometimes being usable with 0% accuracy even when counterspelled.
      * Spells: fix Blizzard freezing chasm hexes.
