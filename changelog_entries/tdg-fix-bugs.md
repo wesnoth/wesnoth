@@ -9,3 +9,4 @@
      * S05 "The Deceiver": fix your first recall being non-undoable.
      * S05 "The Deceiver": Garard now waits one more turn before attacking the orcs.
      * S10 "Houses of the Dead": Malal's zombie spawns now scale over time.
+     * Spells: fix Time Dilation affecting units on your recall list.
