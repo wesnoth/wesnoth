@@ -6,3 +6,4 @@
      * S04 "The Sylvan Seer": fix final kill not awarding XP.
      * S04 "The Sylvan Seer": fix mirror magical attacks not displaying 100% hit chance.
      * S05 "The Deceiver": fix your first recall being non-undoable.
+     * S05 "The Deceiver": Garard now waits one more turn before attacking the orcs.
