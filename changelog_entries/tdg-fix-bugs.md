@@ -10,4 +10,5 @@
      * S05 "The Deceiver": Garard now waits one more turn before attacking the orcs.
      * S10 "Houses of the Dead": Malal's zombie spawns now scale over time.
      * S14 "Long Live the Queen": fix Delfador's magical attacks sometimes being usable with 0% accuracy even when counterspelled.
+     * Spells: fix Blizzard freezing chasm hexes.
      * Spells: fix Time Dilation affecting units on your recall list.
