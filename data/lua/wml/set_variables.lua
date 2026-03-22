@@ -97,7 +97,7 @@ function wesnoth.wml_actions.set_variables(cfg, variables)
 				data_merged = wml.merge(merge_contents, data_merged, mode)
 				data = {wml.tag.value(data_merged)}
 			end
-			
+
 			-- empty containers should be created when idx is past end of original data
 			local padding_needed = idx - #merge_with - 1
 			while padding_needed > 0 do
