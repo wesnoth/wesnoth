@@ -11,6 +11,7 @@
      * S10 "Houses of the Dead": Malal's zombie spawns now scale over time.
      * S14 "Long Live the Queen": Wesnoth now autosaves at the start of the boss fight.
      * S14 "Long Live the Queen": boss fight terrain now uses cobble instead of tile hexes, to be easier to distinguish through the red tint.
+     * S14 "Long Live the Queen": fix Delfador's first move being non-undoable.
      * S14 "Long Live the Queen": fix Delfador's magical attacks sometimes being usable with 0% accuracy even when counterspelled.
      * Spells: fix Blizzard freezing chasm hexes.
      * Spells: fix Time Dilation affecting units on your recall list.
