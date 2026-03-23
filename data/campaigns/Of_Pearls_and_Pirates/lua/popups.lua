@@ -9,67 +9,17 @@ local T = wml.tag
 function display_tip(cfg)
 	local tutor_title = cfg.title
 	local tutor_message = cfg.message
-	local tutor_image = cfg.image
-
-	--###############################
-	-- DEFINE GRID
-	--###############################
-	local grid = T.grid{ T.row{
-		T.column{ T.label{  use_markup=true,  label="<span size='40000'> </span>"  }},
-		T.column{ border="right,left,bottom", border_size=18, T.grid{
-			-------------------------
-			-- TITLE
-			-------------------------
-			T.row{ T.column{ T.image{  label="icons/banner3.png"  }}},
-			T.row{ T.column{ T.label{  use_markup=true,  label="<span size='8000'> </span>"  }}},
-			T.row{ T.column{
-				horizontal_alignment="center",
-				T.label{  definition="title",  label=_"Tip: "..tutor_title,  }
-			}},
-			T.row{ T.column{ T.label{  use_markup=true,  label="<span size='15000'> </span>"  }}},
-			-------------------------
-			-- INFO
-			-------------------------
-			T.row{ T.column{ T.grid{ T.row{
-				T.column{
-					horizontal_alignment="left",
-					T.label{
-						use_markup=true,
-						label=tutor_message,
-					}
-				},
-			}}}},
-			T.row{ T.column{ T.label{  use_markup=true,  label="<span size='15000'> </span>"  }}},
-			T.row{ T.column {T.image{  label="icons/banner2.png"  }}},
-			T.row{ T.column{ T.label{  use_markup=true,  label="<span size='15000'> </span>"  }}},
-			-------------------------
-			-- BUTTONS
-			-------------------------
-			T.row{T.column{ T.grid{ T.row{
-				T.column{ T.button{
-					return_value=1, use_markup=true,
-					label=_"Understood",
-				}},
-				T.column{ T.label{  use_markup=true,  label="<span size='15000'>     </span>"  }},
-				T.column{ T.button{
-					return_value=2, use_markup=true,
-					label=_"Disable Tip Popups &amp; Dialogue",
-				}},
-			}}}},
-		}},
-		T.column{ T.label{  use_markup=true,  label="<span size='40000'> </span>"  }},
-	}}
 
 	--###############################
 	-- CREATE DIALOG
 	--###############################
 	local result = wesnoth.sync.evaluate_single(function()
-		local button = gui.show_dialog({
-			definition="menu",
-			T.helptip{ id="tooltip_large" }, -- mandatory field
-			T.tooltip{ id="tooltip_large" }, -- mandatory field
-			grid
-		})
+		local dialog_cfg = wml.load "campaigns/Of_Pearls_and_Pirates/gui/display_tip.cfg"
+		local dialog_wml = wml.get_child(dialog_cfg, 'resolution')
+		local button = gui.show_dialog(dialog_wml, function(dialog)
+			dialog["title"        ].label = _"Tip: "..cfg.title
+			dialog["tutor_message"].label = cfg.message
+		end)
 		if (button==2) then wml.variables['enable_tutorial_elements']='no' end
 		return { button=button }
 	end)
