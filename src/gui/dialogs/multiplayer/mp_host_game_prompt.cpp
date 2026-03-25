@@ -23,10 +23,7 @@ namespace gui2::dialogs
 
 REGISTER_DIALOG(mp_host_game_prompt)
 
-/**
- * Helper for @ref prefs::get().ask_delete_saves.
- */
-static bool get_do_not_show_again()
+bool mp_host_game_prompt::get_do_not_show_again()
 {
 	return prefs::get().mp_server_warning_disabled() != 1;
 }
