@@ -35,6 +35,11 @@ namespace apple {
 
 		return scale_factor;
 	}
+
+	void install_keyboard_dismiss_toolbar()
+	{
+		// iOS-only, no-op on macOS.
+	}
 } // end namespace apple
 } // end namespace desktop
 
@@ -42,7 +47,118 @@ namespace apple {
 
 #include "apple_video.hpp"
 
+#include <SDL2/SDL_keyboard.h>
+
 #import <UIKit/UIKit.h>
+
+static __weak UIResponder* first_responder = nil;
+
+@interface UIResponder (WesnothFirstResponderCapture)
+- (void)wesnoth_capture_first_responder:(id)sender;
+@end
+
+@implementation UIResponder (WesnothFirstResponderCapture)
+- (void)wesnoth_capture_first_responder:(id)sender
+{
+	(void)sender;
+	first_responder = self;
+}
+@end
+
+@interface wesnoth_keyboard_toolbar : NSObject
++ (instancetype)shared;
+- (void)attach_toolbar_to_first_responder;
+@end
+
+@implementation wesnoth_keyboard_toolbar
+
++ (instancetype)shared
+{
+	static wesnoth_keyboard_toolbar* instance = nil;
+	static dispatch_once_t once_token;
+	dispatch_once(&once_token, ^{
+		instance = [[wesnoth_keyboard_toolbar alloc] init];
+	});
+	return instance;
+}
+
+- (instancetype)init
+{
+	self = [super init];
+	if(self) {
+		[[NSNotificationCenter defaultCenter]
+			addObserver:self
+			   selector:@selector(on_keyboard_will_show:)
+				   name:UIKeyboardWillShowNotification
+				 object:nil];
+	}
+	return self;
+}
+
+- (UIResponder*)current_first_responder
+{
+	first_responder = nil;
+	[[UIApplication sharedApplication]
+		sendAction:@selector(wesnoth_capture_first_responder:)
+			   to:nil
+			 from:nil
+		 forEvent:nil];
+	return first_responder;
+}
+
+- (UIToolbar*)dismiss_toolbar
+{
+	static UIToolbar* toolbar = nil;
+	if(!toolbar) {
+		toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0.0, 0.0, 0.0, 44.0)];
+		UIBarButtonItem* flex = [[UIBarButtonItem alloc]
+			initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+								 target:nil
+								 action:nil];
+		UIBarButtonItem* dismiss = [[UIBarButtonItem alloc]
+			initWithTitle:NSLocalizedString(@"Dismiss", @"Dismiss keyboard button")
+					style:UIBarButtonItemStyleDone
+				   target:self
+				   action:@selector(on_dismiss_keyboard:)];
+		[toolbar setItems:@[flex, dismiss]];
+		[toolbar sizeToFit];
+	}
+	return toolbar;
+}
+
+- (void)on_keyboard_will_show:(NSNotification*)notification
+{
+	(void)notification;
+	[self attach_toolbar_to_first_responder];
+}
+
+- (void)attach_toolbar_to_first_responder
+{
+	UIResponder* responder = [self current_first_responder];
+	if([responder isKindOfClass:[UITextField class]]) {
+		UITextField* text_field = (UITextField*)responder;
+		UIToolbar* toolbar = [self dismiss_toolbar];
+		if(text_field.inputAccessoryView != toolbar) {
+			text_field.inputAccessoryView = toolbar;
+			[text_field reloadInputViews];
+		}
+	} else if([responder isKindOfClass:[UITextView class]]) {
+		UITextView* text_view = (UITextView*)responder;
+		UIToolbar* toolbar = [self dismiss_toolbar];
+		if(text_view.inputAccessoryView != toolbar) {
+			text_view.inputAccessoryView = toolbar;
+			[text_view reloadInputViews];
+		}
+	}
+}
+
+- (void)on_dismiss_keyboard:(id)sender
+{
+	(void)sender;
+	SDL_StopTextInput();
+}
+
+@end
 
 namespace desktop {
 namespace apple {
@@ -52,6 +168,13 @@ namespace apple {
 			return screens[display_index].scale;
 		}
 		return UIScreen.mainScreen.scale;
+	}
+
+	void install_keyboard_dismiss_toolbar()
+	{
+		if([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone) {
+			[wesnoth_keyboard_toolbar shared];
+		}
 	}
 } // end namespace apple
 } // end namespace desktop

@@ -20,5 +20,6 @@
 namespace desktop {
 	namespace apple {
 		CGFloat get_scale_factor(int display_index);
+		void install_keyboard_dismiss_toolbar();
 	} // end namespace apple
 } // end namespace desktop

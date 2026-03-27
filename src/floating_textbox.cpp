@@ -54,7 +54,7 @@ void floating_textbox::close()
 	font::remove_floating_label(label_);
 	mode_ = TEXTBOX_NONE;
 
-#ifdef __ANDROID__
+#if defined(__ANDROID__) || defined(__IPHONEOS__)
 	// Hide onscreen keyboard
 	SDL_StopTextInput();
 #endif
@@ -136,7 +136,7 @@ void floating_textbox::show(
 
 	update_location(gui);
 
-#ifdef __ANDROID__
+#if defined(__ANDROID__) || defined(__IPHONEOS__)
 	// Show onscreen keyboard
 	SDL_StartTextInput();
 #endif
