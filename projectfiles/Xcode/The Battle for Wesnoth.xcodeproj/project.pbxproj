@@ -276,6 +276,7 @@
 		46EEFB762087434300E1E75A /* chat_log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46EEFB742087434200E1E75A /* chat_log.cpp */; };
 		46EEFB772087434300E1E75A /* chat_log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46EEFB742087434200E1E75A /* chat_log.cpp */; };
 		46F302EE220327FE0028938F /* container-migration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 46F302EC220327FD0028938F /* container-migration.plist */; };
+		EB3A53F5AF0D4883A38A9CB9 /* Resources/Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2294281A8FB742D3A49A7FBA /* Resources/Assets.xcassets */; platformFilters = (ios, ); };
 		F57BE6B24F76DB47B2231B2F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9EC324240DB23D8921BB0FFE /* LaunchScreen.storyboard */; platformFilters = (ios, ); };
 		46F54C27211DFB7200374A1C /* apple_version.mm in Sources */ = {isa = PBXBuildFile; fileRef = 46F54C26211DFB7200374A1C /* apple_version.mm */; };
 		46F57084205FCE34007031BF /* base64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 469BDB53205C357400DBF748 /* base64.cpp */; };
@@ -2218,6 +2219,7 @@
 		84234C54BB84519421FD4136 /* general.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = general.cpp; sourceTree = "<group>"; };
 		85514A7D81C52A912FF68AEB /* reachmap_options.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = reachmap_options.cpp; sourceTree = "<group>"; };
 		875E45698F8A8D5B750E7317 /* combobox.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = combobox.cpp; sourceTree = "<group>"; };
+		2294281A8FB742D3A49A7FBA /* Resources/Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Resources/Assets.xcassets"; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9EC324240DB23D8921BB0FFE /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* The Battle for Wesnoth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Battle for Wesnoth.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -3528,6 +3530,7 @@
 				4685E3702417F9BF00CB1ED8 /* data */,
 				B5A9914A0ECA4064002BE442 /* fonts */,
 				B5A9BE290ECE927C002BE442 /* icon.icns */,
+				2294281A8FB742D3A49A7FBA /* Resources/Assets.xcassets */,
 				B5A9B0780ECA4074002BE442 /* images */,
 				8D1107310486CEB800E47090 /* Info.plist */,
 				9EC324240DB23D8921BB0FFE /* LaunchScreen.storyboard */,
@@ -5367,6 +5370,7 @@
 				46F302EE220327FE0028938F /* container-migration.plist in Resources */,
 				919796F4261433AD001E8133 /* data in Resources */,
 				B5A9B2290ECA4074002BE442 /* fonts in Resources */,
+				EB3A53F5AF0D4883A38A9CB9 /* Resources/Assets.xcassets in Resources */,
 				B5A9BE2A0ECE927C002BE442 /* icon.icns in Resources */,
 				B5A9B22B0ECA4074002BE442 /* images in Resources */,
 				F57BE6B24F76DB47B2231B2F /* LaunchScreen.storyboard in Resources */,
@@ -6760,6 +6764,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				"ASSETCATALOG_COMPILER_APPICON_NAME[sdk=iphone*]" = AppIcon;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -6820,6 +6825,7 @@
 				);
 				INFOPLIST_FILE = Info.plist;
 				"INFOPLIST_FILE[sdk=iphone*]" = "Info-iOS.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Wesnoth;
 				INSTALL_PATH = /Applications;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				"WESNOTH_IOS_TRIPLET[sdk=iphoneos*]" = "arm64-ios-wesnoth";
@@ -6964,6 +6970,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				"ASSETCATALOG_COMPILER_APPICON_NAME[sdk=iphone*]" = AppIcon;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -7378,6 +7385,7 @@
 				);
 				INFOPLIST_FILE = Info.plist;
 				"INFOPLIST_FILE[sdk=iphone*]" = "Info-iOS.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Wesnoth;
 				INSTALL_PATH = /Applications;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				"WESNOTH_IOS_TRIPLET[sdk=iphoneos*]" = "arm64-ios-wesnoth";
@@ -7520,6 +7528,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				"ASSETCATALOG_COMPILER_APPICON_NAME[sdk=iphone*]" = AppIcon;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -7579,6 +7588,7 @@
 				);
 				INFOPLIST_FILE = Info.plist;
 				"INFOPLIST_FILE[sdk=iphone*]" = "Info-iOS.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Wesnoth;
 				INSTALL_PATH = /Applications;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				"WESNOTH_IOS_TRIPLET[sdk=iphoneos*]" = "arm64-ios-wesnoth";
