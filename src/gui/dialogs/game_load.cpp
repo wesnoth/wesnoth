@@ -104,7 +104,13 @@ void game_load::pre_show()
 
 	connect_signal_notify_modified(list, std::bind(&game_load::display_savegame, this));
 
+#ifdef __IPHONEOS__
+	// On iOS, opening the load dialog should not immediately summon the
+	// software keyboard just because the optional filter field exists.
+	keyboard_capture(&list);
+#else
 	keyboard_capture(filter);
+#endif
 	add_to_keyboard_chain(&list);
 
 	list.set_sorters(

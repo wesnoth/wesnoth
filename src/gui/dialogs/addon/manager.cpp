@@ -551,7 +551,13 @@ void addon_manager::pre_show()
 
 	set_enter_disabled(true);
 
+#ifdef __IPHONEOS__
+	// On iOS, opening the add-ons manager should not immediately summon the
+	// software keyboard just because the optional filter field exists.
+	keyboard_capture(&list);
+#else
 	keyboard_capture(&filter);
+#endif
 	list.add_list_to_keyboard_chain();
 
 	list.set_callback_order_change(std::bind(&addon_manager::on_order_changed, this, std::placeholders::_1, std::placeholders::_2));

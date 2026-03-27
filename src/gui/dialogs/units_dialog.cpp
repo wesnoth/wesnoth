@@ -150,7 +150,13 @@ void units_dialog::pre_show()
 		find_widget<button>("show_help"),
 		std::bind(&units_dialog::show_help, this));
 
+#ifdef __IPHONEOS__
+	// On iOS, opening these dialogs should not immediately summon the software
+	// keyboard just because the optional filter box exists.
+	keyboard_capture(&list);
+#else
 	keyboard_capture(&filter);
+#endif
 	add_to_keyboard_chain(&list);
 
 	show_list(list);
