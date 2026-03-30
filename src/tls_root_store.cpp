@@ -21,6 +21,9 @@
 #elif defined(__APPLE__)
 #include <TargetConditionals.h>
 #include <Security/Security.h>
+#if TARGET_OS_IPHONE
+#include "filesystem.hpp"
+#endif
 #elif defined(__ANDROID__)
 #include "filesystem.hpp"
 #endif
@@ -64,7 +67,8 @@ void load_tls_root_certs(boost::asio::ssl::context &ctx)
 
 	// check for any problems copying the certs
 	if(os_status != 0) {
-		ERR_NW << "Error enumerating certificates.";
+		ERR_NW << "Error enumerating certificates, falling back to default verify paths.";
+		ctx.set_default_verify_paths();
 
 		if (certs != NULL) {
 			CFRelease(certs);
@@ -102,10 +106,8 @@ void load_tls_root_certs(boost::asio::ssl::context &ctx)
 
 	CFRelease(certs);
 	SSL_CTX_set_cert_store(ctx.native_handle(), store);
-#elif defined(__APPLE__) && TARGET_OS_IPHONE
-	ctx.set_default_verify_paths();
-#elif defined(__ANDROID__)
-	ctx.load_verify_file(game_config::path +  "/certificates/cacert.pem");
+#elif (defined(__APPLE__) && TARGET_OS_IPHONE) || defined(__ANDROID__)
+	ctx.load_verify_file(game_config::path + "/certificates/cacert.pem");
 #else
 	ctx.set_default_verify_paths();
 #endif
