@@ -876,20 +876,74 @@ bool attack_type::special_active(const unit_ability_t& ab, AFFECTS whom) const
 	return context_->is_special_active(self, ab, whom);
 }
 
+namespace {
+	bool overwrite_special_affects(const unit_ability_t& ab)
+	{
+		const std::string& apply_to = ab.cfg()["overwrite_specials"];
+		return (apply_to == "one_side" || apply_to == "both_sides");
+	}
+}
+
+bool attack_type::overwrite_special_checking(active_ability_list& overwriters, const active_ability& overwrited) const
+{
+	auto ctx = fallback_context();
+	auto [self, other] = context_->self_and_other(*this);
+	const map_location& loc = overwrited.student_loc;
+	if(overwriters.empty()){
+		return false;
+	}
+	const unit_ability_t& ab = overwrited.ability();
+
+	for(const auto& j : overwriters) {
+		if(j.ability().suppress_special_priority() <= ab.suppress_special_priority() || !overwrite_special_affects(j.ability())) {
+			continue;
+		}
+
+		auto overwrite_filter = j.ability_cfg().optional_child("overwrite");
+
+		//the location of the fighters is used to differentiate the specials applied to 'self' from those applied to 'opponent'
+		//in all cases including 'apply_to=attacker/defender'
+		if(j.ability_cfg()["overwrite_specials"].str() == "one_side" && j.student_loc == self.loc) {
+			if(loc != self.loc) {
+				continue;
+			}
+		}
+		if(other.un && j.ability_cfg()["overwrite_specials"].str() == "one_side" && j.student_loc == other.loc) {
+			if(loc != other.loc) {
+				continue;
+			}
+		}
+
+		if(overwrite_filter) {
+			auto filter_abilities_specials = (*overwrite_filter).optional_child("filter_specials");
+			if(!filter_abilities_specials) {
+				filter_abilities_specials = (*overwrite_filter).optional_child("experimental_filter_specials");
+				if(filter_abilities_specials) {
+					deprecated_message("experimental_filter_specials", DEP_LEVEL::INDEFINITE, "", "Use filter_specials instead.");
+				}
+			}
+			if(filter_abilities_specials && !ab.matches_filter(*filter_abilities_specials)) {
+				continue;
+			}
+		}
+		return true;
+	}
+	return false;
+}
 
 active_ability_list attack_type::get_specials_and_abilities(const std::string& special) const
 {
 	auto ctx = fallback_context();
 	auto abil_list = context_->get_active_specials(*this, special);
 
-	// get a list of specials/"specials as abilities" that may potentially overwrite others
-	active_ability_list overwriters = overwrite_special_overwriter(abil_list);
-	if (!abil_list.empty() && !overwriters.empty()) {
-		// remove all abilities that would be overwritten
-		utils::erase_if(abil_list, [&](const active_ability& j) {
-			return (overwrite_special_checking(overwriters, j));
-			});
-	}
+	utils::sort_if(abil_list,[](const active_ability& i, const active_ability& j){
+		double l = i.ability().suppress_special_priority();
+		double r = j.ability().suppress_special_priority();
+		return l > r;
+	});
+	utils::erase_if(abil_list, [&](const active_ability& i) {
+		return (overwrite_special_checking(abil_list, i));
+	});
 	return abil_list;
 }
 /**
