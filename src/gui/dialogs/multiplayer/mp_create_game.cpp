@@ -270,9 +270,6 @@ void mp_create_game::pre_show()
 
 	filter.on_modified([this](const auto&) { on_filter_change<text_box>("game_filter", true); });
 
-	// Note this cannot be in the keyboard chain or it will capture focus from other text boxes
-	keyboard_capture(&filter);
-
 	//
 	// Set up game types menu_button
 	//
@@ -427,6 +424,14 @@ void mp_create_game::pre_show()
 	connect_signal_notify_modified(list,
 		std::bind(&mp_create_game::on_game_select, this));
 
+#ifdef __IPHONEOS__
+	// On iOS, opening this browser-style dialog should not immediately summon
+	// the software keyboard just because the optional filter field exists.
+	keyboard_capture(&list);
+#else
+	// Note this cannot be in the keyboard chain or it will capture focus from other text boxes
+	keyboard_capture(&filter);
+#endif
 	add_to_keyboard_chain(&list);
 
 	// This handles the initial game selection as well

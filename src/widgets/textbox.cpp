@@ -647,7 +647,7 @@ void textbox::handle_event(const SDL_Event& event, bool was_forwarded)
 
 	const bool mouse_inside = loc.contains(mousex, mousey);
 
-#ifdef __ANDROID__
+#if defined(__ANDROID__) || defined(__IPHONEOS__)
 	if(mouse_inside) {
 		// Show onscreen keyboard
 		SDL_StartTextInput();

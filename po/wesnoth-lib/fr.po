@@ -794,15 +794,6 @@ msgstr "Forêt de champignons uniforme"
 #. this hint is only shown in the map editor, the ^Uf, ^Tf and Tb are all terrain codes and should be left as-is
 #. this hint is only shown in the map editor, the ^Uf, ^Tf and Tb are all terrain codes and should be left as-is
 #: data/core/terrain.cfg:1070 data/core/terrain.cfg:1090
-#, fuzzy
-#| msgid ""
-#| "editor^The overlays '^Uf' and '^Ufi' are deprecated because, although the "
-#| "graphics show an overlay with another terrain underneath, the movement "
-#| "and defense stats are purely fungus terrain, ignoring the underlying "
-#| "terrain. The recommended replacements are '^Tf' and '^Tfi' which look the "
-#| "same but have the stats implied by the graphics. For hexes where the "
-#| "stats of purely fungus are wanted, 'Tb' is a mushroom base terrain, which "
-#| "can be used with or without '^Tf' on top."
 msgid ""
 "editor^The overlays ‘^Uf’ and ‘^Ufi’ are deprecated because, although the "
 "graphics show an overlay with another terrain underneath, the movement and "
@@ -2413,8 +2404,6 @@ msgstr "Afficher l'astuce du jour suivante"
 
 #. [button]: id=toggle_tip_panel
 #: data/gui/themes/celes/dialogs/title_screen.cfg:215
-#, fuzzy
-#| msgid "Next Tip of the Day"
 msgid "Tip of the Day"
 msgstr "Astuce du jour"
 
@@ -2422,8 +2411,6 @@ msgstr "Astuce du jour"
 #. [toggle_button]: id=show_tips
 #: data/gui/themes/celes/dialogs/title_screen.cfg:216
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:223
-#, fuzzy
-#| msgid "Show next tip of the day"
 msgid "Show tip of the day"
 msgstr "Afficher l'astuce du jour"
 
@@ -2431,7 +2418,7 @@ msgstr "Afficher l'astuce du jour"
 #: data/gui/themes/celes/dialogs/title_screen.cfg:229
 #: data/gui/themes/default/dialogs/title_screen.cfg:472
 msgid "About"
-msgstr ""
+msgstr "À propos"
 
 #. [button]: id=about
 #: data/gui/themes/celes/dialogs/title_screen.cfg:230
@@ -2529,14 +2516,15 @@ msgstr ""
 #: data/gui/themes/default/dialogs/achievements_dialog.cfg:80
 #: data/gui/themes/default/dialogs/title_screen.cfg:260
 #: src/hotkey/hotkey_command.cpp:97
+#, fuzzy
 msgid "Achievements"
-msgstr "Achèvements"
+msgstr "Accomplissements"
 
 #. [grid]
 #: data/gui/themes/celes/dialogs/title_screen.cfg:293
 #: data/gui/themes/default/dialogs/title_screen.cfg:260
 msgid "View achievements"
-msgstr "Afficher les achèvements"
+msgstr "Afficher les accomplissements"
 
 #. [grid]
 #: data/gui/themes/celes/dialogs/title_screen.cfg:294
@@ -2630,7 +2618,7 @@ msgstr "Copier"
 #. The heavy checkmark character is available in the DejaVu Sans font, but not in the default Lato font
 #: data/gui/themes/celes/widgets/button_success.cfg:269
 msgid "page^<b><span font_family='DejaVu Sans'>✔</span> Copied</b>"
-msgstr ""
+msgstr "page^<b><span font_family='DejaVu Sans'>✔</span> Copiée</b>"
 
 #. [button]: id=click_dismiss
 #. [button]: id=ok
@@ -3047,8 +3035,6 @@ msgstr ""
 
 #. [button]: id=admin_delete_addon
 #: data/gui/themes/default/dialogs/addon_server_info.cfg:95
-#, fuzzy
-#| msgid "Select the add-on version"
 msgid "Delete selected add-on (admin)"
 msgstr "Supprimer l'extension sélectionnée (admin)"
 
@@ -3140,11 +3126,13 @@ msgstr "Défenseur"
 #. The campaign_landing^ strings are shown in the right-hand panel when the campaign menu is opened.
 #. This one is the page title, shown in bold.
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:205
+#, fuzzy
 msgid "campaign_landing^Welcome to Wesnoth v1.20"
-msgstr ""
+msgstr "Bienvenue sur Wesnoth, version 1.20"
 
 #. [label]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:207
+#, fuzzy
 msgid ""
 "campaign_landing^<b>If you’re new to Wesnoth</b>, the opening story arc "
 "starts with <span color='#e1e119' style='italic'>The South Guard</span> and "
@@ -3153,22 +3141,37 @@ msgid ""
 "style='italic'>Heir to the Throne</span>. The intended way to learn both the "
 "story and the game mechanics is to play the campaigns in that order."
 msgstr ""
+"campaign_landing^<b>Si vous débutez sur Wesnoth</b>, l’histoire principale "
+"commence avec <span color='#e1e119' style='italic'>La garde sud</span> et se "
+"poursuit en suivant les campagnes dans l’ordre affiché à gauche, jusqu’à se "
+"terminer un demi-siècle plus tard avec <span color='#e1e119' "
+"style='italic'>Héritier du trône</span>. La meilleure façon de découvrir à "
+"la fois le scénario et les mécaniques du jeu est de suivre cet ordre."
 
 #. [label]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:209
+#, fuzzy
 msgid ""
 "campaign_landing^<b>If you’re a returning player</b>, you’ll notice a number "
 "of changes since v1.18:"
 msgstr ""
+"campaign_landing^<b>Si vous rejouez à Wesnoth</b>, vous verrez qu’un certain "
+"nombre de choses ont changé depuis la v1.18 :"
 
 #. [label]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:211
+#, fuzzy
 msgid ""
 "campaign_landing^<span color='#e1e119' style='italic'>Heir to the Throne</"
 "span> now features an open world with 33 branching scenarios, each awarding "
 "Konrad unique recruits, companions, or items. The original campaign is still "
 "available as <i>Heir to the Throne, Classic</i>."
 msgstr ""
+"campaign_landing^<span color='#e1e119' style='italic'>Héritier du trône</"
+"span> propose désormais un monde ouvert avec 33 scénarios à embranchements, "
+"chacun offrant à Konrad des recrues, des compagnons ou des objets uniques. "
+"La campagne originale reste disponible sous le nom de <i>Héritier du trône, "
+"Classique</i>."
 
 #. [label]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:213
@@ -3199,6 +3202,7 @@ msgstr ""
 
 #. [label]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:219
+#, fuzzy
 msgid ""
 "campaign_landing^<span color='#e1e119' style='italic'>The South Guard</span> "
 "has been significantly revised, and now replaces the classic <i>Battle "
@@ -3206,18 +3210,29 @@ msgid ""
 "original tutorial is still available as part of <i>Heir to the Throne, "
 "Classic</i>."
 msgstr ""
+"campaign_landing^<span color='#e1e119' style='italic'>La garde sud</span> a "
+"subi une refonte majeure et remplace désormais le tutoriel classique. Les "
+"joueurs qui souhaitent retrouver l’enseignement de Delfador peuvent toujours "
+"accéder au tutoriel original dans <i>Héritier du trône, classique</i>."
 
 #. [label]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:221
+#, fuzzy
 msgid ""
 "campaign_landing^<span color='#e1e119' style='italic'>The Hammer of "
 "Thursagan</span> has been enhanced with story adjustments, improved enemy "
 "AI, a new Thunderer advancement, a redesign of <i>High Pass</i>, and the re-"
 "addition of the formerly removed <i>Mages and Drakes</i>."
 msgstr ""
+"campaign_landing^<span color='#e1e119' style='italic'>Le marteau de "
+"Thursagan</span> bénéficie désormais d’ajustements de l’histoire, d’une IA "
+"ennemie améliorée, d’un nouvel avancement pour le foudroyeur, d’une refonte "
+"de <i>Haute Passe</i> et du retour de <i>Mages and Dracans</i>, qui avait "
+"été retiré auparavant."
 
 #. [label]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:223
+#, fuzzy
 msgid ""
 "campaign_landing^<span color='#e1e119' style='italic'>Winds of Fate</span> "
 "has been rebalanced with much lower recall costs, redesigned wildlife "
@@ -3225,13 +3240,22 @@ msgid ""
 "and dialogue sequences were changed for better continuity with other "
 "campaigns."
 msgstr ""
+"campaign_landing^<span color='#e1e119' style='italic'>Vents du destin</span> "
+"a été réajusté : les coûts de rappel sont beaucoup plus faibles, les "
+"générateurs d’animaux sauvages et l’IA ont été repensés, et la bataille "
+"centrale de la campagne est désormais beaucoup plus grande. Plusieurs "
+"personnages et dialogues ont été modifiés pour assurer une meilleure "
+"continuité avec les autres campagnes."
 
 #. [label]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:225
+#, fuzzy
 msgid ""
 "campaign_landing^For a full list of changes, consult our official changelog "
 "at https://www.wesnoth.org/start/1.20/"
 msgstr ""
+"Pour une liste complète des changements, consultez notre journal des "
+"modifications officiel à l’adresse https://www.wesnoth.org/start/1.20/"
 
 #. [label]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:246
@@ -3290,8 +3314,9 @@ msgstr "Trier par ordre chronologique approximatif des évènement de l'histoire
 
 #. [multimenu_button]: id=filter_completion
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:326
+#, fuzzy
 msgid "Filter by campaign completion status"
-msgstr ""
+msgstr "Filtrer par statut de complétion des campagnes"
 
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:329
@@ -3303,8 +3328,9 @@ msgstr "Réalisé"
 #. [option]
 #. campaigns which the player hasn't beaten, rather than campaigns which the author hasn't finished writing
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:331
+#, fuzzy
 msgid "Show campaigns not completed by player"
-msgstr ""
+msgstr "Afficher les campagnes non terminées par le joueur"
 
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:335
@@ -3315,8 +3341,9 @@ msgstr "Réalisé"
 
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:336
+#, fuzzy
 msgid "Show campaigns completed at easiest difficulty"
-msgstr ""
+msgstr "Afficher les campagnes terminées à la difficulté minimale"
 
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:340
@@ -3327,8 +3354,9 @@ msgstr "Réalisé"
 
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:341
+#, fuzzy
 msgid "Show campaigns completed at intermediate difficulties"
-msgstr ""
+msgstr "Afficher les campagnes terminées à des difficultés intermédiaires"
 
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:345
@@ -3339,8 +3367,9 @@ msgstr "Réalisé"
 
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:346
+#, fuzzy
 msgid "Show campaigns completed at hardest difficulty"
-msgstr ""
+msgstr "Afficher les campagnes terminées à la difficulté maximale"
 
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:350
@@ -3351,8 +3380,9 @@ msgstr "Réalisé"
 
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:351
+#, fuzzy
 msgid "Show completed campaigns"
-msgstr ""
+msgstr "Afficher les campagnes terminées"
 
 #. [label]
 #. [label]: id=mods_header
@@ -3373,12 +3403,18 @@ msgstr "RNG par défaut"
 
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:443
+#, fuzzy
 msgid ""
 "Pure, unbiased randomness; the way Wesnoth is intended to be played.\n"
 "\n"
 "Example: if you strike twice with 50% accuracy, you’re most likely to hit "
 "once and miss once, but might also hit twice or miss twice."
 msgstr ""
+"Hasard pur et non biaisé ; c’est ainsi que Wesnoth est censé fonctionner.\n"
+"\n"
+"Exemple : si vous tentez deux attaques avec 50 % de précision, vous "
+"toucherez généralement une fois et manquerez une fois, mais il est également "
+"possible de toucher les deux ou de rater les deux."
 
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:448
@@ -3404,6 +3440,7 @@ msgstr "RNG prévisible"
 
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:455
+#, fuzzy
 msgid ""
 "Hits and misses are much more consistent. This tends to make small-scale "
 "engagements easier to plan.\n"
@@ -3411,6 +3448,11 @@ msgid ""
 "Example: if you strike three times with 50% accuracy, you will always hit at "
 "least once and miss at least once."
 msgstr ""
+"Les réussites et les échecs sont beaucoup plus cohérents. Cela rend la "
+"planification des combats à petite échelle plus facile.\n"
+"\n"
+"Exemple : si vous attaquez trois fois avec une précision de 50 %, vous "
+"toucherez toujours au moins une fois et manquerez au moins une fois."
 
 #. [label]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:472
@@ -3658,8 +3700,9 @@ msgstr "Supprimer heure"
 
 #. [button]: id=preview_color
 #: data/gui/themes/default/dialogs/custom_tod.cfg:498
+#, fuzzy
 msgid "Preview color changes on map"
-msgstr ""
+msgstr "Prévisualiser les changements de couleur sur la carte"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -3730,8 +3773,6 @@ msgstr "Équipe seulement"
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_choose_addon.cfg:47
-#, fuzzy
-#| msgid "Add-on selection"
 msgid "Add-on Selection"
 msgstr "Sélection de l'extension"
 
@@ -4197,8 +4238,9 @@ msgstr ""
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:221
+#, fuzzy
 msgid "Level:"
-msgstr ""
+msgstr "Niveau:"
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:246
@@ -4216,8 +4258,6 @@ msgstr "Aléatoire"
 
 #. [row]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:255
-#, fuzzy
-#| msgid "Female"
 msgid "gender^Female"
 msgstr "Féminin"
 
@@ -4230,34 +4270,30 @@ msgstr "Avancement"
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:296
-#, fuzzy
-#| msgid "Race"
 msgid "Race:"
-msgstr "Race"
+msgstr "Race :"
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:349
+#, fuzzy
 msgid "Alignment:"
-msgstr ""
+msgstr "Alignement:"
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:375
-#, fuzzy
-#| msgid "HP: "
 msgid "HP:"
-msgstr "PV : "
+msgstr "PV :"
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:405
-#, fuzzy
-#| msgid "XP: "
 msgid "XP:"
-msgstr "XP : "
+msgstr "XP :"
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:435
+#, fuzzy
 msgid "Cost:"
-msgstr ""
+msgstr "Coût :"
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:465
@@ -4291,13 +4327,15 @@ msgstr "Sélectionner/Déplacer/Attaquer"
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:672
+#, fuzzy
 msgid "Range:"
-msgstr ""
+msgstr "Portée:"
 
 #. [option]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:687
+#, fuzzy
 msgid "range^Melee"
-msgstr ""
+msgstr "Corps à corps"
 
 #. [option]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:692
@@ -4395,8 +4433,9 @@ msgstr "Options avancées"
 
 #. [tab]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:1215
+#, fuzzy
 msgid "WML View"
-msgstr ""
+msgstr "Vue WML"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -4531,8 +4570,9 @@ msgstr ""
 
 #. [button]: id=open_ext
 #: data/gui/themes/default/dialogs/file_dialog.cfg:320
+#, fuzzy
 msgid "Open selected using platform’s default applications"
-msgstr ""
+msgstr "Ouvrir la sélection avec les applications par défaut de la plateforme"
 
 #. [button]: id=new_dir
 #. [label]: id=title
@@ -4853,8 +4893,9 @@ msgstr "Défiler vers"
 
 #. [label]
 #: data/gui/themes/default/dialogs/game_version.cfg:122
+#, fuzzy
 msgid "<span font_family='DejaVu Sans'>✦</span> <b>Version:</b>"
-msgstr ""
+msgstr "<span font_family='DejaVu Sans'>✦</span> <b>Version:</b>"
 
 #. [label]
 #: data/gui/themes/default/dialogs/game_version.cfg:150
@@ -4864,8 +4905,9 @@ msgstr "<span font_family='DejaVu Sans'>✦</span> <b>Propulsé par:</b>"
 
 #. [label]
 #: data/gui/themes/default/dialogs/game_version.cfg:179
+#, fuzzy
 msgid "<span font_family='DejaVu Sans'>✦</span> <b>Architecture:</b>"
-msgstr ""
+msgstr "<span font_family='DejaVu Sans'>✦</span> <b>Architecture:</b>"
 
 #. [label]
 #: data/gui/themes/default/dialogs/game_version.cfg:207
@@ -5386,15 +5428,15 @@ msgstr ""
 
 #. [button]: id=join_queue
 #: data/gui/themes/default/dialogs/lobby_main.cfg:728
+#, fuzzy
 msgid "Join Queue"
-msgstr ""
+msgstr "Rejoindre la file d’attente"
 
 #. [button]: id=leave_queue
 #: data/gui/themes/default/dialogs/lobby_main.cfg:738
 #, fuzzy
-#| msgid "Leave"
 msgid "Leave Queue"
-msgstr "Quitter"
+msgstr "Sortir de la file d’attente"
 
 #. [label]
 #: data/gui/themes/default/dialogs/lobby_main.cfg:844
@@ -5986,9 +6028,8 @@ msgstr "Taille de la carte :"
 #: data/gui/themes/default/dialogs/mp_create_game/small_resolution.cfg:378
 #: data/gui/themes/default/dialogs/mp_create_game/tiny_resolution.cfg:335
 #, fuzzy
-#| msgid "Saved Games"
 msgid "Save Preset"
-msgstr "Parties sauvegardées"
+msgstr "Sauvegarder le préréglage"
 
 #. [row]
 #: data/gui/themes/default/dialogs/mp_faction_select.cfg:210
@@ -6880,18 +6921,21 @@ msgstr "Options des cartes aléatoires :"
 
 #. [label]
 #: data/gui/themes/default/dialogs/reachmap_options.cfg:112
+#, fuzzy
 msgid "Highlight Color"
-msgstr ""
+msgstr "Couleur de surbrillance"
 
 #. [label]
 #: data/gui/themes/default/dialogs/reachmap_options.cfg:130
+#, fuzzy
 msgid "Enemy Highlight Color"
-msgstr ""
+msgstr "Couleur de surbrillance des ennemis"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/reachmap_options.cfg:142
+#, fuzzy
 msgid "Border Opacity:"
-msgstr ""
+msgstr "Opacité de la bordure:"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/reachmap_options.cfg:144
@@ -7243,8 +7287,9 @@ msgstr "Renommer"
 
 #. [button]: id=mark_favorite
 #: data/gui/themes/default/dialogs/units_dialog.cfg:574
+#, fuzzy
 msgid "Mark/unmark the selected unit as favorite"
-msgstr ""
+msgstr "Mettre/enlever l’unité sélectionnée comme favorite"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -7301,11 +7346,15 @@ msgstr ""
 
 #. [terrain_type]: id=urbanjungle
 #: data/internal/Urban_Jungle/terrain.cfg:10
+#, fuzzy
 msgid ""
 "Densely packed structures are less suitable for garrison than traditional "
 "villages, providing no income or healing. They are difficult to navigate "
 "quickly, but offer significant protection."
 msgstr ""
+"Les constructions très compactes sont moins propices à la garnison que les "
+"villages classiques, ne générant ni revenu ni régénération. Elles sont "
+"ardues à traverser rapidement, mais offrent une une protection significative."
 
 #. [terrain_type]: id=urbanjungleA
 #. [terrain_type]: id=urbanjungle{ID}
@@ -7467,11 +7516,12 @@ msgstr ""
 
 #: src/gui/dialogs/achievements_dialog.cpp:97
 msgid "$title ($count/$total)"
-msgstr ""
+msgstr "$title ($count/$total)"
 
 #: src/gui/dialogs/achievements_dialog.cpp:138
+#, fuzzy
 msgid "Completed $count/$total"
-msgstr ""
+msgstr "Fait : $count sur $total"
 
 #: src/gui/dialogs/addon/addon_server_info.cpp:95
 #: src/gui/dialogs/addon/addon_server_info.cpp:120
@@ -7991,8 +8041,9 @@ msgid "Terraforming"
 msgstr "Terraformation"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:402
+#, fuzzy
 msgid "The icon’s file size is too large"
-msgstr ""
+msgstr "La taille du fichier de l’icône est trop grande"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:404
 msgid "No validation errors"
@@ -8007,8 +8058,9 @@ msgid "Choose an icon"
 msgstr "Choix de l'icône"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:180
+#, fuzzy
 msgid "scout"
-msgstr ""
+msgstr "éclaireur"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:181
 #, fuzzy
@@ -8027,8 +8079,9 @@ msgid "mixed fighter"
 msgstr ""
 
 #: src/gui/dialogs/editor/edit_unit.cpp:184
+#, fuzzy
 msgid "healer"
-msgstr ""
+msgstr "guérisseur"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:927
 #, fuzzy
@@ -8069,12 +8122,14 @@ msgid "enter filename"
 msgstr "Générer un nom"
 
 #: src/gui/dialogs/file_dialog.cpp:201
+#, fuzzy
 msgid "invalid extension (use $extensions)"
-msgstr ""
+msgstr "Extension invalide (utilisez $extensions)"
 
 #: src/gui/dialogs/file_dialog.cpp:208
+#, fuzzy
 msgid "filename contains whitespace"
-msgstr ""
+msgstr "Le nom de fichier contient des espaces"
 
 #: src/gui/dialogs/file_dialog.cpp:237
 msgid "Open"
@@ -8380,10 +8435,13 @@ msgid "No Other Version Found"
 msgstr "Aucune information sur l'ère."
 
 #: src/gui/dialogs/migrate_version_selection.cpp:47
+#, fuzzy
 msgid ""
 "This would import settings from a previous version of Wesnoth, but no other "
 "version was found on this device"
 msgstr ""
+"Cela permettrait d’importer les paramètres d’une version précédente de "
+"Wesnoth, mais aucune autre version n’a été trouvée sur cet appareil."
 
 #: src/gui/dialogs/multiplayer/faction_select.cpp:200
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:498
@@ -8665,8 +8723,8 @@ msgid ""
 "“<b>$hotkey_sequence|</b>” is in use by “<b>$old_hotkey_action|</b>”.\n"
 "Do you wish to reassign it to “<b>$new_hotkey_action|</b>”?"
 msgstr ""
-"« <b>$hotkey_sequence|</b> » est utilisé par « <b>$old_hotkey_action|</b> "
-"».\n"
+"« <b>$hotkey_sequence|</b> » est utilisé par « <b>$old_hotkey_action|</"
+"b> ».\n"
 "Voulez-vous le réattribuer à « <b>$new_hotkey_action|</b> » ?"
 
 #: src/gui/dialogs/preferences_dialog.cpp:965
@@ -9012,8 +9070,9 @@ msgid "Remaining: $left/$max"
 msgstr ""
 
 #: src/gui/widgets/unit_preview_pane.cpp:223
+#, fuzzy
 msgid "This unit can attack multiple times per turn."
-msgstr ""
+msgstr "Cette unité peut attaquer plusieurs fois par tour."
 
 #: src/gui/widgets/unit_preview_pane.cpp:275
 msgid "uses $num attack"
@@ -9247,9 +9306,8 @@ msgstr "Sauvegarder la carte"
 
 #: src/hotkey/hotkey_command.cpp:110
 #, fuzzy
-#| msgid "Loading..."
 msgid "Load Turn..."
-msgstr "Chargement du jeu…"
+msgstr "Chargement du tour…"
 
 #: src/hotkey/hotkey_command.cpp:112
 msgid "Repeat Recruit"
@@ -9301,9 +9359,8 @@ msgstr "Tuer l'unité (débug !)"
 
 #: src/hotkey/hotkey_command.cpp:126
 #, fuzzy
-#| msgid "Create Unit (Debug!)"
 msgid "Teleport Unit (Debug!)"
-msgstr "Créer une unité (débug !)"
+msgstr "Téléporter une Unité (Debogage!)"
 
 #: src/hotkey/hotkey_command.cpp:128
 msgid "Objectives"
@@ -10217,8 +10274,8 @@ msgstr ""
 #~ "The key '$deprecated_key' has been renamed to '$key'. Support for "
 #~ "'$deprecated_key' will be removed in version $removal_version."
 #~ msgstr ""
-#~ "La clef « $deprecated_key » a été remplacée par « $key ». « "
-#~ "$deprecated_key » ne sera plus maintenue à partir de la version "
+#~ "La clef « $deprecated_key » a été remplacée par « $key ». "
+#~ "« $deprecated_key » ne sera plus maintenue à partir de la version "
 #~ "$removal_version."
 
 #~ msgid "Show disengaged orb"
@@ -10675,8 +10732,8 @@ msgstr ""
 
 #~ msgid "Linked '$id' group needs a 'fixed_width' or 'fixed_height' key."
 #~ msgstr ""
-#~ "Le groupe lié « $id » a besoin d'une clé « fixed_width » ou « "
-#~ "fixed_height »."
+#~ "Le groupe lié « $id » a besoin d'une clé « fixed_width » ou "
+#~ "« fixed_height »."
 
 #~ msgid "Items"
 #~ msgstr "Objets"

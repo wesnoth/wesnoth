@@ -26,9 +26,12 @@
 #include "sdl/window.hpp"
 #include "utils/general.hpp"
 
-#ifdef TARGET_OS_OSX
+#ifdef __APPLE__
+#include <TargetConditionals.h>
 #include "desktop/apple_video.hpp"
+#if TARGET_OS_OSX
 #include "game_version.hpp"
+#endif
 #endif
 
 #include <SDL2/SDL.h>
@@ -362,6 +365,9 @@ void init_window(bool hidden)
 #ifdef __ANDROID__
 	prefs::get().set_fullscreen(true);
 	SDL_SetHint(SDL_HINT_RENDER_DRIVER, "opengles");
+#endif
+#if defined(__APPLE__) && TARGET_OS_IPHONE
+	desktop::apple::install_keyboard_dismiss_toolbar();
 #endif
 
 	// Position

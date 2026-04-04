@@ -232,10 +232,10 @@ void story_viewer::display_part()
 	//
 	const std::string& title_text = current_part_->title();
 	if(current_part_->show_title() && !title_text.empty()) {
-		auto& title_position = current_part_->title_position();
+		const point& title_position = current_part_->title_position();
 		cfg.add_child("text", config{
-			"x", "(max(" + std::to_string(title_position.x) + " * (width - text_width) / 100, 0))",
-			"y", "(max(" + std::to_string(title_position.y) + " * (height - text_height) / 100, 0))",
+			"x", "(max(" + std::to_string(title_position.x) + " * (width - 10 - text_width) / 100, 10))",
+			"y", "(max(" + std::to_string(title_position.y) + " * (height - 10 - text_height) / 100, 10))",
 			"w", "(text_width)",
 			"h", "(text_height)",
 			"maximum_width", "(text_width)",

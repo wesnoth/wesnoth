@@ -382,7 +382,13 @@ public:
 
 		model_.filter = window.find_widget<text_box>("filter", false, true);
 		model_.filter->on_modified([this](const auto&) { filter(); });
+#ifdef __IPHONEOS__
+		// On iOS, opening the chat log should not immediately summon the
+		// software keyboard just because the optional filter field exists.
+		window.keyboard_capture(model_.page_number);
+#else
 		window.keyboard_capture(model_.filter);
+#endif
 
 		model_.copy_button = window.find_widget<button>("copy", false, true);
 		connect_signal_mouse_left_click(

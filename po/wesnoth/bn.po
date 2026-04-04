@@ -1,15 +1,15 @@
 # #-#-#-#-#  wesnoth  #-#-#-#-#
 # Bengali translation of Wesnoth.
 # Copyright (C) 2024 Wesnoth development team
-# Subhraman Sarkar <suvrax@gmail.com>, 2024-2025.
+# Subhraman Sarkar <sbmskmm@protonmail.com>, 2024-2026.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: bn\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2026-03-23 18:10-0500\n"
-"PO-Revision-Date: 2025-07-20 16:54+0530\n"
-"Last-Translator: Subhraman Sarkar <suvrax@gmail.com>\n"
+"PO-Revision-Date: 2026-03-23 16:53+0530\n"
+"Last-Translator: Subhraman Sarkar <sbmskmm@protonmail.com>\n"
 "Language-Team: Bengali < >\n"
 "Language: bn\n"
 "MIME-Version: 1.0\n"
@@ -182,7 +182,7 @@ msgstr "গোলকের রঙ পছন্দ করুন"
 #. [advanced_preference]: type=custom
 #: data/advanced_preferences.cfg:142
 msgid "Customize Reach Map (Unit Movement UI)"
-msgstr ""
+msgstr "রিচম্যাপ (ইউনিট সরানোর ইউআই) সাজান"
 
 #. [advanced_preference]: type=custom
 #: data/advanced_preferences.cfg:148
@@ -250,17 +250,17 @@ msgstr ""
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:192
 msgid "Show missed attack indicator"
-msgstr ""
+msgstr "আক্রমণ "
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:193
 msgid "Display a visual indicator above a defender when an attack misses."
-msgstr ""
+msgstr "আক্রমণ না লাগলে রক্ষণকারী ইউনিটের ওপরে একটি নির্দেশক দেখান"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:200
 msgid "SIMD acceleration"
-msgstr ""
+msgstr "SIMD ত্বরণ"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:201
@@ -268,6 +268,8 @@ msgid ""
 "Use hardware acceleration (SSE2/NEON) for faster image processing on the "
 "CPU. Try disabling this if you experience graphical glitches or crashes."
 msgstr ""
+"সিপিইউতে দ্রুত চিত্র প্রক্রিয়াকরণের জন্য হার্ডওয়্যার ত্বরণ (এসএসই 2 / নিওন) ব্যবহার "
+"করুন। আপনি গ্রাফিকাল ত্রুটি বা ক্র্যাশ অনুভব করলে এটি বন্ধ করে দেখুন।"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
@@ -1536,11 +1538,12 @@ msgstr "পরাজিত করার ওপর মনোনিবেশ ক�
 #. [focus_on_enemy]
 #: data/core/macros/ai_controller.cfg:180
 msgid ""
-"focusing on defeating $ai_controller.side_$ally_side|_current_settings."
-"focus_on_enemy.side_description|."
+"focusing on defeating $ai_controller.side_$ally_side|"
+"_current_settings.focus_on_enemy.side_description|."
 msgstr ""
-"$ai_controller.side_$ally_side|_current_settings.focus_on_enemy."
-"side_description|-কে পরাজিত করার ওপর মনোনিবেশ করো ।"
+"$ai_controller.side_$ally_side|"
+"_current_settings.focus_on_enemy.side_description|-কে পরাজিত করার ওপর "
+"মনোনিবেশ করো ।"
 
 #. [then]
 #. [else]
@@ -1579,8 +1582,8 @@ msgstr "রক্ষা করার ওপর মনোযোগ দাও..."
 #. [protect]
 #: data/core/macros/ai_controller.cfg:316
 msgid ""
-"focusing on protecting $ai_controller.side_$ally_side|_current_settings."
-"protect.side_description|."
+"focusing on protecting $ai_controller.side_$ally_side|"
+"_current_settings.protect.side_description|."
 msgstr ""
 "$ai_controller.side_$ally_side|_current_settings.protect.side_description|-"
 "কে রক্ষা করো"
@@ -1638,15 +1641,15 @@ msgstr "সকল নির্দেশ বাতিল করুন"
 #. [do]
 #: data/core/macros/ai_controller.cfg:765
 msgid ""
-"Objective: $ai_controller.side_$ally_side|_current_settings."
-"currently_doing_objective_description\n"
-"Behavior: $ai_controller.side_$ally_side|_current_settings."
-"currently_doing_behavior_description"
+"Objective: $ai_controller.side_$ally_side|"
+"_current_settings.currently_doing_objective_description\n"
+"Behavior: $ai_controller.side_$ally_side|"
+"_current_settings.currently_doing_behavior_description"
 msgstr ""
-"উদ্দেশ্য: $ai_controller.side_$ally_side|_current_settings."
-"currently_doing_objective_description\n"
-"আচরণ: $ai_controller.side_$ally_side|_current_settings."
-"currently_doing_behavior_description"
+"উদ্দেশ্য: $ai_controller.side_$ally_side|"
+"_current_settings.currently_doing_objective_description\n"
+"আচরণ: $ai_controller.side_$ally_side|"
+"_current_settings.currently_doing_behavior_description"
 
 #. [literal]
 #: data/core/macros/ai_controller.cfg:781
@@ -1689,8 +1692,8 @@ msgstr "বিশেষ নির্দেশ বাতিল করুন"
 
 #: data/core/macros/ai_controller.cfg:1120
 msgid ""
-"Special: $ai_controller.side_$ally_side|_current_settings."
-"currently_doing_special_description"
+"Special: $ai_controller.side_$ally_side|"
+"_current_settings.currently_doing_special_description"
 msgstr "বিশেষ নির্দেশ মুছুন ।"
 
 #. [else]
@@ -1960,34 +1963,39 @@ msgstr "অগ্নি রাজদন্ড"
 
 #: data/core/macros/names.cfg:19
 msgid ""
-"Egar,Elch,Ga’ash,Gadé Ihn,Gakré Ohm,Galeck,Galsh,Garadin,Garchin,Gark,Garlan,"
-"Garlin Ohn,Garrutin,Gart’lo,Garushi,Gashinar,Gashol,Gaushii,Gaustun,Gegchi,"
-"Gelka Kon,Gelknick,Gillan,Gisharri,Gost,Grada,Græt Ihn,Grashen,Gravlan,Grag,"
-"Grelnit,Grenn Ohn,Greth,Gribbel,Gridda,Grish,Gron Ihn,Ka,Kahn Ih,Karigan,"
-"Karri Kon,Karron,Kask,Kegrid,Kerath Ihn,Kerath Kor,Klash,Kon Garashé,Kraag,"
-"Krall Ohn,Kran Kor,Krash,Kraslar,Krenli,Kruggen,Kun,Mah Toa,Margian,"
-"Mar’Ildian,Markan,Markinos,Mar Ohn,Marra Di’lek,Marrito,Marritos,Merkush,"
-"Merritos Gark,Morusté,Murr,Omataké,Reshan,Vashitt,Velnick,Veralon,Veramo,"
-"Verath,Verditt,Verkon,Verlinn,Vermad,Vertick,Vladnir"
+"Egar,Elch,Ga’ash,Gadé Ihn,Gakré "
+"Ohm,Galeck,Galsh,Garadin,Garchin,Gark,Garlan,Garlin "
+"Ohn,Garrutin,Gart’lo,Garushi,Gashinar,Gashol,Gaushii,Gaustun,Gegchi,Gelka "
+"Kon,Gelknick,Gillan,Gisharri,Gost,Grada,Græt "
+"Ihn,Grashen,Gravlan,Grag,Grelnit,Grenn Ohn,Greth,Gribbel,Gridda,Grish,Gron "
+"Ihn,Ka,Kahn Ih,Karigan,Karri Kon,Karron,Kask,Kegrid,Kerath Ihn,Kerath "
+"Kor,Klash,Kon Garashé,Kraag,Krall Ohn,Kran "
+"Kor,Krash,Kraslar,Krenli,Kruggen,Kun,Mah "
+"Toa,Margian,Mar’Ildian,Markan,Markinos,Mar Ohn,Marra "
+"Di’lek,Marrito,Marritos,Merkush,Merritos "
+"Gark,Morusté,Murr,Omataké,Reshan,Vashitt,Velnick,Veralon,Veramo,Verath,Verditt,Verkon,Verlinn,Vermad,Vertick,Vladnir"
 msgstr ""
-"এগার,এল্চ,গা'শ,গাডে ইহ্‌ন,গাক্রে ওহম,গালেক,গালশ,গারাডিন,গার্চিন,গার্ক,গার্লান,"
-"গার্লিন ওহ্‌ন,গারুটিন,গার্ট'লো,গারুশি,গাশিনার,গাশোল,গাউশি,গাউস্টুন,গেগচি,গেলকা কোন,"
-"গেল্কনিক,গিলান,গিশারি,গোস্ট,গ্রাডা,গ্র্যাট ইহ্‌ন,গ্রাশেন,গ্রাভলান,গ্রাগ,গ্রেল্‌নিট,গ্রেন "
-"ওহ্‌ন,গ্রেথ,গ্রিবেল,গ্রিডা,গ্রিশ,গ্রোন ইহ্‌ন,কা,কাহ্‌ন ইহ্,কারিগান,কারি কোন,কারোন,কাস্ক,"
-"কেগ্রিড,কেরাথ ইহ্‌ন,কেরাথ কোর,ক্লাশ,কোন গারাশে,ক্রাগ্,ক্রাল ওহ্‌ন,ক্রান কোর,ক্রাশ,"
-"ক্রাসলার,ক্রেনলি,ক্রুগ্গেন,কুন,মাহ্ টোয়া,মার্গিয়ান,মার'লডিয়ান,মার্কান,মার্কিনোস,মার "
-"ওহ্‌ন,মারা ডি'লেক,মারিটো,মারিটোস,মেরকুশ,মেররিটোস গার্ক,মোরুস্টে,মুর,ওমাটাকে,রেশান,"
-"ভাশিট,ভেলনিক,ভেরালোন,ভেরামো,ভেরাথ,ভেরডিট,ভেরকোন,ভেরলিন,ভেরটিক,ভ্লাডনির"
+"এগার,এল্চ,গা'শ,গাডে ইহ্‌ন,গাক্রে "
+"ওহম,গালেক,গালশ,গারাডিন,গার্চিন,গার্ক,গার্লান,গার্লিন "
+"ওহ্‌ন,গারুটিন,গার্ট'লো,গারুশি,গাশিনার,গাশোল,গাউশি,গাউস্টুন,গেগচি,গেলকা "
+"কোন,গেল্কনিক,গিলান,গিশারি,গোস্ট,গ্রাডা,গ্র্যাট "
+"ইহ্‌ন,গ্রাশেন,গ্রাভলান,গ্রাগ,গ্রেল্‌নিট,গ্রেন ওহ্‌ন,গ্রেথ,গ্রিবেল,গ্রিডা,গ্রিশ,গ্রোন "
+"ইহ্‌ন,কা,কাহ্‌ন ইহ্,কারিগান,কারি কোন,কারোন,কাস্ক,কেগ্রিড,কেরাথ ইহ্‌ন,কেরাথ "
+"কোর,ক্লাশ,কোন গারাশে,ক্রাগ্,ক্রাল ওহ্‌ন,ক্রান কোর,ক্রাশ,ক্রাসলার,ক্রেনলি,ক্রুগ্গেন,কুন,মাহ্ "
+"টোয়া,মার্গিয়ান,মার'লডিয়ান,মার্কান,মার্কিনোস,মার ওহ্‌ন,মারা "
+"ডি'লেক,মারিটো,মারিটোস,মেরকুশ,মেররিটোস "
+"গার্ক,মোরুস্টে,মুর,ওমাটাকে,রেশান,ভাশিট,ভেলনিক,ভেরালোন,ভেরামো,ভেরাথ,ভেরডিট,ভেরকোন,ভেরলিন,ভেরটিক,ভ্লাডনির"
 
 #: data/core/macros/names.cfg:20
 msgid ""
-"Alen Ka,Alinash Mal,Ashirt,Auginet Ka,Auuglann,Damell,Dell,Demla,Dinsill,"
-"Eshi,Olath,Omage,Omagrra,Orra Ka,Orridan,Orrida,Oshibi,Vallin,Valnirra,"
-"Valnitt,Velisk,Verra,Vellin Ka,Veshtar,Vushtin"
+"Alen Ka,Alinash Mal,Ashirt,Auginet "
+"Ka,Auuglann,Damell,Dell,Demla,Dinsill,Eshi,Olath,Omage,Omagrra,Orra "
+"Ka,Orridan,Orrida,Oshibi,Vallin,Valnirra,Valnitt,Velisk,Verra,Vellin "
+"Ka,Veshtar,Vushtin"
 msgstr ""
-"আলেন কা,আলিনাশ মাল,আশির্ট,আউগিনেট কা,আউগ্লান,ডামেল,ডেল,ডেমলা,ডিনসিলি,এশি,ওলাথ,"
-"ওমাজে,ওমাগারা,ওরা কা,ওরিডান,ওরিডা,ওশিবি,ভালিন,ভালনিরা,ভালনিট,ভেলিস্ক,ভেরা,"
-"ভেলিন কা,ভেশটার,ভুশটিন"
+"আলেন কা,আলিনাশ মাল,আশির্ট,আউগিনেট "
+"কা,আউগ্লান,ডামেল,ডেল,ডেমলা,ডিনসিলি,এশি,ওলাথ,ওমাজে,ওমাগারা,ওরা "
+"কা,ওরিডান,ওরিডা,ওশিবি,ভালিন,ভালনিরা,ভালনিট,ভেলিস্ক,ভেরা,ভেলিন কা,ভেশটার,ভুশটিন"
 
 #. Generator for male drake names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:22
@@ -2024,55 +2032,8 @@ msgstr ""
 "short_name=মাল|কা|এমথ|ডার|এশি\n"
 
 #: data/core/macros/names.cfg:38
-msgid ""
-"Aigaithas,Aigaithil,Aigaithing,Aigaithol,Aigalas,Aigaling,Aigalis,Aigalol,"
-"Aigalsil,Aigatas,Aigatis,Aigatlos,Aigatsil,Aigatsol,Aigatus,Aigcatas,"
-"Aigcatil,Aigcating,Aigcatis,Aigcatsil,Aigcatsol,Aigcatus,Aigdring,Aigdris,"
-"Aigdrlos,Aigdrsil,Aigdrsol,Aigduras,Aigdurlos,Aigdursol,Aigthaing,Aigthais,"
-"Aigthasil,Aigthaus,Alaithas,Alaithis,Alaithlos,Alaithol,Alaithsol,Alaithus,"
-"Alalas,Alalil,Alalol,Alalsol,Alalus,Alatas,Alatil,Alating,Alatlos,Alatsil,"
-"Alcatil,Alcatis,Alcatlos,Alcatsil,Aldras,Aldril,Aldring,Aldris,Aldrlos,"
-"Aldrol,Aldrsol,Alduras,Aldurlos,Aldurol,Althaas,Althail,Althalos,Althaol,"
-"Althasil,Althasol,Althaus,Anaithas,Anaithil,Anaithing,Anaithis,Anaithsil,"
-"Anaithus,Analil,Anallos,Analol,Analsil,Analus,Anatas,Anating,Anatis,Anatol,"
-"Anatsol,Ancatas,Ancatil,Ancatol,Ancatus,Andril,Andris,Andrlos,Andrus,Anduril,"
-"Andurol,Andursol,Andurus,Anthaas,Anthaing,Anthais,Anthaol,Anthasil,Anthasol,"
-"Anthaus,Augaithas,Augaithing,Augaithsil,Augaithus,Augalas,Augaling,Augalol,"
-"Augating,Augatlos,Augatol,Augatsil,Augatsol,Augcatas,Augcatil,Augcatis,"
-"Augcatol,Augcatsil,Augcatus,Augdras,Augdris,Augdrsil,Augdrus,Augduras,"
-"Augduril,Augduring,Augdurol,Augdursol,Augdurus,Augthail,Augthais,Augthalos,"
-"Augthaol,Dulaithil,Dulaithing,Dulaithlos,Dulaithsil,Dulaithsol,Dulalas,"
-"Dulaling,Dulalis,Dulalsil,Dulatil,Dulating,Dulatol,Dulatsol,Dulatus,Dulcatil,"
-"Dulcating,Dulcatlos,Dulcatol,Dulcatsil,Dulcatsol,Duldril,Duldris,Duldrlos,"
-"Duldrol,Duldrsil,Duldrus,Dulduras,Dulduring,Duldursil,Duldurus,Dulthalos,"
-"Dulthasil,Dulthasol,Dulthaus,Glamaithil,Glamaithis,Glamaithol,Glamaithsol,"
-"Glamalil,Glamaling,Glamalis,Glamallos,Glamalsil,Glamalus,Glamatil,Glamatus,"
-"Glamcatas,Glamcatil,Glamcating,Glamcatsil,Glamcatus,Glamdras,Glamdril,"
-"Glamdrlos,Glamdrsol,Glamduras,Glamduril,Glamduring,Glamduris,Glamdursol,"
-"Glamthaas,Glamthaol,Glamthasil,Glamthasol,Glamthaus,Glomin,Gomaithas,"
-"Gomaithil,Gomaithol,Gomaithsol,Gomalil,Gomalis,Gomalus,Gomatas,Gomatil,"
-"Gomating,Gomatis,Gomatlos,Gomatol,Gomcatil,Gomcatis,Gomcatlos,Gomdras,"
-"Gomdril,Gomdring,Gomdris,Gomdrol,Gomdrsil,Gomduris,Gomdurlos,Gomdursil,"
-"Gomdursol,Gomdurus,Gomthaas,Gomthalos,Gomthasol,Naraithil,Naraithing,"
-"Naraithol,Naraithsil,Naraithsol,Naraithus,Naralas,Naralil,Naralsil,Naralus,"
-"Naratlos,Naratol,Naratsil,Narcating,Narcatis,Narcatol,Narcatsil,Narcatsol,"
-"Nardras,Nardril,Nardring,Nardris,Nardrol,Nardrsil,Nardrsol,Nardrus,Narduras,"
-"Narduril,Nardurol,Narthalos,Narthaol,Pelaithas,Pelaithil,Pelaithing,"
-"Pelaithis,Pelaithlos,Pelaithol,Pelaithsil,Pelaithsol,Pelalil,Pelaling,"
-"Pelalis,Pelalsil,Pelalsol,Pelalus,Pelatil,Pelating,Pelatis,Pelatol,Pelatsil,"
-"Pelatus,Pelcating,Pelcatlos,Pelcatol,Pelcatsil,Peldras,Peldril,Peldrsol,"
-"Peldrus,Pelduril,Pelduring,Pelduris,Peldurol,Peldursol,Peldurus,Pelthaas,"
-"Pelthail,Pelthasil,Trithaithas,Trithaithil,Trithaithis,Trithaithlos,"
-"Trithaithol,Trithaithsil,Trithaithsol,Trithaithus,Trithalis,Trithalol,"
-"Trithatas,Trithatil,Trithatlos,Trithatsol,Trithcatlos,Trithcatsol,Trithcatus,"
-"Trithdril,Trithdring,Trithdris,Trithdrlos,Trithdrol,Trithdrsol,Trithdrus,"
-"Trithduril,Trithduring,Trithdurlos,Trithdurol,Trithdursil,Trithdurus,"
-"Triththaas,Triththail,Triththaing,Triththasol,Triththaus"
-msgstr ""
-"আইগাইথাস,আইগাইথিল,আইগাইথিঙ,আইগাইথোল,আইগালাস,আইগালিঙ,আইগালিস,আইগালোল,আইগালসিল,"
-"আইগাটাস,আইগাটিস,আইগাটলোস,আইগাটসিল,আইগাটুস,আইকাটাস,আইগকাটিঙ,আইগকাটিস,আইগকাটসিল,"
-"আইগকাটসোল,আইগকাটাস,আইগড্রিঙ,আইগড্রিস,আইগড্রিলোস,আইগড্রসিল,আইগড্রসোল,আইগডুরাস,"
-"আইগডুরলোস,আইগডুরসোল"
+msgid "Aigaithas,Aigaithil,Aigaithing,Aigaithol,Aigalas,Aigaling,Aigalis,Aigalol,Aigalsil,Aigatas,Aigatis,Aigatlos,Aigatsil,Aigatsol,Aigatus,Aigcatas,Aigcatil,Aigcating,Aigcatis,Aigcatsil,Aigcatsol,Aigcatus,Aigdring,Aigdris,Aigdrlos,Aigdrsil,Aigdrsol,Aigduras,Aigdurlos,Aigdursol,Aigthaing,Aigthais,Aigthasil,Aigthaus,Alaithas,Alaithis,Alaithlos,Alaithol,Alaithsol,Alaithus,Alalas,Alalil,Alalol,Alalsol,Alalus,Alatas,Alatil,Alating,Alatlos,Alatsil,Alcatil,Alcatis,Alcatlos,Alcatsil,Aldras,Aldril,Aldring,Aldris,Aldrlos,Aldrol,Aldrsol,Alduras,Aldurlos,Aldurol,Althaas,Althail,Althalos,Althaol,Althasil,Althasol,Althaus,Anaithas,Anaithil,Anaithing,Anaithis,Anaithsil,Anaithus,Analil,Anallos,Analol,Analsil,Analus,Anatas,Anating,Anatis,Anatol,Anatsol,Ancatas,Ancatil,Ancatol,Ancatus,Andril,Andris,Andrlos,Andrus,Anduril,Andurol,Andursol,Andurus,Anthaas,Anthaing,Anthais,Anthaol,Anthasil,Anthasol,Anthaus,Augaithas,Augaithing,Augaithsil,Augaithus,Augalas,Augaling,Augalol,Augating,Augatlos,Augatol,Augatsil,Augatsol,Augcatas,Augcatil,Augcatis,Augcatol,Augcatsil,Augcatus,Augdras,Augdris,Augdrsil,Augdrus,Augduras,Augduril,Augduring,Augdurol,Augdursol,Augdurus,Augthail,Augthais,Augthalos,Augthaol,Dulaithil,Dulaithing,Dulaithlos,Dulaithsil,Dulaithsol,Dulalas,Dulaling,Dulalis,Dulalsil,Dulatil,Dulating,Dulatol,Dulatsol,Dulatus,Dulcatil,Dulcating,Dulcatlos,Dulcatol,Dulcatsil,Dulcatsol,Duldril,Duldris,Duldrlos,Duldrol,Duldrsil,Duldrus,Dulduras,Dulduring,Duldursil,Duldurus,Dulthalos,Dulthasil,Dulthasol,Dulthaus,Glamaithil,Glamaithis,Glamaithol,Glamaithsol,Glamalil,Glamaling,Glamalis,Glamallos,Glamalsil,Glamalus,Glamatil,Glamatus,Glamcatas,Glamcatil,Glamcating,Glamcatsil,Glamcatus,Glamdras,Glamdril,Glamdrlos,Glamdrsol,Glamduras,Glamduril,Glamduring,Glamduris,Glamdursol,Glamthaas,Glamthaol,Glamthasil,Glamthasol,Glamthaus,Glomin,Gomaithas,Gomaithil,Gomaithol,Gomaithsol,Gomalil,Gomalis,Gomalus,Gomatas,Gomatil,Gomating,Gomatis,Gomatlos,Gomatol,Gomcatil,Gomcatis,Gomcatlos,Gomdras,Gomdril,Gomdring,Gomdris,Gomdrol,Gomdrsil,Gomduris,Gomdurlos,Gomdursil,Gomdursol,Gomdurus,Gomthaas,Gomthalos,Gomthasol,Naraithil,Naraithing,Naraithol,Naraithsil,Naraithsol,Naraithus,Naralas,Naralil,Naralsil,Naralus,Naratlos,Naratol,Naratsil,Narcating,Narcatis,Narcatol,Narcatsil,Narcatsol,Nardras,Nardril,Nardring,Nardris,Nardrol,Nardrsil,Nardrsol,Nardrus,Narduras,Narduril,Nardurol,Narthalos,Narthaol,Pelaithas,Pelaithil,Pelaithing,Pelaithis,Pelaithlos,Pelaithol,Pelaithsil,Pelaithsol,Pelalil,Pelaling,Pelalis,Pelalsil,Pelalsol,Pelalus,Pelatil,Pelating,Pelatis,Pelatol,Pelatsil,Pelatus,Pelcating,Pelcatlos,Pelcatol,Pelcatsil,Peldras,Peldril,Peldrsol,Peldrus,Pelduril,Pelduring,Pelduris,Peldurol,Peldursol,Peldurus,Pelthaas,Pelthail,Pelthasil,Trithaithas,Trithaithil,Trithaithis,Trithaithlos,Trithaithol,Trithaithsil,Trithaithsol,Trithaithus,Trithalis,Trithalol,Trithatas,Trithatil,Trithatlos,Trithatsol,Trithcatlos,Trithcatsol,Trithcatus,Trithdril,Trithdring,Trithdris,Trithdrlos,Trithdrol,Trithdrsol,Trithdrus,Trithduril,Trithduring,Trithdurlos,Trithdurol,Trithdursil,Trithdurus,Triththaas,Triththail,Triththaing,Triththasol,Triththaus"
+msgstr "আইগাইথাস,আইগাইথিল,আইগাইথিঙ,আইগাইথোল,আইগালাস,আইগালিঙ,আইগালিস,আইগালোল,আইগালসিল,আইগাটাস,আইগাটিস,আইগাটলোস,আইগাটসিল,আইগাটুস,আইকাটাস,আইগকাটিঙ,আইগকাটিস,আইগকাটসিল,আইগকাটসোল,আইগকাটাস,আইগড্রিঙ,আইগড্রিস,আইগড্রিলোস,আইগড্রসিল,আইগড্রসোল,আইগডুরাস,আইগডুরলোস,আইগডুরসোল"
 
 #. Generator for male dwarf names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:40
@@ -2099,131 +2060,57 @@ msgstr ""
 
 #: data/core/macros/names.cfg:51
 msgid ""
-"Amadrieriand,Amáril,Amelad,Ameldor,Amendel,Ameng,Amilmaldur,Amilmalith,"
-"Amilmandir,Amind,Amiol,Amiorion,Amithrarion,Amóldor,Amorfimir,Amorfir,Amowyn,"
-"Amulas,Amundil,Anán,Anebrin,Anebrir,Anémbor,Anénduil,Anerion,Anilad,Anil-"
-"Gawyn,Anilmambor,Anilmariand,Anior,Anithranduil,Anol,Anon,Anorfing,Anundil,"
-"Belán,Belandil,Belarandel,Belel,Belén,Belil-Gandil,Belilmand,Belilmang,"
-"Beliondil,Beliril,Belithraldor,Belithrawyn,Belólad,Belómir,Belondel,Belyrion,"
-"Cadriembor,Cadrieriand,Cálad,Caladrielas,Calándel,Caldur,Cáldur,Calebrindel,"
-"Calebrindir,Calénduil,Calil-Gandir,Calil-Gawyn,Calioriand,Caliril,Calónduil,"
-"Caloril,Cándir,Canduil,Caraldur,Carang,Célad,Celadrieriand,Celang,Celaral,"
-"Celarandil,Celáriand,Celebririon,Celelas,Celendel,Celér,Celilmalas,Celiondir,"
-"Celior,Celiorion,Celong,Celór,Celóril,Celorion,Celundir,Celuwyn,Celyndel,"
-"Cénduil,Cindil,Ciong,Cithralad,Cithraldur,Cithrand,Cithrandel,Cithraril,Col,"
-"Corfil,Corfildur,Cówyn,Cun,Cundir,Cylas,Delán,Delánd,Delandel,Delaraldur,"
-"Deláril,Delawyn,Deléng,Delilmaldor,Deliol,Delithrar,Deliwyn,Delóldor,"
-"Delorfilad,Delorfilith,Delorion,Delundil,Eäradriendel,Eäradrier,Eäránduil,"
-"Eäraralad,Eärebrindel,Eäréldor,Eäreng,Eärérion,Eärithrandil,Eäromir,"
-"Eärorfiriand,Eäryldur,Eäryriand,Eladrieng,Elálith,Elánd,Elándil,Elebrildor,"
-"Elebrindel,Elebriril,Elélas,Elémbor,Elemir,Elen,Elil-Garil,Elilmaldur,"
-"Eliomir,Eliondil,Elolas,Elólas,Elor,Elorfilad,Elradrien,Elralith,Elran,"
-"Elreldur,Elrilmand,Elrioldor,Elriolith,Elrithralith,Elrithranduil,Elrorfir,"
-"Elval,Elvandir,Elvaramir,Elváwyn,Elvebrind,Elvebrindel,Elvélith,Elvémir,"
-"Elverion,Elvil-Garion,Elvilmaldur,Elvilmaril,Elvioldur,Elvombor,Elvónduil,"
-"Elvorfimir,Elvorfiriand,Elvorfiril,Elvóriand,Elvund,Elyldor,Elyrion,Eowambor,"
-"Eowanduil,Eowar,Eowaraldor,Eowaran,Eowarar,Eowariand,Eowarion,Eowebrind,"
-"Eowémir,Eowil-Garion,Eowimbor,Eowiomir,Eowithrawyn,Eowóldur,Eoworfildor,"
-"Eowówyn,Eowylas,Fadriendel,Fandel,Farandir,Fáwyn,Fendel,Fer,Filman,Fioril,"
-"Fithraril,Forfilas,Fyrion,Gadriendil,Gadrieng,Galadrieldor,Galálad,Galálas,"
-"Galalith,Galar,Galelas,Galeldur,Galelith,Galémbor,Galithrariand,Galoldur,"
-"Galuldur,Galur,Galurion,Gambor,Gán,Ganduil,Garaldor,Gararil,Gelad,Géril,Gil-"
-"Gandel,Gil-Gang,Giombor,Githral,Githralad,Gladriendil,Glal,Glámbor,Glandil,"
-"Glarang,Glararil,Glilmal,Glimir,Glior,Glólas,Gloldor,Glómir,Glon,Glul,Golad,"
-"Gor,Gumbor,Gyl,Gymbor,Gyn,Harariand,Háriand,Hebril,Hemir,Hénduil,Hilas,Hil-"
-"Garion,Hilmariand,Hiong,Hirion,Hithrandel,Horfilad,Horfindel,Hundel,Hymir,"
-"Hyrion,Hywyn,Isadrieng,Isándir,Isarandel,Isarar,Iselas,Isér,Isilmandel,"
-"Isirion,Isithral,Isól,Isóndel,Isóng,Isorfilad,Isorfindir,Isuwyn,Isyndel,"
-"Legal,Legaran,Legémir,Legéril,Legilad,Legil-Gal,Legiondel,Legithralith,"
-"Legorfindil,Legorfirion,Legówyn,Legyl,Legyn,Linduilas,Lómadrieril,Lómarand,"
-"Lómariand,Lómebrilad,Lómebrind,Lómémbor,Lómilmaril,Lómiriand,Lómorfindil,"
-"Lómowyn,Madrieril,Maldur,Mánduil,Maraldur,Mebrin,Méng,Mérion,Miolith,Miomir,"
-"Mithrand,Mondir,Móndir,Morfilas,Morfin,Morfiriand,Mylith,Nadrieldor,Nalith,"
-"Nán,Nél,Nil-Galas,Nil-Galith,Nil-Gar,Nilmar,Nóndel,Norfildor,Norfilith,"
-"Norfindil,Norfindir,Numbor,Nyldur,Padrieriand,Padrieril,Pamir,Paraldor,"
-"Parariand,Pilmalad,Pindir,Pór,Porfildur,Pumbor,Pyldur,Rebrir,Réndir,"
-"Rilmandil,Rithrandil,Ról,Róldor,Roldur,Róldur,Rorfilad,Rorfindil,Rówyn,Ryn,"
-"Sadrielas,Sebrin,Sebriril,Sénd,Sil-Gal,Sólad,Sorfind,Sóriand,Tadriendir,"
-"Taral,Taraldur,Táriand,Tendel,Téwyn,Thradrieriand,Thrambor,Thraral,Threbring,"
-"Thrélad,Thréldur,Thril-Gamir,Thril-Gandir,Thril-Gar,Thrilmandel,Thrimir,"
-"Thrion,Thrithran,Throlas,Thrón,Thróng,Thrund,Thryriand,Til-Gan,Tilmalad,"
-"Tilmalas,Tinandir,Tinarambor,Tinarariand,Tinén,Tinil-Ganduil,Tinilmand,"
-"Tinilmawyn,Tinimir,Tinindil,Tinithrar,Tinoldor,Tinond,Tinorfind,Tinorfiriand,"
-"Tinóriand,Tinowyn,Tinun,Tinyl,Tion,Tolas,Torfildur,Tówyn,Tylad,Unadrieldor,"
-"Unadrier,Unál,Unalas,Unálas,Unaraldur,Unaril,Unárion,Unebrin,Unebrind,"
-"Uneldor,Unil,Unil-Gan,Uniolith,Unioril,Unólith,Unombor,Unóndel,Unondir,"
-"Unorfildor,Unorfiril,Unorfiwyn,Unulad,Uradrielas,Uradrierion,Urálas,Urálith,"
-"Urambor,Urér,Uril-Gambor,Urilmalith,Uróldor,Urorfildor,Urul,Urymir,Válad,Ván,"
-"Vándel,Vandir,Varalas,Vararion,Vebril,Vebrilas,Vebrinduil,Vel,Vilith,Vol,"
-"Vólas,Vóldur,Vondel,Vorfin,Vorfindil,Vulas,Vuldur,Vunduil,Vylas,Vyldor"
+"Amadrieriand,Amáril,Amelad,Ameldor,Amendel,Ameng,Amilmaldur,Amilmalith,Amilmandir,Amind,Amiol,Amiorion,Amithrarion,Amóldor,Amorfimir,Amorfir,Amowyn,Amulas,Amundil,Anán,Anebrin,Anebrir,Anémbor,Anénduil,Anerion,Anilad,Anil-"
+"Gawyn,Anilmambor,Anilmariand,Anior,Anithranduil,Anol,Anon,Anorfing,Anundil,Belán,Belandil,Belarandel,Belel,Belén,Belil-"
+"Gandil,Belilmand,Belilmang,Beliondil,Beliril,Belithraldor,Belithrawyn,Belólad,Belómir,Belondel,Belyrion,Cadriembor,Cadrieriand,Cálad,Caladrielas,Calándel,Caldur,Cáldur,Calebrindel,Calebrindir,Calénduil,Calil-"
+"Gandir,Calil-"
+"Gawyn,Calioriand,Caliril,Calónduil,Caloril,Cándir,Canduil,Caraldur,Carang,Célad,Celadrieriand,Celang,Celaral,Celarandil,Celáriand,Celebririon,Celelas,Celendel,Celér,Celilmalas,Celiondir,Celior,Celiorion,Celong,Celór,Celóril,Celorion,Celundir,Celuwyn,Celyndel,Cénduil,Cindil,Ciong,Cithralad,Cithraldur,Cithrand,Cithrandel,Cithraril,Col,Corfil,Corfildur,Cówyn,Cun,Cundir,Cylas,Delán,Delánd,Delandel,Delaraldur,Deláril,Delawyn,Deléng,Delilmaldor,Deliol,Delithrar,Deliwyn,Delóldor,Delorfilad,Delorfilith,Delorion,Delundil,Eäradriendel,Eäradrier,Eäránduil,Eäraralad,Eärebrindel,Eäréldor,Eäreng,Eärérion,Eärithrandil,Eäromir,Eärorfiriand,Eäryldur,Eäryriand,Eladrieng,Elálith,Elánd,Elándil,Elebrildor,Elebrindel,Elebriril,Elélas,Elémbor,Elemir,Elen,Elil-"
+"Garil,Elilmaldur,Eliomir,Eliondil,Elolas,Elólas,Elor,Elorfilad,Elradrien,Elralith,Elran,Elreldur,Elrilmand,Elrioldor,Elriolith,Elrithralith,Elrithranduil,Elrorfir,Elval,Elvandir,Elvaramir,Elváwyn,Elvebrind,Elvebrindel,Elvélith,Elvémir,Elverion,Elvil-"
+"Garion,Elvilmaldur,Elvilmaril,Elvioldur,Elvombor,Elvónduil,Elvorfimir,Elvorfiriand,Elvorfiril,Elvóriand,Elvund,Elyldor,Elyrion,Eowambor,Eowanduil,Eowar,Eowaraldor,Eowaran,Eowarar,Eowariand,Eowarion,Eowebrind,Eowémir,Eowil-"
+"Garion,Eowimbor,Eowiomir,Eowithrawyn,Eowóldur,Eoworfildor,Eowówyn,Eowylas,Fadriendel,Fandel,Farandir,Fáwyn,Fendel,Fer,Filman,Fioril,Fithraril,Forfilas,Fyrion,Gadriendil,Gadrieng,Galadrieldor,Galálad,Galálas,Galalith,Galar,Galelas,Galeldur,Galelith,Galémbor,Galithrariand,Galoldur,Galuldur,Galur,Galurion,Gambor,Gán,Ganduil,Garaldor,Gararil,Gelad,Géril,Gil-"
+"Gandel,Gil-"
+"Gang,Giombor,Githral,Githralad,Gladriendil,Glal,Glámbor,Glandil,Glarang,Glararil,Glilmal,Glimir,Glior,Glólas,Gloldor,Glómir,Glon,Glul,Golad,Gor,Gumbor,Gyl,Gymbor,Gyn,Harariand,Háriand,Hebril,Hemir,Hénduil,Hilas,Hil-"
+"Garion,Hilmariand,Hiong,Hirion,Hithrandel,Horfilad,Horfindel,Hundel,Hymir,Hyrion,Hywyn,Isadrieng,Isándir,Isarandel,Isarar,Iselas,Isér,Isilmandel,Isirion,Isithral,Isól,Isóndel,Isóng,Isorfilad,Isorfindir,Isuwyn,Isyndel,Legal,Legaran,Legémir,Legéril,Legilad,Legil-"
+"Gal,Legiondel,Legithralith,Legorfindil,Legorfirion,Legówyn,Legyl,Legyn,Linduilas,Lómadrieril,Lómarand,Lómariand,Lómebrilad,Lómebrind,Lómémbor,Lómilmaril,Lómiriand,Lómorfindil,Lómowyn,Madrieril,Maldur,Mánduil,Maraldur,Mebrin,Méng,Mérion,Miolith,Miomir,Mithrand,Mondir,Móndir,Morfilas,Morfin,Morfiriand,Mylith,Nadrieldor,Nalith,Nán,Nél,Nil-"
+"Galas,Nil-Galith,Nil-"
+"Gar,Nilmar,Nóndel,Norfildor,Norfilith,Norfindil,Norfindir,Numbor,Nyldur,Padrieriand,Padrieril,Pamir,Paraldor,Parariand,Pilmalad,Pindir,Pór,Porfildur,Pumbor,Pyldur,Rebrir,Réndir,Rilmandil,Rithrandil,Ról,Róldor,Roldur,Róldur,Rorfilad,Rorfindil,Rówyn,Ryn,Sadrielas,Sebrin,Sebriril,Sénd,Sil-"
+"Gal,Sólad,Sorfind,Sóriand,Tadriendir,Taral,Taraldur,Táriand,Tendel,Téwyn,Thradrieriand,Thrambor,Thraral,Threbring,Thrélad,Thréldur,Thril-"
+"Gamir,Thril-Gandir,Thril-"
+"Gar,Thrilmandel,Thrimir,Thrion,Thrithran,Throlas,Thrón,Thróng,Thrund,Thryriand,Til-"
+"Gan,Tilmalad,Tilmalas,Tinandir,Tinarambor,Tinarariand,Tinén,Tinil-"
+"Ganduil,Tinilmand,Tinilmawyn,Tinimir,Tinindil,Tinithrar,Tinoldor,Tinond,Tinorfind,Tinorfiriand,Tinóriand,Tinowyn,Tinun,Tinyl,Tion,Tolas,Torfildur,Tówyn,Tylad,Unadrieldor,Unadrier,Unál,Unalas,Unálas,Unaraldur,Unaril,Unárion,Unebrin,Unebrind,Uneldor,Unil,Unil-"
+"Gan,Uniolith,Unioril,Unólith,Unombor,Unóndel,Unondir,Unorfildor,Unorfiril,Unorfiwyn,Unulad,Uradrielas,Uradrierion,Urálas,Urálith,Urambor,Urér,Uril-"
+"Gambor,Urilmalith,Uróldor,Urorfildor,Urul,Urymir,Válad,Ván,Vándel,Vandir,Varalas,Vararion,Vebril,Vebrilas,Vebrinduil,Vel,Vilith,Vol,Vólas,Vóldur,Vondel,Vorfin,Vorfindil,Vulas,Vuldur,Vunduil,Vylas,Vyldor"
 msgstr ""
 
 #: data/core/macros/names.cfg:52
 msgid ""
-"Amadrielia,Amadrielindë,Amadriendra,Amadriewen,Amarang,Amebrilindë,Amedë,"
-"Améthien,Amewien,Amil-Gadith,Amil-Garith,Amilmadia,Amiolith,Amionia,"
-"Amithraniel,Amithrawien,Amiwen,Amodë,Amorfilith,Amorith,Amulia,Amuviel,"
-"Amuwen,Analia,Anang,Anaraclya,Anáthien,Anebriniel,Anilmarith,Aning,Aniorith,"
-"Anówien,Anundra,Anuthiel,Anuthien,Anylindë,Anythien,Anywien,Belaclya,"
-"Beladrielith,Beladriewen,Beladriewien,Belarania,Belaraviel,Belebrindra,"
-"Belendra,Beliolia,Belithraniel,Belithrawiel,Belithrawien,Belowen,Belulindë,"
-"Cádë,Cadriewen,Caladrieng,Calándra,Calang,Calánia,Calebriwien,Calewen,"
-"Calewiel,Calil-Galith,Calilmalith,Calithraclya,Calóniel,Calorfiniel,Calówien,"
-"Caluclya,Ceclya,Celadë,Celália,Celálindë,Celarandra,Celararith,Celárith,"
-"Celebriniel,Celebriviel,Celelith,Celéng,Celérith,Celidien,Celilith,Celindë,"
-"Celiodë,Celioniel,Celith,Celithradith,Celódith,Celorfilindë,Celorfing,"
-"Celorfiwien,Celówien,Celylia,Cethien,Cing,Cithralith,Cithrania,Cithrawen,"
-"Cólindë,Corfiviel,Cydia,Delararith,Delebrinia,Deléthien,Delil-Ganiel,"
-"Deliowen,Delithrathiel,Delóndra,Delorfilindë,Delorfithien,Deloviel,Delydien,"
-"Eäradriedien,Eärániel,Eärarawien,Eärélia,Eärenia,Eärewen,Eäréwiel,Eärilmadë,"
-"Eärilmathien,Eäriolith,Eärithrang,Eärorfiwien,Eärudë,Eladriedë,Eladrielia,"
-"Elarawiel,Elebrindra,Eledë,Elelith,Elil-Gang,Elilmalia,Elilmawien,"
-"Elithraclya,Elithradien,Elóndra,Elorfing,Elorfithien,Elradrierith,Elránia,"
-"Elrebridith,Elréthiel,Elrilindë,Elrilmandra,Elrilmathien,Elrithiel,"
-"Elrithradith,Elriwen,Elródith,Elrorfidia,Eluviel,Elvádia,Elvánia,Elvil-"
-"Gawien,Elvilmathiel,Elviniel,Elviondra,Elvithrang,Elvithrathien,Elvowien,"
-"Elvyniel,Elvyviel,Elynia,Elywen,Eowalia,Eowarawien,Eowathiel,Eowebridith,"
-"Eowedith,Eowidien,Eowil-Galindë,Eowilindë,Eowiowien,Eowylia,Eowyniel,"
-"Fadriedith,Fadrielia,Fadriendra,Fadrienia,Falindë,Fáthiel,Fathien,Fáwien,"
-"Feclya,Féthiel,Fil-Galia,Fil-Gathiel,Fil-Gawien,Filmaclya,Fioniel,Fódë,"
-"Fólindë,Fulindë,Gadrieclya,Gadrieviel,Galadriethien,Galándra,Galaraniel,"
-"Galebrilia,Galebrindra,Galédë,Galedien,Galéwiel,Galil-Gania,Galilmadia,"
-"Galiothiel,Galithrathien,Galólia,Galolindë,Galorfiwiel,Galothiel,Galowen,"
-"Galundra,Galyniel,Gathien,Gáviel,Gebririth,Gewen,Gil-Gawien,Gilia,Gioniel,"
-"Gioviel,Giowen,Githrania,Githrawiel,Glália,Glebrithien,Gléndra,Glilmadien,"
-"Glilmawiel,Glithiel,Gloclya,Glodith,Glorfilith,Gloviel,Glowiel,Goclya,Godien,"
-"Gólia,Golindë,Guviel,Harawiel,Haviel,Háwien,Héclya,Hedia,Helith,Hewen,Hil-"
-"Gania,Hiodë,Hiwien,Hodia,Hódia,Horfinia,Horfiwien,Hóthiel,Huclya,Hunia,"
-"Huthien,Hyclya,Hythiel,Hythien,Isadrieng,Isáwen,Isebridien,Isebrinia,Isendra,"
-"Iséng,Iseviel,Isil-Garith,Isilindë,Isithradë,Isithradien,Isithrarith,"
-"Isithrawiel,Isóthien,Legádë,Legadien,Legadrieclya,Legadriedë,Legadrieniel,"
-"Legaraclya,Legebrilia,Legelith,Legeng,Legéniel,Legethiel,Legidia,Legil-"
-"Galindë,Legilmadith,Legilmawiel,Legithralindë,Legithrandra,Legithrania,"
-"Legolith,Legondra,Legorfidë,Lómániel,Lómebriclya,Lómebriniel,Lómedia,"
-"Lómeniel,Lómiclya,Lómilindë,Lómilmathiel,Lómilmawiel,Lómithradë,Lómithrarith,"
-"Lómódë,Lómolith,Lómóndra,Lómorfing,Lómorith,Lómudia,Lómulindë,Lómuniel,"
-"Lómuthiel,Lómynia,Lómythien,Mádia,Madrieclya,Maraclya,Mebriwiel,Meclya,"
-"Medien,Mil-Gathiel,Mil-Gathien,Milindë,Milith,Miowen,Miowiel,Mithradë,"
-"Mithralindë,Módë,Módia,Moniel,Morfilindë,Munia,Myndra,Mywiel,Narania,"
-"Naraniel,Náviel,Nawen,Newen,Nil-Gang,Nilmadia,Niodien,Niolia,Niothien,"
-"Nithraniel,Nithrarith,Nowen,Nydith,Pádia,Padriedith,Paralindë,Parandra,Pawen,"
-"Pebridien,Pil-Gadia,Pil-Gadien,Pilindë,Pindra,Pong,Porfindra,Porfiwien,"
-"Póviel,Pulia,Puthien,Reniel,Réviel,Ril-Gawien,Rindra,Riothien,Róng,Rorfiviel,"
-"Sadrienia,Sadrierith,Sálindë,Sáng,Saradith,Sarandra,Sédith,Sendra,Sethien,"
-"Silmaclya,Silmathiel,Sioclya,Siorith,Sithrang,Sithrawen,Soniel,Sothiel,"
-"Sothien,Syniel,Tadrierith,Tang,Taradien,Tarathiel,Tathiel,Terith,Thradia,"
-"Thrália,Thraraviel,Threbriniel,Thredien,Thrérith,Thridith,Thrinia,"
-"Thrithradia,Thrithrandra,Thrithraniel,Throlith,Throng,Throthiel,Thrulith,"
-"Thruthien,Thryng,Til-Gandra,Tilmaclya,Tilmaviel,Tináclya,Tinadriethien,"
-"Tinálindë,Tinaraniel,Tinarathien,Tinawiel,Tinebrithiel,Tinerith,Tinil-Gania,"
-"Tinil-Gawiel,Tiniolith,Tinithrathiel,Tinóng,Tinorfilith,Tinorfithien,Tinudia,"
-"Tiorith,Tithrathien,Tówiel,Tuniel,Unadrieng,Unáthien,Unebridë,Unénia,Unil-"
-"Gadia,Unilmadia,Unindra,Uniodë,Uniolia,Uniong,Unionia,Unóndra,Unorfiwen,"
-"Unulindë,Unuviel,Unynia,Uraclya,Uradriedia,Uránia,Urárith,Urebriclya,Ureclya,"
-"Urilmadia,Urilmawiel,Uriolia,Urithralindë,Uruthien,Uryrith,Vadrierith,"
-"Vadrieviel,Vadriewen,Varawiel,Vebrithien,Vil-Gandra,Violindë,Viowiel,"
-"Vithrang,Vithraniel,Viwiel,Vódia,Vóng,Vorficlya,Vorfing,Vorfirith,Vorfiwiel,"
-"Vówien"
+"Amadrielia,Amadrielindë,Amadriendra,Amadriewen,Amarang,Amebrilindë,Amedë,Améthien,Amewien,Amil-"
+"Gadith,Amil-"
+"Garith,Amilmadia,Amiolith,Amionia,Amithraniel,Amithrawien,Amiwen,Amodë,Amorfilith,Amorith,Amulia,Amuviel,Amuwen,Analia,Anang,Anaraclya,Anáthien,Anebriniel,Anilmarith,Aning,Aniorith,Anówien,Anundra,Anuthiel,Anuthien,Anylindë,Anythien,Anywien,Belaclya,Beladrielith,Beladriewen,Beladriewien,Belarania,Belaraviel,Belebrindra,Belendra,Beliolia,Belithraniel,Belithrawiel,Belithrawien,Belowen,Belulindë,Cádë,Cadriewen,Caladrieng,Calándra,Calang,Calánia,Calebriwien,Calewen,Calewiel,Calil-"
+"Galith,Calilmalith,Calithraclya,Calóniel,Calorfiniel,Calówien,Caluclya,Ceclya,Celadë,Celália,Celálindë,Celarandra,Celararith,Celárith,Celebriniel,Celebriviel,Celelith,Celéng,Celérith,Celidien,Celilith,Celindë,Celiodë,Celioniel,Celith,Celithradith,Celódith,Celorfilindë,Celorfing,Celorfiwien,Celówien,Celylia,Cethien,Cing,Cithralith,Cithrania,Cithrawen,Cólindë,Corfiviel,Cydia,Delararith,Delebrinia,Deléthien,Delil-"
+"Ganiel,Deliowen,Delithrathiel,Delóndra,Delorfilindë,Delorfithien,Deloviel,Delydien,Eäradriedien,Eärániel,Eärarawien,Eärélia,Eärenia,Eärewen,Eäréwiel,Eärilmadë,Eärilmathien,Eäriolith,Eärithrang,Eärorfiwien,Eärudë,Eladriedë,Eladrielia,Elarawiel,Elebrindra,Eledë,Elelith,Elil-"
+"Gang,Elilmalia,Elilmawien,Elithraclya,Elithradien,Elóndra,Elorfing,Elorfithien,Elradrierith,Elránia,Elrebridith,Elréthiel,Elrilindë,Elrilmandra,Elrilmathien,Elrithiel,Elrithradith,Elriwen,Elródith,Elrorfidia,Eluviel,Elvádia,Elvánia,Elvil-"
+"Gawien,Elvilmathiel,Elviniel,Elviondra,Elvithrang,Elvithrathien,Elvowien,Elvyniel,Elvyviel,Elynia,Elywen,Eowalia,Eowarawien,Eowathiel,Eowebridith,Eowedith,Eowidien,Eowil-"
+"Galindë,Eowilindë,Eowiowien,Eowylia,Eowyniel,Fadriedith,Fadrielia,Fadriendra,Fadrienia,Falindë,Fáthiel,Fathien,Fáwien,Feclya,Féthiel,Fil-"
+"Galia,Fil-Gathiel,Fil-"
+"Gawien,Filmaclya,Fioniel,Fódë,Fólindë,Fulindë,Gadrieclya,Gadrieviel,Galadriethien,Galándra,Galaraniel,Galebrilia,Galebrindra,Galédë,Galedien,Galéwiel,Galil-"
+"Gania,Galilmadia,Galiothiel,Galithrathien,Galólia,Galolindë,Galorfiwiel,Galothiel,Galowen,Galundra,Galyniel,Gathien,Gáviel,Gebririth,Gewen,Gil-"
+"Gawien,Gilia,Gioniel,Gioviel,Giowen,Githrania,Githrawiel,Glália,Glebrithien,Gléndra,Glilmadien,Glilmawiel,Glithiel,Gloclya,Glodith,Glorfilith,Gloviel,Glowiel,Goclya,Godien,Gólia,Golindë,Guviel,Harawiel,Haviel,Háwien,Héclya,Hedia,Helith,Hewen,Hil-"
+"Gania,Hiodë,Hiwien,Hodia,Hódia,Horfinia,Horfiwien,Hóthiel,Huclya,Hunia,Huthien,Hyclya,Hythiel,Hythien,Isadrieng,Isáwen,Isebridien,Isebrinia,Isendra,Iséng,Iseviel,Isil-"
+"Garith,Isilindë,Isithradë,Isithradien,Isithrarith,Isithrawiel,Isóthien,Legádë,Legadien,Legadrieclya,Legadriedë,Legadrieniel,Legaraclya,Legebrilia,Legelith,Legeng,Legéniel,Legethiel,Legidia,Legil-"
+"Galindë,Legilmadith,Legilmawiel,Legithralindë,Legithrandra,Legithrania,Legolith,Legondra,Legorfidë,Lómániel,Lómebriclya,Lómebriniel,Lómedia,Lómeniel,Lómiclya,Lómilindë,Lómilmathiel,Lómilmawiel,Lómithradë,Lómithrarith,Lómódë,Lómolith,Lómóndra,Lómorfing,Lómorith,Lómudia,Lómulindë,Lómuniel,Lómuthiel,Lómynia,Lómythien,Mádia,Madrieclya,Maraclya,Mebriwiel,Meclya,Medien,Mil-"
+"Gathiel,Mil-"
+"Gathien,Milindë,Milith,Miowen,Miowiel,Mithradë,Mithralindë,Módë,Módia,Moniel,Morfilindë,Munia,Myndra,Mywiel,Narania,Naraniel,Náviel,Nawen,Newen,Nil-"
+"Gang,Nilmadia,Niodien,Niolia,Niothien,Nithraniel,Nithrarith,Nowen,Nydith,Pádia,Padriedith,Paralindë,Parandra,Pawen,Pebridien,Pil-"
+"Gadia,Pil-"
+"Gadien,Pilindë,Pindra,Pong,Porfindra,Porfiwien,Póviel,Pulia,Puthien,Reniel,Réviel,Ril-"
+"Gawien,Rindra,Riothien,Róng,Rorfiviel,Sadrienia,Sadrierith,Sálindë,Sáng,Saradith,Sarandra,Sédith,Sendra,Sethien,Silmaclya,Silmathiel,Sioclya,Siorith,Sithrang,Sithrawen,Soniel,Sothiel,Sothien,Syniel,Tadrierith,Tang,Taradien,Tarathiel,Tathiel,Terith,Thradia,Thrália,Thraraviel,Threbriniel,Thredien,Thrérith,Thridith,Thrinia,Thrithradia,Thrithrandra,Thrithraniel,Throlith,Throng,Throthiel,Thrulith,Thruthien,Thryng,Til-"
+"Gandra,Tilmaclya,Tilmaviel,Tináclya,Tinadriethien,Tinálindë,Tinaraniel,Tinarathien,Tinawiel,Tinebrithiel,Tinerith,Tinil-"
+"Gania,Tinil-"
+"Gawiel,Tiniolith,Tinithrathiel,Tinóng,Tinorfilith,Tinorfithien,Tinudia,Tiorith,Tithrathien,Tówiel,Tuniel,Unadrieng,Unáthien,Unebridë,Unénia,Unil-"
+"Gadia,Unilmadia,Unindra,Uniodë,Uniolia,Uniong,Unionia,Unóndra,Unorfiwen,Unulindë,Unuviel,Unynia,Uraclya,Uradriedia,Uránia,Urárith,Urebriclya,Ureclya,Urilmadia,Urilmawiel,Uriolia,Urithralindë,Uruthien,Uryrith,Vadrierith,Vadrieviel,Vadriewen,Varawiel,Vebrithien,Vil-"
+"Gandra,Violindë,Viowiel,Vithrang,Vithraniel,Viwiel,Vódia,Vóng,Vorficlya,Vorfing,Vorfirith,Vorfiwiel,Vówien"
 msgstr ""
 
 #. Generator for male elf names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
@@ -2244,6 +2131,20 @@ msgid ""
 "short_centre=lol|febr|tom|lith|nal|lor|wón|rad|rien|mar|reb|riel|mal|ram|nil|"
 "nim|nol|bris|lad|rier|ra|fil|thran|man\n"
 msgstr ""
+"\n"
+"main={generated_prefix}{consonnant}{suffix}|{prefix}{centre}{suffix}\n"
+"generated_prefix={starting_consonnant}{vowel}\n"
+"starting_consonnant=স|ড|ফ|ল|ম|ন|প|ক|র|স|ট|ভ\n"
+"vowel=া|ে|ি|ো|্যা|ে\n"
+"consonnant=ন|ল|র|ম|স|ভ|থ|ন্ন\n"
+"prefix={prefix_vc}{vowel}|{prefix_cv}\n"
+"prefix_vc=লোন|এয়োন|আড|সার|আল|টাল|টিল|এল|লেগ|ওর|টির|ওল|কাল|কান|এল্ভ|ফান|ফাড|"
+"ফিথ|ফিল|গাল|গ্লাড|লেগ|গ্লার|গ্লি|হার|টাড|সোর|পির\n"
+"prefix_cv=আমা|আমি|বে|কা|গা|ইসি|হা|হে|লে|লো|ন্য|নি|মা|থু|থ্রি|টি|উনু|ভে|ভা\n"
+"suffix=র|িম|িয়ান|িন|ার|িয়েল|াস|িয়ন|াস|র|িয়ন|াল|ান্ড|ের|াস|ির|েল|াল|াড|েইল\n"
+"centre={short_centre}|{short_centre}|-{short_centre}|{short_centre}-\n"
+"short_centre=লল|ফেব্র|টম|লিথ|নাল|লর|ওন|রাড|রিয়েন|মার|রেব|রিয়েল|মাল|রাম|নিল|"
+"নিম|নল|ব্রিস|লাড|রিয়ের|রা|ফিল|থ্রান|মান\n"
 
 #. Generator for female elf names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:68
@@ -2309,103 +2210,11 @@ msgstr ""
 "centre=এর|আশ|ঈজ়|আজ়\n"
 
 #: data/core/macros/names.cfg:107
-msgid ""
-"Addraecyn,Addraenvan,Addraer,Addraercyn,Addraryn,Addreddry,Addredry,"
-"Addregwyn,Addrenyc,Addreoddry,Addreoddyn,Addreonyc,Addreorcyn,Addreran,"
-"Addribryn,Addriddyn,Addrocyn,Addroryn,Addrunvan,Addrurcyn,Addryllyn,"
-"Addrynvan,Aethacyn,Aethadry,Aethaec,Aethaeran,Aethaeryn,Aethagwyn,Aethanry,"
-"Aetharcyn,Aethec,Aethellyn,Aethenvan,Aetheoc,Aetheollyn,Aetheonyc,Aetheorcyn,"
-"Aethercyn,Aetherraent,Aethibryn,Aethiddry,Aethircyn,Aethobryn,Aethoddyn,"
-"Aethonnyn,Aethuc,Aethudry,Aethugwyn,Aethun,Aethunry,Aethydry,Aethynyc,Blac,"
-"Bladoc,Blaec,Blaedry,Blanry,Blebryn,Bledoc,Blemyr,Blennyn,Blenvan,Bleollyn,"
-"Blercyn,Blidd,Bliddry,Blillyn,Blinvan,Blollyn,Blubryn,Blucyn,Bludry,Blullyn,"
-"Bluran,Blybryn,Blydd,Blygwyn,Blymyr,Blyr,Bucyn,Cac,Cadry,Caebryn,Caedry,"
-"Caeran,Caercyn,Car,Carac,Caraddry,Caradoc,Caraedry,Caraennyn,Cararyn,Caredd,"
-"Careddry,Caregwyn,Caren,Careobryn,Careogwyn,Careonvan,Careorraent,Careoryn,"
-"Carercyn,Caric,Cariddry,Carocyn,Caroddyn,Caror,Caroran,Carraent,Carudoc,"
-"Carullyn,Carygwyn,Caryn,Cebryn,Cemyr,Cennyn,Ceoc,Ceoddry,Ceoddyn,Ceomyr,"
-"Ceonnyn,Ceonry,Ceoryn,Cicyn,Cin,Cinry,Coc,Convan,Corcyn,Cubryn,Cunry,Curyn,"
-"Cynyc,Cyryn,Dac,Dadd,Dadoc,Daeddry,Daedoc,Daellyn,Demyr,Denvan,Deodd,Deollyn,"
-"Deonyc,Derraent,Dibryn,Dinnyn,Dircyn,Dycyn,Dyddyn,Gaddry,Gaebryn,Gaedry,"
-"Gaercyn,Gagwyn,Gan,Gannyn,Gar,Gecyn,Geddyn,Gegwyn,Geodry,Ginvan,Glacyn,"
-"Gladoc,Glaercyn,Glarraent,Gleddry,Gleoddyn,Gleran,Gliddyn,Glillyn,Glinry,"
-"Glircyn,Gloddry,Gloddyn,Glonry,Glonvan,Glumyr,Glun,Glunry,Glunvan,Glyc,Glydd,"
-"Glydoc,Glynry,Glynvan,Glyran,Goc,Gor,Gubryn,Gudd,Gullyn,Gumyr,Gur,Gwadoc,"
-"Gwaec,Gwaeddyn,Gwan,Gweddyn,Gwegwyn,Gwellyn,Gwennyn,Gwenyc,Gweocyn,Gweodd,"
-"Gweodoc,Gweodry,Gweogwyn,Gweoran,Gwidoc,Gwilam,Gwodd,Gwoddyn,Gwollyn,Gwor,"
-"Gwucyn,Gwudoc,Gwumyr,Gwuran,Gwybryn,Gwycyn,Gwyddry,Gwydoc,Gwymyr,Gwynnyn,"
-"Gydoc,Gyllyn,Gymyr,Haldar,Labryn,Ladoc,Laellyn,Lan,Lannyn,Laran,Lec,Lemyr,"
-"Lenvan,Leogwyn,Lercyn,Ligwyn,Lin,Liryn,Lonnyn,Lorraent,Luddry,Ludoc,Lunnyn,"
-"Lunvan,Lurraent,Mac,Maddyn,Maennyn,Manry,Manyc,Marcyn,Mec,Menvan,Meollyn,"
-"Meon,Meonnyn,Meorraent,Middry,Midry,Mimyr,Modd,Moddry,Monry,Moran,Morcyn,"
-"Mubryn,Mudoc,Mugwyn,Murcyn,Mydoc,Mygwyn,Myn,Myrraent,Owac,Owadd,Owaddyn,"
-"Owaecyn,Owaedry,Owain,Owarcyn,Owaryn,Owecyn,Owedry,Oweomyr,Oweor,Oweorcyn,"
-"Oweran,Owercyn,Owidry,Owinvan,Owinyc,Owodd,Owoddry,Owogwyn,Owollyn,Oworan,"
-"Oworcyn,Oworraent,Owuddry,Owuddyn,Owugwyn,Owur,Owyran,Rabryn,Radd,Ranvan,Rar,"
-"Reoddyn,Reodry,Rhaecyn,Rhaedoc,Rhaemyr,Rhaerraent,Rhanry,Rharcyn,Rhenry,"
-"Rhenvan,Rhenyc,Rheodd,Rheoddyn,Rheollyn,Rheor,Rheoran,Rheorraent,Rheran,"
-"Rherraent,Rhobryn,Rhodry,Rhollyn,Rhonvan,Rhubryn,Rhugwyn,Rhunyc,Rhur,Rhygwyn,"
-"Rhyllyn,Rhynyc,Rhyrcyn,Rhyrraent,Rocyn,Roddyn,Romyr,Ron,Ronry,Rubryn,Ruddry,"
-"Rumyr,Run,Rurcyn,Rybryn,Rycyn,Ryddry,Rygwyn,Rynnyn,Rynry,Saec,Saellyn,Saemyr,"
-"Saenvan,Saercyn,Sanyc,Saran,Sarraent,Secyn,Seddyn,Sedry,Sellyn,Sennyn,"
-"Seoddry,Seorcyn,Sercyn,Siddry,Simyr,Siryn,Sodd,Sodry,Soran,Suc,Sudd,Surcyn,"
-"Sydd,Syran,Syryn,Tabryn,Taec,Taedd,Taedoc,Taemyr,Taenvan,Taercyn,Tanry,"
-"Tarcyn,Teddyn,Tegwyn,Ten,Tennyn,Tenvan,Teobryn,Teoddyn,Teor,Teorcyn,Terraent,"
-"Tinry,Tinvan,Tiryn,Todd,Tudd,Tuddry,Tudoc,Tunvan,Turraent,Tyddyn,Vaddyn,"
-"Vaeddyn,Vaedry,Vaennyn,Varcyn,Ven,Vennyn,Veocyn,Veoddyn,Veodry,Veogwyn,"
-"Veomyr,Vinvan,Vinyc,Virraent,Vobryn,Vogwyn,Vonry,Vuddyn,Vugwyn,Vyc,Vygwyn,"
-"Vyrcyn,Yracyn,Yraec,Yran,Yrannyn,Yranvan,Yraryn,Yredd,Yreddyn,Yregwyn,Yreryn,"
-"Yrinvan,Yrirraent,Yroddry,Yrullyn,Yrumyr,Yrunnyn,Yrunvan,Yryllyn,Yrymyr,"
-"Yrynyc,Yryrcyn"
+msgid "Addraecyn,Addraenvan,Addraer,Addraercyn,Addraryn,Addreddry,Addredry,Addregwyn,Addrenyc,Addreoddry,Addreoddyn,Addreonyc,Addreorcyn,Addreran,Addribryn,Addriddyn,Addrocyn,Addroryn,Addrunvan,Addrurcyn,Addryllyn,Addrynvan,Aethacyn,Aethadry,Aethaec,Aethaeran,Aethaeryn,Aethagwyn,Aethanry,Aetharcyn,Aethec,Aethellyn,Aethenvan,Aetheoc,Aetheollyn,Aetheonyc,Aetheorcyn,Aethercyn,Aetherraent,Aethibryn,Aethiddry,Aethircyn,Aethobryn,Aethoddyn,Aethonnyn,Aethuc,Aethudry,Aethugwyn,Aethun,Aethunry,Aethydry,Aethynyc,Blac,Bladoc,Blaec,Blaedry,Blanry,Blebryn,Bledoc,Blemyr,Blennyn,Blenvan,Bleollyn,Blercyn,Blidd,Bliddry,Blillyn,Blinvan,Blollyn,Blubryn,Blucyn,Bludry,Blullyn,Bluran,Blybryn,Blydd,Blygwyn,Blymyr,Blyr,Bucyn,Cac,Cadry,Caebryn,Caedry,Caeran,Caercyn,Car,Carac,Caraddry,Caradoc,Caraedry,Caraennyn,Cararyn,Caredd,Careddry,Caregwyn,Caren,Careobryn,Careogwyn,Careonvan,Careorraent,Careoryn,Carercyn,Caric,Cariddry,Carocyn,Caroddyn,Caror,Caroran,Carraent,Carudoc,Carullyn,Carygwyn,Caryn,Cebryn,Cemyr,Cennyn,Ceoc,Ceoddry,Ceoddyn,Ceomyr,Ceonnyn,Ceonry,Ceoryn,Cicyn,Cin,Cinry,Coc,Convan,Corcyn,Cubryn,Cunry,Curyn,Cynyc,Cyryn,Dac,Dadd,Dadoc,Daeddry,Daedoc,Daellyn,Demyr,Denvan,Deodd,Deollyn,Deonyc,Derraent,Dibryn,Dinnyn,Dircyn,Dycyn,Dyddyn,Gaddry,Gaebryn,Gaedry,Gaercyn,Gagwyn,Gan,Gannyn,Gar,Gecyn,Geddyn,Gegwyn,Geodry,Ginvan,Glacyn,Gladoc,Glaercyn,Glarraent,Gleddry,Gleoddyn,Gleran,Gliddyn,Glillyn,Glinry,Glircyn,Gloddry,Gloddyn,Glonry,Glonvan,Glumyr,Glun,Glunry,Glunvan,Glyc,Glydd,Glydoc,Glynry,Glynvan,Glyran,Goc,Gor,Gubryn,Gudd,Gullyn,Gumyr,Gur,Gwadoc,Gwaec,Gwaeddyn,Gwan,Gweddyn,Gwegwyn,Gwellyn,Gwennyn,Gwenyc,Gweocyn,Gweodd,Gweodoc,Gweodry,Gweogwyn,Gweoran,Gwidoc,Gwilam,Gwodd,Gwoddyn,Gwollyn,Gwor,Gwucyn,Gwudoc,Gwumyr,Gwuran,Gwybryn,Gwycyn,Gwyddry,Gwydoc,Gwymyr,Gwynnyn,Gydoc,Gyllyn,Gymyr,Haldar,Labryn,Ladoc,Laellyn,Lan,Lannyn,Laran,Lec,Lemyr,Lenvan,Leogwyn,Lercyn,Ligwyn,Lin,Liryn,Lonnyn,Lorraent,Luddry,Ludoc,Lunnyn,Lunvan,Lurraent,Mac,Maddyn,Maennyn,Manry,Manyc,Marcyn,Mec,Menvan,Meollyn,Meon,Meonnyn,Meorraent,Middry,Midry,Mimyr,Modd,Moddry,Monry,Moran,Morcyn,Mubryn,Mudoc,Mugwyn,Murcyn,Mydoc,Mygwyn,Myn,Myrraent,Owac,Owadd,Owaddyn,Owaecyn,Owaedry,Owain,Owarcyn,Owaryn,Owecyn,Owedry,Oweomyr,Oweor,Oweorcyn,Oweran,Owercyn,Owidry,Owinvan,Owinyc,Owodd,Owoddry,Owogwyn,Owollyn,Oworan,Oworcyn,Oworraent,Owuddry,Owuddyn,Owugwyn,Owur,Owyran,Rabryn,Radd,Ranvan,Rar,Reoddyn,Reodry,Rhaecyn,Rhaedoc,Rhaemyr,Rhaerraent,Rhanry,Rharcyn,Rhenry,Rhenvan,Rhenyc,Rheodd,Rheoddyn,Rheollyn,Rheor,Rheoran,Rheorraent,Rheran,Rherraent,Rhobryn,Rhodry,Rhollyn,Rhonvan,Rhubryn,Rhugwyn,Rhunyc,Rhur,Rhygwyn,Rhyllyn,Rhynyc,Rhyrcyn,Rhyrraent,Rocyn,Roddyn,Romyr,Ron,Ronry,Rubryn,Ruddry,Rumyr,Run,Rurcyn,Rybryn,Rycyn,Ryddry,Rygwyn,Rynnyn,Rynry,Saec,Saellyn,Saemyr,Saenvan,Saercyn,Sanyc,Saran,Sarraent,Secyn,Seddyn,Sedry,Sellyn,Sennyn,Seoddry,Seorcyn,Sercyn,Siddry,Simyr,Siryn,Sodd,Sodry,Soran,Suc,Sudd,Surcyn,Sydd,Syran,Syryn,Tabryn,Taec,Taedd,Taedoc,Taemyr,Taenvan,Taercyn,Tanry,Tarcyn,Teddyn,Tegwyn,Ten,Tennyn,Tenvan,Teobryn,Teoddyn,Teor,Teorcyn,Terraent,Tinry,Tinvan,Tiryn,Todd,Tudd,Tuddry,Tudoc,Tunvan,Turraent,Tyddyn,Vaddyn,Vaeddyn,Vaedry,Vaennyn,Varcyn,Ven,Vennyn,Veocyn,Veoddyn,Veodry,Veogwyn,Veomyr,Vinvan,Vinyc,Virraent,Vobryn,Vogwyn,Vonry,Vuddyn,Vugwyn,Vyc,Vygwyn,Vyrcyn,Yracyn,Yraec,Yran,Yrannyn,Yranvan,Yraryn,Yredd,Yreddyn,Yregwyn,Yreryn,Yrinvan,Yrirraent,Yroddry,Yrullyn,Yrumyr,Yrunnyn,Yrunvan,Yryllyn,Yrymyr,Yrynyc,Yryrcyn"
 msgstr ""
 
 #: data/core/macros/names.cfg:108
-msgid ""
-"Alabrylla,Alaebrylla,Alaeniver,Alalla,Alalonna,Alaryan,Aleacla,Aleaniver,"
-"Aleara,Alearka,Alena,Alengwen,Alilonna,Alingwen,Alolla,Alolonna,Alora,"
-"Alubrylla,Aluniver,Aluryan,Alussa,Alwcla,Alwllyra,Alwlyan,Alwna,Alybrylla,"
-"Alynoic,Alyra,Alyryan,Braedda,Brassa,Bravyan,Breabrylla,Breall,Brealla,"
-"Brealonna,Breana,Brell,Brellyra,Brera,Brerka,Breryan,Bricla,Brirka,Brobrylla,"
-"Brollyra,Brona,Bronoic,Brora,Brorka,Brungwen,Bruryan,Brwra,Brycla,Brynoic,"
-"Caella,Caena,Caengwen,Caevyan,Call,Calla,Cassa,Cealonna,Cera,Ceryan,Cibrylla,"
-"Cicla,Cinoic,Cira,Cissa,Clacla,Claella,Claelyan,Claenoic,Clalla,Clallyra,"
-"Clara,Clarka,Clavyan,Cleacla,Cleall,Clealyan,Cleana,Cleanoic,Clenoic,"
-"Clibrylla,Clill,Clillyra,Clilyan,Clinoic,Clissa,Clobrylla,Clollyra,Clona,"
-"Clongwen,Clungwen,Clurka,Cluvyan,Clwdda,Clwlla,Clwvyan,Clydda,Clylla,Cora,"
-"Coryan,Cucla,Cudda,Curyan,Cwdda,Cwlonna,Cwngwen,Cwvyan,Cydda,Cylla,Cyllyra,"
-"Cylyan,Cyniver,Cyvyan,Daedda,Daelyan,Daengwen,Daenoic,Dalla,Dallyra,Dangwen,"
-"Dara,Dassa,Deanoic,Deassa,Della,Devyan,Dicla,Diniver,Dissa,Dollyra,Dullyra,"
-"Dulonna,Dwbrylla,Dwdda,Dwna,Dwnoic,Dwra,Dybrylla,Dydda,Dyssa,Elacla,Elaedda,"
-"Elaell,Elaelonna,Elaessa,Elaevyan,Elallyra,Elalonna,Elara,Elavyan,Elealla,"
-"Eleanoic,Elearka,Elenoic,Elerka,Elivyan,Elulonna,Elurka,Elwllyra,Elwlonna,"
-"Elwngwen,Elwra,Elycla,Elyllyra,Elyngwen,Elyniver,Elyrka,Gwaera,Gwaessa,"
-"Gwangwen,Gweacla,Gwedda,Gwerka,Gwicla,Gwirka,Gwobrylla,Gwoll,Gwona,Gwongwen,"
-"Gwonoic,Gworyan,Gwullyra,Gwussa,Gwwcla,Gwwna,Gwwvyan,Gwycla,Gwydda,Heldra,"
-"Jacla,Jaena,Jaerka,Jaevyan,Jalyan,Jana,Jarka,Jassa,Jeabrylla,Jealla,Jeanoic,"
-"Jeniver,Jiryan,Jissa,Joll,Jolla,Jona,Jongwen,Jonoic,Jora,Jorka,Jovyan,Judda,"
-"Jull,Julonna,Jura,Jwll,Jwlyan,Jycla,Jyniver,Jynoic,Jyrka,Jyvyan,Laeniver,"
-"Laenoic,Laeryan,Langwen,Larka,Lassa,Lealonna,Lealyan,Ledda,Lelonna,Lelyan,"
-"Lengwen,Lerka,Lessa,Lidda,Lill,Lina,Lirka,Liryan,Livyan,Locla,Lodda,Lollyra,"
-"Lolonna,Lulla,Lulyan,Lungwen,Lunoic,Luryan,Lwcla,Lwlla,Lwnoic,Lwryan,Lycla,"
-"Lylla,Lylyan,Lyna,Lynoic,Maecla,Maeniver,Mavyan,Meacla,Mealyan,Meana,"
-"Meangwen,Meanoic,Medda,Melonna,Mengwen,Meniver,Meradda,Meraecla,Meraelyan,"
-"Merall,Merallyra,Meralonna,Merana,Meranoic,Merealonna,Mereangwen,Mereaniver,"
-"Merebrylla,Merella,Merengwen,Meressa,Merilyan,Merina,Merinoic,Merissa,"
-"Merivyan,Merolla,Merolyan,Merona,Meroniver,Merubrylla,Merudda,Merurka,"
-"Merwlla,Merwnoic,Merwryan,Merydda,Merylyan,Messa,Milonna,Molyan,Moniver,"
-"Mossa,Mudda,Mullyra,Mulyan,Muryan,Mwbrylla,Mwlyan,Mwngwen,Mwnoic,Mycla,Myll,"
-"Mylla,Myra,Myvyan,Nabrylla,Naebrylla,Naecla,Naell,Nalyan,Nangwen,Nealla,"
-"Neallyra,Nealonna,Neavyan,Nera,Nessa,Ninoic,Niryan,Nivyan,Nobrylla,Nolla,"
-"Nonoic,Norka,Noryan,Nucla,Nulla,Nulyan,Nungwen,Nuvyan,Nwllyra,Nwryan,Nwvyan,"
-"Nybrylla,Nyll,Nylyan,Nyryan,Nyssa,Nyvyan,Raebrylla,Raera,Raerka,Ralonna,Rara,"
-"Rarka,Rassa,Reacla,Realla,Reana,Reangwen,Rella,Relyan,Rengwen,Rerka,Revyan,"
-"Rilonna,Rilyan,Rirka,Rora,Rucla,Ruryan,Rwdda,Rwlla,Rwllyra,Rwlonna,Rwngwen,"
-"Rybrylla,Ryna,Ryngwen,Saell,Saellyra,Saeniver,Saerka,Saessa,Sallyra,Sanoic,"
-"Sara,Sassa,Searka,Sena,Senoic,Sera,Silonna,Sira,Siryan,Sona,Sorka,Subrylla,"
-"Sull,Sulonna,Sulyan,Sura,Sussa,Swlla,Swlyan,Swngwen,Swnoic,Swvyan,Syllyra,"
-"Sylyan,Syssa,Ysacla,Ysaenoic,Ysaerka,Ysanoic,Yseacla,Ysealonna,Ysealyan,"
-"Ysedda,Ysell,Yselonna,Ysilyan,Ysinoic,Ysodda,Ysongwen,Ysonoic,Ysura,Yswniver,"
-"Ysycla,Ysylla,Ysylyan,Ysyrka,Ysyssa"
+msgid "Alabrylla,Alaebrylla,Alaeniver,Alalla,Alalonna,Alaryan,Aleacla,Aleaniver,Aleara,Alearka,Alena,Alengwen,Alilonna,Alingwen,Alolla,Alolonna,Alora,Alubrylla,Aluniver,Aluryan,Alussa,Alwcla,Alwllyra,Alwlyan,Alwna,Alybrylla,Alynoic,Alyra,Alyryan,Braedda,Brassa,Bravyan,Breabrylla,Breall,Brealla,Brealonna,Breana,Brell,Brellyra,Brera,Brerka,Breryan,Bricla,Brirka,Brobrylla,Brollyra,Brona,Bronoic,Brora,Brorka,Brungwen,Bruryan,Brwra,Brycla,Brynoic,Caella,Caena,Caengwen,Caevyan,Call,Calla,Cassa,Cealonna,Cera,Ceryan,Cibrylla,Cicla,Cinoic,Cira,Cissa,Clacla,Claella,Claelyan,Claenoic,Clalla,Clallyra,Clara,Clarka,Clavyan,Cleacla,Cleall,Clealyan,Cleana,Cleanoic,Clenoic,Clibrylla,Clill,Clillyra,Clilyan,Clinoic,Clissa,Clobrylla,Clollyra,Clona,Clongwen,Clungwen,Clurka,Cluvyan,Clwdda,Clwlla,Clwvyan,Clydda,Clylla,Cora,Coryan,Cucla,Cudda,Curyan,Cwdda,Cwlonna,Cwngwen,Cwvyan,Cydda,Cylla,Cyllyra,Cylyan,Cyniver,Cyvyan,Daedda,Daelyan,Daengwen,Daenoic,Dalla,Dallyra,Dangwen,Dara,Dassa,Deanoic,Deassa,Della,Devyan,Dicla,Diniver,Dissa,Dollyra,Dullyra,Dulonna,Dwbrylla,Dwdda,Dwna,Dwnoic,Dwra,Dybrylla,Dydda,Dyssa,Elacla,Elaedda,Elaell,Elaelonna,Elaessa,Elaevyan,Elallyra,Elalonna,Elara,Elavyan,Elealla,Eleanoic,Elearka,Elenoic,Elerka,Elivyan,Elulonna,Elurka,Elwllyra,Elwlonna,Elwngwen,Elwra,Elycla,Elyllyra,Elyngwen,Elyniver,Elyrka,Gwaera,Gwaessa,Gwangwen,Gweacla,Gwedda,Gwerka,Gwicla,Gwirka,Gwobrylla,Gwoll,Gwona,Gwongwen,Gwonoic,Gworyan,Gwullyra,Gwussa,Gwwcla,Gwwna,Gwwvyan,Gwycla,Gwydda,Heldra,Jacla,Jaena,Jaerka,Jaevyan,Jalyan,Jana,Jarka,Jassa,Jeabrylla,Jealla,Jeanoic,Jeniver,Jiryan,Jissa,Joll,Jolla,Jona,Jongwen,Jonoic,Jora,Jorka,Jovyan,Judda,Jull,Julonna,Jura,Jwll,Jwlyan,Jycla,Jyniver,Jynoic,Jyrka,Jyvyan,Laeniver,Laenoic,Laeryan,Langwen,Larka,Lassa,Lealonna,Lealyan,Ledda,Lelonna,Lelyan,Lengwen,Lerka,Lessa,Lidda,Lill,Lina,Lirka,Liryan,Livyan,Locla,Lodda,Lollyra,Lolonna,Lulla,Lulyan,Lungwen,Lunoic,Luryan,Lwcla,Lwlla,Lwnoic,Lwryan,Lycla,Lylla,Lylyan,Lyna,Lynoic,Maecla,Maeniver,Mavyan,Meacla,Mealyan,Meana,Meangwen,Meanoic,Medda,Melonna,Mengwen,Meniver,Meradda,Meraecla,Meraelyan,Merall,Merallyra,Meralonna,Merana,Meranoic,Merealonna,Mereangwen,Mereaniver,Merebrylla,Merella,Merengwen,Meressa,Merilyan,Merina,Merinoic,Merissa,Merivyan,Merolla,Merolyan,Merona,Meroniver,Merubrylla,Merudda,Merurka,Merwlla,Merwnoic,Merwryan,Merydda,Merylyan,Messa,Milonna,Molyan,Moniver,Mossa,Mudda,Mullyra,Mulyan,Muryan,Mwbrylla,Mwlyan,Mwngwen,Mwnoic,Mycla,Myll,Mylla,Myra,Myvyan,Nabrylla,Naebrylla,Naecla,Naell,Nalyan,Nangwen,Nealla,Neallyra,Nealonna,Neavyan,Nera,Nessa,Ninoic,Niryan,Nivyan,Nobrylla,Nolla,Nonoic,Norka,Noryan,Nucla,Nulla,Nulyan,Nungwen,Nuvyan,Nwllyra,Nwryan,Nwvyan,Nybrylla,Nyll,Nylyan,Nyryan,Nyssa,Nyvyan,Raebrylla,Raera,Raerka,Ralonna,Rara,Rarka,Rassa,Reacla,Realla,Reana,Reangwen,Rella,Relyan,Rengwen,Rerka,Revyan,Rilonna,Rilyan,Rirka,Rora,Rucla,Ruryan,Rwdda,Rwlla,Rwllyra,Rwlonna,Rwngwen,Rybrylla,Ryna,Ryngwen,Saell,Saellyra,Saeniver,Saerka,Saessa,Sallyra,Sanoic,Sara,Sassa,Searka,Sena,Senoic,Sera,Silonna,Sira,Siryan,Sona,Sorka,Subrylla,Sull,Sulonna,Sulyan,Sura,Sussa,Swlla,Swlyan,Swngwen,Swnoic,Swvyan,Syllyra,Sylyan,Syssa,Ysacla,Ysaenoic,Ysaerka,Ysanoic,Yseacla,Ysealonna,Ysealyan,Ysedda,Ysell,Yselonna,Ysilyan,Ysinoic,Ysodda,Ysongwen,Ysonoic,Ysura,Yswniver,Ysycla,Ysylla,Ysylyan,Ysyrka,Ysyssa"
 msgstr ""
 
 #. Generator for male Wesnothian human names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
@@ -2471,92 +2280,63 @@ msgstr ""
 
 #: data/core/macros/names.cfg:144
 msgid ""
-"Aban,Abbas,Abbud,Abdul-ʿAdl,Abdul-Ahad,Abdul-Alim,Abdul-Aliyy,Abdul-Azim,"
-"Abdul-Aziz,Abdul-Badi,Abdul-Baʿith,Abdul-Baqi,Abdul-Bari,Abdul-Barr,Abdul-"
-"Basir,Abdul-Basit,Abdul-Fattah,Abdul-Ghaffar,Abdul-Ghafur,Abdul-Ghani,Abdul-"
-"Hadi,Abdul-Hafiz,Abdul-Hakam,Abdul-Hakim,Abdul-Halim,Abdul-Hamid,Abdul-Haqq,"
-"Abdul-Hasib,Abdul-Hayy,Abdul-Jabbar,Abdul-Jalil,Abdul-Karim,Abdul-Khabir,"
-"Abdul-Khaliq,Abdul-Latif,Abdul-Malik,Abdul-Majid,Abdul-Matin,Abdul-Mubdiʾ,"
-"Abdul-Mughni,Abdul-Muhaimin,Abdul-Muhsi,Abdul-Muhyi,Abdul-Muʿid,Abdul-Muʿizz,"
-"Abdul-Mujib,Abdul-Mumin,Abdul-Muqaddim,Abdul-Muqtadir,Abdul-Musawwir,Abdul-"
-"Mutaʿal,Abdul-Nafi,Abdul-Nasser,Abdul-Nasir,Abdul-Nur,Abdul-Qadir,Abdul-"
-"Qahhar,Abdul-Qawi,Abdul-Qayyum,Abdul-Quddus,Abdul-Rafi,Abdul-Rahim,Abdul-"
-"Rahman,Abdul-Rashid,Abdul-Raʿuf,Abdul-Razzaq,Abdul-Shakur,Abdul-Tawwab,Abdul-"
-"Wadud,Abdul-Wahhab,Abdul-Wahid,Abdul-Wajid,Abdul-Wakil,Abdul-Wali,Abdul-"
-"Waliy,Abdul-Warith,Abdul-Zahir,Abdullah,ʿAbid,ʿAbidin,Abu Bakr,Aby al-Khayr,"
-"Adil,Adham,Adib,ʿAdli,ʿAdnan,ʿAfif,Ahmad,ʿAjib,ʿAkif,Akil,Akram,Alaʾ,Alaʾ al-"
-"Din,Alʿ Abbas,Aladdin,al-Bara,al-Hakam,al-Harith,Alhasan,Alhusain,Ali,Alim,"
-"Almahdi,al-Safi,Altaf,Altair,al-Tayyib,al-Tijani,al-Tufail,Amid,ʿAmid,Amin,"
-"Amir,ʿAmir,Amjad,ʿAmmar,ʿAmro,Anas,Anis,ʿAntarah,Anwar,ʿAqil,Arfan,Arif,"
-"ʿArif,Asad,Asʿad,Asadel,Ashraf,Asif,ʿAsim,Aswad,Ataʿ,Ataʿ Allah,Ataʿ al-"
-"Rahman,Athil,Athir,ʿAtif,ʿAwad,ʿAwf,Aws,Awwab,Ayham,Ayman,Ayser,Ayyub,Aza,"
-"ʿAzab,Azhar,Azim,ʿAziz,ʿAzzam,Badi,Badi al-Zaman,Badr,Badr al-Din,Badri,"
-"Bahaʿ,Bahiyy al-Din,Bahij,Bahir,Bakr,Baligh,Bandar,Barakah,Barir,Bashshar,"
-"Basil,Basim,Bassam,Bayezid,Bayhas,Bilal,Bishr,Boulos,Budail,Burhan,Bushr,"
-"Butrus,Dabir,Dani,Darwish,Daʿud,Dhakir,Dhakiy,Dhakwan,Dhul Fiqar,Dirar,Diya,"
-"Diya al-Din,Duqaq,Fadi,Fadil,Fadl,Fadl Allah,Fahd,Fahad,Fahmi,Faisal,Faʿiz,"
-"Fakhir,Fakhr al-Din,Fakhri,Fakih,Falah,Falih,Faraj,Farhan,Farid,Fariq,Fariq,"
-"Faris,Faruq,Fath,Fathi,Fatih,Fatin,Fawwaz,Fawzan,Fawzi,Fayyad,Ferran,Fida,"
-"Fikri,Firas,Fuʿad,Fudail,Gamal,Ghayth,Ghali,Ghalib,Ghanim,Ghassan,Ghawth,"
-"Ghazwan,Ghiyath,Habbab,Habib,Haddad,Hadi,Hafiz,Hakem,Hakim,Halim,Hamal,Hamas,"
-"Hamdan,Hamdi,Hamid,Hamim,Hamzah,Hana,Hanaʾi,Hanbal,Hani,Hanif,Hannad,Haris,"
-"Harith,Harun,Hashim,Hassan,Hatim,Haydar,Haytham,Hayyan,Hazim,Hilal,Hilmi,"
-"Hisham,Hud,Hudad,Hudhafah,Hudhayfah,Humam,Hussein,Husam,Husam al-Din,Ibrahim,"
-"ʿId,Idris,Ihsan,Ihtisham,ʿIkrimah,Ilias,ʿImad,Imad al-Din,Imran,Imtiyaz,"
-"Inʿam,Iqbal,ʿIrfan,ʿIsa,ʿIsam,Ishaq,Ismaʿil,Iyad,Iyas,Izz al-Din,Jabbar,Jabr,"
-"Jabir,Jad Allah,Jaʿfar,Jal,Jalal,Jalal al-Din,Jalil,Jamal,Jamal al-Din,Jamil,"
-"Jarir,Jasim,Jaul,Jaun,Jawad,Jawdah,Jawhar,Jibran,Jibril,Jubair,Jul,Jumah,"
-"Junayd,Juwain,Kadar,Kadin,Kadir,Kahil,Kaliq,Kamal,Kamil,Karam,Kardal,Karif,"
-"Karim,Kasib,Kasim,Katib,Kazim,Khalaf,Khaldun,Khalid,Khalil,Khalil al-Allah,"
-"Khalis,Khatib,Khair al-Din,Khairi,Khoury,Khulus,Khuzaymah,Kutaiba,Labib,"
-"Lablab,Latif,Layth,LuʿayLubayd,Luqman,Lut,Lutfi,Maʿd,Madani,Mahbub,Mahdi,"
-"Mahfuz,Mahir,Mahjub,Mahmud,Mahrus,Maimun,Majd,Majdy,Majd al-Din,Majid,Makin,"
-"Malik,Mamduh,Maʿmun,Maʿin,Mandhur,Mansur,Marghub,Marid,Maʿruf,Marwan,Marzuq,"
-"Mashʿal,Mashhur,Masrur,Masʿud,Masun,Maysarah,Mazhar,Mazin,Mehmed,Mihran,"
-"Mihyar,Mikaʾil,Miqdad,Misbah,Mishʿal,Miyaz,Muʾadh,Muʾawiyah,Muʾayyad,Mubarak,"
-"Mubin,Mudar,Muddaththir,Mufid,Muflih,Muhab,Muhayr,Muhammad,Muhanna,Muhannad,"
-"Muhib,Muhibb,Muhsin,Muhtadi,Muhyi al-Din,Muʿin,Muʿizz,Mujab,Mujahid,Mukarram,"
-"Mukhlis,Mukhtar,Mulham,Mulhim,Muʿmmar,Muʿmin,Mumtaz,Munahid,Mundhir,Munib,"
-"Munif,Munir,Muʿnis,Munjid,Munsif,Muntasir,Murad,Murid,Murshid,Murtada,Musa,"
-"Musʿab,Musaʿid,Mushtaq,Muslih,Muslim,Mutafa,Mutaʾ,Muʿtasim,Mutawalli,Muʿtazz,"
-"Muthanna,Muti,Muwaffaq,Muyassar,Muzaffar,Mussammil,Nabhan,Nabighah,Nabih,"
-"Nabil,Nadhir,Nadim,Nadir,Nafiʾ,Nahid,Naʾil,Naʾim,Naji,Najib,Najid,Najjar,"
-"Najm al-Din,Naʿaman,Namir,Nashʿah,Nashʿat,Nashwan,Nasib,Nasih,Nasim,Nasir,"
-"Nasir al-Din,Nasr,Nasri,Nasuh,Nawaf,Nawfal,Nayif,Nazih,Nazim,Nazmi,Nibras,"
-"Nidal,Nijad,Nimr,Nizar,Nuʿaym,Nuh,Nuhayd,Numair,Nuʿman,Nur al-Din,Nuri,"
-"Nusrah,Nusrat,Omar,Orhan,Osman,Qasim,Qays,Qudamah,Qusay,Qatadah,Qutaybah,"
-"Qutb,Qutuz,Rabah,Rabi,Radi,Rafi,Rafid,Rafiq,Raghib,Rahman,Raʿid,Raʿif,Rais,"
-"Rajaa,Rajab,Raji,Rajih,Rakin,Rami,Ramih,Ramiz,Ramzi,Rani,Rashad,Rashid,Rasil,"
-"Rasin,Rasmi,Rasul,Ratib,Raʿuf,Rayhan,Rayyan,Razin,Ridha,Ridwan,Rihab,Riyad,"
-"Rizq,Ruhi,Rushd,Rushdi,Ruwayd,Saad,Saʿadah,Sab,Sabih,Sabir,Sabri,Saʿd,Saʿd "
-"al-Din,Sadad,Sadid,Sadiq,Saʿdun,Saʿid,Safi,Safiy,Safiy al-Din,Safuh,Safwah,"
-"Safwat,Safwan,Sahib,Sahir,Sahl,Saʾib,Saif,Saif al-Din,Sajid,Sajjad,Sakhr,"
-"Salah,Salah al-Din,Salamah,Salih,Salim,Salman,Sami,Samih,Samir,Samman,Saqr,"
-"Sariyah,Sati,Saud,Sayyid,Shaʿban,Shadi,Shadin,Shafi,Shafiq,Shahid,Shahin,"
-"Shahir,Shakib,Shakir,Shams al-Din,Shamal,Shamil,Shamim,Sharaf,Sharif,Shawqi,"
-"Shihab,Shihab al-Din,Shihad,Shuʿayb,Shukri,Shumayl,Siddiq,Sinan,Siraj,Siraj "
-"al-Din,Sofian,Subhi,Sufyan,Suhayb,Suhayl,Suhaym,Sulaiman,Sumrah,Suraqah,"
-"Suʿud,Tahir,Tahsin,Taym Allah,Taj,Taj al-Din,Talal,Talib,Tamim,Tamir,Tamam,"
-"Tammam,Taqiy,Tarif,Tariq,Taslim,Tawfiq,Tawhid,Taymullah,Taysir,Tayyib,Thabit,"
-"Thamir,Thaqib,Thawab,Thawban,ʿUbaidah,Ubaid,Ubayy,ʿUdayl,ʿUday,ʿUmar,Umarah,"
-"Umair,ʾaUrwah,Usaym,Usama,ʿUtbah,Uthal,Uthman,Waddah,Wadi,Wadid,Wafiq,Wahab,"
-"Wahhab,Wahid,Waʾil,Wajdi,Wajid,Wajih,Wakil,Walid,Walif,Waliy Allah,Waliy al-"
-"Din,Waqar,Waqqas,Ward,Wasif,Wasil,Wasim,Wazir,Yahya,Yaman,Yaʿqub,Yasar,Yasin,"
-"Yasir,Yazan,Yazid,Yunus,Yushua,Yusri,Yusuf,Zafar,Zafir,Zahid,Zahir,Zayd,Zaim,"
-"Zayn,Zarif,Zakarriya,Zaki,Zakwan,Ziyad,Zubayr,Zuhayr"
+"Aban,Abbas,Abbud,Abdul-ʿAdl,Abdul-Ahad,Abdul-Alim,Abdul-Aliyy,Abdul-"
+"Azim,Abdul-Aziz,Abdul-Badi,Abdul-Baʿith,Abdul-Baqi,Abdul-Bari,Abdul-"
+"Barr,Abdul-Basir,Abdul-Basit,Abdul-Fattah,Abdul-Ghaffar,Abdul-Ghafur,Abdul-"
+"Ghani,Abdul-Hadi,Abdul-Hafiz,Abdul-Hakam,Abdul-Hakim,Abdul-Halim,Abdul-"
+"Hamid,Abdul-Haqq,Abdul-Hasib,Abdul-Hayy,Abdul-Jabbar,Abdul-Jalil,Abdul-"
+"Karim,Abdul-Khabir,Abdul-Khaliq,Abdul-Latif,Abdul-Malik,Abdul-Majid,Abdul-"
+"Matin,Abdul-Mubdiʾ,Abdul-Mughni,Abdul-Muhaimin,Abdul-Muhsi,Abdul-Muhyi,Abdul-"
+"Muʿid,Abdul-Muʿizz,Abdul-Mujib,Abdul-Mumin,Abdul-Muqaddim,Abdul-"
+"Muqtadir,Abdul-Musawwir,Abdul-Mutaʿal,Abdul-Nafi,Abdul-Nasser,Abdul-"
+"Nasir,Abdul-Nur,Abdul-Qadir,Abdul-Qahhar,Abdul-Qawi,Abdul-Qayyum,Abdul-"
+"Quddus,Abdul-Rafi,Abdul-Rahim,Abdul-Rahman,Abdul-Rashid,Abdul-Raʿuf,Abdul-"
+"Razzaq,Abdul-Shakur,Abdul-Tawwab,Abdul-Wadud,Abdul-Wahhab,Abdul-Wahid,Abdul-"
+"Wajid,Abdul-Wakil,Abdul-Wali,Abdul-Waliy,Abdul-Warith,Abdul-"
+"Zahir,Abdullah,ʿAbid,ʿAbidin,Abu Bakr,Aby al-"
+"Khayr,Adil,Adham,Adib,ʿAdli,ʿAdnan,ʿAfif,Ahmad,ʿAjib,ʿAkif,Akil,Akram,Alaʾ,Alaʾ "
+"al-Din,Alʿ Abbas,Aladdin,al-Bara,al-Hakam,al-"
+"Harith,Alhasan,Alhusain,Ali,Alim,Almahdi,al-Safi,Altaf,Altair,al-Tayyib,al-"
+"Tijani,al-"
+"Tufail,Amid,ʿAmid,Amin,Amir,ʿAmir,Amjad,ʿAmmar,ʿAmro,Anas,Anis,ʿAntarah,Anwar,ʿAqil,Arfan,Arif,ʿArif,Asad,Asʿad,Asadel,Ashraf,Asif,ʿAsim,Aswad,Ataʿ,Ataʿ "
+"Allah,Ataʿ al-"
+"Rahman,Athil,Athir,ʿAtif,ʿAwad,ʿAwf,Aws,Awwab,Ayham,Ayman,Ayser,Ayyub,Aza,ʿAzab,Azhar,Azim,ʿAziz,ʿAzzam,Badi,Badi "
+"al-Zaman,Badr,Badr al-Din,Badri,Bahaʿ,Bahiyy al-"
+"Din,Bahij,Bahir,Bakr,Baligh,Bandar,Barakah,Barir,Bashshar,Basil,Basim,Bassam,Bayezid,Bayhas,Bilal,Bishr,Boulos,Budail,Burhan,Bushr,Butrus,Dabir,Dani,Darwish,Daʿud,Dhakir,Dhakiy,Dhakwan,Dhul "
+"Fiqar,Dirar,Diya,Diya al-Din,Duqaq,Fadi,Fadil,Fadl,Fadl "
+"Allah,Fahd,Fahad,Fahmi,Faisal,Faʿiz,Fakhir,Fakhr al-"
+"Din,Fakhri,Fakih,Falah,Falih,Faraj,Farhan,Farid,Fariq,Fariq,Faris,Faruq,Fath,Fathi,Fatih,Fatin,Fawwaz,Fawzan,Fawzi,Fayyad,Ferran,Fida,Fikri,Firas,Fuʿad,Fudail,Gamal,Ghayth,Ghali,Ghalib,Ghanim,Ghassan,Ghawth,Ghazwan,Ghiyath,Habbab,Habib,Haddad,Hadi,Hafiz,Hakem,Hakim,Halim,Hamal,Hamas,Hamdan,Hamdi,Hamid,Hamim,Hamzah,Hana,Hanaʾi,Hanbal,Hani,Hanif,Hannad,Haris,Harith,Harun,Hashim,Hassan,Hatim,Haydar,Haytham,Hayyan,Hazim,Hilal,Hilmi,Hisham,Hud,Hudad,Hudhafah,Hudhayfah,Humam,Hussein,Husam,Husam "
+"al-Din,Ibrahim,ʿId,Idris,Ihsan,Ihtisham,ʿIkrimah,Ilias,ʿImad,Imad al-"
+"Din,Imran,Imtiyaz,Inʿam,Iqbal,ʿIrfan,ʿIsa,ʿIsam,Ishaq,Ismaʿil,Iyad,Iyas,Izz "
+"al-Din,Jabbar,Jabr,Jabir,Jad Allah,Jaʿfar,Jal,Jalal,Jalal al-"
+"Din,Jalil,Jamal,Jamal al-"
+"Din,Jamil,Jarir,Jasim,Jaul,Jaun,Jawad,Jawdah,Jawhar,Jibran,Jibril,Jubair,Jul,Jumah,Junayd,Juwain,Kadar,Kadin,Kadir,Kahil,Kaliq,Kamal,Kamil,Karam,Kardal,Karif,Karim,Kasib,Kasim,Katib,Kazim,Khalaf,Khaldun,Khalid,Khalil,Khalil "
+"al-Allah,Khalis,Khatib,Khair al-"
+"Din,Khairi,Khoury,Khulus,Khuzaymah,Kutaiba,Labib,Lablab,Latif,Layth,LuʿayLubayd,Luqman,Lut,Lutfi,Maʿd,Madani,Mahbub,Mahdi,Mahfuz,Mahir,Mahjub,Mahmud,Mahrus,Maimun,Majd,Majdy,Majd "
+"al-"
+"Din,Majid,Makin,Malik,Mamduh,Maʿmun,Maʿin,Mandhur,Mansur,Marghub,Marid,Maʿruf,Marwan,Marzuq,Mashʿal,Mashhur,Masrur,Masʿud,Masun,Maysarah,Mazhar,Mazin,Mehmed,Mihran,Mihyar,Mikaʾil,Miqdad,Misbah,Mishʿal,Miyaz,Muʾadh,Muʾawiyah,Muʾayyad,Mubarak,Mubin,Mudar,Muddaththir,Mufid,Muflih,Muhab,Muhayr,Muhammad,Muhanna,Muhannad,Muhib,Muhibb,Muhsin,Muhtadi,Muhyi "
+"al-"
+"Din,Muʿin,Muʿizz,Mujab,Mujahid,Mukarram,Mukhlis,Mukhtar,Mulham,Mulhim,Muʿmmar,Muʿmin,Mumtaz,Munahid,Mundhir,Munib,Munif,Munir,Muʿnis,Munjid,Munsif,Muntasir,Murad,Murid,Murshid,Murtada,Musa,Musʿab,Musaʿid,Mushtaq,Muslih,Muslim,Mutafa,Mutaʾ,Muʿtasim,Mutawalli,Muʿtazz,Muthanna,Muti,Muwaffaq,Muyassar,Muzaffar,Mussammil,Nabhan,Nabighah,Nabih,Nabil,Nadhir,Nadim,Nadir,Nafiʾ,Nahid,Naʾil,Naʾim,Naji,Najib,Najid,Najjar,Najm "
+"al-Din,Naʿaman,Namir,Nashʿah,Nashʿat,Nashwan,Nasib,Nasih,Nasim,Nasir,Nasir "
+"al-"
+"Din,Nasr,Nasri,Nasuh,Nawaf,Nawfal,Nayif,Nazih,Nazim,Nazmi,Nibras,Nidal,Nijad,Nimr,Nizar,Nuʿaym,Nuh,Nuhayd,Numair,Nuʿman,Nur "
+"al-"
+"Din,Nuri,Nusrah,Nusrat,Omar,Orhan,Osman,Qasim,Qays,Qudamah,Qusay,Qatadah,Qutaybah,Qutb,Qutuz,Rabah,Rabi,Radi,Rafi,Rafid,Rafiq,Raghib,Rahman,Raʿid,Raʿif,Rais,Rajaa,Rajab,Raji,Rajih,Rakin,Rami,Ramih,Ramiz,Ramzi,Rani,Rashad,Rashid,Rasil,Rasin,Rasmi,Rasul,Ratib,Raʿuf,Rayhan,Rayyan,Razin,Ridha,Ridwan,Rihab,Riyad,Rizq,Ruhi,Rushd,Rushdi,Ruwayd,Saad,Saʿadah,Sab,Sabih,Sabir,Sabri,Saʿd,Saʿd "
+"al-Din,Sadad,Sadid,Sadiq,Saʿdun,Saʿid,Safi,Safiy,Safiy al-"
+"Din,Safuh,Safwah,Safwat,Safwan,Sahib,Sahir,Sahl,Saʾib,Saif,Saif al-"
+"Din,Sajid,Sajjad,Sakhr,Salah,Salah al-"
+"Din,Salamah,Salih,Salim,Salman,Sami,Samih,Samir,Samman,Saqr,Sariyah,Sati,Saud,Sayyid,Shaʿban,Shadi,Shadin,Shafi,Shafiq,Shahid,Shahin,Shahir,Shakib,Shakir,Shams "
+"al-Din,Shamal,Shamil,Shamim,Sharaf,Sharif,Shawqi,Shihab,Shihab al-"
+"Din,Shihad,Shuʿayb,Shukri,Shumayl,Siddiq,Sinan,Siraj,Siraj al-"
+"Din,Sofian,Subhi,Sufyan,Suhayb,Suhayl,Suhaym,Sulaiman,Sumrah,Suraqah,Suʿud,Tahir,Tahsin,Taym "
+"Allah,Taj,Taj al-"
+"Din,Talal,Talib,Tamim,Tamir,Tamam,Tammam,Taqiy,Tarif,Tariq,Taslim,Tawfiq,Tawhid,Taymullah,Taysir,Tayyib,Thabit,Thamir,Thaqib,Thawab,Thawban,ʿUbaidah,Ubaid,Ubayy,ʿUdayl,ʿUday,ʿUmar,Umarah,Umair,ʾaUrwah,Usaym,Usama,ʿUtbah,Uthal,Uthman,Waddah,Wadi,Wadid,Wafiq,Wahab,Wahhab,Wahid,Waʾil,Wajdi,Wajid,Wajih,Wakil,Walid,Walif,Waliy "
+"Allah,Waliy al-"
+"Din,Waqar,Waqqas,Ward,Wasif,Wasil,Wasim,Wazir,Yahya,Yaman,Yaʿqub,Yasar,Yasin,Yasir,Yazan,Yazid,Yunus,Yushua,Yusri,Yusuf,Zafar,Zafir,Zahid,Zahir,Zayd,Zaim,Zayn,Zarif,Zakarriya,Zaki,Zakwan,Ziyad,Zubayr,Zuhayr"
 msgstr ""
 
 #: data/core/macros/names.cfg:145
-msgid ""
-"Abiha,Afaf,A’isha,Ajda,Aliya,Amira,Ashraqat,Atikah,Azra,Boutheina,Bushra,"
-"Chaima,Dalia,Esma,Farida,Fatima,Feyrouz,Habiba,Hafsa,Hajra,Halima,Hamida,"
-"Hanifa,Havva,Hayat,Hessa,Ibtisam,Ibtissam,Inaam,Jamila,Jawahir,Jena,Jumana,"
-"Kareena,Karima,Katya,Khadija,Khairunnisa,Khawla,Khawlah,Lama,Latifa,Layal,"
-"Layan,Leila,Lina,Lulwa,Madiha,Maha,Mahmuna,Mai,Malika,Marwa,Maryam,Maya,"
-"Maysoon,Nadia,Nafisa,Nahla,Naila,Najat,Nasim,Nasrin,Nejla,Nezha,Niusha,"
-"Rahima,Rana,Rashida,Reem,Ruqayya,Saadia,Sabiha,Safiya,Sahar,Saida,Sajida,"
-"Sakhra,Salma,Samira,Sarah,Shahd,Shatha,Shumaila,Sumaya,Taslima,Umm,Yara,"
-"Yasmin,Zahra,Zakiya,Zaynab"
+msgid "Abiha,Afaf,A’isha,Ajda,Aliya,Amira,Ashraqat,Atikah,Azra,Boutheina,Bushra,Chaima,Dalia,Esma,Farida,Fatima,Feyrouz,Habiba,Hafsa,Hajra,Halima,Hamida,Hanifa,Havva,Hayat,Hessa,Ibtisam,Ibtissam,Inaam,Jamila,Jawahir,Jena,Jumana,Kareena,Karima,Katya,Khadija,Khairunnisa,Khawla,Khawlah,Lama,Latifa,Layal,Layan,Leila,Lina,Lulwa,Madiha,Maha,Mahmuna,Mai,Malika,Marwa,Maryam,Maya,Maysoon,Nadia,Nafisa,Nahla,Naila,Najat,Nasim,Nasrin,Nejla,Nezha,Niusha,Rahima,Rana,Rashida,Reem,Ruqayya,Saadia,Sabiha,Safiya,Sahar,Saida,Sajida,Sakhra,Salma,Samira,Sarah,Shahd,Shatha,Shumaila,Sumaya,Taslima,Umm,Yara,Yasmin,Zahra,Zakiya,Zaynab"
 msgstr ""
 
 #. Generator for male dunefolk human names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
@@ -2609,17 +2389,7 @@ msgid ""
 msgstr ""
 
 #: data/core/macros/names.cfg:179
-msgid ""
-"Amprixta,Anexir,Anitraz,Arix,Axiz,Bzz’Kza,Chamil,Cleezi,Clezz,Fazzis,"
-"Fizztrax,Flixta,Flizzil,Frikes,Frizzle,Hasz,Heffez,Hertrazzir,Hesz,Hezzir,"
-"Hezzis,Hix,Inexis,Irix,Jezzix,Kaliez,Kepzs,Kernix,Kersezz,Kertrasz,Kerx,"
-"Kerxenix,Kezz,Klexaz,Klezyx,Krarax,Krenarex,Krex,Krinex,Krisess,Laizix,Lazki,"
-"Lixeez,Merax,Mexiss,Moxanzz,Naxisz,Nix,Pekzs,Plaxis,Plesix,Presch,Sailik,"
-"Salanix,Salik,Sandix,Saprazz,Satras,Skalix,Skandix,Skazix,Skeely,Skeezix,"
-"Sklizle,Skrez,Slizilx,Sprizz,Ssizer,Ssorix,Sszasz,Sterizz,Talerez,Tarex,"
-"Tarnix,Tezzaz,Tirasch,Tirax,Tirix,Trezz,Venezz,Vriss,Waks,Xaffrasz,Xartrez,"
-"Xasz,Xaztex,Xerxix,Xirasz,Xirr,Xirtras,Xirtrez,Xirz,Zandler,Zedrix,Zilrix,"
-"Zizzasz,Zslap,Zzalkz,Zzupde"
+msgid "Amprixta,Anexir,Anitraz,Arix,Axiz,Bzz’Kza,Chamil,Cleezi,Clezz,Fazzis,Fizztrax,Flixta,Flizzil,Frikes,Frizzle,Hasz,Heffez,Hertrazzir,Hesz,Hezzir,Hezzis,Hix,Inexis,Irix,Jezzix,Kaliez,Kepzs,Kernix,Kersezz,Kertrasz,Kerx,Kerxenix,Kezz,Klexaz,Klezyx,Krarax,Krenarex,Krex,Krinex,Krisess,Laizix,Lazki,Lixeez,Merax,Mexiss,Moxanzz,Naxisz,Nix,Pekzs,Plaxis,Plesix,Presch,Sailik,Salanix,Salik,Sandix,Saprazz,Satras,Skalix,Skandix,Skazix,Skeely,Skeezix,Sklizle,Skrez,Slizilx,Sprizz,Ssizer,Ssorix,Sszasz,Sterizz,Talerez,Tarex,Tarnix,Tezzaz,Tirasch,Tirax,Tirix,Trezz,Venezz,Vriss,Waks,Xaffrasz,Xartrez,Xasz,Xaztex,Xerxix,Xirasz,Xirr,Xirtras,Xirtrez,Xirz,Zandler,Zedrix,Zilrix,Zizzasz,Zslap,Zzalkz,Zzupde"
 msgstr ""
 
 #. Generator for saurian names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
@@ -2635,20 +2405,13 @@ msgid ""
 msgstr ""
 
 #: data/core/macros/names.cfg:190
-msgid ""
-"Absu,Abzu,Aigaion,Alastyn,Apalala,Apam,Apsu,Aremata,Atlahua,Atlaua,Barinthus,"
-"Dhakhan,Dylan,Elcmar,Ember,Enki,Faro,Habaek,Ikatere,Jamm,Jin,Kinilau,Kulullu,"
-"Labuna,Laut,Lir,Llyr,Ludd,Makara,Maui,Melicertes,Mimir,Natat,Nechtan,Neptune,"
-"Nereus,Nethuns,Njord,Nuada,Nudd,Nudimmud,Nun,Oceanus,Okeanos,Phorcys,Pontus,"
-"Popoa,Poseidon,Proteus,Raja,Rau,Rorua,Ryujin,Scylla,Sinilau,Sisiutl,Tagaloa,"
-"Tanaoa,Tangaloa,Tangaroa,Thaumas,Tikitiki,Tini,Tinilau,Tinirau,Toniwha,"
-"Triton,Vizi,Vodnik,Vourukasa"
+msgid "Absu,Abzu,Aigaion,Alastyn,Apalala,Apam,Apsu,Aremata,Atlahua,Atlaua,Barinthus,Dhakhan,Dylan,Elcmar,Ember,Enki,Faro,Habaek,Ikatere,Jamm,Jin,Kinilau,Kulullu,Labuna,Laut,Lir,Llyr,Ludd,Makara,Maui,Melicertes,Mimir,Natat,Nechtan,Neptune,Nereus,Nethuns,Njord,Nuada,Nudd,Nudimmud,Nun,Oceanus,Okeanos,Phorcys,Pontus,Popoa,Poseidon,Proteus,Raja,Rau,Rorua,Ryujin,Scylla,Sinilau,Sisiutl,Tagaloa,Tanaoa,Tangaloa,Tangaroa,Thaumas,Tikitiki,Tini,Tinilau,Tinirau,Toniwha,Triton,Vizi,Vodnik,Vourukasa"
 msgstr ""
 
 #: data/core/macros/names.cfg:191
 msgid ""
-"Aglaopheme,Amphitrite,Aphrodite,Ariel,Atargatis,Calypso,Delphine,Derceto,"
-"Diktynna,Electra,Galatea,Himeropa,Jengu,Leucosia,Ligia,Lori Lamaris,Mama "
+"Aglaopheme,Amphitrite,Aphrodite,Ariel,Atargatis,Calypso,Delphine,Derceto,Diktynna,Electra,Galatea,Himeropa,Jengu,Leucosia,Ligia,Lori "
+"Lamaris,Mama "
 "Wata,Marina,Miranda,Miriam,Molpe,Parthenope,Pelagia,Pisinoe,Rân,Sedna,Stella "
 "Maris,Thelxiepia,Tirgata,Vatea,Ved-Ava,Veen emo,Vete-ema"
 msgstr ""
@@ -2677,24 +2440,11 @@ msgid ""
 msgstr ""
 
 #: data/core/macros/names.cfg:209
-msgid ""
-"Abraxas,Aleiss,Amail,Axmail,Blanal,Bleii,Blo,Bress,Briss,Gaxmol,Griam,Griss,"
-"Grissileii,Hailoss,Hainoss,Harxos,Huzel,Inaloss,Ineii,Issal,Klezel,Kras,"
-"Krezkps,Kzap,Lamaiss,Lameii,Lexpek,Liness,Lobor,Maissol,Malinos,Milbor,"
-"Mileii,Nildloss,Oxpeii,Poniaz,Psell,Pson,Pzakp,Reii,Sassal,Saxil,Saxrireii,"
-"Sekol,Silas,Skell,Skepz,Slell,Snol,Soill,Sorkol,Srell,Trixoz,Vilail,Vissal,"
-"Vlanis,Xabrak,Xamalel,Xinas,Xnamos,Xopkon,Zalsp,Zlek,Zpsek,Zsekp"
+msgid "Abraxas,Aleiss,Amail,Axmail,Blanal,Bleii,Blo,Bress,Briss,Gaxmol,Griam,Griss,Grissileii,Hailoss,Hainoss,Harxos,Huzel,Inaloss,Ineii,Issal,Klezel,Kras,Krezkps,Kzap,Lamaiss,Lameii,Lexpek,Liness,Lobor,Maissol,Malinos,Milbor,Mileii,Nildloss,Oxpeii,Poniaz,Psell,Pson,Pzakp,Reii,Sassal,Saxil,Saxrireii,Sekol,Silas,Skell,Skepz,Slell,Snol,Soill,Sorkol,Srell,Trixoz,Vilail,Vissal,Vlanis,Xabrak,Xamalel,Xinas,Xnamos,Xopkon,Zalsp,Zlek,Zpsek,Zsekp"
 msgstr ""
 
 #: data/core/macros/names.cfg:210
-msgid ""
-"Aliasse,Amailis,Axmailia,Blai,Blanalai,Bli,Bliana,Brassas,Brissal,Gaxmail,"
-"Griama,Grissa,Grissilai,Haila,Haina,Harxias,Huzi,Inai,Inalai,Issalai,Klez,"
-"Kras,Krezkps,Kzap,Lamai,Lamaissa,Lexpek,Liabra,Lilin,Linassa,Maissa,Malina,"
-"Mila,Milbra,Nildlasi,Oxpel,Poniazal,Psal,Psen,Pzakp,Riaa,Sall,Sassalia,"
-"Saxiala,Saxririaa,Sek,Skal,Skepz,Sla,Snelia,Srak,Sral,Szak,Trixzed,Vilaila,"
-"Vissalai,Vlanissa,Xabrak,Xamalia,Xina,Xinasia,Xnamas,Xopkne,Zalsp,Zlek,Zpsek,"
-"Zsekp"
+msgid "Aliasse,Amailis,Axmailia,Blai,Blanalai,Bli,Bliana,Brassas,Brissal,Gaxmail,Griama,Grissa,Grissilai,Haila,Haina,Harxias,Huzi,Inai,Inalai,Issalai,Klez,Kras,Krezkps,Kzap,Lamai,Lamaissa,Lexpek,Liabra,Lilin,Linassa,Maissa,Malina,Mila,Milbra,Nildlasi,Oxpel,Poniazal,Psal,Psen,Pzakp,Riaa,Sall,Sassalia,Saxiala,Saxririaa,Sek,Skal,Skepz,Sla,Snelia,Srak,Sral,Szak,Trixzed,Vilaila,Vissalai,Vlanissa,Xabrak,Xamalia,Xina,Xinasia,Xnamas,Xopkne,Zalsp,Zlek,Zpsek,Zsekp"
 msgstr ""
 
 #. Generator for male naga names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
@@ -2720,15 +2470,16 @@ msgid ""
 "suffix=asse|mailia|ilis|ana|ama|ssa|ssilai|zi|xias|lai|maissa|bra|lin|lina|"
 "na|bra|aa|lia|lai|laila|na|pkne|alsp|ekp\n"
 msgstr ""
+"\n"
+"main={prefix}{suffix}\n"
+"prefix=আলি|আমা|আক্স|ব্লা|ব্লি|ব্রা|ব্রি|গাক্স|গ্রি|হাই|হার|হু|ইনা|ইস|ক্রেজ|ক্যাপ|লাম|"
+"লেক্স|লি|লিন|মাই|মু|নিল|অক্স|পোন|প্জা|রি|সাল|সাক্স|সেক|স্নেল|স্রা|ট্রিক্স|ভিল|ভিস|"
+"ব্লান|জাব|জাম|জি|জনাম|জোপ|জাল|জ্লে|জ্সে\n"
+"suffix=আসে|মালিয়া|ইলিস|আনা|আমা|সা|সিলাই|জি|জিয়াস|লাই|মাইসা|ব্রা|লিন|লিনা|না|"
+"ব্রা|আ|লিয়া|লাই|লাইলা|না|প্কনে|আলস্প|একপ\n"
 
 #: data/core/macros/names.cfg:226
-msgid ""
-"Akoark,Akort,Akzalk,Arkarm,Barkuk,Blokkar,Borkuk,Bukkak,Bulruk,Corkkar,"
-"Delkkak,Garkuk,Gnukk,Goruk,Grak,Gurk,Gurm,Kalknix,Karak,Karbuk,Kargnak,"
-"Karterak,Kayrak,Kelkrar,Kerta,Kilkrar,Kingrok,Kirk,Klud,Kokkan,Kolk,Komak,"
-"Korgnak,Kork,Koruck,Kramak,Krog,Krukrak,Krumuk,Kuknuk,Kurkur,Kurmak,Makron,"
-"Markaak,Markuk,Merknik,Nargak,Olk,Orkut,Reknak,Takolak,Trabuk,Trakkon,Urkar,"
-"Urkark"
+msgid "Akoark,Akort,Akzalk,Arkarm,Barkuk,Blokkar,Borkuk,Bukkak,Bulruk,Corkkar,Delkkak,Garkuk,Gnukk,Goruk,Grak,Gurk,Gurm,Kalknix,Karak,Karbuk,Kargnak,Karterak,Kayrak,Kelkrar,Kerta,Kilkrar,Kingrok,Kirk,Klud,Kokkan,Kolk,Komak,Korgnak,Kork,Koruck,Kramak,Krog,Krukrak,Krumuk,Kuknuk,Kurkur,Kurmak,Makron,Markaak,Markuk,Merknik,Nargak,Olk,Orkut,Reknak,Takolak,Trabuk,Trakkon,Urkar,Urkark"
 msgstr ""
 
 #. Generator for ogre names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
@@ -2747,39 +2498,7 @@ msgstr ""
 "suffix=ark|ort|alk|arm|kuk|kak|ukk|nak|ta|k|rok|rar|kon|gak|nik\n"
 
 #: data/core/macros/names.cfg:236
-msgid ""
-"Badush,Bagar,Bagdish,Barag,Barbag,Bart,Bashnak,Bidish,Bidush,Bik,Bilg,Bilo,"
-"Binak,Bink,Biol,Birt,Bogar,Bogdish,Bogdush,Bogor,Bok,Bolg,Bong,Borg,Bork,"
-"Bort,Boshnak,Budush,Bugdish,Buk,Bunak,Bung,Bunk,Burag,Burg,Burk,Buurk,"
-"Eradash,Eradish,Eragdish,Eragdush,Eragor,Eranak,Erang,Erarag,Erarg,Erart,"
-"Erigdush,Erik,Erinak,Eriol,Erirag,Erirbag,Erirg,Erirt,Erishnak,Eriurk,"
-"Erogdish,Erogdush,Erok,Erong,Eronk,Erorbag,Erudish,Erudush,Erugar,Erugdush,"
-"Erulo,Erunk,Eruol,Erurag,Eruurk,Gadash,Gagar,Gagdush,Gagor,Galo,Ganak,Gank,"
-"Gaol,Garag,Gashnak,Gigor,Ginak,Ging,Gink,Girt,Gogdish,Gogdush,Gong,Gork,Gort,"
-"Goshnak,Gradash,Gragar,Gragor,Grak,Gralg,Gralo,Granak,Graol,Grarbag,Gridash,"
-"Gridish,Gridush,Grigar,Grigor,Grilg,Grilo,Grink,Grirag,Grirg,Grirk,Grishnak,"
-"Grodish,Grogar,Grogdish,Grok,Grolg,Grong,Gronk,Grorag,Grorg,Grork,Grort,"
-"Groshnak,Grudash,Grugar,Grugdish,Grugdush,Gruk,Grulo,Grunk,Gruol,Grurg,Grurk,"
-"Grurt,Gruurk,Gugdish,Gugdush,Gulg,Gulo,Gunak,Gurbag,Gurt,Gushnak,Hadash,"
-"Hadish,Hadush,Hagar,Hagdush,Hagor,Hak,Halg,Hank,Hashnak,Hidash,Hidish,Hidush,"
-"Higdush,Hilg,Hinak,Hing,Hink,Hiol,Hirag,Hirg,Hodush,Hogar,Hogor,Hong,Hool,"
-"Horbag,Hork,Hort,Hoshnak,Hudash,Hudish,Hugor,Huk,Hulg,Hulo,Hunk,Huol,Hurag,"
-"Hurbag,Hurk,Hushnak,Huurk,Pagdish,Pagor,Palg,Palo,Paol,Parag,Pashnak,Pidush,"
-"Pigdish,Pigdush,Pilg,Pinak,Pink,Pirbag,Podash,Podish,Podush,Pogdish,Polg,"
-"Porbag,Porg,Pork,Port,Poshnak,Pradish,Pragdush,Pragor,Pralg,Pralo,Prang,"
-"Praol,Prarag,Prarbag,Prarg,Prark,Prart,Prashnak,Praurk,Pridish,Prigar,"
-"Prigdish,Prigor,Prilg,Prilo,Prinak,Priol,Prirbag,Prirg,Prirt,Priurk,Prodash,"
-"Prodish,Prodush,Prolg,Prolo,Pronak,Prong,Pronk,Prool,Prourk,Prudish,Prugar,"
-"Prugdish,Pruk,Prunak,Prunk,Prurg,Prurk,Pruurk,Puk,Pulg,Pulo,Punak,Pung,Punk,"
-"Purag,Purbag,Purg,Puurk,Radash,Ragar,Ragdish,Rak,Rang,Rank,Raol,Rarag,Rarbag,"
-"Rark,Rashnak,Raurk,Rigor,Rik,Rilg,Rinak,Rink,Rirg,Rirk,Rodish,Rodush,Rogdish,"
-"Rok,Rolo,Ronak,Rudash,Rugar,Rugdish,Ruk,Rung,Ruol,Rurag,Rushnak,Vadash,"
-"Vadish,Vadush,Vak,Valo,Vank,Varag,Varbag,Vigar,Vigdish,Vigor,Vilg,Vilo,Vink,"
-"Virag,Virt,Vishnak,Vogdish,Vogor,Vonak,Vong,Vorg,Vork,Voshnak,Vourk,Vradash,"
-"Vragar,Vragdush,Vragor,Vralo,Vrang,Vrarbag,Vrarg,Vrart,Vraurk,Vridash,"
-"Vridish,Vrigor,Vrik,Vrinak,Vring,Vrirt,Vrishnak,Vriurk,Vrodash,Vrodish,"
-"Vrogar,Vrogor,Vrolo,Vrong,Vrorg,Vrork,Vrudish,Vrugdush,Vrulg,Vrung,Vruol,"
-"Vrurg,Vrurt,Vruurk,Vudish,Vuk,Vulg,Vulo,Vunak,Vurag,Vurbag,Vurg,Vushnak"
+msgid "Badush,Bagar,Bagdish,Barag,Barbag,Bart,Bashnak,Bidish,Bidush,Bik,Bilg,Bilo,Binak,Bink,Biol,Birt,Bogar,Bogdish,Bogdush,Bogor,Bok,Bolg,Bong,Borg,Bork,Bort,Boshnak,Budush,Bugdish,Buk,Bunak,Bung,Bunk,Burag,Burg,Burk,Buurk,Eradash,Eradish,Eragdish,Eragdush,Eragor,Eranak,Erang,Erarag,Erarg,Erart,Erigdush,Erik,Erinak,Eriol,Erirag,Erirbag,Erirg,Erirt,Erishnak,Eriurk,Erogdish,Erogdush,Erok,Erong,Eronk,Erorbag,Erudish,Erudush,Erugar,Erugdush,Erulo,Erunk,Eruol,Erurag,Eruurk,Gadash,Gagar,Gagdush,Gagor,Galo,Ganak,Gank,Gaol,Garag,Gashnak,Gigor,Ginak,Ging,Gink,Girt,Gogdish,Gogdush,Gong,Gork,Gort,Goshnak,Gradash,Gragar,Gragor,Grak,Gralg,Gralo,Granak,Graol,Grarbag,Gridash,Gridish,Gridush,Grigar,Grigor,Grilg,Grilo,Grink,Grirag,Grirg,Grirk,Grishnak,Grodish,Grogar,Grogdish,Grok,Grolg,Grong,Gronk,Grorag,Grorg,Grork,Grort,Groshnak,Grudash,Grugar,Grugdish,Grugdush,Gruk,Grulo,Grunk,Gruol,Grurg,Grurk,Grurt,Gruurk,Gugdish,Gugdush,Gulg,Gulo,Gunak,Gurbag,Gurt,Gushnak,Hadash,Hadish,Hadush,Hagar,Hagdush,Hagor,Hak,Halg,Hank,Hashnak,Hidash,Hidish,Hidush,Higdush,Hilg,Hinak,Hing,Hink,Hiol,Hirag,Hirg,Hodush,Hogar,Hogor,Hong,Hool,Horbag,Hork,Hort,Hoshnak,Hudash,Hudish,Hugor,Huk,Hulg,Hulo,Hunk,Huol,Hurag,Hurbag,Hurk,Hushnak,Huurk,Pagdish,Pagor,Palg,Palo,Paol,Parag,Pashnak,Pidush,Pigdish,Pigdush,Pilg,Pinak,Pink,Pirbag,Podash,Podish,Podush,Pogdish,Polg,Porbag,Porg,Pork,Port,Poshnak,Pradish,Pragdush,Pragor,Pralg,Pralo,Prang,Praol,Prarag,Prarbag,Prarg,Prark,Prart,Prashnak,Praurk,Pridish,Prigar,Prigdish,Prigor,Prilg,Prilo,Prinak,Priol,Prirbag,Prirg,Prirt,Priurk,Prodash,Prodish,Prodush,Prolg,Prolo,Pronak,Prong,Pronk,Prool,Prourk,Prudish,Prugar,Prugdish,Pruk,Prunak,Prunk,Prurg,Prurk,Pruurk,Puk,Pulg,Pulo,Punak,Pung,Punk,Purag,Purbag,Purg,Puurk,Radash,Ragar,Ragdish,Rak,Rang,Rank,Raol,Rarag,Rarbag,Rark,Rashnak,Raurk,Rigor,Rik,Rilg,Rinak,Rink,Rirg,Rirk,Rodish,Rodush,Rogdish,Rok,Rolo,Ronak,Rudash,Rugar,Rugdish,Ruk,Rung,Ruol,Rurag,Rushnak,Vadash,Vadish,Vadush,Vak,Valo,Vank,Varag,Varbag,Vigar,Vigdish,Vigor,Vilg,Vilo,Vink,Virag,Virt,Vishnak,Vogdish,Vogor,Vonak,Vong,Vorg,Vork,Voshnak,Vourk,Vradash,Vragar,Vragdush,Vragor,Vralo,Vrang,Vrarbag,Vrarg,Vrart,Vraurk,Vridash,Vridish,Vrigor,Vrik,Vrinak,Vring,Vrirt,Vrishnak,Vriurk,Vrodash,Vrodish,Vrogar,Vrogor,Vrolo,Vrong,Vrorg,Vrork,Vrudish,Vrugdush,Vrulg,Vrung,Vruol,Vrurg,Vrurt,Vruurk,Vudish,Vuk,Vulg,Vulo,Vunak,Vurag,Vurbag,Vurg,Vushnak"
 msgstr ""
 
 #. Generator for orc names
@@ -2819,10 +2538,11 @@ msgstr ""
 
 #: data/core/macros/names.cfg:264
 msgid ""
-"Äg,Agh,Bog Äh,Borb,Brag,Brag Goh,Brok,Dak,Drog,Frok,Ga,Gah,Gark,Gnarf,Grar,"
-"Grokk,Grumph,Gulk,Hak,Hask,Hoth,Hug Bah,Hu Kah,Kak,Krak,Krug,Kub,Kuh,Lok,Luk,"
-"Nak,Nuk Kar,Pag,Reck,Rok,Ruk,Sark,Shak,Shuf,Stuh,Targ,Thog,Thruf,Thur,Tohg,"
-"Torg,Trok,Tsok,Tuh,Tuk Ruh,Ugg,Üh,Urg,Urgh,Urk,Vak,Zog,Zuug"
+"Äg,Agh,Bog Äh,Borb,Brag,Brag "
+"Goh,Brok,Dak,Drog,Frok,Ga,Gah,Gark,Gnarf,Grar,Grokk,Grumph,Gulk,Hak,Hask,Hoth,Hug "
+"Bah,Hu Kah,Kak,Krak,Krug,Kub,Kuh,Lok,Luk,Nak,Nuk "
+"Kar,Pag,Reck,Rok,Ruk,Sark,Shak,Shuf,Stuh,Targ,Thog,Thruf,Thur,Tohg,Torg,Trok,Tsok,Tuh,Tuk "
+"Ruh,Ugg,Üh,Urg,Urgh,Urk,Vak,Zog,Zuug"
 msgstr "আগ"
 
 #. Generator for troll names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
@@ -2839,19 +2559,7 @@ msgid ""
 msgstr ""
 
 #: data/core/macros/names.cfg:277
-msgid ""
-"Bludebalmen,Boladrumbadrum,Bolwuldelman,Bombempomgontor,Bomtanbomkenton,"
-"Bomtanbomtonum,Bregalad,Bremdebubde,Brenbasnudnem,Brendumadoak,"
-"Brommantendronnor,Brumbendublun,Brumennarunom,Brummdlebroak,Bumbadadabum,"
-"Buomdumdenlol,Carnimirië,Dabumdabumtam,Dammantongonnur,Danmonlulbam,"
-"Debundbemun,Delmduelmdelom,Diblembumnde,Dolmannumbil,Drongnoblemdu,"
-"Dulmandarook,Dulwulmendom,Dumdumdumatum,Elmaroomadrum,Grelmadrumbumadum,"
-"Gulladroamadoak,Gumabeladrelm,Laffalialomdium,Landunwonbam,Lassemista,"
-"Lefnublemdde,Libleddnumm,Lolmandindel,Monlamwimdan,Muldondindal,"
-"Mundionalafla,Mundumblemdum,Munnamdulbon,Nanmildaldum,Nunmaldildun,Orofarnië,"
-"Pambedrumne,Pomtamkomtrobum,Rithramcamhan,Tantondernintan,Temtundembenn,"
-"Temtunnongetem,Tondenkontenkon,Troombadoom,Tumtentantarun,Tumtonnongatum,"
-"Tumtumgamtomtom,Wonrunmaldin,Wudadoonopl"
+msgid "Bludebalmen,Boladrumbadrum,Bolwuldelman,Bombempomgontor,Bomtanbomkenton,Bomtanbomtonum,Bregalad,Bremdebubde,Brenbasnudnem,Brendumadoak,Brommantendronnor,Brumbendublun,Brumennarunom,Brummdlebroak,Bumbadadabum,Buomdumdenlol,Carnimirië,Dabumdabumtam,Dammantongonnur,Danmonlulbam,Debundbemun,Delmduelmdelom,Diblembumnde,Dolmannumbil,Drongnoblemdu,Dulmandarook,Dulwulmendom,Dumdumdumatum,Elmaroomadrum,Grelmadrumbumadum,Gulladroamadoak,Gumabeladrelm,Laffalialomdium,Landunwonbam,Lassemista,Lefnublemdde,Libleddnumm,Lolmandindel,Monlamwimdan,Muldondindal,Mundionalafla,Mundumblemdum,Munnamdulbon,Nanmildaldum,Nunmaldildun,Orofarnië,Pambedrumne,Pomtamkomtrobum,Rithramcamhan,Tantondernintan,Temtundembenn,Temtunnongetem,Tondenkontenkon,Troombadoom,Tumtentantarun,Tumtonnongatum,Tumtumgamtomtom,Wonrunmaldin,Wudadoonopl"
 msgstr ""
 
 #. Generator for wose names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
@@ -2869,24 +2577,24 @@ msgid ""
 "suffix=men|drum|tor|num|lad|de|ak|lol|dum|tam|nur|dium|deum|bil|rook|relm|"
 "dium|numm|dan|doom|tum|din\n"
 msgstr ""
+"\n"
+"main={prefix}{centre}{centre}{suffix}|{prefix}{centre}{centre}{centre}"
+"{suffix}\n"
+"prefix=ব্লু|বো|ব্রে|ব্রো|ব্রু|বু|কার|ডা|ডা|ডে|ডিব|ডোল|ড্রো|ডুল|ডুম|এল|গ্রে|গুল|গুম|লাফ|"
+"লান|লাস|লেফ|লিব|লোল|মোন|মুল|মুন|নান|নুন|অর|পাম|পোম|রিথ|তান|তেম|তোন|ট্রুম|তুন|তুম|ওন|"
+"উন\n"
+"centre=দে|বাল|ড্রাম|উল|দেল|বেম|পোম|গোন|তান|বোম|কেন|তান|তোন|মান|তেন|ড্রোন|ডাব|"
+"না|দা|নি|মি|লুল|মোন|দুয়েল|লেম|নুম|নোব|মান্দ|রুম|লাদ|রোম|বে|লোম|সেম|নুব|দি|উইম|দিন|"
+"ব্লেম|নান্দ|দুল|দিল|অফ|তাম|কোন|তোন|তুন|কোন|তেন|রান|মাল|দো\n"
+"suffix=মেন|ড্রাম|তোর|নুম|লাদ|দে|আক|লোল|ডাম|তাম|নুর|দিউম|দেউম|বিল|রুক|রেলম|দিউম|"
+"নুম্ম|দান|ডুম|তুম|দিন\n"
 
 #: data/core/macros/names.cfg:289
-msgid ""
-"Bal,Cam,Corn,Del,Earl,El,Fox,Fren,Gel,Hel,Hex,Hol,Hox,Il,Kin,Nam,Nes,New,Ol,"
-"Old,Olf,Oul,Ox,Rock,Rook,Sal,Sam,Sed,Sel,Sen,Sil,Tal,Water,Wet,York"
-msgstr ""
-"বাল,কাম,কর্ন,ডেল,আর্ল,এল,ফক্স,ফ্রেন,গেল,হেল,হেক্স,হোক্স,ইল,কিন,নাম,নেস,নেউ,ওল,ওল্ড,"
-"ওল্ফ,ওউল,ওক্স,রক,রুক,সাল,সাম,সেড,সেল,সেন,সিল,টাল,ওয়াটার,ওয়েট,ইয়র্ক"
+msgid "Bal,Cam,Corn,Del,Earl,El,Fox,Fren,Gel,Hel,Hex,Hol,Hox,Il,Kin,Nam,Nes,New,Ol,Old,Olf,Oul,Ox,Rock,Rook,Sal,Sam,Sed,Sel,Sen,Sil,Tal,Water,Wet,York"
+msgstr "বাল,কাম,কর্ন,ডেল,আর্ল,এল,ফক্স,ফ্রেন,গেল,হেল,হেক্স,হোক্স,ইল,কিন,নাম,নেস,নেউ,ওল,ওল্ড,ওল্ফ,ওউল,ওক্স,রক,রুক,সাল,সাম,সেড,সেল,সেন,সিল,টাল,ওয়াটার,ওয়েট,ইয়র্ক"
 
 #. Generator for the base names of features assigned by the random map generator; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:291
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "main={prefix}{middle}{suffix}\n"
-#| "prefix=B|C|D|E|F|Fr|Wat|G|H|K|N|O|R|S|T|W|Y|Ro\n"
-#| "middle=a|e|o|u|i\n"
-#| "suffix=l|m|rn|x|w|ld|ck|k|rk\n"
 msgid ""
 "\n"
 "main={c_prefix}{c_middle}{suffix}|{f_prefix}{f_middle}{suffix}|{other_prefix}"
@@ -2900,8 +2608,13 @@ msgid ""
 "suffix=l|m|rn|x|w|ld|ck|k|rk\n"
 msgstr ""
 "\n"
-"main={prefix}{middle}{suffix}\n"
-"prefix=ব|ক|ড|এ|ফ|ফ্র|ওয়াট|গ|হ|ক|ন|ও|র|স|ট|ওয়|য়|রো\n"
+"main={c_prefix}{c_middle}{suffix}|{f_prefix}{f_middle}{suffix}|{other_prefix}"
+"{middle}{suffix}\n"
+"c_prefix=ক\n"
+"c_middle=া|ে|ো|ি\n"
+"f_prefix=ফ\n"
+"f_middle=া|ে|ো|ি\n"
+"other_prefix=ব|ক|এ|ফ্র|ওয়াট|গ|হ|ক|ন|ও|র|স|ট|ওয়|য়|রো\n"
 "middle=া|ে|ো|ু|ি\n"
 "suffix=ল|ম|র্ন|ক্স|ও|ল্ড|ক|ক|র্ক\n"
 
@@ -3715,10 +3428,8 @@ msgstr "Lohit Bengali"
 
 #. [fonts]
 #: data/hardwired/fonts.cfg:20
-#, fuzzy
-#| msgid "No description available."
 msgid "WesScript"
-msgstr "কোনো বর্ণনা নেই ।"
+msgstr "Lohit Bengali"
 
 #. [time]: id=dawn_noweather
 #: data/internal/Weather/_main.cfg:151
@@ -4844,13 +4555,6 @@ msgstr ""
 
 #. [tip]
 #: data/tips.cfg:188
-#, fuzzy
-#| msgid ""
-#| "Instead of leveling up, high-level units gain an <i>After Maximum Level "
-#| "Advancement</i> (AMLA) bonus, which usually increases the unit’s maximum "
-#| "hitpoints by three and fully heals it. This is much less than the normal "
-#| "benefits of advancing a level, so it is generally wiser to advance your "
-#| "lower-level units instead."
 msgid ""
 "Once a unit reaches maximum level, further advancement provides a minor "
 "bonus called an “AMLA” — “After Maximum Level Advancement.” Some campaigns "
@@ -4859,11 +4563,11 @@ msgid ""
 "benefits of advancing a level, so it is generally wiser to advance your "
 "lower-level units instead."
 msgstr ""
-"পরবর্তী পর্যায়ে উন্নীত হওয়ার পরিবর্ত, উচ্চ-পর্যায়ের ইউনিটেরা সাধারণত একটি "
-"<i>সর্বোচ্চ পর্যায় পরবর্তী উন্নয়ণ</i> (এএমএলএ) অতিরিক্ত পেয়ে থাকে, যেটি সাধারণ "
-"ইউনিটটির সর্বোচ্চ জীবন সংখ্যা তিন বৃদ্ধি করে এবং সেটিকে সম্পূর্ণ সুস্থ করে । এটি "
-"সাধারণ উন্নয়ণের থেকে কম সুবিধাযুক্ত, তাই সাধারণত কম পর্যায়ের ইউনিটগুলিকে উন্নীত "
-"করাই শ্রেয় ।"
+"একটি ইউনিট সর্বোচ্চ পর্যায়ে পৌঁছানোর পর, আরও অগ্রগতি একটি ছোট বোনাস প্রদান করে "
+"যাকে বলা হয় \"এএমএলএ\" — “সর্বোচ্চ পর্যায় পরবর্তী উন্নয়ণ”। কিছু অভিযানে আপনি বেশ "
+"কয়েকটি এএমএলএ বিকল্পের মধ্যে বেছে নিতে পারেন, তবে একমাত্র ডিফল্ট এএমএলএ হলো "
+"সর্বোচ্চ জীবন সংখ্যায় +৩ বোনাস। এএমএলএ সাধারণত একটি পর্যায় উন্নীত হওয়ার স্বাভাবিক "
+"সুবিধার চেয়ে কম কার্যকর, তাই সাধারণত কম পর্যায়ের ইউনিটগুলিকে উন্নীত করাই শ্রেয়।"
 
 #. [tip]
 #: data/tips.cfg:192
@@ -4951,6 +4655,10 @@ msgid ""
 "use leadership — or a strong or dextrous unit — whenever the extra point or "
 "two of damage makes a one-hit kill possible."
 msgstr ""
+"তিনটি বা তার বেশি আক্রমণ সহ ইউনিট — বিশেষত যাদের জাদু আক্রমণ আছে — মাত্র কয়েকটি "
+"জীবনসংখ্যা অবশিষ্ট থাকা শত্রুদের শেষ করে দেওয়ার জন্য আদর্শ। যখনই এক বা দুই পয়েন্ট "
+"অতিরিক্ত ক্ষতি এক আঘাতে হত্যা সম্ভব করে তোলে, তখন অবশ্যই নেতৃত্ব — অথবা একটি "
+"শক্তিশালী বা দক্ষ ইউনিট — ব্যবহার করুন।"
 
 #. [tip]
 #: data/tips.cfg:221
@@ -5137,6 +4845,10 @@ msgid ""
 "Moves, End Turn, Recruit/Recall) to comfortable keys can noticeably speed up "
 "your turns and improve your quality of life."
 msgstr ""
+"প্রায় প্রতিটি হটকি <b>Preferences</b> > <b>Hotkeys</b> ট্যাবে কাস্টমাইজ করা যায়। "
+"ঘন ঘন ব্যবহৃত অ্যাকশনগুলো (Undo, Show Enemy Moves, End Turn, Recruit/Recall) "
+"সুবিধাজনক কীতে রিবাইন্ড করলে আপনার টার্নের গতি উল্লেখযোগ্যভাবে বাড়তে পারে এবং "
+"ব্যবহারের অভিজ্ঞতা আরও ভাল হতে পারে।"
 
 #. TRANSLATORS: In networked games, when one player has the choice
 #. between multiple advancements of a unit, this text is sent to
@@ -5150,10 +4862,8 @@ msgid "An invalid attacker weapon got selected."
 msgstr "অবৈধ আক্রমণকারী অস্ত্র নির্বাচিত করা হয়েছে ।"
 
 #: src/actions/attack.cpp:969
-#, fuzzy
-#| msgid "Attacks: "
 msgid "attack^miss"
-msgstr "আঘাতসংখ্যা: "
+msgstr "মিস"
 
 #: src/actions/create.cpp:340
 msgid "You do not have a leader to recall with."
@@ -5262,7 +4972,7 @@ msgstr ""
 
 #: src/actions/undo.cpp:342
 msgid "Unhandled choices while redoing"
-msgstr ""
+msgstr "রিডো করার সময় না-নেওয়া পছন্দগুলি"
 
 #: src/addon/client.cpp:78
 msgid "Connecting to $server_address|..."
@@ -6245,7 +5955,7 @@ msgstr "নিজস্ব মানচিত্র ।"
 
 #: src/game_initialization/create_engine.cpp:412
 msgid "multiplayer^MP"
-msgstr ""
+msgstr "এমপি"
 
 #: src/game_initialization/depcheck.cpp:504
 msgid "Failed to resolve dependencies"
@@ -6776,34 +6486,26 @@ msgstr "নিয়োগগুলি"
 
 #: src/help/help_impl.cpp:636
 msgid "Previous"
-msgstr ""
+msgstr "পূর্ববর্তী"
 
 #: src/help/help_impl.cpp:649 src/help/help_impl.cpp:776
 #: src/help/help_impl.cpp:794
-#, fuzzy
-#| msgid "Next Turn"
 msgid "Next"
-msgstr "পরবর্তী দান"
+msgstr "পরবর্তী"
 
 #: src/help/help_impl.cpp:751 src/units/types.cpp:450
 msgid "No description available."
 msgstr "কোনো বর্ণনা নেই ।"
 
 #: src/help/help_impl.cpp:755
-#, fuzzy
-#| msgid "This is the last scenario."
 msgid "This is a global trait."
-msgstr "এটা শেষ ঘটনাক্রম ।"
+msgstr "এটি একটি গ্লোবাল দক্ষতা।"
 
 #: src/help/help_impl.cpp:763
-#, fuzzy
-#| msgid "Units with this ability"
 msgid "Races with this trait"
-msgstr "এই দক্ষতাবিশিষ্ট ইউনিটগুলি"
+msgstr "এই দক্ষতাবিশিষ্ট জাতিগুলি"
 
 #: src/help/help_impl.cpp:783
-#, fuzzy
-#| msgid "Units with this ability"
 msgid "Units with this trait"
 msgstr "এই দক্ষতাবিশিষ্ট ইউনিটগুলি"
 
@@ -6866,20 +6568,16 @@ msgid "Accelerated speed disabled!"
 msgstr "বর্ধিত গতি নিস্ক্রিয়!"
 
 #: src/hotkey/hotkey_handler.cpp:404
-#, fuzzy
-#| msgid "Back to Turn "
 msgid "Back to Turn $number"
-msgstr "দানে ফিরে যান : দান "
+msgstr "$number দানে ফিরে যান"
 
 #: src/hotkey/hotkey_handler.cpp:405
 msgid "Back to Start"
 msgstr "শুরুতে ফিরে যান"
 
 #: src/hotkey/hotkey_handler.cpp:419
-#, fuzzy
-#| msgid "Replay from Turn "
 msgid "Replay from Turn $number"
-msgstr "এখান থেকে খেলুন : দান "
+msgstr "দান $number থেকে খেলুন"
 
 #: src/hotkey/hotkey_handler.cpp:420
 msgid "Replay from Start"
@@ -6898,14 +6596,12 @@ msgid "Planning mode deactivated!"
 msgstr "পরিকল্পনা মোড নিস্ক্রিয়"
 
 #: src/hotkey/hotkey_handler_sp.cpp:342
-#, fuzzy
-#| msgid "The file you have tried to load has no replay information. "
 msgid "The file you have tried to load has no replay information."
-msgstr "আপনি যে ফাইলটি খোলার চেষ্টা করেছেন তাতে কোনো রিপ্লে তথ্য নেই"
+msgstr "আপনি যে ফাইলটি খোলার চেষ্টা করেছেন তাতে কোনো রিপ্লে তথ্য নেই।"
 
 #: src/hotkey/hotkey_handler_sp.cpp:346
 msgid "The file you have tried to load is not from the current session."
-msgstr "আপনি যে ফাইলটি খোলার চেষ্টা করছেন সেটি বর্তমান সেশনের নয় ।"
+msgstr "আপনি যে ফাইলটি খোলার চেষ্টা করছেন সেটি বর্তমান সেশনের নয়।"
 
 #: src/language.cpp:96
 msgid "System default language"
@@ -7855,46 +7551,36 @@ msgid "Do you really want to quit?"
 msgstr "আপনি কী সত্যিই বন্ধ করতে চান?"
 
 #: src/reports.cpp:196
-#, fuzzy
-#| msgid "Type: "
 msgid "Type:"
-msgstr "প্রকৃতি: "
+msgstr "প্রকৃতি:"
 
 #: src/reports.cpp:200
 msgid "Special Notes:"
 msgstr "বিশেষ টীকা:"
 
 #: src/reports.cpp:224
-#, fuzzy
-#| msgid "Race: "
 msgid "Race:"
-msgstr "জাতি: "
+msgstr "জাতি:"
 
 #: src/reports.cpp:243
 msgid "Side: <b>$side_name</b> ($color_name)"
 msgstr "দল: <b>$side_name</b> ($color_name)"
 
 #: src/reports.cpp:321
-#, fuzzy
-#| msgid "Trait: "
 msgid "Trait:"
-msgstr "বৈশিষ্ট্য: "
+msgstr "বৈশিষ্ট্য:"
 
 #: src/reports.cpp:344
-#, fuzzy
-#| msgid "invisible: "
 msgid "invisible:"
-msgstr "অদৃশ্য: "
+msgstr "অদৃশ্য:"
 
 #: src/reports.cpp:345
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
 msgstr "এই ইউনিটটি অদৃশ্য । শত্রু ইউনিট এটিকে দেখতে বা আক্রমণ করতে পারবে না ।"
 
 #: src/reports.cpp:348
-#, fuzzy
-#| msgid "slowed: "
 msgid "slowed:"
-msgstr "ধীরগতি: "
+msgstr "ধীরগতি:"
 
 #: src/reports.cpp:349
 msgid ""
@@ -7905,10 +7591,8 @@ msgstr ""
 "করবে এবং এর স্থানান্তরের জন্য দ্বিগুণ মূল্য লাগবে ।"
 
 #: src/reports.cpp:352
-#, fuzzy
-#| msgid "poisoned: "
 msgid "poisoned:"
-msgstr "বিষ: "
+msgstr "বিষ:"
 
 #: src/reports.cpp:353
 msgid ""
@@ -7927,20 +7611,16 @@ msgstr ""
 "জীবনসংখ্যা 1-এর নীচে নামাবে না ।"
 
 #: src/reports.cpp:356
-#, fuzzy
-#| msgid "petrified: "
 msgid "petrified:"
-msgstr "প্রস্তরীভূত: "
+msgstr "প্রস্তরীভূত:"
 
 #: src/reports.cpp:357
 msgid "This unit has been petrified. It may not move or attack."
 msgstr "এই ইউনিটটি প্রস্তরীভূত হয়ে পড়েছে । এটি চলতে বা আক্রমণ করতে পারবে না ।"
 
 #: src/reports.cpp:360
-#, fuzzy
-#| msgid "unhealable: "
 msgid "unhealable:"
-msgstr "অচিকিৎসনীয়: "
+msgstr "অচিকিৎসনীয়:"
 
 #: src/reports.cpp:361
 msgid ""
@@ -7951,52 +7631,40 @@ msgstr ""
 "না এবং স্থির দাঁড়িয়ে থাকার দ্বারা এটি উপকৃত হয় না ।"
 
 #: src/reports.cpp:364
-#, fuzzy
-#| msgid "invulnerable: "
 msgid "invulnerable:"
-msgstr "অনাক্রম্য: "
+msgstr "অনাক্রম্য:"
 
 #: src/reports.cpp:365
 msgid "This unit is invulnerable. It cannot be harmed by any attack."
 msgstr "এই ইউনিটটি অনাক্রম্য । এটিকে কোনো আক্রমণ দিয়ে ক্ষতি করা যাবে না ।"
 
 #: src/reports.cpp:395 src/reports.cpp:993
-#, fuzzy
-#| msgid "Alignment: "
 msgid "Alignment:"
-msgstr "স্বভাব: "
+msgstr "স্বভাব:"
 
 #: src/reports.cpp:442
-#, fuzzy
-#| msgid "Ability: "
 msgid "Ability:"
-msgstr "দক্ষতা: "
+msgstr "দক্ষতা:"
 
 #: src/reports.cpp:444 src/reports.cpp:1050 src/reports.cpp:1090
 msgid " (inactive)"
 msgstr " (নিস্ক্রিয়)"
 
 #: src/reports.cpp:508
-#, fuzzy
-#| msgid "Resistances: "
 msgid "Resistances:"
-msgstr "প্রতিরোধ: "
+msgstr "প্রতিরোধ:"
 
 #: src/reports.cpp:510
 msgid "(Att / Def)"
 msgstr "(আক্র / সুর)"
 
 #: src/reports.cpp:539
-#, fuzzy
-#| msgid "Experience Modifier: "
 msgid "Experience Modifier:"
-msgstr "অভিজ্ঞতার পরিবর্তন: "
+msgstr "অভিজ্ঞতার পরিবর্তন:"
 
 #: src/reports.cpp:589
-#, fuzzy
-#| msgid "Terrain: "
 msgid "Terrain:"
-msgstr "ভূমি: "
+msgstr "ভূমি:"
 
 #: src/reports.cpp:606
 msgid "maximum^max."
@@ -8007,17 +7675,13 @@ msgid "minimum^min."
 msgstr "সর্বনিম্ন"
 
 #: src/reports.cpp:611
-#, fuzzy
-#| msgid "Defense: "
 msgid "Defense:"
-msgstr "সুরক্ষা: "
+msgstr "সুরক্ষা:"
 
 #. TRANSLATORS: single-letter abbreviation of "vision", fits in a small space on the sidebar
 #: src/reports.cpp:646
-#, fuzzy
-#| msgid "vision:"
 msgid "vision^V:"
-msgstr "দৃষ্টি:"
+msgstr "দৃ:"
 
 #: src/reports.cpp:647
 msgid "vision:"
@@ -8025,10 +7689,8 @@ msgstr "দৃষ্টি:"
 
 #. TRANSLATORS: single-letter abbreviation of "jamming", fits in a small space on the sidebar
 #: src/reports.cpp:669
-#, fuzzy
-#| msgid "jamming:"
 msgid "jamming^J:"
-msgstr "জ্যামিং:"
+msgstr "জ্যা:"
 
 #: src/reports.cpp:670
 msgid "jamming:"
@@ -8039,103 +7701,70 @@ msgid "Movement Costs:"
 msgstr "স্থানান্তরের মূল্য:"
 
 #: src/reports.cpp:836 src/reports.cpp:1182 src/reports.cpp:1194
-#, fuzzy
-#| msgid "Weapon: "
 msgid "Weapon:"
-msgstr "অস্ত্র: "
+msgstr "অস্ত্র:"
 
 #: src/reports.cpp:837 src/reports.cpp:1183
-#, fuzzy
-#| msgid "Damage: "
 msgid "Damage:"
-msgstr "ক্ষতি: "
+msgstr "ক্ষতি:"
 
 #: src/reports.cpp:841
-#, fuzzy
-#| msgid "Base damage: "
 msgid "Base damage:"
-msgstr "মূল ক্ষতি: "
+msgstr "মূল ক্ষতি:"
 
 #: src/reports.cpp:843 src/reports.cpp:877 src/reports.cpp:887
-#, fuzzy
-#| msgid "With specials: "
 msgid "With specials:"
-msgstr "বিশেষত্ব সহ: "
+msgstr "বিশেষত্ব সহ:"
 
 #: src/reports.cpp:846 src/reports.cpp:1407
 msgid "Time of day:"
 msgstr "দিনের সময়:"
 
 #: src/reports.cpp:850
-#, fuzzy
-#| msgid "Leadership: "
 msgid "Leadership:"
-msgstr "নেতৃত্ব: "
+msgstr "নেতৃত্ব:"
 
 #: src/reports.cpp:854
-#, fuzzy
-#| msgid "Slowed: "
 msgid "Slowed:"
-msgstr "ধীর: "
+msgstr "ধীর:"
 
 #: src/reports.cpp:858
-#, fuzzy
-#| msgid "Attacks: "
 msgid "Attacks:"
-msgstr "আঘাতসংখ্যা: "
+msgstr "আঘাতসংখ্যা:"
 
 #: src/reports.cpp:862
-#, fuzzy
-#| msgid "Max swarm bonus: "
 msgid "Max swarm bonus:"
-msgstr "দঙ্গলের জন্য সর্বোচ্চ ক্ষতি: "
+msgstr "দঙ্গলের জন্য সর্বোচ্চ ক্ষতি:"
 
 #: src/reports.cpp:863 src/reports.cpp:882
-#, fuzzy
-#| msgid "Swarm: "
 msgid "Swarm:"
-msgstr "দঙ্গল: "
+msgstr "দঙ্গল:"
 
 #: src/reports.cpp:864 src/reports.cpp:875 src/reports.cpp:886
-#, fuzzy
-#| msgid "Base attacks: "
 msgid "Base attacks:"
-msgstr "মূল আক্রমণ: "
+msgstr "মূল আক্রমণ:"
 
 #: src/reports.cpp:870
-#, fuzzy
-#| msgid "Specials: "
 msgid "Specials:"
-msgstr "বিশেষত্ব: "
+msgstr "বিশেষত্ব:"
 
 #: src/reports.cpp:880
-#, fuzzy
-#| msgid "Subject to swarm: "
 msgid "Subject to swarm:"
-msgstr "দঙ্গলের প্রভাব: "
+msgstr "দঙ্গলের প্রভাব:"
 
 #: src/reports.cpp:920
-#, fuzzy
-#| msgid "Weapon range: "
 msgid "Weapon range:"
-msgstr "অস্ত্রের সীমা: "
+msgstr "অস্ত্রের সীমা:"
 
 #: src/reports.cpp:921
-#, fuzzy
-#| msgid "Damage type: "
 msgid "Damage type:"
-msgstr "ক্ষতির প্রকৃতি: "
+msgstr "ক্ষতির প্রকৃতি:"
 
 #: src/reports.cpp:922
-#, fuzzy
-#| msgid "Damage versus: "
 msgid "Damage versus:"
-msgstr "বনাম ক্ষতি: "
+msgstr "বনাম ক্ষতি:"
 
 #: src/reports.cpp:1002
-#, fuzzy
-#| msgid "$number attack used"
-#| msgid_plural "$number attacks used"
 msgid "uses $num attack"
 msgid_plural "uses $num attacks"
 msgstr[0] "$number-টি আক্রমণ ব্যবহৃত"
@@ -8144,14 +7773,12 @@ msgstr[1] "$number-গুলি আক্রমণ ব্যবহৃত"
 #: src/reports.cpp:1010
 msgid "This attack uses $num attack point"
 msgid_plural "This attack uses $num attack points"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "এই আক্রমণটি $num-টি আক্রমণ সংখ্যা ব্যবহার করে"
+msgstr[1] "এই আক্রমণটি $num-টি আক্রমণ সংখ্যা ব্যবহার করে"
 
 #: src/reports.cpp:1048 src/reports.cpp:1088
-#, fuzzy
-#| msgid "Weapon special: "
 msgid "Weapon special:"
-msgstr "অস্ত্রের বিশেষত্ব: "
+msgstr "অস্ত্রের বিশেষত্ব:"
 
 #: src/reports.cpp:1165
 msgid "weapon^None"
@@ -8181,28 +7808,20 @@ msgid "Time of day schedule:"
 msgstr "দিনের সময়সূচী:"
 
 #: src/reports.cpp:1408 src/reports.cpp:1462
-#, fuzzy
-#| msgid "Lawful units: "
 msgid "Lawful units:"
-msgstr "নৈতিক ইউনিট: "
+msgstr "নৈতিক ইউনিটগুলি: "
 
 #: src/reports.cpp:1410 src/reports.cpp:1464
-#, fuzzy
-#| msgid "Neutral units: "
 msgid "Neutral units:"
-msgstr "নিরপেক্ষ ইউনিট: "
+msgstr "নিরপেক্ষ ইউনিটগুলি: "
 
 #: src/reports.cpp:1411 src/reports.cpp:1465
-#, fuzzy
-#| msgid "Chaotic units: "
 msgid "Chaotic units:"
-msgstr "অনৈতিক ইউনিট: "
+msgstr "অনৈতিক ইউনিটগুলি: "
 
 #: src/reports.cpp:1413 src/reports.cpp:1467
-#, fuzzy
-#| msgid "Liminal units: "
 msgid "Liminal units:"
-msgstr "মধ্যবর্তী ইউনিট: "
+msgstr "মধ্যবর্তী ইউনিটগুলি: "
 
 #: src/reports.cpp:1525
 msgid "Turn Number"
@@ -8795,10 +8414,8 @@ msgid "You do not have enough gold to recruit this unit."
 msgstr "আপনার কাছে এই ইউনিটটিকে নিয়োগ করার মতো স্বর্ণ নেই ।"
 
 #: src/units/helper.cpp:195
-#, fuzzy
-#| msgid "You have no units available to recruit."
 msgid "The $unit_type is not available to recruit."
-msgstr "আপনার কাছে নিয়োগ করার মতো কোনো ইউনিট নেই ।"
+msgstr "$unit_type নিয়োগের জন্য উপলব্ধ নয়।"
 
 #: src/units/types.cpp:785 src/units/types.cpp:793
 msgid "female^lawful"

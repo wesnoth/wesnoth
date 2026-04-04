@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.9.5-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2026-02-25 19:03-0600\n"
-"PO-Revision-Date: 2026-03-06 20:43-0300\n"
+"PO-Revision-Date: 2026-03-25 08:42-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: Portuguese/Brazil\n"
 "Language: pt_BR\n"
@@ -202,7 +202,7 @@ msgstr "especial"
 #. [editor_group]: id=elevation
 #: data/core/editor/terrain-groups.cfg:115
 msgid "elevation"
-msgstr "Elevação"
+msgstr "elevação"
 
 #. [editor_times]: id=empty
 #. Describes a scenario in the editor that has not set a time of day schedule
@@ -793,11 +793,13 @@ msgid "File does not have .map, .cfg, or .mask extension"
 msgstr "O arquivo não tem extensão .map nem .cfg"
 
 #: src/editor/map/map_context.cpp:227
+#, fuzzy
+#| msgid "Failed to load the scenario, attempting to load only the map."
 msgid ""
 "Failed to load the scenario: $error\n"
 "\n"
 "Attempting to load only the map."
-msgstr ""
+msgstr "Erro ao carregar o cenário, tentando carregar somente o mapa."
 
 #
 # File: src/editor/map/map_context.cpp, line: 119
@@ -822,14 +824,14 @@ msgstr ""
 #: src/editor/map/map_context.cpp:268
 #, fuzzy
 #| msgid ""
-#| "The map file looks like a scenario, but the map_data value does not point "
+#| "The map file looks like a scenario, but the map_file value does not point "
 #| "to an existing file"
 msgid ""
 "The file looks like a scenario, but the map_file attribute does not point to "
 "an existing file"
 msgstr ""
-"O arquivo de mapa parece um cenário, mas o valor map_data aponta para um "
-"arquivo não-existente"
+"O arquivo de mapa parece um cenário, mas o valor map_file não aponta para um "
+"arquivo existente"
 
 #: src/editor/map/map_context.cpp:448
 msgid "Confirm"
@@ -960,6 +962,16 @@ msgstr "Ctrl + clique: copia o terreno"
 
 #~ msgid "Load Map"
 #~ msgstr "Carregar Mapa"
+
+#~ msgid ""
+#~ "Found the characters '<<' indicating inline lua is present - aborting"
+#~ msgstr ""
+#~ "Foram encontrados os caracteres '<<' indicando a presença de um inline "
+#~ "lua - abortando"
+
+#~ msgid "Unable to parse file to find map data"
+#~ msgstr ""
+#~ "Incapaz de realizar a análise sintática para encontrar dados do mapa"
 
 #~ msgid "Left-click: Place item "
 #~ msgstr "Botão-esquerdo: Coloca um item "

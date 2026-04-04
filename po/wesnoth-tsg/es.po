@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-tsg\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2026-03-23 23:11 UTC\n"
-"PO-Revision-Date: 2026-03-04 13:59-0300\n"
+"PO-Revision-Date: 2026-03-26 21:03-0300\n"
 "Last-Translator: Sebastián Lecchini<sebas38760@gmail.com>\n"
 "Language-Team: es\n"
 "Language: es\n"
@@ -2502,8 +2502,9 @@ msgid ""
 "the South Guard, then you are not to blame."
 msgstr ""
 "¿Qué ha pasado? ¡Ustedes, humanos, han matado a mis amigos, tomado a nuestro "
-"sabio, y me han encarcelado aquí durante estas largas y terribles lunas! ..."
-"pero si realmente son de la Guardia Sur, entonces no tienen la culpa."
+"sabio, y me han encarcelado aquí durante estas largas y terribles "
+"lunas! ...pero si realmente son de la Guardia Sur, entonces no tienen la "
+"culpa."
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/03_Vale_of_Tears.cfg:483
@@ -6732,14 +6733,10 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Tides_of_War.cfg:8
-#, fuzzy
-#| msgid ""
-#| "Survive until reinforcements arrive on turn {TURN_LIMIT}, then defeat Mal "
-#| "M’Brin"
 msgid "Survive until reinforcements arrive on turn 13, then defeat Mal M’Brin"
 msgstr ""
-"Sobrevive hasta que lleguen refuerzos en el turno {TURN_LIMIT}, luego "
-"derrota a Mal M’Brin"
+"Sobrevive hasta que lleguen refuerzos en el turno 13, luego derrota a Mal "
+"M’Brin"
 
 #. [scenario]: id=06b_The_Tides_of_War
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Tides_of_War.cfg:16
@@ -7021,13 +7018,13 @@ msgstr ""
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Tides_of_War.cfg:495
 msgid ""
 "You survived $pebbles_defense_length turns last scenario! Deoran starts\n"
-"   with $soldiers.length extra soldiers and "
-"$( ($pebbles_defense_length-36)*3 ) extra gold!"
+"   with $soldiers.length extra soldiers and $"
+"( ($pebbles_defense_length-36)*3 ) extra gold!"
 msgstr ""
 "¡Has sobrevivido $pebbles_defense_length turnos en el escenario anterior! "
 "Deoran empieza\n"
-"   con $soldiers.length soldados adicionales y "
-"$( ($pebbles_defense_length-36)*3 ) de oro extra!"
+"   con $soldiers.length soldados adicionales y $"
+"( ($pebbles_defense_length-36)*3 ) de oro extra!"
 
 #. [else]
 #. $pebbles_defense_length will be 3 or greater. $soldiers.length will be 3 or greater
@@ -8324,25 +8321,6 @@ msgstr "Gestionando la suerte"
 
 #. [display_tip]
 #: data/campaigns/The_South_Guard/utils/sg_help.cfg:317
-#, fuzzy
-#| msgid ""
-#| "Wesnoth is a game about flexible strategy,\n"
-#| "not deterministic calculation.\n"
-#| "Anyone can win when things go as planned.\n"
-#| "Wesnoth’s skill & mastery lie in creating\n"
-#| "a strategy that <i><b>mitigates bad luck</b></i>, while\n"
-#| "simultaneously <i><b>exploits good luck</b></i>. Both\n"
-#| "bad and good luck are inevitable, so be \n"
-#| "ready to handle both!\n"
-#| "\n"
-#| "Expert players are so skilled at this that\n"
-#| "they can prevail in every campaign on even \n"
-#| "the highest difficulty, without save-loading!\n"
-#| "\n"
-#| "That said, if you really prefer a more\n"
-#| "deterministic experience, try selecting\n"
-#| "<i><b>“Reduced RNG”</b></i> when starting a new \n"
-#| "campaign."
 msgid ""
 "Wesnoth is a game about flexible strategy,\n"
 "not deterministic calculation.\n"

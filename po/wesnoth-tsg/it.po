@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2026-03-23 23:11 UTC\n"
-"PO-Revision-Date: 2026-02-27 18:25+0100\n"
+"PO-Revision-Date: 2026-03-27 16:57+0100\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -1416,7 +1416,7 @@ msgid ""
 msgstr ""
 "Richiamare e far avanzare di livello i soldati è molto importante.\n"
 "Richiamando i veterani ad ogni scenario e accrescendo la loro esperienza,\n"
-" col tempo potrai riuscire a creare un esercito molto potente,"
+" col tempo potrai riuscire a creare un esercito molto potente."
 
 #. [display_tip]
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:282
@@ -2886,7 +2886,7 @@ msgstr ""
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/03_Vale_of_Tears.cfg:841
 msgid "The sun is our ally! They’re afraid to fight in the light."
-msgstr "Il sole ci è alleato! Temono il combattimento alla luce del sole!"
+msgstr "Il sole ci è alleato! Temono il combattimento alla luce del sole."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/03_Vale_of_Tears.cfg:897
@@ -6800,14 +6800,10 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Tides_of_War.cfg:8
-#, fuzzy
-#| msgid ""
-#| "Survive until reinforcements arrive on turn {TURN_LIMIT}, then defeat Mal "
-#| "M’Brin"
 msgid "Survive until reinforcements arrive on turn 13, then defeat Mal M’Brin"
 msgstr ""
-"Sopravvivi fino fino all’arrivo dei rinforzi al turno {TURN_LIMIT}, poi "
-"sconfiggi Mal M’Brin"
+"Sopravvivi fino fino all’arrivo dei rinforzi al turno 13, poi sconfiggi Mal "
+"M’Brin"
 
 #. [scenario]: id=06b_The_Tides_of_War
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Tides_of_War.cfg:16
@@ -7092,8 +7088,8 @@ msgstr ""
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Tides_of_War.cfg:495
 msgid ""
 "You survived $pebbles_defense_length turns last scenario! Deoran starts\n"
-"   with $soldiers.length extra soldiers and "
-"$( ($pebbles_defense_length-36)*3 ) extra gold!"
+"   with $soldiers.length extra soldiers and $"
+"( ($pebbles_defense_length-36)*3 ) extra gold!"
 msgstr ""
 "Sei sopravvissuto ben $pebbles_defense_length turni dell’ultimo scenario! "
 "Deoran inizia\n"
@@ -7874,7 +7870,7 @@ msgid ""
 msgstr ""
 "Oppure, per giocare in un momento diverso della cronologia di Wesnoth, prova "
 "una delle altre campagne Wesnoth di livello principiante, come <i>Racconto "
-"di due fratelli</i> o <i>Il Crepuscolo dell'Alba</i>."
+"di due fratelli</i> o <i>Il Crepuscolo dell’Alba</i>."
 
 #. [unit_type]: id=Cavalryman Commander, race=human
 #: data/campaigns/The_South_Guard/units/Deoran1_Cavalryman.cfg:35
@@ -8308,9 +8304,9 @@ msgstr ""
 "Ho appena effettuato un <i><b>attacco a distanza</b></i>! Devo trovarmi in "
 "prossimità di questa $second_unit.language_name <i>(Eh, sì, questo è un "
 "pochino diverso da come vengono gestiti gli attacchi a distanza nella "
-"maggior parte degli altri giochi)</i>, ma siccome la $second_unit."
-"language_name non possiede un’arma per attacchi a distanza, non è stata in "
-"grado di contrattaccare."
+"maggior parte degli altri giochi)</i>, ma siccome la "
+"$second_unit.language_name non possiede un’arma per attacchi a distanza, non "
+"è stata in grado di contrattaccare."
 
 #. [message]: speaker=unit
 #. second_unit may be a Thug (always male) or one of its advancements
@@ -8324,9 +8320,9 @@ msgstr ""
 "Ho appena effettuato un <i><b>attacco a distanza</b></i>! Devo trovarmi in "
 "prossimità di questa $second_unit.language_name <i>(Eh, sì, questo è un "
 "pochino diverso da come vengono gestiti gli attacchi a distanza nella "
-"maggior parte degli altri giochi)</i>, ma siccome la $second_unit."
-"language_name non possiede un’arma per attacchi a distanza, non è stata in "
-"grado di contrattaccare."
+"maggior parte degli altri giochi)</i>, ma siccome la "
+"$second_unit.language_name non possiede un’arma per attacchi a distanza, non "
+"è stata in grado di contrattaccare."
 
 #. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/utils/sg_help.cfg:191
@@ -8417,25 +8413,6 @@ msgstr "Gestire la Fortuna"
 
 #. [display_tip]
 #: data/campaigns/The_South_Guard/utils/sg_help.cfg:317
-#, fuzzy
-#| msgid ""
-#| "Wesnoth is a game about flexible strategy,\n"
-#| "not deterministic calculation.\n"
-#| "Anyone can win when things go as planned.\n"
-#| "Wesnoth’s skill & mastery lie in creating\n"
-#| "a strategy that <i><b>mitigates bad luck</b></i>, while\n"
-#| "simultaneously <i><b>exploits good luck</b></i>. Both\n"
-#| "bad and good luck are inevitable, so be \n"
-#| "ready to handle both!\n"
-#| "\n"
-#| "Expert players are so skilled at this that\n"
-#| "they can prevail in every campaign on even \n"
-#| "the highest difficulty, without save-loading!\n"
-#| "\n"
-#| "That said, if you really prefer a more\n"
-#| "deterministic experience, try selecting\n"
-#| "<i><b>“Reduced RNG”</b></i> when starting a new \n"
-#| "campaign."
 msgid ""
 "Wesnoth is a game about flexible strategy,\n"
 "not deterministic calculation.\n"
@@ -8457,9 +8434,9 @@ msgid ""
 msgstr ""
 "Wesnoth è un gioco dalla strategia flessibile,\n"
 "non di calcolo deterministico. Tutti possono\n"
-"vincere se hanno un buon piano. L’abilità e la\n"
-" maestria in Wesnoth risiedono nel creare\n"
-"una strategia che <i><b>attenui la sfortuna</b></i>,\n"
+"vincere quando le cose vanno secondo i piani.\n"
+"L’abilità e la maestria in Wesnoth risiedono nel\n"
+"creare una strategia che <i><b>attenui la sfortuna</b></i>,\n"
 "mentre allo stesso tempo <i><b>sfrutti la fortuna</b></i>.\n"
 "Sia la sfortuna che la fortuna sono inevitabili, quindi\n"
 "sii pronto a gestirle entrambe!\n"
@@ -12143,8 +12120,8 @@ msgstr ""
 #~ msgstr ""
 #~ "Cavalcarono velocemente verso nord. Giorno e notte, fuggirono senza "
 #~ "tregua finché non riuscirono a tornare nella provincia di Kerlath. Deoran "
-#~ "e i suoi uomini entrarono nei fortini di guardia del confine di Wesnoth,"
-#~ "con i non-morti alle calcagna."
+#~ "e i suoi uomini entrarono nei fortini di guardia del confine di "
+#~ "Wesnoth,con i non-morti alle calcagna."
 
 #~ msgid ""
 #~ "<i>“These are our terms: no human will be permitted in the forests or "
