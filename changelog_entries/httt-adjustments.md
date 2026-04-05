@@ -6,3 +6,4 @@
      * S22 "Glamdrol": end when turns run out, not when side 1's last turn ends.
      * S30 "The Sceptre of Fire": made Giant Spider AI more predictable.
      * S43 "Cliffs of Thoria": fix the Horn of Glamdrol healing Warven before he's been spotted.
+     * S50 "The Battle For Wesnoth": rebalanced to encourage dominating the map rather than rushing Asheviere.
