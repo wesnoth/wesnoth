@@ -38,32 +38,55 @@ namespace
 // Static value to initialize null variants to ensure its value is never nullptr.
 const auto null_value = std::make_shared<variant_value_base>();
 
-std::string variant_type_to_string(formula_variant::type type)
+std::string get_debug_description(const variant& v)
 {
-	return formula_variant::get_string(type);
+	return formatter{} << formula_variant::get_string(v.type()) << " (" + v.to_debug_string() << ")";
 }
 
 // Small helper function to get a standard type error message.
-std::string was_expecting(const std::string& message, const variant& v)
+std::string was_expecting(const std::string& expected, const std::string& description)
 {
-	std::ostringstream ss;
+	return formatter{} << "TYPE ERROR: expected " << expected << " but found " << description;
+}
 
-	ss << "TYPE ERROR: expected " << message << " but found "
-	   << v.type_string() << " (" << v.to_debug_string() << ")";
+// Small helper function to get a standard type error message.
+std::string was_expecting(const std::string& expected, const variant& v)
+{
+	return was_expecting(expected, get_debug_description(v));
+}
 
-	return ss.str();
+// Throws a type_error if both variants are not of the given type
+void must_both_be(formula_variant::type t, const variant& v1, const variant& v2)
+{
+	if(v1.type() != t || v2.type() != t) {
+		const std::string expected = formatter{}
+			<< formula_variant::get_string(t) << ", "
+			<< formula_variant::get_string(t);
+
+		const std::string provided = formatter{}
+			<< get_debug_description(v1) << ", "
+			<< get_debug_description(v2);
+
+		throw type_error{was_expecting(expected, provided)};
+	}
 }
 
 } // namespace
 
+template<typename T>
+std::shared_ptr<T> value_cast(const variant& v)
+{
+	auto res = std::dynamic_pointer_cast<T>(v.value_);
+	if(!res) {
+		throw type_error{was_expecting(formula_variant::get_string(T::value_type), v)};
+	}
+
+	return res;
+}
+
 type_error::type_error(const std::string& str) : game::error(str)
 {
 	PLAIN_LOG << "ERROR: " << message << "\n" << call_stack_manager::get();
-}
-
-void assert_must_be(formula_variant::type t, const variant& v)
-{
-	throw type_error(was_expecting(formula_variant::get_string(t), v));
 }
 
 variant_iterator::variant_iterator()
@@ -315,15 +338,15 @@ int variant::as_int(int fallback) const
 	if(is_null())    { return fallback; }
 	if(is_decimal()) { return as_decimal() / 1000; }
 
-	return value_cast<variant_int>()->get_numeric_value();
+	return value_cast<variant_int>(*this)->get_numeric_value();
 }
 
 int variant::as_decimal(int fallback) const
 {
 	if(is_decimal()) {
-		return value_cast<variant_decimal>()->get_numeric_value();
+		return value_cast<variant_decimal>(*this)->get_numeric_value();
 	} else if(is_int()) {
-		return value_cast<variant_int>()->get_numeric_value() * 1000;
+		return value_cast<variant_int>(*this)->get_numeric_value() * 1000;
 	} else if(is_null()) {
 		return fallback;
 	}
@@ -338,22 +361,22 @@ bool variant::as_bool() const
 
 const std::string& variant::as_string() const
 {
-	return value_cast<variant_string>()->get_string();
+	return value_cast<variant_string>(*this)->get_string();
 }
 
 const std::vector<variant>& variant::as_list() const
 {
-	return value_cast<variant_list>()->get_container();
+	return value_cast<variant_list>(*this)->get_container();
 }
 
 const std::map<variant, variant>& variant::as_map() const
 {
-	return value_cast<variant_map>()->get_container();
+	return value_cast<variant_map>(*this)->get_container();
 }
 
 const_formula_callable_ptr variant::as_callable() const
 {
-	return value_cast<variant_callable>()->get_callable();
+	return value_cast<variant_callable>(*this)->get_callable();
 }
 
 variant variant::operator+(const variant& v) const
@@ -552,6 +575,8 @@ namespace implementation
 template<typename Func>
 variant zip_transform(const variant& v1, const variant& v2, const Func& op_func)
 {
+	must_both_be(formula_variant::type::list, v1, v2);
+
 	const std::vector<variant>& lhs = v1.as_list();
 	const std::vector<variant>& rhs = v2.as_list();
 
@@ -571,6 +596,8 @@ variant zip_transform(const variant& v1, const variant& v2, const Func& op_func)
 
 variant concat_lists(const variant& v1, const variant& v2)
 {
+	must_both_be(formula_variant::type::list, v1, v2);
+
 	const std::vector<variant>& lhs = v1.as_list();
 	const std::vector<variant>& rhs = v2.as_list();
 
@@ -587,25 +614,21 @@ variant concat_lists(const variant& v1, const variant& v2)
 
 variant variant::list_elements_add(const variant& v) const
 {
-	must_both_be(formula_variant::type::list, v);
 	return implementation::zip_transform(*this, v, std::plus<variant>{});
 }
 
 variant variant::list_elements_sub(const variant& v) const
 {
-	must_both_be(formula_variant::type::list, v);
 	return implementation::zip_transform(*this, v, std::minus<variant>{});
 }
 
 variant variant::list_elements_mul(const variant& v) const
 {
-	must_both_be(formula_variant::type::list, v);
 	return implementation::zip_transform(*this, v, std::multiplies<variant>{});
 }
 
 variant variant::list_elements_div(const variant& v) const
 {
-	must_both_be(formula_variant::type::list, v);
 	return implementation::zip_transform(*this, v, std::divides<variant>{});
 }
 
@@ -624,8 +647,8 @@ variant variant::concatenate(const variant& v) const
 
 variant variant::build_range(const variant& v) const
 {
-	must_both_be(formula_variant::type::integer, v);
-	return value_cast<variant_int>()->build_range_variant(v.as_int());
+	must_both_be(formula_variant::type::integer, *this, v);
+	return value_cast<variant_int>(*this)->build_range_variant(v.as_int());
 }
 
 bool variant::contains(const variant& v) const
@@ -637,16 +660,6 @@ bool variant::contains(const variant& v) const
 		return utils::contains(as_map(), v);
 	default:
 		throw type_error(was_expecting("a list or a map", *this));
-	}
-}
-
-void variant::must_both_be(formula_variant::type t, const variant& second) const
-{
-	if(type() != t || second.type() != t) {
-		throw type_error(formatter() << "TYPE ERROR: expected two "
-			<< variant_type_to_string(t) << " but found "
-			<<        type_string() << " (" <<        to_debug_string() << ")" << " and "
-			<< second.type_string() << " (" << second.to_debug_string() << ")");
 	}
 }
 

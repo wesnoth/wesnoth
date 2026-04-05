@@ -1488,7 +1488,7 @@ DEFINE_WFL_FUNCTION(rotate_loc_around, 2, 3)
 DEFINE_WFL_FUNCTION(type, 1, 1)
 {
 	const variant& v = args()[0]->evaluate(variables, fdb);
-	return variant(v.type_string());
+	return variant(formula_variant::get_string(v.type()));
 }
 
 } // namespace builtins

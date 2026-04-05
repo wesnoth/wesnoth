@@ -35,9 +35,6 @@ struct type_error : public game::error
 	explicit type_error(const std::string& str);
 };
 
-/** @throws wfl::type_error for an incorrect type @a t of variant @a v. */
-[[noreturn]] void assert_must_be(formula_variant::type t, const variant& v);
-
 class variant
 {
 public:
@@ -136,27 +133,11 @@ public:
 
 	std::string to_debug_string(bool verbose = false, formula_seen_stack* seen = nullptr) const;
 
-	/** Gets string name of the current value type */
-	std::string type_string() const
-	{
-		return formula_variant::get_string(type());
-	}
+	formula_variant::type type() const;
 
 private:
 	template<typename T>
-	std::shared_ptr<T> value_cast() const
-	{
-		auto res = std::dynamic_pointer_cast<T>(value_);
-		if(!res) {
-			assert_must_be(T::value_type, *this);
-		}
-
-		return res;
-	}
-
-	void must_both_be(formula_variant::type t, const variant& second) const;
-
-	formula_variant::type type() const;
+	friend std::shared_ptr<T> value_cast(const variant& v);
 
 	/** @invariant Never null. */
 	std::shared_ptr<variant_value_base> value_;
