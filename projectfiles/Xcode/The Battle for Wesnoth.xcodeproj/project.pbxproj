@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 48;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -275,9 +275,8 @@
 		46EB546227DD2FC800D5CDE8 /* libwebp.7.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 46EB545F27DD2FAD00D5CDE8 /* libwebp.7.dylib */; platformFilters = (macos, ); settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		46EEFB762087434300E1E75A /* chat_log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46EEFB742087434200E1E75A /* chat_log.cpp */; };
 		46EEFB772087434300E1E75A /* chat_log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46EEFB742087434200E1E75A /* chat_log.cpp */; };
+		46F1280130AF6D4F00B5AC11 /* liblua.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9107AE141DB32862001927B0 /* liblua.a */; platformFilter = ios; };
 		46F302EE220327FE0028938F /* container-migration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 46F302EC220327FD0028938F /* container-migration.plist */; };
-		EB3A53F5AF0D4883A38A9CB9 /* Resources/Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2294281A8FB742D3A49A7FBA /* Resources/Assets.xcassets */; platformFilters = (ios, ); };
-		F57BE6B24F76DB47B2231B2F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9EC324240DB23D8921BB0FFE /* LaunchScreen.storyboard */; platformFilters = (ios, ); };
 		46F54C27211DFB7200374A1C /* apple_version.mm in Sources */ = {isa = PBXBuildFile; fileRef = 46F54C26211DFB7200374A1C /* apple_version.mm */; };
 		46F57084205FCE34007031BF /* base64.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 469BDB53205C357400DBF748 /* base64.cpp */; };
 		46F57085205FCE48007031BF /* crypt_blowfish.c in Sources */ = {isa = PBXBuildFile; fileRef = 46BED4D1205060EA00842FA5 /* crypt_blowfish.c */; };
@@ -609,6 +608,10 @@
 		4A1D4916A16C7C6E07D0BAB2 /* spritesheet_generator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 492144E3AE22C0C7A2D5F27C /* spritesheet_generator.cpp */; };
 		4E19429E82899A42A73BBE91 /* choose_addon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20E644DC98F26C756364EC2C /* choose_addon.cpp */; };
 		4E4A4DBC9F44444A5867EC2B /* migrate_version_selection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F7B1444E9B79504502208B82 /* migrate_version_selection.cpp */; };
+		4F8A5D1130B1A10000A1D001 /* libbz2.1.0.ios.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 4F8A5D0130B1A10000A1D001 /* libbz2.1.0.ios.dylib */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		4F8A5D1230B1A10000A1D001 /* libexpat.1.ios.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 4F8A5D0230B1A10000A1D001 /* libexpat.1.ios.dylib */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		4F8A5D1330B1A10000A1D001 /* libiconv.2.ios.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 4F8A5D0330B1A10000A1D001 /* libiconv.2.ios.dylib */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		4F8A5D1430B1A10000A1D001 /* libz.1.ios.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 4F8A5D0430B1A10000A1D001 /* libz.1.ios.dylib */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		508C40A885166B2E3F4245F4 /* general.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84234C54BB84519421FD4136 /* general.cpp */; };
 		52074B55B6C7AC8A1AE8BEA8 /* addon_server_info.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 39A1469A99EFCB311DF640CB /* addon_server_info.cpp */; };
 		529242A8856DE8D00988B9BD /* test_schema_self_validator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26A04033A9545CFE8A226FBD /* test_schema_self_validator.cpp */; };
@@ -1312,6 +1315,7 @@
 		E6CF415F9FD04C35A55FB24D /* scroll_text.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 755D4555A1DEA29125E7F338 /* scroll_text.cpp */; };
 		E79249078ACE777D1E219DED /* choose_addon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 20E644DC98F26C756364EC2C /* choose_addon.cpp */; };
 		E875402885AA34096C34E3B0 /* reachmap_options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85514A7D81C52A912FF68AEB /* reachmap_options.cpp */; };
+		EB3A53F5AF0D4883A38A9CB9 /* Resources/Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2294281A8FB742D3A49A7FBA /* Resources/Assets.xcassets */; platformFilter = ios; };
 		EBB44A70837B84A928CB6424 /* edit_pbl_translation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00574699A982AA23F12B39E0 /* edit_pbl_translation.cpp */; };
 		EC0341E11ECF46FE000F2E2B /* config_attribute_value.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC0341DF1ECF46FE000F2E2B /* config_attribute_value.cpp */; };
 		EC0341E21ECF4712000F2E2B /* config_attribute_value.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC0341DF1ECF46FE000F2E2B /* config_attribute_value.cpp */; };
@@ -1393,10 +1397,6 @@
 		EC64D7671A085F2F0092EF75 /* seed_rng.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC64D75F1A085CE60092EF75 /* seed_rng.cpp */; };
 		EC669C261DFC95AF00172EED /* surface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC669C251DFC95AF00172EED /* surface.cpp */; };
 		EC6C6B8B1D77CB0800807ED1 /* libpcre.1.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 91C554661D77A545002DB0C8 /* libpcre.1.dylib */; platformFilters = (macos, ); settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		4F8A5D1130B1A10000A1D001 /* libbz2.1.0.ios.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 4F8A5D0130B1A10000A1D001 /* libbz2.1.0.ios.dylib */; platformFilters = (ios, ); settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		4F8A5D1230B1A10000A1D001 /* libexpat.1.ios.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 4F8A5D0230B1A10000A1D001 /* libexpat.1.ios.dylib */; platformFilters = (ios, ); settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		4F8A5D1330B1A10000A1D001 /* libiconv.2.ios.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 4F8A5D0330B1A10000A1D001 /* libiconv.2.ios.dylib */; platformFilters = (ios, ); settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		4F8A5D1430B1A10000A1D001 /* libz.1.ios.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 4F8A5D0430B1A10000A1D001 /* libz.1.ios.dylib */; platformFilters = (ios, ); settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		EC74C11F197576F500B85A1A /* notifications.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC74C119197576F500B85A1A /* notifications.cpp */; };
 		EC74C120197576F500B85A1A /* open.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC74C11B197576F500B85A1A /* open.cpp */; };
 		EC8174671FB4284E00A8ED00 /* random.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC0680271EA920A300EEE03B /* random.cpp */; };
@@ -1469,13 +1469,13 @@
 		F46C5DCF13A5074C00DD0816 /* commandline_options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F46C5DCB13A5074C00DD0816 /* commandline_options.cpp */; };
 		F46C5DD413A5089100DD0816 /* lua_object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F46C5DD313A5089100DD0816 /* lua_object.cpp */; };
 		F480CD1F14034E6D007175D6 /* mapbuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F480CD1D14034E6D007175D6 /* mapbuilder.cpp */; };
-		46F1280130AF6D4F00B5AC11 /* liblua.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9107AE141DB32862001927B0 /* liblua.a */; platformFilters = (ios, ); };
 		F4D2A99614DAED0E00CAFF31 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4D2A99514DAED0E00CAFF31 /* CoreFoundation.framework */; platformFilters = (macos, ); };
 		F4D2A9D514DAED4200CAFF31 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4D2A99514DAED0E00CAFF31 /* CoreFoundation.framework */; };
 		F4D2DECB14DCA1D000CAFF31 /* client.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D2DECA14DCA1D000CAFF31 /* client.cpp */; };
 		F4D5483E15198D060058C8A7 /* lua_jailbreak_exception.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F419E44413354E620031448A /* lua_jailbreak_exception.cpp */; };
 		F4E4E0B11367241E001C7528 /* suppose_dead.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4E4E0AF1367241E001C7528 /* suppose_dead.cpp */; };
 		F4E4E0B41367244F001C7528 /* image_modifications.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4E4E0B21367244F001C7528 /* image_modifications.cpp */; };
+		F57BE6B24F76DB47B2231B2F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9EC324240DB23D8921BB0FFE /* LaunchScreen.storyboard */; platformFilter = ios; };
 		F6E34C7CBC418F214B43BC39 /* general.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84234C54BB84519421FD4136 /* general.cpp */; };
 		F7524948ADF9BC097E6D8DBC /* charconv.hpp in Headers */ = {isa = PBXBuildFile; fileRef = A03A423AB502FE015C91F1C9 /* charconv.hpp */; };
 		F8974F919B014C9E7103A6B9 /* markup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5EE4DE4B73C204AC0666900 /* markup.cpp */; };
@@ -1611,6 +1611,7 @@
 		1C58BBDF21822A930078D25A /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		1E364CB2B7C9E22650753C72 /* addon_server_info.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = addon_server_info.hpp; sourceTree = "<group>"; };
 		20E644DC98F26C756364EC2C /* choose_addon.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = choose_addon.cpp; sourceTree = "<group>"; };
+		2294281A8FB742D3A49A7FBA /* Resources/Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Resources/Assets.xcassets; sourceTree = "<group>"; };
 		231C4A6BB2F1A717F0D6E2E2 /* reachmap_options.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = reachmap_options.hpp; sourceTree = "<group>"; };
 		26A04033A9545CFE8A226FBD /* test_schema_self_validator.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = test_schema_self_validator.cpp; sourceTree = "<group>"; };
 		27764FB68F02032F1C0B6748 /* statistics_record.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = statistics_record.cpp; sourceTree = "<group>"; };
@@ -2126,6 +2127,10 @@
 		4944F41A1354FBFF0027E614 /* teleport.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = teleport.cpp; sourceTree = "<group>"; };
 		49478712172FF6F8002B7ABA /* tristate_button.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tristate_button.cpp; sourceTree = "<group>"; };
 		49478713172FF6F8002B7ABA /* tristate_button.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = tristate_button.hpp; sourceTree = "<group>"; };
+		4F8A5D0130B1A10000A1D001 /* libbz2.1.0.ios.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libbz2.1.0.ios.dylib; path = lib/libbz2.1.0.dylib; sourceTree = "<group>"; };
+		4F8A5D0230B1A10000A1D001 /* libexpat.1.ios.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libexpat.1.ios.dylib; path = lib/libexpat.1.dylib; sourceTree = "<group>"; };
+		4F8A5D0330B1A10000A1D001 /* libiconv.2.ios.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.2.ios.dylib; path = lib/libiconv.2.dylib; sourceTree = "<group>"; };
+		4F8A5D0430B1A10000A1D001 /* libz.1.ios.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.ios.dylib; path = lib/libz.1.dylib; sourceTree = "<group>"; };
 		57724A59B2F7D072D91DD787 /* attributes.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = attributes.cpp; path = font/attributes.cpp; sourceTree = "<group>"; };
 		58C649488B3014E6F7254B62 /* mp_report.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = mp_report.cpp; sourceTree = "<group>"; };
 		5D46466DBCD81B13621C7342 /* tod_new_schedule.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = tod_new_schedule.hpp; sourceTree = "<group>"; };
@@ -2219,9 +2224,7 @@
 		84234C54BB84519421FD4136 /* general.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = general.cpp; sourceTree = "<group>"; };
 		85514A7D81C52A912FF68AEB /* reachmap_options.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = reachmap_options.cpp; sourceTree = "<group>"; };
 		875E45698F8A8D5B750E7317 /* combobox.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = combobox.cpp; sourceTree = "<group>"; };
-		2294281A8FB742D3A49A7FBA /* Resources/Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Resources/Assets.xcassets"; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9EC324240DB23D8921BB0FFE /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* The Battle for Wesnoth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Battle for Wesnoth.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DAD49C8B52CC4E4FD686A60 /* units_dialog.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = units_dialog.hpp; sourceTree = "<group>"; };
 		90606A2A1D5599BA00719B40 /* libpcre.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libpcre.1.dylib; path = lib/libpcre.1.dylib; sourceTree = "<group>"; };
@@ -2446,6 +2449,7 @@
 		95EB8A51287A02B800B09F95 /* draw_manager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = draw_manager.hpp; sourceTree = "<group>"; };
 		95EB8A53287A02EC00B09F95 /* top_level_drawable.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = top_level_drawable.hpp; path = gui/core/top_level_drawable.hpp; sourceTree = "<group>"; };
 		95EB8A54287A02EC00B09F95 /* top_level_drawable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = top_level_drawable.cpp; path = gui/core/top_level_drawable.cpp; sourceTree = "<group>"; };
+		9EC324240DB23D8921BB0FFE /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A03A423AB502FE015C91F1C9 /* charconv.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = charconv.hpp; sourceTree = "<group>"; };
 		A05D48F0A2C022FC128C8B3E /* edit_unit.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = edit_unit.cpp; sourceTree = "<group>"; };
 		B2CC45FEA71445AE817CAA6B /* edit_pbl.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = edit_pbl.hpp; sourceTree = "<group>"; };
@@ -2865,10 +2869,6 @@
 		EC5C243018EF07B4001FA499 /* libpangoft2-1.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libpangoft2-1.0.0.dylib"; path = "lib/libpangoft2-1.0.0.dylib"; sourceTree = "<group>"; };
 		EC5C243118EF07B4001FA499 /* libpng16.16.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libpng16.16.dylib; path = lib/libpng16.16.dylib; sourceTree = "<group>"; };
 		EC5C243A18EF07B4001FA499 /* libz.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.dylib; path = /usr/lib/libz.1.dylib; sourceTree = "<absolute>"; };
-		4F8A5D0130B1A10000A1D001 /* libbz2.1.0.ios.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libbz2.1.0.ios.dylib; path = lib/libbz2.1.0.dylib; sourceTree = "<group>"; };
-		4F8A5D0230B1A10000A1D001 /* libexpat.1.ios.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libexpat.1.ios.dylib; path = lib/libexpat.1.dylib; sourceTree = "<group>"; };
-		4F8A5D0330B1A10000A1D001 /* libiconv.2.ios.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.2.ios.dylib; path = lib/libiconv.2.dylib; sourceTree = "<group>"; };
-		4F8A5D0430B1A10000A1D001 /* libz.1.ios.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.ios.dylib; path = lib/libz.1.dylib; sourceTree = "<group>"; };
 		EC5C70BB19EEB54900432CF4 /* filesystem_common.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = filesystem_common.cpp; sourceTree = "<group>"; };
 		EC5C70C019EEB58300432CF4 /* mp_ui_alerts.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mp_ui_alerts.cpp; sourceTree = "<group>"; };
 		EC64D75F1A085CE60092EF75 /* seed_rng.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = seed_rng.cpp; sourceTree = "<group>"; };
@@ -3226,6 +3226,7 @@
 				912DCA621CA6F5710019A6F9 /* Documentation */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
+				37B8CB992F822AE9001C878B /* Recovered References */,
 			);
 			name = Wesnoth;
 			sourceTree = "<group>";
@@ -3602,6 +3603,17 @@
 				90606A2A1D5599BA00719B40 /* libpcre.1.dylib */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		37B8CB992F822AE9001C878B /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				4F8A5D0130B1A10000A1D001 /* libbz2.1.0.ios.dylib */,
+				4F8A5D0230B1A10000A1D001 /* libexpat.1.ios.dylib */,
+				4F8A5D0330B1A10000A1D001 /* libiconv.2.ios.dylib */,
+				4F8A5D0430B1A10000A1D001 /* libz.1.ios.dylib */,
+			);
+			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 		460D897524DC77AD000B1ABC /* campaignd */ = {
@@ -5384,6 +5396,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		46B626461D635BC900863502 /* Update Revision.h */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -5398,6 +5411,7 @@
 		};
 		91C2A6EB1B843AA900346948 /* Copy Translations (if present) */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -6784,9 +6798,13 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = P7YF26GARW;
 				ENABLE_HARDENED_RUNTIME = YES;
+				"EXCLUDED_ARCHS[sdk=iphoneos*]" = arm64e;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = x86_64;
 				"EXCLUDED_SOURCE_FILE_NAMES[sdk=iphone*]" = SDLMain.mm;
-				"EXCLUDED_ARCHS[sdk=iphoneos*]" = arm64e;
+				"FRAMEWORK_SEARCH_PATHS[sdk=iphone*]" = (
+					"$(BUILT_PRODUCTS_DIR)",
+					"$(PROJECT_DIR)/temp/iOSCompileStuff-v0.0.1/$(WESNOTH_IOS_TRIPLET)/lib",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"LOCALEDIR=\\\"translations\\\"",
@@ -6828,19 +6846,20 @@
 				INFOPLIST_KEY_CFBundleDisplayName = Wesnoth;
 				INSTALL_PATH = /Applications;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				"WESNOTH_IOS_TRIPLET[sdk=iphoneos*]" = "arm64-ios-wesnoth";
-				"WESNOTH_IOS_TRIPLET[sdk=iphonesimulator*]" = "arm64-ios-simulator-wesnoth";
 				LD_CLASSIC_1000 = "";
 				LD_CLASSIC_1100 = "";
 				LD_CLASSIC_1200 = "";
 				LD_CLASSIC_1300 = "";
 				LD_CLASSIC_1400 = "";
 				LD_CLASSIC_1500 = "-ld_classic";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				"LD_RUNPATH_SEARCH_PATHS[sdk=iphone*]" = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				"FRAMEWORK_SEARCH_PATHS[sdk=iphone*]" = (
-					"$(BUILT_PRODUCTS_DIR)",
-					"$(PROJECT_DIR)/temp/iOSCompileStuff-v0.0.1/$(WESNOTH_IOS_TRIPLET)/lib",
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				"LD_RUNPATH_SEARCH_PATHS[sdk=iphone*]" = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
 				);
 				"LIBRARY_SEARCH_PATHS[sdk=iphone*]" = (
 					"$(BUILT_PRODUCTS_DIR)",
@@ -6955,14 +6974,13 @@
 				PRODUCT_BUNDLE_IDENTIFIER = org.wesnoth.Wesnoth;
 				PRODUCT_NAME = "The Battle for Wesnoth";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"EXCLUDED_SOURCE_FILE_NAMES[sdk=iphone*]" = (
-					SDLMain.mm,
-				);
 				SKIP_INSTALL = NO;
 				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WARNING_CFLAGS = "";
+				"WESNOTH_IOS_TRIPLET[sdk=iphoneos*]" = "arm64-ios-wesnoth";
+				"WESNOTH_IOS_TRIPLET[sdk=iphonesimulator*]" = "arm64-ios-simulator-wesnoth";
 				WRAPPER_EXTENSION = app;
 			};
 			name = SignedRelease;
@@ -7002,7 +7020,11 @@
 				GCC_WARN_UNUSED_LABEL = YES;
 				GCC_WARN_UNUSED_PARAMETER = YES;
 				INSTALL_PATH = /usr/local/bin;
-				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks \"@loader_path/The Battle for Wesnoth.app/Contents/Frameworks\" @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"@loader_path/../Frameworks",
+					"\"@loader_path/The Battle for Wesnoth.app/Contents/Frameworks\"",
+					"@loader_path/Frameworks",
+				);
 				OTHER_CFLAGS = (
 					"-Wall",
 					"-Wno-shorten-64-to-32",
@@ -7027,7 +7049,10 @@
 					BOOST_TEST_DYN_LINK,
 				);
 				INSTALL_PATH = /usr/local/bin;
-				LD_RUNPATH_SEARCH_PATHS = "\"@loader_path/The Battle for Wesnoth.app/Contents/Frameworks\" @loader_path/TestFrameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"\"@loader_path/The Battle for Wesnoth.app/Contents/Frameworks\"",
+					"@loader_path/TestFrameworks",
+				);
 				MACH_O_TYPE = mh_execute;
 				OTHER_LDFLAGS = (
 					"-lz",
@@ -7050,7 +7075,11 @@
 					"FIFODIR=\\\"/var/run/wesnoth_campaignd\\\"",
 				);
 				INSTALL_PATH = /usr/local/bin;
-				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks \"@loader_path/The Battle for Wesnoth.app/Contents/Frameworks\" @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"@loader_path/../Frameworks",
+					"\"@loader_path/The Battle for Wesnoth.app/Contents/Frameworks\"",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_NAME = campaignd;
 			};
 			name = SignedRelease;
@@ -7148,7 +7177,11 @@
 					"FIFODIR=\\\"/var/run/wesnoth_campaignd\\\"",
 				);
 				INSTALL_PATH = /usr/local/bin;
-				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks \"@loader_path/The Battle for Wesnoth.app/Contents/Frameworks\" @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"@loader_path/../Frameworks",
+					"\"@loader_path/The Battle for Wesnoth.app/Contents/Frameworks\"",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_NAME = campaignd;
 			};
 			name = Debug;
@@ -7165,7 +7198,11 @@
 					"FIFODIR=\\\"/var/run/wesnoth_campaignd\\\"",
 				);
 				INSTALL_PATH = /usr/local/bin;
-				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks \"@loader_path/The Battle for Wesnoth.app/Contents/Frameworks\" @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"@loader_path/../Frameworks",
+					"\"@loader_path/The Battle for Wesnoth.app/Contents/Frameworks\"",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_NAME = campaignd;
 			};
 			name = Release;
@@ -7185,7 +7222,10 @@
 					BOOST_TEST_DYN_LINK,
 				);
 				INSTALL_PATH = /usr/local/bin;
-				LD_RUNPATH_SEARCH_PATHS = "\"@loader_path/The Battle for Wesnoth.app/Contents/Frameworks\" @loader_path/TestFrameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"\"@loader_path/The Battle for Wesnoth.app/Contents/Frameworks\"",
+					"@loader_path/TestFrameworks",
+				);
 				MACH_O_TYPE = mh_execute;
 				OTHER_LDFLAGS = (
 					"-lz",
@@ -7210,7 +7250,10 @@
 					BOOST_TEST_DYN_LINK,
 				);
 				INSTALL_PATH = /usr/local/bin;
-				LD_RUNPATH_SEARCH_PATHS = "\"@loader_path/The Battle for Wesnoth.app/Contents/Frameworks\" @loader_path/TestFrameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"\"@loader_path/The Battle for Wesnoth.app/Contents/Frameworks\"",
+					"@loader_path/TestFrameworks",
+				);
 				MACH_O_TYPE = mh_execute;
 				OTHER_LDFLAGS = (
 					"-lz",
@@ -7259,7 +7302,11 @@
 				GCC_WARN_UNUSED_LABEL = YES;
 				GCC_WARN_UNUSED_PARAMETER = YES;
 				INSTALL_PATH = /usr/local/bin;
-				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks \"@loader_path/The Battle for Wesnoth.app/Contents/Frameworks\" @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"@loader_path/../Frameworks",
+					"\"@loader_path/The Battle for Wesnoth.app/Contents/Frameworks\"",
+					"@loader_path/Frameworks",
+				);
 				OTHER_CFLAGS = (
 					"-Wall",
 					"-Wno-shorten-64-to-32",
@@ -7306,7 +7353,11 @@
 				GCC_WARN_UNUSED_LABEL = YES;
 				GCC_WARN_UNUSED_PARAMETER = YES;
 				INSTALL_PATH = /usr/local/bin;
-				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks \"@loader_path/The Battle for Wesnoth.app/Contents/Frameworks\" @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"@loader_path/../Frameworks",
+					"\"@loader_path/The Battle for Wesnoth.app/Contents/Frameworks\"",
+					"@loader_path/Frameworks",
+				);
 				OTHER_CFLAGS = (
 					"-Wall",
 					"-Wno-shorten-64-to-32",
@@ -7342,9 +7393,13 @@
 				COPY_PHASE_STRIP = NO;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = NO;
+				"EXCLUDED_ARCHS[sdk=iphoneos*]" = arm64e;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = x86_64;
 				"EXCLUDED_SOURCE_FILE_NAMES[sdk=iphone*]" = SDLMain.mm;
-				"EXCLUDED_ARCHS[sdk=iphoneos*]" = arm64e;
+				"FRAMEWORK_SEARCH_PATHS[sdk=iphone*]" = (
+					"$(BUILT_PRODUCTS_DIR)",
+					"$(PROJECT_DIR)/temp/iOSCompileStuff-v0.0.1/$(WESNOTH_IOS_TRIPLET)/lib",
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -7389,19 +7444,20 @@
 				INFOPLIST_KEY_CFBundleDisplayName = Wesnoth;
 				INSTALL_PATH = /Applications;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				"WESNOTH_IOS_TRIPLET[sdk=iphoneos*]" = "arm64-ios-wesnoth";
-				"WESNOTH_IOS_TRIPLET[sdk=iphonesimulator*]" = "arm64-ios-simulator-wesnoth";
 				LD_CLASSIC_1000 = "";
 				LD_CLASSIC_1100 = "";
 				LD_CLASSIC_1200 = "";
 				LD_CLASSIC_1300 = "";
 				LD_CLASSIC_1400 = "";
 				LD_CLASSIC_1500 = "-ld_classic";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				"LD_RUNPATH_SEARCH_PATHS[sdk=iphone*]" = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				"FRAMEWORK_SEARCH_PATHS[sdk=iphone*]" = (
-					"$(BUILT_PRODUCTS_DIR)",
-					"$(PROJECT_DIR)/temp/iOSCompileStuff-v0.0.1/$(WESNOTH_IOS_TRIPLET)/lib",
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				"LD_RUNPATH_SEARCH_PATHS[sdk=iphone*]" = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
 				);
 				"LIBRARY_SEARCH_PATHS[sdk=iphone*]" = (
 					"$(BUILT_PRODUCTS_DIR)",
@@ -7515,13 +7571,12 @@
 				PRODUCT_BUNDLE_IDENTIFIER = org.wesnoth.Wesnoth;
 				PRODUCT_NAME = "The Battle for Wesnoth";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"EXCLUDED_SOURCE_FILE_NAMES[sdk=iphone*]" = (
-					SDLMain.mm,
-				);
 				SKIP_INSTALL = NO;
 				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				"WESNOTH_IOS_TRIPLET[sdk=iphoneos*]" = "arm64-ios-wesnoth";
+				"WESNOTH_IOS_TRIPLET[sdk=iphonesimulator*]" = "arm64-ios-simulator-wesnoth";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -7549,9 +7604,13 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = NO;
+				"EXCLUDED_ARCHS[sdk=iphoneos*]" = arm64e;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = x86_64;
 				"EXCLUDED_SOURCE_FILE_NAMES[sdk=iphone*]" = SDLMain.mm;
-				"EXCLUDED_ARCHS[sdk=iphoneos*]" = arm64e;
+				"FRAMEWORK_SEARCH_PATHS[sdk=iphone*]" = (
+					"$(BUILT_PRODUCTS_DIR)",
+					"$(PROJECT_DIR)/temp/iOSCompileStuff-v0.0.1/$(WESNOTH_IOS_TRIPLET)/lib",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"LOCALEDIR=\\\"translations\\\"",
@@ -7594,19 +7653,20 @@
 				INFOPLIST_KEY_CFBundleDisplayName = Wesnoth;
 				INSTALL_PATH = /Applications;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				"WESNOTH_IOS_TRIPLET[sdk=iphoneos*]" = "arm64-ios-wesnoth";
-				"WESNOTH_IOS_TRIPLET[sdk=iphonesimulator*]" = "arm64-ios-simulator-wesnoth";
 				LD_CLASSIC_1000 = "";
 				LD_CLASSIC_1100 = "";
 				LD_CLASSIC_1200 = "";
 				LD_CLASSIC_1300 = "";
 				LD_CLASSIC_1400 = "";
 				LD_CLASSIC_1500 = "-ld_classic";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				"LD_RUNPATH_SEARCH_PATHS[sdk=iphone*]" = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				"FRAMEWORK_SEARCH_PATHS[sdk=iphone*]" = (
-					"$(BUILT_PRODUCTS_DIR)",
-					"$(PROJECT_DIR)/temp/iOSCompileStuff-v0.0.1/$(WESNOTH_IOS_TRIPLET)/lib",
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				"LD_RUNPATH_SEARCH_PATHS[sdk=iphone*]" = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
 				);
 				"LIBRARY_SEARCH_PATHS[sdk=iphone*]" = (
 					"$(BUILT_PRODUCTS_DIR)",
@@ -7721,14 +7781,13 @@
 				PRODUCT_BUNDLE_IDENTIFIER = org.wesnoth.Wesnoth;
 				PRODUCT_NAME = "The Battle for Wesnoth";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"EXCLUDED_SOURCE_FILE_NAMES[sdk=iphone*]" = (
-					SDLMain.mm,
-				);
 				SKIP_INSTALL = NO;
 				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WARNING_CFLAGS = "";
+				"WESNOTH_IOS_TRIPLET[sdk=iphoneos*]" = "arm64-ios-wesnoth";
+				"WESNOTH_IOS_TRIPLET[sdk=iphonesimulator*]" = "arm64-ios-simulator-wesnoth";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
