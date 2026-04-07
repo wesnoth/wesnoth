@@ -104,7 +104,9 @@ void load_tls_root_certs(boost::asio::ssl::context &ctx)
 
 	CFRelease(certs);
 	SSL_CTX_set_cert_store(ctx.native_handle(), store);
-#elif (defined(__APPLE__) && TARGET_OS_IPHONE) || defined(__ANDROID__)
+#elif defined(__APPLE__) && TARGET_OS_IPHONE
+	ctx.load_verify_file(game_config::path + "/data/certificates/cacert.pem");
+#elif defined(__ANDROID__)
 	ctx.load_verify_file(game_config::path + "/certificates/cacert.pem");
 #else
 	ctx.set_default_verify_paths();
