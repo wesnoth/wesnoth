@@ -60,6 +60,8 @@ std::string format_remote_disconnect_message(const network_asio::error& e)
 	}
 
 	message += "\n\n";
+	message += _("Raw network error:");
+	message += "\n";
 	message += details;
 	return message;
 }
