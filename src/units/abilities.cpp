@@ -166,7 +166,10 @@ unit_ability_t::unit_ability_t(std::string tag, config cfg, bool inside_attack)
 	affects_self_ = cfg_["affect_self"].to_bool(true);
 	affects_enemies_ = cfg_["affect_enemies"].to_bool(false);
 
-	if(cfg_["overwrite_specials"] == "one_side" || cfg_["overwrite_specials"] == "both_sides") {
+	if(auto overwrite_specials = cfg_.optional_child("overwrite_specials")) {
+		suppress_special_priority_ = overwrite_specials["priority"].to_double(0.00);
+	}
+	else if(cfg_["overwrite_specials"] == "one_side" || cfg_["overwrite_specials"] == "both_sides") {
 		if(auto overwrite = cfg_.optional_child("overwrite")) {
 			suppress_special_priority_ = overwrite["priority"].to_double(0.00);
 		} else {
@@ -1422,23 +1425,49 @@ namespace {
 	}
 }
 
-bool attack_type::overwrite_special_checking(active_ability_list& overwriters, const active_ability& overwrited) const
+bool attack_type::overwrite_special_checking(active_ability_list& overwriters, const active_ability& overwritten) const
 {
 	auto ctx = fallback_context();
 	auto [self, other] = context_->self_and_other(*this);
-	const map_location& loc = overwrited.student_loc;
-	if(overwriters.empty()){
+	const map_location& loc = overwritten.student_loc;
+	if(overwriters.empty()) {
 		return false;
 	}
 
-	const unit_ability_t& ab = overwrited.ability();
+	const unit_ability_t& ab = overwritten.ability();
 	for(const auto& j : overwriters) {
-		if(j.ability().suppress_special_priority() <= ab.suppress_special_priority() || !overwrite_special_affects(j.ability())) {
+		if(j.ability().suppress_special_priority() <= ab.suppress_special_priority()) {
 			continue;
 		}
 
-		//the location of the fighters is used to differentiate the specials applied to 'self' from those applied to 'opponent'
-		//in all cases including 'apply_to=attacker/defender'
+		// code for new feature [overwrite_specials].
+		auto overwrite_specials = j.ability_cfg().optional_child("overwrite_specials");
+		if(overwrite_specials) {
+			// the location of the fighters is used to differentiate the specials applied to 'self' from those applied to 'opponent'
+			// in all cases including 'apply_to=attacker/defender'.
+			if((*overwrite_specials)["affect"].str("both") == "self" && loc != self.loc) {
+				continue;
+			}
+			if(other.un && (*overwrite_specials)["affect"].str("both") == "opponent" && loc != other.loc) {
+				continue;
+			}
+			// if ab don't match with [filter_special], continue check with next element of overwriters list.
+			auto filter_abilities_specials = (*overwrite_specials).optional_child("filter_special");
+			if(filter_abilities_specials && !ab.matches_filter(*filter_abilities_specials)) {
+				continue;
+			}
+			return true;
+		}
+
+		// If neither the tag nor the 'overwrite_specials' attribute are valid, we move directly to the next element in the overwriters list.
+		if(!overwrite_special_affects(j.ability())) {
+			continue;
+		}
+
+		//code for old feature 'overwrite_specials' if special don't have new one.
+
+		// the location of the fighters is used to differentiate the specials applied to 'self' from those applied to 'opponent'
+		// in all cases including 'apply_to=attacker/defender'.
 		if(j.ability_cfg()["overwrite_specials"].str() == "one_side") {
 			if(j.student_loc == self.loc && loc != self.loc) {
 				continue;
