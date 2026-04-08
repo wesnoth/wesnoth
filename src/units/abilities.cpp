@@ -132,6 +132,7 @@ unit_ability_t::unit_ability_t(std::string tag, config cfg, bool inside_attack)
 	, affects_enemies_(false)
 	, priority_(cfg["priority"].to_double(0.00))
 	, suppress_special_priority_(-100000.00)
+	, suppress_ability_priority_(-100000.00)
 	, cfg_(std::move(cfg))
 	, currently_checked_(false)
 {
@@ -175,6 +176,9 @@ unit_ability_t::unit_ability_t(std::string tag, config cfg, bool inside_attack)
 		} else {
 			suppress_special_priority_ = 0.00;
 		}
+	}
+	if(auto overwrite_abilities = cfg_.optional_child("overwrite_abilities")) {
+		suppress_ability_priority_ = overwrite_abilities["priority"].to_double(0.00);
 	}
 }
 
@@ -2003,6 +2007,54 @@ bool specials_context_t::is_special_active(const specials_combatant& self, const
 	return true;
 }
 
+namespace
+{
+	bool priority_checking(active_ability_list& overwriters, const active_ability& overwritten)
+	{
+		if(overwriters.empty()){
+			return false;
+		}
+		const unit_ability_t& ab = overwritten.ability();
+
+		for(const auto& j : overwriters) {
+			// If this element of overwriters does not have a priority strictly higher than ab,
+			// either it does not have [overwrite_abilities] or both have [overwrite_abilities] of the same priority;
+			// in either case, ab cannot be suppressed by this element of the list
+			if(j.ability().suppress_ability_priority() <= ab.suppress_ability_priority()) {
+				continue;
+			}
+
+			// [overwrite_abilities]priority= having already been checked above, it remains to check if a sub-filter [filter_ability] exists and if so,
+			// if it corresponds to ab.
+			auto overwrite_filter = j.ability_cfg().optional_child("overwrite_abilities");
+			if(overwrite_filter) {
+				auto filter_abilities = (*overwrite_filter).optional_child("filter_ability");
+				if(filter_abilities && !common_matches_filter(ab.cfg(), ab.tag(), *filter_abilities)) {
+					continue;
+				}
+				// if all checks match, ab can be suppressed and other elements of the list won't be checked.
+				return true;
+			}
+		}
+		return false;
+	}
+
+	void apply_ability_suppression(active_ability_list& abil_list)
+	{
+		// If two or more abilities have [overwrite_abilities],
+		// priority sorting allows the highest priority ability to suppress a lower priority ability before the lower priority ability can,
+		// in turn, suppress an ability with an even lower priority than the first two.
+		utils::sort_if(abil_list,[](const active_ability& i, const active_ability& j){
+			double l = i.ability().suppress_ability_priority();
+			double r = j.ability().suppress_ability_priority();
+			return l > r;
+		});
+		utils::erase_if(abil_list, [&](const active_ability& i) {
+			return (priority_checking(abil_list, i));
+		});
+	}
+}
+
 namespace unit_abilities
 {
 
@@ -2049,11 +2101,15 @@ static int individual_value_double(const config::attribute_value *v, int def, co
 	return value;
 }
 
-effect::effect(const active_ability_list& list, int def, const specials_context_t* ctx, EFFECTS wham) :
+effect::effect(active_ability_list list, int def, const specials_context_t* ctx, EFFECTS wham) :
 	effect_list_(),
 	composite_value_(def),
 	composite_double_value_(def)
 {
+	// If ctx is not empty, then this is a special. The [overwrite_specials] feature is handled in get_specials_and_abilities() and so nothing should be done here in that case.
+	if(!ctx) {
+		apply_ability_suppression(list);
+	}
 	std::map<double, active_ability_list> base_list;
 	for(const active_ability& i : list) {
 		double priority = i.ability().priority();
