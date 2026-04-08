@@ -5238,6 +5238,7 @@
 				8D11072C0486CEB800E47090 /* Sources */,
 				8D11072E0486CEB800E47090 /* Frameworks */,
 				8D1107290486CEB800E47090 /* Resources */,
+				46E09C232C79D60700B247E2 /* Copy iOS CA Bundle */,
 				B5599E8F0EC64D18008DD061 /* Copy Frameworks */,
 				B5BB6CFC0F8948FB00444FBF /* Copy Game Server */,
 				91C2A6EB1B843AA900346948 /* Copy Translations (if present) */,
@@ -5395,6 +5396,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "cd \"${SOURCE_ROOT}/../..\"\n\n./utils/autorevision.sh -t h > src/revision.h 2>/dev/null || echo \"warning: Project is probably not under source control. Revision number may be incorrect.\"\n";
+		};
+		46E09C232C79D60700B247E2 /* Copy iOS CA Bundle */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy iOS CA Bundle";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd \"$SOURCE_ROOT/../..\"\nif [ \"$PLATFORM_NAME\" = \"iphoneos\" ] || [ \"$PLATFORM_NAME\" = \"iphonesimulator\" ]; then\n\tcert_source=\"./packaging/android/app/src/main/res/raw/cacert.pem\"\n\tcert_dest_dir=\"$BUILT_PRODUCTS_DIR/$UNLOCALIZED_RESOURCES_FOLDER_PATH/certificates\"\n\tif [ -e \"$cert_source\" ]; then\n\t\tmkdir -p \"$cert_dest_dir\"\n\t\tcp -f \"$cert_source\" \"$cert_dest_dir/cacert.pem\"\n\tfi\nfi\n";
 		};
 		91C2A6EB1B843AA900346948 /* Copy Translations (if present) */ = {
 			isa = PBXShellScriptBuildPhase;
