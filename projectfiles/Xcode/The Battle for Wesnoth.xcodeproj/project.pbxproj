@@ -275,6 +275,7 @@
 		46EB546227DD2FC800D5CDE8 /* libwebp.7.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 46EB545F27DD2FAD00D5CDE8 /* libwebp.7.dylib */; platformFilters = (macos, ); settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		46EEFB762087434300E1E75A /* chat_log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46EEFB742087434200E1E75A /* chat_log.cpp */; };
 		46EEFB772087434300E1E75A /* chat_log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46EEFB742087434200E1E75A /* chat_log.cpp */; };
+		46E09C242C79D60700B247E2 /* cacert.pem in Copy iOS CA Bundle */ = {isa = PBXBuildFile; fileRef = 46E09C252C79D60700B247E2 /* cacert.pem */; platformFilters = (ios, ); };
 		46F302EE220327FE0028938F /* container-migration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 46F302EC220327FD0028938F /* container-migration.plist */; };
 		EB3A53F5AF0D4883A38A9CB9 /* Resources/Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2294281A8FB742D3A49A7FBA /* Resources/Assets.xcassets */; platformFilters = (ios, ); };
 		F57BE6B24F76DB47B2231B2F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9EC324240DB23D8921BB0FFE /* LaunchScreen.storyboard */; platformFilters = (ios, ); };
@@ -1508,6 +1509,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		46E09C232C79D60700B247E2 /* Copy iOS CA Bundle */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = certificates;
+			dstSubfolderSpec = 7;
+			files = (
+				46E09C242C79D60700B247E2 /* cacert.pem in Copy iOS CA Bundle */,
+			);
+			name = "Copy iOS CA Bundle";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		919F2D30286F851000F47750 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1769,6 +1781,7 @@
 		46EB545F27DD2FAD00D5CDE8 /* libwebp.7.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libwebp.7.dylib; path = lib/libwebp.7.dylib; sourceTree = "<group>"; };
 		46EEFB742087434200E1E75A /* chat_log.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = chat_log.cpp; sourceTree = "<group>"; };
 		46EEFB752087434200E1E75A /* chat_log.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = chat_log.hpp; sourceTree = "<group>"; };
+		46E09C252C79D60700B247E2 /* cacert.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = cacert.pem; path = ../../packaging/android/app/src/main/res/raw/cacert.pem; sourceTree = SOURCE_ROOT; };
 		46F302EC220327FD0028938F /* container-migration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "container-migration.plist"; path = "Resources/container-migration.plist"; sourceTree = "<group>"; };
 		46F302ED220327FE0028938F /* Wesnoth.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; name = Wesnoth.entitlements; path = Resources/Wesnoth.entitlements; sourceTree = "<group>"; };
 		46F54C26211DFB7200374A1C /* apple_version.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = apple_version.mm; path = ../../src/desktop/apple_version.mm; sourceTree = "<group>"; };
@@ -3526,6 +3539,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				46E09C252C79D60700B247E2 /* cacert.pem */,
 				46F302EC220327FD0028938F /* container-migration.plist */,
 				4685E3702417F9BF00CB1ED8 /* data */,
 				B5A9914A0ECA4064002BE442 /* fonts */,
@@ -5396,22 +5410,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "cd \"${SOURCE_ROOT}/../..\"\n\n./utils/autorevision.sh -t h > src/revision.h 2>/dev/null || echo \"warning: Project is probably not under source control. Revision number may be incorrect.\"\n";
-		};
-		46E09C232C79D60700B247E2 /* Copy iOS CA Bundle */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(SOURCE_ROOT)/../../packaging/android/app/src/main/res/raw/cacert.pem",
-			);
-			name = "Copy iOS CA Bundle";
-			outputPaths = (
-				"$(BUILT_PRODUCTS_DIR)/$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/certificates/cacert.pem",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "[ \"$PLATFORM_NAME\" = iphoneos ] || [ \"$PLATFORM_NAME\" = iphonesimulator ] || exit 0\nmkdir -p \"$(dirname \"$SCRIPT_OUTPUT_FILE_0\")\"\ncp -f \"$SCRIPT_INPUT_FILE_0\" \"$SCRIPT_OUTPUT_FILE_0\"";
 		};
 		91C2A6EB1B843AA900346948 /* Copy Translations (if present) */ = {
 			isa = PBXShellScriptBuildPhase;
