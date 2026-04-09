@@ -5411,7 +5411,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "[ \"$PLATFORM_NAME\" = iphoneos ] || [ \"$PLATFORM_NAME\" = iphonesimulator ] || exit 0\nmkdir -p \"$BUILT_PRODUCTS_DIR/$UNLOCALIZED_RESOURCES_FOLDER_PATH/certificates\"\ncp -f \"$SOURCE_ROOT/../../packaging/android/app/src/main/res/raw/cacert.pem\" \"$BUILT_PRODUCTS_DIR/$UNLOCALIZED_RESOURCES_FOLDER_PATH/certificates/cacert.pem\"";
+			shellScript = "[ \"$PLATFORM_NAME\" = iphoneos ] || [ \"$PLATFORM_NAME\" = iphonesimulator ] || exit 0\nmkdir -p \"$(dirname \"$SCRIPT_OUTPUT_FILE_0\")\"\ncp -f \"$SCRIPT_INPUT_FILE_0\" \"$SCRIPT_OUTPUT_FILE_0\"";
 		};
 		91C2A6EB1B843AA900346948 /* Copy Translations (if present) */ = {
 			isa = PBXShellScriptBuildPhase;
