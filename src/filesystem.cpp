@@ -846,7 +846,7 @@ static const bfs::path& get_user_data_path()
 	return user_data_dir;
 }
 
-utils::optional<std::string> get_game_manual_file(const std::string& locale_code)
+utils::optional<std::string> get_game_manual_file(const std::string& locale_code, const std::string& short_locale_code)
 {
 	utils::optional<std::string> manual_path_opt;
 	const std::string& manual_dir(game_config::path + "/doc/manual/");
@@ -857,12 +857,7 @@ utils::optional<std::string> get_game_manual_file(const std::string& locale_code
 		return "file://" + bfs::canonical(manual_path).string();
 	}
 
-	// Split the given locale code: "en_GB" -> "en", "GB"
-	// If the result of split() is empty then locale_code is empty (likely using System Language)
-	// Assume en is always available as a fall-back
-	const auto& split_locale_code = utils::split(locale_code, '_');
-	const std::string& language_code = split_locale_code.empty() ? "en" : split_locale_code[0];
-	manual_path = (manual_template % language_code).str();
+	manual_path = (manual_template % short_locale_code).str();
 
 	if(bfs::exists(manual_path)) {
 		// If a filename like manual.en_GB.html is not found, try manual.en.html

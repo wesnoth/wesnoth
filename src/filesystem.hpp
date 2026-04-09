@@ -153,7 +153,7 @@ std::string get_default_prefs_file();
 std::string get_save_index_file();
 std::string get_lua_history_file();
 /** location of the game manual file correponding to the given locale (default: en) */
-utils::optional<std::string> get_game_manual_file(const std::string& locale_code = "en");
+utils::optional<std::string> get_game_manual_file(const std::string& locale_code, const std::string& short_locale_code);
 /**
  * parent directory for everything that should be synced between systems.
  * implemented due to limitations of Steam's AutoCloud (non-SDK) syncing, but will also simplify things if it's ever added for any other platforms.
