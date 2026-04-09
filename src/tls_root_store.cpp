@@ -19,20 +19,69 @@
 #ifdef _WIN32
 #include <wincrypt.h>
 #elif defined(__APPLE__)
+#include <CoreFoundation/CoreFoundation.h>
 #include <TargetConditionals.h>
 #include <Security/Security.h>
-#if TARGET_OS_IPHONE
+#endif
+
+#if defined(__ANDROID__) || (defined(__APPLE__) && TARGET_OS_IPHONE)
 #include "filesystem.hpp"
 #endif
-#elif defined(__ANDROID__)
-#include "filesystem.hpp"
-#endif
+
+#include <vector>
 
 static lg::log_domain log_network("network");
 #define DBG_NW LOG_STREAM(debug, log_network)
 #define LOG_NW LOG_STREAM(info, log_network)
 #define WRN_NW LOG_STREAM(warn, log_network)
 #define ERR_NW LOG_STREAM(err, log_network)
+
+namespace {
+
+#if defined(__APPLE__) && TARGET_OS_IPHONE
+std::string get_ios_bundled_ca_file()
+{
+	CFBundleRef main_bundle = CFBundleGetMainBundle();
+	if(!main_bundle) {
+		ERR_NW << "Could not get the main iOS app bundle.";
+		return "";
+	}
+
+	CFURLRef cert_url = CFBundleCopyResourceURL(main_bundle, CFSTR("cacert"), CFSTR("pem"), CFSTR("certificates"));
+	if(!cert_url) {
+		ERR_NW << "Could not locate certificates/cacert.pem in the iOS app bundle.";
+		return "";
+	}
+
+	CFStringRef cert_path = CFURLCopyFileSystemPath(cert_url, kCFURLPOSIXPathStyle);
+	CFRelease(cert_url);
+
+	if(!cert_path) {
+		ERR_NW << "Could not resolve the bundled iOS CA bundle path.";
+		return "";
+	}
+
+	const CFIndex max_size = CFStringGetMaximumSizeForEncoding(CFStringGetLength(cert_path), kCFStringEncodingUTF8) + 1;
+	if(max_size <= 1) {
+		CFRelease(cert_path);
+		ERR_NW << "Could not size the bundled iOS CA bundle path buffer.";
+		return "";
+	}
+
+	std::vector<char> path_buffer(static_cast<std::size_t>(max_size), '\0');
+	const bool converted = CFStringGetCString(cert_path, path_buffer.data(), path_buffer.size(), kCFStringEncodingUTF8);
+	CFRelease(cert_path);
+
+	if(!converted) {
+		ERR_NW << "Could not convert the bundled iOS CA bundle path to UTF-8.";
+		return "";
+	}
+
+	return path_buffer.data();
+}
+#endif
+
+} // namespace
 
 namespace network_asio
 {
@@ -67,8 +116,7 @@ void load_tls_root_certs(boost::asio::ssl::context &ctx)
 
 	// check for any problems copying the certs
 	if(os_status != 0) {
-		ERR_NW << "Error enumerating certificates, falling back to default verify paths.";
-		ctx.set_default_verify_paths();
+		ERR_NW << "Error enumerating certificates.";
 
 		if (certs != NULL) {
 			CFRelease(certs);
@@ -106,7 +154,14 @@ void load_tls_root_certs(boost::asio::ssl::context &ctx)
 
 	CFRelease(certs);
 	SSL_CTX_set_cert_store(ctx.native_handle(), store);
-#elif (defined(__APPLE__) && TARGET_OS_IPHONE) || defined(__ANDROID__)
+#elif defined(__APPLE__) && TARGET_OS_IPHONE
+	if(const std::string cert_path = get_ios_bundled_ca_file(); !cert_path.empty()) {
+		ctx.load_verify_file(cert_path);
+	} else {
+		WRN_NW << "Falling back to the game data path for the iOS CA bundle.";
+		ctx.load_verify_file(game_config::path + "/certificates/cacert.pem");
+	}
+#elif defined(__ANDROID__)
 	ctx.load_verify_file(game_config::path + "/certificates/cacert.pem");
 #else
 	ctx.set_default_verify_paths();

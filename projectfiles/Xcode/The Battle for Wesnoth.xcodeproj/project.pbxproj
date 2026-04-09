@@ -5403,13 +5403,15 @@
 			files = (
 			);
 			inputPaths = (
+				"$(SOURCE_ROOT)/../../packaging/android/app/src/main/res/raw/cacert.pem",
 			);
 			name = "Copy iOS CA Bundle";
 			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/certificates/cacert.pem",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cd \"$SOURCE_ROOT/../..\"\nif [ \"$PLATFORM_NAME\" = \"iphoneos\" ] || [ \"$PLATFORM_NAME\" = \"iphonesimulator\" ]; then\n\tcert_source=\"./packaging/android/app/src/main/res/raw/cacert.pem\"\n\tcert_dest_dir=\"$BUILT_PRODUCTS_DIR/$UNLOCALIZED_RESOURCES_FOLDER_PATH/certificates\"\n\tif [ -e \"$cert_source\" ]; then\n\t\tmkdir -p \"$cert_dest_dir\"\n\t\tcp -f \"$cert_source\" \"$cert_dest_dir/cacert.pem\"\n\tfi\nfi\n";
+			shellScript = "[ \"$PLATFORM_NAME\" = iphoneos ] || [ \"$PLATFORM_NAME\" = iphonesimulator ] || exit 0\nmkdir -p \"$BUILT_PRODUCTS_DIR/$UNLOCALIZED_RESOURCES_FOLDER_PATH/certificates\"\ncp -f \"$SOURCE_ROOT/../../packaging/android/app/src/main/res/raw/cacert.pem\" \"$BUILT_PRODUCTS_DIR/$UNLOCALIZED_RESOURCES_FOLDER_PATH/certificates/cacert.pem\"";
 		};
 		91C2A6EB1B843AA900346948 /* Copy Translations (if present) */ = {
 			isa = PBXShellScriptBuildPhase;
