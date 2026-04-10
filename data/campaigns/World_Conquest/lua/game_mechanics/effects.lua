@@ -15,7 +15,7 @@ function wesnoth.effects.wc2_optional_attack(u, cfg)
 	local names = {}
 	for i = 1, #u.attacks do
 		local attack = u.attacks[i]
-		if attack:matches(wml.get_child(cfg, "filter_attack")) then
+		if attack:matches(wml.get_child(cfg, "filter_attack"), u) then
 			local new_name = attack.name .. name_suffix
 			local new_attack = attack.__cfg
 			new_attack.name = new_name

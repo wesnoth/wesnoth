@@ -28,12 +28,15 @@
 #include "play_controller.hpp"
 #include "resources.hpp"
 #include "synced_context.hpp"
+#include "units/conditional_type.hpp"
 #include "units/unit.hpp"
 #include "units/filter.hpp"
 #include "units/map.hpp"
 #include "formula/callable_objects.hpp"
 #include "formula/formula.hpp"
 #include "formula/function_gamestate.hpp"
+#include "deprecation.hpp"
+#include "game_version.hpp"
 
 static lg::log_domain log_engine_sf("engine/side_filter");
 #define ERR_NG LOG_STREAM(err, log_engine_sf)
@@ -241,6 +244,7 @@ bool side_filter::match_internal(const team &t) const
 	}
 
 	if (cfg_.has_attribute("lua_function")) {
+		deprecated_message("lua_function", DEP_LEVEL::INDEFINITE, "1.23", "Please define a custom filter tag in wesnoth.wml_filters.side instead.");
 		std::string lua_function = cfg_["lua_function"].str();
 		if (!lua_function.empty() && fc_->get_lua_kernel()) {
 			if (!fc_->get_lua_kernel()->run_filter(lua_function.c_str(), t)) {
@@ -249,6 +253,23 @@ bool side_filter::match_internal(const team &t) const
 		}
 	}
 
+	for (auto child : cfg_.all_ordered()) {
+		if (conditional_type::get_enum(child.first)) {
+			continue;
+		} else if (child.first == "has_unit" || child.first == "has_enemy" || child.first == "has_ally") {
+			continue;
+		} else if (child.first == "enemy_of" || child.first == "allied_with") {
+			continue;
+		} else {
+			if (resources::filter_con) {
+				if (game_lua_kernel* lk = resources::filter_con->get_lua_kernel()) {
+					if (!lk->run_wml_filter(child.first, child.second, t)) {
+						return false;
+					}
+				}
+			}
+		}
+	}
 
 	return true;
 }

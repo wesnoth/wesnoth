@@ -343,7 +343,8 @@ static int impl_unit_attack_match(lua_State* L)
 	if(!atk) {
 		return luaL_argerror(L, 1, "invalid attack");
 	}
-	lua_pushboolean(L, atk->matches_filter(cfg));
+	unit* u = luaW_tounit(L, 3);
+	lua_pushboolean(L, atk->matches_filter(cfg, u));
 	return 1;
 }
 

@@ -261,10 +261,10 @@ struct filter_attack : public event_filter {
 					auto temp_other_weapon = event_info.data.optional_child(!first_ ? "first" : "second");
 					const_attack_ptr second_attack = temp_other_weapon ? std::make_shared<const attack_type>(*temp_other_weapon) : nullptr;
 					auto ctx = specials_context_t::make({ u, loc, attack }, { opp, loc_d, second_attack }, first_);
-					return swf_.empty() || attack->matches_filter(swf_.get_parsed_config());
+					return swf_.empty() || attack->matches_filter(swf_.get_parsed_config(), u.get());
 				} else {
 					auto ctx = specials_context_t::make({ u, loc, attack }, { }, first_);
-					return swf_.empty() || attack->matches_filter(swf_.get_parsed_config());
+					return swf_.empty() || attack->matches_filter(swf_.get_parsed_config(), u.get());
 				}
 			}
 		}

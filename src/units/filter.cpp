@@ -626,8 +626,9 @@ void unit_filter_compound::fill(const vconfig& cfg)
 			[](const config::attribute_value& c) { return c.str(); },
 			[](const std::string& lua_function, const unit_filter_args& args)
 			{
+				deprecated_message("lua_function", DEP_LEVEL::INDEFINITE, "1.23", "Please define a custom filter tag in wesnoth.wml_filters.unit instead.");
 				if (game_lua_kernel * lk = args.context().get_lua_kernel()) {
-					return lk->run_filter(lua_function.c_str(), args.u);
+					return lk->run_filter(lua_function.c_str(), args.u, args.loc, args.u2);
 				}
 				return true;
 			}
@@ -771,7 +772,7 @@ void unit_filter_compound::fill(const vconfig& cfg)
 			else if (child.first == "has_attack") {
 				create_child(child.second, [](const vconfig& c, const unit_filter_args& args) {
 					for(const attack_type& a : args.u.attacks()) {
-						if(a.matches_filter(c.get_parsed_config())) {
+						if(a.matches_filter(c.get_parsed_config(), &args.u)) {
 							return true;
 						}
 					}
@@ -779,9 +780,13 @@ void unit_filter_compound::fill(const vconfig& cfg)
 				});
 			}
 			else {
-				std::stringstream errmsg;
-				errmsg << "encountered a child [" << child.first << "] of a standard unit filter, it is being ignored";
-				DBG_CF << errmsg.str();
+				// Any unrecognized tag is deferred to Lua.
+				create_child(child.second, [tag = child.first](const vconfig& c, const unit_filter_args& args) {
+					if (game_lua_kernel * lk = args.context().get_lua_kernel()) {
+						return lk->run_wml_filter(tag, c, args.u, args.loc, args.u2);
+					}
+					return true;
+				});
 			}
 
 		}
