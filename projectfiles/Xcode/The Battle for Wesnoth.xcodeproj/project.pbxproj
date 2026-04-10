@@ -39,6 +39,7 @@
 		365D4F89BD511BC074E639D7 /* migrate_version_selection.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B3DE4F95AF72C6F6BC37E695 /* migrate_version_selection.hpp */; };
 		36B146FAA79A55E9F43723B1 /* general.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84234C54BB84519421FD4136 /* general.cpp */; };
 		36D74F7F8D7655ACCABE562D /* edit_pbl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6FA542D78393E8FF067775DA /* edit_pbl.cpp */; };
+		378E8FBD2F88A9C700E38FF0 /* translations in Copy Translation (if present) */ = {isa = PBXBuildFile; fileRef = 378E8FBC2F88A9C700E38FF0 /* translations */; };
 		38C444C497ECBE2DF9BB2319 /* attributes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57724A59B2F7D072D91DD787 /* attributes.cpp */; };
 		393E4C9DAEE19E12B2B168B5 /* edit_unit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A05D48F0A2C022FC128C8B3E /* edit_unit.cpp */; };
 		3C0F4FFA9A0331ED6846D216 /* spritesheet_generator.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 3D284B9A81882806D8B25006 /* spritesheet_generator.hpp */; };
@@ -1508,6 +1509,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		378E8FBB2F88A8F100E38FF0 /* Copy Translation (if present) */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 7;
+			files = (
+				378E8FBD2F88A9C700E38FF0 /* translations in Copy Translation (if present) */,
+			);
+			name = "Copy Translation (if present)";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		919F2D30286F851000F47750 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1616,6 +1628,7 @@
 		27764FB68F02032F1C0B6748 /* statistics_record.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = statistics_record.cpp; sourceTree = "<group>"; };
 		2AC74C76BE76F62C771A81E1 /* test_lua_ptr.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = test_lua_ptr.cpp; sourceTree = "<group>"; };
 		2CFD4922B64EA6C9F71F71A2 /* preferences.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = preferences.hpp; path = preferences/preferences.hpp; sourceTree = "<group>"; };
+		378E8FBC2F88A9C700E38FF0 /* translations */ = {isa = PBXFileReference; lastKnownFileType = folder; name = translations; path = ../../translations; sourceTree = "<group>"; };
 		3975405BB582CA290366CD21 /* test_help_markup.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = test_help_markup.cpp; sourceTree = "<group>"; };
 		39A1469A99EFCB311DF640CB /* addon_server_info.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = addon_server_info.cpp; sourceTree = "<group>"; };
 		3D284B9A81882806D8B25006 /* spritesheet_generator.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = spritesheet_generator.hpp; sourceTree = "<group>"; };
@@ -3218,6 +3231,7 @@
 		29B97314FDCFA39411CA2CEA /* Wesnoth */ = {
 			isa = PBXGroup;
 			children = (
+				378E8FBC2F88A9C700E38FF0 /* translations */,
 				080E96DDFE201D6D7F000001 /* Mac-specific */,
 				B597C49D0FACD3F900CE81F5 /* tests */,
 				460D897624DC77C8000B1ABC /* server */,
@@ -5240,7 +5254,7 @@
 				8D1107290486CEB800E47090 /* Resources */,
 				B5599E8F0EC64D18008DD061 /* Copy Frameworks */,
 				B5BB6CFC0F8948FB00444FBF /* Copy Game Server */,
-				91C2A6EB1B843AA900346948 /* Copy Translations (if present) */,
+				378E8FBB2F88A8F100E38FF0 /* Copy Translation (if present) */,
 				46A24B12BA682B189938E298 /* Headers */,
 			);
 			buildRules = (
@@ -5396,21 +5410,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "cd \"${SOURCE_ROOT}/../..\"\n\n./utils/autorevision.sh -t h > src/revision.h 2>/dev/null || echo \"warning: Project is probably not under source control. Revision number may be incorrect.\"\n";
-		};
-		91C2A6EB1B843AA900346948 /* Copy Translations (if present) */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Translations (if present)";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "cd \"$SOURCE_ROOT/../..\"\nif [ -e \"./translations\" ]; then\nrsync -rv --delete \"./translations\" \"$BUILT_PRODUCTS_DIR/$UNLOCALIZED_RESOURCES_FOLDER_PATH/\";\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
