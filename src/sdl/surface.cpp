@@ -96,6 +96,10 @@ surface& surface::operator=(surface&& s) noexcept
 
 surface surface::clone() const
 {
+	if(!surface_) {
+    	return {};
+	}
+
 	// Use SDL_ConvertSurfaceFormat to make a copy
 	return surface(SDL_ConvertSurfaceFormat(surface_, SDL_PIXELFORMAT_ARGB8888, 0));
 }

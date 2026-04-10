@@ -811,7 +811,6 @@ std::string make_unit_link(const std::string& type_id)
 {
 	const unit_type* type = unit_types.find(type_id, unit_type::HELP_INDEXED);
 	if(!type) {
-		PLAIN_LOG << "Unknown unit type: " << type_id;
 		// don't return an hyperlink (no page)
 		// instead show the id (as hint)
 		return type_id;

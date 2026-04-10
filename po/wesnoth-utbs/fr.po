@@ -5185,19 +5185,21 @@ msgstr ""
 "tour suivant. Ces dégâts peuvent être mortels. Les unités volantes subiront "
 "seulement $heat_damage points de dégâts chaque tour en survolant la lave, "
 "cependant elles peuvent également mourir si elles passe trop de temps au-"
-"dessus de la lave. Par ailleurs, à cause de l'extrême chaleur, toute unité "
-"stationnée sur le sol de la caverne subit $heat_damage points de dégâts au "
-"début de chaque tour. Ces dégâts dus à la chaleur peuvent réduire une unité "
-"à 1 point de vie, mais ils ne peuvent pas la tuer."
+"dessus de la lave."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:962
+#, fuzzy
 msgid ""
 "Also, because of the heat in the cavern, all units on cave floor hexes will "
 "take $heat_damage damage at the start of each turn. This heat damage can "
 "reduce a unit to 1 hit point, but, unlike the lava damage, the heat damage "
 "can’t kill the unit."
 msgstr ""
+"Par ailleurs, à cause de l'extrême chaleur, toute unité stationnée sur le "
+"sol de la caverne subit $heat_damage points de dégâts au début de chaque "
+"tour. Ces dégâts dus à la chaleur peuvent réduire une unité à 1 point de "
+"vie, mais ils ne peuvent pas la tuer."
 
 #. [message]: role=Troll High Shaman
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:971
@@ -13366,12 +13368,12 @@ msgstr "Kelur"
 #. [side]: type=Orcish Shaman, id=Zoldak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:164
 msgid "Zoldak"
-msgstr ""
+msgstr "Zoldak"
 
 #. [side]: type=Saurian Seer, id=Tchoyob
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:311
 msgid "Tchoyob"
-msgstr ""
+msgstr "Tchoyob"
 
 #. [unit]: type=Merman Triton, id=Trapped Merman
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:384
@@ -13683,22 +13685,13 @@ msgstr ""
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1017
 #, fuzzy
-#| msgid ""
-#| "I have captured the keep. This castle is somewhat ruined, but it will "
-#| "serve our purposes. Now, I wonder where the merfolk are?"
 msgid ""
 "Thank you, Sovereign. They will come here soon. Now, I wonder where the "
 "merfolk are?"
-msgstr ""
-"J'ai capturé le donjon. Le château est quelque peu délabré mais servira nos "
-"desseins. Je me demande maintenant où sont les ondins ?"
+msgstr "Je me demande maintenant où sont les ondins ?"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1024
-#, fuzzy
-#| msgid ""
-#| "I have captured the keep. This castle is somewhat ruined, but it will "
-#| "serve our purposes. Now, I wonder where the merfolk are?"
 msgid ""
 "I have captured the keep. The castle is not in good condition but at least "
 "it will serve our purposes. Now, I wonder where the merfolk are?"
@@ -13718,10 +13711,8 @@ msgid ""
 "Fear not, here we are! We have explored the southern half of the island. And "
 "we found lizards living there, and some abandoned villages."
 msgstr ""
-"N'ayez crainte, nous sommes là ! Nous avons exploré la moitié sud de l'île. "
-"Et à part ces lézards que vous avez trouvés et quelques villages abandonnés, "
-"elle semble vide. Nous avons capturé ces villages pour vous, pour vous aider "
-"à entretenir vos troupes."
+"N'ayez crainte, nous sommes là ! Nous avons exploré la moitié Sud de l'île. "
+"Et on a trouvé que des lézards et quelques villages abandonnés."
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1053
@@ -13809,28 +13800,20 @@ msgstr ""
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1302
-#, fuzzy
-#| msgid ""
-#| "There’s got to be something here. The orc and skeleton must have been "
-#| "guarding some sort of entrance."
 msgid ""
 "There’s got to be something here. The saurian and skeleton must have been "
 "guarding some sort of entrance."
 msgstr ""
-"Il doit y avoir quelque chose ici. L'orc et le squelette devaient garder une "
-"sorte d'entrée."
+"Il doit y avoir quelque chose ici. Le saurien et le squelette devaient "
+"garder une sorte d'entrée."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1308
-#, fuzzy
-#| msgid ""
-#| "Are you sure? Search carefully. The orc and skeleton must have been "
-#| "guarding some sort of entrance."
 msgid ""
 "Are you sure? Search carefully. The saurian and skeleton must have been "
 "guarding some sort of entrance."
 msgstr ""
-"En êtes-vous sûr ? Cherchez bien. Les orcs et les squelettes devaient bien "
+"En êtes-vous sûr ? Cherchez bien. Le saurien et le squelette devaient bien "
 "garder une sorte d'entrée."
 
 #. [message]: speaker=unit
@@ -13847,16 +13830,12 @@ msgstr ""
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1328
-#, fuzzy
-#| msgid ""
-#| "Hey, what about the two keys that we found on the bodies of the undead "
-#| "and orc leaders?"
 msgid ""
 "Hey, what about the two keys that we found on the bodies of the undead and "
 "saurian leaders?"
 msgstr ""
 "Eh, et si c'était les deux clés que nous avons trouvées sur les corps des "
-"chefs orc et mort-vivant."
+"chefs saurien et mort-vivant ?"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1335
@@ -15728,8 +15707,6 @@ msgstr "un diable de poussière plus grand"
 
 #. [advancement]: id=Dust3
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Dust_Devil.cfg:162
-#, fuzzy
-#| msgid "a stronger Dust Devil"
 msgid "a bigger Dust Devil"
 msgstr "un diable de poussière plus fort"
 
@@ -17051,18 +17028,10 @@ msgstr "Inconnue"
 
 #. [race]: id=hidden_race
 #: data/campaigns/Under_the_Burning_Suns/units/units.cfg:22
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "The race of this unit cannot be revealed yet. You must discover it in the "
-#| "game to be allowed to see its description."
 msgid ""
 "The race of this unit cannot be revealed yet. You must discover it in the "
 "game to be allowed to see its description."
 msgstr ""
-"\n"
-"\n"
 "La race de cette unité vous est inconnue actuellement. Vous devez la "
 "découvrir au cours du jeu pour accéder à sa description."
 
@@ -17199,10 +17168,8 @@ msgstr ""
 #. [dummy]: id=blast
 #. weapon special
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:472
-#, fuzzy
-#| msgid "Alastra"
 msgid "blast"
-msgstr "Alastra"
+msgstr ""
 
 #. [dummy]: id=blast
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:473
@@ -17534,15 +17501,10 @@ msgid "cooldown 2"
 msgstr "recharge 2"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1422
-#, fuzzy
-#| msgid "After using this attack, you can't use it during your next turn."
 msgid "After using this attack, you can’t use it during your next turn."
 msgstr "Cette attaque ne peut pas être utilisée le tour suivant l'attaque."
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1425
-#, fuzzy
-#| msgid ""
-#| "After using this attack, you can't use it during your next two turns."
 msgid "After using this attack, you can’t use it during your next two turns."
 msgstr ""
 "Cette attaque ne peut pas être utilisée les deux tours suivants l'attaque."
@@ -17635,8 +17597,6 @@ msgstr ""
 #. [heals]: id=extra_natures_aid
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1846
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1873
-#, fuzzy
-#| msgid " This unit is capable of basic healing and slowing dehydration."
 msgid "This unit is capable of basic healing and slowing dehydration."
 msgstr ""
 " Cette unité peut fournir des soins de base et ralentir la déshydratation."
