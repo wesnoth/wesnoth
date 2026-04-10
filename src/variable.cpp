@@ -564,6 +564,11 @@ void scoped_weapon_info::activate()
 	}
 }
 
+void scoped_ability_info::activate()
+{
+	store(cfg_);
+}
+
 void scoped_recall_unit::activate()
 {
 	assert(resources::gameboard);
