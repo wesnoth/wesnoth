@@ -183,7 +183,7 @@ void unit_ability_t::do_compat_fixes(config& cfg, const std::string& tag, bool i
 	std::string filter_teacher = inside_attack ? "filter_self" : "filter";
 	if (cfg.has_child("filter_adjacent")) {
 		if (inside_attack) {
-			deprecated_message("[filter_adjacent]in weapon specials in [specials] tags", DEP_LEVEL::INDEFINITE, "", "Use [filter_self][filter_adjacent] instead.");
+			deprecated_message("[filter_adjacent] in weapon specials in [specials] tags", DEP_LEVEL::INDEFINITE, "", "Use [filter_self][filter_adjacent] instead.");
 		}
 		else {
 			deprecated_message("[filter_adjacent] in abilities", DEP_LEVEL::INDEFINITE, "", "Use [filter][filter_adjacent] instead or other unit filter.");
@@ -191,7 +191,7 @@ void unit_ability_t::do_compat_fixes(config& cfg, const std::string& tag, bool i
 	}
 	if (cfg.has_child("filter_adjacent_location")) {
 		if (inside_attack) {
-			deprecated_message("[filter_adjacent_location]in weapon specials in [specials] tags", DEP_LEVEL::INDEFINITE, "", "Use [filter_self][filter_location][filter_adjacent_location] instead.");
+			deprecated_message("[filter_adjacent_location] in weapon specials in [specials] tags", DEP_LEVEL::INDEFINITE, "", "Use [filter_self][filter_location][filter_adjacent_location] instead.");
 		}
 		else {
 			deprecated_message("[filter_adjacent_location] in abilities", DEP_LEVEL::INDEFINITE, "", "Use [filter][filter_location][filter_adjacent_location] instead.");

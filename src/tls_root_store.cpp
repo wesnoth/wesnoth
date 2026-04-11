@@ -21,7 +21,9 @@
 #elif defined(__APPLE__)
 #include <TargetConditionals.h>
 #include <Security/Security.h>
-#elif defined(__ANDROID__)
+#endif
+
+#if defined(__ANDROID__) || (defined(__APPLE__) && TARGET_OS_IPHONE)
 #include "filesystem.hpp"
 #endif
 
@@ -102,10 +104,8 @@ void load_tls_root_certs(boost::asio::ssl::context &ctx)
 
 	CFRelease(certs);
 	SSL_CTX_set_cert_store(ctx.native_handle(), store);
-#elif defined(__APPLE__) && TARGET_OS_IPHONE
-	ctx.set_default_verify_paths();
-#elif defined(__ANDROID__)
-	ctx.load_verify_file(game_config::path +  "/certificates/cacert.pem");
+#elif (defined(__APPLE__) && TARGET_OS_IPHONE) || defined(__ANDROID__)
+	ctx.load_verify_file(game_config::path + "/certificates/cacert.pem");
 #else
 	ctx.set_default_verify_paths();
 #endif
