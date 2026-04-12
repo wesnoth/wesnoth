@@ -680,9 +680,13 @@ const std::string& get_version_path_suffix()
 	}
 #endif
 
+static constexpr char legacy_ios_userdata_dir_name[] = ".wesnoth1.13";
+
 std::string filesystem::detail::legacy_ios_saves_dir(const std::string& sdl_pref_path)
 {
-	return (bfs::path(sdl_pref_path) / ".wesnoth1.13" / "saves").string();
+	// Historical iWesnoth builds stored saves under <SDL prefs>/.wesnoth1.13/saves.
+	// Keep that literal suffix so we can find and migrate those legacy saves.
+	return (bfs::path(sdl_pref_path) / legacy_ios_userdata_dir_name / "saves").string();
 }
 
 std::vector<filesystem::detail::ios_legacy_save_migration> filesystem::detail::find_legacy_ios_save_migrations(
@@ -725,6 +729,9 @@ std::vector<filesystem::detail::ios_legacy_save_migration> filesystem::detail::f
 #if defined(WESNOTH_BOOST_OS_IOS)
 static std::string get_default_ios_user_data_dir()
 {
+	// Prefer the app's ubiquity Documents container when it is available.
+	// That path remains locally accessible offline; if iCloud Drive is unavailable,
+	// fall back to the local SDL preferences directory.
 	if(const auto icloud_documents_dir = desktop::apple::get_icloud_drive_documents_dir()) {
 		LOG_FS << "Using iCloud Drive userdata directory: " << *icloud_documents_dir;
 		return *icloud_documents_dir;

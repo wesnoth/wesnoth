@@ -312,6 +312,7 @@ BOOST_AUTO_TEST_CASE( test_blacklist_pattern_list )
 BOOST_AUTO_TEST_CASE( test_ios_legacy_saves_dir_helper )
 {
 	const boost::filesystem::path sdl_pref_path("/tmp/wesnoth-ios");
+	// The migration target is the historical iWesnoth saves layout.
 	const boost::filesystem::path expected = sdl_pref_path / ".wesnoth1.13" / "saves";
 	BOOST_CHECK_EQUAL(filesystem::detail::legacy_ios_saves_dir(sdl_pref_path.string()), expected.string());
 }
