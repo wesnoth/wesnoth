@@ -12,22 +12,6 @@
 ### Units
 ### User interface
 ### WML Engine
-  * Removed deprecated macros
-    * `EARLY_FINISH_BONUS_NOTE`
-    * `NO_EARLY_FINISH_BONUS_NOTE`
-    * `NO_GOLD_CARRYOVER_NOTE`
-    * `NEW_GOLD_CARRYOVER_NOTE_100`
-    * `NEW_GOLD_CARRYOVER_NOTE_40`
-    * `NEW_GOLD_CARRYOVER_NOTE_20`
-    * `MISSILE_FRAME_FIREBALL`
-    * `MESSAGE`
-    * `STORY_PART_SPEECH`
-    * `LOYAL_UNDEAD_UNIT`
-    * `ON_SIGHTING`
-    * `MAKE_AI_SIDE_PERSISTENT`
-    * `DRAKE_FLYING_ANIM`
-    * `NO_INTERRUPT_NO_UNDO`
-    * `ENABLE_NIGHTBLADE`   
 ### Miscellaneous and Bug Fixes
 
 ## Version 1.19.22
