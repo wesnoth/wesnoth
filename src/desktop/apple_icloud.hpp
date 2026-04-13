@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2026 - 2026
+	Copyright (C) 2026
 	by Neil Hiddink
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
