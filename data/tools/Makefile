@@ -64,7 +64,7 @@ definitions:
 
 # Generate a reference page for the utility macros.
 macro-reference.html: helpheader.html helptrailer.html wmlscope
-	@{ cat helpheader.html; ./wmlscope --extracthelp $(DATA)/core/macros/; cat helptrailer.html; } > $(DEST)/macro-reference.html
+	@{ cat helpheader.html; ./wmlscope --extracthelp --macrosdir $(DATA)/core/macros/; cat helptrailer.html; } > $(DEST)/macro-reference.html
 
 # Report on unchecked macro calls
 unchecked:
