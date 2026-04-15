@@ -515,7 +515,7 @@ int unit_type_callable::do_compare(const formula_callable* callable) const
 	return u_.id().compare(u_callable->u_.id());
 }
 
-struct fai_variant_visitor
+struct wfl_variant_visitor
 #ifdef USING_BOOST_VARIANT
 	: public boost::static_visitor<variant>
 #endif
@@ -535,7 +535,7 @@ struct fai_variant_visitor
 variant config_callable::get_value(const std::string& key) const
 {
 	if(cfg_.has_attribute(key)) {
-		return cfg_[key].apply_visitor(fai_variant_visitor());
+		return cfg_[key].apply_visitor(wfl_variant_visitor{});
 	} else if(cfg_.has_child(key)) {
 		std::vector<variant> result;
 		for(const auto& child : cfg_.child_range(key)) {
@@ -568,7 +568,7 @@ variant config_callable::get_value(const std::string& key) const
 	} else if(key == "__attributes") {
 		std::map<variant, variant> result;
 		for(const auto& [key, value] : cfg_.attribute_range()) {
-			result[variant(key)] = value.apply_visitor(fai_variant_visitor());
+			result[variant(key)] = value.apply_visitor(wfl_variant_visitor{});
 		}
 
 		return variant(std::move(result));
