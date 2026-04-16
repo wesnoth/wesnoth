@@ -46,7 +46,7 @@ end
 
 local function add_player_side(scenario, scenario_num, gold)
 	local side_num = #scenario.side + 1
-	local per_side_num = (side_num == wml.variables.wc2_defeated_side) and side_num or 4
+	local per_side_num = (side_num ~= wml.variables.wc2_defeated_side) and side_num or 4
 	local id_str = "wc2_leader" .. per_side_num
 
 	local side = {
