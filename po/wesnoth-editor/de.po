@@ -4,13 +4,15 @@
 # Nils Kneuper <crazy-ivanovic@gmx.net>, 2009 - 2010.
 # Aaron Winter <winter.aaron93@gmail.com>, 2018.
 # Severin Glöckner <severin.gloeckner@stud.htwk-leipzig.de>, 2023.
+# Wuzzy <Wuzzy@disroot.org>, 2024.
+# Johannes Löhnert <loehnert.kde@gmx.de>, 2026
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.18 - wesnoth-editor\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2026-02-25 19:03-0600\n"
-"PO-Revision-Date: 2024-12-03 10:19+0100\n"
-"Last-Translator: Wuzzy <Wuzzy@disroot.org>\n"
+"PO-Revision-Date: 2026-04-17 19:12+0100\n"
+"Last-Translator: Johannes Löhnert <loehnert.kde@gmx.de>\n"
 "Language-Team: German <irc://irc.libera.chat/#wesnoth-de>\n"
 "Language: de_DE\n"
 "MIME-Version: 1.0\n"
@@ -163,7 +165,7 @@ msgstr "Nach dem Fall"
 #. [editor_group]: id=urban_jungle
 #: data/internal/Urban_Jungle/terrain-groups.cfg:5
 msgid "Urban Jungle (Internal)"
-msgstr ""
+msgstr "Großstadtschungel (Intern)"
 
 #. [theme]: id=editor
 #: data/themes/editor.cfg:11
@@ -339,10 +341,8 @@ msgid "<span color='red'><span face='DejaVuSans'>✘</span> $msg</span>"
 msgstr "<span color='red'><span face='DejaVuSans'>✘</span> $msg</span>"
 
 #: src/editor/map/context_manager.cpp:217
-#, fuzzy
-#| msgid "Map loaded from scenario"
 msgid "Load Map or Scenario"
-msgstr "Karte aus Szenario geladen"
+msgstr "Karte oder Szenario laden"
 
 #: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1141
 msgid "New Map"
@@ -400,10 +400,8 @@ msgid "Error"
 msgstr "Fehler"
 
 #: src/editor/map/context_manager.cpp:705
-#, fuzzy
-#| msgid "Do you really want to save $type1 in $type2 folder?"
 msgid "Do you really want to save a map in the scenarios folder?"
-msgstr "Wollt Ihr wirklich $type1 in ein Verzeichnis von $type2 speichern?"
+msgstr "Wollt Ihr wirklich eine Karte im Szenarien-Verzeichnis speichern?"
 
 #: src/editor/map/context_manager.cpp:713
 #: src/editor/map/context_manager.cpp:905
@@ -415,10 +413,8 @@ msgid "Save Scenario As"
 msgstr "Szenario speichern unter"
 
 #: src/editor/map/context_manager.cpp:754
-#, fuzzy
-#| msgid "Do you really want to save $type1 in $type2 folder?"
 msgid "Do you really want to save a scenario in the maps folder?"
-msgstr "Wollt Ihr wirklich $type1 in ein Verzeichnis von $type2 speichern?"
+msgstr "Wollt Ihr wirklich ein Szenario im Karten-Verzeichnis speichern?"
 
 #: src/editor/map/context_manager.cpp:762
 msgid "This scenario is already open."
@@ -486,36 +482,29 @@ msgid "File does not have .map, .cfg, or .mask extension"
 msgstr "Datei hat keine .map-, .cfg- oder .mask-Dateiendung"
 
 #: src/editor/map/map_context.cpp:227
-#, fuzzy
-#| msgid "Failed to load the scenario, attempting to load only the map."
 msgid ""
 "Failed to load the scenario: $error\n"
 "\n"
 "Attempting to load only the map."
-msgstr "Szenario-Laden schlug fehl. Versuche nur die Karte zu laden."
+msgstr ""
+"Szenario-Laden schlug fehl: $error\n"
+"\n"
+"Versuche nur die Karte zu laden."
 
 #: src/editor/map/map_context.cpp:253
-#, fuzzy
-#| msgid ""
-#| "The map file looks like a scenario, but the map_data value does not point "
-#| "to an existing file"
 msgid ""
 "The file looks like a scenario, but the map_data attribute does not point to "
 "an existing file"
 msgstr ""
-"Diese Karte scheint eine Szenario Datei zu sein, doch der Wert für "
+"Diese Datei scheint ein Szenario zu sein, doch der Wert für "
 "»map_data« verweist nicht auf eine existierende Datei"
 
 #: src/editor/map/map_context.cpp:268
-#, fuzzy
-#| msgid ""
-#| "The map file looks like a scenario, but the map_file value does not point "
-#| "to an existing file"
 msgid ""
 "The file looks like a scenario, but the map_file attribute does not point to "
 "an existing file"
 msgstr ""
-"Die Kartendatei scheint eine Szenario zu sein, doch der »map_file«-Wert "
+"Diese Datei scheint ein Szenario zu sein, doch der »map_file«-Wert "
 "verweist nicht auf eine existierende Datei"
 
 #: src/editor/map/map_context.cpp:448
