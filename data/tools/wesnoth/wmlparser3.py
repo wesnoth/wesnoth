@@ -523,6 +523,10 @@ class Parser:
             # No tag, must be an attribute.
             else:
                 self.handle_attribute(line)
+        elif self.attribute_state_without_equals:
+            if not line == b"=":
+                raise WMLError(self, "Expected =, got " + line)
+            self.attribute_state_without_equals = False 
         else:
             for i, segment in enumerate(line.split(b"+")):
                 segment = segment.lstrip(b" \t")
@@ -567,6 +571,11 @@ class Parser:
         if assign >= 0:
             remainder = line[assign + 1:]
             line = line[:assign]
+            self.attribute_state_without_equals = False
+        else:
+            # workaround for c++ bug, = comes in next line instead of current
+            self.attribute_state_without_equals = True
+            # after fix, should raise WMLError(self, "Expected equals sign (=) after attribute.")
 
         self.commas = 0
         self.temp_key_nodes = []
@@ -584,6 +593,9 @@ class Parser:
         def add_text(segment):
             segment = segment.rstrip()
             if not segment: return
+            # workaround for c++ bug, attribute and equals are preprocessed to different lines
+            if self.attribute_state_without_equals and segment.starts_with("="):
+                segment = segment[1:]
             n = len(self.temp_key_nodes)
             maxsplit = n - self.commas - 1
             if maxsplit < 0: maxsplit = 0
