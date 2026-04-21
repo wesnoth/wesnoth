@@ -62,7 +62,7 @@ local skill_set = {
             id          = "skill_chill_touch",
             label       = label(_"Chill Touch"),
             image       = "icons/chill-touch.png",
-            description = header_attack().._"Melee 6x3 cold, <i><ref dst='weaponspecial_slows'>slows</ref></i>. Replaces your default melee attack.",
+            description = header_attack().._"Melee 6x3 cold, <i><ref dst='weaponspecial_slow'>slows</ref></i>. Replaces your default melee attack.",
         },
         -------------------------
         -- LEVITATE
