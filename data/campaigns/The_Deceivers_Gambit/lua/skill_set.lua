@@ -230,7 +230,7 @@ local skill_set = {
             id          = "skill_lightning",
             label       = label(_"Chain Lightning"),
             image       = "attacks/lightning.png",
-            description = header_attack().._"Ranged 14x4 fire, <i><ref dst='weaponspecial_magical'>magical</ref></i>. If this attack kills an enemy, you may attack again.",
+            description = header_attack().._"Ranged 14x3 fire, <i><ref dst='weaponspecial_magical'>magical</ref></i>. This attack can be used multiple times on offense, but\n              consecutive uses strike one fewer time.",
         },
         -------------------------
         -- TIME DILATION
