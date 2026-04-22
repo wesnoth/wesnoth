@@ -221,7 +221,7 @@ local skill_set = {
             id          = "skill_fireball4",
             label       = label(_"Fireball"),
             image       = "attacks/fireball.png",
-            description = header_attack().._"Ranged 18x4 fire, <i><ref dst='weaponspecial_magical'>magical</ref></i>.",
+            description = header_attack().._"Ranged 17x4 fire, <i><ref dst='weaponspecial_magical'>magical</ref></i>.",
         },
         -------------------------
         -- LIGHTNING
