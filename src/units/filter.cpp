@@ -754,7 +754,7 @@ void unit_filter_compound::fill(const vconfig& cfg)
 			}
 			else if ((child.first == "filter_ability") || (child.first == "experimental_filter_ability")) {
 				if(child.first == "experimental_filter_ability"){
-					deprecated_message("experimental_filter_ability", DEP_LEVEL::INDEFINITE, "", "Use filter_ability instead.");
+					deprecated_message("experimental_filter_ability", DEP_LEVEL::FOR_REMOVAL, {1, 21, 0}, "Use filter_ability instead.");
 				}
 				create_child(child.second, [](const vconfig& c, const unit_filter_args& args) {
 					if(!(c.get_parsed_config())["active"].to_bool()){

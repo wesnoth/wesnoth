@@ -1493,7 +1493,7 @@ bool attack_type::overwrite_special_checking(active_ability_list& overwriters, c
 			if(!overwrite_filter){
 				overwrite_filter = (*overwrite_specials).optional_child("experimental_filter_specials");
 				if(overwrite_filter){
-					deprecated_message("experimental_filter_specials", DEP_LEVEL::INDEFINITE, "", "Use filter_specials instead.");
+					deprecated_message("experimental_filter_specials", DEP_LEVEL::FOR_REMOVAL, {1, 21, 0}, "Use filter_specials instead.");
 				}
 			}
 			if(overwrite_filter && is_overwritable && one_side_overwritable){
