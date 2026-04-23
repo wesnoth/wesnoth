@@ -130,7 +130,7 @@ public:
 		: lua_candidate_action_wrapper_base(context,cfg), location_(cfg["location"]), use_parms_(false)
 	{
 		if (cfg.has_attribute("exec_parms") || cfg.has_attribute("eval_parms")) {
-			deprecated_message("[candidate_action]eval_parms,exec_parms=", DEP_LEVEL::PREEMPTIVE, "1.17", "Use [args] instead - this data is passed to both the evaluation and the execution");
+			deprecated_message("[candidate_action]eval_parms,exec_parms=", DEP_LEVEL::FOR_REMOVAL, "1.21", "Use [args] instead - this data is passed to both the evaluation and the execution");
 			use_parms_ = true;
 			exec_parms_ = cfg["exec_parms"].str();
 			eval_parms_ = cfg["eval_parms"].str();
