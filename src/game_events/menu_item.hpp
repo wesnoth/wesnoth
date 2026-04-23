@@ -27,7 +27,6 @@
 #include "utils/optional_fwd.hpp"
 
 class filter_context;
-class game_data;
 class game_lua_kernel;
 struct map_location;
 
@@ -90,10 +89,9 @@ public:
 	 * Returns whether or not *this is applicable given the context.
 	 * Assumes game variables x1, y1, and unit have been set.
 	 * @param[in] hex The hex where the menu will appear.
-	 * @param[in] data Used to check whether to show if selecting is required.
 	 * @param[in] context Used to check whether the menu's filter matches.
 	 */
-	bool can_show(const map_location& hex, const game_data& data, filter_context& context) const;
+	bool can_show(const map_location& hex, filter_context& context) const;
 
 	/**
 	 * Causes the event associated with this item to fire.
@@ -102,9 +100,8 @@ public:
 	 * The undo stack will be cleared if the event mutated the gamestate.
 	 *
 	 * @param[in] event_hex    The location of the event (where the menu was opened).
-	 * @param[in] data         The game data for the most recent "select" event.
 	 */
-	void fire_event(const map_location& event_hex, const game_data& data) const;
+	void fire_event(const map_location& event_hex) const;
 
 	/** Removes the implicit event handler for an inlined [command]. */
 	void finish_handler();

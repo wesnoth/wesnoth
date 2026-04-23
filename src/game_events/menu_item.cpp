@@ -138,7 +138,7 @@ const std::string& wml_menu_item::image() const
 }
 
 
-bool wml_menu_item::can_show(const map_location& hex, const game_data& data, filter_context& filter_con) const
+bool wml_menu_item::can_show(const map_location& hex, filter_context& filter_con) const
 {
 	// Failing the [show_if] tag means no show.
 	if(!show_if_.empty() && !conditional_passed(show_if_)) {
@@ -154,7 +154,7 @@ bool wml_menu_item::can_show(const map_location& hex, const game_data& data, fil
 	return true;
 }
 
-void wml_menu_item::fire_event(const map_location& event_hex, const game_data& data) const
+void wml_menu_item::fire_event(const map_location& event_hex) const
 {
 	if(!this->is_synced()) {
 		// It is possible to for example show a help menu during a [delay] of a synced event.
