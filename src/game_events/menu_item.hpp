@@ -206,9 +206,6 @@ private:
 
 	/** If true, keep this menu item in later scenarios. */
 	bool persistent_;
-
-	/** Whether or not this event says it makes use of the last selected unit. */
-	bool needs_select_;
 };
 
 } // end namespace game_events

@@ -309,11 +309,6 @@ SYNCED_COMMAND_HANDLER_FUNCTION(move, child, spectator)
 
 SYNCED_COMMAND_HANDLER_FUNCTION(fire_event, child, /*spectator*/)
 {
-	if(const auto last_select = child.optional_child("last_select"))
-	{
-		//the select event cannot clear the undo stack.
-		resources::game_events->pump().fire("select", map_location(last_select.value(), resources::gamedata));
-	}
 	const std::string &event_name = child["raise"];
 	if (const auto source = child.optional_child("source")) {
 		synced_context::block_undo(std::get<0>(resources::game_events->pump().fire(event_name, map_location(source.value(), resources::gamedata))));

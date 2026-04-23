@@ -82,11 +82,7 @@ wml_menu_item::wml_menu_item(const std::string& id, const config& cfg)
 	, use_wml_menu_(cfg["use_hotkey"].str() != "only")
 	, is_synced_(cfg["synced"].to_bool(true))
 	, persistent_(cfg["persistent"].to_bool(true))
-	, needs_select_(cfg["needs_select"].to_bool(false))
 {
-	if(cfg.has_attribute("needs_select")) {
-		deprecated_message("needs_select", DEP_LEVEL::INDEFINITE, {1, 15, 0});
-	}
 }
 
 // Constructor for items defined in an event.
@@ -105,7 +101,6 @@ wml_menu_item::wml_menu_item(const std::string& id, const vconfig& definition)
 	, use_wml_menu_(true)
 	, is_synced_(true)
 	, persistent_(true)
-	, needs_select_(false)
 {
 	// On the off-chance that update() doesn't do it, add the hotkey here.
 	// (Update can always modify it.)
@@ -131,7 +126,6 @@ wml_menu_item::wml_menu_item(const std::string& id, const vconfig& definition, w
 	, use_wml_menu_(original.use_wml_menu_)
 	, is_synced_(original.is_synced_)
 	, persistent_(original.persistent_)
-	, needs_select_(original.needs_select_)
 {
 	// Apply WML.
 	update(definition);
@@ -156,11 +150,6 @@ bool wml_menu_item::can_show(const map_location& hex, const game_data& data, fil
 		return false;
 	}
 
-	// Failing to have a required selection means no show.
-	if(needs_select_ && !data.last_selected.valid()) {
-		return false;
-	}
-
 	// Passed all tests.
 	return true;
 }
@@ -175,22 +164,11 @@ void wml_menu_item::fire_event(const map_location& event_hex, const game_data& d
 		return;
 	}
 
-	const map_location& last_select = data.last_selected;
-
 	// No new player-issued commands allowed while this is firing.
 	const events::command_disabler disable_commands;
 
-	// instead of adding a second "select" event like it was done before, we just fire the select event again, and this
-	// time in a synced context.
-	// note that there couldn't be a user choice during the last "select" event because it didn't run in a synced
-	// context.
-	if(needs_select_ && last_select.valid()) {
-		synced_context::run_and_throw(
-			"fire_event", replay_helper::get_event(event_name_, event_hex, &last_select));
-	} else {
-		synced_context::run_in_synced_context_if_not_already(
-			"fire_event", replay_helper::get_event(event_name_, event_hex, nullptr));
-	}
+	synced_context::run_in_synced_context_if_not_already(
+		"fire_event", replay_helper::get_event(event_name_, event_hex));
 }
 
 void wml_menu_item::finish_handler()
@@ -226,10 +204,6 @@ void wml_menu_item::to_config(config& cfg) const
 	cfg["image"] = image_;
 	cfg["description"] = description_;
 	cfg["synced"] = is_synced_;
-
-	if(needs_select_) {
-		cfg["needs_select"] = true;
-	}
 
 	if(use_hotkey_ && use_wml_menu_) {
 		cfg["use_hotkey"] = true;
@@ -279,11 +253,6 @@ void wml_menu_item::update(const vconfig& vcfg)
 	if(vcfg.has_attribute("description")) {
 		description_ = vcfg["description"].t_str();
 		hotkey_updated = true;
-	}
-
-	if(vcfg.has_attribute("needs_select")) {
-		deprecated_message("needs_select", DEP_LEVEL::INDEFINITE, {1, 15, 0});
-		needs_select_ = vcfg["needs_select"].to_bool();
 	}
 
 	if(vcfg.has_attribute("synced")) {
