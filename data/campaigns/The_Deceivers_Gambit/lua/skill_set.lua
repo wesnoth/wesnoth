@@ -81,7 +81,7 @@ local skill_set = {
             id          = "skill_find_familiar",
             label       = label(_"Find Familiar"),
             image       = "icons/find-familiar.png",
-            description = header_passive().._"Begin each scenario with your trusty pet raven.\n               Your familiar’s level and XP persist across scenarios, but reset if it dies.",
+            description = header_passive().._"Begin each scenario with your trusty pet <i><ref dst='unit_Raven'>Raven</ref></i>.\n               Your familiar’s level and XP persist across scenarios, but reset if it dies.",
         },
         -------------------------
         -- MNEMONIC
