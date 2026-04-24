@@ -75,7 +75,7 @@ function wesnoth.wml_actions.set_variables(cfg, variables)
 		if idx then
 			local data_merged = {}
 			for i = 1, #data do
-				data_merged = wml.merge(data_merged, data[i].contents, "append")
+				data_merged = wml.merge(data_merged, data[i], "append")
 			end
 			data = { wml.merge(var_array[idx + 1] or {}, data_merged, "merge") }
 		else
