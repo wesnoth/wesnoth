@@ -195,6 +195,10 @@ set(BINARY_PREFIX "" CACHE STRING "Prefix in front of all binaries")
 ### Set the environment compiler flags.
 
 if(NOT MSVC)
+	if(CYGWIN)
+		add_compile_definitions(_GNU_SOURCE)
+	endif()
+
 	if(NOT DEFINED CXX_FLAGS_USER)
 
 		MESSAGE(STATUS "Environment compiler flags set to »${CXX_FLAGS_USER}«")
@@ -311,7 +315,7 @@ if(NOT MSVC)
 
 		if(APPLE)
 			set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -fPIE -Wl,-pie")
-		elseif(WIN32 AND MINGW)
+		elseif((WIN32 AND MINGW) OR CYGWIN)
 			set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -fPIE -pie")
 		else()
 			set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -fPIE -pie -Wl,-z,relro,-z,now")
