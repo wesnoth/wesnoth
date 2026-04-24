@@ -566,7 +566,10 @@ void terrain_builder::rotate_rule(building_rule& ret, int angle, const std::vect
 	}
 
 	if((minx & 1) != (miny & 1)) {
-		// if for examplein thtis case we have the locations (2,1) and (1,1),we want to start at (1,0)
+		// The following diagramm uses "internal" coorinates (he actual values of x/y used here),
+		//   map_locations internal coodinate is always one off from the coordinates that are shown ingame
+		//
+		// if for eample this case we have the locations (2,1) and (1,1),we want to start at (1,0)
 		//    /00\__
 		//    \__/10\__
 		//    /01\__/21\_
@@ -576,7 +579,7 @@ void terrain_builder::rotate_rule(building_rule& ret, int angle, const std::vect
 	}
 
 	map_location min_loc = map_location(minx, miny / 2).vector_negation();
-
+	 
 	for(terrain_constraint& cons : ret.constraints) {
 		cons.loc.vector_sum_assign(min_loc);
 	}
