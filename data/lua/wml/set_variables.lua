@@ -96,8 +96,8 @@ function wesnoth.wml_actions.set_variables(cfg, variables)
     end
     if mode == "insert" then
         idx = idx or 0
-        while #arr < idx do
-            arr[#arr + 1] = {}
+        while #var_array < idx do
+            var_array[#var_array + 1] = {}
         end
         for i = 1, #data do
             table.insert(var_array, idx + i, data[i])
