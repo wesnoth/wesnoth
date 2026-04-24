@@ -1,8 +1,8 @@
-function append_array_to_wml(wml, key, array)
+function append_array_to_wml(wt, key, array)
 	for i = 1, #array do
-		table.insert(wml, wml.tag[key](array[i]))
+		table.insert(wt, wml.tag[key](array[i]))
 	end
-	return wml
+	return wt
 end
 
 function wesnoth.wml_actions.set_variables(cfg, variables)
