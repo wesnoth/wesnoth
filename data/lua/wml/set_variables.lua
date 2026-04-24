@@ -96,7 +96,7 @@ function wesnoth.wml_actions.set_variables(cfg, variables)
     end
     if mode == "insert" then
         idx = idx or 0
-        while(#arr < idx)
+        while #arr < idx do
             arr[#arr + 1] = {}
         end
         for i = 1, #data do
