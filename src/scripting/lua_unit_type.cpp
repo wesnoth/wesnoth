@@ -17,7 +17,7 @@
 
 #include "scripting/lua_attributes.hpp"
 #include "deprecation.hpp"
-#include "version_info.hpp"
+#include "game_version.hpp"
 #include "scripting/lua_common.hpp"
 #include "scripting/lua_unit_attacks.hpp"
 #include "scripting/push_check.hpp"
