@@ -8,10 +8,18 @@
     #pragma GCC diagnostic ignored "-Wold-style-cast"
 #endif
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #if defined(HAVE_SYSTEM_LUA)
     #include "lauxlib.h"
 #else
     #include "modules/lua/lauxlib.h"
+#endif
+
+#ifdef __cplusplus
+}
 #endif
 
 constexpr int luaL_buffersize = LUAL_BUFFERSIZE;

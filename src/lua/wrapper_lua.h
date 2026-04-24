@@ -6,10 +6,18 @@
     #pragma GCC diagnostic ignored "-Wold-style-cast"
 #endif
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #if defined(HAVE_SYSTEM_LUA)
     #include "lua.h"
 #else
     #include "modules/lua/lua.h"
+#endif
+
+#ifdef __cplusplus
+}
 #endif
 
 #if defined(__clang__)
