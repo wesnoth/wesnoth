@@ -579,7 +579,7 @@ void terrain_builder::rotate_rule(building_rule& ret, int angle, const std::vect
 	}
 
 	map_location min_loc = map_location(minx, miny / 2).vector_negation();
-	 
+
 	for(terrain_constraint& cons : ret.constraints) {
 		cons.loc.vector_sum_assign(min_loc);
 	}
