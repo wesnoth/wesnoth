@@ -4064,7 +4064,7 @@ static int intf_add_modification(lua_State *L)
 	std::string sm = m;
 	if (sm == "advance") { // Maintain backwards compatibility
 		sm = "advancement";
-		deprecated_message("\"advance\" modification type", DEP_LEVEL::PREEMPTIVE, {1, 15, 0}, "Use \"advancement\" instead.");
+		deprecated_message("\"advance\" modification type", DEP_LEVEL::FOR_REMOVAL, {1, 21, 0}, "Use \"advancement\" instead.");
 	}
 	if (sm != "advancement" && sm != "object" && sm != "trait") {
 		return luaL_argerror(L, 2, "unknown modification type");

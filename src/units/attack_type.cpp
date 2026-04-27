@@ -232,7 +232,7 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 		return false;
 
 	if(filter.has_attribute("special")) {
-		deprecated_message("special=", DEP_LEVEL::PREEMPTIVE, {1, 17, 0}, "Please use special_id or special_type instead");
+		deprecated_message("special=", DEP_LEVEL::FOR_REMOVAL, {1, 21, 0}, "Please use special_id or special_type instead");
 	}
 
 	if(filter.has_attribute("special") || filter.has_attribute("special_id") || filter.has_attribute("special_type")) {
@@ -242,7 +242,7 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 	}
 
 	if(filter.has_attribute("special_active")) {
-		deprecated_message("special_active=", DEP_LEVEL::PREEMPTIVE, {1, 17, 0}, "Please use special_id_active or special_type_active instead");
+		deprecated_message("special_active=", DEP_LEVEL::FOR_REMOVAL, {1, 21, 0}, "Please use special_id_active or special_type_active instead");
 	}
 
 	if (!filter_special_type_active.empty()) {

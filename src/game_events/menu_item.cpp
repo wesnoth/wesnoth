@@ -83,6 +83,12 @@ wml_menu_item::wml_menu_item(const std::string& id, const config& cfg)
 	, is_synced_(cfg["synced"].to_bool(true))
 	, persistent_(cfg["persistent"].to_bool(true))
 {
+<<<<<<< remove-needs-select
+=======
+	if(cfg.has_attribute("needs_select")) {
+		deprecated_message("needs_select", DEP_LEVEL::FOR_REMOVAL, {1, 21, 0}, "needs_select effects networked multiplayer. Use [sync_variable] to keep variables consistent across clients");
+	}
+>>>>>>> master
 }
 
 // Constructor for items defined in an event.
@@ -255,6 +261,14 @@ void wml_menu_item::update(const vconfig& vcfg)
 		hotkey_updated = true;
 	}
 
+<<<<<<< remove-needs-select
+=======
+	if(vcfg.has_attribute("needs_select")) {
+		deprecated_message("needs_select", DEP_LEVEL::FOR_REMOVAL, {1, 21, 0}, "needs_select effects networked multiplayer. Use [sync_variable] to keep variables consistent across clients");
+		needs_select_ = vcfg["needs_select"].to_bool();
+	}
+
+>>>>>>> master
 	if(vcfg.has_attribute("synced")) {
 		is_synced_ = vcfg["synced"].to_bool(true);
 	}

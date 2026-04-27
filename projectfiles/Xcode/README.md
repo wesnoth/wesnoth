@@ -43,11 +43,14 @@ Builds for maximum compiling speed, and uses the current OS as the SDK. If you j
 To compile translations you need `gettext-tools` and `scons`. You can obtain these tools using `brew install gettext scons`. You also have to force-link Homebrew's `gettext` tools using `brew link --force gettext` command. In the Terminal, `cd /PATH/TO/PROJECT` and run `scons translations`. This will compile all the translations into a translations directory.
 
 ## Packaging
-When compiling Wesnoth for an official release, the following steps should be taken. Packaging is separated to the 4 subchapters:
-1. In first chapter we will prepare package for all 3 distribution sources.
-2. In second chapter we will notarize Steam package and we will release it to the SteamStore.
-3. In third chapter we will notarize SourceForge package, we will create `.dmg` image and we will release it to SourceForge.
-4. In fourth chapter we will release package to the Mac AppStore.
+When compiling Wesnoth for an official release, the following steps should be taken. Packaging is separated into subchapters, one per distribution channel:
+1. First, we prepare the sources and Xcode project for all distribution channels.
+2. Steam: notarize the package and release to the Steam Store.
+3. SourceForge: notarize the package, build a `.dmg`, and release to SourceForge.
+4. itch.io: notarize the package and release to itch.io.
+5. Mac AppStore: sandbox `wesnothd`, archive, and upload via App Store Connect.
+
+The release channel is recorded inside the archive in `Contents/Resources/data/dist` (a plain text file). Valid values are `Steam`, `SourceForge`, `itch`, and `macOS App Store`. Any other value is treated as an unknown / default channel by the game, and by the `Check_xcarchive` validation script.
 
 ### Packaging - Packages preparation
  * Obtain sources from github using `git clone -b BRANCH --depth 10 https://github.com/wesnoth/wesnoth /PATH/TO/PROJECT` or use your favourite git program.
@@ -89,15 +92,28 @@ When compiling Wesnoth for an official release, the following steps should be ta
  * Create SHA-256 checksum using `shasum -a 256 /PATH/TO/NEW/IMAGE.dmg > Wesnoth_x.x.x.dmg.sha256` command.
  * Done! You can release it to SourceForge now.
 
+### Packaging - itch.io
+ * Find and edit `dist` file in path `/PATH/TO/PROJECT/data/dist`. For itch.io it must contain `itch`.
+ * Now you can hit `Product` > `Archive` from the menubar.
+ * After archivation is done, select the archive in Xcode Organizer, click on `Distribute App`, select `Developer ID` and select `Upload` (to notarize).
+ * Wait for successful notarization.
+ * Click `Distribute App` again, select `Developer ID` and select an export location.
+ * Upload the exported `.app` to itch.io using `butler`.
+
 ### Packaging - Mac AppStore
- * First you have to enable app sandbox for `wesnothd`.
- * In Xcode window click on `The Battle for Wesnoth` project in the left sidebar.
- * Select `wesnothd` target.
- * Select `Signing & Capabilities` from the top bar.
- * Click `+ Capability` while in the `All` tab.
- * Select `App Sandbox`.
- * And in newly created section check both `Incoming` and `Outgoing` connections.
+ * First you have to enable app sandbox for `wesnothd` by swapping its entitlements file. The easiest way is to double click on the `Prepare_for_MAS_release` script in `/PATH/TO/PROJECT/projectfiles/Xcode` — it flips the `Code Signing Entitlements` build setting from `Resources/wesnothd-nosandbox.entitlements` to `Resources/wesnothd-mas.entitlements` for all three `wesnothd` configurations. If the Xcode project is open, close it first (or at least close the `wesnothd` target editor) so Xcode picks up the change.
+ * If you prefer to do it manually in Xcode: click on the `The Battle for Wesnoth` project in the left sidebar, select the `wesnothd` target, open the `Build Settings` tab (with `All` and `Combined` selected), find `Code Signing Entitlements`, and change it from `Resources/wesnothd-nosandbox.entitlements` to `Resources/wesnothd-mas.entitlements`. Do NOT use the `Signing & Capabilities` tab to toggle App Sandbox — it can leave the build in an inconsistent state.
+ * Remember to run `Prepare_for_nosandbox_release` (or revert the build setting manually) after the MAS archive is uploaded, before building any non-MAS package.
  * Find and edit `dist` file in path `/PATH/TO/PROJECT/data/dist`. For Mac AppStore it must contain `macOS App Store`.
  * Now you can hit `Product` > `Archive` from the menubar.
  * After archivation is done, you can select correct archive in Xcode Organizer, click on `Distribute App`, select `App Store Connect` and proceed with all steps by clicking `Next`.
  * After successful uploading you must go to the https://appstoreconnect.apple.com/ and continue with releasing there.
+
+### Packaging - Verifying an archive
+
+Before distributing any archive, you can validate it against its intended distribution channel (reads the `dist` file inside the bundled `.app`, then checks `wesnothd`'s code signing entitlements to confirm the sandbox state matches):
+
+ * Double-click `Check_xcarchive` in `/PATH/TO/PROJECT/projectfiles/Xcode` and drag one or more `.xcarchive` bundles (or a folder containing them) from Finder onto the Terminal window.
+ * Or from a shell: `./Check_xcarchive /path/to/archive.xcarchive` (also accepts a directory of archives).
+
+The script reports PASS / FAIL / WARN per archive. A MAS archive must have `wesnothd` sandboxed; Steam, SourceForge, and itch.io archives must not. In every case `wesnothd` must not carry `com.apple.application-identifier` (that entitlement on a nested binary triggers App Store rejection ITMS-90288 / 90286 / 90885).

@@ -1797,6 +1797,8 @@
 		46E09C252C79D60700B247E2 /* cacert.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = cacert.pem; path = ../../packaging/android/app/src/main/res/raw/cacert.pem; sourceTree = SOURCE_ROOT; };
 		46F302EC220327FD0028938F /* container-migration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "container-migration.plist"; path = "Resources/container-migration.plist"; sourceTree = "<group>"; };
 		46F302ED220327FE0028938F /* Wesnoth.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; name = Wesnoth.entitlements; path = Resources/Wesnoth.entitlements; sourceTree = "<group>"; };
+		46C0FFEE0000000000000001 /* wesnothd-mas.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; name = "wesnothd-mas.entitlements"; path = "Resources/wesnothd-mas.entitlements"; sourceTree = "<group>"; };
+		46C0FFEE0000000000000002 /* wesnothd-nosandbox.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; name = "wesnothd-nosandbox.entitlements"; path = "Resources/wesnothd-nosandbox.entitlements"; sourceTree = "<group>"; };
 		46F54C26211DFB7200374A1C /* apple_version.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = apple_version.mm; path = ../../src/desktop/apple_version.mm; sourceTree = "<group>"; };
 		46F54C28211DFB9100374A1C /* apple_version.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = apple_version.hpp; path = ../../src/desktop/apple_version.hpp; sourceTree = "<group>"; };
 		46F92C082174F5D600602C1C /* help.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = help.hpp; sourceTree = "<group>"; };
@@ -3565,6 +3567,8 @@
 				B5BB6EFD0F93B83500444FBF /* SDLMain.nib */,
 				B5A9B2140ECA4074002BE442 /* sounds */,
 				46F302ED220327FE0028938F /* Wesnoth.entitlements */,
+				46C0FFEE0000000000000001 /* wesnothd-mas.entitlements */,
+				46C0FFEE0000000000000002 /* wesnothd-nosandbox.entitlements */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -6999,6 +7003,7 @@
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_ENTITLEMENTS = "Resources/wesnothd-nosandbox.entitlements";
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				COPY_PHASE_STRIP = YES;
@@ -7253,6 +7258,7 @@
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_ENTITLEMENTS = "Resources/wesnothd-nosandbox.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
@@ -7302,6 +7308,7 @@
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_ENTITLEMENTS = "Resources/wesnothd-nosandbox.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;

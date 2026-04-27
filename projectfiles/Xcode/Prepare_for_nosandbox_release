@@ -1,0 +1,67 @@
+#!/usr/bin/env bash
+#
+# Prepare_for_nosandbox_release
+# Martin Hrubý (hrubymar10), 2026
+#
+# Switches wesnothd's Code Signing Entitlements build setting to
+# Resources/wesnothd-nosandbox.entitlements (empty entitlements).
+# This is the default project state and is required for non-MAS
+# (Developer ID) builds: Steam, SourceForge, itch.io.
+#
+# Run this after a Mac App Store archive has been uploaded, to return
+# the project to its default state before building any other package.
+#
+
+set -e
+
+SECONDS=0
+
+MY_PATH=$(cd "$(dirname "$0")" && pwd)
+if [ -z "${MY_PATH}" ]; then
+  echo 'Error: Script path is for some reason not accessible' >&2
+  exit 1
+fi
+cd "${MY_PATH}" || exit 1
+
+if ! [ -d "The Battle for Wesnoth.xcodeproj" ]; then
+  echo 'Error: I am in bad directory! I must be in wesnoth/projectfiles/Xcode !' >&2
+  exit 1
+fi
+
+PBXPROJ="The Battle for Wesnoth.xcodeproj/project.pbxproj"
+FROM='CODE_SIGN_ENTITLEMENTS = "Resources/wesnothd-mas.entitlements";'
+TO='CODE_SIGN_ENTITLEMENTS = "Resources/wesnothd-nosandbox.entitlements";'
+
+FROM_COUNT=$(/usr/bin/grep -cF "${FROM}" "${PBXPROJ}" || true)
+TO_COUNT=$(/usr/bin/grep -cF "${TO}" "${PBXPROJ}" || true)
+
+if [ "${TO_COUNT}" = "3" ] && [ "${FROM_COUNT}" = "0" ]; then
+  echo "==> wesnothd is already in its default non-MAS state (Steam,"
+  echo "    SourceForge, itch.io). Nothing to do."
+  echo
+  exit 0
+fi
+
+if [ "${FROM_COUNT}" != "3" ] || [ "${TO_COUNT}" != "0" ]; then
+  echo "Error: expected 3 MAS entitlement lines and 0 nosandbox lines in" >&2
+  echo "       ${PBXPROJ}" >&2
+  echo "       but found ${FROM_COUNT} MAS and ${TO_COUNT} nosandbox lines." >&2
+  echo "       The project is in an unexpected state. Aborting." >&2
+  exit 1
+fi
+
+/usr/bin/sed -i '' "s|${FROM}|${TO}|g" "${PBXPROJ}"
+
+NEW_COUNT=$(/usr/bin/grep -cF "${TO}" "${PBXPROJ}" || true)
+if [ "${NEW_COUNT}" != "3" ]; then
+  echo "Error: post-edit verification failed" >&2
+  echo "       (expected 3 nosandbox entitlement lines, got ${NEW_COUNT})." >&2
+  exit 1
+fi
+
+echo "==> wesnothd is now in its default non-MAS state (Steam,"
+echo "    SourceForge, itch.io)."
+echo "    (Resources/wesnothd-nosandbox.entitlements: empty entitlements)"
+echo
+echo "==> Operation took ${SECONDS} seconds ..."
+echo

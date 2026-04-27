@@ -535,7 +535,7 @@ void unit::init(const config& cfg, bool use_traits, const vconfig* vcfg)
 	if(const config::attribute_value* v = cfg.get("overlays")) {
 		auto overlays = utils::parenthetical_split(v->str(), ',');
 		if(overlays.size() > 0) {
-			deprecated_message("[unit]overlays", DEP_LEVEL::PREEMPTIVE, {1, 17, 0}, "This warning is only triggered by the cases that *do* still work: setting [unit]overlays= works, but the [unit]overlays attribute will always be empty if WML tries to read it.");
+			deprecated_message("[unit]overlays", DEP_LEVEL::FOR_REMOVAL, {1, 21, 0}, "This warning is only triggered by the cases that *do* still work: setting [unit]overlays= works, but the [unit]overlays attribute will always be empty if WML tries to read it.");
 			add_modification("object", config{
 				"effect", config{
 					"apply_to", "overlay",
@@ -2620,7 +2620,7 @@ void unit::apply_modifications()
 
 	variables_.clear_children("mods");
 	if(modifications_.has_child("advance")) {
-		deprecated_message("[advance]", DEP_LEVEL::PREEMPTIVE, {1, 15, 0}, "Use [advancement] instead.");
+		deprecated_message("[advance]", DEP_LEVEL::FOR_REMOVAL, {1, 21, 0}, "Use [advancement] instead.");
 	}
 	for(const auto [key, cfg] : modifications_.all_children_view()) {
 		add_modification(key, cfg, true);
