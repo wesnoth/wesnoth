@@ -3057,6 +3057,7 @@ def translator(filename, mapxforms, textxform):
     validate = True
     unbalanced = False
     in_lua_code = False
+    in_translatable_attribute = False
     newdata = []
     refname = None
     while mfile:
@@ -3175,8 +3176,17 @@ def translator(filename, mapxforms, textxform):
             print('wmllint: "%s", line %d: one-line map.' % (filename, lineno))
             newdata.append(line + terminator)
         else:
-            # Handle text (non-map) lines.  It can use within().
-            newline = textxform(filename, lineno, line)
+            # translatable attribute start is identified by equals, optional whitespace, underscore, optional whitespace, quote
+            if not in_translatable_attribute and re.search(r'=\s*_\s*"', line):
+                in_translatable_attribute = True
+            newline = line
+            # code conversions should be skipped in translatable attributes
+            if not in_translatable_attribute:
+                # Handle text (non-map) lines.  It can use within().
+                newline = textxform(filename, lineno, line)
+            # translatable attribute end is identified by quote, optional whitespace, optional comment, end of line
+            if in_translatable_attribute and re.search(r'"\s*(#.*)?$', line):
+                in_translatable_attribute = False
             newdata.append(newline + terminator)
             fields = newline.split("#")
             trimmed = fields[0]
@@ -3532,20 +3542,24 @@ directory.""")
         original = line
         # Perform line changes
         if "wmllint: noconvert" not in original:
-            # code conversions should be skipped when attribute value is translatable
-            if '_"' not in line and '_ "' not in line:
-                for (old, new) in linechanges + mapchanges:
+            for (old, new) in linechanges + mapchanges:
+                # code conversions should not affect comments
+                if "#" in line:
+                    parts = line.split("#", maxsplit=1)
+                    parts[0] = parts[0].replace(old, new)
+                    line = parts[0] + "#" + parts[1]
+                else:
                     line = line.replace(old, new)
-                # Perform any base terrain string conversions needed in
-                # [terrain_type] aliasof=, mvt_alias=, and def_alias= attributes.
-                if under("terrain_type"):
-                    match = re.search(r"\b(?:aliasof|mvt_alias|def_alias)\s*=(.*)$", line)
-                    if match:
-                        aliases = match.group()
-                        for (old, new) in aliaschanges:
-                            old = r'\b' + old + r'\b'
-                            aliases = re.sub(old, new, aliases)
-                        line = line.replace(match.group(), aliases)
+            # Perform any base terrain string conversions needed in
+            # [terrain_type] aliasof=, mvt_alias=, and def_alias= attributes.
+            if under("terrain_type"):
+                match = re.search(r"\b(?:aliasof|mvt_alias|def_alias)\s*=(.*)$", line)
+                if match:
+                    aliases = match.group()
+                    for (old, new) in aliaschanges:
+                        old = r'\b' + old + r'\b'
+                        aliases = re.sub(old, new, aliases)
+                    line = line.replace(match.group(), aliases)
         # Perform tag renaming for 1.5.  Note: this has to happen before
         # the sanity check, which assumes [unit] has already been
         # mapped to [unit_type].  Also, beware that this test will fail to
