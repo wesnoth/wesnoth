@@ -266,9 +266,11 @@ protected:
 	preprocessor_streambuf& parent_;
 
 public:
-	virtual ~preprocessor()
-	{
-	}
+	/**
+	 * Restores the old preprocessing context.
+	 * Appends location and domain directives to the buffer, so that the parser notices these changes.
+	 */
+	virtual ~preprocessor();
 
 	/** Allows specifying any actions that need to be called after the constructor completes. */
 	virtual void init()
@@ -366,8 +368,6 @@ private:
 	/** Inherited from basic_streambuf. */
 	virtual int underflow() override;
 
-	void restore_old_preprocessor();
-
 	/** Buffer read by the STL stream. */
 	std::string out_buffer_;
 
@@ -403,6 +403,21 @@ preprocessor::preprocessor(preprocessor_streambuf& t)
 	, old_location_(t.location_)
 	, old_linenum_(t.linenum_)
 {
+}
+
+preprocessor::~preprocessor()
+{
+	if(!old_location_.empty()) {
+		parent_.buffer_ << INLINED_PREPROCESS_DIRECTIVE_CHAR << "line " << old_linenum_ << ' ' << old_location_ << '\n';
+	}
+
+	if(!old_textdomain_.empty() && parent_.textdomain_ != old_textdomain_) {
+		parent_.buffer_ << INLINED_PREPROCESS_DIRECTIVE_CHAR << "textdomain " << old_textdomain_ << '\n';
+	}
+
+	parent_.location_ = old_location_;
+	parent_.linenum_ = old_linenum_;
+	parent_.textdomain_ = old_textdomain_;
 }
 
 /**
@@ -442,7 +457,7 @@ int preprocessor_streambuf::underflow()
 		// Process files and data chunks until the desired buffer size is reached
 		if(!current()->get_chunk()) {
 			// Drop the current preprocessor item from the queue.
-			restore_old_preprocessor();
+			drop_preprocessor();
 		}
 	}
 
@@ -462,31 +477,6 @@ int preprocessor_streambuf::underflow()
 	}
 
 	return static_cast<unsigned char>(*(begin + sz));
-}
-
-/**
-* Restores the old preprocessing context.
-* Appends location and domain directives to the buffer, so that the parser
-* notices these changes.
-*/
-void preprocessor_streambuf::restore_old_preprocessor()
-{
-	preprocessor* current = this->current();
-
-	if(!current->old_location_.empty()) {
-		buffer_ << INLINED_PREPROCESS_DIRECTIVE_CHAR << "line " << current->old_linenum_ << ' ' << current->old_location_ << '\n';
-	}
-
-	if(!current->old_textdomain_.empty() && textdomain_ != current->old_textdomain_) {
-		buffer_ << INLINED_PREPROCESS_DIRECTIVE_CHAR << "textdomain " << current->old_textdomain_ << '\n';
-	}
-
-	location_ = current->old_location_;
-	linenum_ = current->old_linenum_;
-	textdomain_ = current->old_textdomain_;
-
-	// Drop the preprocessor from the queue.
-	drop_preprocessor();
 }
 
 std::string preprocessor_streambuf::get_current_file()
