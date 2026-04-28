@@ -13,6 +13,7 @@ For the iOS simulator dependency bootstrap and audit workflow, use:
  * Xcode 8.2.1 or higher...
  * Mac OS X 10.11.6 or higher...
  * `git`
+ * `cmake`, `autoconf`, `autoconf-archive`, `automake`, and `libtool` are needed to build the dependencies.
  * `scons` and `gettext` (if you want to compile translations)
 
 ## Targets
@@ -40,7 +41,7 @@ Builds for maximum (runtime) speed and compatibility; it builds for 64-bit, with
 Builds for maximum compiling speed, and uses the current OS as the SDK. If you just want to compile for testing things yourself, this is the way to go.
 
 ## Translations
-To compile translations you need `gettext-tools` and `scons`. You can obtain these tools using `brew install gettext scons`. You also have to force-link Homebrew's `gettext` tools using `brew link --force gettext` command. In the Terminal, `cd /PATH/TO/PROJECT` and run `scons translations`. This will compile all the translations into a translations directory.
+To compile translations you need `gettext-tools` and `scons`. You can obtain these tools using `brew install gettext scons`. Building the dependencies also requires `cmake`, `autoconf`, `autoconf-archive`, `automake`, and `libtool`. You also have to force-link Homebrew's `gettext` tools using `brew link --force gettext` command. In the Terminal, `cd /PATH/TO/PROJECT` and run `scons translations`. This will compile all the translations into a translations directory.
 
 ## Packaging
 When compiling Wesnoth for an official release, the following steps should be taken. Packaging is separated into subchapters, one per distribution channel:
@@ -56,7 +57,7 @@ The release channel is recorded inside the archive in `Contents/Resources/data/d
  * Obtain sources from github using `git clone -b BRANCH --depth 10 https://github.com/wesnoth/wesnoth /PATH/TO/PROJECT` or use your favourite git program.
  * Checkout to the latest tag using `cd /PATH/TO/PROJECT ; git checkout TAG` or use your favourite git program.
  * Use `Finder` to navigate into `/PATH/TO/PROJECT/projectfiles/Xcode`.
- * Double click on the `Fix_Xcode_Dependencies` script and wait until it finishes.
+ * Run `projectfiles/Xcode/macos/build_macos_deps` and wait until it finishes. This creates a local vcpkg checkout under `projectfiles/Xcode/temp`, builds dependencies for both Apple Silicon and Intel, and then puts the resulting headers plus dual-architecture `.dylib` files into one local `Headers`/`lib` directory that Xcode uses.
  * Compile translations as it is described in **Translations** section.
  * Now you can open `The Battle for Wesnoth.xcodeproj` file in Xcode.
  * Update version numbers in Info.plist (if not already done by the release manager).

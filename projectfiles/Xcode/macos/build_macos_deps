@@ -1,0 +1,640 @@
+#!/usr/bin/env bash
+
+# Build the Headers/lib directory that the macOS Xcode project links against.
+#
+# Overview:
+# 1. Create or update a local vcpkg checkout under projectfiles/Xcode/temp so
+#    HEAD contains the builtin-baseline commit from vcpkg.json.
+# 2. Build the dependency tree twice: once for Intel macOS and once for Apple Silicon macOS.
+# 3. Copy the two build outputs into a MacCompileStuff-vcpkg-* dependency
+#    bundle under projectfiles/Xcode/temp. In this script, "staged" means files
+#    inside that dependency bundle's Headers and lib directories. "Universal"
+#    means a dylib built with lipo from x86_64 and arm64 inputs. Generated
+#    headers that differ by architecture are wrappers that select the matching
+#    architecture-specific header.
+# 4. Rewrite the staged dylib install names so the finished app loads libraries
+#    from its own app bundle instead of from the temporary vcpkg build directories.
+
+script_dir=$(cd "$(dirname "$0")" && pwd) || exit 1
+xcode_dir=$(cd "${script_dir}/.." && pwd) || exit 1
+root_dir=$(cd "${xcode_dir}/../.." && pwd) || exit 1
+
+# Static configuration for the generated macOS dependency bundle.
+bundle_version="v0.0.1"
+vcpkg_repo_url="https://github.com/microsoft/vcpkg"
+vcpkg_repo_name="vcpkg-macos"
+staged_bundle_name="MacCompileStuff-vcpkg-${bundle_version}"
+x64_triplet="x64-osx-wesnoth"
+arm64_triplet="arm64-osx-wesnoth"
+
+# Derived paths used throughout the build/staging flow.
+triplets_dir="${script_dir}/triplets"
+temp_dir="${xcode_dir}/temp"
+vcpkg_root="${temp_dir}/${vcpkg_repo_name}"
+overlay_ports_root="${temp_dir}/overlay-ports"
+pango_overlay_port="${overlay_ports_root}/pango"
+boost_unordered_overlay_port="${overlay_ports_root}/boost-unordered"
+install_root_base="${temp_dir}/vcpkg-installed-macos"
+buildtrees_root_base="${temp_dir}/vcpkg-buildtrees-macos"
+downloads_root="${temp_dir}/vcpkg-downloads"
+staged_bundle_dir="${temp_dir}/${staged_bundle_name}"
+headers_dir="${staged_bundle_dir}/Headers"
+lib_dir="${staged_bundle_dir}/lib"
+vcpkg_baseline=$(sed -n 's/.*"builtin-baseline": "\([^"]*\)".*/\1/p' "${root_dir}/vcpkg.json")
+x64_install_root="${install_root_base}/${x64_triplet}-root"
+arm64_install_root="${install_root_base}/${arm64_triplet}-root"
+x64_buildtrees_root="${buildtrees_root_base}/${x64_triplet}"
+arm64_buildtrees_root="${buildtrees_root_base}/${arm64_triplet}"
+x64_install_dir="${x64_install_root}/${x64_triplet}"
+arm64_install_dir="${arm64_install_root}/${arm64_triplet}"
+
+required_macos_dylibs=(
+	"libSDL2-2.0.0.dylib"
+	"libSDL2_image-2.0.0.dylib"
+	"libSDL2_mixer-2.0.0.dylib"
+	"libboost_atomic-mt.dylib"
+	"libboost_charconv-mt.dylib"
+	"libboost_chrono-mt.dylib"
+	"libboost_container.1.89.0.dylib"
+	"libboost_context-mt.dylib"
+	"libboost_coroutine-mt.dylib"
+	"libboost_date_time.1.89.0.dylib"
+	"libboost_filesystem-mt.dylib"
+	"libboost_iostreams-mt.dylib"
+	"libboost_locale-mt.dylib"
+	"libboost_process.dylib"
+	"libboost_program_options-mt.dylib"
+	"libboost_random-mt.dylib"
+	"libboost_thread-mt.dylib"
+	"libboost_unit_test_framework-mt.dylib"
+	"libbrotlicommon.1.2.0.dylib"
+	"libbrotlidec.1.2.0.dylib"
+	"libbz2.1.0.8.dylib"
+	"libcairo.2.dylib"
+	"libcrypto.dylib"
+	"libexpat.1.11.2.dylib"
+	"libffi.8.dylib"
+	"libfontconfig.1.dylib"
+	"libfreetype.6.dylib"
+	"libfribidi.0.dylib"
+	"libgio-2.0.0.dylib"
+	"libglib-2.0.0.dylib"
+	"libgmodule-2.0.0.dylib"
+	"libgobject-2.0.0.dylib"
+	"libgthread-2.0.0.dylib"
+	"libharfbuzz.0.dylib"
+	"libicudata.78.2.dylib"
+	"libicui18n.78.2.dylib"
+	"libicuuc.78.2.dylib"
+	"libintl.8.dylib"
+	"libjpeg.62.4.0.dylib"
+	"liblzma.5.8.2.dylib"
+	"libogg.0.dylib"
+	"libpango-1.0.0.dylib"
+	"libpangocairo-1.0.0.dylib"
+	"libpangoft2-1.0.0.dylib"
+	"libpcre2-8.0.dylib"
+	"libpixman-1.0.dylib"
+	"libpng16.16.dylib"
+	"libreadline.8.dylib"
+	"libsharpyuv.0.dylib"
+	"libssl.dylib"
+	"libvorbis.0.dylib"
+	"libvorbisfile.dylib"
+	"libwavpack.1.dylib"
+	"libwebp.7.dylib"
+	"libwebpdemux.2.dylib"
+	"libz.1.3.1.dylib"
+	"libzstd.1.5.7.dylib"
+)
+
+time_interval_to_string() {
+	local duration=$(( $2 - $1 )) days hours minutes seconds
+
+	days=$((duration / 60 / 60 / 24))
+	hours=$((duration % (60 * 60 * 24) / 60 / 60))
+	minutes=$((duration % (60 * 60) / 60))
+	seconds=$((duration % 60))
+	if (( days == 0 )); then
+		if (( hours == 0 )); then
+			if (( minutes == 0 )); then
+				echo "==> Operation took $seconds seconds ..."
+			else
+				echo "==> Operation took $minutes minutes and $seconds seconds ..."
+			fi
+		else
+			echo "==> Operation took $hours hours $minutes minutes and $seconds seconds ..."
+		fi
+	else
+		echo "==> Operation took $days days $hours hours $minutes minutes and $seconds seconds ..."
+	fi
+}
+
+die() {
+	printf 'Error: %s\n' "$*" >&2
+	exit 1
+}
+
+need_cmd() {
+	command -v "$1" >/dev/null || die "$1 is not installed or not on PATH."
+}
+
+vcpkg_checkout_has_baseline() {
+	# We archive the pango overlay directly from ${vcpkg_baseline}, so a reused
+	# temp checkout has to contain that commit before we can proceed.
+	git -C "${vcpkg_root}" merge-base --is-ancestor "${vcpkg_baseline}" HEAD
+}
+
+clone_vcpkg_checkout() {
+	git clone --filter=blob:none "${vcpkg_repo_url}" "${vcpkg_root}"
+}
+
+refresh_vcpkg_checkout() {
+	git -C "${vcpkg_root}" fetch --filter=blob:none || return
+	git -C "${vcpkg_root}" merge --ff-only @{u}
+}
+
+reclone_vcpkg_checkout() {
+	rm -rf "${vcpkg_root}" || die "Failed to remove ${vcpkg_root}."
+	clone_vcpkg_checkout || return
+}
+
+ensure_vcpkg_checkout() {
+	if [[ ! -e "${vcpkg_root}" ]]; then
+		clone_vcpkg_checkout || return
+	elif ! vcpkg_checkout_has_baseline && ! refresh_vcpkg_checkout; then
+		reclone_vcpkg_checkout || return
+	fi
+
+	vcpkg_checkout_has_baseline
+}
+
+vcpkg_install_log_has_retryable_network_error() {
+	local log_path=$1
+
+	# Hosted runners occasionally hit one-off DNS or connection failures while
+	# fetching source tarballs. Retry only those download-shaped failures.
+	grep -Eq \
+		"curl operation failed with error code (6|7|28|35|52|56)|Couldn't resolve host name|Failed to connect|Operation timed out|SSL connect error|Connection reset by peer" \
+		"${log_path}"
+}
+
+install_triplet() {
+	local triplet_name=$1
+	local install_root=$2
+	local buildtrees_root=$3
+	local log_path="${buildtrees_root}/vcpkg-install.log"
+	local max_attempts=3
+	local attempt=1
+	local command_status retry_delay_seconds
+
+	mkdir -p "${buildtrees_root}" || die "Failed to create ${buildtrees_root}."
+
+	while (( attempt <= max_attempts )); do
+		: > "${log_path}" || die "Failed to reset ${log_path}."
+		"${vcpkg_root}/vcpkg" install \
+			"--x-manifest-root=${root_dir}" \
+			"--x-install-root=${install_root}" \
+			"--x-buildtrees-root=${buildtrees_root}" \
+			"--downloads-root=${downloads_root}" \
+			"--overlay-ports=${overlay_ports_root}" \
+			"--overlay-triplets=${triplets_dir}" \
+			"--triplet=${triplet_name}" \
+			2>&1 | tee "${log_path}"
+		command_status=${PIPESTATUS[0]}
+		if (( command_status == 0 )); then
+			return
+		fi
+
+		if (( attempt == max_attempts )) || ! vcpkg_install_log_has_retryable_network_error "${log_path}"; then
+			die "vcpkg install failed for ${triplet_name}. See logs under ${buildtrees_root} and ${log_path}."
+		fi
+
+		retry_delay_seconds=$((attempt * 15))
+		printf '==> Retrying %s after a retryable vcpkg download failure (attempt %d/%d, waiting %d seconds) ...\n' \
+			"${triplet_name}" "$((attempt + 1))" "${max_attempts}" "${retry_delay_seconds}"
+		sleep "${retry_delay_seconds}"
+		attempt=$((attempt + 1))
+	done
+}
+
+prepare_pango_overlay() {
+	local overlay_extract_root overlay_archive_path pango_overlay_relative
+
+	overlay_extract_root="${overlay_ports_root}/.pango-baseline"
+	overlay_archive_path="${overlay_extract_root}/pango-port.tar"
+	rm -rf "${pango_overlay_port}" || die "Failed to remove ${pango_overlay_port}."
+	rm -rf "${overlay_extract_root}" || die "Failed to remove ${overlay_extract_root}."
+	mkdir -p "${overlay_ports_root}" || die "Failed to create ${overlay_ports_root}."
+	mkdir -p "${overlay_extract_root}" || die "Failed to create ${overlay_extract_root}."
+	# This script reuses one temp vcpkg checkout across runs. Overlay ports bypass
+	# builtin-baseline resolution, so copying ports/pango from checkout HEAD could
+	# drift away from the port revision pinned by vcpkg.json. Archive the port
+	# from ${vcpkg_baseline} instead, then apply the local patch on top of that
+	# exact baseline revision.
+	git -C "${vcpkg_root}" archive --format=tar "${vcpkg_baseline}" "ports/pango" > "${overlay_archive_path}" \
+		|| die "Failed to archive pango from vcpkg baseline ${vcpkg_baseline}. Remove ${vcpkg_root} and rerun the script."
+	tar -xf "${overlay_archive_path}" -C "${overlay_extract_root}" || die "Failed to extract ${overlay_archive_path}."
+	mv "${overlay_extract_root}/ports/pango" "${pango_overlay_port}" || die "Failed to move the extracted pango overlay into ${pango_overlay_port}."
+	rm -rf "${overlay_extract_root}" || die "Failed to remove ${overlay_extract_root}."
+	pango_overlay_relative="${pango_overlay_port#"${root_dir}"/}"
+	git -C "${root_dir}" apply --directory="${pango_overlay_relative}" "${script_dir}/patches/pango-objc.patch" \
+		|| die "Failed to apply ${script_dir}/patches/pango-objc.patch to ${pango_overlay_relative}."
+}
+
+prepare_boost_unordered_overlay() {
+	local overlay_extract_root overlay_archive_path boost_unordered_overlay_relative
+
+	overlay_extract_root="${overlay_ports_root}/.boost-unordered-baseline"
+	overlay_archive_path="${overlay_extract_root}/boost-unordered-port.tar"
+	rm -rf "${boost_unordered_overlay_port}" || die "Failed to remove ${boost_unordered_overlay_port}."
+	rm -rf "${overlay_extract_root}" || die "Failed to remove ${overlay_extract_root}."
+	mkdir -p "${overlay_ports_root}" || die "Failed to create ${overlay_ports_root}."
+	mkdir -p "${overlay_extract_root}" || die "Failed to create ${overlay_extract_root}."
+	# GitHub now 404s the legacy /archive/<tag>.tar.gz URL for boostorg/unordered
+	# even though the tag still exists. Archive the baseline port and patch it to
+	# use refs/tags so the pinned boost-unordered version remains downloadable.
+	git -C "${vcpkg_root}" archive --format=tar "${vcpkg_baseline}" "ports/boost-unordered" > "${overlay_archive_path}" \
+		|| die "Failed to archive boost-unordered from vcpkg baseline ${vcpkg_baseline}. Remove ${vcpkg_root} and rerun the script."
+	tar -xf "${overlay_archive_path}" -C "${overlay_extract_root}" || die "Failed to extract ${overlay_archive_path}."
+	mv "${overlay_extract_root}/ports/boost-unordered" "${boost_unordered_overlay_port}" \
+		|| die "Failed to move the extracted boost-unordered overlay into ${boost_unordered_overlay_port}."
+	rm -rf "${overlay_extract_root}" || die "Failed to remove ${overlay_extract_root}."
+	boost_unordered_overlay_relative="${boost_unordered_overlay_port#"${root_dir}"/}"
+	git -C "${root_dir}" apply --directory="${boost_unordered_overlay_relative}" "${script_dir}/patches/boost-unordered-refs-tags.patch" \
+		|| die "Failed to apply ${script_dir}/patches/boost-unordered-refs-tags.patch to ${boost_unordered_overlay_relative}."
+}
+
+write_arch_wrapper() {
+	local wrapper_path=$1
+	local x64_header=$2
+	local arm64_header=$3
+
+	cat > "${wrapper_path}" <<EOF || die "Failed to write generated header wrapper ${wrapper_path}."
+#if defined(__x86_64__)
+#include "${x64_header}"
+#elif defined(__arm64__)
+#include "${arm64_header}"
+#else
+#error Unsupported macOS architecture for generated header wrapper
+#endif
+EOF
+}
+
+# SDL_config.h, glibconfig.h, and opensslconf.h are generated differently for
+# x86_64 and arm64. Keep both versions and point the public include name at the
+# right one based on the compiler target architecture.
+stage_arch_specific_headers() {
+	cp "${x64_install_dir}/include/SDL2/SDL_config.h" "${headers_dir}/SDL2/SDL_config_x86_64.h" \
+		|| die "Failed to copy the x86_64 SDL_config.h wrapper input."
+	cp "${arm64_install_dir}/include/SDL2/SDL_config.h" "${headers_dir}/SDL2/SDL_config_arm64.h" \
+		|| die "Failed to copy the arm64 SDL_config.h wrapper input."
+	write_arch_wrapper "${headers_dir}/SDL2/SDL_config.h" "SDL_config_x86_64.h" "SDL_config_arm64.h"
+
+	cp "${x64_install_dir}/lib/glib-2.0/include/glibconfig.h" "${headers_dir}/glibconfig_x86_64.h" \
+		|| die "Failed to copy the x86_64 glibconfig.h wrapper input."
+	cp "${arm64_install_dir}/lib/glib-2.0/include/glibconfig.h" "${headers_dir}/glibconfig_arm64.h" \
+		|| die "Failed to copy the arm64 glibconfig.h wrapper input."
+	write_arch_wrapper "${headers_dir}/glibconfig.h" "glibconfig_x86_64.h" "glibconfig_arm64.h"
+
+	cp "${x64_install_dir}/include/openssl/opensslconf.h" "${headers_dir}/openssl/opensslconf_x86_64.h" \
+		|| die "Failed to copy the x86_64 opensslconf.h wrapper input."
+	cp "${arm64_install_dir}/include/openssl/opensslconf.h" "${headers_dir}/openssl/opensslconf_arm64.h" \
+		|| die "Failed to copy the arm64 opensslconf.h wrapper input."
+	write_arch_wrapper "${headers_dir}/openssl/opensslconf.h" "opensslconf_x86_64.h" "opensslconf_arm64.h"
+}
+
+find_unique_real_dylib() {
+	local lib_search_dir=$1
+	local dylib_glob=$2
+	local match_paths=("${lib_search_dir}"/${dylib_glob})
+	local match_names=()
+	local match
+
+	for match in "${match_paths[@]}"; do
+		[[ -f "${match}" && ! -L "${match}" ]] || continue
+		match_names+=("$(basename "${match}")")
+	done
+
+	case "${#match_names[@]}" in
+		1)
+			printf '%s\n' "${match_names[0]}"
+			;;
+		0)
+			die "Failed to find a real dylib matching ${dylib_glob} in ${lib_search_dir}."
+			;;
+		*)
+			die "Expected exactly one real dylib matching ${dylib_glob} in ${lib_search_dir}, found: ${match_names[*]}"
+			;;
+	esac
+}
+
+resolve_required_real_dylib() {
+	local install_dir=$1
+	local required_name=$2
+	local install_lib_dir="${install_dir}/lib"
+	local install_path="${install_lib_dir}/${required_name}"
+	local source_glob boost_base target_basename
+
+	if [[ -f "${install_path}" && ! -L "${install_path}" ]]; then
+		basename "${install_path}"
+		return
+	fi
+
+	if [[ -L "${install_path}" ]]; then
+		target_basename=$(basename "$(readlink "${install_path}")")
+		[[ -f "${install_lib_dir}/${target_basename}" ]] || die "Broken dylib symlink ${required_name} -> ${target_basename} in ${install_lib_dir}."
+		printf '%s\n' "${target_basename}"
+		return
+	fi
+
+	case "${required_name}" in
+		libboost_*-mt.dylib)
+			boost_base="${required_name%-mt.dylib}"
+			source_glob="${boost_base}.*.dylib"
+			;;
+		libboost_container.1.89.0.dylib)
+			source_glob="libboost_container.*.dylib"
+			;;
+		libboost_date_time.1.89.0.dylib)
+			source_glob="libboost_date_time.*.dylib"
+			;;
+		libexpat.1.11.2.dylib)
+			source_glob="libexpat.*.dylib"
+			;;
+		libvorbis.0.dylib)
+			source_glob="libvorbis.0.*.dylib"
+			;;
+		*)
+			die "Failed to resolve required macOS dylib ${required_name} in ${install_lib_dir}."
+			;;
+	esac
+
+	find_unique_real_dylib "${install_lib_dir}" "${source_glob}"
+}
+
+validate_required_macos_dylibs() {
+	local index other_index required_name other_name required_real_name other_real_name
+
+	for (( index=0; index<${#required_macos_dylibs[@]}; index++ )); do
+		required_name="${required_macos_dylibs[index]}"
+		required_real_name=$(resolve_required_real_dylib "${x64_install_dir}" "${required_name}")
+
+		for (( other_index=index + 1; other_index<${#required_macos_dylibs[@]}; other_index++ )); do
+			other_name="${required_macos_dylibs[other_index]}"
+			[[ "${required_name}" != "${other_name}" ]] || die "required_macos_dylibs lists ${required_name} more than once."
+
+			other_real_name=$(resolve_required_real_dylib "${x64_install_dir}" "${other_name}")
+			[[ "${required_real_name}" != "${other_real_name}" ]] \
+				|| die "required_macos_dylibs entries ${required_name} and ${other_name} both resolve to ${required_real_name}; keep only one required name and add the alias later instead of silently staging duplicates."
+		done
+	done
+}
+
+stage_universal_dylibs() {
+	local required_name x64_name arm64_name
+
+	rm -rf "${lib_dir}" || die "Failed to remove ${lib_dir}."
+	mkdir -p "${lib_dir}" || die "Failed to create ${lib_dir}."
+
+	for required_name in "${required_macos_dylibs[@]}"; do
+		x64_name=$(resolve_required_real_dylib "${x64_install_dir}" "${required_name}")
+		arm64_name=$(resolve_required_real_dylib "${arm64_install_dir}" "${required_name}")
+		if [[ "${x64_name}" != "${arm64_name}" ]]; then
+			die "Required dylib ${required_name} resolves to ${x64_name} for ${x64_triplet} and ${arm64_name} for ${arm64_triplet}."
+		fi
+		lipo -create \
+			"${x64_install_dir}/lib/${x64_name}" \
+			"${arm64_install_dir}/lib/${arm64_name}" \
+			-output "${lib_dir}/${x64_name}" \
+			|| die "Failed to create the universal dylib ${lib_dir}/${x64_name}."
+	done
+}
+
+# After copying dylibs out of vcpkg, `otool -L` still points back into
+# projectfiles/Xcode/temp/... . Rewrite those edges to either @loader_path
+# inside the staged bundle or to the system zlib path; otherwise the app will
+# still try to load libraries from the deleted temp tree at runtime.
+rewrite_staged_dylib_deps() {
+	local dylib_path=$1
+	local dep dep_name preferred_name boost_base link_path link_name target_basename
+
+	otool -L "${dylib_path}" >/dev/null || die "Failed to inspect ${dylib_path} with otool."
+
+	while IFS= read -r dep; do
+		[[ -n "${dep}" ]] || continue
+		case "${dep}" in
+			/usr/lib/*|/System/Library/*)
+				continue
+				;;
+		esac
+
+		dep_name=$(basename "${dep}")
+		case "${dep_name}" in
+				libboost_*.dylib)
+					boost_base="${dep_name%.dylib}"
+					boost_base="${boost_base%%.*}"
+					if [[ -e "${lib_dir}/${boost_base}-mt.dylib" ]]; then
+						install_name_tool -change "${dep}" "@loader_path/${boost_base}-mt.dylib" "${dylib_path}" \
+							|| die "Failed to rewrite ${dep} in ${dylib_path}."
+						continue
+					fi
+					;;
+				libcrypto*.dylib)
+					if [[ -e "${lib_dir}/libcrypto.dylib" ]]; then
+						install_name_tool -change "${dep}" "@loader_path/libcrypto.dylib" "${dylib_path}" \
+							|| die "Failed to rewrite ${dep} in ${dylib_path}."
+						continue
+					fi
+					;;
+				libpcre2-8*.dylib)
+					if [[ -e "${lib_dir}/libpcre2-8.0.dylib" ]]; then
+						install_name_tool -change "${dep}" "@loader_path/libpcre2-8.0.dylib" "${dylib_path}" \
+							|| die "Failed to rewrite ${dep} in ${dylib_path}."
+						continue
+					fi
+					;;
+				libreadline*.dylib)
+					if [[ -e "${lib_dir}/libreadline.8.dylib" ]]; then
+						install_name_tool -change "${dep}" "@loader_path/libreadline.8.dylib" "${dylib_path}" \
+							|| die "Failed to rewrite ${dep} in ${dylib_path}."
+						continue
+					fi
+					;;
+				libssl*.dylib)
+					if [[ -e "${lib_dir}/libssl.dylib" ]]; then
+						install_name_tool -change "${dep}" "@loader_path/libssl.dylib" "${dylib_path}" \
+							|| die "Failed to rewrite ${dep} in ${dylib_path}."
+						continue
+					fi
+					;;
+				libz.*.dylib)
+					install_name_tool -change "${dep}" "/usr/lib/libz.1.dylib" "${dylib_path}" \
+						|| die "Failed to rewrite ${dep} in ${dylib_path}."
+					continue
+					;;
+		esac
+
+		preferred_name="${dep_name}"
+		for link_path in "${x64_install_dir}/lib"/*.dylib; do
+			[[ -L "${link_path}" ]] || continue
+			target_basename=$(basename "$(readlink "${link_path}")")
+			[[ "${target_basename}" == "${dep_name}" ]] || continue
+			link_name=$(basename "${link_path}")
+			[[ -e "${lib_dir}/${link_name}" ]] || continue
+			# Prefer the least-versioned staged alias so rewritten deps match the
+			# app-bundle filenames we recreate for Xcode and for dependent dylibs.
+			if ((${#link_name} < ${#preferred_name})); then
+				preferred_name="${link_name}"
+			fi
+		done
+		if [[ -e "${lib_dir}/${preferred_name}" ]]; then
+			install_name_tool -change "${dep}" "@loader_path/${preferred_name}" "${dylib_path}" \
+				|| die "Failed to rewrite ${dep} in ${dylib_path}."
+		fi
+	done < <(otool -L "${dylib_path}" | awk 'NR > 1{print $1}')
+}
+
+normalize_staged_dylibs() {
+	local dylib_path dylib_name
+
+	for dylib_path in "${lib_dir}"/*.dylib; do
+		[[ -f "${dylib_path}" && ! -L "${dylib_path}" ]] || continue
+		dylib_name=$(basename "${dylib_path}")
+		# Make the install id runpath-relative (@rpath) so it is found in the
+		# final app layout.
+		install_name_tool -id "@rpath/${dylib_name}" "${dylib_path}" \
+			|| die "Failed to reset the install id for ${dylib_path}."
+		rewrite_staged_dylib_deps "${dylib_path}"
+	done
+}
+
+recreate_common_symlinks() {
+	local link_path target_basename
+
+	for link_path in "${x64_install_dir}/lib"/*.dylib; do
+		[[ -L "${link_path}" ]] || continue
+		target_basename=$(basename "$(readlink "${link_path}")")
+		if [[ -e "${lib_dir}/${target_basename}" ]]; then
+			ln -sf "${target_basename}" "${lib_dir}/$(basename "${link_path}")" \
+				|| die "Failed to recreate the staged symlink $(basename "${link_path}")."
+		fi
+	done
+}
+
+materialize_required_macos_dylibs() {
+	local required_name real_name staged_required_path staged_real_path
+
+	for required_name in "${required_macos_dylibs[@]}"; do
+		real_name=$(resolve_required_real_dylib "${x64_install_dir}" "${required_name}")
+		staged_required_path="${lib_dir}/${required_name}"
+		staged_real_path="${lib_dir}/${real_name}"
+
+		[[ -e "${staged_real_path}" ]] || die "Missing staged dylib ${real_name} required for ${required_name}."
+
+		if [[ "${required_name}" == "${real_name}" ]]; then
+			[[ -f "${staged_required_path}" && ! -L "${staged_required_path}" ]] || die "Expected ${required_name} to be staged as a real dylib."
+			install_name_tool -id "@rpath/${required_name}" "${staged_required_path}" \
+				|| die "Failed to reset the install id for ${staged_required_path}."
+			rewrite_staged_dylib_deps "${staged_required_path}"
+			continue
+		fi
+
+		rm -f "${staged_required_path}" || die "Failed to remove ${staged_required_path}."
+		cp "${staged_real_path}" "${staged_required_path}" || die "Failed to copy ${staged_real_path} to ${staged_required_path}."
+		# Some filenames referenced by the Xcode project and app bundle, such
+		# as libssl.dylib, libcrypto.dylib, or libreadline.8.dylib, are
+		# materialized alongside the fully versioned upstream dylibs so each
+		# filename can carry its own @rpath install id.
+		install_name_tool -id "@rpath/${required_name}" "${staged_required_path}" \
+			|| die "Failed to reset the install id for ${staged_required_path}."
+		rewrite_staged_dylib_deps "${staged_required_path}"
+	done
+}
+
+validate_staged_bundle() {
+	local missing=()
+	local dylib
+
+	for dylib in "${required_macos_dylibs[@]}"; do
+		if [[ ! -e "${lib_dir}/${dylib}" ]]; then
+			missing+=("${dylib}")
+		fi
+	done
+
+	[[ -e "${headers_dir}/SDL2/SDL.h" ]] || missing+=("Headers/SDL2/SDL.h")
+	[[ -e "${headers_dir}/glibconfig.h" ]] || missing+=("Headers/glibconfig.h")
+	[[ -e "${headers_dir}/openssl/opensslconf.h" ]] || missing+=("Headers/openssl/opensslconf.h")
+
+	if (( ${#missing[@]} )); then
+		printf 'Error: staged macOS bundle is missing expected files:\n' >&2
+		printf '  %s\n' "${missing[@]}" >&2
+		exit 1
+	fi
+}
+
+activate_xcode_links() {
+	rm -f "${xcode_dir}/Headers" || die "Failed to remove ${xcode_dir}/Headers."
+	ln -s "temp/${staged_bundle_name}/Headers" "${xcode_dir}/Headers" || die "Failed to create ${xcode_dir}/Headers."
+
+	rm -f "${xcode_dir}/lib" || die "Failed to remove ${xcode_dir}/lib."
+	ln -s "temp/${staged_bundle_name}/lib" "${xcode_dir}/lib" || die "Failed to create ${xcode_dir}/lib."
+}
+
+SECONDS=0
+
+[[ -d "${xcode_dir}/The Battle for Wesnoth.xcodeproj" ]] || die "Could not locate The Battle for Wesnoth.xcodeproj under ${xcode_dir}. This script attempts to find its own location (based on \$0) so it is irrelevant what dir it is called from. This appears to have failed. Please report."
+[[ -n "${vcpkg_baseline}" ]] || die "Failed to read builtin-baseline from ${root_dir}/vcpkg.json."
+
+need_cmd git
+need_cmd cmake
+need_cmd rsync
+need_cmd tar
+need_cmd lipo
+need_cmd install_name_tool
+need_cmd otool
+
+mkdir -p "${temp_dir}" || die "Failed to create ${temp_dir}."
+
+echo "==> Ensuring vcpkg checkout contains ${vcpkg_baseline} ..."
+ensure_vcpkg_checkout \
+	|| die "Could not update ${vcpkg_root} so HEAD contains the vcpkg baseline ${vcpkg_baseline}."
+
+echo "==> Bootstrapping vcpkg ..."
+"${vcpkg_root}/bootstrap-vcpkg.sh" -disableMetrics || die "Failed to bootstrap vcpkg under ${vcpkg_root}."
+
+echo "==> Preparing pango overlay port ..."
+prepare_pango_overlay
+
+echo "==> Preparing boost-unordered overlay port ..."
+prepare_boost_unordered_overlay
+
+echo "==> Installing macOS Xcode dependencies for ${x64_triplet} ..."
+install_triplet "${x64_triplet}" "${x64_install_root}" "${x64_buildtrees_root}"
+
+echo "==> Installing macOS Xcode dependencies for ${arm64_triplet} ..."
+install_triplet "${arm64_triplet}" "${arm64_install_root}" "${arm64_buildtrees_root}"
+
+echo "==> Staging headers ..."
+rm -rf "${headers_dir}" || die "Failed to remove ${headers_dir}."
+mkdir -p "${headers_dir}" || die "Failed to create ${headers_dir}."
+rsync -a "${arm64_install_dir}/include/" "${headers_dir}/" || die "Failed to copy headers into ${headers_dir}."
+stage_arch_specific_headers
+
+echo "==> Staging universal dylibs ..."
+validate_required_macos_dylibs
+stage_universal_dylibs
+normalize_staged_dylibs
+recreate_common_symlinks
+materialize_required_macos_dylibs
+normalize_staged_dylibs
+
+echo "==> Validating staged bundle ..."
+validate_staged_bundle
+
+activate_xcode_links
+
+echo "==> DONE ..."
+echo
+time_interval_to_string 0 "${SECONDS}"
+echo

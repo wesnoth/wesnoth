@@ -279,8 +279,8 @@ jobs:
 
       - name: Get dependencies
         run: |
-          HOMEBREW_NO_AUTO_UPDATE=1 brew install scons
-          ./projectfiles/Xcode/Fix_Xcode_Dependencies
+          HOMEBREW_NO_AUTO_UPDATE=1 brew install autoconf autoconf-archive automake cmake libtool scons
+          ./projectfiles/Xcode/macos/build_macos_deps
       - name: Build translations
         run: scons translations build=release --debug=time nls=true jobs=2
       - name: Build wesnoth, wesnothd, campaignd and unit tests
