@@ -1589,14 +1589,14 @@ bool preprocessor_data::get_chunk()
 
 				// If the macro definition has any optional arguments, insert their defaults
 				if(val.optional_arguments.size() > 0) {
-					for(const auto& argument : val.optional_arguments) {
-						if(defines->find(argument.first) == defines->end()) {
+					for(const auto& [argument, argument_value] : val.optional_arguments) {
+						if(defines->find(argument) == defines->end()) {
 							std::unique_ptr<preprocessor_streambuf> buf(new preprocessor_streambuf(parent_));
 
 							buf->textdomain_ = parent_.textdomain_;
 							std::istream in(buf.get());
 
-							filesystem::scoped_istream buffer{new std::istringstream(argument.second)};
+							filesystem::scoped_istream buffer{new std::istringstream(argument_value)};
 
 							auto temp_defines = std::make_unique<std::map<std::string, std::string>>();
 							temp_defines->insert(defines->begin(), defines->end());
@@ -1607,10 +1607,10 @@ bool preprocessor_data::get_chunk()
 							std::ostringstream res;
 							res << in.rdbuf();
 
-							DBG_PREPROC << "Setting default for optional argument " << argument.first << " in macro "
+							DBG_PREPROC << "Setting default for optional argument " << argument << " in macro "
 										<< symbol;
 
-							(*defines)[argument.first] = res.str();
+							(*defines)[argument] = res.str();
 						}
 					}
 				}
