@@ -32,7 +32,6 @@
 #include "deprecation.hpp"
 
 #include <stdexcept>
-#include <deque>
 
 static lg::log_domain log_preprocessor("preprocessor");
 #define ERR_PREPROC LOG_STREAM(err, log_preprocessor)
@@ -375,7 +374,7 @@ private:
 	std::stringstream buffer_;
 
 	/** Input preprocessor queue. */
-	std::deque<std::unique_ptr<preprocessor>> preprocessor_queue_;
+	std::vector<std::unique_ptr<preprocessor>> preprocessor_queue_;
 
 	preproc_map& defines_;
 
