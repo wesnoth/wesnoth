@@ -51,21 +51,9 @@
 
 #ifdef __APPLE__
 #include <TargetConditionals.h>
-
-#if !TARGET_OS_IPHONE
-//
-// HACK: MacCompileStuff is currently on 1.86, so it could use the v2 API,
-// but macOS packaging still links against the old boost::process v1 layout.
-//
-// -- vultraz, 2025-05-12
-//
-#if BOOST_VERSION > 108600
-#error MacCompileStuff has been updated. Remove this block and the accompanying __APPLE__ checks below.
-#endif
-#include <boost/process/v1/child.hpp>
 #endif
 
-#elif BOOST_VERSION >= 108600
+#if BOOST_VERSION >= 108600
 
 // boost::asio (via boost::process) complains about winsock.h otherwise
 #ifdef _WIN32
@@ -825,7 +813,7 @@ void game_launcher::start_wesnothd()
 	LOG_GENERAL << "Starting wesnothd";
 	try
 	{
-#if !defined(__APPLE__) && BOOST_VERSION >= 108600
+#if BOOST_VERSION >= 108600
 		boost::asio::io_context io_context;
 		auto c = boost::process::v2::process{io_context, wesnothd_program, { "-c", config }};
 #else
@@ -841,10 +829,10 @@ void game_launcher::start_wesnothd()
 		std::this_thread::sleep_for(50ms);
 		return;
 	}
-#if defined(__APPLE__) || BOOST_VERSION < 108600
-	catch(const boost::process::process_error& e)
-#else
+#if BOOST_VERSION >= 108600
 	catch(const std::exception& e)
+#else
+	catch(const boost::process::process_error& e)
 #endif
 	{
 		prefs::get().set_mp_server_program_name("");
