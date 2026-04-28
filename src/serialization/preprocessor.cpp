@@ -604,10 +604,13 @@ public:
 	{
 		while(pos_ != end_) {
 			const std::string& name = *(pos_++);
-			unsigned sz = name.size();
 
+#ifdef __cpp_lib_starts_ends_with
+			if(!name.ends_with(".cfg")) {
+#else
 			// Use reverse iterator to optimize testing
-			if(sz < 5 || !std::equal(name.rbegin(), name.rbegin() + 4, "gfc.")) {
+			if(name.size() < 5 || !std::equal(name.rbegin(), name.rbegin() + 4, "gfc.")) {
+#endif
 				continue;
 			}
 
@@ -1202,7 +1205,11 @@ bool preprocessor_data::get_chunk()
 					}
 				} else {
 					if(found_arg > 0 && ++found_arg == 4) {
+#ifdef __cpp_lib_starts_ends_with
+						if(buffer.ends_with("arg")) {
+#else
 						if(std::equal(buffer.end() - 3, buffer.end(), "arg")) {
+#endif
 							buffer.erase(buffer.end() - 4, buffer.end());
 
 							skip_spaces();
@@ -1227,7 +1234,11 @@ bool preprocessor_data::get_chunk()
 								if(e == '#') {
 									found_endarg = 1;
 								} else if(found_endarg > 0 && ++found_endarg == 7) {
+#ifdef __cpp_lib_starts_ends_with
+									if(argbuffer.ends_with("endarg")) {
+#else
 									if(std::equal(argbuffer.end() - 6, argbuffer.end(), "endarg")) {
+#endif
 										argbuffer.erase(argbuffer.end() - 7, argbuffer.end());
 										optargs[argname] = argbuffer;
 										skip_eol();
@@ -1241,7 +1252,11 @@ bool preprocessor_data::get_chunk()
 					}
 
 					if(found_deprecate > 0 && ++found_deprecate == 11) {
+#ifdef __cpp_lib_starts_ends_with
+						if(buffer.ends_with("deprecated")) {
+#else
 						if(std::equal(buffer.end() - 10, buffer.end(), "deprecated")) {
+#endif
 							buffer.erase(buffer.end() - 11, buffer.end());
 							skip_spaces();
 							try {
@@ -1270,13 +1285,21 @@ bool preprocessor_data::get_chunk()
 					}
 
 					if(found_enddef > 0 && ++found_enddef == 7) {
+#ifdef __cpp_lib_starts_ends_with
+						if(buffer.ends_with("enddef")) {
+#else
 						if(std::equal(buffer.end() - 6, buffer.end(), "enddef")) {
+#endif
 							break;
 						} else {
 							found_enddef = 0;
+#ifdef __cpp_lib_starts_ends_with
+							if(buffer.ends_with("define")) {
+#else
 							if(std::equal(buffer.end() - 6, buffer.end(), "define")) { // TODO: Maybe add support for
 																					   // this? This would fill feature
 																					   // request #21343
+#endif
 								parent_.error(
 										"Preprocessor error: #define is not allowed inside a #define/#enddef pair",
 										linenum);
