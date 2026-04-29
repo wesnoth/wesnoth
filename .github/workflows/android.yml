@@ -42,7 +42,7 @@ jobs:
 
       - name: Save Wesnoth dependencies cache
         if: ${{ steps.restore-deps-cache.outputs.cache-hit  != 'true' }}
-        uses: actions/cache/save@v4
+        uses: actions/cache/save@v5
         env:
           PREFIXDIR: ${{ env.BUILDBASEDIR }}/prefix
         with:
@@ -55,7 +55,7 @@ jobs:
         run: cd packaging/android; tar -cvzf dependencies.tar.gz prefix
 
       - name: Upload Dependencies archive
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         env:
           PREFIXDIR: ${{ env.BUILDBASEDIR }}/prefix
         with:
@@ -79,31 +79,31 @@ jobs:
         run: cd packaging/android && ./gradlew buildCppSource assembleDebug bundleDebug;
 
       - name: Upload APK (armeabi-v7a)
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: "wesnoth-armeabi-v7a.apk"
           path: "packaging/android/app/build/outputs/apk/${{ env.BUILDTYPE }}/app-armeabi-v7a-${{ env.BUILDTYPE }}.apk"
 
       - name: Upload APK (arm64-v8a)
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: "wesnoth-arm64-v8a.apk"
           path: "packaging/android/app/build/outputs/apk/${{ env.BUILDTYPE }}/app-arm64-v8a-${{ env.BUILDTYPE }}.apk"
 
       - name: Upload APK (x86)
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: "wesnoth-x86.apk"
           path: "packaging/android/app/build/outputs/apk/${{ env.BUILDTYPE }}/app-x86-${{ env.BUILDTYPE }}.apk"
 
       - name: Upload APK (x86_64)
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: "wesnoth-x86_64.apk"
           path: "packaging/android/app/build/outputs/apk/${{ env.BUILDTYPE }}/app-x86_64-${{ env.BUILDTYPE }}.apk"
 
       - name: Upload AAB
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: "wesnoth.aab"
           path: "packaging/android/app/build/outputs/bundle/${{ env.BUILDTYPE }}/app-${{ env.BUILDTYPE }}.aab"
