@@ -19,9 +19,9 @@ jobs:
       env:
         _debug: ${{ toJSON(github) }}
 
-    - uses: actions/setup-node@v3
+    - uses: actions/setup-node@v6
       with:
-        node-version: '16'
+        node-version: '24'
     - name: Package install
       run: npm install
     - name: Package build
@@ -71,13 +71,13 @@ jobs:
         [[ $comment_body ]] || err Failed to generate comment
         printf '%s\n' "$comment_body" > body.html
     - name: Find comment
-      uses: peter-evans/find-comment@v3
+      uses: peter-evans/find-comment@v4
       id: fc
       with:
         issue-number: ${{ github.event.pull_request.number }}
         comment-author: 'github-actions[bot]'
     - name: Add comment
-      uses: peter-evans/create-or-update-comment@v4
+      uses: peter-evans/create-or-update-comment@v5
       with:
         issue-number: ${{ github.event.pull_request.number }}
         comment-id: ${{ steps.fc.outputs.comment-id }}

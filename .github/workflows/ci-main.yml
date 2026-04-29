@@ -143,7 +143,7 @@ jobs:
         run: ./run_wml_tests -v -v -g -c -t 20 -bt 1000 -a=--userdata-dir=ud
       - name: Upload userdata files from WML unit tests (logs, replays)
         if: matrix.cc == 'clang' && (success() || failure())
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: WMLTest-userdata-Linux
           path: ud
@@ -170,7 +170,7 @@ jobs:
           tar -cf "steambuild-$version.tar" steambuild
 
       - name: Upload
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: Steam-Linux
           path: utils/dockerbuilds/steambuild-*.tar
@@ -199,7 +199,7 @@ jobs:
           archive: false
 
       - name: Upload Windows-Installer
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: Windows-Installer
           path: utils/dockerbuilds/wesnoth-*-win64.exe
@@ -229,7 +229,7 @@ jobs:
           flatpak build-bundle --runtime-repo=https://flathub.org/repo/flathub.flatpakrepo export-repo wesnoth.flatpak org.wesnoth.Wesnoth "$branch"
 
       - name: Upload flatpak bundle
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: Flatpak-Bundle
           path: wesnoth.flatpak
@@ -297,7 +297,7 @@ jobs:
         continue-on-error: true  # allow failures since this is not essential and it does fail spuriously (hdiutil: create failed - Resource busy)
         run: hdiutil create -volname "Wesnoth_$CFG" -fs 'HFS+' -srcfolder "build/$CFG" -ov -format UDBZ "Wesnoth_${CFG}.dmg"
       - name: Upload disk image
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: MacOS ${{ matrix.cfg }} disk image
           path: projectfiles/Xcode/Wesnoth_${{ matrix.cfg }}.dmg
@@ -308,7 +308,7 @@ jobs:
           ./run_wml_tests -g -c -t 30 -bt 350 -p "projectfiles/Xcode/build/$CFG/The Battle for Wesnoth.app/Contents/MacOS/The Battle for Wesnoth" -a=--userdata-dir="$PWD/ud"
       - name: Upload userdata files from WML unit tests (logs, replays)
         if: matrix.cfg == 'Release' && (success() || failure())
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: WMLTest-userdata-MacOS
           path: ud
@@ -338,14 +338,14 @@ jobs:
 
       - name: Cache object files
         id: windows-cache
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: vcpkg_installed  # vcpkg generates this dir next to vcpkg.json
           # the final key part needs to be changed if anything in the build process changes that is not already included here
           key: win-cache-master-${{ matrix.cfg }}-${{ env.IMAGE_VERSION }}-${{ hashFiles('vcpkg.json') }}-0001
 
       - name: Add msbuild to PATH
-        uses: microsoft/setup-msbuild@v2
+        uses: microsoft/setup-msbuild@v3
 
       - name: Run cmake
         run: cmake -DCMAKE_BUILD_TYPE=%CFG% -DENABLE_GAME=true -DENABLE_SERVER=true -DENABLE_CAMPAIGN_SERVER=true
@@ -362,7 +362,7 @@ jobs:
 
       - name: Upload userdata files from WML unit tests (logs, replays)
         if: matrix.cfg == 'Release' && (success() || failure())
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: WMLTest-userdata-Windows
           path: ud
@@ -375,7 +375,7 @@ jobs:
 
     steps:
       - name: Discord Notification
-        uses: rjstone/discord-webhook-notify@v1
+        uses: rjstone/discord-webhook-notify@v2
         with:
           severity: error
           webhookUrl: ${{ secrets.DISCORD_CI_WEBHOOK }}
