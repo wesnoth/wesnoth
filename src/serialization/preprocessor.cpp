@@ -311,14 +311,7 @@ class preprocessor_streambuf : public std::streambuf
 public:
 	preprocessor_streambuf(preproc_map& def)
 		: std::streambuf()
-		, out_buffer_("")
-		, buffer_()
-		, preprocessor_queue_()
 		, defines_(def)
-		, textdomain_(PACKAGE)
-		, location_("")
-		, linenum_(0)
-		, quoted_(false)
 	{
 	}
 
@@ -353,13 +346,7 @@ public:
 private:
 	preprocessor_streambuf(const preprocessor_streambuf& t)
 		: std::streambuf()
-		, out_buffer_("")
-		, buffer_()
-		, preprocessor_queue_()
 		, defines_(t.defines_)
-		, textdomain_(PACKAGE)
-		, location_("")
-		, linenum_(0)
 		, quoted_(t.quoted_)
 	{
 	}
@@ -378,16 +365,16 @@ private:
 
 	preproc_map& defines_;
 
-	std::string textdomain_;
+	std::string textdomain_{PACKAGE};
 	std::string location_;
 
-	int linenum_;
+	int linenum_{0};
 
 	/**
 	 * Set to true if one preprocessor for this target started to read a string.
 	 * Deeper-nested preprocessors are then forbidden to.
 	 */
-	bool quoted_;
+	bool quoted_{false};
 
 	friend class preprocessor;
 	friend class preprocessor_file;
