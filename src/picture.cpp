@@ -774,8 +774,12 @@ surface get_lighted_image(const image::locator& i_locator, const std::vector<lig
 	// not cached yet, generate it
 	surface res = apply_light(get_surface(i_locator, HEXED).clone(), ls);
 
+	// lvar may no longer be valid as apply_light can reenter this function
+	// and mutate lit_surfaces_; get a new reference before updating
+	lit_surface_variants& reacquired_lvar = lit_surfaces_.access_in_cache(i_locator);
+
 	// record the lighted surface in the corresponding variants cache
-	lvar[ls] = res;
+	reacquired_lvar[ls] = res;
 	return res;
 }
 
