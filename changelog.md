@@ -15,6 +15,7 @@
 ### Miscellaneous and Bug Fixes
   * CMake build system:
      * Make Boost::system optional with boost 1.69 or later (necessary for compatibility with 1.89 and later).
+   * Resolved not all translations being available for selection on Windows builds. (GitHub #11112)
 
 ## Version 1.18.7
 ### Translations
