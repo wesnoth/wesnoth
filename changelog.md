@@ -13,6 +13,7 @@
 ### User interface
 ### WML Engine
 ### Miscellaneous and Bug Fixes
+   * Resolved not all translations being available for selection on Windows builds. (GitHub #11112)
 
 ## Version 1.19.23
 ### Campaigns
