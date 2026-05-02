@@ -2421,9 +2421,8 @@ msgstr "À propos"
 #: data/gui/themes/celes/dialogs/title_screen.cfg:230
 #: data/gui/themes/default/dialogs/title_screen.cfg:473
 #, fuzzy
-#| msgid "The Battle for Wesnoth"
 msgid "General information about Battle for Wesnoth"
-msgstr "La bataille pour Wesnoth"
+msgstr "Informations générales sur « Bataille pour Wesnoth »"
 
 #. [button]: id=language
 #. [label]
@@ -3038,9 +3037,8 @@ msgstr "Supprimer l'extension sélectionnée (admin)"
 #. [button]: id=admin_hide_addon
 #: data/gui/themes/default/dialogs/addon_server_info.cfg:113
 #, fuzzy
-#| msgid "Select the add-on version"
 msgid "Hide selected add-on (admin)"
-msgstr "Sélectionne la version de l'extension"
+msgstr "Cacher l'extension sélectionnée (admin)"
 
 #. [button]: id=admin_unhide_addon
 #: data/gui/themes/default/dialogs/addon_server_info.cfg:131
@@ -3138,12 +3136,12 @@ msgid ""
 "style='italic'>Heir to the Throne</span>. The intended way to learn both the "
 "story and the game mechanics is to play the campaigns in that order."
 msgstr ""
-"campaign_landing^<b>Si vous débutez sur Wesnoth</b>, l’histoire principale "
-"commence avec <span color='#e1e119' style='italic'>La garde sud</span> et se "
-"poursuit en suivant les campagnes dans l’ordre affiché à gauche, jusqu’à se "
-"terminer un demi-siècle plus tard avec <span color='#e1e119' "
-"style='italic'>Héritier du trône</span>. La meilleure façon de découvrir à "
-"la fois le scénario et les mécaniques du jeu est de suivre cet ordre."
+"<b>Si vous débutez sur Wesnoth</b>, l’histoire principale commence avec "
+"<span color='#e1e119' style='italic'>La Garde Sud</span> et se poursuit en "
+"suivant les campagnes dans l’ordre affiché à gauche, jusqu’à se terminer un "
+"demi-siècle plus tard avec <span color='#e1e119' style='italic'>Héritier du "
+"trône</span>. La meilleure façon de découvrir à la fois le scénario et les "
+"mécaniques du jeu est de suivre cet ordre."
 
 #. [label]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:209
@@ -3167,7 +3165,7 @@ msgstr ""
 "L'<span color='#e1e119' style='italic'>Héritier du trône</span> propose "
 "désormais un monde ouvert avec 33 scénarios à embranchements, chacun offrant "
 "à Konrad des recrues, des compagnons ou des objets uniques. La campagne "
-"originale reste disponible sous le nom de <i>Héritier du trône, Classique</"
+"originale reste disponible sous le nom de <i>Héritier du trône, classique</"
 "i>."
 
 #. [label]
@@ -3207,7 +3205,7 @@ msgid ""
 "original tutorial is still available as part of <i>Heir to the Throne, "
 "Classic</i>."
 msgstr ""
-"<span color='#e1e119' style='italic'>La garde sud</span> a subi une refonte "
+"<span color='#e1e119' style='italic'>La Garde Sud</span> a subi une refonte "
 "majeure et remplace désormais le tutoriel classique. Les joueurs qui "
 "souhaitent retrouver l’enseignement de Delfador peuvent toujours accéder au "
 "tutoriel original dans <i>Héritier du trône, classique</i>."
@@ -3221,10 +3219,10 @@ msgid ""
 "AI, a new Thunderer advancement, a redesign of <i>High Pass</i>, and the re-"
 "addition of the formerly removed <i>Mages and Drakes</i>."
 msgstr ""
-"<span color='#e1e119' style='italic'>Le marteau de Thursagan</span> "
+"<span color='#e1e119' style='italic'>Le Marteau de Thursagan</span> "
 "bénéficie désormais d’ajustements de l’histoire, d’une IA ennemie améliorée, "
 "d’un nouvel avancement pour le foudroyeur, d’une refonte de <i>Haute Passe</"
-"i> et du retour de <i>Mages and Dracans</i>, qui avait été retiré auparavant."
+"i> et du retour de <i>Mages and dracans</i>, qui avait été retiré auparavant."
 
 #. [label]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:223
@@ -3316,9 +3314,8 @@ msgstr "Filtrer par statut de complétion des campagnes"
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:329
 #, fuzzy
-#| msgid "Completed"
 msgid "Not Completed"
-msgstr "Réalisé"
+msgstr "Non terminées"
 
 #. [option]
 #. campaigns which the player hasn't beaten, rather than campaigns which the author hasn't finished writing
@@ -3331,7 +3328,7 @@ msgstr "Afficher les campagnes non terminées par le joueur"
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:335
 #, fuzzy
 msgid "Completed: Bronze"
-msgstr "Terminée : Bronze"
+msgstr "Terminées : Bronze"
 
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:336
@@ -3343,7 +3340,7 @@ msgstr "Afficher les campagnes terminées à la difficulté minimale"
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:340
 #, fuzzy
 msgid "Completed: Silver"
-msgstr "Terminée : Argent"
+msgstr "Terminées : Argent"
 
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:341
@@ -3355,7 +3352,7 @@ msgstr "Afficher les campagnes terminées à des difficultés intermédiaires"
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:345
 #, fuzzy
 msgid "Completed: Gold"
-msgstr "Terminée : Or"
+msgstr "Terminées : Or"
 
 #. [option]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:346
@@ -3591,16 +3588,14 @@ msgstr "Ouvrir ce chemin dans un navigateur de fichiers"
 #: data/gui/themes/default/dialogs/custom_tod.cfg:90
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:98
 #, fuzzy
-#| msgid "Previous page"
 msgid "Preview image"
-msgstr "Page précédente"
+msgstr "Prévisualiser l'image"
 
 #. [button]: id=preview_
 #: data/gui/themes/default/dialogs/custom_tod.cfg:108
 #, fuzzy
-#| msgid "Player joins"
 msgid "Play sound"
-msgstr "Arrivée d'un joueur"
+msgstr "Jouer le son"
 
 #. [label]
 #: data/gui/themes/default/dialogs/custom_tod.cfg:186
@@ -3934,22 +3929,19 @@ msgstr ""
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:214
 #, fuzzy
-#| msgid ""
-#| "Comma delimited list of forum usernames of other people who are allowed "
-#| "to upload updates for this add-on."
 msgid ""
 "Comma delimited list of forum usernames of other people who are allowed to "
 "upload updates for this add-on or delete this add-on."
 msgstr ""
-"Une liste d'identifiants du forum séparés par une virgule des personnes "
-"autorisées à publier des mises à jour de l'extension."
+"Une liste d'identifiants du forum séparés par une virgule des autres "
+"personnes autorisées à publier des mises à jour de l'extension ou à la "
+"supprimer."
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:214
 #, fuzzy
-#| msgid "Secondary Authors:"
 msgid "Primary Authors:"
-msgstr "Auteurs secondaires :"
+msgstr "Auteurs principaux :"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:215
@@ -4219,9 +4211,8 @@ msgstr "Charger le type d’unité"
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:208
 #, fuzzy
-#| msgid "Image:"
 msgid "Unit Image:"
-msgstr "Image :"
+msgstr "Image de l’unité :"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:210
@@ -4232,7 +4223,7 @@ msgstr ""
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:221
 #, fuzzy
 msgid "Level:"
-msgstr "Niveau:"
+msgstr "Niveau :"
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:246
@@ -4244,9 +4235,8 @@ msgstr "Genre :"
 #. [row]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:254
 #, fuzzy
-#| msgid "gender^Random"
 msgid "gender^Male"
-msgstr "Aléatoire"
+msgstr "Masculin"
 
 #. [row]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:255
@@ -4256,9 +4246,8 @@ msgstr "Féminin"
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:270
 #, fuzzy
-#| msgid "Advance Unit"
 msgid "Advances to:"
-msgstr "Avancement"
+msgstr "Avancement vers :"
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:296
@@ -4269,7 +4258,7 @@ msgstr "Race :"
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:349
 #, fuzzy
 msgid "Alignment:"
-msgstr "Alignement:"
+msgstr "Alignement :"
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:375
@@ -4306,16 +4295,14 @@ msgstr "Attaques"
 #. [button]: id=atk_new
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:589
 #, fuzzy
-#| msgid "Attack"
 msgid "New Attack"
-msgstr "Attaquer"
+msgstr "Ajouter une attaque"
 
 #. [button]: id=atk_delete
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:602
 #, fuzzy
-#| msgid "Select/Move/Attack"
 msgid "Delete Attack"
-msgstr "Sélectionner/Déplacer/Attaquer"
+msgstr "Supprimer l'attaque"
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:672
@@ -4336,9 +4323,8 @@ msgstr ""
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:733
 #, fuzzy
-#| msgid "Damage"
 msgid "Damage:"
-msgstr "Dégât"
+msgstr "Dégâts :"
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:760
@@ -4354,23 +4340,20 @@ msgstr ""
 #. [grid]: id=grid_adv
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:830
 #, fuzzy
-#| msgid "Profile"
 msgid "Small Profile"
-msgstr "Profil"
+msgstr "Profil court"
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:841
 #, fuzzy
-#| msgid "Abilities"
 msgid "Abilities:"
-msgstr "Capacités"
+msgstr "Capacités :"
 
 #. [label]: id=movetype_label
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:867
 #, fuzzy
-#| msgid "Content Type:"
 msgid "Movetype:"
-msgstr "Type de contenu :"
+msgstr "Type de mouvement :"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=movement_costs_label
@@ -4382,38 +4365,33 @@ msgstr "Coût des mouvements :"
 #. [label]: id=defense_label
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:963
 #, fuzzy
-#| msgid "Defender"
 msgid "Defense:"
-msgstr "Défenseur"
+msgstr "Défense :"
 
 #. [label]: id=resistance_label
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:1016
 #, fuzzy
-#| msgid "Resistances: "
 msgid "Resistances:"
-msgstr "Résistances : "
+msgstr "Résistances :"
 
 #. [label]: id=usage_label
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:1069
 #, fuzzy
-#| msgid "Image:"
 msgid "AI Usage:"
-msgstr "Image :"
+msgstr "Rôle IA :"
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:1172
 #, fuzzy
-#| msgid "Quit Editor"
 msgid "Unit Type Editor"
-msgstr "Quitter l'éditeur"
+msgstr "Éditeur d'unité"
 
 #. [tab]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:1194
 #: data/gui/themes/default/dialogs/preferences/01_general.cfg:226
 #, fuzzy
-#| msgid "Game Stats"
 msgid "Main Stats"
-msgstr "Stats essentielles"
+msgstr "Statistiques principales"
 
 #. [tab]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:1201
@@ -4562,7 +4540,7 @@ msgstr ""
 #: data/gui/themes/default/dialogs/file_dialog.cfg:320
 #, fuzzy
 msgid "Open selected using platform’s default applications"
-msgstr "Ouvrir la sélection avec les applications par défaut de la plateforme"
+msgstr "Ouvrir la sélection avec les applications par défaut du système"
 
 #. [button]: id=new_dir
 #. [label]: id=title
@@ -4885,19 +4863,19 @@ msgstr "Défiler vers"
 #: data/gui/themes/default/dialogs/game_version.cfg:122
 #, fuzzy
 msgid "<span font_family='DejaVu Sans'>✦</span> <b>Version:</b>"
-msgstr "<span font_family='DejaVu Sans'>✦</span> <b>Version:</b>"
+msgstr "<span font_family='DejaVu Sans'>✦</span> <b>Version :</b>"
 
 #. [label]
 #: data/gui/themes/default/dialogs/game_version.cfg:150
 #, fuzzy
 msgid "<span font_family='DejaVu Sans'>✦</span> <b>Running on:</b>"
-msgstr "<span font_family='DejaVu Sans'>✦</span> <b>Propulsé par:</b>"
+msgstr "<span font_family='DejaVu Sans'>✦</span> <b>Propulsé par :</b>"
 
 #. [label]
 #: data/gui/themes/default/dialogs/game_version.cfg:179
 #, fuzzy
 msgid "<span font_family='DejaVu Sans'>✦</span> <b>Architecture:</b>"
-msgstr "<span font_family='DejaVu Sans'>✦</span> <b>Architecture:</b>"
+msgstr "<span font_family='DejaVu Sans'>✦</span> <b>Architecture :</b>"
 
 #. [label]
 #: data/gui/themes/default/dialogs/game_version.cfg:207
@@ -5072,7 +5050,7 @@ msgstr "Donations"
 #, fuzzy
 msgid "An open source, turn-based strategy game with a high fantasy theme."
 msgstr ""
-"Un jeu libre de stratégie au tour par tour sur un thème médiéval fantastique"
+"Un jeu libre de stratégie au tour par tour sur un thème médiéval fantastique."
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [tab]
@@ -5109,7 +5087,7 @@ msgstr "Crédits"
 #: data/gui/themes/default/dialogs/game_version.cfg:972
 #, fuzzy
 msgid "License"
-msgstr " Licence "
+msgstr "Licence"
 
 #. [label]
 #: data/gui/themes/default/dialogs/gamestate_inspector.cfg:16
@@ -5272,9 +5250,8 @@ msgstr "Appariement"
 #: data/gui/themes/default/dialogs/lobby_main.cfg:102
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:129
 #, fuzzy
-#| msgid "Reset"
 msgid "Presets"
-msgstr "Remettre à zéro"
+msgstr "Préréglage"
 
 #. [label]: id=map
 #: data/gui/themes/default/dialogs/lobby_main.cfg:153
@@ -5289,9 +5266,8 @@ msgstr "Nécessite un mot de passe"
 #. [button]: id=delete_preset
 #: data/gui/themes/default/dialogs/lobby_main.cfg:305
 #, fuzzy
-#| msgid "Delete Unit"
 msgid "Delete this preset"
-msgstr "Supprimer l'unité"
+msgstr "Supprimer ce préréglage"
 
 #. [toggle_button]: id=filter_vacant_slots
 #: data/gui/themes/default/dialogs/lobby_main.cfg:477
@@ -6179,11 +6155,12 @@ msgstr "Se connecter au serveur multijoueur officiel de Wesnoth"
 #. [widget]: id=name
 #: data/gui/themes/default/dialogs/mp_method_selection.cfg:261
 #, fuzzy
-#| msgid "Join Official Server"
 msgid ""
 "Join\n"
 "Official Server"
-msgstr "Rejoindre le serveur officiel"
+msgstr ""
+"Rejoindre le\n"
+"serveur officiel"
 
 #. [column]
 #: data/gui/themes/default/dialogs/mp_method_selection.cfg:272
@@ -6193,11 +6170,12 @@ msgstr "Rejoindre un autre serveur"
 #. [widget]: id=name
 #: data/gui/themes/default/dialogs/mp_method_selection.cfg:281
 #, fuzzy
-#| msgid "Connect to Server"
 msgid ""
 "Connect to\n"
 "Server"
-msgstr "Se connecter au serveur"
+msgstr ""
+"Se connecter\n"
+"au serveur"
 
 #. [column]
 #: data/gui/themes/default/dialogs/mp_method_selection.cfg:292
@@ -6573,9 +6551,8 @@ msgstr ""
 #. [label]
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:152
 #, fuzzy
-#| msgid "Interface theme:"
 msgid "In-game theme:"
-msgstr "Thème de l'interface :"
+msgstr "Thème durant une partie :"
 
 #. [menu_button]: id=choose_theme
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:165
@@ -6596,15 +6573,12 @@ msgstr "Thème de l'interface :"
 #. [menu_button]: id=choose_gui2_theme
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:192
 #, fuzzy
-#| msgid ""
-#| "Change the in-game interface theme. Additional themes may be provided by "
-#| "community-made add-ons"
 msgid ""
 "Change the UI (GUI2) theme. Additional themes may be provided by community-"
 "made add-ons"
 msgstr ""
 "Changer le thème de l'interface du jeu. D'autres thèmes peuvent être "
-"téléchargées sur le serveur d'extensions."
+"disponibles sur le serveur d'extensions."
 
 #. [button]: id=apply
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:201
@@ -6614,9 +6588,8 @@ msgstr "Appliquer"
 #. [toggle_button]: id=show_tips
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:224
 #, fuzzy
-#| msgid "Show next tip of the day"
 msgid "Show gameplay tips on the main menu"
-msgstr "Afficher l'astuce du jour suivante"
+msgstr "Afficher l'astuce du jour sur l'écran d'entrée"
 
 #. [toggle_button]: id=show_floating_labels
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:236
@@ -6900,9 +6873,8 @@ msgstr "Vous n'avez aucun joueur en ami ou en ignoré."
 #. [label]
 #: data/gui/themes/default/dialogs/reachmap_options.cfg:101
 #, fuzzy
-#| msgid "Random map options: "
 msgid "Reach Map Options"
-msgstr "Options des cartes aléatoires :"
+msgstr "Options des mouvements sur la carte"
 
 #. [label]
 #: data/gui/themes/default/dialogs/reachmap_options.cfg:112
@@ -6920,7 +6892,7 @@ msgstr "Couleur de surbrillance des ennemis"
 #: data/gui/themes/default/dialogs/reachmap_options.cfg:142
 #, fuzzy
 msgid "Border Opacity:"
-msgstr "Opacité de la bordure:"
+msgstr "Opacité de la bordure :"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/reachmap_options.cfg:144
@@ -7274,7 +7246,7 @@ msgstr "Renommer"
 #: data/gui/themes/default/dialogs/units_dialog.cfg:574
 #, fuzzy
 msgid "Mark/unmark the selected unit as favorite"
-msgstr "Mettre/enlever l’unité sélectionnée comme favorite"
+msgstr "Marquer/enlever l’unité sélectionnée comme favorite"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -7339,7 +7311,7 @@ msgid ""
 msgstr ""
 "Les constructions très compactes sont moins propices à la garnison que les "
 "villages classiques, ne générant ni revenu ni régénération. Elles sont "
-"ardues à traverser rapidement, mais offrent une une protection significative."
+"ardues à traverser rapidement, mais offrent une protection significative."
 
 #. [terrain_type]: id=urbanjungleA
 #. [terrain_type]: id=urbanjungle{ID}
@@ -7470,9 +7442,8 @@ msgstr "Aucune zone de dessin définie."
 
 #: src/gui/core/widget_definition.cpp:67 src/gui/core/window_builder.cpp:113
 #, fuzzy
-#| msgid "No resolution defined."
 msgid "No resolution defined for "
-msgstr "Aucune résolution définie."
+msgstr "Aucune résolution définie pour "
 
 #: src/gui/core/window_builder.cpp:147 src/gui/widgets/addon_list.cpp:432
 #: src/gui/widgets/multi_page.cpp:181 src/gui/widgets/panel.cpp:131
@@ -7506,7 +7477,7 @@ msgstr "$title ($count/$total)"
 #: src/gui/dialogs/achievements_dialog.cpp:138
 #, fuzzy
 msgid "Completed $count/$total"
-msgstr "Fait : $count sur $total"
+msgstr "Terminées : $count sur $total"
 
 #: src/gui/dialogs/addon/addon_server_info.cpp:95
 #: src/gui/dialogs/addon/addon_server_info.cpp:120
@@ -7593,9 +7564,8 @@ msgstr "Noyaux"
 
 #: src/gui/dialogs/addon/manager.cpp:163
 #, fuzzy
-#| msgid "addons_of_type^Cores"
 msgid "addons_of_type^Themes"
-msgstr "Noyaux"
+msgstr "Thèmes"
 
 #: src/gui/dialogs/addon/manager.cpp:164
 msgid "addons_of_type^Resources"
@@ -7884,15 +7854,13 @@ msgstr "Vulnérabilité de l'attaquant contre"
 
 #: src/gui/dialogs/campaign_selection.cpp:82
 #, fuzzy
-#| msgid "Remove Add-ons"
 msgid "game^Get Add-ons"
-msgstr "Supprimer les extensions"
+msgstr "Ajouter des extensions"
 
 #: src/gui/dialogs/campaign_selection.cpp:409
 #, fuzzy
-#| msgid "Campaigns"
 msgid "More campaigns..."
-msgstr "Campagnes"
+msgstr "Campagnes additionnelles..."
 
 #: src/gui/dialogs/campaign_selection.cpp:424
 msgid "Missing Campaigns"
@@ -7942,9 +7910,8 @@ msgstr ""
 #: src/gui/dialogs/editor/custom_tod.cpp:171
 #: src/gui/dialogs/editor/edit_unit.cpp:295
 #, fuzzy
-#| msgid "Choose Player"
 msgid "Choose File"
-msgstr "Choisir un joueur"
+msgstr "Choisir un fichier"
 
 #: src/gui/dialogs/editor/custom_tod.cpp:182
 #: src/gui/dialogs/editor/edit_unit.cpp:306
@@ -8053,15 +8020,13 @@ msgstr "éclaireur"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:181
 #, fuzzy
-#| msgid "Right"
 msgid "fighter"
-msgstr "Droit"
+msgstr "guérrier"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:182
 #, fuzzy
-#| msgid "Search"
 msgid "archer"
-msgstr "Rechercher"
+msgstr "archer"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:183
 msgid "mixed fighter"
@@ -8074,20 +8039,19 @@ msgstr "guérisseur"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:927
 #, fuzzy
-#| msgid "Save already exists. Do you want to overwrite it?"
 msgid "Unsaved changes will be lost. Do you want to leave?"
-msgstr "La sauvegarde existe déjà. Voulez-vous la remplacer ?"
+msgstr ""
+"Des changements n'ont pas été sauvegardés. Voulez-vous les abandonner ?"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:946
 #, fuzzy
 msgid "Unit type saved."
-msgstr "Type d’unité enregistré."
+msgstr "Unité enregistrée."
 
 #: src/gui/dialogs/editor/generator_settings.cpp:38
 #, fuzzy
-#| msgid "/1000 tiles"
 msgid "$count/1000 tiles"
-msgstr "/1000 cases"
+msgstr "$count pour 1000 cases"
 
 #: src/gui/dialogs/editor/generator_settings.cpp:43
 msgid "Coastal"
@@ -8107,9 +8071,8 @@ msgstr "Recherche de fichiers"
 
 #: src/gui/dialogs/file_dialog.cpp:191
 #, fuzzy
-#| msgid "Generate name"
 msgid "enter filename"
-msgstr "Générer un nom"
+msgstr "entrer un nom de fichier"
 
 #: src/gui/dialogs/file_dialog.cpp:201
 #, fuzzy
@@ -8127,10 +8090,10 @@ msgstr "Ouvrir"
 
 #: src/gui/dialogs/file_dialog.cpp:313
 #, fuzzy
-#| msgid "Opening links is not supported, contact your packager"
 msgid "Opening files is not supported, contact your packager"
 msgstr ""
-"L'ouverture des liens n'est pas prise en charge, contacter votre empaqueteur"
+"L'ouverture des fichiers n'est pas disponible, contacter l'empaqueteur de "
+"votre système"
 
 #: src/gui/dialogs/file_dialog.cpp:370
 msgid "The file already exists. Do you wish to overwrite it?"
@@ -8408,10 +8371,9 @@ msgstr "Téléchargement des données du vestibule"
 
 #: src/gui/dialogs/lua_interpreter.cpp:628
 #, fuzzy
-#| msgid "The lua console can only be used in debug mode! (Run ':debug' first)"
 msgid "The lua console can only be used in debug mode! (Run ‘:debug’ first)"
 msgstr ""
-"La console lua ne peut être utilisé qu'en mode débogage  (Exécutez ':debug' "
+"La console lua ne peut être utilisé qu'en mode débogage  (Tapez ':debug' "
 "d'abord)"
 
 #: src/gui/dialogs/lua_interpreter.cpp:629
@@ -8420,9 +8382,8 @@ msgstr "Console Lua"
 
 #: src/gui/dialogs/migrate_version_selection.cpp:47
 #, fuzzy
-#| msgid "No era information found."
 msgid "No Other Version Found"
-msgstr "Aucune information sur l'ère."
+msgstr "Aucune version précédente n'est trouvée."
 
 #: src/gui/dialogs/migrate_version_selection.cpp:47
 #, fuzzy
@@ -8529,13 +8490,11 @@ msgstr "Vestibule"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:962
 #, fuzzy
-#| msgid ""
-#| "This game doesn't allow observers. Observe using moderator rights anyway?"
 msgid ""
 "This game doesn’t allow observers. Observe using moderator rights anyway?"
 msgstr ""
-"Cette partie n'accepte pas les observateurs. Observer avec les droits de "
-"modérateur ?"
+"Cette partie n'accepte pas les observateurs. Utiliser les droits de "
+"modération pour observer ?"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:973
 msgid ""
@@ -8664,15 +8623,13 @@ msgstr "Partie"
 
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:81
 #, fuzzy
-#| msgid "Hotkey Settings"
 msgid "Hotkey(s): $bindings"
-msgstr "Configuration des raccourcis clavier"
+msgstr "Raccourcis clavier : $bindings"
 
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:308
 #, fuzzy
-#| msgid "(Invalid)"
 msgid "Invalid Color"
-msgstr "(Invalide)"
+msgstr "Couleur invalide"
 
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:515
 msgid "Waiting for players to choose factions..."
@@ -8824,9 +8781,8 @@ msgstr "Renommer l'unité"
 
 #: src/gui/dialogs/units_dialog.cpp:278
 #, fuzzy
-#| msgid "This unit is loyal and requires no upkeep."
 msgid "This unit requires no upkeep."
-msgstr "Cette unité est loyale et ne requiert aucun entretien."
+msgstr "Cette unité ne requiert aucun entretien."
 
 #: src/gui/dialogs/units_dialog.cpp:279 src/gui/dialogs/units_dialog.cpp:284
 #: src/gui/dialogs/units_dialog.cpp:289
@@ -8975,12 +8931,12 @@ msgstr "Aucune page définie."
 
 #: src/gui/widgets/multiline_text.cpp:434
 #, fuzzy
-#| msgid "Opening links is not supported, contact your packager"
 msgid ""
 "Opening links is not supported, contact your packager. Link URL has been "
 "copied to the clipboard."
 msgstr ""
-"L'ouverture des liens n'est pas prise en charge, contacter votre empaqueteur"
+"L'ouverture des liens n'est pas disponible, contacter l'empaqueteur de votre "
+"système. Le lien a été copié dans le presse-papiers."
 
 #: src/gui/widgets/multimenu_button.cpp:171
 msgid "multimenu^All Selected"
@@ -9124,7 +9080,6 @@ msgstr "Rejet nécessite un clic du bouton « click_dismiss » ou « ok »."
 
 #: src/gui/widgets/window.cpp:909 src/gui/widgets/window.cpp:945
 #, fuzzy
-#| msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgid "Failed to show a dialog, which doesn’t fit on the screen."
 msgstr ""
 "Impossible d'afficher une boîte de dialogue qui ne tient pas dans l'écran."
@@ -9213,11 +9168,11 @@ msgstr "Déplacer/Attaquer"
 msgid "Select/Move/Attack"
 msgstr "Sélectionner/Déplacer/Attaquer"
 
+# Utilisé pour un écran tactile
 #: src/hotkey/hotkey_command.cpp:84
 #, fuzzy
-#| msgid "Touch"
 msgid "Touch Hex"
-msgstr "Touche"
+msgstr "Contact tactile sur case"
 
 #: src/hotkey/hotkey_command.cpp:85
 msgid "Animate Map"
@@ -9353,7 +9308,7 @@ msgstr "Tuer l'unité (débug !)"
 #: src/hotkey/hotkey_command.cpp:126
 #, fuzzy
 msgid "Teleport Unit (Debug!)"
-msgstr "Téléporter une Unité (Debogage!)"
+msgstr "Téléporter une unité (Débogage !)"
 
 #: src/hotkey/hotkey_command.cpp:128
 msgid "Objectives"
@@ -9492,9 +9447,8 @@ msgstr "Attribuer une heure locale"
 
 #: src/hotkey/hotkey_command.cpp:178
 #, fuzzy
-#| msgid "Next Unit"
 msgid "New Unit Type"
-msgstr "Unité suivante"
+msgstr "Nouveau type d'unité"
 
 #: src/hotkey/hotkey_command.cpp:180
 msgid "Time Schedule Editor"
@@ -9941,11 +9895,11 @@ msgstr "Effacer la discussion"
 msgid "Change Language"
 msgstr "Changer de langue"
 
+# MJ est la traduction de MP utilisée ici
 #: src/hotkey/hotkey_command.cpp:301
 #, fuzzy
-#| msgid "Starting game"
 msgid "Start Game (MP)"
-msgstr "Démarrage de la partie"
+msgstr "Démarrage d'une partie MJ"
 
 #: src/hotkey/hotkey_command.cpp:302
 msgid "Refresh WML"
