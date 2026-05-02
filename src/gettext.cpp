@@ -573,4 +573,12 @@ const boost::locale::info& get_effective_locale_info()
 {
 	return std::use_facet<boost::locale::info>(get_manager().get_locale());
 }
+
+std::string translate_timestamp(time_t time, std::string_view format)
+{
+	std::ostringstream ss;
+	ss.imbue(get_manager().get_locale());
+	ss << bl::as::ftime(format.data()) << time;
+	return ss.str();
+}
 }

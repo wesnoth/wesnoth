@@ -1102,7 +1102,7 @@ static std::string format_addon_time(const std::chrono::system_clock::time_point
 		// Format reference: https://www.boost.org/doc/libs/1_85_0/doc/html/date_time/date_time_io.html#date_time.format_flags
 		: _("%B %d %Y, %H:%M");
 
-	return chrono::format_local_timestamp(time, format);
+	return translation::translate_timestamp(chrono::get_local_timestamp(time), format);
 }
 
 void addon_manager::on_addon_select()
