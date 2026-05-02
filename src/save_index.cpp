@@ -249,7 +249,7 @@ std::string save_info::format_time_local() const
 		// Format for your locale.
 		: _("%a %b %d %Y, %H:%M");
 
-	return chrono::format_local_timestamp(modified(), format);
+	return translation::translate_timestamp(chrono::get_local_timestamp(modified()), format);
 }
 
 std::string save_info::format_time_summary() const
