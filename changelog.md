@@ -2,6 +2,9 @@
 ### Add-ons client
 ### Add-ons server
 ### Campaigns
+   * The South Guard
+     * S04 "Choice in the Fog": both choices should now be more similar in difficulty
+     * S06a "Vengeance": increased the survival turns, but decreased initial enemy gold/units.
 ### Editor
 ### Multiplayer
 ### Lua API
