@@ -38,6 +38,10 @@ static preproc_map setup_test_preproc_map()
 #endif
 
 	defines_map.try_emplace("WESNOTH_VERSION", game_config::wesnoth_version.str());
+	defines_map.try_emplace("WESNOTH_VERSION_MAJOR", std::to_string(game_config::wesnoth_version.major_version()));
+	defines_map.try_emplace("WESNOTH_VERSION_MINOR", std::to_string(game_config::wesnoth_version.minor_version()));
+	defines_map.try_emplace("WESNOTH_VERSION_REVISION", std::to_string(game_config::wesnoth_version.revision_level()));
+	defines_map.try_emplace("WESNOTH_VERSION_SPECIAL", game_config::wesnoth_version.special_version());
 	return defines_map;
 }
 
