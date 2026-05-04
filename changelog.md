@@ -7,6 +7,7 @@
      * S06a "Vengeance": increased the survival turns, but decreased initial enemy gold/units.
 ### Editor
 ### Multiplayer
+   * Added new "Undead Siege" song by Tomek Szczęsny.
 ### Lua API
 ### Packaging
 ### Terrain
