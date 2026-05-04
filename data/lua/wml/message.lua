@@ -215,14 +215,23 @@ local function get_speaker(cfg)
 	local speaker
 	local context = wesnoth.current.event_context
 
-	if cfg.speaker == "narrator" then
-		speaker = "narrator"
-	elseif cfg.speaker == "unit" then
-		speaker = wesnoth.units.get(context.x1 or 0, context.y1 or 0)
-	elseif cfg.speaker == "second_unit" then
-		speaker = wesnoth.units.get(context.x2 or 0, context.y2 or 0)
-	elseif cfg.speaker ~= nil then
-		speaker = wesnoth.units.get(cfg.speaker)
+	if cfg.speaker ~= nil then
+		-- search the provided list (in order) for the first matching unit
+		for _,speaker_id in ipairs(tostring(cfg.speaker):split()) do
+			if speaker_id == "narrator" then
+				speaker = "narrator"
+			elseif cfg.speaker == "unit" then
+				speaker = wesnoth.units.get(context.x1 or 0, context.y1 or 0)
+			elseif cfg.speaker == "second_unit" then
+				speaker = wesnoth.units.get(context.x2 or 0, context.y2 or 0)
+			else
+				speaker = wesnoth.units.get(speaker_id)
+			end
+			-- break on first match
+			if speaker ~= nil then
+				break
+			end
+		end
 	else
 		speaker = wesnoth.units.find_on_map(cfg)[1]
 	end
