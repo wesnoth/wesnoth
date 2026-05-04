@@ -4,6 +4,7 @@
 ### Campaigns
 ### Editor
 ### Multiplayer
+   * Added new "Undead Siege" song by Tomek Szczęsny.
 ### Lua API
 ### Packaging
 ### Terrain
