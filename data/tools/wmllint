@@ -3503,8 +3503,7 @@ vctypes = (".svn", ".git", ".hg")
 
 def interesting(fn):
     "Is a file interesting for conversion purposes?"
-    return (fn.endswith(default_wml_extension) and not fn.endswith("_info.cfg")) \
-           or ismap(fn) or issave(fn)
+    return (fn.endswith(default_wml_extension) and not fn.endswith("_info.cfg")) or ismap(fn) or issave(fn)
 
 def allcfgfiles(directory):
     "Get the names of all interesting files under directory."
@@ -3520,8 +3519,11 @@ def allcfgfiles(directory):
             for vcsubdir in vctypes:
                 if vcsubdir in dirs:
                     dirs.remove(vcsubdir)
+            for dir in dirs:
+                if os.path.join(root, dir) in ignore_directories:
+                    dirs.remove(dir)
             for name in files:
-                if interesting(os.path.join(root, name)):
+                if os.path.join(root, name) not in ignore_files and interesting(os.path.join(root, name)):
                     datafiles.append(os.path.join(root, name))
     datafiles.sort() # So diffs for same campaigns will cluster in reports
     return map(os.path.normpath, datafiles)
@@ -3568,8 +3570,9 @@ scenarios, etc.""")
                         help="""Any number of directories. Each directory is converted.
 If no directories are specified, acts on the current
 directory.""")
-    parser.add_argument("--version", action="version",
-                        version="%(prog)s " + version.as_string)
+    parser.add_argument("--version", action="version", version="%(prog)s " + version.as_string)
+    parser.add_argument("--ignore-files", type=str, default="", help="Comma separated list of files to ignore. Must include path to file from the directory wmllint is run from.")
+    parser.add_argument("--ignore-directories", type=str, default="", help="Comma separated list of directories to ignore. Must include path to file from the directory wmllint is run from.")
 
     namespace = parser.parse_args()
     clean = namespace.clean
@@ -3581,6 +3584,8 @@ directory.""")
     verbose = namespace.verbose
     dospellcheck = namespace.nospellcheck # WARNING! We store the opposite of the value needed!
     inconsistency = namespace.known
+    ignore_files = namespace.ignore_files.split(",")
+    ignore_directories = namespace.ignore_directories.split(",")
     arguments = namespace.directories # a remnant of getopt...
 
     if dryrun:
