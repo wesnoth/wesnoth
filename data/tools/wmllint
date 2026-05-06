@@ -159,6 +159,10 @@
 # automatically; on the other hand, you can specify multiple tags to be
 # recognized as a comma-separated list.
 #
+# wmllint: translatable <attribute>
+# This adds <attribute> to the list of translatable attributes for the file.
+# Prevents the warning that an attribute should not have a translation mark
+#
 #                              DEVELOPER INFORMATION
 #
 # All conversion logic for lifting WML and maps from older versions of the
@@ -1475,7 +1479,7 @@ scenario_to_filename = {}
 unit_levels = {}
 
 # Attributes that should have translation marks
-def is_translatable(key):
+def is_translatable(key, extra_translatables):
     translatables = (
         "abbrev", "base_names", "cannot_use_message", "caption", "current_player",
         "currently_doing_description", "description", "description_inactive",
@@ -1487,9 +1491,9 @@ def is_translatable(key):
         "reason", "set_description", "source", "story", "summary", "victory_string",
         "defeat_string", "gold_carryover_string", "notes_string", "text", "title",
         "title2", "tooltip", "translator_comment", "user_team_name", "side_name",
-        "special_note"
+        "special_note","display_name"
         )
-    return key in translatables or (key.startswith(("type_", "range_")) and key != "type_adv_tree")
+    return key in translatables or key in extra_translatables or (key.startswith(("type_", "range_")) and key != "type_adv_tree")
 
 # This is a list of mainline campaigns, used to convert UMC from
 # "data/campaigns" to "data/add-ons" while not clobbering mainline.
@@ -2109,6 +2113,7 @@ to be called on their own".format(filename, num))
     # and [message] scopes, also correctness-check translation marks and look
     # for double spaces at end of sentence.
     present = []
+    extra_translatables = []
     in_scenario = False
     in_multiplayer = False
     subtag_depth = 0
@@ -2163,6 +2168,9 @@ to be called on their own".format(filename, num))
     translation_mark = re.compile(r'_ *"')
     name_generator_re = re.compile(r"name_generator\s*=\s*_\s*<<")
     for i in range(len(lines)):
+        extras = re.search("# *wmllint: translatables +(.*)", lines[i])
+        if extras:
+            extra_translatables.append(string_strip(extras.group(1)).strip())
         if has_opening_tag(lines[i], "lua"):
             in_lua = True
         elif "[/lua]" in lines[i]:
@@ -2508,7 +2516,7 @@ to be called on their own".format(filename, num))
                     print('"%s", line %d: macro reference in translatable string'\
                           % (filename, i+1))
             # Check correctness of translation marks and descriptions
-            if key.startswith("{"):
+            if key.startswith("{") or key.startswith("<"):
                 pass
             elif in_name_generator:
                 pass
@@ -2518,7 +2526,7 @@ to be called on their own".format(filename, num))
                 if markcheck and not has_tr_mark:
                     print('"%s", line %d: %s should be renamed as variation_id and/or marked as translatable' \
                           % (filename, i+1, key))
-            elif is_translatable(key):
+            elif is_translatable(key, extra_translatables):
                 if markcheck and has_tr_mark and not attr_strip(value):
                     print('"%s", line %d: %s doesn`t need translation mark (translatable string is empty)' \
                           % (filename, i+1, key))
