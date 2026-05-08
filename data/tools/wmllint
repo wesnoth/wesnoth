@@ -1491,7 +1491,11 @@ def is_translatable(key, extra_translatables):
         "reason", "set_description", "source", "story", "summary", "victory_string",
         "defeat_string", "gold_carryover_string", "notes_string", "text", "title",
         "title2", "tooltip", "translator_comment", "user_team_name", "side_name",
-        "special_note","display_name"
+        "special_note","display_name","name_affected","description_affected","family_order",
+        "family_order_monospace","family_order_script","name_completed","description_completed",
+        "lawful_description","neutral_description","chaotic_description","liminal_description",
+        "hint_text","has_helptip_message","maximum_value_label","minimum_value_label","help",
+        "block_dismiss_message"
         )
     return key in translatables or key in extra_translatables or (key.startswith(("type_", "range_")) and key != "type_adv_tree")
 
@@ -2516,7 +2520,7 @@ to be called on their own".format(filename, num))
                     print('"%s", line %d: macro reference in translatable string'\
                           % (filename, i+1))
             # Check correctness of translation marks and descriptions
-            if key.startswith("{") or key.startswith("<"):
+            if key.startswith("{") or key.startswith("<") or key.startswith("("):
                 pass
             elif in_name_generator:
                 pass
