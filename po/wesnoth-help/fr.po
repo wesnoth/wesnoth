@@ -830,11 +830,12 @@ msgstr ""
 "« marqueurs » décrits plus loin."
 
 # Ici "Floodfill" est un pinceau de l'éditeur
+# "Remplissage" est la traduction de "bucket fill" dans gimp (https://docs.gimp.org/3.0/fr/gimp-tool-bucket-fill.html)
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:174
 #, fuzzy
 msgid "editor^Elevation Floodfill"
-msgstr "Élévation submergée"
+msgstr "Remplissage d'élévation"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:177
@@ -844,9 +845,8 @@ msgstr "Marqueur d'élévation à placer"
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:178
 #, fuzzy
-#| msgid "Raised elevation on-map marker"
 msgid "Raised elevation editor palette icon"
-msgstr "Marqueur d'élévation à placer"
+msgstr "Icône de la palette des marqueurs d'élévation"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:180
@@ -1643,7 +1643,7 @@ msgstr ""
 "information ne portant pas sur les terrains est la codification de "
 "l'emplacement créé par l'<ref dst='editor_tool_starting'>Outil de positions "
 "de démarrage</ref>. Les fichiers peuvent être édités par un éditeur de texte "
-"classique tel que notepad.\n"
+"classique.\n"
 "\n"
 "Ces fichiers peuvent être utilisés directement pour les parties "
 "multijoueurs, le nombre de joueurs étant déterminé par le nombre de "
@@ -1831,7 +1831,7 @@ msgid ""
 "the westernmost point where the Great River can be crossed without ships."
 msgstr ""
 "Le gué d’Abez relie Wesnoth aux Terres du Nord, c’est l'endroit le plus à "
-"l’ouest où le Grand Fleuve peut être franchi, sans avoir recours à des "
+"l’Ouest où le Grand Fleuve peut être franchi, sans avoir recours à des "
 "bateaux."
 
 #. [topic]: id=great_ocean
@@ -1859,7 +1859,7 @@ msgid ""
 "in every direction from Morogor until eventually flowing into the abyss as "
 "an immense waterfall at the edge of the world."
 msgstr ""
-"Les Dracans appelaient autrefois cet océan l’Océan du Monde. Ils  croyaient "
+"Les dracans appelaient autrefois cet océan l’Océan du Monde. Ils croyaient "
 "qu’il s’étendait dans toutes les directions depuis Morogor pour finir par se "
 "précipiter dans l’abîme sous la forme d’une gigantesque chute d’eau au bord "
 "du monde."
@@ -1904,14 +1904,15 @@ msgstr ""
 msgid "Green Isle"
 msgstr "Île Verte"
 
-# Traduction incomplète
 #. [topic]: id=green_isle
 #: data/core/encyclopedia/geography.cfg:66
 #, fuzzy
 msgid ""
 "A bigger island lying in the <ref dst='great_ocean'>Great Ocean</ref>, "
 "formerly home to the Islefolk and Wesfolk."
-msgstr "Une plus grande île du <ref dst='great_ocean'>Grand Océan</ref>."
+msgstr ""
+"Une plus grandes îles du <ref dst='great_ocean'>Grand Océan</ref>, foyer "
+"original des insulaires et des wesfolk."
 
 #. [topic]: id=green_isle
 #. Geography of the Green Isle
@@ -1949,7 +1950,6 @@ msgstr ""
 msgid "Old Continent"
 msgstr "Vieux Continent"
 
-# Traduction incomplète
 #. [topic]: id=old_continent
 #: data/core/encyclopedia/geography.cfg:89
 #, fuzzy
@@ -1958,8 +1958,10 @@ msgid ""
 "dst='green_isle'>Green Isle</ref> across the <ref dst='great_ocean'>Great "
 "Ocean</ref>. It is the original homeland of both humans and orcs."
 msgstr ""
-"Se trouve à l'ouest de <ref dst='morogor'>Morogor</ref>, de l'autre côté du "
-"<ref dst='great_ocean'>Grand Océan</ref>."
+"Se trouve à l'Ouest de <ref dst='morogor'>Morogor</ref> et de l'<ref "
+"dst='green_isle'>Île Verte</ref>, de l'autre côté du <ref "
+"dst='great_ocean'>Grand Océan</ref>. C'est le foyer original des humains et "
+"des orcs."
 
 #. [topic]: id=great_continent
 #: data/core/encyclopedia/geography.cfg:94
@@ -1975,7 +1977,7 @@ msgid ""
 "Ocean</ref>."
 msgstr ""
 "Le continent où se trouve le <ref dst='kingdom_wesnoth'>royaume de Wesnoth</"
-"ref>. Sa côté ouest borde le <ref dst='great_ocean'>Grand Océan</ref>."
+"ref>. Sa côte Ouest borde le <ref dst='great_ocean'>Grand Océan</ref>."
 
 #. [topic]: id=irdya
 #: data/core/encyclopedia/geography.cfg:100
@@ -2044,7 +2046,6 @@ msgid ""
 "the Black Forest."
 msgstr ""
 
-# Traduction incomplète
 #. [topic]: id=kingdom_wesnoth
 #. Geography of Wesnoth
 #: data/core/encyclopedia/geography.cfg:127
@@ -2103,7 +2104,12 @@ msgstr ""
 "    • La Forêt de Glyn : Parfois aussi appelée Forêt Royale, elle a hérité "
 "du nom d'un fils de Haldric II.\n"
 "    • Les Bois Gris : Vaste forêt au cœur des terres sauvages de Wesnoth, "
-"située entre Carcyn et Aldril et réputée pour être hantée."
+"située entre Carcyn et Aldril et réputée pour être hantée.\n"
+"    • L'Île d'Alduin : Île importante au large de la côte de Wesnoth où se "
+"trouve la grande académie de magie, lieu de formation les plus grands mages "
+"de Wesnoth.\n"
+"     • Marais Vert : Grand marais sur les rives du Grand Fleuve au Nord-"
+"Ouest des Bois Gris."
 
 #. [topic]: id=elensefar
 #: data/core/encyclopedia/geography.cfg:144
@@ -2121,12 +2127,12 @@ msgid ""
 "Pearls to the south, and the <ref dst='great_ocean'>ocean</ref> to the west. "
 "More information is found in the historical narrative of Wesnoth."
 msgstr ""
-"Elensefar est parfois une province du <ref dst='kingdom_wesnoth'>royaume de "
-"Wesnoth</ref>, parfois un pays indépendant et parfois lié en fédération avec "
-"Wesnoth. lié en fédération avec Wesnoth le <ref dst='great_river'>Grand "
-"Fleuve</ref> au nord, une ligne changeante de démarcation avec Wesnoth à "
-"l'est, la Baie des Perles au sud et le <ref dst='great_ocean'>grand océan</"
-"ref> à l'ouest. Plus d'information disponible dans l'Histoire de Wesnoth."
+"Elensefar est parfois une province de <ref dst='kingdom_wesnoth'>Wesnoth</"
+"ref>, parfois un pays indépendant et parfois lié en fédération avec Wesnoth. "
+"Elle entourée par le <ref dst='great_river'>Grand Fleuve</ref> au Nord, une "
+"ligne changeante de démarcation avec Wesnoth à l'Est, la Baie des Perles au "
+"Sud et l' <ref dst='great_ocean'>océan</ref> à l'Ouest. Plus d'information "
+"disponible dans l'Histoire de Wesnoth."
 
 #. [topic]: id=elensefar
 #. Geography of Elensefar area
@@ -2232,11 +2238,11 @@ msgstr ""
 "          ◦ Rivière Listra : L'affluent du Grand Fleuve coulant vers le sud "
 "dans lequel se déverse l'Arkan-thoria.\n"
 "          ◦ Forêt de Lintanir : La partie la plus au sud de la Grande Forêt "
-"du Nord, un gigantesque bois dont les limites est et nord ne sont connues "
-"que des elfes. Leur capitale, Elensiria, n'est que rarement visitée par des "
-"humains.\n"
+"du Nord, un gigantesque bois dont les limites à l'Est et au Nord ne sont "
+"connues que des elfes. Leur capitale, Elensiria, n'est que rarement visitée "
+"par des humains.\n"
 "          ◦ <ref dst='great_river'>Grand Fleuve</ref> : La source de ce "
-"fleuve est quelque part à l'Est des terres du nord."
+"fleuve est quelque part à l'Est des terres du Nord."
 
 #. [topic]: id=southwest_elven_lands
 #: data/core/encyclopedia/geography.cfg:189
@@ -2291,7 +2297,6 @@ msgstr ""
 msgid "Far North"
 msgstr "Grand Nord"
 
-# Traduction incomplète
 #. [topic]: id=far_north
 #: data/core/encyclopedia/geography.cfg:212
 #, fuzzy
@@ -2652,7 +2657,6 @@ msgstr ""
 "Vous ne connaissez pas cette unité pour l'instant. Vous devez l'avoir "
 "rencontrée pour en lire la description."
 
-# Traduction incomplète
 #. [topic]: id=..gameplay
 #: data/core/help.cfg:166
 #, fuzzy
@@ -2697,15 +2701,21 @@ msgstr ""
 "avec plus d'attention, afin de préserver vos meilleures troupes pour les "
 "scénarios suivants.\n"
 "\n"
-"Le <b>tutoriel</b> interactif introduit les bases de Wesnoth dans le "
-"contexte d'un scénario. La plupart du contenu couvert par ce tutoriel est "
-"expliquée en profondeur dans ces pages, vous pourrez vous y référer plus "
-"tard si vous oubliez quelque chose.\n"
-"Une fois les bases maîtrisées, essayez-vous à une campagne pour débutant, "
-"comme <i>L'Héritier du trône</i> ou <i>La Garde du Sud</i>. La liste "
-"complète des campagnes installées se trouve dans le menu principal "
-"<b>Campagnes</b>. Wesnoth peut être assez difficile, vous devriez commencer "
-"par une campagne facile, avant de progresser vers les plus ardues.\n"
+"Le tutoriel interactif <b>La Garde du Sud</b> introduit les bases de Wesnoth "
+"dans le contexte d'un scénario. La plupart du contenu couvert par ce "
+"tutoriel est expliquée en profondeur dans ces pages, vous pourrez vous y "
+"référer plus tard si vous oubliez quelque chose.\n"
+"\n"
+"Une fois les bases maîtrisées, essayez-vous à une campagne pour débutant. "
+"Vous pouvez aider deux frères à vaincre un peril mortel dans <i>L'Histoire "
+"de deux frères</i>, aider le prince Konrad dans une pahse critique de "
+"l'histoire de Wesnoth dans l'épopée <i>L'Héritier du trône</i> ou guider le "
+"mage Delfador en passe de devenir une légende dans l'épique <i>Royale "
+"Perfidie</i>. La liste complète des campagnes installées se trouve dans le "
+"menu principal <b>Campagne</b> qui contient une foule d'aventures "
+"intéressantes sur la longue histoire de Wesnoth. Nous vous conseillons de "
+"les jouer dans l'ordre de la liste, mais vous pouvez toujours sauter celle "
+"qui ne vous passionne pas !\n"
 "\n"
 "Les campagnes sont groupées par <i>niveau</i> et <i>difficulté</i>. Par "
 "exemple, <i>L'Héritier du trône</i> est au niveau « Novice » et jouable en "
@@ -2716,8 +2726,8 @@ msgstr ""
 "scénario pour un joueur vétéran : pour des difficultés les plus hautes, les "
 "obstacles à la victoire seront plus hauts et les surmonter nécessitera un "
 "jeu des plus habile. Par exemple, dans les niveaux les plus difficiles, "
-"l'ennemi peut avoir plus de revenus, des unités de plus hauts niveaux, plus "
-"d'hexagones de château, ainsi de suite..."
+"l'ennemi peut avoir plus de revenus, des unités de plus hauts niveaux, un "
+"plus grand château, ainsi de suite..."
 
 #. [topic]: id=..gameplay
 #: data/core/help.cfg:175
@@ -2757,11 +2767,11 @@ msgid ""
 "elapsed."
 msgstr ""
 "Faites très attention aux <b>objectifs</b> du scénario en début de partie. "
-"Souvent, vous gagnerez en tuant tous les chefs ennemis et ne serez battu "
-"qu'en perdant votre propre chef. Mais certains scénarios ont d'autres "
-"conditions de victoire : amener une unité à un point précis de la carte, "
-"secourir quelqu'un, résoudre une énigme ou résister à un siège pendant un "
-"certain nombre de tours."
+"Souvent, vous gagnerez en tuant tous les chefs ennemis et serez battu en "
+"perdant votre propre chef. Mais certains scénarios ont d'autres conditions "
+"de victoire : amener une unité à un point précis de la carte, secourir "
+"quelqu'un, résoudre une énigme ou résister à un siège pendant un certain "
+"nombre de tours."
 
 #. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:190
@@ -3148,7 +3158,7 @@ msgid ""
 msgstr ""
 "La vision détermine jusqu’où une unité peut voir sur la carte. Normalement, "
 "la portée de vision d’une unité est calculée comme sa portée de déplacement "
-"plus un hexagone. Certaines unités disposant de capacités de vision "
+"plus une case. Certaines unités disposant de capacités de vision "
 "particulières dérogent à cette règle et ont un coût de vision indépendant de "
 "leur portée de déplacement."
 
@@ -3568,9 +3578,8 @@ msgstr ""
 #. [topic]: id=combat
 #: data/core/help.cfg:357
 #, fuzzy
-#| msgid "Advances to: "
 msgid "Chance to Hit"
-msgstr "Évolue en :"
+msgstr "Chances de toucher :"
 
 #. [topic]: id=combat
 #: data/core/help.cfg:359
@@ -4225,9 +4234,8 @@ msgstr ""
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:563 data/core/help.cfg:596
 #, fuzzy
-#| msgid "Base Terrain: "
 msgid "Basic Terrain Types"
-msgstr "Terrain de base : "
+msgstr "Terrains de base"
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:565
@@ -4255,9 +4263,8 @@ msgstr ""
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:570
 #, fuzzy
-#| msgid "Base Terrain: "
 msgid "Mixed Terrain Types"
-msgstr "Terrain de base : "
+msgstr "Terrains composites"
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:572
@@ -4406,9 +4413,8 @@ msgstr ""
 #. [topic]: id=using_addons
 #: data/core/help.cfg:620
 #, fuzzy
-#| msgid "Map and Scenario Editor"
 msgid "Campaigns and Scenarios"
-msgstr "Éditeur de carte et de scénario"
+msgstr "Campagnes et scénarios"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:622
@@ -4468,10 +4474,10 @@ msgid ""
 "and players can pick from the available factions for that era when setting "
 "up their sides and teams."
 msgstr ""
-"En mode <i>Multijoueur</i>, vous pouvez choisir une époque lors de la "
-"création d’une nouvelle partie, et les joueurs peuvent sélectionner parmi "
-"les factions disponibles pour cette époque lorsqu’ils configurent leurs "
-"camps et équipes."
+"En mode <i>Multijoueur</i>, vous pouvez choisir une ére lors de la création "
+"d’une nouvelle partie, et les joueurs peuvent sélectionner parmi les "
+"factions disponibles pour cette ére lorsqu’ils configurent leurs camps et "
+"équipes."
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:634
@@ -4532,7 +4538,7 @@ msgstr ""
 #: data/core/help.cfg:646
 #, fuzzy
 msgid "Creator Resources"
-msgstr "Ressources du créateur"
+msgstr "Ressources de création"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:648
@@ -5015,7 +5021,7 @@ msgstr ""
 #: data/core/macros/abilities.cfg:158
 #, fuzzy
 msgid "accuracy:"
-msgstr "précision"
+msgstr "précision :"
 
 #. [chance_to_hit]: id=diversion
 #: data/core/macros/abilities.cfg:159
@@ -5217,17 +5223,18 @@ msgstr ""
 "eaux profondes, sauf s'ils sont juste à côté. Le premier à découvrir cette "
 "unité perd immédiatement tous ses points de mouvement."
 
+# chouan, maraîchin ?
 #. [hides]: id=swamp_lurk
 #: data/core/macros/abilities.cfg:398
 #, fuzzy
 msgid "swamp lurk"
-msgstr "Rôdeur des marais"
+msgstr "rôdeur des marais"
 
 #. [hides]: id=swamp_lurk
 #: data/core/macros/abilities.cfg:399
 #, fuzzy
 msgid "female^swamp lurk"
-msgstr "Rôdeuse des marais"
+msgstr "rôdeuse des marais"
 
 #. [hides]: id=swamp_lurk
 #: data/core/macros/abilities.cfg:400
@@ -6152,7 +6159,7 @@ msgstr ""
 #: data/core/macros/traits.cfg:386
 #, fuzzy
 msgid "oceangoing"
-msgstr " hauturier "
+msgstr "hauturier"
 
 #. [trait]: id=oceangoing
 #. this is a defense reduction - without this ability most oceangoing ships would have 30% defense on these terrains
@@ -6170,7 +6177,7 @@ msgstr ""
 #: data/core/macros/traits.cfg:416
 #, fuzzy
 msgid "push-poles"
-msgstr " perches de navigation"
+msgstr "perches de navigation"
 
 #. [trait]: id=push_poles
 #: data/core/macros/traits.cfg:417
@@ -7507,9 +7514,8 @@ msgstr ""
 #. [race]: id=ship
 #: data/core/units.cfg:294
 #, fuzzy
-#| msgid "race^Saurian"
 msgid "race^Ship"
-msgstr "Saurien"
+msgstr "Navire"
 
 #. [race]: id=ship
 #: data/core/units.cfg:295
@@ -7748,7 +7754,7 @@ msgstr ""
 "commun menace leur existence ou que la perspective d’un grand pillage "
 "l’emporte sur leur animosité mutuelle. Il arrive parfois qu’un chef "
 "particulièrement puissant s’impose et prenne la tête de plusieurs tribus, "
-"généralement par intimidation. En temps de paix, une tribu orc se consacre "
+"généralement par intimidation. En temps de paix, une tribu orque se consacre "
 "presque exclusivement à se renforcer en vue du prochain conflit armé. Les "
 "orcs possèdent un système d’écriture rudimentaire — souvent tracé avec du "
 "sang — mais celui-ci est surtout utilisé pour échanger insultes et menaces "
@@ -7771,12 +7777,13 @@ msgstr ""
 "Les sociétés orques ne reposent que sur la force : la loi du plus fort "
 "prime, et un chef ne conserve son titre que tant que personne ne parvient à "
 "le lui arracher. Une lutte incessante pour le pouvoir couve parmi les "
-"prétendants au commandement tribal. Un chef orque vit rarement plus de "
+"prétendants au commandement tribal. Un chef orc vit rarement plus de "
 "quelques années pour jouir de son autorité absolue avant d’être tué par un "
 "rival — bien que l’histoire connaisse quelques exceptions notables. Les orcs "
 "ne respectent aucun code d’honneur et, si la force brute est généralement la "
-"manière privilégiée de montrer son pouvoir, l’assassinat, le poison et la "
-"trahison sont des méthodes couramment utilisées pour atteindre ses objectifs."
+"manière privilégiée de montrer leur pouvoir, l’assassinat, le poison et la "
+"trahison sont des méthodes couramment utilisées pour atteindre leurs "
+"objectifs."
 
 #. [race]: id=orc
 #: data/core/units.cfg:361
@@ -8352,8 +8359,8 @@ msgstr "Race :"
 #, fuzzy
 msgid "(1 of):"
 msgid_plural "(random $number of):"
-msgstr[0] "(1 de):"
-msgstr[1] "(nombre aléatoire de $number) : "
+msgstr[0] "(1 sur):"
+msgstr[1] "(nombre aléatoire $number sur) :"
 
 #: src/help/help_topic_generators.cpp:559
 msgid "Abilities:"

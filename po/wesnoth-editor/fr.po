@@ -311,15 +311,14 @@ msgstr "Aucune période du jour définie dans l'éditeur."
 
 #: src/editor/controller/editor_controller.cpp:886
 #, fuzzy
-#| msgid "Add-on"
 msgid "Add-on Files"
-msgstr "Extension"
+msgstr "Fichiers des extensions"
 
 #: src/editor/controller/editor_controller.cpp:899
 #, fuzzy
-#| msgid "Clipboard support not found, contact your packager"
 msgid "Opening files is not supported, contact your packager"
-msgstr "Pas de prise en charge du presse-papier, contactez votre empaqueteur"
+msgstr ""
+"L'ouverture des fichiers n'est pas disponible, contactez votre empaqueteur"
 
 #: src/editor/controller/editor_controller.cpp:1343
 msgid "Change Unit ID"
@@ -347,9 +346,8 @@ msgstr ""
 
 #: src/editor/map/context_manager.cpp:217
 #, fuzzy
-#| msgid "Map loaded from scenario"
 msgid "Load Map or Scenario"
-msgstr "Carte chargée depuis le scénario"
+msgstr "Charger une carte ou un scénario"
 
 #: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1141
 msgid "New Map"
@@ -408,9 +406,9 @@ msgstr "Erreur"
 
 #: src/editor/map/context_manager.cpp:705
 #, fuzzy
-#| msgid "Do you really want to save $type1 in $type2 folder?"
 msgid "Do you really want to save a map in the scenarios folder?"
-msgstr "Voulez-vous vraiment sauvegarder les $type1 dans le dossier $type2 ?"
+msgstr ""
+"Voulez-vous vraiment sauvegarder une carte dans le dossier des scénarios ?"
 
 #: src/editor/map/context_manager.cpp:713
 #: src/editor/map/context_manager.cpp:905
@@ -423,9 +421,9 @@ msgstr "Sauvegarder le scénario sous"
 
 #: src/editor/map/context_manager.cpp:754
 #, fuzzy
-#| msgid "Do you really want to save $type1 in $type2 folder?"
 msgid "Do you really want to save a scenario in the maps folder?"
-msgstr "Voulez-vous vraiment sauvegarder les $type1 dans le dossier $type2 ?"
+msgstr ""
+"Voulez-vous vraiment sauvegarder un scénario dans le dossier des cartes ?"
 
 #: src/editor/map/context_manager.cpp:762
 msgid "This scenario is already open."
@@ -456,9 +454,8 @@ msgstr "Scénario sauvegardé."
 
 #: src/editor/map/context_manager.cpp:881
 #, fuzzy
-#| msgid "Map saved."
 msgid "Map saved"
-msgstr "Carte sauvegardée."
+msgstr "Carte sauvegardée"
 
 #: src/editor/map/context_manager.cpp:956
 msgid "Loaded embedded map data"
@@ -494,18 +491,19 @@ msgstr "Fichier vide"
 
 #: src/editor/map/map_context.cpp:204
 #, fuzzy
-#| msgid "File does not have .map or .cfg extension"
 msgid "File does not have .map, .cfg, or .mask extension"
-msgstr "Ce fichier n'a ni une extension .map ni .cfg"
+msgstr "Ce fichier n'a pas une extension .map, ni .cfg ni .mask"
 
 #: src/editor/map/map_context.cpp:227
 #, fuzzy
-#| msgid "Failed to load the scenario, attempting to load only the map."
 msgid ""
 "Failed to load the scenario: $error\n"
 "\n"
 "Attempting to load only the map."
-msgstr "Le chargement du scénario a échoué, seule la carte sera chargée."
+msgstr ""
+"Erreur de chargement du scénario : $error\n"
+"\n"
+"Tentative de charger la carte seule."
 
 #: src/editor/map/map_context.cpp:253
 #, fuzzy
@@ -537,15 +535,13 @@ msgstr ""
 
 #: src/editor/map/map_context.cpp:835 src/editor/map/map_context.cpp:875
 #, fuzzy
-#| msgid "Could not save the scenario: $msg"
 msgid "Could not save time schedule: $msg"
-msgstr "Impossible de sauvegarder le scénario : $msg"
+msgstr "Impossible de sauvegarder le système horaire : $msg"
 
 #: src/editor/map/map_context.cpp:869
 #, fuzzy
-#| msgid "Time Schedule Menu"
 msgid "Time schedule saved."
-msgstr "Menu du système horaire"
+msgstr "Système horaire est sauvegardé."
 
 #: src/editor/map/map_context.cpp:915
 msgid "Could not save the scenario: $msg"
@@ -573,9 +569,8 @@ msgstr "Ne fonctionnera pas dans le jeu sans travail supplémentaire."
 
 #: src/editor/palette/item_palette.cpp:33
 #, fuzzy
-#| msgid " | Right-click to remove"
 msgid "Left-click: Place item $item | Right-click to remove"
-msgstr " | Clic droit pour effacer"
+msgstr "Clic gauche : Placer l'objet $item | Clic droit pour effacer"
 
 #: src/editor/palette/location_palette.cpp:247
 msgid "Go To"

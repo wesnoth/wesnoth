@@ -273,7 +273,8 @@ msgstr "Afficher l’indicateur d’échec de l’attaque"
 #: data/advanced_preferences.cfg:193
 #, fuzzy
 msgid "Display a visual indicator above a defender when an attack misses."
-msgstr "Afficher un indicateur visuel lorsqu’une attaque échoue"
+msgstr ""
+"Afficher un indicateur visuel sur le défenseur lorsqu’une attaque échoue."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:200
@@ -3145,9 +3146,8 @@ msgstr "Or"
 #. [color_range]: id=yellow
 #: data/core/team-colors.cfg:113
 #, fuzzy
-#| msgid "Yellow Potion"
 msgid "Yellow"
-msgstr "Potion jaune"
+msgstr "Jaune"
 
 #. [color_range]: id=pink
 #: data/core/team-colors.cfg:119
@@ -3700,9 +3700,8 @@ msgstr "DejaVu Sans Mono"
 #. [fonts]
 #: data/hardwired/fonts.cfg:20
 #, fuzzy
-#| msgid "Description"
 msgid "WesScript"
-msgstr "Description"
+msgstr "WesScript"
 
 #. [time]: id=dawn_noweather
 #: data/internal/Weather/_main.cfg:151
@@ -3713,7 +3712,7 @@ msgstr "Aube"
 #: data/internal/Weather/_main.cfg:162
 #, fuzzy
 msgid "Morning"
-msgstr "Avertissement"
+msgstr "Matin"
 
 #. [time]: id=midday_noweather
 #: data/internal/Weather/_main.cfg:170
@@ -3749,13 +3748,13 @@ msgstr "Deuxième quart"
 #: data/internal/resources/AMLAs/_main.cfg:73
 #, fuzzy
 msgid "Max HP bonus +3, Max XP +20%"
-msgstr "Bonus de PV max +6%"
+msgstr "Bonus de PV max +3, XP max +20%"
 
 #. [advancement]: id=hitpoints_increase
 #: data/internal/resources/AMLAs/_main.cfg:95
 #, fuzzy
 msgid "Gain +8 hitpoints."
-msgstr "Ajoute +$hitpoints points de vie."
+msgstr "Ajoute 8 points de vie."
 
 #. [advancement]: id=melee_increase1
 #: data/internal/resources/AMLAs/_main.cfg:121
@@ -3827,9 +3826,8 @@ msgstr ""
 #. [option]
 #: data/internal/resources/AMLAs/_main.cfg:365
 #, fuzzy
-#| msgid "Quit the game"
 msgid "Ok, continue with the game"
-msgstr "Quitter le jeu"
+msgstr "D'accord, continuer la partie"
 
 #. [option]
 #: data/internal/resources/AMLAs/_main.cfg:368
@@ -4927,10 +4925,11 @@ msgid ""
 "lower-level units instead."
 msgstr ""
 "Au lieu de progresser, les unités de niveau maximum obtiennent des "
-"<i>Améliorations Post-Niveau Maximum</i> (APNM), qui permettent généralement "
-"d'augmenter leur nombre maximum de points de vie de 3 et de les soigner "
-"complètement. C'est bien moins intéressant qu'un avancement de niveau "
-"classique ; essayez donc plutôt d'améliorer les troupes de niveau inférieur."
+"<i>Améliorations Post-Niveau Maximum</i> (APNM). Certaines campagnes vous "
+"permettent de choisir entre différentes options d'APNM mais l'amélioration "
+"standard est un gain de points de vie maximum de 3. C'est bien moins "
+"intéressant qu'un avancement de niveau classique ; essayez donc plutôt "
+"d'améliorer les troupes de niveau inférieur."
 
 #. [tip]
 #: data/tips.cfg:192
@@ -5240,9 +5239,8 @@ msgstr "Arme d'attaque sélectionnée non valide."
 
 #: src/actions/attack.cpp:969
 #, fuzzy
-#| msgid "Attacks: "
 msgid "attack^miss"
-msgstr "Attaques : "
+msgstr "manqué"
 
 #: src/actions/create.cpp:340
 msgid "You do not have a leader to recall with."
@@ -5361,9 +5359,8 @@ msgstr "Connexion à $server_address|..."
 
 #: src/addon/client.cpp:124
 #, fuzzy
-#| msgid "Requesting the addon to be deleted"
 msgid "Requesting add-on counts by type..."
-msgstr "Demande de suppression de l'extension"
+msgstr "Demande du nombre d'extensions de ce type..."
 
 #: src/addon/client.cpp:131 src/addon/client.cpp:149 src/addon/client.cpp:167
 #: src/addon/client.cpp:185 src/addon/client.cpp:205 src/addon/client.cpp:226
@@ -5378,33 +5375,28 @@ msgstr "Récupération des téléchargements de l’extension par version…"
 
 #: src/addon/client.cpp:164
 #, fuzzy
-#| msgid "Requesting file index..."
 msgid "Requesting forum_auth usage..."
-msgstr "Demande de l'index des fichiers..."
+msgstr "Demande pour forum_auth..."
 
 #: src/addon/client.cpp:182
 #, fuzzy
-#| msgid "Requesting distribution terms..."
 msgid "Requesting list of admins..."
-msgstr "Demande des conditions..."
+msgstr "Demande de la liste des administrateurs..."
 
 #: src/addon/client.cpp:202
 #, fuzzy
-#| msgid "Downloading list of add-ons..."
 msgid "Getting list of hidden add-ons..."
-msgstr "Téléchargement de la liste des extensions..."
+msgstr "Téléchargement de la liste des extensions cachées..."
 
 #: src/addon/client.cpp:223
 #, fuzzy
-#| msgid "Sending add-on"
 msgid "Hiding add-on..."
-msgstr "Envoi de l'extension..."
+msgstr "Cacher l'extension..."
 
 #: src/addon/client.cpp:243
 #, fuzzy
-#| msgid "Sending add-on"
 msgid "Unhiding add-on..."
-msgstr "Envoi de l'extension..."
+msgstr "Montrer l'extension..."
 
 #: src/addon/client.cpp:267
 msgid "Downloading list of add-ons..."
@@ -5470,7 +5462,8 @@ msgstr ""
 #| msgid "Sending an update pack for the add-on <i>$addon_title</i>..."
 msgid ""
 "The file size for the icon for the add-on <i>$addon_title</i> is too large."
-msgstr "Envoi de la mise à jour pour l'extension <i>$addon_title</i>..."
+msgstr ""
+"La taille de l'icône pour l'extension <i>$addon_title</i> est trop grande."
 
 #: src/addon/client.cpp:368
 msgid "Requesting file index..."
@@ -5641,9 +5634,8 @@ msgstr "Serveur distant déconnecté."
 
 #: src/addon/manager_ui.cpp:63
 #, fuzzy
-#| msgid "Map generator error: "
 msgid "Raw network error:"
-msgstr "Erreur du générateur de carte : "
+msgstr "Erreur brute de réseau :"
 
 #: src/addon/manager_ui.cpp:97 src/addon/manager_ui.cpp:336
 msgid "Network communication error."
@@ -6392,9 +6384,8 @@ msgstr "Carte personnalisée."
 
 #: src/game_initialization/create_engine.cpp:412
 #, fuzzy
-#| msgid "Multiplayer"
 msgid "multiplayer^MP"
-msgstr "Multijoueur"
+msgstr "MJ"
 
 #: src/game_initialization/depcheck.cpp:504
 msgid "Failed to resolve dependencies"
@@ -6957,9 +6948,8 @@ msgstr "Aucune description n'est disponible."
 
 #: src/help/help_impl.cpp:755
 #, fuzzy
-#| msgid "This is the last scenario."
 msgid "This is a global trait."
-msgstr "Ceci est le dernier scénario."
+msgstr "Ceci est le trait générique."
 
 #: src/help/help_impl.cpp:763
 msgid "Races with this trait"
@@ -6967,9 +6957,8 @@ msgstr ""
 
 #: src/help/help_impl.cpp:783
 #, fuzzy
-#| msgid "Units of this race:"
 msgid "Units with this trait"
-msgstr "Unités de cette race :"
+msgstr "Unités ayant ce trait"
 
 #: src/help/help_impl.cpp:907 src/help/help_impl.cpp:1125
 msgid "race^Miscellaneous"
@@ -6999,9 +6988,8 @@ msgstr "Groupes d'unités de cette race"
 
 #: src/help/help_impl.cpp:1183
 #, fuzzy
-#| msgid "Units of this race:"
 msgid "Units of this group"
-msgstr "Unités de cette race :"
+msgstr "Unités de ce groupe"
 
 #: src/help/help_impl.cpp:1185
 msgid "Units of this race"
@@ -7741,9 +7729,8 @@ msgstr "Commande :"
 
 #: src/menu_events.cpp:2160
 #, fuzzy
-#| msgid "prompt^Command:"
 msgid "prompt^Formula:"
-msgstr "Commande :"
+msgstr "Formule :"
 
 #: src/mouse_events.cpp:1307
 msgid ""
@@ -7820,9 +7807,8 @@ msgstr "Changement"
 
 #: src/network_download_file.cpp:50
 #, fuzzy
-#| msgid "not available."
 msgid "Download unavailable"
-msgstr "indisponible."
+msgstr "Téléchargement indisponible"
 
 #: src/network_download_file.cpp:50
 msgid "Standalone file downloads are not currently supported on iOS."
@@ -8187,9 +8173,8 @@ msgstr "Défense :"
 #. TRANSLATORS: single-letter abbreviation of "vision", fits in a small space on the sidebar
 #: src/reports.cpp:646
 #, fuzzy
-#| msgid "vision:"
 msgid "vision^V:"
-msgstr "vision :"
+msgstr "Vi:"
 
 #: src/reports.cpp:647
 msgid "vision:"
@@ -8198,9 +8183,8 @@ msgstr "vision :"
 #. TRANSLATORS: single-letter abbreviation of "jamming", fits in a small space on the sidebar
 #: src/reports.cpp:669
 #, fuzzy
-#| msgid "jamming:"
 msgid "jamming^J:"
-msgstr "brouillage :"
+msgstr "Br:"
 
 #: src/reports.cpp:670
 msgid "jamming:"
