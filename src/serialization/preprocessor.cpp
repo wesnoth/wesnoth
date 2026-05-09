@@ -360,15 +360,20 @@ private:
 	/** Buffer filled by the _current_ preprocessor. */
 	std::stringstream buffer_;
 
-	/** Input preprocessor queue. */
-	std::vector<std::unique_ptr<preprocessor>> preprocessor_queue_;
-
 	preproc_map& defines_;
 
 	std::string textdomain_{PACKAGE};
 	std::string location_;
 
 	int linenum_{0};
+
+	/**
+	 * Input preprocessor queue.
+	 * NOTE: This must be after textdomain_/location_/linenum_ because otherwise
+	 * it causes a memory corruption error which causes Wesnoth to abort upon launch
+	 * in some devices.
+	 */
+	std::vector<std::unique_ptr<preprocessor>> preprocessor_queue_;
 
 	/**
 	 * Set to true if one preprocessor for this target started to read a string.
