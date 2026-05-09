@@ -550,7 +550,7 @@ std::unique_ptr<units_dialog> units_dialog::build_recruit_dialog(
 		return err_msgs_map[recruit_list[index]];
 	});
 
-	dlg->on_modified([&recruit_list](units_dialog* dlg, std::size_t index) -> const auto& { (void)dlg;  return *recruit_list[index]; });
+	dlg->on_modified([&recruit_list](units_dialog*, std::size_t index) -> const auto& { return *recruit_list[index]; });
 
 	return dlg;
 }
@@ -679,8 +679,7 @@ std::unique_ptr<units_dialog> units_dialog::build_unit_list_dialog(std::vector<u
 		return filter_keys;
 	});
 
-	dlg->on_modified([&unit_list, &rename](units_dialog* dlg, std::size_t index) -> const auto& {
-		(void)dlg;
+	dlg->on_modified([&unit_list, &rename](units_dialog*, std::size_t index) -> const auto& {
 		auto& unit = unit_list[index];
 		rename.set_active(!unit->unrenamable());
 		return *unit;
@@ -859,8 +858,7 @@ std::unique_ptr<units_dialog> units_dialog::build_recall_dialog(
 		return filter_keys;
 	});
 
-	dlg->on_modified([&recall_list, &rename](units_dialog* dlg, std::size_t index) -> const auto& {
-		(void)dlg;
+	dlg->on_modified([&recall_list, &rename](units_dialog*, std::size_t index) -> const auto& {
 		const auto& unit = recall_list[index];
 		rename.set_active(!unit->unrenamable());
 		return *unit;
