@@ -3,7 +3,7 @@
 # Vladimír Slávik <slavik.vladimir@seznam.cz>, 2007 - 2011.
 # Jan Dědič <jan.dedic@gmail.com>, 2014.
 # Martin Hrubý <hrubymar10@gmail.com>, 2017 - 2020.
-# Michal Žejdl <lachim@emer.cz>, 2019 - 2025
+# Michal Žejdl <lachim@emer.cz>, 2019 - 2026
 # Petr Šlejhar (Septim) <septim@centrum.cz>, 2020, 2021
 #
 msgid ""
@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2026-04-19 22:19-0500\n"
-"PO-Revision-Date: 2026-01-22 20:10+0100\n"
+"PO-Revision-Date: 2026-04-19 20:42+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -300,8 +300,8 @@ msgid ""
 "identical. See <ref>dst='..terrain_sand' text='sand'</ref>."
 msgstr ""
 "<italic>text='Pouště'</italic> mají poněkud odlišné složení než malé jámy "
-"s pískem nebo pláže, hru ale ovlivňují obdobně. Podívej se na <ref>dst='.."
-"terrain_sand' text='písek'</ref>."
+"s pískem nebo pláže, hru ale ovlivňují obdobně. Podívej se na "
+"<ref>dst='..terrain_sand' text='písek'</ref>."
 
 #. [terrain_type]: id=sand_beach
 #. [terrain_type]: id=sand
@@ -3069,7 +3069,7 @@ msgstr "Obránce"
 #. This one is the page title, shown in bold.
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:205
 msgid "campaign_landing^Welcome to Wesnoth v1.20"
-msgstr ""
+msgstr "Vítej ve Wesnothu v1.20"
 
 #. [label]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:207
@@ -3081,6 +3081,11 @@ msgid ""
 "style='italic'>Heir to the Throne</span>. The intended way to learn both the "
 "story and the game mechanics is to play the campaigns in that order."
 msgstr ""
+"<b>Pokud jsi ve Wesnothu nový</b>, úvodní dějová linie začíná <span "
+"color='#e1e119' style='italic'>Jižní gardou</span>, sleduje tažení v pořadí, "
+"v jakém jsou uvedena vlevo, a končí o půl století později <span "
+"color='#e1e119' style='italic'>Dědicem trůnu</span>. Zamýšleným způsobem, "
+"jak se naučit příběh i herní mechanismy, je hrát tažení v tomto pořadí."
 
 #. [label]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:209
@@ -3088,6 +3093,7 @@ msgid ""
 "campaign_landing^<b>If you’re a returning player</b>, you’ll notice a number "
 "of changes since v1.18:"
 msgstr ""
+"<b>Pokud jsi navrátivší se hráč</b>, všimneš si od verze 1.18 řady změn:"
 
 #. [label]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:211
@@ -3097,6 +3103,10 @@ msgid ""
 "Konrad unique recruits, companions, or items. The original campaign is still "
 "available as <i>Heir to the Throne, Classic</i>."
 msgstr ""
+"<span color='#e1e119' style='italic'>Dědic trůnu</span> nyní nabízí otevřený "
+"svět s 33 větvenými scénáři, z nichž každý přináší Konrádovi jedinečné "
+"rekruty, společníky nebo předměty. Původní tažení je stále dostupné jako "
+"<i>Dědic trůnu, klasika</i>."
 
 #. [label]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:213
@@ -3107,6 +3117,10 @@ msgid ""
 "orcs of the north. Choose between 23 magic spells as you bear witness to the "
 "rise of a tyrant."
 msgstr ""
+"<span color='#e1e119' style='italic'>Podvodníkův gambit</span> nahrazuje "
+"<i>Delfadorovy paměti</i>. Sleduj mladého mága od pobřeží Alduinu až do "
+"královských síní, jak bojuje proti nelítostným skřetům ze severu. Vyber si "
+"z 23 kouzel a staň se svědkem vzestupu tyrana."
 
 #. [label]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:215
@@ -3115,6 +3129,9 @@ msgid ""
 "our first troll campaign. Lead the Golden Flame Tribe out from the bowels of "
 "Irdya and up to the surface world — but beware what awaits you there."
 msgstr ""
+"<span color='#e1e119' style='italic'>Soumrak úsvitu</span> je naše první "
+"trollí tažení. Vyveď Kmen zlatého plamene z útrob Irdye do světa na "
+"povrchu – ale dej si pozor, co tě tam čeká."
 
 #. [label]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:217
@@ -3124,6 +3141,10 @@ msgid ""
 "the Bay of Pearls. When corsairs strike, the villagers must join forces with "
 "the local merfolk and take the fight to the pirates."
 msgstr ""
+"<span color='#e1e119' style='italic'>O perlách and pirátech</span> je nové "
+"tažení pro začátečníky, které se odehrává v ospalém rybářském městečku "
+"v Zátoce perel. Když udeří piráti, musí vesničané spojit síly s místními "
+"mořskými lidmi a pustit se do boje."
 
 #. [label]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:219
@@ -3134,6 +3155,10 @@ msgid ""
 "original tutorial is still available as part of <i>Heir to the Throne, "
 "Classic</i>."
 msgstr ""
+"<span color='#e1e119' style='italic'>Jižní hlídka</span> byla výrazně "
+"přepracována a nyní nahrazuje starý <i>Bojový výcvik</i>. Pro hráče, kterým "
+"se stýská po Delfadorově vedení, je původní tutoriál stále dostupný jako "
+"součást <i>Dědice trůnu, klasiky</i>."
 
 #. [label]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:221
@@ -3143,6 +3168,10 @@ msgid ""
 "AI, a new Thunderer advancement, a redesign of <i>High Pass</i>, and the re-"
 "addition of the formerly removed <i>Mages and Drakes</i>."
 msgstr ""
+"<span color='#e1e119' style='italic'>Thursaganovo kladivo</span> bylo "
+"vylepšeno úpravami příběhu, dokonalejší umělou inteligencí nepřátel, novým "
+"povýšením hromovládce, přepracováním <i>Vysokého průsmyku</i> a opětovným "
+"přidáním dříve odstraněných <i>Mágů a drakonidů</i>."
 
 #. [label]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:223
@@ -3153,6 +3182,10 @@ msgid ""
 "and dialogue sequences were changed for better continuity with other "
 "campaigns."
 msgstr ""
+"<span color='#e1e119' style='italic'>Větry osudu</span> byly nově vyváženy "
+"a mají mnohem nižší náklady na povolávání, přepracované objevování divoké "
+"zvěře a umělou inteligenci a mnohem větší bitvu uprostřed tažení. Několik "
+"postav a úryvků rozhovorů bylo změněno pro lepší návaznost na ostatní tažení."
 
 #. [label]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:225
@@ -3160,6 +3193,8 @@ msgid ""
 "campaign_landing^For a full list of changes, consult our official changelog "
 "at https://www.wesnoth.org/start/1.20/"
 msgstr ""
+"Úplný seznam změn najdeš v oficiálním záznamu na adrese https://"
+"www.wesnoth.org/start/1.20/."
 
 #. [label]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:246
@@ -8261,8 +8296,8 @@ msgid ""
 "multiplayer lobby. Please report this at https://bugs.wesnoth.org."
 msgstr ""
 "S databází pro ověření verze rozšíření, která je potřebná pro čekárnu hry "
-"více hráčů, není něco v pořádku. Prosím nahlas to na https://bugs.wesnoth."
-"org."
+"více hráčů, není něco v pořádku. Prosím nahlas to na https://"
+"bugs.wesnoth.org."
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:992
 msgid "This game is password protected. Join using moderator rights anyway?"

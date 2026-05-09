@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2026-04-20 03:20 UTC\n"
-"PO-Revision-Date: 2026-04-06 13:40+0200\n"
+"PO-Revision-Date: 2026-04-12 14:57+0200\n"
 "Last-Translator: Septim <septim@centrum.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -928,8 +928,8 @@ msgid ""
 "Besides, it only took $quintain_killers.length of you to deal with my dummy. "
 "What’s a dozen muscly bandits compared to that?"
 msgstr ""
-"Kromě toho, vypořádat se s mou figurínou ti trvalo jen $quintain_killers."
-"length kol. Co je proti tomu tucet svalnatých banditů?"
+"Kromě toho, vypořádat se s mou figurínou ti trvalo jen "
+"$quintain_killers.length kol. Co je proti tomu tucet svalnatých banditů?"
 
 #. [message]: speaker=Mari
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:945
@@ -1363,6 +1363,10 @@ msgid ""
 "from the previous scenario. Recalling a veteran only ever costs\n"
 "20 gold, no matter how powerful (or weak) they are."
 msgstr ""
+"Stiskni klávesy <b>Alt+R</b> (nebo klikni pravým tlačítkem myši na Deorana)\n"
+" pro <i>povolávání</i> zkušených vojáků z předchozího scénáře.\n"
+"Povolání veterána stojí vždy jen 20 zlatých, bez ohledu na to, jak silný "
+"(nebo slabý) je."
 
 #. [display_tip]
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:278
@@ -1371,6 +1375,10 @@ msgid ""
 "veterans every scenario and building up their experience, over\n"
 "time you can create a very powerful army."
 msgstr ""
+"Povolávání vojáků a jejich vylepšování je velmi důležité.\n"
+"Tím, že v každém scénáři povoláš veterány\n"
+"a budeš zvyšovat jejich zkušenosti,\n"
+"si můžeš postupem času vybudovat velmi silnou armádu."
 
 #. [display_tip]
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:282
@@ -1378,6 +1386,9 @@ msgid ""
 "If you wish to recruit new soldiers, you can still do so by pressing\n"
 "<b>Ctrl+R</b>. <b>Ctrl+R</b> to recruit, <b>Alt+R</b> to recall."
 msgstr ""
+"Pokud chceš verbovat nové vojáky, můžete tak stále činit stisknutím kláves "
+"<b>Ctrl+R</b>.\n"
+"Kombinace <b>Ctrl+R</b> je pro verbování, <b>Alt+R</b> pro povolávání."
 
 #. [objective]: condition=win
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:294
@@ -1391,6 +1402,9 @@ msgid ""
 "a reminder that it’s under our control. It will remain that way until an "
 "enemy moves into it."
 msgstr ""
+"Dobře, obsadili jsme vesnici! Malá vlaječka, která na ní vlaje, nám bude "
+"připomínat, že je pod naší kontrolou. Zůstane tam, dokud do ní nevtrhne "
+"nepřítel."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:323
@@ -1398,11 +1412,13 @@ msgid ""
 "Each village we control provides upkeep and generates gold, which I can use "
 "to recruit new soldiers."
 msgstr ""
+"Každá vesnice, kterou ovládáme, poskytuje zaopatření a generuje zlato, které "
+"můžu použít k verbování nových vojáků."
 
 #. [display_tip]
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:327
 msgid "Income and Upkeep"
-msgstr ""
+msgstr "Příjmy a výdaje"
 
 #. [display_tip]
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:329
@@ -1415,6 +1431,14 @@ msgid ""
 "To ensure a healthy supply of gold, \n"
 "capture as many villages as you can!"
 msgstr ""
+"Každá vesnice, kterou vlastníš,\n"
+"generuje 1 zlatý za kolo a poskytuje zaopatření\n"
+"pro jakoukoli jednu jednotku.\n"
+"Údržba jednotky 2. úrovně stojí 2 zlaté,\n"
+"údržba jednotky 3. úrovně stojí 3 zlaté atd.\n"
+"\n"
+"Aby sis zajistil/a dostatečný přísun zlata,\n"
+"dobývej co nejvíce vesnic!"
 
 #. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:348
@@ -1423,6 +1447,9 @@ msgid ""
 "prevents me from moving any further. But this frail, feeble Walking Corpse "
 "is easy to outmaneuver."
 msgstr ""
+"Ha, tahle zombie je tak pomalá a slabá! Obvykle mi pohyb vedle nepřátelské "
+"jednotky zabrání v jeho dalším pokračování. Ale tahle křehká, slabá chodící "
+"mrtvola se dá snadno přelstít."
 
 #. [message]
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:352
@@ -1430,6 +1457,9 @@ msgid ""
 "Unlike most units, level 0 units (such as Walking Corpses) do not exert a "
 "Zone of Control. Your units can move freely around them."
 msgstr ""
+"Na rozdíl od většiny ostatních nevytvářejí jednotky úrovně 0 (například "
+"chodící mrtvoly) oblast kontroly. Tvé jednotky se kolem nich mohou volně "
+"pohybovat."
 
 #. [message]
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:364
@@ -1437,6 +1467,8 @@ msgid ""
 "I’m nearly blind in this nighttime gloom... If we don’t keep our distance "
 "from the undead, we’re going to get massacred!"
 msgstr ""
+"V tomhle nočním šeru skoro nic nevidím... Jestli se od nemrtvých neudržíme "
+"dál, tak nás všechny povraždí!"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:372
@@ -1444,6 +1476,8 @@ msgid ""
 "Dawn breaks — the heroes grow strong while the villains grow weak. Men of "
 "the South Guard, now is our time to attack!"
 msgstr ""
+"Svítá! Hrdinové sílí, zatímco padouši slábnou. Muži Jižní hlídky, nastal čas "
+"zaútočit!"
 
 #. [message]: speaker=Urza Fastik
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:404
@@ -1451,6 +1485,8 @@ msgid ""
 "Ah, excellent! The South Guard fights my warriors at night, when we are at "
 "our best! I am fortunate that their commander is so inexperienced."
 msgstr ""
+"Ach, výborně! Jižní hlídka bojuje s mejma válečníkama v noci, kdy jsme v "
+"nejlepší formě! Mám štěstí, že je jejich velitel tak nezkušenej."
 
 #. [message]: speaker=Urza Fastik
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:440
@@ -1458,6 +1494,8 @@ msgid ""
 "Idiot corpses, what are you doing? Don’t fight the South Guard during the "
 "day, when they’re at their best! ...how do I control these blasted things?"
 msgstr ""
+"Vy pitomý mrtvý těla, co to děláte? Nebojujte s Jižní hlídkou ve dne, když "
+"jsou v plný síle! ... jak se tyhle proklatý věci ovládaj?"
 
 #. [message]: speaker=Urza Fastik
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:480
@@ -1465,6 +1503,8 @@ msgid ""
 "Yes that’s right, you foolish South Guard commander! Fight waist-deep in the "
 "river while my bandits are safe in their encampments!"
 msgstr ""
+"Jo, jen tak dál, ty pošetilej veliteli Jižní hlídky! Bojujte po pás v řece, "
+"zatímco moji banditi jsou v bezpečí svejch táborů!"
 
 #. [message]
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:484
@@ -1474,16 +1514,20 @@ msgid ""
 "with your units on poor terrain isn’t always a bad idea, but it is often not "
 "worth the disadvantage to your troops."
 msgstr ""
+"Většina tvých jednotek má v mělké vodě jen 20% šanci na úhyb, zatímco "
+"většina banditů ji v terénu tábora má 60%. Nemusí být vždy špatný nápad "
+"bojovat s tvými jednotkami v nevhodném terénu, ale často to nestojí za "
+"nevýhodu, kterou tím tvé jednotky utrpí."
 
 #. [message]: speaker=Urza Fastik
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:491
 msgid "If only it weren’t daytime, this would be the perfect fight for me..."
-msgstr ""
+msgstr "Kdyby jen nebylo denní doby, byl by to pro mě ideální boj..."
 
 #. [message]: speaker=Urza Fastik
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:500
 msgid "And in the middle of the night too! This is the perfect fight for me!"
-msgstr ""
+msgstr "A to ještě uprostřed noci! Nedokážu si představit ideálnější boj!"
 
 #. [message]: speaker=Urza Fastik
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:528
@@ -1514,7 +1558,7 @@ msgid ""
 "Gah, more soldiers from Westin... Forget this, I’m getting out of here while "
 "I still have the chance!"
 msgstr ""
-"Sakra, další vojáci z Westinu... Kašlu na to, mizím odsud, dokud ještě mám "
+"Sakra, další vojáci z Westinu... Kašlu na to, mizím vodsud, dokud ještě mám "
 "šanci!"
 
 #. [message]: speaker=Mari
@@ -4047,6 +4091,9 @@ msgid ""
 "we can just reach Southport, the garrison there will surely keep us safe "
 "from enemy attack."
 msgstr ""
+"Už tak bylo dost zlé bojovat s nemrtvými a bandity, ale teď ještě s elfy? To "
+"je hrozné! Pokud se nám podaří dostat se do Jižního Přístavu, tamní posádka "
+"nás jistě ochrání před nepřátelským útokem."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/05a_The_Long_March.cfg:370
@@ -4054,6 +4101,8 @@ msgid ""
 "But we’ll have to move quickly. The longer we wait, the more elves will "
 "arrive to harry us!"
 msgstr ""
+"Ale budeme muset postupovat rychle. Čím déle budeme otálet, tím více elfů "
+"dorazí, aby nás pronásledovali!"
 
 #. [objective]: condition=win
 #: data/campaigns/The_South_Guard/scenarios/05a_The_Long_March.cfg:378
@@ -4095,7 +4144,7 @@ msgstr ""
 #. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/scenarios/05a_The_Long_March.cfg:441
 msgid "Vengeance for the sage Mebrin!"
-msgstr ""
+msgstr "Pomsta za mudrce Mebrina!"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/05a_The_Long_March.cfg:457
@@ -4310,6 +4359,8 @@ msgid ""
 "Ethiliel... At last, the student reunites with her master. Why do you flee "
 "from me?"
 msgstr ""
+"Ethiliel... Konečně se studentka znovu setkává se svým mistrem. Proč přede "
+"mnou utíkáš?"
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/05b_Pebbles_in_the_Flood.cfg:211
@@ -4317,6 +4368,8 @@ msgid ""
 "Mebrin. I sensed it, but I did not want to believe. ...I could not bear to "
 "believe."
 msgstr ""
+"Mebrine. Cítila jsem to, ale nechtěla jsem tomu věřit. ... nedokázala jsem "
+"tomu věřit."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/05b_Pebbles_in_the_Flood.cfg:215
@@ -4324,6 +4377,8 @@ msgid ""
 "<b><i>This</i></b> is the sage Mebrin? Urza Afalas was right! He has gone "
 "mad with power and transformed himself into a lich!"
 msgstr ""
+"<b><i>Tohle</i></b> je mudrc Mebrin? Urza Afalas měl pravdu! Moc z něj "
+"udělala blázna a proměnil se v licha!"
 
 #. [message]: speaker=Mebrin
 #: data/campaigns/The_South_Guard/scenarios/05b_Pebbles_in_the_Flood.cfg:219
@@ -4333,6 +4388,9 @@ msgid ""
 "my hands, there would be no turning back. But I would suffer this "
 "humiliation no longer..."
 msgstr ""
+"Bláznivý? Jsem šílený!! Ti prokletí zablácenci mě chytili a mučili, mučili "
+"mě jen tak pro zábavu! Věděl jsem, že jakmile první vlákno černé magie "
+"opustí mé ruce, nebude cesty zpět. Ale už nechci dál snášet tohle ponížení..."
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/05b_Pebbles_in_the_Flood.cfg:223
@@ -4348,6 +4406,10 @@ msgid ""
 "The Urza brothers sought to enslave me, but it is they who became my slaves "
 "in the end."
 msgstr ""
+"Učil jsem vyvolávání sil, které stály mimo kontrolu těch slabých blátošlapů, "
+"sil, které se živily špínou a chamtivostí jejich rasy. Spokojeni jen s "
+"chabými triky si ani nevšimli, jak jsem si je pomalu podmaňoval! Bratři "
+"Urzovi se mě snažili zotročit, ale nakonec se mými otroky stali oni."
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/05b_Pebbles_in_the_Flood.cfg:231
@@ -5968,8 +6030,8 @@ msgstr ""
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Tides_of_War.cfg:495
 msgid ""
 "You survived $pebbles_defense_length turns last scenario! Deoran starts\n"
-"   with $soldiers.length extra soldiers and "
-"$( ($pebbles_defense_length-36)*3 ) extra gold!"
+"   with $soldiers.length extra soldiers and $"
+"( ($pebbles_defense_length-36)*3 ) extra gold!"
 msgstr ""
 
 #. [else]
