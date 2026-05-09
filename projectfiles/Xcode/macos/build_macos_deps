@@ -48,34 +48,36 @@ arm64_buildtrees_root="${buildtrees_root_base}/${arm64_triplet}"
 x64_install_dir="${x64_install_root}/${x64_triplet}"
 arm64_install_dir="${arm64_install_root}/${arm64_triplet}"
 
+# Real dylibs copied by the macOS Xcode target. These names should match the
+# files produced by vcpkg, not symlink aliases.
 required_macos_dylibs=(
 	"libSDL2-2.0.0.dylib"
-	"libSDL2_image-2.0.0.dylib"
-	"libSDL2_mixer-2.0.0.dylib"
-	"libboost_atomic-mt.dylib"
-	"libboost_charconv-mt.dylib"
-	"libboost_chrono-mt.dylib"
-	"libboost_container.1.89.0.dylib"
-	"libboost_context-mt.dylib"
-	"libboost_coroutine-mt.dylib"
-	"libboost_date_time.1.89.0.dylib"
-	"libboost_filesystem-mt.dylib"
-	"libboost_iostreams-mt.dylib"
-	"libboost_locale-mt.dylib"
-	"libboost_process.dylib"
-	"libboost_program_options-mt.dylib"
-	"libboost_random-mt.dylib"
-	"libboost_thread-mt.dylib"
-	"libboost_unit_test_framework-mt.dylib"
+	"libSDL2_image-2.0.0.800.8.dylib"
+	"libSDL2_mixer-2.0.0.800.1.dylib"
+	"libboost_atomic.1.90.0.dylib"
+	"libboost_charconv.1.90.0.dylib"
+	"libboost_chrono.1.90.0.dylib"
+	"libboost_container.1.90.0.dylib"
+	"libboost_context.1.90.0.dylib"
+	"libboost_coroutine.1.90.0.dylib"
+	"libboost_date_time.1.90.0.dylib"
+	"libboost_filesystem.1.90.0.dylib"
+	"libboost_iostreams.1.90.0.dylib"
+	"libboost_locale.1.90.0.dylib"
+	"libboost_process.1.90.0.dylib"
+	"libboost_program_options.1.90.0.dylib"
+	"libboost_random.1.90.0.dylib"
+	"libboost_thread.1.90.0.dylib"
+	"libboost_unit_test_framework.1.90.0.dylib"
 	"libbrotlicommon.1.2.0.dylib"
 	"libbrotlidec.1.2.0.dylib"
 	"libbz2.1.0.8.dylib"
 	"libcairo.2.dylib"
-	"libcrypto.dylib"
+	"libcrypto.3.dylib"
 	"libexpat.1.11.2.dylib"
 	"libffi.8.dylib"
 	"libfontconfig.1.dylib"
-	"libfreetype.6.dylib"
+	"libfreetype.6.20.2.dylib"
 	"libfribidi.0.dylib"
 	"libgio-2.0.0.dylib"
 	"libglib-2.0.0.dylib"
@@ -89,21 +91,21 @@ required_macos_dylibs=(
 	"libintl.8.dylib"
 	"libjpeg.62.4.0.dylib"
 	"liblzma.5.8.2.dylib"
-	"libogg.0.dylib"
+	"libogg.0.8.6.dylib"
 	"libpango-1.0.0.dylib"
 	"libpangocairo-1.0.0.dylib"
 	"libpangoft2-1.0.0.dylib"
-	"libpcre2-8.0.dylib"
+	"libpcre2-8.0.15.0.dylib"
 	"libpixman-1.0.dylib"
-	"libpng16.16.dylib"
-	"libreadline.8.dylib"
-	"libsharpyuv.0.dylib"
-	"libssl.dylib"
-	"libvorbis.0.dylib"
-	"libvorbisfile.dylib"
+	"libpng16.16.55.0.dylib"
+	"libreadline.8.3.dylib"
+	"libsharpyuv.0.1.2.dylib"
+	"libssl.3.dylib"
+	"libvorbis.0.4.9.dylib"
+	"libvorbisfile.3.3.8.dylib"
 	"libwavpack.1.dylib"
-	"libwebp.7.dylib"
-	"libwebpdemux.2.dylib"
+	"libwebp.7.2.0.dylib"
+	"libwebpdemux.2.0.17.dylib"
 	"libz.1.3.1.dylib"
 	"libzstd.1.5.7.dylib"
 )
@@ -304,120 +306,50 @@ stage_arch_specific_headers() {
 	write_arch_wrapper "${headers_dir}/openssl/opensslconf.h" "opensslconf_x86_64.h" "opensslconf_arm64.h"
 }
 
-find_unique_real_dylib() {
-	local lib_search_dir=$1
-	local dylib_glob=$2
-	local match_paths=("${lib_search_dir}"/${dylib_glob})
-	local match_names=()
-	local match
-
-	for match in "${match_paths[@]}"; do
-		[[ -f "${match}" && ! -L "${match}" ]] || continue
-		match_names+=("$(basename "${match}")")
-	done
-
-	case "${#match_names[@]}" in
-		1)
-			printf '%s\n' "${match_names[0]}"
-			;;
-		0)
-			die "Failed to find a real dylib matching ${dylib_glob} in ${lib_search_dir}."
-			;;
-		*)
-			die "Expected exactly one real dylib matching ${dylib_glob} in ${lib_search_dir}, found: ${match_names[*]}"
-			;;
-	esac
-}
-
-resolve_required_real_dylib() {
+require_real_dylib() {
 	local install_dir=$1
 	local required_name=$2
-	local install_lib_dir="${install_dir}/lib"
-	local install_path="${install_lib_dir}/${required_name}"
-	local source_glob boost_base target_basename
 
-	if [[ -f "${install_path}" && ! -L "${install_path}" ]]; then
-		basename "${install_path}"
-		return
-	fi
-
-	if [[ -L "${install_path}" ]]; then
-		target_basename=$(basename "$(readlink "${install_path}")")
-		[[ -f "${install_lib_dir}/${target_basename}" ]] || die "Broken dylib symlink ${required_name} -> ${target_basename} in ${install_lib_dir}."
-		printf '%s\n' "${target_basename}"
-		return
-	fi
-
-	case "${required_name}" in
-		libboost_*-mt.dylib)
-			boost_base="${required_name%-mt.dylib}"
-			source_glob="${boost_base}.*.dylib"
-			;;
-		libboost_container.1.89.0.dylib)
-			source_glob="libboost_container.*.dylib"
-			;;
-		libboost_date_time.1.89.0.dylib)
-			source_glob="libboost_date_time.*.dylib"
-			;;
-		libexpat.1.11.2.dylib)
-			source_glob="libexpat.*.dylib"
-			;;
-		libvorbis.0.dylib)
-			source_glob="libvorbis.0.*.dylib"
-			;;
-		*)
-			die "Failed to resolve required macOS dylib ${required_name} in ${install_lib_dir}."
-			;;
-	esac
-
-	find_unique_real_dylib "${install_lib_dir}" "${source_glob}"
+	[[ -f "${install_dir}/lib/${required_name}" && ! -L "${install_dir}/lib/${required_name}" ]] \
+		|| die "Expected ${install_dir}/lib/${required_name} to be a real dylib."
 }
 
 validate_required_macos_dylibs() {
-	local index other_index required_name other_name required_real_name other_real_name
+	local index other_index required_name other_name
 
 	for (( index=0; index<${#required_macos_dylibs[@]}; index++ )); do
 		required_name="${required_macos_dylibs[index]}"
-		required_real_name=$(resolve_required_real_dylib "${x64_install_dir}" "${required_name}")
 
 		for (( other_index=index + 1; other_index<${#required_macos_dylibs[@]}; other_index++ )); do
 			other_name="${required_macos_dylibs[other_index]}"
 			[[ "${required_name}" != "${other_name}" ]] || die "required_macos_dylibs lists ${required_name} more than once."
-
-			other_real_name=$(resolve_required_real_dylib "${x64_install_dir}" "${other_name}")
-			[[ "${required_real_name}" != "${other_real_name}" ]] \
-				|| die "required_macos_dylibs entries ${required_name} and ${other_name} both resolve to ${required_real_name}; keep only one required name and add the alias later instead of silently staging duplicates."
 		done
 	done
 }
 
 stage_universal_dylibs() {
-	local required_name x64_name arm64_name
+	local required_name
 
 	rm -rf "${lib_dir}" || die "Failed to remove ${lib_dir}."
 	mkdir -p "${lib_dir}" || die "Failed to create ${lib_dir}."
 
 	for required_name in "${required_macos_dylibs[@]}"; do
-		x64_name=$(resolve_required_real_dylib "${x64_install_dir}" "${required_name}")
-		arm64_name=$(resolve_required_real_dylib "${arm64_install_dir}" "${required_name}")
-		if [[ "${x64_name}" != "${arm64_name}" ]]; then
-			die "Required dylib ${required_name} resolves to ${x64_name} for ${x64_triplet} and ${arm64_name} for ${arm64_triplet}."
-		fi
+		require_real_dylib "${x64_install_dir}" "${required_name}"
+		require_real_dylib "${arm64_install_dir}" "${required_name}"
 		lipo -create \
-			"${x64_install_dir}/lib/${x64_name}" \
-			"${arm64_install_dir}/lib/${arm64_name}" \
-			-output "${lib_dir}/${x64_name}" \
-			|| die "Failed to create the universal dylib ${lib_dir}/${x64_name}."
+			"${x64_install_dir}/lib/${required_name}" \
+			"${arm64_install_dir}/lib/${required_name}" \
+			-output "${lib_dir}/${required_name}" \
+			|| die "Failed to create the universal dylib ${lib_dir}/${required_name}."
 	done
 }
 
-# After copying dylibs out of vcpkg, `otool -L` still points back into
-# projectfiles/Xcode/temp/... . Rewrite those edges to either @loader_path
-# inside the staged bundle or to the system zlib path; otherwise the app will
-# still try to load libraries from the deleted temp tree at runtime.
+# After copying dylibs out of vcpkg, rewrite bundled dependency edges to
+# @loader_path so each staged dylib loads its dependencies from the same app
+# Frameworks directory at runtime.
 rewrite_staged_dylib_deps() {
 	local dylib_path=$1
-	local dep dep_name preferred_name boost_base link_path link_name target_basename
+	local dep dep_name
 
 	otool -L "${dylib_path}" >/dev/null || die "Failed to inspect ${dylib_path} with otool."
 
@@ -430,68 +362,9 @@ rewrite_staged_dylib_deps() {
 		esac
 
 		dep_name=$(basename "${dep}")
-		case "${dep_name}" in
-				libboost_*.dylib)
-					boost_base="${dep_name%.dylib}"
-					boost_base="${boost_base%%.*}"
-					if [[ -e "${lib_dir}/${boost_base}-mt.dylib" ]]; then
-						install_name_tool -change "${dep}" "@loader_path/${boost_base}-mt.dylib" "${dylib_path}" \
-							|| die "Failed to rewrite ${dep} in ${dylib_path}."
-						continue
-					fi
-					;;
-				libcrypto*.dylib)
-					if [[ -e "${lib_dir}/libcrypto.dylib" ]]; then
-						install_name_tool -change "${dep}" "@loader_path/libcrypto.dylib" "${dylib_path}" \
-							|| die "Failed to rewrite ${dep} in ${dylib_path}."
-						continue
-					fi
-					;;
-				libpcre2-8*.dylib)
-					if [[ -e "${lib_dir}/libpcre2-8.0.dylib" ]]; then
-						install_name_tool -change "${dep}" "@loader_path/libpcre2-8.0.dylib" "${dylib_path}" \
-							|| die "Failed to rewrite ${dep} in ${dylib_path}."
-						continue
-					fi
-					;;
-				libreadline*.dylib)
-					if [[ -e "${lib_dir}/libreadline.8.dylib" ]]; then
-						install_name_tool -change "${dep}" "@loader_path/libreadline.8.dylib" "${dylib_path}" \
-							|| die "Failed to rewrite ${dep} in ${dylib_path}."
-						continue
-					fi
-					;;
-				libssl*.dylib)
-					if [[ -e "${lib_dir}/libssl.dylib" ]]; then
-						install_name_tool -change "${dep}" "@loader_path/libssl.dylib" "${dylib_path}" \
-							|| die "Failed to rewrite ${dep} in ${dylib_path}."
-						continue
-					fi
-					;;
-				libz.*.dylib)
-					install_name_tool -change "${dep}" "/usr/lib/libz.1.dylib" "${dylib_path}" \
-						|| die "Failed to rewrite ${dep} in ${dylib_path}."
-					continue
-					;;
-		esac
-
-		preferred_name="${dep_name}"
-		for link_path in "${x64_install_dir}/lib"/*.dylib; do
-			[[ -L "${link_path}" ]] || continue
-			target_basename=$(basename "$(readlink "${link_path}")")
-			[[ "${target_basename}" == "${dep_name}" ]] || continue
-			link_name=$(basename "${link_path}")
-			[[ -e "${lib_dir}/${link_name}" ]] || continue
-			# Prefer the least-versioned staged alias so rewritten deps match the
-			# app-bundle filenames we recreate for Xcode and for dependent dylibs.
-			if ((${#link_name} < ${#preferred_name})); then
-				preferred_name="${link_name}"
-			fi
-		done
-		if [[ -e "${lib_dir}/${preferred_name}" ]]; then
-			install_name_tool -change "${dep}" "@loader_path/${preferred_name}" "${dylib_path}" \
-				|| die "Failed to rewrite ${dep} in ${dylib_path}."
-		fi
+		[[ -e "${lib_dir}/${dep_name}" ]] || die "Missing staged dependency ${dep_name} required by ${dylib_path}."
+		install_name_tool -change "${dep}" "@loader_path/${dep_name}" "${dylib_path}" \
+			|| die "Failed to rewrite ${dep} in ${dylib_path}."
 	done < <(otool -L "${dylib_path}" | awk 'NR > 1{print $1}')
 }
 
@@ -506,49 +379,6 @@ normalize_staged_dylibs() {
 		install_name_tool -id "@rpath/${dylib_name}" "${dylib_path}" \
 			|| die "Failed to reset the install id for ${dylib_path}."
 		rewrite_staged_dylib_deps "${dylib_path}"
-	done
-}
-
-recreate_common_symlinks() {
-	local link_path target_basename
-
-	for link_path in "${x64_install_dir}/lib"/*.dylib; do
-		[[ -L "${link_path}" ]] || continue
-		target_basename=$(basename "$(readlink "${link_path}")")
-		if [[ -e "${lib_dir}/${target_basename}" ]]; then
-			ln -sf "${target_basename}" "${lib_dir}/$(basename "${link_path}")" \
-				|| die "Failed to recreate the staged symlink $(basename "${link_path}")."
-		fi
-	done
-}
-
-materialize_required_macos_dylibs() {
-	local required_name real_name staged_required_path staged_real_path
-
-	for required_name in "${required_macos_dylibs[@]}"; do
-		real_name=$(resolve_required_real_dylib "${x64_install_dir}" "${required_name}")
-		staged_required_path="${lib_dir}/${required_name}"
-		staged_real_path="${lib_dir}/${real_name}"
-
-		[[ -e "${staged_real_path}" ]] || die "Missing staged dylib ${real_name} required for ${required_name}."
-
-		if [[ "${required_name}" == "${real_name}" ]]; then
-			[[ -f "${staged_required_path}" && ! -L "${staged_required_path}" ]] || die "Expected ${required_name} to be staged as a real dylib."
-			install_name_tool -id "@rpath/${required_name}" "${staged_required_path}" \
-				|| die "Failed to reset the install id for ${staged_required_path}."
-			rewrite_staged_dylib_deps "${staged_required_path}"
-			continue
-		fi
-
-		rm -f "${staged_required_path}" || die "Failed to remove ${staged_required_path}."
-		cp "${staged_real_path}" "${staged_required_path}" || die "Failed to copy ${staged_real_path} to ${staged_required_path}."
-		# Some filenames referenced by the Xcode project and app bundle, such
-		# as libssl.dylib, libcrypto.dylib, or libreadline.8.dylib, are
-		# materialized alongside the fully versioned upstream dylibs so each
-		# filename can carry its own @rpath install id.
-		install_name_tool -id "@rpath/${required_name}" "${staged_required_path}" \
-			|| die "Failed to reset the install id for ${staged_required_path}."
-		rewrite_staged_dylib_deps "${staged_required_path}"
 	done
 }
 
@@ -624,9 +454,6 @@ stage_arch_specific_headers
 echo "==> Staging universal dylibs ..."
 validate_required_macos_dylibs
 stage_universal_dylibs
-normalize_staged_dylibs
-recreate_common_symlinks
-materialize_required_macos_dylibs
 normalize_staged_dylibs
 
 echo "==> Validating staged bundle ..."
