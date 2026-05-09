@@ -415,10 +415,7 @@ void units_dialog::update_variation()
 // } -------------------- BUILDERS -------------------- {
 std::unique_ptr<units_dialog> units_dialog::build_create_dialog(const std::vector<const unit_type*>& types_list)
 {
-	auto smart_dlg = std::make_unique<units_dialog>();
-
-	// Take the raw pointer to give to callbacks as the unique_ptr will be out of scope by the time they're called.
-	auto dlg = smart_dlg.get();
+	auto dlg = std::make_unique<units_dialog>();
 
 	const auto type_gen = [](const auto& type) {
 		std::string type_name = type->type_name();
@@ -432,7 +429,7 @@ std::unique_ptr<units_dialog> units_dialog::build_create_dialog(const std::vecto
 		return type->race()->plural_name();
 	};
 
-	const auto populate_variations = [dlg](const unit_type& ut) {
+	const auto populate_variations = [dlg = dlg.get()](const unit_type& ut) {
 		// Populate variations box
 		menu_button& var_box = dlg->find_widget<menu_button>("variation_box");
 		std::vector<config> var_box_values;
@@ -484,7 +481,7 @@ std::unique_ptr<units_dialog> units_dialog::build_create_dialog(const std::vecto
 	set_column("unit_name", type_gen, sort_type::generator);
 	set_column("unit_details", race_gen, sort_type::generator);
 
-	dlg->on_modified([populate_variations, dlg, &types_list](std::size_t index) -> const auto& {
+	dlg->on_modified([populate_variations, dlg = dlg.get(), &types_list](std::size_t index) -> const auto& {
 		const unit_type* ut = types_list[index];
 
 		if (dlg->is_selected() && (static_cast<int>(index) == dlg->get_selected_index())) {
@@ -509,7 +506,7 @@ std::unique_ptr<units_dialog> units_dialog::build_create_dialog(const std::vecto
 		return *ut;
 	});
 
-	return smart_dlg;
+	return dlg;
 }
 
 std::unique_ptr<units_dialog> units_dialog::build_recruit_dialog(
