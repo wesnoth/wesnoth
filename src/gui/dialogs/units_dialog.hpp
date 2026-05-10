@@ -150,7 +150,7 @@ public:
 	void on_modified(const Func& f)
 	{
 		connect_signal<event::NOTIFY_MODIFIED>([this, f](widget& w, auto&&...) {
-			w.find_widget<unit_preview_pane>("unit_details").set_display_data(f(get_selected_index()));
+			w.find_widget<unit_preview_pane>("unit_details").set_display_data(f(this, get_selected_index()));
 		});
 	}
 
