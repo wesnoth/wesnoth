@@ -628,9 +628,19 @@ if(ENABLE_APPDATA_FILE AND ENABLE_GAME)
 endif()
 
 if(ENABLE_SERVER AND FIFO_DIR)
-	install(CODE "execute_process(COMMAND ${CMAKE_COMMAND} -E make_directory \$ENV{DESTDIR}/${FIFO_DIR})")
+	# Copy and remove the slash at the end, if it exists
+	string(REGEX REPLACE "/$" "" DEST_FIFO_DIR "$ENV{DESTDIR}")
+
+	# Copy and remove the slash on the beginning, if it exists
+	string(REGEX REPLACE "^/" "" TEMP_FIFO_DIR "${FIFO_DIR}")
+
+	# Combine and build destination directory
+	set(DEST_FIFO_DIR "${DEST_FIFO_DIR}/${TEMP_FIFO_DIR}")
+	message("-- Setting DEST_FIFO_DIR: ${DEST_FIFO_DIR}")
+
+	install(CODE "execute_process(COMMAND ${CMAKE_COMMAND} -E make_directory ${DEST_FIFO_DIR})")
 	if(SERVER_UID AND SERVER_GID)
-		install(CODE "execute_process(COMMAND chown ${SERVER_UID}:${SERVER_GID} \$ENV{DESTDIR}/${FIFO_DIR})")
+		install(CODE "execute_process(COMMAND chown ${SERVER_UID}:${SERVER_GID} ${DEST_FIFO_DIR})")
 	endif()
 endif()
 
