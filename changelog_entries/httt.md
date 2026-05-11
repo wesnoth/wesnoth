@@ -4,3 +4,4 @@
      * S28 "The Lost General": fixed "Cavefish" achievement triggering if you didn't recruit/recall any units at all.
      * S50 "The Battle For Wesnoth": Asheviere should now more intelligently resist assassination strategies.
      * S50 "The Battle For Wesnoth": fix "Canon" achievement being awarded even if you hadn't played "The Dwarven Doors".
+     * Fix replays with Li'sar's Heavy Infantrymen causing desyncs.
