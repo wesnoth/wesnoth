@@ -3656,8 +3656,6 @@ directory.""")
                standard_unit_filter() or \
                under("side") or \
                re.search("{[A-Z]+.*description=.*}", line)):
-            if "id" not in tagstack[-1][1] and "_" not in line:
-                line = re.sub(r"\bdescription\s*=", "id=", line)
             if "name" not in tagstack[-1][1]:
                 line = re.sub(r"user_description\s*=", "name=", line)
             if "generate_name" not in tagstack[-1][1]:
