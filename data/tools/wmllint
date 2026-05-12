@@ -48,120 +48,36 @@
 #
 #                              MAGIC COMMENTS
 #
-# Note: You can shut wmllint up about custom terrains by having a comment
-# on the same line that includes the string "wmllint: ignore" or
-# "wmllint: noconvert". The same magic comments will also disable checking
-# of translation marks, which may alternatively be toggled for line blocks
-# with "wmllint: markcheck off" and "wmllint: markcheck on".
-#
-# You can also prevent description insertions with "wmllint: no-icon".
-#
-# You can force otherwise undeclared characters to be recognized with
-# a magic comment containing the string "wmllint: recognize".
-# The rest of the line is stripped and treated as the name of a character
-# who should be recognized in descriptions.  This will be useful,
-# for example, if your scenario follows a continue so there are
-# characters present who were not explicitly recalled.  It may
-# also be useful if you have wrapped unit-creation or recall markup in
-# non-core macros and wmllint cannot recognize it.
-#
-# If you use custom macros to create (or recall) a named unit, you can tell
-# wmllint which field contains the id with the string, "wmllint: whofield
-# <macro> <number>".  After the macro's last use, *make sure* to remove it
-# with "wmllint: whofield clear <macro>"; if "clear" is not followed by a
-# macro name, all macros will be cleared from the list.  (If the <number>
-# string was not a non-zero number, wmllint will also attempt to remove the
-# specified macro.)
-#
-# For macros used in multiple scenarios to field characters, you can tell
-# wmllint to recognize them with another magic comment:
-#     wmllint: who <macro> is <character(s)>
-# <Macro> should be the macro name; <character(s)> would be the ids of the
-# recalled (or created) characters, comma-separated if there were more than
-# one.  If more characters attach to a macro in later scenarios, they can be
-# appended with additional "who" magic comments (though this requires scenarios
-# to be numbered or otherwise sorted to work properly, as wmllint traverses
-# files in alphabetical order).  If there is a character that drops out,
-# preceding that person's entry with a double-minus will cause that character
-# to be removed, e.g., "-- Garak".
-#
-# At the end of the campaign, *make sure* you use:
-#     wmllint: unwho ALL
-# This will clear the list of "who" magic comments and tell wmllint to stop
-# checking for them in later files and directories.  If a specific macro is
-# not used in subsequent scenarios, put "unwho <macro>" in its last scenario.
-#
-# Similarly, it is possible to explicitly declare a unit's usage class
-# with a magic comment that looks like this:
-#    wmllint: usage of <unit> is <class>
-# Note that <unit> must be a string wrapped in ASCII doublequotes.  This
-# declaration will be useful if you are declaring units with macros that
-# include a substitutable formal in the unit name; there were examples in
-# UtBS, but they have since been converted to use the [base_unit] tag.
-#
-# If a mismatch between a recruit list and recruitment pattern involves a
-# usage type outside the five core types, the warning message will include a
-# note that a non-standard usage class is involved.  If you are using custom
-# usage classes and would like wmllint to be aware of them, you can insert
-# the magic comment, "wmllint: usagetype <class>".  This comment will take a
-# comma-separated list, and can also be pluralized to "usagetypes".
-#
-# You can disable stack-based malformation checks with a comment
-# containing "wmllint: validate-off" and re-enable with "wmllint: validate-on".
-#
-# You can prevent filename conversions with a comment containing
-# "wmllint: noconvert" on the same line as the filename.
-#
-# You can suppress complaints about files without an initial textdomain line
-# by embedding the magic comment "# wmllint: no translatables" in the file.
-# of course, it's a good idea to be sure this assertion is actually true.
-#
-# You can skip checks on unbalanced WML (e.g. in a macro definition) by
-# bracketing it with "wmllint: unbalanced-on" and "wmllint: unbalanced-off".
-# Note that this will also disable stack-based validation on the span
-# of lines they enclose.
-#
-# A special comment "# wmllint: deathcheck off" will disable the check whether
-# dying units speak in their death events.
-# The comment "# wmllint: deathcheck on" will re-enable this check.
-#
-# A magic comment of the form "wmllint: general spellings word1
-# word2..."  will declare the tokens word1, word2, etc. to be
-# acceptable spellings for anywhere in the Wesnoth tree that the
-# spellchecker should never flag.  If the keyword "general" is
-# replaced by "local", the spelling exceptions apply only in the
-# current file. If the keyword "general" is replaced by "directory",
-# the spelling exceptions apply to all files below the parent
-# directory.
-#
-# A comment containing "no spellcheck" disables spellchecking on the
-# line where it occurs.
-#
-# wmllint will also make sure the sides in a scenario are in a continuous
-# numerical sequence. However, if a side is defined in a macro the comment
-# "#wmllint: skip-side" is needed where the macro is used in order to allow
-# wmllint to account for it properly.
-#
-# In 1.11.5 and 1.11.6 respectively, the special ellipses for leaders and units
-# without a ZoC are automatically handled by the C++ engine. wmllint warns if such
-# ellipses are found in your WML and asks to remove them; at the same time it
-# notifies of custom ellipses that may need to be updated (updating means that
-# -nozoc, -leader and -leader-nozoc variations of your ellipse need to be added).
-# You can disable this sanity check for the current line with the comment
-# "# wmllint: no ellipsecheck".
-#
-# In the 1.13 development series, the ability to implement custom conditional
-# tags by using Lua was added. wmllint, of course, doesn't handle Lua files,
-# so to avoid having them incorrectly recognized as "illegal child of [if]"
-# you can declare them with this magic comment:
-# # wmllint: conditional tag <tag_name>
-# Do not surround <tag_name> with square braces, because wmllint will do so
-# automatically; on the other hand, you can specify multiple tags to be
-# recognized as a comma-separated list.
-#
-# wmllint: translatable <attribute>
-# This adds <attribute> to the list of translatable attributes for the file.
-# Prevents the warning that an attribute should not have a translation mark
+# wmllint: ignore                             - suppresses most wmllint checks on the line this comment is on.
+# wmllint: noconvert                          - disables and suppresses output for changing the line the comment is on.
+# wmllint: markcheck on|off                   - disables checking for missing or extra translation marks in the block between off and on.
+# wmllint: no-icon                            - disables adding the name as the description (which also determines the icon) to attacks missing the description attribute.
+# wmllint: recognize <unit id>                - suppresses output for dialogue where wmllint is not aware of the speaker for the single file it's in.
+# wmllint: whofield <macro> <argument number> - when using a macro to place a unit, tells wmllint which macro argument contains the unit id.
+#                                               used in the current and subsequent files that are processed.
+# wmllint: whofield clear <macro>             - removes wmllint's recognition of the unit id used in <macro>. using without specifying <macro> clears all macros from recognition.
+# wmllint: who <macro> is <characters>        - adds wmllint recognition of <characters> (comma delimited list of unit ids) when it encounters <macro>.
+#                                               used in the current and subsequent files that are processed.
+# wmllint: unwho ALL                          - removes all unit ids added by any "wmllint: who[field]" comments.
+# wmllint: unwho <macro>                      - removes all unit ids recognized by that macro.
+# wmllint: usage of <unit> is <class>         - explicitly declares the recruitment type of the unit (see the usage attribute of [unit_type]) in case wmllint doesn't find it.
+#                                               <unit> must be inside ascii double quotes.
+# wmllint: usagetype <class>                  - tell wmllint about custom recruitment types. <class> can be a comma separated list.
+# wmllint: validate-on|off                    - suppresses most wmllint checks in the block between off and on.
+# wmllint: no translatables                   - suppresses output for files without a textdomain on the first line.
+# wmllint: unbalanced-on|off                  - suppresses output when there are more opening tags than closing tags or vice versa in the block between off and on.
+# wmllint: deathcheck on|off                  - suppresses output when a unit speaks in their death event in the block between off and on.
+# wmllint: <scope> spellings <words>          - suppresses output for misspellings for <words>. <words> is a space separated list of words.
+#                                               <scope> is one of general (disables spellcheck for <words> globally),
+#                                               directory (disables spellcheck for <words> in the current and all nested directories),
+#                                               or local (disables spellcheck for <words> in the current file).
+# wmllint: no spellcheck                      - disables all spellchecking on the line this comment is on.
+# wmllint: skip-side                          - suppresses output when a side is declared in a macro, which breaks wmllint's check that sides are defined in numeric order.
+# wmllint: no ellipsecheck                    - suppresses output when finding unit ellipses that the engine adds automatically or custom unit ellipses that need to be updated.
+# wmllint: conditional tag <tag_name>         - adds <tag_name> to the list of known conditional WML tags. used when defining custom conditional tags via lua.
+#                                               <tag_name> is a comma delimited list. do not put square brackets around the tags listed in <tag_name>.
+# wmllint: translatable <attribute>           - this adds <attribute> to the list of translatable attributes for the file.
+#                                               prevents the warning that an attribute should not have a translation mark.
 #
 #                              DEVELOPER INFORMATION
 #
