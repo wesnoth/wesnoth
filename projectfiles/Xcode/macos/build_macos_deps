@@ -48,67 +48,74 @@ arm64_buildtrees_root="${buildtrees_root_base}/${arm64_triplet}"
 x64_install_dir="${x64_install_root}/${x64_triplet}"
 arm64_install_dir="${arm64_install_root}/${arm64_triplet}"
 
-# Real dylibs copied by the macOS Xcode target. These names should match the
-# files produced by vcpkg, not symlink aliases.
+# Stable dylib names copied by the macOS Xcode target. vcpkg may produce
+# versioned real files behind these names, but the Xcode project should not need
+# to change when a dependency patch version changes.
 required_macos_dylibs=(
-	"libSDL2-2.0.0.dylib"
-	"libSDL2_image-2.0.0.800.8.dylib"
-	"libSDL2_mixer-2.0.0.800.1.dylib"
-	"libboost_atomic.1.90.0.dylib"
-	"libboost_charconv.1.90.0.dylib"
-	"libboost_chrono.1.90.0.dylib"
-	"libboost_container.1.90.0.dylib"
-	"libboost_context.1.90.0.dylib"
-	"libboost_coroutine.1.90.0.dylib"
-	"libboost_date_time.1.90.0.dylib"
-	"libboost_filesystem.1.90.0.dylib"
-	"libboost_iostreams.1.90.0.dylib"
-	"libboost_locale.1.90.0.dylib"
-	"libboost_process.1.90.0.dylib"
-	"libboost_program_options.1.90.0.dylib"
-	"libboost_random.1.90.0.dylib"
-	"libboost_thread.1.90.0.dylib"
-	"libboost_unit_test_framework.1.90.0.dylib"
-	"libbrotlicommon.1.2.0.dylib"
-	"libbrotlidec.1.2.0.dylib"
-	"libbz2.1.0.8.dylib"
-	"libcairo.2.dylib"
-	"libcrypto.3.dylib"
-	"libexpat.1.11.2.dylib"
-	"libffi.8.dylib"
-	"libfontconfig.1.dylib"
-	"libfreetype.6.20.2.dylib"
-	"libfribidi.0.dylib"
-	"libgio-2.0.0.dylib"
-	"libglib-2.0.0.dylib"
-	"libgmodule-2.0.0.dylib"
-	"libgobject-2.0.0.dylib"
-	"libgthread-2.0.0.dylib"
-	"libharfbuzz.0.dylib"
-	"libicudata.78.2.dylib"
-	"libicui18n.78.2.dylib"
-	"libicuuc.78.2.dylib"
-	"libintl.8.dylib"
-	"libjpeg.62.4.0.dylib"
-	"liblzma.5.8.2.dylib"
-	"libogg.0.8.6.dylib"
-	"libpango-1.0.0.dylib"
-	"libpangocairo-1.0.0.dylib"
-	"libpangoft2-1.0.0.dylib"
-	"libpcre2-8.0.15.0.dylib"
-	"libpixman-1.0.dylib"
-	"libpng16.16.55.0.dylib"
-	"libreadline.8.3.dylib"
-	"libsharpyuv.0.1.2.dylib"
-	"libssl.3.dylib"
-	"libvorbis.0.4.9.dylib"
-	"libvorbisfile.3.3.8.dylib"
-	"libwavpack.1.dylib"
-	"libwebp.7.2.0.dylib"
-	"libwebpdemux.2.0.17.dylib"
-	"libz.1.3.1.dylib"
-	"libzstd.1.5.7.dylib"
+	"libSDL2.dylib"
+	"libSDL2_image.dylib"
+	"libSDL2_mixer.dylib"
+	"libboost_atomic.dylib"
+	"libboost_charconv.dylib"
+	"libboost_chrono.dylib"
+	"libboost_container.dylib"
+	"libboost_context.dylib"
+	"libboost_coroutine.dylib"
+	"libboost_date_time.dylib"
+	"libboost_filesystem.dylib"
+	"libboost_iostreams.dylib"
+	"libboost_locale.dylib"
+	"libboost_process.dylib"
+	"libboost_program_options.dylib"
+	"libboost_random.dylib"
+	"libboost_thread.dylib"
+	"libboost_unit_test_framework.dylib"
+	"libbrotlicommon.dylib"
+	"libbrotlidec.dylib"
+	"libbz2.dylib"
+	"libcairo.dylib"
+	"libcrypto.dylib"
+	"libexpat.dylib"
+	"libffi.dylib"
+	"libfontconfig.dylib"
+	"libfreetype.dylib"
+	"libfribidi.dylib"
+	"libgio-2.0.dylib"
+	"libglib-2.0.dylib"
+	"libgmodule-2.0.dylib"
+	"libgobject-2.0.dylib"
+	"libgthread-2.0.dylib"
+	"libharfbuzz.dylib"
+	"libicudata.dylib"
+	"libicui18n.dylib"
+	"libicuuc.dylib"
+	"libintl.dylib"
+	"libjpeg.dylib"
+	"liblzma.dylib"
+	"libogg.dylib"
+	"libpango-1.0.dylib"
+	"libpangocairo-1.0.dylib"
+	"libpangoft2-1.0.dylib"
+	"libpcre2-8.dylib"
+	"libpixman-1.dylib"
+	"libpng16.dylib"
+	"libreadline.dylib"
+	"libsharpyuv.dylib"
+	"libssl.dylib"
+	"libvorbis.dylib"
+	"libvorbisfile.dylib"
+	"libwavpack.dylib"
+	"libwebp.dylib"
+	"libwebpdemux.dylib"
+	"libz.dylib"
+	"libzstd.dylib"
 )
+
+# vcpkg's stable dylib names often point at files whose install names are still
+# versioned. Keep that source-to-staged-name mapping so dependency rewrites can
+# point every edge at the stable file copied into the app bundle.
+source_install_names=()
+staged_dylib_names=()
 
 time_interval_to_string() {
 	local duration=$(( $2 - $1 )) days hours minutes seconds
@@ -306,12 +313,58 @@ stage_arch_specific_headers() {
 	write_arch_wrapper "${headers_dir}/openssl/opensslconf.h" "opensslconf_x86_64.h" "opensslconf_arm64.h"
 }
 
-require_real_dylib() {
+require_available_dylib() {
 	local install_dir=$1
 	local required_name=$2
 
-	[[ -f "${install_dir}/lib/${required_name}" && ! -L "${install_dir}/lib/${required_name}" ]] \
-		|| die "Expected ${install_dir}/lib/${required_name} to be a real dylib."
+	[[ -f "${install_dir}/lib/${required_name}" ]] \
+		|| die "Expected ${install_dir}/lib/${required_name} to exist as a dylib."
+}
+
+dylib_install_name() {
+	local dylib_path=$1
+	local install_name
+
+	install_name=$(otool -D "${dylib_path}" | awk 'NR == 2 { print $1 }') \
+		|| die "Failed to inspect the install name for ${dylib_path}."
+	[[ -n "${install_name}" ]] || die "Could not read the install name for ${dylib_path}."
+	printf '%s\n' "${install_name}"
+}
+
+remember_staged_dylib_name() {
+	local source_name=$1
+	local staged_name=$2
+	local index
+
+	for (( index=0; index<${#source_install_names[@]}; index++ )); do
+		if [[ "${source_install_names[index]}" == "${source_name}" ]]; then
+			[[ "${staged_dylib_names[index]}" == "${staged_name}" ]] \
+				|| die "Source install name ${source_name} maps to both ${staged_dylib_names[index]} and ${staged_name}."
+			return
+		fi
+	done
+
+	source_install_names+=("${source_name}")
+	staged_dylib_names+=("${staged_name}")
+}
+
+staged_name_for_dependency() {
+	local dep_name=$1
+	local index
+
+	if [[ -e "${lib_dir}/${dep_name}" ]]; then
+		printf '%s\n' "${dep_name}"
+		return
+	fi
+
+	for (( index=0; index<${#source_install_names[@]}; index++ )); do
+		if [[ "${source_install_names[index]}" == "${dep_name}" ]]; then
+			printf '%s\n' "${staged_dylib_names[index]}"
+			return
+		fi
+	done
+
+	return 1
 }
 
 validate_required_macos_dylibs() {
@@ -328,17 +381,27 @@ validate_required_macos_dylibs() {
 }
 
 stage_universal_dylibs() {
-	local required_name
+	local required_name x64_source_path arm64_source_path x64_install_name arm64_install_name source_name
 
 	rm -rf "${lib_dir}" || die "Failed to remove ${lib_dir}."
 	mkdir -p "${lib_dir}" || die "Failed to create ${lib_dir}."
+	source_install_names=()
+	staged_dylib_names=()
 
 	for required_name in "${required_macos_dylibs[@]}"; do
-		require_real_dylib "${x64_install_dir}" "${required_name}"
-		require_real_dylib "${arm64_install_dir}" "${required_name}"
+		require_available_dylib "${x64_install_dir}" "${required_name}"
+		require_available_dylib "${arm64_install_dir}" "${required_name}"
+		x64_source_path="${x64_install_dir}/lib/${required_name}"
+		arm64_source_path="${arm64_install_dir}/lib/${required_name}"
+		x64_install_name=$(dylib_install_name "${x64_source_path}")
+		arm64_install_name=$(dylib_install_name "${arm64_source_path}")
+		[[ "${x64_install_name}" == "${arm64_install_name}" ]] \
+			|| die "${required_name} has different install names for x64 (${x64_install_name}) and arm64 (${arm64_install_name})."
+		source_name=$(basename "${x64_install_name}")
+		remember_staged_dylib_name "${source_name}" "${required_name}"
 		lipo -create \
-			"${x64_install_dir}/lib/${required_name}" \
-			"${arm64_install_dir}/lib/${required_name}" \
+			"${x64_source_path}" \
+			"${arm64_source_path}" \
 			-output "${lib_dir}/${required_name}" \
 			|| die "Failed to create the universal dylib ${lib_dir}/${required_name}."
 	done
@@ -349,7 +412,7 @@ stage_universal_dylibs() {
 # Frameworks directory at runtime.
 rewrite_staged_dylib_deps() {
 	local dylib_path=$1
-	local dep dep_name
+	local dep dep_name staged_dep_name
 
 	otool -L "${dylib_path}" >/dev/null || die "Failed to inspect ${dylib_path} with otool."
 
@@ -362,8 +425,9 @@ rewrite_staged_dylib_deps() {
 		esac
 
 		dep_name=$(basename "${dep}")
-		[[ -e "${lib_dir}/${dep_name}" ]] || die "Missing staged dependency ${dep_name} required by ${dylib_path}."
-		install_name_tool -change "${dep}" "@loader_path/${dep_name}" "${dylib_path}" \
+		staged_dep_name=$(staged_name_for_dependency "${dep_name}") \
+			|| die "Missing staged dependency ${dep_name} required by ${dylib_path}."
+		install_name_tool -change "${dep}" "@loader_path/${staged_dep_name}" "${dylib_path}" \
 			|| die "Failed to rewrite ${dep} in ${dylib_path}."
 	done < <(otool -L "${dylib_path}" | awk 'NR > 1{print $1}')
 }
