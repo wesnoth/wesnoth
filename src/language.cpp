@@ -232,10 +232,6 @@ void set_language(const language_def& locale)
 {
 	strings_.clear();
 
-	std::string locale_lc;
-	locale_lc.resize(locale.localename.size());
-	std::transform(locale.localename.begin(), locale.localename.end(), locale_lc.begin(), tolower);
-
 	current_language = locale;
 	time_locale_correct() = true;
 
