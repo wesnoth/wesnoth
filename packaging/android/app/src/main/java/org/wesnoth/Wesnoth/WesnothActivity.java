@@ -64,4 +64,7 @@ public class WesnothActivity extends SDLActivity
 		}
 	}
 
+	public String getLocaleCode() {
+		return SDLActivity.mCurrentLocale.toString();
+	}
 }
