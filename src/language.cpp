@@ -35,6 +35,11 @@ extern "C" int _putenv(const char*);
 #include <cerrno>
 #endif
 
+#ifdef __ANDROID__
+#include <SDL2/SDL_system.h> // For SDL Android functions
+#include <jni.h>
+#endif
+
 #define DBG_G LOG_STREAM(debug, lg::general())
 #define LOG_G LOG_STREAM(info, lg::general())
 #define WRN_G LOG_STREAM(warn, lg::general())
@@ -235,9 +240,30 @@ void set_language(const language_def& locale)
 	current_language = locale;
 	time_locale_correct() = true;
 
-	wesnoth_setlocale(LC_COLLATE, locale.localename, &locale.alternates);
-	wesnoth_setlocale(LC_TIME, locale.localename, &locale.alternates);
-	translation::set_language(locale.localename, &locale.alternates);
+	std::string localename = locale.localename;
+
+#ifdef __ANDROID__
+	if (locale.localename.empty()) {
+		JNIEnv* env = reinterpret_cast<JNIEnv*>(SDL_AndroidGetJNIEnv());
+		jobject wesnoth_instance = reinterpret_cast<jobject>(SDL_AndroidGetActivity());
+		jclass wesnoth_activity(env->GetObjectClass(wesnoth_instance));
+		jmethodID locale = env->GetMethodID(wesnoth_activity, "getLocaleCode", "()Ljava/lang/String;");
+		jstring lcode = reinterpret_cast<jstring>(env->CallObjectMethod(wesnoth_instance, locale));
+		localename = env->GetStringUTFChars(lcode, nullptr);
+
+		if(env->ExceptionCheck() == JNI_TRUE) {
+			env->ExceptionDescribe();
+			env->ExceptionClear();
+		}
+
+		env->DeleteLocalRef(wesnoth_instance);
+		env->DeleteLocalRef(wesnoth_activity);
+	}
+#endif
+
+	wesnoth_setlocale(LC_COLLATE, localename, &locale.alternates);
+	wesnoth_setlocale(LC_TIME, localename, &locale.alternates);
+	translation::set_language(localename, &locale.alternates);
 	load_strings(false);
 }
 
