@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2026-01-20 17:31 UTC\n"
-"PO-Revision-Date: 2023-11-04 22:42+0100\n"
+"PO-Revision-Date: 2026-05-10 21:51+0200\n"
 "Last-Translator: Jadwiga Bączkiewicz <sniezynka.b@gmail.com>\n"
 "Language-Team: none\n"
 "Language: pl\n"
@@ -13,36 +13,25 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
 "X-Poedit-Basepath: /usr/local/share/wesnoth\n"
-"X-Generator: Poedit 3.4.1\n"
+"X-Generator: Poedit 3.7\n"
 
 #. [campaign]: id=Heir_To_The_Throne_Classic
 #. [achievement_group]
 #: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:12
 #: data/campaigns/Heir_To_The_Throne_Classic/achievements.cfg:3
-#, fuzzy
-#| msgid "Heir to the Throne"
 msgid "Heir to the Throne, Classic"
-msgstr "Następca tronu"
+msgstr "Następca tronu, wersja klasyczna"
 
 #. [campaign]: id=Heir_To_The_Throne_Classic
 #: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:15
-#, fuzzy
-#| msgid "HttT"
 msgid "HttTC"
-msgstr "NT"
+msgstr "NTk"
 
 #. [campaign]: id=Heir_To_The_Throne_Classic
 #: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:22
-#, fuzzy
-#| msgid ""
-#| "Fight to regain the throne of Wesnoth, of which you are the legitimate "
-#| "heir.\n"
-#| "\n"
 msgid ""
 "Fight to regain the throne of Wesnoth, of which you are the legitimate heir."
-msgstr ""
-"Walcz o odzyskanie prawowicie Ci należnego tronu królestwa Wesnoth.\n"
-"\n"
+msgstr "Walcz o odzyskanie prawowicie Ci należnego tronu królestwa Wesnoth."
 
 #. [campaign]: id=Heir_To_The_Throne_Classic
 #: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:24
@@ -51,6 +40,9 @@ msgid ""
 "historical reasons. Also optionally includes the old <i>Battle Training</i> "
 "tutorial."
 msgstr ""
+"To jest orginalna wersja tej klasycznej kampanii, zachowana z przyczyn "
+"historycznych. Dodatkowo opcjonalnie zawiera stary samouczek, <i>Trening "
+"bitewny</i>."
 
 #. [campaign]: id=Heir_To_The_Throne_Classic
 #: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:26
@@ -113,12 +105,12 @@ msgstr "Różności"
 #. [achievement]: id=completed
 #: data/campaigns/Heir_To_The_Throne_Classic/achievements.cfg:7
 msgid "Trained for Battle"
-msgstr ""
+msgstr "Wyszkolony do walki"
 
 #. [achievement]: id=completed
 #: data/campaigns/Heir_To_The_Throne_Classic/achievements.cfg:8
 msgid "Complete the old <i>Battle Training</i> tutorial."
-msgstr ""
+msgstr "Ukończ stary samouczek \"Trening bitewny\""
 
 #. [scenario]: id=01_The_Elves_Besieged
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/01_The_Elves_Besieged.cfg:4
@@ -8607,10 +8599,6 @@ msgstr ""
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/24_Battle_for_Wesnoth.cfg:238
-#, fuzzy
-#| msgid ""
-#| "Surrender, mother. The land’s blood is spent. I have come to take my "
-#| "rightful place."
 msgid ""
 "Surrender, Mother. The land’s blood is spent. I have come to take my "
 "rightful place."
@@ -9034,13 +9022,6 @@ msgstr "Morski ork"
 
 #. [unit_type]: id=Sea Orc, race=orc
 #: data/campaigns/Heir_To_The_Throne_Classic/units/Sea_Orc.cfg:32
-#, fuzzy
-#| msgid ""
-#| "While often viewed as inferior to their land-loving counterparts, Sea "
-#| "Orcs represent a great leap for all goblins as they have adapted to "
-#| "aquatic environments. With their curved swords they are competent "
-#| "fighters, although their lack of a ranged attack and poor defense on land "
-#| "do represent strategic weaknesses."
 msgid ""
 "While often viewed as inferior to their land-loving counterparts, Sea Orcs "
 "represent a great leap for all orcs and goblins as they have adapted to "
@@ -9049,7 +9030,7 @@ msgid ""
 "strategic weaknesses."
 msgstr ""
 "Choć są postrzegane jako słabeusze przez swoich lądowych kuzynów, orki "
-"morskie są wielkim triumfem ewolucji ras goblinoidalnych za sprawą "
+"morskie są wielkim triumfem ewolucji ras orko- i goblinoidalnych za sprawą "
 "przystosowania do środowisk wodnych. Orki morskie umiejętnie posługują się "
 "swoimi zakrzywionymi mieczami, ale brak ataku na odległość i słaba obrona na "
 "lądzie są ich poważnymi słabościami."
@@ -9081,7 +9062,7 @@ msgstr ""
 #. [firststrike]: id=initiative
 #: data/campaigns/Heir_To_The_Throne_Classic/utils/abilities.cfg:8
 msgid "first strike"
-msgstr ""
+msgstr "pierwszy cios"
 
 #. [firststrike]: id=initiative
 #: data/campaigns/Heir_To_The_Throne_Classic/utils/abilities.cfg:9
@@ -9089,6 +9070,8 @@ msgid ""
 "When under initiative influence, this unit always strikes first when "
 "attacked by melee weapon, even if they are defending."
 msgstr ""
+"Pod wpływem inicjatywy ta jednostka zawsze uderza pierwsza walcząc wręcz, "
+"nawet w obronie."
 
 #. [firststrike]: id=initiative
 #: data/campaigns/Heir_To_The_Throne_Classic/utils/abilities.cfg:10

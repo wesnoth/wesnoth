@@ -12,7 +12,7 @@
 ### Packaging
 ### Terrain
 ### Translations
-   * Updated translations: Bengali, British English, Czech, French, German, Italian, Portuguese (Brazil), Spanish
+   * Updated translations: Bengali, British English, Czech, French, German, Italian, Polish, Portuguese (Brazil), Spanish
 ### Units
 ### User interface
 ### WML Engine

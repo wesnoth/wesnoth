@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.5-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2026-02-25 19:03-0600\n"
-"PO-Revision-Date: 2025-09-27 14:04+0200\n"
+"PO-Revision-Date: 2026-05-10 21:54+0200\n"
 "Last-Translator: Jarom <jaromirb@op.pl>\n"
 "Language-Team: none\n"
 "Language: pl\n"
@@ -164,7 +164,7 @@ msgstr "Po Upadku (PPS)"
 #. [editor_group]: id=urban_jungle
 #: data/internal/Urban_Jungle/terrain-groups.cfg:5
 msgid "Urban Jungle (Internal)"
-msgstr ""
+msgstr "Miejska dżungla (techniczny)"
 
 #. [theme]: id=editor
 #: data/themes/editor.cfg:11
@@ -398,10 +398,8 @@ msgid "Error"
 msgstr "Błąd"
 
 #: src/editor/map/context_manager.cpp:705
-#, fuzzy
-#| msgid "Do you really want to save $type1 in $type2 folder?"
 msgid "Do you really want to save a map in the scenarios folder?"
-msgstr "Czy na pewno chcesz zapisać $type1 w folderze $type2?"
+msgstr "Czy na pewno chcesz zapisać mapę w folderze scenariuszy?"
 
 #: src/editor/map/context_manager.cpp:713
 #: src/editor/map/context_manager.cpp:905
@@ -413,10 +411,8 @@ msgid "Save Scenario As"
 msgstr "Zapisz scenariusz jako"
 
 #: src/editor/map/context_manager.cpp:754
-#, fuzzy
-#| msgid "Do you really want to save $type1 in $type2 folder?"
 msgid "Do you really want to save a scenario in the maps folder?"
-msgstr "Czy na pewno chcesz zapisać $type1 w folderze $type2?"
+msgstr "Czy na pewno chcesz zapisać scenariusz w folderze map?"
 
 #: src/editor/map/context_manager.cpp:762
 msgid "This scenario is already open."
@@ -483,42 +479,34 @@ msgid "File does not have .map, .cfg, or .mask extension"
 msgstr "Plik nie ma rozszerzenia .map, .cfg ani .mask"
 
 #: src/editor/map/map_context.cpp:227
-#, fuzzy
-#| msgid "Failed to load the scenario, attempting to load only the map."
 msgid ""
 "Failed to load the scenario: $error\n"
 "\n"
 "Attempting to load only the map."
 msgstr ""
-"Nie udało się wczytać scenariusza, podejmowanie próby wczytania samej mapy."
+"Nie udało się wczytać scenariusza: $error\n"
+"\n"
+"Podejmowanie próby wczytania samej mapy."
 
 #: src/editor/map/map_context.cpp:253
-#, fuzzy
-#| msgid ""
-#| "The map file looks like a scenario, but the map_data value does not point "
-#| "to an existing file"
 msgid ""
 "The file looks like a scenario, but the map_data attribute does not point to "
 "an existing file"
 msgstr ""
-"Plik mapy wygląda na scenariusz, ale wartość map_data nie wskazuje na "
+"Plik mapy wygląda na scenariusz, ale atrybut map_data nie wskazuje na "
 "istniejący plik"
 
 #: src/editor/map/map_context.cpp:268
-#, fuzzy
-#| msgid ""
-#| "The map file looks like a scenario, but the map_file value does not point "
-#| "to an existing file"
 msgid ""
 "The file looks like a scenario, but the map_file attribute does not point to "
 "an existing file"
 msgstr ""
-"Plik mapy wygląda na scenariusz, ale wartość map_file nie wskazuje na "
+"Plik mapy wygląda na scenariusz, ale atrybut map_file nie wskazuje na "
 "istniejący plik"
 
 #: src/editor/map/map_context.cpp:448
 msgid "Confirm"
-msgstr ""
+msgstr "Potwierdź"
 
 #: src/editor/map/map_context.cpp:835 src/editor/map/map_context.cpp:875
 msgid "Could not save time schedule: $msg"
