@@ -275,6 +275,14 @@ server::server(int port,
 
 	start_dump_stats();
 	start_tournaments_timer();
+	if(user_handler_) {
+		uuid_ = user_handler_->get_uuid();
+		if(uuid_.empty()) {
+			ERR_SERVER << "Unable to retrieve UUID from database";
+			exit(1);
+		}
+		LOG_SERVER << "Retrieved database UUID: " << uuid_;
+	}
 }
 
 #ifndef _WIN32
@@ -603,7 +611,6 @@ void server::load_config(bool reload)
 		}
 
 		user_handler_.reset(new fuh(*user_handler));
-		uuid_ = user_handler_->get_uuid();
 		tournaments_ = user_handler_->get_tournaments();
 	}
 #endif
