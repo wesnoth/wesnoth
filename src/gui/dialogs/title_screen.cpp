@@ -409,20 +409,21 @@ void title_screen::update_static_labels()
 		// Just assume everything is UTF-8 (it should be as long as we're called Wesnoth)
 		// and strip the charset from the Boost locale identifier.
 		const auto& boost_name = boost::algorithm::erase_first_copy(locale.name(), ".UTF-8");
-		const auto& langs = get_languages(true);
 
-		auto lang_def = utils::ranges::find(langs, boost_name, &language_def::localename);
-		if(lang_def != langs.end()) {
-			lang_button->set_label(lang_def->language.str());
-		} else if(boost_name == "c" || boost_name == "C") {
+		if(boost_name == "c" || boost_name == "C") {
 			// HACK: sometimes System Default doesn't match anything on the list. If you fork
 			// Wesnoth and change the neutral language to something other than US English, you
 			// want to change this too.
 			lang_button->set_label("English (US)");
 		} else {
-			// If somehow the locale doesn't match a known translation, use the
-			// locale identifier as a last resort
-			lang_button->set_label(boost_name);
+			std::string lname = get_locale_display_name(boost_name);
+			if(!lname.empty()) {
+				lang_button->set_label(lname);
+			} else {
+				// If somehow the locale doesn't match a known translation, use the
+				// locale identifier as a last resort
+				lang_button->set_label(boost_name);
+			}
 		}
 	}
 }

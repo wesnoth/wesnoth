@@ -51,6 +51,9 @@ namespace {
 	std::vector<language_def> known_languages;
 	utils::string_map strings_;
 	int min_translation_percent = 80;
+	// a storage for looking up locale name corresponding to a locale id
+	// for locale ids that Wesnoth supports
+	std::map<std::string, std::string> locale_names;
 }
 
 bool load_strings(bool complain);
@@ -116,6 +119,18 @@ language_def::language_def(const config& cfg)
 	, rtl(cfg["dir"] == "rtl")
 	, percent(cfg["percent"].to_int())
 {
+	// entry for main language in the locale id and name map
+	locale_names.emplace(localename, language);
+
+	if(cfg.has_attribute("alternate_names")) {
+		auto alternate_names = utils::split(cfg["alternate_names"]);
+		for(size_t i = 0; i < std::min(alternates.size(), alternate_names.size()); i++) {
+			std::string lname = alternate_names[i];
+			if(!lname.empty()) {
+				locale_names.emplace(alternates[i], lname);
+			}
+		}
+	}
 }
 
 bool load_language_list()
@@ -156,6 +171,12 @@ std::vector<language_def> get_languages(bool all)
 
 	LOG_G << "Found " << result.size() << " sufficiently translated languages";
 	return result;
+}
+
+std::string get_locale_display_name(const std::string& locale_id)
+{
+	auto itor = locale_names.find(locale_id);
+	return itor != locale_names.end() ? itor->second : "";
 }
 
 int get_min_translation_percent()
