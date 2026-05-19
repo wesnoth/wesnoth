@@ -5,6 +5,14 @@
    * The South Guard
      * S04 "Choice in the Fog": both choices should now be more similar in difficulty
      * S06a "Vengeance": increased the survival turns, but decreased initial enemy gold/units.
+   * Heir to the Throne
+     * S07 "Muff Malal's Peninsula": fixed incorrect portrait for Muff Malal in the time over event.
+     * S28 "The Lost General": fixed "Cavefish" achievement triggering if you didn't recruit/recall any units at all.
+     * S50 "The Battle For Wesnoth": Asheviere should now more intelligently resist assassination strategies.
+     * S50 "The Battle For Wesnoth": fix "Canon" achievement being awarded even if you hadn't played "The Dwarven Doors".
+     * Fix replays with Li'sar's Heavy Infantrymen causing desyncs.
+   * The Deceivers Gambit
+     * S04 "The Sylvan Seer": use new Silverback image from Renlie_Cocoa.
 ### Editor
 ### Multiplayer
    * Added new "Undead Siege" song by Tomek Szczęsny.
@@ -18,6 +26,10 @@
 ### WML Engine
 ### Miscellaneous and Bug Fixes
    * Resolved not all translations being available for selection on Windows builds. (GitHub #11112)
+   * Fixed movement and attacks remaining not being reset after undoing a recall.
+   * Fixed intermittent crashes due to using an invalid cache reference.
+### Android
+   * Fixed automatic language selection not working.
 
 ## Version 1.19.23
 ### Campaigns
