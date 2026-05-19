@@ -2,6 +2,8 @@
 ### Add-ons client
 ### Add-ons server
 ### Campaigns
+   * Heir to the Throne
+     * S03 "Blackwater Port": added a secondary, coastal entry point for this scenario, so Konrad can make better use of Merfolk if he has them.
 ### Editor
 ### Multiplayer
 ### Lua API
