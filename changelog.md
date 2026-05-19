@@ -1,6 +1,4 @@
-## Version 1.19.23+dev
-### Add-ons client
-### Add-ons server
+## Version 1.19.24
 ### Campaigns
    * The South Guard
      * S04 "Choice in the Fog": both choices should now be more similar in difficulty
@@ -13,17 +11,10 @@
      * Fix replays with Li'sar's Heavy Infantrymen causing desyncs.
    * The Deceivers Gambit
      * S04 "The Sylvan Seer": use new Silverback image from Renlie_Cocoa.
-### Editor
 ### Multiplayer
    * Added new "Undead Siege" song by Tomek Szczęsny.
-### Lua API
-### Packaging
-### Terrain
 ### Translations
    * Updated translations: Bengali, British English, Czech, French, German, Italian, Polish, Portuguese (Brazil), Spanish
-### Units
-### User interface
-### WML Engine
 ### Miscellaneous and Bug Fixes
    * Resolved not all translations being available for selection on Windows builds. (GitHub #11112)
    * Fixed movement and attacks remaining not being reset after undoing a recall.
