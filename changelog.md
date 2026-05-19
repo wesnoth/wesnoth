@@ -1,3 +1,19 @@
+## Version 1.19.24+dev
+### Add-ons client
+### Add-ons server
+### Campaigns
+### Editor
+### Multiplayer
+### Lua API
+### Packaging
+### Terrain
+### Translations
+### Units
+### User interface
+### WML Engine
+### Miscellaneous and Bug Fixes
+### Android
+
 ## Version 1.19.24
 ### Campaigns
    * The South Guard
