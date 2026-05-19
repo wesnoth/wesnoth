@@ -4,6 +4,7 @@
 ### Campaigns
    * Heir to the Throne
      * S03 "Blackwater Port": added a secondary, coastal entry point for this scenario, so Konrad can make better use of Merfolk if he has them.
+     * S10 "The Siege of Elensefar": reduced Easy difficulty.
      * On the overworld, the waters around Elensefar now better connect to the rest of the passable coast.
      * After completing either Elensefar scenario, Elensefar now provides Konrad with a port on the overworld.
 ### Editor
