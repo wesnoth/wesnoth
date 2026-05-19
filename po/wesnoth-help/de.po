@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.18 - wesnoth-help\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-03-23 18:10-0500\n"
+"POT-Creation-Date: 2026-05-18 21:15-0500\n"
 "PO-Revision-Date: 2026-04-22 20:56+0200\n"
 "Last-Translator: Johannes Löhnert <loehnert.kde@gmx.de>\n"
 "Language-Team: irc://irc.libera.chat/#wesnoth-de\n"
@@ -76,29 +76,29 @@ msgstr ""
 
 #. [trait]: id=loyal_dummy
 #. [trait]: id=loyal
-#: data/campaigns/The_Deceivers_Gambit/scenarios/00_Graduation.cfg:113
-#: data/campaigns/The_Deceivers_Gambit/scenarios/11_Clan_Blackcrest.cfg:748
-#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:20
+#: data/campaigns/The_Deceivers_Gambit/scenarios/00_Graduation.cfg:188
+#: data/campaigns/The_Deceivers_Gambit/scenarios/11_Clan_Blackcrest.cfg:770
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:23
 #: data/core/macros/traits.cfg:12
 msgid "loyal"
 msgstr "loyal"
 
 #. [trait]: id=loyal_dummy
-#: data/campaigns/The_Deceivers_Gambit/scenarios/00_Graduation.cfg:114
-#: data/campaigns/The_Deceivers_Gambit/scenarios/11_Clan_Blackcrest.cfg:749
-#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:21
+#: data/campaigns/The_Deceivers_Gambit/scenarios/00_Graduation.cfg:189
+#: data/campaigns/The_Deceivers_Gambit/scenarios/11_Clan_Blackcrest.cfg:771
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:24
 msgid "Zero upkeep."
 msgstr "Keine Unterhaltskosten."
 
 #. [trait]: id=intelligent_dummy
 #. [trait]: id=intelligent
-#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:25
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:28
 #: data/core/macros/traits.cfg:190
 msgid "intelligent"
 msgstr "intelligent"
 
 #. [trait]: id=intelligent_dummy
-#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:26
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:29
 msgid "Intelligent units require 20% less experience than usual to advance."
 msgstr ""
 "Intelligente Einheiten benötigen 20% weniger Erfahrung für eine Beförderung."
@@ -2409,8 +2409,7 @@ msgstr "Erzgebirge"
 
 #. [topic]: id=heart_mountains
 #. The Whitefang Clan’s primary description is in DiD
-#. Wesnoth 1.9.4 added Haggid-Dargor to the encyclopedia, but it has no other
-#. mention in mainline
+#. Wesnoth 1.9.4 added Haggid-Dargor to the encyclopedia, but it has no other mention in mainline
 #: data/core/encyclopedia/geography.cfg:206
 msgid ""
 "A virtually impassable barrier between the <ref dst='arkan_thoria'>river</"
@@ -3949,8 +3948,7 @@ msgstr ""
 "besteht."
 
 #. [topic]: id=orbs
-#. The help page has a set of images above this paragraph, in the same order
-#. as the bullet points
+#. The help page has a set of images above this paragraph, in the same order as the bullet points
 #: data/core/help.cfg:398
 msgid ""
 "The orbs show whether the unit can move or attack. The statuses and their "
@@ -4013,8 +4011,7 @@ msgstr ""
 "Einheiten nicht elliptisch sind."
 
 #. [topic]: id=orbs
-#. The help page has a set of images above this paragraph, in the same order
-#. as the bullet points
+#. The help page has a set of images above this paragraph, in the same order as the bullet points
 #: data/core/help.cfg:423
 msgid ""
 "• Most units have a circular ellipse.\n"
@@ -4053,9 +4050,7 @@ msgstr ""
 "entsprechende Farbe:"
 
 #. [topic]: id=crowns
-#. The help page has a set of images above this paragraph, in the same order
-#. as the first set of bullet points, showing what the "loyal icon" is and the
-#. difference between "silver" and "blueish-silver".
+#. The help page has a set of images above this paragraph, in the same order as the first set of bullet points, showing what the "loyal icon" is and the difference between "silver" and "blueish-silver".
 #: data/core/help.cfg:448
 msgid ""
 "• Leaders are shown with a <b>gold crown</b>.\n"
@@ -5984,10 +5979,8 @@ msgstr ""
 "höheren Verteidigungswerte auf gemischten Geländefeldern erhalten, die "
 "diesen Geländefeldtypen beinhalten."
 
-#. User-visible string, but only shown in the help pages of UMC units that
-#. haven't yet been updated to the 1.16 special notes format.
-#. Don't use markup in this, because it's shown by both Pango (in the
-#. sidebar's tooltips) and the GUI1 help browser (for unit descriptions).
+#. User-visible string, but only shown in the help pages of UMC units that haven't yet been updated to the 1.16 special notes format.
+#. Don't use markup in this, because it's shown by both Pango (in the sidebar's tooltips) and the GUI1 help browser (for unit descriptions).
 #: data/core/macros/special-notes.cfg:115
 msgid ""
 "Special Notes (1.14-style, please update to the new list format to avoid "
@@ -6471,8 +6464,7 @@ msgid "oceangoing"
 msgstr "Seeschiff"
 
 #. [trait]: id=oceangoing
-#. this is a defense reduction - without this ability most oceangoing ships
-#. would have 30% defense on these terrains
+#. this is a defense reduction - without this ability most oceangoing ships would have 30% defense on these terrains
 #: data/core/macros/traits.cfg:388
 msgid ""
 "This unit is limited to 20% defense while in ford, bridge, oasis, or water-"
@@ -8565,7 +8557,7 @@ msgstr ""
 "magische Essenz sie ausgesprochen verwundbar für arkane Zauber."
 
 #. [language]
-#: data/english.cfg:34
+#: data/english.cfg:39
 msgid ""
 "This unit’s arcane attack deals tremendous damage to magical creatures, and "
 "even some to mundane creatures."
@@ -8603,8 +8595,7 @@ msgstr "Das Beste von"
 msgid "Worst of"
 msgstr "Das Schlechtere von"
 
-#. TRANSLATORS: in a description of an overlay terrain, the terrain that it's
-#. placed on
+#. TRANSLATORS: in a description of an overlay terrain, the terrain that it's placed on
 #: src/help/help_topic_generators.cpp:132
 msgid "base terrain"
 msgstr "zugrunde liegendes Gelände"
@@ -8616,11 +8607,8 @@ msgstr ""
 "Dörfer heilen dort stationierte Einheiten – entweder erhalten sie "
 "Lebenspunkte zurück oder sie werden von einer Vergiftung befreit."
 
-#. TRANSLATORS: special note for terrains such as the oasis; the only terrain
-#. in core with this property heals 8 hp just like a village.
-#. For the single-hitpoint variant, the wording is different because I assume
-#. the player will be more interested in the curing-poison part than the
-#. minimal healing.
+#. TRANSLATORS: special note for terrains such as the oasis; the only terrain in core with this property heals 8 hp just like a village.
+#. For the single-hitpoint variant, the wording is different because I assume the player will be more interested in the curing-poison part than the minimal healing.
 #: src/help/help_topic_generators.cpp:182
 msgid ""
 "This terrain allows units to be cured of poison, or to heal a single "
@@ -8643,8 +8631,7 @@ msgstr ""
 "Dieses Geländefeld ist Teil einer Burg – Einheiten können von einem "
 "verbundenen Burgfried aus hierhin rekrutiert werden."
 
-#. TRANSLATORS: The "this terrain is a castle" note will also be shown
-#. directly above this one.
+#. TRANSLATORS: The "this terrain is a castle" note will also be shown directly above this one.
 #: src/help/help_topic_generators.cpp:193
 msgid ""
 "This terrain is a keep — a leader can recruit from this hex onto connected "
@@ -8653,8 +8640,7 @@ msgstr ""
 "Dieses Geländefeld ist ein Burgfried – ein Anführer kann von diesem Feld aus "
 "auf verbundene Burgfelder rekrutieren."
 
-#. TRANSLATORS: Special note for a terrain, but none of the terrains in
-#. mainline do this.
+#. TRANSLATORS: Special note for a terrain, but none of the terrains in mainline do this.
 #: src/help/help_topic_generators.cpp:196
 msgid ""
 "This unusual keep allows a leader to recruit while standing on it, but does "
@@ -8669,20 +8655,16 @@ msgstr ""
 msgid "Special Notes"
 msgstr "Besondere Anmerkungen"
 
-#. TRANSLATORS: $types is a conjunct list, typical values will be "Castle" or
-#. "Flat and Shallow Water".
-#. The terrain names will be hypertext links to the help page of the
-#. corresponding terrain type.
-#. There will always be at least 1 item in the list, but unlikely to be more
-#. than 3.
+#. TRANSLATORS: $types is a conjunct list, typical values will be "Castle" or "Flat and Shallow Water".
+#. The terrain names will be hypertext links to the help page of the corresponding terrain type.
+#. There will always be at least 1 item in the list, but unlikely to be more than 3.
 #: src/help/help_topic_generators.cpp:266
 msgid "Basic terrain type: $types"
 msgid_plural "Basic terrain types: $types"
 msgstr[0] "Zugrunde liegender Geländetyp: $types"
 msgstr[1] "Zugrunde liegende Geländetypen: $types"
 
-#. TRANSLATORS: In the help for a terrain type, for example Dwarven Village is
-#. often placed on Cave Floor
+#. TRANSLATORS: In the help for a terrain type, for example Dwarven Village is often placed on Cave Floor
 #: src/help/help_topic_generators.cpp:275
 msgid "Typical base terrain: $type"
 msgstr "Typischer zugrunde liegender Geländetyp: $type"
@@ -8749,19 +8731,15 @@ msgstr "Fertigkeiten:"
 msgid "Ability Upgrades:"
 msgstr "Fertigkeitsaufwertungen:"
 
-#. TRANSLATORS: This string is used in the help page of a single unit. If the
-#. translation
-#. uses spaces, use non-breaking spaces as appropriate for the target language
-#. to prevent
+#. TRANSLATORS: This string is used in the help page of a single unit. If the translation
+#. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:615
 msgid "HP:"
 msgstr "LP:"
 
-#. TRANSLATORS: This string is used in the help page of a single unit. If the
-#. translation
-#. uses spaces, use non-breaking spaces as appropriate for the target language
-#. to prevent
+#. TRANSLATORS: This string is used in the help page of a single unit. If the translation
+#. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:619
 msgid "Moves:"
@@ -8791,10 +8769,8 @@ msgstr "BP:"
 # allowing different view than movement costs.
 # Most likely it will never be used anywhere in mainline and stay a pure UMC
 # feature.
-#. TRANSLATORS: This string is used in the help page of a single unit.  If the
-#. translation
-#. uses spaces, use non-breaking spaces as appropriate for the target language
-#. to prevent
+#. TRANSLATORS: This string is used in the help page of a single unit.  If the translation
+#. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:624
 msgid "Vision:"
@@ -8814,28 +8790,22 @@ msgstr "Weitblick:"
 # ------
 # v.Crommy: ggf auch einfach "Tarnvermögen", kommt auf den späteren Kontext /
 # Einsatz der Fertigkeit an. 3.1.2015
-#. TRANSLATORS: This string is used in the help page of a single unit. If the
-#. translation
-#. uses spaces, use non-breaking spaces as appropriate for the target language
-#. to prevent
+#. TRANSLATORS: This string is used in the help page of a single unit. If the translation
+#. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:630
 msgid "Jamming:"
 msgstr "Tarnzauber:"
 
-#. TRANSLATORS: This string is used in the help page of a single unit. If the
-#. translation
-#. uses spaces, use non-breaking spaces as appropriate for the target language
-#. to prevent
+#. TRANSLATORS: This string is used in the help page of a single unit. If the translation
+#. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:635
 msgid "Cost:"
 msgstr "Kosten:"
 
-#. TRANSLATORS: This string is used in the help page of a single unit. If the
-#. translation
-#. uses spaces, use non-breaking spaces as appropriate for the target language
-#. to prevent
+#. TRANSLATORS: This string is used in the help page of a single unit. If the translation
+#. uses spaces, use non-breaking spaces as appropriate for the target language to prevent
 #. unpleasant line breaks (issue #3256).
 #: src/help/help_topic_generators.cpp:639
 msgid "Alignment:"
