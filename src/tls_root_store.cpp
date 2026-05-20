@@ -104,7 +104,21 @@ void load_tls_root_certs(boost::asio::ssl::context &ctx)
 
 	CFRelease(certs);
 	SSL_CTX_set_cert_store(ctx.native_handle(), store);
-#elif (defined(__APPLE__) && TARGET_OS_IPHONE) || defined(__ANDROID__)
+#elif defined(__APPLE__) && TARGET_OS_IPHONE
+	// iOS does not expose system trust anchors to third-party apps, so use
+	// the packaged CA bundle from the app's certificates directory.
+	// The Xcode target copies cacert.pem into <app bundle>/certificates/.
+	const std::string cert_bundle = game_config::path + "/certificates/cacert.pem";
+	boost::system::error_code ec;
+	ctx.load_verify_file(cert_bundle, ec);
+	if(ec) {
+		WRN_NW << "Failed to load bundled CA bundle '" << cert_bundle << "': " << ec.message()
+		       << "; falling back to default verify paths.";
+		ctx.set_default_verify_paths();
+	} else {
+		LOG_NW << "Loaded bundled CA bundle '" << cert_bundle << "'";
+	}
+#elif defined(__ANDROID__)
 	ctx.load_verify_file(game_config::path + "/certificates/cacert.pem");
 #else
 	ctx.set_default_verify_paths();

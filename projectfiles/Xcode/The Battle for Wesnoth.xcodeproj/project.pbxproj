@@ -55,6 +55,7 @@
 		46081FF22B2F1046006ACAD7 /* libwebpdemux.2.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 46081FF02B2F103E006ACAD7 /* libwebpdemux.2.dylib */; platformFilters = (macos, ); settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		46081FF42B2F11F3006ACAD7 /* libsharpyuv.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 46081FF32B2F11F3006ACAD7 /* libsharpyuv.0.dylib */; platformFilters = (macos, ); };
 		46081FF52B2F11FF006ACAD7 /* libsharpyuv.0.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 46081FF32B2F11F3006ACAD7 /* libsharpyuv.0.dylib */; platformFilters = (macos, ); settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		F2BFC30E661C4E648BED7C6E /* apple_icloud.mm in Sources */ = {isa = PBXBuildFile; fileRef = B3EB25CAA9644806AE9E4E61 /* apple_icloud.mm */; };
 		460CA6D52143362800B89741 /* apple_version.mm in Sources */ = {isa = PBXBuildFile; fileRef = 46F54C26211DFB7200374A1C /* apple_version.mm */; };
 		460D898624DC7831000B1ABC /* game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 460D897824DC7830000B1ABC /* game.cpp */; };
 		460D898724DC7831000B1ABC /* ban.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 460D897C24DC7830000B1ABC /* ban.cpp */; };
@@ -1681,6 +1682,8 @@
 		460D89B524DC7862000B1ABC /* addon_utils.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = addon_utils.hpp; path = ../../src/server/campaignd/addon_utils.hpp; sourceTree = SOURCE_ROOT; };
 		46181DCD2119F73A00908BC2 /* apple_battery_info.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = apple_battery_info.hpp; path = ../../src/desktop/apple_battery_info.hpp; sourceTree = "<group>"; };
 		46181DCE2119F73A00908BC2 /* apple_battery_info.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = apple_battery_info.mm; path = ../../src/desktop/apple_battery_info.mm; sourceTree = "<group>"; };
+		E760D1242C254B5DA4D3CF22 /* apple_icloud.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = apple_icloud.hpp; path = ../../src/desktop/apple_icloud.hpp; sourceTree = "<group>"; };
+		B3EB25CAA9644806AE9E4E61 /* apple_icloud.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = apple_icloud.mm; path = ../../src/desktop/apple_icloud.mm; sourceTree = "<group>"; };
 		46181DD02119F74C00908BC2 /* battery_info.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = battery_info.hpp; sourceTree = "<group>"; };
 		46181DD12119F74C00908BC2 /* battery_info.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = battery_info.cpp; sourceTree = "<group>"; };
 		461DC52B241F836200B9DD10 /* lua_color.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lua_color.cpp; sourceTree = "<group>"; };
@@ -3198,6 +3201,8 @@
 			children = (
 				46181DCD2119F73A00908BC2 /* apple_battery_info.hpp */,
 				46181DCE2119F73A00908BC2 /* apple_battery_info.mm */,
+				E760D1242C254B5DA4D3CF22 /* apple_icloud.hpp */,
+				B3EB25CAA9644806AE9E4E61 /* apple_icloud.mm */,
 				F40A13BD1A3AA56800C4D071 /* apple_notification.hpp */,
 				F40A13BB1A3A88BA00C4D071 /* apple_notification.mm */,
 				46F54C28211DFB9100374A1C /* apple_version.hpp */,
@@ -5368,6 +5373,9 @@
 							com.apple.HardenedRuntime = {
 								enabled = 1;
 							};
+							com.apple.iCloud = {
+								enabled = 1;
+							};
 						};
 					};
 					B5BB6B4A0F890FBA00444FBF = {
@@ -5457,6 +5465,7 @@
 				B54AC6D80FEA9EB5006F6FBD /* ai.cpp in Sources */,
 				46F92E632174F6A400602C1C /* window.cpp in Sources */,
 				B5599B830EC62181008DD061 /* animated.cpp in Sources */,
+				F2BFC30E661C4E648BED7C6E /* apple_icloud.mm in Sources */,
 				F40A13BC1A3A88BA00C4D071 /* apple_notification.mm in Sources */,
 				91AF55DF2848472F007A7652 /* draw.cpp in Sources */,
 				EC218E9C1A1064F4007C910C /* application_lua_kernel.cpp in Sources */,

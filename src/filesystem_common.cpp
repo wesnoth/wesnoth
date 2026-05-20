@@ -24,6 +24,10 @@
 
 #include <boost/algorithm/string.hpp>
 
+#ifdef __APPLE__
+#include <TargetConditionals.h>
+#endif
+
 static lg::log_domain log_filesystem("filesystem");
 #define LOG_FS LOG_STREAM(info, log_filesystem)
 #define ERR_FS LOG_STREAM(err, log_filesystem)
@@ -192,7 +196,12 @@ std::string get_sync_dir()
 
 std::string get_saves_dir()
 {
+#if defined(__APPLE__) && TARGET_OS_IPHONE
+	// Preserve the historical iOS save layout so existing iCloud Drive saves remain visible.
+	const std::string dir_path = get_user_data_dir() + "/saves";
+#else
 	const std::string dir_path = get_sync_dir() + "/saves";
+#endif
 	return get_dir(dir_path);
 }
 

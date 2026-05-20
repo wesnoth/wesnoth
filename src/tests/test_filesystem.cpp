@@ -21,6 +21,8 @@
 #include "log.hpp"
 #include "utils/optional_reference.hpp"
 
+#include <boost/filesystem.hpp>
+
 #if 0
 namespace {
 
@@ -305,6 +307,42 @@ BOOST_AUTO_TEST_CASE( test_blacklist_pattern_list )
 	blacklist_pattern_list none({}, {});
 	BOOST_CHECK(!none.match_file("something.exe"));
 	BOOST_CHECK(!none.match_dir("temp"));
+}
+
+BOOST_AUTO_TEST_CASE( test_ios_legacy_saves_dir_helper )
+{
+	const boost::filesystem::path sdl_pref_path("/tmp/wesnoth-ios");
+	// The migration target is the historical iWesnoth saves layout.
+	const boost::filesystem::path expected = sdl_pref_path / ".wesnoth1.13" / "saves";
+	BOOST_CHECK_EQUAL(filesystem::detail::legacy_ios_saves_dir(sdl_pref_path.string()), expected.string());
+}
+
+BOOST_AUTO_TEST_CASE( test_ios_legacy_save_migration_plan )
+{
+	namespace bfs = boost::filesystem;
+
+	const bfs::path temp_root = bfs::temp_directory_path() / bfs::unique_path("wesnoth-ios-%%%%-%%%%");
+	const bfs::path sdl_pref_path = temp_root / "prefs";
+	const bfs::path legacy_saves_dir(filesystem::detail::legacy_ios_saves_dir(sdl_pref_path.string()));
+	const bfs::path current_saves_dir = temp_root / "userdata" / "saves";
+
+	bfs::create_directories(legacy_saves_dir);
+	bfs::create_directories(current_saves_dir);
+
+	write_file((legacy_saves_dir / "carryover.gz").string(), "save-a");
+	write_file((legacy_saves_dir / "existing.gz").string(), "save-b");
+	write_file((current_saves_dir / "existing.gz").string(), "save-c");
+	bfs::create_directories(legacy_saves_dir / "subdir");
+
+	const auto migrations = filesystem::detail::find_legacy_ios_save_migrations(
+		sdl_pref_path.string(),
+		current_saves_dir.string());
+
+	BOOST_REQUIRE_EQUAL(migrations.size(), 1u);
+	BOOST_CHECK_EQUAL(bfs::path(migrations.front().source), legacy_saves_dir / "carryover.gz");
+	BOOST_CHECK_EQUAL(bfs::path(migrations.front().target), current_saves_dir / "carryover.gz");
+
+	bfs::remove_all(temp_root);
 }
 
 

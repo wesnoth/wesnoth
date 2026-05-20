@@ -221,6 +221,22 @@ std::string get_exe_path();
 std::string get_exe_dir();
 std::string get_wesnothd_name();
 
+namespace detail
+{
+
+struct ios_legacy_save_migration
+{
+	std::string source;
+	std::string target;
+};
+
+std::string legacy_ios_saves_dir(const std::string& sdl_pref_path);
+std::vector<ios_legacy_save_migration> find_legacy_ios_save_migrations(
+	const std::string& sdl_pref_path,
+	const std::string& current_saves_dir);
+
+} // namespace detail
+
 bool make_directory(const std::string& dirname);
 bool delete_directory(const std::string& dirname, const bool keep_pbl = false);
 bool delete_file(const std::string& filename);
