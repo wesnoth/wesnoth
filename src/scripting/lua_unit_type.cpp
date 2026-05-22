@@ -16,6 +16,8 @@
 #include "scripting/lua_unit_type.hpp"
 
 #include "scripting/lua_attributes.hpp"
+#include "deprecation.hpp"
+#include "game_version.hpp"
 #include "scripting/lua_common.hpp"
 #include "scripting/lua_unit_attacks.hpp"
 #include "scripting/push_check.hpp"
@@ -122,9 +124,13 @@ UNIT_TYPE_GETTER("traits", traits_map) {
 }
 
 UNIT_TYPE_GETTER("abilities", std::vector<std::string>) {
+	deprecated_message("unit_type.abilities", DEP_LEVEL::FOR_REMOVAL, version_info("1.21"), "Use unit_type.ability_ids instead.");
 	return ut.get_ability_id_list();
 }
 
+UNIT_TYPE_GETTER("ability_ids", std::vector<std::string>) {
+	return ut.get_ability_id_list();
+}
 UNIT_TYPE_GETTER("attacks", lua_index_raw) {
 	(void)ut;
 	push_unit_attacks_table(L, 1);
