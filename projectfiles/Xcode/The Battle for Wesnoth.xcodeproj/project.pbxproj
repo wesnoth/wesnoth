@@ -1112,7 +1112,8 @@
 		91FBBADB1CB6D1B700470BFE /* markov_generator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 91FBBAD91CB6D1B700470BFE /* markov_generator.cpp */; };
 		92644A76AAB2F29A77107DC0 /* charconv.hpp in Headers */ = {isa = PBXBuildFile; fileRef = A03A423AB502FE015C91F1C9 /* charconv.hpp */; };
 		955700D82FC0E81B004DDC03 /* libwebpmux.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 955700D72FC0E81B004DDC03 /* libwebpmux.dylib */; };
-		955700D92FC0E81B004DDC03 /* libwebpmux.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 955700D72FC0E81B004DDC03 /* libwebpmux.dylib */; };
+		955700D92FC0E81B004DDC03 /* libwebpmux.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 955700D72FC0E81B004DDC03 /* libwebpmux.dylib */; platformFilters = (macos, ); };
+		955700EA2FC0F07B004DDC03 /* libwebpmux.dylib in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 955700D72FC0E81B004DDC03 /* libwebpmux.dylib */; platformFilters = (macos, ); settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		9577DD192C1E0AD20031135F /* ai_target.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 9577DD182C1E0AD20031135F /* ai_target.hpp */; };
 		9577DD1B2C1E0AF40031135F /* campaign_type.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 9577DD1A2C1E0AF40031135F /* campaign_type.hpp */; };
 		9577DD1D2C1E0C020031135F /* defeat_condition.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 9577DD1C2C1E0C020031135F /* defeat_condition.hpp */; };
@@ -1551,6 +1552,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				955700EA2FC0F07B004DDC03 /* libwebpmux.dylib in Copy Frameworks */,
 				46CD12BB2777A64000A59D05 /* libboost_context.dylib in Copy Frameworks */,
 				46CD12BC2777A64000A59D05 /* libboost_coroutine.dylib in Copy Frameworks */,
 				468A5BC1258CD8CC004A80EF /* libboost_locale.dylib in Copy Frameworks */,
@@ -2459,7 +2461,7 @@
 		91FBBAD71CB6BC3F00470BFE /* filesystem_sdl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = filesystem_sdl.cpp; sourceTree = "<group>"; };
 		91FBBAD91CB6D1B700470BFE /* markov_generator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = markov_generator.cpp; sourceTree = "<group>"; };
 		91FBBADA1CB6D1B700470BFE /* markov_generator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = markov_generator.hpp; sourceTree = "<group>"; };
-		955700D72FC0E81B004DDC03 /* libwebpmux.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libwebpmux.dylib; path = "lib/libwebpmux.dylib"; sourceTree = "<group>"; };
+		955700D72FC0E81B004DDC03 /* libwebpmux.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libwebpmux.dylib; path = lib/libwebpmux.dylib; sourceTree = "<group>"; };
 		9577DD182C1E0AD20031135F /* ai_target.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ai_target.hpp; sourceTree = "<group>"; };
 		9577DD1A2C1E0AF40031135F /* campaign_type.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = campaign_type.hpp; sourceTree = "<group>"; };
 		9577DD1C2C1E0C020031135F /* defeat_condition.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = defeat_condition.hpp; sourceTree = "<group>"; };
