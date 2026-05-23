@@ -277,9 +277,14 @@ static int impl_animator_collect(lua_State* L) {
 static int impl_add_animation(lua_State* L)
 {
 	unit_animator& anim = *static_cast<unit_animator*>(luaL_checkudata(L, 1, animatorKey));
+	std::string which = luaL_checkstring(L, 3);
 	unit_ptr up = luaW_checkunit_ptr(L, 2, false);
 	unit& u = *up;
-	std::string which = luaL_checkstring(L, 3);
+	// Possible TODO: change movement support to movement-like animations support (like cheering and moving)
+	// But only a change of tag here is expected in this case.
+	unit_ptr move_unit_p = (which == "movement") ? up : nullptr;
+	bool use_lockstep = false;
+	bool coherence = false;
 
 	std::string hits_str = luaL_checkstring(L, 4);
 	strike_result::type hits = strike_result::get_enum(hits_str).value_or(strike_result::type::invalid);
@@ -293,20 +298,70 @@ static int impl_add_animation(lua_State* L)
 
 	if(lua_istable(L, 5)) {
 		lua_getfield(L, 5, "target");
-		if(luaW_tolocation(L, -1, dest)) {
-			if(dest == u.get_location()) {
-				return luaL_argerror(L, 5, "target location must be different from animated unit's location");
-			} else if(!tiles_adjacent(dest, u.get_location())) {
-				return luaL_argerror(L, 5, "target location must be adjacent to the animated unit");
-			}
-		} else {
-			// luaW_tolocation may set the location to (0,0) if it fails
-			dest = map_location();
-			if(!lua_isnoneornil(L, -1)) {
-				return luaW_type_error(L, 5, "target", "location table");
-			}
+		bool use_target = !lua_isnoneornil(L, -1);
+		lua_getfield(L, 5, "facing");
+		bool use_facing = !lua_isnoneornil(L, -1);
+		lua_getfield(L, 5, "lockstep");
+		lua_getfield(L, 5, "coherence");
+		if(use_facing && use_target) {
+			return luaL_argerror(L, 5, "Target location and facing direction can't be used together");
 		}
-		lua_pop(L, 1);
+		if(move_unit_p != nullptr) {
+			if(use_facing) {
+				return luaL_argerror(L, 5, "Facing shouldn't be specified for movement animations");
+			}
+			if(!lua_isnoneornil(L, -2)) {
+				use_lockstep = luaW_toboolean(L, -2);
+				LOG_LUA << "read lockstep " << use_lockstep;
+			}
+			if(!lua_isnoneornil(L, -1)) {
+				coherence = luaW_toboolean(L, -1);
+			} else {
+				coherence = true;
+			}
+		} else if(!lua_isnoneornil(L, -2) || !lua_isnoneornil(L, -1)) {
+			return luaL_argerror(L, 5, "lockstep or coherence status shouldn't be specified for non-movement animations");
+		}
+		lua_pop(L, 2);
+		bool use_anything = true;
+		if(use_target) {
+			lua_pop(L, 1);
+		} else if(use_facing) {
+			lua_remove(L, -2);
+		} else {
+			use_anything = false;
+		}
+		if(use_anything) {
+			if(luaW_tolocation(L, -1, dest)) {
+				if(move_unit_p) {
+					if(dest == anim.get_unit_last_move_anim_dst(move_unit_p)) {
+						return luaL_argerror(L, 5,
+							"Given target location for movement animation must be different from last destination of "
+							"the animated unit");
+					}
+				} else if(dest == u.get_location()) {
+					return luaL_argerror(L, 5,
+						"Given target or facing location for non-movement animation must be different from animated "
+						"unit's location");
+				}
+			} else if(use_facing) {
+				map_location::direction dir;
+				if(luaW_todirection(L, -1, dir)) {
+					dest = u.get_location().get_direction(dir);
+				} else {
+					return luaW_type_error(L, 5, "facing", "location table or direction");
+				}
+			} else {
+				// luaW_tolocation may set the location to null location if it fails
+				dest = map_location::null_location();
+				if(!lua_isnoneornil(L, -1)) {
+					return luaW_type_error(L, 5, "target", "location table");
+				}
+			}
+			lua_pop(L, 1);
+		} else {
+			lua_pop(L, 2);
+		}
 
 		lua_getfield(L, 5, "value");
 		if(lua_isnumber(L, -1)) {
@@ -371,9 +426,11 @@ static int impl_add_animation(lua_State* L)
 		return luaW_type_error(L, 5, "table of options");
 	}
 
-	anim.add_animation(up, which, u.get_location(), dest, v1, bars, text, color, hits, primary, secondary, v2);
+	anim.add_animation(
+		up, which, u.get_location(), dest, v1, bars, text, color, hits, primary, secondary, v2, true, move_unit_p, use_lockstep, coherence);
 	return 0;
 }
+
 
 int game_lua_kernel::impl_run_animation(lua_State* L)
 {
@@ -386,6 +443,7 @@ int game_lua_kernel::impl_run_animation(lua_State* L)
 	anim.start_animations();
 	anim.wait_for_end();
 	anim.set_all_standing();
+	anim.revert_facing();
 	anim.clear();
 	return 0;
 }
