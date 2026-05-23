@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2026-05-19 02:15 UTC\n"
-"PO-Revision-Date: 2026-03-24 18:20+1100\n"
+"PO-Revision-Date: 2026-05-20 11:21+1000\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: none\n"
 "Language: en_GB\n"
@@ -374,15 +374,11 @@ msgid "Chill Touch"
 msgstr "Chill Touch"
 
 #: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:65
-#, fuzzy
-#| msgid ""
-#| "Melee 6x3 cold, <i><ref dst='weaponspecial_slows'>slows</ref></i>. "
-#| "Replaces your default melee attack."
 msgid ""
 "Melee 6x3 cold, <i><ref dst='weaponspecial_slow'>slows</ref></i>. Replaces "
 "your default melee attack."
 msgstr ""
-"Melee 6x3 cold, <i><ref dst='weaponspecial_slows'>slows</ref></i>. Replaces "
+"Melee 6x3 cold, <i><ref dst='weaponspecial_slow'>slows</ref></i>. Replaces "
 "your default melee attack."
 
 #: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:72
@@ -390,17 +386,12 @@ msgid "Levitate"
 msgstr "Levitate"
 
 #: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:74
-#, fuzzy
-#| msgid ""
-#| "Spend <span color='#00bbe6' style='italic'>8 XP</span> to gain <i>flight</"
-#| "i> and the <i><ref dst='ability_skirmisher'>skirmisher</ref></i> ability "
-#| "until the start of your next turn or until cancelled."
 msgid ""
 "Spend <span color='#00bbe6' style='italic'>4 XP</span> to gain <i>flight</i> "
 "and the <i><ref dst='ability_skirmisher'>skirmisher</ref></i> ability until "
 "the start of your next turn or until cancelled."
 msgstr ""
-"Spend <span color='#00bbe6' style='italic'>8 XP</span> to gain <i>flight</i> "
+"Spend <span color='#00bbe6' style='italic'>4 XP</span> to gain <i>flight</i> "
 "and the <i><ref dst='ability_skirmisher'>skirmisher</ref></i> ability until "
 "the start of your next turn or until cancelled."
 
@@ -409,18 +400,14 @@ msgid "Find Familiar"
 msgstr "Find Familiar"
 
 #: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:84
-#, fuzzy
-#| msgid ""
-#| "Begin each scenario with your trusty pet raven.\n"
-#| "               Your familiar’s level and XP persist across scenarios, but "
-#| "reset if it dies."
 msgid ""
 "Begin each scenario with your trusty pet <i><ref dst='unit_Raven'>Raven</"
 "ref></i>.\n"
 "               Your familiar’s level and XP persist across scenarios, but "
 "reset if it dies."
 msgstr ""
-"Begin each scenario with your trusty pet raven.\n"
+"Begin each scenario with your trusty pet <i><ref dst='unit_Raven'>Raven</"
+"ref></i>.\n"
 "               Your familiar’s level and XP persist across scenarios, but "
 "reset if it dies."
 
@@ -590,30 +577,24 @@ msgstr ""
 "to your recall list."
 
 #: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:224
-#, fuzzy
-#| msgid ""
-#| "Ranged 12x4 fire, <i><ref dst='weaponspecial_magical'>magical</ref></i>."
 msgid ""
 "Ranged 17x4 fire, <i><ref dst='weaponspecial_magical'>magical</ref></i>."
 msgstr ""
-"Ranged 12x4 fire, <i><ref dst='weaponspecial_magical'>magical</ref></i>."
+"Ranged 17x4 fire, <i><ref dst='weaponspecial_magical'>magical</ref></i>."
 
 #: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:231
 msgid "Chain Lightning"
 msgstr "Chain Lightning"
 
 #: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:233
-#, fuzzy
-#| msgid ""
-#| "Ranged 14x4 fire, <i><ref dst='weaponspecial_magical'>magical</ref></i>. "
-#| "If this attack kills an enemy, you may attack again."
 msgid ""
 "Ranged 14x3 fire, <i><ref dst='weaponspecial_magical'>magical</ref></i>. "
 "This attack can be used multiple times on offense, but\n"
 "              consecutive uses strike one fewer time."
 msgstr ""
-"Ranged 14x4 fire, <i><ref dst='weaponspecial_magical'>magical</ref></i>. If "
-"this attack kills an enemy, you may attack again."
+"Ranged 14x3 fire, <i><ref dst='weaponspecial_magical'>magical</ref></i>. "
+"This attack can be used multiple times on offence, but\n"
+"              consecutive uses strike one fewer time."
 
 #: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:240
 msgid "Time Dilation"
@@ -2606,17 +2587,12 @@ msgstr ""
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:562
-#, fuzzy
-#| msgid ""
-#| "I must confess I look forward to once-again marching in company with "
-#| "others of my own ilk, yet still I hope to return to Lintanir once my war-"
-#| "duty is done."
 msgid ""
 "I must confess I look forward to once again marching in company with others "
 "of my own ilk, yet still I hope to return to Lintanir once my war-duty is "
 "done."
 msgstr ""
-"I must confess I look forward to once-again marching in company with others "
+"I must confess I look forward to once again marching in company with others "
 "of my own ilk, yet still I hope to return to Lintanir once my war-duty is "
 "done."
 
@@ -2912,15 +2888,11 @@ msgstr ""
 #. [event]: type=Delfador L4, id=delfador_mirror4
 #: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1682
 #: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1819
-#, fuzzy
-#| msgid ""
-#| "Spend 8 XP to gain flight and the skirmisher ability until the start of "
-#| "your next turn or until cancelled."
 msgid ""
 "Spend 4 XP to gain flight and the skirmisher ability until the start of your "
 "next turn or until cancelled."
 msgstr ""
-"Spend 8 XP to gain flight and the skirmisher ability until the start of your "
+"Spend 4 XP to gain flight and the skirmisher ability until the start of your "
 "next turn or until cancelled."
 
 #. [message]
@@ -7317,17 +7289,12 @@ msgstr ""
 
 #. [message]: speaker=Delfador
 #: data/campaigns/The_Deceivers_Gambit/scenarios/12_The_Traitor.cfg:466
-#, fuzzy
-#| msgid ""
-#| "If only my outlaws and veterans could have marched fast enough to keep "
-#| "up. If the king’s own brother is an usurper, who in Wesnoth can I really "
-#| "trust?"
 msgid ""
 "If only my outlaws and veterans could have marched fast enough to keep up. "
 "If the king’s own brother is a usurper, who in Wesnoth can I really trust?"
 msgstr ""
 "If only my outlaws and veterans could have marched fast enough to keep up. "
-"If the king’s own brother is an usurper, who in Wesnoth can I really trust?"
+"If the king’s own brother is a usurper, who in Wesnoth can I really trust?"
 
 #. [message]: speaker=unit
 #. said by a male cavalryman or horseman
@@ -10081,6 +10048,8 @@ msgid ""
 "This attack can be used multiple times on offense, but consecutive uses "
 "strike one fewer time."
 msgstr ""
+"This attack can be used multiple times on offence, but consecutive uses "
+"strike one fewer time."
 
 #. [message]: speaker=$speaker_id
 #. Delfador has just cast his cataclysm spell, dealing heavy damage in a large radius and destroying trees/villages/castles
