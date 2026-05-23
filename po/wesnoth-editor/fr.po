@@ -166,8 +166,9 @@ msgstr "Après la Chute"
 
 #. [editor_group]: id=urban_jungle
 #: data/internal/Urban_Jungle/terrain-groups.cfg:5
+#, fuzzy
 msgid "Urban Jungle (Internal)"
-msgstr ""
+msgstr "Jungle urbaine (interne)"
 
 # Je n'arrive pas à situer où se trouve ce texte dans l'éditeur de niveau donc pas sur de la traduction.
 #. [theme]: id=editor
@@ -227,8 +228,9 @@ msgstr "Attribuer un système horaire local"
 
 #. [menu]: id=menu-editor-unit
 #: data/themes/editor.cfg:141
+#, fuzzy
 msgid "Unit"
-msgstr ""
+msgstr "Unité"
 
 #. [menu]: id=menu-editor-side
 #: data/themes/editor.cfg:151
@@ -310,12 +312,10 @@ msgid "No editor time-of-day found."
 msgstr "Aucune période du jour définie dans l'éditeur."
 
 #: src/editor/controller/editor_controller.cpp:886
-#, fuzzy
 msgid "Add-on Files"
 msgstr "Fichiers des extensions"
 
 #: src/editor/controller/editor_controller.cpp:899
-#, fuzzy
 msgid "Opening files is not supported, contact your packager"
 msgstr ""
 "L'ouverture des fichiers n'est pas disponible, contactez votre empaqueteur"
@@ -338,14 +338,13 @@ msgstr "Nom :"
 
 #: src/editor/editor_display.cpp:170
 msgid "<span color='#66ff00'><span face='DejaVuSans'>✔</span> $msg</span>"
-msgstr ""
+msgstr "<span color='#66ff00'><span face='DejaVuSans'>✔</span> $msg</span>"
 
 #: src/editor/editor_display.cpp:172
 msgid "<span color='red'><span face='DejaVuSans'>✘</span> $msg</span>"
-msgstr ""
+msgstr "<span color='red'><span face='DejaVuSans'>✘</span> $msg</span>"
 
 #: src/editor/map/context_manager.cpp:217
-#, fuzzy
 msgid "Load Map or Scenario"
 msgstr "Charger une carte ou un scénario"
 
@@ -405,7 +404,6 @@ msgid "Error"
 msgstr "Erreur"
 
 #: src/editor/map/context_manager.cpp:705
-#, fuzzy
 msgid "Do you really want to save a map in the scenarios folder?"
 msgstr ""
 "Voulez-vous vraiment sauvegarder une carte dans le dossier des scénarios ?"
@@ -420,7 +418,6 @@ msgid "Save Scenario As"
 msgstr "Sauvegarder le scénario sous"
 
 #: src/editor/map/context_manager.cpp:754
-#, fuzzy
 msgid "Do you really want to save a scenario in the maps folder?"
 msgstr ""
 "Voulez-vous vraiment sauvegarder un scénario dans le dossier des cartes ?"
@@ -453,7 +450,6 @@ msgid "Scenario saved."
 msgstr "Scénario sauvegardé."
 
 #: src/editor/map/context_manager.cpp:881
-#, fuzzy
 msgid "Map saved"
 msgstr "Carte sauvegardée"
 
@@ -490,12 +486,10 @@ msgid "Empty file"
 msgstr "Fichier vide"
 
 #: src/editor/map/map_context.cpp:204
-#, fuzzy
 msgid "File does not have .map, .cfg, or .mask extension"
 msgstr "Ce fichier n'a pas une extension .map, ni .cfg ni .mask"
 
 #: src/editor/map/map_context.cpp:227
-#, fuzzy
 msgid ""
 "Failed to load the scenario: $error\n"
 "\n"
@@ -506,10 +500,6 @@ msgstr ""
 "Tentative de charger la carte seule."
 
 #: src/editor/map/map_context.cpp:253
-#, fuzzy
-#| msgid ""
-#| "The map file looks like a scenario, but the map_data value does not point "
-#| "to an existing file"
 msgid ""
 "The file looks like a scenario, but the map_data attribute does not point to "
 "an existing file"
@@ -518,10 +508,6 @@ msgstr ""
 "un nom de fichier existant."
 
 #: src/editor/map/map_context.cpp:268
-#, fuzzy
-#| msgid ""
-#| "The map file looks like a scenario, but the map_file value does not point "
-#| "to an existing file"
 msgid ""
 "The file looks like a scenario, but the map_file attribute does not point to "
 "an existing file"
@@ -530,16 +516,15 @@ msgstr ""
 "un fichier existant."
 
 #: src/editor/map/map_context.cpp:448
+#, fuzzy
 msgid "Confirm"
-msgstr ""
+msgstr "Confirmer"
 
 #: src/editor/map/map_context.cpp:835 src/editor/map/map_context.cpp:875
-#, fuzzy
 msgid "Could not save time schedule: $msg"
 msgstr "Impossible de sauvegarder le système horaire : $msg"
 
 #: src/editor/map/map_context.cpp:869
-#, fuzzy
 msgid "Time schedule saved."
 msgstr "Système horaire est sauvegardé."
 
@@ -568,7 +553,6 @@ msgid "Will not work in game without extra care."
 msgstr "Ne fonctionnera pas dans le jeu sans travail supplémentaire."
 
 #: src/editor/palette/item_palette.cpp:33
-#, fuzzy
 msgid "Left-click: Place item $item | Right-click to remove"
 msgstr "Clic gauche : Placer l'objet $item | Clic droit pour effacer"
 

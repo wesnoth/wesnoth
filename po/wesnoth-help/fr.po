@@ -625,12 +625,12 @@ msgstr "Outil de positions de démarrage"
 msgid ""
 "Defines the side leader starting position.\n"
 "This tool sets the side leaders’ default starting locations, and named "
-"special locations. Both types of location are enabled in both <ref dst='.."
-"editor_mode_terrain'>Terrain Editor</ref> and <ref dst='.."
-"editor_mode_scenario'>Scenario Editor</ref> modes. The location names are "
-"shown as a list in the editor palette, clicking on the map will place that "
-"name on a hex, each location can only be placed on a single hex, and the "
-"editor will only allow one location per hex.\n"
+"special locations. Both types of location are enabled in both <ref "
+"dst='..editor_mode_terrain'>Terrain Editor</ref> and <ref "
+"dst='..editor_mode_scenario'>Scenario Editor</ref> modes. The location names "
+"are shown as a list in the editor palette, clicking on the map will place "
+"that name on a hex, each location can only be placed on a single hex, and "
+"the editor will only allow one location per hex.\n"
 "\n"
 "To add named special locations, click “Add” at the bottom of the editor "
 "palette, and enter the name. These names must start with a letter and may "
@@ -665,8 +665,8 @@ msgstr ""
 "bas de l'éditeur de palette puis entrez le nom. Ces noms doivent commencer "
 "par une lettre et peuvent contenir des chiffres et des underscores.\n"
 "\n"
-"Plus de neuf équipes peuvent être ajoutées à la carte, en cliquant sur « "
-"Ajouter » et en entrant un numéro, par exemple « 10 ». L'interface "
+"Plus de neuf équipes peuvent être ajoutées à la carte, en cliquant sur "
+"« Ajouter » et en entrant un numéro, par exemple « 10 ». L'interface "
 "utilisateur affichera automatiquement « Player 10 ».\n"
 "\n"
 "Il est possible d'avoir accès aux emplacements nommés à partir de WML en "
@@ -703,9 +703,9 @@ msgstr ""
 #: data/core/editor/help.cfg:131
 msgid ""
 "editor^<header>Movement Overlays</header>\n"
-"<img src='terrain/grass/green.png~BLIT(terrain/impassable-editor."
-"png~O(0.5))'/><img src='terrain/grass/green.png~BLIT(terrain/unwalkable-"
-"editor.png~O(0.5))'/>\n"
+"<img src='terrain/grass/green.png~BLIT(terrain/impassable-"
+"editor.png~O(0.5))'/><img src='terrain/grass/green.png~BLIT(terrain/"
+"unwalkable-editor.png~O(0.5))'/>\n"
 "<b>Impassable and Unwalkable</b>\n"
 "\n"
 "While easily noticeable in the editor, these are invisible in the game, so "
@@ -714,9 +714,9 @@ msgid ""
 "respectively."
 msgstr ""
 "<header>Surcouches de mouvement</header>\n"
-"<img src='terrain/grass/green.png~BLIT(terrain/impassable-editor."
-"png~O(0.5))'/><img src='terrain/grass/green.png~BLIT(terrain/unwalkable-"
-"editor.png~O(0.5))'/>\n"
+"<img src='terrain/grass/green.png~BLIT(terrain/impassable-"
+"editor.png~O(0.5))'/><img src='terrain/grass/green.png~BLIT(terrain/"
+"unwalkable-editor.png~O(0.5))'/>\n"
 "<b>Infranchissable et impraticable</b>\n"
 "\n"
 "Bien qu'elles soient clairement identifiables dans l'éditeur, elles sont "
@@ -731,9 +731,9 @@ msgstr ""
 #: data/core/editor/help.cfg:140
 msgid ""
 "editor^<header>Castle Overlays</header>\n"
-"<img src='terrain/grass/green.png~BLIT(terrain/castle/castle-overlay-editor."
-"png~O(0.5))'/><img src='terrain/grass/green.png~BLIT(terrain/castle/keep-"
-"overlay-editor.png~O(0.5))'/>\n"
+"<img src='terrain/grass/green.png~BLIT(terrain/castle/castle-overlay-"
+"editor.png~O(0.5))'/><img src='terrain/grass/green.png~BLIT(terrain/castle/"
+"keep-overlay-editor.png~O(0.5))'/>\n"
 "Adding either of these overlays to a passable hex allows units to be "
 "recruited onto a hex. The keep also allows a leader to recruit from there.\n"
 "\n"
@@ -744,9 +744,9 @@ msgid ""
 "units being recruited onto them."
 msgstr ""
 "<header>Surcouches de château</header>\n"
-"<img src='terrain/grass/green.png~BLIT(terrain/castle/castle-overlay-editor."
-"png~O(0.5))'/><img src='terrain/grass/green.png~BLIT(terrain/castle/keep-"
-"overlay-editor.png~O(0.5))'/> \n"
+"<img src='terrain/grass/green.png~BLIT(terrain/castle/castle-overlay-"
+"editor.png~O(0.5))'/><img src='terrain/grass/green.png~BLIT(terrain/castle/"
+"keep-overlay-editor.png~O(0.5))'/> \n"
 "Ajouter une de ces surcouches à un terrain franchissable permet d'y recruter "
 "des unités. Le donjon permet aussi à un chef de s'y placer pour faire son "
 "recrutement.\n"
@@ -811,7 +811,6 @@ msgstr "Surcouches directes"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:170
-#, fuzzy
 msgid "Bluffs and Gulch"
 msgstr "Gorges et précipices"
 
@@ -833,7 +832,6 @@ msgstr ""
 # "Remplissage" est la traduction de "bucket fill" dans gimp (https://docs.gimp.org/3.0/fr/gimp-tool-bucket-fill.html)
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:174
-#, fuzzy
 msgid "editor^Elevation Floodfill"
 msgstr "Remplissage d'élévation"
 
@@ -844,7 +842,6 @@ msgstr "Marqueur d'élévation à placer"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:178
-#, fuzzy
 msgid "Raised elevation editor palette icon"
 msgstr "Icône de la palette des marqueurs d'élévation"
 
@@ -868,7 +865,6 @@ msgstr ""
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:182
-#, fuzzy
 msgid ""
 "There are two high markers and two low markers, so it is possible to make "
 "terraces of up to five levels (lowest, lower, normal, higher, highest). "
@@ -881,15 +877,19 @@ msgstr ""
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:184
+#, fuzzy
 msgid "editor^How to Use"
-msgstr ""
+msgstr "Comment l'utiliser"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:186
+#, fuzzy
 msgid ""
 "The marker arrows are not very useful by themselves, but the bluffs/gulch-"
 "type terrains can be used to contain the floodfilled area."
 msgstr ""
+"Les flèches du marqueur ne sont pas utiles en elles-mêmes mais les terrains "
+"de falaises et ravins peuvent limiter l'aire de remplissage."
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:188
@@ -913,10 +913,13 @@ msgstr ""
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:193
+#, fuzzy
 msgid ""
 "The graphics used to represent the ledge borders are determined by the base "
 "terrain."
 msgstr ""
+"Les éléments graphiques utilisés aux bordures sont définis par le terrain de "
+"base."
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:194
@@ -939,8 +942,8 @@ msgstr "Terrain obsolète"
 #. The Xol and ^Efs terrains’ help pages aren’t given hyperlinks, because they both have hide_help enabled. Even when on a map with Xol on it, ctrl+t will show the hidden page but the ref still won’t link to it.
 #: data/core/editor/help.cfg:203
 msgid ""
-"editor^<img src='terrain/grass/green.png~BLIT(terrain/deprecated-editor."
-"png)'/>\n"
+"editor^<img src='terrain/grass/green.png~BLIT(terrain/deprecated-"
+"editor.png)'/>\n"
 "The magenta ‘D’ (for “Deprecated”).\n"
 "\n"
 "This is shown in the editor over deprecated terrain codes. Examples are:\n"
@@ -1409,10 +1412,10 @@ msgid ""
 "The map editor saves one file when in terrain mode (a .map) or two files "
 "when in scenario mode (both a .map and a .cfg).\n"
 "\n"
-"Loading a .cfg file has different results depending on the contents of the ."
-"cfg file. For .cfg files that were created by the scenario editor, it will "
-"open the .cfg in the scenario editor. However, for .cfg files that cannot be "
-"opened by the scenario editor, the editor will attempt to find the "
+"Loading a .cfg file has different results depending on the contents of "
+"the .cfg file. For .cfg files that were created by the scenario editor, it "
+"will open the .cfg in the scenario editor. However, for .cfg files that "
+"cannot be opened by the scenario editor, the editor will attempt to find the "
 "scenario’s map data and open the corresponding .map file in terrain-only "
 "mode, as if the .map file was chosen in the file selector. It is recommended "
 "in those cases to simply load the .map file directly instead."
@@ -1420,8 +1423,8 @@ msgstr ""
 "<header>Les fichiers : .map et .cfg</header>\n"
 "\n"
 "L’éditeur de cartes sauvegarde un fichier quand il est en mode terrain (au "
-"format .map) ; deux fichiers quand il est en mode scénario (l’un au format ."
-"map, l’autre au format .cfg).\n"
+"format .map) ; deux fichiers quand il est en mode scénario (l’un au "
+"format .map, l’autre au format .cfg).\n"
 "\n"
 "Charger un fichier .cfg a un résultat différent en fonction du contenu du "
 "fichier. Les fichiers créés par l’éditeur de scénarios seront ouverts dans "
@@ -1429,13 +1432,14 @@ msgstr ""
 "ouverts dans l’éditeur de scénarios, l’éditeur tentera de trouver les "
 "données de la carte du scénario et ouvrira le fichier .map correspondant en "
 "mode terrain comme si celui-ci avait été sélectionné dans le gestionnaire de "
-"fichiers. Dans ce cas il est préférable de simplement charger le fichier ."
-"map directement."
+"fichiers. Dans ce cas il est préférable de simplement charger le "
+"fichier .map directement."
 
 #. [topic]: id=editor_separate_events_file
 #: data/core/editor/help.cfg:409
+#, fuzzy
 msgid "Separate Event Files"
-msgstr ""
+msgstr "Fichiers séparés d'événements WML"
 
 #. [topic]: id=editor_separate_events_file
 #: data/core/editor/help.cfg:410
@@ -1476,11 +1480,11 @@ msgstr ""
 "fichiers générés par l'éditeur de scénario mais il est probablement que des "
 "erreurs arrivent si les fichiers ont été modifiés à la main.\n"
 "\n"
-"Une option est d'ajouter le code WML manuellement dans une nouveau fichier ."
-"cfg et d'inclure les fichiers générés par l'éditeur en utilisant une "
-"commande du préprocesseur WML. Ce fichier séparé contient le tag [scenario] "
-"et le code WML écrit à la main comme les [event]. Suivant cette méthode, la "
-"structure des fichiers de l'extension ressemblera à ceci:\n"
+"Une option est d'ajouter le code WML manuellement dans une nouveau "
+"fichier .cfg et d'inclure les fichiers générés par l'éditeur en utilisant "
+"une commande du préprocesseur WML. Ce fichier séparé contient le tag "
+"[scenario] et le code WML écrit à la main comme les [event]. Suivant cette "
+"méthode, la structure des fichiers de l'extension ressemblera à ceci:\n"
 "\n"
 "<header>Exemple</header>\n"
 "Si votre extension respecte la grammaire du code WML de la version 1.18 ou "
@@ -1609,7 +1613,6 @@ msgstr ""
 
 #. [topic]: id=editor_map_format
 #: data/core/editor/help.cfg:479
-#, fuzzy
 msgid ""
 "<header>Native</header>\n"
 "\n"
@@ -1631,8 +1634,8 @@ msgid ""
 "\n"
 "• <span face='monospace'>map_file=maps/01_First_Map.map</span> <i>— "
 "supported since Wesnoth 1.14</i>\n"
-"• <span face='monospace'>map_data=&quot;&#0x7B;maps/01_First_Map.map&#0x7D;"
-"&quot;</span> <i>— a WML preprocessor include</i>\n"
+"• <span face='monospace'>map_data=&quot;&#0x7B;maps/"
+"01_First_Map.map&#0x7D;&quot;</span> <i>— a WML preprocessor include</i>\n"
 "\n"
 "The <i>map_file</i> method is preferred over using a preprocessor include."
 msgstr ""
@@ -1660,8 +1663,8 @@ msgstr ""
 "\n"
 "• <span face='monospace'>map_file=maps/01_First_Map.map</span> <i>— pris en "
 "charge depuis Wesnoth 1.14</i>\n"
-"• <span face='monospace'>map_data=\"{maps/01_First_Map.map}\"</span> <i>— un "
-"inclusion du préprocesseur WML</i>\n"
+"• <span face='monospace'>map_data=\"{maps/01_First_Map.map}\"</span> <i>— "
+"une inclusion du préprocesseur WML</i>\n"
 "\n"
 "La méthode <i>map_file</i> est préférable à celle du préprocesseur."
 
@@ -1685,10 +1688,10 @@ msgid ""
 msgstr ""
 "<header>Encapsulé</header>\n"
 "\n"
-"Les données de la carte peuvent être stockées directement dans le fichier ."
-"cfg du scénario, au sein de l'attribut <i>map_data</i>. En d'autres mots, à "
-"l'emplacement que le préprocesseur placerait les données si l'on utilisait "
-"la méthode « include » du préprocesseur.\n"
+"Les données de la carte peuvent être stockées directement dans le "
+"fichier .cfg du scénario, au sein de l'attribut <i>map_data</i>. En d'autres "
+"mots, à l'emplacement que le préprocesseur placerait les données si l'on "
+"utilisait la méthode « include » du préprocesseur.\n"
 "\n"
 "<header>En utilisant le format d'encapsulation en mode terrain</header>\n"
 "\n"
@@ -1756,8 +1759,13 @@ msgstr ""
 msgid "Calendar"
 msgstr "Calendrier"
 
+# [incomplet]
+# Une traduction passée gardait les mois en anglais
+# "$year av. W." dans #wesnoth
+# "$year ap. C." dans #wesnoth
 #. [topic]: id=..calendar
 #: data/core/encyclopedia/calendar.cfg:14
+#, fuzzy
 msgid ""
 "Each year in the Wesnothian calendar is composed of 12 months. These are, in "
 "order:\n"
@@ -1782,6 +1790,11 @@ msgid ""
 "After the fall of Wesnoth many switched to using AF (After the Fall) and BF "
 "(Before the Fall)."
 msgstr ""
+"Chaque année du calendrier de Wesnoth est composée de 12 mois. Ils sont, "
+"dans l'ordre :\n"
+"\n"
+"Après la chute de Wesnoth la numérotation utilisée est « ap. C. » (Après la "
+"Chute) et « av. C. » (Avant la Chute)."
 
 #. [section]: id=geography
 #. [topic]: id=..geography
@@ -1825,7 +1838,6 @@ msgstr ""
 
 #. [topic]: id=great_river
 #: data/core/encyclopedia/geography.cfg:35
-#, fuzzy
 msgid ""
 "The Ford of Abez is a crossing between Wesnoth and the Northlands, and is "
 "the westernmost point where the Great River can be crossed without ships."
@@ -1853,7 +1865,6 @@ msgstr ""
 #. [topic]: id=great_ocean
 #. Great Ocean
 #: data/core/encyclopedia/geography.cfg:45
-#, fuzzy
 msgid ""
 "The Drakes once called this ocean the World Ocean. They believe it to extend "
 "in every direction from Morogor until eventually flowing into the abyss as "
@@ -1871,7 +1882,6 @@ msgstr "Morogor"
 
 #. [topic]: id=morogor
 #: data/core/encyclopedia/geography.cfg:51
-#, fuzzy
 msgid ""
 "Archipelago, located somewhere in the <ref dst='great_ocean'>Great Ocean</"
 "ref> east of the <ref dst='green_isle'>Green Isle</ref> and west of the <ref "
@@ -1880,7 +1890,7 @@ msgid ""
 "The central island of the archipelago is also called ‘Morogor’."
 msgstr ""
 "Archipel situé quelque part dans le <ref dst='great_ocean'>Grand Océan</"
-"ref>, à l'est de l'<ref dst='green_isle'>Île Verte</ref> et à l'ouest du "
+"ref>, à l'Est de l'<ref dst='green_isle'>Île Verte</ref> et à l'Ouest du "
 "<ref dst=great_continent>Grand Continent</ref>.\n"
 "Il est peuplé principalement de <ref dst='..race_drake'>dracans</ref>.\n"
 "L'île centrale de l'archipel est aussi appelée « Morogor »."
@@ -1906,7 +1916,6 @@ msgstr "Île Verte"
 
 #. [topic]: id=green_isle
 #: data/core/encyclopedia/geography.cfg:66
-#, fuzzy
 msgid ""
 "A bigger island lying in the <ref dst='great_ocean'>Great Ocean</ref>, "
 "formerly home to the Islefolk and Wesfolk."
@@ -1952,7 +1961,6 @@ msgstr "Vieux Continent"
 
 #. [topic]: id=old_continent
 #: data/core/encyclopedia/geography.cfg:89
-#, fuzzy
 msgid ""
 "Lies to the west of <ref dst='morogor'>Morogor</ref> and the <ref "
 "dst='green_isle'>Green Isle</ref> across the <ref dst='great_ocean'>Great "
@@ -1970,7 +1978,6 @@ msgstr "Grand Continent"
 
 #. [topic]: id=great_continent
 #: data/core/encyclopedia/geography.cfg:95
-#, fuzzy
 msgid ""
 "The continent on which the <ref dst='kingdom_wesnoth'>Kingdom of Wesnoth</"
 "ref> lies. Its west coast is surrounded by the <ref dst='great_ocean'>Great "
@@ -1986,7 +1993,6 @@ msgstr "Irdya"
 
 #. [topic]: id=irdya
 #: data/core/encyclopedia/geography.cfg:101
-#, fuzzy
 msgid ""
 "The name of the world in which the kingdom of <ref "
 "dst='kingdom_wesnoth'>Wesnoth</ref> is situated is ‘Irdya’. This term is, "
@@ -2049,7 +2055,6 @@ msgstr ""
 #. [topic]: id=kingdom_wesnoth
 #. Geography of Wesnoth
 #: data/core/encyclopedia/geography.cfg:127
-#, fuzzy
 msgid ""
 "<header>Notable land features:</header>\n"
 "    • Gryphon Mountain: Home of the fabled Gryphons.\n"
@@ -2118,7 +2123,6 @@ msgstr "Elensefar"
 
 #. [topic]: id=elensefar
 #: data/core/encyclopedia/geography.cfg:145
-#, fuzzy
 msgid ""
 "Elensefar is at times a province of <ref dst='kingdom_wesnoth'>Wesnoth</"
 "ref>, at times an independent country, and at times in a treaty federation "
@@ -2197,7 +2201,6 @@ msgstr ""
 #. [topic]: id=northlands
 #. Geography of the Northlands
 #: data/core/encyclopedia/geography.cfg:176
-#, fuzzy
 msgid ""
 "<header>Notable land features:</header>\n"
 "    • <ref dst='heart_mountains'>Heart Mountains</ref>: A virtually "
@@ -2264,8 +2267,8 @@ msgstr ""
 #: data/core/encyclopedia/geography.cfg:194
 msgid ""
 "<header>Notable land features:</header>\n"
-"    • Aethenwood: The largest southern forest, home to reclusive <ref dst='.."
-"race_elf'>elves</ref>.\n"
+"    • Aethenwood: The largest southern forest, home to reclusive <ref "
+"dst='..race_elf'>elves</ref>.\n"
 "    • Vale of Blossoming Trees: An elvish vale at the southern edge of the "
 "Aethenwood. It contains the sacred Isle of Elrath.\n"
 "    • Lake Aelin: An elvish lake at the edge of their territory along the "
@@ -2299,7 +2302,6 @@ msgstr "Grand Nord"
 
 #. [topic]: id=far_north
 #: data/core/encyclopedia/geography.cfg:212
-#, fuzzy
 msgid ""
 "Cold, harsh, and inaccessible, the Far North is the ancestral home of the "
 "Orcish Clannate. It lies north of the <ref dst='heart_mountains'>Heart "
@@ -2381,8 +2383,6 @@ msgstr ""
 
 #. [topic]: id=far_south
 #: data/core/encyclopedia/geography.cfg:249
-#, fuzzy
-#| msgid "Far North"
 msgid "Far South"
 msgstr "Grand Sud"
 
@@ -2481,7 +2481,6 @@ msgstr "Commandes"
 
 #. [topic]: id=..introduction
 #: data/core/help.cfg:97
-#, fuzzy
 msgid ""
 "<i>Battle for Wesnoth</i> is a turn-based fantasy strategy game somewhat "
 "unusual among modern strategy games. While other games strive for "
@@ -2499,15 +2498,14 @@ msgstr ""
 
 #. [topic]: id=..introduction
 #: data/core/help.cfg:99
-#, fuzzy
 msgid ""
 "The following pages outline all you need to know to play Wesnoth. As you "
 "play, new information is added to the various categories as you come across "
 "new aspects of the game. For more detailed information on special situations "
 "and exceptions, follow the included links."
 msgstr ""
-"Les pages suivantes présentent tout ce que vous devez savoir pour jouer à « "
-"La Bataille pour Wesnoth ». Elles s'enrichiront au fur et à mesure de vos "
+"Les pages suivantes présentent tout ce que vous devez savoir pour jouer à "
+"« La Bataille pour Wesnoth ». Elles s'enrichiront au fur et à mesure de vos "
 "parties, quand vous serez confrontés à de nouveaux aspects du jeu. Pour des "
 "informations plus détaillées sur les situations particulières et les "
 "exceptions, suivez les liens fournis."
@@ -2519,7 +2517,6 @@ msgstr "À propos du jeu"
 
 #. [topic]: id=about_game
 #: data/core/help.cfg:106
-#, fuzzy
 msgid ""
 "The game takes place on a hex-based game field, where your units battle "
 "against those controlled by the computer, friends who each take turns on the "
@@ -2644,12 +2641,6 @@ msgstr "Unité inconnue"
 
 #. [topic]: id=.unknown_unit
 #: data/core/help.cfg:158
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "This unit is unknown for the moment. You must discover it in the game to "
-#| "be allowed to see its description."
 msgid ""
 "This unit is unknown for the moment. You must discover it in the game to be "
 "allowed to see its description."
@@ -2659,7 +2650,6 @@ msgstr ""
 
 #. [topic]: id=..gameplay
 #: data/core/help.cfg:166
-#, fuzzy
 msgid ""
 "Wesnoth is comprised of a series of battles, called <i>scenarios</i>, that "
 "pit your troops against the troops of one or more adversaries. Multiple "
@@ -2731,7 +2721,6 @@ msgstr ""
 
 #. [topic]: id=..gameplay
 #: data/core/help.cfg:175
-#, fuzzy
 msgid ""
 "While playing, keep in mind that you can mouse-over many items in the game, "
 "such as the information displayed in the status pane, to see a brief "
@@ -2756,7 +2745,6 @@ msgstr "Victoire et défaite"
 
 #. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:188
-#, fuzzy
 msgid ""
 "Pay careful attention to the <b>Objectives</b> pop-up box at the beginning "
 "of each scenario. In most scenarios, you will achieve victory by killing all "
@@ -2775,7 +2763,6 @@ msgstr ""
 
 #. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:190
-#, fuzzy
 msgid ""
 "When you win a scenario, the map grays over and the <b>End Turn</b> button "
 "changes to <b>End Scenario</b>. You can now do things like changing your "
@@ -2794,7 +2781,6 @@ msgstr "Recruter et rappeler"
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:198
-#, fuzzy
 msgid ""
 "Each side begins with one leader in their keep. At the start of any battle, "
 "and at times during it, you will need to recruit <ref dst='..units'>units</"
@@ -2925,7 +2911,6 @@ msgstr ""
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:224
-#, fuzzy
 msgid ""
 "In general, the base income, the amount of gold you get per village per "
 "turn, and the number of unit levels each village can support are "
@@ -2988,7 +2973,6 @@ msgstr ""
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:240
-#, fuzzy
 msgid ""
 "The hitpoints are also indicated by an energy bar next to each unit, which "
 "is green, yellow or red. A unit with at least 1 experience point has a blue "
@@ -3149,7 +3133,6 @@ msgstr "Vision"
 
 #. [topic]: id=vision
 #: data/core/help.cfg:274
-#, fuzzy
 msgid ""
 "Vision determines how far a unit can see on the map. Normally, a unit’s "
 "vision range is calculated as its movement range plus one hex. Certain units "
@@ -3317,7 +3300,6 @@ msgstr "Apprendre de ses échecs"
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:313
-#, fuzzy
 msgid "<i>Why did I lose that scenario?</i>"
 msgstr "<i>Comment ai-je pu perdre ce scénario ?</i>"
 
@@ -3425,7 +3407,6 @@ msgstr ""
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:331
-#, fuzzy
 msgid "Unlikely reasons"
 msgstr "Raisons peu probables"
 
@@ -3577,9 +3558,8 @@ msgstr ""
 
 #. [topic]: id=combat
 #: data/core/help.cfg:357
-#, fuzzy
 msgid "Chance to Hit"
-msgstr "Chances de toucher :"
+msgstr "Chances de toucher"
 
 #. [topic]: id=combat
 #: data/core/help.cfg:359
@@ -3882,7 +3862,6 @@ msgstr "Moment de la journée"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:467
-#, fuzzy
 msgid "The time of day affects the damage of certain units as follows:"
 msgstr ""
 "Le moment de la journée influence les dégâts infligés par certaines unités "
@@ -3890,7 +3869,6 @@ msgstr ""
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:469
-#, fuzzy
 msgid ""
 "• <span weight='heavy' size='15'>LAWFUL</span> units get +25% damage in "
 "daytime, and −25% damage at night."
@@ -3900,7 +3878,6 @@ msgstr ""
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:470
-#, fuzzy
 msgid ""
 "• <span weight='heavy' size='15'>CHAOTIC</span> units get +25% damage at "
 "night, and −25% in daytime."
@@ -3910,7 +3887,6 @@ msgstr ""
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:471
-#, fuzzy
 msgid ""
 "• <span weight='heavy' size='15'>NEUTRAL</span> units are unaffected by the "
 "time of day."
@@ -3920,7 +3896,6 @@ msgstr ""
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:472
-#, fuzzy
 msgid ""
 "• <span weight='heavy' size='15'>LIMINAL</span> units get +25% damage during "
 "twilight."
@@ -4143,16 +4118,17 @@ msgstr "Conclusion"
 #: data/core/help.cfg:529
 msgid ""
 "This concludes the fundamentals of Wesnoth. You might want to read up on "
-"basic strategy, or familiarize yourself with <ref dst='.."
-"traits_section'>traits</ref> and <ref dst='..abilities_section'>abilities</"
-"ref>, but you now know everything you need to know to play the <i>Heir to "
-"the Throne</i> campaign. Have fun, and good luck!"
+"basic strategy, or familiarize yourself with <ref "
+"dst='..traits_section'>traits</ref> and <ref "
+"dst='..abilities_section'>abilities</ref>, but you now know everything you "
+"need to know to play the <i>Heir to the Throne</i> campaign. Have fun, and "
+"good luck!"
 msgstr ""
 "Ceci conclut les bases de Wesnoth. Vous pourriez vouloir en lire plus sur la "
-"stratégie de base ou vous familiariser avec les <ref dst='.."
-"traits_section'>traits</ref> et les <ref dst='.."
-"abilities_section'>capacités</ref>, mais vous connaissez maintenant le "
-"nécessaire pour jouer la campagne <i>L'Héritier du trône</i>. Amusez-vous "
+"stratégie de base ou vous familiariser avec les <ref "
+"dst='..traits_section'>traits</ref> et les <ref "
+"dst='..abilities_section'>capacités</ref>, mais vous connaissez maintenant "
+"le nécessaire pour jouer la campagne <i>L'Héritier du trône</i>. Amusez-vous "
 "bien et bonne chance !"
 
 #. [topic]: id=license
@@ -4198,7 +4174,6 @@ msgstr ""
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:551
-#, fuzzy
 msgid ""
 "Elves may also receive <ref dst='traits_dextrous'>dextrous</ref>, and "
 "dwarves may receive <ref dst='traits_healthy'>healthy</ref>. Trolls and "
@@ -4232,7 +4207,6 @@ msgstr ""
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:563 data/core/help.cfg:596
-#, fuzzy
 msgid "Basic Terrain Types"
 msgstr "Terrains de base"
 
@@ -4261,7 +4235,6 @@ msgstr ""
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:570
-#, fuzzy
 msgid "Mixed Terrain Types"
 msgstr "Terrains composites"
 
@@ -4411,7 +4384,6 @@ msgstr ""
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:620
-#, fuzzy
 msgid "Campaigns and Scenarios"
 msgstr "Campagnes et scénarios"
 
@@ -4467,15 +4439,14 @@ msgstr ""
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:632
-#, fuzzy
 msgid ""
 "In <i>Multiplayer</i> mode, you can choose an era when creating a new game, "
 "and players can pick from the available factions for that era when setting "
 "up their sides and teams."
 msgstr ""
-"En mode <i>Multijoueur</i>, vous pouvez choisir une ére lors de la création "
+"En mode <i>Multijoueur</i>, vous pouvez choisir une ère lors de la création "
 "d’une nouvelle partie, et les joueurs peuvent sélectionner parmi les "
-"factions disponibles pour cette ére lorsqu’ils configurent leurs camps et "
+"factions disponibles pour cette ère lorsqu’ils configurent leurs camps et "
 "équipes."
 
 #. [topic]: id=using_addons
@@ -4484,12 +4455,11 @@ msgid ""
 "You can see what eras you have loaded in the <ref dst='..eras_section'>eras</"
 "ref> of the help."
 msgstr ""
-"Vous pouvez vérifier l'ère que vous avez chargée dans la <ref dst='.."
-"eras_section'>section ère</ref> de l'aide."
+"Vous pouvez vérifier l'ère que vous avez chargée dans la <ref "
+"dst='..eras_section'>section ère</ref> de l'aide."
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:636
-#, fuzzy
 msgid "Modifications"
 msgstr "Modifications"
 
@@ -4506,7 +4476,6 @@ msgstr ""
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:640
-#, fuzzy
 msgid "Cores"
 msgstr "Noyaux"
 
@@ -4535,7 +4504,6 @@ msgstr ""
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:646
-#, fuzzy
 msgid "Creator Resources"
 msgstr "Ressources de création"
 
@@ -4684,8 +4652,8 @@ msgstr ""
 #: data/core/help.cfg:698
 msgid "Debug mode is turned off by quitting the game or :nodebug."
 msgstr ""
-"Le mode débogage est désactivé à la fin de la partie ou par la commande :"
-"nodebug."
+"Le mode débogage est désactivé à la fin de la partie ou par la "
+"commande :nodebug."
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:701
@@ -5018,13 +4986,11 @@ msgstr ""
 
 #. [chance_to_hit]: id=diversion
 #: data/core/macros/abilities.cfg:158
-#, fuzzy
 msgid "accuracy:"
 msgstr "précision :"
 
 #. [chance_to_hit]: id=diversion
 #: data/core/macros/abilities.cfg:159
-#, fuzzy
 msgid ""
 "A nearby enemy’s <i>diversion</i> ability is reducing this attack’s accuracy "
 "by 20%."
@@ -5147,7 +5113,6 @@ msgstr ""
 
 #. [hides]: id=burrow
 #: data/core/macros/abilities.cfg:322
-#, fuzzy
 msgid ""
 "This unit can burrow under loose dirt, sand, or leaves, concealing itself if "
 "it does not change location."
@@ -5225,25 +5190,16 @@ msgstr ""
 # chouan, maraîchin ?
 #. [hides]: id=swamp_lurk
 #: data/core/macros/abilities.cfg:398
-#, fuzzy
 msgid "swamp lurk"
 msgstr "rôdeur des marais"
 
 #. [hides]: id=swamp_lurk
 #: data/core/macros/abilities.cfg:399
-#, fuzzy
 msgid "female^swamp lurk"
 msgstr "rôdeuse des marais"
 
 #. [hides]: id=swamp_lurk
 #: data/core/macros/abilities.cfg:400
-#, fuzzy
-#| msgid ""
-#| "This unit can hide in forest, and remain undetected by its enemies.\n"
-#| "\n"
-#| "Enemy units cannot see this unit while it is in forest, except if they "
-#| "have units next to it. Any enemy unit that first discovers this unit "
-#| "immediately loses all its remaining movement."
 msgid ""
 "This unit can hide in swamp, and remain undetected by its enemies.\n"
 "\n"
@@ -6156,14 +6112,12 @@ msgstr ""
 
 #. [trait]: id=oceangoing
 #: data/core/macros/traits.cfg:386
-#, fuzzy
 msgid "oceangoing"
 msgstr "hauturier"
 
 #. [trait]: id=oceangoing
 #. this is a defense reduction - without this ability most oceangoing ships would have 30% defense on these terrains
 #: data/core/macros/traits.cfg:388
-#, fuzzy
 msgid ""
 "This unit is limited to 20% defense while in ford, bridge, oasis, or water-"
 "based village/castle terrain."
@@ -6174,13 +6128,11 @@ msgstr ""
 #. [trait]: id=push_poles
 #. https://en.wikipedia.org/wiki/Setting_pole
 #: data/core/macros/traits.cfg:416
-#, fuzzy
 msgid "push-poles"
 msgstr "perches de navigation"
 
 #. [trait]: id=push_poles
 #: data/core/macros/traits.cfg:417
-#, fuzzy
 msgid ""
 "This unit has 30% defense while in ford, bridge, oasis, or water-based "
 "village/castle terrain."
@@ -6190,19 +6142,16 @@ msgstr ""
 
 #. [disable]: id=unwieldy
 #: data/core/macros/weapon_specials.cfg:10
-#, fuzzy
 msgid "unwieldy"
 msgstr "peu maniable"
 
 #. [disable]: id=unwieldy
 #: data/core/macros/weapon_specials.cfg:11
-#, fuzzy
 msgid "This attack can only be used offensively."
 msgstr "Cette attaque est uniquement utilisable à des fins offensives."
 
 #. [disable]: id=unwieldy
 #: data/core/macros/weapon_specials.cfg:13
-#, fuzzy
 msgid "This unit has an unwieldy weapon, which cannot be used defensively."
 msgstr "Cette unité a une arme peu maniable, inutilisable en défense."
 
@@ -6298,23 +6247,20 @@ msgstr ""
 
 #. [chance_to_hit]: id=honed
 #: data/core/macros/weapon_specials.cfg:132
-#, fuzzy
 msgid "honed"
-msgstr "affûté"
+msgstr "affûtée"
 
 #. [chance_to_hit]: id=honed
 #: data/core/macros/weapon_specials.cfg:133
-#, fuzzy
 msgid "This attack is 10% more accurate than other attacks."
 msgstr "Cette attaque est 10 % plus précise que les autres attaques."
 
 #. [chance_to_hit]: id=honed
 #: data/core/macros/weapon_specials.cfg:134
-#, fuzzy
 msgid ""
 "This unit’s “honed” attack is slightly more accurate than other attacks."
 msgstr ""
-"L’attaque « affûtée » de cette unité est un peu plus précise que ses autres "
+"L’attaque « affûtée » de cette unité est un peu plus précise que d'autres "
 "attaques."
 
 #. [swarm]: id=swarm
@@ -6351,19 +6297,16 @@ msgstr ""
 
 #. [damage]: id=guard
 #: data/core/macros/weapon_specials.cfg:170
-#, fuzzy
 msgid "guard"
 msgstr "blocage"
 
 #. [damage]: id=guard
 #: data/core/macros/weapon_specials.cfg:171
-#, fuzzy
 msgid "This attack blocks half of the damage from its target’s strikes."
-msgstr "Cette attaque absorbe la moitié des dégâts provenant de la cible."
+msgstr "Cette attaque absorbe la moitié des dégâts de rétribution de la cible."
 
 #. [damage]: id=guard
 #: data/core/macros/weapon_specials.cfg:172
-#, fuzzy
 msgid ""
 "This unit’s guarding attack can halve incoming damage, but only when used in "
 "combat."
@@ -6522,13 +6465,11 @@ msgstr "Féline"
 
 #. [race]: id=cats
 #: data/core/units.cfg:51
-#, fuzzy
 msgid "race^Cats"
 msgstr "Félins"
 
 #. [race]: id=cats
 #: data/core/units.cfg:52
-#, fuzzy
 msgid ""
 "Big cats are nimble, solitary predators that can cause trouble for any "
 "farmer or hunter that encounter them. The cats that hunt rodents and drive "
@@ -6997,7 +6938,6 @@ msgstr "Gobelins"
 
 #. [race]: id=goblin
 #: data/core/units.cfg:163
-#, fuzzy
 msgid ""
 "Goblins are puny and quite frail, rarely growing past the size and stature "
 "of a human child."
@@ -7512,7 +7452,6 @@ msgstr ""
 
 #. [race]: id=ship
 #: data/core/units.cfg:294
-#, fuzzy
 msgid "race^Ship"
 msgstr "Navire"
 
@@ -7523,7 +7462,6 @@ msgstr "Navires"
 
 #. [race]: id=ship
 #: data/core/units.cfg:296
-#, fuzzy
 msgid ""
 "Ships are not living beings, but they are crafted and (usually) controlled "
 "by living beings. Most ships neither move nor think on their own, but some "
@@ -7712,7 +7650,6 @@ msgstr "Orcs"
 
 #. [race]: id=orc
 #: data/core/units.cfg:354
-#, fuzzy
 msgid ""
 "In appearance, orcs resemble humans but with some bestial features. They are "
 "taller, sturdier and stronger than humans. They are warlike, savage, and "
@@ -7721,7 +7658,7 @@ msgid ""
 "Although Orcs are violent even among themselves, they are pack-oriented; an "
 "orc never travels alone or lives in groups smaller than half a dozen."
 msgstr ""
-"D’apparence, les orcs ressemblent aux humains, mais présentent certains "
+"D'apparence, les orcs ressemblent aux humains, mais présentent certains "
 "traits bestiaux. Ils sont plus grands, plus robustes et plus forts que les "
 "humains. Ils sont belliqueux, sauvages et cruels par nature. Leur sang est "
 "plus sombre et plus épais que celui des humains, et ils se soucient peu de "
@@ -7736,7 +7673,6 @@ msgstr "Société"
 
 #. [race]: id=orc
 #: data/core/units.cfg:357
-#, fuzzy
 msgid ""
 "Almost every orc is a member of a tribe or a clan. Relations between "
 "neighboring tribes are usually violent, except in cases of a mutual enemy "
@@ -7761,7 +7697,6 @@ msgstr ""
 
 #. [race]: id=orc
 #: data/core/units.cfg:359
-#, fuzzy
 msgid ""
 "Orc societies are based on little else but strength; might makes right, and "
 "a leader leads and survives only as long as no one manages to wrest the "
@@ -7786,7 +7721,6 @@ msgstr ""
 
 #. [race]: id=orc
 #: data/core/units.cfg:361
-#, fuzzy
 msgid ""
 "Orcs mostly live in rural areas, often in foothills or mountainous regions, "
 "sometimes in caves. They grow no crops nor keep livestock, but are competent "
@@ -7814,7 +7748,6 @@ msgstr ""
 
 #. [race]: id=orc
 #: data/core/units.cfg:363
-#, fuzzy
 msgid ""
 "The oldest known orcs have been around 50 to 60 years of age, but very few "
 "individuals ever live to see over two or three decades before meeting their "
@@ -8301,7 +8234,6 @@ msgstr "Notes spéciales"
 #. The terrain names will be hypertext links to the help page of the corresponding terrain type.
 #. There will always be at least 1 item in the list, but unlikely to be more than 3.
 #: src/help/help_topic_generators.cpp:266
-#, fuzzy
 msgid "Basic terrain type: $types"
 msgid_plural "Basic terrain types: $types"
 msgstr[0] "Terrain de base : $types"
@@ -8309,7 +8241,6 @@ msgstr[1] "Terrains de base : $types"
 
 #. TRANSLATORS: In the help for a terrain type, for example Dwarven Village is often placed on Cave Floor
 #: src/help/help_topic_generators.cpp:275
-#, fuzzy
 msgid "Typical base terrain: $type"
 msgstr "Terrain de base typique : $type"
 
@@ -8355,7 +8286,6 @@ msgstr "Race :"
 
 #: src/help/help_topic_generators.cpp:536
 #: src/help/help_topic_generators.cpp:546
-#, fuzzy
 msgid "(1 of):"
 msgid_plural "(random $number of):"
 msgstr[0] "(1 sur):"
@@ -8419,7 +8349,6 @@ msgid "Required XP:"
 msgstr "Expérience requise : "
 
 #: src/help/help_topic_generators.cpp:664
-#, fuzzy
 msgid "Attacks"
 msgstr "Attaques"
 
@@ -8428,7 +8357,6 @@ msgid "Attacks per turn: "
 msgstr "Attaques par tour : "
 
 #: src/help/help_topic_generators.cpp:686
-#, fuzzy
 msgid "Name"
 msgstr "Nom"
 
@@ -8449,7 +8377,6 @@ msgid "Special"
 msgstr "Spécial"
 
 #: src/help/help_topic_generators.cpp:712
-#, fuzzy
 msgid "uses $num attack"
 msgid_plural "uses $num attacks"
 msgstr[0] "utilise $num attaque"
