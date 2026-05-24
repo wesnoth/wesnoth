@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2026-05-19 02:15 UTC\n"
-"PO-Revision-Date: 2026-04-13 23:16+0200\n"
+"PO-Revision-Date: 2026-05-24 12:16+0200\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -5174,11 +5174,6 @@ msgstr ""
 
 #. [companion_message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/05b_Pebbles_in_the_Flood.cfg:389
-#, fuzzy
-#| msgid ""
-#| "What other option do we have, Captain Mari? “Mal M’Brin” had made it "
-#| "clear he blames all humanity for his suffering. Even if we could escape "
-#| "ourselves, Westin is completely unprepared for an attack!"
 msgid ""
 "What other option do we have, Captain Mari? “Mal M’Brin” has made it clear "
 "he blames all humanity for his suffering. Even if we could escape ourselves, "
@@ -5190,11 +5185,6 @@ msgstr ""
 
 #. [companion_message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/05b_Pebbles_in_the_Flood.cfg:390
-#, fuzzy
-#| msgid ""
-#| "What other option do we have, Sir Gerrick? “Mal M’Brin” had made it clear "
-#| "he blames all humanity for his suffering. Even if we could escape "
-#| "ourselves, Westin is completely unprepared for an attack!"
 msgid ""
 "What other option do we have, Sir Gerrick? “Mal M’Brin” has made it clear he "
 "blames all humanity for his suffering. Even if we could escape ourselves, "
@@ -5206,11 +5196,6 @@ msgstr ""
 
 #. [companion_message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/05b_Pebbles_in_the_Flood.cfg:391
-#, fuzzy
-#| msgid ""
-#| "What other option do we have, Minister Hylas? “Mal M’Brin” had made it "
-#| "clear he blames all humanity for his suffering. Even if we could escape "
-#| "ourselves, Westin is completely unprepared for an attack!"
 msgid ""
 "What other option do we have, Minister Hylas? “Mal M’Brin” has made it clear "
 "he blames all humanity for his suffering. Even if we could escape ourselves, "
@@ -5990,10 +5975,8 @@ msgstr "Aethenwood"
 
 #. [event]
 #: data/campaigns/The_South_Guard/scenarios/06a_Vengeance.cfg:275
-#, fuzzy
-#| msgid "Town Crier"
 msgid "Town Cellars"
-msgstr "Banditore Cittadino"
+msgstr "Cantine Cittadine"
 
 #. [event]
 #: data/campaigns/The_South_Guard/scenarios/06a_Vengeance.cfg:417
@@ -6181,6 +6164,7 @@ msgstr "Morte di Ethiliel"
 #: data/campaigns/The_South_Guard/scenarios/06a_Vengeance.cfg:519
 msgid "To ‘reach Westin’, move any unit adjacent to an ally"
 msgstr ""
+"Per ‘raggiungere Westin’, sposta una qualsiasi unità vicino ad un alleato"
 
 #. [message]
 #: data/campaigns/The_South_Guard/scenarios/06a_Vengeance.cfg:531
@@ -6277,11 +6261,6 @@ msgstr ""
 #: data/campaigns/The_South_Guard/scenarios/06a_Vengeance.cfg:552
 #: data/campaigns/The_South_Guard/scenarios/06a_Vengeance.cfg:650
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Tides_of_War.cfg:410
-#, fuzzy
-#| msgid ""
-#| "Yeah... I’ve got most of the civilians safely underground in the cellars, "
-#| "with the trapdoor shut and barred. If we’re lucky, we can clean us this "
-#| "mess without any more getting hurt."
 msgid ""
 "Yeah... I’ve got most of the civilians safely underground in the cellars, "
 "with the trapdoor shut and barred. If we’re lucky, we can clean up this mess "
@@ -7106,8 +7085,8 @@ msgstr ""
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Tides_of_War.cfg:496
 msgid ""
 "You survived $pebbles_defense_length turns last scenario! Deoran starts\n"
-"   with $soldiers.length extra soldiers and "
-"$( ($pebbles_defense_length-36)*3 ) extra gold!"
+"   with $soldiers.length extra soldiers and $"
+"( ($pebbles_defense_length-36)*3 ) extra gold!"
 msgstr ""
 "Sei sopravvissuto ben $pebbles_defense_length turni dell’ultimo scenario! "
 "Deoran inizia\n"
@@ -8322,9 +8301,9 @@ msgstr ""
 "Ho appena effettuato un <i><b>attacco a distanza</b></i>! Devo trovarmi in "
 "prossimità di questa $second_unit.language_name <i>(Eh, sì, questo è un "
 "pochino diverso da come vengono gestiti gli attacchi a distanza nella "
-"maggior parte degli altri giochi)</i>, ma siccome la $second_unit."
-"language_name non possiede un’arma per attacchi a distanza, non è stata in "
-"grado di contrattaccare."
+"maggior parte degli altri giochi)</i>, ma siccome la "
+"$second_unit.language_name non possiede un’arma per attacchi a distanza, non "
+"è stata in grado di contrattaccare."
 
 #. [message]: speaker=unit
 #. second_unit may be a Thug (always male) or one of its advancements
@@ -8338,9 +8317,9 @@ msgstr ""
 "Ho appena effettuato un <i><b>attacco a distanza</b></i>! Devo trovarmi in "
 "prossimità di questa $second_unit.language_name <i>(Eh, sì, questo è un "
 "pochino diverso da come vengono gestiti gli attacchi a distanza nella "
-"maggior parte degli altri giochi)</i>, ma siccome la $second_unit."
-"language_name non possiede un’arma per attacchi a distanza, non è stata in "
-"grado di contrattaccare."
+"maggior parte degli altri giochi)</i>, ma siccome la "
+"$second_unit.language_name non possiede un’arma per attacchi a distanza, non "
+"è stata in grado di contrattaccare."
 
 #. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/utils/sg_help.cfg:191
