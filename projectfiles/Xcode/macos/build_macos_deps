@@ -501,9 +501,6 @@ echo "==> Bootstrapping vcpkg ..."
 echo "==> Preparing pango overlay port ..."
 prepare_pango_overlay
 
-echo "==> Preparing boost-unordered overlay port ..."
-prepare_boost_unordered_overlay
-
 echo "==> Installing macOS Xcode dependencies for ${x64_triplet} ..."
 install_triplet "${x64_triplet}" "${x64_install_root}" "${x64_buildtrees_root}"
 
