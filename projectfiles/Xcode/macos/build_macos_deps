@@ -34,7 +34,6 @@ vcpkg_root="${temp_dir}/${vcpkg_repo_name}"
 overlay_ports_root="${temp_dir}/overlay-ports"
 glib_overlay_port="${overlay_ports_root}/glib"
 pango_overlay_port="${overlay_ports_root}/pango"
-boost_unordered_overlay_port="${overlay_ports_root}/boost-unordered"
 install_root_base="${temp_dir}/vcpkg-installed-macos"
 buildtrees_root_base="${temp_dir}/vcpkg-buildtrees-macos"
 downloads_root="${temp_dir}/vcpkg-downloads"
@@ -272,29 +271,6 @@ prepare_pango_overlay() {
 		|| die "Failed to apply ${script_dir}/patches/pango-objc.patch to ${pango_overlay_relative}."
 }
 
-prepare_boost_unordered_overlay() {
-	local overlay_extract_root overlay_archive_path boost_unordered_overlay_relative
-
-	overlay_extract_root="${overlay_ports_root}/.boost-unordered-baseline"
-	overlay_archive_path="${overlay_extract_root}/boost-unordered-port.tar"
-	rm -rf "${boost_unordered_overlay_port}" || die "Failed to remove ${boost_unordered_overlay_port}."
-	rm -rf "${overlay_extract_root}" || die "Failed to remove ${overlay_extract_root}."
-	mkdir -p "${overlay_ports_root}" || die "Failed to create ${overlay_ports_root}."
-	mkdir -p "${overlay_extract_root}" || die "Failed to create ${overlay_extract_root}."
-	# GitHub now 404s the legacy /archive/<tag>.tar.gz URL for boostorg/unordered
-	# even though the tag still exists. Archive the baseline port and patch it to
-	# use refs/tags so the pinned boost-unordered version remains downloadable.
-	git -C "${vcpkg_root}" archive --format=tar "${vcpkg_baseline}" "ports/boost-unordered" > "${overlay_archive_path}" \
-		|| die "Failed to archive boost-unordered from vcpkg baseline ${vcpkg_baseline}. Remove ${vcpkg_root} and rerun the script."
-	tar -xf "${overlay_archive_path}" -C "${overlay_extract_root}" || die "Failed to extract ${overlay_archive_path}."
-	mv "${overlay_extract_root}/ports/boost-unordered" "${boost_unordered_overlay_port}" \
-		|| die "Failed to move the extracted boost-unordered overlay into ${boost_unordered_overlay_port}."
-	rm -rf "${overlay_extract_root}" || die "Failed to remove ${overlay_extract_root}."
-	boost_unordered_overlay_relative="${boost_unordered_overlay_port#"${root_dir}"/}"
-	git -C "${root_dir}" apply --directory="${boost_unordered_overlay_relative}" "${script_dir}/patches/boost-unordered-refs-tags.patch" \
-		|| die "Failed to apply ${script_dir}/patches/boost-unordered-refs-tags.patch to ${boost_unordered_overlay_relative}."
-}
-
 write_arch_wrapper() {
 	local wrapper_path=$1
 	local x64_header=$2
@@ -523,9 +499,6 @@ prepare_glib_overlay
 
 echo "==> Preparing pango overlay port ..."
 prepare_pango_overlay
-
-echo "==> Preparing boost-unordered overlay port ..."
-prepare_boost_unordered_overlay
 
 echo "==> Installing macOS Xcode dependencies for ${x64_triplet} ..."
 install_triplet "${x64_triplet}" "${x64_install_root}" "${x64_buildtrees_root}"
