@@ -4,6 +4,8 @@
 ### Campaigns
    * Heir to the Throne
      * S03 "Blackwater Port": added a secondary, coastal entry point for this scenario, so Konrad can make better use of Merfolk if he has them.
+   * The Deceivers Gambit
+     * S08 "Ruins of Saurgrath", S10 "Houses of the Dead": spell selection is now delayed until Delfador learns what kind of enemies he's fighting.
 ### Editor
 ### Multiplayer
 ### Lua API
