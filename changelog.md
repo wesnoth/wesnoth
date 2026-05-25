@@ -3,6 +3,7 @@
 ### Add-ons server
 ### Campaigns
    * Heir to the Throne
+     * S01 "The Elves Besieged": reduced starting gold, but added gold pickups near enemy keeps. Added more swamp hexes.
      * S03 "Blackwater Port": added a secondary, coastal entry point for this scenario, so Konrad can make better use of Merfolk if he has them.
      * S10 "The Siege of Elensefar": reduced Easy difficulty.
      * On the overworld, the waters around Elensefar now better connect to the rest of the passable coast.
