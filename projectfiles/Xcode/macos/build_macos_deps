@@ -32,6 +32,7 @@ triplets_dir="${script_dir}/triplets"
 temp_dir="${xcode_dir}/temp"
 vcpkg_root="${temp_dir}/${vcpkg_repo_name}"
 overlay_ports_root="${temp_dir}/overlay-ports"
+glib_overlay_port="${overlay_ports_root}/glib"
 pango_overlay_port="${overlay_ports_root}/pango"
 boost_unordered_overlay_port="${overlay_ports_root}/boost-unordered"
 install_root_base="${temp_dir}/vcpkg-installed-macos"
@@ -150,7 +151,7 @@ need_cmd() {
 }
 
 vcpkg_checkout_has_baseline() {
-	# We archive the pango overlay directly from ${vcpkg_baseline}, so a reused
+	# We archive overlay ports directly from ${vcpkg_baseline}, so a reused
 	# temp checkout has to contain that commit before we can proceed.
 	git -C "${vcpkg_root}" merge-base --is-ancestor "${vcpkg_baseline}" HEAD
 }
@@ -226,6 +227,25 @@ install_triplet() {
 		sleep "${retry_delay_seconds}"
 		attempt=$((attempt + 1))
 	done
+}
+
+prepare_glib_overlay() {
+	local overlay_extract_root overlay_archive_path glib_overlay_relative
+
+	overlay_extract_root="${overlay_ports_root}/.glib-baseline"
+	overlay_archive_path="${overlay_extract_root}/glib-port.tar"
+	rm -rf "${glib_overlay_port}" || die "Failed to remove ${glib_overlay_port}."
+	rm -rf "${overlay_extract_root}" || die "Failed to remove ${overlay_extract_root}."
+	mkdir -p "${overlay_ports_root}" || die "Failed to create ${overlay_ports_root}."
+	mkdir -p "${overlay_extract_root}" || die "Failed to create ${overlay_extract_root}."
+	git -C "${vcpkg_root}" archive --format=tar "${vcpkg_baseline}" "ports/glib" > "${overlay_archive_path}" \
+		|| die "Failed to archive glib from vcpkg baseline ${vcpkg_baseline}. Remove ${vcpkg_root} and rerun the script."
+	tar -xf "${overlay_archive_path}" -C "${overlay_extract_root}" || die "Failed to extract ${overlay_archive_path}."
+	mv "${overlay_extract_root}/ports/glib" "${glib_overlay_port}" || die "Failed to move the extracted glib overlay into ${glib_overlay_port}."
+	rm -rf "${overlay_extract_root}" || die "Failed to remove ${overlay_extract_root}."
+	glib_overlay_relative="${glib_overlay_port#"${root_dir}"/}"
+	git -C "${root_dir}" apply --directory="${glib_overlay_relative}" "${script_dir}/patches/glib-macos-subsystem.patch" \
+		|| die "Failed to apply ${script_dir}/patches/glib-macos-subsystem.patch to ${glib_overlay_relative}."
 }
 
 prepare_pango_overlay() {
@@ -497,6 +517,9 @@ ensure_vcpkg_checkout \
 
 echo "==> Bootstrapping vcpkg ..."
 "${vcpkg_root}/bootstrap-vcpkg.sh" -disableMetrics || die "Failed to bootstrap vcpkg under ${vcpkg_root}."
+
+echo "==> Preparing glib overlay port ..."
+prepare_glib_overlay
 
 echo "==> Preparing pango overlay port ..."
 prepare_pango_overlay
