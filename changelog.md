@@ -8,6 +8,8 @@
      * S10 "The Siege of Elensefar": rebalanced gold, income, and AI. Maddock's AI is now less likely to defend unthreatened bridges or idle his ships.
      * On the overworld, the waters around Elensefar now better connect to the rest of the passable coast.
      * After completing either Elensefar scenario, Elensefar now provides Konrad with a port on the overworld.
+   * The Deceivers Gambit
+     * S08 "Ruins of Saurgrath", S10 "Houses of the Dead": spell selection is now delayed until Delfador learns what kind of enemies he's fighting.
 ### Editor
 ### Multiplayer
 ### Lua API

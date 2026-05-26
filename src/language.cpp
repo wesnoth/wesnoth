@@ -60,6 +60,17 @@ bool language_def::operator== (const language_def& a) const
 	return ((language == a.language) /* && (localename == a.localename) */ );
 }
 
+std::string language_def::short_localename() const {
+	std::string::size_type index = localename.find(
+#ifdef _WIN32
+		'-'
+#else
+		'_'
+#endif
+	);
+	return index == std::string::npos ? localename : localename.substr(0, index);
+}
+
 bool& time_locale_correct()
 {
 	static bool result = true;

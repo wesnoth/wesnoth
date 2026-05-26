@@ -45,6 +45,8 @@ struct language_def
 	{
 		return sort_name < a.sort_name;
 	}
+
+	std::string short_localename() const;
 };
 
 struct symbol_table

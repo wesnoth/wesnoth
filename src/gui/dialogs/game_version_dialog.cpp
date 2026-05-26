@@ -265,16 +265,19 @@ void game_version::report_issue() {
 }
 
 void game_version::show_manual() {
-	if (desktop::open_object_is_supported()) {
-		const auto& manual_path = filesystem::get_game_manual_file(get_language().localename);
-		if (manual_path) {
-			desktop::open_object(manual_path.value());
-		} else {
-			// Use web manual as a last resort
-			desktop::open_object("https://www.wesnoth.org/manual/dev/manual." + get_language().localename + ".html");
-		}
-	} else {
+	if (!desktop::open_object_is_supported()) {
 		show_message("", _("Opening links is not supported, contact your packager"), dialogs::message::auto_close);
+		return;
+	}
+
+	std::string sl = get_language().short_localename();
+	if (sl.empty()) sl = "en"; // Assume en is always available as a fall-back
+	const auto& manual_path = filesystem::get_game_manual_file(get_language().localename, sl);
+	if (manual_path) {
+		desktop::open_object(manual_path.value());
+	} else {
+		// Use web manual as a last resort
+		desktop::open_object("https://www.wesnoth.org/manual/dev/manual." + sl + ".html");
 	}
 }
 
