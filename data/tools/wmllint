@@ -3078,7 +3078,6 @@ def translator(filename, mapxforms, textxform):
                         and not within('time')):
             outmap = []
             have_header = have_delimiter = False
-            maskwarn = False
             maptype = None
             if map_only:
                 if filename.endswith(default_mask_extension):
@@ -3128,12 +3127,6 @@ def translator(filename, mapxforms, textxform):
                     else:
                         fields = [x for x in line]
                     outmap.append(fields)
-                    if not maskwarn and maptype == 'map':
-                        terrain_strings = (f.split()[-1] for f in fields)
-                        if any(re.search('_s|_f(?!me)', t) for t in terrain_strings):
-                            print('"%s", line %d: warning, fog or shroud in map file' \
-                                  % (filename, lineno+1))
-                            maskwarn = True
             # Deduce the map type
             if not map_only:
                 if maptype == "map":
