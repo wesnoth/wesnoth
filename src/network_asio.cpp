@@ -13,6 +13,9 @@
 	See the COPYING file for more details.
 */
 
+// Emscripten uses network_asio_emscripten.cpp instead.
+#ifndef __EMSCRIPTEN__
+
 #define BOOST_ASIO_NO_DEPRECATED
 
 #include "network_asio.hpp"
@@ -347,3 +350,5 @@ void connection::handle_read(const boost::system::error_code& ec, std::size_t by
 	response = io::read_gz(is);
 }
 }
+
+#endif // __EMSCRIPTEN__

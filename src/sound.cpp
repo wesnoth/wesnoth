@@ -25,6 +25,9 @@
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_mixer.h>
+#ifdef __EMSCRIPTEN__
+#include "sound_emscripten.hpp"
+#endif
 
 #include <list>
 #include <string>
@@ -79,6 +82,24 @@ unsigned max_cached_chunks = 256;
 
 std::map<Mix_Chunk*, int> chunk_usage;
 } // end anon namespace
+
+// ---------------------------------------------------------------------------
+// Music backend wrappers.  On Emscripten these forward to Web Audio API
+// (immune to main-thread stalls); on native they call SDL2_mixer directly.
+// ---------------------------------------------------------------------------
+#ifdef __EMSCRIPTEN__
+static bool music_is_playing() { return sound::emscripten::is_playing(); }
+static bool music_is_fading() { return sound::emscripten::is_fading(); }
+static void music_fade_out(int ms) { sound::emscripten::fade_out(ms); }
+static void music_pause() { sound::emscripten::pause(); }
+static void music_resume() { sound::emscripten::resume(); }
+#else
+static bool music_is_playing() { return Mix_PlayingMusic() != 0; }
+static bool music_is_fading() { return Mix_FadingMusic() != MIX_NO_FADING; }
+static void music_fade_out(int ms) { Mix_FadeOutMusic(ms); }
+static void music_pause() { Mix_PauseMusic(); }
+static void music_resume() { Mix_ResumeMusic(); }
+#endif
 
 static void increment_chunk_usage(Mix_Chunk* mcp)
 {
@@ -395,6 +416,21 @@ struct audio_lock
 	}
 };
 
+#ifdef __EMSCRIPTEN__
+// Drain the Web Audio SFX finished-channel queue so C++ bookkeeping
+// (channel_chunks / channel_ids) stays in sync with JS-side state.
+void wa_sfx_drain_finished_queue()
+{
+	int ch;
+	while((ch = sound::emscripten::sfx::drain_finished()) >= 0) {
+		if(ch < static_cast<int>(sound::channel_chunks.size())) {
+			sound::channel_chunks[ch] = nullptr;
+			sound::channel_ids[ch] = -1;
+		}
+	}
+}
+#endif
+
 } // end of anonymous namespace
 
 namespace sound
@@ -554,14 +590,21 @@ void reset_sound()
 void stop_music()
 {
 	if(mix_ok) {
-		Mix_FadeOutMusic(500);
+		music_fade_out(500);
+#ifndef __EMSCRIPTEN__
 		Mix_HookMusicFinished([]() { unload_music = true; });
+#endif
 	}
 }
 
 void stop_sound()
 {
 	if(mix_ok) {
+#ifdef __EMSCRIPTEN__
+		emscripten::sfx::halt_group(SOUND_SOURCES);
+		emscripten::sfx::halt_group(SOUND_FX);
+		wa_sfx_drain_finished_queue();
+#endif
 		Mix_HaltGroup(SOUND_SOURCES);
 		Mix_HaltGroup(SOUND_FX);
 
@@ -577,6 +620,11 @@ void stop_sound()
 void stop_bell()
 {
 	if(mix_ok) {
+#ifdef __EMSCRIPTEN__
+		emscripten::sfx::halt_group(SOUND_BELL);
+		emscripten::sfx::halt_group(SOUND_TIMER);
+		wa_sfx_drain_finished_queue();
+#endif
 		Mix_HaltGroup(SOUND_BELL);
 		Mix_HaltGroup(SOUND_TIMER);
 
@@ -589,6 +637,10 @@ void stop_bell()
 void stop_UI_sound()
 {
 	if(mix_ok) {
+#ifdef __EMSCRIPTEN__
+		emscripten::sfx::halt_group(SOUND_UI);
+		wa_sfx_drain_finished_queue();
+#endif
 		Mix_HaltGroup(SOUND_UI);
 
 		sound_cache.remove_if([](const sound_cache_chunk& c) {
@@ -648,6 +700,16 @@ static void play_new_music()
 
 	std::string filename = current_track->file_path();
 
+#ifdef __EMSCRIPTEN__
+	LOG_AUDIO << "Playing track '" << filename << "' (Web Audio)";
+	auto fading_time = no_fading ? 0ms : current_track->ms_before();
+	auto bytes = filesystem::read_file_binary(filename);
+	if(bytes.empty()) {
+		ERR_AUDIO << "Could not read music file '" << filename << "'";
+		return;
+	}
+	sound::emscripten::play(filename.c_str(), bytes.data(), bytes.size(), fading_time.count());
+#else
 	auto itor = music_cache.find(filename);
 	if(itor == music_cache.end()) {
 		LOG_AUDIO << "attempting to insert track '" << filename << "' into cache";
@@ -682,6 +744,7 @@ static void play_new_music()
 	if(res < 0) {
 		ERR_AUDIO << "Could not play music: " << Mix_GetError() << " " << filename << " ";
 	}
+#endif
 
 	want_new_music = false;
 }
@@ -752,7 +815,7 @@ void play_music_config(const config& music_node, bool allow_interrupt_current_tr
 
 void music_thinker::process()
 {
-	if(Mix_FadingMusic() != MIX_NO_FADING) {
+	if(music_is_fading()) {
 		// Do not block everything while fading.
 		return;
 	}
@@ -761,7 +824,7 @@ void music_thinker::process()
 		// TODO: rethink the music_thinker design, especially the use of fade_out_time
 		auto now = std::chrono::steady_clock::now();
 
-		if(!music_start_time && !current_track_list.empty() && !Mix_PlayingMusic()) {
+		if(!music_start_time && !current_track_list.empty() && !music_is_playing()) {
 			// Pick next track, add ending time to its start time.
 			set_previous_track(current_track);
 			current_track = choose_track();
@@ -775,8 +838,8 @@ void music_thinker::process()
 		}
 
 		if(want_new_music) {
-			if(Mix_PlayingMusic()) {
-				Mix_FadeOutMusic(fade_out_time.count());
+			if(music_is_playing()) {
+				music_fade_out(fade_out_time.count());
 				return;
 			}
 
@@ -786,11 +849,11 @@ void music_thinker::process()
 	}
 
 	if(unload_music) {
+#ifndef __EMSCRIPTEN__
 		// The custom shared_ptr deleter (Mix_FreeMusic) will handle the freeing of each track.
 		music_cache.clear();
-
 		Mix_HookMusicFinished(nullptr);
-
+#endif
 		unload_music = false;
 	}
 }
@@ -805,10 +868,10 @@ void music_muter::handle_window_event(const SDL_Event& event)
 {
 	if(prefs::get().stop_music_in_background() && prefs::get().music_on()) {
 		if(event.window.event == SDL_WINDOWEVENT_FOCUS_GAINED) {
-			Mix_ResumeMusic();
+			music_resume();
 		} else if(event.window.event == SDL_WINDOWEVENT_FOCUS_LOST) {
-			if(Mix_PlayingMusic()) {
-				Mix_PauseMusic();
+			if(music_is_playing()) {
+				music_pause();
 			}
 		}
 	}
@@ -855,6 +918,22 @@ void write_music_play_list(config& snapshot)
 
 void reposition_sound(int id, unsigned int distance)
 {
+#ifdef __EMSCRIPTEN__
+	wa_sfx_drain_finished_queue();
+	for(unsigned ch = 0; ch < channel_ids.size(); ++ch) {
+		if(channel_ids[ch] != id) {
+			continue;
+		}
+		if(distance >= DISTANCE_SILENT) {
+			emscripten::sfx::halt_channel(ch);
+			channel_chunks[ch] = nullptr;
+			channel_ids[ch] = -1;
+		} else {
+			emscripten::sfx::set_distance(ch, distance);
+		}
+	}
+	return;
+#endif
 	audio_lock lock;
 	for(unsigned ch = 0; ch < channel_ids.size(); ++ch) {
 		if(channel_ids[ch] != id) {
@@ -871,6 +950,10 @@ void reposition_sound(int id, unsigned int distance)
 
 bool is_sound_playing(int id)
 {
+#ifdef __EMSCRIPTEN__
+	wa_sfx_drain_finished_queue();
+	return utils::contains(channel_ids, id);
+#endif
 	audio_lock lock;
 	return utils::contains(channel_ids, id);
 }
@@ -957,6 +1040,42 @@ void play_sound_internal(const std::string& files,
 		return;
 	}
 
+#ifdef __EMSCRIPTEN__
+	wa_sfx_drain_finished_queue();
+
+	std::string file = pick_one(files);
+	if(file.empty()) return;
+
+	int channel = sound::emscripten::sfx::find_free_channel(static_cast<int>(group));
+	if(channel == -1) {
+		LOG_AUDIO << "All Web Audio channels for group(" << group << ") are busy, skipping.";
+		return;
+	}
+
+	const auto filename = filesystem::get_binary_file_location("sounds", file);
+	if(!filename) {
+		ERR_AUDIO << "Could not locate sound file '" << file << "'.";
+		return;
+	}
+	const auto localized = filesystem::get_localized_path(filename.value());
+	const std::string& resolved = localized.value_or(filename.value());
+
+	auto bytes = filesystem::read_file_binary(resolved);
+	if(bytes.empty()) {
+		ERR_AUDIO << "Could not read sound file '" << resolved << "'";
+		return;
+	}
+
+	sound::emscripten::sfx::play(
+		resolved.c_str(), bytes.data(), bytes.size(),
+		channel, static_cast<int>(group),
+		static_cast<int>(distance), static_cast<int>(repeats),
+		static_cast<int>(fadein_ticks.count()),
+		static_cast<int>(loop_ticks.count()));
+
+	channel_ids[channel] = id;
+	channel_chunks[channel] = nullptr;  // no Mix_Chunk* in Web Audio path
+#else
 	audio_lock lock;
 
 	// find a free channel in the desired group
@@ -1013,6 +1132,7 @@ void play_sound_internal(const std::string& files,
 
 	// reserve the channel's chunk from being freed, since it is playing
 	channel_chunks[res] = chunk;
+#endif
 }
 
 } // end anon namespace
@@ -1057,22 +1177,33 @@ void play_UI_sound(const std::string& files)
 
 int get_music_volume()
 {
+#ifdef __EMSCRIPTEN__
+	return sound::emscripten::get_volume();
+#else
 	if(mix_ok) {
 		return Mix_VolumeMusic(-1);
 	}
-
 	return 0;
+#endif
 }
 
 void set_music_volume(int vol)
 {
+#ifdef __EMSCRIPTEN__
+	if(vol >= 0) {
+		if(vol > MIX_MAX_VOLUME) {
+			vol = MIX_MAX_VOLUME;
+		}
+		sound::emscripten::set_volume(vol);
+	}
+#else
 	if(mix_ok && vol >= 0) {
 		if(vol > MIX_MAX_VOLUME) {
 			vol = MIX_MAX_VOLUME;
 		}
-
 		Mix_VolumeMusic(vol);
 	}
+#endif
 }
 
 int get_sound_volume()
@@ -1091,6 +1222,10 @@ void set_sound_volume(int vol)
 			vol = MIX_MAX_VOLUME;
 		}
 
+#ifdef __EMSCRIPTEN__
+		emscripten::sfx::set_group_volume(SOUND_SOURCES, vol);
+		emscripten::sfx::set_group_volume(SOUND_FX, vol);
+#endif
 		// Bell, timer and UI have separate channels which we can't set up from this
 		for(unsigned i = 0; i < n_of_channels; ++i) {
 			if(!(i >= UI_sound_channel_start && i <= UI_sound_channel_last) && i != bell_channel
@@ -1111,6 +1246,10 @@ void set_bell_volume(int vol)
 			vol = MIX_MAX_VOLUME;
 		}
 
+#ifdef __EMSCRIPTEN__
+		emscripten::sfx::set_group_volume(SOUND_BELL, vol);
+		emscripten::sfx::set_group_volume(SOUND_TIMER, vol);
+#endif
 		Mix_Volume(bell_channel, vol);
 		Mix_Volume(timer_channel, vol);
 	}
@@ -1123,6 +1262,9 @@ void set_UI_volume(int vol)
 			vol = MIX_MAX_VOLUME;
 		}
 
+#ifdef __EMSCRIPTEN__
+		emscripten::sfx::set_group_volume(SOUND_UI, vol);
+#endif
 		for(unsigned i = UI_sound_channel_start; i <= UI_sound_channel_last; ++i) {
 			Mix_Volume(i, vol);
 		}

@@ -1,0 +1,6 @@
+#!/bin/sh
+
+set -xeu
+
+cd emscripten
+docker build -t "${DOCKERLOCALIMAGE:-wesnoth/wesnoth:emscripten}" .

@@ -26,6 +26,10 @@
 #include <algorithm>
 #include <vector>
 
+#ifdef __EMSCRIPTEN__
+#include <emscripten.h>
+#endif
+
 static lg::log_domain log_draw_man("draw/manager");
 #define ERR_DM LOG_STREAM(err, log_draw_man)
 #define WRN_DM LOG_STREAM(warn, log_draw_man)
@@ -172,6 +176,18 @@ void sparkle()
 	} else {
 		wait_for_vsync();
 	}
+
+#ifdef __EMSCRIPTEN__
+	// On Emscripten, yield to the browser event loop every frame.
+	// Both the drew_something and !drew_something paths need this:
+	//  - drew_something: render_screen() doesn't yield on its own.
+	//  - !drew_something: wait_for_vsync() uses std::this_thread::sleep_for()
+	//    which does not reliably yield the browser event loop under JSPI.
+	// Without this unconditional yield, edge-scrolling at the map boundary
+	// (where the camera is clamped and nothing new is drawn) starves the
+	// browser, freezing the tab.
+	emscripten_sleep(0);
+#endif
 
 	last_sparkle_ = steady_clock::now();
 }

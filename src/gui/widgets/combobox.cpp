@@ -375,6 +375,14 @@ void combobox::signal_handler_left_button_down(const event::ui_event event,
 
 			set_selected(selected, true);
 		}
+
+#ifdef __EMSCRIPTEN__
+		// Release mouse capture after modal dropdown closes — on Emscripten,
+		// the automatic release in distributor may not fire due to ASYNCIFY desync.
+		if(window* w = get_window()) {
+			w->mouse_capture(false);
+		}
+#endif
 	} else {
 		get_window()->keyboard_capture(this);
 		get_window()->mouse_capture();

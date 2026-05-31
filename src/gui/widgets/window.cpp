@@ -24,6 +24,7 @@
 
 #include "config.hpp"
 #include "draw.hpp"
+#include "draw_manager.hpp"
 #include "events.hpp"
 #include "formula/callable.hpp"
 #include "formula/string_utils.hpp"
@@ -61,6 +62,10 @@
 #include "sdl/input.hpp" // get_mouse_button_mask
 
 #include <SDL2/SDL_timer.h>
+
+#ifdef __EMSCRIPTEN__
+#include <emscripten.h>
+#endif
 
 #include <algorithm>
 #include <functional>
@@ -524,6 +529,17 @@ int window::show(const unsigned auto_close_timeout)
 	// Make sure we display at least once in all cases.
 	events::draw();
 
+#ifdef __EMSCRIPTEN__
+	// On desktop, SDL_WINDOWEVENT_EXPOSED fires on window creation and
+	// triggers draw_manager::invalidate_all(). On Emscripten/WebGL, this
+	// event doesn't fire, so the first events::draw() above may complete
+	// with no invalidated regions (queue_redraw() can be a no-op if the
+	// widget isn't yet placed). Force a full invalidation and redraw to
+	// ensure the first frame renders completely.
+	draw_manager::invalidate_all();
+	events::draw();
+#endif
+
 	if(auto_close_timeout) {
 		SDL_Event event;
 		sdl::UserEvent data(CLOSE_WINDOW_EVENT, manager::instance().get_id(*this));
@@ -534,17 +550,17 @@ int window::show(const unsigned auto_close_timeout)
 		delay_event(event, auto_close_timeout);
 	}
 
-	try
-	{
-		// According to the comment in the next loop, we need to pump() once
-		// before we know which mouse buttons are down. Assume they're all
-		// down, otherwise there's a race condition when the MOUSE_UP gets
-		// processed in the first pump(), which immediately closes the window.
-		bool mouse_button_state_initialized = false;
-		mouse_button_state_ = std::numeric_limits<uint32_t>::max();
+	// According to the comment in the next loop, we need to pump() once
+	// before we know which mouse buttons are down. Assume they're all
+	// down, otherwise there's a race condition when the MOUSE_UP gets
+	// processed in the first pump(), which immediately closes the window.
+	bool mouse_button_state_initialized = false;
+	mouse_button_state_ = std::numeric_limits<uint32_t>::max();
 
-		// Start our loop, drawing will happen here as well.
-		for(status_ = status::SHOWING; status_ != status::CLOSED;) {
+	// Start our loop, drawing will happen here as well.
+	for(status_ = status::SHOWING; status_ != status::CLOSED;) {
+		try
+		{
 			// Process and handle all pending events.
 			events::pump();
 
@@ -571,13 +587,26 @@ int window::show(const unsigned auto_close_timeout)
 			// Update the display. This will rate limit to vsync.
 			events::draw();
 		}
-	}
-	catch(...)
-	{
-		// TODO: is this even necessary? What are we catching?
-		DBG_DP << "Caught general exception in show(): " << utils::get_unknown_exception_type();
-		hide();
-		throw;
+		catch(...)
+		{
+			// TODO: is this even necessary? What are we catching?
+			DBG_DP << "Caught general exception in show(): " << utils::get_unknown_exception_type();
+			hide();
+			throw;
+		}
+
+#ifdef __EMSCRIPTEN__
+		// Yield to the browser event loop so the page stays responsive.
+		// Without this, the modal dialog loop blocks the main thread
+		// indefinitely under ASYNCIFY/JSPI.
+		//
+		// IMPORTANT: This MUST be outside the try/catch block.  With JSPI,
+		// emscripten_sleep() suspends the WASM stack via WebAssembly.Suspending.
+		// C++ exception trampolines (invoke_*) are JS frames that JSPI cannot
+		// suspend through.  Keeping the sleep outside try/catch avoids the
+		// invoke_* → Suspending → SuspendError chain.
+		emscripten_sleep(0);
+#endif
 	}
 
 	if(text_box_base* tb = dynamic_cast<text_box_base*>(event_distributor_->keyboard_focus())) {
@@ -638,6 +667,12 @@ void window::update_render_textures()
 	point draw = get_size();
 	point render = draw * video::get_pixel_scale();
 
+#ifdef __EMSCRIPTEN__
+	if(!use_render_buffer_) {
+		return;
+	}
+#endif
+
 	// Check that the render buffer size is correct.
 	point buf_raw = render_buffer_.get_raw_size();
 	point buf_draw = render_buffer_.draw_size();
@@ -651,6 +686,14 @@ void window::update_render_textures()
 	if(raw_size_changed) {
 		LOG_DP << "regenerating window render buffer as " << render;
 		render_buffer_ = texture(render.x, render.y, SDL_TEXTUREACCESS_TARGET);
+#ifdef __EMSCRIPTEN__
+		if(!render_buffer_) {
+			WRN_DP << "web fallback: failed to create window render buffer, "
+			       << "switching window to direct rendering";
+			use_render_buffer_ = false;
+			return;
+		}
+#endif
 	}
 	if(raw_size_changed || draw_size_changed) {
 		LOG_DP << "updating window render buffer draw size to " << draw;
@@ -660,6 +703,14 @@ void window::update_render_textures()
 	// Clear the entire texture.
 	{
 		auto setter = draw::set_render_target(render_buffer_);
+#ifdef __EMSCRIPTEN__
+		if(video::get_render_target() != render_buffer_) {
+			WRN_DP << "web fallback: failed to bind window render buffer, "
+			       << "switching window to direct rendering";
+			use_render_buffer_ = false;
+			return;
+		}
+#endif
 		draw::clear();
 	}
 
@@ -691,6 +742,15 @@ void window::render()
 {
 	// Ensure our render texture is correctly sized.
 	update_render_textures();
+
+#ifdef __EMSCRIPTEN__
+	// In direct mode, expose() draws this window directly without buffering.
+	if(!use_render_buffer_) {
+		awaiting_rerender_ = {};
+		deferred_regions_.clear();
+		return;
+	}
+#endif
 
 	// Mark regions that were previously deferred for rerender and repaint.
 	for(auto& region : deferred_regions_) {
@@ -724,6 +784,14 @@ bool window::expose(const rect& region)
 	if (dst.empty()) {
 		return false;
 	}
+
+#ifdef __EMSCRIPTEN__
+	if(!use_render_buffer_) {
+		auto clip_setter = draw::override_clip(dst);
+		draw();
+		return true;
+	}
+#endif
 
 	// Blit from the pre-rendered buffer.
 	rect src = dst;

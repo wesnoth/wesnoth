@@ -1,0 +1,54 @@
+string(REPLACE "." "_" REF "R_${VERSION}")
+
+vcpkg_from_github(
+    OUT_SOURCE_PATH SOURCE_PATH
+    REPO libexpat/libexpat
+    REF "${REF}"
+    SHA512 0e157ce875ec993b4e495e0cd04979109c1f0f0dbfa707c113d9b4ed243c668fce20e5ef79ff8df2f30587cc182a0254794b2fb9bb53f938da608ace32903820
+    HEAD_REF master
+)
+
+string(COMPARE EQUAL "${VCPKG_LIBRARY_LINKAGE}" "dynamic" EXPAT_LINKAGE)
+string(COMPARE EQUAL "${VCPKG_CRT_LINKAGE}" "static" EXPAT_CRT_LINKAGE)
+
+if(VCPKG_TARGET_IS_EMSCRIPTEN)
+    set(EMSCRIPTEN_PTHREAD_OPTIONS
+        -DCMAKE_C_FLAGS=-pthread
+        -DCMAKE_CXX_FLAGS=-pthread
+        -DCMAKE_EXE_LINKER_FLAGS=-pthread
+        -DCMAKE_SHARED_LINKER_FLAGS=-pthread
+        -DCMAKE_MODULE_LINKER_FLAGS=-pthread
+    )
+endif()
+
+vcpkg_cmake_configure(
+    SOURCE_PATH "${SOURCE_PATH}/expat"
+    OPTIONS
+        ${EMSCRIPTEN_PTHREAD_OPTIONS}
+        -DEXPAT_BUILD_EXAMPLES=OFF
+        -DEXPAT_BUILD_TESTS=OFF
+        -DEXPAT_BUILD_TOOLS=OFF
+        -DEXPAT_BUILD_DOCS=OFF
+        -DEXPAT_SHARED_LIBS=${EXPAT_LINKAGE}
+        -DEXPAT_MSVC_STATIC_CRT=${EXPAT_CRT_LINKAGE}
+        -DEXPAT_BUILD_PKGCONFIG=ON
+    MAYBE_UNUSED_VARIABLES
+        EXPAT_MSVC_STATIC_CRT
+)
+
+vcpkg_cmake_install()
+vcpkg_copy_pdbs()
+vcpkg_cmake_config_fixup(CONFIG_PATH "lib/cmake/expat-${VERSION}")
+vcpkg_fixup_pkgconfig()
+
+file(REMOVE_RECURSE "${CURRENT_PACKAGES_DIR}/debug/include")
+file(REMOVE_RECURSE "${CURRENT_PACKAGES_DIR}/debug/share")
+file(REMOVE_RECURSE "${CURRENT_PACKAGES_DIR}/share/doc")
+
+vcpkg_replace_string("${CURRENT_PACKAGES_DIR}/include/expat_external.h" "defined(_MSC_VER)" "defined(_WIN32)")
+if(VCPKG_LIBRARY_LINKAGE STREQUAL "static")
+    vcpkg_replace_string("${CURRENT_PACKAGES_DIR}/include/expat_external.h" "! defined(XML_STATIC)" "0")
+endif()
+
+file(COPY "${CMAKE_CURRENT_LIST_DIR}/vcpkg-cmake-wrapper.cmake" DESTINATION "${CURRENT_PACKAGES_DIR}/share/${PORT}")
+vcpkg_install_copyright(FILE_LIST "${SOURCE_PATH}/expat/COPYING")

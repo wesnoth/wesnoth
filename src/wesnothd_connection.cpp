@@ -13,6 +13,9 @@
 	See the COPYING file for more details.
 */
 
+// Emscripten uses wesnothd_connection_emscripten.cpp instead.
+#ifndef __EMSCRIPTEN__
+
 #define BOOST_ASIO_NO_DEPRECATED
 
 #include "wesnothd_connection.hpp"
@@ -589,3 +592,5 @@ void wesnothd_connection::set_keepalive(int seconds)
 	setsockopt(utils::get<raw_socket>(socket_)->native_handle(), SOL_SOCKET, SO_SNDTIMEO, reinterpret_cast<const char*>(&timeout_ms), sizeof(timeout_ms));
 #endif
 }
+
+#endif // __EMSCRIPTEN__

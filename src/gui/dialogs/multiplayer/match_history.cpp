@@ -29,6 +29,8 @@
 #include "serialization/markup.hpp"
 #include "wesnothd_connection.hpp"
 
+#include <thread>
+
 using namespace std::chrono_literals;
 
 static lg::log_domain log_network("network");
