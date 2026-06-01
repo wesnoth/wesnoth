@@ -485,7 +485,7 @@ void playsingle_controller::play_idle_loop()
 
 void playsingle_controller::play_side_impl()
 {
-	if(replay_controller_.get() != nullptr) {
+	if(replay_controller_) {
 		replay_controller_->play_side_impl();
 
 		if(player_type_changed_) {
@@ -622,7 +622,7 @@ void playsingle_controller::linger()
 
 	update_gui_linger();
 
-	if(replay_controller_.get() != nullptr) {
+	if(replay_controller_) {
 		replay_controller_->play_side_impl();
 		if(player_type_changed_) {
 			replay_controller_.reset();
@@ -846,7 +846,7 @@ bool playsingle_controller::should_return_to_play_side() const
 		return true;
 	} else if(gamestate().in_phase(game_data::TURN_ENDED)) {
 		return true;
-	} else if((gamestate().in_phase(game_data::TURN_STARTING_WAITING) || end_turn_requested_) && replay_controller_.get() == nullptr && current_team().is_local() && !current_team().is_idle()) {
+	} else if((gamestate().in_phase(game_data::TURN_STARTING_WAITING) || end_turn_requested_) && !replay_controller_ && current_team().is_local() && !current_team().is_idle()) {
 		// When we are a locally controlled side and havent done init_side yet also return to play_side
 		return true;
 	} else {

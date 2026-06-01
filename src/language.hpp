@@ -72,6 +72,14 @@ inline auto string_table = symbol_table{};
 bool& time_locale_correct();
 
 /**
+ * @param locale_id a posix or windows locale id based on the OS,
+ *                  like "en_US" or "en-US".
+ * @return name of the translation corresponding to that locale
+ * if available, or an empty string if no such name exists.
+ */
+std::string get_translation_name(const std::string& locale_id);
+
+/**
  * Return a list of available translations.
  *
  * The list will normally be filtered with incomplete (according to

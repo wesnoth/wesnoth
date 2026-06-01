@@ -23,30 +23,16 @@ root_dir=$(cd "${xcode_dir}/../.." && pwd) || exit 1
 bundle_version="v0.0.1"
 vcpkg_repo_url="https://github.com/microsoft/vcpkg"
 vcpkg_repo_name="vcpkg-macos"
-staged_bundle_name="MacCompileStuff-vcpkg-${bundle_version}"
 x64_triplet="x64-osx-wesnoth"
 arm64_triplet="arm64-osx-wesnoth"
 
 # Derived paths used throughout the build/staging flow.
-triplets_dir="${script_dir}/triplets"
-temp_dir="${xcode_dir}/temp"
-vcpkg_root="${temp_dir}/${vcpkg_repo_name}"
-overlay_ports_root="${temp_dir}/overlay-ports"
-glib_overlay_port="${overlay_ports_root}/glib"
-pango_overlay_port="${overlay_ports_root}/pango"
-install_root_base="${temp_dir}/vcpkg-installed-macos"
-buildtrees_root_base="${temp_dir}/vcpkg-buildtrees-macos"
-downloads_root="${temp_dir}/vcpkg-downloads"
-staged_bundle_dir="${temp_dir}/${staged_bundle_name}"
-headers_dir="${staged_bundle_dir}/Headers"
-lib_dir="${staged_bundle_dir}/lib"
+vcpkg_root="${xcode_dir}/temp/${vcpkg_repo_name}"
+headers_dir="${xcode_dir}/temp/MacCompileStuff-vcpkg-${bundle_version}/Headers"
+lib_dir="${xcode_dir}/temp/MacCompileStuff-vcpkg-${bundle_version}/lib"
+x64_install_dir="${xcode_dir}/temp/vcpkg-installed-macos/${x64_triplet}-root/${x64_triplet}"
+arm64_install_dir="${xcode_dir}/temp/vcpkg-installed-macos/${arm64_triplet}-root/${arm64_triplet}"
 vcpkg_baseline=$(sed -n 's/.*"builtin-baseline": "\([^"]*\)".*/\1/p' "${root_dir}/vcpkg.json")
-x64_install_root="${install_root_base}/${x64_triplet}-root"
-arm64_install_root="${install_root_base}/${arm64_triplet}-root"
-x64_buildtrees_root="${buildtrees_root_base}/${x64_triplet}"
-arm64_buildtrees_root="${buildtrees_root_base}/${arm64_triplet}"
-x64_install_dir="${x64_install_root}/${x64_triplet}"
-arm64_install_dir="${arm64_install_root}/${arm64_triplet}"
 
 # Stable dylib names copied by the macOS Xcode target. vcpkg may produce
 # versioned real files behind these names, but the Xcode project should not need
@@ -206,9 +192,9 @@ install_triplet() {
 			"--x-manifest-root=${root_dir}" \
 			"--x-install-root=${install_root}" \
 			"--x-buildtrees-root=${buildtrees_root}" \
-			"--downloads-root=${downloads_root}" \
-			"--overlay-ports=${overlay_ports_root}" \
-			"--overlay-triplets=${triplets_dir}" \
+			"--downloads-root=${xcode_dir}/temp/vcpkg-downloads" \
+			"--overlay-ports=${xcode_dir}/temp/overlay-ports" \
+			"--overlay-triplets=${script_dir}/triplets" \
 			"--triplet=${triplet_name}" \
 			2>&1 | tee "${log_path}"
 		command_status=${PIPESTATUS[0]}
@@ -231,18 +217,18 @@ install_triplet() {
 prepare_glib_overlay() {
 	local overlay_extract_root overlay_archive_path glib_overlay_relative
 
-	overlay_extract_root="${overlay_ports_root}/.glib-baseline"
+	overlay_extract_root="${xcode_dir}/temp/overlay-ports/gc/.glib-baseline"
 	overlay_archive_path="${overlay_extract_root}/glib-port.tar"
-	rm -rf "${glib_overlay_port}" || die "Failed to remove ${glib_overlay_port}."
+	rm -rf "${xcode_dir}/temp/overlay-ports/glib" || die "Failed to remove ${xcode_dir}/temp/overlay-ports/glib."
 	rm -rf "${overlay_extract_root}" || die "Failed to remove ${overlay_extract_root}."
-	mkdir -p "${overlay_ports_root}" || die "Failed to create ${overlay_ports_root}."
+	mkdir -p "${xcode_dir}/temp/overlay-ports" || die "Failed to create ${xcode_dir}/temp/overlay-ports."
 	mkdir -p "${overlay_extract_root}" || die "Failed to create ${overlay_extract_root}."
 	git -C "${vcpkg_root}" archive --format=tar "${vcpkg_baseline}" "ports/glib" > "${overlay_archive_path}" \
 		|| die "Failed to archive glib from vcpkg baseline ${vcpkg_baseline}. Remove ${vcpkg_root} and rerun the script."
 	tar -xf "${overlay_archive_path}" -C "${overlay_extract_root}" || die "Failed to extract ${overlay_archive_path}."
-	mv "${overlay_extract_root}/ports/glib" "${glib_overlay_port}" || die "Failed to move the extracted glib overlay into ${glib_overlay_port}."
+	mv "${overlay_extract_root}/ports/glib" "${xcode_dir}/temp/overlay-ports/glib" || die "Failed to move the extracted glib overlay into ${xcode_dir}/temp/overlay-ports/glib."
 	rm -rf "${overlay_extract_root}" || die "Failed to remove ${overlay_extract_root}."
-	glib_overlay_relative="${glib_overlay_port#"${root_dir}"/}"
+	glib_overlay_relative="${xcode_dir#"${root_dir}"/}/temp/overlay-ports/glib"
 	git -C "${root_dir}" apply --directory="${glib_overlay_relative}" "${script_dir}/patches/glib-macos-subsystem.patch" \
 		|| die "Failed to apply ${script_dir}/patches/glib-macos-subsystem.patch to ${glib_overlay_relative}."
 }
@@ -250,11 +236,11 @@ prepare_glib_overlay() {
 prepare_pango_overlay() {
 	local overlay_extract_root overlay_archive_path pango_overlay_relative
 
-	overlay_extract_root="${overlay_ports_root}/.pango-baseline"
+	overlay_extract_root="${xcode_dir}/temp/overlay-ports/.pango-baseline"
 	overlay_archive_path="${overlay_extract_root}/pango-port.tar"
-	rm -rf "${pango_overlay_port}" || die "Failed to remove ${pango_overlay_port}."
+	rm -rf "${xcode_dir}/temp/overlay-ports/pango" || die "Failed to remove ${xcode_dir}/temp/overlay-ports/pango."
 	rm -rf "${overlay_extract_root}" || die "Failed to remove ${overlay_extract_root}."
-	mkdir -p "${overlay_ports_root}" || die "Failed to create ${overlay_ports_root}."
+	mkdir -p "${xcode_dir}/temp/overlay-ports" || die "Failed to create ${xcode_dir}/temp/overlay-ports."
 	mkdir -p "${overlay_extract_root}" || die "Failed to create ${overlay_extract_root}."
 	# This script reuses one temp vcpkg checkout across runs. Overlay ports bypass
 	# builtin-baseline resolution, so copying ports/pango from checkout HEAD could
@@ -264,9 +250,9 @@ prepare_pango_overlay() {
 	git -C "${vcpkg_root}" archive --format=tar "${vcpkg_baseline}" "ports/pango" > "${overlay_archive_path}" \
 		|| die "Failed to archive pango from vcpkg baseline ${vcpkg_baseline}. Remove ${vcpkg_root} and rerun the script."
 	tar -xf "${overlay_archive_path}" -C "${overlay_extract_root}" || die "Failed to extract ${overlay_archive_path}."
-	mv "${overlay_extract_root}/ports/pango" "${pango_overlay_port}" || die "Failed to move the extracted pango overlay into ${pango_overlay_port}."
+	mv "${overlay_extract_root}/ports/pango" "${xcode_dir}/temp/overlay-ports/pango" || die "Failed to move the extracted pango overlay into ${xcode_dir}/temp/overlay-ports/pango."
 	rm -rf "${overlay_extract_root}" || die "Failed to remove ${overlay_extract_root}."
-	pango_overlay_relative="${pango_overlay_port#"${root_dir}"/}"
+	pango_overlay_relative="${xcode_dir#"${root_dir}"/}/temp/overlay-ports/pango"
 	git -C "${root_dir}" apply --directory="${pango_overlay_relative}" "${script_dir}/patches/pango-objc.patch" \
 		|| die "Failed to apply ${script_dir}/patches/pango-objc.patch to ${pango_overlay_relative}."
 }
@@ -466,10 +452,10 @@ validate_staged_bundle() {
 
 activate_xcode_links() {
 	rm -f "${xcode_dir}/Headers" || die "Failed to remove ${xcode_dir}/Headers."
-	ln -s "temp/${staged_bundle_name}/Headers" "${xcode_dir}/Headers" || die "Failed to create ${xcode_dir}/Headers."
+	ln -s "temp/MacCompileStuff-vcpkg-${bundle_version}/Headers" "${xcode_dir}/Headers" || die "Failed to create ${xcode_dir}/Headers."
 
 	rm -f "${xcode_dir}/lib" || die "Failed to remove ${xcode_dir}/lib."
-	ln -s "temp/${staged_bundle_name}/lib" "${xcode_dir}/lib" || die "Failed to create ${xcode_dir}/lib."
+	ln -s "temp/MacCompileStuff-vcpkg-${bundle_version}/lib" "${xcode_dir}/lib" || die "Failed to create ${xcode_dir}/lib."
 }
 
 SECONDS=0
@@ -485,7 +471,7 @@ need_cmd lipo
 need_cmd install_name_tool
 need_cmd otool
 
-mkdir -p "${temp_dir}" || die "Failed to create ${temp_dir}."
+mkdir -p "${xcode_dir}/temp" || die "Failed to create ${xcode_dir}/temp."
 
 echo "==> Ensuring vcpkg checkout contains ${vcpkg_baseline} ..."
 ensure_vcpkg_checkout \
@@ -501,10 +487,10 @@ echo "==> Preparing pango overlay port ..."
 prepare_pango_overlay
 
 echo "==> Installing macOS Xcode dependencies for ${x64_triplet} ..."
-install_triplet "${x64_triplet}" "${x64_install_root}" "${x64_buildtrees_root}"
+install_triplet "${x64_triplet}" "${xcode_dir}/temp/vcpkg-installed-macos/${x64_triplet}-root" "${xcode_dir}/temp/vcpkg-buildtrees-macos/${x64_triplet}"
 
 echo "==> Installing macOS Xcode dependencies for ${arm64_triplet} ..."
-install_triplet "${arm64_triplet}" "${arm64_install_root}" "${arm64_buildtrees_root}"
+install_triplet "${arm64_triplet}" "${xcode_dir}/temp/vcpkg-installed-macos/${arm64_triplet}-root" "${xcode_dir}/temp/vcpkg-buildtrees-macos/${arm64_triplet}"
 
 echo "==> Staging headers ..."
 rm -rf "${headers_dir}" || die "Failed to remove ${headers_dir}."

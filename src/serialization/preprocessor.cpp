@@ -1127,7 +1127,7 @@ bool preprocessor_data::get_chunk()
 			put(in_.get());
 			pop_token();
 		}
-	} else if(c == '<' && in_.peek() == '<') {
+	} else if(token.type != token_desc::token_type::string && c == '<' && in_.peek() == '<') {
 		in_.get();
 		push_token(token_desc::token_type::verbatim);
 		put('<');

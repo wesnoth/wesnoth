@@ -260,7 +260,7 @@ battle_context::battle_context(
 
 void battle_context::simulate(const combatant* prev_def)
 {
-	assert((attacker_combatant_.get() != nullptr) == (defender_combatant_.get() != nullptr));
+	assert((attacker_combatant_ != nullptr) == (defender_combatant_ != nullptr));
 	assert(attacker_stats_);
 	assert(defender_stats_);
 	if(!attacker_combatant_) {

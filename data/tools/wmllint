@@ -2438,10 +2438,6 @@ to be called on their own".format(filename, num))
                     print('"%s", line %d: %s should be renamed as variation_id and/or marked as translatable' \
                           % (filename, i+1, key))
             elif is_translatable(key, extra_translatables):
-                if markcheck and has_tr_mark and not attr_strip(value):
-                    print('"%s", line %d: %s doesn`t need translation mark (translatable string is empty)' \
-                          % (filename, i+1, key))
-                    lines[i] = lines[i].replace("=_","=")
                 if markcheck and value and not value.startswith("$") and not value.startswith("{") and not has_tr_mark and not ("wmllint: ignore" in comment or "wmllint: noconvert" in comment):
                     # [image] sometimes uses label to specify a reference to a PNG or WebP file
                     # so do not mark for translation in those cases
@@ -3078,7 +3074,6 @@ def translator(filename, mapxforms, textxform):
                         and not within('time')):
             outmap = []
             have_header = have_delimiter = False
-            maskwarn = False
             maptype = None
             if map_only:
                 if filename.endswith(default_mask_extension):
@@ -3128,12 +3123,6 @@ def translator(filename, mapxforms, textxform):
                     else:
                         fields = [x for x in line]
                     outmap.append(fields)
-                    if not maskwarn and maptype == 'map':
-                        terrain_strings = (f.split()[-1] for f in fields)
-                        if any(re.search('_s|_f(?!me)', t) for t in terrain_strings):
-                            print('"%s", line %d: warning, fog or shroud in map file' \
-                                  % (filename, lineno+1))
-                            maskwarn = True
             # Deduce the map type
             if not map_only:
                 if maptype == "map":

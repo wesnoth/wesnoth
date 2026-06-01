@@ -1224,16 +1224,12 @@ msgstr ""
 
 #. [object]
 #: data/campaigns/Heir_To_The_Throne/overworld/00a_western_wesnoth.cfg:780
-#, fuzzy
-#| msgid ""
-#| "Konrad can no longer recruit Mages. Except for Elrian, his existing "
-#| "Mages, Red Mages, etc have been dismissed."
 msgid ""
 "Konrad can no longer recruit Mages. Except for Elrian and Seimus, his "
 "existing Mages, Red Mages, etc have been dismissed."
 msgstr ""
-"Konrad ne peut plus recruter de mages. À l’exception d’Elrian, ses mages, "
-"mages rouges, etc. ont été congédiés."
+"Konrad ne peut plus recruter de mages. À l’exception d’Elrian et Seimus, ses "
+"mages, mages rouges, etc. ont été congédiés."
 
 #. [object]
 #: data/campaigns/Heir_To_The_Throne/overworld/00a_western_wesnoth.cfg:787
@@ -2985,10 +2981,6 @@ msgstr "Nous approchons des murs d'une grande forteresse orc. Glamdrol !"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/overworld/00c_northlands.cfg:74
-#, fuzzy
-#| msgid ""
-#| "Most orcish tribes live a nomadic lifestyle, but Delfador says they take "
-#| "great pride in possessing Glamdrol — or in defeating the last possessor."
 msgid ""
 "Most orcish tribes live as nomads, but Delfador says they take great pride "
 "in possessing Glamdrol — or in defeating the last possessor."
@@ -4161,10 +4153,12 @@ msgstr ""
 "\n"
 "Pour chaque scénario supplémentaire joué au-delà du nombre normal,\n"
 "Asheviere recevra un bonus de revenus supplémentaires de +"
-"$s50_extra_income_per_scenario par scénario dans le scénario final.\n"
+"$s50_extra_income_per_scenario\n"
+"par scénario dans le scénario final.\n"
 "\n"
-"Utiliser le tourbillon désactivera également les succès,\n"
-"à l'exception de <i>“Endormi au volant”</i>.Êtes-vous sûr ?"
+"Utiliser le tourbillon peut déséquilibrer les scénarios qui suivent,\n"
+"cela désactivera également tous les succès, à l'exception de\n"
+"<i>“Endormi au volant”</i>. Êtes-vous sûr ?"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/overworld/00c_northlands.cfg:1522
@@ -5705,15 +5699,11 @@ msgstr "Soradoc"
 
 #. [message]: role=soradoc_guard
 #: data/campaigns/Heir_To_The_Throne/overworld/00e_eastern_wesnoth.cfg:986
-#, fuzzy
-#| msgid ""
-#| "Halt! Your Highness Li’sar, by order of Queen Asheviere you are branded a "
-#| "traitor and an enemy of the state. Prepare to be apprehended."
 msgid ""
 "Halt! Your Highness Li’sar, by order of Her Majesty The Queen you are "
 "branded a traitor and an enemy of the state. Prepare to be apprehended."
 msgstr ""
-"Halte ! Votre altesse Li’sar, par ordre de la reine Asheviere, vous êtes "
+"Halte ! Votre altesse Li’sar, par ordre de sa majesté la reine, vous êtes "
 "déclarée traîtresse et ennemie de l’État. Préparez-vous à être appréhendée."
 
 #. [message]: speaker=Lisar # no variation; use her default portrait (which now includes the Sceptre)
@@ -7312,15 +7302,12 @@ msgstr ""
 #. [part]
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:39
 #, fuzzy
-#| msgid ""
-#| "In the twenty-eighth year of the reign of Garard II, King of Wesnoth, the "
-#| "kingdom was plunged into a bitter war with the Orcs of the North."
 msgid ""
 "In the twenty-eighth year of the reign of Garard II, King of Wesnoth, the "
 "kingdom made bitter war against the Orcs of the North."
 msgstr ""
 "Lors de la vingt-huitième année du règne de Garard II, roi de Wesnoth, le "
-"royaume fut plongé dans une guerre acharnée contre les Orcs du Nord."
+"royaume fut plongé dans une guerre acharnée contre les orcs du Nord."
 
 #. [part]
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:44
@@ -9989,10 +9976,6 @@ msgstr ""
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/07_Muff_Malals_Peninsula.cfg:348
-#, fuzzy
-#| msgid ""
-#| "I am Konard, heir to the throne of Wesnoth, and seeking to reclaim my "
-#| "seat from the evil queen Asheviere! Who are you?"
 msgid ""
 "I am Konrad, heir to the throne of Wesnoth, and seeking to reclaim my seat "
 "from the evil queen Asheviere! Who are you?"
@@ -17679,10 +17662,8 @@ msgstr "provisions pillées au fort Tahn"
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/30_The_Sceptre_of_Fire.cfg:744
-#, fuzzy
-#| msgid "convoys burning outside Dan’Tonk"
 msgid "convoys aflame outside Dan’Tonk"
-msgstr "convois brûlant aux abords de Dan'Tonk"
+msgstr "convois en feu aux abords de Dan'Tonk"
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/30_The_Sceptre_of_Fire.cfg:745
@@ -17696,8 +17677,6 @@ msgstr "esclaves morts aux portes des nains"
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/30_The_Sceptre_of_Fire.cfg:747
-#, fuzzy
-#| msgid "libraries burning at Alduin"
 msgid "libraries aflame at Alduin"
 msgstr "bibliothèques en feu à Alduin"
 
@@ -21317,8 +21296,8 @@ msgid ""
 "pursued us underground and fought to kill us? Will he follow you, or will he "
 "choose to betray us to the dark queen?"
 msgstr ""
-"Quel hooneur y-a-t-il dans le cœur d'une homme qui a servi Asheviere, qui "
-"nous a combattus dans la clandestinité et a chercher à nous tuer ? Vous "
+"Quel honneur y-a-t-il dans le cœur d'une homme qui a servi Asheviere, qui "
+"nous a combattus dans la clandestinité et a cherché à nous tuer ? Vous "
 "suivra-t-il, ou choisira-t-il de nous trahir au profit de la reine des "
 "ténèbres ?"
 
@@ -22786,10 +22765,6 @@ msgstr ""
 
 #. [message]: speaker=Asheviere
 #: data/campaigns/Heir_To_The_Throne/scenarios/50_The_Battle_for_Wesnoth.cfg:1619
-#, fuzzy
-#| msgid ""
-#| "For the walls of Weldyn are strong. And her allies are many! They will "
-#| "arrive in days — and then you will die."
 msgid ""
 "The walls of Weldyn are strong. And her allies are many. They will arrive in "
 "days — and then you will die."
@@ -24301,10 +24276,13 @@ msgstr "en chaîne"
 
 #. [dummy]: id=chain
 #: data/campaigns/Heir_To_The_Throne/units/Human_Delfador_Elder_Mage.cfg:164
+#, fuzzy
 msgid ""
 "This attack can be used multiple times on offense, but consecutive uses "
 "strike one fewer time."
 msgstr ""
+"Cette attaque peut être utilisée à répétition à l'offensive. Le nombre "
+"d'attaques est réduit de 1 à chaque répétition."
 
 #. [unit_type]: id=Injured Lieutenant
 #: data/campaigns/Heir_To_The_Throne/units/Human_Injured_Lieutenant.cfg:7
