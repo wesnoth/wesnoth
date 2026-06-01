@@ -17,6 +17,7 @@
 #include "sdl/window.hpp"
 #include "sdl/exception.hpp"
 #include "sdl/surface.hpp"
+#include "sdl/sdl3_properties_raii.hpp"
 
 #include <SDL3/SDL_hints.h>
 #include <SDL3/SDL_render.h>
@@ -55,19 +56,19 @@ window::window(const std::string& title,
 	SDL_SetHint(SDL_HINT_ORIENTATIONS, "LandscapeLeft LandscapeRight");
 #endif
 
-	SDL_PropertiesID props = SDL_CreateProperties();
+	sdl3_properties props;
 
 	if(prefs::get().vsync()) {
-		if(!SDL_SetNumberProperty(props, SDL_PROP_RENDERER_CREATE_PRESENT_VSYNC_NUMBER, 1)) {
+		if(!SDL_SetNumberProperty(props.id(), SDL_PROP_RENDERER_CREATE_PRESENT_VSYNC_NUMBER, 1)) {
 			throw exception("Failed to set vsync", true);
 		};
 	}
 
-	if(!SDL_SetPointerProperty(props, SDL_PROP_RENDERER_CREATE_WINDOW_POINTER, window_)) {
+	if(!SDL_SetPointerProperty(props.id(), SDL_PROP_RENDERER_CREATE_WINDOW_POINTER, window_)) {
 		throw exception("Failed to set window pointer property", true);
 	}
 
-	if(!SDL_CreateRendererWithProperties(props)) {
+	if(!SDL_CreateRendererWithProperties(props.id())) {
 		throw exception("Failed to create a SDL_Renderer object.", true);
 	}
 
@@ -86,8 +87,6 @@ window::window(const std::string& title,
 	if(!(window_flags & SDL_WINDOW_HIDDEN)) {
 		SDL_ShowWindow(window_);
 	}
-
-	SDL_DestroyProperties(props);
 }
 
 window::~window()

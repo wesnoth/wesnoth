@@ -18,6 +18,7 @@
 #include "log.hpp"
 #include "preferences/preferences.hpp"
 #include "random.hpp"
+#include "sdl/sdl3_properties_raii.hpp"
 #include "serialization/string_utils.hpp"
 #include "sound_music_track.hpp"
 #include "utils/general.hpp"
@@ -595,10 +596,10 @@ static void play_new_music()
 	// Fade in the new music
 	MIX_SetTrackAudio(tracks[music_track_id].get(), music.get());
 
-	SDL_PropertiesID props = SDL_CreateProperties();
-	SDL_SetNumberProperty(props, MIX_PROP_PLAY_FADE_IN_MILLISECONDS_NUMBER, fading_time.count());
+	sdl3_properties props;
+	SDL_SetNumberProperty(props.id(), MIX_PROP_PLAY_FADE_IN_MILLISECONDS_NUMBER, fading_time.count());
 
-	if(!MIX_PlayTrack(tracks[music_track_id].get(), props)) {
+	if(!MIX_PlayTrack(tracks[music_track_id].get(), props.id())) {
 		ERR_AUDIO << "Could not play music: " << SDL_GetError() << " " << filename << " ";
 	} else if(music_cache.count(filename) == 0) {
 		music_cache.emplace(filename, music);
@@ -611,8 +612,6 @@ static void play_new_music()
 			music_cache.erase(to_erase);
 		}
 	}
-
-	SDL_DestroyProperties(props);
 
 	want_new_music = false;
 }
@@ -868,25 +867,25 @@ static void play_sound_internal(const std::string& files,
 
 	MIX_SetTrackAudio(tracks[free_track].get(), sound.get());
 
-	SDL_PropertiesID props = SDL_CreateProperties();
+	sdl3_properties props;
 
 	bool res;
 	if(loop_ticks > 0ms) {
 		if(fadein_ticks > 0ms) {
-			SDL_SetNumberProperty(props, MIX_PROP_PLAY_FADE_IN_MILLISECONDS_NUMBER, fadein_ticks.count());
-			SDL_SetNumberProperty(props, MIX_PROP_PLAY_MAX_MILLISECONDS_NUMBER, loop_ticks.count());
+			SDL_SetNumberProperty(props.id(), MIX_PROP_PLAY_FADE_IN_MILLISECONDS_NUMBER, fadein_ticks.count());
+			SDL_SetNumberProperty(props.id(), MIX_PROP_PLAY_MAX_MILLISECONDS_NUMBER, loop_ticks.count());
 		} else {
-			SDL_SetNumberProperty(props, MIX_PROP_PLAY_LOOPS_NUMBER, -1);
+			SDL_SetNumberProperty(props.id(), MIX_PROP_PLAY_LOOPS_NUMBER, -1);
 		}
 	} else {
 		if(fadein_ticks > 0ms) {
-			SDL_SetNumberProperty(props, MIX_PROP_PLAY_FADE_IN_MILLISECONDS_NUMBER, fadein_ticks.count());
+			SDL_SetNumberProperty(props.id(), MIX_PROP_PLAY_FADE_IN_MILLISECONDS_NUMBER, fadein_ticks.count());
 		} else {
-			SDL_SetNumberProperty(props, MIX_PROP_PLAY_LOOPS_NUMBER, repeats);
+			SDL_SetNumberProperty(props.id(), MIX_PROP_PLAY_LOOPS_NUMBER, repeats);
 		}
 	}
 
-	res = MIX_PlayTrack(tracks[free_track].get(), props);
+	res = MIX_PlayTrack(tracks[free_track].get(), props.id());
 
 	if(!res) {
 		ERR_AUDIO << "error playing sound effect " << real_path << " : " << SDL_GetError();
@@ -916,8 +915,6 @@ static void play_sound_internal(const std::string& files,
 			sound_cache.erase(to_erase);
 		}
 	}
-
-	SDL_DestroyProperties(props);
 }
 
 } // end anon namespace
