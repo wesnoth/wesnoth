@@ -99,7 +99,7 @@ surface surface::clone() const
 	if(!surface_) {
 		return {};
 	}
-	// Use SDL_ConvertSurfaceFormat to make a copy
+	// Use SDL_DuplicateSurface to make a copy
 	return surface(SDL_DuplicateSurface(surface_));
 }
 

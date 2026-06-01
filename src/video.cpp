@@ -853,8 +853,8 @@ std::vector<std::pair<std::string, std::string>> renderer_report()
 	std::vector<std::pair<std::string, std::string>> res;
 	SDL_Renderer* rnd = get_renderer();
 
-	if(window && (rnd = *window)) {
-		std::string renderer_name = SDL_GetRendererName(get_renderer()) ? SDL_GetRendererName(get_renderer()) : "<unknown>";
+	if(rnd) {
+		std::string renderer_name = SDL_GetRendererName(rnd) ? SDL_GetRendererName(rnd) : "<unknown>";
 		SDL_PropertiesID props = SDL_GetRendererProperties(rnd);
 
 		res.emplace_back("Renderer", renderer_name);

@@ -51,6 +51,10 @@ window::window(const std::string& title,
 	SDL_SetHint(SDL_HINT_RENDER_DRIVER, "direct3d11");
 #endif
 
+#ifdef __ANDROID__
+	SDL_SetHint(SDL_HINT_ORIENTATIONS, "LandscapeLeft LandscapeRight");
+#endif
+
 	SDL_PropertiesID props = SDL_CreateProperties();
 
 	if(prefs::get().vsync()) {

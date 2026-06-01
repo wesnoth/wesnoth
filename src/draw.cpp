@@ -483,7 +483,7 @@ void draw::flipped(const texture& tex, bool flip_h, bool flip_v)
 	const SDL_Rect* rect = tex.src();
 	if(rect) {
 		SDL_FRect frect = rect_to_frect(*rect);
-		SDL_RenderTextureRotated(renderer(), tex, rect ? &frect : nullptr, nullptr, 0.0, nullptr, flip);
+		SDL_RenderTextureRotated(renderer(), tex, &frect, nullptr, 0.0, nullptr, flip);
 	} else {
 		SDL_RenderTextureRotated(renderer(), tex, nullptr, nullptr, 0.0, nullptr, flip);
 	}
