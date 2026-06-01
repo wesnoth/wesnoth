@@ -509,6 +509,23 @@ int current_refresh_rate()
 	}
 }
 
+float content_scaling()
+{
+	SDL_DisplayID id = SDL_GetDisplayForWindow(*window);
+	if(id != 0) {
+		return SDL_GetDisplayContentScale(id);
+	}
+	return 0.0f;
+}
+float pixel_density()
+{
+	return SDL_GetWindowPixelDensity(*window);
+}
+float display_scaling()
+{
+	return SDL_GetWindowDisplayScale(*window);
+}
+
 void force_render_target(const texture& t)
 {
 	if (!SDL_SetRenderTarget(get_renderer(), t)) {

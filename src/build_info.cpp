@@ -28,6 +28,7 @@
 #include "video.hpp"
 #include "addon/manager.hpp"
 #include "sdl/point.hpp"
+#include "utils/charconv.hpp"
 
 #include <algorithm>
 #include <fstream>
@@ -581,7 +582,11 @@ list_formatter video_settings_report_internal(const std::string& heading = "")
 	fmt.insert("Window size", geometry_to_string(video::current_resolution()));
 	fmt.insert("Game canvas size", geometry_to_string(video::game_canvas_size()));
 	fmt.insert("Final render target size", geometry_to_string(video::output_size()));
+	fmt.insert("Render refresh rate", std::to_string(video::current_refresh_rate()));
 	fmt.insert("Screen refresh rate", std::to_string(video::native_refresh_rate()));
+	fmt.insert("Content scaling", utils::charconv_buffer(video::content_scaling()).to_string());
+	fmt.insert("Pixel density", utils::charconv_buffer(video::pixel_density()).to_string());
+	fmt.insert("Calculated display scaling", utils::charconv_buffer(video::display_scaling()).to_string());
 	const auto& renderer_report = video::renderer_report();
 
 	for(const auto& info : renderer_report) {
