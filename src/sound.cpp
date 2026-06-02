@@ -810,7 +810,7 @@ static void play_sound_internal(const std::string& files,
 		const std::chrono::milliseconds& loop_ticks = 0ms,
 		const std::chrono::milliseconds& fadein_ticks = 0ms)
 {
-	if(files.empty() || (distance == DISTANCE_SILENT) || !mix_ok) {
+	if(files.empty() || !mix_ok) {
 		return;
 	}
 
@@ -844,17 +844,11 @@ static void play_sound_internal(const std::string& files,
 	const auto localized = filesystem::get_localized_path(filename.value_or(""));
 	std::string real_path = localized.value_or(filename.value());
 
-	/*
-	 * This check prevents SDL_Mixer from blowing up on Windows when UI sound is played
-	 * in response to toggling the checkbox which disables sound.
-	 */
-	if(group != sound_tracks::type::sound_timer) {
-		MIX_Point3D pos;
-		pos.x = 0;
-		pos.y = distance;
-		pos.z = 0;
-		MIX_SetTrack3DPosition(tracks[free_track].get(), &pos);
-	}
+	MIX_Point3D pos;
+	pos.x = 0;
+	pos.y = distance;
+	pos.z = 0;
+	MIX_SetTrack3DPosition(tracks[free_track].get(), &pos);
 
 	std::shared_ptr<MIX_Audio> sound;
 	if(sound_cache.count(real_path) != 0) {
