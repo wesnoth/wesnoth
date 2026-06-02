@@ -293,8 +293,8 @@ void server::handle_sighup(const boost::system::error_code& error, int)
 	WRN_SERVER << "SIGHUP caught, reloading config";
 
 	try {
-	cfg_ = read_config();
-	load_config(true);
+		cfg_ = read_config();
+		load_config(true);
 	} catch(const std::exception& e) {
 		ERR_SERVER << "Error reloading config: " << e.what();
 	}
