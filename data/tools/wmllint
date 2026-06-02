@@ -2069,6 +2069,11 @@ to be called on their own".format(filename, num))
     in_candidate_action = False
     in_lua = False
     in_lua_args = False
+    in_window = False
+    in_resolution = False
+    in_gui_definition = False
+    in_deprecated_message = False
+    in_chat = False
     storeid = None
     storevar = None
     ignoreable = False
@@ -2078,6 +2083,7 @@ to be called on their own".format(filename, num))
     markcheck = True
     translation_mark = re.compile(r'_ *"')
     name_generator_re = re.compile(r"name_generator\s*=\s*_\s*<<")
+    gui_def_regex = re.compile(r"\[/.*\_definition\]")
     for i in range(len(lines)):
         extras = re.search("# *wmllint: translatables +(.*)", lines[i])
         if extras:
@@ -2277,6 +2283,30 @@ to be called on their own".format(filename, num))
             in_map_generator = True
         elif "[/generator]" in lines[i]:
             in_map_generator = False
+
+        elif has_opening_tag(lines[i], "window"):
+            in_window = True
+        elif "[/window]" in lines[i]:
+            in_window = False
+        elif has_opening_tag(lines[i], "resolution"):
+            in_resolution = True
+        elif "[/resolution]" in lines[i]:
+            in_resolution = False
+
+        elif "_definition]" in lines[i] and "[/" not in lines[i]:
+            in_gui_definition = True
+        elif gui_def_regex.search(lines[i]):
+            in_gui_definition = False
+
+        elif has_opening_tag(lines[i], "deprecated_message"):
+            in_deprecated_message = True
+        elif "[/deprecated_message]" in lines[i]:
+            in_deprecated_message = False
+        elif has_opening_tag(lines[i], "chat"):
+            in_chat = True
+        elif "[/chat]" in lines[i]:
+            in_chat = False
+
         elif has_opening_tag(lines[i], "candidate_action"):
             in_candidate_action = True
         elif "[/candidate_action]" in lines[i]:
@@ -2438,13 +2468,27 @@ to be called on their own".format(filename, num))
                     print('"%s", line %d: %s should be renamed as variation_id and/or marked as translatable' \
                           % (filename, i+1, key))
             elif is_translatable(key, extra_translatables):
-                if markcheck and value and not value.startswith("$") and not value.startswith("{") and not has_tr_mark and not ("wmllint: ignore" in comment or "wmllint: noconvert" in comment):
+                # if there's a value, translation mark checking is enabled, and there's no translation mark
+                # and there are no other magic comments disbling the check
+                # and it's not the first line of a concatenated string which has only pango markup
+                # and it's not the description attribute in [window]
+                # and it's not the description attribute in a gui definition like [button_definition] or [menu_button_definition]
+                # and it's not the message attribute in [chat], [deprecated_message]
+                if value and markcheck and not has_tr_mark \
+                and not value.startswith("$") and not value.startswith("{") \
+                and not ("wmllint: ignore" in comment or "wmllint: noconvert" in comment) \
+                and not (value.startswith('<') and value.endswith('+')) \
+                and (not in_window or (in_window and in_resolution)) \
+                and not in_gui_definition \
+                and not in_chat and not in_deprecated_message:
                     # [image] sometimes uses label to specify a reference to a PNG or WebP file
                     # so do not mark for translation in those cases
-                    if not (key == 'label' and ('.png' in value or '.webp' in value)):
-                        print('"%s", line %d: %s needs translation mark' \
-                              % (filename, i+1, key))
-                        lines[i] = lines[i].replace('=', "=_ ", 1)
+                    # and ignore 'text = "(text)"' used in [text]
+                    if not (key == 'label' and ('.png' in value or '.webp' in value)) and not value == '(text)' and not value == '(revision_number)':
+                        # ignore attributes where the translatable string is on the next line in order to have a po comment
+                        if len(lines) >= i+1 and not (lines[i+1].strip().startswith('_') or lines[i+1].strip().startswith('#po')):
+                            print('"%s", line %d: %s needs translation mark' % (filename, i+1, key))
+                            lines[i] = lines[i].replace('=', "=_ ", 1)
                 nv = sentence_end.sub(" ", value)
                 if nv != value:
                     print('"%s", line %d: double space after sentence end' \
