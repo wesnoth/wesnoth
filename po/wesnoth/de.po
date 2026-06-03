@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.14\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2026-05-18 21:15-0500\n"
-"PO-Revision-Date: 2024-12-03 10:57+0100\n"
+"PO-Revision-Date: 2026-05-17 16:23+0200\n"
 "Last-Translator: Wuzzy <Wuzzy@disroot.org>\n"
 "Language-Team: German <irc://irc.libera.chat/#wesnoth-de>\n"
 "Language: de_DE\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.9\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -3368,7 +3368,6 @@ msgstr ""
 
 #. Generator for ship names
 #: data/core/macros/names.cfg:251
-#, fuzzy
 msgid ""
 "\n"
 "main={prefix} {starting_consonnant}{vowel}{consonnant}{vowel}"
@@ -3390,13 +3389,13 @@ msgstr ""
 "{ending_vowel}|{prefix} {starting_vowel}{consonnant}{vowel}"
 "{ending_consonnant}|{starting_consonnant}{vowel}{ending_consonnant}|{prefix} "
 "{starting_vowel}{consonnant}{ending_vowel}\n"
-"starting_consonnant=B|Br|D|Dr|G|Gr|Gh|H|Kh|M|N|P|Pr|R|S|Sh|T|V\n"
-"starting_vowel=A|I|O|U\n"
-"consonnant=b|br|d|dr|g|gr|gh|kh|m|n|p|pr|r|s|sh|t|v|gz|zg|rb|br|dr|vr|khr|gd|"
-"shn\n"
-"vowel=a|i|o|u\n"
-"ending_consonnant=b|g|r|sh|k\n"
-"ending_vowel=o|u\n"
+"prefix=Gesegnete|Goldene|Furchtlose|Mächtige|Glückliche|Alte|Die|Kühne\n"
+"starting_consonnant=B|C|Cr|D|F|G|H|Kh|L|M|N|P|R|S|T|Th|V\n"
+"starting_vowel=A|E|I|O|U\n"
+"consonnant=b|br|ch|d|dr|g|gr|gh|kh|m|n|p|pr|r|s|sh|t|v|ol|z|vr|khr|shn\n"
+"vowel=a|ae|é|i|o|u\n"
+"ending_consonnant=yan|oic|ell|yll|tar|sh\n"
+"ending_vowel=a|ae|o|u\n"
 
 #: data/core/macros/names.cfg:264
 msgid ""
@@ -6308,10 +6307,8 @@ msgid "Remote host disconnected."
 msgstr "Der Server hat die Verbindung unterbrochen."
 
 #: src/addon/manager_ui.cpp:63
-#, fuzzy
-#| msgid "Map generator error: "
 msgid "Raw network error:"
-msgstr "Kartengenerator-Fehler: "
+msgstr "Allgemeiner Netzwerkfehler:"
 
 #: src/addon/manager_ui.cpp:97 src/addon/manager_ui.cpp:336
 msgid "Network communication error."
