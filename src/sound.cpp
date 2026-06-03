@@ -597,9 +597,9 @@ static void play_new_music()
 	MIX_SetTrackAudio(tracks[music_track_id].get(), music.get());
 
 	sdl3_properties props;
-	SDL_SetNumberProperty(props.id(), MIX_PROP_PLAY_FADE_IN_MILLISECONDS_NUMBER, fading_time.count());
+	SDL_SetNumberProperty(props, MIX_PROP_PLAY_FADE_IN_MILLISECONDS_NUMBER, fading_time.count());
 
-	if(!MIX_PlayTrack(tracks[music_track_id].get(), props.id())) {
+	if(!MIX_PlayTrack(tracks[music_track_id].get(), props)) {
 		ERR_AUDIO << "Could not play music: " << SDL_GetError() << " " << filename << " ";
 	} else if(music_cache.count(filename) == 0) {
 		music_cache.emplace(filename, music);

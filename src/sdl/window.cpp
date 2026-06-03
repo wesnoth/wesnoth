@@ -59,16 +59,16 @@ window::window(const std::string& title,
 	sdl3_properties props;
 
 	if(prefs::get().vsync()) {
-		if(!SDL_SetNumberProperty(props.id(), SDL_PROP_RENDERER_CREATE_PRESENT_VSYNC_NUMBER, 1)) {
+		if(!SDL_SetNumberProperty(props, SDL_PROP_RENDERER_CREATE_PRESENT_VSYNC_NUMBER, 1)) {
 			throw exception("Failed to set vsync", true);
 		};
 	}
 
-	if(!SDL_SetPointerProperty(props.id(), SDL_PROP_RENDERER_CREATE_WINDOW_POINTER, window_)) {
+	if(!SDL_SetPointerProperty(props, SDL_PROP_RENDERER_CREATE_WINDOW_POINTER, window_)) {
 		throw exception("Failed to set window pointer property", true);
 	}
 
-	if(!SDL_CreateRendererWithProperties(props.id())) {
+	if(!SDL_CreateRendererWithProperties(props)) {
 		throw exception("Failed to create a SDL_Renderer object.", true);
 	}
 

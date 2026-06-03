@@ -30,6 +30,8 @@ public:
 
     SDL_PropertiesID id() {return props_;}
 
+	operator SDL_PropertiesID() const { return props_; }
+
 private:
     SDL_PropertiesID props_;
 };
