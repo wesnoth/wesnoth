@@ -258,18 +258,6 @@ BOOST_AUTO_TEST_CASE( flg_map_settings12 )
 	BOOST_CHECK_EQUAL(side_engine.flg().current_leader(), "null");
 }
 
-BOOST_AUTO_TEST_CASE( flg_map_settings13 )
-{
-	// Set up side_engine and its dependencies.
-	state.mp_settings().use_map_settings = true;
-	state.mp_settings().saved_game = saved_game_mode::type::no;
-	test_connect_engine connect_engine{state};
-	ng::side_engine_ptr side_engine;
-	config side;
-
-
-}
-
 BOOST_AUTO_TEST_CASE( flg_map_settings14 )
 {
 	// Set up side_engine and its dependencies.
@@ -307,18 +295,6 @@ BOOST_AUTO_TEST_CASE( flg_map_settings15 )
 	ng::side_engine side_engine = create_side_engine(side, connect_engine);
 	BOOST_CHECK_EQUAL(side_engine.flg().choosable_leaders().size(), 1);
 	BOOST_CHECK_EQUAL(side_engine.flg().current_leader(), "Elvish Ranger");
-}
-
-BOOST_AUTO_TEST_CASE( flg_map_settings16 )
-{
-	// Set up side_engine and its dependencies.
-	state.mp_settings().use_map_settings = true;
-	state.mp_settings().saved_game = saved_game_mode::type::no;
-	test_connect_engine connect_engine{state};
-	ng::side_engine_ptr side_engine;
-	config side;
-
-
 }
 
 BOOST_AUTO_TEST_CASE( flg_map_settings17 )
@@ -447,18 +423,6 @@ BOOST_AUTO_TEST_CASE( flg_map_settings23 )
 	BOOST_CHECK_EQUAL(side_engine.flg().current_gender(), "random");
 }
 
-BOOST_AUTO_TEST_CASE( flg_map_settings24 )
-{
-	// Set up side_engine and its dependencies.
-	state.mp_settings().use_map_settings = true;
-	state.mp_settings().saved_game = saved_game_mode::type::no;
-	test_connect_engine connect_engine{state};
-	ng::side_engine_ptr side_engine;
-	config side;
-
-
-}
-
 BOOST_AUTO_TEST_CASE( flg_map_settings25 )
 {
 	// Set up side_engine and its dependencies.
@@ -551,10 +515,6 @@ BOOST_AUTO_TEST_CASE( flg_map_settings29 )
 	side_engine.resolve_random(rng);
 	BOOST_CHECK(side_engine.flg().current_leader() != "random");
 }
-
-
-
-
 
 BOOST_AUTO_TEST_CASE( flg_no_map_settings1 )
 {
