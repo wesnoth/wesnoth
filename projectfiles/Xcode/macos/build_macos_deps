@@ -38,9 +38,9 @@ vcpkg_baseline=$(sed -n 's/.*"builtin-baseline": "\([^"]*\)".*/\1/p' "${root_dir
 # versioned real files behind these names, but the Xcode project should not need
 # to change when a dependency patch version changes.
 required_macos_dylibs=(
-	"libSDL2.dylib"
-	"libSDL2_image.dylib"
-	"libSDL2_mixer.dylib"
+	"libSDL3.dylib"
+	"libSDL3_image.dylib"
+	"libSDL3_mixer.dylib"
 	"libboost_atomic.dylib"
 	"libboost_charconv.dylib"
 	"libboost_chrono.dylib"
@@ -92,8 +92,8 @@ required_macos_dylibs=(
 	"libvorbisfile.dylib"
 	"libwavpack.dylib"
 	"libwebp.dylib"
-	"libwebpdemux.dylib"
 	"libwebpmux.dylib"
+	"libwebpdemux.dylib"
 	"libz.dylib"
 	"libzstd.dylib"
 )
@@ -277,12 +277,6 @@ EOF
 # x86_64 and arm64. Keep both versions and point the public include name at the
 # right one based on the compiler target architecture.
 stage_arch_specific_headers() {
-	cp "${x64_install_dir}/include/SDL2/SDL_config.h" "${headers_dir}/SDL2/SDL_config_x86_64.h" \
-		|| die "Failed to copy the x86_64 SDL_config.h wrapper input."
-	cp "${arm64_install_dir}/include/SDL2/SDL_config.h" "${headers_dir}/SDL2/SDL_config_arm64.h" \
-		|| die "Failed to copy the arm64 SDL_config.h wrapper input."
-	write_arch_wrapper "${headers_dir}/SDL2/SDL_config.h" "SDL_config_x86_64.h" "SDL_config_arm64.h"
-
 	cp "${x64_install_dir}/lib/glib-2.0/include/glibconfig.h" "${headers_dir}/glibconfig_x86_64.h" \
 		|| die "Failed to copy the x86_64 glibconfig.h wrapper input."
 	cp "${arm64_install_dir}/lib/glib-2.0/include/glibconfig.h" "${headers_dir}/glibconfig_arm64.h" \
@@ -439,7 +433,7 @@ validate_staged_bundle() {
 		fi
 	done
 
-	[[ -e "${headers_dir}/SDL2/SDL.h" ]] || missing+=("Headers/SDL2/SDL.h")
+	[[ -e "${headers_dir}/SDL3/SDL.h" ]] || missing+=("Headers/SDL3/SDL.h")
 	[[ -e "${headers_dir}/glibconfig.h" ]] || missing+=("Headers/glibconfig.h")
 	[[ -e "${headers_dir}/openssl/opensslconf.h" ]] || missing+=("Headers/openssl/opensslconf.h")
 

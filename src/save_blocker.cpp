@@ -20,7 +20,7 @@
 
 play_controller* save_blocker::controller_ = nullptr;
 void (play_controller::*save_blocker::callback_)() = nullptr;
-SDL_sem* save_blocker::sem_ = SDL_CreateSemaphore(1);
+SDL_Semaphore* save_blocker::sem_ = SDL_CreateSemaphore(1);
 
 save_blocker::save_blocker() {
 	block();
@@ -50,18 +50,18 @@ void save_blocker::on_unblock(play_controller* controller, void (play_controller
 }
 
 bool save_blocker::saves_are_blocked() {
-	return SDL_SemValue(sem_) == 0;
+	return SDL_GetSemaphoreValue(sem_) == 0;
 }
 
 void save_blocker::block() {
-	SDL_SemWait(sem_);
+	SDL_WaitSemaphore(sem_);
 }
 
 bool save_blocker::try_block() {
-	return SDL_SemTryWait(sem_) == 0;
+	return SDL_TryWaitSemaphore(sem_) == 0;
 }
 
 void save_blocker::unblock() {
-	assert(SDL_SemValue(sem_) == 0);
-	SDL_SemPost(sem_);
+	assert(SDL_GetSemaphoreValue(sem_) == 0);
+	SDL_SignalSemaphore(sem_);
 }

@@ -1,7 +1,7 @@
 {
    "app-id":"org.wesnoth.Wesnoth",
    "runtime":"org.freedesktop.Platform",
-   "runtime-version":"24.08",
+   "runtime-version":"25.08",
    "sdk":"org.freedesktop.Sdk",
    "finish-args":[
       "--device=dri",
@@ -59,10 +59,64 @@
          ]
       },
       {
+         "name":"sdl3",
+         "buildsystem":"simple",
+         "sources":[
+            {
+              "type":"archive",
+              "url":"https://github.com/libsdl-org/SDL/archive/refs/tags/release-3.4.2.tar.gz",
+              "sha256":"515ee4ad6e910e0ad8d8bbccb24ac52dd16c419e23eea3fb83541d20130c7aaa"
+            }
+         ],
+         "build-commands":[
+            "mkdir build",
+            "cmake -S . -B ./build",
+            "cmake --build build",
+            "cmake --install build --prefix /app"
+         ]
+      },
+      {
+         "name":"sdl3_image",
+         "buildsystem":"simple",
+         "sources":[
+            {
+              "type":"archive",
+              "url":"https://github.com/libsdl-org/SDL_image/archive/refs/tags/release-3.4.0.tar.gz",
+              "sha256":"5d541520e5a5a12cb6854336df434af64c7bd72ec08cca6c880d8b411a0139a7"
+            }
+         ],
+         "build-commands":[
+            "mkdir build",
+            "cmake -S . -B ./build",
+            "cmake --build build",
+            "cmake --install build --prefix /app"
+         ]
+      },
+      {
+         "name":"sdl3_mixer",
+         "buildsystem":"simple",
+         "sources":[
+            {
+              "type":"archive",
+              "url":"https://github.com/libsdl-org/SDL_mixer/archive/refs/tags/release-3.2.0.tar.gz",
+              "sha256":"1077fef4a6e9513027da0a08e6f1b8645f8c88c8bef001c17befeb52b129b5dd"
+            }
+         ],
+         "build-commands":[
+            "mkdir build",
+            "cmake -S . -B ./build",
+            "cmake --build build",
+            "cmake --install build --prefix /app"
+         ]
+      },
+      {
          "name":"wesnoth",
          "buildsystem":"simple",
+         "build-options": {
+            "append-pkg-config-path": "/app/lib/pkgconfig:/app/lib64/pkgconfig"
+         },
          "build-commands":[
-            "python3 /app/bin/scons -j $FLATPAK_BUILDER_N_JOBS prefix=/app enable_lto=true ccache=true --debug=time install wesnoth wesnothd"
+            "python3 /app/bin/scons -j $FLATPAK_BUILDER_N_JOBS prefix=/app extra_flags_config=-L/app/lib64 enable_lto=true ccache=true --debug=time install wesnoth wesnothd"
          ],
          "sources":[
             {

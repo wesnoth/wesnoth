@@ -1,0 +1,58 @@
+FROM ubuntu:24.04
+
+RUN apt update
+
+RUN apt install -y -qq apt-utils wget
+
+# programs
+RUN apt install -y -qq openssl gdb xvfb bzip2 git scons cmake make ccache gcc g++ clang clang-tidy lld doxygen graphviz lua-check curl
+
+# boost
+RUN apt install -y -qq libboost-filesystem1.83-dev libboost-filesystem1.83.0 libboost-iostreams1.83-dev libboost-iostreams1.83.0 libboost-locale1.83-dev libboost-locale1.83.0 libboost-regex1.83-dev libboost-regex1.83.0 libboost-serialization1.83-dev libboost-serialization1.83.0 libasio-dev libboost-program-options1.83-dev libboost-program-options1.83.0 libboost-random1.83-dev libboost-random1.83.0 libboost-system1.83-dev libboost-system1.83.0 libboost-thread1.83-dev libboost-thread1.83.0 libboost-test-dev libboost-context1.83.0 libboost-context1.83-dev libboost-coroutine1.83.0 libboost-coroutine1.83-dev libboost-graph1.83-dev
+
+# make tzdata not prompt for a timezone
+ENV DEBIAN_FRONTEND=noninteractive
+
+# translations
+RUN apt install -y -qq asciidoc dos2unix xsltproc po4a docbook-xsl language-pack-en
+RUN locale-gen en_US.UTF-8
+
+# misc
+RUN apt install -y -qq libwebp7 libwebp-dev libpng16-16 libpng-dev libreadline6-dev libvorbis-dev libcairo2 libcairo2-dev libpango-1.0-0 libpango1.0-dev libbz2-1.0 libbz2-dev zlib1g zlib1g-dev libpangocairo-1.0-0 libssl-dev libmysqlclient-dev expect-dev moreutils ca-certificates libcurl4-openssl-dev liblua5.4-dev
+
+# SDL
+RUN apt -y -qq install build-essential git make pkg-config cmake ninja-build gnome-desktop-testing libasound2-dev libpulse-dev libaudio-dev libfribidi-dev libjack-dev libsndio-dev libx11-dev libxext-dev libxrandr-dev libxcursor-dev libxfixes-dev libxi-dev libxss-dev libxtst-dev libxkbcommon-dev libdrm-dev libgbm-dev libgl1-mesa-dev libgles2-mesa-dev libegl1-mesa-dev libdbus-1-dev libibus-1.0-dev libudev-dev libthai-dev libpipewire-0.3-dev libwayland-dev libdecor-0-dev liburing-dev
+
+WORKDIR /home
+RUN mkdir sdl3 && wget --max-redirect 3 https://github.com/libsdl-org/SDL/archive/refs/tags/release-3.4.2.tar.gz && tar zxf release-3.4.2.tar.gz -C sdl3 --strip-components=1 && rm release-3.4.2.tar.gz
+RUN mkdir sdl3-image && wget --max-redirect 3 https://github.com/libsdl-org/SDL_image/archive/refs/tags/release-3.4.0.tar.gz && tar zxf release-3.4.0.tar.gz -C sdl3-image --strip-components=1 && rm release-3.4.0.tar.gz
+RUN mkdir sdl3-mixer && wget --max-redirect 3 https://github.com/libsdl-org/SDL_mixer/archive/refs/tags/release-3.2.0.tar.gz && tar zxf release-3.2.0.tar.gz -C sdl3-mixer --strip-components=1 && rm release-3.2.0.tar.gz
+
+WORKDIR /home/sdl3
+RUN mkdir build
+RUN cmake -S . -B ./build
+RUN cmake --build build
+RUN cmake --install build --prefix /usr/local
+
+WORKDIR /home/sdl3-image
+RUN mkdir build
+RUN cmake -S . -B ./build
+RUN cmake --build build
+RUN cmake --install build --prefix /usr/local
+
+WORKDIR /home/sdl3-mixer
+RUN mkdir build
+RUN cmake -S . -B ./build
+RUN cmake --build build
+RUN cmake --install build --prefix /usr/local
+
+WORKDIR /usr/local/lib
+RUN chmod -R 777 .
+
+WORKDIR /home/wesnoth-travis
+
+# build another copy of boost with _GLIBCXX_DEBUG enabled, since program options requires this
+RUN wget --max-redirect 3 https://archives.boost.io/release/1.83.0/source/boost_1_83_0.tar.gz
+RUN tar -xvzf boost_1_83_0.tar.gz && cd boost_1_83_0 && ./bootstrap.sh --with-libraries=filesystem,locale,iostreams,program_options,regex,random,thread,coroutine,context,test,graph && ./b2 -j2 variant=debug install cxxflags='-fstack-protector-strong' define=_GLIBCXX_DEBUG=1 define=_FORTIFY_SOURCE=2 address-model=64
+RUN rm -R /home/wesnoth-travis/boost_1_83_0
+RUN rm /home/wesnoth-travis/boost_1_83_0.tar.gz

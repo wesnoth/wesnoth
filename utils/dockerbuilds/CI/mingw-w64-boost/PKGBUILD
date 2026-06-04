@@ -1,0 +1,83 @@
+pkgname=mingw-w64-boost
+pkgver=1.91.0
+_boostver=${pkgver//./_}
+_versuffix=-1
+pkgrel=1
+pkgdesc="Free peer-reviewed portable C++ source libraries (mingw-w64)"
+arch=('any')
+url="https://www.boost.org/"
+license=('BSL-1.0')
+depends=('mingw-w64-zstd' 'mingw-w64-bzip2' 'mingw-w64-dlfcn' 'mingw-w64-zlib')
+makedepends=('mingw-w64-gcc' 'mingw-w64-cmake' 'ninja' 'dos2unix')
+[[ $pkgname =~ .*-clang-.* ]] && makedepends+=('mingw-w64-binutils') # for windmc
+options=('!strip' '!buildflags' 'staticlibs')
+source=(https://github.com/boostorg/boost/releases/download/boost-${pkgver}$_versuffix/boost-${pkgver}$_versuffix-cmake.7z
+       0001-Fix-building-with-cmake-on-MINGW.patch)
+sha256sums=('29c7d4f4ac36ad853b6765d03571ea60d90286775df026b4efd9f3281131972b'
+            'fb32ea452e02196552dae815eb44be5b18d849b0f6e24ecf5cf7be15e42ad85b')
+
+_architectures=(i686-w64-mingw32 x86_64-w64-mingw32)
+
+_configurations=()
+[[ $NO_SHARED_LIBS ]] || _configurations+=('shared')
+[[ $NO_STATIC_LIBS ]] || _configurations+=('static')
+
+prepare() {
+  cd "$srcdir/boost-$pkgver$_versuffix"
+
+  # process_handle_windows.cpp:(.text+0x25): undefined reference to `_imp__WSACleanup@0'
+  sed -i -e "/if \[ os.name \] = NT/d" -e "/{/d" -e "/}/d" libs/process/build/Jamfile
+  sed -i -e "46ilib ws2_32 ;" -e "57i<target-os>windows:<library>ws2_32" libs/process/build/Jamfile
+
+  # from_exception.cpp:333:23: error: 'current_exception' is not a member of 'std'
+  sed -i "160i#include <exception>" libs/stacktrace/src/from_exception.cpp
+  sed -i "160i\ \ \ \ <target-os>windows:<library>dl" libs/stacktrace/build/Jamfile.v2
+
+  cp {..,.}/0001-Fix-building-with-cmake-on-MINGW.patch
+  unix2dos ./0001-Fix-building-with-cmake-on-MINGW.patch
+  patch -Nbp1 --binary -i ./0001-Fix-building-with-cmake-on-MINGW.patch
+}
+
+build() {
+  for _arch in "${_architectures[@]}"; do
+    declare -A _config_flags=(
+      [shared]="
+          -DCMAKE_INSTALL_PREFIX=/usr/$_arch
+          -DBUILD_SHARED_LIBS:BOOL=ON
+      "
+      [static]="
+          -DCMAKE_INSTALL_PREFIX=/usr/$_arch
+          -DBUILD_SHARED_LIBS:BOOL=OFF
+      "
+    )
+    for _cfg in "${_configurations[@]}"; do
+      msg2 "${_arch}-${_cfg}"
+
+      ${_arch}-cmake -G Ninja -B "build-${_arch}-${_cfg}" -S "$srcdir/boost-$pkgver$_versuffix" \
+        -DBOOST_INSTALL_LAYOUT=system \
+        -DBOOST_STACKTRACE_ENABLE_FROM_EXCEPTION=OFF \
+        -DBUILD_TESTING=OFF \
+        ${_config_flags[$_cfg]} ${_arch_config[$_cfg]}
+      VERBOSE=1 cmake --build "build-${_arch}-${_cfg}"
+    done
+  done
+}
+
+package() {
+  for _arch in "${_architectures[@]}"; do
+    for _cfg in "${_configurations[@]}"; do
+      msg2 "${_arch}-${_cfg}"
+      DESTDIR="$pkgdir" cmake --install "build-${_arch}-${_cfg}"
+    done
+    $_arch-strip --strip-unneeded "$pkgdir"/usr/$_arch/bin/*.dll
+    #$_arch-strip -g "$pkgdir"/usr/$_arch/static/lib/*.a
+    $_arch-strip -g "$pkgdir"/usr/$_arch/lib/*.a
+
+    # use static zstd with static libs
+    find "$pkgdir"/usr/$_arch/lib/cmake -ipath '*-static*' -iname '*.cmake' -exec \
+      sed -i -e 's|zstd::libzstd_shared|zstd::libzstd_static|g' {} \;
+  done
+  install -Dm644 "$srcdir/boost-$pkgver$_versuffix/LICENSE_1_0.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+
+

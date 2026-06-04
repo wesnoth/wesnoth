@@ -44,9 +44,9 @@ class HIDDeviceBLESteamController extends BluetoothGattCallback implements HIDDe
 
     private static final int CHROMEBOOK_CONNECTION_CHECK_INTERVAL = 10000;
 
-    static public final UUID steamControllerService = UUID.fromString("100F6C32-1735-4313-B402-38567131E5F3");
-    static public final UUID inputCharacteristic = UUID.fromString("100F6C33-1735-4313-B402-38567131E5F3");
-    static public final UUID reportCharacteristic = UUID.fromString("100F6C34-1735-4313-B402-38567131E5F3");
+    static final UUID steamControllerService = UUID.fromString("100F6C32-1735-4313-B402-38567131E5F3");
+    static final UUID inputCharacteristic = UUID.fromString("100F6C33-1735-4313-B402-38567131E5F3");
+    static final UUID reportCharacteristic = UUID.fromString("100F6C34-1735-4313-B402-38567131E5F3");
     static private final byte[] enterValveMode = new byte[] { (byte)0xC0, (byte)0x87, 0x03, 0x08, 0x07, 0x00 };
 
     static class GattOperation {
@@ -156,12 +156,12 @@ class HIDDeviceBLESteamController extends BluetoothGattCallback implements HIDDe
         }
     }
 
-    public HIDDeviceBLESteamController(HIDDeviceManager manager, BluetoothDevice device) {
+    HIDDeviceBLESteamController(HIDDeviceManager manager, BluetoothDevice device) {
         mManager = manager;
         mDevice = device;
         mDeviceId = mManager.getDeviceIDForIdentifier(getIdentifier());
         mIsRegistered = false;
-        mIsChromebook = mManager.getContext().getPackageManager().hasSystemFeature("org.chromium.arc.device_management");
+        mIsChromebook = SDLActivity.isChromebook();
         mOperations = new LinkedList<GattOperation>();
         mHandler = new Handler(Looper.getMainLooper());
 
@@ -169,17 +169,17 @@ class HIDDeviceBLESteamController extends BluetoothGattCallback implements HIDDe
         // final HIDDeviceBLESteamController finalThis = this;
         // mHandler.postDelayed(new Runnable() {
         //     @Override
-        //     public void run() {
+        //     void run() {
         //         finalThis.checkConnectionForChromebookIssue();
         //     }
         // }, CHROMEBOOK_CONNECTION_CHECK_INTERVAL);
     }
 
-    public String getIdentifier() {
+    String getIdentifier() {
         return String.format("SteamController.%s", mDevice.getAddress());
     }
 
-    public BluetoothGatt getGatt() {
+    BluetoothGatt getGatt() {
         return mGatt;
     }
 
@@ -219,7 +219,7 @@ class HIDDeviceBLESteamController extends BluetoothGattCallback implements HIDDe
         return btManager.getConnectionState(mDevice, BluetoothProfile.GATT);
     }
 
-    public void reconnect() {
+    void reconnect() {
 
         if (getConnectionState() != BluetoothProfile.STATE_CONNECTED) {
             mGatt.disconnect();
@@ -401,12 +401,12 @@ class HIDDeviceBLESteamController extends BluetoothGattCallback implements HIDDe
         queueGattOperation(op);
     }
 
-    public void writeCharacteristic(UUID uuid, byte[] value) {
+    void writeCharacteristic(UUID uuid, byte[] value) {
         GattOperation op = HIDDeviceBLESteamController.GattOperation.writeCharacteristic(mGatt, uuid, value);
         queueGattOperation(op);
     }
 
-    public void readCharacteristic(UUID uuid) {
+    void readCharacteristic(UUID uuid) {
         GattOperation op = HIDDeviceBLESteamController.GattOperation.readCharacteristic(mGatt, uuid);
         queueGattOperation(op);
     }
@@ -415,6 +415,7 @@ class HIDDeviceBLESteamController extends BluetoothGattCallback implements HIDDe
     //////////////  BluetoothGattCallback overridden methods
     //////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    @Override
     public void onConnectionStateChange(BluetoothGatt g, int status, int newState) {
         //Log.v(TAG, "onConnectionStateChange status=" + status + " newState=" + newState);
         mIsReconnecting = false;
@@ -437,6 +438,7 @@ class HIDDeviceBLESteamController extends BluetoothGattCallback implements HIDDe
         // Disconnection is handled in SteamLink using the ACTION_ACL_DISCONNECTED Intent.
     }
 
+    @Override
     public void onServicesDiscovered(BluetoothGatt gatt, int status) {
         //Log.v(TAG, "onServicesDiscovered status=" + status);
         if (status == 0) {
@@ -453,16 +455,18 @@ class HIDDeviceBLESteamController extends BluetoothGattCallback implements HIDDe
         }
     }
 
+    @Override
     public void onCharacteristicRead(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic, int status) {
         //Log.v(TAG, "onCharacteristicRead status=" + status + " uuid=" + characteristic.getUuid());
 
         if (characteristic.getUuid().equals(reportCharacteristic) && !mFrozen) {
-            mManager.HIDDeviceFeatureReport(getId(), characteristic.getValue());
+            mManager.HIDDeviceReportResponse(getId(), characteristic.getValue());
         }
 
         finishCurrentGattOperation();
     }
 
+    @Override
     public void onCharacteristicWrite(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic, int status) {
         //Log.v(TAG, "onCharacteristicWrite status=" + status + " uuid=" + characteristic.getUuid());
 
@@ -470,7 +474,7 @@ class HIDDeviceBLESteamController extends BluetoothGattCallback implements HIDDe
             // Only register controller with the native side once it has been fully configured
             if (!isRegistered()) {
                 Log.v(TAG, "Registering Steam Controller with ID: " + getId());
-                mManager.HIDDeviceConnected(getId(), getIdentifier(), getVendorId(), getProductId(), getSerialNumber(), getVersion(), getManufacturerName(), getProductName(), 0, 0, 0, 0);
+                mManager.HIDDeviceConnected(getId(), getIdentifier(), getVendorId(), getProductId(), getSerialNumber(), getVersion(), getManufacturerName(), getProductName(), 0, 0, 0, 0, true);
                 setRegistered();
             }
         }
@@ -478,6 +482,7 @@ class HIDDeviceBLESteamController extends BluetoothGattCallback implements HIDDe
         finishCurrentGattOperation();
     }
 
+    @Override
     public void onCharacteristicChanged(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic) {
     // Enable this for verbose logging of controller input reports
         //Log.v(TAG, "onCharacteristicChanged uuid=" + characteristic.getUuid() + " data=" + HexDump.dumpHexString(characteristic.getValue()));
@@ -487,10 +492,12 @@ class HIDDeviceBLESteamController extends BluetoothGattCallback implements HIDDe
         }
     }
 
+    @Override
     public void onDescriptorRead(BluetoothGatt gatt, BluetoothGattDescriptor descriptor, int status) {
         //Log.v(TAG, "onDescriptorRead status=" + status);
     }
 
+    @Override
     public void onDescriptorWrite(BluetoothGatt gatt, BluetoothGattDescriptor descriptor, int status) {
         BluetoothGattCharacteristic chr = descriptor.getCharacteristic();
         //Log.v(TAG, "onDescriptorWrite status=" + status + " uuid=" + chr.getUuid() + " descriptor=" + descriptor.getUuid());
@@ -508,14 +515,17 @@ class HIDDeviceBLESteamController extends BluetoothGattCallback implements HIDDe
         finishCurrentGattOperation();
     }
 
+    @Override
     public void onReliableWriteCompleted(BluetoothGatt gatt, int status) {
         //Log.v(TAG, "onReliableWriteCompleted status=" + status);
     }
 
+    @Override
     public void onReadRemoteRssi(BluetoothGatt gatt, int rssi, int status) {
         //Log.v(TAG, "onReadRemoteRssi status=" + status);
     }
 
+    @Override
     public void onMtuChanged(BluetoothGatt gatt, int mtu, int status) {
         //Log.v(TAG, "onMtuChanged status=" + status);
     }
@@ -575,50 +585,45 @@ class HIDDeviceBLESteamController extends BluetoothGattCallback implements HIDDe
     }
 
     @Override
-    public int sendFeatureReport(byte[] report) {
+    public int writeReport(byte[] report, boolean feature) {
         if (!isRegistered()) {
-            Log.e(TAG, "Attempted sendFeatureReport before Steam Controller is registered!");
+            Log.e(TAG, "Attempted writeReport before Steam Controller is registered!");
             if (mIsConnected) {
                 probeService(this);
             }
             return -1;
         }
 
-        // We need to skip the first byte, as that doesn't go over the air
-        byte[] actual_report = Arrays.copyOfRange(report, 1, report.length - 1);
-        //Log.v(TAG, "sendFeatureReport " + HexDump.dumpHexString(actual_report));
-        writeCharacteristic(reportCharacteristic, actual_report);
-        return report.length;
-    }
-
-    @Override
-    public int sendOutputReport(byte[] report) {
-        if (!isRegistered()) {
-            Log.e(TAG, "Attempted sendOutputReport before Steam Controller is registered!");
-            if (mIsConnected) {
-                probeService(this);
-            }
-            return -1;
+        if (feature) {
+            // We need to skip the first byte, as that doesn't go over the air
+            byte[] actual_report = Arrays.copyOfRange(report, 1, report.length - 1);
+            //Log.v(TAG, "writeFeatureReport " + HexDump.dumpHexString(actual_report));
+            writeCharacteristic(reportCharacteristic, actual_report);
+            return report.length;
+        } else {
+            //Log.v(TAG, "writeOutputReport " + HexDump.dumpHexString(report));
+            writeCharacteristic(reportCharacteristic, report);
+            return report.length;
         }
-
-        //Log.v(TAG, "sendFeatureReport " + HexDump.dumpHexString(report));
-        writeCharacteristic(reportCharacteristic, report);
-        return report.length;
     }
 
     @Override
-    public boolean getFeatureReport(byte[] report) {
+    public boolean readReport(byte[] report, boolean feature) {
         if (!isRegistered()) {
-            Log.e(TAG, "Attempted getFeatureReport before Steam Controller is registered!");
+            Log.e(TAG, "Attempted readReport before Steam Controller is registered!");
             if (mIsConnected) {
                 probeService(this);
             }
             return false;
         }
 
-        //Log.v(TAG, "getFeatureReport");
-        readCharacteristic(reportCharacteristic);
-        return true;
+        if (feature) {
+            readCharacteristic(reportCharacteristic);
+            return true;
+        } else {
+            // Not implemented
+            return false;
+        }
     }
 
     @Override

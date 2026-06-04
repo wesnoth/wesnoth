@@ -27,9 +27,9 @@
 #include "desktop/apple_notification.hpp"
 #endif
 
-#ifdef _WIN32
-#include "desktop/windows_tray_notification.hpp"
-#endif
+// #ifdef _WIN32
+// #include "desktop/windows_tray_notification.hpp"
+// #endif
 
 namespace desktop {
 
@@ -53,7 +53,11 @@ bool available()
 #endif
 }
 
+#ifdef _WIN32
+void send(const std::string&, const std::string&, type)
+#else
 void send(const std::string& owner, const std::string& message, type t)
+#endif
 {
 	// Do not show notifications when the window is visible and has focus
 	if(video::window_is_visible() && video::window_has_focus()) {
@@ -68,24 +72,24 @@ void send(const std::string& owner, const std::string& message, type t)
 	apple_notifications::send_notification(owner, message, t);
 #endif
 
-#ifdef _WIN32
-	std::string notification_title;
-	std::string notification_message;
+// #ifdef _WIN32
+// 	std::string notification_title;
+// 	std::string notification_message;
 
-	switch (t) {
-		case CHAT:
-			notification_title = _("Chat message");
-			notification_message = owner + ": " + message;
-			break;
-		case TURN_CHANGED:
-		case OTHER:
-			notification_title = owner;
-			notification_message = message;
-			break;
-	}
+// 	switch (t) {
+// 		case CHAT:
+// 			notification_title = _("Chat message");
+// 			notification_message = owner + ": " + message;
+// 			break;
+// 		case TURN_CHANGED:
+// 		case OTHER:
+// 			notification_title = owner;
+// 			notification_message = message;
+// 			break;
+// 	}
 
-	windows_tray_notification::show(notification_title, notification_message);
-#endif
+// 	windows_tray_notification::show(notification_title, notification_message);
+// #endif
 }
 #endif //end #else (defined(HAVE_LIBDBUS) || defined(_WIN32))
 

@@ -16,23 +16,17 @@
 #pragma once
 
 #include "events.hpp"
+#include "map/location.hpp"
+#include "sound_tracks.hpp"
 #include "sound_music_track.hpp"
 #include "utils/optional_fwd.hpp"
 
+#include <map>
 #include <string>
 
 class config;
 
 namespace sound {
-
-enum channel_group {
-	NULL_CHANNEL = -1,
-	SOUND_SOURCES = 0,
-	SOUND_BELL,
-	SOUND_TIMER,
-	SOUND_UI,
-	SOUND_FX
-};
 
 std::string current_driver();
 std::vector<std::string> enumerate_drivers();
@@ -41,7 +35,7 @@ struct driver_status
 {
 	bool initialized;
 	int frequency;
-	uint16_t format;
+	SDL_AudioFormat format;
 	int channels;
 	int chunk_size;
 
@@ -70,29 +64,28 @@ void empty_playlist();
 void play_music();
 
 // Change parameters of a playing sound, given its id
-void reposition_sound(int id, unsigned int distance);
-#define DISTANCE_SILENT		255
+void reposition_sound(unsigned id, unsigned int distance);
+#define DISTANCE_SILENT 255
+#define DISTANCE_NONE   0
 
 // Check if there's a sound associated with given id playing
 bool is_sound_playing(int id);
 
 // Stop sound associated with a given id
-void stop_sound(int id);
+void stop_sound(unsigned id);
 
 // Play sound, or random one of comma-separated sounds.
-void play_sound(const std::string& files, channel_group group = SOUND_FX, unsigned int repeats = 0);
+void play_sound(const std::string& files, sound_tracks::type group = sound_tracks::type::sound_fx, unsigned int repeats = 0);
 
 // Play sound, or random one of comma-separated sounds. Use specified
 // distance and associate it with specified id (of a sound source).
-void play_sound_positioned(const std::string &files, int id, int repeats, unsigned int distance);
+void play_sound_positioned(const std::string &files, int repeats, unsigned int distance, unsigned int id);
 
 // Play sound, or random one of comma-separated sounds in bell channel
 void play_bell(const std::string& files);
 
 // Play sound, or random one of comma-separated sounds in timer channel
-void play_timer(const std::string& files,
-	const std::chrono::milliseconds& loop_ticks,
-	const std::chrono::milliseconds& fadein_ticks);
+void play_timer(const std::string& files, const std::chrono::milliseconds& loop_ticks, const std::chrono::milliseconds& fadein_ticks);
 
 // Play user-interface sound, or random one of comma-separated sounds.
 void play_UI_sound(const std::string& files);

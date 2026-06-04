@@ -36,7 +36,7 @@ extern "C" int _putenv(const char*);
 #endif
 
 #ifdef __ANDROID__
-#include <SDL2/SDL_system.h> // For SDL Android functions
+#include <SDL3/SDL_system.h> // For SDL Android functions
 #include <jni.h>
 #endif
 
@@ -270,8 +270,8 @@ void set_language(const language_def& locale)
 
 #ifdef __ANDROID__
 	if (locale.localename.empty()) {
-		JNIEnv* env = reinterpret_cast<JNIEnv*>(SDL_AndroidGetJNIEnv());
-		jobject wesnoth_instance = reinterpret_cast<jobject>(SDL_AndroidGetActivity());
+		JNIEnv* env = reinterpret_cast<JNIEnv*>(SDL_GetAndroidJNIEnv());
+		jobject wesnoth_instance = reinterpret_cast<jobject>(SDL_GetAndroidActivity());
 		jclass wesnoth_activity(env->GetObjectClass(wesnoth_instance));
 		jmethodID locale = env->GetMethodID(wesnoth_activity, "getLocaleCode", "()Ljava/lang/String;");
 		jstring lcode = reinterpret_cast<jstring>(env->CallObjectMethod(wesnoth_instance, locale));

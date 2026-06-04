@@ -4,6 +4,7 @@ import android.hardware.usb.*;
 import android.os.Build;
 import android.util.Log;
 import java.util.Arrays;
+import java.util.Locale;
 
 class HIDDeviceUSB implements HIDDevice {
 
@@ -30,8 +31,8 @@ class HIDDeviceUSB implements HIDDevice {
         mRunning = false;
     }
 
-    public String getIdentifier() {
-        return String.format("%s/%x/%x/%d", mDevice.getDeviceName(), mDevice.getVendorId(), mDevice.getProductId(), mInterfaceIndex);
+    String getIdentifier() {
+        return String.format(Locale.ENGLISH, "%s/%x/%x/%d", mDevice.getDeviceName(), mDevice.getVendorId(), mDevice.getProductId(), mInterfaceIndex);
     }
 
     @Override
@@ -52,13 +53,11 @@ class HIDDeviceUSB implements HIDDevice {
     @Override
     public String getSerialNumber() {
         String result = null;
-        if (Build.VERSION.SDK_INT >= 21 /* Android 5.0 (LOLLIPOP) */) {
-            try {
-                result = mDevice.getSerialNumber();
-            }
-            catch (SecurityException exception) {
-                //Log.w(TAG, "App permissions mean we cannot get serial number for device " + getDeviceName() + " message: " + exception.getMessage());
-            }
+        try {
+            result = mDevice.getSerialNumber();
+        }
+        catch (SecurityException exception) {
+            //Log.w(TAG, "App permissions mean we cannot get serial number for device " + getDeviceName() + " message: " + exception.getMessage());
         }
         if (result == null) {
             result = "";
@@ -73,10 +72,8 @@ class HIDDeviceUSB implements HIDDevice {
 
     @Override
     public String getManufacturerName() {
-        String result = null;
-        if (Build.VERSION.SDK_INT >= 21 /* Android 5.0 (LOLLIPOP) */) {
-            result = mDevice.getManufacturerName();
-        }
+        String result;
+        result = mDevice.getManufacturerName();
         if (result == null) {
             result = String.format("%x", getVendorId());
         }
@@ -85,10 +82,8 @@ class HIDDeviceUSB implements HIDDevice {
 
     @Override
     public String getProductName() {
-        String result = null;
-        if (Build.VERSION.SDK_INT >= 21 /* Android 5.0 (LOLLIPOP) */) {
-            result = mDevice.getProductName();
-        }
+        String result;
+        result = mDevice.getProductName();
         if (result == null) {
             result = String.format("%x", getProductId());
         }
@@ -100,7 +95,7 @@ class HIDDeviceUSB implements HIDDevice {
         return mDevice;
     }
 
-    public String getDeviceName() {
+    String getDeviceName() {
         return getManufacturerName() + " " + getProductName() + "(0x" + String.format("%x", getVendorId()) + "/0x" + String.format("%x", getProductId()) + ")";
     }
 
@@ -153,54 +148,63 @@ class HIDDeviceUSB implements HIDDevice {
     }
 
     @Override
-    public int sendFeatureReport(byte[] report) {
-        int res = -1;
-        int offset = 0;
-        int length = report.length;
-        boolean skipped_report_id = false;
-        byte report_number = report[0];
-
-        if (report_number == 0x0) {
-            ++offset;
-            --length;
-            skipped_report_id = true;
-        }
-
-        res = mConnection.controlTransfer(
-            UsbConstants.USB_TYPE_CLASS | 0x01 /*RECIPIENT_INTERFACE*/ | UsbConstants.USB_DIR_OUT,
-            0x09/*HID set_report*/,
-            (3/*HID feature*/ << 8) | report_number,
-            mInterface,
-            report, offset, length,
-            1000/*timeout millis*/);
-
-        if (res < 0) {
-            Log.w(TAG, "sendFeatureReport() returned " + res + " on device " + getDeviceName());
+    public int writeReport(byte[] report, boolean feature) {
+        if (mConnection == null) {
+            Log.w(TAG, "writeReport() called with no device connection");
             return -1;
         }
 
-        if (skipped_report_id) {
-            ++length;
+        if (feature) {
+            int res = -1;
+            int offset = 0;
+            int length = report.length;
+            boolean skipped_report_id = false;
+            byte report_number = report[0];
+
+            if (report_number == 0x0) {
+                ++offset;
+                --length;
+                skipped_report_id = true;
+            }
+
+            res = mConnection.controlTransfer(
+                UsbConstants.USB_TYPE_CLASS | 0x01 /*RECIPIENT_INTERFACE*/ | UsbConstants.USB_DIR_OUT,
+                0x09/*HID set_report*/,
+                (3/*HID feature*/ << 8) | report_number,
+                mInterface,
+                report, offset, length,
+                1000/*timeout millis*/);
+
+            if (res < 0) {
+                Log.w(TAG, "writeFeatureReport() returned " + res + " on device " + getDeviceName());
+                return -1;
+            }
+
+            if (skipped_report_id) {
+                ++length;
+            }
+            return length;
+        } else {
+            int res = mConnection.bulkTransfer(mOutputEndpoint, report, report.length, 1000);
+            if (res != report.length) {
+                Log.w(TAG, "writeOutputReport() returned " + res + " on device " + getDeviceName());
+            }
+            return res;
         }
-        return length;
     }
 
     @Override
-    public int sendOutputReport(byte[] report) {
-        int r = mConnection.bulkTransfer(mOutputEndpoint, report, report.length, 1000);
-        if (r != report.length) {
-            Log.w(TAG, "sendOutputReport() returned " + r + " on device " + getDeviceName());
-        }
-        return r;
-    }
-
-    @Override
-    public boolean getFeatureReport(byte[] report) {
+    public boolean readReport(byte[] report, boolean feature) {
         int res = -1;
         int offset = 0;
         int length = report.length;
         boolean skipped_report_id = false;
         byte report_number = report[0];
+
+        if (mConnection == null) {
+            Log.w(TAG, "readReport() called with no device connection");
+            return false;
+        }
 
         if (report_number == 0x0) {
             /* Offset the return buffer by 1, so that the report ID
@@ -213,7 +217,7 @@ class HIDDeviceUSB implements HIDDevice {
         res = mConnection.controlTransfer(
             UsbConstants.USB_TYPE_CLASS | 0x01 /*RECIPIENT_INTERFACE*/ | UsbConstants.USB_DIR_IN,
             0x01/*HID get_report*/,
-            (3/*HID feature*/ << 8) | report_number,
+            ((feature ? 3/*HID feature*/ : 1/*HID Input*/) << 8) | report_number,
             mInterface,
             report, offset, length,
             1000/*timeout millis*/);
@@ -234,7 +238,7 @@ class HIDDeviceUSB implements HIDDevice {
         } else {
             data = Arrays.copyOfRange(report, 0, res);
         }
-        mManager.HIDDeviceFeatureReport(mDeviceId, data);
+        mManager.HIDDeviceReportResponse(mDeviceId, data);
 
         return true;
     }

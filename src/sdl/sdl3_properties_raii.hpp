@@ -1,5 +1,6 @@
 /*
-	Copyright (C) 2022 - 2025
+	Copyright (C) 2003 - 2026
+	by David White <dave@whitevine.net>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -12,20 +13,25 @@
 	See the COPYING file for more details.
 */
 
-#include <SDL2/SDL.h>
+#pragma once
 
-#define STR(x) STR_(x)
-#define STR_(x) #x
+#include <SDL3/SDL.h>
 
-#if ! SDL_VERSION_ATLEAST(REQ_MAJOR, REQ_MINOR, REQ_PATCH)
-#pragma message "SDL version " STR(SDL_MAJOR_VERSION.SDL_MINOR_VERSION.SDL_PATCHLEVEL) " is older than required version " STR(REQ_MAJOR.REQ_MINOR.REQ_PATCH)
-#error SDL is too old!
-#endif
+class sdl3_properties {
+public:
+    sdl3_properties()
+    : props_(SDL_CreateProperties())
+    {}
 
-int main(int, char**)
-{
-    SDL_Init(0);
-    SDL_Quit();
+    ~sdl3_properties()
+    {
+        SDL_DestroyProperties(props_);
+    }
 
-    return 0;
-}
+    SDL_PropertiesID id() {return props_;}
+
+	operator SDL_PropertiesID() const { return props_; }
+
+private:
+    SDL_PropertiesID props_;
+};

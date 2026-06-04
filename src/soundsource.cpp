@@ -147,7 +147,7 @@ void positional_source::update(const std::chrono::steady_clock::time_point& time
 		// If no locations have been specified, treat the source as if
 		// it was present everywhere on the map
 		if(locations_.empty()) {
-			sound::play_sound_positioned(files_, id_, loops_, 0);	// max volume
+			sound::play_sound_positioned(files_, loops_, 0, id_);	// max volume
 			return;
 		}
 
@@ -162,7 +162,7 @@ void positional_source::update(const std::chrono::steady_clock::time_point& time
 		if(distance_volume >= DISTANCE_SILENT)
 			return;
 
-		sound::play_sound_positioned(files_, id_, loops_, distance_volume);
+		sound::play_sound_positioned(files_, loops_, distance_volume, id_);
 	}
 }
 

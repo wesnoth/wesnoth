@@ -11,16 +11,16 @@ https://github.com/libffi/libffi/releases/download/v3.4.4/libffi-3.4.4.tar.gz
 https://download.gnome.org/sources/glib/2.82/glib-2.82.1.tar.xz
 https://www.cairographics.org/releases/pixman-0.42.2.tar.gz
 https://github.com/libexpat/libexpat/releases/download/R_2_5_0/expat-2.5.0.tar.xz
-https://www.freedesktop.org/software/fontconfig/release/fontconfig-2.14.2.tar.xz
+https://gitlab.freedesktop.org/api/v4/projects/890/packages/generic/fontconfig/2.17.1/fontconfig-2.17.1.tar.xz
 https://www.cairographics.org/releases/cairo-1.16.0.tar.xz
 https://github.com/harfbuzz/harfbuzz/releases/download/7.1.0/harfbuzz-7.1.0.tar.xz
 https://download.gnome.org/sources/pango/1.50/pango-1.50.14.tar.xz
-https://github.com/libsdl-org/SDL/releases/download/release-2.30.12/SDL2-2.30.12.tar.gz
 https://storage.googleapis.com/downloads.webmproject.org/releases/webp/libwebp-1.4.0.tar.gz
-https://www.libsdl.org/projects/SDL_image/release/SDL2_image-2.6.3.tar.gz
+https://github.com/libsdl-org/SDL/releases/download/release-3.4.2/SDL3-3.4.2.tar.gz
+https://github.com/libsdl-org/SDL_image/releases/download/release-3.4.0/SDL3_image-3.4.0.tar.gz
+https://github.com/libsdl-org/SDL_mixer/releases/download/release-3.2.0/SDL3_mixer-3.2.0.tar.gz
 https://downloads.xiph.org/releases/ogg/libogg-1.3.5.tar.xz
 https://ftp.osuosl.org/pub/xiph/releases/vorbis/libvorbis-1.3.7.tar.xz
-https://github.com/libsdl-org/SDL_mixer/releases/download/release-2.6.3/SDL2_mixer-2.6.3.tar.gz
 https://archives.boost.io/release/1.88.0/source/boost_1_88_0.tar.bz2
 https://www.openssl.org/source/openssl-3.4.1.tar.gz
 https://curl.se/download/curl-8.1.1.tar.xz
@@ -40,39 +40,49 @@ export PREFIXDIR
 
 mkdir -p $BUILDDIR/src
 pushd $BUILDDIR/src
+
 for url in ${SOURCES[@]}
 do
 	wget -nc $url -P $DOWNLOADDIR
 	archive=`basename $url`
 	package=${archive%.*.*}
+	
 	if [ ! -d $package ]
 	then
 		tar -xf $DOWNLOADDIR/$archive
+		
 		if [ -f $ORIGIN/${package%-*}.patch ]
 		then
 			patch=$ORIGIN/${package%-*}.patch
 			patch -d $package -p1 -i $patch
 		fi
+		
+		pushd $package
+		
 		if [ -f $ORIGIN/${package%-*}.autotools.patch ]
 		then
 			patch=$ORIGIN/${package%-*}.autotools.patch
-			pushd $package
 			patch -p1 -i $patch
-			if [[ $package == *"SDL2"* ]]
+			
+			if [[ $package != *"SDL3"* ]]
 			then
-				./autogen.sh
-				if [ -f android-project/app/jni/Android.mk ]
-				then
-					mkdir -p ../SDL2-ndk-build/jni
-					cp android-project/app/jni/Android.mk ../SDL2-ndk-build/jni/
-					cp android-project/app/jni/Application.mk ../SDL2-ndk-build/jni/
-				fi
-				ln -sf ../../$package ../SDL2-ndk-build/jni/${package%-*}
-			else
 				autoreconf
 			fi
-			popd
 		fi
+		
+		if [[ $package == *"SDL3"* ]]
+		then
+			if [ -f android-project/app/jni/Android.mk ]
+			then
+				mkdir -p ../SDL3-ndk-build/jni
+				cp android-project/app/jni/Android.mk ../SDL3-ndk-build/jni/
+				cp android-project/app/jni/Application.mk ../SDL3-ndk-build/jni/
+			fi
+			
+			ln -sf ../../$package ../SDL3-ndk-build/jni/${package%-*}
+		fi
+		
+		popd
 	fi
 
 	PACKAGES+=($package)
@@ -172,15 +182,19 @@ do
 			popd
 			continue
 		fi
+		if [[ $package == *"SDL3"* ]]
+		then
+			cp -r $src_dir/include/* $PREFIXDIR/$abi/include/
+		fi
 	done
 done
 
 
-cd $BUILDDIR/src/SDL2-ndk-build
+cd $BUILDDIR/src/SDL3-ndk-build
 webpPath=($BUILDDIR/src/libwebp-*)
-sdl_imagePath=($BUILDDIR/src/SDL2_image-*)
+sdl_imagePath=($BUILDDIR/src/SDL3_image-*)
 ln -sf $webpPath $sdl_imagePath/external/libwebp
-$NDK/ndk-build SUPPORT_WEBP=true APP_ABI="$ARCHS"
+$NDK/ndk-build -j1 V=1 SUPPORT_WEBP=true SUPPORT_WAVPACK=false SUPPORT_SAVE_WEBP=false APP_ABI="$ARCHS"
 for lib in libs/*/*.so
 do
 	instdir=$(basename $(dirname $lib))

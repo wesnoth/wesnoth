@@ -24,7 +24,7 @@
 #endif
 
 #ifdef __ANDROID__
-#include <SDL2/SDL_system.h>
+#include <SDL3/SDL_system.h>
 #endif
 
 #if !(defined(__APPLE__) && TARGET_OS_IPHONE)
