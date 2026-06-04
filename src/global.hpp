@@ -15,6 +15,8 @@
 
 #pragma once
 
+#include <boost/predef/os/ios.h>
+
 #ifdef _MSC_VER
 #endif //_MSC_VER
 
@@ -77,4 +79,12 @@
 #define AGGREGATE_EMPLACE(...) emplace_back(__VA_ARGS__)
 #else
 #define AGGREGATE_EMPLACE(...) push_back({ __VA_ARGS__ })
+#endif
+
+#ifdef BOOST_OS_IOS
+#define __IPHONEOS__ BOOST_OS_IOS
+#endif
+
+#if defined(__ANDROID__) || defined(__IPHONEOS__)
+#define TOUCHSCREEN
 #endif
