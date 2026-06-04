@@ -1,6 +1,5 @@
 /*
-	Copyright (C) 2003 - 2026
-	by David White <dave@whitevine.net>
+	Copyright (C) 2026 - 2026
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -15,23 +14,25 @@
 
 #pragma once
 
-#include <SDL3/SDL.h>
+#include <SDL3/SDL_properties.h>
 
-class sdl3_properties {
+class sdl3_properties
+{
 public:
-    sdl3_properties()
-    : props_(SDL_CreateProperties())
-    {}
+	sdl3_properties()
+		: props_(SDL_CreateProperties())
+	{
+	}
 
-    ~sdl3_properties()
-    {
-        SDL_DestroyProperties(props_);
-    }
+	~sdl3_properties()
+	{
+		SDL_DestroyProperties(props_);
+	}
 
-    SDL_PropertiesID id() {return props_;}
+	SDL_PropertiesID id() const { return props_; }
 
 	operator SDL_PropertiesID() const { return props_; }
 
 private:
-    SDL_PropertiesID props_;
+	SDL_PropertiesID props_;
 };
