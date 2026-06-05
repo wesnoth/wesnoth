@@ -20,6 +20,11 @@
 #include <list>
 #include <functional>
 
+#ifdef _WIN32
+// Win32 API forward declaration (full definition in WinUser.h)
+typedef struct tagMSG MSG;
+#endif
+
 //our user-defined double-click event type
 #define TIMER_EVENT (SDL_EVENT_USER + 1)
 #define HOVER_REMOVE_POPUP_EVENT (SDL_EVENT_USER + 2)
@@ -191,6 +196,23 @@ bool is_touch(const SDL_MouseMotionEvent& event);
 
 /** Discards all input events. */
 void discard_input();
+
+#ifdef _WIN32
+/**
+ * Callback passed to SDL_SetWindowsMessageHook.
+ *
+ * Handles anything which interacts with the Windows event loop.
+ * Currently, this is limited to interactions with taskbar toast
+ * notifications.
+ *
+ * @param userdata    Arbitrary userdata passed to SDL_SetWindowsMessageHook.
+ * @param msg         A pointer to a Win32 event structure to process.
+ *
+ * @returns           Whether the Windows event loop should continue
+ *                    processing this message.
+ */
+bool handle_windows_message(void* userdata, MSG* msg);
+#endif
 
 }
 

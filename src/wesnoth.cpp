@@ -1027,6 +1027,10 @@ int main(int argc, char** argv)
 		SDL_SetEventEnabled(SDL_EVENT_FINGER_UP, false);
 #endif
 
+#ifdef _WIN32
+		SDL_SetWindowsMessageHook(&events::handle_windows_message, nullptr);
+#endif
+
 		// declare this here so that it will always be at the front of the event queue.
 		events::event_context global_context;
 		const int res = do_gameloop(cmdline_opts);

@@ -26,9 +26,9 @@
 #include "utils/general.hpp"
 #include "video.hpp"
 
-// #if defined _WIN32
-// #include "desktop/windows_tray_notification.hpp"
-// #endif
+#ifdef _WIN32
+#include "desktop/windows_tray_notification.hpp"
+#endif
 
 #include <algorithm>
 #include <cassert>
@@ -668,15 +668,6 @@ void pump()
 		}
 #endif
 
-#ifdef _WIN32
-// TODO SDL3: needs to be replaced with https://wiki.libsdl.org/SDL3/SDL_SetWindowsMessageHook
-// syswm stuff has been removed overall, so windows_tray_notification::handle_system_event is also generally invalid
-		// case SDL_SYSWMEVENT: {
-		// 	windows_tray_notification::handle_system_event(event);
-		// 	break;
-		// }
-#endif
-
 		case SDL_EVENT_QUIT: {
 			quit_confirmation::quit_to_desktop();
 			continue; // this event is already handled.
@@ -798,5 +789,23 @@ void call_in_main_thread(const std::function<void(void)>& f)
 	// Block until execution is complete in the main thread. Rethrows any exceptions.
 	fdata.finished.get_future().wait();
 }
+
+#ifdef _WIN32
+bool handle_windows_message([[maybe_unused]] void* userdata, MSG* msg)
+{
+	if(!msg) {
+		return false;
+	}
+
+	switch(msg->message) {
+	case windows_tray_notification::tray_message:
+		return windows_tray_notification::message_hook(*msg);
+
+	default:
+		// Continue further processing
+		return true;
+	}
+}
+#endif
 
 } // end events namespace

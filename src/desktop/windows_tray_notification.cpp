@@ -15,8 +15,6 @@
 
 #include "desktop/windows_tray_notification.hpp"
 
-#include <SDL3/SDL_syswm.h>
-
 #include "gettext.hpp"
 #include "serialization/string_utils.hpp"
 #include "serialization/unicode.hpp"
@@ -41,16 +39,12 @@ void windows_tray_notification::destroy_tray_icon()
 	}
 }
 
-void windows_tray_notification::handle_system_event(const SDL_Event& event)
+bool windows_tray_notification::message_hook(const MSG& msg)
 {
-	if (event.syswm.msg->msg.win.msg != WM_TRAYNOTIFY) {
-		return;
-	}
-
-	if (event.syswm.msg->msg.win.lParam == NIN_BALLOONUSERCLICK) {
+	if (msg.lParam == NIN_BALLOONUSERCLICK) {
 		switch_to_wesnoth_window();
 		destroy_tray_icon();
-	} else if (event.syswm.msg->msg.win.lParam == NIN_BALLOONTIMEOUT) {
+	} else if (msg.lParam == NIN_BALLOONTIMEOUT) {
 		destroy_tray_icon();
 	}
 	// Scenario: More than one notification arrives before the time-out triggers the tray icon destruction.
@@ -65,9 +59,11 @@ void windows_tray_notification::handle_system_event(const SDL_Event& event)
 	// I could not find the matching definition for 0x0200 in the headers, but this message value is received when the mouse cursor is over the tray icon.
 	// Drawback: The tray icon can still get 'stuck' if the user does not move the mouse cursor over the tray icon.
 	//	Also, accidental destruction of the tray icon can occur if the user moves the mouse cursor over the tray icon before the balloon for a single notification has expired.
-	else if (event.syswm.msg->msg.win.lParam == 0x0200 && !message_reset) {
+	else if (msg.lParam == 0x0200 && !message_reset) {
 		destroy_tray_icon();
 	}
+
+	return false;
 }
 
 bool windows_tray_notification::create_tray_icon()
@@ -171,15 +167,8 @@ void windows_tray_notification::adjust_length(std::string& title, std::string& m
 
 HWND windows_tray_notification::get_window_handle()
 {
-	SDL_SysWMinfo wmInfo;
-	SDL_VERSION(&wmInfo.version);
-	SDL_Window* window = video::get_window();
-	// SDL 1.2 keeps track of window handles internally whereas SDL 2.0 allows the caller control over which window to use
-	if (!window || SDL_GetWindowWMInfo (window, &wmInfo) != SDL_TRUE) {
-		return nullptr;
-	}
-
-	return wmInfo.info.win.window;
+	auto props = SDL_GetWindowProperties(video::get_window());
+	return static_cast<HWND>(SDL_GetPointerProperty(props, SDL_PROP_WINDOW_WIN32_HWND_POINTER, nullptr));
 }
 
 void windows_tray_notification::switch_to_wesnoth_window()
