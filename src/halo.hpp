@@ -50,8 +50,8 @@ public:
 	 * shroud is active.  (Note it will be shown with the fog active.)
 	 * If it is not attached to an item, the location should be set to -1, -1
 	 */
-	handle add(int x, int y, const std::string& image, const map_location& loc,
-			halo::ORIENTATION orientation=NORMAL, bool infinite=true);
+	handle add(int x, int y, const std::string& image, const map_location& loc, halo::ORIENTATION orientation=NORMAL,
+		bool infinite=true, float parallax = 1.0f, float z_order = 0.0f,  int pixel_offset_x = 0, int pixel_offset_y = 0);
 
 	/** Set the position of an existing haloing effect, according to its handle. */
 	void set_location(const handle & h, int x, int y);
