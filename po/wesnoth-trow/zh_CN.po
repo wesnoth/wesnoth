@@ -14,10 +14,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: wesnoth-1.18\n"
+"Project-Id-Version: wesnoth-1.20\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2026-05-19 02:15 UTC\n"
-"PO-Revision-Date: 2024-05-21 18:22+0800\n"
+"PO-Revision-Date: 2026-05-28 20:47+0800\n"
 "Last-Translator: vimacs <vimacs.hacks@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -25,7 +25,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.8\n"
 
 #. [campaign]: id=The_Rise_of_Wesnoth
 #. [scenario]: id=22_The_Rise_of_Wesnoth
@@ -71,12 +71,6 @@ msgstr "领主"
 
 #. [campaign]: id=The_Rise_of_Wesnoth
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:24
-#, fuzzy
-#| msgid ""
-#| "Lead Prince Haldric through the destruction of the Green Isle and across "
-#| "the Ocean to establish the very kingdom of Wesnoth itself. The "
-#| "confrontation with Lich-Lord Jevyan awaits...\n"
-#| "\n"
 msgid ""
 "Lead Prince Haldric through the destruction of the Green Isle and across the "
 "Ocean to establish the very Kingdom of Wesnoth itself. The confrontation "
@@ -3771,7 +3765,7 @@ msgstr "龙族"
 #. [side]: type=Drake Flameheart, id=Garash
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:68
 msgid "Garash"
-msgstr ""
+msgstr "伽拉什"
 
 #. [side]: type=Drake Flameheart, id=Merkush
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:96
@@ -3813,14 +3807,10 @@ msgstr "(耳语)我不认为交涉可以起作用。"
 
 #. [message]: speaker=Garash
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:220
-#, fuzzy
-#| msgid ""
-#| "Ssso humansss, you’ve come to trouble usss again. Prepare to die! For the "
-#| "glory of the Lords of Morogor!"
 msgid ""
 "So, prey, you have come to trouble us again. Prepare to die! For the glory "
 "of Morogor!"
-msgstr "人类，你们又来给我们找麻烦了。为了魔若阁众神的荣耀，杀了他们！"
+msgstr "原来又是尔等猎物，复来生事。受死吧！为了莫罗戈之荣耀！"
 
 #. [message]: speaker=Lady Jessene
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:224
@@ -5379,7 +5369,7 @@ msgstr "原地把金币放下！我们已经给了盟友足够的酬劳。附近
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:302
 msgid "We have run out of time... We’ll never beat the orcs to the beach."
-msgstr "我们耗尽了时间……已经不能把兽人赶回海滩了……"
+msgstr "我们耗尽了时间……已经不能把兽人赶回海滩了。"
 
 #. [message]: speaker=$chest_unit_temp.id
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/19_The_Vanguard.cfg:334
@@ -6568,9 +6558,9 @@ msgid ""
 "that would be ‘Wes Noth’. So I suggest that the new kingdom be called "
 "‘Wesnoth’, in honor of our old home."
 msgstr ""
-"“韦福克”（Wesfork）这个单词来自你们的古语。它的意思是“西方人”。精灵们叫我"
-"们“西北人”。在你们的古语中，其读法是“WesNoth”。所以我建议新王国起名叫做“韦"
-"诺”（Wesnoth），以向我们的故乡表示敬意。"
+"“韦福克”（Wesfork）这个单词来自你们的古语。它的意思是“西方人”。精灵们叫我们"
+"“西北人”。在你们的古语中，其读法是“WesNoth”。所以我建议新王国起名叫做“韦诺”"
+"（Wesnoth），以向我们的故乡表示敬意。"
 
 #. [message]: speaker=Prince Haldric
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/23_Epilogue.cfg:287
@@ -6657,11 +6647,6 @@ msgstr ""
 
 #. [unit_type]: id=Familiar, race=undead
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Familiar.cfg:17
-#, fuzzy
-#| msgid ""
-#| "Powerful magic users sometimes have familiars, creatures which have had a "
-#| "spirit or minor demon drawn into them. A familiar may act as a spy or "
-#| "messenger for its master."
 msgid ""
 "Powerful magic users sometimes have Familiars, creatures which have had a "
 "spirit or minor demon drawn into them. A familiar may act as a spy or "
@@ -6854,20 +6839,14 @@ msgstr "分心"
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-abilities.cfg:7
 msgid ""
 "Allies adjacent to this unit are not affected by enemy Zones of Control."
-msgstr ""
+msgstr "与该单位相邻的友军单位不受敌方控制区域的影响。"
 
 #. [skirmisher]: id=distract
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-abilities.cfg:8
-#, fuzzy
-#| msgid ""
-#| "This unit is capable of distracting opponents, allowing allied units to "
-#| "trespass their Zones of Control and move unhindered around them."
 msgid ""
 "This unit is capable of distracting opponents, allowing adjacent allies to "
 "ignore enemy Zones of Control."
-msgstr ""
-"该单位拥有转移对手注意力的能力，可以让友军进入敌人的控制区域并不受阻碍地在对"
-"手周围移动。"
+msgstr "该单位拥有转移对手注意力的能力，可以让相邻的友军忽视敌方的控制区域。"
 
 #. [message]: speaker=unit
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-deaths.cfg:12
@@ -6882,7 +6861,7 @@ msgstr "我的日子还没有到头！不！"
 #. [message]: speaker=unit
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-deaths.cfg:42
 msgid "No! I’ll not go so easil—"
-msgstr "不！我不能这么轻易地倒……"
+msgstr "不！我不能这么轻易地倒—"
 
 #. [message]: speaker=unit
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-deaths.cfg:56

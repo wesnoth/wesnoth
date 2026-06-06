@@ -11,10 +11,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: wesnoth-1.16\n"
+"Project-Id-Version: wesnoth-1.19\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2026-05-19 02:15 UTC\n"
-"PO-Revision-Date: 2026-04-10 08:40+0800\n"
+"PO-Revision-Date: 2026-04-25 13:12+0800\n"
 "Last-Translator: vimacs <vimacs.hacks@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -59,17 +59,15 @@ msgstr ""
 msgid "(Novice level, 6 scenarios.)"
 msgstr "（新手级别，6幕场景。）"
 
-# Translated by openai with model qwen3.5-35b-a3b.
 #. [campaign]: id=The_South_Guard
 #. this campaign is not a direct continuation of the story and characters, but is next chronologically and is the recommended next campaign
 #: data/campaigns/The_South_Guard/_main.cfg:52
-#, fuzzy
 msgid ""
 "The saga continues in\n"
 "<i>Of Pearls and Pirates</i>"
 msgstr ""
-"故事在\n"
-"<i>珍珠与海盗</i>中继续"
+"传奇续章：\n"
+"<i>珍珠与海盗</i>"
 
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:56
@@ -126,36 +124,32 @@ msgstr "美工和图形设计"
 msgid "Defeat Urza Mathin in <i>Born to the Banner</i>."
 msgstr "在<i>为旗而生</i>中击败乌扎·马辛。"
 
-# Translated by openai with model qwen3-coder.
 #. [achievement_group]
 #: data/campaigns/The_South_Guard/achievements.cfg:19
-#, fuzzy
 msgid "Scenario 1: Thug Beater"
-msgstr "场景1：打手终结者"
+msgstr "场景1：暴徒克星"
 
 #. [achievement_group]
 #: data/campaigns/The_South_Guard/achievements.cfg:20
 msgid "Defeat Urza Fastik in <i>Proven by the Sword</i>."
 msgstr "在<i>以剑为证</i>中击败乌扎·法斯提克。"
 
-# Translated by openrouter with model qwen/qwen3-235b-a22b:free.
+# Translated by openai with model qwen3.6-35b-a3b.
 #. [achievement_group]
 #: data/campaigns/The_South_Guard/achievements.cfg:20
 #, fuzzy
 msgid "Scenario 2: Trapper Trapper"
-msgstr "伏阵诡谋"
+msgstr "战役2：设伏者"
 
 #. [achievement_group]
 #: data/campaigns/The_South_Guard/achievements.cfg:21
 msgid "Personally defeat Urza Nalmath in <i>Vale of Tears</i>."
 msgstr "在<i>泪滴山谷</i>中亲自击败乌扎·纳尔马什。"
 
-# Translated by openrouter with model qwen/qwen3-235b-a22b:free.
 #. [achievement_group]
 #: data/campaigns/The_South_Guard/achievements.cfg:21
-#, fuzzy
 msgid "Scenario 3: Thief Slayer"
-msgstr "第三幕：诛贼之章"
+msgstr "场景3：盗贼杀手"
 
 #. [achievement_group]
 #: data/campaigns/The_South_Guard/achievements.cfg:22
@@ -305,27 +299,19 @@ msgstr "为旗而生"
 #. [part]
 #. Intro to scenario 1. "orc-forts" are forts that defend against orcs, not forts that are manned by orcs
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:27
-#, fuzzy
-#| msgid ""
-#| "The reign of Haldric VII was a time of great prosperity and peace in "
-#| "Wesnoth. Konrad I had driven off the orcs in the north. The eastern forts "
-#| "were quiet and secure. The elves in the western forest kept to their own "
-#| "affairs. In the south, men built new towns and farms."
 msgid ""
 "Our story begins during a time of great prosperity and peace in Wesnoth. "
 "Royal armies had destroyed the undead tombs in the east. The northern orc-"
 "forts were quiet and secure. The elves in the western forest kept to their "
 "own affairs. In the south, men built new towns and farms."
 msgstr ""
-"哈德里克七世统治的时代，是韦诺王国繁荣而和平的时代。科纳德一世已将北方的兽人"
-"驱赶出去。东部的要塞平静无事，十分安稳。西部森林中的精灵们忙于自己的事务。而"
-"在南方，人们建起了新的城镇和农场。"
+"我们的故事从一个韦诺王国繁荣而和平的时代开始。王军已经摧毁了东方的亡灵墓穴。"
+"北方的防兽要塞一片平静，安稳无虞。西部森林中的精灵们忙于自己的事务。而在南"
+"方，人们建起了新的城镇和农场。"
 
-# Translated by openai with model qwen3.5-35b-a3b.
 #. [part]
 #. Intro to scenario 1
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:33
-#, fuzzy
 msgid ""
 "And from those young towns arose a stout-hearted peasant militia: The South "
 "Guard, stewards of peace and order on the southern frontier."
@@ -448,32 +434,24 @@ msgstr "德欧兰尉官前来报到，长官！...呃，女士。"
 msgid "Relax, Lieutenant. Fresh from the academy, are we?"
 msgstr "放轻松点，尉官。刚从军事学院毕业，是吧？"
 
-# Translated by openrouter with model deepseek/deepseek-chat-v3-0324:free.
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:183
-#, fuzzy
 msgid ""
 "Yes ma’am. —sir. And as His Majesty ordered, I’ve brought with me a "
 "contingent of fresh soldiers to reinforce Westin’s faltering South Guard!"
 msgstr ""
-"遵命，长官。遵照亲王殿下的命令，我已带来一支生力军前来增援韦斯廷日渐衰弱的南"
+"是的女士——长官。遵照国王的命令，我已带来一支生力军前来增援韦斯廷日渐衰弱的南"
 "疆卫队！"
 
-# Translated by openrouter with model deepseek/deepseek-chat-v3-0324:free.
 #. [message]: speaker=Mari
 #. Mari is somewhat sarcastic and not particularly emotive. She can come across as somewhat cold.
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:188
-#, fuzzy
 msgid ""
 "I’m Mari. Got the same orders as you; guess someone wanted an officer with "
 "experience to keep an eye on you and your “fresh” company. Can’t imagine why."
 msgstr ""
-"\"我是玛芮。和你接到同样的命令——估计阿兰德王子想派个有经验的军官盯着你和你"
-"的'菜鸟'连队。真搞不懂他图啥。\"\n"
-"\n"
-"（注：根据角色设定采用略带讽刺的冷淡语气，\"fresh\"译为\"菜鸟\"以契合军营语"
-"境，反问句\"Can't imagine why\"处理为口语化吐槽\"真搞不懂他图啥\"，保留角色玩"
-"世不恭的特质）"
+"我是玛芮。和你收到的命令一样；看来有人想派个有经验的军官来盯着你和你的“新兵”"
+"部队。真想不通是为了什么。"
 
 #. [message]: speaker=Mari
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:192
@@ -482,12 +460,10 @@ msgid ""
 "at you."
 msgstr "好吧，军令如山。过来这儿，德欧兰——让我好好瞧瞧你。"
 
-# Translated by openrouter with model deepseek/deepseek-chat-v3-0324:free.
 #. [option]
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:197
-#, fuzzy
 msgid "On my way!"
-msgstr "正在路上！"
+msgstr "来了！"
 
 #. [option]
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:206
@@ -546,26 +522,13 @@ msgstr ""
 "你每次试着移动一个单位时，看不懂地上蹦出的那些百分比？那是你士兵的地形防御——"
 "也就是他们面对敌人攻击的<i><b>闪避几率</b></i>。"
 
-# Translated by openrouter with model openrouter/horizon-alpha.
 #. [display_tip]
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:312
-#, fuzzy
 msgid "Evading Attacks"
-msgstr "闪避攻击"
+msgstr "躲避攻击"
 
 #. [display_tip]
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:314
-#, fuzzy
-#| msgid ""
-#| "In Wesnoth, every attack has a chance to miss.\n"
-#| "\n"
-#| "Units on favorable terrain (such as castles, villages,\n"
-#| "forest, or hills) are more likely to dodge attacks, while\n"
-#| "units on poor terrain (such as water, sand, or ice)\n"
-#| "are much easier to hit.\n"
-#| "\n"
-#| "Try to position your units on good terrain, and attack\n"
-#| "your enemies while they’re on poor terrain!"
 msgid ""
 "In Wesnoth, every attack has a chance to miss.\n"
 "\n"
@@ -584,10 +547,15 @@ msgid ""
 msgstr ""
 "在韦诺里面，每次攻击都有可能落空。\n"
 "\n"
-"站在有利地形（如城堡、村庄、森林或丘陵）上的单位更容易躲避攻击；而处在不利地"
-"形（如水面、沙地或冰面）上的单位则更容易被击中。\n"
+"站在有利地形（如城堡、村庄、森林或丘陵）上的单位更容易躲避攻击；\n"
+"而处在不利地形（如水面、沙地或冰面）上的单位则更容易被击中。\n"
 "\n"
-"尽量把你的单位放在好地形上，并趁敌人处在坏地形时发动攻击！"
+"不同单位在不同地形中获得的加成不同。例如，大多数步兵\n"
+"在森林中的闪避率为 50%——但骑兵仅为 30%。\n"
+"欲知详情，请<b><i>右键点击单位并选择“单位类型描述”。</i></b>\n"
+"\n"
+"为了在战斗中占据最大优势，请尽量<b><i>将你的单位部署在有利地形上</i></b>，\n"
+"并在<b><i>敌人处于不利地形时发起攻击！</i></b>"
 
 #. [message]: speaker=Mari
 #. Mari is speaking sarcastically, and poking fun at game tutorials. Deoran is a trained soldier and obviously knows how to ride his horse and swing a sword - but the player needs to be taught how to move and attack
@@ -607,11 +575,8 @@ msgstr "看！"
 msgid "...a quintain? You want me to attack a practice dummy?"
 msgstr "…一个刺靶？您是想让我攻击一个训练用的假人？"
 
-# Translated by openai with model qwen3.5-27b. Original text: You have
-# $deoran_hitpoints hitpoints and a sword, rookie. I’m fairly sure you’ll win.
 #. [message]: speaker=Mari
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:356
-#, fuzzy
 msgid ""
 "You have fifty pounds of armor and a horse, rookie. I’m fairly sure you’ll "
 "win."
@@ -678,14 +643,12 @@ msgstr "结束你的回合"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:536
-#, fuzzy
-#| msgid ""
-#| "I’m injured; this is more dangerous than I expected. I need to retreat to "
-#| "a village and regain some hitpoints."
 msgid ""
 "I’m injured; this is more dangerous than I expected. I should retreat to a "
 "village, where I can catch my breath and bandage my wounds."
-msgstr "我受伤了；这比预想的更危险。我需要撤到村庄回复些生命值。"
+msgstr ""
+"我受伤了；这比预想的更危险。我应该撤回到一个村庄，在那里我可以喘口气，包扎一"
+"下伤口。"
 
 #. [disallow_end_turn]
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:541
@@ -696,15 +659,14 @@ msgstr ""
 "先移动到一个村庄！\n"
 "（如需撤销一次移动，请按“u”键）"
 
-# Translated by openrouter with model deepseek/deepseek-chat-v3-0324:free.
+# Translated by openai with model qwen3.6-35b-a3b.
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:575
 #, fuzzy
 msgid ""
 "I’m already seriously injured! If I attack now, I am sure to be vanquished. "
 "By a dummy, no less."
-msgstr ""
-"我的生命值只剩$hitpoints点了！现在出击必败无疑——而且还会败在一个木桩人手里。"
+msgstr "我已经重伤在身！现在出击，必败无疑。而且……还是输给了个木桩。"
 
 #. [objective]: condition=win
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:587
@@ -739,23 +701,21 @@ msgstr ""
 "更重要的是，村庄提供疗伤功能。回合开始时站在村庄可以提供8点生命值的<i>治疗</"
 "i>。现在结束你的回合。"
 
-# Translated by openrouter with model deepseek/deepseek-chat-v3-0324:free.
+# Translated by openai with model qwen3.6-35b-a3b.
 #. [message]: speaker=Mari
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:627
 #, fuzzy
 msgid ""
 "Congratulations, you ran away from the dummy and licked your wounds in a "
 "village. I hope you’re proud."
-msgstr "恭喜，你小子躲过枪阵逃回村里还捞了8点体力。挺能耐啊？"
+msgstr "恭喜，你从假人面前逃之夭夭，躲在村子里舔舐伤口。希望你以此为荣。"
 
-# Translated by openrouter with model deepseek/deepseek-chat-v3-0324:free.
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:631
-#, fuzzy
 msgid ""
 "I’ve had enough of being humiliated by this dummy. Time to recruit some "
 "proper soldiers and smash that thing to pieces."
-msgstr "我受够被这傀儡羞辱了。是时候征召些像样的士兵，把那玩意儿砸个粉碎。"
+msgstr "我受够被这假人羞辱了。是时候征募些像样的士兵，把那玩意儿砸个粉碎。"
 
 # Translated by openrouter with model deepseek/deepseek-chat-v3-0324:free.
 #. [message]
@@ -850,16 +810,12 @@ msgstr "...他还活着。只是晕过去了，接下来的路程怕是帮不上
 
 #. [message]: speaker=second_unit
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:763
-#, fuzzy
-#| msgid "Hooray! The dummy is destroyed, and I have gained 8 experience!"
 msgid ""
 "Hooray! The dummy is destroyed, and I’ve gained valuable combat experience!"
-msgstr "好家伙！那假人终于被摧毁了，我这经验值又涨了8点！"
+msgstr "好家伙！那假人终于被摧毁了，而我得到了宝贵的战斗经验！"
 
-# Translated by openrouter with model qwen/qwen3-8b:free.
 #. [message]
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:767
-#, fuzzy
 msgid ""
 "Units gain a small amount of experience when attacking or defending, but "
 "gain much more by striking a finishing blow, especially against high-level "
@@ -867,9 +823,10 @@ msgid ""
 "\n"
 "With enough experience, a soldier will advance to a powerful level 2 unit."
 msgstr ""
-"单位在攻击或防守时会获得少量经验，但能通过一击必杀获取更多，尤其是对付那些自"
-"以为是的精英单位。  \n"
-"攒够经验，士兵就能升阶成二级单位——当然，前提是别被精英单位的轻功闪过了。"
+"攻击或防御时，单位会获得少量经验值，但若给予致命一击，尤其是击杀高等级的敌"
+"人，将收获多得多的经验。\n"
+"\n"
+"积攒足够的经验后，士兵将晋升为强大的2级单位。"
 
 # Translated by openrouter with model qwen/qwen3-8b:free.
 #. [message]: speaker=Mari
@@ -910,13 +867,10 @@ msgid ""
 "road!"
 msgstr "菜鸟，叫你早退。瞧，南道有匪徒！"
 
-# Translated by openrouter with model qwen/qwen3-8b:free. Original text:
-# Bandits
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:823
-#, fuzzy
 msgid "Bandits! Where?"
-msgstr "强盗！在哪？！"
+msgstr "土匪！在哪？"
 
 # Translated by openrouter with model qwen/qwen3-8b:free.
 #. [message]: speaker=Urza Mathin
@@ -938,14 +892,12 @@ msgid ""
 msgstr ""
 "你以为我们是傻瓜吗？我奉命南下支援西顿威名赫赫的南疆卫队，确保这片区域安全！"
 
-# Translated by openrouter with model qwen/qwen3-8b:free.
 #. [message]
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:877
-#, fuzzy
 msgid ""
 "The only danger around here is you, and I intend to put an end to it. Men, "
 "raise your spears!"
-msgstr "你才是这儿唯一的威胁，我打算终结它。士兵们，举起你们的矛！"
+msgstr "这里唯一的危险就是你，我要亲手终结掉它。士兵们，举起长矛！"
 
 #. [message]: speaker=Urza Mathin
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:881
@@ -1067,12 +1019,10 @@ msgstr "提示对话与弹窗已经开启"
 msgid "Tip Dialogue &amp; Popups Are Off"
 msgstr "提示对话与弹窗已经关闭"
 
-# Translated by openai with model qwen3-coder.
 #. [message]
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:1048
-#, fuzzy
 msgid "Stop right there! Not one hair further or I’ll bash your head in!"
-msgstr "站住！再进一步我就把你脑袋打破！"
+msgstr "站住！再往前一步，我就砸烂你的脑袋！"
 
 #. [display_tip]
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:1051
@@ -1106,16 +1056,12 @@ msgstr ""
 
 #. [message]: speaker=Urza Mathin
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:1087
-#, fuzzy
-#| msgid ""
-#| "The sun begins to set! Soon these Wesnoth soldiers will falter in the "
-#| "dark, while my thugs and I will fight at our best!"
 msgid ""
 "The sun begins to set! Soon these Wesnoth soldiers will falter in the dark, "
 "while my thugs and I will fight at our best. Press the attack!"
 msgstr ""
 "太阳要落山了！很快这些韦诺士兵在黑暗里就会慌了手脚，而我和我的暴徒们正是最能"
-"打的时候！"
+"打的时候！继续进攻！"
 
 #. [message]: speaker=Mari
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:1095
@@ -1183,14 +1129,12 @@ msgstr ""
 "哈，这一仗轻而易举！这些士兵的年轻指挥官肯定是个蠢货，竟然在我强他弱的夜里跟"
 "我的暴徒开打。"
 
-# Translated by openai with model qwen3-coder.
 #. [message]: speaker=Mari
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:1189
-#, fuzzy
 msgid ""
 "Get a move on, rookie! I’m sure those bandits have called for reinforcements "
 "— you’re running out of time to finish them off."
-msgstr "快点，新兵！我敢肯定那些强盗已经呼叫增援了——你没时间再拖下去了。"
+msgstr "快点，新兵！那些土匪肯定叫了援兵——你得抓紧时间把他们解决掉。"
 
 #. [message]: speaker=Urza Mathin
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:1211
@@ -1265,16 +1209,14 @@ msgstr ""
 "我这辈子可从未见过这种事！那人明明已经死了，结果又站了起来！你说你以前跟这些"
 "东西交过手，玛芮？"
 
-# Translated by openai with model qwen3.5-27b.
 #. [message]: speaker=Mari
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:1335
-#, fuzzy
 msgid ""
 "Yeah, I have. And no, simple bandits aren’t supposed to know how to create "
 "them. This reeks of black magic; powerful black magic."
 msgstr ""
-"是啊，我有过。别搞错了，普通匪徒可没那本事造出这玩意儿。这味儿太冲了，是黑魔"
-"法，而且是大手笔的黑魔法。"
+"是啊，我见过。不，普通土匪可没那本事造出这玩意儿。这味儿太冲了，是黑魔法，强"
+"大的黑魔法。"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:1339
@@ -1286,14 +1228,13 @@ msgstr ""
 "这兄弟说他是四兄弟里的长子——另外三个肯定还活着，并且正在惹麻烦。这些不起眼的"
 "亡命徒是怎么搞到这种魔法的？"
 
-# Translated by openai with model qwen3.5-27b.
 #. [message]: speaker=Mari
 #: data/campaigns/The_South_Guard/scenarios/01_Born_to_the_Banner.cfg:1343
-#, fuzzy
 msgid ""
 "Maybe the locals in town will know something. Come on, let’s hurry onwards "
 "towards Westin, and hope we don’t run into any more trouble on the way."
-msgstr "城里人或许知道点什么。走吧，赶紧去威斯廷，别指望路上再不出岔子了。"
+msgstr ""
+"镇里的本地人或许知道点什么。走吧，赶紧去韦斯廷，希望路上别再出什么岔子了。"
 
 #. [scenario]: id=02_Proven_by_the_Sword
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:11
@@ -1387,64 +1328,94 @@ msgstr ""
 "那就试试看。德欧兰，你和你的人去处理这个匪徒。谁死在那些亡灵手里，谁就会变成"
 "他们的一员，别犯蠢。"
 
+# Translated by openai with model qwen3.6-35b-a3b.
 #. [message]: speaker=Mari
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:245
+#, fuzzy
 msgid ""
 "Meanwhile, I’ll sneak past and get in contact with Westin — someone in town "
 "better know what’s going on here. If we’re lucky, I’ll return with "
 "reinforcements."
 msgstr ""
+"Meanwhile, I’ll sneak past and get in contact with Westin — someone in town "
+"better know what’s going on here. If we’re lucky, I’ll return with "
+"reinforcements.“与此同时，我会潜行过去和威斯汀接头——镇上总该有人知道这里发生"
+"了什么。运气好的话，我会带援军回来。”"
 
+# Translated by openai with model qwen3.6-35b-a3b.
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:249
+#, fuzzy
 msgid ""
 "Going alone? That sounds dangerous. What happened to staying an observer?"
-msgstr ""
+msgstr "单独行动？那听起来很危险。那个“保持观察者身份”的承诺去哪了？"
 
+# Translated by openai with model qwen3.6-35b-a3b.
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:259
+#, fuzzy
 msgid ""
 "Well then. I hope Mari returns with the rest of the South Guard, but I "
 "shouldn’t count on it. I may only be a junior commander, but this outlaw "
 "underestimates me if he thinks I can’t beat him on my own."
 msgstr ""
+"那就这样吧。我指望玛芮能和其他南疆卫队成员一起回来，但这事未必靠得住。我虽只"
+"是个初级指挥官，但如果那帮匪徒以为我独力对付不了他们，那就大错特错了。"
 
+# Translated by openai with model qwen3.6-35b-a3b.
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:269
+#, fuzzy
 msgid ""
 "For with each fight, we gain experience and grow stronger! If I have any "
 "veteran soldiers from the last battle, I may wish to recall them so they can "
 "continue to gain experience and eventually gain a promotion."
 msgstr ""
+"<i>毕竟每经历一场战斗，我们都能积累经验，变得更强！如果上次战役中有老兵幸存，"
+"我或许该召回他们，让他们继续积累经验，最终晋升军衔。</i>"
 
+# Translated by openai with model qwen3.6-35b-a3b.
 #. [display_tip]
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:272
+#, fuzzy
 msgid "Recalling Veterans"
-msgstr ""
+msgstr "征召回归老兵"
 
+# Translated by openai with model qwen3.6-35b-a3b.
 #. [display_tip]
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:274
+#, fuzzy
 msgid ""
 "Press <b>Alt+R</b> (or right-click on Deoran) to <i>recall</i> veteran "
 "soldiers\n"
 "from the previous scenario. Recalling a veteran only ever costs\n"
 "20 gold, no matter how powerful (or weak) they are."
 msgstr ""
+"按 <b>Alt+R</b>（或在德欧兰身上右键）<i>召回</i> 上一关卡的资深士兵。无论战力"
+"强弱，召回老兵仅需 20 金币。"
 
+# Translated by openai with model qwen3.6-35b-a3b.
 #. [display_tip]
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:278
+#, fuzzy
 msgid ""
 "Recalling and leveling-up soldiers is very important. By recalling\n"
 "veterans every scenario and building up their experience, over\n"
 "time you can create a very powerful army."
 msgstr ""
+"召回和提升士兵至关重要。每场战役都召回老兵并积累经验，久而久之，你将打造出一"
+"支强大的军队。"
 
+# Translated by openai with model qwen3.6-35b-a3b.
 #. [display_tip]
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:282
+#, fuzzy
 msgid ""
 "If you wish to recruit new soldiers, you can still do so by pressing\n"
 "<b>Ctrl+R</b>. <b>Ctrl+R</b> to recruit, <b>Alt+R</b> to recall."
 msgstr ""
+"若想招募新士兵，你仍可通过按 <b>Ctrl+R</b> 进行操作。<b>Ctrl+R</b> 招募，"
+"<b>Alt+R</b> 召回。"
 
 #. [objective]: condition=win
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:294
@@ -1458,13 +1429,15 @@ msgid ""
 "a reminder that it’s under our control. It will remain that way until an "
 "enemy moves into it."
 msgstr ""
+"很好，我们占领了一个村庄！那上面飘扬的旗帜会提醒我们它归我们控制。除非有敌人"
+"进入，否则它会一直保持这样。"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:323
 msgid ""
 "Each village we control provides upkeep and generates gold, which I can use "
 "to recruit new soldiers."
-msgstr ""
+msgstr "每个我们控制的村庄都能提供维护费并产生金币，我可以借此征募新士兵。"
 
 #. [display_tip]
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:327
@@ -1482,156 +1455,224 @@ msgid ""
 "To ensure a healthy supply of gold, \n"
 "capture as many villages as you can!"
 msgstr ""
+"每个你占领的村庄每回合提供 1 金币，\n"
+"并支持 1 个单位维护费用。\n"
+"2 级单位需 2 维护费，3 级单位需 3 维护费，\n"
+"以此类推。\n"
+"\n"
+"为确保充足的资金补给，\n"
+"尽可能多占领村庄！"
 
+# Translated by openai with model qwen3.6-35b-a3b.
 #. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:348
+#, fuzzy
 msgid ""
 "Ha, this zombie is so slow and weak! Usually, moving next to an enemy unit "
 "prevents me from moving any further. But this frail, feeble Walking Corpse "
 "is easy to outmaneuver."
 msgstr ""
+"哈，这僵尸又慢又弱！通常来说，挨着敌方单位移动会限制我的行动范围。但这具瘦弱"
+"不堪的活尸，很容易就能甩开。"
 
+# Translated by openai with model qwen3.6-35b-a3b.
 #. [message]
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:352
+#, fuzzy
 msgid ""
 "Unlike most units, level 0 units (such as Walking Corpses) do not exert a "
 "Zone of Control. Your units can move freely around them."
 msgstr ""
+"与普通单位不同，0级单位（如行尸）不产生控制区域。你的单位可以自由从它们周围通"
+"过。"
 
+# Translated by openai with model qwen3.6-35b-a3b.
 #. [message]
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:364
+#, fuzzy
 msgid ""
 "I’m nearly blind in this nighttime gloom... If we don’t keep our distance "
 "from the undead, we’re going to get massacred!"
 msgstr ""
+"<i>这夜色晦暗，我几乎瞎了……要是我们不跟亡灵保持距离，就要被屠杀殆尽！</i>"
 
+# Translated by openai with model qwen3.6-35b-a3b.
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:372
+#, fuzzy
 msgid ""
 "Dawn breaks — the heroes grow strong while the villains grow weak. Men of "
 "the South Guard, now is our time to attack!"
 msgstr ""
+"黎明破晓——英雄日益强盛，反派日渐式微。南疆卫队众将士，此刻正是我们发起进攻的"
+"时机！"
 
+# Translated by openai with model qwen3.6-35b-a3b.
 #. [message]: speaker=Urza Fastik
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:404
+#, fuzzy
 msgid ""
 "Ah, excellent! The South Guard fights my warriors at night, when we are at "
 "our best! I am fortunate that their commander is so inexperienced."
 msgstr ""
+"哈，太好了！南卫队竟在夜间与我方战士交手，那可是我们状态最佳的时刻！还好他们"
+"的指挥官如此缺乏经验。"
 
+# Translated by openai with model qwen3.6-35b-a3b.
 #. [message]: speaker=Urza Fastik
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:440
+#, fuzzy
 msgid ""
 "Idiot corpses, what are you doing? Don’t fight the South Guard during the "
 "day, when they’re at their best! ...how do I control these blasted things?"
 msgstr ""
+"白痴行尸，你们在干什么？别在白天跟南疆卫队硬碰硬，那可是他们状态最好的时"
+"候！……我怎么才能控制这些该死的东西？"
 
+# Translated by openai with model qwen3.6-35b-a3b.
 #. [message]: speaker=Urza Fastik
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:480
+#, fuzzy
 msgid ""
 "Yes that’s right, you foolish South Guard commander! Fight waist-deep in the "
 "river while my bandits are safe in their encampments!"
 msgstr ""
+"没错，你这愚蠢的南疆卫队指挥官！在河里跟我搏斗，而我的匪徒却安安全全待在营地"
+"里！"
 
+# Translated by openai with model qwen3.6-35b-a3b.
 #. [message]
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:484
+#, fuzzy
 msgid ""
 "Most of your units have only a 20% chance to evade when standing in shallow "
 "water, while in encampment terrain most of the bandits have 60%. Fighting "
 "with your units on poor terrain isn’t always a bad idea, but it is often not "
 "worth the disadvantage to your troops."
 msgstr ""
+"你方部队在浅水区仅有20%的闪避几率，而敌寇在营地地形下拥有60%。依托劣势地形作"
+"战未必是坏主意，但往往不足以弥补给我军的减益。"
 
+# Translated by openai with model qwen3.6-35b-a3b.
 #. [message]: speaker=Urza Fastik
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:491
+#, fuzzy
 msgid "If only it weren’t daytime, this would be the perfect fight for me..."
-msgstr ""
+msgstr "要不是大白天，这真是我喜欢的作战环境……"
 
+# Translated by openai with model qwen3.6-35b-a3b.
 #. [message]: speaker=Urza Fastik
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:500
+#, fuzzy
 msgid "And in the middle of the night too! This is the perfect fight for me!"
-msgstr ""
+msgstr "大半夜的还打！这仗正合我意！"
 
+# Translated by openai with model qwen3.6-35b-a3b.
 #. [message]: speaker=Urza Fastik
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:528
+#, fuzzy
 msgid ""
 "Hey, that’s not fair! I spent ages fortifying the road, you can’t just go "
 "around!"
-msgstr ""
+msgstr "嘿，这可不公平！我花了好长时间加固道路，你们不能就这么绕过去！"
 
+# Translated by openai with model qwen3.6-35b-a3b.
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:543
+#, fuzzy
 msgid ""
 "I had better hurry and finish off this bandit! If I take too long he may "
 "decide to flee, and then I’ll never get the chance to find out what he knows!"
 msgstr ""
+"我得赶紧把这强盗宰了！要是拖太久，他可能会逃掉，到时候我就没机会知道他知道什"
+"么了！"
 
+# Translated by openai with model qwen3.6-35b-a3b.
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:571
+#, fuzzy
 msgid "We’ve caught you at last, you outlaw! Prepare to meet your end!"
-msgstr ""
+msgstr "终于抓到你了，罪犯！准备迎接你的末日吧！"
 
+# Translated by openai with model qwen3.6-35b-a3b.
 #. [message]: speaker=Urza Fastik
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:575
+#, fuzzy
 msgid ""
 "Gah, more soldiers from Westin... Forget this, I’m getting out of here while "
 "I still have the chance!"
-msgstr ""
+msgstr "Gah, 更多韦斯顿来的兵……算了，趁现在还能走，老子撤了！"
 
 #. [message]: speaker=Mari
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:581
 msgid ""
 "He’s gone! Good work defeating these undead, Deoran, but their leader has "
 "escaped..."
-msgstr ""
+msgstr "他逃了！干掉这些亡灵很不错，德欧兰，但他们的头目跑了……"
 
+# Translated by openai with model qwen3.6-35b-a3b.
 #. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:600
+#, fuzzy
 msgid ""
 "Even with the power of darkness at my command... No, I can’t die yet! I— I "
 "can still escape!"
-msgstr ""
+msgstr "即便掌控着黑暗之力……不，我还不能死！我——我还能逃走！"
 
+# Translated by openai with model qwen3.6-35b-a3b.
 #. [message]: speaker=Sir Gerrick
 #. "clap you in irons" means "put you in jail"
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:622
+#, fuzzy
 msgid ""
 "Not so fast, outlaw — we’ve caught you at last! Time to clap you in irons."
-msgstr ""
+msgstr "没那么快，逃犯——我们终于逮到你了！是时候给你上铐了。"
 
+# Translated by openai with model qwen3.6-35b-a3b.
 #. [message]: speaker=Urza Fastik
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:636
+#, fuzzy
 msgid "Urgh! Get these chains... off me..."
-msgstr ""
+msgstr "呃！把这些锁链……从我身上……拿开……"
 
+# Translated by openai with model qwen3.6-35b-a3b.
 #. [message]: speaker=Mari
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:653
+#, fuzzy
 msgid ""
 "Minister, don’t let him die! This is our best chance to finally get some "
 "answers."
-msgstr ""
+msgstr "部长，别让他死！这是我们最终拿到答案的最佳机会。"
 
+# Translated by openai with model qwen3.6-35b-a3b.
 #. [message]
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:663
+#, fuzzy
 msgid ""
 "Mari, you’ve returned! And these must be the South Guard officers we were "
 "sent here to meet."
-msgstr ""
+msgstr "玛芮，你回来了！想必这些就是我们此来接头的南疆卫队尉官了。"
 
+# Translated by openai with model qwen3.6-35b-a3b.
 #. [message]: speaker=Minister Hylas
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:667
+#, fuzzy
 msgid ""
 "Minister Hylas, archivist and local medic. A pleasure to make your "
 "acquaintance, Lieutenant Deoran."
-msgstr ""
+msgstr "希拉斯部长，档案管理员兼当地医师。很高兴认识你，德欧兰尉官。"
 
+# Translated by openai with model qwen3.6-35b-a3b.
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_by_the_Sword.cfg:671
+#, fuzzy
 msgid ""
 "Aye, an’ I’m Sir Gerrick, infantry commander o’ the South Guard! But now "
 "ain’t the time for talk — let’s get this prisoner back t’ town, and finally "
 "get some answers out o’ him."
 msgstr ""
+"对，我是格里里克爵士，南疆卫队的步兵指挥官！但现在不是聊天时候——快把这犯人带"
+"回镇里，好好审出点口供来。"
 
 #. [scenario]: id=02x_Westin
 #: data/campaigns/The_South_Guard/scenarios/02x_Westin.cfg:5
@@ -1645,13 +1686,17 @@ msgstr "韦斯廷镇"
 msgid "Westin"
 msgstr "韦斯廷"
 
+# Translated by openai with model qwen3.6-35b-a3b.
 #. [message]: speaker=Minister Hylas
 #: data/campaigns/The_South_Guard/scenarios/02x_Westin.cfg:139
+#, fuzzy
 msgid "The Vale of Blossoming Trees."
-msgstr ""
+msgstr "花树谷"
 
+# Translated by openai with model qwen3.6-35b-a3b.
 #. [message]: speaker=Minister Hylas
 #: data/campaigns/The_South_Guard/scenarios/02x_Westin.cfg:144
+#, fuzzy
 msgid ""
 "Other than that singular piece of information, I regret to report that Urza "
 "Fastik remains as recalcitrant as the day we first arrived.\n"
@@ -1660,119 +1705,180 @@ msgid ""
 "powers, the location of another Urza brother, or something else entirely, I "
 "cannot say."
 msgstr ""
+"除那一条关键情报外，我遗憾地报告，乌尔扎·法斯蒂克依然如我们初到时那般顽固不"
+"化。\n"
+"\n"
+"至于“繁花之谷”究竟是指他黑暗力量的源泉、另一位乌尔扎兄弟的所在，还是其他完全"
+"无关的事物，我便无法断言了。"
 
+# Translated by openai with model qwen3.6-35b-a3b.
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/02x_Westin.cfg:150
+#, fuzzy
 msgid ""
 "The vale... isn’t that an Aethenwood exclave? I can’t imagine the Aethenwood "
 "elves would have anything to do with necromancy, or ever offer aid to "
 "bandits... I hear they’re aloof even with regards to the king. Can we not "
 "learn more from our captive?"
 msgstr ""
+"这片谷地……那不是艾森伍德的外飞地吗？我无法想象艾森伍德的精灵会与死灵术有所牵"
+"连，或是曾援助过匪徒……我听说他们甚至对国王都保持超然疏离。我们难道不能从俘虏"
+"口中了解更多情况吗？"
 
+# Translated by openai with model qwen3.6-35b-a3b.
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/02x_Westin.cfg:154
+#, fuzzy
 msgid ""
 "I say we’re treatin’ him too gentle. Man like Fastik — he’s plenty used to "
 "roughing it. Lives are at stake, an’ too much coddling ain’t getting us "
 "nowhere."
 msgstr ""
+"我话搁这儿：咱们对他太宽纵了。像法斯蒂克那号人——粗茶淡饭他熟门熟路。人命关"
+"天，一味溺爱可半点忙都帮不上。"
 
+# Translated by openai with model qwen3.6-35b-a3b.
 #. [message]: speaker=Minister Hylas
 #: data/campaigns/The_South_Guard/scenarios/02x_Westin.cfg:158
+#, fuzzy
 msgid ""
 "I fear there is a corruption in his soul, darker than even my light can "
 "illuminate. Now deprived of the dark magic that once suffused him, his very "
 "mind has begun to fade away."
 msgstr ""
+"<i>{'msgid': 'I fear there is a corruption in his soul, darker than even my "
+"light can illuminate. Now deprived of the dark magic that once suffused him, "
+"his very mind has begun to fade away.', 'comment': '[message]: "
+"speaker=Minister Hylas'}</i><i>{'msgid': '我害怕他的灵魂中存在着一种腐化，其"
+"黑暗程度甚至超出了我的光芒所能照亮的范围。如今，他失去了曾充斥着其体内的黑暗"
+"魔法，其心智已开始逐渐消散。', 'comment': '[message]: speaker=Minister "
+"Hylas'}</i>"
 
+# Translated by openai with model qwen3.6-35b-a3b.
 #. [message]: speaker=Minister Hylas
 #: data/campaigns/The_South_Guard/scenarios/02x_Westin.cfg:162
+#, fuzzy
 msgid ""
 "Even were he willing, I am not sure he remembers anything other than what he "
 "has already told us."
-msgstr ""
+msgstr "即便他有意愿，我也不确定他除了已经告诉我们的那些之外，还记得别的什么。"
 
+# Translated by openai with model qwen3.6-35b-a3b.
 #. [message]: speaker=Mari
 #: data/campaigns/The_South_Guard/scenarios/02x_Westin.cfg:176
+#, fuzzy
 msgid ""
 "Hey, everyone. I’m done cleaning up the last of Fastik’s mess, but no trace "
 "of the other two brothers."
 msgstr ""
+"嗨，各位。我收拾完了法斯提克留下的烂摊子，但另外两个兄弟的影子都没见着。"
 
+# Translated by openai with model qwen3.6-35b-a3b.
 #. [message]: speaker=Mari
 #: data/campaigns/The_South_Guard/scenarios/02x_Westin.cfg:196
+#, fuzzy
 msgid ""
 "Thanks, Hylas. Shouldn’t there be a duke or prince or something around here? "
 "How did things get this bad?"
 msgstr ""
+"谢谢，海拉斯。这附近不该有公爵或者王子之类的贵族坐镇吗？事情怎么败坏成这副德"
+"行了？"
 
+# Translated by openai with model qwen3.6-35b-a3b.
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/02x_Westin.cfg:200
+#, fuzzy
 msgid ""
 "Aye, officially these lands belong to Prince Arand; King Garard’s younger "
 "brother. Arand’s been tryin’ to build the place up. Last time he visited, "
 "His Highness said our home might someday be called the Jewel of the South!"
 msgstr ""
+"\"是啊，按理说这片土地属于阿兰德王子，也就是加拉德国王的弟弟。阿兰德一直想振"
+"兴这里。上次他访问时，殿下还说咱们这地方迟早能成‘南方明珠’！\""
 
+# Translated by openai with model qwen3.6-35b-a3b.
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/02x_Westin.cfg:204
+#, fuzzy
 msgid ""
 "But the kingdom is large, the prince has many holdings, an’ today Westin be "
 "but a small town. These Urza outlaws ha’ always been a nuisance, but once "
 "they somehow started raisin’ the dead things got out of hand, fast."
 msgstr ""
+"“但这王国疆域辽阔，王子封地众多，韦斯廷如今不过是个小镇子。乌尔扎那帮匪徒一直"
+"是个麻烦精，可自从他们不知搞什么鬼把戏唤起了死人，局面很快就失控了。”"
 
+# Translated by openai with model qwen3.6-35b-a3b.
 #. [message]: speaker=Minister Hylas
 #: data/campaigns/The_South_Guard/scenarios/02x_Westin.cfg:208
+#, fuzzy
 msgid ""
 "We dispatched messengers carrying word of our plight, only to have them "
 "intercepted on the road or waylaid at river crossings. You are the first "
 "contact we have had with the crown in some time, sirs Mari and Deoran. With "
 "your aid, we can defeat these outlaws and cleanse their undead."
 msgstr ""
+"我们曾派出信使，向王庭通报我们的困境，但他们不是在路上被截获，就是在过河时被"
+"伏击。许久以来，玛芮小姐和德欧兰尉官，你们是我们要拜见王室的第一个联络人。有"
+"了你们的协助，我们便能击溃这些不法之徒，肃清他们豢养的亡灵。"
 
+# Translated by openai with model qwen3.6-35b-a3b.
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/02x_Westin.cfg:216
+#, fuzzy
 msgid ""
 "Well, if we don’t have any other leads, then we’ll need to investigate this "
 "“Vale of Blossoming Trees” and hope it’s neither misdirection nor a trap. "
 "Sirs, do I have your permissions to take the infantry on a sortie?"
 msgstr ""
+"\"好吧，既然没有其他线索，我们就得去查探一下这‘繁花谷’，希望那里既不是误导也"
+"不是陷阱。两位长官，我是否可以率步兵外出侦察？\""
 
+# Translated by openai with model qwen3.6-35b-a3b.
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/02x_Westin.cfg:222
+#, fuzzy
 msgid ""
 "Offerin’ to command the mission? Brave lad, but you shan’t have to go alone. "
 "Two o’ us officers will need to stay here and watch th’ town, but at least "
 "one o’ us should come with ye to help fight."
 msgstr ""
+"主动请缨带队？好小伙子，但你不必孤军奋战。我们两名尉官得留守此处监视城镇，但"
+"至少得有一位随你去协助作战。"
 
+# Translated by openai with model qwen3.6-35b-a3b.
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/02x_Westin.cfg:226
+#, fuzzy
 msgid ""
 "Take yer pick — either me, Minister Hylas, or tha’ Mari o’ yers. You don’t "
 "know much about how each of us fight yet, so ask and we’ll tell!"
 msgstr ""
+"选吧——我、海拉斯辅佐官，或是你们那个玛芮。你们还不太清楚我们各自的战法，所以"
+"尽管问，我们会告诉你们的！"
 
+# Translated by openai with model qwen3.6-35b-a3b.
 #. [message]: speaker=Mari
 #: data/campaigns/The_South_Guard/scenarios/02x_Westin.cfg:245
+#, fuzzy
 msgid ""
 "Hey, rookie. I’m all out of quintains, so if you want more bruises you’ll "
 "have to find another inanimate object to fight."
-msgstr ""
+msgstr "\"新兵，木人桩都用完了。想再挨打，去找别的活物吧。\""
 
+# Translated by openai with model qwen3.6-35b-a3b.
 #. [message]: speaker=Mari
 #: data/campaigns/The_South_Guard/scenarios/02x_Westin.cfg:250
+#, fuzzy
 msgid ""
 "...but I guess you’re asking about my skills, not yours. You never did get a "
 "chance to see me fight."
-msgstr ""
+msgstr "……不过我想，你问的是我的本事，不是你的。你还没亲眼见过我怎么打仗。"
 
 #. [message]: speaker=Mari
 #: data/campaigns/The_South_Guard/scenarios/02x_Westin.cfg:256
 msgid "Hey, rookie. Yeah, you never did get a chance to see me fight."
-msgstr ""
+msgstr "新兵，没错，你确实没机会看过我怎么战斗。"
 
 #. [message]: speaker=Mari
 #: data/campaigns/The_South_Guard/scenarios/02x_Westin.cfg:262
@@ -1780,6 +1886,8 @@ msgid ""
 "Well, I’m a survivor. Fast-moving, light on my feet; good at evading, good "
 "at stabbing. Hard to pin down, whether in an attack or in an escape."
 msgstr ""
+"行，我是个幸存者。移动快，步法轻，擅长躲闪，也擅长刺击。不管是进攻还是撤退，"
+"都别想困住我。"
 
 #. [message]
 #: data/campaigns/The_South_Guard/scenarios/02x_Westin.cfg:266
@@ -1788,7 +1896,10 @@ msgid ""
 "attacks). Her <i><b>skirmisher</b></i> ability lets her ignore enemies’ Zone "
 "of Control — she can move freely around enemy units without being stopped."
 msgstr ""
+"玛芮的地形防御力（她闪避敌人攻击的概率）异常之高。她的<i><b>散兵</b></i>能力"
+"使她能够无视敌人的控制范围——她可以毫无阻碍地在敌方单位间自由穿梭。"
 
+# Translated by openai with model qwen3.6-35b-a3b.
 #. [message]: speaker=Mari
 #: data/campaigns/The_South_Guard/scenarios/02x_Westin.cfg:270
 msgid ""
@@ -1797,28 +1908,40 @@ msgid ""
 "Gerrick in a 1-on-1. And you too, but that goes without saying."
 msgstr ""
 
+# Translated by openai with model qwen3.6-35b-a3b.
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/02x_Westin.cfg:274
+#, fuzzy
 msgid ""
 "And... if you come with me you’ll actually help fight? No more training, or "
 "observing, or running off right before the battle starts?"
 msgstr ""
+"And... if you come with me you’ll actually help fight? No more training, or "
+"observing, or running off right before the battle starts?"
 
+# Translated by openai with model qwen3.6-35b-a3b.
 #. [message]: speaker=Mari
 #: data/campaigns/The_South_Guard/scenarios/02x_Westin.cfg:278
+#, fuzzy
 msgid ""
 "Of course. Highwaymen are one thing, but necromancy is serious business. I "
 "just thought... well, after losing one arm to undead in the Estmarks, I "
 "hoped I was done dealing with this sort of thing."
 msgstr ""
+"那当然。拦路抢劫的匪徒是一回事，但死灵术可是正经的邪恶行径。我原本以为……咳，"
+"在东境防线丢掉一条胳膊之后，我就再也不想碰这号人了。"
 
+# Translated by openai with model qwen3.6-35b-a3b.
 #. [message]: speaker=Mari
 #: data/campaigns/The_South_Guard/scenarios/02x_Westin.cfg:287
+#, fuzzy
 msgid ""
 "I already told you, didn’t I? Pay attention this time — I’ve got a sword and "
 "sling, skill at evading attacks, and can move freely around enemies without "
 "being stopped."
 msgstr ""
+"早就跟你说了，不是吗？这回听清楚——我有剑有投石索，擅长闪避，能在敌人周围自由"
+"穿梭，谁也拦不住我。"
 
 #. [message]: speaker=Minister Hylas
 #: data/campaigns/The_South_Guard/scenarios/02x_Westin.cfg:312
@@ -1828,6 +1951,8 @@ msgid ""
 "village. This doesn’t stack with healing from villages or other healers, "
 "however."
 msgstr ""
+"我是行医之人，德欧兰尉官。我体内的光芒能<i><b>治疗相邻的单位</b></i>，效果等"
+"同于在村庄休整。不过，这无法与村庄或其他治疗者的治疗效果叠加。"
 
 #. [message]: speaker=Minister Hylas
 #: data/campaigns/The_South_Guard/scenarios/02x_Westin.cfg:316
@@ -1836,6 +1961,8 @@ msgid ""
 "attack. Magical attacks always have a high chance to hit and are unaffected "
 "by terrain, making them ideal against evasive or fortified enemies."
 msgstr ""
+"远程作战中，我也能使用一种高度精准的<i><b>魔法</b></i>攻击。魔法攻击命中几率"
+"高，且不受地形影响，因此非常适合对付高闪避或在坚固防御地形的敌人。"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/02x_Westin.cfg:320
@@ -3269,10 +3396,8 @@ msgstr ""
 #. [option]
 #: data/campaigns/The_South_Guard/scenarios/04_Choice_in_the_Fog.cfg:561
 #: data/campaigns/The_South_Guard/scenarios/04_Choice_in_the_Fog.cfg:581
-#, fuzzy
-#| msgid "Defeat Urza Afalas"
 msgid "Continue fighting Urza Afalas"
-msgstr "击败乌扎·阿法拉斯"
+msgstr "继续和乌扎·阿法拉斯战斗"
 
 #. [option]
 #: data/campaigns/The_South_Guard/scenarios/04_Choice_in_the_Fog.cfg:568
@@ -5091,10 +5216,12 @@ msgstr "复仇怒火"
 msgid "Aethenwood"
 msgstr "艾森丛林"
 
+# Translated by openai with model qwen3.6-35b-a3b.
 #. [event]
 #: data/campaigns/The_South_Guard/scenarios/06a_Vengeance.cfg:275
+#, fuzzy
 msgid "Town Cellars"
-msgstr ""
+msgstr "传令官"
 
 #. [event]
 #: data/campaigns/The_South_Guard/scenarios/06a_Vengeance.cfg:417
@@ -5948,8 +6075,8 @@ msgstr ""
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Tides_of_War.cfg:496
 msgid ""
 "You survived $pebbles_defense_length turns last scenario! Deoran starts\n"
-"   with $soldiers.length extra soldiers and "
-"$( ($pebbles_defense_length-36)*3 ) extra gold!"
+"   with $soldiers.length extra soldiers and $"
+"( ($pebbles_defense_length-36)*3 ) extra gold!"
 msgstr ""
 
 #. [else]
