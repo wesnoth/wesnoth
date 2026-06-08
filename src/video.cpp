@@ -773,17 +773,15 @@ std::vector<point> get_available_resolutions(const bool include_current)
 
 	// The maximum size to which this window can be set. For some reason this won't
 	// pop up as a display mode of its own.
-	SDL_Rect bounds;
+	rect bounds;
 	SDL_GetDisplayBounds(display_index, &bounds);
 
-	for(int i = 0; i < mode_count; i++) {
-		const SDL_DisplayMode* mode = modes[i];
-		if(!mode || (mode->w > bounds.w && mode->h > bounds.h)) {
-			continue;
-		}
+	for(SDL_DisplayMode* mode : utils::span(modes, mode_count)) {
+		assert(mode);
+		point size{mode->w, mode->h};
 
-		if(mode->w >= min_res.x && mode->h >= min_res.y) {
-			result.emplace_back(mode->w, mode->h);
+		if(min_res <= size && size <= bounds.size()) {
+			result.push_back(size);
 		}
 	}
 
