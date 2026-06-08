@@ -762,9 +762,9 @@ std::vector<point> get_available_resolutions(const bool include_current)
 
 	const int display_index = window->get_display_index();
 
-	int modes;
-	SDL_GetFullscreenDisplayModes(display_index, &modes);
-	if(modes <= 0) {
+	int mode_count = 0;
+	SDL_DisplayMode** modes = SDL_GetFullscreenDisplayModes(display_index, &mode_count);
+	if(mode_count <= 0 || !modes) {
 		PLAIN_LOG << "No modes supported";
 		return result;
 	}
@@ -773,8 +773,19 @@ std::vector<point> get_available_resolutions(const bool include_current)
 
 	// The maximum size to which this window can be set. For some reason this won't
 	// pop up as a display mode of its own.
-	SDL_Rect bounds;
+	rect bounds;
 	SDL_GetDisplayBounds(display_index, &bounds);
+
+	for(SDL_DisplayMode* mode : utils::span(modes, mode_count)) {
+		assert(mode);
+		point size{mode->w, mode->h};
+
+		if(min_res <= size && size <= bounds.size()) {
+			result.push_back(size);
+		}
+	}
+
+	SDL_free(modes);
 
 	if(!utils::contains(result, min_res)) {
 		result.push_back(min_res);
