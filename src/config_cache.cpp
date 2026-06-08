@@ -54,6 +54,11 @@ void add_builtin_defines(preproc_map& target)
 #endif
 
 	target.try_emplace("WESNOTH_VERSION", game_config::wesnoth_version.str());
+
+	target.try_emplace("WESNOTH_VERSION_MAJOR", std::to_string(game_config::wesnoth_version.major_version()));
+	target.try_emplace("WESNOTH_VERSION_MINOR", std::to_string(game_config::wesnoth_version.minor_version()));
+	target.try_emplace("WESNOTH_VERSION_REVISION", std::to_string(game_config::wesnoth_version.revision_level()));
+	target.try_emplace("WESNOTH_VERSION_SPECIAL", game_config::wesnoth_version.special_version());
 }
 
 }
@@ -162,11 +167,19 @@ config config_cache::read_cache(const std::string& file_path, abstract_validator
 
 	bool is_valid = true;
 
+	//
+	// Only WESNOTH_VERSION and its variants are allowed to be non-empty.
+	//
+	static const std::set<std::string> allowed_non_empty_define_keys = {
+		"WESNOTH_VERSION",
+		"WESNOTH_VERSION_MAJOR",
+		"WESNOTH_VERSION_MINOR",
+		"WESNOTH_VERSION_REVISION",
+		"WESNOTH_VERSION_SPECIAL"
+	};
+
 	for(const auto& [key, define] : defines_map_) {
-		//
-		// Only WESNOTH_VERSION is allowed to be non-empty.
-		//
-		if((!define.value.empty() || !define.arguments.empty()) && key != "WESNOTH_VERSION") {
+		if((!define.value.empty() || !define.arguments.empty()) && allowed_non_empty_define_keys.find(key) == allowed_non_empty_define_keys.end()) {
 			is_valid = false;
 			ERR_CACHE << "Invalid preprocessor define: " << key;
 			break;
