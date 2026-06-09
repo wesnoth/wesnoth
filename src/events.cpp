@@ -793,18 +793,12 @@ void call_in_main_thread(const std::function<void(void)>& f)
 #ifdef _WIN32
 bool handle_windows_message([[maybe_unused]] void* userdata, MSG* msg)
 {
-	if(!msg) {
+	if(!msg || windows_tray_notification::message_hook(*msg)) {
 		return false;
 	}
 
-	switch(msg->message) {
-	case windows_tray_notification::tray_message:
-		return windows_tray_notification::message_hook(*msg);
-
-	default:
-		// Continue further processing
-		return true;
-	}
+	// Continue further processing
+	return true;
 }
 #endif
 

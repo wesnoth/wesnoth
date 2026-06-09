@@ -44,6 +44,8 @@ public:
 	* window if the notification popup was clicked by user.
 	*
 	* @param msg Windows message payload.
+	*
+	* @return True if the message was handled.
 	*/
 	static bool message_hook(const MSG& msg);
 
@@ -66,7 +68,4 @@ private:
 	explicit windows_tray_notification();
 	windows_tray_notification(const windows_tray_notification& w);
 	windows_tray_notification& operator=(const windows_tray_notification& w);
-
-public:
-	static constexpr uint32_t tray_message = WM_TRAYNOTIFY;
 };
