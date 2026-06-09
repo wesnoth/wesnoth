@@ -72,7 +72,6 @@
 #                                               directory (disables spellcheck for <words> in the current and all nested directories),
 #                                               or local (disables spellcheck for <words> in the current file).
 # wmllint: no spellcheck                      - disables all spellchecking on the line this comment is on.
-# wmllint: skip-side                          - suppresses output when a side is declared in a macro, which breaks wmllint's check that sides are defined in numeric order.
 # wmllint: no ellipsecheck                    - suppresses output when finding unit ellipses that the engine adds automatically or custom unit ellipses that need to be updated.
 # wmllint: conditional tag <tag_name>         - adds <tag_name> to the list of known conditional WML tags. used when defining custom conditional tags via lua.
 #                                               <tag_name> is a comma delimited list. do not put square brackets around the tags listed in <tag_name>.
@@ -1844,10 +1843,7 @@ def global_sanity_check(filename, lines):
     # vary by EASY/NORMAL/HARD level) this code will only record the
     # last of each for later consistency checking.
     in_side = False
-    in_ai = in_subunit = False
     recruit = {}
-    in_generator = False
-    sidecount = 0
     recruitment_pattern = {}
     ifdef_stack = [None]
     for num, line in enumerate((l.strip() for l in lines), start=1):
@@ -1867,17 +1863,8 @@ def global_sanity_check(filename, lines):
             ifdef_stack.pop()
             continue
         precomment = line.split("#")[0]
-        if "[generator]" in precomment:
-            in_generator = True
-            continue
-        elif "[/generator]" in precomment:
-            in_generator = False
-            continue
-        # do not use has_opening_tag() here, otherwise a [+side] tag
-        # will make the sidecount variable incorrect
-        elif "[side]" in precomment:
+        if "[side]" in precomment:
             in_side = True
-            sidecount += 1
             continue
         elif "[/side]" in precomment:
             if recruit or recruitment_pattern:
@@ -1886,41 +1873,8 @@ def global_sanity_check(filename, lines):
             recruit = {}
             recruitment_pattern = {}
             continue
-        elif in_side and has_opening_tag(precomment, "ai"):
-            in_ai = True
+        if not in_side or '=' not in precomment:
             continue
-        elif in_side and has_opening_tag(precomment, "unit"):
-            in_subunit = True
-            continue
-        elif in_side and "[/ai]" in precomment:
-            in_ai = False
-            continue
-        elif in_side and "[/unit]" in precomment:
-            in_subunit = False
-            continue
-        if "wmllint: skip-side" in line:
-            sidecount += 1
-        if not in_side or in_subunit or '=' not in precomment:
-            continue
-        try:
-            (key, prefix, value, comment) = parse_attribute(line)
-            if key in ("recruit", "extra_recruit") and value:
-                recruit[ifdef_stack[-1]] = (num, [x.strip() for x in value.split(",")])
-            elif key == "recruitment_pattern" and value:
-                if not in_ai:
-                    print('"%s", line %d: recruitment_pattern outside [ai]' \
-                              % (filename, num))
-                else:
-                    recruitment_pattern[ifdef_stack[-1]] = (num, [x.strip() for x in value.split(",")])
-            elif key == "side" and in_side and not in_ai:
-                try:
-                    if not in_generator and sidecount != int(value):
-                        print('"%s", line %d: side number %s is out of sequence (%d expected)' \
-                              % (filename, num, value, sidecount))
-                except ValueError:
-                    pass # Ignore ill-formed integer literals
-        except TypeError:
-            pass
     # Sanity check ellipses
     # Starting from 1.11.5, units with canrecruit=yes gain automatically a leader ellipse
     # Starting from 1.11.6, units without a ZoC gain automatically a nozoc ellipse
