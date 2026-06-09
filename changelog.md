@@ -411,7 +411,7 @@
    * Dune Burner - line:
      *  +1 mp, +10% pierce resistance, +20% impact resistance, cold resistance set to 0%.
    * Dune Burner:
-     * Ranged damage decreased from 7 to 6.
+     * Ranged damage decreased from 7-3 to 6-3.
      * Xp increased from 36 to 40.
    * Dune Scorcher:
      * Xp increased from 60 to 64.
