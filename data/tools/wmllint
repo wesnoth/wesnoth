@@ -1603,7 +1603,7 @@ def local_sanity_check(filename, nav, key, prefix, value, comment):
                            "[else]", "[elseif]", "[frame]", "[have_location]",
                            "[have_unit]", "[not]", "[or]", "[then]", "[lua]",
                            "[variable]", "[true]", "[false]", "[found_item]",
-                           "[proceed_to_next_scenario]") \
+                           "[proceed_to_next_scenario]", "[has_achievement]") \
                            and not nav.element.endswith("_frame]") \
                            and not nav.element.startswith("[filter") and \
                            nav.element not in custom_conditionals:
