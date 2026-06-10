@@ -2623,7 +2623,8 @@ def consistency_check():
     # Should we be checking the transitive closure of derivation?
     # It's not clear whether [base_unit] works when the base is itself derived.
     for (filename, line, unit_type, base_unit) in derived_units:
-        if base_unit not in unit_types:
+        # ignore when the base unit contains a macro argument
+        if base_unit not in unit_types and "{" not in base_unit:
             print('"%s", line %d: derivation of %s from %s does not resolve' \
                   % (filename, line, unit_type, base_unit))
     # Check that all advancements are known units
