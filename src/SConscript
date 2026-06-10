@@ -92,7 +92,7 @@ libwesnoth_widgets = client_env.Library("wesnoth-widgets", libwesnoth_widgets_so
 wesnoth_client_sources = GetSources("wesnoth")
 
 if env["PLATFORM"] == "win32":
-    # wesnoth_client_sources.append("desktop/windows_tray_notification.cpp")
+    wesnoth_client_sources.append("desktop/windows_tray_notification.cpp")
     wesnoth_client_sources.append("desktop/windows_battery_info.cpp")
 
 if env["PLATFORM"] == 'darwin':

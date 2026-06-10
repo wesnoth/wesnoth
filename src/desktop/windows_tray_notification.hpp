@@ -15,7 +15,6 @@
 
 #pragma once
 
-#include <SDL3/SDL.h>
 #include <string>
 //forces to call Unicode winapi functions instead of ASCII (default)
 #ifndef UNICODE
@@ -44,9 +43,11 @@ public:
 	* Frees resources when a notification disappears, switches user to the wesnoth
 	* window if the notification popup was clicked by user.
 	*
-	* @param event System event.
+	* @param msg Windows message payload.
+	*
+	* @return True if the message was handled.
 	*/
-	static void handle_system_event(const SDL_Event& event);
+	static bool message_hook(const MSG& msg);
 
 private:
 	static NOTIFYICONDATA* nid;

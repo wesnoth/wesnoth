@@ -68,7 +68,7 @@ GetSources("wesnoth" wesnoth_sources)
 
 if(WIN32)
 	set(wesnoth_core_sources ${wesnoth_core_sources} log_windows.cpp)
-	#set(wesnoth_game_sources ${wesnoth_game_sources} desktop/windows_tray_notification.cpp desktop/windows_battery_info.cpp)
+	set(wesnoth_game_sources ${wesnoth_game_sources} desktop/windows_tray_notification.cpp)
 	set(wesnoth_game_sources ${wesnoth_game_sources} desktop/windows_battery_info.cpp)
 endif()
 
