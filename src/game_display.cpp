@@ -342,7 +342,16 @@ void game_display::draw_hex(const map_location& loc)
 	}
 
 	// Draw reach_map information.
-	if(!is_shrouded && !reach_map_.empty() && reach_map_.find(loc) != reach_map_.end()) {
+	bool reachable = reach_map_.find(loc) != reach_map_.end();
+	// Darken unreachable
+	// We remove the reachability mask of the unit that we want to attack.
+	if(!is_shrouded && !reach_map_.empty() && !reachable && loc != attack_indicator_dst_) {
+		static const image::locator unreachable(game_config::images::unreachable);
+		drawing_buffer_add(drawing_layer::reachmap_darken, loc,
+			[tex = image::get_texture(unreachable, image::HEXED)](const rect& dest) { draw::blit(tex, dest); });
+	}
+	// Highlight reachable
+	if(!is_shrouded && !reach_map_.empty() && reachable) {
 		// draw the reachmap tint below units and high terrain graphics
 		std::string color = prefs::get().reach_map_color();
 		std::string tint_opacity = std::to_string(prefs::get().reach_map_tint_opacity());

@@ -127,6 +127,7 @@ namespace game_config
 			mouseover,
 			selected,
 			editor_brush,
+			unreachable,
 			linger,
 			// GUI elements
 			observer,
