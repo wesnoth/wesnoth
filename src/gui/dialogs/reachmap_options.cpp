@@ -56,6 +56,7 @@ void reachmap_options::pre_show()
 
 	find_widget<slider>("reachmap_opacity_border").set_value(prefs::get().reach_map_border_opacity());
 	find_widget<slider>("reachmap_opacity_tint").set_value(prefs::get().reach_map_tint_opacity());
+	find_widget<slider>("reachmap_opacity_darken").set_value(prefs::get().reach_map_darken_opacity());
 
 	connect_signal_mouse_left_click(
 		find_widget<button>("reachmap_defaults"), std::bind(&reachmap_options::reset_reachmap_callback, this));
@@ -75,6 +76,7 @@ void reachmap_options::post_show()
 
 	prefs::get().set_reach_map_border_opacity(find_widget<slider>("reachmap_opacity_border").get_value());
 	prefs::get().set_reach_map_tint_opacity(find_widget<slider>("reachmap_opacity_tint").get_value());
+	prefs::get().set_reach_map_darken_opacity(find_widget<slider>("reachmap_opacity_darken").get_value());
 }
 
 void reachmap_options::setup_reachmap_group(const std::string& base_id, const std::string& initial)
@@ -115,6 +117,7 @@ void reachmap_options::reset_reachmap_callback()
 	reset_reachmap_group("enemy_color", game_config::colors::reach_map_enemy_color);
 	reset_reachmap_slider("reachmap_opacity_border", game_config::reach_map_border_opacity);
 	reset_reachmap_slider("reachmap_opacity_tint", game_config::reach_map_tint_opacity);
+	reset_reachmap_slider("reachmap_opacity_darken", game_config::reach_map_darken_opacity);
 }
 
 } // namespace gui2::dialogs
