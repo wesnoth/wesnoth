@@ -206,6 +206,7 @@ std::string
 	mouseover,
 	selected,
 	editor_brush,
+	unreachable,
 	linger,
 	// GUI elements
 	observer,
@@ -359,6 +360,7 @@ void load_config(const config &v)
 		mouseover    = i["mouseover"].str();
 		selected     = i["selected"].str();
 		editor_brush = i["editor_brush"].str();
+		unreachable  = i["unreachable"].str();
 		linger       = i["linger"].str();
 
 		observer   = i["observer"].str();
