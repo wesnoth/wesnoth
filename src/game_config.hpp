@@ -102,6 +102,7 @@ namespace game_config
 	extern int reach_map_border_opacity;
 	extern int reach_map_tint_opacity;
 	extern int reach_map_darken_opacity;
+	extern bool reach_map_darken_tex;
 
 	namespace images {
 	extern std::string game_title,
