@@ -131,6 +131,7 @@ bool show_unmoved_orb;
 
 int reach_map_border_opacity;
 int reach_map_tint_opacity;
+int reach_map_darken_opacity;
 
 //
 // Music constants
@@ -384,6 +385,7 @@ void load_config(const config &v)
 	reach_map_prefix 	= v["reach_map_prefix"].str();
 	reach_map_border_opacity = v["reach_map_border_opacity"].to_int(100);
 	reach_map_tint_opacity   = v["reach_map_tint_opacity"].to_int(50);//tint is at 50% by default instead of 100% to allow players to make it more opaque than normal
+	reach_map_darken_opacity = v["reach_map_darken_opacity"].to_int(100);
 
 	add_color_info(game_config_view::wrap(v), true);
 

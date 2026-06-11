@@ -326,6 +326,9 @@ public:
 	int reach_map_tint_opacity();
 	void set_reach_map_tint_opacity(const int new_opacity);
 
+	int reach_map_darken_opacity();
+	void set_reach_map_darken_opacity(const int new_opacity);
+
 	int scroll_speed();
 	void set_scroll_speed(const int scroll);
 
@@ -841,6 +844,7 @@ private:
 		prefs_list::addon_icons,
 		prefs_list::reach_map_border_opacity,
 		prefs_list::reach_map_tint_opacity,
+		prefs_list::reach_map_darken_opacity,
 		prefs_list::reach_map_color,
 		prefs_list::reach_map_enemy_color,
 	};

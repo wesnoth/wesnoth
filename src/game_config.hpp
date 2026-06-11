@@ -101,6 +101,7 @@ namespace game_config
 	extern bool show_unmoved_orb;
 	extern int reach_map_border_opacity;
 	extern int reach_map_tint_opacity;
+	extern int reach_map_darken_opacity;
 
 	namespace images {
 	extern std::string game_title,

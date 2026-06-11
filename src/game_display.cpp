@@ -346,9 +346,9 @@ void game_display::draw_hex(const map_location& loc)
 	// Darken unreachable
 	// We remove the reachability mask of the unit that we want to attack.
 	if(!is_shrouded && !reach_map_.empty() && !reachable && loc != attack_indicator_dst_) {
-		static const image::locator unreachable(game_config::images::unreachable);
+		std::string darken_opacity = std::to_string(prefs::get().reach_map_darken_opacity());
 		drawing_buffer_add(drawing_layer::reachmap_darken, loc,
-			[tex = image::get_texture(unreachable, image::HEXED)](const rect& dest) { draw::blit(tex, dest); });
+			[tex = image::get_texture(game_config::images::unreachable + "~O("+darken_opacity+"%)", image::HEXED)](const rect& dest) { draw::blit(tex, dest); });
 	}
 	// Highlight reachable
 	if(!is_shrouded && !reach_map_.empty() && reachable) {

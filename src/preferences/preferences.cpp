@@ -617,6 +617,16 @@ void prefs::set_reach_map_tint_opacity(const int new_opacity)
 	preferences_[prefs_list::reach_map_tint_opacity] = new_opacity;
 }
 
+int prefs::reach_map_darken_opacity()
+{
+	return preferences_[prefs_list::reach_map_darken_opacity].to_int(game_config::reach_map_darken_opacity);
+}
+
+void prefs::set_reach_map_darken_opacity(const int new_opacity)
+{
+	preferences_[prefs_list::reach_map_darken_opacity] = new_opacity;
+}
+
 point prefs::resolution()
 {
 	const unsigned x_res = preferences_[prefs_list::xresolution].to_unsigned();
