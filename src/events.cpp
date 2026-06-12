@@ -525,6 +525,8 @@ void pump()
 			c.add_staging_handlers();
 		}
 
+		SDL_ConvertEventToRenderCoordinates(video::get_renderer(), &event);
+
 #ifdef MOUSE_TOUCH_EMULATION
 		switch (event.type) {
 			// TODO: Implement SDL_MULTIGESTURE. Some day.
