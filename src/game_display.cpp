@@ -28,6 +28,7 @@
 #include "fake_unit_manager.hpp"
 #include "floating_label.hpp"
 #include "game_board.hpp"
+#include "picture.hpp"
 #include "preferences/preferences.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
@@ -353,7 +354,7 @@ void game_display::draw_hex(const map_location& loc)
 			darken_suffix = "~WIPE_ALPHA()" + darken_suffix;
 		}
 		drawing_buffer_add(drawing_layer::reachmap_darken, loc,
-			[tex = image::get_texture(game_config::images::unreachable + darken_suffix, image::HEXED)](const rect& dest) { draw::blit(tex, dest); });
+			[tex = image::get_texture(game_config::images::unreachable + darken_suffix, image::scale_quality::linear, image::HEXED)](const rect& dest) { draw::blit(tex, dest); });
 	}
 	// Highlight reachable
 	if(!is_shrouded && !reach_map_.empty() && reachable) {
