@@ -136,7 +136,7 @@ need_cmd() {
 }
 
 vcpkg_checkout_has_baseline() {
-	# We archive overlay ports directly from ${vcpkg_baseline}, so a reused
+	# We archive the pango overlay directly from ${vcpkg_baseline}, so a reused
 	# temp checkout has to contain that commit before we can proceed.
 	git -C "${vcpkg_root}" merge-base --is-ancestor "${vcpkg_baseline}" HEAD
 }
@@ -212,25 +212,6 @@ install_triplet() {
 		sleep "${retry_delay_seconds}"
 		attempt=$((attempt + 1))
 	done
-}
-
-prepare_glib_overlay() {
-	local overlay_extract_root overlay_archive_path glib_overlay_relative
-
-	overlay_extract_root="${xcode_dir}/temp/overlay-ports/gc/.glib-baseline"
-	overlay_archive_path="${overlay_extract_root}/glib-port.tar"
-	rm -rf "${xcode_dir}/temp/overlay-ports/glib" || die "Failed to remove ${xcode_dir}/temp/overlay-ports/glib."
-	rm -rf "${overlay_extract_root}" || die "Failed to remove ${overlay_extract_root}."
-	mkdir -p "${xcode_dir}/temp/overlay-ports" || die "Failed to create ${xcode_dir}/temp/overlay-ports."
-	mkdir -p "${overlay_extract_root}" || die "Failed to create ${overlay_extract_root}."
-	git -C "${vcpkg_root}" archive --format=tar "${vcpkg_baseline}" "ports/glib" > "${overlay_archive_path}" \
-		|| die "Failed to archive glib from vcpkg baseline ${vcpkg_baseline}. Remove ${vcpkg_root} and rerun the script."
-	tar -xf "${overlay_archive_path}" -C "${overlay_extract_root}" || die "Failed to extract ${overlay_archive_path}."
-	mv "${overlay_extract_root}/ports/glib" "${xcode_dir}/temp/overlay-ports/glib" || die "Failed to move the extracted glib overlay into ${xcode_dir}/temp/overlay-ports/glib."
-	rm -rf "${overlay_extract_root}" || die "Failed to remove ${overlay_extract_root}."
-	glib_overlay_relative="${xcode_dir#"${root_dir}"/}/temp/overlay-ports/glib"
-	git -C "${root_dir}" apply --directory="${glib_overlay_relative}" "${script_dir}/patches/glib-macos-subsystem.patch" \
-		|| die "Failed to apply ${script_dir}/patches/glib-macos-subsystem.patch to ${glib_overlay_relative}."
 }
 
 prepare_pango_overlay() {
@@ -473,9 +454,6 @@ ensure_vcpkg_checkout \
 
 echo "==> Bootstrapping vcpkg ..."
 "${vcpkg_root}/bootstrap-vcpkg.sh" -disableMetrics || die "Failed to bootstrap vcpkg under ${vcpkg_root}."
-
-echo "==> Preparing glib overlay port ..."
-prepare_glib_overlay
 
 echo "==> Preparing pango overlay port ..."
 prepare_pango_overlay
