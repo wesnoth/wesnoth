@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: wesnoth-tdg\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2026-05-19 02:15 UTC\n"
-"PO-Revision-Date: 2026-03-26 21:10-0300\n"
+"PO-Revision-Date: 2026-06-12 21:47-0300\n"
 "Last-Translator: Sebastián Lecchini <sebas38760@gmail.com>\n"
 "Language-Team: es\n"
 "Language: es\n"
@@ -384,15 +384,11 @@ msgid "Chill Touch"
 msgstr "Toque Gélido"
 
 #: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:65
-#, fuzzy
-#| msgid ""
-#| "Melee 6x3 cold, <i><ref dst='weaponspecial_slows'>slows</ref></i>. "
-#| "Replaces your default melee attack."
 msgid ""
 "Melee 6x3 cold, <i><ref dst='weaponspecial_slow'>slows</ref></i>. Replaces "
 "your default melee attack."
 msgstr ""
-"Cuerpo a cuerpo 6x3 de frío, <i><ref dst='weaponspecial_slows'>ralentiza</"
+"Cuerpo a cuerpo 6x3 de frío, <i><ref dst='weaponspecial_slow'>ralentiza</"
 "ref></i>. Reemplaza tu ataque cuerpo a cuerpo por defecto."
 
 #: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:72
@@ -400,17 +396,12 @@ msgid "Levitate"
 msgstr "Levitar"
 
 #: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:74
-#, fuzzy
-#| msgid ""
-#| "Spend <span color='#00bbe6' style='italic'>8 XP</span> to gain <i>flight</"
-#| "i> and the <i><ref dst='ability_skirmisher'>skirmisher</ref></i> ability "
-#| "until the start of your next turn or until cancelled."
 msgid ""
 "Spend <span color='#00bbe6' style='italic'>4 XP</span> to gain <i>flight</i> "
 "and the <i><ref dst='ability_skirmisher'>skirmisher</ref></i> ability until "
 "the start of your next turn or until cancelled."
 msgstr ""
-"Gasta <span color='#00bbe6' style='italic'>8 PX</span> para obtener "
+"Gasta <span color='#00bbe6' style='italic'>4 PX</span> para obtener "
 "<i>vuelo</i> y la habilidad <i><ref dst='ability_skirmisher'>hostigador</"
 "ref></i> hasta el inicio de tu próximo turno o hasta que se cancele."
 
@@ -419,11 +410,6 @@ msgid "Find Familiar"
 msgstr "Invocar Familiar"
 
 #: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:84
-#, fuzzy
-#| msgid ""
-#| "Begin each scenario with your trusty pet raven.\n"
-#| "               Your familiar’s level and XP persist across scenarios, but "
-#| "reset if it dies."
 msgid ""
 "Begin each scenario with your trusty pet <i><ref dst='unit_Raven'>Raven</"
 "ref></i>.\n"
@@ -431,7 +417,7 @@ msgid ""
 "reset if it dies."
 msgstr ""
 "<span color='#a9a150'><i><b>Pasivo:</b></i></span> Comienza cada escenario "
-"con tu confiable cuervo mascota.\n"
+"con tu confiable mascota <i><ref dst='unit_Raven'>Cuervo</ref></i>.\n"
 "               El nivel y la experiencia de tu familiar persisten entre "
 "escenarios, pero se reinician si muere."
 
@@ -611,13 +597,10 @@ msgstr ""
 "reclutamiento."
 
 #: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:224
-#, fuzzy
-#| msgid ""
-#| "Ranged 12x4 fire, <i><ref dst='weaponspecial_magical'>magical</ref></i>."
 msgid ""
 "Ranged 17x4 fire, <i><ref dst='weaponspecial_magical'>magical</ref></i>."
 msgstr ""
-"A distancia 12x4 de fuego, <i><ref dst='weaponspecial_magical'>mágico</ref></"
+"A distancia 17x4 de fuego, <i><ref dst='weaponspecial_magical'>mágico</ref></"
 "i>."
 
 #: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:231
@@ -625,18 +608,14 @@ msgid "Chain Lightning"
 msgstr "Rayo en cadena"
 
 #: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:233
-#, fuzzy
-#| msgid ""
-#| "Ranged 14x4 fire, <i><ref dst='weaponspecial_magical'>magical</ref></i>. "
-#| "If this attack kills an enemy, you may attack again."
 msgid ""
 "Ranged 14x3 fire, <i><ref dst='weaponspecial_magical'>magical</ref></i>. "
 "This attack can be used multiple times on offense, but\n"
 "              consecutive uses strike one fewer time."
 msgstr ""
-"<span color='#ad6a61'><i><b>Ataque:</b></i></span> A distancia 14x4 de "
-"fuego, <i>mágico</i>. Si este ataque mata a un enemigo, puedes atacar de "
-"nuevo."
+"<span color='#ad6a61'><i><b>Ataque:</b></i></span> A distancia 14x3 de "
+"fuego, <i>mágico</i>. Este ataque puede usarse varias veces al atacar, pero\n"
+"              los usos consecutivos golpean una vez menos."
 
 #: data/campaigns/The_Deceivers_Gambit/lua/skill_set.lua:240
 msgid "Time Dilation"
@@ -2661,11 +2640,6 @@ msgstr ""
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:562
-#, fuzzy
-#| msgid ""
-#| "I must confess I look forward to once-again marching in company with "
-#| "others of my own ilk, yet still I hope to return to Lintanir once my war-"
-#| "duty is done."
 msgid ""
 "I must confess I look forward to once again marching in company with others "
 "of my own ilk, yet still I hope to return to Lintanir once my war-duty is "
@@ -2973,15 +2947,11 @@ msgstr ""
 #. [event]: type=Delfador L4, id=delfador_mirror4
 #: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1682
 #: data/campaigns/The_Deceivers_Gambit/scenarios/04_The_Sylvan_Seer.cfg:1819
-#, fuzzy
-#| msgid ""
-#| "Spend 8 XP to gain flight and the skirmisher ability until the start of "
-#| "your next turn or until cancelled."
 msgid ""
 "Spend 4 XP to gain flight and the skirmisher ability until the start of your "
 "next turn or until cancelled."
 msgstr ""
-"Gasta 8 PX para obtener vuelo y la habilidad de hostigador hasta el inicio "
+"Gasta 4 PX para obtener vuelo y la habilidad de hostigador hasta el inicio "
 "de tu próximo turno o hasta que se cancele."
 
 #. [message]
@@ -7431,11 +7401,6 @@ msgstr ""
 
 #. [message]: speaker=Delfador
 #: data/campaigns/The_Deceivers_Gambit/scenarios/12_The_Traitor.cfg:466
-#, fuzzy
-#| msgid ""
-#| "If only my outlaws and veterans could have marched fast enough to keep "
-#| "up. If the king’s own brother is an usurper, who in Wesnoth can I really "
-#| "trust?"
 msgid ""
 "If only my outlaws and veterans could have marched fast enough to keep up. "
 "If the king’s own brother is a usurper, who in Wesnoth can I really trust?"
@@ -10232,6 +10197,8 @@ msgid ""
 "This attack can be used multiple times on offense, but consecutive uses "
 "strike one fewer time."
 msgstr ""
+"Este ataque puede usarse varias veces al atacar, pero los usos consecutivos "
+"golpean una vez menos."
 
 #. [message]: speaker=$speaker_id
 #. Delfador has just cast his cataclysm spell, dealing heavy damage in a large radius and destroying trees/villages/castles
