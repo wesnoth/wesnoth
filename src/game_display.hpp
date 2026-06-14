@@ -113,12 +113,25 @@ public:
 	 * valid after being set.
 	 */
 	void set_route(const pathfind::marked_route *route);
+
 	/**
 	 * Gets the route along which footsteps are drawn to show movement of a
 	 * unit. If no route is currently being shown, the array get_route().steps
 	 * will be empty.
 	 */
 	const pathfind::marked_route& get_route() { return route_; }
+
+	/**
+	 * Visualizes a path by flashing it white then fade out over 2 seconds.
+	 * Typically used to provide feedback when a unit is assigned
+	 * a multi-turn move that will be executed on future turns.
+	 * @param route The route path that should flash fade.
+	 */
+	void flash_fade_route(const pathfind::marked_route& route);
+
+	static constexpr std::chrono::milliseconds FLASH_FADE_ROUTE_FLASH_DURATION{ 500 };
+	static constexpr std::chrono::milliseconds FLASH_FADE_ROUTE_FADE_DURATION{ 1500 };
+	static constexpr std::chrono::milliseconds FLASH_FADE_ROUTE_TOTAL_DURATION{ 2000 };
 
 	/** Function to float a label above a tile */
 	void float_label(const map_location& loc, const std::string& text, const color_t& color);
@@ -236,5 +249,12 @@ private:
 	game_mode mode_;
 
 	bool needs_rebuild_;
+
+	// Flash fading route for multi-turn movement feedback
+	pathfind::marked_route flash_fade_route_;
+	std::chrono::steady_clock::time_point flash_fade_route_start_time_;
+	bool flash_fade_route_active_;
+
+	void update_flash_fade_route();
 
 };
