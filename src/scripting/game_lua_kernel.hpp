@@ -18,6 +18,7 @@
 #include "scripting/lua_kernel_base.hpp" // for lua_kernel_base
 
 #include "game_events/action_wml.hpp"   // for wml_action, etc
+#include "display.hpp"
 
 #include <stack>
 #include <string>                       // for string
@@ -283,6 +284,7 @@ public:
 
 	void mouse_over_hex_callback(const map_location& loc);
 	bool mouse_button_callback(const map_location& loc, const std::string &button, const std::string &event);
+	void reachmap_updated_callback(const map_location& loc, const reach_map& reach_map);
 	void select_hex_callback(const map_location& loc);
 	void preload_finished() {has_preloaded_ = true;}
 };
