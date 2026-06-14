@@ -131,6 +131,8 @@ unit_ability_t::unit_ability_t(std::string tag, config cfg, bool inside_attack)
 	, affects_self_(true)
 	, affects_enemies_(false)
 	, priority_(cfg["priority"].to_double(0.00))
+	, suppress_special_priority_(-100000.00)
+	, suppress_ability_priority_(-100000.00)
 	, cfg_(std::move(cfg))
 	, currently_checked_(false)
 {
@@ -164,6 +166,20 @@ unit_ability_t::unit_ability_t(std::string tag, config cfg, bool inside_attack)
 	}
 	affects_self_ = cfg_["affect_self"].to_bool(true);
 	affects_enemies_ = cfg_["affect_enemies"].to_bool(false);
+
+	if(auto overwrite_specials = cfg_.optional_child("overwrite_specials")) {
+		suppress_special_priority_ = overwrite_specials["priority"].to_double(0.00);
+	}
+	else if(cfg_["overwrite_specials"] == "one_side" || cfg_["overwrite_specials"] == "both_sides") {
+		if(auto overwrite = cfg_.optional_child("overwrite")) {
+			suppress_special_priority_ = overwrite["priority"].to_double(0.00);
+		} else {
+			suppress_special_priority_ = 0.00;
+		}
+	}
+	if(auto overwrite_abilities = cfg_.optional_child("overwrite_abilities")) {
+		suppress_ability_priority_ = overwrite_abilities["priority"].to_double(0.00);
+	}
 }
 
 void unit_ability_t::do_compat_fixes(config& cfg, const std::string& tag, bool inside_attack)
@@ -228,6 +244,10 @@ void unit_ability_t::do_compat_fixes(config& cfg, const std::string& tag, bool i
 		}
 		cfg.remove_children("filter_second_weapon");
 		cfg.remove_children("filter_weapon");
+	}
+
+	if(!cfg["overwrite_specials"].blank() || cfg.optional_child("overwrite")) {
+		deprecated_message("overwrite_specials= or [overwrite] in weapon specials", DEP_LEVEL::INDEFINITE, "", "Use [overwrite_specials] instead.");
 	}
 }
 
@@ -1405,108 +1425,80 @@ std::vector<unit_ability_t::tooltip_info> specials_context_t::abilities_special_
 //units (abilities of type 'aura') or else on all types of weapons even if the
 //beneficiary unit does not have a corresponding weapon
 //(defense against ranged weapons abilities for a unit that only has melee attacks)
-static bool overwrite_special_affects(const unit_ability_t& ab)
-{
-	const std::string& apply_to = ab.cfg()["overwrite_specials"];
-	return (apply_to == "one_side" || apply_to == "both_sides");
+namespace {
+	bool overwrite_special_affects(const unit_ability_t& ab)
+	{
+		const std::string& apply_to = ab.cfg()["overwrite_specials"];
+		return (apply_to == "one_side" || apply_to == "both_sides");
+	}
 }
 
-active_ability_list attack_type::overwrite_special_overwriter(active_ability_list overwriters) const
-{
-	//remove element without overwrite_specials key, if list empty after check return empty list.
-	utils::erase_if(overwriters, [&](const active_ability& i) {
-		return (!overwrite_special_affects(i.ability()));
-	});
-
-	// if empty, nothing is doing any overwriting
-	if(overwriters.empty()){
-		return overwriters;
-	}
-
-	// if there are specials/"specials as abilities" that could potentially overwrite each other
-	if(overwriters.size() >= 2){
-		// sort them by overwrite priority from highest to lowest (default priority is 0)
-		utils::sort_if(overwriters,[](const active_ability& i, const active_ability& j){
-			auto oi = i.ability_cfg().optional_child("overwrite");
-			double l = 0;
-			if(oi && !oi["priority"].empty()){
-				l = oi["priority"].to_double(0);
-			}
-			auto oj = j.ability_cfg().optional_child("overwrite");
-			double r = 0;
-			if(oj && !oj["priority"].empty()){
-				r = oj["priority"].to_double(0);
-			}
-			return l > r;
-		});
-		// remove any that need to be overwritten
-		utils::erase_if(overwriters, [&](const active_ability& i) {
-			return (overwrite_special_checking(overwriters, i));
-		});
-	}
-	return overwriters;
-}
-
-bool attack_type::overwrite_special_checking(active_ability_list& overwriters, const active_ability& i) const
+bool attack_type::overwrite_special_checking(active_ability_list& overwriters, const active_ability& overwritten) const
 {
 	auto ctx = fallback_context();
 	auto [self, other] = context_->self_and_other(*this);
-	if(overwriters.empty()){
+	const map_location& loc = overwritten.student_loc;
+	if(overwriters.empty()) {
 		return false;
 	}
 
-	const unit_ability_t& ab = i.ability();
-	const map_location& loc = i.student_loc;
-
+	const unit_ability_t& ab = overwritten.ability();
 	for(const auto& j : overwriters) {
-		const map_location& ov_loc = j.student_loc;
-		// whether the overwriter affects a single side
-		bool affect_side = (j.ability_cfg()["overwrite_specials"] == "one_side");
-		// the overwriter's priority, default of 0
-		auto overwrite_specials = j.ability_cfg().optional_child("overwrite");
-		double priority = overwrite_specials ? overwrite_specials["priority"].to_double(0) : 0.00;
-		// the cfg being checked for whether it will be overwritten
-		auto has_overwrite_specials = ab.cfg().optional_child("overwrite");
-		// if the overwriter's priority is greater than 0, then true if the cfg being checked has a higher priority
-		// else true
-		bool prior = (priority > 0) ? (has_overwrite_specials && has_overwrite_specials["priority"].to_double(0) >= priority) : true;
-		// true if the cfg being checked affects one or both sides and doesn't have a higher priority, or if it doesn't affect one or both sides
-		// aka whether the cfg being checked can potentially be overwritten by the current overwriter
-		bool is_overwritable = (overwrite_special_affects(ab) && !prior) || !overwrite_special_affects(ab);
-		bool one_side_overwritable = true;
+		if(j.ability().suppress_special_priority() <= ab.suppress_special_priority()) {
+			continue;
+		}
 
-		// if the current overwriter affects one side and the cfg being checked can be overwritten by this overwriter
-		// then check that the current overwriter and the cfg being checked both affect either this unit or its opponent
-		if(affect_side && is_overwritable) {
-			if(ov_loc == self.loc) {
-				one_side_overwritable = loc == self.loc;
+		// code for new feature [overwrite_specials].
+		auto overwrite_specials = j.ability_cfg().optional_child("overwrite_specials");
+		if(overwrite_specials) {
+			// the location of the fighters is used to differentiate the specials applied to 'self' from those applied to 'opponent'
+			// in all cases including 'apply_to=attacker/defender'.
+			if((*overwrite_specials)["affect"].str("both") == "self" && loc != self.loc) {
+				continue;
 			}
-			else if(other.un && (ov_loc == other.loc)) {
-				one_side_overwritable = loc == other.loc;
+			if(other.un && (*overwrite_specials)["affect"].str("both") == "opponent" && loc != other.loc) {
+				continue;
+			}
+			// if ab don't match with [filter_special], continue check with next element of overwriters list.
+			auto filter_abilities_specials = (*overwrite_specials).optional_child("filter_special");
+			if(filter_abilities_specials && !ab.matches_filter(*filter_abilities_specials)) {
+				continue;
+			}
+			return true;
+		}
+
+		// If neither the tag nor the 'overwrite_specials' attribute are valid, we move directly to the next element in the overwriters list.
+		if(!overwrite_special_affects(j.ability())) {
+			continue;
+		}
+
+		//code for old feature 'overwrite_specials' if special don't have new one.
+
+		// the location of the fighters is used to differentiate the specials applied to 'self' from those applied to 'opponent'
+		// in all cases including 'apply_to=attacker/defender'.
+		if(j.ability_cfg()["overwrite_specials"].str() == "one_side") {
+			if(j.student_loc == self.loc && loc != self.loc) {
+				continue;
+			}
+			if(other.un && j.student_loc == other.loc && loc != other.loc) {
+				continue;
 			}
 		}
 
-		// check whether the current overwriter is disabled due to a filter
-		bool special_matches = true;
-		if(overwrite_specials){
-			auto overwrite_filter = (*overwrite_specials).optional_child("filter_specials");
-			if(!overwrite_filter){
-				overwrite_filter = (*overwrite_specials).optional_child("experimental_filter_specials");
-				if(overwrite_filter){
+		auto overwrite_filter = j.ability_cfg().optional_child("overwrite");
+		if(overwrite_filter) {
+			auto filter_abilities_specials = (*overwrite_filter).optional_child("filter_specials");
+			if(!filter_abilities_specials) {
+				filter_abilities_specials = (*overwrite_filter).optional_child("experimental_filter_specials");
+				if(filter_abilities_specials) {
 					deprecated_message("experimental_filter_specials", DEP_LEVEL::FOR_REMOVAL, {1, 21, 0}, "Use filter_specials instead.");
 				}
 			}
-			if(overwrite_filter && is_overwritable && one_side_overwritable){
-				special_matches = ab.matches_filter(*overwrite_filter);
+			if(filter_abilities_specials && !ab.matches_filter(*filter_abilities_specials)) {
+				continue;
 			}
 		}
-
-		// if the cfg being checked should be overwritten
-		// and either this unit or its opponent are affected
-		// and the current overwriter is not disabled due to a filter
-		if(is_overwritable && one_side_overwritable && special_matches){
-			return true;
-		}
+		return true;
 	}
 	return false;
 }
@@ -1725,6 +1717,9 @@ namespace
 		if(!bool_matches_if_present(filter, cfg, "cumulative", false))
 			return false;
 
+		if(!cfg["overwrite_specials"].blank() || cfg.optional_child("overwrite")) {
+			deprecated_message("overwrite_specials= or [overwrite] in weapon specials", DEP_LEVEL::INDEFINITE, "", "Use [overwrite_specials] instead.");
+		}
 		if(!string_matches_if_present(filter, cfg, "overwrite_specials", "none"))
 			return false;
 
@@ -2012,6 +2007,54 @@ bool specials_context_t::is_special_active(const specials_combatant& self, const
 	return true;
 }
 
+namespace
+{
+	bool priority_checking(active_ability_list& overwriters, const active_ability& overwritten)
+	{
+		if(overwriters.empty()){
+			return false;
+		}
+		const unit_ability_t& ab = overwritten.ability();
+
+		for(const auto& j : overwriters) {
+			// If this element of overwriters does not have a priority strictly higher than ab,
+			// either it does not have [overwrite_abilities] or both have [overwrite_abilities] of the same priority;
+			// in either case, ab cannot be suppressed by this element of the list
+			if(j.ability().suppress_ability_priority() <= ab.suppress_ability_priority()) {
+				continue;
+			}
+
+			// [overwrite_abilities]priority= having already been checked above, it remains to check if a sub-filter [filter_ability] exists and if so,
+			// if it corresponds to ab.
+			auto overwrite_filter = j.ability_cfg().optional_child("overwrite_abilities");
+			if(overwrite_filter) {
+				auto filter_abilities = (*overwrite_filter).optional_child("filter_ability");
+				if(filter_abilities && !common_matches_filter(ab.cfg(), ab.tag(), *filter_abilities)) {
+					continue;
+				}
+				// if all checks match, ab can be suppressed and other elements of the list won't be checked.
+				return true;
+			}
+		}
+		return false;
+	}
+
+	void apply_ability_suppression(active_ability_list& abil_list)
+	{
+		// If two or more abilities have [overwrite_abilities],
+		// priority sorting allows the highest priority ability to suppress a lower priority ability before the lower priority ability can,
+		// in turn, suppress an ability with an even lower priority than the first two.
+		utils::sort_if(abil_list,[](const active_ability& i, const active_ability& j){
+			double l = i.ability().suppress_ability_priority();
+			double r = j.ability().suppress_ability_priority();
+			return l > r;
+		});
+		utils::erase_if(abil_list, [&](const active_ability& i) {
+			return (priority_checking(abil_list, i));
+		});
+	}
+}
+
 namespace unit_abilities
 {
 
@@ -2058,11 +2101,15 @@ static int individual_value_double(const config::attribute_value *v, int def, co
 	return value;
 }
 
-effect::effect(const active_ability_list& list, int def, const specials_context_t* ctx, EFFECTS wham) :
+effect::effect(active_ability_list list, int def, const specials_context_t* ctx, EFFECTS wham) :
 	effect_list_(),
 	composite_value_(def),
 	composite_double_value_(def)
 {
+	// If ctx is not empty, then this is a special. The [overwrite_specials] feature is handled in get_specials_and_abilities() and so nothing should be done here in that case.
+	if(!ctx) {
+		apply_ability_suppression(list);
+	}
 	std::map<double, active_ability_list> base_list;
 	for(const active_ability& i : list) {
 		double priority = i.ability().priority();
