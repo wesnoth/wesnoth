@@ -1170,7 +1170,8 @@ namespace
 constexpr std::array layer_groups {
 	drawing_layer::terrain_bg,
 	drawing_layer::unit_first,
-	drawing_layer::unit_move_default
+	drawing_layer::unit_move_default,
+	drawing_layer::reachmap_darken // Make sure the movement doesn't show above fog and reachmap.
 };
 
 enum {
@@ -3142,15 +3143,9 @@ void display::process_reachmap_changes()
 {
 	if (!reach_map_changed_) return;
 	if (reach_map_.empty() != reach_map_old_.empty()) {
-		// Invalidate everything except the non-darkened tiles
-		reach_map &full = reach_map_.empty() ? reach_map_old_ : reach_map_;
-
+		// Invalidate everything, since we both brighten and darken
 		for (const auto& hex : get_visible_hexes()) {
-			reach_map::iterator reach = full.find(hex);
-			if (reach != full.end()) {
-				// Location needs to be darkened or brightened
-				invalidate(hex);
-			}
+			invalidate(hex);
 		}
 	} else if (!reach_map_.empty()) {
 		// Invalidate new and old reach
