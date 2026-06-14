@@ -289,6 +289,7 @@ private:
 	void dul_handler(const std::string &, const std::string &, std::string &, std::ostringstream *);
 	void stopgame_handler(const std::string &, const std::string &, std::string &, std::ostringstream *);
 	void reset_queues_handler(const std::string &, const std::string &, std::string &, std::ostringstream *);
+	void set_game_host_handler(const std::string &, const std::string &, std::string &, std::ostringstream *);
 
 #ifndef _WIN32
 	void handle_sighup(const boost::system::error_code& error, int signal_number);
