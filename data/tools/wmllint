@@ -51,14 +51,7 @@
 # wmllint: noconvert                          - disables and suppresses output for changing the line the comment is on.
 # wmllint: markcheck on|off                   - disables checking for missing or extra translation marks in the block between off and on.
 # wmllint: no-icon                            - disables adding the name as the description (which also determines the icon) to attacks missing the description attribute.
-# wmllint: recognize <unit id>                - suppresses output for dialogue where wmllint is not aware of the speaker for the single file it's in.
-# wmllint: whofield <macro> <argument number> - when using a macro to place a unit, tells wmllint which macro argument contains the unit id.
 #                                               used in the current and subsequent files that are processed.
-# wmllint: whofield clear <macro>             - removes wmllint's recognition of the unit id used in <macro>. using without specifying <macro> clears all macros from recognition.
-# wmllint: who <macro> is <characters>        - adds wmllint recognition of <characters> (comma delimited list of unit ids) when it encounters <macro>.
-#                                               used in the current and subsequent files that are processed.
-# wmllint: unwho ALL                          - removes all unit ids added by any "wmllint: who[field]" comments.
-# wmllint: unwho <macro>                      - removes all unit ids recognized by that macro.
 # wmllint: usage of <unit> is <class>         - explicitly declares the recruitment type of the unit (see the usage attribute of [unit_type]) in case wmllint doesn't find it.
 #                                               <unit> must be inside ascii double quotes.
 # wmllint: usagetype <class>                  - tell wmllint about custom recruitment types. <class> can be a comma separated list.
@@ -1343,17 +1336,6 @@ def standard_unit_filter():
 
 # Sanity checking
 
-# This dictionary will pair macros with the characters they recall or create,
-# but must be populated by the magic comment, "#wmllint: who ... is ...".
-whopairs = {}
-
-# This dictionary pairs macros with the id field of the characters they recall
-# or create, and is populated by the comment, "wmllint: whofield <macro> <#>."
-whomacros = {}
-
-# This dictionary pairs the ids of stored units with their variable name.
-storedids = {}
-
 # This set of the standard recruitable usage types can be appended with the
 # magic comment, "#wmllint: usagetype[s]".
 standard_usage_types = {"scout", "fighter", "mixed fighter", "archer", "healer"}
@@ -1898,50 +1880,21 @@ to be called on their own".format(filename, num))
     # Consistency-check the id= attributes in [side], [unit], [recall],
     # and [message] scopes, also correctness-check translation marks and look
     # for double spaces at end of sentence.
-    present = []
     extra_translatables = []
     in_scenario = False
     in_multiplayer = False
     subtag_depth = 0
-    in_person = False
-    in_trait = False
-    ignore_id = False
-    in_object = False
-    in_stage = False
-    in_cfg = False
-    in_goal = False
-    in_set_menu_item = False
-    in_clear_menu_item = False
-    in_aspect = False
-    in_facet = False
-    in_sound_source = False
-    in_remove_sound_source = False
-    in_load_resource = False
     in_message = False
     in_option = False
     #last index is true: we're currently directly in an [event]
     #this avoids complaints about unknown [event]id=something, but keeps the check
     #in case some [filter]id= comes in this [event]
     directly_in_event = []
-    in_time_area = False
     in_store = False
     in_unstore = False
     in_not = False
     in_clear = False
-    in_fire_event = False
-    in_primary_unit = False
-    in_secondary_unit = False
-    in_remove_event = False
-    in_remove_time_area = False
-    in_tunnel = False
-    in_filter = False
-    in_checkbox = False
-    in_combo = False
-    in_entry = False
-    in_slider = False
-    in_map_generator = False
     in_name_generator = False
-    in_candidate_action = False
     in_lua = False
     in_lua_args = False
     in_window = False
@@ -1952,7 +1905,6 @@ to be called on their own".format(filename, num))
     storeid = None
     storevar = None
     ignoreable = False
-    preamble_seen = False
     sentence_end = re.compile("(?<=[.!?;:])  +")
     capitalization_error = re.compile("(?<=[.!?])  +[a-z]")
     markcheck = True
@@ -1975,20 +1927,16 @@ to be called on their own".format(filename, num))
             if not in_lua_args:
                 # As far as I can tell none of the below tests make sense inside of a lua tag
                 continue
-        if '[' in lines[i]:
-            preamble_seen = True
         # This logic looks odd because a scenario can be conditionally
         # wrapped in both [scenario] and [multiplayer]; we mustn't count
         # either as a subtag even if it occurs inside the other, otherwise
         # this code might see id= declarations as being at the wrong depth.
         if "[scenario]" in lines[i]:
             in_scenario = True
-            preamble_seen = False
         elif "[/scenario]" in lines[i]:
             in_scenario = False
         elif "[multiplayer]" in lines[i]:
             in_multiplayer = True
-            preamble_seen = False
         elif "[/multiplayer]" in lines[i]:
             in_multiplayer = False
         else:
@@ -2006,55 +1954,7 @@ to be called on their own".format(filename, num))
             if len(directly_in_event) > 0:
                 directly_in_event.pop()
         # Ordinary subtag flags begin here
-        if has_opening_tag(lines[i], "trait"):
-            in_trait = True
-        elif "[/trait]" in lines[i]:
-            in_trait = False
-        elif has_opening_tag(lines[i], "object"):
-            in_object = True
-        elif "[/object]" in lines[i]:
-            in_object = False
-        elif has_opening_tag(lines[i], "stage"):
-            in_stage = True
-        elif "[/stage]" in lines[i]:
-            in_stage = False
-        elif has_opening_tag(lines[i], "cfg"):
-            in_cfg = True
-        elif "[/cfg]" in lines[i]:
-            in_cfg = False
-        elif has_opening_tag(lines[i], "goal"):
-            in_goal = True
-        elif "[/goal]" in lines[i]:
-            in_goal = False
-        elif has_opening_tag(lines[i], "set_menu_item"):
-            in_set_menu_item = True
-        elif "[/set_menu_item]" in lines[i]:
-            in_set_menu_item = False
-        elif has_opening_tag(lines[i], "clear_menu_item"):
-            in_clear_menu_item = True
-        elif "[/clear_menu_item]" in lines[i]:
-            in_clear_menu_item = False
-        elif has_opening_tag(lines[i], "aspect"):
-            in_aspect = True
-        elif "[/aspect]" in lines[i]:
-            in_aspect = False
-        elif has_opening_tag(lines[i], "facet"):
-            in_facet = True
-        elif "[/facet]" in lines[i]:
-            in_facet = False
-        elif has_opening_tag(lines[i], "sound_source"):
-            in_sound_source = True
-        elif "[/sound_source]" in lines[i]:
-            in_sound_source = False
-        elif has_opening_tag(lines[i], "remove_sound_source"):
-            in_remove_sound_source = True
-        elif "[/remove_sound_source]" in lines[i]:
-            in_remove_sound_source = False
-        elif has_opening_tag(lines[i], "load_resource"):
-            in_load_resource = True
-        elif "[/load_resource]" in lines[i]:
-            in_load_resource = False
-        elif has_opening_tag(lines[i], "message"):
+        if has_opening_tag(lines[i], "message"):
             in_message = True
         elif "[/message]" in lines[i]:
             in_message = False
@@ -2062,16 +1962,6 @@ to be called on their own".format(filename, num))
             in_option = True
         elif "[/option]" in lines[i]:
             in_option = False
-        elif has_opening_tag(lines[i], "time_area"):
-            in_time_area = True
-        elif "[/time_area]" in lines[i]:
-            in_time_area = False
-        elif has_opening_tag(lines[i], "label") or \
-             has_opening_tag(lines[i], "chamber") or \
-             has_opening_tag(lines[i], "time"):
-            ignore_id = True
-        elif "[/label]" in lines[i] or "[/chamber]" in lines[i] or "[/time]" in lines[i]:
-            ignore_id = False
         elif has_opening_tag(lines[i], "kill") or \
              has_opening_tag(lines[i], "effect") or \
              has_opening_tag(lines[i], "move_unit_fake") or \
@@ -2079,20 +1969,11 @@ to be called on their own".format(filename, num))
             ignoreable = True
         elif "[/kill]" in lines[i] or "[/effect]" in lines[i] or "[/move_unit_fake]" in lines[i] or "[/scroll_to_unit]" in lines[i]:
             ignoreable = False
-        elif has_opening_tag(lines[i], "side") or \
-             has_opening_tag(lines[i], "unit") or \
-             has_opening_tag(lines[i], "recall"):
-            in_person = True
-            continue
-        elif "[/side]" in lines[i] or "[/unit]" in lines[i] or "[/recall]" in lines[i]:
-            in_person = False
         elif has_opening_tag(lines[i], "store_unit"):
             in_store = True
         elif "[/store_unit]" in lines[i]:
-            if storeid and storevar:
-                storedids.update({storevar: storeid})
             in_store = False
-            storeid = storevar = None
+            storeid = None
         elif has_opening_tag(lines[i], "unstore_unit"):
             in_unstore = True
         elif "[/unstore_unit]" in lines[i]:
@@ -2105,60 +1986,6 @@ to be called on their own".format(filename, num))
             in_clear = True
         elif "[/clear_variable]" in lines[i]:
             in_clear = False
-        # starting from 1.13.6, [fire_event] supports id= fields
-        # ignore them, but don't ignore [primary_unit] and [secondary_unit]
-        elif has_opening_tag(lines[i], "fire_event"):
-            in_fire_event = True
-        elif "[/fire_event]" in lines[i]:
-            in_fire_event = False
-        elif has_opening_tag(lines[i], "primary_unit"):
-            in_primary_unit = True
-        elif "[/primary_unit]" in lines[i]:
-            in_primary_unit = False
-        elif has_opening_tag(lines[i], "secondary_unit"):
-            in_secondary_unit = True
-        elif "[/secondary_unit]" in lines[i]:
-            in_secondary_unit = False
-        # version 1.13.0 added [remove_event], which accepts a id= field
-        elif has_opening_tag(lines[i], "remove_event"):
-            in_remove_event = True
-        elif "[/remove_event]" in lines[i]:
-            in_remove_event = False
-        elif "[remove_time_area]" in lines[i]:
-            in_remove_time_area = True
-        elif "[/remove_time_area]" in lines[i]:
-            in_remove_time_area = False
-        # [tunnel] supports a [filter] sub-tag, so handle it
-        elif has_opening_tag(lines[i], "tunnel"):
-            in_tunnel = True
-        elif "[/tunnel]" in lines[i]:
-            in_tunnel = False
-        elif has_opening_tag(lines[i], "filter"):
-            in_filter = True
-        elif "[/filter]" in lines[i]:
-            in_filter = False
-        # sub-tags of [options] tag
-        elif has_opening_tag(lines[i], "checkbox"):
-            in_checkbox = True
-        elif "[/checkbox]" in lines[i]:
-            in_checkbox = False
-        elif has_opening_tag(lines[i], "combo"):
-            in_combo = True
-        elif "[/combo]" in lines[i]:
-            in_combo = False
-        elif has_opening_tag(lines[i], "entry"):
-            in_entry = True
-        elif "[/entry]" in lines[i]:
-            in_entry = False
-        elif has_opening_tag(lines[i], "slider"):
-            in_slider = True
-        elif "[/slider]" in lines[i]:
-            in_slider = False
-        elif has_opening_tag(lines[i], "generator"):
-            in_map_generator = True
-        elif "[/generator]" in lines[i]:
-            in_map_generator = False
-
         elif has_opening_tag(lines[i], "window"):
             in_window = True
         elif "[/window]" in lines[i]:
@@ -2167,12 +1994,10 @@ to be called on their own".format(filename, num))
             in_resolution = True
         elif "[/resolution]" in lines[i]:
             in_resolution = False
-
         elif "_definition]" in lines[i] and "[/" not in lines[i]:
             in_gui_definition = True
         elif gui_def_regex.search(lines[i]):
             in_gui_definition = False
-
         elif has_opening_tag(lines[i], "deprecated_message"):
             in_deprecated_message = True
         elif "[/deprecated_message]" in lines[i]:
@@ -2181,11 +2006,6 @@ to be called on their own".format(filename, num))
             in_chat = True
         elif "[/chat]" in lines[i]:
             in_chat = False
-
-        elif has_opening_tag(lines[i], "candidate_action"):
-            in_candidate_action = True
-        elif "[/candidate_action]" in lines[i]:
-            in_candidate_action = False
         elif name_generator_re.search(lines[i]):
             in_name_generator = True
         elif in_name_generator and ">>" in lines[i]:
@@ -2194,60 +2014,12 @@ to be called on their own".format(filename, num))
             markcheck = False
         elif "wmllint: markcheck on" in lines[i]:
             markcheck = True
-        elif 'wmllint: who ' in lines[i]:
-            try:
-                fields = lines[i].split("wmllint: who ", 1)[1].split(" is ", 1)
-                if len(fields) == 2:
-                    mac = string_strip(fields[0].strip()).strip('{}')
-                    if mac in whopairs:
-                        whopairs[mac] = whopairs[mac] + ", " + fields[1].strip()
-                    else:
-                        whopairs.update({mac: fields[1].strip()})
-            except IndexError:
-                pass
-        elif 'wmllint: unwho ' in lines[i]:
-            unmac = lines[i].split("wmllint: unwho ", 1)[1].strip()
-            if string_strip(unmac).upper() == 'ALL':
-                whopairs.clear()
-            else:
-                try:
-                    del whopairs[string_strip(unmac).strip('{}')]
-                except KeyError:
-                    print('%s, line %s: magic comment "unwho %s" does not match any current keys: %s' \
-                          % (filename, i+1, unmac, ", ".join(whopairs.keys())), file=sys.stderr)
-        elif 'wmllint: whofield' in lines[i]:
-            fields = re.search(r'wmllint: whofield\s+([^\s]+)(\s+is)?\s*([^\s]*)', lines[i])
-            if fields:
-                if fields.group(1).startswith('clear'):
-                    if fields.group(3) in whomacros:
-                        del whomacros[fields.group(3)]
-                    else:
-                        whomacros.clear()
-                elif re.match(r'[1-9][0-9]*$', fields.group(3)):
-                    whomacros.update({fields.group(1): int(fields.group(3))})
-                else:
-                    try:
-                        del whomacros[fields.group(1)]
-                    except KeyError:
-                        print('%s, line %s: magic comment "whofield %s" should be followed by a number: %s' \
-                              % (filename, i+1, unmac, fields.group(3)), file=sys.stderr)
         # Parse recruit/recall macros to recognize characters.  This section
         # assumes that such a macro is the first item on a line.
         leadmac = re.match(r'{[^}\s]+.', lines[i].lstrip())
         if leadmac:
             macname = leadmac.group()[1:-1]
-            # Recognize macro pairings from "wmllint: who" magic
-            # comments.
-            if macname in whopairs:
-                for who in whopairs[macname].split(","):
-                    if who.strip().startswith("--"):
-                        try:
-                            present.remove(who.replace('--', '', 1).strip())
-                        except:
-                            ValueError
-                    else:
-                        present.append(who.strip())
-            elif not leadmac.group().endswith('}'):
+            if not leadmac.group().endswith('}'):
                 # Update 1.4's {LOYAL_UNIT} macro to {NAMED_LOYAL_UNIT}.  Do
                 # this here rather than hack_syntax so the character can be
                 # recognized.
@@ -2255,39 +2027,7 @@ to be called on their own".format(filename, num))
                     (args, optional_args, is_unfinished) = parse_macroref(0, leadmac.string)
                     if len(args) == 6:
                         lines[i] = lines[i].replace('{LOYAL_UNIT', '{NAMED_LOYAL_UNIT', 1)
-                # Auto-recognize the people in the {NAMED_*UNIT} macros.
-                if re.match(r'NAMED_[A-Z_]*UNIT$', macname):
-                    (args, optional_args, is_unfinished) = parse_macroref(0, leadmac.string)
-                    if len(args) >= 6 and \
-                       re.match(r'([0-9]+|[^\s]*\$[^\s]*side[^\s]*|{[^\s]*SIDE[^\s]*})$', args[0]) and \
-                       re.match(r'([0-9]+|[^\s]*\$[^\s]*x[^\s]*|{[^\s]*X[^\s]*})$', args[2]) and \
-                       re.match(r'([0-9]+|[^\s]*\$[^\s]*y[^\s]*|{[^\s]*Y[^\s]*})$', args[3]) and \
-                       len(args[4]) > 0:
-                        present.append(args[4])
-                elif macname == 'RECALL':
-                    (args, optional_args, is_unfinished) = parse_macroref(0, leadmac.string)
-                    if len(args) == 1 and not is_unfinished:
-                        present.append(args[0])
-                elif macname == 'RECALL_XY':
-                    (args, optional_args, is_unfinished) = parse_macroref(0, leadmac.string)
-                    if len(args) == 3:
-                        present.append(args[0])
-                elif macname == 'CLEAR_VARIABLE':
-                    (args, optional_args, is_unfinished) = parse_macroref(0, leadmac.string)
-                    # having CLEAR_VARIABLE on a line and its arguments in the following lines
-                    # leads to an args list with length 0
-                    # skip the check and avoid a crash if that's the case
-                    if len(args) > 0:
-                        for arg in [x.lstrip() for x in args[0].split(',')]:
-                            if arg in storedids:
-                                del storedids[arg]
-                elif macname in whomacros:
-                    (args, optional_args, is_unfinished) = parse_macroref(0, leadmac.string)
-                    if len(args) >= whomacros[macname]:
-                        present.append(args[whomacros[macname] - 1])
         m = re.search("# *wmllint: recognize +(.*)", lines[i])
-        if m:
-            present.append(string_strip(m.group(1)).strip())
         if '=' not in lines[i] or ignoreable:
             continue
         parseable = False
@@ -2306,23 +2046,7 @@ to be called on their own".format(filename, num))
                         storeid == storeid + ',' + value
                     else:
                         storeid = value
-                elif key == 'variable' and '{' not in value:
-                    storevar = value
-            elif in_unstore:
-                if key == 'variable':
-                    value = value.split("[$")[0]
-                    if value in storedids:
-                        for unit_id in storedids[value].split(','):
-                            present.append(unit_id.lstrip())
-                        del storedids[value]
-            elif key == 'name' and in_clear:
-                for val in value.split(','):
-                    val = val.lstrip()
-                    if val in storedids:
-                        del storedids[val]
             has_tr_mark = translation_mark.search(value)
-            if key == 'role':
-                present.append(value)
             if has_tr_mark:
                 # FIXME: This test is rather bogus as is.
                 # Doing a better job would require tokenizing to pick up the
@@ -2374,37 +2098,6 @@ to be called on their own".format(filename, num))
                 if key == "message" and in_message and not in_option and not ("wmllint: ignore" in comment or "wmllint: noconvert" in comment):
                     lines[i] = pangoize(lines[i], filename, i)
             else:
-                if (in_scenario or in_multiplayer) and key == "id":
-                    if in_person:
-                        present.append(value)
-                    elif value and value[0] in ("$", "{"):
-                        continue
-                    elif preamble_seen and subtag_depth > 0 and not ignore_id \
-                         and not in_object and not in_cfg and not in_aspect \
-                         and not in_facet and not in_sound_source \
-                         and not in_remove_sound_source and not in_load_resource \
-                         and not in_stage \
-                         and not in_goal and not in_set_menu_item \
-                         and not in_clear_menu_item and not directly_in_event[-1] \
-                         and not in_time_area and not in_trait and not in_checkbox \
-                         and not in_combo and not in_entry and not in_slider \
-                         and not in_map_generator and not in_candidate_action \
-                         and not (in_fire_event and not (in_primary_unit or in_secondary_unit)) \
-                         and not in_remove_event and not in_remove_time_area \
-                         and not (in_tunnel and not in_filter):
-                        ids = value.split(",")
-                        for id_ in ids:
-                            # removal of leading whitespace of items in comma-separated lists
-                            # is usually supported in the mainline wesnoth lua scripts
-                            # not sure about trailing one
-                            # also, do not complain about ids if they're referred to a menu item being cleared
-                            if id_.lstrip() not in present:
-                                print('"%s", line %d: unknown \'%s\' referred to by id' \
-                                      % (filename, i+1, id_))
-                if (in_scenario or in_multiplayer) and key == "speaker":
-                    if value not in present and value not in ("narrator", "unit", "second_unit") and value[0] not in ("$", "{"):
-                        print('"%s", line %d: unknown speaker \'%s\' of [message]' \
-                              % (filename, i+1, value))
                 if markcheck and has_tr_mark and not ("wmllint: ignore" in comment or "wmllint: noconvert" in comment):
                     print('"%s", line %d: %s should not have a translation mark' \
                           % (filename, i+1, key))
@@ -2559,9 +2252,6 @@ def consistency_check():
         if value not in scenario_to_filename:
             print('"%s", line %d: unresolved scenario reference %s' % \
                   (filename, lineno, value))
-    # Report stored units never unstored or cleared
-    for store in storedids.keys():
-        print('wmllint: stored unit "%s" not unstored or cleared from "%s"' % (storedids[store], store))
 
 # Syntax transformations
 
