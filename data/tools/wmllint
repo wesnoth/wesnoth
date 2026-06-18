@@ -1544,10 +1544,10 @@ def local_sanity_check(filename, nav, key, prefix, value, comment):
     # Accumulate data to check for missing next scenarios
     if parent == '[campaign]':
         if key == "first_scenario" and value != "null":
-            nextrefs.append((filename, nav.lineno, value))
+            nextrefs.append((filename, nav.lineno, value, nav.text))
     if parent == '[scenario]' or parent == None:
         if key == "next_scenario" and value != "null":
-            nextrefs.append((filename, nav.lineno, value))
+            nextrefs.append((filename, nav.lineno, value, nav.text))
         if key == 'id':
             scenario_to_filename[value] = filename
     # Check for campaign rank and warn if an unconventional value is found
@@ -2235,8 +2235,8 @@ def consistency_check():
             print('"%s", line %d: %s has unknown advancements %s' \
                   % (filename, lineno, unit_id, bad_advancements))
     # Check next-scenario pointers
-    for (filename, lineno, value) in nextrefs:
-        if value not in scenario_to_filename:
+    for (filename, lineno, value, line) in nextrefs:
+        if value not in scenario_to_filename and "no-syntax-rewrite" not in line:
             print('"%s", line %d: unresolved scenario reference %s' % \
                   (filename, lineno, value))
 
