@@ -2734,7 +2734,6 @@ def translator(filename, mapxforms, textxform):
                 if verbose > 0:
                     print('wmllint: "%s", line %d: %s -> %s.' % (filename, lineno, line, newline))
         elif "map_data=" in line and line.count('"') > 1:
-            print('wmllint: "%s", line %d: one-line map.' % (filename, lineno))
             newdata.append(line + terminator)
         else:
             # translatable attribute start is identified by equals, optional whitespace, underscore, optional whitespace, quote
