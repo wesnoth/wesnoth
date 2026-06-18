@@ -1406,11 +1406,11 @@ mainline = ("Dead_Water",
             "World_Conquest",
             )
 
-pango_conversions = (("~", "<b>", "</b>"),
-                     ("@", "<span color='green'>", "</span>"),
-                     ("#", "<span color='red'>", "</span>"),
-                     ("*", "<span size='large'>", "</span>"),
-                     ("`", "<span size='small'>", "</span>"),
+pango_conversions = (("~", "<b>", "</b>", re.compile(r"[~][a-zA-Z0-9]*[~]")),
+                     ("@", "<span color='green'>", "</span>", re.compile(r"[@][a-zA-Z0-9]*[@]")),
+                     ("#", "<span color='red'>", "</span>", re.compile(r"[#][a-zA-Z0-9]*[#]")),
+                     ("*", "<span size='large'>", "</span>", re.compile(r"[*][a-zA-Z0-9]*[*]")),
+                     ("`", "<span size='small'>", "</span>", re.compile(r"[`][a-zA-Z0-9]*[`]")),
                      )
 
 def pangostrip(message):
@@ -1436,8 +1436,9 @@ def pangoize(message, filename, line):
         hexed = '%02x%02x%02x' % (r, g, b)
         print('"%s", line %d: color spec (%s) requires manual fix (<span color=\'#%s\'>, </span>).' % (filename, line, rgb.group(), hexed))
     # Hack old-style Wesnoth markup
-    for (oldstyle, newstart, newend) in pango_conversions:
-        if oldstyle not in message:
+    for (oldstyle, newstart, newend, regex) in pango_conversions:
+        # avoid incorrectly converting stuff like "*Ahem*"
+        if oldstyle not in message or regex.search(message):
             continue
         where = message.find(oldstyle)
         if message[where - 1] != '"': # Start of string only
@@ -2535,127 +2536,89 @@ def hack_syntax(filename, lines):
     # More syntax transformations would go here.
     return lines
 
-def maptransform(filename, baseline, inmap, y):
-    # Transform lines in maps
+def base_to_base_with_overlay(filename, baseline, inmap, y):
     for i in range(len(inmap[y])):
         for (old, new) in mapchanges:
             inmap[y][i] = inmap[y][i].replace(old, new)
         # this change needs to be handled separately because it's tricky
-        # we're converting from a terrain without overlays to a terrain +
-        # overlay code
+        # we're converting from a terrain without overlays to a terrain + overlay code
         # since we don't support having two overlays, skip and print a warning
         for (old, new, name) in mapchanges_with_overlay:
             if old + "^" in inmap[y][i]:
-                print("{}, line {}: {} ({}) terrain with overlays \
-must be converted manually".format(filename, baseline + y + 1, old, name))
+                print("{}, line {}: {} ({}) terrain with overlays must be converted manually, cannot add a second overlay".format(filename, baseline + y + 1, old, name))
             elif old in inmap[y][i]:
                 inmap[y][i] = inmap[y][i].replace(old, new)
 
 # Generic machinery starts here
 
-if 0: # Not used, as there are currently no defined map transforms
-    class maptransform_error(BaseException):
-        "Error object to be thrown by maptransform."
-        def __init__(self, infile, inline, type):
-            self.infile = infile
-            self.inline = inline
-            self.type = type
-        def __repr__(self):
-            return '"%s", line %d: %s' % (self.infile, self.inline, self.type)
-
-    def maptransform_sample(filename, baseline, inmap, y):
-        "Transform a map line."
-        # Sample to illustrate how map-transformation hooks are called.
-        # The baseline argument will be the starting line number of the map.
-        # The inmap argument will be a 2D string array containing the
-        # entire map.  y will be the vertical coordinate of the map line.
-        # You pass a list of these as the second argument of translator().
-        raise maptransform_error(filename, baseline+y+1,
-                             "unrecognized map element at line %d" % (y,))
-
 tagstack = [] # For tracking tag nesting
 
-def outermap(func, inmap):
-    "Apply a transformation based on neighborhood to the outermost ring."
-    # Top and bottom rows
-    for i in range(len(inmap[0])):
-        inmap[0][i] = func(inmap[0][i])
-        inmap[len(inmap)-1][i] = func(inmap[len(inmap)-1][i])
-    # Leftmost and rightmost columns excluding top and bottom rows
-    for i in range(1, len(inmap)-1):
-        inmap[i][0] = func(inmap[i][0])
-        inmap[i][len(inmap[0])-1] = func(inmap[i][len(inmap[0])-1])
-
 def translator(filename, mapxforms, textxform):
-    "Apply mapxform to map lines and textxform to non-map lines."
+    re_map_data = re.compile(r"^\s*map_data\s*=")
+    re_mask = re.compile(r"^\s*mask\s*=")
     global tagstack
-    gzipped = filename.endswith(".gz")
-    if gzipped:
-        with gzip.open(filename) as content:
-            unmodified = content.readlines()
-    else:
-        try:
-            with open(filename, "r", encoding="utf8") as content:
-                unmodified = content.readlines()
-        except UnicodeDecodeError as e:
-            print('wmllint: "{}" is not a valid UTF-8 file'.format(filename), file=sys.stderr)
-            return
-    # Pull file into an array of lines, CR-stripping as needed
-    mfile = []
     map_only = filename.endswith(default_map_extension)
-    terminator = "\n"
+
+    # Pull file into an array of lines
+    try:
+        with open(filename, "r", encoding="utf8") as content:
+            unmodified = content.read().splitlines()
+    except UnicodeDecodeError as e:
+        print('wmllint: "{}" is not a valid UTF-8 file'.format(filename), file=sys.stderr)
+        return
+    
+    # array of lines that have potentially been modified
+    mfile = []
+    # check for UTF8 BOM
     UTF8_BOM = "\ufeff"
     for i, line in enumerate(unmodified):
         # get rid of BOM characters
         if i == 0 and line.startswith(UTF8_BOM):
             line = line[1:]
             print("%s: removed UTF-8 BOM character at the start of the file" % (filename))
-        if line.endswith("\n"):
-            line = line[:-1]
-        if line.endswith("\r"):
-            line = line[:-1]
-            if not stripcr:
-                terminator = '\r\n'
+        # add all the lines to the new array
         mfile.append(line)
-        if "map_data" in line:
-            map_only = False
-    # Process line-by-line
-    lineno = baseline = 0
-    cont = False
+
+    terminator = "\n"
+    lineno = 0
     validate = True
     unbalanced = False
     in_lua_code = False
     in_translatable_attribute = False
     newdata = []
-    refname = None
+
+    # Process line-by-line
     while mfile:
         if not map_only:
             line = mfile.pop(0)
-            if verbose >= 3:
-                print(line, end=terminator)
             lineno += 1
+
         # Check for one certain error condition
         if "{" in line and "}" in line:
             refname = line[line.find("{"):line.rfind("}")]
             # Ignore all-caps macro arguments.
             if refname == refname.upper():
                 pass
-            elif 'mask=' in line and not (refname.endswith("}") or refname.endswith(default_mask_extension)):
+            elif re_mask.search(line) and not (refname.endswith("}") or refname.endswith(default_mask_extension)):
                 print('"%s", line %d: mask file without %s extension or not a mask file (%s)' \
                       % (filename, lineno+1, default_mask_extension, refname))
-        # Exclude map_data= lines that are just 1 line without
-        # continuation, or which contain {}.  The former are
-        # pathological and the parse won't handle them, the latter
-        # refer to map files which will be checked separately.
-        if map_only or (("map_data=" in line or "mask=" in line)
-                        and line.count('"') in (1, 2)
-                        and '""' not in line
-                        and "{" not in line
-                        and "}" not in line
-                        and not within('time')):
+
+        # Exclude map_data= lines that are just 1 line, entirely empty, referenced via preprocessor inclusion, or part of a [time]
+        if map_only or \
+            (
+                (re_map_data.search(line) or re_mask.search(line))
+                and line.count('"') in (1, 2)
+                and '""' not in line
+                and "{" not in line
+                and "}" not in line
+                and not within('time')
+            ):
             outmap = []
-            have_header = have_delimiter = False
             maptype = None
+            baseline = lineno
+            in_map_mask_attribute = True
+
+            # determine whether this is map data or mask data
             if map_only:
                 if filename.endswith(default_mask_extension):
                     maptype = "mask"
@@ -2663,102 +2626,84 @@ def translator(filename, mapxforms, textxform):
                     maptype = "map"
             else:
                 leadws = leader(line)
-                if "map_data" in line:
+                if re_map_data.search(line):
                     maptype = "map"
-                elif "mask" in line:
+                elif re_mask.search(line):
                     maptype = "mask"
-            baseline = lineno
-            cont = True
+
+            # prepare map/mask data in an attribute for parsing
             if not map_only:
                 fields = line.split('"')
                 if fields[1].strip():
                     mfile.insert(0, fields[1])
                 if len(fields) == 3:
                     mfile.insert(1, '"')
-            if verbose >= 3:
-                print("*** Entering %s mode on:" % maptype)
-                print(mfile)
-            # Gather the map header (if any) and data lines
-            savedheaders = []
-            while cont and mfile:
+            
+            # get map/mask data from attribute
+            # uses trailing double quote as ending marker
+            while in_map_mask_attribute and mfile:
                 line = mfile.pop(0)
-                if verbose >= 3:
-                    print(line, end=terminator)
                 lineno += 1
-                # This code supports ignoring comments and header lines
-                if len(line) == 0 or line[0] == '#' or '=' in line:
-                    if '=' in line:
-                        have_header = True
-                    if len(line) == 0:
-                        have_delimiter = True
-                    savedheaders.append(line + terminator)
-                    continue
                 if '"' in line:
-                    cont = False
-                    if verbose >= 3:
-                        print("*** Exiting map mode.")
+                    in_map_mask_attribute = False
                     line = line.split('"')[0]
                 if line:
-                    if ',' in line:
-                        fields = line.split(",")
-                    else:
-                        fields = [x for x in line]
-                    outmap.append(fields)
-            # Deduce the map type
+                    outmap.append(line.split(","))
+            
+            # re-add the map/mask attribute
+            # this causes the map/mask data to always be on the same line as the attribute
             if not map_only:
                 if maptype == "map":
                     newdata.append(leadws + "map_data=\"")
                 elif maptype == "mask":
                     newdata.append(leadws + "mask=\"")
-            original = copy.deepcopy(outmap)
+            
+            # execute any map updates, for example base_to_base_with_overlay to convert hexes that went from being a single terrain to a terrain plus an overlay
             for transform in mapxforms:
                 for y in range(len(outmap)):
                     transform(filename, baseline, outmap, y)
-            newdata += savedheaders
-            if have_header and not have_delimiter:
-                newdata.append(terminator)
+            
+            # concatenate and re-add the map/mask data
             for y in range(len(outmap)):
                 newdata.append(",".join(outmap[y]) + terminator)
-            # All lines of the map are processed, add the appropriate trailer
+            
+            # add closing quote on separate line
+            # this causes the closing quote for map/mask data to always be on its own line
             if not map_only:
                 newdata.append("\"" + terminator)
-        elif "map_data=" in line and ("{" in line or "}" in line):
-            newline = line
-            refre = re.compile(r"\{@?([^A-Z].*)\}").search(line)
-            if refre:
-                mapfile = refre.group(1)
-                if not mapfile.endswith(default_map_extension) and ismap(mapfile):
-                    newline = newline.replace(mapfile, mapfile + default_map_extension)
-            newdata.append(newline + terminator)
-            if newline != line:
-                if verbose > 0:
-                    print('wmllint: "%s", line %d: %s -> %s.' % (filename, lineno, line, newline))
-        elif "map_data=" in line and line.count('"') > 1:
+        # if this is map data referenced via preprocessor inclusion
+        elif re_map_data.search(line) and ("{" in line or "}" in line):
+            newdata.append(line + terminator)
+        # if this map data has more than one quote on a single line aka it's an empty map data attribute
+        elif re_map_data.search(line) and line.count('"') > 1:
             newdata.append(line + terminator)
         else:
+            newline = line
+
             # translatable attribute start is identified by equals, optional whitespace, underscore, optional whitespace, quote
             if not in_translatable_attribute and re.search(r'=\s*_\s*"', line):
                 in_translatable_attribute = True
-            newline = line
+            
             # code conversions should be skipped in translatable attributes
             if not in_translatable_attribute:
                 # Handle text (non-map) lines.  It can use within().
                 newline = textxform(filename, lineno, line)
+            
             # translatable attribute end is identified by quote, optional whitespace, optional comment, end of line
             if in_translatable_attribute and re.search(r'"\s*(#.*)?$', line):
                 in_translatable_attribute = False
+            
             newdata.append(newline + terminator)
             fields = newline.split("#")
             trimmed = fields[0]
             destringed = re.sub('"[^"]*"', '', trimmed) # Ignore string literals
-            comment = ""
-            if len(fields) > 1:
-                comment = fields[1]
+            
             # Now do warnings based on the state of the tag stack.
             if not unbalanced and not in_lua_code and re.search(r'^[a-zA-Z0-9_]$', trimmed):
                 for instance in re.finditer(r"\[\/?\+?([a-z][a-z_]*[a-z])\]", destringed):
                     tag = instance.group(1)
                     closer = instance.group(0)[1] == '/'
+
                     if not closer:
                         tagstack.append((tag, {}, []))
                     else:
@@ -2776,25 +2721,30 @@ def translator(filename, mapxforms, textxform):
                         if '#' in value:
                             value = value.split("#")[0]
                         tagstack[-1][1][attribute] = value.strip()
-            if "wmllint: validate-on" in comment:
+
+            if "wmllint: validate-on" in newline:
                 validate = True
-            if "wmllint: validate-off" in comment:
+            if "wmllint: validate-off" in newline:
                 validate = False
-            if "wmllint: unbalanced-on" in comment:
+            if "wmllint: unbalanced-on" in newline:
                 unbalanced = True
-            if "wmllint: unbalanced-off" in comment:
+            if "wmllint: unbalanced-off" in newline:
                 unbalanced = False
+
             # single line of Lua code, skip
             if re.match(r"\s*?code\s?=\s?<<.*>>", destringed):
                 continue
+
             # multiline Lua block
             if re.match(r"\s*?code\s?=\s?<<.*", destringed):
                 in_lua_code = True
             if in_lua_code and re.match(r".*?>>\s*$", destringed):
                 in_lua_code = False
+
     # It's an error if the tag stack is nonempty at the end of any file:
     if tagstack:
         print('"%s", line %d: tag stack nonempty (%s) at end of file.' % (filename, lineno, tagstack))
+    
     tagstack = []
     if iswml(filename):
         # Perform checks that are purely local.  This is an
@@ -2806,10 +2756,13 @@ def translator(filename, mapxforms, textxform):
             except TypeError:
                 key = prefix = value = comment = None
                 local_sanity_check(filename, nav, key, prefix, value, comment)
+
         # Perform file-global semantic sanity checks
         newdata = global_sanity_check(filename, newdata)
+
         # OK, now perform WML rewrites
         newdata = hack_syntax(filename, newdata)
+        
         # Run everything together
         filetext = "".join(newdata)
         transformed = filetext
@@ -3139,7 +3092,7 @@ In your case, your system interprets your arguments as:
                         continue
                     # Do file conversions
                     try:
-                        changed = translator(fn, [maptransform], texttransform)
+                        changed = translator(fn, [base_to_base_with_overlay], texttransform)
                         if changed:
                             print("wmllint: converting", fn)
                             if not dryrun:
@@ -3152,8 +3105,6 @@ In your case, your system interprets your arguments as:
                                 else:
                                     with open(fn, "w", encoding="utf8") as ofp:
                                         ofp.write(changed)
-                    #except maptransform_error, e:
-                    #    print("wmllint: " + repr(e), file=sys.stderr)
                     except:
                         print("wmllint: internal error on %s" % fn, file=sys.stderr)
                         (exc_type, exc_value, exc_traceback) = sys.exc_info()
