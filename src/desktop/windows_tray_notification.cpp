@@ -195,7 +195,7 @@ void switch_to_wesnoth_window()
 
 } // implementation
 
-bool windows_tray_notification::show(std::string title, std::string message)
+bool show(std::string title, std::string message)
 {
 	implementation::adjust_length(title, message);
 
@@ -222,7 +222,7 @@ bool windows_tray_notification::show(std::string title, std::string message)
 	return result;
 }
 
-bool windows_tray_notification::message_hook(const MSG& msg)
+bool message_hook(const MSG& msg)
 {
 	switch(msg.lParam) {
 	case NIN_BALLOONUSERCLICK:
