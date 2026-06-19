@@ -624,6 +624,11 @@ UNIT_GETTER("traits", std::vector<std::string>) {
 }
 
 UNIT_GETTER("abilities", std::vector<std::string>) {
+	deprecated_message("unit.abilities", DEP_LEVEL::FOR_REMOVAL, version_info("1.21"), "Use unit.ability_ids instead.");
+	return u.get_ability_id_list();
+}
+
+UNIT_GETTER("ability_ids", std::vector<std::string>) {
 	return u.get_ability_id_list();
 }
 
