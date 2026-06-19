@@ -21,6 +21,7 @@
 ### Units
 ### User interface
 ### WML Engine
+   * Custom WML menu items now support an accompanying toggle button.
 ### Miscellaneous and Bug Fixes
 ### Android
 
