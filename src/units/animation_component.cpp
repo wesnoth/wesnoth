@@ -43,20 +43,34 @@ std::chrono::steady_clock::time_point get_next_idle_tick()
 }
 } // namespace
 
-const unit_animation* unit_animation_component::choose_animation(const map_location& loc,const std::string& event,
-		const map_location& second_loc,const int value,const strike_result::type hit,
-		const const_attack_ptr& attack, const const_attack_ptr& second_attack, int swing_num)
+const unit_animation* unit_animation_component::choose_animation(const map_location& loc,
+	const std::string& event,
+	const map_location& second_loc,
+	const int value,
+	const strike_result::type hit,
+	const const_attack_ptr& attack,
+	const const_attack_ptr& second_attack,
+	int swing_num,
+	bool need_process)
 {
 	// Select one of the matching animations at random
 	std::vector<const unit_animation*> options;
 	int max_val = unit_animation::MATCH_FAIL;
-	for(const unit_animation& anim : animations_) {
+	for(unit_animation& anim : animations_) {
 		int matching = anim.matches(loc,second_loc,u_.shared_from_this(),event,value,hit,attack,second_attack,swing_num);
 		if(matching > unit_animation::MATCH_FAIL && matching == max_val) {
+			if (need_process || event == "movement"){
+				anim.update_parameters(loc, second_loc);
+				anim.update_needproc(need_process || event == "movement");
+			}
 			options.push_back(&anim);
 		} else if(matching > max_val) {
 			max_val = matching;
 			options.clear();
+			if (need_process || event == "movement"){
+				anim.update_parameters(loc, second_loc);
+				anim.update_needproc(need_process || event == "movement");
+			}
 			options.push_back(&anim);
 		}
 	}
