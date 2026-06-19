@@ -368,6 +368,10 @@ void init_window(bool hidden)
 	window_flags |= SDL_WINDOW_RESIZABLE;
 	window_flags |= SDL_WINDOW_HIGH_PIXEL_DENSITY;
 
+	if(prefs::get().fullscreen()) {
+		window_flags |= SDL_WINDOW_FULLSCREEN;
+	}
+
 	if(prefs::get().maximized()) {
 		window_flags |= SDL_WINDOW_MAXIMIZED;
 	}
@@ -379,16 +383,6 @@ void init_window(bool hidden)
 
 	// Initialize window
 	window.reset(new sdl::window("", w, h, window_flags));
-	if(prefs::get().fullscreen()) {
-		SDL_DisplayMode mode;
-		mode.format = SDL_PIXELFORMAT_UNKNOWN;
-		mode.w = w;
-		mode.h = h;
-		mode.refresh_rate = 0;
-		mode.internal = nullptr;
-
-		SDL_SetWindowFullscreenMode(*window, &mode);
-	}
 
 	// It is assumed that this function is only ever called once.
 	// If that is no longer true, then you should clean things up.
