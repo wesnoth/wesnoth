@@ -16,7 +16,7 @@
 #pragma once
 
 #include <cstdint>
-#include <SDL3/SDL.h>
+#include <SDL3/SDL_events.h>
 
 /**
  * Class that keeps track of all the keys on the keyboard.
