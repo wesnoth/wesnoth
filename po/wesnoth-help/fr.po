@@ -617,7 +617,6 @@ msgstr "Retourne verticalement"
 msgid "Starting Locations Tool"
 msgstr "Outil de positions de démarrage"
 
-# Traduction incomplète
 #. [topic]: id=editor_tool_starting
 #. the parts about "10" being shown as "Player 10" use the translatable string "Player $side_num" in the wesnoth-editor textdomain
 #: data/core/editor/help.cfg:108
@@ -653,13 +652,13 @@ msgid ""
 msgstr ""
 "Définit la position de départ du chef.\n"
 "Cet outil affecte une position de départ au chef de chaque camp, ainsi que "
-"les emplacements spéciaux nommés. Chacun des types d'emplacement est activé "
-"dans l'<ref dst='..editor_mode_terrain'>éditeur de terrain</ref> et l'<ref "
-"dst='..editor_mode_scenario'>éditeur de scenario</ref> modes. Les noms des "
+"les emplacements spéciaux nommés. Ces types d'emplacement sont activés dans "
+"les modes d'<ref dst='..editor_mode_terrain'>édition de terrain</ref> et "
+"d'<ref dst='..editor_mode_scenario'>édition de scénario</ref>. Les noms des "
 "emplacements sont affichés comme une liste dans l'éditeur de palette ; "
 "cliquer sur la carte permet de placer un nom sur un hexagone, chaque "
-"emplacement ne peut être placé que sur un seul hexagone, et l'éditeur ne "
-"permettra qu'un seul emplacement par hexagone.\n"
+"hexagone ne peut contenir qu'un seul emplacement, et l'éditeur ne permettra "
+"qu'un seul emplacement par hexagone.\n"
 "\n"
 "Pour ajouter des emplacements spéciaux nommés, cliquez sur « Ajouter » en "
 "bas de l'éditeur de palette puis entrez le nom. Ces noms doivent commencer "
@@ -675,9 +674,11 @@ msgstr ""
 "i>, <i>location_id=2</i>, etc  — utilisez seulement le numéro, sans "
 "« Player » devant le numéro.\n"
 "\n"
-"<b></b>\n"
+"<b>Édition par clavier</b>\n"
 "\n"
-"• "
+"• Contrôle+clic sur une case qui contient déjà un emplacement : copie cet "
+"emplacement pour l'ajouter ultérieurement par un clic de souris, comme si il "
+"avait été sélectionné dans l'éditeur de palette."
 
 #. [topic]: id=editor_terrain_overlays
 #: data/core/editor/help.cfg:125
@@ -877,13 +878,11 @@ msgstr ""
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:184
-#, fuzzy
 msgid "editor^How to Use"
 msgstr "Comment l'utiliser"
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:186
-#, fuzzy
 msgid ""
 "The marker arrows are not very useful by themselves, but the bluffs/gulch-"
 "type terrains can be used to contain the floodfilled area."
@@ -913,7 +912,6 @@ msgstr ""
 
 #. [topic]: id=editor_terrain_elevation
 #: data/core/editor/help.cfg:193
-#, fuzzy
 msgid ""
 "The graphics used to represent the ledge borders are determined by the base "
 "terrain."
@@ -1437,7 +1435,6 @@ msgstr ""
 
 #. [topic]: id=editor_separate_events_file
 #: data/core/editor/help.cfg:409
-#, fuzzy
 msgid "Separate Event Files"
 msgstr "Fichiers séparés d'événements WML"
 
@@ -1759,10 +1756,7 @@ msgstr ""
 msgid "Calendar"
 msgstr "Calendrier"
 
-# [incomplet]
 # Une traduction passée gardait les mois en anglais
-# "$year av. W." dans #wesnoth
-# "$year ap. C." dans #wesnoth
 #. [topic]: id=..calendar
 #: data/core/encyclopedia/calendar.cfg:14
 #, fuzzy
@@ -1792,6 +1786,24 @@ msgid ""
 msgstr ""
 "Chaque année du calendrier de Wesnoth est composée de 12 mois. Ils sont, "
 "dans l'ordre :\n"
+"\n"
+"Whitefire\n"
+"Bleeding Moon\n"
+"Scatterseed\n"
+"Deeproot\n"
+"Scryer’s Bloom\n"
+"Thorntress\n"
+"Summit Star\n"
+"Kindlefire\n"
+"Stillseed\n"
+"Reaper’s Moon\n"
+"Verglas Bloom\n"
+"Blackfire\n"
+"\n"
+"Le calendrier de Wesnoth commence à la fondation de Wesnoth en l'an 1 ap. W. "
+"Les années de la période avant la fondation sont comptées par le nombre "
+"d'années qui les séparent de la fondation de Wesnoth avec \"av. W.\" (avant "
+"Wesnoth).\n"
 "\n"
 "Après la chute de Wesnoth la numérotation utilisée est « ap. C. » (Après la "
 "Chute) et « av. C. » (Avant la Chute)."
@@ -1908,6 +1920,14 @@ msgid ""
 "    • Isle of Omarath: A major drakish island northwest of the main Isle of "
 "Morogor. It is the northernmost island of the Morogor Archipelago."
 msgstr ""
+"<header>Caractéristiques géographiques notables :</header>\n"
+"    • Mont Morogor : plus haut volcan actif de l’île centrale de Morogor.\n"
+"    • Île de Gaall : île dangereuse située légèrement au Nord de l’île "
+"centrale de Morogor, principalement utilisée comme terrain de chasse par les "
+"dracans, qui n’y possèdent que deux petits villages.\n"
+"    • Île d’Omarath : grande île des dracans au Nord-Ouest de l’île "
+"principale de Morogor. C’est l’île la plus septentrionale de l’archipel de "
+"Morogor."
 
 #. [topic]: id=green_isle
 #: data/core/encyclopedia/geography.cfg:65
@@ -1937,10 +1957,20 @@ msgid ""
 "Jevyan.\n"
 "    • Blackmore: A small settlement north of the Oldwood."
 msgstr ""
+"<header>Villes notables :</header> \n"
+"    • Baie du Sud : capitale du plus grand royaume insulaire.\n"
+"    • Le Port d'Aigueclaire : deuxième plus grande cité des insulaires et "
+"emplacement d’un port majeur. \n"
+"    • Valtempête : grand royaume des insulaires, autrefois dirigé par les "
+"ancêtres de Haldric Ier.\n"
+"    • Le Hâvre de Jevyan : capitale des Wesfolks et demeure du célèbre "
+"seigneur-liche Jevyan.\n"
+"    • Blackmore : petit établissement au Nord de l’Antique Forêt"
 
 #. [topic]: id=green_isle
 #. Geography of the Green Isle
 #: data/core/encyclopedia/geography.cfg:79
+#, fuzzy
 msgid ""
 "<header>Notable land features:</header>\n"
 "    • Broken Mountains: A mighty mountain range that cuts through the Green "
@@ -1953,6 +1983,16 @@ msgid ""
 "once home to Wesfolk-imitating cultists. The swamp was defiled in wars "
 "between Wesfolk and Islefolk long ago."
 msgstr ""
+"<header>Caractéristiques géographiques notables :</header>\n"
+"    • Montagnes Brisées : puissante chaîne montagneuse qui traverse l’Île "
+"Verte.\n"
+"    • Midlands : une zone de collines aux forêts clairsemées sitée au Sud du "
+"marais d'Esten, patrie d'anciens royaumes insulaires très prospères.\n"
+"    • Oldwood : bois mystérieux habité par d’anciens woses. D’anciennes "
+"catacombes sombres se trouvent sous un temple au cœur de la forêt.\n"
+"    • Marais d’Esten : petit marais situé à l’Est des Montagnes Brisées, "
+"autrefois refuge de cultes imitant les Wesfolks. Le marais fut souillé lors "
+"des anciennes guerres entre Wesfolks et Insulaires.\n"
 
 #. [topic]: id=old_continent
 #: data/core/encyclopedia/geography.cfg:88
@@ -2027,6 +2067,18 @@ msgid ""
 "marking the end of Wesnoth and the start of the mysterious <ref "
 "dst='far_south'>Far South</ref>."
 msgstr ""
+"Le royaume de Wesnoth est situé dans le Nord de la partie centrale du <ref "
+"dst='great_continent'>Grand Continent</ref>. La plupart des campagnes "
+"principales sont centrées autour de lui. Il est délimité sur la carte par la "
+"<ref dst='great_river'>Grande Rivière</ref> au Nord, les rivages de l’<ref "
+"dst='great_ocean'>océan</ref> à l’Ouest, la forêt d’Aethen au <ref "
+"dst='southwest_elven_lands'>Sud-Ouest</ref>, et le Marais Amer au Sud-Est.\n"
+"\n"
+"Au-delà de la rivière Aethen, au Sud du fort Tahn, s’étend une région "
+"frontalière wesnothienne. Elle est bordée au Sud par des forêts denses dont "
+"la forêt d’Aethen peut être considérée comme une extension septentrionale. "
+"Kerlath en constitue la province la plus méridionale, marquant la fin de "
+"Wesnoth et le début du mystérieux <ref dst='far_south'>Grand Sud</ref>."
 
 #. [topic]: id=kingdom_wesnoth
 #. Geography of Wesnoth
@@ -2051,6 +2103,24 @@ msgid ""
 "    • Southport: A small town in the southernmost reaches of Kerlath, near "
 "the Black Forest."
 msgstr ""
+"<header>Villes notables :</header>\n"
+"    • Weldyn : capitale de Wesnoth.\n"
+"    • Aldril : cité située sur la Baie des Perles.\n"
+"    • Port d'Aiguenoire : ville située au Sud de la Baie des Perles.\n"
+"    • Carcyn : située entre les Bois Gris et la Grande Rivière.\n"
+"    • Dan’Tonk : plus grande ville de Wesnoth, située au centre du pays, "
+"légèrement au Nord-Ouest de Weldyn.\n"
+"    • Soradoc : ville la plus orientale de Wesnoth, contrôlant le confluent "
+"de la rivière Weldyn et de la Grande Rivière.\n"
+"    • Fort Tahn : poste frontière le plus méridional, contrôlant la route "
+"Nord-Sud traversant la rivière Aethen.\n"
+"    • Tath : forteresse importante au Nord de Dan’Tonk, exerçant son "
+"contrôle sur les terres sauvages à l’Est des Collines Brunes et jusqu’au gué "
+"d’Abez.\n"
+"    • Westin : petite mais importante ville de Kerlath, province la plus "
+"méridionale de Wesnoth. On y trouve l’ancienne citadelle de Westin.\n"
+"    • Anse du Sud : petite bourgade située aux confins méridionaux de "
+"Kerlath, près de la Forêt Noire."
 
 #. [topic]: id=kingdom_wesnoth
 #. Geography of Wesnoth
@@ -2148,6 +2218,12 @@ msgid ""
 "River.\n"
 "    • Carcyn: City on the Wesnoth–Elensefar border, disputed with Wesnoth."
 msgstr ""
+"<header>Villes notables :</header>\n"
+"    • Elensefar : capitale située sur une île dans le delta de la Grande "
+"Rivière, dont l’influence s’étend également sur des terres agricoles des "
+"deux rives.\n"
+"    • Carcyn : cité située à la frontière entre Wesnoth et Elensefar, "
+"territoire disputé entre les deux puissances."
 
 #. [topic]: id=elensefar
 #: data/core/encyclopedia/geography.cfg:154
@@ -2156,6 +2232,9 @@ msgid ""
 "    • <ref dst='great_river'>Great River</ref>: It is very wide at this "
 "point, and only ships can cross it."
 msgstr ""
+"<header>Caractéristiques géographiques notables :</header>\n"
+"    • <ref dst='great_river'>Grande Rivière</ref> : elle est très large à "
+"cet endroit, et seuls les navires peuvent la traverser."
 
 #. [topic]: id=northlands
 #: data/core/encyclopedia/geography.cfg:160
@@ -2179,6 +2258,19 @@ msgid ""
 "may often be in conflict with orcs and trolls, the heart of Dwarvish "
 "territory is considered relatively safe in comparison."
 msgstr ""
+"Les Terres du Nord sont peuplées de clans instables en conflit permanent. "
+"C’est une région dangereuse de hors-la-loi, marquée par un climat froid et "
+"glacial ainsi que par des guerres incessantes. Divers groupes d’orcs, de "
+"nains, d’humains, de gryphons, d’ogres et même d’elfes s’y disputent le "
+"territoire. Les frontières Nord et Est des Terres du Nord ne sont pas "
+"définies, la limite Sud est la <ref dst='great_river'>Grande Rivière</ref>, "
+"et la limite Ouest est l’<ref dst='great_ocean'>océan</ref>.\n"
+"\n"
+"Cependant, malgré l’immensité sauvage au Nord des Terres du Nord, les "
+"royaumes nains souterrains de Knalga et de Kal Kartha font exception à ce "
+"chaos environnant, offrant à leurs peuples chaleur et protection. Bien "
+"qu’ils soient souvent en conflit avec les orcs et les trolls, le cœur du "
+"territoire nain est considéré comme relativement sûr en comparaison."
 
 #. [topic]: id=northlands
 #. Geography of the Northlands
@@ -2196,6 +2288,19 @@ msgid ""
 "ref>, where these villages were located, was named the Annuvin province by "
 "men but was known by the elves as Wesmere."
 msgstr ""
+"<header>Villes notables :</header>\n"
+"    • Glamdrol : capitale tribale orque.\n"
+"    • Wesmere :  lieu où se tient le Ka’lian — le conseil elfique.\n"
+"    • Les Portes des Nains : ville mixte humaine et naine située dans la "
+"région de Knalga, au Sud des Montagnes Centrales. Important centre "
+"commercial.\n"
+"    • Saurgrath : ancienne capitale saurienne dans le Marais de l’Effroi..\n"
+"    • Dallben et Delwyn : villages humains fondés par des colons ayant "
+"traversé la Grande Rivière durant l’Âge d’Or de l’expansion de Wesnoth. "
+"Aujourd’hui abandonnés. La région boisée au Nord-Est d’<ref "
+"dst='elensefar'>Elensefar</ref>, où se situaient ces villages, fut nommée "
+"province d’Annuvin par les hommes, mais était connue des elfes sous le nom "
+"de Wesmere."
 
 # "Long-Repos" : cf. campagne Héritier du Trône pour le choix de la traduction
 #. [topic]: id=northlands
@@ -2261,6 +2366,11 @@ msgid ""
 "south and southeast, the lands of Wesnoth to the north and the Kerlath "
 "province to the east."
 msgstr ""
+"Les elfes des bois sont distincts de ceux du Nord et n’entretiennent que des "
+"relations intermittentes avec eux, ainsi qu’avec la plupart des autres "
+"nations. Leurs frontières sont l’<ref dst='great_ocean'>océan</ref> à "
+"l’Ouest, la Rivière Noire au Sud et au Sud-Est, les terres de Wesnoth au "
+"Nord et la province de Kerlath à l’Est."
 
 #. [topic]: id=southwest_elven_lands
 #. Geography of the Southwest
@@ -2277,6 +2387,16 @@ msgid ""
 "little is known, believed to have been once inhabited by elves. Those who "
 "enter it seldom return."
 msgstr ""
+"<header>Caractéristiques géographiques notables :</header>\n"
+"    • Forêt d'Aethen : Aethenwood : la plus vaste forêt méridionale, refuge "
+"d’<ref dst='..race_elf'>elfes</ref> reclus.\n"
+"    • Vallée de la floraison : vallée elfique située à l’extrémité Sud de la "
+"forêt d'Aethen. Elle abrite l'île sacrée d’Elrath..\n"
+"    • Lac Aelin : lac elfique situé en bordure de leur territoire, le long "
+"de la rivière Aethen.\n"
+"    • Forêt Noire : forêt ancienne et probablement hantée, dont on sait très "
+"peu de choses. On pense qu’elle fut autrefois habitée par les elfes. Ceux "
+"qui y pénètrent en reviennent rarement."
 
 #. [topic]: id=heart_mountains
 #: data/core/encyclopedia/geography.cfg:203
@@ -2294,6 +2414,12 @@ msgid ""
 "is named after the eastern edge of the mountains, which they call the "
 "Whitefang Mountains for their distinctive shape."
 msgstr ""
+"Une barrière presque infranchissable entre le pays des <ref "
+"dst='arkan_thoria'>rivières</ref> et les <ref dst='far_north'>Plaines du "
+"Nord</ref>. Les orcs locaux les appellent les Haggid-Dargor. Le puissant "
+"clan des Crocs-Blancs de la région tire son nom de l’extrémité orientale des "
+"montagnes, qu’ils nomment Montagnes de Crocs-Blanc en raison de leur forme "
+"distinctive."
 
 #. [topic]: id=far_north
 #: data/core/encyclopedia/geography.cfg:211
@@ -2342,6 +2468,24 @@ msgid ""
 "battle. Its ruins have now become a military stronghold.\n"
 "    "
 msgstr ""
+"<header>Villes notables :</header>\n"
+"    • Barag Gor : cité abritant le conseil orc.\n"
+"    • Bitok\n"
+"    • Borstep\n"
+"    • Farzi\n"
+"    • Jotha : grande capitale fortifiée des ondins locaux, située au Sud de "
+"Bitok.\n"
+"    • Lmarig\n"
+"    • Melmog\n"
+"    • Prestim\n"
+"    • Tirigaz : ville côtière orque, qui lance occasionnellement des raids "
+"contre Jotha.\n"
+"    • Dorest : cité humaine la plus septentrionale.\n"
+"    • Citadelle d’Arcanclave : forteresse mythique située bien au-delà des "
+"bois de Lintanir, que l’on dit avoir été forgée par un élémental de terre au "
+"cœur d’une bataille. Ses ruines servent désormais de position militaire "
+"fortifiée.\n"
+"."
 
 # Desert of Death: Le Désert de la Mort (sotbe)
 # Mountains of Haag: Montagnes de Haag (sotbe)
@@ -2380,6 +2524,34 @@ msgid ""
 "the occasional monster.\n"
 "    • Barren Plains: A vast, sparsely populated snowy tundra."
 msgstr ""
+"<header>Caractéristiques géographiques notables :</header>\n"
+"    • Désert mortel : désert anormalement aride du Grand Nord, peuplé de "
+"scorpions des sables venimeux. Il est extrêmement chaud le jour et froid la "
+"nuit.\n"
+"    • Marais Noirs : marécages dangereux au Nord de Tirigaz, infestés de "
+"créatures violentes.\n"
+"    • Montagnes de Dorth : chaîne montagneuse située au Nord des Montagnes "
+"Centrales. Moins dangereuses que leurs voisines du Sud, elles restent "
+"néanmoins mortelles pour les voyageurs inexpérimentés.\n"
+"    • Montagnes de Haag : groupe de hautes montagnes habitées par des orcs, "
+"des trolls et des nains.\n"
+"    • Collines du Deuil : série de collines ondulantes s’étendant au Sud des "
+"Montagnes de Haag. La ville orque de Lmarig se trouve à leur extrémité "
+"méridionale.\n"
+"    • Forêt Verte : forêt elfique proche de la forêt de Lintanir. Certains "
+"disent qu’elle en était autrefois une extension, avant que des orcs sauvages "
+"ne brûlent une grande partie des bois.\n"
+"    • Forêt Silencieuse : forêt dense habitée par quelques elfes, autrefois "
+"connue sous le nom de Gitamoth.\n"
+"    • Forest de Thelien: forêt de conifères dense, parfois habitée par des "
+"elfes.\n"
+"    • Rivière Oumph : rivière coulant depuis les Montagnes de Haag jusqu’à "
+"son delta au Sud de Bitok.\n"
+"    • Rivière Bork : rivière du Grand Nord prenant sa source dans un lac "
+"près des Collines du Deuil.\n"
+"    • Déserts Glacés : désert glacé du Grand Nord, habité seulement par "
+"quelques monstres errants.\n"
+"    • Plaines Stériles : vaste toundra neigeuse faiblement peuplée."
 
 #. [topic]: id=far_south
 #: data/core/encyclopedia/geography.cfg:249
@@ -2392,6 +2564,9 @@ msgid ""
 "A vast region south of Kerlath home to many mysterious races, including jinn "
 "and wyverns. Very little is known for certain about what lies here."
 msgstr ""
+"Une vaste région située au Sud de Kerlath, habitée par de nombreuses races "
+"mystérieuses, dont les djinns et les vouivres. Très peu de choses sont "
+"connues avec certitude sur ce qui s’y trouve."
 
 #. [topic]: id=far_south
 #. Geography of the Far South
@@ -2410,6 +2585,21 @@ msgid ""
 "remote Sandy Wastes, sometimes known simply as the Ashland. A far-off "
 "civilization is sometimes said to live around the desert."
 msgstr ""
+"<header>Caractéristiques géographiques notables :</header>\n"
+"    • Montagnes du Péril : haute et mortelle chaîne montagneuse du Grand "
+"Sud, habitée par des bandes de barbares violents et des créatures "
+"monstrueuses.\n"
+"    • Déserts Sablonneux : désert chaud situé au Sud-Est de Kerlath. Les "
+"wesnothiens le considèrent comme une barrière infranchissable, avec une "
+"végétation extrêmement rare composée de quelques buissons et cactus. \n"
+"    • Isanbar : montagne mystérieuse située dans les Déserts Sablonneux, "
+"entourée uniquement de plaines désertiques. Elle ne fait partie d’aucune "
+"chaîne montagneuse, et son existence est mise en doute par la plupart des "
+"gens.\n"
+"    • Désert de Cendres : désert énigmatique dont on dit qu’il s’étend au-"
+"delà même des Déserts Sablonneux reculés, parfois appelé simplement les "
+"terres cendrées. On raconte qu’une civilisation lointaine pourrait vivre aux "
+"abords de ce désert."
 
 #. [section]: id=schedule
 #: data/core/help.cfg:10
@@ -4072,7 +4262,7 @@ msgid ""
 "will heal fully. This can happen as soon as your unit gains enough "
 "experience, whether it is your turn or not."
 msgstr ""
-"• <b>Avancement</b>: Lorsqu'une unité <ref dst='advancement'>progresse</"
+"• <b>Avancement</b> : Lorsqu'une unité <ref dst='advancement'>progresse</"
 "ref>, elle est entièrement soignée. Cela se produit aussitôt qu'elle gagne "
 "suffisamment d'expérience, que cela soit votre tour ou non."
 

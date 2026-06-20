@@ -192,7 +192,6 @@ msgstr "Personnaliser les couleurs des orbes"
 
 #. [advanced_preference]: type=custom
 #: data/advanced_preferences.cfg:142
-#, fuzzy
 msgid "Customize Reach Map (Unit Movement UI)"
 msgstr "Personnaliser la portée de mouvement"
 
@@ -277,7 +276,6 @@ msgstr ""
 # Voir https://fr.wikipedia.org/wiki/Single_instruction_multiple_data
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:200
-#, fuzzy
 msgid "SIMD acceleration"
 msgstr "Accélération SIMD"
 
@@ -1736,7 +1734,6 @@ msgstr "Cette unité a été renommée : "
 # De #wesnoth-help
 #. [chance_to_hit]: id=deflect
 #: data/core/macros/deprecated-utils.cfg:124
-#, fuzzy
 msgid "deflect"
 msgstr "esquive"
 
@@ -1763,7 +1760,6 @@ msgstr ""
 # Dans #wesnoth-tdg, absorption est la traduction de "consume"
 #. [damage]: id=absorb
 #: data/core/macros/deprecated-utils.cfg:139
-#, fuzzy
 msgid "absorb"
 msgstr "amortissement"
 
@@ -2749,7 +2745,6 @@ msgstr ""
 
 #. Generator for ship names
 #: data/core/macros/names.cfg:251
-#, fuzzy
 msgid ""
 "\n"
 "main={prefix} {starting_consonnant}{vowel}{consonnant}{vowel}"
@@ -2853,7 +2848,6 @@ msgstr "Alain,Ange,Ami,Aigle,Ay,Bert,Bleu,Bac,Bec,Boeuf,Bain,Blanc,Beau,Bouc,By,
 
 #. Generator for the base names of features assigned by the random map generator; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:291
-#, fuzzy
 msgid ""
 "\n"
 "main={c_prefix}{c_middle}{suffix}|{f_prefix}{f_middle}{suffix}|{other_prefix}"
@@ -3179,7 +3173,6 @@ msgstr "Jaune"
 
 #. [color_range]: id=pink
 #: data/core/team-colors.cfg:119
-#, fuzzy
 msgid "Pink"
 msgstr "Rose"
 
@@ -3294,7 +3287,6 @@ msgstr "Voile"
 
 #. [color_range]: id=urbanjungle
 #: data/core/team-colors.cfg:256
-#, fuzzy
 msgid "Urban"
 msgstr "Urbain"
 
@@ -5367,7 +5359,6 @@ msgstr ""
 "Détails :"
 
 #: src/actions/undo.cpp:342
-#, fuzzy
 msgid "Unhandled choices while redoing"
 msgstr "Ré-exécution d'un choix non supporté"
 
@@ -5391,9 +5382,8 @@ msgid "Requesting add-on downloads by version..."
 msgstr "Récupération des téléchargements de l’extension par version…"
 
 #: src/addon/client.cpp:164
-#, fuzzy
 msgid "Requesting forum_auth usage..."
-msgstr "Demande pour forum_auth..."
+msgstr "Demande pour utiliser forum_auth..."
 
 #: src/addon/client.cpp:182
 msgid "Requesting list of admins..."
@@ -6169,56 +6159,48 @@ msgstr "%d %b %y"
 #. translate "timespan^$num years" as "$num ans", thus allowing the game UI to
 #. generate output such as "39 ans" after variable interpolation.
 #: src/formula/format_timespan.hpp:38
-#, fuzzy
 msgid "timespan^$num year"
 msgid_plural "timespan^$num years"
 msgstr[0] "$num an"
 msgstr[1] "$num ans"
 
 #: src/formula/format_timespan.hpp:39
-#, fuzzy
 msgid "timespan^$num month"
 msgid_plural "timespan^$num months"
 msgstr[0] "$num mois"
 msgstr[1] "$num mois"
 
 #: src/formula/format_timespan.hpp:40
-#, fuzzy
 msgid "timespan^$num week"
 msgid_plural "timespan^$num weeks"
 msgstr[0] "$num semaine"
 msgstr[1] "$num semaines"
 
 #: src/formula/format_timespan.hpp:41
-#, fuzzy
 msgid "timespan^$num day"
 msgid_plural "timespan^$num days"
 msgstr[0] "$num jour"
 msgstr[1] "$num jours"
 
 #: src/formula/format_timespan.hpp:42
-#, fuzzy
 msgid "timespan^$num hour"
 msgid_plural "timespan^$num hours"
 msgstr[0] "$num heure"
 msgstr[1] "$num heures"
 
 #: src/formula/format_timespan.hpp:43
-#, fuzzy
 msgid "timespan^$num minute"
 msgid_plural "timespan^$num minutes"
 msgstr[0] "$num minute"
 msgstr[1] "$num minutes"
 
 #: src/formula/format_timespan.hpp:44
-#, fuzzy
 msgid "timespan^$num second"
 msgid_plural "timespan^$num seconds"
 msgstr[0] "$num seconde"
 msgstr[1] "$num secondes"
 
 #: src/formula/format_timespan.hpp:89 src/formula/format_timespan.hpp:112
-#, fuzzy
 msgid "timespan^expired"
 msgstr "expiré"
 
@@ -6968,7 +6950,6 @@ msgid "This is a global trait."
 msgstr "Ceci est un trait générique."
 
 #: src/help/help_impl.cpp:763
-#, fuzzy
 msgid "Races with this trait"
 msgstr "Races ayant ce trait"
 
@@ -7824,7 +7805,6 @@ msgid "Download unavailable"
 msgstr "Téléchargement indisponible"
 
 #: src/network_download_file.cpp:50
-#, fuzzy
 msgid "Standalone file downloads are not currently supported on iOS."
 msgstr "Le téléchargement de fichiers isolés n'est pas supporté sur iOS."
 
@@ -8277,7 +8257,6 @@ msgstr[0] "utilise $number attaque"
 msgstr[1] "utilise $number attaques"
 
 #: src/reports.cpp:1010
-#, fuzzy
 msgid "This attack uses $num attack point"
 msgid_plural "This attack uses $num attack points"
 msgstr[0] "Cette attaque consume $num point d'attaque"

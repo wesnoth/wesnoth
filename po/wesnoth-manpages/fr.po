@@ -128,7 +128,6 @@ msgstr "B<--addon-info>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:48
-#, fuzzy
 msgid ""
 "Shows a button on the add-ons manager to query the add-ons server for "
 "various information."
@@ -219,7 +218,6 @@ msgstr "B<--clock>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:72
-#, fuzzy
 msgid ""
 "Adds the option to show a clock for testing the drawing timer. Also adds the "
 "option for showing the GUI Test Dialog."
@@ -248,7 +246,6 @@ msgstr "B<--data-dir>I<\\ répertoire>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:78
-#, fuzzy
 msgid ""
 "Overrides the data directory with the one specified. The data directory is "
 "the one that contains subdirectories 'data', 'fonts', 'images' and others."
@@ -441,7 +438,6 @@ msgstr "B<--log->I<niveau>B<=>I<domaine1>B<,>I<domaine2>B<,>I<...>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:151
-#, fuzzy
 msgid ""
 "sets the severity level of the log domains. The wildcard B<*> may be used to "
 "match a subset of domains, e.g. gui/* or conf* or * (the latter matches all "
@@ -455,7 +451,8 @@ msgstr ""
 "sélectionnera tous les niveaux de journalisation). Niveaux disponibles : "
 "B<error>,\\ B<warning>,\\ B<info>,\\ B<debug>, \\ B<none>. Le niveau par "
 "défaut B<warning> est utilisé par la plupart des journaux, mais "
-"B<deprecation> utilise « none » par défaut sauf si combiné à l'option B<-d>."
+"B<deprecation> utilise B<none> par défaut sauf si combinée à l'option B<-d>. "
+"Cette option peut être répétée."
 
 # type: TP
 #. type: TP
@@ -514,7 +511,6 @@ msgstr "B<--no-log-to-file>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:171
-#, fuzzy
 msgid ""
 "prevents redirecting logged output to a file. The environment variable "
 "WESNOTH_NO_LOG_FILE can also be set as an alternative. Log files are created "
@@ -550,7 +546,6 @@ msgstr "B<--no-log-sanitize>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:177
-#, fuzzy
 msgid ""
 "disables the anonymization that's normally applied when logging, for example "
 "replacing usernames with USER."
@@ -834,10 +829,9 @@ msgstr "B<--preprocess-string>I<\\ fichier source>"
 
 #. type: Plain text
 #: doc/man/wesnoth.6:257
-#, fuzzy
 msgid "preprocesses a given string and writes the output to stdout."
 msgstr ""
-"prétraite une chaîne alphanumérique donnée et envoit le résultat à la sortie "
+"prétraite une chaîne alphanumérique donnée et envoie le résultat à la sortie "
 "standard."
 
 #. type: TP
@@ -2407,7 +2401,6 @@ msgstr "B<db_tournament_query>"
 
 #. type: Plain text
 #: doc/man/wesnothd.6:251
-#, fuzzy
 msgid ""
 "The SQL query to find tournaments to announce on login. Should return "
 "tournament B<title>, B<status> and B<url>."
