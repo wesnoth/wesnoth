@@ -18,8 +18,6 @@
 #include <SDL3/SDL_events.h>
 #include <SDL3/SDL_clipboard.h>
 
-#define CLIPBOARD_FUNCS_DEFINED
-
 namespace desktop {
 
 namespace clipboard {
