@@ -426,7 +426,7 @@ point window_size()
 
 rect game_canvas()
 {
-	return {0, 0, game_canvas_size_.x, game_canvas_size_.y};
+	return {point{}, game_canvas_size_};
 }
 
 point game_canvas_size()
@@ -441,7 +441,7 @@ point draw_size()
 
 rect draw_area()
 {
-	return {0, 0, current_render_target_.w(), current_render_target_.h()};
+	return {point{}, draw_size()};
 }
 
 point draw_offset()
@@ -459,8 +459,7 @@ point draw_offset()
 
 rect output_area()
 {
-	point p = output_size();
-	return {0, 0, p.x, p.y};
+	return {point{}, output_size()};
 }
 
 rect to_output(const rect& r)
