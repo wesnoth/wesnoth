@@ -141,7 +141,23 @@ obsolete_lines = (
     "{MAGENTA_IS_THE_TEAM_COLOR}",
     "{SOUND:SLOW}",
     "{SOUND:POISON}",
+    "{NO_INTERRUPT_NO_UNDO}",
+    "{ENABLE_NIGHTBLADE}",
     )
+
+# things that need to be updated but aren't handled by wmllint
+warn_if_found = (
+    ("{DRAKE_FLYING_ANIM}", "This is for the old style Drake animations. If you still need this for some reason, copy the macro definition into your add-on."),
+    ("{STORY_PART_SPEECH}", "This no longer works properly, use the title attribute for the caption instead"),
+    ("{EARLY_FINISH_BONUS_NOTE}", "This is now automatically generated and not required. Use [objectives][gold_carryover]bonus=yes instead."),
+    ("{NO_EARLY_FINISH_BONUS_NOTE}", "This is now automatically generated and not required. Use [objectives][gold_carryover]bonus=no instead."),
+    ("{NO_GOLD_CARRYOVER_NOTE}", "This is now automatically generated and not required. Use [objectives][gold_carryover]carryover_percentage=0 instead."),
+    ("{NEW_GOLD_CARRYOVER_NOTE_100}", "This is now automatically generated and not required. Use [objectives][gold_carryover]carryover_percentage=100 instead."),
+    ("{NEW_GOLD_CARRYOVER_NOTE_40}", "This is now automatically generated and not required. Use [objectives][gold_carryover]carryover_percentage=40 instead."),
+    ("{NEW_GOLD_CARRYOVER_NOTE_20}", "This is now automatically generated and not required. Use [objectives][gold_carryover]carryover_percentage=20 instead."),
+    ("{ON_SIGHTING", "Use an [event]name=sighted instead."),
+    ("{MAKE_AI_SIDE_PERSISTENT}", "Just put the persistent key in [side] directly"),
+)
 
 # Global changes meant to be done on all lines, excluding lines containing translation mark.  Suppressed by noconvert.
 linechanges = (
@@ -1224,6 +1240,9 @@ linechanges = (
         # introduced in wesnoth 1.17.19
         ("units/elves-wood/fighter.png", "units/elves-wood/fighter/fighter.png"),
 
+        # some macro conversions from 1.19
+        ("{MISSILE_FRAME_FIREBALL}",
+         "{MISSILE_FRAME_FIREBALL_XY 0 0}"),
         )
 
 # helper function to reduce code duplication and allow easy checking
@@ -1910,6 +1929,9 @@ to be called on their own".format(filename, num))
     name_generator_re = re.compile(r"name_generator\s*=\s*_\s*<<")
     gui_def_regex = re.compile(r"\[/.*\_definition\]")
     for i in range(len(lines)):
+        for (item, warning) in warn_if_found:
+            if item in lines[i]:
+                print(warning)
         extras = re.search("# *wmllint: translatables +(.*)", lines[i])
         if extras:
             extra_translatables.append(string_strip(extras.group(1)).strip())
