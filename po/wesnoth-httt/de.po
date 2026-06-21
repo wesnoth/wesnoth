@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.18\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2026-05-19 02:15 UTC\n"
-"PO-Revision-Date: 2024-03-04 17:34+0100\n"
+"PO-Revision-Date: 2026-06-20 12:37+0200\n"
 "Last-Translator: Severin Glöckner <severin.gloeckner@stud.htwk-leipzig.de>\n"
 "Language-Team: irc://irc.libera.chat/#wesnoth-de\n"
 "Language: de_DE\n"
@@ -17,36 +17,26 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.9\n"
 
 #. [campaign]: id=Heir_To_The_Throne_Classic
 #. [achievement_group]
 #: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:12
 #: data/campaigns/Heir_To_The_Throne_Classic/achievements.cfg:3
-#, fuzzy
-#| msgid "Heir to the Throne"
 msgid "Heir to the Throne, Classic"
-msgstr "Der Thronerbe"
+msgstr "Der Thronerbe, klassisch"
 
 #. [campaign]: id=Heir_To_The_Throne_Classic
 #: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:15
-#, fuzzy
-#| msgid "HttT"
 msgid "HttTC"
-msgstr "HttT"
+msgstr "HttTC"
 
 #. [campaign]: id=Heir_To_The_Throne_Classic
 #: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:23
-#, fuzzy
-#| msgid ""
-#| "Fight to regain the throne of Wesnoth, of which you are the legitimate "
-#| "heir.\n"
-#| "\n"
 msgid ""
 "Fight to regain the throne of Wesnoth, of which you are the legitimate heir."
 msgstr ""
-"Erobert den Thron von Wesnoth zurück, dessen rechtmäßiger Erbe Ihr seid.\n"
-"\n"
+"Erobert den Thron von Wesnoth zurück, dessen rechtmäßiger Erbe Ihr seid."
 
 #. [campaign]: id=Heir_To_The_Throne_Classic
 #: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:25
@@ -55,6 +45,9 @@ msgid ""
 "historical reasons. Also optionally includes the old <i>Battle Training</i> "
 "tutorial."
 msgstr ""
+"Dies ist die Originalversion dieser Kampagne, die aus historischen Gründen "
+"zurückbehalten wurde. Enthält auch das alte <i>Kampftraining</i>-Tutorial "
+"als optionalen Teil."
 
 #. [campaign]: id=Heir_To_The_Throne_Classic
 #: data/campaigns/Heir_To_The_Throne_Classic/_main.cfg:27
@@ -117,12 +110,12 @@ msgstr "Verschiedenes"
 #. [achievement]: id=completed
 #: data/campaigns/Heir_To_The_Throne_Classic/achievements.cfg:7
 msgid "Trained for Battle"
-msgstr ""
+msgstr "Bereit für die Schlacht"
 
 #. [achievement]: id=completed
 #: data/campaigns/Heir_To_The_Throne_Classic/achievements.cfg:8
 msgid "Complete the old <i>Battle Training</i> tutorial."
-msgstr ""
+msgstr "Schließt das alte <i>Kampftraining</i>-Tutorial ab."
 
 #. [scenario]: id=01_The_Elves_Besieged
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/01_The_Elves_Besieged.cfg:4
@@ -8845,10 +8838,6 @@ msgstr ""
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/24_Battle_for_Wesnoth.cfg:238
-#, fuzzy
-#| msgid ""
-#| "Surrender, mother. The land’s blood is spent. I have come to take my "
-#| "rightful place."
 msgid ""
 "Surrender, Mother. The land’s blood is spent. I have come to take my "
 "rightful place."
@@ -9285,13 +9274,6 @@ msgstr "Seeork"
 
 #. [unit_type]: id=Sea Orc, race=orc
 #: data/campaigns/Heir_To_The_Throne_Classic/units/Sea_Orc.cfg:32
-#, fuzzy
-#| msgid ""
-#| "While often viewed as inferior to their land-loving counterparts, Sea "
-#| "Orcs represent a great leap for all goblins as they have adapted to "
-#| "aquatic environments. With their curved swords they are competent "
-#| "fighters, although their lack of a ranged attack and poor defense on land "
-#| "do represent strategic weaknesses."
 msgid ""
 "While often viewed as inferior to their land-loving counterparts, Sea Orcs "
 "represent a great leap for all orcs and goblins as they have adapted to "
@@ -9334,7 +9316,7 @@ msgstr ""
 #. [firststrike]: id=initiative
 #: data/campaigns/Heir_To_The_Throne_Classic/utils/abilities.cfg:8
 msgid "first strike"
-msgstr ""
+msgstr "Erstschlag"
 
 #. [firststrike]: id=initiative
 #: data/campaigns/Heir_To_The_Throne_Classic/utils/abilities.cfg:9
@@ -9342,6 +9324,8 @@ msgid ""
 "When under initiative influence, this unit always strikes first when "
 "attacked by melee weapon, even if they are defending."
 msgstr ""
+"Unter der Wirkung von Kampfgespür schlägt diese Einheit im Nahkampf immer "
+"zuerst zu, selbst wenn sie sich verteidigt."
 
 #. [firststrike]: id=initiative
 #: data/campaigns/Heir_To_The_Throne_Classic/utils/abilities.cfg:10
