@@ -368,12 +368,15 @@ msgstr "Karte speichern unter"
 msgid "Error"
 msgstr "Fehler"
 
+# In 1.20, the substitutions were replaced with complete strings.
+# "Do you really want to save a map in the scenarios folder?"
+# "Do you really want to save a scenario in the maps folder?"
 #: src/editor/map/context_manager.cpp:713
 #: src/editor/map/context_manager.cpp:762
-#, fuzzy
-#| msgid "Do you really want to quit?"
 msgid "Do you really want to save $type1 in $type2 folder?"
-msgstr "Wollt Ihr wirklich beenden?"
+msgstr ""
+"Wollt Ihr wirklich ein(e) “$type1”-Datei im Verzeichnis "
+"für “$type2”-Dateien speichern?"
 
 #: src/editor/map/context_manager.cpp:721
 #: src/editor/map/context_manager.cpp:939
@@ -505,16 +508,12 @@ msgid "Will not work in game without extra care."
 msgstr "Funktioniert nicht ohne weitere Anpassungen im WML."
 
 #: src/editor/palette/item_palette.cpp:32
-#, fuzzy
-#| msgid "Right-click: "
 msgid " | Right-click to remove"
-msgstr "Rechtsklick: "
+msgstr " | Rechtsklick zum Entfernen"
 
 #: src/editor/palette/item_palette.cpp:32
-#, fuzzy
-#| msgid "Left-click: "
 msgid "Left-click: Place item "
-msgstr "Linksklick: "
+msgstr "Linksklick: Gegenstand platzieren: "
 
 #: src/editor/palette/location_palette.cpp:249
 msgid "Go To"

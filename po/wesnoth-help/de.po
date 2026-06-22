@@ -8,6 +8,7 @@
 # Aaron Winter <winter.aaron93@gmail.com>, 2018.
 # mcpgal, 2021.
 # Severin Glöckner <severin.gloeckner@stud.htwk-leipzig.de>, 2022, 2023
+# Wuzzy <Wuzzy@disroot.org>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.18 - wesnoth-help\n"
@@ -994,18 +995,6 @@ msgstr "Gegenstandswerkzeug"
 
 #. [topic]: id=editor_tool_scenery
 #: data/core/editor/help.cfg:243
-#, fuzzy
-#| msgid ""
-#| "The Item Tool allows placing decorations such as windmills, bookcases and "
-#| "monoliths. Multiple items can be placed on the same hex.\n"
-#| "\n"
-#| "<bold>text='Note:'</bold> the tool doesn’t support deleting items once "
-#| "placed, nor does it support undo. Mistakes can currently only be fixed by "
-#| "editing the generated WML file.\n"
-#| "\n"
-#| "This tool is only available in Scenario Mode; the decorations are not "
-#| "part of the terrain and are implemented in the scenario using WML’s "
-#| "<italic>text='[item]'</italic> tag."
 msgid ""
 "The Item Tool allows placing decorations such as windmills, bookcases and "
 "monoliths. Multiple items can be placed on the same hex.\n"
@@ -1019,14 +1008,14 @@ msgid ""
 "of the terrain and are implemented in the scenario using WML’s "
 "<italic>text='[item]'</italic> tag."
 msgstr ""
-"Das Gegenstandswerkzeug erlaubt die Platzierung von Dekoration wie "
+"Das Gegenstandswerkzeug erlaubt die Platzierung von Dekorationen wie "
 "Windmühlen, Bücherregalen und Monolithen. Mehrere Gegenstände können auf dem "
 "selben Feld platziert werden.\n"
 "\n"
-"<bold>text='Anmerkung:'</bold> Das Werkzeug unterstützt weder die Entfernung "
-"von Gegenständen, sobald sie gesetzt worden sind, noch das Rückgängigmachen "
-"der Platzierung. Fehler können nur behoben werden, indem man die generierte "
-"WML-Datei ändert.\n"
+"• Linksklick wird eine Dekoration auf dem angeklickten Feld platzieren.\n"
+"• Rechtsklick wird die Dekoration entfernen.\n"
+"\n"
+"<bold>text='Anmerkung:'</bold> Das Werkzeug unterstützt das Rückgängigmachen nicht.\n"
 "\n"
 "Dieses Werkzeug ist nur im Szenarienmodus verfügbar; die Dekorationen sind "
 "nicht Teil des Geländes und stattdessen im Szenario durch den WML-Tag "
