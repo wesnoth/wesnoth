@@ -1930,8 +1930,8 @@ to be called on their own".format(filename, num))
     gui_def_regex = re.compile(r"\[/.*\_definition\]")
     for i in range(len(lines)):
         for (item, warning) in warn_if_found:
-            if item in lines[i]:
-                print(warning)
+            if item in lines[i] and "#" in lines[i] and lines[i].find("#") > lines[i].find(item):
+                print(item +": "+ warning)
         extras = re.search("# *wmllint: translatables +(.*)", lines[i])
         if extras:
             extra_translatables.append(string_strip(extras.group(1)).strip())
