@@ -17,7 +17,7 @@
  * @file
  * Editor label action classes
  */
-#define GETTEXT_DOMAIN "wesnoth-editor"
+#define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "editor/action/action_select.hpp"
 #include "editor/map/map_context.hpp"
