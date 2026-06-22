@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2026-02-26 01:04 UTC\n"
-"PO-Revision-Date: 2024-12-03 15:19+0100\n"
+"PO-Revision-Date: 2026-06-21 20:51+0200\n"
 "Last-Translator: Wuzzy <Wuzzy@disroot.org>\n"
 "Language-Team: irc://irc.libera.chat/#wesnoth-de\n"
 "Language: de_DE\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.9\n"
 
 #. [campaign]: id=Son_of_the_Black-Eye
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:9
@@ -94,17 +94,13 @@ msgstr "Kampagnengestaltung"
 
 #. [about]
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:41
-#, fuzzy
-#| msgid "Campaign Maintenance"
 msgid "Current Campaign Maintainer"
-msgstr "Pflege und Erweiterung der Kampagne"
+msgstr "Aktueller Betreuer"
 
 #. [about]
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:47
-#, fuzzy
-#| msgid "Campaign Maintenance"
 msgid "Campaign Maintainers (former)"
-msgstr "Pflege und Erweiterung der Kampagne"
+msgstr "Frühere Betreuer"
 
 #. [about]
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:56
@@ -1664,11 +1660,6 @@ msgstr "Sind die Schamanen in Sicherheit?"
 
 #. [message]: speaker=Affman
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:238
-#, fuzzy
-#| msgid ""
-#| "When we realized that there was no way we could hold the humans off, we "
-#| "sent them east to a place near the Mourned Hills along with most of our "
-#| "women and children. The rest of us remained here to buy them some time."
 msgid ""
 "When we realized that there was no way we could hold the humans off, we sent "
 "them east to a place near the Mourned Hills along with most of our women and "
@@ -1678,7 +1669,9 @@ msgid ""
 msgstr ""
 "Wir konnten die Menschen nicht stoppen. Daher sandten wir sie nach Osten in "
 "die Nähe der Trauerhügel, zusammen mit dem Rest unseres Stammes, unserer "
-"Frauen und Kinder. Wir blieben hier. Wir verschafften ihnen etwas Vorsprung."
+"Frauen und Kinder. Die meisten unserer Grunzer und Schützen begleiteten sie, "
+"um sie zu beschützen. Wir blieben hier. Wir verschafften ihnen etwas "
+"Vorsprung."
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:243
@@ -1753,6 +1746,9 @@ msgid ""
 "consuming but much safer compared to the direct route through the Desert of "
 "Death."
 msgstr ""
+"Höchstwahrscheinlich folgen sie dem Pfad durch die Ausläufer des Gebirges. "
+"Die Reise ist zwar länger, aber viel sicherer verglichen mit dem direkten "
+"Weg durch die Todeswüste."
 
 #. [message]: speaker=Pirk
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:399
@@ -2571,14 +2567,8 @@ msgstr "Erwartet Inarix Ankunft aus dem Süden in 4 Runden."
 
 #. [objective]: condition=win
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:48
-#, fuzzy
-#| msgid ""
-#| "In order to recruit saurians later on, bring Inarix and at least four "
-#| "saurians to safety"
 msgid "Escort Inarix and at least four saurians to Prestim."
-msgstr ""
-"Um später Saurianer zu rekrutieren, führt Inarix und mindestens vier "
-"Saurianer zur Festung am Fluss Gork"
+msgstr "Führt Inarix und mindestens vier Saurianer nach Prestim."
 
 #. [note]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:75
@@ -2587,16 +2577,12 @@ msgstr "Derjenige, der die Brücke sprengt, opfert sein Leben."
 
 #. [note]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:78
-#, fuzzy
-#| msgid ""
-#| "In order to recruit saurians later on, bring Inarix and at least four "
-#| "saurians to safety"
 msgid ""
 "In order to recruit saurians later on, bring Inarix and at least four "
 "saurians to safety."
 msgstr ""
-"Um später Saurianer zu rekrutieren, führt Inarix und mindestens vier "
-"Saurianer zur Festung am Fluss Gork"
+"Um später Saurianer ausbilden zu können, führt Inarix und mindestens vier "
+"Saurianer in Sicherheit."
 
 #. [side]: type=Elvish Champion, id=Thelarion
 #. [unit]: type=Elvish Champion, id=Thelarion
@@ -4324,6 +4310,9 @@ msgid ""
 "ensure no messages reached Dwarven Doors. I suppose it was only a matter of "
 "time..."
 msgstr ""
+"Verflucht noch eins! Er ist bereits hier?! Dabei habe ich den Boten der "
+"Allianz ein fürstliches Schmiergeld überlassen, damit keine Nachrichten nach "
+"Zwergenpforte gelangen. Es war wohl nur eine Frage der Zeit…"
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:446
@@ -4871,124 +4860,124 @@ msgstr ""
 #. [advancement]: id=wol_amla_hitpoints
 #: data/campaigns/Son_Of_The_Black_Eye/utils/1-amla.cfg:25
 msgid "Endurance: +8 HP (Hitpoints)"
-msgstr ""
+msgstr "Ausdauer: +8 LP (Lebenspunkte)"
 
 #. [modify_unit_type]: type=Orcish Warlord
 #. [modify_unit_type]: type=Orcish Sovereign
 #: data/campaigns/Son_Of_The_Black_Eye/utils/1-amla.cfg:71
 #: data/campaigns/Son_Of_The_Black_Eye/utils/1-amla.cfg:207
 msgid "Melee: greatsword +1 damage"
-msgstr ""
+msgstr "Nahkampf: Krummschwert +1 Schaden"
 
 #. [modify_unit_type]: type=Orcish Warlord
 #: data/campaigns/Son_Of_The_Black_Eye/utils/1-amla.cfg:76
 msgid "Ranged: bow +1 damage"
-msgstr ""
+msgstr "Fernkampf: Bogen +1 Schaden"
 
 #. [modify_unit_type]: type=Orcish Slurbow, type=blade, type=pierce, type=fire
 #: data/campaigns/Son_Of_The_Black_Eye/utils/1-amla.cfg:91
 msgid "Melee: short sword +1 damage"
-msgstr ""
+msgstr "Nahkampf: Kurzschwert +1 Schaden"
 
 #. [modify_unit_type]: type=Orcish Slurbow, type=blade, type=pierce, type=fire
 #: data/campaigns/Son_Of_The_Black_Eye/utils/1-amla.cfg:97
 msgid "Ranged: crossbow (pierce) +1 damage"
-msgstr ""
+msgstr "Fernkampf: Armbrust (Stich) +1 Schaden"
 
 #. [modify_unit_type]: type=Orcish Slurbow, type=blade, type=pierce, type=fire
 #: data/campaigns/Son_Of_The_Black_Eye/utils/1-amla.cfg:103
 msgid "Ranged: crossbow (fire) +2 damage"
-msgstr ""
+msgstr "Fernkampf: Armbrust (Feuer) +2 Schaden"
 
 #. [modify_unit_type]: type=Direwolf Rider
 #. [modify_unit_type]: type=Goblin Pillager
 #: data/campaigns/Son_Of_The_Black_Eye/utils/1-amla.cfg:117
 #: data/campaigns/Son_Of_The_Black_Eye/utils/1-amla.cfg:136
 msgid "Melee: fangs +1 damage"
-msgstr ""
+msgstr "Nahkampf: Fänge +1 Schaden"
 
 #. [modify_unit_type]: type=Direwolf Rider
 #: data/campaigns/Son_Of_The_Black_Eye/utils/1-amla.cfg:122
 msgid "Melee: claws +1 damage"
-msgstr ""
+msgstr "Nahkampf: Klauen +1 Schaden"
 
 #. [modify_unit_type]: type=Goblin Pillager
 #: data/campaigns/Son_Of_The_Black_Eye/utils/1-amla.cfg:141
 msgid "Melee: torch +1 damage"
-msgstr ""
+msgstr "Nahkampf: Fackel +1 Schaden"
 
 #. [modify_unit_type]: type=Goblin Pillager
 #: data/campaigns/Son_Of_The_Black_Eye/utils/1-amla.cfg:146
 msgid "Ranged: net +1 damage"
-msgstr ""
+msgstr "Fernkampf: Netz +1 Schaden"
 
 #. [modify_unit_type]: type=Troll Warrior
 #: data/campaigns/Son_Of_The_Black_Eye/utils/1-amla.cfg:160
 msgid "Melee: hammer +2 damage"
-msgstr ""
+msgstr "Nahkampf: Hammer +2 Schaden"
 
 #. [modify_unit_type]: type=Troll Rocklobber
 #: data/campaigns/Son_Of_The_Black_Eye/utils/1-amla.cfg:174
 msgid "Melee: fist +2 damage"
-msgstr ""
+msgstr "Nahkampf: Faust +2 Schaden"
 
 #. [modify_unit_type]: type=Troll Rocklobber
 #: data/campaigns/Son_Of_The_Black_Eye/utils/1-amla.cfg:179
 msgid "Melee: sling +4 damage"
-msgstr ""
+msgstr "Nahkampf: Schleuder +4 Schaden"
 
 #. [modify_unit_type]: type=Great Troll
 #: data/campaigns/Son_Of_The_Black_Eye/utils/1-amla.cfg:193
 msgid "Melee: hammer +1 damage"
-msgstr ""
+msgstr "Nahkampf: Hammer +1 Schaden"
 
 #. [modify_unit_type]: type=Orcish Sovereign
 #: data/campaigns/Son_Of_The_Black_Eye/utils/1-amla.cfg:212
 msgid "Ranged: crossbow +1 damage"
-msgstr ""
+msgstr "Fernkampf: Armbrust +1 Schaden"
 
 #. [modify_unit_type]: type=Orcish Nightblade, type=blade, type=impact
 #: data/campaigns/Son_Of_The_Black_Eye/utils/1-amla.cfg:227
 msgid "Melee: blade +2 damage"
-msgstr ""
+msgstr "Nahkampf: Klinge +2 Schaden"
 
 #. [modify_unit_type]: type=Orcish Nightblade, type=blade, type=impact
 #: data/campaigns/Son_Of_The_Black_Eye/utils/1-amla.cfg:233
 msgid "Melee: kick +2 damage"
-msgstr ""
+msgstr "Nahkampf: Tritt +2 Schaden"
 
 #. [modify_unit_type]: type=Orcish Nightblade, type=blade, type=impact
 #: data/campaigns/Son_Of_The_Black_Eye/utils/1-amla.cfg:238
 msgid "Ranged: throwing knives +1 damage"
-msgstr ""
+msgstr "Fernkampf: Wurfmesser +1 Schaden"
 
 #. [modify_unit_type]: type=Saurian Flanker
 #. [modify_unit_type]: type=Saurian Javelineer
 #: data/campaigns/Son_Of_The_Black_Eye/utils/1-amla.cfg:252
 #: data/campaigns/Son_Of_The_Black_Eye/utils/1-amla.cfg:271
 msgid "Melee: +1 spear damage"
-msgstr ""
+msgstr "Nahkampf: +1 Speerschaden"
 
 #. [modify_unit_type]: type=Saurian Flanker
 #. [modify_unit_type]: type=Saurian Javelineer
 #: data/campaigns/Son_Of_The_Black_Eye/utils/1-amla.cfg:257
 #: data/campaigns/Son_Of_The_Black_Eye/utils/1-amla.cfg:276
 msgid "Ranged: +1 spear damage"
-msgstr ""
+msgstr "Fernkampf: +1 Speerschaden"
 
 #. [modify_unit_type]: type=Saurian Prophet
 #. [modify_unit_type]: type=Saurian Seer
 #: data/campaigns/Son_Of_The_Black_Eye/utils/1-amla.cfg:290
 #: data/campaigns/Son_Of_The_Black_Eye/utils/1-amla.cfg:309
 msgid "Melee: staff +1 damage"
-msgstr ""
+msgstr "Nahkampf: Stab +1 Schaden"
 
 #. [modify_unit_type]: type=Saurian Prophet
 #. [modify_unit_type]: type=Saurian Seer
 #: data/campaigns/Son_Of_The_Black_Eye/utils/1-amla.cfg:295
 #: data/campaigns/Son_Of_The_Black_Eye/utils/1-amla.cfg:314
 msgid "Ranged: curse +1 damage"
-msgstr ""
+msgstr "Fernkampf: Fluch +1 Schaden"
 
 #. [message]: speaker=narrator
 #. newlines at the end are deliberate, and function as spacers before the [option]s
@@ -5009,16 +4998,32 @@ msgid ""
 "experience bars</b></span>, they’ll only get +3 max hp when they level up.\n"
 "\n"
 msgstr ""
+"Glückwunsch, Euer $unit.language_name ist aufgestiegen... aber er hat "
+"bereitssein maximales Level erreicht!\n"
+"\n"
+"Wenn das passiert, erlauben <span color='#0D87B6'><b>einige Kampagnen</b></"
+"span> — wie diese hier — Euch, einen kleinen Bonus auf Lebenspunkte oder "
+"Schaden zu erhalten. Diese Boni werden “AMLAs” genannt: “After Maximum Level "
+"Advancements”. Wenn Eure Einheiten mit maximalem Level normale, <span "
+"color='#0D87B6'><b>blaue Erfahrungsbalken</b></span> haben, bedeutet das, "
+"dass diese AMLAs verfügbar sind.\n"
+"\n"
+"<span color='#9608CF'><b><i>Andere Kampagnen</i></b></span> haben diese AMLA-"
+"Optionen nicht, und geben stattdessen immer +3 max. LP, wenn Einheiten mit "
+"maximalem Level aufsteigen. Wenn Eure Einheiten mit maximalem Level <span "
+"color='#9608CF'><b>lila Erfahrungsbalken</b></span> haben, erhalten sie nur "
+"+3 max. LP, wenn sie aufsteigen.\n"
+"\n"
 
 #. [option]
 #: data/campaigns/Son_Of_The_Black_Eye/utils/1-amla.cfg:358
 msgid "Ok, continue with the game"
-msgstr ""
+msgstr "OK, Spiel fortsetzen"
 
 #. [option]
 #: data/campaigns/Son_Of_The_Black_Eye/utils/1-amla.cfg:361
 msgid "Don’t show this message again"
-msgstr ""
+msgstr "Diese Nachricht nicht erneut anzeigen"
 
 #. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/utils/deaths.cfg:17
