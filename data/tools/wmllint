@@ -83,7 +83,7 @@
 # code.
 #
 
-import sys, os, re, argparse, string, copy, difflib, time, gzip
+import sys, os, re, argparse, string, copy, difflib, time
 from wesnoth.wmltools3 import *
 from wesnoth.wmliterator3 import *
 from collections import defaultdict
@@ -2791,8 +2791,13 @@ def translator(filename, mapxforms, textxform):
     else:
         # Map or mask -- just run everything together
         transformed = "".join(newdata)
+
+    original = terminator.join(unmodified)
+    if original[-1] != terminator and transformed[-1] == terminator:
+        transformed = transformed[:-1]
+
     # Return None if the transformation functions made no changes.
-    if "".join(unmodified) != transformed:
+    if original != transformed:
         return transformed
     else:
         return None
@@ -3121,12 +3126,8 @@ In your case, your system interprets your arguments as:
                                 if sys.platform == 'win32' and os.path.exists(backup):
                                     os.remove(backup)
                                 os.rename(fn, backup)
-                                if fn.endswith(".gz"):
-                                    with gzip.open(fn, "w") as ofp:
-                                        ofp.write(changed)
-                                else:
-                                    with open(fn, "w", encoding="utf8") as ofp:
-                                        ofp.write(changed)
+                                with open(fn, "w", encoding="utf8") as ofp:
+                                    ofp.write(changed)
                     except:
                         print("wmllint: internal error on %s" % fn, file=sys.stderr)
                         (exc_type, exc_value, exc_traceback) = sys.exc_info()
