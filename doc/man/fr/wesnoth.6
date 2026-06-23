@@ -18,7 +18,7 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH WESNOTH 6 2025 wesnoth "Bataille pour Wesnoth"
+.TH WESNOTH 6 2022 wesnoth "Bataille pour Wesnoth"
 .
 .SH NOM
 wesnoth \- Bataille pour Wesnoth, un jeu fantasy de stratégie tour par tour
@@ -46,8 +46,8 @@ scénarios ou vos campagnes et partagez\-les avec le reste du monde.
 .
 .TP 
 \fB\-\-addon\-info\fP
-Shows a button on the add\-ons manager to query the add\-ons server for
-various information.
+Affiche un bouton du gestionnaire d'extensions pour demander au serveur des
+détails sur les extensions.
 .TP 
 \fB\-\-all\-translations\fP
 Affiche toutes les traductions dans le menu du jeu, même si elles sont
@@ -70,15 +70,17 @@ Passe l'écran d'[histoire] et de dialogues jusqu'à la fin de l'événement
 \fBstart\fP
 .TP 
 \fB\-\-clock\fP
-Adds the option to show a clock for testing the drawing timer. Also adds the
-option for showing the GUI Test Dialog.
+Ajoute une option affichant une horloge pour tester les performances
+temporelles d'affichage. Il active aussi une option pour l'affichage du
+dialogue de test GUI.
 .TP 
 \fB\-\-core\fP\fI\ id_core\fP
 Remplace le noyau chargé par celui spécifié par l'identifiant.
 .TP 
 \fB\-\-data\-dir\fP\fI\ répertoire\fP
-Overrides the data directory with the one specified. The data directory is
-the one that contains subdirectories 'data', 'fonts', 'images' and others.
+Remplace le répertoire de données par celui spécifié. Le répertoire de
+données est celui qui contient les sous\-répertoires 'data', 'fonts',
+\&'images' et autres.
 .TP 
 \fB\-\-data\-path\fP
 Affiche le nom du répertoire de données et quitte le programme.
@@ -127,11 +129,13 @@ Utilise la langue \fIlangue\fP (symbole) pour cette session. Exemple :
 \fB\-\-language fr_FR@latin\fP
 .TP 
 \fB\-\-log\-\fP\fIniveau\fP\fB=\fP\fIdomaine1\fP\fB,\fP\fIdomaine2\fP\fB,\fP\fI...\fP
-sets the severity level of the log domains. The wildcard \fB*\fP may be used to
-match a subset of domains, e.g. gui/* or conf* or * (the latter matches all
-domains).  Available levels: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP,\ \fBnone\fP.  By default, the \fBwarning\fP level is used for most domains, but
-\fBdeprecation\fP defaults to \fBnone\fP unless combined with the \fB\-d\fP option.
-This option can be specified multiple times.
+Définit le niveau d'alerte du journal. Le filtre \fB*\fP peut être utilisé pour
+sélectionner un sous\-domaine, comme gui/* or conf* or * (ce dernier
+sélectionnera tous les niveaux de journalisation). Niveaux disponibles :
+\fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP, \ \fBnone\fP. Le niveau par défaut
+\fBwarning\fP est utilisé par la plupart des journaux, mais \fBdeprecation\fP
+utilise \fBnone\fP par défaut sauf si combinée à l'option \fB\-d\fP. Cette option
+peut être répétée.
 .TP 
 \fB\-\-log\-precise\fP
 Affiche les horodatages avec plus de précision dans le fichier de
@@ -147,17 +151,18 @@ Liste les types de journaux définis (uniquement ceux contenant \fIfiltre\fP si
 l'option est utilisée) et quitte
 .TP 
 \fB\-\-no\-log\-to\-file\fP
-prevents redirecting logged output to a file. The environment variable
-WESNOTH_NO_LOG_FILE can also be set as an alternative. Log files are created
-in the logs directory under the userdata folder.
+Ne crée pas de fichier de journalisation. La variable d'environnement
+WESNOTH_NO_LOG_FILE peut aussi être définie dans ce but. Les fichiers de
+journalisation se trouvent dans le répertoire «\ log\ » en\-dessous de
+«\ userdata\ ».
 .TP 
 \fB\-\-log\-to\-file\fP
 Un fichier de journalisation est créé. Annule l'effet du \-\-no\-log\-to\-file
 implicite ou donné explicitement.
 .TP 
 \fB\-\-no\-log\-sanitize\fP
-disables the anonymization that's normally applied when logging, for example
-replacing usernames with USER.
+désactive l'anonymisation utilisée au cours de la journalisation, servant
+par exemple à remplacer le nom d'utilisateur par USER.
 .TP 
 \fB\-\-wnoconsole\fP
 Quand \-\-no\-log\-to\-file est spécifiée sous Windows, les écritures de
@@ -235,7 +240,8 @@ plus de détails concernant le prétraitement visiter :
 https://wiki.wesnoth.org/PreprocessorRef#Command\-line_preprocessor.
 .TP 
 \fB\-\-preprocess\-string\fP\fI\ fichier source\fP
-preprocesses a given string and writes the output to stdout.
+prétraite une chaîne alphanumérique donnée et envoie le résultat à la sortie
+standard.
 .TP 
 \fB\-\-preprocess\-defines=\fP\fIDEFINITION1\fP\fB,\fP\fIDEFINITION2\fP\fB,\fP\fI...\fP
 Une liste séparée par des virgules de définitions pour être utilisée par la
