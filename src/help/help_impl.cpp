@@ -126,11 +126,9 @@ section parse_config_internal(const config& help_cfg, const config& section_cfg,
 	sec.title = title;
 	// Find all child sections.
 	for(const std::string& sec_id : sections) {
-		if(auto child_cfg = help_cfg.find_child("section", "id", sec_id))
-		{
+		if(auto child_cfg = help_cfg.find_child("section", "id", sec_id)) {
 			sec.add_section(parse_config_internal(help_cfg, *child_cfg, level + 1));
-		}
-		else {
+		} else {
 			std::stringstream ss;
 			ss << "Help-section '" << sec_id << "' referenced from '"
 				<< id << "' but could not be found.";
@@ -166,8 +164,7 @@ section parse_config_internal(const config& help_cfg, const config& section_cfg,
 
 	// Find all topics in this section.
 	for(const std::string& topic_id : utils::quoted_split(section_cfg["topics"])) {
-		if(auto topic_cfg = help_cfg.find_child("topic", "id", topic_id))
-		{
+		if(auto topic_cfg = help_cfg.find_child("topic", "id", topic_id)) {
 			std::string text = topic_cfg["text"];
 			text += generate_topic_text(topic_cfg["generator"], help_cfg, sec);
 			topic child_topic(topic_cfg["title"], topic_cfg["id"], text);
@@ -177,8 +174,7 @@ section parse_config_internal(const config& help_cfg, const config& section_cfg,
 				throw parse_error(ss.str());
 			}
 			topics.push_back(child_topic);
-		}
-		else {
+		} else {
 			std::stringstream ss;
 			ss << "Help-topic '" << topic_id << "' referenced from '" << id
 				<< "' but could not be found." << std::endl;
@@ -193,8 +189,7 @@ section parse_config_internal(const config& help_cfg, const config& section_cfg,
 		std::merge(generated_topics.begin(),
 			generated_topics.end(),topics.begin(),topics.end()
 			,std::back_inserter(sec.topics),title_less());
-	}
-	else {
+	} else {
 		sec.topics.insert(sec.topics.end(),
 			topics.begin(), topics.end());
 		sec.topics.insert(sec.topics.end(),
@@ -231,7 +226,7 @@ std::vector<topic> generate_topics(const bool sort_generated, const std::string&
 		std::vector<std::string> parts = utils::split(generator, ':', utils::STRIP_SPACES);
 		if(parts.size() > 1 && parts[0] == "units") {
 			res = generate_unit_topics(parts[1], sort_generated);
-		} else if(parts[0] == "era" && parts.size()>1) {
+		} else if(parts[0] == "era" && parts.size() > 1) {
 			res = generate_era_topics(parts[1], sort_generated);
 		} else {
 			WRN_HP << "Found a topic generator that I didn't recognize: " << generator;
@@ -347,11 +342,13 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 {
 	std::vector<topic> topics;
 
-
 	auto comp = [](const unit_ability_t::tooltip_info& t1, const unit_ability_t::tooltip_info& t2) {
 		return t1.help_topic_id < t2.help_topic_id;
 	};
 	auto special_description = std::set<unit_ability_t::tooltip_info, decltype(comp)>(comp);
+
+	// a map used to check weapon special uniqueness
+	std::map<std::string, std::string> specials_check_map;
 
 	std::map<std::string, std::set<std::string, string_less>> special_units;
 
@@ -364,17 +361,14 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 		for(const attack_type& atk : type.attacks()) {
 			for(auto& tt_info : atk.special_tooltips()) {
 				special_description.emplace(tt_info);
+				const auto& [itor, is_added] = specials_check_map.emplace(tt_info.help_topic_id, tt_info.name.base_str());
+				if(!is_added && itor->second != tt_info.name.base_str()) {
+					WRN_HP << "Duplicate weapon special with help id ‘" << tt_info.help_topic_id << "’ but different name ‘"
+						<< tt_info.name.base_str() << "’ != ‘" << itor->second << "’ detected, help page not added again.";
+				}
 
 				if(!type.hide_help()) {
-					//add a link in the list of units having this special
-					std::string type_name = type.type_name();
-					//check for variations (walking corpse/soulless etc)
-					const std::string section_prefix = type.show_variations_in_help() ? ".." : "";
-					std::string ref_id = section_prefix + unit_prefix + type.id();
-					//we put the translated name at the beginning of the hyperlink,
-					//so the automatic alphabetic sorting of std::set can use it
-					std::string link = markup::make_link(type_name, ref_id);
-					special_units[tt_info.help_topic_id].insert(link);
+					special_units[tt_info.help_topic_id].insert(make_unit_link(type));
 				}
 			}
 		}
@@ -382,40 +376,42 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 		for(const config& adv : type.modification_advancements()) {
 			for(const config& effect : adv.child_range("effect")) {
 				if(effect["apply_to"] == "new_attack" && effect.has_child("specials")) {
-					for(const auto [key, special] : effect.mandatory_child("specials").all_children_view()) {
+					for(const auto [_, special] : effect.mandatory_child("specials").all_children_view()) {
 						if(!special["name"].empty()) {
 							std::string topic_id = unit_ability_t::get_help_topic_id(special);
+							const t_string& name = special["name"].t_str();
+
 							//c++20: use emplace
-							special_description.insert({ special["name"].t_str(), special["description"].t_str(), topic_id });
+							special_description.insert({ name, special["description"].t_str(), topic_id });
+
+							const auto& [itor, is_added] = specials_check_map.emplace(topic_id, name.base_str());
+							if(!is_added && itor->second != name.base_str()) {
+								WRN_HP << "Duplicate weapon special with help id ‘" << topic_id << "’ but different name ‘"
+									<< name.base_str() << "’ != ‘" << itor->second << "’ detected, help page not added again.";
+							}
+
 							if(!type.hide_help()) {
-								//add a link in the list of units having this special
-								std::string type_name = type.type_name();
-								//check for variations (walking corpse/soulless etc)
-								const std::string section_prefix = type.show_variations_in_help() ? ".." : "";
-								std::string ref_id = section_prefix + unit_prefix + type.id();
-								//we put the translated name at the beginning of the hyperlink,
-								//so the automatic alphabetic sorting of std::set can use it
-								std::string link = markup::make_link(type_name, ref_id);
-								special_units[topic_id].insert(link);
+								special_units[topic_id].insert(make_unit_link(type));
 							}
 						}
 					}
 				} else if(effect["apply_to"] == "attack" && effect.has_child("set_specials")) {
-					for(const auto [key, special] : effect.mandatory_child("set_specials").all_children_view()) {
+					for(const auto [_, special] : effect.mandatory_child("set_specials").all_children_view()) {
 						if(!special["name"].empty()) {
 							std::string topic_id = unit_ability_t::get_help_topic_id(special);
+							const t_string& name = special["name"].t_str();
+
 							//c++20: use emplace
-							special_description.insert({special["name"].t_str(), special["description"].t_str(), topic_id});
+							special_description.insert({ name, special["description"].t_str(), topic_id });
+
+							const auto& [itor, is_added] = specials_check_map.emplace(topic_id, name.base_str());
+							if(!is_added && itor->second != name.base_str()) {
+								WRN_HP << "Duplicate weapon special with help id ‘" << topic_id << "’ but different name ‘"
+									<< name.base_str() << "’ != ‘" << itor->second << "’ detected, help page not added again.";
+							}
+
 							if(!type.hide_help()) {
-								//add a link in the list of units having this special
-								std::string type_name = type.type_name();
-								//check for variations (walking corpse/soulless etc)
-								const std::string section_prefix = type.show_variations_in_help() ? ".." : "";
-								std::string ref_id = section_prefix + unit_prefix + type.id();
-								//we put the translated name at the beginning of the hyperlink,
-								//so the automatic alphabetic sorting of std::set can use it
-								std::string link = markup::make_link(type_name, ref_id);
-								special_units[topic_id].insert(link);
+								special_units[topic_id].insert(make_unit_link(type));
 							}
 						}
 					}
@@ -429,8 +425,8 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 		std::stringstream text;
 		text << description;
 		text << "\n\n" << markup::tag("header", _("Units with this special attack")) << "\n";
-		for(const std::string& type_id : special_units[help_topic_id]) {
-			text << font::unicode_bullet << " " << type_id << "\n";
+		for(const std::string& type_link : special_units[help_topic_id]) {
+			text << font::unicode_bullet << " " << type_link << "\n";
 		}
 
 		topics.emplace_back(name, id, text.str());
@@ -445,19 +441,18 @@ std::vector<topic> generate_ability_topics(const bool sort_generated)
 {
 	std::vector<topic> topics;
 
-	std::map<std::string, const unit_type::ability_metadata*> ability_topic_data;
+	std::map<std::string, const unit_type::ability_metadata&> ability_topic_data;
 	std::map<std::string, std::set<std::string, string_less>> ability_units;
 
 	const auto parse = [&](const unit_type& type, const unit_type::ability_metadata& ability) {
-
-		ability_topic_data.emplace(ability.help_topic_id, &ability);
+		const auto& [itor, is_added] = ability_topic_data.emplace(ability.help_topic_id, ability);
+		if(!is_added && itor->second.name.base_str() != ability.name.base_str()) {
+			WRN_HP << "Duplicate ability with help id ‘" << ability.help_topic_id << "’ but different name ‘"
+				<< ability.name.base_str() << "’ != ‘" << itor->second.name.base_str() << "’ detected, help page not added again.";
+		}
 
 		if(!type.hide_help()) {
-			// Add a link in the list of units with this ability
-			// We put the translated name at the beginning of the hyperlink,
-			// so the automatic alphabetic sorting of std::set can use it
-			const std::string link = markup::make_link(type.type_name(), unit_prefix + type.id());
-			ability_units[ability.help_topic_id].insert(link);
+			ability_units[ability.help_topic_id].insert(make_unit_link(type));
 		}
 	};
 
@@ -478,19 +473,19 @@ std::vector<topic> generate_ability_topics(const bool sort_generated)
 		}
 	}
 
-	for(const auto& a : ability_topic_data) {
-		if(a.second->name.empty()) {
+	for(const auto& [help_topic_id, ability] : ability_topic_data) {
+		if(ability.name.empty()) {
 			continue;
 		}
 		std::ostringstream text;
-		text << a.second->description;
+		text << ability.description;
 		text << "\n\n" << markup::tag("header", _("Units with this ability")) << "\n";
 
-		for(const auto& u : ability_units[a.first]) { // first is the topic ref id
-			text << font::unicode_bullet << " " << u << "\n";
+		for(const auto& link : ability_units[help_topic_id]) {
+			text << font::unicode_bullet << " " << link << "\n";
 		}
 
-		topics.emplace_back(a.second->name, ability_prefix + a.first, text.str());
+		topics.emplace_back(ability.name, ability_prefix + help_topic_id, text.str());
 	}
 
 	if(sort_generated) {
@@ -535,6 +530,8 @@ std::vector<topic> generate_era_topics(const std::string& era_id, const bool sor
 std::vector<topic> generate_faction_topics(const config& era, const bool sort_generated)
 {
 	std::vector<topic> topics;
+	std::set<std::string> faction_help_ids;
+
 	for(const config& f : era.child_range("multiplayer_side")) {
 		const std::string& id = f["id"];
 		if(id == "Random")
@@ -600,6 +597,10 @@ std::vector<topic> generate_faction_topics(const config& era, const bool sort_ge
 
 		const std::string name = f["name"];
 		const std::string ref_id = faction_prefix + era["id"].str() + "_" + id;
+		const bool is_added = faction_help_ids.insert(ref_id).second;
+		if(!is_added) {
+			WRN_HP << "Duplicate faction with id ‘" << id << "’, (help id ‘" << ref_id << "’) detected.";
+		}
 		topics.emplace_back(name, ref_id, text.str());
 	}
 	if(sort_generated)
@@ -786,11 +787,7 @@ std::vector<topic> generate_trait_topics(const bool sort_generated)
 		for(const auto& type_id : trait_units[trait_id]) {
 			// Too many units can horribly slow down the page or crash it, so we paginate.
 			if (i < PAGE_LIMIT) {
-				const unit_type& type = unit_types.types().at(type_id);
-				const std::string section_prefix = type.show_variations_in_help() ? ".." : "";
-				std::string ref_id = section_prefix + unit_prefix + type.id();
-				const std::string link_unittype = markup::make_link(type.type_name(), ref_id);
-				text << font::unicode_bullet << " " << link_unittype << "\n";
+				text << font::unicode_bullet << " " << make_unit_link(type_id) << "\n";
 				i++;
 			} else {
 				// continuation pages, accessible only via the links
@@ -812,28 +809,30 @@ std::vector<topic> generate_trait_topics(const bool sort_generated)
 
 std::string make_unit_link(const std::string& type_id)
 {
-	std::string link;
-
 	const unit_type* type = unit_types.find(type_id, unit_type::HELP_INDEXED);
 	if(!type) {
-		PLAIN_LOG << "Unknown unit type : " << type_id;
 		// don't return an hyperlink (no page)
 		// instead show the id (as hint)
-		link = type_id;
-	} else if(!type->hide_help()) {
-		std::string name = type->type_name();
+		return type_id;
+	}
+	return make_unit_link(*type);
+}
+
+std::string make_unit_link(const unit_type& type)
+{
+	if(!type.hide_help()) {
+		std::string name = type.type_name();
 		std::string ref_id;
-		if(description_type(*type) == FULL_DESCRIPTION) {
-			const std::string section_prefix = type->show_variations_in_help() ? ".." : "";
-			ref_id = section_prefix + unit_prefix + type->id();
+		if(description_type(type) == FULL_DESCRIPTION) {
+			const std::string section_prefix = type.show_variations_in_help() ? ".." : "";
+			ref_id = section_prefix + unit_prefix + type.id();
 		} else {
 			ref_id = unknown_unit_topic;
 			name += " (?)";
 		}
-		link = markup::make_link(name, ref_id);
-	} // if hide_help then link is an empty string
-
-	return link;
+		return markup::make_link(name, ref_id);
+	}
+	return "";
 }
 
 std::vector<std::string> make_unit_links_list(const std::vector<std::string>& type_id_list, bool ordered)
@@ -949,20 +948,24 @@ void generate_races_sections(const config& help_cfg, section& sec, int level)
 
 void generate_era_sections(const config& help_cfg, section& sec, int level)
 {
+	std::set<std::string> era_ids;
 	for(const config& era : game_config_manager::get()->game_config().child_range("era")) {
 		if(era["hide_help"].to_bool()) {
 			continue;
 		}
-
-		DBG_HP << "Adding help section: " << era["id"].str();
 
 		config section_cfg;
 		section_cfg["id"] = era_prefix + era["id"].str();
 		section_cfg["title"] = era["name"];
 		section_cfg["generator"] = "era:" + era["id"].str();
 
+		const bool is_added = era_ids.insert(section_cfg["id"]).second;
+		if(is_added) {
+			DBG_HP << "Adding help section: " << era["id"].str();
+		} else {
+			WRN_HP << "Duplicate era with id ‘" << era["id"] << "’, (help id ‘" << section_cfg["id"] << "’) detected";
+		}
 		DBG_HP << section_cfg.debug();
-
 		sec.add_section(parse_config_internal(help_cfg, section_cfg, level + 1));
 	}
 }

@@ -78,15 +78,22 @@ public class IOUtils {
 					existingFile.delete();
 				}
 
-				DocumentFile newFile = targetParent.createFile(getMimeType(sourceName), sourceName);
+				DocumentFile newFile = targetParent.createFile(null, sourceName);
 				if (newFile == null) {
+					Log.e("Import/Export copy", "Cannot create file " + sourceName + " for writing.");
 					return;
 				}
 
 				InputStream in = context.getContentResolver().openInputStream(source.getUri());
 				OutputStream out = context.getContentResolver().openOutputStream(newFile.getUri());
 
-				if (in == null || out == null) {
+				if (in == null) {
+					Log.e("Import/Export copy", "Cannot open file " + source.getUri() + " for reading.");
+					return;
+				}
+				
+				if (out == null) {
+					Log.e("Import/Export copy", "Cannot open file " + newFile.getUri() + " for writing.");
 					return;
 				}
 
@@ -95,10 +102,5 @@ public class IOUtils {
 				Log.e("Import/Export copy", "IO error", ioe);
 			}
 		}
-	}
-	
-	private static String getMimeType(String filename) {
-		String ext = filename.substring(filename.lastIndexOf('.') + 1).toLowerCase();
-		return MimeTypeMap.getSingleton().getMimeTypeFromExtension(ext);
 	}
 }

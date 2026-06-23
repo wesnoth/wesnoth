@@ -59,6 +59,14 @@ inline auto serialize_timestamp(const std::chrono::system_clock::time_point& tim
 	return std::chrono::system_clock::to_time_t(time);
 }
 
+inline auto get_local_timestamp(const std::chrono::system_clock::time_point& time)
+{
+	auto as_time_t = std::chrono::system_clock::to_time_t(time);
+	return mktime(std::localtime(&as_time_t));
+}
+
+// CAUTION: This does NOT return a language-localized string.  To achieve that,
+//          use translation::translate_timestamp with chrono::get_local_timestamp.
 inline auto format_local_timestamp(const std::chrono::system_clock::time_point& time, std::string_view format = "%F %T")
 {
 	std::ostringstream ss;

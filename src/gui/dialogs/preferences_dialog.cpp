@@ -941,7 +941,7 @@ void preferences_dialog::add_hotkey_callback(listbox& hotkeys)
 	hotkey::hotkey_ptr oldhk;
 
 	// only if not cancelled.
-	if(newhk.get() == nullptr) {
+	if(!newhk) {
 		return;
 	}
 

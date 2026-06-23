@@ -275,6 +275,14 @@ server::server(int port,
 
 	start_dump_stats();
 	start_tournaments_timer();
+	if(user_handler_) {
+		uuid_ = user_handler_->get_uuid();
+		if(uuid_.empty()) {
+			ERR_SERVER << "Unable to retrieve UUID from database";
+			exit(1);
+		}
+		LOG_SERVER << "Retrieved database UUID: " << uuid_;
+	}
 }
 
 #ifndef _WIN32
@@ -603,7 +611,6 @@ void server::load_config(bool reload)
 		}
 
 		user_handler_.reset(new fuh(*user_handler));
-		uuid_ = user_handler_->get_uuid();
 		tournaments_ = user_handler_->get_tournaments();
 	}
 #endif
@@ -3158,7 +3165,9 @@ void server::searchlog_handler(const std::string& /*issuer_name*/,
 
 	// If this looks like an IP look up which nicks have been connected from it
 	// Otherwise look for the last IP the nick used to connect
-	const bool match_ip = (std::count(parameters.begin(), parameters.end(), '.') >= 1);
+	const bool match_ipv4 = (std::count(parameters.begin(), parameters.end(), '.') >= 1);
+	const bool match_ipv6 = (std::count(parameters.begin(), parameters.end(), ':') >= 1);
+	const bool match_ip = match_ipv4 || match_ipv6;
 
 	if(!user_handler_) {
 		bool found_something = false;
@@ -3186,11 +3195,11 @@ void server::searchlog_handler(const std::string& /*issuer_name*/,
 			*out << "\nNo match found.";
 		}
 	} else {
-		if(!match_ip) {
-			utils::to_sql_wildcards(parameters);
-			user_handler_->get_ips_for_user(parameters, out);
-		} else {
+		utils::to_sql_wildcards(parameters);
+		if(match_ip) {
 			user_handler_->get_users_for_ip(parameters, out);
+		} else {
+			user_handler_->get_ips_for_user(parameters, out);
 		}
 	}
 }

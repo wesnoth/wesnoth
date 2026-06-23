@@ -13,6 +13,7 @@
 	See the COPYING file for more details.
 */
 
+#include "color.hpp"
 #include "gui/core/canvas.hpp"
 #include "gui/auxiliary/typed_formula.hpp"
 
@@ -55,6 +56,25 @@ private:
 class rect_bounded_shape : public canvas::shape
 {
 protected:
+
+	explicit rect_bounded_shape(const rect& bounds)
+		: shape()
+		, x_(bounds.x)
+		, y_(bounds.y)
+		, w_(bounds.w)
+		, h_(bounds.h)
+	{
+	}
+
+	explicit rect_bounded_shape(const point& origin, const std::string& w_f, const std::string& h_f)
+		: shape()
+		, x_(origin.x)
+		, y_(origin.y)
+		, w_(w_f)
+		, h_(h_f)
+	{
+	}
+
 	/**
 	 * Constructor.
 	 *
@@ -84,6 +104,12 @@ public:
 	 * @param cfg                 The config object to define the rectangle.
 	 */
 	explicit rectangle_shape(const config& cfg);
+
+	rectangle_shape(
+		const rect& bounds,
+		const color_t& border_color,
+		const unsigned thickness = 1,
+		const color_t& fill_color = color_t::null_color());
 
 	void draw(wfl::map_formula_callable& variables) override;
 
@@ -157,7 +183,7 @@ public:
 	 */
 	explicit circle_shape(const config& cfg);
 
-	void draw( wfl::map_formula_callable& variables) override;
+	void draw(wfl::map_formula_callable& variables) override;
 
 private:
 	typed_formula<unsigned> x_; /**< The center x coordinate of the circle. */
@@ -187,6 +213,10 @@ public:
 	 */
 	image_shape(const config& cfg, wfl::action_function_symbol_table& functions);
 
+	image_shape(
+		const point& origin,
+		const std::string& img_path);
+
 	void draw(wfl::map_formula_callable& variables) override;
 
 private:
@@ -195,7 +225,7 @@ private:
 	typed_formula<unsigned> w_; /**< The width of the image. */
 	typed_formula<unsigned> h_; /**< The height of the image. */
 
-	/** String to pass to the image loader. May be a Data URI, may include Image Path Functions. */
+	/** Image path from which the image will be loaded. May also be a Data URI, and may include Image Path Functions. */
 	typed_formula<std::string> image_name_;
 
 	/**
@@ -243,6 +273,26 @@ public:
 	 * @param functions           WFL functions to execute.
 	 */
 	explicit text_shape(const config& cfg, wfl::action_function_symbol_table& functions);
+
+	text_shape(
+		const point& origin,
+		font::family_class family,
+		const unsigned size,
+		font::pango_text::FONT_STYLE style,
+		const std::string& align,
+		const unsigned wrap_width);
+
+	t_string get_text() const;
+	void set_text(const t_string& text);
+	std::pair<std::size_t, std::size_t> add_text(const t_string& text);
+	void add_attribute(
+		const std::string& attr_name,
+		const std::string& extra_data = "",
+		std::size_t start = PANGO_ATTR_INDEX_FROM_TEXT_BEGINNING,
+		std::size_t end = PANGO_ATTR_INDEX_TO_TEXT_END);
+	void add_attributes(font::attribute_list&& other_attrs);
+	void add_attributes_from(text_shape& tshape2, const unsigned attr_start);
+	void set_wrap_width(const unsigned wrap_width);
 
 	void draw(wfl::map_formula_callable& variables) override;
 

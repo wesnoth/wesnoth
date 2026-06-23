@@ -546,13 +546,13 @@ void button::handle_event(const SDL_Event& event)
 	if (!mouse_locked())
 	{
 		switch(event.type) {
-			case SDL_MOUSEBUTTONDOWN:
+			case SDL_EVENT_MOUSE_BUTTON_DOWN:
 				mouse_down(event.button);
 				break;
-			case SDL_MOUSEBUTTONUP:
+			case SDL_EVENT_MOUSE_BUTTON_UP:
 				mouse_up(event.button);
 				break;
-			case SDL_MOUSEMOTION:
+			case SDL_EVENT_MOUSE_MOTION:
 				mouse_motion(event.motion);
 				break;
 			default:

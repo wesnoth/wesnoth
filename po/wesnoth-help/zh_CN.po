@@ -15,8 +15,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-02-25 19:03-0600\n"
-"PO-Revision-Date: 2026-01-30 18:18+0800\n"
+"POT-Creation-Date: 2026-06-22 22:15-0500\n"
+"PO-Revision-Date: 2024-05-22 18:11+0800\n"
 "Last-Translator: vimacs <vimacs.hacks@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -24,11 +24,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 3.8\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #. [time]: id=underground
 #. [editor_times]: id=underground
-#: data/campaigns/Heir_To_The_Throne_Classic/utils/httt_utils.cfg:500
+#: data/campaigns/Heir_To_The_Throne_Classic/utils/httt_utils.cfg:499
 #: data/core/editor/time-of-day.cfg:41 data/core/macros/schedules.cfg:113
 msgid "Underground"
 msgstr "地下"
@@ -54,7 +54,7 @@ msgstr "无惧"
 #. [plague]: id=plague, type=Walking Corpse
 #: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:244
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:6
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:48
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:47
 #: data/core/macros/weapon_specials.cfg:71
 msgid "plague"
 msgstr "瘟疫"
@@ -73,60 +73,44 @@ msgstr ""
 
 #. [trait]: id=loyal_dummy
 #. [trait]: id=loyal
-#: data/campaigns/The_Deceivers_Gambit/scenarios/00_Graduation.cfg:112
-#: data/campaigns/The_Deceivers_Gambit/scenarios/11_Clan_Blackcrest.cfg:748
-#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:20
+#: data/campaigns/The_Deceivers_Gambit/scenarios/00_Graduation.cfg:188
+#: data/campaigns/The_Deceivers_Gambit/scenarios/11_Clan_Blackcrest.cfg:770
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:23
 #: data/core/macros/traits.cfg:12
 msgid "loyal"
 msgstr "忠诚"
 
 #. [trait]: id=loyal_dummy
-#: data/campaigns/The_Deceivers_Gambit/scenarios/00_Graduation.cfg:113
-#: data/campaigns/The_Deceivers_Gambit/scenarios/11_Clan_Blackcrest.cfg:749
-#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:21
+#: data/campaigns/The_Deceivers_Gambit/scenarios/00_Graduation.cfg:189
+#: data/campaigns/The_Deceivers_Gambit/scenarios/11_Clan_Blackcrest.cfg:771
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:24
 #, fuzzy
 #| msgid "Zero upkeep"
 msgid "Zero upkeep."
 msgstr "零维护费用"
 
-#. [chance_to_hit]
-#. [chance_to_hit]: id=magical
-#: data/campaigns/The_Deceivers_Gambit/scenarios/14_Long_Live_the_Queen.cfg:1299
-#: data/core/macros/weapon_specials.cfg:120
-msgid ""
-"This attack always has a 70% chance to hit regardless of the defensive "
-"ability of the unit being attacked."
-msgstr "此攻击无视被攻击单位的防御能力，而总是拥有70%的命中率。"
-
-#. [chance_to_hit]
-#. [chance_to_hit]: id=magical
-#: data/campaigns/The_Deceivers_Gambit/scenarios/14_Long_Live_the_Queen.cfg:1299
-#: data/core/macros/weapon_specials.cfg:119
-msgid "magical"
-msgstr "魔法"
-
 #. [trait]: id=intelligent_dummy
 #. [trait]: id=intelligent
-#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:25
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:28
 #: data/core/macros/traits.cfg:190
 msgid "intelligent"
 msgstr "聪慧"
 
 #. [trait]: id=intelligent_dummy
-#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:26
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:29
 msgid "Intelligent units require 20% less experience than usual to advance."
 msgstr "聪慧单位每次升级所需的经验值比通常情况少20%。"
 
 #. [resistance]: id=garak_steadfast
 #. [resistance]: id=steadfast
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:708
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:707
 #: data/core/macros/abilities.cfg:139
 msgid "steadfast"
 msgstr "坚定"
 
 #. [resistance]: id=garak_steadfast
 #. [resistance]: id=steadfast
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:709
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:708
 #: data/core/macros/abilities.cfg:140
 msgid "female^steadfast"
 msgstr "坚定"
@@ -250,9 +234,9 @@ msgstr "此单位可以对周围的单位疗伤，减缓脱水，并疗毒。"
 #. [lua]: set_status
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:2133
 #, fuzzy
-#| msgid "female^stunned"
+#| msgid "female^undead"
 msgid "female^poisoned"
-msgstr "眩晕"
+msgstr "亡灵"
 
 #. [lua]: set_status
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:2133
@@ -301,7 +285,7 @@ msgstr "传送"
 #. [artifact]
 #. [regenerate]: id=regenerates
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:760
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:54
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:53
 #: data/core/macros/abilities.cfg:102
 msgid "regenerates"
 msgstr "再生"
@@ -335,91 +319,91 @@ msgid "leadership"
 msgstr "领导"
 
 #. [hides]: id=ambush
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:12
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:11
 #: data/core/macros/abilities.cfg:295
 msgid "ambush"
 msgstr "伏击"
 
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:15
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:14
 msgid "Castle"
 msgstr "城堡"
 
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:18
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:17
 msgid "Cave"
 msgstr "洞穴"
 
 #. [hides]: id=concealment
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:21
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:20
 #: data/core/macros/abilities.cfg:358
 msgid "concealment"
 msgstr "隐蔽"
 
 #. [drains]: id=drains
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:24
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:23
 #: data/core/macros/weapon_specials.cfg:183
 msgid "drains"
 msgstr "吸血"
 
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:27
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:26
 msgid "firststrike"
 msgstr "先制"
 
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:30
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:29
 msgid "Forest"
 msgstr "森林"
 
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:33
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:32
 msgid "Frozen"
 msgstr "冻原"
 
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:36
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:35
 msgid "Hills"
 msgstr "丘陵"
 
 #. [chance_to_hit]: id=marksman
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:39
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:38
 #: data/core/macros/weapon_specials.cfg:105
 msgid "marksman"
 msgstr "精准"
 
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:42
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:41
 msgid "Mushroom Grove"
 msgstr "蘑菇林"
 
 #. [hides]: id=nightstalk
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:45
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:44
 #: data/core/macros/abilities.cfg:338
 msgid "nightstalk"
 msgstr "夜遁"
 
 #. [poison]: id=poison
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:51
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:50
 #: data/core/macros/weapon_specials.cfg:205
 msgid "poison"
 msgstr "毒素"
 
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:57
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:56
 msgid "Sand"
 msgstr "沙地"
 
 #. [skirmisher]: id=skirmisher
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:60
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:59
 #: data/core/macros/abilities.cfg:229
 msgid "skirmisher"
 msgstr "散兵"
 
 #. [slow]: id=slow
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:63
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:62
 #: data/core/macros/weapon_specials.cfg:83
 msgid "slows"
 msgstr "减速"
 
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:66
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:65
 msgid "Swamp"
 msgstr "沼泽"
 
 #. [heals]: id=curing
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:69
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:68
 #: data/core/macros/abilities.cfg:66
 msgid "cures"
 msgstr "疗毒"
@@ -2054,12 +2038,12 @@ msgstr ""
 
 #. [section]: id=calendar
 #. [topic]: id=..calendar
-#: data/core/encyclopedia/calendar.cfg:5 data/core/encyclopedia/calendar.cfg:13
+#: data/core/encyclopedia/calendar.cfg:5 data/core/encyclopedia/calendar.cfg:12
 msgid "Calendar"
 msgstr "历法"
 
 #. [topic]: id=..calendar
-#: data/core/encyclopedia/calendar.cfg:14
+#: data/core/encyclopedia/calendar.cfg:13
 msgid ""
 "Each year in the Wesnothian calendar is composed of 12 months. These are, in "
 "order:\n"
@@ -2087,18 +2071,18 @@ msgstr ""
 
 #. [section]: id=geography
 #. [topic]: id=..geography
+#: data/core/encyclopedia/geography.cfg:5
 #: data/core/encyclopedia/geography.cfg:12
-#: data/core/encyclopedia/geography.cfg:19
 msgid "Geography"
 msgstr "地理"
 
 #. [topic]: id=arkan_thoria
-#: data/core/encyclopedia/geography.cfg:26
+#: data/core/encyclopedia/geography.cfg:19
 msgid "Arkan-thoria"
 msgstr "阿坎-索丽亚"
 
 #. [topic]: id=arkan_thoria
-#: data/core/encyclopedia/geography.cfg:27
+#: data/core/encyclopedia/geography.cfg:20
 #, fuzzy
 #| msgid ""
 #| "A river rising in the <ref>dst='heart_mountains' text='Heart Mountains'</"
@@ -2111,12 +2095,12 @@ msgstr ""
 "的河流。"
 
 #. [topic]: id=great_river
-#: data/core/encyclopedia/geography.cfg:32
+#: data/core/encyclopedia/geography.cfg:25
 msgid "Great River"
 msgstr "泰河"
 
 #. [topic]: id=great_river
-#: data/core/encyclopedia/geography.cfg:33
+#: data/core/encyclopedia/geography.cfg:26
 #, fuzzy
 #| msgid ""
 #| "The Great River forms the boundary between the <ref>dst='kingdom_wesnoth' "
@@ -2134,19 +2118,19 @@ msgstr ""
 "text='埃仁撒伐'</ref>流入<ref>dst='great_ocean' text='泰洋'</ref>。"
 
 #. [topic]: id=great_river
-#: data/core/encyclopedia/geography.cfg:35
+#: data/core/encyclopedia/geography.cfg:28
 msgid ""
 "The Ford of Abez is a crossing between Wesnoth and the Northlands, and is "
 "the westernmost point where the Great River can be crossed without ships."
 msgstr ""
 
 #. [topic]: id=great_ocean
-#: data/core/encyclopedia/geography.cfg:40
+#: data/core/encyclopedia/geography.cfg:33
 msgid "Great Ocean"
 msgstr "泰洋"
 
 #. [topic]: id=great_ocean
-#: data/core/encyclopedia/geography.cfg:41
+#: data/core/encyclopedia/geography.cfg:34
 #, fuzzy
 #| msgid ""
 #| "Lies to the west of the <ref>dst='great_continent' text='continent'</ref> "
@@ -2162,7 +2146,7 @@ msgstr ""
 
 #. [topic]: id=great_ocean
 #. Great Ocean
-#: data/core/encyclopedia/geography.cfg:45
+#: data/core/encyclopedia/geography.cfg:38
 msgid ""
 "The Drakes once called this ocean the World Ocean. They believe it to extend "
 "in every direction from Morogor until eventually flowing into the abyss as "
@@ -2170,12 +2154,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=morogor
-#: data/core/encyclopedia/geography.cfg:50
+#: data/core/encyclopedia/geography.cfg:43
 msgid "Morogor"
 msgstr "莫罗戈"
 
 #. [topic]: id=morogor
-#: data/core/encyclopedia/geography.cfg:51
+#: data/core/encyclopedia/geography.cfg:44
 #, fuzzy
 #| msgid ""
 #| "Archipelago, located somewhere in the <ref>dst='great_ocean' text='Great "
@@ -2198,7 +2182,7 @@ msgstr ""
 
 #. [topic]: id=morogor
 #. Geography of Morogor
-#: data/core/encyclopedia/geography.cfg:57
+#: data/core/encyclopedia/geography.cfg:50
 msgid ""
 "<header>Notable land features:</header>\n"
 "    • Mount Morogor: The highest active volcanic mountain in the central "
@@ -2211,12 +2195,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=green_isle
-#: data/core/encyclopedia/geography.cfg:65
+#: data/core/encyclopedia/geography.cfg:58
 msgid "Green Isle"
 msgstr "绿岛"
 
 #. [topic]: id=green_isle
-#: data/core/encyclopedia/geography.cfg:66
+#: data/core/encyclopedia/geography.cfg:59
 #, fuzzy
 #| msgid ""
 #| "A bigger island lying in the <ref>dst='great_ocean' text='Great Ocean'</"
@@ -2228,7 +2212,7 @@ msgstr "<ref>dst='great_ocean' text='泰洋'</ref>中较大的一个岛。"
 
 #. [topic]: id=green_isle
 #. Geography of the Green Isle
-#: data/core/encyclopedia/geography.cfg:70
+#: data/core/encyclopedia/geography.cfg:63
 msgid ""
 "<header>Notable cities:</header>\n"
 "    • Southbay: The capital of the largest Islefolk kingdom.\n"
@@ -2243,7 +2227,7 @@ msgstr ""
 
 #. [topic]: id=green_isle
 #. Geography of the Green Isle
-#: data/core/encyclopedia/geography.cfg:79
+#: data/core/encyclopedia/geography.cfg:72
 msgid ""
 "<header>Notable land features:</header>\n"
 "    • Broken Mountains: A mighty mountain range that cuts through the Green "
@@ -2258,12 +2242,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=old_continent
-#: data/core/encyclopedia/geography.cfg:88
+#: data/core/encyclopedia/geography.cfg:81
 msgid "Old Continent"
 msgstr "旧陆"
 
 #. [topic]: id=old_continent
-#: data/core/encyclopedia/geography.cfg:89
+#: data/core/encyclopedia/geography.cfg:82
 #, fuzzy
 #| msgid ""
 #| "Lies to the west of <ref>dst='morogor' text='Morogor'</ref> across the "
@@ -2277,12 +2261,12 @@ msgstr ""
 "<ref>dst='great_ocean' text='泰洋'</ref>相望。"
 
 #. [topic]: id=great_continent
-#: data/core/encyclopedia/geography.cfg:94
+#: data/core/encyclopedia/geography.cfg:87
 msgid "Great Continent"
 msgstr "泰陆"
 
 #. [topic]: id=great_continent
-#: data/core/encyclopedia/geography.cfg:95
+#: data/core/encyclopedia/geography.cfg:88
 #, fuzzy
 #| msgid ""
 #| "The continent on which the <ref>dst='kingdom_wesnoth' text='Kingdom of "
@@ -2297,12 +2281,12 @@ msgstr ""
 "<ref>dst='great_ocean' text='泰洋'</ref>所包围。"
 
 #. [topic]: id=irdya
-#: data/core/encyclopedia/geography.cfg:100
+#: data/core/encyclopedia/geography.cfg:93
 msgid "Irdya"
 msgstr "伊迪亚"
 
 #. [topic]: id=irdya
-#: data/core/encyclopedia/geography.cfg:101
+#: data/core/encyclopedia/geography.cfg:94
 #, fuzzy
 #| msgid ""
 #| "The name of the world in which the kingdom of <ref>dst='kingdom_wesnoth' "
@@ -2320,12 +2304,12 @@ msgstr ""
 "或者更诗意一些，“宽广而翠绿的世界”。"
 
 #. [topic]: id=kingdom_wesnoth
-#: data/core/encyclopedia/geography.cfg:106
+#: data/core/encyclopedia/geography.cfg:99
 msgid "Kingdom of Wesnoth"
 msgstr "韦诺王国"
 
 #. [topic]: id=kingdom_wesnoth
-#: data/core/encyclopedia/geography.cfg:107
+#: data/core/encyclopedia/geography.cfg:100
 msgid ""
 "The Kingdom of Wesnoth is located in the north-central portion of the <ref "
 "dst='great_continent'>Great Continent</ref>. Most of the mainline campaigns "
@@ -2344,7 +2328,7 @@ msgstr ""
 
 #. [topic]: id=kingdom_wesnoth
 #. Geography of Wesnoth
-#: data/core/encyclopedia/geography.cfg:113
+#: data/core/encyclopedia/geography.cfg:106
 msgid ""
 "<header>Notable cities:</header>\n"
 "    • Weldyn: The capital of Wesnoth.\n"
@@ -2368,7 +2352,7 @@ msgstr ""
 
 #. [topic]: id=kingdom_wesnoth
 #. Geography of Wesnoth
-#: data/core/encyclopedia/geography.cfg:127
+#: data/core/encyclopedia/geography.cfg:120
 #, fuzzy
 #| msgid ""
 #| "The Kingdom of Wesnoth is located in the north-central portion of the "
@@ -2493,12 +2477,12 @@ msgstr ""
 "为是个闹鬼的地方。"
 
 #. [topic]: id=elensefar
-#: data/core/encyclopedia/geography.cfg:144
+#: data/core/encyclopedia/geography.cfg:137
 msgid "Elensefar"
 msgstr "埃仁撒伐"
 
 #. [topic]: id=elensefar
-#: data/core/encyclopedia/geography.cfg:145
+#: data/core/encyclopedia/geography.cfg:138
 #, fuzzy
 #| msgid ""
 #| "Elensefar is at times a province of <ref>dst='kingdom_wesnoth' "
@@ -2542,7 +2526,7 @@ msgstr ""
 
 #. [topic]: id=elensefar
 #. Geography of Elensefar area
-#: data/core/encyclopedia/geography.cfg:149
+#: data/core/encyclopedia/geography.cfg:142
 msgid ""
 "<header>Notable cities:</header>\n"
 "    • Elensefar: The capital, located on an island in the Great River delta, "
@@ -2552,7 +2536,7 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=elensefar
-#: data/core/encyclopedia/geography.cfg:154
+#: data/core/encyclopedia/geography.cfg:147
 msgid ""
 "<header>Notable land features:</header>\n"
 "    • <ref dst='great_river'>Great River</ref>: It is very wide at this "
@@ -2560,12 +2544,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=northlands
-#: data/core/encyclopedia/geography.cfg:160
+#: data/core/encyclopedia/geography.cfg:153
 msgid "Northlands"
 msgstr "北陆"
 
 #. [topic]: id=northlands
-#: data/core/encyclopedia/geography.cfg:161
+#: data/core/encyclopedia/geography.cfg:154
 msgid ""
 "The Northlands are filled with unstable clans in endless conflict. It is an "
 "unlawful and perilous place plagued by its cold, icy terrain and constant "
@@ -2584,7 +2568,7 @@ msgstr ""
 
 #. [topic]: id=northlands
 #. Geography of the Northlands
-#: data/core/encyclopedia/geography.cfg:167
+#: data/core/encyclopedia/geography.cfg:160
 msgid ""
 "<header>Notable cities:</header>\n"
 "    • Glamdrol: An Orcish tribal capital.\n"
@@ -2601,7 +2585,7 @@ msgstr ""
 
 #. [topic]: id=northlands
 #. Geography of the Northlands
-#: data/core/encyclopedia/geography.cfg:176
+#: data/core/encyclopedia/geography.cfg:169
 #, fuzzy
 #| msgid ""
 #| "There is no government of the Northlands. Various groups of orcs, "
@@ -2697,12 +2681,12 @@ msgstr ""
 "    • 泰河：泰河的源头在北陆东方的某处。"
 
 #. [topic]: id=southwest_elven_lands
-#: data/core/encyclopedia/geography.cfg:189
+#: data/core/encyclopedia/geography.cfg:182
 msgid "Southwest Elven Lands"
 msgstr "西南精灵领地"
 
 #. [topic]: id=southwest_elven_lands
-#: data/core/encyclopedia/geography.cfg:190
+#: data/core/encyclopedia/geography.cfg:183
 msgid ""
 "The Wood Elves are separate from those of the north, and have only "
 "intermittent relations with them and most other countries. Its borders are "
@@ -2713,7 +2697,7 @@ msgstr ""
 
 #. [topic]: id=southwest_elven_lands
 #. Geography of the Southwest
-#: data/core/encyclopedia/geography.cfg:194
+#: data/core/encyclopedia/geography.cfg:187
 msgid ""
 "<header>Notable land features:</header>\n"
 "    • Aethenwood: The largest southern forest, home to reclusive <ref dst='.."
@@ -2728,14 +2712,14 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=heart_mountains
-#: data/core/encyclopedia/geography.cfg:203
+#: data/core/encyclopedia/geography.cfg:196
 msgid "Heart Mountains"
 msgstr "心之山脉"
 
 #. [topic]: id=heart_mountains
 #. The Whitefang Clan’s primary description is in DiD
 #. Wesnoth 1.9.4 added Haggid-Dargor to the encyclopedia, but it has no other mention in mainline
-#: data/core/encyclopedia/geography.cfg:206
+#: data/core/encyclopedia/geography.cfg:199
 msgid ""
 "A virtually impassable barrier between the <ref dst='arkan_thoria'>river</"
 "ref> country and the <ref dst='far_north'>Northern Plains</ref>. The local "
@@ -2745,12 +2729,12 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=far_north
-#: data/core/encyclopedia/geography.cfg:211
+#: data/core/encyclopedia/geography.cfg:204
 msgid "Far North"
 msgstr "极北之地"
 
 #. [topic]: id=far_north
-#: data/core/encyclopedia/geography.cfg:212
+#: data/core/encyclopedia/geography.cfg:205
 #, fuzzy
 #| msgid ""
 #| "Cold, harsh, and inaccessible, the Far North is the ancestral home of the "
@@ -2827,7 +2811,7 @@ msgstr ""
 
 #. [topic]: id=far_north
 #. Geography of the Far North
-#: data/core/encyclopedia/geography.cfg:216
+#: data/core/encyclopedia/geography.cfg:209
 msgid ""
 "<header>Notable cities:</header>\n"
 "    • Barag Gor: A city home to the Orcish Council.\n"
@@ -2848,7 +2832,7 @@ msgstr ""
 
 #. [topic]: id=far_north
 #. Geography of the Far North
-#: data/core/encyclopedia/geography.cfg:232
+#: data/core/encyclopedia/geography.cfg:225
 msgid ""
 "<header>Notable land features:</header>\n"
 "    • Desert of Death: An unusually dry desert in the Far North filled with "
@@ -2880,14 +2864,14 @@ msgid ""
 msgstr ""
 
 #. [topic]: id=far_south
-#: data/core/encyclopedia/geography.cfg:249
+#: data/core/encyclopedia/geography.cfg:242
 #, fuzzy
 #| msgid "Far North"
 msgid "Far South"
 msgstr "极北之地"
 
 #. [topic]: id=far_south
-#: data/core/encyclopedia/geography.cfg:250
+#: data/core/encyclopedia/geography.cfg:243
 msgid ""
 "A vast region south of Kerlath home to many mysterious races, including jinn "
 "and wyverns. Very little is known for certain about what lies here."
@@ -2895,7 +2879,7 @@ msgstr ""
 
 #. [topic]: id=far_south
 #. Geography of the Far South
-#: data/core/encyclopedia/geography.cfg:254
+#: data/core/encyclopedia/geography.cfg:247
 msgid ""
 "<header>Notable land features:</header>\n"
 "    • Mountains of Peril: A tall and deadly mountain range in the Far South "
@@ -4228,8 +4212,16 @@ msgstr ""
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:331
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "<header>text='Unlikely reasons'</header>"
 msgid "Unlikely reasons"
 msgstr ""
+"\n"
+"\n"
+"<header>text='不太可能的原因'</header>"
 
 #. [topic]: id=whylost
 #: data/core/help.cfg:333
@@ -4467,10 +4459,8 @@ msgstr ""
 
 #. [topic]: id=combat
 #: data/core/help.cfg:357
-#, fuzzy
-#| msgid "Advances to: "
 msgid "Chance to Hit"
-msgstr "升级为："
+msgstr ""
 
 #. [topic]: id=combat
 #: data/core/help.cfg:359
@@ -5420,9 +5410,15 @@ msgstr ""
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:570
 #, fuzzy
-#| msgid "Base Terrain: "
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "<header>text='Mixed Terrain Types'</header>"
 msgid "Mixed Terrain Types"
-msgstr "基础地形："
+msgstr ""
+"\n"
+"\n"
+"<header>text='混合地形类型'</header>"
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:572
@@ -5657,9 +5653,15 @@ msgstr "游戏支持各种类型的附加组件内容，分别适用于不同的
 #. [topic]: id=using_addons
 #: data/core/help.cfg:620
 #, fuzzy
-#| msgid "Map and Scenario Editor"
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "<header>text='Campaigns and Scenarios'</header>"
 msgid "Campaigns and Scenarios"
-msgstr "地图与场景编辑器"
+msgstr ""
+"\n"
+"\n"
+"<header>text=战役和场景</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:622
@@ -5864,8 +5866,16 @@ msgstr ""
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:646
+#, fuzzy
+#| msgid ""
+#| "\n"
+#| "\n"
+#| "<header>text='Creator Resources'</header>"
 msgid "Creator Resources"
 msgstr ""
+"\n"
+"\n"
+"<header>text='制作者资源'</header>"
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:648
@@ -6011,8 +6021,8 @@ msgstr "常规命令"
 #, fuzzy
 #| msgid ""
 #| "These commands can either be issued via the command line by prefixing "
-#| "them with ‘:’ (as shown here) or via the chat by prefixing them with "
-#| "‘/’ (press ‘m’ first to open the chat line).\n"
+#| "them with ':' (as shown here) or via the chat by prefixing them with "
+#| "'/' (press 'm' first to open the chat line).\n"
 #| "\n"
 msgid ""
 "These commands can either be issued via the command line by prefixing them "
@@ -6027,7 +6037,7 @@ msgstr ""
 #, fuzzy
 #| msgid ""
 #| "\n"
-#| "Similar to the ‘fps’ command, but also forces everything to redraw "
+#| "Similar to the 'fps' command, but also forces everything to redraw "
 #| "instead of only things that have changed.\n"
 #| "\n"
 msgid ""
@@ -7975,6 +7985,18 @@ msgid ""
 "When used offensively, this attack always has at least a 60% chance to hit."
 msgstr "当用于进攻时，此攻击总是至少有60%的几率会命中。"
 
+#. [chance_to_hit]: id=magical
+#: data/core/macros/weapon_specials.cfg:119
+msgid "magical"
+msgstr "魔法"
+
+#. [chance_to_hit]: id=magical
+#: data/core/macros/weapon_specials.cfg:120
+msgid ""
+"This attack always has a 70% chance to hit regardless of the defensive "
+"ability of the unit being attacked."
+msgstr "此攻击无视被攻击单位的防御能力，而总是拥有70%的命中率。"
+
 #. [chance_to_hit]: id=honed
 #: data/core/macros/weapon_specials.cfg:132
 msgid "honed"
@@ -8194,22 +8216,89 @@ msgid ""
 msgstr ""
 
 #. [race]: id=drake
-#: data/core/units.cfg:61
+#: data/core/units.cfg:59
 msgid "race^Drake"
 msgstr "龙人"
 
 #. [race]: id=drake
-#: data/core/units.cfg:62
+#: data/core/units.cfg:60
 msgid "race+female^Drake"
 msgstr "龙人"
 
 #. [race]: id=drake
-#: data/core/units.cfg:63
+#: data/core/units.cfg:61
 msgid "race^Drakes"
 msgstr "龙人"
 
 #. [race]: id=drake
-#: data/core/units.cfg:64
+#: data/core/units.cfg:62
+#, fuzzy
+#| msgid ""
+#| "Drakes are large, winged and fire-breathing creatures, reminiscent of "
+#| "true dragons. On average, an adult drake stands around three meters tall "
+#| "and easily weighs more than a man and a horse combined. Their skin is "
+#| "made up of hard scales, resistant to most physical strikes except "
+#| "piercing and cold damage. Most drakes are capable of true flight and can "
+#| "travel long distances quickly. However, their sheer weight and bulk "
+#| "limits their flight ability somewhat, making them ungainly in the air. "
+#| "Where possible, they make use of terrain features such as hills, "
+#| "mountains and trees as launch points in order to gain greater height and "
+#| "speed. Fortunately for their enemies, they are still quite clumsy "
+#| "creatures and surprisingly slow in combat. This, combined with their "
+#| "large size, renders them easy targets for those who dare attack them.\n"
+#| "\n"
+#| "Drakes are inherently magical creatures, with a mysterious internal fire "
+#| "fueling their very lives. This can easily be witnessed when one of their "
+#| "kind perishes in combat; its internal fire is released, burning their "
+#| "remains into ashes. Their internal fire is also their greatest weakness; "
+#| "it makes them extremely vulnerable to cold attacks. Despite their magical "
+#| "nature, drakes are incapable of channeling magic in a controlled manner. "
+#| "While the magic imbued within a drake’s body enables it to spit fire and "
+#| "gives it life, they have no willful control over the functions of this "
+#| "magic.\n"
+#| "\n"
+#| "<header>text='Society'</header>\n"
+#| "Drakes are a relatively warlike race and their societies can be best "
+#| "described as cultured martial societies. The core of a drake tribe is a "
+#| "small group of veteran warriors headed by a mutually respected — or "
+#| "simply feared — dominant who rules the society with an iron fist. Every "
+#| "drake is expected to earn their place in the strict hierarchy, to obey "
+#| "their superiors and command their inferiors. Entry to the ruling elite is "
+#| "only possible through challenging and defeating a superior in single "
+#| "combat, which is the way the hierarchy within the elite itself is "
+#| "established. The use of deception of any kind towards any fellow drake "
+#| "is, without exception, seen as cowardly and unacceptable.\n"
+#| "\n"
+#| "While their warlike nature and sense of territory drives them to defend "
+#| "their territories savagely, drakes rarely invade or trespass on areas "
+#| "already occupied by the other major races. Instead, they settle in "
+#| "unpopulated areas to establish their own territory there. They primarily "
+#| "feed on large game they hunt in the lowlands around their homes, but "
+#| "hatchlings and lower caste drakes are known to feed also on certain kinds "
+#| "of moss and fungi they cultivate deep in their caverns. Drakes value "
+#| "armor- and weapon-smithing, but neither know nor need other science and "
+#| "culture besides this. Nonetheless, the few implements they do fashion are "
+#| "almost unrivaled in quality, only matched by those produced in the finest "
+#| "Dwarvish foundries.\n"
+#| "\n"
+#| "Drakes hatch from eggs and usually live naturally between 20 to 30 years. "
+#| "Death in battle is the most preferred way for a drake to leave this "
+#| "world. Unlike the elder members of other races, drakes naturally grow "
+#| "more aggressive and reckless towards the ends of their natural lives, "
+#| "perhaps to help ensure their place in the heroic legends of their kind.\n"
+#| "\n"
+#| "<header>text='Geography'</header>\n"
+#| "Drakes originated from an archipelago of volcanic islands called "
+#| "<ref>dst='morogor' text='Morogor'</ref> in the <ref>dst='great_ocean' "
+#| "text='Great Ocean'</ref>. A combination of population pressure and the "
+#| "subsidence of many of their home islands has caused colonies of drakes to "
+#| "spread to the <ref>dst='great_continent' text='Great Continent'</ref>. "
+#| "Drakes tend to make their homes in mountain caverns near volcanoes to "
+#| "protect their eggs, hatchings and forges. While drakes naturally prefer "
+#| "warmth, their internal fire is more than capable of sustaining them even "
+#| "in a relatively cold climate, a feature which has allowed them to "
+#| "populate even some of the mountains of the far north of the Great "
+#| "Continent."
 msgid ""
 "Drakes are large, winged and fire-breathing creatures, reminiscent of true "
 "dragons. On average, an adult drake stands around three meters tall and "
@@ -8278,8 +8367,9 @@ msgstr ""
 "成，对穿刺和冰寒之外的大多数物理攻击都有很高的抗性。大多数龙人都能真正地飞"
 "行，而且能快速地远距离移动。但龙人巨大的体重和身形似乎有些影响飞行能力，使得"
 "他们在空中有点儿笨拙。所以他们尽可能地从丘陵、山头或者树上起飞，以获得更高的"
-"高度和更快的速度。对于他们的敌人来说幸运的是，他们庞大的体型，使得对于那些胆"
-"敢袭击他们的家伙们而言，是很容易对付的目标。\n"
+"高度和更快的速度。对于他们的敌人来说幸运的是，龙人仍然是很笨拙的生物，在战斗"
+"中速度出奇地缓慢。这个弱点，再加上大身材，使得对于那些胆敢袭击他们的家伙们而"
+"言，龙人是很容易对付的目标。\n"
 "\n"
 "龙人天生就是魔法生物，正是他们体内的神秘火焰滋养着他们的生命。当一个龙人战士"
 "在战斗中死去时，这一点很容易就能观察到：逝者体内的火焰会释放出来，将尸体燃烧"
@@ -8302,9 +8392,9 @@ msgstr ""
 "是铠甲和武器锻造，他们不知道也不需要除此之外的科学与文化。然而，他们所使用的"
 "那少数几种用具的质量几乎无可匹敌，只有最好的矮人铸造场的产品才可以比肩。\n"
 "\n"
-"龙人是从蛋中孵化出来的，通常可自然存活数十年，尽管已经知道有的可以活得更长。"
-"然而，战死沙场是龙人最向往的归宿。因此，多数龙人终其一生都未能看到其自然寿命"
-"的终点。\n"
+"龙人是从蛋中孵化出来的，通常有20至30年寿命。战死沙场是龙人最偏爱的离开这个世"
+"界的方法。和其他种族中的年长者不同的是，很自然地，龙人越接近寿命的极限就会越"
+"具侵略性而鲁莽，也许是为了奠定自己在部族的英雄传说中的地位吧。\n"
 "\n"
 "<header>text='地理'</header>\n"
 "龙人发源于<ref>dst='great_ocean' text='泰洋'</ref>上的一片称为"
@@ -8315,22 +8405,22 @@ msgstr ""
 "一特点使得他们甚至能够在泰陆极北的一些山脉里居住。"
 
 #. [race]: id=dwarf
-#: data/core/units.cfg:97
+#: data/core/units.cfg:82
 msgid "race^Dwarf"
 msgstr "矮人"
 
 #. [race]: id=dwarf
-#: data/core/units.cfg:98
+#: data/core/units.cfg:83
 msgid "race+female^Dwarf"
 msgstr "矮人"
 
 #. [race]: id=dwarf
-#: data/core/units.cfg:99
+#: data/core/units.cfg:84
 msgid "race^Dwarves"
 msgstr "矮人"
 
 #. [race]: id=dwarf
-#: data/core/units.cfg:100
+#: data/core/units.cfg:85
 msgid ""
 "The dwarves are a race famed for their miners, blacksmiths, merchants and "
 "warriors. Considered as the third oldest race on the great continent after "
@@ -8410,22 +8500,22 @@ msgstr ""
 "增强它们的某些自然性质。"
 
 #. [race]: id=elf
-#: data/core/units.cfg:117
+#: data/core/units.cfg:98
 msgid "race^Elf"
 msgstr "精灵"
 
 #. [race]: id=elf
-#: data/core/units.cfg:118
+#: data/core/units.cfg:99
 msgid "race+female^Elf"
 msgstr "精灵"
 
 #. [race]: id=elf
-#: data/core/units.cfg:119
+#: data/core/units.cfg:100
 msgid "race^Elves"
 msgstr "精灵"
 
 #. [race]: id=elf
-#: data/core/units.cfg:121
+#: data/core/units.cfg:101
 #, fuzzy
 #| msgid ""
 #| "Compared to humans, elves are somewhat taller, more agile but less "
@@ -8597,22 +8687,22 @@ msgstr ""
 "统，韦弥尔和林塔尼尔都会召来一位精灵秘术师教团的女附魔师来推动权力的交接。"
 
 #. [race]: id=falcon
-#: data/core/units.cfg:147
+#: data/core/units.cfg:127
 msgid "race^Falcon"
 msgstr "猎鹰"
 
 #. [race]: id=falcon
-#: data/core/units.cfg:148
+#: data/core/units.cfg:128
 msgid "race+female^Falcon"
 msgstr "猎鹰"
 
 #. [race]: id=falcon
-#: data/core/units.cfg:149
+#: data/core/units.cfg:129
 msgid "race^Falcons"
 msgstr "猎鹰"
 
 #. [race]: id=falcon
-#: data/core/units.cfg:150
+#: data/core/units.cfg:130
 msgid ""
 "Falcons are birds of prey, noted for their exceptional speed and agility. "
 "Lighter and with less powerful talons than other raptors, falcons instead "
@@ -8631,29 +8721,29 @@ msgstr ""
 "益。"
 
 #. [race]: id=goblin
-#: data/core/units.cfg:158
+#: data/core/units.cfg:137
 msgid "race^Goblin"
 msgstr "地精"
 
 #. [race]: id=goblin
-#: data/core/units.cfg:159
+#: data/core/units.cfg:138
 msgid "race+female^Goblin"
 msgstr "地精"
 
 #. [race]: id=goblin
-#: data/core/units.cfg:160
+#: data/core/units.cfg:139
 msgid "race^Goblins"
 msgstr "地精"
 
 #. [race]: id=goblin
-#: data/core/units.cfg:163
+#: data/core/units.cfg:142
 msgid ""
 "Goblins are puny and quite frail, rarely growing past the size and stature "
 "of a human child."
 msgstr ""
 
 #. [race]: id=goblin
-#: data/core/units.cfg:165
+#: data/core/units.cfg:144
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -8688,22 +8778,22 @@ msgstr ""
 "证明自己强大力量的工作。"
 
 #. [race]: id=gryphon
-#: data/core/units.cfg:178
+#: data/core/units.cfg:156
 msgid "race^Gryphon"
 msgstr "狮鹫"
 
 #. [race]: id=gryphon
-#: data/core/units.cfg:179
+#: data/core/units.cfg:157
 msgid "race+female^Gryphon"
 msgstr "狮鹫"
 
 #. [race]: id=gryphon
-#: data/core/units.cfg:180
+#: data/core/units.cfg:158
 msgid "race^Gryphons"
 msgstr "狮鹫"
 
 #. [race]: id=gryphon
-#: data/core/units.cfg:181
+#: data/core/units.cfg:159
 msgid ""
 "Gryphons are broad, powerful beasts with traits shared from both terrestrial "
 "predators and birds of prey. While occasionally tamed and ridden by the "
@@ -8721,22 +8811,22 @@ msgstr ""
 "很多争论，但却仍然是个谜，正如他们的起源一般。"
 
 #. [race]: id=horse
-#: data/core/units.cfg:191
+#: data/core/units.cfg:169
 msgid "race^Horse"
 msgstr "马"
 
 #. [race]: id=horse
-#: data/core/units.cfg:192
+#: data/core/units.cfg:170
 msgid "race+female^Horse"
 msgstr "马"
 
 #. [race]: id=horse
-#: data/core/units.cfg:193
+#: data/core/units.cfg:171
 msgid "race^Horses"
 msgstr "马"
 
 #. [race]: id=horse
-#: data/core/units.cfg:194
+#: data/core/units.cfg:172
 msgid ""
 "Domesticated horses come in many shapes and sizes, from mighty war chargers, "
 "to sturdy draught horses or agile stock horses. While they are more fragile "
@@ -8757,23 +8847,23 @@ msgstr ""
 "西。"
 
 #. [race]: id=human
-#: data/core/units.cfg:211
+#: data/core/units.cfg:181
 msgid "race^Human"
 msgstr "人类"
 
 #. [race]: id=human
-#: data/core/units.cfg:212
+#: data/core/units.cfg:182
 msgid "race+female^Human"
 msgstr "人类"
 
 #. [race]: id=human
-#: data/core/units.cfg:213
+#: data/core/units.cfg:183
 msgid "race^Humans"
 msgstr "人类"
 
 # TODO this is not checked by sylecn.
 #. [race]: id=human
-#: data/core/units.cfg:214
+#: data/core/units.cfg:184
 msgid ""
 "The race of men is an extremely diverse one. Although they originally came "
 "from the Old Continent, men have spread all over the world and split into "
@@ -8840,22 +8930,22 @@ msgstr ""
 "些，而他们可以互相取长补短。"
 
 #. [race]: id=dunefolk
-#: data/core/units.cfg:229
+#: data/core/units.cfg:197
 msgid "race^Dunefolk Human"
 msgstr "沙丘游民"
 
 #. [race]: id=dunefolk
-#: data/core/units.cfg:230
+#: data/core/units.cfg:198
 msgid "race+female^Dunefolk Human"
 msgstr "沙丘游民"
 
 #. [race]: id=dunefolk
-#: data/core/units.cfg:231
+#: data/core/units.cfg:199
 msgid "race+plural^Dunefolk"
 msgstr "沙丘游民"
 
 #. [race]: id=dunefolk
-#: data/core/units.cfg:233
+#: data/core/units.cfg:201
 msgid ""
 "An offshoot of a forgotten nomadic civilization, the Dunefolk lay claim to "
 "the river valleys and oases of the Sandy Wastes. How they came to inhabit "
@@ -8948,22 +9038,22 @@ msgstr ""
 "亚遥远的异域角落中生活。"
 
 #. [race]: id=lizard
-#: data/core/units.cfg:254
+#: data/core/units.cfg:221
 msgid "race^Saurian"
 msgstr "蜥蜴人"
 
 #. [race]: id=lizard
-#: data/core/units.cfg:255
+#: data/core/units.cfg:222
 msgid "race+female^Saurian"
 msgstr "蜥蜴人"
 
 #. [race]: id=lizard
-#: data/core/units.cfg:256
+#: data/core/units.cfg:223
 msgid "race^Saurians"
 msgstr "蜥蜴人"
 
 #. [race]: id=lizard
-#: data/core/units.cfg:257
+#: data/core/units.cfg:224
 #, fuzzy
 #| msgid ""
 #| "Saurians are lizard-like creatures. Smaller and more slender than humans, "
@@ -9145,17 +9235,17 @@ msgstr ""
 "腐，甚至还会同类相食。这两者都是很常见的。"
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:283
+#: data/core/units.cfg:250
 msgid "race^Mechanical"
 msgstr "机械"
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:284
+#: data/core/units.cfg:251
 msgid "race+plural^Mechanical"
 msgstr "机械"
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:285
+#: data/core/units.cfg:252
 msgid ""
 "Animated neither by natural life nor by necromancy, the term "
 "<italic>text='mechanical'</italic> describes a created artifact of an "
@@ -9167,21 +9257,21 @@ msgstr ""
 "但有一些会由于魔法影响而能够如此。"
 
 #. [race]: id=ship
-#: data/core/units.cfg:294
+#: data/core/units.cfg:261
 #, fuzzy
 #| msgid "race^Saurian"
 msgid "race^Ship"
 msgstr "蜥蜴人"
 
 #. [race]: id=ship
-#: data/core/units.cfg:295
+#: data/core/units.cfg:262
 #, fuzzy
 #| msgid "race+plural^Mechanical"
 msgid "race+plural^Ships"
 msgstr "机械"
 
 #. [race]: id=ship
-#: data/core/units.cfg:296
+#: data/core/units.cfg:263
 #, fuzzy
 #| msgid ""
 #| "Animated neither by natural life nor by necromancy, the term "
@@ -9198,22 +9288,22 @@ msgstr ""
 "但有一些会由于魔法影响而能够如此。"
 
 #. [race]: id=merman
-#: data/core/units.cfg:307
+#: data/core/units.cfg:273
 msgid "race^Merman"
 msgstr "人鱼"
 
 #. [race]: id=merman
-#: data/core/units.cfg:308
+#: data/core/units.cfg:274
 msgid "race^Mermaid"
 msgstr "人鱼"
 
 #. [race]: id=merman
-#: data/core/units.cfg:309
+#: data/core/units.cfg:275
 msgid "race^Merfolk"
 msgstr "人鱼"
 
 #. [race]: id=merman
-#: data/core/units.cfg:311
+#: data/core/units.cfg:276
 msgid ""
 "Something like a fusion between humans and fish, the merfolk are an "
 "enigmatic race with both piscine and humanoid attributes. They have strong "
@@ -9233,22 +9323,22 @@ msgstr ""
 "的地形或林地，对他们而言也是一件天大的苦差。"
 
 #. [race]: id=monster
-#: data/core/units.cfg:319
+#: data/core/units.cfg:284
 msgid "race^Monster"
 msgstr "怪物"
 
 #. [race]: id=monster
-#: data/core/units.cfg:320
+#: data/core/units.cfg:285
 msgid "race+female^Monster"
 msgstr "怪物"
 
 #. [race]: id=monster
-#: data/core/units.cfg:321
+#: data/core/units.cfg:286
 msgid "race^Monsters"
 msgstr "怪物"
 
 #. [race]: id=monster
-#: data/core/units.cfg:322
+#: data/core/units.cfg:287
 msgid ""
 "The term “monster” incorporates many hideous beasts that haunt the caves, "
 "wilderness, ocean depths, and other climes of the world. They figure largely "
@@ -9258,22 +9348,22 @@ msgstr ""
 "的其他地方，同样地，也经常出没于世界住民的传说和梦魇之中。"
 
 #. [race]: id=naga
-#: data/core/units.cfg:329
+#: data/core/units.cfg:293
 msgid "race^Naga"
 msgstr "娜迦"
 
 #. [race]: id=naga
-#: data/core/units.cfg:330
+#: data/core/units.cfg:294
 msgid "race^Nagini"
 msgstr "娜迦"
 
 #. [race]: id=naga
-#: data/core/units.cfg:331
+#: data/core/units.cfg:295
 msgid "race^Nagas"
 msgstr "娜迦"
 
 #. [race]: id=naga
-#: data/core/units.cfg:332
+#: data/core/units.cfg:296
 msgid ""
 "The serpentine nagas are one of the least understood races of the Great "
 "Continent. Part of this is due to their xenophobic nature and part is due to "
@@ -9300,22 +9390,22 @@ msgstr ""
 "是一样的。"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:340
+#: data/core/units.cfg:304
 msgid "race^Ogre"
 msgstr "食人魔"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:341
+#: data/core/units.cfg:305
 msgid "race+female^Ogre"
 msgstr "食人魔"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:342
+#: data/core/units.cfg:306
 msgid "race^Ogres"
 msgstr "食人魔"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:343
+#: data/core/units.cfg:307
 msgid ""
 "Ogres are a wild and uncivilized race who dwell mainly in the wilderness of "
 "the Great Continent. Physically, they resemble humans and orcs but are "
@@ -9343,22 +9433,22 @@ msgstr ""
 "袭击。尚不清楚这究竟标志着合作、驯化，还是单纯的相互利用。"
 
 #. [race]: id=orc
-#: data/core/units.cfg:351
+#: data/core/units.cfg:314
 msgid "race^Orc"
 msgstr "兽人"
 
 #. [race]: id=orc
-#: data/core/units.cfg:352
+#: data/core/units.cfg:315
 msgid "race+female^Orc"
 msgstr "兽人"
 
 #. [race]: id=orc
-#: data/core/units.cfg:353
+#: data/core/units.cfg:316
 msgid "race^Orcs"
 msgstr "兽人"
 
 #. [race]: id=orc
-#: data/core/units.cfg:354
+#: data/core/units.cfg:317
 msgid ""
 "In appearance, orcs resemble humans but with some bestial features. They are "
 "taller, sturdier and stronger than humans. They are warlike, savage, and "
@@ -9369,12 +9459,12 @@ msgid ""
 msgstr ""
 
 #. [race]: id=orc
-#: data/core/units.cfg:356
+#: data/core/units.cfg:319
 msgid "Society"
 msgstr ""
 
 #. [race]: id=orc
-#: data/core/units.cfg:357
+#: data/core/units.cfg:320
 msgid ""
 "Almost every orc is a member of a tribe or a clan. Relations between "
 "neighboring tribes are usually violent, except in cases of a mutual enemy "
@@ -9388,7 +9478,7 @@ msgid ""
 msgstr ""
 
 #. [race]: id=orc
-#: data/core/units.cfg:359
+#: data/core/units.cfg:322
 msgid ""
 "Orc societies are based on little else but strength; might makes right, and "
 "a leader leads and survives only as long as no one manages to wrest the "
@@ -9402,7 +9492,7 @@ msgid ""
 msgstr ""
 
 #. [race]: id=orc
-#: data/core/units.cfg:361
+#: data/core/units.cfg:324
 msgid ""
 "Orcs mostly live in rural areas, often in foothills or mountainous regions, "
 "sometimes in caves. They grow no crops nor keep livestock, but are competent "
@@ -9417,7 +9507,7 @@ msgid ""
 msgstr ""
 
 #. [race]: id=orc
-#: data/core/units.cfg:363
+#: data/core/units.cfg:326
 msgid ""
 "The oldest known orcs have been around 50 to 60 years of age, but very few "
 "individuals ever live to see over two or three decades before meeting their "
@@ -9431,7 +9521,7 @@ msgid ""
 msgstr ""
 
 #. [race]: id=orc
-#: data/core/units.cfg:367
+#: data/core/units.cfg:330
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -9447,22 +9537,28 @@ msgstr ""
 "在窝中并非最强壮的兽人倾向于专精其他的技能，例如射术或者暗杀。"
 
 #. [race]: id=raven
-#: data/core/units.cfg:374
+#: data/core/units.cfg:337
+#, fuzzy
+#| msgid "race^Dwarves"
 msgid "race^Raven"
-msgstr "渡鸦"
+msgstr "矮人"
 
 #. [race]: id=raven
-#: data/core/units.cfg:375
+#: data/core/units.cfg:338
+#, fuzzy
+#| msgid "race+female^Drake"
 msgid "race+female^Raven"
-msgstr "渡鸦"
+msgstr "龙人"
 
 #. [race]: id=raven
-#: data/core/units.cfg:376
+#: data/core/units.cfg:339
+#, fuzzy
+#| msgid "race^Dwarves"
 msgid "race^Ravens"
-msgstr "渡鸦"
+msgstr "矮人"
 
 #. [race]: id=raven
-#: data/core/units.cfg:377
+#: data/core/units.cfg:340
 msgid ""
 "Ravens are general scavengers, often associating with hunters or predators "
 "in the hope of sharing in the kill. They do not have the powerful beak or "
@@ -9480,35 +9576,24 @@ msgid ""
 "farmers struggle to keep ravens away from freshly sown seeds, but others are "
 "happy to have them around as sentries."
 msgstr ""
-"渡鸦是一般的食腐动物，经常与猎人或捕食者联系，希望分享猎物。它们没有狮鹫或猛"
-"禽那样强壮的喙或爪子，但由于它们的智力和识别任何优势的能力，它们仍然可以是一"
-"种威胁。\n"
-"\n"
-"在战斗结束后，死伤者是渡鸦的盛宴，因此渡鸦对战败者的盟友来说是一种滋扰，但一"
-"些胜利者将其视为军事仪式的一部分。兽人和人类具有的暴力和大规模，使得这些种族"
-"在这种情况下与渡鸦不断互动。因此，这些鸟已成为与战争有关的寓言、譬喻和迷信中"
-"的角色。\n"
-"\n"
-"作为聪明的食腐动物，渡鸦不需要靠战争的死亡来生存。一些农民努力让渡鸦远离新鲜"
-"播种的种子，但其他人很乐意让它们作为哨兵出现在周围。"
 
 #. [race]: id=troll
-#: data/core/units.cfg:388
+#: data/core/units.cfg:351
 msgid "race^Troll"
 msgstr "巨魔"
 
 #. [race]: id=troll
-#: data/core/units.cfg:389
+#: data/core/units.cfg:352
 msgid "race+female^Troll"
 msgstr "巨魔"
 
 #. [race]: id=troll
-#: data/core/units.cfg:390
+#: data/core/units.cfg:353
 msgid "race^Trolls"
 msgstr "巨魔"
 
 #. [race]: id=troll
-#: data/core/units.cfg:391
+#: data/core/units.cfg:354
 msgid ""
 "Trolls are ancient creatures, one of the oldest known races known to inhabit "
 "the Great Continent. They are large, slow, simple, and live extremely long "
@@ -9569,22 +9654,22 @@ msgstr ""
 "和东方的山脉里很常见，在兽人部落经过的地方也是如此。"
 
 #. [race]: id=undead
-#: data/core/units.cfg:411
+#: data/core/units.cfg:372
 msgid "race^Undead"
 msgstr "亡灵"
 
 #. [race]: id=undead
-#: data/core/units.cfg:412
+#: data/core/units.cfg:373
 msgid "race+female^Undead"
 msgstr "亡灵"
 
 #. [race]: id=undead
-#: data/core/units.cfg:413
+#: data/core/units.cfg:374
 msgid "race+plural^Undead"
 msgstr "亡灵"
 
 #. [race]: id=undead
-#: data/core/units.cfg:414
+#: data/core/units.cfg:375
 msgid ""
 "Undead are not really a single race of creatures, although often treated as "
 "such. Most ordinary creatures can, by a sufficiently skilled necromancer, be "
@@ -9641,22 +9726,22 @@ msgstr ""
 "矮人们并非没有听说过他们。"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:427
+#: data/core/units.cfg:388
 msgid "race^Wolf"
 msgstr "狼"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:428
+#: data/core/units.cfg:389
 msgid "race+female^Wolf"
 msgstr "狼"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:429
+#: data/core/units.cfg:390
 msgid "race^Wolves"
 msgstr "狼"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:430
+#: data/core/units.cfg:391
 msgid ""
 "Wolves are predatory canines encountered frequently in the wilderness. "
 "Quick, tough, and durable, a solitary wolf suffices to maim or kill "
@@ -9672,17 +9757,17 @@ msgstr ""
 "之处，只是不时地冒险接近以捕猎牲畜。"
 
 #. [race]: id=wose
-#: data/core/units.cfg:439
+#: data/core/units.cfg:399
 msgid "race^Wose"
 msgstr "树人"
 
 #. [race]: id=wose
-#: data/core/units.cfg:440
+#: data/core/units.cfg:400
 msgid "race^Woses"
 msgstr "树人"
 
 #. [race]: id=wose
-#: data/core/units.cfg:441
+#: data/core/units.cfg:401
 msgid ""
 "The mighty wose resides within the deepest forests of the known world. To "
 "the untrained eye, the wose appears to be nothing more than an oddly shaped, "
@@ -9748,7 +9833,7 @@ msgstr ""
 "不感兴趣，只有到了需要保卫自然和守护森林家园的时候他们才会参和进来。"
 
 #. [language]
-#: data/english.cfg:34
+#: data/english.cfg:39
 msgid ""
 "This unit’s arcane attack deals tremendous damage to magical creatures, and "
 "even some to mundane creatures."
@@ -9762,17 +9847,19 @@ msgstr "+1最大生命值"
 #. [lua]: wesnoth.interface.game_display.unit_status
 #: data/lua/stun.lua:14
 msgid "stunned: This unit is stunned. It cannot enforce its Zone of Control."
-msgstr "眩晕：此单位眩晕了。它无法维持自己的控制区域。"
+msgstr ""
 
 #. [lua]: on_hit
 #: data/lua/stun.lua:24
+#, fuzzy
+#| msgid "female^undead"
 msgid "female^stunned"
-msgstr "眩晕"
+msgstr "亡灵"
 
 #. [lua]: on_hit
 #: data/lua/stun.lua:26
 msgid "stunned"
-msgstr "眩晕"
+msgstr ""
 
 #: src/help/help_topic_generators.cpp:65
 msgid "Best of"
@@ -10096,95 +10183,15 @@ msgstr "干扰消耗"
 #~ "中毒的单位不能由疗伤者疗毒，只能进入村庄疗毒，或者由拥有疗毒能力的单位疗"
 #~ "毒。"
 
-#~ msgid "Using a separate file for WML events"
-#~ msgstr "为WML事件使用单独的文件"
-
-#~ msgid ""
-#~ "Each year in the Wesnoth calendar is composed of 12 months. These are, in "
-#~ "order:\n"
-#~ "\n"
-#~ "Whitefire\n"
-#~ "Bleeding Moon\n"
-#~ "Scatterseed\n"
-#~ "Deeproot\n"
-#~ "Scryer’s Bloom\n"
-#~ "Thorntress\n"
-#~ "Summit Star\n"
-#~ "Kindlefire\n"
-#~ "Stillseed\n"
-#~ "Reaper’s Moon\n"
-#~ "Verglas Bloom\n"
-#~ "Blackfire\n"
-#~ "\n"
-#~ msgstr ""
-#~ "韦诺历法中每年都由12个月组成。这些月份依次是：\n"
-#~ "\n"
-#~ "白火月\n"
-#~ "渗血月\n"
-#~ "播种月\n"
-#~ "深根月\n"
-#~ "星华月\n"
-#~ "棘女月\n"
-#~ "峰星月\n"
-#~ "燃火月\n"
-#~ "静种月\n"
-#~ "死神月\n"
-#~ "冰华月\n"
-#~ "黑火月\n"
-#~ "\n"
-
-#~ msgid ""
-#~ "The Wood Elves are separate from those of the north, and have only "
-#~ "intermittent relations with them and most other countries. Its borders "
-#~ "are the <ref>dst='great_ocean' text='ocean'</ref> to the west, the Black "
-#~ "River to the south and southeast, the lands of Wesnoth to the north and "
-#~ "the Kerlath province to the east.\n"
-#~ "\n"
-#~ "<header>text='Notable cities:'</header>\n"
-#~ "    • None known.\n"
-#~ "\n"
-#~ "<header>text='Notable land features:'</header>\n"
-#~ "    • Aethenwood: The largest southern forest, it extends far to the "
-#~ "south and is home to <ref>dst='..race_elf' text='elves'</ref>. Although "
-#~ "the elves make no such distinction, the southern part of the forest has "
-#~ "been named Southwood by denizens of Kerlath.\n"
-#~ "    • Black Forest: An ancient forest of which very little is known, "
-#~ "abandoned by the elves long ago."
-#~ msgstr ""
-#~ "树精灵和北方精灵是不同的，他们之间只有断断续续的联系，树精灵和大部分其他国"
-#~ "家之间的联系也是如此。其领地以<ref>dst='great_ocean' text='泰洋'</ref>为西"
-#~ "界，以黑河为南及东南界，以韦诺为北界，柯拉斯行省为东界。\n"
-#~ "\n"
-#~ "<header>text='著名城市：'</header>\n"
-#~ "    • 未知。\n"
-#~ "<header>text='著名地貌：'</header>\n"
-#~ "    • 艾森丛林：西方最大的森林，一直向西延伸至很远的地方，那里是"
-#~ "<ref>dst='..race_elf' text='精灵'</ref>的家园。尽管精灵们对此不加分辨，但"
-#~ "森林的南边部分被柯拉斯的居民们称为南林。\n"
-#~ "    • 黑色森林：一片古老的森林，人们对其知之甚少，很久以前，那里就被精灵们"
-#~ "放弃了。"
-
-#~ msgid ""
-#~ "A virtually impassable barrier between the <ref>dst='arkan_thoria' "
-#~ "text='river'</ref> country and the <ref>dst='far_north' text='Northern "
-#~ "Plains'</ref>."
-#~ msgstr ""
-#~ "一道位于<ref>dst='arkan_thoria' text='河'</ref> 滩和<ref>dst='far_north' "
-#~ "text='北方平原'</ref>之间的几乎无法逾越的天险。"
-
+#, fuzzy
+#~| msgid ""
+#~| "\n"
+#~| "\n"
+#~| "<header>text='Chance to Hit'</header>"
 #~ msgid ""
 #~ "\n"
 #~ "\n"
-#~ "<header>text='Unlikely reasons'</header>"
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "<header>text='不太可能的原因'</header>"
-
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "<header>text='Chance to Hit'</header>"
+#~ "<header>Chance to Hit</header>"
 #~ msgstr ""
 #~ "\n"
 #~ "\n"
@@ -10199,15 +10206,27 @@ msgstr "干扰消耗"
 #~ "\n"
 #~ "<header>text=伤害</header>"
 
+#, fuzzy
+#~| msgid ""
+#~| "The time of day affects the damage of certain units as follows:\n"
+#~| "\n"
+#~| "• <bold>text='Lawful'</bold> units get +25% damage in daytime, and −25% "
+#~| "damage at night.\n"
+#~| "• <bold>text='Chaotic'</bold> units get +25% damage at night, and −25% "
+#~| "in daytime.\n"
+#~| "• <bold>text='Neutral'</bold> units are unaffected by the time of day.\n"
+#~| "• <bold>text='Liminal'</bold> units get +25% damage during twilight."
 #~ msgid ""
 #~ "The time of day affects the damage of certain units as follows:\n"
 #~ "\n"
-#~ "• <bold>text='Lawful'</bold> units get +25% damage in daytime, and −25% "
-#~ "damage at night.\n"
-#~ "• <bold>text='Chaotic'</bold> units get +25% damage at night, and −25% in "
-#~ "daytime.\n"
-#~ "• <bold>text='Neutral'</bold> units are unaffected by the time of day.\n"
-#~ "• <bold>text='Liminal'</bold> units get +25% damage during twilight."
+#~ "• <span weight='heavy' size='15'>LAWFUL</span> units get +25% damage in "
+#~ "daytime, and −25% damage at night.\n"
+#~ "• <span weight='heavy' size='15'>CHAOTIC</span> units get +25% damage at "
+#~ "night, and −25% in daytime.\n"
+#~ "• <span weight='heavy' size='15'>NEUTRAL</span> units are unaffected by "
+#~ "the time of day.\n"
+#~ "• <span weight='heavy' size='15'>LIMINAL</span> units get +25% damage "
+#~ "during twilight."
 #~ msgstr ""
 #~ "时段对某些单位的伤害输出有影响，如下：\n"
 #~ "\n"
@@ -10216,46 +10235,58 @@ msgstr "干扰消耗"
 #~ "• <bold>text='中立'</bold>单位不受时段的影响。\n"
 #~ "• <bold>text='边缘'</bold>单位在晨昏时段伤害+25%。"
 
+#, fuzzy
+#~| msgid ""
+#~| "\n"
+#~| "\n"
+#~| "<bold>text='Advanced'</bold>"
 #~ msgid ""
 #~ "\n"
 #~ "\n"
-#~ "<bold>text='Advanced'</bold>"
+#~ "<b>Advanced</b>"
 #~ msgstr ""
 #~ "\n"
 #~ "\n"
 #~ "<bold>text='高级'</bold>"
 
+#, fuzzy
+#~| msgid ""
+#~| "\n"
+#~| "\n"
+#~| "<header>text='Basic Terrain Types'</header>"
 #~ msgid ""
 #~ "\n"
 #~ "\n"
-#~ "<header>text='Basic Terrain Types'</header>"
+#~ "<header>Basic Terrain Types</header>"
 #~ msgstr ""
 #~ "\n"
 #~ "\n"
 #~ "<header>text='基本地形类型'</header>"
 
+#, fuzzy
+#~| msgid ""
+#~| "\n"
+#~| "\n"
+#~| "<header>text='Defense Caps'</header>"
 #~ msgid ""
 #~ "\n"
 #~ "\n"
-#~ "<header>text='Mixed Terrain Types'</header>"
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "<header>text='混合地形类型'</header>"
-
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "<header>text='Defense Caps'</header>"
+#~ "<header>Defense Caps</header>"
 #~ msgstr ""
 #~ "\n"
 #~ "\n"
 #~ "<header>text='防御力上限'</header>"
 
+#, fuzzy
+#~| msgid ""
+#~| "\n"
+#~| "\n"
+#~| "<header>text='Basic Terrain Types'</header>\n"
+#~| "\n"
 #~ msgid ""
 #~ "\n"
 #~ "\n"
-#~ "<header>text='Basic Terrain Types'</header>\n"
+#~ "<header>Basic Terrain Types</header>\n"
 #~ "\n"
 #~ msgstr ""
 #~ "\n"
@@ -10263,67 +10294,33 @@ msgstr "干扰消耗"
 #~ "<header>text='基本地形类型'</header>\n"
 #~ "\n"
 
+#, fuzzy
+#~| msgid ""
+#~| "\n"
+#~| "\n"
+#~| "<header>text='Modifications'</header>"
 #~ msgid ""
 #~ "\n"
 #~ "\n"
-#~ "<header>text='Campaigns and Scenarios'</header>"
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "<header>text=战役和场景</header>"
-
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "<header>text='Modifications'</header>"
+#~ "<header>Modifications</header>"
 #~ msgstr ""
 #~ "\n"
 #~ "\n"
 #~ "<header>text='模组'</header>"
 
+#, fuzzy
+#~| msgid ""
+#~| "\n"
+#~| "\n"
+#~| "<header>text='Cores'</header>"
 #~ msgid ""
 #~ "\n"
 #~ "\n"
-#~ "<header>text='Cores'</header>"
+#~ "<header>Cores</header>"
 #~ msgstr ""
 #~ "\n"
 #~ "\n"
 #~ "<header>text='核心'</header>"
-
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "<header>text='Creator Resources'</header>"
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "<header>text='制作者资源'</header>"
-
-#~ msgid "deflect"
-#~ msgstr "偏转"
-
-#~ msgid ""
-#~ "When used defensively, this attack reduces the opponent’s chance to hit "
-#~ "by 10%."
-#~ msgstr "当用于防御时，此攻击将使得对手的命中率下降10%。"
-
-#~ msgid ""
-#~ "This unit’s defensive techniques reduce the chance of a successful enemy "
-#~ "attack."
-#~ msgstr "此单位的防御技巧减少了敌方的攻击成功率。"
-
-#~ msgid "absorb"
-#~ msgstr "吸收"
-
-#~ msgid ""
-#~ "This attack puts the unit in good defensive position, and it absorbs some "
-#~ "of the damage dealt by an enemy strike."
-#~ msgstr "此攻击使单位处于良好的防御体势，可以吸收敌人攻击造成的部分伤害。"
-
-#~ msgid ""
-#~ "This unit can block enemy strikes, so that it takes reduced damage when "
-#~ "hit."
-#~ msgstr "此单位可以格挡敌人的打击，使其被击中时受到的伤害减少。"
 
 #~ msgid ""
 #~ "In appearance, orcs resemble humans but with some bestial features. They "
@@ -10416,6 +10413,112 @@ msgstr "干扰消耗"
 #~ "容忍的行为。从很多方面来讲，萨满都是大多数其他兽人的对立面：相比较而言，他"
 #~ "们的身体常常是干瘦而虚弱的，而且缺乏战斗能力。\n"
 #~ "\n"
+
+#~ msgid "Using a separate file for WML events"
+#~ msgstr "为WML事件使用单独的文件"
+
+#~ msgid ""
+#~ "Each year in the Wesnoth calendar is composed of 12 months. These are, in "
+#~ "order:\n"
+#~ "\n"
+#~ "Whitefire\n"
+#~ "Bleeding Moon\n"
+#~ "Scatterseed\n"
+#~ "Deeproot\n"
+#~ "Scryer’s Bloom\n"
+#~ "Thorntress\n"
+#~ "Summit Star\n"
+#~ "Kindlefire\n"
+#~ "Stillseed\n"
+#~ "Reaper’s Moon\n"
+#~ "Verglas Bloom\n"
+#~ "Blackfire\n"
+#~ "\n"
+#~ msgstr ""
+#~ "韦诺历法中每年都由12个月组成。这些月份依次是：\n"
+#~ "\n"
+#~ "白火月\n"
+#~ "渗血月\n"
+#~ "播种月\n"
+#~ "深根月\n"
+#~ "星华月\n"
+#~ "棘女月\n"
+#~ "峰星月\n"
+#~ "燃火月\n"
+#~ "静种月\n"
+#~ "死神月\n"
+#~ "冰华月\n"
+#~ "黑火月\n"
+#~ "\n"
+
+#~ msgid ""
+#~ "The Wood Elves are separate from those of the north, and have only "
+#~ "intermittent relations with them and most other countries. Its borders "
+#~ "are the <ref>dst='great_ocean' text='ocean'</ref> to the west, the Black "
+#~ "River to the south and southeast, the lands of Wesnoth to the north and "
+#~ "the Kerlath province to the east.\n"
+#~ "\n"
+#~ "<header>text='Notable cities:'</header>\n"
+#~ "    • None known.\n"
+#~ "\n"
+#~ "<header>text='Notable land features:'</header>\n"
+#~ "    • Aethenwood: The largest southern forest, it extends far to the "
+#~ "south and is home to <ref>dst='..race_elf' text='elves'</ref>. Although "
+#~ "the elves make no such distinction, the southern part of the forest has "
+#~ "been named Southwood by denizens of Kerlath.\n"
+#~ "    • Black Forest: An ancient forest of which very little is known, "
+#~ "abandoned by the elves long ago."
+#~ msgstr ""
+#~ "树精灵和北方精灵是不同的，他们之间只有断断续续的联系，树精灵和大部分其他国"
+#~ "家之间的联系也是如此。其领地以<ref>dst='great_ocean' text='泰洋'</ref>为西"
+#~ "界，以黑河为南及东南界，以韦诺为北界，柯拉斯行省为东界。\n"
+#~ "\n"
+#~ "<header>text='著名城市：'</header>\n"
+#~ "    • 未知。\n"
+#~ "<header>text='著名地貌：'</header>\n"
+#~ "    • 艾森丛林：西方最大的森林，一直向西延伸至很远的地方，那里是"
+#~ "<ref>dst='..race_elf' text='精灵'</ref>的家园。尽管精灵们对此不加分辨，但"
+#~ "森林的南边部分被柯拉斯的居民们称为南林。\n"
+#~ "    • 黑色森林：一片古老的森林，人们对其知之甚少，很久以前，那里就被精灵们"
+#~ "放弃了。"
+
+#~ msgid ""
+#~ "A virtually impassable barrier between the <ref>dst='arkan_thoria' "
+#~ "text='river'</ref> country and the <ref>dst='far_north' text='Northern "
+#~ "Plains'</ref>."
+#~ msgstr ""
+#~ "一道位于<ref>dst='arkan_thoria' text='河'</ref> 滩和<ref>dst='far_north' "
+#~ "text='北方平原'</ref>之间的几乎无法逾越的天险。"
+
+#~ msgid "deflect"
+#~ msgstr "偏转"
+
+#, fuzzy
+#~| msgid ""
+#~| "When used defensively, this attack reduces the opponent's chance to hit "
+#~| "by 10%."
+#~ msgid ""
+#~ "When used defensively, this attack reduces the opponent’s chance to hit "
+#~ "by 10%."
+#~ msgstr "当用于防御时，此攻击将使得对手的命中率下降10%。"
+
+#~ msgid ""
+#~ "This unit’s defensive techniques reduce the chance of a successful enemy "
+#~ "attack."
+#~ msgstr "此单位的防御技巧减少了敌方的攻击成功率。"
+
+#~ msgid "absorb"
+#~ msgstr "吸收"
+
+#~ msgid ""
+#~ "This attack puts the unit in good defensive position, and it absorbs some "
+#~ "of the damage dealt by an enemy strike."
+#~ msgstr "此攻击使单位处于良好的防御体势，可以吸收敌人攻击造成的部分伤害。"
+
+#~ msgid ""
+#~ "This unit can block enemy strikes, so that it takes reduced damage when "
+#~ "hit."
+#~ msgstr "此单位可以格挡敌人的打击，使其被击中时受到的伤害减少。"
 
 #~ msgid "Close"
 #~ msgstr "关闭"

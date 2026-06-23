@@ -80,8 +80,8 @@ local function wct_map_enemy_themed(race, pet, castle, village, chance)
 		role = "hero",
 		overlays = "misc/hero-icon.png",
 		wml.tag.modifications {
-			wc2_heroes.trait_heroic,
-			wc2_heroes.trait_expert,
+			wml.tag.trait(wc2_heroes.trait_heroic),
+			wml.tag.trait(wc2_heroes.trait_expert),
 			wml.tag.object {
 				id = "wc2_hero_overlay",
 				wml.tag.effect {

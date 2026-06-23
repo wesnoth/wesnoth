@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-02-26 01:04 UTC\n"
-"PO-Revision-Date: 2025-12-10 10:45+0800\n"
+"POT-Creation-Date: 2026-06-23 03:16 UTC\n"
+"PO-Revision-Date: 2025-12-14 13:55+0800\n"
 "Last-Translator: vimacs <vimacs.hacks@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
@@ -163,7 +163,7 @@ msgid "The Hand"
 msgstr "神手"
 
 #. [world_conquest_data]
-#: data/campaigns/World_Conquest/era/factions/The_Hand.cfg:17
+#: data/campaigns/World_Conquest/era/factions/The_Hand.cfg:16
 msgid "Dune Rider, Knalgan Alliance and Drakes"
 msgstr "沙丘骑手、纳尔迦联盟和龙人"
 
@@ -323,85 +323,65 @@ msgstr "否"
 
 #. [label]: id=title
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:48
-#, fuzzy
-#| msgid "Map Settings"
 msgid "Map Generator Settings"
-msgstr "地图设置"
+msgstr "地图生成器设置"
 
 #. [grid]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:57
-#, fuzzy
-#| msgid " players: "
 msgid "Players:"
 msgstr "玩家："
 
 #. [grid]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:58
-#, fuzzy
-#| msgid "Scenario"
 msgid "Scenario:"
-msgstr "场景"
+msgstr "场景："
 
 #. [grid]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:59
 msgid "Map:"
-msgstr ""
+msgstr "地图："
 
 #. [grid]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:60
 msgid "Map Size:"
-msgstr ""
+msgstr "地图大小："
 
 #. [grid]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:61
-#, fuzzy
-#| msgid "village density"
 msgid "Village Density:"
-msgstr "村庄密度"
+msgstr "村庄密度："
 
 #. [grid]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:62
-#, fuzzy
-#| msgid "keep size"
 msgid "Keep Size:"
-msgstr "主楼尺寸"
+msgstr "主楼尺寸："
 
 #. [grid]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:63
-#, fuzzy
-#| msgid "iterations"
 msgid "Iterations:"
-msgstr "迭代次数"
+msgstr "迭代次数："
 
 #. [grid]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:64
-#, fuzzy
-#| msgid "terrain factor"
 msgid "Terrain Factor:"
-msgstr "地形因子"
+msgstr "地形因子："
 
 #. [grid]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:65
-#, fuzzy
-#| msgid "island factor"
 msgid "Island Factor:"
-msgstr "岛屿因子"
+msgstr "岛屿因子："
 
 #. [grid]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:66
-#, fuzzy
-#| msgid "number of keeps"
 msgid "Number of Keeps:"
-msgstr "主楼数量"
+msgstr "主楼数量："
 
 #. [button]: id=ok
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:76
 msgid "Close"
-msgstr ""
+msgstr "关闭"
 
 #: data/campaigns/World_Conquest/lua/campaign/enemy_themed.lua:5
-#, fuzzy
-#| msgid "$name|'s pet"
 msgid "$name|’s pet"
 msgstr "$name|的宠物"
 
@@ -424,7 +404,7 @@ msgstr "游戏中有帮助可用：右击任意空六角格即可。"
 #. [lua]: carryover.remaining_gold_message
 #: data/campaigns/World_Conquest/lua/campaign/scenario.lua:87
 msgid "Average remaining gold: "
-msgstr ""
+msgstr "平均剩余金币数："
 
 #: data/campaigns/World_Conquest/lua/era/era.lua:12
 msgid "Tell me how my recruit works"
@@ -2616,10 +2596,8 @@ msgstr "开始"
 
 #. [lua]: wc_ii_generate_scenario
 #: data/campaigns/World_Conquest/lua/map/main.lua:127
-#, fuzzy
-#| msgid "Scenario"
 msgid "Scenario "
-msgstr "场景"
+msgstr "场景 "
 
 #. [lua]: wc_ii_generate_scenario
 #: data/campaigns/World_Conquest/lua/map/main.lua:129
@@ -2900,7 +2878,7 @@ msgid "Enemies"
 msgstr "敌军"
 
 #. [lua]: add_player_side
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/side_definitions.lua:60
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/side_definitions.lua:61
 msgid "Allies"
 msgstr "盟军"
 
@@ -3222,7 +3200,7 @@ msgstr "药草"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:420
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:5
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:4
 msgid "heals +8, cures"
 msgstr "疗伤 +8，疗毒"
 
@@ -3894,19 +3872,19 @@ msgstr "世界征服 4p"
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:17
 msgid "WC1p"
-msgstr ""
+msgstr "WC1p"
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:20
 msgid "WC2p"
-msgstr ""
+msgstr "WC2p"
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:23
 msgid "WC3p"
-msgstr ""
+msgstr "WC3p"
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:26
 msgid "WC4p"
-msgstr ""
+msgstr "WC4p"
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:29
 msgid ""
@@ -3935,17 +3913,12 @@ msgstr ""
 "（专家级别，5幕场景。）"
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:41
-#, fuzzy
-#| msgid ""
-#| "A randomly generated cooperative campaign for 2 players. It has 6 levels "
-#| "of difficulty.\n"
-#| "(Expert level, 5 scenarios.)"
 msgid ""
 "A randomly generated cooperative campaign for 4 players. It has 6 levels of "
 "difficulty.\n"
 "(Expert level, 5 scenarios.)"
 msgstr ""
-"一个随机生成的2人合作战役。有6个级别的难度。\n"
+"一个随机生成的4人合作战役。有6个级别的难度。\n"
 "（专家级别，5幕场景。）"
 
 #. [campaign]: id=WC_II_{PLAYERS}p, description={WC_II_CAMPAIGN_DESC_{PLAYERS}P}, type=mp
@@ -4032,86 +4005,3 @@ msgstr "游戏测试"
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:177
 msgid "Campaign Maintenance"
 msgstr "战役维护"
-
-#~ msgid " scenario: "
-#~ msgstr "场景："
-
-#~ msgid " map: "
-#~ msgstr "地图："
-
-#~ msgid "map size"
-#~ msgstr "地图尺寸"
-
-#~ msgid ""
-#~ "A randomly generated cooperative campaign for 4 players. It has 6 level "
-#~ "of difficulties.\n"
-#~ "(Expert level, 5 scenarios.)"
-#~ msgstr ""
-#~ "一个随机生成的2人合作战役。有6个级别的难度。\n"
-#~ "（专家级别，5幕场景。）"
-
-#~ msgid "WC"
-#~ msgstr "WC"
-
-#~ msgid "Use World Conquest PYA mod"
-#~ msgstr "使用世界征服的PYA模组"
-
-#~ msgid "World Conquest version"
-#~ msgstr "世界征服版本"
-
-#~ msgid "Brave words. Welcome little big man."
-#~ msgstr "这话很勇敢。欢迎你，小个子真男人。"
-
-#~ msgid "Preset Advancement"
-#~ msgstr "预设升级"
-
-#~ msgid ""
-#~ "Currently I’m set to advance towards: $name \n"
-#~ "\n"
-#~ "What are your new orders?"
-#~ msgstr ""
-#~ "目前，指定给我的升级目标是：$name\n"
-#~ "\n"
-#~ "你的新命令是什么？"
-
-#~ msgid "Random"
-#~ msgstr "随机"
-
-#~ msgid " and "
-#~ msgstr " 和 "
-
-#~ msgid "damage"
-#~ msgstr "伤害"
-
-#~ msgid " resistance vs "
-#~ msgstr " 抗性 vs "
-
-#~ msgid "moves"
-#~ msgstr "行动次数"
-
-#~ msgid "strike"
-#~ msgstr "打击"
-
-#~ msgid "flight"
-#~ msgstr "飞行"
-
-#~ msgid "swim"
-#~ msgstr "游泳"
-
-#~ msgid "optional charge"
-#~ msgstr "可选择冲锋"
-
-#~ msgid "full movement"
-#~ msgstr "全速移动"
-
-#~ msgid "terrain^water"
-#~ msgstr "水"
-
-#~ msgid "improved defenses"
-#~ msgstr "防御力改善"
-
-#~ msgid "up to"
-#~ msgstr "上至"
-
-#~ msgid "per level"
-#~ msgstr "每级"

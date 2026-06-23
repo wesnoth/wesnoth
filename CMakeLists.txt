@@ -52,14 +52,15 @@ option(ENABLE_MYSQL "Enable building MP/add-ons servers with mysql support" OFF)
 option(ENABLE_TESTS "Build unit tests")
 option(ENABLE_NLS "Enable building of translations" ${ENABLE_GAME})
 
-set(BOOST_VERSION "1.70")
+# The next line is the minimum version of Boost. The version that's actually found will be put in Boost_VERSION.
+set(MIN_USABLE_BOOST_VERSION "1.70")
 set(BOOST_REQ_COMPONENTS iostreams program_options regex thread random coroutine locale filesystem graph)
 
 if(ENABLE_TESTS)
   list(APPEND BOOST_REQ_COMPONENTS unit_test_framework)
 endif()
 
-find_package(Boost ${BOOST_VERSION} REQUIRED CONFIG COMPONENTS ${BOOST_REQ_COMPONENTS}
+find_package(Boost ${MIN_USABLE_BOOST_VERSION} REQUIRED CONFIG COMPONENTS ${BOOST_REQ_COMPONENTS}
                                            OPTIONAL_COMPONENTS charconv process)
 
 if(NOT WIN32)
@@ -194,6 +195,10 @@ set(BINARY_PREFIX "" CACHE STRING "Prefix in front of all binaries")
 ### Set the environment compiler flags.
 
 if(NOT MSVC)
+	if(CYGWIN)
+		add_compile_definitions(_GNU_SOURCE)
+	endif()
+
 	if(NOT DEFINED CXX_FLAGS_USER)
 
 		MESSAGE(STATUS "Environment compiler flags set to »${CXX_FLAGS_USER}«")
@@ -310,7 +315,7 @@ if(NOT MSVC)
 
 		if(APPLE)
 			set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -fPIE -Wl,-pie")
-		elseif(WIN32 AND MINGW)
+		elseif((WIN32 AND MINGW) OR CYGWIN)
 			set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -fPIE -pie")
 		else()
 			set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -fPIE -pie -Wl,-z,relro,-z,now")
@@ -490,7 +495,7 @@ else()
 	add_compile_definitions(_WIN32_WINNT=0x0A00 _CRT_SECURE_NO_WARNINGS _WINSOCK_DEPRECATED_NO_WARNINGS NOMINMAX _MSVC_STL_HARDENING=1 _MSVC_STL_DESTRUCTOR_TOMBSTONES=1)
 
 	set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -DDEBUG_LUA")
-	set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /MANIFEST:NO")
+	set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /MANIFEST:NO /ENTRY:mainCRTStartup")
 	set(CMAKE_EXE_LINKER_FLAGS_DEBUG "${CMAKE_EXE_LINKER_FLAGS_DEBUG} /NODEFAULTLIB:MSVCRT")
 
 # -DNDEBUG is automatically added to all release build types, so manually remove this define from the related variables
@@ -539,18 +544,9 @@ if(ENABLE_GAME OR ENABLE_TESTS)
 	find_package(VorbisFile REQUIRED)
 	find_package(PkgConfig REQUIRED)
 	find_package(Fontconfig REQUIRED)
-	find_package(SDL2 2.0.18 REQUIRED)
-	if(NOT MSVC)
-		# for everything else, use pkgconfig
-		# SDL2_image and SDL2_mixer don't seem to have any cmake configuration available at all
-		pkg_check_modules(SDL2IMAGE REQUIRED SDL2_image>=2.0.2)
-		pkg_check_modules(SDL2MIXER REQUIRED SDL2_mixer>=2.0.0)
-	else()
-		# for MSVC, vcpkg builds and provides custom SDL2-related modules for cmake to use, so use those
-		# this also fixes the issue with our previous FindSDL2* scripts incorrectly using the Release version of these libs instead of the Debug version
-		find_package(SDL2_image CONFIG REQUIRED)
-		find_package(SDL2_mixer CONFIG REQUIRED)
-	endif()
+	find_package(SDL3 REQUIRED CONFIG REQUIRED COMPONENTS SDL3)
+	find_package(SDL3_image CONFIG REQUIRED)
+	find_package(SDL3_mixer CONFIG REQUIRED)
 	pkg_check_modules(CAIRO REQUIRED cairo>=1.10)
 	pkg_check_modules(PANGOCAIRO REQUIRED pangocairo>=1.50.0)
 	pkg_check_modules(PANGO REQUIRED pango>=1.50.0)
@@ -623,9 +619,19 @@ if(ENABLE_APPDATA_FILE AND ENABLE_GAME)
 endif()
 
 if(ENABLE_SERVER AND FIFO_DIR)
-	install(CODE "execute_process(COMMAND ${CMAKE_COMMAND} -E make_directory \$ENV{DESTDIR}/${FIFO_DIR})")
+	# Copy and remove the slash at the end, if it exists
+	string(REGEX REPLACE "/$" "" DEST_FIFO_DIR "$ENV{DESTDIR}")
+
+	# Copy and remove the slash on the beginning, if it exists
+	string(REGEX REPLACE "^/" "" TEMP_FIFO_DIR "${FIFO_DIR}")
+
+	# Combine and build destination directory
+	set(DEST_FIFO_DIR "${DEST_FIFO_DIR}/${TEMP_FIFO_DIR}")
+	message("-- Setting DEST_FIFO_DIR: ${DEST_FIFO_DIR}")
+
+	install(CODE "execute_process(COMMAND ${CMAKE_COMMAND} -E make_directory ${DEST_FIFO_DIR})")
 	if(SERVER_UID AND SERVER_GID)
-		install(CODE "execute_process(COMMAND chown ${SERVER_UID}:${SERVER_GID} \$ENV{DESTDIR}/${FIFO_DIR})")
+		install(CODE "execute_process(COMMAND chown ${SERVER_UID}:${SERVER_GID} ${DEST_FIFO_DIR})")
 	endif()
 endif()
 

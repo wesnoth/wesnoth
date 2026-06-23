@@ -73,6 +73,11 @@ public:
 		pango_attr_list_splice(target, attributes_, 0, 0);
 	}
 
+	void splice_into(const font::attribute_list& target, const unsigned attr_start = 0) const
+	{
+		pango_attr_list_splice(attributes_, target.attributes_, attr_start, 0);
+	}
+
 private:
 	PangoAttrList* attributes_;
 };

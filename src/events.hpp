@@ -15,18 +15,23 @@
 
 #pragma once
 
-#include <SDL2/SDL_events.h>
+#include <SDL3/SDL_events.h>
 #include <vector>
 #include <list>
 #include <functional>
 
+#ifdef _WIN32
+// Win32 API forward declaration (full definition in WinUser.h)
+typedef struct tagMSG MSG;
+#endif
+
 //our user-defined double-click event type
-#define TIMER_EVENT (SDL_USEREVENT + 1)
-#define HOVER_REMOVE_POPUP_EVENT (SDL_USEREVENT + 2)
-#define DRAW_EVENT (SDL_USEREVENT + 3)
-#define CLOSE_WINDOW_EVENT (SDL_USEREVENT + 4)
-#define SHOW_HELPTIP_EVENT (SDL_USEREVENT + 5)
-#define INVOKE_FUNCTION_EVENT (SDL_USEREVENT + 6)
+#define TIMER_EVENT (SDL_EVENT_USER + 1)
+#define HOVER_REMOVE_POPUP_EVENT (SDL_EVENT_USER + 2)
+#define DRAW_EVENT (SDL_EVENT_USER + 3)
+#define CLOSE_WINDOW_EVENT (SDL_EVENT_USER + 4)
+#define SHOW_HELPTIP_EVENT (SDL_EVENT_USER + 5)
+#define INVOKE_FUNCTION_EVENT (SDL_EVENT_USER + 6)
 
 namespace events
 {
@@ -191,6 +196,23 @@ bool is_touch(const SDL_MouseMotionEvent& event);
 
 /** Discards all input events. */
 void discard_input();
+
+#ifdef _WIN32
+/**
+ * Callback passed to SDL_SetWindowsMessageHook.
+ *
+ * Handles anything which interacts with the Windows event loop.
+ * Currently, this is limited to interactions with taskbar toast
+ * notifications.
+ *
+ * @param userdata    Arbitrary userdata passed to SDL_SetWindowsMessageHook.
+ * @param msg         A pointer to a Win32 event structure to process.
+ *
+ * @returns           Whether the Windows event loop should continue
+ *                    processing this message.
+ */
+bool handle_windows_message(void* userdata, MSG* msg);
+#endif
 
 }
 

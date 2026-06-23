@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-02-25 19:03-0600\n"
-"PO-Revision-Date: 2012-01-15 15:29+0200\n"
+"POT-Creation-Date: 2026-06-22 22:15-0500\n"
+"PO-Revision-Date: 2026-05-02 19:18+0200\n"
 "Last-Translator: Jarkko Patteri <jarkkopatteri@gmail.com>\n"
 "Language-Team: Finnish <http://wiki.wesnoth.org/FinnishTranslation>\n"
 "Language: fi\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 1.2\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #. [brush]: id=brush-1
 #: data/core/editor/brushes.cfg:6
@@ -41,10 +41,8 @@ msgstr "Heksalinja luode–kaakko"
 
 #. [brush]: id=brush-sw-ne
 #: data/core/editor/brushes.cfg:63
-#, fuzzy
-#| msgid "Hex Line NW-SE"
 msgid "Hex Line SW-NE"
-msgstr "Heksalinja luode–kaakko"
+msgstr "Heksalinja lounas–koillinen"
 
 #. [editor_group]: id=all
 #: data/core/editor/terrain-groups.cfg:11
@@ -79,7 +77,7 @@ msgstr "metsä"
 #. [editor_group]: id=fall
 #: data/core/editor/terrain-groups.cfg:52
 msgid "fall"
-msgstr ""
+msgstr "putous"
 
 #. [editor_group]: id=frozen
 #: data/core/editor/terrain-groups.cfg:59
@@ -124,55 +122,53 @@ msgstr "erikoinen"
 #. [editor_group]: id=elevation
 #: data/core/editor/terrain-groups.cfg:115
 msgid "elevation"
-msgstr ""
+msgstr "korkeus"
 
 #. [editor_times]: id=empty
 #. Describes a scenario in the editor that has not set a time of day schedule
 #: data/core/editor/time-of-day.cfg:6
 msgid "time of day^None"
-msgstr ""
+msgstr "Ei mitään"
 
 #. [editor_times]: id=test
 #: data/core/editor/time-of-day.cfg:11
 msgid "Test"
-msgstr ""
+msgstr "Testi"
 
 #. [editor_times]: id=default
 #: data/core/editor/time-of-day.cfg:22
 msgid "Default"
-msgstr ""
+msgstr "Oletus"
 
 #. [editor_times]: id=summer
 #: data/core/editor/time-of-day.cfg:28
 msgid "Summer"
-msgstr ""
+msgstr "Kesä"
 
 #. [editor_times]: id=winter
 #: data/core/editor/time-of-day.cfg:34
 msgid "Winter"
-msgstr ""
+msgstr "Talvi"
 
 #. [editor_times]: id=24
 #: data/core/editor/time-of-day.cfg:60
 msgid "24 Hour Schedule"
-msgstr ""
+msgstr "24 tunnin aikataulu"
 
 #. [editor_times]: id=after_the_fall
 #: data/core/editor/time-of-day.cfg:66
 msgid "After the Fall"
-msgstr ""
+msgstr "Syksyn jälkeen"
 
 #. [editor_group]: id=urban_jungle
 #: data/internal/Urban_Jungle/terrain-groups.cfg:5
 msgid "Urban Jungle (Internal)"
-msgstr ""
+msgstr "Urbaaniviidakko (sisäinen)"
 
 #. [theme]: id=editor
 #: data/themes/editor.cfg:11
-#, fuzzy
-#| msgid "Quit Editor"
 msgid "theme^Editor"
-msgstr "Sulje editori"
+msgstr "Editori"
 
 #. [menu]: id=menu-editor-file, type=turbo
 #: data/themes/editor.cfg:61
@@ -182,7 +178,7 @@ msgstr "Tiedosto"
 #. [menu]: id=menu-editor-recent
 #: data/themes/editor.cfg:72
 msgid "Load Recent"
-msgstr ""
+msgstr "Lataa viimeisin"
 
 #. [menu]: id=menu-editor-map
 #: data/themes/editor.cfg:80
@@ -192,14 +188,12 @@ msgstr "Kartta"
 #. [menu]: id=menu-unit-facing
 #: data/themes/editor.cfg:88
 msgid "Unit Facing"
-msgstr ""
+msgstr "Yksikön suunta"
 
 #. [menu]: id=menu-editor-transitions
 #: data/themes/editor.cfg:94
-#, fuzzy
-#| msgid "Delay transition updates"
 msgid "Transition Update"
-msgstr "Viivytä siirtymisen päivityksiä"
+msgstr "Siirtymisen päivitys"
 
 #. [menu]: id=menu-editor-window
 #: data/themes/editor.cfg:101
@@ -209,32 +203,32 @@ msgstr "Ikkuna"
 #. [menu]: id=menu-editor-addon
 #: data/themes/editor.cfg:110
 msgid "Add-on"
-msgstr ""
+msgstr "Lisäosa"
 
 #. [menu]: id=menu-editor-areas
 #: data/themes/editor.cfg:119
 msgid "Areas"
-msgstr ""
+msgstr "Alueet"
 
 #. [menu]: id=menu-editor-local-time
 #: data/themes/editor.cfg:127
 msgid "Assign Local Time"
-msgstr ""
+msgstr "Määritä paikallinen aika"
 
 #. [menu]: id=menu-editor-local-schedule
 #: data/themes/editor.cfg:133
 msgid "Assign Local Time Schedule"
-msgstr ""
+msgstr "Määritä paikallinen aikataulu"
 
 #. [menu]: id=menu-editor-unit
 #: data/themes/editor.cfg:141
 msgid "Unit"
-msgstr ""
+msgstr "Yksikkö"
 
 #. [menu]: id=menu-editor-side
 #: data/themes/editor.cfg:151
 msgid "Side"
-msgstr ""
+msgstr "Osapuoli"
 
 #. [label]: id=villages-icon
 #: data/themes/editor.cfg:168
@@ -244,42 +238,42 @@ msgstr "kylää"
 #. [label]: id=units-icon
 #: data/themes/editor.cfg:184
 msgid "units"
-msgstr ""
+msgstr "yksikköä"
 
 #. [menu]: id=switch_time
 #: data/themes/editor.cfg:479
 msgid "Time Schedule Menu"
-msgstr ""
+msgstr "Aikataulun valikko"
 
 #. [menu]: id=menu-playlist
-#: data/themes/editor.cfg:490
+#: data/themes/editor.cfg:489
 msgid "Playlist"
-msgstr ""
+msgstr "Soittolista"
 
 #. [menu]: id=menu-editor-schedule
-#: data/themes/editor.cfg:496
+#: data/themes/editor.cfg:495
 msgid "Assign Time Schedule"
-msgstr ""
+msgstr "Määritä aikataulu"
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:58
 msgid "Identifier: "
-msgstr ""
+msgstr "Tunniste: "
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:60
 msgid "Name: "
-msgstr ""
+msgstr "Nimi: "
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:62
 msgid "Type: "
-msgstr ""
+msgstr "Tyyppi: "
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:63
 msgid "Level: "
-msgstr ""
+msgstr "Taso: "
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:64
 msgid "Cost: "
-msgstr ""
+msgstr "Hinta: "
 
 #: src/editor/controller/editor_controller.cpp:204
 msgid "Fatal error"
@@ -290,10 +284,6 @@ msgid "Do you really want to quit?"
 msgstr "Haluatko todella lopettaa?"
 
 #: src/editor/controller/editor_controller.cpp:236
-#, fuzzy
-#| msgid ""
-#| "Do you really want to quit? Changes in the map since the last save will "
-#| "be lost."
 msgid ""
 "Do you really want to quit? Changes to this map since the last save will be "
 "lost."
@@ -315,85 +305,75 @@ msgstr "Editorin vuorokaudenaikoja ei löytynyt."
 
 #: src/editor/controller/editor_controller.cpp:886
 msgid "Add-on Files"
-msgstr ""
+msgstr "Lisäosan tiedostot"
 
 #: src/editor/controller/editor_controller.cpp:899
 msgid "Opening files is not supported, contact your packager"
-msgstr ""
+msgstr "Tiedostojen avaamista ei tueta, ota yhteys paketoijaan"
 
 #: src/editor/controller/editor_controller.cpp:1343
 msgid "Change Unit ID"
-msgstr ""
+msgstr "Vaihda yksikön tunnusta"
 
 #: src/editor/controller/editor_controller.cpp:1344
 msgid "ID:"
-msgstr ""
+msgstr "Tunnus:"
 
 #: src/editor/controller/editor_controller.cpp:1360
 msgid "Rename Unit"
-msgstr ""
+msgstr "Nimeä yksikkö uudelleen"
 
 #: src/editor/controller/editor_controller.cpp:1361
 msgid "Name:"
-msgstr ""
+msgstr "Nimi:"
 
 #: src/editor/editor_display.cpp:170
 msgid "<span color='#66ff00'><span face='DejaVuSans'>✔</span> $msg</span>"
-msgstr ""
+msgstr "<span color='#66ff00'><span face='DejaVuSans'>✔</span> $msg</span>"
 
 #: src/editor/editor_display.cpp:172
 msgid "<span color='red'><span face='DejaVuSans'>✘</span> $msg</span>"
-msgstr ""
+msgstr "<span color='red'><span face='DejaVuSans'>✘</span> $msg</span>"
 
 #: src/editor/map/context_manager.cpp:217
-#, fuzzy
-#| msgid "Map loaded from scenario"
 msgid "Load Map or Scenario"
-msgstr "Kartta skenaariosta ladattu"
+msgstr "Lataa kartta tai skenaario"
 
 #: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1141
-#, fuzzy
-#| msgid "(New Map)"
 msgid "New Map"
-msgstr "(uusi kartta)"
+msgstr "Uusi kartta"
 
 #: src/editor/map/context_manager.cpp:326 src/editor/map/map_context.cpp:1141
-#, fuzzy
-#| msgid "(New Map)"
 msgid "New Scenario"
-msgstr "(uusi kartta)"
+msgstr "Uusi skenaario"
 
 #: src/editor/map/context_manager.cpp:371
 msgid "No Recent Files"
-msgstr ""
+msgstr "Ei viimeaikaisia tiedostoja"
 
 #: src/editor/map/context_manager.cpp:399
-#, fuzzy
-#| msgid "(New Map)"
 msgid "Unnamed Area"
-msgstr "(uusi kartta)"
+msgstr "Nimeämätön alue"
 
 #: src/editor/map/context_manager.cpp:422
-#, fuzzy
-#| msgid "(New Map)"
 msgid "New Side"
-msgstr "(uusi kartta)"
+msgstr "Uusi osapuoli"
 
 #: src/editor/map/context_manager.cpp:461
 msgid "Apply Mask"
-msgstr ""
+msgstr "Käytä maskia"
 
 #: src/editor/map/context_manager.cpp:470
 msgid "Error loading mask"
-msgstr "Maskin lataus epäonnistui."
+msgstr "Maskin lataaminen epäonnistui"
 
 #: src/editor/map/context_manager.cpp:490
 msgid "Identifier:"
-msgstr ""
+msgstr "Tunniste:"
 
 #: src/editor/map/context_manager.cpp:490
 msgid "Rename Area"
-msgstr ""
+msgstr "Nimeä alue uudelleen"
 
 #: src/editor/map/context_manager.cpp:504
 msgid "Choose Target Map"
@@ -402,11 +382,9 @@ msgstr "Valitse kohdekartta"
 #: src/editor/map/context_manager.cpp:513
 #: src/editor/map/context_manager.cpp:964
 msgid "Error loading map"
-msgstr "Kartan lataus epännistui."
+msgstr "Kartan lataaminen epäonnistui"
 
 #: src/editor/map/context_manager.cpp:687
-#, fuzzy
-#| msgid "Save the Map As"
 msgid "Save Map As"
 msgstr "Tallenna kartta nimellä"
 
@@ -417,33 +395,25 @@ msgid "Error"
 msgstr "Virhe"
 
 #: src/editor/map/context_manager.cpp:705
-#, fuzzy
-#| msgid "Do you really want to quit?"
 msgid "Do you really want to save a map in the scenarios folder?"
-msgstr "Haluatko todella lopettaa?"
+msgstr "Haluatko todella tallentaa kartan skenaariot-kansioon?"
 
 #: src/editor/map/context_manager.cpp:713
 #: src/editor/map/context_manager.cpp:905
 msgid "This map is already open."
-msgstr "Valittu kartta on jo avoinna."
+msgstr "Tämä kartta on jo avattu."
 
 #: src/editor/map/context_manager.cpp:736
-#, fuzzy
-#| msgid "Save the Map As"
 msgid "Save Scenario As"
-msgstr "Tallenna kartta nimellä"
+msgstr "Tallenna skenaario nimellä"
 
 #: src/editor/map/context_manager.cpp:754
-#, fuzzy
-#| msgid "Do you really want to quit?"
 msgid "Do you really want to save a scenario in the maps folder?"
-msgstr "Haluatko todella lopettaa?"
+msgstr "Haluatko todella tallentaa skenaarion kartat-kansioon?"
 
 #: src/editor/map/context_manager.cpp:762
-#, fuzzy
-#| msgid "This map is already open."
 msgid "This scenario is already open."
-msgstr "Valittu kartta on jo avoinna."
+msgstr "Valittu skenaario on jo avattu."
 
 #: src/editor/map/context_manager.cpp:779
 msgid "No random map generators found."
@@ -459,70 +429,52 @@ msgid "Unsaved Changes"
 msgstr "Tallentamattomat muutokset"
 
 #: src/editor/map/context_manager.cpp:813
-#, fuzzy
-#| msgid ""
-#| "Do you want to discard all changes you made to the map since the last "
-#| "save?"
 msgid "Do you want to discard all changes made to the map since the last save?"
 msgstr ""
 "Haluatko hävittää kaikki viime tallennuksen jälkeen karttaan tekemäsi "
 "muutokset?"
 
 #: src/editor/map/context_manager.cpp:866
-#, fuzzy
-#| msgid "Map saved."
 msgid "Scenario saved."
-msgstr "Kartta tallennettu."
+msgstr "Skenaario tallennettu."
 
 #: src/editor/map/context_manager.cpp:881
-#, fuzzy
-#| msgid "Map saved."
 msgid "Map saved"
-msgstr "Kartta tallennettu."
+msgstr "Kartta tallennettu"
 
 #: src/editor/map/context_manager.cpp:956
 msgid "Loaded embedded map data"
-msgstr "Ladattu sisäinen karttadata."
+msgstr "Ladattu sisäinen karttadata"
 
 #: src/editor/map/context_manager.cpp:957
 #: src/editor/map/context_manager.cpp:960
 msgid "Map loaded from scenario"
-msgstr "Kartta skenaariosta ladattu"
+msgstr "Kartta ladattu skenaariosta"
 
 #: src/editor/map/context_manager.cpp:960
-#, fuzzy
-#| msgid ""
-#| "Loaded referenced map file:\n"
-#| "$new"
 msgid "Loaded referenced map file:"
-msgstr ""
-"Ladattu viitattu karttatiedosto:\n"
-"$new"
+msgstr "Ladattu viitattu karttatiedosto:"
 
 #: src/editor/map/editor_map.cpp:110
 #: src/editor/palette/location_palette.cpp:118
-#, fuzzy
-#| msgid "Player $player_number"
 msgid "Player $side_num"
-msgstr "Pelaaja $player_number"
+msgstr "Pelaaja $side_num"
 
 #: src/editor/map/editor_map.cpp:266
 msgid "The size of the target map is different from the current map"
-msgstr "Kohdekartta on eri kokoinen kuin tämänhetkinen kartta."
+msgstr "Kohdekartta on eri kokoinen kuin tämänhetkinen kartta"
 
 #: src/editor/map/map_context.cpp:188
 msgid "File not found"
 msgstr "Tiedostoa ei löydy"
 
 #: src/editor/map/map_context.cpp:195
-#, fuzzy
-#| msgid "Empty map file"
 msgid "Empty file"
-msgstr "Tyhjä karttatiedosto"
+msgstr "Tyhjä tiedosto"
 
 #: src/editor/map/map_context.cpp:204
 msgid "File does not have .map, .cfg, or .mask extension"
-msgstr ""
+msgstr "Tiedostolla ei ole päätettä .map, .cfg, tai .mask"
 
 #: src/editor/map/map_context.cpp:227
 msgid ""
@@ -530,50 +482,41 @@ msgid ""
 "\n"
 "Attempting to load only the map."
 msgstr ""
+"Skenaarion lataus epäonnistui: $error\n"
+"\n"
+"Yritetään ladata vain kartta."
 
 #: src/editor/map/map_context.cpp:253
-#, fuzzy
-#| msgid ""
-#| "The map file looks like a scenario, but the map_data value does not point "
-#| "to an existing file"
 msgid ""
 "The file looks like a scenario, but the map_data attribute does not point to "
 "an existing file"
 msgstr ""
-"Karttatiedosto näyttää skenaariolta, mutta map_data -arvo ei viittaa "
-"olemassaolevaan tiedostoon"
+"Tiedosto näyttää skenaariolta, mutta arvo map_data ei viittaa olemassa "
+"olevaan tiedostoon"
 
 #: src/editor/map/map_context.cpp:268
-#, fuzzy
-#| msgid ""
-#| "The map file looks like a scenario, but the map_data value does not point "
-#| "to an existing file"
 msgid ""
 "The file looks like a scenario, but the map_file attribute does not point to "
 "an existing file"
 msgstr ""
-"Karttatiedosto näyttää skenaariolta, mutta map_data -arvo ei viittaa "
-"olemassaolevaan tiedostoon"
+"Tiedosto näyttää skenaariolta, mutta arvo map_file ei viittaa olemassa "
+"olevaan tiedostoon"
 
 #: src/editor/map/map_context.cpp:448
 msgid "Confirm"
-msgstr ""
+msgstr "Vahvista"
 
 #: src/editor/map/map_context.cpp:835 src/editor/map/map_context.cpp:875
-#, fuzzy
-#| msgid "Could not save the map: $msg"
 msgid "Could not save time schedule: $msg"
-msgstr "Karttaa ei voitu tallentaa: $msg"
+msgstr "Aikataulua ei voitu tallentaa: $msg"
 
 #: src/editor/map/map_context.cpp:869
 msgid "Time schedule saved."
-msgstr ""
+msgstr "Aikataulu tallennettu."
 
 #: src/editor/map/map_context.cpp:915
-#, fuzzy
-#| msgid "Could not save the map: $msg"
 msgid "Could not save the scenario: $msg"
-msgstr "Karttaa ei voitu tallentaa: $msg"
+msgstr "Skenaariota ei voitu tallentaa: $msg"
 
 #: src/editor/map/map_context.cpp:946
 msgid "Could not save into scenario"
@@ -585,7 +528,7 @@ msgstr "Karttaa ei voitu tallentaa: $msg"
 
 #: src/editor/palette/editor_palettes.cpp:47
 msgid "(Unknown Group)"
-msgstr ""
+msgstr "(Tuntematon ryhmä)"
 
 #: src/editor/palette/editor_palettes.cpp:300
 msgid "(non-core)"
@@ -593,58 +536,58 @@ msgstr "(ei-ydin)"
 
 #: src/editor/palette/editor_palettes.cpp:301
 msgid "Will not work in game without extra care."
-msgstr "Ei tule toimimaan pelissä ilman ylimääräistä huolenpitoa."
+msgstr "Ei toimi pelissä ilman lisähuoltoa."
 
 #: src/editor/palette/item_palette.cpp:33
 msgid "Left-click: Place item $item | Right-click to remove"
-msgstr ""
+msgstr "Vasen klikkaus: Sijoita kohde $item | Poista hiiren oikealla"
 
 #: src/editor/palette/location_palette.cpp:247
 msgid "Go To"
-msgstr ""
+msgstr "Siirry"
 
 #: src/editor/palette/location_palette.cpp:254
 msgid "Add"
-msgstr ""
+msgstr "Lisää"
 
 #: src/editor/palette/location_palette.cpp:256
 msgid "New Location Identifier"
-msgstr ""
+msgstr "Uusi paikkatunniste"
 
 #: src/editor/palette/location_palette.cpp:264
 msgid "Invalid location id"
-msgstr ""
+msgstr "Viallinen paikkatunniste"
 
 #: src/editor/palette/location_palette.cpp:271
 msgid "Delete"
-msgstr ""
+msgstr "Poista"
 
 #: src/editor/palette/terrain_palettes.cpp:224
 msgid "Left-click: "
-msgstr ""
+msgstr "Vasen klikkaus: "
 
 #: src/editor/palette/terrain_palettes.cpp:225
 msgid "Right-click: "
-msgstr ""
+msgstr "Oikea klikkaus: "
 
 #. TRANSLATORS: Similar behavior applies to shift + right-click. This message specifies left-click
 #. because the logic of whether to show the "overlay only" or "base only" version depends on the
 #. terrain currently selected for the left button.
 #: src/editor/palette/terrain_palettes.cpp:230
 msgid "Shift + left-click: paint overlay layer only"
-msgstr ""
+msgstr "Shift + vasen klikkaus: maalaa vain päällyskerros"
 
 #: src/editor/palette/terrain_palettes.cpp:232
 msgid "Shift + left-click: paint base layer only"
-msgstr ""
+msgstr "Shift + vasen klikkaus: maalaa vain pohjakerros"
 
 #: src/editor/palette/terrain_palettes.cpp:235
 msgid "Cmd + click: copy terrain"
-msgstr ""
+msgstr "Cmd + klikkaus: kopioi maasto"
 
 #: src/editor/palette/terrain_palettes.cpp:237
 msgid "Ctrl + click: copy terrain"
-msgstr ""
+msgstr "Ctrl + klikkaus: kopioi maasto"
 
 #, fuzzy
 #~| msgid "Choose player"

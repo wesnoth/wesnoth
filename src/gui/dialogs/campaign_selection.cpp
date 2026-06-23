@@ -354,7 +354,13 @@ void campaign_selection::pre_show()
 	connect_signal_mouse_left_click(find_widget<button>("proceed"),
 		std::bind(&campaign_selection::proceed, this));
 
+#ifdef __IPHONEOS__
+	// On iOS, opening the campaign browser should not immediately summon the
+	// software keyboard just because the optional filter field exists.
+	keyboard_capture(&tree);
+#else
 	keyboard_capture(filter);
+#endif
 	add_to_keyboard_chain(&tree);
 
 	/***** Setup campaign details. *****/

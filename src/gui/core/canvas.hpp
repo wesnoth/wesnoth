@@ -53,6 +53,8 @@ public:
 	class shape
 	{
 	public:
+		shape() = default;
+
 		explicit shape(const config& cfg) : immutable_(cfg["immutable"].to_bool(false))
 		{
 		}
@@ -80,7 +82,7 @@ public:
 		 * If this is true, this shape will not be removed from the canvas even if
 		 * the canvas's content is reset.
 		 */
-		bool immutable_;
+		bool immutable_ = false;
 	};
 
 	explicit canvas(const config& cfg);
@@ -125,6 +127,12 @@ public:
 	{
 		clear_shapes(force);
 		parse_cfg(cfg);
+	}
+
+	void set_shapes(std::vector<std::unique_ptr<shape>>&& shapes, const bool force = false)
+	{
+		clear_shapes(force);
+		shapes_ = std::move(shapes);
 	}
 
 	/**

@@ -274,13 +274,33 @@ bool file_tree_checksum::operator==(const file_tree_checksum &rhs) const
 		modified == rhs.modified;
 }
 
-std::string get_map_file(const std::string& name) {
-	utils::optional<std::string> map_location { filesystem::get_wml_location(name) };
-	if(!map_location) {
-		// Consult [binary_path] for maps as well.
-		map_location = filesystem::get_binary_file_location("maps", name);
+namespace implementation
+{
+std::string get_file_by_type(const std::string& name, const std::string& type)
+{
+	if(utils::optional map_location = get_wml_location(name)) {
+		return *map_location;
 	}
-	return map_location ? map_location.value() : filesystem::get_legacy_editor_dir() + "/maps/" + base_name(name);
+
+	// Consult [binary_path] as well.
+	if(utils::optional map_location = get_binary_file_location(type, name)) {
+		return *map_location;
+	}
+
+	// TODO: should really be using fs::path
+	return get_legacy_editor_dir() + "/" + type + "/" + base_name(name);
+}
+
+} // implementation
+
+std::string get_map_file(const std::string& name)
+{
+	return implementation::get_file_by_type(name, "maps");
+}
+
+std::string get_scenario_file(const std::string& name)
+{
+	return implementation::get_file_by_type(name, "scenarios");
 }
 
 std::string read_map(const std::string& name)
@@ -290,21 +310,7 @@ std::string read_map(const std::string& name)
 
 std::string read_scenario(const std::string& name)
 {
-	std::string res;
-	auto file_location = get_wml_location(name);
-	if(!file_location) {
-		// Consult [binary_path] for scenarios as well.
-		file_location = get_binary_file_location("scenarios", name);
-	}
-	if(file_location) {
-		res = read_file(file_location.value());
-	}
-
-	if(res.empty()) {
-		res = read_file(get_legacy_editor_dir() + "/scenarios/" + base_name(name));
-	}
-
-	return res;
+	return read_file(get_scenario_file(name));
 }
 
 static void get_file_tree_checksum_internal(const std::string& path, file_tree_checksum& res)

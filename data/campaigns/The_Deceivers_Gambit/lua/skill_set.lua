@@ -62,7 +62,7 @@ local skill_set = {
             id          = "skill_chill_touch",
             label       = label(_"Chill Touch"),
             image       = "icons/chill-touch.png",
-            description = header_attack().._"Melee 6x3 cold, <i><ref dst='weaponspecial_slows'>slows</ref></i>. Replaces your default melee attack.",
+            description = header_attack().._"Melee 6x3 cold, <i><ref dst='weaponspecial_slow'>slows</ref></i>. Replaces your default melee attack.",
         },
         -------------------------
         -- LEVITATE
@@ -71,8 +71,8 @@ local skill_set = {
             id          = "skill_levitate",
             label       = label(_"Levitate"),
             image       = "icons/levitate.png",
-            description = header_spell().._"Spend <span color='#00bbe6' style='italic'>8 XP</span> to gain <i>flight</i> and the <i><ref dst='ability_skirmisher'>skirmisher</ref></i> ability until the start of your next turn or until cancelled.",
-            xp_cost=8, --XP=8 is also used in S04
+            description = header_spell().._"Spend <span color='#00bbe6' style='italic'>4 XP</span> to gain <i>flight</i> and the <i><ref dst='ability_skirmisher'>skirmisher</ref></i> ability until the start of your next turn or until cancelled.",
+            xp_cost=4, --XP=4 is also used in S04
         },
         -------------------------
         -- FIND FAMILIAR
@@ -81,7 +81,7 @@ local skill_set = {
             id          = "skill_find_familiar",
             label       = label(_"Find Familiar"),
             image       = "icons/find-familiar.png",
-            description = header_passive().._"Begin each scenario with your trusty pet raven.\n               Your familiar’s level and XP persist across scenarios, but reset if it dies.",
+            description = header_passive().._"Begin each scenario with your trusty pet <i><ref dst='unit_Raven'>Raven</ref></i>.\n               Your familiar’s level and XP persist across scenarios, but reset if it dies.",
         },
         -------------------------
         -- MNEMONIC
@@ -221,7 +221,7 @@ local skill_set = {
             id          = "skill_fireball4",
             label       = label(_"Fireball"),
             image       = "attacks/fireball.png",
-            description = header_attack().._"Ranged 18x4 fire, <i><ref dst='weaponspecial_magical'>magical</ref></i>.",
+            description = header_attack().._"Ranged 17x4 fire, <i><ref dst='weaponspecial_magical'>magical</ref></i>.",
         },
         -------------------------
         -- LIGHTNING
@@ -230,7 +230,7 @@ local skill_set = {
             id          = "skill_lightning",
             label       = label(_"Chain Lightning"),
             image       = "attacks/lightning.png",
-            description = header_attack().._"Ranged 14x4 fire, <i><ref dst='weaponspecial_magical'>magical</ref></i>. If this attack kills an enemy, you may attack again.",
+            description = header_attack().._"Ranged 14x3 fire, <i><ref dst='weaponspecial_magical'>magical</ref></i>. This attack can be used multiple times on offense, but\n              consecutive uses strike one fewer time.",
         },
         -------------------------
         -- TIME DILATION

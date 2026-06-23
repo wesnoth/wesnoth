@@ -4,14 +4,15 @@
 #  Rhonda D'Vine <rhonda@deb.at>, 2006, 2008 - 2009, 2011, 2014, 2018, 2021
 #  HaJo Gurt <gurt@gmx.de>, 2007
 #  Tobias 'SonIcco' Schönau <tobias.schoenau@eagerbyte.com>, 2009
-#  Johannes Löhnert <loehnert.kde@gmx.de>, 2024
+#  Wuzzy <Wuzzy@disroot.org>, 2024.
+#  Johannes Löhnert <loehnert.kde@gmx.de>, 2026
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-01-20 17:31 UTC\n"
-"PO-Revision-Date: 2024-12-03 15:26+0100\n"
-"Last-Translator: Wuzzy <Wuzzy@disroot.org>\n"
+"POT-Creation-Date: 2026-06-23 03:15 UTC\n"
+"PO-Revision-Date: 2026-04-17 19:12+0100\n"
+"Last-Translator: Johannes Löhnert <loehnert.kde@gmx.de>\n"
 "Language-Team: irc://irc.libera.chat/#wesnoth-de\n"
 "Language: de_DE\n"
 "MIME-Version: 1.0\n"
@@ -75,18 +76,18 @@ msgid ""
 "<i>Heir to the Throne, Classic</i> optionally includes the old <i>Battle "
 "Training</i> tutorial. Play <i>Battle Training</i>?"
 msgstr ""
+"<i>Der Thronerbe, klassisch</i> enthält optional das alte <i>Kampftraining</"
+"i>-Tutorial. Möchtet Ihr <i>Kampftraining</i> spielen?"
 
 #. [option]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:113
 msgid "Yes"
-msgstr ""
+msgstr "Ja"
 
 #. [option]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:118
-#, fuzzy
-#| msgid "Note"
 msgid "No"
-msgstr "Anmerkung"
+msgstr "Nein"
 
 #. [objectives]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:149
@@ -866,7 +867,7 @@ msgid "Defenses"
 msgstr "Verteidigen"
 
 #. [hint_message]
-#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1082
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1081
 msgid ""
 "Whenever one of your units is selected, you’ll see varying percentages as "
 "you move the mouse over the map. The higher the percentage, the more "
@@ -886,23 +887,23 @@ msgstr ""
 "sich ihr Gegner befindet."
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1094
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1093
 msgid "Agh! This training is too much for me..."
 msgstr "Agh! Dieses Training ist zu hart für mich…"
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1095
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1094
 msgid "female^Agh! This training is too much for me..."
 msgstr "Agh! Dieses Training ist zu hart für mich…"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1131
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1130
 msgid "The quintain is destroyed, and I have gained more experience!"
 msgstr ""
 "Die Turnierpuppe ist zerstört und ich habe mehr Erfahrung dazugewonnen!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1136
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1135
 msgid ""
 "Yes, you gain experience through battle, especially by killing an opponent. "
 "Gain enough experience and you’ll become more powerful."
@@ -911,7 +912,7 @@ msgstr ""
 "Gegners. Gewinne genug Erfahrung und du wirst mächtiger."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1142
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1141
 msgid ""
 "Now, Konrad, I will leave you with more dummies to practice on! After that, "
 "we have real work to do..."
@@ -920,7 +921,7 @@ msgstr ""
 "denen du üben kannst! Anschließend haben wir ernsthafte Arbeit zu erledigen…"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1147
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1146
 msgid ""
 "Now, Li’sar, I will leave you with more dummies to practice on! After that, "
 "we have real work to do..."
@@ -929,12 +930,12 @@ msgstr ""
 "denen du üben kannst! Anschließend haben wir ernsthafte Arbeit zu erledigen…"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1209
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1208
 msgid "Note"
 msgstr "Anmerkung"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1211
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1210
 msgid ""
 "These dummies only attack if you are a single tile away. With care, you "
 "should be able to kill them one at a time."
@@ -944,7 +945,7 @@ msgstr ""
 "beseitigen."
 
 #. [message]: speaker=student
-#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1220
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1219
 msgid ""
 "Well, I think I know the basics. Onwards! Maybe I can fight in a real battle "
 "next?"
@@ -953,7 +954,7 @@ msgstr ""
 "Kenntnisse in einem richtigen Kampf erproben?"
 
 #. [message]: speaker=student
-#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1221
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1220
 msgid ""
 "female^Well, I think I know the basics. Onwards! Maybe I can fight in a real "
 "battle next?"
@@ -962,12 +963,12 @@ msgstr ""
 "Kenntnisse in einem richtigen Kampf erproben?"
 
 #. [hint_message]
-#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1236
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1235
 msgid "Victory"
 msgstr "Sieg"
 
 #. [hint_message]
-#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1237
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1236
 msgid ""
 "After your victory notice, the map will be grayed out to indicate that the "
 "scenario is over; this is called <i>linger mode</i>. You will still be able "
@@ -1334,7 +1335,7 @@ msgstr ""
 "LP geheilt – dies ist halb so viel wie in Dörfern. Die Schamanin erhält "
 "keine Erfahrung durch das Heilen, sondern ausschließlich im Kampf. Es lohnt "
 "sich jedoch ungemein Schamaninnen auf eine neue Stufe aufsteigen zu lassen – "
-"die Elfendruidin auf Stude 2 heilt soviel wie ein Dorf.\n"
+"die Elfendruidin auf Stufe 2 heilt soviel wie ein Dorf.\n"
 "\n"
 "Eine detaillierte Erklärung der Heilenfertigkeit kann in der Abteilung "
 "<i>Spielregeln</i> in der Hilfe eingesehen werden (erreichbar über "
@@ -2393,7 +2394,7 @@ msgstr "Arg! Wer wird Euch jetzt noch lehren, diese Orks zu besiegen…"
 #. [message]: speaker=Galdrad
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1504
 msgid "You have beaten the orcs! Well done."
-msgstr ""
+msgstr "Ihr habt die Orks besiegt! Gut gemacht."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1509
@@ -2407,7 +2408,7 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1519
 msgid "Now, continue onwards to play “Heir to the Throne, Classic”..."
-msgstr ""
+msgstr "Ihr könnt nun das Spiel in „Der Thronerbe, klassisch“ fortsetzen..."
 
 #. [unit_type]: id=Tutorial_Fighter, race=human
 #: data/campaigns/Heir_To_The_Throne_Classic/units/Tutorial_Fighter.cfg:4
@@ -2483,17 +2484,9 @@ msgstr ""
 "rückgängig zu machen, nützlich um Fehler zu korrigieren."
 
 #: data/campaigns/Heir_To_The_Throne_Classic/utils/tutorial_utils.cfg:128
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<big>Click a mouse button or press the spacebar to continue...</big>"
 msgid "Click a mouse button or press the spacebar to continue..."
 msgstr ""
-"\n"
-"\n"
-"<big>Klickt mit einer Maustaste oder drückt die Leertaste, um fortzufahren …"
-"</big>"
+"Klickt mit einer Maustaste oder drückt die Leertaste, um fortzufahren …"
 
 #, fuzzy
 #~| msgid "Tutorial"

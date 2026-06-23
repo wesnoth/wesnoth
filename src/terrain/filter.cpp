@@ -34,6 +34,7 @@
 #include "formula/function_gamestate.hpp"
 #include "scripting/game_lua_kernel.hpp"
 #include "units/unit_alignments.hpp"
+#include "utils/general.hpp"
 
 #include <boost/range/adaptor/transformed.hpp>
 

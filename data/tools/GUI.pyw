@@ -14,6 +14,19 @@
 # if we use the run_tool thread to do GUI stuff we obtain weird crashes
 # This happens because Tk is a single-thread GUI
 
+# TODO to add suppport for the new features in Tcl/Tk 9.0:
+# For Python 3.14, the Tcl/Tk version bundled on Windows is 8.6.15
+# For Python 3.15, it's likely that it'll be updated to 9.0 (it's already happening on MacOS)
+# Tcl/Tk 9.0 has several improvements over 8.5/8.6.
+# These are the ones that will need to be implemented for this script
+# * built-in themes and widgets are scaling-aware - finally!
+# * tk sysnotify - send a system notification when a script finishes running
+# * tk systray - maybe put an icon in the system tray, to show a balloon with the status and allow recalling the window?
+# * tk print - obviously add a "Print" button and allow printing the content of the text widget (tools output)
+# * ttk::progressbar option: -text - that would be useful for displaying percentages, but our tools just aren't designed for this
+# * ttk::combobox and ttk::entry options: -placeholder and -placeholderforeground - use in the text cells
+# * partial SVG support - icons will have to use SVG to make the interface scalable. The PNG icons will have to stay too for compatibility until Tk 8.6 is phased out
+
 import argparse
 import gettext
 import locale

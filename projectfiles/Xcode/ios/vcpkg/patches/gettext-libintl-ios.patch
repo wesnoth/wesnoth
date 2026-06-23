@@ -1,0 +1,18 @@
+diff --git a/portfile.cmake b/portfile.cmake
+index d3131a9f811..4ace0f0e35a 100644
+--- a/portfile.cmake
++++ b/portfile.cmake
+@@ -61,6 +61,13 @@ set(OPTIONS
+     ac_cv_path_XGETTEXT=false
+     ac_cv_prog_INTLBISON=false
+ )
++if(VCPKG_TARGET_IS_IOS)
++    list(APPEND OPTIONS
++        gt_cv_func_CFLocaleCopyPreferredLanguages=no
++        gt_cv_func_CFPreferencesCopyAppValue=no
++    )
++endif()
++
+ if(VCPKG_TARGET_IS_WINDOWS)
+     list(APPEND OPTIONS
+         # Avoid unnecessary tests.

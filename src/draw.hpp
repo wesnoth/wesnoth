@@ -35,7 +35,7 @@
 #include <array>
 #include <vector>
 
-#include <SDL2/SDL_render.h>
+#include <SDL3/SDL_render.h>
 
 struct color_t;
 
@@ -165,7 +165,7 @@ void line(int from_x, int from_y, int to_x, int to_y);
 void line(int from_x, int from_y, int to_x, int to_y, const color_t& c);
 
 /** Draw a set of points. */
-void points(const std::vector<::point>& points);
+void points(const std::vector<SDL_FPoint>& points);
 
 /** Draw a single point. */
 void point(int x, int y);
@@ -306,26 +306,8 @@ void tiled_highres(const texture& tex,
  * after mapping to the range [0,1]. A value of 255 will have no effect.
  *
  * @param tex   The texture to draw
- * @param dst   Where to draw the texture, in draw space
- * @param cTL   The colour modifier at the top-left corner
- * @param cTR   The colour modifier at the top-right corner
- * @param cBL   The colour modifier at the bottom-left corner
- * @param cBR   The colour modifier at the bottom-right corner
- * @param uvTL  The UV texture coordinate at the top-left corner
- * @param uvTR  The UV texture coordinate at the top-right corner
- * @param uvBL  The UV texture coordinate at the bottom-left corner
- * @param uvBR  The UV texture coordinate at the bottom-right corner
+ * @param verts The SDL_Vertex to use
  */
-void smooth_shaded(const texture& tex, const ::rect& dst,
-	const SDL_Color& cTL, const SDL_Color& cTR,
-	const SDL_Color& cBL, const SDL_Color& cBR,
-	const SDL_FPoint& uvTL, const SDL_FPoint& uvTR,
-	const SDL_FPoint& uvBL, const SDL_FPoint& uvBR
-);
-void smooth_shaded(const texture& tex, const ::rect& dst,
-	const SDL_Color& cTL, const SDL_Color& cTR,
-	const SDL_Color& cBL, const SDL_Color& cBR
-);
 void smooth_shaded(const texture& tex,
 	const std::array<SDL_Vertex, 4>& verts
 );

@@ -32,8 +32,8 @@
 #include "serialization/string_utils.hpp"
 #include "serialization/markup.hpp"
 #include "gettext.hpp"
+#include "utils/general.hpp"
 #include "utils/math.hpp"
-
 
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
@@ -232,7 +232,7 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 		return false;
 
 	if(filter.has_attribute("special")) {
-		deprecated_message("special=", DEP_LEVEL::PREEMPTIVE, {1, 17, 0}, "Please use special_id or special_type instead");
+		deprecated_message("special=", DEP_LEVEL::FOR_REMOVAL, {1, 21, 0}, "Please use special_id or special_type instead");
 	}
 
 	if(filter.has_attribute("special") || filter.has_attribute("special_id") || filter.has_attribute("special_type")) {
@@ -242,7 +242,7 @@ static bool matches_simple_filter(const attack_type & attack, const config & fil
 	}
 
 	if(filter.has_attribute("special_active")) {
-		deprecated_message("special_active=", DEP_LEVEL::PREEMPTIVE, {1, 17, 0}, "Please use special_id_active or special_type_active instead");
+		deprecated_message("special_active=", DEP_LEVEL::FOR_REMOVAL, {1, 21, 0}, "Please use special_id_active or special_type_active instead");
 	}
 
 	if (!filter_special_type_active.empty()) {
@@ -876,20 +876,19 @@ bool attack_type::special_active(const unit_ability_t& ab, AFFECTS whom) const
 	return context_->is_special_active(self, ab, whom);
 }
 
-
 active_ability_list attack_type::get_specials_and_abilities(const std::string& special) const
 {
 	auto ctx = fallback_context();
 	auto abil_list = context_->get_active_specials(*this, special);
 
-	// get a list of specials/"specials as abilities" that may potentially overwrite others
-	active_ability_list overwriters = overwrite_special_overwriter(abil_list);
-	if (!abil_list.empty() && !overwriters.empty()) {
-		// remove all abilities that would be overwritten
-		utils::erase_if(abil_list, [&](const active_ability& j) {
-			return (overwrite_special_checking(overwriters, j));
-			});
-	}
+	utils::sort_if(abil_list,[](const active_ability& i, const active_ability& j){
+		double l = i.ability().suppress_special_priority();
+		double r = j.ability().suppress_special_priority();
+		return l > r;
+	});
+	utils::erase_if(abil_list, [&](const active_ability& i) {
+		return (overwrite_special_checking(abil_list, i));
+	});
 	return abil_list;
 }
 /**

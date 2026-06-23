@@ -37,6 +37,8 @@ recall_action::recall_action(const unit_const_ptr& recalled, const map_location&
 	: undo_action()
 	, shroud_clearing_action(recalled, loc)
 	, id(recalled->id())
+	, prev_mp(recalled->movement_left(true))
+	, prev_ap(recalled->attacks_left(true))
 	, recall_from(from)
 {}
 
@@ -44,6 +46,8 @@ recall_action::recall_action(const config & cfg)
 	: undo_action()
 	, shroud_clearing_action(cfg)
 	, id(cfg["id"])
+	, prev_mp(cfg["previous_movement"].to_int())
+	, prev_ap(cfg["previous_attacks"].to_int())
 	, recall_from(map_location(cfg.child_or_empty("leader"), nullptr))
 {}
 
@@ -57,6 +61,8 @@ void recall_action::write(config & cfg) const
 
 	recall_from.write(cfg.add_child("leader"));
 	cfg["id"] = id;
+	cfg["previous_movement"] = prev_mp;
+	cfg["previous_attacks"] = prev_ap;
 }
 
 /**
@@ -89,6 +95,8 @@ bool recall_action::undo(int side)
 		current_team.spend_gold(-cost);
 	}
 
+	un->set_attacks(prev_ap);
+	un->set_movement(prev_mp);
 	current_team.recall_list().add(un);
 	// Invalidate everything, not just recall_loc, in case the sprite
 	// extends into adjacent hexes (Horseman) or even farther away (Fire

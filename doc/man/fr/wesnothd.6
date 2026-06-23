@@ -27,7 +27,7 @@ wesnothd \- Serveur pour jeu multijoueur en réseau de Bataille pour
 .
 .SH SYNOPSIS
 .
-\fBwesnothd\fP [\|\fB\-dvw\fP\|] [\|\fB\-c\fP \fIpath\fP\|] [\|\fB\-p\fP \fIport\fP\|]
+\fBwesnothd\fP [\|\fB\-dvw\fP\|] [\|\fB\-c\fP \fIchemin\fP\|] [\|\fB\-p\fP \fIport\fP\|]
 .br
 \fBwesnothd\fP \fB\-V\fP
 .
@@ -79,7 +79,7 @@ Active une journalisation maximale.
 .P
 [/\fItag\fP]
 .
-.SS "Clés globales\ : "
+.SS "Clés globales\ :"
 .
 .TP 
 \fBallow_remote_shutdown\fP
@@ -101,9 +101,9 @@ Spécifie si les joueurs non\-enregistrés avec le \fBuser_handler\fP utilisé
 peuvent se connecter (défaut\ : non).
 .TP 
 \fBdisallow_names\fP
-Names/nicks that are not accepted by the server. \fB*\fP and \fB?\fP from wildcard
-patterns are supported. See \fBglob\fP(7)  for more details.  Default values
-(used if nothing is specified) are:
+Noms/surnoms non acceptés par le serveur. Les caractères génériques \fB*\fP et
+\fB?\fP sont acceptés. Voir \fBglob\fP(7) pour plus d'informations. Les valeurs
+par défaut (utilisées si rien n'est précisé) sont\ :
 \fB*admin*,*admln*,*moderator*,*server*,ai,ai?,computer,human,network,player\fP.
 .TP 
 \fBfifo_path\fP
@@ -242,8 +242,8 @@ Nom de la table dans laquelle wesnothd stockera ses données à propos des
 joueurs d'une partie.
 .TP 
 \fBdb_game_content_info_table\fP
-The name of the table in which wesnothd will save its own data about game
-content (scenario/era/modifications) used in a game.
+Nom de la table dans laquelle wesnothd stockera ses données à propos des
+contenus du jeu (scénario/ère/modifications) utilisés dans une partie.
 .TP 
 \fBdb_user_group_table\fP
 Nom de la table des données de groupe d'utilisateurs de vos forums phpbb,
@@ -251,8 +251,9 @@ probablement sous la forme <table\-prefix>_user_group. Par exemple\ :
 phpbb3_user_group.
 .TP 
 \fBdb_tournament_query\fP
-The SQL query to find tournaments to announce on login. Should return
-tournament \fBtitle\fP, \fBstatus\fP and \fBurl\fP.
+La requête SQL pour obtenir la liste des tournois à afficher à la
+connexion. La réponse est au format tournament \fBtitle\fP, \fBstatus\fP et
+\fBurl\fP.
 .TP 
 \fBdb_connection_history_table\fP
 Le nom de la table de la base de données où les instants de connexion et
@@ -273,12 +274,12 @@ exemple\ : phpbb3_banlist.
 L'identifiant du groupe du forum ayant les pouvoirs de modération.
 .TP 
 \fBforum_admin_group\fP
-The ID of one of the forum groups to be considered as having admin authority
-on the add\-ons server.
+L'identifiant d'un des groupes du forum ayant les pouvoirs de modération sur
+le serveur d'extensions.
 .TP 
 \fBsite_admin_group\fP
-The ID of one of the forum groups to be considered as having admin authority
-on the add\-ons server.
+L'identifiant d'un des groupes du forum ayant les pouvoirs de modération sur
+le serveur d'extensions.
 .RE
 .
 .SH "STATUT DE SORTIE"

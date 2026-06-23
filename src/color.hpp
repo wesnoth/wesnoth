@@ -14,7 +14,7 @@
 
 #pragma once
 
-#include <SDL2/SDL_pixels.h>
+#include <SDL3/SDL_pixels.h>
 
 #include <algorithm> // for max
 #include <cstdint>

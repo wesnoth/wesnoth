@@ -51,7 +51,19 @@ std::function<rect(rect)> prep_minimap_for_rendering(
 	const bool preferences_minimap_draw_units     = prefs::get().minimap_draw_units();
 	const bool preferences_minimap_unit_coding    = prefs::get().minimap_movement_coding();
 
-	const int scale = (preferences_minimap_draw_terrain && preferences_minimap_terrain_coding) ? 24 : 4;
+	auto get_scale = [&](){
+		const int size_max = std::max(map.h(), map.w());
+		if(!preferences_minimap_draw_terrain || !preferences_minimap_terrain_coding) {
+			return 4;
+		} else if(size_max > 60) {
+			return 8;
+		} else if(size_max > 40) {
+			return 16;
+		} else {
+			return 24;
+		}
+	};
+	const int scale = get_scale();
 
 	DBG_DP << "Creating minimap: " << static_cast<int>(map.w() * scale * 0.75) << ", " << map.h() * scale;
 
@@ -92,12 +104,10 @@ std::function<rect(rect)> prep_minimap_for_rendering(
 		};
 	};
 
-	// We want to draw the minimap with NN scaling.
-	set_texture_scale_quality("nearest");
-
 	// Create a temp texture a bit larger than we want. This allows us to compose the minimap and then
 	// scale the whole result down the desired destination texture size.
 	texture minimap(map_width, map_height, SDL_TEXTUREACCESS_TARGET);
+	SDL_SetTextureScaleMode(minimap, SDL_SCALEMODE_NEAREST);
 	if(!minimap) {
 		return nullptr;
 	}

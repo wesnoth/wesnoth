@@ -61,7 +61,8 @@ void attack_analysis::analyze(const gamemap& map, unit_map& units,
 	uses_leader = false;
 
 	target_value = defend_it->cost();
-	target_value += (static_cast<double>(defend_it->experience())/
+	const unsigned int defend_experience = defend_it->can_advance() ? defend_it->experience() : 0;
+	target_value += (static_cast<double>(defend_experience)/
 	                 static_cast<double>(defend_it->max_experience()))*target_value;
 	target_starting_damage = defend_it->max_hitpoints() -
 	                         defend_it->hitpoints();
@@ -161,7 +162,8 @@ void attack_analysis::analyze(const gamemap& map, unit_map& units,
 		double cost = up->cost();
 		const bool on_village = map.is_village(m->second);
 		// Up to double the value of a unit based on experience
-		cost += (static_cast<double>(up->experience()) / up->max_experience())*cost;
+		const unsigned int up_experience = up->can_advance() ? up->experience() : 0;
+		cost += (static_cast<double>(up_experience) / up->max_experience())*cost;
 		resources_used += cost;
 		avg_losses += cost * prob_died;
 

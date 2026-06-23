@@ -19,11 +19,17 @@
 #include "gui/dialogs/message.hpp"
 #include "log.hpp"
 
-#ifdef __ANDROID__
-#include <SDL2/SDL_system.h>
+#if defined(__APPLE__)
+#include <TargetConditionals.h>
 #endif
 
+#ifdef __ANDROID__
+#include <SDL3/SDL_system.h>
+#endif
+
+#if !(defined(__APPLE__) && TARGET_OS_IPHONE)
 #include <curl/curl.h>
+#endif
 
 static lg::log_domain log_network("network");
 #define ERR_NW LOG_STREAM(err, log_network)
@@ -39,7 +45,12 @@ namespace network
 		return amount;
 	}
 
-	void gui_download(const std::string& url, const std::string& local_path) {
+	void gui_download([[maybe_unused]] const std::string& url, [[maybe_unused]] const std::string& local_path) {
+#if defined(__APPLE__) && TARGET_OS_IPHONE
+		gui2::show_message(_("Download unavailable"), _("Standalone file downloads are not currently supported on iOS."), gui2::dialogs::message::button_style::auto_close);
+		return;
+#endif
+
 		if(filesystem::file_exists(local_path)) {
 			const int res = gui2::show_message(_("Confirm overwrite"), _("Overwrite existing file?"), gui2::dialogs::message::yes_no_buttons);
 			if(res != gui2::retval::OK) {
@@ -53,8 +64,12 @@ namespace network
 		}
 	}
 
-	bool download(const std::string& url, const std::string& local_path)
+	bool download([[maybe_unused]] const std::string& url, [[maybe_unused]] const std::string& local_path)
 	{
+#if defined(__APPLE__) && TARGET_OS_IPHONE
+		ERR_NW << "Standalone file downloads are currently disabled for iOS builds.";
+		return false;
+#else
 		std::unique_ptr<CURL, decltype(&curl_easy_cleanup)> curl(curl_easy_init(), curl_easy_cleanup);
 		std::string buffer;
 		// curl doesn't initialize the error buffer until version 7.60.0, which isn't currently available on all supported macOS versions
@@ -107,5 +122,6 @@ namespace network
 			return false;
 		}
 		return true;
+#endif
 	}
 }

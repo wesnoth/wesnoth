@@ -357,7 +357,17 @@ class CrossRefLister(CrossRef):
             for (name, defn) in unchecked:
                 print("%s: %s(%s)" % (defn, name, ", ".join(defn.args),))
 
-    def extracthelp(self, pref, fp):
+    def format_github_macro_link(self, url_base, macrosdir, displaytext, filepath, linenum):
+        "Return an HTML anchor linking macroname to its definition line in GitHub repo."
+        relpath = os.path.relpath(str(filepath), str(macrosdir))
+        return f"<a href='{url_base}/{relpath}#L{linenum}'>{displaytext}</a>"
+
+    def format_github_file_link(self, url_base, macrosdir,  displaytext, filepath):
+        "Return an HTML anchor linking name to its GitHub source file."
+        relpath = os.path.relpath(str(filepath), str(macrosdir))
+        return f"<a href='{url_base}/{relpath}'>{displaytext}</a>"
+
+    def extracthelp(self, pref, url_base, fp):
         "Deliver all macro help comments in HTML form."
         # Bug: finds only the first definition of each macro in scope.
         # macros starting with INTERNAL: are only for internal use
@@ -381,7 +391,9 @@ class CrossRefLister(CrossRef):
                     displayname = filename
                 outstr += "<p class='toplink'>[ <a href='#content'>top</a> ]</p>\n"
                 outstr += "<h2 id='file:" + displayname + "' class='file_header'>From file: "
-                outstr += "<code class='noframe'>" + displayname + "</code></h2>\n"
+                link_text = "<code class='noframe'>" + displayname + "</code>"
+                outstr += self.format_github_file_link(url_base, fp, link_text, filename)
+                outstr += "</h2>\n"
                 filenamelist.append(displayname)
                 hdr = []
                 with open(filename, "r", encoding="utf8") as dfp:
@@ -402,7 +414,10 @@ class CrossRefLister(CrossRef):
                 if lines and not lines[-1]: # Ignore trailing blank lines
                     lines.pop()
                 outstr += "\n<dt id='" + header[0] + "'>\n<code class='noframe'>"
-                outstr += "<span class='macro-name'>" + header[0] + "</span>"
+                outstr += (
+                    "<span class='macro-name'>"
+                    + self.format_github_macro_link(url_base, fp, header[0], entry.filename, entry.lineno)
+                    + "</span>")
                 if header[1:]:
                     outstr += " <var class='macro-formals'>"+" ".join(header[1:])+"</var>"
                 if entry.optional_args:
@@ -461,6 +476,10 @@ if __name__ == "__main__":
                         help="Ignore refcount 0 on names matching regexp")
     parser.add_argument("--extracthelp", action="store_true",
                         help="Extract help from macro definition comments.")
+    parser.add_argument("--macrosdir", type=str,
+                        help="Path to the macros directory (needed for macro reference)")
+    parser.add_argument("--urlbase", type=str, default="https://github.com/wesnoth/wesnoth/tree/master/data/core/macros",
+                        help="Base github url of this repo (needed for macro reference links)")
     parser.add_argument("--unchecked", action="store_true",
                         help="Report all macros with untyped formals.")
     parser.add_argument("directories", action="store", nargs="*",
@@ -488,6 +507,10 @@ directories are given, all files under the current directory are checked.""")
         progress = namespace.progress
         arguments = namespace.directories # a remnant of getopt...
 
+        # Add macrodir in the list of dirs to be cross-refed.
+        if extracthelp and namespace.macrosdir:
+            arguments.append(namespace.macrosdir)
+
         # in certain situations, Windows' command prompt appends a double quote
         # to the command line parameters. This block takes care of this issue.
         for i,arg in enumerate(arguments):
@@ -512,7 +535,9 @@ directories are given, all files under the current directory are checked.""")
         if not extracthelp:
             print("#Cross-reference time: %d seconds" % (time.time()-starttime))
         if extracthelp:
-            xref.extracthelp(dirpath[0], sys.stdout)
+            if not namespace.macrosdir:
+                parser.error("--extracthelp requires the macro directory via --macrosdir")
+            xref.extracthelp(dirpath[0], namespace.urlbase, sys.stdout)
         elif unchecked:
             xref.unchecked(sys.stdout)
         elif listfiles:

@@ -409,7 +409,7 @@ private:
 		const variant res = operand_->evaluate(variables, add_debug_info(fdb, 0, op_str_ + " unary"));
 		switch(op_) {
 		case NOT:
-			return res.as_bool() ? variant(0) : variant(1);
+			return variant(!res.as_bool());
 		case SUB:
 		default:
 			return -res;
@@ -744,17 +744,17 @@ private:
 		case OP_CAT:
 			return left.concatenate(right);
 		case EQ:
-			return left == right ? variant(1) : variant(0);
+			return variant(left == right);
 		case NEQ:
-			return left != right ? variant(1) : variant(0);
+			return variant(left != right);
 		case LTE:
-			return left <= right ? variant(1) : variant(0);
+			return variant(left <= right);
 		case GTE:
-			return left >= right ? variant(1) : variant(0);
+			return variant(left >= right);
 		case LT:
-			return left < right ? variant(1) : variant(0);
+			return variant(left < right);
 		case GT:
-			return left > right ? variant(1) : variant(0);
+			return variant(left > right);
 		case MOD:
 			return left % right;
 		case RAN:

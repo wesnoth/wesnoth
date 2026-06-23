@@ -15,13 +15,14 @@
 # Azamat H. Hackimov <azamat.hackimov@gmail.com>, 2007.
 # Fedor Khodkov <fkhodkov@gmail.com>, 2014.
 # Artem Khrapov (kabachuha) <artemkhrapov2001@yandex.ru>, 2020-2024.
+# Alexandr Obolonkin (Alexinor) <obolonkin@proton.me>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-editor\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-02-25 19:03-0600\n"
-"PO-Revision-Date: 2024-04-07 16:36+0300\n"
-"Last-Translator: Artem Khrapov <artemkhrapov2001@yandex.ru>\n"
+"POT-Creation-Date: 2026-06-22 22:15-0500\n"
+"PO-Revision-Date: 2026-06-17 16:57+0500\n"
+"Last-Translator: Alexandr Obolonkin (Alexinor) <obolonkin@proton.me>\n"
 "Language-Team: https://wiki.wesnoth.org/RussianTranslation\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -29,7 +30,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.0.1\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
 #. [brush]: id=brush-1
@@ -176,7 +177,7 @@ msgstr "После Падения"
 #. [editor_group]: id=urban_jungle
 #: data/internal/Urban_Jungle/terrain-groups.cfg:5
 msgid "Urban Jungle (Internal)"
-msgstr ""
+msgstr "Городские джунгли (внутренние)"
 
 #. [theme]: id=editor
 #: data/themes/editor.cfg:11
@@ -236,7 +237,7 @@ msgstr "Назначить местное расписание"
 #. [menu]: id=menu-editor-unit
 #: data/themes/editor.cfg:141
 msgid "Unit"
-msgstr ""
+msgstr "Боец"
 
 #. [menu]: id=menu-editor-side
 #: data/themes/editor.cfg:151
@@ -259,34 +260,34 @@ msgid "Time Schedule Menu"
 msgstr "Меню расписания"
 
 #. [menu]: id=menu-playlist
-#: data/themes/editor.cfg:490
+#: data/themes/editor.cfg:489
 msgid "Playlist"
 msgstr "Плейлист"
 
 #. [menu]: id=menu-editor-schedule
-#: data/themes/editor.cfg:496
+#: data/themes/editor.cfg:495
 msgid "Assign Time Schedule"
 msgstr "Назначить расписание"
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:58
 msgid "Identifier: "
-msgstr "Идентификатор:"
+msgstr "Идентификатор: "
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:60
 msgid "Name: "
-msgstr "Имя:"
+msgstr "Имя: "
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:62
 msgid "Type: "
-msgstr "Вид:"
+msgstr "Вид: "
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:63
 msgid "Level: "
-msgstr "Уровень:"
+msgstr "Уровень: "
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:64
 msgid "Cost: "
-msgstr "Цена:"
+msgstr "Цена: "
 
 #: src/editor/controller/editor_controller.cpp:204
 msgid "Fatal error"
@@ -317,16 +318,12 @@ msgid "No editor time-of-day found."
 msgstr "Редактор времени суток не найден."
 
 #: src/editor/controller/editor_controller.cpp:886
-#, fuzzy
-#| msgid "Add-on"
 msgid "Add-on Files"
-msgstr "Аддон"
+msgstr "Файлы аддона"
 
 #: src/editor/controller/editor_controller.cpp:899
-#, fuzzy
-#| msgid "Clipboard support not found, contact your packager"
 msgid "Opening files is not supported, contact your packager"
-msgstr "Буфер обмена не поддерживается, обратитесь к сборщику вашей версии"
+msgstr "Открытие файлов не поддерживается, обратитесь к сборщику вашей версии"
 
 #: src/editor/controller/editor_controller.cpp:1343
 msgid "Change Unit ID"
@@ -346,17 +343,15 @@ msgstr "Имя:"
 
 #: src/editor/editor_display.cpp:170
 msgid "<span color='#66ff00'><span face='DejaVuSans'>✔</span> $msg</span>"
-msgstr ""
+msgstr "<span color='#66ff00'><span face='DejaVuSans'>✔</span> $msg</span>"
 
 #: src/editor/editor_display.cpp:172
 msgid "<span color='red'><span face='DejaVuSans'>✘</span> $msg</span>"
-msgstr ""
+msgstr "<span color='red'><span face='DejaVuSans'>✘</span> $msg</span>"
 
 #: src/editor/map/context_manager.cpp:217
-#, fuzzy
-#| msgid "Map loaded from scenario"
 msgid "Load Map or Scenario"
-msgstr "Карта загружена из сценария"
+msgstr "Загрузить карту или сценарий"
 
 #: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1141
 msgid "New Map"
@@ -414,25 +409,21 @@ msgid "Error"
 msgstr "Ошибка"
 
 #: src/editor/map/context_manager.cpp:705
-#, fuzzy
-#| msgid "Do you really want to quit?"
 msgid "Do you really want to save a map in the scenarios folder?"
-msgstr "Действительно хотите выйти?"
+msgstr "Действительно хотите сохранить карту в папку для сценариев?"
 
 #: src/editor/map/context_manager.cpp:713
 #: src/editor/map/context_manager.cpp:905
 msgid "This map is already open."
-msgstr "Вы уже открыли эту карту"
+msgstr "Вы уже открыли эту карту."
 
 #: src/editor/map/context_manager.cpp:736
 msgid "Save Scenario As"
 msgstr "Сохранить сценарий как"
 
 #: src/editor/map/context_manager.cpp:754
-#, fuzzy
-#| msgid "Do you really want to quit?"
 msgid "Do you really want to save a scenario in the maps folder?"
-msgstr "Действительно хотите выйти?"
+msgstr "Действительно хотите сохранить сценарий в папку для карт?"
 
 #: src/editor/map/context_manager.cpp:762
 msgid "This scenario is already open."
@@ -462,10 +453,8 @@ msgid "Scenario saved."
 msgstr "Сценарий сохранен."
 
 #: src/editor/map/context_manager.cpp:881
-#, fuzzy
-#| msgid "Map saved."
 msgid "Map saved"
-msgstr "Карта сохранена."
+msgstr "Карта сохранена"
 
 #: src/editor/map/context_manager.cpp:956
 msgid "Loaded embedded map data"
@@ -498,59 +487,46 @@ msgid "Empty file"
 msgstr "Файл пуст"
 
 #: src/editor/map/map_context.cpp:204
-#, fuzzy
-#| msgid "File does not have .map or .cfg extension"
 msgid "File does not have .map, .cfg, or .mask extension"
-msgstr "Файл не имеет разрешения .map или .cfg"
+msgstr "Файл не имеет разрешения .map, .cfg или .mask"
 
 #: src/editor/map/map_context.cpp:227
-#, fuzzy
-#| msgid "Failed to load the scenario, attempting to load only the map."
 msgid ""
 "Failed to load the scenario: $error\n"
 "\n"
 "Attempting to load only the map."
-msgstr "Ошибка загрузки сценария. Попытка загрузить только карту."
+msgstr ""
+"Ошибка загрузки сценария: $error\n"
+"\n"
+"Попытка загрузить только карту."
 
 #: src/editor/map/map_context.cpp:253
-#, fuzzy
-#| msgid ""
-#| "The map file looks like a scenario, but the map_data value does not point "
-#| "to an existing file"
 msgid ""
 "The file looks like a scenario, but the map_data attribute does not point to "
 "an existing file"
 msgstr ""
-"Файл карты похож на сценарий, но значение map_data не указывает на "
-"существующий файл"
+"Файл похож на сценарий, но значение map_data не указывает на существующий "
+"файл"
 
 #: src/editor/map/map_context.cpp:268
-#, fuzzy
-#| msgid ""
-#| "The map file looks like a scenario, but the map_file value does not point "
-#| "to an existing file"
 msgid ""
 "The file looks like a scenario, but the map_file attribute does not point to "
 "an existing file"
 msgstr ""
-"Файл карты похож на сценарий, но значение map_file не указывает на "
-"существующий файл"
+"Файл похож на сценарий, но значение map_file не указывает на существующий "
+"файл"
 
 #: src/editor/map/map_context.cpp:448
 msgid "Confirm"
-msgstr ""
+msgstr "Подтвердить"
 
 #: src/editor/map/map_context.cpp:835 src/editor/map/map_context.cpp:875
-#, fuzzy
-#| msgid "Could not save the scenario: $msg"
 msgid "Could not save time schedule: $msg"
-msgstr "Невозможно сохранить сценарий: $msg"
+msgstr "Невозможно сохранить расписание: $msg"
 
 #: src/editor/map/map_context.cpp:869
-#, fuzzy
-#| msgid "Time Schedule Menu"
 msgid "Time schedule saved."
-msgstr "Меню расписания"
+msgstr "Расписание сохранено."
 
 #: src/editor/map/map_context.cpp:915
 msgid "Could not save the scenario: $msg"
@@ -577,10 +553,8 @@ msgid "Will not work in game without extra care."
 msgstr "В игре не заработает без поддержки кодом."
 
 #: src/editor/palette/item_palette.cpp:33
-#, fuzzy
-#| msgid "Right-click: "
 msgid "Left-click: Place item $item | Right-click to remove"
-msgstr "Правая кнопка мыши: "
+msgstr "ЛКМ: поместить предмет $item | ПКМ чтобы удалить"
 
 #: src/editor/palette/location_palette.cpp:247
 msgid "Go To"

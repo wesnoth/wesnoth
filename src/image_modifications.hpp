@@ -132,8 +132,8 @@ public:
 	 * RC-map based constructor.
 	 * @param recolor_map The palette switch map.
 	 */
-	rc_modification(const color_mapping& recolor_map)
-		: rc_map_(recolor_map)
+	rc_modification(color_mapping&& recolor_map)
+		: rc_map_(std::move(recolor_map))
 	{}
 	virtual void operator()(surface& src) const override;
 

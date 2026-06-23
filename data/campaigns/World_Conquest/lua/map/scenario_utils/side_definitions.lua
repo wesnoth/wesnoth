@@ -46,8 +46,9 @@ end
 
 local function add_player_side(scenario, scenario_num, gold)
 	local side_num = #scenario.side + 1
-	local per_side_num = (side_num == wml.variables.wc2_defeated_side) and side_num or 4
-	local id_str = "wc2_leader" .. per_side_num
+	local is_defeated = side_num == wml.variables.wc2_defeated_side
+	-- set the defeated side to save_id 4 which means side 4 replaces the defeated side (if side 4 is defeated nothing happens because there are only 3 sides now)
+	local id_str = "wc2_leader" .. (is_defeated and 4 or side_num)
 
 	local side = {
 		side = side_num,

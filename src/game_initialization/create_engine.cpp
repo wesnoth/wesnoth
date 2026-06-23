@@ -59,7 +59,7 @@ scenario::scenario(const config& data)
 
 bool scenario::can_launch_game() const
 {
-	return map_.get() != nullptr;
+	return map_ != nullptr;
 }
 
 void scenario::set_metadata()
@@ -87,7 +87,7 @@ std::string scenario::map_size() const
 {
 	std::stringstream map_size;
 
-	if(map_.get() != nullptr) {
+	if(map_) {
 		map_size << map_->w();
 		map_size << font::unicode_multiplication_sign;
 		map_size << map_->h();
@@ -100,7 +100,7 @@ std::string scenario::map_size() const
 
 void scenario::set_sides()
 {
-	if(map_.get() != nullptr) {
+	if(map_) {
 		// If there are fewer sides in the configuration than there are
 		// starting positions, then generate the additional sides
 		const int map_positions = map_->num_valid_starting_positions();

@@ -150,7 +150,13 @@ void units_dialog::pre_show()
 		find_widget<button>("show_help"),
 		std::bind(&units_dialog::show_help, this));
 
+#ifdef __IPHONEOS__
+	// On iOS, opening these dialogs should not immediately summon the software
+	// keyboard just because the optional filter box exists.
+	keyboard_capture(&list);
+#else
 	keyboard_capture(&filter);
+#endif
 	add_to_keyboard_chain(&list);
 
 	show_list(list);
@@ -423,7 +429,7 @@ std::unique_ptr<units_dialog> units_dialog::build_create_dialog(const std::vecto
 		return type->race()->plural_name();
 	};
 
-	const auto populate_variations = [&dlg](const unit_type& ut) {
+	const auto populate_variations = [](units_dialog* dlg, const unit_type& ut) {
 		// Populate variations box
 		menu_button& var_box = dlg->find_widget<menu_button>("variation_box");
 		std::vector<config> var_box_values;
@@ -475,7 +481,7 @@ std::unique_ptr<units_dialog> units_dialog::build_create_dialog(const std::vecto
 	set_column("unit_name", type_gen, sort_type::generator);
 	set_column("unit_details", race_gen, sort_type::generator);
 
-	dlg->on_modified([populate_variations, &dlg, &types_list](std::size_t index) -> const auto& {
+	dlg->on_modified([populate_variations, &types_list](units_dialog* dlg, std::size_t index) -> const auto& {
 		const unit_type* ut = types_list[index];
 
 		if (dlg->is_selected() && (static_cast<int>(index) == dlg->get_selected_index())) {
@@ -485,7 +491,7 @@ std::unique_ptr<units_dialog> units_dialog::build_create_dialog(const std::vecto
 				[ut](const unit_race::GENDER& gender) { return ut->has_gender_variation(gender); });
 		}
 
-		populate_variations(*ut);
+		populate_variations(dlg, *ut);
 
 		const auto& g = dlg->gender();
 		if(ut->has_gender_variation(g)) {
@@ -544,7 +550,7 @@ std::unique_ptr<units_dialog> units_dialog::build_recruit_dialog(
 		return err_msgs_map[recruit_list[index]];
 	});
 
-	dlg->on_modified([&recruit_list](std::size_t index) -> const auto& { return *recruit_list[index]; });
+	dlg->on_modified([&recruit_list](units_dialog*, std::size_t index) -> const auto& { return *recruit_list[index]; });
 
 	return dlg;
 }
@@ -673,7 +679,7 @@ std::unique_ptr<units_dialog> units_dialog::build_unit_list_dialog(std::vector<u
 		return filter_keys;
 	});
 
-	dlg->on_modified([&unit_list, &rename](std::size_t index) -> const auto& {
+	dlg->on_modified([&unit_list, &rename](units_dialog*, std::size_t index) -> const auto& {
 		auto& unit = unit_list[index];
 		rename.set_active(!unit->unrenamable());
 		return *unit;
@@ -852,7 +858,7 @@ std::unique_ptr<units_dialog> units_dialog::build_recall_dialog(
 		return filter_keys;
 	});
 
-	dlg->on_modified([&recall_list, &rename](std::size_t index) -> const auto& {
+	dlg->on_modified([&recall_list, &rename](units_dialog*, std::size_t index) -> const auto& {
 		const auto& unit = recall_list[index];
 		rename.set_active(!unit->unrenamable());
 		return *unit;

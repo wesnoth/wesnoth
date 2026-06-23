@@ -792,7 +792,7 @@ std::string unit_topic_generator::operator()() const {
 
 	std::stringstream().swap(table_ss);
 	table_ss << markup::tag_attr("row",
-		{ {"bgcolor", "table_header"} },
+		{{ "bgcolor", "table_header" }},
 		markup::tag("col", markup::bold(_("Attack Type"))),
 		markup::tag("col", markup::bold(_("Resistance"))));
 
@@ -813,7 +813,7 @@ std::string unit_topic_generator::operator()() const {
 		table_ss << markup::tag_attr("row",
 			{{ "bgcolor", (odd_row ? "table_row1" : "table_row2") }},
 			markup::tag("col", markup::img(type_icon), ' ', lang_type),
-			markup::tag("col", markup::span_color(color, resist)));
+			markup::tag_attr("col", {{ "halign", "right" }}, markup::span_color(color, resist)));
 
 		odd_row = !odd_row;
 	}
@@ -881,7 +881,7 @@ std::string unit_topic_generator::operator()() const {
 			// Defense  -  range: +10 % .. +70 %
 			// passing false to select the more saturated red-to-green scale
 			color_t def_color = game_config::red_to_green(m.defense, false);
-			row_ss << markup::tag("col", markup::span_color(def_color, m.defense, "%"));
+			row_ss << markup::tag_attr("col", {{ "halign", "right"}}, markup::span_color(def_color, m.defense, "%"));
 
 			// Movement  -  range: 1 .. 5, movetype::UNREACHABLE=impassable
 			row_ss << markup::tag("col", format_mp_entry(type_.movement(), m.movement_cost));
