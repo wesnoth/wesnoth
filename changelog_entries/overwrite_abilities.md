@@ -1,2 +1,0 @@
-### WML Engine
-   * Add a [overwrite_abilities] to abilities that use the value attribute with the exception of abilities used as weapons ([damage], [chance_to_hit], etc... implemented in the [abilities] tag).

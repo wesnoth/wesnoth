@@ -9,19 +9,49 @@
      * On the overworld, the waters around Elensefar now better connect to the rest of the passable coast.
      * After completing either Elensefar scenario, Elensefar now provides Konrad with a port on the overworld.
      * Slightly increased Li'sar's hitpoints. Li'sar "march" ability is no longer hidden.
+   * Eastern Invasion
+     * S13 "Spoils of War": removed the map's keep, to prevent player recruitment and stay consistent with the intro and victory dialogue.
+   * Heir to the Throne
+     * Enemy leaders should now behave more intelligently if Konrad tries to assassinate them with skirmisher and the Scepter of Fire.
+     * S02 "Flight of the Elves": fixed Konrad gaining the wrong recruit if between 11 and 15 elves had died.
+     * Konrad's advancements now deal more ranged damage, but less melee damage.
+     * S04 "The Bay of Pearls": villages can no longer be destroyed during the victory cutscene, as that would affect gold carryover.
    * The Deceivers Gambit
+     * S07 "The Great River": adjusted map, enemies, and starting XP. Patrol paths should now be more obvious, and more strategies should now be viable on Hard/Deadly (Easy/Normal were already very straightforward).
      * S08 "Ruins of Saurgrath", S10 "Houses of the Dead": spell selection is now delayed until Delfador learns what kind of enemies he's fighting.
+   * Winds of Fate
+     * S06 "Landfall": all new map of Elense Island and surrounding river delta by Dalas.
 ### Editor
 ### Multiplayer
 ### Lua API
 ### Packaging
+   * The Mac Compile Stuff repository of dependencies for macOS is no longer supported. The primary supported way to get dependencies on macOS is now to use vcpkg; to check how to do that see the macOS CI job and related scripts
+   * The migration from SDL2 to SDL3 has been completed. For distros without all the required SDL3 dependencies (probably mixer), these will need to be built and installed manually
 ### Terrain
 ### Translations
    * Updated translations: Bengali, British English, Chinese (Simplified), Czech, Finnish, French, German, Italian, Polish, Russian, Spanish
 ### Units
+   * Forest Lion:
+     * 9-2 charge attack changed to 11-2 marksman
+     * cost reduced from 30 -> 25
+   * Redtail Cat:
+     * cost reduced from 30 -> 28
+   * Elvish Hero: added idle animation
+   * Jumpcat: added attack, defend, and various other animations
 ### User interface
 ### WML Engine
+   * Add a [overwrite_abilities] to abilities that use the value attribute with the exception of abilities used as weapons ([damage], [chance_to_hit], etc... implemented in the [abilities] tag).
+   * Because overwrite_specials cannot be applied to other abilities and its design and functionality leave something to be desired, an [overwrite_specials] subtag will be added to eventually replace it.
+     * Add to [overwrite_specials] an affect attribute to suppress special abilities affecting a unit applied to a particular side (apply_to=self or opponent) and which discriminates special abilities that affect self/student from special abilities belonging to the opponent, even if apply_to=attacker/defender is used.
+   * The use of 'overwrite_specials' attribute and [overwrite] subtag in specials are deprecated
+   * Added new version macros:
+     * WESNOTH_VERSION_MAJOR (e.g. "1")
+     * WESNOTH_VERSION_MINOR (e.g. "19")
+     * WESNOTH_VERSION_REVISION (e.g. "23")
+     * WESNOTH_VERSION_SPECIAL (e.g. "dev")
 ### Miscellaneous and Bug Fixes
+   * The wmllint tool has been updated to handle a several new deprecations and now runs on mainline without outputting warnings or changing any files
+   * Fixed the manual link not working for non-English languages
 ### Android
 
 ## Version 1.19.24
