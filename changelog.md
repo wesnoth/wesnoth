@@ -1,6 +1,4 @@
-## Version 1.19.24+dev
-### Add-ons client
-### Add-ons server
+## Version 1.19.25
 ### Campaigns
    * Heir to the Throne
      * S01 "The Elves Besieged": reduced starting gold, but added gold pickups near enemy keeps. Added more swamp hexes.
@@ -21,13 +19,9 @@
      * S08 "Ruins of Saurgrath", S10 "Houses of the Dead": spell selection is now delayed until Delfador learns what kind of enemies he's fighting.
    * Winds of Fate
      * S06 "Landfall": all new map of Elense Island and surrounding river delta by Dalas.
-### Editor
-### Multiplayer
-### Lua API
 ### Packaging
    * The Mac Compile Stuff repository of dependencies for macOS is no longer supported. The primary supported way to get dependencies on macOS is now to use vcpkg; to check how to do that see the macOS CI job and related scripts
    * The migration from SDL2 to SDL3 has been completed. For distros without all the required SDL3 dependencies (probably mixer), these will need to be built and installed manually
-### Terrain
 ### Translations
    * Updated translations: Bengali, British English, Chinese (Simplified), Czech, Finnish, French, German, Italian, Polish, Russian, Spanish
 ### Units
@@ -38,7 +32,6 @@
      * cost reduced from 30 -> 28
    * Elvish Hero: added idle animation
    * Jumpcat: added attack, defend, and various other animations
-### User interface
 ### WML Engine
    * Add a [overwrite_abilities] to abilities that use the value attribute with the exception of abilities used as weapons ([damage], [chance_to_hit], etc... implemented in the [abilities] tag).
    * Because overwrite_specials cannot be applied to other abilities and its design and functionality leave something to be desired, an [overwrite_specials] subtag will be added to eventually replace it.
@@ -52,7 +45,6 @@
 ### Miscellaneous and Bug Fixes
    * The wmllint tool has been updated to handle a several new deprecations and now runs on mainline without outputting warnings or changing any files
    * Fixed the manual link not working for non-English languages
-### Android
 
 ## Version 1.19.24
 ### Campaigns
