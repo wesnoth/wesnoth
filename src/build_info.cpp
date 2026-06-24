@@ -587,6 +587,7 @@ list_formatter video_settings_report_internal(const std::string& heading = "")
 	fmt.insert("Content scaling", utils::charconv_buffer(video::content_scaling()).to_string());
 	fmt.insert("Pixel density", utils::charconv_buffer(video::pixel_density()).to_string());
 	fmt.insert("Calculated display scaling", utils::charconv_buffer(video::display_scaling()).to_string());
+	fmt.insert("Available renderers", utils::join(video::get_available_renderers(), " "));
 	const auto& renderer_report = video::renderer_report();
 
 	for(const auto& info : renderer_report) {
