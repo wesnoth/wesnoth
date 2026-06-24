@@ -78,6 +78,49 @@ validate_campaign() {
     [ "$success" = "Yes" ]
 }
 
+
+
+
+#run val in a disposable worktree
+repo_root=$(git rev-parse --show-toplevel 2>/dev/null || printf "%s" "$(pwd)")
+orig_pwd=$(pwd)
+worktree_dir=$(mktemp -d "${TMPDIR:-/tmp}/wesnoth-schema-validation.XXXXXX")
+worktree_created=0
+
+cleanup_schema_validation() {
+   cd "$orig_pwd" || true
+    if [ "$worktree_created" = "1" ]; then
+        git -C "$repo_root" worktree remove --force "$worktree_dir" >/dev/null 2>&1 || true
+    fi
+    rm -rf "$worktree_dir"
+}
+trap cleanup_schema_validation EXIT
+
+#require clean worktree so local edits arent hidden 
+if [ -n "$(git -C "$repo_root" status --porcelain)" ]; then
+    error "commit/stash local changes before running schema validation"
+    exit 1
+fi
+
+#require built wesnoth binary 
+if [ ! -x "$repo_root/wesnoth" ]; then
+    error "Missing built wesnoth binary at $repo_root/wesnoth; build it first."
+    exit 1
+fi
+
+#creater temp worktree 
+if ! git -C "$repo_root" worktree add --detach "$worktree_dir" HEAD >/dev/null 2>&1; then
+    error "Failed to create temporary worktree; ensure your git supports worktree."
+    exit 1
+fi
+worktree_created=1
+
+
+cd "$worktree_dir" || exit 1
+ln -sf "$repo_root/wesnoth" ./wesnoth
+
+
+
 RET=0
 
 # remove any_tag to actually see errors in action WML
