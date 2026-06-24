@@ -13,9 +13,9 @@ while pe_modules:
     for entry in pe.DIRECTORY_ENTRY_IMPORT:
         path = dllpath / pathlib.Path(entry.dll.decode())
         if path.exists():
-            print("Found dll path `"+path+"` for executable `"+pe+"`")
+            print("Found dll path `"+str(path)+"` for executable `"+pe+"`")
         else:
-            print("Did not find dll path `"+path+"` for executable `"+pe+"`")
+            print("Did not find dll path `"+str(path)+"` for executable `"+pe+"`")
         if path not in dlls and path.exists():
             dlls.add(path)
             pe_modules.add(pefile.PE(path))
