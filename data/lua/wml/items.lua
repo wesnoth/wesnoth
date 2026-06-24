@@ -11,6 +11,14 @@ local function add_overlay(x, y, cfg)
 	end
 
 	wesnoth.interface.add_hex_overlay(x, y, cfg)
+
+	if cfg.duration and cfg.duration ~= 0 then
+		return --Do not store item if it is on a duration timer.
+		--A safeguard against any sync issues that can happen with timers.
+		--Means that any images with duration are purely visual and can't be used for gameplay purposes.
+		--The image is not saved and won't persist over save/load.
+	end
+
 	local items = scenario_items:get(x, y)
 	if not items then
 		items = {}
@@ -24,10 +32,16 @@ local function add_overlay(x, y, cfg)
 			team_name = cfg.team_name,
 			filter_team = cfg.filter_team,
 			visible_in_fog = cfg.visible_in_fog,
+			multihex = cfg.multihex,
 			submerge = cfg.submerge,
+			parallax_r = cfg.parallax_r,
 			redraw = cfg.redraw,
 			name = cfg.name,
+			layer = cfg.layer,
 			z_order = cfg.z_order,
+			duration = cfg.duration,
+			pixel_offset_x = cfg.pixel_offset_x,
+			pixel_offset_y = cfg.pixel_offset_y,
 			wml.tag.variables(wml.get_child(cfg, "variables") or {}),
 		})
 end
@@ -61,10 +75,16 @@ end
 ---@field team_name string
 ---@field filter_team WML
 ---@field visible_in_fog boolean
+---@field multihex boolean
 ---@field submerge number
+---@field parallax_r number
 ---@field redraw boolean
 ---@field name string
+---@field layer integer
 ---@field z_order integer
+---@field duration integer
+---@field pixel_offset_x integer
+---@field pixel_offset_y integer
 ---@field variables WMLTable
 
 ---Get items on a given hex
@@ -84,10 +104,16 @@ function wesnoth.interface.get_items(x, y)
 			team_name = cfg.team_name,
 			filter_team = cfg.filter_team,
 			visible_in_fog = cfg.visible_in_fog,
+			multihex = cfg.multihex,
 			submerge = cfg.submerge,
+			parallax_r = cfg.parallax_r,
 			redraw = cfg.redraw,
 			name = cfg.name,
+			layer = cfg.layer,
 			z_order = cfg.z_order,
+			duration = cfg.duration,
+			pixel_offset_x = cfg.pixel_offset_x,
+			pixel_offset_y = cfg.pixel_offset_y,
 			variables = wml.get_child(cfg, "variables"),
 		})
 	end
