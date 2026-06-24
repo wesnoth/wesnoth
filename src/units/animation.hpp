@@ -128,6 +128,7 @@ private:
 			, halo_id_()
 			, last_frame_begin_time_(0)
 			, cycles_(false)
+			, redraw_cache_()
 		{}
 		explicit particle(const config& cfg, const std::string& frame_string = "frame");
 
@@ -160,6 +161,7 @@ private:
 		halo::handle halo_id_;
 		std::chrono::milliseconds last_frame_begin_time_;
 		bool cycles_;
+		frame_redraw_cache redraw_cache_;
 	};
 
 	t_translation::ter_list terrain_types_;
