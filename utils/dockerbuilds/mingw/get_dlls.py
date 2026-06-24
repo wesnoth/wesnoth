@@ -3,7 +3,9 @@
 import pefile, pathlib, shutil
 
 dlls = set()
-dllpath = pathlib.Path('/windows/mingw64/bin')
+dlls.add('/msys64/mingw64/bin/libwebp-7.dll')
+dlls.add('/msys64/mingw64/bin/libturbojpeg.dll')
+dllpath = pathlib.Path('/msys64/mingw64/bin')
 pe_modules = set([pefile.PE('wesnoth.exe'), pefile.PE('wesnothd.exe')])
 
 while pe_modules:

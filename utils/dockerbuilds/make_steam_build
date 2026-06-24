@@ -12,6 +12,12 @@ fi
 
 docker run -v "$PWD"/../../..:/wesnoth -v "$PWD"/../steambuild:/output --tmpfs /build:exec,mode=1777 -u "$(id -u)" wesnoth/wesnoth:steamrt-4 sh -c 'mkdir -p /build && cd /build &&
  scons -j `nproc` ctool=gcc-14 cxxtool=g++-14 enable_lto=true boostdir=/usr/local/include boostlibdir=/usr/local/lib extra_flags_config=-lrt -Y /wesnoth &&
+ mkdir -p /output/lib &&
+ cp -P /usr/lib/x86_64-linux-gnu/libicui18n.so* /output/lib/ &&
+ cp -P /usr/lib/x86_64-linux-gnu/libicuuc.so* /output/lib/ &&
+ cp -P /usr/lib/x86_64-linux-gnu/libicudata.so* /output/lib/ &&
+ cp -P /usr/lib/x86_64-linux-gnu/libcrypto.so* /output/lib/ &&
+ cp -P /usr/lib/x86_64-linux-gnu/libssl.so* /output/lib/ &&
  cp /build/wesnoth /build/wesnothd /output/'
 
 cp start.sh ../steambuild
