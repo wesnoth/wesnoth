@@ -13,11 +13,15 @@
 	See the COPYING file for more details.
 */
 
+#include "log.hpp"
 #include "preferences/preferences.hpp"
 #include "sdl/window.hpp"
 #include "sdl/exception.hpp"
 #include "sdl/surface.hpp"
 #include "sdl/sdl3_properties_raii.hpp"
+#include "serialization/string_utils.hpp"
+#include "utils/general.hpp"
+#include "video.hpp"
 
 #include <SDL3/SDL_hints.h>
 #include <SDL3/SDL_render.h>
@@ -26,6 +30,9 @@
 #ifdef __ANDROID__
 #include <SDL3/SDL_mouse.h>
 #endif
+
+static lg::log_domain log_display("display");
+#define ERR_DP LOG_STREAM(err, log_display)
 
 namespace sdl
 {
@@ -68,8 +75,21 @@ window::window(const std::string& title,
 		throw exception("Failed to set window pointer property", true);
 	}
 
+	// try using the default
+	// if that fails, try opengl
 	if(!SDL_CreateRendererWithProperties(props)) {
-		throw exception("Failed to create a SDL_Renderer object.", true);
+		ERR_DP << "Failed to create default renderer, checking for opengl";
+		if(utils::contains(video::get_available_renderers(), "opengl")) {
+			SDL_SetHint(SDL_HINT_RENDER_DRIVER, "opengl");
+			if(!SDL_CreateRendererWithProperties(props)) {
+				ERR_DP << "Available renderers: " << utils::join(video::get_available_renderers(), " ");
+				throw exception("Failed to create an opengl SDL_Renderer object as a fallback.", true);
+			}
+			ERR_DP << "Failed to create default renderer but created fallback opengl renderer";
+		} else {
+			ERR_DP << "Available renderers: " << utils::join(video::get_available_renderers(), " ");
+			throw exception("Failed to create default renderer and opengl fallback isn't supported.", true);
+		}
 	}
 
 	// Set default blend mode to blend.
