@@ -989,9 +989,9 @@ void set_sound_volume(int vol)
 		}
 
 		// Bell, timer and UI have separate tracks which we can't set up from this
+		// Also separating music track from being modified
 		for(unsigned i = 0; i < n_of_tracks; ++i) {
-			if(!(i >= UI_sound_track_id_start && i <= UI_sound_track_id_last) && i != bell_track_id && i != timer_track_id) {
-				MIX_SetTrackGain(sound::tracks[i].get(), vol);
+			if(i != music_track_id && !(i >= UI_sound_track_id_start && i <= UI_sound_track_id_last) && i != bell_track_id && i != timer_track_id) {				MIX_SetTrackGain(sound::tracks[i].get(), vol);
 			}
 		}
 	}
