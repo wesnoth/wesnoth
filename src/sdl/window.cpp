@@ -31,9 +31,6 @@
 #include <SDL3/SDL_mouse.h>
 #endif
 
-static lg::log_domain log_display("display");
-#define ERR_DP LOG_STREAM(err, log_display)
-
 namespace sdl
 {
 
@@ -77,17 +74,20 @@ window::window(const std::string& title,
 
 	// try using the default
 	// if that fails, try opengl
+	PLAIN_LOG << "Available renderers: " << utils::join(video::get_available_renderers(), " ");
 	if(!SDL_CreateRendererWithProperties(props)) {
-		ERR_DP << "Failed to create default renderer, checking for opengl";
+		PLAIN_LOG << "Failed to create default renderer, checking for opengl";
+
 		if(utils::contains(video::get_available_renderers(), "opengl")) {
 			SDL_SetHint(SDL_HINT_RENDER_DRIVER, "opengl");
+
 			if(!SDL_CreateRendererWithProperties(props)) {
-				ERR_DP << "Available renderers: " << utils::join(video::get_available_renderers(), " ");
 				throw exception("Failed to create an opengl SDL_Renderer object as a fallback.", true);
 			}
-			ERR_DP << "Failed to create default renderer but created fallback opengl renderer";
+
+			PLAIN_LOG << "Failed to create default renderer but created fallback opengl renderer";
 		} else {
-			ERR_DP << "Available renderers: " << utils::join(video::get_available_renderers(), " ");
+			PLAIN_LOG << "Available renderers: " << utils::join(video::get_available_renderers(), " ");
 			throw exception("Failed to create default renderer and opengl fallback isn't supported.", true);
 		}
 	}
