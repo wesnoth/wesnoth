@@ -10,6 +10,7 @@
 ### Translations
 ### Units
 ### User interface
+   * Fix sound effect slider which was incorrectly affecting the music track volume.
 ### WML Engine
 ### Miscellaneous and Bug Fixes
 ### Android
