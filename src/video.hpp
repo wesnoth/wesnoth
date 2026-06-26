@@ -343,6 +343,11 @@ private:
 /***************/
 
 /**
+ * Returns a list of all available renderers
+ */
+std::vector<std::string> get_available_renderers();
+
+/**
  * Provides diagnostic information about the current renderer for the @a build_info API.
  */
 std::vector<std::pair<std::string, std::string>> renderer_report();
