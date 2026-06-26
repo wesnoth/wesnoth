@@ -16,8 +16,6 @@ docker run -v "$PWD"/../../..:/wesnoth -v "$PWD"/../steambuild:/output --tmpfs /
  cp -P /usr/lib/x86_64-linux-gnu/libicui18n.so* /output/lib/ &&
  cp -P /usr/lib/x86_64-linux-gnu/libicuuc.so* /output/lib/ &&
  cp -P /usr/lib/x86_64-linux-gnu/libicudata.so* /output/lib/ &&
- cp -P /usr/lib/x86_64-linux-gnu/libcrypto.so* /output/lib/ &&
- cp -P /usr/lib/x86_64-linux-gnu/libssl.so* /output/lib/ &&
  cp /build/wesnoth /build/wesnothd /output/'
 
 cp start.sh ../steambuild
