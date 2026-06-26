@@ -567,7 +567,7 @@ void tod_manager::set_current_time(int time, const std::string& area_id)
 void tod_manager::set_current_time(int time, area_time_of_day& area)
 {
 	time = fix_time_index(area.times.size(), time);
-	if(area.times[time].lawful_bonus != area.times[area.currentTime].lawful_bonus) {
+	if(!area.times.empty() && area.times[time].lawful_bonus != area.times[area.currentTime].lawful_bonus) {
 		has_tod_bonus_changed_ = true;
 	}
 
