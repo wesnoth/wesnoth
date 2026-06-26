@@ -380,8 +380,8 @@ void load_config(const config &v)
 	shroud_prefix = v["shroud_prefix"].str();
 	fog_prefix    = v["fog_prefix"].str();
 	reach_map_prefix 	= v["reach_map_prefix"].str();
-	reach_map_border_opacity = v["reach_map_border_opacity"].to_int(100);
-	reach_map_tint_opacity   = v["reach_map_tint_opacity"].to_int(50);//tint is at 50% by default instead of 100% to allow players to make it more opaque than normal
+	reach_map_border_opacity = v["reach_map_border_opacity"].to_int(70); // default value (changed ingame)
+	reach_map_tint_opacity = v["reach_map_tint_opacity"].to_int(20); // default value (changed ingame)
 
 	add_color_info(game_config_view::wrap(v), true);
 
