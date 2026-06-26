@@ -2820,6 +2820,8 @@ def allcfgfiles(directory):
                 datafiles.append(directory)
     else:
         for root, dirs, files in os.walk(directory):
+            if root in ignore_directories:
+                continue
             for vcsubdir in vctypes:
                 if vcsubdir in dirs:
                     dirs.remove(vcsubdir)

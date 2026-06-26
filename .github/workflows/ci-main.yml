@@ -28,6 +28,12 @@ jobs:
         run: |
           ./utils/CI/check_utf8.sh
           ./utils/CI/utf8_bom_dog.sh
+      - name: Run wmllint
+        if: success() || failure()
+        run: |
+          ./data/tools/wmllint --ignore-directories=./data/languages,./attic,./data/schema,./data/test/test/filesystem/enum,./po,./changelog_entries --ignore-files=./data/lan_server.cfg,./wesnothd.cfg,./utils/ai_test/ai_test.cfg,./data/test/scenarios/cve_tests/test_cve_2018_1999023_2.cfg &> ./wmllint.log
+          if [ $(wc -l < wmllint.log) != 0 ]; then cat wmllint.log; exit 1; fi
+        shell: bash
       - name: Whitespace and WML indentation check
         if: success() || failure()
         run: ./utils/CI/fix_whitespace.sh && git status && git diff --exit-code
