@@ -102,6 +102,7 @@
 ### Translations
    * Updated translations: Bengali, British English, Chinese (Simplified), Czech, Finnish, French, German, Italian, Portuguese (Brazil), Spanish
 ### WML Engine
+   * Added a `volume` key to `[music]` to set per-track playback volume, as a percentage of the player's music volume (default 100).
    * WFL: fixed serialization of empty map literals
    * WFL: fixed double multiplication when converting a config attribute to a decimal value
    * Removed deprecated macros
