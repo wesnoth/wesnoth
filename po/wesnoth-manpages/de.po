@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.18 - wesnoth-manpages\n"
-"POT-Creation-Date: 2025-04-27 22:22-0500\n"
+"POT-Creation-Date: 2026-06-27 12:09+0530\n"
 "PO-Revision-Date: 2024-12-19 03:48+0100\n"
 "Last-Translator: Wuzzy <Wuzzy@disroot.org>\n"
 "Language-Team: German <irc://irc.libera.chat/#wesnoth-de>\n"
@@ -698,8 +698,8 @@ msgid ""
 msgstr ""
 "Benutzt das angegebene I<Passwort> um sich zu einem Server zu verbinden. Ist "
 "insofern unsicher, dass es zum einen in der Prozesstabelle für alle Prozesse "
-"des Systems einsehbar ist und zum anderen ggf. in einer Datei wie ~/."
-"bash_history geloggt wird."
+"des Systems einsehbar ist und zum anderen ggf. in einer Datei wie "
+"~/.bash_history geloggt wird."
 
 #. type: TP
 #: doc/man/wesnoth.6:234
@@ -834,10 +834,11 @@ msgid ""
 msgstr ""
 "Wird nur vom B<--preprocess>-Befehl verwendet (aber nict dem B<--preprocess-"
 "string>-Befehl). Gibt alle vorverarbeiteten Makros in die Zieldatei aus. "
-"Falls keine Datei angegeben wird, wird die Ausgabe in die Datei »_MACROS_."
-"cfg« im Zielverzeichnis des Vorverarbeitungs-Befehls geschrieben. Die "
-"erzeugte Datei kann als Eingabe für B<--preprocess-input-macros> verwendet "
-"werden. Diese Option sollte vor dem B<--preprocess>-Befehl angegeben werden."
+"Falls keine Datei angegeben wird, wird die Ausgabe in die Datei "
+"»_MACROS_.cfg« im Zielverzeichnis des Vorverarbeitungs-Befehls geschrieben. "
+"Die erzeugte Datei kann als Eingabe für B<--preprocess-input-macros> "
+"verwendet werden. Diese Option sollte vor dem B<--preprocess>-Befehl "
+"angegeben werden."
 
 #. type: TP
 #: doc/man/wesnoth.6:288
@@ -862,8 +863,8 @@ msgstr "B<--render-image>I<\\ Bild>B<\\ >I<Ausgabe>"
 #: doc/man/wesnoth.6:296
 msgid ""
 "takes a valid wesnoth 'image path string' with image path functions, and "
-"outputs to a .png file. Image path functions are documented at https://wiki."
-"wesnoth.org/ImagePathFunctionWML."
+"outputs to a .png file. Image path functions are documented at https://"
+"wiki.wesnoth.org/ImagePathFunctionWML."
 msgstr ""
 "Akzeptiert einen gültigen »Image-Path-Ausdruck« mit Image-Path-Funktionen, "
 "und speichert die Ausgabedatei als .png-Datei. Dokumentation zu Image-Path-"
@@ -925,8 +926,8 @@ msgid ""
 "in preferences. Example: B<--server> B<server.wesnoth.org>."
 msgstr ""
 "Verbindet sich, falls angegeben, mit dem entsprechenden Rechner, oder aber "
-"zum ersten Rechner in den Einstellungen. Beispiel: B<--server> B<server."
-"wesnoth.org>."
+"zum ersten Rechner in den Einstellungen. Beispiel: B<--server> "
+"B<server.wesnoth.org>."
 
 #. type: TP
 #: doc/man/wesnoth.6:318
@@ -1435,8 +1436,8 @@ msgstr "Geschrieben von David White E<lt>davidnwhite@verizon.netE<gt>."
 #. type: Plain text
 #: doc/man/wesnoth.6:497
 msgid ""
-"Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon."
-"netE<gt> and Soliton E<lt>soliton.de@gmail.comE<gt>."
+"Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott "
+"E<lt>ott@gaon.netE<gt> and Soliton E<lt>soliton.de@gmail.comE<gt>."
 msgstr ""
 "Bearbeitet von Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott "
 "E<lt>ott@gaon.netE<gt> und Soliton E<lt>soliton.de@gmail.comE<gt>. Übersetzt "
@@ -1449,8 +1450,8 @@ msgid ""
 "This manual page was originally written by Cyril Bouthors "
 "E<lt>cyril@bouthors.orgE<gt>."
 msgstr ""
-"Diese Beschreibung stammt im Original von Cyril Bouthors E<lt>cyril@bouthors."
-"orgE<gt>."
+"Diese Beschreibung stammt im Original von Cyril Bouthors "
+"E<lt>cyril@bouthors.orgE<gt>."
 
 #. type: Plain text
 #: doc/man/wesnoth.6:501 doc/man/wesnothd.6:282
@@ -1492,19 +1493,8 @@ msgstr ""
 msgid "SEE ALSO"
 msgstr "ANDERE"
 
-#.  This program is free software; you can redistribute it and/or modify
-#.  it under the terms of the GNU General Public License as published by
-#.  the Free Software Foundation; either version 2 of the License, or
-#.  (at your option) any later version.
-#.  This program is distributed in the hope that it will be useful,
-#.  but WITHOUT ANY WARRANTY; without even the implied warranty of
-#.  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#.  GNU General Public License for more details.
-#.  You should have received a copy of the GNU General Public License
-#.  along with this program; if not, write to the Free Software
-#.  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #. type: Plain text
-#: doc/man/wesnothd.6:15
+#: doc/man/wesnoth.6:511
 msgid "B<wesnothd>(6)"
 msgstr "B<wesnothd>(6)"
 
@@ -1549,9 +1539,9 @@ msgid ""
 "wiki/ServerAdministration on what commands the server accepts via the "
 "wesnoth client (/query ...) or the fifo."
 msgstr ""
-"Verwaltet »Battle for Wesnoth«-Mehrspieler-Partien. Siehe https://www."
-"wesnoth.org/wiki/ServerAdministration für die Befehle, die der Server von "
-"Wesnoth (/query ...) oder über die FIFO entgegennimmt."
+"Verwaltet »Battle for Wesnoth«-Mehrspieler-Partien. Siehe https://"
+"www.wesnoth.org/wiki/ServerAdministration für die Befehle, die der Server "
+"von Wesnoth (/query ...) oder über die FIFO entgegennimmt."
 
 #. type: TP
 #: doc/man/wesnothd.6:43
@@ -1750,13 +1740,13 @@ msgstr "B<disallow_names>"
 msgid ""
 "Names/nicks that are not accepted by the server. B<*> and B<?> from wildcard "
 "patterns are supported. See B<glob>(7)  for more details.  Default values "
-"(used if nothing is specified) are: B<*admin*,*admln*,*moderator*,*server*,"
-"ai,ai?,computer,human,network,player>."
+"(used if nothing is specified) are: "
+"B<*admin*,*admln*,*moderator*,*server*,ai,ai?,computer,human,network,player>."
 msgstr ""
 "Namen/Spitznamen, die der Server nicht akzeptiert. B<*> und B<?> sind als "
 "Platzhalter unterstützt. Siehe B<glob>(7) für mehr Details. Standardwerte "
-"(wenn sonst nichts angegeben wurde) sind: B<*admin*,*admln*,*moderator*,"
-"*server*,ai,ai?,computer,human,network,player>."
+"(wenn sonst nichts angegeben wurde) sind: "
+"B<*admin*,*admln*,*moderator*,*server*,ai,ai?,computer,human,network,player>."
 
 #. type: TP
 #: doc/man/wesnothd.6:118
@@ -2342,17 +2332,18 @@ msgstr ""
 msgid ""
 "Written by David White E<lt>davidnwhite@verizon.netE<gt>.  Edited by Nils "
 "Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt>, "
-"Soliton E<lt>soliton.de@gmail.comE<gt> and Thomas Baumhauer E<lt>thomas."
-"baumhauer@gmail.comE<gt>.  This manual page was originally written by Cyril "
-"Bouthors E<lt>cyril@bouthors.orgE<gt>."
+"Soliton E<lt>soliton.de@gmail.comE<gt> and Thomas Baumhauer "
+"E<lt>thomas.baumhauer@gmail.comE<gt>.  This manual page was originally "
+"written by Cyril Bouthors E<lt>cyril@bouthors.orgE<gt>."
 msgstr ""
 "Geschrieben von David White E<lt>davidnwhite@verizon.netE<gt>. Bearbeitet "
-"von Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon."
-"netE<gt>, Soliton E<lt>soliton.de@gmail.comE<gt> und Thomas Baumhauer "
-"E<lt>thomas.baumhauer@gmail.comE<gt>. Übersetzt von Jan-Heiner Laberenz "
-"E<lt>Jan-Heiner@arcor.deE<gt>, Nils Kneuper E<lt>crazy-ivanovic@gmx."
-"netE<gt>und Soliton E<lt>soliton.de@gmail.comE<gt>. Diese Beschreibung "
-"stammt im Original von Cyril Bouthors E<lt>cyril@bouthors.orgE<gt>."
+"von Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott "
+"E<lt>ott@gaon.netE<gt>, Soliton E<lt>soliton.de@gmail.comE<gt> und Thomas "
+"Baumhauer E<lt>thomas.baumhauer@gmail.comE<gt>. Übersetzt von Jan-Heiner "
+"Laberenz E<lt>Jan-Heiner@arcor.deE<gt>, Nils Kneuper E<lt>crazy-"
+"ivanovic@gmx.netE<gt>und Soliton E<lt>soliton.de@gmail.comE<gt>. Diese "
+"Beschreibung stammt im Original von Cyril Bouthors "
+"E<lt>cyril@bouthors.orgE<gt>."
 
 #. type: Plain text
 #: doc/man/wesnothd.6:293

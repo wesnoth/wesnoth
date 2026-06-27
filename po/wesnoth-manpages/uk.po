@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 1.11\n"
-"POT-Creation-Date: 2025-04-27 22:22-0500\n"
+"POT-Creation-Date: 2026-06-27 12:09+0530\n"
 "PO-Revision-Date: 2024-04-05 15:40+0300\n"
 "Last-Translator: Oleksii Okhrimenko(lexa04) <e-mail: ohrimale@gmail.com "
 "discord: amakri>\n"
@@ -256,8 +256,9 @@ msgid ""
 "https://www.wesnoth.org/wiki/CommandMode for more information about command "
 "mode)."
 msgstr ""
-"увімкнути додаткові команди в грі (див. wiki-сторінку на сайті http://www."
-"wesnoth.org/wiki/CommandMode для отримання інформації про командний режим)."
+"увімкнути додаткові команди в грі (див. wiki-сторінку на сайті http://"
+"www.wesnoth.org/wiki/CommandMode для отримання інформації про командний "
+"режим)."
 
 #. type: TP
 #: doc/man/wesnoth.6:86
@@ -864,8 +865,8 @@ msgstr "B<--render-image>I<\\ image>B<\\ >I<output>"
 #: doc/man/wesnoth.6:296
 msgid ""
 "takes a valid wesnoth 'image path string' with image path functions, and "
-"outputs to a .png file. Image path functions are documented at https://wiki."
-"wesnoth.org/ImagePathFunctionWML."
+"outputs to a .png file. Image path functions are documented at https://"
+"wiki.wesnoth.org/ImagePathFunctionWML."
 msgstr ""
 
 #. type: TP
@@ -1414,8 +1415,8 @@ msgstr "Написав Девід Уайт (David White) E<lt>davidnwhite@verizo
 #. type: Plain text
 #: doc/man/wesnoth.6:497
 msgid ""
-"Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon."
-"netE<gt> and Soliton E<lt>soliton.de@gmail.comE<gt>."
+"Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott "
+"E<lt>ott@gaon.netE<gt> and Soliton E<lt>soliton.de@gmail.comE<gt>."
 msgstr ""
 "Відредагували Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott "
 "E<lt>ott@gaon.netE<gt> та Soliton E<lt>soliton.de@gmail.comE<gt>."
@@ -1466,19 +1467,8 @@ msgstr ""
 msgid "SEE ALSO"
 msgstr "ДИВ. ТАКОЖ"
 
-#.  This program is free software; you can redistribute it and/or modify
-#.  it under the terms of the GNU General Public License as published by
-#.  the Free Software Foundation; either version 2 of the License, or
-#.  (at your option) any later version.
-#.  This program is distributed in the hope that it will be useful,
-#.  but WITHOUT ANY WARRANTY; without even the implied warranty of
-#.  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#.  GNU General Public License for more details.
-#.  You should have received a copy of the GNU General Public License
-#.  along with this program; if not, write to the Free Software
-#.  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #. type: Plain text
-#: doc/man/wesnothd.6:15
+#: doc/man/wesnoth.6:511
 msgid "B<wesnothd>(6)"
 msgstr "B<wesnothd>(6)"
 
@@ -1533,9 +1523,9 @@ msgid ""
 "wiki/ServerAdministration on what commands the server accepts via the "
 "wesnoth client (/query ...) or the fifo."
 msgstr ""
-"Управління багатокористувацькими іграми Битви за Веснот. Див. http://www."
-"wesnoth.org/wiki/ServerAdministration щоб дізнатися які команди сервер може "
-"приймати через клієнт wesnoth (/query ...) або firo."
+"Управління багатокористувацькими іграми Битви за Веснот. Див. http://"
+"www.wesnoth.org/wiki/ServerAdministration щоб дізнатися які команди сервер "
+"може приймати через клієнт wesnoth (/query ...) або firo."
 
 #. type: TP
 #: doc/man/wesnothd.6:43
@@ -1731,18 +1721,18 @@ msgstr "B<disallow_names>"
 #| msgid ""
 #| "Names/nicks that are not accepted by the server. B<*> and B<?> from "
 #| "wildcard patterns are supported. See B<glob>(7)  for more details.  "
-#| "Default values (used if nothing is specified) are: B<*admin*,*admln*,"
-#| "*server*,ai,ai?,computer,human,network,player>."
+#| "Default values (used if nothing is specified) are: "
+#| "B<*admin*,*admln*,*server*,ai,ai?,computer,human,network,player>."
 msgid ""
 "Names/nicks that are not accepted by the server. B<*> and B<?> from wildcard "
 "patterns are supported. See B<glob>(7)  for more details.  Default values "
-"(used if nothing is specified) are: B<*admin*,*admln*,*moderator*,*server*,"
-"ai,ai?,computer,human,network,player>."
+"(used if nothing is specified) are: "
+"B<*admin*,*admln*,*moderator*,*server*,ai,ai?,computer,human,network,player>."
 msgstr ""
 "Імена/ніки, які не приймаються сервером. Підтримуються шаблони підстановки "
 "B<*> та B<?>. Також дивіться B<glob>(7). Стандартні значення "
-"(використовуються, якщо нічого не зазначено):: B<*admin*,*admln*,*server*,ai,"
-"ai?,computer,human,network,player>."
+"(використовуються, якщо нічого не зазначено):: "
+"B<*admin*,*admln*,*server*,ai,ai?,computer,human,network,player>."
 
 #. type: TP
 #: doc/man/wesnothd.6:118
@@ -2331,16 +2321,16 @@ msgstr ""
 msgid ""
 "Written by David White E<lt>davidnwhite@verizon.netE<gt>.  Edited by Nils "
 "Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt>, "
-"Soliton E<lt>soliton.de@gmail.comE<gt> and Thomas Baumhauer E<lt>thomas."
-"baumhauer@gmail.comE<gt>.  This manual page was originally written by Cyril "
-"Bouthors E<lt>cyril@bouthors.orgE<gt>."
+"Soliton E<lt>soliton.de@gmail.comE<gt> and Thomas Baumhauer "
+"E<lt>thomas.baumhauer@gmail.comE<gt>.  This manual page was originally "
+"written by Cyril Bouthors E<lt>cyril@bouthors.orgE<gt>."
 msgstr ""
 "Написана Девідом Уайтом (David White) E<lt>davidnwhite@verizon.netE<gt>. "
-"Відредагована Нільсом Кнойпером (Nils Kneuper) E<lt>crazy-ivanovic@gmx."
-"netE<gt>, ott E<lt>ott@gaon.netE<gt>, Soliton E<lt>soliton.de@gmail.comE<gt> "
-"та Томасом Баумхауером (Thomas Baumhauer) E<lt>thomas.baumhauer@gmail."
-"comE<gt>. Початковий автор сторінки - Cyril Bouthors E<lt>cyril@bouthors."
-"orgE<gt>."
+"Відредагована Нільсом Кнойпером (Nils Kneuper) E<lt>crazy-"
+"ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt>, Soliton "
+"E<lt>soliton.de@gmail.comE<gt> та Томасом Баумхауером (Thomas Baumhauer) "
+"E<lt>thomas.baumhauer@gmail.comE<gt>. Початковий автор сторінки - Cyril "
+"Bouthors E<lt>cyril@bouthors.orgE<gt>."
 
 #. type: Plain text
 #: doc/man/wesnothd.6:293

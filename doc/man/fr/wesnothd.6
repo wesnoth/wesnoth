@@ -58,7 +58,7 @@ niveaux de déboguage. Niveaux disponibles : \fBerror\fP,\ \fBwarning\fP,\ \fBin
 utilisé par le \fBserveur\fP.
 .TP 
 \fB\-p,\ \fP\fIport\fP\fB,\ \-\-port\fP\fI\ port\fP
-Assigne au serveur le port spécifié (par défaut\ : \fB15000\fP).
+Assigne au serveur le port spécifié (par défaut : \fB15000\fP).
 .TP 
 \fB\-V, \-\-version\fP
 Affiche le numéro de version et quitte le programme.
@@ -68,7 +68,7 @@ Active une journalisation maximale.
 .
 .SH "CONFIGURATION DU SERVEUR"
 .
-.SS "La syntaxe générale est\ : "
+.SS "La syntaxe générale est : "
 .
 .P
 [\fItag\fP]
@@ -79,7 +79,7 @@ Active une journalisation maximale.
 .P
 [/\fItag\fP]
 .
-.SS "Clés globales\ :"
+.SS "Clés globales :"
 .
 .TP 
 \fBallow_remote_shutdown\fP
@@ -98,24 +98,24 @@ défaut : \fB5\fP).
 .TP 
 \fBdeny_unregistered_login\fP
 Spécifie si les joueurs non\-enregistrés avec le \fBuser_handler\fP utilisé
-peuvent se connecter (défaut\ : non).
+peuvent se connecter (défaut : non).
 .TP 
 \fBdisallow_names\fP
 Noms/surnoms non acceptés par le serveur. Les caractères génériques \fB*\fP et
 \fB?\fP sont acceptés. Voir \fBglob\fP(7) pour plus d'informations. Les valeurs
-par défaut (utilisées si rien n'est précisé) sont\ :
+par défaut (utilisées si rien n'est précisé) sont :
 \fB*admin*,*admln*,*moderator*,*server*,ai,ai?,computer,human,network,player\fP.
 .TP 
 \fBfifo_path\fP
 Chemin de la fifo dans laquelle vous pouvez envoyer des commandes au serveur
 (comme les /query depuis wesnoth). Si elle n'est pas précisée, le chemin est
-celui prédéfini lors de la compilation (valeur par défaut\ :
+celui prédéfini lors de la compilation (valeur par défaut :
 \fB/var/run/wesnothd/socket\fP).
 .TP 
 \fBid\fP
 L'identifiant ID du serveur quand la sauvegarde en base de données des
 informations des parties est activée. Souvent les nombres majeur et mineur
-de la version des clients qui est acceptée\ : 1.18, 1.16...
+de la version des clients qui est acceptée : 1.18, 1.16...
 .TP 
 \fBmax_messages\fP
 Nombre maximum de messages permis en \fBmessages_time_period\fP (par défaut :
@@ -143,7 +143,7 @@ commande  \fBrestart\fP. (seulement possible depuis la fifo. Voir le paramètre
 .TP 
 \fBsave_replays\fP
 Définit si le serveur va automatiquement sauvegarder les films des parties
-(par défaut\ : \fBfalse\fP).
+(par défaut : \fBfalse\fP).
 .TP 
 \fBtls_enabled\fP
 Utilise TLS. Si activée, les trois options suivantes doivent être
@@ -163,9 +163,9 @@ Liste des versions acceptées par le serveur, séparées par des virgules. Les
 caractères génériques \fB*\fP et \fB?\fP sont acceptés (par défaut : version
 correspondant à celle de wesnoth).
 .br
-Exemple\ : \fBversions_accepted="*"\fP autorise tout type de version.
+Exemple : \fBversions_accepted="*"\fP autorise tout type de version.
 .
-.SS "Balises globales\ : "
+.SS "Balises globales : "
 .
 .P
 \fB[redirect]\fP Balise pour permettre au serveur de rediriger certaines
@@ -194,7 +194,7 @@ Nom utilisé pour référencer une durée de bannissement.
 Format de la durée, au format %d[%s[%d%s[...]]], où %s est s (secondes), m
 (minutes), h (heures), D (jours), M (mois) ou Y (années), et %d un
 nombre. Si le type de durée n'est pas précisé, le temps est exprimé en
-minutes. Exemple\ : \fBtime="1D12h30m"\fP donne un bannissement de 1 jour, 12
+minutes. Exemple : \fBtime="1D12h30m"\fP donne un bannissement de 1 jour, 12
 heures et 30 minutes.
 .RE
 .P
@@ -227,7 +227,7 @@ Mot de passe de cet utilisateur
 .TP 
 \fBdb_users_table\fP
 Nom de la table des données utilisateurs de vos forums phpbb, probablement
-sous la forme <table\-prefix>_users. Par exemple\ : phpbb3_users.
+sous la forme <table\-prefix>_users. Par exemple : phpbb3_users.
 .TP 
 \fBdb_extra_table\fP
 Nom de la table dans laquelle wesnothd stockera ses données à propos des
@@ -247,7 +247,7 @@ contenus du jeu (scénario/ère/modifications) utilisés dans une partie.
 .TP 
 \fBdb_user_group_table\fP
 Nom de la table des données de groupe d'utilisateurs de vos forums phpbb,
-probablement sous la forme <table\-prefix>_user_group. Par exemple\ :
+probablement sous la forme <table\-prefix>_user_group. Par exemple :
 phpbb3_user_group.
 .TP 
 \fBdb_tournament_query\fP
@@ -262,13 +262,13 @@ correspondant aux joueurs.
 .TP 
 \fBdb_topics_table\fP
 Nom de la table des informations des sujets de vos forums phpbb,
-probablement sous la forme <table\-prefix>_topics. Par exemple\ :
+probablement sous la forme <table\-prefix>_topics. Par exemple :
 phpbb3_topics.
 .TP 
 \fBdb_banlist_table\fP
 Nom de la table des données des bannissements d'utilisateur de vos forums
 phpbb, probablement sous la forme <table\-prefix>_banlist. Par
-exemple\ : phpbb3_banlist.
+exemple : phpbb3_banlist.
 .TP 
 \fBmp_mod_group\fP
 L'identifiant du groupe du forum ayant les pouvoirs de modération.
@@ -296,15 +296,15 @@ Soliton <soliton.de@gmail.com> et Thomas Baumhauer
 <thomas.baumhauer@gmail.com>. Ce manuel a été à l'origine écrit par
 Cyril Bouthors <cyril@bouthors.org>.
 .br
-Rendez\-vous sur la page d'accueil officielle\ : https://www.wesnoth.org/
+Rendez\-vous sur la page d'accueil officielle : https://www.wesnoth.org/
 .
 .SH COPYRIGHT
 .
 Copyright \(co 2003\-2025 David White <davidnwhite@verizon.net>
 .br
-Ceci est un logiciel libre\ ; ce logiciel est sous la licence GPL version 2,
+Ceci est un logiciel libre ; ce logiciel est sous la licence GPL version 2,
 comme définie par la Free Software Foundation. Il n'offre AUCUNE GARANTIE, y
-compris\ en ce qui concerne la COMMERCIABILITÉ et la CONFORMITÉ À UNE
+compris en ce qui concerne la COMMERCIABILITÉ et la CONFORMITÉ À UNE
 UTILISATION PARTICULIÈRE.
 .
 .SH "VOIR AUSSI"

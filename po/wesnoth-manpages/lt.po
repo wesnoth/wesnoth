@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.11\n"
-"POT-Creation-Date: 2025-04-27 22:22-0500\n"
+"POT-Creation-Date: 2026-06-27 12:09+0530\n"
 "PO-Revision-Date: 2019-02-11 23:27+0000\n"
 "Last-Translator: Andrius Štikonas <andrius@stikonas.eu>\n"
 "Language-Team: Lithuanian <wesnoth-lt@googlegroups.com>\n"
@@ -852,8 +852,8 @@ msgstr "B<--render-image>I<\\ paveikslėlis>B<\\ >I<išvestis>"
 #: doc/man/wesnoth.6:296
 msgid ""
 "takes a valid wesnoth 'image path string' with image path functions, and "
-"outputs to a .png file. Image path functions are documented at https://wiki."
-"wesnoth.org/ImagePathFunctionWML."
+"outputs to a .png file. Image path functions are documented at https://"
+"wiki.wesnoth.org/ImagePathFunctionWML."
 msgstr ""
 
 # type: TP
@@ -912,8 +912,8 @@ msgid ""
 "in preferences. Example: B<--server> B<server.wesnoth.org>."
 msgstr ""
 "jungiasi prie nurodyto kompiuterio, jei kas nurodyta; jeigu ne, jungiasi "
-"prie pirmo serverio, rasto nuostatose. Pavyzdys: B<--server server.wenoth."
-"org>"
+"prie pirmo serverio, rasto nuostatose. Pavyzdys: B<--server "
+"server.wenoth.org>"
 
 # type: TP
 #. type: TP
@@ -1433,11 +1433,11 @@ msgstr "Parašė David White E<lt>davidnwhite@verizon.netE<gt>."
 #. type: Plain text
 #: doc/man/wesnoth.6:497
 msgid ""
-"Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon."
-"netE<gt> and Soliton E<lt>soliton.de@gmail.comE<gt>."
+"Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott "
+"E<lt>ott@gaon.netE<gt> and Soliton E<lt>soliton.de@gmail.comE<gt>."
 msgstr ""
-"Redagavo Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon."
-"netE<gt> ir Soliton E<lt>soliton.de@gmail.comE<gt>."
+"Redagavo Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott "
+"E<lt>ott@gaon.netE<gt> ir Soliton E<lt>soliton.de@gmail.comE<gt>."
 
 # type: Plain text
 #. type: Plain text
@@ -1492,19 +1492,8 @@ msgid "SEE ALSO"
 msgstr "TAIP PAT ŽIŪRĖKITE"
 
 # type: TH
-#.  This program is free software; you can redistribute it and/or modify
-#.  it under the terms of the GNU General Public License as published by
-#.  the Free Software Foundation; either version 2 of the License, or
-#.  (at your option) any later version.
-#.  This program is distributed in the hope that it will be useful,
-#.  but WITHOUT ANY WARRANTY; without even the implied warranty of
-#.  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#.  GNU General Public License for more details.
-#.  You should have received a copy of the GNU General Public License
-#.  along with this program; if not, write to the Free Software
-#.  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #. type: Plain text
-#: doc/man/wesnothd.6:15
+#: doc/man/wesnoth.6:511
 msgid "B<wesnothd>(6)"
 msgstr "B<wesnothd>(6)"
 
@@ -1562,8 +1551,8 @@ msgid ""
 "wiki/ServerAdministration on what commands the server accepts via the "
 "wesnoth client (/query ...) or the fifo."
 msgstr ""
-"Tvarko Mūšio dėl Vesnoto daugelio žaidėjų žaidimus. Žiūrėkite https://www."
-"wesnoth.org/wiki/ServerAdministration kurias komandas priima serveris iš "
+"Tvarko Mūšio dėl Vesnoto daugelio žaidėjų žaidimus. Žiūrėkite https://"
+"www.wesnoth.org/wiki/ServerAdministration kurias komandas priima serveris iš "
 "wesnoth kliento (/query ...) arba per fifo."
 
 # type: TP
@@ -1772,8 +1761,8 @@ msgstr "B<disallow_names>"
 msgid ""
 "Names/nicks that are not accepted by the server. B<*> and B<?> from wildcard "
 "patterns are supported. See B<glob>(7)  for more details.  Default values "
-"(used if nothing is specified) are: B<*admin*,*admln*,*moderator*,*server*,"
-"ai,ai?,computer,human,network,player>."
+"(used if nothing is specified) are: "
+"B<*admin*,*admln*,*moderator*,*server*,ai,ai?,computer,human,network,player>."
 msgstr ""
 
 # type: TP
@@ -2410,15 +2399,15 @@ msgstr ""
 msgid ""
 "Written by David White E<lt>davidnwhite@verizon.netE<gt>.  Edited by Nils "
 "Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt>, "
-"Soliton E<lt>soliton.de@gmail.comE<gt> and Thomas Baumhauer E<lt>thomas."
-"baumhauer@gmail.comE<gt>.  This manual page was originally written by Cyril "
-"Bouthors E<lt>cyril@bouthors.orgE<gt>."
+"Soliton E<lt>soliton.de@gmail.comE<gt> and Thomas Baumhauer "
+"E<lt>thomas.baumhauer@gmail.comE<gt>.  This manual page was originally "
+"written by Cyril Bouthors E<lt>cyril@bouthors.orgE<gt>."
 msgstr ""
 "Parašė David White E<lt>davidnwhite@verizon.netE<gt>.  Redagavo Nils Kneuper "
 "E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt>, Soliton "
-"E<lt>soliton.de@gmail.comE<gt> ir Thomas Baumhauer E<lt>thomas."
-"baumhauer@gmail.comE<gt>.  Šį dokumentacijos puslapį iš pradžių parašė Cyril "
-"Bouthors E<lt>cyril@bouthors.orgE<gt>."
+"E<lt>soliton.de@gmail.comE<gt> ir Thomas Baumhauer "
+"E<lt>thomas.baumhauer@gmail.comE<gt>.  Šį dokumentacijos puslapį iš pradžių "
+"parašė Cyril Bouthors E<lt>cyril@bouthors.orgE<gt>."
 
 # type: TH
 #. type: Plain text

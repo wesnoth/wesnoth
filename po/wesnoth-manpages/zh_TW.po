@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.18\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-04-27 22:22-0500\n"
+"POT-Creation-Date: 2026-06-27 12:09+0530\n"
 "PO-Revision-Date: 2024-03-10 21:41+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Wesnoth Traditional Chinese Team\n"
@@ -734,8 +734,8 @@ msgstr ""
 "預處理指定的檔案/目錄。每個檔案未處理及已處理的 .cfg 檔將會被寫入至指定的目標"
 "目錄中。如果有指定目錄，將會遞迴地按照已知的預處理規則預先處理。「data/core/"
 "macros」目錄裡的共用巨集將在指定資源之前被預先處理。例如：B<-p ~/wesnoth/"
-"data/campaigns/tutorial ~/result.>。關於預先處理器的細節請參閱：https://wiki."
-"wesnoth.org/PreprocessorRef#Command-line_preprocessor。"
+"data/campaigns/tutorial ~/result.>。關於預先處理器的細節請參閱：https://"
+"wiki.wesnoth.org/PreprocessorRef#Command-line_preprocessor。"
 
 #. type: TP
 #: doc/man/wesnoth.6:254
@@ -839,8 +839,8 @@ msgstr "B<--render-image>I<\\ image>B<\\ >I<output>"
 #: doc/man/wesnoth.6:296
 msgid ""
 "takes a valid wesnoth 'image path string' with image path functions, and "
-"outputs to a .png file. Image path functions are documented at https://wiki."
-"wesnoth.org/ImagePathFunctionWML."
+"outputs to a .png file. Image path functions are documented at https://"
+"wiki.wesnoth.org/ImagePathFunctionWML."
 msgstr ""
 "取得一個有效的包含圖形路徑函數的韋諾「圖片路徑字串」，並輸出至一個 .png 檔。"
 "圖片路徑函數的文件在 https://wiki.wesnoth.org/ImagePathFunctionWML。"
@@ -1365,8 +1365,8 @@ msgstr "由 David White E<lt>davidnwhite@verizon.netE<gt>編寫。"
 #. type: Plain text
 #: doc/man/wesnoth.6:497
 msgid ""
-"Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon."
-"netE<gt> and Soliton E<lt>soliton.de@gmail.comE<gt>."
+"Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott "
+"E<lt>ott@gaon.netE<gt> and Soliton E<lt>soliton.de@gmail.comE<gt>."
 msgstr ""
 "經 Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt> "
 "and Soliton E<lt>soliton.de@gmail.comE<gt> 更動。"
@@ -1416,19 +1416,8 @@ msgstr "參見"
 
 #
 #
-#.  This program is free software; you can redistribute it and/or modify
-#.  it under the terms of the GNU General Public License as published by
-#.  the Free Software Foundation; either version 2 of the License, or
-#.  (at your option) any later version.
-#.  This program is distributed in the hope that it will be useful,
-#.  but WITHOUT ANY WARRANTY; without even the implied warranty of
-#.  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#.  GNU General Public License for more details.
-#.  You should have received a copy of the GNU General Public License
-#.  along with this program; if not, write to the Free Software
-#.  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #. type: Plain text
-#: doc/man/wesnothd.6:15
+#: doc/man/wesnoth.6:511
 msgid "B<wesnothd>(6)"
 msgstr "B<wesnothd>(6)"
 
@@ -1670,17 +1659,17 @@ msgstr "B<disallow_names>"
 #| msgid ""
 #| "Names/nicks that are not accepted by the server. B<*> and B<?> from "
 #| "wildcard patterns are supported. See B<glob>(7)  for more details.  "
-#| "Default values (used if nothing is specified) are: B<*admin*,*admln*,"
-#| "*server*,ai,ai?,computer,human,network,player>."
+#| "Default values (used if nothing is specified) are: "
+#| "B<*admin*,*admln*,*server*,ai,ai?,computer,human,network,player>."
 msgid ""
 "Names/nicks that are not accepted by the server. B<*> and B<?> from wildcard "
 "patterns are supported. See B<glob>(7)  for more details.  Default values "
-"(used if nothing is specified) are: B<*admin*,*admln*,*moderator*,*server*,"
-"ai,ai?,computer,human,network,player>."
+"(used if nothing is specified) are: "
+"B<*admin*,*admln*,*moderator*,*server*,ai,ai?,computer,human,network,player>."
 msgstr ""
 "伺服器不允許使用的名稱/暱稱。支援使用 B<*> 和 B<?> 這兩個萬用字元。參閱 "
-"B<glob>(7) 來了解細節。預設值（如果沒有東西被指定就會用這個值）是：B<*admin*,"
-"*admln*,*server*,ai,ai?,computer,human,network,player>。"
+"B<glob>(7) 來了解細節。預設值（如果沒有東西被指定就會用這個值）是："
+"B<*admin*,*admln*,*server*,ai,ai?,computer,human,network,player>。"
 
 #. type: TP
 #: doc/man/wesnothd.6:118
@@ -1853,8 +1842,8 @@ msgid ""
 "TLS DH parameters, as .pem file. Generate with B<openssl dhparam -out "
 "filename.pem 4096>"
 msgstr ""
-"TLS Diffie-Hellman 參數，為.pem檔案。使用 B<openssl dhparam -out filename."
-"pem 4096>生成"
+"TLS Diffie-Hellman 參數，為.pem檔案。使用 B<openssl dhparam -out "
+"filename.pem 4096>生成"
 
 #. type: TP
 #: doc/man/wesnothd.6:158
@@ -2231,9 +2220,9 @@ msgstr ""
 msgid ""
 "Written by David White E<lt>davidnwhite@verizon.netE<gt>.  Edited by Nils "
 "Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt>, "
-"Soliton E<lt>soliton.de@gmail.comE<gt> and Thomas Baumhauer E<lt>thomas."
-"baumhauer@gmail.comE<gt>.  This manual page was originally written by Cyril "
-"Bouthors E<lt>cyril@bouthors.orgE<gt>."
+"Soliton E<lt>soliton.de@gmail.comE<gt> and Thomas Baumhauer "
+"E<lt>thomas.baumhauer@gmail.comE<gt>.  This manual page was originally "
+"written by Cyril Bouthors E<lt>cyril@bouthors.orgE<gt>."
 msgstr ""
 "由 David White E<lt>davidnwhite@verizon.netE<gt> 編寫。經 Nils Kneuper "
 "E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt> 和 Soliton "
@@ -2326,8 +2315,8 @@ msgstr "B<wesnoth>(6)"
 #~ "在 $HOME 或「我的文件\\我的遊戲」(Windows)底下設定使用者配置目錄為 "
 #~ "I<name> 。你也可以為配置目錄設定一個在 $HOME 或「我的文件\\我的遊戲」之外"
 #~ "的絕對路徑。在 Windows 上，也可以使用 「.\\e」或「..\\e」作為前綴來指定相"
-#~ "對於工作目錄的相對路徑。在 X11 下，這會預設為 $XDG_CONFIG_HOME 或 $HOME/."
-#~ "config/wesnoth，在其它作業系統上則預設為使用者資料的路徑。"
+#~ "對於工作目錄的相對路徑。在 X11 下，這會預設為 $XDG_CONFIG_HOME 或 "
+#~ "$HOME/.config/wesnoth，在其它作業系統上則預設為使用者資料的路徑。"
 
 #, no-wrap
 #~ msgid "B<-t\\ >I<number>B<,\\ --threads>I<\\ number>"

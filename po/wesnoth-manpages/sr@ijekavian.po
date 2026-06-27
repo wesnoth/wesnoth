@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-manpages\n"
-"POT-Creation-Date: 2025-04-27 22:22-0500\n"
+"POT-Creation-Date: 2026-06-27 12:09+0530\n"
 "PO-Revision-Date: 2012-01-14 14:50+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -758,12 +758,13 @@ msgstr "B<--preprocess, -p[=E<lt>дефиниција-1E<gt>,E<lt>дефиниц
 #| "specified target directory: a plain cfg file and a processed cfg file. If "
 #| "a folder is specified, it will be preprocessed recursively based on the "
 #| "known preprocessor rules. The common macroses from the data/core/macros "
-#| "will be preprocessed before the specified resources.  B<define1,"
-#| "define2,...> - the extra defines will be added before processing the "
-#| "files. If you want to add them you must add the '=' character before.  If "
-#| "'SKIP_CORE' is in the define list the data/core won't be preprocessed.  "
-#| "Example: B<-p ~/wesnoth/data/campaigns/tutorial ~/result> or B<-"
-#| "p=MULTIPLAYER,MY_OWN_CAMPAIGN ~/wesnoth/data/campaign/camp ~/result>"
+#| "will be preprocessed before the specified resources.  "
+#| "B<define1,define2,...> - the extra defines will be added before "
+#| "processing the files. If you want to add them you must add the '=' "
+#| "character before.  If 'SKIP_CORE' is in the define list the data/core "
+#| "won't be preprocessed.  Example: B<-p ~/wesnoth/data/campaigns/tutorial ~/"
+#| "result> or B<-p=MULTIPLAYER,MY_OWN_CAMPAIGN ~/wesnoth/data/campaign/camp "
+#| "~/result>"
 msgid ""
 "preprocesses a specified file/folder. For each file(s) a plain .cfg file and "
 "a processed .cfg file will be written in specified target directory. If a "
@@ -883,8 +884,8 @@ msgstr ""
 #: doc/man/wesnoth.6:296
 msgid ""
 "takes a valid wesnoth 'image path string' with image path functions, and "
-"outputs to a .png file. Image path functions are documented at https://wiki."
-"wesnoth.org/ImagePathFunctionWML."
+"outputs to a .png file. Image path functions are documented at https://"
+"wiki.wesnoth.org/ImagePathFunctionWML."
 msgstr ""
 
 #. type: TP
@@ -1450,8 +1451,8 @@ msgstr "Написао Дејвид Вајт (David White) E<lt>davidnwhite@veri
 #. type: Plain text
 #: doc/man/wesnoth.6:497
 msgid ""
-"Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon."
-"netE<gt> and Soliton E<lt>soliton.de@gmail.comE<gt>."
+"Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott "
+"E<lt>ott@gaon.netE<gt> and Soliton E<lt>soliton.de@gmail.comE<gt>."
 msgstr ""
 "Уредили Нилс Кнојпер (Nils Kneuper) E<lt>crazy-ivanovic@gmx.netE<gt>, ott "
 "E<lt>ott@gaon.netE<gt> и Soliton E<lt>soliton.de@gmail.comE<gt>."
@@ -1505,19 +1506,8 @@ msgstr ""
 msgid "SEE ALSO"
 msgstr "ПОГЛЕДАТИ ЈОШ"
 
-#.  This program is free software; you can redistribute it and/or modify
-#.  it under the terms of the GNU General Public License as published by
-#.  the Free Software Foundation; either version 2 of the License, or
-#.  (at your option) any later version.
-#.  This program is distributed in the hope that it will be useful,
-#.  but WITHOUT ANY WARRANTY; without even the implied warranty of
-#.  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#.  GNU General Public License for more details.
-#.  You should have received a copy of the GNU General Public License
-#.  along with this program; if not, write to the Free Software
-#.  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #. type: Plain text
-#: doc/man/wesnothd.6:15
+#: doc/man/wesnoth.6:511
 #, fuzzy
 #| msgid "B<wesnothd>(6)."
 msgid "B<wesnothd>(6)"
@@ -1574,9 +1564,9 @@ msgid ""
 "wiki/ServerAdministration on what commands the server accepts via the "
 "wesnoth client (/query ...) or the fifo."
 msgstr ""
-"Управља вишеиграчким партијама \"Боја за Веснот\". Погледајте http://www."
-"wesnoth.org/wiki/ServerAdministration за наредбе које сервер прихвата преко "
-"клијента (/query ...) или фифоа."
+"Управља вишеиграчким партијама \"Боја за Веснот\". Погледајте http://"
+"www.wesnoth.org/wiki/ServerAdministration за наредбе које сервер прихвата "
+"преко клијента (/query ...) или фифоа."
 
 #. type: TP
 #: doc/man/wesnothd.6:43
@@ -1772,18 +1762,18 @@ msgstr "B<disallow_names>"
 #| msgid ""
 #| "Names/nicks that are not accepted by the server. B<*> and B<?> from "
 #| "wildcard patterns are supported. See B<glob>(7)  for more details.  "
-#| "Default values (used if nothing is specified) are: B<*admin*,*admln*,"
-#| "*server*,ai,ai?,computer,human,network,player>."
+#| "Default values (used if nothing is specified) are: "
+#| "B<*admin*,*admln*,*server*,ai,ai?,computer,human,network,player>."
 msgid ""
 "Names/nicks that are not accepted by the server. B<*> and B<?> from wildcard "
 "patterns are supported. See B<glob>(7)  for more details.  Default values "
-"(used if nothing is specified) are: B<*admin*,*admln*,*moderator*,*server*,"
-"ai,ai?,computer,human,network,player>."
+"(used if nothing is specified) are: "
+"B<*admin*,*admln*,*moderator*,*server*,ai,ai?,computer,human,network,player>."
 msgstr ""
 "имена/надимци које сервер не прихвата. Прихватају се B<*> и B<?> као џокери "
 "(погледајте B<glob>(7) за више детаља). Подразумијеване вриједности, које се "
-"користе ако се ништа не зада, су: B<*admin*,*admln*,*server*,ai,ai?,computer,"
-"human,network,player>."
+"користе ако се ништа не зада, су: "
+"B<*admin*,*admln*,*server*,ai,ai?,computer,human,network,player>."
 
 #. type: TP
 #: doc/man/wesnothd.6:118
@@ -2390,9 +2380,9 @@ msgstr ""
 msgid ""
 "Written by David White E<lt>davidnwhite@verizon.netE<gt>.  Edited by Nils "
 "Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt>, "
-"Soliton E<lt>soliton.de@gmail.comE<gt> and Thomas Baumhauer E<lt>thomas."
-"baumhauer@gmail.comE<gt>.  This manual page was originally written by Cyril "
-"Bouthors E<lt>cyril@bouthors.orgE<gt>."
+"Soliton E<lt>soliton.de@gmail.comE<gt> and Thomas Baumhauer "
+"E<lt>thomas.baumhauer@gmail.comE<gt>.  This manual page was originally "
+"written by Cyril Bouthors E<lt>cyril@bouthors.orgE<gt>."
 msgstr ""
 "Написао Дејвид Вајт (David White) E<lt>davidnwhite@verizon.netE<gt>. Уредили "
 "Нилс Кнојпер (Nils Kneuper) E<lt>crazy-ivanovic@gmx.netE<gt>, ott "

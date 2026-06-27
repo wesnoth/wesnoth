@@ -18,11 +18,11 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH WESNOTHD 6 2022 wesnothd "Bitva o Wesnoth\ – síťový server pro hru více hráčů"
+.TH WESNOTHD 6 2022 wesnothd "Bitva o Wesnoth – síťový server pro hru více hráčů"
 .
 .SH NÁZEV
 .
-wesnothd\ – Bitva o \fBWesnoth\fP\ – síťový server pro hru více hráčů
+wesnothd – Bitva o \fBWesnoth\fP – síťový server pro hru více hráčů
 .
 .SH POUŽITÍ
 .
@@ -52,7 +52,7 @@ zobrazuje nápovědu k volbám příkazové řádky.
 .TP 
 \fB\-\-log\-\fP\fIúroveň\fP\fB=\fP\fIoblast1\fP\fB,\fP\fIoblast2\fP\fB,\fP\fI...\fP
 nastavuje úroveň závažnosti pro oblasti zaznamenávání. Pro zahrnutí všech
-oblastí zaznamenávání lze použít \fBall\fP. Dostupné úrovně: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP. Výchozí použitá úroveň je \fBerror\fP a\ pro
+oblastí zaznamenávání lze použít \fBall\fP. Dostupné úrovně: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP. Výchozí použitá úroveň je \fBerror\fP a pro
 oblast \fBserver\fP je to \fBinfo\fP.
 .TP 
 \fB\-p\ \fP\fIport\fP\fB,\ \-\-port\fP\fI\ port\fP
@@ -91,7 +91,7 @@ přepisovat. Do tohoto souboru jsou ukládány zákazy přístupu (ban) a načí
 při spuštění.
 .TP 
 \fBconnections_allowed\fP
-Počet povolených spojení z\ jedné IP adresy. \fB0\fP znamená nekonečno. (výchozí
+Počet povolených spojení z jedné IP adresy. \fB0\fP znamená nekonečno. (výchozí
 hodnota: \fB5\fP)
 .TP 
 \fBdeny_unregistered_login\fP
@@ -100,18 +100,18 @@ aby se přihlásili. (výchozí hodnota: false)
 .TP 
 \fBdisallow_names\fP
 Jména/přezdívky, jež server nepřijímá. Podporovány jsou zástupné znaky \fB*\fP
-a\ \fB?\fP. Pro více podrobností viz \fBglob\fP(7). Výchozí hodnoty (použité, když
+a \fB?\fP. Pro více podrobností viz \fBglob\fP(7). Výchozí hodnoty (použité, když
 není nic určeno) jsou:
 \fB*admin*,*admln*,*moderator*,*server*,ai,ai?,computer,human,network,player\fP.
 .TP 
 \fBfifo_path\fP
-Cesta k\ fifo, do níž můžeš posílat příkazy serveru (stejně jako pomocí
-/query z\ klienta). Pokud není zadána, použije se cesta určená při
+Cesta k fifo, do níž můžeš posílat příkazy serveru (stejně jako pomocí
+/query z klienta). Pokud není zadána, použije se cesta určená při
 kompilaci. (výchozí hodnota: \fB/var/run/wesnothd/socket\fP)
 .TP 
 \fBid\fP
 Identifikátor serveru při použití databázových funkcí pro uložení informací
-o\ hře. Obvykle je to major.minor verze přípustných klientů, jako třeba 1.16
+o hře. Obvykle je to major.minor verze přípustných klientů, jako třeba 1.16
 nebo 1.17.
 .TP 
 \fBmax_messages\fP
@@ -129,7 +129,7 @@ Heslo pro získání administrátorských práv. (Přes \fB/query admin \fP\fIpa
 .TP 
 \fBreplay_save_path\fP
 Adresář, do nějž server ukládá záznamy her. (Nezapomeň na / na konci!)
-Výchozí hodnotou je `', což znamená adresář, v\ němž byl wesnothd spuštěn.
+Výchozí hodnotou je `', což znamená adresář, v němž byl wesnothd spuštěn.
 .TP 
 \fBrestart_command\fP
 Příkaz, který server použije pro spuštění nového procesu sebe sama při
@@ -156,7 +156,7 @@ Parametry DH pro TLS jako soubor ve formátu PEM. Vytvořte pomocí příkazu
 .TP 
 \fBversions_accepted\fP
 Seznam čárkou oddělených řetězců verzí, které server přijímá. Podporovány
-jsou zástupné znaky \fB*\fP a\ \fB?\fP. (výchozí hodnotou je příslušná verze hry
+jsou zástupné znaky \fB*\fP a \fB?\fP. (výchozí hodnotou je příslušná verze hry
 wesnoth)
 .br
 Příklad: \fBversions_accepted="*"\fP přijímá jakýkoli řetězec verze.
@@ -199,12 +199,12 @@ na určený server klientské požadavky. Akceptuje stejné klíče jako
 \fB[redirect]\fP.
 .RE
 .P
-\fB[user_handler]\fP Konfiguruje obsluhu uživatelů. Pokud v\ konfiguraci oddíl
+\fB[user_handler]\fP Konfiguruje obsluhu uživatelů. Pokud v konfiguraci oddíl
 \fB[user_handler]\fP chybí, server poběží bez jakékoli služby pro registraci
 přezdívek. Všechny další tabulky, které jsou třeba, aby pracoval
-\fBforum_user_handler\fP, lze najít v\ table_definitions.sql v\ repozitáři
+\fBforum_user_handler\fP, lze najít v table_definitions.sql v repozitáři
 zdrojových kódů Wesnothu. Vyžaduje zapnutou podporu mysql. Pro cmake je to
-\fBENABLE_MYSQL\fP a\ pro scons je to \fBforum_user_handler.\fP
+\fBENABLE_MYSQL\fP a pro scons je to \fBforum_user_handler.\fP
 .RS
 .TP 
 \fBdb_host\fP
@@ -214,34 +214,34 @@ Název hostitele databázového serveru
 Název databáze
 .TP 
 \fBdb_user\fP
-Název uživatele pro přihlášení k\ databázi
+Název uživatele pro přihlášení k databázi
 .TP 
 \fBdb_password\fP
 Heslo tohoto uživatele
 .TP 
 \fBdb_users_table\fP
 Název tabulky, do které tvé phpBB fórum ukládá svá data o
-uživatelích. S\ největší pravděpodobností to bude
+uživatelích. S největší pravděpodobností to bude
 <table\-prefix>_users (např. phpbb3_users).
 .TP 
 \fBdb_extra_table\fP
 Název tabulky, do které bude wesnothd ukládat svá vlastní data
-o\ uživatelích.
+o uživatelích.
 .TP 
 \fBdb_game_info_table\fP
-Název tabulky, do které bude wesnothd ukládat svá vlastní data o\ hrách.
+Název tabulky, do které bude wesnothd ukládat svá vlastní data o hrách.
 .TP 
 \fBdb_game_player_info_table\fP
-Název tabulky, do které bude wesnothd ukládat svá vlastní data o\ hráčích ve
+Název tabulky, do které bude wesnothd ukládat svá vlastní data o hráčích ve
 hře.
 .TP 
 \fBdb_game_content_info_table\fP
-Název tabulky, do které bude wesnothd ukládat svá vlastní data o\ herním
+Název tabulky, do které bude wesnothd ukládat svá vlastní data o herním
 obsahu (scénáři/éře/modifikacích) použitém ve hře.
 .TP 
 \fBdb_user_group_table\fP
-Název tabulky, do které tvé phpBB fórum ukládá svá data o\ skupinách
-uživatelů. S\ největší pravděpodobností to bude
+Název tabulky, do které tvé phpBB fórum ukládá svá data o skupinách
+uživatelů. S největší pravděpodobností to bude
 <table\-prefix>_user_group (např. phpbb3_user_group).
 .TP 
 \fBdb_tournament_query\fP
@@ -249,42 +249,42 @@ SQL dotaz na vyhledání turnajů, které se mají vypsat při přihlášení. M
 vrátit \fBnázev\fP, \fBstav\fP a \fBurl\fP turnaje.
 .TP 
 \fBdb_connection_history_table\fP
-Název tabulky pro ukládání časů přihlášení a\ odhlášení. Je také použita pro
-párování IP adres s\ uživateli a\ naopak.
+Název tabulky pro ukládání časů přihlášení a odhlášení. Je také použita pro
+párování IP adres s uživateli a naopak.
 .TP 
 \fBdb_topics_table\fP
-Název tabulky, do které tvé phpBB fórum ukládá své informace o\ tématech
+Název tabulky, do které tvé phpBB fórum ukládá své informace o tématech
 (vláknech). Nejpravděpodobněji to bude <table\-prefix>_topics
 (např. phpbb3_topics).
 .TP 
 \fBdb_banlist_table\fP
-Název tabulky, do které tvé phpBB fórum ukládá svá data o\ zablokovaných
+Název tabulky, do které tvé phpBB fórum ukládá svá data o zablokovaných
 uživatelích. Nejspíše to bude <table\-prefix>_banlist
 (např. phpbb3_banlist).
 .TP 
 \fBmp_mod_group\fP
-Identifikátor skupiny fóra, o\ které se předpokládá, že má oprávnění
-k\ moderování.
+Identifikátor skupiny fóra, o které se předpokládá, že má oprávnění
+k moderování.
 .TP 
 \fBforum_admin_group\fP
-Identifikátor jedné ze skupin fóra, o\ které se předpokládá, že má na serveru
+Identifikátor jedné ze skupin fóra, o které se předpokládá, že má na serveru
 s rozšířeními oprávnění správce.
 .TP 
 \fBsite_admin_group\fP
-Identifikátor jedné ze skupin fóra, o\ které se předpokládá, že má na serveru
+Identifikátor jedné ze skupin fóra, o které se předpokládá, že má na serveru
 s rozšířeními oprávnění správce.
 .RE
 .
 .SH "NÁVRATOVÝ KÓD"
 .
 Když byl server řádně ukončen, je hodnota návratového kódu 0. Návratová
-hodnota\ 2 ukazuje na chybu ve volbách příkazového řádku.
+hodnota 2 ukazuje na chybu ve volbách příkazového řádku.
 .
 .SH AUTOŘI
 .
 Vytvořil David White <davidnwhite@verizon.net>. Upravili Nils
 Kneuper <crazy\-ivanovic@gmx.net>, ott <ott@gaon.net>,
-Soliton <soliton@sonnenkinder.org> a\ Thomas Baumhauer
+Soliton <soliton@sonnenkinder.org> a Thomas Baumhauer
 <thomas.baumhauer@gmail.com>. Tuto manuálovou stránku původně
 vytvořil Cyril Bouthors <cyril@bouthors.org>.
 .br

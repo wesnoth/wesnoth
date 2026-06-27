@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.5.7+dev\n"
-"POT-Creation-Date: 2025-04-27 22:22-0500\n"
+"POT-Creation-Date: 2026-06-27 12:09+0530\n"
 "PO-Revision-Date: 2014-06-04 23:24+0700\n"
 "Last-Translator: \n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
@@ -843,14 +843,14 @@ msgid ""
 "preprocessor visit: https://wiki.wesnoth.org/PreprocessorRef#Command-"
 "line_preprocessor."
 msgstr ""
-"tiền xử lý một tập tin/thư mục được chỉ định. Với mỗi tập tin, một tập tin ."
-"cfg thường và một tập tin .cfg được xử lý sẽ được ghi trong thư mục đích "
-"được chỉ định. Nếu một thư mục được chỉ định, nó sẽ được tiền xử lý đệ quy "
-"dựa trên các quy tắc tiền xử lý đã biết. Các macro chung từ thư mục \"data/"
-"core/macros\" sẽ được tiền xử lý trước các tài nguyên được chỉ định. Ví dụ: "
-"B<-p ~/wesnoth/data/campaigns/tutorial ~/result.> Để biết chi tiết liên quan "
-"đến tiền xử lý, truy cập: http://wiki.wesnoth.org/PreprocessorRef#Command-"
-"line_preprocessor"
+"tiền xử lý một tập tin/thư mục được chỉ định. Với mỗi tập tin, một tập "
+"tin .cfg thường và một tập tin .cfg được xử lý sẽ được ghi trong thư mục "
+"đích được chỉ định. Nếu một thư mục được chỉ định, nó sẽ được tiền xử lý đệ "
+"quy dựa trên các quy tắc tiền xử lý đã biết. Các macro chung từ thư mục "
+"\"data/core/macros\" sẽ được tiền xử lý trước các tài nguyên được chỉ định. "
+"Ví dụ: B<-p ~/wesnoth/data/campaigns/tutorial ~/result.> Để biết chi tiết "
+"liên quan đến tiền xử lý, truy cập: http://wiki.wesnoth.org/"
+"PreprocessorRef#Command-line_preprocessor"
 
 #. type: TP
 #: doc/man/wesnoth.6:254
@@ -961,8 +961,8 @@ msgstr ""
 #: doc/man/wesnoth.6:296
 msgid ""
 "takes a valid wesnoth 'image path string' with image path functions, and "
-"outputs to a .png file. Image path functions are documented at https://wiki."
-"wesnoth.org/ImagePathFunctionWML."
+"outputs to a .png file. Image path functions are documented at https://"
+"wiki.wesnoth.org/ImagePathFunctionWML."
 msgstr ""
 
 # type: TP
@@ -1580,8 +1580,8 @@ msgstr "Viết bởi David White E<lt>davidnwhite@verizon.netE<gt>."
 #. type: Plain text
 #: doc/man/wesnoth.6:497
 msgid ""
-"Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon."
-"netE<gt> and Soliton E<lt>soliton.de@gmail.comE<gt>."
+"Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott "
+"E<lt>ott@gaon.netE<gt> and Soliton E<lt>soliton.de@gmail.comE<gt>."
 msgstr ""
 "Chỉnh sửa bởi Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott "
 "E<lt>ott@gaon.netE<gt> và Soliton E<lt>soliton.de@gmail.comE<gt>."
@@ -1593,8 +1593,8 @@ msgid ""
 "This manual page was originally written by Cyril Bouthors "
 "E<lt>cyril@bouthors.orgE<gt>."
 msgstr ""
-"Trang hướng dẫn này ban đầu được viết bởi Cyril Bouthors E<lt>cyril@bouthors."
-"orgE<gt>."
+"Trang hướng dẫn này ban đầu được viết bởi Cyril Bouthors "
+"E<lt>cyril@bouthors.orgE<gt>."
 
 # type: Plain text
 #. type: Plain text
@@ -1642,19 +1642,8 @@ msgid "SEE ALSO"
 msgstr "XEM THÊM"
 
 # type: TH
-#.  This program is free software; you can redistribute it and/or modify
-#.  it under the terms of the GNU General Public License as published by
-#.  the Free Software Foundation; either version 2 of the License, or
-#.  (at your option) any later version.
-#.  This program is distributed in the hope that it will be useful,
-#.  but WITHOUT ANY WARRANTY; without even the implied warranty of
-#.  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#.  GNU General Public License for more details.
-#.  You should have received a copy of the GNU General Public License
-#.  along with this program; if not, write to the Free Software
-#.  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #. type: Plain text
-#: doc/man/wesnothd.6:15
+#: doc/man/wesnoth.6:511
 #, fuzzy
 #| msgid "B<wesnothd>(6)."
 msgid "B<wesnothd>(6)"
@@ -1719,9 +1708,9 @@ msgid ""
 "wiki/ServerAdministration on what commands the server accepts via the "
 "wesnoth client (/query ...) or the fifo."
 msgstr ""
-"Quản lý các trò chơi nhiều người chơi Trận chiến vì Wesnoth. Xem http://www."
-"wesnoth.org/wiki/ServerAdministration để biết những lệnh nào máy chủ chấp "
-"nhận qua máy khách wesnoth (/query ...) hoặc fifo."
+"Quản lý các trò chơi nhiều người chơi Trận chiến vì Wesnoth. Xem http://"
+"www.wesnoth.org/wiki/ServerAdministration để biết những lệnh nào máy chủ "
+"chấp nhận qua máy khách wesnoth (/query ...) hoặc fifo."
 
 # type: TP
 #. type: TP
@@ -1944,18 +1933,18 @@ msgstr "B<disallow_names>"
 #| msgid ""
 #| "Names/nicks that are not accepted by the server. B<*> and B<?> from "
 #| "wildcard patterns are supported. See B<glob>(7)  for more details.  "
-#| "Default values (used if nothing is specified) are: B<*admin*,*admln*,"
-#| "*server*,ai,ai?,computer,human,network,player>."
+#| "Default values (used if nothing is specified) are: "
+#| "B<*admin*,*admln*,*server*,ai,ai?,computer,human,network,player>."
 msgid ""
 "Names/nicks that are not accepted by the server. B<*> and B<?> from wildcard "
 "patterns are supported. See B<glob>(7)  for more details.  Default values "
-"(used if nothing is specified) are: B<*admin*,*admln*,*moderator*,*server*,"
-"ai,ai?,computer,human,network,player>."
+"(used if nothing is specified) are: "
+"B<*admin*,*admln*,*moderator*,*server*,ai,ai?,computer,human,network,player>."
 msgstr ""
 "Tên/biệt danh không được máy chủ chấp nhận. B<*> và B<?> từ các mẫu ký tự "
 "đại diện được hỗ trợ. Xem B<glob>(7) để biết thêm chi tiết. Giá trị mặc định "
-"(được sử dụng nếu không có gì được chỉ định) là: B<*admin*,*admln*,*server*,"
-"ai,ai?,computer,human,network,player>."
+"(được sử dụng nếu không có gì được chỉ định) là: "
+"B<*admin*,*admln*,*server*,ai,ai?,computer,human,network,player>."
 
 # type: TP
 #. type: TP
@@ -2619,15 +2608,15 @@ msgstr ""
 msgid ""
 "Written by David White E<lt>davidnwhite@verizon.netE<gt>.  Edited by Nils "
 "Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt>, "
-"Soliton E<lt>soliton.de@gmail.comE<gt> and Thomas Baumhauer E<lt>thomas."
-"baumhauer@gmail.comE<gt>.  This manual page was originally written by Cyril "
-"Bouthors E<lt>cyril@bouthors.orgE<gt>."
+"Soliton E<lt>soliton.de@gmail.comE<gt> and Thomas Baumhauer "
+"E<lt>thomas.baumhauer@gmail.comE<gt>.  This manual page was originally "
+"written by Cyril Bouthors E<lt>cyril@bouthors.orgE<gt>."
 msgstr ""
 "Viết bởi David White E<lt>davidnwhite@verizon.netE<gt>.  Chỉnh sửa bởi Nils "
 "Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt>, "
-"Soliton E<lt>soliton.de@gmail.comE<gt> và Thomas Baumhauer E<lt>thomas."
-"baumhauer@gmail.comE<gt>.  Trang hướng dẫn này ban đầu được viết bởi Cyril "
-"Bouthors E<lt>cyril@bouthors.orgE<gt>."
+"Soliton E<lt>soliton.de@gmail.comE<gt> và Thomas Baumhauer "
+"E<lt>thomas.baumhauer@gmail.comE<gt>.  Trang hướng dẫn này ban đầu được viết "
+"bởi Cyril Bouthors E<lt>cyril@bouthors.orgE<gt>."
 
 # type: TH
 #. type: Plain text
@@ -2739,9 +2728,9 @@ msgstr "B<wesnoth>(6)."
 #~ "đặt đường dẫn thư mục cấu hình của người dùng thành I<tên> dưới $HOME "
 #~ "hoặc \"My Documents\\eMy Games\" với windows. Bạn cũng có thể chỉ định "
 #~ "một đường dẫn tuyệt đối cho thư mục cấu hình nằm ngoài $HOME hoặc \"My "
-#~ "Documents\\eMy Games\". Dưới X11 mặc định là $XDG_CONFIG_HOME hoặc $HOME/."
-#~ "config/wesnoth, trên các hệ thống khác là đường dẫn dữ liệu của người "
-#~ "dùng."
+#~ "Documents\\eMy Games\". Dưới X11 mặc định là $XDG_CONFIG_HOME hoặc "
+#~ "$HOME/.config/wesnoth, trên các hệ thống khác là đường dẫn dữ liệu của "
+#~ "người dùng."
 
 # type: TP
 #, no-wrap
@@ -2829,8 +2818,8 @@ msgstr "B<wesnoth>(6)."
 #~ "decompresses a file which should be in bzip2 format and stores it without "
 #~ "the .bz2 suffix. The I<infile.bz2> will be removed."
 #~ msgstr ""
-#~ "giải nén một tập tin ở định dạng gzip và lưu không có đuôi .gz. I<tập_tin."
-#~ "gz> sẽ bị xóa."
+#~ "giải nén một tập tin ở định dạng gzip và lưu không có đuôi .gz. "
+#~ "I<tập_tin.gz> sẽ bị xóa."
 
 # type: TP
 #, fuzzy, no-wrap
@@ -2860,8 +2849,8 @@ msgstr "B<wesnoth>(6)."
 #~ "decompresses a file which should be in gzip format and stores it without "
 #~ "the .gz suffix. The I<infile.gz> will be removed."
 #~ msgstr ""
-#~ "giải nén một tập tin ở định dạng gzip và lưu không có đuôi .gz. I<tập_tin."
-#~ "gz> sẽ bị xóa."
+#~ "giải nén một tập tin ở định dạng gzip và lưu không có đuôi .gz. "
+#~ "I<tập_tin.gz> sẽ bị xóa."
 
 # type: TP
 #, no-wrap
