@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2026-06-23 03:15 UTC\n"
-"PO-Revision-Date: 2026-05-20 22:41+0200\n"
+"PO-Revision-Date: 2026-06-14 22:15+0200\n"
 "Last-Translator: Piotr Makarewicz <sxpgch@gmail.com>\n"
 "Language-Team: \n"
 "Language: pl\n"
@@ -50,6 +50,10 @@ msgid ""
 "Quenoth elves include units that can attack several times per turn, and "
 "others that can move after attacking."
 msgstr ""
+"Uwaga: Ta kampania zmienia niektóre mechaniki gry, takie jak cykl dnia i "
+"nocy, koszty przywoływania jednostek i ogólne podejście do poziomów "
+"trudności. Wśród elfów Quenoth znajdują się również jednostki które mogą "
+"atakować wiele razy na turę i inne które mogą ruszać się po ataku."
 
 #. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:25
@@ -69,7 +73,7 @@ msgstr "Młodzieniec"
 #. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:30
 msgid "Difficult"
-msgstr ""
+msgstr "Trudny"
 
 #. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:30
@@ -79,7 +83,7 @@ msgstr "Bohater"
 #. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:31
 msgid "Apocalyptic"
-msgstr ""
+msgstr "Apokaliptyczny"
 
 #. [campaign]: id=Under_the_Burning_Suns
 #: data/campaigns/Under_the_Burning_Suns/_main.cfg:31
@@ -192,7 +196,7 @@ msgstr "Źli"
 #. [side]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:114
 msgid "Animals"
-msgstr ""
+msgstr "Zwierzęta"
 
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:124
@@ -658,7 +662,7 @@ msgstr "Może chowają się w stajniach. Chodźmy sprawdzić."
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:874
 msgid "Wandering Dustboks... A pity they only come to us now."
-msgstr ""
+msgstr "Błądzące piaskolopy… Szkoda że dopiero teraz do nas przychodzą."
 
 #. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:912
@@ -1126,6 +1130,8 @@ msgid ""
 "Units are refreshed at the start of your turn when they are on a water or "
 "oasis hex"
 msgstr ""
+"Jednostki zostają orzeźwione na początku tury kiedy znajdują się na polu z "
+"wodą lub oazą."
 
 #. [note]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:240
@@ -1285,7 +1291,7 @@ msgstr "Cóż, im szybciej dotrzemy do Szczytowej Skały, tym lepiej. Naprzód!"
 #. a variant of the Giant Scorpion unit type
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:371
 msgid "Scuttler"
-msgstr ""
+msgstr "Czmychacz"
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:396
@@ -1389,7 +1395,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:594
 msgid ""
 "It’s a pack of Wandering Scarabs! They must’ve been burrowed under the sand."
-msgstr ""
+msgstr "To grupa podróżujących skarabeuszy! Musiały być zakopane pod piaskiem."
 
 #. [scenario]: id=02_Across_the_Harsh_Sands, role=Hunting Ogre
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:626
@@ -1679,7 +1685,7 @@ msgid ""
 msgstr ""
 "Pamiętam cię, piaskowy elfie. Myśleliście, że mnie pokonaliście, ale "
 "powróciłem jeszcze potężniejszy niż poprzednio. Władza śmierci jest wieczna, "
-"a wkrótce wasze spalone kości i ciała bez życia dołączą do moich zastępów!"
+"a wkrótce wasze spalone kości i ciała bez życia dołączą do moich zastępów."
 
 #. [message]: speaker=Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1297
@@ -1777,6 +1783,8 @@ msgid ""
 "Phew, thank goodness that this oasis is here! I was beginning to worry that "
 "it might have been a mirage, but it appears to be real!"
 msgstr ""
+"Uffff, całe szczęście ta oaza tu jest! Zaczynały nachodzić mnie wątpliwości "
+"że mogła to być fata morgana, ale wydaje się jednak rzeczywiście tu być!"
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1501
@@ -1785,16 +1793,18 @@ msgid ""
 "who’s to say we might not have encountered a mirage under some other "
 "conditions?"
 msgstr ""
+"Doprawdy, twoja ostrożność była uzasadniona; oaza może być prawdziwa tym "
+"razem, ale kto mówi że nie spotkalibyśmy mirażu w innych okolicznościach?"
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1506
 msgid "It has been known to happen before."
-msgstr ""
+msgstr "Wiadomo, że takie sytuacje już wcześniej miały miejsce."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1510
 msgid "I don’t even want to think about something like that. Onwards!"
-msgstr ""
+msgstr "Nawet nie chcę myśleć o czymś takim. Naprzód!"
 
 #. [message]: speaker=$explorer.id
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1515
@@ -2118,7 +2128,7 @@ msgstr "Pokonaj Ystarę"
 #. [objective]: condition=lose
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:265
 msgid "You lose control (even temporarily) of more than 6 villages"
-msgstr "Tracisz kontrolę nad więcej niż 6 wioskami (nawet tymczasowo)."
+msgstr "Tracisz kontrolę nad więcej niż 6 wioskami (nawet tymczasowo)"
 
 #. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:340
@@ -2351,7 +2361,7 @@ msgstr ""
 #. Custom steadfast ability. Has same name as the as the one in core, but works a bit different.
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:711
 msgid "Garak’s resistances are increased by 20% when defending."
-msgstr ""
+msgstr "Odporności Garaka są o 20% wyższe gdy się broni."
 
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:723
@@ -2380,6 +2390,8 @@ msgid ""
 "This attack always has a 70% chance to hit regardless of the defensive "
 "ability of the champion being attacked."
 msgstr ""
+"Ten atak zawsze ma 70% szansy na trafienie niezależnie od zdolność obrony "
+"atakowanego rycerza."
 
 #. [message]: speaker=Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:802
@@ -3110,6 +3122,10 @@ msgid ""
 "night! It shows an orcish camp just up ahead! I wonder if we could sneak "
 "around without alerting them."
 msgstr ""
+"Skoro już o tych krainach mowa, może i nie mamy Garaka który by nas "
+"poprowadził, ale cały teren w tym obszarze idealnie pasuje do mapy, którą "
+"zdobyliśmy od orków zeszłej nocy! Widać na niej obóz orków tuż przed nami! "
+"Ciekawe, czy moglibyśmy się tam zakraść, nie zwracając ich uwagi."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:388
@@ -3238,6 +3254,8 @@ msgid ""
 "Merely a few steps in and all these goblins already know we’re here! I guess "
 "it’s not that easy to sneak around in someone else’s home territory."
 msgstr ""
+"Ledwo kilka kroków i już te wszystkie gobliny wiedzą że tu jesteśmy! Chyba "
+"jednak nie jest łatwo skradać się po czyimś terytorium."
 
 #. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:553
@@ -3282,7 +3300,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:621
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:781
 msgid "Yesss, we remember the oath... Sssslay them all!"
-msgstr ""
+msgstr "Tak, pamiętamy przysssięgę… Zabić ich wszyssstkich!"
 
 #. [message]: speaker=Panok
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:642
@@ -3386,6 +3404,8 @@ msgid ""
 "Remember, Kaleh, it’s nasty fighting underground. We will be at a "
 "disadvantage against orcs and other things that prefer the darkness."
 msgstr ""
+"Pamiętaj, Kaleh, walka pod ziemią jest paskudna. Będziemy w niekorzystnej "
+"sytuacji w starciu z orkami i innymi istotami, które preferują ciemność."
 
 #. [message]: speaker=Elyssa
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:825
@@ -4535,7 +4555,7 @@ msgstr ""
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2458
 msgid "The real fighting? I thought that was what we were waist-deep in?"
-msgstr "Prawdziwej walki? Myślałam, że właśnie w niej uczestniczymy."
+msgstr "Prawdziwej walki? Myślałam, że właśnie jesteśmy w niej do pasa?"
 
 #. [message]: speaker=Zurg
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2463
@@ -5052,6 +5072,10 @@ msgid ""
 "reduce a unit to 1 hit point, but, unlike the lava damage, the heat damage "
 "can’t kill the unit."
 msgstr ""
+"Ponadto, z powodu gorąca panującego w jaskini, wszystkie jednostki na polach "
+"jaskini będą otrzymywać obrażenia $heat_damage na początku każdej tury. "
+"Obrażenia od ciepła mogą sprowadzić jednostkę do 1 punkt życia, ale w "
+"przeciwieństwie do obrażeń od lawy, obrażenia od ciepła nie mogą jej zabić."
 
 #. [message]: role=Troll High Shaman
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:971
@@ -5618,6 +5642,9 @@ msgid ""
 "dwarves an easy access route if they defeated us. So much for an escape "
 "route, I guess we’ll just have to be sure not to fail."
 msgstr ""
+"Zurg musiał zawalić tunel. Może nie chciał aby krasnoludom miały proste "
+"przejście, gdyby nas pokonali. Tyle z drogi ucieczki, chyba musimy mieć "
+"pewność, że nie zawiedziemy."
 
 #. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:647
@@ -8175,7 +8202,7 @@ msgstr "Spójrzcie, światło słońca! Chyba w końcu udało się nam wyjść z
 #. Nym is blocked by deep water, and drowning is inevitable
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2586
 msgid "Kaleh? Zhul? I’m still stuck back here..."
-msgstr ""
+msgstr "Kaleh? Zhul? Jestem tu uwięziona..."
 
 #. [message]: speaker=$explorer.id
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2601
@@ -8195,7 +8222,7 @@ msgstr "Kaleh, chodź tu i zobacz to."
 #. Kaleh is blocked by deep water, and drowning is inevitable
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2637
 msgid "Ack, I’m surrounded by water!"
-msgstr ""
+msgstr "Ahh, jestem otoczony przez wodę!"
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2657
@@ -9588,7 +9615,7 @@ msgstr "Mija kilka godzin..."
 #. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4497
 msgid "Jezhar"
-msgstr ""
+msgstr "Jezhar"
 
 #. [message]: speaker=Dummy Unit7
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4502
@@ -9596,6 +9623,8 @@ msgid ""
 "Eastern scouts, reporting back! If you like sand and hot dust, there’s "
 "plenty more out there! No water, or signs of others, we had to turn back."
 msgstr ""
+"Zwiadowcy ze wschodu meldują się! Jeśli lubisz piasek i gorący pył, jest ich "
+"tam o wiele więcej! Brak wody i śladów innych, musieliśmy zawrócić."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4507
@@ -9603,11 +9632,13 @@ msgid ""
 "No shame in that, Jezhar. Of all the scouts, only Tanstafaal and Nym have "
 "yet to return."
 msgstr ""
+"Nie ma w tym nic złego, Jezhar. Ze wszystkich zwiadowców tylko Tanstafaal i "
+"Nym jeszcze nie wrócili."
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4512
 msgid "And that has me worried. What if-"
-msgstr ""
+msgstr "I to sprawia że się martwię. Co jeśli-"
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4537
@@ -9775,6 +9806,8 @@ msgstr "Dziękuję, Nym. Nie jestem zbyt dobry w walce na suchej ziemi."
 msgid ""
 "With you back, Nym, the only scouts yet to return are Tanstafaal’s group."
 msgstr ""
+"Po twoim powrocie, Nym, jedynymi zwiadowcami, którzy jeszcze nie powrócili, "
+"jest grupa Tanstafaala."
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4683
@@ -10478,6 +10511,8 @@ msgstr ""
 msgid ""
 "$(16 - $turn_number) turns remain to free $number_merfolk_caged| merfolk"
 msgstr ""
+"$(16 - $turn_number) tur pozostało aby uwolnić $number_merfolk_caged| ludzi "
+"morza"
 
 #. [event]
 #. [unit]: type=Necromancer, id=Hekuba
@@ -11528,6 +11563,11 @@ msgid ""
 "pressing and our leader lives too far out in the waters to make this voyage "
 "twice."
 msgstr ""
+"Zdobyliśmy pewną wiedzę o sterowaniu, szpiegując ludzi, i posiadamy magiczne "
+"umiejętności kontrolowania wiatru. Po wypłynięciu na otwarte morze nasza "
+"podróż powinna być szybka i bezpieczna, bez niebezpieczeństw. Poza tym czas "
+"nas goni, a nasza przywódczyni mieszka zbyt daleko od brzegu, by odbyć tę "
+"podróż dwa razy."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2505
@@ -11832,19 +11872,14 @@ msgstr "Czyi szpiedzy?"
 
 #. [message]: speaker=Melusand
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:246
-#, fuzzy
-#| msgid ""
-#| "Perhaps I should start at the beginning. Make yourselves comfortable, for "
-#| "this may take a while. I want to tell you a tale, it is a story of the "
-#| "fall of what you refer to as ‘The Golden Age’."
 msgid ""
 "Perhaps I should start at the beginning, for that is a good place to start. "
 "Make yourselves comfortable, this may take a while. I want to tell you a "
 "tale, it is a story of the fall of what you refer to as ‘The Golden Age’."
 msgstr ""
-"Może powinnam zacząć od początku. Usiądźcie wygodnie, bo to może trochę "
-"potrwać. Chcę wam opowiedzieć pewną historię, historię o upadku tego, co "
-"nazywacie \"Złotym Wiekiem\"."
+"Może powinnam zacząć od początku, gdyż dobrze jest do niego zacząć. "
+"Usiądźcie wygodnie, bo to może trochę potrwać. Chcę wam opowiedzieć pewną "
+"historię, historię o upadku tego, co nazywacie \"Złotym Wiekiem\"."
 
 #. [message]: speaker=Melusand
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:253
@@ -12950,12 +12985,12 @@ msgstr "Kelur"
 #. [side]: type=Orcish Shaman, id=Zoldak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:164
 msgid "Zoldak"
-msgstr ""
+msgstr "Zoldak"
 
 #. [side]: type=Saurian Seer, id=Tchoyob
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:311
 msgid "Tchoyob"
-msgstr ""
+msgstr "Tchoyob"
 
 #. [unit]: type=Merman Triton, id=Trapped Merman
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:384
@@ -13034,6 +13069,8 @@ msgid ""
 "The jungle here doesn’t want to answer me, as if afraid of indescribable "
 "horrors within it. As much as I love nature, this place frightens me."
 msgstr ""
+"Tutejsza dżungla nie chce mi odpowiedzieć, jakby bała się nieopisywalnych "
+"okropieństw wewnątrz niej. Choć kocham naturę, to miejsce mnie przeraża."
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:613
@@ -13065,6 +13102,8 @@ msgid ""
 "The trees themselves seem against my presence here. They give me an ominous "
 "feeling as if something bad is going to happen if I stay here."
 msgstr ""
+"Same drzewa zdają się sprzeciwiać mojej obecności tutaj. Wywołują we mnie "
+"niepokojące uczucie, jakby miało się stać coś złego, jeśli tu zostanę."
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:656
@@ -13128,12 +13167,14 @@ msgid ""
 "This thing... instead of speaking to nature, it controls it! Destroy it, "
 "quickly!"
 msgstr ""
+"Ta rzecz... Zamiast rozmawiać z naturą kontroluje ją! Zniszcz ją, szybko!"
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:751
 msgid ""
 "This alien thing... Indescribable, yet so vile. It can’t be anything good."
 msgstr ""
+"Ta obca rzecz... Nieopisywalna, ale tak podła. Nie może być niczym dobrym. "
 
 #. [message]: speaker=Boyicht
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:768
@@ -13239,11 +13280,16 @@ msgid ""
 "straight away. In any case, feel free to make use of our camp as it seems "
 "that we have common enemies."
 msgstr ""
+"Witajcie. Wiedziałem że już zmierzacie ale nie oczekiwałem że przybędziecie "
+"od razu. W każdym razie, możecie swobodnie korzystać z naszego obozu "
+"ponieważ wydaje się że mamy wspólnych wrogów. "
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:996
 msgid "Thank you Shaman. We will do so. Now, I wonder where the merfolk are?"
 msgstr ""
+"Dziękuje szamanie. Tak zrobimy. Teraz, zastanawiam się gdzie podziali się "
+"ludzie morza?"
 
 #. [message]: speaker=Graghht
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1007
@@ -13251,6 +13297,8 @@ msgid ""
 "Since you entered our fort, use it for your troops. Get them here quickly "
 "and help us."
 msgstr ""
+"Skoro wszedłeś do naszego obozu wykorzystaj go dla swoich żołnierzy. Nie "
+"przybędą tu szybko i nam pomogą."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1011
@@ -13324,11 +13372,13 @@ msgid ""
 "We won’t be controlled any more! We will reclaim this island as rightfully "
 "ours! Destroy the false god! Rebuild the legacy of our ancestors!"
 msgstr ""
+"Nie będziemy dłużej kontrolowani! Odzyskamy tą wyspę która prawowicie należy "
+"do nas! Zniszczyć fałszywego boga! Odbudujemy dziedzictwo naszych przodków! "
 
 #. [message]: speaker=Graghht
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1229
 msgid "Protect the shaman that gave us freedom! Slaughter our enemies!"
-msgstr ""
+msgstr "Chrońmy szamana który dał nam wolność! Zabić naszych wrogów!"
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1234
@@ -13338,7 +13388,7 @@ msgstr "Co oni tu robią?"
 #. [message]: speaker=Graghht
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1255
 msgid "Graaaaaaaaaaaaaaaaaaaaaghht!"
-msgstr ""
+msgstr "Graaaaaaaaaaaaaaaaaaaaaghht!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1285
@@ -13683,17 +13733,17 @@ msgstr ""
 #. [message]: speaker=Graghht
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1820
 msgid "I am going in to help too!"
-msgstr ""
+msgstr "Ja też zamierzam pomóc!"
 
 #. [message]: speaker=Zoldak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1836
 msgid "Go after them. We will stay here and protect the entrance."
-msgstr ""
+msgstr "Idź za nimi. My tu zostaniemy i będziemy chronić wejścia. "
 
 #. [message]: speaker=Zoldak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1854
 msgid "We will stay here and protect the entrance."
-msgstr ""
+msgstr "Zostaniemy tu bronić wejścia."
 
 #. [message]: speaker=Grog
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1868
@@ -15218,6 +15268,9 @@ msgid ""
 "that is known is that they can spell trouble for those who go poking around "
 "in caverns and ruins."
 msgstr ""
+"Czy te potwory to jakieś bestie-żołnierze z minionej epoki? A może duchy z "
+"innego wymiaru? Wiedza o ich pochodzeniu zaginęła, wiadomo jedynie, że mogą "
+"zwiastować kłopoty tym, którzy grzebią w jaskiniach i ruinach."
 
 #. [attack]: type=fire
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Ixthala_Demon.cfg:25
@@ -15281,12 +15334,12 @@ msgstr ""
 #. [attack]: type=blade
 #: data/campaigns/Under_the_Burning_Suns/units/other/Dark_Assassin_Uncloaked.cfg:40
 msgid "dagger"
-msgstr ""
+msgstr "sztylet"
 
 #. [attack]: type=blade
 #: data/campaigns/Under_the_Burning_Suns/units/other/Dark_Assassin_Uncloaked.cfg:49
 msgid "throwing knives"
-msgstr ""
+msgstr "noże do rzucania"
 
 #. [unit_type]: id=Quenoth Archer, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Archer.cfg:5
@@ -15303,6 +15356,11 @@ msgid ""
 "from the saddle, allowing them to more easily avoid the perils of melee "
 "combat."
 msgstr ""
+"Otwarte piaski zapewniają znacznie mniejszą ochronę niż dawne lasy, dlatego "
+"szerokie szeregi elfickich łuczników, niegdyś stanowiących trzon elfickiej "
+"armii, praktycznie zniknęły. Zamiast tego nieliczni, którzy nadal oddają się "
+"tradycyjnej broni swoich przodków, ćwiczą tę sztukę z siodła, co pozwala im "
+"łatwiej unikać niebezpieczeństw walki wręcz."
 
 #. [unit_type]: id=Quenoth Champion, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Champion.cfg:5
@@ -15318,6 +15376,10 @@ msgid ""
 "with raw power and can force their way through all but the most secure of "
 "defenses."
 msgstr ""
+"Stoją na czele większości linii włóczników Quenoth, mistrzowie to ci, którzy "
+"opanowali glewię niemal do perfekcji. Choć może tylko nieznacznie brakuje im "
+"finezji w strategii, te elfy rekompensują to z nawiązką surową siłą, którą "
+"jedynie najlepsze formacje obronne są w stanie powstrzymać."
 
 #. [attack]: type=pierce
 #. [attack]: type=blade
@@ -15359,7 +15421,7 @@ msgstr "magia"
 #. Only displayed in debug mode
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Corrupted_Elf.cfg:78
 msgid "defeated"
-msgstr ""
+msgstr "pokonany"
 
 #. [unit_type]: id=Divine Avatar, gender=female, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Divine_Avatar.cfg:4
@@ -15406,6 +15468,12 @@ msgid ""
 "for combat and survival, these elves are the few who remain as healers and "
 "caretakers."
 msgstr ""
+"Wyznawcy Bogini Światła, Eloh, druidzi są uważani za tajemniczych nawet "
+"przez inne elfy z tego samego zakonu. Częściowo wynika to z niezwykłej więzi "
+"druidów z naturą, niemal całkowicie nieobecnej w świecie przesiąkniętym "
+"spalonym piaskiem. W brutalnym świecie, gdzie inni ćwiczą się w walce i "
+"przetrwaniu, te elfy to nieliczni, którzy pozostają uzdrowicielami i "
+"opiekunami."
 
 #. [attack]: type=impact
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Druid.cfg:40
@@ -15431,6 +15499,14 @@ msgid ""
 "the death of many a foolish Dustbok, it has made them excellent partners to "
 "the Quenoth Elves, who value their speed and agility."
 msgstr ""
+"Dustboki to zwinne, pełne gracji stworzenia, których płochliwa i spokojna "
+"natura stanowi ostry kontrast z surową ziemią, na której żyją. Ponieważ "
+"spalona ziemia nie jest w stanie utrzymać stad ani nawet ich terytorialnych "
+"sąsiadów, Dustboki są samotnymi wędrowcami, a jednocześnie są towarzyskie, "
+"ciekawskie i chętne do współpracy z każdym, kto szuka pożywienia. Chociaż "
+"takie zachowanie doprowadziło do śmierci wielu niemądrych Dustboków, "
+"uczyniło je doskonałymi towarzyszami elfów z Quenoth, którzy cenią ich "
+"szybkość i zwinność."
 
 #. [unit_type]: id=Quenoth Fighter, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Fighter.cfg:5
@@ -15476,6 +15552,13 @@ msgid ""
 "frowned on by their ancestors — to cripple their foes before charging in for "
 "the finish."
 msgstr ""
+"Niektórzy Wojownicy odkrywają, że ich prawdziwe talenty leżą nie w sztywnych "
+"szeregach włóczni, ale na pustyni, gdzie atakują flanki i tyły sił wroga. "
+"Szybkie i zwinne, te elfy wykorzystują słabości wrogich formacji, aby rozbić "
+"ich linie i siać chaos na polu bitwy. W bardziej zaciętych starciach, "
+"Flankujący uciekają się nawet do trucizny – narzędzia, którego użycie było "
+"źle widziane przez ich przodków – aby okaleczyć wrogów przed szarżą na "
+"dobicie wroga."
 
 #. [attack]: type=pierce
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Flanker.cfg:46
@@ -15502,6 +15585,18 @@ msgid ""
 "ancestors, these master archers can achieve the same speed and precision as "
 "the Sharpshooters of old, all while in full gallop on horseback."
 msgstr ""
+"W przeszłości dominacja elfów w łucznictwie była niezrównana wśród innych "
+"ras Wielkiego Kontynentu. Jednak z powodu mniejszej przydatności łucznictwa "
+"w krainie gdzie umożliwiająca ukrycie się roślinność jest rzadka, "
+"użyteczność umiejętności nielicznych pozostałych elfich łuczników zostały "
+"poddane w wątpliwość do tego stopnia, że nawet ich pobratymcy zaczęli uważać "
+"łucznictwo za przeżytek, a nie praktyczne narzędzie walki.\n"
+"\n"
+"Wystarczy spojrzeć na strzelca wyborowego z Quenoth w akcji, by rozwiać "
+"wszelkie wątpliwości w tej kwestii. Zdolni do tych samych legendarnych "
+"wyczynów co ich przodkowie, ci mistrzowie łucznictwa potrafią osiągać tę "
+"samą szybkość i precyzję co dawni strzelcy wyborowi, a wszystko to w pełnym "
+"galopie na piaskolopach."
 
 #. [unit_type]: id=Quenoth Mystic, race=quenoth, gender=female
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Mystic.cfg:5
@@ -15518,6 +15613,12 @@ msgid ""
 "sun are the source of the elves’ new powers, which they employ to great "
 "effect in their homes in the deserts."
 msgstr ""
+"Podobnie jak ich przodkowie, mistycy z Quenoth poświęcają się naturalnym "
+"energiom płynącym przez ciało Irdyi. Na surowych, jałowych pustkowiach elfy "
+"te nie mogą jednak już polegać na niegdyś rozległych lasach, z których ich "
+"przodkowie czerpali znaczną część swojej siły. Zamiast tego piasek i słońce "
+"są źródłem nowych mocy elfów, które z powodzeniem wykorzystują w swoich "
+"domach na pustyniach."
 
 #. [unit_type]: id=Quenoth Outrider, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Outrider.cfg:5
@@ -15534,6 +15635,13 @@ msgid ""
 "riders is especially dangerous, for against them, both retreat and attrition "
 "are futile, a prospect that is only ruinous in the inhospitable desert."
 msgstr ""
+"Opisywani jako jeźdźcy „pędzący jak wiatr”, forysie mkną przez piaski z "
+"niezrównaną prędkością. W przeciwieństwie do swoich pomniejszych braci, "
+"forysie szkolą się do walki bezpośredniej, władając mieczem i bolą, by "
+"atakować ranne jednostki i odsłonięte flanki, gdzie linie wroga są "
+"najsłabsze. Grupa tych jeźdźców jest szczególnie niebezpieczna, ponieważ "
+"przeciwko nim zarówno odwrót, jak i walka na wyczerpanie są daremne, "
+"perspektywa która może być tylko zgubna na niegościnnej pustyni."
 
 #. [attack]: type=impact
 #. [effect]: type=impact
@@ -15561,6 +15669,16 @@ msgid ""
 "tries the patience of their enemies, who are provoked into recklessly giving "
 "chase — inevitably into many a deadly trap."
 msgstr ""
+"W przeszłości, odwrót i ucieczka z pola walki były ryzykowną taktyką, "
+"ponieważ niewiele było sposobów na uniknięcie lub zablokowanie wrogich "
+"łuczników strzelających z tyłu. Na pustyni, jednak, niestabilne podłoże i "
+"brak osłony znacznie utrudniają większości wojowników atakowanie z dystansu. "
+"Nieuchwytni poszukiwacze ścieżek wykorzystują to, dosiadając wyjątkowo "
+"zwinnych dustboków, które są doskonale przystosowane do przemierzania wydm i "
+"potrafią unikać większości ataków dzięki swoim szybkim ruchom. Trudności w "
+"unieruchomieniu tych jeźdźców często wystawiają na próbę cierpliwość wrogów, "
+"którzy prowokowani są do brawurowego pościgu – nieuchronnie wpadając w wiele "
+"śmiertelnych pułapek."
 
 #. [unit_type]: id=Quenoth Ranger, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Ranger.cfg:5
@@ -15581,6 +15699,16 @@ msgid ""
 "deadly in the harsh desert terrain, where fewer options to retreat are "
 "available."
 msgstr ""
+"Tytuł „Łowcy” jest nieco mylący, ponieważ te zwinne elfy niewiele mają "
+"wspólnego z bardziej pacyfistycznie nastawionymi badaczami natury, którzy "
+"niegdyś nosili ten sam tytuł. Są oni raczej doświadczonymi wojownikami, "
+"którzy szukają walki, aby doskonalić swoje umiejętności potyczek. Choć nie "
+"dysponują brutalną siłą swoich wojowników, Łowcy z Quenoth są bardziej "
+"biegli w poruszaniu się w chaotycznych walkach i potrafią błyskawicznie "
+"wkraczać i wymykać się z szeregów wroga, aby zabijać ranne cele. Ich "
+"mistrzowskie posługiwanie się trucizną i imponująca szermierka sprawiają, że "
+"elfy te są szczególnie śmiercionośne w surowym, pustynnym terenie, gdzie "
+"możliwości ucieczki są ograniczone."
 
 #. [unit_type]: id=Quenoth Scout, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Scout.cfg:5
@@ -15595,6 +15723,10 @@ msgid ""
 "useful abilities to harry enemies and allows them to act as effective "
 "hunters and patrolmen."
 msgstr ""
+"Dosiadając zgrabnych i zwinnych dustboków, zwiadowcy Quenoth poruszają się "
+"po piaskach z niezrównaną szybkością. Ich wyćwiczone umiejętności "
+"posługiwania się mieczem i procą są przydatne w nękaniu wrogów i pozwalają "
+"im działać jako skuteczni myśliwi i stróżami."
 
 #. [unit_type]: id=Quenoth Shaman, race=quenoth, gender=female
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Shaman.cfg:5
@@ -15612,6 +15744,14 @@ msgid ""
 "inhospitable environment is a sign of hope as well, a chance that nature "
 "might one day rise from its sandy grave and bloom again."
 msgstr ""
+"Podobnie jak elfy z dawnych czasów, wielu elfów z Quenoth woli zgłębiać "
+"sztukę medycyny i uzdrawiania niż doskonalić swoje umiejętności w "
+"bezpośredniej walce. Szamani posiadają rozległą wiedzę o rzadkiej "
+"roślinności rozsianej po pustyniach, a nawet posiadają zdolność wspomagania "
+"wzrostu plonów, co jest nieocenioną umiejętnością w krainie o ograniczonych "
+"zasobach. Zdolność do pielęgnowania flory w tak niegościnnym środowisku jest "
+"również oznaką nadziei – szansą, że natura pewnego dnia powstanie z "
+"piaszczystego grobu i rozkwitnie na nowo."
 
 #. [unit_type]: id=Quenoth Shyde, race=quenoth, gender=female
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Shyde.cfg:5
@@ -15634,6 +15774,18 @@ msgid ""
 "we be, for the power of faerie is that to transmute the flesh of our world, "
 "from sand to earth, from scorched wasteland to life.”"
 msgstr ""
+"Z nauk Analii, uzdrowicielki Szmaragdowego Kwiatu:\n"
+"\n"
+"„...wkraczając na ścieżkę do świata wróżek, musimy przekroczyć granicę ciała "
+"i magii, aby stać się istotą ich obu. Tak jak forma fizyczna wiąże krew, "
+"która daje nam życie, tak musi wiązać energię rządzącą naszym światem, to, "
+"co jest płynącym wiatrem, cyklem dnia i nocy, niekończącym się biegiem "
+"czasu... Jesteśmy formą fizyczną, ale jesteśmy również ponadczasowymi "
+"duchami, istotami dotkniętymi przez to, co jest ze świata wróżek. Ten świat "
+"trwa przez eony, niezależnie od tego, czy przybiera formę natury, ognia, czy "
+"piasku, zawsze istnieje. Skoro jest zmienny, my też musimy być zmienni, bo "
+"jego mocą jest przemienianie ciała naszego świata, z piasku w ziemię, ze "
+"spalonej pustyni w życie”."
 
 #. [attack]: type=impact
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Shyde.cfg:43
@@ -15643,12 +15795,12 @@ msgstr "piasek"
 #. [advancement]: id=natures_aid
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Shyde.cfg:127
 msgid "Connection with Nature"
-msgstr ""
+msgstr "Połączenie z naturą"
 
 #. [advancement]: id=extra_natures_aid
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Shyde.cfg:175
 msgid "Nature Aid"
-msgstr ""
+msgstr "Wsparcie natury"
 
 #. [unit_type]: id=Quenoth Sun Singer, race=quenoth, gender=female
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Singer.cfg:5
@@ -15667,18 +15819,26 @@ msgid ""
 "this new magic sing of the dual nature of these embodiments of fire: flames "
 "that are both life and life’s demise."
 msgstr ""
+"Magia wróżek i elfów często była trafnie kojarzona z życiem, z którego "
+"czerpią większość swojej mocy. Jednak wraz ze śmiercią znacznej części flory "
+"Irdyi, elfy Quenoth zmuszone zostały do ​​poszukiwania innego źródła swojej "
+"magii. Z czasem nauczyły się okiełznać moc słońc Seli i Naii – bliźniaczych "
+"gwiazd, które obróciły lasy Irdyi w popiół, a mimo to wciąż tryskają energią "
+"potrzebną do krzewienia życia. Ci, którzy opanowali tę nową magię, śpiewają "
+"o podwójnej naturze tych ucieleśnień ognia: płomieniach, które są zarówno "
+"życiem, jak i jego końcem."
 
 #. [attack]: type=arcane
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Singer.cfg:37
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Sylph.cfg:40
 msgid "sun invocation"
-msgstr ""
+msgstr "wezwanie słońca"
 
 #. [attack]: type=arcane
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Singer.cfg:51
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Sylph.cfg:54
 msgid "sun ray"
-msgstr ""
+msgstr "promień słonca"
 
 #. [unit_type]: id=Quenoth Sun Sylph, race=quenoth, gender=female
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Sylph.cfg:5
@@ -15698,11 +15858,20 @@ msgid ""
 "These Sun Sylphs very much embody the power that they wield: light that "
 "heals and protects, and flames that smolder with destruction."
 msgstr ""
+"W przeszłości ci, którzy przekroczyli granice świata elfów i wróżek, "
+"nazywani byli Sylfami – mistykami o niezrównanej wiedzy o sekretach natury. "
+"Jednak w surowym nowym świecie droga do krainy wróżek przestała być podróżą "
+"do serca natury, lecz rozwidlającą się ścieżką między światłem a ciemnością. "
+"Te elfy, które uznają płonące słońca za punkt oparcia życia i śmierci, uczą "
+"się również okiełznać ich moc, przemieniając się w istoty przepełnione "
+"promieniejącym ogniem. Te Słoneczne Sylfy w pełni ucieleśniają moc, którą "
+"władają: światło, które leczy i chroni, oraz płomienie, które niosą "
+"zniszczenie."
 
 #. [attack]: type=fire
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Sun_Sylph.cfg:70
 msgid "sun incarnate"
-msgstr ""
+msgstr "słońce wcielone"
 
 #. [unit_type]: id=Tauroch, race=monster
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Tauroch.cfg:5
@@ -15718,6 +15887,11 @@ msgid ""
 "easily carry or pull heavy loads, their thick hides and unwavering "
 "resolution also make them formidable mounts in battle."
 msgstr ""
+"Taurochy to ogromne, zahartowane bestie pustyni, uważane za nieokiełznane "
+"przez większość ocalałych ras. Jednak bliskie pokrewieństwo elfów z naturą "
+"pozwoliło im nawiązać nietypową więź z tymi niesfornymi zwierzętami. Choć "
+"taurochy z łatwością niosą i ciągną ciężkie ładunki, ich grube skóry i "
+"niezłomna determinacja czynią je również potężnymi wierzchowcami w walce."
 
 #. [attack]: type=impact
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Tauroch.cfg:23
@@ -15744,6 +15918,13 @@ msgid ""
 "times of need, when the elves are threatened by something more than mere "
 "scavengers or wild beasts."
 msgstr ""
+"Prestiżowi chorążowie spędzają lata na otwartych pustyniach, prowadząc "
+"swoich pobratymców na patrole i polowania, gdzie zdobywają zapasy, broniąc "
+"jednocześnie swoich wiosek przed bandytami. Niezmiennie są mistrzami "
+"potyczek i taktyki, biegle przemierzając niegościnne piaski. Rzadko kiedy są "
+"przywódcami dużych wiosek lub armii, chorążowie posiadają jednak "
+"umiejętności i charyzmę, by pełnić rolę generałów w potrzebie, gdy elfy są "
+"zagrożone przez coś więcej niż tylko padlinożerców czy dzikie bestie."
 
 #. [unit_type]: id=Tauroch Protector, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Tauroch_Protector.cfg:5
@@ -15779,6 +15960,30 @@ msgid ""
 "Goddess herself. I think I will call her Nala, meaning ‘Protector’ in our "
 "tongue. I am sure we will have many more adventures together."
 msgstr ""
+"Z dziennika Syniela, Pustynnego Biegacza:\n"
+"\n"
+"Orkowie zaatakowali mnie z zasadzki w pobliżu oazy o zmierzchu. Musiałem "
+"uciekać na pustynię, ale nawet tam wilki były wystarczająco szybkie, by "
+"dotrzymać mi kroku. Biegłem i biegłem godzinami, aż ledwo czułem nogi, a one "
+"wciąż mnie ścigały w jasnym świetle księżyca. Myślałem, że na pewno zginę, "
+"ale dzięki Eloh, natknąłem się na młodego taurocha, który oddalił się od "
+"swojego stada. Musiała wyczuć moje kłopoty, bo szybko do mnie podbiegła i "
+"walczyła u mego boku przez całą długą noc; mimo skrajnego wycieńczenia, "
+"cudem udało nam się samotnie odeprzeć dziesiątki orków i wilków. O świcie "
+"byliśmy sami, ale ranni i wyczerpani do szpiku kości, mając przed sobą tylko "
+"piasek. Zużyłem resztki zapasów, by opatrzyć rany taurocha, po czym sam "
+"uległem zmęczeniu i niewiele potem pamiętam.\n"
+"\n"
+"-----------------------\n"
+"\n"
+"Obudziłem się dziś w wiosce, zmęczony, ale żywy. Moi przyjaciele powiedzieli "
+"mi, że niosła mnie przez pustynię przez wiele godzin, co ją srogo "
+"kosztowało, bo kiedy dotarliśmy, była w gorszym stanie niż ja. Mogę być "
+"tylko wdzięczny, że udało mi się przeżyć tę straszną noc, bo tylko dzięki "
+"łasce Eloh trafiłem na tak wierną towarzyszkę. Jest moją wybawicielką, moją "
+"czujną strażniczką, błogosławieństwem samej Bogini. Chyba będę ją nazywał "
+"Nala, co w naszym języku oznacza „Opiekunka”. Jestem pewny, że przeżyjemy "
+"razem jeszcze wiele przygód."
 
 #. [unit_type]: id=Tauroch Rider, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Tauroch_Rider.cfg:5
@@ -15796,6 +16001,14 @@ msgid ""
 "skilled rider can hold off multiple enemies by itself and serves as a "
 "powerful warden to protect elven villages and caravans."
 msgstr ""
+"Taurochy to ogromne, zahartowane bestie pustyni, uważane przez większość "
+"ocalałych ras za nieokiełznane. Jednak bliskie relacje elfów z naturą "
+"pozwoliły im nawiązać nietypową więź z tymi niesfornymi zwierzętami. Choć "
+"taurochy z łatwością niosą i ciągną ciężkie ładunki, ich grube skóry i "
+"niezłomna determinacja czynią je również potężnymi wierzchowcami w walce. "
+"Taurochy dowodzone przez doświadczonego jeźdźca potrafią samodzielnie "
+"odeprzeć wielu wrogów i służą jako potężny strażnik, chroniący elfie wioski "
+"i karawany."
 
 #. [unit_type]: id=Tauroch Stalwart, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Tauroch_Stalwart.cfg:5
@@ -15813,6 +16026,14 @@ msgid ""
 "Stalwart would undoubtedly be wise to seek another path, for trying to "
 "displace the beast would be akin to trying to fight a stone wall."
 msgstr ""
+"Napotykając dzikie taurochy, myśliwi z Quenoth często obserwują osobliwe "
+"zachowanie wyjątkowo upartych bestii, które napinają swoje potężne ciała i "
+"absolutnie odmawiają ustąpienia, gdy zostaną sprowokowane. Choć trudno je "
+"udobruchać, te taurochy są czasami wybierane przez doświadczonych jeźdźców "
+"ze względu na ich wyjątkową odporność. Każdy wojownik, którego natarcie "
+"blokuje mocarz, niewątpliwie postąpi rozsądnie, szukając innej drogi, "
+"ponieważ próba przemieszczenia bestii byłaby jak próba walki z kamiennym "
+"murem."
 
 #. [unit_type]: id=Tauroch Vanguard, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Tauroch_Vanguard.cfg:5
@@ -15831,6 +16052,15 @@ msgid ""
 "presence of these riders is a heartening one for most elves and a deterrent "
 "for the many pillagers that rove the deserts."
 msgstr ""
+"Potężne i nieustraszone taurochy są często wykorzystywane nie tylko do "
+"szarżowania i przebijania się przez formacje wroga, ale także do "
+"mobilizowania i motywowania piechoty do utrzymania pozycji. Straż przednia "
+"to dzielni jeźdźcy, biegli w przetrwaniu w wirze bitwy i przewodzeniu swoim "
+"pobratymcom z linii frontu. Górując nad falującymi wydmami, straż przednia "
+"niesie wielkie flagi, które błyszczą na pustynnym niebie, stanowiąc "
+"charakterystyczny widok nawet z daleka, zza piasków. Obecność tych jeźdźców "
+"dodaje otuchy większości elfów i stanowi odstraszacz dla licznych "
+"grabieżców, którzy grasują po pustyniach."
 
 #. [unit_type]: id=Quenoth Warrior, race=quenoth
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Warrior.cfg:5
@@ -15847,6 +16077,12 @@ msgid ""
 "these somewhat unorthodox weapons to both strike with great power and to "
 "support their nearby brethren."
 msgstr ""
+"W porównaniu z włócznią, glewia jest często krótszą bronią o mniejszym "
+"zasięgu, ale bardziej wszechstronną w użyciu. Doświadczony wojownik może "
+"użyć jej ostrza, aby zaczepić lub unieruchomić broń przeciwnika i uderzyć "
+"pod nietypowym kątem, co pozwala mu zaskoczyć nieostrożnego przeciwnika. W "
+"formacji Wojownicy Quenoth noszą tę niecodzienną broń, aby uderzać z wielką "
+"siłą i wspierać swoich pobratymców."
 
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:4
 msgid ""
@@ -15878,7 +16114,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:85
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:402
 msgid "Swordsmanship Training"
-msgstr ""
+msgstr "Trening szermierki"
 
 #. [advancement]: id=strong_strikes
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:106
@@ -15888,18 +16124,18 @@ msgstr "Silne uderzenia"
 #. [advancement]: id=swordsman
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:123
 msgid "Swordsman"
-msgstr ""
+msgstr "Szermierz"
 
 #. [advancement]: id=strength_training
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:146
 msgid "Strength Training"
-msgstr ""
+msgstr "Trening siły"
 
 #. [advancement]: id=bowmanship_training
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:158
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:482
 msgid "Bowmanship Training"
-msgstr ""
+msgstr "Trening łucznictwa"
 
 #. [advancement]: id=strong_shots
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:175
@@ -15909,33 +16145,33 @@ msgstr "Silne strzały"
 #. [advancement]: id=Bowman
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:187
 msgid "Bowman"
-msgstr ""
+msgstr "Łucznik"
 
 #. [advancement]: id=piercing_shot
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:207
 msgid "Piercing Shot"
-msgstr ""
+msgstr "Przebijający strzał"
 
 #. [advancement]: id=stronger_grip
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:233
 msgid "Stronger Grip"
-msgstr ""
+msgstr "Silniejszy chwyt"
 
 #. [advancement]: id=overwhelming_power
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:246
 msgid "Overwhelming Power"
-msgstr ""
+msgstr "Przytłaczająca moc"
 
 #. [advancement]: id=stamina_training
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:271
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:602
 msgid "Stamina Training"
-msgstr ""
+msgstr "Trening wytrwałości"
 
 #. [advancement]: id=endurance_training
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:286
 msgid "Endurance Training"
-msgstr ""
+msgstr "Trening wytrzymałości"
 
 #. [advancement]: id=skirmisher
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:306
@@ -15953,82 +16189,82 @@ msgstr "Trening z bolami"
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:345
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:694
 msgid "Slow"
-msgstr ""
+msgstr "Spowolnienie"
 
 #. [advancement]: id=opportunist
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:365
 msgid "Opportunist"
-msgstr ""
+msgstr "Oportunista"
 
 #. [advancement]: id=leading
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:386
 msgid "Leading"
-msgstr ""
+msgstr "Przewodzący"
 
 #. [advancement]: id=accurate_strikes
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:423
 msgid "Accurate Strikes"
-msgstr ""
+msgstr "Celne udzerzenia"
 
 #. [advancement]: id=faster_strikes
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:443
 msgid "Faster Strikes"
-msgstr ""
+msgstr "Szybkie uderzenia"
 
 #. [advancement]: id=sword_dance
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:455
 msgid "Sword Dance"
-msgstr ""
+msgstr "Taniec mieczy"
 
 #. [advancement]: id=quickdraw
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:499
 msgid "Quickdraw"
-msgstr ""
+msgstr "Szybkie dobycie"
 
 #. [advancement]: id=ranger
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:511
 msgid "Ranger"
-msgstr ""
+msgstr "Łowca"
 
 #. [advancement]: id=rain_of_arrows
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:529
 msgid "Rain of Arrows"
-msgstr ""
+msgstr "Deszcz strzał"
 
 #. [advancement]: id=twin_arrows
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:558
 msgid "Twin Arrows"
-msgstr ""
+msgstr "Podwójne strzały"
 
 #. [advancement]: id=snipe
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:570
 msgid "Snipe"
-msgstr ""
+msgstr "Strzał snajperski"
 
 #. [advancement]: id=footwork
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:617
 msgid "Footwork"
-msgstr ""
+msgstr "Praca nóg"
 
 #. [advancement]: id=run_by_bolas
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:682
 msgid "Run By (Bolas)"
-msgstr ""
+msgstr "Wyminięcie (bole)"
 
 #. [advancement]: id=bolaship
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:714
 msgid "Bolaship"
-msgstr ""
+msgstr "Mistrzostwo nad bolami"
 
 #. [advancement]: id=herbalism
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:727
 msgid "Herbalism"
-msgstr ""
+msgstr "Zielarstwo"
 
 #. [advancement]: id=run_by_sword_and_bow
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:745
 msgid "Run By (Sword and Bow)"
-msgstr ""
+msgstr "Wyminięcie (miecz i łuk)"
 
 #. [unit_type]: id=Quenoth Youth, race=quenoth, gender=male,female, description={QUENOTH_YOUTH_DESCRIPTION}
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:878
@@ -16125,7 +16361,6 @@ msgstr "Eteryczna zjawa"
 
 #. [unit_type]: id=ESpectre
 #: data/campaigns/Under_the_Burning_Suns/units/undead/Ethereal_Spectre.cfg:14
-#, fuzzy
 msgid ""
 "Sometimes called the ‘hollow men’, spectres form the right arm of their "
 "master’s power. These abominations are a rightful terror to the living, and "
@@ -16224,13 +16459,15 @@ msgid ""
 "Compared to the elves of the Great Continent around the time of Wesnoth, the "
 "Quenoth Elves are far more suited to life in the desert."
 msgstr ""
+"W porównaniu z elfami z Wielkiego Kontynentu z czasów Wesnoth, elfy Quenoth "
+"są o wiele lepiej przystosowane do życia na pustyni."
 
 #. [race]: id=hidden_race
 #: data/campaigns/Under_the_Burning_Suns/units/units.cfg:16
 #: data/campaigns/Under_the_Burning_Suns/units/units.cfg:17
 #: data/campaigns/Under_the_Burning_Suns/units/units.cfg:18
 msgid "Unknown"
-msgstr ""
+msgstr "Nieznany"
 
 #. [race]: id=hidden_race
 #: data/campaigns/Under_the_Burning_Suns/units/units.cfg:22
@@ -16238,6 +16475,8 @@ msgid ""
 "The race of this unit cannot be revealed yet. You must discover it in the "
 "game to be allowed to see its description."
 msgstr ""
+"Rasa tej jednostki nie może być jeszcze ujawniona. Musisz ją odkryć w grze, "
+"aby zobaczyć jej opis."
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:40
 msgid ""
@@ -16247,6 +16486,13 @@ msgid ""
 "When the last verse is sung or the song sequence is broken due to not "
 "attacking for a turn, the song starts again from the first verse."
 msgstr ""
+"Ten atak to pierwsza zwrotka Pieśni Wniebowstąpienia Słońca, która postępuje "
+"o jedną zwrotkę w każdej turze, w której ta jednostka używa ataku zwrotką "
+"pieśni.\n"
+"\n"
+"Gdy ostatnia zwrotka zostanie odśpiewana lub sekwencja pieśni zostanie "
+"przerwana z powodu braku ataku w danej turze, pieśń rozpoczyna się ponownie "
+"od pierwszej zwrotki."
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:45
 msgid ""
@@ -16256,6 +16502,13 @@ msgid ""
 "If this was the last verse or when the song sequence is broken due to not "
 "attacking for a turn, the song starts again from the first verse."
 msgstr ""
+"Ten atak to druga zwrotka Pieśni Wniebowstąpienia Słońca, która postępuje o "
+"jedną zwrotkę w każdej turze, w której ta jednostka używa ataku zwrotką "
+"pieśni.\n"
+"\n"
+"Gdy ostatnia zwrotka zostanie odśpiewana lub sekwencja pieśni zostanie "
+"przerwana z powodu braku ataku w danej turze, pieśń rozpoczyna się ponownie "
+"od pierwszej zwrotki."
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:50
 msgid ""
@@ -16266,29 +16519,36 @@ msgid ""
 "\n"
 "Using this song will also grant illuminates for three turns."
 msgstr ""
+"Ten atak to trzecia zwrotka Pieśni Wniebowstąpienia Słońca, która postępuje "
+"o jedną zwrotkę w każdej turze, w której ta jednostka używa ataku zwrotką "
+"pieśni.\n"
+"\n"
+"W następnej turze pieśń rozpoczyna się ponownie od pierwszej zwrotki.\n"
+"\n"
+"Użycie tej pieśni zapewni również iluminację na trzy tury."
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:57
 msgid "first verse"
-msgstr ""
+msgstr "pierwszy wers"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:60
 msgid "second verse"
-msgstr ""
+msgstr "drugi wers"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:63
 msgid "third verse"
-msgstr ""
+msgstr "trzeci wers"
 
 #. [illuminates]: id=illumination_song_verse
 #. Displayed in the help
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:321
 msgid "third verse illuminates"
-msgstr ""
+msgstr "trzeci wers oświetlenie"
 
 #. [illuminates]: id=illumination_song_verse
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:327
 msgid "female^third verse illuminates"
-msgstr ""
+msgstr "trzeci wers oświetlenie"
 
 #. [illuminates]: id=illumination_song_verse
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:328
@@ -16299,6 +16559,11 @@ msgid ""
 "Any units adjacent to this unit will fight as if it were dusk when it is "
 "night, and as if it were day when it is dusk."
 msgstr ""
+"Gdy ta umiejętność jest aktywna po użyciu ataku wcielenia słońca, jednostka "
+"ta oświetla otaczający obszar przez trzy tury.\n"
+"\n"
+"Wszystkie jednostki sąsiadujące z tą jednostką będą walczyć tak, jakby był "
+"zmierzch, gdy jest noc, i tak, jakby był dzień, gdy jest zmierzch."
 
 #. [illuminates]: id=illumination_song_verse
 #. A similar string exists in the textdomain wesnoth-help
@@ -16307,22 +16572,24 @@ msgid ""
 "Illumination increases the lighting level in adjacent areas. This effect "
 "lasts for three turns after activation."
 msgstr ""
+"Oświetlenie rozjaśnia sąsiednie obszary. Efekt ten utrzymuje się przez trzy "
+"tury po aktywacji."
 
 #. [disable]: id=once_per_turn
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:347
 msgid "once per turn"
-msgstr ""
+msgstr "raz na turę"
 
 #. [disable]: id=once_per_turn
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:348
 msgid "This attack can be used offensively only once per turn"
-msgstr ""
+msgstr "Ten atak może zostać użyty ofensywnie tylko raz na turę"
 
 #. [dummy]: id=nova
 #. weapon special
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:430
 msgid "nova"
-msgstr ""
+msgstr "nowa"
 
 #. [dummy]: id=nova
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:431
@@ -16330,19 +16597,21 @@ msgid ""
 "This weapon, when used offensively, deals damage to all units adjacent to "
 "the caster when it hits."
 msgstr ""
+"Kiedy ta broń trafi zadaje obrażenia wszystkim jednostkom na polach dokoła "
+"jednostki atakującej."
 
 #. [dummy]: id=nova
 #. [dummy]: id=blast
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:432
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:476
 msgid "This unit has wide-area attacks centered on the caster."
-msgstr ""
+msgstr "Ta jednostka ma "
 
 #. [dummy]: id=blast
 #. weapon special
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:472
 msgid "blast"
-msgstr ""
+msgstr "wybuch"
 
 #. [dummy]: id=blast
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:473
@@ -16350,6 +16619,8 @@ msgid ""
 "This weapon, when used offensively, deals damage to all units adjacent to "
 "the enemy when it hits."
 msgstr ""
+"Ta broń, używana w ataku, zadaje obrażenia wszystkim jednostkom znajdującym "
+"się w pobliżu wroga w momencie trafienia."
 
 #. [dummy]: id=blast
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:475
@@ -16358,12 +16629,15 @@ msgid ""
 "the first verse is available in the next turn. Furthermore, invoking this "
 "attack will grant illumination for three turns."
 msgstr ""
+"Ten atak to trzeci werset Pieśni Wniebowstąpienia Słońca. Po jego użyciu, "
+"pierwszy werset będzie dostępny w następnej turze. Co więcej, przywołanie "
+"tego ataku zapewni iluminację na trzy tury."
 
 #. [dummy]: id=ray
 #. weapon special
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:516
 msgid "ray"
-msgstr ""
+msgstr "promień"
 
 #. [dummy]: id=ray
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:517
@@ -16371,6 +16645,8 @@ msgid ""
 "This weapon, when used offensively, also deals damage to a unit behind the "
 "target."
 msgstr ""
+"Ta bron, kiedy jest użyta ofensywnie zadaje również obrażenia jednostce za "
+"celem. "
 
 #. [dummy]: id=ray
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:519
@@ -16379,28 +16655,33 @@ msgid ""
 "when the first verse was sung in the previous turn. If this was the last "
 "verse, then the first verse will be available in the next turn."
 msgstr ""
+"To jest drugi wers Pieśni Wniebowstąpienia Słońca. Jest dostępny tylko "
+"jeżeli pierwszy wers został już odśpiewany w poprzedniej turze. Jeżeli był "
+"to ostatni wers, wtedy w następnej turze pierwszy wers będzie znów dostępny."
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:678
 msgid ""
 "At the start of the turn this unit increases movement points of surrounding "
 "units by +1"
 msgstr ""
+"Na początku tury ta jednostka podnosi punkty ruchu sąsiednich jednostek o +1"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:681
 msgid ""
 "At the start of the turn this unit increases movement points of surrounding "
 "units by +2"
 msgstr ""
+"Na początku tury ta jednostka podnosi punkty ruchu sąsiednich jednostek o +2"
 
 #. [dummy]: description={STR_TAILWIND_RESTRICT_{X}}
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:685
 msgid "tailwind +"
-msgstr ""
+msgstr "sprzyjający wiatr +"
 
 #. [chance_to_hit]: id=parry_offense_only_{VALUE}
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:693
 msgid "parry offense only: + $sub%"
-msgstr ""
+msgstr "ofensywne odbicie: + $sub%"
 
 #. [chance_to_hit]: id=parry_offense_only_{VALUE}
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:694
@@ -16408,16 +16689,17 @@ msgid ""
 "This unit sees its defense reinforced by $sub% when this weapon is used "
 "offensively"
 msgstr ""
+"Obrona tej jednostki jest wzmocniona o $sub% kiedy używa tej broni ofensywnie"
 
 #. [chance_to_hit]: id=parry{VALUE}
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:705
 msgid "parry: + ($sub)"
-msgstr ""
+msgstr "odbicie: + ($sub)"
 
 #. [chance_to_hit]: id=parry{VALUE}
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:706
 msgid "This unit sees its defense reinforced by $sub% when this weapon is used"
-msgstr ""
+msgstr "Obrona tej jednostki jest wzmocniona o $sub% kiedy używa tej broni"
 
 #. [special_note]
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:829
@@ -16427,12 +16709,12 @@ msgstr "Ta jednostka potrafi przenikać przez kamienne ściany."
 #. [dummy]: id=teaching
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:838
 msgid "teaching"
-msgstr "uczy"
+msgstr "uczenie"
 
 #. [dummy]: id=teaching
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:839
 msgid "female^teaching"
-msgstr "uczy"
+msgstr "uczenie"
 
 #. [dummy]: id=teaching
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:840
@@ -16465,6 +16747,8 @@ msgid ""
 "This unit’s melee attack can overwhelm the defenses of enemies, preventing "
 "them from retaliating as effectively."
 msgstr ""
+"Ataki w zwarciu tej jednostki mogą przełamać obronę przeciwników, "
+"zapobiegając skutecznemu kontratakowi."
 
 #. [chance_to_hit]: id=formation
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:883
@@ -16490,7 +16774,7 @@ msgstr ""
 #. [chance_to_hit]: id=formation
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:886
 msgid "Groups of units of this type are able to shield each other in combat."
-msgstr ""
+msgstr "Grupy jednostek tego typu są w stanie osłaniać się nawzajem w walce."
 
 #. [dummy]: id=disengage
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:909
@@ -16523,6 +16807,7 @@ msgstr "oślepia"
 
 #. [dummy]: id=daze
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:921
+#, fuzzy
 msgid ""
 "When hit with this attack, an enemy suffers a 10% penalty both to their "
 "defense and chance to hit for one turn. Other specials that affect chance to "
@@ -16531,6 +16816,13 @@ msgid ""
 "Magical attacks will still have a 70% chance to hit.\n"
 "Marksman attacks are only affected if the chance to hit is greater than 60%."
 msgstr ""
+"Jednostki trafione tym atakiem otrzymują 10% kary do zarówno szansy na "
+"trafienie, jak i uniknięcie trafienia na jedną turę. Inne zdolności które "
+"wpływają na szansę na trafienie mają pierwszeństwo przed tą zdolnością. \n"
+"\n"
+"Ataki magiczne będą wciąż miały 70% szansy na trafienie.\n"
+"Ta umiejętność będzie wpływać na ataki ze strzelcem wyborowym tylko wtedy, "
+"gdy szansa na trafienie jest wyższa niż 60%."
 
 #. [dummy]: id=daze
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:925
@@ -16557,6 +16849,8 @@ msgid ""
 "This unit negates enemy Zones of Control around itself for allied units (but "
 "not for itself)."
 msgstr ""
+"Ta jednostka neguje strefę kontroli przeciwników dookoła siebie dla swoich "
+"sojuszników (ale nie dla siebie)."
 
 #. [skirmisher]: id=distract
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:936
@@ -16564,6 +16858,9 @@ msgid ""
 "This unit is capable of distracting opponents, allowing allied units to "
 "trespass their Zones of Control and move unhindered around them."
 msgstr ""
+"Ta jednostka ma zdolność rozpraszania przeciwników, dzięki czemu jednostki "
+"sojusznicze mogą poruszać się po ich strefie kontroli oraz dookoła nich bez "
+"przeszkód."
 
 #. [dummy]: id=support
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:947
@@ -16593,22 +16890,22 @@ msgstr "oślepiona"
 #. [chance_to_hit]: id=self_dazed
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1024
 msgid "accuracy:"
-msgstr ""
+msgstr "celność:"
 
 #. [chance_to_hit]: id=self_dazed
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1025
 msgid "Because this unit is dazed, its accuracy is decreased by 10%"
-msgstr ""
+msgstr "Ponieważ ta jednostka jest oślepiona jej celność jest obniżona o 10%"
 
 #. [leadership]: id=inspire
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1402
 msgid "inspire"
-msgstr ""
+msgstr "inspiracja"
 
 #. [leadership]: id=inspire
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1403
 msgid "female^inspire"
-msgstr ""
+msgstr "inspiracja"
 
 #. [leadership]: id=inspire
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1404
@@ -16617,6 +16914,10 @@ msgid ""
 "better. Adjacent own units of lower or equal level will deal 25% more damage "
 "plus 25% for each level they are below the inspiring unit."
 msgstr ""
+"Obecność tej jednostki inspiruje sąsiednie jednostki tej samej strony do "
+"zadawania wyższych obrażeń w walce. Sąsiednie jednostki o poziome równym "
+"bądź niższym zadają 25% więcej obrażeń plus 25% za każdy poziom poniżej "
+"poziomu jednostki z inspiracją. "
 
 #. [leadership]: id=inspire
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1405
@@ -16624,22 +16925,25 @@ msgid ""
 "The presence of this unit inspires own units next to it to deal more damage "
 "in combat, though this only applies to units of lower or equal level."
 msgstr ""
+"Obecność tej jednostki inspiruje sąsiednie jednostki tej samej strony do "
+"zadawania wyższych obrażeń w walce, działa to tylko na jednostki o poziomie "
+"niższym bądź równym. "
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1416
 msgid "cooldown 1"
-msgstr ""
+msgstr "czas odnowienia 1"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1419
 msgid "cooldown 2"
-msgstr ""
+msgstr "czas odnowienia 2"
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1422
 msgid "After using this attack, you can’t use it during your next turn."
-msgstr ""
+msgstr "Po użyciu tego ataku nie możesz go użyć przez następną turę."
 
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1425
 msgid "After using this attack, you can’t use it during your next two turns."
-msgstr ""
+msgstr "Po użyciu tego ataku nie możesz go użyć przez następne dwie tury."
 
 #. [dummy]: id=pierce
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1486
@@ -16652,11 +16956,13 @@ msgid ""
 "This weapon, when used offensively, can also deal damage to a unit behind "
 "the target."
 msgstr ""
+"Ta broń, gry używana ofensywnie może również zadać obrażenia jednostce za "
+"celem ataku."
 
 #. [dummy]: id=puncture
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1557
 msgid "puncture"
-msgstr ""
+msgstr "przebicie"
 
 #. [dummy]: id=puncture
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1558
@@ -16664,11 +16970,13 @@ msgid ""
 "This weapon, when used offensively, can also deal damage to two units behind "
 "the target."
 msgstr ""
+"Ta broń, gdy jest używana ofensywnie może zadać obrażenia dwóm jednostkom za "
+"celem ataku. "
 
 #. [dummy]: id=rain_of_arrows
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1641
 msgid "rain of arrows"
-msgstr ""
+msgstr "deszcz strzał"
 
 #. [dummy]: id=rain_of_arrows
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1642
@@ -16676,11 +16984,13 @@ msgid ""
 "This weapon, when used offensively, can also deal damage to a unit behind "
 "the target and all units adjacent to the unit behind the target."
 msgstr ""
+"Ta broń gdy jest użyta ofensywnie może zadać obrażenia jednostce za celem "
+"ataku i wszystkim jednostkom sąsiadującym z polem za celem ataku. "
 
 #. [dummy]: id=sword_dance
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1763
 msgid "sword dance"
-msgstr ""
+msgstr "taniec miecza"
 
 #. [dummy]: id=sword_dance
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1764
@@ -16689,16 +16999,18 @@ msgid ""
 "decreases the chance of being hit by them by 10% each, until the end of the "
 "fight."
 msgstr ""
+"Podczas ataku każde trafione uderzenie podnosi szansę trafienia przeciwnika "
+"i obniża jego szansę na trafienie o 10% do końca walki.  "
 
 #. [heals]: id=natures_aid
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1842
 msgid "nature’s aid +2"
-msgstr ""
+msgstr "pomoc natury +2"
 
 #. [heals]: id=natures_aid
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1843
 msgid "female^nature’s aid +2"
-msgstr ""
+msgstr "pomoc natury +2"
 
 #. [heals]: id=natures_aid
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1844
@@ -16706,6 +17018,9 @@ msgid ""
 "All units on this unit’s side, regardless of distance, will heal themselves "
 "for 2 HP when starting their turn in forest or fungus."
 msgstr ""
+"Wszystkie jednostki po stronie posiadacza tej zdolności bez względu na "
+"dystans, wyleczą 2 punkty życia na początku tury jeżeli stoją w lesie lub "
+"grzybni."
 
 #. [heals]: id=natures_aid
 #. [heals]: id=extra_natures_aid
@@ -16715,6 +17030,8 @@ msgid ""
 "This ability will not cure an affected unit of poison, however, only delay "
 "its effect."
 msgstr ""
+"Umiejętność ta nie uleczy jednostki zatrutej trucizną, jedynie opóźni jej "
+"efekt."
 
 #. [heals]: id=natures_aid
 #. [heals]: id=extra_natures_aid
@@ -16728,12 +17045,12 @@ msgstr ""
 #. [heals]: id=extra_natures_aid
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1869
 msgid "nature’s aid +4"
-msgstr ""
+msgstr "pomoc natury +4"
 
 #. [heals]: id=extra_natures_aid
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1870
 msgid "female^nature’s aid +4"
-msgstr ""
+msgstr "pomoc natury +4"
 
 #. [heals]: id=extra_natures_aid
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1871
@@ -16741,16 +17058,19 @@ msgid ""
 "All units on this unit’s side, regardless of distance, will heal themselves "
 "for 4 HP when starting their turn in forest or fungus."
 msgstr ""
+"Wszystkie jednostki po stronie posiadacza tej zdolności bez względu na "
+"dystans, wyleczą 4 punkty życia na początku tury jeżeli stoją w lesie lub "
+"grzybni."
 
 #. [dummy]: id=corrupting_influence
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1893
 msgid "corrupting influence"
-msgstr ""
+msgstr "Spaczający wpływ"
 
 #. [dummy]: id=corrupting_influence
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1894
 msgid "female^corrupting influence"
-msgstr ""
+msgstr "Spaczający wpływ"
 
 #. [dummy]: id=corrupting_influence
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1895
@@ -16758,6 +17078,8 @@ msgid ""
 "Controls nature to deal 1 point of damage to enemy units standing in forest "
 "or fungus at the beginning of their turn."
 msgstr ""
+"Kontroluje naturę aby zadać 1 punkt obrażeń wrogim jednostkom stojącym w "
+"lesie lub grzybni na początku ich tury. "
 
 #. [dummy]: id=corrupting_influence
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1896
@@ -16765,17 +17087,19 @@ msgid ""
 "Cannot kill a unit, does not grant XP but stacks with other abilities with "
 "the same name."
 msgstr ""
+"Nie może zabić jednostki, nie przyznaje punktów doświadczenia ale kumuluje "
+"się z innymi umiejętnościami o tej samej nazwie."
 
 #. [dummy]: id=corrupting_influence
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1897
 msgid "This unit is capable of control over nature."
-msgstr ""
+msgstr "Ta jednostka jest w stanie kontrolować naturę."
 
 #. [extra_attack]: id=intercept
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1939
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1940
 msgid "intercept"
-msgstr ""
+msgstr "przechwycenie"
 
 #. [extra_attack]: id=intercept
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1941
@@ -16783,6 +17107,9 @@ msgid ""
 "When an enemy unit enters an adjacent space, the wielder immediately "
 "executes an uncountered intercepting strike with this weapon."
 msgstr ""
+"Kiedy wroga jednostka wejdzie na pole obok, posiadacz tej umiejętności "
+"natychmiastowo wykona niekontrowalne uderzenie przechwytujące, używając tej "
+"broni."
 
 #. [extra_attack]: id=intercept
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:1942
@@ -16790,6 +17117,8 @@ msgid ""
 "Delivers a full-power, uncountered attack when enemies move to an adjacent "
 "space. Activates once per turn."
 msgstr ""
+"Raz na turę gdy wróg przemieszcza się na sąsiednie pole atakuje z pełną mocą "
+"bez przyjmowania kontrataku. "
 
 #: data/campaigns/Under_the_Burning_Suns/utils/character-definitions.cfg:5
 msgid "Kaleh"
@@ -16887,7 +17216,7 @@ msgstr ""
 #. [floating_text]
 #: data/campaigns/Under_the_Burning_Suns/utils/dehydration-utils.cfg:114
 msgid "female^thirst"
-msgstr ""
+msgstr "pragnienie"
 
 #. [floating_text]
 #: data/campaigns/Under_the_Burning_Suns/utils/dehydration-utils.cfg:123
@@ -16911,7 +17240,7 @@ msgstr "orzeźwiony"
 #. Floating text shown when Garak's teaching ability transfers experience points
 #: data/campaigns/Under_the_Burning_Suns/utils/garak-abilities.cfg:56
 msgid "+$amount XP"
-msgstr ""
+msgstr "+$amount XP"
 
 #. [part]
 #: data/campaigns/Under_the_Burning_Suns/utils/storytxt.cfg:7
@@ -17866,12 +18195,12 @@ msgstr "Lawa"
 #. [terrain_type]: id=gray_utbs_water
 #: data/campaigns/Under_the_Burning_Suns/utils/terrain.cfg:23
 msgid "Shallow Water"
-msgstr ""
+msgstr "Płytka woda"
 
 #. [terrain_type]: id=gray_utbs_water
 #: data/campaigns/Under_the_Burning_Suns/utils/terrain.cfg:24
 msgid "Flood Water"
-msgstr ""
+msgstr "Woda powodziowa"
 
 #. [terrain_type]: id=human_ship
 #: data/campaigns/Under_the_Burning_Suns/utils/terrain.cfg:38
@@ -18090,9 +18419,9 @@ msgstr "Twierdza widmo"
 #~ msgid ""
 #~ "Truth is that $ally_unit.name not know much of sunlight lands. Sun and "
 #~ "stars are scary, everything is open, exposed, no safe places to hide. But "
-#~ "$ally_unit.name cannot go back through all that water. And $ally_unit."
-#~ "name doesn’t know where to find other tunnels back to his home. He is as "
-#~ "lost as elves are."
+#~ "$ally_unit.name cannot go back through all that water. And "
+#~ "$ally_unit.name doesn’t know where to find other tunnels back to his "
+#~ "home. He is as lost as elves are."
 #~ msgstr ""
 #~ "Prawda, że Nog niewiele wie o słonecznych krainach. Słońce i gwiazdy "
 #~ "straszne, wszystko otwarte, odsłonięte, nie ma gdzie się ukryć. Ale Nog "
@@ -18111,8 +18440,8 @@ msgstr "Twierdza widmo"
 #~ "guide and protect elves, and $ally_unit.name will keep his oath. "
 #~ "$ally_unit.name will follow elves wherever they may go and protect them "
 #~ "from danger as best he can. Maybe later, $ally_unit.name will find "
-#~ "another way back down to the caves of his people. But for now, $ally_unit."
-#~ "name will continue to serve and protect you."
+#~ "another way back down to the caves of his people. But for now, "
+#~ "$ally_unit.name will continue to serve and protect you."
 #~ msgstr ""
 #~ "Ale Nog się nie boi. Wielki wódz powiedział, że Nog ma prowadzić i "
 #~ "chronić elfy, więc Nog dotrzyma obietnicy. Nog pójdzie z elfami wszędzie "
@@ -18192,9 +18521,9 @@ msgstr "Twierdza widmo"
 #~| "is a credit to your race."
 #~ msgid ""
 #~ "No, you don’t have to introduce yourselves. I already know who you are "
-#~ "and why you have been journeying all this way. And I must say, $ally_unit."
-#~ "name, that your recent actions and indeed your presence with these fine "
-#~ "folk speaks well for your people."
+#~ "and why you have been journeying all this way. And I must say, "
+#~ "$ally_unit.name, that your recent actions and indeed your presence with "
+#~ "these fine folk speaks well for your people."
 #~ msgstr ""
 #~ "Nie musicie się przedstawiać. Wiem, kim jesteście i dlaczego przebyliście "
 #~ "tak daleką drogę. Muszę też powiedzieć, Jarlu, że twoje ostatnie czyny, a "
@@ -18245,8 +18574,9 @@ msgstr "Twierdza widmo"
 #~ msgid ""
 #~ "$ally_unit.name not going to just sit here while Kaleh does all the "
 #~ "fighting. Kaleh will need strong fighter like $ally_unit.name. Other "
-#~ "elves may be scared, but $ally_unit.name fear no dark place. $ally_unit."
-#~ "name just hope there still something to smash when he gets there."
+#~ "elves may be scared, but $ally_unit.name fear no dark place. "
+#~ "$ally_unit.name just hope there still something to smash when he gets "
+#~ "there."
 #~ msgstr ""
 #~ "Nog nie będzie tu siedział, gdy Kaleh będzie walczył. Kaleh potrzebuje "
 #~ "takiego wojownika jak Nog. Może inne elfy się boją, ale Nog nie boi się "
@@ -18314,11 +18644,11 @@ msgstr "Twierdza widmo"
 #~ "of the island and look out upon the waters, upon the world that we "
 #~ "sacrificed so much to preserve. I remind myself what Zhul said, and they "
 #~ "all believed, that despite all the death and fighting we saw in our "
-#~ "journey, this world was a beautiful and good enough place that $ally_unit."
-#~ "name was willing to sacrifice his life to save it. Looking out over the "
-#~ "waters, and back upon the prosperity of my people, I tell myself it was "
-#~ "worth it. But when I think of the desperate war that his people are "
-#~ "probably still fighting underground, it seems a small consolation."
+#~ "journey, this world was a beautiful and good enough place that "
+#~ "$ally_unit.name was willing to sacrifice his life to save it. Looking out "
+#~ "over the waters, and back upon the prosperity of my people, I tell myself "
+#~ "it was worth it. But when I think of the desperate war that his people "
+#~ "are probably still fighting underground, it seems a small consolation."
 #~ msgstr ""
 #~ "Choć wierzę, że bitwa w czarnej cytadeli była naszą najwspanialszą "
 #~ "wiktorią, wciąż prześladuje mnie myśl o śmierci Jarla w tym mrocznym "
