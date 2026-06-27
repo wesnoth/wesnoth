@@ -31,9 +31,11 @@
 #include "attack_prediction.hpp"
 
 #include "actions/attack.hpp"
+#include "game_classification.hpp"
 #include "game_config.hpp"
 #include "preferences/preferences.hpp"
 #include "random.hpp"
+#include "resources.hpp"
 
 #include <array>
 #include <cfloat>
@@ -94,6 +96,15 @@ void dump(const battle_context_unit_stats& stats)
 namespace
 {
 using summary_t = std::array<std::vector<double>, 2>;
+
+/** Whether combat uses biased ("Reduced RNG") mode; mirrors attack::attack(). */
+bool use_biased_combat_rng()
+{
+	return resources::classification != nullptr
+		&& resources::classification->random_mode == "biased"
+		&& randomness::generator != nullptr
+		&& !randomness::generator->is_networked();
+}
 
 /**
 * A struct to describe one possible combat scenario.
@@ -1394,7 +1405,8 @@ public:
 			const std::vector<combat_slice>& a_split,
 			const std::vector<combat_slice>& b_split,
 			double a_initially_slowed_chance,
-			double b_initially_slowed_chance);
+			double b_initially_slowed_chance,
+			bool biased);
 
 	void simulate();
 
@@ -1418,8 +1430,11 @@ private:
 	double b_hit_chance_;
 	double a_initially_slowed_chance_;
 	double b_initially_slowed_chance_;
+	bool biased_;
 	unsigned int iterations_a_hit_ = 0u;
 	unsigned int iterations_b_hit_ = 0u;
+
+	static std::vector<bool> roll_biased_hits(randomness::rng& rng, unsigned int strikes, double hit_chance);
 
 	unsigned int calc_blows_a(unsigned int a_hp) const;
 	unsigned int calc_blows_b(unsigned int b_hp) const;
@@ -1450,7 +1465,8 @@ monte_carlo_combat_matrix::monte_carlo_combat_matrix(unsigned int a_max_hp,
 		const std::vector<combat_slice>& a_split,
 		const std::vector<combat_slice>& b_split,
 		double a_initially_slowed_chance,
-		double b_initially_slowed_chance)
+		double b_initially_slowed_chance,
+		bool biased)
 	: combat_matrix(a_max_hp,
 			b_max_hp,
 			a_hp,
@@ -1474,6 +1490,7 @@ monte_carlo_combat_matrix::monte_carlo_combat_matrix(unsigned int a_max_hp,
 	, b_hit_chance_(b_hit_chance)
 	, a_initially_slowed_chance_(a_initially_slowed_chance)
 	, b_initially_slowed_chance_(b_initially_slowed_chance)
+	, biased_(biased)
 {
 	scale_probabilities(a_summary[0], a_initial_, 1.0 - a_initially_slowed_chance, a_hp);
 	scale_probabilities(a_summary[1], a_initial_slowed_, a_initially_slowed_chance, a_hp);
@@ -1481,6 +1498,32 @@ monte_carlo_combat_matrix::monte_carlo_combat_matrix(unsigned int a_max_hp,
 	scale_probabilities(b_summary[1], b_initial_slowed_, b_initially_slowed_chance, b_hp);
 
 	clear();
+}
+
+std::vector<bool> monte_carlo_combat_matrix::roll_biased_hits(
+		randomness::rng& rng, unsigned int strikes, double hit_chance)
+{
+	// Mirrors the hit distribution in attack::unit_attack.
+	const int cth = std::clamp(static_cast<int>(hit_chance * 100.0 + 0.5), 0, 100);
+	const int ntotal = cth * static_cast<int>(strikes);
+	int num_hits = ntotal / 100;
+	const int additional_hit_chance = ntotal % 100;
+	if(additional_hit_chance > 0 && rng.get_random_int(0, 99) < additional_hit_chance) {
+		++num_hits;
+	}
+
+	std::vector<bool> seq(strikes, false);
+	std::vector<int> indexes;
+	for(unsigned int i = 0u; i < strikes; ++i) {
+		indexes.push_back(i);
+	}
+	for(int i = 0; i < num_hits && !indexes.empty(); ++i) {
+		const int n = rng.get_random_int(0, static_cast<int>(indexes.size()) - 1);
+		seq[indexes[n]] = true;
+		indexes.erase(indexes.begin() + n);
+	}
+
+	return seq;
 }
 
 void monte_carlo_combat_matrix::simulate()
@@ -1502,9 +1545,15 @@ void monte_carlo_combat_matrix::simulate()
 		unsigned int b_strikes = calc_blows_b(b_hp);
 
 		for(unsigned int j = 0u; j < rounds_ && a_hp > 0u && b_hp > 0u; ++j) {
+			std::vector<bool> a_biased_hits, b_biased_hits;
+			if(biased_) {
+				a_biased_hits = roll_biased_hits(rng, a_strikes, a_hit_chance_);
+				b_biased_hits = roll_biased_hits(rng, b_strikes, b_hit_chance_);
+			}
+
 			for(unsigned int k = 0u; k < std::max(a_strikes, b_strikes); ++k) {
 				if(k < a_strikes) {
-					if(rng.get_random_bool(a_hit_chance_)) {
+					if(biased_ ? a_biased_hits[k] : rng.get_random_bool(a_hit_chance_)) {
 						// A hits B
 						unsigned int damage = a_slowed ? a_slow_damage_ : a_damage_;
 						damage = std::min(damage, b_hp);
@@ -1524,7 +1573,7 @@ void monte_carlo_combat_matrix::simulate()
 				}
 
 				if(k < b_strikes) {
-					if(rng.get_random_bool(b_hit_chance_)) {
+					if(biased_ ? b_biased_hits[k] : rng.get_random_bool(b_hit_chance_)) {
 						// B hits A
 						unsigned int damage = b_slowed ? b_slow_damage_ : b_damage_;
 						damage = std::min(damage, a_hp);
@@ -2196,7 +2245,8 @@ void complex_fight(attack_prediction_mode mode,
 			split,
 			opp_split,
 			initially_slowed_chance,
-			opp_initially_slowed_chance
+			opp_initially_slowed_chance,
+			use_biased_combat_rng()
 		);
 
 		mcm->simulate();
@@ -2367,9 +2417,10 @@ void combatant::fight(combatant& opponent, bool levelup_considered)
 	const std::vector<combat_slice> split = split_summary(u_, summary);
 	const std::vector<combat_slice> opp_split = split_summary(opponent.u_, opponent.summary);
 
-	bool use_monte_carlo_simulation =
-		fight_complexity(split.size(), opp_split.size(), u_, opponent.u_) > MONTE_CARLO_SIMULATION_THRESHOLD
-		&& prefs::get().damage_prediction_allow_monte_carlo_simulation();
+	// Biased mode is only modelled by the Monte Carlo path, so force it on.
+	bool use_monte_carlo_simulation = use_biased_combat_rng()
+		|| (fight_complexity(split.size(), opp_split.size(), u_, opponent.u_) > MONTE_CARLO_SIMULATION_THRESHOLD
+			&& prefs::get().damage_prediction_allow_monte_carlo_simulation());
 
 	if(use_monte_carlo_simulation) {
 		// A very complex fight. Use Monte Carlo simulation instead of exact
