@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-dev\n"
-"POT-Creation-Date: 2025-04-27 22:22-0500\n"
+"POT-Creation-Date: 2026-06-27 12:09+0530\n"
 "PO-Revision-Date: 2023-10-02 15:41+0200\n"
 "Last-Translator: aceman <acelists@atlas.sk>\n"
 "Language-Team: none\n"
@@ -820,8 +820,8 @@ msgstr ""
 "je zadaný adresár, bude spracovaný rekurzívne podľa pravidiel preprocesora. "
 "Spoločné makrá z adresára \"data/core/macros\" budú spracované pred zadanými "
 "zdrojmi (resources). Príklad: B<-p ~/wesnoth/data/campaigns/tutorial ~/"
-"result>. Pre detailné informácie o preprocesore navštívte http://wiki."
-"wesnoth.org/PreprocessorRef#Command-line_preprocessor."
+"result>. Pre detailné informácie o preprocesore navštívte http://"
+"wiki.wesnoth.org/PreprocessorRef#Command-line_preprocessor."
 
 #. type: TP
 #: doc/man/wesnoth.6:254
@@ -929,8 +929,8 @@ msgstr "B<--render-image>I<\\ image>B<\\ >I<output>"
 #: doc/man/wesnoth.6:296
 msgid ""
 "takes a valid wesnoth 'image path string' with image path functions, and "
-"outputs to a .png file. Image path functions are documented at https://wiki."
-"wesnoth.org/ImagePathFunctionWML."
+"outputs to a .png file. Image path functions are documented at https://"
+"wiki.wesnoth.org/ImagePathFunctionWML."
 msgstr ""
 "berie platný „reťazec cesty k obrázku“ spoločnosti wesnoth s funkciami cesty "
 "k obrázku a výstupom je súbor .png. Funkcie cesty k obrázku sú "
@@ -1532,12 +1532,12 @@ msgstr "Napísal David White E<lt>davidnwhite@verizon.netE<gt>."
 #. type: Plain text
 #: doc/man/wesnoth.6:497
 msgid ""
-"Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon."
-"netE<gt> and Soliton E<lt>soliton.de@gmail.comE<gt>."
+"Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott "
+"E<lt>ott@gaon.netE<gt> and Soliton E<lt>soliton.de@gmail.comE<gt>."
 msgstr ""
-"Editovali Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon."
-"netE<gt> a Soliton E<lt>soliton@gmail.comE<gt>. Preložil Viliam Búr "
-"E<lt>viliam@bur.skE<gt>."
+"Editovali Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott "
+"E<lt>ott@gaon.netE<gt> a Soliton E<lt>soliton@gmail.comE<gt>. Preložil "
+"Viliam Búr E<lt>viliam@bur.skE<gt>."
 
 # type: Plain text
 #. type: Plain text
@@ -1546,8 +1546,8 @@ msgid ""
 "This manual page was originally written by Cyril Bouthors "
 "E<lt>cyril@bouthors.orgE<gt>."
 msgstr ""
-"Túto stránku manuálu pôvodne napísal Cyril Bouthors E<lt>cyril@bouthors."
-"orgE<gt>."
+"Túto stránku manuálu pôvodne napísal Cyril Bouthors "
+"E<lt>cyril@bouthors.orgE<gt>."
 
 # type: Plain text
 #. type: Plain text
@@ -1593,19 +1593,8 @@ msgid "SEE ALSO"
 msgstr "VIĎ AJ"
 
 # type: TH
-#.  This program is free software; you can redistribute it and/or modify
-#.  it under the terms of the GNU General Public License as published by
-#.  the Free Software Foundation; either version 2 of the License, or
-#.  (at your option) any later version.
-#.  This program is distributed in the hope that it will be useful,
-#.  but WITHOUT ANY WARRANTY; without even the implied warranty of
-#.  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#.  GNU General Public License for more details.
-#.  You should have received a copy of the GNU General Public License
-#.  along with this program; if not, write to the Free Software
-#.  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #. type: Plain text
-#: doc/man/wesnothd.6:15
+#: doc/man/wesnoth.6:511
 msgid "B<wesnothd>(6)"
 msgstr "B<wesnothd>(6)"
 
@@ -1662,9 +1651,10 @@ msgid ""
 "wiki/ServerAdministration on what commands the server accepts via the "
 "wesnoth client (/query ...) or the fifo."
 msgstr ""
-"Spravuje hry pre viacerých hráčov Bitky o Wesnoth. Na stránke https://www."
-"wesnoth.org/wiki/ServerAdministration nájdete informácie o tom, aké príkazy "
-"prijíma server prostredníctvom klienta wesnoth (/query ...) alebo fifo."
+"Spravuje hry pre viacerých hráčov Bitky o Wesnoth. Na stránke https://"
+"www.wesnoth.org/wiki/ServerAdministration nájdete informácie o tom, aké "
+"príkazy prijíma server prostredníctvom klienta wesnoth (/query ...) alebo "
+"fifo."
 
 # type: TP
 #. type: TP
@@ -1889,13 +1879,13 @@ msgstr "B<disallow_names>"
 #| msgid ""
 #| "Names/nicks that are not accepted by the server. B<*> and B<?> from "
 #| "wildcard patterns are supported. See B<glob>(7)  for more details.  "
-#| "Default values (used if nothing is specified) are: B<*admin*,*admln*,"
-#| "*server*,ai,ai?,computer,human,network,player>."
+#| "Default values (used if nothing is specified) are: "
+#| "B<*admin*,*admln*,*server*,ai,ai?,computer,human,network,player>."
 msgid ""
 "Names/nicks that are not accepted by the server. B<*> and B<?> from wildcard "
 "patterns are supported. See B<glob>(7)  for more details.  Default values "
-"(used if nothing is specified) are: B<*admin*,*admln*,*moderator*,*server*,"
-"ai,ai?,computer,human,network,player>."
+"(used if nothing is specified) are: "
+"B<*admin*,*admln*,*moderator*,*server*,ai,ai?,computer,human,network,player>."
 msgstr ""
 "Mená/prezývky, ktoré server neprijíma. Podporujú sa zástupné znaky B<*> and "
 "B<?>. Pre ďalšie podrobnosti pozri B<glob>(7). Štandardné hodnoty (ak sa nič "
@@ -2539,16 +2529,16 @@ msgstr ""
 msgid ""
 "Written by David White E<lt>davidnwhite@verizon.netE<gt>.  Edited by Nils "
 "Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt>, "
-"Soliton E<lt>soliton.de@gmail.comE<gt> and Thomas Baumhauer E<lt>thomas."
-"baumhauer@gmail.comE<gt>.  This manual page was originally written by Cyril "
-"Bouthors E<lt>cyril@bouthors.orgE<gt>."
+"Soliton E<lt>soliton.de@gmail.comE<gt> and Thomas Baumhauer "
+"E<lt>thomas.baumhauer@gmail.comE<gt>.  This manual page was originally "
+"written by Cyril Bouthors E<lt>cyril@bouthors.orgE<gt>."
 msgstr ""
 "Napísal David White E<lt>davidnwhite@verizon.netE<gt>. Editovali Nils "
 "Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt>, "
-"Soliton E<lt>soliton@gmail.comE<gt> a Thomas Baumhauer E<lt>thomas."
-"baumhauer@gmail.comE<gt>. Preložil Viliam Búr E<lt>viliam@bur.skE<gt>.  Túto "
-"manuálovú stránku pôvodne napísal Cyril Bouthors E<lt>cyril@bouthors."
-"orgE<gt>."
+"Soliton E<lt>soliton@gmail.comE<gt> a Thomas Baumhauer "
+"E<lt>thomas.baumhauer@gmail.comE<gt>. Preložil Viliam Búr "
+"E<lt>viliam@bur.skE<gt>.  Túto manuálovú stránku pôvodne napísal Cyril "
+"Bouthors E<lt>cyril@bouthors.orgE<gt>."
 
 # type: TH
 #. type: Plain text
@@ -2740,8 +2730,8 @@ msgstr "B<wesnoth>(6)"
 #~ "decompresses a file which should be in bzip2 format and stores it without "
 #~ "the .bz2 suffix. The I<infile.bz2> will be removed."
 #~ msgstr ""
-#~ "rozbalí súbor, ktorý by mal byť vo formáte bzip2, a uloží ho bez prípony ."
-#~ "bz2. Súbor I<vstupný_súbor.bz2> sa vymaže."
+#~ "rozbalí súbor, ktorý by mal byť vo formáte bzip2, a uloží ho bez "
+#~ "prípony .bz2. Súbor I<vstupný_súbor.bz2> sa vymaže."
 
 # type: TP
 #, no-wrap
@@ -2766,8 +2756,8 @@ msgstr "B<wesnoth>(6)"
 #~ "decompresses a file which should be in gzip format and stores it without "
 #~ "the .gz suffix. The I<infile.gz> will be removed."
 #~ msgstr ""
-#~ "rozbalí súbor, ktorý by mal byť vo formáte gzip, a uloží ho bez prípony ."
-#~ "gz. Súbor I<vstupný_súbor.gz> sa vymaže."
+#~ "rozbalí súbor, ktorý by mal byť vo formáte gzip, a uloží ho bez "
+#~ "prípony .gz. Súbor I<vstupný_súbor.gz> sa vymaže."
 
 # type: TP
 #, no-wrap

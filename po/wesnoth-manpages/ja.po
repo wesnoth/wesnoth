@@ -11,7 +11,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-04-27 22:22-0500\n"
+"POT-Creation-Date: 2026-06-27 12:09+0530\n"
 "PO-Revision-Date: 2023-12-03 03:44+0000\n"
 "Last-Translator: RatArmy, 2024\n"
 "Language-Team: Japanese (https://app.transifex.com/wesnoth-jp/teams/60513/"
@@ -407,10 +407,10 @@ msgid ""
 "This option can be specified multiple times."
 msgstr ""
 "ログ領域(domain)の厳密さのレベルを設定する。 B<all> は、どのログ領域にも対応"
-"させるために利用される。有効なレベルは以下の通り。 B<error>、\\ "
-"B<warning>、\\ B<info>、\\ B<debug>。既定値では B<warning> レベルがほとんどの"
-"ログ領域に使用されるが、 B<-d> オプションと組み合わせた場合を除いて "
-"B<deprecation>は B<none>である。"
+"させるために利用される。有効なレベルは以下の通り。 B<error>、\\ B<warning>、"
+"\\ B<info>、\\ B<debug>。既定値では B<warning> レベルがほとんどのログ領域に使"
+"用されるが、 B<-d> オプションと組み合わせた場合を除いて B<deprecation>は "
+"B<none>である。"
 
 #. type: TP
 #: doc/man/wesnoth.6:151
@@ -862,8 +862,8 @@ msgstr "B<--render-image>I<\\ image>B<\\ >I<output>"
 #: doc/man/wesnoth.6:296
 msgid ""
 "takes a valid wesnoth 'image path string' with image path functions, and "
-"outputs to a .png file. Image path functions are documented at https://wiki."
-"wesnoth.org/ImagePathFunctionWML."
+"outputs to a .png file. Image path functions are documented at https://"
+"wiki.wesnoth.org/ImagePathFunctionWML."
 msgstr ""
 "画像パス関数を伴う有効な wesnoth 「画像パス文字列」を指定し、 .png ファイルと"
 "して出力する。画像パス関数については以下を参照：https://wiki.wesnoth.org/"
@@ -1405,8 +1405,8 @@ msgstr "David White E<lt>davidnwhite@verizon.netE<gt> によって書かれた�
 #. type: Plain text
 #: doc/man/wesnoth.6:497
 msgid ""
-"Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon."
-"netE<gt> and Soliton E<lt>soliton.de@gmail.comE<gt>."
+"Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott "
+"E<lt>ott@gaon.netE<gt> and Soliton E<lt>soliton.de@gmail.comE<gt>."
 msgstr ""
 "Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt> と ott E<lt>ott@gaon.netE<gt> "
 "と Soliton E<lt>soliton.de@gmail.comE<gt> によって編集された。"
@@ -1458,19 +1458,8 @@ msgstr ""
 msgid "SEE ALSO"
 msgstr "関連項目"
 
-#.  This program is free software; you can redistribute it and/or modify
-#.  it under the terms of the GNU General Public License as published by
-#.  the Free Software Foundation; either version 2 of the License, or
-#.  (at your option) any later version.
-#.  This program is distributed in the hope that it will be useful,
-#.  but WITHOUT ANY WARRANTY; without even the implied warranty of
-#.  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#.  GNU General Public License for more details.
-#.  You should have received a copy of the GNU General Public License
-#.  along with this program; if not, write to the Free Software
-#.  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #. type: Plain text
-#: doc/man/wesnothd.6:15
+#: doc/man/wesnoth.6:511
 msgid "B<wesnothd>(6)"
 msgstr "B<wesnothd>(6)"
 
@@ -1567,9 +1556,9 @@ msgid ""
 "the B<server> domain."
 msgstr ""
 "ログ領域(domain)の厳密さのレベルを設定する。 B<all> は、どのログ領域にも対応"
-"させるために利用できる。有効なレベルは以下の通り。 B<error>、\\ "
-"B<warning>、\\ B<info>、\\ B<debug>。既定値では B<error> レベルが使用され、"
-"B<server> 領域には B<info> が使用される。"
+"させるために利用できる。有効なレベルは以下の通り。 B<error>、\\ B<warning>、"
+"\\ B<info>、\\ B<debug>。既定値では B<error> レベルが使用され、B<server> 領域"
+"には B<info> が使用される。"
 
 #. type: TP
 #: doc/man/wesnothd.6:68
@@ -1718,18 +1707,18 @@ msgstr "B<disallow_names>"
 #| msgid ""
 #| "Names/nicks that are not accepted by the server. B<*> and B<?> from "
 #| "wildcard patterns are supported. See B<glob>(7)  for more details.  "
-#| "Default values (used if nothing is specified) are: B<*admin*,*admln*,"
-#| "*server*,ai,ai?,computer,human,network,player>."
+#| "Default values (used if nothing is specified) are: "
+#| "B<*admin*,*admln*,*server*,ai,ai?,computer,human,network,player>."
 msgid ""
 "Names/nicks that are not accepted by the server. B<*> and B<?> from wildcard "
 "patterns are supported. See B<glob>(7)  for more details.  Default values "
-"(used if nothing is specified) are: B<*admin*,*admln*,*moderator*,*server*,"
-"ai,ai?,computer,human,network,player>."
+"(used if nothing is specified) are: "
+"B<*admin*,*admln*,*moderator*,*server*,ai,ai?,computer,human,network,player>."
 msgstr ""
 "サーバーによって受けつけられない名前やニックネーム。 B<*> と B<?> からなるワ"
 "イルドカードのパターンに対応。詳細は B<glob>(7) を参照。既定の値(何も指定され"
-"なかった際に使用される)は B<*admin*,*admln*,*server*,ai,ai?,computer,human,"
-"network,player>。"
+"なかった際に使用される)は "
+"B<*admin*,*admln*,*server*,ai,ai?,computer,human,network,player>。"
 
 #. type: TP
 #: doc/man/wesnothd.6:118
@@ -2294,16 +2283,16 @@ msgstr ""
 msgid ""
 "Written by David White E<lt>davidnwhite@verizon.netE<gt>.  Edited by Nils "
 "Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt>, "
-"Soliton E<lt>soliton.de@gmail.comE<gt> and Thomas Baumhauer E<lt>thomas."
-"baumhauer@gmail.comE<gt>.  This manual page was originally written by Cyril "
-"Bouthors E<lt>cyril@bouthors.orgE<gt>."
+"Soliton E<lt>soliton.de@gmail.comE<gt> and Thomas Baumhauer "
+"E<lt>thomas.baumhauer@gmail.comE<gt>.  This manual page was originally "
+"written by Cyril Bouthors E<lt>cyril@bouthors.orgE<gt>."
 msgstr ""
 "David White E<lt>davidnwhite@verizon.netE<gt> によって書かれた。 Nils "
 "Kneuper E<lt>crazy-ivanovic@gmx.netE<gt> と ott E<lt>ott@gaon.netE<gt> と "
-"Soliton E<lt>soliton.de@gmail.comE<gt> と Thomas Baumhauer E<lt>thomas."
-"baumhauer@gmail.comE<gt> によって編集された。 このマニュアルページは Cyril "
-"Bouthors E<lt>cyril@bouthors.orgE<gt> によって最初に書かれた。 岡田信人 "
-"E<lt>okyada@gmail.comE<gt> によって日本語に翻訳され、いいむらなおき "
+"Soliton E<lt>soliton.de@gmail.comE<gt> と Thomas Baumhauer "
+"E<lt>thomas.baumhauer@gmail.comE<gt> によって編集された。 このマニュアルペー"
+"ジは Cyril Bouthors E<lt>cyril@bouthors.orgE<gt> によって最初に書かれた。 岡"
+"田信人 E<lt>okyada@gmail.comE<gt> によって日本語に翻訳され、いいむらなおき "
 "E<lt>amatubu@gmail.comE<gt> によって編集された。"
 
 #. type: Plain text

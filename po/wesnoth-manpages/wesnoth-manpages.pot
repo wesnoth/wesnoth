@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2025-04-27 22:22-0500\n"
+"POT-Creation-Date: 2026-06-27 12:09+0530\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -312,8 +312,7 @@ msgstr ""
 
 #. type: Plain text
 #: doc/man/wesnoth.6:116
-msgid ""
-"displays a summary of command line options to standard output, and exits."
+msgid "displays a summary of command line options to standard output, and exits."
 msgstr ""
 
 #. type: TP
@@ -325,8 +324,8 @@ msgstr ""
 #. type: Plain text
 #: doc/man/wesnoth.6:127
 msgid ""
-"loads the savegame I<file> from the standard save game directory. If the B<-"
-"e> or B<--editor> option is used as well, starts the editor with the map "
+"loads the savegame I<file> from the standard save game directory. If the "
+"B<-e> or B<--editor> option is used as well, starts the editor with the map "
 "from I<file> open. If it is a directory, the editor will start with a load "
 "map dialog opened there."
 msgstr ""
@@ -355,10 +354,10 @@ msgstr ""
 msgid ""
 "sets the severity level of the log domains. The wildcard B<*> may be used to "
 "match a subset of domains, e.g. gui/* or conf* or * (the latter matches all "
-"domains).  Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ B<debug>,"
-"\\ B<none>.  By default, the B<warning> level is used for most domains, but "
-"B<deprecation> defaults to B<none> unless combined with the B<-d> option.  "
-"This option can be specified multiple times."
+"domains).  Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
+"B<debug>,\\ B<none>.  By default, the B<warning> level is used for most "
+"domains, but B<deprecation> defaults to B<none> unless combined with the "
+"B<-d> option.  This option can be specified multiple times."
 msgstr ""
 
 #. type: TP
@@ -534,8 +533,8 @@ msgstr ""
 #. type: Plain text
 #: doc/man/wesnoth.6:213
 msgid ""
-"runs the game without the GUI. Only available in combination with B<--"
-"multiplayer> or B<--screenshot> or B<--plugin>."
+"runs the game without the GUI. Only available in combination with "
+"B<--multiplayer> or B<--screenshot> or B<--plugin>."
 msgstr ""
 
 #. type: TP
@@ -569,8 +568,8 @@ msgstr ""
 #. type: Plain text
 #: doc/man/wesnoth.6:223
 msgid ""
-"don't try to validate replay of unit test. Only relevant when used with B<-"
-"u>."
+"don't try to validate replay of unit test. Only relevant when used with "
+"B<-u>."
 msgstr ""
 
 #. type: TP
@@ -604,8 +603,8 @@ msgstr ""
 #. type: Plain text
 #: doc/man/wesnoth.6:234
 msgid ""
-"uses I<password> when connecting to a server, ignoring other preferences. "
-"Unsafe."
+"uses I<password> when connecting to a server, ignoring other "
+"preferences. Unsafe."
 msgstr ""
 
 #. type: TP
@@ -649,10 +648,10 @@ msgid ""
 "a processed .cfg file will be written in specified target directory. If a "
 "folder is specified, it will be preprocessed recursively based on the known "
 "preprocessor rules. The common macros from the \"data/core/macros\" "
-"directory will be preprocessed before the specified resources.  Example: B<-"
-"p ~/wesnoth/data/campaigns/tutorial ~/result.> For details regarding the "
-"preprocessor visit: https://wiki.wesnoth.org/PreprocessorRef#Command-"
-"line_preprocessor."
+"directory will be preprocessed before the specified resources.  Example: "
+"B<-p ~/wesnoth/data/campaigns/tutorial ~/result.> For details regarding the "
+"preprocessor visit: "
+"https://wiki.wesnoth.org/PreprocessorRef#Command-line_preprocessor."
 msgstr ""
 
 #. type: TP
@@ -675,9 +674,9 @@ msgstr ""
 #. type: Plain text
 #: doc/man/wesnoth.6:266
 msgid ""
-"comma separated list of defines to be used by the B<--preprocess> or B<--"
-"preprocess-string> command. If B<SKIP_CORE> is in the define list the \"data/"
-"core\" directory won't be preprocessed."
+"comma separated list of defines to be used by the B<--preprocess> or "
+"B<--preprocess-string> command. If B<SKIP_CORE> is in the define list the "
+"\"data/core\" directory won't be preprocessed."
 msgstr ""
 
 #. type: TP
@@ -689,9 +688,9 @@ msgstr ""
 #. type: Plain text
 #: doc/man/wesnoth.6:275
 msgid ""
-"used only by the B<--preprocess> or B<--preprocess-string> command. "
-"Specifies a file that contains B<[preproc_define]>s to be included before "
-"preprocessing."
+"used only by the B<--preprocess> or B<--preprocess-string> "
+"command. Specifies a file that contains B<[preproc_define]>s to be included "
+"before preprocessing."
 msgstr ""
 
 #. type: TP
@@ -703,12 +702,12 @@ msgstr ""
 #. type: Plain text
 #: doc/man/wesnoth.6:288
 msgid ""
-"used only by the B<--preprocess> command (But not by the B<--preprocess-"
-"string> command). Will output all preprocessed macros in the target file. If "
-"the file is not specified the output will be file '_MACROS_.cfg' in the "
-"target directory of preprocess's command. The output file can be passed to "
-"B<--preprocess-input-macros>.  This switch should be typed before the B<--"
-"preprocess> command."
+"used only by the B<--preprocess> command (But not by the "
+"B<--preprocess-string> command). Will output all preprocessed macros in the "
+"target file. If the file is not specified the output will be file "
+"'_MACROS_.cfg' in the target directory of preprocess's command. The output "
+"file can be passed to B<--preprocess-input-macros>.  This switch should be "
+"typed before the B<--preprocess> command."
 msgstr ""
 
 #. type: TP
@@ -732,8 +731,8 @@ msgstr ""
 #: doc/man/wesnoth.6:296
 msgid ""
 "takes a valid wesnoth 'image path string' with image path functions, and "
-"outputs to a .png file. Image path functions are documented at https://wiki."
-"wesnoth.org/ImagePathFunctionWML."
+"outputs to a .png file. Image path functions are documented at "
+"https://wiki.wesnoth.org/ImagePathFunctionWML."
 msgstr ""
 
 #. type: TP
@@ -770,8 +769,7 @@ msgstr ""
 
 #. type: Plain text
 #: doc/man/wesnoth.6:313
-msgid ""
-"saves a screenshot of I<map> to I<output> without initializing a screen."
+msgid "saves a screenshot of I<map> to I<output> without initializing a screen."
 msgstr ""
 
 #. type: TP
@@ -907,8 +905,7 @@ msgstr ""
 
 #. type: Plain text
 #: doc/man/wesnoth.6:371
-msgid ""
-"uses I<username> when connecting to a server, ignoring other preferences."
+msgid "uses I<username> when connecting to a server, ignoring other preferences."
 msgstr ""
 
 #. type: TP
@@ -1032,8 +1029,7 @@ msgstr ""
 
 #. type: Plain text
 #: doc/man/wesnoth.6:411
-msgid ""
-"selects a configuration file to load for the AI controller for this side."
+msgid "selects a configuration file to load for the AI controller for this side."
 msgstr ""
 
 #. type: TP
@@ -1073,9 +1069,9 @@ msgstr ""
 #. type: Plain text
 #: doc/man/wesnoth.6:435
 msgid ""
-"use this option to play in the selected era instead of the B<Default> era. "
-"The era is chosen by an id. Eras are described in the B<data/multiplayer/"
-"eras.cfg> file."
+"use this option to play in the selected era instead of the B<Default> "
+"era. The era is chosen by an id. Eras are described in the "
+"B<data/multiplayer/eras.cfg> file."
 msgstr ""
 
 #. type: TP
@@ -1219,8 +1215,8 @@ msgstr ""
 #. type: Plain text
 #: doc/man/wesnoth.6:497
 msgid ""
-"Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon."
-"netE<gt> and Soliton E<lt>soliton.de@gmail.comE<gt>."
+"Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott "
+"E<lt>ott@gaon.netE<gt> and Soliton E<lt>soliton.de@gmail.comE<gt>."
 msgstr ""
 
 #. type: Plain text
@@ -1260,21 +1256,8 @@ msgstr ""
 msgid "SEE ALSO"
 msgstr ""
 
-#
-#
-#.  This program is free software; you can redistribute it and/or modify
-#.  it under the terms of the GNU General Public License as published by
-#.  the Free Software Foundation; either version 2 of the License, or
-#.  (at your option) any later version.
-#.  This program is distributed in the hope that it will be useful,
-#.  but WITHOUT ANY WARRANTY; without even the implied warranty of
-#.  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#.  GNU General Public License for more details.
-#.  You should have received a copy of the GNU General Public License
-#.  along with this program; if not, write to the Free Software
-#.  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #. type: Plain text
-#: doc/man/wesnothd.6:15
+#: doc/man/wesnoth.6:511
 msgid "B<wesnothd>(6)"
 msgstr ""
 
@@ -1314,9 +1297,9 @@ msgstr ""
 #. type: Plain text
 #: doc/man/wesnothd.6:40
 msgid ""
-"Manages Battle for Wesnoth multiplayer games. See https://www.wesnoth.org/"
-"wiki/ServerAdministration on what commands the server accepts via the "
-"wesnoth client (/query ...) or the fifo."
+"Manages Battle for Wesnoth multiplayer games. See "
+"https://www.wesnoth.org/wiki/ServerAdministration on what commands the "
+"server accepts via the wesnoth client (/query ...) or the fifo."
 msgstr ""
 
 #. type: TP
@@ -1441,8 +1424,8 @@ msgstr ""
 #: doc/man/wesnothd.6:99
 msgid ""
 "If set to B<no> (default), shut_down and restart requests are ignored unless "
-"they come from the fifo.  Set it to B<yes> to allow remote shutdown via a /"
-"query by an administrator."
+"they come from the fifo.  Set it to B<yes> to allow remote shutdown via a "
+"/query by an administrator."
 msgstr ""
 
 #. type: TP
@@ -1467,8 +1450,8 @@ msgstr ""
 #. type: Plain text
 #: doc/man/wesnothd.6:106
 msgid ""
-"The number of allowed connections from the same IP. B<0> means infinite. "
-"(default: B<5>)"
+"The number of allowed connections from the same IP. B<0> means "
+"infinite. (default: B<5>)"
 msgstr ""
 
 #. type: TP
@@ -1495,8 +1478,8 @@ msgstr ""
 msgid ""
 "Names/nicks that are not accepted by the server. B<*> and B<?> from wildcard "
 "patterns are supported. See B<glob>(7)  for more details.  Default values "
-"(used if nothing is specified) are: B<*admin*,*admln*,*moderator*,*server*,"
-"ai,ai?,computer,human,network,player>."
+"(used if nothing is specified) are: "
+"B<*admin*,*admln*,*moderator*,*server*,ai,ai?,computer,human,network,player>."
 msgstr ""
 
 #. type: TP
@@ -1508,9 +1491,9 @@ msgstr ""
 #. type: Plain text
 #: doc/man/wesnothd.6:122
 msgid ""
-"The path to the fifo you can echo server commands into (same as /query ... "
-"from wesnoth).  If not specified defaults to the compile-time path (default: "
-"B</var/run/wesnothd/socket>)."
+"The path to the fifo you can echo server commands into (same as /query "
+"... from wesnoth).  If not specified defaults to the compile-time path "
+"(default: B</var/run/wesnothd/socket>)."
 msgstr ""
 
 #. type: TP
@@ -1535,8 +1518,7 @@ msgstr ""
 
 #. type: Plain text
 #: doc/man/wesnothd.6:128
-msgid ""
-"The number of allowed messages in B<messages_time_period>. (default: B<4>)"
+msgid "The number of allowed messages in B<messages_time_period>. (default: B<4>)"
 msgstr ""
 
 #. type: TP
@@ -1572,7 +1554,8 @@ msgstr ""
 #. type: Plain text
 #: doc/man/wesnothd.6:137
 msgid ""
-"The password used to gain admin privileges (via B</query admin >I<password>)."
+"The password used to gain admin privileges (via B</query admin "
+">I<password>)."
 msgstr ""
 
 #. type: TP
@@ -1612,8 +1595,8 @@ msgstr ""
 #. type: Plain text
 #: doc/man/wesnothd.6:146
 msgid ""
-"Defines whether the server will automatically save replays of games. "
-"(default: B<false>)"
+"Defines whether the server will automatically save replays of "
+"games. (default: B<false>)"
 msgstr ""
 
 #. type: TP
@@ -1847,8 +1830,7 @@ msgstr ""
 
 #. type: Plain text
 #: doc/man/wesnothd.6:236
-msgid ""
-"The name of the table in which wesnothd will save its own data about users."
+msgid "The name of the table in which wesnothd will save its own data about users."
 msgstr ""
 
 #. type: TP
@@ -1859,8 +1841,7 @@ msgstr ""
 
 #. type: Plain text
 #: doc/man/wesnothd.6:239
-msgid ""
-"The name of the table in which wesnothd will save its own data about games."
+msgid "The name of the table in which wesnothd will save its own data about games."
 msgstr ""
 
 #. type: TP
@@ -1898,9 +1879,9 @@ msgstr ""
 #. type: Plain text
 #: doc/man/wesnothd.6:248
 msgid ""
-"The name of the table in which your phpbb forum saves its user group data. "
-"Most likely this will be E<lt>table-prefixE<gt>_user_group (e.g. "
-"phpbb3_user_group)."
+"The name of the table in which your phpbb forum saves its user group "
+"data. Most likely this will be E<lt>table-prefixE<gt>_user_group "
+"(e.g. phpbb3_user_group)."
 msgstr ""
 
 #. type: TP
@@ -1939,8 +1920,8 @@ msgstr ""
 #: doc/man/wesnothd.6:257
 msgid ""
 "The name of the table in which your phpbb forum saves its topic (thread) "
-"information. Most likely this will be E<lt>table-prefixE<gt>_topics (e.g. "
-"phpbb3_topics)."
+"information. Most likely this will be E<lt>table-prefixE<gt>_topics "
+"(e.g. phpbb3_topics)."
 msgstr ""
 
 #. type: TP
@@ -1952,9 +1933,9 @@ msgstr ""
 #. type: Plain text
 #: doc/man/wesnothd.6:260
 msgid ""
-"The name of the table in which your phpbb forum saves its user bans data. "
-"Most likely this will be E<lt>table-prefixE<gt>_banlist (e.g. "
-"phpbb3_banlist)."
+"The name of the table in which your phpbb forum saves its user bans "
+"data. Most likely this will be E<lt>table-prefixE<gt>_banlist "
+"(e.g. phpbb3_banlist)."
 msgstr ""
 
 #. type: TP
@@ -1965,8 +1946,7 @@ msgstr ""
 
 #. type: Plain text
 #: doc/man/wesnothd.6:263
-msgid ""
-"The ID of the forum group to be considered as having moderation authority."
+msgid "The ID of the forum group to be considered as having moderation authority."
 msgstr ""
 
 #. type: TP
@@ -2000,9 +1980,9 @@ msgstr ""
 msgid ""
 "Written by David White E<lt>davidnwhite@verizon.netE<gt>.  Edited by Nils "
 "Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon.netE<gt>, "
-"Soliton E<lt>soliton.de@gmail.comE<gt> and Thomas Baumhauer E<lt>thomas."
-"baumhauer@gmail.comE<gt>.  This manual page was originally written by Cyril "
-"Bouthors E<lt>cyril@bouthors.orgE<gt>."
+"Soliton E<lt>soliton.de@gmail.comE<gt> and Thomas Baumhauer "
+"E<lt>thomas.baumhauer@gmail.comE<gt>.  This manual page was originally "
+"written by Cyril Bouthors E<lt>cyril@bouthors.orgE<gt>."
 msgstr ""
 
 #. type: Plain text
