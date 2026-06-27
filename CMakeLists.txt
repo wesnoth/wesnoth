@@ -1,6 +1,9 @@
 # set minimum version
 cmake_minimum_required(VERSION 3.21)
 
+# Generate build/compile_commands.json so LSP server can find all files
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
 project(wesnoth)
 
 include(CheckCXXCompilerFlag)
