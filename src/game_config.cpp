@@ -174,7 +174,6 @@ std::string default_color_list;
 //
 // Image constants
 //
-std::vector<std::string> foot_speed_prefix;
 
 std::string foot_teleport_enter;
 std::string foot_teleport_exit;
@@ -373,7 +372,6 @@ void load_config(const config &v)
 	hp_bar_scaling  = v["hp_bar_scaling"].to_double(0.666);
 	xp_bar_scaling  = v["xp_bar_scaling"].to_double(0.5);
 
-	foot_speed_prefix   = utils::split(v["footprint_prefix"]);
 	foot_teleport_enter = v["footprint_teleport_enter"].str();
 	foot_teleport_exit  = v["footprint_teleport_exit"].str();
 
