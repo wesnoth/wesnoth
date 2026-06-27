@@ -1,26 +1,27 @@
 # The Battle for Wesnoth - Simplified Chinese Translations
-# Copyright (C) 2005-2022 Wesnoth development team
+# Copyright (C) 2005-2026 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
 # Translators and their initial years of participation:
 # Huang Huan(unicon) <unicon221@gmail.com>, 2005.
 # sylecn <sylecn@yahoo.com.cn>, 2009.
 # CloudiDust <cloudidust@gmail.com>, 2010.
+# vimacs <vimacs.hacks@gmail.com>, 2025.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: wesnoth-1.16\n"
+"Project-Id-Version: wesnoth-1.18\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2025-05-20 17:25-0500\n"
-"PO-Revision-Date: 2025-11-17 14:39+0800\n"
-"Last-Translator: vimacs <vimacs.hacks@gmail.com>\n"
+"PO-Revision-Date: 2026-06-09 20:09+0800\n"
+"Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 3.8\n"
+"X-Generator: Poedit 3.9\n"
 
 #. [brush]: id=brush-1
 #: data/core/editor/brushes.cfg:6
@@ -125,7 +126,7 @@ msgstr "特殊"
 #. [editor_group]: id=elevation
 #: data/core/editor/terrain-groups.cfg:115
 msgid "elevation"
-msgstr ""
+msgstr "高低差"
 
 #. [editor_times]: id=empty
 #. Describes a scenario in the editor that has not set a time of day schedule
@@ -452,7 +453,7 @@ msgstr "此地图文件看起来像是一幕场景，但是map_data的值指向�
 
 #: src/editor/map/map_context.cpp:261
 msgid "Found the characters '<<' indicating inline lua is present - aborting"
-msgstr ""
+msgstr "发现字符“<<”，这表明存在内联Lua代码——正在中止"
 
 #: src/editor/map/map_context.cpp:266
 msgid "Failed to load the scenario, attempting to load only the map."
