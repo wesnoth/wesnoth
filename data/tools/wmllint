@@ -83,10 +83,9 @@
 # code.
 #
 
-import sys, os, re, argparse, string, copy, difflib, time
+import sys, os, re, argparse, difflib, time, tomllib
 from wesnoth.wmltools3 import *
 from wesnoth.wmliterator3 import *
-from collections import defaultdict
 from wesnoth import version
 
 # Changes meant to be done on maps and .cfg lines.
@@ -2875,8 +2874,7 @@ scenarios, etc.""")
 If no directories are specified, acts on the current
 directory.""")
     parser.add_argument("--version", action="version", version="%(prog)s " + version.as_string)
-    parser.add_argument("--ignore-files", type=str, default="", help="Comma separated list of files to ignore. Must include path to file from the directory wmllint is run from.")
-    parser.add_argument("--ignore-directories", type=str, default="", help="Comma separated list of directories to ignore. Must include path to file from the directory wmllint is run from.")
+    parser.add_argument("--config", type=str, default="", help="Location of external toml config file to use.")
 
     namespace = parser.parse_args()
     clean = namespace.clean
@@ -2887,9 +2885,16 @@ directory.""")
     stripcr = namespace.stripcr
     verbose = namespace.verbose
     inconsistency = namespace.known
-    ignore_files = namespace.ignore_files.split(",")
-    ignore_directories = namespace.ignore_directories.split(",")
+    config = namespace.config
     arguments = namespace.directories # a remnant of getopt...
+
+    ignore_files = []
+    ignore_directories = []
+    if config and os.path.exists(config):
+        with open(config, "rb") as f:
+            data = tomllib.load(f)
+            ignore_files = data["ignore_files"].split(",")
+            ignore_directories = data["ignore_directories"].split(",")
 
     if dryrun:
         verbose = max(1, verbose)
