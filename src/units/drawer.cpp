@@ -40,6 +40,89 @@ static lg::log_domain log_display("display");
 
 namespace
 {
+
+struct energy_bar
+{
+	/** Bar height in pixels. */
+	int bar_h{};
+
+	/** Bar width in pixels. */
+	int bar_w{};
+
+	/** The extent to which the bar is filled, ranging [0, 1]. */
+	float filled{};
+
+	/** Color for the bar's filled area. */
+	color_t fill_color{};
+
+	/** Color for the unfilled part of the bar area */
+	color_t empty_color{};
+
+	/** Border color surrounding the whole bar. */
+	color_t border_color{};
+
+	/** Initial coordinates for the first bar drawn. */
+	static constexpr point def_origin{ 14, 13 };
+
+	/** Default width for all bars. */
+	static constexpr int def_w = 6;
+
+	/** The distance between the bars (in empty pixels).  */
+	static constexpr int spacing = 1;
+
+	/** The factor of the bar width that border should intrude into */
+	static constexpr float border_factor = 0.1f;
+
+	/** Percentage of the inner width used for edge rounding each side. */
+	static constexpr float rounding_factor = 0.3f;
+
+	/** Color for the unfilled bar area. */
+	static constexpr color_t def_empty_color{ 180, 180, 180, 200 };
+
+	/** Border color surrounding the whole bar. */
+	static constexpr color_t def_border_color{ 0, 0, 0, 200 };
+
+	/** Returns the height of the bar in pixels. */
+	static constexpr auto get_height(int size, double scaling, double ui_zoom_factor)
+	{
+		return int(size * scaling * ui_zoom_factor);
+	};
+
+	/** Returns the width of the bar in pixels. */
+	static constexpr auto get_width(double ui_zoom_factor)
+	{
+		return int(def_w * ui_zoom_factor);
+	};
+
+	/** Returns the relative amount of the bar to be filled. */
+	static constexpr auto get_filled(int size, int max)
+	{
+		return std::clamp(float(size) / max, 0.0f, 1.0f);
+	};
+
+	/** Returns the fill color with the appropriate alpha depending on the focused/highlighted state. */
+	static constexpr auto get_color(const color_t& c, bool focused)
+	{
+		float multiplier = focused ? 1.0f : 0.77f;
+		return color_t{ c.r, c.g, c.b, static_cast<uint8_t>(c.a * multiplier) };
+	}
+
+	/** Returns the highlight string if focused, otherwise an empty string. */
+	static std::string get_highlight_mod(bool focused)
+	{
+		return focused ? "~CS(30,30,30)" : "";
+	}
+
+	/** Adjusted zoom factor for scaling bars and other UI elements. */
+	static double get_ui_zoom_factor(double zoom_factor)
+	{
+		return 3.0 / (3.0 + (zoom_factor - 1.0));
+	}
+
+	/** Heuristic divisor used to center orb/crown icons during zoom scaling. */
+	static constexpr int centering_divisor = 5;
+};
+
 /**
  * Wrapper which will assemble the image path (including IPF for the color from get_orb_color) for a given orb.
  * Returns nullptr if the preferences have been configured to hide this orb.
@@ -84,91 +167,105 @@ std::unique_ptr<image::locator> get_playing_ally_orb_image(orb_status os)
 	auto allied_color = orb_status_helper::get_orb_color(orb_status::allied);
 	auto status_color = orb_status_helper::get_orb_color(os);
 	return std::make_unique<image::locator>(game_config::images::orb_two_color + "~RC(ellipse_red>"
-			+ allied_color + ")~RC(magenta>" + status_color + ")");
+		+ allied_color + ")~RC(magenta>" + status_color + ")");
 }
-
-struct energy_bar
-{
-	/** Bar height in pixels. */
-	int bar_h{};
-
-	/** The extent to which the bar is filled, ranging [0, 1]. */
-	float filled{};
-
-	/** Color for the bar's filled area. */
-	color_t fill_color{};
-
-	/** Initial coordinates for the first bar drawn. */
-	static constexpr point def_origin{14, 13};
-
-	/** Default width for all bars. */
-	static constexpr int def_w = 4;
-
-	/** Distance between the top left corner of subsequent bars. */
-	static constexpr int spacing = def_w + 1;
-
-	/** Background color for the unfilled bar area. */
-	static constexpr color_t background_color{0, 0, 0, 80};
-
-	/** Border color surrounding the whole bar. */
-	static constexpr color_t border_color{213, 213, 213, 200};
-
-	/** Returns the height of the bar in pixels. */
-	static constexpr auto get_height(int size, double scaling)
-	{
-		return int(size * scaling);
-	};
-
-	/** Returns the relative amount of the bar to be filled. */
-	static constexpr auto get_filled(int size, int max)
-	{
-		return std::clamp(float(size) / max, 0.0f, 1.0f);
-	};
-
-	/** Returns the fill color with the appropriate alpha depending on the focused state. */
-	static constexpr auto get_color(const color_t& c, bool focused)
-	{
-		return color_t{c.r, c.g, c.b, float_to_color(focused ? 1.0 : 0.8)};
-	}
-};
 
 void draw_bar(int index, const energy_bar& data, const rect& bounds)
 {
-	// All absolute bar coordinates are normalized relative to the standard 72px hex.
 	using game_config::tile_size;
 
-	SDL_FPoint p1{
-		float(energy_bar::def_origin.x + energy_bar::spacing * index) / tile_size,
-		float(energy_bar::def_origin.y                              ) / tile_size,
+	// --- 1. HELPERS ---
+	// Snaps a normalized value to the nearest physical pixel to prevent subpixel blurring.
+	auto snap_to_pixel = [](float val, int dimension) {
+		return std::round(val * static_cast<float>(dimension)) / static_cast<float>(dimension);
 	};
 
-	// If the top of the bar sits 13px from the top of the scaled hex rect, the bottom
-	// of the bar should extend no closer than 13px from the bottom.
-	SDL_FPoint p2{
-		std::min(p1.x + float(data.def_w) / tile_size, 1.0f - p1.x),
-		std::min(p1.y + float(data.bar_h) / tile_size, 1.0f - p1.y)
+	// Converts absolute pixel sizes to normalized (0.0 to 1.0) coordinates.
+	auto to_norm_x = [&](int px) { return static_cast<float>(px) / tile_size; };
+	auto to_norm_y = [&](int px) { return static_cast<float>(px) / tile_size; };
+
+	// --- 2. DEFINE OUTER BOUNDARIES (top-left and bottom-right of bar) ---
+	const int x_offset = energy_bar::def_origin.x + (data.bar_w + energy_bar::spacing) * index;
+	const SDL_FPoint p1{
+		snap_to_pixel(to_norm_x(x_offset), bounds.w),
+		snap_to_pixel(to_norm_y(energy_bar::def_origin.y), bounds.h)
 	};
+	const SDL_FPoint p2{
+		snap_to_pixel(std::min(p1.x + to_norm_x(data.bar_w), 1.0f), bounds.w),
+		snap_to_pixel(std::min(p1.y + to_norm_y(data.bar_h), 1.0f), bounds.h)
+	};
+	const SDL_FRect outer_rect = sdl::precise_subrect(bounds, p1, p2);
 
-	// Full bar dimensions
-	const SDL_FRect bar_rect = sdl::precise_subrect(bounds, p1, p2);
-	draw::fill(bar_rect, energy_bar::border_color);
+	// --- 3. BORDER LINES & INSETS (4 thin rectangles) ---
+	const float border_px = std::round(std::max(1.0f, outer_rect.w * data.border_factor));
 
-	// Size of a single pixel relative to the standard hex
-	const float one_pixel = 1.0f / tile_size;
+	draw::fill(SDL_FRect{ outer_rect.x, outer_rect.y, outer_rect.w, border_px }, data.border_color);
+	draw::fill(SDL_FRect{ outer_rect.x, outer_rect.y + outer_rect.h - border_px, outer_rect.w, border_px }, data.border_color);
 
-	SDL_FPoint bg1{ p1.x + one_pixel, p1.y + one_pixel };
-	SDL_FPoint bg2{ p2.x - one_pixel, p2.y - one_pixel };
+	// Only draw left/right borders if there's enough space for the middle bar.
+	const float available_w = outer_rect.w - (2.0f * border_px);
+	const bool has_l = (available_w >= 0.0f);
+	const bool has_r = (available_w >= 1.0f);
+	const float side_y = outer_rect.y + border_px;
+	const float side_h = outer_rect.h - (2.0f * border_px);
 
-	// Full inner dimensions
-	const SDL_FRect inner_rect = sdl::precise_subrect(bounds, bg1, bg2);
-	draw::fill(inner_rect, energy_bar::background_color);
+	if(has_l)
+		draw::fill(SDL_FRect{ outer_rect.x, side_y, border_px, side_h }, data.border_color);
+	if(has_r)
+		draw::fill(SDL_FRect{ outer_rect.x + outer_rect.w - border_px, side_y, border_px, side_h }, data.border_color);
 
-	SDL_FPoint fill1{ 0.0f, 1.0f - data.filled };
-	SDL_FPoint fill2{ 1.0f, 1.0f };
+	// --- 4. FILLING THE INNER BAR (The "health" and "grey" parts of the "healthbar") ---
+	const SDL_FRect inner_rect{
+		outer_rect.x + (has_l * border_px),
+		outer_rect.y + border_px,
+		outer_rect.w - ((has_l + has_r) * border_px),
+		outer_rect.h - (2.0f * border_px)
+	};
+	const float empty_ratio = 1.0f - static_cast<float>(data.filled);
+	const SDL_FRect empty_part = sdl::precise_subrect(inner_rect, { 0.0f, 0.0f }, { 1.0f, empty_ratio });
+	const SDL_FRect filled_part = sdl::precise_subrect(inner_rect, { 0.0f, empty_ratio }, { 1.0f, 1.0f });
 
-	// Filled area, relative to the bottom of the inner bar area
-	const SDL_FRect fill_rect = sdl::precise_subrect(inner_rect, fill1, fill2);
-	draw::fill(fill_rect, data.fill_color);
+	draw::fill(empty_part, data.empty_color);
+	draw::fill(filled_part, data.fill_color);
+
+	// --- 5. SEPARATOR LINE (between the "grey" and "health" in the "healthbar") ---
+	const float min_gap_px = border_px * 1.5f;
+	const float filled_px = static_cast<float>(data.filled) * inner_rect.h;
+	const float empty_px = empty_ratio * inner_rect.h;
+
+	// Only draw the separator if the fill level isn't too close to the top or bottom edges.
+	if(filled_px >= min_gap_px && empty_px >= min_gap_px) {
+		const SDL_FRect separator{ inner_rect.x, filled_part.y, inner_rect.w, border_px };
+		draw::fill(separator, data.border_color);
+	}
+
+	// --- 6. ROUNDING OVERLAYS (simulating soft corners to left/right edges) ---
+	int rounding_layers = std::min(20, static_cast<int>(std::floor(inner_rect.w * energy_bar::rounding_factor)));
+	const float layer_thickness = 1.0f;
+
+	for(int i = 0; i < rounding_layers; ++i) {
+		float alpha_mult = (rounding_layers - i) / (rounding_layers + 0.5f);
+		color_t overlay_color = {
+			data.border_color.r,
+			data.border_color.g,
+			data.border_color.b,
+			static_cast<uint8_t>(data.border_color.a * alpha_mult)
+		};
+
+		float inset = i * layer_thickness;
+		SDL_FRect layer_rect = {
+			inner_rect.x + inset,
+			inner_rect.y,
+			inner_rect.w - (2.0f * inset),
+			inner_rect.h
+		};
+
+		if(layer_rect.w <= 0)
+			break;
+
+		draw::fill(SDL_FRect{ layer_rect.x, layer_rect.y, layer_thickness, layer_rect.h }, overlay_color);
+		draw::fill(SDL_FRect{ layer_rect.x + layer_rect.w - layer_thickness, layer_rect.y, layer_thickness, layer_rect.h }, overlay_color);
+	}
 }
 
 } // anon namespace
@@ -205,6 +302,8 @@ void unit_drawer::redraw_unit(const unit& u) const
 	map_location loc = u.get_location();
 
 	int side = u.side();
+
+	const double ui_zoom_factor = energy_bar::get_ui_zoom_factor(zoom_factor);
 
 	bool hidden = u.get_hidden();
 	bool is_flying = u.is_flying();
@@ -318,6 +417,9 @@ void unit_drawer::redraw_unit(const unit& u) const
 			yoff = cfg_offset_y.to_int();
 		}
 
+		// Determine if this unit UI should be highlighted/focused
+		const bool bar_focus = (loc == mouse_hex || is_selected_hex);
+
 		using namespace orb_status_helper;
 		std::unique_ptr<image::locator> orb_img = nullptr;
 
@@ -344,61 +446,86 @@ void unit_drawer::redraw_unit(const unit& u) const
 
 		// All the various overlay textures to draw with the HP/XP bars
 		std::vector<texture> textures;
+		const std::string focus_mod = energy_bar::get_highlight_mod(bar_focus);
 
+		// 1. Orb icon
 		if(orb_img) {
-			textures.push_back(image::get_texture(*orb_img));
+			std::string full_orb_path = orb_img->get_filename() + orb_img->get_modifications();
+			if(texture tex = image::get_texture(full_orb_path + focus_mod)) {
+				textures.push_back(std::move(tex));
+			}
 		}
 
+		// 2. Crown, leader icon
 		if(can_recruit) {
-			if(texture tex = image::get_texture(u.leader_crown())) {
+			if(texture tex = image::get_texture(u.leader_crown() + focus_mod)) {
 				textures.push_back(std::move(tex));
 			}
 		}
 
+		// 3. Other icons (Loyal unit icon, item/ablility icons etc.)
 		for(const std::string& ov : u.overlays()) {
-			if(texture tex = image::get_texture(ov)) {
+			if(texture tex = image::get_texture(ov + focus_mod)) {
 				textures.push_back(std::move(tex));
 			}
-		};
-
+		}
 		for(const std::string& ov : u.overlays_abilities()) {
-			if(texture tex = image::get_texture(ov)) {
+			if(texture tex = image::get_texture(ov + focus_mod)) {
 				textures.push_back(std::move(tex));
 			}
-		};
+		}
 
-		const bool bar_focus = (loc == mouse_hex || is_selected_hex);
 		std::vector<energy_bar> bars;
 
 		if(u.max_hitpoints() > 0) {
 			bars.AGGREGATE_EMPLACE(
-				energy_bar::get_height(u.max_hitpoints(), u.hp_bar_scaling()),
+				energy_bar::get_height(u.max_hitpoints(), u.hp_bar_scaling(), ui_zoom_factor),
+				energy_bar::get_width(ui_zoom_factor),
 				energy_bar::get_filled(u.hitpoints(), u.max_hitpoints()),
-				energy_bar::get_color(u.hp_color(), bar_focus)
+				energy_bar::get_color(u.hp_color(), bar_focus),
+				energy_bar::get_color(energy_bar::def_empty_color, bar_focus),
+				energy_bar::get_color(energy_bar::def_border_color, bar_focus)
 			);
 		}
 
 		if(u.experience() > 0 && u.can_advance()) {
 			bars.AGGREGATE_EMPLACE(
-				energy_bar::get_height(u.max_experience(), u.xp_bar_scaling() / std::max(u.level(), 1)),
+				energy_bar::get_height(u.max_experience(), u.xp_bar_scaling() / std::max(u.level(), 1), ui_zoom_factor),
+				energy_bar::get_width(ui_zoom_factor),
 				energy_bar::get_filled(u.experience(), u.max_experience()),
-				energy_bar::get_color(u.xp_color(), bar_focus)
+				energy_bar::get_color(u.xp_color(), bar_focus),
+				energy_bar::get_color(energy_bar::def_empty_color, bar_focus),
+				energy_bar::get_color(energy_bar::def_border_color, bar_focus)
 			);
 		}
 
 		disp.drawing_buffer_add(drawing_layer::unit_bar, loc,
-			[textures = std::move(textures), bars = std::move(bars), shift = point{xoff, yoff + adjusted_params.y}](
-				const rect& dest) {
-				const rect shifted = dest.shifted_by(shift);
+			[textures = std::move(textures), bars = std::move(bars), shift = point{ xoff, yoff + adjusted_params.y }, ui_zoom_factor](
+				const rect& hex_rect)
+			{
+				// 1. Calculate the icon scaling (Orbs/Crowns)
+				const int icon_size = static_cast<int>(hex_rect.w * ui_zoom_factor);
 
+				// 2. Calculate offset to keep icons at the edge of the hex.
+				const int edge_offset = (hex_rect.w - icon_size) / energy_bar::centering_divisor;
+
+				// 3. Prepare the drawing areas
+				const rect icon_dest = rect{ hex_rect.x + edge_offset, hex_rect.y + edge_offset, icon_size, icon_size }
+				.shifted_by(shift);
+
+				const rect bar_dest = hex_rect.shifted_by(shift);
+
+				// 4. Draw icons (Orbs, Crowns, etc.)
 				for(const texture& tex : textures) {
-					draw::blit(tex, shifted);
+					draw::blit(tex, icon_dest);
 				}
 
-				for(std::size_t i = 0; i < bars.size(); ++i) { // bar bar bar
-					draw_bar(i, bars[i], shifted);
+				// 5. Draw bars (HP, XP, etc.)
+				for(std::size_t i = 0; i < bars.size(); ++i) {
+					draw_bar(i, bars[i], bar_dest);
 				}
-			});
+			}
+		);
 	}
 
 	// Smooth unit movements from terrain of different elevation.
