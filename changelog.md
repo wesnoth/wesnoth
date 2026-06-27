@@ -8,6 +8,7 @@
 ### Packaging
 ### Terrain
 ### Translations
+   * Updated translations: Russian
 ### Units
 ### User interface
    * Fix sound effect slider which was incorrectly affecting the music track volume.
