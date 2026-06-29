@@ -310,6 +310,9 @@ public:
 	/** Returns the on-screen rect corresponding to a @a loc */
 	rect get_location_rect(const map_location& loc) const;
 
+	/** Calculates the radial parallax offset based on distance from the center of the screen. */
+	point get_parallax_r_offset(int x, int y, double parallax) const;
+
 	/**
 	 * Rectangular area of hexes, allowing to decide how the top and bottom
 	 * edges handles the vertical shift for each parity of the x coordinate
@@ -490,6 +493,11 @@ public:
 
 	/** Sets whether the map view is locked (e.g. so the user can't scroll away) */
 	void set_view_locked(bool value) { view_locked_ = value; }
+
+	/** Returns true if the viewport has changed since the last time the screen was drawn. */
+	bool camera_moved_this_frame() const {
+		return viewport_origin_ != last_rendered_viewport_origin_;
+	}
 
 	enum SCROLL_TYPE { SCROLL, WARP, ONSCREEN, ONSCREEN_WARP };
 
@@ -718,6 +726,7 @@ protected:
 	 * hex below the top of the map when zoom_ == 72 (the default value).
 	 */
 	point viewport_origin_;
+	point last_rendered_viewport_origin_ = { -1, -1 };
 	bool view_locked_;
 	theme theme_;
 	/**
