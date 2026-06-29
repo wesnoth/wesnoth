@@ -662,8 +662,8 @@ private:
 
 	bool use_prng_;
 
-	std::vector<bool> prng_attacker_;
-	std::vector<bool> prng_defender_;
+	int bias_attacker_;
+	int bias_defender_;
 };
 
 attack::unit_info::unit_info(const map_location& loc, int weapon, unit_map& units)
@@ -737,8 +737,8 @@ attack::attack(const map_location& attacker,
 
 	//new experimental prng mode.
 	, use_prng_(resources::classification->random_mode == "biased" && randomness::generator->is_networked() == false)
-	, prng_attacker_()
-	, prng_defender_()
+	, bias_attacker_(0)
+	, bias_defender_(0)
 {
 	if(use_prng_) {
 		LOG_NG << "Using experimental PRNG for combat";
@@ -866,33 +866,18 @@ bool attack::perform_hit(bool attacker_turn, statistics_attack_context& stats)
 	int ran_num;
 
 	if(use_prng_) {
-
-		std::vector<bool>& prng_seq = attacker_turn ? prng_attacker_ : prng_defender_;
-
-		if(prng_seq.empty()) {
-			const int ntotal = attacker.cth_*attacker.n_attacks_;
-			int num_hits = ntotal/100;
-			const int additional_hit_chance = ntotal%100;
-			if(additional_hit_chance > 0 && randomness::generator->get_random_int(0, 99) < additional_hit_chance) {
-				++num_hits;
-			}
-
-			std::vector<int> indexes;
-			for(int i = 0; i != attacker.n_attacks_; ++i) {
-				prng_seq.push_back(false);
-				indexes.push_back(i);
-			}
-
-			for(int i = 0; i != num_hits; ++i) {
-				int n = randomness::generator->get_random_int(0, static_cast<int>(indexes.size())-1);
-				prng_seq[indexes[n]] = true;
-				indexes.erase(indexes.begin() + n);
-			}
+		if(attacker.cth_ == 0 || attacker.cth_ == 100) {
+			// if cth is 0/100 we never/always want to hit, even if bias would give us a chance to do so. We also don't want to modify bias
+			// TODO: should we call randomness::generator->get_random_int() anyways to stay in sync? (doing so would mean we are calling rng the same amount of times in the biased and defaultmode
+			ran_num = 50;
+		} else {
+			int& bias = attacker_turn ? bias_attacker_ : bias_defender_;
+			// attacker.n_attacks_ is the number of strikes left.
+			int expected_hits = attacker.cth_ * attacker.n_attacks_ + bias;
+			bool does_hit = randomness::generator->get_random_int(0,  100 * attacker.n_attacks_ - 1) < expected_hits;
+			bias += (attacker.cth_ - 100 * int(does_hit));
+			ran_num = does_hit ? 0 : 99;
 		}
-
-		bool does_hit = prng_seq.back();
-		prng_seq.pop_back();
-		ran_num = does_hit ? 0 : 99;
 	} else {
 		ran_num = randomness::generator->get_random_int(0, 99);
 	}
