@@ -868,7 +868,7 @@ bool attack::perform_hit(bool attacker_turn, statistics_attack_context& stats)
 	if(use_prng_) {
 		if(attacker.cth_ == 0 || attacker.cth_ == 100) {
 			// if cth is 0/100 we never/always want to hit, even if bias would give us a chance to do so. We also don't want to modify bias
-			// TODO: should we call randomness::generator->get_random_int() anyways to stay in sync? (meaning the )
+			// TODO: should we call randomness::generator->get_random_int() anyways to stay in sync? (doing so would mean we are calling rng the same amount of times in the biased and defaultmode
 			ran_num = 50;
 		} else {
 			int& bias = attacker_turn ? bias_attacker_ : bias_defender_;
