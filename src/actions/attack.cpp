@@ -874,7 +874,7 @@ bool attack::perform_hit(bool attacker_turn, statistics_attack_context& stats)
 		} else {
 			// attacker.n_attacks_ is the number of strikes left.
 			int expected_hits = attacker.cth_ * attacker.n_attacks_ + bias;
-			bool does_hit = randomness::generator->get_random_int(0,  100 * attacker.n_attacks_ - 1) < expected_hits);
+			bool does_hit = randomness::generator->get_random_int(0,  100 * attacker.n_attacks_ - 1) < expected_hits;
 			bias += (attacker.cth_ - 100 * int(does_hit));
 			ran_num = does_hit ? 0 : 99;
 		}
