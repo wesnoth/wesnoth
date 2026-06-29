@@ -2894,11 +2894,11 @@ directory.""")
         with open(config, "rb") as f:
             data = tomllib.load(f)
             if data.get("include_dirs"):
-                arguments = data["include_dirs"].split(",")
+                arguments = data["include_dirs"]
             if data.get("ignore_files"):
-                ignore_files = data["ignore_files"].split(",")
+                ignore_files = data["ignore_files"]
             if data.get("ignore_directories"):
-                ignore_directories = data["ignore_directories"].split(",")
+                ignore_directories = data["ignore_directories"]
 
     if not config or not arguments:
         arguments = ["."]
