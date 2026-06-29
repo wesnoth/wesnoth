@@ -44,11 +44,11 @@ enum class drawing_layer {
 	/** Terrain drawn in front of the unit */
 	terrain_fg = unit_first + 50,
 
-	/** Overlay on reachable hexes */
-	reachmap_highlight = terrain_bg,
-
 	/** Overlay border of reachable hexes */
-	reachmap_border = terrain_fg,
+	reachmap_border,
+
+	/** Overlay on reachable hexes */
+	reachmap_highlight,
 
 	/** Bottom half part of grid image. Should be under moving units, to avoid masking south move */
 	grid_bottom,
