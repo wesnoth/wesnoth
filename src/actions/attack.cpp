@@ -866,12 +866,12 @@ bool attack::perform_hit(bool attacker_turn, statistics_attack_context& stats)
 	int ran_num;
 
 	if(use_prng_) {
-
-		int& bias = attacker_turn ? bias_attacker_ : bias_defender_;
-
 		if(attacker.cth_ == 0) {
+			// if cth is 0 we never want to hit, even if bias would give us a chance to do so.
+			// TODO: should we call randomness::generator->get_random_int() anyways to stay in sync?
 			ran_num = 0;
 		} else {
+			int& bias = attacker_turn ? bias_attacker_ : bias_defender_;
 			// attacker.n_attacks_ is the number of strikes left.
 			int expected_hits = attacker.cth_ * attacker.n_attacks_ + bias;
 			bool does_hit = randomness::generator->get_random_int(0,  100 * attacker.n_attacks_ - 1) < expected_hits;
