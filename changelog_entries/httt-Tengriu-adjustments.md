@@ -5,3 +5,5 @@
      * S42 "A Crisis of Leadership": the scenario now gains a turn limit once Konrad is spotted.
      * Li'sar's units now use a different color scheme, to differentiate them (and their special abilities) from regular loyalists.
      * Delfador will no longer be offered +2 or +4 ranged damage AMLAs if he advances when his chain special has reduced his Lightning attack to only 1 or 2 strikes.
+   * The Deceivers Gambit
+     * S07 "The Great River": reduced walking time from starting keep to first enemies.
