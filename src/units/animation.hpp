@@ -88,7 +88,7 @@ public:
 		, const color_t text_color = {0,0,0}
 		, const bool accelerate = true);
 
-	void update_parameters(const map_location& src, const map_location& dst);
+	void update_parameters(const map_location& src, const map_location& dst, const map_location& dst_missile = map_location::null_location());
 	void pause_animation();
 	void restart_animation();
 	auto get_current_frame_begin_time() const
@@ -162,6 +162,9 @@ private:
 		bool cycles_;
 	};
 
+	/** Helper to calculate the effective source and destination for a sub-animation. */
+	void get_sub_anim_coords(const std::string& name, map_location& out_src, map_location& out_dst) const;
+
 	t_translation::ter_list terrain_types_;
 	std::vector<config> unit_filter_;
 	std::vector<config> secondary_unit_filter_;
@@ -179,6 +182,7 @@ private:
 	/* these are drawing parameters, but for efficiency reason they are in the anim and not in the particle */
 	map_location src_;
 	map_location dst_;
+	map_location dst_missile_;
 	// optimization
 	bool invalidated_;
 	bool play_offscreen_;
@@ -269,6 +273,7 @@ private:
 		std::string text;
 		color_t text_color;
 		map_location src;
+		map_location dst_missile;
 		bool with_bars = false;
 	};
 
