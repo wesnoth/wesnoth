@@ -104,7 +104,7 @@ fi
 
 #require built wesnoth binary 
 if [ ! -x "$repo_root/wesnoth" ]; then
-    error "Missing built wesnoth binary at $repo_root/wesnoth; build it first."
+    error "Missing built wesnoth binary at $repo_root/wesnoth"
     exit 1
 fi
 
