@@ -3000,7 +3000,7 @@ scenarios, etc.""")
         # with this issue, but it is impossible to handle all cases if multiple
         # (intended) arguments are involved. We also activate globbing on
         # Windows, if there is a wildcard.
-        if arguments and not (len(arguments) == 1 and arguments[0] == ".") and sys.platform == 'win32':
+        if sys.platform == 'win32':
             wildcard = False
             ugly = False
             newargs = []
