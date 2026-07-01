@@ -133,6 +133,9 @@ jobs:
             if [ "$output" = "" ]; then printf 'option --%s-path prints nothing to stdout!\n' "$opt" >&2; exit 1; fi
             printf '%s-path: %s\n' "$opt" "$output"
           done
+      - name: Schema validation leaves no tracked changes
+        if: success() || steps.build.outcome == 'success'
+        run: ./utils/CI/schema_validation_regression.sh
       - name: WML validation
         # only run on release builds (takes ~10 times as long on debug); since there are multiple release builds
         # but running the following tests multiple times doesn't make much sense use cc==clang as the check
