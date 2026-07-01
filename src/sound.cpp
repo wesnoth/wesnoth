@@ -841,6 +841,10 @@ static void play_sound_internal(const std::string& files,
 
 	std::string file = pick_one(files);
 	const auto filename = filesystem::get_binary_file_location("sounds", file);
+	if(!filename) {
+		ERR_AUDIO << "Could not locate sound file '" << file << "'.";
+		return;
+	}
 	const auto localized = filesystem::get_localized_path(filename.value_or(""));
 	std::string real_path = localized.value_or(filename.value());
 
