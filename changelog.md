@@ -2,6 +2,8 @@
 ### Add-ons client
 ### Add-ons server
 ### Campaigns
+   * The Deceivers Gambit
+     * Fix missing siphon attack sound, which would cause a crash anytime the attack was used.
 ### Editor
 ### Multiplayer
 ### Lua API
