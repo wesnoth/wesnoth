@@ -32,7 +32,7 @@ BOOST_AUTO_TEST_CASE (test_empty_options)
 	BOOST_CHECK(!co.campaign_skip_story);
 	BOOST_CHECK(!co.clock);
 	BOOST_CHECK(!co.data_dir);
-	BOOST_CHECK(!co.data_path);
+	BOOST_CHECK(!co.print_data_path);
 	BOOST_CHECK(!co.debug);
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 	BOOST_CHECK(!co.debug_dot_domain);
@@ -77,7 +77,7 @@ BOOST_AUTO_TEST_CASE (test_empty_options)
 	BOOST_CHECK(!co.screenshot_output_file);
 	BOOST_CHECK(!co.test);
 	BOOST_CHECK(!co.userdata_dir);
-	BOOST_CHECK(!co.userdata_path);
+	BOOST_CHECK(!co.print_userdata_path);
 	BOOST_CHECK(!co.validcache);
 	BOOST_CHECK(!co.version);
 	BOOST_CHECK(!co.windowed);
@@ -102,7 +102,7 @@ BOOST_AUTO_TEST_CASE (test_default_options)
 	BOOST_CHECK(!co.campaign_skip_story);
 	BOOST_CHECK(!co.clock);
 	BOOST_CHECK(!co.data_dir);
-	BOOST_CHECK(!co.data_path);
+	BOOST_CHECK(!co.print_data_path);
 	BOOST_CHECK(!co.debug);
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 	BOOST_CHECK(!co.debug_dot_domain);
@@ -147,7 +147,7 @@ BOOST_AUTO_TEST_CASE (test_default_options)
 	BOOST_CHECK(!co.screenshot_output_file);
 	BOOST_CHECK(co.test && co.test->empty());
 	BOOST_CHECK(!co.userdata_dir);
-	BOOST_CHECK(!co.userdata_path);
+	BOOST_CHECK(!co.print_userdata_path);
 	BOOST_CHECK(!co.validcache);
 	BOOST_CHECK(!co.version);
 	BOOST_CHECK(!co.windowed);
@@ -227,7 +227,7 @@ BOOST_AUTO_TEST_CASE (test_full_options)
 	BOOST_CHECK(co.campaign_skip_story);
 	BOOST_CHECK(co.clock);
 	BOOST_CHECK(co.data_dir && *co.data_dir == "datadirfoo");
-	BOOST_CHECK(co.data_path);
+	BOOST_CHECK(co.print_data_path);
 	BOOST_CHECK(co.debug);
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 	BOOST_CHECK(co.debug_dot_domain && *co.debug_dot_domain == "ddfoo");
@@ -294,7 +294,7 @@ BOOST_AUTO_TEST_CASE (test_full_options)
 	BOOST_CHECK(*co.screenshot_map_file == "mapfoo" && *co.screenshot_output_file == "outssfoo");
 	BOOST_CHECK(co.test && *co.test == "testfoo");
 	BOOST_CHECK(co.userdata_dir && *co.userdata_dir == "userdatadirfoo");
-	BOOST_CHECK(co.userdata_path);
+	BOOST_CHECK(co.print_userdata_path);
 	BOOST_CHECK(co.validcache);
 	BOOST_CHECK(co.version);
 	BOOST_CHECK(co.windowed);
@@ -315,7 +315,7 @@ BOOST_AUTO_TEST_CASE (test_positional_options)
 	BOOST_CHECK(!co.campaign_skip_story);
 	BOOST_CHECK(!co.clock);
 	BOOST_CHECK(co.data_dir && *co.data_dir == "datadirfoo");
-	BOOST_CHECK(!co.data_path);
+	BOOST_CHECK(!co.print_data_path);
 	BOOST_CHECK(!co.debug);
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 	BOOST_CHECK(!co.debug_dot_domain);
@@ -360,7 +360,7 @@ BOOST_AUTO_TEST_CASE (test_positional_options)
 	BOOST_CHECK(!co.screenshot_output_file);
 	BOOST_CHECK(!co.test);
 	BOOST_CHECK(!co.userdata_dir);
-	BOOST_CHECK(!co.userdata_path);
+	BOOST_CHECK(!co.print_userdata_path);
 	BOOST_CHECK(!co.validcache);
 	BOOST_CHECK(!co.version);
 	BOOST_CHECK(!co.windowed);
