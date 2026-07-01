@@ -24,6 +24,7 @@
 #include "formatter.hpp"
 #include "formula/variant.hpp"
 #include "game_board.hpp"
+#include "game_classification.hpp"
 #include "game_config.hpp"
 #include "gui/widgets/drawing.hpp"
 #include "gui/widgets/label.hpp"
@@ -55,6 +56,19 @@ attack_predictions::attack_predictions(
 
 void attack_predictions::pre_show()
 {
+	// Append the active game's RNG mode to the title (reusing the existing strings due to string freeze) so it's clear which odds are being shown.
+	const std::string random_mode
+		= resources::classification ? resources::classification->random_mode : std::string();
+	std::string rng_label = _("Default RNG");
+	if(random_mode == "deterministic") {
+		rng_label = _("Predictable RNG");
+	} else if(random_mode == "biased") {
+		rng_label = _("Reduced RNG");
+	}
+
+	label& title = find_widget<label>("title");
+	title.set_label(title.get_label() + " - " + rng_label);
+
 	set_data(attacker_data_, defender_data_);
 	set_data(defender_data_, attacker_data_);
 }

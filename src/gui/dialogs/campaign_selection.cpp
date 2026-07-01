@@ -459,6 +459,13 @@ void campaign_selection::pre_show()
 	}
 
 	//
+	// Set up RNG mode dropdown
+	//
+	// New installs default to "Reduced RNG"; existing installs restore the last selection.
+	menu_button& rng_menu = find_widget<menu_button>("rng_menu");
+	rng_menu.set_selected(std::clamp<unsigned>(prefs::get().campaign_rng_mode(), RNG_DEFAULT, RNG_BIASED));
+
+	//
 	// Set up Difficulty dropdown
 	//
 	menu_button& diff_menu = find_widget<menu_button>("difficulty_menu");
@@ -569,6 +576,9 @@ void campaign_selection::proceed()
 
 
 	rng_mode_ = RNG_MODE(std::clamp<unsigned>(find_widget<menu_button>("rng_menu").get_value(), RNG_DEFAULT, RNG_BIASED));
+
+	// Remember the RNG mode so it's preselected next time a campaign is started.
+	prefs::get().set_campaign_rng_mode(rng_mode_);
 
 	prefs::get().set_modifications(engine_.active_mods(), false);
 }
