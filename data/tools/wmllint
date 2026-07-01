@@ -2870,9 +2870,7 @@ scenarios, etc.""")
     # -f --future has been removed; there have been no experimental conversions since 1.4
     # -p --progress has been removed; similar to existing -v -v
     parser.add_argument("directories", action="store", nargs="*",
-                        help="""Any number of directories. Each directory is converted.
-If no directories are specified, acts on the current
-directory.""")
+                        help="Any number of directories. Each directory is converted.")
     parser.add_argument("--version", action="version", version="%(prog)s " + version.as_string)
     parser.add_argument("--config", type=str, default="", help="Location of external toml config file to use.")
 
@@ -2900,8 +2898,9 @@ directory.""")
             if data.get("ignore_directories"):
                 ignore_directories = data["ignore_directories"]
 
-    if not config or not arguments:
-        arguments = ["."]
+    if not arguments:
+        print("No directory specified to run wmllint on")
+        exit(1)
 
     if dryrun:
         verbose = max(1, verbose)

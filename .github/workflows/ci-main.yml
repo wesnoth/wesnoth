@@ -31,7 +31,7 @@ jobs:
       - name: Run wmllint
         if: success() || failure()
         run: |
-          ./data/tools/wmllint --config=./data/tools/lint.toml > ./wmllint.log 2>&1
+          ./data/tools/wmllint --config=./data/tools/lint.toml ./data > ./wmllint.log 2>&1
           if [ "$(wc -l < wmllint.log)" != "0" ]; then cat wmllint.log; exit 1; fi
       - name: Whitespace and WML indentation check
         if: success() || failure()
