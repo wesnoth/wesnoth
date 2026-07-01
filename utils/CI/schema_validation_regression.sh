@@ -13,6 +13,7 @@ trap cleanup EXIT
 git -C "$repo_root" worktree add --detach "$test_root" HEAD >/dev/null
 
 gitdir=$(git -C "$test_root" rev-parse --git-dir)
+mkdir -p "$gitdir/info"
 printf 'wesnoth\n' >> "$gitdir/info/exclude"
 
 cat > "$test_root/wesnoth" <<'EOF'
