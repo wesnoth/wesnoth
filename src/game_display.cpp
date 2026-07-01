@@ -28,6 +28,7 @@
 #include "fake_unit_manager.hpp"
 #include "floating_label.hpp"
 #include "game_board.hpp"
+#include "picture.hpp"
 #include "preferences/preferences.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
@@ -342,7 +343,21 @@ void game_display::draw_hex(const map_location& loc)
 	}
 
 	// Draw reach_map information.
-	if(!is_shrouded && !reach_map_.empty() && reach_map_.find(loc) != reach_map_.end()) {
+	bool reachable = reach_map_.find(loc) != reach_map_.end();
+	// Darken unreachable
+	// We remove the reachability mask of the unit that we want to attack.
+	if(!is_shrouded && !reach_map_.empty() && !reachable && loc != attack_indicator_dst_) {
+		std::string darken_opacity = std::to_string(prefs::get().reach_map_darken_opacity());
+		std::string darken_suffix = "~O("+darken_opacity+"%)";
+		if (!prefs::get().reach_map_darken_tex()) {
+			// IDK about this solid black mode. If it causes problems, probably just remove it.
+			darken_suffix = "~WIPE_ALPHA()" + darken_suffix;
+		}
+		drawing_buffer_add(drawing_layer::reachmap_darken, loc,
+			[tex = image::get_texture(game_config::images::unreachable + darken_suffix, image::scale_quality::linear, image::HEXED)](const rect& dest) { draw::blit(tex, dest); });
+	}
+	// Highlight reachable
+	if(!is_shrouded && !reach_map_.empty() && reachable) {
 		// draw the reachmap tint below units and high terrain graphics
 		std::string color = prefs::get().reach_map_color();
 		std::string tint_opacity = std::to_string(prefs::get().reach_map_tint_opacity());

@@ -64,6 +64,9 @@ enum class drawing_layer {
 
 	unit_last = unit_first + 100,
 
+	/** Overlay on unreachable hexes */
+	reachmap_darken,
+
 	/** Bottom half of image following the mouse */
 	mouseover_bottom,
 
