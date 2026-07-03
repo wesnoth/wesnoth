@@ -83,10 +83,9 @@
 # code.
 #
 
-import sys, os, re, argparse, string, copy, difflib, time
+import sys, os, re, argparse, difflib, time, tomllib
 from wesnoth.wmltools3 import *
 from wesnoth.wmliterator3 import *
-from collections import defaultdict
 from wesnoth import version
 
 # Changes meant to be done on maps and .cfg lines.
@@ -2820,6 +2819,8 @@ def allcfgfiles(directory):
                 datafiles.append(directory)
     else:
         for root, dirs, files in os.walk(directory):
+            if root in ignore_directories:
+                continue
             for vcsubdir in vctypes:
                 if vcsubdir in dirs:
                     dirs.remove(vcsubdir)
@@ -2869,12 +2870,9 @@ scenarios, etc.""")
     # -f --future has been removed; there have been no experimental conversions since 1.4
     # -p --progress has been removed; similar to existing -v -v
     parser.add_argument("directories", action="store", nargs="*",
-                        help="""Any number of directories. Each directory is converted.
-If no directories are specified, acts on the current
-directory.""")
+                        help="Any number of directories. Each directory is converted.")
     parser.add_argument("--version", action="version", version="%(prog)s " + version.as_string)
-    parser.add_argument("--ignore-files", type=str, default="", help="Comma separated list of files to ignore. Must include path to file from the directory wmllint is run from.")
-    parser.add_argument("--ignore-directories", type=str, default="", help="Comma separated list of directories to ignore. Must include path to file from the directory wmllint is run from.")
+    parser.add_argument("--config", type=str, default="", help="Location of external toml config file to use.")
 
     namespace = parser.parse_args()
     clean = namespace.clean
@@ -2885,9 +2883,24 @@ directory.""")
     stripcr = namespace.stripcr
     verbose = namespace.verbose
     inconsistency = namespace.known
-    ignore_files = namespace.ignore_files.split(",")
-    ignore_directories = namespace.ignore_directories.split(",")
+    config = namespace.config
     arguments = namespace.directories # a remnant of getopt...
+
+    ignore_files = []
+    ignore_directories = []
+    if config and os.path.exists(config):
+        with open(config, "rb") as f:
+            data = tomllib.load(f)
+            if data.get("include_dirs"):
+                arguments = data["include_dirs"]
+            if data.get("ignore_files"):
+                ignore_files = data["ignore_files"]
+            if data.get("ignore_directories"):
+                ignore_directories = data["ignore_directories"]
+
+    if not arguments:
+        print("No directory specified to run wmllint on")
+        exit(1)
 
     if dryrun:
         verbose = max(1, verbose)
@@ -2987,7 +3000,7 @@ directory.""")
         # with this issue, but it is impossible to handle all cases if multiple
         # (intended) arguments are involved. We also activate globbing on
         # Windows, if there is a wildcard.
-        if arguments and sys.platform == 'win32':
+        if sys.platform == 'win32':
             wildcard = False
             ugly = False
             newargs = []
@@ -3075,9 +3088,6 @@ In your case, your system interprets your arguments as:
                 else:
                     print('wmllint: wildcard did not match any files or directories (%s)'%arguments, file=sys.stderr)
                     sys.exit(1)
-
-        if not arguments:
-            arguments = ["."]
 
         failed_any_dirs = False
 
