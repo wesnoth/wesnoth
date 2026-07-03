@@ -211,6 +211,16 @@ void prefs::migrate_preferences(const std::string& migrate_prefs_file)
 		}
 	}
 }
+
+// TODO: remove after 1.20. Keeps pre-1.20 profiles (which lack the pref) on "Default RNG" to keep old players happy.
+void prefs::set_campaign_rng_mode_default_for_migration()
+{
+	if(!preferences_.has_attribute(prefs_list::campaign_rng_mode)) {
+		preferences_[prefs_list::campaign_rng_mode] = "default";
+		write_preferences();
+	}
+}
+
 void prefs::reload_preferences()
 {
 	clear_preferences();
