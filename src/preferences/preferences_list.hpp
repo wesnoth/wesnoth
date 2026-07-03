@@ -58,6 +58,8 @@ struct preferences_list_defines
 	ADDPREF(bell_volume)
 	/** whether to show the map before being given a side in online multiplayer */
 	ADDPREF(blindfold_replay)
+	/** the most recently selected RNG mode in the campaign selection dialog */
+	ADDPREF(campaign_rng_mode)
 	/** the add-ons server name, ie: add-ons.wesnoth.org */
 	ADDPREF(campaign_server)
 	/** the number of lines of chat to display in-game */
@@ -420,6 +422,7 @@ struct preferences_list_defines
 		auto_save_max,
 		bell_volume,
 		blindfold_replay,
+		campaign_rng_mode,
 		campaign_server,
 		chat_lines,
 		chat_timestamp,

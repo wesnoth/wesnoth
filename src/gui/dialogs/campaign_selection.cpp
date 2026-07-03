@@ -45,6 +45,9 @@ namespace
 	const std::string PAGE_ID_GET_ADDONS = "////addons////";
 	const std::string PAGE_ID_LANDING_PAGE = "////landing-page////";
 	const std::string PAGE_ID_MISSING_CAMPAIGNS = "////missing-campaign////";
+
+	// The campaign_rng_mode preference stores a string mirroring the savefile's random_mode RNG.
+	const std::vector<std::string> rng_mode_prefs{"default", "deterministic", "biased"};
 };
 
 REGISTER_DIALOG(campaign_selection)
@@ -459,6 +462,16 @@ void campaign_selection::pre_show()
 	}
 
 	//
+	// Set up RNG mode dropdown
+	//
+	// New installs default to "Reduced RNG"; existing installs restore the last selection.
+	menu_button& rng_menu = find_widget<menu_button>("rng_menu");
+	auto rng_it = std::find(rng_mode_prefs.begin(), rng_mode_prefs.end(), prefs::get().campaign_rng_mode());
+	rng_menu.set_selected(rng_it != rng_mode_prefs.end()
+		? static_cast<unsigned>(std::distance(rng_mode_prefs.begin(), rng_it))
+		: static_cast<unsigned>(RNG_DEFAULT));
+
+	//
 	// Set up Difficulty dropdown
 	//
 	menu_button& diff_menu = find_widget<menu_button>("difficulty_menu");
@@ -569,6 +582,8 @@ void campaign_selection::proceed()
 
 
 	rng_mode_ = RNG_MODE(std::clamp<unsigned>(find_widget<menu_button>("rng_menu").get_value(), RNG_DEFAULT, RNG_BIASED));
+
+	prefs::get().set_campaign_rng_mode(rng_mode_prefs[rng_mode_]);
 
 	prefs::get().set_modifications(engine_.active_mods(), false);
 }
