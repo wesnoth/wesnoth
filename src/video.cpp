@@ -869,6 +869,18 @@ void update_buffers(bool autoupdate)
 	}
 }
 
+std::vector<std::string> get_available_renderers()
+{
+	std::vector<std::string> renderers;
+
+	int renderer_count = SDL_GetNumRenderDrivers();
+	for(int i = 0; i < renderer_count; i++) {
+		renderers.emplace_back(SDL_GetRenderDriver(i));
+	}
+
+	return renderers;
+}
+
 std::vector<std::pair<std::string, std::string>> renderer_report()
 {
 	std::vector<std::pair<std::string, std::string>> res;

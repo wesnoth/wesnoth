@@ -841,6 +841,10 @@ static void play_sound_internal(const std::string& files,
 
 	std::string file = pick_one(files);
 	const auto filename = filesystem::get_binary_file_location("sounds", file);
+	if(!filename) {
+		ERR_AUDIO << "Could not locate sound file '" << file << "'.";
+		return;
+	}
 	const auto localized = filesystem::get_localized_path(filename.value_or(""));
 	std::string real_path = localized.value_or(filename.value());
 
@@ -989,9 +993,9 @@ void set_sound_volume(int vol)
 		}
 
 		// Bell, timer and UI have separate tracks which we can't set up from this
+		// Also separating music track from being modified
 		for(unsigned i = 0; i < n_of_tracks; ++i) {
-			if(!(i >= UI_sound_track_id_start && i <= UI_sound_track_id_last) && i != bell_track_id && i != timer_track_id) {
-				MIX_SetTrackGain(sound::tracks[i].get(), vol);
+			if(i != music_track_id && !(i >= UI_sound_track_id_start && i <= UI_sound_track_id_last) && i != bell_track_id && i != timer_track_id) {				MIX_SetTrackGain(sound::tracks[i].get(), vol);
 			}
 		}
 	}

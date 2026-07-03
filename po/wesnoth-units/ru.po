@@ -6,17 +6,18 @@
 # Automatically generated, 2004.
 # Alexandr Menovchicov (VaM) - orders@kypi.ru
 # Sergey Khlutchin (Khlut) - Sergey.Khlutchin@gmail.com
-# Azamat H. Hackimov <azamat.hackimov@gmail.com>, 2006, 2007.
+# Azamat H. Hackimov <azamat.hackimov@gmail.com>, 2006-2007.
 # Anthon Kolesov - <anthony.kolesov@gmail.com>
-# Fedor Khodkov — <fkhodkov@gmail.com>, 2009-2014
-# Artem Khrapov (kabachuha) - <artemkhrapov2001@yandex.ru>, 2021-2024
+# Fedor Khodkov — <fkhodkov@gmail.com>, 2009-2014.
+# Artem Khrapov (kabachuha) - <artemkhrapov2001@yandex.ru>, 2021-2024.
+# Alexandr Obolonkin (Alexinor) <obolonkin@proton.me>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-units\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2026-06-23 03:16 UTC\n"
-"PO-Revision-Date: 2024-04-13 23:12+0300\n"
-"Last-Translator: Artem Khrapov <artemkhrapov2001@yandex.ru>\n"
+"PO-Revision-Date: 2026-06-23 18:33+0500\n"
+"Last-Translator: Alexandr Obolonkin (Alexinor) <obolonkin@proton.me>\n"
 "Language-Team: https://wiki.wesnoth.org/RussianTranslation\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -24,7 +25,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.0.1\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
 #. [attack]: type=impact
@@ -403,24 +404,6 @@ msgstr "Паладин"
 #. [unit_type]: id=Paladin, race=human
 #: data/campaigns/Eastern_Invasion/units/Human_Terraent_Paladin.cfg:19
 #: data/core/units/humans/Horse_Paladin.cfg:21
-#, fuzzy
-#| msgid ""
-#| "Knights of the highest virtue, Paladins have sworn their strength not to "
-#| "king and crown, but to ideals themselves; of chivalry, and the "
-#| "stewardship of everything that is good. They may serve in the armies of "
-#| "the world, but their first loyalties often lie with groups of their own "
-#| "making; secret, monastic orders that cross political and cultural "
-#| "boundaries. Rulers are sometimes wary of them, for the paladins’ loyalty "
-#| "is only as strong as the liege’s apparent virtue. This has led the more "
-#| "darkly ambitious to either attempt to defame and disperse these groups, "
-#| "or more rarely, to conjure elaborate deceptions to keep these otherwise "
-#| "staunchly loyal troops in service.\n"
-#| "\n"
-#| "Full paladins are generally not quite as fearsome as the ‘Grand Knights’ "
-#| "that champion most armies, but they are first-class fighters nonetheless. "
-#| "Additionally, their wisdom and piety grants these warrior monks certain "
-#| "curious abilities; a paladin is very powerful in fighting magical or "
-#| "unnatural things, and most have some skill at medicine and healing."
 msgid ""
 "Knights of the highest virtue, Paladins have sworn their strength not to "
 "king and crown, but to ideals themselves; of chivalry, and the stewardship "
@@ -450,7 +433,7 @@ msgstr ""
 "Хотя паладины обычно не столь устрашающи в бою, как Великие рыцари, они, тем "
 "не менее — первоклассные воины. Кроме того, их мудрость и вера дают этим "
 "монахам-воинам любопытные способности: паладин весьма силён против "
-"магических и неестевтвенных орудий и атак, а также способен лечить "
+"магических и неестеcтвенных орудий и атак, а также способен лечить "
 "соратников."
 
 #. [attack]: type=blade
@@ -563,27 +546,21 @@ msgstr "проклятие"
 
 #. [unit_type]: id=Pirate Flagship, race=ship
 #: data/campaigns/Of_Pearls_and_Pirates/units/Pirate_Flagship.cfg:9
-#, fuzzy
-#| msgid "Fire Wraith"
 msgid "Pirate Flagship"
-msgstr "Огненный призрак"
+msgstr "Пиратский Флагман"
 
 #. [unit_type]: id=Pirate Flagship, race=ship
 #. [unit_type]: id=Pirate Carrack, race=ship
 #: data/campaigns/Of_Pearls_and_Pirates/units/Pirate_Flagship.cfg:24
 #: data/core/units/boats/Carrack_Pirate.cfg:22
-#, fuzzy
-#| msgid ""
-#| "Pirate galleons are to transport ships what wolves are to sheep. The "
-#| "pirates who crew them are more than happy to help relieve other ships of "
-#| "their weighty cargo."
 msgid ""
 "Pirate galleons are to transport ships what wolves are to sheep. The pirates "
 "who crew them are more than happy to help relieve other ships of their "
 "weighty cargo, or to fight as privateers in return for coin."
 msgstr ""
-"Для транспортных кораблей этот галеон — как волк для овец. Его пиратская "
-"команда всегда рада помочь другим судам избавиться от тяжёлого груза."
+"Для транспортных кораблей пиратские галеоны — как волки для овец. Пираты, "
+"управляющие ими, всегда рады помочь другим судам избавиться от тяжёлого "
+"груза или сразиться за награду в качестве каперов."
 
 #. [attack]: type=impact
 #. [attack]: type=fire
@@ -610,38 +587,30 @@ msgstr "таран"
 #. [attack]: type=pierce
 #: data/campaigns/Of_Pearls_and_Pirates/units/Pirate_Flagship.cfg:38
 #: data/core/units/boats/Carrack_Pirate.cfg:36
-#, fuzzy
-#| msgid "ballista"
 msgid "ballistae"
-msgstr "баллиста"
+msgstr "баллисты"
 
 #. [attack]: type=pierce
 #: data/campaigns/Of_Pearls_and_Pirates/units/Pirate_Flagship.cfg:47
 #: data/core/units/boats/Carrack_Pirate.cfg:45
-#, fuzzy
-#| msgid "Trapper"
 msgid "grapple"
-msgstr "Зверолов"
+msgstr "абордажный крюк"
 
 #. [unit_type]: id=Pirate Skiff, race=ship
 #: data/campaigns/Of_Pearls_and_Pirates/units/Pirate_Skiff.cfg:9
 msgid "Pirate Skiff"
-msgstr ""
+msgstr "Пиратская лодка"
 
 #. [unit_type]: id=Pirate Skiff, race=ship
 #. [unit_type]: id=Skiff, race=ship
 #: data/campaigns/Of_Pearls_and_Pirates/units/Pirate_Skiff.cfg:26
 #: data/core/units/boats/Skiff.cfg:22
-#, fuzzy
-#| msgid ""
-#| "Propelled by oars or small sails, boats are used to travel short "
-#| "distances and in shallows where large ships cannot navigate."
 msgid ""
 "Propelled by oars or small sails, Skiffs are used to travel short distances "
 "and in shallows where large ships cannot navigate."
 msgstr ""
-"Снабжённые вёслами или маленькими парусами лодки служат для коротких поездок "
-"по воде или пересечений отмелей, недоступных крупным кораблям."
+"Снабжённые вёслами или маленькими парусами, лодки служат для коротких "
+"поездок по воде или пересечений отмелей, недоступных крупным кораблям."
 
 #. [attack]: type=pierce
 #: data/campaigns/Of_Pearls_and_Pirates/units/Pirate_Skiff.cfg:41
@@ -650,10 +619,8 @@ msgstr ""
 #: data/core/units/boats/Orc_Battle-Barge.cfg:36
 #: data/core/units/boats/Raider_Coastal.cfg:41
 #: data/core/units/boats/Raider_Iron.cfg:42 data/core/units/boats/Skiff.cfg:37
-#, fuzzy
-#| msgid "Poacher"
 msgid "archers"
-msgstr "Браконьер"
+msgstr "лучники"
 
 #. [unit_type]: id=Bowman Thea, race=human, gender=female
 #. [unit_type]: id=Bowman, race=human, gender=male
@@ -666,13 +633,6 @@ msgstr "Лучник"
 #. [unit_type]: id=Bowman, race=human, gender=male
 #: data/campaigns/Of_Pearls_and_Pirates/units/Thea1.cfg:17
 #: data/core/units/humans/Loyalist_Bowman.cfg:18
-#, fuzzy
-#| msgid ""
-#| "The use of archery in shooting something other than game was seen from "
-#| "its inception, and archers have been indispensable in warfare since time "
-#| "immemorial. Usually of humble origins, hailing from the peasantry or "
-#| "woodsmen, military bowmen are trained to competence with both a bow and a "
-#| "short sword, and are very common on the battlefield."
 msgid ""
 "The use of archery in shooting something other than game was seen from its "
 "inception, and archers have been indispensable in warfare since time "
@@ -730,16 +690,6 @@ msgstr "Мастер лука"
 #. [unit_type]: id=Master Bowman, race=human, gender=male
 #: data/campaigns/Of_Pearls_and_Pirates/units/Thea3.cfg:18
 #: data/core/units/humans/Loyalist_Master_Bowman.cfg:19
-#, fuzzy
-#| msgid ""
-#| "Master bowmen have reached the zenith of their art, inasmuch as any human "
-#| "is capable. Armed with both a sword, and a great yew bow, these warriors "
-#| "crown battalions of archers with their presence, bringing down many a foe "
-#| "with their well-aimed shots. Their skill with the sword is also not to be "
-#| "discounted; they are easily as good with it as any novice swordsman. Of "
-#| "the many races in the world, only the elves surpass humanity in archery, "
-#| "and their human counterparts have speculated, perhaps in envy, that this "
-#| "is only by dint of age."
 msgid ""
 "Master Bowmen have reached the zenith of their art, inasmuch as any human is "
 "capable. Armed with both a sword, and a great yew bow, these warriors crown "
@@ -1075,14 +1025,6 @@ msgstr "молот"
 #. [unit_type]: id=Dwarvish Guardsman, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Guardsman.cfg:17
 #: data/core/units/dwarves/Guardsman.cfg:18
-#, fuzzy
-#| msgid ""
-#| "The dwarven race has always been famed for its sturdiness of build, and "
-#| "many of their warriors outfit themselves to take advantage of this. "
-#| "Dwarven guardsmen march into battle with tower shields and spears. Most "
-#| "often, their role is to hold the line, and to take a heavy toll on those "
-#| "who try to break it. As the line marches forward, they act to secure its "
-#| "hard-won advance."
 msgid ""
 "The dwarven race has always been famed for its sturdiness of build, and many "
 "of their warriors outfit themselves to take advantage of this. Dwarven "
@@ -1094,7 +1036,7 @@ msgstr ""
 "них используют свойства своего телосложения для получения преимущества в "
 "бою. Прикрываясь башенными щитами, за которыми их практически не видно, "
 "орудуя массивными копьями, которые они могут при необходимости и метнуть в "
-"противника, выстроившись в свой любимый хирд, они способны удерживать "
+"противника. Выстроившись в свой любимый хирд, они способны удерживать "
 "позиции со стойкостью дуба, вцепившегося корнями в землю, и создать большие "
 "проблемы для тех, кто пытается прорваться через их линии обороны."
 
@@ -1175,14 +1117,6 @@ msgstr "топорик"
 
 #. [unit_type]: id=Dwarvish Masked Sentinel, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Sentinel.cfg:18
-#, fuzzy
-#| msgid ""
-#| "Champions among their fellow troops, the dwarven sentinels form the "
-#| "bulwark of their battle lines. Leading a direct assault against a line "
-#| "that they fortify, is often out of the question; it tends toward being "
-#| "suicidal, rather than merely ineffectual. These dwarves are masters of "
-#| "the melee, and can hold a patch of earth with the single-minded tenacity "
-#| "of an oak."
 msgid ""
 "Champions among their fellow troops, the Dwarven Sentinels form the bulwark "
 "of their battle lines. Leading a direct assault against a line that they "
@@ -1366,9 +1300,8 @@ msgstr "кулак"
 #. [unit_type]: id=Wandering Scarab
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Wandering_Scarab.cfg:4
 #, fuzzy
-#| msgid "Horned Scarab"
 msgid "Wandering Scarab"
-msgstr "Рогатый скарабей"
+msgstr "Бродящий скарабей"
 
 #. [attack]: type=arcane
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Divine_Avatar.cfg:36
@@ -1406,8 +1339,9 @@ msgstr "Дождь стрел"
 
 #. [effect]: type=pierce
 #: data/campaigns/Under_the_Burning_Suns/units/quenoth/Youth.cfg:579
+#, fuzzy
 msgid "Snipe"
-msgstr ""
+msgstr "Снайперский выстрел"
 
 #. [unit_type]: id=Blood Bat, race=bats
 #: data/core/units/bats/Bat_Blood.cfg:4
@@ -1449,11 +1383,6 @@ msgstr "Мышь-вампир"
 
 #. [unit_type]: id=Vampire Bat, race=bats
 #: data/core/units/bats/Bat_Vampire.cfg:19
-#, fuzzy
-#| msgid ""
-#| "Vampire bats are flying beasts that feed on the blood of other creatures. "
-#| "While their fangs are not very powerful, the health of victims is drained "
-#| "away along with their blood, and given to the Bats."
 msgid ""
 "Vampire Bats are flying beasts that feed on the blood of other creatures. "
 "While their fangs are not very powerful, the health of victims is drained "
@@ -1466,7 +1395,7 @@ msgstr ""
 #. [unit_type]: id=Canoe, race=ship
 #: data/core/units/boats/Canoe.cfg:5
 msgid "Canoe"
-msgstr ""
+msgstr "Каноэ"
 
 #. [unit_type]: id=Canoe, race=ship
 #: data/core/units/boats/Canoe.cfg:34
@@ -1476,11 +1405,15 @@ msgid ""
 "barriers or between unconnected bodies of water. Almost every intelligent "
 "race has some form of Canoe."
 msgstr ""
+"Каноэ — это небольшое открытое водное судно, обычно используемое для "
+"передвижения или охоты. Благодаря своей лёгкой конструкции оно может "
+"передвигаться вокруг препятствий или между несвязанными водоёмами. "
+"Практически у каждой разумной расы есть какая-либо разновидность каноэ."
 
 #. [unit_type]: id=Merchant Carrack, race=ship
 #: data/core/units/boats/Carrack_Merchant.cfg:4
 msgid "Merchant Carrack"
-msgstr ""
+msgstr "Торговая каравелла"
 
 #. [unit_type]: id=Merchant Carrack, race=ship
 #: data/core/units/boats/Carrack_Merchant.cfg:22
@@ -1490,16 +1423,20 @@ msgid ""
 "platform, and their spacious holds can carry both medical supplies and "
 "repair equipment."
 msgstr ""
+"Торговые каравеллы — это быстроходные корабли с большими грузовыми трюмами. "
+"Хотя они не предназначены для войны, их большая и устойчивая палуба служит "
+"хорошей площадкой для стрельбы из лука, а вместительные трюмы позволяют "
+"перевозить как медикаменты, так и ремонтное оборудование."
 
 #. [unit_type]: id=Pirate Carrack, race=ship
 #: data/core/units/boats/Carrack_Pirate.cfg:4
 msgid "Pirate Carrack"
-msgstr ""
+msgstr "Пиратская каравелла"
 
 #. [unit_type]: id=Derelict, race=ship
 #: data/core/units/boats/Derelict_Ship.cfg:4
 msgid "Derelict"
-msgstr ""
+msgstr "Брошенный корабль"
 
 #. [unit_type]: id=Derelict, race=ship
 #. [unit_type]: id=Ghost Ship, race=ship
@@ -1510,6 +1447,10 @@ msgid ""
 "are merely ruined ships that will soon sink, but there are tales of others "
 "that haunt certain waterways for generations."
 msgstr ""
+"Брошенные корабли — это обломки, которые продолжают дрейфовать по морям. "
+"Большинство из них — это просто разрушенные суда, которые скоро затонут, но "
+"существуют и такие, о которых рассказывают истории, и которые преследуют "
+"определенные водные пути на протяжении поколений."
 
 #. [unit_type]: id=Elvish Cutter, race=ship
 #: data/core/units/boats/Elf_Cutter.cfg:5
@@ -1527,21 +1468,25 @@ msgid ""
 "Artfully grafted together from still-living trees, these sleek ships can "
 "recover from minor injuries without their crews’ intervention."
 msgstr ""
+"Эльфы по своей природе не мореплаватели, предпочитая тишину и уединение "
+"лесов. Тем не менее, существует определённый спрос на речную торговлю и "
+"транспорт, особенно между Весмиром и Линтаниром. Искусно собранные из ещё "
+"живых деревьев, эти изящные корабли могут восстанавливаться после "
+"незначительных повреждений без вмешательства экипажа."
 
 #. [attack]: type=pierce
 #: data/core/units/boats/Elf_Cutter.cfg:34
 #: data/core/units/boats/Elf_Cutter.cfg:43
 #: data/core/units/boats/Elf_Sloop.cfg:35
 #: data/core/units/boats/Elf_Sloop.cfg:44
+#, fuzzy
 msgid "marksmen"
-msgstr ""
+msgstr "меткие стрелки"
 
 #. [unit_type]: id=Elvish Sloop, race=ship
 #: data/core/units/boats/Elf_Sloop.cfg:5
-#, fuzzy
-#| msgid "Elvish Scout"
 msgid "Elvish Sloop"
-msgstr "Гонец"
+msgstr "Шлюп"
 
 #. [unit_type]: id=Elvish Sloop, race=ship
 #: data/core/units/boats/Elf_Sloop.cfg:20
@@ -1551,13 +1496,15 @@ msgid ""
 "times of crisis, for their living timber can survive only a handful of years "
 "after being launched."
 msgstr ""
+"Этим могучие эльфийские корабли, изящно скользящим по воде и утопающим в "
+"зелени, ни почём ни волны, ни штормы. Таких гигантов можно увидеть только в "
+"кризисные времена, ведь их живая древесина может просуществовать лишь "
+"несколько лет после спуска на воду."
 
 #. [unit_type]: id=Fireship, race=ship
 #: data/core/units/boats/Fireship.cfg:4
-#, fuzzy
-#| msgid "Fire Wraith"
 msgid "Fireship"
-msgstr "Огненный призрак"
+msgstr "Брандер"
 
 #. [unit_type]: id=Fireship, race=ship
 #: data/core/units/boats/Fireship.cfg:21
@@ -1567,25 +1514,32 @@ msgid ""
 "they also shed burning embers. Sometimes they have a skeleton crew to guide "
 "them, but often they just drift along on unseen winds and currents."
 msgstr ""
+"Брандеры — это, как правило, заброшенные или обречённые суда, подожжённые "
+"для того, чтобы посеять хаос. Главная опасность от них — столкновения, но "
+"они также сбрасывают горящие угли. Иногда у них есть экипаж скелетов, "
+"который ими управляет, но часто они просто дрейфуют по невидимым ветрам и "
+"течениям."
 
 #. [dummy]: id=deteriorate
 #: data/core/units/boats/Fireship.cfg:26
+#, fuzzy
 msgid "deteriorate"
-msgstr ""
+msgstr "разрушается"
 
 #. [dummy]: id=deteriorate
 #: data/core/units/boats/Fireship.cfg:27
+#, fuzzy
 msgid ""
 "This unit is deteriorating. It cannot be healed, and loses 10 hitpoints at "
 "the start of each of its turns."
 msgstr ""
+"Этот боец разрушается. Его нельзя исцелить, и он теряет 10 ОЗ в начале "
+"каждого хода."
 
 #. [unit_type]: id=Ghost Ship, race=ship
 #: data/core/units/boats/Ghost_Ship.cfg:16
-#, fuzzy
-#| msgid "Ghost"
 msgid "Ghost Ship"
-msgstr "Призрак"
+msgstr "Корабль-призрак"
 
 #. [attack]: type=fire
 #: data/core/units/boats/Ghost_Ship.cfg:49
@@ -1598,7 +1552,7 @@ msgstr "молния"
 #. [attack]: type=cold
 #: data/core/units/boats/Ghost_Ship.cfg:59
 msgid "lost souls"
-msgstr ""
+msgstr "заблудшие души"
 
 #. [unit_type]: id=Boat, race=mechanical
 #: data/core/units/boats/Legacy_Boat.cfg:7
@@ -1607,16 +1561,12 @@ msgstr "Лодка"
 
 #. [unit_type]: id=Boat, race=mechanical
 #: data/core/units/boats/Legacy_Boat.cfg:23
-#, fuzzy
-#| msgid ""
-#| "Propelled by oars or small sails, boats are used to travel short "
-#| "distances and in shallows where large ships cannot navigate."
 msgid ""
 "Propelled by oars or small sails, Boats are used to travel short distances "
 "and in shallows where large ships cannot navigate."
 msgstr ""
-"Снабжённые вёслами или маленькими парусами лодки служат для коротких поездок "
-"по воде или пересечений отмелей, недоступных крупным кораблям."
+"Снабжённые вёслами или маленькими парусами, лодки служат для коротких "
+"поездок по воде или пересечений отмелей, недоступных крупным кораблям."
 
 #. [unit_type]: id=Galleon, race=mechanical
 #: data/core/units/boats/Legacy_Galleon.cfg:6
@@ -1632,6 +1582,11 @@ msgid ""
 "Isle, before even the times of Haldric. Centuries later, their skillfully-"
 "crafted designs continue to be used by many Wesnothian sailors."
 msgstr ""
+"Галеоны — это большие и прочные деревянные корабли, используемые в основном "
+"для быстрой перевозки больших объемов грузов по рекам и океанам. Самые "
+"ранние галеоны были построены давным-давно древними моряками с Зелёного "
+"острова, ещё до времен Халдрика. Спустя столетия их искусно выполненные "
+"конструкции продолжают использоваться многими веснотскими моряками."
 
 #. [unit_type]: id=Pirate Galleon, race=mechanical
 #: data/core/units/boats/Legacy_Pirate_Galleon.cfg:7
@@ -1675,10 +1630,8 @@ msgstr ""
 
 #. [unit_type]: id=Orcish Barge, race=ship
 #: data/core/units/boats/Orc_Barge.cfg:5
-#, fuzzy
-#| msgid "Orcish Archer"
 msgid "Orcish Barge"
-msgstr "Лучник"
+msgstr "Баржа"
 
 #. [unit_type]: id=Orcish Barge, race=ship
 #: data/core/units/boats/Orc_Barge.cfg:28
@@ -1699,13 +1652,27 @@ msgid ""
 "These barges are very ineffective in the high seas; little better than a "
 "floating wreck."
 msgstr ""
+"Орочьи баржи — примитивные, лишённые мастерства, присущего почти всем другим "
+"кораблям конструкции. Но то, чего им не хватает в скорости и изяществе, они "
+"компенсируют своей прочностью и удобством в навигации по рекам и болотам. "
+"Основным средством передвижения является большой симметричный парус, "
+"удерживаемый в трёх точках для движения по ветру. Когда течение и ветер "
+"уводят баржу в неверном направлении, экипаж должен использовать шесты и "
+"якоря, чтобы перенаправить её в нужном направлении.\n"
+"\n"
+"Баржи служат для перевозки припасов или войск, а при наличии медикаментов "
+"могут обеспечить безопасное место — подобно деревне — для отдыха раненых "
+"бойцов. Они не имеют специального вооружения и не могут таранить, но экипаж "
+"оснащён достаточным количеством примитивных орочьих луков для сдерживания "
+"противника.\n"
+"\n"
+"Эти баржи очень неэффективны в открытом море; немногим лучше плавающего "
+"затонувшего корабля."
 
 #. [unit_type]: id=Orcish Battle Barge, race=ship
 #: data/core/units/boats/Orc_Battle-Barge.cfg:5
-#, fuzzy
-#| msgid "Orcish Ruler"
 msgid "Orcish Battle Barge"
-msgstr "Правитель орков"
+msgstr "Боевая баржа"
 
 #. [unit_type]: id=Orcish Battle Barge, race=ship
 #: data/core/units/boats/Orc_Battle-Barge.cfg:30
@@ -1719,18 +1686,24 @@ msgid ""
 "These barges are very ineffective in the high seas; little better than a "
 "floating wreck."
 msgstr ""
+"Несмотря на свою простую конструкцию, баржи обладают удивительной "
+"полезностью: они обеспечивают перевозку грузов или людей, судоходство на "
+"мелководье или в болотах, а также служат безопасным местом для отдыха "
+"раненых бойцов. Кроме того, они предоставляют широкую и устойчивую платформу "
+"для установки осадного оборудования, о чём орки прекрасно осведомлены.\n"
+"\n"
+"Эти баржи крайне неэффективны в открытом море; они немногим лучше плавающих "
+"обломков."
 
 #. [attack]: type=impact
 #: data/core/units/boats/Orc_Battle-Barge.cfg:45
 msgid "catapult"
-msgstr ""
+msgstr "катапульта"
 
 #. [unit_type]: id=Orcish Rigship, race=ship
 #: data/core/units/boats/Orc_Rigship.cfg:5
-#, fuzzy
-#| msgid "Orcish Nightblade"
 msgid "Orcish Rigship"
-msgstr "Клинок ночи"
+msgstr "Риговый корабль"
 
 #. [unit_type]: id=Orcish Rigship, race=ship
 #: data/core/units/boats/Orc_Rigship.cfg:19
@@ -1742,6 +1715,12 @@ msgid ""
 "The so-called “Rigship” is but one of many designs bearing testament to "
 "their skill."
 msgstr ""
+"Большинство орков не нуждаются в парусных судах, поскольку они предпочитают "
+"сражаться на засушливых вершинах и холмах Гор Сердца. Но вдоль северо-"
+"западного побережья Великого Континента, в городах Биток и Тиригаз, орочьи "
+"кораблестроители усердно работают над совершенствованием своего ремесла. Так "
+"называемый «Риговый корабль» — лишь один из многих образцов, "
+"свидетельствующих об их мастерстве."
 
 #. [attack]: type=pierce
 #. [attack]: type=fire
@@ -1749,31 +1728,33 @@ msgstr ""
 #: data/core/units/boats/Orc_Rigship.cfg:42
 #: data/core/units/boats/Orc_Warship.cfg:34
 #: data/core/units/boats/Orc_Warship.cfg:43
-#, fuzzy
-#| msgid "crossbow"
 msgid "crossbows"
-msgstr "арбалет"
+msgstr "арбалеты"
 
 #. [unit_type]: id=Orcish Warship, race=ship
 #: data/core/units/boats/Orc_Warship.cfg:5
 #, fuzzy
-#| msgid "Orcish Warrior"
 msgid "Orcish Warship"
-msgstr "Ветеран"
+msgstr "Крейсер"
 
 #. [unit_type]: id=Orcish Warship, race=ship
 #: data/core/units/boats/Orc_Warship.cfg:20
+#, fuzzy
 msgid ""
 "When orcs first stepped off their ships onto the western shores of the Great "
 "Continent, they found an unspoiled paradise across which to spread. The "
 "shipwrights of the Tirigaz coast have not forgotten that lesson, and devote "
 "significant effort to the construction of newer and ever-better vessels."
 msgstr ""
+"Когда орки впервые сошли со своих кораблей на западные берега Великого "
+"Континента, они обнаружили нетронутый рай, по которому и расселились. "
+"Кораблестроители побережья Тиригаза не забыли этот урок и прилагают "
+"значительные усилия к строительству всё новых и всё более совершенных судов."
 
 #. [unit_type]: id=Raft, race=ship
 #: data/core/units/boats/Raft.cfg:5
 msgid "Raft"
-msgstr ""
+msgstr "Плот"
 
 #. [unit_type]: id=Raft, race=ship
 #: data/core/units/boats/Raft.cfg:21
@@ -1785,13 +1766,17 @@ msgid ""
 "These Rafts are very ineffective in the high seas; little better than a "
 "floating wreck."
 msgstr ""
+"Плоты могут быть эффективным средством передвижения вниз по реке, но они "
+"также могут представлять собой импровизированное судно, собранное из "
+"обломков более крупного корабля в отчаянных обстоятельствах.\n"
+"\n"
+"В открытом море такие плоты крайне неэффективны; они немногим лучше "
+"плавающих обломков."
 
 #. [unit_type]: id=Coastal Raider, race=ship
 #: data/core/units/boats/Raider_Coastal.cfg:4
-#, fuzzy
-#| msgid "Wolf Rider"
 msgid "Coastal Raider"
-msgstr "Волчий наездник"
+msgstr "Береговой налётчик"
 
 #. [unit_type]: id=Coastal Raider, race=ship
 #: data/core/units/boats/Raider_Coastal.cfg:25
@@ -1808,13 +1793,23 @@ msgid ""
 "not possess any specific armaments, but oared propulsion makes the vessel "
 "much more maneuverable when ramming or beaching."
 msgstr ""
+"В то время как каравеллы и когги полагаются на впечатляющие паруса, чтобы "
+"использовать силу ветра, галеры и налётчики движутся за счет мускульной силы "
+"экипажа, управляющего веслами. Это имеет недостаток, заключающийся в "
+"необходимости бо́льшего экипажа, и ограничивает скорость и эффективность "
+"транспортировки. Но эти кажущиеся слабости также делают судно менее уязвимым "
+"для капризов погоды и нападений пиратов.\n"
+"\n"
+"Береговые налётчики — это очень простые военные корабли, защищенные от "
+"тарана и используемые для быстрой переброски вооруженных сил по мелководью и "
+"прибрежным водам. Они не обладают каким-либо специальным вооружением, но "
+"гребное движение делает судно гораздо более маневренным при таране или "
+"высадке на берег."
 
 #. [unit_type]: id=Iron Raider, race=ship
 #: data/core/units/boats/Raider_Iron.cfg:4
-#, fuzzy
-#| msgid "Gryphon Rider"
 msgid "Iron Raider"
-msgstr "Наездник грифона"
+msgstr "Железный рейдер"
 
 #. [unit_type]: id=Iron Raider, race=ship
 #: data/core/units/boats/Raider_Iron.cfg:26
@@ -1826,6 +1821,12 @@ msgid ""
 "also make the vessel less vulnerable to the whims of weather and the "
 "predations of pirates."
 msgstr ""
+"В то время как каравеллы и когги полагаются на впечатляющие паруса, чтобы "
+"использовать силу ветра, галеры и налётчики движутся за счет мускульной силы "
+"экипажа, управляющего веслами. Это имеет недостаток, заключающийся в "
+"необходимости бо́льшего экипажа, и ограничивает скорость и эффективность "
+"транспортировки. Но эти кажущиеся слабости также делают судно менее уязвимым "
+"для капризов погоды и нападений пиратов."
 
 #. [unit_type]: id=Iron Raider, race=ship
 #: data/core/units/boats/Raider_Iron.cfg:28
@@ -1835,11 +1836,16 @@ msgid ""
 "escorts of slower cargo ships in rivers and coasts, where their heavy iron "
 "bow allows them to ram foes without fear of self-inflicted damage."
 msgstr ""
+"Железные налётчики — это опытные береговые налётчики, закалённые и ставшие "
+"более живучими целями и более мощными ударными средствами. Их часто "
+"используют в качестве передового эскорта для более медленных грузовых судов "
+"на реках и побережьях, где их тяжёлый железный нос позволяет им таранить "
+"противников, не опасаясь повреждений."
 
 #. [unit_type]: id=Skiff, race=ship
 #: data/core/units/boats/Skiff.cfg:5
 msgid "Skiff"
-msgstr ""
+msgstr "Скиф"
 
 #. [unit_type]: id=Drake Arbiter, race=drake, gender=male,female
 #: data/core/units/drakes/Arbiter.cfg:4
@@ -2953,7 +2959,7 @@ msgstr "факел"
 #. [attack]: type=pierce
 #: data/core/units/dunefolk/Marauder.cfg:71
 msgid "rope dart"
-msgstr ""
+msgstr "верёвочный дротик"
 
 #. [unit_type]: id=Dune Paragon, race=dunefolk
 #: data/core/units/dunefolk/Paragon.cfg:8
@@ -3054,7 +3060,7 @@ msgstr ""
 #. [attack]: type=pierce
 #: data/core/units/dunefolk/Raider.cfg:68
 msgid "dart"
-msgstr ""
+msgstr "дротик"
 
 #. [unit_type]: id=Dune Rider, race=dunefolk
 #: data/core/units/dunefolk/Rider.cfg:8
@@ -3658,6 +3664,17 @@ msgid ""
 "usually use their knowledge for warfare, they can be threatening warriors "
 "when defending their homes."
 msgstr ""
+"Хотя виверны, как правило, мирные существа, при провокации они легко могут "
+"превратиться в свирепых и разъярённых зверей. В состоянии настоящей ярости "
+"они способны с относительной легкостью разорвать на части даже опытных "
+"воинов. Большинство путешественников убежали бы или вступили в бой при их "
+"могучем присутствии, однако некоторым удается приручить этих диких существ. "
+"Эти наездники из Народа Пустыни проводят годы, даже десятилетия своей жизни, "
+"сближаясь с ними, постепенно укрепляя их доверие, пока не обретают истинное "
+"господство над небесами. Самые опытные из этих наездников на вивернах "
+"становятся величайшими и почитаемыми путешественниками земли. Хотя они "
+"обычно не используют свои знания в войне, они могут быть опасными воинами, "
+"защищая свои дома."
 
 #. [unit_type]: id=Dwarvish Arcanister, race=dwarf
 #: data/core/units/dwarves/Arcanister.cfg:4
@@ -4191,8 +4208,9 @@ msgstr ""
 #. [attack]: type=impact
 #. in game mechanics an upgrade of the Shaman’s slowing “entangle”, but in lore has the different magic style of the Enchantress’s unit description
 #: data/core/units/elves/Enchantress.cfg:36 data/core/units/elves/Sylph.cfg:38
+#, fuzzy
 msgid "ethereal web"
-msgstr ""
+msgstr "эфирная сеть"
 
 #. [attack]: type=arcane
 #: data/core/units/elves/Enchantress.cfg:46
@@ -7408,7 +7426,7 @@ msgstr ""
 #. [unit_type]: id=Forest Lion, race=cats
 #: data/core/units/monsters/Cat_Forest.cfg:4
 msgid "Forest Lion"
-msgstr ""
+msgstr "Лесной лев"
 
 #. [unit_type]: id=Forest Lion, race=cats
 #: data/core/units/monsters/Cat_Forest.cfg:32
@@ -7418,11 +7436,15 @@ msgid ""
 "their odd, triply branched tail, which they seem to use for camouflage and "
 "disruptive patterning."
 msgstr ""
+"Лесные львы — это светло-коричневые пантеры, примерно размером с волка, "
+"которые охотятся в лесах и холмах на рассвете и в сумерках. Их наиболее "
+"отличительной чертой является странный, разветвлённый натрое хвост, который "
+"они, по-видимому, используют для маскировки и отвлечения внимания."
 
 #. [unit_type]: id=Jumpcat, race=cats
 #: data/core/units/monsters/Cat_Jump.cfg:4
 msgid "Jumpcat"
-msgstr ""
+msgstr "Прыжковый кот"
 
 #. [unit_type]: id=Jumpcat, race=cats
 #: data/core/units/monsters/Cat_Jump.cfg:30
@@ -7435,11 +7457,18 @@ msgid ""
 "mostly driven by instinct, but they are sometimes used as assassins by more "
 "sophisticated handlers."
 msgstr ""
+"Прыжковые коты — хищники-оппортунисты с острыми чувствами и быстрой "
+"реакцией, но очень малы по размеру, поэтому их легко убить, если их можно "
+"поразить, и легко отпугнуть, если это невозможно. Одна из самых "
+"отличительных черт этих странных существ — твёрдый комок веток, глины и "
+"камней, который они носят на хвосте, являющийся их основным наступательным "
+"оружием. Их действия в основном инстинктивны, но иногда более опытные "
+"дрессировщики используют их в качестве убийц."
 
 #. [unit_type]: id=Redtail Cat, race=cats
 #: data/core/units/monsters/Cat_Redtail.cfg:4
 msgid "Redtail Cat"
-msgstr ""
+msgstr "Краснохвостый кот"
 
 #. [unit_type]: id=Redtail Cat, race=cats
 #: data/core/units/monsters/Cat_Redtail.cfg:33
@@ -7452,6 +7481,13 @@ msgid ""
 "maneuvering, common folklore says these cats are actually malevolent fire "
 "spirits, and heralds of bad luck."
 msgstr ""
+"Краснохвостые коты — сильные хищники, которые обычно обитают в предгорьях и "
+"лесах, но во время охоты бродят на большие расстояния, поэтому их можно "
+"встретить во многих неожиданных местах. Их наиболее отличительной чертой "
+"является почти огненная окраска хвоста, которая отвлекает внимание от "
+"тёмного тела и опасных зубов и когтей. Вероятно, из-за своей окраски и "
+"ловкости, согласно народным преданиям, эти коты на самом деле являются "
+"злобными огненными духами и предвестниками несчастья."
 
 #. [unit_type]: id=Swamp Lizard, race=monster
 #: data/core/units/monsters/Crocodile.cfg:13
@@ -7511,7 +7547,7 @@ msgstr "щупальце"
 #: data/core/units/monsters/Cuttle_Fish.cfg:38
 #: data/core/units/monsters/Kraken.cfg:35
 msgid "ink"
-msgstr "тушь"
+msgstr "чернила"
 
 #. [unit_type]: id=Dragonfly, race=monster
 #: data/core/units/monsters/Dragonfly.cfg:5
@@ -7672,35 +7708,26 @@ msgstr "огненные когти"
 #. [unit_type]: id=Fire Wisp, race=monster
 #: data/core/units/monsters/Fire_Wisp.cfg:4
 #, fuzzy
-#| msgid "Fire Wraith"
 msgid "Fire Wisp"
-msgstr "Огненный призрак"
+msgstr "Огненный дух"
 
 #. [unit_type]: id=Fire Wisp, race=monster
 #: data/core/units/monsters/Fire_Wisp.cfg:19
 #, fuzzy
-#| msgid ""
-#| "Fire Guardians are spirits of smoke and flame. No one is exactly sure "
-#| "where they come from, but they are occasionally summoned by powerful "
-#| "mages to do their bidding. When not being controlled they like to frolic "
-#| "in pools of lava and take great delight in burning anything they can "
-#| "reach."
 msgid ""
 "Fire Wisps are spirits of smoke and flame. When not being ordered around "
 "they like to frolic in pools of lava and take great delight in burning "
 "anything they can reach."
 msgstr ""
-"Огненные стражи — это духи дыма и огня. Никто точно не знает, откуда они "
+"Огненные духи — это духи дыма и огня. Никто точно не знает, откуда они "
 "взялись, но могущественные маги иногда вызывают их, чтоб они исполнили их "
 "приказания. Когда ими никто не управляет, они резвятся в лавовых озёрах и "
 "радостно жгут всё, до чего дотягиваются."
 
 #. [attack]: type=fire
 #: data/core/units/monsters/Fire_Wisp.cfg:44
-#, fuzzy
-#| msgid "fire breath"
 msgid "fire bash"
-msgstr "огненное дыхание"
+msgstr "огненный удар"
 
 #. [unit_type]: id=Fire Wraith, race=monster
 #: data/core/units/monsters/Fire_Wraith.cfg:8
@@ -7906,6 +7933,7 @@ msgstr "Рогатый скарабей"
 
 #. [unit_type]: id=Horned Scarab, race=monster
 #: data/core/units/monsters/Horned_Scarab.cfg:20
+#, fuzzy
 msgid ""
 "What creatures manage to eke out a living in the inhospitable wastes find "
 "themselves inviolably changed. Rugged, well-armored, and known to grow to "
@@ -7915,6 +7943,13 @@ msgid ""
 "insects will defend themselves with great ferocity, and few men alive would "
 "fain to face their penetrating barbs."
 msgstr ""
+"Те существа, которым удаётся выжить в негостеприимных пустошах, навсегда "
+"меняются. Крепкий, хорошо бронированный и известный своими огромными "
+"размерами, рогатый скарабей ничуть не менее проворен на зыбучих песках, чем "
+"его более выносливые сородичи в воздухе. Одиноким путешественникам следует "
+"особенно опасаться его шипастых рогов. Хотя по природе эти насекомые "
+"пассивны, они будут защищаться с большой свирепостью, и мало кто из ныне "
+"живущих хотел бы столкнуться с их пронзительными шипами."
 
 #. [attack]: type=pierce
 #: data/core/units/monsters/Horned_Scarab.cfg:48
@@ -8021,19 +8056,13 @@ msgstr "Великий конь"
 
 #. [unit_type]: id=Great Horse, race=horse
 #: data/core/units/monsters/Horse_Great.cfg:20
-#, fuzzy
-#| msgid ""
-#| "Great horses are significantly larger than the usual domesticated horse, "
-#| "but despite their similar appearance, they are wild animals. Their "
-#| "obstinate and often feisty temperaments make them too difficult to tame, "
-#| "though many an arrogant prince or warlord has tried and failed."
 msgid ""
 "Great Horses are significantly larger than the usual domesticated horse, but "
 "despite their similar appearance, they are wild animals. Their obstinate and "
 "often feisty temperaments make them too difficult to tame, though many an "
 "arrogant prince or warlord has tried and failed."
 msgstr ""
-"Великие лошади значительно крупнее обыкновенных одомашненных лошадей, но "
+"Великие кони значительно крупнее обыкновенных одомашненных лошадей, но "
 "несмотря на их сходный вид они всё ещё дикие звери. Из-за строптивого и "
 "зачастую обидчивого темперамента этих лошадей почти невозможно подчинить: "
 "высокомерный принц или военачальник пытались много раз, и раз за разом они "
@@ -8697,6 +8726,7 @@ msgstr "Наг-щитоносец"
 
 #. [unit_type]: id=Naga Shield Guard, race=naga
 #: data/core/units/nagas/Guard_Shield.cfg:21
+#, fuzzy
 msgid ""
 "The veteran naga guards have learnt a unique fighting style, different from "
 "the heavy infantry of other races. By combining the inertia of a heavy mace "
@@ -8709,6 +8739,16 @@ msgid ""
 "absorbing some of the damage. Though their small shields do little against "
 "ranged attacks, this tactic nevertheless makes them sturdy fighters in melee."
 msgstr ""
+"Опытные наги-щитоносцы освоили уникальный стиль боя, отличающийся от тяжелой "
+"пехоты других рас. Сочетая инерцию тяжелой булавы с гибкостью своего тела, "
+"они могут наносить серию быстрых и сокрушительных ударов.\n"
+"\n"
+"Эта техника может быть очень эффективной, если дать ей время на подготовку, "
+"но её сложно использовать в критической ситуации. В обороне щитоносцы "
+"используют свою природную гибкость, чтобы защититься и наклониться в "
+"направлении удара, поглощая часть урона. Хотя их небольшие щиты "
+"малоэффективны против атак дальнего боя, эта тактика, тем не менее, делает "
+"их крепкими бойцами в ближнем бою."
 
 #. [unit_type]: id=Naga Myrmidon, race=naga, gender=male,female
 #: data/core/units/nagas/Myrmidon.cfg:4
@@ -8869,8 +8909,9 @@ msgstr ""
 
 #. [attack]: type=pierce
 #: data/core/units/nagas/Sicarius.cfg:38
+#, fuzzy
 msgid "trishula"
-msgstr ""
+msgstr "трезубец"
 
 #. [female]: gender=female
 #: data/core/units/nagas/Sicarius.cfg:92
@@ -10723,6 +10764,14 @@ msgid ""
 "Like most woses, Saplings rarely seek out conflict, although strikes from "
 "their thrashing branches can cause some damage."
 msgstr ""
+"Молодые древни ещё не достигли огромной силы своих старших сородичей. Хотя о "
+"жизненном цикле этих загадочных созданий известно немногое, многие "
+"предполагают, что они растут гораздо медленнее, чем настоящие деревья. Если "
+"это правда, то даже их так называемым юным особям может быть уже множество "
+"десятилетий.\n"
+"\n"
+"Как и большинство древней, саженцы редко ищут драки, хотя удары их "
+"треплющихся ветвей могут причинить некоторый ущерб."
 
 #. [unit_type]: id=Wose Shaman, race=wose
 #: data/core/units/wose/Wose_Shaman.cfg:4
@@ -10731,6 +10780,7 @@ msgstr "Древень-шаман"
 
 #. [unit_type]: id=Wose Shaman, race=wose
 #: data/core/units/wose/Wose_Shaman.cfg:21
+#, fuzzy
 msgid ""
 "In flooded and humid woodlands, accessible only to their reclusive "
 "inhabitants, travelers tell of the mysterious Wose Shamans, who are said to "
@@ -10740,6 +10790,14 @@ msgid ""
 "believed to be different from the magic of elves or merfolk. The details of "
 "this craft can only be speculated on by other races."
 msgstr ""
+"В затопленных и влажных лесах, доступных только их скрытным обитателям, "
+"путешественники рассказывают о таинственных древнях-шаманах, которые, как "
+"говорят, столетиями совершенствовали искусство управления лесными "
+"растениями. Об этой странной практике можно судить лишь по нескольким "
+"историческим свидетельствам, где они используют свои силы, чтобы помешать "
+"врагам в бою, и в целом считается, что она отличается от магии эльфов или "
+"водяных. Другие расы могут лишь строить предположения о тонкостях этого "
+"искусства."
 
 #~ msgid ""
 #~ "Small but deadly in large numbers, fire ants possess fierce fangs and an "

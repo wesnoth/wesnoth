@@ -66,7 +66,7 @@ public:
 	/** Non-empty if --core was given on the command line. Chooses the core to be loaded. */
 	utils::optional<std::string> core_id;
 	/** True if --data-path was given on the command line. Prints path to data directory and exits. */
-	bool data_path;
+	bool print_data_path;
 	/** Non-empty if --data-dir was given on the command line. Sets the config dir to the specified one. */
 	utils::optional<std::string> data_dir;
 	/** True if --debug was given on the command line. Enables debug mode. */
@@ -206,11 +206,11 @@ public:
 	/** True if --mp-test was given on the command line. */
 	bool mptest;
 	/** True if --usercache-path was given on the command line. Prints path to cache directory and exits. */
-	bool usercache_path;
+	bool print_usercache_path;
 	/** Non-empty if --usercache-dir was given on the command line. Sets the cache dir to the specified one. */
 	utils::optional<std::string> usercache_dir;
 	/** True if --userdata-path was given on the command line. Prints path to user data directory and exits. */
-	bool userdata_path;
+	bool print_userdata_path;
 	/** Non-empty if --userdata-dir was given on the command line. Sets the user data dir to the specified one. */
 	utils::optional<std::string> userdata_dir;
 	/** True if --validcache was given on the command line. Makes Wesnoth assume the cache is valid. */
