@@ -81,7 +81,7 @@ jobs:
     steps:
       - { uses: actions/checkout@v6, with: { submodules: "recursive" } }
 
-# 1) wesnothd and campaignd should be buildable without SDL2 being present
+# 1) wesnothd and campaignd should be buildable without SDL3 being present
 # 2) boost is installed via apt as well as built and installed into /usr/local (for _GLIBCXX_DEBUG support in boost program options)
       - name: Build wesnoth, wesnothd, campaignd and unit tests
         id: build # needed to check step outcome
@@ -102,7 +102,8 @@ jobs:
               # triggers false positive compiler warnings that clang itself won't
               run-clang-tidy -quiet -use-color -j 2 -extra-arg="-w" -warnings-as-errors='*' '^(?!.*src/modules/|.*build/)'
 
-              apt remove -y -qq libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev
+              # re-enable once libsdl3 etc is installed normally
+              #apt remove -y -qq libsdl3-dev libsdl3-image-dev libsdl3-mixer-dev
 
               build wesnothd campaignd
               ;;
@@ -122,7 +123,7 @@ jobs:
               build -DENABLE_GAME=true -DENABLE_SERVER=false -DENABLE_CAMPAIGN_SERVER=false -DENABLE_TESTS=true
               make -C . VERBOSE=1 -j2
 
-              apt remove -y -qq libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev
+              #apt remove -y -qq libsdl3-dev libsdl3-image-dev libsdl3-mixer-dev
 
               build -DENABLE_GAME=false -DENABLE_SERVER=true -DENABLE_CAMPAIGN_SERVER=true -DENABLE_TESTS=false
               make -C . VERBOSE=1 -j2
