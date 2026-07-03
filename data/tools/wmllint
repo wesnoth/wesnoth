@@ -30,8 +30,8 @@
 # If no directories are specified, acts on the current directory.
 #
 # The recommended procedure is this:
-# 1. Run it with --dryrun first to see what it will do.
-# 2. If the messages look good, run without --dryrun; the old content
+# 1. Run it without --nodryrun first to see what it will do.
+# 2. If the messages look good, run with --nodryrun; the old content
 #    will be left in backup files with a -bak extension.
 # 3. Eyeball the changes with the --diff option.
 # 4. Use wmlscope, with a directory list including the Wesnoth mainline WML
@@ -2850,13 +2850,12 @@ See also: https://wiki.wesnoth.org/Maintenance_tools.''',
                       help="Clean up -bak files.")
     mode.add_argument("-D", "--diffs", action="store_true",
                       help="Display diffs between converted and unconverted files.")
-    mode.add_argument("-d", "--dryrun", action="store_true",
-                      help="List changes (-v) but don't perform them.")
+    mode.add_argument("-d", "--nodryrun", action="store_true",
+                      help="Perform changes to files, don't just print warnings.")
     mode.add_argument("-r", "--revert", action="store_true",
                       help="Revert the conversion from the -bak files.")
     parser.add_argument("-m", "--missing", action="store_true",
-                        help="""Warn about tags without side= keys now applying to all
-sides.""")
+                        help="Warn about tags without side= keys now applying to all sides.")
     parser.add_argument("-s", "--stripcr", action="store_true",
                         help="Convert DOS-style CR/LF to Unix-style LF.")
     parser.add_argument("-v", "--verbose", action="count", default=0,
@@ -2864,8 +2863,7 @@ sides.""")
 -v -v     names each file before it's processed.
 -v -v -v  shows verbose parse details.""")
     parser.add_argument("-K", "--known", action="store_true",
-                        help="""Suppress check for unknown unit types, recruits, races,
-scenarios, etc.""")
+                        help="Suppress check for unknown unit types, recruits, races, scenarios, etc.")
     # -Z --stringfreeze has been removed; it just disabled repairs of double spaces after sentence ends
     # -f --future has been removed; there have been no experimental conversions since 1.4
     # -p --progress has been removed; similar to existing -v -v
@@ -2877,7 +2875,7 @@ scenarios, etc.""")
     namespace = parser.parse_args()
     clean = namespace.clean
     diffs = namespace.diffs
-    dryrun = namespace.dryrun
+    nodryrun = namespace.nodryrun
     missingside = namespace.missing
     revert = namespace.revert
     stripcr = namespace.stripcr
@@ -2902,7 +2900,7 @@ scenarios, etc.""")
         print("No directory specified to run wmllint on")
         exit(1)
 
-    if dryrun:
+    if not nodryrun:
         verbose = max(1, verbose)
 
     post15 = False
@@ -3105,11 +3103,11 @@ In your case, your system interprets your arguments as:
                     if os.path.exists(backup):
                         if clean:
                             print("wmllint: removing %s" % backup)
-                            if not dryrun:
+                            if nodryrun:
                                 os.remove(backup)
                         elif revert:
                             print("wmllint: reverting %s" % backup)
-                            if not dryrun:
+                            if nodryrun:
                                 if sys.platform == 'win32':
                                     os.remove(fn)
                                 os.rename(backup, fn)
@@ -3133,7 +3131,7 @@ In your case, your system interprets your arguments as:
                         changed = translator(fn, [base_to_base_with_overlay], texttransform)
                         if changed:
                             print("wmllint: converting", fn)
-                            if not dryrun:
+                            if nodryrun:
                                 if sys.platform == 'win32' and os.path.exists(backup):
                                     os.remove(backup)
                                 os.rename(fn, backup)
