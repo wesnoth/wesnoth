@@ -1,12 +1,13 @@
 # (C) Fedor Khod'kov <fkhokdov@gmail.com> 2009-2014
 # (C) Artem Khrapov (kabachuha) <artemkhrapov2001@yandex.ru>, 2020-2024.
+# (C) Alexandr Obolonkin (Alexinor) <obolonkin@proton.me>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-sof\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2026-06-23 03:16 UTC\n"
-"PO-Revision-Date: 2024-04-13 23:10+0300\n"
-"Last-Translator: Artem Khrapov <artemkhrapov2001@yandex.ru>\n"
+"PO-Revision-Date: 2026-07-01 17:24+0500\n"
+"Last-Translator: Alexandr Obolonkin (Alexinor) <obolonkin@proton.me>\n"
 "Language-Team: https://wiki.wesnoth.org/RussianTranslation\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -14,7 +15,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:11
@@ -1194,7 +1195,7 @@ msgstr ""
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/2p5_Reaching_the_Runecrafter.cfg:308
 msgid "Get back!"
-msgstr ""
+msgstr "Назад!"
 
 #. [message]: speaker=Pidmer
 #: data/campaigns/Sceptre_of_Fire/scenarios/2p5_Reaching_the_Runecrafter.cfg:317
@@ -1676,15 +1677,18 @@ msgid ""
 "the far Northlands. Wolves and trolls, but even the snow and ice itself "
 "comes alive! We should be careful!"
 msgstr ""
+"Быть может эльфы и не бросят нам вызов, но я слышал о многих других "
+"опасностях, таящихся в далёких Северных землях. Волки, тролли, и даже снег и "
+"лёд, оживающие под ногами! Нам следует быть осторожными!"
 
 #. [message]: speaker=Baglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:265
-#, fuzzy
-#| msgid "Right. We’ll probably have to fight our way through to his house."
 msgid ""
 "Right, we’ll probably have to fight our way through to his house. But we "
 "need to find it first."
-msgstr "Верно. Думаю, нам придётся мечом прокладывать дорогу к его дому."
+msgstr ""
+"Верно. Думаю, нам придётся мечом прокладывать дорогу к его дому. Но сперва "
+"нам предстоит его найти."
 
 #. [unit]: type=Gryphon, id=Krawg
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:285
@@ -1785,20 +1789,21 @@ msgstr "Турсаган"
 #. [message]: speaker=narrator
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:359
 msgid "Ah! Go away!"
-msgstr ""
+msgstr "А-а! Прочь!"
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:369
 msgid ""
 "Was that Thursagan? Finding him wasn’t as difficult as I thought it would be."
-msgstr ""
+msgstr "Это был Турсаган? Найти его оказалось не так сложно, как я думал."
 
 #. [message]: speaker=Baglur
 #. A bit of the accent, to make him more distinct from Rugnur
 #. "Aye, but it doesn't mean much unless he stops running away from us."
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:375
+#, fuzzy
 msgid "Och, but it donna mean much unless he stops running away from us."
-msgstr ""
+msgstr "Ага, но это ничего не значит, пока он не перестанет убегать от нас."
 
 #. [message]: speaker=$unit.id
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:392
@@ -1806,28 +1811,31 @@ msgid ""
 "This is just an empty shack, where could that old Runecrafter be hiding... "
 "Wait, this scrap of wood is actually a trap door!"
 msgstr ""
+"Это всего лишь пустая хижина, где же может прятаться тот старый Рунодел... "
+"Подождите-ка, этот кусок дерева на самом деле — люк!"
 
 #. [message]: speaker=Baglur
 #. "Come on out, Thursagan!  We need your help with some serious business!"
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:397
+#, fuzzy
 msgid "C’mon out, Thursagan! We need’ya help with some serious business!"
-msgstr ""
+msgstr "Выходи, Турсаган! Нам нужна твоя помощь в одном важном деле!"
 
 #. [message]: speaker=$unit.id
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:401
 msgid ""
 "It’s no good, he’s not hiding under it, there’s just this collapsed tunnel."
-msgstr ""
+msgstr "Бесполезно, он не прячется под ним, там просто обрушившийся туннель."
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:405
 msgid "We have to find him! Fan out!"
-msgstr ""
+msgstr "Мы должны найти его! Рассредоточиться!"
 
 #. [message]: speaker=Alanin
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:409
 msgid "I don’t like this, we should stick together."
-msgstr ""
+msgstr "Не нравится мне это, нам следует держаться вместе."
 
 #. [message]: speaker=$unit.id
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:442
@@ -1835,6 +1843,8 @@ msgid ""
 "An empty shack... I thought I’d found the Runecrafter, but there’s no sign "
 "of anyone having been here recently."
 msgstr ""
+"Пустая хижина... Я думал, что нашел Рунодела, но никаких признаков того, что "
+"кто-то здесь недавно был, нет."
 
 #. [message]: speaker=$unit.id
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:473
@@ -1842,6 +1852,8 @@ msgid ""
 "Another empty shack... But there is this suspicious slab of wood. Let’s see "
 "what’s underneath, shall we?"
 msgstr ""
+"Ещё одна пустая хижина... Но здесь подозрительная деревянная плита. Давайте-"
+"ка посмотрим, что под ней."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:483
@@ -1887,29 +1899,31 @@ msgstr ""
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:507
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:563
 msgid "He just ducked back down underground..."
-msgstr ""
+msgstr "Он нырнул обратно под землю..."
 
 #. [message]: speaker=$unit.id
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:512
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:568
 msgid "... and collapsed the tunnel. He got away!"
-msgstr ""
+msgstr "...и обрушил туннель. Ему удалось уйти!"
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:516
 msgid "He can’t get far, can he?"
-msgstr ""
+msgstr "Ему далеко не уйти, правда?"
 
 #. [message]: speaker=Baglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:520
 msgid "Aye, the search continues."
-msgstr ""
+msgstr "Да, поиски продолжаются."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:529
 msgid ""
 "You are playing a dangerous game! I gave you my answer, now leave me be!"
 msgstr ""
+"Вы играете в опасную игру! Я дал вам свой ответ, теперь оставьте меня в "
+"покое!"
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:533
@@ -1966,6 +1980,8 @@ msgid ""
 "You people just don’t seem to understand! I’m out here because I want no "
 "part of the nonsense of kings and those who crave power!"
 msgstr ""
+"Вы, народ, никак не поймёте! Я здесь, потому что не хочу иметь ничего общего "
+"с глупостями королей и тех, кто жаждет власти!"
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:581
@@ -1982,6 +1998,8 @@ msgid ""
 "The Ruby causes madness, it is said. A magical cage that could protect the "
 "King would help us all."
 msgstr ""
+"Говорят, что рубин сводит с ума. Волшебная клетка, способная защитить "
+"короля, помогла бы всем нам."
 
 #. [message]: speaker=Baglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:589
@@ -2016,12 +2034,13 @@ msgstr ""
 #. [message]: type=Snow Golem
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:679
 msgid "Ghaaah!"
-msgstr ""
+msgstr "Гхааах!"
 
 #. [message]: speaker=$unit.id
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:683
+#, fuzzy
 msgid "Yikes!"
-msgstr ""
+msgstr "Ужас!"
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:716
@@ -2315,10 +2334,8 @@ msgstr "Тролли-поселенцы"
 
 #. [side]: type=Gray Bogeyman
 #: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:260
-#, fuzzy
-#| msgid "Intruding Trolls"
 msgid "Intruders"
-msgstr "Тролли-налётчики"
+msgstr "Налётчики"
 
 #. [side]: type=Direwolf Rider, type=Goblin Pillager
 #: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:290
@@ -2353,6 +2370,9 @@ msgid ""
 "to trolls and other denizens of the darkness. Mining can take a while, this "
 "won’t be easy."
 msgstr ""
+"Итак, это восточные шахты, богатые высококачественными минералами, но также "
+"являющиеся домом для троллей и других обитателей тьмы. Добыча может занять "
+"некоторое время, это будет непросто."
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:701
@@ -2367,54 +2387,51 @@ msgstr ""
 
 #. [message]: speaker=Baglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:705
-#, fuzzy
-#| msgid "Also, the only coal that wi’ melt this gold is here."
 msgid ""
 "Aye, these mines yield the needed gold, but also the only coal that wi’ melt "
 "that gold."
 msgstr ""
-"Кстати, единственный вид угля, который это золото плавит, тоже здесь "
-"залегает."
+"Ага, эти шахты добывают необходимое золото, но также и единственный вид "
+"угля, который это золото плавит."
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:709
-#, fuzzy
-#| msgid ""
-#| "So we’re down here to, what, mine this gold and coal? That should be easy "
-#| "enough."
 msgid ""
 "So we’re down here to get both the gold and coal. Simple enough, even if we "
 "have to fight for it."
 msgstr ""
 "Так вот зачем мы здесь — нам нужно только это золото и уголь? Ну, это будет "
-"несложно."
+"несложно, даже если нам предстоит побороться за них."
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:713
-#, fuzzy
-#| msgid ""
-#| "Yes, although we will have to hire the miners — they don’t work for free. "
-#| "But beware, there are trolls and such down here..."
 msgid ""
 "Yes, although we will have to hire the miners — they don’t work for free. "
 "And you need to protect them while they do their work."
 msgstr ""
-"Да, но надо будет нанять шахтёров — они не работают бесплатно. И остерегайся "
-"троллей и им подобных здешних обитателей..."
+"Да, но надо будет нанять шахтёров — они не работают бесплатно. И придётся "
+"защищать их, пока они работают."
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:717
+#, fuzzy
 msgid ""
 "Hrmm, that’s a good point... Well, these are old mines, not frontier "
 "caverns, we should be able to use the rails and carts, if we’re smart about "
 "it."
 msgstr ""
+"Хм, это верная мысль... Чтож, это — старые шахты, а не приграничные пещеры, "
+"мы сможем воспользоваться рельсами и вагонетками, если хотим сделать это по "
+"уму."
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:741
+#, fuzzy
 msgid ""
 "We’re not facing a united enemy, maybe we can use that to our advantage."
 msgstr ""
+"Мы противостоим не единому врагу, возможно, мы сможем использовать это себе "
+"на пользу."
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:762
@@ -3392,19 +3409,13 @@ msgstr ""
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:456
 #, fuzzy
-#| msgid ""
-#| "The country between here and Knalga will be swarming with elves. We had "
-#| "better head back to the abandoned mines north of the Arkan-thoria, where "
-#| "we gathered our gold and coal. At least there Alanin will have some hope "
-#| "of finding us."
 msgid ""
 "The country between here and Knalga will be swarming with elves. We had "
 "better head back to the abandoned mines north of the Arkan-thoria, where we "
 "gathered our gold and coal."
 msgstr ""
 "Вся земля отсюда до Кналга будет кишеть эльфами. Нам лучше вернуться в "
-"заброшенные шахты к северу от Аркан-Тории, где мы добывали золото и уголь. "
-"По крайней мере, там Аланин может нас найти."
+"заброшенные шахты к северу от Аркан-Тории, где мы добывали золото и уголь."
 
 #. [message]: speaker=Alanin
 #: data/campaigns/Sceptre_of_Fire/scenarios/6_Towards_the_Caves.cfg:460
@@ -3645,10 +3656,8 @@ msgstr ""
 
 #. [message]: id=Alanin
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:277
-#, fuzzy
-#| msgid "Oh no, more of them? And there I thought I could catch my breath…"
 msgid "Oh no, more of them? And there I thought I could catch my breath..."
-msgstr "О, нет, их еще больше? А я думал, что смогу там отдышаться.…"
+msgstr "О нет, их ещё больше? А я то думал, что смогу отдышаться.…"
 
 #. [message]: role=fighter
 #: data/campaigns/Sceptre_of_Fire/scenarios/7_Outriding_the_Outriders.cfg:282
@@ -3917,12 +3926,12 @@ msgstr ""
 #. [message]: speaker=Krawg
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:478
 msgid "Aww... Melted, stuck!"
-msgstr ""
+msgstr "Ой... Расплавилось, застряло!"
 
 #. [message]: speaker=$unit.id
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:484
 msgid "I can’t pick this up, the gold is stuck!"
-msgstr ""
+msgstr "Я не могу его поднять, золото застряло!"
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:490
@@ -3930,6 +3939,8 @@ msgid ""
 "Hrm, I see what you mean. The dragon’s hoard melted into the rock, we can’t "
 "just grab those gold coins. Too bad."
 msgstr ""
+"Хм, вижу. Драконьи сокровища растворились в скале, мы не сможем просто так "
+"забрать эти золотые монеты. Жаль."
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/8_The_Dragon.cfg:511
@@ -4538,23 +4549,17 @@ msgstr ""
 
 #. [message]: speaker=Gathor
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:1427
-#, fuzzy
-#| msgid ""
-#| "Ah ha! I knew it, there are intruders! And yet our damned bridge is "
-#| "broken, it was built by idiots. Come, come, bring planks, we’ve got to "
-#| "get across!"
 msgid ""
 "Ah ha! I knew it, there are intruders! And yet our damned bridge is broken, "
 "it was built by idiots."
 msgstr ""
 "Ага! Я так и знал, к нам пожаловали незваные гости! А наш проклятый мост до "
-"сих пор разрушен, его строили идиоты! Идите, идите, несите доски, нам нужно "
-"перебраться!"
+"сих пор разрушен, его строили идиоты!"
 
 #. [message]: speaker=Gathor
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:1432
 msgid "Come, come, bring planks, we’ve got to get across!"
-msgstr ""
+msgstr "Идите, идите, несите доски, нам нужно перебраться!"
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:1440
@@ -4909,7 +4914,7 @@ msgstr ""
 #. [unit_type]: id=Gray Bogeyman, race=monster
 #: data/campaigns/Sceptre_of_Fire/units/Cave_Bogeyman.cfg:4
 msgid "Gray Bogeyman"
-msgstr ""
+msgstr "Серое Страшилище"
 
 #. [unit_type]: id=Gray Bogeyman, race=monster
 #. [unit_type]: id=Cave Goblin, race=monster
@@ -4922,26 +4927,30 @@ msgid ""
 "lost the ability to craft tools or weapons, but their adaptation to the "
 "gloomy caves gives them large, clawed hands with which to dig or hunt."
 msgstr ""
+"По давно забытым причинам, некоторые проклятые рода́ эльфов или орков "
+"укрылись в тёмных пещерах глубоких шахт, потеряв при этом свою цивилизацию и "
+"достоинство, и стали существовать лишь как звери. Они утратили способность "
+"создавать инструменты или оружие, но благодаря адаптации к мрачным пещерам у "
+"них появились большие когтистые руки, которыми они могут копать или "
+"охотиться."
 
 #. [attack]: type=pierce
 #: data/campaigns/Sceptre_of_Fire/units/Cave_Bogeyman.cfg:43
 #: data/campaigns/Sceptre_of_Fire/units/Cave_Goblin.cfg:38
 msgid "bite"
-msgstr ""
+msgstr "укус"
 
 #. [attack]: type=blade
 #: data/campaigns/Sceptre_of_Fire/units/Cave_Bogeyman.cfg:55
 #: data/campaigns/Sceptre_of_Fire/units/Cave_Goblin.cfg:50
 #: data/campaigns/Sceptre_of_Fire/units/Snow_Golem.cfg:53
 msgid "claws"
-msgstr ""
+msgstr "когти"
 
 #. [unit_type]: id=Cave Goblin, race=monster
 #: data/campaigns/Sceptre_of_Fire/units/Cave_Goblin.cfg:4
-#, fuzzy
-#| msgid "Goblins"
 msgid "Cave Goblin"
-msgstr "Гоблины"
+msgstr "Пещерный Гоблин"
 
 #. [unit_type]: id=Cave Wyrm, race=monster
 #: data/campaigns/Sceptre_of_Fire/units/Cave_Wyrm.cfg:5
@@ -4996,8 +5005,9 @@ msgstr ""
 
 #. [unit_type]: id=SOF Fire Dragon
 #: data/campaigns/Sceptre_of_Fire/units/Fire_Dragon.cfg:8
+#, fuzzy
 msgid "Legendary Fire Dragon"
-msgstr ""
+msgstr "Легендарный Огненный Дракон"
 
 #. [unit_type]: id=Haldric II, race=human
 #: data/campaigns/Sceptre_of_Fire/units/Haldric_II.cfg:4
@@ -5055,7 +5065,7 @@ msgstr ""
 #. [unit_type]: id=Snow Golem, race=monster
 #: data/campaigns/Sceptre_of_Fire/units/Snow_Golem.cfg:8
 msgid "Snow Golem"
-msgstr ""
+msgstr "Снежный голем"
 
 #. [unit_type]: id=Snow Golem, race=monster
 #: data/campaigns/Sceptre_of_Fire/units/Snow_Golem.cfg:38
@@ -5066,6 +5076,12 @@ msgid ""
 "weaker Snow Imps. Others say the far north is a hostile land, and these "
 "monsters are simply a manifestation of that danger."
 msgstr ""
+"Снежные големы — это существа, отдалённо напоминающие людей, которые бродят "
+"по заснеженному северу, не играя никакой очевидной роли в природе, не "
+"являясь ни хищниками, ни жертвами. Многие говорят, что это забытые создания "
+"забытых сражений, из-за их родства с более слабыми снежными бесами. Другие "
+"утверждают, что крайний север — враждебная земля, и эти монстры — просто "
+"проявление этой опасности."
 
 #. [unit_type]: id=Snow Golem, race=monster
 #: data/campaigns/Sceptre_of_Fire/units/Snow_Golem.cfg:40
@@ -5076,17 +5092,23 @@ msgid ""
 "become misshapen and their movement thus compromised. This malformation is "
 "most obvious in their hand and arms, which take the most damage."
 msgstr ""
+"Поскольку они созданы из снега и льда, они способны к восстановлению и "
+"регенерации в благоприятных условиях. Однако процесс восстановления льда, по-"
+"видимому, подвержен ошибкам, поэтому, хотя они, вероятно, были созданы по "
+"образу идеальных воинов, они деформировались, и их движения, следовательно, "
+"ограничены. Эти деформации наиболее очевидны на их руках и предплечьях, "
+"которые получают больше всего урона."
 
 #. [attack]: type=cold
 #: data/campaigns/Sceptre_of_Fire/units/Snow_Golem.cfg:62
 #: data/campaigns/Sceptre_of_Fire/units/Snow_Imp.cfg:97
 msgid "snowball"
-msgstr ""
+msgstr "снежок"
 
 #. [unit_type]: id=Snow Imp, race=monster
 #: data/campaigns/Sceptre_of_Fire/units/Snow_Imp.cfg:5
 msgid "Snow Imp"
-msgstr ""
+msgstr "Снежный бес"
 
 #. [unit_type]: id=Snow Imp, race=monster
 #: data/campaigns/Sceptre_of_Fire/units/Snow_Imp.cfg:34
@@ -5097,6 +5119,11 @@ msgid ""
 "citizen’s improvised blunt weaponry makes them a hazard to inexperienced "
 "wanderers of the frozen northern lands."
 msgstr ""
+"Снежные бесы — простые существа, созданные изо льда и снега, которые с "
+"удивительной силой выплёвывают комки замерзшей слизи. Несмотря на свою "
+"медлительность, хрупкость и уязвимость к огню, их устойчивость к "
+"самодельному тупому оружию обычных горожан делает их опасными для неопытных "
+"странников заснеженных северных земель."
 
 #. [set_menu_item]: id=sof_minecart_boarding_{VAR}
 #: data/campaigns/Sceptre_of_Fire/utils/cart-utils.cfg:221
@@ -5176,7 +5203,7 @@ msgstr "Стремительность"
 #: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:327
 #: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:451
 msgid "Accuracy"
-msgstr "Меткость"
+msgstr "Точность"
 
 #. [option]
 #: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:327
@@ -5185,15 +5212,13 @@ msgstr "Повышает точность в дальнем бою на 20%"
 
 #. [chance_to_hit]: id=accuracy_20
 #: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:335
-#, fuzzy
-#| msgid "Accuracy"
 msgid "accuracy: +20%"
-msgstr "Меткость"
+msgstr "точность: +20%"
 
 #. [chance_to_hit]: id=accuracy_20
 #: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:336
 msgid "The accuracy of this weapon is increased by 20%"
-msgstr ""
+msgstr "Повышает точность этого оружия на 20%"
 
 #. [option]
 #: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:345
@@ -5239,15 +5264,13 @@ msgstr "Повышает точность в дальнем бою на 10%"
 
 #. [chance_to_hit]: id=accuracy_10
 #: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:459
-#, fuzzy
-#| msgid "Accuracy"
 msgid "accuracy: +10%"
-msgstr "Меткость"
+msgstr "точность: +10%"
 
 #. [chance_to_hit]: id=accuracy_10
 #: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:460
 msgid "The accuracy of this weapon is increased of 10%"
-msgstr ""
+msgstr "Точность этого оружия повышается на 10%"
 
 #. [option]
 #: data/campaigns/Sceptre_of_Fire/utils/rune-equip.cfg:499
@@ -5257,7 +5280,7 @@ msgstr "Увеличивает урон в ближнем бою на 2"
 #. [terrain_type]: id=sof_barren_shack
 #: data/campaigns/Sceptre_of_Fire/utils/terrain.cfg:4
 msgid "Barren Shack"
-msgstr ""
+msgstr "Бесплодная хижина"
 
 #. [terrain_type]: id=sof_ancient_stone_floor
 #: data/campaigns/Sceptre_of_Fire/utils/terrain.cfg:19
@@ -5303,12 +5326,12 @@ msgstr ""
 #. [regenerate]: id=sof_snow_regenerates
 #: data/campaigns/Sceptre_of_Fire/utils/utils.cfg:119
 msgid "cryoregenerates"
-msgstr ""
+msgstr "криорегенерирует"
 
 #. [regenerate]: id=sof_snow_regenerates
 #: data/campaigns/Sceptre_of_Fire/utils/utils.cfg:120
 msgid "female^cryoregenerates"
-msgstr ""
+msgstr "криорегенерирует"
 
 #. [regenerate]: id=sof_snow_regenerates
 #: data/campaigns/Sceptre_of_Fire/utils/utils.cfg:121
@@ -5316,6 +5339,9 @@ msgid ""
 "The unit will heal itself 8 HP per turn if on a frozen base terrain. If it "
 "is poisoned, it will remove the poison instead of healing."
 msgstr ""
+"Если боец находится на заснеженной местности, он будет восстанавливать по 8 "
+"ЗД за ход. Если он отравлен, он будет снимать яд вместо восстановления "
+"здоровья."
 
 #~ msgid ""
 #~ "Except for trolls and ogres, right? I’ve heard they live in the far "

@@ -3,13 +3,14 @@
 # ???
 # Dmitry Ashkadov (dmitryash) <dmitry.ashkadov@gmail.com>, 2020.
 # Artem Khrapov (kabachuha) <artemkhrapov2001@yandex.ru>, 2020-2024.
+# Alexandr Obolonkin (Alexinor) <obolonkin@proton.me>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-tb\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2026-06-23 03:16 UTC\n"
-"PO-Revision-Date: 2024-04-08 21:33+0300\n"
-"Last-Translator: Artem Khrapov <artemkhrapov2001@yandex.ru>\n"
+"PO-Revision-Date: 2026-06-29 16:47+0500\n"
+"Last-Translator: Alexandr Obolonkin (Alexinor) <obolonkin@proton.me>\n"
 "Language-Team: https://wiki.wesnoth.org/RussianTranslation\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -17,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.0.1\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
 #. [campaign]: id=Two_Brothers
@@ -55,11 +56,6 @@ msgstr "Великий Рыцарь"
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:21
 #, fuzzy
-#| msgid ""
-#| "An evil mage is threatening the small village of Maghre and its "
-#| "inhabitants. The village’s mage sends to his warrior brother for help, "
-#| "but not all goes as planned. Can you help?\n"
-#| "\n"
 msgid ""
 "An evil mage is threatening the small village of Maghre and its inhabitants. "
 "The village’s mage sends to his warrior brother for help, but not all goes "
@@ -67,8 +63,7 @@ msgid ""
 msgstr ""
 "Злой колдун наводит ужас на небольшую деревню Магрэ и её жителей. Местный "
 "волшебник позвал на выручку своего брата, но всё пошло не так, как они "
-"задумали. Сумеете ли вы помочь?\n"
-"\n"
+"задумали. Сумеете ли вы помочь?"
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:23
@@ -77,11 +72,14 @@ msgid ""
 "The Grand Knight difficulty is intended for players who’ve already completed "
 "Liberty and Heir to the Throne."
 msgstr ""
+"В этой кампании есть два уровня сложности, существенно различающиеся между "
+"собой. Уровень сложности «Великий рыцарь» предназначен для игроков, которые "
+"уже прошли кампании «Освобождение» и «Наследник престола»."
 
 #. [campaign]: id=Two_Brothers
 #: data/campaigns/Two_Brothers/_main.cfg:25
 msgid "(Novice level, 4 scenarios.)"
-msgstr "(Для новичков, 4 сценария.)"
+msgstr "(Для новичков, 4 сценария)"
 
 #. [about]
 #: data/campaigns/Two_Brothers/_main.cfg:32
@@ -116,27 +114,28 @@ msgstr "И отдельное спасибо всем остальным, ког
 #. [achievement]: id=heroes_of_maghre
 #: data/campaigns/Two_Brothers/achievements.cfg:8
 msgid "Heroes of Maghre"
-msgstr ""
+msgstr "Герои Магрэ"
 
 #. [achievement]: id=heroes_of_maghre
 #: data/campaigns/Two_Brothers/achievements.cfg:9
 msgid "Complete <i>Rooting Out a Mage</i> without recruiting."
 msgstr ""
+"Завершите сценарий <i>Искоренить чернокнижника</i> не нанимая бойцов бойцов."
 
 #. [achievement]: id=treasure
 #: data/campaigns/Two_Brothers/achievements.cfg:15
 msgid "Treasure"
-msgstr ""
+msgstr "Сокровище"
 
 #. [achievement]: id=treasure
 #: data/campaigns/Two_Brothers/achievements.cfg:16
 msgid "Find the chest of gold in <i>Guarded Castle</i>."
-msgstr ""
+msgstr "Найдите сундук с золотом в сценарии <i>Неприступный замок</i>."
 
 #. [achievement]: id=baran_returns
 #: data/campaigns/Two_Brothers/achievements.cfg:22
 msgid "Baran Returns"
-msgstr ""
+msgstr "Возвращение Бьярна"
 
 #. [achievement]: id=baran_returns
 #: data/campaigns/Two_Brothers/achievements.cfg:23
@@ -144,17 +143,20 @@ msgid ""
 "Complete <i>Return to the Village</i> by defeating the enemy leader with "
 "Baran."
 msgstr ""
+"Завершите сценарий <i>Возвращение домой</i> уничтожив вражеского лидера "
+"Бьярном."
 
 #. [achievement]: id=arvith_the_great_knight
 #: data/campaigns/Two_Brothers/achievements.cfg:29
 msgid "Arvith the Great Knight"
-msgstr ""
+msgstr "Великий Рыцарь Арвит"
 
 #. [achievement]: id=arvith_the_great_knight
 #: data/campaigns/Two_Brothers/achievements.cfg:30
 msgid ""
 "Advance Arvith into a Grand Knight or a Paladin before the campaign ends."
 msgstr ""
+"До окончания кампании продвиньте Арвита до Великого Рыцаря или Паладина."
 
 #. [scenario]: id=01_Rooting_Out_a_Mage
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:5
@@ -239,18 +241,6 @@ msgstr ""
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/01_Rooting_Out_a_Mage.cfg:71
 #, fuzzy
-#| msgid ""
-#| "12 V, 363 YW\n"
-#| "Excerpt from the journal of Baran of Maghre\n"
-#| "\n"
-#| "If I could but face this ‘Mordak’! I think my magic might prove stronger "
-#| "than his. But he bides in the hills, well-guarded by his servants, and I "
-#| "muster frightened peasants to fight his minions with blades and sticks.\n"
-#| "\n"
-#| "I need my brother; he always had a better head for battle than I. Yet we "
-#| "have not spoken since that evil day at Toen Caric. If he will not come "
-#| "for me, perhaps he will return to aid our village in its hour of "
-#| "desperate need."
 msgid ""
 "12 Scryer’s Bloom, 363 YW\n"
 "Excerpt from the journal of Baran of Maghre\n"
@@ -263,10 +253,10 @@ msgid ""
 "have not spoken since that evil day at Toen Caric. If he will not come for "
 "me, perhaps he will return to aid our village in its hour of desperate need."
 msgstr ""
-"12 V, 363 ГВ\n"
+"12 Расцвета Прорицателя, 363 ГВ\n"
 "Отрывок из дневника Бьярна из Магрэ\n"
 "\n"
-"Если б я только мог добраться до этого «Мордака»! Я думаю, моя магия будет "
+"Если бы я только мог добраться до этого «Мордака»! Я думаю, моя магия будет "
 "сильнее, чем его. Но он прячется в горах, хорошо охраняемых его слугами, а я "
 "призываю напуганных крестьян, чтобы они сражались с его приспешниками "
 "ржавыми клинками и кольями.\n"
@@ -549,24 +539,6 @@ msgstr "Арвит и его отряд направились к северу �
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:33
 #, fuzzy
-#| msgid ""
-#| "16 V, 363 YW\n"
-#| "Excerpt from the journal of Arvith of Maghre\n"
-#| "\n"
-#| "We’ve been searching three days for Baran, and turned up nothing. My best "
-#| "hunch was to head north into the borderlands, where the necromancer’s "
-#| "minions could safely hide; everywhere else is more farmland. At first I "
-#| "thought the search might be useless, but late in the first day we found a "
-#| "set of tracks. Some of them had been made by skeletal feet, although "
-#| "after their first campsite the tracks were merely those of men carrying "
-#| "heavy loads.\n"
-#| "\n"
-#| "We’re close enough to be certain now: those tracks are heading into the "
-#| "Grey Woods. No one from Maghre or any of the other villages has gone into "
-#| "that forest in living memory. Stories have been passed down for "
-#| "generations warning against it. Supposedly the place is haunted by lost "
-#| "souls who hunger for the living, and anyone who dies there is doomed to "
-#| "join them."
 msgid ""
 "16 Scryer’s Bloom, 363 YW\n"
 "Excerpt from the journal of Arvith of Maghre\n"
@@ -585,7 +557,7 @@ msgid ""
 "warning against it. Supposedly the place is haunted by lost souls who hunger "
 "for the living, and anyone who dies there is doomed to join them."
 msgstr ""
-"16 V, 363 ГВ\n"
+"16 Расцвета Прорицателя, 363 ГВ\n"
 "Отрывок из журнала Арвита из Магрэ\n"
 "\n"
 "Мы искали Бьярна три дня, но всё без толку. Всё, что я смог придумать — "
@@ -604,21 +576,6 @@ msgstr ""
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/02_The_Chase.cfg:42
 #, fuzzy
-#| msgid ""
-#| "16 V, 363 YW\n"
-#| "Excerpt from the journal of Arvith of Maghre\n"
-#| "\n"
-#| "But I’m past superstitions now; I’ve seen enough of the world to guess at "
-#| "the truth behind these sorts of tales. The forest is home to elves — "
-#| "unfriendly ones, if the stories have any basis at all. I worry for my "
-#| "men; horses don’t fight well in forests, and the elves will be more "
-#| "dangerous in their own territory. But there are things that need done and "
-#| "questions that need answered. Something bigger is happening. One "
-#| "necromancer terrorizing townsfolk is nothing new, but why didn’t his "
-#| "servants scatter when he was killed? Where are they headed now? And most "
-#| "importantly, why did they take Baran with them?\n"
-#| "\n"
-#| "Besides... I want my brother back."
 msgid ""
 "16 Scryer’s Bloom, 363 YW\n"
 "Excerpt from the journal of Arvith of Maghre\n"
@@ -635,7 +592,7 @@ msgid ""
 "\n"
 "Besides... I want my brother back."
 msgstr ""
-"16 V, 363 ГВ\n"
+"16 Расцвета Прорицателя, 363 ГВ\n"
 "Отрывок из журнала Арвита из Магрэ\n"
 "\n"
 "Но теперь с предрассудками покончено. Я многое повидал в этом мире, и могу "
@@ -1047,25 +1004,6 @@ msgstr "Неприступный замок"
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:25
 #, fuzzy
-#| msgid ""
-#| "19 V, 363 YW\n"
-#| "Excerpt from the journal of Rotharik the Clanless\n"
-#| "\n"
-#| "The last of Mordak’s servants arrived this morning bearing the news of "
-#| "his death, as well as a bundle so well-bound it was barely recognizable "
-#| "as a man. Mordak was always reckless. This whole desperate scheme was "
-#| "his, and I suppose I could blame him for everything that we have suffered "
-#| "through if it still mattered. It was he who brought the wrath of the orcs "
-#| "down on us, too. But all the same, he managed to accomplish what he set "
-#| "out to do. I still cannot believe the finality of what has happened; "
-#| "until now we had always managed to make it through somehow.\n"
-#| "\n"
-#| "We had hoped to deliver the mage to Tairach in return for our lives. I do "
-#| "not know what the warlord wants with this man, but he matches the "
-#| "description. I suppose that Mordak’s plan would have worked perfectly if "
-#| "not for the appearance of the horse warriors. Now they are coming here, "
-#| "led by a man rumored to be this mage’s brother. If that is true, he will "
-#| "stop at nothing, no more than would I if they held Mordak."
 msgid ""
 "19 Scryer’s Bloom, 363 YW\n"
 "Excerpt from the journal of Rotharik the Clanless\n"
@@ -1086,7 +1024,7 @@ msgid ""
 "man rumored to be this mage’s brother. If that is true, he will stop at "
 "nothing, no more than would I if they held Mordak."
 msgstr ""
-"19 IV, 363 ГВ\n"
+"19 Расцвета Прорицателя, 363 ГВ\n"
 "Отрывок из журнала Ротарика Безродного\n"
 "\n"
 "Остатки слуг Мордака добрались до нас этим утром и принесли весть о его "
@@ -1106,20 +1044,6 @@ msgstr ""
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:33
 #, fuzzy
-#| msgid ""
-#| "19 V, 363 YW\n"
-#| "Excerpt from the journal of Rotharik the Clanless\n"
-#| "\n"
-#| "I have done what I can to fortify this dilapidated castle. The orcs who "
-#| "came with us stand guard at the gates, and I am gathering all of my "
-#| "servants to me in the inner sanctum. But ill fate awaits. Whether I "
-#| "defeat this horse-warrior or no, the orcs will still come for me; they "
-#| "have been scouring the borderlands and raiding the northern farm country "
-#| "in search of us.\n"
-#| "\n"
-#| "Yet for some reason I fear these brothers more. If Mordak were here it "
-#| "would be different, but we are broken... and these two men are whole. In "
-#| "each other, in the ties that bind them, they have strength."
 msgid ""
 "19 Scryer’s Bloom, 363 YW\n"
 "Excerpt from the journal of Rotharik the Clanless\n"
@@ -1134,7 +1058,7 @@ msgid ""
 "be different, but we are broken... and these two men are whole. In each "
 "other, in the ties that bind them, they have strength."
 msgstr ""
-"19 IV, 363 ГВ\n"
+"19 Расцвета Прорицателя, 363 ГВ\n"
 "Отрывок из дневника Ротарика Безродного\n"
 "\n"
 "Я сделал всё, что мог, чтобы укрепить этот ветхий замок. Орки, что пришли с "
@@ -1450,8 +1374,9 @@ msgstr "Смотрите, что я нашёл! Здесь пятьдесят з
 #. [message]: speaker=unit
 #. The player’s unit stepped in the space between two runes, and a Soulless appeared
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:843
+#, fuzzy
 msgid "What sort of creature have I summoned here?!"
-msgstr ""
+msgstr "Что за тварь я сюда призвал?!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Two_Brothers/scenarios/03_Guarded_Castle.cfg:873
@@ -1568,22 +1493,6 @@ msgstr "Возвращение домой"
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:25
 #, fuzzy
-#| msgid ""
-#| "27 V, 363 YW\n"
-#| "Excerpt from the journal of Baran of Maghre\n"
-#| "\n"
-#| "Almost home now. The last week has been full of mixed feelings for me — "
-#| "blissful and difficult by turns. It was wonderful to be out of that "
-#| "dungeon cell and in the sunlight again without the threat of death or "
-#| "worse hanging over my head... but with that behind me, I turned to the "
-#| "almost equally daunting task of making amends with my brother.\n"
-#| "\n"
-#| "Arvith had largely forgiven me by the time he freed me from my cell. All "
-#| "the same, it has taken all of the past week for us to rebuild the sense "
-#| "of comfort in each other we once had. It is fortunate that we have been "
-#| "able to take our time getting back — we gave the Grey Woods a wide berth, "
-#| "and on our way around it we traveled through some truly beautiful "
-#| "countryside. It has given us plenty of time to talk."
 msgid ""
 "27 Scryer’s Bloom, 363 YW\n"
 "Excerpt from the journal of Baran of Maghre\n"
@@ -1601,7 +1510,7 @@ msgid ""
 "way around it we traveled through some truly beautiful countryside. It has "
 "given us plenty of time to talk."
 msgstr ""
-"27 V, 363 ГВ\n"
+"27 Расцвета Прорицателя, 363 ГВ\n"
 "Отрывок из журнала Бьярна из Магрэ\n"
 "\n"
 "Ну вот, почти дома. Последняя неделя была наполнена смешанными чувствами — "
@@ -1618,25 +1527,6 @@ msgstr ""
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/04_Return_to_the_Village.cfg:33
 #, fuzzy
-#| msgid ""
-#| "27 V, 363 YW\n"
-#| "Excerpt from the journal of Baran of Maghre\n"
-#| "\n"
-#| "Though I am more at ease now, my thoughts often turn back to Toen Caric. "
-#| "We should have been able to repel the orcs without great loss — the "
-#| "pincer attack Arvith devised would surely have carried the day but for "
-#| "me. It was reckless of me to leave my men behind — I wounded the warlord "
-#| "and forced him to flee the field, but the cost far outweighed the gain. "
-#| "Those under my command could have been saved if I had remained with "
-#| "them.\n"
-#| "\n"
-#| "I can hardly blame Arvith for having taken their deaths ill, and I can "
-#| "never undo the wrong that I have done, but I suppose that time heals some "
-#| "things. We return to the village as brothers once more.\n"
-#| "\n"
-#| "But I am still troubled. I wonder... is this sense of foreboding I feel "
-#| "merely a remnant of my time locked away in that dungeon, or is it a sign "
-#| "of something real?"
 msgid ""
 "27 Scryer’s Bloom, 363 YW\n"
 "Excerpt from the journal of Baran of Maghre\n"
@@ -1656,7 +1546,7 @@ msgid ""
 "merely a remnant of my time locked away in that dungeon, or is it a sign of "
 "something real?"
 msgstr ""
-"27 V, 363 ГВ\n"
+"27 Расцвета Прорицателя, 363 ГВ\n"
 "Отрывок из журнала Бьярна из Магрэ\n"
 "\n"
 "Хотя теперь мне намного легче, в мыслях я часто возвращаюсь в Тоэн Карик. Мы "
@@ -1868,21 +1758,6 @@ msgstr "Сказание о Двух Братьях — Эпилог"
 
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/05_Epilogue.cfg:18
-#, fuzzy
-#| msgid ""
-#| "22 IX, 365 YW\n"
-#| "Excerpt from the journal of Arvith of Maghre\n"
-#| "\n"
-#| "Maghre is looking much better than the last time I saw it. Baran has done "
-#| "wonders in two years. The village is rebuilt, and the surrounding "
-#| "farmlands are restored and reoccupied. Despite my brother’s worries, our "
-#| "people have faced no new threats in that time.\n"
-#| "\n"
-#| "It has been more difficult to stay away in those two years, but I have my "
-#| "calling and Baran has his, and we have had little opportunity to meet "
-#| "again. But as the company and I are passing through this part of the "
-#| "kingdom with a new patron, I have asked leave of him to visit my brother "
-#| "and he gave it."
 msgid ""
 "22 Stillseed, 365 YW\n"
 "Excerpt from the journal of Arvith of Maghre\n"
@@ -1897,7 +1772,7 @@ msgid ""
 "But as the company and I are passing through this part of the kingdom with a "
 "new patron, I have asked leave of him to visit my brother and he gave it."
 msgstr ""
-"22 IX, 365 ГВ\n"
+"22 Недвижимого Семени, 365 ГВ\n"
 "Отрывок из журнала Арвита из Магрэ\n"
 "\n"
 "Магрэ смотрится намного лучше, чем в прошлый раз. За два года Бьярн сотворил "
@@ -1913,16 +1788,6 @@ msgstr ""
 #. [part]
 #: data/campaigns/Two_Brothers/scenarios/05_Epilogue.cfg:27
 #, fuzzy
-#| msgid ""
-#| "22 IX, 365 YW\n"
-#| "Excerpt from the journal of Arvith of Maghre\n"
-#| "\n"
-#| "This patron is, of all things, an elf. I never thought I’d befriend one, "
-#| "but he is less arrogant than the rest. Kalenz, he calls himself. He’s "
-#| "seen too much; I can tell that just by meeting his eyes. I think we will "
-#| "have to work for our pay soon.\n"
-#| "\n"
-#| "In the meantime, though, it’s good to relax and enjoy the peace."
 msgid ""
 "22 Stillseed, 365 YW\n"
 "Excerpt from the journal of Arvith of Maghre\n"
@@ -1934,7 +1799,7 @@ msgid ""
 "\n"
 "In the meantime, though, it’s good to relax and enjoy the peace."
 msgstr ""
-"22 IX, 365 ГВ\n"
+"22 Недвижимого Семени, 365 ГВ\n"
 "Отрывок из журнала Арвита из Магрэ\n"
 "\n"
 "Начальник наш, кстати, эльф. Не думал, что когда-нибудь стану другом эльфа, "

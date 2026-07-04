@@ -20,8 +20,8 @@ msgstr ""
 "Project-Id-Version: wesnoth-sotbe\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2026-06-23 03:16 UTC\n"
-"PO-Revision-Date: 2024-04-13 23:10+0300\n"
-"Last-Translator: Artem Khrapov <artemkhrapov2001@yandex.ru>\n"
+"PO-Revision-Date: 2026-06-29 17:03+0500\n"
+"Last-Translator: Alexandr Obolonkin (Alexinor) <obolonkin@proton.me>\n"
 "Language-Team: https://wiki.wesnoth.org/RussianTranslation\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -29,7 +29,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #. [campaign]: id=Son_of_the_Black-Eye
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:9
@@ -103,16 +103,14 @@ msgstr "Разработка кампании"
 #. [about]
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:41
 #, fuzzy
-#| msgid "Campaign Maintenance"
 msgid "Current Campaign Maintainer"
-msgstr "Поддержка кампании"
+msgstr "Поддерживает кампанию"
 
 #. [about]
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:47
 #, fuzzy
-#| msgid "Campaign Maintenance"
 msgid "Campaign Maintainers (former)"
-msgstr "Поддержка кампании"
+msgstr "Поддерживали кампанию"
 
 #. [about]
 #: data/campaigns/Son_Of_The_Black_Eye/_main.cfg:56
@@ -1619,11 +1617,6 @@ msgstr "Шаманы в безопасности?"
 
 #. [message]: speaker=Affman
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:238
-#, fuzzy
-#| msgid ""
-#| "When we realized that there was no way we could hold the humans off, we "
-#| "sent them east to a place near the Mourned Hills along with most of our "
-#| "women and children. The rest of us remained here to buy them some time."
 msgid ""
 "When we realized that there was no way we could hold the humans off, we sent "
 "them east to a place near the Mourned Hills along with most of our women and "
@@ -1633,17 +1626,12 @@ msgid ""
 msgstr ""
 "Когда мы поняли, что нам не сдержать людей, мы отправили их с нашими "
 "женщинами и детьми на восток, в местечко неподалёку от Траурных Холмов. "
-"Остальные остались здесь, чтобы выиграть для них время."
+"Остальные остались здесь, чтобы выиграть для них время. С тех пор прошло три "
+"дня."
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:243
 #, fuzzy
-#| msgid ""
-#| "Wise decision. We have actually come to speak to the shamans, but while "
-#| "we are here we must help you out of this scrape. Grüü, hold them while I "
-#| "run to the keep and organize our forces to counterattack. We can’t defeat "
-#| "them by sea without ships, but we can destroy the foothold they have "
-#| "gained on the land."
 msgid ""
 "Wise decision. We have actually come to speak to the shamans, but while we "
 "are here we must help you out of this scrape. Grüü, fight the humans if you "
@@ -1653,9 +1641,11 @@ msgid ""
 "the foothold they have gained on the land."
 msgstr ""
 "Вы поступили мудро. Мы пришли, чтобы поговорить с шаманами, но придётся "
-"вытащить вас из этой передряги. Груу, задержи их, пока я не доберусь до "
-"крепости и организую контратаку. На море без кораблей мы не победим, но "
-"можем выбить их с суши."
+"вытащить вас из этой передряги. Груу, сражайся с людьми, если придётся, но "
+"будь осторожен. Наша главная задача — доставить меня в крепость Тиригаз, "
+"чтобы я мог собрать силы для контратаки. И ты мне нужен живым. Мы не сможем "
+"победить их с моря без кораблей, но мы можем уничтожить плацдарм, который "
+"они захватили на суше."
 
 #. [message]: speaker=Grüü
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:248
@@ -1703,11 +1693,14 @@ msgstr ""
 
 #. [message]: speaker=Kapou'e
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:395
+#, fuzzy
 msgid ""
 "They most probably took the route through the foothills. The journey is time "
 "consuming but much safer compared to the direct route through the Desert of "
 "Death."
 msgstr ""
+"Скорее всего всего, они пошли через предгорья. Дорога займёт много времени, "
+"но будет гораздо безопаснее по сравнению с прямым путем через Пустыню Смерти."
 
 #. [message]: speaker=Pirk
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/06_Black_Flag.cfg:399
@@ -2497,14 +2490,8 @@ msgstr "Ждите прибытия Инарикс с севера на 4 ход
 
 #. [objective]: condition=win
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:48
-#, fuzzy
-#| msgid ""
-#| "In order to recruit saurians later on, bring Inarix and at least four "
-#| "saurians to safety"
 msgid "Escort Inarix and at least four saurians to Prestim."
-msgstr ""
-"Чтобы нанимать ящеров, приведите Инарикс и хотя бы четверых ящеров в "
-"безопасное место"
+msgstr "Приведите Инарикс и хотя бы четверых ящеров в Престин"
 
 #. [note]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:75
@@ -2513,16 +2500,12 @@ msgstr "Тот, кто взорвёт мост, погибнет."
 
 #. [note]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:78
-#, fuzzy
-#| msgid ""
-#| "In order to recruit saurians later on, bring Inarix and at least four "
-#| "saurians to safety"
 msgid ""
 "In order to recruit saurians later on, bring Inarix and at least four "
 "saurians to safety."
 msgstr ""
-"Чтобы нанимать ящеров, приведите Инарикс и хотя бы четверых ящеров в "
-"безопасное место"
+"Чтобы заиметь возможность нанимать ящеров, приведите Инарикс и хотя бы "
+"четверых ящеров в безопасное место"
 
 #. [side]: type=Elvish Champion, id=Thelarion
 #. [unit]: type=Elvish Champion, id=Thelarion
@@ -4737,128 +4720,129 @@ msgstr ""
 #. [advancement]: id=wol_amla_hitpoints
 #: data/campaigns/Son_Of_The_Black_Eye/utils/1-amla.cfg:25
 msgid "Endurance: +8 HP (Hitpoints)"
-msgstr ""
+msgstr "Выносливость: +8 ЗД (очков здоровья)"
 
 #. [modify_unit_type]: type=Orcish Warlord
 #. [modify_unit_type]: type=Orcish Sovereign
 #: data/campaigns/Son_Of_The_Black_Eye/utils/1-amla.cfg:71
 #: data/campaigns/Son_Of_The_Black_Eye/utils/1-amla.cfg:207
 msgid "Melee: greatsword +1 damage"
-msgstr ""
+msgstr "Ближний бой: двуручный меч +1 урон"
 
 #. [modify_unit_type]: type=Orcish Warlord
 #: data/campaigns/Son_Of_The_Black_Eye/utils/1-amla.cfg:76
 msgid "Ranged: bow +1 damage"
-msgstr ""
+msgstr "Дальний бой: лук +1 урон"
 
 #. [modify_unit_type]: type=Orcish Slurbow, type=blade, type=pierce, type=fire
 #: data/campaigns/Son_Of_The_Black_Eye/utils/1-amla.cfg:91
 msgid "Melee: short sword +1 damage"
-msgstr ""
+msgstr "Ближний бой: короткий меч +1 урон"
 
 #. [modify_unit_type]: type=Orcish Slurbow, type=blade, type=pierce, type=fire
 #: data/campaigns/Son_Of_The_Black_Eye/utils/1-amla.cfg:97
 msgid "Ranged: crossbow (pierce) +1 damage"
-msgstr ""
+msgstr "Дальний бой: арбалет (пробивной) +1 урон"
 
 #. [modify_unit_type]: type=Orcish Slurbow, type=blade, type=pierce, type=fire
 #: data/campaigns/Son_Of_The_Black_Eye/utils/1-amla.cfg:103
 msgid "Ranged: crossbow (fire) +2 damage"
-msgstr ""
+msgstr "Дальний бой: арбалет (огонь) +2 урона"
 
 #. [modify_unit_type]: type=Direwolf Rider
 #. [modify_unit_type]: type=Goblin Pillager
 #: data/campaigns/Son_Of_The_Black_Eye/utils/1-amla.cfg:117
 #: data/campaigns/Son_Of_The_Black_Eye/utils/1-amla.cfg:136
 msgid "Melee: fangs +1 damage"
-msgstr ""
+msgstr "Ближний бой: клыки +1 урон"
 
 #. [modify_unit_type]: type=Direwolf Rider
 #: data/campaigns/Son_Of_The_Black_Eye/utils/1-amla.cfg:122
 msgid "Melee: claws +1 damage"
-msgstr ""
+msgstr "Ближний бой: когти +1 урон"
 
 #. [modify_unit_type]: type=Goblin Pillager
 #: data/campaigns/Son_Of_The_Black_Eye/utils/1-amla.cfg:141
 msgid "Melee: torch +1 damage"
-msgstr ""
+msgstr "Ближний бой: факел +1 урон"
 
 #. [modify_unit_type]: type=Goblin Pillager
 #: data/campaigns/Son_Of_The_Black_Eye/utils/1-amla.cfg:146
 msgid "Ranged: net +1 damage"
-msgstr ""
+msgstr "Дальность действия: сеть +1 урон"
 
 #. [modify_unit_type]: type=Troll Warrior
 #: data/campaigns/Son_Of_The_Black_Eye/utils/1-amla.cfg:160
 msgid "Melee: hammer +2 damage"
-msgstr ""
+msgstr "Ближний бой: молот +2 урона"
 
 #. [modify_unit_type]: type=Troll Rocklobber
 #: data/campaigns/Son_Of_The_Black_Eye/utils/1-amla.cfg:174
 msgid "Melee: fist +2 damage"
-msgstr ""
+msgstr "Ближний бой: кулак +2 урона"
 
 #. [modify_unit_type]: type=Troll Rocklobber
 #: data/campaigns/Son_Of_The_Black_Eye/utils/1-amla.cfg:179
 msgid "Melee: sling +4 damage"
-msgstr ""
+msgstr "Ближний бой: праща +4 урона"
 
 #. [modify_unit_type]: type=Great Troll
 #: data/campaigns/Son_Of_The_Black_Eye/utils/1-amla.cfg:193
 msgid "Melee: hammer +1 damage"
-msgstr ""
+msgstr "Ближний бой: молот +1 урон"
 
 #. [modify_unit_type]: type=Orcish Sovereign
 #: data/campaigns/Son_Of_The_Black_Eye/utils/1-amla.cfg:212
 msgid "Ranged: crossbow +1 damage"
-msgstr ""
+msgstr "Дальний бой: арбалет +1 урон"
 
 #. [modify_unit_type]: type=Orcish Nightblade, type=blade, type=impact
 #: data/campaigns/Son_Of_The_Black_Eye/utils/1-amla.cfg:227
 msgid "Melee: blade +2 damage"
-msgstr ""
+msgstr "Ближний бой: клинок +2 урона"
 
 #. [modify_unit_type]: type=Orcish Nightblade, type=blade, type=impact
 #: data/campaigns/Son_Of_The_Black_Eye/utils/1-amla.cfg:233
 msgid "Melee: kick +2 damage"
-msgstr ""
+msgstr "Ближний бой: пинок +2 урона"
 
 #. [modify_unit_type]: type=Orcish Nightblade, type=blade, type=impact
 #: data/campaigns/Son_Of_The_Black_Eye/utils/1-amla.cfg:238
 msgid "Ranged: throwing knives +1 damage"
-msgstr ""
+msgstr "Дальний бой: метательные ножи +1 урон"
 
 #. [modify_unit_type]: type=Saurian Flanker
 #. [modify_unit_type]: type=Saurian Javelineer
 #: data/campaigns/Son_Of_The_Black_Eye/utils/1-amla.cfg:252
 #: data/campaigns/Son_Of_The_Black_Eye/utils/1-amla.cfg:271
 msgid "Melee: +1 spear damage"
-msgstr ""
+msgstr "Ближний бой: +1 урон копьём"
 
 #. [modify_unit_type]: type=Saurian Flanker
 #. [modify_unit_type]: type=Saurian Javelineer
 #: data/campaigns/Son_Of_The_Black_Eye/utils/1-amla.cfg:257
 #: data/campaigns/Son_Of_The_Black_Eye/utils/1-amla.cfg:276
 msgid "Ranged: +1 spear damage"
-msgstr ""
+msgstr "Дальний бой: +1 урон копьём"
 
 #. [modify_unit_type]: type=Saurian Prophet
 #. [modify_unit_type]: type=Saurian Seer
 #: data/campaigns/Son_Of_The_Black_Eye/utils/1-amla.cfg:290
 #: data/campaigns/Son_Of_The_Black_Eye/utils/1-amla.cfg:309
 msgid "Melee: staff +1 damage"
-msgstr ""
+msgstr "Ближний бой: посох +1 урон"
 
 #. [modify_unit_type]: type=Saurian Prophet
 #. [modify_unit_type]: type=Saurian Seer
 #: data/campaigns/Son_Of_The_Black_Eye/utils/1-amla.cfg:295
 #: data/campaigns/Son_Of_The_Black_Eye/utils/1-amla.cfg:314
 msgid "Ranged: curse +1 damage"
-msgstr ""
+msgstr "Дальний бой: проклятие +1 урон"
 
 #. [message]: speaker=narrator
 #. newlines at the end are deliberate, and function as spacers before the [option]s
 #: data/campaigns/Son_Of_The_Black_Eye/utils/1-amla.cfg:350
+#, fuzzy
 msgid ""
 "Congratulations, your $unit.language_name has leveled up... but they’re "
 "already at their max level!\n"
@@ -4875,16 +4859,31 @@ msgid ""
 "experience bars</b></span>, they’ll only get +3 max hp when they level up.\n"
 "\n"
 msgstr ""
+"Поздравляем, ваш боец $unit.language_name повысил свой уровень... но он уже "
+"достиг максимального уровня!\n"
+"\n"
+"В таких случаях <span color='#0D87B6'><b>некоторые кампании</b></span> — "
+"например, эта — позволяют выбрать небольшой бонус к очкам здоровья или "
+"урону. Эти бонусы называются «УПМУ»: «Улучшение После Максимального Уровня». "
+"Если у ваших бойцов максимального уровня обычные, <span "
+"color='#0D87B6'><b>синие полоски опыта</b></span>, это означает, что эти "
+"УПМУ доступны.\n"
+"\n"
+"<span color='#9608CF'><b><i>В других кампаниях</i></b></span> таких опций "
+"УПМУ нет, и вместо этого они всегда дают бойцам максимального уровня +3 к "
+"максимальному здоровью при повышении уровня. Если у ваших бойцов "
+"максимального уровня полоски опыта фиолетовые, то при повышении уровня они "
+"получат только +3 к максимальному запасу здоровья.\n"
 
 #. [option]
 #: data/campaigns/Son_Of_The_Black_Eye/utils/1-amla.cfg:358
 msgid "Ok, continue with the game"
-msgstr ""
+msgstr "Ок, продолжить игру"
 
 #. [option]
 #: data/campaigns/Son_Of_The_Black_Eye/utils/1-amla.cfg:361
 msgid "Don’t show this message again"
-msgstr ""
+msgstr "Не показывать это сообщение снова"
 
 #. [message]: speaker=unit
 #: data/campaigns/Son_Of_The_Black_Eye/utils/deaths.cfg:17
