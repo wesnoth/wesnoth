@@ -1,6 +1,6 @@
 # #-#-#-#-#  wesnoth-trow.cpp.po (Battle for Wesnoth VERSION)  #-#-#-#-#
 # Russian translations for Battle for Wesnoth package.
-# Copyright (C) 2004-2022 Wesnoth development team
+# Copyright (C) 2004-2026 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
 # Translators:
@@ -14,13 +14,14 @@
 # Igor <cheer6@gmail.com>, 2008.
 # Fedor Khod'kov <fkhodkov@gmail.com>, 2009-2014.
 # Artem Khrapov (kabachuha) <artemkhrapov2001@yandex.ru>, 2020-2024.
+# Alexandr Obolonkin (Alexinor) <obolonkin@proton.me>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-trow\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2026-06-23 03:16 UTC\n"
-"PO-Revision-Date: 2024-04-13 23:12+0300\n"
-"Last-Translator: Artem Khrapov <artemkhrapov2001@yandex.ru>\n"
+"PO-Revision-Date: 2026-06-28 17:19+0500\n"
+"Last-Translator: Alexandr Obolonkin (Alexinor) <obolonkin@proton.me>\n"
 "Language-Team: https://wiki.wesnoth.org/RussianTranslation\n"
 "Language: ru_RU\n"
 "MIME-Version: 1.0\n"
@@ -28,7 +29,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.0.1\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
 #. [campaign]: id=The_Rise_of_Wesnoth
@@ -75,12 +76,6 @@ msgstr "Лорд"
 
 #. [campaign]: id=The_Rise_of_Wesnoth
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:24
-#, fuzzy
-#| msgid ""
-#| "Lead Prince Haldric through the destruction of the Green Isle and across "
-#| "the Ocean to establish the very kingdom of Wesnoth itself. The "
-#| "confrontation with Lich-Lord Jevyan awaits...\n"
-#| "\n"
 msgid ""
 "Lead Prince Haldric through the destruction of the Green Isle and across the "
 "Ocean to establish the very Kingdom of Wesnoth itself. The confrontation "
@@ -88,14 +83,13 @@ msgid ""
 "\n"
 msgstr ""
 "Проведите принца Хальдрика по разрушенному Зелёному острову и далее через "
-"океан, и помогите основать не что-нибудь, а само королевство Веснот. Вас "
-"ждёт противостояние с Жевьяном, Владыкой-личем...\n"
-"\n"
+"океан, и помогите основать не что-нибудь, а само королевство Веснот. "
+"Противостояние с Владыкой-личем Жевьяном ждёт вас... \n"
 
 #. [campaign]: id=The_Rise_of_Wesnoth
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:26
 msgid "(Hard level, 20 scenarios.)"
-msgstr "(Для опытных игроков, 20 сценариев.)"
+msgstr "(Для опытных игроков, 20 сценариев)"
 
 #. [about]
 #: data/campaigns/The_Rise_Of_Wesnoth/_main.cfg:29
@@ -3953,7 +3947,7 @@ msgstr "Дрейки"
 #. [side]: type=Drake Flameheart, id=Garash
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:68
 msgid "Garash"
-msgstr ""
+msgstr "Гараш"
 
 #. [side]: type=Drake Flameheart, id=Merkush
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:96
@@ -3997,10 +3991,6 @@ msgstr "Не думаю, что здесь поможет дипломатия."
 
 #. [message]: speaker=Garash
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/13_Peoples_in_Decline.cfg:220
-#, fuzzy
-#| msgid ""
-#| "Ssso humansss, you’ve come to trouble usss again. Prepare to die! For the "
-#| "glory of the Lords of Morogor!"
 msgid ""
 "So, prey, you have come to trouble us again. Prepare to die! For the glory "
 "of Morogor!"
@@ -6994,17 +6984,12 @@ msgstr ""
 
 #. [unit_type]: id=Familiar, race=undead
 #: data/campaigns/The_Rise_Of_Wesnoth/units/Familiar.cfg:17
-#, fuzzy
-#| msgid ""
-#| "Powerful magic users sometimes have familiars, creatures which have had a "
-#| "spirit or minor demon drawn into them. A familiar may act as a spy or "
-#| "messenger for its master."
 msgid ""
 "Powerful magic users sometimes have Familiars, creatures which have had a "
 "spirit or minor demon drawn into them. A familiar may act as a spy or "
 "messenger for its master."
 msgstr ""
-"У многих могущественных волшебников есть такие спутники — существа, в "
+"У многих могущественных волшебников есть такие Cпутники — существа, в "
 "которых вселился дух или маленький демон. Спутник часто служит хозяину "
 "шпионом или посланцем."
 
@@ -7206,24 +7191,22 @@ msgstr "отвлекает"
 msgid ""
 "Allies adjacent to this unit are not affected by enemy Zones of Control."
 msgstr ""
+"Союзники, находящиеся рядом с этим бойцом, не подвержены воздействию "
+"вражеских зон контроля."
 
 #. [skirmisher]: id=distract
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-abilities.cfg:8
-#, fuzzy
-#| msgid ""
-#| "This unit is capable of distracting opponents, allowing allied units to "
-#| "trespass their Zones of Control and move unhindered around them."
 msgid ""
 "This unit is capable of distracting opponents, allowing adjacent allies to "
 "ignore enemy Zones of Control."
 msgstr ""
-"Этот боец может отвлекать противников, позволяя союзникам игнорировать зоны "
-"контроля и свободно пройти них."
+"Этот боец может отвлекать противников, позволяя союзникам по соседству "
+"игнорировать зоны контроля."
 
 #. [message]: speaker=unit
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-deaths.cfg:12
 msgid "I can’t be finished yet... I still have so much more to do."
-msgstr "Я не могу быть убит... Всё ещё надо многое сделать."
+msgstr "Я не могу умереть сейчас... Мне ведь предстоит ещё так много..."
 
 #. [message]: speaker=unit
 #: data/campaigns/The_Rise_Of_Wesnoth/utils/trow-deaths.cfg:27
@@ -7241,7 +7224,7 @@ msgid ""
 "Bah! I’m not dying today! <i>Poof</i>! (<i>The Lady Outlaw vanishes in a "
 "puff of smoke.</i>)"
 msgstr ""
-"Нет! Сегодня я не умру! <i>Пух</i>! (<i>Госпожа Воров исчезает в клубе дыма</"
+"Нет! Сегодня я не умру! <i>Пуф</i>! (<i>Госпожа Воров исчезает в клубе дыма</"
 "i>)"
 
 #. [message]: speaker=unit

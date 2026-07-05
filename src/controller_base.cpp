@@ -210,8 +210,7 @@ void controller_base::handle_event(const SDL_Event& event)
 
 	case SDL_EVENT_MOUSE_WHEEL:
 		// Right and down are positive in Wesnoth's map.
-		// Right and up are positive in SDL_MouseWheelEvent on all platforms:
-		//     https://wiki.libsdl.org/SDL2/SDL_MouseWheelEvent
+		// Right and up are positive in SDL_MouseWheelEvent on all platforms
 #if defined(_WIN32) || defined(__APPLE__)
 		mh_base.mouse_wheel(event.wheel.x, -event.wheel.y, is_browsing());
 #else

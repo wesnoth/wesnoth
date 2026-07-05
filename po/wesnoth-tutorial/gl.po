@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2026-06-23 03:15 UTC\n"
-"PO-Revision-Date: 2025-07-19 15:34+0200\n"
+"PO-Revision-Date: 2026-06-19 17:08+0200\n"
 "Last-Translator: Adrian Chaves <adrian@chaves.io>\n"
 "Language-Team: Galician <kde-i18n-doc@kde.org>\n"
 "Language: gl\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.6\n"
+"X-Generator: Poedit 3.9\n"
 
 #. [label]
 #: data/campaigns/Heir_To_The_Throne_Classic/gui/character_selection.cfg:19
@@ -77,18 +77,19 @@ msgid ""
 "<i>Heir to the Throne, Classic</i> optionally includes the old <i>Battle "
 "Training</i> tutorial. Play <i>Battle Training</i>?"
 msgstr ""
+"<i>Herdeiro ao trono, clásico<i> inclúe opcionalmente o antigo titorial de "
+"<i>Adestramento de batalla</i>. Queres xogar a <i>Adestramento de batalla</"
+"i>?"
 
 #. [option]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:113
 msgid "Yes"
-msgstr ""
+msgstr "Si"
 
 #. [option]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:118
-#, fuzzy
-#| msgid "Note"
 msgid "No"
-msgstr "Nota"
+msgstr "Non"
 
 #. [objectives]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:149
@@ -380,12 +381,12 @@ msgstr "O <i>manequín</i> ten rolda de seu?"
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:616
 msgid ""
 "Yes. It’s a magical quintain! If it hits you, it does 3 damage, and has 5 "
-"chances. If it hits every time, you’ll drop from $student_hp to "
-"$($student_hp-15) hitpoints. Brace yourself!"
+"chances. If it hits every time, you’ll drop from $student_hp to $"
+"($student_hp-15) hitpoints. Brace yourself!"
 msgstr ""
 "Si. É un estafermo máxico! Se te atina, faiche 3 puntos de dano, e ten 5 "
-"oportunidades. Se te atina todas as veces, baixarás de $student_hp a "
-"$($student_hp-15) puntos de vida. Prepárate!"
+"oportunidades. Se te atina todas as veces, baixarás de $student_hp a $"
+"($student_hp-15) puntos de vida. Prepárate!"
 
 #. [hint_message]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:622
@@ -2171,8 +2172,8 @@ msgstr ""
 #. [message]: speaker=Galdrad
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1315
 msgid ""
-"Higher level units are powerful, but not invulnerable. We’ll miss you, $unit."
-"name|."
+"Higher level units are powerful, but not invulnerable. We’ll miss you, "
+"$unit.name|."
 msgstr ""
 "As unidades de nivel superior son poderosas, pero non invulnerables. "
 "Botarémoste de menos, $unit.name|."
@@ -2351,7 +2352,7 @@ msgstr "Agh! Quen te guiará para a vitoria agora?"
 #. [message]: speaker=Galdrad
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1504
 msgid "You have beaten the orcs! Well done."
-msgstr ""
+msgstr "Derrotaches os orcos! Ben feito."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1509
@@ -2365,7 +2366,7 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1519
 msgid "Now, continue onwards to play “Heir to the Throne, Classic”..."
-msgstr ""
+msgstr "Agora, continúa xogando a “O herdeiro ao trono, Clásico”..."
 
 #. [unit_type]: id=Tutorial_Fighter, race=human
 #: data/campaigns/Heir_To_The_Throne_Classic/units/Tutorial_Fighter.cfg:4
@@ -2440,16 +2441,8 @@ msgstr ""
 "Resultarache útil para corrixir os erros que cometas."
 
 #: data/campaigns/Heir_To_The_Throne_Classic/utils/tutorial_utils.cfg:128
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<big>Click a mouse button or press the spacebar to continue...</big>"
 msgid "Click a mouse button or press the spacebar to continue..."
-msgstr ""
-"\n"
-"\n"
-"<big>Preme o botón do rato ou a barra espaciadora para continuar…</big>"
+msgstr "Preme o botón do rato ou o espazador para continuar…"
 
 #~ msgid "Old Tutorial"
 #~ msgstr "Titorial antigo"
