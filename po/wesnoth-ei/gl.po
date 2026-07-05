@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2026-06-23 03:16 UTC\n"
-"PO-Revision-Date: 2025-11-24 21:20+0100\n"
+"PO-Revision-Date: 2026-06-19 19:02+0200\n"
 "Last-Translator: Adrian Chaves <adrian@chaves.io>\n"
 "Language-Team: Galician <kde-i18n-doc@kde.org>\n"
 "Language: gl\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.8\n"
+"X-Generator: Poedit 3.9\n"
 
 #. [campaign]: id=Eastern_Invasion
 #. [achievement_group]
@@ -1209,7 +1209,7 @@ msgstr ""
 #. Dacyn and Gweddry are going to do this during turn 1, before he even gets a chance to recruit
 #: data/campaigns/Eastern_Invasion/scenarios/03_An_Unexpected_Appearance.cfg:263
 msgid "No!! They’ll kill me!"
-msgstr "Deixádevos de bromas, que como non me axudedes estou morto."
+msgstr "Non!! Mataránme!"
 
 #. [message]: speaker=Mal-Skraat
 #. talking to Mal-Tar
@@ -1901,10 +1901,6 @@ msgid "The dunefolk will not follow you to the next scenario."
 msgstr "Os dunefolk non te seguirán ata o seguinte escenario."
 
 #: data/campaigns/Eastern_Invasion/scenarios/04b_Ill_Humors.cfg:648
-#, fuzzy
-#| msgid ""
-#| "I’ve found a sprig of alswdan and am now immune to the swamp’s poison! "
-#| "We’ll need $herbs_needed more (and $gold_cost gold) to travel east."
 msgid ""
 "I’ve found a sprig of alswdan and am now immune to the swamp’s poison! We "
 "only need one more (and $gold_cost gold) to travel east."
@@ -1912,19 +1908,14 @@ msgid_plural ""
 "I’ve found a sprig of alswdan and am now immune to the swamp’s poison! We’ll "
 "need $herbs_needed more (and $gold_cost gold) to travel east."
 msgstr[0] ""
-"Atopei unha ramita de alswdan e agora son inmune ao veleno do pantano! "
-"Necesitaremos $herbs_needed máis (e $gold_cost gold) para viaxar cara ao "
-"leste."
+"Atopei unha póla de alswdan e agora son inmune ao veleno do pantano! Só "
+"precisamos unha máis (e $gold_cost ouro) para viaxar cara ao leste."
 msgstr[1] ""
-"Atopei unha ramita de alswdan e agora son inmune ao veleno do pantano! "
-"Necesitaremos $herbs_needed máis (e $gold_cost gold) para viaxar cara ao "
+"Atopei unha póla de alswdan e agora son inmune ao veleno do pantano! "
+"Necesitaremos $herbs_needed máis (e $gold_cost ouro) para viaxar cara ao "
 "leste."
 
 #: data/campaigns/Eastern_Invasion/scenarios/04b_Ill_Humors.cfg:652
-#, fuzzy
-#| msgid ""
-#| "I’ve found a sprig of alswdan and am now immune to the swamp’s poison! "
-#| "We’ll need $herbs_needed more (and $gold_cost gold) to travel east."
 msgid ""
 "female^I’ve found a sprig of alswdan and am now immune to the swamp’s "
 "poison! We only need one more (and $gold_cost gold) to travel east."
@@ -1932,27 +1923,23 @@ msgid_plural ""
 "female^I’ve found a sprig of alswdan and am now immune to the swamp’s "
 "poison! We’ll need $herbs_needed more (and $gold_cost gold) to travel east."
 msgstr[0] ""
-"Atopei unha ramita de alswdan e agora son inmune ao veleno do pantano! "
-"Necesitaremos $herbs_needed máis (e $gold_cost gold) para viaxar cara ao "
-"leste."
+"Atopei unha póla de alswdan e agora son inmune ao veleno do pantano! Só "
+"precisamos unha máis (e $gold_cost ouro) para viaxar cara ao leste."
 msgstr[1] ""
-"Atopei unha ramita de alswdan e agora son inmune ao veleno do pantano! "
-"Necesitaremos $herbs_needed máis (e $gold_cost gold) para viaxar cara ao "
+"Atopei unha ramiña de alswdan e agora son inmune ao veleno do pantano! "
+"Necesitaremos $herbs_needed máis (e $gold_cost ouro) para viaxar cara ao "
 "leste."
 
 #. [message]: speaker=unit
 #: data/campaigns/Eastern_Invasion/scenarios/04b_Ill_Humors.cfg:674
 msgid "I’ve found a sprig of alswdan and am now immune to the swamp’s poison!"
-msgstr "Atopei unha rama de alswdan e agora son inmune ao veleno do pantano!"
+msgstr "Atopei unha póla de alswdan e agora son inmune ao veleno do pantano!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Eastern_Invasion/scenarios/04b_Ill_Humors.cfg:675
-#, fuzzy
-#| msgid ""
-#| "I’ve found a sprig of alswdan and am now immune to the swamp’s poison!"
 msgid ""
 "female^I’ve found a sprig of alswdan and am now immune to the swamp’s poison!"
-msgstr "Atopei unha rama de alswdan e agora son inmune ao veleno do pantano!"
+msgstr "Atopei unha póla de alswdan e agora son inmune ao veleno do pantano!"
 
 #. [message]: speaker=Hahid al-Ali
 #: data/campaigns/Eastern_Invasion/scenarios/04b_Ill_Humors.cfg:727
@@ -2315,7 +2302,7 @@ msgstr ""
 #. [objective]: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/04c_Mal-Ravanals_Capital.cfg:415
 msgid "Escape by defeating one of the dark sorcerers"
-msgstr "Acaba cun dos feiticeiros escuros para fuxir."
+msgstr "Acaba cun dos feiticeiros escuros para fuxir"
 
 #. [objective]: condition=win
 #. when initially shown there are 6 imprisoned knights, the text doesn't change as they're freed
@@ -2603,7 +2590,7 @@ msgstr ""
 #. [objective]: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/05_Northern_Outpost.cfg:252
 msgid "Find the outlaw leader"
-msgstr "Atopa o líder dos proscritos."
+msgstr "Atopa o líder dos foraxidos"
 
 #. [objective]: condition=win
 #. Shodrano is a male Rogue or Assassin
@@ -3447,7 +3434,7 @@ msgid ""
 "through swamps and shallow water!"
 msgstr ""
 "Unha bebida deste frasco azul brillante e moverás a toda velocidade por "
-"pantanos e augas pouco profundas."
+"pantanos e augas pouco profundas!"
 
 #. [message]: speaker=Hahid al-Ali
 #: data/campaigns/Eastern_Invasion/scenarios/06a_Undead_Crossing.cfg:250
@@ -3840,6 +3827,9 @@ msgid ""
 "That’s almost all the undead leaders defeated! If time remains, we should "
 "introduce Owaec to the city garrison before we continue north."
 msgstr ""
+"Iso é case todos os líderes non mortos derrotados! Se queda tempo, "
+"deberiamos presentar a Owaec á gornición da cidade antes de continuar cara "
+"ao norte."
 
 #. [message]: speaker=Gweddry
 #. there were originally 4 of them, and 3 are now defeated
@@ -4090,7 +4080,7 @@ msgstr "Ogros"
 #. The ogre is trying to escape, but Gweddry's units keep forcing him to change directions.
 #: data/campaigns/Eastern_Invasion/scenarios/07a_Capturing_the_Ogres.cfg:63
 msgid "Gah! Raa! Get out of my way!!"
-msgstr ""
+msgstr "Bu! Raa! Apártate do meu camiño!!"
 
 #. [objective]: condition=win
 #: data/campaigns/Eastern_Invasion/scenarios/07a_Capturing_the_Ogres.cfg:157
@@ -4257,26 +4247,16 @@ msgstr "Cruzamento de Ogros"
 
 #. [part]
 #: data/campaigns/Eastern_Invasion/scenarios/07b_Ogre_Crossing.cfg:17
-#, fuzzy
-#| msgid ""
-#| "The Ford of Parthyn is second only to Abez in its notoriety. It was here "
-#| "where Iliah-Malal’s ghostly army first wrought its terror, only to be "
-#| "routed by the legendary Delfador. It was here where Malin Keshar cast "
-#| "aside his humanity and began delving into the dark arts. And it was here "
-#| "where Gweddry and his men attempted their escape from Wesnoth and Mal-"
-#| "Ravanal’s undead hordes into the wild northlands."
 msgid ""
 "As the best river crossing for miles in either direction, and the site of "
 "many an old orc-raid, the Ford of Parthyn is second only to Abez in its "
 "notoriety. It is here where Gweddry and his men attempted their escape from "
 "Wesnoth and Mal-Ravanal’s undead hordes into the wild north."
 msgstr ""
-"O Ford de Parthyn é o segundo só despois de Abez na súa notoriedade. Foi "
-"aquí onde o exército fantasmal de Iliah-Malal provocou o seu terror por "
-"primeira vez, só para ser derrotado polo lendario Delfador. Foi aquí onde "
-"Malin Keshar deixou de lado a súa humanidade e comezou a afondar nas artes "
-"escuras. E foi aquí onde Gweddry e os seus homes tentaron escapar das hordas "
-"de non mortos de Wesnoth e Mal-Ravanal cara ás salvaxes terras do norte."
+"Como o mellor paso de río por millas en ambas as direccións, e lugar de "
+"moitas antigas incursións orcas, o Vao de Parthyn só é superado en sona polo "
+"de Abez. É aquí onde Gweddry e os seus homes tentaron escapar do noroeste "
+"das hordas non mortas de Mal-Ravanal cara ao salvaxe norte."
 
 #. [side]: type=Ogre, id=Grug
 #: data/campaigns/Eastern_Invasion/scenarios/07b_Ogre_Crossing.cfg:37
@@ -4313,7 +4293,7 @@ msgstr "Chega á costa norte antes de que Grug morra"
 #. "any human" specifically excludes undead, who don't count. It's not possible for the player to control dwarves, merfolk, etc at this point in the campaign.
 #: data/campaigns/Eastern_Invasion/scenarios/07b_Ogre_Crossing.cfg:210
 msgid "The ogres will join you once any human reaches the north shore."
-msgstr ""
+msgstr "Os ogros uniranse a vós en canto algún humano chegue á costa norte."
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/07b_Ogre_Crossing.cfg:256
@@ -4482,7 +4462,7 @@ msgstr "Non penses que podes escapar tan facilmente!"
 #. [message]
 #: data/campaigns/Eastern_Invasion/scenarios/07b_Ogre_Crossing.cfg:743
 msgid "Run away!"
-msgstr ""
+msgstr "Fuxe!"
 
 #. [message]: speaker=Izziasch
 #: data/campaigns/Eastern_Invasion/scenarios/07b_Ogre_Crossing.cfg:751
@@ -5439,7 +5419,7 @@ msgid ""
 "(This and the next 3 scenarios have 100% carryover, but few villages and 0 "
 "starting gold.)"
 msgstr ""
-"(Este e os próximos 3 escenarios teñen 100 % de transferencia, pero poucas "
+"(Este e os próximos 3 escenarios teñen 100 % de transferencia, pero poucas "
 "aldeas e 0 ouro inicial)."
 
 #. [message]: speaker=narrator
@@ -5799,13 +5779,12 @@ msgstr ""
 #. (said by a dwarf) Meh, this drake got just $gold gold. I would expect more from a bunch of walking furnaces.
 #. circa 15 gold pieces
 #: data/campaigns/Eastern_Invasion/scenarios/09_Castle_in_the_Ice.cfg:1502
-#, fuzzy
 msgid ""
 "Meh, this drake got just $gold gold. Woulda expect more from a bunch o’ "
 "walkin’ furnaces."
 msgstr ""
-"Bah, este draconián só tiña $gold de ouro. Esperaría máis dun feixe de "
-"fornos andantes."
+"Bah, este draconian só tiña $gold de ouro. Agardaba máis dun feixe de fornos "
+"andantes."
 
 #. [event]
 #. (said by an ogre) The drake has $gold gold pieces. The drake is mean. I am going to take the gold.
@@ -5933,10 +5912,9 @@ msgstr "Sobrevivir ao asalto orco"
 
 #. [note]
 #: data/campaigns/Eastern_Invasion/scenarios/10_Dark_Sanctuary.cfg:734
-#, fuzzy
-#| msgid "To enter the castle, move Dacyn into the gated area."
 msgid "To enter the castle, move Dacyn into the gated area and end your turn."
-msgstr "Para entrar no castelo, move a Dacyn á zona pechada."
+msgstr ""
+"Para entrar no castelo, move a Dacyn á zona pechada e remata a túa quenda."
 
 #. [note]
 #: data/campaigns/Eastern_Invasion/scenarios/10_Dark_Sanctuary.cfg:740
@@ -6767,10 +6745,8 @@ msgstr ""
 
 #. [message]: speaker=Sanctum Guard
 #: data/campaigns/Eastern_Invasion/scenarios/10_Dark_Sanctuary.cfg:2474
-#, fuzzy
-#| msgid "TRESSPASSERS!"
 msgid "TRESPASSERS!"
-msgstr "INTRASORES!"
+msgstr "INTRUSSOS!"
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/scenarios/10_Dark_Sanctuary.cfg:2478
@@ -6876,7 +6852,7 @@ msgstr ""
 #. [dummy]: id=amla_dummy
 #: data/campaigns/Eastern_Invasion/scenarios/10_Dark_Sanctuary.cfg:2676
 msgid "AMLAs"
-msgstr ""
+msgstr "ADNMs"
 
 #. [dummy]: id=amla_dummy
 #: data/campaigns/Eastern_Invasion/scenarios/10_Dark_Sanctuary.cfg:2677
@@ -6884,6 +6860,8 @@ msgid ""
 "This veteran fighter has advanced one or more times past his maximum level, "
 "gaining increased damage each time."
 msgstr ""
+"Este loitador veterano avanzou unha ou máis veces máis alá do seu nivel "
+"máximo, inflixindo máis dano cada vez."
 
 #. [message]
 #. Medium-sized groups of orcs are arriving every 2 days to attack the player. This is one message they might say when they arrive.
@@ -7668,10 +7646,8 @@ msgstr "Oooh tan brillante, meu precioso... que gran regalo do Xefe..."
 #. [message]: speaker=unit
 #. goblin with a ring of invisibility (although not enough sense to wear it when running away)
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:1706
-#, fuzzy
-#| msgid "Aaah! Humans! Run away run away!"
 msgid "Aaah! Who’re you?! Run away run away!"
-msgstr "Aaah! Humanos! Fuxe fuxe!"
+msgstr "Aaah! Quen es ti?! Fuxe, fuxe!"
 
 #. [message]: speaker=second_unit
 #. unit who discovered the goblin with a ring of invisibility
@@ -7685,6 +7661,8 @@ msgid ""
 "This looks like a disused mineshaft. I don’t feel any fresh air, so we "
 "shouldn’t expect to escape this way."
 msgstr ""
+"Isto parece un pozo de mina abandonado. Non sinto aire fresco, así que non "
+"deberiamos esperar escapar por aquí."
 
 #. [message]: speaker=unit
 #. if the disguised unit runs out of the caves alone, without rescuing any other prisoners
@@ -8075,16 +8053,12 @@ msgstr ""
 #. [message]
 #. Said by any left-behind unit except ogres (they can't speak fluently) and Hahid al-Ali (it would be very out of character for him).
 #: data/campaigns/Eastern_Invasion/scenarios/12_Evacuation.cfg:702
-#, fuzzy
-#| msgid ""
-#| "At least you three commanders are safe. From here, we must ride swift, "
-#| "ride strong, and ride to save all of Wesnoth!"
 msgid ""
 "At least you three commanders are safe. From here, you must ride swift, ride "
 "strong, and ride to save all of Wesnoth!"
 msgstr ""
 "Polo menos vostedes tres comandantes están a salvo. A partir de aquí, "
-"debemos andar rápido, andar forte e montar para salvar todo Wesnoth!"
+"debemos andar rápido, andar forte e montar para salvar todo o Noroeste!"
 
 #. [message]: speaker=Owaec
 #. either got everyone across or left behind at most one L2 or L3 unit
@@ -8272,7 +8246,7 @@ msgstr "Botín de guerra"
 #. [part]
 #: data/campaigns/Eastern_Invasion/scenarios/13_Spoils_of_War.cfg:27
 msgid "Part III: Wesnoth at War"
-msgstr ""
+msgstr "Parte III: O Noroeste en guerra"
 
 #. [part]
 #: data/campaigns/Eastern_Invasion/scenarios/13_Spoils_of_War.cfg:40
@@ -8397,6 +8371,8 @@ msgid ""
 "Alas, my long days of riding have been for naught. I could not catch the "
 "undead scout before it could report back to its mistress!"
 msgstr ""
+"Ai, os meus longos días de cabalgada foron en balde. Non puiden atrapar o "
+"explorador non morto antes de que puidese informar á súa ama!"
 
 #. [message]: id=Owaec,Terraent
 #: data/campaigns/Eastern_Invasion/scenarios/13_Spoils_of_War.cfg:604
@@ -8405,6 +8381,10 @@ msgid ""
 "she is alerted, and with the rest of our army yet weeks away, she will have "
 "more than enough time to prepare for our arrival."
 msgstr ""
+"Gweddry agardaba que puidésemos coller por sorpresa a esta necromante. Pero "
+"agora que está alertada, e co resto do noso exército aínda a unhas semanas "
+"de distancia, terá tempo máis que suficiente para prepararse para a nosa "
+"chegada."
 
 #. [message]: speaker=Mal-Yrna
 #. speaking to a bat
@@ -13977,7 +13957,6 @@ msgid "Baneblade"
 msgstr "Baneblade"
 
 #: data/campaigns/Eastern_Invasion/utils/items.cfg:637
-#, fuzzy
 msgid ""
 "This incorporeal sword resembles those wielded by undead wraiths. Any mortal "
 "brave enough to wield it becomes <i><b>chaotic</b></i> and lashes out at "
@@ -13986,11 +13965,11 @@ msgid ""
 "i>. Always used on defense."
 msgstr ""
 "Esta espada incorpórea aseméllase ás que manexan os espectros non mortos. "
-"Calquera mortal o suficientemente valente como para manexalo vólvese "
+"Calquera mortal o suficientemente valente como para manexala vólvese "
 "<i><b>caótico</b></i> e arremete contra os seus inimigos con abandono "
 "imprudente.\n"
-"<i><b>arcanos 6x4</b></i> de dano, <i><b>drena</b></i>, <i><b>furia</b></i>. "
-"Úsase sempre na defensa."
+"<i><b>arcanos 6x4</b></i> de dano, <i><b>drena</b></i>, <i><b>frenesí</b></"
+"i>. Úsase sempre na defensa."
 
 #: data/campaigns/Eastern_Invasion/utils/items.cfg:687
 msgid "Drop Baneblade"
@@ -14403,8 +14382,8 @@ msgid ""
 "<span color='#00FF00'>+30%</span> base damage when gold is positive.\n"
 "<span color='#FF0000'>-30%</span> base damage when gold is 0 or negative."
 msgstr ""
-"<span color='#00FF00'>+30 %</span> de dano base cando o ouro é positivo.\n"
-"<span color='#FF0000'>-30 %</span> dano base cando o ouro é 0 ou negativo."
+"<span color='#00FF00'>+30 %</span> de dano base cando o ouro é positivo.\n"
+"<span color='#FF0000'>-30 %</span> dano base cando o ouro é 0 ou negativo."
 
 #. [trait]: id=mercenary
 #: data/campaigns/Eastern_Invasion/utils/traits.cfg:129

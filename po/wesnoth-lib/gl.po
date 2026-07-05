@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2026-06-22 22:15-0500\n"
-"PO-Revision-Date: 2025-10-09 18:04+0200\n"
+"PO-Revision-Date: 2026-06-19 13:15+0200\n"
 "Last-Translator: Adrian Chaves <adrian@chaves.io>\n"
 "Language-Team: Galician <kde-i18n-doc@kde.org>\n"
 "Language: gl\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.7\n"
+"X-Generator: Poedit 3.9\n"
 
 #. [ai]: id=ai_default_rca
 #: data/ai/ais/ai_default_rca.cfg:9
@@ -43,7 +43,7 @@ msgstr "Multiplayer_AI^IA experimental"
 #. [ai]: id=idle_ai
 #: data/ai/ais/idle_ai.cfg:4
 msgid "Multiplayer_AI^Dev AI: Idle AI"
-msgstr "Multiplayer_AI^Dev AI: IA inactiva"
+msgstr "AI Dev: IA inactiva"
 
 #. [ai]: id=ai_default_rca_alternate_recruiting
 #: data/ai/dev/ai_default_rca_alternate_recruiting.cfg:10
@@ -2843,12 +2843,12 @@ msgstr "Descargas:"
 #. [label]
 #: data/gui/themes/default/dialogs/addon_manager.cfg:299
 msgid "date^Uploaded:"
-msgstr "Envío:"
+msgstr "Subido:"
 
 #. [label]
 #: data/gui/themes/default/dialogs/addon_manager.cfg:329
 msgid "date^Updated:"
-msgstr "Actualización:"
+msgstr "Actualizado:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [scroll_label]: id=description
@@ -2942,7 +2942,7 @@ msgstr "Traducións:"
 #: data/gui/themes/default/dialogs/addon_manager.cfg:748
 #: src/gui/dialogs/addon/manager.cpp:1155
 msgid "translations^None"
-msgstr "ningunha."
+msgstr "Ningunha"
 
 #. [text_box]: id=filter
 #: data/gui/themes/default/dialogs/addon_manager.cfg:770
@@ -3083,7 +3083,7 @@ msgstr "Probabilidade de saír indemne:"
 #. [label]
 #: data/gui/themes/default/dialogs/attack_predictions.cfg:188
 msgid "Expected Battle Result (HP)"
-msgstr "Resultado esperado da batalla (vida)"
+msgstr "Resultado esperado da batalla (PV)"
 
 #. [label]: id=title
 #: data/gui/themes/default/dialogs/attack_predictions.cfg:251
@@ -3105,7 +3105,7 @@ msgstr "Defensor"
 #. This one is the page title, shown in bold.
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:207
 msgid "campaign_landing^Welcome to Wesnoth v1.20"
-msgstr ""
+msgstr "Benvido ao Noroeste v1.20"
 
 #. [label]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:209
@@ -3117,6 +3117,11 @@ msgid ""
 "style='italic'>Heir to the Throne</span>. The intended way to learn both the "
 "story and the game mechanics is to play the campaigns in that order."
 msgstr ""
+"<b>Se es novo no Noroeste</b>, o arco narrativo arrinca con <span "
+"color='#e1e119' style='italic'>A Garda do Sur</span> e segue as campañas "
+"pola orde que tes á esquerda, e remata cincuenta anos máis tarde con <span "
+"color='#e1e119' style='italic'>O Herdeiro do Trono</span>. Xogar as campañas "
+"nesa orde é o mellor xeito de aprender a historia e as mecánicas do xogo."
 
 #. [label]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:211
@@ -3124,6 +3129,8 @@ msgid ""
 "campaign_landing^<b>If you’re a returning player</b>, you’ll notice a number "
 "of changes since v1.18:"
 msgstr ""
+"<b>Se es un xogador habitual</b>, notarás unha morea de trocos dende a "
+"versión 1.18:"
 
 #. [label]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:213
@@ -3133,6 +3140,10 @@ msgid ""
 "Konrad unique recruits, companions, or items. The original campaign is still "
 "available as <i>Heir to the Throne, Classic</i>."
 msgstr ""
+"<span color='#e1e119' style='italic'>O Herdeiro do Trono</span> agora ten un "
+"mundo aberto con 33 escenarios con diferentes camiños, e en cada un deles "
+"Conrad pode conseguir recrutas, compañeiros ou obxectos especiais. A campaña "
+"de sempre segue estando dispoñible como <i>O Herdeiro do Trono, Clásica</i>."
 
 #. [label]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:215
@@ -3143,6 +3154,10 @@ msgid ""
 "orcs of the north. Choose between 23 magic spells as you bear witness to the "
 "rise of a tyrant."
 msgstr ""
+"<span color='#e1e119' style='italic'>O Gambito da Enganadora</span> "
+"substitúe a <i>Memorias de Delfador</i>. Acompaña a unha nova meiga dende as "
+"costas de Alduin ata os salóns do Rei, na súa guerra contra os feros orcos "
+"do norte. Elixe entre 23 feitizos mentres asistes ao auxe dun tirano."
 
 #. [label]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:217
@@ -3151,6 +3166,10 @@ msgid ""
 "our first troll campaign. Lead the Golden Flame Tribe out from the bowels of "
 "Irdya and up to the surface world — but beware what awaits you there."
 msgstr ""
+"<span color='#e1e119' style='italic'>Crepúsculo do Albor</span> é a nosa "
+"primeira campaña de troles. Lidera a Tribo da Chama Dourada dende as "
+"entrañas de Irdya ata o mundo superficial — pero coidado co que te agarda "
+"alí."
 
 #. [label]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:219
@@ -3160,6 +3179,10 @@ msgid ""
 "the Bay of Pearls. When corsairs strike, the villagers must join forces with "
 "the local merfolk and take the fight to the pirates."
 msgstr ""
+"<span color='#e1e119' style='italic'>De Perlas e Piratas</span> é unha nova "
+"campaña orientada a principiantes, ambientada nunha vila pesqueira "
+"adormecida na Baía das Perlas. Cando os corsarios atacan, os aldeáns deben "
+"unir forzas coa xente do mar locais e levar a loita contra os piratas."
 
 #. [label]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:221
@@ -3170,6 +3193,11 @@ msgid ""
 "original tutorial is still available as part of <i>Heir to the Throne, "
 "Classic</i>."
 msgstr ""
+"<span color='#e1e119' style='italic'>A Garda do Sur</span> foi revisada de "
+"xeito significativo, e agora substitúe o clásico titorial <i>Adestramento de "
+"Batalla</i>. Para os xogadores que sintan nostalxia pola titoría de "
+"Delfador, o titorial orixinal aínda está dispoñible como parte de <i>O "
+"Herdeiro ao Trono, Clásica</i>."
 
 #. [label]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:223
@@ -3179,6 +3207,11 @@ msgid ""
 "AI, a new Thunderer advancement, a redesign of <i>High Pass</i>, and the re-"
 "addition of the formerly removed <i>Mages and Drakes</i>."
 msgstr ""
+"<span color='#e1e119' style='italic'>O Martelo de Dursagan</span> foi "
+"mellorado con axustes na historia, unha intelixencia artificial inimiga "
+"mellorada, unha nova evolución do Tronante, un redeseño de <i>Alto Portelo</"
+"i> e a reincorporación de <i>Meigos e Draconiáns</i>, que fora retirada "
+"anteriormente."
 
 #. [label]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:225
@@ -3189,6 +3222,11 @@ msgid ""
 "and dialogue sequences were changed for better continuity with other "
 "campaigns."
 msgstr ""
+"<span color='#e1e119' style='italic'>Ventos do Destino</span> foi "
+"reequilibrado con custos de recuperación moi inferiores, xeradores de vida "
+"salvaxe e IA redeseñados, e unha batalla intermedia moito máis grande. "
+"Varios personaxes e secuencias de diálogo foron modificados para mellorar a "
+"continuidade con outras campañas."
 
 #. [label]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:227
@@ -3196,6 +3234,8 @@ msgid ""
 "campaign_landing^For a full list of changes, consult our official changelog "
 "at https://www.wesnoth.org/start/1.20/"
 msgstr ""
+"Para ver a lista completa de trocos, consulta o noso rexistro de trocos "
+"oficial en https://www.wesnoth.org/start/1.20/"
 
 #. [label]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:248
@@ -3245,8 +3285,7 @@ msgstr "Nome"
 #. [toggle_button]: id=sort_name
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:306
 msgid "Sort by full campaign name in alphabetical order"
-msgstr ""
-"Ordenar alfabeticamente polo nome completo das campañas (artigos incluídos)."
+msgstr "Ordenar alfabeticamente polo nome completo das campañas"
 
 #. [toggle_button]: id=sort_time
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:317
@@ -3257,7 +3296,7 @@ msgstr "Liña de tempo"
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:318
 msgid "Sort in approximate chronological order of story events"
 msgstr ""
-"Ordenar pola orde cronolóxica aproximada dos acontecementos das historias."
+"Ordenar pola orde cronolóxica aproximada dos acontecementos das historias"
 
 #. [multimenu_button]: id=filter_completion
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:328
@@ -3414,7 +3453,7 @@ msgstr "Difícil"
 #. [label]
 #: data/gui/themes/default/dialogs/campaign_dialog.cfg:551
 msgid "Play a Campaign"
-msgstr "Xogar unha campaña ou escenario"
+msgstr "Xogar unha campaña"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=proceed
@@ -3513,7 +3552,7 @@ msgstr "Copiar"
 #: data/gui/themes/default/dialogs/game_version.cfg:55
 #: data/gui/themes/default/dialogs/screenshot_notification.cfg:34
 msgid "Copy this path to clipboard"
-msgstr "Copiar esta ruta no portapapeis."
+msgstr "Copiar esta ruta no portapapeis"
 
 #. [button]: id=browse_
 #. [button]: id=browse
@@ -3522,7 +3561,7 @@ msgstr "Copiar esta ruta no portapapeis."
 #: data/gui/themes/default/dialogs/game_cache_options.cfg:126
 #: data/gui/themes/default/dialogs/game_version.cfg:72
 msgid "filesystem^Browse"
-msgstr "Buscar"
+msgstr "Explorar"
 
 #. [button]: id=browse_
 #. [button]: id=browse
@@ -3701,7 +3740,7 @@ msgstr "Etiqueta:"
 #. [toggle_button]: id=team_only_toggle
 #: data/gui/themes/default/dialogs/edit_label.cfg:111
 msgid "Team only"
-msgstr "Só para o equipo."
+msgstr "Só equipo"
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_choose_addon.cfg:47
@@ -4141,7 +4180,7 @@ msgstr "Manto do descoñecido"
 #. [row]
 #: data/gui/themes/default/dialogs/editor_edit_side.cfg:436
 msgid "vision^None"
-msgstr "Nada"
+msgstr "Ningunha"
 
 #. [button]: id=load_unit_type
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:180
@@ -4198,7 +4237,7 @@ msgstr "Aliñamento:"
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:381
 msgid "HP:"
-msgstr "Vida:"
+msgstr "PV:"
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_edit_unit.cfg:411
@@ -4428,7 +4467,7 @@ msgstr "Cambiar de tamaño"
 #. [label]
 #: data/gui/themes/default/dialogs/end_credits.cfg:117
 msgid "↑ ↓ to adjust speed"
-msgstr "Use ↑ ↓ para axustar a velocidade."
+msgstr "Use ↑ ↓ para axustar a velocidade"
 
 #. [label]
 #: data/gui/themes/default/dialogs/file_dialog.cfg:103
@@ -4448,7 +4487,7 @@ msgstr "Engade o cartafol actual aos marcadores"
 #. [button]: id=remove_bookmark
 #: data/gui/themes/default/dialogs/file_dialog.cfg:292
 msgid "Removes the current bookmark"
-msgstr "Retira o marcador actual."
+msgstr "Retira o marcador actual"
 
 #. [button]: id=open_ext
 #: data/gui/themes/default/dialogs/file_dialog.cfg:319
@@ -4582,7 +4621,7 @@ msgstr "Está seguro de que quere eliminar a partida?"
 #: data/gui/themes/default/dialogs/game_delete.cfg:80
 #: data/gui/themes/default/dialogs/mp_host_game_prompt.cfg:79
 msgid "Do not show again"
-msgstr "Non volver mostrar."
+msgstr "Non voltar amosar"
 
 #. [toggle_button]: id=sort_1
 #: data/gui/themes/default/dialogs/game_load.cfg:185
@@ -4611,32 +4650,32 @@ msgstr "Mostrar gardados dunha versión diferente de Wesnoth"
 #. [toggle_button]: id=change_difficulty
 #: data/gui/themes/default/dialogs/game_load.cfg:537
 msgid "Change difficulty"
-msgstr "Cambiar a dificultade."
+msgstr "Cambiar a dificultade"
 
 #. [toggle_button]: id=change_difficulty
 #: data/gui/themes/default/dialogs/game_load.cfg:538
 msgid "Change campaign difficulty before loading"
-msgstr "Cambiar a dificultade da campaña antes de cargala."
+msgstr "Cambiar a dificultade da campaña antes de cargala"
 
 #. [toggle_button]: id=show_replay
 #: data/gui/themes/default/dialogs/game_load.cfg:560
 msgid "Show replay"
-msgstr "Mostrar a repetición."
+msgstr "Amosar a repetición"
 
 #. [toggle_button]: id=show_replay
 #: data/gui/themes/default/dialogs/game_load.cfg:561
 msgid "Play the embedded replay from the saved game if applicable"
-msgstr "Reproducir a repetición incluída na partida de ser posíbel."
+msgstr "Reproducir a repetición incluída na partida de ser posíbel"
 
 #. [toggle_button]: id=cancel_orders
 #: data/gui/themes/default/dialogs/game_load.cfg:583
 msgid "Cancel orders"
-msgstr "Cancelar as ordes."
+msgstr "Cancelar as ordes"
 
 #. [toggle_button]: id=cancel_orders
 #: data/gui/themes/default/dialogs/game_load.cfg:584
 msgid "Cancel any pending unit movements in the saved game"
-msgstr "Cancelar calquera movemento pendente na partida."
+msgstr "Cancelar calquera movemento pendente na partida"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
@@ -4913,19 +4952,19 @@ msgstr "Nome"
 #. [label]
 #: data/gui/themes/default/dialogs/game_version.cfg:488
 msgid "library^Build version"
-msgstr "Versión de construción"
+msgstr "Versión de compilación"
 
 #. [label]
 #: data/gui/themes/default/dialogs/game_version.cfg:500
 msgid "library^Runtime version"
-msgstr "Versión de execución"
+msgstr "Versión en execución"
 
 #. [label]
 #: data/gui/themes/default/dialogs/game_version.cfg:581
 msgid ""
 "The following features were selected when building this version of Wesnoth:"
 msgstr ""
-"As seguintes funcionalidades seleccionáronse durante a construción desta "
+"As seguintes funcionalidades seleccionáronse durante a compilación desta "
 "versión de A batalla polo Noroeste:"
 
 #. [button]: id=forums
@@ -5073,12 +5112,12 @@ msgstr "Tipo de terreo:"
 #. [toggle_button]: id=connect_castles
 #: data/gui/themes/default/dialogs/generator_settings.cfg:135
 msgid "Roads Between Castles"
-msgstr "Camiños entre os castelos."
+msgstr "Camiños entre os castelos"
 
 #. [toggle_button]: id=show_labels
 #: data/gui/themes/default/dialogs/generator_settings.cfg:157
 msgid "Show Labels"
-msgstr "Mostrar as etiquetas."
+msgstr "Amosar as etiquetas"
 
 #. [toggle_button]: id=contents
 #: data/gui/themes/default/dialogs/help_browser.cfg:125
@@ -5457,7 +5496,7 @@ msgstr "Limpar a consola"
 #. [button]: id=clear
 #: data/gui/themes/default/dialogs/lua_interpreter.cfg:118
 msgid "Clear the log area"
-msgstr "Limpar a zona do rexistro."
+msgstr "Limpar a zona do rexistro"
 
 #. [label]
 #: data/gui/themes/default/dialogs/migrate_version_selection.cfg:40
@@ -5920,7 +5959,7 @@ msgstr "Gardar preaxuste"
 #. [row]
 #: data/gui/themes/default/dialogs/mp_faction_select.cfg:210
 msgid "gender^Random"
-msgstr "Aleatorio"
+msgstr "Ao chou"
 
 #. [row]
 #. [toggle_button]: id=male_toggle
@@ -6404,7 +6443,7 @@ msgstr "Dispoñíbel no editor"
 #: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:160
 #: src/gui/dialogs/preferences_dialog.cpp:887
 msgid "mainmenu_hotkeys^M"
-msgstr "P"
+msgstr "M"
 
 #. [toggle_button]: id=sort_4
 #: data/gui/themes/default/dialogs/preferences/02_hotkeys.cfg:161
@@ -7038,7 +7077,7 @@ msgstr "Imaxe"
 #. [label]
 #: data/gui/themes/default/dialogs/terrain_layers.cfg:57
 msgid "Loc"
-msgstr "Lug"
+msgstr "Loc"
 
 #. [label]
 #: data/gui/themes/default/dialogs/terrain_layers.cfg:69
@@ -7058,7 +7097,7 @@ msgstr "Base.y"
 #. [label]
 #: data/gui/themes/default/dialogs/terrain_layers.cfg:105
 msgid "Center"
-msgstr "Centro"
+msgstr "Centrar"
 
 #. [label]
 #: data/gui/themes/default/dialogs/terrain_layers.cfg:339
@@ -7135,7 +7174,7 @@ msgstr "Movementos"
 #. [toggle_button]: id=unit_hp
 #: data/gui/themes/default/dialogs/units_dialog.cfg:104
 msgid "HP"
-msgstr "Vida"
+msgstr "PV"
 
 #. [toggle_button]: id=unit_xp
 #: data/gui/themes/default/dialogs/units_dialog.cfg:118
@@ -7228,7 +7267,7 @@ msgstr "Mensaxes na cola"
 #: data/internal/Urban_Jungle/terrain.cfg:8
 #: data/internal/Urban_Jungle/terrain.cfg:9
 msgid "Urban"
-msgstr ""
+msgstr "Urbano"
 
 #. [terrain_type]: id=urbanjungle
 #: data/internal/Urban_Jungle/terrain.cfg:10
@@ -7237,6 +7276,10 @@ msgid ""
 "villages, providing no income or healing. They are difficult to navigate "
 "quickly, but offer significant protection."
 msgstr ""
+"As estruturas densamente poboadas son menos axeitadas para acuartelar cas "
+"aldeas tradicionais, xa que non proporcionan ingresos nin curación. Son "
+"difíciles de atravesar con rapidez, pero ofrecen unha protección "
+"significativa."
 
 #. [terrain_type]: id=urbanjungleA
 #. [terrain_type]: id=urbanjungle{ID}
@@ -7247,11 +7290,11 @@ msgstr ""
 #: data/internal/Urban_Jungle/terrain.cfg:33
 #: data/internal/Urban_Jungle/terrain.cfg:34
 msgid "Urban Jungle"
-msgstr ""
+msgstr "Xungla Urbana"
 
 #: src/build_info.cpp:281
 msgid "feature^Lua console completion"
-msgstr "Completamento da consola de Lua"
+msgstr "Autocompletar na consola Lua"
 
 #: src/build_info.cpp:288
 msgid "feature^D-Bus notifications back end"
@@ -7744,7 +7787,7 @@ msgstr "Ningún"
 # Na pantalla de cálculo de danos de combate, este é o valor que aparece para «dano base» cando o defensor non ten arma coa que defenderse (e.g. o atacante usar un ataque a distancia e o defensor non ten ningún a distancia).
 #: src/gui/dialogs/attack_predictions.cpp:120
 msgid "No usable weapon"
-msgstr "Sen contraataque"
+msgstr "Arma non utilizable"
 
 #: src/gui/dialogs/attack_predictions.cpp:196
 msgid "Defender resistance vs"
@@ -7921,11 +7964,11 @@ msgstr "explorador"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:181
 msgid "fighter"
-msgstr "Loitador"
+msgstr "loitador"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:182
 msgid "archer"
-msgstr "Arqueiro"
+msgstr "arqueiro"
 
 #: src/gui/dialogs/editor/edit_unit.cpp:183
 msgid "mixed fighter"
@@ -7973,7 +8016,7 @@ msgstr "extensión inválida (use $extensions)"
 
 #: src/gui/dialogs/file_dialog.cpp:208
 msgid "filename contains whitespace"
-msgstr "O nome do ficheiro contén espazos en branco"
+msgstr "o nome do ficheiro contén espazos en branco"
 
 #: src/gui/dialogs/file_dialog.cpp:237
 msgid "Open"
@@ -8073,11 +8116,11 @@ msgstr "Non hai partidas gardadas para cargar."
 
 #: src/gui/dialogs/game_load.cpp:150
 msgid "game_version^Current Version"
-msgstr "game_version^Versión actual"
+msgstr "Versión actual"
 
 #: src/gui/dialogs/game_load.cpp:154
 msgid "game_version^Wesnoth $version"
-msgstr "O Noroeste versión $version"
+msgstr "O Noroeste $version"
 
 #. TRANSLATORS: "reserve" refers to units on the recall list
 #: src/gui/dialogs/game_load.cpp:240
@@ -8098,7 +8141,7 @@ msgstr "Campaña: $campaign_name"
 
 #: src/gui/dialogs/game_load.cpp:372
 msgid "Tutorial"
-msgstr "Aprendizaxe"
+msgstr "Titorial"
 
 #: src/gui/dialogs/game_load.cpp:375
 msgid "Test scenario"
@@ -8134,7 +8177,7 @@ msgstr "IA"
 
 #: src/gui/dialogs/game_stats.cpp:63
 msgid "controller^Idle"
-msgstr "Ocioso"
+msgstr "Inactivo"
 
 #: src/gui/dialogs/game_stats.cpp:63
 msgid "controller^Reserved"
@@ -8232,7 +8275,7 @@ msgstr "Verificando a caché"
 
 #: src/gui/dialogs/loading_screen.cpp:62
 msgid "Connecting to server"
-msgstr "Conectando ao servidor…"
+msgstr "Conectando ao servidor"
 
 #: src/gui/dialogs/loading_screen.cpp:63
 msgid "Logging in"
@@ -8278,12 +8321,12 @@ msgid ""
 "version was found on this device"
 msgstr ""
 "Isto importaría os axustes dunha versión anterior do Reino do Noroeste, pero "
-"non se atopou ningunha outra versión neste dispositivo."
+"non se atopou ningunha outra versión neste dispositivo"
 
 #: src/gui/dialogs/multiplayer/faction_select.cpp:200
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:498
 msgid "Random"
-msgstr "Aleatorio"
+msgstr "Ao chou"
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:65
 msgid "Do you really want to log out?"
@@ -8605,8 +8648,7 @@ msgid ""
 "The sum (or difference) of the two numbers in parentheses is the actual "
 "number of hits inflicted/taken."
 msgstr ""
-"diálogo de estatísticas^Diferenza entre o resultado real e o esperado, como "
-"porcentaxe.\n"
+"Diferenza entre o resultado real e o esperado, como porcentaxe.\n"
 "O primeiro número entre parénteses é o número esperado de acertos inflixidos/"
 "tomados.\n"
 "A suma (ou diferenza) dos dous números entre parénteses é o número real de "
@@ -8822,8 +8864,8 @@ msgstr "Seleccionáronse todas"
 #: src/gui/widgets/multimenu_button.cpp:179
 msgid "multimenu^$excess other"
 msgid_plural "$excess others"
-msgstr[0] "$excess máis"
-msgstr[1] "$excess máis"
+msgstr[0] "$excess outro"
+msgstr[1] "$excess outros"
 
 # Configuración → Atallos → Categorías
 #: src/gui/widgets/multimenu_button.cpp:181
@@ -9017,7 +9059,7 @@ msgstr "Mover á dereita"
 
 #: src/hotkey/hotkey_command.cpp:79
 msgid "cancel"
-msgstr "Cancelar"
+msgstr "cancelar"
 
 #: src/hotkey/hotkey_command.cpp:80
 msgid "Select Hex"
@@ -9762,7 +9804,7 @@ msgstr "Borrar o chat"
 
 #: src/hotkey/hotkey_command.cpp:300
 msgid "Change Language"
-msgstr "Cambiar de lingua"
+msgstr "Trocar de lingua"
 
 #: src/hotkey/hotkey_command.cpp:301
 msgid "Start Game (MP)"
