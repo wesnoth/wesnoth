@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-05-18 21:15-0500\n"
+"POT-Creation-Date: 2026-06-22 22:16-0500\n"
 "PO-Revision-Date: 2026-04-20 18:54+1000\n"
 "Last-Translator: Wedge009 <wedge009@wedge009.net>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
@@ -286,7 +286,7 @@ msgid "poisoned"
 msgstr "poisoned"
 
 #. [effect]: type=fire
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:492
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:491
 #: data/core/macros/items.cfg:559
 msgid "storm trident"
 msgstr "storm trident"
@@ -312,43 +312,43 @@ msgid "Close"
 msgstr "Close"
 
 #. [language]
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:76
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:75
 #: data/english.cfg:31
 msgid "blade"
 msgstr "blade"
 
 #. [language]
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:79
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:78
 #: data/english.cfg:34
 msgid "fire"
 msgstr "fire"
 
 #. [language]
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:82
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:81
 #: data/english.cfg:35
 msgid "cold"
 msgstr "cold"
 
 #. [language]
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:85
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:84
 #: data/english.cfg:32
 msgid "pierce"
 msgstr "pierce"
 
 #. [language]
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:88
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:87
 #: data/english.cfg:33
 msgid "impact"
 msgstr "impact"
 
 #. [language]
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:91
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:90
 #: data/english.cfg:27
 msgid "melee"
 msgstr "melee"
 
 #. [language]
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:94
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:93
 #: data/english.cfg:28
 msgid "ranged"
 msgstr "ranged"
@@ -1706,17 +1706,56 @@ msgstr ""
 "_current_settings.currently_doing_special_description"
 
 #. [else]
-#: data/core/macros/deprecated-utils.cfg:35
+#: data/core/macros/deprecated-utils.cfg:34
 msgid "This unit has been renamed to: "
 msgstr "This unit has been renamed to: "
 
+#. [lua]: generate_objectives
+#: data/core/macros/deprecated-utils.cfg:51 data/lua/wml/objectives.lua:106
+msgid "Early finish bonus."
+msgstr "Early finish bonus."
+
+#. [lua]: generate_objectives
+#: data/core/macros/deprecated-utils.cfg:55 data/lua/wml/objectives.lua:109
+msgid "No early finish bonus."
+msgstr "No early finish bonus."
+
+#. [lua]: generate_objectives
+#: data/core/macros/deprecated-utils.cfg:59 data/lua/wml/objectives.lua:117
+msgid "No gold carried over to the next scenario."
+msgstr "No gold carried over to the next scenario."
+
+#: data/core/macros/deprecated-utils.cfg:63
+msgid ""
+"\n"
+"100% of finishing gold carried over to the next scenario."
+msgstr ""
+"\n"
+"100% of finishing gold carried over to the next scenario."
+
+#: data/core/macros/deprecated-utils.cfg:68
+msgid ""
+"\n"
+"40% of finishing gold carried over to the next scenario."
+msgstr ""
+"\n"
+"40% of finishing gold carried over to the next scenario."
+
+#: data/core/macros/deprecated-utils.cfg:73
+msgid ""
+"\n"
+"20% of finishing gold carried over to the next scenario."
+msgstr ""
+"\n"
+"20% of finishing gold carried over to the next scenario."
+
 #. [chance_to_hit]: id=deflect
-#: data/core/macros/deprecated-utils.cfg:124
+#: data/core/macros/deprecated-utils.cfg:284
 msgid "deflect"
 msgstr "deflect"
 
 #. [chance_to_hit]: id=deflect
-#: data/core/macros/deprecated-utils.cfg:125
+#: data/core/macros/deprecated-utils.cfg:285
 msgid ""
 "When used defensively, this attack reduces the opponent’s chance to hit by "
 "10%."
@@ -1725,7 +1764,7 @@ msgstr ""
 "10%."
 
 #. [chance_to_hit]: id=deflect
-#: data/core/macros/deprecated-utils.cfg:126
+#: data/core/macros/deprecated-utils.cfg:286
 msgid ""
 "This unit’s defensive techniques reduce the chance of a successful enemy "
 "attack."
@@ -1734,12 +1773,12 @@ msgstr ""
 "attack."
 
 #. [damage]: id=absorb
-#: data/core/macros/deprecated-utils.cfg:139
+#: data/core/macros/deprecated-utils.cfg:299
 msgid "absorb"
 msgstr "absorb"
 
 #. [damage]: id=absorb
-#: data/core/macros/deprecated-utils.cfg:140
+#: data/core/macros/deprecated-utils.cfg:300
 msgid ""
 "This attack puts the unit in good defensive position, and it absorbs some of "
 "the damage dealt by an enemy strike."
@@ -1748,7 +1787,7 @@ msgstr ""
 "the damage dealt by an enemy strike."
 
 #. [damage]: id=absorb
-#: data/core/macros/deprecated-utils.cfg:141
+#: data/core/macros/deprecated-utils.cfg:301
 msgid ""
 "This unit can block enemy strikes, so that it takes reduced damage when hit."
 msgstr ""
@@ -3045,7 +3084,7 @@ msgid "Weight of Revenge"
 msgstr "Weight of Revenge"
 
 #. [message]: speaker=narrator
-#: data/core/macros/utils.cfg:664
+#: data/core/macros/utils.cfg:662
 msgid "You retrieve $amount_gold pieces of gold."
 msgstr "You retrieve $amount_gold pieces of gold."
 
@@ -3941,7 +3980,7 @@ msgstr "unhealable"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
-#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:3755
+#: data/lua/wml/message.lua:442 src/scripting/game_lua_kernel.cpp:3755
 #: src/scripting/game_lua_kernel.cpp:3790
 msgid "input"
 msgstr "input"
@@ -3963,21 +4002,6 @@ msgid "(this turn left)"
 msgid_plural "($remaining_turns turns left)"
 msgstr[0] "(this turn left)"
 msgstr[1] "($remaining_turns turns left)"
-
-#. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:106
-msgid "Early finish bonus."
-msgstr "Early finish bonus."
-
-#. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:109
-msgid "No early finish bonus."
-msgstr "No early finish bonus."
-
-#. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:117
-msgid "No gold carried over to the next scenario."
-msgstr "No gold carried over to the next scenario."
 
 #. [lua]: generate_objectives
 #: data/lua/wml/objectives.lua:119
@@ -5968,7 +5992,7 @@ msgstr "$elem has been deprecated and removed."
 msgid "Chat message"
 msgstr "Chat message"
 
-#: src/desktop/windows_tray_notification.cpp:126 src/game_config.cpp:588
+#: src/desktop/windows_tray_notification.cpp:137 src/game_config.cpp:588
 msgid "The Battle for Wesnoth"
 msgstr "The Battle for Wesnoth"
 
@@ -6164,7 +6188,7 @@ msgstr[0] "Please report this to the author or maintainer of this add-on."
 msgstr[1] ""
 "Please report this to the respective authors or maintainers of these add-ons."
 
-#: src/game_events/pump.cpp:389 src/game_launcher.cpp:957
+#: src/game_events/pump.cpp:389 src/game_launcher.cpp:950
 msgid "Error: "
 msgstr "Error: "
 
@@ -6502,20 +6526,20 @@ msgstr "You have made too many login attempts."
 msgid "Password hashing failed."
 msgstr "Password hashing failed."
 
-#: src/game_initialization/playcampaign.cpp:150 src/game_launcher.cpp:910
+#: src/game_initialization/playcampaign.cpp:150 src/game_launcher.cpp:903
 msgid "The game could not be loaded: "
 msgstr "The game could not be loaded: "
 
-#: src/game_initialization/playcampaign.cpp:156 src/game_launcher.cpp:912
+#: src/game_initialization/playcampaign.cpp:156 src/game_launcher.cpp:905
 msgid "Error while playing the game: "
 msgstr "Error while playing the game: "
 
-#: src/game_initialization/playcampaign.cpp:159 src/game_launcher.cpp:949
+#: src/game_initialization/playcampaign.cpp:159 src/game_launcher.cpp:942
 msgid "The game map could not be loaded: "
 msgstr "The game map could not be loaded: "
 
-#: src/game_initialization/playcampaign.cpp:162 src/game_launcher.cpp:914
-#: src/game_launcher.cpp:1035
+#: src/game_initialization/playcampaign.cpp:162 src/game_launcher.cpp:907
+#: src/game_launcher.cpp:1028
 msgid "Map generator error: "
 msgstr "Map generator error: "
 
@@ -6540,28 +6564,28 @@ msgstr "Unknown scenario: ‘$scenario|’"
 msgid "No campaigns are available."
 msgstr "No campaigns are available."
 
-#: src/game_launcher.cpp:692 src/game_launcher.cpp:711
+#: src/game_launcher.cpp:685 src/game_launcher.cpp:704
 #: src/hotkey/hotkey_handler_sp.cpp:324 src/replay.cpp:662 src/savegame.cpp:167
 msgid "The file you have tried to load is corrupt"
 msgstr "The file you have tried to load is corrupt"
 
-#: src/game_launcher.cpp:694 src/game_launcher.cpp:713
+#: src/game_launcher.cpp:687 src/game_launcher.cpp:706
 msgid "The file you have tried to load is corrupt: '"
 msgstr "The file you have tried to load is corrupt: '"
 
-#: src/game_launcher.cpp:703
+#: src/game_launcher.cpp:696
 msgid "File I/O Error while reading the game"
 msgstr "File I/O Error while reading the game"
 
-#: src/game_launcher.cpp:705
+#: src/game_launcher.cpp:698
 msgid "File I/O Error while reading the game: '"
 msgstr "File I/O Error while reading the game: '"
 
-#: src/game_launcher.cpp:908
+#: src/game_launcher.cpp:901
 msgid "Error while starting server: "
 msgstr "Error while starting server: "
 
-#: src/game_launcher.cpp:930
+#: src/game_launcher.cpp:923
 msgid "Connection failed: "
 msgstr "Connection failed: "
 
@@ -6883,7 +6907,7 @@ msgstr "The file you have tried to load has no replay information."
 msgid "The file you have tried to load is not from the current session."
 msgstr "The file you have tried to load is not from the current session."
 
-#: src/language.cpp:101
+#: src/language.cpp:115
 msgid "System default language"
 msgstr "System default language"
 
@@ -7538,7 +7562,7 @@ msgstr "Command:"
 msgid "prompt^Formula:"
 msgstr "Formula:"
 
-#: src/mouse_events.cpp:1307
+#: src/mouse_events.cpp:1317
 msgid ""
 "You cannot move your leader away from the keep with some planned recruits or "
 "recalls left."
@@ -7546,35 +7570,35 @@ msgstr ""
 "You cannot move your leader away from the keep with some planned recruits or "
 "recalls left."
 
-#: src/mouse_events.cpp:1410
+#: src/mouse_events.cpp:1420
 msgid "No Attacks"
 msgstr "No Attacks"
 
-#: src/mouse_events.cpp:1410
+#: src/mouse_events.cpp:1420
 msgid "This unit has no usable weapons."
 msgstr "This unit has no usable weapons."
 
-#: src/mouse_events.cpp:1486 src/mouse_events.cpp:1502
+#: src/mouse_events.cpp:1496 src/mouse_events.cpp:1512
 msgid "Other aspects: "
 msgstr "Other aspects: "
 
-#: src/mouse_events.cpp:1515 src/mouse_events.cpp:1529
+#: src/mouse_events.cpp:1525 src/mouse_events.cpp:1539
 msgid "Weapon: "
 msgstr "Weapon: "
 
-#: src/mouse_events.cpp:1516 src/mouse_events.cpp:1530
+#: src/mouse_events.cpp:1526 src/mouse_events.cpp:1540
 msgid "Type: "
 msgstr "Type: "
 
-#: src/mouse_events.cpp:1517 src/mouse_events.cpp:1531
+#: src/mouse_events.cpp:1527 src/mouse_events.cpp:1541
 msgid "Damage: "
 msgstr "Damage: "
 
-#: src/mouse_events.cpp:1518 src/mouse_events.cpp:1532
+#: src/mouse_events.cpp:1528 src/mouse_events.cpp:1542
 msgid "Attacks: "
 msgstr "Attacks: "
 
-#: src/mouse_events.cpp:1519 src/mouse_events.cpp:1533
+#: src/mouse_events.cpp:1529 src/mouse_events.cpp:1543
 msgid "Chance to hit: "
 msgstr "Chance to hit: "
 
@@ -8554,21 +8578,21 @@ msgstr "Stub Time of Day"
 msgid "This Time of Day is only a Stub!"
 msgstr "This Time of Day is only a Stub!"
 
-#: src/units/abilities.cpp:1141
+#: src/units/abilities.cpp:1161
 msgid "Owned: "
 msgstr "Owned: "
 
 #. TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
-#: src/units/abilities.cpp:1143
+#: src/units/abilities.cpp:1163
 msgid "Taught: "
 msgstr "Taught: "
 
 #. TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
-#: src/units/abilities.cpp:1145
+#: src/units/abilities.cpp:1165
 msgid "Taught: (by an enemy): "
 msgstr "Taught: (by an enemy): "
 
-#: src/units/abilities.cpp:1146
+#: src/units/abilities.cpp:1166
 msgid "Used by opponent: "
 msgstr "Used by opponent: "
 
@@ -8805,7 +8829,7 @@ msgstr "$year BF"
 msgid "$year AF"
 msgstr "$year AF"
 
-#: src/wesnoth.cpp:811
+#: src/wesnoth.cpp:804
 msgid ""
 "Unable to create log files in directory $logdir. This is often caused by "
 "incorrect folder permissions, anti-virus software restricting folder access, "
@@ -8815,7 +8839,7 @@ msgstr ""
 "incorrect directory permissions, anti-virus software restricting directory "
 "access, or using OneDrive to manage your My Documents folder."
 
-#: src/wesnoth.cpp:812
+#: src/wesnoth.cpp:805
 msgid "Logging Failure"
 msgstr "Logging Failure"
 
@@ -8842,27 +8866,6 @@ msgstr "Hide plans for $player"
 #: src/whiteboard/manager.cpp:1140
 msgid "Whiteboard Options"
 msgstr "Whiteboard Options"
-
-#~ msgid ""
-#~ "\n"
-#~ "100% of finishing gold carried over to the next scenario."
-#~ msgstr ""
-#~ "\n"
-#~ "100% of finishing gold carried over to the next scenario."
-
-#~ msgid ""
-#~ "\n"
-#~ "40% of finishing gold carried over to the next scenario."
-#~ msgstr ""
-#~ "\n"
-#~ "40% of finishing gold carried over to the next scenario."
-
-#~ msgid ""
-#~ "\n"
-#~ "20% of finishing gold carried over to the next scenario."
-#~ msgstr ""
-#~ "\n"
-#~ "20% of finishing gold carried over to the next scenario."
 
 #~ msgid "Potion grants steadfast ability and 20% resistance to impact."
 #~ msgstr "Potion grants steadfast ability and 20% resistance to impact."

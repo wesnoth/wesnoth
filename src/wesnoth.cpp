@@ -356,9 +356,9 @@ static int process_command_args(commandline_options& cmdline_opts)
 		|| (!cmdline_opts.no_log_to_file
 			&& !getenv("WESNOTH_NO_LOG_FILE")
 			// command line options that imply not redirecting output to a log file
-			&& !cmdline_opts.data_path
-			&& !cmdline_opts.userdata_path
-			&& !cmdline_opts.usercache_path
+			&& !cmdline_opts.print_data_path
+			&& !cmdline_opts.print_userdata_path
+			&& !cmdline_opts.print_usercache_path
 			&& !cmdline_opts.report
 			&& !cmdline_opts.do_diff
 			&& !cmdline_opts.do_patch
@@ -423,13 +423,13 @@ static int process_command_args(commandline_options& cmdline_opts)
 		PLAIN_LOG << "Started on " << chrono::format_local_timestamp(now, "%a %b %d %T %Y") << '\n';
 	}
 
-	if(cmdline_opts.usercache_path) {
-		std::cout << filesystem::get_cache_dir();
+	if(cmdline_opts.print_usercache_path) {
+		std::cout << filesystem::get_cache_dir() << std::endl;
 		return 0;
 	}
 
-	if(cmdline_opts.userdata_path) {
-		std::cout << filesystem::get_user_data_dir();
+	if(cmdline_opts.print_userdata_path) {
+		std::cout << filesystem::get_user_data_dir() << std::endl;
 		return 0;
 	}
 
@@ -469,8 +469,8 @@ static int process_command_args(commandline_options& cmdline_opts)
 		return 1;
 	}
 
-	if(cmdline_opts.data_path) {
-		std::cout << game_config::path;
+	if(cmdline_opts.print_data_path) {
+		std::cout << game_config::path << std::endl;
 		return 0;
 	}
 

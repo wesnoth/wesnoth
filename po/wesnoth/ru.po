@@ -3,19 +3,20 @@
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # Translators:
 # Automatically generated, 2004.
-# Azamat H. Hackimov <azamat.hackimov@gmail.com>, 2006, 2007.
-# Alexandr Menovchicov (VaM) - orders@kypi.ru
-# Sergey Khlutchin (Khlut) - Sergey.Khlutchin@gmail.com
+# Azamat H. Hackimov <azamat.hackimov@gmail.com>, 2006-2007.
+# Alexandr Menovchicov (VaM) - orders@kypi.ru.
+# Sergey Khlutchin (Khlut) - Sergey.Khlutchin@gmail.com.
 # O_o <mm-94@mail.ru>, 2010.
-# Fedor Khodkov, 2014
+# Fedor Khodkov, 2014.
 # Artem Khrapov (kabachuha) <artemkhrapov2001@yandex.ru>, 2020-2024.
+# Alexandr Obolonkin (Alexinor) <obolonkin@proton.me>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-05-18 21:15-0500\n"
-"PO-Revision-Date: 2026-06-12 13:24+0500\n"
-"Last-Translator: Artem Khrapov <artemkhrapov2001@yandex.ru>\n"
+"POT-Creation-Date: 2026-06-22 22:16-0500\n"
+"PO-Revision-Date: 2026-06-23 18:52+0500\n"
+"Last-Translator: Alexandr Obolonkin (Alexinor) <obolonkin@proton.me>\n"
 "Language-Team: https://wiki.wesnoth.org/RussianTranslation\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -292,7 +293,7 @@ msgid "poisoned"
 msgstr "отравлен"
 
 #. [effect]: type=fire
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:492
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:491
 #: data/core/macros/items.cfg:559
 msgid "storm trident"
 msgstr "штормовой трезубец"
@@ -318,43 +319,43 @@ msgid "Close"
 msgstr "Закрыть"
 
 #. [language]
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:76
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:75
 #: data/english.cfg:31
 msgid "blade"
 msgstr "режущий"
 
 #. [language]
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:79
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:78
 #: data/english.cfg:34
 msgid "fire"
 msgstr "огонь"
 
 #. [language]
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:82
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:81
 #: data/english.cfg:35
 msgid "cold"
 msgstr "холод"
 
 #. [language]
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:85
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:84
 #: data/english.cfg:32
 msgid "pierce"
 msgstr "колющий"
 
 #. [language]
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:88
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:87
 #: data/english.cfg:33
 msgid "impact"
 msgstr "крушащий"
 
 #. [language]
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:91
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:90
 #: data/english.cfg:27
 msgid "melee"
 msgstr "ближний"
 
 #. [language]
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:94
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:93
 #: data/english.cfg:28
 msgid "ranged"
 msgstr "дальний"
@@ -1711,24 +1712,63 @@ msgstr ""
 "_current_settings.currently_doing_special_description"
 
 #. [else]
-#: data/core/macros/deprecated-utils.cfg:35
+#: data/core/macros/deprecated-utils.cfg:34
 msgid "This unit has been renamed to: "
 msgstr "Этот боец переименован в: "
 
+#. [lua]: generate_objectives
+#: data/core/macros/deprecated-utils.cfg:51 data/lua/wml/objectives.lua:106
+msgid "Early finish bonus."
+msgstr "Бонус за быстрый финиш."
+
+#. [lua]: generate_objectives
+#: data/core/macros/deprecated-utils.cfg:55 data/lua/wml/objectives.lua:109
+msgid "No early finish bonus."
+msgstr "Нет бонуса за быстрый финиш."
+
+#. [lua]: generate_objectives
+#: data/core/macros/deprecated-utils.cfg:59 data/lua/wml/objectives.lua:117
+msgid "No gold carried over to the next scenario."
+msgstr "Золото не переносится в следующий сценарий."
+
+#: data/core/macros/deprecated-utils.cfg:63
+msgid ""
+"\n"
+"100% of finishing gold carried over to the next scenario."
+msgstr ""
+"\n"
+"100% золота переносится в следующий сценарий."
+
+#: data/core/macros/deprecated-utils.cfg:68
+msgid ""
+"\n"
+"40% of finishing gold carried over to the next scenario."
+msgstr ""
+"\n"
+"40% золота переносится в следующий сценарий."
+
+#: data/core/macros/deprecated-utils.cfg:73
+msgid ""
+"\n"
+"20% of finishing gold carried over to the next scenario."
+msgstr ""
+"\n"
+"20% золота переносится в следующий сценарий."
+
 #. [chance_to_hit]: id=deflect
-#: data/core/macros/deprecated-utils.cfg:124
+#: data/core/macros/deprecated-utils.cfg:284
 msgid "deflect"
 msgstr "отразить"
 
 #. [chance_to_hit]: id=deflect
-#: data/core/macros/deprecated-utils.cfg:125
+#: data/core/macros/deprecated-utils.cfg:285
 msgid ""
 "When used defensively, this attack reduces the opponent’s chance to hit by "
 "10%."
 msgstr "В обороне эта атака снижает вероятность попадания противника на 10%."
 
 #. [chance_to_hit]: id=deflect
-#: data/core/macros/deprecated-utils.cfg:126
+#: data/core/macros/deprecated-utils.cfg:286
 msgid ""
 "This unit’s defensive techniques reduce the chance of a successful enemy "
 "attack."
@@ -1737,12 +1777,12 @@ msgstr ""
 "противника."
 
 #. [damage]: id=absorb
-#: data/core/macros/deprecated-utils.cfg:139
+#: data/core/macros/deprecated-utils.cfg:299
 msgid "absorb"
 msgstr "поглотить"
 
 #. [damage]: id=absorb
-#: data/core/macros/deprecated-utils.cfg:140
+#: data/core/macros/deprecated-utils.cfg:300
 msgid ""
 "This attack puts the unit in good defensive position, and it absorbs some of "
 "the damage dealt by an enemy strike."
@@ -1751,7 +1791,7 @@ msgstr ""
 "поглощает часть урона, нанесённого вражеским ударом."
 
 #. [damage]: id=absorb
-#: data/core/macros/deprecated-utils.cfg:141
+#: data/core/macros/deprecated-utils.cfg:301
 msgid ""
 "This unit can block enemy strikes, so that it takes reduced damage when hit."
 msgstr ""
@@ -2890,13 +2930,6 @@ msgstr "Бал,Кам,Корн,Дел,Еарл,Ел,Фокс,Френ,Гел,Х�
 
 #. Generator for the base names of features assigned by the random map generator; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
 #: data/core/macros/names.cfg:291
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "main={prefix}{middle}{suffix}\n"
-#| "prefix=B|C|D|E|F|Fr|Wat|G|H|K|N|O|R|S|T|W|Y|Ro\n"
-#| "middle=a|e|o|u|i\n"
-#| "suffix=l|m|rn|x|w|ld|ck|k|rk\n"
 msgid ""
 "\n"
 "main={c_prefix}{c_middle}{suffix}|{f_prefix}{f_middle}{suffix}|{other_prefix}"
@@ -2910,9 +2943,14 @@ msgid ""
 "suffix=l|m|rn|x|w|ld|ck|k|rk\n"
 msgstr ""
 "\n"
-"main={prefix}{middle}{suffix}\n"
-"prefix=Б|Ц|Д|Е|Ф|Фр|Ват|Г|Х|К|Н|О|Р|С|Т|В|И|Ро\n"
-"middle=а|е|о|у|и\n"
+"main={c_prefix}{c_middle}{suffix}|{f_prefix}{f_middle}{suffix}|{other_prefix}"
+"{middle}{suffix}\n"
+"c_prefix=Ц\n"
+"c_middle=а|е|о|и\n"
+"f_prefix=Ф\n"
+"f_middle=а|е|о|и\n"
+"other_prefix=Б|Д|Е|Фр|Ват|Г|Х|К|Н|О|Р|С|Т|В|И|Ро\n"
+"middle=а|е|о|и|у\n"
 "suffix=л|м|рн|кс|в|лд|кк|к|рк\n"
 
 #. [objective]: condition=lose
@@ -3122,7 +3160,7 @@ msgid "Weight of Revenge"
 msgstr "Тяжесть мести"
 
 #. [message]: speaker=narrator
-#: data/core/macros/utils.cfg:664
+#: data/core/macros/utils.cfg:662
 msgid "You retrieve $amount_gold pieces of gold."
 msgstr "Вы получили $amount_gold золотых монет."
 
@@ -3932,22 +3970,17 @@ msgid_plural ""
 "You will start the next scenario with $gold on top of the defined minimum "
 "starting gold."
 msgstr[0] ""
-"Вы начнёте следующий сценарий с $gold золота, или с заданным для этого "
-"сценария минимумом."
+"Вы начнёте следующий сценарий с $gold единицей золота, или с заданным для "
+"этого сценария минимумом."
 msgstr[1] ""
-"Вы начнёте следующий сценарий с $gold золота, или с заданным для этого "
-"сценария минимумом."
+"Вы начнёте следующий сценарий с $gold единицами золота, или с заданным для "
+"этого сценария минимумом."
 msgstr[2] ""
-"Вы начнёте следующий сценарий с $gold золота, или с заданным для этого "
-"сценария минимумом."
+"Вы начнёте следующий сценарий с $gold единицами золота, или с заданным для "
+"этого сценария минимумом."
 
 #. [lua]: carryover.carryover_mesage
 #: data/lua/carryover_gold.lua:179
-#, fuzzy
-#| msgid ""
-#| "You will start the next scenario with the defined minimum starting gold."
-#| msgid_plural ""
-#| "You will start the next scenario with the defined minimum starting gold."
 msgid ""
 "You will start the next scenario with the defined minimum starting gold."
 msgstr "Вы начнёте следующий сценарий с заданным для него минимумом золота."
@@ -4029,7 +4062,7 @@ msgstr "неизлечим"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
-#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:3755
+#: data/lua/wml/message.lua:442 src/scripting/game_lua_kernel.cpp:3755
 #: src/scripting/game_lua_kernel.cpp:3790
 msgid "input"
 msgstr "ввод"
@@ -4052,21 +4085,6 @@ msgid_plural "($remaining_turns turns left)"
 msgstr[0] "(остался $remaining_turns ход)"
 msgstr[1] "(осталось $remaining_turns хода)"
 msgstr[2] "(осталось $remaining_turns ходов)"
-
-#. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:106
-msgid "Early finish bonus."
-msgstr "Бонус за быстрый финиш."
-
-#. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:109
-msgid "No early finish bonus."
-msgstr "Нет бонуса за быстрый финиш."
-
-#. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:117
-msgid "No gold carried over to the next scenario."
-msgstr "Золото не переносится в следующий сценарий."
 
 #. [lua]: generate_objectives
 #: data/lua/wml/objectives.lua:119
@@ -5288,9 +5306,9 @@ msgstr "Телепорт не удался. Пункт назначения не
 #: src/actions/move.cpp:1297
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
-msgstr[0] "$friends дружественный, "
-msgstr[1] "$friends дружественных, "
-msgstr[2] "$friends дружественных, "
+msgstr[0] "$friends дружественный"
+msgstr[1] "$friends дружественных"
+msgstr[2] "$friends дружественных"
 
 #. TRANSLATORS: This becomes the "enemyphrase" in "Units sighted! ($friendphrase, $enemyphrase)"
 #: src/actions/move.cpp:1299
@@ -5827,10 +5845,6 @@ msgstr ""
 "Информация об издании аддона содержит неверную последовательность UTF-8."
 
 #: src/addon/validation.cpp:506
-#, fuzzy
-#| msgid ""
-#| "The add-on's forum_auth attribute does not match what was previously "
-#| "uploaded."
 msgid ""
 "The add-on’s forum_auth attribute does not match what was previously "
 "uploaded."
@@ -6087,7 +6101,7 @@ msgid "Chat message"
 msgstr "Сообщение в чате"
 
 # ?
-#: src/desktop/windows_tray_notification.cpp:126 src/game_config.cpp:588
+#: src/desktop/windows_tray_notification.cpp:137 src/game_config.cpp:588
 msgid "The Battle for Wesnoth"
 msgstr "Битва за Веснот"
 
@@ -6133,50 +6147,50 @@ msgstr "%b %d %Y"
 msgid "timespan^$num year"
 msgid_plural "timespan^$num years"
 msgstr[0] "$num год"
-msgstr[1] "$num лет"
-msgstr[2] ""
+msgstr[1] "$num года"
+msgstr[2] "$num лет"
 
 #: src/formula/format_timespan.hpp:39
 msgid "timespan^$num month"
 msgid_plural "timespan^$num months"
 msgstr[0] "$num месяц"
-msgstr[1] "$num месяцев"
-msgstr[2] ""
+msgstr[1] "$num месяца"
+msgstr[2] "$num месяцев"
 
 #: src/formula/format_timespan.hpp:40
 msgid "timespan^$num week"
 msgid_plural "timespan^$num weeks"
 msgstr[0] "$num неделя"
 msgstr[1] "$num недели"
-msgstr[2] ""
+msgstr[2] "$num недель"
 
 #: src/formula/format_timespan.hpp:41
 msgid "timespan^$num day"
 msgid_plural "timespan^$num days"
 msgstr[0] "$num день"
-msgstr[1] "$num дней"
-msgstr[2] ""
+msgstr[1] "$num дня"
+msgstr[2] "$num дней"
 
 #: src/formula/format_timespan.hpp:42
 msgid "timespan^$num hour"
 msgid_plural "timespan^$num hours"
 msgstr[0] "$num час"
-msgstr[1] "$num часов"
-msgstr[2] ""
+msgstr[1] "$num часа"
+msgstr[2] "$num часов"
 
 #: src/formula/format_timespan.hpp:43
 msgid "timespan^$num minute"
 msgid_plural "timespan^$num minutes"
 msgstr[0] "$num минута"
-msgstr[1] "$num минут"
-msgstr[2] ""
+msgstr[1] "$num минуты"
+msgstr[2] "$num минут"
 
 #: src/formula/format_timespan.hpp:44
 msgid "timespan^$num second"
 msgid_plural "timespan^$num seconds"
 msgstr[0] "$num секунда"
-msgstr[1] "$num секунд"
-msgstr[2] ""
+msgstr[1] "$num секунды"
+msgstr[2] "$num секунд"
 
 #: src/formula/format_timespan.hpp:89 src/formula/format_timespan.hpp:112
 msgid "timespan^expired"
@@ -6230,10 +6244,8 @@ msgid "Falling back to the default core."
 msgstr "Возврат к ядру по умолчанию."
 
 #: src/game_config_manager.cpp:302
-#, fuzzy
-#| msgid "Can't locate the default core."
 msgid "Can’t locate the default core."
-msgstr "Не удается найти ядро по умолчанию."
+msgstr "Не удаётся найти ядро по умолчанию."
 
 #: src/game_config_manager.cpp:303
 msgid "The game will now exit."
@@ -6299,7 +6311,7 @@ msgstr[2] ""
 "Пожалуйста, сообщите об этом авторам или координаторам соответствующих "
 "аддонов."
 
-#: src/game_events/pump.cpp:389 src/game_launcher.cpp:957
+#: src/game_events/pump.cpp:389 src/game_launcher.cpp:950
 msgid "Error: "
 msgstr "Ошибка: "
 
@@ -6366,8 +6378,6 @@ msgid "Custom map."
 msgstr "Пользовательская карта."
 
 #: src/game_initialization/create_engine.cpp:412
-#, fuzzy
-#| msgid "Multiplayer"
 msgid "multiplayer^MP"
 msgstr "Сетевая игра"
 
@@ -6380,8 +6390,6 @@ msgid "OK"
 msgstr "OK"
 
 #: src/game_initialization/depcheck.cpp:529
-#, fuzzy
-#| msgid "Scenario can't be activated. Some dependencies are missing: "
 msgid "Scenario can’t be activated. Some dependencies are missing: "
 msgstr "Сценарий нельзя активировать. Не хватает некоторых зависимостей: "
 
@@ -6391,8 +6399,6 @@ msgid "No compatible eras found."
 msgstr "Совместимых эр не найдено."
 
 #: src/game_initialization/depcheck.cpp:598
-#, fuzzy
-#| msgid "Era can't be activated. Some dependencies are missing: "
 msgid "Era can’t be activated. Some dependencies are missing: "
 msgstr "Эру нельзя активировать. Не хватает некоторых зависимостей: "
 
@@ -6503,8 +6509,6 @@ msgid "Defeat enemy leader(s)"
 msgstr "Убейте лидера(ов) противника"
 
 #: src/game_initialization/mp_game_utils.cpp:102
-#, fuzzy
-#| msgid "Cannot find era '$era'"
 msgid "Cannot find era ‘$era’"
 msgstr "Эра «$era» не найдена"
 
@@ -6513,10 +6517,6 @@ msgid "Invalid address specified for multiplayer server"
 msgstr "Указан неверный адрес сервера игры мультиплеера"
 
 #: src/game_initialization/multiplayer.cpp:289
-#, fuzzy
-#| msgid ""
-#| "The server accepts versions '$required_version', but you are using "
-#| "version '$your_version'"
 msgid ""
 "The server accepts versions ‘$required_version’, but you are using version "
 "‘$your_version’"
@@ -6584,16 +6584,12 @@ msgid " This server disallows unregistered nicknames."
 msgstr " Этот сервер не разрешает использовать незарегистрированные ники."
 
 #: src/game_initialization/multiplayer.cpp:437
-#, fuzzy
-#| msgid "Your IP address is banned on this server’s forums for $duration|."
 msgid "Your IP address is banned on this server for $duration|."
-msgstr "Ваш IP-адрес забанен на форумах этого сервера на $duration|."
+msgstr "Ваш IP-адрес забанен на этом сервере на $duration|."
 
 #: src/game_initialization/multiplayer.cpp:439
-#, fuzzy
-#| msgid "Your IP address is banned on this server’s forums."
 msgid "Your IP address is banned on this server."
-msgstr "Ваш IP-адрес забанен на форумах этого сервера."
+msgstr "Ваш IP-адрес забанен на этом сервере."
 
 #: src/game_initialization/multiplayer.cpp:443
 msgid "The nickname ‘$nick’ is banned on this server’s forums for $duration|."
@@ -6651,20 +6647,20 @@ msgstr "Вы пытались войти слишком много раз."
 msgid "Password hashing failed."
 msgstr "Не удалось хешировать пароль."
 
-#: src/game_initialization/playcampaign.cpp:150 src/game_launcher.cpp:910
+#: src/game_initialization/playcampaign.cpp:150 src/game_launcher.cpp:903
 msgid "The game could not be loaded: "
 msgstr "Игра не может быть загружена: "
 
-#: src/game_initialization/playcampaign.cpp:156 src/game_launcher.cpp:912
+#: src/game_initialization/playcampaign.cpp:156 src/game_launcher.cpp:905
 msgid "Error while playing the game: "
 msgstr "Возникла ошибка во время игры: "
 
-#: src/game_initialization/playcampaign.cpp:159 src/game_launcher.cpp:949
+#: src/game_initialization/playcampaign.cpp:159 src/game_launcher.cpp:942
 msgid "The game map could not be loaded: "
 msgstr "Игровая карта не может быть загружена: "
 
-#: src/game_initialization/playcampaign.cpp:162 src/game_launcher.cpp:914
-#: src/game_launcher.cpp:1035
+#: src/game_initialization/playcampaign.cpp:162 src/game_launcher.cpp:907
+#: src/game_launcher.cpp:1028
 msgid "Map generator error: "
 msgstr "Ошибка генератора карт:"
 
@@ -6682,57 +6678,49 @@ msgid "This scenario has ended. Do you want to continue the campaign?"
 msgstr "Сценарий завершён. Вы хотите продолжить кампанию?"
 
 #: src/game_initialization/playcampaign.cpp:279
-#, fuzzy
-#| msgid "Unknown scenario: '$scenario|'"
 msgid "Unknown scenario: ‘$scenario|’"
-msgstr "Неизвестный сценарий:  '$scenario|'"
+msgstr "Неизвестный сценарий: '$scenario|'"
 
 #: src/game_initialization/singleplayer.cpp:43
 msgid "No campaigns are available."
 msgstr "Нет доступных кампаний."
 
-#: src/game_launcher.cpp:692 src/game_launcher.cpp:711
+#: src/game_launcher.cpp:685 src/game_launcher.cpp:704
 #: src/hotkey/hotkey_handler_sp.cpp:324 src/replay.cpp:662 src/savegame.cpp:167
 msgid "The file you have tried to load is corrupt"
 msgstr "Файл, который Вы пытались загрузить, поврежден"
 
-#: src/game_launcher.cpp:694 src/game_launcher.cpp:713
+#: src/game_launcher.cpp:687 src/game_launcher.cpp:706
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Загружаемый файл поврежден: '"
 
-#: src/game_launcher.cpp:703
+#: src/game_launcher.cpp:696
 msgid "File I/O Error while reading the game"
 msgstr "Ошибка ввода/вывода при чтении файла с игрой"
 
-#: src/game_launcher.cpp:705
+#: src/game_launcher.cpp:698
 msgid "File I/O Error while reading the game: '"
 msgstr "Ошибка ввода/вывода при чтении файла с игрой: '"
 
-#: src/game_launcher.cpp:908
+#: src/game_launcher.cpp:901
 msgid "Error while starting server: "
 msgstr "Ошибка при запуске сервера: "
 
-#: src/game_launcher.cpp:930
+#: src/game_launcher.cpp:923
 msgid "Connection failed: "
 msgstr "Подключение не удалось: "
 
 #: src/generators/default_map_generator_job.cpp:708
-#, fuzzy
-#| msgid "Random maps with an odd width aren't supported."
 msgid "Random maps with an odd width aren’t supported."
 msgstr "Случайные карты с нечётной шириной не поддерживаются."
 
 #: src/generators/default_map_generator_job.cpp:965
-#, fuzzy
-#| msgid ""
-#| "No valid castle location found. Too many or too few mountain hexes? "
-#| "(please check the 'max hill size' parameter)"
 msgid ""
 "No valid castle location found. Too many or too few mountain hexes? (please "
 "check the ‘max hill size’ parameter)"
 msgstr ""
 "Не найдено допустимое расположение замка. Слишком много, или слишком мало "
-"гор? (проверьте параметр «максимальный размер холма»)"
+"гор? (проверьте параметр «максимальный размер холмов»)"
 
 #: src/gui/core/linked_group_definition.cpp:40
 msgid "Linked group '$id' needs a 'fixed_width' or 'fixed_height' key."
@@ -6898,16 +6886,12 @@ msgid "Schedule"
 msgstr "Расписание"
 
 #: src/help/help_impl.cpp:427
-#, fuzzy
-#| msgid "<header>text='Units with this special attack'</header>"
 msgid "Units with this special attack"
-msgstr "<header>text='Бойцы с этой особой атакой'</header>"
+msgstr "Бойцы с этой особой атакой"
 
 #: src/help/help_impl.cpp:482
-#, fuzzy
-#| msgid "<header>text='Units with this ability'</header>"
 msgid "Units with this ability"
-msgstr "<header>text='Бойцы с этой способностью'</header>"
+msgstr "Бойцы с этой способностью"
 
 #: src/help/help_impl.cpp:518
 msgid "Factions"
@@ -7041,8 +7025,6 @@ msgid "Planning mode deactivated!"
 msgstr "Режим планирования отключён!"
 
 #: src/hotkey/hotkey_handler_sp.cpp:342
-#, fuzzy
-#| msgid "The file you have tried to load has no replay information. "
 msgid "The file you have tried to load has no replay information."
 msgstr "Выбранный файл не содержит информации, необходимой для повтора. "
 
@@ -7050,7 +7032,7 @@ msgstr "Выбранный файл не содержит информации, 
 msgid "The file you have tried to load is not from the current session."
 msgstr "Выбранный файл не относится к текущей сессии."
 
-#: src/language.cpp:101
+#: src/language.cpp:115
 msgid "System default language"
 msgstr "Язык системы по умолчанию"
 
@@ -7083,10 +7065,6 @@ msgid "This command is currently unavailable."
 msgstr "Команда недоступна."
 
 #: src/map_command_handler.hpp:227
-#, fuzzy
-#| msgid ""
-#| "Unknown command '$command', did you mean '$command_proposal'? try "
-#| "$help_command for a list of available commands."
 msgid ""
 "Unknown command ‘$command’, did you mean ‘$command_proposal’? try "
 "$help_command for a list of available commands."
@@ -7095,10 +7073,6 @@ msgstr ""
 "Чтобы получить список доступных команд, введите $help_command."
 
 #: src/map_command_handler.hpp:231
-#, fuzzy
-#| msgid ""
-#| "Unknown command '$command', try $help_command for a list of available "
-#| "commands."
 msgid ""
 "Unknown command ‘$command’, try $help_command for a list of available "
 "commands."
@@ -7371,16 +7345,12 @@ msgid "Display and log fps (Frames Per Second)."
 msgstr "Показывать и записывать FPS (кадров в секунду)."
 
 #: src/menu_events.cpp:1271
-#, fuzzy
-#| msgid ""
-#| "Similar to the 'fps' command, but also forces everything to redraw "
-#| "instead of only things that have changed."
 msgid ""
 "Similar to the ‘fps’ command, but also forces everything to redraw instead "
 "of only things that have changed."
 msgstr ""
-"Схоже с командой «fps», но кроме того вызывает перерисовку всего, а не "
-"только изменившихся сущностей."
+"Схоже с командой «fps», но вызывает перерисовку всего, а не только "
+"изменившихся сущностей."
 
 #: src/menu_events.cpp:1272
 msgid "Save game."
@@ -7408,7 +7378,6 @@ msgstr "<id>"
 
 #: src/menu_events.cpp:1282
 #, fuzzy
-#| msgid "Advance to the next scenario, or scenario identified by 'id'"
 msgid "Advance to the next scenario, or scenario identified by ‘id’"
 msgstr "Перейти к следующему сценарию, или сценарию 'id'"
 
@@ -7509,8 +7478,6 @@ msgid "Discover all units in help."
 msgstr "Раскрыть всех бойцов в справке."
 
 #: src/menu_events.cpp:1318
-#, fuzzy
-#| msgid "'Undiscover' all units in help."
 msgid "‘Undiscover’ all units in help."
 msgstr "Скрыть всех бойцов в справке."
 
@@ -7780,11 +7747,10 @@ msgstr "Команда:"
 
 #: src/menu_events.cpp:2160
 #, fuzzy
-#| msgid "prompt^Command:"
 msgid "prompt^Formula:"
-msgstr "Команда:"
+msgstr "Формула:"
 
-#: src/mouse_events.cpp:1307
+#: src/mouse_events.cpp:1317
 msgid ""
 "You cannot move your leader away from the keep with some planned recruits or "
 "recalls left."
@@ -7792,35 +7758,35 @@ msgstr ""
 "Вы не можете убрать лидера из цитадели до тех пор, пока у Вас остаются "
 "запланированные бойцы для вербовки или призыва."
 
-#: src/mouse_events.cpp:1410
+#: src/mouse_events.cpp:1420
 msgid "No Attacks"
 msgstr "Атаки отсутствуют"
 
-#: src/mouse_events.cpp:1410
+#: src/mouse_events.cpp:1420
 msgid "This unit has no usable weapons."
 msgstr "Этот боец нет имеет оружия."
 
-#: src/mouse_events.cpp:1486 src/mouse_events.cpp:1502
+#: src/mouse_events.cpp:1496 src/mouse_events.cpp:1512
 msgid "Other aspects: "
 msgstr "Прочее: "
 
-#: src/mouse_events.cpp:1515 src/mouse_events.cpp:1529
+#: src/mouse_events.cpp:1525 src/mouse_events.cpp:1539
 msgid "Weapon: "
 msgstr "Оружие: "
 
-#: src/mouse_events.cpp:1516 src/mouse_events.cpp:1530
+#: src/mouse_events.cpp:1526 src/mouse_events.cpp:1540
 msgid "Type: "
 msgstr "Тип: "
 
-#: src/mouse_events.cpp:1517 src/mouse_events.cpp:1531
+#: src/mouse_events.cpp:1527 src/mouse_events.cpp:1541
 msgid "Damage: "
 msgstr "Урон: "
 
-#: src/mouse_events.cpp:1518 src/mouse_events.cpp:1532
+#: src/mouse_events.cpp:1528 src/mouse_events.cpp:1542
 msgid "Attacks: "
 msgstr "Атак: "
 
-#: src/mouse_events.cpp:1519 src/mouse_events.cpp:1533
+#: src/mouse_events.cpp:1529 src/mouse_events.cpp:1543
 msgid "Chance to hit: "
 msgstr "Точность: "
 
@@ -8317,9 +8283,9 @@ msgstr[2] "использует $num атак"
 #: src/reports.cpp:1010
 msgid "This attack uses $num attack point"
 msgid_plural "This attack uses $num attack points"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Эта атака использует $num атаку"
+msgstr[1] "Эта атака использует $num атаки"
+msgstr[2] "Эта атака использует $num атак"
 
 #: src/reports.cpp:1048 src/reports.cpp:1088
 msgid "Weapon special:"
@@ -8821,21 +8787,21 @@ msgstr "Время суток-заглушка"
 msgid "This Time of Day is only a Stub!"
 msgstr "Это время суток - всего лишь заглушка!"
 
-#: src/units/abilities.cpp:1141
+#: src/units/abilities.cpp:1161
 msgid "Owned: "
 msgstr "Принадлежит: "
 
 #. TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
-#: src/units/abilities.cpp:1143
+#: src/units/abilities.cpp:1163
 msgid "Taught: "
 msgstr "Наставляемый: "
 
 #. TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
-#: src/units/abilities.cpp:1145
+#: src/units/abilities.cpp:1165
 msgid "Taught: (by an enemy): "
 msgstr "Наставляемый: (врагом): "
 
-#: src/units/abilities.cpp:1146
+#: src/units/abilities.cpp:1166
 msgid "Used by opponent: "
 msgstr "Оппонент использует: "
 
@@ -9084,7 +9050,7 @@ msgstr "$year ДП"
 msgid "$year AF"
 msgstr "$year ПП"
 
-#: src/wesnoth.cpp:811
+#: src/wesnoth.cpp:804
 msgid ""
 "Unable to create log files in directory $logdir. This is often caused by "
 "incorrect folder permissions, anti-virus software restricting folder access, "
@@ -9095,7 +9061,7 @@ msgstr ""
 "директориям; или использованием облачных хранилищ — таких как OneDrive или "
 "Яндекс.Диск — синхронизированных с папкой \"Мои Документы\"."
 
-#: src/wesnoth.cpp:812
+#: src/wesnoth.cpp:805
 msgid "Logging Failure"
 msgstr "Ошибка записи логов"
 
@@ -9122,27 +9088,6 @@ msgstr "Скрыть план $player"
 #: src/whiteboard/manager.cpp:1140
 msgid "Whiteboard Options"
 msgstr "Настройки планировщика"
-
-#~ msgid ""
-#~ "\n"
-#~ "100% of finishing gold carried over to the next scenario."
-#~ msgstr ""
-#~ "\n"
-#~ "100% золота переносится в следующий сценарий."
-
-#~ msgid ""
-#~ "\n"
-#~ "40% of finishing gold carried over to the next scenario."
-#~ msgstr ""
-#~ "\n"
-#~ "40% золота переносится в следующий сценарий."
-
-#~ msgid ""
-#~ "\n"
-#~ "20% of finishing gold carried over to the next scenario."
-#~ msgstr ""
-#~ "\n"
-#~ "20% золота переносится в следующий сценарий."
 
 #, fuzzy
 #~| msgid "Bare Branch"

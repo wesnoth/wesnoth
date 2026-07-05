@@ -32,6 +32,8 @@
 #include "sound.hpp"
 #include "variable.hpp"
 
+#include <SDL3/SDL_timer.h>
+
 namespace gui2::dialogs
 {
 

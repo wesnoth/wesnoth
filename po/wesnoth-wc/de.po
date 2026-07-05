@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-05-19 02:15 UTC\n"
-"PO-Revision-Date: 2024-12-03 15:26+0100\n"
+"POT-Creation-Date: 2026-06-23 03:16 UTC\n"
+"PO-Revision-Date: 2026-06-22 12:40+0200\n"
 "Last-Translator: Wuzzy <Wuzzy@disroot.org>\n"
 "Language-Team: German <irc://irc.libera.chat/#wesnoth-de>\n"
 "Language: de\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.9\n"
 
 #. [era]: id=world_conquest_era
 #: data/campaigns/World_Conquest/_main.cfg:41
@@ -68,7 +68,7 @@ msgstr "episch"
 #. [trait]: id=epic
 #: data/campaigns/World_Conquest/era/campaign/heroes.cfg:114
 msgid "Always AMLA with 60 XP and raises maximum health by 6 HP."
-msgstr "Immer AMLA bei 60XP und Maximalgesundheit +6HP."
+msgstr "Immer AMLA bei 60 EP und Maximalgesundheit +6 LP."
 
 #. [advancement]: id=amla_default
 #: data/campaigns/World_Conquest/era/campaign/heroes.cfg:150
@@ -320,81 +320,63 @@ msgstr "Nein"
 
 #. [label]: id=title
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:48
-#, fuzzy
-#| msgid "Map Settings"
 msgid "Map Generator Settings"
-msgstr "Karteneinstellungen"
+msgstr "Kartengenerator-Einstellungen"
 
 #. [grid]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:57
-#, fuzzy
-#| msgid " players: "
 msgid "Players:"
-msgstr " Spieler: "
+msgstr "Spieler:"
 
 #. [grid]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:58
-#, fuzzy
-#| msgid "Scenario"
 msgid "Scenario:"
-msgstr "Szenario"
+msgstr "Szenario:"
 
 #. [grid]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:59
 msgid "Map:"
-msgstr ""
+msgstr "Karte:"
 
 #. [grid]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:60
 msgid "Map Size:"
-msgstr ""
+msgstr "Kartengröße:"
 
 #. [grid]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:61
-#, fuzzy
-#| msgid "village density"
 msgid "Village Density:"
-msgstr "Dorfdichte"
+msgstr "Dorfdichte:"
 
 #. [grid]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:62
-#, fuzzy
-#| msgid "keep size"
 msgid "Keep Size:"
-msgstr "Burggröße"
+msgstr "Burggröße:"
 
 #. [grid]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:63
-#, fuzzy
-#| msgid "iterations"
 msgid "Iterations:"
-msgstr "Durchläufe"
+msgstr "Durchläufe:"
 
 #. [grid]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:64
-#, fuzzy
-#| msgid "terrain factor"
 msgid "Terrain Factor:"
-msgstr "Geländefaktor"
+msgstr "Geländefaktor:"
 
 #. [grid]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:65
-#, fuzzy
-#| msgid "island factor"
 msgid "Island Factor:"
-msgstr "Inselfaktor"
+msgstr "Inselfaktor:"
 
 #. [grid]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:66
-#, fuzzy
-#| msgid "number of keeps"
 msgid "Number of Keeps:"
-msgstr "Anzahl Burgfriede"
+msgstr "Anzahl Burgfriede:"
 
 #. [button]: id=ok
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:76
 msgid "Close"
-msgstr ""
+msgstr "Schließen"
 
 #: data/campaigns/World_Conquest/lua/campaign/enemy_themed.lua:5
 msgid "$name|’s pet"
@@ -420,7 +402,7 @@ msgstr ""
 #. [lua]: carryover.remaining_gold_message
 #: data/campaigns/World_Conquest/lua/campaign/scenario.lua:87
 msgid "Average remaining gold: "
-msgstr ""
+msgstr "Durchschnittlich verbleibendes Gold:"
 
 #: data/campaigns/World_Conquest/lua/era/era.lua:12
 msgid "Tell me how my recruit works"
@@ -437,7 +419,7 @@ msgstr ""
 #. [lua]: wesnoth.wml_actions.wc2_recruit_info
 #: data/campaigns/World_Conquest/lua/era/era.lua:319
 msgid "You are not using a WC2 faction."
-msgstr "Ihr verwendet keine WC2 Fraktion."
+msgstr "Ihr verwendet keine WE2 Fraktion."
 
 #. [lua]: artifacts.give_item
 #: data/campaigns/World_Conquest/lua/game_mechanics/artifacts.lua:156
@@ -2677,10 +2659,8 @@ msgstr "Start"
 
 #. [lua]: wc_ii_generate_scenario
 #: data/campaigns/World_Conquest/lua/map/main.lua:127
-#, fuzzy
-#| msgid "Scenario"
 msgid "Scenario "
-msgstr "Szenario"
+msgstr "Szenario "
 
 #. [lua]: wc_ii_generate_scenario
 #: data/campaigns/World_Conquest/lua/map/main.lua:129
@@ -2973,7 +2953,7 @@ msgstr "Die ganze Welt gehört jetzt uns!"
 #. [lua]: end_message
 #: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:95
 msgid "It was hard, but I almost regret the fun is over."
-msgstr "Es war schwer, aber ich vermisse fast dass es vorbei ist."
+msgstr "Es war schwer, aber ich bin fast traurig, dass der Spaß vorbei ist."
 
 #. [lua]: end_message
 #: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:99
@@ -3204,8 +3184,6 @@ msgstr "Schutzfeld"
 
 #. [leadership]: id=forcefield
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:250
-#, fuzzy
-#| msgid "forcefield"
 msgid "female^forcefield"
 msgstr "Schutzfeld"
 
@@ -3326,7 +3304,7 @@ msgstr "Medizinische Kräuter"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:420
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:5
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:4
 msgid "heals +8, cures"
 msgstr "heilt +8, kuriert"
 
@@ -3509,10 +3487,8 @@ msgstr "Raserei"
 
 #. [berserk]: id=wct_fury
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:625
-#, fuzzy
-#| msgid "female^heroic"
 msgid "female^fury"
-msgstr "heldenhaft"
+msgstr "Raserei"
 
 #. [berserk]: id=wct_fury
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:626
@@ -3572,8 +3548,6 @@ msgstr "Verdunkelung"
 
 #. [illuminates]: id=darkness
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:675
-#, fuzzy
-#| msgid "darkness"
 msgid "female^darkness"
 msgstr "Verdunkelung"
 
@@ -3596,8 +3570,6 @@ msgstr "Korruption"
 
 #. [dummy]: id=wc2_corruption
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:682
-#, fuzzy
-#| msgid "corruption"
 msgid "female^corruption"
 msgstr "Korruption"
 
@@ -3698,10 +3670,8 @@ msgstr "Banner"
 
 #. [leadership]: id=banner
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:785
-#, fuzzy
-#| msgid "female^trained"
 msgid "female^banner"
-msgstr "trainiert"
+msgstr "Banner"
 
 #. [leadership]: id=banner
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:786
@@ -3933,8 +3903,6 @@ msgstr "Zähigkeit"
 
 #. [skirmisher]: id=distract
 #: data/campaigns/World_Conquest/resources/data/training.cfg:404
-#, fuzzy
-#| msgid "distract"
 msgid "female^distract"
 msgstr "Ablenkung"
 
@@ -3947,10 +3915,8 @@ msgstr ""
 
 #. [resistance]: id=tenacity
 #: data/campaigns/World_Conquest/resources/data/training.cfg:428
-#, fuzzy
-#| msgid "female^legendary"
 msgid "female^tenacity"
-msgstr "legendär"
+msgstr "Zähigkeit"
 
 #. [resistance]: id=tenacity
 #: data/campaigns/World_Conquest/resources/data/training.cfg:429
@@ -4050,19 +4016,19 @@ msgstr "Welteroberung 4S"
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:17
 msgid "WC1p"
-msgstr ""
+msgstr "WE1S"
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:20
 msgid "WC2p"
-msgstr ""
+msgstr "WE2S"
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:23
 msgid "WC3p"
-msgstr ""
+msgstr "WE3S"
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:26
 msgid "WC4p"
-msgstr ""
+msgstr "WE4S"
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:29
 msgid ""

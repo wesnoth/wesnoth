@@ -18,7 +18,7 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH WESNOTHD 6 2025 wesnothd "Serveur multijoueur de Bataille pour Wesnoth"
+.TH WESNOTHD 6 2022 wesnothd "Serveur multijoueur de Bataille pour Wesnoth"
 .
 .SH NOM
 .
@@ -79,7 +79,7 @@ Active une journalisation maximale.
 .P
 [/\fItag\fP]
 .
-.SS "Clés globales\ : "
+.SS "Clés globales\ :"
 .
 .TP 
 \fBallow_remote_shutdown\fP
@@ -251,8 +251,9 @@ probablement sous la forme <table\-prefix>_user_group. Par exemple\ :
 phpbb3_user_group.
 .TP 
 \fBdb_tournament_query\fP
-The SQL query to find tournaments to announce on login. Should return
-tournament \fBtitle\fP, \fBstatus\fP and \fBurl\fP.
+La requête SQL pour obtenir la liste des tournois à afficher à la
+connexion. La réponse est au format tournament \fBtitle\fP, \fBstatus\fP et
+\fBurl\fP.
 .TP 
 \fBdb_connection_history_table\fP
 Le nom de la table de la base de données où les instants de connexion et

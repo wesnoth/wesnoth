@@ -13,11 +13,15 @@
 	See the COPYING file for more details.
 */
 
+#include "log.hpp"
 #include "preferences/preferences.hpp"
 #include "sdl/window.hpp"
 #include "sdl/exception.hpp"
 #include "sdl/surface.hpp"
 #include "sdl/sdl3_properties_raii.hpp"
+#include "serialization/string_utils.hpp"
+#include "utils/general.hpp"
+#include "video.hpp"
 
 #include <SDL3/SDL_hints.h>
 #include <SDL3/SDL_render.h>
@@ -68,8 +72,32 @@ window::window(const std::string& title,
 		throw exception("Failed to set window pointer property", true);
 	}
 
+	// try using the default
+	// if that fails, try opengl
+	// and if that fails, try software
+	PLAIN_LOG << "Available renderers: " << utils::join(video::get_available_renderers(), " ");
 	if(!SDL_CreateRendererWithProperties(props)) {
-		throw exception("Failed to create a SDL_Renderer object.", true);
+		PLAIN_LOG << "Trying opengl renderer after failing to create default renderer with error: " << SDL_GetError();
+
+		if(utils::contains(video::get_available_renderers(), "opengl")) {
+			SDL_SetHint(SDL_HINT_RENDER_DRIVER, "opengl");
+
+			if(!SDL_CreateRendererWithProperties(props)) {
+				PLAIN_LOG << "Trying software renderer after failing to create opengl renderer with error: " << SDL_GetError();
+
+				if(utils::contains(video::get_available_renderers(), "software")) {
+					SDL_SetHint(SDL_HINT_RENDER_DRIVER, "software");
+
+					if(!SDL_CreateRendererWithProperties(props)) {
+						throw exception("Failed to create software renderer.", true);
+					}
+				}
+			}
+
+			PLAIN_LOG << "Failed to create default renderer but created fallback opengl renderer";
+		} else {
+			throw exception("Failed to create default renderer and opengl fallback isn't supported.", true);
+		}
 	}
 
 	// Set default blend mode to blend.

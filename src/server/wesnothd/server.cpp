@@ -190,7 +190,7 @@ static bool make_change_diff(const simple_wml::node& src,
 
 static std::string player_status(const wesnothd::player_record& player)
 {
-	auto [d, h, m, s] = chrono::deconstruct_duration(chrono::format::days_hours_mins_secs, player.time_logged_on());
+	auto [d, h, m, s] = chrono::deconstruct_duration<chrono::days, std::chrono::hours, std::chrono::minutes, std::chrono::seconds>(player.time_logged_on());
 	std::ostringstream out;
 	out << "'" << player.name() << "' @ " << player.client_ip()
 		<< " logged on for "
@@ -3165,7 +3165,9 @@ void server::searchlog_handler(const std::string& /*issuer_name*/,
 
 	// If this looks like an IP look up which nicks have been connected from it
 	// Otherwise look for the last IP the nick used to connect
-	const bool match_ip = (std::count(parameters.begin(), parameters.end(), '.') >= 1);
+	const bool match_ipv4 = (std::count(parameters.begin(), parameters.end(), '.') >= 1);
+	const bool match_ipv6 = (std::count(parameters.begin(), parameters.end(), ':') >= 1);
+	const bool match_ip = match_ipv4 || match_ipv6;
 
 	if(!user_handler_) {
 		bool found_something = false;
@@ -3193,11 +3195,11 @@ void server::searchlog_handler(const std::string& /*issuer_name*/,
 			*out << "\nNo match found.";
 		}
 	} else {
-		if(!match_ip) {
-			utils::to_sql_wildcards(parameters);
-			user_handler_->get_ips_for_user(parameters, out);
-		} else {
+		utils::to_sql_wildcards(parameters);
+		if(match_ip) {
 			user_handler_->get_users_for_ip(parameters, out);
+		} else {
+			user_handler_->get_ips_for_user(parameters, out);
 		}
 	}
 }

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-05-18 21:15-0500\n"
+"POT-Creation-Date: 2026-06-22 22:16-0500\n"
 "PO-Revision-Date: 2026-04-21 17:29-0300\n"
 "Last-Translator: Andrei Machado <andreisp.machado@yahoo.com>\n"
 "Language-Team: Portuguese - Brasil\n"
@@ -382,7 +382,7 @@ msgstr "envenenado"
 # File: data/core/macros/items.cfg, line: 521
 # File: data/core/macros/items.cfg, line: 521
 #. [effect]: type=fire
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:492
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:491
 #: data/core/macros/items.cfg:559
 msgid "storm trident"
 msgstr "tridente da tempestade"
@@ -433,7 +433,7 @@ msgstr "Fechar"
 # File: data/english.cfg, line: 47
 # File: data/english.cfg, line: 47
 #. [language]
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:76
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:75
 #: data/english.cfg:31
 msgid "blade"
 msgstr "cortante"
@@ -443,7 +443,7 @@ msgstr "cortante"
 # File: data/english.cfg, line: 50
 # File: data/english.cfg, line: 50
 #. [language]
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:79
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:78
 #: data/english.cfg:34
 msgid "fire"
 msgstr "fogo"
@@ -453,7 +453,7 @@ msgstr "fogo"
 # File: data/english.cfg, line: 51
 # File: data/english.cfg, line: 51
 #. [language]
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:82
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:81
 #: data/english.cfg:35
 msgid "cold"
 msgstr "frio"
@@ -463,7 +463,7 @@ msgstr "frio"
 # File: data/english.cfg, line: 48
 # File: data/english.cfg, line: 48
 #. [language]
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:85
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:84
 #: data/english.cfg:32
 msgid "pierce"
 msgstr "perfurante"
@@ -473,7 +473,7 @@ msgstr "perfurante"
 # File: data/english.cfg, line: 49
 # File: data/english.cfg, line: 49
 #. [language]
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:88
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:87
 #: data/english.cfg:33
 msgid "impact"
 msgstr "impacto"
@@ -483,7 +483,7 @@ msgstr "impacto"
 # File: data/english.cfg, line: 43
 # File: data/english.cfg, line: 43
 #. [language]
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:91
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:90
 #: data/english.cfg:27
 msgid "melee"
 msgstr "corpo a corpo"
@@ -493,7 +493,7 @@ msgstr "corpo a corpo"
 # File: data/english.cfg, line: 44
 # File: data/english.cfg, line: 44
 #. [language]
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:94
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:93
 #: data/english.cfg:28
 msgid "ranged"
 msgstr "longa distância"
@@ -2423,43 +2423,115 @@ msgstr ""
 # File: src/attack_prediction_display.cpp, line: 260
 # File: src/mouse_events.cpp, line: 842
 #. [else]
-#: data/core/macros/deprecated-utils.cfg:35
+#: data/core/macros/deprecated-utils.cfg:34
 msgid "This unit has been renamed to: "
 msgstr "Esta unidade foi renomeada para: "
 
+#
+# File: data/core/macros/objective-utils.cfg, line: 14
+# File: data/lua/wml/objectives.lua, line: 11978
+# File: data/core/macros/objective-utils.cfg, line: 14
+# File: data/lua/wml/objectives.lua, line: 1537
+# File: data/core/macros/objective-utils.cfg, line: 14
+# File: data/lua/wml/objectives.lua, line: 1537
+#. [lua]: generate_objectives
+#: data/core/macros/deprecated-utils.cfg:51 data/lua/wml/objectives.lua:106
+msgid "Early finish bonus."
+msgstr "Bônus de término antecipado."
+
+#
+# File: data/core/macros/objective-utils.cfg, line: 17
+# File: data/lua/wml/objectives.lua, line: 11980
+# File: data/core/macros/objective-utils.cfg, line: 17
+# File: data/lua/wml/objectives.lua, line: 1539
+# File: data/core/macros/objective-utils.cfg, line: 17
+# File: data/lua/wml/objectives.lua, line: 1539
+#. [lua]: generate_objectives
+#: data/core/macros/deprecated-utils.cfg:55 data/lua/wml/objectives.lua:109
+msgid "No early finish bonus."
+msgstr "Nenhum bônus de término antecidado."
+
+#
+# File: data/core/macros/objective-utils.cfg, line: 29
+# File: data/lua/wml/objectives.lua, line: 11988
+# File: data/core/macros/objective-utils.cfg, line: 29
+# File: data/lua/wml/objectives.lua, line: 1547
+# File: data/core/macros/objective-utils.cfg, line: 29
+# File: data/lua/wml/objectives.lua, line: 1547
+#. [lua]: generate_objectives
+#: data/core/macros/deprecated-utils.cfg:59 data/lua/wml/objectives.lua:117
+msgid "No gold carried over to the next scenario."
+msgstr "Nenhum ouro transferido para o próximo cenário."
+
+#
+# File: data/core/macros/objective-utils.cfg, line: 32
+# File: data/core/macros/objective-utils.cfg, line: 32
+# File: data/core/macros/objective-utils.cfg, line: 32
+#: data/core/macros/deprecated-utils.cfg:63
+msgid ""
+"\n"
+"100% of finishing gold carried over to the next scenario."
+msgstr ""
+"\n"
+"100% do ouro final transferido para o próximo cenário."
+
+#
+# File: data/core/macros/objective-utils.cfg, line: 36
+# File: data/core/macros/objective-utils.cfg, line: 36
+# File: data/core/macros/objective-utils.cfg, line: 36
+#: data/core/macros/deprecated-utils.cfg:68
+msgid ""
+"\n"
+"40% of finishing gold carried over to the next scenario."
+msgstr ""
+"\n"
+"40% do ouro final transferido para o próximo cenário."
+
+#
+# File: data/core/macros/objective-utils.cfg, line: 40
+# File: data/core/macros/objective-utils.cfg, line: 40
+# File: data/core/macros/objective-utils.cfg, line: 40
+#: data/core/macros/deprecated-utils.cfg:73
+msgid ""
+"\n"
+"20% of finishing gold carried over to the next scenario."
+msgstr ""
+"\n"
+"20% do ouro final transferido para opróximo cenário."
+
 #. [chance_to_hit]: id=deflect
-#: data/core/macros/deprecated-utils.cfg:124
+#: data/core/macros/deprecated-utils.cfg:284
 msgid "deflect"
 msgstr ""
 
 #. [chance_to_hit]: id=deflect
-#: data/core/macros/deprecated-utils.cfg:125
+#: data/core/macros/deprecated-utils.cfg:285
 msgid ""
 "When used defensively, this attack reduces the opponent’s chance to hit by "
 "10%."
 msgstr ""
 
 #. [chance_to_hit]: id=deflect
-#: data/core/macros/deprecated-utils.cfg:126
+#: data/core/macros/deprecated-utils.cfg:286
 msgid ""
 "This unit’s defensive techniques reduce the chance of a successful enemy "
 "attack."
 msgstr ""
 
 #. [damage]: id=absorb
-#: data/core/macros/deprecated-utils.cfg:139
+#: data/core/macros/deprecated-utils.cfg:299
 msgid "absorb"
 msgstr ""
 
 #. [damage]: id=absorb
-#: data/core/macros/deprecated-utils.cfg:140
+#: data/core/macros/deprecated-utils.cfg:300
 msgid ""
 "This attack puts the unit in good defensive position, and it absorbs some of "
 "the damage dealt by an enemy strike."
 msgstr ""
 
 #. [damage]: id=absorb
-#: data/core/macros/deprecated-utils.cfg:141
+#: data/core/macros/deprecated-utils.cfg:301
 msgid ""
 "This unit can block enemy strikes, so that it takes reduced damage when hit."
 msgstr ""
@@ -4668,7 +4740,7 @@ msgstr "O Peso da Vingança"
 # File: data/core/macros/utils.cfg, line: 784
 # File: data/core/macros/utils.cfg, line: 784
 #. [message]: speaker=narrator
-#: data/core/macros/utils.cfg:664
+#: data/core/macros/utils.cfg:662
 msgid "You retrieve $amount_gold pieces of gold."
 msgstr "Você recuperou $amount_gold peças de ouro."
 
@@ -5889,7 +5961,7 @@ msgstr "incurável"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
-#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:3755
+#: data/lua/wml/message.lua:442 src/scripting/game_lua_kernel.cpp:3755
 #: src/scripting/game_lua_kernel.cpp:3790
 msgid "input"
 msgstr "input"
@@ -5926,42 +5998,6 @@ msgid "(this turn left)"
 msgid_plural "($remaining_turns turns left)"
 msgstr[0] "(só mais este turno)"
 msgstr[1] "($remaining_turns turnos restantes)"
-
-#
-# File: data/core/macros/objective-utils.cfg, line: 14
-# File: data/lua/wml/objectives.lua, line: 11978
-# File: data/core/macros/objective-utils.cfg, line: 14
-# File: data/lua/wml/objectives.lua, line: 1537
-# File: data/core/macros/objective-utils.cfg, line: 14
-# File: data/lua/wml/objectives.lua, line: 1537
-#. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:106
-msgid "Early finish bonus."
-msgstr "Bônus de término antecipado."
-
-#
-# File: data/core/macros/objective-utils.cfg, line: 17
-# File: data/lua/wml/objectives.lua, line: 11980
-# File: data/core/macros/objective-utils.cfg, line: 17
-# File: data/lua/wml/objectives.lua, line: 1539
-# File: data/core/macros/objective-utils.cfg, line: 17
-# File: data/lua/wml/objectives.lua, line: 1539
-#. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:109
-msgid "No early finish bonus."
-msgstr "Nenhum bônus de término antecidado."
-
-#
-# File: data/core/macros/objective-utils.cfg, line: 29
-# File: data/lua/wml/objectives.lua, line: 11988
-# File: data/core/macros/objective-utils.cfg, line: 29
-# File: data/lua/wml/objectives.lua, line: 1547
-# File: data/core/macros/objective-utils.cfg, line: 29
-# File: data/lua/wml/objectives.lua, line: 1547
-#. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:117
-msgid "No gold carried over to the next scenario."
-msgstr "Nenhum ouro transferido para o próximo cenário."
 
 #
 # File: data/lua/wml/objectives.lua, line: 11990
@@ -9431,7 +9467,7 @@ msgstr "Mensagem de chat"
 # File: src/game_controller_abstract.cpp, line: 99
 # File: src/game_controller.cpp, line: 886
 # File: src/game_controller_abstract.cpp, line: 99
-#: src/desktop/windows_tray_notification.cpp:126 src/game_config.cpp:588
+#: src/desktop/windows_tray_notification.cpp:137 src/game_config.cpp:588
 msgid "The Battle for Wesnoth"
 msgstr "The Battle for Wesnoth"
 
@@ -9717,7 +9753,7 @@ msgstr[1] ""
 # File: src/game_events.cpp, line: 187
 # File: src/game_events.cpp, line: 187
 # File: src/game_events.cpp, line: 187
-#: src/game_events/pump.cpp:389 src/game_launcher.cpp:957
+#: src/game_events/pump.cpp:389 src/game_launcher.cpp:950
 msgid "Error: "
 msgstr "Erro: "
 
@@ -10400,7 +10436,7 @@ msgstr "Password hashing falhou."
 # File: src/game_controller.cpp, line: 819
 # File: src/playcampaign.cpp, line: 214
 # File: src/playcampaign.cpp, line: 503
-#: src/game_initialization/playcampaign.cpp:150 src/game_launcher.cpp:910
+#: src/game_initialization/playcampaign.cpp:150 src/game_launcher.cpp:903
 msgid "The game could not be loaded: "
 msgstr "O jogo não pôde ser carregado: "
 
@@ -10414,7 +10450,7 @@ msgstr "O jogo não pôde ser carregado: "
 # File: src/game_controller.cpp, line: 821
 # File: src/playcampaign.cpp, line: 216
 # File: src/playcampaign.cpp, line: 506
-#: src/game_initialization/playcampaign.cpp:156 src/game_launcher.cpp:912
+#: src/game_initialization/playcampaign.cpp:156 src/game_launcher.cpp:905
 msgid "Error while playing the game: "
 msgstr "Erro durante o jogo: "
 
@@ -10428,12 +10464,12 @@ msgstr "Erro durante o jogo: "
 # File: src/game_controller.cpp, line: 839
 # File: src/playcampaign.cpp, line: 218
 # File: src/playcampaign.cpp, line: 509
-#: src/game_initialization/playcampaign.cpp:159 src/game_launcher.cpp:949
+#: src/game_initialization/playcampaign.cpp:159 src/game_launcher.cpp:942
 msgid "The game map could not be loaded: "
 msgstr "O mapa do jogo não pôde ser carregado: "
 
-#: src/game_initialization/playcampaign.cpp:162 src/game_launcher.cpp:914
-#: src/game_launcher.cpp:1035
+#: src/game_initialization/playcampaign.cpp:162 src/game_launcher.cpp:907
+#: src/game_launcher.cpp:1028
 msgid "Map generator error: "
 msgstr "Erro no gerador de mapa: "
 
@@ -10490,7 +10526,7 @@ msgstr "Não há campanhas disponíveis."
 # File: src/game_controller.cpp, line: 428
 # File: src/game_controller.cpp, line: 410
 # File: src/game_controller.cpp, line: 428
-#: src/game_launcher.cpp:692 src/game_launcher.cpp:711
+#: src/game_launcher.cpp:685 src/game_launcher.cpp:704
 #: src/hotkey/hotkey_handler_sp.cpp:324 src/replay.cpp:662 src/savegame.cpp:167
 msgid "The file you have tried to load is corrupt"
 msgstr "O Arquivo que você tentou carregar está corrompido"
@@ -10505,7 +10541,7 @@ msgstr "O Arquivo que você tentou carregar está corrompido"
 # File: src/game_controller.cpp, line: 413
 # File: src/game_controller.cpp, line: 431
 # File: src/savegame.cpp, line: 733
-#: src/game_launcher.cpp:694 src/game_launcher.cpp:713
+#: src/game_launcher.cpp:687 src/game_launcher.cpp:706
 msgid "The file you have tried to load is corrupt: '"
 msgstr "O Arquivo que você tentou carregar está corrompido: '"
 
@@ -10513,7 +10549,7 @@ msgstr "O Arquivo que você tentou carregar está corrompido: '"
 # File: src/game_controller.cpp, line: 421
 # File: src/game_controller.cpp, line: 421
 # File: src/game_controller.cpp, line: 421
-#: src/game_launcher.cpp:703
+#: src/game_launcher.cpp:696
 msgid "File I/O Error while reading the game"
 msgstr "Erro de I/O ao ler o jogo"
 
@@ -10521,7 +10557,7 @@ msgstr "Erro de I/O ao ler o jogo"
 # File: src/game_controller.cpp, line: 423
 # File: src/game_controller.cpp, line: 423
 # File: src/game_controller.cpp, line: 423
-#: src/game_launcher.cpp:705
+#: src/game_launcher.cpp:698
 msgid "File I/O Error while reading the game: '"
 msgstr "Erro de I/O ao ler o jogo: '"
 
@@ -10529,7 +10565,7 @@ msgstr "Erro de I/O ao ler o jogo: '"
 # File: src/game_controller.cpp, line: 817
 # File: src/game_controller.cpp, line: 817
 # File: src/game_controller.cpp, line: 817
-#: src/game_launcher.cpp:908
+#: src/game_launcher.cpp:901
 msgid "Error while starting server: "
 msgstr "Erro ao iniciar o server: "
 
@@ -10543,7 +10579,7 @@ msgstr "Erro ao iniciar o server: "
 # File: src/multiplayer.cpp, line: 235
 # File: src/multiplayer.cpp, line: 320
 # File: src/multiplayer_ui.cpp, line: 84
-#: src/game_launcher.cpp:930
+#: src/game_launcher.cpp:923
 msgid "Connection failed: "
 msgstr "A conexão falhou: "
 
@@ -11155,7 +11191,7 @@ msgstr "O arquivo que você tentou carregar não é da sessão atual."
 # File: src/language.cpp, line: 101
 # File: src/language.cpp, line: 101
 # File: src/language.cpp, line: 101
-#: src/language.cpp:101
+#: src/language.cpp:115
 msgid "System default language"
 msgstr "Idioma padrão do sistema"
 
@@ -12364,7 +12400,7 @@ msgstr "Comando:"
 # File: src/mouse_events.cpp, line: 725
 # File: src/mouse_events.cpp, line: 725
 # File: src/mouse_events.cpp, line: 725
-#: src/mouse_events.cpp:1307
+#: src/mouse_events.cpp:1317
 msgid ""
 "You cannot move your leader away from the keep with some planned recruits or "
 "recalls left."
@@ -12379,7 +12415,7 @@ msgstr ""
 # File: src/attack_prediction_display.cpp, line: 236
 # File: src/attack_prediction_display.cpp, line: 104
 # File: src/attack_prediction_display.cpp, line: 236
-#: src/mouse_events.cpp:1410
+#: src/mouse_events.cpp:1420
 msgid "No Attacks"
 msgstr "Nenhum Ataque"
 
@@ -12390,11 +12426,11 @@ msgstr "Nenhum Ataque"
 # File: src/mouse_events.cpp, line: 842
 # File: src/attack_prediction_display.cpp, line: 260
 # File: src/mouse_events.cpp, line: 842
-#: src/mouse_events.cpp:1410
+#: src/mouse_events.cpp:1420
 msgid "This unit has no usable weapons."
 msgstr "Esta unidade não possui nenhuma arma utilizavel."
 
-#: src/mouse_events.cpp:1486 src/mouse_events.cpp:1502
+#: src/mouse_events.cpp:1496 src/mouse_events.cpp:1512
 msgid "Other aspects: "
 msgstr "Outros Aspectos: "
 
@@ -12408,7 +12444,7 @@ msgstr "Outros Aspectos: "
 # File: src/reports.cpp, line: 679
 # File: src/reports.cpp, line: 894
 # File: src/reports.cpp, line: 906
-#: src/mouse_events.cpp:1515 src/mouse_events.cpp:1529
+#: src/mouse_events.cpp:1525 src/mouse_events.cpp:1539
 msgid "Weapon: "
 msgstr "Arma: "
 
@@ -12416,7 +12452,7 @@ msgstr "Arma: "
 # File: src/reports.cpp, line: 178
 # File: src/reports.cpp, line: 178
 # File: src/reports.cpp, line: 178
-#: src/mouse_events.cpp:1516 src/mouse_events.cpp:1530
+#: src/mouse_events.cpp:1526 src/mouse_events.cpp:1540
 msgid "Type: "
 msgstr "Tipo: "
 
@@ -12427,7 +12463,7 @@ msgstr "Tipo: "
 # File: src/reports.cpp, line: 895
 # File: src/reports.cpp, line: 680
 # File: src/reports.cpp, line: 895
-#: src/mouse_events.cpp:1517 src/mouse_events.cpp:1531
+#: src/mouse_events.cpp:1527 src/mouse_events.cpp:1541
 msgid "Damage: "
 msgstr "Dano: "
 
@@ -12435,7 +12471,7 @@ msgstr "Dano: "
 # File: src/reports.cpp, line: 701
 # File: src/reports.cpp, line: 701
 # File: src/reports.cpp, line: 701
-#: src/mouse_events.cpp:1518 src/mouse_events.cpp:1532
+#: src/mouse_events.cpp:1528 src/mouse_events.cpp:1542
 msgid "Attacks: "
 msgstr "Ataques: "
 
@@ -12443,7 +12479,7 @@ msgstr "Ataques: "
 # File: src/reports.cpp, line: 245
 # File: src/reports.cpp, line: 245
 # File: src/reports.cpp, line: 245
-#: src/mouse_events.cpp:1519 src/mouse_events.cpp:1533
+#: src/mouse_events.cpp:1529 src/mouse_events.cpp:1543
 msgid "Chance to hit: "
 msgstr "Chance de acerto: "
 
@@ -14275,21 +14311,21 @@ msgstr "Este Período do Dia é só um Exemplo!"
 # File: src/reports.cpp, line: 311
 # File: src/reports.cpp, line: 311
 # File: src/reports.cpp, line: 311
-#: src/units/abilities.cpp:1141
+#: src/units/abilities.cpp:1161
 msgid "Owned: "
 msgstr "Possuido: "
 
 #. TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
-#: src/units/abilities.cpp:1143
+#: src/units/abilities.cpp:1163
 msgid "Taught: "
 msgstr "Ensinado: "
 
 #. TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
-#: src/units/abilities.cpp:1145
+#: src/units/abilities.cpp:1165
 msgid "Taught: (by an enemy): "
 msgstr "Ensinado: (por uma unidade inimiga): "
 
-#: src/units/abilities.cpp:1146
+#: src/units/abilities.cpp:1166
 msgid "Used by opponent: "
 msgstr "Usado pelo oponente: "
 
@@ -14735,7 +14771,7 @@ msgstr "$year BF"
 msgid "$year AF"
 msgstr "$year AF"
 
-#: src/wesnoth.cpp:811
+#: src/wesnoth.cpp:804
 msgid ""
 "Unable to create log files in directory $logdir. This is often caused by "
 "incorrect folder permissions, anti-virus software restricting folder access, "
@@ -14746,7 +14782,7 @@ msgstr ""
 "restringindo o acesso para a pasta ou usando o OneDrive para gerenciar a sua "
 "pasta Documentos."
 
-#: src/wesnoth.cpp:812
+#: src/wesnoth.cpp:805
 msgid "Logging Failure"
 msgstr "Erro de Login"
 
@@ -14800,39 +14836,6 @@ msgstr "Esconder planos para $player"
 #: src/whiteboard/manager.cpp:1140
 msgid "Whiteboard Options"
 msgstr "Opções do Quadro-Branco"
-
-#
-# File: data/core/macros/objective-utils.cfg, line: 32
-# File: data/core/macros/objective-utils.cfg, line: 32
-# File: data/core/macros/objective-utils.cfg, line: 32
-#~ msgid ""
-#~ "\n"
-#~ "100% of finishing gold carried over to the next scenario."
-#~ msgstr ""
-#~ "\n"
-#~ "100% do ouro final transferido para o próximo cenário."
-
-#
-# File: data/core/macros/objective-utils.cfg, line: 36
-# File: data/core/macros/objective-utils.cfg, line: 36
-# File: data/core/macros/objective-utils.cfg, line: 36
-#~ msgid ""
-#~ "\n"
-#~ "40% of finishing gold carried over to the next scenario."
-#~ msgstr ""
-#~ "\n"
-#~ "40% do ouro final transferido para o próximo cenário."
-
-#
-# File: data/core/macros/objective-utils.cfg, line: 40
-# File: data/core/macros/objective-utils.cfg, line: 40
-# File: data/core/macros/objective-utils.cfg, line: 40
-#~ msgid ""
-#~ "\n"
-#~ "20% of finishing gold carried over to the next scenario."
-#~ msgstr ""
-#~ "\n"
-#~ "20% do ouro final transferido para opróximo cenário."
 
 #~ msgid "Lato Light"
 #~ msgstr "Lato Light"

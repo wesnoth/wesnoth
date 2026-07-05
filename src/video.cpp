@@ -368,6 +368,10 @@ void init_window(bool hidden)
 	window_flags |= SDL_WINDOW_RESIZABLE;
 	window_flags |= SDL_WINDOW_HIGH_PIXEL_DENSITY;
 
+	if(prefs::get().fullscreen()) {
+		window_flags |= SDL_WINDOW_FULLSCREEN;
+	}
+
 	if(prefs::get().maximized()) {
 		window_flags |= SDL_WINDOW_MAXIMIZED;
 	}
@@ -379,16 +383,6 @@ void init_window(bool hidden)
 
 	// Initialize window
 	window.reset(new sdl::window("", w, h, window_flags));
-	if(prefs::get().fullscreen()) {
-		SDL_DisplayMode mode;
-		mode.format = SDL_PIXELFORMAT_UNKNOWN;
-		mode.w = w;
-		mode.h = h;
-		mode.refresh_rate = 0;
-		mode.internal = nullptr;
-
-		SDL_SetWindowFullscreenMode(*window, &mode);
-	}
 
 	// It is assumed that this function is only ever called once.
 	// If that is no longer true, then you should clean things up.
@@ -432,7 +426,7 @@ point window_size()
 
 rect game_canvas()
 {
-	return {0, 0, game_canvas_size_.x, game_canvas_size_.y};
+	return {point{}, game_canvas_size_};
 }
 
 point game_canvas_size()
@@ -447,7 +441,7 @@ point draw_size()
 
 rect draw_area()
 {
-	return {0, 0, current_render_target_.w(), current_render_target_.h()};
+	return {point{}, draw_size()};
 }
 
 point draw_offset()
@@ -465,8 +459,7 @@ point draw_offset()
 
 rect output_area()
 {
-	point p = output_size();
-	return {0, 0, p.x, p.y};
+	return {point{}, output_size()};
 }
 
 rect to_output(const rect& r)
@@ -874,6 +867,18 @@ void update_buffers(bool autoupdate)
 	if(update_framebuffer() && autoupdate) {
 		draw_manager::invalidate_all();
 	}
+}
+
+std::vector<std::string> get_available_renderers()
+{
+	std::vector<std::string> renderers;
+
+	int renderer_count = SDL_GetNumRenderDrivers();
+	for(int i = 0; i < renderer_count; i++) {
+		renderers.emplace_back(SDL_GetRenderDriver(i));
+	}
+
+	return renderers;
 }
 
 std::vector<std::pair<std::string, std::string>> renderer_report()

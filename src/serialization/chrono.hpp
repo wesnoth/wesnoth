@@ -59,6 +59,14 @@ inline auto serialize_timestamp(const std::chrono::system_clock::time_point& tim
 	return std::chrono::system_clock::to_time_t(time);
 }
 
+inline auto get_local_timestamp(const std::chrono::system_clock::time_point& time)
+{
+	auto as_time_t = std::chrono::system_clock::to_time_t(time);
+	return mktime(std::localtime(&as_time_t));
+}
+
+// CAUTION: This does NOT return a language-localized string.  To achieve that,
+//          use translation::translate_timestamp with chrono::get_local_timestamp.
 inline auto format_local_timestamp(const std::chrono::system_clock::time_point& time, std::string_view format = "%F %T")
 {
 	std::ostringstream ss;
@@ -82,7 +90,7 @@ constexpr double normalize_progress(
 }
 
 template<typename... Ts, typename Rep, typename Period>
-constexpr auto deconstruct_duration(const std::tuple<Ts...>&, const std::chrono::duration<Rep, Period>& span)
+constexpr auto deconstruct_duration(const std::chrono::duration<Rep, Period>& span)
 {
 	auto time_remaining = std::chrono::duration_cast<std::common_type_t<Ts...>>(span);
 	return std::tuple{[&time_remaining]() {
@@ -91,17 +99,5 @@ constexpr auto deconstruct_duration(const std::tuple<Ts...>&, const std::chrono:
 		return duration;
 	}()...};
 }
-
-/** Helper types to be used with @ref deconstruct_duration */
-namespace format
-{
-constexpr auto days_hours_mins_secs = std::tuple<
-	chrono::days,
-	std::chrono::hours,
-	std::chrono::minutes,
-	std::chrono::seconds
->{};
-
-} // namespace format
 
 } // namespace chrono

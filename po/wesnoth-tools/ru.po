@@ -1,15 +1,16 @@
 # Russian translations for PACKAGE package.
-# Copyright (C) 2023 Wesnoth development team
+# Copyright (C) 2026 Wesnoth development team
 # This file is distributed under the same license as the PACKAGE package.
 # Automatically generated, 2023.
 # Artem Khrapov (kabachuha) <artemkhrapov2001@yandex.ru>, 2023-2024.
+# Alexandr Obolonkin <obolonkin@proton.me>>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2026-04-19 22:19-0500\n"
-"PO-Revision-Date: 2024-04-08 22:18+0300\n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2026-06-21 16:57+0500\n"
+"Last-Translator: Alexandr Obolonkin (Alexinor) <obolonkin@proton.me>\n"
 "Language-Team: none\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -17,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #: data/tools/GUI.pyw:89
 msgid "Open a Graphical User Interface (GUI) to WML Tools"
@@ -183,10 +184,8 @@ msgstr "Конвертировать EOL в формат Unix"
 #. TRANSLATORS: 'side=' in this context refers to WML and should not be
 #. translated.
 #: data/tools/GUI.pyw:797
-#, fuzzy
-#| msgid "Do not warn about tags without side= keys"
 msgid "Warn about tags without side= keys"
-msgstr "Не предупреждать о тегах без ключей side="
+msgstr "Предупреждать о тегах без ключей side="
 
 #: data/tools/GUI.pyw:806
 msgid "Disable checks for unknown units"
@@ -503,17 +502,7 @@ msgstr "О GUI инструментов обслуживания"
 
 #. TRANSLATORS: {0} is a placeholder for Wesnoth's current version, and not meant to be modified.
 #: data/tools/GUI.pyw:1684
-#, fuzzy, python-brace-format
-#| msgid ""
-#| "© Elvish_Hunter, 2014-2016\n"
-#| "\n"
-#| "Version: {0}\n"
-#| "\n"
-#| "Part of The Battle for Wesnoth project and released under the GNU GPL v2 "
-#| "license\n"
-#| "\n"
-#| "Icons are taken from the Tango Desktop Project (http://"
-#| "tango.freedesktop.org), and are released in the Public Domain."
+#, python-brace-format
 msgid ""
 "© Elvish_Hunter, 2014-2025\n"
 "\n"
@@ -525,7 +514,7 @@ msgid ""
 "Icons are taken from the Tango Desktop Project (http://"
 "tango.freedesktop.org), and are released in the Public Domain."
 msgstr ""
-"© Elvish_Hunter, 2014-2016\n"
+"© Elvish_Hunter, 2014-2026\n"
 "\n"
 "Версия: {0}\n"
 "\n"

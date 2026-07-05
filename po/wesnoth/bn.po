@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bn\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-05-18 21:15-0500\n"
+"POT-Creation-Date: 2026-06-22 22:16-0500\n"
 "PO-Revision-Date: 2026-03-23 16:53+0530\n"
 "Last-Translator: Subhraman Sarkar <sbmskmm@protonmail.com>\n"
 "Language-Team: Bengali < >\n"
@@ -280,7 +280,7 @@ msgid "poisoned"
 msgstr "বিষাক্ত"
 
 #. [effect]: type=fire
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:492
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:491
 #: data/core/macros/items.cfg:559
 msgid "storm trident"
 msgstr "ঝঞ্ঝার ত্রিশূল"
@@ -306,43 +306,43 @@ msgid "Close"
 msgstr "বন্ধ"
 
 #. [language]
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:76
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:75
 #: data/english.cfg:31
 msgid "blade"
 msgstr "ধারালো অস্ত্র"
 
 #. [language]
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:79
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:78
 #: data/english.cfg:34
 msgid "fire"
 msgstr "অগ্নি"
 
 #. [language]
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:82
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:81
 #: data/english.cfg:35
 msgid "cold"
 msgstr "শীতল"
 
 #. [language]
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:85
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:84
 #: data/english.cfg:32
 msgid "pierce"
 msgstr "ভেদ্য"
 
 #. [language]
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:88
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:87
 #: data/english.cfg:33
 msgid "impact"
 msgstr "ভোঁতা অস্ত্র"
 
 #. [language]
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:91
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:90
 #: data/english.cfg:27
 msgid "melee"
 msgstr "নিকট"
 
 #. [language]
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:94
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:93
 #: data/english.cfg:28
 msgid "ranged"
 msgstr "দূর"
@@ -1697,17 +1697,56 @@ msgid ""
 msgstr "বিশেষ নির্দেশ মুছুন ।"
 
 #. [else]
-#: data/core/macros/deprecated-utils.cfg:35
+#: data/core/macros/deprecated-utils.cfg:34
 msgid "This unit has been renamed to: "
 msgstr "এই ইউনিটির নাম পাল্টে হয়েছে:"
 
+#. [lua]: generate_objectives
+#: data/core/macros/deprecated-utils.cfg:51 data/lua/wml/objectives.lua:106
+msgid "Early finish bonus."
+msgstr "দ্রুত শেষ করার অতিরিক্ত পুরষ্কার আছে ।"
+
+#. [lua]: generate_objectives
+#: data/core/macros/deprecated-utils.cfg:55 data/lua/wml/objectives.lua:109
+msgid "No early finish bonus."
+msgstr "দ্রুত শেষ করার অতিরিক্ত পুরষ্কার নেই।"
+
+#. [lua]: generate_objectives
+#: data/core/macros/deprecated-utils.cfg:59 data/lua/wml/objectives.lua:117
+msgid "No gold carried over to the next scenario."
+msgstr "স্বর্ণ পরবর্তী ঘটনাক্রমে যাবে না ।"
+
+#: data/core/macros/deprecated-utils.cfg:63
+msgid ""
+"\n"
+"100% of finishing gold carried over to the next scenario."
+msgstr ""
+"\n"
+"শেষের সময় থাকা স্বর্ণের 100% পরবর্তী ঘটনাক্রমে যাবে ।"
+
+#: data/core/macros/deprecated-utils.cfg:68
+msgid ""
+"\n"
+"40% of finishing gold carried over to the next scenario."
+msgstr ""
+"\n"
+"শেষের সময় থাকা স্বর্ণের 40% পরবর্তী ঘটনাক্রমে যাবে ।"
+
+#: data/core/macros/deprecated-utils.cfg:73
+msgid ""
+"\n"
+"20% of finishing gold carried over to the next scenario."
+msgstr ""
+"\n"
+"শেষের সময় থাকা স্বর্ণের 20% পরবর্তী ঘটনাক্রমে যাবে ।"
+
 #. [chance_to_hit]: id=deflect
-#: data/core/macros/deprecated-utils.cfg:124
+#: data/core/macros/deprecated-utils.cfg:284
 msgid "deflect"
 msgstr "বিক্ষেপ"
 
 #. [chance_to_hit]: id=deflect
-#: data/core/macros/deprecated-utils.cfg:125
+#: data/core/macros/deprecated-utils.cfg:285
 msgid ""
 "When used defensively, this attack reduces the opponent’s chance to hit by "
 "10%."
@@ -1716,7 +1755,7 @@ msgstr ""
 "করে।"
 
 #. [chance_to_hit]: id=deflect
-#: data/core/macros/deprecated-utils.cfg:126
+#: data/core/macros/deprecated-utils.cfg:286
 msgid ""
 "This unit’s defensive techniques reduce the chance of a successful enemy "
 "attack."
@@ -1724,12 +1763,12 @@ msgstr ""
 "এই ইউনিটটির রক্ষণাত্মক কৌশল প্রতিপক্ষের দ্বারা সফল আক্রমণের সম্ভাবনা কমিয়ে দেয় ।"
 
 #. [damage]: id=absorb
-#: data/core/macros/deprecated-utils.cfg:139
+#: data/core/macros/deprecated-utils.cfg:299
 msgid "absorb"
 msgstr "শোষণ"
 
 #. [damage]: id=absorb
-#: data/core/macros/deprecated-utils.cfg:140
+#: data/core/macros/deprecated-utils.cfg:300
 msgid ""
 "This attack puts the unit in good defensive position, and it absorbs some of "
 "the damage dealt by an enemy strike."
@@ -1738,7 +1777,7 @@ msgstr ""
 "দ্বারা হওয়া ক্ষতির কিছুটা শোষণ করে নেয় ।"
 
 #. [damage]: id=absorb
-#: data/core/macros/deprecated-utils.cfg:141
+#: data/core/macros/deprecated-utils.cfg:301
 msgid ""
 "This unit can block enemy strikes, so that it takes reduced damage when hit."
 msgstr ""
@@ -2786,7 +2825,7 @@ msgid "Weight of Revenge"
 msgstr "প্রতিশোধের ভার"
 
 #. [message]: speaker=narrator
-#: data/core/macros/utils.cfg:664
+#: data/core/macros/utils.cfg:662
 msgid "You retrieve $amount_gold pieces of gold."
 msgstr "আপনি $amount_gold পরিমাণ স্বর্ণ পেয়েছেন ।"
 
@@ -3662,7 +3701,7 @@ msgstr "সুস্থ করার অযোগ্য"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
-#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:3755
+#: data/lua/wml/message.lua:442 src/scripting/game_lua_kernel.cpp:3755
 #: src/scripting/game_lua_kernel.cpp:3790
 msgid "input"
 msgstr "ইনপুট"
@@ -3684,21 +3723,6 @@ msgid "(this turn left)"
 msgid_plural "($remaining_turns turns left)"
 msgstr[0] "(শুধু এই দান বাকি)"
 msgstr[1] "($remaining_turns দান বাকি)"
-
-#. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:106
-msgid "Early finish bonus."
-msgstr "দ্রুত শেষ করার অতিরিক্ত পুরষ্কার আছে ।"
-
-#. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:109
-msgid "No early finish bonus."
-msgstr "দ্রুত শেষ করার অতিরিক্ত পুরষ্কার নেই।"
-
-#. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:117
-msgid "No gold carried over to the next scenario."
-msgstr "স্বর্ণ পরবর্তী ঘটনাক্রমে যাবে না ।"
 
 #. [lua]: generate_objectives
 #: data/lua/wml/objectives.lua:119
@@ -5675,7 +5699,7 @@ msgstr "$elem ডেপ্রিকেট এবং সরানো হয়েছ
 msgid "Chat message"
 msgstr "চ্যাট বার্তা"
 
-#: src/desktop/windows_tray_notification.cpp:126 src/game_config.cpp:588
+#: src/desktop/windows_tray_notification.cpp:137 src/game_config.cpp:588
 msgid "The Battle for Wesnoth"
 msgstr "ব্যাটল ফর ওয়েসনথ"
 
@@ -5869,7 +5893,7 @@ msgid_plural ""
 msgstr[0] "অনুগ্রহ করে এই অ্যাড-অনের লেখক বা মেইনটেনারকে জানান ।"
 msgstr[1] "অনুগ্রহ করে এই অ্যাড-অনের লেখকদের বা মেইনটেনারদের জানান ।"
 
-#: src/game_events/pump.cpp:389 src/game_launcher.cpp:957
+#: src/game_events/pump.cpp:389 src/game_launcher.cpp:950
 msgid "Error: "
 msgstr "ত্রুটি:"
 
@@ -6204,20 +6228,20 @@ msgstr "আপনি অনেক বেশিবার লগইন করা�
 msgid "Password hashing failed."
 msgstr "পাসওয়ার্ড হ্যাশিং করা যায়নি ।"
 
-#: src/game_initialization/playcampaign.cpp:150 src/game_launcher.cpp:910
+#: src/game_initialization/playcampaign.cpp:150 src/game_launcher.cpp:903
 msgid "The game could not be loaded: "
 msgstr "খেলাটি খোলা যাচ্ছে না:"
 
-#: src/game_initialization/playcampaign.cpp:156 src/game_launcher.cpp:912
+#: src/game_initialization/playcampaign.cpp:156 src/game_launcher.cpp:905
 msgid "Error while playing the game: "
 msgstr "খেলা খেলতে গিয়ে ত্রুটি:"
 
-#: src/game_initialization/playcampaign.cpp:159 src/game_launcher.cpp:949
+#: src/game_initialization/playcampaign.cpp:159 src/game_launcher.cpp:942
 msgid "The game map could not be loaded: "
 msgstr "খেলার মানচিত্র খোলা যাচ্ছে না:"
 
-#: src/game_initialization/playcampaign.cpp:162 src/game_launcher.cpp:914
-#: src/game_launcher.cpp:1035
+#: src/game_initialization/playcampaign.cpp:162 src/game_launcher.cpp:907
+#: src/game_launcher.cpp:1028
 msgid "Map generator error: "
 msgstr "মানচিত্র সৃষ্টিকারকে ত্রুটি:"
 
@@ -6242,28 +6266,28 @@ msgstr "অজানা ঘটনাক্রম: ‘$scenario|’"
 msgid "No campaigns are available."
 msgstr "কোনো অভিযান নেই ।"
 
-#: src/game_launcher.cpp:692 src/game_launcher.cpp:711
+#: src/game_launcher.cpp:685 src/game_launcher.cpp:704
 #: src/hotkey/hotkey_handler_sp.cpp:324 src/replay.cpp:662 src/savegame.cpp:167
 msgid "The file you have tried to load is corrupt"
 msgstr "আপনি যে ফাইলটি খোলার চেষ্টা করেছেন তা ত্রুটিযুক্ত"
 
-#: src/game_launcher.cpp:694 src/game_launcher.cpp:713
+#: src/game_launcher.cpp:687 src/game_launcher.cpp:706
 msgid "The file you have tried to load is corrupt: '"
 msgstr "আপনি যে ফাইলটি খোলার চেষ্টা করেছেন তা ত্রুটিযুক্ত: '"
 
-#: src/game_launcher.cpp:703
+#: src/game_launcher.cpp:696
 msgid "File I/O Error while reading the game"
 msgstr "খেলাটি পড়ার সময় ফাইল আই/ও ত্রুটি"
 
-#: src/game_launcher.cpp:705
+#: src/game_launcher.cpp:698
 msgid "File I/O Error while reading the game: '"
 msgstr "খেলাটি পড়ার সময় ফাইল আই/ও ত্রুটি: '"
 
-#: src/game_launcher.cpp:908
+#: src/game_launcher.cpp:901
 msgid "Error while starting server: "
 msgstr "সার্ভার শুর করতে গিয়ে ত্রুটি:"
 
-#: src/game_launcher.cpp:930
+#: src/game_launcher.cpp:923
 msgid "Connection failed: "
 msgstr "সংযোগ করা যাচ্ছে না:"
 
@@ -6585,7 +6609,7 @@ msgstr "আপনি যে ফাইলটি খোলার চেষ্ট�
 msgid "The file you have tried to load is not from the current session."
 msgstr "আপনি যে ফাইলটি খোলার চেষ্টা করছেন সেটি বর্তমান সেশনের নয়।"
 
-#: src/language.cpp:101
+#: src/language.cpp:115
 msgid "System default language"
 msgstr "সিস্টেমের স্বাভাবিক ভাষা"
 
@@ -7233,7 +7257,7 @@ msgstr "কমান্ড"
 msgid "prompt^Formula:"
 msgstr "ফর্মুলা"
 
-#: src/mouse_events.cpp:1307
+#: src/mouse_events.cpp:1317
 msgid ""
 "You cannot move your leader away from the keep with some planned recruits or "
 "recalls left."
@@ -7241,35 +7265,35 @@ msgstr ""
 "পরিকল্পিত নিয়োগ বা পুনরায় ডাকা বাকি থাকার কারণে আপনি আপনার দলনেতাকে দূর্গ থেকে "
 "সরাতে পারবেন না ।"
 
-#: src/mouse_events.cpp:1410
+#: src/mouse_events.cpp:1420
 msgid "No Attacks"
 msgstr "কোনো আক্রমণ নেই"
 
-#: src/mouse_events.cpp:1410
+#: src/mouse_events.cpp:1420
 msgid "This unit has no usable weapons."
 msgstr "এই ইউনিটটির কাছে কোনো ব্যবহারযোগ্য অস্ত্র নেই ।"
 
-#: src/mouse_events.cpp:1486 src/mouse_events.cpp:1502
+#: src/mouse_events.cpp:1496 src/mouse_events.cpp:1512
 msgid "Other aspects: "
 msgstr "অন্যান্য বৈশিষ্ট্য: "
 
-#: src/mouse_events.cpp:1515 src/mouse_events.cpp:1529
+#: src/mouse_events.cpp:1525 src/mouse_events.cpp:1539
 msgid "Weapon: "
 msgstr "অস্ত্র: "
 
-#: src/mouse_events.cpp:1516 src/mouse_events.cpp:1530
+#: src/mouse_events.cpp:1526 src/mouse_events.cpp:1540
 msgid "Type: "
 msgstr "প্রকৃতি: "
 
-#: src/mouse_events.cpp:1517 src/mouse_events.cpp:1531
+#: src/mouse_events.cpp:1527 src/mouse_events.cpp:1541
 msgid "Damage: "
 msgstr "ক্ষতি: "
 
-#: src/mouse_events.cpp:1518 src/mouse_events.cpp:1532
+#: src/mouse_events.cpp:1528 src/mouse_events.cpp:1542
 msgid "Attacks: "
 msgstr "আঘাতসংখ্যা: "
 
-#: src/mouse_events.cpp:1519 src/mouse_events.cpp:1533
+#: src/mouse_events.cpp:1529 src/mouse_events.cpp:1543
 msgid "Chance to hit: "
 msgstr "আঘাতের সম্ভাবনা: "
 
@@ -8250,21 +8274,21 @@ msgstr "ফাঁকা দিনের সময়"
 msgid "This Time of Day is only a Stub!"
 msgstr "দিনের এই সময়টি ফাঁকা"
 
-#: src/units/abilities.cpp:1141
+#: src/units/abilities.cpp:1161
 msgid "Owned: "
 msgstr "নিয়ন্ত্রিত: "
 
 #. TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
-#: src/units/abilities.cpp:1143
+#: src/units/abilities.cpp:1163
 msgid "Taught: "
 msgstr "জানা: "
 
 #. TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
-#: src/units/abilities.cpp:1145
+#: src/units/abilities.cpp:1165
 msgid "Taught: (by an enemy): "
 msgstr "জানা: (শত্রুর দ্বারা): "
 
-#: src/units/abilities.cpp:1146
+#: src/units/abilities.cpp:1166
 msgid "Used by opponent: "
 msgstr "প্রতিপক্ষের দ্বারা ব্যবহৃত: "
 
@@ -8500,7 +8524,7 @@ msgstr "$year ধ.পূ."
 msgid "$year AF"
 msgstr "$year ধ.অব্দ"
 
-#: src/wesnoth.cpp:811
+#: src/wesnoth.cpp:804
 msgid ""
 "Unable to create log files in directory $logdir. This is often caused by "
 "incorrect folder permissions, anti-virus software restricting folder access, "
@@ -8510,7 +8534,7 @@ msgstr ""
 "করা,অ্যান্টি-ভাইরাস ফোল্ডার ব্যবহারে বাধা দেওয়া, বা ওয়ানড্রাইভের মাধ্যমে মাই "
 "ডকুমেন্টস ফোল্ডার ব্যবস্থপনাকরার জন্য এটি হয়ে থাকে ।"
 
-#: src/wesnoth.cpp:812
+#: src/wesnoth.cpp:805
 msgid "Logging Failure"
 msgstr "লগকালীন ত্রুটি"
 
@@ -8537,27 +8561,6 @@ msgstr "$player-এর জন্য পরিকল্পনা লুকোন"
 #: src/whiteboard/manager.cpp:1140
 msgid "Whiteboard Options"
 msgstr "হোয়াইটবোর্ড অপশনগুলি"
-
-#~ msgid ""
-#~ "\n"
-#~ "100% of finishing gold carried over to the next scenario."
-#~ msgstr ""
-#~ "\n"
-#~ "শেষের সময় থাকা স্বর্ণের 100% পরবর্তী ঘটনাক্রমে যাবে ।"
-
-#~ msgid ""
-#~ "\n"
-#~ "40% of finishing gold carried over to the next scenario."
-#~ msgstr ""
-#~ "\n"
-#~ "শেষের সময় থাকা স্বর্ণের 40% পরবর্তী ঘটনাক্রমে যাবে ।"
-
-#~ msgid ""
-#~ "\n"
-#~ "20% of finishing gold carried over to the next scenario."
-#~ msgstr ""
-#~ "\n"
-#~ "শেষের সময় থাকা স্বর্ণের 20% পরবর্তী ঘটনাক্রমে যাবে ।"
 
 #, fuzzy
 #~| msgid "Bare Branch"
