@@ -90,11 +90,13 @@ window::window(const std::string& title,
 
 					if(!SDL_CreateRendererWithProperties(props)) {
 						throw exception("Failed to create software renderer.", true);
+					} else {
+						PLAIN_LOG << "Failed to create default renderer and opengl renderer but created fallback software renderer";
 					}
 				}
+			} else {
+				PLAIN_LOG << "Failed to create default renderer but created fallback opengl renderer";
 			}
-
-			PLAIN_LOG << "Failed to create default renderer but created fallback opengl renderer";
 		} else {
 			throw exception("Failed to create default renderer and opengl fallback isn't supported.", true);
 		}
