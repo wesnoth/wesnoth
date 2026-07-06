@@ -80,6 +80,15 @@ validate_campaign() {
 
 RET=0
 
+revert_patch() {
+    # revert the changes made by schema_validation.patch
+    patch -R -p 1 < utils/CI/schema_validation.patch
+}
+
+# trap to revert changes when script finishes or gets terminated 
+trap revert_patch EXIT
+
+
 # remove any_tag to actually see errors in action WML
 patch -p 1 < utils/CI/schema_validation.patch || RET=1
 
