@@ -4,7 +4,7 @@ import pefile, pathlib, shutil
 
 initial_modules = """
 /msys64/mingw64/bin/libwebp-7.dll
-/msys64/mingw64/bin/libturbojpeg.dll
+/msys64/mingw64/bin/libjpeg-8.dll
 /msys64/mingw64/bin/libwebpdemux-2.dll
 /msys64/mingw64/bin/libwebpmux-3.dll
 wesnoth.exe
