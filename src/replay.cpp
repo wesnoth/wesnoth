@@ -357,10 +357,6 @@ void replay::remove_command(int index)
 	}
 }
 
-// cached message log
-static std::vector< chat_msg > message_log;
-
-
 const std::vector<chat_msg>& replay::build_chat_log() const
 {
 	message_log.clear();
@@ -375,6 +371,7 @@ const std::vector<chat_msg>& replay::build_chat_log() const
 		add_chat_log_entry(speak, chat_log_appender);
 
 	}
+	last_message_location_count = message_locations.size();
 	return message_log;
 }
 
