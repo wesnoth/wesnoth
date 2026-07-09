@@ -634,6 +634,29 @@ WIDGET_SETTER("max_input_length", int, gui2::text_box)
 	try_invalidate_layout(w);
 }
 
+WIDGET_GETTER("selection_start", int, gui2::text_box_base)
+{
+	return w.get_selection_start() + 1;
+}
+
+WIDGET_GETTER("selection_length", int, gui2::text_box_base)
+{
+	return w.get_selection_length();
+}
+
+WIDGET_SETTER("selection_start", int, gui2::text_box_base)
+{
+	if(value < 1) {
+		throw std::invalid_argument("selection_start must be >= 1");
+	}
+	w.set_selection_start(value - 1);
+}
+
+WIDGET_SETTER("selection_length", int, gui2::text_box_base)
+{
+	w.set_selection_length(value);
+}
+
 WIDGET_GETTER("step_size", int, gui2::slider)
 {
 	return w.get_step_size();
