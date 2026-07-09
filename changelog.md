@@ -7,6 +7,7 @@
 ### Editor
 ### Multiplayer
 ### Lua API
+   * `text_box` gui widget now has the gettable and settable properties `selection_start` and `selection_length` for cursor position/selection start and length of text selection respectively.
 ### Packaging
 ### Terrain
 ### Translations
