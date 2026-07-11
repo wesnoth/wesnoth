@@ -19,7 +19,7 @@ msgstr ""
 "Project-Id-Version: hu-wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2026-06-22 22:16-0500\n"
-"PO-Revision-Date: 2026-02-23 23:25+0100\n"
+"PO-Revision-Date: 2026-07-11 00:54+0200\n"
 "Last-Translator: Berda Jenő <big4billy@gmail.com>\n"
 "Language-Team: Hungarian <>\n"
 "Language: hu\n"
@@ -27,7 +27,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 26.03.70\n"
+"X-Generator: Poedit 3.5\n"
 
 #. [multiplayer_side]: id=Custom
 #: data/_main.cfg:22
@@ -278,7 +278,7 @@ msgstr "Jelenítsen meg egy jelzőt a védő felett, ha egy támadás nem siker�
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:200
 msgid "SIMD acceleration"
-msgstr ""
+msgstr "SIMD gyorsítás"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:201
@@ -286,6 +286,9 @@ msgid ""
 "Use hardware acceleration (SSE2/NEON) for faster image processing on the "
 "CPU. Try disabling this if you experience graphical glitches or crashes."
 msgstr ""
+"SSE2/NEON hardvergyorsítás alkalmazása a gyorsabb CPU képfeldolgozásért. Ha "
+"akadozást vagy összeomlást tapasztalsz a grafikai megjelenítésben, próbáld "
+"meg kikapcsolni."
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
@@ -5376,10 +5379,8 @@ msgid "Remote host disconnected."
 msgstr "A távoli kiszolgáló lekapcsolódott."
 
 #: src/addon/manager_ui.cpp:63
-#, fuzzy
-#| msgid "Map generator error: "
 msgid "Raw network error:"
-msgstr "Térképgenerátor hiba: "
+msgstr "Feldolgozatlan hálózati hiba:"
 
 #: src/addon/manager_ui.cpp:97 src/addon/manager_ui.cpp:336
 msgid "Network communication error."
@@ -6662,7 +6663,7 @@ msgstr "Toborzások"
 
 #: src/help/help_impl.cpp:636
 msgid "Previous"
-msgstr ""
+msgstr "Előző"
 
 #: src/help/help_impl.cpp:649 src/help/help_impl.cpp:776
 #: src/help/help_impl.cpp:794
@@ -6674,22 +6675,16 @@ msgid "No description available."
 msgstr "Nincs elérhető leírás."
 
 #: src/help/help_impl.cpp:755
-#, fuzzy
-#| msgid "This is the last scenario."
 msgid "This is a global trait."
-msgstr "Ez az utolsó küldetés."
+msgstr "Ez egy általános jellemvonás."
 
 #: src/help/help_impl.cpp:763
-#, fuzzy
-#| msgid "Units with this ability"
 msgid "Races with this trait"
-msgstr "Egységek ezzel a képességgel"
+msgstr "Fajok ezzel a jellemvonással"
 
 #: src/help/help_impl.cpp:783
-#, fuzzy
-#| msgid "Units with this ability"
 msgid "Units with this trait"
-msgstr "Egységek ezzel a képességgel"
+msgstr "Egységek ezzel a jellemvonással"
 
 #: src/help/help_impl.cpp:907 src/help/help_impl.cpp:1125
 msgid "race^Miscellaneous"
@@ -7529,14 +7524,12 @@ msgid "Turn changed"
 msgstr "A játékosok sorrendje megváltozott"
 
 #: src/network_download_file.cpp:50
-#, fuzzy
-#| msgid "not available."
 msgid "Download unavailable"
-msgstr "nem elérhető."
+msgstr "A letöltés nem elérhető"
 
 #: src/network_download_file.cpp:50
 msgid "Standalone file downloads are not currently supported on iOS."
-msgstr ""
+msgstr "A független letöltéseket jelenleg az iOS nem támogatja."
 
 #: src/network_download_file.cpp:55
 msgid "Confirm overwrite"
@@ -7890,10 +7883,8 @@ msgstr "Védekezés:"
 
 #. TRANSLATORS: single-letter abbreviation of "vision", fits in a small space on the sidebar
 #: src/reports.cpp:646
-#, fuzzy
-#| msgid "vision:"
 msgid "vision^V:"
-msgstr "látótáv:"
+msgstr "L:"
 
 #: src/reports.cpp:647
 msgid "vision:"
@@ -7901,10 +7892,8 @@ msgstr "látótáv:"
 
 #. TRANSLATORS: single-letter abbreviation of "jamming", fits in a small space on the sidebar
 #: src/reports.cpp:669
-#, fuzzy
-#| msgid "jamming:"
 msgid "jamming^J:"
-msgstr "zavarás:"
+msgstr "Z:"
 
 #: src/reports.cpp:670
 msgid "jamming:"

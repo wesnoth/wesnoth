@@ -1,16 +1,16 @@
 # translation of hu-editor_1.5.po to Hungarian
 #
-#
 # Gabor Udvari <gabor.udvari@gmail.com>, 2009.
 # Kádár-Németh Krisztián <krisztian.kad@gmail.com>, 2007-2009, 2011, 2015.
 # Krutki Tamás <krtamas@0x64.org>, 2018.
-# Berda Jenő <big4billy@gmail.com>, 2024-2025
+# Berda Jenő <big4billy@gmail.com>, 2024-2026
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: hu-editor_1.5\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2026-06-22 22:15-0500\n"
-"PO-Revision-Date: 2025-12-28 01:41+0100\n"
+"PO-Revision-Date: 2026-07-10 22:39+0200\n"
 "Last-Translator: Berda Jenő <big4billy@gmail.com>\n"
 "Language-Team: Hungarian <>\n"
 "Language: hu\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.8\n"
+"X-Generator: Poedit 3.5\n"
 
 #. [brush]: id=brush-1
 #: data/core/editor/brushes.cfg:6
@@ -164,7 +164,7 @@ msgstr "a Bukás után"
 #. [editor_group]: id=urban_jungle
 #: data/internal/Urban_Jungle/terrain-groups.cfg:5
 msgid "Urban Jungle (Internal)"
-msgstr ""
+msgstr "Városi dzsungel (belső)"
 
 #. [theme]: id=editor
 #: data/themes/editor.cfg:11
@@ -480,41 +480,34 @@ msgid "File does not have .map, .cfg, or .mask extension"
 msgstr "A fájlnak nincs .map, .cfg, vagy .mask kiterjesztése"
 
 #: src/editor/map/map_context.cpp:227
-#, fuzzy
-#| msgid "Failed to load the scenario, attempting to load only the map."
 msgid ""
 "Failed to load the scenario: $error\n"
 "\n"
 "Attempting to load only the map."
 msgstr ""
-"A küldetés betöltése sikertelen, megpróbáljuk csak a térképet betölteni."
+"A küldetés betöltése sikertelen: $error\n"
+"\n"
+"Megpróbáljuk csak a térképet betölteni."
 
 #: src/editor/map/map_context.cpp:253
-#, fuzzy
-#| msgid ""
-#| "The map file looks like a scenario, but the map_data value does not point "
-#| "to an existing file"
 msgid ""
 "The file looks like a scenario, but the map_data attribute does not point to "
 "an existing file"
 msgstr ""
-"Ez a térkép egy pályának tűnik, de a map_data nem mutat egy létező fájlra sem"
+"Ez a fájl egy küldetésnek tűnik, de a map_data attrubútum nem mutat létező "
+"fájlra"
 
 #: src/editor/map/map_context.cpp:268
-#, fuzzy
-#| msgid ""
-#| "The map file looks like a scenario, but the map_file value does not point "
-#| "to an existing file"
 msgid ""
 "The file looks like a scenario, but the map_file attribute does not point to "
 "an existing file"
 msgstr ""
-"Ez a térképfájl egy küldetésnek tűnik, de a map_file értéke nem mutat egy "
-"létező fájlra sem"
+"Ez a fájl egy küldetésnek tűnik, de a map_file attrubútum nem mutat létező "
+"fájlra"
 
 #: src/editor/map/map_context.cpp:448
 msgid "Confirm"
-msgstr ""
+msgstr "Megerősít"
 
 #: src/editor/map/map_context.cpp:835 src/editor/map/map_context.cpp:875
 msgid "Could not save time schedule: $msg"
