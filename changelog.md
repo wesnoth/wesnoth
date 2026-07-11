@@ -10,7 +10,7 @@
 ### Packaging
 ### Terrain
 ### Translations
-   * Updated translations: Bengali, British English, French, Galician, Hungarian, Italian, Polish, Russian, Serbian
+   * Updated translations: Bengali, British English, Czech, French, Galician, Hungarian, Italian, Polish, Russian, Serbian
 ### Units
 ### User interface
    * Fix sound effect slider which was incorrectly affecting the music track volume.
