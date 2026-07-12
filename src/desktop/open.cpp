@@ -36,7 +36,7 @@
 #include <shellapi.h> // ShellExecute()
 
 #elif defined(__ANDROID__)
-#include <SDL2/SDL_system.h> // For SDL Android functions
+#include <SDL3/SDL_system.h> // For SDL Android functions
 #include <jni.h>
 
 #endif
@@ -93,8 +93,8 @@ bool open_object([[maybe_unused]] const std::string& path_or_url)
 #elif defined(__ANDROID__)
 	LOG_DU << "open_object(): on Android, will use Intent.GET_ACTION_VIEW with path as extra data. URL: " << path_or_url;
 	// call the helper method WesnothActivity.open(String url) using JNI
-	JNIEnv* env = reinterpret_cast<JNIEnv*>(SDL_AndroidGetJNIEnv());
-	jobject wesnoth_instance = reinterpret_cast<jobject>(SDL_AndroidGetActivity());
+	JNIEnv* env = reinterpret_cast<JNIEnv*>(SDL_GetAndroidJNIEnv());
+	jobject wesnoth_instance = reinterpret_cast<jobject>(SDL_GetAndroidActivity());
 	jclass wesnoth_activity(env->GetObjectClass(wesnoth_instance));
 	jmethodID open = env->GetMethodID(wesnoth_activity, "open", "(Ljava/lang/String;)V");
 	env->CallVoidMethod(wesnoth_instance, open, env->NewStringUTF(path_or_url.c_str()));

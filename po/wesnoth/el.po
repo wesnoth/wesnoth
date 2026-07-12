@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: el_gr\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-01-20 11:31-0600\n"
+"POT-Creation-Date: 2026-06-22 22:16-0500\n"
 "PO-Revision-Date: 2013-08-30 15:57+0300\n"
 "Last-Translator: Antonis Geralis <capoiosct@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-doc@kde.org>\n"
@@ -264,113 +264,28 @@ msgid "Display a visual indicator above a defender when an attack misses."
 msgstr ""
 "Εμφάνιση οπτικού δείκτη πάνω από έναν υπερασπιστή όταν μια επίθεση αστοχεί."
 
-#. [message]: speaker=$unit.id|
-#. [message]: speaker=narrator
-#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:22
-#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:45
-#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:46
-msgid "Potion grants steadfast ability and 20% resistance to impact."
-msgstr "Το φίλτρο δίνει ικανότητα σταθερότητας και 20% αντίσταση στο κτύπημα."
-
-#. [option]
-#. [button]: id=ok
-#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:24
-#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:100
-#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:171
-#: data/gui/themes/default/dialogs/install_dependencies.cfg:84
-msgid "Yes"
-msgstr "Ναι"
-
-#. [object]: id={ID}
-#. [item]: id=potion-blue
-#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:28
-#: data/core/editor/items.cfg:546
-msgid "Blue Potion"
-msgstr "Μπλε Φίλτρο"
-
-#. [object]: id={ID}
-#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:30
-msgid "A potion of unknown origin."
-msgstr "Ένα φίλτρο άγνωστης προέλευσης."
-
-#. [option]
-#. [button]: id=cancel
-#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:69
-#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:140
-#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:212
-#: data/gui/themes/default/dialogs/install_dependencies.cfg:95
-msgid "No"
-msgstr "Όχι"
-
-#. [message]: speaker=$unit.id|
-#. [message]: speaker=narrator
-#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:98
-#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:121
-msgid "This magical branch grants +2 damage to melee attacks."
-msgstr "Αυτό το μαγικό κλαδί δίνει +2 ζημιά στις επιθέσεις σώμα με σώμα."
-
-#. [object]: id={ID}
-#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:104
-msgid "Wose Branch"
-msgstr "Κλαδί Δενδροποιμένα"
-
-#. [object]: id={ID}
-#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:106
-msgid "The magical branch of some great Wose."
-msgstr "Το μαγικό κλαδί κάποιου μεγάλου Δενδροποιμένα."
-
-#. [message]: speaker=narrator
-#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:169
-msgid "This unit will gain the stun weapon special on melee attacks."
+#. [advanced_preference]: type=boolean
+#: data/advanced_preferences.cfg:200
+msgid "SIMD acceleration"
 msgstr ""
-"Αυτή η μονάδα θα αποκτήσει την ειδική ικανότητα ακινητοποίησης στις "
-"επιθέσεις σώμα με σώμα."
 
-#. [object]: id={ID}
-#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:175
-msgid "Echoes of the Earth"
-msgstr "Ηχώ της Γης"
-
-#. [object]: id={ID}
-#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:177
-msgid "Powerful echoes from the bowels of the earth."
-msgstr "Δυνατές ηχώ από τα έγκατα της γης."
-
-#. [message]: speaker=$unit.id|
-#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:189
-msgid "The unit gains the stun weapon special on melee attacks."
-msgstr ""
-"Η μονάδα κερδίζει το ειδικό όπλο ζαλίσματος στις επιθέσεις σώμα με σώμα."
-
-#. [message]: speaker=narrator
-#: data/campaigns/Dusk_of_Dawn/utils/items.cfg:207
+#. [advanced_preference]: type=boolean
+#: data/advanced_preferences.cfg:201
 msgid ""
-"After $unit.name| absorbed the stone’s power, the monolith lost its magical "
-"properties."
+"Use hardware acceleration (SSE2/NEON) for faster image processing on the "
+"CPU. Try disabling this if you experience graphical glitches or crashes."
 msgstr ""
-"Αφού ο/η $unit.name| απορρόφησε τη δύναμη της πέτρας, ο μονόλιθος έχασε τις "
-"μαγικές του ιδιότητες."
-
-#. [chance_to_hit]: id=unerring
-#: data/campaigns/Dusk_of_Dawn/utils/weapon_specials.cfg:4
-msgid "unerring"
-msgstr "αλάνθαστος"
-
-#. [chance_to_hit]: id=unerring
-#: data/campaigns/Dusk_of_Dawn/utils/weapon_specials.cfg:5
-msgid "This attack never misses."
-msgstr "Αυτή η επίθεση δεν αστοχεί ποτέ."
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
 #. [lua]: set_status
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:369
-#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:948
+#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:949
 msgid "poisoned"
 msgstr "δηλητηριασμένος"
 
 #. [effect]: type=fire
-#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:492
+#: data/campaigns/The_Rise_Of_Wesnoth/scenarios/12_A_Final_Spring.cfg:491
 #: data/core/macros/items.cfg:559
 msgid "storm trident"
 msgstr "τρίαινα θύελλας"
@@ -396,44 +311,44 @@ msgid "Close"
 msgstr "Κλείσιμο"
 
 #. [language]
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:76
-#: data/english.cfg:26
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:75
+#: data/english.cfg:31
 msgid "blade"
 msgstr "λεπίδα"
 
 #. [language]
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:79
-#: data/english.cfg:29
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:78
+#: data/english.cfg:34
 msgid "fire"
 msgstr "φωτιά"
 
 #. [language]
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:82
-#: data/english.cfg:30
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:81
+#: data/english.cfg:35
 msgid "cold"
 msgstr "κρύο"
 
 #. [language]
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:85
-#: data/english.cfg:27
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:84
+#: data/english.cfg:32
 msgid "pierce"
 msgstr "τρύπημα"
 
 #. [language]
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:88
-#: data/english.cfg:28
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:87
+#: data/english.cfg:33
 msgid "impact"
 msgstr "κρούση"
 
 #. [language]
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:91
-#: data/english.cfg:22
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:90
+#: data/english.cfg:27
 msgid "melee"
 msgstr "σώμα με σώμα"
 
 #. [language]
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:94
-#: data/english.cfg:23
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:93
+#: data/english.cfg:28
 msgid "ranged"
 msgstr "εξ αποστάσεως"
 
@@ -493,7 +408,7 @@ msgid "Miscellaneous Contributors"
 msgstr "Λοιποί Συντελεστές"
 
 #. [about]
-#: data/core/about.cfg:1890
+#: data/core/about.cfg:1897
 msgid "Bots"
 msgstr "Υπολογιστής"
 
@@ -603,183 +518,183 @@ msgid "French Translation"
 msgstr "Γαλλική Μετάφραση"
 
 #. [about]
-#: data/core/about_i18n.cfg:787
+#: data/core/about_i18n.cfg:790
 msgid "Friulian Translation"
 msgstr "Friulian Μετάφραση"
 
 #. [about]
-#: data/core/about_i18n.cfg:791
+#: data/core/about_i18n.cfg:794
 msgid "Galician Translation"
 msgstr "Γαλικιανή Μετάφραση"
 
 #. [about]
-#: data/core/about_i18n.cfg:827
+#: data/core/about_i18n.cfg:830
 msgid "German Translation"
 msgstr "Γερμανική Μετάφραση"
 
 #. [about]
-#: data/core/about_i18n.cfg:956
+#: data/core/about_i18n.cfg:959
 msgid "Greek Translation"
 msgstr "Ελληνική Μετάφραση"
 
 #. [about]
-#: data/core/about_i18n.cfg:999
+#: data/core/about_i18n.cfg:1002
 msgid "Hebrew Translation"
 msgstr "Εβραϊκή Μετάφραση"
 
 #. [about]
-#: data/core/about_i18n.cfg:1012
+#: data/core/about_i18n.cfg:1015
 msgid "Hungarian Translation"
 msgstr "Ουγγρική Μετάφραση"
 
 #. [about]
-#: data/core/about_i18n.cfg:1073
+#: data/core/about_i18n.cfg:1076
 msgid "Icelandic Translation"
 msgstr "Ισλανδική Μετάφραση"
 
 #. [about]
-#: data/core/about_i18n.cfg:1083
+#: data/core/about_i18n.cfg:1086
 msgid "Indonesian Translation"
 msgstr "Ινδονησιακή Μετάφραση"
 
 #. [about]
-#: data/core/about_i18n.cfg:1111
+#: data/core/about_i18n.cfg:1114
 msgid "Irish Translation"
 msgstr "Ιρλανδική Μετάφραση"
 
 #. [about]
-#: data/core/about_i18n.cfg:1118
+#: data/core/about_i18n.cfg:1121
 msgid "Italian Translation"
 msgstr "Ιταλική Μετάφραση"
 
 #. [about]
-#: data/core/about_i18n.cfg:1165
+#: data/core/about_i18n.cfg:1168
 msgid "Japanese Translation"
 msgstr "Ιαπωνική Μετάφραση"
 
 #. [about]
-#: data/core/about_i18n.cfg:1258
+#: data/core/about_i18n.cfg:1261
 msgid "Korean Translation"
 msgstr "Κορεατική Μετάφραση"
 
 #. [about]
-#: data/core/about_i18n.cfg:1266
+#: data/core/about_i18n.cfg:1269
 msgid "Latin Translation"
 msgstr "Λατινική Μετάφραση"
 
 #. [about]
-#: data/core/about_i18n.cfg:1292
+#: data/core/about_i18n.cfg:1295
 msgid "Latvian Translation"
 msgstr "Λεττονική Μετάφραση"
 
 #. [about]
-#: data/core/about_i18n.cfg:1307
+#: data/core/about_i18n.cfg:1310
 msgid "Lithuanian Translation"
 msgstr "Λιθουανική Μετάφραση"
 
 #. [about]
-#: data/core/about_i18n.cfg:1332
+#: data/core/about_i18n.cfg:1335
 msgid "Macedonian Translation"
 msgstr "Σλαβομακεδονική Μετάφραση"
 
 #. [about]
-#: data/core/about_i18n.cfg:1339
+#: data/core/about_i18n.cfg:1342
 msgid "Marathi Translation"
 msgstr "Ινδική (Marathi) Μετάφραση"
 
 #. [about]
-#: data/core/about_i18n.cfg:1348
+#: data/core/about_i18n.cfg:1351
 msgid "Norwegian Translation"
 msgstr "Νορβηγική Μετάφραση"
 
 #. [about]
-#: data/core/about_i18n.cfg:1377
+#: data/core/about_i18n.cfg:1380
 msgid "Old English Translation"
 msgstr "Αρχαία αγγλική Μετάφραση"
 
 #. [about]
-#: data/core/about_i18n.cfg:1395
+#: data/core/about_i18n.cfg:1398
 msgid "Polish Translation"
 msgstr "Πολωνική Μετάφραση"
 
 #. [about]
-#: data/core/about_i18n.cfg:1470
+#: data/core/about_i18n.cfg:1473
 msgid "Portuguese Translation"
 msgstr "Πορτογαλική Μετάφραση"
 
 #. [about]
-#: data/core/about_i18n.cfg:1484
+#: data/core/about_i18n.cfg:1487
 msgid "Portuguese (Brazil) Translation"
 msgstr "Πορτογαλική Μετάφραση (Βραζιλία)"
 
 #. [about]
-#: data/core/about_i18n.cfg:1542
+#: data/core/about_i18n.cfg:1548
 msgid "Romanian Translation"
 msgstr "Ρουμανική Μετάφραση"
 
 #. [about]
-#: data/core/about_i18n.cfg:1550
+#: data/core/about_i18n.cfg:1556
 msgid "Russian Translation"
 msgstr "Ρωσική Μετάφραση"
 
 #. [about]
-#: data/core/about_i18n.cfg:1657
+#: data/core/about_i18n.cfg:1663
 msgid "Scottish Gaelic Translation"
 msgstr "Σκωτική γαελική Μετάφραση"
 
 #. [about]
-#: data/core/about_i18n.cfg:1666
+#: data/core/about_i18n.cfg:1672
 msgid "Serbian Translation"
 msgstr "Σερβική Μετάφραση"
 
 #. [about]
-#: data/core/about_i18n.cfg:1685
+#: data/core/about_i18n.cfg:1691
 msgid "Slovak Translation"
 msgstr "Σλοβακική Μετάφραση"
 
 #. [about]
-#: data/core/about_i18n.cfg:1720
+#: data/core/about_i18n.cfg:1726
 msgid "Slovenian Translation"
 msgstr "Σλοβενική Μετάφραση"
 
 #. [about]
-#: data/core/about_i18n.cfg:1736
+#: data/core/about_i18n.cfg:1742
 msgid "Spanish Translation"
 msgstr "Ισπανική Μετάφραση"
 
 #. [about]
-#: data/core/about_i18n.cfg:1830
+#: data/core/about_i18n.cfg:1836
 msgid "Swedish Translation"
 msgstr "Σουηδική Μετάφραση"
 
 #. [about]
-#: data/core/about_i18n.cfg:1875
+#: data/core/about_i18n.cfg:1881
 msgid "Turkish Translation"
 msgstr "Τουρκική Μετάφραση"
 
 #. [about]
-#: data/core/about_i18n.cfg:1900
+#: data/core/about_i18n.cfg:1906
 msgid "Ukrainian Translation"
 msgstr "Ουκρανική Μετάφραση"
 
 #. [about]
-#: data/core/about_i18n.cfg:1934
+#: data/core/about_i18n.cfg:1940
 msgid "Valencian (southern Catalan) Translation"
 msgstr "Μετάφραση Βαλενθιανών (νότια Καταλανικά)"
 
 #. [about]
-#: data/core/about_i18n.cfg:1947
+#: data/core/about_i18n.cfg:1953
 msgid "Vietnamese Translation"
 msgstr "Βιετναμέζικη Μετάφραση"
 
 #. [about]
-#: data/core/about_i18n.cfg:1966
+#: data/core/about_i18n.cfg:1972
 msgid "Welsh Translation"
 msgstr "Μετάφραση Ουαλικών"
 
 #. [about]
 #. Real Acadèmia de Cultura Valenciana
-#: data/core/about_i18n.cfg:1975
+#: data/core/about_i18n.cfg:1981
 msgid "RACV’s Translation"
 msgstr "Μετάφραση RACV"
 
@@ -1113,6 +1028,11 @@ msgstr "Σημαία Ορκ"
 #: data/core/editor/items.cfg:532 data/core/editor/items.cfg:539
 msgid "Ornate"
 msgstr "Περίτεχνο"
+
+#. [item]: id=potion-blue
+#: data/core/editor/items.cfg:546
+msgid "Blue Potion"
+msgstr "Μπλε Φίλτρο"
 
 #. [item]: id=potion-green
 #: data/core/editor/items.cfg:553
@@ -1560,8 +1480,8 @@ msgstr "Ζητήστε από τον/την $ai_controller_unit.name να μετ
 #: data/core/macros/ai_controller.cfg:77
 msgid "Ask $ally_leader.name (leader of side $ally_leader.side) to move here"
 msgstr ""
-"Ζητήστε από τον/την $ally_leader.name (αρχηγός της πλευράς "
-"$ally_leader.side) να μετακινηθεί εδώ"
+"Ζητήστε από τον/την $ally_leader.name (αρχηγός της πλευράς $ally_leader."
+"side) να μετακινηθεί εδώ"
 
 #. [note]
 #: data/core/macros/ai_controller.cfg:111
@@ -1626,11 +1546,11 @@ msgstr "Εστίασε στην ήττα..."
 #. [focus_on_enemy]
 #: data/core/macros/ai_controller.cfg:180
 msgid ""
-"focusing on defeating $ai_controller.side_$ally_side|"
-"_current_settings.focus_on_enemy.side_description|."
+"focusing on defeating $ai_controller.side_$ally_side|_current_settings."
+"focus_on_enemy.side_description|."
 msgstr ""
-"εστιάζοντας στην ήττα $ai_controller.side_$ally_side|"
-"_current_settings.focus_on_enemy.side_description|."
+"εστιάζοντας στην ήττα $ai_controller.side_$ally_side|_current_settings."
+"focus_on_enemy.side_description|."
 
 #. [then]
 #. [else]
@@ -1669,11 +1589,11 @@ msgstr "Εστίαση στην προστασία..."
 #. [protect]
 #: data/core/macros/ai_controller.cfg:316
 msgid ""
-"focusing on protecting $ai_controller.side_$ally_side|"
-"_current_settings.protect.side_description|."
+"focusing on protecting $ai_controller.side_$ally_side|_current_settings."
+"protect.side_description|."
 msgstr ""
-"εστιάζοντας στην προστασία $ai_controller.side_$ally_side|"
-"_current_settings.protect.side_description|."
+"εστιάζοντας στην προστασία $ai_controller.side_$ally_side|_current_settings."
+"protect.side_description|."
 
 #. [option]
 #: data/core/macros/ai_controller.cfg:473
@@ -1728,15 +1648,15 @@ msgstr "Καθαρισμός όλων των διαταγών"
 #. [do]
 #: data/core/macros/ai_controller.cfg:765
 msgid ""
-"Objective: $ai_controller.side_$ally_side|"
-"_current_settings.currently_doing_objective_description\n"
-"Behavior: $ai_controller.side_$ally_side|"
-"_current_settings.currently_doing_behavior_description"
+"Objective: $ai_controller.side_$ally_side|_current_settings."
+"currently_doing_objective_description\n"
+"Behavior: $ai_controller.side_$ally_side|_current_settings."
+"currently_doing_behavior_description"
 msgstr ""
-"Στόχος: $ai_controller.side_$ally_side|"
-"_current_settings.currently_doing_objective_description\n"
-"Συμπεριφορά: $ai_controller.side_$ally_side|"
-"_current_settings.currently_doing_behavior_description"
+"Στόχος: $ai_controller.side_$ally_side|_current_settings."
+"currently_doing_objective_description\n"
+"Συμπεριφορά: $ai_controller.side_$ally_side|_current_settings."
+"currently_doing_behavior_description"
 
 #. [literal]
 #: data/core/macros/ai_controller.cfg:781
@@ -1779,33 +1699,33 @@ msgstr "Καθαρισμός ειδικών διαταγών"
 
 #: data/core/macros/ai_controller.cfg:1120
 msgid ""
-"Special: $ai_controller.side_$ally_side|"
-"_current_settings.currently_doing_special_description"
+"Special: $ai_controller.side_$ally_side|_current_settings."
+"currently_doing_special_description"
 msgstr ""
-"Ειδικό: $ai_controller.side_$ally_side|"
-"_current_settings.currently_doing_special_description"
+"Ειδικό: $ai_controller.side_$ally_side|_current_settings."
+"currently_doing_special_description"
 
 #. [else]
-#: data/core/macros/deprecated-utils.cfg:35
+#: data/core/macros/deprecated-utils.cfg:34
 msgid "This unit has been renamed to: "
 msgstr "Αυτή η μονάδα μετονομάστηκε σε: "
 
 #. [lua]: generate_objectives
-#: data/core/macros/deprecated-utils.cfg:52 data/lua/wml/objectives.lua:106
+#: data/core/macros/deprecated-utils.cfg:51 data/lua/wml/objectives.lua:106
 msgid "Early finish bonus."
 msgstr "Πριμ πρόωρης λήξης."
 
 #. [lua]: generate_objectives
-#: data/core/macros/deprecated-utils.cfg:56 data/lua/wml/objectives.lua:109
+#: data/core/macros/deprecated-utils.cfg:55 data/lua/wml/objectives.lua:109
 msgid "No early finish bonus."
 msgstr "Χωρίς πριμ πρόωρης λήξης."
 
 #. [lua]: generate_objectives
-#: data/core/macros/deprecated-utils.cfg:60 data/lua/wml/objectives.lua:117
+#: data/core/macros/deprecated-utils.cfg:59 data/lua/wml/objectives.lua:117
 msgid "No gold carried over to the next scenario."
 msgstr "Δεν μεταφέρθηκε χρυσός στο επόμενο σενάριο."
 
-#: data/core/macros/deprecated-utils.cfg:64
+#: data/core/macros/deprecated-utils.cfg:63
 msgid ""
 "\n"
 "100% of finishing gold carried over to the next scenario."
@@ -1813,7 +1733,7 @@ msgstr ""
 "\n"
 "Το 100% του χρυσαφιού μεταφέρεται στην επόμενη αποστολή."
 
-#: data/core/macros/deprecated-utils.cfg:69
+#: data/core/macros/deprecated-utils.cfg:68
 msgid ""
 "\n"
 "40% of finishing gold carried over to the next scenario."
@@ -1821,7 +1741,7 @@ msgstr ""
 "\n"
 "Το 40% του χρυσαφιού μεταφέρεται στην επόμενη αποστολή."
 
-#: data/core/macros/deprecated-utils.cfg:74
+#: data/core/macros/deprecated-utils.cfg:73
 msgid ""
 "\n"
 "20% of finishing gold carried over to the next scenario."
@@ -1830,12 +1750,12 @@ msgstr ""
 "Το 20% του χρυσαφιού μεταφέρεται στην επόμενη αποστολή."
 
 #. [chance_to_hit]: id=deflect
-#: data/core/macros/deprecated-utils.cfg:400
+#: data/core/macros/deprecated-utils.cfg:284
 msgid "deflect"
 msgstr "εκτροπή"
 
 #. [chance_to_hit]: id=deflect
-#: data/core/macros/deprecated-utils.cfg:401
+#: data/core/macros/deprecated-utils.cfg:285
 msgid ""
 "When used defensively, this attack reduces the opponent’s chance to hit by "
 "10%."
@@ -1844,7 +1764,7 @@ msgstr ""
 "χτυπηθεί ο αντίπαλος κατά 10%."
 
 #. [chance_to_hit]: id=deflect
-#: data/core/macros/deprecated-utils.cfg:402
+#: data/core/macros/deprecated-utils.cfg:286
 msgid ""
 "This unit’s defensive techniques reduce the chance of a successful enemy "
 "attack."
@@ -1853,12 +1773,12 @@ msgstr ""
 "εχθρικής επίθεσης."
 
 #. [damage]: id=absorb
-#: data/core/macros/deprecated-utils.cfg:415
+#: data/core/macros/deprecated-utils.cfg:299
 msgid "absorb"
 msgstr "απορρόφηση"
 
 #. [damage]: id=absorb
-#: data/core/macros/deprecated-utils.cfg:416
+#: data/core/macros/deprecated-utils.cfg:300
 msgid ""
 "This attack puts the unit in good defensive position, and it absorbs some of "
 "the damage dealt by an enemy strike."
@@ -1867,7 +1787,7 @@ msgstr ""
 "ζημιάς που προκαλείται από ένα εχθρικό χτύπημα."
 
 #. [damage]: id=absorb
-#: data/core/macros/deprecated-utils.cfg:417
+#: data/core/macros/deprecated-utils.cfg:301
 msgid ""
 "This unit can block enemy strikes, so that it takes reduced damage when hit."
 msgstr ""
@@ -2057,25 +1977,22 @@ msgstr "σφαίρα φωτιάς"
 
 #: data/core/macros/names.cfg:19
 msgid ""
-"Egar,Elch,Ga’ash,Gadé Ihn,Gakré "
-"Ohm,Galeck,Galsh,Garadin,Garchin,Gark,Garlan,Garlin "
-"Ohn,Garrutin,Gart’lo,Garushi,Gashinar,Gashol,Gaushii,Gaustun,Gegchi,Gelka "
-"Kon,Gelknick,Gillan,Gisharri,Gost,Grada,Græt "
-"Ihn,Grashen,Gravlan,Grag,Grelnit,Grenn Ohn,Greth,Gribbel,Gridda,Grish,Gron "
-"Ihn,Ka,Kahn Ih,Karigan,Karri Kon,Karron,Kask,Kegrid,Kerath Ihn,Kerath "
-"Kor,Klash,Kon Garashé,Kraag,Krall Ohn,Kran "
-"Kor,Krash,Kraslar,Krenli,Kruggen,Kun,Mah "
-"Toa,Margian,Mar’Ildian,Markan,Markinos,Mar Ohn,Marra "
-"Di’lek,Marrito,Marritos,Merkush,Merritos "
-"Gark,Morusté,Murr,Omataké,Reshan,Vashitt,Velnick,Veralon,Veramo,Verath,Verditt,Verkon,Verlinn,Vermad,Vertick,Vladnir"
+"Egar,Elch,Ga’ash,Gadé Ihn,Gakré Ohm,Galeck,Galsh,Garadin,Garchin,Gark,Garlan,"
+"Garlin Ohn,Garrutin,Gart’lo,Garushi,Gashinar,Gashol,Gaushii,Gaustun,Gegchi,"
+"Gelka Kon,Gelknick,Gillan,Gisharri,Gost,Grada,Græt Ihn,Grashen,Gravlan,Grag,"
+"Grelnit,Grenn Ohn,Greth,Gribbel,Gridda,Grish,Gron Ihn,Ka,Kahn Ih,Karigan,"
+"Karri Kon,Karron,Kask,Kegrid,Kerath Ihn,Kerath Kor,Klash,Kon Garashé,Kraag,"
+"Krall Ohn,Kran Kor,Krash,Kraslar,Krenli,Kruggen,Kun,Mah Toa,Margian,"
+"Mar’Ildian,Markan,Markinos,Mar Ohn,Marra Di’lek,Marrito,Marritos,Merkush,"
+"Merritos Gark,Morusté,Murr,Omataké,Reshan,Vashitt,Velnick,Veralon,Veramo,"
+"Verath,Verditt,Verkon,Verlinn,Vermad,Vertick,Vladnir"
 msgstr ""
 
 #: data/core/macros/names.cfg:20
 msgid ""
-"Alen Ka,Alinash Mal,Ashirt,Auginet "
-"Ka,Auuglann,Damell,Dell,Demla,Dinsill,Eshi,Olath,Omage,Omagrra,Orra "
-"Ka,Orridan,Orrida,Oshibi,Vallin,Valnirra,Valnitt,Velisk,Verra,Vellin "
-"Ka,Veshtar,Vushtin"
+"Alen Ka,Alinash Mal,Ashirt,Auginet Ka,Auuglann,Damell,Dell,Demla,Dinsill,"
+"Eshi,Olath,Omage,Omagrra,Orra Ka,Orridan,Orrida,Oshibi,Vallin,Valnirra,"
+"Valnitt,Velisk,Verra,Vellin Ka,Veshtar,Vushtin"
 msgstr ""
 
 #. Generator for male drake names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
@@ -2101,7 +2018,50 @@ msgid ""
 msgstr ""
 
 #: data/core/macros/names.cfg:38
-msgid "Aigaithas,Aigaithil,Aigaithing,Aigaithol,Aigalas,Aigaling,Aigalis,Aigalol,Aigalsil,Aigatas,Aigatis,Aigatlos,Aigatsil,Aigatsol,Aigatus,Aigcatas,Aigcatil,Aigcating,Aigcatis,Aigcatsil,Aigcatsol,Aigcatus,Aigdring,Aigdris,Aigdrlos,Aigdrsil,Aigdrsol,Aigduras,Aigdurlos,Aigdursol,Aigthaing,Aigthais,Aigthasil,Aigthaus,Alaithas,Alaithis,Alaithlos,Alaithol,Alaithsol,Alaithus,Alalas,Alalil,Alalol,Alalsol,Alalus,Alatas,Alatil,Alating,Alatlos,Alatsil,Alcatil,Alcatis,Alcatlos,Alcatsil,Aldras,Aldril,Aldring,Aldris,Aldrlos,Aldrol,Aldrsol,Alduras,Aldurlos,Aldurol,Althaas,Althail,Althalos,Althaol,Althasil,Althasol,Althaus,Anaithas,Anaithil,Anaithing,Anaithis,Anaithsil,Anaithus,Analil,Anallos,Analol,Analsil,Analus,Anatas,Anating,Anatis,Anatol,Anatsol,Ancatas,Ancatil,Ancatol,Ancatus,Andril,Andris,Andrlos,Andrus,Anduril,Andurol,Andursol,Andurus,Anthaas,Anthaing,Anthais,Anthaol,Anthasil,Anthasol,Anthaus,Augaithas,Augaithing,Augaithsil,Augaithus,Augalas,Augaling,Augalol,Augating,Augatlos,Augatol,Augatsil,Augatsol,Augcatas,Augcatil,Augcatis,Augcatol,Augcatsil,Augcatus,Augdras,Augdris,Augdrsil,Augdrus,Augduras,Augduril,Augduring,Augdurol,Augdursol,Augdurus,Augthail,Augthais,Augthalos,Augthaol,Dulaithil,Dulaithing,Dulaithlos,Dulaithsil,Dulaithsol,Dulalas,Dulaling,Dulalis,Dulalsil,Dulatil,Dulating,Dulatol,Dulatsol,Dulatus,Dulcatil,Dulcating,Dulcatlos,Dulcatol,Dulcatsil,Dulcatsol,Duldril,Duldris,Duldrlos,Duldrol,Duldrsil,Duldrus,Dulduras,Dulduring,Duldursil,Duldurus,Dulthalos,Dulthasil,Dulthasol,Dulthaus,Glamaithil,Glamaithis,Glamaithol,Glamaithsol,Glamalil,Glamaling,Glamalis,Glamallos,Glamalsil,Glamalus,Glamatil,Glamatus,Glamcatas,Glamcatil,Glamcating,Glamcatsil,Glamcatus,Glamdras,Glamdril,Glamdrlos,Glamdrsol,Glamduras,Glamduril,Glamduring,Glamduris,Glamdursol,Glamthaas,Glamthaol,Glamthasil,Glamthasol,Glamthaus,Glomin,Gomaithas,Gomaithil,Gomaithol,Gomaithsol,Gomalil,Gomalis,Gomalus,Gomatas,Gomatil,Gomating,Gomatis,Gomatlos,Gomatol,Gomcatil,Gomcatis,Gomcatlos,Gomdras,Gomdril,Gomdring,Gomdris,Gomdrol,Gomdrsil,Gomduris,Gomdurlos,Gomdursil,Gomdursol,Gomdurus,Gomthaas,Gomthalos,Gomthasol,Naraithil,Naraithing,Naraithol,Naraithsil,Naraithsol,Naraithus,Naralas,Naralil,Naralsil,Naralus,Naratlos,Naratol,Naratsil,Narcating,Narcatis,Narcatol,Narcatsil,Narcatsol,Nardras,Nardril,Nardring,Nardris,Nardrol,Nardrsil,Nardrsol,Nardrus,Narduras,Narduril,Nardurol,Narthalos,Narthaol,Pelaithas,Pelaithil,Pelaithing,Pelaithis,Pelaithlos,Pelaithol,Pelaithsil,Pelaithsol,Pelalil,Pelaling,Pelalis,Pelalsil,Pelalsol,Pelalus,Pelatil,Pelating,Pelatis,Pelatol,Pelatsil,Pelatus,Pelcating,Pelcatlos,Pelcatol,Pelcatsil,Peldras,Peldril,Peldrsol,Peldrus,Pelduril,Pelduring,Pelduris,Peldurol,Peldursol,Peldurus,Pelthaas,Pelthail,Pelthasil,Trithaithas,Trithaithil,Trithaithis,Trithaithlos,Trithaithol,Trithaithsil,Trithaithsol,Trithaithus,Trithalis,Trithalol,Trithatas,Trithatil,Trithatlos,Trithatsol,Trithcatlos,Trithcatsol,Trithcatus,Trithdril,Trithdring,Trithdris,Trithdrlos,Trithdrol,Trithdrsol,Trithdrus,Trithduril,Trithduring,Trithdurlos,Trithdurol,Trithdursil,Trithdurus,Triththaas,Triththail,Triththaing,Triththasol,Triththaus"
+msgid ""
+"Aigaithas,Aigaithil,Aigaithing,Aigaithol,Aigalas,Aigaling,Aigalis,Aigalol,"
+"Aigalsil,Aigatas,Aigatis,Aigatlos,Aigatsil,Aigatsol,Aigatus,Aigcatas,"
+"Aigcatil,Aigcating,Aigcatis,Aigcatsil,Aigcatsol,Aigcatus,Aigdring,Aigdris,"
+"Aigdrlos,Aigdrsil,Aigdrsol,Aigduras,Aigdurlos,Aigdursol,Aigthaing,Aigthais,"
+"Aigthasil,Aigthaus,Alaithas,Alaithis,Alaithlos,Alaithol,Alaithsol,Alaithus,"
+"Alalas,Alalil,Alalol,Alalsol,Alalus,Alatas,Alatil,Alating,Alatlos,Alatsil,"
+"Alcatil,Alcatis,Alcatlos,Alcatsil,Aldras,Aldril,Aldring,Aldris,Aldrlos,"
+"Aldrol,Aldrsol,Alduras,Aldurlos,Aldurol,Althaas,Althail,Althalos,Althaol,"
+"Althasil,Althasol,Althaus,Anaithas,Anaithil,Anaithing,Anaithis,Anaithsil,"
+"Anaithus,Analil,Anallos,Analol,Analsil,Analus,Anatas,Anating,Anatis,Anatol,"
+"Anatsol,Ancatas,Ancatil,Ancatol,Ancatus,Andril,Andris,Andrlos,Andrus,Anduril,"
+"Andurol,Andursol,Andurus,Anthaas,Anthaing,Anthais,Anthaol,Anthasil,Anthasol,"
+"Anthaus,Augaithas,Augaithing,Augaithsil,Augaithus,Augalas,Augaling,Augalol,"
+"Augating,Augatlos,Augatol,Augatsil,Augatsol,Augcatas,Augcatil,Augcatis,"
+"Augcatol,Augcatsil,Augcatus,Augdras,Augdris,Augdrsil,Augdrus,Augduras,"
+"Augduril,Augduring,Augdurol,Augdursol,Augdurus,Augthail,Augthais,Augthalos,"
+"Augthaol,Dulaithil,Dulaithing,Dulaithlos,Dulaithsil,Dulaithsol,Dulalas,"
+"Dulaling,Dulalis,Dulalsil,Dulatil,Dulating,Dulatol,Dulatsol,Dulatus,Dulcatil,"
+"Dulcating,Dulcatlos,Dulcatol,Dulcatsil,Dulcatsol,Duldril,Duldris,Duldrlos,"
+"Duldrol,Duldrsil,Duldrus,Dulduras,Dulduring,Duldursil,Duldurus,Dulthalos,"
+"Dulthasil,Dulthasol,Dulthaus,Glamaithil,Glamaithis,Glamaithol,Glamaithsol,"
+"Glamalil,Glamaling,Glamalis,Glamallos,Glamalsil,Glamalus,Glamatil,Glamatus,"
+"Glamcatas,Glamcatil,Glamcating,Glamcatsil,Glamcatus,Glamdras,Glamdril,"
+"Glamdrlos,Glamdrsol,Glamduras,Glamduril,Glamduring,Glamduris,Glamdursol,"
+"Glamthaas,Glamthaol,Glamthasil,Glamthasol,Glamthaus,Glomin,Gomaithas,"
+"Gomaithil,Gomaithol,Gomaithsol,Gomalil,Gomalis,Gomalus,Gomatas,Gomatil,"
+"Gomating,Gomatis,Gomatlos,Gomatol,Gomcatil,Gomcatis,Gomcatlos,Gomdras,"
+"Gomdril,Gomdring,Gomdris,Gomdrol,Gomdrsil,Gomduris,Gomdurlos,Gomdursil,"
+"Gomdursol,Gomdurus,Gomthaas,Gomthalos,Gomthasol,Naraithil,Naraithing,"
+"Naraithol,Naraithsil,Naraithsol,Naraithus,Naralas,Naralil,Naralsil,Naralus,"
+"Naratlos,Naratol,Naratsil,Narcating,Narcatis,Narcatol,Narcatsil,Narcatsol,"
+"Nardras,Nardril,Nardring,Nardris,Nardrol,Nardrsil,Nardrsol,Nardrus,Narduras,"
+"Narduril,Nardurol,Narthalos,Narthaol,Pelaithas,Pelaithil,Pelaithing,"
+"Pelaithis,Pelaithlos,Pelaithol,Pelaithsil,Pelaithsol,Pelalil,Pelaling,"
+"Pelalis,Pelalsil,Pelalsol,Pelalus,Pelatil,Pelating,Pelatis,Pelatol,Pelatsil,"
+"Pelatus,Pelcating,Pelcatlos,Pelcatol,Pelcatsil,Peldras,Peldril,Peldrsol,"
+"Peldrus,Pelduril,Pelduring,Pelduris,Peldurol,Peldursol,Peldurus,Pelthaas,"
+"Pelthail,Pelthasil,Trithaithas,Trithaithil,Trithaithis,Trithaithlos,"
+"Trithaithol,Trithaithsil,Trithaithsol,Trithaithus,Trithalis,Trithalol,"
+"Trithatas,Trithatil,Trithatlos,Trithatsol,Trithcatlos,Trithcatsol,Trithcatus,"
+"Trithdril,Trithdring,Trithdris,Trithdrlos,Trithdrol,Trithdrsol,Trithdrus,"
+"Trithduril,Trithduring,Trithdurlos,Trithdurol,Trithdursil,Trithdurus,"
+"Triththaas,Triththail,Triththaing,Triththasol,Triththaus"
 msgstr ""
 
 #. Generator for male dwarf names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
@@ -2120,57 +2080,131 @@ msgstr ""
 
 #: data/core/macros/names.cfg:51
 msgid ""
-"Amadrieriand,Amáril,Amelad,Ameldor,Amendel,Ameng,Amilmaldur,Amilmalith,Amilmandir,Amind,Amiol,Amiorion,Amithrarion,Amóldor,Amorfimir,Amorfir,Amowyn,Amulas,Amundil,Anán,Anebrin,Anebrir,Anémbor,Anénduil,Anerion,Anilad,Anil-"
-"Gawyn,Anilmambor,Anilmariand,Anior,Anithranduil,Anol,Anon,Anorfing,Anundil,Belán,Belandil,Belarandel,Belel,Belén,Belil-"
-"Gandil,Belilmand,Belilmang,Beliondil,Beliril,Belithraldor,Belithrawyn,Belólad,Belómir,Belondel,Belyrion,Cadriembor,Cadrieriand,Cálad,Caladrielas,Calándel,Caldur,Cáldur,Calebrindel,Calebrindir,Calénduil,Calil-"
-"Gandir,Calil-"
-"Gawyn,Calioriand,Caliril,Calónduil,Caloril,Cándir,Canduil,Caraldur,Carang,Célad,Celadrieriand,Celang,Celaral,Celarandil,Celáriand,Celebririon,Celelas,Celendel,Celér,Celilmalas,Celiondir,Celior,Celiorion,Celong,Celór,Celóril,Celorion,Celundir,Celuwyn,Celyndel,Cénduil,Cindil,Ciong,Cithralad,Cithraldur,Cithrand,Cithrandel,Cithraril,Col,Corfil,Corfildur,Cówyn,Cun,Cundir,Cylas,Delán,Delánd,Delandel,Delaraldur,Deláril,Delawyn,Deléng,Delilmaldor,Deliol,Delithrar,Deliwyn,Delóldor,Delorfilad,Delorfilith,Delorion,Delundil,Eäradriendel,Eäradrier,Eäránduil,Eäraralad,Eärebrindel,Eäréldor,Eäreng,Eärérion,Eärithrandil,Eäromir,Eärorfiriand,Eäryldur,Eäryriand,Eladrieng,Elálith,Elánd,Elándil,Elebrildor,Elebrindel,Elebriril,Elélas,Elémbor,Elemir,Elen,Elil-"
-"Garil,Elilmaldur,Eliomir,Eliondil,Elolas,Elólas,Elor,Elorfilad,Elradrien,Elralith,Elran,Elreldur,Elrilmand,Elrioldor,Elriolith,Elrithralith,Elrithranduil,Elrorfir,Elval,Elvandir,Elvaramir,Elváwyn,Elvebrind,Elvebrindel,Elvélith,Elvémir,Elverion,Elvil-"
-"Garion,Elvilmaldur,Elvilmaril,Elvioldur,Elvombor,Elvónduil,Elvorfimir,Elvorfiriand,Elvorfiril,Elvóriand,Elvund,Elyldor,Elyrion,Eowambor,Eowanduil,Eowar,Eowaraldor,Eowaran,Eowarar,Eowariand,Eowarion,Eowebrind,Eowémir,Eowil-"
-"Garion,Eowimbor,Eowiomir,Eowithrawyn,Eowóldur,Eoworfildor,Eowówyn,Eowylas,Fadriendel,Fandel,Farandir,Fáwyn,Fendel,Fer,Filman,Fioril,Fithraril,Forfilas,Fyrion,Gadriendil,Gadrieng,Galadrieldor,Galálad,Galálas,Galalith,Galar,Galelas,Galeldur,Galelith,Galémbor,Galithrariand,Galoldur,Galuldur,Galur,Galurion,Gambor,Gán,Ganduil,Garaldor,Gararil,Gelad,Géril,Gil-"
-"Gandel,Gil-"
-"Gang,Giombor,Githral,Githralad,Gladriendil,Glal,Glámbor,Glandil,Glarang,Glararil,Glilmal,Glimir,Glior,Glólas,Gloldor,Glómir,Glon,Glul,Golad,Gor,Gumbor,Gyl,Gymbor,Gyn,Harariand,Háriand,Hebril,Hemir,Hénduil,Hilas,Hil-"
-"Garion,Hilmariand,Hiong,Hirion,Hithrandel,Horfilad,Horfindel,Hundel,Hymir,Hyrion,Hywyn,Isadrieng,Isándir,Isarandel,Isarar,Iselas,Isér,Isilmandel,Isirion,Isithral,Isól,Isóndel,Isóng,Isorfilad,Isorfindir,Isuwyn,Isyndel,Legal,Legaran,Legémir,Legéril,Legilad,Legil-"
-"Gal,Legiondel,Legithralith,Legorfindil,Legorfirion,Legówyn,Legyl,Legyn,Linduilas,Lómadrieril,Lómarand,Lómariand,Lómebrilad,Lómebrind,Lómémbor,Lómilmaril,Lómiriand,Lómorfindil,Lómowyn,Madrieril,Maldur,Mánduil,Maraldur,Mebrin,Méng,Mérion,Miolith,Miomir,Mithrand,Mondir,Móndir,Morfilas,Morfin,Morfiriand,Mylith,Nadrieldor,Nalith,Nán,Nél,Nil-"
-"Galas,Nil-Galith,Nil-"
-"Gar,Nilmar,Nóndel,Norfildor,Norfilith,Norfindil,Norfindir,Numbor,Nyldur,Padrieriand,Padrieril,Pamir,Paraldor,Parariand,Pilmalad,Pindir,Pór,Porfildur,Pumbor,Pyldur,Rebrir,Réndir,Rilmandil,Rithrandil,Ról,Róldor,Roldur,Róldur,Rorfilad,Rorfindil,Rówyn,Ryn,Sadrielas,Sebrin,Sebriril,Sénd,Sil-"
-"Gal,Sólad,Sorfind,Sóriand,Tadriendir,Taral,Taraldur,Táriand,Tendel,Téwyn,Thradrieriand,Thrambor,Thraral,Threbring,Thrélad,Thréldur,Thril-"
-"Gamir,Thril-Gandir,Thril-"
-"Gar,Thrilmandel,Thrimir,Thrion,Thrithran,Throlas,Thrón,Thróng,Thrund,Thryriand,Til-"
-"Gan,Tilmalad,Tilmalas,Tinandir,Tinarambor,Tinarariand,Tinén,Tinil-"
-"Ganduil,Tinilmand,Tinilmawyn,Tinimir,Tinindil,Tinithrar,Tinoldor,Tinond,Tinorfind,Tinorfiriand,Tinóriand,Tinowyn,Tinun,Tinyl,Tion,Tolas,Torfildur,Tówyn,Tylad,Unadrieldor,Unadrier,Unál,Unalas,Unálas,Unaraldur,Unaril,Unárion,Unebrin,Unebrind,Uneldor,Unil,Unil-"
-"Gan,Uniolith,Unioril,Unólith,Unombor,Unóndel,Unondir,Unorfildor,Unorfiril,Unorfiwyn,Unulad,Uradrielas,Uradrierion,Urálas,Urálith,Urambor,Urér,Uril-"
-"Gambor,Urilmalith,Uróldor,Urorfildor,Urul,Urymir,Válad,Ván,Vándel,Vandir,Varalas,Vararion,Vebril,Vebrilas,Vebrinduil,Vel,Vilith,Vol,Vólas,Vóldur,Vondel,Vorfin,Vorfindil,Vulas,Vuldur,Vunduil,Vylas,Vyldor"
+"Amadrieriand,Amáril,Amelad,Ameldor,Amendel,Ameng,Amilmaldur,Amilmalith,"
+"Amilmandir,Amind,Amiol,Amiorion,Amithrarion,Amóldor,Amorfimir,Amorfir,Amowyn,"
+"Amulas,Amundil,Anán,Anebrin,Anebrir,Anémbor,Anénduil,Anerion,Anilad,Anil-"
+"Gawyn,Anilmambor,Anilmariand,Anior,Anithranduil,Anol,Anon,Anorfing,Anundil,"
+"Belán,Belandil,Belarandel,Belel,Belén,Belil-Gandil,Belilmand,Belilmang,"
+"Beliondil,Beliril,Belithraldor,Belithrawyn,Belólad,Belómir,Belondel,Belyrion,"
+"Cadriembor,Cadrieriand,Cálad,Caladrielas,Calándel,Caldur,Cáldur,Calebrindel,"
+"Calebrindir,Calénduil,Calil-Gandir,Calil-Gawyn,Calioriand,Caliril,Calónduil,"
+"Caloril,Cándir,Canduil,Caraldur,Carang,Célad,Celadrieriand,Celang,Celaral,"
+"Celarandil,Celáriand,Celebririon,Celelas,Celendel,Celér,Celilmalas,Celiondir,"
+"Celior,Celiorion,Celong,Celór,Celóril,Celorion,Celundir,Celuwyn,Celyndel,"
+"Cénduil,Cindil,Ciong,Cithralad,Cithraldur,Cithrand,Cithrandel,Cithraril,Col,"
+"Corfil,Corfildur,Cówyn,Cun,Cundir,Cylas,Delán,Delánd,Delandel,Delaraldur,"
+"Deláril,Delawyn,Deléng,Delilmaldor,Deliol,Delithrar,Deliwyn,Delóldor,"
+"Delorfilad,Delorfilith,Delorion,Delundil,Eäradriendel,Eäradrier,Eäránduil,"
+"Eäraralad,Eärebrindel,Eäréldor,Eäreng,Eärérion,Eärithrandil,Eäromir,"
+"Eärorfiriand,Eäryldur,Eäryriand,Eladrieng,Elálith,Elánd,Elándil,Elebrildor,"
+"Elebrindel,Elebriril,Elélas,Elémbor,Elemir,Elen,Elil-Garil,Elilmaldur,"
+"Eliomir,Eliondil,Elolas,Elólas,Elor,Elorfilad,Elradrien,Elralith,Elran,"
+"Elreldur,Elrilmand,Elrioldor,Elriolith,Elrithralith,Elrithranduil,Elrorfir,"
+"Elval,Elvandir,Elvaramir,Elváwyn,Elvebrind,Elvebrindel,Elvélith,Elvémir,"
+"Elverion,Elvil-Garion,Elvilmaldur,Elvilmaril,Elvioldur,Elvombor,Elvónduil,"
+"Elvorfimir,Elvorfiriand,Elvorfiril,Elvóriand,Elvund,Elyldor,Elyrion,Eowambor,"
+"Eowanduil,Eowar,Eowaraldor,Eowaran,Eowarar,Eowariand,Eowarion,Eowebrind,"
+"Eowémir,Eowil-Garion,Eowimbor,Eowiomir,Eowithrawyn,Eowóldur,Eoworfildor,"
+"Eowówyn,Eowylas,Fadriendel,Fandel,Farandir,Fáwyn,Fendel,Fer,Filman,Fioril,"
+"Fithraril,Forfilas,Fyrion,Gadriendil,Gadrieng,Galadrieldor,Galálad,Galálas,"
+"Galalith,Galar,Galelas,Galeldur,Galelith,Galémbor,Galithrariand,Galoldur,"
+"Galuldur,Galur,Galurion,Gambor,Gán,Ganduil,Garaldor,Gararil,Gelad,Géril,Gil-"
+"Gandel,Gil-Gang,Giombor,Githral,Githralad,Gladriendil,Glal,Glámbor,Glandil,"
+"Glarang,Glararil,Glilmal,Glimir,Glior,Glólas,Gloldor,Glómir,Glon,Glul,Golad,"
+"Gor,Gumbor,Gyl,Gymbor,Gyn,Harariand,Háriand,Hebril,Hemir,Hénduil,Hilas,Hil-"
+"Garion,Hilmariand,Hiong,Hirion,Hithrandel,Horfilad,Horfindel,Hundel,Hymir,"
+"Hyrion,Hywyn,Isadrieng,Isándir,Isarandel,Isarar,Iselas,Isér,Isilmandel,"
+"Isirion,Isithral,Isól,Isóndel,Isóng,Isorfilad,Isorfindir,Isuwyn,Isyndel,"
+"Legal,Legaran,Legémir,Legéril,Legilad,Legil-Gal,Legiondel,Legithralith,"
+"Legorfindil,Legorfirion,Legówyn,Legyl,Legyn,Linduilas,Lómadrieril,Lómarand,"
+"Lómariand,Lómebrilad,Lómebrind,Lómémbor,Lómilmaril,Lómiriand,Lómorfindil,"
+"Lómowyn,Madrieril,Maldur,Mánduil,Maraldur,Mebrin,Méng,Mérion,Miolith,Miomir,"
+"Mithrand,Mondir,Móndir,Morfilas,Morfin,Morfiriand,Mylith,Nadrieldor,Nalith,"
+"Nán,Nél,Nil-Galas,Nil-Galith,Nil-Gar,Nilmar,Nóndel,Norfildor,Norfilith,"
+"Norfindil,Norfindir,Numbor,Nyldur,Padrieriand,Padrieril,Pamir,Paraldor,"
+"Parariand,Pilmalad,Pindir,Pór,Porfildur,Pumbor,Pyldur,Rebrir,Réndir,"
+"Rilmandil,Rithrandil,Ról,Róldor,Roldur,Róldur,Rorfilad,Rorfindil,Rówyn,Ryn,"
+"Sadrielas,Sebrin,Sebriril,Sénd,Sil-Gal,Sólad,Sorfind,Sóriand,Tadriendir,"
+"Taral,Taraldur,Táriand,Tendel,Téwyn,Thradrieriand,Thrambor,Thraral,Threbring,"
+"Thrélad,Thréldur,Thril-Gamir,Thril-Gandir,Thril-Gar,Thrilmandel,Thrimir,"
+"Thrion,Thrithran,Throlas,Thrón,Thróng,Thrund,Thryriand,Til-Gan,Tilmalad,"
+"Tilmalas,Tinandir,Tinarambor,Tinarariand,Tinén,Tinil-Ganduil,Tinilmand,"
+"Tinilmawyn,Tinimir,Tinindil,Tinithrar,Tinoldor,Tinond,Tinorfind,Tinorfiriand,"
+"Tinóriand,Tinowyn,Tinun,Tinyl,Tion,Tolas,Torfildur,Tówyn,Tylad,Unadrieldor,"
+"Unadrier,Unál,Unalas,Unálas,Unaraldur,Unaril,Unárion,Unebrin,Unebrind,"
+"Uneldor,Unil,Unil-Gan,Uniolith,Unioril,Unólith,Unombor,Unóndel,Unondir,"
+"Unorfildor,Unorfiril,Unorfiwyn,Unulad,Uradrielas,Uradrierion,Urálas,Urálith,"
+"Urambor,Urér,Uril-Gambor,Urilmalith,Uróldor,Urorfildor,Urul,Urymir,Válad,Ván,"
+"Vándel,Vandir,Varalas,Vararion,Vebril,Vebrilas,Vebrinduil,Vel,Vilith,Vol,"
+"Vólas,Vóldur,Vondel,Vorfin,Vorfindil,Vulas,Vuldur,Vunduil,Vylas,Vyldor"
 msgstr ""
 
 #: data/core/macros/names.cfg:52
 msgid ""
-"Amadrielia,Amadrielindë,Amadriendra,Amadriewen,Amarang,Amebrilindë,Amedë,Améthien,Amewien,Amil-"
-"Gadith,Amil-"
-"Garith,Amilmadia,Amiolith,Amionia,Amithraniel,Amithrawien,Amiwen,Amodë,Amorfilith,Amorith,Amulia,Amuviel,Amuwen,Analia,Anang,Anaraclya,Anáthien,Anebriniel,Anilmarith,Aning,Aniorith,Anówien,Anundra,Anuthiel,Anuthien,Anylindë,Anythien,Anywien,Belaclya,Beladrielith,Beladriewen,Beladriewien,Belarania,Belaraviel,Belebrindra,Belendra,Beliolia,Belithraniel,Belithrawiel,Belithrawien,Belowen,Belulindë,Cádë,Cadriewen,Caladrieng,Calándra,Calang,Calánia,Calebriwien,Calewen,Calewiel,Calil-"
-"Galith,Calilmalith,Calithraclya,Calóniel,Calorfiniel,Calówien,Caluclya,Ceclya,Celadë,Celália,Celálindë,Celarandra,Celararith,Celárith,Celebriniel,Celebriviel,Celelith,Celéng,Celérith,Celidien,Celilith,Celindë,Celiodë,Celioniel,Celith,Celithradith,Celódith,Celorfilindë,Celorfing,Celorfiwien,Celówien,Celylia,Cethien,Cing,Cithralith,Cithrania,Cithrawen,Cólindë,Corfiviel,Cydia,Delararith,Delebrinia,Deléthien,Delil-"
-"Ganiel,Deliowen,Delithrathiel,Delóndra,Delorfilindë,Delorfithien,Deloviel,Delydien,Eäradriedien,Eärániel,Eärarawien,Eärélia,Eärenia,Eärewen,Eäréwiel,Eärilmadë,Eärilmathien,Eäriolith,Eärithrang,Eärorfiwien,Eärudë,Eladriedë,Eladrielia,Elarawiel,Elebrindra,Eledë,Elelith,Elil-"
-"Gang,Elilmalia,Elilmawien,Elithraclya,Elithradien,Elóndra,Elorfing,Elorfithien,Elradrierith,Elránia,Elrebridith,Elréthiel,Elrilindë,Elrilmandra,Elrilmathien,Elrithiel,Elrithradith,Elriwen,Elródith,Elrorfidia,Eluviel,Elvádia,Elvánia,Elvil-"
-"Gawien,Elvilmathiel,Elviniel,Elviondra,Elvithrang,Elvithrathien,Elvowien,Elvyniel,Elvyviel,Elynia,Elywen,Eowalia,Eowarawien,Eowathiel,Eowebridith,Eowedith,Eowidien,Eowil-"
-"Galindë,Eowilindë,Eowiowien,Eowylia,Eowyniel,Fadriedith,Fadrielia,Fadriendra,Fadrienia,Falindë,Fáthiel,Fathien,Fáwien,Feclya,Féthiel,Fil-"
-"Galia,Fil-Gathiel,Fil-"
-"Gawien,Filmaclya,Fioniel,Fódë,Fólindë,Fulindë,Gadrieclya,Gadrieviel,Galadriethien,Galándra,Galaraniel,Galebrilia,Galebrindra,Galédë,Galedien,Galéwiel,Galil-"
-"Gania,Galilmadia,Galiothiel,Galithrathien,Galólia,Galolindë,Galorfiwiel,Galothiel,Galowen,Galundra,Galyniel,Gathien,Gáviel,Gebririth,Gewen,Gil-"
-"Gawien,Gilia,Gioniel,Gioviel,Giowen,Githrania,Githrawiel,Glália,Glebrithien,Gléndra,Glilmadien,Glilmawiel,Glithiel,Gloclya,Glodith,Glorfilith,Gloviel,Glowiel,Goclya,Godien,Gólia,Golindë,Guviel,Harawiel,Haviel,Háwien,Héclya,Hedia,Helith,Hewen,Hil-"
-"Gania,Hiodë,Hiwien,Hodia,Hódia,Horfinia,Horfiwien,Hóthiel,Huclya,Hunia,Huthien,Hyclya,Hythiel,Hythien,Isadrieng,Isáwen,Isebridien,Isebrinia,Isendra,Iséng,Iseviel,Isil-"
-"Garith,Isilindë,Isithradë,Isithradien,Isithrarith,Isithrawiel,Isóthien,Legádë,Legadien,Legadrieclya,Legadriedë,Legadrieniel,Legaraclya,Legebrilia,Legelith,Legeng,Legéniel,Legethiel,Legidia,Legil-"
-"Galindë,Legilmadith,Legilmawiel,Legithralindë,Legithrandra,Legithrania,Legolith,Legondra,Legorfidë,Lómániel,Lómebriclya,Lómebriniel,Lómedia,Lómeniel,Lómiclya,Lómilindë,Lómilmathiel,Lómilmawiel,Lómithradë,Lómithrarith,Lómódë,Lómolith,Lómóndra,Lómorfing,Lómorith,Lómudia,Lómulindë,Lómuniel,Lómuthiel,Lómynia,Lómythien,Mádia,Madrieclya,Maraclya,Mebriwiel,Meclya,Medien,Mil-"
-"Gathiel,Mil-"
-"Gathien,Milindë,Milith,Miowen,Miowiel,Mithradë,Mithralindë,Módë,Módia,Moniel,Morfilindë,Munia,Myndra,Mywiel,Narania,Naraniel,Náviel,Nawen,Newen,Nil-"
-"Gang,Nilmadia,Niodien,Niolia,Niothien,Nithraniel,Nithrarith,Nowen,Nydith,Pádia,Padriedith,Paralindë,Parandra,Pawen,Pebridien,Pil-"
-"Gadia,Pil-"
-"Gadien,Pilindë,Pindra,Pong,Porfindra,Porfiwien,Póviel,Pulia,Puthien,Reniel,Réviel,Ril-"
-"Gawien,Rindra,Riothien,Róng,Rorfiviel,Sadrienia,Sadrierith,Sálindë,Sáng,Saradith,Sarandra,Sédith,Sendra,Sethien,Silmaclya,Silmathiel,Sioclya,Siorith,Sithrang,Sithrawen,Soniel,Sothiel,Sothien,Syniel,Tadrierith,Tang,Taradien,Tarathiel,Tathiel,Terith,Thradia,Thrália,Thraraviel,Threbriniel,Thredien,Thrérith,Thridith,Thrinia,Thrithradia,Thrithrandra,Thrithraniel,Throlith,Throng,Throthiel,Thrulith,Thruthien,Thryng,Til-"
-"Gandra,Tilmaclya,Tilmaviel,Tináclya,Tinadriethien,Tinálindë,Tinaraniel,Tinarathien,Tinawiel,Tinebrithiel,Tinerith,Tinil-"
-"Gania,Tinil-"
-"Gawiel,Tiniolith,Tinithrathiel,Tinóng,Tinorfilith,Tinorfithien,Tinudia,Tiorith,Tithrathien,Tówiel,Tuniel,Unadrieng,Unáthien,Unebridë,Unénia,Unil-"
-"Gadia,Unilmadia,Unindra,Uniodë,Uniolia,Uniong,Unionia,Unóndra,Unorfiwen,Unulindë,Unuviel,Unynia,Uraclya,Uradriedia,Uránia,Urárith,Urebriclya,Ureclya,Urilmadia,Urilmawiel,Uriolia,Urithralindë,Uruthien,Uryrith,Vadrierith,Vadrieviel,Vadriewen,Varawiel,Vebrithien,Vil-"
-"Gandra,Violindë,Viowiel,Vithrang,Vithraniel,Viwiel,Vódia,Vóng,Vorficlya,Vorfing,Vorfirith,Vorfiwiel,Vówien"
+"Amadrielia,Amadrielindë,Amadriendra,Amadriewen,Amarang,Amebrilindë,Amedë,"
+"Améthien,Amewien,Amil-Gadith,Amil-Garith,Amilmadia,Amiolith,Amionia,"
+"Amithraniel,Amithrawien,Amiwen,Amodë,Amorfilith,Amorith,Amulia,Amuviel,"
+"Amuwen,Analia,Anang,Anaraclya,Anáthien,Anebriniel,Anilmarith,Aning,Aniorith,"
+"Anówien,Anundra,Anuthiel,Anuthien,Anylindë,Anythien,Anywien,Belaclya,"
+"Beladrielith,Beladriewen,Beladriewien,Belarania,Belaraviel,Belebrindra,"
+"Belendra,Beliolia,Belithraniel,Belithrawiel,Belithrawien,Belowen,Belulindë,"
+"Cádë,Cadriewen,Caladrieng,Calándra,Calang,Calánia,Calebriwien,Calewen,"
+"Calewiel,Calil-Galith,Calilmalith,Calithraclya,Calóniel,Calorfiniel,Calówien,"
+"Caluclya,Ceclya,Celadë,Celália,Celálindë,Celarandra,Celararith,Celárith,"
+"Celebriniel,Celebriviel,Celelith,Celéng,Celérith,Celidien,Celilith,Celindë,"
+"Celiodë,Celioniel,Celith,Celithradith,Celódith,Celorfilindë,Celorfing,"
+"Celorfiwien,Celówien,Celylia,Cethien,Cing,Cithralith,Cithrania,Cithrawen,"
+"Cólindë,Corfiviel,Cydia,Delararith,Delebrinia,Deléthien,Delil-Ganiel,"
+"Deliowen,Delithrathiel,Delóndra,Delorfilindë,Delorfithien,Deloviel,Delydien,"
+"Eäradriedien,Eärániel,Eärarawien,Eärélia,Eärenia,Eärewen,Eäréwiel,Eärilmadë,"
+"Eärilmathien,Eäriolith,Eärithrang,Eärorfiwien,Eärudë,Eladriedë,Eladrielia,"
+"Elarawiel,Elebrindra,Eledë,Elelith,Elil-Gang,Elilmalia,Elilmawien,"
+"Elithraclya,Elithradien,Elóndra,Elorfing,Elorfithien,Elradrierith,Elránia,"
+"Elrebridith,Elréthiel,Elrilindë,Elrilmandra,Elrilmathien,Elrithiel,"
+"Elrithradith,Elriwen,Elródith,Elrorfidia,Eluviel,Elvádia,Elvánia,Elvil-"
+"Gawien,Elvilmathiel,Elviniel,Elviondra,Elvithrang,Elvithrathien,Elvowien,"
+"Elvyniel,Elvyviel,Elynia,Elywen,Eowalia,Eowarawien,Eowathiel,Eowebridith,"
+"Eowedith,Eowidien,Eowil-Galindë,Eowilindë,Eowiowien,Eowylia,Eowyniel,"
+"Fadriedith,Fadrielia,Fadriendra,Fadrienia,Falindë,Fáthiel,Fathien,Fáwien,"
+"Feclya,Féthiel,Fil-Galia,Fil-Gathiel,Fil-Gawien,Filmaclya,Fioniel,Fódë,"
+"Fólindë,Fulindë,Gadrieclya,Gadrieviel,Galadriethien,Galándra,Galaraniel,"
+"Galebrilia,Galebrindra,Galédë,Galedien,Galéwiel,Galil-Gania,Galilmadia,"
+"Galiothiel,Galithrathien,Galólia,Galolindë,Galorfiwiel,Galothiel,Galowen,"
+"Galundra,Galyniel,Gathien,Gáviel,Gebririth,Gewen,Gil-Gawien,Gilia,Gioniel,"
+"Gioviel,Giowen,Githrania,Githrawiel,Glália,Glebrithien,Gléndra,Glilmadien,"
+"Glilmawiel,Glithiel,Gloclya,Glodith,Glorfilith,Gloviel,Glowiel,Goclya,Godien,"
+"Gólia,Golindë,Guviel,Harawiel,Haviel,Háwien,Héclya,Hedia,Helith,Hewen,Hil-"
+"Gania,Hiodë,Hiwien,Hodia,Hódia,Horfinia,Horfiwien,Hóthiel,Huclya,Hunia,"
+"Huthien,Hyclya,Hythiel,Hythien,Isadrieng,Isáwen,Isebridien,Isebrinia,Isendra,"
+"Iséng,Iseviel,Isil-Garith,Isilindë,Isithradë,Isithradien,Isithrarith,"
+"Isithrawiel,Isóthien,Legádë,Legadien,Legadrieclya,Legadriedë,Legadrieniel,"
+"Legaraclya,Legebrilia,Legelith,Legeng,Legéniel,Legethiel,Legidia,Legil-"
+"Galindë,Legilmadith,Legilmawiel,Legithralindë,Legithrandra,Legithrania,"
+"Legolith,Legondra,Legorfidë,Lómániel,Lómebriclya,Lómebriniel,Lómedia,"
+"Lómeniel,Lómiclya,Lómilindë,Lómilmathiel,Lómilmawiel,Lómithradë,Lómithrarith,"
+"Lómódë,Lómolith,Lómóndra,Lómorfing,Lómorith,Lómudia,Lómulindë,Lómuniel,"
+"Lómuthiel,Lómynia,Lómythien,Mádia,Madrieclya,Maraclya,Mebriwiel,Meclya,"
+"Medien,Mil-Gathiel,Mil-Gathien,Milindë,Milith,Miowen,Miowiel,Mithradë,"
+"Mithralindë,Módë,Módia,Moniel,Morfilindë,Munia,Myndra,Mywiel,Narania,"
+"Naraniel,Náviel,Nawen,Newen,Nil-Gang,Nilmadia,Niodien,Niolia,Niothien,"
+"Nithraniel,Nithrarith,Nowen,Nydith,Pádia,Padriedith,Paralindë,Parandra,Pawen,"
+"Pebridien,Pil-Gadia,Pil-Gadien,Pilindë,Pindra,Pong,Porfindra,Porfiwien,"
+"Póviel,Pulia,Puthien,Reniel,Réviel,Ril-Gawien,Rindra,Riothien,Róng,Rorfiviel,"
+"Sadrienia,Sadrierith,Sálindë,Sáng,Saradith,Sarandra,Sédith,Sendra,Sethien,"
+"Silmaclya,Silmathiel,Sioclya,Siorith,Sithrang,Sithrawen,Soniel,Sothiel,"
+"Sothien,Syniel,Tadrierith,Tang,Taradien,Tarathiel,Tathiel,Terith,Thradia,"
+"Thrália,Thraraviel,Threbriniel,Thredien,Thrérith,Thridith,Thrinia,"
+"Thrithradia,Thrithrandra,Thrithraniel,Throlith,Throng,Throthiel,Thrulith,"
+"Thruthien,Thryng,Til-Gandra,Tilmaclya,Tilmaviel,Tináclya,Tinadriethien,"
+"Tinálindë,Tinaraniel,Tinarathien,Tinawiel,Tinebrithiel,Tinerith,Tinil-Gania,"
+"Tinil-Gawiel,Tiniolith,Tinithrathiel,Tinóng,Tinorfilith,Tinorfithien,Tinudia,"
+"Tiorith,Tithrathien,Tówiel,Tuniel,Unadrieng,Unáthien,Unebridë,Unénia,Unil-"
+"Gadia,Unilmadia,Unindra,Uniodë,Uniolia,Uniong,Unionia,Unóndra,Unorfiwen,"
+"Unulindë,Unuviel,Unynia,Uraclya,Uradriedia,Uránia,Urárith,Urebriclya,Ureclya,"
+"Urilmadia,Urilmawiel,Uriolia,Urithralindë,Uruthien,Uryrith,Vadrierith,"
+"Vadrieviel,Vadriewen,Varawiel,Vebrithien,Vil-Gandra,Violindë,Viowiel,"
+"Vithrang,Vithraniel,Viwiel,Vódia,Vóng,Vorficlya,Vorfing,Vorfirith,Vorfiwiel,"
+"Vówien"
 msgstr ""
 
 #. Generator for male elf names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
@@ -2246,11 +2280,103 @@ msgid ""
 msgstr ""
 
 #: data/core/macros/names.cfg:107
-msgid "Addraecyn,Addraenvan,Addraer,Addraercyn,Addraryn,Addreddry,Addredry,Addregwyn,Addrenyc,Addreoddry,Addreoddyn,Addreonyc,Addreorcyn,Addreran,Addribryn,Addriddyn,Addrocyn,Addroryn,Addrunvan,Addrurcyn,Addryllyn,Addrynvan,Aethacyn,Aethadry,Aethaec,Aethaeran,Aethaeryn,Aethagwyn,Aethanry,Aetharcyn,Aethec,Aethellyn,Aethenvan,Aetheoc,Aetheollyn,Aetheonyc,Aetheorcyn,Aethercyn,Aetherraent,Aethibryn,Aethiddry,Aethircyn,Aethobryn,Aethoddyn,Aethonnyn,Aethuc,Aethudry,Aethugwyn,Aethun,Aethunry,Aethydry,Aethynyc,Blac,Bladoc,Blaec,Blaedry,Blanry,Blebryn,Bledoc,Blemyr,Blennyn,Blenvan,Bleollyn,Blercyn,Blidd,Bliddry,Blillyn,Blinvan,Blollyn,Blubryn,Blucyn,Bludry,Blullyn,Bluran,Blybryn,Blydd,Blygwyn,Blymyr,Blyr,Bucyn,Cac,Cadry,Caebryn,Caedry,Caeran,Caercyn,Car,Carac,Caraddry,Caradoc,Caraedry,Caraennyn,Cararyn,Caredd,Careddry,Caregwyn,Caren,Careobryn,Careogwyn,Careonvan,Careorraent,Careoryn,Carercyn,Caric,Cariddry,Carocyn,Caroddyn,Caror,Caroran,Carraent,Carudoc,Carullyn,Carygwyn,Caryn,Cebryn,Cemyr,Cennyn,Ceoc,Ceoddry,Ceoddyn,Ceomyr,Ceonnyn,Ceonry,Ceoryn,Cicyn,Cin,Cinry,Coc,Convan,Corcyn,Cubryn,Cunry,Curyn,Cynyc,Cyryn,Dac,Dadd,Dadoc,Daeddry,Daedoc,Daellyn,Demyr,Denvan,Deodd,Deollyn,Deonyc,Derraent,Dibryn,Dinnyn,Dircyn,Dycyn,Dyddyn,Gaddry,Gaebryn,Gaedry,Gaercyn,Gagwyn,Gan,Gannyn,Gar,Gecyn,Geddyn,Gegwyn,Geodry,Ginvan,Glacyn,Gladoc,Glaercyn,Glarraent,Gleddry,Gleoddyn,Gleran,Gliddyn,Glillyn,Glinry,Glircyn,Gloddry,Gloddyn,Glonry,Glonvan,Glumyr,Glun,Glunry,Glunvan,Glyc,Glydd,Glydoc,Glynry,Glynvan,Glyran,Goc,Gor,Gubryn,Gudd,Gullyn,Gumyr,Gur,Gwadoc,Gwaec,Gwaeddyn,Gwan,Gweddyn,Gwegwyn,Gwellyn,Gwennyn,Gwenyc,Gweocyn,Gweodd,Gweodoc,Gweodry,Gweogwyn,Gweoran,Gwidoc,Gwilam,Gwodd,Gwoddyn,Gwollyn,Gwor,Gwucyn,Gwudoc,Gwumyr,Gwuran,Gwybryn,Gwycyn,Gwyddry,Gwydoc,Gwymyr,Gwynnyn,Gydoc,Gyllyn,Gymyr,Haldar,Labryn,Ladoc,Laellyn,Lan,Lannyn,Laran,Lec,Lemyr,Lenvan,Leogwyn,Lercyn,Ligwyn,Lin,Liryn,Lonnyn,Lorraent,Luddry,Ludoc,Lunnyn,Lunvan,Lurraent,Mac,Maddyn,Maennyn,Manry,Manyc,Marcyn,Mec,Menvan,Meollyn,Meon,Meonnyn,Meorraent,Middry,Midry,Mimyr,Modd,Moddry,Monry,Moran,Morcyn,Mubryn,Mudoc,Mugwyn,Murcyn,Mydoc,Mygwyn,Myn,Myrraent,Owac,Owadd,Owaddyn,Owaecyn,Owaedry,Owain,Owarcyn,Owaryn,Owecyn,Owedry,Oweomyr,Oweor,Oweorcyn,Oweran,Owercyn,Owidry,Owinvan,Owinyc,Owodd,Owoddry,Owogwyn,Owollyn,Oworan,Oworcyn,Oworraent,Owuddry,Owuddyn,Owugwyn,Owur,Owyran,Rabryn,Radd,Ranvan,Rar,Reoddyn,Reodry,Rhaecyn,Rhaedoc,Rhaemyr,Rhaerraent,Rhanry,Rharcyn,Rhenry,Rhenvan,Rhenyc,Rheodd,Rheoddyn,Rheollyn,Rheor,Rheoran,Rheorraent,Rheran,Rherraent,Rhobryn,Rhodry,Rhollyn,Rhonvan,Rhubryn,Rhugwyn,Rhunyc,Rhur,Rhygwyn,Rhyllyn,Rhynyc,Rhyrcyn,Rhyrraent,Rocyn,Roddyn,Romyr,Ron,Ronry,Rubryn,Ruddry,Rumyr,Run,Rurcyn,Rybryn,Rycyn,Ryddry,Rygwyn,Rynnyn,Rynry,Saec,Saellyn,Saemyr,Saenvan,Saercyn,Sanyc,Saran,Sarraent,Secyn,Seddyn,Sedry,Sellyn,Sennyn,Seoddry,Seorcyn,Sercyn,Siddry,Simyr,Siryn,Sodd,Sodry,Soran,Suc,Sudd,Surcyn,Sydd,Syran,Syryn,Tabryn,Taec,Taedd,Taedoc,Taemyr,Taenvan,Taercyn,Tanry,Tarcyn,Teddyn,Tegwyn,Ten,Tennyn,Tenvan,Teobryn,Teoddyn,Teor,Teorcyn,Terraent,Tinry,Tinvan,Tiryn,Todd,Tudd,Tuddry,Tudoc,Tunvan,Turraent,Tyddyn,Vaddyn,Vaeddyn,Vaedry,Vaennyn,Varcyn,Ven,Vennyn,Veocyn,Veoddyn,Veodry,Veogwyn,Veomyr,Vinvan,Vinyc,Virraent,Vobryn,Vogwyn,Vonry,Vuddyn,Vugwyn,Vyc,Vygwyn,Vyrcyn,Yracyn,Yraec,Yran,Yrannyn,Yranvan,Yraryn,Yredd,Yreddyn,Yregwyn,Yreryn,Yrinvan,Yrirraent,Yroddry,Yrullyn,Yrumyr,Yrunnyn,Yrunvan,Yryllyn,Yrymyr,Yrynyc,Yryrcyn"
+msgid ""
+"Addraecyn,Addraenvan,Addraer,Addraercyn,Addraryn,Addreddry,Addredry,"
+"Addregwyn,Addrenyc,Addreoddry,Addreoddyn,Addreonyc,Addreorcyn,Addreran,"
+"Addribryn,Addriddyn,Addrocyn,Addroryn,Addrunvan,Addrurcyn,Addryllyn,"
+"Addrynvan,Aethacyn,Aethadry,Aethaec,Aethaeran,Aethaeryn,Aethagwyn,Aethanry,"
+"Aetharcyn,Aethec,Aethellyn,Aethenvan,Aetheoc,Aetheollyn,Aetheonyc,Aetheorcyn,"
+"Aethercyn,Aetherraent,Aethibryn,Aethiddry,Aethircyn,Aethobryn,Aethoddyn,"
+"Aethonnyn,Aethuc,Aethudry,Aethugwyn,Aethun,Aethunry,Aethydry,Aethynyc,Blac,"
+"Bladoc,Blaec,Blaedry,Blanry,Blebryn,Bledoc,Blemyr,Blennyn,Blenvan,Bleollyn,"
+"Blercyn,Blidd,Bliddry,Blillyn,Blinvan,Blollyn,Blubryn,Blucyn,Bludry,Blullyn,"
+"Bluran,Blybryn,Blydd,Blygwyn,Blymyr,Blyr,Bucyn,Cac,Cadry,Caebryn,Caedry,"
+"Caeran,Caercyn,Car,Carac,Caraddry,Caradoc,Caraedry,Caraennyn,Cararyn,Caredd,"
+"Careddry,Caregwyn,Caren,Careobryn,Careogwyn,Careonvan,Careorraent,Careoryn,"
+"Carercyn,Caric,Cariddry,Carocyn,Caroddyn,Caror,Caroran,Carraent,Carudoc,"
+"Carullyn,Carygwyn,Caryn,Cebryn,Cemyr,Cennyn,Ceoc,Ceoddry,Ceoddyn,Ceomyr,"
+"Ceonnyn,Ceonry,Ceoryn,Cicyn,Cin,Cinry,Coc,Convan,Corcyn,Cubryn,Cunry,Curyn,"
+"Cynyc,Cyryn,Dac,Dadd,Dadoc,Daeddry,Daedoc,Daellyn,Demyr,Denvan,Deodd,Deollyn,"
+"Deonyc,Derraent,Dibryn,Dinnyn,Dircyn,Dycyn,Dyddyn,Gaddry,Gaebryn,Gaedry,"
+"Gaercyn,Gagwyn,Gan,Gannyn,Gar,Gecyn,Geddyn,Gegwyn,Geodry,Ginvan,Glacyn,"
+"Gladoc,Glaercyn,Glarraent,Gleddry,Gleoddyn,Gleran,Gliddyn,Glillyn,Glinry,"
+"Glircyn,Gloddry,Gloddyn,Glonry,Glonvan,Glumyr,Glun,Glunry,Glunvan,Glyc,Glydd,"
+"Glydoc,Glynry,Glynvan,Glyran,Goc,Gor,Gubryn,Gudd,Gullyn,Gumyr,Gur,Gwadoc,"
+"Gwaec,Gwaeddyn,Gwan,Gweddyn,Gwegwyn,Gwellyn,Gwennyn,Gwenyc,Gweocyn,Gweodd,"
+"Gweodoc,Gweodry,Gweogwyn,Gweoran,Gwidoc,Gwilam,Gwodd,Gwoddyn,Gwollyn,Gwor,"
+"Gwucyn,Gwudoc,Gwumyr,Gwuran,Gwybryn,Gwycyn,Gwyddry,Gwydoc,Gwymyr,Gwynnyn,"
+"Gydoc,Gyllyn,Gymyr,Haldar,Labryn,Ladoc,Laellyn,Lan,Lannyn,Laran,Lec,Lemyr,"
+"Lenvan,Leogwyn,Lercyn,Ligwyn,Lin,Liryn,Lonnyn,Lorraent,Luddry,Ludoc,Lunnyn,"
+"Lunvan,Lurraent,Mac,Maddyn,Maennyn,Manry,Manyc,Marcyn,Mec,Menvan,Meollyn,"
+"Meon,Meonnyn,Meorraent,Middry,Midry,Mimyr,Modd,Moddry,Monry,Moran,Morcyn,"
+"Mubryn,Mudoc,Mugwyn,Murcyn,Mydoc,Mygwyn,Myn,Myrraent,Owac,Owadd,Owaddyn,"
+"Owaecyn,Owaedry,Owain,Owarcyn,Owaryn,Owecyn,Owedry,Oweomyr,Oweor,Oweorcyn,"
+"Oweran,Owercyn,Owidry,Owinvan,Owinyc,Owodd,Owoddry,Owogwyn,Owollyn,Oworan,"
+"Oworcyn,Oworraent,Owuddry,Owuddyn,Owugwyn,Owur,Owyran,Rabryn,Radd,Ranvan,Rar,"
+"Reoddyn,Reodry,Rhaecyn,Rhaedoc,Rhaemyr,Rhaerraent,Rhanry,Rharcyn,Rhenry,"
+"Rhenvan,Rhenyc,Rheodd,Rheoddyn,Rheollyn,Rheor,Rheoran,Rheorraent,Rheran,"
+"Rherraent,Rhobryn,Rhodry,Rhollyn,Rhonvan,Rhubryn,Rhugwyn,Rhunyc,Rhur,Rhygwyn,"
+"Rhyllyn,Rhynyc,Rhyrcyn,Rhyrraent,Rocyn,Roddyn,Romyr,Ron,Ronry,Rubryn,Ruddry,"
+"Rumyr,Run,Rurcyn,Rybryn,Rycyn,Ryddry,Rygwyn,Rynnyn,Rynry,Saec,Saellyn,Saemyr,"
+"Saenvan,Saercyn,Sanyc,Saran,Sarraent,Secyn,Seddyn,Sedry,Sellyn,Sennyn,"
+"Seoddry,Seorcyn,Sercyn,Siddry,Simyr,Siryn,Sodd,Sodry,Soran,Suc,Sudd,Surcyn,"
+"Sydd,Syran,Syryn,Tabryn,Taec,Taedd,Taedoc,Taemyr,Taenvan,Taercyn,Tanry,"
+"Tarcyn,Teddyn,Tegwyn,Ten,Tennyn,Tenvan,Teobryn,Teoddyn,Teor,Teorcyn,Terraent,"
+"Tinry,Tinvan,Tiryn,Todd,Tudd,Tuddry,Tudoc,Tunvan,Turraent,Tyddyn,Vaddyn,"
+"Vaeddyn,Vaedry,Vaennyn,Varcyn,Ven,Vennyn,Veocyn,Veoddyn,Veodry,Veogwyn,"
+"Veomyr,Vinvan,Vinyc,Virraent,Vobryn,Vogwyn,Vonry,Vuddyn,Vugwyn,Vyc,Vygwyn,"
+"Vyrcyn,Yracyn,Yraec,Yran,Yrannyn,Yranvan,Yraryn,Yredd,Yreddyn,Yregwyn,Yreryn,"
+"Yrinvan,Yrirraent,Yroddry,Yrullyn,Yrumyr,Yrunnyn,Yrunvan,Yryllyn,Yrymyr,"
+"Yrynyc,Yryrcyn"
 msgstr ""
 
 #: data/core/macros/names.cfg:108
-msgid "Alabrylla,Alaebrylla,Alaeniver,Alalla,Alalonna,Alaryan,Aleacla,Aleaniver,Aleara,Alearka,Alena,Alengwen,Alilonna,Alingwen,Alolla,Alolonna,Alora,Alubrylla,Aluniver,Aluryan,Alussa,Alwcla,Alwllyra,Alwlyan,Alwna,Alybrylla,Alynoic,Alyra,Alyryan,Braedda,Brassa,Bravyan,Breabrylla,Breall,Brealla,Brealonna,Breana,Brell,Brellyra,Brera,Brerka,Breryan,Bricla,Brirka,Brobrylla,Brollyra,Brona,Bronoic,Brora,Brorka,Brungwen,Bruryan,Brwra,Brycla,Brynoic,Caella,Caena,Caengwen,Caevyan,Call,Calla,Cassa,Cealonna,Cera,Ceryan,Cibrylla,Cicla,Cinoic,Cira,Cissa,Clacla,Claella,Claelyan,Claenoic,Clalla,Clallyra,Clara,Clarka,Clavyan,Cleacla,Cleall,Clealyan,Cleana,Cleanoic,Clenoic,Clibrylla,Clill,Clillyra,Clilyan,Clinoic,Clissa,Clobrylla,Clollyra,Clona,Clongwen,Clungwen,Clurka,Cluvyan,Clwdda,Clwlla,Clwvyan,Clydda,Clylla,Cora,Coryan,Cucla,Cudda,Curyan,Cwdda,Cwlonna,Cwngwen,Cwvyan,Cydda,Cylla,Cyllyra,Cylyan,Cyniver,Cyvyan,Daedda,Daelyan,Daengwen,Daenoic,Dalla,Dallyra,Dangwen,Dara,Dassa,Deanoic,Deassa,Della,Devyan,Dicla,Diniver,Dissa,Dollyra,Dullyra,Dulonna,Dwbrylla,Dwdda,Dwna,Dwnoic,Dwra,Dybrylla,Dydda,Dyssa,Elacla,Elaedda,Elaell,Elaelonna,Elaessa,Elaevyan,Elallyra,Elalonna,Elara,Elavyan,Elealla,Eleanoic,Elearka,Elenoic,Elerka,Elivyan,Elulonna,Elurka,Elwllyra,Elwlonna,Elwngwen,Elwra,Elycla,Elyllyra,Elyngwen,Elyniver,Elyrka,Gwaera,Gwaessa,Gwangwen,Gweacla,Gwedda,Gwerka,Gwicla,Gwirka,Gwobrylla,Gwoll,Gwona,Gwongwen,Gwonoic,Gworyan,Gwullyra,Gwussa,Gwwcla,Gwwna,Gwwvyan,Gwycla,Gwydda,Heldra,Jacla,Jaena,Jaerka,Jaevyan,Jalyan,Jana,Jarka,Jassa,Jeabrylla,Jealla,Jeanoic,Jeniver,Jiryan,Jissa,Joll,Jolla,Jona,Jongwen,Jonoic,Jora,Jorka,Jovyan,Judda,Jull,Julonna,Jura,Jwll,Jwlyan,Jycla,Jyniver,Jynoic,Jyrka,Jyvyan,Laeniver,Laenoic,Laeryan,Langwen,Larka,Lassa,Lealonna,Lealyan,Ledda,Lelonna,Lelyan,Lengwen,Lerka,Lessa,Lidda,Lill,Lina,Lirka,Liryan,Livyan,Locla,Lodda,Lollyra,Lolonna,Lulla,Lulyan,Lungwen,Lunoic,Luryan,Lwcla,Lwlla,Lwnoic,Lwryan,Lycla,Lylla,Lylyan,Lyna,Lynoic,Maecla,Maeniver,Mavyan,Meacla,Mealyan,Meana,Meangwen,Meanoic,Medda,Melonna,Mengwen,Meniver,Meradda,Meraecla,Meraelyan,Merall,Merallyra,Meralonna,Merana,Meranoic,Merealonna,Mereangwen,Mereaniver,Merebrylla,Merella,Merengwen,Meressa,Merilyan,Merina,Merinoic,Merissa,Merivyan,Merolla,Merolyan,Merona,Meroniver,Merubrylla,Merudda,Merurka,Merwlla,Merwnoic,Merwryan,Merydda,Merylyan,Messa,Milonna,Molyan,Moniver,Mossa,Mudda,Mullyra,Mulyan,Muryan,Mwbrylla,Mwlyan,Mwngwen,Mwnoic,Mycla,Myll,Mylla,Myra,Myvyan,Nabrylla,Naebrylla,Naecla,Naell,Nalyan,Nangwen,Nealla,Neallyra,Nealonna,Neavyan,Nera,Nessa,Ninoic,Niryan,Nivyan,Nobrylla,Nolla,Nonoic,Norka,Noryan,Nucla,Nulla,Nulyan,Nungwen,Nuvyan,Nwllyra,Nwryan,Nwvyan,Nybrylla,Nyll,Nylyan,Nyryan,Nyssa,Nyvyan,Raebrylla,Raera,Raerka,Ralonna,Rara,Rarka,Rassa,Reacla,Realla,Reana,Reangwen,Rella,Relyan,Rengwen,Rerka,Revyan,Rilonna,Rilyan,Rirka,Rora,Rucla,Ruryan,Rwdda,Rwlla,Rwllyra,Rwlonna,Rwngwen,Rybrylla,Ryna,Ryngwen,Saell,Saellyra,Saeniver,Saerka,Saessa,Sallyra,Sanoic,Sara,Sassa,Searka,Sena,Senoic,Sera,Silonna,Sira,Siryan,Sona,Sorka,Subrylla,Sull,Sulonna,Sulyan,Sura,Sussa,Swlla,Swlyan,Swngwen,Swnoic,Swvyan,Syllyra,Sylyan,Syssa,Ysacla,Ysaenoic,Ysaerka,Ysanoic,Yseacla,Ysealonna,Ysealyan,Ysedda,Ysell,Yselonna,Ysilyan,Ysinoic,Ysodda,Ysongwen,Ysonoic,Ysura,Yswniver,Ysycla,Ysylla,Ysylyan,Ysyrka,Ysyssa"
+msgid ""
+"Alabrylla,Alaebrylla,Alaeniver,Alalla,Alalonna,Alaryan,Aleacla,Aleaniver,"
+"Aleara,Alearka,Alena,Alengwen,Alilonna,Alingwen,Alolla,Alolonna,Alora,"
+"Alubrylla,Aluniver,Aluryan,Alussa,Alwcla,Alwllyra,Alwlyan,Alwna,Alybrylla,"
+"Alynoic,Alyra,Alyryan,Braedda,Brassa,Bravyan,Breabrylla,Breall,Brealla,"
+"Brealonna,Breana,Brell,Brellyra,Brera,Brerka,Breryan,Bricla,Brirka,Brobrylla,"
+"Brollyra,Brona,Bronoic,Brora,Brorka,Brungwen,Bruryan,Brwra,Brycla,Brynoic,"
+"Caella,Caena,Caengwen,Caevyan,Call,Calla,Cassa,Cealonna,Cera,Ceryan,Cibrylla,"
+"Cicla,Cinoic,Cira,Cissa,Clacla,Claella,Claelyan,Claenoic,Clalla,Clallyra,"
+"Clara,Clarka,Clavyan,Cleacla,Cleall,Clealyan,Cleana,Cleanoic,Clenoic,"
+"Clibrylla,Clill,Clillyra,Clilyan,Clinoic,Clissa,Clobrylla,Clollyra,Clona,"
+"Clongwen,Clungwen,Clurka,Cluvyan,Clwdda,Clwlla,Clwvyan,Clydda,Clylla,Cora,"
+"Coryan,Cucla,Cudda,Curyan,Cwdda,Cwlonna,Cwngwen,Cwvyan,Cydda,Cylla,Cyllyra,"
+"Cylyan,Cyniver,Cyvyan,Daedda,Daelyan,Daengwen,Daenoic,Dalla,Dallyra,Dangwen,"
+"Dara,Dassa,Deanoic,Deassa,Della,Devyan,Dicla,Diniver,Dissa,Dollyra,Dullyra,"
+"Dulonna,Dwbrylla,Dwdda,Dwna,Dwnoic,Dwra,Dybrylla,Dydda,Dyssa,Elacla,Elaedda,"
+"Elaell,Elaelonna,Elaessa,Elaevyan,Elallyra,Elalonna,Elara,Elavyan,Elealla,"
+"Eleanoic,Elearka,Elenoic,Elerka,Elivyan,Elulonna,Elurka,Elwllyra,Elwlonna,"
+"Elwngwen,Elwra,Elycla,Elyllyra,Elyngwen,Elyniver,Elyrka,Gwaera,Gwaessa,"
+"Gwangwen,Gweacla,Gwedda,Gwerka,Gwicla,Gwirka,Gwobrylla,Gwoll,Gwona,Gwongwen,"
+"Gwonoic,Gworyan,Gwullyra,Gwussa,Gwwcla,Gwwna,Gwwvyan,Gwycla,Gwydda,Heldra,"
+"Jacla,Jaena,Jaerka,Jaevyan,Jalyan,Jana,Jarka,Jassa,Jeabrylla,Jealla,Jeanoic,"
+"Jeniver,Jiryan,Jissa,Joll,Jolla,Jona,Jongwen,Jonoic,Jora,Jorka,Jovyan,Judda,"
+"Jull,Julonna,Jura,Jwll,Jwlyan,Jycla,Jyniver,Jynoic,Jyrka,Jyvyan,Laeniver,"
+"Laenoic,Laeryan,Langwen,Larka,Lassa,Lealonna,Lealyan,Ledda,Lelonna,Lelyan,"
+"Lengwen,Lerka,Lessa,Lidda,Lill,Lina,Lirka,Liryan,Livyan,Locla,Lodda,Lollyra,"
+"Lolonna,Lulla,Lulyan,Lungwen,Lunoic,Luryan,Lwcla,Lwlla,Lwnoic,Lwryan,Lycla,"
+"Lylla,Lylyan,Lyna,Lynoic,Maecla,Maeniver,Mavyan,Meacla,Mealyan,Meana,"
+"Meangwen,Meanoic,Medda,Melonna,Mengwen,Meniver,Meradda,Meraecla,Meraelyan,"
+"Merall,Merallyra,Meralonna,Merana,Meranoic,Merealonna,Mereangwen,Mereaniver,"
+"Merebrylla,Merella,Merengwen,Meressa,Merilyan,Merina,Merinoic,Merissa,"
+"Merivyan,Merolla,Merolyan,Merona,Meroniver,Merubrylla,Merudda,Merurka,"
+"Merwlla,Merwnoic,Merwryan,Merydda,Merylyan,Messa,Milonna,Molyan,Moniver,"
+"Mossa,Mudda,Mullyra,Mulyan,Muryan,Mwbrylla,Mwlyan,Mwngwen,Mwnoic,Mycla,Myll,"
+"Mylla,Myra,Myvyan,Nabrylla,Naebrylla,Naecla,Naell,Nalyan,Nangwen,Nealla,"
+"Neallyra,Nealonna,Neavyan,Nera,Nessa,Ninoic,Niryan,Nivyan,Nobrylla,Nolla,"
+"Nonoic,Norka,Noryan,Nucla,Nulla,Nulyan,Nungwen,Nuvyan,Nwllyra,Nwryan,Nwvyan,"
+"Nybrylla,Nyll,Nylyan,Nyryan,Nyssa,Nyvyan,Raebrylla,Raera,Raerka,Ralonna,Rara,"
+"Rarka,Rassa,Reacla,Realla,Reana,Reangwen,Rella,Relyan,Rengwen,Rerka,Revyan,"
+"Rilonna,Rilyan,Rirka,Rora,Rucla,Ruryan,Rwdda,Rwlla,Rwllyra,Rwlonna,Rwngwen,"
+"Rybrylla,Ryna,Ryngwen,Saell,Saellyra,Saeniver,Saerka,Saessa,Sallyra,Sanoic,"
+"Sara,Sassa,Searka,Sena,Senoic,Sera,Silonna,Sira,Siryan,Sona,Sorka,Subrylla,"
+"Sull,Sulonna,Sulyan,Sura,Sussa,Swlla,Swlyan,Swngwen,Swnoic,Swvyan,Syllyra,"
+"Sylyan,Syssa,Ysacla,Ysaenoic,Ysaerka,Ysanoic,Yseacla,Ysealonna,Ysealyan,"
+"Ysedda,Ysell,Yselonna,Ysilyan,Ysinoic,Ysodda,Ysongwen,Ysonoic,Ysura,Yswniver,"
+"Ysycla,Ysylla,Ysylyan,Ysyrka,Ysyssa"
 msgstr ""
 
 #. Generator for male Wesnothian human names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
@@ -2299,63 +2425,92 @@ msgstr ""
 
 #: data/core/macros/names.cfg:144
 msgid ""
-"Aban,Abbas,Abbud,Abdul-ʿAdl,Abdul-Ahad,Abdul-Alim,Abdul-Aliyy,Abdul-"
-"Azim,Abdul-Aziz,Abdul-Badi,Abdul-Baʿith,Abdul-Baqi,Abdul-Bari,Abdul-"
-"Barr,Abdul-Basir,Abdul-Basit,Abdul-Fattah,Abdul-Ghaffar,Abdul-Ghafur,Abdul-"
-"Ghani,Abdul-Hadi,Abdul-Hafiz,Abdul-Hakam,Abdul-Hakim,Abdul-Halim,Abdul-"
-"Hamid,Abdul-Haqq,Abdul-Hasib,Abdul-Hayy,Abdul-Jabbar,Abdul-Jalil,Abdul-"
-"Karim,Abdul-Khabir,Abdul-Khaliq,Abdul-Latif,Abdul-Malik,Abdul-Majid,Abdul-"
-"Matin,Abdul-Mubdiʾ,Abdul-Mughni,Abdul-Muhaimin,Abdul-Muhsi,Abdul-Muhyi,Abdul-"
-"Muʿid,Abdul-Muʿizz,Abdul-Mujib,Abdul-Mumin,Abdul-Muqaddim,Abdul-"
-"Muqtadir,Abdul-Musawwir,Abdul-Mutaʿal,Abdul-Nafi,Abdul-Nasser,Abdul-"
-"Nasir,Abdul-Nur,Abdul-Qadir,Abdul-Qahhar,Abdul-Qawi,Abdul-Qayyum,Abdul-"
-"Quddus,Abdul-Rafi,Abdul-Rahim,Abdul-Rahman,Abdul-Rashid,Abdul-Raʿuf,Abdul-"
-"Razzaq,Abdul-Shakur,Abdul-Tawwab,Abdul-Wadud,Abdul-Wahhab,Abdul-Wahid,Abdul-"
-"Wajid,Abdul-Wakil,Abdul-Wali,Abdul-Waliy,Abdul-Warith,Abdul-"
-"Zahir,Abdullah,ʿAbid,ʿAbidin,Abu Bakr,Aby al-"
-"Khayr,Adil,Adham,Adib,ʿAdli,ʿAdnan,ʿAfif,Ahmad,ʿAjib,ʿAkif,Akil,Akram,Alaʾ,Alaʾ "
-"al-Din,Alʿ Abbas,Aladdin,al-Bara,al-Hakam,al-"
-"Harith,Alhasan,Alhusain,Ali,Alim,Almahdi,al-Safi,Altaf,Altair,al-Tayyib,al-"
-"Tijani,al-"
-"Tufail,Amid,ʿAmid,Amin,Amir,ʿAmir,Amjad,ʿAmmar,ʿAmro,Anas,Anis,ʿAntarah,Anwar,ʿAqil,Arfan,Arif,ʿArif,Asad,Asʿad,Asadel,Ashraf,Asif,ʿAsim,Aswad,Ataʿ,Ataʿ "
-"Allah,Ataʿ al-"
-"Rahman,Athil,Athir,ʿAtif,ʿAwad,ʿAwf,Aws,Awwab,Ayham,Ayman,Ayser,Ayyub,Aza,ʿAzab,Azhar,Azim,ʿAziz,ʿAzzam,Badi,Badi "
-"al-Zaman,Badr,Badr al-Din,Badri,Bahaʿ,Bahiyy al-"
-"Din,Bahij,Bahir,Bakr,Baligh,Bandar,Barakah,Barir,Bashshar,Basil,Basim,Bassam,Bayezid,Bayhas,Bilal,Bishr,Boulos,Budail,Burhan,Bushr,Butrus,Dabir,Dani,Darwish,Daʿud,Dhakir,Dhakiy,Dhakwan,Dhul "
-"Fiqar,Dirar,Diya,Diya al-Din,Duqaq,Fadi,Fadil,Fadl,Fadl "
-"Allah,Fahd,Fahad,Fahmi,Faisal,Faʿiz,Fakhir,Fakhr al-"
-"Din,Fakhri,Fakih,Falah,Falih,Faraj,Farhan,Farid,Fariq,Fariq,Faris,Faruq,Fath,Fathi,Fatih,Fatin,Fawwaz,Fawzan,Fawzi,Fayyad,Ferran,Fida,Fikri,Firas,Fuʿad,Fudail,Gamal,Ghayth,Ghali,Ghalib,Ghanim,Ghassan,Ghawth,Ghazwan,Ghiyath,Habbab,Habib,Haddad,Hadi,Hafiz,Hakem,Hakim,Halim,Hamal,Hamas,Hamdan,Hamdi,Hamid,Hamim,Hamzah,Hana,Hanaʾi,Hanbal,Hani,Hanif,Hannad,Haris,Harith,Harun,Hashim,Hassan,Hatim,Haydar,Haytham,Hayyan,Hazim,Hilal,Hilmi,Hisham,Hud,Hudad,Hudhafah,Hudhayfah,Humam,Hussein,Husam,Husam "
-"al-Din,Ibrahim,ʿId,Idris,Ihsan,Ihtisham,ʿIkrimah,Ilias,ʿImad,Imad al-"
-"Din,Imran,Imtiyaz,Inʿam,Iqbal,ʿIrfan,ʿIsa,ʿIsam,Ishaq,Ismaʿil,Iyad,Iyas,Izz "
-"al-Din,Jabbar,Jabr,Jabir,Jad Allah,Jaʿfar,Jal,Jalal,Jalal al-"
-"Din,Jalil,Jamal,Jamal al-"
-"Din,Jamil,Jarir,Jasim,Jaul,Jaun,Jawad,Jawdah,Jawhar,Jibran,Jibril,Jubair,Jul,Jumah,Junayd,Juwain,Kadar,Kadin,Kadir,Kahil,Kaliq,Kamal,Kamil,Karam,Kardal,Karif,Karim,Kasib,Kasim,Katib,Kazim,Khalaf,Khaldun,Khalid,Khalil,Khalil "
-"al-Allah,Khalis,Khatib,Khair al-"
-"Din,Khairi,Khoury,Khulus,Khuzaymah,Kutaiba,Labib,Lablab,Latif,Layth,LuʿayLubayd,Luqman,Lut,Lutfi,Maʿd,Madani,Mahbub,Mahdi,Mahfuz,Mahir,Mahjub,Mahmud,Mahrus,Maimun,Majd,Majdy,Majd "
-"al-"
-"Din,Majid,Makin,Malik,Mamduh,Maʿmun,Maʿin,Mandhur,Mansur,Marghub,Marid,Maʿruf,Marwan,Marzuq,Mashʿal,Mashhur,Masrur,Masʿud,Masun,Maysarah,Mazhar,Mazin,Mehmed,Mihran,Mihyar,Mikaʾil,Miqdad,Misbah,Mishʿal,Miyaz,Muʾadh,Muʾawiyah,Muʾayyad,Mubarak,Mubin,Mudar,Muddaththir,Mufid,Muflih,Muhab,Muhayr,Muhammad,Muhanna,Muhannad,Muhib,Muhibb,Muhsin,Muhtadi,Muhyi "
-"al-"
-"Din,Muʿin,Muʿizz,Mujab,Mujahid,Mukarram,Mukhlis,Mukhtar,Mulham,Mulhim,Muʿmmar,Muʿmin,Mumtaz,Munahid,Mundhir,Munib,Munif,Munir,Muʿnis,Munjid,Munsif,Muntasir,Murad,Murid,Murshid,Murtada,Musa,Musʿab,Musaʿid,Mushtaq,Muslih,Muslim,Mutafa,Mutaʾ,Muʿtasim,Mutawalli,Muʿtazz,Muthanna,Muti,Muwaffaq,Muyassar,Muzaffar,Mussammil,Nabhan,Nabighah,Nabih,Nabil,Nadhir,Nadim,Nadir,Nafiʾ,Nahid,Naʾil,Naʾim,Naji,Najib,Najid,Najjar,Najm "
-"al-Din,Naʿaman,Namir,Nashʿah,Nashʿat,Nashwan,Nasib,Nasih,Nasim,Nasir,Nasir "
-"al-"
-"Din,Nasr,Nasri,Nasuh,Nawaf,Nawfal,Nayif,Nazih,Nazim,Nazmi,Nibras,Nidal,Nijad,Nimr,Nizar,Nuʿaym,Nuh,Nuhayd,Numair,Nuʿman,Nur "
-"al-"
-"Din,Nuri,Nusrah,Nusrat,Omar,Orhan,Osman,Qasim,Qays,Qudamah,Qusay,Qatadah,Qutaybah,Qutb,Qutuz,Rabah,Rabi,Radi,Rafi,Rafid,Rafiq,Raghib,Rahman,Raʿid,Raʿif,Rais,Rajaa,Rajab,Raji,Rajih,Rakin,Rami,Ramih,Ramiz,Ramzi,Rani,Rashad,Rashid,Rasil,Rasin,Rasmi,Rasul,Ratib,Raʿuf,Rayhan,Rayyan,Razin,Ridha,Ridwan,Rihab,Riyad,Rizq,Ruhi,Rushd,Rushdi,Ruwayd,Saad,Saʿadah,Sab,Sabih,Sabir,Sabri,Saʿd,Saʿd "
-"al-Din,Sadad,Sadid,Sadiq,Saʿdun,Saʿid,Safi,Safiy,Safiy al-"
-"Din,Safuh,Safwah,Safwat,Safwan,Sahib,Sahir,Sahl,Saʾib,Saif,Saif al-"
-"Din,Sajid,Sajjad,Sakhr,Salah,Salah al-"
-"Din,Salamah,Salih,Salim,Salman,Sami,Samih,Samir,Samman,Saqr,Sariyah,Sati,Saud,Sayyid,Shaʿban,Shadi,Shadin,Shafi,Shafiq,Shahid,Shahin,Shahir,Shakib,Shakir,Shams "
-"al-Din,Shamal,Shamil,Shamim,Sharaf,Sharif,Shawqi,Shihab,Shihab al-"
-"Din,Shihad,Shuʿayb,Shukri,Shumayl,Siddiq,Sinan,Siraj,Siraj al-"
-"Din,Sofian,Subhi,Sufyan,Suhayb,Suhayl,Suhaym,Sulaiman,Sumrah,Suraqah,Suʿud,Tahir,Tahsin,Taym "
-"Allah,Taj,Taj al-"
-"Din,Talal,Talib,Tamim,Tamir,Tamam,Tammam,Taqiy,Tarif,Tariq,Taslim,Tawfiq,Tawhid,Taymullah,Taysir,Tayyib,Thabit,Thamir,Thaqib,Thawab,Thawban,ʿUbaidah,Ubaid,Ubayy,ʿUdayl,ʿUday,ʿUmar,Umarah,Umair,ʾaUrwah,Usaym,Usama,ʿUtbah,Uthal,Uthman,Waddah,Wadi,Wadid,Wafiq,Wahab,Wahhab,Wahid,Waʾil,Wajdi,Wajid,Wajih,Wakil,Walid,Walif,Waliy "
-"Allah,Waliy al-"
-"Din,Waqar,Waqqas,Ward,Wasif,Wasil,Wasim,Wazir,Yahya,Yaman,Yaʿqub,Yasar,Yasin,Yasir,Yazan,Yazid,Yunus,Yushua,Yusri,Yusuf,Zafar,Zafir,Zahid,Zahir,Zayd,Zaim,Zayn,Zarif,Zakarriya,Zaki,Zakwan,Ziyad,Zubayr,Zuhayr"
+"Aban,Abbas,Abbud,Abdul-ʿAdl,Abdul-Ahad,Abdul-Alim,Abdul-Aliyy,Abdul-Azim,"
+"Abdul-Aziz,Abdul-Badi,Abdul-Baʿith,Abdul-Baqi,Abdul-Bari,Abdul-Barr,Abdul-"
+"Basir,Abdul-Basit,Abdul-Fattah,Abdul-Ghaffar,Abdul-Ghafur,Abdul-Ghani,Abdul-"
+"Hadi,Abdul-Hafiz,Abdul-Hakam,Abdul-Hakim,Abdul-Halim,Abdul-Hamid,Abdul-Haqq,"
+"Abdul-Hasib,Abdul-Hayy,Abdul-Jabbar,Abdul-Jalil,Abdul-Karim,Abdul-Khabir,"
+"Abdul-Khaliq,Abdul-Latif,Abdul-Malik,Abdul-Majid,Abdul-Matin,Abdul-Mubdiʾ,"
+"Abdul-Mughni,Abdul-Muhaimin,Abdul-Muhsi,Abdul-Muhyi,Abdul-Muʿid,Abdul-Muʿizz,"
+"Abdul-Mujib,Abdul-Mumin,Abdul-Muqaddim,Abdul-Muqtadir,Abdul-Musawwir,Abdul-"
+"Mutaʿal,Abdul-Nafi,Abdul-Nasser,Abdul-Nasir,Abdul-Nur,Abdul-Qadir,Abdul-"
+"Qahhar,Abdul-Qawi,Abdul-Qayyum,Abdul-Quddus,Abdul-Rafi,Abdul-Rahim,Abdul-"
+"Rahman,Abdul-Rashid,Abdul-Raʿuf,Abdul-Razzaq,Abdul-Shakur,Abdul-Tawwab,Abdul-"
+"Wadud,Abdul-Wahhab,Abdul-Wahid,Abdul-Wajid,Abdul-Wakil,Abdul-Wali,Abdul-"
+"Waliy,Abdul-Warith,Abdul-Zahir,Abdullah,ʿAbid,ʿAbidin,Abu Bakr,Aby al-Khayr,"
+"Adil,Adham,Adib,ʿAdli,ʿAdnan,ʿAfif,Ahmad,ʿAjib,ʿAkif,Akil,Akram,Alaʾ,Alaʾ al-"
+"Din,Alʿ Abbas,Aladdin,al-Bara,al-Hakam,al-Harith,Alhasan,Alhusain,Ali,Alim,"
+"Almahdi,al-Safi,Altaf,Altair,al-Tayyib,al-Tijani,al-Tufail,Amid,ʿAmid,Amin,"
+"Amir,ʿAmir,Amjad,ʿAmmar,ʿAmro,Anas,Anis,ʿAntarah,Anwar,ʿAqil,Arfan,Arif,"
+"ʿArif,Asad,Asʿad,Asadel,Ashraf,Asif,ʿAsim,Aswad,Ataʿ,Ataʿ Allah,Ataʿ al-"
+"Rahman,Athil,Athir,ʿAtif,ʿAwad,ʿAwf,Aws,Awwab,Ayham,Ayman,Ayser,Ayyub,Aza,"
+"ʿAzab,Azhar,Azim,ʿAziz,ʿAzzam,Badi,Badi al-Zaman,Badr,Badr al-Din,Badri,"
+"Bahaʿ,Bahiyy al-Din,Bahij,Bahir,Bakr,Baligh,Bandar,Barakah,Barir,Bashshar,"
+"Basil,Basim,Bassam,Bayezid,Bayhas,Bilal,Bishr,Boulos,Budail,Burhan,Bushr,"
+"Butrus,Dabir,Dani,Darwish,Daʿud,Dhakir,Dhakiy,Dhakwan,Dhul Fiqar,Dirar,Diya,"
+"Diya al-Din,Duqaq,Fadi,Fadil,Fadl,Fadl Allah,Fahd,Fahad,Fahmi,Faisal,Faʿiz,"
+"Fakhir,Fakhr al-Din,Fakhri,Fakih,Falah,Falih,Faraj,Farhan,Farid,Fariq,Fariq,"
+"Faris,Faruq,Fath,Fathi,Fatih,Fatin,Fawwaz,Fawzan,Fawzi,Fayyad,Ferran,Fida,"
+"Fikri,Firas,Fuʿad,Fudail,Gamal,Ghayth,Ghali,Ghalib,Ghanim,Ghassan,Ghawth,"
+"Ghazwan,Ghiyath,Habbab,Habib,Haddad,Hadi,Hafiz,Hakem,Hakim,Halim,Hamal,Hamas,"
+"Hamdan,Hamdi,Hamid,Hamim,Hamzah,Hana,Hanaʾi,Hanbal,Hani,Hanif,Hannad,Haris,"
+"Harith,Harun,Hashim,Hassan,Hatim,Haydar,Haytham,Hayyan,Hazim,Hilal,Hilmi,"
+"Hisham,Hud,Hudad,Hudhafah,Hudhayfah,Humam,Hussein,Husam,Husam al-Din,Ibrahim,"
+"ʿId,Idris,Ihsan,Ihtisham,ʿIkrimah,Ilias,ʿImad,Imad al-Din,Imran,Imtiyaz,"
+"Inʿam,Iqbal,ʿIrfan,ʿIsa,ʿIsam,Ishaq,Ismaʿil,Iyad,Iyas,Izz al-Din,Jabbar,Jabr,"
+"Jabir,Jad Allah,Jaʿfar,Jal,Jalal,Jalal al-Din,Jalil,Jamal,Jamal al-Din,Jamil,"
+"Jarir,Jasim,Jaul,Jaun,Jawad,Jawdah,Jawhar,Jibran,Jibril,Jubair,Jul,Jumah,"
+"Junayd,Juwain,Kadar,Kadin,Kadir,Kahil,Kaliq,Kamal,Kamil,Karam,Kardal,Karif,"
+"Karim,Kasib,Kasim,Katib,Kazim,Khalaf,Khaldun,Khalid,Khalil,Khalil al-Allah,"
+"Khalis,Khatib,Khair al-Din,Khairi,Khoury,Khulus,Khuzaymah,Kutaiba,Labib,"
+"Lablab,Latif,Layth,LuʿayLubayd,Luqman,Lut,Lutfi,Maʿd,Madani,Mahbub,Mahdi,"
+"Mahfuz,Mahir,Mahjub,Mahmud,Mahrus,Maimun,Majd,Majdy,Majd al-Din,Majid,Makin,"
+"Malik,Mamduh,Maʿmun,Maʿin,Mandhur,Mansur,Marghub,Marid,Maʿruf,Marwan,Marzuq,"
+"Mashʿal,Mashhur,Masrur,Masʿud,Masun,Maysarah,Mazhar,Mazin,Mehmed,Mihran,"
+"Mihyar,Mikaʾil,Miqdad,Misbah,Mishʿal,Miyaz,Muʾadh,Muʾawiyah,Muʾayyad,Mubarak,"
+"Mubin,Mudar,Muddaththir,Mufid,Muflih,Muhab,Muhayr,Muhammad,Muhanna,Muhannad,"
+"Muhib,Muhibb,Muhsin,Muhtadi,Muhyi al-Din,Muʿin,Muʿizz,Mujab,Mujahid,Mukarram,"
+"Mukhlis,Mukhtar,Mulham,Mulhim,Muʿmmar,Muʿmin,Mumtaz,Munahid,Mundhir,Munib,"
+"Munif,Munir,Muʿnis,Munjid,Munsif,Muntasir,Murad,Murid,Murshid,Murtada,Musa,"
+"Musʿab,Musaʿid,Mushtaq,Muslih,Muslim,Mutafa,Mutaʾ,Muʿtasim,Mutawalli,Muʿtazz,"
+"Muthanna,Muti,Muwaffaq,Muyassar,Muzaffar,Mussammil,Nabhan,Nabighah,Nabih,"
+"Nabil,Nadhir,Nadim,Nadir,Nafiʾ,Nahid,Naʾil,Naʾim,Naji,Najib,Najid,Najjar,"
+"Najm al-Din,Naʿaman,Namir,Nashʿah,Nashʿat,Nashwan,Nasib,Nasih,Nasim,Nasir,"
+"Nasir al-Din,Nasr,Nasri,Nasuh,Nawaf,Nawfal,Nayif,Nazih,Nazim,Nazmi,Nibras,"
+"Nidal,Nijad,Nimr,Nizar,Nuʿaym,Nuh,Nuhayd,Numair,Nuʿman,Nur al-Din,Nuri,"
+"Nusrah,Nusrat,Omar,Orhan,Osman,Qasim,Qays,Qudamah,Qusay,Qatadah,Qutaybah,"
+"Qutb,Qutuz,Rabah,Rabi,Radi,Rafi,Rafid,Rafiq,Raghib,Rahman,Raʿid,Raʿif,Rais,"
+"Rajaa,Rajab,Raji,Rajih,Rakin,Rami,Ramih,Ramiz,Ramzi,Rani,Rashad,Rashid,Rasil,"
+"Rasin,Rasmi,Rasul,Ratib,Raʿuf,Rayhan,Rayyan,Razin,Ridha,Ridwan,Rihab,Riyad,"
+"Rizq,Ruhi,Rushd,Rushdi,Ruwayd,Saad,Saʿadah,Sab,Sabih,Sabir,Sabri,Saʿd,Saʿd "
+"al-Din,Sadad,Sadid,Sadiq,Saʿdun,Saʿid,Safi,Safiy,Safiy al-Din,Safuh,Safwah,"
+"Safwat,Safwan,Sahib,Sahir,Sahl,Saʾib,Saif,Saif al-Din,Sajid,Sajjad,Sakhr,"
+"Salah,Salah al-Din,Salamah,Salih,Salim,Salman,Sami,Samih,Samir,Samman,Saqr,"
+"Sariyah,Sati,Saud,Sayyid,Shaʿban,Shadi,Shadin,Shafi,Shafiq,Shahid,Shahin,"
+"Shahir,Shakib,Shakir,Shams al-Din,Shamal,Shamil,Shamim,Sharaf,Sharif,Shawqi,"
+"Shihab,Shihab al-Din,Shihad,Shuʿayb,Shukri,Shumayl,Siddiq,Sinan,Siraj,Siraj "
+"al-Din,Sofian,Subhi,Sufyan,Suhayb,Suhayl,Suhaym,Sulaiman,Sumrah,Suraqah,"
+"Suʿud,Tahir,Tahsin,Taym Allah,Taj,Taj al-Din,Talal,Talib,Tamim,Tamir,Tamam,"
+"Tammam,Taqiy,Tarif,Tariq,Taslim,Tawfiq,Tawhid,Taymullah,Taysir,Tayyib,Thabit,"
+"Thamir,Thaqib,Thawab,Thawban,ʿUbaidah,Ubaid,Ubayy,ʿUdayl,ʿUday,ʿUmar,Umarah,"
+"Umair,ʾaUrwah,Usaym,Usama,ʿUtbah,Uthal,Uthman,Waddah,Wadi,Wadid,Wafiq,Wahab,"
+"Wahhab,Wahid,Waʾil,Wajdi,Wajid,Wajih,Wakil,Walid,Walif,Waliy Allah,Waliy al-"
+"Din,Waqar,Waqqas,Ward,Wasif,Wasil,Wasim,Wazir,Yahya,Yaman,Yaʿqub,Yasar,Yasin,"
+"Yasir,Yazan,Yazid,Yunus,Yushua,Yusri,Yusuf,Zafar,Zafir,Zahid,Zahir,Zayd,Zaim,"
+"Zayn,Zarif,Zakarriya,Zaki,Zakwan,Ziyad,Zubayr,Zuhayr"
 msgstr ""
 
 #: data/core/macros/names.cfg:145
-msgid "Abiha,Afaf,A’isha,Ajda,Aliya,Amira,Ashraqat,Atikah,Azra,Boutheina,Bushra,Chaima,Dalia,Esma,Farida,Fatima,Feyrouz,Habiba,Hafsa,Hajra,Halima,Hamida,Hanifa,Havva,Hayat,Hessa,Ibtisam,Ibtissam,Inaam,Jamila,Jawahir,Jena,Jumana,Kareena,Karima,Katya,Khadija,Khairunnisa,Khawla,Khawlah,Lama,Latifa,Layal,Layan,Leila,Lina,Lulwa,Madiha,Maha,Mahmuna,Mai,Malika,Marwa,Maryam,Maya,Maysoon,Nadia,Nafisa,Nahla,Naila,Najat,Nasim,Nasrin,Nejla,Nezha,Niusha,Rahima,Rana,Rashida,Reem,Ruqayya,Saadia,Sabiha,Safiya,Sahar,Saida,Sajida,Sakhra,Salma,Samira,Sarah,Shahd,Shatha,Shumaila,Sumaya,Taslima,Umm,Yara,Yasmin,Zahra,Zakiya,Zaynab"
+msgid ""
+"Abiha,Afaf,A’isha,Ajda,Aliya,Amira,Ashraqat,Atikah,Azra,Boutheina,Bushra,"
+"Chaima,Dalia,Esma,Farida,Fatima,Feyrouz,Habiba,Hafsa,Hajra,Halima,Hamida,"
+"Hanifa,Havva,Hayat,Hessa,Ibtisam,Ibtissam,Inaam,Jamila,Jawahir,Jena,Jumana,"
+"Kareena,Karima,Katya,Khadija,Khairunnisa,Khawla,Khawlah,Lama,Latifa,Layal,"
+"Layan,Leila,Lina,Lulwa,Madiha,Maha,Mahmuna,Mai,Malika,Marwa,Maryam,Maya,"
+"Maysoon,Nadia,Nafisa,Nahla,Naila,Najat,Nasim,Nasrin,Nejla,Nezha,Niusha,"
+"Rahima,Rana,Rashida,Reem,Ruqayya,Saadia,Sabiha,Safiya,Sahar,Saida,Sajida,"
+"Sakhra,Salma,Samira,Sarah,Shahd,Shatha,Shumaila,Sumaya,Taslima,Umm,Yara,"
+"Yasmin,Zahra,Zakiya,Zaynab"
 msgstr ""
 
 #. Generator for male dunefolk human names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
@@ -2408,7 +2563,17 @@ msgid ""
 msgstr ""
 
 #: data/core/macros/names.cfg:179
-msgid "Amprixta,Anexir,Anitraz,Arix,Axiz,Bzz’Kza,Chamil,Cleezi,Clezz,Fazzis,Fizztrax,Flixta,Flizzil,Frikes,Frizzle,Hasz,Heffez,Hertrazzir,Hesz,Hezzir,Hezzis,Hix,Inexis,Irix,Jezzix,Kaliez,Kepzs,Kernix,Kersezz,Kertrasz,Kerx,Kerxenix,Kezz,Klexaz,Klezyx,Krarax,Krenarex,Krex,Krinex,Krisess,Laizix,Lazki,Lixeez,Merax,Mexiss,Moxanzz,Naxisz,Nix,Pekzs,Plaxis,Plesix,Presch,Sailik,Salanix,Salik,Sandix,Saprazz,Satras,Skalix,Skandix,Skazix,Skeely,Skeezix,Sklizle,Skrez,Slizilx,Sprizz,Ssizer,Ssorix,Sszasz,Sterizz,Talerez,Tarex,Tarnix,Tezzaz,Tirasch,Tirax,Tirix,Trezz,Venezz,Vriss,Waks,Xaffrasz,Xartrez,Xasz,Xaztex,Xerxix,Xirasz,Xirr,Xirtras,Xirtrez,Xirz,Zandler,Zedrix,Zilrix,Zizzasz,Zslap,Zzalkz,Zzupde"
+msgid ""
+"Amprixta,Anexir,Anitraz,Arix,Axiz,Bzz’Kza,Chamil,Cleezi,Clezz,Fazzis,"
+"Fizztrax,Flixta,Flizzil,Frikes,Frizzle,Hasz,Heffez,Hertrazzir,Hesz,Hezzir,"
+"Hezzis,Hix,Inexis,Irix,Jezzix,Kaliez,Kepzs,Kernix,Kersezz,Kertrasz,Kerx,"
+"Kerxenix,Kezz,Klexaz,Klezyx,Krarax,Krenarex,Krex,Krinex,Krisess,Laizix,Lazki,"
+"Lixeez,Merax,Mexiss,Moxanzz,Naxisz,Nix,Pekzs,Plaxis,Plesix,Presch,Sailik,"
+"Salanix,Salik,Sandix,Saprazz,Satras,Skalix,Skandix,Skazix,Skeely,Skeezix,"
+"Sklizle,Skrez,Slizilx,Sprizz,Ssizer,Ssorix,Sszasz,Sterizz,Talerez,Tarex,"
+"Tarnix,Tezzaz,Tirasch,Tirax,Tirix,Trezz,Venezz,Vriss,Waks,Xaffrasz,Xartrez,"
+"Xasz,Xaztex,Xerxix,Xirasz,Xirr,Xirtras,Xirtrez,Xirz,Zandler,Zedrix,Zilrix,"
+"Zizzasz,Zslap,Zzalkz,Zzupde"
 msgstr ""
 
 #. Generator for saurian names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
@@ -2424,13 +2589,20 @@ msgid ""
 msgstr ""
 
 #: data/core/macros/names.cfg:190
-msgid "Absu,Abzu,Aigaion,Alastyn,Apalala,Apam,Apsu,Aremata,Atlahua,Atlaua,Barinthus,Dhakhan,Dylan,Elcmar,Ember,Enki,Faro,Habaek,Ikatere,Jamm,Jin,Kinilau,Kulullu,Labuna,Laut,Lir,Llyr,Ludd,Makara,Maui,Melicertes,Mimir,Natat,Nechtan,Neptune,Nereus,Nethuns,Njord,Nuada,Nudd,Nudimmud,Nun,Oceanus,Okeanos,Phorcys,Pontus,Popoa,Poseidon,Proteus,Raja,Rau,Rorua,Ryujin,Scylla,Sinilau,Sisiutl,Tagaloa,Tanaoa,Tangaloa,Tangaroa,Thaumas,Tikitiki,Tini,Tinilau,Tinirau,Toniwha,Triton,Vizi,Vodnik,Vourukasa"
+msgid ""
+"Absu,Abzu,Aigaion,Alastyn,Apalala,Apam,Apsu,Aremata,Atlahua,Atlaua,Barinthus,"
+"Dhakhan,Dylan,Elcmar,Ember,Enki,Faro,Habaek,Ikatere,Jamm,Jin,Kinilau,Kulullu,"
+"Labuna,Laut,Lir,Llyr,Ludd,Makara,Maui,Melicertes,Mimir,Natat,Nechtan,Neptune,"
+"Nereus,Nethuns,Njord,Nuada,Nudd,Nudimmud,Nun,Oceanus,Okeanos,Phorcys,Pontus,"
+"Popoa,Poseidon,Proteus,Raja,Rau,Rorua,Ryujin,Scylla,Sinilau,Sisiutl,Tagaloa,"
+"Tanaoa,Tangaloa,Tangaroa,Thaumas,Tikitiki,Tini,Tinilau,Tinirau,Toniwha,"
+"Triton,Vizi,Vodnik,Vourukasa"
 msgstr ""
 
 #: data/core/macros/names.cfg:191
 msgid ""
-"Aglaopheme,Amphitrite,Aphrodite,Ariel,Atargatis,Calypso,Delphine,Derceto,Diktynna,Electra,Galatea,Himeropa,Jengu,Leucosia,Ligia,Lori "
-"Lamaris,Mama "
+"Aglaopheme,Amphitrite,Aphrodite,Ariel,Atargatis,Calypso,Delphine,Derceto,"
+"Diktynna,Electra,Galatea,Himeropa,Jengu,Leucosia,Ligia,Lori Lamaris,Mama "
 "Wata,Marina,Miranda,Miriam,Molpe,Parthenope,Pelagia,Pisinoe,Rân,Sedna,Stella "
 "Maris,Thelxiepia,Tirgata,Vatea,Ved-Ava,Veen emo,Vete-ema"
 msgstr ""
@@ -2459,11 +2631,24 @@ msgid ""
 msgstr ""
 
 #: data/core/macros/names.cfg:209
-msgid "Abraxas,Aleiss,Amail,Axmail,Blanal,Bleii,Blo,Bress,Briss,Gaxmol,Griam,Griss,Grissileii,Hailoss,Hainoss,Harxos,Huzel,Inaloss,Ineii,Issal,Klezel,Kras,Krezkps,Kzap,Lamaiss,Lameii,Lexpek,Liness,Lobor,Maissol,Malinos,Milbor,Mileii,Nildloss,Oxpeii,Poniaz,Psell,Pson,Pzakp,Reii,Sassal,Saxil,Saxrireii,Sekol,Silas,Skell,Skepz,Slell,Snol,Soill,Sorkol,Srell,Trixoz,Vilail,Vissal,Vlanis,Xabrak,Xamalel,Xinas,Xnamos,Xopkon,Zalsp,Zlek,Zpsek,Zsekp"
+msgid ""
+"Abraxas,Aleiss,Amail,Axmail,Blanal,Bleii,Blo,Bress,Briss,Gaxmol,Griam,Griss,"
+"Grissileii,Hailoss,Hainoss,Harxos,Huzel,Inaloss,Ineii,Issal,Klezel,Kras,"
+"Krezkps,Kzap,Lamaiss,Lameii,Lexpek,Liness,Lobor,Maissol,Malinos,Milbor,"
+"Mileii,Nildloss,Oxpeii,Poniaz,Psell,Pson,Pzakp,Reii,Sassal,Saxil,Saxrireii,"
+"Sekol,Silas,Skell,Skepz,Slell,Snol,Soill,Sorkol,Srell,Trixoz,Vilail,Vissal,"
+"Vlanis,Xabrak,Xamalel,Xinas,Xnamos,Xopkon,Zalsp,Zlek,Zpsek,Zsekp"
 msgstr ""
 
 #: data/core/macros/names.cfg:210
-msgid "Aliasse,Amailis,Axmailia,Blai,Blanalai,Bli,Bliana,Brassas,Brissal,Gaxmail,Griama,Grissa,Grissilai,Haila,Haina,Harxias,Huzi,Inai,Inalai,Issalai,Klez,Kras,Krezkps,Kzap,Lamai,Lamaissa,Lexpek,Liabra,Lilin,Linassa,Maissa,Malina,Mila,Milbra,Nildlasi,Oxpel,Poniazal,Psal,Psen,Pzakp,Riaa,Sall,Sassalia,Saxiala,Saxririaa,Sek,Skal,Skepz,Sla,Snelia,Srak,Sral,Szak,Trixzed,Vilaila,Vissalai,Vlanissa,Xabrak,Xamalia,Xina,Xinasia,Xnamas,Xopkne,Zalsp,Zlek,Zpsek,Zsekp"
+msgid ""
+"Aliasse,Amailis,Axmailia,Blai,Blanalai,Bli,Bliana,Brassas,Brissal,Gaxmail,"
+"Griama,Grissa,Grissilai,Haila,Haina,Harxias,Huzi,Inai,Inalai,Issalai,Klez,"
+"Kras,Krezkps,Kzap,Lamai,Lamaissa,Lexpek,Liabra,Lilin,Linassa,Maissa,Malina,"
+"Mila,Milbra,Nildlasi,Oxpel,Poniazal,Psal,Psen,Pzakp,Riaa,Sall,Sassalia,"
+"Saxiala,Saxririaa,Sek,Skal,Skepz,Sla,Snelia,Srak,Sral,Szak,Trixzed,Vilaila,"
+"Vissalai,Vlanissa,Xabrak,Xamalia,Xina,Xinasia,Xnamas,Xopkne,Zalsp,Zlek,Zpsek,"
+"Zsekp"
 msgstr ""
 
 #. Generator for male naga names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
@@ -2491,7 +2676,13 @@ msgid ""
 msgstr ""
 
 #: data/core/macros/names.cfg:226
-msgid "Akoark,Akort,Akzalk,Arkarm,Barkuk,Blokkar,Borkuk,Bukkak,Bulruk,Corkkar,Delkkak,Garkuk,Gnukk,Goruk,Grak,Gurk,Gurm,Kalknix,Karak,Karbuk,Kargnak,Karterak,Kayrak,Kelkrar,Kerta,Kilkrar,Kingrok,Kirk,Klud,Kokkan,Kolk,Komak,Korgnak,Kork,Koruck,Kramak,Krog,Krukrak,Krumuk,Kuknuk,Kurkur,Kurmak,Makron,Markaak,Markuk,Merknik,Nargak,Olk,Orkut,Reknak,Takolak,Trabuk,Trakkon,Urkar,Urkark"
+msgid ""
+"Akoark,Akort,Akzalk,Arkarm,Barkuk,Blokkar,Borkuk,Bukkak,Bulruk,Corkkar,"
+"Delkkak,Garkuk,Gnukk,Goruk,Grak,Gurk,Gurm,Kalknix,Karak,Karbuk,Kargnak,"
+"Karterak,Kayrak,Kelkrar,Kerta,Kilkrar,Kingrok,Kirk,Klud,Kokkan,Kolk,Komak,"
+"Korgnak,Kork,Koruck,Kramak,Krog,Krukrak,Krumuk,Kuknuk,Kurkur,Kurmak,Makron,"
+"Markaak,Markuk,Merknik,Nargak,Olk,Orkut,Reknak,Takolak,Trabuk,Trakkon,Urkar,"
+"Urkark"
 msgstr ""
 
 #. Generator for ogre names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
@@ -2505,7 +2696,39 @@ msgid ""
 msgstr ""
 
 #: data/core/macros/names.cfg:236
-msgid "Badush,Bagar,Bagdish,Barag,Barbag,Bart,Bashnak,Bidish,Bidush,Bik,Bilg,Bilo,Binak,Bink,Biol,Birt,Bogar,Bogdish,Bogdush,Bogor,Bok,Bolg,Bong,Borg,Bork,Bort,Boshnak,Budush,Bugdish,Buk,Bunak,Bung,Bunk,Burag,Burg,Burk,Buurk,Eradash,Eradish,Eragdish,Eragdush,Eragor,Eranak,Erang,Erarag,Erarg,Erart,Erigdush,Erik,Erinak,Eriol,Erirag,Erirbag,Erirg,Erirt,Erishnak,Eriurk,Erogdish,Erogdush,Erok,Erong,Eronk,Erorbag,Erudish,Erudush,Erugar,Erugdush,Erulo,Erunk,Eruol,Erurag,Eruurk,Gadash,Gagar,Gagdush,Gagor,Galo,Ganak,Gank,Gaol,Garag,Gashnak,Gigor,Ginak,Ging,Gink,Girt,Gogdish,Gogdush,Gong,Gork,Gort,Goshnak,Gradash,Gragar,Gragor,Grak,Gralg,Gralo,Granak,Graol,Grarbag,Gridash,Gridish,Gridush,Grigar,Grigor,Grilg,Grilo,Grink,Grirag,Grirg,Grirk,Grishnak,Grodish,Grogar,Grogdish,Grok,Grolg,Grong,Gronk,Grorag,Grorg,Grork,Grort,Groshnak,Grudash,Grugar,Grugdish,Grugdush,Gruk,Grulo,Grunk,Gruol,Grurg,Grurk,Grurt,Gruurk,Gugdish,Gugdush,Gulg,Gulo,Gunak,Gurbag,Gurt,Gushnak,Hadash,Hadish,Hadush,Hagar,Hagdush,Hagor,Hak,Halg,Hank,Hashnak,Hidash,Hidish,Hidush,Higdush,Hilg,Hinak,Hing,Hink,Hiol,Hirag,Hirg,Hodush,Hogar,Hogor,Hong,Hool,Horbag,Hork,Hort,Hoshnak,Hudash,Hudish,Hugor,Huk,Hulg,Hulo,Hunk,Huol,Hurag,Hurbag,Hurk,Hushnak,Huurk,Pagdish,Pagor,Palg,Palo,Paol,Parag,Pashnak,Pidush,Pigdish,Pigdush,Pilg,Pinak,Pink,Pirbag,Podash,Podish,Podush,Pogdish,Polg,Porbag,Porg,Pork,Port,Poshnak,Pradish,Pragdush,Pragor,Pralg,Pralo,Prang,Praol,Prarag,Prarbag,Prarg,Prark,Prart,Prashnak,Praurk,Pridish,Prigar,Prigdish,Prigor,Prilg,Prilo,Prinak,Priol,Prirbag,Prirg,Prirt,Priurk,Prodash,Prodish,Prodush,Prolg,Prolo,Pronak,Prong,Pronk,Prool,Prourk,Prudish,Prugar,Prugdish,Pruk,Prunak,Prunk,Prurg,Prurk,Pruurk,Puk,Pulg,Pulo,Punak,Pung,Punk,Purag,Purbag,Purg,Puurk,Radash,Ragar,Ragdish,Rak,Rang,Rank,Raol,Rarag,Rarbag,Rark,Rashnak,Raurk,Rigor,Rik,Rilg,Rinak,Rink,Rirg,Rirk,Rodish,Rodush,Rogdish,Rok,Rolo,Ronak,Rudash,Rugar,Rugdish,Ruk,Rung,Ruol,Rurag,Rushnak,Vadash,Vadish,Vadush,Vak,Valo,Vank,Varag,Varbag,Vigar,Vigdish,Vigor,Vilg,Vilo,Vink,Virag,Virt,Vishnak,Vogdish,Vogor,Vonak,Vong,Vorg,Vork,Voshnak,Vourk,Vradash,Vragar,Vragdush,Vragor,Vralo,Vrang,Vrarbag,Vrarg,Vrart,Vraurk,Vridash,Vridish,Vrigor,Vrik,Vrinak,Vring,Vrirt,Vrishnak,Vriurk,Vrodash,Vrodish,Vrogar,Vrogor,Vrolo,Vrong,Vrorg,Vrork,Vrudish,Vrugdush,Vrulg,Vrung,Vruol,Vrurg,Vrurt,Vruurk,Vudish,Vuk,Vulg,Vulo,Vunak,Vurag,Vurbag,Vurg,Vushnak"
+msgid ""
+"Badush,Bagar,Bagdish,Barag,Barbag,Bart,Bashnak,Bidish,Bidush,Bik,Bilg,Bilo,"
+"Binak,Bink,Biol,Birt,Bogar,Bogdish,Bogdush,Bogor,Bok,Bolg,Bong,Borg,Bork,"
+"Bort,Boshnak,Budush,Bugdish,Buk,Bunak,Bung,Bunk,Burag,Burg,Burk,Buurk,"
+"Eradash,Eradish,Eragdish,Eragdush,Eragor,Eranak,Erang,Erarag,Erarg,Erart,"
+"Erigdush,Erik,Erinak,Eriol,Erirag,Erirbag,Erirg,Erirt,Erishnak,Eriurk,"
+"Erogdish,Erogdush,Erok,Erong,Eronk,Erorbag,Erudish,Erudush,Erugar,Erugdush,"
+"Erulo,Erunk,Eruol,Erurag,Eruurk,Gadash,Gagar,Gagdush,Gagor,Galo,Ganak,Gank,"
+"Gaol,Garag,Gashnak,Gigor,Ginak,Ging,Gink,Girt,Gogdish,Gogdush,Gong,Gork,Gort,"
+"Goshnak,Gradash,Gragar,Gragor,Grak,Gralg,Gralo,Granak,Graol,Grarbag,Gridash,"
+"Gridish,Gridush,Grigar,Grigor,Grilg,Grilo,Grink,Grirag,Grirg,Grirk,Grishnak,"
+"Grodish,Grogar,Grogdish,Grok,Grolg,Grong,Gronk,Grorag,Grorg,Grork,Grort,"
+"Groshnak,Grudash,Grugar,Grugdish,Grugdush,Gruk,Grulo,Grunk,Gruol,Grurg,Grurk,"
+"Grurt,Gruurk,Gugdish,Gugdush,Gulg,Gulo,Gunak,Gurbag,Gurt,Gushnak,Hadash,"
+"Hadish,Hadush,Hagar,Hagdush,Hagor,Hak,Halg,Hank,Hashnak,Hidash,Hidish,Hidush,"
+"Higdush,Hilg,Hinak,Hing,Hink,Hiol,Hirag,Hirg,Hodush,Hogar,Hogor,Hong,Hool,"
+"Horbag,Hork,Hort,Hoshnak,Hudash,Hudish,Hugor,Huk,Hulg,Hulo,Hunk,Huol,Hurag,"
+"Hurbag,Hurk,Hushnak,Huurk,Pagdish,Pagor,Palg,Palo,Paol,Parag,Pashnak,Pidush,"
+"Pigdish,Pigdush,Pilg,Pinak,Pink,Pirbag,Podash,Podish,Podush,Pogdish,Polg,"
+"Porbag,Porg,Pork,Port,Poshnak,Pradish,Pragdush,Pragor,Pralg,Pralo,Prang,"
+"Praol,Prarag,Prarbag,Prarg,Prark,Prart,Prashnak,Praurk,Pridish,Prigar,"
+"Prigdish,Prigor,Prilg,Prilo,Prinak,Priol,Prirbag,Prirg,Prirt,Priurk,Prodash,"
+"Prodish,Prodush,Prolg,Prolo,Pronak,Prong,Pronk,Prool,Prourk,Prudish,Prugar,"
+"Prugdish,Pruk,Prunak,Prunk,Prurg,Prurk,Pruurk,Puk,Pulg,Pulo,Punak,Pung,Punk,"
+"Purag,Purbag,Purg,Puurk,Radash,Ragar,Ragdish,Rak,Rang,Rank,Raol,Rarag,Rarbag,"
+"Rark,Rashnak,Raurk,Rigor,Rik,Rilg,Rinak,Rink,Rirg,Rirk,Rodish,Rodush,Rogdish,"
+"Rok,Rolo,Ronak,Rudash,Rugar,Rugdish,Ruk,Rung,Ruol,Rurag,Rushnak,Vadash,"
+"Vadish,Vadush,Vak,Valo,Vank,Varag,Varbag,Vigar,Vigdish,Vigor,Vilg,Vilo,Vink,"
+"Virag,Virt,Vishnak,Vogdish,Vogor,Vonak,Vong,Vorg,Vork,Voshnak,Vourk,Vradash,"
+"Vragar,Vragdush,Vragor,Vralo,Vrang,Vrarbag,Vrarg,Vrart,Vraurk,Vridash,"
+"Vridish,Vrigor,Vrik,Vrinak,Vring,Vrirt,Vrishnak,Vriurk,Vrodash,Vrodish,"
+"Vrogar,Vrogor,Vrolo,Vrong,Vrorg,Vrork,Vrudish,Vrugdush,Vrulg,Vrung,Vruol,"
+"Vrurg,Vrurt,Vruurk,Vudish,Vuk,Vulg,Vulo,Vunak,Vurag,Vurbag,Vurg,Vushnak"
 msgstr ""
 
 #. Generator for orc names
@@ -2545,11 +2768,10 @@ msgstr ""
 
 #: data/core/macros/names.cfg:264
 msgid ""
-"Äg,Agh,Bog Äh,Borb,Brag,Brag "
-"Goh,Brok,Dak,Drog,Frok,Ga,Gah,Gark,Gnarf,Grar,Grokk,Grumph,Gulk,Hak,Hask,Hoth,Hug "
-"Bah,Hu Kah,Kak,Krak,Krug,Kub,Kuh,Lok,Luk,Nak,Nuk "
-"Kar,Pag,Reck,Rok,Ruk,Sark,Shak,Shuf,Stuh,Targ,Thog,Thruf,Thur,Tohg,Torg,Trok,Tsok,Tuh,Tuk "
-"Ruh,Ugg,Üh,Urg,Urgh,Urk,Vak,Zog,Zuug"
+"Äg,Agh,Bog Äh,Borb,Brag,Brag Goh,Brok,Dak,Drog,Frok,Ga,Gah,Gark,Gnarf,Grar,"
+"Grokk,Grumph,Gulk,Hak,Hask,Hoth,Hug Bah,Hu Kah,Kak,Krak,Krug,Kub,Kuh,Lok,Luk,"
+"Nak,Nuk Kar,Pag,Reck,Rok,Ruk,Sark,Shak,Shuf,Stuh,Targ,Thog,Thruf,Thur,Tohg,"
+"Torg,Trok,Tsok,Tuh,Tuk Ruh,Ugg,Üh,Urg,Urgh,Urk,Vak,Zog,Zuug"
 msgstr ""
 
 #. Generator for troll names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
@@ -2566,7 +2788,19 @@ msgid ""
 msgstr ""
 
 #: data/core/macros/names.cfg:277
-msgid "Bludebalmen,Boladrumbadrum,Bolwuldelman,Bombempomgontor,Bomtanbomkenton,Bomtanbomtonum,Bregalad,Bremdebubde,Brenbasnudnem,Brendumadoak,Brommantendronnor,Brumbendublun,Brumennarunom,Brummdlebroak,Bumbadadabum,Buomdumdenlol,Carnimirië,Dabumdabumtam,Dammantongonnur,Danmonlulbam,Debundbemun,Delmduelmdelom,Diblembumnde,Dolmannumbil,Drongnoblemdu,Dulmandarook,Dulwulmendom,Dumdumdumatum,Elmaroomadrum,Grelmadrumbumadum,Gulladroamadoak,Gumabeladrelm,Laffalialomdium,Landunwonbam,Lassemista,Lefnublemdde,Libleddnumm,Lolmandindel,Monlamwimdan,Muldondindal,Mundionalafla,Mundumblemdum,Munnamdulbon,Nanmildaldum,Nunmaldildun,Orofarnië,Pambedrumne,Pomtamkomtrobum,Rithramcamhan,Tantondernintan,Temtundembenn,Temtunnongetem,Tondenkontenkon,Troombadoom,Tumtentantarun,Tumtonnongatum,Tumtumgamtomtom,Wonrunmaldin,Wudadoonopl"
+msgid ""
+"Bludebalmen,Boladrumbadrum,Bolwuldelman,Bombempomgontor,Bomtanbomkenton,"
+"Bomtanbomtonum,Bregalad,Bremdebubde,Brenbasnudnem,Brendumadoak,"
+"Brommantendronnor,Brumbendublun,Brumennarunom,Brummdlebroak,Bumbadadabum,"
+"Buomdumdenlol,Carnimirië,Dabumdabumtam,Dammantongonnur,Danmonlulbam,"
+"Debundbemun,Delmduelmdelom,Diblembumnde,Dolmannumbil,Drongnoblemdu,"
+"Dulmandarook,Dulwulmendom,Dumdumdumatum,Elmaroomadrum,Grelmadrumbumadum,"
+"Gulladroamadoak,Gumabeladrelm,Laffalialomdium,Landunwonbam,Lassemista,"
+"Lefnublemdde,Libleddnumm,Lolmandindel,Monlamwimdan,Muldondindal,"
+"Mundionalafla,Mundumblemdum,Munnamdulbon,Nanmildaldum,Nunmaldildun,Orofarnië,"
+"Pambedrumne,Pomtamkomtrobum,Rithramcamhan,Tantondernintan,Temtundembenn,"
+"Temtunnongetem,Tondenkontenkon,Troombadoom,Tumtentantarun,Tumtonnongatum,"
+"Tumtumgamtomtom,Wonrunmaldin,Wudadoonopl"
 msgstr ""
 
 #. Generator for wose names; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
@@ -2586,7 +2820,9 @@ msgid ""
 msgstr ""
 
 #: data/core/macros/names.cfg:289
-msgid "Bal,Cam,Corn,Del,Earl,El,Fox,Fren,Gel,Hel,Hex,Hol,Hox,Il,Kin,Nam,Nes,New,Ol,Old,Olf,Oul,Ox,Rock,Rook,Sal,Sam,Sed,Sel,Sen,Sil,Tal,Water,Wet,York"
+msgid ""
+"Bal,Cam,Corn,Del,Earl,El,Fox,Fren,Gel,Hel,Hex,Hol,Hox,Il,Kin,Nam,Nes,New,Ol,"
+"Old,Olf,Oul,Ox,Rock,Rook,Sal,Sam,Sed,Sel,Sen,Sil,Tal,Water,Wet,York"
 msgstr ""
 
 #. Generator for the base names of features assigned by the random map generator; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax
@@ -2646,173 +2882,173 @@ msgstr ""
 "παιχτεί από ανθρώπινο παίκτη."
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:157
+#: data/core/macros/sound-utils.cfg:162
 msgid "Battle Epic"
 msgstr "Μαχητική Επική"
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:163
+#: data/core/macros/sound-utils.cfg:168
 msgid "Battle Music"
 msgstr "Μουσική Μάχης"
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:169
+#: data/core/macros/sound-utils.cfg:174
 msgid "Breaking the Chains"
 msgstr "Σπάζοντας τις Αλυσίδες"
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:175
+#: data/core/macros/sound-utils.cfg:180
 msgid "Casualties of War"
 msgstr "Θύματα Πολέμου"
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:181
+#: data/core/macros/sound-utils.cfg:186
 msgid "Elf Land"
 msgstr "Χώρα των Ξωτικών"
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:187
+#: data/core/macros/sound-utils.cfg:192
 msgid "Elvish theme"
 msgstr "Θέμα Ξωτικών"
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:193
+#: data/core/macros/sound-utils.cfg:198
 msgid "Frantic"
 msgstr "Μανιώδης"
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:199
+#: data/core/macros/sound-utils.cfg:204
 msgid "Heroes Rite"
 msgstr "Τελετουργικό Ηρώων"
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:205
+#: data/core/macros/sound-utils.cfg:210
 msgid "Into the Shadows"
 msgstr "Μέσα στις Σκιές"
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:211
+#: data/core/macros/sound-utils.cfg:216
 msgid "Journey’s End"
 msgstr ""
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:217
+#: data/core/macros/sound-utils.cfg:222
 msgid "Knalgan Theme"
 msgstr "Θέμα Knalgan"
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:223
+#: data/core/macros/sound-utils.cfg:228
 msgid "The Knolls of Doldesh"
 msgstr "Οι Λόφοι του Doldesh"
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:229
+#: data/core/macros/sound-utils.cfg:234
 msgid "Legends of the North"
 msgstr "Θρύλοι του Βορρά"
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:235
+#: data/core/macros/sound-utils.cfg:240
 msgid "Love Theme"
 msgstr "Θέμα Αγάπης"
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:241
+#: data/core/macros/sound-utils.cfg:246
 msgid "Loyalists"
 msgstr "Φιλοβασιλικοί "
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:247
+#: data/core/macros/sound-utils.cfg:252
 msgid "Over the Northern Mountains"
 msgstr "Πέρα από τα Βόρεια Βουνά"
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:253
+#: data/core/macros/sound-utils.cfg:258
 msgid "Northerners"
 msgstr "Βόρειοι"
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:259
+#: data/core/macros/sound-utils.cfg:264
 msgid "Nunc Dimittis"
 msgstr "Nunc Dimittis"
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:265
+#: data/core/macros/sound-utils.cfg:270
 msgid "Revelation"
 msgstr "Αποκάλυψη"
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:271
+#: data/core/macros/sound-utils.cfg:276
 msgid "Sad"
 msgstr "Λυπημένο"
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:277
+#: data/core/macros/sound-utils.cfg:282
 msgid "Siege of Laurelmor"
 msgstr "Πολιορκία του Laurelmor"
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:283
+#: data/core/macros/sound-utils.cfg:288
 msgid "Silvan Sanctuary"
 msgstr "Δασικό Ιερό"
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:289
+#: data/core/macros/sound-utils.cfg:294
 msgid "Suspense"
 msgstr "Αγωνία"
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:295
+#: data/core/macros/sound-utils.cfg:300
 msgid "The City Falls"
 msgstr "Η Πόλη Πέφτει"
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:301
+#: data/core/macros/sound-utils.cfg:306
 msgid "The Dangerous Symphony"
 msgstr "Η Επικίνδυνη Συμφωνία"
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:307
+#: data/core/macros/sound-utils.cfg:312
 msgid "The Deep Path"
 msgstr "Το Βαθύ Μονοπάτι"
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:313
+#: data/core/macros/sound-utils.cfg:318
 msgid "The King is Dead"
 msgstr "Ο Βασιλιάς Πέθανε"
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:319
+#: data/core/macros/sound-utils.cfg:324
 msgid "Transience"
 msgstr "Παροδικότητα"
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:325
+#: data/core/macros/sound-utils.cfg:330
 msgid "Traveling Minstrels"
 msgstr "Ταξιδεύοντες Μουσικοί"
 
 #. [music]
 #. [time]: id=underground_noweather
-#: data/core/macros/sound-utils.cfg:331 data/internal/Weather/_main.cfg:222
+#: data/core/macros/sound-utils.cfg:336 data/internal/Weather/_main.cfg:230
 msgid "Underground"
 msgstr "Υπόγεια"
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:337
+#: data/core/macros/sound-utils.cfg:347
 msgid "Vengeful Pursuit"
 msgstr "Εκδικητική Καταδίωξη"
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:343
+#: data/core/macros/sound-utils.cfg:353
 msgid "Still Another Wanderer"
 msgstr "Ακόμα Ένας Περιπλανώμενος"
 
 #. [music]
-#: data/core/macros/sound-utils.cfg:349
+#: data/core/macros/sound-utils.cfg:359
 msgid "Weight of Revenge"
 msgstr "Βάρος της Εκδίκησης"
 
 #. [message]: speaker=narrator
-#: data/core/macros/utils.cfg:664
+#: data/core/macros/utils.cfg:662
 msgid "You retrieve $amount_gold pieces of gold."
 msgstr "Ανακτάτε $amount_gold κομμάτια χρυσού."
 
@@ -3035,27 +3271,27 @@ msgid "The standard Wesnoth core."
 msgstr "Ο τυπικός πυρήνας Wesnoth."
 
 #. [language]
-#: data/english.cfg:3
+#: data/english.cfg:8
 msgid "Easy"
 msgstr "Εύκολο"
 
 #. [language]
-#: data/english.cfg:4
+#: data/english.cfg:9
 msgid "Medium"
 msgstr "Μέτριο"
 
 #. [language]
-#: data/english.cfg:5
+#: data/english.cfg:10
 msgid "Hard"
 msgstr "Δύσκολο"
 
 #. [language]
-#: data/english.cfg:6
+#: data/english.cfg:11
 msgid "Nightmare"
 msgstr "Εφιάλτης"
 
 #. [language]
-#: data/english.cfg:8
+#: data/english.cfg:13
 msgid ""
 "Lawful units fight better during the day, and worse at night.\n"
 "\n"
@@ -3068,7 +3304,7 @@ msgstr ""
 "Νύχτα: −25% Ζημιά"
 
 #. [language]
-#: data/english.cfg:12
+#: data/english.cfg:17
 msgid ""
 "Neutral units are unaffected by day and night, fighting equally well under "
 "both conditions."
@@ -3077,7 +3313,7 @@ msgstr ""
 "το ίδιο και στις δύο περιπτώσεις."
 
 #. [language]
-#: data/english.cfg:13
+#: data/english.cfg:18
 msgid ""
 "Chaotic units fight better at night, and worse during the day.\n"
 "\n"
@@ -3090,7 +3326,7 @@ msgstr ""
 "Νύχτα: +25% Ζημιά"
 
 #. [language]
-#: data/english.cfg:17
+#: data/english.cfg:22
 msgid ""
 "Liminal units fight best during the twilight times of day.\n"
 "\n"
@@ -3101,13 +3337,13 @@ msgstr ""
 "Λυκόφως: +25% Ζημιά"
 
 #. [language]
-#: data/english.cfg:31
+#: data/english.cfg:36
 msgid "arcane"
 msgstr "μυστικιστικό"
 
 #. [naming]
 #. Generator for bridge labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
-#: data/english.cfg:41
+#: data/english.cfg:46
 msgid ""
 "\n"
 "\t\tbridge_type=Bridge|Crossing\n"
@@ -3117,7 +3353,7 @@ msgstr ""
 
 #. [naming]
 #. Generator for road labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
-#: data/english.cfg:46
+#: data/english.cfg:51
 msgid ""
 "\n"
 "\t\troad_type=Highway|Pass|Path|Road|Way|Trail\n"
@@ -3127,7 +3363,7 @@ msgstr ""
 
 #. [naming]
 #. Generator for river labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
-#: data/english.cfg:51
+#: data/english.cfg:56
 msgid ""
 "\n"
 "\t\triver_type=River|River|River|Creek|Creek|Stream|Canal\n"
@@ -3137,7 +3373,7 @@ msgstr ""
 
 #. [naming]
 #. Generator for forest labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
-#: data/english.cfg:56
+#: data/english.cfg:61
 msgid ""
 "\n"
 "\t\tforest_type=Forest|Forest|Wood\n"
@@ -3147,7 +3383,7 @@ msgstr ""
 
 #. [naming]
 #. Generator for lake labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
-#: data/english.cfg:61
+#: data/english.cfg:66
 msgid ""
 "\n"
 "\t\tlake_type=Lake|Lake|Lake|Loch|Sea\n"
@@ -3157,7 +3393,7 @@ msgstr ""
 
 #. [naming]
 #. Generator for mountain labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
-#: data/english.cfg:66
+#: data/english.cfg:71
 msgid ""
 "\n"
 "\t\tmain=$base{!}’s Peak|$base Peak|Mount $base|Mount $base\n"
@@ -3166,7 +3402,7 @@ msgstr ""
 
 #. [naming]
 #. Generator for swamp labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
-#: data/english.cfg:70
+#: data/english.cfg:75
 msgid ""
 "\n"
 "\t\tsuffix=’s Swamp|marsh|fen\n"
@@ -3176,7 +3412,7 @@ msgstr ""
 
 #. [village_naming]
 #. Generator for generic village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
-#: data/english.cfg:78
+#: data/english.cfg:83
 msgid ""
 "\n"
 "\t\tsuffix=bury|bury|ham|ton|ville\n"
@@ -3186,7 +3422,7 @@ msgstr ""
 
 #. [village_naming]
 #. Generator for lakeside village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
-#: data/english.cfg:83
+#: data/english.cfg:88
 msgid ""
 "\n"
 "\t\tprefix=$base{!}|$lake{!}\n"
@@ -3197,7 +3433,7 @@ msgstr ""
 
 #. [village_naming]
 #. Generator for riverside village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
-#: data/english.cfg:89
+#: data/english.cfg:94
 msgid ""
 "\n"
 "\t\tprefix=$base{!}|$river{!}\n"
@@ -3209,7 +3445,7 @@ msgstr ""
 
 #. [village_naming]
 #. Generator for bridge village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
-#: data/english.cfg:96
+#: data/english.cfg:101
 msgid ""
 "\n"
 "\t\tprefix=$base{!}|$river{!}|$bridge{!}\n"
@@ -3220,7 +3456,7 @@ msgstr ""
 
 #. [village_naming]
 #. Generator for grassland village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
-#: data/english.cfg:102
+#: data/english.cfg:107
 msgid ""
 "\n"
 "\t\tsuffix=ham|ton|field\n"
@@ -3230,7 +3466,7 @@ msgstr ""
 
 #. [village_naming]
 #. Generator for forest village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
-#: data/english.cfg:107
+#: data/english.cfg:112
 msgid ""
 "\n"
 "\t\tprefix=$base{!}|$forest{!}\n"
@@ -3241,7 +3477,7 @@ msgstr ""
 
 #. [village_naming]
 #. Generator for hill village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
-#: data/english.cfg:113
+#: data/english.cfg:118
 msgid ""
 "\n"
 "\t\tsuffix=ham|bury|ton|hill|crest\n"
@@ -3251,7 +3487,7 @@ msgstr ""
 
 #. [village_naming]
 #. Generator for mountain village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
-#: data/english.cfg:118
+#: data/english.cfg:123
 msgid ""
 "\n"
 "\t\tprefix=$base{!}|$mountain{!}\n"
@@ -3262,7 +3498,7 @@ msgstr ""
 
 #. [village_naming]
 #. Generator for mountain labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
-#: data/english.cfg:124
+#: data/english.cfg:129
 msgid ""
 "\n"
 "\t\tsuffix=ham|bury|ton|mont|mont|cliff|cliff\n"
@@ -3272,7 +3508,7 @@ msgstr ""
 
 #. [village_naming]
 #. Generator for roadside village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
-#: data/english.cfg:129
+#: data/english.cfg:134
 msgid ""
 "\n"
 "\t\tprefix=$road{!}|$road{!}|$base{!}\n"
@@ -3283,7 +3519,7 @@ msgstr ""
 
 #. [village_naming]
 #. Generator for swamp village labels in random maps; see <https://wiki.wesnoth.org/Context-free_grammar> for syntax and <https://wiki.wesnoth.org/MapGeneratorWML#The_Default_Generator> for variables summary
-#: data/english.cfg:135
+#: data/english.cfg:140
 msgid ""
 "\n"
 "\t\tprefix=$base{!}|$swamp{!}\n"
@@ -3306,6 +3542,16 @@ msgstr "Εναλλακτικός Διακομιστής Γουέσνοθ"
 #: data/gui/themes/default/dialogs/install_dependencies.cfg:37
 msgid "Install Dependencies"
 msgstr "Εγκατάσταση Εξαρτήσεων"
+
+#. [button]: id=ok
+#: data/gui/themes/default/dialogs/install_dependencies.cfg:84
+msgid "Yes"
+msgstr "Ναι"
+
+#. [button]: id=cancel
+#: data/gui/themes/default/dialogs/install_dependencies.cfg:95
+msgid "No"
+msgstr "Όχι"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
@@ -3330,42 +3576,42 @@ msgid "WesScript"
 msgstr "WesScript"
 
 #. [time]: id=dawn_noweather
-#: data/internal/Weather/_main.cfg:143
+#: data/internal/Weather/_main.cfg:151
 msgid "Dawn"
 msgstr "Χάραμα"
 
 #. [time]: id=morning_noweather
-#: data/internal/Weather/_main.cfg:154
+#: data/internal/Weather/_main.cfg:162
 msgid "Morning"
 msgstr "Πρωί"
 
 #. [time]: id=midday_noweather
-#: data/internal/Weather/_main.cfg:162
+#: data/internal/Weather/_main.cfg:170
 msgid "Midday"
 msgstr "Μεσημέρι"
 
 #. [time]: id=afternoon_noweather
-#: data/internal/Weather/_main.cfg:170
+#: data/internal/Weather/_main.cfg:178
 msgid "Afternoon"
 msgstr "Απόγευμα"
 
 #. [time]: id=dusk_noweather
-#: data/internal/Weather/_main.cfg:178
+#: data/internal/Weather/_main.cfg:186
 msgid "Dusk"
 msgstr "Σούρουπο"
 
 #. [time]: id=first_watch_noweather
-#: data/internal/Weather/_main.cfg:189
+#: data/internal/Weather/_main.cfg:197
 msgid "First Watch"
 msgstr "Πρώτη Νυχτερινή Βάρδια"
 
 #. [time]: id=midnight_noweather
-#: data/internal/Weather/_main.cfg:200
+#: data/internal/Weather/_main.cfg:208
 msgid "Midnight"
 msgstr "Μεσάνυχτα"
 
 #. [time]: id=second_watch_noweather
-#: data/internal/Weather/_main.cfg:211
+#: data/internal/Weather/_main.cfg:219
 msgid "Second Watch"
 msgstr "Δεύτερη Νυχτερινή Βάρδια"
 
@@ -3560,31 +3806,31 @@ msgstr "Μη έγκυρο επίπεδο απαξίωσης (πρέπει να �
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:948
+#: data/lua/wml/harm_unit.lua:124 src/actions/attack.cpp:949
 msgid "female^poisoned"
 msgstr "δηλητηριασμένη"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:955
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:956
 msgid "female^slowed"
 msgstr "επιβραδυμένη"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:955
+#: data/lua/wml/harm_unit.lua:126 src/actions/attack.cpp:956
 msgid "slowed"
 msgstr "επιβραδυμένος"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:961
+#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:962
 msgid "female^petrified"
 msgstr "πετρωμένη"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:961
+#: data/lua/wml/harm_unit.lua:127 src/actions/attack.cpp:962
 msgid "petrified"
 msgstr "πετρωμένος"
 
@@ -3600,8 +3846,8 @@ msgstr "αθεράπευτος"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: wesnoth.wml_actions.message
-#: data/lua/wml/message.lua:433 src/scripting/game_lua_kernel.cpp:3749
-#: src/scripting/game_lua_kernel.cpp:3784
+#: data/lua/wml/message.lua:442 src/scripting/game_lua_kernel.cpp:3755
+#: src/scripting/game_lua_kernel.cpp:3790
 msgid "input"
 msgstr "είσοδος"
 
@@ -3862,7 +4108,7 @@ msgid "def"
 msgstr "άμυνα"
 
 #. [unit_level]: id=unit-level
-#: data/themes/default.cfg:408
+#: data/themes/default.cfg:409
 msgid "statuspanel^lvl"
 msgstr "επίπ"
 
@@ -4726,11 +4972,11 @@ msgstr ""
 msgid "waiting for^an advancement choice"
 msgstr "αναμονή για^επιλογή εξέλιξης"
 
-#: src/actions/attack.cpp:477 src/actions/attack.cpp:1273
+#: src/actions/attack.cpp:478 src/actions/attack.cpp:1274
 msgid "An invalid attacker weapon got selected."
 msgstr "Επιλέχθηκε μη έγκυρο όπλο επιτιθέμενου."
 
-#: src/actions/attack.cpp:968
+#: src/actions/attack.cpp:969
 msgid "attack^miss"
 msgstr "attack^αστοχία"
 
@@ -5038,7 +5284,7 @@ msgstr "Πληροφορίες συστήματος ελέγχου εκδόσε�
 msgid "Do you really wish to continue?"
 msgstr "Θέλετε πραγματικά να συνεχίσετε;"
 
-#: src/addon/client.cpp:722 src/addon/manager_ui.cpp:171
+#: src/addon/client.cpp:722 src/addon/manager_ui.cpp:187
 #: src/game_initialization/multiplayer.cpp:373
 msgid "Confirm"
 msgstr "Επιβεβαίωση"
@@ -5099,15 +5345,21 @@ msgstr "addon_type^(άγνωστο)"
 msgid "unit_byte^B"
 msgstr "unit_byte^B"
 
-#: src/addon/manager_ui.cpp:81 src/addon/manager_ui.cpp:320
-msgid "Network communication error."
-msgstr "Σφάλμα επικοινωνίας δικτύου."
-
-#: src/addon/manager_ui.cpp:84 src/addon/manager_ui.cpp:323
+#: src/addon/manager_ui.cpp:55
 msgid "Remote host disconnected."
 msgstr "Ο μακρινός υπολογιστής έχει αποσυνδεθεί."
 
-#: src/addon/manager_ui.cpp:87 src/addon/manager_ui.cpp:326
+#: src/addon/manager_ui.cpp:63
+#, fuzzy
+#| msgid "Map generator error: "
+msgid "Raw network error:"
+msgstr "Σφάλμα γεννήτριας χάρτη: "
+
+#: src/addon/manager_ui.cpp:97 src/addon/manager_ui.cpp:336
+msgid "Network communication error."
+msgstr "Σφάλμα επικοινωνίας δικτύου."
+
+#: src/addon/manager_ui.cpp:103 src/addon/manager_ui.cpp:342
 msgid ""
 "A problem occurred when trying to create the files necessary to install this "
 "add-on."
@@ -5115,7 +5367,7 @@ msgstr ""
 "Υπήρξε πρόβλημα κατά την δημιουργία των αρχείων που χρειάζονται για "
 "εγκατάσταση της επέκτασης."
 
-#: src/addon/manager_ui.cpp:96 src/addon/manager_ui.cpp:335
+#: src/addon/manager_ui.cpp:112 src/addon/manager_ui.cpp:351
 msgid ""
 "A local file with add-on publishing information could not be read.\n"
 "\n"
@@ -5128,21 +5380,21 @@ msgstr ""
 "Αρχείο: $path\n"
 "Μήνυμα σφάλματος: $msg"
 
-#: src/addon/manager_ui.cpp:104 src/addon/manager_ui.cpp:341
+#: src/addon/manager_ui.cpp:120 src/addon/manager_ui.cpp:357
 msgid "The add-ons server address specified is not valid."
 msgstr "Η καθορισμένη διεύθυνση διακομιστή πρόσθετων δεν είναι έγκυρη."
 
-#: src/addon/manager_ui.cpp:117
+#: src/addon/manager_ui.cpp:133
 msgid "You have no add-ons installed."
 msgstr "Δεν υπάρχουν εγκατεστημένες επεκτάσεις."
 
-#: src/addon/manager_ui.cpp:166
+#: src/addon/manager_ui.cpp:182
 msgid "Are you sure you want to remove the following installed add-on?"
 msgid_plural "Are you sure you want to remove the following installed add-ons?"
 msgstr[0] "Είστε σίγουροι πως θέλετε να αφαιρέσετε την ακόλουθη επέκταση;"
 msgstr[1] "Είστε σίγουροι πως θέλετε να αφαιρέσετε τις ακόλουθες επεκτάσεις;"
 
-#: src/addon/manager_ui.cpp:192
+#: src/addon/manager_ui.cpp:208
 msgid ""
 "The following add-on appears to have publishing or version control "
 "information stored locally, and will not be removed:"
@@ -5154,31 +5406,31 @@ msgstr[0] ""
 "information stored locally, and will not be removed:"
 msgstr[1] ""
 
-#: src/addon/manager_ui.cpp:202
+#: src/addon/manager_ui.cpp:218
 msgid "The following add-on could not be deleted properly:"
 msgid_plural "The following add-ons could not be deleted properly:"
 msgstr[0] "Η ακόλουθη επέκταση δεν μπόρεσε να διαγραφεί σωστά:"
 msgstr[1] "Η επέκταση δεν μπόρεσε να διαγραφθεί -- ένα αρχείο δεν βρέθηκε."
 
-#: src/addon/manager_ui.cpp:209
+#: src/addon/manager_ui.cpp:225
 msgid "Add-on Deleted"
 msgid_plural "Add-ons Deleted"
 msgstr[0] "Add-on Deleted"
 msgstr[1] "Η επέκταση διαγράφθηκε"
 
-#: src/addon/manager_ui.cpp:211
+#: src/addon/manager_ui.cpp:227
 msgid "The following add-on was successfully deleted:"
 msgid_plural "The following add-ons were successfully deleted:"
 msgstr[0] "The following add-on was successfully deleted:"
 msgstr[1] ""
 "Οι παρακάτω επεκτάσεις είχαν πρόβλημα καί δεν έγινε δυνατόν να φορτωθούν: "
 
-#: src/addon/manager_ui.cpp:268
+#: src/addon/manager_ui.cpp:284
 msgid "An error occurred while downloading the add-ons list from the server."
 msgstr ""
 "Παρουσιάστηκε σφάλμα κατά τη λήψη της λίστας επεκτάσεων από τον διακομιστή."
 
-#: src/addon/manager_ui.cpp:313
+#: src/addon/manager_ui.cpp:329
 msgid ""
 "Could not find add-ons matching the ids $addon_ids on the add-on server."
 msgstr ""
@@ -5382,7 +5634,7 @@ msgstr "αίτηση πληροφοριών για τον χρήστη $nick"
 msgid "(A) — admin command"
 msgstr "(A) — εντολή διαχειριστή"
 
-#: src/chat_command_handler.hpp:58 src/menu_events.cpp:1209
+#: src/chat_command_handler.hpp:58 src/menu_events.cpp:1216
 msgid "(admin only)"
 msgstr "(μόνο ως διαχειριστής)"
 
@@ -5502,7 +5754,7 @@ msgstr "Εμφάνιση πληροφοριών έκδοσης."
 msgid "Request information about a nickname."
 msgstr "Αίτηση πληροφοριών για ένα ψευδώνυμο."
 
-#: src/chat_command_handler.hpp:121 src/menu_events.cpp:1259
+#: src/chat_command_handler.hpp:121 src/menu_events.cpp:1266
 msgid "Clear chat history."
 msgstr "Καθαρισμός ιστορικού συνομιλίας."
 
@@ -5554,7 +5806,7 @@ msgstr "Το $elem έχει καταργηθεί και αφαιρεθεί."
 msgid "Chat message"
 msgstr "Μήνυμα συνομιλίας"
 
-#: src/desktop/windows_tray_notification.cpp:126 src/game_config.cpp:588
+#: src/desktop/windows_tray_notification.cpp:137 src/game_config.cpp:588
 msgid "The Battle for Wesnoth"
 msgstr "Η Μάχη για το Γουέσνοθ"
 
@@ -5750,7 +6002,7 @@ msgid_plural ""
 msgstr[0] "Please report this to the author or maintainer of this add-on."
 msgstr[1] ""
 
-#: src/game_events/pump.cpp:389 src/game_launcher.cpp:947
+#: src/game_events/pump.cpp:389 src/game_launcher.cpp:950
 msgid "Error: "
 msgstr "Σφάλμα: "
 
@@ -6077,20 +6329,20 @@ msgstr "Έχετε κάνει πάρα πολλές προσπάθειες σύ�
 msgid "Password hashing failed."
 msgstr "Η κατακερματισμός κωδικού απέτυχε."
 
-#: src/game_initialization/playcampaign.cpp:150 src/game_launcher.cpp:900
+#: src/game_initialization/playcampaign.cpp:150 src/game_launcher.cpp:903
 msgid "The game could not be loaded: "
 msgstr "Η φόρτωση του παιχνιδιού ήταν αδύνατη: "
 
-#: src/game_initialization/playcampaign.cpp:156 src/game_launcher.cpp:902
+#: src/game_initialization/playcampaign.cpp:156 src/game_launcher.cpp:905
 msgid "Error while playing the game: "
 msgstr "Σφάλμα ενώ παίζατε το παιχνίδι: "
 
-#: src/game_initialization/playcampaign.cpp:159 src/game_launcher.cpp:939
+#: src/game_initialization/playcampaign.cpp:159 src/game_launcher.cpp:942
 msgid "The game map could not be loaded: "
 msgstr "Η φόρτωση του χάρτη ήταν αδύνατη: "
 
-#: src/game_initialization/playcampaign.cpp:162 src/game_launcher.cpp:904
-#: src/game_launcher.cpp:1025
+#: src/game_initialization/playcampaign.cpp:162 src/game_launcher.cpp:907
+#: src/game_launcher.cpp:1028
 msgid "Map generator error: "
 msgstr "Σφάλμα γεννήτριας χάρτη: "
 
@@ -6115,28 +6367,28 @@ msgstr ""
 msgid "No campaigns are available."
 msgstr "Δεν υπάρχουν διαθέσιμες εκστρατείες."
 
-#: src/game_launcher.cpp:686 src/game_launcher.cpp:705
+#: src/game_launcher.cpp:685 src/game_launcher.cpp:704
 #: src/hotkey/hotkey_handler_sp.cpp:324 src/replay.cpp:662 src/savegame.cpp:167
 msgid "The file you have tried to load is corrupt"
 msgstr "Το αρχείο που προσπαθήσατε να φορτώσετε είναι κατεστραμμένο"
 
-#: src/game_launcher.cpp:688 src/game_launcher.cpp:707
+#: src/game_launcher.cpp:687 src/game_launcher.cpp:706
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Το αρχείο που προσπαθήσατε να φορτώσετε είναι κατεστραμμένο: '"
 
-#: src/game_launcher.cpp:697
+#: src/game_launcher.cpp:696
 msgid "File I/O Error while reading the game"
 msgstr "Σφάλμα ανάγνωσης/εγγραφής (Ι/Ο) κατά την ανάγνωση του παιχνιδιού"
 
-#: src/game_launcher.cpp:699
+#: src/game_launcher.cpp:698
 msgid "File I/O Error while reading the game: '"
 msgstr "Σφάλμα ανάγνωσης/εγγραφής (Ι/Ο) κατά την ανάγνωση του παιχνιδιού: '"
 
-#: src/game_launcher.cpp:898
+#: src/game_launcher.cpp:901
 msgid "Error while starting server: "
 msgstr "Σφάλμα κατά την εκκίνηση του διακομιστή: "
 
-#: src/game_launcher.cpp:920
+#: src/game_launcher.cpp:923
 msgid "Connection failed: "
 msgstr "Η σύνδεση απέτυχε: "
 
@@ -6282,77 +6534,104 @@ msgstr "όχι"
 msgid "yes"
 msgstr "ναι"
 
-#: src/help/help_impl.cpp:301
+#: src/help/help_impl.cpp:297
 msgid "Only available during a scenario."
 msgstr "Διαθέσιμο μόνο κατά τη διάρκεια ενός σεναρίου."
 
-#: src/help/help_impl.cpp:302 src/help/help_impl.cpp:341
+#: src/help/help_impl.cpp:298 src/help/help_impl.cpp:337
 msgid "Time of Day Schedule"
 msgstr "Πρόγραμμα Ώρας Ημέρας"
 
-#: src/help/help_impl.cpp:332
+#: src/help/help_impl.cpp:328
 msgid "Lawful Bonus:"
 msgstr "Μπόνους Νομοταγούς:"
 
-#: src/help/help_impl.cpp:333
+#: src/help/help_impl.cpp:329
 msgid "Neutral Bonus:"
 msgstr "Μπόνους Ουδέτερων:"
 
-#: src/help/help_impl.cpp:334
+#: src/help/help_impl.cpp:330
 msgid "Chaotic Bonus:"
 msgstr "Μπόνους Χαοτικών:"
 
-#: src/help/help_impl.cpp:335
+#: src/help/help_impl.cpp:331
 msgid "Liminal Bonus:"
 msgstr "Μπόνους Του Σούρουπου:"
 
-#: src/help/help_impl.cpp:336
+#: src/help/help_impl.cpp:332
 msgid "Schedule"
 msgstr "Πρόγραμμα"
 
-#: src/help/help_impl.cpp:431
+#: src/help/help_impl.cpp:427
 msgid "Units with this special attack"
 msgstr "Μονάδες με αυτή την ειδική επίθεση"
 
-#: src/help/help_impl.cpp:487
+#: src/help/help_impl.cpp:482
 msgid "Units with this ability"
 msgstr "Μονάδες με αυτή την ικανότητα"
 
-#: src/help/help_impl.cpp:523
+#: src/help/help_impl.cpp:518
 msgid "Factions"
 msgstr "Παρατάξεις"
 
-#: src/help/help_impl.cpp:569
+#: src/help/help_impl.cpp:566
 msgid "Races: "
 msgstr "Φυλές: "
 
-#: src/help/help_impl.cpp:578 src/help/help_impl.cpp:1026
+#: src/help/help_impl.cpp:575 src/help/help_impl.cpp:1148
 msgid "Alignments: "
 msgstr "Πολιτεύματα: "
 
-#: src/help/help_impl.cpp:585
+#: src/help/help_impl.cpp:582
 msgid "Leaders"
 msgstr "Αρχηγοί"
 
-#: src/help/help_impl.cpp:594
+#: src/help/help_impl.cpp:591
 msgid "Recruits"
 msgstr "Στρατολόγηση"
 
-#: src/help/help_impl.cpp:679 src/units/types.cpp:450
+#: src/help/help_impl.cpp:636
+msgid "Previous"
+msgstr ""
+
+#: src/help/help_impl.cpp:649 src/help/help_impl.cpp:776
+#: src/help/help_impl.cpp:794
+msgid "Next"
+msgstr "Παρακάτω"
+
+#: src/help/help_impl.cpp:751 src/units/types.cpp:450
 msgid "No description available."
 msgstr "Δεν υπάρχει διαθέσιμη περιγραφή."
 
-#: src/help/help_impl.cpp:788 src/help/help_impl.cpp:1003
+#: src/help/help_impl.cpp:755
+#, fuzzy
+#| msgid "This is the last scenario."
+msgid "This is a global trait."
+msgstr "Αυτή είναι η τελευταία αποστολή."
+
+#: src/help/help_impl.cpp:763
+#, fuzzy
+#| msgid "Units with this ability"
+msgid "Races with this trait"
+msgstr "Μονάδες με αυτή την ικανότητα"
+
+#: src/help/help_impl.cpp:783
+#, fuzzy
+#| msgid "Units with this ability"
+msgid "Units with this trait"
+msgstr "Μονάδες με αυτή την ικανότητα"
+
+#: src/help/help_impl.cpp:907 src/help/help_impl.cpp:1125
 msgid "race^Miscellaneous"
 msgstr "Λοιπά"
 
-#: src/help/help_impl.cpp:1026
+#: src/help/help_impl.cpp:1148
 msgid "Alignment: "
 msgstr "Νοοτροπία: "
 
 #. TRANSLATORS: this is expected to say "[Dunefolk are] a group of units, all of whom are Humans",
 #. or "[Quenoth Elves are] a group of units, all of whom are Elves".
-#: src/help/help_impl.cpp:1045
+#: src/help/help_impl.cpp:1167
 msgid ""
 "This is a group of units, all of whom are <ref "
 "dst='$topic_id'>$help_taxonomy</ref>."
@@ -6360,19 +6639,19 @@ msgstr ""
 "Αυτή είναι μια ομάδα μονάδων, όλες οι οποίες είναι <ref "
 "dst='$topic_id'>$help_taxonomy</ref>."
 
-#: src/help/help_impl.cpp:1050
+#: src/help/help_impl.cpp:1172
 msgid "Subgroups of units within this group"
 msgstr "Υποομάδες μονάδων μέσα σε αυτή την ομάδα"
 
-#: src/help/help_impl.cpp:1052
+#: src/help/help_impl.cpp:1174
 msgid "Groups of units within this race"
 msgstr "Ομάδες μονάδων μέσα σε αυτή τη φυλή"
 
-#: src/help/help_impl.cpp:1061
+#: src/help/help_impl.cpp:1183
 msgid "Units of this group"
 msgstr "Μονάδες αυτής της ομάδας"
 
-#: src/help/help_impl.cpp:1063
+#: src/help/help_impl.cpp:1185
 msgid "Units of this race"
 msgstr "Μονάδες αυτής της φυλής"
 
@@ -6420,11 +6699,11 @@ msgstr "Επανάληψη από την Αρχή"
 msgid "(press $hotkey to deactivate)"
 msgstr "(πατήστε $hotkey για απενεργοποίηση)"
 
-#: src/hotkey/hotkey_handler_sp.cpp:156 src/menu_events.cpp:2098
+#: src/hotkey/hotkey_handler_sp.cpp:156 src/menu_events.cpp:2105
 msgid "Planning mode activated!"
 msgstr "Λειτουργία σχεδιασμού ενεργοποιήθηκε!"
 
-#: src/hotkey/hotkey_handler_sp.cpp:158 src/menu_events.cpp:2101
+#: src/hotkey/hotkey_handler_sp.cpp:158 src/menu_events.cpp:2108
 msgid "Planning mode deactivated!"
 msgstr "Λειτουργία σχεδιασμού απενεργοποιήθηκε!"
 
@@ -6438,7 +6717,7 @@ msgid "The file you have tried to load is not from the current session."
 msgstr ""
 "Το αρχείο που προσπαθήσατε να φορτώσετε δεν είναι από την τρέχουσα συνεδρία."
 
-#: src/language.cpp:96
+#: src/language.cpp:115
 msgid "System default language"
 msgstr "Φόρτωση προκαθορισμένης γλώσσας"
 
@@ -6600,180 +6879,180 @@ msgstr ""
 msgid "You currently can’t recall at the highlighted location."
 msgstr ""
 
-#: src/menu_events.cpp:444
+#: src/menu_events.cpp:447
 msgid "You must have at least 1 gold piece to recall a unit."
 msgid_plural "You must have at least $cost gold pieces to recall this unit."
 msgstr[0] "You must have at least 1 gold piece to recall a unit."
 msgstr[1] "Πρέπει να έχετε τουλάχιστον $cost χρυσό για να ανακαλέσετε μονάδες"
 
-#: src/menu_events.cpp:589
+#: src/menu_events.cpp:592
 msgid "You cannot end your turn yet!"
 msgstr "Δεν μπορείτε να τελειώσετε τη σειρά σας ακόμα!"
 
-#: src/menu_events.cpp:604
+#: src/menu_events.cpp:607
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr ""
 "Δεν έχετε ξεκινήσει τη σειρά σας ακόμα. Θέλετε πραγματικά να τελειώσετε τη "
 "σειρά σας;"
 
-#: src/menu_events.cpp:613
+#: src/menu_events.cpp:616
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr ""
 "Μερικές μονάδες έχουν κίνηση που απομένει. Θέλετε πραγματικά να τελειώσετε "
 "τη σειρά σας;"
 
-#: src/menu_events.cpp:622
+#: src/menu_events.cpp:625
 msgid "Some units have not moved. Do you really want to end your turn?"
 msgstr ""
 "Μερικές μονάδες δεν έχουν κινηθεί. Θέλετε πραγματικά να τελειώσετε τη σειρά "
 "σας;"
 
-#: src/menu_events.cpp:678
+#: src/menu_events.cpp:681
 msgid "Rename Unit"
 msgstr "Μετονομασία Μονάδας"
 
-#: src/menu_events.cpp:679 src/reports.cpp:176
+#: src/menu_events.cpp:682 src/reports.cpp:176
 msgid "Name:"
 msgstr "Όνομα:"
 
-#: src/menu_events.cpp:855
+#: src/menu_events.cpp:862
 msgid "Clear Labels"
 msgstr "Καθαρισμός Ετικέτας"
 
-#: src/menu_events.cpp:856
+#: src/menu_events.cpp:863
 msgid "Are you sure you want to clear map labels?"
 msgstr "Είστε σίγουροι ότι θέλετε να καθαρίσετε τις ετικέτες του χάρτη;"
 
-#: src/menu_events.cpp:1060
+#: src/menu_events.cpp:1067
 msgid "Search"
 msgstr "Έρευνα"
 
-#: src/menu_events.cpp:1200
+#: src/menu_events.cpp:1207
 msgid "(D) — debug only, (N) — network only, (A) — admin only"
 msgstr "(D) — μόνο αποσφαλμάτωση, (N) — μόνο δίκτυο, (A) — μόνο διαχειριστής"
 
-#: src/menu_events.cpp:1207
+#: src/menu_events.cpp:1214
 msgid "(debug command)"
 msgstr "(εντολή αποσφαλμάτωσης)"
 
-#: src/menu_events.cpp:1208
+#: src/menu_events.cpp:1215
 msgid "(network only)"
 msgstr "(μόνο δίκτυο)"
 
-#: src/menu_events.cpp:1210
+#: src/menu_events.cpp:1217
 msgid "(not during other events)"
 msgstr "(όχι κατά τη διάρκεια άλλων γεγονότων)"
 
-#: src/menu_events.cpp:1240
+#: src/menu_events.cpp:1247
 msgid "Refresh gui."
 msgstr "Ανανέωση γραφικού περιβάλλοντος."
 
-#: src/menu_events.cpp:1241
+#: src/menu_events.cpp:1248
 msgid "Switch a side to/from AI control."
 msgstr "Εναλλαγή πλευράς σε/από έλεγχο AI."
 
 #. TRANSLATORS: These are the arguments accepted by the "droid" command,
 #. which must be a side-number and then optionally one of "on", "off" or "full".
 #. As with the command's name, "on", "off" and "full" are hardcoded, and shouldn't change in the translation.
-#: src/menu_events.cpp:1245
+#: src/menu_events.cpp:1252
 msgid ""
 "[<side> [on/off/full]]\n"
 "“on” = enable but retain vision, “full” = as if it’s controlled by another "
 "player"
 msgstr ""
 
-#: src/menu_events.cpp:1246
+#: src/menu_events.cpp:1253
 msgid "Change terrain type of current hex"
 msgstr "Αλλαγή τύπου εδάφους του τρέχοντος εξαγώνου"
 
 #. TRANSLATORS: [both|base|overlay] are hardcoded literal arguments and shouldn't be translated.
-#: src/menu_events.cpp:1248
+#: src/menu_events.cpp:1255
 msgid "<terrain type> [both|base|overlay]"
 msgstr "<τύπος εδάφους> [both|base|overlay]"
 
-#: src/menu_events.cpp:1249
+#: src/menu_events.cpp:1256
 msgid "Switch a side to/from idle state."
 msgstr "Εναλλαγή πλευράς σε/από κατάσταση αδράνειας."
 
 #. TRANSLATORS: These are the arguments accepted by the "idle" command,
 #. which must be a side-number and then optionally "on" or "off".
 #. As with the command's name, "on" and "off" are hardcoded, and shouldn't change in the translation.
-#: src/menu_events.cpp:1253
+#: src/menu_events.cpp:1260
 msgid "command_idle^[<side> [on/off]]"
 msgstr "command_idle^[<πλευρά> [on/off]]"
 
-#: src/menu_events.cpp:1254
+#: src/menu_events.cpp:1261
 msgid "Change the in-game theme."
 msgstr "Αλλαγή του θέματος του παιχνιδιού."
 
-#: src/menu_events.cpp:1256
+#: src/menu_events.cpp:1263
 msgid "<side> <nickname>"
 msgstr "<πλευρά> <ψευδώνυμο>"
 
-#: src/menu_events.cpp:1256
+#: src/menu_events.cpp:1263
 msgid "Assign control of a side to a different player or observer."
 msgstr "Ανάθεση ελέγχου πλευράς σε διαφορετικό παίκτη ή παρατηρητή."
 
-#: src/menu_events.cpp:1257
+#: src/menu_events.cpp:1264
 msgid "Query the controller status of a side."
 msgstr "Ερώτημα κατάστασης ελεγκτή μιας πλευράς."
 
-#: src/menu_events.cpp:1258
+#: src/menu_events.cpp:1265
 msgid "<side>"
 msgstr "<πλευρά>"
 
-#: src/menu_events.cpp:1260
+#: src/menu_events.cpp:1267
 msgid "Debug foreground terrain."
 msgstr "Αποσφαλμάτωση εδάφους προσκηνίου."
 
-#: src/menu_events.cpp:1262
+#: src/menu_events.cpp:1269
 msgid "Debug layers from terrain under the mouse."
 msgstr "Αποσφαλμάτωση επιπέδων από έδαφος κάτω από το ποντίκι."
 
-#: src/menu_events.cpp:1263
+#: src/menu_events.cpp:1270
 msgid "Display and log fps (Frames Per Second)."
 msgstr "Εμφάνιση και καταγραφή fps (Καρέ Ανά Δευτερόλεπτο)."
 
-#: src/menu_events.cpp:1264
+#: src/menu_events.cpp:1271
 msgid ""
 "Similar to the ‘fps’ command, but also forces everything to redraw instead "
 "of only things that have changed."
 msgstr ""
 
-#: src/menu_events.cpp:1265
+#: src/menu_events.cpp:1272
 msgid "Save game."
 msgstr "Αποθήκευση παιχνιδιού."
 
-#: src/menu_events.cpp:1267
+#: src/menu_events.cpp:1274
 msgid "Quit game."
 msgstr "Έξοδος παιχνιδιού."
 
-#: src/menu_events.cpp:1270
+#: src/menu_events.cpp:1277
 msgid "Save and quit."
 msgstr "Αποθήκευση και έξοδος."
 
-#: src/menu_events.cpp:1272
+#: src/menu_events.cpp:1279
 msgid "Ignore replay errors."
 msgstr "Αγνόηση σφαλμάτων επανάληψης."
 
-#: src/menu_events.cpp:1273
+#: src/menu_events.cpp:1280
 msgid "Disable autosaves."
 msgstr "Απενεργοποίηση αυτόματων αποθηκεύσεων."
 
-#: src/menu_events.cpp:1275
+#: src/menu_events.cpp:1282
 msgid "<id>"
 msgstr "<id>"
 
-#: src/menu_events.cpp:1275
+#: src/menu_events.cpp:1282
 msgid "Advance to the next scenario, or scenario identified by ‘id’"
 msgstr ""
 
-#: src/menu_events.cpp:1277
+#: src/menu_events.cpp:1284
 msgid "Choose next scenario"
 msgstr "Επιλογή επόμενης αποστολής..."
 
-#: src/menu_events.cpp:1280
+#: src/menu_events.cpp:1287
 msgid ""
 "Change turn number (and time of day), or increase by one if no number is "
 "specified."
@@ -6781,81 +7060,81 @@ msgstr ""
 "Αλλαγή αριθμού σειράς (και ώρας της ημέρας), ή αύξηση κατά ένα αν δεν "
 "καθοριστεί αριθμός."
 
-#: src/menu_events.cpp:1280
+#: src/menu_events.cpp:1287
 msgid "[turn]"
 msgstr "[γύρος]"
 
-#: src/menu_events.cpp:1283
+#: src/menu_events.cpp:1290
 msgid ""
 "Change turn limit, or turn the turn limit off if no number is specified or "
 "it’s −1."
 msgstr ""
 
-#: src/menu_events.cpp:1283
+#: src/menu_events.cpp:1290
 msgid "[limit]"
 msgstr "[όριο]"
 
-#: src/menu_events.cpp:1285
+#: src/menu_events.cpp:1292
 msgid "Turn debug mode on."
 msgstr "Ενεργοποίηση λειτουργίας αποσφαλμάτωσης."
 
-#: src/menu_events.cpp:1286
+#: src/menu_events.cpp:1293
 msgid "Turn debug mode off."
 msgstr "Απενεργοποίηση λειτουργίας αποσφαλμάτωσης."
 
-#: src/menu_events.cpp:1288 src/menu_events.cpp:1292
+#: src/menu_events.cpp:1295 src/menu_events.cpp:1299
 msgid "<command>[;<command>...]"
 msgstr "<εντολή>[;<εντολή>...]"
 
-#: src/menu_events.cpp:1288
+#: src/menu_events.cpp:1295
 msgid "Execute a Lua statement."
 msgstr "Εκτέλεση δήλωσης Lua."
 
-#: src/menu_events.cpp:1290
+#: src/menu_events.cpp:1297
 msgid "Grant higher privileges to Lua scripts."
 msgstr "Παροχή υψηλότερων προνομίων σε σενάρια Lua."
 
-#: src/menu_events.cpp:1291
+#: src/menu_events.cpp:1298
 msgid "Set the command used by the custom command hotkey"
 msgstr ""
 "Ορισμός της εντολής που χρησιμοποιείται από τη συντόμευση προσαρμοσμένης "
 "εντολής"
 
-#: src/menu_events.cpp:1294
+#: src/menu_events.cpp:1301
 msgid "Invoke a dialog allowing changing control of MP sides."
 msgstr ""
 "Εμφάνιση διαλόγου που επιτρέπει την αλλαγή ελέγχου πλευρών πολλών παικτών."
 
-#: src/menu_events.cpp:1295
+#: src/menu_events.cpp:1302
 msgid "Launch the gamestate inspector"
 msgstr "Εκκίνηση του επιθεωρητή κατάστασης παιχνιδιού"
 
-#: src/menu_events.cpp:1297
+#: src/menu_events.cpp:1304
 msgid "<name>[=<command>]"
 msgstr "<όνομα>[=<εντολή>]"
 
-#: src/menu_events.cpp:1297
+#: src/menu_events.cpp:1304
 msgid "Set or show alias to a command"
 msgstr "Ορισμός ή εμφάνιση ψευδωνύμου για εντολή"
 
-#: src/menu_events.cpp:1299 src/menu_events.cpp:1304
+#: src/menu_events.cpp:1306 src/menu_events.cpp:1311
 msgid "<var>=<value>"
 msgstr "<μεταβλητή>=<τιμή>"
 
-#: src/menu_events.cpp:1299
+#: src/menu_events.cpp:1306
 msgid "Set a scenario variable."
 msgstr "Ορισμός μεταβλητής σεναρίου."
 
-#: src/menu_events.cpp:1300
+#: src/menu_events.cpp:1307
 msgid "<var>"
 msgstr "<μεταβλητή>"
 
-#: src/menu_events.cpp:1300
+#: src/menu_events.cpp:1307
 msgid "Show a scenario variable."
 msgstr "Εμφάνιση μεταβλητής σεναρίου."
 
 #. TRANSLATORS: Do not translate the word "advances"; it is a hardcoded literal argument.
-#: src/menu_events.cpp:1303
+#: src/menu_events.cpp:1310
 msgid ""
 "Modify a unit variable. (Only top level keys are supported, and "
 "advances=<number>.)"
@@ -6863,172 +7142,172 @@ msgstr ""
 "Τροποποίηση μεταβλητής μονάδας. (Υποστηρίζονται μόνο κλειδιά ανώτατου "
 "επιπέδου, και advances=<αριθμός>.)"
 
-#: src/menu_events.cpp:1310
+#: src/menu_events.cpp:1317
 msgid "Discover all units in help."
 msgstr "Ανακάλυψη όλων των μονάδων στη βοήθεια."
 
-#: src/menu_events.cpp:1311
+#: src/menu_events.cpp:1318
 msgid "‘Undiscover’ all units in help."
 msgstr ""
 
-#: src/menu_events.cpp:1312
+#: src/menu_events.cpp:1319
 msgid "<unit type id>"
 msgstr "<id τύπου μονάδας>"
 
-#: src/menu_events.cpp:1312
+#: src/menu_events.cpp:1319
 msgid "Create a unit."
 msgstr "Δημιουργία μίας μονάδας."
 
-#: src/menu_events.cpp:1313
+#: src/menu_events.cpp:1320
 msgid "Toggle fog for the current player."
 msgstr "Εναλλαγή ομίχλης για τον τρέχοντα παίκτη."
 
-#: src/menu_events.cpp:1314
+#: src/menu_events.cpp:1321
 msgid "Toggle shroud for the current player."
 msgstr "Εναλλαγή πέπλου για τον τρέχοντα παίκτη."
 
-#: src/menu_events.cpp:1315
+#: src/menu_events.cpp:1322
 msgid "<amount>"
 msgstr "<ποσό>"
 
-#: src/menu_events.cpp:1315
+#: src/menu_events.cpp:1322
 msgid "Give gold to the current player."
 msgstr "Δώστε χρυσό στον τρέχοντα παίκτη."
 
-#: src/menu_events.cpp:1316
+#: src/menu_events.cpp:1323
 msgid "<event name>"
 msgstr "<όνομα γεγονότος>"
 
-#: src/menu_events.cpp:1316
+#: src/menu_events.cpp:1323
 msgid "Fire a game event."
 msgstr "Ενεργοποιήστε ένα γεγονός παιχνιδιού."
 
-#: src/menu_events.cpp:1319
+#: src/menu_events.cpp:1326
 msgid "Toggle overlaying of x,y coordinates on hexes."
 msgstr "Εναλλαγή επικάλυψης συντεταγμένων x,y στα εξάγωνα."
 
-#: src/menu_events.cpp:1322
+#: src/menu_events.cpp:1329
 msgid "Toggle overlaying of terrain codes on hexes."
 msgstr "Εναλλαγή επικάλυψης κωδικών εδάφους στα εξάγωνα."
 
-#: src/menu_events.cpp:1325
+#: src/menu_events.cpp:1332
 msgid "Toggle overlaying of number of bitmaps on hexes."
 msgstr "Εναλλαγή επικάλυψης αριθμού bitmaps στα εξάγωνα."
 
-#: src/menu_events.cpp:1327
+#: src/menu_events.cpp:1334
 msgid "Toggle planning mode."
 msgstr "Εναλλαγή λειτουργίας σχεδιασμού."
 
-#: src/menu_events.cpp:1330
+#: src/menu_events.cpp:1337
 msgid "Access whiteboard options dialog."
 msgstr "Πρόσβαση στον διάλογο επιλογών λευκού πίνακα."
 
-#: src/menu_events.cpp:1443
+#: src/menu_events.cpp:1450
 msgid "Could not find label or unit containing the string ‘$search’."
 msgstr ""
 
-#: src/menu_events.cpp:1491
+#: src/menu_events.cpp:1498
 msgid "Can’t droid invalid side: ‘$side’."
 msgstr ""
 
-#: src/menu_events.cpp:1494
+#: src/menu_events.cpp:1501
 msgid "Can’t droid networked side: ‘$side’."
 msgstr ""
 
-#: src/menu_events.cpp:1506 src/menu_events.cpp:1522 src/menu_events.cpp:1554
+#: src/menu_events.cpp:1513 src/menu_events.cpp:1529 src/menu_events.cpp:1561
 msgid ""
 "It is not allowed to change a side from AI to human control when it’s not "
 "your turn."
 msgstr ""
 
-#: src/menu_events.cpp:1516 src/menu_events.cpp:1572
+#: src/menu_events.cpp:1523 src/menu_events.cpp:1579
 msgid "Side ‘$side’ controller is now controlled by: AI."
 msgstr ""
 
-#: src/menu_events.cpp:1518
+#: src/menu_events.cpp:1525
 msgid "Side ‘$side’ is already droided."
 msgstr ""
 
-#: src/menu_events.cpp:1532 src/menu_events.cpp:1564
+#: src/menu_events.cpp:1539 src/menu_events.cpp:1571
 msgid "Side ‘$side’ controller is now controlled by: human."
 msgstr ""
 
-#: src/menu_events.cpp:1534
+#: src/menu_events.cpp:1541
 msgid "Side ‘$side’ is already not droided."
 msgstr ""
 
-#: src/menu_events.cpp:1538
+#: src/menu_events.cpp:1545
 msgid ""
 "It is not allowed to change a side from human to AI control when it’s not "
 "your turn."
 msgstr ""
 
-#: src/menu_events.cpp:1548
+#: src/menu_events.cpp:1555
 msgid "Side ‘$side’ controller is now fully controlled by: AI."
 msgstr ""
 
-#: src/menu_events.cpp:1550
+#: src/menu_events.cpp:1557
 msgid "Side ‘$side’ is already fully AI controlled."
 msgstr ""
 
-#: src/menu_events.cpp:1575
+#: src/menu_events.cpp:1582
 msgid ""
 "Invalid action provided for side ‘$side’. Valid actions are: on, off, full."
 msgstr ""
 
-#: src/menu_events.cpp:1584
+#: src/menu_events.cpp:1591
 msgid "Side ‘$side’ is not a human or AI player."
 msgstr ""
 
-#: src/menu_events.cpp:1621
+#: src/menu_events.cpp:1628
 msgid "Can’t idle invalid side: ‘$side’."
 msgstr ""
 
-#: src/menu_events.cpp:1626
+#: src/menu_events.cpp:1633
 msgid "Can’t idle networked side: ‘$side’."
 msgstr ""
 
-#: src/menu_events.cpp:1631
+#: src/menu_events.cpp:1638
 msgid "Can’t idle local ai side: ‘$side’."
 msgstr ""
 
-#: src/menu_events.cpp:1677
+#: src/menu_events.cpp:1684
 msgid "Can’t change control of invalid side: ‘$side’."
 msgstr ""
 
-#: src/menu_events.cpp:1687
+#: src/menu_events.cpp:1694
 msgid "Can’t change control of out-of-bounds side: ‘$side’."
 msgstr ""
 
-#: src/menu_events.cpp:1704
+#: src/menu_events.cpp:1711
 msgid "Can’t query control of invalid side: ‘$side’."
 msgstr ""
 
-#: src/menu_events.cpp:1711
+#: src/menu_events.cpp:1718
 msgid "Can’t query control of out-of-bounds side: ‘$side’."
 msgstr ""
 
-#: src/menu_events.cpp:1833
+#: src/menu_events.cpp:1840
 msgid "Choose Scenario (Debug!)"
 msgstr "Επιλογή αποστολής (Αποσφαλμάτωση!)"
 
-#: src/menu_events.cpp:1869
+#: src/menu_events.cpp:1876
 msgid "Debug mode activated!"
 msgstr "Λειτουργία αποσφαλμάτωσης ενεργοποιήθηκε!"
 
-#: src/menu_events.cpp:1872
+#: src/menu_events.cpp:1879
 msgid "Debug mode not available in network games"
 msgstr "Η λειτουργία αποσφαλμάτωσης δεν είναι διαθέσιμη σε παιχνίδια δικτύου"
 
-#: src/menu_events.cpp:1879
+#: src/menu_events.cpp:1886
 msgid "Debug mode deactivated!"
 msgstr "Λειτουργία αποσφαλμάτωσης απενεργοποιήθηκε!"
 
-#: src/menu_events.cpp:1899
+#: src/menu_events.cpp:1906
 msgid "WARNING! Unsafe Lua Mode"
 msgstr "ΠΡΟΕΙΔΟΠΟΙΗΣΗ! Μη Ασφαλής Λειτουργία Lua"
 
-#: src/menu_events.cpp:1900
+#: src/menu_events.cpp:1907
 msgid ""
 "Executing Lua code in in this manner opens your computer to potential "
 "security breaches from any malicious add-ons or other programs you may have "
@@ -7037,46 +7316,46 @@ msgid ""
 "Do not continue unless you really know what you are doing."
 msgstr ""
 
-#: src/menu_events.cpp:1905
+#: src/menu_events.cpp:1912
 msgid "Unsafe mode enabled!"
 msgstr "Μη ασφαλής λειτουργία ενεργοποιήθηκε!"
 
-#: src/menu_events.cpp:1954
+#: src/menu_events.cpp:1961
 msgid "Variable not found"
 msgstr "Η μεταβλητή δεν βρέθηκε"
 
-#: src/menu_events.cpp:1987
+#: src/menu_events.cpp:1994
 msgid "Debug command ‘unit: $unit’ failed: no unit selected or hovered over."
 msgstr ""
 
-#: src/menu_events.cpp:2005
+#: src/menu_events.cpp:2012
 msgid ""
 "Invalid alignment: ‘$alignment’, needs to be one of lawful, neutral, "
 "chaotic, or liminal."
 msgstr ""
 
-#: src/menu_events.cpp:2031
+#: src/menu_events.cpp:2038
 msgid "Do you wish to clear all of your discovered units from help?"
 msgstr ""
 "Θέλετε να καθαρίσετε όλες τις ανακαλυφθείσες μονάδες σας από τη βοήθεια;"
 
-#: src/menu_events.cpp:2045
+#: src/menu_events.cpp:2052
 msgid "Invalid unit type"
 msgstr "Μη έγκυρος τύπος μονάδας"
 
-#: src/menu_events.cpp:2052
+#: src/menu_events.cpp:2059
 msgid "Invalid location"
 msgstr "Άκυρη περιοχή"
 
-#: src/menu_events.cpp:2127
+#: src/menu_events.cpp:2134
 msgid "prompt^Command:"
 msgstr "Εντολή:"
 
-#: src/menu_events.cpp:2153
+#: src/menu_events.cpp:2160
 msgid "prompt^Formula:"
 msgstr "Τύπος:"
 
-#: src/mouse_events.cpp:1307
+#: src/mouse_events.cpp:1317
 msgid ""
 "You cannot move your leader away from the keep with some planned recruits or "
 "recalls left."
@@ -7084,35 +7363,35 @@ msgstr ""
 "Δεν μπορείτε να μετακινήσετε τον ηγέτη σας μακριά από το φρούριο με κάποιες "
 "προγραμματισμένες στρατολογήσεις ή ανακλήσεις που απομένουν."
 
-#: src/mouse_events.cpp:1410
+#: src/mouse_events.cpp:1420
 msgid "No Attacks"
 msgstr "Χωρίς Επιθέσεις"
 
-#: src/mouse_events.cpp:1410
+#: src/mouse_events.cpp:1420
 msgid "This unit has no usable weapons."
 msgstr "Αυτή η μονάδα δεν έχει χρησιμοποιήσιμα όπλα."
 
-#: src/mouse_events.cpp:1486 src/mouse_events.cpp:1502
+#: src/mouse_events.cpp:1496 src/mouse_events.cpp:1512
 msgid "Other aspects: "
 msgstr "Άλλες όψεις: "
 
-#: src/mouse_events.cpp:1515 src/mouse_events.cpp:1529
+#: src/mouse_events.cpp:1525 src/mouse_events.cpp:1539
 msgid "Weapon: "
 msgstr "Όπλο: "
 
-#: src/mouse_events.cpp:1516 src/mouse_events.cpp:1530
+#: src/mouse_events.cpp:1526 src/mouse_events.cpp:1540
 msgid "Type: "
 msgstr "Τύπος: "
 
-#: src/mouse_events.cpp:1517 src/mouse_events.cpp:1531
+#: src/mouse_events.cpp:1527 src/mouse_events.cpp:1541
 msgid "Damage: "
 msgstr "Ζημιά: "
 
-#: src/mouse_events.cpp:1518 src/mouse_events.cpp:1532
+#: src/mouse_events.cpp:1528 src/mouse_events.cpp:1542
 msgid "Attacks: "
 msgstr "Επιτιθέμενος: "
 
-#: src/mouse_events.cpp:1519 src/mouse_events.cpp:1533
+#: src/mouse_events.cpp:1529 src/mouse_events.cpp:1543
 msgid "Chance to hit: "
 msgstr "Πιθανότητα ευστοχίας"
 
@@ -7149,23 +7428,33 @@ msgstr "Ο/Η $name ανέλαβε τον έλεγχο"
 msgid "Turn changed"
 msgstr "Ο γύρος άλλαξε"
 
-#: src/network_download_file.cpp:44
+#: src/network_download_file.cpp:50
+#, fuzzy
+#| msgid "not available."
+msgid "Download unavailable"
+msgstr "μη διαθέσιμο."
+
+#: src/network_download_file.cpp:50
+msgid "Standalone file downloads are not currently supported on iOS."
+msgstr ""
+
+#: src/network_download_file.cpp:55
 msgid "Confirm overwrite"
 msgstr "Επιβεβαίωση αντικατάστασης"
 
-#: src/network_download_file.cpp:44
+#: src/network_download_file.cpp:55
 msgid "Overwrite existing file?"
 msgstr "Αντικατάσταση υπάρχοντος αρχείου;"
 
-#: src/network_download_file.cpp:50
+#: src/network_download_file.cpp:61
 msgid "Download complete"
 msgstr "Η λήψη ολοκληρώθηκε"
 
-#: src/network_download_file.cpp:50
+#: src/network_download_file.cpp:61
 msgid "The file has been downloaded."
 msgstr "Το αρχείο έχει ληφθεί."
 
-#: src/network_download_file.cpp:52
+#: src/network_download_file.cpp:63
 msgid ""
 "An error occurred when downloading the file. Check the game logs for more "
 "information."
@@ -7173,7 +7462,7 @@ msgstr ""
 "Παρουσιάστηκε σφάλμα κατά τη λήψη του αρχείου. Ελέγξτε τα αρχεία καταγραφής "
 "του παιχνιδιού για περισσότερες πληροφορίες."
 
-#: src/network_download_file.cpp:52
+#: src/network_download_file.cpp:63
 msgid "Download error"
 msgstr "Σφάλμα λήψης"
 
@@ -7196,13 +7485,13 @@ msgstr "χρόνος που απομένει για την τρέχουσα σε
 msgid "current local time"
 msgstr "τρέχουσα τοπική ώρα"
 
-#: src/play_controller.cpp:603
+#: src/play_controller.cpp:604
 msgid "Trying to create a corrupt file, please report this bug"
 msgstr ""
 "Προσπάθεια δημιουργίας κατεστραμμένου αρχείου, παρακαλώ αναφέρετε αυτό το "
 "σφάλμα"
 
-#: src/play_controller.cpp:1061
+#: src/play_controller.cpp:1062
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
 "want to save your game?"
@@ -7210,17 +7499,17 @@ msgstr ""
 "Το παιχνίδι είναι εκτός συγχρονισμού. Μπορεί να μην έχει νόημα να "
 "συνεχίσετε. Θέλετε να αποθηκεύσετε το παιχνίδι σας;"
 
-#: src/play_controller.cpp:1062
+#: src/play_controller.cpp:1063
 msgid "Error details:"
 msgstr "Λεπτομέρειες σφάλματος:"
 
-#: src/play_controller.cpp:1242
+#: src/play_controller.cpp:1243
 msgid "Warning: broken campaign branches"
 msgstr "Προειδοποίηση: κατεστραμμένοι κλάδοι εκστρατείας"
 
 #. TRANSLATORS: This is an error that will hopefully only be seen by UMC authors and by players who have already
 #. said "okay" to a "loading saves from an old version might not work" dialog.
-#: src/play_controller.cpp:1248
+#: src/play_controller.cpp:1249
 msgid ""
 "The next scenario is missing, you will not be able to finish this campaign."
 msgid_plural ""
@@ -7230,7 +7519,7 @@ msgstr[0] ""
 "The next scenario is missing, you will not be able to finish this campaign."
 msgstr[1] ""
 
-#: src/play_controller.cpp:1255
+#: src/play_controller.cpp:1256
 msgid ""
 "Please report the following missing scenario to the campaign’s author:\n"
 "$unknown_list|"
@@ -7242,11 +7531,11 @@ msgstr[0] ""
 "$unknown_list|"
 msgstr[1] ""
 
-#: src/play_controller.cpp:1259
+#: src/play_controller.cpp:1260
 msgid "Once this is fixed, you will need to restart this scenario."
 msgstr "Μόλις διορθωθεί αυτό, θα πρέπει να επανεκκινήσετε αυτό το σενάριο."
 
-#: src/play_controller.cpp:1338
+#: src/play_controller.cpp:1339
 msgid "No objectives available"
 msgstr "Δεν υπάρχουν διαθέσιμοι στόχοι"
 
@@ -7358,37 +7647,37 @@ msgstr "Θέλετε πραγματικά να αποχωρήσετε;"
 msgid "Type:"
 msgstr "Τύπος:"
 
-#: src/reports.cpp:199
+#: src/reports.cpp:200
 msgid "Special Notes:"
 msgstr "Ειδικές Σημειώσεις:"
 
-#: src/reports.cpp:223
+#: src/reports.cpp:224
 msgid "Race:"
 msgstr "Φυλή:"
 
-#: src/reports.cpp:242
+#: src/reports.cpp:243
 msgid "Side: <b>$side_name</b> ($color_name)"
 msgstr "Πλευρά: <b>$side_name</b> ($color_name)"
 
-#: src/reports.cpp:320
+#: src/reports.cpp:321
 msgid "Trait:"
 msgstr "Ιδιότητα:"
 
-#: src/reports.cpp:343
+#: src/reports.cpp:344
 msgid "invisible:"
 msgstr "αόρατο:"
 
-#: src/reports.cpp:344
+#: src/reports.cpp:345
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
 msgstr ""
 "Αυτή η μονάδα είναι αόρατη. Οι αντίπαλες μονάδες δεν μπορούν να την "
 "εντοπίσουν ή να της επιτεθούν."
 
-#: src/reports.cpp:347
+#: src/reports.cpp:348
 msgid "slowed:"
 msgstr "επιβραδυμένο:"
 
-#: src/reports.cpp:348
+#: src/reports.cpp:349
 msgid ""
 "This unit has been slowed. It will only deal half its normal damage when "
 "attacking and its movement cost is doubled."
@@ -7396,11 +7685,11 @@ msgstr ""
 "Αυτή η μονάδα έχει επιβραδυνθεί. Θα προκαλεί μόνο τη μισή κανονική ζημιά "
 "όταν επιτίθεται και το κόστος κίνησής της διπλασιάζεται."
 
-#: src/reports.cpp:351
+#: src/reports.cpp:352
 msgid "poisoned:"
 msgstr "δηλητηριασμένο:"
 
-#: src/reports.cpp:352
+#: src/reports.cpp:353
 msgid ""
 "This unit is poisoned. It will lose 8 HP every turn until it can seek a cure "
 "to the poison in a village or from a friendly unit with the ‘cures’ "
@@ -7410,151 +7699,165 @@ msgid ""
 "1 HP."
 msgstr ""
 
-#: src/reports.cpp:355
+#: src/reports.cpp:356
 msgid "petrified:"
 msgstr "πετρωμένο:"
 
-#: src/reports.cpp:356
+#: src/reports.cpp:357
 msgid "This unit has been petrified. It may not move or attack."
 msgstr ""
 "Αυτή η μονάδα έχει ακινητοποιηθεί. Δεν μπορεί ούτε να κινηθεί ούτε να "
 "επιτεθεί."
 
-#: src/reports.cpp:359
+#: src/reports.cpp:360
 msgid "unhealable:"
 msgstr "αθεράπευτο:"
 
-#: src/reports.cpp:360
+#: src/reports.cpp:361
 msgid ""
 "This unit is unhealable. It cannot be healed by healers or villages and "
 "doesn’t benefit from resting."
 msgstr ""
 
-#: src/reports.cpp:363
+#: src/reports.cpp:364
 msgid "invulnerable:"
 msgstr "άτρωτος:"
 
-#: src/reports.cpp:364
+#: src/reports.cpp:365
 msgid "This unit is invulnerable. It cannot be harmed by any attack."
 msgstr "Αυτή η μονάδα είναι άτρωτη. Δεν μπορεί να βλαφτεί από καμία επίθεση."
 
-#: src/reports.cpp:394 src/reports.cpp:979
+#: src/reports.cpp:395 src/reports.cpp:993
 msgid "Alignment:"
 msgstr "Ηθική Στάση:"
 
-#: src/reports.cpp:441
+#: src/reports.cpp:442
 msgid "Ability:"
 msgstr "Ικανότητα:"
 
-#: src/reports.cpp:443 src/reports.cpp:1036 src/reports.cpp:1076
+#: src/reports.cpp:444 src/reports.cpp:1050 src/reports.cpp:1090
 msgid " (inactive)"
 msgstr " (ανενεργός)"
 
-#: src/reports.cpp:507
+#: src/reports.cpp:508
 msgid "Resistances:"
 msgstr "Αντιστάσεις:"
 
-#: src/reports.cpp:509
+#: src/reports.cpp:510
 msgid "(Att / Def)"
 msgstr "(Επιθ / Αμυν)"
 
-#: src/reports.cpp:538
+#: src/reports.cpp:539
 msgid "Experience Modifier:"
 msgstr "Τροποποιητής Εμπειρίας:"
 
-#: src/reports.cpp:588
+#: src/reports.cpp:589
 msgid "Terrain:"
 msgstr "Έδαφος:"
 
-#: src/reports.cpp:605
+#: src/reports.cpp:606
 msgid "maximum^max."
 msgstr "μεγ."
 
-#: src/reports.cpp:605
+#: src/reports.cpp:606
 msgid "minimum^min."
 msgstr "ελαχ."
 
-#: src/reports.cpp:610
+#: src/reports.cpp:611
 msgid "Defense:"
 msgstr "Άμυνα:"
 
-#: src/reports.cpp:645 src/reports.cpp:646
+#. TRANSLATORS: single-letter abbreviation of "vision", fits in a small space on the sidebar
+#: src/reports.cpp:646
+#, fuzzy
+#| msgid "vision:"
+msgid "vision^V:"
+msgstr "όραση:"
+
+#: src/reports.cpp:647
 msgid "vision:"
 msgstr "όραση:"
 
-#: src/reports.cpp:650 src/reports.cpp:651
+#. TRANSLATORS: single-letter abbreviation of "jamming", fits in a small space on the sidebar
+#: src/reports.cpp:669
+#, fuzzy
+#| msgid "jamming:"
+msgid "jamming^J:"
+msgstr "παρεμβολή:"
+
+#: src/reports.cpp:670
 msgid "jamming:"
 msgstr "παρεμβολή:"
 
-#: src/reports.cpp:680
+#: src/reports.cpp:694
 msgid "Movement Costs:"
 msgstr "Κόστος Κίνησης:"
 
-#: src/reports.cpp:822 src/reports.cpp:1168 src/reports.cpp:1180
+#: src/reports.cpp:836 src/reports.cpp:1182 src/reports.cpp:1194
 msgid "Weapon:"
 msgstr "Όπλο:"
 
-#: src/reports.cpp:823 src/reports.cpp:1169
+#: src/reports.cpp:837 src/reports.cpp:1183
 msgid "Damage:"
 msgstr "Ζημιά:"
 
-#: src/reports.cpp:827
+#: src/reports.cpp:841
 msgid "Base damage:"
 msgstr "Βασική ζημιά:"
 
-#: src/reports.cpp:829 src/reports.cpp:863 src/reports.cpp:873
+#: src/reports.cpp:843 src/reports.cpp:877 src/reports.cpp:887
 msgid "With specials:"
 msgstr "Με ειδικά:"
 
-#: src/reports.cpp:832 src/reports.cpp:1393
+#: src/reports.cpp:846 src/reports.cpp:1407
 msgid "Time of day:"
 msgstr "Ώρα της ημέρας:"
 
-#: src/reports.cpp:836
+#: src/reports.cpp:850
 msgid "Leadership:"
 msgstr "Ηγεσία:"
 
-#: src/reports.cpp:840
+#: src/reports.cpp:854
 msgid "Slowed:"
 msgstr "Επιβραδύνθηκε:"
 
-#: src/reports.cpp:844
+#: src/reports.cpp:858
 msgid "Attacks:"
 msgstr "Επιθέσεις:"
 
-#: src/reports.cpp:848
+#: src/reports.cpp:862
 msgid "Max swarm bonus:"
 msgstr "Μέγιστο μπόνους σμήνους:"
 
-#: src/reports.cpp:849 src/reports.cpp:868
+#: src/reports.cpp:863 src/reports.cpp:882
 msgid "Swarm:"
 msgstr "Σμήνος:"
 
-#: src/reports.cpp:850 src/reports.cpp:861 src/reports.cpp:872
+#: src/reports.cpp:864 src/reports.cpp:875 src/reports.cpp:886
 msgid "Base attacks:"
 msgstr "Βασικές επιθέσεις:"
 
-#: src/reports.cpp:856
+#: src/reports.cpp:870
 msgid "Specials:"
 msgstr "Ειδικά:"
 
-#: src/reports.cpp:866
+#: src/reports.cpp:880
 msgid "Subject to swarm:"
 msgstr "Υπόκειται σε σμήνος:"
 
-#: src/reports.cpp:906
+#: src/reports.cpp:920
 msgid "Weapon range:"
 msgstr "Εμβέλεια όπλου:"
 
-#: src/reports.cpp:907
+#: src/reports.cpp:921
 msgid "Damage type:"
 msgstr "Τύπος ζημιάς:"
 
-#: src/reports.cpp:908
+#: src/reports.cpp:922
 msgid "Damage versus:"
 msgstr "Ζημιά εναντίον:"
 
-#: src/reports.cpp:988
+#: src/reports.cpp:1002
 #, fuzzy
 #| msgid "$number attack used"
 #| msgid_plural "$number attacks used"
@@ -7563,64 +7866,64 @@ msgid_plural "uses $num attacks"
 msgstr[0] "$number attack used"
 msgstr[1] "ζημιά"
 
-#: src/reports.cpp:996
+#: src/reports.cpp:1010
 msgid "This attack uses $num attack point"
 msgid_plural "This attack uses $num attack points"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/reports.cpp:1034 src/reports.cpp:1074
+#: src/reports.cpp:1048 src/reports.cpp:1088
 msgid "Weapon special:"
 msgstr "Ειδικό όπλου:"
 
-#: src/reports.cpp:1151
+#: src/reports.cpp:1165
 msgid "weapon^None"
 msgstr "Κανένα"
 
-#: src/reports.cpp:1181
+#: src/reports.cpp:1195
 msgid "Total damage"
 msgstr "Συνολική Ζημιά"
 
-#: src/reports.cpp:1239
+#: src/reports.cpp:1253
 msgid "Attack"
 msgid_plural "Attacks"
 msgstr[0] "Επίθεση"
 msgstr[1] "Επιτιθέμενος"
 
 #. TRANSLATORS: This string is shown in the sidebar beneath the word "Attacks" when a unit can attack multiple times per turn
-#: src/reports.cpp:1246
+#: src/reports.cpp:1260
 msgid "Remaining: $left/$max"
 msgstr "Απομένουν: $left/$max"
 
-#: src/reports.cpp:1250
+#: src/reports.cpp:1264
 msgid "This unit can attack multiple times per turn."
 msgstr "Αυτή η μονάδα μπορεί να επιτεθεί πολλές φορές ανά γύρο."
 
-#: src/reports.cpp:1342
+#: src/reports.cpp:1356
 msgid "Time of day schedule:"
 msgstr "Πρόγραμμα ώρας ημέρας:"
 
-#: src/reports.cpp:1394 src/reports.cpp:1448
+#: src/reports.cpp:1408 src/reports.cpp:1462
 msgid "Lawful units:"
 msgstr "Νομοταγείς μονάδες:"
 
-#: src/reports.cpp:1396 src/reports.cpp:1450
+#: src/reports.cpp:1410 src/reports.cpp:1464
 msgid "Neutral units:"
 msgstr "Ουδέτερες μονάδες:"
 
-#: src/reports.cpp:1397 src/reports.cpp:1451
+#: src/reports.cpp:1411 src/reports.cpp:1465
 msgid "Chaotic units:"
 msgstr "Χαοτικές μονάδες:"
 
-#: src/reports.cpp:1399 src/reports.cpp:1453
+#: src/reports.cpp:1413 src/reports.cpp:1467
 msgid "Liminal units:"
 msgstr "Μονάδες σούρουπου:"
 
-#: src/reports.cpp:1511
+#: src/reports.cpp:1525
 msgid "Turn Number"
 msgstr "Αριθμός Σειράς"
 
-#: src/reports.cpp:1515
+#: src/reports.cpp:1529
 msgid ""
 "When the game exceeds the number of turns indicated by the second number, it "
 "will end."
@@ -7628,34 +7931,34 @@ msgstr ""
 "Όταν το παιχνίδι υπερβεί τον αριθμό σειρών που δείχνει ο δεύτερος αριθμός, "
 "θα τελειώσει."
 
-#: src/reports.cpp:1538
+#: src/reports.cpp:1552
 msgid "Gold"
 msgstr "Χρυσό"
 
-#: src/reports.cpp:1538
+#: src/reports.cpp:1552
 msgid ""
 "The amount of gold currently available to recruit and maintain your army."
 msgstr ""
 "Το ποσό χρυσού που είναι διαθέσιμο αυτή τη στιγμή για να στρατολογήσετε και "
 "να συντηρήσετε τον στρατό σας."
 
-#: src/reports.cpp:1556
+#: src/reports.cpp:1570
 msgid "The fraction of known villages that your side has captured."
 msgstr "Το κλάσμα των γνωστών χωριών που η πλευρά σας έχει καταλάβει."
 
-#: src/reports.cpp:1556
+#: src/reports.cpp:1570
 msgid "Villages"
 msgstr "Χωριά"
 
-#: src/reports.cpp:1561
+#: src/reports.cpp:1575
 msgid "The total number of units on your side."
 msgstr "Ο συνολικός αριθμός μονάδων στην πλευρά σας."
 
-#: src/reports.cpp:1561
+#: src/reports.cpp:1575
 msgid "Units"
 msgstr "Μονάδες"
 
-#: src/reports.cpp:1570
+#: src/reports.cpp:1584
 msgid ""
 "The expenses incurred at the end of every turn to maintain your army. The "
 "first number is the amount of gold that will be deducted. It is equal to the "
@@ -7664,37 +7967,37 @@ msgid ""
 "amount of gold that would be deducted if you lost all villages."
 msgstr ""
 
-#: src/reports.cpp:1570
+#: src/reports.cpp:1584
 msgid "Upkeep"
 msgstr "Συντήρηση"
 
-#: src/reports.cpp:1600
+#: src/reports.cpp:1614
 msgid "Net Income"
 msgstr "Καθαρό Εισόδημα"
 
-#: src/reports.cpp:1600
+#: src/reports.cpp:1614
 msgid ""
 "The net amount of gold you gain or lose each turn, taking into account "
 "income from controlled villages and payment of upkeep."
 msgstr ""
 
-#: src/reports.cpp:1800
+#: src/reports.cpp:1814
 msgid "Observers:"
 msgstr "Παρατηρητές:"
 
-#: src/reports.cpp:1817
+#: src/reports.cpp:1831
 msgid "Clock"
 msgstr "Ρολόι"
 
-#: src/reports.cpp:1828
+#: src/reports.cpp:1842
 msgid "Battery"
 msgstr "Μπαταρία"
 
-#: src/reports.cpp:1872
+#: src/reports.cpp:1886
 msgid "Countdown until your turn automatically ends."
 msgstr "Αντίστροφη μέτρηση μέχρι η σειρά σας να τελειώσει αυτόματα."
 
-#: src/reports.cpp:1872
+#: src/reports.cpp:1886
 msgid "Turn Countdown"
 msgstr "Αντίστροφη Μέτρηση Σειράς"
 
@@ -7961,33 +8264,33 @@ msgstr "Y"
 msgid "infix_binary^i"
 msgstr "i"
 
-#: src/synced_commands.cpp:382
+#: src/synced_commands.cpp:379
 msgid "(unknown player)"
 msgstr "(άγνωστος παίκτης)"
 
-#: src/synced_commands.cpp:387
+#: src/synced_commands.cpp:384
 msgid "The :$command debug command was used during $player’s turn"
 msgstr ""
 
-#: src/synced_commands.cpp:395
+#: src/synced_commands.cpp:392
 msgid ""
 "A player used a debug command during the game. If this is unexpected, it is "
 "possible the player in question is cheating."
 msgstr ""
 
-#: src/synced_commands.cpp:397
+#: src/synced_commands.cpp:394
 msgid "Details:"
 msgstr "Λεπτομέρειες:"
 
-#: src/synced_commands.cpp:400
+#: src/synced_commands.cpp:397
 msgid "Do you wish to save the game before continuing?"
 msgstr ""
 
-#: src/synced_commands.cpp:402
+#: src/synced_commands.cpp:399
 msgid "Debug Command Used"
 msgstr "Χρησιμοποιήθηκε Εντολή Αποσφαλμάτωσης"
 
-#: src/synced_commands.cpp:508
+#: src/synced_commands.cpp:505
 msgid "A unit was created using debug mode during $player’s turn"
 msgstr ""
 
@@ -8038,21 +8341,21 @@ msgstr "Προσωρινή Ώρα Ημέρας"
 msgid "This Time of Day is only a Stub!"
 msgstr "Αυτή η Ώρα Ημέρας είναι μόνο Προσωρινή!"
 
-#: src/units/abilities.cpp:1131
+#: src/units/abilities.cpp:1161
 msgid "Owned: "
 msgstr "Κατοχή: "
 
 #. TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
-#: src/units/abilities.cpp:1133
+#: src/units/abilities.cpp:1163
 msgid "Taught: "
 msgstr "Διδάχθηκε: "
 
 #. TRANSLATORS: Past-participle of "teach", used for an ability similar to leadership
-#: src/units/abilities.cpp:1135
+#: src/units/abilities.cpp:1165
 msgid "Taught: (by an enemy): "
 msgstr "Διδάχθηκε: (από εχθρό): "
 
-#: src/units/abilities.cpp:1136
+#: src/units/abilities.cpp:1166
 msgid "Used by opponent: "
 msgstr "Χρησιμοποιήθηκε από αντίπαλο: "
 
@@ -8289,14 +8592,14 @@ msgstr "$year ΠΙ"
 msgid "$year AF"
 msgstr "$year ΜΙ"
 
-#: src/wesnoth.cpp:811
+#: src/wesnoth.cpp:804
 msgid ""
 "Unable to create log files in directory $logdir. This is often caused by "
 "incorrect folder permissions, anti-virus software restricting folder access, "
 "or using OneDrive to manage your My Documents folder."
 msgstr ""
 
-#: src/wesnoth.cpp:812
+#: src/wesnoth.cpp:805
 msgid "Logging Failure"
 msgstr "Αποτυχία Καταγραφής"
 
@@ -8323,6 +8626,50 @@ msgstr "Απόκρυψη σχεδίων για τον παίκτη $player"
 #: src/whiteboard/manager.cpp:1140
 msgid "Whiteboard Options"
 msgstr "Επιλογές Πίνακα"
+
+#~ msgid "Potion grants steadfast ability and 20% resistance to impact."
+#~ msgstr ""
+#~ "Το φίλτρο δίνει ικανότητα σταθερότητας και 20% αντίσταση στο κτύπημα."
+
+#~ msgid "A potion of unknown origin."
+#~ msgstr "Ένα φίλτρο άγνωστης προέλευσης."
+
+#~ msgid "This magical branch grants +2 damage to melee attacks."
+#~ msgstr "Αυτό το μαγικό κλαδί δίνει +2 ζημιά στις επιθέσεις σώμα με σώμα."
+
+#~ msgid "Wose Branch"
+#~ msgstr "Κλαδί Δενδροποιμένα"
+
+#~ msgid "The magical branch of some great Wose."
+#~ msgstr "Το μαγικό κλαδί κάποιου μεγάλου Δενδροποιμένα."
+
+#~ msgid "This unit will gain the stun weapon special on melee attacks."
+#~ msgstr ""
+#~ "Αυτή η μονάδα θα αποκτήσει την ειδική ικανότητα ακινητοποίησης στις "
+#~ "επιθέσεις σώμα με σώμα."
+
+#~ msgid "Echoes of the Earth"
+#~ msgstr "Ηχώ της Γης"
+
+#~ msgid "Powerful echoes from the bowels of the earth."
+#~ msgstr "Δυνατές ηχώ από τα έγκατα της γης."
+
+#~ msgid "The unit gains the stun weapon special on melee attacks."
+#~ msgstr ""
+#~ "Η μονάδα κερδίζει το ειδικό όπλο ζαλίσματος στις επιθέσεις σώμα με σώμα."
+
+#~ msgid ""
+#~ "After $unit.name| absorbed the stone’s power, the monolith lost its "
+#~ "magical properties."
+#~ msgstr ""
+#~ "Αφού ο/η $unit.name| απορρόφησε τη δύναμη της πέτρας, ο μονόλιθος έχασε "
+#~ "τις μαγικές του ιδιότητες."
+
+#~ msgid "unerring"
+#~ msgstr "αλάνθαστος"
+
+#~ msgid "This attack never misses."
+#~ msgstr "Αυτή η επίθεση δεν αστοχεί ποτέ."
 
 #~ msgid "Urban Jungle (Internal)"
 #~ msgstr "Αστική Ζούγκλα (Εσωτερικό)"
@@ -8568,12 +8915,11 @@ msgstr "Επιλογές Πίνακα"
 #~ msgstr "μηχανικό"
 
 #~ msgid ""
-#~ "Lato-"
-#~ "Regular.ttf,DejaVuSans.ttf,Andagii.ttf,DroidSansJapanese.ttf,DroidSansFallbackFull.ttf,Junicode-"
-#~ "Regular.ttf"
+#~ "Lato-Regular.ttf,DejaVuSans.ttf,Andagii.ttf,DroidSansJapanese.ttf,"
+#~ "DroidSansFallbackFull.ttf,Junicode-Regular.ttf"
 #~ msgstr ""
-#~ "DejaVuSans.ttf,Andagii.ttf,DroidSansJapanese.ttf,DroidSansFallbackFull.ttf,Junicode-"
-#~ "Regular.ttf"
+#~ "DejaVuSans.ttf,Andagii.ttf,DroidSansJapanese.ttf,DroidSansFallbackFull."
+#~ "ttf,Junicode-Regular.ttf"
 
 #~ msgid "Read the <b>Hotkeys</b> list in the <b>Preferences</b> menu."
 #~ msgstr "Διαβάστε τη λίστα <b>Hotkeys</b> από το μενού <b>Προτιμήσεων</b>."
@@ -9100,9 +9446,6 @@ msgstr "Επιλογές Πίνακα"
 
 #~ msgid "Random map options:"
 #~ msgstr "Επιλογές τυχαίου χάρτη:"
-
-#~ msgid "Next"
-#~ msgstr "Παρακάτω"
 
 #~ msgid "Regenerate"
 #~ msgstr "Αναγέννηση"
@@ -10282,8 +10625,8 @@ msgstr "Επιλογές Πίνακα"
 #~ " Γιά αρχή είναι καλύτερα να πατήσεις τό κουμπί "
 #~ "<italic>text='Φροντιστήριο'</italic>  στό βασικό μενού. Αυτό σε βγάζει σέ "
 #~ "διαδραστικό φροντηστήριο πού θα σου διδάξει τά βασικά γιά τό Γουέσνοθ. "
-#~ "Κατόπιν συνιστάται νά παίξεις πρώτα την εκστρατεία Διάδοχος του Θρόνου "
-#~ "-πάτησε τό κουμπί <italic>text='Εκστρατείες'</italic>  καί μετά   "
+#~ "Κατόπιν συνιστάται νά παίξεις πρώτα την εκστρατεία Διάδοχος του Θρόνου -"
+#~ "πάτησε τό κουμπί <italic>text='Εκστρατείες'</italic>  καί μετά   "
 #~ "<italic>text='Διάδοχος του Θρόνου'</italic>. Μιάς καί η Μάχη γιά τό "
 #~ "Γουέσνοθ μπορεί νά είναι αρκετά δύσκολη, ίσως θές νά ξεκινήσεις με τό "
 #~ "επίπεδο δυσκολίας <italic>text='Εύκολο'</italic>."
@@ -10822,10 +11165,10 @@ msgstr "Επιλογές Πίνακα"
 #~ "αυτόβουλα να έρθουν μαζί με τις δυνάμεις σου. Αυτές οι μονάδες "
 #~ "μαρκάρονται μέ το χαρακτηριστικό τής πιστής μονάδας. Αν καί έχουν κόστος "
 #~ "γιά να ανακληθούν, αλλά δέν έχουν κόστος συντηρησης. Αυτό μπορεί να τους "
-#~ "κάνει ανεκτίμητους σέ μιά μεγάλη εκστρατεία, πού δέν υπάρχει πολύ "
-#~ "χρυσάφι.Αυτό τό χαρακτηριστικό δέν δίνεται ποτέ σέ μονάδες πού "
-#~ "στρατολογούνται, άρα δέν θά ήταν σοφό να  διώξουμε αυτές τις μονάδες η να "
-#~ "τις στείλουμε σέ έναν ανόητο θάνατο."
+#~ "κάνει ανεκτίμητους σέ μιά μεγάλη εκστρατεία, πού δέν υπάρχει πολύ χρυσάφι."
+#~ "Αυτό τό χαρακτηριστικό δέν δίνεται ποτέ σέ μονάδες πού στρατολογούνται, "
+#~ "άρα δέν θά ήταν σοφό να  διώξουμε αυτές τις μονάδες η να τις στείλουμε σέ "
+#~ "έναν ανόητο θάνατο."
 
 #~ msgid ""
 #~ "Undead units are immune to poison, also drain and plague doesn’t work on "

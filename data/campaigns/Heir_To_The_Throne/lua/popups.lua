@@ -88,7 +88,7 @@ function wesnoth.wml_actions.display_scenario_preview(cfg)
 	-- REWARD: COMPANION
 	-------------------------
 	local companioncolor = cfg.companioncolor and cfg.companioncolor or "blue"
-	local companionlabel = cfg.companionlabel and cfg.companionlabel or _"New Companions:"
+	local companionlabel = cfg.companionlabel and cfg.companionlabel or _"New Companion:"
 	local companion1     = cfg.companion1 and cfg.companion1.."~RC(magenta>"..companioncolor..")~BLIT(misc/loyal-icon.png,5,10)" or "misc/blank-hex.png"
 	local companion2     = cfg.companion2 and cfg.companion2.."~RC(magenta>"..companioncolor..")~BLIT(misc/loyal-icon.png,5,10)" or "misc/blank-hex.png"
 
@@ -156,7 +156,7 @@ function wesnoth.wml_actions.display_scenario_preview(cfg)
 							T.column{ T.image{  id="recruit4",  label=recruit4  }},
 						}},
 					}},
-					-- Other (place this in the middle so that there's less margin between Recruit/Other; useful for Elensefar where you get both a recruit and an item)
+					-- Other
 					T.row{ T.column{
 						vertical_alignment="top",
 						horizontal_alignment="left",

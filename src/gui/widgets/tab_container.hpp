@@ -1,6 +1,6 @@
 /*
 	Copyright (C) 2024 - 2025
-	by Subhraman Sarkar (babaissarkar) <suvrax@gmail.com>
+	by Subhraman Sarkar (babaissarkar) <sbmskmm@protonmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify

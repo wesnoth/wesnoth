@@ -2,15 +2,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-11-18 02:02 UTC\n"
-"PO-Revision-Date: 2025-11-24 12:40+0100\n"
+"POT-Creation-Date: 2026-06-23 03:16 UTC\n"
+"PO-Revision-Date: 2026-06-24 11:05+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.8\n"
+"X-Generator: Poedit 3.9\n"
 
 #. [era]: id=world_conquest_era
 #: data/campaigns/World_Conquest/_main.cfg:41
@@ -157,7 +157,7 @@ msgid "The Hand"
 msgstr "A man"
 
 #. [world_conquest_data]
-#: data/campaigns/World_Conquest/era/factions/The_Hand.cfg:17
+#: data/campaigns/World_Conquest/era/factions/The_Hand.cfg:16
 msgid "Dune Rider, Knalgan Alliance and Drakes"
 msgstr "Dune Rider, Knalgan Alliance e Drakes"
 
@@ -1443,7 +1443,7 @@ msgstr "nivel $level"
 #, fuzzy
 #| msgid "$chance| chance to $arrow $desc"
 msgid "$chance| chance to $arrow $desc"
-msgstr "$oportunidade| oportunidade de $frecha $desc"
+msgstr "$chance| probabilidade de $arrow $desc"
 
 #. [lua]: training.apply
 #: data/campaigns/World_Conquest/lua/game_mechanics/training.lua:216
@@ -2451,7 +2451,7 @@ msgid "Enemies"
 msgstr "Inimigos"
 
 #. [lua]: add_player_side
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/side_definitions.lua:60
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/side_definitions.lua:61
 msgid "Allies"
 msgstr "Aliados:"
 
@@ -2662,8 +2662,12 @@ msgstr ""
 
 #. [leadership]: id=forcefield
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:249
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:250
 msgid "forcefield"
+msgstr "campo de forza"
+
+#. [leadership]: id=forcefield
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:250
+msgid "female^forcefield"
 msgstr "campo de forza"
 
 #. [leadership]: id=forcefield
@@ -2784,7 +2788,7 @@ msgstr "Herbas medicinais"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:420
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:5
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:4
 msgid "heals +8, cures"
 msgstr "cura +8, cura"
 
@@ -2959,8 +2963,12 @@ msgstr ""
 
 #. [berserk]: id=wct_fury
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:624
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:625
 msgid "fury"
+msgstr "furia"
+
+#. [berserk]: id=wct_fury
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:625
+msgid "female^fury"
 msgstr "furia"
 
 #. [berserk]: id=wct_fury
@@ -3014,8 +3022,12 @@ msgstr ""
 
 #. [illuminates]: id=darkness
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:674
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:675
 msgid "darkness"
+msgstr "escuridade"
+
+#. [illuminates]: id=darkness
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:675
+msgid "female^darkness"
 msgstr "escuridade"
 
 #. [illuminates]: id=darkness
@@ -3033,9 +3045,13 @@ msgstr ""
 
 #. [dummy]: id=wc2_corruption
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:681
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:682
 msgid "corruption"
 msgstr "Corrupción"
+
+#. [dummy]: id=wc2_corruption
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:682
+msgid "female^corruption"
+msgstr "corrupción"
 
 #. [dummy]: id=wc2_corruption
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:683
@@ -3128,8 +3144,12 @@ msgstr ""
 
 #. [leadership]: id=banner
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:784
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:785
 msgid "banner"
+msgstr "estandarte"
+
+#. [leadership]: id=banner
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:785
+msgid "female^banner"
 msgstr "estandarte"
 
 #. [leadership]: id=banner
@@ -3348,7 +3368,6 @@ msgstr "$rango|: $especial|"
 #. [skirmisher]: id=distract
 #: data/campaigns/World_Conquest/resources/data/training.cfg:378
 #: data/campaigns/World_Conquest/resources/data/training.cfg:403
-#: data/campaigns/World_Conquest/resources/data/training.cfg:404
 msgid "distract"
 msgstr "distraer"
 
@@ -3356,9 +3375,13 @@ msgstr "distraer"
 #. [resistance]: id=tenacity
 #: data/campaigns/World_Conquest/resources/data/training.cfg:390
 #: data/campaigns/World_Conquest/resources/data/training.cfg:427
-#: data/campaigns/World_Conquest/resources/data/training.cfg:428
 msgid "tenacity"
 msgstr "tenacidade"
+
+#. [skirmisher]: id=distract
+#: data/campaigns/World_Conquest/resources/data/training.cfg:404
+msgid "female^distract"
+msgstr "distrae"
 
 #. [skirmisher]: id=distract
 #: data/campaigns/World_Conquest/resources/data/training.cfg:405
@@ -3366,6 +3389,11 @@ msgid "Allied units ignore enemy zones of control adjacent to this unit."
 msgstr ""
 "As unidades aliadas ignoran as zonas de control inimigas adxacentes a esta "
 "unidade."
+
+#. [resistance]: id=tenacity
+#: data/campaigns/World_Conquest/resources/data/training.cfg:428
+msgid "female^tenacity"
+msgstr "tenacidade"
 
 #. [resistance]: id=tenacity
 #: data/campaigns/World_Conquest/resources/data/training.cfg:429
@@ -3412,7 +3440,7 @@ msgstr "$valor| XP para avanzar"
 #, fuzzy
 #| msgid "free upkeep"
 msgid "free upkeep"
-msgstr "mantemento gratuíto"
+msgstr "sen mantemento"
 
 #. [chance]
 #: data/campaigns/World_Conquest/resources/data/training.cfg:646
@@ -3428,7 +3456,8 @@ msgstr "Aldea/Castelo: +5 defensa"
 msgid ""
 "$terrain|: +$def| defense and full movement, +$res| resistance vs $dmg_type|"
 msgstr ""
-"$terreno|: +$def| defensa e movemento total, +$res| resistencia vs $dmg_type|"
+"$terrain|: +$def| defensa e movemento completo, +$res| resistencia contra "
+"$dmg_type|"
 
 #. [chance]
 #: data/campaigns/World_Conquest/resources/data/training.cfg:707
@@ -3445,7 +3474,7 @@ msgstr "+ move defensa"
 #, fuzzy
 #| msgid "melee: optional charge"
 msgid "melee: optional charge"
-msgstr "corpo a corpo: carga opcional"
+msgstr "corpo a corpo: ataque opcional"
 
 #. [chance]
 #: data/campaigns/World_Conquest/resources/data/training.cfg:753

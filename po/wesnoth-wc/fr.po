@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth World Conquest\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-11-18 02:02 UTC\n"
+"POT-Creation-Date: 2026-06-23 03:16 UTC\n"
 "PO-Revision-Date: 2024-02-28 13:49+0100\n"
 "Last-Translator: demario\n"
 "Language-Team: French <wesnothfr@lists.tuxfamily.org>\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 1.6.10\n"
+"X-Generator: Poedit 3.8\n"
 
 #. [era]: id=world_conquest_era
 #: data/campaigns/World_Conquest/_main.cfg:41
@@ -164,7 +164,7 @@ msgstr "La Pègre"
 
 # Les noms de factions prennent une majuscule
 #. [world_conquest_data]
-#: data/campaigns/World_Conquest/era/factions/The_Hand.cfg:17
+#: data/campaigns/World_Conquest/era/factions/The_Hand.cfg:16
 msgid "Dune Rider, Knalgan Alliance and Drakes"
 msgstr "Chevaucheur des dunes, Alliance knalgane et Dracans"
 
@@ -327,88 +327,68 @@ msgstr "Non"
 
 #. [label]: id=title
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:48
-#, fuzzy
-#| msgid "Map Settings"
 msgid "Map Generator Settings"
-msgstr "Paramètres de la carte"
+msgstr "Paramètres du générateur de carte"
 
 #. [grid]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:57
-#, fuzzy
-#| msgid " players: "
 msgid "Players:"
-msgstr " joueurs : "
+msgstr "Joueurs :"
 
 #. [grid]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:58
-#, fuzzy
-#| msgid "Scenario"
 msgid "Scenario:"
-msgstr "Scénario"
+msgstr "Scénario :"
 
 #. [grid]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:59
 msgid "Map:"
-msgstr ""
+msgstr "Carte :"
 
 #. [grid]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:60
 msgid "Map Size:"
-msgstr ""
+msgstr "Taille de la carte :"
 
 #. [grid]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:61
-#, fuzzy
-#| msgid "village density"
 msgid "Village Density:"
-msgstr "densité en villages"
+msgstr "Densité en villages :"
 
 #. [grid]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:62
-#, fuzzy
-#| msgid "keep size"
 msgid "Keep Size:"
-msgstr "taille du château"
+msgstr "Taille du château :"
 
 #. [grid]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:63
-#, fuzzy
-#| msgid "iterations"
 msgid "Iterations:"
-msgstr "nombre d'itérations"
+msgstr "Nombre d'itérations :"
 
 #. [grid]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:64
-#, fuzzy
-#| msgid "terrain factor"
 msgid "Terrain Factor:"
-msgstr "facteur de dénivelé"
+msgstr "Facteur de dénivelé :"
 
 #. [grid]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:65
-#, fuzzy
-#| msgid "island factor"
 msgid "Island Factor:"
-msgstr "facteur d'insularité"
+msgstr "Facteur d'insularité :"
 
 #. [grid]
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:66
-#, fuzzy
-#| msgid "number of keeps"
 msgid "Number of Keeps:"
-msgstr "nombre de châteaux"
+msgstr "Nombre de châteaux :"
 
 #. [button]: id=ok
 #: data/campaigns/World_Conquest/gui/settings_dialog.cfg:76
 msgid "Close"
-msgstr ""
+msgstr "Fermer"
 
 # Décrit la relation entre un zombi et une liche
 #: data/campaigns/World_Conquest/lua/campaign/enemy_themed.lua:5
-#, fuzzy
-#| msgid "$name|'s pet"
 msgid "$name|’s pet"
-msgstr "le joujou de $name"
+msgstr "joujou de $name"
 
 #: data/campaigns/World_Conquest/lua/campaign/objectives.lua:6
 msgid "Defeat all enemy leaders and commanders"
@@ -426,12 +406,12 @@ msgstr "Perte de votre leader et de tous vos commandants"
 msgid "An in-game help is available: right-click on any empty hex."
 msgstr ""
 "Une aide en ligne est disponible : ouvrez par un clic droit sur un hexagone "
-"vide"
+"vide."
 
 #. [lua]: carryover.remaining_gold_message
 #: data/campaigns/World_Conquest/lua/campaign/scenario.lua:87
 msgid "Average remaining gold: "
-msgstr ""
+msgstr "Or restant moyen : "
 
 #: data/campaigns/World_Conquest/lua/era/era.lua:12
 msgid "Tell me how my recruit works"
@@ -865,7 +845,7 @@ msgstr "Cachette"
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:25
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:49
 msgid "Den"
-msgstr "Repère"
+msgstr "Repaire"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:21
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:25
@@ -1160,7 +1140,7 @@ msgstr "Embarcadère"
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:55
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:57
 msgid "Seaport"
-msgstr "Port maritime"
+msgstr "Havre"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:55
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:57
@@ -1202,7 +1182,7 @@ msgstr "Ferme"
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:69
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:97
 msgid "Field"
-msgstr "Champs"
+msgstr "Champ"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:69
 msgid "Granary"
@@ -1229,7 +1209,7 @@ msgstr "Comté"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:69
 msgid "Windmill"
-msgstr "Moulin à vent"
+msgstr "Moulin"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:71
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:73
@@ -1237,7 +1217,7 @@ msgstr "Moulin à vent"
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:77
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:79
 msgid "Outpost"
-msgstr "Poste avancé"
+msgstr "Poste"
 
 #: data/campaigns/World_Conquest/lua/game_mechanics/bonus_point_definitions.lua:77
 msgid "Shelter"
@@ -1798,7 +1778,7 @@ msgstr "Têtes hautes, mes garçons. Aujourd'hui est un beau jour pour mourir !
 #. the speaker is another dwarf, after an Ulf joins their side
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:226
 msgid "Brave words. Welcome to The Fight Club..."
-msgstr "Voici des paroles courageuses. Bienvenue au club de combat."
+msgstr "Voici des paroles courageuses. Bienvenue sur le ring ultime."
 
 #. a Gryphon Rider joins a player's side
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:231
@@ -1899,7 +1879,7 @@ msgid ""
 "me the enemy, master!"
 msgstr ""
 "J'ai été rappelé du repos éternel, lié à celui qui m'a appelé pour le "
-"suivre. Montre-moi tes ennemis, Maître !"
+"suivre. Montre-moi tes ennemis, maître !"
 
 # Discours d'une goule surprenamment bien construit (voir "unholy abomin..."). Le « j'te dis » est contracté en tant que tic verbal.
 #. a Ghoul joins a player's side, and this line does not fit a Ghoul at all, it’s a pantomime-level stereotype of a British hero.
@@ -1917,7 +1897,7 @@ msgstr ""
 #. response to the Ghoul’s introduction line
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:319
 msgid "Have at thee, unholy abomin... wait, huh?"
-msgstr "A moi, sataniques abomin... euh, quoi ?"
+msgstr "À moi, sataniques abomin... euh, quoi ?"
 
 #. a Dark Adept joins a player's side
 #. a Dune Burner joins a player's side
@@ -1938,13 +1918,13 @@ msgid ""
 "towards the enemy and I will feast upon their very souls!"
 msgstr ""
 "Qui m'a appelé dans mon sommeil ? Je sens que je rejoins une grande "
-"bataille. Pointez-moi les ennemis  et je ferai un festin de leur âme !"
+"bataille. Pointez-moi les ennemis et je ferai un festin de leur âme !"
 
 # Le cri d'une chauve-souris.
 #. a Vampire Bat joins a player's side
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:339
 msgid "Skreeeeeeee!"
-msgstr "Skriiiiiiii !"
+msgstr "Criiiiiiii !"
 
 #. after a Vampire Bat joins the player's side
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:343
@@ -1957,7 +1937,6 @@ msgstr ""
 
 # Discours tenu par une jeune ogre.
 # La syntaxe erronée est volontaire, copiant la syntaxe du texte original.
-# J'ai voulu éviter la syntaxe habituelle "illettrée" (comme "moi aider toi")
 # La forme "à de + infinitif" rappelle "devoir + infinitif" et "avoir à + infinitif".
 #. a Young Ogre joins a player's side
 #: data/campaigns/World_Conquest/lua/game_mechanics/unittypedata.lua:351
@@ -2201,12 +2180,12 @@ msgstr ""
 #. [lua]: type_icon
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:169
 msgid " (not available for enemies)"
-msgstr " (indisponible pour les ennemis)."
+msgstr " (indisponible pour les ennemis)"
 
 #. [lua]: type_icon
 #: data/campaigns/World_Conquest/lua/game_mechanics/wocopedia/help.lua:170
 msgid " (not available for players)"
-msgstr " (indisponible pour les joueurs)."
+msgstr " (indisponible pour les joueurs)"
 
 # Dans le sens de "premier scénario"
 #. [lua]: wc_ii_generate_scenario
@@ -2218,8 +2197,6 @@ msgstr "Début"
 
 #. [lua]: wc_ii_generate_scenario
 #: data/campaigns/World_Conquest/lua/map/main.lua:127
-#, fuzzy
-#| msgid "Scenario"
 msgid "Scenario "
 msgstr "Scénario"
 
@@ -2241,12 +2218,12 @@ msgstr "Glaciers"
 #. [lua]: wct_map_2d_post_bunus_decoration
 #: data/campaigns/World_Conquest/lua/map/postgeneration/2D_Provinces.lua:165
 msgid "Provinces"
-msgstr "Provincial"
+msgstr "Provinciale"
 
 #. [lua]: wct_map_2f_post_bunus_decoration
 #: data/campaigns/World_Conquest/lua/map/postgeneration/2F_Clayey.lua:127
 msgid "Clayey"
-msgstr "Argileux"
+msgstr "Argileuse"
 
 #. [lua]: wct_map_3c_post_bunus_decoration
 #: data/campaigns/World_Conquest/lua/map/postgeneration/3C_Delta.lua:389
@@ -2256,7 +2233,7 @@ msgstr "Delta"
 #. [lua]: world_conquest_tek_map_repaint_3d
 #: data/campaigns/World_Conquest/lua/map/postgeneration/3D_Sulfurous.lua:62
 msgid "Sulfurous"
-msgstr "Sulfureux"
+msgstr "Sulfureuse"
 
 #. [lua]: wct_map_3e_post_bunus_decoration
 #: data/campaigns/World_Conquest/lua/map/postgeneration/3E_Coral.lua:79
@@ -2291,7 +2268,7 @@ msgstr "Sauvage"
 #. [lua]: world_conquest_tek_map_repaint_6d
 #: data/campaigns/World_Conquest/lua/map/postgeneration/6D_Feudal.lua:457
 msgid "Feudal"
-msgstr "Féodal"
+msgstr "Féodale"
 
 #. [lua]: end_message
 #: data/campaigns/World_Conquest/lua/map/scenario_utils/plot.lua:44
@@ -2531,7 +2508,7 @@ msgid "Enemies"
 msgstr "Ennemis"
 
 #. [lua]: add_player_side
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/side_definitions.lua:60
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/side_definitions.lua:61
 msgid "Allies"
 msgstr "Alliés"
 
@@ -2695,7 +2672,7 @@ msgstr "Arc œil de lynx"
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:195
 msgid "ranged: marksman and +25% damage"
-msgstr "à distance : arcane et +25% de dégâts"
+msgstr "à distance : tir d'élite et +25% de dégâts"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:196
@@ -2746,8 +2723,12 @@ msgstr ""
 
 #. [leadership]: id=forcefield
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:249
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:250
 msgid "forcefield"
+msgstr "champ de force"
+
+#. [leadership]: id=forcefield
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:250
+msgid "female^forcefield"
 msgstr "champ de force"
 
 #. [leadership]: id=forcefield
@@ -2821,7 +2802,7 @@ msgstr ""
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:348
 msgid "Holy water"
-msgstr "Eau bénite"
+msgstr "Essence d'arcane"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:350
@@ -2835,7 +2816,7 @@ msgid ""
 "This sacred vial anoints melee attacks with arcane power, increasing their "
 "damage and changing their damage type. It also increases arcane resistance."
 msgstr ""
-"Cette fiole sacrée oint les attaques au corps à corps d'un pouvoir arcane, "
+"Cette fiole unique oint les attaques au corps à corps d'un pouvoir arcane, "
 "augmentant leurs dégâts et changeant leur type. Elle augmente aussi la "
 "résistance aux attaques de type arcane."
 
@@ -2847,7 +2828,7 @@ msgstr "Arc de glace"
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:374
 msgid "19-1 ranged-cold slows"
-msgstr "19-1 froid magique à distance avec ralentissement"
+msgstr "19-1 froid magique à distance, avec ralentissement"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:375
@@ -2870,7 +2851,7 @@ msgstr "Herbes médicinales"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:420
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:5
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:4
 msgid "heals +8, cures"
 msgstr "soins +8, guérison"
 
@@ -3046,8 +3027,12 @@ msgstr ""
 
 #. [berserk]: id=wct_fury
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:624
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:625
 msgid "fury"
+msgstr "furie"
+
+#. [berserk]: id=wct_fury
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:625
+msgid "female^fury"
 msgstr "furie"
 
 #. [berserk]: id=wct_fury
@@ -3103,8 +3088,12 @@ msgstr ""
 
 #. [illuminates]: id=darkness
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:674
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:675
 msgid "darkness"
+msgstr "ténèbres"
+
+#. [illuminates]: id=darkness
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:675
+msgid "female^darkness"
 msgstr "ténèbres"
 
 #. [illuminates]: id=darkness
@@ -3121,8 +3110,12 @@ msgstr ""
 
 #. [dummy]: id=wc2_corruption
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:681
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:682
 msgid "corruption"
+msgstr "corruption"
+
+#. [dummy]: id=wc2_corruption
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:682
+msgid "female^corruption"
 msgstr "corruption"
 
 #. [dummy]: id=wc2_corruption
@@ -3219,8 +3212,12 @@ msgstr ""
 
 #. [leadership]: id=banner
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:784
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:785
 msgid "banner"
+msgstr "bannière"
+
+#. [leadership]: id=banner
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:785
+msgid "female^banner"
 msgstr "bannière"
 
 #. [leadership]: id=banner
@@ -3375,7 +3372,7 @@ msgstr ""
 #. [trainer]: type=Drake Flare
 #: data/campaigns/World_Conquest/resources/data/training.cfg:160
 msgid "Combat Experience"
-msgstr "Experience du combat"
+msgstr "Expérience au combat"
 
 #. [trainer]: type=Drake Flare
 #: data/campaigns/World_Conquest/resources/data/training.cfg:161
@@ -3444,7 +3441,6 @@ msgstr "$range| : $special|"
 #. [skirmisher]: id=distract
 #: data/campaigns/World_Conquest/resources/data/training.cfg:378
 #: data/campaigns/World_Conquest/resources/data/training.cfg:403
-#: data/campaigns/World_Conquest/resources/data/training.cfg:404
 msgid "distract"
 msgstr "distraction"
 
@@ -3452,9 +3448,13 @@ msgstr "distraction"
 #. [resistance]: id=tenacity
 #: data/campaigns/World_Conquest/resources/data/training.cfg:390
 #: data/campaigns/World_Conquest/resources/data/training.cfg:427
-#: data/campaigns/World_Conquest/resources/data/training.cfg:428
 msgid "tenacity"
 msgstr "ténacité"
+
+#. [skirmisher]: id=distract
+#: data/campaigns/World_Conquest/resources/data/training.cfg:404
+msgid "female^distract"
+msgstr "distraction"
 
 #. [skirmisher]: id=distract
 #: data/campaigns/World_Conquest/resources/data/training.cfg:405
@@ -3462,6 +3462,11 @@ msgid "Allied units ignore enemy zones of control adjacent to this unit."
 msgstr ""
 "Les unités alliées ignorent la zone de contrôle des ennemis adjacents à "
 "cette unité."
+
+#. [resistance]: id=tenacity
+#: data/campaigns/World_Conquest/resources/data/training.cfg:428
+msgid "female^tenacity"
+msgstr "ténacité"
 
 #. [resistance]: id=tenacity
 #: data/campaigns/World_Conquest/resources/data/training.cfg:429
@@ -3561,19 +3566,19 @@ msgstr "Conquête du monde à 4 joueurs"
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:17
 msgid "WC1p"
-msgstr ""
+msgstr "WC1j"
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:20
 msgid "WC2p"
-msgstr ""
+msgstr "WC2j"
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:23
 msgid "WC3p"
-msgstr ""
+msgstr "WC3j"
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:26
 msgid "WC4p"
-msgstr ""
+msgstr "WC4j"
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:29
 msgid ""
@@ -3605,17 +3610,12 @@ msgstr ""
 "(Niveau expert, 5 scénarios)."
 
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:41
-#, fuzzy
-#| msgid ""
-#| "A randomly generated cooperative campaign for 2 players. It has 6 levels "
-#| "of difficulty.\n"
-#| "(Expert level, 5 scenarios.)"
 msgid ""
 "A randomly generated cooperative campaign for 4 players. It has 6 levels of "
 "difficulty.\n"
 "(Expert level, 5 scenarios.)"
 msgstr ""
-"Une campagne générée aléatoirement pour 2 joueurs. Comporte 6 niveaux de "
+"Une campagne générée aléatoirement pour 4 joueurs. Comporte 6 niveaux de "
 "difficultés.\n"
 "(Niveau expert, 5 scénarios)."
 

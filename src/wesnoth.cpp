@@ -67,7 +67,8 @@
 #include <fenv.h>
 #endif // _MSC_VER
 
-#include <SDL2/SDL.h> // for SDL_Init, SDL_INIT_TIMER
+#include <SDL3/SDL.h> // for SDL_Init, SDL_INIT_TIMER
+#include <SDL3/SDL_main.h> // Provides platform-specific entrypoint, if applicable
 
 #include <boost/program_options/errors.hpp>     // for error
 #include <boost/algorithm/string/predicate.hpp> // for checking cmdline options
@@ -100,10 +101,6 @@
 #include <windows.h>
 
 #endif // _WIN32
-
-#ifdef __ANDROID__
-#define main SDL_main
-#endif
 
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 #include "gui/widgets/debug.hpp"
@@ -185,7 +182,7 @@ static void handle_preprocess_string(const commandline_options& cmdline_opts)
 		[](const auto& timer) { PLAIN_LOG << "preprocessing finished. Took " << timer << " ticks."; });
 
 	const auto input_stream = preprocess_string(*cmdline_opts.preprocess_source_string, "wesnoth", defines_map);
-	std::cout << io::read(*input_stream) << std::endl;
+	io::write(std::cout, io::read(*input_stream), 0, true);
 }
 
 static void handle_preprocess_command(const commandline_options& cmdline_opts)
@@ -333,29 +330,6 @@ static int handle_validate_command(const std::string& file, abstract_validator& 
 /** Process commandline-arguments */
 static int process_command_args(commandline_options& cmdline_opts)
 {
-	// Options that output info unaffected by other options and return.
-	if(cmdline_opts.help) {
-		std::cout << cmdline_opts;
-		return 0;
-	}
-
-	if(cmdline_opts.logdomains) {
-		std::cout << lg::list_log_domains(*cmdline_opts.logdomains);
-		return 0;
-	}
-
-	if(cmdline_opts.version) {
-		std::cout << "Battle for Wesnoth" << " " << game_config::wesnoth_version.str() << "\n\n";
-		std::cout << "Library versions:\n" << game_config::library_versions_report() << '\n';
-		std::cout << "Optional features:\n" << game_config::optional_features_report();
-		return 0;
-	}
-
-	if(cmdline_opts.simple_version) {
-		std::cout << game_config::wesnoth_version.str() << "\n";
-		return 0;
-	}
-
 	// Options that don't change behavior based on any others should be checked alphabetically below.
 
 	if(cmdline_opts.no_log_sanitize) {
@@ -386,9 +360,9 @@ static int process_command_args(commandline_options& cmdline_opts)
 		|| (!cmdline_opts.no_log_to_file
 			&& !getenv("WESNOTH_NO_LOG_FILE")
 			// command line options that imply not redirecting output to a log file
-			&& !cmdline_opts.data_path
-			&& !cmdline_opts.userdata_path
-			&& !cmdline_opts.usercache_path
+			&& !cmdline_opts.print_data_path
+			&& !cmdline_opts.print_userdata_path
+			&& !cmdline_opts.print_usercache_path
 			&& !cmdline_opts.report
 			&& !cmdline_opts.do_diff
 			&& !cmdline_opts.do_patch
@@ -413,6 +387,29 @@ static int process_command_args(commandline_options& cmdline_opts)
 	}
 #endif
 
+	// Options that output info unaffected by other options and return.
+	if(cmdline_opts.help) {
+		std::cout << cmdline_opts;
+		return 0;
+	}
+
+	if(cmdline_opts.logdomains) {
+		std::cout << lg::list_log_domains(*cmdline_opts.logdomains);
+		return 0;
+	}
+
+	if(cmdline_opts.version) {
+		std::cout << "Battle for Wesnoth" << " " << game_config::wesnoth_version.str() << "\n\n";
+		std::cout << "Library versions:\n" << game_config::library_versions_report() << '\n';
+		std::cout << "Optional features:\n" << game_config::optional_features_report();
+		return 0;
+	}
+
+	if(cmdline_opts.simple_version) {
+		std::cout << game_config::wesnoth_version.str() << "\n";
+		return 0;
+	}
+
 	if(cmdline_opts.log) {
 		for(const auto& log_pair : *cmdline_opts.log) {
 			const std::string log_domain = log_pair.second;
@@ -430,13 +427,13 @@ static int process_command_args(commandline_options& cmdline_opts)
 		PLAIN_LOG << "Started on " << chrono::format_local_timestamp(now, "%a %b %d %T %Y") << '\n';
 	}
 
-	if(cmdline_opts.usercache_path) {
-		std::cout << filesystem::get_cache_dir();
+	if(cmdline_opts.print_usercache_path) {
+		std::cout << filesystem::get_cache_dir() << std::endl;
 		return 0;
 	}
 
-	if(cmdline_opts.userdata_path) {
-		std::cout << filesystem::get_user_data_dir();
+	if(cmdline_opts.print_userdata_path) {
+		std::cout << filesystem::get_user_data_dir() << std::endl;
 		return 0;
 	}
 
@@ -447,11 +444,11 @@ static int process_command_args(commandline_options& cmdline_opts)
 		}
 	} else {
 #if defined(__ANDROID__) && !defined(WESNOTH_PATH)
-		if(const char* ext_path = SDL_AndroidGetExternalStoragePath()) {
+		if(const char* ext_path = SDL_GetAndroidExternalStoragePath()) {
 			game_config::path = ext_path + std::string("/gamedata");
 			PLAIN_LOG << "Determined game data directory: " << game_config::path;
 		} else {
-			PLAIN_LOG << "Cannot find game data directory, specify one with --data-dir. SDL_AndroidGetExternalStoragePath() failed: " << SDL_GetError();
+			PLAIN_LOG << "Cannot find game data directory, specify one with --data-dir. SDL_GetAndroidExternalStoragePath() failed: " << SDL_GetError();
 		}
 #endif
 		// if a pre-defined path does not exist this will empty it
@@ -476,8 +473,8 @@ static int process_command_args(commandline_options& cmdline_opts)
 		return 1;
 	}
 
-	if(cmdline_opts.data_path) {
-		std::cout << game_config::path;
+	if(cmdline_opts.print_data_path) {
+		std::cout << game_config::path << std::endl;
 		return 0;
 	}
 
@@ -506,7 +503,7 @@ static int process_command_args(commandline_options& cmdline_opts)
 	}
 
 	if(cmdline_opts.render_image) {
-		SDL_setenv("SDL_VIDEODRIVER", "dummy", 1);
+		SDL_setenv_unsafe("SDL_VIDEODRIVER", "dummy", 1);
 	}
 
 	if(cmdline_opts.strict_validation) {
@@ -798,10 +795,6 @@ static int do_gameloop(commandline_options& cmdline_opts)
 	const cursor::manager cursor_manager;
 	cursor::set(cursor::WAIT);
 
-#if(defined(_X11) && !defined(__APPLE__)) || defined(_WIN32)
-	SDL_EventState(SDL_SYSWMEVENT, SDL_ENABLE);
-#endif
-
 	gui2::init();
 	gui2::switch_theme(prefs::get().gui2_theme());
 	const gui2::event::manager gui_event_manager;
@@ -987,7 +980,7 @@ static int do_gameloop(commandline_options& cmdline_opts)
 #define error_exit(res) return res
 #endif
 
-#ifdef __APPLE__
+#if defined(__APPLE__) && !defined(__IPHONEOS__)
 extern "C" int wesnoth_main(int argc, char** argv);
 int wesnoth_main(int argc, char** argv)
 #else
@@ -1028,27 +1021,22 @@ int main(int argc, char** argv)
 		}
 
 		SDL_SetHint(SDL_HINT_NO_SIGNAL_HANDLERS, "1");
-		// Is there a reason not to just use SDL_INIT_EVERYTHING?
-		if(SDL_Init(SDL_INIT_TIMER) < 0) {
-			PLAIN_LOG << "Couldn't initialize SDL: " << SDL_GetError();
-			return (1);
-		}
 		atexit(SDL_Quit);
 
 		// Mac's touchpad generates touch events too.
 		// Ignore them until Macs have a touchscreen: https://forums.libsdl.org/viewtopic.php?p=45758
 #if defined(__APPLE__) && !defined(__IPHONEOS__)
-		SDL_EventState(SDL_FINGERMOTION, SDL_DISABLE);
-		SDL_EventState(SDL_FINGERDOWN, SDL_DISABLE);
-		SDL_EventState(SDL_FINGERUP, SDL_DISABLE);
+		SDL_SetEventEnabled(SDL_EVENT_FINGER_MOTION, false);
+		SDL_SetEventEnabled(SDL_EVENT_FINGER_DOWN, false);
+		SDL_SetEventEnabled(SDL_EVENT_FINGER_UP, false);
+#endif
+
+#ifdef _WIN32
+		SDL_SetWindowsMessageHook(&events::handle_windows_message, nullptr);
 #endif
 
 		// declare this here so that it will always be at the front of the event queue.
 		events::event_context global_context;
-
-#ifndef __ANDROID__
-		SDL_StartTextInput();
-#endif
 		const int res = do_gameloop(cmdline_opts);
 		safe_exit(res);
 	} catch(const boost::program_options::error& e) {

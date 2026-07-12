@@ -117,7 +117,7 @@ std::string format_time_summary(const std::chrono::system_clock::time_point& t)
 #endif
 	// TODO: make sure this doesn't result in #1709 coming back
 	assert(!format_string.empty());
-	return chrono::format_local_timestamp(t, format_string);
+	return translation::translate_timestamp(chrono::get_local_timestamp(t), format_string);
 }
 
 } // namespace utils

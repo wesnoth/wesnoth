@@ -46,22 +46,11 @@ extern int cache_compression_level;
 
 class config;
 class game_config_view;
-struct SDL_RWops;
 
 namespace filesystem {
 
 using scoped_istream = std::unique_ptr<std::istream>;
 using scoped_ostream = std::unique_ptr<std::ostream>;
-
-struct sdl_rwops_deleter
-{
-	void operator()(SDL_RWops*) const noexcept;
-};
-
-using rwops_ptr = std::unique_ptr<SDL_RWops, sdl_rwops_deleter>;
-
-rwops_ptr make_read_RWops(const std::string &path);
-rwops_ptr make_write_RWops(const std::string &path);
 
 /** An exception object used when an IO error occurs */
 struct io_exception : public game::error {
@@ -153,7 +142,7 @@ std::string get_default_prefs_file();
 std::string get_save_index_file();
 std::string get_lua_history_file();
 /** location of the game manual file correponding to the given locale (default: en) */
-utils::optional<std::string> get_game_manual_file(const std::string& locale_code = "en");
+utils::optional<std::string> get_game_manual_file(const std::string& locale_code, const std::string& short_locale_code);
 /**
  * parent directory for everything that should be synced between systems.
  * implemented due to limitations of Steam's AutoCloud (non-SDK) syncing, but will also simplify things if it's ever added for any other platforms.
@@ -247,6 +236,7 @@ void write_file(const std::string& fname, const std::string& data, std::ios_base
 void copy_file(const std::string& src, const std::string& dest);
 
 std::string get_map_file(const std::string& name);
+std::string get_scenario_file(const std::string& name);
 
 std::string read_map(const std::string& name);
 std::string read_scenario(const std::string& name);

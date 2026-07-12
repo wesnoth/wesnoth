@@ -21,7 +21,7 @@
 #include "sdl/rect.hpp"
 #include "sdl/texture.hpp"
 
-#include <SDL2/SDL_render.h>
+#include <SDL3/SDL_render.h>
 
 #include <vector>
 
@@ -88,9 +88,6 @@ bool testing();
 /** Whether the game has set up a window to render into */
 bool has_window();
 
-/** Whether we are currently in fullscreen mode */
-bool is_fullscreen();
-
 /**
  * Set the fullscreen state.
  *
@@ -145,6 +142,9 @@ int current_refresh_rate();
 
 /** The native refresh rate of display, not taking any user preferences into account. */
 int native_refresh_rate();
+float content_scaling();
+float pixel_density();
+float display_scaling();
 
 /** True iff the window is not hidden. */
 bool window_is_visible();
@@ -343,14 +343,14 @@ private:
 /***************/
 
 /**
+ * Returns a list of all available renderers
+ */
+std::vector<std::string> get_available_renderers();
+
+/**
  * Provides diagnostic information about the current renderer for the @a build_info API.
  */
 std::vector<std::pair<std::string, std::string>> renderer_report();
-
-/**
- * Retrieves the current game screen DPI for the @a build_info API.
- */
-std::pair<float, float> get_dpi();
 
 
 /**************************/

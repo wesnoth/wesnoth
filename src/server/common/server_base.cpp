@@ -433,7 +433,7 @@ void server_base::coro_send_file(const socket_ptr& socket, const std::string& fi
 				|| ec == boost::asio::error::try_again)
 		{
 			// We have to wait for the socket to become ready again.
-			socket->async_write_some(boost::asio::null_buffers(), yield[ec]);
+			socket->async_wait(boost::asio::socket_base::wait_type::wait_write, yield[ec]);
 			if(check_error(ec, socket)) return;
 			continue;
 		}
@@ -500,7 +500,7 @@ void server_base::coro_send_file(const socket_ptr& socket, const std::string& fi
 		if(WSAGetLastError() == WSA_IO_PENDING) {
 			while(true) {
 				// The request is pending. Wait until it completes.
-				socket->async_write_some(boost::asio::null_buffers(), yield);
+				socket->async_wait(boost::asio::socket_base::wait_type::wait_write, yield);
 
 				DWORD win_ec = GetLastError();
 				if (win_ec != ERROR_IO_PENDING && win_ec != ERROR_SUCCESS)

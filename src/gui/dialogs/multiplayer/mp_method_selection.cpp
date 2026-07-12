@@ -40,6 +40,12 @@ void mp_method_selection::pre_show()
 
 	listbox* list = find_widget<listbox>("method_list", false, true);
 	list->select_row(prefs::get().mp_connect_type());
+#if defined(__IPHONEOS__)
+	if(prefs::get().mp_connect_type() == static_cast<int>(choice::HOST)) {
+		list->select_row(static_cast<unsigned>(choice::LOCAL));
+	}
+	list->set_row_active(static_cast<unsigned>(choice::HOST), false);
+#endif
 
 	add_to_tab_order(list);
 	add_to_tab_order(user_widget);

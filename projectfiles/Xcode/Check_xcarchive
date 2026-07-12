@@ -1,0 +1,218 @@
+#!/usr/bin/env bash
+#
+# Check_xcarchive
+# Martin Hrubý (hrubymar10), 2026
+#
+# Validates that an Xcode archive of Wesnoth matches its intended
+# distribution channel:
+#
+#   dist = "macOS App Store" -> wesnothd must BE sandboxed
+#   dist = "Steam"           -> wesnothd must NOT be sandboxed
+#   dist = "SourceForge"     -> wesnothd must NOT be sandboxed
+#   dist = "itch"         -> wesnothd must NOT be sandboxed
+#
+# In all cases, wesnothd must NOT carry com.apple.application-identifier
+# (that entitlement on a nested CLI tool triggers App Store rejection
+# ITMS-90288 / 90286 / 90885).
+#
+# Usage:
+#   Check_xcarchive [PATH ...]
+#
+# PATH can be an .xcarchive bundle or a directory containing one or more
+# .xcarchive bundles (non-recursive).
+#
+# If no PATH is given, the script prompts for one - so you can double-
+# click the script in Finder and drag archives from Finder onto the
+# Terminal window.
+#
+
+set -u
+
+PASS_COUNT=0
+FAIL_COUNT=0
+WARN_COUNT=0
+
+check_archive() {
+  local archive="$1"
+  local app="$archive/Products/Applications/The Battle for Wesnoth.app"
+  local dist_file="$app/Contents/Resources/data/dist"
+  local wesnothd="$app/Contents/MacOS/wesnothd"
+
+  echo "=== $(basename "$archive") ==="
+
+  if [ ! -d "$app" ]; then
+    echo "  FAIL: 'The Battle for Wesnoth.app' not found under Products/Applications"
+    FAIL_COUNT=$((FAIL_COUNT + 1))
+    echo
+    return
+  fi
+
+  if [ ! -x "$wesnothd" ]; then
+    echo "  FAIL: wesnothd binary missing or not executable"
+    FAIL_COUNT=$((FAIL_COUNT + 1))
+    echo
+    return
+  fi
+
+  local dist_content=""
+  if [ -f "$dist_file" ]; then
+    dist_content=$(/usr/bin/sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' "$dist_file")
+  fi
+
+  local tmp
+  tmp=$(mktemp -t wesnothd_ent.XXXXXX)
+  if ! codesign -d --entitlements :- "$wesnothd" >"$tmp" 2>/dev/null; then
+    echo "  FAIL: could not read code signing entitlements from wesnothd"
+    rm -f "$tmp"
+    FAIL_COUNT=$((FAIL_COUNT + 1))
+    echo
+    return
+  fi
+
+  local sandbox_state app_id
+  # plutil uses '.' as a keypath separator, so literal dots in key
+  # names must be escaped with a backslash.
+  sandbox_state=$(/usr/bin/plutil -extract 'com\.apple\.security\.app-sandbox' raw -- "$tmp" 2>/dev/null || echo "absent")
+  app_id=$(/usr/bin/plutil -extract 'com\.apple\.application-identifier' raw -- "$tmp" 2>/dev/null || echo "absent")
+  rm -f "$tmp"
+
+  local is_sandboxed="no"
+  [ "$sandbox_state" = "true" ] && is_sandboxed="yes"
+
+  echo "  dist:                            ${dist_content:-(missing)}"
+  echo "  wesnothd sandbox:                $is_sandboxed"
+  echo "  wesnothd application-identifier: $app_id"
+
+  case "$dist_content" in
+    "macOS App Store")
+      local sandbox_ok=1 id_ok=1
+      [ "$is_sandboxed" = "yes" ] || sandbox_ok=0
+      [ "$app_id" = "absent" ]    || id_ok=0
+      if [ "$sandbox_ok" = "1" ] && [ "$id_ok" = "1" ]; then
+        echo "  PASS: MAS-ready (sandboxed, no identifier leak)."
+        PASS_COUNT=$((PASS_COUNT + 1))
+      else
+        if [ "$sandbox_ok" = "0" ]; then
+          echo "  FAIL: dist is 'macOS App Store' but wesnothd is NOT sandboxed."
+          echo "        Run Prepare_for_MAS_release and re-archive."
+        fi
+        if [ "$id_ok" = "0" ]; then
+          echo "  FAIL: wesnothd carries com.apple.application-identifier."
+          echo "        App Store submission will be rejected (ITMS-90288 / 90286 / 90885)."
+        fi
+        FAIL_COUNT=$((FAIL_COUNT + 1))
+      fi
+      ;;
+    "Steam"|"SourceForge"|"itch")
+      if [ "$is_sandboxed" = "no" ]; then
+        echo "  PASS: ${dist_content} build, not sandboxed (correct)."
+        PASS_COUNT=$((PASS_COUNT + 1))
+      else
+        echo "  FAIL: dist is '${dist_content}' but wesnothd IS sandboxed."
+        echo "        Run Prepare_for_nosandbox_release and re-archive."
+        FAIL_COUNT=$((FAIL_COUNT + 1))
+      fi
+      ;;
+    "")
+      echo "  FAIL: dist file is missing at Contents/Resources/data/dist."
+      echo "        Every release archive must have a dist file set to one of:"
+      echo "        'macOS App Store', 'Steam', 'SourceForge', or 'itch'."
+      if [ "$is_sandboxed" = "yes" ]; then
+        echo "        (wesnothd is currently sandboxed - consistent with a MAS build.)"
+      else
+        echo "        (wesnothd is currently not sandboxed - consistent with a non-MAS build.)"
+      fi
+      FAIL_COUNT=$((FAIL_COUNT + 1))
+      ;;
+    *)
+      echo "  WARN: unknown dist value '${dist_content}' - cannot validate."
+      WARN_COUNT=$((WARN_COUNT + 1))
+      ;;
+  esac
+  echo
+}
+
+process_path() {
+  local path="$1"
+
+  if [ ! -e "$path" ]; then
+    echo "ERROR: path does not exist: $path" >&2
+    FAIL_COUNT=$((FAIL_COUNT + 1))
+    echo
+    return
+  fi
+
+  if [ -d "$path" ] && [[ "$path" == *.xcarchive ]]; then
+    check_archive "$path"
+    return
+  fi
+
+  if [ -d "$path" ]; then
+    local found=0
+    local archive
+    while IFS= read -r -d '' archive; do
+      check_archive "$archive"
+      found=1
+    done < <(/usr/bin/find "$path" -maxdepth 1 -name "*.xcarchive" -print0 | /usr/bin/sort -z)
+    if [ "$found" = "0" ]; then
+      echo "ERROR: no .xcarchive found in: $path" >&2
+      FAIL_COUNT=$((FAIL_COUNT + 1))
+      echo
+    fi
+    return
+  fi
+
+  echo "ERROR: not a directory or .xcarchive: $path" >&2
+  FAIL_COUNT=$((FAIL_COUNT + 1))
+  echo
+}
+
+interactive=0
+if [ "$#" -eq 0 ]; then
+  interactive=1
+  echo "Drag an .xcarchive (or a folder containing .xcarchive bundles)"
+  echo "from Finder onto this Terminal window, then press Enter."
+  echo "You can drop multiple items at once. Leave empty to cancel."
+  echo
+  printf "> "
+  IFS= read -r raw_input
+  echo
+
+  if [ -z "${raw_input// }" ]; then
+    echo "No path given. Exiting."
+    exit 0
+  fi
+
+  # Let the shell unescape backslashes and resolve quotes the same way
+  # Terminal does for typed commands. Input is local/manual so eval is
+  # acceptable here.
+  paths=()
+  eval "paths=(${raw_input})"
+  for p in "${paths[@]}"; do
+    process_path "$p"
+  done
+else
+  for p in "$@"; do
+    process_path "$p"
+  done
+fi
+
+echo "=== Summary ==="
+echo "  PASS: ${PASS_COUNT}"
+echo "  FAIL: ${FAIL_COUNT}"
+echo "  WARN: ${WARN_COUNT}"
+echo
+
+exit_code=0
+if [ "$FAIL_COUNT" -gt 0 ]; then
+  exit_code=1
+elif [ "$WARN_COUNT" -gt 0 ]; then
+  exit_code=2
+fi
+
+if [ "$interactive" = "1" ]; then
+  printf "Press Enter to close..."
+  IFS= read -r _
+fi
+
+exit "$exit_code"

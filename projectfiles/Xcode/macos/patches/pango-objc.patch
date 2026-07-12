@@ -1,0 +1,37 @@
+diff --git a/portfile.cmake b/portfile.cmake
+--- a/portfile.cmake
++++ b/portfile.cmake
+@@ -15,8 +15,14 @@
+ if("introspection" IN_LIST FEATURES)
+     list(APPEND OPTIONS_RELEASE -Dintrospection=enabled)
+     vcpkg_get_gobject_introspection_programs(PYTHON3 GIR_COMPILER GIR_SCANNER)
+ else()
+     list(APPEND OPTIONS_RELEASE -Dintrospection=disabled)
+ endif()
++
++if(VCPKG_TARGET_ARCHITECTURE STREQUAL "x64")
++    set(_pango_objc_cross_file "${CMAKE_CURRENT_LIST_DIR}/objc-x64-cross.ini")
++    set(VCPKG_MESON_CROSS_FILE_RELEASE "${_pango_objc_cross_file}")
++    set(VCPKG_MESON_CROSS_FILE_DEBUG "${_pango_objc_cross_file}")
++endif()
+ 
+ vcpkg_configure_meson(
+     SOURCE_PATH "${SOURCE_PATH}"
+     OPTIONS
+         -Ddocumentation=false
+         -Dman-pages=false
+         -Dbuild-testsuite=false
+diff --git a/objc-x64-cross.ini b/objc-x64-cross.ini
+new file mode 100644
+--- /dev/null
++++ b/objc-x64-cross.ini
+@@ -0,0 +1,9 @@
++[binaries]
++objc = ['/usr/bin/cc', '-fPIC', '-O3', '-DNDEBUG', '-arch', 'x86_64', '-mmacosx-version-min=10.13']
++objc_ld = ['/usr/bin/ld']
++objcpp = ['/usr/bin/c++', '-fPIC', '-O3', '-DNDEBUG', '-arch', 'x86_64', '-mmacosx-version-min=10.13']
++objcpp_ld = ['/usr/bin/ld']
++
++[host_machine]
++# Meson needs the Darwin subsystem when cross-building Objective-C sources for macOS.
++subsystem = 'macos'

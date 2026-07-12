@@ -19,11 +19,11 @@ order to build Wesnoth:
    * System
    * Coroutine
    * Graph
-   * Charconv (This requires boost 1.85 or higher and is optional but reccomended especially for clang builds)
- * SDL2 libraries:
-   * SDL2                      >= 2.0.18 (macOS: 2.0.22 due to needing https://github.com/libsdl-org/SDL/commit/3bebdaccb7bff8c40438856081d404a7ce3def30)
-   * SDL2_image                >= 2.0.2 (with PNG, JPEG, and WEBP support)
-   * SDL2_mixer                >= 2.0.0 (with Ogg Vorbis support)
+   * Charconv (This requires boost 1.85 or higher and is optional but recommended especially for clang builds)
+ * SDL3 libraries:
+   * SDL3                      >= 3.4.0 (SDL3 mixer requires at least 3.4)
+   * SDL3_image                >= 3.2.0 (with PNG, JPEG, and WEBP support)
+   * SDL3_mixer                >= 3.2.0 (with Ogg Vorbis support)
  * Fontconfig                  >= 2.4.1
  * Cairo                       >= 1.10.0
  * Pango                       >= 1.50.0 (with Cairo backend)
@@ -33,6 +33,8 @@ order to build Wesnoth:
  * libssl
  * libcrypto (from OpenSSL)
  * libcurl4 (OpenSSL version)
+
+If you're on Linux and one or more of the necessary SDL libraries aren't available in your distro's packaging repositories yet, you will need to build them manually. Instructions for how to do that on Debian and derivatives, see https://forums.wesnoth.org/viewtopic.php?t=60761. Alternatively, you can use the commands used to build and install them in Wesnoth's docker image at https://github.com/wesnoth/wesnoth/blob/master/utils/dockerbuilds/CI/Dockerfile-base-2404-sdl3.
 
 The following libraries are optional dependencies that enable additional
 features:

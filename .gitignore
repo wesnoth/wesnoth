@@ -144,7 +144,6 @@ compile_commands.json
 !src/gui/lib/
 
 # release-only directories
-translations
 userdata
 
 # testing
@@ -155,6 +154,11 @@ src/test
 error*.log
 boost_test_result.xml
 *build*.sh
+!projectfiles/Xcode/ios/build_ios_deps.sh
+projectfiles/Xcode/Headers.iOS
+projectfiles/Xcode/lib.iOS
+projectfiles/Xcode/Headers.device
+projectfiles/Xcode/lib.device
 boost_tests.log
 
 # translations
@@ -188,6 +192,7 @@ src/**/wesnoth_addon_manager
 src/**/wmllint
 src/**/wmlscope
 src/**/wmlindent
+wmllint.log
 
 # file for loading lua from within test scenario on-the-fly
 data/lua/**/code.lua
@@ -216,6 +221,8 @@ fonts/.uuid
 .deps
 .dirstamp
 *.cfg-bak
+*.map-bak
+*.mask-bak
 *.orig
 
 # might be good to have, but not in data

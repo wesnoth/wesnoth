@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-07-20 22:54-0500\n"
+"POT-Creation-Date: 2026-04-19 22:19-0500\n"
 "PO-Revision-Date: 2023-12-03 03:44+0000\n"
 "Last-Translator: RatArmy, 2025\n"
 "Language-Team: Japanese (https://app.transifex.com/wesnoth-jp/teams/60513/"
@@ -24,11 +24,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: data/tools/GUI.pyw:76
+#: data/tools/GUI.pyw:89
 msgid "Open a Graphical User Interface (GUI) to WML Tools"
 msgstr "WML用GUIツールを開く"
 
-#: data/tools/GUI.pyw:80
+#: data/tools/GUI.pyw:93
 msgid ""
 "Launch GUI.pyw in the specified language. Language code is expected as a "
 "POSIX locale name, refer to gettext.wesnoth.org for a full list."
@@ -36,15 +36,15 @@ msgstr ""
 "指定の言語で GUI.pyw を起動します。言語コード（Language Code）はPOSIXのロケー"
 "ル定義に準拠したものが必要で、gettext.wesnoth.org で確認できます。"
 
-#: data/tools/GUI.pyw:86 data/tools/GUI.pyw:100 data/tools/GUI.pyw:1409
-#: data/tools/GUI.pyw:1458 data/tools/GUI.pyw:1501 data/tools/GUI.pyw:1530
-#: data/tools/GUI.pyw:1566 data/tools/GUI.pyw:1590 data/tools/GUI.pyw:1633
-#: data/tools/GUI.pyw:1652 data/tools/GUI.pyw:1978
+#: data/tools/GUI.pyw:99 data/tools/GUI.pyw:113 data/tools/GUI.pyw:1422
+#: data/tools/GUI.pyw:1471 data/tools/GUI.pyw:1514 data/tools/GUI.pyw:1543
+#: data/tools/GUI.pyw:1579 data/tools/GUI.pyw:1603 data/tools/GUI.pyw:1646
+#: data/tools/GUI.pyw:1665 data/tools/GUI.pyw:1991
 msgid "Error"
 msgstr "エラー"
 
 #. TRANSLATORS: {0} is "translations", the directory where compiled translation files (.mo) are stored.
-#: data/tools/GUI.pyw:88
+#: data/tools/GUI.pyw:101
 #, python-brace-format
 msgid ""
 "‘{0}’ directory not found. Please run the GUI.pyw program packaged with the "
@@ -54,13 +54,13 @@ msgstr ""
 "pyw を起動してください。"
 
 #. TRANSLATORS: {0} is the language argument entered by the user.
-#: data/tools/GUI.pyw:102
+#: data/tools/GUI.pyw:115
 #, python-brace-format
 msgid "Locale {0} not recognized."
 msgstr "ロケール {0} は認識されません。"
 
 #. TRANSLATORS: {0} is the name of command being executed.
-#: data/tools/GUI.pyw:383
+#: data/tools/GUI.pyw:396
 #, python-brace-format
 msgid ""
 "Running: {0}\n"
@@ -69,312 +69,312 @@ msgstr ""
 "起動中: {0}\n"
 "しばらくお待ち下さい..."
 
-#: data/tools/GUI.pyw:397
+#: data/tools/GUI.pyw:410
 msgid "Terminate script"
 msgstr "スクリプトを終了"
 
-#: data/tools/GUI.pyw:448
+#: data/tools/GUI.pyw:461
 msgid "Cut"
 msgstr "切り取り"
 
-#: data/tools/GUI.pyw:453
+#: data/tools/GUI.pyw:466
 msgid "Copy"
 msgstr "コピー"
 
-#: data/tools/GUI.pyw:459
+#: data/tools/GUI.pyw:472
 msgid "Paste"
 msgstr "貼り付け"
 
-#: data/tools/GUI.pyw:465
+#: data/tools/GUI.pyw:478
 msgid "Select All"
 msgstr "全選択"
 
-#: data/tools/GUI.pyw:538
+#: data/tools/GUI.pyw:551
 msgid "Working directory"
 msgstr "作業ディレクトリ"
 
-#: data/tools/GUI.pyw:550 data/tools/GUI.pyw:593
+#: data/tools/GUI.pyw:563 data/tools/GUI.pyw:606
 msgid "Browse..."
 msgstr "フォルダ選択"
 
 #. TRANSLATORS: Clear button for clearing the directory text box.
-#: data/tools/GUI.pyw:557 data/tools/GUI.pyw:600
+#: data/tools/GUI.pyw:570 data/tools/GUI.pyw:613
 msgid "Clear"
 msgstr "クリアする"
 
-#: data/tools/GUI.pyw:650
+#: data/tools/GUI.pyw:663
 msgid "wmllint mode"
 msgstr "wmllint モード"
 
 #. TRANSLATORS: Normal run mode for the WML tool.
-#: data/tools/GUI.pyw:657 data/tools/GUI.pyw:1077
+#: data/tools/GUI.pyw:670 data/tools/GUI.pyw:1090
 msgid "Normal"
 msgstr "通常（Normal）"
 
 #. TRANSLATORS: Tooltip explanation for normal run mode.
-#: data/tools/GUI.pyw:666 data/tools/GUI.pyw:1086
+#: data/tools/GUI.pyw:679 data/tools/GUI.pyw:1099
 msgid "Perform conversion and save changes to file"
 msgstr "変換を実行して変更内容をファイルに保存します"
 
-#: data/tools/GUI.pyw:669 data/tools/GUI.pyw:1089
+#: data/tools/GUI.pyw:682 data/tools/GUI.pyw:1102
 msgid "Dry run"
 msgstr "試験実行（Dry Run）"
 
 #. TRANSLATORS: Tooltip explanation for dry run mode.
-#: data/tools/GUI.pyw:678 data/tools/GUI.pyw:1098
+#: data/tools/GUI.pyw:691 data/tools/GUI.pyw:1111
 msgid "Perform conversion without saving changes to file"
 msgstr "変換を実行しますが、変更内容は保存されません"
 
-#: data/tools/GUI.pyw:681
+#: data/tools/GUI.pyw:694
 msgid "Clean"
 msgstr "クリーン（Clean）"
 
 #. TRANSLATORS: Tooltip explanation for clean mode.
-#: data/tools/GUI.pyw:690
+#: data/tools/GUI.pyw:703
 msgid "Delete back-up files"
 msgstr "バックアップファイルを削除します"
 
-#: data/tools/GUI.pyw:693
+#: data/tools/GUI.pyw:706
 msgid "Diff"
 msgstr "差分（Diff）"
 
 #. TRANSLATORS: Tooltip explanation for diff run mode.
-#: data/tools/GUI.pyw:702
+#: data/tools/GUI.pyw:715
 msgid "Show differences in converted files"
 msgstr "変換されたファイルの差分を表示します"
 
-#: data/tools/GUI.pyw:705
+#: data/tools/GUI.pyw:718
 msgid "Revert"
 msgstr "戻す（Revert）"
 
 #. TRANSLATORS: Tooltip explanation for revert run mode.
-#: data/tools/GUI.pyw:714
+#: data/tools/GUI.pyw:727
 msgid "Revert conversions using back-up files"
 msgstr "バックアップファイルを使って変換前に戻します"
 
-#: data/tools/GUI.pyw:717 data/tools/GUI.pyw:1101
+#: data/tools/GUI.pyw:730 data/tools/GUI.pyw:1114
 msgid "Verbosity level"
 msgstr "表示レベル"
 
 #. TRANSLATORS: Verbosity level.
-#: data/tools/GUI.pyw:725 data/tools/GUI.pyw:1109
+#: data/tools/GUI.pyw:738 data/tools/GUI.pyw:1122
 msgid "Terse"
 msgstr "簡潔表示"
 
 #. TRANSLATORS: Verbosity level.
-#: data/tools/GUI.pyw:736
+#: data/tools/GUI.pyw:749
 msgid "Show changes"
 msgstr "変化を表示"
 
 #. TRANSLATORS: Verbosity level.
-#: data/tools/GUI.pyw:746
+#: data/tools/GUI.pyw:759
 msgid "Name files before processing"
 msgstr "処理する前にファイル名を表示"
 
 #. TRANSLATORS: Verbosity level.
-#: data/tools/GUI.pyw:756
+#: data/tools/GUI.pyw:769
 msgid "Show parse details"
 msgstr "解析の詳細を表示"
 
-#: data/tools/GUI.pyw:765
+#: data/tools/GUI.pyw:778
 msgid "wmllint options"
 msgstr "wmllint オプション"
 
 #. TRANSLATORS: EOL = Special characters marking 'end-of-line'.
-#: data/tools/GUI.pyw:773
+#: data/tools/GUI.pyw:786
 msgid "Convert EOL characters to Unix format"
 msgstr "行末（EOL）文字をUnix形式に変換する"
 
 #. TRANSLATORS: 'side=' in this context refers to WML and should not be
 #. translated.
-#: data/tools/GUI.pyw:784
+#: data/tools/GUI.pyw:797
 msgid "Warn about tags without side= keys"
 msgstr "side= キーの無いタグを警告する"
 
-#: data/tools/GUI.pyw:793
+#: data/tools/GUI.pyw:806
 msgid "Disable checks for unknown units"
 msgstr "不明なユニットのチェックを無効にする"
 
-#: data/tools/GUI.pyw:802
+#: data/tools/GUI.pyw:815
 msgid "Disable spellchecking"
 msgstr "スペルチェックを無効にする"
 
-#: data/tools/GUI.pyw:811
+#: data/tools/GUI.pyw:824
 msgid "Skip core directory"
 msgstr "core ディレクトリをスキップする"
 
-#: data/tools/GUI.pyw:838
+#: data/tools/GUI.pyw:851
 msgid "wmlscope options"
 msgstr "wmlscope オプション"
 
-#: data/tools/GUI.pyw:850
+#: data/tools/GUI.pyw:863
 msgid "Check for duplicate macro definitions"
 msgstr "マクロの二重定義をチェックする"
 
-#: data/tools/GUI.pyw:859
+#: data/tools/GUI.pyw:872
 msgid "Check for duplicate resource files"
 msgstr "重複するリソースファイルをチェックする"
 
-#: data/tools/GUI.pyw:868
+#: data/tools/GUI.pyw:881
 msgid "Make definition list"
 msgstr "定義リストを作成する"
 
-#: data/tools/GUI.pyw:877
+#: data/tools/GUI.pyw:890
 msgid "List files that will be processed"
 msgstr "処理されるファイルを一覧表示する"
 
-#: data/tools/GUI.pyw:886
+#: data/tools/GUI.pyw:899
 msgid "Report unresolved macro references"
 msgstr "未解決のマクロ参照を通知する"
 
-#: data/tools/GUI.pyw:895
+#: data/tools/GUI.pyw:908
 msgid "Extract help from macro definition comments"
 msgstr "マクロ定義のコメントからヘルプ文を抽出する"
 
-#: data/tools/GUI.pyw:904
+#: data/tools/GUI.pyw:917
 msgid "Report all macros with untyped formals"
 msgstr "型の無い書式のマクロをすべて通知する"
 
-#: data/tools/GUI.pyw:913
+#: data/tools/GUI.pyw:926
 msgid "Show progress"
 msgstr "進行状況を表示する"
 
-#: data/tools/GUI.pyw:933 data/tools/GUI.pyw:1145
+#: data/tools/GUI.pyw:946 data/tools/GUI.pyw:1158
 msgid "Exclude file names matching regular expression:"
 msgstr "正規表現にマッチするファイル名を除外する："
 
-#: data/tools/GUI.pyw:951
+#: data/tools/GUI.pyw:964
 msgid "Exclude file names not matching regular expression:"
 msgstr "正規表現にマッチしないファイル名を除外する："
 
 #. TRANSLATORS: 'n' in this context refers to number, as in 'n number of
 #. files'.
-#: data/tools/GUI.pyw:971
+#: data/tools/GUI.pyw:984
 msgid "Report only on macros referenced in exactly n files:"
 msgstr "n 個のファイルから参照されているマクロだけを通知する："
 
-#: data/tools/GUI.pyw:991
+#: data/tools/GUI.pyw:1004
 msgid "Report macro definitions and usages in file:"
 msgstr "マクロの定義と使用法をファイルに記録する："
 
-#: data/tools/GUI.pyw:1009
+#: data/tools/GUI.pyw:1022
 msgid "Allow unused macros with names matching regular expression:"
 msgstr "正規表現にマッチする名称の未使用マクロを許容する："
 
-#: data/tools/GUI.pyw:1071
+#: data/tools/GUI.pyw:1084
 msgid "wmlindent mode"
 msgstr "wmlindent モード"
 
 #. TRANSLATORS: Verbosity level.
-#: data/tools/GUI.pyw:1119
+#: data/tools/GUI.pyw:1132
 msgid "Verbose"
 msgstr "詳細"
 
 #. TRANSLATORS: Verbosity level.
-#: data/tools/GUI.pyw:1129
+#: data/tools/GUI.pyw:1142
 msgid "Report unchanged files"
 msgstr "変更なしのファイルを通知"
 
-#: data/tools/GUI.pyw:1138
+#: data/tools/GUI.pyw:1151
 msgid "wmlindent options"
 msgstr "wmlindent オプション"
 
 #. TRANSLATORS: Option to run 'quietly'.
-#: data/tools/GUI.pyw:1165
+#: data/tools/GUI.pyw:1178
 msgid "Quiet mode"
 msgstr "静粛モード"
 
 #. TRANSLATORS: Tooltip explanation for quiet option.
-#: data/tools/GUI.pyw:1173
+#: data/tools/GUI.pyw:1186
 msgid "Do not generate output messages"
 msgstr "出力メッセージを生成しません"
 
-#: data/tools/GUI.pyw:1193
+#: data/tools/GUI.pyw:1206
 msgid "Output directory:"
 msgstr "出力ディレクトリ："
 
-#: data/tools/GUI.pyw:1199
+#: data/tools/GUI.pyw:1212
 msgid "Options"
 msgstr "オプション"
 
-#: data/tools/GUI.pyw:1204
+#: data/tools/GUI.pyw:1217
 msgid "Scan subdirectories"
 msgstr "サブディレクトリもスキャンする"
 
-#: data/tools/GUI.pyw:1209
+#: data/tools/GUI.pyw:1222
 msgid "Show optional warnings"
 msgstr "オプションの警告を表示"
 
 #. TRANSLATORS: Also called "Needs work".
-#: data/tools/GUI.pyw:1215
+#: data/tools/GUI.pyw:1228
 msgid "Mark all strings as fuzzy"
 msgstr "すべての文字列に fuzzy を付ける"
 
-#: data/tools/GUI.pyw:1219
+#: data/tools/GUI.pyw:1232
 msgid "Advanced options"
 msgstr "詳細オプション"
 
-#: data/tools/GUI.pyw:1223
+#: data/tools/GUI.pyw:1236
 msgid "Package version"
 msgstr "パッケージバージョン（Package version）"
 
-#: data/tools/GUI.pyw:1240
+#: data/tools/GUI.pyw:1253
 msgid "Initial textdomain:"
 msgstr "\" --initialdomain\" で指定するドメイン："
 
-#: data/tools/GUI.pyw:1286 data/tools/GUI.pyw:1392
+#: data/tools/GUI.pyw:1299 data/tools/GUI.pyw:1405
 msgid "Run wmllint"
 msgstr "wmllint を実行します"
 
-#: data/tools/GUI.pyw:1293
+#: data/tools/GUI.pyw:1306
 msgid "Save as text..."
 msgstr "ファイルに名前をつけて保存します"
 
-#: data/tools/GUI.pyw:1300
+#: data/tools/GUI.pyw:1313
 msgid "Clear output"
 msgstr "出力内容をクリアします"
 
-#: data/tools/GUI.pyw:1307
+#: data/tools/GUI.pyw:1320
 msgid "About..."
 msgstr "Maintemance Tool GUI について"
 
-#: data/tools/GUI.pyw:1314
+#: data/tools/GUI.pyw:1327
 msgid "Exit"
 msgstr "このツールを終了します"
 
-#: data/tools/GUI.pyw:1330 data/tools/GUI.pyw:1464
+#: data/tools/GUI.pyw:1343 data/tools/GUI.pyw:1477
 msgid "wmllint"
 msgstr "wmllint"
 
-#: data/tools/GUI.pyw:1334 data/tools/GUI.pyw:1536
+#: data/tools/GUI.pyw:1347 data/tools/GUI.pyw:1549
 msgid "wmlscope"
 msgstr "wmlscope"
 
-#: data/tools/GUI.pyw:1338 data/tools/GUI.pyw:1572
+#: data/tools/GUI.pyw:1351 data/tools/GUI.pyw:1585
 msgid "wmlindent"
 msgstr "wmlindent"
 
-#: data/tools/GUI.pyw:1342 data/tools/GUI.pyw:1622
+#: data/tools/GUI.pyw:1355 data/tools/GUI.pyw:1635
 msgid "wmlxgettext"
 msgstr "wmlxgettext"
 
-#: data/tools/GUI.pyw:1345
+#: data/tools/GUI.pyw:1358
 msgid "Output"
 msgstr "出力内容"
 
-#: data/tools/GUI.pyw:1395
+#: data/tools/GUI.pyw:1408
 msgid "Run wmlscope"
 msgstr "wmlscope を実行します"
 
-#: data/tools/GUI.pyw:1398
+#: data/tools/GUI.pyw:1411
 msgid "Run wmlindent"
 msgstr "wmlindent を実行します"
 
-#: data/tools/GUI.pyw:1401
+#: data/tools/GUI.pyw:1414
 msgid "Run wmlxgettext"
 msgstr "wmlgettext を実行します"
 
-#: data/tools/GUI.pyw:1409
+#: data/tools/GUI.pyw:1422
 msgid ""
 "No directory selected.\n"
 "\n"
@@ -385,7 +385,7 @@ msgstr ""
 "ディレクトリを選択するか、または、\"core ディレクトリをスキップする\" オプ"
 "ションを無効にしてください。"
 
-#: data/tools/GUI.pyw:1444 data/tools/GUI.pyw:1516
+#: data/tools/GUI.pyw:1457 data/tools/GUI.pyw:1529
 msgid ""
 "Core directory or one of its subdirectories selected in the add-on selection "
 "box.\n"
@@ -397,13 +397,13 @@ msgstr ""
 "\n"
 "このツールは Wesnoth の core ディレクトリ内でのみ実行可能です。"
 
-#: data/tools/GUI.pyw:1444 data/tools/GUI.pyw:1452 data/tools/GUI.pyw:1516
-#: data/tools/GUI.pyw:1524 data/tools/GUI.pyw:1559 data/tools/GUI.pyw:1585
-#: data/tools/GUI.pyw:1604
+#: data/tools/GUI.pyw:1457 data/tools/GUI.pyw:1465 data/tools/GUI.pyw:1529
+#: data/tools/GUI.pyw:1537 data/tools/GUI.pyw:1572 data/tools/GUI.pyw:1598
+#: data/tools/GUI.pyw:1617
 msgid "Warning"
 msgstr "注意"
 
-#: data/tools/GUI.pyw:1452 data/tools/GUI.pyw:1524
+#: data/tools/GUI.pyw:1465 data/tools/GUI.pyw:1537
 msgid ""
 "No directory selected.\n"
 "\n"
@@ -413,16 +413,16 @@ msgstr ""
 "\n"
 "このツールは Wesnoth の core ディレクトリ内でのみ実行可能です。"
 
-#: data/tools/GUI.pyw:1458 data/tools/GUI.pyw:1530 data/tools/GUI.pyw:1566
-#: data/tools/GUI.pyw:1590
+#: data/tools/GUI.pyw:1471 data/tools/GUI.pyw:1543 data/tools/GUI.pyw:1579
+#: data/tools/GUI.pyw:1603
 msgid "The selected directory does not exist."
 msgstr "選択したディレクトリが存在しません。"
 
-#: data/tools/GUI.pyw:1501
+#: data/tools/GUI.pyw:1514
 msgid "Invalid value. Value must be an integer in the range 0-999."
 msgstr "無効な値です。0から999までの整数を指定してください。"
 
-#: data/tools/GUI.pyw:1559
+#: data/tools/GUI.pyw:1572
 msgid ""
 "No directory selected.\n"
 "\n"
@@ -432,7 +432,7 @@ msgstr ""
 "\n"
 "このツールは Wesnoth の core ディレクトリ内で実行可能です。"
 
-#: data/tools/GUI.pyw:1585
+#: data/tools/GUI.pyw:1598
 msgid ""
 "No directory selected.\n"
 "\n"
@@ -443,12 +443,12 @@ msgstr ""
 "ツールは実行されません。"
 
 #. TRANSLATORS: Dialogue box title.
-#: data/tools/GUI.pyw:1597
+#: data/tools/GUI.pyw:1610
 msgid "Overwrite Confirmation"
 msgstr "上書きの確認"
 
 #. TRANSLATORS: {0} is a placeholder for a file name, and not meant to be modified.
-#: data/tools/GUI.pyw:1599
+#: data/tools/GUI.pyw:1612
 #, python-brace-format
 msgid ""
 "File {0} already exists.\n"
@@ -457,7 +457,7 @@ msgstr ""
 "ファイル {0} は既に存在します。\n"
 "上書きしてもよいですか？"
 
-#: data/tools/GUI.pyw:1604
+#: data/tools/GUI.pyw:1617
 msgid ""
 "No output file selected.\n"
 "\n"
@@ -467,7 +467,7 @@ msgstr ""
 "\n"
 "ツールは実行できません。"
 
-#: data/tools/GUI.pyw:1633
+#: data/tools/GUI.pyw:1646
 #, python-brace-format
 msgid ""
 "There was an error while executing {0}.\n"
@@ -478,11 +478,11 @@ msgstr ""
 "\n"
 "エラーコード：{1}"
 
-#: data/tools/GUI.pyw:1644
+#: data/tools/GUI.pyw:1657
 msgid "Text file"
 msgstr "Text file"
 
-#: data/tools/GUI.pyw:1652
+#: data/tools/GUI.pyw:1665
 #, python-brace-format
 msgid ""
 "Error while writing to:\n"
@@ -499,12 +499,12 @@ msgstr ""
 "\n"
 "{2}"
 
-#: data/tools/GUI.pyw:1669
+#: data/tools/GUI.pyw:1682
 msgid "About Maintenance Tools GUI"
 msgstr "Maintenance Tools GUI について"
 
 #. TRANSLATORS: {0} is a placeholder for Wesnoth's current version, and not meant to be modified.
-#: data/tools/GUI.pyw:1671
+#: data/tools/GUI.pyw:1684
 #, fuzzy, python-brace-format
 #| msgid ""
 #| "© Elvish_Hunter, 2014-2016\n"
@@ -538,15 +538,15 @@ msgstr ""
 "供されているものであり、パブリックドメインとして公開されています。"
 
 #. TRANSLATORS: Dialogue box title.
-#: data/tools/GUI.pyw:1685
+#: data/tools/GUI.pyw:1698
 msgid "Exit Confirmation"
 msgstr "終了の確認"
 
-#: data/tools/GUI.pyw:1686
+#: data/tools/GUI.pyw:1699
 msgid "Do you really want to quit?"
 msgstr "本当に終了してもよいですか？"
 
-#: data/tools/GUI.pyw:1978
+#: data/tools/GUI.pyw:1991
 msgid "This application must be placed into the wesnoth/data/tools directory."
 msgstr ""
 "このアプリケーションは \"wesnoth/data/tools\" ディレクトリに配置される必要あ"

@@ -678,8 +678,8 @@ std::string unit_topic_generator::operator()() const {
 		}
 
 		// Print headers for the table.
-		table_ss << markup::tag("row",
-			{ {"bgcolor", "table_header"} },
+		table_ss << markup::tag_attr("row",
+			{{ "bgcolor", "table_header" }},
 			//FIXME space/tab does not work, but nbsp does
 			//empty tags will be skipped by rich_label
 			markup::tag("col", font::nbsp),
@@ -757,7 +757,7 @@ std::string unit_topic_generator::operator()() const {
 				}
 			}
 
-			table_ss << markup::tag("row", { {"bgcolor", "table_row1"} }, attack_ss.str());
+			table_ss << markup::tag_attr("row", {{ "bgcolor", "table_row1" }}, attack_ss.str());
 		}
 
 		ss << markup::tag("table", table_ss.str());
@@ -791,8 +791,8 @@ std::string unit_topic_generator::operator()() const {
 	ss << "\n" << markup::tag("header", _("Resistances"));
 
 	std::stringstream().swap(table_ss);
-	table_ss << markup::tag("row",
-		{ {"bgcolor", "table_header"} },
+	table_ss << markup::tag_attr("row",
+		{{ "bgcolor", "table_header" }},
 		markup::tag("col", markup::bold(_("Attack Type"))),
 		markup::tag("col", markup::bold(_("Resistance"))));
 
@@ -810,10 +810,10 @@ std::string unit_topic_generator::operator()() const {
 		std::string color = unit_helper::resistance_color(resistance);
 		const std::string lang_type = string_table["type_" + damage_type];
 		const std::string type_icon = "icons/profiles/" + damage_type + ".png~SCALE_INTO(16,16)";
-		table_ss << markup::tag("row",
-			{ {"bgcolor", (odd_row ? "table_row1" : "table_row2")} },
+		table_ss << markup::tag_attr("row",
+			{{ "bgcolor", (odd_row ? "table_row1" : "table_row2") }},
 			markup::tag("col", markup::img(type_icon), ' ', lang_type),
-			markup::tag("col", markup::span_color(color, resist)));
+			markup::tag_attr("col", {{ "halign", "right" }}, markup::span_color(color, resist)));
 
 		odd_row = !odd_row;
 	}
@@ -835,7 +835,7 @@ std::string unit_topic_generator::operator()() const {
 		if(has_terrain_defense_caps) { row_ss << markup::tag("col", markup::bold(_("Defense Cap")));  }
 		if(has_vision)               { row_ss << markup::tag("col", markup::bold(_("Vision Cost")));  }
 		if(has_jamming)              { row_ss << markup::tag("col", markup::bold(_("Jamming Cost"))); }
-		table_ss << markup::tag("row", { {"bgcolor", "table_header"} }, row_ss.str());
+		table_ss << markup::tag_attr("row", {{ "bgcolor", "table_header" }}, row_ss.str());
 
 		// Organize terrain movetype data
 		std::set<terrain_movement_info> terrain_moves;
@@ -881,7 +881,7 @@ std::string unit_topic_generator::operator()() const {
 			// Defense  -  range: +10 % .. +70 %
 			// passing false to select the more saturated red-to-green scale
 			color_t def_color = game_config::red_to_green(m.defense, false);
-			row_ss << markup::tag("col", markup::span_color(def_color, m.defense, "%"));
+			row_ss << markup::tag_attr("col", {{ "halign", "right"}}, markup::span_color(def_color, m.defense, "%"));
 
 			// Movement  -  range: 1 .. 5, movetype::UNREACHABLE=impassable
 			row_ss << markup::tag("col", format_mp_entry(type_.movement(), m.movement_cost));
@@ -907,7 +907,7 @@ std::string unit_topic_generator::operator()() const {
 				row_ss << markup::tag("col", format_mp_entry(type_.jamming(), m.jamming_cost));
 			}
 
-			table_ss << markup::tag("row", { {"bgcolor", (odd_row ? "table_row1" : "table_row2")} }, row_ss.str());
+			table_ss << markup::tag_attr("row", {{ "bgcolor", (odd_row ? "table_row1" : "table_row2") }}, row_ss.str());
 
 			odd_row = !odd_row;
 		}

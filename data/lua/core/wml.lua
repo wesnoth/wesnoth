@@ -397,7 +397,7 @@ if wesnoth.kernel_type() ~= "Application Lua Kernel" then
 	--[========[Variable Array Access]========]
 
 	local function resolve_variable_context(ctx, err_hint)
-		if ctx == nil then
+		if ctx == nil or ctx == wml.variables then
 			return {get = get_variable_local, set = set_variable_local}
 		elseif type(ctx) == 'number' and ctx > 0 and ctx <= #wesnoth.sides then
 			return resolve_variable_context(wesnoth.sides[ctx])

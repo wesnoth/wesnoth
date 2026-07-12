@@ -31,6 +31,10 @@
 #include <array>
 #include <string>
 
+#ifndef _WIN32
+# include <unistd.h>  // for isatty
+#endif
+
 namespace po = boost::program_options;
 
 class two_strings : public std::pair<std::string,std::string> {};
@@ -71,7 +75,7 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 	, campaign_skip_story(false)
 	, clock(false)
 	, core_id()
-	, data_path(false)
+	, print_data_path(false)
 	, data_dir()
 	, debug(false)
 	, debug_lua(false)
@@ -138,9 +142,9 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 	, headless_unit_test(false)
 	, noreplaycheck(false)
 	, mptest(false)
-	, usercache_path(false)
+	, print_usercache_path(false)
 	, usercache_dir()
-	, userdata_path(false)
+	, print_userdata_path(false)
 	, userdata_dir()
 	, validcache(false)
 	, validate_core(false)
@@ -162,7 +166,13 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 #endif
 	, no_log_sanitize(false)
 	, log_to_file(false)
-	, no_log_to_file(false)
+	, no_log_to_file(
+#ifdef _WIN32
+					 false
+#else
+					 isatty(STDOUT_FILENO) // default to no log file if stdout is a tty
+#endif
+	  )
 	, translation_percent()
 	, args_(args.begin() + 1, args.end())
 	, args0_(*args.begin())
@@ -342,7 +352,7 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 	if(vm.count("data-dir"))
 		data_dir = vm["data-dir"].as<std::string>();
 	if(vm.count("data-path"))
-		data_path = true;
+		print_data_path = true;
 	if(vm.count("debug"))
 		debug = true;
 	if(vm.count("debug-lua"))
@@ -498,11 +508,11 @@ commandline_options::commandline_options(const std::vector<std::string>& args)
 	if(vm.count("usercache-dir"))
 		usercache_dir = vm["usercache-dir"].as<std::string>();
 	if(vm.count("usercache-path"))
-		usercache_path = true;
+		print_usercache_path = true;
 	if(vm.count("userdata-dir"))
 		userdata_dir = vm["userdata-dir"].as<std::string>();
 	if(vm.count("userdata-path"))
-		userdata_path = true;
+		print_userdata_path = true;
 	if(vm.count("validcache"))
 		validcache = true;
 	// If you add a new validate-* option, remember the any_validation_option() function

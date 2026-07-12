@@ -11,16 +11,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.16\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-01-20 11:31-0600\n"
-"PO-Revision-Date: 2025-11-17 14:39+0800\n"
-"Last-Translator: vimacs <vimacs.hacks@gmail.com>\n"
+"POT-Creation-Date: 2026-06-22 22:15-0500\n"
+"PO-Revision-Date: 2023-09-10 08:31+0800\n"
+"Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Wesnoth Simplified Chinese Team\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 3.8\n"
+"X-Generator: Poedit 3.3.2\n"
 
 #. [brush]: id=brush-1
 #: data/core/editor/brushes.cfg:6
@@ -206,7 +206,7 @@ msgstr "窗口"
 #. [menu]: id=menu-editor-addon
 #: data/themes/editor.cfg:110
 msgid "Add-on"
-msgstr "附加组件"
+msgstr ""
 
 #. [menu]: id=menu-editor-areas
 #: data/themes/editor.cfg:119
@@ -249,12 +249,12 @@ msgid "Time Schedule Menu"
 msgstr "日程表菜单"
 
 #. [menu]: id=menu-playlist
-#: data/themes/editor.cfg:490
+#: data/themes/editor.cfg:489
 msgid "Playlist"
 msgstr "播放列表"
 
 #. [menu]: id=menu-editor-schedule
-#: data/themes/editor.cfg:496
+#: data/themes/editor.cfg:495
 msgid "Assign Time Schedule"
 msgstr "指定日程表"
 
@@ -303,10 +303,8 @@ msgid "No editor time-of-day found."
 msgstr "未找到编辑器的时段设置。"
 
 #: src/editor/controller/editor_controller.cpp:886
-#, fuzzy
-#| msgid "Add-on"
 msgid "Add-on Files"
-msgstr "附加组件"
+msgstr ""
 
 #: src/editor/controller/editor_controller.cpp:899
 #, fuzzy
@@ -344,11 +342,11 @@ msgstr ""
 msgid "Load Map or Scenario"
 msgstr "已从场景中载入地图"
 
-#: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1147
+#: src/editor/map/context_manager.cpp:313 src/editor/map/map_context.cpp:1141
 msgid "New Map"
 msgstr "新建地图"
 
-#: src/editor/map/context_manager.cpp:326 src/editor/map/map_context.cpp:1147
+#: src/editor/map/context_manager.cpp:326 src/editor/map/map_context.cpp:1141
 msgid "New Scenario"
 msgstr "新建场景"
 
@@ -394,16 +392,16 @@ msgid "Save Map As"
 msgstr "地图另存为"
 
 #: src/editor/map/context_manager.cpp:704
-#: src/editor/map/context_manager.cpp:753 src/editor/map/map_context.cpp:274
+#: src/editor/map/context_manager.cpp:753 src/editor/map/map_context.cpp:228
 #: src/editor/palette/location_palette.cpp:263
 msgid "Error"
 msgstr "错误"
 
 #: src/editor/map/context_manager.cpp:705
 #, fuzzy
-#| msgid "Do you really want to save $type1 in $type2 folder?"
+#| msgid "Do you really want to quit?"
 msgid "Do you really want to save a map in the scenarios folder?"
-msgstr "你真的要在 $type2 目录保存 $type1 吗？"
+msgstr "你真的要退出吗？"
 
 #: src/editor/map/context_manager.cpp:713
 #: src/editor/map/context_manager.cpp:905
@@ -416,9 +414,9 @@ msgstr "场景另存为"
 
 #: src/editor/map/context_manager.cpp:754
 #, fuzzy
-#| msgid "Do you really want to save $type1 in $type2 folder?"
+#| msgid "Do you really want to quit?"
 msgid "Do you really want to save a scenario in the maps folder?"
-msgstr "你真的要在 $type2 目录保存 $type1 吗？"
+msgstr "你真的要退出吗？"
 
 #: src/editor/map/context_manager.cpp:762
 msgid "This scenario is already open."
@@ -461,8 +459,14 @@ msgid "Map loaded from scenario"
 msgstr "已从场景中载入地图"
 
 #: src/editor/map/context_manager.cpp:960
+#, fuzzy
+#| msgid ""
+#| "Loaded referenced map file:\n"
+#| "$new"
 msgid "Loaded referenced map file:"
-msgstr "已载入被引用的地图文件："
+msgstr ""
+"已载入被引用的地图文件：\n"
+"$new"
 
 #: src/editor/map/editor_map.cpp:110
 #: src/editor/palette/location_palette.cpp:118
@@ -473,65 +477,70 @@ msgstr "玩家$side_num"
 msgid "The size of the target map is different from the current map"
 msgstr "目标地图的尺寸与当前地图不同"
 
-#: src/editor/map/map_context.cpp:187
+#: src/editor/map/map_context.cpp:188
 msgid "File not found"
 msgstr "未找到文件"
 
-#: src/editor/map/map_context.cpp:194
+#: src/editor/map/map_context.cpp:195
 msgid "Empty file"
 msgstr "空文件"
 
-#: src/editor/map/map_context.cpp:203
-#, fuzzy
-#| msgid "File does not have .map or .cfg extension"
+#: src/editor/map/map_context.cpp:204
 msgid "File does not have .map, .cfg, or .mask extension"
-msgstr "文件没有 .map 或 .cfg 扩展名"
+msgstr ""
 
-#: src/editor/map/map_context.cpp:250
+#: src/editor/map/map_context.cpp:227
 msgid ""
-"The map file looks like a scenario, but the map_data value does not point to "
+"Failed to load the scenario: $error\n"
+"\n"
+"Attempting to load only the map."
+msgstr ""
+
+#: src/editor/map/map_context.cpp:253
+#, fuzzy
+#| msgid ""
+#| "The map file looks like a scenario, but the map_data value does not point "
+#| "to an existing file"
+msgid ""
+"The file looks like a scenario, but the map_data attribute does not point to "
 "an existing file"
 msgstr "此地图文件看起来像是一幕场景，但是map_data的值指向了一个不存在的文件"
 
-#: src/editor/map/map_context.cpp:269
-msgid "Found the characters ‘<<’ indicating inline lua is present — aborting"
+#: src/editor/map/map_context.cpp:268
+#, fuzzy
+#| msgid ""
+#| "The map file looks like a scenario, but the map_data value does not point "
+#| "to an existing file"
+msgid ""
+"The file looks like a scenario, but the map_file attribute does not point to "
+"an existing file"
+msgstr "此地图文件看起来像是一幕场景，但是map_data的值指向了一个不存在的文件"
+
+#: src/editor/map/map_context.cpp:448
+msgid "Confirm"
 msgstr ""
 
-#: src/editor/map/map_context.cpp:274
-msgid "Failed to load the scenario, attempting to load only the map."
-msgstr "加载场景失败，尝试只加载地图。"
-
-#: src/editor/map/map_context.cpp:281
-msgid ""
-"The map file looks like a scenario, but the map_file value does not point to "
-"an existing file"
-msgstr "此地图文件看起来像是一幕场景，但是 map_file 的值指向了一个不存在的文件"
-
-#: src/editor/map/map_context.cpp:296
-msgid "Unable to parse file to find map data"
-msgstr "无法解析文件以找到地图数据"
-
-#: src/editor/map/map_context.cpp:841 src/editor/map/map_context.cpp:881
+#: src/editor/map/map_context.cpp:835 src/editor/map/map_context.cpp:875
 #, fuzzy
 #| msgid "Could not save the scenario: $msg"
 msgid "Could not save time schedule: $msg"
 msgstr "无法保存场景：$msg"
 
-#: src/editor/map/map_context.cpp:875
+#: src/editor/map/map_context.cpp:869
 #, fuzzy
 #| msgid "Time Schedule Menu"
 msgid "Time schedule saved."
 msgstr "日程表菜单"
 
-#: src/editor/map/map_context.cpp:921
+#: src/editor/map/map_context.cpp:915
 msgid "Could not save the scenario: $msg"
 msgstr "无法保存场景：$msg"
 
-#: src/editor/map/map_context.cpp:952
+#: src/editor/map/map_context.cpp:946
 msgid "Could not save into scenario"
 msgstr "无法保存到场景"
 
-#: src/editor/map/map_context.cpp:962
+#: src/editor/map/map_context.cpp:956
 msgid "Could not save the map: $msg"
 msgstr "无法保存地图：$msg"
 
@@ -549,9 +558,9 @@ msgstr "除非特别注意，否则不会在游戏中正常工作。"
 
 #: src/editor/palette/item_palette.cpp:33
 #, fuzzy
-#| msgid " | Right-click to remove"
+#| msgid "Right-click: "
 msgid "Left-click: Place item $item | Right-click to remove"
-msgstr " | 右击以移除"
+msgstr "右击："
 
 #: src/editor/palette/location_palette.cpp:247
 msgid "Go To"
@@ -603,8 +612,10 @@ msgstr "Ctrl+点击：复制地形"
 #~ msgid "Load Map"
 #~ msgstr "载入地图"
 
+#, fuzzy
+#~| msgid "Left-click: "
 #~ msgid "Left-click: Place item "
-#~ msgstr "左击：放置物品 "
+#~ msgstr "左击："
 
 #~ msgid "Choose File"
 #~ msgstr "选择文件"

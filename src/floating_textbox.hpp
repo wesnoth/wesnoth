@@ -45,7 +45,7 @@ namespace gui{
 			const std::string& check_label, bool checked, game_display& gui);
 		void tab(const std::set<std::string>& dictionary);
 		void memorize_command(const std::string& command);
-		bool active() const { return box_.get() != nullptr; }
+		bool active() const { return box_ != nullptr; }
 
 	private:
 		std::unique_ptr<gui::textbox> box_;

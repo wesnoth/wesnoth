@@ -2210,12 +2210,14 @@ int game_lua_kernel::intf_find_reach(lua_State *L)
 	pathfind::paths res(*u, ignore_units, !ignore_teleport,
 		viewing_team, additional_turns, see_all, ignore_units);
 
+	static const lua_named_tuple_builder tuple_builder{ {"x", "y", "moves_left"} };
+
 	int nb = res.destinations.size();
 	lua_createtable(L, nb, 0);
 	for (int i = 0; i < nb; ++i)
 	{
 		pathfind::paths::step &s = res.destinations[i];
-		luaW_push_namedtuple(L, {"x", "y", "moves_left"});
+		tuple_builder.push(L);
 		lua_pushinteger(L, s.curr.wml_x());
 		lua_rawseti(L, -2, 1);
 		lua_pushinteger(L, s.curr.wml_y());
@@ -2263,9 +2265,11 @@ int game_lua_kernel::intf_find_vision_range(lua_State *L)
 	actions::create_jamming_map(jamming_map, resources::gameboard->get_team(u->side()));
 	pathfind::vision_path res(*u, u->get_location(), jamming_map);
 
+	static const lua_named_tuple_builder tuple_builder{ {"x", "y", "vision_left"} };
+
 	lua_createtable(L, res.destinations.size() + res.edges.size(), 0);
 	for(const auto& d : res.destinations) {
-		luaW_push_namedtuple(L, {"x", "y", "vision_left"});
+		tuple_builder.push(L);
 		lua_pushinteger(L, d.curr.wml_x());
 		lua_rawseti(L, -2, 1);
 		lua_pushinteger(L, d.curr.wml_y());
@@ -2275,7 +2279,7 @@ int game_lua_kernel::intf_find_vision_range(lua_State *L)
 		lua_rawseti(L, -2, lua_rawlen(L, -2) + 1);
 	}
 	for(const auto& e : res.edges) {
-		luaW_push_namedtuple(L, {"x", "y", "vision_left"});
+		tuple_builder.push(L);
 		lua_pushinteger(L, e.wml_x());
 		lua_rawseti(L, -2, 1);
 		lua_pushinteger(L, e.wml_y());
@@ -2482,11 +2486,13 @@ int game_lua_kernel::intf_find_cost_map(lua_State *L)
 	}
 
 	// create return value
+	static const lua_named_tuple_builder tuple_builder{ {"x", "y", "cost", "reach"} };
+
 	lua_createtable(L, location_set.size(), 0);
 	int counter = 1;
 	for (const map_location& loc : location_set)
 	{
-		luaW_push_namedtuple(L, {"x", "y", "cost", "reach"});
+		tuple_builder.push(L);
 
 		lua_pushinteger(L, loc.wml_x());
 		lua_rawseti(L, -2, 1);
@@ -3324,7 +3330,7 @@ int game_lua_kernel::intf_play_sound(lua_State *L)
 	if (play_controller_.is_skipping_replay()) return 0;
 	char const *m = luaL_checkstring(L, 1);
 	int repeats = luaL_optinteger(L, 2, 0);
-	sound::play_sound(m, sound::SOUND_FX, repeats);
+	sound::play_sound(m, sound_tracks::type::sound_fx, repeats);
 	return 0;
 }
 
@@ -3356,7 +3362,7 @@ int game_lua_kernel::intf_set_achievement(lua_State *L)
 						achieve.current_progress_ = -1;
 					}
 					if(achieve.sound_path_ != "") {
-						sound::play_sound(achieve.sound_path_, sound::SOUND_FX);
+						sound::play_sound(achieve.sound_path_, sound_tracks::type::sound_fx);
 					}
 					// show the achievement popup
 					luaW_getglobal(L, "gui", "show_popup");
@@ -4058,7 +4064,7 @@ static int intf_add_modification(lua_State *L)
 	std::string sm = m;
 	if (sm == "advance") { // Maintain backwards compatibility
 		sm = "advancement";
-		deprecated_message("\"advance\" modification type", DEP_LEVEL::PREEMPTIVE, {1, 15, 0}, "Use \"advancement\" instead.");
+		deprecated_message("\"advance\" modification type", DEP_LEVEL::FOR_REMOVAL, {1, 21, 0}, "Use \"advancement\" instead.");
 	}
 	if (sm != "advancement" && sm != "object" && sm != "trait") {
 		return luaL_argerror(L, 2, "unknown modification type");

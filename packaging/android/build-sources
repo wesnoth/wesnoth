@@ -6,7 +6,7 @@ NDKDIR=${ANDROID_NDK_ROOT:=$ANDROID_HOME/ndk/23.1.7779620}
 PREFIXDIR=${PREFIXDIR:=/tmp/android-prefix}
 BUILDDIR_PREFIX=${BUILDDIR_PREFIX:=/tmp}
 ARCHS=${ARCHS:="x86_64 armeabi-v7a arm64-v8a x86"}
-API=${API:=28}
+API=${API:=23}
 
 echo $ANDROID_HOME
 echo $NDKDIR
@@ -26,9 +26,6 @@ do
 	cp $TOOLCHAIN/sysroot/usr/lib/$HOST/libc++_shared.so $LIBDIR/
 	cp $PREFIXDIR/$arch/lib/*.so $LIBDIR/
 	cp $BUILDDIR_PREFIX/wesnoth-$arch/packaging/android/lib/libmain.so $LIBDIR/
-
-	# rename libSDL2-2.0.so -> libSDL2.so, otherwise the final apk(s) won't be able to find it
-	mv $LIBDIR/libSDL2-2.0.so $LIBDIR/libSDL2.so
 	
 	# strip *.so files
 	$NDKDIR/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-strip $LIBDIR/*.so

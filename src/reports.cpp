@@ -193,8 +193,9 @@ static config unit_type(const unit* u)
 	if(!u) return config();
 
 	std::ostringstream tooltip;
-	tooltip << _("Type:") << " " << markup::bold(u->type_name()) << "\n"
-	        << u->unit_description();
+	tooltip << _("Type:") << " "
+	        << markup::bold(font::escape_text(u->type_name())) << "\n"
+	        << markup::help_to_pango_markup(u->unit_description());
 	if(const auto& notes = u->unit_special_notes(); !notes.empty()) {
 		tooltip << "\n\n" << _("Special Notes:") << '\n';
 		for(const auto& note : notes) {
@@ -639,16 +640,11 @@ static config unit_vision(const unit* u)
 {
 	if (!u) return config();
 
-	// TODO
 	std::ostringstream str, tooltip;
 	if (u->vision() != u->total_movement()) {
-		str << _("vision:") << ' ' << u->vision();
+		// TRANSLATORS: single-letter abbreviation of "vision", fits in a small space on the sidebar
+		str << _("vision^V:") << ' ' << u->vision();
 		tooltip << _("vision:") << ' ' << u->vision() << '\n';
-	}
-	if (u->jamming() != 0) {
-		if (static_cast<std::streamoff>(str.tellp()) == 0)
-			str << _("jamming:") << ' ' << u->jamming();
-		tooltip << _("jamming:") << ' ' << u->jamming() << '\n';
 	}
 	return text_report(str.str(), tooltip.str());
 }
@@ -661,6 +657,24 @@ REPORT_GENERATOR(selected_unit_vision, rc)
 {
 	const unit* u = get_selected_unit(rc);
 	return unit_vision(u);
+}
+
+static config unit_jamming(const unit* u)
+{
+	if(!u) return config();
+
+	std::ostringstream str, tooltip;
+	if(u->jamming() != 0) {
+		// TRANSLATORS: single-letter abbreviation of "jamming", fits in a small space on the sidebar
+		str << _("jamming^J:") << ' ' << u->jamming();
+		tooltip << _("jamming:") << ' ' << u->jamming() << '\n';
+	}
+	return text_report(str.str(), tooltip.str());
+}
+REPORT_GENERATOR(unit_jamming, rc)
+{
+	const unit* u = get_visible_unit(rc);
+	return unit_jamming(u);
 }
 
 static config unit_moves(const reports::context& rc, const unit* u, bool is_visible_unit)

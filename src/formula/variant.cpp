@@ -17,10 +17,11 @@
 #include <cmath>
 #include <cstring>
 #include <memory>
-#include <stack>
+#include "utils/span.hpp"
 
 #include "formatter.hpp"
 #include "formula/function.hpp"
+#include "formula/variant_value.hpp"
 #include "log.hpp"
 
 static lg::log_domain log_scripting_formula("scripting/formula");
@@ -32,24 +33,55 @@ static lg::log_domain log_scripting_formula("scripting/formula");
 
 namespace wfl
 {
-
-// Static value to initialize null variants to ensure its value is never nullptr.
-static value_base_ptr null_value(new variant_value_base);
-
-static std::string variant_type_to_string(formula_variant::type type)
+namespace
 {
-	return formula_variant::get_string(type);
+// Static value to initialize null variants to ensure its value is never nullptr.
+const auto null_value = std::make_shared<variant_value_base>();
+
+std::string get_debug_description(const variant& v)
+{
+	return formatter{} << formula_variant::get_string(v.type()) << " (" + v.to_debug_string() << ")";
 }
 
 // Small helper function to get a standard type error message.
-static std::string was_expecting(const std::string& message, const variant& v)
+std::string was_expecting(const std::string& expected, const std::string& description)
 {
-	std::ostringstream ss;
+	return formatter{} << "TYPE ERROR: expected " << expected << " but found " << description;
+}
 
-	ss << "TYPE ERROR: expected " << message << " but found "
-	   << v.type_string() << " (" << v.to_debug_string() << ")";
+// Small helper function to get a standard type error message.
+std::string was_expecting(const std::string& expected, const variant& v)
+{
+	return was_expecting(expected, get_debug_description(v));
+}
 
-	return ss.str();
+// Throws a type_error if both variants are not of the given type
+void must_both_be(formula_variant::type t, const variant& v1, const variant& v2)
+{
+	if(v1.type() != t || v2.type() != t) {
+		const std::string expected = formatter{}
+			<< formula_variant::get_string(t) << ", "
+			<< formula_variant::get_string(t);
+
+		const std::string provided = formatter{}
+			<< get_debug_description(v1) << ", "
+			<< get_debug_description(v2);
+
+		throw type_error{was_expecting(expected, provided)};
+	}
+}
+
+} // namespace
+
+template<typename T>
+std::shared_ptr<T> value_cast(const variant& v)
+{
+	auto res = std::dynamic_pointer_cast<T>(v.value_);
+	if(!res) {
+		throw type_error{was_expecting(formula_variant::get_string(T::value_type), v)};
+	}
+
+	return res;
 }
 
 type_error::type_error(const std::string& str) : game::error(str)
@@ -186,17 +218,25 @@ variant::variant(std::map<variant, variant>&& map)
 {
 }
 
+variant::variant(const_formula_callable_ptr callable)
+	: value_(std::make_shared<variant_callable>(std::move(callable)))
+{
+}
+
+formula_variant::type variant::type() const
+{
+	return value_->get_type();
+}
+
 variant variant::operator[](std::size_t n) const
 {
 	if(is_callable()) {
 		return *this;
 	}
 
-	must_be(formula_variant::type::list);
-
 	try {
-		return value_cast<variant_list>()->get_container().at(n);
-	} catch(std::out_of_range&) {
+		return as_list().at(n);
+	} catch(const std::out_of_range&) {
 		throw type_error("invalid index");
 	}
 }
@@ -208,7 +248,7 @@ variant variant::operator[](const variant& v) const
 	}
 
 	if(is_map()) {
-		auto& map = value_cast<variant_map>()->get_container();
+		auto& map = as_map();
 
 		auto i = map.find(v);
 		if(i == map.end()) {
@@ -236,11 +276,9 @@ variant variant::operator[](const variant& v) const
 
 variant variant::get_keys() const
 {
-	must_be(formula_variant::type::map);
-
 	std::vector<variant> tmp;
-	for(const auto& i : value_cast<variant_map>()->get_container()) {
-		tmp.push_back(i.first);
+	for(const auto& [key, value] : as_map()) {
+		tmp.push_back(key);
 	}
 
 	return variant(std::move(tmp));
@@ -248,11 +286,9 @@ variant variant::get_keys() const
 
 variant variant::get_values() const
 {
-	must_be(formula_variant::type::map);
-
 	std::vector<variant> tmp;
-	for(const auto& i : value_cast<variant_map>()->get_container()) {
-		tmp.push_back(i.second);
+	for(const auto& [key, value] : as_map()) {
+		tmp.push_back(value);
 	}
 
 	return variant(std::move(tmp));
@@ -285,7 +321,7 @@ std::size_t variant::num_elements() const
 variant variant::get_member(const std::string& name) const
 {
 	if(is_callable()) {
-		if(auto obj = value_cast<variant_callable>()->get_callable()) {
+		if(auto obj = as_callable()) {
 			return obj->query_value(name);
 		}
 	}
@@ -302,16 +338,15 @@ int variant::as_int(int fallback) const
 	if(is_null())    { return fallback; }
 	if(is_decimal()) { return as_decimal() / 1000; }
 
-	must_be(formula_variant::type::integer);
-	return value_cast<variant_int>()->get_numeric_value();
+	return value_cast<variant_int>(*this)->get_numeric_value();
 }
 
 int variant::as_decimal(int fallback) const
 {
 	if(is_decimal()) {
-		return value_cast<variant_decimal>()->get_numeric_value();
+		return value_cast<variant_decimal>(*this)->get_numeric_value();
 	} else if(is_int()) {
-		return value_cast<variant_int>()->get_numeric_value() * 1000;
+		return value_cast<variant_int>(*this)->get_numeric_value() * 1000;
 	} else if(is_null()) {
 		return fallback;
 	}
@@ -326,46 +361,34 @@ bool variant::as_bool() const
 
 const std::string& variant::as_string() const
 {
-	must_be(formula_variant::type::string);
-	return value_cast<variant_string>()->get_string();
+	return value_cast<variant_string>(*this)->get_string();
 }
 
 const std::vector<variant>& variant::as_list() const
 {
-	must_be(formula_variant::type::list);
-	return value_cast<variant_list>()->get_container();
+	return value_cast<variant_list>(*this)->get_container();
 }
 
 const std::map<variant, variant>& variant::as_map() const
 {
-	must_be(formula_variant::type::map);
-	return value_cast<variant_map>()->get_container();
+	return value_cast<variant_map>(*this)->get_container();
+}
+
+const_formula_callable_ptr variant::as_callable() const
+{
+	return value_cast<variant_callable>(*this)->get_callable();
 }
 
 variant variant::operator+(const variant& v) const
 {
 	if(is_list() && v.is_list()) {
-		auto& list = value_cast<variant_list>()->get_container();
-		auto& other_list = v.value_cast<variant_list>()->get_container();
-
-		std::vector<variant> res;
-		res.reserve(list.size() + other_list.size());
-
-		for(const auto& member : list) {
-			res.push_back(member);
-		}
-
-		for(const auto& member : other_list) {
-			res.push_back(member);
-		}
-
-		return variant(std::move(res));
+		return concatenate(v);
 	}
 
 	if(is_map() && v.is_map()) {
-		std::map<variant, variant> res = value_cast<variant_map>()->get_container();
+		std::map<variant, variant> res = as_map();
 
-		for(const auto& member : v.value_cast<variant_map>()->get_container()) {
+		for(const auto& member : v.as_map()) {
 			res[member.first] = member.second;
 		}
 
@@ -552,8 +575,10 @@ namespace implementation
 template<typename Func>
 variant zip_transform(const variant& v1, const variant& v2, const Func& op_func)
 {
-	const variant_vector& lhs = v1.as_list();
-	const variant_vector& rhs = v2.as_list();
+	must_both_be(formula_variant::type::list, v1, v2);
+
+	const std::vector<variant>& lhs = v1.as_list();
+	const std::vector<variant>& rhs = v2.as_list();
 
 	if(lhs.size() != rhs.size()) {
 		throw type_error("zip_transform requires two lists of the same length");
@@ -569,53 +594,52 @@ variant zip_transform(const variant& v1, const variant& v2, const Func& op_func)
 	return variant(std::move(res));
 }
 
+variant concat_lists(const variant& v1, const variant& v2)
+{
+	must_both_be(formula_variant::type::list, v1, v2);
+
+	const std::vector<variant>& lhs = v1.as_list();
+	const std::vector<variant>& rhs = v2.as_list();
+
+	std::vector<variant> res;
+	res.reserve(lhs.size() + rhs.size());
+
+	std::copy(lhs.begin(), lhs.end(), std::back_inserter(res));
+	std::copy(rhs.begin(), rhs.end(), std::back_inserter(res));
+
+	return variant(std::move(res));
+}
+
 } // namespace implementation
 
 variant variant::list_elements_add(const variant& v) const
 {
-	must_both_be(formula_variant::type::list, v);
 	return implementation::zip_transform(*this, v, std::plus<variant>{});
 }
 
 variant variant::list_elements_sub(const variant& v) const
 {
-	must_both_be(formula_variant::type::list, v);
 	return implementation::zip_transform(*this, v, std::minus<variant>{});
 }
 
 variant variant::list_elements_mul(const variant& v) const
 {
-	must_both_be(formula_variant::type::list, v);
 	return implementation::zip_transform(*this, v, std::multiplies<variant>{});
 }
 
 variant variant::list_elements_div(const variant& v) const
 {
-	must_both_be(formula_variant::type::list, v);
 	return implementation::zip_transform(*this, v, std::divides<variant>{});
 }
 
 variant variant::concatenate(const variant& v) const
 {
-	if(is_list()) {
-		v.must_be(formula_variant::type::list);
+	if(is_list() && v.is_list()) {
+		return implementation::concat_lists(*this, v);
+	}
 
-		std::vector<variant> res;
-		res.reserve(num_elements() + v.num_elements());
-
-		for(std::size_t i = 0; i < num_elements(); ++i) {
-			res.push_back((*this)[i]);
-		}
-
-		for(std::size_t i = 0; i < v.num_elements(); ++i) {
-			res.push_back(v[i]);
-		}
-
-		return variant(std::move(res));
-	} else if(is_string()) {
-		v.must_be(formula_variant::type::string);
-		std::string res = as_string() + v.as_string();
-		return variant(res);
+	if(is_string() && v.is_string()) {
+		return variant(as_string() + v.as_string());
 	}
 
 	throw type_error(was_expecting("a list or a string", *this));
@@ -623,38 +647,19 @@ variant variant::concatenate(const variant& v) const
 
 variant variant::build_range(const variant& v) const
 {
-	must_both_be(formula_variant::type::integer, v);
-
-	return value_cast<variant_int>()->build_range_variant(v.as_int());
+	must_both_be(formula_variant::type::integer, *this, v);
+	return value_cast<variant_int>(*this)->build_range_variant(v.as_int());
 }
 
 bool variant::contains(const variant& v) const
 {
-	if(!is_list() && !is_map()) {
+	switch(type()) {
+	case formula_variant::type::list:
+		return utils::contains(as_list(), v);
+	case formula_variant::type::map:
+		return utils::contains(as_map(), v);
+	default:
 		throw type_error(was_expecting("a list or a map", *this));
-	}
-
-	if(is_list()) {
-		return value_cast<variant_list>()->contains(v);
-	} else {
-		return value_cast<variant_map>()->contains(v);
-	}
-}
-
-void variant::must_be(formula_variant::type t) const
-{
-	if(type() != t) {
-		throw type_error(was_expecting(variant_type_to_string(t), *this));
-	}
-}
-
-void variant::must_both_be(formula_variant::type t, const variant& second) const
-{
-	if(type() != t || second.type() != t) {
-		throw type_error(formatter() << "TYPE ERROR: expected two "
-			<< variant_type_to_string(t) << " but found "
-			<<        type_string() << " (" <<        to_debug_string() << ")" << " and "
-			<< second.type_string() << " (" << second.to_debug_string() << ")");
 	}
 }
 
@@ -688,52 +693,31 @@ std::string variant::to_debug_string(bool verbose, formula_seen_stack* seen) con
 	return value_->get_debug_string(*seen, verbose);
 }
 
-variant variant::execute_variant(const variant& var)
+variant execute_actions(const variant& execute, const variant& context)
 {
-	std::stack<variant> vars;
-	if(var.is_list()) {
-		for(std::size_t n = 1; n <= var.num_elements(); ++n) {
-			vars.push(var[var.num_elements() - n]);
-		}
-	} else {
-		vars.push(var);
-	}
+	// If we don't have a list, try and execute the input variant itself.
+	const auto to_execute = execute.is_list()
+		? utils::span{execute.as_list()}
+		: utils::span{&execute, 1};
 
-	std::vector<variant> made_moves;
+	std::vector<variant> res;
+	res.reserve(to_execute.size());
 
-	while(!vars.empty()) {
-
-		if(vars.top().is_null()) {
-			vars.pop();
+	for(const variant& v : to_execute) {
+		if(v.is_null()) {
 			continue;
 		}
 
-		if(auto action = vars.top().try_convert<action_callable>()) {
-			variant res = action->execute_self(*this);
-			if(res.is_int() && res.as_bool()) {
-				made_moves.push_back(vars.top());
-			}
-		} else if(vars.top().is_string() && vars.top().as_string() == "continue") {
-//			if(infinite_loop_guardian_.continue_check()) {
-				made_moves.push_back(vars.top());
-//			} else {
-				//too many calls in a row - possible infinite loop
-//				ERR_SF << "ERROR #5001 while executing 'continue' formula keyword";
-
-//				if(safe_call)
-//					error = variant(new game_logic::safe_call_result(nullptr, 5001));
-//			}
-		} else if(vars.top().is_string() && (vars.top().as_string() == "end_turn" || vars.top().as_string() == "end")) {
-			break;
-		} else {
-			//this information is unneeded when evaluating formulas from commandline
-			ERR_SF << "UNRECOGNIZED MOVE: " << vars.top().to_debug_string();
+		auto action = callable_cast<action_callable*>(v);
+		if(!action) {
+			WRN_SF << "Could not execute non-action_callable variant: " << v.to_debug_string();
+			continue;
 		}
 
-		vars.pop();
+		res.push_back(std::const_pointer_cast<action_callable>(action)->execute_self(context));
 	}
 
-	return variant(std::move(made_moves));
+	return variant(std::move(res));
 }
 
 }

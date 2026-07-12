@@ -28,7 +28,7 @@
 #endif
 
 #ifdef __ANDROID__
-#include <SDL2/SDL_system.h> // For SDL Android functions
+#include <SDL3/SDL_system.h> // For SDL Android functions
 #include <jni.h>
 #endif
 
@@ -60,8 +60,8 @@ double get_battery_percentage()
 	return dbus::get_battery_percentage();
 #elif defined(__ANDROID__)
 	// call the helper method WesnothActivity.getBatteryPercentage() using JNI
-	JNIEnv* env = reinterpret_cast<JNIEnv*>(SDL_AndroidGetJNIEnv());
-	jobject wesnoth_instance = reinterpret_cast<jobject>(SDL_AndroidGetActivity());
+	JNIEnv* env = reinterpret_cast<JNIEnv*>(SDL_GetAndroidJNIEnv());
+	jobject wesnoth_instance = reinterpret_cast<jobject>(SDL_GetAndroidActivity());
 	jclass wesnoth_activity(env->GetObjectClass(wesnoth_instance));
 	jmethodID percentage = env->GetMethodID(wesnoth_activity, "getBatteryPercentage", "()D");
 	return env->CallDoubleMethod(wesnoth_instance, percentage);

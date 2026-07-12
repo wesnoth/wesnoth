@@ -36,6 +36,7 @@
 #include "formula/string_utils.hpp"
 #include "resources.hpp"
 #include "deprecation.hpp"
+#include "utils/general.hpp"
 
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
@@ -710,7 +711,7 @@ void unit_filter_compound::fill(const vconfig& cfg)
 					/* Check if the filter only cares about variables.
 					   If so, no need to serialize the whole unit. */
 					config::all_children_itors ci = fwml.all_children_range();
-					if (fwml.all_children_count() == 1 && fwml.attribute_count() == 1 && ci.front().key == "variables") {
+					if (fwml.all_children_count() == 1 && fwml.attribute_count() == 0 && ci.front().key == "variables") {
 						return args.u.variables().matches(ci.front().cfg);
 					} else {
 						config ucfg;
@@ -753,7 +754,7 @@ void unit_filter_compound::fill(const vconfig& cfg)
 			}
 			else if ((child.first == "filter_ability") || (child.first == "experimental_filter_ability")) {
 				if(child.first == "experimental_filter_ability"){
-					deprecated_message("experimental_filter_ability", DEP_LEVEL::INDEFINITE, "", "Use filter_ability instead.");
+					deprecated_message("experimental_filter_ability", DEP_LEVEL::FOR_REMOVAL, {1, 21, 0}, "Use filter_ability instead.");
 				}
 				create_child(child.second, [](const vconfig& c, const unit_filter_args& args) {
 					if(!(c.get_parsed_config())["active"].to_bool()){

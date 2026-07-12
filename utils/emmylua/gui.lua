@@ -188,6 +188,8 @@ function gui.add_widget_definition(type, id, content) end
 ---@field hint_text tstring
 ---@field history string
 ---@field max_input_length integer
+---@field selection_start integer Cursor position in the text. Index of the first selected code point, or the code point just after the insertion point. Can be one greater than the length of the text, if the insertion point is at the end.
+---@field selection_length integer Number of code points in the selected text. If negative, counts back from the start position instead of forward.
 ---@field on_modified fun()
 
 ---A label that wraps its text and also has a vertical scrollbar

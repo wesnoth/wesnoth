@@ -85,7 +85,7 @@ wml_menu_item::wml_menu_item(const std::string& id, const config& cfg)
 	, needs_select_(cfg["needs_select"].to_bool(false))
 {
 	if(cfg.has_attribute("needs_select")) {
-		deprecated_message("needs_select", DEP_LEVEL::INDEFINITE, {1, 15, 0});
+		deprecated_message("needs_select", DEP_LEVEL::FOR_REMOVAL, {1, 21, 0}, "needs_select effects networked multiplayer. Use [sync_variable] to keep variables consistent across clients");
 	}
 }
 
@@ -282,7 +282,7 @@ void wml_menu_item::update(const vconfig& vcfg)
 	}
 
 	if(vcfg.has_attribute("needs_select")) {
-		deprecated_message("needs_select", DEP_LEVEL::INDEFINITE, {1, 15, 0});
+		deprecated_message("needs_select", DEP_LEVEL::FOR_REMOVAL, {1, 21, 0}, "needs_select effects networked multiplayer. Use [sync_variable] to keep variables consistent across clients");
 		needs_select_ = vcfg["needs_select"].to_bool();
 	}
 

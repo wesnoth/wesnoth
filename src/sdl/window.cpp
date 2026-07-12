@@ -13,69 +13,81 @@
 	See the COPYING file for more details.
 */
 
+#include "log.hpp"
+#include "preferences/preferences.hpp"
 #include "sdl/window.hpp"
-
 #include "sdl/exception.hpp"
 #include "sdl/surface.hpp"
+#include "sdl/sdl3_properties_raii.hpp"
+#include "serialization/string_utils.hpp"
+#include "utils/general.hpp"
+#include "video.hpp"
 
-#include <SDL2/SDL_hints.h>
-#include <SDL2/SDL_render.h>
+#include <SDL3/SDL_hints.h>
+#include <SDL3/SDL_render.h>
+
 
 #ifdef __ANDROID__
-#include <SDL2/SDL_mouse.h>
+#include <SDL3/SDL_mouse.h>
 #endif
 
 namespace sdl
 {
 
 window::window(const std::string& title,
-				 const int x,
-				 const int y,
 				 const int w,
 				 const int h,
-				 const uint32_t window_flags,
-				 const uint32_t render_flags)
-	: window_(SDL_CreateWindow(
-		title.c_str(), x, y, w, h, window_flags | SDL_WINDOW_HIDDEN))
-	, pixel_format_(SDL_PIXELFORMAT_UNKNOWN)
+				 const uint32_t window_flags)
+	: window_(SDL_CreateWindow(title.c_str(), w, h, window_flags | SDL_WINDOW_HIDDEN))
 {
 	if(!window_) {
 		throw exception("Failed to create a SDL_Window object.", true);
 	}
 
-#ifdef _WIN32
-	// SDL uses Direct3D v9 by default on Windows systems. However, returning
-	// from the Windows lock screen causes issues with rendering. Resolution
-	// is either to rebuild render textures on the SDL_RENDER_TARGETS_RESET
-	// event or use an alternative renderer that does not have this issue.
-	// Suitable options are Direct3D v11+ or OpenGL.
-	// See https://github.com/wesnoth/wesnoth/issues/8038 for details.
-	// Note that SDL_HINT_RENDER_DRIVER implies SDL_HINT_RENDER_BATCHING is
-	// disabled, according to https://discourse.libsdl.org/t/a-couple-of-questions-regarding-batching-in-sdl-2-0-10/26453/2.
-	SDL_SetHint(SDL_HINT_RENDER_DRIVER, "direct3d11");
-#endif
-
 #ifdef __ANDROID__
 	SDL_SetHint(SDL_HINT_ORIENTATIONS, "LandscapeLeft LandscapeRight");
 #endif
 
-	if(!SDL_CreateRenderer(window_, -1, render_flags)) {
-		throw exception("Failed to create a SDL_Renderer object.", true);
+	sdl3_properties props;
+
+	if(prefs::get().vsync()) {
+		if(!SDL_SetNumberProperty(props, SDL_PROP_RENDERER_CREATE_PRESENT_VSYNC_NUMBER, 1)) {
+			throw exception("Failed to set vsync", true);
+		};
 	}
 
-	SDL_RendererInfo info;
-	if(SDL_GetRendererInfo(*this, &info) != 0) {
-		throw exception("Failed to retrieve the information of the renderer.",
-						 true);
+	if(!SDL_SetPointerProperty(props, SDL_PROP_RENDERER_CREATE_WINDOW_POINTER, window_)) {
+		throw exception("Failed to set window pointer property", true);
 	}
 
-	if(info.num_texture_formats == 0) {
-		throw exception("The renderer has no texture information available.\n",
-						 false);
-	}
+	// try using the default
+	// if that fails, try opengl
+	// and if that fails, try software
+	PLAIN_LOG << "Available renderers: " << utils::join(video::get_available_renderers(), " ");
+	if(!SDL_CreateRendererWithProperties(props)) {
+		PLAIN_LOG << "Trying opengl renderer after failing to create default renderer with error: " << SDL_GetError();
 
-	if((info.flags & SDL_RENDERER_TARGETTEXTURE) == 0) {
-		throw exception("Render-to-texture not supported or enabled!", false);
+		if(utils::contains(video::get_available_renderers(), "opengl")) {
+			SDL_SetHint(SDL_HINT_RENDER_DRIVER, "opengl");
+
+			if(!SDL_CreateRendererWithProperties(props)) {
+				PLAIN_LOG << "Trying software renderer after failing to create opengl renderer with error: " << SDL_GetError();
+
+				if(utils::contains(video::get_available_renderers(), "software")) {
+					SDL_SetHint(SDL_HINT_RENDER_DRIVER, "software");
+
+					if(!SDL_CreateRendererWithProperties(props)) {
+						throw exception("Failed to create software renderer.", true);
+					} else {
+						PLAIN_LOG << "Failed to create default renderer and opengl renderer but created fallback software renderer";
+					}
+				}
+			} else {
+				PLAIN_LOG << "Failed to create default renderer but created fallback opengl renderer";
+			}
+		} else {
+			throw exception("Failed to create default renderer and opengl fallback isn't supported.", true);
+		}
 	}
 
 	// Set default blend mode to blend.
@@ -84,8 +96,6 @@ window::window(const std::string& title,
 	// In fullscreen mode, do not minimize on focus loss.
 	// Minimizing was reported as bug #1606 with blocker priority.
 	SDL_SetHint(SDL_HINT_VIDEO_MINIMIZE_ON_FOCUS_LOSS, "0");
-
-	pixel_format_ = info.texture_formats[0];
 
 	fill(0,0,0);
 
@@ -107,7 +117,7 @@ window::~window()
 void window::set_size(const int w, const int h)
 {
 #ifdef __ANDROID__
-	SDL_RenderSetLogicalSize(SDL_GetRenderer(window_), w, h);
+	SDL_SetRenderLogicalPresentation(SDL_GetRenderer(window_), w, h, SDL_LOGICAL_PRESENTATION_INTEGER_SCALE);
 	SDL_WarpMouseInWindow(window_, w / 2, h / 2);
 #else
 	SDL_SetWindowSize(window_, w, h);
@@ -118,7 +128,7 @@ point window::get_size()
 {
 	point res;
 #ifdef __ANDROID__
-	SDL_RenderGetLogicalSize(SDL_GetRenderer(window_), &res.x, &res.y);
+	SDL_GetRenderLogicalPresentation(SDL_GetRenderer(window_), &res.x, &res.y, nullptr);
 #else
 	SDL_GetWindowSize(*this, &res.x, &res.y);
 #endif
@@ -129,7 +139,7 @@ point window::get_size()
 point window::get_output_size()
 {
 	point res;
-	SDL_GetRendererOutputSize(*this, &res.x, &res.y);
+	SDL_GetCurrentRenderOutputSize(*this, &res.x, &res.y);
 
 	return res;
 }
@@ -151,7 +161,7 @@ void window::maximize()
 void window::to_window()
 {
 #ifndef __ANDROID__
-	SDL_SetWindowFullscreen(window_, 0);
+	SDL_SetWindowFullscreen(window_, false);
 #endif
 }
 
@@ -165,16 +175,15 @@ void window::restore()
 void window::full_screen()
 {
 #ifndef __ANDROID__
-	SDL_SetWindowFullscreen(window_, SDL_WINDOW_FULLSCREEN_DESKTOP);
+	SDL_SetWindowFullscreen(window_, true);
 #endif
 }
 
 void window::fill(uint8_t r, uint8_t g, uint8_t b, uint8_t a)
 {
 	SDL_SetRenderDrawColor(*this, r, g, b, a);
-	if(SDL_RenderClear(*this) != 0) {
-		throw exception("Failed to clear the SDL_Renderer object.",
-						 true);
+	if(!SDL_RenderClear(*this)) {
+		throw exception("Failed to clear the SDL_Renderer object.", true);
 	}
 }
 
@@ -211,13 +220,16 @@ uint32_t window::get_flags()
 
 int window::get_display_index()
 {
-	return SDL_GetWindowDisplayIndex(window_);
+	return SDL_GetDisplayForWindow(window_);
 }
 
 void window::set_logical_size(int w, int h)
 {
 	SDL_Renderer* r = SDL_GetRenderer(window_);
-	SDL_RenderSetLogicalSize(r, w, h);
+	// Non-integer scales are not currently supported.
+	// This option makes things neater when window size is not a perfect
+	// multiple of logical size, which can happen when manually resizing.
+	SDL_SetRenderLogicalPresentation(r, w, h, SDL_LOGICAL_PRESENTATION_INTEGER_SCALE);
 }
 
 void window::set_logical_size(const point& p)
@@ -229,19 +241,16 @@ point window::get_logical_size() const
 {
 	SDL_Renderer* r = SDL_GetRenderer(window_);
 	int w, h;
-	SDL_RenderGetLogicalSize(r, &w, &h);
+	SDL_RendererLogicalPresentation mode = SDL_LOGICAL_PRESENTATION_INTEGER_SCALE;
+	SDL_GetRenderLogicalPresentation(r, &w, &h, &mode);
 	return {w, h};
 }
 
 void window::get_logical_size(int& w, int& h) const
 {
 	SDL_Renderer* r = SDL_GetRenderer(window_);
-	SDL_RenderGetLogicalSize(r, &w, &h);
-}
-
-uint32_t window::pixel_format()
-{
-	return pixel_format_;
+	SDL_RendererLogicalPresentation mode = SDL_LOGICAL_PRESENTATION_INTEGER_SCALE;
+	SDL_GetRenderLogicalPresentation(r, &w, &h, &mode);
 }
 
 window::operator SDL_Window*()

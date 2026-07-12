@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-tutorial\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-01-20 17:31 UTC\n"
+"POT-Creation-Date: 2026-06-23 03:15 UTC\n"
 "PO-Revision-Date: 2024-04-13 23:12+0300\n"
 "Last-Translator: Artem Khrapov <artemkhrapov2001@yandex.ru>\n"
 "Language-Team: https://wiki.wesnoth.org/RussianTranslation\n"
@@ -376,13 +376,13 @@ msgstr "<i>Чучело</i> может ходить?"
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:616
 msgid ""
 "Yes. It’s a magical quintain! If it hits you, it does 3 damage, and has 5 "
-"chances. If it hits every time, you’ll drop from $student_hp to "
-"$($student_hp-15) hitpoints. Brace yourself!"
+"chances. If it hits every time, you’ll drop from $student_hp to $"
+"($student_hp-15) hitpoints. Brace yourself!"
 msgstr ""
 "Да, это же волшебный манекен!\n"
 "Он попробует ударить тебя 5 раз, нанося с каждым попаданием 3 единицы урона. "
-"Если он попадёт все пять раз, твоё здоровье уменьшится с $student_hp до "
-"$($student_hp-15) очков здоровья. Защищайся!"
+"Если он попадёт все пять раз, твоё здоровье уменьшится с $student_hp до $"
+"($student_hp-15) очков здоровья. Защищайся!"
 
 #. [hint_message]
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:622
@@ -842,7 +842,7 @@ msgid "Defenses"
 msgstr "Защита"
 
 #. [hint_message]
-#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1082
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1081
 msgid ""
 "Whenever one of your units is selected, you’ll see varying percentages as "
 "you move the mouse over the map. The higher the percentage, the more "
@@ -859,22 +859,22 @@ msgstr ""
 "вероятности поразить цель, вне зависимости от её местонахождения."
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1094
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1093
 msgid "Agh! This training is too much for me..."
 msgstr "Ох! Эта тренировка сплошная мука..."
 
 #. [message]: speaker=unit
-#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1095
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1094
 msgid "female^Agh! This training is too much for me..."
 msgstr "Ох! Эта тренировка сплошная мука..."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1131
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1130
 msgid "The quintain is destroyed, and I have gained more experience!"
 msgstr "Манекен повержен, а у меня стало больше опыта!"
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1136
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1135
 msgid ""
 "Yes, you gain experience through battle, especially by killing an opponent. "
 "Gain enough experience and you’ll become more powerful."
@@ -883,7 +883,7 @@ msgstr ""
 "накопишь достаточно опыта, то станешь сильнее."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1142
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1141
 msgid ""
 "Now, Konrad, I will leave you with more dummies to practice on! After that, "
 "we have real work to do..."
@@ -892,7 +892,7 @@ msgstr ""
 "ждёт настоящее дело..."
 
 #. [message]: speaker=Delfador
-#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1147
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1146
 msgid ""
 "Now, Li’sar, I will leave you with more dummies to practice on! After that, "
 "we have real work to do..."
@@ -901,12 +901,12 @@ msgstr ""
 "ждёт настоящее дело..."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1209
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1208
 msgid "Note"
 msgstr "Примечание"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1211
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1210
 msgid ""
 "These dummies only attack if you are a single tile away. With care, you "
 "should be able to kill them one at a time."
@@ -915,7 +915,7 @@ msgstr ""
 "клетки. При должной осторожности вы сможете перебить их по одному."
 
 #. [message]: speaker=student
-#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1220
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1219
 msgid ""
 "Well, I think I know the basics. Onwards! Maybe I can fight in a real battle "
 "next?"
@@ -924,7 +924,7 @@ msgstr ""
 "битва?"
 
 #. [message]: speaker=student
-#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1221
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1220
 msgid ""
 "female^Well, I think I know the basics. Onwards! Maybe I can fight in a real "
 "battle next?"
@@ -933,12 +933,12 @@ msgstr ""
 "битва?"
 
 #. [hint_message]
-#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1236
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1235
 msgid "Victory"
 msgstr "Победа"
 
 #. [hint_message]
-#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1237
+#: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_1.cfg:1236
 msgid ""
 "After your victory notice, the map will be grayed out to indicate that the "
 "scenario is over; this is called <i>linger mode</i>. You will still be able "
@@ -2128,8 +2128,8 @@ msgstr ""
 #. [message]: speaker=Galdrad
 #: data/campaigns/Heir_To_The_Throne_Classic/scenarios/00_Tutorial_part_2.cfg:1315
 msgid ""
-"Higher level units are powerful, but not invulnerable. We’ll miss you, $unit."
-"name|."
+"Higher level units are powerful, but not invulnerable. We’ll miss you, "
+"$unit.name|."
 msgstr ""
 "Бойцы второго уровня сильны, но не бессмертны! Нам будет не хватать тебя, "
 "$unit.name|."

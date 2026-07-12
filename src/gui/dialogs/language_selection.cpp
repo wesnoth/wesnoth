@@ -76,7 +76,9 @@ void language_selection::shown_filter_callback()
 	listbox& list = find_widget<listbox>("language_list");
 
 	if(show_all_toggle.get_value_bool()) {
-		list.set_row_shown(boost::dynamic_bitset<>{langs_.size(), ~0UL});
+		boost::dynamic_bitset<> mask;
+		mask.resize(langs_.size(), true);
+		list.set_row_shown(mask);
 	} else {
 		list.set_row_shown(complete_langs_);
 	}

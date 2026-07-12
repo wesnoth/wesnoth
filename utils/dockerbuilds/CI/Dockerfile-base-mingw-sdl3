@@ -1,0 +1,50 @@
+FROM archlinux:base-devel
+
+RUN pacman --noconfirm -Syu
+# for yay
+RUN pacman --noconfirm -S wget sudo go git
+# install dependencies and utilities for building
+RUN pacman --noconfirm -S scons mingw-w64-gcc pkg-config python-pefile expect
+
+RUN pacman-key --init
+
+# add msys2 stuff
+RUN wget https://github.com/msys2/msys2-installer/releases/download/2026-03-22/msys2-base-x86_64-20260322.tar.xz  && \
+    tar xJvf msys2-base-x86_64-20260322.tar.xz  && \
+    cp /msys64/etc/pacman.d/* /etc/pacman.d/ && \
+    cp /msys64/usr/share/pacman/keyrings/* /usr/share/pacman/keyrings/
+
+# setup msys2 keys
+RUN pacman-key --populate msys2
+
+# Create a non-root user since makepkg isn't allowed to run as root
+RUN useradd -m makepkgr && echo "makepkgr ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+
+# build yay for installing from AUR
+USER makepkgr
+WORKDIR /home/makepkgr/yaygit
+RUN git clone https://aur.archlinux.org/yay.git
+RUN cd yay && makepkg -si --noconfirm
+
+# installing the pre-built package via pacman has some incompatibility that causes boost:filesystem::path to be an undefined symbol when linking
+# installing via yay seems (?) to not be applying the 0001 patch, and so also fails
+# so build mingw boost manually here
+RUN yay --aur -S --noconfirm mingw-w64-zstd mingw-w64-bzip2 mingw-w64-dlfcn mingw-w64-zlib
+WORKDIR /home/makepkgr/boost
+COPY ./mingw-w64-boost/PKGBUILD /home/makepkgr/boost
+COPY ./mingw-w64-boost/0001-Fix-building-with-cmake-on-MINGW.patch /home/makepkgr/boost
+RUN makepkg -si --noconfirm
+
+# nsis for creating windows installer
+RUN yay --aur -S --noconfirm nsis
+#RUN yay --aur -S --noconfirm mingw-w64-boost
+
+# wesnoth dependencies
+USER root
+RUN pacman --root /msys64 --config /msys64/etc/pacman.conf --noconfirm -Syu \
+    mingw-w64-x86_64-sdl3 \
+    mingw-w64-x86_64-sdl3-image \
+    mingw-w64-x86_64-sdl3-mixer \
+    mingw-w64-x86_64-pango \
+    mingw-w64-x86_64-curl-winssl
+

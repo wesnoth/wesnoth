@@ -274,7 +274,7 @@ void playmp_controller::do_idle_notification()
 
 void playmp_controller::maybe_linger()
 {
-	if(replay_controller_.get() != nullptr) {
+	if(replay_controller_) {
 		// We have probably been using the mp "back to turn" feature
 		// We continue play since we have reached the end of the replay.
 		replay_controller_.reset();

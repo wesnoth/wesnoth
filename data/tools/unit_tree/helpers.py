@@ -3,11 +3,15 @@
 """
 Various helpers for use by the wmlunits tool.
 """
-import sys, os, re, glob, shutil, copy, subprocess, traceback
+import sys, os, re, glob, shutil, copy, subprocess, traceback, datetime
 
 import wesnoth.wmlparser3 as wmlparser3
 from unit_tree.team_colorizer import colorize
 import wesnoth.base64url as base64url
+
+
+def printtime(*args, **kwargs):
+    print(str(datetime.datetime.now()), *args, **kwargs)
 
 class Image:
     def __init__(self, id_name, ipath, bases, no_tc):

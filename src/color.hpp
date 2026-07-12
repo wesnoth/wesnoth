@@ -14,7 +14,7 @@
 
 #pragma once
 
-#include <SDL2/SDL_pixels.h>
+#include <SDL3/SDL_pixels.h>
 
 #include <algorithm> // for max
 #include <cstdint>
@@ -34,7 +34,7 @@ constexpr uint32_t SDL_RED_BITSHIFT   = 16;
 constexpr uint32_t SDL_GREEN_BITSHIFT = 8;
 constexpr uint32_t SDL_BLUE_BITSHIFT  = 0;
 
-constexpr uint8_t ALPHA_OPAQUE = SDL_ALPHA_OPAQUE; // This is always 255 in SDL2
+constexpr uint8_t ALPHA_OPAQUE = SDL_ALPHA_OPAQUE; // This is always 255 in SDL
 
 // Functions for manipulating RGB values.
 constexpr uint8_t float_to_color(double n);

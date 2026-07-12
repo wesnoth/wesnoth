@@ -23,7 +23,6 @@
 #   * double space after punctuation in translatable strings.
 #   * unknown races or movement types in units
 #   * unknown base units
-#   * misspellings in message and description strings
 #
 #                              BASIC PROCEDURE
 #
@@ -48,116 +47,23 @@
 #
 #                              MAGIC COMMENTS
 #
-# Note: You can shut wmllint up about custom terrains by having a comment
-# on the same line that includes the string "wmllint: ignore" or
-# "wmllint: noconvert". The same magic comments will also disable checking
-# of translation marks, which may alternatively be toggled for line blocks
-# with "wmllint: markcheck off" and "wmllint: markcheck on".
-#
-# You can also prevent description insertions with "wmllint: no-icon".
-#
-# You can force otherwise undeclared characters to be recognized with
-# a magic comment containing the string "wmllint: recognize".
-# The rest of the line is stripped and treated as the name of a character
-# who should be recognized in descriptions.  This will be useful,
-# for example, if your scenario follows a continue so there are
-# characters present who were not explicitly recalled.  It may
-# also be useful if you have wrapped unit-creation or recall markup in
-# non-core macros and wmllint cannot recognize it.
-#
-# If you use custom macros to create (or recall) a named unit, you can tell
-# wmllint which field contains the id with the string, "wmllint: whofield
-# <macro> <number>".  After the macro's last use, *make sure* to remove it
-# with "wmllint: whofield clear <macro>"; if "clear" is not followed by a
-# macro name, all macros will be cleared from the list.  (If the <number>
-# string was not a non-zero number, wmllint will also attempt to remove the
-# specified macro.)
-#
-# For macros used in multiple scenarios to field characters, you can tell
-# wmllint to recognize them with another magic comment:
-#     wmllint: who <macro> is <character(s)>
-# <Macro> should be the macro name; <character(s)> would be the ids of the
-# recalled (or created) characters, comma-separated if there were more than
-# one.  If more characters attach to a macro in later scenarios, they can be
-# appended with additional "who" magic comments (though this requires scenarios
-# to be numbered or otherwise sorted to work properly, as wmllint traverses
-# files in alphabetical order).  If there is a character that drops out,
-# preceding that person's entry with a double-minus will cause that character
-# to be removed, e.g., "-- Garak".
-#
-# At the end of the campaign, *make sure* you use:
-#     wmllint: unwho ALL
-# This will clear the list of "who" magic comments and tell wmllint to stop
-# checking for them in later files and directories.  If a specific macro is
-# not used in subsequent scenarios, put "unwho <macro>" in its last scenario.
-#
-# Similarly, it is possible to explicitly declare a unit's usage class
-# with a magic comment that looks like this:
-#    wmllint: usage of <unit> is <class>
-# Note that <unit> must be a string wrapped in ASCII doublequotes.  This
-# declaration will be useful if you are declaring units with macros that
-# include a substitutable formal in the unit name; there were examples in
-# UtBS, but they have since been converted to use the [base_unit] tag.
-#
-# If a mismatch between a recruit list and recruitment pattern involves a
-# usage type outside the five core types, the warning message will include a
-# note that a non-standard usage class is involved.  If you are using custom
-# usage classes and would like wmllint to be aware of them, you can insert
-# the magic comment, "wmllint: usagetype <class>".  This comment will take a
-# comma-separated list, and can also be pluralized to "usagetypes".
-#
-# You can disable stack-based malformation checks with a comment
-# containing "wmllint: validate-off" and re-enable with "wmllint: validate-on".
-#
-# You can prevent filename conversions with a comment containing
-# "wmllint: noconvert" on the same line as the filename.
-#
-# You can suppress complaints about files without an initial textdomain line
-# by embedding the magic comment "# wmllint: no translatables" in the file.
-# of course, it's a good idea to be sure this assertion is actually true.
-#
-# You can skip checks on unbalanced WML (e.g. in a macro definition) by
-# bracketing it with "wmllint: unbalanced-on" and "wmllint: unbalanced-off".
-# Note that this will also disable stack-based validation on the span
-# of lines they enclose.
-#
-# A special comment "# wmllint: deathcheck off" will disable the check whether
-# dying units speak in their death events.
-# The comment "# wmllint: deathcheck on" will re-enable this check.
-#
-# A magic comment of the form "wmllint: general spellings word1
-# word2..."  will declare the tokens word1, word2, etc. to be
-# acceptable spellings for anywhere in the Wesnoth tree that the
-# spellchecker should never flag.  If the keyword "general" is
-# replaced by "local", the spelling exceptions apply only in the
-# current file. If the keyword "general" is replaced by "directory",
-# the spelling exceptions apply to all files below the parent
-# directory.
-#
-# A comment containing "no spellcheck" disables spellchecking on the
-# line where it occurs.
-#
-# wmllint will also make sure the sides in a scenario are in a continuous
-# numerical sequence. However, if a side is defined in a macro the comment
-# "#wmllint: skip-side" is needed where the macro is used in order to allow
-# wmllint to account for it properly.
-#
-# In 1.11.5 and 1.11.6 respectively, the special ellipses for leaders and units
-# without a ZoC are automatically handled by the C++ engine. wmllint warns if such
-# ellipses are found in your WML and asks to remove them; at the same time it
-# notifies of custom ellipses that may need to be updated (updating means that
-# -nozoc, -leader and -leader-nozoc variations of your ellipse need to be added).
-# You can disable this sanity check for the current line with the comment
-# "# wmllint: no ellipsecheck".
-#
-# In the 1.13 development series, the ability to implement custom conditional
-# tags by using Lua was added. wmllint, of course, doesn't handle Lua files,
-# so to avoid having them incorrectly recognized as "illegal child of [if]"
-# you can declare them with this magic comment:
-# # wmllint: conditional tag <tag_name>
-# Do not surround <tag_name> with square braces, because wmllint will do so
-# automatically; on the other hand, you can specify multiple tags to be
-# recognized as a comma-separated list.
+# wmllint: ignore                             - suppresses most wmllint checks on the line this comment is on.
+# wmllint: noconvert                          - disables and suppresses output for changing the line the comment is on.
+# wmllint: markcheck on|off                   - disables checking for missing or extra translation marks in the block between off and on.
+# wmllint: no-icon                            - disables adding the name as the description (which also determines the icon) to attacks missing the description attribute.
+#                                               used in the current and subsequent files that are processed.
+# wmllint: usage of <unit> is <class>         - explicitly declares the recruitment type of the unit (see the usage attribute of [unit_type]) in case wmllint doesn't find it.
+#                                               <unit> must be inside ascii double quotes.
+# wmllint: usagetype <class>                  - tell wmllint about custom recruitment types. <class> can be a comma separated list.
+# wmllint: validate-on|off                    - suppresses most wmllint checks in the block between off and on.
+# wmllint: no translatables                   - suppresses output for files without a textdomain on the first line.
+# wmllint: unbalanced-on|off                  - suppresses output when there are more opening tags than closing tags or vice versa in the block between off and on.
+# wmllint: deathcheck on|off                  - suppresses output when a unit speaks in their death event in the block between off and on.
+# wmllint: no ellipsecheck                    - suppresses output when finding unit ellipses that the engine adds automatically or custom unit ellipses that need to be updated.
+# wmllint: conditional tag <tag_name>         - adds <tag_name> to the list of known conditional WML tags. used when defining custom conditional tags via lua.
+#                                               <tag_name> is a comma delimited list. do not put square brackets around the tags listed in <tag_name>.
+# wmllint: translatable <attribute>           - this adds <attribute> to the list of translatable attributes for the file.
+#                                               prevents the warning that an attribute should not have a translation mark.
 #
 #                              DEVELOPER INFORMATION
 #
@@ -177,10 +83,9 @@
 # code.
 #
 
-import sys, os, re, argparse, string, copy, difflib, time, gzip
+import sys, os, re, argparse, difflib, time, tomllib
 from wesnoth.wmltools3 import *
 from wesnoth.wmliterator3 import *
-from collections import defaultdict
 from wesnoth import version
 
 # Changes meant to be done on maps and .cfg lines.
@@ -235,9 +140,25 @@ obsolete_lines = (
     "{MAGENTA_IS_THE_TEAM_COLOR}",
     "{SOUND:SLOW}",
     "{SOUND:POISON}",
+    "{NO_INTERRUPT_NO_UNDO}",
+    "{ENABLE_NIGHTBLADE}",
     )
 
-# Global changes meant to be done on all lines.  Suppressed by noconvert.
+# things that need to be updated but aren't handled by wmllint
+warn_if_found = (
+    ("{DRAKE_FLYING_ANIM}", "This is for the old style Drake animations. If you still need this for some reason, copy the macro definition into your add-on."),
+    ("{STORY_PART_SPEECH}", "This no longer works properly, use the title attribute for the caption instead"),
+    ("{EARLY_FINISH_BONUS_NOTE}", "This is now automatically generated and not required. Use [objectives][gold_carryover]bonus=yes instead."),
+    ("{NO_EARLY_FINISH_BONUS_NOTE}", "This is now automatically generated and not required. Use [objectives][gold_carryover]bonus=no instead."),
+    ("{NO_GOLD_CARRYOVER_NOTE}", "This is now automatically generated and not required. Use [objectives][gold_carryover]carryover_percentage=0 instead."),
+    ("{NEW_GOLD_CARRYOVER_NOTE_100}", "This is now automatically generated and not required. Use [objectives][gold_carryover]carryover_percentage=100 instead."),
+    ("{NEW_GOLD_CARRYOVER_NOTE_40}", "This is now automatically generated and not required. Use [objectives][gold_carryover]carryover_percentage=40 instead."),
+    ("{NEW_GOLD_CARRYOVER_NOTE_20}", "This is now automatically generated and not required. Use [objectives][gold_carryover]carryover_percentage=20 instead."),
+    ("{ON_SIGHTING", "Use an [event]name=sighted instead."),
+    ("{MAKE_AI_SIDE_PERSISTENT}", "Just put the persistent key in [side] directly"),
+)
+
+# Global changes meant to be done on all lines, excluding lines containing translation mark.  Suppressed by noconvert.
 linechanges = (
         ("canrecruit=1", "canrecruit=yes"),
         ("canrecruit=0", "canrecruit=no"),
@@ -1318,6 +1239,9 @@ linechanges = (
         # introduced in wesnoth 1.17.19
         ("units/elves-wood/fighter.png", "units/elves-wood/fighter/fighter.png"),
 
+        # some macro conversions from 1.19
+        ("{MISSILE_FRAME_FIREBALL}",
+         "{MISSILE_FRAME_FIREBALL_XY 0 0}"),
         )
 
 # helper function to reduce code duplication and allow easy checking
@@ -1338,15 +1262,6 @@ def validate_on_pop(tagstack, closer, filename, lineno):
     ancestors = [x[0] for x in tagstack]
     if verbose >= 3:
         print('"%s", line %d: closing %s I see %s with %s' % (filename, lineno, closer, tag, attributes))
-    # Detect a malformation that will cause the game to barf while attempting
-    # to deserialize an empty unit.  The final "and attributes" is a blatant
-    # hack; some campaigns like to generate entire side declarations with
-    # macros.
-    if "scenario" in ancestors and closer == "side" and "type" not in attributes and \
-       ("no_leader" not in attributes or attributes["no_leader"] != "yes") and \
-       attributes.get("controller") != "null" and \
-       "multiplayer" not in ancestors and "leader" not in subtags and attributes:
-        print('"%s", line %d: [side] without type attribute' % (filename, lineno))
     # This assumes that conversion will always happen in units/ files.
     if "units" not in filename and closer == "unit" and "race" in attributes:
         print('"%s", line %d: [unit] needs hand fixup to [unit_type]' % \
@@ -1439,17 +1354,6 @@ def standard_unit_filter():
 
 # Sanity checking
 
-# This dictionary will pair macros with the characters they recall or create,
-# but must be populated by the magic comment, "#wmllint: who ... is ...".
-whopairs = {}
-
-# This dictionary pairs macros with the id field of the characters they recall
-# or create, and is populated by the comment, "wmllint: whofield <macro> <#>."
-whomacros = {}
-
-# This dictionary pairs the ids of stored units with their variable name.
-storedids = {}
-
 # This set of the standard recruitable usage types can be appended with the
 # magic comment, "#wmllint: usagetype[s]".
 standard_usage_types = {"scout", "fighter", "mixed fighter", "archer", "healer"}
@@ -1475,7 +1379,7 @@ scenario_to_filename = {}
 unit_levels = {}
 
 # Attributes that should have translation marks
-def is_translatable(key):
+def is_translatable(key, extra_translatables):
     translatables = (
         "abbrev", "base_names", "cannot_use_message", "caption", "current_player",
         "currently_doing_description", "description", "description_inactive",
@@ -1487,9 +1391,13 @@ def is_translatable(key):
         "reason", "set_description", "source", "story", "summary", "victory_string",
         "defeat_string", "gold_carryover_string", "notes_string", "text", "title",
         "title2", "tooltip", "translator_comment", "user_team_name", "side_name",
-        "special_note"
+        "special_note","display_name","name_affected","description_affected","family_order",
+        "family_order_monospace","family_order_script","name_completed","description_completed",
+        "lawful_description","neutral_description","chaotic_description","liminal_description",
+        "hint_text","has_helptip_message","maximum_value_label","minimum_value_label","help",
+        "block_dismiss_message"
         )
-    return key in translatables or (key.startswith(("type_", "range_")) and key != "type_adv_tree")
+    return key in translatables or key in extra_translatables or (key.startswith(("type_", "range_")) and key != "type_adv_tree")
 
 # This is a list of mainline campaigns, used to convert UMC from
 # "data/campaigns" to "data/add-ons" while not clobbering mainline.
@@ -1516,72 +1424,11 @@ mainline = ("Dead_Water",
             "World_Conquest",
             )
 
-spellcheck_these = (\
-    "cannot_use_message=",
-    "caption=",
-    "description=",
-    "description_inactive=",
-    "editor_name=",
-    "end_text=",
-    "help_topic_text=",
-    "message=",
-    "note=",
-    "story=",
-    "summary=",
-    "text=",
-    "title=",
-    "title2=",
-    "tooltip=",
-    "user_team_name=",
-    )
-
-# Declare a few common English contractions and ejaculations that pyenchant
-# inexplicably knows nothing of.
-declared_spellings = {"GLOBAL":["I'm", "I've", "I'd", "I'll",
-                                "heh", "ack",
-                                # Fantasy/SF/occult jargon that we need
-                                "aerie",
-                                "aeon",
-                                "aide-de-camp",
-                                "axe",
-                                "ballista",
-                                "bided",
-                                "crafters",
-                                "glaive",
-                                "greatsword",
-                                "hellspawn",
-                                "hurrah",
-                                "morningstar",
-                                "numbskulls",
-                                "overmatched",
-                                "spearman",
-                                "stygian",
-                                "teleport",
-                                "teleportation",
-                                "teleported",
-                                "terraform",
-                                "wildlands",
-                                # game jargon
-                                "melee", "arcane", "day/night", "gameplay",
-                                "hitpoint", "hitpoints", "FFA", "multiplayer",
-                                "playtesting", "respawn", "respawns",
-                                "WML", "HP", "XP", "AI", "ZOC", "YW",
-                                "L0", "L1", "L2", "L3", "MC",
-                                # archaisms
-                                "faugh", "hewn", "leapt", "dreamt", "spilt",
-                                "grandmam", "grandsire", "grandsires",
-                                "scry", "scrying", "scryed", "woodscraft",
-                                "princeling", "wilderlands", "ensorcels",
-                                "unlooked", "naphtha", "naïve",
-                                # Sceptre of Fire gets spelled with -re.
-                                "sceptre",
-                                ]}
-
-pango_conversions = (("~", "<b>", "</b>"),
-                     ("@", "<span color='green'>", "</span>"),
-                     ("#", "<span color='red'>", "</span>"),
-                     ("*", "<span size='large'>", "</span>"),
-                     ("`", "<span size='small'>", "</span>"),
+pango_conversions = (("~", "<b>", "</b>", re.compile(r"[~][a-zA-Z0-9]*[~]")),
+                     ("@", "<span color='green'>", "</span>", re.compile(r"[@][a-zA-Z0-9]*[@]")),
+                     ("#", "<span color='red'>", "</span>", re.compile(r"[#][a-zA-Z0-9]*[#]")),
+                     ("*", "<span size='large'>", "</span>", re.compile(r"[*][a-zA-Z0-9]*[*]")),
+                     ("`", "<span size='small'>", "</span>", re.compile(r"[`][a-zA-Z0-9]*[`]")),
                      )
 
 def pangostrip(message):
@@ -1607,8 +1454,9 @@ def pangoize(message, filename, line):
         hexed = '%02x%02x%02x' % (r, g, b)
         print('"%s", line %d: color spec (%s) requires manual fix (<span color=\'#%s\'>, </span>).' % (filename, line, rgb.group(), hexed))
     # Hack old-style Wesnoth markup
-    for (oldstyle, newstart, newend) in pango_conversions:
-        if oldstyle not in message:
+    for (oldstyle, newstart, newend, regex) in pango_conversions:
+        # avoid incorrectly converting stuff like "*Ahem*"
+        if oldstyle not in message or regex.search(message):
             continue
         where = message.find(oldstyle)
         if message[where - 1] != '"': # Start of string only
@@ -1680,7 +1528,7 @@ def local_sanity_check(filename, nav, key, prefix, value, comment):
             actual_tag = nav.element
         if actual_tag not in ("[part]", "[background_layer]", "[image]", "[insert_tag]",
                               "[if]", "[then]", "[elseif]", "[else]", "[switch]", "[case]",
-                              "[variable]", "[deprecated_message]", "[wml_message]"):
+                              "[variable]", "[deprecated_message]", "[wml_message]", "[have_unit]"):
             print(errlead + '%s not permitted within [part] tag' % nav.element)
     # Most tags are not permitted inside [if]
     if (len(ancestors) >= 1 and parent == "[if]") or \
@@ -1689,7 +1537,7 @@ def local_sanity_check(filename, nav, key, prefix, value, comment):
                            "[else]", "[elseif]", "[frame]", "[have_location]",
                            "[have_unit]", "[not]", "[or]", "[then]", "[lua]",
                            "[variable]", "[true]", "[false]", "[found_item]",
-                           "[proceed_to_next_scenario]") \
+                           "[proceed_to_next_scenario]", "[has_achievement]") \
                            and not nav.element.endswith("_frame]") \
                            and not nav.element.startswith("[filter") and \
                            nav.element not in custom_conditionals:
@@ -1715,10 +1563,10 @@ def local_sanity_check(filename, nav, key, prefix, value, comment):
     # Accumulate data to check for missing next scenarios
     if parent == '[campaign]':
         if key == "first_scenario" and value != "null":
-            nextrefs.append((filename, nav.lineno, value))
+            nextrefs.append((filename, nav.lineno, value, nav.text))
     if parent == '[scenario]' or parent == None:
         if key == "next_scenario" and value != "null":
-            nextrefs.append((filename, nav.lineno, value))
+            nextrefs.append((filename, nav.lineno, value, nav.text))
         if key == 'id':
             scenario_to_filename[value] = filename
     # Check for campaign rank and warn if an unconventional value is found
@@ -1929,10 +1777,7 @@ def global_sanity_check(filename, lines):
     # vary by EASY/NORMAL/HARD level) this code will only record the
     # last of each for later consistency checking.
     in_side = False
-    in_ai = in_subunit = False
     recruit = {}
-    in_generator = False
-    sidecount = 0
     recruitment_pattern = {}
     ifdef_stack = [None]
     for num, line in enumerate((l.strip() for l in lines), start=1):
@@ -1952,17 +1797,8 @@ def global_sanity_check(filename, lines):
             ifdef_stack.pop()
             continue
         precomment = line.split("#")[0]
-        if "[generator]" in precomment:
-            in_generator = True
-            continue
-        elif "[/generator]" in precomment:
-            in_generator = False
-            continue
-        # do not use has_opening_tag() here, otherwise a [+side] tag
-        # will make the sidecount variable incorrect
-        elif "[side]" in precomment:
+        if "[side]" in precomment:
             in_side = True
-            sidecount += 1
             continue
         elif "[/side]" in precomment:
             if recruit or recruitment_pattern:
@@ -1971,41 +1807,8 @@ def global_sanity_check(filename, lines):
             recruit = {}
             recruitment_pattern = {}
             continue
-        elif in_side and has_opening_tag(precomment, "ai"):
-            in_ai = True
+        if not in_side or '=' not in precomment:
             continue
-        elif in_side and has_opening_tag(precomment, "unit"):
-            in_subunit = True
-            continue
-        elif in_side and "[/ai]" in precomment:
-            in_ai = False
-            continue
-        elif in_side and "[/unit]" in precomment:
-            in_subunit = False
-            continue
-        if "wmllint: skip-side" in line:
-            sidecount += 1
-        if not in_side or in_subunit or '=' not in precomment:
-            continue
-        try:
-            (key, prefix, value, comment) = parse_attribute(line)
-            if key in ("recruit", "extra_recruit") and value:
-                recruit[ifdef_stack[-1]] = (num, [x.strip() for x in value.split(",")])
-            elif key == "recruitment_pattern" and value:
-                if not in_ai:
-                    print('"%s", line %d: recruitment_pattern outside [ai]' \
-                              % (filename, num))
-                else:
-                    recruitment_pattern[ifdef_stack[-1]] = (num, [x.strip() for x in value.split(",")])
-            elif key == "side" and in_side and not in_ai:
-                try:
-                    if not in_generator and sidecount != int(value):
-                        print('"%s", line %d: side number %s is out of sequence (%d expected)' \
-                              % (filename, num, value, sidecount))
-                except ValueError:
-                    pass # Ignore ill-formed integer literals
-        except TypeError:
-            pass
     # Sanity check ellipses
     # Starting from 1.11.5, units with canrecruit=yes gain automatically a leader ellipse
     # Starting from 1.11.6, units without a ZoC gain automatically a nozoc ellipse
@@ -2093,76 +1896,45 @@ to be called on their own".format(filename, num))
         if m:
             for newusage in m.group(1).split(","):
                 standard_usage_types.add(newusage.strip())
-        # Accumulate global spelling exceptions
-        words = re.search("wmllint: general spellings? (.*)", line)
-        if words:
-            for word in words.group(1).split():
-                declared_spellings["GLOBAL"].append(word.lower())
-        words = re.search("wmllint: directory spellings? (.*)", line)
-        if words:
-            fdir = os.path.dirname(filename)
-            if fdir not in declared_spellings:
-                declared_spellings[fdir] = []
-            for word in words.group(1).split():
-                declared_spellings[fdir].append(word.lower())
     # Consistency-check the id= attributes in [side], [unit], [recall],
     # and [message] scopes, also correctness-check translation marks and look
     # for double spaces at end of sentence.
-    present = []
+    extra_translatables = []
     in_scenario = False
     in_multiplayer = False
     subtag_depth = 0
-    in_person = False
-    in_trait = False
-    ignore_id = False
-    in_object = False
-    in_stage = False
-    in_cfg = False
-    in_goal = False
-    in_set_menu_item = False
-    in_clear_menu_item = False
-    in_aspect = False
-    in_facet = False
-    in_sound_source = False
-    in_remove_sound_source = False
-    in_load_resource = False
     in_message = False
     in_option = False
     #last index is true: we're currently directly in an [event]
     #this avoids complaints about unknown [event]id=something, but keeps the check
     #in case some [filter]id= comes in this [event]
     directly_in_event = []
-    in_time_area = False
     in_store = False
-    in_unstore = False
     in_not = False
-    in_clear = False
-    in_fire_event = False
-    in_primary_unit = False
-    in_secondary_unit = False
-    in_remove_event = False
-    in_remove_time_area = False
-    in_tunnel = False
-    in_filter = False
-    in_checkbox = False
-    in_combo = False
-    in_entry = False
-    in_slider = False
-    in_map_generator = False
     in_name_generator = False
-    in_candidate_action = False
     in_lua = False
     in_lua_args = False
+    in_window = False
+    in_resolution = False
+    in_gui_definition = False
+    in_deprecated_message = False
+    in_chat = False
     storeid = None
-    storevar = None
     ignoreable = False
-    preamble_seen = False
     sentence_end = re.compile("(?<=[.!?;:])  +")
     capitalization_error = re.compile("(?<=[.!?])  +[a-z]")
     markcheck = True
     translation_mark = re.compile(r'_ *"')
     name_generator_re = re.compile(r"name_generator\s*=\s*_\s*<<")
+    gui_def_regex = re.compile(r"\[/.*\_definition\]")
     for i in range(len(lines)):
+        for (item, warning) in warn_if_found:
+            if item in lines[i]:
+                if "#" not in lines[i] or ("#" in lines[i] and lines[i].find("#") > lines[i].find(item)):
+                    print(item +": "+ warning)
+        extras = re.search("# *wmllint: translatables +(.*)", lines[i])
+        if extras:
+            extra_translatables.append(string_strip(extras.group(1)).strip())
         if has_opening_tag(lines[i], "lua"):
             in_lua = True
         elif "[/lua]" in lines[i]:
@@ -2175,20 +1947,16 @@ to be called on their own".format(filename, num))
             if not in_lua_args:
                 # As far as I can tell none of the below tests make sense inside of a lua tag
                 continue
-        if '[' in lines[i]:
-            preamble_seen = True
         # This logic looks odd because a scenario can be conditionally
         # wrapped in both [scenario] and [multiplayer]; we mustn't count
         # either as a subtag even if it occurs inside the other, otherwise
         # this code might see id= declarations as being at the wrong depth.
         if "[scenario]" in lines[i]:
             in_scenario = True
-            preamble_seen = False
         elif "[/scenario]" in lines[i]:
             in_scenario = False
         elif "[multiplayer]" in lines[i]:
             in_multiplayer = True
-            preamble_seen = False
         elif "[/multiplayer]" in lines[i]:
             in_multiplayer = False
         else:
@@ -2206,55 +1974,7 @@ to be called on their own".format(filename, num))
             if len(directly_in_event) > 0:
                 directly_in_event.pop()
         # Ordinary subtag flags begin here
-        if has_opening_tag(lines[i], "trait"):
-            in_trait = True
-        elif "[/trait]" in lines[i]:
-            in_trait = False
-        elif has_opening_tag(lines[i], "object"):
-            in_object = True
-        elif "[/object]" in lines[i]:
-            in_object = False
-        elif has_opening_tag(lines[i], "stage"):
-            in_stage = True
-        elif "[/stage]" in lines[i]:
-            in_stage = False
-        elif has_opening_tag(lines[i], "cfg"):
-            in_cfg = True
-        elif "[/cfg]" in lines[i]:
-            in_cfg = False
-        elif has_opening_tag(lines[i], "goal"):
-            in_goal = True
-        elif "[/goal]" in lines[i]:
-            in_goal = False
-        elif has_opening_tag(lines[i], "set_menu_item"):
-            in_set_menu_item = True
-        elif "[/set_menu_item]" in lines[i]:
-            in_set_menu_item = False
-        elif has_opening_tag(lines[i], "clear_menu_item"):
-            in_clear_menu_item = True
-        elif "[/clear_menu_item]" in lines[i]:
-            in_clear_menu_item = False
-        elif has_opening_tag(lines[i], "aspect"):
-            in_aspect = True
-        elif "[/aspect]" in lines[i]:
-            in_aspect = False
-        elif has_opening_tag(lines[i], "facet"):
-            in_facet = True
-        elif "[/facet]" in lines[i]:
-            in_facet = False
-        elif has_opening_tag(lines[i], "sound_source"):
-            in_sound_source = True
-        elif "[/sound_source]" in lines[i]:
-            in_sound_source = False
-        elif has_opening_tag(lines[i], "remove_sound_source"):
-            in_remove_sound_source = True
-        elif "[/remove_sound_source]" in lines[i]:
-            in_remove_sound_source = False
-        elif has_opening_tag(lines[i], "load_resource"):
-            in_load_resource = True
-        elif "[/load_resource]" in lines[i]:
-            in_load_resource = False
-        elif has_opening_tag(lines[i], "message"):
+        if has_opening_tag(lines[i], "message"):
             in_message = True
         elif "[/message]" in lines[i]:
             in_message = False
@@ -2262,16 +1982,6 @@ to be called on their own".format(filename, num))
             in_option = True
         elif "[/option]" in lines[i]:
             in_option = False
-        elif has_opening_tag(lines[i], "time_area"):
-            in_time_area = True
-        elif "[/time_area]" in lines[i]:
-            in_time_area = False
-        elif has_opening_tag(lines[i], "label") or \
-             has_opening_tag(lines[i], "chamber") or \
-             has_opening_tag(lines[i], "time"):
-            ignore_id = True
-        elif "[/label]" in lines[i] or "[/chamber]" in lines[i] or "[/time]" in lines[i]:
-            ignore_id = False
         elif has_opening_tag(lines[i], "kill") or \
              has_opening_tag(lines[i], "effect") or \
              has_opening_tag(lines[i], "move_unit_fake") or \
@@ -2279,89 +1989,35 @@ to be called on their own".format(filename, num))
             ignoreable = True
         elif "[/kill]" in lines[i] or "[/effect]" in lines[i] or "[/move_unit_fake]" in lines[i] or "[/scroll_to_unit]" in lines[i]:
             ignoreable = False
-        elif has_opening_tag(lines[i], "side") or \
-             has_opening_tag(lines[i], "unit") or \
-             has_opening_tag(lines[i], "recall"):
-            in_person = True
-            continue
-        elif "[/side]" in lines[i] or "[/unit]" in lines[i] or "[/recall]" in lines[i]:
-            in_person = False
         elif has_opening_tag(lines[i], "store_unit"):
             in_store = True
         elif "[/store_unit]" in lines[i]:
-            if storeid and storevar:
-                storedids.update({storevar: storeid})
             in_store = False
-            storeid = storevar = None
-        elif has_opening_tag(lines[i], "unstore_unit"):
-            in_unstore = True
-        elif "[/unstore_unit]" in lines[i]:
-            in_unstore = False
+            storeid = None
         elif has_opening_tag(lines[i], "not"):
             in_not = True
         elif "[/not]" in lines[i]:
             in_not = False
-        elif has_opening_tag(lines[i], "clear_variable"):
-            in_clear = True
-        elif "[/clear_variable]" in lines[i]:
-            in_clear = False
-        # starting from 1.13.6, [fire_event] supports id= fields
-        # ignore them, but don't ignore [primary_unit] and [secondary_unit]
-        elif has_opening_tag(lines[i], "fire_event"):
-            in_fire_event = True
-        elif "[/fire_event]" in lines[i]:
-            in_fire_event = False
-        elif has_opening_tag(lines[i], "primary_unit"):
-            in_primary_unit = True
-        elif "[/primary_unit]" in lines[i]:
-            in_primary_unit = False
-        elif has_opening_tag(lines[i], "secondary_unit"):
-            in_secondary_unit = True
-        elif "[/secondary_unit]" in lines[i]:
-            in_secondary_unit = False
-        # version 1.13.0 added [remove_event], which accepts a id= field
-        elif has_opening_tag(lines[i], "remove_event"):
-            in_remove_event = True
-        elif "[/remove_event]" in lines[i]:
-            in_remove_event = False
-        elif "[remove_time_area]" in lines[i]:
-            in_remove_time_area = True
-        elif "[/remove_time_area]" in lines[i]:
-            in_remove_time_area = False
-        # [tunnel] supports a [filter] sub-tag, so handle it
-        elif has_opening_tag(lines[i], "tunnel"):
-            in_tunnel = True
-        elif "[/tunnel]" in lines[i]:
-            in_tunnel = False
-        elif has_opening_tag(lines[i], "filter"):
-            in_filter = True
-        elif "[/filter]" in lines[i]:
-            in_filter = False
-        # sub-tags of [options] tag
-        elif has_opening_tag(lines[i], "checkbox"):
-            in_checkbox = True
-        elif "[/checkbox]" in lines[i]:
-            in_checkbox = False
-        elif has_opening_tag(lines[i], "combo"):
-            in_combo = True
-        elif "[/combo]" in lines[i]:
-            in_combo = False
-        elif has_opening_tag(lines[i], "entry"):
-            in_entry = True
-        elif "[/entry]" in lines[i]:
-            in_entry = False
-        elif has_opening_tag(lines[i], "slider"):
-            in_slider = True
-        elif "[/slider]" in lines[i]:
-            in_slider = False
-        elif has_opening_tag(lines[i], "generator"):
-            in_map_generator = True
-        elif "[/generator]" in lines[i]:
-            in_map_generator = False
-        elif has_opening_tag(lines[i], "candidate_action"):
-            in_candidate_action = True
-        elif "[/candidate_action]" in lines[i]:
-            in_candidate_action = False
+        elif has_opening_tag(lines[i], "window"):
+            in_window = True
+        elif "[/window]" in lines[i]:
+            in_window = False
+        elif has_opening_tag(lines[i], "resolution"):
+            in_resolution = True
+        elif "[/resolution]" in lines[i]:
+            in_resolution = False
+        elif "_definition]" in lines[i] and "[/" not in lines[i]:
+            in_gui_definition = True
+        elif gui_def_regex.search(lines[i]):
+            in_gui_definition = False
+        elif has_opening_tag(lines[i], "deprecated_message"):
+            in_deprecated_message = True
+        elif "[/deprecated_message]" in lines[i]:
+            in_deprecated_message = False
+        elif has_opening_tag(lines[i], "chat"):
+            in_chat = True
+        elif "[/chat]" in lines[i]:
+            in_chat = False
         elif name_generator_re.search(lines[i]):
             in_name_generator = True
         elif in_name_generator and ">>" in lines[i]:
@@ -2370,100 +2026,18 @@ to be called on their own".format(filename, num))
             markcheck = False
         elif "wmllint: markcheck on" in lines[i]:
             markcheck = True
-        elif 'wmllint: who ' in lines[i]:
-            try:
-                fields = lines[i].split("wmllint: who ", 1)[1].split(" is ", 1)
-                if len(fields) == 2:
-                    mac = string_strip(fields[0].strip()).strip('{}')
-                    if mac in whopairs:
-                        whopairs[mac] = whopairs[mac] + ", " + fields[1].strip()
-                    else:
-                        whopairs.update({mac: fields[1].strip()})
-            except IndexError:
-                pass
-        elif 'wmllint: unwho ' in lines[i]:
-            unmac = lines[i].split("wmllint: unwho ", 1)[1].strip()
-            if string_strip(unmac).upper() == 'ALL':
-                whopairs.clear()
-            else:
-                try:
-                    del whopairs[string_strip(unmac).strip('{}')]
-                except KeyError:
-                    print('%s, line %s: magic comment "unwho %s" does not match any current keys: %s' \
-                          % (filename, i+1, unmac, ", ".join(whopairs.keys())), file=sys.stderr)
-        elif 'wmllint: whofield' in lines[i]:
-            fields = re.search(r'wmllint: whofield\s+([^\s]+)(\s+is)?\s*([^\s]*)', lines[i])
-            if fields:
-                if fields.group(1).startswith('clear'):
-                    if fields.group(3) in whomacros:
-                        del whomacros[fields.group(3)]
-                    else:
-                        whomacros.clear()
-                elif re.match(r'[1-9][0-9]*$', fields.group(3)):
-                    whomacros.update({fields.group(1): int(fields.group(3))})
-                else:
-                    try:
-                        del whomacros[fields.group(1)]
-                    except KeyError:
-                        print('%s, line %s: magic comment "whofield %s" should be followed by a number: %s' \
-                              % (filename, i+1, unmac, fields.group(3)), file=sys.stderr)
         # Parse recruit/recall macros to recognize characters.  This section
         # assumes that such a macro is the first item on a line.
         leadmac = re.match(r'{[^}\s]+.', lines[i].lstrip())
         if leadmac:
             macname = leadmac.group()[1:-1]
-            # Recognize macro pairings from "wmllint: who" magic
-            # comments.
-            if macname in whopairs:
-                for who in whopairs[macname].split(","):
-                    if who.strip().startswith("--"):
-                        try:
-                            present.remove(who.replace('--', '', 1).strip())
-                        except:
-                            ValueError
-                    else:
-                        present.append(who.strip())
-            elif not leadmac.group().endswith('}'):
-                # Update 1.4's {LOYAL_UNIT} macro to {NAMED_LOYAL_UNIT}.  Do
-                # this here rather than hack_syntax so the character can be
-                # recognized.
+            if not leadmac.group().endswith('}'):
+                # Update 1.4's {LOYAL_UNIT} macro to {NAMED_LOYAL_UNIT}.
                 if macname == 'LOYAL_UNIT':
                     (args, optional_args, is_unfinished) = parse_macroref(0, leadmac.string)
                     if len(args) == 6:
                         lines[i] = lines[i].replace('{LOYAL_UNIT', '{NAMED_LOYAL_UNIT', 1)
-                # Auto-recognize the people in the {NAMED_*UNIT} macros.
-                if re.match(r'NAMED_[A-Z_]*UNIT$', macname):
-                    (args, optional_args, is_unfinished) = parse_macroref(0, leadmac.string)
-                    if len(args) >= 6 and \
-                       re.match(r'([0-9]+|[^\s]*\$[^\s]*side[^\s]*|{[^\s]*SIDE[^\s]*})$', args[0]) and \
-                       re.match(r'([0-9]+|[^\s]*\$[^\s]*x[^\s]*|{[^\s]*X[^\s]*})$', args[2]) and \
-                       re.match(r'([0-9]+|[^\s]*\$[^\s]*y[^\s]*|{[^\s]*Y[^\s]*})$', args[3]) and \
-                       len(args[4]) > 0:
-                        present.append(args[4])
-                elif macname == 'RECALL':
-                    (args, optional_args, is_unfinished) = parse_macroref(0, leadmac.string)
-                    if len(args) == 1 and not is_unfinished:
-                        present.append(args[0])
-                elif macname == 'RECALL_XY':
-                    (args, optional_args, is_unfinished) = parse_macroref(0, leadmac.string)
-                    if len(args) == 3:
-                        present.append(args[0])
-                elif macname == 'CLEAR_VARIABLE':
-                    (args, optional_args, is_unfinished) = parse_macroref(0, leadmac.string)
-                    # having CLEAR_VARIABLE on a line and its arguments in the following lines
-                    # leads to an args list with length 0
-                    # skip the check and avoid a crash if that's the case
-                    if len(args) > 0:
-                        for arg in [x.lstrip() for x in args[0].split(',')]:
-                            if arg in storedids:
-                                del storedids[arg]
-                elif macname in whomacros:
-                    (args, optional_args, is_unfinished) = parse_macroref(0, leadmac.string)
-                    if len(args) >= whomacros[macname]:
-                        present.append(args[whomacros[macname] - 1])
         m = re.search("# *wmllint: recognize +(.*)", lines[i])
-        if m:
-            present.append(string_strip(m.group(1)).strip())
         if '=' not in lines[i] or ignoreable:
             continue
         parseable = False
@@ -2482,33 +2056,16 @@ to be called on their own".format(filename, num))
                         storeid == storeid + ',' + value
                     else:
                         storeid = value
-                elif key == 'variable' and '{' not in value:
-                    storevar = value
-            elif in_unstore:
-                if key == 'variable':
-                    value = value.split("[$")[0]
-                    if value in storedids:
-                        for unit_id in storedids[value].split(','):
-                            present.append(unit_id.lstrip())
-                        del storedids[value]
-            elif key == 'name' and in_clear:
-                for val in value.split(','):
-                    val = val.lstrip()
-                    if val in storedids:
-                        del storedids[val]
             has_tr_mark = translation_mark.search(value)
-            if key == 'role':
-                present.append(value)
             if has_tr_mark:
                 # FIXME: This test is rather bogus as is.
                 # Doing a better job would require tokenizing to pick up the
-                # string boundaries. I'd do it, but AI0867 is already working
-                # on a parser-based wmllint.
+                # string boundaries.
                 if '{' in value and "+" not in value and value.find('{') > value.find("_"):
                     print('"%s", line %d: macro reference in translatable string'\
                           % (filename, i+1))
             # Check correctness of translation marks and descriptions
-            if key.startswith("{"):
+            if key.startswith("{") or key.startswith("<") or key.startswith("("):
                 pass
             elif in_name_generator:
                 pass
@@ -2518,18 +2075,28 @@ to be called on their own".format(filename, num))
                 if markcheck and not has_tr_mark:
                     print('"%s", line %d: %s should be renamed as variation_id and/or marked as translatable' \
                           % (filename, i+1, key))
-            elif is_translatable(key):
-                if markcheck and has_tr_mark and not attr_strip(value):
-                    print('"%s", line %d: %s doesn`t need translation mark (translatable string is empty)' \
-                          % (filename, i+1, key))
-                    lines[i] = lines[i].replace("=_","=")
-                if markcheck and value and not value.startswith("$") and not value.startswith("{") and not has_tr_mark and not ("wmllint: ignore" in comment or "wmllint: noconvert" in comment):
+            elif is_translatable(key, extra_translatables):
+                # if there's a value, translation mark checking is enabled, and there's no translation mark
+                # and there are no other magic comments disbling the check
+                # and it's not the first line of a concatenated string which has only pango markup
+                # and it's not the description attribute in [window]
+                # and it's not the description attribute in a gui definition like [button_definition] or [menu_button_definition]
+                # and it's not the message attribute in [chat], [deprecated_message]
+                if value and markcheck and not has_tr_mark \
+                and not value.startswith("$") and not value.startswith("{") \
+                and not ("wmllint: ignore" in comment or "wmllint: noconvert" in comment) \
+                and not (value.startswith('<') and value.endswith('+')) \
+                and (not in_window or (in_window and in_resolution)) \
+                and not in_gui_definition \
+                and not in_chat and not in_deprecated_message:
                     # [image] sometimes uses label to specify a reference to a PNG or WebP file
                     # so do not mark for translation in those cases
-                    if not (key == 'label' and ('.png' in value or '.webp' in value)):
-                        print('"%s", line %d: %s needs translation mark' \
-                              % (filename, i+1, key))
-                        lines[i] = lines[i].replace('=', "=_ ", 1)
+                    # and ignore 'text = "(text)"' used in [text]
+                    if not (key == 'label' and ('.png' in value or '.webp' in value)) and not value == '(text)' and not value == '(revision_number)':
+                        # ignore attributes where the translatable string is on the next line in order to have a po comment
+                        if len(lines) >= i+1 and not (lines[i+1].strip().startswith('_') or lines[i+1].strip().startswith('#po')):
+                            print('"%s", line %d: %s needs translation mark' % (filename, i+1, key))
+                            lines[i] = lines[i].replace('=', "=_ ", 1)
                 nv = sentence_end.sub(" ", value)
                 if nv != value:
                     print('"%s", line %d: double space after sentence end' \
@@ -2541,43 +2108,10 @@ to be called on their own".format(filename, num))
                 if key == "message" and in_message and not in_option and not ("wmllint: ignore" in comment or "wmllint: noconvert" in comment):
                     lines[i] = pangoize(lines[i], filename, i)
             else:
-                if (in_scenario or in_multiplayer) and key == "id":
-                    if in_person:
-                        present.append(value)
-                    elif value and value[0] in ("$", "{"):
-                        continue
-                    elif preamble_seen and subtag_depth > 0 and not ignore_id \
-                         and not in_object and not in_cfg and not in_aspect \
-                         and not in_facet and not in_sound_source \
-                         and not in_remove_sound_source and not in_load_resource \
-                         and not in_stage \
-                         and not in_goal and not in_set_menu_item \
-                         and not in_clear_menu_item and not directly_in_event[-1] \
-                         and not in_time_area and not in_trait and not in_checkbox \
-                         and not in_combo and not in_entry and not in_slider \
-                         and not in_map_generator and not in_candidate_action \
-                         and not (in_fire_event and not (in_primary_unit or in_secondary_unit)) \
-                         and not in_remove_event and not in_remove_time_area \
-                         and not (in_tunnel and not in_filter):
-                        ids = value.split(",")
-                        for id_ in ids:
-                            # removal of leading whitespace of items in comma-separated lists
-                            # is usually supported in the mainline wesnoth lua scripts
-                            # not sure about trailing one
-                            # also, do not complain about ids if they're referred to a menu item being cleared
-                            if id_.lstrip() not in present:
-                                print('"%s", line %d: unknown \'%s\' referred to by id' \
-                                      % (filename, i+1, id_))
-                if (in_scenario or in_multiplayer) and key == "speaker":
-                    if value not in present and value not in ("narrator", "unit", "second_unit") and value[0] not in ("$", "{"):
-                        print('"%s", line %d: unknown speaker \'%s\' of [message]' \
-                              % (filename, i+1, value))
                 if markcheck and has_tr_mark and not ("wmllint: ignore" in comment or "wmllint: noconvert" in comment):
                     print('"%s", line %d: %s should not have a translation mark' \
                           % (filename, i+1, key))
                     lines[i] = prefix + value.replace("_", "", 1) + comment + '\n'
-    # Now that we know who's present, register all these names as spellings
-    declared_spellings[filename] = [x.lower() for x in present if len(x) > 0]
     # Check for textdomain strings; should be exactly one, on line 1
     textdomains = []
     no_text = False
@@ -2710,25 +2244,24 @@ def consistency_check():
     # Should we be checking the transitive closure of derivation?
     # It's not clear whether [base_unit] works when the base is itself derived.
     for (filename, line, unit_type, base_unit) in derived_units:
-        if base_unit not in unit_types:
+        # ignore when the base unit contains a macro argument
+        if base_unit not in unit_types and "{" not in base_unit:
             print('"%s", line %d: derivation of %s from %s does not resolve' \
                   % (filename, line, unit_type, base_unit))
     # Check that all advancements are known units
     for (unit_id, filename, lineno, advancements) in advances:
         advancements = [elem.strip() for elem in advancements.split(",")]
         known_units = unit_types + list(derivations.keys())
-        bad_advancements = [x for x in advancements if x not in known_units]
+        # also skip cases where a macro argument is part of the advancement
+        bad_advancements = [x for x in advancements if x not in known_units and "{" not in x]
         if bad_advancements:
             print('"%s", line %d: %s has unknown advancements %s' \
                   % (filename, lineno, unit_id, bad_advancements))
     # Check next-scenario pointers
-    for (filename, lineno, value) in nextrefs:
-        if value not in scenario_to_filename:
+    for (filename, lineno, value, line) in nextrefs:
+        if value not in scenario_to_filename and "no-syntax-rewrite" not in line:
             print('"%s", line %d: unresolved scenario reference %s' % \
                   (filename, lineno, value))
-    # Report stored units never unstored or cleared
-    for store in storedids.keys():
-        print('wmllint: stored unit "%s" not unstored or cleared from "%s"' % (storedids[store], store))
 
 # Syntax transformations
 
@@ -2775,13 +2308,14 @@ def hack_syntax(filename, lines):
     attack_left_open = False
     for i in range(len(lines)):
         if "no-syntax-rewrite" in lines[i]:
-
             break
         elif "[filter_wml]" in lines[i]:
             in_filter_wml = True
         elif "[/filter_wml]" in lines[i]:
             in_filter_wml = False
         elif "[attack]" in lines[i]:
+            if "#" in lines[i] and lines[i].find("#") < lines[i].find("[attack]"):
+                continue
             j = i
             have_description = False
             while '[/attack]' not in lines[j]:
@@ -2846,21 +2380,6 @@ def hack_syntax(filename, lines):
                 x = int(m.group(2)) + 5
                 y = int(m.group(3)) + 5
                 lines[i] = lines[i][:m.start(0)] +("{%s %d %d}" % (n, x, y)) + lines[i][m.end(0):]
-    # Fix bare strings containing single quotes; these confuse wesnoth-mode.el
-    for i in range(len(lines)):
-        if "no-syntax-rewrite" in lines[i]:
-            break
-        elif lines[i].count("'") % 2 == 1:
-            try:
-                (key, prefix, value, comment) = parse_attribute(lines[i])
-                if "'" in value and value[0].isalpha() and value[-1].isalpha() and '"'+value+'"' not in lines[i]:
-                    newtext = prefix + '"' + value + '"' + comment + "\n"
-                    if lines[i] != newtext:
-                        lines[i] = newtext
-                        if verbose:
-                            print('"%s", line %d: quote-enclosing attribute value.'%(filename, i+1))
-            except TypeError:
-                pass
     # Palette transformation for 1.7:
     for i in range(len(lines)):
         if "no-syntax-rewrite" in lines[i]:
@@ -3039,127 +2558,89 @@ def hack_syntax(filename, lines):
     # More syntax transformations would go here.
     return lines
 
-def maptransform(filename, baseline, inmap, y):
-    # Transform lines in maps
+def base_to_base_with_overlay(filename, baseline, inmap, y):
     for i in range(len(inmap[y])):
         for (old, new) in mapchanges:
             inmap[y][i] = inmap[y][i].replace(old, new)
         # this change needs to be handled separately because it's tricky
-        # we're converting from a terrain without overlays to a terrain +
-        # overlay code
+        # we're converting from a terrain without overlays to a terrain + overlay code
         # since we don't support having two overlays, skip and print a warning
         for (old, new, name) in mapchanges_with_overlay:
             if old + "^" in inmap[y][i]:
-                print("{}, line {}: {} ({}) terrain with overlays \
-must be converted manually".format(filename, baseline + y + 1, old, name))
+                print("{}, line {}: {} ({}) terrain with overlays must be converted manually, cannot add a second overlay".format(filename, baseline + y + 1, old, name))
             elif old in inmap[y][i]:
                 inmap[y][i] = inmap[y][i].replace(old, new)
 
 # Generic machinery starts here
 
-if 0: # Not used, as there are currently no defined map transforms
-    class maptransform_error(BaseException):
-        "Error object to be thrown by maptransform."
-        def __init__(self, infile, inline, type):
-            self.infile = infile
-            self.inline = inline
-            self.type = type
-        def __repr__(self):
-            return '"%s", line %d: %s' % (self.infile, self.inline, self.type)
-
-    def maptransform_sample(filename, baseline, inmap, y):
-        "Transform a map line."
-        # Sample to illustrate how map-transformation hooks are called.
-        # The baseline argument will be the starting line number of the map.
-        # The inmap argument will be a 2D string array containing the
-        # entire map.  y will be the vertical coordinate of the map line.
-        # You pass a list of these as the second argument of translator().
-        raise maptransform_error(filename, baseline+y+1,
-                             "unrecognized map element at line %d" % (y,))
-
 tagstack = [] # For tracking tag nesting
 
-def outermap(func, inmap):
-    "Apply a transformation based on neighborhood to the outermost ring."
-    # Top and bottom rows
-    for i in range(len(inmap[0])):
-        inmap[0][i] = func(inmap[0][i])
-        inmap[len(inmap)-1][i] = func(inmap[len(inmap)-1][i])
-    # Leftmost and rightmost columns excluding top and bottom rows
-    for i in range(1, len(inmap)-1):
-        inmap[i][0] = func(inmap[i][0])
-        inmap[i][len(inmap[0])-1] = func(inmap[i][len(inmap[0])-1])
-
 def translator(filename, mapxforms, textxform):
-    "Apply mapxform to map lines and textxform to non-map lines."
+    re_map_data = re.compile(r"^\s*map_data\s*=")
+    re_mask = re.compile(r"^\s*mask\s*=")
     global tagstack
-    gzipped = filename.endswith(".gz")
-    if gzipped:
-        with gzip.open(filename) as content:
-            unmodified = content.readlines()
-    else:
-        try:
-            with open(filename, "r", encoding="utf8") as content:
-                unmodified = content.readlines()
-        except UnicodeDecodeError as e:
-            print('wmllint: "{}" is not a valid UTF-8 file'.format(filename), file=sys.stderr)
-            return
-    # Pull file into an array of lines, CR-stripping as needed
-    mfile = []
     map_only = filename.endswith(default_map_extension)
-    terminator = "\n"
+
+    # Pull file into an array of lines
+    try:
+        with open(filename, "r", encoding="utf8") as content:
+            unmodified = content.read().splitlines()
+    except UnicodeDecodeError as e:
+        print('wmllint: "{}" is not a valid UTF-8 file'.format(filename), file=sys.stderr)
+        return
+    
+    # array of lines that have potentially been modified
+    mfile = []
+    # check for UTF8 BOM
     UTF8_BOM = "\ufeff"
     for i, line in enumerate(unmodified):
         # get rid of BOM characters
         if i == 0 and line.startswith(UTF8_BOM):
             line = line[1:]
             print("%s: removed UTF-8 BOM character at the start of the file" % (filename))
-        if line.endswith("\n"):
-            line = line[:-1]
-        if line.endswith("\r"):
-            line = line[:-1]
-            if not stripcr:
-                terminator = '\r\n'
+        # add all the lines to the new array
         mfile.append(line)
-        if "map_data" in line:
-            map_only = False
-    # Process line-by-line
-    lineno = baseline = 0
-    cont = False
+
+    terminator = "\n"
+    lineno = 0
     validate = True
     unbalanced = False
     in_lua_code = False
+    in_translatable_attribute = False
     newdata = []
-    refname = None
+
+    # Process line-by-line
     while mfile:
         if not map_only:
             line = mfile.pop(0)
-            if verbose >= 3:
-                print(line, end=terminator)
             lineno += 1
+
         # Check for one certain error condition
         if "{" in line and "}" in line:
             refname = line[line.find("{"):line.rfind("}")]
             # Ignore all-caps macro arguments.
             if refname == refname.upper():
                 pass
-            elif 'mask=' in line and not (refname.endswith("}") or refname.endswith(default_mask_extension)):
+            elif re_mask.search(line) and not (refname.endswith("}") or refname.endswith(default_mask_extension)):
                 print('"%s", line %d: mask file without %s extension or not a mask file (%s)' \
                       % (filename, lineno+1, default_mask_extension, refname))
-        # Exclude map_data= lines that are just 1 line without
-        # continuation, or which contain {}.  The former are
-        # pathological and the parse won't handle them, the latter
-        # refer to map files which will be checked separately.
-        if map_only or (("map_data=" in line or "mask=" in line)
-                        and line.count('"') in (1, 2)
-                        and '""' not in line
-                        and "{" not in line
-                        and "}" not in line
-                        and not within('time')):
+
+        # Exclude map_data= lines that are just 1 line, entirely empty, referenced via preprocessor inclusion, or part of a [time]
+        if map_only or \
+            (
+                (re_map_data.search(line) or re_mask.search(line))
+                and line.count('"') in (1, 2)
+                and '""' not in line
+                and "{" not in line
+                and "}" not in line
+                and not within('time')
+            ):
             outmap = []
-            have_header = have_delimiter = False
-            maskwarn = False
             maptype = None
+            baseline = lineno
+            in_map_mask_attribute = True
+
+            # determine whether this is map data or mask data
             if map_only:
                 if filename.endswith(default_mask_extension):
                     maptype = "mask"
@@ -3167,102 +2648,84 @@ def translator(filename, mapxforms, textxform):
                     maptype = "map"
             else:
                 leadws = leader(line)
-                if "map_data" in line:
+                if re_map_data.search(line):
                     maptype = "map"
-                elif "mask" in line:
+                elif re_mask.search(line):
                     maptype = "mask"
-            baseline = lineno
-            cont = True
+
+            # prepare map/mask data in an attribute for parsing
             if not map_only:
                 fields = line.split('"')
                 if fields[1].strip():
                     mfile.insert(0, fields[1])
                 if len(fields) == 3:
                     mfile.insert(1, '"')
-            if verbose >= 3:
-                print("*** Entering %s mode on:" % maptype)
-                print(mfile)
-            # Gather the map header (if any) and data lines
-            savedheaders = []
-            while cont and mfile:
+            
+            # get map/mask data from attribute
+            # uses trailing double quote as ending marker
+            while in_map_mask_attribute and mfile:
                 line = mfile.pop(0)
-                if verbose >= 3:
-                    print(line, end=terminator)
                 lineno += 1
-                # This code supports ignoring comments and header lines
-                if len(line) == 0 or line[0] == '#' or '=' in line:
-                    if '=' in line:
-                        have_header = True
-                    if len(line) == 0:
-                        have_delimiter = True
-                    savedheaders.append(line + terminator)
-                    continue
                 if '"' in line:
-                    cont = False
-                    if verbose >= 3:
-                        print("*** Exiting map mode.")
+                    in_map_mask_attribute = False
                     line = line.split('"')[0]
                 if line:
-                    if ',' in line:
-                        fields = line.split(",")
-                    else:
-                        fields = [x for x in line]
-                    outmap.append(fields)
-                    if not maskwarn and maptype == 'map':
-                        terrain_strings = (f.split()[-1] for f in fields)
-                        if any(re.search('_s|_f(?!me)', t) for t in terrain_strings):
-                            print('"%s", line %d: warning, fog or shroud in map file' \
-                                  % (filename, lineno+1))
-                            maskwarn = True
-            # Deduce the map type
+                    outmap.append(line.split(","))
+            
+            # re-add the map/mask attribute
+            # this causes the map/mask data to always be on the same line as the attribute
             if not map_only:
                 if maptype == "map":
                     newdata.append(leadws + "map_data=\"")
                 elif maptype == "mask":
                     newdata.append(leadws + "mask=\"")
-            original = copy.deepcopy(outmap)
+            
+            # execute any map updates, for example base_to_base_with_overlay to convert hexes that went from being a single terrain to a terrain plus an overlay
             for transform in mapxforms:
                 for y in range(len(outmap)):
                     transform(filename, baseline, outmap, y)
-            newdata += savedheaders
-            if have_header and not have_delimiter:
-                newdata.append(terminator)
+            
+            # concatenate and re-add the map/mask data
             for y in range(len(outmap)):
                 newdata.append(",".join(outmap[y]) + terminator)
-            # All lines of the map are processed, add the appropriate trailer
+            
+            # add closing quote on separate line
+            # this causes the closing quote for map/mask data to always be on its own line
             if not map_only:
                 newdata.append("\"" + terminator)
-        elif "map_data=" in line and ("{" in line or "}" in line):
-            newline = line
-            refre = re.compile(r"\{@?([^A-Z].*)\}").search(line)
-            if refre:
-                mapfile = refre.group(1)
-                if not mapfile.endswith(default_map_extension) and ismap(mapfile):
-                    newline = newline.replace(mapfile, mapfile + default_map_extension)
-            newdata.append(newline + terminator)
-            if newline != line:
-                if verbose > 0:
-                    print('wmllint: "%s", line %d: %s -> %s.' % (filename, lineno, line, newline))
-        elif "map_data=" in line and line.count('"') > 1:
-            print('wmllint: "%s", line %d: one-line map.' % (filename, lineno))
+        # if this is map data referenced via preprocessor inclusion
+        elif re_map_data.search(line) and ("{" in line or "}" in line):
+            newdata.append(line + terminator)
+        # if this map data has more than one quote on a single line aka it's an empty map data attribute
+        elif re_map_data.search(line) and line.count('"') > 1:
             newdata.append(line + terminator)
         else:
-            # Handle text (non-map) lines.  It can use within().
-            newline = textxform(filename, lineno, line)
+            newline = line
+
+            # translatable attribute start is identified by equals, optional whitespace, underscore, optional whitespace, quote
+            if not in_translatable_attribute and re.search(r'=\s*_\s*"', line):
+                in_translatable_attribute = True
+            
+            # code conversions should be skipped in translatable attributes
+            if not in_translatable_attribute:
+                # Handle text (non-map) lines.  It can use within().
+                newline = textxform(filename, lineno, line)
+            
+            # translatable attribute end is identified by quote, optional whitespace, optional comment, end of line
+            if in_translatable_attribute and re.search(r'"\s*(#.*)?$', line):
+                in_translatable_attribute = False
+            
             newdata.append(newline + terminator)
             fields = newline.split("#")
             trimmed = fields[0]
             destringed = re.sub('"[^"]*"', '', trimmed) # Ignore string literals
-            comment = ""
-            if len(fields) > 1:
-                comment = fields[1]
+            
             # Now do warnings based on the state of the tag stack.
-            # the regex check for "path=" is needed due to [modify_ai]
-            # which uses square braces in its syntax
-            if not unbalanced and not in_lua_code and not re.match(r"\s*path\=", destringed):
+            if not unbalanced and not in_lua_code and re.search(r'^[a-zA-Z0-9_]$', trimmed):
                 for instance in re.finditer(r"\[\/?\+?([a-z][a-z_]*[a-z])\]", destringed):
                     tag = instance.group(1)
                     closer = instance.group(0)[1] == '/'
+
                     if not closer:
                         tagstack.append((tag, {}, []))
                     else:
@@ -3280,25 +2743,30 @@ def translator(filename, mapxforms, textxform):
                         if '#' in value:
                             value = value.split("#")[0]
                         tagstack[-1][1][attribute] = value.strip()
-            if "wmllint: validate-on" in comment:
+
+            if "wmllint: validate-on" in newline:
                 validate = True
-            if "wmllint: validate-off" in comment:
+            if "wmllint: validate-off" in newline:
                 validate = False
-            if "wmllint: unbalanced-on" in comment:
+            if "wmllint: unbalanced-on" in newline:
                 unbalanced = True
-            if "wmllint: unbalanced-off" in comment:
+            if "wmllint: unbalanced-off" in newline:
                 unbalanced = False
+
             # single line of Lua code, skip
             if re.match(r"\s*?code\s?=\s?<<.*>>", destringed):
                 continue
+
             # multiline Lua block
             if re.match(r"\s*?code\s?=\s?<<.*", destringed):
                 in_lua_code = True
             if in_lua_code and re.match(r".*?>>\s*$", destringed):
                 in_lua_code = False
+
     # It's an error if the tag stack is nonempty at the end of any file:
     if tagstack:
         print('"%s", line %d: tag stack nonempty (%s) at end of file.' % (filename, lineno, tagstack))
+    
     tagstack = []
     if iswml(filename):
         # Perform checks that are purely local.  This is an
@@ -3310,201 +2778,35 @@ def translator(filename, mapxforms, textxform):
             except TypeError:
                 key = prefix = value = comment = None
                 local_sanity_check(filename, nav, key, prefix, value, comment)
+
         # Perform file-global semantic sanity checks
         newdata = global_sanity_check(filename, newdata)
+
         # OK, now perform WML rewrites
         newdata = hack_syntax(filename, newdata)
+        
         # Run everything together
         filetext = "".join(newdata)
         transformed = filetext
     else:
         # Map or mask -- just run everything together
         transformed = "".join(newdata)
+
+    original = terminator.join(unmodified)
+    if original[-1] != terminator and transformed[-1] == terminator:
+        transformed = transformed[:-1]
+
     # Return None if the transformation functions made no changes.
-    if "".join(unmodified) != transformed:
+    if original != transformed:
         return transformed
     else:
         return None
-
-def inner_spellcheck(nav, value, spelldict):
-    "Spell-check an attribute value or string."
-    # Strip off translation marks
-    if value.startswith("_"):
-        value = value[1:].strip()
-    # Strip off line continuations, they interfere with string-stripping
-    value = value.strip()
-    if value.endswith("+"):
-        value = value[:-1].rstrip()
-    # Strip off string quotes
-    value = string_strip(value)
-    # Discard extraneous stuff
-    replacements = (
-        ("...", " "),
-        ("\"", " "),
-        ("\\n", " "),
-        ("/", " "),
-        ("@", " "),
-        (")", " "),
-        ("(", " "),
-        ("…", " "),  # UTF-8 ellipsis
-        ("—", " "),  # UTF-8 em dash
-        ("–", " "),  # UTF-8 en dash
-        ("―", " "),  # UTF-8 horizontal dash
-        ("−", " "),  # UTF-8 minus sign
-        ("’", "'"),  # UTF-8 right single quote
-        ("‘", "'"),  # UTF-8 left single quote
-        ("”", " "),  # UTF-8 right double quote
-        ("“", " "),  # UTF-8 left double quote
-        ("•", " "),  # UTF-8 bullet
-        ("◦", ""),              # Why is this necessary?
-        ("''", ""),
-        ("female^", " "),
-        ("male^", " "),
-        ("teamname^", " "),
-        ("team_name^", " "),
-        ("UI^", " "),
-        ("^", " "),
-    )
-
-    for old, new in replacements:
-        value = value.replace(old, new)
-
-    if '<' in value:
-        # remove HelpWML markup and extract its text content where needed
-        value = re.sub(r"<(ref|format)>.*?text='(.*?)'.*?< \1>", r"\2", value)
-        value = re.sub(r"<(jump|img)>.*?< \1>", "", value)
-        value = re.sub(r"<(italic|bold|header)>text='(.*?)'< \1>", r"\2", value)
-    # Fold continued lines
-    value = re.sub(r'" *\+\s*_? *"', "", value)
-    # It would be nice to use pyenchant's tokenizer here, but we can't
-    # because it wants to strip the trailing quotes we need to spot
-    # the Dwarvish-accent words.
-    for token in value.split():
-        # Try it with simple lowercasing first
-        lowered = token.lower()
-        if d.check(lowered):
-            continue
-        # Strip leading punctuation and grotty Wesnoth highlighters
-        # Last char in this regexp is to ignore concatenation signs.
-        while lowered and lowered[0] in " \t(`@*'%_+":
-            lowered = lowered[1:]
-        # Not interested in interpolations or numeric literals
-        if not lowered or lowered.startswith("$"):
-            continue
-        # Suffix handling. Done in two passes because some
-        # Dwarvish dialect words end in a single quote
-        while lowered and lowered[-1] in "_-*).,:;?!& \t":
-            lowered = lowered[:-1]
-        if lowered and spelldict.check(lowered):
-            continue
-        while lowered and lowered[-1] in "_-*').,:;?!& \t":
-            lowered = lowered[:-1]
-        # Not interested in interpolations or numeric literals
-        if not lowered or lowered.startswith("$") or lowered[0].isdigit():
-            continue
-       # Nuke balanced string quotes if present
-        lowered = string_strip(lowered)
-        if lowered and spelldict.check(lowered):
-            continue
-        # No match? Strip possessive suffixes and try again.
-        elif lowered.endswith("'s") and spelldict.check(lowered[:-2]):
-            continue
-        # Hyphenated compounds need all their parts good
-        if "-" in lowered:
-            parts = lowered.split("-")
-            if [w for w in parts if not w or spelldict.check(w)] == parts:
-                continue
-        # Modifier literals aren't interesting
-        if re.match("[+-][0-9]", lowered):
-            continue
-        # Match various onomatopoetic exclamations of variable form
-        if re.match("hm+", lowered):
-            continue
-        if re.match("a+[ur]*g+h*", lowered):
-            continue
-        if re.match("(mu)?ha(ha)*", lowered):
-            continue
-        if re.match("ah+", lowered):
-            continue
-        if re.match("no+", lowered):
-            continue
-        if re.match("um+", lowered):
-            continue
-        if re.match("aw+", lowered):
-            continue
-        if re.match("o+h+", lowered):
-            continue
-        if re.match("s+h+", lowered):
-            continue
-        nav.printError('possible misspelling "%s"' % token)
-
-
-def spellcheck(fn, d):
-    "Spell-check a file using an Enchant dictionary object."
-    local_spellings = []
-    # Accept declared spellings for this file
-    # and for all directories above it.
-    up = fn
-    while True:
-        if not up or is_root(up):
-            break
-        else:
-            local_spellings += declared_spellings.get(up,[])
-            up = os.path.dirname(up)
-    local_spellings = [w for w in local_spellings if not d.check(w)]
-    for word in local_spellings:
-        d.add_to_session(word)
-
-    # Process this individual file
-    for nav in WmllintIterator(filename=fn):
-        # Recognize local spelling exceptions
-        if not nav.element and "#" in nav.text:
-            comment = nav.text[nav.text.index("#"):]
-            words = re.search("wmllint: local spellings? (.*)", comment)
-            if words:
-                for word in words.group(1).split():
-                    word = word.lower()
-                    if not d.check(word):
-                        d.add_to_session(word)
-                        local_spellings.append(word)
-                    else:
-                        nav.printError("spelling '%s' already declared" % word)
-
-    for nav in WmllintIterator(filename=fn):
-        # Spell-check message and story parts
-        if nav.element in spellcheck_these:
-            # Special case, beyond us until we can do better filtering..
-            # There is lots of strange stuff in text- attributes in the
-            # helpfile(s).
-            if nav.element == 'text=' and '[help]' in nav.ancestors():
-                continue
-            # Remove pango markup
-            if "<" in nav.text or ">" in nav.text or '&' in nav.text:
-                nav.text = pangostrip(nav.text)
-            # Spell-check the attribute value
-            (key, prefix, value, comment) = parse_attribute(nav.text)
-            if "no spellcheck" in comment:
-                continue
-            inner_spellcheck(nav, value, d)
-        # Take exceptions from the id fields
-        if nav.element == "id=":
-            (key, prefix, value, comment) = parse_attribute(nav.text)
-            value = string_strip(value).lower()
-            if value and not d.check(value):
-                d.add_to_session(value)
-                local_spellings.append(value)
-    for word in local_spellings:
-        try:
-            d.remove_from_session(word)
-        except AttributeError:
-            print("Caught AttributeError when trying to remove %s from dict" % word)
 
 vctypes = (".svn", ".git", ".hg")
 
 def interesting(fn):
     "Is a file interesting for conversion purposes?"
-    return (fn.endswith(default_wml_extension) and not fn.endswith("_info.cfg")) \
-           or ismap(fn) or issave(fn)
+    return (fn.endswith(default_wml_extension) and not fn.endswith("_info.cfg")) or ismap(fn) or issave(fn)
 
 def allcfgfiles(directory):
     "Get the names of all interesting files under directory."
@@ -3517,11 +2819,16 @@ def allcfgfiles(directory):
                 datafiles.append(directory)
     else:
         for root, dirs, files in os.walk(directory):
+            if root in ignore_directories:
+                continue
             for vcsubdir in vctypes:
                 if vcsubdir in dirs:
                     dirs.remove(vcsubdir)
+            for dir in dirs:
+                if os.path.join(root, dir) in ignore_directories:
+                    dirs.remove(dir)
             for name in files:
-                if interesting(os.path.join(root, name)):
+                if os.path.join(root, name) not in ignore_files and interesting(os.path.join(root, name)):
                     datafiles.append(os.path.join(root, name))
     datafiles.sort() # So diffs for same campaigns will cluster in reports
     return map(os.path.normpath, datafiles)
@@ -3559,17 +2866,13 @@ sides.""")
     parser.add_argument("-K", "--known", action="store_true",
                         help="""Suppress check for unknown unit types, recruits, races,
 scenarios, etc.""")
-    parser.add_argument("-S", "--nospellcheck", action="store_false",
-                        help="Suppress spellchecking")
     # -Z --stringfreeze has been removed; it just disabled repairs of double spaces after sentence ends
     # -f --future has been removed; there have been no experimental conversions since 1.4
     # -p --progress has been removed; similar to existing -v -v
     parser.add_argument("directories", action="store", nargs="*",
-                        help="""Any number of directories. Each directory is converted.
-If no directories are specified, acts on the current
-directory.""")
-    parser.add_argument("--version", action="version",
-                        version="%(prog)s " + version.as_string)
+                        help="Any number of directories. Each directory is converted.")
+    parser.add_argument("--version", action="version", version="%(prog)s " + version.as_string)
+    parser.add_argument("--config", type=str, default="", help="Location of external toml config file to use.")
 
     namespace = parser.parse_args()
     clean = namespace.clean
@@ -3579,9 +2882,25 @@ directory.""")
     revert = namespace.revert
     stripcr = namespace.stripcr
     verbose = namespace.verbose
-    dospellcheck = namespace.nospellcheck # WARNING! We store the opposite of the value needed!
     inconsistency = namespace.known
+    config = namespace.config
     arguments = namespace.directories # a remnant of getopt...
+
+    ignore_files = []
+    ignore_directories = []
+    if config and os.path.exists(config):
+        with open(config, "rb") as f:
+            data = tomllib.load(f)
+            if data.get("include_dirs"):
+                arguments = data["include_dirs"]
+            if data.get("ignore_files"):
+                ignore_files = data["ignore_files"]
+            if data.get("ignore_directories"):
+                ignore_directories = data["ignore_directories"]
+
+    if not arguments:
+        print("No directory specified to run wmllint on")
+        exit(1)
 
     if dryrun:
         verbose = max(1, verbose)
@@ -3600,7 +2919,13 @@ directory.""")
         # Perform line changes
         if "wmllint: noconvert" not in original:
             for (old, new) in linechanges + mapchanges:
-                line = line.replace(old, new)
+                # code conversions should not affect comments
+                if "#" in line:
+                    parts = line.split("#", maxsplit=1)
+                    parts[0] = parts[0].replace(old, new)
+                    line = parts[0] + "#" + parts[1]
+                else:
+                    line = line.replace(old, new)
             # Perform any base terrain string conversions needed in
             # [terrain_type] aliasof=, mvt_alias=, and def_alias= attributes.
             if under("terrain_type"):
@@ -3639,8 +2964,6 @@ directory.""")
                standard_unit_filter() or \
                under("side") or \
                re.search("{[A-Z]+.*description=.*}", line)):
-            if "id" not in tagstack[-1][1] and "_" not in line:
-                line = re.sub(r"\bdescription\s*=", "id=", line)
             if "name" not in tagstack[-1][1]:
                 line = re.sub(r"user_description\s*=", "name=", line)
             if "generate_name" not in tagstack[-1][1]:
@@ -3671,104 +2994,6 @@ directory.""")
         return line
 
     try:
-        # If a backslash comes before a quote, it will be interpreted as an
-        # escape to a literal quote rather than a Windows directory delimiter,
-        # causing Windows to find "no such file or directory". This block deals
-        # with this issue, but it is impossible to handle all cases if multiple
-        # (intended) arguments are involved. We also activate globbing on
-        # Windows, if there is a wildcard.
-        if arguments and sys.platform == 'win32':
-            wildcard = False
-            ugly = False
-            newargs = []
-            for i, arg in enumerate(arguments):
-                if not wildcard and '*' in arg:
-                    wildcard = True
-                    from glob import glob
-                if '"' in arg:
-                    if len(arguments) - i > 1:
-                        ugly = True
-                        break
-                    test = arg.split('"', 1)
-                    if " " in test[1].lstrip():
-                        ugly = True
-                        break
-                    print('\n\nWARNING!! A backslash followed by a quote (\\") is \
-interpreted not as a directory separator and an argument delimiter, but as an escape \
-to a literal quote. Two quotes together ("") will also be interpreted as including a \
-literal quote. Your system sees the file/directory you are targeting as:\n\n%s\n\nAlthough \
-wmllint believes it can resolve this particular instance, please do not repeat this \
-in the future. (If you are using a final backslash at the end of your argument, it \
-is not necessary; also, frontslashes will also be recognized as directory separators.)\n\n'%arg, file=sys.stderr)
-                    arguments.remove(arg)
-                    arg = re.sub(r'([^ ])"([^ ])', r'\1\\\2', arg)
-                    for new in arg.rstrip('"').split('"'):
-                        arguments.insert(i, new.strip())
-                        i += 1
-                        print('wmllint: resolving address as: %s' % new.strip(), file=sys.stderr)
-            if ugly:
-                print("""
-    WARNING!! A backslash followed by a quote (\\"), or two quotes (""), is misinterpreted by your system to mean you want a literal quote character, not a path encloser:
-
-    %s
-
-    After exiting this message: hit the up arrow key, edit your command, and press Enter.
-""" % re.sub(r'"', '-->>"<<--', arg), file=sys.stderr)
-
-                moreugly = input('Press "H" if you need more help, or Enter to exit: ')
-                if moreugly.lower().startswith('h'):
-                    print(r"""
-        Explanation:
-
-Windows' use of the backslash as a directory separator is clashing with the use of the backslash as an escape. As an escape, the backslash tells your system that you want a normally special character to be its literal self (or sometimes, that you want a normally ordinary character to have a special meaning). Your system interprets '\"' as an escape for a literal quote character. Two quotes together are also interpreted as a literal quote.
-
-'"Campaign\"' is interpreted as 'Campaign"' instead of 'Campaign\'.
-'"My Folder\"Campaign' is interpreted as 'My Folder"Campaign' (not 'My Folder\Campaign').
-'"My Folder\Campaign\" "My Folder\Another_Campaign"' is interpreted as 'My Folder\Campaign" My' and 'Folder\Another_Campaign'.
-
-In your case, your system interprets your arguments as:
-
-    %s
-
-        Solutions:
-
-(1) If your problem is adjoining quotes, delete (or move) one of them
-(  "folder\Campaign"" -> "folder\Campaign"  )
-
-(2) If you are using a final backslash at the end of a directory address, it is not necessary
-(  "folder\Campaign\\" -> "folder\Campaign" -- but NOT "folder\Campaign\\"file.cfg -> "folder\Campaign"file.cfg  )
-
-(3) If you add a second backslash, your system will then escape the backslash instead of the quote
-(  "folder\Campaign\\" -> "folder\Campaign\\\\"  )
-
-(4) Frontslashes will also be recognized as directory separators
-(  "folder\Campaign\\" -> "folder/Campaign"  )
-
-(5) If there are no spaces in your address, it is not necessary to use quotes
-(  "folder\Campaign\\" -> folder\Campaign -- but NOT "My Folder\Campaign\\" -> My Folder\Campaign  )
-
-(6) You can move the affected quote
-(  M"y Folder\\"Campaign -> M"y Fold"er\Campaign -- but NOT Fil"es and Folders\My Folder\\"Campaign -> Fil"es and Folders\M"y Folder\Campaign  )
-
-        Reminder:
-
-(a) Hit the up arrow key. The up and down arrows move through your command history; one press of the up arrow will take you to your last command.
-(b) Edit your command. Use any of the solutions described above.
-(c) Press Enter""" % repr(arguments)[1:-1], file=sys.stderr)
-                sys.exit(2)
-            if wildcard:
-                for arg in arguments:
-                    for wild in glob(arg):
-                        newargs.append(wild)
-                if newargs:
-                    arguments = newargs
-                else:
-                    print('wmllint: wildcard did not match any files or directories (%s)'%arguments, file=sys.stderr)
-                    sys.exit(1)
-
-        if not arguments:
-            arguments = ["."]
-
         failed_any_dirs = False
 
         for directory in arguments:
@@ -3810,21 +3035,15 @@ In your case, your system interprets your arguments as:
                         continue
                     # Do file conversions
                     try:
-                        changed = translator(fn, [maptransform], texttransform)
+                        changed = translator(fn, [base_to_base_with_overlay], texttransform)
                         if changed:
                             print("wmllint: converting", fn)
                             if not dryrun:
                                 if sys.platform == 'win32' and os.path.exists(backup):
                                     os.remove(backup)
                                 os.rename(fn, backup)
-                                if fn.endswith(".gz"):
-                                    with gzip.open(fn, "w") as ofp:
-                                        ofp.write(changed)
-                                else:
-                                    with open(fn, "w", encoding="utf8") as ofp:
-                                        ofp.write(changed)
-                    #except maptransform_error, e:
-                    #    print("wmllint: " + repr(e), file=sys.stderr)
+                                with open(fn, "w", encoding="utf8") as ofp:
+                                    ofp.write(changed)
                     except:
                         print("wmllint: internal error on %s" % fn, file=sys.stderr)
                         (exc_type, exc_value, exc_traceback) = sys.exc_info()
@@ -3833,28 +3052,6 @@ In your case, your system interprets your arguments as:
             # Consistency-check everything we got from the file scans
             if not inconsistency:
                 consistency_check()
-            # Attempt a spell-check
-            if dospellcheck:
-                try:
-                    import enchant
-                    d = enchant.Dict("en_US")
-                    checker = d.provider.desc
-                    if checker.endswith(" Provider"):
-                        checker = checker[:-9]
-                    print("# Spell-checking with", checker)
-                    for word in declared_spellings["GLOBAL"]:
-                        d.add_to_session(word.lower())
-                    for directory in arguments:
-                        if not os.path.exists(directory):
-                            failed_any_dirs = True
-                            print("wmllint: skipping non-existent path %s" % directory)
-                            continue
-                        for fn in allcfgfiles(directory):
-                            if verbose >= 2:
-                                print(fn + ":")
-                            spellcheck(fn, d)
-                except ImportError:
-                    print("wmllint: spell check unavailable, install python-enchant to enable", file=sys.stderr)
         if failed_any_dirs:
             sys.exit(1)
     except KeyboardInterrupt:

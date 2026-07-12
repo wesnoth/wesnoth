@@ -84,7 +84,13 @@ void log_settings::pre_show()
 	text_box* filter = find_widget<text_box>("filter_box", false, true);
 	filter->on_modified([this](const auto& box) { filter_text_changed(box.text()); });
 
+#ifdef __IPHONEOS__
+	// On iOS, opening log settings should not immediately summon the
+	// software keyboard just because the optional filter field exists.
+	keyboard_capture(&logger_box);
+#else
 	keyboard_capture(filter);
+#endif
 	add_to_keyboard_chain(&logger_box);
 }
 

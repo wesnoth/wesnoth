@@ -1,13 +1,13 @@
 # Martin Hrubý <hrubymar10@gmail.com>, 2020.
 # Petr Šlejhar (Septim) <septim@centrum.cz>, 2020 - 2022.
-# Michal Žejdl <lachim@emer.cz>, 2020 - 2025
+# Michal Žejdl <lachim@emer.cz>, 2020 - 2026
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2025-11-18 02:02 UTC\n"
-"PO-Revision-Date: 2025-07-31 21:59+0200\n"
+"POT-Creation-Date: 2026-06-23 03:16 UTC\n"
+"PO-Revision-Date: 2026-05-24 08:38+0200\n"
 "Last-Translator: Michal Žejdl <lachim@emer.cz>\n"
 "Language-Team: Czech https://wiki.wesnoth.org/CzechTranslation\n"
 "Language: cs\n"
@@ -164,7 +164,7 @@ msgid "The Hand"
 msgstr "Ruka"
 
 #. [world_conquest_data]
-#: data/campaigns/World_Conquest/era/factions/The_Hand.cfg:17
+#: data/campaigns/World_Conquest/era/factions/The_Hand.cfg:16
 msgid "Dune Rider, Knalgan Alliance and Drakes"
 msgstr "Pouštní jezdec, Knalžská aliance a Drakonidé"
 
@@ -1668,7 +1668,7 @@ msgid ""
 "such a glorious campaign. I pledge myself to your service!"
 msgstr ""
 "Zdravím vás, pánové. Z dálky jsem sledoval vaši bitvu a toužím se připojit k "
-"takové slavné kampani. Zavazuji se k vašim službám!"
+"takovému slavnému tažení. Zavazuji se k vašim službám!"
 
 #. a Mage joins a player's side
 #. a Dune Herbalist joins a player's side
@@ -2396,7 +2396,7 @@ msgid ""
 "One last effort! We better finish our campaign when we hold initiative, "
 "before Winter arrives."
 msgstr ""
-"Už jen jedna mise! Bude pro nás lepší dokončít naši kampaň, dokud máme "
+"Už jen jedna mise! Bude pro nás lepší dokončit naše tažení, dokud máme "
 "iniciativu, dřív, než přijde velká zima."
 
 #. [lua]: end_message
@@ -2454,7 +2454,7 @@ msgid "Enemies"
 msgstr "Nepřátelé"
 
 #. [lua]: add_player_side
-#: data/campaigns/World_Conquest/lua/map/scenario_utils/side_definitions.lua:60
+#: data/campaigns/World_Conquest/lua/map/scenario_utils/side_definitions.lua:61
 msgid "Allies"
 msgstr "Spojenci"
 
@@ -2538,7 +2538,7 @@ msgstr "Bezoár"
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:82
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:93
 msgid "fearless, undead, healthy, tenacity"
-msgstr "jednotka získá vlastnosti nebojácný, nemrtvý, zdravý a houževnatý"
+msgstr "jednotka získá vlastnosti nebojácný, nemrtvý, zdravý a tvrdošíjný"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:83
@@ -2667,8 +2667,12 @@ msgstr ""
 
 #. [leadership]: id=forcefield
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:249
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:250
 msgid "forcefield"
+msgstr "silové pole"
+
+#. [leadership]: id=forcefield
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:250
+msgid "female^forcefield"
 msgstr "silové pole"
 
 #. [leadership]: id=forcefield
@@ -2796,7 +2800,7 @@ msgstr "Léčivé byliny"
 
 #. [artifact]
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:420
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:5
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:4
 msgid "heals +8, cures"
 msgstr "jednotka získá schopnost léčení (+8) a uzdravování"
 
@@ -2972,8 +2976,12 @@ msgstr ""
 
 #. [berserk]: id=wct_fury
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:624
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:625
 msgid "fury"
+msgstr "zuřivost"
+
+#. [berserk]: id=wct_fury
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:625
+msgid "female^fury"
 msgstr "zuřivost"
 
 #. [berserk]: id=wct_fury
@@ -3031,8 +3039,12 @@ msgstr ""
 
 #. [illuminates]: id=darkness
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:674
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:675
 msgid "darkness"
+msgstr "zatemnění"
+
+#. [illuminates]: id=darkness
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:675
+msgid "female^darkness"
 msgstr "zatemnění"
 
 #. [illuminates]: id=darkness
@@ -3048,8 +3060,12 @@ msgstr ""
 
 #. [dummy]: id=wc2_corruption
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:681
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:682
 msgid "corruption"
+msgstr "zkáza"
+
+#. [dummy]: id=wc2_corruption
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:682
+msgid "female^corruption"
 msgstr "zkáza"
 
 #. [dummy]: id=wc2_corruption
@@ -3144,8 +3160,12 @@ msgstr ""
 
 #. [leadership]: id=banner
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:784
-#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:785
 msgid "banner"
+msgstr "zástava"
+
+#. [leadership]: id=banner
+#: data/campaigns/World_Conquest/resources/data/artifacts.cfg:785
+msgid "female^banner"
 msgstr "zástava"
 
 #. [leadership]: id=banner
@@ -3365,7 +3385,6 @@ msgstr "$range|: $special|"
 #. [skirmisher]: id=distract
 #: data/campaigns/World_Conquest/resources/data/training.cfg:378
 #: data/campaigns/World_Conquest/resources/data/training.cfg:403
-#: data/campaigns/World_Conquest/resources/data/training.cfg:404
 msgid "distract"
 msgstr "rozptylování"
 
@@ -3373,9 +3392,13 @@ msgstr "rozptylování"
 #. [resistance]: id=tenacity
 #: data/campaigns/World_Conquest/resources/data/training.cfg:390
 #: data/campaigns/World_Conquest/resources/data/training.cfg:427
-#: data/campaigns/World_Conquest/resources/data/training.cfg:428
 msgid "tenacity"
 msgstr "tvrdošíjnost"
+
+#. [skirmisher]: id=distract
+#: data/campaigns/World_Conquest/resources/data/training.cfg:404
+msgid "female^distract"
+msgstr "rozptylování"
 
 #. [skirmisher]: id=distract
 #: data/campaigns/World_Conquest/resources/data/training.cfg:405
@@ -3383,6 +3406,11 @@ msgid "Allied units ignore enemy zones of control adjacent to this unit."
 msgstr ""
 "Spojenecké jednotky ignorují zóny kontroly nepřátelských jednotek, které "
 "sousedí s touto jednotkou."
+
+#. [resistance]: id=tenacity
+#: data/campaigns/World_Conquest/resources/data/training.cfg:428
+msgid "female^tenacity"
+msgstr "tvrdošíjnost"
 
 #. [resistance]: id=tenacity
 #: data/campaigns/World_Conquest/resources/data/training.cfg:429
@@ -3597,7 +3625,7 @@ msgstr "Zlý sen"
 #. [about]
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:125
 msgid "Campaign Design"
-msgstr "Návrh kampaně"
+msgstr "Návrh tažení"
 
 #. [about]
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:132
@@ -3617,4 +3645,4 @@ msgstr "Testování"
 #. [about]
 #: data/campaigns/World_Conquest/scenarios/WC_II_scenario.cfg:177
 msgid "Campaign Maintenance"
-msgstr "Údržba kampaně"
+msgstr "Údržba tažení"

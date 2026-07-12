@@ -51,12 +51,12 @@ std::string hotkey_base::get_name() const
 {
 	std::string ret = "";
 
-	if(mod_ & KMOD_CTRL) {
+	if(mod_ & SDL_KMOD_CTRL) {
 		ret += "ctrl";
 	}
 
 	ret += (!ret.empty() && !boost::algorithm::ends_with(ret, "+") ? "+" : "");
-	if(mod_ & KMOD_ALT) {
+	if(mod_ & SDL_KMOD_ALT) {
 #ifdef __APPLE__
 		ret += "opt";
 #else
@@ -65,12 +65,12 @@ std::string hotkey_base::get_name() const
 	}
 
 	ret += (!ret.empty() && !boost::algorithm::ends_with(ret, "+") ? "+" : "");
-	if(mod_ & KMOD_SHIFT) {
+	if(mod_ & SDL_KMOD_SHIFT) {
 		ret += "shift";
 	}
 
 	ret += (!ret.empty() && !boost::algorithm::ends_with(ret, "+") ? "+" : "");
-	if(mod_ & KMOD_GUI) {
+	if(mod_ & SDL_KMOD_GUI) {
 #ifdef __APPLE__
 		ret += "cmd";
 #else
@@ -113,10 +113,10 @@ void hotkey_base::save(config& item) const
 	item["command"] = get_command();
 	item["disabled"] = is_disabled();
 
-	item["shift"] = !!(mod_ & KMOD_SHIFT);
-	item["ctrl"] = !!(mod_ & KMOD_CTRL);
-	item["cmd"] = !!(mod_ & KMOD_GUI);
-	item["alt"] = !!(mod_ & KMOD_ALT);
+	item["shift"] = !!(mod_ & SDL_KMOD_SHIFT);
+	item["ctrl"] = !!(mod_ & SDL_KMOD_CTRL);
+	item["cmd"] = !!(mod_ & SDL_KMOD_GUI);
+	item["alt"] = !!(mod_ & SDL_KMOD_ALT);
 
 	save_helper(item);
 }
@@ -128,19 +128,19 @@ hotkey_ptr create_hotkey(const std::string& id, const SDL_Event& event)
 	unsigned mods = sdl::get_mods();
 
 	switch(event.type) {
-	case SDL_KEYUP: {
-		if(mods & KMOD_CTRL || mods & KMOD_ALT || mods & KMOD_GUI || CKey::is_uncomposable(event.key)
+	case SDL_EVENT_KEY_UP: {
+		if(mods & SDL_KMOD_CTRL || mods & SDL_KMOD_ALT || mods & SDL_KMOD_GUI || CKey::is_uncomposable(event.key)
 			|| command.toggle) {
 			auto keyboard = std::make_shared<hotkey_keyboard>();
 			base = std::dynamic_pointer_cast<hotkey_base>(keyboard);
 			SDL_Keycode code;
-			code = event.key.keysym.sym;
+			code = event.key.key;
 			keyboard->set_keycode(code);
-			keyboard->set_text(SDL_GetKeyName(event.key.keysym.sym));
+			keyboard->set_text(SDL_GetKeyName(event.key.key));
 		}
 	} break;
 
-	case SDL_TEXTINPUT: {
+	case SDL_EVENT_TEXT_INPUT: {
 		if(command.toggle) {
 			return nullptr;
 		}
@@ -149,11 +149,11 @@ hotkey_ptr create_hotkey(const std::string& id, const SDL_Event& event)
 		std::string text = std::string(event.text.text);
 		keyboard->set_text(text);
 		if(text == ":" || text == "`") {
-			mods = mods & ~KMOD_SHIFT;
+			mods = mods & ~SDL_KMOD_SHIFT;
 		}
 	} break;
 
-	case SDL_MOUSEBUTTONUP: {
+	case SDL_EVENT_MOUSE_BUTTON_UP: {
 		auto mouse = std::make_shared<hotkey_mouse>();
 		base = std::dynamic_pointer_cast<hotkey_base>(mouse);
 		mouse->set_button(event.button.button);
@@ -213,13 +213,13 @@ hotkey_ptr load_from_config(const config& cfg)
 	unsigned int mods = 0;
 
 	if(cfg["shift"].to_bool())
-		mods |= KMOD_SHIFT;
+		mods |= SDL_KMOD_SHIFT;
 	if(cfg["ctrl"].to_bool())
-		mods |= KMOD_CTRL;
+		mods |= SDL_KMOD_CTRL;
 	if(cfg["cmd"].to_bool())
-		mods |= KMOD_GUI;
+		mods |= SDL_KMOD_GUI;
 	if(cfg["alt"].to_bool())
-		mods |= KMOD_ALT;
+		mods |= SDL_KMOD_ALT;
 
 	base->set_mods(mods);
 	base->set_command(cfg["command"].str());
@@ -232,10 +232,10 @@ hotkey_ptr load_from_config(const config& cfg)
 bool hotkey_mouse::matches_helper(const SDL_Event& event) const
 {
 	switch(event.type) {
-	case SDL_MOUSEBUTTONUP:
-	case SDL_MOUSEBUTTONDOWN:
-	case SDL_FINGERDOWN:
-	case SDL_FINGERUP:
+	case SDL_EVENT_MOUSE_BUTTON_UP:
+	case SDL_EVENT_MOUSE_BUTTON_DOWN:
+	case SDL_EVENT_FINGER_DOWN:
+	case SDL_EVENT_FINGER_UP:
 		break; // Continue with validation
 	default:
 		return false;
@@ -310,17 +310,17 @@ bool hotkey_keyboard::matches_helper(const SDL_Event& event) const
 	unsigned mods = sdl::get_mods();
 	const hotkey_command& command = get_hotkey_command(get_command());
 
-	if((event.type == SDL_KEYDOWN || event.type == SDL_KEYUP)
-		&& (mods & KMOD_CTRL || mods & KMOD_ALT || mods & KMOD_GUI || command.toggle || CKey::is_uncomposable(event.key))
+	if((event.type == SDL_EVENT_KEY_DOWN || event.type == SDL_EVENT_KEY_UP)
+		&& (mods & SDL_KMOD_CTRL || mods & SDL_KMOD_ALT || mods & SDL_KMOD_GUI || command.toggle || CKey::is_uncomposable(event.key))
 	) {
-		return event.key.keysym.sym == keycode_ && mods == mod_;
+		return event.key.key == keycode_ && mods == mod_;
 	}
 
-	if(event.type == SDL_TEXTINPUT && !command.toggle) {
+	if(event.type == SDL_EVENT_TEXT_INPUT && !command.toggle) {
 		std::string text = std::string(event.text.text);
 		boost::algorithm::to_lower(text);
 		if(text == ":" || text == "`") {
-			mods = mods & ~KMOD_SHIFT;
+			mods = mods & ~SDL_KMOD_SHIFT;
 		}
 		return text_ == text && utf8::size(std::string(event.text.text)) == 1 && mods == mod_;
 	}
@@ -483,16 +483,16 @@ std::string get_names(const std::string& id)
 
 bool is_hotkeyable_event(const SDL_Event& event)
 {
-	if(event.type == SDL_JOYBUTTONUP || event.type == SDL_JOYHATMOTION || event.type == SDL_MOUSEBUTTONUP) {
+	if(event.type == SDL_EVENT_JOYSTICK_BUTTON_UP || event.type == SDL_EVENT_JOYSTICK_HAT_MOTION || event.type == SDL_EVENT_MOUSE_BUTTON_UP) {
 		return true;
 	}
 
 	unsigned mods = sdl::get_mods();
 
-	if(mods & KMOD_CTRL || mods & KMOD_ALT || mods & KMOD_GUI) {
-		return event.type == SDL_KEYUP;
+	if(mods & SDL_KMOD_CTRL || mods & SDL_KMOD_ALT || mods & SDL_KMOD_GUI) {
+		return event.type == SDL_EVENT_KEY_UP;
 	} else {
-		return event.type == SDL_TEXTINPUT || event.type == SDL_KEYUP;
+		return event.type == SDL_EVENT_TEXT_INPUT || event.type == SDL_EVENT_KEY_UP;
 	}
 }
 

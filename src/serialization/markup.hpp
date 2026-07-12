@@ -66,12 +66,12 @@ using tag_attributes = std::vector<std::pair<std::string_view, std::string_view>
  *                  an empty string is returned in lieu of formatting tags.
  */
 template<typename... Args>
-std::string tag(std::string_view tag, const tag_attributes& attrs, Args&&... data)
+std::string tag_attr(std::string_view tag, const tag_attributes& attrs, Args&&... data)
 {
 	std::string input = (formatter() << ... << data);
 	if(input.empty()) return {};
 	std::stringstream ss;
-	ss << "<" << tag << " ";
+	ss << "<" << tag << (attrs.empty() ? "" : " ");
 	for (const auto& [key, value] : attrs) {
 		ss << key << "='" << value << "' ";
 	}
@@ -91,7 +91,7 @@ std::string tag(std::string_view tag, const tag_attributes& attrs, Args&&... dat
 template<typename Value, typename... Args>
 std::string span_attribute(std::string_view key, const Value& value, Args&&... data)
 {
-	return tag("span", {{ key, value }}, std::forward<Args>(data)...);
+	return tag_attr("span", {{ key, value }}, std::forward<Args>(data)...);
 }
 
 /**
@@ -228,6 +228,8 @@ private:
  * text. Each markup item is a separate part while the text between
  * markups are separate parts.
  */
-config parse_text(const std::string &text);
+config parse_text(const std::string& text);
+
+std::string help_to_pango_markup(const std::string& help_markup);
 
 } // namespace markup

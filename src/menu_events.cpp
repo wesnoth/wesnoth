@@ -419,6 +419,9 @@ void menu_handler::recall(int side_num, const map_location& last_hex)
 
 	const auto& dlg = units_dialog::build_recall_dialog(recall_list_team, current_team);
 
+	// side_num is the number of the viewing side, not the current turn's player
+	dlg->set_show_dismiss(pc_.current_side() == side_num);
+
 	if(!dlg->show() || !dlg->is_selected()) {
 		return;
 	}

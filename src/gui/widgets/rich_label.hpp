@@ -1,6 +1,6 @@
 /*
 	Copyright (C) 2024 - 2025
-	by Subhraman Sarkar (babaissarkar) <suvrax@gmail.com>
+	by Subhraman Sarkar (babaissarkar) <sbmskmm@protonmail.com>
 	Part of the Battle for Wesnoth Project https://www.wesnoth.org/
 
 	This program is free software; you can redistribute it and/or modify
@@ -61,11 +61,11 @@ public:
 		return link_color_;
 	}
 
-	virtual void set_active(const bool active) override;
+	virtual void set_active(const bool) override;
 
 	virtual bool get_active() const override
 	{
-		return state_ != DISABLED;
+		return true; // Always enabled
 	}
 
 	virtual unsigned get_state() const override
@@ -138,9 +138,11 @@ public:
 		init_w_ = width;
 	}
 
+	typedef std::unique_ptr<canvas::shape> shape_ptr;
+
 	// Given a parsed config from help markup,
 	// layout it into a config that can be understood by canvas
-	std::pair<config, point> get_parsed_text(
+	std::pair<std::vector<shape_ptr>, point> get_parsed_text(
 		const config& parsed_text,
 		const point& origin,
 		const unsigned init_width,
@@ -155,10 +157,7 @@ private:
 	 *
 	 * Note the order of the states must be the same as defined in settings.hpp.
 	 */
-	enum state_t {
-		ENABLED,
-		DISABLED,
-	};
+	enum state_t { ENABLED }; // Always enabled
 
 	void set_state(const state_t state);
 
@@ -231,12 +230,11 @@ private:
 		return can_shrink_;
 	}
 
-	/** Final list of shapes to be drawn on the canvas. */
-	config shapes_;
-
 	/** Width and height of the canvas */
 	unsigned init_w_;
 	point size_;
+
+	config dom_;
 
 	/** Padding */
 	int padding_;
@@ -245,19 +243,25 @@ private:
 	color_t get_color(const std::string& color);
 
 	/** Create template for text config that can be shown in canvas */
-	void default_text_config(config* txt_ptr, const point& pos, const int max_width, const t_string& text = "");
+	std::unique_ptr<gui2::text_shape> new_text_shape(const point& origin, const int max_width);
 
-	std::pair<std::size_t, std::size_t> add_text(config& curr_item, const std::string& text);
-	void add_attribute(config& curr_item, const std::string& attr_name, const std::string& extra_data = "", std::size_t start = 0, std::size_t end = 0);
-	std::pair<std::size_t, std::size_t> add_text_with_attribute(config& curr_item, const std::string& text, const std::string& attr_name = "", const std::string& extra_data = "");
+	std::pair<std::size_t, std::size_t> add_text_with_attribute(
+		text_shape& tshape,
+		const t_string& text,
+		const std::string& attr_name = "",
+		const std::string& extra_data = "");
 
-	void add_link(config& curr_item, const std::string& name, const std::string& dest, const point& origin, int img_width);
+	void add_link(
+		text_shape& tshape,
+		const std::string& name,
+		const std::string& dest,
+		const point& origin,
+		int img_width);
 
 	/** size calculation functions */
-	point get_text_size(config& text_cfg, unsigned width = 0) const;
-	point get_image_size(config& img_cfg) const;
-
-	wfl::map_formula_callable setup_text_renderer(config text_cfg, unsigned width = 0) const;
+	wfl::map_formula_callable setup_text_renderer(text_shape& tshape, unsigned width) const;
+	point get_text_size(text_shape& tshape, unsigned width) const;
+	point get_image_size(const std::string& path) const;
 
 	std::size_t get_split_location(std::string_view text, const point& pos);
 
@@ -276,7 +280,11 @@ private:
 		return font::get_text_renderer().get_cursor_position(offset);
 	}
 
-	point calculate_best_size() const override { return size_; };
+	point calculate_best_size() const override;
+
+	void request_reduce_width(const unsigned maximum_width) override;
+
+	void place(const point& origin, const point& size) override;
 
 public:
 	/** Static type getter that does not rely on the widget being constructed. */
@@ -344,7 +352,6 @@ struct builder_rich_label : public builder_styled_widget
 
 	PangoAlignment text_alignment;
 	bool link_aware;
-	typed_formula<unsigned> width;
 	unsigned padding;
 };
 

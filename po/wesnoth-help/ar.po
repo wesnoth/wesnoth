@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.4.2+dev\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-01-20 11:31-0600\n"
+"POT-Creation-Date: 2026-06-22 22:15-0500\n"
 "PO-Revision-Date: 2025-04-26 09:44+0100\n"
 "Last-Translator: Mejri Ziad <nouveau.dep@gmail.com>\n"
 "Language-Team: none\n"
@@ -21,7 +21,7 @@ msgstr ""
 
 #. [time]: id=underground
 #. [editor_times]: id=underground
-#: data/campaigns/Heir_To_The_Throne_Classic/utils/httt_utils.cfg:500
+#: data/campaigns/Heir_To_The_Throne_Classic/utils/httt_utils.cfg:499
 #: data/core/editor/time-of-day.cfg:41 data/core/macros/schedules.cfg:113
 msgid "Underground"
 msgstr "تحت الأرض"
@@ -47,15 +47,15 @@ msgstr "لا يخاف"
 #. [plague]: id=plague, type=Walking Corpse
 #: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:244
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:6
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:48
-#: data/core/macros/weapon_specials.cfg:68
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:47
+#: data/core/macros/weapon_specials.cfg:71
 msgid "plague"
 msgstr "طاعون"
 
 #. [plague]: id=SotA_plague, type=null # prevents normal corpse, and allows SotA code to handle it
 #. [plague]: id=plague, type=Walking Corpse
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:7
-#: data/core/macros/weapon_specials.cfg:69
+#: data/core/macros/weapon_specials.cfg:72
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a "
 "Walking Corpse on the same side as the unit with the Plague attack. This "
@@ -67,61 +67,43 @@ msgstr ""
 
 #. [trait]: id=loyal_dummy
 #. [trait]: id=loyal
-#: data/campaigns/The_Deceivers_Gambit/scenarios/00_Graduation.cfg:112
-#: data/campaigns/The_Deceivers_Gambit/scenarios/11_Clan_Blackcrest.cfg:748
-#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:19
+#: data/campaigns/The_Deceivers_Gambit/scenarios/00_Graduation.cfg:188
+#: data/campaigns/The_Deceivers_Gambit/scenarios/11_Clan_Blackcrest.cfg:770
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:23
 #: data/core/macros/traits.cfg:12
 msgid "loyal"
 msgstr "مخلصة"
 
 #. [trait]: id=loyal_dummy
-#: data/campaigns/The_Deceivers_Gambit/scenarios/00_Graduation.cfg:113
-#: data/campaigns/The_Deceivers_Gambit/scenarios/11_Clan_Blackcrest.cfg:749
-#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:20
+#: data/campaigns/The_Deceivers_Gambit/scenarios/00_Graduation.cfg:189
+#: data/campaigns/The_Deceivers_Gambit/scenarios/11_Clan_Blackcrest.cfg:771
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:24
 msgid "Zero upkeep."
 msgstr "صفر تكاليف صيانة."
 
-#. [chance_to_hit]
-#. [chance_to_hit]: id=magical
-#: data/campaigns/The_Deceivers_Gambit/scenarios/14_Long_Live_the_Queen.cfg:1299
-#: data/core/macros/weapon_specials.cfg:117
-msgid ""
-"This attack always has a 70% chance to hit regardless of the defensive "
-"ability of the unit being attacked."
-msgstr ""
-"يتمتع هذا الهجوم دائمًا بفرصة 70% للاصابة بغض النظر عن القدرة الدفاعية للوحدة "
-"التي تتعرض للهجوم."
-
-#. [chance_to_hit]
-#. [chance_to_hit]: id=magical
-#: data/campaigns/The_Deceivers_Gambit/scenarios/14_Long_Live_the_Queen.cfg:1299
-#: data/core/macros/weapon_specials.cfg:116
-msgid "magical"
-msgstr "مسحور"
-
 #. [trait]: id=intelligent_dummy
 #. [trait]: id=intelligent
-#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:24
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:28
 #: data/core/macros/traits.cfg:190
 msgid "intelligent"
 msgstr "ذكية"
 
 #. [trait]: id=intelligent_dummy
-#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:25
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:29
 msgid "Intelligent units require 20% less experience than usual to advance."
 msgstr "الوحدات الذكية تتطلب خبرة أقل بنسبة 20% من المعتاد للتقدم."
 
 #. [resistance]: id=garak_steadfast
 #. [resistance]: id=steadfast
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:708
-#: data/core/macros/abilities.cfg:136
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:707
+#: data/core/macros/abilities.cfg:139
 msgid "steadfast"
 msgstr "صامد"
 
 #. [resistance]: id=garak_steadfast
 #. [resistance]: id=steadfast
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:709
-#: data/core/macros/abilities.cfg:137
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:708
+#: data/core/macros/abilities.cfg:140
 msgid "female^steadfast"
 msgstr "صامدة"
 
@@ -129,81 +111,78 @@ msgstr "صامدة"
 #. [illuminates]: id=illumination
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:324
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:325
-#: data/core/macros/abilities.cfg:245
+#: data/core/macros/abilities.cfg:248
 msgid "female^illuminates"
 msgstr "منيرة"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:727
-#: data/core/macros/abilities.cfg:10
+#: data/core/macros/abilities.cfg:13
 msgid "heals +4"
 msgstr "يشفي +4"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:728
-#: data/core/macros/abilities.cfg:11
+#: data/core/macros/abilities.cfg:14
 msgid "female^heals +4"
 msgstr "تشفي +4"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:729
+#: data/core/macros/abilities.cfg:15
 msgid ""
 "Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
 "\n"
 "A unit cared for by this healer may heal up to 4 HP per turn, or stop poison "
 "from taking effect for that turn.\n"
-"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
-"care of a village or a unit that can cure."
+"This ability will not cure an affected unit of poison, however, only delay "
+"its effect."
 msgstr ""
-"السماح للوحدة بشفاء الوحدات المتحالفة المجاورة في بداية دورنا.\n"
+"تسمح للوحدة بمعالجة الوحدات الحليفة المجاورة في بداية دورها.\n"
 "\n"
-"يمكن للوحدة التي يعتني بها هذا المعالج أن تشفي ما يصل إلى 4 نقاط حياة لكل "
-"دور، أو تمنع السم من التأثير فيها في هذا الدور.\n"
-"لا يمكن للوحدة المسمومة أن تعالج من سمها بواسطة معالج، ويجب أن تسعى للحصول "
-"على رعاية قرية أو وحدة يمكنها العلاج."
+"يمكن للوحدة التي يعتني بها هذا المعالج أن تعالج ما يصل إلى 4 نقاط صحة لكل "
+"دور، أو توقف تأثير السم في ذلك الدور.\n"
+"لن تعالج هذه القدرة وحدة متأثرة بالسم، ولكنها ستؤخر تأثيره فقط."
 
 #. [heals]: id=healing
 #. [heals]
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:733
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:772
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:802
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:803
 msgid "This unit is capable of basic healing and slowing dehydration."
 msgstr "هذه الوحدة قادرة على الشفاء الأساسي وإبطاء الجفاف."
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:751
-#: data/core/macros/abilities.cfg:37
+#: data/core/macros/abilities.cfg:40
 msgid "heals +8"
 msgstr "يشفي +8"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:752
-#: data/core/macros/abilities.cfg:38
+#: data/core/macros/abilities.cfg:41
 msgid "female^heals +8"
 msgstr "تشفي +8"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:753
+#: data/core/macros/abilities.cfg:42
 msgid ""
 "This unit combines herbal remedies with magic to heal units more quickly "
 "than is normally possible on the battlefield.\n"
 "\n"
 "A unit cared for by this healer may heal up to 8 HP per turn, or stop poison "
 "from taking effect for that turn.\n"
-"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
-"care of a village or a unit that can cure."
+"This ability will not cure an affected unit of poison, however, only delay "
+"its effect."
 msgstr ""
-"تجمع هذه الوحدة بين العلاجات العشبية والسحر لشفاء الوحدات بسرعة أكبر مما هو "
-"ممكن عادةً في ساحة المعركة.\n"
+"تجمع هذه الوحدة بين العلاجات العشبية والسحر لعلاج الوحدات بشكل أسرع مما هو "
+"ممكن عادة في ساحة المعركة.\n"
 "\n"
-"الوحدة التي يعتني بها هذا المعالج قد تشفي ما يصل إلى 8 نقاط صحة في كل دور، "
-"أو تمنع السم من التأثير في هذا الدور تجمع هذه الوحدة بين العلاجات العشبية "
-"والسحر لشفاء الوحدات بسرعة أكبر مما هو ممكن عادةً في ساحة المعركة.\n"
+"يمكن للوحدة التي يعتني بها هذا المعالج أن تشفي ما يصل إلى 8 نقاط صحة لكل "
+"دورة، أو توقف تأثير السم في ذلك الدور.\n"
 "\n"
-"قد تشفي الوحدة التي يعتني بها هذا المعالج ما يصل إلى 8 نقاط حياة لكل دور، أو "
-"تمنع السم من التأثير فيها في هذا الدور.\n"
-"لا يمكن للوحدة المسمومة أن تعالج من سمها بواسطة معالج، ويجب أن تسعى للحصول "
-"على رعاية قرية أو وحدة يمكنها العلاج."
+"لن تعالج هذه القدرة وحدة متأثرة بالسم، ولكنها ستؤخر تأثيره فقط."
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:781
@@ -216,72 +195,78 @@ msgid "female^heals +12"
 msgstr "تشفي +12"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:783
+#. only exists in UtBS, but is the same wording as heals+8 with a bigger number
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:784
+#, fuzzy
+#| msgid ""
+#| "This unit combines herbal remedies with magic to heal units more quickly "
+#| "than is normally possible on the battlefield.\n"
+#| "\n"
+#| "A unit cared for by this healer may heal up to 8 HP per turn, or stop "
+#| "poison from taking effect for that turn.\n"
+#| "This ability will not cure an affected unit of poison, however, only "
+#| "delay its effect."
 msgid ""
 "This unit combines herbal remedies with magic to heal units more quickly "
 "than is normally possible on the battlefield.\n"
 "\n"
 "A unit cared for by this healer may heal up to 12 HP per turn, or stop "
 "poison from taking effect for that turn.\n"
-"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
-"care of a village or a unit that can cure."
+"This ability will not cure an affected unit of poison, however, only delay "
+"its effect."
 msgstr ""
-"تجمع هذه الوحدة بين العلاجات العشبية والسحر لشفاء الوحدات بسرعة أكبر مما هو "
-"ممكن عادةً في ساحة المعركة.\n"
+"تجمع هذه الوحدة بين العلاجات العشبية والسحر لعلاج الوحدات بشكل أسرع مما هو "
+"ممكن عادة في ساحة المعركة.\n"
 "\n"
-"الوحدة التي يعتني بها هذا المعالج قد تشفي ما يصل إلى 12 نقطة صحة في كل دور، "
-"أو تمنع السم من التأثير في هذا الدور تجمع هذه الوحدة بين العلاجات العشبية "
-"والسحر لشفاء الوحدات بسرعة أكبر مما هو ممكن عادةً في ساحة المعركة.\n"
+"يمكن للوحدة التي يعتني بها هذا المعالج أن تشفي ما يصل إلى 8 نقاط صحة لكل "
+"دورة، أو توقف تأثير السم في ذلك الدور.\n"
 "\n"
-"قد تشفي الوحدة التي يعتني بها هذا المعالج ما يصل إلى 12 نقطة صحة في كل دور، "
-"أو تمنع السم من التأثير في هذا الدور.\n"
-"لا يمكن للوحدة المسمومة أن تعالج من سمها بواسطة معالج، ويجب أن تسعى للحصول "
-"على رعاية قرية أو وحدة يمكنها العلاج."
+"لن تعالج هذه القدرة وحدة متأثرة بالسم، ولكنها ستؤخر تأثيره فقط."
 
 #. [heals]
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:808
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:809
 msgid ""
 "This unit is capable of healing those around it, slowing dehydration, and "
 "curing them of poison."
 msgstr "هذه الوحدة قادرة على شفاء من حولها وإبطاء الجفاف والشفاء من السموم."
 
 #. [lua]: set_status
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:2132
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:2133
 #, fuzzy
 #| msgid "female^stunned"
 msgid "female^poisoned"
 msgstr "مصدومة"
 
 #. [lua]: set_status
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:2132
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:2133
 #, fuzzy
 #| msgid "poison"
 msgid "poisoned"
 msgstr "سم"
 
 #. [lua]: set_status
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:2134
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:2135
 #, fuzzy
 #| msgid "female^slow"
 msgid "female^slowed"
 msgstr "مبطئة"
 
 #. [lua]: set_status
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:2134
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:2135
 #, fuzzy
 #| msgid "slow"
 msgid "slowed"
 msgstr "مبطئ"
 
 #. [lua]: set_status
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:2135
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:2136
 #, fuzzy
 #| msgid "female^resilient"
 msgid "female^petrified"
 msgstr "مرنة"
 
 #. [lua]: set_status
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:2135
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:2136
 #, fuzzy
 #| msgid "petrifies"
 msgid "petrified"
@@ -292,15 +277,15 @@ msgstr "يحجر"
 #. [teleport]: id=teleport
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:699
 #: data/campaigns/World_Conquest/resources/data/training.cfg:786
-#: data/core/macros/abilities.cfg:260
+#: data/core/macros/abilities.cfg:263
 msgid "teleport"
 msgstr "نقل آنيّا"
 
 #. [artifact]
 #. [regenerate]: id=regenerates
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:760
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:54
-#: data/core/macros/abilities.cfg:99
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:53
+#: data/core/macros/abilities.cfg:102
 msgid "regenerates"
 msgstr "تجديد"
 
@@ -314,111 +299,111 @@ msgstr "دائما ترتاح لتشفى"
 #. [chance]
 #. [damage]: id=backstab
 #: data/campaigns/World_Conquest/resources/data/training.cfg:439
-#: data/core/macros/weapon_specials.cfg:31
+#: data/core/macros/weapon_specials.cfg:34
 msgid "backstab"
 msgstr "طعن"
 
 #. [chance]
 #. [dummy]: id=feeding
 #: data/campaigns/World_Conquest/resources/data/training.cfg:501
-#: data/core/macros/abilities.cfg:415
+#: data/core/macros/abilities.cfg:418
 msgid "feeding"
 msgstr "تغذي"
 
 #. [chance]
 #. [leadership]: id=leadership
 #: data/campaigns/World_Conquest/resources/data/training.cfg:528
-#: data/core/macros/abilities.cfg:206
+#: data/core/macros/abilities.cfg:209
 msgid "leadership"
 msgstr "قيادي"
 
 #. [hides]: id=ambush
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:12
-#: data/core/macros/abilities.cfg:292
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:11
+#: data/core/macros/abilities.cfg:295
 msgid "ambush"
 msgstr "كمين"
 
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:15
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:14
 msgid "Castle"
 msgstr "قلعة قيادة"
 
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:18
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:17
 msgid "Cave"
 msgstr "كهف"
 
 #. [hides]: id=concealment
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:21
-#: data/core/macros/abilities.cfg:355
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:20
+#: data/core/macros/abilities.cfg:358
 msgid "concealment"
 msgstr "تخفي"
 
 #. [drains]: id=drains
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:24
-#: data/core/macros/weapon_specials.cfg:209
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:23
+#: data/core/macros/weapon_specials.cfg:183
 msgid "drains"
 msgstr "استنزاف"
 
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:27
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:26
 msgid "firststrike"
 msgstr "سباق"
 
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:30
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:29
 msgid "Forest"
 msgstr "غابة"
 
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:33
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:32
 msgid "Frozen"
 msgstr "متجمد"
 
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:36
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:35
 msgid "Hills"
 msgstr "تلال"
 
 #. [chance_to_hit]: id=marksman
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:39
-#: data/core/macros/weapon_specials.cfg:102
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:38
+#: data/core/macros/weapon_specials.cfg:105
 msgid "marksman"
 msgstr "قانص"
 
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:42
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:41
 msgid "Mushroom Grove"
 msgstr "بُسْتان فُطر"
 
 #. [hides]: id=nightstalk
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:45
-#: data/core/macros/abilities.cfg:335 data/core/macros/abilities.cfg:336
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:44
+#: data/core/macros/abilities.cfg:338
 msgid "nightstalk"
 msgstr "تسلل"
 
 #. [poison]: id=poison
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:51
-#: data/core/macros/weapon_specials.cfg:231
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:50
+#: data/core/macros/weapon_specials.cfg:205
 msgid "poison"
 msgstr "سم"
 
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:57
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:56
 msgid "Sand"
 msgstr "رمل"
 
 #. [skirmisher]: id=skirmisher
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:60
-#: data/core/macros/abilities.cfg:226
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:59
+#: data/core/macros/abilities.cfg:229
 msgid "skirmisher"
 msgstr "مناوش"
 
 #. [slow]: id=slow
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:63
-#: data/core/macros/weapon_specials.cfg:80
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:62
+#: data/core/macros/weapon_specials.cfg:83
 msgid "slows"
 msgstr "مبطئ"
 
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:66
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:65
 msgid "Swamp"
 msgstr "مستنقع"
 
 #. [heals]: id=curing
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:69
-#: data/core/macros/abilities.cfg:63
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:68
+#: data/core/macros/abilities.cfg:66
 msgid "cures"
 msgstr "معالج"
 
@@ -2022,12 +2007,12 @@ msgstr ""
 
 #. [section]: id=calendar
 #. [topic]: id=..calendar
-#: data/core/encyclopedia/calendar.cfg:5 data/core/encyclopedia/calendar.cfg:13
+#: data/core/encyclopedia/calendar.cfg:5 data/core/encyclopedia/calendar.cfg:12
 msgid "Calendar"
 msgstr "التقويم"
 
 #. [topic]: id=..calendar
-#: data/core/encyclopedia/calendar.cfg:14
+#: data/core/encyclopedia/calendar.cfg:13
 msgid ""
 "Each year in the Wesnothian calendar is composed of 12 months. These are, in "
 "order:\n"
@@ -2076,18 +2061,18 @@ msgstr ""
 
 #. [section]: id=geography
 #. [topic]: id=..geography
+#: data/core/encyclopedia/geography.cfg:5
 #: data/core/encyclopedia/geography.cfg:12
-#: data/core/encyclopedia/geography.cfg:19
 msgid "Geography"
 msgstr "الجغرافيا"
 
 #. [topic]: id=arkan_thoria
-#: data/core/encyclopedia/geography.cfg:26
+#: data/core/encyclopedia/geography.cfg:19
 msgid "Arkan-thoria"
 msgstr "أركان ثوريا"
 
 #. [topic]: id=arkan_thoria
-#: data/core/encyclopedia/geography.cfg:27
+#: data/core/encyclopedia/geography.cfg:20
 #, fuzzy
 #| msgid ""
 #| "A river rising in the <ref>dst='heart_mountains' text='Heart Mountains'</"
@@ -2100,12 +2085,12 @@ msgstr ""
 "إلى ليسترا."
 
 #. [topic]: id=great_river
-#: data/core/encyclopedia/geography.cfg:32
+#: data/core/encyclopedia/geography.cfg:25
 msgid "Great River"
 msgstr "النهر العظيم"
 
 #. [topic]: id=great_river
-#: data/core/encyclopedia/geography.cfg:33
+#: data/core/encyclopedia/geography.cfg:26
 #, fuzzy
 #| msgid ""
 #| "The Great River forms the boundary between the <ref>dst='kingdom_wesnoth' "
@@ -2124,7 +2109,7 @@ msgstr ""
 "text='إلنسيفار'</ref>."
 
 #. [topic]: id=great_river
-#: data/core/encyclopedia/geography.cfg:35
+#: data/core/encyclopedia/geography.cfg:28
 msgid ""
 "The Ford of Abez is a crossing between Wesnoth and the Northlands, and is "
 "the westernmost point where the Great River can be crossed without ships."
@@ -2133,12 +2118,12 @@ msgstr ""
 "حيث يمكن عبور النهر العظيم دون الحاجة إلى سفن."
 
 #. [topic]: id=great_ocean
-#: data/core/encyclopedia/geography.cfg:40
+#: data/core/encyclopedia/geography.cfg:33
 msgid "Great Ocean"
 msgstr "المحيط العظيم"
 
 #. [topic]: id=great_ocean
-#: data/core/encyclopedia/geography.cfg:41
+#: data/core/encyclopedia/geography.cfg:34
 #, fuzzy
 #| msgid ""
 #| "Lies to the west of the <ref>dst='great_continent' text='continent'</ref> "
@@ -2155,7 +2140,7 @@ msgstr ""
 
 #. [topic]: id=great_ocean
 #. Great Ocean
-#: data/core/encyclopedia/geography.cfg:45
+#: data/core/encyclopedia/geography.cfg:38
 msgid ""
 "The Drakes once called this ocean the World Ocean. They believe it to extend "
 "in every direction from Morogor until eventually flowing into the abyss as "
@@ -2165,12 +2150,12 @@ msgstr ""
 "الاتجاهات من موروغور حتى يصب في الهاوية على شكل شلال هائل عند حافة العالم."
 
 #. [topic]: id=morogor
-#: data/core/encyclopedia/geography.cfg:50
+#: data/core/encyclopedia/geography.cfg:43
 msgid "Morogor"
 msgstr "موروجور"
 
 #. [topic]: id=morogor
-#: data/core/encyclopedia/geography.cfg:51
+#: data/core/encyclopedia/geography.cfg:44
 #, fuzzy
 #| msgid ""
 #| "Archipelago, located somewhere in the <ref>dst='great_ocean' text='Great "
@@ -2193,7 +2178,7 @@ msgstr ""
 
 #. [topic]: id=morogor
 #. Geography of Morogor
-#: data/core/encyclopedia/geography.cfg:57
+#: data/core/encyclopedia/geography.cfg:50
 #, fuzzy
 #| msgid ""
 #| "<header>text='Notable land features:'</header>\n"
@@ -2222,12 +2207,12 @@ msgstr ""
 "لموروغور. وهي الجزيرة الأقصى شمالاً في أرخبيل موروغور."
 
 #. [topic]: id=green_isle
-#: data/core/encyclopedia/geography.cfg:65
+#: data/core/encyclopedia/geography.cfg:58
 msgid "Green Isle"
 msgstr "الجزيرة الخضراء"
 
 #. [topic]: id=green_isle
-#: data/core/encyclopedia/geography.cfg:66
+#: data/core/encyclopedia/geography.cfg:59
 #, fuzzy
 #| msgid ""
 #| "A bigger island lying in the <ref>dst='great_ocean' text='Great Ocean'</"
@@ -2241,7 +2226,7 @@ msgstr ""
 
 #. [topic]: id=green_isle
 #. Geography of the Green Isle
-#: data/core/encyclopedia/geography.cfg:70
+#: data/core/encyclopedia/geography.cfg:63
 #, fuzzy
 #| msgid ""
 #| "<header>text='Notable cities:'</header>\n"
@@ -2273,7 +2258,7 @@ msgstr ""
 
 #. [topic]: id=green_isle
 #. Geography of the Green Isle
-#: data/core/encyclopedia/geography.cfg:79
+#: data/core/encyclopedia/geography.cfg:72
 #, fuzzy
 #| msgid ""
 #| "<header>text='Notable land features:'</header>\n"
@@ -2308,12 +2293,12 @@ msgstr ""
 "الويسفولك. دُنس المستنقع في حروب قديمة بين الويسفولك والجزيريين."
 
 #. [topic]: id=old_continent
-#: data/core/encyclopedia/geography.cfg:88
+#: data/core/encyclopedia/geography.cfg:81
 msgid "Old Continent"
 msgstr "القارة القديمة"
 
 #. [topic]: id=old_continent
-#: data/core/encyclopedia/geography.cfg:89
+#: data/core/encyclopedia/geography.cfg:82
 #, fuzzy
 #| msgid ""
 #| "Lies to the west of <ref>dst='morogor' text='Morogor'</ref> and the "
@@ -2330,12 +2315,12 @@ msgstr ""
 "العظيم'</ref>. وهي الموطن الأصلي للبشر والأورك."
 
 #. [topic]: id=great_continent
-#: data/core/encyclopedia/geography.cfg:94
+#: data/core/encyclopedia/geography.cfg:87
 msgid "Great Continent"
 msgstr "القارة العظمى"
 
 #. [topic]: id=great_continent
-#: data/core/encyclopedia/geography.cfg:95
+#: data/core/encyclopedia/geography.cfg:88
 #, fuzzy
 #| msgid ""
 #| "The continent on which the <ref>dst='kingdom_wesnoth' text='Kingdom of "
@@ -2350,12 +2335,12 @@ msgstr ""
 "وساحلها الغربي محاط ب <ref>dst='great_ocean' text='المحيط العظيم'</ref>."
 
 #. [topic]: id=irdya
-#: data/core/encyclopedia/geography.cfg:100
+#: data/core/encyclopedia/geography.cfg:93
 msgid "Irdya"
 msgstr "إرديا"
 
 #. [topic]: id=irdya
-#: data/core/encyclopedia/geography.cfg:101
+#: data/core/encyclopedia/geography.cfg:94
 #, fuzzy
 #| msgid ""
 #| "The name of the world in which the kingdom of <ref>dst='kingdom_wesnoth' "
@@ -2374,12 +2359,12 @@ msgstr ""
 "الواسع\"."
 
 #. [topic]: id=kingdom_wesnoth
-#: data/core/encyclopedia/geography.cfg:106
+#: data/core/encyclopedia/geography.cfg:99
 msgid "Kingdom of Wesnoth"
 msgstr "مملكة ويسنوث"
 
 #. [topic]: id=kingdom_wesnoth
-#: data/core/encyclopedia/geography.cfg:107
+#: data/core/encyclopedia/geography.cfg:100
 #, fuzzy
 #| msgid ""
 #| "The Kingdom of Wesnoth is located in the north-central portion of the "
@@ -2424,7 +2409,7 @@ msgstr ""
 
 #. [topic]: id=kingdom_wesnoth
 #. Geography of Wesnoth
-#: data/core/encyclopedia/geography.cfg:113
+#: data/core/encyclopedia/geography.cfg:106
 #, fuzzy
 #| msgid ""
 #| "<header>text='Notable cities:'</header>\n"
@@ -2483,7 +2468,7 @@ msgstr ""
 
 #. [topic]: id=kingdom_wesnoth
 #. Geography of Wesnoth
-#: data/core/encyclopedia/geography.cfg:127
+#: data/core/encyclopedia/geography.cfg:120
 #, fuzzy
 #| msgid ""
 #| "<header>text='Notable land features:'</header>\n"
@@ -2577,12 +2562,12 @@ msgstr ""
 "الرمادية."
 
 #. [topic]: id=elensefar
-#: data/core/encyclopedia/geography.cfg:144
+#: data/core/encyclopedia/geography.cfg:137
 msgid "Elensefar"
 msgstr "إلنسفار"
 
 #. [topic]: id=elensefar
-#: data/core/encyclopedia/geography.cfg:145
+#: data/core/encyclopedia/geography.cfg:138
 #, fuzzy
 #| msgid ""
 #| "Elensefar is at times a province of <ref>dst='kingdom_wesnoth' "
@@ -2608,7 +2593,7 @@ msgstr ""
 
 #. [topic]: id=elensefar
 #. Geography of Elensefar area
-#: data/core/encyclopedia/geography.cfg:149
+#: data/core/encyclopedia/geography.cfg:142
 #, fuzzy
 #| msgid ""
 #| "<header>text='Notable cities:'</header>\n"
@@ -2629,7 +2614,7 @@ msgstr ""
 "    • كارسين: مدينة على حدود ويسنوث-إلينسيفار، وهي محل نزاع مع ويسنوث."
 
 #. [topic]: id=elensefar
-#: data/core/encyclopedia/geography.cfg:154
+#: data/core/encyclopedia/geography.cfg:147
 #, fuzzy
 #| msgid ""
 #| "<header>text='Notable land features:'</header>\n"
@@ -2645,12 +2630,12 @@ msgstr ""
 "عند هذه النقطة، ولا يمكن عبوره إلا بالسفن."
 
 #. [topic]: id=northlands
-#: data/core/encyclopedia/geography.cfg:160
+#: data/core/encyclopedia/geography.cfg:153
 msgid "Northlands"
 msgstr "الأراضي الشمالية"
 
 #. [topic]: id=northlands
-#: data/core/encyclopedia/geography.cfg:161
+#: data/core/encyclopedia/geography.cfg:154
 #, fuzzy
 #| msgid ""
 #| "The Northlands are filled with unstable clans in endless conflict. It is "
@@ -2695,7 +2680,7 @@ msgstr ""
 
 #. [topic]: id=northlands
 #. Geography of the Northlands
-#: data/core/encyclopedia/geography.cfg:167
+#: data/core/encyclopedia/geography.cfg:160
 #, fuzzy
 #| msgid ""
 #| "<header>text='Notable cities:'</header>\n"
@@ -2735,7 +2720,7 @@ msgstr ""
 
 #. [topic]: id=northlands
 #. Geography of the Northlands
-#: data/core/encyclopedia/geography.cfg:176
+#: data/core/encyclopedia/geography.cfg:169
 #, fuzzy
 #| msgid ""
 #| "<header>text='Notable land features:'</header>\n"
@@ -2806,12 +2791,12 @@ msgstr ""
 "مكان ما شرق الأراضي الشمالية."
 
 #. [topic]: id=southwest_elven_lands
-#: data/core/encyclopedia/geography.cfg:189
+#: data/core/encyclopedia/geography.cfg:182
 msgid "Southwest Elven Lands"
 msgstr "أراضي الإلف الجنوبية الغربية"
 
 #. [topic]: id=southwest_elven_lands
-#: data/core/encyclopedia/geography.cfg:190
+#: data/core/encyclopedia/geography.cfg:183
 #, fuzzy
 #| msgid ""
 #| "The Wood Elves are separate from those of the north, and have only "
@@ -2833,7 +2818,7 @@ msgstr ""
 
 #. [topic]: id=southwest_elven_lands
 #. Geography of the Southwest
-#: data/core/encyclopedia/geography.cfg:194
+#: data/core/encyclopedia/geography.cfg:187
 #, fuzzy
 #| msgid ""
 #| "<header>text='Notable land features:'</header>\n"
@@ -2869,14 +2854,14 @@ msgstr ""
 "يدخلونها."
 
 #. [topic]: id=heart_mountains
-#: data/core/encyclopedia/geography.cfg:203
+#: data/core/encyclopedia/geography.cfg:196
 msgid "Heart Mountains"
 msgstr "جبال القلب"
 
 #. [topic]: id=heart_mountains
 #. The Whitefang Clan’s primary description is in DiD
 #. Wesnoth 1.9.4 added Haggid-Dargor to the encyclopedia, but it has no other mention in mainline
-#: data/core/encyclopedia/geography.cfg:206
+#: data/core/encyclopedia/geography.cfg:199
 #, fuzzy
 #| msgid ""
 #| "A virtually impassable barrier between the <ref>dst='arkan_thoria' "
@@ -2899,12 +2884,12 @@ msgstr ""
 "جبال وايتفانغ بسبب شكلها المميز."
 
 #. [topic]: id=far_north
-#: data/core/encyclopedia/geography.cfg:211
+#: data/core/encyclopedia/geography.cfg:204
 msgid "Far North"
 msgstr "أقصى الشمال"
 
 #. [topic]: id=far_north
-#: data/core/encyclopedia/geography.cfg:212
+#: data/core/encyclopedia/geography.cfg:205
 #, fuzzy
 #| msgid ""
 #| "Cold, harsh, and inaccessible, the Far North is the ancestral home of the "
@@ -2936,7 +2921,7 @@ msgstr ""
 
 #. [topic]: id=far_north
 #. Geography of the Far North
-#: data/core/encyclopedia/geography.cfg:216
+#: data/core/encyclopedia/geography.cfg:209
 #, fuzzy
 #| msgid ""
 #| "<header>text='Notable cities:'</header>\n"
@@ -2989,7 +2974,7 @@ msgstr ""
 
 #. [topic]: id=far_north
 #. Geography of the Far North
-#: data/core/encyclopedia/geography.cfg:232
+#: data/core/encyclopedia/geography.cfg:225
 #, fuzzy
 #| msgid ""
 #| "<header>text='Notable land features:'</header>\n"
@@ -3071,12 +3056,12 @@ msgstr ""
 "    • السهول الجرداء: تندرة ثلجية شاسعة قليلة السكان."
 
 #. [topic]: id=far_south
-#: data/core/encyclopedia/geography.cfg:249
+#: data/core/encyclopedia/geography.cfg:242
 msgid "Far South"
 msgstr "أقصى الجنوب"
 
 #. [topic]: id=far_south
-#: data/core/encyclopedia/geography.cfg:250
+#: data/core/encyclopedia/geography.cfg:243
 msgid ""
 "A vast region south of Kerlath home to many mysterious races, including jinn "
 "and wyverns. Very little is known for certain about what lies here."
@@ -3086,7 +3071,7 @@ msgstr ""
 
 #. [topic]: id=far_south
 #. Geography of the Far South
-#: data/core/encyclopedia/geography.cfg:254
+#: data/core/encyclopedia/geography.cfg:247
 #, fuzzy
 #| msgid ""
 #| "<header>text='Notable land features:'</header>\n"
@@ -4095,8 +4080,7 @@ msgid ""
 "immediately surrounding it, and any enemy unit entering those hexes "
 "immediately ends its movement. Learning how to use zones of control to your "
 "advantage is an important part of Wesnoth, as only <ref "
-"dst='ability_skirmisherskirmisher'>skirmishers</ref> can ignore zones of "
-"control."
+"dst='ability_skirmisher'>skirmishers</ref> can ignore zones of control."
 msgstr ""
 "\n"
 "\n"
@@ -5354,10 +5338,9 @@ msgstr ""
 #| "<ref>dst='terrain_lava' text='lava'</ref> change the time of day bonus "
 #| "around them."
 msgid ""
-"Finally, units with the <ref "
-"dst='ability_illuminationilluminates'>illuminates</ref> ability and terrain "
-"features such as <ref dst='terrain_lava'>lava</ref> change the time of day "
-"bonus around them."
+"Finally, units with the <ref dst='ability_illumination'>illuminates</ref> "
+"ability and terrain features such as <ref dst='terrain_lava'>lava</ref> "
+"change the time of day bonus around them."
 msgstr ""
 "\n"
 "أخيرًا، تقوم الوحدات التي تحتوي على قدرة "
@@ -5425,9 +5408,9 @@ msgstr ""
 #| "Certain units (such as trolls) will automatically heal 8HP every turn. If "
 #| "the unit is poisoned, the poison will be cured instead."
 msgid ""
-"• <ref dst='ability_regeneratesregenerates'>Regeneration</ref>: Certain "
-"units (such as trolls) will automatically heal 8HP every turn. If the unit "
-"is poisoned, the poison will be cured instead."
+"• <ref dst='ability_regenerates_8'>Regeneration</ref>: Certain units (such "
+"as trolls) will automatically heal 8HP every turn. If the unit is poisoned, "
+"the poison will be cured instead."
 msgstr ""
 "\n"
 "- <ref>dst='ability_regeneratesregenerates' text='تجديد'</ref>: ستعالج وحدات "
@@ -5445,10 +5428,10 @@ msgstr ""
 #| "text='4HP'</ref> or <ref>dst='ability_healingheals +8' text='8HP'</ref> "
 #| "per turn, or prevent Poison from causing that unit damage."
 msgid ""
-"• <b>Healing units</b>: Units with the <ref dst='ability_healingheals "
-"+4'>Heals</ref> ability will heal each allied adjacent unit, usually <ref "
-"dst='ability_healingheals +4'>4HP</ref> or <ref dst='ability_healingheals "
-"+8'>8HP</ref> per turn, or prevent Poison from causing that unit damage."
+"• <b>Healing units</b>: Units with the <ref dst='ability_heals_4'>Heals</"
+"ref> ability will heal each allied adjacent unit, usually <ref "
+"dst='ability_heals_4'>4HP</ref> or <ref dst='ability_heals_8'>8HP</ref> per "
+"turn, or prevent Poison from causing that unit damage."
 msgstr ""
 "\n"
 "- <bold>text='شفاء الوحدات'</bold>: الوحدات التي تمتلك قدرة "
@@ -5467,8 +5450,8 @@ msgstr ""
 #| "Poison in all allied adjacent units (in preference to healing, if it has "
 #| "that ability as well)."
 msgid ""
-"• <b>Curing units</b>: Units with the <ref dst='ability_curingcures'>cures</"
-"ref> ability will cure Poison in all allied adjacent units (in preference to "
+"• <b>Curing units</b>: Units with the <ref dst='ability_cures'>cures</ref> "
+"ability will cure Poison in all allied adjacent units (in preference to "
 "healing, if it has that ability as well)."
 msgstr ""
 "\n"
@@ -6890,48 +6873,13 @@ msgstr ""
 "\n"
 "يجعل مستوى الوحدة المحددة أعلى بمقدار N مرة. مثال: :unit advances=2"
 
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:12
-msgid ""
-"Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
-"\n"
-"A unit cared for by this healer may heal up to 4 HP per turn, or stop poison "
-"from taking effect for that turn.\n"
-"This ability will not cure an affected unit of poison, however, only delay "
-"its effect."
-msgstr ""
-"تسمح للوحدة بمعالجة الوحدات الحليفة المجاورة في بداية دورها.\n"
-"\n"
-"يمكن للوحدة التي يعتني بها هذا المعالج أن تعالج ما يصل إلى 4 نقاط صحة لكل "
-"دور، أو توقف تأثير السم في ذلك الدور.\n"
-"لن تعالج هذه القدرة وحدة متأثرة بالسم، ولكنها ستؤخر تأثيره فقط."
-
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:39
-msgid ""
-"This unit combines herbal remedies with magic to heal units more quickly "
-"than is normally possible on the battlefield.\n"
-"\n"
-"A unit cared for by this healer may heal up to 8 HP per turn, or stop poison "
-"from taking effect for that turn.\n"
-"This ability will not cure an affected unit of poison, however, only delay "
-"its effect."
-msgstr ""
-"تجمع هذه الوحدة بين العلاجات العشبية والسحر لعلاج الوحدات بشكل أسرع مما هو "
-"ممكن عادة في ساحة المعركة.\n"
-"\n"
-"يمكن للوحدة التي يعتني بها هذا المعالج أن تشفي ما يصل إلى 8 نقاط صحة لكل "
-"دورة، أو توقف تأثير السم في ذلك الدور.\n"
-"\n"
-"لن تعالج هذه القدرة وحدة متأثرة بالسم، ولكنها ستؤخر تأثيره فقط."
-
 #. [heals]: id=curing
-#: data/core/macros/abilities.cfg:64
+#: data/core/macros/abilities.cfg:67
 msgid "female^cures"
 msgstr "معالجة"
 
 #. [heals]: id=curing
-#: data/core/macros/abilities.cfg:65
+#: data/core/macros/abilities.cfg:68
 msgid ""
 "A curer can cure a unit of poison, although that unit will receive no "
 "additional healing on the turn it is cured of the poison."
@@ -6940,12 +6888,12 @@ msgstr ""
 "شفاء إضافي عند شفائها من السم."
 
 #. [regenerate]: id=regenerates
-#: data/core/macros/abilities.cfg:100
+#: data/core/macros/abilities.cfg:103
 msgid "female^regenerates"
 msgstr "متجددة"
 
 #. [regenerate]: id=regenerates
-#: data/core/macros/abilities.cfg:101
+#: data/core/macros/abilities.cfg:104
 msgid ""
 "The unit will heal itself 8 HP per turn. If it is poisoned, it will remove "
 "the poison instead of healing."
@@ -6954,17 +6902,17 @@ msgstr ""
 "السم بدلاً من العلاج."
 
 #. [regenerate]: id=regenerates
-#: data/core/macros/abilities.cfg:114
+#: data/core/macros/abilities.cfg:117
 msgid "regenerates +4"
 msgstr "يتجدد +4"
 
 #. [regenerate]: id=regenerates
-#: data/core/macros/abilities.cfg:115
+#: data/core/macros/abilities.cfg:118
 msgid "female^regenerates +4"
 msgstr "تتجدد 4"
 
 #. [regenerate]: id=regenerates
-#: data/core/macros/abilities.cfg:116
+#: data/core/macros/abilities.cfg:119
 msgid ""
 "The unit will heal itself 4 HP per turn. If it is poisoned, it will remove "
 "the poison instead of healing."
@@ -6973,7 +6921,7 @@ msgstr ""
 "السم بدلاً من العلاج."
 
 #. [regenerate]: id=regenerates
-#: data/core/macros/abilities.cfg:117
+#: data/core/macros/abilities.cfg:120
 msgid ""
 "This unit heals itself each turn, though not as much as if stationed in a "
 "village."
@@ -6981,7 +6929,7 @@ msgstr ""
 "هذه الوحدة تشفي نفسها في كل دورة، ولكن ليس بقدر ما لو كانت متمركزة في قرية."
 
 #. [resistance]: id=steadfast
-#: data/core/macros/abilities.cfg:138
+#: data/core/macros/abilities.cfg:141
 msgid ""
 "This unit’s resistances are doubled, up to a maximum of 50%, when defending. "
 "Vulnerabilities are not affected."
@@ -6989,17 +6937,17 @@ msgstr ""
 "تتضاعف مقاومة هذه الوحدة حتى 50% كحد أقصى عند الدفاع. ولا تتأثر نقاط الضعف."
 
 #. [chance_to_hit]: id=diversion
-#: data/core/macros/abilities.cfg:151
+#: data/core/macros/abilities.cfg:154
 msgid "diversion"
 msgstr "تحويل انتباه"
 
 #. [chance_to_hit]: id=diversion
-#: data/core/macros/abilities.cfg:152
+#: data/core/macros/abilities.cfg:155
 msgid "female^diversion"
 msgstr "محولة"
 
 #. [chance_to_hit]: id=diversion
-#: data/core/macros/abilities.cfg:153
+#: data/core/macros/abilities.cfg:156
 msgid ""
 "If there is an enemy of the target on the opposite side of the target, this "
 "unit diverts the target’s attention and reduces its chance to hit by 20%."
@@ -7008,7 +6956,7 @@ msgstr ""
 "انتباه الهدف وتقليل فرصته في الإصابة بنسبة 20%."
 
 #. [chance_to_hit]: id=diversion
-#: data/core/macros/abilities.cfg:154
+#: data/core/macros/abilities.cfg:157
 msgid ""
 "If there is an enemy of the target on the opposite side of the target while "
 "attacking it, this unit diverts the target’s attention and reduces its "
@@ -7018,24 +6966,24 @@ msgstr ""
 "الوحدة بتحويل انتباه الهدف وتقليل فرصته في الإصابة."
 
 #. [chance_to_hit]: id=diversion
-#: data/core/macros/abilities.cfg:155
+#: data/core/macros/abilities.cfg:158
 msgid "accuracy:"
 msgstr ""
 
 #. [chance_to_hit]: id=diversion
-#: data/core/macros/abilities.cfg:156
+#: data/core/macros/abilities.cfg:159
 msgid ""
 "A nearby enemy’s <i>diversion</i> ability is reducing this attack’s accuracy "
 "by 20%."
 msgstr ""
 
 #. [leadership]: id=leadership
-#: data/core/macros/abilities.cfg:207
+#: data/core/macros/abilities.cfg:210
 msgid "female^leadership"
 msgstr "قيادية"
 
 #. [leadership]: id=leadership
-#: data/core/macros/abilities.cfg:208
+#: data/core/macros/abilities.cfg:211
 msgid ""
 "This unit can lead other troops in battle.\n"
 "\n"
@@ -7048,12 +6996,12 @@ msgstr ""
 "25% لكل اختلاف في المستوى."
 
 #. [skirmisher]: id=skirmisher
-#: data/core/macros/abilities.cfg:227
+#: data/core/macros/abilities.cfg:230
 msgid "female^skirmisher"
 msgstr "مناوشة"
 
 #. [skirmisher]: id=skirmisher
-#: data/core/macros/abilities.cfg:228
+#: data/core/macros/abilities.cfg:231
 msgid ""
 "This unit is skilled in moving past enemies quickly, and ignores all enemy "
 "Zones of Control."
@@ -7061,12 +7009,12 @@ msgstr ""
 "هذه الوحدة ماهرة في تجاوز الأعداء بسرعة، وتتجاهل جميع مناطق سيطرة العدو."
 
 #. [illuminates]: id=illumination
-#: data/core/macros/abilities.cfg:244
+#: data/core/macros/abilities.cfg:247
 msgid "illuminates"
 msgstr "منير"
 
 #. [illuminates]: id=illumination
-#: data/core/macros/abilities.cfg:246
+#: data/core/macros/abilities.cfg:249
 msgid ""
 "This unit illuminates the surrounding area, making lawful units fight "
 "better, and chaotic units fight worse.\n"
@@ -7081,12 +7029,12 @@ msgstr ""
 "وكما لو كان النهار عندما يكون الغسق."
 
 #. [teleport]: id=teleport
-#: data/core/macros/abilities.cfg:261
+#: data/core/macros/abilities.cfg:264
 msgid "female^teleport"
 msgstr "ناقلة آنيّا"
 
 #. [teleport]: id=teleport
-#: data/core/macros/abilities.cfg:262
+#: data/core/macros/abilities.cfg:265
 msgid ""
 "This unit may teleport between any two empty villages owned by its side "
 "using one of its moves."
@@ -7095,12 +7043,12 @@ msgstr ""
 "إحدى تحركاتها."
 
 #. [hides]: id=ambush
-#: data/core/macros/abilities.cfg:293
+#: data/core/macros/abilities.cfg:296
 msgid "female^ambush"
 msgstr "كامنة"
 
 #. [hides]: id=ambush
-#: data/core/macros/abilities.cfg:294
+#: data/core/macros/abilities.cfg:297
 msgid ""
 "This unit can hide in forest, and remain undetected by its enemies.\n"
 "\n"
@@ -7115,17 +7063,17 @@ msgstr ""
 "حركتها المتبقية."
 
 #. [hides]: id=burrow
-#: data/core/macros/abilities.cfg:313
+#: data/core/macros/abilities.cfg:316
 msgid "burrow"
 msgstr "حفار"
 
 #. [hides]: id=burrow
-#: data/core/macros/abilities.cfg:314
+#: data/core/macros/abilities.cfg:317
 msgid "female^burrow"
 msgstr "حفارة"
 
 #. [hides]: id=burrow
-#: data/core/macros/abilities.cfg:315
+#: data/core/macros/abilities.cfg:318
 msgid ""
 "This unit can hide in forest or sand if it is resting (has not moved for a "
 "turn), and remain undetected by its enemies.\n"
@@ -7142,14 +7090,21 @@ msgstr ""
 "الفور كل نقاط حركتها المتبقية."
 
 #. [hides]: id=burrow
-#: data/core/macros/abilities.cfg:319
+#: data/core/macros/abilities.cfg:322
 msgid ""
 "This unit can burrow under loose dirt, sand, or leaves, concealing itself if "
 "it does not change location."
 msgstr ""
 
 #. [hides]: id=nightstalk
-#: data/core/macros/abilities.cfg:337
+#: data/core/macros/abilities.cfg:339
+#, fuzzy
+#| msgid "nightstalk"
+msgid "female^nightstalk"
+msgstr "تسلل"
+
+#. [hides]: id=nightstalk
+#: data/core/macros/abilities.cfg:340
 msgid ""
 "The unit becomes invisible during night.\n"
 "\n"
@@ -7163,12 +7118,12 @@ msgstr ""
 "أي وحدة عدو تكتشف هذه الوحدة أولاً تفقد على الفور كل نقاط حركتها المتبقية."
 
 #. [hides]: id=concealment
-#: data/core/macros/abilities.cfg:356
+#: data/core/macros/abilities.cfg:359
 msgid "female^concealment"
 msgstr "مخفية"
 
 #. [hides]: id=concealment
-#: data/core/macros/abilities.cfg:357
+#: data/core/macros/abilities.cfg:360
 msgid ""
 "This unit can hide in villages, and remain undetected by its enemies, except "
 "by those standing next to it.\n"
@@ -7185,17 +7140,17 @@ msgstr ""
 "حركتها المتبقية."
 
 #. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:375
+#: data/core/macros/abilities.cfg:378
 msgid "submerge"
 msgstr "مغمور"
 
 #. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:376
+#: data/core/macros/abilities.cfg:379
 msgid "female^submerge"
 msgstr "مغمورة"
 
 #. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:377
+#: data/core/macros/abilities.cfg:380
 msgid ""
 "This unit can hide in deep water, and remain undetected by its enemies.\n"
 "\n"
@@ -7211,17 +7166,17 @@ msgstr ""
 "الفور كل نقاط حركتها المتبقية."
 
 #. [hides]: id=swamp_lurk
-#: data/core/macros/abilities.cfg:395
+#: data/core/macros/abilities.cfg:398
 msgid "swamp lurk"
 msgstr "متجول المستنقعات"
 
 #. [hides]: id=swamp_lurk
-#: data/core/macros/abilities.cfg:396
+#: data/core/macros/abilities.cfg:399
 msgid "female^swamp lurk"
 msgstr "متجولة المستنقعات"
 
 #. [hides]: id=swamp_lurk
-#: data/core/macros/abilities.cfg:397
+#: data/core/macros/abilities.cfg:400
 msgid ""
 "This unit can hide in swamp, and remain undetected by its enemies.\n"
 "\n"
@@ -7235,12 +7190,12 @@ msgstr ""
 "بجانبها. أي وحدة عدو تكتشفها أولًا تفقد كل حركتها المتبقية فورًا."
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:416
+#: data/core/macros/abilities.cfg:419
 msgid "female^feeding"
 msgstr "متغذية"
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:417
+#: data/core/macros/abilities.cfg:420
 msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a unit, "
 "except units that are immune to plague."
@@ -8306,27 +8261,27 @@ msgid ""
 msgstr ""
 
 #. [disable]: id=unwieldy
-#: data/core/macros/weapon_specials.cfg:7
+#: data/core/macros/weapon_specials.cfg:10
 msgid "unwieldy"
 msgstr "غير عملي"
 
 #. [disable]: id=unwieldy
-#: data/core/macros/weapon_specials.cfg:8
+#: data/core/macros/weapon_specials.cfg:11
 msgid "This attack can only be used offensively."
 msgstr "يمكن استخدام هذا الهجوم بشكل هجومي فقط."
 
 #. [disable]: id=unwieldy
-#: data/core/macros/weapon_specials.cfg:10
+#: data/core/macros/weapon_specials.cfg:13
 msgid "This unit has an unwieldy weapon, which cannot be used defensively."
 msgstr "تمتلك هذه الوحدة سلاحاً غير عملي لا يمكن استخدامه دفاعياً."
 
 #. [berserk]: id=berserk
-#: data/core/macros/weapon_specials.cfg:19
+#: data/core/macros/weapon_specials.cfg:22
 msgid "berserk"
 msgstr "هيجان"
 
 #. [berserk]: id=berserk
-#: data/core/macros/weapon_specials.cfg:20
+#: data/core/macros/weapon_specials.cfg:23
 msgid ""
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the combatants is slain, or 30 rounds of attacks have occurred."
@@ -8335,7 +8290,7 @@ msgstr ""
 "أحد المقاتلين، أو تحدث 30 جولة من الهجمات."
 
 #. [damage]: id=backstab
-#: data/core/macros/weapon_specials.cfg:32
+#: data/core/macros/weapon_specials.cfg:35
 msgid ""
 "When used offensively, this attack deals double damage if there is an enemy "
 "of the target on the opposite side of the target, and that unit is not "
@@ -8346,14 +8301,14 @@ msgstr ""
 "مشلولة بأي شكل آخر)."
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
-#: data/core/macros/weapon_specials.cfg:53
+#: data/core/macros/weapon_specials.cfg:56
 #, fuzzy
 #| msgid "plague"
 msgid "plague ($type)"
 msgstr "طاعون"
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
-#: data/core/macros/weapon_specials.cfg:54
+#: data/core/macros/weapon_specials.cfg:57
 #, fuzzy
 #| msgid ""
 #| "When a unit is killed by a Plague attack, that unit is replaced with a "
@@ -8369,7 +8324,7 @@ msgstr ""
 "أو الوحدات الموجودة في القرى."
 
 #. [slow]: id=slow
-#: data/core/macros/weapon_specials.cfg:81
+#: data/core/macros/weapon_specials.cfg:84
 msgid ""
 "This attack slows the target until it ends a turn. Slow halves the damage "
 "caused by attacks and the movement cost for a slowed unit is doubled. A unit "
@@ -8382,12 +8337,12 @@ msgstr ""
 "عند تحديدها."
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/weapon_specials.cfg:91
+#: data/core/macros/weapon_specials.cfg:94
 msgid "petrifies"
 msgstr "يحجر"
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/weapon_specials.cfg:92
+#: data/core/macros/weapon_specials.cfg:95
 msgid ""
 "This attack petrifies the target, turning it to stone. Units that have been "
 "petrified may not move or attack."
@@ -8395,66 +8350,50 @@ msgstr ""
 "يؤدي هذا الهجوم إلى تحجر الهدف. لا يمكن للوحدات التي تحجرت أن تتحرك أو تهاجم."
 
 #. [chance_to_hit]: id=marksman
-#: data/core/macros/weapon_specials.cfg:103
+#: data/core/macros/weapon_specials.cfg:106
 msgid ""
 "When used offensively, this attack always has at least a 60% chance to hit."
 msgstr ""
 "عند استخدامه بشكل هجومي، يكون لهذا الهجوم دائمًا فرصة إصابة بنسبة 60% على "
 "الأقل."
 
-#. [dummy]: id=naval
-#: data/core/macros/weapon_specials.cfg:129
-#, fuzzy
-#| msgid "naval ram"
-msgid "naval"
-msgstr "كبش بحري"
+#. [chance_to_hit]: id=magical
+#: data/core/macros/weapon_specials.cfg:119
+msgid "magical"
+msgstr "مسحور"
 
-#. [dummy]: id=naval
-#: data/core/macros/weapon_specials.cfg:130
-#, fuzzy
-#| msgid "This attack can only be used against units in water terrain."
+#. [chance_to_hit]: id=magical
+#: data/core/macros/weapon_specials.cfg:120
 msgid ""
-"This attack can only be used when both the attacker and the defender are in "
-"water or swamp."
+"This attack always has a 70% chance to hit regardless of the defensive "
+"ability of the unit being attacked."
 msgstr ""
-"لا يمكن استخدام هذا الهجوم إلا ضد الوحدات الموجودة في التضاريس المائية."
-
-#. [dummy]: id=naval
-#: data/core/macros/weapon_specials.cfg:131
-#, fuzzy
-#| msgid ""
-#| "This unit has an attack that can only be used against units in watery "
-#| "terrain."
-msgid ""
-"This unit has an attack that can only be used when both the attacker and the "
-"defender are in water or swamp."
-msgstr ""
-"هذه الوحدة لديها هجوم لا يمكن استخدامه إلا ضد الوحدات الموجودة في التضاريس "
-"المائية."
+"يتمتع هذا الهجوم دائمًا بفرصة 70% للاصابة بغض النظر عن القدرة الدفاعية للوحدة "
+"التي تتعرض للهجوم."
 
 #. [chance_to_hit]: id=honed
-#: data/core/macros/weapon_specials.cfg:158
+#: data/core/macros/weapon_specials.cfg:132
 msgid "honed"
 msgstr "شحذ"
 
 #. [chance_to_hit]: id=honed
-#: data/core/macros/weapon_specials.cfg:159
+#: data/core/macros/weapon_specials.cfg:133
 msgid "This attack is 10% more accurate than other attacks."
 msgstr "هذا الهجوم أكثر دقة بنسبة 10% من الهجمات الأخرى."
 
 #. [chance_to_hit]: id=honed
-#: data/core/macros/weapon_specials.cfg:160
+#: data/core/macros/weapon_specials.cfg:134
 msgid ""
 "This unit’s “honed” attack is slightly more accurate than other attacks."
 msgstr "هجوم هذه الوحدة \"المشحوذ\" أكثر دقة قليلاً من الهجمات الأخرى."
 
 #. [swarm]: id=swarm
-#: data/core/macros/weapon_specials.cfg:171
+#: data/core/macros/weapon_specials.cfg:145
 msgid "swarm"
 msgstr "سرب"
 
 #. [swarm]: id=swarm
-#: data/core/macros/weapon_specials.cfg:172
+#: data/core/macros/weapon_specials.cfg:146
 msgid ""
 "The number of strikes of this attack decreases when the unit is wounded. The "
 "number of strikes is proportional to the percentage of its of maximum HP the "
@@ -8466,12 +8405,12 @@ msgstr ""
 "تمتلك 3/4 من الحد الأقصى لنقاط الصحة على 3/4 من عدد الضربات."
 
 #. [damage]: id=charge
-#: data/core/macros/weapon_specials.cfg:182
+#: data/core/macros/weapon_specials.cfg:156
 msgid "charge"
 msgstr "شحن"
 
 #. [damage]: id=charge
-#: data/core/macros/weapon_specials.cfg:183
+#: data/core/macros/weapon_specials.cfg:157
 msgid ""
 "When used offensively, this attack deals double damage to the target. It "
 "also causes this unit to take double damage from the target’s counterattack."
@@ -8480,17 +8419,17 @@ msgstr ""
 "تلقي هذه الوحدة ضررًا مضاعفًا من الهجوم المضاد للهدف."
 
 #. [damage]: id=guard
-#: data/core/macros/weapon_specials.cfg:196
+#: data/core/macros/weapon_specials.cfg:170
 msgid "guard"
 msgstr "حارس"
 
 #. [damage]: id=guard
-#: data/core/macros/weapon_specials.cfg:197
+#: data/core/macros/weapon_specials.cfg:171
 msgid "This attack blocks half of the damage from its target’s strikes."
 msgstr "يحجب هذا الهجوم نصف الضرر الناتج عن ضربات الهدف."
 
 #. [damage]: id=guard
-#: data/core/macros/weapon_specials.cfg:198
+#: data/core/macros/weapon_specials.cfg:172
 msgid ""
 "This unit’s guarding attack can halve incoming damage, but only when used in "
 "combat."
@@ -8499,7 +8438,7 @@ msgstr ""
 "فقط عند استخدامه في القتال."
 
 #. [drains]: id=drains
-#: data/core/macros/weapon_specials.cfg:210
+#: data/core/macros/weapon_specials.cfg:184
 msgid ""
 "This unit drains health from living units, healing itself for half the "
 "amount of damage it deals (rounded down)."
@@ -8508,18 +8447,18 @@ msgstr ""
 "تسببه (مقربًا للأدنى)."
 
 #. [firststrike]: id=firststrike
-#: data/core/macros/weapon_specials.cfg:220
+#: data/core/macros/weapon_specials.cfg:194
 msgid "first strike"
 msgstr "الضربة الأولى"
 
 #. [firststrike]: id=firststrike
-#: data/core/macros/weapon_specials.cfg:221
+#: data/core/macros/weapon_specials.cfg:195
 msgid ""
 "This unit always strikes first with this attack, even if they are defending."
 msgstr "هذه الوحدة دائمًا هي التي تضرب أولاً بهذا الهجوم، حتى لو كانت دفاعية."
 
 #. [poison]: id=poison
-#: data/core/macros/weapon_specials.cfg:232
+#: data/core/macros/weapon_specials.cfg:206
 msgid ""
 "This attack poisons living targets. Poisoned units lose 8 HP every turn "
 "until they are cured or are reduced to 1 HP. Poison cannot, of itself, kill "
@@ -8530,12 +8469,12 @@ msgstr ""
 "للسم في حد ذاته أن يقتل الوحدة."
 
 #. [stun]: id=stun
-#: data/core/macros/weapon_specials.cfg:242
+#: data/core/macros/weapon_specials.cfg:216
 msgid "stun"
 msgstr "صعقة"
 
 #. [stun]: id=stun
-#: data/core/macros/weapon_specials.cfg:243
+#: data/core/macros/weapon_specials.cfg:217
 msgid ""
 "This attack hits so hard that the opponent is dazed and can no longer "
 "enforce a zone of control. The effect wears off on the opponent’s next turn."
@@ -8544,18 +8483,18 @@ msgstr ""
 "سيطرة. ويزول التأثير في الدور التالي للخصم."
 
 #. [stun]: id=stun
-#: data/core/macros/weapon_specials.cfg:244
+#: data/core/macros/weapon_specials.cfg:218
 msgid ""
 "This unit is able to stun its enemies, disrupting their zones of control."
 msgstr "هذه الوحدة قادرة على صعق أعدائها وتعطيل مناطق سيطرتهم."
 
 #. [damage_type]: id=arcane_damage
-#: data/core/macros/weapon_specials.cfg:253
+#: data/core/macros/weapon_specials.cfg:227
 msgid "arcane"
 msgstr "غامض"
 
 #. [damage_type]: id=arcane_damage
-#: data/core/macros/weapon_specials.cfg:254
+#: data/core/macros/weapon_specials.cfg:228
 msgid ""
 "This attack combines the arcane type with the type of weapon used so that "
 "resistance to the arcane type does not penalize the user."
@@ -8564,7 +8503,7 @@ msgstr ""
 "النوع السحري المستخدم."
 
 #. [damage_type]: id=arcane_damage
-#: data/core/macros/weapon_specials.cfg:255
+#: data/core/macros/weapon_specials.cfg:229
 msgid ""
 "This unit can use the arcane type when the opponent is particularly "
 "sensitive to it in relation to the weapon on which it is applied."
@@ -8656,22 +8595,22 @@ msgstr ""
 "فيتحملها الناس المتحضرون، لكن بعض القطط الكبيرة تعتبر وحوشاً مرعبة."
 
 #. [race]: id=drake
-#: data/core/units.cfg:61
+#: data/core/units.cfg:59
 msgid "race^Drake"
 msgstr "درايك"
 
 #. [race]: id=drake
-#: data/core/units.cfg:62
+#: data/core/units.cfg:60
 msgid "race+female^Drake"
 msgstr "درايك"
 
 #. [race]: id=drake
-#: data/core/units.cfg:63
+#: data/core/units.cfg:61
 msgid "race^Drakes"
 msgstr "درايك"
 
 #. [race]: id=drake
-#: data/core/units.cfg:64
+#: data/core/units.cfg:62
 msgid ""
 "Drakes are large, winged and fire-breathing creatures, reminiscent of true "
 "dragons. On average, an adult drake stands around three meters tall and "
@@ -8790,22 +8729,22 @@ msgstr ""
 "الميزة التي سمحت لها بالعيش في بعض الجبال في أقصى شمال القارة العظمى."
 
 #. [race]: id=dwarf
-#: data/core/units.cfg:97
+#: data/core/units.cfg:82
 msgid "race^Dwarf"
 msgstr "قزم"
 
 #. [race]: id=dwarf
-#: data/core/units.cfg:98
+#: data/core/units.cfg:83
 msgid "race+female^Dwarf"
 msgstr "قزمة"
 
 #. [race]: id=dwarf
-#: data/core/units.cfg:99
+#: data/core/units.cfg:84
 msgid "race^Dwarves"
 msgstr "أقزام"
 
 #. [race]: id=dwarf
-#: data/core/units.cfg:100
+#: data/core/units.cfg:85
 msgid ""
 "The dwarves are a race famed for their miners, blacksmiths, merchants and "
 "warriors. Considered as the third oldest race on the great continent after "
@@ -8892,22 +8831,22 @@ msgstr ""
 "المنحوتات لسحر الأشياء من أجل زيادة جوانب معينة من خصائصها."
 
 #. [race]: id=elf
-#: data/core/units.cfg:117
+#: data/core/units.cfg:98
 msgid "race^Elf"
 msgstr "إلفي"
 
 #. [race]: id=elf
-#: data/core/units.cfg:118
+#: data/core/units.cfg:99
 msgid "race+female^Elf"
 msgstr "إلفية"
 
 #. [race]: id=elf
-#: data/core/units.cfg:119
+#: data/core/units.cfg:100
 msgid "race^Elves"
 msgstr "إلفيون"
 
 #. [race]: id=elf
-#: data/core/units.cfg:121
+#: data/core/units.cfg:101
 msgid ""
 "Compared to humans, elves are somewhat taller, more agile but less sturdy. "
 "They have slightly pointy ears, pale skin and usually blond hair. Few "
@@ -9027,22 +8966,22 @@ msgstr ""
 "انتقال السلطة."
 
 #. [race]: id=falcon
-#: data/core/units.cfg:147
+#: data/core/units.cfg:127
 msgid "race^Falcon"
 msgstr "صقر"
 
 #. [race]: id=falcon
-#: data/core/units.cfg:148
+#: data/core/units.cfg:128
 msgid "race+female^Falcon"
 msgstr "صقر"
 
 #. [race]: id=falcon
-#: data/core/units.cfg:149
+#: data/core/units.cfg:129
 msgid "race^Falcons"
 msgstr "صقور"
 
 #. [race]: id=falcon
-#: data/core/units.cfg:150
+#: data/core/units.cfg:130
 msgid ""
 "Falcons are birds of prey, noted for their exceptional speed and agility. "
 "Lighter and with less powerful talons than other raptors, falcons instead "
@@ -9062,29 +9001,29 @@ msgstr ""
 "والعدو، مما يجعلها من الأصول المفيدة للمساعدة في هجوم الجيش."
 
 #. [race]: id=goblin
-#: data/core/units.cfg:158
+#: data/core/units.cfg:137
 msgid "race^Goblin"
 msgstr "غوبلن"
 
 #. [race]: id=goblin
-#: data/core/units.cfg:159
+#: data/core/units.cfg:138
 msgid "race+female^Goblin"
 msgstr "غوبلن"
 
 #. [race]: id=goblin
-#: data/core/units.cfg:160
+#: data/core/units.cfg:139
 msgid "race^Goblins"
 msgstr "غوبلن"
 
 #. [race]: id=goblin
-#: data/core/units.cfg:163
+#: data/core/units.cfg:142
 msgid ""
 "Goblins are puny and quite frail, rarely growing past the size and stature "
 "of a human child."
 msgstr ""
 
 #. [race]: id=goblin
-#: data/core/units.cfg:165
+#: data/core/units.cfg:144
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -9120,22 +9059,22 @@ msgstr ""
 "يستمتعون بها كدليل على براعتهم."
 
 #. [race]: id=gryphon
-#: data/core/units.cfg:178
+#: data/core/units.cfg:156
 msgid "race^Gryphon"
 msgstr "جريفون"
 
 #. [race]: id=gryphon
-#: data/core/units.cfg:179
+#: data/core/units.cfg:157
 msgid "race+female^Gryphon"
 msgstr "جريفون"
 
 #. [race]: id=gryphon
-#: data/core/units.cfg:180
+#: data/core/units.cfg:158
 msgid "race^Gryphons"
 msgstr "جريفون"
 
 #. [race]: id=gryphon
-#: data/core/units.cfg:181
+#: data/core/units.cfg:159
 msgid ""
 "Gryphons are broad, powerful beasts with traits shared from both terrestrial "
 "predators and birds of prey. While occasionally tamed and ridden by the "
@@ -9154,22 +9093,22 @@ msgstr ""
 "مصدرًا للنقاش لقرون، لكنها تظل غامضة مثل أصولها."
 
 #. [race]: id=horse
-#: data/core/units.cfg:191
+#: data/core/units.cfg:169
 msgid "race^Horse"
 msgstr "حصان"
 
 #. [race]: id=horse
-#: data/core/units.cfg:192
+#: data/core/units.cfg:170
 msgid "race+female^Horse"
 msgstr "فرس"
 
 #. [race]: id=horse
-#: data/core/units.cfg:193
+#: data/core/units.cfg:171
 msgid "race^Horses"
 msgstr "خيول"
 
 #. [race]: id=horse
-#: data/core/units.cfg:194
+#: data/core/units.cfg:172
 msgid ""
 "Domesticated horses come in many shapes and sizes, from mighty war chargers, "
 "to sturdy draught horses or agile stock horses. While they are more fragile "
@@ -9192,22 +9131,22 @@ msgstr ""
 "على الرغم من أن قِلة من الناس يمكنهم الادعاء بصدق أنهم رأوا مثل هذه الأشياء."
 
 #. [race]: id=human
-#: data/core/units.cfg:211
+#: data/core/units.cfg:181
 msgid "race^Human"
 msgstr "بشري"
 
 #. [race]: id=human
-#: data/core/units.cfg:212
+#: data/core/units.cfg:182
 msgid "race+female^Human"
 msgstr "بشرية"
 
 #. [race]: id=human
-#: data/core/units.cfg:213
+#: data/core/units.cfg:183
 msgid "race^Humans"
 msgstr "بشر"
 
 #. [race]: id=human
-#: data/core/units.cfg:214
+#: data/core/units.cfg:184
 msgid ""
 "The race of men is an extremely diverse one. Although they originally came "
 "from the Old Continent, men have spread all over the world and split into "
@@ -9283,22 +9222,22 @@ msgstr ""
 "القوة على نقاط الضعف في هذه المجموعات."
 
 #. [race]: id=dunefolk
-#: data/core/units.cfg:229
+#: data/core/units.cfg:197
 msgid "race^Dunefolk Human"
 msgstr "صحراوي"
 
 #. [race]: id=dunefolk
-#: data/core/units.cfg:230
+#: data/core/units.cfg:198
 msgid "race+female^Dunefolk Human"
 msgstr "صحراوية"
 
 #. [race]: id=dunefolk
-#: data/core/units.cfg:231
+#: data/core/units.cfg:199
 msgid "race+plural^Dunefolk"
 msgstr "قوم الصحراء"
 
 #. [race]: id=dunefolk
-#: data/core/units.cfg:233
+#: data/core/units.cfg:201
 msgid ""
 "An offshoot of a forgotten nomadic civilization, the Dunefolk lay claim to "
 "the river valleys and oases of the Sandy Wastes. How they came to inhabit "
@@ -9401,22 +9340,22 @@ msgstr ""
 "ماضي الصحراويين البعيد في الزوايا البعيدة الغريبة في إرديا."
 
 #. [race]: id=lizard
-#: data/core/units.cfg:254
+#: data/core/units.cfg:221
 msgid "race^Saurian"
 msgstr "سحلي"
 
 #. [race]: id=lizard
-#: data/core/units.cfg:255
+#: data/core/units.cfg:222
 msgid "race+female^Saurian"
 msgstr "سحلية"
 
 #. [race]: id=lizard
-#: data/core/units.cfg:256
+#: data/core/units.cfg:223
 msgid "race^Saurians"
 msgstr "سحليّون"
 
 #. [race]: id=lizard
-#: data/core/units.cfg:257
+#: data/core/units.cfg:224
 msgid ""
 "Saurians are lizard-like creatures. Smaller and more slender than humans, "
 "they rarely stand taller than a ten year old child, though from tip of snout "
@@ -9540,17 +9479,17 @@ msgstr ""
 "وهما أمران يحدثان بشكل منتظم."
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:283
+#: data/core/units.cfg:250
 msgid "race^Mechanical"
 msgstr "ميكانيكي"
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:284
+#: data/core/units.cfg:251
 msgid "race+plural^Mechanical"
 msgstr "ميكانيكيون"
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:285
+#: data/core/units.cfg:252
 msgid ""
 "Animated neither by natural life nor by necromancy, the term "
 "<italic>text='mechanical'</italic> describes a created artifact of an "
@@ -9562,17 +9501,17 @@ msgstr ""
 "تفكر من تلقاء نفسها، لكن بعضها يفعل ذلك نتيجة لسحر ما."
 
 #. [race]: id=ship
-#: data/core/units.cfg:294
+#: data/core/units.cfg:261
 msgid "race^Ship"
 msgstr "سفينة"
 
 #. [race]: id=ship
-#: data/core/units.cfg:295
+#: data/core/units.cfg:262
 msgid "race+plural^Ships"
 msgstr "سفن"
 
 #. [race]: id=ship
-#: data/core/units.cfg:296
+#: data/core/units.cfg:263
 #, fuzzy
 #| msgid ""
 #| "Animated neither by natural life nor by necromancy, the term "
@@ -9589,22 +9528,22 @@ msgstr ""
 "تفكر من تلقاء نفسها، لكن بعضها يفعل ذلك نتيجة لسحر ما."
 
 #. [race]: id=merman
-#: data/core/units.cfg:307
+#: data/core/units.cfg:273
 msgid "race^Merman"
 msgstr "حوريّ"
 
 #. [race]: id=merman
-#: data/core/units.cfg:308
+#: data/core/units.cfg:274
 msgid "race^Mermaid"
 msgstr "حوريّات"
 
 #. [race]: id=merman
-#: data/core/units.cfg:309
+#: data/core/units.cfg:275
 msgid "race^Merfolk"
 msgstr "حوريّون"
 
 #. [race]: id=merman
-#: data/core/units.cfg:311
+#: data/core/units.cfg:276
 msgid ""
 "Something like a fusion between humans and fish, the merfolk are an "
 "enigmatic race with both piscine and humanoid attributes. They have strong "
@@ -9626,22 +9565,22 @@ msgstr ""
 "الوعرة أو الحرجية."
 
 #. [race]: id=monster
-#: data/core/units.cfg:319
+#: data/core/units.cfg:284
 msgid "race^Monster"
 msgstr "وحش"
 
 #. [race]: id=monster
-#: data/core/units.cfg:320
+#: data/core/units.cfg:285
 msgid "race+female^Monster"
 msgstr "وحش"
 
 #. [race]: id=monster
-#: data/core/units.cfg:321
+#: data/core/units.cfg:286
 msgid "race^Monsters"
 msgstr "وحوش"
 
 #. [race]: id=monster
-#: data/core/units.cfg:322
+#: data/core/units.cfg:287
 msgid ""
 "The term “monster” incorporates many hideous beasts that haunt the caves, "
 "wilderness, ocean depths, and other climes of the world. They figure largely "
@@ -9652,22 +9591,22 @@ msgstr ""
 "سكانها أيضًا."
 
 #. [race]: id=naga
-#: data/core/units.cfg:329
+#: data/core/units.cfg:293
 msgid "race^Naga"
 msgstr "أفعواني"
 
 #. [race]: id=naga
-#: data/core/units.cfg:330
+#: data/core/units.cfg:294
 msgid "race^Nagini"
 msgstr "أفعوانية"
 
 #. [race]: id=naga
-#: data/core/units.cfg:331
+#: data/core/units.cfg:295
 msgid "race^Nagas"
 msgstr "الأفعوانيون"
 
 #. [race]: id=naga
-#: data/core/units.cfg:332
+#: data/core/units.cfg:296
 msgid ""
 "The serpentine nagas are one of the least understood races of the Great "
 "Continent. Part of this is due to their xenophobic nature and part is due to "
@@ -9697,22 +9636,22 @@ msgstr ""
 "ما يفضلون المياه المفتوحة."
 
 #. [race]: id=ogre
-#: data/core/units.cfg:340
+#: data/core/units.cfg:304
 msgid "race^Ogre"
 msgstr "غول"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:341
+#: data/core/units.cfg:305
 msgid "race+female^Ogre"
 msgstr "سعلاة"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:342
+#: data/core/units.cfg:306
 msgid "race^Ogres"
 msgstr "غيلان"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:343
+#: data/core/units.cfg:307
 msgid ""
 "Ogres are a wild and uncivilized race who dwell mainly in the wilderness of "
 "the Great Continent. Physically, they resemble humans and orcs but are "
@@ -9743,22 +9682,22 @@ msgstr ""
 "انتهازية متبادلة."
 
 #. [race]: id=orc
-#: data/core/units.cfg:351
+#: data/core/units.cfg:314
 msgid "race^Orc"
 msgstr "أوركي"
 
 #. [race]: id=orc
-#: data/core/units.cfg:352
+#: data/core/units.cfg:315
 msgid "race+female^Orc"
 msgstr "أوركية"
 
 #. [race]: id=orc
-#: data/core/units.cfg:353
+#: data/core/units.cfg:316
 msgid "race^Orcs"
 msgstr "الاورك"
 
 #. [race]: id=orc
-#: data/core/units.cfg:354
+#: data/core/units.cfg:317
 msgid ""
 "In appearance, orcs resemble humans but with some bestial features. They are "
 "taller, sturdier and stronger than humans. They are warlike, savage, and "
@@ -9769,12 +9708,12 @@ msgid ""
 msgstr ""
 
 #. [race]: id=orc
-#: data/core/units.cfg:356
+#: data/core/units.cfg:319
 msgid "Society"
 msgstr ""
 
 #. [race]: id=orc
-#: data/core/units.cfg:357
+#: data/core/units.cfg:320
 msgid ""
 "Almost every orc is a member of a tribe or a clan. Relations between "
 "neighboring tribes are usually violent, except in cases of a mutual enemy "
@@ -9788,7 +9727,7 @@ msgid ""
 msgstr ""
 
 #. [race]: id=orc
-#: data/core/units.cfg:359
+#: data/core/units.cfg:322
 msgid ""
 "Orc societies are based on little else but strength; might makes right, and "
 "a leader leads and survives only as long as no one manages to wrest the "
@@ -9802,7 +9741,7 @@ msgid ""
 msgstr ""
 
 #. [race]: id=orc
-#: data/core/units.cfg:361
+#: data/core/units.cfg:324
 msgid ""
 "Orcs mostly live in rural areas, often in foothills or mountainous regions, "
 "sometimes in caves. They grow no crops nor keep livestock, but are competent "
@@ -9817,7 +9756,7 @@ msgid ""
 msgstr ""
 
 #. [race]: id=orc
-#: data/core/units.cfg:363
+#: data/core/units.cfg:326
 msgid ""
 "The oldest known orcs have been around 50 to 60 years of age, but very few "
 "individuals ever live to see over two or three decades before meeting their "
@@ -9831,7 +9770,7 @@ msgid ""
 msgstr ""
 
 #. [race]: id=orc
-#: data/core/units.cfg:367
+#: data/core/units.cfg:330
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -9848,22 +9787,22 @@ msgstr ""
 "مثل الرماية أو الاغتيال."
 
 #. [race]: id=raven
-#: data/core/units.cfg:374
+#: data/core/units.cfg:337
 msgid "race^Raven"
 msgstr "غراب"
 
 #. [race]: id=raven
-#: data/core/units.cfg:375
+#: data/core/units.cfg:338
 msgid "race+female^Raven"
 msgstr "غرابة"
 
 #. [race]: id=raven
-#: data/core/units.cfg:376
+#: data/core/units.cfg:339
 msgid "race^Ravens"
 msgstr "غربان"
 
 #. [race]: id=raven
-#: data/core/units.cfg:377
+#: data/core/units.cfg:340
 msgid ""
 "Ravens are general scavengers, often associating with hunters or predators "
 "in the hope of sharing in the kill. They do not have the powerful beak or "
@@ -9897,22 +9836,22 @@ msgstr ""
 "آخرين سعداء بوجودهم حولهم كحراس."
 
 #. [race]: id=troll
-#: data/core/units.cfg:388
+#: data/core/units.cfg:351
 msgid "race^Troll"
 msgstr "ترول"
 
 #. [race]: id=troll
-#: data/core/units.cfg:389
+#: data/core/units.cfg:352
 msgid "race+female^Troll"
 msgstr "ترول"
 
 #. [race]: id=troll
-#: data/core/units.cfg:390
+#: data/core/units.cfg:353
 msgid "race^Trolls"
 msgstr "الترول"
 
 #. [race]: id=troll
-#: data/core/units.cfg:391
+#: data/core/units.cfg:354
 msgid ""
 "Trolls are ancient creatures, one of the oldest known races known to inhabit "
 "the Great Continent. They are large, slow, simple, and live extremely long "
@@ -9980,22 +9919,22 @@ msgstr ""
 "جحافل الأورك."
 
 #. [race]: id=undead
-#: data/core/units.cfg:411
+#: data/core/units.cfg:372
 msgid "race^Undead"
 msgstr "ميت-حي"
 
 #. [race]: id=undead
-#: data/core/units.cfg:412
+#: data/core/units.cfg:373
 msgid "race+female^Undead"
 msgstr "ميتة-حية"
 
 #. [race]: id=undead
-#: data/core/units.cfg:413
+#: data/core/units.cfg:374
 msgid "race+plural^Undead"
 msgstr "الموتى-الأحياء"
 
 #. [race]: id=undead
-#: data/core/units.cfg:414
+#: data/core/units.cfg:375
 msgid ""
 "Undead are not really a single race of creatures, although often treated as "
 "such. Most ordinary creatures can, by a sufficiently skilled necromancer, be "
@@ -10060,22 +9999,22 @@ msgstr ""
 "والأقزام قبل ذلك."
 
 #. [race]: id=wolf
-#: data/core/units.cfg:427
+#: data/core/units.cfg:388
 msgid "race^Wolf"
 msgstr "ذئب"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:428
+#: data/core/units.cfg:389
 msgid "race+female^Wolf"
 msgstr "ذئبة"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:429
+#: data/core/units.cfg:390
 msgid "race^Wolves"
 msgstr "ذئاب"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:430
+#: data/core/units.cfg:391
 msgid ""
 "Wolves are predatory canines encountered frequently in the wilderness. "
 "Quick, tough, and durable, a solitary wolf suffices to maim or kill "
@@ -10092,17 +10031,17 @@ msgstr ""
 "الماشية في بعض الأحيان."
 
 #. [race]: id=wose
-#: data/core/units.cfg:439
+#: data/core/units.cfg:399
 msgid "race^Wose"
 msgstr "ووز"
 
 #. [race]: id=wose
-#: data/core/units.cfg:440
+#: data/core/units.cfg:400
 msgid "race^Woses"
 msgstr "الووز"
 
 #. [race]: id=wose
-#: data/core/units.cfg:441
+#: data/core/units.cfg:401
 msgid ""
 "The mighty wose resides within the deepest forests of the known world. To "
 "the untrained eye, the wose appears to be nothing more than an oddly shaped, "
@@ -10173,7 +10112,7 @@ msgstr ""
 "الطبيعي والغابات التي يسميها وطنه."
 
 #. [language]
-#: data/english.cfg:34
+#: data/english.cfg:39
 msgid ""
 "This unit’s arcane attack deals tremendous damage to magical creatures, and "
 "even some to mundane creatures."
@@ -10483,6 +10422,90 @@ msgstr "كلفة الرؤية"
 #: src/help/help_topic_generators.cpp:837
 msgid "Jamming Cost"
 msgstr "كلفة القفز"
+
+#~ msgid ""
+#~ "Allows the unit to heal adjacent allied units at the beginning of our "
+#~ "turn.\n"
+#~ "\n"
+#~ "A unit cared for by this healer may heal up to 4 HP per turn, or stop "
+#~ "poison from taking effect for that turn.\n"
+#~ "A poisoned unit cannot be cured of its poison by a healer, and must seek "
+#~ "the care of a village or a unit that can cure."
+#~ msgstr ""
+#~ "السماح للوحدة بشفاء الوحدات المتحالفة المجاورة في بداية دورنا.\n"
+#~ "\n"
+#~ "يمكن للوحدة التي يعتني بها هذا المعالج أن تشفي ما يصل إلى 4 نقاط حياة لكل "
+#~ "دور، أو تمنع السم من التأثير فيها في هذا الدور.\n"
+#~ "لا يمكن للوحدة المسمومة أن تعالج من سمها بواسطة معالج، ويجب أن تسعى "
+#~ "للحصول على رعاية قرية أو وحدة يمكنها العلاج."
+
+#~ msgid ""
+#~ "This unit combines herbal remedies with magic to heal units more quickly "
+#~ "than is normally possible on the battlefield.\n"
+#~ "\n"
+#~ "A unit cared for by this healer may heal up to 8 HP per turn, or stop "
+#~ "poison from taking effect for that turn.\n"
+#~ "A poisoned unit cannot be cured of its poison by a healer, and must seek "
+#~ "the care of a village or a unit that can cure."
+#~ msgstr ""
+#~ "تجمع هذه الوحدة بين العلاجات العشبية والسحر لشفاء الوحدات بسرعة أكبر مما "
+#~ "هو ممكن عادةً في ساحة المعركة.\n"
+#~ "\n"
+#~ "الوحدة التي يعتني بها هذا المعالج قد تشفي ما يصل إلى 8 نقاط صحة في كل "
+#~ "دور، أو تمنع السم من التأثير في هذا الدور تجمع هذه الوحدة بين العلاجات "
+#~ "العشبية والسحر لشفاء الوحدات بسرعة أكبر مما هو ممكن عادةً في ساحة "
+#~ "المعركة.\n"
+#~ "\n"
+#~ "قد تشفي الوحدة التي يعتني بها هذا المعالج ما يصل إلى 8 نقاط حياة لكل دور، "
+#~ "أو تمنع السم من التأثير فيها في هذا الدور.\n"
+#~ "لا يمكن للوحدة المسمومة أن تعالج من سمها بواسطة معالج، ويجب أن تسعى "
+#~ "للحصول على رعاية قرية أو وحدة يمكنها العلاج."
+
+#~ msgid ""
+#~ "This unit combines herbal remedies with magic to heal units more quickly "
+#~ "than is normally possible on the battlefield.\n"
+#~ "\n"
+#~ "A unit cared for by this healer may heal up to 12 HP per turn, or stop "
+#~ "poison from taking effect for that turn.\n"
+#~ "A poisoned unit cannot be cured of its poison by a healer, and must seek "
+#~ "the care of a village or a unit that can cure."
+#~ msgstr ""
+#~ "تجمع هذه الوحدة بين العلاجات العشبية والسحر لشفاء الوحدات بسرعة أكبر مما "
+#~ "هو ممكن عادةً في ساحة المعركة.\n"
+#~ "\n"
+#~ "الوحدة التي يعتني بها هذا المعالج قد تشفي ما يصل إلى 12 نقطة صحة في كل "
+#~ "دور، أو تمنع السم من التأثير في هذا الدور تجمع هذه الوحدة بين العلاجات "
+#~ "العشبية والسحر لشفاء الوحدات بسرعة أكبر مما هو ممكن عادةً في ساحة "
+#~ "المعركة.\n"
+#~ "\n"
+#~ "قد تشفي الوحدة التي يعتني بها هذا المعالج ما يصل إلى 12 نقطة صحة في كل "
+#~ "دور، أو تمنع السم من التأثير في هذا الدور.\n"
+#~ "لا يمكن للوحدة المسمومة أن تعالج من سمها بواسطة معالج، ويجب أن تسعى "
+#~ "للحصول على رعاية قرية أو وحدة يمكنها العلاج."
+
+#, fuzzy
+#~| msgid "naval ram"
+#~ msgid "naval"
+#~ msgstr "كبش بحري"
+
+#, fuzzy
+#~| msgid "This attack can only be used against units in water terrain."
+#~ msgid ""
+#~ "This attack can only be used when both the attacker and the defender are "
+#~ "in water or swamp."
+#~ msgstr ""
+#~ "لا يمكن استخدام هذا الهجوم إلا ضد الوحدات الموجودة في التضاريس المائية."
+
+#, fuzzy
+#~| msgid ""
+#~| "This unit has an attack that can only be used against units in watery "
+#~| "terrain."
+#~ msgid ""
+#~ "This unit has an attack that can only be used when both the attacker and "
+#~ "the defender are in water or swamp."
+#~ msgstr ""
+#~ "هذه الوحدة لديها هجوم لا يمكن استخدامه إلا ضد الوحدات الموجودة في "
+#~ "التضاريس المائية."
 
 #, fuzzy
 #~| msgid ""

@@ -10,15 +10,16 @@
 # Azamat H. Hackimov <azazello1984@mail.ru>, 2005.
 # Azamat H. Hackimov <azamat.hackimov@gmail.com>, 2006.
 # O_o <mm-94@mail.ru>, 2010.
-# Fedor Khodkov, 2014
-# Artem Khrapov (kabachuha) <artemkhrapov2001@yandex.ru>, 2020-2024
+# Fedor Khodkov, 2014.
+# Artem Khrapov (kabachuha) <artemkhrapov2001@yandex.ru>, 2020-2024.
+# Alexandr Obolonkin (Alexinor) <obolonkin@proton.me>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-lib\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-01-20 11:31-0600\n"
-"PO-Revision-Date: 2024-04-13 16:21+0300\n"
-"Last-Translator: Artem Khrapov <artemkhrapov2001@yandex.ru>\n"
+"POT-Creation-Date: 2026-06-22 22:15-0500\n"
+"PO-Revision-Date: 2026-06-23 19:13+0500\n"
+"Last-Translator: Alexandr Obolonkin (Alexinor) <obolonkin@proton.me>\n"
 "Language-Team: https://wiki.wesnoth.org/RussianTranslation\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -26,7 +27,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.0.1\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
 #. [ai]: id=ai_default_rca
@@ -67,7 +68,7 @@ msgstr "Забор"
 #. [terrain_type]: id=deep_water_tropical
 #. [terrain_type]: id=deep_water
 #: data/core/terrain.cfg:23 data/core/terrain.cfg:34 data/core/terrain.cfg:45
-#: data/core/terrain.cfg:3376 data/core/terrain.cfg:3377
+#: data/core/terrain.cfg:3374 data/core/terrain.cfg:3375
 msgid "Deep Water"
 msgstr "Глубокая вода"
 
@@ -91,7 +92,7 @@ msgstr "Тропическая глубокая вода"
 #. [terrain_type]: id=tropical_water
 #. [terrain_type]: id=shallow_water
 #: data/core/terrain.cfg:56 data/core/terrain.cfg:67 data/core/terrain.cfg:78
-#: data/core/terrain.cfg:3335 data/core/terrain.cfg:3336
+#: data/core/terrain.cfg:3333 data/core/terrain.cfg:3334
 msgid "Shallow Water"
 msgstr "Отмель"
 
@@ -136,8 +137,8 @@ msgstr ""
 #. [terrain_type]: id=tropical_reef
 #. [terrain_type]: id=reef
 #: data/core/terrain.cfg:101 data/core/terrain.cfg:112
-#: data/core/terrain.cfg:123 data/core/terrain.cfg:3291
-#: data/core/terrain.cfg:3292
+#: data/core/terrain.cfg:123 data/core/terrain.cfg:3289
+#: data/core/terrain.cfg:3290
 msgid "Coastal Reef"
 msgstr "Береговой риф"
 
@@ -161,8 +162,8 @@ msgstr "Тропический береговой риф"
 #. [terrain_type]: id=quagmire
 #. [terrain_type]: id=swamp_water
 #: data/core/terrain.cfg:134 data/core/terrain.cfg:149
-#: data/core/terrain.cfg:160 data/core/terrain.cfg:3319
-#: data/core/terrain.cfg:3320
+#: data/core/terrain.cfg:160 data/core/terrain.cfg:3317
+#: data/core/terrain.cfg:3318
 msgid "Swamp"
 msgstr "Болото"
 
@@ -259,9 +260,9 @@ msgid ""
 "travelers passing over them. As far as gameplay is concerned, roads behave "
 "as flat terrain."
 msgstr ""
-"<italic>text='Дороги'</italic> — утрамбованные тропинки в грязи, "
-"протоптанные многими путешественниками. С точки зрения игры, дороги ничем не "
-"отличаются от равнины."
+"<i>Дороги</i> — утрамбованные тропинки в грязи, протоптанные многими "
+"путешественниками. С точки зрения игры, дороги ничем не отличаются от "
+"равнины."
 
 #. [terrain_type]: id=road_clean
 #: data/core/terrain.cfg:264
@@ -271,7 +272,7 @@ msgstr "Чистые серые камни"
 #. [terrain_type]: id=road_desert
 #: data/core/terrain.cfg:274
 msgid "Gravel"
-msgstr ""
+msgstr "Гравий"
 
 #. [terrain_type]: id=stone_path
 #: data/core/terrain.cfg:284
@@ -310,14 +311,14 @@ msgid ""
 "small sand pits or beaches, however for gameplay purposes they are "
 "identical. See <ref>dst='..terrain_sand' text='sand'</ref>."
 msgstr ""
-"<italic>text='Пустыни'</italic> устроены слегка по-другому, нежели маленькие "
-"песочные ямы или пляжи, однако для игровых целей они одинаковы. См. "
-"<ref>dst='..terrain_sand' text='песок'</ref>."
+"<i>Пустыни</i> устроены слегка по-другому, нежели маленькие песочные ямы или "
+"пляжи, однако для игровых целей они одинаковы. См. <ref "
+"dst='..terrain_sand'>песок</ref>."
 
 #. [terrain_type]: id=sand_beach
 #. [terrain_type]: id=sand
-#: data/core/terrain.cfg:340 data/core/terrain.cfg:3278
-#: data/core/terrain.cfg:3279
+#: data/core/terrain.cfg:340 data/core/terrain.cfg:3276
+#: data/core/terrain.cfg:3277
 msgid "Sand"
 msgstr "Песок"
 
@@ -328,7 +329,7 @@ msgstr "Пляжный песок"
 
 #. [terrain_type]: id=sand_beach
 #. [terrain_type]: id=sand
-#: data/core/terrain.cfg:345 data/core/terrain.cfg:3282
+#: data/core/terrain.cfg:345 data/core/terrain.cfg:3280
 msgid ""
 "The instability of <italic>text='sand'</italic> makes it harder for most "
 "units to cross, and leaves them wide open to attack. In contrast, the wide "
@@ -337,9 +338,9 @@ msgid ""
 "\n"
 "Most units receive 20 to 40% defense in sand."
 msgstr ""
-"Из-за неустойчивости <italic>text='песка'</italic> бойцам тяжело пересекать "
-"его, и они оказываются открытыми для нападений. Напротив, ящерам с их "
-"широкими ступнями или змеевидными телами очень удобно передвигаться по ним.\n"
+"Из-за неустойчивости <i>песка</i> бойцам тяжело пересекать его, и они "
+"оказываются открытыми для нападений. Напротив, ящерам с их широкими ступнями "
+"или змеевидными телами очень удобно передвигаться по ним.\n"
 "\n"
 "Большинство бойцов имеют на песке защиту от 20 до 40%."
 
@@ -531,8 +532,8 @@ msgstr "Мёртвое большое дерево дуба"
 #: data/core/terrain.cfg:758 data/core/terrain.cfg:770
 #: data/core/terrain.cfg:782 data/core/terrain.cfg:794
 #: data/core/terrain.cfg:806 data/core/terrain.cfg:818
-#: data/core/terrain.cfg:830 data/core/terrain.cfg:3402
-#: data/core/terrain.cfg:3403
+#: data/core/terrain.cfg:830 data/core/terrain.cfg:3400
+#: data/core/terrain.cfg:3401
 msgid "Forest"
 msgstr "Лес"
 
@@ -616,8 +617,8 @@ msgstr "Заснеженный смешанный лес"
 #. [terrain_type]: id=snow_hills
 #. [terrain_type]: id=hills
 #: data/core/terrain.cfg:846 data/core/terrain.cfg:856
-#: data/core/terrain.cfg:876 data/core/terrain.cfg:3306
-#: data/core/terrain.cfg:3307
+#: data/core/terrain.cfg:876 data/core/terrain.cfg:3304
+#: data/core/terrain.cfg:3305
 msgid "Hills"
 msgstr "Холмы"
 
@@ -654,7 +655,7 @@ msgstr "Заснеженные холмы"
 #: data/core/terrain.cfg:911 data/core/terrain.cfg:922
 #: data/core/terrain.cfg:1347 data/core/terrain.cfg:1357
 #: data/core/terrain.cfg:1368 data/core/terrain.cfg:1378
-#: data/core/terrain.cfg:3362 data/core/terrain.cfg:3363
+#: data/core/terrain.cfg:3360 data/core/terrain.cfg:3361
 msgid "Mountains"
 msgstr "Горы"
 
@@ -683,7 +684,7 @@ msgstr "Засушливые горы"
 #. [terrain_type]: id=regular_stone_floor_deprecated
 #. [terrain_type]: id=ancient_stone_floor_deprecated
 #: data/core/terrain.cfg:934 data/core/terrain.cfg:944
-#: data/core/terrain.cfg:3473 data/core/terrain.cfg:3484
+#: data/core/terrain.cfg:3471 data/core/terrain.cfg:3482
 msgid "Stone Floor"
 msgstr "Каменный пол"
 
@@ -703,8 +704,8 @@ msgstr "Древний каменный пол"
 #. [terrain_type]: id=rug_floor_deprecated
 #. [terrain_type]: id=rug2_floor_deprecated
 #: data/core/terrain.cfg:954 data/core/terrain.cfg:964
-#: data/core/terrain.cfg:974 data/core/terrain.cfg:3495
-#: data/core/terrain.cfg:3506
+#: data/core/terrain.cfg:974 data/core/terrain.cfg:3493
+#: data/core/terrain.cfg:3504
 msgid "Rug"
 msgstr "Ковер"
 
@@ -736,7 +737,7 @@ msgstr "Базовый деревянный пол"
 #. [terrain_type]: id=old_wood_floor
 #. [terrain_type]: id=old_wood_floor_deprecated
 #: data/core/terrain.cfg:994 data/core/terrain.cfg:997
-#: data/core/terrain.cfg:3517
+#: data/core/terrain.cfg:3515
 msgid "Old Wooden Floor"
 msgstr "Старый деревянный пол"
 
@@ -754,7 +755,7 @@ msgstr "Луч света"
 #. [terrain_type]: id=cave_earthy
 #. [terrain_type]: id=cave
 #: data/core/terrain.cfg:1021 data/core/terrain.cfg:1031
-#: data/core/terrain.cfg:3263 data/core/terrain.cfg:3264
+#: data/core/terrain.cfg:3261 data/core/terrain.cfg:3262
 msgid "Cave"
 msgstr "Пещера"
 
@@ -880,18 +881,18 @@ msgid ""
 "\n"
 "Occasionally caves are <italic>text='illuminated'</italic>."
 msgstr ""
-"<italic>text='Скалистая пещера'</italic> формируется под воздействием воды и "
-"ветра, несущих частицы, разрушающие и затачивающие скальные породы. "
-"Местность похожа на миниатюрные подземные горы, где подвижность большинства "
-"бойцов снижается, но увеличивается их защита. Гномы и тролли — главные "
-"обитатели пещер — довольно легко здесь перемещаются. Гномы, благодаря "
-"маленькому размеру, получают все преимущества такой местности. \n"
+"<i>Скалистая пещера</i> формируется под воздействием воды и ветра, несущих "
+"частицы, разрушающие и затачивающие скальные породы. Местность похожа на "
+"миниатюрные подземные горы, где подвижность большинства бойцов снижается, но "
+"увеличивается их защита. Гномы и тролли — главные обитатели пещер — довольно "
+"легко здесь перемещаются. Гномы, благодаря маленькому размеру, получают все "
+"преимущества такой местности. \n"
 "\n"
 "Большинство бойцов получают 50% защиты в скалистых пещерах, а кавалерия — "
 "только 40%. Гномы получают 60% защиты.\n"
 "\n"
-"Иногда пещеры бывают <italic>dst='terrain_illuminated_cave' text='освещены'</"
-"italic>."
+"Иногда пещеры бывают <i><ref dst='terrain_illuminated_cave'>освещены</i></"
+"ref> ."
 
 #. [terrain_type]: id=earthy_rocky_cave
 #: data/core/terrain.cfg:1152
@@ -976,12 +977,12 @@ msgid ""
 "immediately above it. This provides an attack bonus for lawful units and "
 "removes the attack bonus from chaotic units."
 msgstr ""
-"Опасность хождения по <italic>text='лаве'</italic> довольно очевидна. С "
-"точки зрения передвижения, лава идентична <ref>dst='terrain_unwalkable' "
-"text='непроходимой'</ref> местности — её могут пересекать только те бойцы, "
-"кто может летать над ней на большие расстояния. Расплавленная магма светится "
-"и освещает пространство над собой. Это дает бонус в атаке порядочным бойцам "
-"и убирает бонусы для хаотичных."
+"Опасность хождения по <i>лаве</i> довольно очевидна. С точки зрения "
+"передвижения, лава идентична <ref dst='terrain_unwalkable'>непроходимой</"
+"ref> местности — её могут пересекать только те бойцы, кто может летать над "
+"ней на большие расстояния. Расплавленная магма светится и освещает "
+"пространство над собой. Это дает бонус в атаке порядочным бойцам и убирает "
+"бонусы для хаотичных."
 
 #. [terrain_type]: id=volcano
 #: data/core/terrain.cfg:1332
@@ -1182,13 +1183,13 @@ msgid "Impassable Overlay"
 msgstr "Недостижимая местность"
 
 #. [terrain_type]: id=unwalkable_overlay
-#: data/core/terrain.cfg:1756
+#: data/core/terrain.cfg:1754
 msgid "Unwalkable Overlay"
 msgstr "Непроходимая местность"
 
 #. [terrain_type]: id=void
 #. [terrain_type]: id=off_map
-#: data/core/terrain.cfg:1768 data/core/terrain.cfg:3181
+#: data/core/terrain.cfg:1766 data/core/terrain.cfg:3179
 msgid "Void"
 msgstr "Пустота"
 
@@ -1224,178 +1225,178 @@ msgstr "Пустота"
 #. [terrain_type]: id=mermen-village
 #. [terrain_type]: id=village_overlay
 #. [terrain_type]: id=village
-#: data/core/terrain.cfg:1784 data/core/terrain.cfg:1797
-#: data/core/terrain.cfg:1810 data/core/terrain.cfg:1823
-#: data/core/terrain.cfg:1838 data/core/terrain.cfg:1851
-#: data/core/terrain.cfg:1866 data/core/terrain.cfg:1879
-#: data/core/terrain.cfg:1894 data/core/terrain.cfg:1907
-#: data/core/terrain.cfg:1920 data/core/terrain.cfg:1933
-#: data/core/terrain.cfg:1946 data/core/terrain.cfg:1959
-#: data/core/terrain.cfg:1972 data/core/terrain.cfg:1985
-#: data/core/terrain.cfg:1998 data/core/terrain.cfg:2011
-#: data/core/terrain.cfg:2024 data/core/terrain.cfg:2037
-#: data/core/terrain.cfg:2050 data/core/terrain.cfg:2065
-#: data/core/terrain.cfg:2078 data/core/terrain.cfg:2091
-#: data/core/terrain.cfg:2104 data/core/terrain.cfg:2117
-#: data/core/terrain.cfg:2130 data/core/terrain.cfg:2143
-#: data/core/terrain.cfg:2158 data/core/terrain.cfg:2171
-#: data/core/terrain.cfg:2189 data/core/terrain.cfg:3427
-#: data/core/terrain.cfg:3428
+#: data/core/terrain.cfg:1782 data/core/terrain.cfg:1795
+#: data/core/terrain.cfg:1808 data/core/terrain.cfg:1821
+#: data/core/terrain.cfg:1836 data/core/terrain.cfg:1849
+#: data/core/terrain.cfg:1864 data/core/terrain.cfg:1877
+#: data/core/terrain.cfg:1892 data/core/terrain.cfg:1905
+#: data/core/terrain.cfg:1918 data/core/terrain.cfg:1931
+#: data/core/terrain.cfg:1944 data/core/terrain.cfg:1957
+#: data/core/terrain.cfg:1970 data/core/terrain.cfg:1983
+#: data/core/terrain.cfg:1996 data/core/terrain.cfg:2009
+#: data/core/terrain.cfg:2022 data/core/terrain.cfg:2035
+#: data/core/terrain.cfg:2048 data/core/terrain.cfg:2063
+#: data/core/terrain.cfg:2076 data/core/terrain.cfg:2089
+#: data/core/terrain.cfg:2102 data/core/terrain.cfg:2115
+#: data/core/terrain.cfg:2128 data/core/terrain.cfg:2141
+#: data/core/terrain.cfg:2156 data/core/terrain.cfg:2169
+#: data/core/terrain.cfg:2187 data/core/terrain.cfg:3425
+#: data/core/terrain.cfg:3426
 msgid "Village"
 msgstr "Деревня"
 
 #. [terrain_type]: id=desert_village
-#: data/core/terrain.cfg:1785
+#: data/core/terrain.cfg:1783
 msgid "Adobe Village"
 msgstr "Глинобитная деревня"
 
 #. [terrain_type]: id=desert_village_ruin
-#: data/core/terrain.cfg:1798
+#: data/core/terrain.cfg:1796
 msgid "Ruined Adobe Village"
 msgstr "Разрушенная глинобитная деревня"
 
 #. [terrain_type]: id=desert_village_tent
-#: data/core/terrain.cfg:1811
+#: data/core/terrain.cfg:1809
 msgid "Desert Tent Village"
 msgstr "Пустынная палаточная деревня"
 
 #. [terrain_type]: id=camp_village
-#: data/core/terrain.cfg:1824
+#: data/core/terrain.cfg:1822
 msgid "Tent Village"
 msgstr "Палаточная деревня"
 
 #. [terrain_type]: id=orcish_village
-#: data/core/terrain.cfg:1839
+#: data/core/terrain.cfg:1837
 msgid "Orcish Village"
 msgstr "Деревня орков"
 
 #. [terrain_type]: id=orcish_snow_village
-#: data/core/terrain.cfg:1852
+#: data/core/terrain.cfg:1850
 msgid "Snowy Orcish Village"
 msgstr "Заснеженная деревня орков"
 
 #. [terrain_type]: id=elven_snow_village
-#: data/core/terrain.cfg:1867
+#: data/core/terrain.cfg:1865
 msgid "Snowy Elven Village"
 msgstr "Заснеженная эльфийская деревня"
 
 #. [terrain_type]: id=elven_village
-#: data/core/terrain.cfg:1880
+#: data/core/terrain.cfg:1878
 msgid "Elven Village"
 msgstr "Эльфийская деревня"
 
 #. [terrain_type]: id=human_village
-#: data/core/terrain.cfg:1895
+#: data/core/terrain.cfg:1893
 msgid "Cottage"
 msgstr "Хижина"
 
 #. [terrain_type]: id=snow_village
-#: data/core/terrain.cfg:1908
+#: data/core/terrain.cfg:1906
 msgid "Snowy Cottage"
 msgstr "Заснеженная хижина"
 
 #. [terrain_type]: id=human_village_ruin
-#: data/core/terrain.cfg:1921
+#: data/core/terrain.cfg:1919
 msgid "Ruined Cottage"
 msgstr "Разрушенная хижина"
 
 #. [terrain_type]: id=city_village
-#: data/core/terrain.cfg:1934
+#: data/core/terrain.cfg:1932
 msgid "Human City"
 msgstr "Город людей"
 
 #. [terrain_type]: id=windmill_village
-#: data/core/terrain.cfg:1947
+#: data/core/terrain.cfg:1945
 msgid "Windmill Village"
 msgstr "Деревня с мельницей"
 
 #. [terrain_type]: id=city_village_wno
-#: data/core/terrain.cfg:1960
+#: data/core/terrain.cfg:1958
 msgid "Snowy Human City"
 msgstr "Заснеженный город людей"
 
 #. [terrain_type]: id=city_village_ruin
-#: data/core/terrain.cfg:1973
+#: data/core/terrain.cfg:1971
 msgid "Ruined Human City"
 msgstr "Разрушенный город людей"
 
 #. [terrain_type]: id=hill_village
-#: data/core/terrain.cfg:1986
+#: data/core/terrain.cfg:1984
 msgid "Hill Stone Village"
 msgstr "Каменная деревня на холме"
 
 #. [terrain_type]: id=snow-hill_village
-#: data/core/terrain.cfg:1999
+#: data/core/terrain.cfg:1997
 msgid "Snowy Hill Stone Village"
 msgstr "Заснеженная каменная деревня на холме"
 
 #. [terrain_type]: id=hill_village_ruin
-#: data/core/terrain.cfg:2012
+#: data/core/terrain.cfg:2010
 msgid "Ruined Hill Stone Village"
 msgstr "Разрушенная каменная деревня на холме"
 
 #. [terrain_type]: id=tropical_forest_village
-#: data/core/terrain.cfg:2025
+#: data/core/terrain.cfg:2023
 msgid "Tropical Village"
 msgstr "Тропическая деревня"
 
 #. [terrain_type]: id=drake_village
-#: data/core/terrain.cfg:2038
+#: data/core/terrain.cfg:2036
 msgid "Drake Village"
 msgstr "Деревня дрейков"
 
 #. [terrain_type]: id=drake_snow_village
-#: data/core/terrain.cfg:2051
+#: data/core/terrain.cfg:2049
 msgid "Snowy Drake Village"
 msgstr "Заснеженная деревня дрейков"
 
 #. [terrain_type]: id=underground_village
-#: data/core/terrain.cfg:2066
+#: data/core/terrain.cfg:2064
 msgid "Cave Village"
 msgstr "Пещерная деревня"
 
 #. [terrain_type]: id=dwarven_village
-#: data/core/terrain.cfg:2079
+#: data/core/terrain.cfg:2077
 msgid "Dwarven Village"
 msgstr "Деревня гномов"
 
 #. [terrain_type]: id=hut_village
-#: data/core/terrain.cfg:2092
+#: data/core/terrain.cfg:2090
 msgid "Hut"
 msgstr "Лачуга"
 
 #. [terrain_type]: id=hut_snow_village
-#: data/core/terrain.cfg:2105
+#: data/core/terrain.cfg:2103
 msgid "Snowy Hut"
 msgstr "Заснеженная лачуга"
 
 #. [terrain_type]: id=logcabin_village
-#: data/core/terrain.cfg:2118
+#: data/core/terrain.cfg:2116
 msgid "Log Cabin"
 msgstr "Деревянный домик"
 
 #. [terrain_type]: id=logcabin_snow_village
-#: data/core/terrain.cfg:2131
+#: data/core/terrain.cfg:2129
 msgid "Snowy Log Cabin"
 msgstr "Заснеженный деревянный домик"
 
 #. [terrain_type]: id=igloo
-#: data/core/terrain.cfg:2144
+#: data/core/terrain.cfg:2142
 msgid "Igloo"
 msgstr "Иглу"
 
 #. [terrain_type]: id=swamp_village
-#: data/core/terrain.cfg:2159
+#: data/core/terrain.cfg:2157
 msgid "Swamp Village"
 msgstr "Болотная деревня"
 
 #. [terrain_type]: id=mermen-village
-#: data/core/terrain.cfg:2172
+#: data/core/terrain.cfg:2170
 msgid "Merfolk Village"
 msgstr "Деревня водяных"
 
 #. [terrain_type]: id=mermen-village
-#: data/core/terrain.cfg:2173
+#: data/core/terrain.cfg:2171
 msgid ""
 "<italic>text='Submerged villages'</italic> are the homes of merfolk and "
 "nagas. While water-dwelling creatures are at home here, land-dwellers have a "
@@ -1407,18 +1408,18 @@ msgid ""
 "Merfolk and nagas have 60% defense in submerged villages, whereas land based "
 "units usually have a low defense."
 msgstr ""
-"<italic>text='Затопленные деревни'</italic> - это дома водяных и наг. В то "
-"время как жители воды чувствуют здесь себя как дома, жители суши испытывают "
-"большие проблемы припередвижении и защите этих деревень. Однако, как в любых "
-"других деревнях, здесь доступны средства, которые позволяют любым существам "
+"<i>Затопленные деревни</i> — это дома водяных и наг. В то время как жители "
+"воды чувствуют здесь себя как дома, жители суши испытывают большие проблемы "
+"при передвижении и защите этих деревень. Однако, как в любых других "
+"деревнях, здесь доступны средства, которые позволяют любым существам "
 "излечивать их раны. Любой боец, расположенный в деревне, может вылечиться на "
 "8 очков здоровья за ход, или излечиться от яда.\n"
 "\n"
-"Водяные и наги имеют уровень защиты в 60% в затопленных дервенях, в то время "
+"Водяные и наги имеют уровень защиты в 60% в затопленных деревнях, в то время "
 "как сухопутные бойцы обычно имеют низкую защиту."
 
 #. [terrain_type]: id=village_overlay
-#: data/core/terrain.cfg:2190
+#: data/core/terrain.cfg:2188
 msgid "Village Overlay"
 msgstr "Оверлей: Деревня"
 
@@ -1427,19 +1428,19 @@ msgstr "Оверлей: Деревня"
 #. [terrain_type]: id=encampment_snow
 #. [terrain_type]: id=troll_encampment
 #. [terrain_type]: id=aquatic_camp
-#: data/core/terrain.cfg:2206 data/core/terrain.cfg:2207
-#: data/core/terrain.cfg:2218 data/core/terrain.cfg:2230
-#: data/core/terrain.cfg:2435 data/core/terrain.cfg:2447
+#: data/core/terrain.cfg:2204 data/core/terrain.cfg:2205
+#: data/core/terrain.cfg:2216 data/core/terrain.cfg:2228
+#: data/core/terrain.cfg:2433 data/core/terrain.cfg:2445
 msgid "Encampment"
 msgstr "Лагерь"
 
 #. [terrain_type]: id=encampment_ruin
-#: data/core/terrain.cfg:2219
+#: data/core/terrain.cfg:2217
 msgid "Ruined Encampment"
 msgstr "Разрушенный лагерь"
 
 #. [terrain_type]: id=encampment_snow
-#: data/core/terrain.cfg:2231
+#: data/core/terrain.cfg:2229
 msgid "Snowy Encampment"
 msgstr "Заснеженный лагерь"
 
@@ -1458,69 +1459,69 @@ msgstr "Заснеженный лагерь"
 #. [terrain_type]: id=aquatic_castle
 #. [terrain_type]: id=castle_overlay
 #. [terrain_type]: id=castle
-#: data/core/terrain.cfg:2242 data/core/terrain.cfg:2254
-#: data/core/terrain.cfg:2266 data/core/terrain.cfg:2278
-#: data/core/terrain.cfg:2289 data/core/terrain.cfg:2301
-#: data/core/terrain.cfg:2313 data/core/terrain.cfg:2325
-#: data/core/terrain.cfg:2337 data/core/terrain.cfg:2349
-#: data/core/terrain.cfg:2361 data/core/terrain.cfg:2411
-#: data/core/terrain.cfg:2460 data/core/terrain.cfg:2776
-#: data/core/terrain.cfg:3346 data/core/terrain.cfg:3347
+#: data/core/terrain.cfg:2240 data/core/terrain.cfg:2252
+#: data/core/terrain.cfg:2264 data/core/terrain.cfg:2276
+#: data/core/terrain.cfg:2287 data/core/terrain.cfg:2299
+#: data/core/terrain.cfg:2311 data/core/terrain.cfg:2323
+#: data/core/terrain.cfg:2335 data/core/terrain.cfg:2347
+#: data/core/terrain.cfg:2359 data/core/terrain.cfg:2409
+#: data/core/terrain.cfg:2458 data/core/terrain.cfg:2774
+#: data/core/terrain.cfg:3344 data/core/terrain.cfg:3345
 msgid "Castle"
 msgstr "Замок"
 
 #. [terrain_type]: id=orcish_fort
-#: data/core/terrain.cfg:2243
+#: data/core/terrain.cfg:2241
 msgid "Orcish Castle"
 msgstr "Замок орков"
 
 #. [terrain_type]: id=snow_orcish_fort
-#: data/core/terrain.cfg:2255
+#: data/core/terrain.cfg:2253
 msgid "Snowy Orcish Castle"
 msgstr "Заснеженный замок орков"
 
 #. [terrain_type]: id=human_castle
-#: data/core/terrain.cfg:2267
+#: data/core/terrain.cfg:2265
 msgid "Human Castle"
 msgstr "Замок людей"
 
 #. [terrain_type]: id=snow_castle
-#: data/core/terrain.cfg:2279
+#: data/core/terrain.cfg:2277
 msgid "Snowy Human Castle"
 msgstr "Заснеженный замок людей"
 
 #. [terrain_type]: id=elven_castle
-#: data/core/terrain.cfg:2290
+#: data/core/terrain.cfg:2288
 msgid "Elven Castle"
 msgstr "Замок эльфов"
 
 #. [terrain_type]: id=elven_castle_ruin
-#: data/core/terrain.cfg:2302
+#: data/core/terrain.cfg:2300
 msgid "Elven Castle Ruin"
 msgstr "Разрушенный замок эльфов"
 
 #. [terrain_type]: id=elven_castle_winter
-#: data/core/terrain.cfg:2314
+#: data/core/terrain.cfg:2312
 msgid "Winter Elven Castle"
 msgstr "Заснеженный замок эльфов"
 
 #. [terrain_type]: id=dwarven_castle
-#: data/core/terrain.cfg:2326
+#: data/core/terrain.cfg:2324
 msgid "Dwarven Underground Castle"
 msgstr "Подземный замок гномов"
 
 #. [terrain_type]: id=dwarven_castle2
-#: data/core/terrain.cfg:2338
+#: data/core/terrain.cfg:2336
 msgid "Dwarven Castle"
 msgstr "Замок гномов"
 
 #. [terrain_type]: id=dwarven_castle_ruin
-#: data/core/terrain.cfg:2350
+#: data/core/terrain.cfg:2348
 msgid "Dwarven Castle Ruins"
 msgstr "Разрушенный замок гномов"
 
 #. [terrain_type]: id=dwarven_castle_winter
-#: data/core/terrain.cfg:2362
+#: data/core/terrain.cfg:2360
 msgid "Winter Dwarven Castle"
 msgstr "Заснеженный замок гномов"
 
@@ -1528,48 +1529,48 @@ msgstr "Заснеженный замок гномов"
 #. [terrain_type]: id=sunkenruin
 #. [terrain_type]: id=swampruin
 #. [terrain_type]: id=sand_castle_ruin
-#: data/core/terrain.cfg:2373 data/core/terrain.cfg:2385
-#: data/core/terrain.cfg:2398 data/core/terrain.cfg:2423
+#: data/core/terrain.cfg:2371 data/core/terrain.cfg:2383
+#: data/core/terrain.cfg:2396 data/core/terrain.cfg:2421
 msgid "Ruined Castle"
 msgstr "Разрушенный замок"
 
 #. [terrain_type]: id=ruin
-#: data/core/terrain.cfg:2374
+#: data/core/terrain.cfg:2372
 msgid "Ruined Human Castle"
 msgstr "Разрушенный замок людей"
 
 #. [terrain_type]: id=sunkenruin
-#: data/core/terrain.cfg:2386
+#: data/core/terrain.cfg:2384
 msgid "Sunken Human Ruin"
 msgstr "Затопленные людские руины"
 
 #. [terrain_type]: id=swampruin
-#: data/core/terrain.cfg:2399
+#: data/core/terrain.cfg:2397
 msgid "Swamp Human Ruin"
 msgstr "Заболоченные людские руины"
 
 #. [terrain_type]: id=sand_castle
-#: data/core/terrain.cfg:2412
+#: data/core/terrain.cfg:2410
 msgid "Desert Castle"
 msgstr "Пустынный замок"
 
 #. [terrain_type]: id=sand_castle_ruin
-#: data/core/terrain.cfg:2424
+#: data/core/terrain.cfg:2422
 msgid "Ruined Desert Castle"
 msgstr "Разрушенный пустынный замок"
 
 #. [terrain_type]: id=troll_encampment
-#: data/core/terrain.cfg:2436
+#: data/core/terrain.cfg:2434
 msgid "Troll Encampment"
 msgstr "Штаб троллей"
 
 #. [terrain_type]: id=aquatic_camp
-#: data/core/terrain.cfg:2448
+#: data/core/terrain.cfg:2446
 msgid "Aquatic Encampment"
 msgstr "Водяной штаб"
 
 #. [terrain_type]: id=aquatic_castle
-#: data/core/terrain.cfg:2461
+#: data/core/terrain.cfg:2459
 msgid "Aquatic Castle"
 msgstr "Замок водяных"
 
@@ -1578,24 +1579,24 @@ msgstr "Замок водяных"
 #. [terrain_type]: id=encampment_snow_keep
 #. [terrain_type]: id=merman_campkeep
 #. [terrain_type]: id=troll_campkeep
-#: data/core/terrain.cfg:2477 data/core/terrain.cfg:2501
-#: data/core/terrain.cfg:2514 data/core/terrain.cfg:2735
-#: data/core/terrain.cfg:2748
+#: data/core/terrain.cfg:2475 data/core/terrain.cfg:2499
+#: data/core/terrain.cfg:2512 data/core/terrain.cfg:2733
+#: data/core/terrain.cfg:2746
 msgid "Encampment Keep"
 msgstr "Штаб лагеря"
 
 #. [terrain_type]: id=encampment_ruin_keep
-#: data/core/terrain.cfg:2489
+#: data/core/terrain.cfg:2487
 msgid "Ruined Encampment Keep"
 msgstr "Разрушенный штаб лагеря"
 
 #. [terrain_type]: id=encampment_keep_tall
-#: data/core/terrain.cfg:2502
+#: data/core/terrain.cfg:2500
 msgid "Tall Encampment Keep"
 msgstr "Высокий штаб лагеря"
 
 #. [terrain_type]: id=encampment_snow_keep
-#: data/core/terrain.cfg:2515
+#: data/core/terrain.cfg:2513
 msgid "Snowy Encampment Keep"
 msgstr "Заснеженный штаб лагеря"
 
@@ -1613,68 +1614,68 @@ msgstr "Заснеженный штаб лагеря"
 #. [terrain_type]: id=desert_keep
 #. [terrain_type]: id=merman_castlekeep
 #. [terrain_type]: id=keep_overlay
-#: data/core/terrain.cfg:2527 data/core/terrain.cfg:2540
-#: data/core/terrain.cfg:2553 data/core/terrain.cfg:2566
-#: data/core/terrain.cfg:2579 data/core/terrain.cfg:2592
-#: data/core/terrain.cfg:2605 data/core/terrain.cfg:2618
-#: data/core/terrain.cfg:2631 data/core/terrain.cfg:2644
-#: data/core/terrain.cfg:2657 data/core/terrain.cfg:2709
-#: data/core/terrain.cfg:2761 data/core/terrain.cfg:2789
+#: data/core/terrain.cfg:2525 data/core/terrain.cfg:2538
+#: data/core/terrain.cfg:2551 data/core/terrain.cfg:2564
+#: data/core/terrain.cfg:2577 data/core/terrain.cfg:2590
+#: data/core/terrain.cfg:2603 data/core/terrain.cfg:2616
+#: data/core/terrain.cfg:2629 data/core/terrain.cfg:2642
+#: data/core/terrain.cfg:2655 data/core/terrain.cfg:2707
+#: data/core/terrain.cfg:2759 data/core/terrain.cfg:2787
 msgid "Keep"
 msgstr "Цитадель"
 
 #. [terrain_type]: id=orcish_keep
-#: data/core/terrain.cfg:2528
+#: data/core/terrain.cfg:2526
 msgid "Orcish Keep"
 msgstr "Замок орков"
 
 #. [terrain_type]: id=snow_orcish_keep
-#: data/core/terrain.cfg:2541
+#: data/core/terrain.cfg:2539
 msgid "Snowy Orcish Keep"
 msgstr "Заснеженный замок орков"
 
 #. [terrain_type]: id=human_keep
-#: data/core/terrain.cfg:2554
+#: data/core/terrain.cfg:2552
 msgid "Human Castle Keep"
 msgstr "Цитадель людей"
 
 #. [terrain_type]: id=snow_keep
-#: data/core/terrain.cfg:2567
+#: data/core/terrain.cfg:2565
 msgid "Snowy Human Castle Keep"
 msgstr "Заснеженная цитадель людей"
 
 #. [terrain_type]: id=elven_keep
-#: data/core/terrain.cfg:2580
+#: data/core/terrain.cfg:2578
 msgid "Elven Castle Keep"
 msgstr "Цитадель эльфов"
 
 #. [terrain_type]: id=elven_keep_ruin
-#: data/core/terrain.cfg:2593
+#: data/core/terrain.cfg:2591
 msgid "Elven Keep Ruin"
 msgstr "Разрушенная цитадель эльфов"
 
 #. [terrain_type]: id=elven_keep_winter
-#: data/core/terrain.cfg:2606
+#: data/core/terrain.cfg:2604
 msgid "Winter Elven Keep"
 msgstr "Заснеженная цитадель эльфов"
 
 #. [terrain_type]: id=dwarven_keep
-#: data/core/terrain.cfg:2619
+#: data/core/terrain.cfg:2617
 msgid "Dwarven Underground Keep"
 msgstr "Подземная цитадель гномов"
 
 #. [terrain_type]: id=dwarven_keep2
-#: data/core/terrain.cfg:2632
+#: data/core/terrain.cfg:2630
 msgid "Dwarven Castle Keep"
 msgstr "Цитадель гномов"
 
 #. [terrain_type]: id=dwarven_keep_ruin
-#: data/core/terrain.cfg:2645
+#: data/core/terrain.cfg:2643
 msgid "Dwarven Ruin Keep"
 msgstr "Разрушенная цитадель гномов"
 
 #. [terrain_type]: id=dwarven_keep_winter
-#: data/core/terrain.cfg:2658
+#: data/core/terrain.cfg:2656
 msgid "Winter Dwarven Keep"
 msgstr "Заснеженная цитадель гномов"
 
@@ -1682,58 +1683,58 @@ msgstr "Заснеженная цитадель гномов"
 #. [terrain_type]: id=sunken_keep
 #. [terrain_type]: id=swamp_keep
 #. [terrain_type]: id=desert_keep_ruined
-#: data/core/terrain.cfg:2670 data/core/terrain.cfg:2683
-#: data/core/terrain.cfg:2696 data/core/terrain.cfg:2722
+#: data/core/terrain.cfg:2668 data/core/terrain.cfg:2681
+#: data/core/terrain.cfg:2694 data/core/terrain.cfg:2720
 msgid "Ruined Keep"
 msgstr "Разрушенная цитадель"
 
 #. [terrain_type]: id=ruined_keep
-#: data/core/terrain.cfg:2671
+#: data/core/terrain.cfg:2669
 msgid "Ruined Human Castle Keep"
 msgstr "Разрушенная цитадель людей"
 
 #. [terrain_type]: id=sunken_keep
-#: data/core/terrain.cfg:2684
+#: data/core/terrain.cfg:2682
 msgid "Sunken Human Castle Keep"
 msgstr "Затопленная цитадель людей"
 
 #. [terrain_type]: id=swamp_keep
-#: data/core/terrain.cfg:2697
+#: data/core/terrain.cfg:2695
 msgid "Swamp Human Castle Keep"
 msgstr "Заболоченная цитадель людей"
 
 #. [terrain_type]: id=desert_keep
-#: data/core/terrain.cfg:2710
+#: data/core/terrain.cfg:2708
 msgid "Desert Keep"
 msgstr "Пустынная цитадель"
 
 #. [terrain_type]: id=desert_keep_ruined
-#: data/core/terrain.cfg:2723
+#: data/core/terrain.cfg:2721
 msgid "Ruined Desert Keep"
 msgstr "Разрушенная пустынная цитадель"
 
 #. [terrain_type]: id=merman_campkeep
-#: data/core/terrain.cfg:2736
+#: data/core/terrain.cfg:2734
 msgid "Aquatic Encampment Keep"
 msgstr "Штаб лагеря водяных"
 
 #. [terrain_type]: id=troll_campkeep
-#: data/core/terrain.cfg:2749
+#: data/core/terrain.cfg:2747
 msgid "Troll Encampment Keep"
 msgstr "Штаб лагеря орков"
 
 #. [terrain_type]: id=merman_castlekeep
-#: data/core/terrain.cfg:2762
+#: data/core/terrain.cfg:2760
 msgid "Aquatic Keep"
 msgstr "Цитадель водяных"
 
 #. [terrain_type]: id=castle_overlay
-#: data/core/terrain.cfg:2777
+#: data/core/terrain.cfg:2775
 msgid "Castle Overlay"
 msgstr "Оверлей: Замок"
 
 #. [terrain_type]: id=keep_overlay
-#: data/core/terrain.cfg:2790
+#: data/core/terrain.cfg:2788
 msgid "Keep Overlay"
 msgstr "Оверлей: Цитадель"
 
@@ -1761,31 +1762,31 @@ msgstr "Оверлей: Цитадель"
 #. [terrain_type]: id=plankbridgediag1
 #. [terrain_type]: id=plankbridgediag2
 #. [terrain_type]: id=plankbridge
-#: data/core/terrain.cfg:2808 data/core/terrain.cfg:2823
-#: data/core/terrain.cfg:2836 data/core/terrain.cfg:2849
-#: data/core/terrain.cfg:2861 data/core/terrain.cfg:2874
-#: data/core/terrain.cfg:2889 data/core/terrain.cfg:2901
-#: data/core/terrain.cfg:2914 data/core/terrain.cfg:2929
-#: data/core/terrain.cfg:2941 data/core/terrain.cfg:2954
-#: data/core/terrain.cfg:2969 data/core/terrain.cfg:2981
-#: data/core/terrain.cfg:2995 data/core/terrain.cfg:3012
-#: data/core/terrain.cfg:3026 data/core/terrain.cfg:3040
-#: data/core/terrain.cfg:3054 data/core/terrain.cfg:3068
-#: data/core/terrain.cfg:3082 data/core/terrain.cfg:3096
-#: data/core/terrain.cfg:3110 data/core/terrain.cfg:3124
+#: data/core/terrain.cfg:2806 data/core/terrain.cfg:2821
+#: data/core/terrain.cfg:2834 data/core/terrain.cfg:2847
+#: data/core/terrain.cfg:2859 data/core/terrain.cfg:2872
+#: data/core/terrain.cfg:2887 data/core/terrain.cfg:2899
+#: data/core/terrain.cfg:2912 data/core/terrain.cfg:2927
+#: data/core/terrain.cfg:2939 data/core/terrain.cfg:2952
+#: data/core/terrain.cfg:2967 data/core/terrain.cfg:2979
+#: data/core/terrain.cfg:2993 data/core/terrain.cfg:3010
+#: data/core/terrain.cfg:3024 data/core/terrain.cfg:3038
+#: data/core/terrain.cfg:3052 data/core/terrain.cfg:3066
+#: data/core/terrain.cfg:3080 data/core/terrain.cfg:3094
+#: data/core/terrain.cfg:3108 data/core/terrain.cfg:3122
 msgid "Bridge"
 msgstr "Мост"
 
 #. [terrain_type]: id=bridge
 #. [terrain_type]: id=bridgediag1
 #. [terrain_type]: id=bridgediag2
-#: data/core/terrain.cfg:2809 data/core/terrain.cfg:2824
-#: data/core/terrain.cfg:2837
+#: data/core/terrain.cfg:2807 data/core/terrain.cfg:2822
+#: data/core/terrain.cfg:2835
 msgid "Wooden Bridge"
 msgstr "Деревянный мост"
 
 #. [terrain_type]: id=bridge
-#: data/core/terrain.cfg:2815
+#: data/core/terrain.cfg:2813
 msgid ""
 "To those capable of building one, the ability to lay a "
 "<italic>text='bridge'</italic> offers a liberation from the fickle nature of "
@@ -1814,98 +1815,98 @@ msgstr ""
 #. [terrain_type]: id=rotbridge
 #. [terrain_type]: id=rotbridgediag1
 #. [terrain_type]: id=rotbridgediag2
-#: data/core/terrain.cfg:2850 data/core/terrain.cfg:2862
-#: data/core/terrain.cfg:2875
+#: data/core/terrain.cfg:2848 data/core/terrain.cfg:2860
+#: data/core/terrain.cfg:2873
 msgid "Rotting Bridge"
 msgstr "Подгнивший мост"
 
 #. [terrain_type]: id=stone_bridge
 #. [terrain_type]: id=stone_bridgediag1
 #. [terrain_type]: id=stone_bridgediag2
-#: data/core/terrain.cfg:2890 data/core/terrain.cfg:2902
-#: data/core/terrain.cfg:2915
+#: data/core/terrain.cfg:2888 data/core/terrain.cfg:2900
+#: data/core/terrain.cfg:2913
 msgid "Basic Stone Bridge"
 msgstr "Каменный мост"
 
 #. [terrain_type]: id=snow_stone_bridge
 #. [terrain_type]: id=snow_stone_bridgediag1
 #. [terrain_type]: id=snow_stone_bridgediag2
-#: data/core/terrain.cfg:2930 data/core/terrain.cfg:2942
-#: data/core/terrain.cfg:2955
+#: data/core/terrain.cfg:2928 data/core/terrain.cfg:2940
+#: data/core/terrain.cfg:2953
 msgid "Snowy Stone Bridge"
 msgstr "Заснеженный каменный мост"
 
 #. [terrain_type]: id=bridgechasm
 #. [terrain_type]: id=bridgechasmdiag1
 #. [terrain_type]: id=bridgechasmdiag2
-#: data/core/terrain.cfg:2970 data/core/terrain.cfg:2982
-#: data/core/terrain.cfg:2996
+#: data/core/terrain.cfg:2968 data/core/terrain.cfg:2980
+#: data/core/terrain.cfg:2994
 msgid "Cave Chasm Bridge"
 msgstr "Мост над пропастью"
 
 #. [terrain_type]: id=hangingbridgediag1
 #. [terrain_type]: id=hangingbridgediag2
 #. [terrain_type]: id=hangingbridge
-#: data/core/terrain.cfg:3013 data/core/terrain.cfg:3027
-#: data/core/terrain.cfg:3041
+#: data/core/terrain.cfg:3011 data/core/terrain.cfg:3025
+#: data/core/terrain.cfg:3039
 msgid "Hanging Bridge"
 msgstr "Висячий мост"
 
 #. [terrain_type]: id=stonechasmbridgediag1
 #. [terrain_type]: id=stonechasmbridgediag2
 #. [terrain_type]: id=stonechasmbridge
-#: data/core/terrain.cfg:3055 data/core/terrain.cfg:3069
-#: data/core/terrain.cfg:3083
+#: data/core/terrain.cfg:3053 data/core/terrain.cfg:3067
+#: data/core/terrain.cfg:3081
 msgid "Stone Chasm Bridge"
 msgstr "Каменный мост над пропастью"
 
 #. [terrain_type]: id=plankbridgediag1
 #. [terrain_type]: id=plankbridgediag2
 #. [terrain_type]: id=plankbridge
-#: data/core/terrain.cfg:3097 data/core/terrain.cfg:3111
-#: data/core/terrain.cfg:3125
+#: data/core/terrain.cfg:3095 data/core/terrain.cfg:3109
+#: data/core/terrain.cfg:3123
 msgid "Plank Bridge"
 msgstr "Дощатый мост"
 
 #. [terrain_type]: id=mark_high
-#: data/core/terrain.cfg:3140
+#: data/core/terrain.cfg:3138
 msgid "Marker High"
 msgstr "Маркер подъёма"
 
 #. [terrain_type]: id=mark_high2
-#: data/core/terrain.cfg:3150
+#: data/core/terrain.cfg:3148
 msgid "Marker High 2"
 msgstr "Маркер подъёма 2"
 
 #. [terrain_type]: id=mark_low
-#: data/core/terrain.cfg:3160
+#: data/core/terrain.cfg:3158
 msgid "Marker Low"
 msgstr "Маркер спуска"
 
 #. [terrain_type]: id=mark_low2
-#: data/core/terrain.cfg:3170
+#: data/core/terrain.cfg:3168
 msgid "Marker Low 2"
 msgstr "Маркер спуска 2"
 
 #. [terrain_type]: id=off_map
-#: data/core/terrain.cfg:3182
+#: data/core/terrain.cfg:3180
 msgid "Off Map"
 msgstr "Вне карты"
 
 #. [terrain_type]: id=off_map2
-#: data/core/terrain.cfg:3192
+#: data/core/terrain.cfg:3190
 msgid "Fake Map Border"
 msgstr "Фальшивая граница карты"
 
 #. [terrain_type]: id=overlay_artplaceholder
-#: data/core/terrain.cfg:3202
+#: data/core/terrain.cfg:3200
 msgid "Art Placeholder"
 msgstr "Заглушка для арта"
 
 #. [terrain_type]: id=shroud
 #. [toggle_button]: id=shroud
 #. [toggle_button]: id=sort_7
-#: data/core/terrain.cfg:3214
+#: data/core/terrain.cfg:3212
 #: data/gui/themes/default/dialogs/editor_edit_side.cfg:206
 #: data/gui/themes/default/dialogs/game_stats.cfg:384
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:390
@@ -1913,24 +1914,24 @@ msgid "Shroud"
 msgstr "Пелена"
 
 #. [terrain_type]: id=fake_shroud_overlay
-#: data/core/terrain.cfg:3225
+#: data/core/terrain.cfg:3223
 msgid "Fake Shroud"
 msgstr "Фальшивая пелена"
 
 #. [terrain_type]: id=fog
 #. [toggle_button]: id=sort_6
-#: data/core/terrain.cfg:3236
+#: data/core/terrain.cfg:3234
 #: data/gui/themes/default/dialogs/game_stats.cfg:370
 msgid "Fog"
 msgstr "Туман"
 
 #. [terrain_type]: id=fungus
-#: data/core/terrain.cfg:3251 data/core/terrain.cfg:3252
+#: data/core/terrain.cfg:3249 data/core/terrain.cfg:3250
 msgid "Fungus"
 msgstr "Грибы"
 
 #. [terrain_type]: id=fungus
-#: data/core/terrain.cfg:3255
+#: data/core/terrain.cfg:3253
 msgid ""
 "<italic>text='Mushroom groves'</italic> are vast underground forests of "
 "giant mushrooms, which thrive in the damp darkness. Most units have trouble "
@@ -1942,19 +1943,19 @@ msgid ""
 "Most units receive 50% to 60% defense in mushroom groves, whereas cavalry "
 "receive only 20%."
 msgstr ""
-"<italic>text='Грибные рощи'</italic> - огромные подземные леса гигантских "
-"грибов, которые растут в сырой темноте. Большинство бойцов сталкиваются с "
-"затруднениями при передвижении по рыхлой поверхности, образованной "
-"маленькими грибами, зато они могут хорошо укрываться за стволами больших. "
-"Верховые бойцы, однако, полностью погрязают в этой грибной массе и не имеют "
-"необходимой подвижности при ведении боя. Нежить имеет естественное сродство "
-"с царящим здесь гниением и действуют весьма неплохо в грибных зарослях.\n"
+"<i>Грибные рощи</i> — огромные подземные леса гигантских грибов, которые "
+"растут в сырой темноте. Большинство бойцов сталкиваются с затруднениями при "
+"передвижении по рыхлой поверхности, образованной маленькими грибами, зато "
+"они могут хорошо укрываться за стволами больших. Верховые бойцы, однако, "
+"полностью погрязают в этой грибной массе и не имеют необходимой подвижности "
+"при ведении боя. Нежить имеет естественное сродство с царящим здесь гниением "
+"и действуют весьма неплохо в грибных зарослях.\n"
 "\n"
 "Большинство бойцов имеют уровень защиты на уровне 50% или 60% в грибных "
 "рощах, в то время как кавалерия получает только 20%."
 
 #. [terrain_type]: id=cave
-#: data/core/terrain.cfg:3266
+#: data/core/terrain.cfg:3264
 msgid ""
 "<italic>text='Cave'</italic> terrain represents any underground cavern with "
 "enough room for a unit to pass.\n"
@@ -1973,15 +1974,14 @@ msgid ""
 "\n"
 "Most units receive 20 to 40% defense in caves, whereas dwarves have 50%."
 msgstr ""
-"<italic>text='Пещера'</italic> как тип местности представляет себя любое "
-"подземное пространство, где достаточно места для передвижения бойцов.\n"
+"<i>Пещера</i> как тип местности представляет себя любое подземное "
+"пространство, где достаточно места для передвижения бойцов.\n"
 "Большинство бойцов абсолютно незнакомо с этим типом местности, поэтому "
-"одновременно и замедлены, и испытывают затреднения при защите здесь. Но "
+"одновременно и замедлены, и испытывают затруднения при защите здесь. Но "
 "гномы и тролли, что живут в пещерах, легко передвигаются по этой "
 "поверхности, особенно гномы, которые благодаря своему небольшому размеру "
 "могут проходить через препятствия, непреодолимые для бойцов других рас. "
-"Иногда пещеры могут быть <italic>dst='terrain_illuminated_cave' "
-"text='освещены'</italic>.\n"
+"Иногда пещеры могут быть <i>освещены</i>.\n"
 "\n"
 "Очень редко в подземельях встречаются места, которые освещены светом с "
 "поверхности, падающим в сумрак темноты. В таких местах порядочные бойцы "
@@ -1992,7 +1992,7 @@ msgstr ""
 "гномы имеют 50%."
 
 #. [terrain_type]: id=reef
-#: data/core/terrain.cfg:3296
+#: data/core/terrain.cfg:3294
 msgid ""
 "<italic>text='Coastal reefs'</italic> are shallows formed by stone, coral "
 "and sand.\n"
@@ -2002,8 +2002,8 @@ msgid ""
 "\n"
 "Merfolk and Naga both receive 70% defense on coastal reefs."
 msgstr ""
-"<italic>text='Береговые рифы'</italic> - это отмели, сформированные камнями, "
-"кораллами и песком.\n"
+"<i>Береговые рифы</i> - это отмели, сформированные камнями, кораллами и "
+"песком.\n"
 "Местность дает возможность большинству сухопутных бойцов более уверенно "
 "стоять на ногах и обороняться в сравнении с обычными отмелями, а также дает "
 "большинству водоплавающих бойцов исключительно высокий уровень защиты.\n"
@@ -2011,7 +2011,7 @@ msgstr ""
 "Водяные и наги имеют уровень защиты в размере 70% на береговых рифах."
 
 #. [terrain_type]: id=hills
-#: data/core/terrain.cfg:3310
+#: data/core/terrain.cfg:3308
 msgid ""
 "<italic>text='Hills'</italic> represent any reasonably rough terrain, with "
 "enough dips and rises in the ground to provide some cover. Hills are "
@@ -2023,19 +2023,19 @@ msgid ""
 "Most units have about 50% defense in hills, whereas cavalry are limited to "
 "40%. Dwarves enjoy 60% defense in hills."
 msgstr ""
-"<italic>text='Холмы'</italic> представляют собой любой неровный тип "
-"местности, имеющий достаточно подъемов и впадин на поверхности, чтобы "
-"предоставить некоторую защиту. Холмы замедляют передвижение большинства "
-"типов бойцов. Гномы, тролли и орки достаточно хорошо знакомы с этим типом "
-"местности, поэтому могут передвигаться через холмы без затруднений. "
-"Кавалерия испытывает проблемы при передвижении через этот тип местности, так "
-"что теряет все преимущества в защите от возможных укрытий.\n"
+"<i>Холмы</i> представляют собой любой неровный тип местности, имеющий "
+"достаточно подъемов и впадин на поверхности, чтобы предоставить некоторую "
+"защиту. Холмы замедляют передвижение большинства типов бойцов. Гномы, тролли "
+"и орки достаточно хорошо знакомы с этим типом местности, поэтому могут "
+"передвигаться через холмы без затруднений. Кавалерия испытывает проблемы при "
+"передвижении через этот тип местности, так что теряет все преимущества в "
+"защите от возможных укрытий.\n"
 "\n"
 "Большинство бойцов имеет уровень защиты в 50% в холмах, в то время как "
 "кавалерия ограничена 40%. Гномы получают 60% защиты в холмах."
 
 #. [terrain_type]: id=swamp_water
-#: data/core/terrain.cfg:3324
+#: data/core/terrain.cfg:3322
 msgid ""
 "<italic>text='Swamps'</italic> represent any sort of wetlands.\n"
 "Swamps slow down nearly everyone, and inhibit their ability to defend "
@@ -2047,7 +2047,7 @@ msgid ""
 "Most units make do with 30% defense in swamps. Merfolk, naga, and saurians "
 "all generally enjoy 60%."
 msgstr ""
-"<italic>text='Болото'</italic> представляет собой любую топкую местность.\n"
+"<i>Болото</i> представляет собой любую топкую местность.\n"
 "Болото замедляет практически любого бойца и затрудняет его способность вести "
 "оборону. Исключение составляют бойцы любой водоплавающей расы, они получают "
 "бонус к защите и возможность двигаться без замедления. Те существа, которые "
@@ -2057,7 +2057,7 @@ msgstr ""
 "ящеры все, как правило, получают 60%."
 
 #. [terrain_type]: id=shallow_water
-#: data/core/terrain.cfg:3337
+#: data/core/terrain.cfg:3335
 msgid ""
 "<italic>text='Shallow water'</italic> represents any body of water deep "
 "enough to come up to roughly a man’s waist. This is enough to slow down "
@@ -2070,19 +2070,19 @@ msgid ""
 "Most units make do with 20 to 30% defense in shallow water, whereas both "
 "naga and merfolk enjoy 60%."
 msgstr ""
-"<italic>text='Отмель'</italic> представляет из себя любую водную поверхность "
-"глубиной по пояс человку. Этого достаточно, чтобы замедлить практически "
-"любого бойца и оставить его уязвимым для атаки. Гномы, с учетом того, что "
-"вода на отмели почти достигает уровня их головы, испытывают чрезвычайно "
-"большие пробемы на этой местности. Исключение составляют бойцы любой "
-"водоплавающей расы, которые получают значительный бонус к защите и "
-"возможность двигаться без замедления.\n"
+"<i>Отмель</i> представляет из себя любую водную поверхность глубиной по пояс "
+"человеку. Этого достаточно, чтобы замедлить практически любого бойца и "
+"оставить его уязвимым для атаки. Гномы, с учетом того, что вода на отмели "
+"почти достигает уровня их головы, испытывают чрезвычайно большие проблемы на "
+"этой местности. Исключение составляют бойцы любой водоплавающей расы, "
+"которые получают значительный бонус к защите и возможность двигаться без "
+"замедления.\n"
 "\n"
 "Большинство бойцов имеют уровень защиты в 20 или 30% на отмели, в то время "
 "как наги и водяные получают 60%."
 
 #. [terrain_type]: id=castle
-#: data/core/terrain.cfg:3352
+#: data/core/terrain.cfg:3350
 msgid ""
 "<italic>text='Castles'</italic> are any sort of permanent fortification.\n"
 "Nearly all units receive a considerable bonus to their defense by being "
@@ -2093,7 +2093,7 @@ msgid ""
 "\n"
 "Most units have about 60% defense in a castle."
 msgstr ""
-"<italic>text='Замок'</italic> - это любой вид фортификации. \n"
+"<i>Замок</i> — это любой вид фортификации. \n"
 "Практически все бойцы получают значительный бонус к защите, находясь в "
 "замке, и большинство бойцов двигаются в замке без замедления. Защитное "
 "свойство замка проявляется именно в увеличении бонуса защиты находящегося в "
@@ -2104,7 +2104,7 @@ msgstr ""
 "Большинство бойцов имеют уровень защиты в 60% в замке."
 
 #. [terrain_type]: id=mountains
-#: data/core/terrain.cfg:3366
+#: data/core/terrain.cfg:3364
 msgid ""
 "<italic>text='Mountains'</italic> are steep enough that units often have to "
 "climb over obstacles to move.\n"
@@ -2119,8 +2119,8 @@ msgid ""
 "\n"
 "Most units receive about 60% defense in mountains, whereas dwarves enjoy 70%."
 msgstr ""
-"<italic>text='Горы'</italic> — это рельеф настолько крутой, что здесь бойцам "
-"приходится взбираться на препятствия, чтобы преодолеть их.\n"
+"<i>Горы</i> — это рельеф настолько крутой, что здесь бойцам приходится "
+"взбираться на препятствия, чтобы преодолеть их.\n"
 "По своей природе горы предоставляют значительный бонус к защите для "
 "большинства бойцов, но также сильно затрудняют любой путь через них. Бойцы, "
 "обременённые тяжёлой бронёй, вроде веснотской кавалерии или ударных "
@@ -2133,7 +2133,7 @@ msgstr ""
 "70%."
 
 #. [terrain_type]: id=deep_water
-#: data/core/terrain.cfg:3378
+#: data/core/terrain.cfg:3376
 msgid ""
 "<italic>text='Deep water'</italic> represents any body of water deep enough "
 "to cover a man’s head.\n"
@@ -2142,8 +2142,8 @@ msgid ""
 "\n"
 "Merfolk and naga both receive 50% defense in deep water, with full movement."
 msgstr ""
-"<italic>text='Глубокая вода'</italic> представляет собой любую водную "
-"поверхность глубиной выше роста человека.\n"
+"<i>Глубокие воды</i> представляют собой любую водную поверхность глубиной "
+"выше роста человека.\n"
 "Большинство бойцов не может заходить в глубокие воды: это привилегия "
 "исключительно хороших пловцов или тех, кто может летать.\n"
 "\n"
@@ -2151,12 +2151,12 @@ msgstr ""
 "замедления."
 
 #. [terrain_type]: id=flat
-#: data/core/terrain.cfg:3389 data/core/terrain.cfg:3390
+#: data/core/terrain.cfg:3387 data/core/terrain.cfg:3388
 msgid "Flat"
 msgstr "Равнина"
 
 #. [terrain_type]: id=flat
-#: data/core/terrain.cfg:3391
+#: data/core/terrain.cfg:3389
 msgid ""
 "<italic>text='Grassland'</italic> represents open plains, whether "
 "cultivated, cut back for grazing, or wild.\n"
@@ -2167,16 +2167,16 @@ msgid ""
 "\n"
 "Most units have defense of 30 to 40% on grassland."
 msgstr ""
-"<italic>text='Луг'</italic> - это равнина, покрытая травянистой "
-"растительностью, либо культивируемой, либо дикой.\n"
+"<i>Луг</i> - это равнина, покрытая травянистой растительностью, либо "
+"культивируемой, либо дикой.\n"
 "Представляя из себя легко пересекаемую открытую местность, луг в то же время "
-"неудобен для ведения защитного боя.  Лучше всего здесь себя проявляет либо "
+"неудобен для ведения защитного боя. Лучше всего здесь себя проявляет либо "
 "кавалерия, либо очень ловкие и подвижные бойцы.\n"
 "\n"
-"Most units have defense of 30 to 40% on grassland."
+"У большинства подразделений на лугах уровень защиты составляет от 30 до 40%."
 
 #. [terrain_type]: id=forest
-#: data/core/terrain.cfg:3404
+#: data/core/terrain.cfg:3402
 msgid ""
 "<italic>text='Forests'</italic> represent any woodland with significant "
 "undergrowth, enough to hinder passage. Though they slow nearly everyone "
@@ -2193,27 +2193,27 @@ msgid ""
 "Elves, on the other hand, enjoy 60 to 70% defense, even their mounted units. "
 "Dwarves generally receive only 30% defense in forests."
 msgstr ""
-"<italic>text='Лес'</italic> представляет из себя местность, покрытую "
-"древесной растительностью настолько плотно, что она затрудняет передвижение. "
-"Хотя лес замедляет почти все типы бойцов, он предоставляет лучшую защиту, "
-"чем открытая местность. Кавалерия, однако, имеет столько проблем с "
-"передвижением в лесу, что любая польза от скрытности полностью нивелируется. "
-"Эльфы в лесу - это исключение из общего правила. Здесь они не только не "
-"замедляются при передвижении, но и получают значительный бонус к защите. "
-"Гномы - это другое исключение. Хотя они могут двигаться через лес без потери "
-"скорости, их полнейшее незнание леса приводит к отсутствию бонуса к защите.\n"
+"<i>Лес</i> представляет из себя местность, покрытую древесной "
+"растительностью настолько плотно, что она затрудняет передвижение. Хотя лес "
+"замедляет почти все типы бойцов, он предоставляет лучшую защиту, чем "
+"открытая местность. Кавалерия, однако, имеет столько проблем с передвижением "
+"в лесу, что любая польза от скрытности полностью нивелируется. Эльфы в лесу "
+"- это исключение из общего правила. Здесь они не только не замедляются при "
+"передвижении, но и получают значительный бонус к защите. Гномы - это другое "
+"исключение. Хотя они могут двигаться через лес без потери скорости, их "
+"полнейшее незнание леса приводит к отсутствию бонуса к защите.\n"
 "\n"
 "Большинство бойцов имеют уровень защиты в 50% в лесу, но кавалерия "
 "ограничена 30%. Эльфы, с другой стороны, получают 60 или 70% защиты в лесу, "
-"даже их конные юниты. Гномы, как правило, имеют 30% защиты в лесу."
+"даже их конные бойцы. Гномы, как правило, имеют 30% защиты в лесу."
 
 #. [terrain_type]: id=frozen
-#: data/core/terrain.cfg:3414 data/core/terrain.cfg:3415
+#: data/core/terrain.cfg:3412 data/core/terrain.cfg:3413
 msgid "Frozen"
 msgstr "Мерзлота"
 
 #. [terrain_type]: id=frozen
-#: data/core/terrain.cfg:3417
+#: data/core/terrain.cfg:3415
 msgid ""
 "<italic>text='Frozen'</italic> terrain represents any flat area that is "
 "covered by snow or ice.\n"
@@ -2223,8 +2223,8 @@ msgid ""
 "\n"
 "Most units have 20 to 40% defense in frozen terrain."
 msgstr ""
-"<italic>text='Мерзлота'</italic> является типом открытой местности, покрытой "
-"снегом или льдом.\n"
+"<i>Мерзлота</i> является типом открытой местности, покрытой снегом или "
+"льдом.\n"
 "Большинство типов бойцов здесь замедлены и испытывают большие проблемы в "
 "обороне. Заметьте, что водоплавающие бойцы, даже те, кто в состоянии дышать "
 "под водой, не могут плавать подо льдом.\n"
@@ -2232,7 +2232,7 @@ msgstr ""
 "Большинство бойцов имеют уровень защиты от 20 до 40% на мерзлоте."
 
 #. [terrain_type]: id=village
-#: data/core/terrain.cfg:3430
+#: data/core/terrain.cfg:3428
 msgid ""
 "<italic>text='Villages'</italic> represent any group of buildings, human or "
 "otherwise.\n"
@@ -2245,8 +2245,8 @@ msgid ""
 "Most units have 50 to 60% defense in villages, whereas cavalry receive only "
 "40%."
 msgstr ""
-"<italic>text='Деревня'</italic> представляет из себя группу строений, "
-"населенных людьми или представителями других рас.\n"
+"<i>Деревня</i> представляет из себя группу строений, населенных людьми или "
+"представителями других рас.\n"
 "Почти все бойцы, включая даже кавалерию, легко пересекают деревни, и "
 "большинство получают бонус к защите, находясь в деревнях. Деревни дают "
 "возможность бойцам омыть и перевязать их раны, что позволяет любым бойцам, "
@@ -2257,12 +2257,12 @@ msgstr ""
 "как кавалерия - только 40%."
 
 #. [terrain_type]: id=impassable
-#: data/core/terrain.cfg:3440 data/core/terrain.cfg:3441
+#: data/core/terrain.cfg:3438 data/core/terrain.cfg:3439
 msgid "Impassable"
 msgstr "Недостижимая местность"
 
 #. [terrain_type]: id=impassable
-#: data/core/terrain.cfg:3443
+#: data/core/terrain.cfg:3441
 msgid ""
 "Obstacles that not even the most determined traveler may overcome include "
 "solid walls of stone and mountains so tall and steep that they are "
@@ -2277,45 +2277,42 @@ msgstr ""
 "не сможет пробить  толстые стены из камня."
 
 #. [terrain_type]: id=unwalkable
-#: data/core/terrain.cfg:3450 data/core/terrain.cfg:3451
+#: data/core/terrain.cfg:3448 data/core/terrain.cfg:3449
 msgid "Unwalkable"
 msgstr "Непроходимая местность"
 
 #. [terrain_type]: id=unwalkable
-#: data/core/terrain.cfg:3453
+#: data/core/terrain.cfg:3451
 msgid ""
 "<italic>text='Unwalkable terrain'</italic> covers any chasm or gorge which, "
 "as the name implies, cannot be crossed simply by walking. Chasms are noted "
 "for sheer walls which would take days to traverse. As far as gameplay is "
 "concerned, only units capable of flying can cross this terrain."
 msgstr ""
-"<italic>text='Непроходимая местность'</italic> представляет собой любую "
-"пропасть или ущелье, которые, как говорит название, не могут быть пересечены "
-"пешим путем. Ущелья отличаются отвесными стенами, преодолеть их можно только "
-"за много дней спуска и подъема. Только летающие бойцы могут пересекать этот "
-"тип местности."
+"<i>Непроходимая местность</i> представляет собой любую пропасть или ущелье, "
+"которые, как говорит название, не могут быть пересечены пешим путем. Ущелья "
+"отличаются отвесными стенами, преодолеть их можно только за много дней "
+"спуска и подъема. Только летающие бойцы могут пересекать этот тип местности."
 
 #. [terrain_type]: id=rails
-#: data/core/terrain.cfg:3460 data/core/terrain.cfg:3461
+#: data/core/terrain.cfg:3458 data/core/terrain.cfg:3459
 msgid "Rails"
 msgstr "Рельсы"
 
 #. [terrain_type]: id=rails
-#: data/core/terrain.cfg:3463
+#: data/core/terrain.cfg:3461
 msgid ""
 "<italic>text='Rails'</italic> are used to transport ore, mostly by dwarves."
-msgstr ""
-"<italic>text='Рельсы'</italic> используются для перевозки руды. Гномами. В "
-"основном."
+msgstr "<i>Рельсы</i> используются для перевозки руды, в основном гномами."
 
 #. [terrain_type]: id=regular_stone_floor_deprecated
 #. [terrain_type]: id=ancient_stone_floor_deprecated
 #. [terrain_type]: id=rug_floor_deprecated
 #. [terrain_type]: id=rug2_floor_deprecated
 #. [terrain_type]: id=old_wood_floor_deprecated
-#: data/core/terrain.cfg:3476 data/core/terrain.cfg:3487
-#: data/core/terrain.cfg:3498 data/core/terrain.cfg:3509
-#: data/core/terrain.cfg:3520
+#: data/core/terrain.cfg:3474 data/core/terrain.cfg:3485
+#: data/core/terrain.cfg:3496 data/core/terrain.cfg:3507
+#: data/core/terrain.cfg:3518
 msgid "Deprecated"
 msgstr "Устарело"
 
@@ -2356,7 +2353,7 @@ msgid "Players"
 msgstr "Игроки"
 
 #. [settings]
-#: data/gui/themes/celes/_main.cfg:25 data/gui/themes/default/_main.cfg:23
+#: data/gui/themes/celes/_main.cfg:27 data/gui/themes/default/_main.cfg:25
 msgid " (Press ‘$hotkey’ for more information)"
 msgstr " (Нажмите «$hotkey» для дополнительной информации)"
 
@@ -2390,33 +2387,27 @@ msgstr "Следующий совет"
 
 #. [button]: id=toggle_tip_panel
 #: data/gui/themes/celes/dialogs/title_screen.cfg:215
-#, fuzzy
-#| msgid "Next Tip of the Day"
 msgid "Tip of the Day"
-msgstr "Следующий совет"
+msgstr "Показать совет дня"
 
 #. [button]: id=toggle_tip_panel
 #. [toggle_button]: id=show_tips
 #: data/gui/themes/celes/dialogs/title_screen.cfg:216
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:223
-#, fuzzy
-#| msgid "Show next tip of the day"
 msgid "Show tip of the day"
-msgstr "Следующий совет"
+msgstr "Совет дня"
 
 #. [button]: id=about
 #: data/gui/themes/celes/dialogs/title_screen.cfg:229
 #: data/gui/themes/default/dialogs/title_screen.cfg:472
 msgid "About"
-msgstr ""
+msgstr "Об игре"
 
 #. [button]: id=about
 #: data/gui/themes/celes/dialogs/title_screen.cfg:230
 #: data/gui/themes/default/dialogs/title_screen.cfg:473
-#, fuzzy
-#| msgid "The Battle for Wesnoth"
 msgid "General information about Battle for Wesnoth"
-msgstr "Битва за Веснот"
+msgstr "Общая информация о Битве за Веснот"
 
 #. [button]: id=language
 #. [label]
@@ -2455,7 +2446,7 @@ msgstr "Начать новую однопользовательскую кам�
 #: data/gui/themes/default/dialogs/mp_method_selection.cfg:55
 #: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:390
 #: data/gui/themes/default/dialogs/title_screen.cfg:257
-#: src/gui/dialogs/game_load.cpp:363
+#: src/gui/dialogs/game_load.cpp:369
 msgid "Multiplayer"
 msgstr "Мультиплеер"
 
@@ -2473,7 +2464,7 @@ msgstr ""
 #. [button]: id=load_movetype
 #. [button]: id=ok
 #: data/gui/themes/celes/dialogs/title_screen.cfg:288
-#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:892
+#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:900
 #: data/gui/themes/default/dialogs/game_load.cfg:638
 #: data/gui/themes/default/dialogs/title_screen.cfg:258
 msgid "Load"
@@ -2528,18 +2519,16 @@ msgstr "Запустить редактор карт"
 #. [grid]
 #. [tab]
 #: data/gui/themes/celes/dialogs/title_screen.cfg:295
-#: data/gui/themes/default/dialogs/game_version.cfg:903
+#: data/gui/themes/default/dialogs/game_version.cfg:911
 #: data/gui/themes/default/dialogs/title_screen.cfg:262
 msgid "Community"
-msgstr ""
+msgstr "Сообщество"
 
 #. [grid]
 #: data/gui/themes/celes/dialogs/title_screen.cfg:295
 #: data/gui/themes/default/dialogs/title_screen.cfg:262
-#, fuzzy
-#| msgid "The Battle for Wesnoth"
 msgid "Places to talk about Wesnoth"
-msgstr "Битва за Веснот"
+msgstr "Где можно поговорить о Весноте"
 
 #. [grid]
 #: data/gui/themes/celes/dialogs/title_screen.cfg:296
@@ -2570,10 +2559,8 @@ msgstr "Помощь"
 
 #. [grid]
 #: data/gui/themes/celes/dialogs/title_screen.cfg:297
-#, fuzzy
-#| msgid "Change the in-game theme"
 msgid "Visit the in-game help"
-msgstr "Изменить тему (оформление) для игры"
+msgstr "Получить помощь по игре"
 
 #. [grid]
 #. [button]: id=cancel
@@ -2607,7 +2594,7 @@ msgstr "Копировать"
 #. The heavy checkmark character is available in the DejaVu Sans font, but not in the default Lato font
 #: data/gui/themes/celes/widgets/button_success.cfg:269
 msgid "page^<b><span font_family='DejaVu Sans'>✔</span> Copied</b>"
-msgstr ""
+msgstr "<b><span font_family='DejaVu Sans'>✔</span> Скопировано</b>"
 
 #. [button]: id=click_dismiss
 #. [button]: id=ok
@@ -2615,15 +2602,15 @@ msgstr ""
 #. [button]: id=close_window
 #: data/gui/themes/celes/widgets/window_default.cfg:57
 #: data/gui/themes/default/dialogs/achievements_dialog.cfg:307
-#: data/gui/themes/default/dialogs/attack_predictions.cfg:302
+#: data/gui/themes/default/dialogs/attack_predictions.cfg:306
 #: data/gui/themes/default/dialogs/chat_log.cfg:201
 #: data/gui/themes/default/dialogs/end_credits.cfg:145
 #: data/gui/themes/default/dialogs/game_cache_options.cfg:247
 #: data/gui/themes/default/dialogs/game_stats.cfg:843
-#: data/gui/themes/default/dialogs/game_version.cfg:991
+#: data/gui/themes/default/dialogs/game_version.cfg:999
 #: data/gui/themes/default/dialogs/gamestate_inspector.cfg:398
 #: data/gui/themes/default/dialogs/generator_settings.cfg:190
-#: data/gui/themes/default/dialogs/help_browser.cfg:296
+#: data/gui/themes/default/dialogs/help_browser.cfg:295
 #: data/gui/themes/default/dialogs/lobby_player_info.cfg:292
 #: data/gui/themes/default/dialogs/lua_interpreter.cfg:130
 #: data/gui/themes/default/dialogs/message.cfg:135
@@ -2671,7 +2658,7 @@ msgstr "Сохранять пароль в настройках (в зашифр
 #. [button]: id=ok
 #: data/gui/themes/default/dialogs/addon_auth.cfg:159
 #: data/gui/themes/default/dialogs/addon_server_info.cfg:168
-#: data/gui/themes/default/dialogs/custom_tod.cfg:511
+#: data/gui/themes/default/dialogs/custom_tod.cfg:521
 #: data/gui/themes/default/dialogs/depcheck_select_new.cfg:151
 #: data/gui/themes/default/dialogs/edit_label.cfg:139
 #: data/gui/themes/default/dialogs/edit_text.cfg:116
@@ -2680,7 +2667,7 @@ msgstr "Сохранять пароль в настройках (в зашифр
 #: data/gui/themes/default/dialogs/editor_edit_pbl_translation.cfg:125
 #: data/gui/themes/default/dialogs/editor_edit_scenario.cfg:287
 #: data/gui/themes/default/dialogs/editor_edit_side.cfg:469
-#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:1243
+#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:1251
 #: data/gui/themes/default/dialogs/file_dialog.cfg:504
 #: data/gui/themes/default/dialogs/folder_create.cfg:119
 #: data/gui/themes/default/dialogs/label_settings.cfg:137
@@ -2715,10 +2702,10 @@ msgstr "OK"
 #: data/gui/themes/default/dialogs/addon_connect.cfg:206
 #: data/gui/themes/default/dialogs/addon_license_prompt.cfg:113
 #: data/gui/themes/default/dialogs/addon_uninstall_list.cfg:170
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:569
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:626
 #: data/gui/themes/default/dialogs/campaign_difficulty.cfg:234
 #: data/gui/themes/default/dialogs/core_dialog.cfg:241
-#: data/gui/themes/default/dialogs/custom_tod.cfg:524
+#: data/gui/themes/default/dialogs/custom_tod.cfg:534
 #: data/gui/themes/default/dialogs/depcheck_select_new.cfg:165
 #: data/gui/themes/default/dialogs/edit_label.cfg:153
 #: data/gui/themes/default/dialogs/edit_text.cfg:130
@@ -2728,7 +2715,7 @@ msgstr "OK"
 #: data/gui/themes/default/dialogs/editor_edit_pbl_translation.cfg:137
 #: data/gui/themes/default/dialogs/editor_edit_scenario.cfg:301
 #: data/gui/themes/default/dialogs/editor_edit_side.cfg:481
-#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:1256
+#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:1264
 #: data/gui/themes/default/dialogs/editor_generate_map.cfg:214
 #: data/gui/themes/default/dialogs/editor_new_map.cfg:126
 #: data/gui/themes/default/dialogs/editor_resize_map.cfg:282
@@ -2761,7 +2748,7 @@ msgstr "OK"
 #: data/gui/themes/default/dialogs/theme_list.cfg:155
 #: data/gui/themes/default/dialogs/tod_new_schedule.cfg:139
 #: data/gui/themes/default/dialogs/unit_attack.cfg:233
-#: data/gui/themes/default/dialogs/units_dialog.cfg:623
+#: data/gui/themes/default/dialogs/units_dialog.cfg:622
 #: src/gui/dialogs/units_dialog.cpp:79 src/hotkey/hotkey_command.cpp:79
 msgid "Cancel"
 msgstr "Отмена"
@@ -2827,7 +2814,7 @@ msgstr "Соединение между игрой и сервером заши�
 #: data/gui/themes/default/dialogs/addon_manager.cfg:162
 #: data/gui/themes/default/dialogs/addon_manager.cfg:817
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:210
-#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:706
+#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:714
 msgid "Type:"
 msgstr "Тип:"
 
@@ -2861,7 +2848,7 @@ msgstr "Обновлён:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [scroll_label]: id=description
 #: data/gui/themes/default/dialogs/addon_manager.cfg:415
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:713
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:718
 msgid "No description available."
 msgstr "Нет описания."
 
@@ -2906,7 +2893,7 @@ msgstr "Обновить аддон"
 #. [button]: id=single_uninstall
 #: data/gui/themes/default/dialogs/addon_manager.cfg:622
 #: data/gui/themes/default/widgets/addon_list.cfg:435
-#: src/gui/dialogs/addon/manager.cpp:1056
+#: src/gui/dialogs/addon/manager.cpp:1066
 msgid "Uninstall add-on"
 msgstr "Удалить аддон"
 
@@ -2934,7 +2921,7 @@ msgstr "Зависимости:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=dependencies
 #: data/gui/themes/default/dialogs/addon_manager.cfg:713
-#: src/gui/dialogs/addon/manager.cpp:1131
+#: src/gui/dialogs/addon/manager.cpp:1141
 msgid "addon_dependencies^None"
 msgstr "Нет"
 
@@ -2948,7 +2935,7 @@ msgstr "Переводы:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=translations
 #: data/gui/themes/default/dialogs/addon_manager.cfg:748
-#: src/gui/dialogs/addon/manager.cpp:1145
+#: src/gui/dialogs/addon/manager.cpp:1155
 msgid "translations^None"
 msgstr "Отсутствуют"
 
@@ -2983,8 +2970,8 @@ msgstr "Менеджер аддонов"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=details_toggle
 #: data/gui/themes/default/dialogs/addon_manager.cfg:1099
-#: src/gui/dialogs/addon/manager.cpp:569 src/gui/dialogs/addon/manager.cpp:836
-#: src/gui/dialogs/addon/manager.cpp:937
+#: src/gui/dialogs/addon/manager.cpp:575 src/gui/dialogs/addon/manager.cpp:842
+#: src/gui/dialogs/addon/manager.cpp:947
 msgid "Add-on Details"
 msgstr "Подробности аддона"
 
@@ -3013,36 +3000,32 @@ msgstr "Выйти"
 #. [button]: id=downloads_by_version
 #: data/gui/themes/default/dialogs/addon_server_info.cfg:59
 msgid "Add-on download count by version"
-msgstr ""
+msgstr "Кол-во загрузок аддонов по версии"
 
 #. [button]: id=addon_count_by_forum_auth
 #: data/gui/themes/default/dialogs/addon_server_info.cfg:77
 msgid "Count of add-ons using forum_auth"
-msgstr ""
+msgstr "Кол-во аддонов по forum_auth"
 
 #. [button]: id=admin_delete_addon
 #: data/gui/themes/default/dialogs/addon_server_info.cfg:95
-#, fuzzy
-#| msgid "Select the add-on version"
 msgid "Delete selected add-on (admin)"
-msgstr "Выберите версию аддона"
+msgstr "Удалить выбранный аддон (админ)"
 
 #. [button]: id=admin_hide_addon
 #: data/gui/themes/default/dialogs/addon_server_info.cfg:113
-#, fuzzy
-#| msgid "Select the add-on version"
 msgid "Hide selected add-on (admin)"
-msgstr "Выберите версию аддона"
+msgstr "Скрыть выбранный аддон (админ)"
 
 #. [button]: id=admin_unhide_addon
 #: data/gui/themes/default/dialogs/addon_server_info.cfg:131
 msgid "Unhide add-on by ID (admin)"
-msgstr ""
+msgstr "Раскрыть аддон по ID (админ)"
 
 #. [button]: id=admin_list_hidden
 #: data/gui/themes/default/dialogs/addon_server_info.cfg:149
 msgid "List hidden add-ons (admin)"
-msgstr ""
+msgstr "Список скрытых аддонов (админ)"
 
 #. [scroll_label]
 #: data/gui/themes/default/dialogs/addon_uninstall_list.cfg:68
@@ -3057,62 +3040,198 @@ msgid "Remove"
 msgstr "Удалить"
 
 #. [grid]
-#: data/gui/themes/default/dialogs/attack_predictions.cfg:82
+#: data/gui/themes/default/dialogs/attack_predictions.cfg:86
 msgid "Base damage"
 msgstr "Базовый урон"
 
 #. [grid]
-#: data/gui/themes/default/dialogs/attack_predictions.cfg:84
+#: data/gui/themes/default/dialogs/attack_predictions.cfg:88
 msgid "Time of day modifier"
 msgstr "Модификатор времени суток"
 
 #. [grid]
-#: data/gui/themes/default/dialogs/attack_predictions.cfg:85
+#: data/gui/themes/default/dialogs/attack_predictions.cfg:89
 msgid "Leadership bonus"
 msgstr "Бонус лидерства"
 
 #. [grid]
-#: data/gui/themes/default/dialogs/attack_predictions.cfg:86
+#: data/gui/themes/default/dialogs/attack_predictions.cfg:90
 msgid "Slowed penalty"
 msgstr "Штраф замедления"
 
 #. [grid]
-#: data/gui/themes/default/dialogs/attack_predictions.cfg:90
+#: data/gui/themes/default/dialogs/attack_predictions.cfg:94
 msgid "Total damage"
 msgstr "Общий урон"
 
 #. [grid]
-#: data/gui/themes/default/dialogs/attack_predictions.cfg:94
+#: data/gui/themes/default/dialogs/attack_predictions.cfg:98
 msgid "Chance to hit"
 msgstr "Шанс попадания удара"
 
 #. [grid]
-#: data/gui/themes/default/dialogs/attack_predictions.cfg:95
+#: data/gui/themes/default/dialogs/attack_predictions.cfg:99
 msgid "Chance of being unscathed"
 msgstr "Шанс остаться невредимым"
 
 #. [label]
-#: data/gui/themes/default/dialogs/attack_predictions.cfg:184
+#: data/gui/themes/default/dialogs/attack_predictions.cfg:188
 msgid "Expected Battle Result (HP)"
 msgstr "Ожидаемый результат боя (ЗД)"
 
 #. [label]: id=title
-#: data/gui/themes/default/dialogs/attack_predictions.cfg:247
+#: data/gui/themes/default/dialogs/attack_predictions.cfg:251
 msgid "Damage Calculations"
 msgstr "Подсчет урона"
 
 #. [column]
-#: data/gui/themes/default/dialogs/attack_predictions.cfg:270
+#: data/gui/themes/default/dialogs/attack_predictions.cfg:274
 msgid "Attacker"
 msgstr "Атакующий"
 
 #. [column]
-#: data/gui/themes/default/dialogs/attack_predictions.cfg:280
+#: data/gui/themes/default/dialogs/attack_predictions.cfg:284
 msgid "Defender"
 msgstr "Обороняющийся"
 
 #. [label]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:191
+#. The campaign_landing^ strings are shown in the right-hand panel when the campaign menu is opened.
+#. This one is the page title, shown in bold.
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:207
+msgid "campaign_landing^Welcome to Wesnoth v1.20"
+msgstr "Добро пожаловать в Веснот v1.20"
+
+#. [label]
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:209
+msgid ""
+"campaign_landing^<b>If you’re new to Wesnoth</b>, the opening story arc "
+"starts with <span color='#e1e119' style='italic'>The South Guard</span> and "
+"follows the campaigns in the order that they’re listed on the left, "
+"concluding half a century later with <span color='#e1e119' "
+"style='italic'>Heir to the Throne</span>. The intended way to learn both the "
+"story and the game mechanics is to play the campaigns in that order."
+msgstr ""
+"<b>Если вы новичёк в Весноте</b>, основная сюжетная арка начинается с "
+"кампании <span color='#e1e119' style='italic'>Южная Стража</span> и "
+"продолжается в кампаниях в том порядке, в каком они указаны слева, "
+"завершаясь пол века спустя в кампании <span color='#e1e119' "
+"style='italic'>Наследник Престола</span>. Рекомендуемый способ изучения "
+"сюжета и игровых механик — проходить кампании именно в таком порядке."
+
+#. [label]
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:211
+msgid ""
+"campaign_landing^<b>If you’re a returning player</b>, you’ll notice a number "
+"of changes since v1.18:"
+msgstr ""
+"<b>Если вы уже играли в Веснот</b>, вы заметите несколько изменений с v1.18:"
+
+#. [label]
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:213
+msgid ""
+"campaign_landing^<span color='#e1e119' style='italic'>Heir to the Throne</"
+"span> now features an open world with 33 branching scenarios, each awarding "
+"Konrad unique recruits, companions, or items. The original campaign is still "
+"available as <i>Heir to the Throne, Classic</i>."
+msgstr ""
+"<span color='#e1e119' style='italic'>Наследник Престола</span> теперь "
+"включает в себя открытый мир с 33 разветвляющимися миссиями, каждая из "
+"которых снабдит Конрада уникальными бойцами, героями или предметами. "
+"Оригинальная кампания по-прежнему доступна под названием <i>Наследник "
+"Престола (Классическая)</i>."
+
+#. [label]
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:215
+msgid ""
+"campaign_landing^<span color='#e1e119' style='italic'>The Deceiver’s Gambit</"
+"span> replaces <i>Delfador’s Memoirs</i>. Follow a young mage from the "
+"shores of Alduin to the halls of the King as they war against the fierce "
+"orcs of the north. Choose between 23 magic spells as you bear witness to the "
+"rise of a tyrant."
+msgstr ""
+"<span color='#e1e119' style='italic'>Гамбит Лжеца</span> заменил <i>Мемуары "
+"Делфадора</i>. Проследуйте с молодым магом от берегов Алдуина до чертогов "
+"короля, сразясь со свирепыми орками севера. Выберете из 23 магических "
+"заклинаний и станьте свидетелем восхождения тирана."
+
+#. [label]
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:217
+msgid ""
+"campaign_landing^<span color='#e1e119' style='italic'>Dusk of Dawn</span> is "
+"our first troll campaign. Lead the Golden Flame Tribe out from the bowels of "
+"Irdya and up to the surface world — but beware what awaits you there."
+msgstr ""
+"<span color='#e1e119' style='italic'>Закат Рассвета</span> — наша первая "
+"кампания, где вы сыграете за троллей. Проведите племя Золотого Пламени из "
+"недр Ирдии на поверхность — но остерегайтесь того, что вас там ждет."
+
+#. [label]
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:219
+msgid ""
+"campaign_landing^<span color='#e1e119' style='italic'>Of Pearls and Pirates</"
+"span> is a new beginner-oriented campaign set in a sleepy fishing town on "
+"the Bay of Pearls. When corsairs strike, the villagers must join forces with "
+"the local merfolk and take the fight to the pirates."
+msgstr ""
+"<span color='#e1e119' style='italic'>Жемчужин и Пиратов</span> — новая, "
+"ориентированная на новичков кампания, действие которой разворачивается в "
+"сонном рыбацком городке на Жемчужном Заливе. С нападением корсаров, жители "
+"деревни вынуждены объединить силы с местными водяными и дать отпор пиратам."
+
+#. [label]
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:221
+msgid ""
+"campaign_landing^<span color='#e1e119' style='italic'>The South Guard</span> "
+"has been significantly revised, and now replaces the classic <i>Battle "
+"Training</i> tutorial. For players nostalgic for Delfador's tutelage, the "
+"original tutorial is still available as part of <i>Heir to the Throne, "
+"Classic</i>."
+msgstr ""
+"<span color='#e1e119' style='italic'>Южная Стража</span> была значительно "
+"переработана, и теперь заменяет обучение в виде <i>Боевой Подготовки</i>. "
+"Для ностальгирующих по наставничеству Делфадора игроков, оригинальный "
+"обучающий курс по-прежнему доступен в рамках <i>Наследник Престола "
+"(Классическая)</i>."
+
+#. [label]
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:223
+msgid ""
+"campaign_landing^<span color='#e1e119' style='italic'>The Hammer of "
+"Thursagan</span> has been enhanced with story adjustments, improved enemy "
+"AI, a new Thunderer advancement, a redesign of <i>High Pass</i>, and the re-"
+"addition of the formerly removed <i>Mages and Drakes</i>."
+msgstr ""
+"<span color='#e1e119' style='italic'>Молот Турсагана</span> получил новые "
+"улучшения в виде корректировок сюжета, улучшеного ИИ у врагов, нового "
+"достижения «Громовик», редизайна <i>Высокого Перевала</i>, а также "
+"возвращения прежде убранных <i>Магов и Дрейков</i>."
+
+#. [label]
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:225
+msgid ""
+"campaign_landing^<span color='#e1e119' style='italic'>Winds of Fate</span> "
+"has been rebalanced with much lower recall costs, redesigned wildlife "
+"spawners and AI, and a much larger mid-campaign battle. Several characters "
+"and dialogue sequences were changed for better continuity with other "
+"campaigns."
+msgstr ""
+"<span color='#e1e119' style='italic'>Ветры Рока</span> получили обновление "
+"баланса со сниженной стоимостью призыва, переработанным спавном диких "
+"животных и ИИ, а также значительно расширенной масштабной битвлй в середине "
+"кампании. Некоторые персонажи и диалоговые сцены были изменены для лучшей "
+"преемственности с другими кампаниями."
+
+#. [label]
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:227
+msgid ""
+"campaign_landing^For a full list of changes, consult our official changelog "
+"at https://www.wesnoth.org/start/1.20/"
+msgstr ""
+"Полный список изменений можно найти на нашем сайте https://www.wesnoth.org/"
+"start/1.20/ (англ.)"
+
+#. [label]
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:248
 msgid ""
 "In addition to the mainline campaigns, Wesnoth also has an ever-growing list "
 "of add-on content created by other players available via the Add-ons server, "
@@ -3120,9 +3239,16 @@ msgid ""
 "multiplayer maps, additional media and various other content! Be sure to "
 "give it a try!"
 msgstr ""
+"В добавок к основным кампаниям, Веснот также предлагает постоянно "
+"пополняющийся список аддонов, созданных другими игроками, который доступен "
+"через сервер аддонов. В него входят, помимо прочего, новые одиночные и "
+"многопользовательские кампании, карты для многопользовательской игры и "
+"огромное множество другого контента! Обязательно попробуйте!"
 
 #. [label]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:208
+#. "more than 15" gives a little leeway to add or remove one without changing the translatable text.
+#. It's already ambiguous, 1.18 has 19 campaigns, if you include the tutorial and multiplayer-only World Conquest.
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:265
 msgid ""
 "Wesnoth normally includes more than 15 mainline campaigns, even before "
 "installing any from the add-ons server. If you’ve installed the game via a "
@@ -3139,7 +3265,7 @@ msgstr ""
 #. [label]: id=name
 #. [label]
 #. [toggle_button]: id=unit_name
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:248
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:305
 #: data/gui/themes/default/dialogs/game_load.cfg:170
 #: data/gui/themes/default/dialogs/mp_connect.cfg:159
 #: data/gui/themes/default/dialogs/mp_faction_select.cfg:33
@@ -3150,120 +3276,115 @@ msgid "Name"
 msgstr "Имя"
 
 #. [toggle_button]: id=sort_name
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:249
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:306
 msgid "Sort by full campaign name in alphabetical order"
 msgstr "Сортировать по полному названию кампании в алфавитном порядке"
 
 #. [toggle_button]: id=sort_time
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:260
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:317
 msgid "Timeline"
 msgstr "История"
 
 #. [toggle_button]: id=sort_time
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:261
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:318
 msgid "Sort in approximate chronological order of story events"
 msgstr ""
 "Сортировать по приблизительному хронологическому порядку событий истории"
 
 #. [multimenu_button]: id=filter_completion
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:271
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:328
 msgid "Filter by campaign completion status"
-msgstr ""
+msgstr "Сортировать по статусу завершения"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:274
-#, fuzzy
-#| msgid "Completed"
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:331
 msgid "Not Completed"
-msgstr "Завершено"
+msgstr "Не завершено"
 
 #. [option]
 #. campaigns which the player hasn't beaten, rather than campaigns which the author hasn't finished writing
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:276
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:333
 msgid "Show campaigns not completed by player"
-msgstr ""
+msgstr "Показать не завершённые кампании"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:280
-#, fuzzy
-#| msgid "Completed"
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:337
 msgid "Completed: Bronze"
-msgstr "Завершено"
+msgstr "Завершённые: Бронза"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:281
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:338
 msgid "Show campaigns completed at easiest difficulty"
-msgstr ""
+msgstr "Показать кампании, завершённые на самых лёгких сложностях"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:285
-#, fuzzy
-#| msgid "Completed"
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:342
 msgid "Completed: Silver"
-msgstr "Завершено"
+msgstr "Завершённые: Серебро"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:286
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:343
 msgid "Show campaigns completed at intermediate difficulties"
-msgstr ""
+msgstr "Показать кампании, завершённые на средних сложностях"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:290
-#, fuzzy
-#| msgid "Completed"
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:347
 msgid "Completed: Gold"
-msgstr "Завершено"
+msgstr "Завершённые: Золото"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:291
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:348
 msgid "Show campaigns completed at hardest difficulty"
-msgstr ""
+msgstr "Показать кампании, завершённые на самой трудной сложности"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:295
-#, fuzzy
-#| msgid "Completed"
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:352
 msgid "Completed: All"
-msgstr "Завершено"
+msgstr "Завершённые: Все"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:296
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:353
 msgid "Show completed campaigns"
-msgstr ""
+msgstr "Показать завершённые кампании"
 
 #. [label]
 #. [label]: id=mods_header
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:347
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:404
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:209
 msgid "Modifications:"
 msgstr "Модификации:"
 
 #. [label]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:372
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:429
 msgid "Combat:"
 msgstr "Сражения:"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:387
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:444
 msgid "Default RNG"
 msgstr "ГСЧ по умолчанию"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:388
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:445
 msgid ""
 "Pure, unbiased randomness; the way Wesnoth is intended to be played.\n"
 "\n"
 "Example: if you strike twice with 50% accuracy, you’re most likely to hit "
 "once and miss once, but might also hit twice or miss twice."
 msgstr ""
+"Чистая, непредвзятая случайность; как игра в Веснот и задумывалась.\n"
+"\n"
+"Пример: если вы наносите два удара с точностью 50%, то, скорее всего, вы "
+"попадете один раз и промахнетесь один раз, но также можете попасть два раза "
+"или промахнуться два раза."
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:393
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:450
 msgid "Predictable RNG"
 msgstr "Предсказуемый ГСЧ"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:394
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:451
 msgid ""
 "Identical to Default RNG, except loading a saved game will not change the "
 "outcome of an attack.\n"
@@ -3271,16 +3392,20 @@ msgid ""
 "Example: you strike twice and get lucky, hitting both strikes. You then load "
 "an earlier save and make the same attack again. Both strikes will still hit."
 msgstr ""
+"Идентичен ГСЧ по умолчанию, за исключением того, что загрузка сохраненной "
+"игры не изменит исход атаки.\n"
+"\n"
+"Пример: вы наносите два удара и вам везет, оба удара попадают в цель. Затем "
+"вы загружаете более раннее сохранение и снова совершаете ту же атаку. Оба "
+"удара по-прежнему будут попадать в цель."
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:399
-#, fuzzy
-#| msgid "Predictable RNG"
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:456
 msgid "Reduced RNG"
-msgstr "Предсказуемый ГСЧ"
+msgstr "Сниженный ГСЧ"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:400
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:457
 msgid ""
 "Hits and misses are much more consistent. This tends to make small-scale "
 "engagements easier to plan.\n"
@@ -3288,38 +3413,43 @@ msgid ""
 "Example: if you strike three times with 50% accuracy, you will always hit at "
 "least once and miss at least once."
 msgstr ""
+"Попадания и промахи гораздо более стабильны. Это, как правило, упрощает "
+"планирование небольших сражений.\n"
+"\n"
+"Пример: если вы нанесете три удара с точностью 50%, вы всегда попадете хотя "
+"бы один раз и промахнетесь хотя бы один раз."
 
 #. [label]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:417
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:474
 msgid "Difficulty:"
 msgstr "Сложность:"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:431
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:488
 msgid "Easy"
 msgstr "Лёгкий"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:434
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:491
 msgid "Normal"
 msgstr "Нормальный"
 
 #. [option]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:437
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:494
 msgid "Hard"
 msgstr "Сложный"
 
 #. [label]
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:494
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:551
 msgid "Play a Campaign"
 msgstr "Играть кампанию"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=proceed
 #. [button]: id=ok
-#: data/gui/themes/default/dialogs/campaign_dialog.cfg:558
+#: data/gui/themes/default/dialogs/campaign_dialog.cfg:615
 #: data/gui/themes/default/dialogs/campaign_difficulty.cfg:221
-#: src/gui/dialogs/campaign_selection.cpp:77
+#: src/gui/dialogs/campaign_selection.cpp:82
 msgid "game^Play"
 msgstr "Играть"
 
@@ -3328,7 +3458,7 @@ msgstr "Играть"
 #. [slider]: id=enemey_gold_factor
 #. [slider]: id=enemy_gold_factor
 #: data/gui/themes/default/dialogs/campaign_difficulty.cfg:53
-#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:249
+#: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:248
 #: data/multiplayer/scenarios/2p_Isle_of_Mists.cfg:295
 #: src/gui/dialogs/editor/edit_pbl.cpp:198
 msgid "Difficulty"
@@ -3390,74 +3520,70 @@ msgstr "Загрузить ядро"
 #: data/gui/themes/default/dialogs/core_dialog.cfg:228
 #: data/gui/themes/default/dialogs/language_selection.cfg:293
 #: src/gui/dialogs/editor/custom_tod.cpp:172
-#: src/gui/dialogs/editor/edit_unit.cpp:303
+#: src/gui/dialogs/editor/edit_unit.cpp:296
 #: src/preferences/preferences.cpp:1342
 msgid "Select"
 msgstr "Выбрать"
 
 #. [button]: id=copy_
 #. [button]: id=copy
-#: data/gui/themes/default/dialogs/custom_tod.cfg:53
+#: data/gui/themes/default/dialogs/custom_tod.cfg:57
 #: data/gui/themes/default/dialogs/game_cache_options.cfg:110
-#: data/gui/themes/default/dialogs/game_version.cfg:48
+#: data/gui/themes/default/dialogs/game_version.cfg:54
 #: data/gui/themes/default/dialogs/screenshot_notification.cfg:33
 msgid "filesystem^Copy"
 msgstr "Копировать"
 
 #. [button]: id=copy_
 #. [button]: id=copy
-#: data/gui/themes/default/dialogs/custom_tod.cfg:54
+#: data/gui/themes/default/dialogs/custom_tod.cfg:58
 #: data/gui/themes/default/dialogs/game_cache_options.cfg:111
-#: data/gui/themes/default/dialogs/game_version.cfg:49
+#: data/gui/themes/default/dialogs/game_version.cfg:55
 #: data/gui/themes/default/dialogs/screenshot_notification.cfg:34
 msgid "Copy this path to clipboard"
 msgstr "Скопировать этот путь в буфер"
 
 #. [button]: id=browse_
 #. [button]: id=browse
-#: data/gui/themes/default/dialogs/custom_tod.cfg:69
-#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:112
+#: data/gui/themes/default/dialogs/custom_tod.cfg:75
+#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:118
 #: data/gui/themes/default/dialogs/game_cache_options.cfg:126
-#: data/gui/themes/default/dialogs/game_version.cfg:64
+#: data/gui/themes/default/dialogs/game_version.cfg:72
 msgid "filesystem^Browse"
 msgstr "Перейти"
 
 #. [button]: id=browse_
 #. [button]: id=browse
-#: data/gui/themes/default/dialogs/custom_tod.cfg:70
-#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:113
+#: data/gui/themes/default/dialogs/custom_tod.cfg:76
+#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:119
 #: data/gui/themes/default/dialogs/game_cache_options.cfg:127
-#: data/gui/themes/default/dialogs/game_version.cfg:65
+#: data/gui/themes/default/dialogs/game_version.cfg:73
 msgid "Browse this location using a file manager"
 msgstr "Открыть в файловом менеджере"
 
 #. [button]: id=preview_
-#: data/gui/themes/default/dialogs/custom_tod.cfg:90
-#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:98
-#, fuzzy
-#| msgid "Previous page"
+#: data/gui/themes/default/dialogs/custom_tod.cfg:98
+#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:102
 msgid "Preview image"
-msgstr "Прошлая страница"
+msgstr "Предпросмотр изображения"
 
 #. [button]: id=preview_
-#: data/gui/themes/default/dialogs/custom_tod.cfg:108
-#, fuzzy
-#| msgid "Sound"
+#: data/gui/themes/default/dialogs/custom_tod.cfg:118
 msgid "Play sound"
-msgstr "Звук"
+msgstr "Воспроизвести звук"
 
 #. [label]
-#: data/gui/themes/default/dialogs/custom_tod.cfg:186
+#: data/gui/themes/default/dialogs/custom_tod.cfg:196
 msgid "Edit Time Schedule"
 msgstr "Изменить расписание времени суток"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #. [label]: id=id_label
-#: data/gui/themes/default/dialogs/custom_tod.cfg:216
+#: data/gui/themes/default/dialogs/custom_tod.cfg:226
 #: data/gui/themes/default/dialogs/editor_edit_scenario.cfg:106
-#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:191
-#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:645
+#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:197
+#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:651
 #: data/gui/themes/default/dialogs/folder_create.cfg:72
 #: data/gui/themes/default/dialogs/game_save.cfg:72
 #: data/gui/themes/default/dialogs/game_save_message.cfg:92
@@ -3465,86 +3591,86 @@ msgstr "Изменить расписание времени суток"
 #: data/gui/themes/default/dialogs/screenshot_notification.cfg:120
 #: data/gui/themes/default/dialogs/tod_new_schedule.cfg:86
 #: src/gui/dialogs/multiplayer/mp_connect.cpp:183
-#: src/gui/dialogs/units_dialog.cpp:239
+#: src/gui/dialogs/units_dialog.cpp:245
 msgid "Name:"
 msgstr "Имя:"
 
 #. [label]
 #. [grid]
-#: data/gui/themes/default/dialogs/custom_tod.cfg:244
+#: data/gui/themes/default/dialogs/custom_tod.cfg:254
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:151
 #: data/gui/themes/default/dialogs/editor_edit_pbl_translation.cfg:99
 #: data/gui/themes/default/dialogs/editor_edit_scenario.cfg:140
-#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:322
+#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:328
 msgid "Description:"
 msgstr "Описание:"
 
 #. [label]
 #. [label]: id=id_label
-#: data/gui/themes/default/dialogs/custom_tod.cfg:271
-#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:144
-#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:619
+#: data/gui/themes/default/dialogs/custom_tod.cfg:281
+#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:150
+#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:625
 #: data/gui/themes/default/dialogs/tod_new_schedule.cfg:46
 msgid "ID:"
 msgstr "ИД:"
 
 #. [grid]
-#: data/gui/themes/default/dialogs/custom_tod.cfg:352
+#: data/gui/themes/default/dialogs/custom_tod.cfg:362
 msgid "Image:"
 msgstr "Рисунок:"
 
 #. [grid]
-#: data/gui/themes/default/dialogs/custom_tod.cfg:353
+#: data/gui/themes/default/dialogs/custom_tod.cfg:363
 msgid "Mask:"
 msgstr "Маска:"
 
 #. [grid]
-#: data/gui/themes/default/dialogs/custom_tod.cfg:354
+#: data/gui/themes/default/dialogs/custom_tod.cfg:364
 msgid "Sound:"
 msgstr "Звук:"
 
 #. [label]
-#: data/gui/themes/default/dialogs/custom_tod.cfg:383
+#: data/gui/themes/default/dialogs/custom_tod.cfg:393
 msgid "Lawful Bonus:"
 msgstr "Бонус для порядочных"
 
 #. [grid]
-#: data/gui/themes/default/dialogs/custom_tod.cfg:406
+#: data/gui/themes/default/dialogs/custom_tod.cfg:416
 msgid "Red:"
 msgstr "Красный:"
 
 #. [grid]
-#: data/gui/themes/default/dialogs/custom_tod.cfg:407
+#: data/gui/themes/default/dialogs/custom_tod.cfg:417
 msgid "Green:"
 msgstr "Зелёный:"
 
 #. [grid]
-#: data/gui/themes/default/dialogs/custom_tod.cfg:408
+#: data/gui/themes/default/dialogs/custom_tod.cfg:418
 msgid "Blue:"
 msgstr "Синий:"
 
 #. [button]: id=new
-#: data/gui/themes/default/dialogs/custom_tod.cfg:472
+#: data/gui/themes/default/dialogs/custom_tod.cfg:482
 msgid "New ToD"
 msgstr "Новое время суток"
 
 #. [button]: id=delete
-#: data/gui/themes/default/dialogs/custom_tod.cfg:485
+#: data/gui/themes/default/dialogs/custom_tod.cfg:495
 msgid "Delete ToD"
 msgstr "Удалить время суток"
 
 #. [button]: id=preview_color
-#: data/gui/themes/default/dialogs/custom_tod.cfg:498
+#: data/gui/themes/default/dialogs/custom_tod.cfg:508
 msgid "Preview color changes on map"
-msgstr ""
+msgstr "Предпросмотр цветовых изменений на карте"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/themes/default/dialogs/depcheck_confirm_change.cfg:40
-#: src/gui/dialogs/addon/manager.cpp:1029
+#: src/gui/dialogs/addon/manager.cpp:1039
 #: src/gui/dialogs/editor/custom_tod.cpp:187
-#: src/gui/dialogs/editor/edit_unit.cpp:318
-#: src/gui/dialogs/editor/edit_unit.cpp:970 src/gui/dialogs/file_dialog.cpp:371
+#: src/gui/dialogs/editor/edit_unit.cpp:311
+#: src/gui/dialogs/editor/edit_unit.cpp:928 src/gui/dialogs/file_dialog.cpp:371
 #: src/gui/dialogs/file_dialog.cpp:799
 msgid "Confirm"
 msgstr "Подтвердить"
@@ -3607,8 +3733,6 @@ msgstr "Только для команд"
 
 #. [label]
 #: data/gui/themes/default/dialogs/editor_choose_addon.cfg:47
-#, fuzzy
-#| msgid "Add-on selection"
 msgid "Add-on Selection"
 msgstr "Выбор аддона"
 
@@ -3685,7 +3809,7 @@ msgstr "Описание аддона, отображаемое в менедж�
 #. [label]: id=icon_label
 #. [grid]: id=grid_atk
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:162
-#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:661
+#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:667
 msgid "Icon:"
 msgstr "Иконка:"
 
@@ -3773,23 +3897,17 @@ msgstr ""
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:214
-#, fuzzy
-#| msgid ""
-#| "Comma delimited list of forum usernames of other people who are allowed "
-#| "to upload updates for this add-on."
 msgid ""
 "Comma delimited list of forum usernames of other people who are allowed to "
 "upload updates for this add-on or delete this add-on."
 msgstr ""
 "Разделённый запятыми список форумных ников остальных людей, которые могут "
-"выкладывать обновления этого аддона."
+"выкладывать обновления этого аддона или удалить этот аддон."
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:214
-#, fuzzy
-#| msgid "Secondary Authors:"
 msgid "Primary Authors:"
-msgstr "Соавторы:"
+msgstr "Авторы:"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/editor_edit_pbl.cfg:215
@@ -4050,224 +4168,184 @@ msgid "vision^None"
 msgstr "Нет"
 
 #. [button]: id=load_unit_type
-#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:174
+#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:180
 msgid "Load Unit Type"
-msgstr ""
+msgstr "Загрузить тип бойца"
 
 #. [grid]
-#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:208
-#, fuzzy
-#| msgid "Image:"
+#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:214
 msgid "Unit Image:"
-msgstr "Рисунок:"
+msgstr "Изображение юнита:"
 
 #. [grid]
-#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:210
+#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:216
 msgid "Portrait:"
-msgstr ""
+msgstr "Портрет:"
 
 #. [label]
-#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:221
+#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:227
 msgid "Level:"
-msgstr ""
+msgstr "Уровень:"
 
 #. [label]
-#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:246
+#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:252
 #: data/gui/themes/default/dialogs/mp_join_game.cfg:197
 #: data/gui/themes/default/dialogs/mp_staging.cfg:200
 msgid "Gender:"
 msgstr "Пол:"
 
 #. [row]
-#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:254
-#, fuzzy
-#| msgid "gender^Random"
+#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:260
 msgid "gender^Male"
-msgstr "Случайный"
+msgstr "Мужской"
 
 #. [row]
-#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:255
-#, fuzzy
-#| msgid "Female"
+#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:261
 msgid "gender^Female"
-msgstr "Женщина"
+msgstr "Женский"
 
 #. [label]
-#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:270
-#, fuzzy
-#| msgid "Advance Unit"
+#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:276
 msgid "Advances to:"
-msgstr "Продвинуть бойца"
+msgstr "Продвигается в:"
 
 #. [label]
-#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:296
-#, fuzzy
-#| msgid "Race"
+#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:302
 msgid "Race:"
-msgstr "Раса"
+msgstr "Раса:"
 
 #. [label]
-#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:349
+#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:355
 msgid "Alignment:"
-msgstr ""
+msgstr "Мировоззрение:"
 
 #. [label]
-#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:375
-#, fuzzy
-#| msgid "HP: "
+#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:381
 msgid "HP:"
-msgstr "ЗД: "
+msgstr "ЗД:"
 
 #. [label]
-#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:405
-#, fuzzy
-#| msgid "XP: "
+#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:411
 msgid "XP:"
-msgstr "ОП: "
+msgstr "ОП:"
 
 #. [label]
-#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:435
+#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:441
 msgid "Cost:"
-msgstr ""
+msgstr "Стоимость:"
 
 #. [label]
-#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:465
-#, fuzzy
-#| msgid "Movement Costs:"
+#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:471
 msgid "Movement:"
-msgstr "Затраты на перемещение:"
+msgstr "Перемещение:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
 #. [tab]
-#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:524
-#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:1206
+#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:530
+#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:1214
 #: src/gui/widgets/unit_preview_pane.cpp:216
 msgid "Attacks"
 msgstr "Атаки"
 
 #. [button]: id=atk_new
-#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:589
-#, fuzzy
-#| msgid "Attack"
+#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:595
 msgid "New Attack"
-msgstr "Атаковать"
+msgstr "Новая атака"
 
 #. [button]: id=atk_delete
-#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:602
-#, fuzzy
-#| msgid "Select/Move/Attack"
+#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:608
 msgid "Delete Attack"
-msgstr "Выбрать/Идти/Атаковать"
+msgstr "Удалить атаку"
 
 #. [label]
-#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:672
+#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:678
 msgid "Range:"
-msgstr ""
+msgstr "Дальность:"
 
 #. [option]
-#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:686
+#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:693
 msgid "range^Melee"
-msgstr ""
+msgstr "Ближний"
 
 #. [option]
-#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:690
+#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:698
 msgid "range^Ranged"
-msgstr ""
+msgstr "Дальний"
 
 #. [label]
-#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:731
-#, fuzzy
-#| msgid "Damage"
+#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:739
 msgid "Damage:"
-msgstr "Урон"
+msgstr "Урон:"
 
 #. [label]
-#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:758
-#, fuzzy
-#| msgid "Hits"
+#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:766
 msgid "Hits:"
-msgstr "Попадания"
+msgstr "Попадания:"
 
 #. [label]
-#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:786
+#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:794
 msgid "Specials:"
-msgstr ""
+msgstr "Особенности:"
 
 #. [grid]: id=grid_adv
-#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:828
-#, fuzzy
-#| msgid "Profile"
+#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:836
 msgid "Small Profile"
-msgstr "Профиль"
+msgstr "Маленький профиль"
 
 #. [label]
-#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:839
-#, fuzzy
-#| msgid "Abilities"
+#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:847
 msgid "Abilities:"
-msgstr "Способности"
+msgstr "Способности:"
 
 #. [label]: id=movetype_label
-#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:865
-#, fuzzy
-#| msgid "Content Type:"
+#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:873
 msgid "Movetype:"
-msgstr "Тип содержания:"
+msgstr "Тип перемещения:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=movement_costs_label
-#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:908
+#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:916
 #: src/gui/widgets/unit_preview_pane.cpp:150
 msgid "Movement Costs:"
 msgstr "Затраты на перемещение:"
 
 #. [label]: id=defense_label
-#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:961
-#, fuzzy
-#| msgid "Defender"
+#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:969
 msgid "Defense:"
-msgstr "Обороняющийся"
+msgstr "Оборона:"
 
 #. [label]: id=resistance_label
-#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:1014
-#, fuzzy
-#| msgid "Resistances: "
+#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:1022
 msgid "Resistances:"
-msgstr "Сопротивления: "
+msgstr "Сопротивления:"
 
 #. [label]: id=usage_label
-#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:1067
-#, fuzzy
-#| msgid "Image:"
+#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:1075
 msgid "AI Usage:"
-msgstr "Рисунок:"
+msgstr "Использование ИИ:"
 
 #. [label]
-#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:1170
-#, fuzzy
-#| msgid "Quit Editor"
+#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:1178
 msgid "Unit Type Editor"
-msgstr "Выйти из редактора"
+msgstr "Редактор типа юнитов"
 
 #. [tab]
-#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:1192
+#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:1200
 #: data/gui/themes/default/dialogs/preferences/01_general.cfg:226
-#, fuzzy
-#| msgid "Game Stats"
 msgid "Main Stats"
-msgstr "Статистика игры"
+msgstr "Основная статистика"
 
 #. [tab]
-#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:1199
+#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:1207
 #: data/gui/themes/default/dialogs/preferences/06_advanced.cfg:148
 msgid "Advanced"
 msgstr "Продвинутые"
 
 #. [tab]
-#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:1213
+#: data/gui/themes/default/dialogs/editor_edit_unit.cfg:1221
 msgid "WML View"
-msgstr ""
+msgstr "Просмотр WML"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -4324,7 +4402,7 @@ msgstr "Высота:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #: data/gui/themes/default/dialogs/editor_new_map.cfg:116
-#: src/gui/dialogs/units_dialog.cpp:467
+#: src/gui/dialogs/units_dialog.cpp:473
 msgid "Create"
 msgstr "Создать"
 
@@ -4398,12 +4476,12 @@ msgstr "Удаление закладки текущей папки"
 #. [button]: id=open_ext
 #: data/gui/themes/default/dialogs/file_dialog.cfg:319
 msgid "Open External"
-msgstr ""
+msgstr "Открыть внешний"
 
 #. [button]: id=open_ext
 #: data/gui/themes/default/dialogs/file_dialog.cfg:320
 msgid "Open selected using platform’s default applications"
-msgstr ""
+msgstr "Открыть выбранный через приложение по умолчанию"
 
 #. [button]: id=new_dir
 #. [label]: id=title
@@ -4719,121 +4797,126 @@ msgstr "Параметры сценария"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #: data/gui/themes/default/dialogs/game_stats.cfg:832
-#: src/gui/dialogs/units_dialog.cpp:556
+#: src/gui/dialogs/units_dialog.cpp:562
 msgid "Scroll To"
 msgstr "Прокрутить к"
 
 #. [label]
-#: data/gui/themes/default/dialogs/game_version.cfg:122
+#: data/gui/themes/default/dialogs/game_version.cfg:130
 msgid "<span font_family='DejaVu Sans'>✦</span> <b>Version:</b>"
-msgstr ""
+msgstr "<span font_family='DejaVu Sans'>✦</span> <b>Версия:</b>"
 
 #. [label]
-#: data/gui/themes/default/dialogs/game_version.cfg:150
+#: data/gui/themes/default/dialogs/game_version.cfg:158
 msgid "<span font_family='DejaVu Sans'>✦</span> <b>Running on:</b>"
-msgstr ""
+msgstr "<span font_family='DejaVu Sans'>✦</span> <b>Работает на:</b>"
 
 #. [label]
-#: data/gui/themes/default/dialogs/game_version.cfg:179
+#: data/gui/themes/default/dialogs/game_version.cfg:187
 msgid "<span font_family='DejaVu Sans'>✦</span> <b>Architecture:</b>"
-msgstr ""
+msgstr "<span font_family='DejaVu Sans'>✦</span> <b>Архитектура:</b>"
 
 #. [label]
-#: data/gui/themes/default/dialogs/game_version.cfg:207
+#: data/gui/themes/default/dialogs/game_version.cfg:215
 msgid "<span font_family='DejaVu Sans'>✦</span> <b>Homepage:</b>"
-msgstr ""
+msgstr "<span font_family='DejaVu Sans'>✦</span> <b>Домашняя страница:</b>"
 
 #. [label]
-#: data/gui/themes/default/dialogs/game_version.cfg:239
+#: data/gui/themes/default/dialogs/game_version.cfg:247
 msgid "<span font_family='DejaVu Sans'>✦</span> <b>Wiki:</b>"
-msgstr ""
+msgstr "<span font_family='DejaVu Sans'>✦</span> <b>Вики:</b>"
 
 #. [label]
-#: data/gui/themes/default/dialogs/game_version.cfg:279
+#: data/gui/themes/default/dialogs/game_version.cfg:287
 msgid ""
 "<i><span font_family='DejaVu Sans'>➤</span> Copy a full report here:</i>"
 msgstr ""
+"<span font_family='DejaVu Sans'>➤</span> <b>Копировать полный отчёт сюда:</b>"
 
 #. [label]
-#: data/gui/themes/default/dialogs/game_version.cfg:299
+#: data/gui/themes/default/dialogs/game_version.cfg:307
 msgid ""
 "<i><span font_family='DejaVu Sans'>➤</span> Report an issue or request a "
 "feature:</i>"
 msgstr ""
+"<span font_family='DejaVu Sans'>➤</span> <b>Сообщить об ошибке или запросить "
+"новую функцию:</b>"
 
 #. [button]: id=issue
-#: data/gui/themes/default/dialogs/game_version.cfg:312
+#: data/gui/themes/default/dialogs/game_version.cfg:320
 msgid "Report Issue"
-msgstr ""
+msgstr "Сообщить об ошибке"
 
 #. [label]
-#: data/gui/themes/default/dialogs/game_version.cfg:321
+#: data/gui/themes/default/dialogs/game_version.cfg:329
 msgid "<i><span font_family='DejaVu Sans'>➤</span> View Game Manual:</i>"
 msgstr ""
+"<span font_family='DejaVu Sans'>➤</span> <b>Просмотреть игровое руководство:"
+"</b>"
 
 #. [button]: id=view_manual
 #. button to open the game manual in the platform's browser.
-#: data/gui/themes/default/dialogs/game_version.cfg:334
+#: data/gui/themes/default/dialogs/game_version.cfg:342
 msgid "View Manual"
-msgstr ""
+msgstr "Просмотреть руководство"
 
 #. [label]
-#: data/gui/themes/default/dialogs/game_version.cfg:342
+#: data/gui/themes/default/dialogs/game_version.cfg:350
 msgid ""
 "<i><span font_family='DejaVu Sans'>➤</span> Re-open the version migrator "
 "dialog:</i>"
 msgstr ""
+"<span font_family='DejaVu Sans'>➤</span> <b>Заного открыть диалоговое окно "
+"миграции версий:</b>"
 
 #. [button]: id=run_migrator
 #. button to open the version migration dialog manually to re-migrate add-ons and the preferences file
-#: data/gui/themes/default/dialogs/game_version.cfg:355
-#, fuzzy
-#| msgid "Crater"
+#: data/gui/themes/default/dialogs/game_version.cfg:363
 msgid "Migrate"
-msgstr "Кратер"
+msgstr "Мигрировать"
 
 #. [grid]
-#: data/gui/themes/default/dialogs/game_version.cfg:392
+#: data/gui/themes/default/dialogs/game_version.cfg:400
 msgid "Game data:"
 msgstr "Данные игры:"
 
 #. [grid]
-#: data/gui/themes/default/dialogs/game_version.cfg:394
+#: data/gui/themes/default/dialogs/game_version.cfg:402
 msgid "User data:"
 msgstr "Пользовательские данные:"
 
 #. [grid]
-#: data/gui/themes/default/dialogs/game_version.cfg:396
+#: data/gui/themes/default/dialogs/game_version.cfg:404
 msgid "Saved games:"
 msgstr "Сохраненные игры:"
 
 #. [grid]
-#: data/gui/themes/default/dialogs/game_version.cfg:398
+#: data/gui/themes/default/dialogs/game_version.cfg:406
 msgid "Add-ons:"
 msgstr "Аддоны:"
 
 #. [grid]
-#: data/gui/themes/default/dialogs/game_version.cfg:400
+#: data/gui/themes/default/dialogs/game_version.cfg:408
 msgid "Cache:"
 msgstr "Кэш:"
 
 #. [grid]
-#: data/gui/themes/default/dialogs/game_version.cfg:402
+#: data/gui/themes/default/dialogs/game_version.cfg:410
 msgid "Logs:"
 msgstr "Журнал:"
 
 #. [grid]
-#: data/gui/themes/default/dialogs/game_version.cfg:404
+#: data/gui/themes/default/dialogs/game_version.cfg:412
 msgid "Screenshots:"
 msgstr "Скриншоты:"
 
 #. [button]: id=open_stderr
-#: data/gui/themes/default/dialogs/game_version.cfg:438
+#: data/gui/themes/default/dialogs/game_version.cfg:446
 msgid "Log File"
 msgstr "Файл журнала"
 
 #. [button]: id=open_stderr
-#: data/gui/themes/default/dialogs/game_version.cfg:439
+#: data/gui/themes/default/dialogs/game_version.cfg:447
 msgid ""
 "Opens the log file pertaining to the current session, which may contain "
 "useful debug information"
@@ -4842,73 +4925,72 @@ msgstr ""
 "информацию для отладки"
 
 #. [label]
-#: data/gui/themes/default/dialogs/game_version.cfg:469
+#: data/gui/themes/default/dialogs/game_version.cfg:477
 msgid "library^Name"
 msgstr "Имя"
 
 #. [label]
-#: data/gui/themes/default/dialogs/game_version.cfg:480
+#: data/gui/themes/default/dialogs/game_version.cfg:488
 msgid "library^Build version"
 msgstr "Версия сборки"
 
 #. [label]
-#: data/gui/themes/default/dialogs/game_version.cfg:492
+#: data/gui/themes/default/dialogs/game_version.cfg:500
 msgid "library^Runtime version"
 msgstr "Версия среды"
 
 #. [label]
-#: data/gui/themes/default/dialogs/game_version.cfg:573
+#: data/gui/themes/default/dialogs/game_version.cfg:581
 msgid ""
 "The following features were selected when building this version of Wesnoth:"
 msgstr "Следующие функции были выбраны при создании этой версии Веснота:"
 
 #. [button]: id=forums
 #. this is on a button that opens the Wesnoth forums webpage
-#: data/gui/themes/default/dialogs/game_version.cfg:653
-#, fuzzy
-#| msgid "Forum URL"
+#: data/gui/themes/default/dialogs/game_version.cfg:661
 msgid "Forums"
-msgstr "Ссылка на форум"
+msgstr "Форумы"
 
 #. [button]: id=discord
 #. this is on a button that opens the Wesnoth Discord server webpage
-#: data/gui/themes/default/dialogs/game_version.cfg:672
+#: data/gui/themes/default/dialogs/game_version.cfg:680
 msgid "Discord"
-msgstr ""
+msgstr "Discord"
 
 #. [button]: id=irc
 #. this is on a button that opens the Wesnoth IRC webpage. IRC is an acronym for Internet Relay Chat
-#: data/gui/themes/default/dialogs/game_version.cfg:691
+#: data/gui/themes/default/dialogs/game_version.cfg:699
 msgid "IRC"
-msgstr ""
+msgstr "IRC"
 
 #. [button]: id=steam
 #. this is on a button that opens the Wesnoth Steam forums webpage
-#: data/gui/themes/default/dialogs/game_version.cfg:710
+#: data/gui/themes/default/dialogs/game_version.cfg:718
 msgid "Steam"
-msgstr ""
+msgstr "Steam"
 
 #. [button]: id=reddit
 #. this is on a button that opens the Wesnoth Reddit webpage
-#: data/gui/themes/default/dialogs/game_version.cfg:729
+#: data/gui/themes/default/dialogs/game_version.cfg:737
 msgid "Reddit"
-msgstr ""
+msgstr "Reddit"
 
 #. [button]: id=donate
 #. this is on a button that opens the Wesnoth SPI webpage for sending donations
-#: data/gui/themes/default/dialogs/game_version.cfg:748
+#: data/gui/themes/default/dialogs/game_version.cfg:756
 msgid "Donate"
-msgstr ""
+msgstr "Пожертвовать"
 
 #. [label]: id=description
-#: data/gui/themes/default/dialogs/game_version.cfg:844
+#: data/gui/themes/default/dialogs/game_version.cfg:852
 msgid "An open source, turn-based strategy game with a high fantasy theme."
 msgstr ""
+"Пошаговая стратегия в жанре эпического фэнтези с открытым исходным кодом."
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [tab]
 #. [widget]: id=tab_label
-#: data/gui/themes/default/dialogs/game_version.cfg:879
+#: data/gui/themes/default/dialogs/game_version.cfg:887
 #: data/gui/themes/default/dialogs/mp_create_game.cfg:564
 #: data/gui/themes/default/dialogs/preferences/05_multiplayer.cfg:405
 #: data/gui/themes/default/dialogs/server_info.cfg:181
@@ -4917,29 +4999,29 @@ msgid "General"
 msgstr "Общие"
 
 #. [tab]
-#: data/gui/themes/default/dialogs/game_version.cfg:885
+#: data/gui/themes/default/dialogs/game_version.cfg:893
 msgid "Paths"
 msgstr "Пути"
 
 #. [tab]
-#: data/gui/themes/default/dialogs/game_version.cfg:891
+#: data/gui/themes/default/dialogs/game_version.cfg:899
 msgid "Libraries"
 msgstr "Библиотеки"
 
 #. [tab]
-#: data/gui/themes/default/dialogs/game_version.cfg:897
+#: data/gui/themes/default/dialogs/game_version.cfg:905
 msgid "Features"
 msgstr "Функции"
 
 #. [button]: id=credits
-#: data/gui/themes/default/dialogs/game_version.cfg:957
+#: data/gui/themes/default/dialogs/game_version.cfg:965
 msgid "Credits"
 msgstr "Титры"
 
 #. [button]: id=license
-#: data/gui/themes/default/dialogs/game_version.cfg:972
+#: data/gui/themes/default/dialogs/game_version.cfg:980
 msgid "License"
-msgstr ""
+msgstr "Лицензия"
 
 #. [label]
 #: data/gui/themes/default/dialogs/gamestate_inspector.cfg:16
@@ -5012,19 +5094,17 @@ msgstr "Дороги между замками"
 #. [toggle_button]: id=show_labels
 #: data/gui/themes/default/dialogs/generator_settings.cfg:157
 msgid "Show Labels"
-msgstr "Показывать метки"
+msgstr "Показать метки"
 
 #. [toggle_button]: id=contents
 #: data/gui/themes/default/dialogs/help_browser.cfg:125
-#, fuzzy
-#| msgid "Show Credits"
 msgid "Show Topics"
-msgstr "Показать титры"
+msgstr "Показать разделы"
 
 #. [text_box]: id=filter_box
 #: data/gui/themes/default/dialogs/help_browser.cfg:163
 msgid "Search help topic names"
-msgstr ""
+msgstr "Поиск названий разделов справки"
 
 #. [label]
 #: data/gui/themes/default/dialogs/hotkey_bind.cfg:35
@@ -5043,6 +5123,9 @@ msgid ""
 "including translation. Translations may drift behind or even become "
 "abandoned."
 msgstr ""
+"<i>Битва за Веснот</i> в своей разработке и переводе полагается на "
+"добровольцев. Переводы могут отставать от графика или вовсе оказаться "
+"заброшены."
 
 #. [label]
 #. Beneath the label widget displaying this text there is a widget displaying
@@ -5053,6 +5136,10 @@ msgid ""
 "interface and in-game help only. More complete stats, including details for "
 "each campaign, are available at the following page:"
 msgstr ""
+"<b>Примечание:</b> Указанные проценты перевода относятся только к основному "
+"игровому интерфейсу и внутриигровой справке. Более полная статистика, "
+"включая подробную информацию по каждой кампании, доступна на следующей "
+"странице:"
 
 #. [label]
 #. Beneath the label widget displaying this text there is a widget displaying
@@ -5062,14 +5149,16 @@ msgid ""
 "If you are interested in translating the game yourself, please follow the "
 "link below for more information:"
 msgstr ""
+"Если вас интересует участие в составлении перевода игры, пожалуйста, "
+"перейдите по ссылке ниже для получения дополнительной информации:"
 
 #. [toggle_button]: id=show_all
 #: data/gui/themes/default/dialogs/language_selection.cfg:276
 msgid "Show in-progress or abandoned translations"
-msgstr ""
+msgstr "Показать незавершенные или заброшенные переводы"
 
 #. [label]: id=status
-#: data/gui/themes/default/dialogs/loadscreen.cfg:183
+#: data/gui/themes/default/dialogs/loadscreen.cfg:185
 msgid "Loading..."
 msgstr "Загрузка..."
 
@@ -5091,7 +5180,7 @@ msgstr "Подбор игроков"
 #: data/gui/themes/default/dialogs/lobby_main.cfg:102
 #: src/gui/dialogs/multiplayer/mp_create_game.cpp:129
 msgid "Presets"
-msgstr ""
+msgstr "Шаблоны"
 
 #. [label]: id=map
 #: data/gui/themes/default/dialogs/lobby_main.cfg:153
@@ -5105,10 +5194,8 @@ msgstr "Присоединяться только с паролем"
 
 #. [button]: id=delete_preset
 #: data/gui/themes/default/dialogs/lobby_main.cfg:305
-#, fuzzy
-#| msgid "Delete Unit"
 msgid "Delete this preset"
-msgstr "Удалить бойца"
+msgstr "Удалить шаблон"
 
 #. [toggle_button]: id=filter_vacant_slots
 #: data/gui/themes/default/dialogs/lobby_main.cfg:477
@@ -5230,13 +5317,13 @@ msgstr "Не показывать карту пока не передан кот
 
 #. [button]: id=join_queue
 #: data/gui/themes/default/dialogs/lobby_main.cfg:728
+#, fuzzy
 msgid "Join Queue"
-msgstr ""
+msgstr "Присоединиться"
 
 #. [button]: id=leave_queue
 #: data/gui/themes/default/dialogs/lobby_main.cfg:738
 #, fuzzy
-#| msgid "Leave"
 msgid "Leave Queue"
 msgstr "Выйти"
 
@@ -5822,10 +5909,8 @@ msgstr "Размер карты:"
 #: data/gui/themes/default/dialogs/mp_create_game/default_resolution.cfg:460
 #: data/gui/themes/default/dialogs/mp_create_game/small_resolution.cfg:378
 #: data/gui/themes/default/dialogs/mp_create_game/tiny_resolution.cfg:335
-#, fuzzy
-#| msgid "Saved Games"
 msgid "Save Preset"
-msgstr "Сохраненные игры"
+msgstr "Сохранить шаблон"
 
 #. [row]
 #: data/gui/themes/default/dialogs/mp_faction_select.cfg:210
@@ -5835,14 +5920,14 @@ msgstr "Случайный"
 #. [row]
 #. [toggle_button]: id=male_toggle
 #: data/gui/themes/default/dialogs/mp_faction_select.cfg:212
-#: data/gui/themes/default/dialogs/units_dialog.cfg:498
+#: data/gui/themes/default/dialogs/units_dialog.cfg:497
 msgid "Male"
 msgstr "Мужчина"
 
 #. [row]
 #. [toggle_button]: id=female_toggle
 #: data/gui/themes/default/dialogs/mp_faction_select.cfg:214
-#: data/gui/themes/default/dialogs/units_dialog.cfg:509
+#: data/gui/themes/default/dialogs/units_dialog.cfg:508
 msgid "Female"
 msgstr "Женщина"
 
@@ -5880,10 +5965,8 @@ msgstr "Выберите фракцию и лидера для этой стор
 #. [label]
 #: data/gui/themes/default/dialogs/mp_join_game.cfg:155
 #: data/gui/themes/default/dialogs/mp_staging.cfg:157
-#, fuzzy
-#| msgid "Faction"
 msgid "Faction:"
-msgstr "Фракция"
+msgstr "Фракция:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=status_label
@@ -6150,8 +6233,9 @@ msgstr "Не позволять автоматическим передвиже�
 
 #. [toggle_button]: id=show_turn_dialog
 #: data/gui/themes/default/dialogs/preferences/01_general.cfg:114
+#, fuzzy
 msgid "Turn prompt"
-msgstr ""
+msgstr "Диалог хода"
 
 #. [toggle_button]: id=show_turn_dialog
 #: data/gui/themes/default/dialogs/preferences/01_general.cfg:115
@@ -6374,10 +6458,8 @@ msgstr ""
 
 #. [label]
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:152
-#, fuzzy
-#| msgid "Interface theme:"
 msgid "In-game theme:"
-msgstr "Тема интерфейса:"
+msgstr "Внутриигровая тема:"
 
 #. [menu_button]: id=choose_theme
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:165
@@ -6390,23 +6472,17 @@ msgstr ""
 
 #. [label]
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:176
-#, fuzzy
-#| msgid "Interface theme:"
 msgid "UI theme:"
 msgstr "Тема интерфейса:"
 
 #. [menu_button]: id=choose_gui2_theme
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:192
-#, fuzzy
-#| msgid ""
-#| "Change the in-game interface theme. Additional themes may be provided by "
-#| "community-made add-ons"
 msgid ""
 "Change the UI (GUI2) theme. Additional themes may be provided by community-"
 "made add-ons"
 msgstr ""
-"Меняет тему игрового интерфейса. Дополнительные темы могут поставляться "
-"сделанными сообществом аддонами"
+"Меняет тему игрового интерфейса (GUI2). Дополнительные темы могут "
+"поставляться сделанными сообществом аддонами"
 
 #. [button]: id=apply
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:201
@@ -6415,10 +6491,8 @@ msgstr "Применить"
 
 #. [toggle_button]: id=show_tips
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:224
-#, fuzzy
-#| msgid "Show next tip of the day"
 msgid "Show gameplay tips on the main menu"
-msgstr "Следующий совет"
+msgstr "Показывать советы в главном меню"
 
 #. [toggle_button]: id=show_floating_labels
 #: data/gui/themes/default/dialogs/preferences/03_display.cfg:236
@@ -6710,23 +6784,27 @@ msgstr "Параметры случайной карты: "
 
 #. [label]
 #: data/gui/themes/default/dialogs/reachmap_options.cfg:112
+#, fuzzy
 msgid "Highlight Color"
-msgstr ""
+msgstr "Цвет"
 
 #. [label]
 #: data/gui/themes/default/dialogs/reachmap_options.cfg:130
+#, fuzzy
 msgid "Enemy Highlight Color"
-msgstr ""
+msgstr "Вражеский цвет"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/reachmap_options.cfg:142
+#, fuzzy
 msgid "Border Opacity:"
-msgstr ""
+msgstr "Прозрачность границ сетки"
 
 #. [grid]
 #: data/gui/themes/default/dialogs/reachmap_options.cfg:144
+#, fuzzy
 msgid "Tint Opacity:"
-msgstr ""
+msgstr "Прозрачность оттенка"
 
 #. [button]: id=open
 #: data/gui/themes/default/dialogs/screenshot_notification.cfg:49
@@ -7006,9 +7084,9 @@ msgstr "Атаковать врага"
 #. Filled five pointed star, used as favorite unit marker
 #. Filled five pointed star, used as favorite unit marker
 #: data/gui/themes/default/dialogs/units_dialog.cfg:24
-#: data/gui/themes/default/dialogs/units_dialog.cfg:574
+#: data/gui/themes/default/dialogs/units_dialog.cfg:573
 msgid "★"
-msgstr ""
+msgstr "★"
 
 #. [toggle_button]: id=unit_details
 #. [toggle_button]: id=sort_4
@@ -7051,24 +7129,24 @@ msgid "Traits"
 msgstr "Особенности"
 
 #. [text_box]: id=filter_box
-#: data/gui/themes/default/dialogs/units_dialog.cfg:405
+#: data/gui/themes/default/dialogs/units_dialog.cfg:404
 msgid "Search for unit name, unit type name, unit level, or trait"
 msgstr "Искать бойца по его имени, типу, уровню, или особенностям"
 
 #. [button]: id=dismiss
-#: data/gui/themes/default/dialogs/units_dialog.cfg:550
+#: data/gui/themes/default/dialogs/units_dialog.cfg:549
 msgid "Dismiss"
 msgstr "Уволить"
 
 #. [button]: id=rename
-#: data/gui/themes/default/dialogs/units_dialog.cfg:561
+#: data/gui/themes/default/dialogs/units_dialog.cfg:560
 msgid "Rename"
 msgstr "Переименовать"
 
 #. [button]: id=mark_favorite
-#: data/gui/themes/default/dialogs/units_dialog.cfg:575
+#: data/gui/themes/default/dialogs/units_dialog.cfg:574
 msgid "Mark/unmark the selected unit as favorite"
-msgstr ""
+msgstr "Отметить выделенного бойца как избранного"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -7110,7 +7188,7 @@ msgstr "Загрузки"
 #. The heavy checkmark character is available in the DejaVu Sans font, but not in the default Lato font
 #: data/gui/themes/default/widgets/button_success.cfg:250
 msgid "page^<span font_family='DejaVu Sans'>✔</span> Copied"
-msgstr ""
+msgstr "<span font_family='DejaVu Sans'>✔</span> Скопировано"
 
 #. [image]: id=pending_messages
 #: data/gui/themes/default/widgets/chatbox.cfg:40
@@ -7121,7 +7199,7 @@ msgstr "Сообщения ожидаются"
 #: data/internal/Urban_Jungle/terrain.cfg:8
 #: data/internal/Urban_Jungle/terrain.cfg:9
 msgid "Urban"
-msgstr ""
+msgstr "Город"
 
 #. [terrain_type]: id=urbanjungle
 #: data/internal/Urban_Jungle/terrain.cfg:10
@@ -7130,6 +7208,9 @@ msgid ""
 "villages, providing no income or healing. They are difficult to navigate "
 "quickly, but offer significant protection."
 msgstr ""
+"Плотная застройка хуже подходит для размещения гарнизона, чем обыкновенные "
+"деревни, поскольку не приносит дохода и не обеспечивает бойцов лечением. По "
+"ней трудно быстро передвигаться, но она обеспечивают значительную защиту."
 
 #. [terrain_type]: id=urbanjungleA
 #. [terrain_type]: id=urbanjungle{ID}
@@ -7139,26 +7220,27 @@ msgstr ""
 #: data/internal/Urban_Jungle/terrain.cfg:32
 #: data/internal/Urban_Jungle/terrain.cfg:33
 #: data/internal/Urban_Jungle/terrain.cfg:34
+#, fuzzy
 msgid "Urban Jungle"
-msgstr ""
+msgstr "Городские джунгли"
 
-#: src/build_info.cpp:285
+#: src/build_info.cpp:281
 msgid "feature^Lua console completion"
 msgstr "Автодополнение в консоле Lua"
 
-#: src/build_info.cpp:292
+#: src/build_info.cpp:288
 msgid "feature^D-Bus notifications back end"
 msgstr "Всплывающие уведомления через D-Bus"
 
-#: src/build_info.cpp:301
+#: src/build_info.cpp:297
 msgid "feature^Win32 notifications back end"
 msgstr "Всплывающие уведомления через Win32 API"
 
-#: src/build_info.cpp:307
+#: src/build_info.cpp:303
 msgid "feature^Cocoa notifications back end"
 msgstr "Всплывающие уведомления через Cocoa"
 
-#: src/build_info.cpp:346 src/desktop/version.cpp:129
+#: src/build_info.cpp:342 src/desktop/version.cpp:129
 msgid "cpu_architecture^<unknown>"
 msgstr "<неизвестная>"
 
@@ -7204,7 +7286,7 @@ msgstr "<неизвестна>"
 #. other's resources rather than duplicating them. For example,
 #. Swedish (sv) and Danish (da) are such, so Swedish translator could
 #. translate this message as "sv,da", while Danish as "da,sv".
-#: src/filesystem.cpp:1850
+#: src/filesystem.cpp:1845
 msgid "language code for localized resources^en_US"
 msgstr "ru,ua"
 
@@ -7248,7 +7330,7 @@ msgstr "$prefix, $next"
 msgid "disjunct end^$prefix, or $last"
 msgstr "$prefix, или $last"
 
-#: src/gui/core/canvas.cpp:259
+#: src/gui/core/canvas.cpp:289
 #, fuzzy
 #| msgid "Image doesn't fit on canvas."
 msgid "Image doesn’t fit on canvas."
@@ -7259,10 +7341,8 @@ msgid "No draw section defined for state."
 msgstr "Не определена область отрисовки."
 
 #: src/gui/core/widget_definition.cpp:67 src/gui/core/window_builder.cpp:113
-#, fuzzy
-#| msgid "No resolution defined."
 msgid "No resolution defined for "
-msgstr "Разрешение не определено."
+msgstr "Разрешение не определено"
 
 #: src/gui/core/window_builder.cpp:147 src/gui/widgets/addon_list.cpp:432
 #: src/gui/widgets/multi_page.cpp:181 src/gui/widgets/panel.cpp:131
@@ -7286,29 +7366,28 @@ msgid ""
 "Grid ‘$grid’ row $row has a differing number of columns ($found found, "
 "$expected expected)"
 msgstr ""
-"Количество столбцов строки $row не соответствует остальной таблице "
-"'$grid' (найдено $found, ожидалось $expected)"
+"Количество столбцов строки $row не соответствует остальной таблице '$grid' "
+"(найдено $found, ожидалось $expected)"
 
 #: src/gui/dialogs/achievements_dialog.cpp:97
 msgid "$title ($count/$total)"
-msgstr ""
+msgstr "$title ($count/$total)"
 
 #: src/gui/dialogs/achievements_dialog.cpp:138
-#, fuzzy
-#| msgid "Completed"
 msgid "Completed $count/$total"
-msgstr "Завершено"
+msgstr "Завершено $count/$total"
 
 #: src/gui/dialogs/addon/addon_server_info.cpp:95
 #: src/gui/dialogs/addon/addon_server_info.cpp:120
 #: src/gui/dialogs/addon/addon_server_info.cpp:148
-#: src/gui/dialogs/addon/manager.cpp:995 src/gui/dialogs/addon/manager.cpp:1037
+#: src/gui/dialogs/addon/manager.cpp:1005
+#: src/gui/dialogs/addon/manager.cpp:1047
 msgid "The server responded with an error:"
 msgstr "Сервер ответил с ошибкой:"
 
 #: src/gui/dialogs/addon/addon_server_info.cpp:97
-#: src/gui/dialogs/addon/manager.cpp:1013
-#: src/gui/dialogs/addon/manager.cpp:1040
+#: src/gui/dialogs/addon/manager.cpp:1023
+#: src/gui/dialogs/addon/manager.cpp:1050
 #: src/gui/dialogs/multiplayer/mp_join_game.cpp:514
 msgid "Response"
 msgstr "Ответ"
@@ -7316,10 +7395,8 @@ msgstr "Ответ"
 #: src/gui/dialogs/addon/addon_server_info.cpp:115
 #: src/gui/dialogs/addon/addon_server_info.cpp:143
 #: src/gui/dialogs/addon/addon_server_info.cpp:167
-#, fuzzy
-#| msgid "Password Required"
 msgid "Password not provided"
-msgstr "Необходим пароль"
+msgstr "Пароль не предоставлен"
 
 #: src/gui/dialogs/addon/manager.cpp:145
 msgid "addons_view^All Add-ons"
@@ -7382,10 +7459,8 @@ msgid "addons_of_type^Cores"
 msgstr "Ядро"
 
 #: src/gui/dialogs/addon/manager.cpp:163
-#, fuzzy
-#| msgid "addons_of_type^Cores"
 msgid "addons_of_type^Themes"
-msgstr "Ядро"
+msgstr "Темы"
 
 #: src/gui/dialogs/addon/manager.cpp:164
 msgid "addons_of_type^Resources"
@@ -7561,23 +7636,23 @@ msgstr "по убыванию"
 msgid "newest to oldest"
 msgstr "От новых к старым"
 
-#: src/gui/dialogs/addon/manager.cpp:566
+#: src/gui/dialogs/addon/manager.cpp:572
 msgid "addons^Back to List"
 msgstr "Обратно к списку"
 
-#: src/gui/dialogs/addon/manager.cpp:578
+#: src/gui/dialogs/addon/manager.cpp:584
 msgid "An error occurred while downloading the add-ons list from the server."
 msgstr "Произошла ошибка при загрузке списка аддонов с сервера."
 
-#: src/gui/dialogs/addon/manager.cpp:616
+#: src/gui/dialogs/addon/manager.cpp:622
 msgid "No Add-ons Available"
 msgstr "Нет доступных аддонов"
 
-#: src/gui/dialogs/addon/manager.cpp:616
+#: src/gui/dialogs/addon/manager.cpp:622
 msgid "There are no add-ons available for download from this server."
 msgstr "Нет никаких аддонов, доступных для загрузки с этого сервера."
 
-#: src/gui/dialogs/addon/manager.cpp:880
+#: src/gui/dialogs/addon/manager.cpp:890
 msgid ""
 "The following add-on appears to have publishing or version control "
 "information stored locally, and will not be removed:"
@@ -7585,15 +7660,15 @@ msgstr ""
 "Следующий аддон содержит сведения о публикации или управлении версиями, "
 "которые хранятся локально и не будут удалены:"
 
-#: src/gui/dialogs/addon/manager.cpp:888
+#: src/gui/dialogs/addon/manager.cpp:898
 msgid "The following add-on could not be deleted properly:"
 msgstr "Следующий аддон не может быть удален надлежащим образом:"
 
-#: src/gui/dialogs/addon/manager.cpp:968
+#: src/gui/dialogs/addon/manager.cpp:978
 msgid "Warning"
 msgstr "Предупреждение"
 
-#: src/gui/dialogs/addon/manager.cpp:969
+#: src/gui/dialogs/addon/manager.cpp:979
 msgid ""
 "The remote version of this add-on is greater or equal to the version being "
 "uploaded. Do you really wish to continue?"
@@ -7601,21 +7676,21 @@ msgstr ""
 "Удаленная версия этого аддона больше или равна загружаемой версии. Вы "
 "действительно хотите продолжить?"
 
-#: src/gui/dialogs/addon/manager.cpp:987
+#: src/gui/dialogs/addon/manager.cpp:997
 msgid "The passphrase attribute cannot be present when forum_auth is used."
 msgstr "Пароль не может присутствовать, когда используется форумный логин."
 
-#: src/gui/dialogs/addon/manager.cpp:992
+#: src/gui/dialogs/addon/manager.cpp:1002
 msgid "Invalid icon path. Make sure the path points to a valid image."
 msgstr ""
 "Неверный путь к значку. Убедитесь, что путь указывает на допустимое "
 "изображение."
 
-#: src/gui/dialogs/addon/manager.cpp:998
+#: src/gui/dialogs/addon/manager.cpp:1008
 msgid "The add-on was rejected by the server:"
 msgstr "В загрузке аддона отказано сервером:"
 
-#: src/gui/dialogs/addon/manager.cpp:1025
+#: src/gui/dialogs/addon/manager.cpp:1035
 msgid ""
 "Deleting '$addon|' will permanently erase its download and upload counts on "
 "the add-ons server. Do you really wish to continue?"
@@ -7623,23 +7698,23 @@ msgstr ""
 "Удаление '$addon|' навсегда удалит счетчики скачивания и загрузок на сервере "
 "аддонов. Вы действительно хотите продолжить?"
 
-#: src/gui/dialogs/addon/manager.cpp:1057
+#: src/gui/dialogs/addon/manager.cpp:1067
 msgid "Do you want to uninstall '$addon|'?"
 msgstr "Вы хотите удалить '$addon|'?"
 
 #. TRANSLATORS: Month + day of month + year + 12-hour time, eg 'November 02 2021, 1:59 PM'. Format for your locale.
 #. Format reference: https://www.boost.org/doc/libs/1_85_0/doc/html/date_time/date_time_io.html#date_time.format_flags
-#: src/gui/dialogs/addon/manager.cpp:1090
+#: src/gui/dialogs/addon/manager.cpp:1100
 msgid "%B %d %Y, %I:%M %p"
 msgstr "%d.%B.%Y, %I:%M %p"
 
 #. TRANSLATORS: Month + day of month + year + 24-hour time, eg 'November 02 2021, 13:59'. Format for your locale.
 #. Format reference: https://www.boost.org/doc/libs/1_85_0/doc/html/date_time/date_time_io.html#date_time.format_flags
-#: src/gui/dialogs/addon/manager.cpp:1093
+#: src/gui/dialogs/addon/manager.cpp:1103
 msgid "%B %d %Y, %H:%M"
 msgstr "%d.%B.%Y %H:%M"
 
-#: src/gui/dialogs/addon/manager.cpp:1148
+#: src/gui/dialogs/addon/manager.cpp:1158
 msgid "url^None"
 msgstr "Нет"
 
@@ -7663,23 +7738,19 @@ msgstr "Сопротивляемость атакующего против"
 msgid "Attacker vulnerability vs"
 msgstr "Уязвимость атакующего против"
 
-#: src/gui/dialogs/campaign_selection.cpp:77
-#, fuzzy
-#| msgid "Add-ons"
+#: src/gui/dialogs/campaign_selection.cpp:82
 msgid "game^Get Add-ons"
-msgstr "Аддоны"
+msgstr "Получить аддоны"
 
-#: src/gui/dialogs/campaign_selection.cpp:388
-#, fuzzy
-#| msgid "Campaigns"
+#: src/gui/dialogs/campaign_selection.cpp:409
 msgid "More campaigns..."
-msgstr "Кампании"
+msgstr "Больше кампаний..."
 
-#: src/gui/dialogs/campaign_selection.cpp:402
+#: src/gui/dialogs/campaign_selection.cpp:424
 msgid "Missing Campaigns"
 msgstr "Отсутствующие кампании"
 
-#: src/gui/dialogs/campaign_selection.cpp:436
+#: src/gui/dialogs/campaign_selection.cpp:458
 #: src/gui/dialogs/multiplayer/lobby.cpp:435
 msgid "active_modifications^None"
 msgstr "Нет"
@@ -7717,18 +7788,18 @@ msgstr ""
 "Выберите совместимую модификацию."
 
 #: src/gui/dialogs/editor/custom_tod.cpp:171
-#: src/gui/dialogs/editor/edit_unit.cpp:302
-#, fuzzy
-#| msgid "Choose Player"
+#: src/gui/dialogs/editor/edit_unit.cpp:295
 msgid "Choose File"
-msgstr "Выберите игрока"
+msgstr "Выберите файл"
 
 #: src/gui/dialogs/editor/custom_tod.cpp:182
-#: src/gui/dialogs/editor/edit_unit.cpp:313
+#: src/gui/dialogs/editor/edit_unit.cpp:306
 msgid ""
 "This file is outside Wesnoth’s data dirs. Do you wish to copy it into your "
 "add-on?"
 msgstr ""
+"Этот файл находится вне каталогов данных Веснота. Хотите скопировать его в "
+"свой аддон?"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:178
 msgid "Core"
@@ -7805,7 +7876,7 @@ msgstr "Рельеф"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:402
 msgid "The icon’s file size is too large"
-msgstr ""
+msgstr "Размер файла значка слишком велик"
 
 #: src/gui/dialogs/editor/edit_pbl.cpp:404
 msgid "No validation errors"
@@ -7819,45 +7890,37 @@ msgstr "Успех"
 msgid "Choose an icon"
 msgstr "Выберите иконку"
 
-#: src/gui/dialogs/editor/edit_unit.cpp:187
+#: src/gui/dialogs/editor/edit_unit.cpp:180
 msgid "scout"
-msgstr ""
+msgstr "разведчик"
 
-#: src/gui/dialogs/editor/edit_unit.cpp:188
-#, fuzzy
-#| msgid "Right"
+#: src/gui/dialogs/editor/edit_unit.cpp:181
 msgid "fighter"
-msgstr "Вправо"
+msgstr "боец"
 
-#: src/gui/dialogs/editor/edit_unit.cpp:189
-#, fuzzy
-#| msgid "Search"
+#: src/gui/dialogs/editor/edit_unit.cpp:182
 msgid "archer"
-msgstr "Поиск"
+msgstr "лучник"
 
-#: src/gui/dialogs/editor/edit_unit.cpp:190
+#: src/gui/dialogs/editor/edit_unit.cpp:183
 msgid "mixed fighter"
-msgstr ""
+msgstr "смешанный боец"
 
-#: src/gui/dialogs/editor/edit_unit.cpp:191
+#: src/gui/dialogs/editor/edit_unit.cpp:184
 msgid "healer"
-msgstr ""
+msgstr "лекарь"
 
-#: src/gui/dialogs/editor/edit_unit.cpp:969
-#, fuzzy
-#| msgid "Save already exists. Do you want to overwrite it?"
+#: src/gui/dialogs/editor/edit_unit.cpp:927
 msgid "Unsaved changes will be lost. Do you want to leave?"
-msgstr "Сохранение уже существует, переписать его?"
+msgstr "Несохранённые изменения будут утеряны. Хотите выйти?"
 
-#: src/gui/dialogs/editor/edit_unit.cpp:988
+#: src/gui/dialogs/editor/edit_unit.cpp:946
 msgid "Unit type saved."
-msgstr ""
+msgstr "Тип бойца сохранён."
 
 #: src/gui/dialogs/editor/generator_settings.cpp:38
-#, fuzzy
-#| msgid "/1000 tiles"
 msgid "$count/1000 tiles"
-msgstr "/1000 ячеек"
+msgstr "$count/1000 ячеек"
 
 #: src/gui/dialogs/editor/generator_settings.cpp:43
 msgid "Coastal"
@@ -7876,29 +7939,25 @@ msgid "Find File"
 msgstr "Найти файл"
 
 #: src/gui/dialogs/file_dialog.cpp:191
-#, fuzzy
-#| msgid "Winter Elven Castle"
 msgid "enter filename"
-msgstr "Заснеженный замок эльфов"
+msgstr "введите название файла"
 
 #: src/gui/dialogs/file_dialog.cpp:201
 msgid "invalid extension (use $extensions)"
-msgstr ""
+msgstr "недопустимое расширение (используйте $extensions)"
 
 #: src/gui/dialogs/file_dialog.cpp:208
 msgid "filename contains whitespace"
-msgstr ""
+msgstr "название файла содержит пробел"
 
 #: src/gui/dialogs/file_dialog.cpp:237
 msgid "Open"
 msgstr "Открыть"
 
 #: src/gui/dialogs/file_dialog.cpp:313
-#, fuzzy
-#| msgid "Opening links is not supported, contact your packager"
 msgid "Opening files is not supported, contact your packager"
 msgstr ""
-"Открытие ссылки не поддерживается, обратитесь к вашему менеджеру сборки"
+"Открытие файлов не поддерживается, обратитесь к вашему менеджеру сборки"
 
 #: src/gui/dialogs/file_dialog.cpp:370
 msgid "The file already exists. Do you wish to overwrite it?"
@@ -7987,60 +8046,60 @@ msgstr "Нет сохранённых игр"
 msgid "There are no saved games to load."
 msgstr "Нет сохранений, доступных для загрузки."
 
-#: src/gui/dialogs/game_load.cpp:144
+#: src/gui/dialogs/game_load.cpp:150
 msgid "game_version^Current Version"
 msgstr "Текущая версия"
 
-#: src/gui/dialogs/game_load.cpp:148
+#: src/gui/dialogs/game_load.cpp:154
 msgid "game_version^Wesnoth $version"
 msgstr "Веснот $version"
 
 #. TRANSLATORS: "reserve" refers to units on the recall list
-#: src/gui/dialogs/game_load.cpp:234
+#: src/gui/dialogs/game_load.cpp:240
 msgid "$active active, $reserve reserve"
 msgstr "$active активно, $reserve зарезервировано"
 
-#: src/gui/dialogs/game_load.cpp:289
+#: src/gui/dialogs/game_load.cpp:295
 msgid "The selected file is corrupt: "
 msgstr "Выбранный файл поврежден: "
 
-#: src/gui/dialogs/game_load.cpp:329
+#: src/gui/dialogs/game_load.cpp:335
 msgid "(Invalid)"
 msgstr "(Ошибочный)"
 
-#: src/gui/dialogs/game_load.cpp:354
+#: src/gui/dialogs/game_load.cpp:360
 msgid "Campaign: $campaign_name"
 msgstr "Кампания: $campaign_name"
 
-#: src/gui/dialogs/game_load.cpp:366
+#: src/gui/dialogs/game_load.cpp:372
 msgid "Tutorial"
 msgstr "Обучение"
 
-#: src/gui/dialogs/game_load.cpp:369
+#: src/gui/dialogs/game_load.cpp:375
 msgid "Test scenario"
 msgstr "Тестовый сценарий"
 
-#: src/gui/dialogs/game_load.cpp:379
+#: src/gui/dialogs/game_load.cpp:385
 msgid "Replay"
 msgstr "Повтор"
 
-#: src/gui/dialogs/game_load.cpp:381
+#: src/gui/dialogs/game_load.cpp:387
 msgid "Turn"
 msgstr "Ход"
 
-#: src/gui/dialogs/game_load.cpp:383
+#: src/gui/dialogs/game_load.cpp:389
 msgid "Scenario start"
 msgstr "Начало сценария"
 
-#: src/gui/dialogs/game_load.cpp:395
+#: src/gui/dialogs/game_load.cpp:401
 msgid "Difficulty: "
 msgstr "Сложность: "
 
-#: src/gui/dialogs/game_load.cpp:418
+#: src/gui/dialogs/game_load.cpp:424
 msgid "Version: "
 msgstr "Версия: "
 
-#: src/gui/dialogs/game_load.cpp:423
+#: src/gui/dialogs/game_load.cpp:429
 msgid "Modifications: "
 msgstr "Модификации:"
 
@@ -8071,7 +8130,7 @@ msgid "yes"
 msgstr "да"
 
 #: src/gui/dialogs/game_version_dialog.cpp:263
-#: src/gui/dialogs/game_version_dialog.cpp:277 src/gui/widgets/label.cpp:124
+#: src/gui/dialogs/game_version_dialog.cpp:269 src/gui/widgets/label.cpp:124
 msgid "Opening links is not supported, contact your packager"
 msgstr ""
 "Открытие ссылки не поддерживается, обратитесь к вашему менеджеру сборки"
@@ -8173,28 +8232,26 @@ msgid "Downloading lobby data"
 msgstr "Загрузка данных лобби"
 
 #: src/gui/dialogs/lua_interpreter.cpp:628
-#, fuzzy
-#| msgid "The lua console can only be used in debug mode! (Run ':debug' first)"
 msgid "The lua console can only be used in debug mode! (Run ‘:debug’ first)"
 msgstr ""
-"Консоль lua можно использовать только в режиме отладки! (Сначала выполните ':"
-"debug')"
+"Консоль lua можно использовать только в режиме отладки! (Сначала выполните "
+"':debug')"
 
 #: src/gui/dialogs/lua_interpreter.cpp:629
 msgid "lua console"
 msgstr "Консоль Lua"
 
 #: src/gui/dialogs/migrate_version_selection.cpp:47
-#, fuzzy
-#| msgid "Map Information"
 msgid "No Other Version Found"
-msgstr "Информация о карте"
+msgstr "Другие версии не найдены"
 
 #: src/gui/dialogs/migrate_version_selection.cpp:47
 msgid ""
 "This would import settings from a previous version of Wesnoth, but no other "
 "version was found on this device"
 msgstr ""
+"Это бы импортировало настройки из предыдущей версии Веснота, но на этом "
+"устройстве никакая другая версия не была обнаружена."
 
 #: src/gui/dialogs/multiplayer/faction_select.cpp:200
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:498
@@ -8211,17 +8268,14 @@ msgstr "Несовместимый пользовательский контен
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:175
 #, fuzzy
-#| msgid ""
-#| "This game cannot be joined because the host has out-of-date add-ons that "
-#| "are incompatible with your version. You might wish to suggest that the "
-#| "host's add-ons be updated."
 msgid ""
 "This game cannot be joined because the host has out-of-date add-ons that are "
 "incompatible with your version. You might wish to suggest that the host’s "
 "add-ons be updated."
 msgstr ""
-"К этой игре невозможно присоедиться потому что хост имеет устаревшие аддоны, "
-"которые несовместимы с вашей версией. Можно предложить хосту обновить аддоны."
+"К этой игре невозможно присоединиться, так как хост имеет устаревшие аддоны, "
+"которые несовместимы с вашей версией. Можете предложить хосту обновить "
+"аддоны."
 
 #: src/gui/dialogs/multiplayer/lobby.cpp:190
 msgid "Missing User-made Content"
@@ -8352,41 +8406,41 @@ msgstr "Пользовательский сценарий"
 msgid "Random Maps"
 msgstr "Случайные карты"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:285
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:286
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:282
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:283
 msgid "No games found."
 msgstr "Игры не найдены."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:347
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:344
 msgid "No eras found."
 msgstr "Эры не найдены."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:348
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:345
 msgid "No eras found"
 msgstr "Эры не найдены"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:617
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:622
 msgid "No eras available for this game."
 msgstr "Нет эр, доступных для этой игры."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:869
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:874
 msgid "number of players^$min to $max"
 msgstr "от $min до $max"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:1022
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:1027
 msgid "The selected game has no sides!"
 msgstr "Выбранная игра не имеет сторон!"
 
 #. TRANSLATORS: This sentence will be followed by some details of the error, most likely the "Map could not be loaded" message from create_engine.cpp
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:1029
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:1034
 msgid "The selected game cannot be created."
 msgstr "Не получается создать выбранную игру."
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:1102
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:1107
 msgid "Choose Starting Scenario"
 msgstr "Выберите стартовый сценарий"
 
-#: src/gui/dialogs/multiplayer/mp_create_game.cpp:1102
+#: src/gui/dialogs/multiplayer/mp_create_game.cpp:1107
 msgid "Select at which point to begin this campaign."
 msgstr "Выберите, в какой момент начать эту кампанию."
 
@@ -8431,9 +8485,8 @@ msgstr "Настройка горячих клавиш"
 
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:308
 #, fuzzy
-#| msgid "(Invalid)"
 msgid "Invalid Color"
-msgstr "(Ошибочный)"
+msgstr "(Ошибочный цвет)"
 
 #: src/gui/dialogs/multiplayer/mp_staging.cpp:515
 msgid "Waiting for players to choose factions..."
@@ -8576,67 +8629,65 @@ msgstr "Версия $version"
 msgid "Choose Test Scenario"
 msgstr "Выберите пробный сценарий"
 
-#: src/gui/dialogs/units_dialog.cpp:239 src/hotkey/hotkey_command.cpp:103
+#: src/gui/dialogs/units_dialog.cpp:245 src/hotkey/hotkey_command.cpp:103
 msgid "Rename Unit"
 msgstr "Переименовать бойца"
 
-#: src/gui/dialogs/units_dialog.cpp:272
-#, fuzzy
-#| msgid "This unit is loyal and requires no upkeep."
+#: src/gui/dialogs/units_dialog.cpp:278
 msgid "This unit requires no upkeep."
-msgstr "Это подразделение лояльно и не требует содержания."
+msgstr "Это подразделение не требует содержания."
 
-#: src/gui/dialogs/units_dialog.cpp:273 src/gui/dialogs/units_dialog.cpp:278
-#: src/gui/dialogs/units_dialog.cpp:283
+#: src/gui/dialogs/units_dialog.cpp:279 src/gui/dialogs/units_dialog.cpp:284
+#: src/gui/dialogs/units_dialog.cpp:289
 msgid "Do you really want to dismiss him?"
 msgstr "Вы действительно хотите уволить этого бойца?"
 
-#: src/gui/dialogs/units_dialog.cpp:274 src/gui/dialogs/units_dialog.cpp:279
-#: src/gui/dialogs/units_dialog.cpp:284
+#: src/gui/dialogs/units_dialog.cpp:280 src/gui/dialogs/units_dialog.cpp:285
+#: src/gui/dialogs/units_dialog.cpp:290
 msgid "Do you really want to dismiss her?"
 msgstr "Вы действительно хотите уволить этого бойца?"
 
-#: src/gui/dialogs/units_dialog.cpp:277
+#: src/gui/dialogs/units_dialog.cpp:283
 msgid "This unit is an experienced one, having advanced levels."
 msgstr "Этот боец опытный, продвигался на следующие уровни."
 
-#: src/gui/dialogs/units_dialog.cpp:282
+#: src/gui/dialogs/units_dialog.cpp:288
 msgid "This unit is close to advancing a level."
 msgstr "Этот боец близок к продвижению на следующий уровень."
 
-#: src/gui/dialogs/units_dialog.cpp:288
+#: src/gui/dialogs/units_dialog.cpp:294
 msgid "Dismiss Unit"
 msgstr "Уволить бойца"
 
-#: src/gui/dialogs/units_dialog.cpp:430
+#: src/gui/dialogs/units_dialog.cpp:436
 msgid "unit_variation^Default Variation"
 msgstr "Вариация по умолчанию"
 
-#: src/gui/dialogs/units_dialog.cpp:466
+#: src/gui/dialogs/units_dialog.cpp:472
 msgid "Create Unit"
 msgstr "Создать бойца"
 
-#: src/gui/dialogs/units_dialog.cpp:537
+#: src/gui/dialogs/units_dialog.cpp:543
 msgid "Recruit Unit"
 msgstr "Вербовать бойца"
 
-#: src/gui/dialogs/units_dialog.cpp:538 src/hotkey/hotkey_command.cpp:111
+#: src/gui/dialogs/units_dialog.cpp:544 src/hotkey/hotkey_command.cpp:111
 msgid "Recruit"
 msgstr "Вербовать"
 
-#: src/gui/dialogs/units_dialog.cpp:555 src/hotkey/hotkey_command.cpp:129
+#: src/gui/dialogs/units_dialog.cpp:561 src/hotkey/hotkey_command.cpp:129
 msgid "Unit List"
 msgstr "Список бойцов"
 
-#: src/gui/dialogs/units_dialog.cpp:699
+#: src/gui/dialogs/units_dialog.cpp:705
 msgid "Recall Unit"
 msgstr "Призвать бойца"
 
-#: src/gui/dialogs/units_dialog.cpp:700 src/hotkey/hotkey_command.cpp:113
+#: src/gui/dialogs/units_dialog.cpp:706 src/hotkey/hotkey_command.cpp:113
 msgid "Recall"
 msgstr "Призвать"
 
-#: src/gui/dialogs/units_dialog.cpp:828
+#: src/gui/dialogs/units_dialog.cpp:834
 msgid ""
 "This unit cannot be recalled because you will not have enough gold at this "
 "point in your plan."
@@ -8644,7 +8695,7 @@ msgstr ""
 "Этот боец не может быть призван, потому что у вас не будет достаточно золота "
 "на данный момент согласно вашему плану."
 
-#: src/gui/dialogs/units_dialog.cpp:830
+#: src/gui/dialogs/units_dialog.cpp:836
 msgid "This unit cannot be recalled because you do not have enough gold."
 msgstr "Этот боец не может быть призван, потому что у вас недостаточно золота."
 
@@ -8675,7 +8726,7 @@ msgstr "Удалить аддон с сервера"
 #. TRANSLATORS: This is the new chat text indicator
 #: src/gui/widgets/chatbox.cpp:95
 msgid "NEW"
-msgstr ""
+msgstr "НОВЫЙ"
 
 #: src/gui/widgets/chatbox.cpp:298
 msgid "whisper to $receiver"
@@ -8693,7 +8744,7 @@ msgstr ""
 "Начат приватный чат с <i>$name</i>. Если Вы не хотите получать сообщения от "
 "этого пользователя, наберите <i>/ignore $name</i>"
 
-#: src/gui/widgets/helper.cpp:148
+#: src/gui/widgets/helper.cpp:147
 #, fuzzy
 #| msgid "Mandatory widget '$id' hasn't been defined."
 msgid "Mandatory widget ‘$id’ hasn't been defined."
@@ -8787,15 +8838,14 @@ msgstr "Найден элемент управления с подсказкой
 
 #: src/gui/widgets/tab_container.cpp:172
 #, fuzzy
-#| msgid "No nodes defined for a tree view."
 msgid "No grid defined for tab container control"
-msgstr "В дереве не определены узлы."
+msgstr "Не определена сетка для управления tab контейнером"
 
-#: src/gui/widgets/tree_view.cpp:287
+#: src/gui/widgets/tree_view.cpp:289
 msgid "No nodes defined for a tree view."
 msgstr "В дереве не определены узлы."
 
-#: src/gui/widgets/tree_view.cpp:317
+#: src/gui/widgets/tree_view.cpp:319
 #, fuzzy
 #| msgid "[node]id 'root' is reserved for the implementation."
 msgid "[node]id ‘root’ is reserved for the implementation."
@@ -8815,18 +8865,18 @@ msgstr "( Атк / Защ )"
 
 #: src/gui/widgets/unit_preview_pane.cpp:220
 msgid "Remaining: $left/$max"
-msgstr ""
+msgstr "Осталось: $left/$max"
 
 #: src/gui/widgets/unit_preview_pane.cpp:223
 msgid "This unit can attack multiple times per turn."
-msgstr ""
+msgstr "Этот боец может атаковать несколько раз за ход."
 
 #: src/gui/widgets/unit_preview_pane.cpp:275
 msgid "uses $num attack"
 msgid_plural "uses $num attacks"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "использует $num атаку"
+msgstr[1] "использует $num атаки"
+msgstr[2] "использует $num атак"
 
 #: src/gui/widgets/unit_preview_pane.cpp:318
 #: src/gui/widgets/unit_preview_pane.cpp:349
@@ -8866,22 +8916,16 @@ msgid "Abilities"
 msgstr "Способности"
 
 #: src/gui/widgets/window.cpp:287
-#, fuzzy
-#| msgid "Linked '$id' group has multiple definitions."
 msgid "Linked ‘$id’ group has multiple definitions."
 msgstr "Связанная группа '$id' определена более одного раза."
 
 #: src/gui/widgets/window.cpp:884
-#, fuzzy
-#| msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgid "Click dismiss needs a ‘click_dismiss’ or ‘ok’ button."
 msgstr "Закрытие по клику требует кнопки «click_dismiss» или «ok»."
 
 #: src/gui/widgets/window.cpp:909 src/gui/widgets/window.cpp:945
-#, fuzzy
-#| msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgid "Failed to show a dialog, which doesn’t fit on the screen."
-msgstr "Не могу показать диалог, он не помещается на экране."
+msgstr "Невозможно показать диалог, не помещающийся на экране."
 
 #: src/hotkey/hotkey_command.cpp:52
 msgid "Saved Games"
@@ -8968,10 +9012,8 @@ msgid "Select/Move/Attack"
 msgstr "Выбрать/Идти/Атаковать"
 
 #: src/hotkey/hotkey_command.cpp:84
-#, fuzzy
-#| msgid "Touch"
 msgid "Touch Hex"
-msgstr "Касание"
+msgstr "Прикоснуться к полю"
 
 #: src/hotkey/hotkey_command.cpp:85
 msgid "Animate Map"
@@ -9034,10 +9076,8 @@ msgid "Terrain Description"
 msgstr "Описание местности"
 
 #: src/hotkey/hotkey_command.cpp:102
-#, fuzzy
-#| msgid "Unit Description"
 msgid "Unit Type Description"
-msgstr "Описание бойца"
+msgstr "Описание типа бойца"
 
 #: src/hotkey/hotkey_command.cpp:104
 msgid "Delete Unit"
@@ -9052,10 +9092,8 @@ msgid "Save Map"
 msgstr "Сохранить карту"
 
 #: src/hotkey/hotkey_command.cpp:110
-#, fuzzy
-#| msgid "Loading..."
 msgid "Load Turn..."
-msgstr "Загрузка..."
+msgstr "Загрузить ход..."
 
 #: src/hotkey/hotkey_command.cpp:112
 msgid "Repeat Recruit"
@@ -9106,10 +9144,8 @@ msgid "Kill Unit (Debug!)"
 msgstr "Убить бойца (Отладка!)"
 
 #: src/hotkey/hotkey_command.cpp:126
-#, fuzzy
-#| msgid "Create Unit (Debug!)"
 msgid "Teleport Unit (Debug!)"
-msgstr "Создать бойца (Отладка!)"
+msgstr "Телепортировать бойца (Отладка!)"
 
 #: src/hotkey/hotkey_command.cpp:128
 msgid "Objectives"
@@ -9247,10 +9283,8 @@ msgid "Assign Local Time"
 msgstr "Назначить местное время"
 
 #: src/hotkey/hotkey_command.cpp:178
-#, fuzzy
-#| msgid "Next Unit"
 msgid "New Unit Type"
-msgstr "Следующий боец"
+msgstr "Новый тип бойца"
 
 #: src/hotkey/hotkey_command.cpp:180
 msgid "Time Schedule Editor"
@@ -9265,20 +9299,16 @@ msgid "New Scenario"
 msgstr "Новый сценарий"
 
 #: src/hotkey/hotkey_command.cpp:184
-#, fuzzy
-#| msgid "Edit Scenario"
 msgid "Load Map/Scenario"
-msgstr "Править сценарий"
+msgstr "Загрузить карту/сценарий"
 
 #: src/hotkey/hotkey_command.cpp:186
 msgid "Save Map As"
 msgstr "Сохранить карту как"
 
 #: src/hotkey/hotkey_command.cpp:187
-#, fuzzy
-#| msgid "Choose Test Scenario"
 msgid "Convert To Scenario"
-msgstr "Выберите пробный сценарий"
+msgstr "Преобразовать в сценарий"
 
 #: src/hotkey/hotkey_command.cpp:188
 msgid "Save Scenario As"
@@ -9397,10 +9427,8 @@ msgid "Item Tool"
 msgstr "Инструмент «предмет»"
 
 #: src/hotkey/hotkey_command.cpp:210
-#, fuzzy
-#| msgid "Left mouse button sets a new item."
 msgid "Left mouse button sets a new item. Right click removes item."
-msgstr "Левая кнопка мыши кладёт новый предмет."
+msgstr "Левая кнопка мыши кладёт новый предмет. Правая — удаляет предмет."
 
 #: src/hotkey/hotkey_command.cpp:211
 msgid ""
@@ -9439,10 +9467,8 @@ msgid "Loyal"
 msgstr "Верный"
 
 #: src/hotkey/hotkey_command.cpp:220
-#, fuzzy
-#| msgid "Map Information"
 msgid "Show Tool Information"
-msgstr "Информация о карте"
+msgstr "Показать информацию об инструменте"
 
 #: src/hotkey/hotkey_command.cpp:222
 msgid "Toggle Minimap Unit Coding"
@@ -9630,16 +9656,12 @@ msgid "Change Add-on ID"
 msgstr "Изменить ID аддона"
 
 #: src/hotkey/hotkey_command.cpp:279
-#, fuzzy
-#| msgid "Select the add-on version"
 msgid "Select active Add-on"
-msgstr "Выберите версию аддона"
+msgstr "Выбрать активный аддон"
 
 #: src/hotkey/hotkey_command.cpp:280
-#, fuzzy
-#| msgid "Open saves folder"
 msgid "Open Add-on folder"
-msgstr "Открыть каталог с сохранениями"
+msgstr "Открыть папку с аддонами"
 
 #: src/hotkey/hotkey_command.cpp:283
 msgid "Edit Side"
@@ -9702,10 +9724,8 @@ msgid "Change Language"
 msgstr "Сменить язык"
 
 #: src/hotkey/hotkey_command.cpp:301
-#, fuzzy
-#| msgid "Starting game"
 msgid "Start Game (MP)"
-msgstr "Запуск игры"
+msgstr "Запуск игры (МП)"
 
 #: src/hotkey/hotkey_command.cpp:302
 msgid "Refresh WML"
@@ -9795,10 +9815,6 @@ msgstr ""
 "Если будете отсылать багрепорт, включите, пожалуйста, следующее сообщение:"
 
 #: src/wml_exception.cpp:89
-#, fuzzy
-#| msgid ""
-#| "In section '[$section|]' where '$primary_key| = $primary_value' the "
-#| "mandatory key '$key|' isn't set."
 msgid ""
 "In section ‘[$section|]’ where ‘$primary_key|’ = ‘$primary_value’ the "
 "mandatory key ‘$key|’ isn’t set."
@@ -9807,16 +9823,12 @@ msgstr ""
 "обязательный параметр '$key|' ."
 
 #: src/wml_exception.cpp:92
-#, fuzzy
-#| msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgid "In section ‘[$section|]’ the mandatory key ‘$key|’ isn’t set."
 msgstr "В разделе '[$section|]' не задан обязательный параметр '$key|' ."
 
 #: src/wml_exception.cpp:104
-#, fuzzy
-#| msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgid "In section ‘[$section|]’ the mandatory subtag ‘[$tag|]’ is missing."
-msgstr "В разделе '[$section|]' не задан обязательный параметр '$key|' ."
+msgstr "В разделе '[$section|]' не задан обязательный подтег '$key|' ."
 
 #~ msgid "Turn dialog"
 #~ msgstr "Окно начала хода"

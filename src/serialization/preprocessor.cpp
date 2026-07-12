@@ -32,7 +32,6 @@
 #include "deprecation.hpp"
 
 #include <stdexcept>
-#include <deque>
 
 static lg::log_domain log_preprocessor("preprocessor");
 #define ERR_PREPROC LOG_STREAM(err, log_preprocessor)
@@ -266,9 +265,11 @@ protected:
 	preprocessor_streambuf& parent_;
 
 public:
-	virtual ~preprocessor()
-	{
-	}
+	/**
+	 * Restores the old preprocessing context.
+	 * Appends location and domain directives to the buffer, so that the parser notices these changes.
+	 */
+	virtual ~preprocessor();
 
 	/** Allows specifying any actions that need to be called after the constructor completes. */
 	virtual void init()
@@ -310,14 +311,7 @@ class preprocessor_streambuf : public std::streambuf
 public:
 	preprocessor_streambuf(preproc_map& def)
 		: std::streambuf()
-		, out_buffer_("")
-		, buffer_()
-		, preprocessor_queue_()
 		, defines_(def)
-		, textdomain_(PACKAGE)
-		, location_("")
-		, linenum_(0)
-		, quoted_(false)
 	{
 	}
 
@@ -352,13 +346,7 @@ public:
 private:
 	preprocessor_streambuf(const preprocessor_streambuf& t)
 		: std::streambuf()
-		, out_buffer_("")
-		, buffer_()
-		, preprocessor_queue_()
 		, defines_(t.defines_)
-		, textdomain_(PACKAGE)
-		, location_("")
-		, linenum_(0)
 		, quoted_(t.quoted_)
 	{
 	}
@@ -366,29 +354,32 @@ private:
 	/** Inherited from basic_streambuf. */
 	virtual int underflow() override;
 
-	void restore_old_preprocessor();
-
 	/** Buffer read by the STL stream. */
 	std::string out_buffer_;
 
 	/** Buffer filled by the _current_ preprocessor. */
 	std::stringstream buffer_;
 
-	/** Input preprocessor queue. */
-	std::deque<std::unique_ptr<preprocessor>> preprocessor_queue_;
-
 	preproc_map& defines_;
 
-	std::string textdomain_;
+	std::string textdomain_{PACKAGE};
 	std::string location_;
 
-	int linenum_;
+	int linenum_{0};
+
+	/**
+	 * Input preprocessor queue.
+	 * NOTE: This must be after textdomain_/location_/linenum_ because otherwise
+	 * it causes a memory corruption error which causes Wesnoth to abort upon launch
+	 * in some devices.
+	 */
+	std::vector<std::unique_ptr<preprocessor>> preprocessor_queue_;
 
 	/**
 	 * Set to true if one preprocessor for this target started to read a string.
 	 * Deeper-nested preprocessors are then forbidden to.
 	 */
-	bool quoted_;
+	bool quoted_{false};
 
 	friend class preprocessor;
 	friend class preprocessor_file;
@@ -403,6 +394,21 @@ preprocessor::preprocessor(preprocessor_streambuf& t)
 	, old_location_(t.location_)
 	, old_linenum_(t.linenum_)
 {
+}
+
+preprocessor::~preprocessor()
+{
+	if(!old_location_.empty()) {
+		parent_.buffer_ << INLINED_PREPROCESS_DIRECTIVE_CHAR << "line " << old_linenum_ << ' ' << old_location_ << '\n';
+	}
+
+	if(!old_textdomain_.empty() && parent_.textdomain_ != old_textdomain_) {
+		parent_.buffer_ << INLINED_PREPROCESS_DIRECTIVE_CHAR << "textdomain " << old_textdomain_ << '\n';
+	}
+
+	parent_.location_ = old_location_;
+	parent_.linenum_ = old_linenum_;
+	parent_.textdomain_ = old_textdomain_;
 }
 
 /**
@@ -442,7 +448,7 @@ int preprocessor_streambuf::underflow()
 		// Process files and data chunks until the desired buffer size is reached
 		if(!current()->get_chunk()) {
 			// Drop the current preprocessor item from the queue.
-			restore_old_preprocessor();
+			drop_preprocessor();
 		}
 	}
 
@@ -462,31 +468,6 @@ int preprocessor_streambuf::underflow()
 	}
 
 	return static_cast<unsigned char>(*(begin + sz));
-}
-
-/**
-* Restores the old preprocessing context.
-* Appends location and domain directives to the buffer, so that the parser
-* notices these changes.
-*/
-void preprocessor_streambuf::restore_old_preprocessor()
-{
-	preprocessor* current = this->current();
-
-	if(!current->old_location_.empty()) {
-		buffer_ << INLINED_PREPROCESS_DIRECTIVE_CHAR << "line " << current->old_linenum_ << ' ' << current->old_location_ << '\n';
-	}
-
-	if(!current->old_textdomain_.empty() && textdomain_ != current->old_textdomain_) {
-		buffer_ << INLINED_PREPROCESS_DIRECTIVE_CHAR << "textdomain " << current->old_textdomain_ << '\n';
-	}
-
-	location_ = current->old_location_;
-	linenum_ = current->old_linenum_;
-	textdomain_ = current->old_textdomain_;
-
-	// Drop the preprocessor from the queue.
-	drop_preprocessor();
 }
 
 std::string preprocessor_streambuf::get_current_file()
@@ -604,10 +585,13 @@ public:
 	{
 		while(pos_ != end_) {
 			const std::string& name = *(pos_++);
-			unsigned sz = name.size();
 
+#ifdef __cpp_lib_starts_ends_with
+			if(!name.ends_with(".cfg")) {
+#else
 			// Use reverse iterator to optimize testing
-			if(sz < 5 || !std::equal(name.rbegin(), name.rbegin() + 4, "gfc.")) {
+			if(name.size() < 5 || !std::equal(name.rbegin(), name.rbegin() + 4, "gfc.")) {
+#endif
 				continue;
 			}
 
@@ -1143,7 +1127,7 @@ bool preprocessor_data::get_chunk()
 			put(in_.get());
 			pop_token();
 		}
-	} else if(c == '<' && in_.peek() == '<') {
+	} else if(token.type != token_desc::token_type::string && c == '<' && in_.peek() == '<') {
 		in_.get();
 		push_token(token_desc::token_type::verbatim);
 		put('<');
@@ -1202,7 +1186,11 @@ bool preprocessor_data::get_chunk()
 					}
 				} else {
 					if(found_arg > 0 && ++found_arg == 4) {
+#ifdef __cpp_lib_starts_ends_with
+						if(buffer.ends_with("arg")) {
+#else
 						if(std::equal(buffer.end() - 3, buffer.end(), "arg")) {
+#endif
 							buffer.erase(buffer.end() - 4, buffer.end());
 
 							skip_spaces();
@@ -1227,7 +1215,11 @@ bool preprocessor_data::get_chunk()
 								if(e == '#') {
 									found_endarg = 1;
 								} else if(found_endarg > 0 && ++found_endarg == 7) {
+#ifdef __cpp_lib_starts_ends_with
+									if(argbuffer.ends_with("endarg")) {
+#else
 									if(std::equal(argbuffer.end() - 6, argbuffer.end(), "endarg")) {
+#endif
 										argbuffer.erase(argbuffer.end() - 7, argbuffer.end());
 										optargs[argname] = argbuffer;
 										skip_eol();
@@ -1241,7 +1233,11 @@ bool preprocessor_data::get_chunk()
 					}
 
 					if(found_deprecate > 0 && ++found_deprecate == 11) {
+#ifdef __cpp_lib_starts_ends_with
+						if(buffer.ends_with("deprecated")) {
+#else
 						if(std::equal(buffer.end() - 10, buffer.end(), "deprecated")) {
+#endif
 							buffer.erase(buffer.end() - 11, buffer.end());
 							skip_spaces();
 							try {
@@ -1270,13 +1266,21 @@ bool preprocessor_data::get_chunk()
 					}
 
 					if(found_enddef > 0 && ++found_enddef == 7) {
+#ifdef __cpp_lib_starts_ends_with
+						if(buffer.ends_with("enddef")) {
+#else
 						if(std::equal(buffer.end() - 6, buffer.end(), "enddef")) {
+#endif
 							break;
 						} else {
 							found_enddef = 0;
+#ifdef __cpp_lib_starts_ends_with
+							if(buffer.ends_with("define")) {
+#else
 							if(std::equal(buffer.end() - 6, buffer.end(), "define")) { // TODO: Maybe add support for
 																					   // this? This would fill feature
 																					   // request #21343
+#endif
 								parent_.error(
 										"Preprocessor error: #define is not allowed inside a #define/#enddef pair",
 										linenum);
@@ -1566,14 +1570,14 @@ bool preprocessor_data::get_chunk()
 
 				// If the macro definition has any optional arguments, insert their defaults
 				if(val.optional_arguments.size() > 0) {
-					for(const auto& argument : val.optional_arguments) {
-						if(defines->find(argument.first) == defines->end()) {
+					for(const auto& [argument, argument_value] : val.optional_arguments) {
+						if(defines->find(argument) == defines->end()) {
 							std::unique_ptr<preprocessor_streambuf> buf(new preprocessor_streambuf(parent_));
 
 							buf->textdomain_ = parent_.textdomain_;
 							std::istream in(buf.get());
 
-							filesystem::scoped_istream buffer{new std::istringstream(argument.second)};
+							filesystem::scoped_istream buffer{new std::istringstream(argument_value)};
 
 							auto temp_defines = std::make_unique<std::map<std::string, std::string>>();
 							temp_defines->insert(defines->begin(), defines->end());
@@ -1584,10 +1588,10 @@ bool preprocessor_data::get_chunk()
 							std::ostringstream res;
 							res << in.rdbuf();
 
-							DBG_PREPROC << "Setting default for optional argument " << argument.first << " in macro "
+							DBG_PREPROC << "Setting default for optional argument " << argument << " in macro "
 										<< symbol;
 
-							(*defines)[argument.first] = res.str();
+							(*defines)[argument] = res.str();
 						}
 					}
 				}
@@ -1832,7 +1836,7 @@ void preprocess_resource(const std::string& res_name,
 			LOG_PREPROC << "writing cfg file: " << preproc_res_name;
 
 			filesystem::create_directory_if_missing_recursive(filesystem::directory_name(preproc_res_name));
-			io::write(*filesystem::ostream_file(preproc_res_name), cfg);
+			io::write(*filesystem::ostream_file(preproc_res_name), cfg, 0, true);
 		}
 
 		// Write the plain cfg file

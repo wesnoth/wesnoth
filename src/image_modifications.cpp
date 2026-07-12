@@ -505,7 +505,7 @@ void bl_modification::operator()(surface& src) const
 void background_modification::operator()(surface& src) const
 {
 	surface ret = src.clone();
-	SDL_FillRect(ret, nullptr, SDL_MapRGBA(ret->format, color_.r, color_.g, color_.b, color_.a));
+	SDL_FillSurfaceRect(ret, nullptr, SDL_MapSurfaceRGBA(ret, color_.r, color_.g, color_.b, color_.a));
 	sdl_blit(src, nullptr, ret, nullptr);
 	src = ret;
 }
@@ -566,20 +566,17 @@ REGISTER_MOD_PARSER(TC, args)
 		return nullptr;
 	}
 
-	color_mapping rc_map;
 	try {
 		const color_range& new_color = team::get_side_color_range(side_n);
 		const std::vector<color_t>& old_color = game_config::tc_info(params[1]);
 
-		rc_map = generate_color_mapping(new_color, old_color);
+		return std::make_unique<rc_modification>(generate_color_mapping(new_color, old_color));
 	} catch(const config::error& e) {
 		ERR_DP << "caught config::error while processing TC: " << e.message;
 		ERR_DP << "bailing out from TC";
 
 		return nullptr;
 	}
-
-	return std::make_unique<rc_modification>(rc_map);
 }
 
 // Team-color-based color range selection and recoloring
@@ -594,21 +591,18 @@ REGISTER_MOD_PARSER(RC, args)
 	//
 	// recolor source palette to color range
 	//
-	color_mapping rc_map;
 	try {
 		const color_range& new_color = game_config::color_info(recolor_params[1]);
 		const std::vector<color_t>& old_color = game_config::tc_info(recolor_params[0]);
 
-		rc_map = generate_color_mapping(new_color, old_color);
+		return std::make_unique<rc_modification>(generate_color_mapping(new_color, old_color));
 	} catch (const config::error& e) {
 		ERR_DP
 			<< "caught config::error while processing color-range RC: "
 			<< e.message;
 		ERR_DP << "bailing out from RC";
-		rc_map.clear();
+		return nullptr;
 	}
-
-	return std::make_unique<rc_modification>(rc_map);
 }
 
 // Palette switch
@@ -625,13 +619,13 @@ REGISTER_MOD_PARSER(PAL, args)
 	try {
 		color_mapping rc_map;
 		const std::vector<color_t>& old_palette = game_config::tc_info(remap_params[0]);
-		const std::vector<color_t>& new_palette =game_config::tc_info(remap_params[1]);
+		const std::vector<color_t>& new_palette = game_config::tc_info(remap_params[1]);
 
 		for(std::size_t i = 0; i < old_palette.size() && i < new_palette.size(); ++i) {
 			rc_map[old_palette[i]] = new_palette[i];
 		}
 
-		return std::make_unique<rc_modification>(rc_map);
+		return std::make_unique<rc_modification>(std::move(rc_map));
 	} catch(const config::error& e) {
 		ERR_DP
 			<< "caught config::error while processing PAL function: "

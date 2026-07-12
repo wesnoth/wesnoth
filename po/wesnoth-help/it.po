@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2026-01-20 11:31-0600\n"
-"PO-Revision-Date: 2026-01-30 17:14+0100\n"
+"POT-Creation-Date: 2026-06-22 22:15-0500\n"
+"PO-Revision-Date: 2026-04-13 23:12+0200\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italiano <wesnoth-l10n-it@cirulla.net>\n"
 "Language: it\n"
@@ -23,12 +23,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.6\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
 #. [time]: id=underground
 #. [editor_times]: id=underground
-#: data/campaigns/Heir_To_The_Throne_Classic/utils/httt_utils.cfg:500
+#: data/campaigns/Heir_To_The_Throne_Classic/utils/httt_utils.cfg:499
 #: data/core/editor/time-of-day.cfg:41 data/core/macros/schedules.cfg:113
 msgid "Underground"
 msgstr "Sottosuolo"
@@ -54,15 +54,15 @@ msgstr "impavido"
 #. [plague]: id=plague, type=Walking Corpse
 #: data/campaigns/Secrets_of_the_Ancients/gui/zombie_recruit_dialog.cfg:244
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:6
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:48
-#: data/core/macros/weapon_specials.cfg:68
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:47
+#: data/core/macros/weapon_specials.cfg:71
 msgid "plague"
 msgstr "contagio"
 
 #. [plague]: id=SotA_plague, type=null # prevents normal corpse, and allows SotA code to handle it
 #. [plague]: id=plague, type=Walking Corpse
 #: data/campaigns/Secrets_of_the_Ancients/utils/zombie-utils.cfg:7
-#: data/core/macros/weapon_specials.cfg:69
+#: data/core/macros/weapon_specials.cfg:72
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a "
 "Walking Corpse on the same side as the unit with the Plague attack. This "
@@ -74,47 +74,29 @@ msgstr ""
 
 #. [trait]: id=loyal_dummy
 #. [trait]: id=loyal
-#: data/campaigns/The_Deceivers_Gambit/scenarios/00_Graduation.cfg:112
-#: data/campaigns/The_Deceivers_Gambit/scenarios/11_Clan_Blackcrest.cfg:748
-#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:19
+#: data/campaigns/The_Deceivers_Gambit/scenarios/00_Graduation.cfg:188
+#: data/campaigns/The_Deceivers_Gambit/scenarios/11_Clan_Blackcrest.cfg:770
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:23
 #: data/core/macros/traits.cfg:12
 msgid "loyal"
 msgstr "leale"
 
 #. [trait]: id=loyal_dummy
-#: data/campaigns/The_Deceivers_Gambit/scenarios/00_Graduation.cfg:113
-#: data/campaigns/The_Deceivers_Gambit/scenarios/11_Clan_Blackcrest.cfg:749
-#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:20
+#: data/campaigns/The_Deceivers_Gambit/scenarios/00_Graduation.cfg:189
+#: data/campaigns/The_Deceivers_Gambit/scenarios/11_Clan_Blackcrest.cfg:771
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:24
 msgid "Zero upkeep."
 msgstr "Nessun mantenimento."
 
-#. [chance_to_hit]
-#. [chance_to_hit]: id=magical
-#: data/campaigns/The_Deceivers_Gambit/scenarios/14_Long_Live_the_Queen.cfg:1299
-#: data/core/macros/weapon_specials.cfg:117
-msgid ""
-"This attack always has a 70% chance to hit regardless of the defensive "
-"ability of the unit being attacked."
-msgstr ""
-"Questo attacco ha sempre una probabilità di colpire del 70%, a prescindere "
-"dalle capacità difensive dell’unità attaccata."
-
-#. [chance_to_hit]
-#. [chance_to_hit]: id=magical
-#: data/campaigns/The_Deceivers_Gambit/scenarios/14_Long_Live_the_Queen.cfg:1299
-#: data/core/macros/weapon_specials.cfg:116
-msgid "magical"
-msgstr "magico"
-
 #. [trait]: id=intelligent_dummy
 #. [trait]: id=intelligent
-#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:24
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:28
 #: data/core/macros/traits.cfg:190
 msgid "intelligent"
 msgstr "intelligente"
 
 #. [trait]: id=intelligent_dummy
-#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:25
+#: data/campaigns/The_Deceivers_Gambit/utils/unified_characters.cfg:29
 msgid "Intelligent units require 20% less experience than usual to advance."
 msgstr ""
 "Le unità intelligenti necessitano del 20% d’esperienza in meno del consueto "
@@ -122,15 +104,15 @@ msgstr ""
 
 #. [resistance]: id=garak_steadfast
 #. [resistance]: id=steadfast
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:708
-#: data/core/macros/abilities.cfg:136
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:707
+#: data/core/macros/abilities.cfg:139
 msgid "steadfast"
 msgstr "fermezza"
 
 #. [resistance]: id=garak_steadfast
 #. [resistance]: id=steadfast
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:709
-#: data/core/macros/abilities.cfg:137
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:708
+#: data/core/macros/abilities.cfg:140
 msgid "female^steadfast"
 msgstr "fermezza"
 
@@ -138,46 +120,46 @@ msgstr "fermezza"
 #. [illuminates]: id=illumination
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:324
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:325
-#: data/core/macros/abilities.cfg:245
+#: data/core/macros/abilities.cfg:248
 msgid "female^illuminates"
 msgstr "illumina"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:727
-#: data/core/macros/abilities.cfg:10
+#: data/core/macros/abilities.cfg:13
 msgid "heals +4"
 msgstr "guarisce +4"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:728
-#: data/core/macros/abilities.cfg:11
+#: data/core/macros/abilities.cfg:14
 msgid "female^heals +4"
 msgstr "guarisce +4"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:729
+#: data/core/macros/abilities.cfg:15
 msgid ""
 "Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
 "\n"
 "A unit cared for by this healer may heal up to 4 HP per turn, or stop poison "
 "from taking effect for that turn.\n"
-"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
-"care of a village or a unit that can cure."
+"This ability will not cure an affected unit of poison, however, only delay "
+"its effect."
 msgstr ""
 "Permette all’unità di guarire le unità alleate adiacenti all’inizio del "
 "turno.\n"
 "\n"
 "L’unità di cui si occupa il guaritore potrà recuperare fino a 4 PF per "
 "turno, oppure vedrà annullati per quel turno gli effetti del veleno.\n"
-"I guaritori non possono curare dal veleno un’unità avvelenata, perciò questa "
-"dovrà cercare l’assistenza di un villaggio o di un’unità con l’abilità "
-"“cura”."
+"Questa abilità non permette di curare un’unità avvelenata, ma soltanto di "
+"ritardare gli effetti del veleno."
 
 #. [heals]: id=healing
 #. [heals]
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:733
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:772
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:802
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:803
 msgid "This unit is capable of basic healing and slowing dehydration."
 msgstr ""
 "Quest’unità è in grado di fornire cure di primo soccorso e rallentare la "
@@ -185,35 +167,35 @@ msgstr ""
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:751
-#: data/core/macros/abilities.cfg:37
+#: data/core/macros/abilities.cfg:40
 msgid "heals +8"
 msgstr "guarisce +8"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:752
-#: data/core/macros/abilities.cfg:38
+#: data/core/macros/abilities.cfg:41
 msgid "female^heals +8"
 msgstr "guarisce +8"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:753
+#: data/core/macros/abilities.cfg:42
 msgid ""
 "This unit combines herbal remedies with magic to heal units more quickly "
 "than is normally possible on the battlefield.\n"
 "\n"
 "A unit cared for by this healer may heal up to 8 HP per turn, or stop poison "
 "from taking effect for that turn.\n"
-"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
-"care of a village or a unit that can cure."
+"This ability will not cure an affected unit of poison, however, only delay "
+"its effect."
 msgstr ""
 "Quest’unità combina rimedi a base di erbe con la magia per guarire le unità "
 "più velocemente di quanto sia normalmente possibile sul campo di battaglia.\n"
 "\n"
 "L’unità di cui si occupa il guaritore potrà recuperare fino a 8 PF per turno "
 "oppure vedrà annullati per quel turno gli effetti del veleno.\n"
-"I guaritori non possono curare dal veleno un’unità avvelenata, perciò questa "
-"dovrà cercare l’assistenza di un villaggio o di un’unità con l’abilità "
-"“cura”."
+"Questa abilità non permette di curare un’unità avvelenata, ma di soltanto "
+"ritardare gli effetti del veleno."
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:781
@@ -226,27 +208,27 @@ msgid "female^heals +12"
 msgstr "guarisce +12"
 
 #. [heals]: id=healing
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:783
+#. only exists in UtBS, but is the same wording as heals+8 with a bigger number
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:784
 msgid ""
 "This unit combines herbal remedies with magic to heal units more quickly "
 "than is normally possible on the battlefield.\n"
 "\n"
 "A unit cared for by this healer may heal up to 12 HP per turn, or stop "
 "poison from taking effect for that turn.\n"
-"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
-"care of a village or a unit that can cure."
+"This ability will not cure an affected unit of poison, however, only delay "
+"its effect."
 msgstr ""
 "Quest’unità combina rimedi a base di erbe con la magia per guarire le unità "
 "più velocemente di quanto sia normalmente possibile sul campo di battaglia.\n"
 "\n"
 "L’unità di cui si occupa il guaritore potrà recuperare fino a 12 PF per "
 "turno oppure vedrà annullati per quel turno gli effetti del veleno.\n"
-"I guaritori non possono curare dal veleno un’unità avvelenata, perciò questa "
-"dovrà cercare l’assistenza di un villaggio o di un’unità con l’abilità "
-"“cura”."
+"Questa abilità non permette di curare un’unità avvelenata, ma soltanto di "
+"ritardare gli effetti del veleno."
 
 #. [heals]
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:808
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:809
 msgid ""
 "This unit is capable of healing those around it, slowing dehydration, and "
 "curing them of poison."
@@ -255,32 +237,32 @@ msgstr ""
 "disidratazione e di curarle dal veleno."
 
 #. [lua]: set_status
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:2132
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:2133
 msgid "female^poisoned"
 msgstr "avvelenata"
 
 #. [lua]: set_status
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:2132
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:2133
 msgid "poisoned"
 msgstr "avvelenato"
 
 #. [lua]: set_status
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:2134
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:2135
 msgid "female^slowed"
 msgstr "rallentata"
 
 #. [lua]: set_status
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:2134
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:2135
 msgid "slowed"
 msgstr "rallentato"
 
 #. [lua]: set_status
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:2135
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:2136
 msgid "female^petrified"
 msgstr "pietrificata"
 
 #. [lua]: set_status
-#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:2135
+#: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:2136
 msgid "petrified"
 msgstr "pietrificato"
 
@@ -289,15 +271,15 @@ msgstr "pietrificato"
 #. [teleport]: id=teleport
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:699
 #: data/campaigns/World_Conquest/resources/data/training.cfg:786
-#: data/core/macros/abilities.cfg:260
+#: data/core/macros/abilities.cfg:263
 msgid "teleport"
 msgstr "teletrasporto"
 
 #. [artifact]
 #. [regenerate]: id=regenerates
 #: data/campaigns/World_Conquest/resources/data/artifacts.cfg:760
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:54
-#: data/core/macros/abilities.cfg:99
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:53
+#: data/core/macros/abilities.cfg:102
 msgid "regenerates"
 msgstr "rigenerazione"
 
@@ -311,112 +293,112 @@ msgstr "Recupera sempre PF come se riposasse"
 #. [chance]
 #. [damage]: id=backstab
 #: data/campaigns/World_Conquest/resources/data/training.cfg:439
-#: data/core/macros/weapon_specials.cfg:31
+#: data/core/macros/weapon_specials.cfg:34
 msgid "backstab"
 msgstr "attacco alle spalle"
 
 #. [chance]
 #. [dummy]: id=feeding
 #: data/campaigns/World_Conquest/resources/data/training.cfg:501
-#: data/core/macros/abilities.cfg:415
+#: data/core/macros/abilities.cfg:418
 msgid "feeding"
 msgstr "nutrimento"
 
 #. [chance]
 #. [leadership]: id=leadership
 #: data/campaigns/World_Conquest/resources/data/training.cfg:528
-#: data/core/macros/abilities.cfg:206
+#: data/core/macros/abilities.cfg:209
 msgid "leadership"
 msgstr "comando"
 
 #. [hides]: id=ambush
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:12
-#: data/core/macros/abilities.cfg:292
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:11
+#: data/core/macros/abilities.cfg:295
 msgid "ambush"
 msgstr "imboscata"
 
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:15
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:14
 msgid "Castle"
 msgstr "Castello"
 
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:18
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:17
 msgid "Cave"
 msgstr "Caverna"
 
 #. [hides]: id=concealment
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:21
-#: data/core/macros/abilities.cfg:355
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:20
+#: data/core/macros/abilities.cfg:358
 msgid "concealment"
 msgstr "occultamento"
 
 #. [drains]: id=drains
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:24
-#: data/core/macros/weapon_specials.cfg:209
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:23
+#: data/core/macros/weapon_specials.cfg:183
 msgid "drains"
 msgstr "assorbi"
 
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:27
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:26
 msgid "firststrike"
 msgstr "attacco improvviso"
 
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:30
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:29
 msgid "Forest"
 msgstr "Foresta"
 
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:33
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:32
 msgid "Frozen"
 msgstr "Congelato"
 
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:36
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:35
 msgid "Hills"
 msgstr "Colline"
 
 # provo "colpo preciso" per tradurre "marksman" (att. speciale): v. Glossario generale sul WIF
 #. [chance_to_hit]: id=marksman
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:39
-#: data/core/macros/weapon_specials.cfg:102
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:38
+#: data/core/macros/weapon_specials.cfg:105
 msgid "marksman"
 msgstr "colpo preciso"
 
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:42
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:41
 msgid "Mushroom Grove"
 msgstr "Campo di funghi"
 
 #. [hides]: id=nightstalk
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:45
-#: data/core/macros/abilities.cfg:335 data/core/macros/abilities.cfg:336
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:44
+#: data/core/macros/abilities.cfg:338
 msgid "nightstalk"
 msgstr "agguato notturno"
 
 #. [poison]: id=poison
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:51
-#: data/core/macros/weapon_specials.cfg:231
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:50
+#: data/core/macros/weapon_specials.cfg:205
 msgid "poison"
 msgstr "veleno"
 
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:57
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:56
 msgid "Sand"
 msgstr "Sabbia"
 
 #. [skirmisher]: id=skirmisher
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:60
-#: data/core/macros/abilities.cfg:226
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:59
+#: data/core/macros/abilities.cfg:229
 msgid "skirmisher"
 msgstr "incursore"
 
 #. [slow]: id=slow
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:63
-#: data/core/macros/weapon_specials.cfg:80
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:62
+#: data/core/macros/weapon_specials.cfg:83
 msgid "slows"
 msgstr "rallenta"
 
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:66
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:65
 msgid "Swamp"
 msgstr "Palude"
 
 #. [heals]: id=curing
-#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:69
-#: data/core/macros/abilities.cfg:63
+#: data/campaigns/World_Conquest/resources/strings/mainline.cfg:68
+#: data/core/macros/abilities.cfg:66
 msgid "cures"
 msgstr "cura"
 
@@ -543,7 +525,7 @@ msgid ""
 "<b>Brush Sizes</b>\n"
 "The selected brush changes the size of the tool:"
 msgstr ""
-"Seleziona un insieme di esagoni, per poi poterli utilizzare con i bottoni "
+"Seleziona un insieme di esagoni, per poi poterli utilizzare con i pulsanti "
 "taglia, copia e riempi-selezione disponibili sotto la barra del menù.\n"
 "\n"
 "<header>Modificatori da Tastiera</header>\n"
@@ -676,7 +658,7 @@ msgstr ""
 "piazzato soltanto su un singolo esagono e l’editor permetterà di piazzare "
 "soltanto un punto per esagono.\n"
 "\n"
-"Per aggiungere dei punti speciali con un nome, clicca il bottone “Aggiungi” "
+"Per aggiungere dei punti speciali con un nome, clicca il pulsante “Aggiungi” "
 "che trovi in fondo alla Tavolozza dell’editor ed inserisci un nome. Questi "
 "nomi devono iniziare con una lettera e possono contenere sia numeri che il "
 "carattere di sottolineatura (underscore).\n"
@@ -1003,8 +985,8 @@ msgstr ""
 "Posiziona delle etichette testuali sulla mappa.\n"
 "• cliccando col tasto sinistro del mouse si aprirà una finestra dove poter "
 "creare una nuova etichetta o editarne una già esistente;\n"
-"• cliccando col tasto destro si cancella una etichetta;\n"
-"• Drag-and-drop con il bottone sinistro cliccato per muovere le etichette.\n"
+"• cliccando col tasto destro del mouse si cancella una etichetta;\n"
+"• Drag-and-drop col tasto sinistro cliccato per muovere le etichette.\n"
 "\n"
 "Questo strumento è disponibile soltanto in Modalità Scenario: le decorazioni "
 "sono implementate nello scenario utilizzando i tag WML <i>[label]</i>."
@@ -1168,7 +1150,7 @@ msgid ""
 "This tool is only available in Scenario Mode; it adds WML <i>[music]</i> "
 "tags to the scenario."
 msgstr ""
-"Mostra una lista di tracce sonore conosciute dall’editor, con dei bottoni "
+"Mostra una lista di tracce sonore conosciute dall’editor, con dei pulsanti "
 "cliccabili per abilitarle.\n"
 "Questo strumento è disponibile soltanto in modalità Scenario, in quanto "
 "aggiunge tag WML <i>[music]</i> ad uno scenario."
@@ -1204,7 +1186,7 @@ msgid ""
 msgstr ""
 "Permette di configurare un file di estensione _server.pbl, necessario per "
 "pubblicare una estensione su un server di estensioni in modo che gli altri "
-"giocatori possano scaricarlo. Il bottone Convalida verificherà che tutti i "
+"giocatori possano scaricarlo. Il pulsante Convalida verificherà che tutti i "
 "campi richiesti siano stati correttamente valorizzati."
 
 #. [topic]: id=..editor
@@ -1567,13 +1549,13 @@ msgid ""
 "In scenario mode, the button accesses an editor for individual schedules for "
 "<ref dst='editor_named_area'>time areas</ref>."
 msgstr ""
-"Questo bottone all’angolo in alto a destra dello schermo permette di "
+"Questo pulsante all’angolo in alto a destra dello schermo permette di "
 "accedere all’anteprima dei periodi della giornata e all’andamento "
 "temporale.\n"
 "In modalità terreno, mostra come verrebbe colorata la mappa in un periodo "
 "diverso della giornata.\n"
 "\n"
-"In modalità scenario, il bottone permette di accedere ad un editor per "
+"In modalità scenario, il pulsante permette di accedere ad un editor per "
 "andamenti temporali personalizzati per <ref dst='editor_named_area'>aree "
 "temporali</ref>."
 
@@ -1608,9 +1590,9 @@ msgstr ""
 "<b>Filtro</b>\n"
 "\n"
 "Utilizzando al funzione filtro è possibile visualizzare soltanto un "
-"sottoinsieme degli oggetti disponibili: è accessibile tramite il bottone più "
-"a sinistra tra i quattro situati sul margine superiore della tavolozza. I "
-"cambiamenti grafici dipendono da cosa viene selezionato. Alcuni esempi:"
+"sottoinsieme degli oggetti disponibili: è accessibile tramite il pulsante "
+"più a sinistra tra i quattro situati sul margine superiore della tavolozza. "
+"I cambiamenti grafici dipendono da cosa viene selezionato. Alcuni esempi:"
 
 #. [topic]: id=editor_palette
 #: data/core/editor/help.cfg:461
@@ -1786,12 +1768,12 @@ msgstr ""
 
 #. [section]: id=calendar
 #. [topic]: id=..calendar
-#: data/core/encyclopedia/calendar.cfg:5 data/core/encyclopedia/calendar.cfg:13
+#: data/core/encyclopedia/calendar.cfg:5 data/core/encyclopedia/calendar.cfg:12
 msgid "Calendar"
 msgstr "Calendario"
 
 #. [topic]: id=..calendar
-#: data/core/encyclopedia/calendar.cfg:14
+#: data/core/encyclopedia/calendar.cfg:13
 msgid ""
 "Each year in the Wesnothian calendar is composed of 12 months. These are, in "
 "order:\n"
@@ -1841,18 +1823,18 @@ msgstr ""
 
 #. [section]: id=geography
 #. [topic]: id=..geography
+#: data/core/encyclopedia/geography.cfg:5
 #: data/core/encyclopedia/geography.cfg:12
-#: data/core/encyclopedia/geography.cfg:19
 msgid "Geography"
 msgstr "Geografia"
 
 #. [topic]: id=arkan_thoria
-#: data/core/encyclopedia/geography.cfg:26
+#: data/core/encyclopedia/geography.cfg:19
 msgid "Arkan-thoria"
 msgstr "Arkan-thoria"
 
 #. [topic]: id=arkan_thoria
-#: data/core/encyclopedia/geography.cfg:27
+#: data/core/encyclopedia/geography.cfg:20
 msgid ""
 "A river rising in the <ref dst='heart_mountains'>Heart Mountains</ref> and "
 "running east to the Listra."
@@ -1861,12 +1843,12 @@ msgstr ""
 "e scorre verso est, fino a confluire nel Listra."
 
 #. [topic]: id=great_river
-#: data/core/encyclopedia/geography.cfg:32
+#: data/core/encyclopedia/geography.cfg:25
 msgid "Great River"
 msgstr "Grande Fiume"
 
 #. [topic]: id=great_river
-#: data/core/encyclopedia/geography.cfg:33
+#: data/core/encyclopedia/geography.cfg:26
 msgid ""
 "The Great River forms the boundary between the <ref "
 "dst='kingdom_wesnoth'>Kingdom of Wesnoth</ref> and the <ref "
@@ -1879,7 +1861,7 @@ msgstr ""
 "dst='elensefar'>Elensefar</ref>."
 
 #. [topic]: id=great_river
-#: data/core/encyclopedia/geography.cfg:35
+#: data/core/encyclopedia/geography.cfg:28
 msgid ""
 "The Ford of Abez is a crossing between Wesnoth and the Northlands, and is "
 "the westernmost point where the Great River can be crossed without ships."
@@ -1889,12 +1871,12 @@ msgstr ""
 "essere attraversato senza l’ausilio di imbarcazioni."
 
 #. [topic]: id=great_ocean
-#: data/core/encyclopedia/geography.cfg:40
+#: data/core/encyclopedia/geography.cfg:33
 msgid "Great Ocean"
 msgstr "Grande Oceano"
 
 #. [topic]: id=great_ocean
-#: data/core/encyclopedia/geography.cfg:41
+#: data/core/encyclopedia/geography.cfg:34
 msgid ""
 "Lies to the west of the <ref dst='great_continent'>continent</ref> and all "
 "rivers eventually flow to it. Far to the west in the Great Ocean is a huge "
@@ -1906,7 +1888,7 @@ msgstr ""
 
 #. [topic]: id=great_ocean
 #. Great Ocean
-#: data/core/encyclopedia/geography.cfg:45
+#: data/core/encyclopedia/geography.cfg:38
 msgid ""
 "The Drakes once called this ocean the World Ocean. They believe it to extend "
 "in every direction from Morogor until eventually flowing into the abyss as "
@@ -1917,12 +1899,12 @@ msgstr ""
 "abissi come una immensa cascata ai confini del mondo."
 
 #. [topic]: id=morogor
-#: data/core/encyclopedia/geography.cfg:50
+#: data/core/encyclopedia/geography.cfg:43
 msgid "Morogor"
 msgstr "Morogor"
 
 #. [topic]: id=morogor
-#: data/core/encyclopedia/geography.cfg:51
+#: data/core/encyclopedia/geography.cfg:44
 msgid ""
 "Archipelago, located somewhere in the <ref dst='great_ocean'>Great Ocean</"
 "ref> east of the <ref dst='green_isle'>Green Isle</ref> and west of the <ref "
@@ -1938,7 +1920,7 @@ msgstr ""
 
 #. [topic]: id=morogor
 #. Geography of Morogor
-#: data/core/encyclopedia/geography.cfg:57
+#: data/core/encyclopedia/geography.cfg:50
 msgid ""
 "<header>Notable land features:</header>\n"
 "    • Mount Morogor: The highest active volcanic mountain in the central "
@@ -1960,12 +1942,12 @@ msgstr ""
 "dell’Arcipelago Morogor."
 
 #. [topic]: id=green_isle
-#: data/core/encyclopedia/geography.cfg:65
+#: data/core/encyclopedia/geography.cfg:58
 msgid "Green Isle"
 msgstr "Isola Verde"
 
 #. [topic]: id=green_isle
-#: data/core/encyclopedia/geography.cfg:66
+#: data/core/encyclopedia/geography.cfg:59
 msgid ""
 "A bigger island lying in the <ref dst='great_ocean'>Great Ocean</ref>, "
 "formerly home to the Islefolk and Wesfolk."
@@ -1975,7 +1957,7 @@ msgstr ""
 
 #. [topic]: id=green_isle
 #. Geography of the Green Isle
-#: data/core/encyclopedia/geography.cfg:70
+#: data/core/encyclopedia/geography.cfg:63
 msgid ""
 "<header>Notable cities:</header>\n"
 "    • Southbay: The capital of the largest Islefolk kingdom.\n"
@@ -1999,7 +1981,7 @@ msgstr ""
 
 #. [topic]: id=green_isle
 #. Geography of the Green Isle
-#: data/core/encyclopedia/geography.cfg:79
+#: data/core/encyclopedia/geography.cfg:72
 msgid ""
 "<header>Notable land features:</header>\n"
 "    • Broken Mountains: A mighty mountain range that cuts through the Green "
@@ -2021,12 +2003,12 @@ msgstr ""
 "    • Palude di Esten: piccola palude situata ad est delle Montagne Spaccate."
 
 #. [topic]: id=old_continent
-#: data/core/encyclopedia/geography.cfg:88
+#: data/core/encyclopedia/geography.cfg:81
 msgid "Old Continent"
 msgstr "Vecchio Continente"
 
 #. [topic]: id=old_continent
-#: data/core/encyclopedia/geography.cfg:89
+#: data/core/encyclopedia/geography.cfg:82
 msgid ""
 "Lies to the west of <ref dst='morogor'>Morogor</ref> and the <ref "
 "dst='green_isle'>Green Isle</ref> across the <ref dst='great_ocean'>Great "
@@ -2038,12 +2020,12 @@ msgstr ""
 "degli orchi."
 
 #. [topic]: id=great_continent
-#: data/core/encyclopedia/geography.cfg:94
+#: data/core/encyclopedia/geography.cfg:87
 msgid "Great Continent"
 msgstr "Grande Continente"
 
 #. [topic]: id=great_continent
-#: data/core/encyclopedia/geography.cfg:95
+#: data/core/encyclopedia/geography.cfg:88
 msgid ""
 "The continent on which the <ref dst='kingdom_wesnoth'>Kingdom of Wesnoth</"
 "ref> lies. Its west coast is surrounded by the <ref dst='great_ocean'>Great "
@@ -2054,12 +2036,12 @@ msgstr ""
 "dst='great_ocean'>Grande Oceano</ref>."
 
 #. [topic]: id=irdya
-#: data/core/encyclopedia/geography.cfg:100
+#: data/core/encyclopedia/geography.cfg:93
 msgid "Irdya"
 msgstr "Irdya"
 
 #. [topic]: id=irdya
-#: data/core/encyclopedia/geography.cfg:101
+#: data/core/encyclopedia/geography.cfg:94
 msgid ""
 "The name of the world in which the kingdom of <ref "
 "dst='kingdom_wesnoth'>Wesnoth</ref> is situated is ‘Irdya’. This term is, "
@@ -2073,12 +2055,12 @@ msgstr ""
 "grande mondo verde”."
 
 #. [topic]: id=kingdom_wesnoth
-#: data/core/encyclopedia/geography.cfg:106
+#: data/core/encyclopedia/geography.cfg:99
 msgid "Kingdom of Wesnoth"
 msgstr "Regno di Wesnoth"
 
 #. [topic]: id=kingdom_wesnoth
-#: data/core/encyclopedia/geography.cfg:107
+#: data/core/encyclopedia/geography.cfg:100
 msgid ""
 "The Kingdom of Wesnoth is located in the north-central portion of the <ref "
 "dst='great_continent'>Great Continent</ref>. Most of the mainline campaigns "
@@ -2111,7 +2093,7 @@ msgstr ""
 
 #. [topic]: id=kingdom_wesnoth
 #. Geography of Wesnoth
-#: data/core/encyclopedia/geography.cfg:113
+#: data/core/encyclopedia/geography.cfg:106
 msgid ""
 "<header>Notable cities:</header>\n"
 "    • Weldyn: The capital of Wesnoth.\n"
@@ -2154,7 +2136,7 @@ msgstr ""
 
 #. [topic]: id=kingdom_wesnoth
 #. Geography of Wesnoth
-#: data/core/encyclopedia/geography.cfg:127
+#: data/core/encyclopedia/geography.cfg:120
 msgid ""
 "<header>Notable land features:</header>\n"
 "    • Gryphon Mountain: Home of the fabled Gryphons.\n"
@@ -2219,12 +2201,12 @@ msgstr ""
 "nord-ovest dei Boschi Grigi."
 
 #. [topic]: id=elensefar
-#: data/core/encyclopedia/geography.cfg:144
+#: data/core/encyclopedia/geography.cfg:137
 msgid "Elensefar"
 msgstr "Elensefar"
 
 #. [topic]: id=elensefar
-#: data/core/encyclopedia/geography.cfg:145
+#: data/core/encyclopedia/geography.cfg:138
 msgid ""
 "Elensefar is at times a province of <ref dst='kingdom_wesnoth'>Wesnoth</"
 "ref>, at times an independent country, and at times in a treaty federation "
@@ -2243,7 +2225,7 @@ msgstr ""
 
 #. [topic]: id=elensefar
 #. Geography of Elensefar area
-#: data/core/encyclopedia/geography.cfg:149
+#: data/core/encyclopedia/geography.cfg:142
 msgid ""
 "<header>Notable cities:</header>\n"
 "    • Elensefar: The capital, located on an island in the Great River delta, "
@@ -2258,7 +2240,7 @@ msgstr ""
 "    • Carcyn: città al confine tra Wesnoth ed Elensefar, contesa con Wesnoth."
 
 #. [topic]: id=elensefar
-#: data/core/encyclopedia/geography.cfg:154
+#: data/core/encyclopedia/geography.cfg:147
 msgid ""
 "<header>Notable land features:</header>\n"
 "    • <ref dst='great_river'>Great River</ref>: It is very wide at this "
@@ -2269,12 +2251,12 @@ msgstr ""
 "largo, tanto che solo le navi possono attraversarlo."
 
 #. [topic]: id=northlands
-#: data/core/encyclopedia/geography.cfg:160
+#: data/core/encyclopedia/geography.cfg:153
 msgid "Northlands"
 msgstr "Terre del Nord"
 
 #. [topic]: id=northlands
-#: data/core/encyclopedia/geography.cfg:161
+#: data/core/encyclopedia/geography.cfg:154
 msgid ""
 "The Northlands are filled with unstable clans in endless conflict. It is an "
 "unlawful and perilous place plagued by its cold, icy terrain and constant "
@@ -2307,7 +2289,7 @@ msgstr ""
 
 #. [topic]: id=northlands
 #. Geography of the Northlands
-#: data/core/encyclopedia/geography.cfg:167
+#: data/core/encyclopedia/geography.cfg:160
 msgid ""
 "<header>Notable cities:</header>\n"
 "    • Glamdrol: An Orcish tribal capital.\n"
@@ -2338,7 +2320,7 @@ msgstr ""
 
 #. [topic]: id=northlands
 #. Geography of the Northlands
-#: data/core/encyclopedia/geography.cfg:176
+#: data/core/encyclopedia/geography.cfg:169
 msgid ""
 "<header>Notable land features:</header>\n"
 "    • <ref dst='heart_mountains'>Heart Mountains</ref>: A virtually "
@@ -2386,12 +2368,12 @@ msgstr ""
 "si trova da qualche parte ad est delle Terre del Nord."
 
 #. [topic]: id=southwest_elven_lands
-#: data/core/encyclopedia/geography.cfg:189
+#: data/core/encyclopedia/geography.cfg:182
 msgid "Southwest Elven Lands"
 msgstr "Terre elfiche sud-occidentali"
 
 #. [topic]: id=southwest_elven_lands
-#: data/core/encyclopedia/geography.cfg:190
+#: data/core/encyclopedia/geography.cfg:183
 msgid ""
 "The Wood Elves are separate from those of the north, and have only "
 "intermittent relations with them and most other countries. Its borders are "
@@ -2407,7 +2389,7 @@ msgstr ""
 
 #. [topic]: id=southwest_elven_lands
 #. Geography of the Southwest
-#: data/core/encyclopedia/geography.cfg:194
+#: data/core/encyclopedia/geography.cfg:187
 msgid ""
 "<header>Notable land features:</header>\n"
 "    • Aethenwood: The largest southern forest, home to reclusive <ref "
@@ -2433,14 +2415,14 @@ msgstr ""
 "avventura raramente ne esce vivo."
 
 #. [topic]: id=heart_mountains
-#: data/core/encyclopedia/geography.cfg:203
+#: data/core/encyclopedia/geography.cfg:196
 msgid "Heart Mountains"
 msgstr "Montagne Centrali"
 
 #. [topic]: id=heart_mountains
 #. The Whitefang Clan’s primary description is in DiD
 #. Wesnoth 1.9.4 added Haggid-Dargor to the encyclopedia, but it has no other mention in mainline
-#: data/core/encyclopedia/geography.cfg:206
+#: data/core/encyclopedia/geography.cfg:199
 msgid ""
 "A virtually impassable barrier between the <ref dst='arkan_thoria'>river</"
 "ref> country and the <ref dst='far_north'>Northern Plains</ref>. The local "
@@ -2456,7 +2438,7 @@ msgstr ""
 "loro distintivo aspetto."
 
 #. [topic]: id=far_north
-#: data/core/encyclopedia/geography.cfg:211
+#: data/core/encyclopedia/geography.cfg:204
 msgid "Far North"
 msgstr "Remoto Nord"
 
@@ -2465,7 +2447,7 @@ msgstr "Remoto Nord"
 # tolte le Steppe selvagge ("Wild Steppe");
 # aggiunte "Frosty Wastes" e "Barren Plains"
 #. [topic]: id=far_north
-#: data/core/encyclopedia/geography.cfg:212
+#: data/core/encyclopedia/geography.cfg:205
 msgid ""
 "Cold, harsh, and inaccessible, the Far North is the ancestral home of the "
 "Orcish Clannate. It lies north of the <ref dst='heart_mountains'>Heart "
@@ -2489,7 +2471,7 @@ msgstr ""
 
 #. [topic]: id=far_north
 #. Geography of the Far North
-#: data/core/encyclopedia/geography.cfg:216
+#: data/core/encyclopedia/geography.cfg:209
 msgid ""
 "<header>Notable cities:</header>\n"
 "    • Barag Gor: A city home to the Orcish Council.\n"
@@ -2528,7 +2510,7 @@ msgstr ""
 
 #. [topic]: id=far_north
 #. Geography of the Far North
-#: data/core/encyclopedia/geography.cfg:232
+#: data/core/encyclopedia/geography.cfg:225
 msgid ""
 "<header>Notable land features:</header>\n"
 "    • Desert of Death: An unusually dry desert in the Far North filled with "
@@ -2585,12 +2567,12 @@ msgstr ""
 "    • Piane Aride: tundra nevosa, vasta e scarsamente popolata."
 
 #. [topic]: id=far_south
-#: data/core/encyclopedia/geography.cfg:249
+#: data/core/encyclopedia/geography.cfg:242
 msgid "Far South"
 msgstr "Remoto sud"
 
 #. [topic]: id=far_south
-#: data/core/encyclopedia/geography.cfg:250
+#: data/core/encyclopedia/geography.cfg:243
 msgid ""
 "A vast region south of Kerlath home to many mysterious races, including jinn "
 "and wyverns. Very little is known for certain about what lies here."
@@ -2600,7 +2582,7 @@ msgstr ""
 
 #. [topic]: id=far_south
 #. Geography of the Far South
-#: data/core/encyclopedia/geography.cfg:254
+#: data/core/encyclopedia/geography.cfg:247
 msgid ""
 "<header>Notable land features:</header>\n"
 "    • Mountains of Peril: A tall and deadly mountain range in the Far South "
@@ -3346,8 +3328,7 @@ msgid ""
 "immediately surrounding it, and any enemy unit entering those hexes "
 "immediately ends its movement. Learning how to use zones of control to your "
 "advantage is an important part of Wesnoth, as only <ref "
-"dst='ability_skirmisherskirmisher'>skirmishers</ref> can ignore zones of "
-"control."
+"dst='ability_skirmisher'>skirmishers</ref> can ignore zones of control."
 msgstr ""
 "Un’altra cosa da tenere a mente durante gli spostamenti sono le <i>zone di "
 "controllo</i>. Ad eccezione di quelle di livello 0, ogni unità genera una "
@@ -4257,15 +4238,14 @@ msgstr ""
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:501
 msgid ""
-"Finally, units with the <ref "
-"dst='ability_illuminationilluminates'>illuminates</ref> ability and terrain "
-"features such as <ref dst='terrain_lava'>lava</ref> change the time of day "
-"bonus around them."
+"Finally, units with the <ref dst='ability_illumination'>illuminates</ref> "
+"ability and terrain features such as <ref dst='terrain_lava'>lava</ref> "
+"change the time of day bonus around them."
 msgstr ""
-"Infine, unità con l’abilita <ref "
-"dst='ability_illuminationilluminates'>illumina</ref> and alcuni tipo di "
-"terreno con caratteristiche particolari, tipo <ref dst='terrain_lava'>lava</"
-"ref> cambiano intorno a loro i bonus legati al periodo della giornata."
+"Infine, unità con l’abilita <ref dst='ability_illumination'>illumina</ref> "
+"and alcuni tipo di terreno con caratteristiche particolari, tipo <ref "
+"dst='terrain_lava'>lava</ref> cambiano intorno a loro i bonus legati al "
+"periodo della giornata."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:508
@@ -4306,39 +4286,39 @@ msgstr ""
 #. [topic]: id=healing
 #: data/core/help.cfg:513
 msgid ""
-"• <ref dst='ability_regeneratesregenerates'>Regeneration</ref>: Certain "
-"units (such as trolls) will automatically heal 8HP every turn. If the unit "
-"is poisoned, the poison will be cured instead."
+"• <ref dst='ability_regenerates_8'>Regeneration</ref>: Certain units (such "
+"as trolls) will automatically heal 8HP every turn. If the unit is poisoned, "
+"the poison will be cured instead."
 msgstr ""
-"• <ref dst='ability_regeneratesregenerates'>Rigenerazione</ref>: alcune "
-"unità (come i troll) recuperano automaticamente 8 PF ad ogni turno. Se "
-"l’unità è avvelenata, verrà invece eliminato il veleno."
+"• <ref dst='ability_regenerates_8'>Rigenerazione</ref>: alcune unità (come i "
+"troll) recuperano automaticamente 8 PF ad ogni turno. Se l’unità è "
+"avvelenata, verrà invece eliminato il veleno."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:514
 msgid ""
-"• <b>Healing units</b>: Units with the <ref dst='ability_healingheals "
-"+4'>Heals</ref> ability will heal each allied adjacent unit, usually <ref "
-"dst='ability_healingheals +4'>4HP</ref> or <ref dst='ability_healingheals "
-"+8'>8HP</ref> per turn, or prevent Poison from causing that unit damage."
+"• <b>Healing units</b>: Units with the <ref dst='ability_heals_4'>Heals</"
+"ref> ability will heal each allied adjacent unit, usually <ref "
+"dst='ability_heals_4'>4HP</ref> or <ref dst='ability_heals_8'>8HP</ref> per "
+"turn, or prevent Poison from causing that unit damage."
 msgstr ""
 "• <b>Unità guaritrici</b>: le unità con l’abilità <ref "
-"dst='ability_healingheals +4'>guarire</ref> guariranno tutte le unità "
-"alleate adiacenti, in genere di <ref dst='ability_healingheals +4'>4PF</ref> "
-"o <ref dst='ability_healingheals +8'>8PF</ref> per turno, oppure "
-"contrasteranno i danni causati dal veleno su tali unità."
+"dst='ability_heals_4'>guarire</ref> guariranno tutte le unità alleate "
+"adiacenti, in genere di <ref dst='ability_heals_4'>4PF</ref> o <ref "
+"dst='ability_heals_8'>8PF</ref> per turno, oppure contrasteranno i danni "
+"causati dal veleno su tali unità."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:515
 msgid ""
-"• <b>Curing units</b>: Units with the <ref dst='ability_curingcures'>cures</"
-"ref> ability will cure Poison in all allied adjacent units (in preference to "
+"• <b>Curing units</b>: Units with the <ref dst='ability_cures'>cures</ref> "
+"ability will cure Poison in all allied adjacent units (in preference to "
 "healing, if it has that ability as well)."
 msgstr ""
 "• <b>Unità curatrici</b>: le unità con l’abilità <ref "
-"dst='ability_curingcures'>cura</ref> cureranno dal veleno tutte le unità "
-"alleate adiacenti (con priorità rispetto alla guarigione, se l’unità "
-"possiede anche quest’abilità)."
+"dst='ability_cures'>cura</ref> guariranno dal veleno tutte le unità alleate "
+"adiacenti (con priorità rispetto alla guarigione, se l’unità possiede anche "
+"quest’abilità)."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:516
@@ -4594,8 +4574,8 @@ msgid ""
 msgstr ""
 "Puoi vedere che tipo di comportamento ha il terreno misto muovendo il mouse "
 "sopra il suo esagono e visualizzando la <i>descrizione terreno</i> "
-"disponibile premendo la scorciatoia da tastiera o cliccando col bottone "
-"destro del mouse e selezionando la voce opportuna nel menù contestuale."
+"disponibile premendo la scorciatoia da tastiera o cliccando col tasto destro "
+"del mouse e selezionando la voce opportuna nel menù contestuale."
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:588
@@ -5173,50 +5153,13 @@ msgid "Makes the selected unit level up N times. Example: :unit advances=2"
 msgstr ""
 "Fa avanzare di N livelli l’unità selezionata. Esempio: :unit advances=2"
 
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:12
-msgid ""
-"Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
-"\n"
-"A unit cared for by this healer may heal up to 4 HP per turn, or stop poison "
-"from taking effect for that turn.\n"
-"This ability will not cure an affected unit of poison, however, only delay "
-"its effect."
-msgstr ""
-"Permette all’unità di guarire le unità alleate adiacenti all’inizio del "
-"turno.\n"
-"\n"
-"L’unità di cui si occupa il guaritore potrà recuperare fino a 4 PF per "
-"turno, oppure vedrà annullati per quel turno gli effetti del veleno.\n"
-"Questa abilità non permette di curare un’unità avvelenata, ma soltanto di "
-"ritardare gli effetti del veleno."
-
-#. [heals]: id=healing
-#: data/core/macros/abilities.cfg:39
-msgid ""
-"This unit combines herbal remedies with magic to heal units more quickly "
-"than is normally possible on the battlefield.\n"
-"\n"
-"A unit cared for by this healer may heal up to 8 HP per turn, or stop poison "
-"from taking effect for that turn.\n"
-"This ability will not cure an affected unit of poison, however, only delay "
-"its effect."
-msgstr ""
-"Quest’unità combina rimedi a base di erbe con la magia per guarire le unità "
-"più velocemente di quanto sia normalmente possibile sul campo di battaglia.\n"
-"\n"
-"L’unità di cui si occupa il guaritore potrà recuperare fino a 8 PF per turno "
-"oppure vedrà annullati per quel turno gli effetti del veleno.\n"
-"Questa abilità non permette di curare un’unità avvelenata, ma di soltanto "
-"ritardare gli effetti del veleno."
-
 #. [heals]: id=curing
-#: data/core/macros/abilities.cfg:64
+#: data/core/macros/abilities.cfg:67
 msgid "female^cures"
 msgstr "cura"
 
 #. [heals]: id=curing
-#: data/core/macros/abilities.cfg:65
+#: data/core/macros/abilities.cfg:68
 msgid ""
 "A curer can cure a unit of poison, although that unit will receive no "
 "additional healing on the turn it is cured of the poison."
@@ -5225,12 +5168,12 @@ msgstr ""
 "guarita ulteriormente nello stesso turno in cui viene curata dal veleno."
 
 #. [regenerate]: id=regenerates
-#: data/core/macros/abilities.cfg:100
+#: data/core/macros/abilities.cfg:103
 msgid "female^regenerates"
 msgstr "rigenerazione"
 
 #. [regenerate]: id=regenerates
-#: data/core/macros/abilities.cfg:101
+#: data/core/macros/abilities.cfg:104
 msgid ""
 "The unit will heal itself 8 HP per turn. If it is poisoned, it will remove "
 "the poison instead of healing."
@@ -5239,17 +5182,17 @@ msgstr ""
 "il veleno anziché curarsi."
 
 #. [regenerate]: id=regenerates
-#: data/core/macros/abilities.cfg:114
+#: data/core/macros/abilities.cfg:117
 msgid "regenerates +4"
 msgstr "rigenera +4"
 
 #. [regenerate]: id=regenerates
-#: data/core/macros/abilities.cfg:115
+#: data/core/macros/abilities.cfg:118
 msgid "female^regenerates +4"
 msgstr "rigenera +4"
 
 #. [regenerate]: id=regenerates
-#: data/core/macros/abilities.cfg:116
+#: data/core/macros/abilities.cfg:119
 msgid ""
 "The unit will heal itself 4 HP per turn. If it is poisoned, it will remove "
 "the poison instead of healing."
@@ -5258,7 +5201,7 @@ msgstr ""
 "il veleno anziché curarsi."
 
 #. [regenerate]: id=regenerates
-#: data/core/macros/abilities.cfg:117
+#: data/core/macros/abilities.cfg:120
 msgid ""
 "This unit heals itself each turn, though not as much as if stationed in a "
 "village."
@@ -5267,7 +5210,7 @@ msgstr ""
 "trovasse sempre in un villaggio."
 
 #. [resistance]: id=steadfast
-#: data/core/macros/abilities.cfg:138
+#: data/core/macros/abilities.cfg:141
 msgid ""
 "This unit’s resistances are doubled, up to a maximum of 50%, when defending. "
 "Vulnerabilities are not affected."
@@ -5276,17 +5219,17 @@ msgstr ""
 "l’unità è in fase difensiva. Le vulnerabilità non vengono modificate."
 
 #. [chance_to_hit]: id=diversion
-#: data/core/macros/abilities.cfg:151
+#: data/core/macros/abilities.cfg:154
 msgid "diversion"
 msgstr "distrazione"
 
 #. [chance_to_hit]: id=diversion
-#: data/core/macros/abilities.cfg:152
+#: data/core/macros/abilities.cfg:155
 msgid "female^diversion"
 msgstr "distrazione"
 
 #. [chance_to_hit]: id=diversion
-#: data/core/macros/abilities.cfg:153
+#: data/core/macros/abilities.cfg:156
 msgid ""
 "If there is an enemy of the target on the opposite side of the target, this "
 "unit diverts the target’s attention and reduces its chance to hit by 20%."
@@ -5296,7 +5239,7 @@ msgstr ""
 "colpire del 20%."
 
 #. [chance_to_hit]: id=diversion
-#: data/core/macros/abilities.cfg:154
+#: data/core/macros/abilities.cfg:157
 msgid ""
 "If there is an enemy of the target on the opposite side of the target while "
 "attacking it, this unit diverts the target’s attention and reduces its "
@@ -5307,26 +5250,26 @@ msgstr ""
 "possibilità che la colpisca."
 
 #. [chance_to_hit]: id=diversion
-#: data/core/macros/abilities.cfg:155
+#: data/core/macros/abilities.cfg:158
 msgid "accuracy:"
 msgstr "accuratezza:"
 
 #. [chance_to_hit]: id=diversion
-#: data/core/macros/abilities.cfg:156
+#: data/core/macros/abilities.cfg:159
 msgid ""
 "A nearby enemy’s <i>diversion</i> ability is reducing this attack’s accuracy "
 "by 20%."
 msgstr ""
-"L'abilità <i>distrazione</i> di un nemico vicino sta riducendo la precisione "
+"L’abilità <i>distrazione</i> di un nemico vicino sta riducendo la precisione "
 "di questo attacco del 20%."
 
 #. [leadership]: id=leadership
-#: data/core/macros/abilities.cfg:207
+#: data/core/macros/abilities.cfg:210
 msgid "female^leadership"
 msgstr "comando"
 
 #. [leadership]: id=leadership
-#: data/core/macros/abilities.cfg:208
+#: data/core/macros/abilities.cfg:211
 msgid ""
 "This unit can lead other troops in battle.\n"
 "\n"
@@ -5339,12 +5282,12 @@ msgstr ""
 "bonus danni del 25% per ogni differenza di livello."
 
 #. [skirmisher]: id=skirmisher
-#: data/core/macros/abilities.cfg:227
+#: data/core/macros/abilities.cfg:230
 msgid "female^skirmisher"
 msgstr "incursore"
 
 #. [skirmisher]: id=skirmisher
-#: data/core/macros/abilities.cfg:228
+#: data/core/macros/abilities.cfg:231
 msgid ""
 "This unit is skilled in moving past enemies quickly, and ignores all enemy "
 "Zones of Control."
@@ -5353,12 +5296,12 @@ msgstr ""
 "tutte le zone di controllo nemiche."
 
 #. [illuminates]: id=illumination
-#: data/core/macros/abilities.cfg:244
+#: data/core/macros/abilities.cfg:247
 msgid "illuminates"
 msgstr "illumina"
 
 #. [illuminates]: id=illumination
-#: data/core/macros/abilities.cfg:246
+#: data/core/macros/abilities.cfg:249
 msgid ""
 "This unit illuminates the surrounding area, making lawful units fight "
 "better, and chaotic units fight worse.\n"
@@ -5373,12 +5316,12 @@ msgstr ""
 "tramonto come di giorno."
 
 #. [teleport]: id=teleport
-#: data/core/macros/abilities.cfg:261
+#: data/core/macros/abilities.cfg:264
 msgid "female^teleport"
 msgstr "teletrasporto"
 
 #. [teleport]: id=teleport
-#: data/core/macros/abilities.cfg:262
+#: data/core/macros/abilities.cfg:265
 msgid ""
 "This unit may teleport between any two empty villages owned by its side "
 "using one of its moves."
@@ -5387,12 +5330,12 @@ msgstr ""
 "dalla propria squadra, usando uno dei suoi punti movimento."
 
 #. [hides]: id=ambush
-#: data/core/macros/abilities.cfg:293
+#: data/core/macros/abilities.cfg:296
 msgid "female^ambush"
 msgstr "imboscata"
 
 #. [hides]: id=ambush
-#: data/core/macros/abilities.cfg:294
+#: data/core/macros/abilities.cfg:297
 msgid ""
 "This unit can hide in forest, and remain undetected by its enemies.\n"
 "\n"
@@ -5409,17 +5352,17 @@ msgstr ""
 "movimento rimanenti."
 
 #. [hides]: id=burrow
-#: data/core/macros/abilities.cfg:313
+#: data/core/macros/abilities.cfg:316
 msgid "burrow"
 msgstr "nascosto"
 
 #. [hides]: id=burrow
-#: data/core/macros/abilities.cfg:314
+#: data/core/macros/abilities.cfg:317
 msgid "female^burrow"
 msgstr "nascosta"
 
 #. [hides]: id=burrow
-#: data/core/macros/abilities.cfg:315
+#: data/core/macros/abilities.cfg:318
 msgid ""
 "This unit can hide in forest or sand if it is resting (has not moved for a "
 "turn), and remain undetected by its enemies.\n"
@@ -5438,7 +5381,7 @@ msgstr ""
 "immediatamente tutti i punti movimento rimanenti."
 
 #. [hides]: id=burrow
-#: data/core/macros/abilities.cfg:319
+#: data/core/macros/abilities.cfg:322
 msgid ""
 "This unit can burrow under loose dirt, sand, or leaves, concealing itself if "
 "it does not change location."
@@ -5447,7 +5390,12 @@ msgstr ""
 "occultata a patto che non si muova."
 
 #. [hides]: id=nightstalk
-#: data/core/macros/abilities.cfg:337
+#: data/core/macros/abilities.cfg:339
+msgid "female^nightstalk"
+msgstr "agguato notturno"
+
+#. [hides]: id=nightstalk
+#: data/core/macros/abilities.cfg:340
 msgid ""
 "The unit becomes invisible during night.\n"
 "\n"
@@ -5462,12 +5410,12 @@ msgstr ""
 "quest’unità perde immediatamente tutti i punti movimento rimanenti."
 
 #. [hides]: id=concealment
-#: data/core/macros/abilities.cfg:356
+#: data/core/macros/abilities.cfg:359
 msgid "female^concealment"
 msgstr "occultamento"
 
 #. [hides]: id=concealment
-#: data/core/macros/abilities.cfg:357
+#: data/core/macros/abilities.cfg:360
 msgid ""
 "This unit can hide in villages, and remain undetected by its enemies, except "
 "by those standing next to it.\n"
@@ -5485,17 +5433,17 @@ msgstr ""
 "rimanenti."
 
 #. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:375
+#: data/core/macros/abilities.cfg:378
 msgid "submerge"
 msgstr "immersione"
 
 #. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:376
+#: data/core/macros/abilities.cfg:379
 msgid "female^submerge"
 msgstr "immersione"
 
 #. [hides]: id=submerge
-#: data/core/macros/abilities.cfg:377
+#: data/core/macros/abilities.cfg:380
 msgid ""
 "This unit can hide in deep water, and remain undetected by its enemies.\n"
 "\n"
@@ -5512,17 +5460,17 @@ msgstr ""
 "rimanenti."
 
 #. [hides]: id=swamp_lurk
-#: data/core/macros/abilities.cfg:395
+#: data/core/macros/abilities.cfg:398
 msgid "swamp lurk"
 msgstr "agguato palustre"
 
 #. [hides]: id=swamp_lurk
-#: data/core/macros/abilities.cfg:396
+#: data/core/macros/abilities.cfg:399
 msgid "female^swamp lurk"
 msgstr "agguato palustre"
 
 #. [hides]: id=swamp_lurk
-#: data/core/macros/abilities.cfg:397
+#: data/core/macros/abilities.cfg:400
 msgid ""
 "This unit can hide in swamp, and remain undetected by its enemies.\n"
 "\n"
@@ -5539,12 +5487,12 @@ msgstr ""
 "rimanenti."
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:416
+#: data/core/macros/abilities.cfg:419
 msgid "female^feeding"
 msgstr "nutrimento"
 
 #. [dummy]: id=feeding
-#: data/core/macros/abilities.cfg:417
+#: data/core/macros/abilities.cfg:420
 msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a unit, "
 "except units that are immune to plague."
@@ -6484,29 +6432,29 @@ msgstr ""
 "ponte, un’oasi o un villaggio/castello acquatico."
 
 #. [disable]: id=unwieldy
-#: data/core/macros/weapon_specials.cfg:7
+#: data/core/macros/weapon_specials.cfg:10
 msgid "unwieldy"
 msgstr "ingombrante"
 
 #. [disable]: id=unwieldy
-#: data/core/macros/weapon_specials.cfg:8
+#: data/core/macros/weapon_specials.cfg:11
 msgid "This attack can only be used offensively."
 msgstr "Questo attacco può essere utilizzato soltanto offensivamente."
 
 #. [disable]: id=unwieldy
-#: data/core/macros/weapon_specials.cfg:10
+#: data/core/macros/weapon_specials.cfg:13
 msgid "This unit has an unwieldy weapon, which cannot be used defensively."
 msgstr ""
 "Questa unità utilizza un’arma ingombrante che non può essere utilizzata come "
 "difesa."
 
 #. [berserk]: id=berserk
-#: data/core/macros/weapon_specials.cfg:19
+#: data/core/macros/weapon_specials.cfg:22
 msgid "berserk"
 msgstr "furia"
 
 #. [berserk]: id=berserk
-#: data/core/macros/weapon_specials.cfg:20
+#: data/core/macros/weapon_specials.cfg:23
 msgid ""
 "Whether used offensively or defensively, this attack presses the engagement "
 "until one of the combatants is slain, or 30 rounds of attacks have occurred."
@@ -6516,7 +6464,7 @@ msgstr ""
 "al termine della trentesima serie di attacchi."
 
 #. [damage]: id=backstab
-#: data/core/macros/weapon_specials.cfg:32
+#: data/core/macros/weapon_specials.cfg:35
 msgid ""
 "When used offensively, this attack deals double damage if there is an enemy "
 "of the target on the opposite side of the target, and that unit is not "
@@ -6528,12 +6476,12 @@ msgstr ""
 "comunque paralizzata)."
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
-#: data/core/macros/weapon_specials.cfg:53
+#: data/core/macros/weapon_specials.cfg:56
 msgid "plague ($type)"
 msgstr "contagio ($type)"
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
-#: data/core/macros/weapon_specials.cfg:54
+#: data/core/macros/weapon_specials.cfg:57
 msgid ""
 "When a unit is killed by a Plague attack, that unit is replaced with a $type "
 "on the same side as the unit with the Plague attack. This doesn’t work on "
@@ -6544,7 +6492,7 @@ msgstr ""
 "Non funziona sui non-morti e sulle unità nei villaggi."
 
 #. [slow]: id=slow
-#: data/core/macros/weapon_specials.cfg:81
+#: data/core/macros/weapon_specials.cfg:84
 msgid ""
 "This attack slows the target until it ends a turn. Slow halves the damage "
 "caused by attacks and the movement cost for a slowed unit is doubled. A unit "
@@ -6558,12 +6506,12 @@ msgstr ""
 "lumaca nella barra laterale."
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/weapon_specials.cfg:91
+#: data/core/macros/weapon_specials.cfg:94
 msgid "petrifies"
 msgstr "pietrifica"
 
 #. [petrifies]: id=petrifies
-#: data/core/macros/weapon_specials.cfg:92
+#: data/core/macros/weapon_specials.cfg:95
 msgid ""
 "This attack petrifies the target, turning it to stone. Units that have been "
 "petrified may not move or attack."
@@ -6572,48 +6520,39 @@ msgstr ""
 "possono muoversi né attaccare."
 
 #. [chance_to_hit]: id=marksman
-#: data/core/macros/weapon_specials.cfg:103
+#: data/core/macros/weapon_specials.cfg:106
 msgid ""
 "When used offensively, this attack always has at least a 60% chance to hit."
 msgstr ""
 "Usato in fase offensiva, questo attacco ha sempre una probabilità di colpire "
 "pari almeno al 60%."
 
-#. [dummy]: id=naval
-#: data/core/macros/weapon_specials.cfg:129
-msgid "naval"
-msgstr "rostro"
+#. [chance_to_hit]: id=magical
+#: data/core/macros/weapon_specials.cfg:119
+msgid "magical"
+msgstr "magico"
 
-#. [dummy]: id=naval
-#: data/core/macros/weapon_specials.cfg:130
+#. [chance_to_hit]: id=magical
+#: data/core/macros/weapon_specials.cfg:120
 msgid ""
-"This attack can only be used when both the attacker and the defender are in "
-"water or swamp."
+"This attack always has a 70% chance to hit regardless of the defensive "
+"ability of the unit being attacked."
 msgstr ""
-"Questo attacco può essere usato soltanto quando sia l’attaccante che il "
-"difensore si trovano in acqua o in una palude."
-
-#. [dummy]: id=naval
-#: data/core/macros/weapon_specials.cfg:131
-msgid ""
-"This unit has an attack that can only be used when both the attacker and the "
-"defender are in water or swamp."
-msgstr ""
-"Questa unità possiede un attacco che può essere usato soltanto quando sia "
-"l’attaccante che il difensore si trovano in acqua o in una palude."
+"Questo attacco ha sempre una probabilità di colpire del 70%, a prescindere "
+"dalle capacità difensive dell’unità attaccata."
 
 #. [chance_to_hit]: id=honed
-#: data/core/macros/weapon_specials.cfg:158
+#: data/core/macros/weapon_specials.cfg:132
 msgid "honed"
 msgstr "affinato"
 
 #. [chance_to_hit]: id=honed
-#: data/core/macros/weapon_specials.cfg:159
+#: data/core/macros/weapon_specials.cfg:133
 msgid "This attack is 10% more accurate than other attacks."
 msgstr "Questo attacco è più preciso del 10% rispetto agli altri."
 
 #. [chance_to_hit]: id=honed
-#: data/core/macros/weapon_specials.cfg:160
+#: data/core/macros/weapon_specials.cfg:134
 msgid ""
 "This unit’s “honed” attack is slightly more accurate than other attacks."
 msgstr ""
@@ -6621,12 +6560,12 @@ msgstr ""
 "agli altri attacchi."
 
 #. [swarm]: id=swarm
-#: data/core/macros/weapon_specials.cfg:171
+#: data/core/macros/weapon_specials.cfg:145
 msgid "swarm"
 msgstr "sciame"
 
 #. [swarm]: id=swarm
-#: data/core/macros/weapon_specials.cfg:172
+#: data/core/macros/weapon_specials.cfg:146
 msgid ""
 "The number of strikes of this attack decreases when the unit is wounded. The "
 "number of strikes is proportional to the percentage of its of maximum HP the "
@@ -6639,12 +6578,12 @@ msgstr ""
 "PF massimi otterrà 3/4 del numero di colpi totali."
 
 #. [damage]: id=charge
-#: data/core/macros/weapon_specials.cfg:182
+#: data/core/macros/weapon_specials.cfg:156
 msgid "charge"
 msgstr "carica"
 
 #. [damage]: id=charge
-#: data/core/macros/weapon_specials.cfg:183
+#: data/core/macros/weapon_specials.cfg:157
 msgid ""
 "When used offensively, this attack deals double damage to the target. It "
 "also causes this unit to take double damage from the target’s counterattack."
@@ -6654,17 +6593,17 @@ msgstr ""
 "contrattacco nemico."
 
 #. [damage]: id=guard
-#: data/core/macros/weapon_specials.cfg:196
+#: data/core/macros/weapon_specials.cfg:170
 msgid "guard"
 msgstr "guardia"
 
 #. [damage]: id=guard
-#: data/core/macros/weapon_specials.cfg:197
+#: data/core/macros/weapon_specials.cfg:171
 msgid "This attack blocks half of the damage from its target’s strikes."
 msgstr "Questo attacco dimezza il danno dei colpi del bersaglio."
 
 #. [damage]: id=guard
-#: data/core/macros/weapon_specials.cfg:198
+#: data/core/macros/weapon_specials.cfg:172
 msgid ""
 "This unit’s guarding attack can halve incoming damage, but only when used in "
 "combat."
@@ -6673,7 +6612,7 @@ msgstr ""
 "potenziali in arrivo, ma soltanto se usata in combattimento."
 
 #. [drains]: id=drains
-#: data/core/macros/weapon_specials.cfg:210
+#: data/core/macros/weapon_specials.cfg:184
 msgid ""
 "This unit drains health from living units, healing itself for half the "
 "amount of damage it deals (rounded down)."
@@ -6683,12 +6622,12 @@ msgstr ""
 "difetto)."
 
 #. [firststrike]: id=firststrike
-#: data/core/macros/weapon_specials.cfg:220
+#: data/core/macros/weapon_specials.cfg:194
 msgid "first strike"
 msgstr "attacco improvviso"
 
 #. [firststrike]: id=firststrike
-#: data/core/macros/weapon_specials.cfg:221
+#: data/core/macros/weapon_specials.cfg:195
 msgid ""
 "This unit always strikes first with this attack, even if they are defending."
 msgstr ""
@@ -6696,7 +6635,7 @@ msgstr ""
 "fase difensiva."
 
 #. [poison]: id=poison
-#: data/core/macros/weapon_specials.cfg:232
+#: data/core/macros/weapon_specials.cfg:206
 msgid ""
 "This attack poisons living targets. Poisoned units lose 8 HP every turn "
 "until they are cured or are reduced to 1 HP. Poison cannot, of itself, kill "
@@ -6707,12 +6646,12 @@ msgstr ""
 "veleno non può uccidere da solo un’unità."
 
 #. [stun]: id=stun
-#: data/core/macros/weapon_specials.cfg:242
+#: data/core/macros/weapon_specials.cfg:216
 msgid "stun"
 msgstr "stordimento"
 
 #. [stun]: id=stun
-#: data/core/macros/weapon_specials.cfg:243
+#: data/core/macros/weapon_specials.cfg:217
 msgid ""
 "This attack hits so hard that the opponent is dazed and can no longer "
 "enforce a zone of control. The effect wears off on the opponent’s next turn."
@@ -6722,7 +6661,7 @@ msgstr ""
 "al turno successivo del bersaglio."
 
 #. [stun]: id=stun
-#: data/core/macros/weapon_specials.cfg:244
+#: data/core/macros/weapon_specials.cfg:218
 msgid ""
 "This unit is able to stun its enemies, disrupting their zones of control."
 msgstr ""
@@ -6730,12 +6669,12 @@ msgstr ""
 "controllo."
 
 #. [damage_type]: id=arcane_damage
-#: data/core/macros/weapon_specials.cfg:253
+#: data/core/macros/weapon_specials.cfg:227
 msgid "arcane"
 msgstr "arcano"
 
 #. [damage_type]: id=arcane_damage
-#: data/core/macros/weapon_specials.cfg:254
+#: data/core/macros/weapon_specials.cfg:228
 msgid ""
 "This attack combines the arcane type with the type of weapon used so that "
 "resistance to the arcane type does not penalize the user."
@@ -6745,7 +6684,7 @@ msgstr ""
 "l’utilizzatore."
 
 #. [damage_type]: id=arcane_damage
-#: data/core/macros/weapon_specials.cfg:255
+#: data/core/macros/weapon_specials.cfg:229
 msgid ""
 "This unit can use the arcane type when the opponent is particularly "
 "sensitive to it in relation to the weapon on which it is applied."
@@ -6843,22 +6782,22 @@ msgstr ""
 "ma alcuni grandi felini sono considerati come mostri terrificanti."
 
 #. [race]: id=drake
-#: data/core/units.cfg:61
+#: data/core/units.cfg:59
 msgid "race^Drake"
 msgstr "Drago"
 
 #. [race]: id=drake
-#: data/core/units.cfg:62
+#: data/core/units.cfg:60
 msgid "race+female^Drake"
 msgstr "Dragonessa"
 
 #. [race]: id=drake
-#: data/core/units.cfg:63
+#: data/core/units.cfg:61
 msgid "race^Drakes"
 msgstr "Draghi"
 
 #. [race]: id=drake
-#: data/core/units.cfg:64
+#: data/core/units.cfg:62
 msgid ""
 "Drakes are large, winged and fire-breathing creatures, reminiscent of true "
 "dragons. On average, an adult drake stands around three meters tall and "
@@ -6996,22 +6935,22 @@ msgstr ""
 "perfino alcune delle montagne nelle aree più a nord del Grande Continente."
 
 #. [race]: id=dwarf
-#: data/core/units.cfg:97
+#: data/core/units.cfg:82
 msgid "race^Dwarf"
 msgstr "Nano"
 
 #. [race]: id=dwarf
-#: data/core/units.cfg:98
+#: data/core/units.cfg:83
 msgid "race+female^Dwarf"
 msgstr "Nana"
 
 #. [race]: id=dwarf
-#: data/core/units.cfg:99
+#: data/core/units.cfg:84
 msgid "race^Dwarves"
 msgstr "Nani"
 
 #. [race]: id=dwarf
-#: data/core/units.cfg:100
+#: data/core/units.cfg:85
 msgid ""
 "The dwarves are a race famed for their miners, blacksmiths, merchants and "
 "warriors. Considered as the third oldest race on the great continent after "
@@ -7110,22 +7049,22 @@ msgstr ""
 "aspetti della loro natura."
 
 #. [race]: id=elf
-#: data/core/units.cfg:117
+#: data/core/units.cfg:98
 msgid "race^Elf"
 msgstr "Elfo"
 
 #. [race]: id=elf
-#: data/core/units.cfg:118
+#: data/core/units.cfg:99
 msgid "race+female^Elf"
 msgstr "Elfa"
 
 #. [race]: id=elf
-#: data/core/units.cfg:119
+#: data/core/units.cfg:100
 msgid "race^Elves"
 msgstr "Elfi"
 
 #. [race]: id=elf
-#: data/core/units.cfg:121
+#: data/core/units.cfg:101
 msgid ""
 "Compared to humans, elves are somewhat taller, more agile but less sturdy. "
 "They have slightly pointy ears, pale skin and usually blond hair. Few "
@@ -7260,22 +7199,22 @@ msgstr ""
 "facilitare la transizione dei poteri."
 
 #. [race]: id=falcon
-#: data/core/units.cfg:147
+#: data/core/units.cfg:127
 msgid "race^Falcon"
 msgstr "Falco"
 
 #. [race]: id=falcon
-#: data/core/units.cfg:148
+#: data/core/units.cfg:128
 msgid "race+female^Falcon"
 msgstr "Falco femmina"
 
 #. [race]: id=falcon
-#: data/core/units.cfg:149
+#: data/core/units.cfg:129
 msgid "race^Falcons"
 msgstr "Falchi"
 
 #. [race]: id=falcon
-#: data/core/units.cfg:150
+#: data/core/units.cfg:130
 msgid ""
 "Falcons are birds of prey, noted for their exceptional speed and agility. "
 "Lighter and with less powerful talons than other raptors, falcons instead "
@@ -7297,22 +7236,22 @@ msgstr ""
 "rendendoli un strumento utile in appoggio alla carica di un esercito."
 
 #. [race]: id=goblin
-#: data/core/units.cfg:158
+#: data/core/units.cfg:137
 msgid "race^Goblin"
 msgstr "Goblin"
 
 #. [race]: id=goblin
-#: data/core/units.cfg:159
+#: data/core/units.cfg:138
 msgid "race+female^Goblin"
 msgstr "Goblin"
 
 #. [race]: id=goblin
-#: data/core/units.cfg:160
+#: data/core/units.cfg:139
 msgid "race^Goblins"
 msgstr "Goblin"
 
 #. [race]: id=goblin
-#: data/core/units.cfg:163
+#: data/core/units.cfg:142
 msgid ""
 "Goblins are puny and quite frail, rarely growing past the size and stature "
 "of a human child."
@@ -7321,7 +7260,7 @@ msgstr ""
 "taglia e l’altezza di un bambino."
 
 #. [race]: id=goblin
-#: data/core/units.cfg:165
+#: data/core/units.cfg:144
 msgid ""
 "Goblins are born into a lifetime of near-slavery to their larger kin, and "
 "used as sword-fodder in battle. They thrive in spite of their tragic fate; "
@@ -7341,22 +7280,22 @@ msgstr ""
 "svolgere per dare sfoggio della propria abilità."
 
 #. [race]: id=gryphon
-#: data/core/units.cfg:178
+#: data/core/units.cfg:156
 msgid "race^Gryphon"
 msgstr "Grifone"
 
 #. [race]: id=gryphon
-#: data/core/units.cfg:179
+#: data/core/units.cfg:157
 msgid "race+female^Gryphon"
 msgstr "Grifone"
 
 #. [race]: id=gryphon
-#: data/core/units.cfg:180
+#: data/core/units.cfg:158
 msgid "race^Gryphons"
 msgstr "Grifoni"
 
 #. [race]: id=gryphon
-#: data/core/units.cfg:181
+#: data/core/units.cfg:159
 msgid ""
 "Gryphons are broad, powerful beasts with traits shared from both terrestrial "
 "predators and birds of prey. While occasionally tamed and ridden by the "
@@ -7378,23 +7317,23 @@ msgstr ""
 
 # da correggere se, come nome della razza, stabiliamo Pumerviglio
 #. [race]: id=horse
-#: data/core/units.cfg:191
+#: data/core/units.cfg:169
 msgid "race^Horse"
 msgstr "Cavallo"
 
 #. [race]: id=horse
-#: data/core/units.cfg:192
+#: data/core/units.cfg:170
 msgid "race+female^Horse"
 msgstr "Giumenta"
 
 # idem come sopra
 #. [race]: id=horse
-#: data/core/units.cfg:193
+#: data/core/units.cfg:171
 msgid "race^Horses"
 msgstr "Cavalli"
 
 #. [race]: id=horse
-#: data/core/units.cfg:194
+#: data/core/units.cfg:172
 msgid ""
 "Domesticated horses come in many shapes and sizes, from mighty war chargers, "
 "to sturdy draught horses or agile stock horses. While they are more fragile "
@@ -7419,22 +7358,22 @@ msgstr ""
 "averne mai visto uno."
 
 #. [race]: id=human
-#: data/core/units.cfg:211
+#: data/core/units.cfg:181
 msgid "race^Human"
 msgstr "Umano"
 
 #. [race]: id=human
-#: data/core/units.cfg:212
+#: data/core/units.cfg:182
 msgid "race+female^Human"
 msgstr "Umana"
 
 #. [race]: id=human
-#: data/core/units.cfg:213
+#: data/core/units.cfg:183
 msgid "race^Humans"
 msgstr "Uomini"
 
 #. [race]: id=human
-#: data/core/units.cfg:214
+#: data/core/units.cfg:184
 msgid ""
 "The race of men is an extremely diverse one. Although they originally came "
 "from the Old Continent, men have spread all over the world and split into "
@@ -7518,22 +7457,22 @@ msgstr ""
 "si completano a vicenda."
 
 #. [race]: id=dunefolk
-#: data/core/units.cfg:229
+#: data/core/units.cfg:197
 msgid "race^Dunefolk Human"
 msgstr "Umano del Popolo delle Dune"
 
 #. [race]: id=dunefolk
-#: data/core/units.cfg:230
+#: data/core/units.cfg:198
 msgid "race+female^Dunefolk Human"
 msgstr "Umana del Popolo delle Dune"
 
 #. [race]: id=dunefolk
-#: data/core/units.cfg:231
+#: data/core/units.cfg:199
 msgid "race+plural^Dunefolk"
 msgstr "Uomini del Popolo delle Dune"
 
 #. [race]: id=dunefolk
-#: data/core/units.cfg:233
+#: data/core/units.cfg:201
 msgid ""
 "An offshoot of a forgotten nomadic civilization, the Dunefolk lay claim to "
 "the river valleys and oases of the Sandy Wastes. How they came to inhabit "
@@ -7651,22 +7590,22 @@ msgstr ""
 "passato del Popolo delle Dune, negli angoli più remoti ed esotici di Irdya."
 
 #. [race]: id=lizard
-#: data/core/units.cfg:254
+#: data/core/units.cfg:221
 msgid "race^Saurian"
 msgstr "Sauro"
 
 #. [race]: id=lizard
-#: data/core/units.cfg:255
+#: data/core/units.cfg:222
 msgid "race+female^Saurian"
 msgstr "Saura"
 
 #. [race]: id=lizard
-#: data/core/units.cfg:256
+#: data/core/units.cfg:223
 msgid "race^Saurians"
 msgstr "Sauri"
 
 #. [race]: id=lizard
-#: data/core/units.cfg:257
+#: data/core/units.cfg:224
 msgid ""
 "Saurians are lizard-like creatures. Smaller and more slender than humans, "
 "they rarely stand taller than a ten year old child, though from tip of snout "
@@ -7805,17 +7744,17 @@ msgstr ""
 "piuttosto comuni."
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:283
+#: data/core/units.cfg:250
 msgid "race^Mechanical"
 msgstr "Meccanico"
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:284
+#: data/core/units.cfg:251
 msgid "race+plural^Mechanical"
 msgstr "Meccanici"
 
 #. [race]: id=mechanical
-#: data/core/units.cfg:285
+#: data/core/units.cfg:252
 msgid ""
 "Animated neither by natural life nor by necromancy, the term "
 "<italic>text='mechanical'</italic> describes a created artifact of an "
@@ -7828,17 +7767,17 @@ msgstr ""
 "autonomamente, ma alcune lo fanno come risultato di incantesimi magici."
 
 #. [race]: id=ship
-#: data/core/units.cfg:294
+#: data/core/units.cfg:261
 msgid "race^Ship"
 msgstr "Nave"
 
 #. [race]: id=ship
-#: data/core/units.cfg:295
+#: data/core/units.cfg:262
 msgid "race+plural^Ships"
 msgstr "Navi"
 
 #. [race]: id=ship
-#: data/core/units.cfg:296
+#: data/core/units.cfg:263
 msgid ""
 "Ships are not living beings, but they are crafted and (usually) controlled "
 "by living beings. Most ships neither move nor think on their own, but some "
@@ -7850,22 +7789,22 @@ msgstr ""
 "incantesimi magici."
 
 #. [race]: id=merman
-#: data/core/units.cfg:307
+#: data/core/units.cfg:273
 msgid "race^Merman"
 msgstr "Nereide"
 
 #. [race]: id=merman
-#: data/core/units.cfg:308
+#: data/core/units.cfg:274
 msgid "race^Mermaid"
 msgstr "Nereide"
 
 #. [race]: id=merman
-#: data/core/units.cfg:309
+#: data/core/units.cfg:275
 msgid "race^Merfolk"
 msgstr "Nereidi"
 
 #. [race]: id=merman
-#: data/core/units.cfg:311
+#: data/core/units.cfg:276
 msgid ""
 "Something like a fusion between humans and fish, the merfolk are an "
 "enigmatic race with both piscine and humanoid attributes. They have strong "
@@ -7890,22 +7829,22 @@ msgstr ""
 "nelle foreste."
 
 #. [race]: id=monster
-#: data/core/units.cfg:319
+#: data/core/units.cfg:284
 msgid "race^Monster"
 msgstr "Mostro"
 
 #. [race]: id=monster
-#: data/core/units.cfg:320
+#: data/core/units.cfg:285
 msgid "race+female^Monster"
 msgstr "Mostro"
 
 #. [race]: id=monster
-#: data/core/units.cfg:321
+#: data/core/units.cfg:286
 msgid "race^Monsters"
 msgstr "Mostri"
 
 #. [race]: id=monster
-#: data/core/units.cfg:322
+#: data/core/units.cfg:287
 msgid ""
 "The term “monster” incorporates many hideous beasts that haunt the caves, "
 "wilderness, ocean depths, and other climes of the world. They figure largely "
@@ -7917,22 +7856,22 @@ msgstr ""
 "incubi delle varie popolazioni."
 
 #. [race]: id=naga
-#: data/core/units.cfg:329
+#: data/core/units.cfg:293
 msgid "race^Naga"
 msgstr "Naga"
 
 #. [race]: id=naga
-#: data/core/units.cfg:330
+#: data/core/units.cfg:294
 msgid "race^Nagini"
 msgstr "Nagini"
 
 #. [race]: id=naga
-#: data/core/units.cfg:331
+#: data/core/units.cfg:295
 msgid "race^Nagas"
 msgstr "Naga"
 
 #. [race]: id=naga
-#: data/core/units.cfg:332
+#: data/core/units.cfg:296
 msgid ""
 "The serpentine nagas are one of the least understood races of the Great "
 "Continent. Part of this is due to their xenophobic nature and part is due to "
@@ -7965,22 +7904,22 @@ msgstr ""
 "acque libere."
 
 #. [race]: id=ogre
-#: data/core/units.cfg:340
+#: data/core/units.cfg:304
 msgid "race^Ogre"
 msgstr "Ogre"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:341
+#: data/core/units.cfg:305
 msgid "race+female^Ogre"
 msgstr "Ogre"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:342
+#: data/core/units.cfg:306
 msgid "race^Ogres"
 msgstr "Ogre"
 
 #. [race]: id=ogre
-#: data/core/units.cfg:343
+#: data/core/units.cfg:307
 msgid ""
 "Ogres are a wild and uncivilized race who dwell mainly in the wilderness of "
 "the Great Continent. Physically, they resemble humans and orcs but are "
@@ -8015,22 +7954,22 @@ msgstr ""
 "opportunismo non è dato sapere."
 
 #. [race]: id=orc
-#: data/core/units.cfg:351
+#: data/core/units.cfg:314
 msgid "race^Orc"
 msgstr "Orco"
 
 #. [race]: id=orc
-#: data/core/units.cfg:352
+#: data/core/units.cfg:315
 msgid "race+female^Orc"
 msgstr "Orchessa"
 
 #. [race]: id=orc
-#: data/core/units.cfg:353
+#: data/core/units.cfg:316
 msgid "race^Orcs"
 msgstr "Orchi"
 
 #. [race]: id=orc
-#: data/core/units.cfg:354
+#: data/core/units.cfg:317
 msgid ""
 "In appearance, orcs resemble humans but with some bestial features. They are "
 "taller, sturdier and stronger than humans. They are warlike, savage, and "
@@ -8048,12 +7987,12 @@ msgstr ""
 "gruppi inferiori alla mezza dozzina di unità."
 
 #. [race]: id=orc
-#: data/core/units.cfg:356
+#: data/core/units.cfg:319
 msgid "Society"
 msgstr "Società"
 
 #. [race]: id=orc
-#: data/core/units.cfg:357
+#: data/core/units.cfg:320
 msgid ""
 "Almost every orc is a member of a tribe or a clan. Relations between "
 "neighboring tribes are usually violent, except in cases of a mutual enemy "
@@ -8078,7 +8017,7 @@ msgstr ""
 "capitribù."
 
 #. [race]: id=orc
-#: data/core/units.cfg:359
+#: data/core/units.cfg:322
 msgid ""
 "Orc societies are based on little else but strength; might makes right, and "
 "a leader leads and survives only as long as no one manages to wrest the "
@@ -8103,7 +8042,7 @@ msgstr ""
 "propri scopi."
 
 #. [race]: id=orc
-#: data/core/units.cfg:361
+#: data/core/units.cfg:324
 msgid ""
 "Orcs mostly live in rural areas, often in foothills or mountainous regions, "
 "sometimes in caves. They grow no crops nor keep livestock, but are competent "
@@ -8130,7 +8069,7 @@ msgstr ""
 "necessario spostare l’orda."
 
 #. [race]: id=orc
-#: data/core/units.cfg:363
+#: data/core/units.cfg:326
 msgid ""
 "The oldest known orcs have been around 50 to 60 years of age, but very few "
 "individuals ever live to see over two or three decades before meeting their "
@@ -8155,7 +8094,7 @@ msgstr ""
 "combattimento in confronto a loro."
 
 #. [race]: id=orc
-#: data/core/units.cfg:367
+#: data/core/units.cfg:330
 msgid ""
 "Orcs who were not the strongest of their litter tend to specialize in other "
 "skills, like archery or assassination."
@@ -8164,22 +8103,22 @@ msgstr ""
 "campi, come il tiro con l’arco oppure l’assassinio."
 
 #. [race]: id=raven
-#: data/core/units.cfg:374
+#: data/core/units.cfg:337
 msgid "race^Raven"
 msgstr "Corvo"
 
 #. [race]: id=raven
-#: data/core/units.cfg:375
+#: data/core/units.cfg:338
 msgid "race+female^Raven"
 msgstr "Corvo femmina"
 
 #. [race]: id=raven
-#: data/core/units.cfg:376
+#: data/core/units.cfg:339
 msgid "race^Ravens"
 msgstr "Corvi"
 
 #. [race]: id=raven
-#: data/core/units.cfg:377
+#: data/core/units.cfg:340
 msgid ""
 "Ravens are general scavengers, often associating with hunters or predators "
 "in the hope of sharing in the kill. They do not have the powerful beak or "
@@ -8217,22 +8156,22 @@ msgstr ""
 "mano come sentinelle."
 
 #. [race]: id=troll
-#: data/core/units.cfg:388
+#: data/core/units.cfg:351
 msgid "race^Troll"
 msgstr "Troll"
 
 #. [race]: id=troll
-#: data/core/units.cfg:389
+#: data/core/units.cfg:352
 msgid "race+female^Troll"
 msgstr "Troll"
 
 #. [race]: id=troll
-#: data/core/units.cfg:390
+#: data/core/units.cfg:353
 msgid "race^Trolls"
 msgstr "Troll"
 
 #. [race]: id=troll
-#: data/core/units.cfg:391
+#: data/core/units.cfg:354
 msgid ""
 "Trolls are ancient creatures, one of the oldest known races known to inhabit "
 "the Great Continent. They are large, slow, simple, and live extremely long "
@@ -8308,22 +8247,22 @@ msgstr ""
 "e ad est di Wesnoth, e dovunque vi sia un’orda di orchi in viaggio."
 
 #. [race]: id=undead
-#: data/core/units.cfg:411
+#: data/core/units.cfg:372
 msgid "race^Undead"
 msgstr "Non-morto"
 
 #. [race]: id=undead
-#: data/core/units.cfg:412
+#: data/core/units.cfg:373
 msgid "race+female^Undead"
 msgstr "Non-morta"
 
 #. [race]: id=undead
-#: data/core/units.cfg:413
+#: data/core/units.cfg:374
 msgid "race+plural^Undead"
 msgstr "Non-morti"
 
 #. [race]: id=undead
-#: data/core/units.cfg:414
+#: data/core/units.cfg:375
 msgid ""
 "Undead are not really a single race of creatures, although often treated as "
 "such. Most ordinary creatures can, by a sufficiently skilled necromancer, be "
@@ -8397,22 +8336,22 @@ msgstr ""
 "già sentito parlare in precedenza."
 
 #. [race]: id=wolf
-#: data/core/units.cfg:427
+#: data/core/units.cfg:388
 msgid "race^Wolf"
 msgstr "Lupo"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:428
+#: data/core/units.cfg:389
 msgid "race+female^Wolf"
 msgstr "Lupa"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:429
+#: data/core/units.cfg:390
 msgid "race^Wolves"
 msgstr "Lupi"
 
 #. [race]: id=wolf
-#: data/core/units.cfg:430
+#: data/core/units.cfg:391
 msgid ""
 "Wolves are predatory canines encountered frequently in the wilderness. "
 "Quick, tough, and durable, a solitary wolf suffices to maim or kill "
@@ -8433,18 +8372,18 @@ msgstr ""
 
 # da correggere se, come nome della razza, stabiliamo Pumerviglio
 #. [race]: id=wose
-#: data/core/units.cfg:439
+#: data/core/units.cfg:399
 msgid "race^Wose"
 msgstr "Wose"
 
 # idem come sopra
 #. [race]: id=wose
-#: data/core/units.cfg:440
+#: data/core/units.cfg:400
 msgid "race^Woses"
 msgstr "Wose"
 
 #. [race]: id=wose
-#: data/core/units.cfg:441
+#: data/core/units.cfg:401
 msgid ""
 "The mighty wose resides within the deepest forests of the known world. To "
 "the untrained eye, the wose appears to be nothing more than an oddly shaped, "
@@ -8526,7 +8465,7 @@ msgstr ""
 "foreste ove dimorano."
 
 #. [language]
-#: data/english.cfg:34
+#: data/english.cfg:39
 msgid ""
 "This unit’s arcane attack deals tremendous damage to magical creatures, and "
 "even some to mundane creatures."
@@ -8815,809 +8754,3 @@ msgstr "Costo di visione"
 #: src/help/help_topic_generators.cpp:837
 msgid "Jamming Cost"
 msgstr "Costo di disturbo"
-
-#~ msgid "Due to the diversion, the accuracy of this attack is reduced by 20%."
-#~ msgstr ""
-#~ "A causa della distrazione, l’accuratezza di questo attacco è ridotta del "
-#~ "20%."
-
-#~ msgid ""
-#~ "</header>\n"
-#~ "\n"
-#~ msgstr ""
-#~ "</header>\n"
-#~ "\n"
-
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "<header>Chance to Hit</header>"
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "<header>Probabilità di Colpire</header>"
-
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "<header>text=Damage</header>"
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "<header>text=Danno</header>"
-
-# mi pare che nel WIF qualcuno avesse proposto "crepuscolari" anziché "liminali". È un cambio che si può considerare oppure no? [NdBonta-Kun]
-# In inglese è "Liminal", non "Crepuscolar"... pone di più l'accento sul limite della percezione che non sull'aspetto alba/tramonto, anche se poi à quello che considera [NdA]
-#~ msgid ""
-#~ "The time of day affects the damage of certain units as follows:\n"
-#~ "\n"
-#~ "• <span weight='heavy' size='15'>LAWFUL</span> units get +25% damage in "
-#~ "daytime, and −25% damage at night.\n"
-#~ "• <span weight='heavy' size='15'>CHAOTIC</span> units get +25% damage at "
-#~ "night, and −25% in daytime.\n"
-#~ "• <span weight='heavy' size='15'>NEUTRAL</span> units are unaffected by "
-#~ "the time of day.\n"
-#~ "• <span weight='heavy' size='15'>LIMINAL</span> units get +25% damage "
-#~ "during twilight."
-#~ msgstr ""
-#~ "Il periodo della giornata influisce sui danni inflitti da alcune unità "
-#~ "come segue:\n"
-#~ "\n"
-#~ "• Le unità <span weight='heavy' size='15'>LEGALI</span> causano +25% "
-#~ "danni di giorno e −25% danni di notte.\n"
-#~ "• Le unità <span weight='heavy' size='15'>CAOTICHE</span> causano +25% "
-#~ "danni di notte e −25% danni di giorno.\n"
-#~ "• Le unità <span weight='heavy' size='15'>NEUTRALI</span> non sono "
-#~ "influenzate dal periodo della giornata.\n"
-#~ "• Le unità <span weight='heavy' size='15'>LIMINALI</span> causano +25% "
-#~ "danni durante il crepuscolo (alba/tramonto)."
-
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "<b>Advanced</b>"
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "<b>Avanzato</b>"
-
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "<header>Basic Terrain Types</header>"
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "<header>Terreni di tipo Base</header>"
-
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "<header>Defense Caps</header>"
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "<header>Limite percentuale di Difesa</header>"
-
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "<header>Basic Terrain Types</header>\n"
-#~ "\n"
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "<header>Tipi di Terreno Base</header>\n"
-#~ "\n"
-
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "<header>Modifications</header>"
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "<header>Modifiche per le partite multigiocatore</header>"
-
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "<header>Cores</header>"
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "<header>Nuclei</header>"
-
-#~ msgid ""
-#~ "In appearance, orcs resemble humans but with some bestial features. They "
-#~ "are taller, sturdier and stronger than humans. They are warlike, savage, "
-#~ "and cruel by nature. Their blood is darker and thicker than that of "
-#~ "humans, and they have little care for personal hygiene or their personal "
-#~ "appearance. Although Orcs are violent even among themselves, they are "
-#~ "pack-oriented; an orc never travels alone or lives in groups smaller than "
-#~ "half a dozen.\n"
-#~ "\n"
-#~ "<header>text='Society'</header>\n"
-#~ "Almost every orc is a member of a tribe or a clan. Relations between "
-#~ "neighboring tribes are usually violent, except in cases of a mutual enemy "
-#~ "threatens their existence or prospects of great plunder override mutual "
-#~ "animosity. Occasionally, a single strong chieftain may emerge to lead "
-#~ "multiple tribes from time to time, usually through intimidation of "
-#~ "followers. An orc tribe in times of peace tends to focus almost solely on "
-#~ "strengthening itself in preparation for the next armed conflict. Orcs are "
-#~ "known to possess a crude system of writing — usually in blood — although "
-#~ "it’s most commonly used to trade insults or threats among tribal "
-#~ "leaders.\n"
-#~ "\n"
-#~ "Orc societies are based on little else but strength; might makes right, "
-#~ "and a leader leads and survives only as long as no one manages to wrest "
-#~ "the title from him. A constant struggle for power simmers among potential "
-#~ "tribal chiefs. An orcish leader rarely lives more than a handful of years "
-#~ "to enjoy his absolute authority before being killed for his position — "
-#~ "although history knows some notable exceptions. Orcs hold no particular "
-#~ "honor code and while indisputable raw strength is usually the preferred "
-#~ "method of displaying power, assassination, poisoning and backstabbing are "
-#~ "completely viable means to further one’s own goals.\n"
-#~ "\n"
-#~ "Orcs mostly live in rural areas, often in foothills or mountainous "
-#~ "regions, sometimes in caves. They grow no crops nor keep livestock, but "
-#~ "are competent hunters as a result of their physical stature and "
-#~ "brutality. Due to their large numbers they are capable of hunting an area "
-#~ "virtually clean of anything larger than rodents in relatively short "
-#~ "period of time. Due to this and their unstable leadership, orcish tribes "
-#~ "tend to lead a semi-nomadic lifestyle, never settling in one region for "
-#~ "too long. The larger tribes may establish themselves firmly in an area "
-#~ "for years or even decades and build large encampments almost resembling "
-#~ "cities, but even these are easily dismantled and abandoned if there is a "
-#~ "need to relocate the horde.\n"
-#~ "\n"
-#~ "The oldest known orcs have been around 50 to 60 years of age, but very "
-#~ "few individuals ever live to see over two or three decades before meeting "
-#~ "their end either in war or by the hand of one of their kin. The oldest "
-#~ "orcs are often shamans, which are perhaps the only ones most of their "
-#~ "kind sees as being trustworthy and neutral. The origins of this custom "
-#~ "are unknown, as the shamans do not directly contribute much to orcish "
-#~ "societies but only act as advisors — not something orcs tend to otherwise "
-#~ "tolerate. Shamans are in many ways the opposite of most other orcs: they "
-#~ "are often physically withered and frail in comparison and lack skill in "
-#~ "battle.\n"
-#~ "\n"
-#~ msgstr ""
-#~ "Gli orchi sono in apparenza per metà uomini e per metà bestie. Sono più "
-#~ "alti, più robusti e più forti degli uomini; sono bellicosi, selvaggi e "
-#~ "crudeli per natura. Il loro sangue è più scuro e più denso di quello "
-#~ "umano e hanno poca cura dell’igiene personale o del loro aspetto. "
-#~ "Malgrado gli orchi si dimostrino violenti persino nei confronti degli "
-#~ "altri orchi, si tratta di esseri gregari: un orco non viaggia mai a lungo "
-#~ "né vive autonomamente in gruppi inferiori alla mezza dozzina di unità.\n"
-#~ "\n"
-#~ "<header>text='Società'</header>\n"
-#~ "Quasi tutti gli orchi sono membri di una tribù o di un clan. I rapporti "
-#~ "tra tribù vicine sono di norma violenti, tranne nei casi in cui un nemico "
-#~ "comune minacci la loro esistenza, oppure laddove la prospettiva di un "
-#~ "grande saccheggio superi la reciproca rivalità. Occasionalmente può "
-#~ "emergere un unico, forte capoclan per guidare di volta in volta le "
-#~ "numerose tribù, di solito tramite l’intimidazione dei suoi seguaci. In "
-#~ "tempo di pace, una tribù di orchi tende quasi esclusivamente a "
-#~ "concentrarsi sul suo rafforzamento, in previsione del prossimo conflitto "
-#~ "armato. Gli orchi sono noti per possedere un rudimentale sistema di "
-#~ "scrittura – di solito col sangue – che viene tuttavia usato "
-#~ "principalmente per scambiare ingiurie o minacce tra i capitribù.\n"
-#~ "\n"
-#~ "Le società degli orchi sono basate sulla forza e poco altro: è la forza "
-#~ "che determina la ragione, perciò un capo comanda e sopravvive finché "
-#~ "nessuno riesce a strappargli il titolo. Una lotta costante per il potere "
-#~ "freme tra i potenziali capitribù. Un condottiero degli orchi raramente "
-#~ "vive più di qualche anno per godersi la sua autorità assoluta, prima di "
-#~ "venire ucciso per la successione al suo ruolo – anche se la storia "
-#~ "riporta importanti eccezioni. Gli orchi non hanno un particolare codice "
-#~ "d’onore e, anche se un’indiscussa dimostrazione di forza bruta è di norma "
-#~ "il metodo preferito per fare sfoggio del proprio potere, l’assassinio, "
-#~ "l’avvelenamento e gli attacchi alle spalle sono metodi perfettamente "
-#~ "validi per conseguire i propri scopi.\n"
-#~ "\n"
-#~ "Gli orchi vivono perlopiù nelle aree rurali, spesso ai piedi delle "
-#~ "colline o delle regioni montuose, a volte nelle caverne. Non coltivano la "
-#~ "terra né allevano animali, ma sono abili cacciatori, data la loro stazza "
-#~ "fisica e la loro brutalità. Grazie alla forza del loro numero, sono in "
-#~ "grado di eliminare virtualmente dalla regione ogni preda più grossa di un "
-#~ "roditore in relativamente poco tempo. Per questo motivo e per il loro "
-#~ "potere instabile, le tribù degli orchi tendono a condurre una vita semi-"
-#~ "nomade e non rimangono mai troppo a lungo in uno stesso posto. Le tribù "
-#~ "più grandi possono stabilirsi saldamente in una regione per anni, o "
-#~ "persino decenni, e costruire grandi accampamenti che somigliano quasi a "
-#~ "città, ma persino questi possono essere smontati facilmente e abbandonati "
-#~ "qualora sia necessario spostare l’orda.\n"
-#~ "\n"
-#~ "I più vecchi orchi di cui si hanno notizie hanno tra 50 e 60 anni di età, "
-#~ "ma pochissimi individui vivono per due o tre decenni prima di incontrare "
-#~ "la loro fine in guerra o per mano di uno della loro razza. Gli orchi più "
-#~ "vecchi sono spesso sciamani, che sono forse gli unici individui che la "
-#~ "maggior parte della loro razza considera fidati e neutrali. Le origini di "
-#~ "quest’usanza sono sconosciute, dato che gli sciamani non hanno una "
-#~ "partecipazione diretta nella società degli orchi, ma agiscono solo da "
-#~ "consiglieri – cosa che gli orchi non tendono in altre circostanze a "
-#~ "tollerare. Gli sciamani sono per molti versi il contrario degli altri "
-#~ "orchi: sono spesso fisicamente decrepiti e deboli e inoltre scarsi nel "
-#~ "combattimento in confronto a loro. \n"
-#~ "\n"
-
-#~ msgid ""
-#~ "Ships are not living beings, but they are crafted and (usually) "
-#~ "controlled by living beings. Although inanimate objects, they are very "
-#~ "dear to their masters, needing care and attention in return for providing "
-#~ "sustenance and protection. For this reason, most are given names and "
-#~ "attributed traits. Those traits may be technical or they may simply "
-#~ "reflect the collective attitude of the crew, but they are real."
-#~ msgstr ""
-#~ "Le navi non sono esseri viventi, ma vengono manovrate (solitamente) da "
-#~ "esseri viventi. Sebbene siano oggetti inanimati, i loro padroni tengono "
-#~ "molto a loro e hanno bisogno di cure ed attenzioni in cambio delle quali "
-#~ "offrono sostenimento e protezione. È per questo che alla maggior parte di "
-#~ "loro viene assegnato un nome e dei tratti distintivi. Queste "
-#~ "caratteristiche possono essere tecniche o possono semplicemente "
-#~ "riflettere l’attitudine complessiva della ciurma, ma sono reali."
-
-#~ msgid "Methor"
-#~ msgstr "Methor"
-
-#~ msgid "Deoran"
-#~ msgstr "Deoran"
-
-#~ msgid "Arand"
-#~ msgstr "Arand"
-
-#~ msgid "Asheviere"
-#~ msgstr "Asheviere"
-
-#~ msgid "Eldred"
-#~ msgstr "Eldred"
-
-#~ msgid "Lionel"
-#~ msgstr "Lionel"
-
-#~ msgid "Lord Maddock"
-#~ msgstr "Lord Maddock"
-
-#~ msgid "Colonel Dommel"
-#~ msgstr "Colonnello Dommel"
-
-#~ msgid "Kestrel"
-#~ msgstr "Gheppio"
-
-#~ msgid "Omaranth"
-#~ msgstr "Omaranth"
-
-#~ msgid "Iliah-Malal"
-#~ msgstr "Iliah-Malal"
-
-#~ msgid "Garard II"
-#~ msgstr "Garard II"
-
-#~ msgid "No, it can’t end yet! I have so much left to do..."
-#~ msgstr "No! Non può ancora finire! Ho ancora così tanto da fare..."
-
-#~ msgid "No! Magic, why have you failed me..."
-#~ msgstr "No! Magia, perché mia hai deluso..."
-
-#~ msgid "If only I had been a little wiser..."
-#~ msgstr "Se fossi stato soltanto un pochino più saggio..."
-
-#~ msgid "War, pain, death... I tried so hard to change things..."
-#~ msgstr ""
-#~ "Guerra, dolore, morte... Ho provato così intensamente a cambiare le "
-#~ "cose..."
-
-#~ msgid "I have failed my kingdom and my duty..."
-#~ msgstr "Ho mancato nei confronti del mio regno e dei miei doveri..."
-
-#~ msgid "A horse! A horse! My kingdom for a horse..."
-#~ msgstr "Un cavallo! Un cavallo! Il mio regno per un cavallo..."
-
-#~ msgid "It’s finally over..."
-#~ msgstr "Finalmente è finita..."
-
-#~ msgid "Blasted orcs..."
-#~ msgstr "Maledetti orchi..."
-
-#~ msgid "Nobody can cheat death forever..."
-#~ msgstr "Nessuno può ingannare per sempre la morte..."
-
-#~ msgid "Deoran, I never had a chance to tell you—"
-#~ msgstr "Deoran, non son mai riuscita a dirti che—"
-
-#~ msgid "Boss, I ain’t feelin’ too hot..."
-#~ msgstr "Capo, non ho troppo caldo..."
-
-#~ msgid "I ain’t feelin’ too hot..."
-#~ msgstr "Non sento troppo caldo..."
-
-#~ msgid "I shoulda never left my swamp..."
-#~ msgstr "Non avrei mai dovuto lasciare la mia palude..."
-
-#~ msgid ""
-#~ "I am grievously injured; I can be of no further aid in your quest. Fight "
-#~ "on without me, Delfador!"
-#~ msgstr ""
-#~ "Sono ferito gravemente; non posso essere di ulteriore aiuto nella tua "
-#~ "ricerca. Combatti senza di me, Delfador!"
-
-#~ msgid ""
-#~ "Many Knights choose the path of the Paladin, Delfador, but I am an heir "
-#~ "of the Horse Lords. I shall be a Grand Knight."
-#~ msgstr ""
-#~ "Molti cavalieri scelgono il sentiero del paladino, Delfador, ma io sono "
-#~ "uno degli eredi dei Signori dei Cavalli. Io diventerò Gran Cavaliere."
-
-#~ msgid ""
-#~ "I am glad to be a Grand Knight, Delfador. Many Knights choose the path of "
-#~ "the Paladin, but such is unbecoming for an heir of the Horse Lords."
-#~ msgstr ""
-#~ "Sono felice di essere un Gran Cavaliere, Delfador. Molti cavalieri "
-#~ "scelgono il sentiero del Paladino, ma ciò non è appropriato per un erede "
-#~ "dei Signori dei Cavalli."
-
-#~ msgid ""
-#~ "\n"
-#~ "<table>\n"
-#~ "    <row>\n"
-#~ "        <col>Dawn</col><col><img src='misc/time-schedules/default/"
-#~ "schedule-dawn.png'/></col>\n"
-#~ "    </row>\n"
-#~ "    <row>\n"
-#~ "        <col>Morning</col><col><img src='misc/time-schedules/default/"
-#~ "schedule-morning.png'/></col>\n"
-#~ "    </row>\n"
-#~ "    <row>\n"
-#~ "        <col>Afternoon</col><col><img src='misc/time-schedules/default/"
-#~ "schedule-afternoon.png'/></col>\n"
-#~ "    </row>\n"
-#~ "    <row>\n"
-#~ "        <col>Dusk</col><col><img src='misc/time-schedules/default/"
-#~ "schedule-dusk.png'/></col>\n"
-#~ "    </row>\n"
-#~ "    <row>\n"
-#~ "        <col>First Watch</col><col><img src='misc/time-schedules/default/"
-#~ "schedule-firstwatch.png'/></col>\n"
-#~ "    </row>\n"
-#~ "    <row>\n"
-#~ "        <col>Second Watch</col><col><img src='misc/time-schedules/default/"
-#~ "schedule-secondwatch.png'/></col>\n"
-#~ "    </row>\n"
-#~ "</table>"
-#~ msgstr ""
-#~ "\n"
-#~ "<table>\n"
-#~ "    <row>\n"
-#~ "        <col>Alba</col><col><img src='misc/time-schedules/default/"
-#~ "schedule-dawn.png'/></col>\n"
-#~ "    </row>\n"
-#~ "    <row>\n"
-#~ "        <col>Mattino</col><col><img src='misc/time-schedules/default/"
-#~ "schedule-morning.png'/></col>\n"
-#~ "    </row>\n"
-#~ "    <row>\n"
-#~ "        <col>Pomeriggio</col><col><img src='misc/time-schedules/default/"
-#~ "schedule-afternoon.png'/></col>\n"
-#~ "    </row>\n"
-#~ "    <row>\n"
-#~ "        <col>Tramonto</col><col><img src='misc/time-schedules/default/"
-#~ "schedule-dusk.png'/></col>\n"
-#~ "    </row>\n"
-#~ "    <row>\n"
-#~ "        <col>Prima Guardia</col><col><img src='misc/time-schedules/"
-#~ "default/schedule-firstwatch.png'/></col>\n"
-#~ "    </row>\n"
-#~ "    <row>\n"
-#~ "        <col>Seconda Guardia</col><col><img src='misc/time-schedules/"
-#~ "default/schedule-secondwatch.png'/></col>\n"
-#~ "    </row>\n"
-#~ "</table>"
-
-#~ msgid "Icon"
-#~ msgstr "Icona"
-
-#~ msgid ""
-#~ "<header>text='Notable land features:'</header>\n"
-#~ "    • Mount Morogor: An active volcanic mountain in the central island of "
-#~ "Morogor."
-#~ msgstr ""
-#~ "<header>text=text='Principali zone di interesse:'</header>\n"
-#~ "    • Monte Morogor: Una vulcano attivo situato sull’isola centrale di "
-#~ "Morogor."
-
-#~ msgid ""
-#~ "<header>text='Notable land features:'</header>\n"
-#~ "    • Aethenwood: The largest southern forest, it extends far to the "
-#~ "south and is home to <ref>dst='..race_elf' text='elves'</ref>. Although "
-#~ "the elves make no such distinction, the southern part of the forest has "
-#~ "been named Southwood by denizens of Kerlath."
-#~ msgstr ""
-#~ "<header>text='Principali zone di interesse:'</header>\n"
-#~ "    • Foresta di Aethen: la più grande foresta meridionale, che si "
-#~ "estende fino all’estremo sud ed è la dimora degli <ref>dst='..race_elf' "
-#~ "text='elfi'</ref>. Sebbene gli elfi non facciano alcuna distinzione, la "
-#~ "parte meridionale di questa foresta è stata ribattezzata Boschi "
-#~ "Meridionali dagli abitanti di Kerlath."
-
-#~ msgid ""
-#~ "A vast region south of Kerlath home to the Dunefolk Civilization. It is "
-#~ "also inhabited by many local creatures, including the Jinn and Wyverns."
-#~ msgstr ""
-#~ "Una vasta regione a sud di Kerlath, terra natia della civiltà degli "
-#~ "Uomini delle Dune. Risulta anche abitata da creature locali, quali Jinn e "
-#~ "Viverne."
-
-#~ msgid "deflect"
-#~ msgstr "deflettere"
-
-#~ msgid ""
-#~ "When used defensively, this attack reduces the opponent’s chance to hit "
-#~ "by 10%."
-#~ msgstr ""
-#~ "Usato in fase difensiva, questo attacco riduce del 10% la probabilità di "
-#~ "colpire di un avversario."
-
-#~ msgid ""
-#~ "This unit’s defensive techniques reduce the chance of a successful enemy "
-#~ "attack."
-#~ msgstr ""
-#~ "Le tecniche di difesa di questa unità riducono le probabilità di successo "
-#~ "di un attacco nemico."
-
-#~ msgid "absorb"
-#~ msgstr "limitare"
-
-#~ msgid ""
-#~ "This attack puts the unit in good defensive position, and it absorbs some "
-#~ "of the damage dealt by an enemy strike."
-#~ msgstr ""
-#~ "Questo attacco mette l’unità in un buon assetto difensivo, assorbendo una "
-#~ "parte dei danni inflitti da un colpo nemico."
-
-#~ msgid ""
-#~ "This unit can block enemy strikes, so that it takes reduced damage when "
-#~ "hit."
-#~ msgstr ""
-#~ "Questa unità può bloccare i colpi nemici, in modo da subire soltanto un "
-#~ "parte ridotta dei danni quando viene colpita."
-
-#~ msgid "Using a separate file for WML events"
-#~ msgstr "Usare un file separato per gli eventi WML"
-
-#~ msgid "Close"
-#~ msgstr "Chiudi"
-
-#~ msgid "Help"
-#~ msgstr "Aiuto"
-
-#~ msgid "Parse error when parsing help text:"
-#~ msgstr "Errore di parsing durante l’analisi del testo della sezione Aiuto:"
-
-#~ msgid "unit help^Attacks"
-#~ msgstr "Attacchi"
-
-#~ msgid "unit help^Name"
-#~ msgstr "Nome"
-
-#~ msgid ""
-#~ "A virtually impassable barrier between the <ref>dst='arkan_thoria' "
-#~ "text='river'</ref> country and the <ref>dst='far_north' text='Northern "
-#~ "Plains'</ref>."
-#~ msgstr ""
-#~ "Una barriera virtualmente insormontabile tra la regione del fiume "
-#~ "<ref>dst='arkan_thoria' text='Arkan-thoria'</ref> e le pianure del "
-#~ "<ref>dst='far_north' text='remoto nord'</ref>."
-
-#~ msgid "uses 2 attacks"
-#~ msgstr "utilizza 2 attacchi"
-
-#~ msgid "uses 3 attacks"
-#~ msgstr "utilizza 3 attacchi"
-
-#~ msgid "uses 4 attacks"
-#~ msgstr "utilizza 4 attacchi"
-
-#~ msgid "uses 5 attacks"
-#~ msgstr "utilizza 5 attacchi"
-
-#~ msgid "uses 6 attacks"
-#~ msgstr "utilizza 6 attacchi"
-
-#~ msgid "This attack uses 1 attack"
-#~ msgstr "Questo attacco utilizza 1 attacco"
-
-#~ msgid "This attack uses 2 attacks"
-#~ msgstr "Questo attacco utilizza 2 attacchi"
-
-#~ msgid "This attack uses 3 attacks"
-#~ msgstr "Questo attacco utilizza 3 attacchi"
-
-#~ msgid "This attack uses 4 attacks"
-#~ msgstr "Questo attacco utilizza 4 attacchi"
-
-#~ msgid "This attack uses 5 attacks"
-#~ msgstr "Questo attacco utilizza 5 attacchi"
-
-#~ msgid "This attack uses 6 attacks"
-#~ msgstr "Questo attacco utilizza 6 attacchi"
-
-#~ msgid "first verse"
-#~ msgstr "prima strofa"
-
-#~ msgid "second verse"
-#~ msgstr "seconda strofa"
-
-#~ msgid "third verse"
-#~ msgstr "terza strofa"
-
-#~ msgid "nova"
-#~ msgstr "supernova"
-
-#~ msgid ""
-#~ "This weapon, when used offensively, deals damage to all units adjacent to "
-#~ "the caster when it hits."
-#~ msgstr ""
-#~ "Quando viene usata in attacco, questa arma causa un danno a tutte le "
-#~ "unità adiacenti al lanciatore quando colpisce."
-
-#~ msgid "This unit has wide-area attacks centered on the caster."
-#~ msgstr ""
-#~ "Questa unità possiede degli attacchi ad ampia superficie centrati sul "
-#~ "lanciatore."
-
-#~ msgid "ray"
-#~ msgstr "raggio"
-
-#~ msgid ""
-#~ "This weapon, when used offensively, also deals damage to a unit behind "
-#~ "the target."
-#~ msgstr ""
-#~ "Quando viene utilizzata in attacco, quest’arma è in grado di danneggiare "
-#~ "anche una unità dietro il bersaglio."
-
-#~ msgid ""
-#~ "At the start of the turn this unit increases movement points of "
-#~ "surrounding units by +1"
-#~ msgstr ""
-#~ "All’inizio del turno, questa unità incrementa i muti movimento delle "
-#~ "unità circostanti dei un fattore +1"
-
-#~ msgid ""
-#~ "At the start of the turn this unit increases movement points of "
-#~ "surrounding units by +2"
-#~ msgstr ""
-#~ "All’inizio del turno, questa unità incrementa i muti movimento delle "
-#~ "unità circostanti dei un fattore +2"
-
-#~ msgid "tailwind +"
-#~ msgstr "vento in poppa +"
-
-#~ msgid "This attack can only be used as the second verse of the song."
-#~ msgstr ""
-#~ "Questo attacco può essere usato soltanto durante la seconda strofa della "
-#~ "canzone."
-
-#~ msgid "This attack can only be used as the third verse of the song."
-#~ msgstr ""
-#~ "Questo attacco può essere usato soltanto durante la terza strofa della "
-#~ "canzone."
-
-#~ msgid ""
-#~ "When loading a .cfg file, the scenario editor understands files created "
-#~ "by the scenario editor, but is likely to have difficulty with files that "
-#~ "have been edited by hand.\n"
-#~ "\n"
-#~ "Files created by the scenario editor omit the opening [scenario] and "
-#~ "closing [/scenario] tags. If you are creating a campaign (or other add-"
-#~ "on), then those tags need to be added; there is more detail about this in "
-#~ "the <ref>dst='editor_map_format' text='map file format'</ref> "
-#~ "documentation.\n"
-#~ "\n"
-#~ "One workflow is to create a separate WML file, also with the .cfg "
-#~ "extension, which uses the WML preprocessor to include the editor-created "
-#~ "file. This separate file contains both the [scenario] tag and any hand-"
-#~ "edited WML such as events. With this workflow, the add-on’s file "
-#~ "structure could look like this:\n"
-#~ "\n"
-#~ "<header>text='For Wesnoth 1.14'</header>\n"
-#~ "\n"
-#~ "• _main.cfg:\n"
-#~ "  ◦ use “{./scenarios}” to include the “scenarios” directory\n"
-#~ "• maps/map_from_01.cfg\n"
-#~ "  ◦ this is the file created by the scenario editor\n"
-#~ "• scenarios/01_Forest.cfg, instead of the opening [scenario] tag put in "
-#~ "these four lines:\n"
-#~ "  ◦ [scenario]\n"
-#~ "  ◦     {~add-ons/NAME_OF_ADD_ON/maps/map_from_01.cfg}\n"
-#~ "  ◦ [/scenario]\n"
-#~ "  ◦ [+scenario]\n"
-#~ "\n"
-#~ "The first three of those lines insert the scenario-generated file inside "
-#~ "a [scenario] tag. The ‘+’ sign on the fourth line means that two scenario "
-#~ "tags will be combined, with attributes in the second one overriding "
-#~ "attributes in the first one.\n"
-#~ "\n"
-#~ "<header>text='1.16 and later'</header>\n"
-#~ "\n"
-#~ "If your add-on will only be used on 1.16 and later, there are new "
-#~ "features to load .cfg files via map_file, and to avoid repeating the add-"
-#~ "on’s name within the .cfg files.\n"
-#~ "\n"
-#~ "• _main.cfg:\n"
-#~ "  ◦ use “[binary_path]” to add add-on’s directories to the binary path, "
-#~ "which makes “map_file” search the “maps” directory.\n"
-#~ "  ◦ use “{./scenarios}” to include the “scenarios” directory\n"
-#~ "• maps/map_from_01.cfg\n"
-#~ "  ◦ this is the file created by the scenario editor\n"
-#~ "• scenarios/01_Forest.cfg\n"
-#~ "  ◦ inside the [scenario] element, use “map_file=\"map_from_01.cfg\"” to "
-#~ "load that file"
-#~ msgstr ""
-#~ "Quando si carica un file di tipo .cfg, l’editor degli scenari è in grado "
-#~ "di interpretare i file da lui creati, ma ha delle difficoltà con i file "
-#~ "creati a mano.\n"
-#~ "\n"
-#~ "Quelli creati dall’editor non presentano i tag di apertura [scenario] e "
-#~ "quello di chiusura [/scenario]. Se stai creando una campagna (o un’altra "
-#~ "estensione), allora questi tag vanno aggiunti. Puoi trovare altre "
-#~ "informazioni a proposito nella documentazione sul "
-#~ "<ref>dst='editor_map_format' text='formato file mappa'</ref>.\n"
-#~ "\n"
-#~ "Una possibile strada da seguire è quella di creare un file WML separato, "
-#~ "sempre con estensione .cfg, che utilizzi il preprocessore WML per "
-#~ "includere il file creato con l’editor. Questo file separato contiene sia "
-#~ "il tag [scenario] che qualsiasi altro componente WML creato a mano, come "
-#~ "ad esempio gli eventi. In questo modo, la struttura del file estensione "
-#~ "sarebbe questa:\n"
-#~ "\n"
-#~ "<header>text='Per Wesnoth 1.14'</header>\n"
-#~ "\n"
-#~ "• _main.cfg:\n"
-#~ "  ◦ utilizza “{./scenarios}” per includere la directory “scenarios”\n"
-#~ "• maps/map_from_01.cfg\n"
-#~ "  ◦ questo è il file creato dall’editor di scenario\n"
-#~ "• scenarios/01_Forest.cfg, al posto del tag di apertura [scenario] "
-#~ "presenta queste quattro linee:\n"
-#~ "  ◦ [scenario]\n"
-#~ "  ◦     {~add-ons/NOME_ESTENSIONE/maps/map_from_01.cfg}\n"
-#~ "  ◦ [/scenario]\n"
-#~ "  ◦ [+scenario]\n"
-#~ "\n"
-#~ " Le prime tre righe servono per inserire il file generato dall’editor "
-#~ "all’interno di un tag [scenario]; il carattere ‘+’ nella questa linea "
-#~ "serve per combinare insieme due tag scenario, con gli attributi del "
-#~ "secondo che sovrascrivono quelli del primo.\n"
-#~ "\n"
-#~ "<header>text='versione 1.16 e successive'</header>\n"
-#~ "\n"
-#~ "Se la tua estensione verrà utilizzata soltanto per la versione 1.16 e "
-#~ "successive, ci sono anche altri sistemi per caricare un file .cfg tramite "
-#~ "una mappa, evitando così di ripetere il nome dell’estensione all’interno "
-#~ "dei file .cfg .\n"
-#~ "\n"
-#~ "• _main.cfg:\n"
-#~ "  ◦ usa “[binary_path]” per aggiungere le directory degli eseguibili "
-#~ "dell’estensione, in modo che il “file_mappa” possa cercare nella "
-#~ "directory “maps”.\n"
-#~ "  ◦ usa “{./scenarios}” per includere la directory “scenarios”\n"
-#~ "• maps/map_from_01.cfg\n"
-#~ "  ◦ questo è il file creato dall’editor di scenario\n"
-#~ "• scenarios/01_Forest.cfg\n"
-#~ "  ◦ all’interno dell’elemento [scenario], usa "
-#~ "“map_file=\"map_from_01.cfg\"” per caricare quel file"
-
-#~ msgid ""
-#~ "<header>text='Which scenario files use the [scenario] tag'</header>\n"
-#~ "\n"
-#~ "Files created by the scenario editor have the contents of a WML scenario "
-#~ "element, but don’t include the opening [scenario] and closing [/scenario] "
-#~ "tags. For each .cfg file in the userdata folder’s editor/scenarios "
-#~ "subfolder, the game will automatically try to load a scenario from it to "
-#~ "include in the “Custom Scenarios” list (files that fail to load are "
-#~ "ignored). In this folder each file is a separate item - files that fail "
-#~ "to parse as a scenario are ignored, and files must not contain the "
-#~ "[scenario][/scenario] tags.\n"
-#~ "\n"
-#~ "The opposite applies when a scenario is part of a campaign or other add-"
-#~ "on. Typically each scenario has its own .cfg file, however this is "
-#~ "unnecessary - all of the WML in an add-on will be combined by the "
-#~ "preprocessor, it doesn’t matter whether the add-on is written as separate "
-#~ "files or not. The engine needs the [scenario]...[/scenario] (or "
-#~ "[multiplayer]...[/multiplayer]) tags to know which WML is part of each "
-#~ "scenario."
-#~ msgstr ""
-#~ "<header>text='Quali file scenario usano il tag [scenario]'</header>\n"
-#~ "\n"
-#~ "I file creati dall’editor di scenario contengono un elemento WML di "
-#~ "scenario, ma non includono i tag di apertura di chiusura [scenario] e [/"
-#~ "scenario]. Per ogni file .cfg presente nella sottocartella editor/scenari "
-#~ "nella cartella userdata, il gioco proverà a caricare automaticamente da "
-#~ "esso uno scenario da includere nell’elenco “Scenari Personalizzati” (i "
-#~ "file che falliscono il caricamento vengono ignorati). In questa cartella "
-#~ "ogni file è un elemento separato: i file che non vengono riconosciuti "
-#~ "come scenario vengono ignorati, e i file non devono contenere i tags "
-#~ "[scenario][/scenario].\n"
-#~ "\n"
-#~ "Si applica esattamente l’opposto quando uno scenario è parte di una "
-#~ "campagna o di altre estensioni Tipicamente ogni scenario ha il suo "
-#~ "personale file .cfg, ma questo non è necessario: tutto il WML in una "
-#~ "estensione viene combinato dal prepocessore, non importa se l’estensione "
-#~ "è scritta come file distinti o meno. Il motore ha bisogno dei tag "
-#~ "[scenario]...[/scenario] (o [multiplayer]...[/multiplayer]) per sapere "
-#~ "quale WML fa parte di ciascun scenario."
-
-#~ msgid ""
-#~ "This unit can lead your own units that are next to it, making them fight "
-#~ "better.\n"
-#~ "\n"
-#~ "Adjacent own units of lower level will do more damage in battle. When a "
-#~ "unit adjacent to, of a lower level than, and on the same side as a unit "
-#~ "with Leadership engages in combat, its attacks do 25% more damage times "
-#~ "the difference in their levels."
-#~ msgstr ""
-#~ "Quest’unità può comandare le unità del suo esercito accanto a lei, "
-#~ "facendole combattere meglio.\n"
-#~ "\n"
-#~ "Le unità di livello inferiore ad essa adiacenti infliggeranno più danni "
-#~ "in battaglia. Quando un’unità di livello inferiore si trova accanto ad "
-#~ "un’unità alleata con l’abilità “comando” e ingaggia un combattimento, i "
-#~ "suoi attacchi causano il 25% di danni in più moltiplicati per la "
-#~ "differenza di livello."
-
-# da correggere se localizziamo il titolo
-#~ msgid "The Battle for Wesnoth Help"
-#~ msgstr "Aiuto per The Battle for Wesnoth"
-
-#~ msgid "Flat"
-#~ msgstr "Pianura"
-
-#~ msgid "Village"
-#~ msgstr "Villaggio"
-
-#~ msgid "• <bold>text='Green'</bold> if it hasn’t moved this turn."
-#~ msgstr ""
-#~ "• <bold>text='Verde'</bold> se l’unità non si è mossa in questo turno."
-
-#~ msgid ""
-#~ "• <bold>text='Yellow'</bold> if it has moved, but could still move "
-#~ "further or attack."
-#~ msgstr ""
-#~ "• <bold>text='Gialla'</bold> se l’unità è stata già mossa ma può ancora "
-#~ "muoversi o attaccare."
-
-#~ msgid ""
-#~ "This attack is the first verse of the Song of Sun Ascension, which "
-#~ "progresses by one verse each turn this unit uses a song verse attack. "
-#~ "When the last verse is sung or the song sequence is broken due to not "
-#~ "attacking for a turn, the song starts again from the first verse."
-#~ msgstr ""
-#~ "Questo attacco è la prima strofa della Canto dell'Ascensione del Sole, "
-#~ "che avanza di una strofa per ogni turno ne quale questa unità utilizza un "
-#~ "attacco cantato. Quando l'ultima strofa viene cantata o la sequenza della "
-#~ "canzone viene interrotta a causa del mancato attacco in un turno, il "
-#~ "canto ricomincia dalla prima strofa"
-
-#~ msgid ""
-#~ "This attack is the second verse of the Song of Sun Ascension, which "
-#~ "progresses by one verse each turn this unit uses a song verse attack. "
-#~ "When the last verse is sung or the song sequence is broken due to not "
-#~ "attacking for a turn, the song starts again from the first verse."
-#~ msgstr ""
-#~ "Questo attacco è la seconda strofa della Canto dell'Ascensione del Sole, "
-#~ "che avanza di una strofa per ogni turno ne quale questa unità utilizza un "
-#~ "attacco cantato. Quando l'ultima strofa viene cantata o la sequenza della "
-#~ "canzone viene interrotta a causa del mancato attacco in un turno, il "
-#~ "canto ricomincia dalla prima strofa"
-
-#~ msgid ""
-#~ "This attack is the third verse of the Song of Sun Ascension, which "
-#~ "progresses by one verse each turn this unit uses a song verse attack. "
-#~ "When the last verse is sung or the song sequence is broken due to not "
-#~ "attacking for a turn, the song starts again from the first verse."
-#~ msgstr ""
-#~ "Questo attacco è la terza strofa della Canto dell'Ascensione del Sole, "
-#~ "che avanza di una strofa per ogni turno ne quale questa unità utilizza un "
-#~ "attacco cantato. Quando l'ultima strofa viene cantata o la sequenza della "
-#~ "canzone viene interrotta a causa del mancato attacco in un turno, il "
-#~ "canto ricomincia dalla prima strofa"

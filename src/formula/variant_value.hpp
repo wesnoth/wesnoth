@@ -14,7 +14,6 @@
 
 #pragma once
 
-#include "exceptions.hpp"
 #include "formula/callable_fwd.hpp"
 #include "formula_variant.hpp"
 #include "utils/any.hpp"
@@ -25,43 +24,28 @@
 #include <vector>
 #include <boost/range/iterator_range.hpp>
 
+namespace utils
+{
+template<typename To, typename From>
+inline To& cast_as(To&, From& value)
+{
+	return static_cast<To&>(value);
+}
+
+} // namespace utils
+
 namespace wfl
 {
 class variant_value_base;
 class variant_iterator;
 class variant;
 
-using variant_vector = std::vector<variant>;
-using variant_map_raw = std::map<variant, variant>;
-using value_base_ptr = std::shared_ptr<variant_value_base>;
-
-struct type_error : public game::error
-{
-	explicit type_error(const std::string& str);
-};
-
-/** Casts a @ref variant_value_base shared pointer to a new derived type. */
-template<typename T>
-static std::shared_ptr<T> value_cast(value_base_ptr ptr)
-{
-	std::shared_ptr<T> res = std::dynamic_pointer_cast<T>(ptr);
-	if(!res) {
-		throw type_error("Could not cast type");
+#define IMPLEMENT_VALUE_TYPE(value)                                                                                    \
+	static constexpr auto value_type = value;                                                                          \
+	formula_variant::type get_type() const override                                                                    \
+	{                                                                                                                  \
+		return value_type;                                                                                             \
 	}
-
-	return res;
-}
-
-/** Casts a @ref variant_value_base reference to a new derived type. */
-template<typename T>
-static const T& value_ref_cast(const variant_value_base& ptr)
-{
-	try {
-		return dynamic_cast<const T&>(ptr);
-	} catch(const std::bad_cast&) {
-		throw type_error("Could not cast type");
-	}
-}
 
 /**
  * Base class for all variant types.
@@ -129,10 +113,13 @@ public:
 		return false; // null is not less than null
 	}
 
+	/** Each 'final' derived class should define a static type flag. */
+	static constexpr auto value_type = formula_variant::type::null;
+
 	/** Returns the id of the variant type */
 	virtual formula_variant::type get_type() const
 	{
-		return formula_variant::type::null;
+		return value_type;
 	}
 
 	/**
@@ -208,12 +195,12 @@ public:
 
 	virtual bool equals(const variant_value_base& other) const override
 	{
-		return value_ == value_ref_cast<variant_numeric>(other).value_;
+		return value_ == utils::cast_as(*this, other).value_;
 	}
 
 	virtual bool less_than(const variant_value_base& other) const override
 	{
-		return value_ < value_ref_cast<variant_numeric>(other).value_;
+		return value_ < utils::cast_as(*this, other).value_;
 	}
 
 protected:
@@ -243,10 +230,8 @@ public:
 		return string_cast();
 	}
 
-	virtual formula_variant::type get_type() const override
-	{
-		return formula_variant::type::integer;
-	}
+	/** Required by variant_value_base. */
+	IMPLEMENT_VALUE_TYPE(formula_variant::type::integer)
 };
 
 
@@ -283,10 +268,8 @@ public:
 		return to_string_impl(true);
 	}
 
-	virtual formula_variant::type get_type() const override
-	{
-		return formula_variant::type::decimal;
-	}
+	/** Required by variant_value_base. */
+	IMPLEMENT_VALUE_TYPE(formula_variant::type::decimal)
 
 private:
 	std::string to_string_impl(const bool sign_value) const;
@@ -326,10 +309,8 @@ public:
 	virtual bool equals(const variant_value_base& other) const override;
 	virtual bool less_than(const variant_value_base& other) const override;
 
-	virtual formula_variant::type get_type() const override
-	{
-		return formula_variant::type::object;
-	}
+	/** Required by variant_value_base. */
+	IMPLEMENT_VALUE_TYPE(formula_variant::type::object)
 
 	virtual boost::iterator_range<variant_iterator> make_iterator() const override;
 	virtual variant deref_iterator(const utils::any& iter) const override;
@@ -384,18 +365,16 @@ public:
 
 	virtual bool equals(const variant_value_base& other) const override
 	{
-		return string_ == value_ref_cast<variant_string>(other).string_;
+		return string_ == utils::cast_as(*this, other).string_;
 	}
 
 	virtual bool less_than(const variant_value_base& other) const override
 	{
-		return string_ < value_ref_cast<variant_string>(other).string_;
+		return string_ < utils::cast_as(*this, other).string_;
 	}
 
-	virtual formula_variant::type get_type() const override
-	{
-		return formula_variant::type::string;
-	}
+	/** Required by variant_value_base. */
+	IMPLEMENT_VALUE_TYPE(formula_variant::type::string)
 
 private:
 	std::string string_;
@@ -404,22 +383,33 @@ private:
 /**
  * Generalized interface for container variants.
  */
-template<typename Derived>
+template<typename Container>
 class variant_container : public variant_value_base
 {
-protected:
-	/** Only derived classes can instantiate this class. */
-	variant_container() = default;
-
 public:
+	explicit variant_container(const Container& c)
+		: container_(c)
+	{
+	}
+
+	explicit variant_container(Container&& c)
+		: container_(std::move(c))
+	{
+	}
+
+	const Container& get_container() const
+	{
+		return container_;
+	}
+
 	virtual bool is_empty() const override
 	{
-		return container().empty();
+		return container_.empty();
 	}
 
 	virtual std::size_t num_elements() const override
 	{
-		return container().size();
+		return container_.size();
 	}
 
 	virtual bool as_bool() const override
@@ -428,15 +418,8 @@ public:
 	}
 
 	virtual std::string string_cast() const override;
-
 	virtual std::string get_serialized_string() const override;
-
 	virtual std::string get_debug_string(formula_seen_stack& seen, bool verbose) const override;
-
-	bool contains(const variant& member) const
-	{
-		return utils::contains(container(), member);
-	}
 
 	// We implement these here since the interface is the same for all
 	// specializations and leave the deref function to the derived classes.
@@ -449,115 +432,75 @@ public:
 	/** Inherited from variant_value_base. */
 	virtual bool equals(const variant_value_base& other) const override
 	{
-		return container_for(*this) == container_for(other);
+		return container_ == utils::cast_as(*this, other).container_;
 	}
 
 	/** Inherited from variant_value_base. */
 	virtual bool less_than(const variant_value_base& other) const override
 	{
-		return container_for(*this) < container_for(other);
+		return container_ < utils::cast_as(*this, other).container_;
 	}
 
 protected:
-	using to_string_op = std::function<std::string(const variant&)>;
+	using iterator       = typename Container::iterator;
+	using const_iterator = typename Container::const_iterator;
+
+	/** Casts opaque @a iter to a mutable const_iterator reference. */
+	static const_iterator& as_container_iterator(utils::any& iter)
+	{
+		return utils::any_cast<const_iterator&>(iter);
+	}
+
+	/** Casts opaque @a iter to a constant const_iterator reference. */
+	static const const_iterator& as_container_iterator(const utils::any& iter)
+	{
+		return utils::any_cast<const const_iterator&>(iter);
+	}
 
 private:
-	/**
-	 * String conversion helper for @ref string_cast, @ref get_serialized_string,
-	 * and @ref get_debug_string.
-	 *
-	 * Derived classes should implement container-specific handling by defining a
-	 * static to_string_detail function which takes the container's value_type as
-	 * its first parameter and a to_string_op functor as its second.
-	 */
-	std::string to_string_impl(bool annotate, bool annotate_empty, const to_string_op& mod_func) const;
-
-	/** Read-only access to the underlying container. */
-	const auto& container() const
-	{
-		return container_for(*this);
-	}
-
-	/** Helper to call get_container for the derived class. */
-	static const auto& container_for(const variant_value_base& value)
-	{
-		return static_cast<const Derived&>(value).get_container();
-	}
+	Container container_;
 };
 
 
-class variant_list : public variant_container<variant_list>
+class variant_list : public variant_container<std::vector<variant>>
 {
 public:
-	friend class variant_container<variant_list>;
-
-	explicit variant_list(const variant_vector& vec)
-		: container_(vec)
+	explicit variant_list(const std::vector<variant>& vec)
+		: variant_container(vec)
 	{
 	}
 
-	explicit variant_list(variant_vector&& vec)
-		: container_(std::move(vec))
+	explicit variant_list(std::vector<variant>&& vec)
+		: variant_container(std::move(vec))
 	{
 	}
 
-	const variant_vector& get_container() const
-	{
-		return container_;
-	}
-
-
-	virtual formula_variant::type get_type() const override
-	{
-		return formula_variant::type::list;
-	}
+	/** Required by variant_value_base. */
+	IMPLEMENT_VALUE_TYPE(formula_variant::type::list)
 
 	virtual variant deref_iterator(const utils::any&) const override;
-
-private:
-	/** Helper for @ref variant_container::to_string_impl. */
-	static std::string to_string_detail(const variant& value, const to_string_op& op)
-	{
-		return op(value);
-	}
-
-	variant_vector container_;
 };
 
 
-class variant_map : public variant_container<variant_map>
+class variant_map : public variant_container<std::map<variant, variant>>
 {
 public:
-	friend class variant_container<variant_map>;
-
-	explicit variant_map(const variant_map_raw& map)
-		: container_(map)
+	explicit variant_map(const std::map<variant, variant>& map)
+		: variant_container(map)
 	{
 	}
 
-	explicit variant_map(variant_map_raw&& map)
-		: container_(std::move(map))
+	explicit variant_map(std::map<variant, variant>&& map)
+		: variant_container(std::move(map))
 	{
 	}
 
-	const variant_map_raw& get_container() const
-	{
-		return container_;
-	}
-
-
-	virtual formula_variant::type get_type() const override
-	{
-		return formula_variant::type::map;
-	}
+	/** Required by variant_value_base. */
+	IMPLEMENT_VALUE_TYPE(formula_variant::type::map)
 
 	virtual variant deref_iterator(const utils::any&) const override;
-
-private:
-	/** Helper for @ref variant_container::to_string_impl. */
-	static std::string to_string_detail(const variant_map_raw::value_type& value, const to_string_op& op);
-
-	variant_map_raw container_;
 };
+
+#undef IMPLEMENT_VALUE_TYPE
 
 } // namespace wfl

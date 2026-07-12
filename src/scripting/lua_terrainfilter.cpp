@@ -571,7 +571,7 @@ public:
 		try {
 			const wfl::location_callable callable1(l);
 			wfl::map_formula_callable callable(callable1.fake_ptr());
-			return (formula_.get() != nullptr) && formula_->evaluate(callable).as_bool();
+			return formula_ && formula_->evaluate(callable).as_bool();
 		} catch(const wfl::formula_error& e) {
 			ERR_LMG << "Formula error: " << e.type << " at " << e.filename << ':' << e.line << ")";
 			return false;
