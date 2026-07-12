@@ -49,13 +49,13 @@
             "cleanup": [ "*" ],
             "sources": [
                 {
-                    "type": "archive",
-                    "url": "https://download.sourceforge.net/scons/scons-3.0.2.tar.gz",
-                    "sha256": "d0afcf8f4c2ea5fa7af3c9321c0cb3ea1c83d137196be10c4cb2c79cc5dade01"
+                    "type": "file",
+                    "url": "https://files.pythonhosted.org/packages/b8/a7/823091100c88d7d992c8c608d82a88ed59e227d13f8ccb33ea7a96d43d51/SCons-4.8.1-py3-none-any.whl",
+                    "sha256": "a4c3b434330e2d7d975002fd6783284ba348bf394db94c8f83fdc5bf69cdb8d7"
                 }
             ],
             "build-commands": [
-                "python3 setup.py install --prefix=/app"
+                "pip3 install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=\"${FLATPAK_DEST}\" \"scons\" --no-build-isolation"
             ]
         },
         {
