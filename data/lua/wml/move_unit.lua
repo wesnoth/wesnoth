@@ -86,7 +86,10 @@ function wesnoth.wml_actions.move_unit(cfg)
 				x = tonumber(x) or current_unit:to_map(false) or wml.error(coordinate_error)
 				y = tonumber(y) or current_unit:to_map(false) or wml.error(coordinate_error)
 				if not (x == prevX and y == prevY) then x, y = wesnoth.paths.find_vacant_hex(x, y, pass_check) end
-				if not x or not y then wml.error("Could not find a suitable hex near to one of the target hexes in [move_unit].") end
+				if not x or not y then
+					current_unit:to_map(false)
+					wml.error("Could not find a suitable hex near to one of the target hexes in [move_unit].")
+				end
 				table.insert(x_list, x)
 				table.insert(y_list, y)
 				local next_x, next_y = locs(current_unit)
