@@ -18,9 +18,9 @@ def is_in_path(filename):
       return True
   return False
 
-if (os.name == "nt" and not is_in_path("SDL2.dll")):
+if (os.name == "nt" and not is_in_path("SDL3.dll")):
   # Launching Wesnoth is not going to succeed
-  sys.exit("Error: SDL2.dll is not in PATH. This suggests that you haven't added the external\\dll directory to your PATH.")
+  sys.exit("Error: SDL3.dll is not in PATH. This suggests that you haven't added the external\\dll directory to your PATH.")
 
 print("Launching processes... ", end="")
 

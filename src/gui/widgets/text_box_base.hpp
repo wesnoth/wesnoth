@@ -342,6 +342,7 @@ protected:
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
+public:
 	std::size_t get_selection_start() const
 	{
 		return selection_start_;
@@ -354,15 +355,14 @@ protected:
 	}
 	void set_selection_length(const int selection_length);
 
-	std::size_t get_composition_start() const
-	{
-		return ime_start_point_;
-	}
-
-public:
 	bool is_composing() const
 	{
 		return ime_composing_;
+	}
+
+	std::size_t get_composition_start() const
+	{
+		return ime_start_point_;
 	}
 
 	void interrupt_composition();

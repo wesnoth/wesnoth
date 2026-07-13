@@ -399,6 +399,8 @@ struct preferences_list_defines
 	ADDPREF(show_deprecation)
 	/** whether to show an indicator above defenders when an attack misses */
 	ADDPREF(show_attack_miss_indicator)
+	/** whether to use SIMD hardware acceleration for pixel operations */
+	ADDPREF(simd_enabled)
 	/** whether to use a 12 hour vs 24 hours clock in various places on the UI */
 	ADDPREF(use_twelve_hour_clock_format)
 
@@ -546,6 +548,7 @@ struct preferences_list_defines
 		show_combat,
 		show_deprecation,
 		show_attack_miss_indicator,
+		simd_enabled,
 		use_twelve_hour_clock_format,
 		player_joins_sound,
 		player_joins_notif,

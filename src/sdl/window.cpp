@@ -44,18 +44,6 @@ window::window(const std::string& title,
 		throw exception("Failed to create a SDL_Window object.", true);
 	}
 
-#ifdef _WIN32
-	// SDL uses Direct3D v9 by default on Windows systems. However, returning
-	// from the Windows lock screen causes issues with rendering. Resolution
-	// is either to rebuild render textures on the SDL_EVENT_RENDER_TARGETS_RESET
-	// event or use an alternative renderer that does not have this issue.
-	// Suitable options are Direct3D v11+ or OpenGL.
-	// See https://github.com/wesnoth/wesnoth/issues/8038 for details.
-	// Note that SDL_HINT_RENDER_DRIVER implies SDL_HINT_RENDER_BATCHING is
-	// disabled, according to https://discourse.libsdl.org/t/a-couple-of-questions-regarding-batching-in-sdl-2-0-10/26453/2.
-	SDL_SetHint(SDL_HINT_RENDER_DRIVER, "direct3d11");
-#endif
-
 #ifdef __ANDROID__
 	SDL_SetHint(SDL_HINT_ORIENTATIONS, "LandscapeLeft LandscapeRight");
 #endif
@@ -74,20 +62,30 @@ window::window(const std::string& title,
 
 	// try using the default
 	// if that fails, try opengl
+	// and if that fails, try software
 	PLAIN_LOG << "Available renderers: " << utils::join(video::get_available_renderers(), " ");
 	if(!SDL_CreateRendererWithProperties(props)) {
-		PLAIN_LOG << "Failed to create default renderer, checking for opengl";
+		PLAIN_LOG << "Trying opengl renderer after failing to create default renderer with error: " << SDL_GetError();
 
 		if(utils::contains(video::get_available_renderers(), "opengl")) {
 			SDL_SetHint(SDL_HINT_RENDER_DRIVER, "opengl");
 
 			if(!SDL_CreateRendererWithProperties(props)) {
-				throw exception("Failed to create an opengl SDL_Renderer object as a fallback.", true);
-			}
+				PLAIN_LOG << "Trying software renderer after failing to create opengl renderer with error: " << SDL_GetError();
 
-			PLAIN_LOG << "Failed to create default renderer but created fallback opengl renderer";
+				if(utils::contains(video::get_available_renderers(), "software")) {
+					SDL_SetHint(SDL_HINT_RENDER_DRIVER, "software");
+
+					if(!SDL_CreateRendererWithProperties(props)) {
+						throw exception("Failed to create software renderer.", true);
+					} else {
+						PLAIN_LOG << "Failed to create default renderer and opengl renderer but created fallback software renderer";
+					}
+				}
+			} else {
+				PLAIN_LOG << "Failed to create default renderer but created fallback opengl renderer";
+			}
 		} else {
-			PLAIN_LOG << "Available renderers: " << utils::join(video::get_available_renderers(), " ");
 			throw exception("Failed to create default renderer and opengl fallback isn't supported.", true);
 		}
 	}

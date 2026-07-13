@@ -2,13 +2,14 @@
 # Azamat H. Hackimov <azamat.hackimov@gmail.com>, 2007, 2009.
 # Fedor Khod'kov <fkhodkov@gmail.com>, 2016.
 # Artem Khrapov (kabachuha) <artemkhrapov2001@yandex.ru>, 2020-2024.
+# Alexandr Obolonkin (Alexinor) <obolonkin@proton.me>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-l\n"
 "Report-Msgid-Bugs-To: https://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2026-06-23 03:16 UTC\n"
-"PO-Revision-Date: 2024-04-09 23:34+0300\n"
-"Last-Translator: Artem Khrapov <artemkhrapov2001@yandex.ru>\n"
+"PO-Revision-Date: 2026-07-01 18:02+0500\n"
+"Last-Translator: Alexandr Obolonkin (Alexinor) <obolonkin@proton.me>\n"
 "Language-Team: https://wiki.wesnoth.org/RussianTranslation\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 3.4.2\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #. [campaign]: id=Liberty
 #. [achievement_group]
@@ -28,17 +29,17 @@ msgstr "Освобождение"
 #. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:20
 msgid "1x enemies"
-msgstr ""
+msgstr "Враги 1х"
 
 #. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:20
 msgid "Easy"
-msgstr "Легкий"
+msgstr "Лёгкий"
 
 #. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:21
 msgid "2x enemies"
-msgstr ""
+msgstr "Враги 2х"
 
 #. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:21
@@ -48,12 +49,12 @@ msgstr "Нормальный"
 #. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:22
 msgid "3x enemies"
-msgstr ""
+msgstr "Враги 3х"
 
 #. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:22
 msgid "Hard"
-msgstr ""
+msgstr "Сложный"
 
 #. [campaign]: id=Liberty
 #. "marchlander" is archaic English for an inhabitant of a border region, not to be confused with "marshlander"
@@ -74,7 +75,7 @@ msgstr ""
 #. [campaign]: id=Liberty
 #: data/campaigns/Liberty/_main.cfg:27
 msgid "(Novice level, 7 scenarios.)"
-msgstr "(Для начинающих, 7 сценариев.)"
+msgstr "(Для начинающих, 7 сценариев)"
 
 #. [campaign]: id=Liberty
 #. this campaign is not a direct continuation of the story and characters, but is next chronologically and is the recommended next campaign
@@ -83,6 +84,8 @@ msgid ""
 "The saga continues in\n"
 "<i>Heir to the Throne</i>"
 msgstr ""
+"Сага продолжается в\n"
+"<i>Наследнике Престола</i>"
 
 #. [about]
 #: data/campaigns/Liberty/_main.cfg:35
@@ -111,25 +114,20 @@ msgstr "Дайте мне свободу или дайте мне смерть!"
 
 #. [achievement]: id=liberty_or_death
 #: data/campaigns/Liberty/achievements.cfg:8
-#, fuzzy
-#| msgid "Complete Civil Disobedience with at least 3 peasants remaining."
 msgid "Complete <i>Civil Disobedience</i> with at least 3 peasants remaining."
 msgstr ""
-"Завершите «Гражданское неповиновение» хотя бы с тремя выжившими крестьянами."
+"Завершите сценарий <i>Гражданское неповиновение</i> хотя бы с тремя "
+"выжившими крестьянами."
 
 #. [achievement]: id=liberty_nameless
 #: data/campaigns/Liberty/achievements.cfg:14
-#, fuzzy
-#| msgid "The Nameless General"
 msgid "The Nameless Guard"
-msgstr "Безымянный генерал"
+msgstr "Безымянный стражник"
 
 #. [achievement]: id=liberty_nameless
 #: data/campaigns/Liberty/achievements.cfg:15
-#, fuzzy
-#| msgid "Find out the name of the general in Unlawful Orders."
 msgid "Discover the name of the royal guard in <i>Unlawful Orders</i>."
-msgstr "Узнайте имя генерала в «Незаконных приказах»."
+msgstr "Узнайте имя стражника в сценарии <i>Незаконные приказы</i>."
 
 #. [achievement]: id=liberty_iron
 #: data/campaigns/Liberty/achievements.cfg:21
@@ -138,10 +136,8 @@ msgstr "Харпер против Голиафа"
 
 #. [achievement]: id=liberty_iron
 #: data/campaigns/Liberty/achievements.cfg:22
-#, fuzzy
-#| msgid "Defeat an Iron Mauler with Harper in Hide and Seek."
 msgid "Defeat an Iron Mauler with Harper in <i>Hide and Seek</i>."
-msgstr "Повергните Железного кулака от руки Харпер в «Прятках»."
+msgstr "Повергните Железного кулака от руки Харпер в сценарии <i>Прятки</i>."
 
 #. [achievement]: id=liberty_hunter
 #. this is the achievement for the scenario The Hunters
@@ -151,10 +147,8 @@ msgstr "Безупречный охотник"
 
 #. [achievement]: id=liberty_hunter
 #: data/campaigns/Liberty/achievements.cfg:30
-#, fuzzy
-#| msgid "Complete The Hunters with no losses"
 msgid "Complete <i>The Hunters</i> with no losses."
-msgstr "Завершите «Охотники» без потерь."
+msgstr "Завершите сценарий <i>Охотники</i> без потерь."
 
 #. [achievement]: id=liberty_army
 #: data/campaigns/Liberty/achievements.cfg:36
@@ -163,10 +157,8 @@ msgstr "Грубая сила — ничто, без стратегии"
 
 #. [achievement]: id=liberty_army
 #: data/campaigns/Liberty/achievements.cfg:37
-#, fuzzy
-#| msgid "On Challenging difficulty, defeat Dommel in Glory."
 msgid "On Challenging difficulty, defeat Dommel in <i>Glory</i>."
-msgstr "Победите Доммеля на максимальной сложности в сценарии «Слава»."
+msgstr "Победите Доммеля на максимальной сложности в сценарии </i>Слава</i>."
 
 #. [scenario]: id=01_The_Raid
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:4
@@ -321,7 +313,7 @@ msgstr "Горокх"
 #. [event]
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:173
 msgid "Gruk"
-msgstr ""
+msgstr "Грук"
 
 #. [message]: speaker=Fal Khag
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:195
@@ -532,21 +524,17 @@ msgstr "Тупой гоблин."
 
 #. [message]: speaker=unit
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:406
-#, fuzzy
-#| msgid ""
-#| "Hey, someone left their pack here. I could use it to carry some more "
-#| "rocks."
 msgid ""
 "Hey, someone left their pack here. I could use it to carry some heavier "
 "rocks."
 msgstr ""
 "Опа, кто-то оставил здесь свою сумку. Я могу использовать её, чтобы понести "
-"ещё больше камней."
+"камни по увесистее."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:433
 msgid "Your footpad has gained +1 ranged damage!"
-msgstr ""
+msgstr "Ваш беглец получил +1 к дальнему урону!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:445
@@ -905,7 +893,7 @@ msgstr "Да уж, преступники."
 #. [message]: speaker=narrator
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:527
 msgid "Your units — formerly <i>neutral</i> — are now <i>chaotic</i>!"
-msgstr ""
+msgstr "Ваши бойцы, являвшиеся <i>нейтральными</i>, теперь <i>хаотичные</i>!"
 
 #. [message]: speaker=Reinforcement Knight
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:561
@@ -1202,7 +1190,7 @@ msgstr "Ммм! Свежая, сладенькая водичка!"
 #. [message]: speaker=narrator
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:444
 msgid "Your unit has gained +1 maximum hitpoints!"
-msgstr ""
+msgstr "Ваш боец получил +1 к максимальному здоровью!"
 
 #. [message]: speaker=Urk Delek
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:460
@@ -1313,10 +1301,8 @@ msgstr "Эленсефар"
 
 #. [objective]: condition=win
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:194
-#, fuzzy
-#| msgid "Defeat both enemy leaders"
 msgid "Defeat the enemy leader"
-msgstr "Победите обоих вражеских лидеров"
+msgstr "Победите вражеского лидера"
 
 #. [objective]: condition=lose
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:206
@@ -1327,14 +1313,15 @@ msgstr "Смерть Маддока"
 #. "Daneth" is the name of Lord Maddock's late son. This ship also appears in HttT's S10, with the same name.
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:255
 msgid "The Daneth"
-msgstr ""
+msgstr "Данэт"
 
 #. [event]
 #. [unit]: type=Skiff, id=Skiff
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:256
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:330
+#, fuzzy
 msgid "Mary’s Minnow"
-msgstr ""
+msgstr "Гольян Мэри"
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:315
@@ -1363,12 +1350,6 @@ msgstr ""
 
 #. [message]: speaker=Lord Maddock
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:328
-#, fuzzy
-#| msgid ""
-#| "That was partially my fault, since I was not able to send a messenger to "
-#| "you in time. I shall have to inform you now. Five weeks ago, at the Ford "
-#| "of Abez, Queen Asheviere’s men allied themselves with the northern orcs "
-#| "and betrayed King Garard II."
 msgid ""
 "That was partially my fault, since I was not able to send a messenger to you "
 "in time. I shall have to inform you now. Five weeks ago, at the Ford of "
@@ -1376,7 +1357,7 @@ msgid ""
 msgstr ""
 "Частью это моя вина, я не смог вовремя послать к тебе вестника. Я должен "
 "сообщить тебе теперь. Пять недель назад, при переправе Абез люди королевы "
-"Ашевир вступили в союз с северными орками и предали короля Гарада II."
+"Ашевир вступили в союз с северными орками и предали короля Гарарда II."
 
 #. [message]: speaker=Lord Maddock
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:332
@@ -1386,6 +1367,10 @@ msgid ""
 "Prince Eldred fell in battle not long after, upon which Asheviere claimed "
 "the throne."
 msgstr ""
+"Официально преступление совершил один из его капитанов. Неофициально ходят "
+"слухи, что к нему были причастны королева Ашевир и её сын Элдред. В любом "
+"случае, принц Элдред пал в битве вскоре после этого, после чего Ашевир "
+"заявила свои права на трон."
 
 #. [message]: speaker=Lord Maddock
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:336
@@ -1436,6 +1421,11 @@ msgid ""
 "maintains a large garrison south at the great fortress of Halstead, but even "
 "should they mobilize all their troops, I doubt they could take Elensefar."
 msgstr ""
+"Они не придут. Я не намерен принимать чью-либо сторону в конфликте Веснота, "
+"и королева прекрасно понимает, что не стоит пытаться заставить меня "
+"действовать. Правда, она содержит большой гарнизон на юге, в великой "
+"крепости Халстед, но даже если они мобилизуют все свои войска, я сомневаюсь, "
+"что они смогут взять Эленсефар."
 
 #. [message]: speaker=Harper
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:356
@@ -1456,6 +1446,11 @@ msgid ""
 "and we are not in the habit of maintaining a large standing army. It will "
 "take time to assemble mercenaries of the right caliber."
 msgstr ""
+"Да, мне известно о склонности королевы Ашевир нанимать орков для пополнения "
+"своих войск. Я тоже начал расширять свою армию, хотя и считаю, что "
+"враждебные действия маловероятны. Но население Эленсефара невелико, и мы не "
+"привыкли содержать большую постоянную армию. Потребуется время, чтобы "
+"собрать наёмников должного калибра."
 
 #. [message]: speaker=Lord Maddock
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:364
@@ -1466,6 +1461,11 @@ msgid ""
 "wizard and his rebels have suffered several defeats. I have some concessions "
 "that I shall have to make..."
 msgstr ""
+"Договор между Эленсефаром и Веснотом очень давний, и я не думаю, что Её "
+"Величество намерена его нарушать. Но я не могу позволить себе нажить врагов "
+"в Велдине, вам это ясно. Ашевир, похоже, выигрывает свою гражданскую войну. "
+"Волшебник и его повстанцы потерпели несколько поражений. Мне придётся пойти "
+"на некоторые уступки..."
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:368
@@ -1474,11 +1474,15 @@ msgstr "А что насчет нас? Бросите нас как псов э�
 
 #. [message]: speaker=Lord Maddock
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:372
+#, fuzzy
 msgid ""
 "Do not put words in my mouth. I am more than willing to act should the need "
 "arise. I am already in covert communication with— ...listen, there is a "
 "bigger picture here, Baldras."
 msgstr ""
+"Не вкладывайте мне слова в уста. Я более чем готов действовать, если "
+"возникнет необходимость. Я уже веду тайную связь с… …слушай, здесь дело не "
+"только в этом, Бальдрас."
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:376
@@ -1519,16 +1523,12 @@ msgstr "Эй, глядите! Здесь лежат какие-то сокров
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:440
-#, fuzzy
-#| msgid ""
-#| "It says, “Here lies Daneth, child of the Light, loyal defender of Lord "
-#| "and Land.” Whoever that was."
 msgid ""
 "It says, “Here lies Daneth, child of the Light, loyal defender of Lord and "
 "Land.”"
 msgstr ""
-"Тут написано: «Здесь покоится Данет, дитя Света, верный защитник Владыки и "
-"Земли.» Кто бы он ни был."
+"Тут написано: «Здесь покоится Данэт, дитя Света, верный защитник Владыки и "
+"Земли.»"
 
 #. [message]: speaker=Baldras
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:444
@@ -1619,10 +1619,8 @@ msgstr ""
 
 #. [modify_unit]
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:886
-#, fuzzy
-#| msgid "General Kestrel"
 msgid "Kestrel"
-msgstr "Генерал Кестрел"
+msgstr "Кестрел"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:893
@@ -1631,13 +1629,6 @@ msgstr "Кто вы? Что вы?"
 
 #. [message]: speaker=Kestrel
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:897
-#, fuzzy
-#| msgid ""
-#| "We... are accursed. We were the soldiers of Prince Eldred, the King’s son "
-#| "and betrayer... when the Prince was slain at the hands of the mage "
-#| "Delfador, those of us who bore witness to it were warped into these "
-#| "twisted forms. Now, our mortal bodies pass... into another plane of "
-#| "hellish existence..."
 msgid ""
 "We... are accursed. We were the soldiers of Prince Eldred, the King’s son "
 "and betrayer... when the Prince stooped to black magic, we were damned... "
@@ -1645,8 +1636,7 @@ msgid ""
 msgstr ""
 "Мы... прокляты. Мы были солдатами принца Элдреда, сына короля и предателя... "
 "когда принца повергла рука мага Делфадора, те из нас, кто был свидетелем "
-"этому, обратились в эти мерзкие обличья. Теперь наши земные тела уйдут... на "
-"следующий круг адского существования..."
+"этому, обратились в эти мерзкие обличья."
 
 #. [message]: speaker=Kestrel
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:901
@@ -1654,6 +1644,8 @@ msgid ""
 "The Queen sent us away... sent us west. Now, our mortal bodies pass... into "
 "another plane of hellish existence..."
 msgstr ""
+"Королева послала нас прочь... отправила нас на запад. Теперь наши смертные "
+"тела переходят... в другую плоскость адского существования..."
 
 #. [message]: speaker=Lord Maddock
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:924
@@ -2864,13 +2856,12 @@ msgstr "Как прикажете, мой господин."
 
 #. [message]: speaker=Sir Gwydion
 #: data/campaigns/Liberty/scenarios/07_Glory.cfg:394
-#, fuzzy
-#| msgid ""
-#| "Ready thy lances! Let us trample the armies of Weldyn beneath our steeds!"
 msgid ""
 "Lo, Knights of Elensefar, the battle hath begun ere our arrival. Ready thy "
 "lances! Let us trample the armies of Weldyn beneath our steeds!"
-msgstr "Готовьте копья, братья мои. Побьём же армии Велдина!"
+msgstr ""
+"Узрите, рыцари Эленсефара, битва началась ещё до нашего прибытия. Готовьте "
+"копья, братья мои. Побьём же армии Велдина!"
 
 #. [message]: role=farseer
 #: data/campaigns/Liberty/scenarios/07_Glory.cfg:407
@@ -3216,10 +3207,8 @@ msgstr ""
 
 #. [unit_type]: id=Lord of Elensefar, race=human
 #: data/campaigns/Liberty/units/Maddock.cfg:4
-#, fuzzy
-#| msgid "Port of Elensefar"
 msgid "Lord of Elensefar"
-msgstr "Порт Эленсефара"
+msgstr "Лорд Эленсефара"
 
 #. [unit_type]: id=Lord of Elensefar, race=human
 #: data/campaigns/Liberty/units/Maddock.cfg:7
@@ -3232,6 +3221,14 @@ msgid ""
 "lies a fierce independence, a trait that sometimes puts them at odds with "
 "the aristocrats of other regions."
 msgstr ""
+"Величественный город-государство Эленсефар — самое богатое человеческое "
+"поселение на Великом континенте, обладающее репутацией и властью, которые не "
+"соответствуют его относительно небольшой численности населения. В отличие от "
+"более воинственно настроенных внутренних дворян, правители Эленсефара в "
+"совершенстве владеют искусством торговли и мореплавания, и известны своей "
+"особой доброжелательностью. Однако за этим торговым обаянием скрывается "
+"яростная независимость, черта, которая иногда приводит к конфликтам с "
+"аристократами других регионов."
 
 #. [unit_type]: id=Thug_Peasant
 #: data/campaigns/Liberty/units/Villagers.cfg:20

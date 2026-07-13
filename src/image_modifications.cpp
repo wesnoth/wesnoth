@@ -477,34 +477,11 @@ void pad_modification::operator()(surface& src) const
 	src = padded;
 }
 
-/*
- * The Opacity IPF doesn't seem to work with surface-wide alpha and instead needs per-pixel alpha.
- * If this is needed anywhere else it can be moved back to sdl/utils.*pp.
- */
+/* The Opacity IPF doesn't seem to work with surface-wide alpha and instead needs per-pixel alpha. */
 void o_modification::operator()(surface& src) const
 {
 	if(src) {
-		uint8_t alpha_mod = float_to_color(opacity_);
-
-		surface_lock lock(src);
-		uint32_t* beg = lock.pixels();
-		uint32_t* end = beg + src.area();
-
-		while(beg != end) {
-			uint8_t alpha = (*beg) >> 24;
-
-			if(alpha) {
-				uint8_t r, g, b;
-				r = (*beg) >> 16;
-				g = (*beg) >> 8;
-				b = (*beg);
-
-				alpha = color_multiply(alpha, alpha_mod);
-				*beg = (alpha << 24) + (r << 16) + (g << 8) + b;
-			}
-
-			++beg;
-		}
+		apply_surface_opacity(src, opacity_);
 	}
 }
 

@@ -7,10 +7,11 @@
 ### Editor
 ### Multiplayer
 ### Lua API
+   * `text_box` gui widget now has the gettable and settable properties `selection_start` and `selection_length` for cursor position/selection start and length of text selection respectively.
 ### Packaging
 ### Terrain
 ### Translations
-   * Updated translations: Bengali, British English, French, Polish, Russian
+   * Updated translations: Bengali, British English, Czech, French, Galician, Hungarian, Italian, Polish, Russian, Serbian
 ### Units
 ### User interface
    * Fix sound effect slider which was incorrectly affecting the music track volume.

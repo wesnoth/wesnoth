@@ -77,6 +77,7 @@ std::vector<server_info> server_list;
 
 bool allow_insecure = false;
 bool addon_server_info = false;
+bool no_simd = false;
 
 //
 // Gamestate flags

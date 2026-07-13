@@ -2,13 +2,15 @@
 
 import pefile, pathlib, shutil
 
-dlls = set()
 initial_modules = """
 /msys64/mingw64/bin/libwebp-7.dll
-/msys64/mingw64/bin/libturbojpeg.dll
+/msys64/mingw64/bin/libjpeg-8.dll
+/msys64/mingw64/bin/libwebpdemux-2.dll
+/msys64/mingw64/bin/libwebpmux-3.dll
 wesnoth.exe
 wesnothd.exe
 """.split()
+dlls = set([f for f in initial_modules if f.endswith(".dll")])
 dllpath = pathlib.Path('/msys64/mingw64/bin')
 pe_modules = set(map(pefile.PE, initial_modules))
 
