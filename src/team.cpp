@@ -977,7 +977,7 @@ std::string team::get_side_color_id(unsigned side)
 		static const std::string fallback_id = "lightred";
 
 		// Validate that the fallback color exists
-		if(team_rgb_range.find(fallback_id) != team_rgb_range.end()) {
+		if(utils::contains(game_config::team_rgb_range, fallback_id)) {
 			return fallback_id;
 		}
 
