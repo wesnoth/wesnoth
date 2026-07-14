@@ -139,7 +139,9 @@ point window::get_size()
 point window::get_output_size()
 {
 	point res;
-	SDL_GetCurrentRenderOutputSize(*this, &res.x, &res.y);
+	// Not using SDL_GetCurrentRenderOutputSize because that returns the size of the rendering target adjusted for current logical presentation state.
+	// This function returns the size of the rendering target ignoring logical presentation, which is what Wesnoth requires to detect window resizes.
+	SDL_GetRenderOutputSize(*this, &res.x, &res.y);
 
 	return res;
 }
