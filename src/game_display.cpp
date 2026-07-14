@@ -20,6 +20,7 @@
 
 #include "game_display.hpp"
 
+#include <cstdint>
 #include <utility>
 
 
@@ -347,14 +348,16 @@ void game_display::draw_hex(const map_location& loc)
 	// Darken unreachable
 	// We remove the reachability mask of the unit that we want to attack.
 	if(!is_shrouded && !reach_map_.empty() && !reachable && loc != attack_indicator_dst_) {
-		std::string darken_opacity = std::to_string(prefs::get().reach_map_darken_opacity());
-		std::string darken_suffix = "~O("+darken_opacity+"%)";
-		if (!prefs::get().reach_map_darken_tex()) {
-			// IDK about this solid black mode. If it causes problems, probably just remove it.
-			darken_suffix = "~WIPE_ALPHA()" + darken_suffix;
-		}
+		std::string darken_suffix = prefs::get().reach_map_darken_tex() ? "" : "~WIPE_ALPHA()";
+
+		texture darken_tex = image::get_texture(game_config::images::unreachable + darken_suffix, image::scale_quality::linear, image::HEXED);
+		uint8_t darken_opacity = prefs::get().reach_map_darken_opacity() * (255.0/100.0);
+		darken_tex.set_alpha_mod(darken_opacity);
+
 		drawing_buffer_add(drawing_layer::reachmap_darken, loc,
-			[tex = image::get_texture(game_config::images::unreachable + darken_suffix, image::scale_quality::linear, image::HEXED)](const rect& dest) { draw::blit(tex, dest); });
+			[darken_tex](const rect& dest) {
+				draw::blit(darken_tex, dest);
+			});
 	}
 	// Highlight reachable
 	if(!is_shrouded && !reach_map_.empty() && reachable) {
