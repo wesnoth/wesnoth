@@ -95,7 +95,8 @@ function wesnoth.wml_actions.display_scenario_preview(cfg)
 	-------------------------
 	-- REWARD: OTHER
 	-------------------------
-	local otherlabel = cfg.otherlabel and "\n"..cfg.otherlabel.."\n" or ""
+	local otherlabel      = cfg.otherlabel and "\n"..cfg.otherlabel.."\n" or ""
+	local choose_only_one = cfg.choose_only_one and _"<b>-OR-</b> (choose one reward)" or ""
 
 	-------------------------
 	-- TIMER
@@ -182,6 +183,12 @@ function wesnoth.wml_actions.display_scenario_preview(cfg)
 						horizontal_alignment="left",
 						T.label{  id="other0",  use_markup=true,  label=otherlabel  }
 					}},
+					-- Choose Only One
+					T.row{ T.column{
+						vertical_alignment="top",
+						horizontal_alignment="left",
+						T.label{  id="choose_only_one",  use_markup=true,  label=choose_only_one  }
+					}},
 					-- New Companion
 					T.row{ T.column{
 						vertical_alignment="top",
@@ -240,6 +247,9 @@ function wesnoth.wml_actions.display_scenario_preview(cfg)
 					dialog["companion0"].visible = false
 					dialog["companion1"].visible = false
 					dialog["companion2"].visible = false
+				end
+				if (not cfg.choose_only_one) then
+					dialog["choose_only_one"].visible = false
 				end
 				if (not cfg.seasons_remaining) then
 					dialog["timer"].visible = false
