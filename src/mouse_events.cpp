@@ -853,6 +853,19 @@ pathfind::marked_route mouse_handler::get_route(const unit* un, map_location go_
 	return mark_route(route);
 }
 
+bool mouse_handler::right_click(int /*x*/, int /*y*/, const bool /*browse*/)
+{
+	// Right-click unselect fires between this call (button down) and right_mouse_up() (button up)
+	// which clears selected_hex_ before right_click_show_menu() can read it.
+	// So remember the unit selection here for the case where a right-click lands on a unit, so that
+	// unit unselection takes precedence over the context menu. Refer: GitHub #2905
+	if(selected_hex_.valid()) {
+		unselected_reach_ = true;
+	}
+
+	return true;
+}
+
 bool mouse_handler::right_click_show_menu(int x, int y, const bool /*browse*/)
 {
 	if(selected_hex_.valid() || unselected_reach_) {
