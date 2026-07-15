@@ -66,7 +66,10 @@ public:
 	}
 	void set_border_size(int border) {border_ = border;}
 	// set width for word wrapping (use -1 to disable it)
-	void set_width(int w) {width_ = w;}
+	void set_width(int w) {
+		width_ = w;
+		width_set_ = true;
+	}
 	void set_height(int h) { height_ = h; }
 	void set_clip_rect(const rect& r) {clip_rect_ = r;}
 	void set_alignment(ALIGN align) {align_ = align;}
@@ -127,6 +130,8 @@ private:
 	double xpos_, ypos_, xmove_, ymove_;
 	std::chrono::milliseconds lifetime_;
 	int width_, height_;
+	// Track if a width is explicitly unrestricted vs just uninitialised - this distinction is important for RTL text
+	bool width_set_ = false;
 	rect clip_rect_;
 	bool visible_;
 	font::ALIGN align_;

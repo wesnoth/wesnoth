@@ -89,6 +89,13 @@ void floating_textbox::update_location(game_display& gui)
 	flabel.set_alignment(font::LEFT_ALIGN);
 	flabel.set_clip_rect(area);
 
+	// This label should always be a single line and never wrap. Without explicitly setting -1, Pango
+	// will measure it against a full-screen-wide wrap box (floating label's clip_rect width), and for
+	// a pure RTL caption (eg Arabic, Hebrew) Pango inflates the measured width to practically the
+	// entire screen width - therefore there is no room for the text-box and it appears as though it
+	// doesn't work for RTL text. Refer GitHub #8673.
+	flabel.set_width(-1);
+
 	label_ = font::add_floating_label(flabel);
 
 	if(label_ == 0) {
