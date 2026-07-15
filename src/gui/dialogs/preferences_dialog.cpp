@@ -511,7 +511,11 @@ void preferences_dialog::initialize_callbacks()
 		[this](auto&&...) { handle_res_select(); });
 
 	connect_signal<event::SDL_VIDEO_RESIZE>(
-		[this, &res_list](auto&&...) { set_resolution_list(res_list); });
+		[this, &toggle_fullscreen, &res_list](auto&&...) {
+			toggle_fullscreen.set_value(video::is_fullscreen());
+			res_list.set_active(!video::is_fullscreen());
+			set_resolution_list(res_list);
+		});
 
 	/* PIXEL SCALE */
 	register_integer("pixel_scale_slider", true,
