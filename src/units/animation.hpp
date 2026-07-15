@@ -56,29 +56,18 @@ public:
 	bool need_update() const;
 	bool need_minimal_update() const;
 	bool animation_finished() const;
-	bool animation_finished_potential() const;
-	void update_last_draw_time();
+	void try_advance_to_current_frame();
 	std::chrono::milliseconds get_begin_time() const;
 	std::chrono::milliseconds get_end_time() const;
 
-	auto time_to_tick(const std::chrono::milliseconds& animation_time) const
+	auto get_elapsed_time() const
 	{
-		return unit_anim_.time_to_tick(animation_time);
+		return unit_anim_.get_elapsed_time();
 	}
 
-	auto get_animation_time() const
+	void set_duration_limit(const std::chrono::milliseconds& time)
 	{
-		return unit_anim_.get_animation_time();
-	}
-
-	void set_max_animation_time(const std::chrono::milliseconds& time)
-	{
-		unit_anim_.set_max_animation_time(time);
-	}
-
-	auto get_animation_time_potential() const
-	{
-		return unit_anim_.get_animation_time_potential();
+		unit_anim_.set_duration_limit(time);
 	}
 
 	void start_animation(const std::chrono::milliseconds& start_time
@@ -90,7 +79,7 @@ public:
 
 	void update_parameters(const map_location& src, const map_location& dst);
 	void pause_animation();
-	void restart_animation();
+	void resume_animation();
 	auto get_current_frame_begin_time() const
 	{
 		return unit_anim_.get_current_frame_begin_time();
@@ -123,12 +112,13 @@ private:
 	public:
 		explicit particle(const std::chrono::milliseconds& start_time = std::chrono::milliseconds{0}, const frame_builder& builder = frame_builder())
 			: animated<unit_frame>(start_time)
-			, accelerate(true)
 			, parameters_(builder)
 			, halo_id_()
 			, last_frame_begin_time_(0)
 			, cycles_(false)
-		{}
+		{
+			set_uses_acceleration(true);
+		}
 		explicit particle(const config& cfg, const std::string& frame_string = "frame");
 
 		virtual ~particle();
@@ -149,10 +139,9 @@ private:
 		void start_animation(const std::chrono::milliseconds& start_time);
 		frame_parameters parameters(const frame_parameters& default_val) const
 		{
-			return get_current_frame().merge_parameters(get_current_frame_time(), parameters_.parameters(get_animation_time() - get_begin_time()), default_val);
+			return get_current_frame().merge_parameters(get_time_in_current_frame(), parameters_.parameters(get_elapsed_time() - get_begin_time()), default_val);
 		}
 		void clear_halo();
-		bool accelerate;
 
 	private:
 		//animation params that can be locally overridden by frames
@@ -244,7 +233,7 @@ public:
 		, int value2 = 0);
 	void start_animations();
 	void pause_animation();
-	void restart_animation();
+	void resume_animation();
 
 	void clear()
 	{
@@ -255,8 +244,7 @@ public:
 	void set_all_standing();
 
 	bool would_end() const;
-	std::chrono::milliseconds get_animation_time() const;
-	std::chrono::milliseconds get_animation_time_potential() const;
+	std::chrono::milliseconds get_elapsed_time() const;
 	std::chrono::milliseconds get_end_time() const;
 	void wait_for_end() const;
 	void wait_until(const std::chrono::milliseconds& animation_time) const;
