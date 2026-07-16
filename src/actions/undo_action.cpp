@@ -14,6 +14,7 @@
 */
 
 #include "actions/undo_action.hpp"
+#include "actions/undo_move_action.hpp"
 #include "game_board.hpp"
 #include "log.hpp"                   // for LOG_STREAM, logger, etc
 #include "scripting/game_lua_kernel.hpp"
@@ -22,7 +23,6 @@
 #include "game_data.hpp"
 #include "units/unit.hpp"
 #include "utils/general.hpp"
-#include "utils/ranges.hpp"
 #include "sound.hpp"
 
 #include <cassert>
@@ -47,9 +47,50 @@ undo_action_container::undo_action_container()
 bool undo_action_container::undo(int side)
 {
 	int last_unit_id = resources::gameboard->unit_id_manager().get_save_id();
-	for(auto& p_step : steps_ | utils::views::reverse) {
-		p_step->undo(side);
+
+	auto it = steps_.rbegin();
+	while(it != steps_.rend()) {
+		auto* first_move = dynamic_cast<undo::move_action*>(it->get());
+		if(!first_move) {
+			(*it)->undo(side);
+			++it;
+			continue;
+		}
+
+		// A run of consecutive move_action steps within a single undo_action_container
+		// always comes from one original multi-hex move (that's how move_unit() records
+		// it hex by hex), so undo them as one continuously animated motion instead of
+		// stopping the unit at every hex. The run only ends early if a non-move step
+		// (e.g. an [on_undo] event) is interleaved, or if a step fails to undo.
+		std::vector<map_location> combined_route;
+		unit_ptr moved_unit;
+		const map_location::direction starting_dir = first_move->starting_dir;
+
+		while(it != steps_.rend()) {
+			auto* step = dynamic_cast<undo::move_action*>(it->get());
+			if(!step) {
+				break;
+			}
+
+			unit_ptr u = step->undo_state(side);
+			++it;
+			if(!u) {
+				break;
+			}
+			moved_unit = u;
+
+			if(combined_route.empty()) {
+				combined_route.assign(step->route.rbegin(), step->route.rend());
+			} else {
+				combined_route.insert(combined_route.end(), step->route.rbegin() + 1, step->route.rend());
+			}
+		}
+
+		if(moved_unit) {
+			undo::move_action::animate(combined_route, moved_unit, starting_dir);
+		}
 	}
+
 	if(last_unit_id - unit_id_diff_ < 0) {
 		ERR_NG << "Next unit id is below 0 after undoing";
 	}

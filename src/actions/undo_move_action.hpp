@@ -52,6 +52,21 @@ struct move_action : undo_action, shroud_clearing_action
 
 	/** Undoes this action. */
 	virtual bool undo(int side);
+
+	/**
+	 * Applies the state changes of undoing this step (unit position, movement points,
+	 * facing, goto), without animating anything.
+	 * @return the affected unit, or nullptr if the step could not be undone.
+	 *
+	 * This is split out from undo() so that undo_action_container::undo() can merge the
+	 * animation of consecutive per-hex move_action steps (which all stem from a single
+	 * multi-hex move) into one continuous motion instead of animating each hex separately.
+	 */
+	unit_ptr undo_state(int side);
+
+	/** Animates a unit traversing the given (already start-to-end ordered) route, and
+	 *  settles it into a standing animation at the end. */
+	static void animate(const std::vector<map_location>& route, const unit_ptr& u, map_location::direction dir);
 };
 
 }
