@@ -23,6 +23,7 @@
 #include "game_data.hpp"
 #include "units/unit.hpp"
 #include "utils/general.hpp"
+#include "utils/ranges.hpp"
 #include "sound.hpp"
 
 #include <cassert>
@@ -47,50 +48,9 @@ undo_action_container::undo_action_container()
 bool undo_action_container::undo(int side)
 {
 	int last_unit_id = resources::gameboard->unit_id_manager().get_save_id();
-
-	auto it = steps_.rbegin();
-	while(it != steps_.rend()) {
-		auto* first_move = dynamic_cast<undo::move_action*>(it->get());
-		if(!first_move) {
-			(*it)->undo(side);
-			++it;
-			continue;
-		}
-
-		// A run of consecutive move_action steps within a single undo_action_container
-		// always comes from one original multi-hex move (that's how move_unit() records
-		// it hex by hex), so undo them as one continuously animated motion instead of
-		// stopping the unit at every hex. The run only ends early if a non-move step
-		// (e.g. an [on_undo] event) is interleaved, or if a step fails to undo.
-		std::vector<map_location> combined_route;
-		unit_ptr moved_unit;
-		const map_location::direction starting_dir = first_move->starting_dir;
-
-		while(it != steps_.rend()) {
-			auto* step = dynamic_cast<undo::move_action*>(it->get());
-			if(!step) {
-				break;
-			}
-
-			unit_ptr u = step->undo_state(side);
-			++it;
-			if(!u) {
-				break;
-			}
-			moved_unit = u;
-
-			if(combined_route.empty()) {
-				combined_route.assign(step->route.rbegin(), step->route.rend());
-			} else {
-				combined_route.insert(combined_route.end(), step->route.rbegin() + 1, step->route.rend());
-			}
-		}
-
-		if(moved_unit) {
-			undo::move_action::animate(combined_route, moved_unit, starting_dir);
-		}
+	for(auto& p_step : steps_ | utils::views::reverse) {
+		p_step->undo(side);
 	}
-
 	if(last_unit_id - unit_id_diff_ < 0) {
 		ERR_NG << "Next unit id is below 0 after undoing";
 	}
@@ -101,6 +61,38 @@ bool undo_action_container::undo(int side)
 void undo_action_container::add(t_step_ptr&& action)
 {
 	steps_.emplace_back(std::move(action));
+}
+
+/**
+ * Merges runs of consecutive undo::move_action steps that together form one continuous
+ * path (each one picking up exactly where the previous left off) into a single step
+ * covering the whole stretch.
+ *
+ * move_unit() records one move_action per hex so that, when undoing, any [on_undo] event
+ * handlers interleaved between hexes still fire in the correct order relative to the
+ * unit's position. That splitting serves no purpose across a stretch where nothing was
+ * interleaved, so this collapses those stretches back into one step - which both undoes
+ * (and later animates) as a single continuous motion, and avoids writing one redundant
+ * step per hex to the save file.
+ */
+void undo_action_container::combine_moves()
+{
+	for(auto it = steps_.begin(); it != steps_.end(); ++it) {
+		auto* first = dynamic_cast<undo::move_action*>(it->get());
+		if(!first) {
+			continue;
+		}
+
+		auto next = std::next(it);
+		while(next != steps_.end()) {
+			auto* second = dynamic_cast<undo::move_action*>(next->get());
+			if(!second || second->route.front() != first->route.back()) {
+				break;
+			}
+			first->route.insert(first->route.end(), second->route.begin() + 1, second->route.end());
+			next = steps_.erase(next);
+		}
+	}
 }
 
 

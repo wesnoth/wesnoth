@@ -258,6 +258,7 @@ void undo_list::init_action()
 void undo_list::finish_action(bool can_undo)
 {
 	if(current_) {
+		current_->combine_moves();
 		current_->set_unit_id_diff(synced_context::get_unit_id_diff());
 		undos_.emplace_back(std::move(current_));
 		if(!can_undo) {

@@ -59,24 +59,7 @@ void move_action::write(config & cfg) const
  * Undoes this action.
  * @return true on success; false on an error.
  */
-bool move_action::undo(int side)
-{
-	unit_ptr u = undo_state(side);
-	if(!u) {
-		return false;
-	}
-
-	std::vector<map_location> rev_route = route;
-	std::reverse(rev_route.begin(), rev_route.end());
-	animate(rev_route, u, starting_dir);
-	return true;
-}
-
-/**
- * Applies the state changes of undoing this step, without animating anything.
- * @return the affected unit, or nullptr if the step could not be undone.
- */
-unit_ptr move_action::undo_state(int)
+bool move_action::undo(int)
 {
 	game_display & gui = *game_display::get_singleton();
 	unit_map &   units = resources::gameboard->units();
@@ -92,7 +75,7 @@ unit_ptr move_action::undo_state(int)
 	if(u == units.end() || u_end != units.end()) {
 		// this can actually happen if the scenario designer has abused the [allow_undo] command
 		ERR_NG << "Illegal 'undo' found. Possible abuse of [allow_undo]?";
-		return nullptr;
+		return false;
 	}
 
 	// Record the unit's current state so it can be redone.
@@ -100,28 +83,20 @@ unit_ptr move_action::undo_state(int)
 	goto_hex = u->get_goto();
 
 	// Move the unit.
+	unit_display::move_unit(rev_route, u.get_shared_ptr(), true, starting_dir);
 	u->anim_comp().reset_affect_adjacent(gui);
 	units.move(u->get_location(), rev_route.back());
 	unit::clear_status_caches();
 	u->anim_comp().reset_affect_adjacent(gui);
 
 	// Restore the unit's old state.
-	unit_ptr result = units.find(rev_route.back()).get_shared_ptr();
-	result->set_goto(map_location());
-	result->set_movement(saved_moves, true);
-
-	return result;
-}
-
-/**
- * Animates a unit traversing the given route, and settles it into a standing animation
- * at the end.
- */
-void move_action::animate(const std::vector<map_location>& route, const unit_ptr& u, map_location::direction dir)
-{
-	unit_display::move_unit(route, u, true, dir);
+	u = units.find(rev_route.back());
+	u->set_goto(map_location());
+	u->set_movement(saved_moves, true);
 	u->anim_comp().set_standing();
-	game_display::get_singleton()->invalidate_unit_after_move(route.front(), route.back());
+
+	gui.invalidate_unit_after_move(rev_route.front(), rev_route.back());
+	return true;
 }
 static auto reg_undo_move = undo_action_container::subaction_factory<move_action>();
 
