@@ -1191,11 +1191,9 @@ void terrain_builder::build_terrains()
 		assert(min_constraint != nullptr);
 
 		// NOTE: if min_types is not empty, we have found a valid min_constraint;
-		for(t_translation::ter_list::const_iterator t = min_types.begin(); t != min_types.end(); ++t) {
-			const std::vector<map_location>* locations = &terrain_by_type_[*t];
-
-			for(std::vector<map_location>::const_iterator itor = locations->begin(); itor != locations->end(); ++itor) {
-				const map_location loc = legacy_difference(*itor, min_constraint->loc);
+		for(const auto& t : min_types) {
+			for(map_location mloc : terrain_by_type_[t]) {
+				const map_location loc = legacy_difference(mloc, min_constraint->loc);
 
 				if(rule_matches(rule, loc, min_constraint)) {
 					apply_rule(rule, loc);
