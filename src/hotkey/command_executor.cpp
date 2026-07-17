@@ -24,6 +24,7 @@
 #include "gui/dialogs/drop_down_menu.hpp"
 #include "gui/widgets/retval.hpp"
 #include "filesystem.hpp"
+#include "font/pango/escape.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "preferences/general.hpp"
@@ -521,7 +522,8 @@ void command_executor::get_menu_images(display& disp, std::vector<config>& items
 			}
 
 			item["label"] = desc;
-			item["details"] = hotkey::get_names(item_id);
+			// The context menu label is rendered as Pango mark-up, so a hot-key such as '<' must be escaped.
+			item["details"] = font::escape_text(hotkey::get_names(item_id));
 		}
 	}
 }
