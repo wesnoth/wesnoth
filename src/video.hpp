@@ -88,9 +88,6 @@ bool testing();
 /** Whether the game has set up a window to render into */
 bool has_window();
 
-/** Whether we are currently in fullscreen mode */
-bool is_fullscreen();
-
 /**
  * Set the fullscreen state.
  *

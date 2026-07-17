@@ -802,14 +802,6 @@ point current_resolution()
 	return window->get_size();
 }
 
-bool is_fullscreen()
-{
-	if(testing_) {
-		return true;
-	}
-	return (window->get_flags() & SDL_WINDOW_FULLSCREEN) != 0;
-}
-
 void set_fullscreen(bool fullscreen)
 {
 	if (headless_ || testing_) {

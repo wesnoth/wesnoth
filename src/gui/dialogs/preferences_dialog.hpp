@@ -93,6 +93,8 @@ private:
 	void handle_theme_select();
 	void handle_gui2_theme_select();
 	void fullscreen_toggle_callback();
+	void fullscreen_entered_callback();
+	void fullscreen_left_callback();
 	void add_hotkey_callback(listbox& hotkeys);
 	void remove_hotkey_callback(listbox& hotkeys);
 	void default_hotkey_callback();

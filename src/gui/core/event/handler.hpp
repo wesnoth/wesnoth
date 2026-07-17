@@ -176,6 +176,8 @@ enum ui_event : uint32_t {
 	NOTIFY_REMOVE_TOOLTIP          = encode_category(40, event_category::notification),
 	RECEIVE_KEYBOARD_FOCUS         = encode_category(41, event_category::notification),
 	LOSE_KEYBOARD_FOCUS            = encode_category(42, event_category::notification),
+	SDL_WINDOW_ENTER_FULLSCREEN    = encode_category(61, event_category::notification),
+	SDL_WINDOW_LEAVE_FULLSCREEN    = encode_category(62, event_category::notification),
 
 	REQUEST_PLACEMENT              = encode_category(43, event_category::message),
 	MESSAGE_SHOW_TOOLTIP           = encode_category(44, event_category::message),
