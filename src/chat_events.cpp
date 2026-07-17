@@ -105,9 +105,14 @@ void chat_handler::send_command(const std::string& cmd, const std::string& args 
 	send_to_server(data);
 }
 
+// Return value of true represents a successful command completion and closure of the text box
+// Return value of false represents an unsuccessful input and leaves the text box open
 bool chat_handler::do_speak(const std::string& message, bool allies_only)
 {
-	if (message.empty() || message == "/") {
+	if(message.empty()) {
+		return true;
+	}
+	if(message == "/") {
 		return false;
 	}
 	bool is_command = (message[0] == '/');
