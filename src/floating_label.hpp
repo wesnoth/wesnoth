@@ -19,6 +19,7 @@
 #include "sdl/point.hpp"
 #include "sdl/rect.hpp"
 #include "sdl/texture.hpp"
+#include "utils/optional_fwd.hpp"
 
 #include <chrono>
 #include <string>
@@ -126,7 +127,7 @@ private:
 	color_t color_, bgcolor_;
 	double xpos_, ypos_, xmove_, ymove_;
 	std::chrono::milliseconds lifetime_;
-	int width_, height_;
+	utils::optional<int> width_, height_;
 	rect clip_rect_;
 	bool visible_;
 	font::ALIGN align_;
