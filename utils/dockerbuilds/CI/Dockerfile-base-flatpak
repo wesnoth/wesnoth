@@ -1,8 +1,16 @@
 FROM wesnoth/wesnoth:2204-master
 
+# jammy's flatpak-builder (1.2.2) cannot build against the 24.08 runtime:
+# it tries to run the in-sandbox appstream-compose tool, which was removed
+# from the SDK in 24.08. flatpak-builder >= 1.4 calls "appstreamcli compose"
+# on the host instead, so pull both it and a matching appstream from the
+# flatpak team's PPA.
+RUN apt update
+RUN apt install -y software-properties-common
+RUN add-apt-repository -y ppa:flatpak/stable
 RUN apt update
 # install flatpak
-RUN apt install -y flatpak flatpak-builder jq
+RUN apt install -y flatpak flatpak-builder appstream jq
 RUN flatpak remote-add flathub https://flathub.org/repo/flathub.flatpakrepo
 # install runtime
 RUN flatpak install -y flathub org.freedesktop.Platform/x86_64/22.08 org.freedesktop.Sdk/x86_64/22.08 org.freedesktop.Platform/x86_64/23.08 org.freedesktop.Sdk/x86_64/23.08 org.freedesktop.Platform/x86_64/24.08 org.freedesktop.Sdk/x86_64/24.08
