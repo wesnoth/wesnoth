@@ -513,6 +513,15 @@ void preferences_dialog::initialize_callbacks()
 	connect_signal<event::SDL_VIDEO_RESIZE>(
 		[this, &res_list](auto&&...) { set_resolution_list(res_list); });
 
+	// Toggling full-screen via hot-key by-passes fullscreen_toggle_callback()
+	// So watch for the window actually entering/leaving full-screen to refresh
+	// resolution list enablement and full-screen status
+	connect_signal<event::SDL_WINDOW_ENTER_FULLSCREEN>(
+		[this](auto&&...) { fullscreen_entered_callback(); });
+
+	connect_signal<event::SDL_WINDOW_LEAVE_FULLSCREEN>(
+		[this](auto&&...) { fullscreen_left_callback(); });
+
 	/* PIXEL SCALE */
 	register_integer("pixel_scale_slider", true,
 		[]() {return prefs::get().pixel_scale();},
@@ -1107,7 +1116,7 @@ void preferences_dialog::pre_show()
 	gui2::bind_default_status_label(find_widget<slider>("pixel_scale_slider"));
 }
 
-// Special fullsceen callback
+// Special fullscreen callback
 void preferences_dialog::fullscreen_toggle_callback()
 {
 	const bool ison = find_widget<toggle_button>("fullscreen").get_value_bool();
@@ -1117,6 +1126,26 @@ void preferences_dialog::fullscreen_toggle_callback()
 
 	set_resolution_list(res_list);
 	res_list.set_active(!ison);
+}
+
+void preferences_dialog::fullscreen_entered_callback()
+{
+	find_widget<toggle_button>("fullscreen").set_value(true);
+
+	menu_button& res_list = find_widget<menu_button>("resolution_set");
+
+	set_resolution_list(res_list);
+	res_list.set_active(false);
+}
+
+void preferences_dialog::fullscreen_left_callback()
+{
+	find_widget<toggle_button>("fullscreen").set_value(false);
+
+	menu_button& res_list = find_widget<menu_button>("resolution_set");
+
+	set_resolution_list(res_list);
+	res_list.set_active(true);
 }
 
 void preferences_dialog::handle_res_select()

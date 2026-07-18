@@ -176,6 +176,12 @@ private:
 	 */
 	void video_resize(const point& new_size);
 
+	/** Fires an event indicating the window has entered full-screen. */
+	void window_enter_fullscreen();
+
+	/** Fires an event indicating the window has left full-screen. */
+	void window_leave_fullscreen();
+
 	/**
 	 * Fires a generic mouse event.
 	 *
@@ -439,6 +445,14 @@ void sdl_event_handler::handle_event(const SDL_Event& event)
 			video_resize(video::game_canvas_size());
 			break;
 
+		case SDL_EVENT_WINDOW_ENTER_FULLSCREEN:
+			window_enter_fullscreen();
+			break;
+
+		case SDL_EVENT_WINDOW_LEAVE_FULLSCREEN:
+			window_leave_fullscreen();
+			break;
+
 		case SDL_EVENT_WINDOW_MOUSE_ENTER:
 		case SDL_EVENT_WINDOW_FOCUS_GAINED:
 			activate();
@@ -546,6 +560,22 @@ void sdl_event_handler::activate()
 	for(auto dispatcher : dispatchers_)
 	{
 		dispatcher->fire(SDL_ACTIVATE, dynamic_cast<widget&>(*dispatcher), nullptr);
+	}
+}
+
+void sdl_event_handler::window_enter_fullscreen()
+{
+	for(auto dispatcher : dispatchers_)
+	{
+		dispatcher->fire(SDL_WINDOW_ENTER_FULLSCREEN, dynamic_cast<widget&>(*dispatcher), nullptr);
+	}
+}
+
+void sdl_event_handler::window_leave_fullscreen()
+{
+	for(auto dispatcher : dispatchers_)
+	{
+		dispatcher->fire(SDL_WINDOW_LEAVE_FULLSCREEN, dynamic_cast<widget&>(*dispatcher), nullptr);
 	}
 }
 
@@ -1052,6 +1082,12 @@ std::ostream& operator<<(std::ostream& stream, const ui_event event)
 			break;
 		case SDL_ACTIVATE:
 			stream << "SDL activate";
+			break;
+		case SDL_WINDOW_ENTER_FULLSCREEN:
+			stream << "SDL window enters fullscreen";
+			break;
+		case SDL_WINDOW_LEAVE_FULLSCREEN:
+			stream << "SDL window leaves fullscreen";
 			break;
 		case MESSAGE_SHOW_TOOLTIP:
 			stream << "message show tooltip";
