@@ -49,6 +49,11 @@ namespace actions {
 		 */
 		void read(const config& cfg);
 		void add(t_step_ptr&& action);
+		/**
+		 * Merges consecutive undo::move_action steps that form one continuous path into a
+		 * single step. See the .cpp file for why this is safe and useful.
+		 */
+		void combine_moves();
 		void set_unit_id_diff(int id_diff)
 		{
 			unit_id_diff_ = id_diff;
