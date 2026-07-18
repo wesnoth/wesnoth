@@ -983,6 +983,8 @@ void preferences_dialog::default_hotkey_callback()
 
 	prefs::get().clear_hotkeys();
 
+	find_widget<text_box>("filter").set_value("");
+
 	// Set up the list again and reselect the default sorting option.
 	listbox& hotkey_list = setup_hotkey_list();
 	hotkey_list.set_active_sorter("sort_0", sort_order::type::ascending, true);

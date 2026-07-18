@@ -93,6 +93,13 @@ void language_selection::pre_show()
 	connect_signal_mouse_left_click(show_all_toggle, std::bind(
 			&language_selection::shown_filter_callback, this));
 
+	// Disable show all languages toggle when --all-translations or --translations-over 0
+	// command line options are used, since in these cases there is no difference in the
+	// languages shown between toggles, making it redundant.
+	if(get_min_translation_percent() <= 0) {
+		show_all_toggle.set_active(false);
+	}
+
 	const language_def& current_language = get_language();
 
 	for(const auto& lang : langs_) {
@@ -106,7 +113,11 @@ void language_selection::pre_show()
 				{ "use_markup", "true" }
 			}},
 			{ "translated_total", {
-				{ "label", markup::span_color(game_config::red_to_green(lang.percent), lang.percent, "%") },
+				{
+					"label",
+					lang.localename.empty() ? "" :	// do not show 100% for system default language
+						markup::span_color(game_config::red_to_green(lang.percent), lang.percent, "%")
+				},
 				{ "use_markup", "true" }
 			}},
 		});

@@ -833,7 +833,7 @@ void rich_label::signal_handler_left_button_click(bool& handled)
 	DBG_GUI_RL << "(mouse) " << mouse;
 	DBG_GUI_RL << "link count :" << links_.size();
 
-	std::optional<std::string> click_target;
+	utils::optional<std::string> click_target;
 	for(const auto& entry : links_) {
 		DBG_GUI_RL << "link " << entry.second;
 
