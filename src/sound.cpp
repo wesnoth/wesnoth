@@ -596,6 +596,11 @@ static void play_new_music()
 	// Fade in the new music
 	MIX_SetTrackAudio(tracks[music_track_id].get(), music.get());
 
+	// Apply this track's per-track volume, relative to the player's music volume before starting playback
+	float track_gain = (prefs::get().music_volume() / 100.0f) * (current_track->volume() / 100.0f);
+	track_gain = std::clamp(track_gain, 0.0f, 1.0f);
+	MIX_SetTrackGain(tracks[music_track_id].get(), track_gain);
+
 	sdl3_properties props;
 	SDL_SetNumberProperty(props, MIX_PROP_PLAY_FADE_IN_MILLISECONDS_NUMBER, fading_time.count());
 
@@ -968,11 +973,21 @@ int get_music_volume()
 void set_music_volume(int vol)
 {
 	if(mix_ok && vol >= 0) {
-		if(vol > 1.0f) {
-			vol = 1.0f;
-		}
+		// If someone additionally changed volume on a music tag this will make sure changes are still affected with master sound
+		//1. Converting the 0-100 slider to a 0.0f - 1.0f decimal
+		float track_gain = vol / 100.0f;
 
-		MIX_SetTrackGain(sound::tracks[music_track_id].get(), vol);
+		//2. Apply master track volume changes to current song (while keeping existing song individual volume attribute)
+		if(current_track){
+			
+			track_gain *= (current_track->volume() / 100.0f);
+		}
+		
+		//3. Clamping btween 0.0f and 1.0
+		track_gain = std::clamp(track_gain, 0.0f, 1.0f);
+
+		//4. Passing track_gain (aka final and safer for ears volume) to the hardware to hear
+		MIX_SetTrackGain(sound::tracks[music_track_id].get(), track_gain);
 	}
 }
 
