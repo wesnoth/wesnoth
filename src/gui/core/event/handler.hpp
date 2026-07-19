@@ -281,6 +281,6 @@ std::ostream& operator<<(std::ostream& stream, const ui_event event);
  *
  * @note added as backwards compatibility for gui::is_in_dialog.
  */
-bool is_in_dialog();
+bool is_in_dialog(int x = -1, int y = -1);
 
 } // namespace gui2

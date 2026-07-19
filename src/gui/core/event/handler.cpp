@@ -120,7 +120,7 @@ static uint32_t timer_sdl_poll_events(uint32_t, void*)
  */
 class sdl_event_handler : public events::sdl_handler
 {
-	friend bool gui2::is_in_dialog();
+	friend bool gui2::is_in_dialog(int x, int y);
 
 public:
 	sdl_event_handler();
@@ -516,8 +516,8 @@ void sdl_event_handler::connect(dispatcher* dispatcher)
 	DBG_GUI_E << "adding dispatcher " << static_cast<void*>(dispatcher);
 
 	if(dispatchers_.empty()) {
-		LOG_GUI_E << "creating new dispatcher event context";
-		event_context = std::make_unique<events::event_context>();
+		// LOG_GUI_E << "creating new dispatcher event context";
+		// event_context = std::make_unique<events::event_context>();
 		join();
 	}
 
@@ -1123,9 +1123,19 @@ std::ostream& operator<<(std::ostream& stream, const ui_event event)
 
 } // namespace event
 
-bool is_in_dialog()
+bool is_in_dialog(int x, int y)
 {
-	return !event::get_all_dispatchers().empty();
+	const auto& dispatchers = event::get_all_dispatchers();
+	if (dispatchers.empty() || x < 0 || y < 0) {
+		return false;
+	} else {
+		for (const auto& d : dispatchers) {
+			if (d->is_at({x, y})) {
+				return true;
+			}
+		}
+		return false;
+	}
 }
 
 } // namespace gui2

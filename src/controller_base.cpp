@@ -91,7 +91,14 @@ void controller_base::long_touch_callback(int x, int y)
 
 void controller_base::handle_event(const SDL_Event& event)
 {
-	if(gui2::is_in_dialog()) {
+	int x = -1;
+	int y = -1;
+	if (event.type == SDL_EVENT_MOUSE_BUTTON_DOWN) {
+		x = event.button.x;
+		y = event.button.y;
+	}
+
+	if(display::get_singleton() == nullptr || gui2::is_in_dialog(x, y)) {
 		return;
 	}
 
