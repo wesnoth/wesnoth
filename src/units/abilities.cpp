@@ -246,6 +246,11 @@ void unit_ability_t::do_compat_fixes(config& cfg, const std::string& tag, bool i
 		cfg.remove_children("filter_weapon");
 	}
 
+	if (tag == "drains" && cfg["value"].empty()) {
+		deprecated_message("the default value of 50 of [drains]value= is deprecated", DEP_LEVEL::FOR_REMOVAL, version_info("1.21"), "Specify value=50 directly.");
+		cfg["value"] = 50;
+	}
+
 	if(!cfg["overwrite_specials"].blank() || cfg.optional_child("overwrite")) {
 		deprecated_message("overwrite_specials= or [overwrite] in weapon specials", DEP_LEVEL::INDEFINITE, "", "Use [overwrite_specials] instead.");
 	}
