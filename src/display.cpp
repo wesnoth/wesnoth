@@ -1747,6 +1747,9 @@ bool display::set_zoom(unsigned int amount, const bool validate_value_and_set_in
 	redraw_background_ = true;
 	invalidate_all();
 
+	// Zooming can move the screen centre without a scroll, e.g. when pinned against a map edge.
+	scroll_event_.notify_observers();
+
 	return true;
 }
 
