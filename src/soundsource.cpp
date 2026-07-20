@@ -19,6 +19,8 @@
 #include "sound.hpp"
 #include "soundsource.hpp"
 
+#include <cmath>
+
 namespace soundsource {
 
 using namespace std::chrono_literals;
@@ -195,9 +197,14 @@ int positional_source::calculate_volume(const map_location &loc, const display &
 	if((check_shrouded_ && disp.shrouded(loc)) || (check_fogged_ && disp.fogged(loc)))
 		return DISTANCE_SILENT;
 
+	// Pixel distance from the screen centre to the hex, in hex_size units, with
+	// the x axis scaled by hex_size/hex_width to correct the column spacing.
 	rect area = disp.map_area();
-	map_location center = disp.hex_clicked_on(area.x + area.w / 2, area.y + area.h / 2);
-	int distance = distance_between(loc, center);
+	const double hex = disp.hex_size();
+	point src = disp.get_location(loc);
+	double dx = ((src.x + hex / 2.0) - (area.x + area.w / 2.0)) * hex / disp.hex_width();
+	double dy = (src.y + hex / 2.0) - (area.y + area.h / 2.0);
+	double distance = std::sqrt(dx * dx + dy * dy) / hex;
 
 	if(distance <= range_) {
 		return 0;
@@ -207,8 +214,10 @@ int positional_source::calculate_volume(const map_location &loc, const display &
 		return DISTANCE_SILENT;
 	}
 
-	return static_cast<int>((((distance - range_)
-			/ static_cast<double>(faderange_)) * DISTANCE_SILENT));
+	int volume = static_cast<int>(((distance - range_)
+			/ static_cast<double>(faderange_)) * DISTANCE_SILENT);
+
+	return volume >= DISTANCE_SILENT ? DISTANCE_SILENT : volume;
 }
 
 void positional_source::write_config(config& cfg) const
