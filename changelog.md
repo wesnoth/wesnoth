@@ -2,12 +2,17 @@
 ### Add-ons client
 ### Add-ons server
 ### Campaigns
+   * Of Pearls and Pirates
+     * Don’t show the tutorial hint about save-loading when Biased RNG is active
    * The Deceivers Gambit
      * Fix missing siphon attack sound, which would cause a crash anytime the attack was used.
+   * The South Guard
+     * Don’t show some of the tutorial hints about RNG when Biased RNG is active
 ### Editor
 ### Multiplayer
 ### Lua API
    * `text_box` gui widget now has the gettable and settable properties `selection_start` and `selection_length` for cursor position/selection start and length of text selection respectively.
+   * Added getter `wesnoth.game_config.random_mode`, which is only intended to be used for the tutorial hints.
 ### Packaging
 ### Terrain
 ### Translations

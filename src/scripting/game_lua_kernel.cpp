@@ -1396,6 +1396,11 @@ GAME_CONFIG_SETTER("do_healing", bool, game_lua_kernel) {
 	game_config_glk_tag k2{k.ref};
 	k2.pc().gamestate().do_healing_ = value;}
 
+GAME_CONFIG_GETTER("random_mode", std::string, game_lua_kernel) {
+	game_config_glk_tag k2{k.ref};
+	return k2.pc().get_classification().random_mode;
+}
+
 GAME_CONFIG_GETTER("theme", std::string, game_lua_kernel) {
 	game_config_glk_tag k2{k.ref};
 	return k2.gamedata().get_theme();
