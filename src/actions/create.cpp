@@ -33,6 +33,7 @@
 #include "gettext.hpp"
 #include "log.hpp"
 #include "map/map.hpp"
+#include "terrain/terrain.hpp"
 #include "pathfind/pathfind.hpp"
 #include "play_controller.hpp"
 #include "recall_list_manager.hpp"
@@ -77,13 +78,18 @@ std::set<std::string> get_recruits(int side, const map_location &recruit_loc)
 	unit_map::const_iterator find_it = resources::gameboard->units().find(recruit_loc);
 	if ( find_it != u_end ) {
 		if ( find_it->can_recruit()  &&  find_it->side() == side  &&
-		     resources::gameboard->map().is_keep(recruit_loc) )
+			 resources::gameboard->map().is_keep(recruit_loc) )
 		{
 			// We have been requested to get the recruit list for this
 			// particular leader.
 			leader_in_place = true;
 			local_result.insert(find_it->recruits().begin(),
-			                    find_it->recruits().end());
+								find_it->recruits().end());
+
+			// Add any fixed recruits declared by the keep terrain itself.
+			const terrain_type& keep_terrain = resources::gameboard->map().get_terrain_info(recruit_loc);
+			const auto& guild = keep_terrain.guild_recruits();
+			local_result.insert(guild.begin(), guild.end());
 		}
 		else if ( find_it->is_visible_to_team(current_team, false) )
 		{
@@ -103,6 +109,11 @@ std::set<std::string> get_recruits(int side, const map_location &recruit_loc)
 			if (allow_local && dynamic_cast<game_state&>(*resources::filter_con).can_recruit_on(*u, recruit_loc)) {
 				leader_in_place= true;
 				local_result.insert(u->recruits().begin(), u->recruits().end());
+
+				// Add any fixed recruits declared by the keep terrain itself.
+				const terrain_type& keep_terrain = resources::gameboard->map().get_terrain_info(u->get_location());
+				const auto& guild = keep_terrain.guild_recruits();
+				local_result.insert(guild.begin(), guild.end());
 			}
 			else if ( !leader_in_place )
 				global_result.insert(u->recruits().begin(), u->recruits().end());
@@ -379,8 +390,12 @@ namespace { // Helpers for check_recruit_location()
 			return RECRUIT_NO_LEADER;
 
 		if ( !unit_type.empty() ) {
-			// Make sure the specified type is in the unit's recruit list.
-			if ( !utils::contains(recruiter.recruits(), unit_type) )
+			// Make sure the specified type is in the unit's recruit list,
+			// or in the guild roster of the keep terrain the recruiter is standing on.
+			const terrain_type& keep_terrain = resources::gameboard->map().get_terrain_info(recruiter.get_location());
+			const auto& guild = keep_terrain.guild_recruits();
+			const bool in_guild = std::find(guild.begin(), guild.end(), unit_type) != guild.end();
+			if ( !utils::contains(recruiter.recruits(), unit_type) && !in_guild )
 				return RECRUIT_NO_ABLE_LEADER;
 		}
 

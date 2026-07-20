@@ -152,6 +152,9 @@ public:
 	bool is_castle() const { return castle_; }
 	bool is_keep() const { return keep_; }
 
+	/** Returns the fixed recruit list embedded in this terrain (e.g. a Mercenary Guild). Empty if none. */
+	const std::vector<std::string>& guild_recruits() const { return guild_recruits_; }
+
 	//these descriptions are shown for the terrain in the mouse over
 	//depending on the owner or the village
 	const t_string& income_description() const { return income_description_; }
@@ -270,4 +273,7 @@ private:
 	bool hide_help_;
 	bool hide_in_editor_;
 	bool hide_if_impassable_;
+
+	/** Unit types that can always be recruited from this terrain, regardless of side roster. */
+	std::vector<std::string> guild_recruits_;
 };

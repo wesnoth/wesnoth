@@ -17,6 +17,7 @@
 #include "game_version.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
+#include "serialization/string_utils.hpp"
 #include "terrain/terrain.hpp"
 #include "utils/general.hpp"
 
@@ -66,6 +67,7 @@ terrain_type::terrain_type()
 	, hide_help_(false)
 	, hide_in_editor_(false)
 	, hide_if_impassable_(false)
+	, guild_recruits_()
 {
 }
 
@@ -106,6 +108,7 @@ terrain_type::terrain_type(const config& cfg)
 	, hide_help_(cfg["hide_help"].to_bool(false))
 	, hide_in_editor_(cfg["hidden"].to_bool(false))
 	, hide_if_impassable_(cfg["hide_if_impassable"].to_bool(false))
+	, guild_recruits_(utils::split(cfg["guild_recruits"].str()))
 {
 /**
  *  @todo reenable these validations. The problem is that all MP
@@ -222,6 +225,7 @@ terrain_type::terrain_type(const terrain_type& base, const terrain_type& overlay
 	, hide_help_(true)
 	, hide_in_editor_(base.hide_in_editor_ || overlay.hide_in_editor_)
 	, hide_if_impassable_(base.hide_if_impassable_ || overlay.hide_if_impassable_)
+	, guild_recruits_(overlay.guild_recruits_.empty() ? base.guild_recruits_ : overlay.guild_recruits_)
 {
 	if(description_.empty()) {
 		description_ = base.description();
@@ -299,7 +303,8 @@ bool terrain_type::operator==(const terrain_type& other) const {
 		&& overlay_               == other.overlay_
 		&& editor_default_base_   == other.editor_default_base_
 		&& hide_in_editor_        == other.hide_in_editor_
-		&& hide_help_             == other.hide_help_;
+		&& hide_help_             == other.hide_help_
+		&& guild_recruits_        == other.guild_recruits_;
 }
 
 void merge_alias_lists(t_translation::ter_list& first, const t_translation::ter_list& second)
