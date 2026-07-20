@@ -97,6 +97,7 @@ music_track::music_track(const std::string& file_path, const config& node)
 	, append_(node["append"].to_bool())
 	, immediate_(node["immediate"].to_bool())
 	, shuffle_(node["shuffle"].to_bool(true))
+	, volume_(node["volume"].to_int(100))
 {
 	if(title_.empty()) {
 		title_ = title_from_file(file_path_);
@@ -121,6 +122,7 @@ void music_track::write(config &parent_node, bool append) const
 	}
 	//default behaviour is to shuffle
 	m["shuffle"] = shuffle_;
+	m["volume"] = volume_;
 }
 
 } /* end namespace sound */
