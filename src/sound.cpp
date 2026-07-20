@@ -771,28 +771,48 @@ void write_music_play_list(config& snapshot)
 	}
 }
 
+static MIX_Point3D distance_to_position(unsigned int distance)
+{
+	// SDL3_mixer attenuates as 1/distance; invert that so the audible fade stays linear, like SDL2's Mix_SetDistance.
+	MIX_Point3D pos;
+	pos.x = 0.0f;
+	pos.y = static_cast<float>(DISTANCE_SILENT) / (DISTANCE_SILENT - distance);
+	pos.z = 0.0f;
+	return pos;
+}
+
 void reposition_sound(unsigned id, unsigned int distance)
 {
-	for(unsigned ch = 0; ch < tracks.size(); ++ch) {
-		if(ch != id) {
-			continue;
+	int track;
+	{
+		std::scoped_lock lock(soundsource_map_mutex);
+		auto it = soundsource_map.find(id);
+		if(it == soundsource_map.end()) {
+			return;
 		}
+		track = it->second;
+	}
 
-		if(distance == DISTANCE_SILENT) {
-			MIX_StopTrack(tracks[ch].get(), 0);
-		} else {
-			MIX_Point3D pos;
-			pos.x = 0;
-			pos.y = distance;
-			pos.z = 0;
-			MIX_SetTrack3DPosition(tracks[ch].get(), &pos);
-		}
+	if(distance >= DISTANCE_SILENT) {
+		MIX_StopTrack(tracks[track].get(), 0);
+	} else {
+		MIX_Point3D pos = distance_to_position(distance);
+		MIX_SetTrack3DPosition(tracks[track].get(), &pos);
 	}
 }
 
 bool is_sound_playing(int id)
 {
-	return MIX_TrackPlaying(tracks[id].get());
+	int track;
+	{
+		std::scoped_lock lock(soundsource_map_mutex);
+		auto it = soundsource_map.find(id);
+		if(it == soundsource_map.end()) {
+			return false;
+		}
+		track = it->second;
+	}
+	return MIX_TrackPlaying(tracks[track].get());
 }
 
 void stop_sound(unsigned id)
@@ -810,7 +830,7 @@ static void play_sound_internal(const std::string& files,
 		const std::chrono::milliseconds& loop_ticks = 0ms,
 		const std::chrono::milliseconds& fadein_ticks = 0ms)
 {
-	if(files.empty() || !mix_ok) {
+	if(files.empty() || distance >= DISTANCE_SILENT || !mix_ok) {
 		return;
 	}
 
@@ -848,11 +868,10 @@ static void play_sound_internal(const std::string& files,
 	const auto localized = filesystem::get_localized_path(filename.value_or(""));
 	std::string real_path = localized.value_or(filename.value());
 
-	MIX_Point3D pos;
-	pos.x = 0;
-	pos.y = distance;
-	pos.z = 0;
-	MIX_SetTrack3DPosition(tracks[free_track].get(), &pos);
+	if(group == sound_tracks::type::sound_source) {
+		MIX_Point3D pos = distance_to_position(distance);
+		MIX_SetTrack3DPosition(tracks[free_track].get(), &pos);
+	}
 
 	std::shared_ptr<MIX_Audio> sound;
 	if(sound_cache.count(real_path) != 0) {
@@ -861,6 +880,11 @@ static void play_sound_internal(const std::string& files,
 	} else {
 		sound.reset(MIX_LoadAudio(mixer, real_path.c_str(), false), &MIX_DestroyAudio);
 		DBG_AUDIO << "cache miss for " << real_path;
+	}
+
+	if(!sound) {
+		ERR_AUDIO << "Could not load sound file '" << real_path << "' : " << SDL_GetError();
+		return;
 	}
 
 	MIX_SetTrackAudio(tracks[free_track].get(), sound.get());
