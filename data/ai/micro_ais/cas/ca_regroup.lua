@@ -179,11 +179,13 @@ function return_table:execution(cfg,data)
 
     -- expand a locationset, with options for impassable/unwalkable terrain
     local function locationset_expand(set,count_arg,args)
+        local ignore_impassable = args and args.skip_impassable or false;
+        local ignore_unwalkable = args and args.skip_unwalkable or false;
         local count = count_arg or 1;
         for i=1,count,1 do for x,y in set:clone():iter() do
                 for u,v in wesnoth.current.map:iter_adjacent(x,y) do
-                    if args and not args.skip_impassable and is_impassable(u,v) then goto next_hex end
-                    if args and not args.skip_unwalkable and is_unwalkable(u,v) then goto next_hex end
+                    if ignore_impassable and is_impassable(u,v) then goto next_hex end
+                    if ignore_unwalkable and is_unwalkable(u,v) then goto next_hex end
                     set[{u,v}] = args and args.new_hex_value or true;
                     ::next_hex::
                 end
