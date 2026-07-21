@@ -49,6 +49,7 @@ controller_base::controller_base()
 	, key_release_listener_(*this)
 	, long_touch_timer_(0)
 {
+	leave(); // testing
 }
 
 controller_base::~controller_base()
