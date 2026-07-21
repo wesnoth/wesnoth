@@ -154,7 +154,7 @@ function return_table:execution(cfg,data)
             (                                          hex.allies > (hex.enemies-enemy_adjustment)*1.3)
     end
 
-    -- unless at least 1/3 of our army is flying units, don't try retreating onto/across unwalkable terrain
+    -- unless at least 1/2 of our army is flying units, don't try retreating onto/across unwalkable terrain
     local my_units_all <const> = wesnoth.units.find_on_map({ side=wesnoth.current.side });
     local my_flying_count = 0;
     for i,unit in ipairs(my_units_all) do if unit:movement_on('Qxu')<99 then my_flying_count=my_flying_count+1 end end
@@ -267,7 +267,6 @@ function return_table:execution(cfg,data)
     -- put all these values in one place so it's easier to see how they relate to each other
 --     local VALUE__injured_and_adjacent_to_healer <const> = 1; -- plus the usual adjacent-to-ally bonus - TODO implement this
 --     local VALUE__healer_and_adjacent_to_injured <const> = 1; -- plus the usual adjacent-to-ally bonus - TODO implement this
-    local VALUE__each_adjacent_ally         <const> = 1;
     local VALUE__distance_to_leader_over_3  <const> = 1;
     local VALUE__enemies_when_near_leader   <const> = 0.001 -- purely used as a tiebreaker for otherwise identical hexes when near our leader (prefer more threat so we defend our leader better)
     local VALUE__defense                    <const> = 0.1 -- e.g. 40% defense = 4 value. 60% defense = 6 value. Defense is valued higher than threat, so we may leave our leader open briefly if
@@ -721,20 +720,17 @@ function return_table:execution(cfg,data)
             local already_occupied = wesnoth.units.find_on_map({ x=x, y=y });
             if next(already_occupied)~=nil and already_occupied[1].id~=myunit.id then goto next_hex end
 
-            -- 2) add some value (for us, not to the base hex) if it's adjacent to other allies
-            local value = hex.value;
-            value = value + VALUE__each_adjacent_ally * #(wesnoth.units.find_on_map({ T.filter_side{T.allied_with{ side=wesnoth.current.side }} }));
-
-            -- 3) add value depending on the terrain (for us, not to the base hex)
+            -- 2) add value depending on the terrain (for us, not to the base hex)
+			local value = hex.value;
             local defense = myunit:defense_on( wesnoth.current.map.get{x,y}.terrain );
             value = value + VALUE__defense * defense;
 
-            -- 4) add value for healing terrain if we're injured and can't regenerate. Don't worry about avoiding dangerous villages - that's handled next step
+            -- 3) add value for healing terrain if we're injured and can't regenerate. Don't worry about avoiding dangerous villages - that's handled next step
             if myunit.hitpoints<myunit.max_hitpoints and 0==#(wesnoth.units.find_on_map({ id=myunit.id, ability_type_active='regenerate' })) then
                 value = value + VALUE__village_per_healing * wesnoth.terrain_types[wesnoth.current.map[{x,y}]].healing
             end
 
-            -- 5) if this village is too dangerous for us to even try to defend *solo*, give it a massive value penalty.
+            -- 4) if this village is too dangerous for us to even try to defend *solo*, give it a massive value penalty.
             -- use x1.5 and +20 strength to represent the improved durability we'll have due to a village's healing, plus the value of delaying the enemy's capture of this village even if we die
             --
             -- usually we simply don't add dangerous hexes to the retreatmap, but villages (and possibly other hexes in the future) are important to defend and thus are added even if they're somewhat dangerous,
