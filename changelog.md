@@ -18,6 +18,8 @@
 ### Translations
    * Updated translations: Bengali, British English, Bulgarian, Czech, French, Galician, German, Hungarian, Italian, Polish, Russian, Serbian
 ### Units
+   * Frost Stoat
+     * Arcane Resist: -20% -> 0%
 ### User interface
    * Fix sound effect slider which was incorrectly affecting the music track volume.
 ### WML Engine
