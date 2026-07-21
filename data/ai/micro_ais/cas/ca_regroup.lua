@@ -283,9 +283,9 @@ function return_table:execution(cfg,data)
     -- 1) within cfg.leader_protect_radius hexes of our leader (if our leader is threatened), or...
     local retreatmap_leader = location_set.of_pairs(wesnoth.current.map.find{ T['filter'](cfg.filter_retreat_target) });
     for x,y in retreatmap_leader:clone():iter() do
-        -- fixed value: our leader is a single unit, and comparing allies-vs-enemies might lead to a situation
-        -- where we don't try to guard our leader because we have tons of units hiding behind him
-        if threatmap[{x,y}].enemies<50 then retreatmap_leader:remove(x,y) end
+        -- only guard near-leader hexes that're actually threatened
+		-- only consider enemies: comparing allies-vs-enemies might lead to a situation where we don't try to guard our leader because we have tons of units hiding behind him
+        if threatmap[{x,y}].enemies<=0 then retreatmap_leader:remove(x,y) end
     end
     locationset_expand(retreatmap_leader, cfg.leader_protect_radius, { skip_impassable=true, skip_unwalkable });
 
