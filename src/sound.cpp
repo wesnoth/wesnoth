@@ -397,7 +397,7 @@ bool init_sound()
 			track_map.emplace(i, sound_tracks::type::sound_ui);
 		}
 
-		for(std::size_t i = n_reserved_tracks_id_start; i <= n_reserved_tracks_id_end; i++) {
+		for(std::size_t i = n_reserved_tracks_id_start; i < n_reserved_tracks_id_end; i++) {
 			std::shared_ptr<MIX_Track> sound_fx_track(MIX_CreateTrack(mixer), &MIX_DestroyTrack);
 			MIX_TagTrack(sound_fx_track.get(), sound_tracks::sound_fx);
 			tracks.push_back(sound_fx_track);
